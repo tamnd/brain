@@ -1,4 +1,4 @@
-# brain
+# tamnd's brain
 
 What you learn is what you note.
 
