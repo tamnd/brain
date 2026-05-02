@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="markdown book-article">
+  <h1>{{ .Title }}</h1>
+  <table>
+    <thead>
+      <tr><th>Tag</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      {{ range .Data.Terms.Alphabetical }}
+      <tr>
+        <td><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></td>
+        <td>{{ .Count }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</article>
+{{ end }}
+
+{{ define "toc-container" }}
+{{ end }}
