@@ -1,6 +1,8 @@
 ---
 title: "Maths"
 description: "Notes on mathematics, organized by MSC classification."
+cascade:
+  type: docs
 ---
 
 # Maths
