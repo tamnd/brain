@@ -15,3 +15,4 @@ title: "Maths"
 - [ ] 06. order, lattices, and ordered algebraic structures 
 - [ ] 08. General algebraic systems 
 - [ ] 11. Number theory
+- [ ] 12. Field theory and polynomials
