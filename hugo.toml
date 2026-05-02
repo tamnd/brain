@@ -2,6 +2,8 @@ baseURL = "https://tamnd.github.io/brain/"
 title = "brain"
 theme = "hugo-book"
 
+enableGitInfo = true
+
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
@@ -36,8 +38,8 @@ defaultContentLanguageInSubdir = false
   BookSearch = true
   BookSection = "*"
   BookDateFormat = "2006-01-02"
-  BookRepo = "https://github.com/tamnd/brain"
-  BookEditPath = "edit/main/content"
+  BookEditLink = "https://github.com/tamnd/brain/edit/main/{{ .Path }}"
+  BookLastChangeLink = "https://github.com/tamnd/brain/commit/{{ .GitInfo.Hash }}"
 
 [markup.highlight]
   noClasses = false
