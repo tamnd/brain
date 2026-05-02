@@ -1,8 +1,11 @@
-## Book Outline: 03 — Mathematical Logic and Foundations
-
-This volume covers formal logic, set theory, computability, and the foundations of mathematics. It follows MSC 03 and treats mathematics as a formal system: syntax, semantics, proof, and computation.
-
 ---
+title: "03. Logic and Foundations"
+description: "Formal logic, set theory, computability, and the foundations of mathematics treated as a formal system."
+tags: ["logic", "foundations", "set-theory", "computability", "proof-theory"]
+weight: 3
+---
+
+This volume covers formal logic, set theory, computability, and the foundations of mathematics. The scope follows MSC 03, treating mathematics as a formal system: syntax, semantics, proof, and computation.
 
 ## Part I. Propositional and First-Order Logic
 

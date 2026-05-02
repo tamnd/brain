@@ -1,6 +1,11 @@
-## 00. General and Overarching Topics in Mathematics
+---
+title: "00. General Mathematics"
+description: "Language, structure, methodology, and cross-cutting tools that apply across all branches of mathematics."
+tags: ["mathematics", "foundations", "philosophy", "methods"]
+weight: 0
+---
 
-This volume establishes the meta-layer of mathematics. It focuses on language, structure, methodology, and cross-cutting tools that apply across all branches. It follows the spirit of MSC 00: classification, exposition, philosophy, and general methods.
+This volume establishes the meta-layer of mathematics. It covers language, structure, methodology, and cross-cutting tools that apply across all branches. The scope follows MSC 00: classification, exposition, philosophy, and general methods.
 
 ## Part I. What Mathematics Is
 

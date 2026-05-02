@@ -1,4 +1,9 @@
-## Book Outline: 06 — Order, Lattices, and Ordered Algebraic Structures
+---
+title: "06. Order and Lattices"
+description: "Partially ordered sets, lattices, and algebraic systems equipped with order relations."
+tags: ["order-theory", "lattices", "algebra", "posets"]
+weight: 6
+---
 
 This volume studies partially ordered sets, lattices, and algebraic systems equipped with order relations. It connects combinatorics, algebra, topology, and logic through the notion of order.
 

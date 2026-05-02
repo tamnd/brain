@@ -1,6 +1,11 @@
-## Book Outline: 08 — General Algebraic Systems
+---
+title: "08. General Algebraic Systems"
+description: "Operations, identities, and structures as a unifying framework for all algebraic theories."
+tags: ["algebra", "universal-algebra", "model-theory", "equational-logic"]
+weight: 8
+---
 
-This volume studies algebraic systems in their most abstract form. It focuses on operations, identities, and structures without restricting to specific classes like groups or rings. The goal is to provide a unifying framework for all algebraic theories.
+This volume studies algebraic systems in their most abstract form. It focuses on operations, identities, and structures without restricting to specific classes like groups or rings, providing a unifying framework for all algebraic theories.
 
 ## Part I. Universal Algebra Foundations
 

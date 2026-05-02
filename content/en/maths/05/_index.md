@@ -1,6 +1,11 @@
-## Book Outline: 05 — Combinatorics
+---
+title: "05. Combinatorics"
+description: "Counting, arrangement, structure, and extremal behavior of finite and discrete systems."
+tags: ["combinatorics", "discrete-mathematics", "counting", "graph-theory"]
+weight: 5
+---
 
-This volume studies finite and discrete structures. It focuses on counting, arrangement, structure, and extremal behavior. The style stays constructive and algorithm-aware, since combinatorics often serves as the interface between pure mathematics and computation.
+This volume studies finite and discrete structures. It focuses on counting, arrangement, structure, and extremal behavior. The treatment stays constructive and algorithm-aware, since combinatorics often sits at the interface between pure mathematics and computation.
 
 ## Part I. Basic Counting Principles
 

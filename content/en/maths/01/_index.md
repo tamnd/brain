@@ -1,6 +1,11 @@
-## 01. History and Biography of Mathematics
+---
+title: "01. History and Biography"
+description: "How mathematical ideas emerged, stabilized, and influenced later work, from prehistory to the modern era."
+tags: ["mathematics", "history", "biography"]
+weight: 1
+---
 
-This volume traces the evolution of mathematical ideas, methods, and communities. It follows the MSC 01 scope: historical development, primary sources, and biographies of mathematicians. The emphasis stays on how concepts emerged, stabilized, and influenced later work.
+This volume traces the evolution of mathematical ideas, methods, and communities. The scope follows MSC 01: historical development, primary sources, and biographies of mathematicians. The emphasis stays on how concepts emerged, stabilized, and influenced later work.
 
 ## Part I. Origins of Mathematics
 

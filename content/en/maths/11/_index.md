@@ -1,4 +1,9 @@
-## Book Outline: 11 — Number Theory
+---
+title: "11. Number Theory"
+description: "Integers, primes, modular arithmetic, Diophantine equations, and modern analytic and algebraic methods."
+tags: ["number-theory", "primes", "arithmetic", "algebra", "Diophantine"]
+weight: 11
+---
 
 This volume studies integers and arithmetic structures. It covers divisibility, primes, modular arithmetic, Diophantine equations, and modern analytic and algebraic methods.
 
