@@ -22,3 +22,11 @@ title: "Maths"
 - [ ] 16. Associative rings and algebras
 - [ ] 17. Non-associative rings and algebras
 - [ ] 18. Category theory; homological algebra
+- [ ] 19. K-theory
+- [ ] 20. Group theory and generalizations
+- [ ] 22. Topological groups, lie groups
+- [ ] 26. Real functions
+- [ ] 28. Measure and integration
+- [ ] 30. Complex analysis
+- [ ] 31. Potential theory
+- [ ] 32. Several complex variables and analytic spaces
