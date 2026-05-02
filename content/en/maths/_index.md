@@ -8,4 +8,4 @@ title: "Maths"
 
 
 
-- [ ] 0. General and overa
+- [ ] 0. General and overarching topics in mathematics
