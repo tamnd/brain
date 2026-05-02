@@ -67,3 +67,7 @@ title: "Maths"
 - [ ] 86. Geophysics
 - [ ] 90. Operations research, mathematical programming
 - [ ] 91. Game theory, economics, social and behavioral sciences
+- [ ] 92. Biology and other natural sciences
+- [ ] 93. Systems theory; control
+- [ ] 94. Information and communication; circuits
+- [ ] 97. Mathematics education
