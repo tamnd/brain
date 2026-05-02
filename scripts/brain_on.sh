@@ -5,9 +5,13 @@ REPO_DIR="$HOME/github/tamnd/brain"
 BRANCH="main"
 INTERVAL=300
 
-cd "$REPO_DIR"
+# colors
+GRN='\033[0;32m'; CYN='\033[0;36m'; YLW='\033[0;33m'; GRY='\033[0;90m'; RST='\033[0m'
+ts()  { date '+%H:%M:%S'; }
+log() { echo -e "${GRY}[$(ts)]${RST} $*"; }
 
-echo "brain is on -- watching $REPO_DIR every ${INTERVAL}s"
+cd "$REPO_DIR"
+echo -e "${CYN}brain is on${RST} — ${GRY}$REPO_DIR, every ${INTERVAL}s${RST}"
 
 build_commit_msg() {
   local added modified deleted renamed
@@ -25,10 +29,8 @@ build_commit_msg() {
   local summary
   summary=$(IFS=', '; echo "${parts[*]}")
 
-  # Get the first changed file as a hint
-  local first
+  local first section
   first=$(git diff --cached --name-only | head -1)
-  local section
   section=$(dirname "$first" | sed 's|^content/[a-z]*/||; s|^\.$||; s|^content||')
   [ -n "$section" ] && section=" [$section]" || section=""
 
@@ -36,17 +38,18 @@ build_commit_msg() {
 }
 
 while true; do
-  TS="$(date '+%Y-%m-%d %H:%M:%S')"
-
   if [ -n "$(git status --porcelain)" ]; then
     git add -A
-
     if ! git diff --cached --quiet; then
       MSG="$(build_commit_msg)"
-      git commit -m "$MSG"
-      git push origin "$BRANCH"
-      echo "[$TS] $MSG"
+      git commit -q -m "$MSG"
+      git push -q origin "$BRANCH"
+      log "${GRN}✓ $MSG${RST}"
+    else
+      log "${YLW}· nothing to commit${RST}"
     fi
+  else
+    log "${GRY}· nothing to commit${RST}"
   fi
 
   sleep "$INTERVAL"
