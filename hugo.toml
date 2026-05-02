@@ -34,7 +34,7 @@ defaultContentLanguageInSubdir = false
   BookTheme = "auto"
   BookToC = true
   BookSearch = true
-BookDateFormat = "2006-01-02"
+  BookDateFormat = "2006-01-02"
   BookRepo = "https://github.com/tamnd/brain"
   BookEditPath = "edit/main/content"
 
