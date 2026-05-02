@@ -68,7 +68,7 @@ defaultContentLanguageInSubdir = false
 
   [params.footer]
     enable = true
-    displayCopyright = true
+    displayCopyright = false
     displayPoweredBy = false
 
   # KaTeX math rendering ($...$ inline, $$...$$ display)
