@@ -3,48 +3,38 @@
 {{- $pages = where $pages "Params.draft" "ne" true -}}
 {{- $pages = $pages.ByLastmod.Reverse -}}
 
-<div class="hx:min-h-[calc(100vh-var(--navbar-height))] hx:w-full">
-  <main id="content" class="hx:mx-auto hx:max-w-4xl hx:px-10 hx:pt-24 hx:pb-32 hx:md:px-20 hx:lg:px-28">
+<main id="content" class="home-feed">
+  <header class="home-feed__header">
+    <h1 class="home-feed__title">tamnd's brain</h1>
+    <p class="home-feed__subtitle">What you learn is what you note.</p>
+  </header>
 
-    <div class="hx:mb-24">
-      <h1 class="hx:text-5xl hx:font-bold hx:tracking-tight hx:text-gray-900 hx:dark:text-gray-100 hx:leading-tight">tamnd's brain</h1>
-      <p class="hx:mt-5 hx:text-xl hx:text-gray-500 hx:dark:text-gray-400 hx:leading-relaxed">What you learn is what you note.</p>
-    </div>
-
-    <div class="hx:flex hx:flex-col hx:divide-y hx:divide-gray-100 hx:dark:divide-neutral-800/60">
-      {{ range $pages }}
-      <article class="hx:py-10 hx:group">
-        <div class="hx:flex hx:items-start hx:justify-between hx:gap-10">
-          <div class="hx:min-w-0 hx:flex-1">
-            <a href="{{ .RelPermalink }}" class="hx:block hx:no-underline">
-              <h2 class="hx:text-lg hx:font-semibold hx:text-gray-900 hx:dark:text-gray-100 group-hover:hx:text-primary-600 hx:dark:group-hover:text-primary-400 hx:truncate hx:leading-snug hx:tracking-tight">
-                {{- .Title -}}
-              </h2>
-            </a>
-            {{ with .Description }}
-            <p class="hx:mt-3 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400 hx:line-clamp-2 hx:leading-relaxed">{{ . }}</p>
-            {{ end }}
-            {{ if .Params.tags }}
-            <div class="hx:mt-5 hx:flex hx:flex-wrap hx:gap-2">
-              {{ range .Params.tags }}
-              <a href="{{ (site.GetPage (printf "/tags/%s" . )).RelPermalink }}"
-                 class="hx:inline-block hx:rounded-md hx:px-2.5 hx:py-1 hx:text-xs hx:font-medium hx:bg-gray-100 hx:text-gray-600 hx:dark:bg-neutral-800 hx:dark:text-gray-400 hx:no-underline hover:hx:bg-primary-100 hover:hx:text-primary-700 hx:dark:hover:bg-primary-900 hx:dark:hover:text-primary-300 hx:transition-colors">
-                {{ . }}
-              </a>
-              {{ end }}
-            </div>
+  <div class="home-feed__list">
+    {{ range $pages }}
+    <article class="home-feed__item">
+      <div class="home-feed__row">
+        <div class="home-feed__main">
+          <a href="{{ .RelPermalink }}" class="home-feed__link">
+            <h2 class="home-feed__post-title">{{ .Title }}</h2>
+          </a>
+          {{ with .Description }}
+          <p class="home-feed__desc">{{ . }}</p>
+          {{ end }}
+          {{ if .Params.tags }}
+          <div class="home-feed__tags">
+            {{ range .Params.tags }}
+            <a href="{{ (site.GetPage (printf "/tags/%s" . )).RelPermalink }}" class="home-feed__tag">{{ . }}</a>
             {{ end }}
           </div>
-          <time class="hx:shrink-0 hx:text-xs hx:text-gray-400 hx:dark:text-gray-500 hx:mt-1 hx:tabular-nums hx:text-right hx:leading-relaxed"
-                datetime="{{ .Lastmod.Format "2006-01-02T15:04" }}">
-            <span class="hx:block">{{ .Lastmod.Format "Jan 2, 2006" }}</span>
-            <span class="hx:block hx:mt-0.5 hx:text-gray-300 hx:dark:text-gray-600">{{ .Lastmod.Format "15:04" }}</span>
-          </time>
+          {{ end }}
         </div>
-      </article>
-      {{ end }}
-    </div>
-
-  </main>
-</div>
+        <time class="home-feed__time" datetime="{{ .Lastmod.Format "2006-01-02T15:04" }}">
+          <span class="home-feed__time-date">{{ .Lastmod.Format "Jan 2, 2006" }}</span>
+          <span class="home-feed__time-clock">{{ .Lastmod.Format "15:04" }}</span>
+        </time>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</main>
 {{ end }}
