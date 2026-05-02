@@ -1,3 +1,5 @@
-# Notes
+---
+title: "Docs"
+---
 
-Notes organized loosely by topic. Nothing too rigid.
+Notes organized loosely by topic.

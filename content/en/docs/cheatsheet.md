@@ -120,38 +120,6 @@ println!("hello");
 
 ---
 
-## Columns
-
-````markdown
-{{</* columns */>}}
-- Left side content.
-
-- Right side content.
-{{</* /columns */>}}
-````
-
-{{< columns >}}
-- Left side content.
-
-- Right side content.
-{{< /columns >}}
-
-````markdown
-{{</* columns ratio="2:1" */>}}
-- This column is twice as wide.
-
-- This one is narrow.
-{{</* /columns */>}}
-````
-
-{{< columns ratio="2:1" >}}
-- This column is twice as wide.
-
-- This one is narrow.
-{{< /columns >}}
-
----
-
 ## Steps
 
 ````markdown
