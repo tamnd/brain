@@ -1,58 +1,75 @@
 baseURL = "https://tamnd.github.io/brain/"
 title = "brain"
-theme = "hugo-book"
 
 enableGitInfo = true
+enableRobotsTXT = true
+enableEmoji = true
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
+[module]
+  [[module.imports]]
+    path = "github.com/imfing/hextra"
+
 [languages]
   [languages.en]
-    label = "English"
-    locale = "en-US"
+    languageName = "English"
+    languageCode = "en-US"
     contentDir = "content/en"
     weight = 1
-
   [languages.zh]
-    label = "中文"
-    locale = "zh-CN"
+    languageName = "中文"
+    languageCode = "zh-CN"
     contentDir = "content/zh"
     weight = 2
-
   [languages.vi]
-    label = "Tiếng Việt"
-    locale = "vi"
+    languageName = "Tiếng Việt"
+    languageCode = "vi"
     contentDir = "content/vi"
     weight = 3
-
   [languages.ja]
-    label = "日本語"
-    locale = "ja"
+    languageName = "日本語"
+    languageCode = "ja"
     contentDir = "content/ja"
     weight = 4
 
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+      block  = [["$$", "$$"], ["\\[", "\\]"]]
+      inline = [["$", "$"],   ["\\(", "\\)"]]
+
 [params]
-  BookTheme = "auto"
-  BookToC = true
-  BookSearch = true
-  BookSection = "*"
-  BookDateFormat = "2006-01-02"
-  BookEditLink = "https://github.com/tamnd/brain/edit/main/{{ .Path }}"
-  BookLastChangeLink = "https://github.com/tamnd/brain/commit/{{ .GitInfo.Hash }}"
+  description = "Personal knowledge base"
 
-[markup.highlight]
-  noClasses = false
-  guessSyntax = true
+  [params.navbar]
+    displayTitle = true
+    displayLogo = false
 
-[markup.goldmark.renderer]
-  unsafe = true
+  [params.theme]
+    default = "system"
+    displayToggle = true
 
-# Preserve $...$ and $$...$$ raw so KaTeX (in head.html) can render them
-# without goldmark interpreting underscores as emphasis, etc.
-[markup.goldmark.extensions.passthrough]
-  enable = true
+  [params.search]
+    enable = true
+    type = "flexsearch"
+    [params.search.flexsearch]
+      index = "content"
 
-  [markup.goldmark.extensions.passthrough.delimiters]
-    block  = [["$$", "$$"], ["\\[", "\\]"]]
-    inline = [["$", "$"],   ["\\(", "\\)"]]
+  [params.editURL]
+    enable = true
+    base = "https://github.com/tamnd/brain/edit/main/content"
+
+  [params.footer]
+    enable = true
+    displayCopyright = true
+    displayPoweredBy = false
+
+  # KaTeX math rendering ($...$ inline, $$...$$ display)
+  math = true
