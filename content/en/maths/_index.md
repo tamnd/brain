@@ -39,3 +39,8 @@ title: "Maths"
 - [ ] 41. Approximations and expansions
 - [ ] 42. Harmonic analysis
 - [ ] 43. Abstract Harmonic analysis
+- [ ] 44. Integral transforms, operational calculus
+- [ ] 45. Integral equations
+- [ ] 46. Functional analysis
+- [ ] 47. Operator theory
+- [ ] 49. Calculus of variations and optimal control; Optimization
