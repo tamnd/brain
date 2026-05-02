@@ -38,6 +38,13 @@ build_commit_msg() {
 }
 
 while true; do
+  # Auto-repair malformed Hugo front matter before staging. Idempotent:
+  # only writes files that need changes. Reports each repair so the
+  # commit log includes the fix when something was off.
+  if FIX_OUT="$(python3 "$REPO_DIR/scripts/fix_frontmatter.py" 2>&1)" && [ -n "$FIX_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}fm: ${line}${RST}"; done <<< "$FIX_OUT"
+  fi
+
   if [ -n "$(git status --porcelain)" ]; then
     git add -A
     if ! git diff --cached --quiet; then
