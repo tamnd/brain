@@ -14,23 +14,23 @@ defaultContentLanguageInSubdir = false
 
 [languages]
   [languages.en]
-    languageName = "English"
-    languageCode = "en-US"
+    label = "English"
+    locale = "en-US"
     contentDir = "content/en"
     weight = 1
   [languages.zh]
-    languageName = "中文"
-    languageCode = "zh-CN"
+    label = "中文"
+    locale = "zh-CN"
     contentDir = "content/zh"
     weight = 2
   [languages.vi]
-    languageName = "Tiếng Việt"
-    languageCode = "vi"
+    label = "Tiếng Việt"
+    locale = "vi"
     contentDir = "content/vi"
     weight = 3
   [languages.ja]
-    languageName = "日本語"
-    languageCode = "ja"
+    label = "日本語"
+    locale = "ja"
     contentDir = "content/ja"
     weight = 4
 
