@@ -1,4 +1,4 @@
-## Book Outline: 00 — General and Overarching Topics in Mathematics
+## 00. General and Overarching Topics in Mathematics
 
 This volume establishes the meta-layer of mathematics. It focuses on language, structure, methodology, and cross-cutting tools that apply across all branches. It follows the spirit of MSC 00: classification, exposition, philosophy, and general methods.
 
@@ -54,8 +54,6 @@ This volume establishes the meta-layer of mathematics. It focuses on language, s
 6.4 Decomposition and composition
 6.5 Recursion and induction
 
----
-
 ## Part III. Methods of Reasoning
 
 ### Chapter 7. Proof Techniques
@@ -81,8 +79,6 @@ This volume establishes the meta-layer of mathematics. It focuses on language, s
 9.3 Exact vs approximate computation
 9.4 Symbolic vs numeric methods
 9.5 Reproducibility and verification
-
----
 
 ## Part IV. Mathematical Communication
 
@@ -110,8 +106,6 @@ This volume establishes the meta-layer of mathematics. It focuses on language, s
 12.4 Designing exercises
 12.5 Assessment strategies
 
----
-
 ## Part V. Organization of Mathematics
 
 ### Chapter 13. Classification Systems
@@ -137,8 +131,6 @@ This volume establishes the meta-layer of mathematics. It focuses on language, s
 15.3 File formats (LaTeX, MathML)
 15.4 Interoperability
 15.5 Versioning of knowledge
-
----
 
 ## Part VI. Foundations and Meta-Mathematics
 
@@ -166,8 +158,6 @@ This volume establishes the meta-layer of mathematics. It focuses on language, s
 18.4 Structuralism
 18.5 Pragmatic perspectives
 
----
-
 ## Part VII. Practice and Workflow
 
 ### Chapter 19. Research Process
@@ -193,8 +183,6 @@ This volume establishes the meta-layer of mathematics. It focuses on language, s
 21.3 Open science practices
 21.4 Peer review
 21.5 Community norms
-
----
 
 ## Part VIII. Mathematics in Context
 
@@ -222,8 +210,6 @@ This volume establishes the meta-layer of mathematics. It focuses on language, s
 24.4 Accessibility
 24.5 Future directions
 
----
-
 ## Appendix
 
 A. Common notation reference
@@ -231,7 +217,5 @@ B. Proof templates
 C. Problem-solving checklist
 D. Software and tools index
 E. MSC quick reference table
-
----
 
 This volume acts as the entry point to all other branches. It defines how to think, write, organize, and operationalize mathematics before specializing.
