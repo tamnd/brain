@@ -54,3 +54,10 @@ title: "Maths"
 - [ ] 60. Probability theory and stochastic processes
 - [ ] 62. Statistics
 - [ ] 65. Numerical analysis
+- [ ] 68. Computer science
+- [ ] 70. Mechanics of particlees and systems
+- [ ] 74. Mechanics of deformable solids
+- [ ] 76. Fluid mechanics
+- [ ] 78. Optics, electromagnetic theory
+- [ ] 80. Classical thermodynamics, heat transfer
+- [ ] 
