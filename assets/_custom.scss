@@ -153,5 +153,164 @@ html[data-theme="dark"]  { @include theme-dark;  }
   > a.book-badge { flex: 0 0 auto; }   // override theme's `a { flex: auto }`
 }
 
-// ─── Sidebar Tags link ─────────────────────────────────────────────
-.book-tags-nav a { flex: 0 0 auto; }
+// ─── Sidebar: modern menu styling ──────────────────────────────────
+.book-menu {
+  font-size: 0.85rem;
+
+  .book-menu-content {
+    padding: 1rem 0.75rem;
+  }
+
+  // Brand: stronger weight, tighter spacing
+  .book-brand {
+    margin: 0.25rem 0.5rem 1rem;
+
+    a {
+      flex: 0 0 auto;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      color: var(--body-font-color);
+    }
+  }
+
+  // Search: polished input with focus ring
+  .book-search {
+    margin: 0 0.5rem 1rem;
+
+    input {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      background: var(--gray-100);
+      border: 1px solid transparent;
+      border-radius: 8px;
+      transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+
+      &::placeholder { color: var(--gray-400); }
+
+      &:hover { background: var(--gray-200); }
+
+      &:focus {
+        outline: none;
+        background: var(--body-background);
+        border-color: var(--color-link);
+        box-shadow: 0 0 0 3px rgba(127, 127, 127, 0.15);
+      }
+    }
+  }
+
+  // Menu items: rounded hover, no opacity dimming
+  nav ul {
+    li { margin: 1px 0; }
+
+    a {
+      flex: 0 0 auto;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      color: var(--body-font-color);
+      transition: background 0.12s, color 0.12s;
+      line-height: 1.35;
+
+      &[href]:hover, &[role=button]:hover {
+        opacity: 1;
+        background: var(--gray-100);
+        color: var(--body-font-color);
+      }
+    }
+
+    // Active page: subtle bg + left accent bar
+    a.active {
+      background: var(--gray-100);
+      color: var(--color-link);
+      font-weight: 500;
+      box-shadow: inset 2px 0 0 var(--color-link);
+
+      &:hover { background: var(--gray-200); }
+    }
+
+    label {
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.12s;
+
+      &:hover { background: var(--gray-100); }
+    }
+
+    // Nested lists: subtle vertical guideline
+    ul {
+      padding-inline-start: 0.75rem;
+      margin-inline-start: 0.4rem;
+      border-inline-start: 1px solid var(--gray-100);
+    }
+  }
+
+  // Section headers (book-section-flat): uppercase muted heading
+  .book-section-flat {
+    margin: 1.25rem 0 0.25rem;
+
+    > a, > span, > label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--gray-500);
+      padding: 0.4rem 0.6rem;
+    }
+
+    > a:hover { color: var(--body-font-color); }
+  }
+}
+
+// ─── Sidebar: Tags link (in menu-before) ───────────────────────────
+.book-tags-nav {
+  margin: 0 0 0.75rem;
+  padding: 0;
+
+  a {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--body-font-color);
+    transition: background 0.12s;
+
+    &:hover {
+      background: var(--gray-100);
+      color: var(--color-link);
+    }
+  }
+}
+
+// ─── Sidebar: theme toggle (in menu-after) ─────────────────────────
+.book-theme-toggle-wrap {
+  margin-top: 1rem;
+  padding: 0.75rem 0.5rem 0;
+  border-top: 1px solid var(--gray-100);
+}
+
+#book-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--body-font-color);
+  background: transparent;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+
+  &:hover {
+    background: var(--gray-100);
+    border-color: var(--gray-300);
+  }
+
+  svg { flex-shrink: 0; }
+}
