@@ -50,3 +50,7 @@ title: "Maths"
 - [ ] 54. General topology
 - [ ] 55. Algebraic topology
 - [ ] 57. Manifolds and cell complexes
+- [ ] 58. Global analysis, analysis on manifolds
+- [ ] 60. Probability theory and stochastic processes
+- [ ] 62. Statistics
+- [ ] 65. Numerical analysis
