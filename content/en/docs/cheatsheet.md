@@ -158,69 +158,55 @@ println!("hello");
 
 ---
 
-## Button
-
-````markdown
-{{</* button href="https://github.com/tamnd/brain" */>}}
-View on GitHub
-{{</* /button */>}}
-````
-
-{{< button href="https://github.com/tamnd/brain" >}}
-View on GitHub
-{{< /button >}}
-
----
-
 ## Badge
 
 ````markdown
-{{</* badge style="info" title="Status" value="stable" */>}}
-{{</* badge style="warning" title="Version" value="beta" */>}}
-{{</* badge style="danger" title="API" value="deprecated" */>}}
-{{</* badge style="default" value="tag" */>}}
+{{</* badge content="stable" type="info" */>}}
+{{</* badge content="beta" type="warning" */>}}
+{{</* badge content="deprecated" type="error" */>}}
+{{</* badge content="tag" */>}}
 ````
 
-{{< badge style="info" title="Status" value="stable" >}}
-{{< badge style="warning" title="Version" value="beta" >}}
-{{< badge style="danger" title="API" value="deprecated" >}}
-{{< badge style="default" value="tag" >}}
+{{< badge content="stable" type="info" >}}
+{{< badge content="beta" type="warning" >}}
+{{< badge content="deprecated" type="error" >}}
+{{< badge content="tag" >}}
 
 ---
 
 ## Mermaid diagrams
 
 ````markdown
-{{</* mermaid */>}}
+```mermaid
 graph LR
     A[Write note] --> B[brain_on.sh detects change]
     B --> C[git commit + push]
     C --> D[GitHub Actions builds]
     D --> E[Live on GitHub Pages]
-{{</* /mermaid */>}}
+```
 ````
 
-{{< mermaid >}}
+```mermaid
 graph LR
     A[Write note] --> B[brain_on.sh detects change]
     B --> C[git commit + push]
     C --> D[GitHub Actions builds]
     D --> E[Live on GitHub Pages]
-{{< /mermaid >}}
+```
 
 ````markdown
-{{</* mermaid */>}}
+```mermaid
 sequenceDiagram
     Client->>Server: GET /api/notes
     Server-->>Client: 200 OK + JSON
-{{</* /mermaid */>}}
+```
 ````
 
-{{< mermaid >}}
+```mermaid
 sequenceDiagram
     Client->>Server: GET /api/notes
     Server-->>Client: 200 OK + JSON
-{{< /mermaid >}}
+```
 
 ---
 
@@ -228,23 +214,23 @@ sequenceDiagram
 
 Inline:
 
-````markdown
-{{</* katex */>}}E = mc^2{{</* /katex */>}}
-````
+```markdown
+$E = mc^2$
+```
 
-{{< katex >}}E = mc^2{{< /katex >}}
+$E = mc^2$
 
 Block (centered):
 
-````markdown
-{{</* katex display=true */>}}
+```markdown
+$$
 \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
-{{</* /katex */>}}
-````
+$$
+```
 
-{{< katex display=true >}}
+$$
 \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
-{{< /katex >}}
+$$
 
 ---
 
@@ -360,10 +346,6 @@ weight: 1                    # sidebar order, lower = higher
 tags: ["go", "db"]
 draft: false
 
-bookHidden: true             # hide from nav, reachable by URL
-bookCollapseSection: true    # section collapsed by default
-bookFlatSection: true        # children listed flat
-bookToC: false               # no table of contents on this page
-bookSearchExclude: true      # exclude from search index
+math: true                   # enable KaTeX on this page
 ---
 ```
