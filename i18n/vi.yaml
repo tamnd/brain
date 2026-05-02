@@ -1,11 +1,11 @@
 - id: Search
-  translation: Tim kiem
+  translation: Tìm kiếm
 
 - id: Edit this page
-  translation: Chinh sua trang nay
+  translation: Chỉnh sửa trang này
 
 - id: Last modified by
-  translation: Cap nhat boi
+  translation: Cập nhật bởi
 
 - id: bookSearchConfig
   translation: '{ cache: true }'

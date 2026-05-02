@@ -1,5 +1,5 @@
 # brain
 
-Hoc duoc gi thi ghi lai do.
+Học được gì thì ghi lại đó.
 
-Day la cuon so tay cong khai cua toi. Nhung thu da doc, da hieu, dang muon nho.
+Đây là cuốn sổ tay công khai của tôi. Những thứ đã đọc, đã hiểu, đang muốn nhớ.

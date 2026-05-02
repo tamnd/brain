@@ -1,3 +1,3 @@
-# Ghi chu
+# Ghi chú
 
-Ghi chu sap xep theo chu de, khong qua cung nhac.
+Ghi chú sắp xếp theo chủ đề, không quá cứng nhắc.

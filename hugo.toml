@@ -19,7 +19,7 @@ defaultContentLanguageInSubdir = false
     weight = 2
 
   [languages.vi]
-    languageName = "Tieng Viet"
+    languageName = "Tiếng Việt"
     languageCode = "vi"
     contentDir = "content/vi"
     weight = 3
