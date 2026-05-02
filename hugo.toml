@@ -1,0 +1,16 @@
+baseURL = "https://tamnd.github.io/brain/"
+languageCode = "en-us"
+title = "brain"
+theme = "hugo-book"
+
+[params]
+  BookTheme = "auto"
+  BookToC = true
+  BookSearch = true
+  BookMenuFromSection = "docs"
+  BookDateFormat = "2006-01-02"
+  BookRepo = "https://github.com/tamnd/brain"
+  BookEditPath = "edit/main/content"
+
+[markup.goldmark.renderer]
+  unsafe = true
