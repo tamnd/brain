@@ -3,7 +3,7 @@ set -euo pipefail
 
 REPO_DIR="$HOME/github/tamnd/brain"
 BRANCH="main"
-INTERVAL=60
+INTERVAL=300
 
 cd "$REPO_DIR"
 
