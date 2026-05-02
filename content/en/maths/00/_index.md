@@ -21,7 +21,7 @@ This volume establishes the meta-layer of mathematics. It covers language, struc
 
 2.1 Truth vs provability
 
-###### 2.2 Formal systems and semantics
+2.2 Formal systems and semantics
 
 2.3 Consistency and completeness
 2.4 Independence phenomena
