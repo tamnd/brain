@@ -44,3 +44,9 @@ title: "Maths"
 - [ ] 46. Functional analysis
 - [ ] 47. Operator theory
 - [ ] 49. Calculus of variations and optimal control; Optimization
+- [ ] 51. Geometry
+- [ ] 52. Convex and discrete geometry
+- [ ] 53. Differential geometry
+- [ ] 54. General topology
+- [ ] 55. Algebraic topology
+- [ ] 57. Manifolds and cell complexes
