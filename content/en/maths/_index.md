@@ -11,3 +11,4 @@ title: "Maths"
 - [ ] 00. General and overarching topics in mathematics
 - [ ] 01. History and biography of mathematics
 - [ ] 03. Mathematical logic and foundations
+- [ ] 05. Combinatorics
