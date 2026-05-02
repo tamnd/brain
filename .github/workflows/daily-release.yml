@@ -12,19 +12,19 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Create daily release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          DATE=$(TZ=Asia/Bangkok date '+%Y-%m-%d')
-          TAG="daily/$DATE"
-          if gh release view "$TAG" &>/dev/null; then
-            echo "Release $TAG already exists, skipping."
-          else
-            gh release create "$TAG" \
-              --title "Notes $DATE" \
-              --notes "Daily snapshot on $DATE." \
-              --latest=false
-          fi
+          DATE=$(TZ=Asia/Bangkok date '+%Y.%m.%d')
+          N=0
+          while gh release view "v$DATE.$N" &>/dev/null; do
+            N=$((N + 1))
+          done
+          TAG="v$DATE.$N"
+          gh release create "$TAG" \
+            --title "Notes $TAG" \
+            --notes "Daily snapshot on $(TZ=Asia/Bangkok date '+%Y-%m-%d')." \
+            --latest=false

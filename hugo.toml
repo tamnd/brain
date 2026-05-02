@@ -1,7 +1,34 @@
 baseURL = "https://tamnd.github.io/brain/"
-languageCode = "en-us"
 title = "brain"
 theme = "hugo-book"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    languageCode = "en-US"
+    contentDir = "content/en"
+    weight = 1
+
+  [languages.zh]
+    languageName = "中文"
+    languageCode = "zh-CN"
+    contentDir = "content/zh"
+    weight = 2
+
+  [languages.vi]
+    languageName = "Tieng Viet"
+    languageCode = "vi"
+    contentDir = "content/vi"
+    weight = 3
+
+  [languages.ja]
+    languageName = "日本語"
+    languageCode = "ja"
+    contentDir = "content/ja"
+    weight = 4
 
 [params]
   BookTheme = "auto"
