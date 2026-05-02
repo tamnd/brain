@@ -16,3 +16,9 @@ title: "Maths"
 - [ ] 08. General algebraic systems 
 - [ ] 11. Number theory
 - [ ] 12. Field theory and polynomials
+- [ ] 13. Commutative algebra
+- [ ] 14. Algebraic geometry
+- [ ] 15. Linear and multilinear algebra; matrix theory
+- [ ] 16. Associative rings and algebras
+- [ ] 17. Non-associative rings and algebras
+- [ ] 18. Category theory; homological algebra
