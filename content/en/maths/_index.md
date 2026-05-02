@@ -60,4 +60,10 @@ title: "Maths"
 - [ ] 76. Fluid mechanics
 - [ ] 78. Optics, electromagnetic theory
 - [ ] 80. Classical thermodynamics, heat transfer
-- [ ] 
+- [ ] 81. Quantum theory
+- [ ] 82. Statistical mechanics, structure of matter
+- [ ] 83. Relativity and gravitational theory
+- [ ] 85. Astronomy and astrophysics
+- [ ] 86. Geophysics
+- [ ] 90. Operations research, mathematical programming
+- [ ] 91. Game theory, economics, social and behavioral sciences
