@@ -1,0 +1,11 @@
+- id: Search
+  translation: Tim kiem
+
+- id: Edit this page
+  translation: Chinh sua trang nay
+
+- id: Last modified by
+  translation: Cap nhat boi
+
+- id: bookSearchConfig
+  translation: '{ cache: true }'
