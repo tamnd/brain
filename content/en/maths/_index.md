@@ -30,3 +30,12 @@ title: "Maths"
 - [ ] 30. Complex analysis
 - [ ] 31. Potential theory
 - [ ] 32. Several complex variables and analytic spaces
+- [ ] 33. Special functions
+- [ ] 34. Ordinary differential equations
+- [ ] 35. Partial differential equations
+- [ ] 37. Dynamical systems and ergodic theory
+- [ ] 39. Difference and functional equations
+- [ ] 40. Sequences, series, summability
+- [ ] 41. Approximations and expansions
+- [ ] 42. Harmonic analysis
+- [ ] 43. Abstract Harmonic analysis
