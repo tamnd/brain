@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="{{ "syntax-light.css" | relURL }}" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="{{ "syntax-dark.css" | relURL }}" media="(prefers-color-scheme: dark)">
+<style>
+html[data-theme="light"] .chroma { background-color:#f7f7f7; }
+html[data-theme="dark"]  .chroma { color:#d8dee9; background-color:#2e3440; }
+</style>
+<script>
+(function () {
+  var t = localStorage.getItem("theme");
+  if (t) document.documentElement.setAttribute("data-theme", t);
+})();
+</script>

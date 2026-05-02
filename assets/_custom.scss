@@ -1,0 +1,8 @@
+// Manual theme override -- applied when JS sets data-theme on <html>
+// Specificity of html[attr] beats the :root inside @media (prefers-color-scheme)
+html[data-theme="light"] {
+  @include theme-light;
+}
+html[data-theme="dark"] {
+  @include theme-dark;
+}

@@ -39,5 +39,9 @@ defaultContentLanguageInSubdir = false
   BookRepo = "https://github.com/tamnd/brain"
   BookEditPath = "edit/main/content"
 
+[markup.highlight]
+  noClasses = false
+  guessSyntax = true
+
 [markup.goldmark.renderer]
   unsafe = true
