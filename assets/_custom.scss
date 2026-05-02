@@ -1,21 +1,50 @@
 // Manual theme override -- applied when JS sets data-theme on <html>
-// Specificity of html[attr] beats the :root inside @media (prefers-color-scheme)
-html[data-theme="light"] {
-  @include theme-light;
-}
-html[data-theme="dark"] {
-  @include theme-dark;
+html[data-theme="light"] { @include theme-light; }
+html[data-theme="dark"]  { @include theme-dark;  }
+
+// ─── Layout: full width with comfortable reading column ──────────────
+// Article content is centered & capped so long lines stay readable on
+// huge displays while menu/toc still hug the screen edges.
+.book-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-// Breadcrumb navigation
+.book-page > *,
+.book-page > .book-footer > * {
+  width: 100%;
+  max-width: 72rem;
+}
+
+.book-page > .book-header { max-width: none; }
+
+// ─── Top toolbar: breadcrumb + action buttons on one row ────────────
+.book-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+// ─── Breadcrumb ────────────────────────────────────────────────────
 .book-breadcrumb {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--gray-500);
-  margin-bottom: 0.75rem;
+  min-width: 0;
+
+  // Counteract theme's `a { flex: auto }` so items don't stretch
+  > a, > span {
+    flex: 0 0 auto;
+    padding: 0;
+  }
 
   a {
     color: var(--color-link);
@@ -24,57 +53,94 @@ html[data-theme="dark"] {
   }
 
   .book-breadcrumb-sep {
+    margin: 0 0.45rem;
     color: var(--gray-400);
-    font-size: 0.75rem;
+  }
+
+  .book-breadcrumb-current {
+    color: var(--body-font-color);
+    font-weight: 500;
   }
 }
 
-// Page actions bar (View source / Copy markdown)
+// ─── Page action buttons (View source / Copy markdown) ──────────────
 .book-page-actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.25rem;
 }
 
 .book-action-btn {
+  flex: 0 0 auto;             // override theme's `a { flex: auto }`
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
   font-size: 0.78rem;
-  border-radius: 4px;
+  font-family: inherit;
+  line-height: 1.2;
+  border-radius: 6px;
   border: 1px solid var(--gray-200);
   background: transparent;
   color: var(--body-font-color);
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
-  line-height: 1.4;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 
   &:hover {
     background: var(--gray-100);
     border-color: var(--gray-300);
-    text-decoration: none;
+    color: var(--body-font-color);
   }
 
   svg { flex-shrink: 0; }
 }
 
-// Tags index page
+// ─── Footer (commit link) ──────────────────────────────────────────
+.book-last-change {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-100);
+  font-size: 0.78rem;
+}
+
+.book-commit-link {
+  flex: 0 0 auto;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gray-500);
+  text-decoration: none;
+
+  &:hover { color: var(--color-link); }
+}
+
+// ─── Tags index page ───────────────────────────────────────────────
 .book-tags-index {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.75rem;
+  margin-top: 1.25rem;
 }
 
 .book-tag-row {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.4rem;
+
+  .book-badge { flex: 0 0 auto; }
 }
 
 .book-tag-count {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--gray-500);
 }
+
+// ─── Tags rendered at bottom of pages ───────────────────────────────
+.book-tags {
+  > a.book-badge { flex: 0 0 auto; }   // override theme's `a { flex: auto }`
+}
+
+// ─── Sidebar Tags link ─────────────────────────────────────────────
+.book-tags-nav a { flex: 0 0 auto; }
