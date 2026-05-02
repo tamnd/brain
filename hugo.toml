@@ -73,3 +73,9 @@ defaultContentLanguageInSubdir = false
 
   # KaTeX math rendering ($...$ inline, $$...$$ display)
   math = true
+
+  [params.page.contextMenu]
+    enable = true
+
+[outputs]
+  page = ["html", "markdown"]
