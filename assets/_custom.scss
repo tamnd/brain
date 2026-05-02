@@ -63,6 +63,17 @@ html[data-theme="dark"]  { @include theme-dark;  }
   }
 }
 
+// ─── Page description (lede paragraph from front-matter) ───────────
+.book-page-description {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--gray-500);
+  font-style: italic;
+  margin: 0 0 1.5rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--gray-200);
+}
+
 // ─── Page action buttons (View source / Copy markdown) ──────────────
 .book-page-actions {
   display: flex;

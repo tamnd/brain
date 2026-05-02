@@ -1,5 +1,6 @@
 {{- $hasBreadcrumb := and .Ancestors (not .IsHome) -}}
 {{- $hasActions := .File -}}
+{{- $hasDescription := and .Description (not .IsHome) -}}
 
 {{- if or $hasBreadcrumb $hasActions -}}
 <div class="book-toolbar">
@@ -45,4 +46,8 @@
   </script>
   {{- end -}}
 </div>
+{{- end -}}
+
+{{- if $hasDescription -}}
+<p class="book-page-description">{{ .Description }}</p>
 {{- end -}}
