@@ -47,3 +47,12 @@ defaultContentLanguageInSubdir = false
 
 [markup.goldmark.renderer]
   unsafe = true
+
+# Preserve $...$ and $$...$$ raw so KaTeX (in head.html) can render them
+# without goldmark interpreting underscores as emphasis, etc.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block  = [["$$", "$$"], ["\\[", "\\]"]]
+    inline = [["$", "$"],   ["\\(", "\\)"]]
