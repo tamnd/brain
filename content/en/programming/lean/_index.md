@@ -1,20 +1,20 @@
-# Lean 
+# Lean Cookbook
 
-Chapter 1. Core Language and Environment
+## Chapter 1. Core Language and Environment
 
 1. Installation and toolchain
 2. Project structure with Lean and Lake
 3. Files, namespaces, and modules
 4. Basic syntax and expressions
-5. Definitions with def
-6. Theorems with theorem and lemma
+5. Definitions with `def`
+6. Theorems with `theorem` and `lemma`
 7. Types and universes
 8. Functions and lambda abstraction
 9. Implicit and explicit arguments
 10. Notation and infix operators
 11. Comments and documentation
-12. Evaluation with #eval
-13. Checking types with #check
+12. Evaluation with `#eval`
+13. Checking types with `#check`
 14. Simple rewriting
 15. Pattern matching basics
 16. Inductive types introduction
@@ -28,9 +28,9 @@ Chapter 1. Core Language and Environment
 24. Editor integration (VSCode)
 25. Minimal working examples
 
-⸻
+---
 
-Chapter 2. Propositions and Proofs
+## Chapter 2. Propositions and Proofs
 
 1. Propositions as types
 2. Implication and functions
@@ -58,43 +58,43 @@ Chapter 2. Propositions and Proofs
 24. Small proof refactoring
 25. Proof readability patterns
 
-⸻
+---
 
-Chapter 3. Tactic Framework
+## Chapter 3. Tactic Framework
 
-1. The intro tactic
-2. The apply tactic
-3. The exact tactic
-4. The assumption tactic
-5. The rw tactic
-6. The simp tactic
-7. The simp set control
-8. The cases tactic
-9. The induction tactic
-10. The constructor tactic
-11. The have tactic
-12. The let tactic
-13. The show tactic
-14. The refine tactic
-15. The calc block
-16. The conv tactic
-17. The change tactic
-18. The generalize tactic
-19. The revert tactic
-20. The clear tactic
-21. The rename tactic
-22. The simp_all tactic
-23. The aesop tactic
+1. The `intro` tactic
+2. The `apply` tactic
+3. The `exact` tactic
+4. The `assumption` tactic
+5. The `rw` tactic
+6. The `simp` tactic
+7. The `simp` set control
+8. The `cases` tactic
+9. The `induction` tactic
+10. The `constructor` tactic
+11. The `have` tactic
+12. The `let` tactic
+13. The `show` tactic
+14. The `refine` tactic
+15. The `calc` block
+16. The `conv` tactic
+17. The `change` tactic
+18. The `generalize` tactic
+19. The `revert` tactic
+20. The `clear` tactic
+21. The `rename` tactic
+22. The `simp_all` tactic
+23. The `aesop` tactic
 24. Combining tactics
 25. Debugging tactic scripts
 
-⸻
+---
 
-Chapter 4. Equality and Rewriting
+## Chapter 4. Equality and Rewriting
 
 1. Definitional equality
 2. Propositional equality
-3. The rfl proof
+3. The `rfl` proof
 4. Congruence lemmas
 5. Rewriting direction control
 6. Chained rewriting
@@ -104,7 +104,7 @@ Chapter 4. Equality and Rewriting
 10. Substitution patterns
 11. Transport across equality
 12. Heterogeneous equality
-13. simp normalization
+13. `simp` normalization
 14. Custom simp lemmas
 15. Avoiding rewrite loops
 16. Controlled rewriting strategies
@@ -118,9 +118,9 @@ Chapter 4. Equality and Rewriting
 24. Rewriting in structures
 25. Common pitfalls
 
-⸻
+---
 
-Chapter 5. Inductive Types
+## Chapter 5. Inductive Types
 
 1. Defining inductive types
 2. Constructors and recursion
@@ -148,9 +148,9 @@ Chapter 5. Inductive Types
 24. Design patterns
 25. Performance considerations
 
-⸻
+---
 
-Chapter 6. Structures and Typeclasses
+## Chapter 6. Structures and Typeclasses
 
 1. Structures definition
 2. Field access
@@ -178,9 +178,9 @@ Chapter 6. Structures and Typeclasses
 24. Extending libraries
 25. Pitfalls
 
-⸻
+---
 
-Chapter 7. Functions and Recursion
+## Chapter 7. Functions and Recursion
 
 1. Function definitions
 2. Higher-order functions
@@ -208,9 +208,9 @@ Chapter 7. Functions and Recursion
 24. Abstraction patterns
 25. Refactoring functions
 
-⸻
+---
 
-Chapter 8. Lists and Collections
+## Chapter 8. Lists and Collections
 
 1. Lists basics
 2. List recursion
@@ -238,9 +238,9 @@ Chapter 8. Lists and Collections
 24. Common lemmas
 25. Design patterns
 
-⸻
+---
 
-Chapter 9. Arithmetic and Algebra
+## Chapter 9. Arithmetic and Algebra
 
 1. Natural numbers
 2. Integers
@@ -268,9 +268,9 @@ Chapter 9. Arithmetic and Algebra
 24. Optimization
 25. Integration with libraries
 
-⸻
+---
 
-Chapter 10. Logic Engineering
+## Chapter 10. Logic Engineering
 
 1. Encoding syntax
 2. Encoding semantics
@@ -298,11 +298,11 @@ Chapter 10. Logic Engineering
 24. Meta-theory proofs
 25. Case studies
 
-⸻
+---
 
-Chapter 11. Metaprogramming
+## Chapter 11. Metaprogramming
 
-1. The Lean metaprogramming model
+1. The `Lean` metaprogramming model
 2. Syntax trees
 3. Elaborator basics
 4. Tactic writing
@@ -328,9 +328,9 @@ Chapter 11. Metaprogramming
 24. Testing meta code
 25. Design patterns
 
-⸻
+---
 
-Chapter 12. Automation
+## Chapter 12. Automation
 
 1. Simplification strategies
 2. Rewriting automation
@@ -358,9 +358,9 @@ Chapter 12. Automation
 24. Scaling automation
 25. Case studies
 
-⸻
+---
 
-Chapter 13. Formalizing Mathematics
+## Chapter 13. Formalizing Mathematics
 
 1. Sets and functions
 2. Relations
@@ -388,9 +388,9 @@ Chapter 13. Formalizing Mathematics
 24. Review processes
 25. Case studies
 
-⸻
+---
 
-Chapter 14. Large Projects
+## Chapter 14. Large Projects
 
 1. Project architecture
 2. Module boundaries
@@ -418,9 +418,9 @@ Chapter 14. Large Projects
 24. Migration strategies
 25. Case studies
 
-⸻
+---
 
-Chapter 15. Interoperability
+## Chapter 15. Interoperability
 
 1. Calling external code
 2. FFI basics
@@ -448,9 +448,9 @@ Chapter 15. Interoperability
 24. Monitoring
 25. Case studies
 
-⸻
+---
 
-Chapter 16. Performance and Optimization
+## Chapter 16. Performance and Optimization
 
 1. Evaluation model
 2. Memory usage
@@ -478,9 +478,9 @@ Chapter 16. Performance and Optimization
 24. Scaling strategies
 25. Case studies
 
-⸻
+---
 
-Chapter 17. Debugging and Diagnostics
+## Chapter 17. Debugging and Diagnostics
 
 1. Reading error messages
 2. Type mismatch diagnosis
@@ -508,9 +508,9 @@ Chapter 17. Debugging and Diagnostics
 24. Common pitfalls
 25. Debugging checklist
 
-⸻
+---
 
-Chapter 18. Proof Patterns
+## Chapter 18. Proof Patterns
 
 1. Direct proofs
 2. Contradiction
@@ -538,9 +538,9 @@ Chapter 18. Proof Patterns
 24. Anti-patterns
 25. Case studies
 
-⸻
+---
 
-Chapter 19. Domain-Specific Libraries
+## Chapter 19. Domain-Specific Libraries
 
 1. Mathlib overview
 2. Navigating mathlib
@@ -568,9 +568,9 @@ Chapter 19. Domain-Specific Libraries
 24. Governance
 25. Case studies
 
-⸻
+---
 
-Chapter 20. End-to-End Case Studies
+## Chapter 20. End-to-End Case Studies
 
 1. Verified arithmetic library
 2. Verified data structure
@@ -597,3 +597,4 @@ Chapter 20. End-to-End Case Studies
 23. Deployment scenario
 24. Maintenance workflow
 25. Lessons learned
+
