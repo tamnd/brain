@@ -1,6 +1,6 @@
-# Lean Cookbook
+# Lean
 
-## Chapter 1. Core Language and Environment
+#### Chapter 1. Core Language and Environment
 
 1. Installation and toolchain
 2. Project structure with Lean and Lake
@@ -28,9 +28,9 @@
 24. Editor integration (VSCode)
 25. Minimal working examples
 
----
 
-## Chapter 2. Propositions and Proofs
+
+###### Chapter 2. Propositions and Proofs
 
 1. Propositions as types
 2. Implication and functions
@@ -58,9 +58,9 @@
 24. Small proof refactoring
 25. Proof readability patterns
 
----
 
-## Chapter 3. Tactic Framework
+
+#### Chapter 3. Tactic Framework
 
 1. The `intro` tactic
 2. The `apply` tactic
@@ -88,9 +88,9 @@
 24. Combining tactics
 25. Debugging tactic scripts
 
----
 
-## Chapter 4. Equality and Rewriting
+
+#### Chapter 4. Equality and Rewriting
 
 1. Definitional equality
 2. Propositional equality
@@ -118,9 +118,9 @@
 24. Rewriting in structures
 25. Common pitfalls
 
----
 
-## Chapter 5. Inductive Types
+
+#### Chapter 5. Inductive Types
 
 1. Defining inductive types
 2. Constructors and recursion
@@ -148,9 +148,9 @@
 24. Design patterns
 25. Performance considerations
 
----
 
-## Chapter 6. Structures and Typeclasses
+
+#### Chapter 6. Structures and Typeclasses
 
 1. Structures definition
 2. Field access
@@ -178,9 +178,9 @@
 24. Extending libraries
 25. Pitfalls
 
----
 
-## Chapter 7. Functions and Recursion
+
+#### Chapter 7. Functions and Recursion
 
 1. Function definitions
 2. Higher-order functions
@@ -208,9 +208,9 @@
 24. Abstraction patterns
 25. Refactoring functions
 
----
 
-## Chapter 8. Lists and Collections
+
+#### Chapter 8. Lists and Collections
 
 1. Lists basics
 2. List recursion
@@ -238,9 +238,9 @@
 24. Common lemmas
 25. Design patterns
 
----
 
-## Chapter 9. Arithmetic and Algebra
+
+#### Chapter 9. Arithmetic and Algebra
 
 1. Natural numbers
 2. Integers
@@ -268,9 +268,9 @@
 24. Optimization
 25. Integration with libraries
 
----
 
-## Chapter 10. Logic Engineering
+
+#### Chapter 10. Logic Engineering
 
 1. Encoding syntax
 2. Encoding semantics
@@ -298,9 +298,9 @@
 24. Meta-theory proofs
 25. Case studies
 
----
 
-## Chapter 11. Metaprogramming
+
+#### Chapter 11. Metaprogramming
 
 1. The `Lean` metaprogramming model
 2. Syntax trees
@@ -328,9 +328,9 @@
 24. Testing meta code
 25. Design patterns
 
----
 
-## Chapter 12. Automation
+
+#### Chapter 12. Automation
 
 1. Simplification strategies
 2. Rewriting automation
@@ -358,9 +358,9 @@
 24. Scaling automation
 25. Case studies
 
----
 
-## Chapter 13. Formalizing Mathematics
+
+#### Chapter 13. Formalizing Mathematics
 
 1. Sets and functions
 2. Relations
@@ -388,9 +388,9 @@
 24. Review processes
 25. Case studies
 
----
 
-## Chapter 14. Large Projects
+
+#### Chapter 14. Large Projects
 
 1. Project architecture
 2. Module boundaries
@@ -418,9 +418,9 @@
 24. Migration strategies
 25. Case studies
 
----
 
-## Chapter 15. Interoperability
+
+#### Chapter 15. Interoperability
 
 1. Calling external code
 2. FFI basics
@@ -448,9 +448,9 @@
 24. Monitoring
 25. Case studies
 
----
 
-## Chapter 16. Performance and Optimization
+
+#### Chapter 16. Performance and Optimization
 
 1. Evaluation model
 2. Memory usage
@@ -478,9 +478,9 @@
 24. Scaling strategies
 25. Case studies
 
----
 
-## Chapter 17. Debugging and Diagnostics
+
+#### Chapter 17. Debugging and Diagnostics
 
 1. Reading error messages
 2. Type mismatch diagnosis
@@ -508,9 +508,9 @@
 24. Common pitfalls
 25. Debugging checklist
 
----
 
-## Chapter 18. Proof Patterns
+
+#### Chapter 18. Proof Patterns
 
 1. Direct proofs
 2. Contradiction
@@ -538,9 +538,9 @@
 24. Anti-patterns
 25. Case studies
 
----
 
-## Chapter 19. Domain-Specific Libraries
+
+#### Chapter 19. Domain-Specific Libraries
 
 1. Mathlib overview
 2. Navigating mathlib
@@ -568,9 +568,9 @@
 24. Governance
 25. Case studies
 
----
 
-## Chapter 20. End-to-End Case Studies
+
+#### Chapter 20. End-to-End Case Studies
 
 1. Verified arithmetic library
 2. Verified data structure
