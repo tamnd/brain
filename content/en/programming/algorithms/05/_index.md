@@ -1,3 +1,10 @@
+---
+title: "Chapter 5. Hashing and Maps"
+description: "Hash tables, hash functions, collision handling, probabilistic structures, and practical design for constant-time key-value access."
+tags: ["algorithms", "hashing", "data-structures", "maps", "sets"]
+weight: 5
+---
+
 # Chapter 5. Hashing and Maps
 
 This chapter studies hashing as a practical mechanism for constant time access under realistic constraints. The focus is not on idealized O(1) claims, but on how hash tables behave under load, how collisions are handled, and how design choices affect predictability, memory locality, and adversarial robustness.

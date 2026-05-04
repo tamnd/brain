@@ -30,7 +30,10 @@
     {{ end }}
     {{ if gt $page.WordCount 0 }}
     <span class="feed-card__footer-sep">·</span>
-    <span class="feed-card__meta">{{ $page.ReadingTime }} min read</span>
+    {{- $rt := $page.ReadingTime -}}
+    {{- $h := div $rt 60 -}}
+    {{- $m := mod $rt 60 -}}
+    <span class="feed-card__meta">{{ printf "%d:%02d" $h $m }}</span>
     {{ end }}
     {{ if $page.Params.tags }}
     <span class="feed-card__footer-sep">·</span>
