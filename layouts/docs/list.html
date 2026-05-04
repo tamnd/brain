@@ -1,4 +1,50 @@
 {{ define "main" }}
+{{ if eq .Kind "term" }}
+  {{- $pages := .Pages.ByLastmod.Reverse -}}
+  <main id="content" class="home-feed">
+    <header class="home-feed__header home-feed__header--tag">
+      <div class="home-feed__tag-label">Tag</div>
+      <h1 class="home-feed__title">{{ .Title }}</h1>
+      <p class="home-feed__subtitle">{{ len $pages }} {{ if eq (len $pages) 1 }}note{{ else }}notes{{ end }}</p>
+    </header>
+    <div class="home-feed__list">
+      {{ range $pages }}
+      <article class="home-feed__item">
+        <div class="home-feed__row">
+          <div class="home-feed__main">
+            <a href="{{ .RelPermalink }}" class="home-feed__link">
+              <h2 class="home-feed__post-title">{{ .Title }}</h2>
+            </a>
+            {{ with .Description }}<p class="home-feed__desc">{{ . }}</p>{{ end }}
+            <div class="home-feed__meta">
+              {{ if gt .WordCount 0 }}
+              <span class="home-feed__meta-item">{{ .WordCount }} words</span>
+              <span class="home-feed__meta-sep">·</span>
+              <span class="home-feed__meta-item">{{ .ReadingTime }} min read</span>
+              {{ end }}
+              {{ if .Params.tags }}
+              {{ if gt .WordCount 0 }}<span class="home-feed__meta-sep">·</span>{{ end }}
+              {{ $tags := .Params.tags }}{{ $max := 3 }}
+              {{ range $i, $tag := $tags }}{{ if lt $i $max }}
+              <a href="{{ (site.GetPage (printf "/tags/%s" $tag)).RelPermalink }}" class="brain-tag">{{ $tag }}</a>
+              {{ end }}{{ end }}
+              {{ if gt (len $tags) $max }}<span class="brain-tag brain-tag--more">+{{ sub (len $tags) $max }}</span>{{ end }}
+              {{ end }}
+            </div>
+          </div>
+          {{ if not .Lastmod.IsZero }}
+          <time class="home-feed__time" datetime="{{ .Lastmod.Format "2006-01-02T15:04" }}">
+            <span class="home-feed__time-date">{{ .Lastmod.Format "Jan 2" }}</span>
+            <span class="home-feed__time-year">{{ .Lastmod.Format "2006" }}</span>
+            <span class="home-feed__time-clock">{{ .Lastmod.Format "15:04" }}</span>
+          </time>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </main>
+{{ else }}
   <div class='hx:mx-auto hx:flex hextra-max-page-width'>
     {{ partial "sidebar.html" (dict "context" .) }}
     {{ partial "toc.html" . }}
@@ -32,4 +78,5 @@
       </main>
     </article>
   </div>
+{{ end }}
 {{ end }}
