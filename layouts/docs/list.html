@@ -64,7 +64,10 @@
           </div>
           <div class="section-child__meta">
             {{- if .IsSection -}}
-              <span class="section-child__count">{{ len .Pages }} pages</span>
+              {{- $allPages := .RegularPagesRecursive -}}
+              {{- $totalTime := 0 -}}
+              {{- range $allPages -}}{{- $totalTime = add $totalTime .ReadingTime -}}{{- end -}}
+              <span class="section-child__count">{{ len $allPages }} pages · {{ $totalTime }} min</span>
             {{- else if gt .WordCount 0 -}}
               <span class="section-child__count">{{ .ReadingTime }} min</span>
             {{- end -}}
