@@ -1,6 +1,7 @@
 ---
 title: "76. Fluid Mechanics"
 description: "This volume studies the motion of fluids and the forces acting on them."
+tags: ["physics", "fluid-mechanics"]
 weight: 76
 ---
 

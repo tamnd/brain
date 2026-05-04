@@ -1,6 +1,7 @@
 ---
 title: "74. Mechanics of Deformable Solids"
 description: "This volume studies the behavior of solid materials under deformation."
+tags: ["physics", "mechanics"]
 weight: 74
 ---
 

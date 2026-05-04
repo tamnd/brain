@@ -1,5 +1,6 @@
 ---
 title: "Algorithm Cookbook"
+tags: ["algorithms", "computer-science"]
 ---
 
 ## Chapter 1. Foundations

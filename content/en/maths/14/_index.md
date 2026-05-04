@@ -1,6 +1,7 @@
 ---
 title: "14. Algebraic Geometry"
 description: "This volume studies geometric objects defined by polynomial equations."
+tags: ["algebra", "algebraic-geometry"]
 weight: 14
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Lean"
+tags: ["lean", "proof-assistant", "type-theory"]
 ---
 
 #### Chapter 1. Core Language and Environment

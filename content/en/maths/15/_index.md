@@ -1,6 +1,7 @@
 ---
 title: "15. Linear and Multilinear Algebra; Matrix Theory"
 description: "This volume develops vector spaces, linear maps, matrices, and multilinear structures."
+tags: ["algebra", "linear-algebra", "matrices"]
 weight: 15
 ---
 

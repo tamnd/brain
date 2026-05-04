@@ -1,6 +1,7 @@
 ---
 title: "35. Partial Differential Equations"
 description: "This volume studies equations involving partial derivatives of functions in several variables."
+tags: ["analysis", "pde", "differential-equations"]
 weight: 35
 ---
 

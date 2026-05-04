@@ -1,6 +1,7 @@
 ---
 title: "31. Potential Theory"
 description: "This volume studies harmonic, subharmonic, and superharmonic functions, along with potentials and their applications to analysis, geometry, and..."
+tags: ["analysis", "potential-theory"]
 weight: 31
 ---
 

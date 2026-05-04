@@ -1,6 +1,7 @@
 ---
 title: "70. Mechanics of Particles and Systems"
 description: "This volume develops classical mechanics using analytical methods."
+tags: ["physics", "mechanics"]
 weight: 70
 ---
 

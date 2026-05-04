@@ -1,6 +1,7 @@
 ---
 title: "58. Global Analysis, Analysis on Manifolds"
 description: "This volume studies analysis on manifolds, combining differential geometry, functional analysis, and partial differential equations."
+tags: ["analysis", "manifolds"]
 weight: 58
 ---
 

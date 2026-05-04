@@ -1,6 +1,7 @@
 ---
 title: "82. Statistical Mechanics, Structure of Matter"
 description: "This volume develops statistical descriptions of many-particle systems."
+tags: ["physics", "statistical-mechanics"]
 weight: 82
 ---
 

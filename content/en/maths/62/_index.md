@@ -1,6 +1,7 @@
 ---
 title: "62. Statistics"
 description: "This volume studies statistical inference, estimation, and data analysis."
+tags: ["statistics", "probability"]
 weight: 62
 ---
 

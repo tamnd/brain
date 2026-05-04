@@ -1,6 +1,7 @@
 ---
 title: "92. Biology and Other Natural Sciences"
 description: "This volume develops mathematical models for biological and natural systems."
+tags: ["biology", "mathematics"]
 weight: 92
 ---
 

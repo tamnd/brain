@@ -1,6 +1,7 @@
 ---
 title: "42. Harmonic Analysis"
 description: "This volume studies representation of functions via oscillatory components such as Fourier series and transforms."
+tags: ["analysis", "harmonic-analysis"]
 weight: 42
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "41. Approximations and Expansions"
 description: "This volume studies approximation of functions and data by simpler objects such as polynomials, splines, and rational functions."
+tags: ["analysis", "approximation"]
 weight: 41
 ---
 

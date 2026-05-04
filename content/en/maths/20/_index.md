@@ -1,6 +1,7 @@
 ---
 title: "20. Group Theory and Generalizations"
 description: "This volume studies groups as algebraic structures encoding symmetry."
+tags: ["algebra", "group-theory"]
 weight: 20
 ---
 

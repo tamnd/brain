@@ -1,6 +1,7 @@
 ---
 title: "86. Geophysics"
 description: "This volume studies the physical processes of the Earth, including its structure, dynamics, and fields."
+tags: ["physics", "geophysics"]
 weight: 86
 ---
 

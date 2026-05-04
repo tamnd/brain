@@ -1,5 +1,6 @@
 ---
 title: "System Design"
+tags: ["system-design", "architecture", "engineering"]
 ---
 
 ## Chapter 1. Foundations

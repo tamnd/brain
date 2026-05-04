@@ -1,6 +1,7 @@
 ---
 title: "40. Sequences, Series, Summability"
 description: "This volume studies convergence, divergence, and summation methods for sequences and series."
+tags: ["analysis", "sequences", "series"]
 weight: 40
 ---
 

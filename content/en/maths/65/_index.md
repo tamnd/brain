@@ -1,6 +1,7 @@
 ---
 title: "65. Numerical Analysis"
 description: "This volume studies algorithms for approximating mathematical problems."
+tags: ["numerical-analysis", "computation"]
 weight: 65
 ---
 
