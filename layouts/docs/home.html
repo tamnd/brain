@@ -7,29 +7,10 @@
 <main id="content" class="home-feed">
   <header class="home-feed__header">
     <p class="home-feed__tagline">What you learn is what you note.</p>
+    <p class="home-feed__subtitle">{{ len $pages }} notes</p>
   </header>
-
-  {{- range $pages.GroupByLastmod "January 2, 2006" -}}
-  <section class="compact-group">
-    <h2 class="compact-group__key">{{ .Key }}</h2>
-    {{- range .Pages -}}
-    {{- $crumbs := slice -}}
-    {{- range .Ancestors.Reverse -}}
-      {{- if not .IsHome -}}{{- $crumbs = $crumbs | append . -}}{{- end -}}
-    {{- end -}}
-    <a href="{{ .RelPermalink }}" class="compact-row">
-      <span class="compact-row__title">{{ .Title }}</span>
-      {{- if $crumbs -}}
-      <span class="compact-row__path">{{- range $i, $a := $crumbs -}}{{- if gt $i 0 -}} › {{- end -}}{{ partial "utils/title" $a }}{{- end -}}</span>
-      {{- end -}}
-      {{- if gt .ReadingTime 0 -}}
-        {{- $h := div .ReadingTime 60 -}}
-        {{- $m := mod .ReadingTime 60 -}}
-        <span class="compact-row__time">{{ printf "%d:%02d" $h $m }}</span>
-      {{- end -}}
-    </a>
-    {{- end -}}
-  </section>
-  {{- end -}}
+  <div class="home-feed__list">
+    {{- range $pages -}}{{ partial "feed-item.html" . }}{{- end -}}
+  </div>
 </main>
 {{ end }}
