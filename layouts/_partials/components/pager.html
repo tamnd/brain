@@ -1,5 +1,5 @@
-{{- $prev := .PrevInSection -}}
-{{- $next := .NextInSection -}}
+{{- $prev := .NextInSection -}}
+{{- $next := .PrevInSection -}}
 
 {{- if eq .Params.prev false }}{{ $prev = false }}{{ else }}
   {{- with .Params.prev -}}{{- with $.Site.GetPage . -}}{{ $prev = . }}{{- end -}}{{- end -}}
