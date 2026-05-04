@@ -161,9 +161,6 @@
       adj.get(l.target).add(l.source);
     });
 
-    const treeLinks = links.filter(l => l.kind === 'tree');
-    const tagLinks  = links.filter(l => l.kind === 'tag');
-
     const linkSel = linkLayer
       .selectAll('line')
       .data(links)
@@ -172,12 +169,21 @@
       .attr('stroke-width', d => d.kind === 'tree' ? 1.1 : 0.5)
       .attr('stroke-opacity', d => d.kind === 'tree' ? 0.45 : 0.12);
 
+    // Read ?focus= once
+    let focusId = new URLSearchParams(location.search).get('focus');
+    if (focusId && !focusId.endsWith('/')) focusId += '/';
+    const hasFocus = !!(focusId && nodeMap.has(focusId));
+
     const nodeSel = nodeLayer
       .selectAll('circle')
       .data(data.nodes)
       .join('circle')
-      .attr('class', d => 'graph-node graph-node--' + d.kind)
-      .attr('r', nodeRadius)
+      .attr('class', d => {
+        let c = 'graph-node graph-node--' + d.kind;
+        if (hasFocus && d.id === focusId) c += ' graph-node--focus';
+        return c;
+      })
+      .attr('r', d => hasFocus && d.id === focusId ? nodeRadius(d) * 1.7 : nodeRadius(d))
       .attr('fill', d => color(d))
       .attr('data-id', d => d.id);
 
@@ -275,12 +281,8 @@
       simulation.alpha(0.7).restart();
     }
 
-    // Read ?focus= from URL
-    const urlParams = new URLSearchParams(location.search);
-    let focusId = urlParams.get('focus');
-    if (focusId && !focusId.endsWith('/')) focusId += '/';
     let focusVisible = null;
-    if (focusId && nodeMap.has(focusId)) {
+    if (hasFocus) {
       focusVisible = bfsNeighborhood(focusId, 2);
       const focusNode = nodeMap.get(focusId);
       document.getElementById('brain-graph-title').textContent = focusNode.title;

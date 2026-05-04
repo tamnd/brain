@@ -545,6 +545,41 @@ body {
   gap: 0.375rem;
 }
 
+.brain-page-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.brain-page-header__meta .brain-page-header__tags {
+  margin-top: 0;
+}
+
+.brain-page-header__graph-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--muted-fg);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  margin-left: auto;
+  border-radius: 0.375rem;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.brain-page-header__graph-link:hover {
+  color: var(--fg);
+  background-color: var(--muted);
+}
+
+.brain-page-header__graph-link svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
 
 /* ===== Tag chip ========================================================== */
 
@@ -1148,7 +1183,24 @@ a.hextra-sidebar-active-item {
   font-size: 0.8125rem;
   color: var(--muted-fg);
   font-variant-numeric: tabular-nums;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
 }
+
+.brain-graph__clear-focus {
+  font-size: 0.8125rem;
+  color: var(--muted-fg);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border-strong);
+  transition: color 0.15s, border-color 0.15s;
+}
+.brain-graph__clear-focus:hover {
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+.brain-graph__clear-focus[hidden] { display: none; }
 
 .brain-graph__controls {
   display: flex;
@@ -1228,6 +1280,10 @@ a.hextra-sidebar-active-item {
 .brain-graph__svg .graph-node.is-active {
   stroke: var(--fg);
   stroke-width: 2;
+}
+.brain-graph__svg .graph-node--focus {
+  stroke: var(--fg);
+  stroke-width: 2.5;
 }
 
 .brain-graph__svg .graph-label {
