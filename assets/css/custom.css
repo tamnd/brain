@@ -652,8 +652,8 @@ body {
 }
 
 .home-feed__header {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -674,6 +674,21 @@ body {
   font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--muted-fg);
+}
+
+/* Home tagline — replaces the h1 title on the listing page */
+.home-feed__tagline {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  color: var(--muted-fg);
+  margin: 0;
+  font-style: italic;
+}
+
+@media (min-width: 640px) {
+  .home-feed__tagline { font-size: 1.4375rem; }
 }
 
 .home-feed__list {
