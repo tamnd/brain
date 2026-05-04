@@ -639,6 +639,29 @@ body {
 
 .home-feed__main { min-width: 0; flex: 1; }
 
+.home-feed__path {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.home-feed__path-crumb {
+  font-size: 0.75rem;
+  color: var(--muted-fg);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.home-feed__path-crumb:hover { color: var(--fg); }
+
+.home-feed__path-sep {
+  font-size: 0.75rem;
+  color: var(--border-strong);
+  user-select: none;
+}
+
 .home-feed__link { display: block; text-decoration: none; }
 
 .home-feed__post-title {
