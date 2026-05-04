@@ -51,6 +51,7 @@ defaultContentLanguageInSubdir = false
   [params.navbar]
     displayTitle = true
     displayLogo = false
+    width = "full"
 
   [params.theme]
     default = "system"
@@ -76,6 +77,24 @@ defaultContentLanguageInSubdir = false
 
   [params.page.contextMenu]
     enable = true
+
+[[menu.main]]
+  name = "Search"
+  weight = 1
+  [menu.main.params]
+    type = "search"
+
+[[menu.main]]
+  name = "Theme"
+  weight = 2
+  [menu.main.params]
+    type = "theme-toggle"
+
+[[menu.main]]
+  name = "Language"
+  weight = 3
+  [menu.main.params]
+    type = "language-switch"
 
 [outputs]
   page = ["html", "markdown"]
