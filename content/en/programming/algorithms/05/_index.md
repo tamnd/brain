@@ -1,5 +1,4 @@
 ---
-
 title: "Chapter 5. Hashing and Maps"
 description: "Hash tables, hash functions, collision handling, probabilistic structures, and practical design for constant-time key-value access."
 tags: ["algorithms", "hashing", "data-structures", "maps", "sets"]

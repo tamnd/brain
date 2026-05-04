@@ -1,5 +1,4 @@
 ---
-
 title: "Chapter 1. Foundations"
 description: "This chapter defines how you think about algorithms before you write any code."
 tags: ["algorithms", "computer-science", "complexity", "foundations"]

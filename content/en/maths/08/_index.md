@@ -1,5 +1,4 @@
 ---
-
 title: "08. General Algebraic Systems"
 description: "Operations, identities, and structures as a unifying framework for all algebraic theories."
 tags: ["algebra", "universal-algebra", "model-theory", "equational-logic"]

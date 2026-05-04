@@ -1,5 +1,4 @@
 ---
-
 title: "Docs"
 description: "Notes organized loosely by topic."
 tags: ["notes", "documentation"]

@@ -1,5 +1,4 @@
 ---
-
 title: "94. Information and Communication; Circuits"
 description: "This volume studies information theory, communication systems, and circuit models."
 tags: ["information-theory", "circuits"]

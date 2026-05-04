@@ -1,5 +1,4 @@
 ---
-
 title: "68. Computer Science"
 description: "This volume studies theoretical and practical foundations of computation."
 tags: ["computer-science", "algorithms"]

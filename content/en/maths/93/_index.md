@@ -1,5 +1,4 @@
 ---
-
 title: "93. Systems Theory; Control"
 description: "This volume studies dynamical systems with inputs and outputs."
 tags: ["systems-theory", "control-theory"]

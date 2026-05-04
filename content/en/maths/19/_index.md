@@ -1,5 +1,4 @@
 ---
-
 title: "19. K-Theory"
 description: "This volume studies algebraic and topological K-theory, focusing on invariants derived from vector bundles, modules, and operator algebras."
 tags: ["k-theory", "algebra"]

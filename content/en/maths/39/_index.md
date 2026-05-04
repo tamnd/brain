@@ -1,5 +1,4 @@
 ---
-
 title: "39. Difference and Functional Equations"
 description: "This volume studies equations defined by discrete steps and functional relations."
 tags: ["analysis", "functional-equations"]

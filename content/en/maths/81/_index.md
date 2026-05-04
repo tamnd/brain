@@ -1,5 +1,4 @@
 ---
-
 title: "81. Quantum Theory"
 description: "This volume develops quantum mechanics and its mathematical structure."
 tags: ["physics", "quantum-mechanics"]

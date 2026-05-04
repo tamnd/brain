@@ -1,5 +1,4 @@
 ---
-
 title: "06. Order and Lattices"
 description: "Partially ordered sets, lattices, and algebraic systems equipped with order relations."
 tags: ["order-theory", "lattices", "algebra", "posets"]

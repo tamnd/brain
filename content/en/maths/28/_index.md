@@ -1,5 +1,4 @@
 ---
-
 title: "28. Measure and Integration"
 description: "This volume develops measure theory and integration in a general setting."
 tags: ["analysis", "measure-theory"]

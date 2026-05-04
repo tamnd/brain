@@ -1,5 +1,4 @@
 ---
-
 title: "45. Integral Equations"
 description: "This volume studies equations where the unknown function appears under an integral."
 tags: ["analysis", "integral-equations"]

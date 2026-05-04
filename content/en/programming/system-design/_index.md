@@ -1,5 +1,4 @@
 ---
-
 title: "System Design"
 tags: ["system-design", "architecture", "engineering"]
 date: 2026-05-03T16:48:04+07:00

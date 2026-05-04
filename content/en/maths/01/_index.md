@@ -1,5 +1,4 @@
 ---
-
 title: "01. History and Biography"
 description: "How mathematical ideas emerged, stabilized, and influenced later work, from prehistory to the modern era."
 tags: ["mathematics", "history", "biography"]

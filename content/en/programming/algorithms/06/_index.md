@@ -1,5 +1,4 @@
 ---
-
 title: "Chapter 6. Sorting"
 description: "Sorting algorithms from fundamental contracts through comparison-based, linear-time, and specialized variants, with selection, external sorting, and correctness analysis."
 tags: ["algorithms", "sorting", "data-structures"]

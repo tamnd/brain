@@ -1,5 +1,4 @@
 ---
-
 title: "51. Geometry"
 description: "This volume studies geometric structures, transformations, and invariants."
 tags: ["geometry"]

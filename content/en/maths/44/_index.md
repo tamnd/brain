@@ -1,5 +1,4 @@
 ---
-
 title: "44. Integral Transforms, Operational Calculus"
 description: "This volume studies integral transforms as tools for solving equations, analyzing signals, and transforming problems into more tractable forms."
 tags: ["analysis", "integral-transforms"]

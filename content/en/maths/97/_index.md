@@ -1,5 +1,4 @@
 ---
-
 title: "97. Mathematics Education"
 description: "This volume studies the theory and practice of teaching and learning mathematics."
 tags: ["mathematics-education"]

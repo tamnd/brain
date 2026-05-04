@@ -1,5 +1,4 @@
 ---
-
 title: "Chapter 3. Linked Lists and Pointers"
 description: "Linked lists are the first data structure in this book where the shape of the data matters as much as the values stored inside it."
 tags: ["algorithms", "computer-science", "data-structures", "linked-lists"]

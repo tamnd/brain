@@ -1,5 +1,4 @@
 ---
-
 title: "33. Special Functions"
 description: "This volume studies classical and modern special functions arising as solutions to differential equations, integral transforms, and representation..."
 tags: ["analysis", "special-functions"]

@@ -1,5 +1,4 @@
 ---
-
 title: "53. Differential Geometry"
 description: "This volume studies smooth geometric structures using calculus."
 tags: ["geometry", "differential-geometry"]

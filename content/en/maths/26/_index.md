@@ -1,5 +1,4 @@
 ---
-
 title: "26. Real Functions"
 description: "This volume studies functions of real variables with an emphasis on limits, continuity, differentiation, integration, and fine properties of..."
 tags: ["analysis", "real-analysis"]

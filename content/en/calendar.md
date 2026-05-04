@@ -1,5 +1,4 @@
 ---
-
 title: Calendar
 description: Browse notes by date
 type: calendar

@@ -1,5 +1,4 @@
 ---
-
 title: "37. Dynamical Systems and Ergodic Theory"
 description: "This volume studies systems that evolve over time, focusing on long-term behavior, stability, and statistical properties."
 tags: ["analysis", "dynamical-systems"]

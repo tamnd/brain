@@ -1,5 +1,4 @@
 ---
-
 title: "80. Classical Thermodynamics, Heat Transfer"
 description: "This volume studies macroscopic energy, heat, and thermodynamic systems."
 tags: ["physics", "thermodynamics"]

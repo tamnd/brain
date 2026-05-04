@@ -1,5 +1,4 @@
 ---
-
 title: "16. Associative Rings and Algebras"
 description: "This volume studies rings and algebras with associative multiplication, without requiring commutativity."
 tags: ["algebra", "ring-theory"]

@@ -1,5 +1,4 @@
 ---
-
 title: Tree
 description: A mindmap of every page in this brain
 type: tree

@@ -1,5 +1,4 @@
 ---
-
 title: "17. Non-Associative Rings and Algebras"
 description: "This volume studies algebraic systems where associativity does not hold in general."
 tags: ["algebra", "lie-algebras"]

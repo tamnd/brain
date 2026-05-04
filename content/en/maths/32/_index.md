@@ -1,5 +1,4 @@
 ---
-
 title: "32. Several Complex Variables and Analytic Spaces"
 description: "This volume studies functions of several complex variables, complex manifolds, and analytic spaces."
 tags: ["analysis", "complex-analysis"]

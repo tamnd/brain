@@ -1,5 +1,4 @@
 ---
-
 title: "22. Topological Groups, Lie Groups"
 description: "This volume studies groups equipped with topology and smooth structure."
 tags: ["topology", "lie-groups"]

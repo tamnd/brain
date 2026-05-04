@@ -1,5 +1,4 @@
 ---
-
 title: "43. Abstract Harmonic Analysis"
 description: "This volume extends harmonic analysis to general locally compact groups."
 tags: ["analysis", "harmonic-analysis", "groups"]

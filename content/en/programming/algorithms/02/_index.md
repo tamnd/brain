@@ -1,5 +1,4 @@
 ---
-
 title: "Chapter 2. Arrays and Strings"
 description: "This chapter studies linear data as the primary substrate for algorithm design."
 tags: ["algorithms", "computer-science", "arrays", "strings"]

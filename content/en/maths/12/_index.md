@@ -1,5 +1,4 @@
 ---
-
 title: "12. Field Theory and Polynomials"
 description: "This volume studies fields, polynomials, and algebraic extensions."
 tags: ["algebra", "field-theory", "polynomials"]

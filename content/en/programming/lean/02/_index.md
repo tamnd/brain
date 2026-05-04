@@ -1,5 +1,4 @@
 ---
-
 title: "Chapter 2. Propositions and Proofs"
 description: "This chapter introduces the proof layer of Lean."
 tags: ["lean", "proof-assistant", "type-theory"]

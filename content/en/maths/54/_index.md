@@ -1,5 +1,4 @@
 ---
-
 title: "54. General Topology"
 description: "This volume studies topological spaces and continuous structures in full generality."
 tags: ["topology", "general-topology"]

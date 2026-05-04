@@ -1,5 +1,4 @@
 ---
-
 title: "57. Manifolds and Cell Complexes"
 description: "This volume studies manifolds and combinatorial models such as CW complexes."
 tags: ["topology", "manifolds"]

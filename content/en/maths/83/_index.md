@@ -1,5 +1,4 @@
 ---
-
 title: "83. Relativity and Gravitational Theory"
 description: "This volume studies spacetime structure, relativistic physics, and gravitation."
 tags: ["physics", "relativity"]

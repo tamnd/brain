@@ -1,5 +1,4 @@
 ---
-
 title: "Cheatsheet"
 weight: 1
 description: "Quick reference with live previews for Markdown, shortcodes, and front matter."

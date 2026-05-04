@@ -1,5 +1,4 @@
 ---
-
 title: "46. Functional Analysis"
 description: "This volume studies infinite-dimensional vector spaces and linear operators."
 tags: ["analysis", "functional-analysis"]

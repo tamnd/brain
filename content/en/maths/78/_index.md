@@ -1,5 +1,4 @@
 ---
-
 title: "78. Optics, Electromagnetic Theory"
 description: "This volume studies light, electromagnetic fields, and wave propagation."
 tags: ["physics", "optics"]

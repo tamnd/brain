@@ -1,5 +1,4 @@
 ---
-
 title: "49. Calculus of Variations and Optimal Control; Optimization"
 description: "This volume studies optimization of functionals and systems."
 tags: ["analysis", "calculus-of-variations", "optimization"]

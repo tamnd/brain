@@ -1,5 +1,4 @@
 ---
-
 title: "Chapter 1. Core Language and Environment"
 description: "This chapter establishes the operational model of the Lean system."
 tags: ["lean", "proof-assistant", "type-theory"]

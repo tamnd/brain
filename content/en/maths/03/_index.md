@@ -1,5 +1,4 @@
 ---
-
 title: "03. Logic and Foundations"
 description: "Formal logic, set theory, computability, and the foundations of mathematics treated as a formal system."
 tags: ["logic", "foundations", "set-theory", "computability", "proof-theory"]

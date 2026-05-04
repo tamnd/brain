@@ -1,5 +1,4 @@
 ---
-
 title: "00. General Mathematics"
 linkTitle: "00. General Mathematics"
 description: "Language, structure, methodology, and cross-cutting tools that apply across all branches of mathematics."

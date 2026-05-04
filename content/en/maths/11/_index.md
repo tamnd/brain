@@ -1,5 +1,4 @@
 ---
-
 title: "11. Number Theory"
 description: "Integers, primes, modular arithmetic, Diophantine equations, and modern analytic and algebraic methods."
 tags: ["number-theory", "primes", "arithmetic", "algebra", "Diophantine"]

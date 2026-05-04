@@ -1,5 +1,4 @@
 ---
-
 title: "05. Combinatorics"
 description: "Counting, arrangement, structure, and extremal behavior of finite and discrete systems."
 tags: ["combinatorics", "discrete-mathematics", "counting", "graph-theory"]

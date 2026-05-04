@@ -1,6 +1,4 @@
 ---
-
-
 title: "Lean"
 tags: ["lean", "proof-assistant", "type-theory"]
 date: 2026-05-03T09:35:53+07:00

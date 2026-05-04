@@ -1,5 +1,4 @@
 ---
-
 title: "90. Operations Research, Mathematical Programming"
 description: "This volume studies decision-making under constraints using mathematical models."
 tags: ["optimization", "operations-research"]

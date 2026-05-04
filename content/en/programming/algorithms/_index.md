@@ -1,5 +1,4 @@
 ---
-
 title: "Algorithm Cookbook"
 tags: ["algorithms", "computer-science"]
 date: 2026-05-03T15:27:09+07:00
