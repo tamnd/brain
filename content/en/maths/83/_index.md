@@ -1,8 +1,10 @@
 ---
+
 title: "83. Relativity and Gravitational Theory"
 description: "This volume studies spacetime structure, relativistic physics, and gravitation."
 tags: ["physics", "relativity"]
 weight: 83
+date: 2026-05-02T12:55:00+07:00
 ---
 
 This volume studies spacetime structure, relativistic physics, and gravitation. It develops both special and general relativity with geometric and analytical methods.

@@ -1,8 +1,10 @@
 ---
+
 title: "01. History and Biography"
 description: "How mathematical ideas emerged, stabilized, and influenced later work, from prehistory to the modern era."
 tags: ["mathematics", "history", "biography"]
 weight: 1
+date: 2026-05-02T11:59:17+07:00
 ---
 
 This volume traces the evolution of mathematical ideas, methods, and communities. The scope follows MSC 01: historical development, primary sources, and biographies of mathematicians. The emphasis stays on how concepts emerged, stabilized, and influenced later work.

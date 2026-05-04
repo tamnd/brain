@@ -1,8 +1,10 @@
 ---
+
 title: "55. Algebraic Topology"
 description: "This volume studies topological spaces through algebraic invariants."
 tags: ["topology", "algebraic-topology"]
 weight: 55
+date: 2026-05-02T12:39:49+07:00
 ---
 
 This volume studies topological spaces through algebraic invariants. It translates geometric and continuous structure into groups, rings, modules, and homological data.

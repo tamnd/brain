@@ -1,8 +1,10 @@
 ---
+
 title: "62. Statistics"
 description: "This volume studies statistical inference, estimation, and data analysis."
 tags: ["statistics", "probability"]
 weight: 62
+date: 2026-05-02T12:44:53+07:00
 ---
 
 This volume studies statistical inference, estimation, and data analysis. It builds on probability theory to develop methods for learning from data.

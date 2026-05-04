@@ -1,8 +1,10 @@
 ---
+
 title: "11. Number Theory"
 description: "Integers, primes, modular arithmetic, Diophantine equations, and modern analytic and algebraic methods."
 tags: ["number-theory", "primes", "arithmetic", "algebra", "Diophantine"]
 weight: 11
+date: 2026-05-02T12:13:36+07:00
 ---
 
 This volume studies integers and arithmetic structures. It covers divisibility, primes, modular arithmetic, Diophantine equations, and modern analytic and algebraic methods.

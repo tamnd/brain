@@ -1,8 +1,10 @@
 ---
+
 title: "20. Group Theory and Generalizations"
 description: "This volume studies groups as algebraic structures encoding symmetry."
 tags: ["algebra", "group-theory"]
 weight: 20
+date: 2026-05-02T12:24:36+07:00
 ---
 
 This volume studies groups as algebraic structures encoding symmetry. It develops structural, combinatorial, and computational aspects, along with generalizations such as group actions and extensions.

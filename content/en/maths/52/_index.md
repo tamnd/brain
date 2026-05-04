@@ -1,8 +1,10 @@
 ---
+
 title: "52. Convex and Discrete Geometry"
 description: "This volume studies convex sets, polytopes, and discrete geometric structures."
 tags: ["geometry", "convex-geometry"]
 weight: 52
+date: 2026-05-02T12:39:49+07:00
 ---
 
 This volume studies convex sets, polytopes, and discrete geometric structures. It emphasizes combinatorial structure, geometric inequalities, and computational aspects.

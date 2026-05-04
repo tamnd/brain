@@ -1,8 +1,10 @@
 ---
+
 title: "51. Geometry"
 description: "This volume studies geometric structures, transformations, and invariants."
 tags: ["geometry"]
 weight: 51
+date: 2026-05-02T12:39:49+07:00
 ---
 
 This volume studies geometric structures, transformations, and invariants. It covers classical geometry, synthetic methods, and modern structural viewpoints.

@@ -1,8 +1,10 @@
 ---
+
 title: "45. Integral Equations"
 description: "This volume studies equations where the unknown function appears under an integral."
 tags: ["analysis", "integral-equations"]
 weight: 45
+date: 2026-05-02T12:34:45+07:00
 ---
 
 This volume studies equations where the unknown function appears under an integral. It connects functional analysis, differential equations, and applied mathematics.

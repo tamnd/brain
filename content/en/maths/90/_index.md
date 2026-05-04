@@ -1,8 +1,10 @@
 ---
+
 title: "90. Operations Research, Mathematical Programming"
 description: "This volume studies decision-making under constraints using mathematical models."
 tags: ["optimization", "operations-research"]
 weight: 90
+date: 2026-05-02T12:55:00+07:00
 ---
 
 This volume studies decision-making under constraints using mathematical models. It integrates optimization, stochastic models, and algorithmic methods.

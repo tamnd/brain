@@ -1,8 +1,10 @@
 ---
+
 title: "91. Game Theory, Economics, Social and Behavioral Sciences"
 description: "This volume studies strategic interaction, economic systems, and quantitative models of behavior."
 tags: ["game-theory", "economics"]
 weight: 91
+date: 2026-05-02T13:00:05+07:00
 ---
 
 This volume studies strategic interaction, economic systems, and quantitative models of behavior. It connects optimization, probability, and equilibrium theory.

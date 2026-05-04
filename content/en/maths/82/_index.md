@@ -1,8 +1,10 @@
 ---
+
 title: "82. Statistical Mechanics, Structure of Matter"
 description: "This volume develops statistical descriptions of many-particle systems."
 tags: ["physics", "statistical-mechanics"]
 weight: 82
+date: 2026-05-02T12:55:00+07:00
 ---
 
 This volume develops statistical descriptions of many-particle systems. It connects microscopic models with macroscopic thermodynamic behavior.

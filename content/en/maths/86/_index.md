@@ -1,8 +1,10 @@
 ---
+
 title: "86. Geophysics"
 description: "This volume studies the physical processes of the Earth, including its structure, dynamics, and fields."
 tags: ["physics", "geophysics"]
 weight: 86
+date: 2026-05-02T12:55:00+07:00
 ---
 
 This volume studies the physical processes of the Earth, including its structure, dynamics, and fields. It integrates mechanics, fluid dynamics, thermodynamics, and wave propagation.

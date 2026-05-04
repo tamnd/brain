@@ -1,8 +1,10 @@
 ---
+
 title: "18. Category Theory; Homological Algebra"
 description: "This volume develops category theory as a unifying language and homological algebra as a computational framework for algebraic structures."
 tags: ["category-theory", "homological-algebra"]
 weight: 18
+date: 2026-05-02T12:19:32+07:00
 ---
 
 This volume develops category theory as a unifying language and homological algebra as a computational framework for algebraic structures. It connects algebra, topology, geometry, and logic through morphisms and functorial methods.

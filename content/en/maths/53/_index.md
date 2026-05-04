@@ -1,8 +1,10 @@
 ---
+
 title: "53. Differential Geometry"
 description: "This volume studies smooth geometric structures using calculus."
 tags: ["geometry", "differential-geometry"]
 weight: 53
+date: 2026-05-02T12:39:49+07:00
 ---
 
 This volume studies smooth geometric structures using calculus. It develops curves, surfaces, manifolds, and curvature, forming the foundation for modern geometry and physics.

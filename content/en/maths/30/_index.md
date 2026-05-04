@@ -1,8 +1,10 @@
 ---
+
 title: "30. Complex Analysis"
 description: "This volume studies functions of a complex variable."
 tags: ["analysis", "complex-analysis"]
 weight: 30
+date: 2026-05-02T12:24:36+07:00
 ---
 
 This volume studies functions of a complex variable. It develops analyticity, contour integration, and the rich structure that arises from complex differentiability.

@@ -1,8 +1,10 @@
 ---
+
 title: "78. Optics, Electromagnetic Theory"
 description: "This volume studies light, electromagnetic fields, and wave propagation."
 tags: ["physics", "optics"]
 weight: 78
+date: 2026-05-02T12:49:57+07:00
 ---
 
 This volume studies light, electromagnetic fields, and wave propagation. It develops mathematical models for optics and electromagnetism, from Maxwell equations to modern photonics.

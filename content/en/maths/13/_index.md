@@ -1,8 +1,10 @@
 ---
+
 title: "13. Commutative Algebra"
 description: "This volume studies commutative rings, ideals, modules, and their structural properties."
 tags: ["algebra", "commutative-algebra", "rings"]
 weight: 13
+date: 2026-05-02T12:19:32+07:00
 ---
 
 This volume studies commutative rings, ideals, modules, and their structural properties. It forms the algebraic foundation for algebraic geometry and number theory.

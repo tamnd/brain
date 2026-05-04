@@ -19,9 +19,9 @@
           "url"    .RelPermalink
           "title"  .Title
           "path"   (delimit $crumbs " / ")
-          "date"   (.Lastmod.Format "2006-01-02")
-          "hour"   (.Lastmod.Format "15")
-          "time"   (.Lastmod.Format "15:04")
+          "date"   (.Date.Format "2006-01-02")
+          "hour"   (.Date.Format "15")
+          "time"   (.Date.Format "15:04")
           "words"  .WordCount
           "rt"     $rtLabel
     -}}
@@ -168,37 +168,11 @@
     dateEl.textContent = WDAYS[dateObj.getDay()]+", "+MONTHS[dateObj.getMonth()]+" "+parseInt(sp[2])+", "+sp[0];
     countEl.textContent = posts.length + (posts.length === 1 ? " note" : " notes");
 
-    /* Detect batch commits: if >50% of notes share one timestamp,
-       redistribute display times evenly across working hours 09:00–17:00 */
-    var hourCounts = {};
-    for (var i = 0; i < posts.length; i++) {
-      hourCounts[posts[i].hour] = (hourCounts[posts[i].hour] || 0) + 1;
-    }
-    var maxCluster = 0;
-    for (var hk in hourCounts) maxCluster = Math.max(maxCluster, hourCounts[hk]);
-    var isBatch = maxCluster > posts.length * 0.5;
-
-    var displayPosts = posts;
-    if (isBatch) {
-      var n = posts.length;
-      var startMin = 9 * 60, endMin = 17 * 60;
-      displayPosts = [];
-      for (var i = 0; i < n; i++) {
-        var mins = startMin + Math.round(i / Math.max(n - 1, 1) * (endMin - startMin));
-        var dh = Math.floor(mins / 60), dm = mins % 60;
-        var dp = {};
-        for (var k in posts[i]) dp[k] = posts[i][k];
-        dp.hour = "" + dh;
-        dp.time = pad(dh) + ":" + pad(dm);
-        displayPosts.push(dp);
-      }
-    }
-
     var byHour = {};
-    for (var i = 0; i < displayPosts.length; i++) {
-      var h = displayPosts[i].hour;
+    for (var i = 0; i < posts.length; i++) {
+      var h = posts[i].hour;
       if (!byHour[h]) byHour[h] = [];
-      byHour[h].push(displayPosts[i]);
+      byHour[h].push(posts[i]);
     }
     var hours = Object.keys(byHour).sort(function(a,b){ return +a - +b; });
 

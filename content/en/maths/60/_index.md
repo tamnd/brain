@@ -1,8 +1,10 @@
 ---
+
 title: "60. Probability Theory and Stochastic Processes"
 description: "This volume develops probability theory on measure-theoretic foundations and studies stochastic processes."
 tags: ["probability", "stochastic-processes"]
 weight: 60
+date: 2026-05-02T12:44:53+07:00
 ---
 
 This volume develops probability theory on measure-theoretic foundations and studies stochastic processes. It emphasizes rigor, structure, and applications.

@@ -1,8 +1,10 @@
 ---
+
 title: "03. Logic and Foundations"
 description: "Formal logic, set theory, computability, and the foundations of mathematics treated as a formal system."
 tags: ["logic", "foundations", "set-theory", "computability", "proof-theory"]
 weight: 3
+date: 2026-05-02T12:09:24+07:00
 ---
 
 This volume develops formal logic, set theory, computability, and the foundations of mathematics in a unified way, where syntax, semantics, proof, and computation are treated as precise mathematical objects.

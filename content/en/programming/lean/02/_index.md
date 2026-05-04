@@ -1,8 +1,10 @@
 ---
+
 title: "Chapter 2. Propositions and Proofs"
 description: "This chapter introduces the proof layer of Lean."
 tags: ["lean", "proof-assistant", "type-theory"]
 weight: 2000
+date: 2026-05-03T10:11:22+07:00
 ---
 
 This chapter introduces the proof layer of Lean. The central idea is that a proposition is a type, and a proof is a term of that type. This principle is often called propositions as types. It gives Lean a uniform foundation: definitions, programs, propositions, and proofs are all checked by the same kernel.

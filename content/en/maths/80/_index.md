@@ -1,8 +1,10 @@
 ---
+
 title: "80. Classical Thermodynamics, Heat Transfer"
 description: "This volume studies macroscopic energy, heat, and thermodynamic systems."
 tags: ["physics", "thermodynamics"]
 weight: 80
+date: 2026-05-02T12:49:57+07:00
 ---
 
 This volume studies macroscopic energy, heat, and thermodynamic systems. It develops fundamental laws, transport processes, and engineering applications.

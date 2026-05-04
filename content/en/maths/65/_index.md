@@ -1,8 +1,10 @@
 ---
+
 title: "65. Numerical Analysis"
 description: "This volume studies algorithms for approximating mathematical problems."
 tags: ["numerical-analysis", "computation"]
 weight: 65
+date: 2026-05-02T12:44:53+07:00
 ---
 
 This volume studies algorithms for approximating mathematical problems. It emphasizes stability, convergence, and computational efficiency.

@@ -1,8 +1,10 @@
 ---
+
 title: "93. Systems Theory; Control"
 description: "This volume studies dynamical systems with inputs and outputs."
 tags: ["systems-theory", "control-theory"]
 weight: 93
+date: 2026-05-02T13:00:05+07:00
 ---
 
 This volume studies dynamical systems with inputs and outputs. It develops mathematical models, stability theory, and control design for engineered and natural systems.

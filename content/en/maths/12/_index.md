@@ -1,8 +1,10 @@
 ---
+
 title: "12. Field Theory and Polynomials"
 description: "This volume studies fields, polynomials, and algebraic extensions."
 tags: ["algebra", "field-theory", "polynomials"]
 weight: 12
+date: 2026-05-02T12:19:32+07:00
 ---
 
 This volume studies fields, polynomials, and algebraic extensions. It provides the structural basis for algebraic number theory, algebraic geometry, and Galois theory.

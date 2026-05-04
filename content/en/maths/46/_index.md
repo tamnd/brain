@@ -1,8 +1,10 @@
 ---
+
 title: "46. Functional Analysis"
 description: "This volume studies infinite-dimensional vector spaces and linear operators."
 tags: ["analysis", "functional-analysis"]
 weight: 46
+date: 2026-05-02T12:34:45+07:00
 ---
 
 This volume studies infinite-dimensional vector spaces and linear operators. It provides the analytical framework underlying modern analysis, PDEs, probability, and quantum theory.

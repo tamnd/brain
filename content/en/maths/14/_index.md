@@ -1,8 +1,10 @@
 ---
+
 title: "14. Algebraic Geometry"
 description: "This volume studies geometric objects defined by polynomial equations."
 tags: ["algebra", "algebraic-geometry"]
 weight: 14
+date: 2026-05-02T12:19:32+07:00
 ---
 
 This volume studies geometric objects defined by polynomial equations. It connects commutative algebra, geometry, and number theory through the language of varieties and schemes.

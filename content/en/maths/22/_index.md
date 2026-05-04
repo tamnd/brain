@@ -1,8 +1,10 @@
 ---
+
 title: "22. Topological Groups, Lie Groups"
 description: "This volume studies groups equipped with topology and smooth structure."
 tags: ["topology", "lie-groups"]
 weight: 22
+date: 2026-05-02T12:24:36+07:00
 ---
 
 This volume studies groups equipped with topology and smooth structure. It connects algebra, topology, and geometry, with applications in analysis and physics.

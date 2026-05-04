@@ -1,8 +1,10 @@
 ---
+
 title: "54. General Topology"
 description: "This volume studies topological spaces and continuous structures in full generality."
 tags: ["topology", "general-topology"]
 weight: 54
+date: 2026-05-02T12:39:49+07:00
 ---
 
 This volume studies topological spaces and continuous structures in full generality. It provides the foundational language for modern analysis and geometry.

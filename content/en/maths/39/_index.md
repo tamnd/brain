@@ -1,8 +1,10 @@
 ---
+
 title: "39. Difference and Functional Equations"
 description: "This volume studies equations defined by discrete steps and functional relations."
 tags: ["analysis", "functional-equations"]
 weight: 39
+date: 2026-05-02T12:29:41+07:00
 ---
 
 This volume studies equations defined by discrete steps and functional relations. It complements differential equations by focusing on iteration, recursion, and functional identities.

@@ -1,8 +1,10 @@
 ---
+
 title: "06. Order and Lattices"
 description: "Partially ordered sets, lattices, and algebraic systems equipped with order relations."
 tags: ["order-theory", "lattices", "algebra", "posets"]
 weight: 6
+date: 2026-05-02T12:13:36+07:00
 ---
 
 This volume studies partially ordered sets, lattices, and algebraic systems equipped with order relations. It connects combinatorics, algebra, topology, and logic through the notion of order.

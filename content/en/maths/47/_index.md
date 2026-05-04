@@ -1,8 +1,10 @@
 ---
+
 title: "47. Operator Theory"
 description: "This volume studies linear operators on Banach and Hilbert spaces, with emphasis on spectral properties, structure, and applications in analysis and..."
 tags: ["analysis", "operator-theory"]
 weight: 47
+date: 2026-05-02T12:34:45+07:00
 ---
 
 This volume studies linear operators on Banach and Hilbert spaces, with emphasis on spectral properties, structure, and applications in analysis and physics.

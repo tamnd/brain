@@ -1,8 +1,10 @@
 ---
+
 title: "81. Quantum Theory"
 description: "This volume develops quantum mechanics and its mathematical structure."
 tags: ["physics", "quantum-mechanics"]
 weight: 81
+date: 2026-05-02T12:55:00+07:00
 ---
 
 This volume develops quantum mechanics and its mathematical structure. It emphasizes Hilbert space methods, operators, and physical interpretation.

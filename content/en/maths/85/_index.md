@@ -1,8 +1,10 @@
 ---
+
 title: "85. Astronomy and Astrophysics"
 description: "This volume studies celestial objects, their dynamics, and the physical processes governing the universe."
 tags: ["physics", "astronomy"]
 weight: 85
+date: 2026-05-02T12:55:00+07:00
 ---
 
 This volume studies celestial objects, their dynamics, and the physical processes governing the universe. It connects observation, theory, and computation.

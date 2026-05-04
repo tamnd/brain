@@ -1,8 +1,10 @@
 ---
+
 title: "32. Several Complex Variables and Analytic Spaces"
 description: "This volume studies functions of several complex variables, complex manifolds, and analytic spaces."
 tags: ["analysis", "complex-analysis"]
 weight: 32
+date: 2026-05-02T12:24:36+07:00
 ---
 
 This volume studies functions of several complex variables, complex manifolds, and analytic spaces. It extends complex analysis into higher dimensions, where geometry and sheaf methods become central.

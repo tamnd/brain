@@ -1,8 +1,10 @@
 ---
+
 title: "08. General Algebraic Systems"
 description: "Operations, identities, and structures as a unifying framework for all algebraic theories."
 tags: ["algebra", "universal-algebra", "model-theory", "equational-logic"]
 weight: 8
+date: 2026-05-02T12:13:36+07:00
 ---
 
 This volume studies algebraic systems in their most abstract form. It focuses on operations, identities, and structures without restricting to specific classes like groups or rings, providing a unifying framework for all algebraic theories.

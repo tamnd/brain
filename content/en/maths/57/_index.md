@@ -1,8 +1,10 @@
 ---
+
 title: "57. Manifolds and Cell Complexes"
 description: "This volume studies manifolds and combinatorial models such as CW complexes."
 tags: ["topology", "manifolds"]
 weight: 57
+date: 2026-05-02T12:44:53+07:00
 ---
 
 This volume studies manifolds and combinatorial models such as CW complexes. It connects topology, geometry, and algebraic topology through structured spaces.

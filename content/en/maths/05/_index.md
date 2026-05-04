@@ -1,8 +1,10 @@
 ---
+
 title: "05. Combinatorics"
 description: "Counting, arrangement, structure, and extremal behavior of finite and discrete systems."
 tags: ["combinatorics", "discrete-mathematics", "counting", "graph-theory"]
 weight: 5
+date: 2026-05-02T12:09:24+07:00
 ---
 
 This volume studies finite and discrete structures, with emphasis on counting, arrangement, structure, and extremal behavior, and it maintains a constructive and algorithm-aware perspective throughout.

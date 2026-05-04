@@ -1,8 +1,10 @@
 ---
+
 title: "34. Ordinary Differential Equations"
 description: "This volume studies differential equations involving functions of a single variable."
 tags: ["analysis", "differential-equations"]
 weight: 34
+date: 2026-05-02T12:29:41+07:00
 ---
 
 This volume studies differential equations involving functions of a single variable. It develops existence theory, qualitative behavior, and analytical and numerical methods.

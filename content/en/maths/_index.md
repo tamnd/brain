@@ -1,9 +1,11 @@
 ---
+
 title: "Maths"
 description: "Notes on mathematics, organized by MSC classification."
 tags: ["mathematics", "msc"]
 cascade:
   type: docs
+date: 2026-05-02T11:35:41+07:00
 ---
 
 # Maths

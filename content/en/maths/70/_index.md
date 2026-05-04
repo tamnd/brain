@@ -1,8 +1,10 @@
 ---
+
 title: "70. Mechanics of Particles and Systems"
 description: "This volume develops classical mechanics using analytical methods."
 tags: ["physics", "mechanics"]
 weight: 70
+date: 2026-05-02T12:49:57+07:00
 ---
 
 This volume develops classical mechanics using analytical methods. It studies motion of particles and systems under forces, emphasizing geometric and variational formulations.

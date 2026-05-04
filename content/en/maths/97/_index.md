@@ -1,8 +1,10 @@
 ---
+
 title: "97. Mathematics Education"
 description: "This volume studies the theory and practice of teaching and learning mathematics."
 tags: ["mathematics-education"]
 weight: 97
+date: 2026-05-02T13:00:05+07:00
 ---
 
 This volume studies the theory and practice of teaching and learning mathematics. It integrates cognitive science, pedagogy, curriculum design, and assessment.

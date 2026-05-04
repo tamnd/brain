@@ -1,8 +1,10 @@
 ---
+
 title: "28. Measure and Integration"
 description: "This volume develops measure theory and integration in a general setting."
 tags: ["analysis", "measure-theory"]
 weight: 28
+date: 2026-05-02T12:24:36+07:00
 ---
 
 This volume develops measure theory and integration in a general setting. It extends classical calculus to more flexible notions of size, convergence, and integrability.

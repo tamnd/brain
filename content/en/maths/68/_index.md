@@ -1,8 +1,10 @@
 ---
+
 title: "68. Computer Science"
 description: "This volume studies theoretical and practical foundations of computation."
 tags: ["computer-science", "algorithms"]
 weight: 68
+date: 2026-05-02T12:49:57+07:00
 ---
 
 This volume studies theoretical and practical foundations of computation. It connects algorithms, systems, and formal models with mathematical rigor.
