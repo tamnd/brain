@@ -90,7 +90,6 @@ body {
 /* ===== Navbar ============================================================ */
 
 .hextra-nav-container {
-  border-bottom: 1px solid var(--border);
   background-color: var(--bg);
 }
 
@@ -100,7 +99,28 @@ body {
 
 .hextra-nav-container nav {
   height: 3.5rem;
+  padding-inline: 1.5rem;
 }
+
+@media (min-width: 768px) {
+  .hextra-nav-container nav { padding-inline: 2rem; }
+}
+
+/* Brain logo mark in navbar */
+.brain-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--fg);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: opacity 0.15s;
+}
+
+.brain-nav-logo:hover { opacity: 0.7; }
 
 
 /* ===== Sidebar (overridden template uses these classes) =================== */
@@ -569,6 +589,39 @@ body {
 .hextra-page-context-menu-dropdown {
   border-color: var(--border) !important;
   background-color: var(--bg) !important;
+}
+
+
+/* ===== Lean single-page layout =========================================== */
+
+.brain-single-page {
+  min-height: calc(100vh - 3.5rem);
+}
+
+.brain-single-content {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 6rem;
+}
+
+@media (min-width: 640px) {
+  .brain-single-content { padding-inline: 2rem; }
+}
+
+@media (min-width: 768px) {
+  .brain-single-content { padding-inline: 2.5rem; padding-top: 3rem; }
+}
+
+/* Inside lean layout the page-header title-row has no context-menu button,
+   so remove the flex layout that created space for it. */
+.brain-single-content .brain-page-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.brain-single-content .brain-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
 
