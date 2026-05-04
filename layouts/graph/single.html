@@ -64,9 +64,10 @@
 <div class="brain-graph-page">
   <header class="brain-graph__header">
     <div class="brain-graph__header-text">
-      <h1 class="brain-graph__title">Graph</h1>
+      <h1 class="brain-graph__title" id="brain-graph-title">Graph</h1>
       <p class="brain-graph__subtitle">
         <span id="brain-graph-stats">{{ len $nodes }} nodes · {{ len $links }} edges</span>
+        <a href="{{ relLangURL "graph/" }}" id="brain-graph-clear-focus" class="brain-graph__clear-focus" hidden>← Show all</a>
       </p>
     </div>
     <div class="brain-graph__controls">
@@ -225,8 +226,87 @@
 
     resetBtn.addEventListener('click', () => {
       svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
-      simulation.alpha(0.6).restart();
+      searchInput.value = '';
+      // Don't clear focus — Reset is "reset view", not "exit subgraph".
+      recomputeFilter();
     });
+
+    // ===== Filter / focus =====
+    function bfsNeighborhood(seedId, maxDepth) {
+      const visible = new Set();
+      const queue = [[seedId, 0]];
+      while (queue.length > 0) {
+        const [id, d] = queue.shift();
+        if (visible.has(id)) continue;
+        visible.add(id);
+        if (d < maxDepth) {
+          const nbrs = adj.get(id);
+          if (nbrs) for (const n of nbrs) if (!visible.has(n)) queue.push([n, d + 1]);
+        }
+      }
+      return visible;
+    }
+
+    function applyFilter(visibleIds) {
+      const showAll = !visibleIds || visibleIds.size === data.nodes.length;
+      if (showAll) {
+        nodeSel.style('display', null);
+        labelSel.style('display', null);
+        linkSel.style('display', null);
+        simulation.nodes(data.nodes);
+        simulation.force('link').links(links);
+        simulation.alpha(0.4).restart();
+        return;
+      }
+      const linkVisible = (l) => {
+        const s = (l.source && l.source.id) || l.source;
+        const t = (l.target && l.target.id) || l.target;
+        return visibleIds.has(s) && visibleIds.has(t);
+      };
+      const visibleNodes = data.nodes.filter(n => visibleIds.has(n.id));
+      const visibleLinks = links.filter(linkVisible);
+
+      nodeSel.style('display', d => visibleIds.has(d.id) ? null : 'none');
+      labelSel.style('display', d => visibleIds.has(d.id) ? null : 'none');
+      linkSel.style('display', l => linkVisible(l) ? null : 'none');
+
+      simulation.nodes(visibleNodes);
+      simulation.force('link').links(visibleLinks);
+      simulation.alpha(0.7).restart();
+    }
+
+    // Read ?focus= from URL
+    const urlParams = new URLSearchParams(location.search);
+    let focusId = urlParams.get('focus');
+    if (focusId && !focusId.endsWith('/')) focusId += '/';
+    let focusVisible = null;
+    if (focusId && nodeMap.has(focusId)) {
+      focusVisible = bfsNeighborhood(focusId, 2);
+      const focusNode = nodeMap.get(focusId);
+      document.getElementById('brain-graph-title').textContent = focusNode.title;
+      document.getElementById('brain-graph-stats').textContent =
+        focusVisible.size + ' connected nodes · 2 hops';
+      document.getElementById('brain-graph-clear-focus').hidden = false;
+    }
+
+    function recomputeFilter() {
+      const q = searchInput.value.trim().toLowerCase();
+      let visible = focusVisible;
+      if (q) {
+        const matched = new Set(
+          data.nodes.filter(n => n.title.toLowerCase().includes(q)).map(n => n.id)
+        );
+        // If focus is also active, intersect.
+        if (focusVisible) {
+          const inter = new Set();
+          for (const id of matched) if (focusVisible.has(id)) inter.add(id);
+          visible = inter;
+        } else {
+          visible = matched;
+        }
+      }
+      applyFilter(visible);
+    }
 
     // Drag
     function dragBehavior() {
@@ -278,23 +358,11 @@
         window.location.href = d.url || d.id;
       });
 
-    // Search filter
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.trim().toLowerCase();
-      if (!q) {
-        nodeSel.classed('is-faded', false);
-        labelSel.classed('is-faded', false);
-        linkSel.classed('is-faded', false);
-        return;
-      }
-      const matchIds = new Set(
-        data.nodes.filter(n => n.title.toLowerCase().includes(q)).map(n => n.id)
-      );
-      nodeSel.classed('is-faded', n => !matchIds.has(n.id));
-      labelSel.classed('is-faded', n => !matchIds.has(n.id));
-      linkSel.classed('is-faded', l =>
-        !(matchIds.has(l.source.id) && matchIds.has(l.target.id)));
-    });
+    // Search filter — actually drops nodes (display:none + remove from sim)
+    searchInput.addEventListener('input', recomputeFilter);
+
+    // Apply initial filter (handles ?focus= on load)
+    if (focusVisible) recomputeFilter();
 
     // Resize
     function onResize() {
