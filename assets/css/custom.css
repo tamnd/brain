@@ -1097,3 +1097,197 @@ a.hextra-sidebar-active-item {
 
   .compact-row__path { display: none; }
 }
+
+
+/* ===== Graph page ======================================================== */
+
+.brain-nav-graph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--muted-fg);
+  transition: color 0.15s, background-color 0.15s;
+}
+.brain-nav-graph:hover {
+  color: var(--fg);
+  background-color: var(--muted);
+}
+.brain-nav-graph--active { color: var(--fg); }
+
+.brain-graph-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4rem);
+  width: 100%;
+}
+
+.brain-graph__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .brain-graph__header { padding: 1.5rem 2.5rem 1rem; }
+}
+
+.brain-graph__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--fg);
+}
+
+.brain-graph__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.brain-graph__controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.brain-graph__search {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  width: 12rem;
+  transition: border-color 0.15s;
+}
+.brain-graph__search:focus {
+  outline: none;
+  border-color: var(--fg);
+}
+.brain-graph__search::placeholder { color: var(--muted-fg); }
+
+.brain-graph__btn {
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted-fg);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+.brain-graph__btn:hover {
+  color: var(--fg);
+  border-color: var(--border-strong);
+  background: var(--muted);
+}
+
+.brain-graph__canvas-wrap {
+  flex: 1 1 auto;
+  position: relative;
+  width: 100%;
+  min-height: 24rem;
+  overflow: hidden;
+  cursor: grab;
+}
+.brain-graph__canvas-wrap:active { cursor: grabbing; }
+
+.brain-graph__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.brain-graph__svg .graph-link {
+  stroke: var(--muted-fg);
+  pointer-events: none;
+  transition: stroke-opacity 0.15s;
+}
+.brain-graph__svg .graph-link.is-dim { stroke-opacity: 0.05 !important; }
+.brain-graph__svg .graph-link.is-faded { stroke-opacity: 0.04 !important; }
+
+.brain-graph__svg .graph-node {
+  stroke: var(--bg);
+  stroke-width: 1.5;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.brain-graph__svg .graph-node.is-dim { opacity: 0.18; }
+.brain-graph__svg .graph-node.is-faded { opacity: 0.12; }
+.brain-graph__svg .graph-node.is-active {
+  stroke: var(--fg);
+  stroke-width: 2;
+}
+
+.brain-graph__svg .graph-label {
+  fill: var(--fg);
+  font-family: var(--font-sans, inherit);
+  font-size: 10px;
+  font-weight: 500;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.brain-graph__svg .graph-label--tag {
+  fill: var(--muted-fg);
+  font-size: 9px;
+  font-weight: 400;
+  font-style: italic;
+}
+.brain-graph__svg .graph-label.is-dim { opacity: 0.2; }
+.brain-graph__svg .graph-label.is-faded { opacity: 0.1; }
+
+.brain-graph__svg .graph-link--tag {
+  stroke-dasharray: 2 3;
+}
+
+.brain-graph__tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 5;
+  max-width: 18rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brain-graph__hint {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 1rem;
+  font-size: 0.6875rem;
+  color: var(--muted-fg);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .brain-graph-page { height: calc(100vh - 4rem); }
+  .brain-graph__header { padding: 1rem 1rem 0.5rem; }
+  .brain-graph__title { font-size: 1.25rem; }
+  .brain-graph__search { width: 100%; }
+  .brain-graph__controls { width: 100%; }
+  .brain-graph__hint { display: none; }
+}

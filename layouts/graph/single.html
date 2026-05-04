@@ -1,48 +1,65 @@
 {{ define "main" }}
 {{/* ===== Build graph data from site pages ===== */}}
+{{- $graphPage := . -}}
 {{- $nodes := slice -}}
 {{- $links := slice -}}
-{{- $tagLinks := slice -}}
 
 {{- $candidates := where site.Pages "Kind" "in" (slice "section" "page") -}}
 {{- $candidates = where $candidates "Title" "ne" "" -}}
 {{- $candidates = where $candidates "Params.draft" "ne" true -}}
 
-{{- range $candidates -}}
-  {{- if eq .RelPermalink "/graph/" -}}{{- continue -}}{{- end -}}
+{{- range $p := $candidates -}}
+  {{- if eq $p.RelPermalink $graphPage.RelPermalink -}}{{- continue -}}{{- end -}}
+  {{- $titleStr := partial "utils/title" $p -}}
   {{- $node := dict
-        "id" .RelPermalink
-        "title" (partial "utils/title" .)
-        "section" (or .Section "root")
-        "kind" .Kind
-        "depth" (len .Ancestors)
-        "tags" (.Params.tags | default slice)
-        "readTime" .ReadingTime
+        "id" $p.RelPermalink
+        "url" $p.RelPermalink
+        "title" (printf "%s" $titleStr)
+        "section" (or $p.Section "root")
+        "kind" $p.Kind
+        "depth" (len $p.Ancestors)
+        "tags" ($p.Params.tags | default slice)
+        "readTime" $p.ReadingTime
   -}}
   {{- $nodes = $nodes | append $node -}}
-  {{- with .Parent -}}
+  {{- with $p.Parent -}}
     {{- if not .IsHome -}}
-      {{- $links = $links | append (dict "source" .RelPermalink "target" $.RelPermalink "kind" "tree") -}}
+      {{- $links = $links | append (dict "source" .RelPermalink "target" $p.RelPermalink "kind" "tree") -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
-{{/* Tag co-occurrence: connect pages that share at least one tag */}}
-{{- range $.Site.Taxonomies.tags -}}
-  {{- $term := . -}}
-  {{- $pgs := slice -}}
-  {{- range $term.Pages -}}{{- $pgs = $pgs | append .RelPermalink -}}{{- end -}}
-  {{- range $i, $a := $pgs -}}
-    {{- range $j, $b := $pgs -}}
-      {{- if lt $i $j -}}
-        {{- $tagLinks = $tagLinks | append (dict "source" $a "target" $b "kind" "tag") -}}
-      {{- end -}}
-    {{- end -}}
+{{/* Tag nodes + page→tag edges (bipartite, light) */}}
+{{- $tagSet := dict -}}
+{{- range $p := $candidates -}}
+  {{- range $p.Params.tags -}}
+    {{- $tagSet = merge $tagSet (dict . true) -}}
+  {{- end -}}
+{{- end -}}
+{{- range $tag, $_ := $tagSet -}}
+  {{- $tagID := printf "tag:%s" $tag -}}
+  {{- $tagURL := printf "%stags/%s/" (relLangURL "") $tag -}}
+  {{- $tagNode := dict
+        "id" $tagID
+        "url" $tagURL
+        "title" (printf "#%s" $tag)
+        "section" "tag"
+        "kind" "tag"
+        "depth" 0
+        "tags" slice
+        "readTime" 0
+  -}}
+  {{- $nodes = $nodes | append $tagNode -}}
+{{- end -}}
+{{- range $p := $candidates -}}
+  {{- if eq $p.RelPermalink $graphPage.RelPermalink -}}{{- continue -}}{{- end -}}
+  {{- range $p.Params.tags -}}
+    {{- $links = $links | append (dict "source" $p.RelPermalink "target" (printf "tag:%s" .) "kind" "tag") -}}
   {{- end -}}
 {{- end -}}
 
-{{- $allLinks := $links | append $tagLinks -}}
-{{- $data := dict "nodes" $nodes "links" $allLinks -}}
+{{- $data := dict "nodes" $nodes "links" $links -}}
+{{- $dataJSON := $data | jsonify -}}
 
 <div class="brain-graph-page">
   <header class="brain-graph__header">
@@ -73,7 +90,7 @@
   </div>
 </div>
 
-<script id="brain-graph-data" type="application/json">{{ $data | jsonify }}</script>
+<script id="brain-graph-data" type="application/json">{{ $dataJSON | safeJS }}</script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" defer></script>
 <script defer>
 (function () {
@@ -109,15 +126,21 @@
     const nodeLayer = root.append('g').attr('class', 'graph-nodes');
     const labelLayer = root.append('g').attr('class', 'graph-labels');
 
-    // Color by top-level section
-    const sections = Array.from(new Set(data.nodes.map(n => n.section || 'root')));
+    // Color by top-level section (tags get a separate neutral color)
+    const sections = Array.from(new Set(data.nodes.map(n => n.section || 'root')))
+      .filter(s => s !== 'tag');
     const palette = [
       '#5B8DEF', '#E36F6F', '#52B788', '#E8A33D',
       '#A06CD5', '#3FB7C9', '#D17BB7', '#7A8C99'
     ];
-    const color = d3.scaleOrdinal().domain(sections).range(palette);
+    const sectionColor = d3.scaleOrdinal().domain(sections).range(palette);
+    const TAG_COLOR = '#9CA3AF';
+    function color(d) {
+      return d.kind === 'tag' ? TAG_COLOR : sectionColor(d.section || 'root');
+    }
 
     function nodeRadius(d) {
+      if (d.kind === 'tag') return 4;
       if (d.kind === 'section') return Math.max(5, 9 - d.depth);
       if (d.readTime > 5) return 5;
       return 3.5;
@@ -152,16 +175,16 @@
       .selectAll('circle')
       .data(data.nodes)
       .join('circle')
-      .attr('class', 'graph-node')
+      .attr('class', d => 'graph-node graph-node--' + d.kind)
       .attr('r', nodeRadius)
-      .attr('fill', d => color(d.section || 'root'))
+      .attr('fill', d => color(d))
       .attr('data-id', d => d.id);
 
     const labelSel = labelLayer
       .selectAll('text')
-      .data(data.nodes.filter(d => d.kind === 'section'))
+      .data(data.nodes.filter(d => d.kind === 'section' || d.kind === 'tag'))
       .join('text')
-      .attr('class', 'graph-label')
+      .attr('class', d => 'graph-label graph-label--' + d.kind)
       .text(d => d.title)
       .attr('dx', d => nodeRadius(d) + 4)
       .attr('dy', 3);
@@ -169,9 +192,9 @@
     // Force simulation
     const simulation = d3.forceSimulation(data.nodes)
       .force('link', d3.forceLink(links).id(d => d.id)
-        .distance(d => d.kind === 'tree' ? 28 : 60)
-        .strength(d => d.kind === 'tree' ? 1 : 0.05))
-      .force('charge', d3.forceManyBody().strength(-55))
+        .distance(d => d.kind === 'tree' ? 30 : 80)
+        .strength(d => d.kind === 'tree' ? 1 : 0.25))
+      .force('charge', d3.forceManyBody().strength(d => d.kind === 'tag' ? -120 : -55))
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collide', d3.forceCollide().radius(d => nodeRadius(d) + 2))
       .force('x', d3.forceX(width / 2).strength(0.03))
@@ -248,7 +271,7 @@
       })
       .on('click', (event, d) => {
         if (event.defaultPrevented) return;
-        window.location.href = d.id;
+        window.location.href = d.url || d.id;
       });
 
     // Search filter
