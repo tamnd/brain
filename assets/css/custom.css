@@ -338,8 +338,10 @@ body {
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.3;
-  margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
 }
 
 .content h3,
@@ -489,7 +491,7 @@ body {
 /* ===== Page header (doc page) ============================================ */
 
 .brain-page-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .brain-page-header__title-row {
