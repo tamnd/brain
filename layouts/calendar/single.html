@@ -11,13 +11,19 @@
     {{- range .Ancestors.Reverse -}}
       {{- if not .IsHome -}}{{- $crumbs = $crumbs | append (partial "utils/title" .) -}}{{- end -}}
     {{- end -}}
+    {{- $rt := .ReadingTime -}}
+    {{- $h  := div $rt 60 -}}
+    {{- $m  := mod $rt 60 -}}
+    {{- $rtLabel := cond (gt $h 0) (printf "%dh %dm" $h $m) (printf "%d min" $rt) -}}
     {{- $entry := dict
-          "url"   .RelPermalink
-          "title" .Title
-          "path"  (delimit $crumbs " / ")
-          "date"  (.Lastmod.Format "2006-01-02")
-          "hour"  (.Lastmod.Format "15")
-          "time"  (.Lastmod.Format "15:04")
+          "url"    .RelPermalink
+          "title"  .Title
+          "path"   (delimit $crumbs " / ")
+          "date"   (.Lastmod.Format "2006-01-02")
+          "hour"   (.Lastmod.Format "15")
+          "time"   (.Lastmod.Format "15:04")
+          "words"  .WordCount
+          "rt"     $rtLabel
     -}}
     {{- $entries = $entries | append $entry -}}
   {{- end -}}
@@ -29,25 +35,21 @@
     <p class="cal-page__sub">{{ len $entries }} notes</p>
   </header>
 
+  <!-- Month calendar -->
   <div class="cal-wrap">
-    <!-- Month navigation -->
     <div class="cal-nav">
       <button class="cal-nav__btn" id="js-cal-prev" aria-label="Previous month">&#8592;</button>
       <span class="cal-nav__label" id="js-cal-label"></span>
       <button class="cal-nav__btn" id="js-cal-next" aria-label="Next month">&#8594;</button>
     </div>
-
-    <!-- Day-of-week headers -->
     <div class="cal-dow">
       <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
       <span>Thu</span><span>Fri</span><span>Sat</span>
     </div>
-
-    <!-- Date cells -->
     <div class="cal-grid" id="js-cal-grid"></div>
   </div>
 
-  <!-- Posts for selected day — rendered below -->
+  <!-- Posts for selected day -->
   <div class="cal-posts" id="js-cal-posts" style="display:none">
     <div class="cal-posts__header">
       <strong class="cal-posts__date" id="js-posts-date"></strong>
@@ -68,60 +70,52 @@
     if (!byDate[p.date]) byDate[p.date] = [];
     byDate[p.date].push(p);
   }
-  /* sort each day oldest-first */
-  var dateKeys = Object.keys(byDate);
-  for (var d = 0; d < dateKeys.length; d++) {
-    byDate[dateKeys[d]].sort(function(a,b){ return a.time < b.time ? -1 : 1; });
+  for (var d in byDate) {
+    byDate[d].sort(function(a,b){ return a.time < b.time ? -1 : 1; });
   }
 
   var MONTHS = ["January","February","March","April","May","June",
                 "July","August","September","October","November","December"];
   var WDAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
-  /* start at most-recent month with notes */
   var allDates = Object.keys(byDate).sort();
   var curYear, curMonth, selDate = null;
   if (allDates.length) {
     var latest = allDates[allDates.length - 1];
-    var parts = latest.split("-");
-    curYear  = parseInt(parts[0], 10);
-    curMonth = parseInt(parts[1], 10) - 1;
-    selDate  = latest;
+    var sp = latest.split("-");
+    curYear  = +sp[0]; curMonth = +sp[1] - 1; selDate = latest;
   } else {
     var now = new Date();
-    curYear  = now.getFullYear();
-    curMonth = now.getMonth();
+    curYear = now.getFullYear(); curMonth = now.getMonth();
   }
 
-  var gridEl    = document.getElementById("js-cal-grid");
-  var labelEl   = document.getElementById("js-cal-label");
-  var postsEl   = document.getElementById("js-cal-posts");
-  var dateEl    = document.getElementById("js-posts-date");
-  var countEl   = document.getElementById("js-posts-count");
-  var bodyEl    = document.getElementById("js-posts-body");
+  var gridEl  = document.getElementById("js-cal-grid");
+  var labelEl = document.getElementById("js-cal-label");
+  var postsEl = document.getElementById("js-cal-posts");
+  var dateEl  = document.getElementById("js-posts-date");
+  var countEl = document.getElementById("js-posts-count");
+  var bodyEl  = document.getElementById("js-posts-body");
 
-  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function pad(n) { return n < 10 ? "0"+n : ""+n; }
 
-  function renderMonth(year, month) {
-    labelEl.textContent = MONTHS[month] + " " + year;
+  function renderMonth(y, mo) {
+    labelEl.textContent = MONTHS[mo] + " " + y;
     gridEl.innerHTML = "";
+    var firstDow   = new Date(y, mo, 1).getDay();
+    var daysInMonth = new Date(y, mo+1, 0).getDate();
+    var td = new Date(); var ty = td.getFullYear(), tm = td.getMonth(), tday = td.getDate();
 
-    var firstDow = new Date(year, month, 1).getDay();
-    var daysInMonth = new Date(year, month + 1, 0).getDate();
-    var today = new Date();
-
-    /* blank cells before day 1 */
     for (var b = 0; b < firstDow; b++) {
       var blank = document.createElement("div");
       blank.className = "cal-cell cal-cell--blank";
       gridEl.appendChild(blank);
     }
-
     for (var day = 1; day <= daysInMonth; day++) {
-      var key = year + "-" + pad(month + 1) + "-" + pad(day);
+      var key = y+"-"+pad(mo+1)+"-"+pad(day);
       var btn = document.createElement("button");
       btn.className = "cal-cell";
       btn.type = "button";
+      btn.dataset.date = key;
 
       var numEl = document.createElement("span");
       numEl.className = "cal-cell__num";
@@ -130,20 +124,16 @@
 
       var hasPosts = !!byDate[key];
       if (hasPosts) {
+        var ct = byDate[key].length;
         var dot = document.createElement("span");
-        dot.className = "cal-cell__dot";
+        dot.className = "cal-cell__dot" + (ct >= 10 ? " cal-cell__dot--lg" : ct >= 4 ? " cal-cell__dot--md" : "");
         btn.appendChild(dot);
       } else {
         btn.classList.add("cal-cell--empty");
         btn.disabled = true;
       }
-
-      if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-        btn.classList.add("cal-cell--today");
-      }
-      if (key === selDate) {
-        btn.classList.add("cal-cell--sel");
-      }
+      if (day === tday && mo === tm && y === ty) btn.classList.add("cal-cell--today");
+      if (key === selDate) btn.classList.add("cal-cell--sel");
 
       (function(k){ btn.addEventListener("click", function(){ selectDate(k); }); })(key);
       gridEl.appendChild(btn);
@@ -152,37 +142,23 @@
 
   function selectDate(key) {
     selDate = key;
-
-    /* update selected cell highlight */
-    var cells = gridEl.querySelectorAll(".cal-cell--sel");
-    for (var i = 0; i < cells.length; i++) cells[i].classList.remove("cal-cell--sel");
-    var target = gridEl.querySelector("[data-date=\"" + key + "\"]");
-    /* fallback: find by content */
-    var allCells = gridEl.querySelectorAll(".cal-cell");
-    for (var j = 0; j < allCells.length; j++) {
-      var numSpan = allCells[j].querySelector(".cal-cell__num");
-      if (numSpan) {
-        var parts = key.split("-");
-        if (parseInt(numSpan.textContent, 10) === parseInt(parts[2], 10)) {
-          allCells[j].classList.add("cal-cell--sel");
-          break;
-        }
+    var cells = gridEl.querySelectorAll(".cal-cell");
+    for (var i = 0; i < cells.length; i++) {
+      var c = cells[i];
+      c.classList.remove("cal-cell--sel");
+      if (!c.dataset.date) continue;
+      if (c.dataset.date === key) {
+        c.classList.add("cal-cell--sel");
       }
     }
-
     var posts = byDate[key];
-    if (!posts || !posts.length) {
-      postsEl.style.display = "none";
-      return;
-    }
+    if (!posts || !posts.length) { postsEl.style.display = "none"; return; }
 
-    /* format header */
-    var parts = key.split("-");
-    var dateObj = new Date(parseInt(parts[0],10), parseInt(parts[1],10)-1, parseInt(parts[2],10));
-    dateEl.textContent = WDAYS[dateObj.getDay()] + ", " + MONTHS[dateObj.getMonth()] + " " + parseInt(parts[2],10) + ", " + parts[0];
+    var sp = key.split("-");
+    var dateObj = new Date(+sp[0], +sp[1]-1, +sp[2]);
+    dateEl.textContent = WDAYS[dateObj.getDay()]+", "+MONTHS[dateObj.getMonth()]+" "+parseInt(sp[2])+", "+sp[0];
     countEl.textContent = posts.length + (posts.length === 1 ? " note" : " notes");
 
-    /* group by hour */
     var byHour = {};
     for (var i = 0; i < posts.length; i++) {
       var h = posts[i].hour;
@@ -194,13 +170,13 @@
     bodyEl.innerHTML = "";
     for (var hi = 0; hi < hours.length; hi++) {
       var hour = hours[hi];
-      var group = document.createElement("div");
-      group.className = "cal-hour-group";
+      var grp = document.createElement("div");
+      grp.className = "cal-hour-group";
 
-      var hdr = document.createElement("div");
-      hdr.className = "cal-hour-group__label";
-      hdr.textContent = hour + ":00";
-      group.appendChild(hdr);
+      var lbl = document.createElement("div");
+      lbl.className = "cal-hour-group__label";
+      lbl.textContent = hour + ":00";
+      grp.appendChild(lbl);
 
       var list = byHour[hour];
       for (var li = 0; li < list.length; li++) {
@@ -209,39 +185,49 @@
         row.href = post.url;
         row.className = "cal-entry";
 
-        var title = document.createElement("span");
-        title.className = "cal-entry__title";
-        title.textContent = post.title;
+        var timeEl = document.createElement("span");
+        timeEl.className = "cal-entry__time";
+        timeEl.textContent = post.time;
 
-        var path = document.createElement("span");
-        path.className = "cal-entry__path";
-        path.textContent = post.path;
+        var mid = document.createElement("span");
+        mid.className = "cal-entry__mid";
 
-        var time = document.createElement("span");
-        time.className = "cal-entry__time";
-        time.textContent = post.time;
+        var titleEl = document.createElement("span");
+        titleEl.className = "cal-entry__title";
+        titleEl.textContent = post.title;
 
-        row.appendChild(title);
-        row.appendChild(path);
-        row.appendChild(time);
-        group.appendChild(row);
+        var pathEl = document.createElement("span");
+        pathEl.className = "cal-entry__path";
+        pathEl.textContent = post.path;
+
+        mid.appendChild(titleEl);
+        mid.appendChild(pathEl);
+
+        var meta = document.createElement("span");
+        meta.className = "cal-entry__meta";
+        var parts = [];
+        if (post.words > 0) parts.push(post.words + " w");
+        if (post.rt) parts.push(post.rt);
+        meta.textContent = parts.join(" · ");
+
+        row.appendChild(timeEl);
+        row.appendChild(mid);
+        row.appendChild(meta);
+        grp.appendChild(row);
       }
-      bodyEl.appendChild(group);
+      bodyEl.appendChild(grp);
     }
 
     postsEl.style.display = "block";
-    /* smooth scroll to posts */
     postsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   document.getElementById("js-cal-prev").addEventListener("click", function() {
-    curMonth--;
-    if (curMonth < 0) { curMonth = 11; curYear--; }
+    curMonth--; if (curMonth < 0) { curMonth = 11; curYear--; }
     renderMonth(curYear, curMonth);
   });
   document.getElementById("js-cal-next").addEventListener("click", function() {
-    curMonth++;
-    if (curMonth > 11) { curMonth = 0; curYear++; }
+    curMonth++; if (curMonth > 11) { curMonth = 0; curYear++; }
     renderMonth(curYear, curMonth);
   });
 
