@@ -32,15 +32,10 @@
     <span class="feed-card__footer-sep">·</span>
     <span class="feed-card__meta">{{ $page.WordCount }} words</span>
     <span class="feed-card__footer-sep">·</span>
-    {{- /* Accurate reading time from word count: 213 wpm (Hugo default) → seconds */ -}}
-    {{- $secs := div (mul $page.WordCount 60) 213 -}}
-    {{- $h := div $secs 3600 -}}
-    {{- $m := mod (div $secs 60) 60 -}}
-    {{- $s := mod $secs 60 -}}
-    <span class="feed-card__meta">
-      {{- if gt $h 0 -}}{{ printf "%d:%02d:%02d" $h $m $s }}
-      {{- else -}}{{ printf "%d:%02d" $m $s }}{{- end -}}
-    </span>
+    {{- $rt := $page.ReadingTime -}}
+    {{- $h := div $rt 60 -}}
+    {{- $m := mod $rt 60 -}}
+    <span class="feed-card__meta">{{ printf "%d:%02d" $h $m }}</span>
     {{ end }}
     {{ if $page.Params.tags }}
     <span class="feed-card__footer-sep">·</span>
