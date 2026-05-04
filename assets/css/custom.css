@@ -1552,32 +1552,32 @@ a.hextra-sidebar-active-item {
 /* ===== Calendar view ====================================================== */
 
 .cal-page {
-  max-width: 68rem;
+  max-width: 64rem;
   margin: 0 auto;
   padding: 2rem 1.5rem 4rem;
 }
 
 .cal-page__header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .cal-page__title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.2rem;
 }
 
 .cal-page__sub {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--muted-fg);
   margin: 0;
 }
 
-/* ── calendar wrapper: left-aligned, fixed width ── */
+/* ── calendar wrapper: compact, fixed width ── */
 .cal-wrap {
   width: 100%;
-  max-width: 22rem;
+  max-width: 16rem;
 }
 
 /* ── month nav ── */
@@ -1585,11 +1585,11 @@ a.hextra-sidebar-active-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .cal-nav__label {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -1598,11 +1598,11 @@ a.hextra-sidebar-active-item {
   background: transparent;
   border: 1px solid var(--border);
   color: var(--muted-fg);
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -1620,22 +1620,22 @@ a.hextra-sidebar-active-item {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 .cal-dow span {
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--muted-fg);
-  padding: 0.25rem 0;
+  padding: 0.2rem 0;
 }
 
 /* ── date grid ── */
 .cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  gap: 1px;
 }
 
 /* ── individual day cell ── */
@@ -1646,9 +1646,9 @@ a.hextra-sidebar-active-item {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 3px;
   background: transparent;
   cursor: pointer;
   padding: 0;
@@ -1663,7 +1663,7 @@ a.hextra-sidebar-active-item {
 /* days without posts: visually dimmed */
 .cal-cell[disabled] {
   cursor: default;
-  opacity: 0.35;
+  opacity: 0.3;
 }
 
 .cal-cell:not([disabled]):hover {
@@ -1671,36 +1671,36 @@ a.hextra-sidebar-active-item {
 }
 
 .cal-cell__num {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
   color: var(--fg);
   line-height: 1;
-  font-weight: 500;
+  font-weight: 400;
 }
 
-/* days with posts: stronger number */
+/* days with posts: bolder number */
 .cal-cell:not([disabled]):not(.cal-cell--sel) .cal-cell__num {
   font-weight: 600;
 }
 
 .cal-cell__dot {
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   background: var(--fg);
-  opacity: 0.5;
+  opacity: 0.45;
   flex-shrink: 0;
-  transition: opacity 0.12s, width 0.12s, height 0.12s;
+  transition: opacity 0.12s;
 }
-.cal-cell__dot--md { width: 5px; height: 5px; opacity: 0.65; }
-.cal-cell__dot--lg { width: 6px; height: 6px; opacity: 0.8;  }
+.cal-cell__dot--md { width: 4px; height: 4px; opacity: 0.6; }
+.cal-cell__dot--lg { width: 5px; height: 5px; opacity: 0.8; }
 
 /* today: border ring */
 .cal-cell--today::before {
   content: "";
   position: absolute;
-  inset: 1px;
-  border-radius: var(--radius-sm);
+  inset: 0;
+  border-radius: 3px;
   border: 1.5px solid var(--border-strong);
   pointer-events: none;
 }
@@ -1722,9 +1722,9 @@ a.hextra-sidebar-active-item {
 
 /* ── posts panel (below calendar) ── */
 .cal-posts {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   border-top: 1px solid var(--border);
-  padding-top: 1.25rem;
+  padding-top: 1rem;
 }
 
 .cal-posts__header {
@@ -1827,17 +1827,26 @@ a.hextra-sidebar-active-item {
 }
 
 /* ── responsive ── */
-@media (max-width: 640px) {
-  .cal-page { padding: 1.25rem 1rem 3rem; }
-  .cal-page__title { font-size: 1.375rem; }
+@media (max-width: 480px) {
+  .cal-page { padding: 1rem 0.875rem 2.5rem; }
+  .cal-page__title { font-size: 1.25rem; }
+  /* calendar fills width on small phones */
   .cal-wrap { max-width: 100%; }
-  /* on mobile hide path; keep time + title + meta */
-  .cal-entry { grid-template-columns: 3rem minmax(0,1fr) auto; gap: 0.5rem; }
+  .cal-entry { grid-template-columns: 2.75rem minmax(0,1fr); gap: 0.5rem; }
   .cal-entry__path { display: none; }
   .cal-entry__meta { display: none; }
 }
 
-@media (min-width: 641px) and (max-width: 900px) {
-  /* tablet: show path but hide meta */
-  .cal-entry__meta { display: none; }
+@media (min-width: 481px) and (max-width: 640px) {
+  .cal-page { padding: 1.25rem 1rem 3rem; }
+  .cal-wrap { max-width: 18rem; }
+  .cal-entry { grid-template-columns: 3rem minmax(0,1fr) auto; gap: 0.5rem; }
+  .cal-entry__path { display: none; }
+  .cal-entry__meta { font-size: 0.625rem; }
+}
+
+@media (min-width: 641px) and (max-width: 960px) {
+  /* tablet: calendar a bit wider, hide heavy meta */
+  .cal-wrap { max-width: 18rem; }
+  .cal-entry__meta { font-size: 0.6875rem; }
 }
