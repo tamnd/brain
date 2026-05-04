@@ -1,4 +1,8 @@
-## Book Outline: 46 — Functional Analysis
+---
+title: "46. Functional Analysis"
+description: "This volume studies infinite-dimensional vector spaces and linear operators."
+weight: 46
+---
 
 This volume studies infinite-dimensional vector spaces and linear operators. It provides the analytical framework underlying modern analysis, PDEs, probability, and quantum theory.
 

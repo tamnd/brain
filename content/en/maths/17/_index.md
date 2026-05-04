@@ -1,4 +1,8 @@
-## Book Outline: 17 — Non-Associative Rings and Algebras
+---
+title: "17. Non-Associative Rings and Algebras"
+description: "This volume studies algebraic systems where associativity does not hold in general."
+weight: 17
+---
 
 This volume studies algebraic systems where associativity does not hold in general. It includes Lie algebras, Jordan algebras, alternative algebras, and related structures. These systems arise naturally in geometry, physics, and symmetry theory.
 

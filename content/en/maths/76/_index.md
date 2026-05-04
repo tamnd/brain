@@ -1,4 +1,8 @@
-## Book Outline: 76 — Fluid Mechanics
+---
+title: "76. Fluid Mechanics"
+description: "This volume studies the motion of fluids and the forces acting on them."
+weight: 76
+---
 
 This volume studies the motion of fluids and the forces acting on them. It develops continuum models, governing equations, and analytical and computational methods.
 

@@ -1,4 +1,8 @@
-## Book Outline: 45 — Integral Equations
+---
+title: "45. Integral Equations"
+description: "This volume studies equations where the unknown function appears under an integral."
+weight: 45
+---
 
 This volume studies equations where the unknown function appears under an integral. It connects functional analysis, differential equations, and applied mathematics.
 

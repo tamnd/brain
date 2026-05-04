@@ -1,4 +1,8 @@
-## Book Outline: 33 — Special Functions
+---
+title: "33. Special Functions"
+description: "This volume studies classical and modern special functions arising as solutions to differential equations, integral transforms, and representation..."
+weight: 33
+---
 
 This volume studies classical and modern special functions arising as solutions to differential equations, integral transforms, and representation theory. It emphasizes structure, identities, and computational aspects.
 

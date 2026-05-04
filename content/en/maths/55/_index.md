@@ -1,4 +1,8 @@
-## Book Outline: 55 — Algebraic Topology
+---
+title: "55. Algebraic Topology"
+description: "This volume studies topological spaces through algebraic invariants."
+weight: 55
+---
 
 This volume studies topological spaces through algebraic invariants. It translates geometric and continuous structure into groups, rings, modules, and homological data.
 

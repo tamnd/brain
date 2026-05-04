@@ -1,4 +1,8 @@
-## Book Outline: 83 — Relativity and Gravitational Theory
+---
+title: "83. Relativity and Gravitational Theory"
+description: "This volume studies spacetime structure, relativistic physics, and gravitation."
+weight: 83
+---
 
 This volume studies spacetime structure, relativistic physics, and gravitation. It develops both special and general relativity with geometric and analytical methods.
 

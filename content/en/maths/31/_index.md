@@ -1,4 +1,8 @@
-## Book Outline: 31 — Potential Theory
+---
+title: "31. Potential Theory"
+description: "This volume studies harmonic, subharmonic, and superharmonic functions, along with potentials and their applications to analysis, geometry, and..."
+weight: 31
+---
 
 This volume studies harmonic, subharmonic, and superharmonic functions, along with potentials and their applications to analysis, geometry, and physics. It connects closely with partial differential equations and complex analysis.
 

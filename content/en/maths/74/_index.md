@@ -1,4 +1,8 @@
-## Book Outline: 74 — Mechanics of Deformable Solids
+---
+title: "74. Mechanics of Deformable Solids"
+description: "This volume studies the behavior of solid materials under deformation."
+weight: 74
+---
 
 This volume studies the behavior of solid materials under deformation. It develops continuum mechanics, elasticity, plasticity, and modern computational methods.
 

@@ -1,4 +1,8 @@
-## Book Outline: 70 — Mechanics of Particles and Systems
+---
+title: "70. Mechanics of Particles and Systems"
+description: "This volume develops classical mechanics using analytical methods."
+weight: 70
+---
 
 This volume develops classical mechanics using analytical methods. It studies motion of particles and systems under forces, emphasizing geometric and variational formulations.
 

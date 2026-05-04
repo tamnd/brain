@@ -1,4 +1,8 @@
-## Book Outline: 14 — Algebraic Geometry
+---
+title: "14. Algebraic Geometry"
+description: "This volume studies geometric objects defined by polynomial equations."
+weight: 14
+---
 
 This volume studies geometric objects defined by polynomial equations. It connects commutative algebra, geometry, and number theory through the language of varieties and schemes.
 

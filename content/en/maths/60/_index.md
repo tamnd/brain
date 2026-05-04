@@ -1,4 +1,8 @@
-## Book Outline: 60 — Probability Theory and Stochastic Processes
+---
+title: "60. Probability Theory and Stochastic Processes"
+description: "This volume develops probability theory on measure-theoretic foundations and studies stochastic processes."
+weight: 60
+---
 
 This volume develops probability theory on measure-theoretic foundations and studies stochastic processes. It emphasizes rigor, structure, and applications.
 

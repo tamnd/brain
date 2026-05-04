@@ -1,4 +1,8 @@
-## Book Outline: 65 — Numerical Analysis
+---
+title: "65. Numerical Analysis"
+description: "This volume studies algorithms for approximating mathematical problems."
+weight: 65
+---
 
 This volume studies algorithms for approximating mathematical problems. It emphasizes stability, convergence, and computational efficiency.
 

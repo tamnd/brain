@@ -1,4 +1,8 @@
-## Book Outline: 32 — Several Complex Variables and Analytic Spaces
+---
+title: "32. Several Complex Variables and Analytic Spaces"
+description: "This volume studies functions of several complex variables, complex manifolds, and analytic spaces."
+weight: 32
+---
 
 This volume studies functions of several complex variables, complex manifolds, and analytic spaces. It extends complex analysis into higher dimensions, where geometry and sheaf methods become central.
 

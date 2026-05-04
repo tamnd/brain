@@ -1,4 +1,8 @@
-## Book Outline: 78 — Optics, Electromagnetic Theory
+---
+title: "78. Optics, Electromagnetic Theory"
+description: "This volume studies light, electromagnetic fields, and wave propagation."
+weight: 78
+---
 
 This volume studies light, electromagnetic fields, and wave propagation. It develops mathematical models for optics and electromagnetism, from Maxwell equations to modern photonics.
 

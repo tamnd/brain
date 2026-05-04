@@ -1,4 +1,8 @@
-## Book Outline: 22 — Topological Groups, Lie Groups
+---
+title: "22. Topological Groups, Lie Groups"
+description: "This volume studies groups equipped with topology and smooth structure."
+weight: 22
+---
 
 This volume studies groups equipped with topology and smooth structure. It connects algebra, topology, and geometry, with applications in analysis and physics.
 

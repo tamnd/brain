@@ -1,4 +1,8 @@
-## Book Outline: 42 — Harmonic Analysis
+---
+title: "42. Harmonic Analysis"
+description: "This volume studies representation of functions via oscillatory components such as Fourier series and transforms."
+weight: 42
+---
 
 This volume studies representation of functions via oscillatory components such as Fourier series and transforms. It connects analysis, PDEs, number theory, and signal processing.
 

@@ -1,4 +1,6 @@
-# brain
+---
+title: "brain"
+---
 
 Học được gì thì ghi lại đó.
 

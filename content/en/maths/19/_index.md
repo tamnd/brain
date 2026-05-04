@@ -1,4 +1,8 @@
-## Book Outline: 19 — K-Theory
+---
+title: "19. K-Theory"
+description: "This volume studies algebraic and topological K-theory, focusing on invariants derived from vector bundles, modules, and operator algebras."
+weight: 19
+---
 
 This volume studies algebraic and topological K-theory, focusing on invariants derived from vector bundles, modules, and operator algebras. It provides tools for classification problems across algebra, topology, and geometry.
 

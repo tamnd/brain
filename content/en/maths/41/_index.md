@@ -1,4 +1,8 @@
-## Book Outline: 41 — Approximations and Expansions
+---
+title: "41. Approximations and Expansions"
+description: "This volume studies approximation of functions and data by simpler objects such as polynomials, splines, and rational functions."
+weight: 41
+---
 
 This volume studies approximation of functions and data by simpler objects such as polynomials, splines, and rational functions. It develops both theoretical bounds and computational methods.
 

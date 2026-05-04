@@ -1,4 +1,8 @@
-## Book Outline: 35 — Partial Differential Equations
+---
+title: "35. Partial Differential Equations"
+description: "This volume studies equations involving partial derivatives of functions in several variables."
+weight: 35
+---
 
 This volume studies equations involving partial derivatives of functions in several variables. It develops theory, methods, and applications across analysis, physics, and geometry.
 

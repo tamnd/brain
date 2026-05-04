@@ -1,4 +1,8 @@
-## Book Outline: 80 — Classical Thermodynamics, Heat Transfer
+---
+title: "80. Classical Thermodynamics, Heat Transfer"
+description: "This volume studies macroscopic energy, heat, and thermodynamic systems."
+weight: 80
+---
 
 This volume studies macroscopic energy, heat, and thermodynamic systems. It develops fundamental laws, transport processes, and engineering applications.
 

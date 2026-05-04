@@ -1,4 +1,8 @@
-## Book Outline: 39 — Difference and Functional Equations
+---
+title: "39. Difference and Functional Equations"
+description: "This volume studies equations defined by discrete steps and functional relations."
+weight: 39
+---
 
 This volume studies equations defined by discrete steps and functional relations. It complements differential equations by focusing on iteration, recursion, and functional identities.
 

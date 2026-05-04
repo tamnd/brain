@@ -1,4 +1,8 @@
-## Book Outline: 34 — Ordinary Differential Equations
+---
+title: "34. Ordinary Differential Equations"
+description: "This volume studies differential equations involving functions of a single variable."
+weight: 34
+---
 
 This volume studies differential equations involving functions of a single variable. It develops existence theory, qualitative behavior, and analytical and numerical methods.
 

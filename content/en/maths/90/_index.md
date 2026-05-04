@@ -1,4 +1,8 @@
-## Book Outline: 90 — Operations Research, Mathematical Programming
+---
+title: "90. Operations Research, Mathematical Programming"
+description: "This volume studies decision-making under constraints using mathematical models."
+weight: 90
+---
 
 This volume studies decision-making under constraints using mathematical models. It integrates optimization, stochastic models, and algorithmic methods.
 

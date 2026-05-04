@@ -1,4 +1,8 @@
-## Book Outline: 44 — Integral Transforms, Operational Calculus
+---
+title: "44. Integral Transforms, Operational Calculus"
+description: "This volume studies integral transforms as tools for solving equations, analyzing signals, and transforming problems into more tractable forms."
+weight: 44
+---
 
 This volume studies integral transforms as tools for solving equations, analyzing signals, and transforming problems into more tractable forms. It emphasizes both theoretical properties and computational methods.
 

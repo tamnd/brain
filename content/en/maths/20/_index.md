@@ -1,4 +1,8 @@
-## Book Outline: 20 — Group Theory and Generalizations
+---
+title: "20. Group Theory and Generalizations"
+description: "This volume studies groups as algebraic structures encoding symmetry."
+weight: 20
+---
 
 This volume studies groups as algebraic structures encoding symmetry. It develops structural, combinatorial, and computational aspects, along with generalizations such as group actions and extensions.
 

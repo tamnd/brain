@@ -1,4 +1,8 @@
-## Book Outline: 30 — Complex Analysis
+---
+title: "30. Complex Analysis"
+description: "This volume studies functions of a complex variable."
+weight: 30
+---
 
 This volume studies functions of a complex variable. It develops analyticity, contour integration, and the rich structure that arises from complex differentiability.
 

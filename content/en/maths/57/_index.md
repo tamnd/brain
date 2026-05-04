@@ -1,4 +1,8 @@
-## Book Outline: 57 — Manifolds and Cell Complexes
+---
+title: "57. Manifolds and Cell Complexes"
+description: "This volume studies manifolds and combinatorial models such as CW complexes."
+weight: 57
+---
 
 This volume studies manifolds and combinatorial models such as CW complexes. It connects topology, geometry, and algebraic topology through structured spaces.
 

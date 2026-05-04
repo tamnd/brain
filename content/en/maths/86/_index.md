@@ -1,4 +1,8 @@
-## Book Outline: 86 — Geophysics
+---
+title: "86. Geophysics"
+description: "This volume studies the physical processes of the Earth, including its structure, dynamics, and fields."
+weight: 86
+---
 
 This volume studies the physical processes of the Earth, including its structure, dynamics, and fields. It integrates mechanics, fluid dynamics, thermodynamics, and wave propagation.
 

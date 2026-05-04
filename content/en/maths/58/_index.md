@@ -1,4 +1,8 @@
-## Book Outline: 58 — Global Analysis, Analysis on Manifolds
+---
+title: "58. Global Analysis, Analysis on Manifolds"
+description: "This volume studies analysis on manifolds, combining differential geometry, functional analysis, and partial differential equations."
+weight: 58
+---
 
 This volume studies analysis on manifolds, combining differential geometry, functional analysis, and partial differential equations. It focuses on global properties of differential operators and geometric structures.
 

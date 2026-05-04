@@ -1,4 +1,8 @@
-## Book Outline: 43 — Abstract Harmonic Analysis
+---
+title: "43. Abstract Harmonic Analysis"
+description: "This volume extends harmonic analysis to general locally compact groups."
+weight: 43
+---
 
 This volume extends harmonic analysis to general locally compact groups. It replaces classical Fourier series and transforms with representation-theoretic and measure-theoretic frameworks.
 

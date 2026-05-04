@@ -1,4 +1,8 @@
-## Book Outline: 53 — Differential Geometry
+---
+title: "53. Differential Geometry"
+description: "This volume studies smooth geometric structures using calculus."
+weight: 53
+---
 
 This volume studies smooth geometric structures using calculus. It develops curves, surfaces, manifolds, and curvature, forming the foundation for modern geometry and physics.
 

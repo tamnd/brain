@@ -1,4 +1,8 @@
-## Book Outline: 92 — Biology and Other Natural Sciences
+---
+title: "92. Biology and Other Natural Sciences"
+description: "This volume develops mathematical models for biological and natural systems."
+weight: 92
+---
 
 This volume develops mathematical models for biological and natural systems. It integrates differential equations, probability, and data-driven methods.
 

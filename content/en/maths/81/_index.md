@@ -1,4 +1,8 @@
-## Book Outline: 81 — Quantum Theory
+---
+title: "81. Quantum Theory"
+description: "This volume develops quantum mechanics and its mathematical structure."
+weight: 81
+---
 
 This volume develops quantum mechanics and its mathematical structure. It emphasizes Hilbert space methods, operators, and physical interpretation.
 

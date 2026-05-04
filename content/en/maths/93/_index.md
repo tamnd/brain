@@ -1,4 +1,8 @@
-## Book Outline: 93 — Systems Theory; Control
+---
+title: "93. Systems Theory; Control"
+description: "This volume studies dynamical systems with inputs and outputs."
+weight: 93
+---
 
 This volume studies dynamical systems with inputs and outputs. It develops mathematical models, stability theory, and control design for engineered and natural systems.
 

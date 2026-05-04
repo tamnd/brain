@@ -1,4 +1,8 @@
-## Book Outline: 82 — Statistical Mechanics, Structure of Matter
+---
+title: "82. Statistical Mechanics, Structure of Matter"
+description: "This volume develops statistical descriptions of many-particle systems."
+weight: 82
+---
 
 This volume develops statistical descriptions of many-particle systems. It connects microscopic models with macroscopic thermodynamic behavior.
 

@@ -1,4 +1,8 @@
-## Book Outline: 91 — Game Theory, Economics, Social and Behavioral Sciences
+---
+title: "91. Game Theory, Economics, Social and Behavioral Sciences"
+description: "This volume studies strategic interaction, economic systems, and quantitative models of behavior."
+weight: 91
+---
 
 This volume studies strategic interaction, economic systems, and quantitative models of behavior. It connects optimization, probability, and equilibrium theory.
 

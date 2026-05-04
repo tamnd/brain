@@ -1,4 +1,8 @@
-## Book Outline: 26 — Real Functions
+---
+title: "26. Real Functions"
+description: "This volume studies functions of real variables with an emphasis on limits, continuity, differentiation, integration, and fine properties of..."
+weight: 26
+---
 
 This volume studies functions of real variables with an emphasis on limits, continuity, differentiation, integration, and fine properties of functions. It builds the rigorous core of real analysis.
 

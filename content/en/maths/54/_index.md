@@ -1,4 +1,8 @@
-## Book Outline: 54 — General Topology
+---
+title: "54. General Topology"
+description: "This volume studies topological spaces and continuous structures in full generality."
+weight: 54
+---
 
 This volume studies topological spaces and continuous structures in full generality. It provides the foundational language for modern analysis and geometry.
 

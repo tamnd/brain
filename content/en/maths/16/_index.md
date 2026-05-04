@@ -1,4 +1,8 @@
-## Book Outline: 16 — Associative Rings and Algebras
+---
+title: "16. Associative Rings and Algebras"
+description: "This volume studies rings and algebras with associative multiplication, without requiring commutativity."
+weight: 16
+---
 
 This volume studies rings and algebras with associative multiplication, without requiring commutativity. It develops structure theory, module theory, and connections to representation theory and geometry.
 

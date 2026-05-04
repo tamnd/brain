@@ -1,4 +1,8 @@
-## Book Outline: 15 — Linear and Multilinear Algebra; Matrix Theory
+---
+title: "15. Linear and Multilinear Algebra; Matrix Theory"
+description: "This volume develops vector spaces, linear maps, matrices, and multilinear structures."
+weight: 15
+---
 
 This volume develops vector spaces, linear maps, matrices, and multilinear structures. It serves as a core toolkit for nearly all areas of mathematics, physics, and computation.
 

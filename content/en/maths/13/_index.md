@@ -1,4 +1,8 @@
-## Book Outline: 13 — Commutative Algebra
+---
+title: "13. Commutative Algebra"
+description: "This volume studies commutative rings, ideals, modules, and their structural properties."
+weight: 13
+---
 
 This volume studies commutative rings, ideals, modules, and their structural properties. It forms the algebraic foundation for algebraic geometry and number theory.
 

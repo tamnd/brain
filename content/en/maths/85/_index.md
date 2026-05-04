@@ -1,4 +1,8 @@
-## Book Outline: 85 — Astronomy and Astrophysics
+---
+title: "85. Astronomy and Astrophysics"
+description: "This volume studies celestial objects, their dynamics, and the physical processes governing the universe."
+weight: 85
+---
 
 This volume studies celestial objects, their dynamics, and the physical processes governing the universe. It connects observation, theory, and computation.
 

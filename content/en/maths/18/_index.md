@@ -1,4 +1,8 @@
-## Book Outline: 18 — Category Theory; Homological Algebra
+---
+title: "18. Category Theory; Homological Algebra"
+description: "This volume develops category theory as a unifying language and homological algebra as a computational framework for algebraic structures."
+weight: 18
+---
 
 This volume develops category theory as a unifying language and homological algebra as a computational framework for algebraic structures. It connects algebra, topology, geometry, and logic through morphisms and functorial methods.
 

@@ -1,4 +1,8 @@
-## Book Outline: 97 — Mathematics Education
+---
+title: "97. Mathematics Education"
+description: "This volume studies the theory and practice of teaching and learning mathematics."
+weight: 97
+---
 
 This volume studies the theory and practice of teaching and learning mathematics. It integrates cognitive science, pedagogy, curriculum design, and assessment.
 

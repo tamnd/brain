@@ -1,4 +1,8 @@
-## Book Outline: 28 — Measure and Integration
+---
+title: "28. Measure and Integration"
+description: "This volume develops measure theory and integration in a general setting."
+weight: 28
+---
 
 This volume develops measure theory and integration in a general setting. It extends classical calculus to more flexible notions of size, convergence, and integrability.
 

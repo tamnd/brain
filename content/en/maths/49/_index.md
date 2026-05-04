@@ -1,4 +1,8 @@
-## Book Outline: 49 — Calculus of Variations and Optimal Control; Optimization
+---
+title: "49. Calculus of Variations and Optimal Control; Optimization"
+description: "This volume studies optimization of functionals and systems."
+weight: 49
+---
 
 This volume studies optimization of functionals and systems. It connects analysis, geometry, control theory, and computation.
 

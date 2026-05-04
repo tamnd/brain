@@ -1,4 +1,8 @@
-## Book Outline: 37 — Dynamical Systems and Ergodic Theory
+---
+title: "37. Dynamical Systems and Ergodic Theory"
+description: "This volume studies systems that evolve over time, focusing on long-term behavior, stability, and statistical properties."
+weight: 37
+---
 
 This volume studies systems that evolve over time, focusing on long-term behavior, stability, and statistical properties. It connects analysis, topology, geometry, and probability.
 

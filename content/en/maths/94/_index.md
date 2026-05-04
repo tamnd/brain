@@ -1,4 +1,8 @@
-## Book Outline: 94 — Information and Communication; Circuits
+---
+title: "94. Information and Communication; Circuits"
+description: "This volume studies information theory, communication systems, and circuit models."
+weight: 94
+---
 
 This volume studies information theory, communication systems, and circuit models. It connects probability, signal processing, and networked systems.
 

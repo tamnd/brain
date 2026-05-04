@@ -1,4 +1,8 @@
-## Book Outline: 47 — Operator Theory
+---
+title: "47. Operator Theory"
+description: "This volume studies linear operators on Banach and Hilbert spaces, with emphasis on spectral properties, structure, and applications in analysis and..."
+weight: 47
+---
 
 This volume studies linear operators on Banach and Hilbert spaces, with emphasis on spectral properties, structure, and applications in analysis and physics.
 

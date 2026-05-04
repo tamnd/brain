@@ -1,4 +1,8 @@
-## Book Outline: 68 — Computer Science
+---
+title: "68. Computer Science"
+description: "This volume studies theoretical and practical foundations of computation."
+weight: 68
+---
 
 This volume studies theoretical and practical foundations of computation. It connects algorithms, systems, and formal models with mathematical rigor.
 

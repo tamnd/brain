@@ -1,4 +1,8 @@
-## Book Outline: 62 — Statistics
+---
+title: "62. Statistics"
+description: "This volume studies statistical inference, estimation, and data analysis."
+weight: 62
+---
 
 This volume studies statistical inference, estimation, and data analysis. It builds on probability theory to develop methods for learning from data.
 

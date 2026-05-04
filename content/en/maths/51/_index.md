@@ -1,4 +1,8 @@
-## Book Outline: 51 — Geometry
+---
+title: "51. Geometry"
+description: "This volume studies geometric structures, transformations, and invariants."
+weight: 51
+---
 
 This volume studies geometric structures, transformations, and invariants. It covers classical geometry, synthetic methods, and modern structural viewpoints.
 
