@@ -35,27 +35,32 @@
     <p class="cal-page__sub">{{ len $entries }} notes</p>
   </header>
 
-  <!-- Month calendar -->
-  <div class="cal-wrap">
-    <div class="cal-nav">
-      <button class="cal-nav__btn" id="js-cal-prev" aria-label="Previous month">&#8592;</button>
-      <span class="cal-nav__label" id="js-cal-label"></span>
-      <button class="cal-nav__btn" id="js-cal-next" aria-label="Next month">&#8594;</button>
+  <div class="cal-body">
+    <!-- Left: month calendar -->
+    <div class="cal-wrap">
+      <div class="cal-nav">
+        <button class="cal-nav__btn" id="js-cal-prev" aria-label="Previous month">&#8592;</button>
+        <span class="cal-nav__label" id="js-cal-label"></span>
+        <button class="cal-nav__btn" id="js-cal-next" aria-label="Next month">&#8594;</button>
+      </div>
+      <div class="cal-dow">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+        <span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="cal-grid" id="js-cal-grid"></div>
     </div>
-    <div class="cal-dow">
-      <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
-      <span>Thu</span><span>Fri</span><span>Sat</span>
-    </div>
-    <div class="cal-grid" id="js-cal-grid"></div>
-  </div>
 
-  <!-- Posts for selected day -->
-  <div class="cal-posts" id="js-cal-posts" style="display:none">
-    <div class="cal-posts__header">
-      <strong class="cal-posts__date" id="js-posts-date"></strong>
-      <span class="cal-posts__count" id="js-posts-count"></span>
+    <!-- Right (desktop) / Below (mobile): day entries -->
+    <div class="cal-posts" id="js-cal-posts">
+      <div class="cal-posts__empty" id="js-posts-empty">Pick a day</div>
+      <div class="cal-posts__filled" id="js-posts-filled" style="display:none">
+        <div class="cal-posts__header">
+          <strong class="cal-posts__date" id="js-posts-date"></strong>
+          <span class="cal-posts__count" id="js-posts-count"></span>
+        </div>
+        <div class="cal-posts__body" id="js-posts-body"></div>
+      </div>
     </div>
-    <div class="cal-posts__body" id="js-posts-body"></div>
   </div>
 </div>
 
@@ -89,12 +94,13 @@
     curYear = now.getFullYear(); curMonth = now.getMonth();
   }
 
-  var gridEl  = document.getElementById("js-cal-grid");
-  var labelEl = document.getElementById("js-cal-label");
-  var postsEl = document.getElementById("js-cal-posts");
-  var dateEl  = document.getElementById("js-posts-date");
-  var countEl = document.getElementById("js-posts-count");
-  var bodyEl  = document.getElementById("js-posts-body");
+  var gridEl    = document.getElementById("js-cal-grid");
+  var labelEl   = document.getElementById("js-cal-label");
+  var emptyEl   = document.getElementById("js-posts-empty");
+  var filledEl  = document.getElementById("js-posts-filled");
+  var dateEl    = document.getElementById("js-posts-date");
+  var countEl   = document.getElementById("js-posts-count");
+  var bodyEl    = document.getElementById("js-posts-body");
 
   function pad(n) { return n < 10 ? "0"+n : ""+n; }
 
@@ -152,7 +158,10 @@
       }
     }
     var posts = byDate[key];
-    if (!posts || !posts.length) { postsEl.style.display = "none"; return; }
+    if (!posts || !posts.length) {
+      emptyEl.style.display = ""; filledEl.style.display = "none"; return;
+    }
+    emptyEl.style.display = "none"; filledEl.style.display = "";
 
     var sp = key.split("-");
     var dateObj = new Date(+sp[0], +sp[1]-1, +sp[2]);
@@ -218,8 +227,10 @@
       bodyEl.appendChild(grp);
     }
 
-    postsEl.style.display = "block";
-    postsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    /* on mobile, scroll posts into view; on desktop they're always visible */
+    if (window.innerWidth < 900) {
+      filledEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   }
 
   document.getElementById("js-cal-prev").addEventListener("click", function() {

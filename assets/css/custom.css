@@ -1574,10 +1574,18 @@ a.hextra-sidebar-active-item {
   margin: 0;
 }
 
+/* ── two-column body: calendar | entries ── */
+.cal-body {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  gap: 0 3rem;
+  align-items: start;
+}
+
 /* ── calendar wrapper: compact, fixed width ── */
 .cal-wrap {
-  width: 100%;
-  max-width: 16rem;
+  position: sticky;
+  top: 5rem;
 }
 
 /* ── month nav ── */
@@ -1720,11 +1728,24 @@ a.hextra-sidebar-active-item {
 }
 .cal-cell--sel::before { display: none; }
 
-/* ── posts panel (below calendar) ── */
+/* ── posts panel (right col on desktop, below on mobile) ── */
 .cal-posts {
-  margin-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
+  min-height: 16rem;
+}
+
+.cal-posts__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12rem;
+  color: var(--muted-fg);
+  font-size: 0.875rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.cal-posts__filled {
+  /* no extra styles needed */
 }
 
 .cal-posts__header {
@@ -1827,26 +1848,35 @@ a.hextra-sidebar-active-item {
 }
 
 /* ── responsive ── */
+@media (max-width: 700px) {
+  /* mobile/small tablet: stack calendar above entries */
+  .cal-body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem 0;
+  }
+  .cal-wrap { position: static; }
+  .cal-posts {
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+  .cal-posts__empty { display: none; }
+}
+
 @media (max-width: 480px) {
   .cal-page { padding: 1rem 0.875rem 2.5rem; }
   .cal-page__title { font-size: 1.25rem; }
-  /* calendar fills width on small phones */
-  .cal-wrap { max-width: 100%; }
   .cal-entry { grid-template-columns: 2.75rem minmax(0,1fr); gap: 0.5rem; }
   .cal-entry__path { display: none; }
   .cal-entry__meta { display: none; }
 }
 
-@media (min-width: 481px) and (max-width: 640px) {
+@media (min-width: 481px) and (max-width: 700px) {
   .cal-page { padding: 1.25rem 1rem 3rem; }
-  .cal-wrap { max-width: 18rem; }
   .cal-entry { grid-template-columns: 3rem minmax(0,1fr) auto; gap: 0.5rem; }
   .cal-entry__path { display: none; }
-  .cal-entry__meta { font-size: 0.625rem; }
 }
 
-@media (min-width: 641px) and (max-width: 960px) {
-  /* tablet: calendar a bit wider, hide heavy meta */
-  .cal-wrap { max-width: 18rem; }
+@media (min-width: 701px) and (max-width: 960px) {
+  .cal-body { grid-template-columns: 16rem 1fr; gap: 0 2rem; }
   .cal-entry__meta { font-size: 0.6875rem; }
 }
