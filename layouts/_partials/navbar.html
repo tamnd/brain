@@ -9,6 +9,8 @@
 
 {{- $page := . -}}
 {{- $iconHeight := 24 -}}
+{{- $graphURL := relLangURL "graph/" -}}
+{{- $graphActive := eq (strings.TrimSuffix "/" $page.RelPermalink) (strings.TrimSuffix "/" $graphURL) -}}
 
 <div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
   <div
