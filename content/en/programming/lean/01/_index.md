@@ -2,6 +2,7 @@
 title: "Chapter 1. Core Language and Environment"
 description: "This chapter establishes the operational model of the Lean system."
 tags: ["lean", "proof-assistant", "type-theory"]
+weight: 1000
 ---
 
 This chapter establishes the operational model of the Lean system. The goal is to make the interaction between code, types, and proofs explicit at a small scale, so that later constructions behave predictably. Each component introduced here appears throughout the rest of the book, often in more complex forms, so the emphasis is on exact behavior rather than surface syntax.
