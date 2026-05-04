@@ -5,18 +5,20 @@
     <div class="content">
       {{ if .Title }}
       <div class="brain-page-header">
-        <h1>{{ .Title }}</h1>
+        <div class="brain-page-header__title-row">
+          <h1>{{ .Title }}</h1>
+          {{ partial "components/graph-link.html" . }}
+        </div>
         {{ with .Description }}<p class="brain-page-header__desc">{{ . }}</p>{{ end }}
+        {{ if .Params.tags }}
         <div class="brain-page-header__meta">
-          {{ if .Params.tags }}
           <div class="brain-page-header__tags">
             {{ range .Params.tags }}
             <a href="{{ (site.GetPage (printf "/tags/%s" . )).RelPermalink }}" class="brain-tag">{{ . }}</a>
             {{ end }}
           </div>
-          {{ end }}
-          {{ partial "components/graph-link.html" . }}
         </div>
+        {{ end }}
       </div>
       {{ end }}
       {{ .Content }}
