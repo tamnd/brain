@@ -4,112 +4,28 @@
 {{- $pages = where $pages ".Title" "ne" "" -}}
 {{- $pages = $pages.ByLastmod.Reverse -}}
 
-{{/* Hour sub-grouping threshold: if a single day has more than this many posts,
-     break it down further into hour buckets. */}}
-{{- $hourThreshold := 6 -}}
-
 <main id="content" class="home-feed">
   <header class="home-feed__header">
-    <div class="home-feed__header-row">
-      <p class="home-feed__tagline">What you learn is what you note.</p>
-      <nav class="view-switcher" role="group" aria-label="View mode">
-        {{/* List and Card views kept in markup but hidden until re-enabled */}}
-        <button class="view-btn" data-view="list" title="List" hidden>
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="2.5" width="13" height="1.5" rx=".75" fill="currentColor"/><rect x="1" y="6.75" width="13" height="1.5" rx=".75" fill="currentColor"/><rect x="1" y="11" width="13" height="1.5" rx=".75" fill="currentColor"/></svg>
-          List
-        </button>
-        <button class="view-btn view-btn--active" data-view="compact" title="Compact">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="2" width="13" height="1" rx=".5" fill="currentColor"/><rect x="1" y="4.5" width="13" height="1" rx=".5" fill="currentColor"/><rect x="1" y="7" width="13" height="1" rx=".5" fill="currentColor"/><rect x="1" y="9.5" width="13" height="1" rx=".5" fill="currentColor"/><rect x="1" y="12" width="13" height="1" rx=".5" fill="currentColor"/></svg>
-          Compact
-        </button>
-        <button class="view-btn" data-view="card" title="Cards" hidden>
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1" fill="currentColor"/><rect x="8" y="1" width="6" height="6" rx="1" fill="currentColor"/><rect x="1" y="8" width="6" height="6" rx="1" fill="currentColor"/><rect x="8" y="8" width="6" height="6" rx="1" fill="currentColor"/></svg>
-          Cards
-        </button>
-      </nav>
-    </div>
+    <p class="home-feed__tagline">What you learn is what you note.</p>
   </header>
 
-  {{/* ── List view (kept, currently hidden) ───────────────────────────── */}}
-  <div class="view-panel view-panel--list home-feed__list" hidden>
-    {{ range $pages }}{{ partial "feed-item.html" . }}{{ end }}
-  </div>
-
-  {{/* ── Compact view: grouped by day, hour sub-groups when day is dense ─ */}}
-  <div class="view-panel view-panel--compact">
-    {{- range $pages.GroupByLastmod "January 2, 2006" -}}
-    {{- $dayPages := .Pages -}}
-    <section class="compact-group">
-      <h2 class="compact-group__key">{{ .Key }}</h2>
-
-      {{- if gt (len $dayPages) $hourThreshold -}}
-        {{/* Dense day: bucket into hours */}}
-        {{- range $dayPages.GroupByLastmod "15" -}}
-        <div class="compact-hour">
-          <span class="compact-hour__label">{{ .Key }}:00</span>
-          {{- range .Pages -}}
-          {{- $crumbs := slice -}}
-          {{- range .Ancestors.Reverse -}}
-            {{- if not .IsHome -}}{{- $crumbs = $crumbs | append . -}}{{- end -}}
-          {{- end -}}
-          <a href="{{ .RelPermalink }}" class="compact-row">
-            <span class="compact-row__title">{{ .Title }}</span>
-            {{- if $crumbs -}}
-            <span class="compact-row__path">{{- range $i, $a := $crumbs -}}{{- if gt $i 0 -}} › {{- end -}}{{ partial "utils/title" $a }}{{- end -}}</span>
-            {{- end -}}
-            <span class="compact-row__time">{{ .Lastmod.Format "15:04" }}{{- if gt .ReadingTime 0 }} · {{ .ReadingTime }}m{{- end -}}</span>
-          </a>
-          {{- end -}}
-        </div>
-        {{- end -}}
-
-      {{- else -}}
-        {{/* Sparse day: flat list */}}
-        {{- range $dayPages -}}
-        {{- $crumbs := slice -}}
-        {{- range .Ancestors.Reverse -}}
-          {{- if not .IsHome -}}{{- $crumbs = $crumbs | append . -}}{{- end -}}
-        {{- end -}}
-        <a href="{{ .RelPermalink }}" class="compact-row">
-          <span class="compact-row__title">{{ .Title }}</span>
-          {{- if $crumbs -}}
-          <span class="compact-row__path">{{- range $i, $a := $crumbs -}}{{- if gt $i 0 -}} › {{- end -}}{{ partial "utils/title" $a }}{{- end -}}</span>
-          {{- end -}}
-          {{- if gt .ReadingTime 0 -}}<span class="compact-row__time">{{ .ReadingTime }}m</span>{{- end -}}
-        </a>
-        {{- end -}}
-      {{- end -}}
-
-    </section>
+  {{- range $pages.GroupByLastmod "January 2, 2006" -}}
+  <section class="compact-group">
+    <h2 class="compact-group__key">{{ .Key }}</h2>
+    {{- range .Pages -}}
+    {{- $crumbs := slice -}}
+    {{- range .Ancestors.Reverse -}}
+      {{- if not .IsHome -}}{{- $crumbs = $crumbs | append . -}}{{- end -}}
     {{- end -}}
-  </div>
-
-  {{/* ── Card view (kept, currently hidden) ───────────────────────────── */}}
-  <div class="view-panel view-panel--card" hidden>
-    <div class="feed-grid">
-      {{ range $pages }}{{ partial "feed-item.html" . }}{{ end }}
-    </div>
-  </div>
+    <a href="{{ .RelPermalink }}" class="compact-row">
+      <span class="compact-row__title">{{ .Title }}</span>
+      {{- if $crumbs -}}
+      <span class="compact-row__path">{{- range $i, $a := $crumbs -}}{{- if gt $i 0 -}} › {{- end -}}{{ partial "utils/title" $a }}{{- end -}}</span>
+      {{- end -}}
+      {{- if gt .ReadingTime 0 -}}<span class="compact-row__time">{{ .ReadingTime }}m</span>{{- end -}}
+    </a>
+    {{- end -}}
+  </section>
+  {{- end -}}
 </main>
-
-<script>
-(function () {
-  var stored = localStorage.getItem('brain-view') || 'compact';
-  function setView(v) {
-    document.querySelectorAll('.view-panel').forEach(function (p) {
-      p.hidden = !p.classList.contains('view-panel--' + v);
-    });
-    document.querySelectorAll('.view-btn').forEach(function (b) {
-      b.classList.toggle('view-btn--active', b.dataset.view === v);
-    });
-    var feed = document.querySelector('.home-feed');
-    if (feed) feed.dataset.view = v;
-    localStorage.setItem('brain-view', v);
-  }
-  document.querySelectorAll('.view-btn:not([hidden])').forEach(function (b) {
-    b.addEventListener('click', function () { setView(b.dataset.view); });
-  });
-  setView(stored);
-}());
-</script>
 {{ end }}
