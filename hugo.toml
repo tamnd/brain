@@ -79,16 +79,16 @@ defaultContentLanguageInSubdir = false
     enable = true
 
 [[menu.main]]
-  name = "Mindmap"
-  weight = -1
-  [menu.main.params]
-    type = "tree"
-
-[[menu.main]]
   name = "Graph"
   weight = 0
   [menu.main.params]
     type = "graph"
+
+[[menu.main]]
+  name = "Mindmap"
+  weight = 0.5
+  [menu.main.params]
+    type = "tree"
 
 [[menu.main]]
   name = "Search"
