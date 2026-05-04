@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -20,12 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
+          fetch-depth: 0  # required for enableGitInfo (lastmod from git history)
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -36,14 +31,20 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest"
+          hugo-version: "0.160.1"
           extended: true
 
-      - name: Update Hextra theme
-        run: hugo mod get github.com/imfing/hextra@latest && hugo mod tidy
+      # Cache processed assets (CSS pipeline output, image transforms).
+      # Key includes go.sum so it busts when theme changes.
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('go.sum', 'assets/**', 'layouts/**') }}
+          restore-keys: hugo-resources-
 
       - name: Build
-        run: hugo --minify
+        run: hugo --minify --gc
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
