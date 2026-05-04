@@ -38,7 +38,7 @@
 {{- end -}}
 {{- range $tag, $_ := $tagSet -}}
   {{- $tagID := printf "tag:%s" $tag -}}
-  {{- $tagURL := printf "%stags/%s/" (relLangURL "") $tag -}}
+  {{- $tagURL := printf "%stags/%s/" (relLangURL "") (urlize $tag) -}}
   {{- $tagNode := dict
         "id" $tagID
         "url" $tagURL
@@ -66,7 +66,7 @@
     <div class="brain-graph__header-text">
       <h1 class="brain-graph__title">Graph</h1>
       <p class="brain-graph__subtitle">
-        <span id="brain-graph-stats">{{ len $nodes }} nodes · {{ len $allLinks }} edges</span>
+        <span id="brain-graph-stats">{{ len $nodes }} nodes · {{ len $links }} edges</span>
       </p>
     </div>
     <div class="brain-graph__controls">
@@ -213,9 +213,13 @@
       .scaleExtent([0.15, 8])
       .on('zoom', (event) => {
         root.attr('transform', event.transform);
-        // Show all labels when zoomed in
         const k = event.transform.k;
-        labelSel.style('opacity', k > 1.6 ? 1 : (d => d.kind === 'section' ? 1 : 0));
+        // At low zoom: show only section labels. At high zoom: show all labels.
+        labelSel.style('opacity', d => {
+          if (k > 1.6) return 1;
+          if (d.kind === 'section') return 1;
+          return 0;
+        });
       });
     svg.call(zoom);
 
