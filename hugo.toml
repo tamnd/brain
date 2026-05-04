@@ -79,38 +79,38 @@ defaultContentLanguageInSubdir = false
     enable = true
 
 [[menu.main]]
-  name = "Calendar"
-  weight = -0.5
-  [menu.main.params]
-    type = "calendar"
-
-[[menu.main]]
   name = "Graph"
-  weight = 0
+  weight = 1
   [menu.main.params]
     type = "graph"
 
 [[menu.main]]
   name = "Mindmap"
-  weight = 0.5
+  weight = 2
   [menu.main.params]
     type = "tree"
 
 [[menu.main]]
+  name = "Calendar"
+  weight = 3
+  [menu.main.params]
+    type = "calendar"
+
+[[menu.main]]
   name = "Search"
-  weight = 1
+  weight = 4
   [menu.main.params]
     type = "search"
 
 [[menu.main]]
   name = "Theme"
-  weight = 2
+  weight = 5
   [menu.main.params]
     type = "theme-toggle"
 
 [[menu.main]]
   name = "Language"
-  weight = 3
+  weight = 6
   [menu.main.params]
     type = "language-switch"
 
