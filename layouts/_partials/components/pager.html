@@ -1,0 +1,27 @@
+{{- $prev := .PrevInSection -}}
+{{- $next := .NextInSection -}}
+
+{{- if eq .Params.prev false }}{{ $prev = false }}{{ else }}
+  {{- with .Params.prev -}}{{- with $.Site.GetPage . -}}{{ $prev = . }}{{- end -}}{{- end -}}
+{{- end -}}
+{{- if eq .Params.next false }}{{ $next = false }}{{ else }}
+  {{- with .Params.next -}}{{- with $.Site.GetPage . -}}{{ $next = . }}{{- end -}}{{- end -}}
+{{- end -}}
+
+{{- if or $prev $next -}}
+<nav class="brain-pager" aria-label="Page navigation">
+  {{- if $prev -}}
+  <a href="{{ $prev.RelPermalink }}" class="brain-pager__btn brain-pager__btn--prev">
+    <span class="brain-pager__label">← Previous</span>
+    <span class="brain-pager__title">{{ partial "utils/title" $prev }}</span>
+  </a>
+  {{- else -}}<span></span>{{- end -}}
+
+  {{- if $next -}}
+  <a href="{{ $next.RelPermalink }}" class="brain-pager__btn brain-pager__btn--next">
+    <span class="brain-pager__label">Next →</span>
+    <span class="brain-pager__title">{{ partial "utils/title" $next }}</span>
+  </a>
+  {{- end -}}
+</nav>
+{{- end -}}

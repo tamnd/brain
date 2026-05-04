@@ -16,10 +16,12 @@
       {{- end -}}
     </div>
   </main>
+
 {{ else if eq .Kind "term" }}
   {{- $pages := .Pages.ByLastmod.Reverse -}}
   <main id="content" class="home-feed">
     <header class="home-feed__header home-feed__header--tag">
+      <a href="{{ (site.GetPage "/tags").RelPermalink }}" class="brain-back-link">← All tags</a>
       <div class="home-feed__tag-label">Tag</div>
       <h1 class="home-feed__title">{{ .Title }}</h1>
       <p class="home-feed__subtitle">{{ len $pages }} {{ if eq (len $pages) 1 }}note{{ else }}notes{{ end }}</p>
@@ -28,6 +30,7 @@
       {{ range $pages }}{{ partial "feed-item.html" . }}{{ end }}
     </div>
   </main>
+
 {{ else }}
   <div class="brain-single-page">
     <main id="content" class="brain-single-content">
@@ -48,6 +51,30 @@
         {{ end }}
         {{ .Content }}
       </div>
+
+      {{/* Sub-pages listing for section index pages */}}
+      {{- $children := .Pages.ByWeight -}}
+      {{- if $children -}}
+      <div class="section-children">
+        {{- range $children -}}
+        <a href="{{ .RelPermalink }}" class="section-child">
+          <div class="section-child__main">
+            <span class="section-child__title">{{ partial "utils/title" . }}</span>
+            {{- with .Description -}}<span class="section-child__desc">{{ . }}</span>{{- end -}}
+          </div>
+          <div class="section-child__meta">
+            {{- if .IsSection -}}
+              <span class="section-child__count">{{ len .Pages }} pages</span>
+            {{- else if gt .WordCount 0 -}}
+              <span class="section-child__count">{{ .ReadingTime }} min</span>
+            {{- end -}}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+        {{- end -}}
+      </div>
+      {{- end -}}
+
       {{ partial "components/last-updated.html" . }}
       {{- if (site.Params.page.displayPagination | default true) -}}
         {{- partial "components/pager.html" . -}}

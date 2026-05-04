@@ -28,19 +28,15 @@
       {{- $page.Lastmod.Format "Jan 2, 2006" -}}
     </time>
     {{ end }}
-
     {{ if gt $page.WordCount 0 }}
     <span class="feed-card__footer-sep">·</span>
     <span class="feed-card__meta">{{ $page.ReadingTime }} min read</span>
     {{ end }}
-
     {{ if $page.Params.tags }}
     <span class="feed-card__footer-sep">·</span>
-    {{- $tags := $page.Params.tags -}}{{- $max := 3 -}}
-    {{- range $i, $tag := $tags -}}{{- if lt $i $max -}}
-    <a href="{{ (site.GetPage (printf "/tags/%s" $tag)).RelPermalink }}" class="brain-tag">{{ $tag }}</a>
-    {{- end -}}{{- end -}}
-    {{ if gt (len $tags) $max }}<span class="brain-tag brain-tag--more">+{{ sub (len $tags) $max }}</span>{{ end }}
+    {{- range $page.Params.tags -}}
+    <a href="{{ (site.GetPage (printf "/tags/%s" .)).RelPermalink }}" class="brain-tag">{{ . }}</a>
+    {{- end -}}
     {{ end }}
   </footer>
 

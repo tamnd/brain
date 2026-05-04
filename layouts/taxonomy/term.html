@@ -3,6 +3,7 @@
 
 <main id="content" class="home-feed">
   <header class="home-feed__header home-feed__header--tag">
+    <a href="{{ (site.GetPage "/tags").RelPermalink }}" class="brain-back-link">← All tags</a>
     <div class="home-feed__tag-label">Tag</div>
     <h1 class="home-feed__title">{{ .Title }}</h1>
     <p class="home-feed__subtitle">{{ len $pages }} {{ if eq (len $pages) 1 }}note{{ else }}notes{{ end }}</p>
