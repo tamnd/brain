@@ -1,4 +1,6 @@
-# Algorithm Cookbook
+---
+title: "Algorithm Cookbook"
+---
 
 ## Chapter 1. Foundations
 

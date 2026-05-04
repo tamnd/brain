@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{- $pages := where site.RegularPages "Section" "ne" "" -}}
 {{- $pages = where $pages "Params.draft" "ne" true -}}
+{{- $pages = where $pages ".Title" "ne" "" -}}
 {{- $pages = $pages.ByLastmod.Reverse -}}
 
 <main id="content" class="home-feed">
@@ -28,10 +29,12 @@
           </div>
           {{ end }}
         </div>
+        {{ if not .Lastmod.IsZero }}
         <time class="home-feed__time" datetime="{{ .Lastmod.Format "2006-01-02T15:04" }}">
           <span class="home-feed__time-date">{{ .Lastmod.Format "Jan 2, 2006" }}</span>
           <span class="home-feed__time-clock">{{ .Lastmod.Format "15:04" }}</span>
         </time>
+        {{ end }}
       </div>
     </article>
     {{ end }}

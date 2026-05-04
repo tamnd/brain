@@ -1,4 +1,6 @@
-# System Design
+---
+title: "System Design"
+---
 
 ## Chapter 1. Foundations
 

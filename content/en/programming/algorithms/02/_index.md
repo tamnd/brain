@@ -1,4 +1,6 @@
-# Chapter 2. Arrays and Strings
+---
+title: "Chapter 2. Arrays and Strings"
+---
 
 This chapter studies linear data as the primary substrate for algorithm design. Arrays and strings appear simple, but most high performance solutions reduce to controlled traversal, local state maintenance, and careful boundary handling on these structures. The objective here is to make these operations predictable and composable.
 

@@ -1,4 +1,6 @@
-# Lean
+---
+title: "Lean"
+---
 
 #### Chapter 1. Core Language and Environment
 
@@ -597,4 +599,3 @@
 23. Deployment scenario
 24. Maintenance workflow
 25. Lessons learned
-

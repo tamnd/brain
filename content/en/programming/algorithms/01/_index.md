@@ -1,4 +1,6 @@
-# Chapter 1. Foundations
+---
+title: "Chapter 1. Foundations"
+---
 
 This chapter defines how you think about algorithms before you write any code. It establishes a small set of rules for describing problems, reasoning about correctness, and estimating cost. Every later technique relies on these rules, so the focus here stays on precision and repeatability.
 
