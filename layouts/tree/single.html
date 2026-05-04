@@ -158,8 +158,10 @@
       .attr('width', '100%').attr('height', '100%')
       .attr('viewBox', [0, 0, width, height]);
 
-    const g = svg.append('g').attr('class', 'tree-root')
-      .attr('transform', `translate(${margin.left},${margin.top})`);
+    // Two-layer structure: zoomLayer holds the zoom transform; g holds the
+    // layout offset (so updates don't clobber zoom state).
+    const zoomLayer = svg.append('g').attr('class', 'tree-zoom');
+    const g = zoomLayer.append('g').attr('class', 'tree-root');
     const linkLayer = g.append('g').attr('class', 'tree-links');
     const nodeLayer = g.append('g').attr('class', 'tree-nodes');
 
@@ -175,18 +177,13 @@
     function update(source) {
       tree(root);
 
-      // Compute extents
+      // Compute x extents to vertically center the root
       let x0 = Infinity, x1 = -Infinity;
       root.each(d => { if (d.x < x0) x0 = d.x; if (d.x > x1) x1 = d.x; });
-      const renderHeight = (x1 - x0) + margin.top + margin.bottom;
 
-      // Resize svg viewBox vertically to fit content
-      const minHeight = wrap.clientHeight;
-      const targetHeight = Math.max(minHeight, renderHeight);
-      svg.attr('viewBox', [0, 0, width, targetHeight]).attr('height', targetHeight);
-
-      // Shift root group so the topmost node starts at margin.top
-      g.attr('transform', `translate(${margin.left},${margin.top - x0})`);
+      // Center the tree vertically in the viewport
+      const offsetY = (height / 2) - ((x0 + x1) / 2);
+      g.attr('transform', `translate(${margin.left},${offsetY})`);
 
       const nodes = root.descendants();
       const links = root.links();
@@ -224,32 +221,20 @@
         .attr('class', 'tree-node__leaf')
         .attr('r', 3);
 
-      // Label
-      nodeEnter.append('text')
+      // Label (with optional count for sections)
+      const labelEnter = nodeEnter.append('text')
         .attr('class', 'tree-node__label')
         .attr('dy', '0.32em')
         .attr('x', d => (d.children || d._children) ? -10 : 10)
         .attr('text-anchor', d => (d.children || d._children) ? 'end' : 'start')
-        .text(d => d.data.name)
         .on('click', (event, d) => {
-          if (d.data.kind === 'page' && d.data.url) {
-            window.location.href = d.data.url;
-          } else if (d.data.kind === 'section' && d.data.url) {
-            // Section label: open the index page
-            window.location.href = d.data.url;
-          }
+          if (d.data.url) window.location.href = d.data.url;
         });
-
-      // Sub-count badge for sections
-      nodeEnter.filter(d => d.data.kind === 'section' && d.data.subCount > 0)
-        .append('text')
+      labelEnter.append('tspan').text(d => d.data.name);
+      labelEnter.filter(d => d.data.kind === 'section' && d.data.subCount > 0)
+        .append('tspan')
         .attr('class', 'tree-node__count')
-        .attr('dy', '0.32em')
-        .attr('x', d => (d.children || d._children) ? -10 : 10)
-        .attr('text-anchor', d => (d.children || d._children) ? 'end' : 'start')
-        .attr('dx', d => (d.children || d._children) ? -4 : 4)
-        // Position count after/before label; we approximate via dx offset relative to label
-        .text(d => '· ' + d.data.subCount);
+        .text(d => ' · ' + d.data.subCount);
 
       const nodeUpdate = nodeEnter.merge(node);
       nodeUpdate.transition().duration(300)
@@ -297,11 +282,7 @@
 
     // ===== Zoom & pan =====
     const zoom = d3.zoom().scaleExtent([0.2, 3])
-      .on('zoom', (event) => {
-        // Zoom transforms apply on top of the layout transform on g; use a wrapper.
-        g.attr('transform',
-          `${event.transform} translate(${margin.left},${margin.top - (root.descendants().reduce((m,d)=>Math.min(m,d.x), Infinity))})`);
-      });
+      .on('zoom', (event) => { zoomLayer.attr('transform', event.transform); });
     svg.call(zoom);
 
     // ===== Buttons =====

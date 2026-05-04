@@ -11,6 +11,8 @@
 {{- $iconHeight := 24 -}}
 {{- $graphURL := relLangURL "graph/" -}}
 {{- $graphActive := eq (strings.TrimSuffix "/" $page.RelPermalink) (strings.TrimSuffix "/" $graphURL) -}}
+{{- $treeURL := relLangURL "tree/" -}}
+{{- $treeActive := eq (strings.TrimSuffix "/" $page.RelPermalink) (strings.TrimSuffix "/" $treeURL) -}}
 
 <div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
   <div
@@ -35,6 +37,24 @@
 
         {{- if eq .Params.type "link" -}}
           {{- partial "navbar-link.html" (dict "currentPage" $currentPage "link" $link "external" $external "item" . "icon" .Params.icon) -}}
+        {{- else if eq .Params.type "tree" -}}
+          <a
+            href="{{ $treeURL }}"
+            class="brain-nav-graph hx:p-2 hx:text-current{{ if $treeActive }} brain-nav-graph--active{{ end }}"
+            title="Mindmap"
+            aria-label="Mindmap"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="9.5" width="6" height="5" rx="1"/>
+              <rect x="16" y="3" width="6" height="5" rx="1"/>
+              <rect x="16" y="10.5" width="6" height="5" rx="1"/>
+              <rect x="16" y="18" width="6" height="5" rx="1"/>
+              <path d="M8 12h3"/>
+              <path d="M11 12V5.5h5"/>
+              <path d="M11 12h5"/>
+              <path d="M11 12v8.5h5"/>
+            </svg>
+          </a>
         {{- else if eq .Params.type "graph" -}}
           <a
             href="{{ $graphURL }}"

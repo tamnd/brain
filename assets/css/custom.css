@@ -1347,3 +1347,201 @@ a.hextra-sidebar-active-item {
   .brain-graph__controls { width: 100%; }
   .brain-graph__hint { display: none; }
 }
+
+
+/* ===== Tree (mindmap) page =============================================== */
+
+.brain-tree-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4rem);
+  width: 100%;
+}
+
+.brain-tree__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .brain-tree__header { padding: 1.5rem 2.5rem 1rem; }
+}
+
+.brain-tree__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--fg);
+}
+
+.brain-tree__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.brain-tree__controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.brain-tree__search {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  width: 12rem;
+  transition: border-color 0.15s;
+}
+.brain-tree__search:focus { outline: none; border-color: var(--fg); }
+.brain-tree__search::placeholder { color: var(--muted-fg); }
+
+.brain-tree__btn {
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted-fg);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+.brain-tree__btn:hover {
+  color: var(--fg);
+  border-color: var(--border-strong);
+  background: var(--muted);
+}
+
+.brain-tree__canvas-wrap {
+  flex: 1 1 auto;
+  position: relative;
+  width: 100%;
+  min-height: 30rem;
+  overflow: hidden;
+  cursor: grab;
+}
+.brain-tree__canvas-wrap:active { cursor: grabbing; }
+
+.brain-tree__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Links between nodes */
+.brain-tree__svg .tree-link {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-opacity: 0.55;
+  stroke-width: 1.1;
+}
+
+/* Node groups */
+.brain-tree__svg .tree-node {
+  cursor: default;
+}
+.brain-tree__svg .tree-node--has-children { cursor: pointer; }
+
+/* Toggle marker — hollow circle that fills when collapsed */
+.brain-tree__svg .tree-node__toggle {
+  fill: var(--bg);
+  stroke: var(--muted-fg);
+  stroke-width: 1.5;
+  cursor: pointer;
+  transition: fill 0.15s, stroke 0.15s;
+}
+.brain-tree__svg .tree-node--collapsed .tree-node__toggle {
+  fill: var(--muted-fg);
+}
+.brain-tree__svg .tree-node__toggle:hover {
+  stroke: var(--fg);
+  fill: var(--fg);
+}
+
+/* Leaf marker */
+.brain-tree__svg .tree-node__leaf {
+  fill: var(--muted-fg);
+  stroke: none;
+  opacity: 0.65;
+}
+
+/* Labels */
+.brain-tree__svg .tree-node__label {
+  fill: var(--fg);
+  font-family: var(--font-sans, inherit);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.brain-tree__svg .tree-node--page .tree-node__label {
+  font-weight: 400;
+  fill: var(--muted-fg);
+}
+.brain-tree__svg .tree-node--page .tree-node__label:hover {
+  fill: var(--fg);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.brain-tree__svg .tree-node--section .tree-node__label:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.brain-tree__svg .tree-node__count {
+  fill: var(--muted-fg);
+  font-size: 10px;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+/* Search highlight */
+.brain-tree__svg .tree-node--match .tree-node__label {
+  fill: var(--fg);
+  font-weight: 600;
+}
+.brain-tree__svg .tree-node--match .tree-node__leaf,
+.brain-tree__svg .tree-node--match .tree-node__toggle {
+  stroke: var(--fg);
+  fill: var(--fg);
+}
+.brain-tree__svg .tree-node--dim { opacity: 0.25; }
+
+.brain-tree__hint {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 1rem;
+  font-size: 0.6875rem;
+  color: var(--muted-fg);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .brain-tree__header { padding: 1rem 1rem 0.5rem; }
+  .brain-tree__title { font-size: 1.25rem; }
+  .brain-tree__search { width: 100%; }
+  .brain-tree__controls { width: 100%; }
+  .brain-tree__hint { display: none; }
+}
