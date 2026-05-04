@@ -1,0 +1,235 @@
+{{ define "main" }}
+{{/* ===== Build calendar data ===== */}}
+{{- $pages := where site.RegularPages "Section" "ne" "" -}}
+{{- $pages = where $pages "Params.draft" "ne" true -}}
+{{- $pages = where $pages ".Title" "ne" "" -}}
+
+{{- $entries := slice -}}
+{{- range $pages -}}
+  {{- if not .Lastmod.IsZero -}}
+    {{- $crumbs := slice -}}
+    {{- range .Ancestors.Reverse -}}
+      {{- if not .IsHome -}}{{- $crumbs = $crumbs | append (partial "utils/title" .) -}}{{- end -}}
+    {{- end -}}
+    {{- $entry := dict
+          "url"   .RelPermalink
+          "title" .Title
+          "path"  (delimit $crumbs " › ")
+          "date"  (.Lastmod.Format "2006-01-02")
+          "hour"  (.Lastmod.Format "15")
+          "time"  (.Lastmod.Format "15:04")
+    -}}
+    {{- $entries = $entries | append $entry -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="cal-page">
+  <header class="cal-page__header">
+    <h1 class="cal-page__title">Calendar</h1>
+    <p class="cal-page__sub">{{ len $entries }} notes</p>
+  </header>
+
+  <div class="cal-layout">
+    <div class="cal-panel">
+      <div class="cal-nav">
+        <button class="cal-nav__btn" id="cal-prev" aria-label="Previous month">&#8592;</button>
+        <span class="cal-nav__label" id="cal-label"></span>
+        <button class="cal-nav__btn" id="cal-next" aria-label="Next month">&#8594;</button>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-grid__head">
+          <span>Su</span><span>Mo</span><span>Tu</span><span>We</span>
+          <span>Th</span><span>Fr</span><span>Sa</span>
+        </div>
+        <div class="cal-grid__body" id="cal-grid-body"></div>
+      </div>
+    </div>
+
+    <div class="cal-detail" id="cal-detail">
+      <div class="cal-detail__empty" id="cal-empty">
+        <span>Pick a day</span>
+      </div>
+      <div class="cal-detail__content" id="cal-content" hidden></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const PAGES = {{ $entries | jsonify | safeJS }};
+
+  /* index: "YYYY-MM-DD" → [{url,title,path,time,hour}, ...] sorted by time */
+  const byDate = {};
+  for (const p of PAGES) {
+    (byDate[p.date] = byDate[p.date] || []).push(p);
+  }
+  for (const d of Object.keys(byDate)) {
+    byDate[d].sort((a, b) => a.time.localeCompare(b.time));
+  }
+
+  const MONTHS = ["January","February","March","April","May","June",
+                  "July","August","September","October","November","December"];
+
+  let cur = new Date();
+  let selDate = null;
+
+  /* ── detect the most-recent month that has notes (default view) ── */
+  const allDates = Object.keys(byDate).sort();
+  if (allDates.length) {
+    const latest = allDates[allDates.length - 1];
+    const [y, m] = latest.split("-").map(Number);
+    cur = new Date(y, m - 1, 1);
+    selDate = latest;
+  }
+
+  const grid   = document.getElementById("cal-grid-body");
+  const label  = document.getElementById("cal-label");
+  const detail = document.getElementById("cal-content");
+  const empty  = document.getElementById("cal-empty");
+
+  function pad(n) { return String(n).padStart(2, "0"); }
+
+  function renderMonth(year, month) {
+    label.textContent = MONTHS[month] + " " + year;
+    grid.innerHTML = "";
+
+    const first = new Date(year, month, 1).getDay();
+    const days  = new Date(year, month + 1, 0).getDate();
+
+    /* leading blanks */
+    for (let i = 0; i < first; i++) {
+      const blank = document.createElement("div");
+      blank.className = "cal-cell cal-cell--blank";
+      grid.appendChild(blank);
+    }
+
+    for (let d = 1; d <= days; d++) {
+      const key = `${year}-${pad(month + 1)}-${pad(d)}`;
+      const cell = document.createElement("button");
+      cell.className = "cal-cell";
+      cell.dataset.date = key;
+
+      const num = document.createElement("span");
+      num.className = "cal-cell__num";
+      num.textContent = d;
+      cell.appendChild(num);
+
+      if (byDate[key]) {
+        const dot = document.createElement("span");
+        dot.className = "cal-cell__dot";
+        dot.setAttribute("aria-hidden", "true");
+        cell.appendChild(dot);
+      } else {
+        cell.classList.add("cal-cell--empty");
+      }
+
+      const today = new Date();
+      if (d === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+        cell.classList.add("cal-cell--today");
+      }
+
+      if (key === selDate) cell.classList.add("cal-cell--sel");
+
+      cell.addEventListener("click", () => selectDate(key));
+      grid.appendChild(cell);
+    }
+  }
+
+  function selectDate(key) {
+    selDate = key;
+
+    /* update selected highlight */
+    grid.querySelectorAll(".cal-cell--sel").forEach(el => el.classList.remove("cal-cell--sel"));
+    const target = grid.querySelector(`[data-date="${key}"]`);
+    if (target) target.classList.add("cal-cell--sel");
+
+    const posts = byDate[key];
+    if (!posts) {
+      detail.hidden = true;
+      empty.hidden = false;
+      empty.querySelector("span").textContent = "No notes on this day";
+      return;
+    }
+    empty.hidden = true;
+    detail.hidden = false;
+
+    /* group by hour */
+    const byHour = {};
+    for (const p of posts) {
+      (byHour[p.hour] = byHour[p.hour] || []).push(p);
+    }
+
+    const [y, m, d] = key.split("-");
+    const heading = document.createElement("div");
+    heading.className = "cal-detail__date";
+    heading.textContent = new Date(+y, +m - 1, +d)
+      .toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+
+    const count = document.createElement("div");
+    count.className = "cal-detail__count";
+    count.textContent = posts.length + (posts.length === 1 ? " note" : " notes");
+
+    const body = document.createElement("div");
+    body.className = "cal-detail__groups";
+
+    for (const hour of Object.keys(byHour).sort()) {
+      const group = document.createElement("div");
+      group.className = "cal-group";
+
+      const hLabel = document.createElement("div");
+      hLabel.className = "cal-group__hour";
+      hLabel.textContent = hour + ":00";
+      group.appendChild(hLabel);
+
+      for (const p of byHour[hour]) {
+        const row = document.createElement("a");
+        row.href = p.url;
+        row.className = "cal-entry";
+
+        const left = document.createElement("div");
+        left.className = "cal-entry__left";
+
+        const title = document.createElement("span");
+        title.className = "cal-entry__title";
+        title.textContent = p.title;
+        left.appendChild(title);
+
+        if (p.path) {
+          const path = document.createElement("span");
+          path.className = "cal-entry__path";
+          path.textContent = p.path;
+          left.appendChild(path);
+        }
+
+        const time = document.createElement("span");
+        time.className = "cal-entry__time";
+        time.textContent = p.time;
+
+        row.appendChild(left);
+        row.appendChild(time);
+        group.appendChild(row);
+      }
+
+      body.appendChild(group);
+    }
+
+    detail.innerHTML = "";
+    detail.appendChild(heading);
+    detail.appendChild(count);
+    detail.appendChild(body);
+  }
+
+  document.getElementById("cal-prev").addEventListener("click", () => {
+    cur.setMonth(cur.getMonth() - 1);
+    renderMonth(cur.getFullYear(), cur.getMonth());
+  });
+  document.getElementById("cal-next").addEventListener("click", () => {
+    cur.setMonth(cur.getMonth() + 1);
+    renderMonth(cur.getFullYear(), cur.getMonth());
+  });
+
+  renderMonth(cur.getFullYear(), cur.getMonth());
+  if (selDate) selectDate(selDate);
+})();
+</script>
+{{ end }}

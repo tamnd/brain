@@ -79,6 +79,12 @@ defaultContentLanguageInSubdir = false
     enable = true
 
 [[menu.main]]
+  name = "Calendar"
+  weight = -0.5
+  [menu.main.params]
+    type = "calendar"
+
+[[menu.main]]
   name = "Graph"
   weight = 0
   [menu.main.params]

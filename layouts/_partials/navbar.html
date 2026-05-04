@@ -13,6 +13,8 @@
 {{- $graphActive := eq (strings.TrimSuffix "/" $page.RelPermalink) (strings.TrimSuffix "/" $graphURL) -}}
 {{- $treeURL := relLangURL "tree/" -}}
 {{- $treeActive := eq (strings.TrimSuffix "/" $page.RelPermalink) (strings.TrimSuffix "/" $treeURL) -}}
+{{- $calURL := relLangURL "calendar/" -}}
+{{- $calActive := eq (strings.TrimSuffix "/" $page.RelPermalink) (strings.TrimSuffix "/" $calURL) -}}
 
 <div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
   <div
@@ -53,6 +55,20 @@
               <path d="M11 12V5.5h5"/>
               <path d="M11 12h5"/>
               <path d="M11 12v8.5h5"/>
+            </svg>
+          </a>
+        {{- else if eq .Params.type "calendar" -}}
+          <a
+            href="{{ $calURL }}"
+            class="brain-nav-graph hx:p-2 hx:text-current{{ if $calActive }} brain-nav-graph--active{{ end }}"
+            title="Calendar"
+            aria-label="Calendar"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
             </svg>
           </a>
         {{- else if eq .Params.type "graph" -}}
