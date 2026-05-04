@@ -1,15 +1,17 @@
 {{- $page := .page -}}
 {{- $enable := .enable -}}
 {{- if (default $enable $page.Params.breadcrumbs) -}}
-{{- if $page.Ancestors -}}
+{{- $crumbs := slice -}}
+{{- range $page.Ancestors.Reverse -}}
+  {{- if not .IsHome -}}{{- $crumbs = $crumbs | append . -}}{{- end -}}
+{{- end -}}
+{{- if $crumbs -}}
 <nav class="brain-breadcrumb" aria-label="Breadcrumb">
-  {{- range $i, $a := $page.Ancestors.Reverse -}}
-    {{- if not $a.IsHome -}}
-      {{- if gt $i 1 -}}<span class="brain-breadcrumb__sep">/</span>{{- end -}}
-      <a href="{{ $a.RelPermalink }}">{{ partial "utils/title" $a }}</a>
-    {{- end -}}
+  {{- range $i, $a := $crumbs -}}
+    {{- if gt $i 0 -}}<span class="brain-breadcrumb__sep">/</span>{{- end -}}
+    <a href="{{ $a.RelPermalink }}">{{ partial "utils/title" $a }}</a>
   {{- end -}}
-  {{- if $page.Ancestors -}}<span class="brain-breadcrumb__sep">/</span>{{- end -}}
+  <span class="brain-breadcrumb__sep">/</span>
   <span class="brain-breadcrumb__current">{{ partial "utils/title" $page }}</span>
 </nav>
 {{- end -}}
