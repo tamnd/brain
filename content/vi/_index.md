@@ -1,5 +1,6 @@
 ---
 title: "brain"
+description: "Học được gì thì ghi lại đó."
 ---
 
 Học được gì thì ghi lại đó.

@@ -7,9 +7,6 @@ description: "Quick reference with live previews for Markdown, shortcodes, and f
 # Cheatsheet
 
 Each section shows the syntax followed by a live preview.
-
----
-
 ## Alerts
 
 ````markdown
@@ -51,9 +48,6 @@ Each section shows the syntax followed by a live preview.
 
 > [!CAUTION]
 > Risk of harm or data loss.
-
----
-
 ## Details
 
 ````markdown
@@ -75,9 +69,6 @@ Visible immediately.
 {{< details title="Open by default" open=true >}}
 Visible immediately.
 {{< /details >}}
-
----
-
 ## Tabs
 
 ````markdown
@@ -117,9 +108,6 @@ println!("hello");
 ```
 {{< /tab >}}
 {{< /tabs >}}
-
----
-
 ## Steps
 
 ````markdown
@@ -155,9 +143,6 @@ println!("hello");
    `hugo server`
 
 {{< /steps >}}
-
----
-
 ## Badge
 
 ````markdown
@@ -171,9 +156,6 @@ println!("hello");
 {{< badge content="beta" type="warning" >}}
 {{< badge content="deprecated" type="error" >}}
 {{< badge content="tag" >}}
-
----
-
 ## Mermaid diagrams
 
 ````markdown
@@ -207,9 +189,6 @@ sequenceDiagram
     Client->>Server: GET /api/notes
     Server-->>Client: 200 OK + JSON
 ```
-
----
-
 ## KaTeX math
 
 Inline:
@@ -231,9 +210,6 @@ $$
 $$
 \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
 $$
-
----
-
 ## Code blocks
 
 ````markdown
@@ -273,9 +249,6 @@ ORDER BY date DESC;
 ```bash
 hugo server --buildDrafts --buildFuture
 ```
-
----
-
 ## Markdown quick reference
 
 ### Text
@@ -333,13 +306,9 @@ This is a claim.[^source]
 This is a claim.[^source]
 
 [^source]: The source for this claim.
-
----
-
 ## Front matter reference
 
 ```yaml
----
 title: "Note title"
 date: 2026-05-02
 weight: 1                    # sidebar order, lower = higher
@@ -347,5 +316,4 @@ tags: ["go", "db"]
 draft: false
 
 math: true                   # enable KaTeX on this page
----
 ```

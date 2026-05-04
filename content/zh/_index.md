@@ -1,5 +1,6 @@
 ---
 title: "brain"
+description: "这是我的公开笔记本。"
 ---
 
 学到的就是记下来的。

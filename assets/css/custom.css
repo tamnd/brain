@@ -212,6 +212,11 @@ body {
   font-weight: 500;
 }
 
+.brain-sidebar__link--parent.brain-sidebar__link--active,
+.brain-sidebar__link--parent.brain-sidebar__link--active:hover {
+  color: var(--accent-fg);
+}
+
 .brain-sidebar__footer {
   position: sticky;
   bottom: 0;

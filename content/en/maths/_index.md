@@ -10,9 +10,6 @@ cascade:
 Notes on mathematics organized loosely by the
 [Mathematics Subject Classification](https://mathscinet.ams.org/mathscinet/msc/msc2020.html) (MSC 2020).
 Each number is a separate book outlining that area.
-
----
-
 ## Books in progress
 
 | # | Title | About |
@@ -24,9 +21,6 @@ Each number is a separate book outlining that area.
 | [06]({{< relref "maths/06/_index.md" >}}) | Order and Lattices | Partially ordered sets, lattices, and ordered algebraic structures |
 | [08]({{< relref "maths/08/_index.md" >}}) | General Algebraic Systems | Operations and identities as a unifying framework for all algebraic theories |
 | [11]({{< relref "maths/11/_index.md" >}}) | Number Theory | Integers, primes, modular arithmetic, Diophantine equations |
-
----
-
 ## Full MSC index
 
 Numbers without a link are planned but not started yet.
