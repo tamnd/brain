@@ -22,7 +22,11 @@
       {{- if $crumbs -}}
       <span class="compact-row__path">{{- range $i, $a := $crumbs -}}{{- if gt $i 0 -}} › {{- end -}}{{ partial "utils/title" $a }}{{- end -}}</span>
       {{- end -}}
-      {{- if gt .ReadingTime 0 -}}<span class="compact-row__time">{{ .ReadingTime }}m</span>{{- end -}}
+      {{- if gt .ReadingTime 0 -}}
+        {{- $h := div .ReadingTime 60 -}}
+        {{- $m := mod .ReadingTime 60 -}}
+        <span class="compact-row__time">{{ printf "%d:%02d" $h $m }}</span>
+      {{- end -}}
     </a>
     {{- end -}}
   </section>
