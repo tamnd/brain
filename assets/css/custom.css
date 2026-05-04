@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* ==========================================================================
    brain — shadcn + OpenAI inspired theme
    See: $HOME/notes/Spec/1500/1585_brain_redesign_shadcn_openai.md
@@ -26,9 +28,9 @@
   --code-bg:       oklch(0.97 0 0);
 
   /* Typography */
-  --font-sans:  ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-mono:  ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
-  --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans:  "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-serif: "Georgia", ui-serif, "Times New Roman", serif;
 
   /* Radius */
   --radius-sm: 4px;
@@ -61,14 +63,14 @@ html, body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
+  font-feature-settings: "ss01", "cv01", "cv02", "cv03", "cv04";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-size: 0.9375rem;     /* 15px */
-  line-height: 1.65;
+  font-size: 1.0625rem;     /* 17px */
+  line-height: 1.75;
 }
 
 *:focus-visible {
@@ -318,54 +320,56 @@ body {
 
 .content h1,
 .brain-prose h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   color: var(--fg);
   margin-top: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
   .content h1,
-  .brain-prose h1 { font-size: 2.25rem; }
+  .brain-prose h1 { font-size: 2.75rem; }
 }
 
 .content h2,
 .brain-prose h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.3;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
   border-bottom: none !important;
   padding-bottom: 0 !important;
 }
 
 .content h3,
 .brain-prose h3 {
-  font-size: 1.25rem;
+  font-size: 1.4375rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  margin-top: 2.25rem;
+  margin-bottom: 0.625rem;
 }
 
 .content h4,
 .brain-prose h4 {
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  margin-top: 1.5rem;
+  letter-spacing: -0.01em;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
 
 .content p,
 .brain-prose p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
 }
 
 .content a,
@@ -420,13 +424,14 @@ body {
 /* Blockquote / callout */
 .content blockquote,
 .brain-prose blockquote {
-  margin: 1rem 0;
-  padding: 0.75rem 1rem;
+  margin: 1.75rem 0;
+  padding: 1rem 1.25rem;
   border-left: 3px solid var(--border-strong);
   background-color: var(--muted);
   border-radius: var(--radius-sm);
   color: var(--fg);
   font-style: normal;
+  font-size: 1.0625rem;
 }
 
 .content blockquote p:last-child,
@@ -439,18 +444,18 @@ body {
 .content ol,
 .brain-prose ul,
 .brain-prose ol {
-  margin: 0.75rem 0;
-  padding-left: 1.5rem;
+  margin: 1rem 0 1.5rem;
+  padding-left: 1.75rem;
 }
 
 .content li,
 .brain-prose li {
-  margin: 0.25rem 0;
+  margin: 0.375rem 0;
 }
 
 .content li > p,
 .brain-prose li > p {
-  margin: 0.25rem 0;
+  margin: 0.375rem 0;
 }
 
 /* Tables */
@@ -458,8 +463,8 @@ body {
 .brain-prose table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.875rem;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
 }
 
 .content th,
@@ -513,10 +518,10 @@ body {
 }
 
 .brain-page-header__desc {
-  font-size: 1rem;
+  font-size: 1.125rem;
   color: var(--muted-fg);
-  margin: 0 0 0.75rem;
-  line-height: 1.55;
+  margin: 0 0 1rem;
+  line-height: 1.65;
 }
 
 .brain-page-header__tags {
@@ -613,8 +618,8 @@ body {
 
 .home-feed__subtitle {
   margin-top: 0.75rem;
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: 1.125rem;
+  line-height: 1.65;
   color: var(--muted-fg);
 }
 
@@ -665,14 +670,11 @@ body {
 .home-feed__link { display: block; text-decoration: none; }
 
 .home-feed__post-title {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
   color: var(--fg);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   transition: color 0.15s ease;
 }
 
@@ -682,8 +684,8 @@ body {
 
 .home-feed__desc {
   margin-top: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.55;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   color: var(--muted-fg);
   display: -webkit-box;
   -webkit-line-clamp: 2;
