@@ -1,3 +1,10 @@
+---
+title: "Chapter 6. Sorting"
+description: "Sorting algorithms from fundamental contracts through comparison-based, linear-time, and specialized variants, with selection, external sorting, and correctness analysis."
+tags: ["algorithms", "sorting", "data-structures"]
+weight: 6
+---
+
 # Chapter 6. Sorting
 
 Sorting is treated here as a family of transformations with precise contracts, rather than as isolated algorithms. The input is a sequence together with a comparison relation. The output is a permutation of that sequence arranged so that the relation holds between consecutive elements. Two properties dominate every design: correctness of ordering and preservation of data through permutation.
