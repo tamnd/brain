@@ -1,3 +1,10 @@
+---
+title: "Chapter 4. Equality and Rewriting"
+description: "This chapter isolates the operational core of reasoning in Type Theory as implemented by Lean: equality and its use as a transport mechanism."
+tags: ["lean", "proof-assistant", "type-theory"]
+weight: 4000
+---
+
 # Chapter 4. Equality and Rewriting
 
 This chapter isolates the operational core of reasoning in Type Theory as implemented by Lean: equality and its use as a transport mechanism. Most nontrivial proofs in Lean reduce to a controlled sequence of rewrites. The objective here is to make rewriting predictable, terminating, and compositional.
