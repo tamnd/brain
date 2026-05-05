@@ -45,17 +45,36 @@ while true; do
     while IFS= read -r line; do log "${YLW}fm: ${line}${RST}"; done <<< "$FIX_OUT"
   fi
 
+  _did_something=false
+
+  # Commit any local changes (always safe to commit locally).
   if [ -n "$(git status --porcelain)" ]; then
     git add -A
     if ! git diff --cached --quiet; then
       MSG="$(build_commit_msg)"
       git commit -q -m "$MSG"
-      git push -q origin "$BRANCH"
-      log "${GRN}✓ $MSG${RST}"
+      log "${CYN}○ ${MSG}${RST}"
     else
       log "${YLW}· nothing to commit${RST}"
     fi
-  else
+    _did_something=true
+  fi
+
+  # Push only after a local hugo build passes — catches render errors
+  # (KaTeX, broken shortcodes, etc.) before they break GitHub Pages.
+  # If hugo fails the commit stays local; the next cycle retries.
+  if git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null | grep -q .; then
+    if HUGO_OUT="$(hugo --renderToMemory --gc 2>&1)"; then
+      git push -q origin "$BRANCH"
+      log "${GRN}✓ pushed${RST}"
+    else
+      while IFS= read -r line; do log "${YLW}hugo: ${line}${RST}"; done <<< "$HUGO_OUT"
+      log "${YLW}✗ hugo error — commit held locally, retry next cycle${RST}"
+    fi
+    _did_something=true
+  fi
+
+  if ! $_did_something; then
     log "${GRY}· nothing to commit${RST}"
   fi
 
