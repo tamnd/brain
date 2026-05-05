@@ -5,6 +5,10 @@ enableGitInfo = true
 enableRobotsTXT = true
 enableEmoji = true
 
+[frontmatter]
+  date    = ["date", ":git", "publishDate"]
+  lastmod = ["lastmod", ":git", "date", "publishDate"]
+
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 

@@ -6,7 +6,7 @@
 
 {{- $entries := slice -}}
 {{- range $pages -}}
-  {{- if not .Lastmod.IsZero -}}
+  {{- if not .Date.IsZero -}}
     {{- $crumbs := slice -}}
     {{- range .Ancestors.Reverse -}}
       {{- if not .IsHome -}}{{- $crumbs = $crumbs | append (partial "utils/title" .) -}}{{- end -}}
