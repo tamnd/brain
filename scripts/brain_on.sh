@@ -69,6 +69,14 @@ while true; do
       log "${GRN}✓ pushed${RST}"
     else
       while IFS= read -r line; do log "${YLW}hugo: ${line}${RST}"; done <<< "$HUGO_OUT"
+      errfiles=$(printf '%s\n' "$HUGO_OUT" \
+        | grep -oE 'see "[^"]+"' \
+        | sed 's/^see "//; s/"$//; s|'"$REPO_DIR/"'||; s/:[0-9]*$//' \
+        | sort -u)
+      if [ -n "$errfiles" ]; then
+        log "${YLW}fix these files:${RST}"
+        while IFS= read -r f; do log "  ${YLW}→ $f${RST}"; done <<< "$errfiles"
+      fi
       log "${YLW}✗ hugo error — commit held locally, retry next cycle${RST}"
     fi
     _did_something=true
