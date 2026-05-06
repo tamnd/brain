@@ -1,6 +1,6 @@
 ---
 title: "12. Specialized Search and Sorted-Order Procedures"
-description: "15 algorithms for cache-aware and branchless search, learned indexes, Eytzinger and Van Emde Boas layouts, SIMD search, and galloping intersection."
+description: "Cache-efficient and hardware-tuned search: branchless binary search, Eytzinger and vEB layouts, learned indexes, SIMD search, and galloping intersection."
 tags: ["algorithms", "searching", "cache", "simd", "learned-index"]
 weight: 12
 date: 2026-05-06T00:00:00+07:00

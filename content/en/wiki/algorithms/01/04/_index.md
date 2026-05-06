@@ -1,6 +1,6 @@
 ---
 title: "4. Tree and Indexed Search"
-description: "35 algorithms covering BST, balanced trees, tries, suffix structures, segment trees, and spatial search trees."
+description: "Tree-based and indexed search: BST, self-balancing trees, tries, suffix structures, segment and range trees, and spatial trees."
 tags: ["algorithms", "searching", "trees", "data-structures"]
 weight: 4
 date: 2026-05-06T00:00:00+07:00

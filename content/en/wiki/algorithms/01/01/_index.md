@@ -1,6 +1,6 @@
 ---
 title: "1. Linear and Sequential Search"
-description: "20 algorithms for linear and sequential search, including sentinel, reverse, duplicate-detection, and majority-vote variants."
+description: "Linear and sequential scan techniques including sentinel, bounded, recursive variants, duplicate detection, and majority vote."
 tags: ["algorithms", "searching", "linear-search"]
 weight: 1
 date: 2026-05-06T00:00:00+07:00

@@ -1,6 +1,6 @@
 ---
 title: "11. Parallel, Distributed, and GPU Sorting"
-description: "25 algorithms for parallel merge sort, GPU bitonic and radix sort, SIMD sorting networks, MapReduce sort, and distributed partitioning."
+description: "High-throughput sorting: parallel merge and quicksort, GPU bitonic and radix sort, SIMD sorting networks, and distributed partition-based sorts."
 tags: ["algorithms", "sorting", "parallel", "gpu", "distributed"]
 weight: 11
 date: 2026-05-06T00:00:00+07:00

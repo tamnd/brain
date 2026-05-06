@@ -1,6 +1,6 @@
 ---
 title: "5. Selection and Order Statistics"
-description: "35 algorithms for kth-element selection, streaming top-k, heavy hitters, reservoir sampling, and quantile estimation."
+description: "Selection and order-statistics: quickselect, median-of-medians, streaming top-k, heavy hitters, reservoir sampling, and quantile summaries."
 tags: ["algorithms", "selection", "order-statistics"]
 weight: 5
 date: 2026-05-06T00:00:00+07:00

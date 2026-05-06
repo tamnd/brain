@@ -1,6 +1,6 @@
 ---
 title: "2. Binary Search and Ordered Search"
-description: "35 algorithms covering binary search variants, interpolation search, parametric search, and monotone-predicate techniques."
+description: "Binary search and its ordered-search relatives: interpolation, Fibonacci, rotated-array, matrix, parametric, and offline variants."
 tags: ["algorithms", "searching", "binary-search"]
 weight: 2
 date: 2026-05-06T00:00:00+07:00
