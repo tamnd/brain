@@ -5,9 +5,12 @@
 */}}
 {{- $content := .Content -}}
 {{- if findRE `^\d+\.` .Title -}}
-  {{- $numPrefix := index (findRE `^\d+\.` .Title) 0 -}}
-  {{- $escapedPrefix := replaceRE `\.` `\\.` $numPrefix -}}
-  {{- $pattern := printf `(?s)<h[1-3][^>]*>\s*%s.*?</h[1-3]>\n?` $escapedPrefix -}}
-  {{- $content = replaceRE $pattern "" $content 1 -}}
+  {{- $firstHeadings := findRE `<h[1-3][^>]*>[\s\S]*?</h[1-3]>` $content -}}
+  {{- if $firstHeadings -}}
+    {{- $firstText := index $firstHeadings 0 | plainify -}}
+    {{- if findRE `^\s*\d+\.` $firstText -}}
+      {{- $content = replaceRE `<h[1-3][^>]*>[\s\S]*?</h[1-3]>\n?` "" $content 1 -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 {{- $content | safeHTML -}}
