@@ -38,11 +38,14 @@ build_commit_msg() {
 }
 
 while true; do
-  # Auto-repair malformed Hugo front matter before staging. Idempotent:
-  # only writes files that need changes. Reports each repair so the
-  # commit log includes the fix when something was off.
+  # Auto-repair malformed Hugo front matter before staging.
   if FIX_OUT="$(python3 "$REPO_DIR/scripts/fix_frontmatter.py" 2>&1)" && [ -n "$FIX_OUT" ]; then
     while IFS= read -r line; do log "${YLW}fm: ${line}${RST}"; done <<< "$FIX_OUT"
+  fi
+
+  # Auto-tag code fences with the correct language (python, go, ...).
+  if LANG_OUT="$(python3 "$REPO_DIR/scripts/fix_codelang.py" 2>&1)" && [ -n "$LANG_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}lang: ${line}${RST}"; done <<< "$LANG_OUT"
   fi
 
   _did_something=false
