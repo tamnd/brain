@@ -1,0 +1,58 @@
+{{- /*
+  Renders three icon-only action buttons in the page header:
+    • GitHub  — opens the source file on GitHub
+    • Raw     — opens the raw Markdown output
+    • Copy    — copies the Markdown to clipboard (reuses hextra's copy JS)
+  Renders nothing when the page has no .File or no markdown output format.
+*/ -}}
+
+{{- $githubURL := "" -}}
+{{- $editBase  := site.Params.editURL.base -}}
+{{- if and .File $editBase -}}
+  {{- $viewBase := replace $editBase "/edit/" "/blob/" -}}
+  {{- $githubURL = printf "%s/%s" $viewBase .File.Path -}}
+{{- end -}}
+
+{{- $mdURL := "" -}}
+{{- with .OutputFormats.Get "markdown" -}}
+  {{- $mdURL = .Permalink -}}
+{{- end -}}
+
+{{- if or $githubURL $mdURL -}}
+<div class="brain-page-actions" role="group" aria-label="Page actions">
+
+  {{- if $githubURL -}}
+  <a href="{{ $githubURL }}"
+     target="_blank" rel="noopener noreferrer"
+     class="brain-page-action"
+     title="View source on GitHub"
+     aria-label="View source on GitHub">
+    {{- partial "utils/icon.html" (dict "name" "github" "attributes" "height=16 width=16") -}}
+  </a>
+  {{- end -}}
+
+  {{- if $mdURL -}}
+  <a href="{{ $mdURL }}"
+     target="_blank" rel="noopener noreferrer"
+     class="brain-page-action"
+     title="View raw Markdown"
+     aria-label="View raw Markdown">
+    {{- partial "utils/icon.html" (dict "name" "markdown" "attributes" "height=16 width=16") -}}
+  </a>
+
+  <button type="button"
+     class="brain-page-action brain-page-action--copy hextra-page-context-menu-copy"
+     data-url="{{ $mdURL }}"
+     title="Copy page as Markdown"
+     aria-label="Copy page as Markdown">
+    <span class="brain-page-action__icon brain-page-action__icon--copy">
+      {{- partial "utils/icon.html" (dict "name" "copy" "attributes" "height=16 width=16") -}}
+    </span>
+    <span class="brain-page-action__icon brain-page-action__icon--check">
+      {{- partial "utils/icon.html" (dict "name" "check" "attributes" "height=16 width=16") -}}
+    </span>
+  </button>
+  {{- end -}}
+
+</div>
+{{- end -}}

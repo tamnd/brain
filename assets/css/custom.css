@@ -576,6 +576,56 @@ body {
   opacity: 0.85;
 }
 
+/* ===== Page header actions cluster ======================================= */
+
+/* Wrapper: groups page-actions + graph-link on the right of the title row */
+.brain-page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  flex-shrink: 0;
+}
+
+/* Icon-only action buttons (links and copy button) */
+.brain-page-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.brain-page-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  color: var(--muted-fg);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.brain-page-action:hover {
+  color: var(--fg);
+  background-color: var(--muted);
+}
+
+.brain-page-action svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* Copy button: show copy icon by default, check icon when .copied */
+.brain-page-action__icon--check { display: none; }
+
+.brain-page-action--copy.copied .brain-page-action__icon--copy { display: none; }
+.brain-page-action--copy.copied .brain-page-action__icon--check { display: inline-flex; }
+
 
 /* ===== Tag chip ========================================================== */
 

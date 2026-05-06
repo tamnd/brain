@@ -7,7 +7,10 @@
       <div class="brain-page-header">
         <div class="brain-page-header__title-row">
           <h1>{{ .Title }}</h1>
-          {{ partial "components/graph-link.html" . }}
+          <div class="brain-page-header__actions">
+            {{ partial "components/page-actions.html" . }}
+            {{ partial "components/graph-link.html" . }}
+          </div>
         </div>
         {{ with .Description }}<p class="brain-page-header__desc">{{ . }}</p>{{ end }}
         {{ if .Params.tags }}
