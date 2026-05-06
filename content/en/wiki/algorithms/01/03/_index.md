@@ -1,3 +1,11 @@
+---
+title: "3. Hashing and Table Search"
+description: "25 algorithms for hash table lookup, probabilistic filters (Bloom, Cuckoo, XOR), and locality-sensitive similarity search."
+tags: ["algorithms", "searching", "hashing"]
+weight: 3
+date: 2026-05-06T00:00:00+07:00
+---
+
 ### 3. Hashing and table search, 25
 
 | index | slug                              | name                              |

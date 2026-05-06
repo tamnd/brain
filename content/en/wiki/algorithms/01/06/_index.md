@@ -1,3 +1,11 @@
+---
+title: "6. Elementary Sorting"
+description: "30 basic sorting algorithms including bubble, selection, insertion, Shell, comb, cycle, and patience sort."
+tags: ["algorithms", "sorting"]
+weight: 6
+date: 2026-05-06T00:00:00+07:00
+---
+
 ### 6. Elementary sorting, 30
 
 | index | slug                      | name                           |

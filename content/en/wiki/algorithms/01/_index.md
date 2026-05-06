@@ -1,3 +1,11 @@
+---
+title: "01. Searching and Sorting"
+description: "350 algorithms covering search and sort techniques, from linear scan to parallel and GPU-based sorting."
+tags: ["algorithms", "searching", "sorting"]
+weight: 1
+date: 2026-05-06T00:00:00+07:00
+---
+
 ## Searching and Sorting
 
 This 350 page list is usable as the final page inventory for **Searching and Sorting**.
