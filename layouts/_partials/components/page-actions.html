@@ -10,7 +10,13 @@
 {{- $editBase  := site.Params.editURL.base -}}
 {{- if and .File $editBase -}}
   {{- $viewBase := replace $editBase "/edit/" "/blob/" -}}
-  {{- $githubURL = printf "%s/%s" $viewBase .File.Path -}}
+  {{- with .File -}}
+    {{/* Same technique as hextra toc.html: recover the language subdir from Meta fields */}}
+    {{- $sourceDir := replace (strings.TrimPrefix .FileInfo.Meta.BaseDir .FileInfo.Meta.SourceRoot) "\\" "/" -}}
+    {{- $sourceDir = strings.TrimPrefix "/content" $sourceDir -}}
+    {{- $path := replace .Path "\\" "/" -}}
+    {{- $githubURL = urls.JoinPath $viewBase $sourceDir $path -}}
+  {{- end -}}
 {{- end -}}
 
 {{- $mdURL := "" -}}
