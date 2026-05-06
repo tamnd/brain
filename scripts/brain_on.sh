@@ -65,8 +65,12 @@ while true; do
   # If hugo fails the commit stays local; the next cycle retries.
   if git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null | grep -q .; then
     if HUGO_OUT="$(hugo --renderToMemory --gc 2>&1)"; then
-      git push -q origin "$BRANCH"
-      log "${GRN}✓ pushed${RST}"
+      if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
+        log "${GRN}✓ pushed${RST}"
+      else
+        while IFS= read -r line; do log "${YLW}push: ${line}${RST}"; done <<< "$PUSH_OUT"
+        log "${YLW}✗ push failed — commit held locally, retry next cycle${RST}"
+      fi
     else
       while IFS= read -r line; do log "${YLW}hugo: ${line}${RST}"; done <<< "$HUGO_OUT"
       errfiles=$(printf '%s\n' "$HUGO_OUT" \
