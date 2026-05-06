@@ -1,3 +1,11 @@
+---
+title: "9. Partial, Online, and Adaptive Sorting"
+description: "30 algorithms for partial sort, online insertion, adaptive merge, Timsort internals, and lazy or order-maintenance sorting."
+tags: ["algorithms", "sorting", "adaptive", "online"]
+weight: 9
+date: 2026-05-06T00:00:00+07:00
+---
+
 ### 9. Partial, online, and adaptive sorting, 30
 
 | index | slug                           | name                           |

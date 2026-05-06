@@ -1,3 +1,11 @@
+---
+title: "10. External Memory, Cache, and Database Sorting"
+description: "25 algorithms for external merge sort, polyphase merge, cache-oblivious sorting, LSM compaction, and database sort phases."
+tags: ["algorithms", "sorting", "external-sort", "cache"]
+weight: 10
+date: 2026-05-06T00:00:00+07:00
+---
+
 ### 10. External memory, cache, and database sorting, 25
 
 | index | slug                                 | name                                 |
