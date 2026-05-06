@@ -3,7 +3,6 @@ title: "1.2 Linked Lists"
 description: "Singly, doubly, and circular linked lists with operations for insertion, reversal, cycle detection, sorting, and memory pooling."
 tags: ["algorithms", "data-structures", "linked-list"]
 weight: 2
-date: 2026-05-06T00:00:00+07:00
 ---
 
 ### 1.2 Linked lists, 35

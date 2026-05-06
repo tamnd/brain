@@ -3,7 +3,6 @@ title: "1.3 Stacks"
 description: "Array and linked stack implementations covering push, pop, monotonic stacks, expression evaluation, and thread-safe variants."
 tags: ["algorithms", "data-structures", "stack"]
 weight: 3
-date: 2026-05-06T00:00:00+07:00
 ---
 
 ### 1.3 Stacks, 25

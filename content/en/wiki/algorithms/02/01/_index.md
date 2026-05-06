@@ -3,7 +3,6 @@ title: "1. Core Data Structures and Operations"
 description: "Memory layout, invariants, and implementation details for arrays, linked lists, stacks, queues, heaps, hash tables, binary search trees, and traversal operations."
 tags: ["algorithms", "data-structures"]
 weight: 1
-date: 2026-05-06T00:00:00+07:00
 ---
 
 ### 1. Core data structures and operations

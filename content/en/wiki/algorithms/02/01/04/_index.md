@@ -3,7 +3,6 @@ title: "1.4 Queues and Deques"
 description: "Array and linked queues, deques, monotonic queues, priority buckets, delay queues, and concurrent queue designs."
 tags: ["algorithms", "data-structures", "queue", "deque"]
 weight: 4
-date: 2026-05-06T00:00:00+07:00
 ---
 
 ### 1.4 Queues and deques, 35

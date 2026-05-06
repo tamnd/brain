@@ -3,7 +3,6 @@ title: "3. Specialized, Persistent, Concurrent, and External Structures"
 description: "Persistence, functional structures, succinct and compressed encodings, geometric indexing, concurrent and lock-free designs, external-memory structures, and probabilistic data structures."
 tags: ["algorithms", "data-structures", "persistent", "concurrent", "external-memory"]
 weight: 3
-date: 2026-05-06T00:00:00+07:00
 ---
 
 ### 3. Specialized, persistent, concurrent, and external structures

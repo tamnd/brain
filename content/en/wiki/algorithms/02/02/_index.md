@@ -3,7 +3,6 @@ title: "2. Advanced Data Structures and Operations"
 description: "Augmented and self-balancing trees, range query structures, Fenwick and segment tree variants, union-find, tries, and order statistic structures."
 tags: ["algorithms", "data-structures", "trees", "range-query"]
 weight: 2
-date: 2026-05-06T00:00:00+07:00
 ---
 
 ### 2. Advanced data structures and operations

@@ -3,7 +3,6 @@ title: "1.1 Arrays and Dynamic Arrays"
 description: "Fixed and dynamic arrays, resizing strategies, memory layout, cache effects, vectorization, and in-place operations."
 tags: ["algorithms", "data-structures", "arrays"]
 weight: 1
-date: 2026-05-06T00:00:00+07:00
 ---
 
 ### 1.1 Arrays and dynamic arrays, 35
