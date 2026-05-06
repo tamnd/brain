@@ -1,16 +1,25 @@
 {{/*
-  Renders .Content with the first heading stripped when the page title starts with a
-  number prefix (e.g. "1.", "01.") and that same prefix appears at the start of the
-  first h1/h2/h3 in the content — preventing a duplicate title/heading pair.
+  Renders .Content with the first h1/h2/h3 stripped when it duplicates the page title.
+  Two cases handled:
+    1. Exact match  — first heading text == title (case-insensitive), e.g. "# Lazy Sort"
+    2. Numbered prefix — title starts with "N." and first heading also starts with "N.",
+       e.g. title "1. Linear Search" and heading "### 1. Linear search, 20"
 */}}
 {{- $content := .Content -}}
-{{- if findRE `^\d+\.` .Title -}}
-  {{- $firstHeadings := findRE `<h[1-3][^>]*>[\s\S]*?</h[1-3]>` $content -}}
-  {{- if $firstHeadings -}}
-    {{- $firstText := index $firstHeadings 0 | plainify -}}
-    {{- if findRE `^\s*\d+\.` $firstText -}}
-      {{- $content = replaceRE `<h[1-3][^>]*>[\s\S]*?</h[1-3]>\n?` "" $content 1 -}}
-    {{- end -}}
+{{- $firstHeadings := findRE `<h[1-3][^>]*>[\s\S]*?</h[1-3]>` $content -}}
+{{- if $firstHeadings -}}
+  {{- $firstText := index $firstHeadings 0 | plainify | strings.TrimSpace -}}
+  {{- $remove := false -}}
+  {{/* Case 1: exact title match (case-insensitive) */}}
+  {{- if eq (lower $firstText) (lower .Title) -}}
+    {{- $remove = true -}}
+  {{- end -}}
+  {{/* Case 2: both title and first heading start with the same "N." prefix */}}
+  {{- if and (findRE `^\d+\.` .Title) (findRE `^\d+\.` $firstText) -}}
+    {{- $remove = true -}}
+  {{- end -}}
+  {{- if $remove -}}
+    {{- $content = replaceRE `<h[1-3][^>]*>[\s\S]*?</h[1-3]>\n?` "" $content 1 -}}
   {{- end -}}
 {{- end -}}
 {{- $content | safeHTML -}}
