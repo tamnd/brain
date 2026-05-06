@@ -1,3 +1,11 @@
+---
+title: "7. Divide and Conquer Sorting"
+description: "35 algorithms including merge sort, quicksort and its variants, heapsort, and comparison-based sorting networks."
+tags: ["algorithms", "sorting", "divide-and-conquer"]
+weight: 7
+date: 2026-05-06T00:00:00+07:00
+---
+
 ### 7. Divide and conquer sorting, 35
 
 | index | slug                          | name                          |

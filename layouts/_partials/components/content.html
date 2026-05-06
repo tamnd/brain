@@ -1,0 +1,13 @@
+{{/*
+  Renders .Content with the first heading stripped when the page title starts with a
+  number prefix (e.g. "1.", "01.") and that same prefix appears at the start of the
+  first h1/h2/h3 in the content — preventing a duplicate title/heading pair.
+*/}}
+{{- $content := .Content -}}
+{{- if findRE `^\d+\.` .Title -}}
+  {{- $numPrefix := index (findRE `^\d+\.` .Title) 0 -}}
+  {{- $escapedPrefix := replaceRE `\.` `\\.` $numPrefix -}}
+  {{- $pattern := printf `(?s)<h[1-3][^>]*>\s*%s.*?</h[1-3]>\n?` $escapedPrefix -}}
+  {{- $content = replaceRE $pattern "" $content 1 -}}
+{{- end -}}
+{{- $content | safeHTML -}}

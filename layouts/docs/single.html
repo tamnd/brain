@@ -21,7 +21,7 @@
         {{ end }}
       </div>
       {{ end }}
-      {{ .Content }}
+      {{ partial "components/content.html" . }}
     </div>
     {{ partial "components/last-updated.html" . }}
     {{- if (site.Params.page.displayPagination | default true) -}}

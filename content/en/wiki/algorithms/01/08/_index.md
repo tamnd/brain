@@ -1,3 +1,11 @@
+---
+title: "8. Integer and Distribution Sorting"
+description: "40 algorithms for counting sort, radix sort, bucket sort, string sorting, and suffix array construction."
+tags: ["algorithms", "sorting", "radix-sort", "distribution-sort"]
+weight: 8
+date: 2026-05-06T00:00:00+07:00
+---
+
 ### 8. Integer and distribution sorting, 40
 
 | index | slug                        | name                             |
