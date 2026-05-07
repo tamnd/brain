@@ -151,75 +151,71 @@ def typst_str(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-TEMPLATE = r"""// Springer SVMono-inspired book template.
-//   Trim: 15.6 x 23.4 cm  (Springer royal octavo).
-//   Body: STIX Two Text + STIX Two Math (Times-compatible).
-//   Heads/sections: Helvetica-class sans-serif.
+TEMPLATE = r"""// Springer SVMono-inspired book template, LaTeX-flavoured.
+//   Trim: 15.5 x 23.4 cm  (Springer royal octavo).
+//   Body + math: New Computer Modern (Knuth's Computer Modern, modern build).
+//   All headings: serif bold (no sans-serif), matching SVMono.
 
 #import "@preview/cmarker:0.1.8"
 #import "@preview/mitex:0.2.7": mi, mitex
 
 #let serif = (
-  "STIX Two Text", "Times New Roman", "Times",
-  "Liberation Serif", "Nimbus Roman", "Libertinus Serif",
-)
-#let sans = (
-  "Helvetica Neue", "Helvetica", "Arial",
-  "Liberation Sans", "Nimbus Sans", "DejaVu Sans",
+  "New Computer Modern",
+  "Latin Modern Roman",
+  "Libertinus Serif",
+  "STIX Two Text",
+  "Times New Roman", "Times",
 )
 #let math-font = (
-  "STIX Two Math", "New Computer Modern Math",
+  "New Computer Modern Math",
+  "Latin Modern Math",
+  "STIX Two Math",
 )
-#let mono = ("DejaVu Sans Mono", "Menlo", "Liberation Mono", "Courier")
+#let mono = (
+  "New Computer Modern Mono",
+  "DejaVu Sans Mono", "Menlo", "Liberation Mono", "Courier",
+)
 
 #set document(title: __TITLE_STR__, author: __AUTHOR_STR__)
 
 #set page(
-  width: 15.6cm, height: 23.4cm,
-  margin: (inside: 22mm, outside: 16mm, top: 22mm, bottom: 22mm),
+  width: 15.5cm, height: 23.4cm,
+  margin: (inside: 23mm, outside: 17mm, top: 24mm, bottom: 25mm),
   binding: left,
 )
-#set text(font: serif, size: 10pt, lang: "en")
+#set text(font: serif, size: 10.5pt, lang: "en")
 #show math.equation: set text(font: math-font)
+
 #set par(
   justify: true,
-  leading: 0.55em,
-  first-line-indent: (amount: 1em, all: false),
-  spacing: 0.65em,
+  leading: 0.6em,
+  first-line-indent: (amount: 1.2em, all: false),
+  spacing: 0.7em,
 )
 #set list(indent: 1em, body-indent: 0.6em)
 #set enum(indent: 1em, body-indent: 0.6em)
 #set table(stroke: 0.4pt + luma(170), inset: 5pt)
-#show table.cell.where(y: 0): set text(weight: "bold", font: sans)
+#show table.cell.where(y: 0): set text(weight: "bold")
 #show raw: set text(font: mono, size: 0.92em)
 #show link: set text(rgb("#1f4ea1"))
 
-// Springer levels:
-//   level 1 = part divider          (visual rendered by `book-part`)
-//   level 2 = chapter heading       (visual rendered by `chapter-opener`)
-//   level 3 = section (e.g. 1.1 Vectors)
-//   level 4 = subsection
-//   level 5 = paragraph
-// Levels 1 and 2 carry only outline/bookmark info; their visual rendering
-// happens in dedicated functions.
+// Springer SVMono heading levels:
+//   1 = part divider     (visual via book-part)
+//   2 = chapter heading  (visual via chapter-opener)
+//   3 = section
+//   4 = subsection
+//   5 = paragraph (run-in italic)
+// Levels 1/2 carry only outline + bookmark; visual rendering is external.
+// Plain `set` show rules avoid wrapping headings in extra blocks, which keeps
+// Typst's "first paragraph after a heading is not indented" detection working.
 #show heading.where(level: 1): _ => []
 #show heading.where(level: 2): _ => []
-
-#show heading.where(level: 3): it => block(above: 1.4em, below: 0.4em)[
-  #set par(first-line-indent: 0pt)
-  #text(font: sans, weight: "bold", size: 11.5pt, it.body)
-]
-#show heading.where(level: 4): it => block(above: 1em, below: 0.3em)[
-  #set par(first-line-indent: 0pt)
-  #text(font: sans, weight: "bold", size: 10.5pt, it.body)
-]
-#show heading.where(level: 5): it => block(above: 0.8em, below: 0.2em)[
-  #set par(first-line-indent: 0pt)
-  #text(font: sans, weight: "regular", style: "italic", size: 10pt, it.body)
-]
-
-// First paragraph after a heading should not indent.
-#show heading: it => it + " "
+#show heading.where(level: 3): set text(weight: "bold", size: 12pt)
+#show heading.where(level: 3): set block(above: 1.6em, below: 0.7em)
+#show heading.where(level: 4): set text(weight: "bold", size: 11pt)
+#show heading.where(level: 4): set block(above: 1.2em, below: 0.5em)
+#show heading.where(level: 5): set text(weight: "bold", style: "italic", size: 10.5pt)
+#show heading.where(level: 5): set block(above: 0.9em, below: 0.2em)
 
 #let math-renderer(body, block: false) = if block { mitex(body) } else { mi(body) }
 #let chapter-render(path) = cmarker.render(
@@ -230,18 +226,14 @@ TEMPLATE = r"""// Springer SVMono-inspired book template.
 )
 
 #let chapter-opener(num, name) = {
-  pagebreak(weak: true)
+  pagebreak(weak: true, to: "odd")
   heading(level: 2, outlined: true, bookmarked: true, numbering: none)[#num. #name]
-  v(2cm)
   block(width: 100%, above: 0pt, below: 0pt)[
-    #set par(justify: false, first-line-indent: 0pt)
-    #text(font: sans, weight: "regular", size: 12pt, fill: luma(70), tracking: 0.10em)[CHAPTER #upper(num)]
-    #v(0.4em)
-    #text(font: sans, weight: "bold", size: 24pt)[#name]
-    #v(0.6em)
-    #line(length: 100%, stroke: 0.5pt + luma(170))
+    #set par(first-line-indent: 0pt, leading: 0.5em, justify: false)
+    #text(weight: "bold", size: 17pt)[Chapter #num] \
+    #text(weight: "bold", size: 22pt)[#name]
   ]
-  v(1.2cm)
+  v(3cm)
 }
 
 #let book-part(label, name, preamble: none) = {
@@ -250,14 +242,15 @@ TEMPLATE = r"""// Springer SVMono-inspired book template.
   set page(header: none, footer: none)
   v(1fr)
   align(center)[
-    #text(font: sans, weight: "regular", size: 14pt, tracking: 0.18em, fill: luma(70))[PART #upper(label)]
+    #set par(first-line-indent: 0pt, leading: 0.6em)
+    #text(size: 14pt, tracking: 0.20em, fill: luma(70))[PART #upper(label)]
     #v(0.7cm)
-    #text(font: sans, weight: "bold", size: 28pt)[#name]
+    #text(weight: "bold", size: 28pt)[#name]
     #if preamble != none {
       v(1.2cm)
       block(width: 75%)[
         #set par(justify: true, first-line-indent: 0pt, leading: 0.6em)
-        #set text(font: serif, size: 10.5pt, style: "italic")
+        #set text(size: 11pt, style: "italic")
         #preamble
       ]
     }
@@ -267,22 +260,20 @@ TEMPLATE = r"""// Springer SVMono-inspired book template.
 }
 
 // ============================================================
-// Front matter — half-title page + title page
+// Title page
 // ============================================================
 #set page(numbering: none, header: none, footer: none)
-
-// Title page
 #align(center)[
-  #v(2.5cm)
-  #text(font: sans, weight: "bold", size: 28pt)[__TITLE__]
-  #v(0.5cm)
+  #v(3cm)
+  #text(weight: "bold", size: 30pt)[__TITLE__]
+  #v(0.6cm)
   __SUBTITLE_BLOCK__
-  #v(3.5cm)
-  #text(font: sans, weight: "regular", size: 14pt)[__AUTHOR__]
+  #v(4cm)
+  #text(size: 14pt)[__AUTHOR__]
   #v(0.4cm)
-  #text(font: sans, weight: "regular", size: 11pt, fill: luma(80))[__DATE__]
+  #text(size: 11pt, fill: luma(80))[__DATE__]
   #v(1fr)
-  #text(font: sans, size: 9pt, fill: luma(120))[Built with Typst · cmarker · mitex]
+  #text(size: 9pt, style: "italic", fill: luma(120))[Typeset with Typst]
 ]
 #pagebreak(to: "odd")
 
@@ -293,19 +284,17 @@ TEMPLATE = r"""// Springer SVMono-inspired book template.
 #counter(page).update(1)
 #block[
   #set par(first-line-indent: 0pt)
-  #text(font: sans, weight: "bold", size: 22pt)[Contents]
+  #text(weight: "bold", size: 22pt)[Contents]
 ]
-#v(0.5em)
-#line(length: 100%, stroke: 0.5pt + luma(170))
 #v(0.6em)
 #set outline(depth: 2)
 #show outline.entry.where(level: 1): it => {
-  v(0.7em, weak: true)
-  set text(font: sans, weight: "bold", size: 11pt)
+  v(0.8em, weak: true)
+  set text(weight: "bold", size: 11pt)
   it
 }
 #show outline.entry.where(level: 2): it => {
-  set text(font: serif, size: 10pt)
+  set text(size: 10pt)
   pad(left: 0.8em, it)
 }
 #outline(title: none, indent: auto)
@@ -332,7 +321,7 @@ TEMPLATE = r"""// Springer SVMono-inspired book template.
       sec = none
     }
 
-    set text(font: sans, size: 8.5pt, fill: luma(70))
+    set text(size: 9pt, style: "italic", fill: luma(70))
     if calc.even(pn) {
       grid(columns: (auto, 1fr, auto),
         [#pn], [], align(right, if chap != none { chap.body } else []),
