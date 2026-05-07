@@ -148,7 +148,7 @@ def typst_str(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-TEMPLATE = r"""#import "@preview/classicthesis:0.1.0": classicthesis, part
+TEMPLATE = r"""#import "@preview/classicthesis:0.1.0": classicthesis, part as ct-part
 #import "@preview/cmarker:0.1.8"
 #import "@preview/mitex:0.2.7": mi, mitex
 
@@ -161,6 +161,17 @@ TEMPLATE = r"""#import "@preview/classicthesis:0.1.0": classicthesis, part
   smart-punctuation: true,
 )
 
+// A "book part" combines the classicthesis part divider page with an invisible
+// outlined heading so parts appear in the table of contents.
+#let book-part(title, preamble: none) = {
+  // Outline-only marker: rendered as a no-op block but registered for TOC.
+  [
+    #show heading.where(level: 1): _ => none
+    #heading(level: 1, outlined: true, bookmarked: true, numbering: none)[#title]
+  ]
+  ct-part(title, preamble: preamble)
+}
+
 #show: classicthesis.with(
   title: __TITLE__,
   subtitle: __SUBTITLE_VAL__,
@@ -170,11 +181,13 @@ TEMPLATE = r"""#import "@preview/classicthesis:0.1.0": classicthesis, part
   lang: "en",
 )
 
-// Math fonts: keep equation glyphs in New Computer Modern Math (LaTeX feel)
-// while body text follows classicthesis (Pagella → Libertinus → NCM fallback).
+// Math equations stay in New Computer Modern Math for the LaTeX feel.
 #show math.equation: set text(font: "New Computer Modern Math")
 
-// Tighten classicthesis defaults a touch and add good table/raw styling.
+// TOC: chapters and parts only — sections would balloon into ~70 pages.
+#set outline(depth: 1)
+
+// Tweaks on top of classicthesis defaults.
 #set par(leading: 0.7em)
 #set table(stroke: 0.4pt + luma(160))
 #show table.cell.where(y: 0): strong
@@ -196,10 +209,10 @@ def render_typst(root: Doc, parts: list[Part], *, author: str, date: str) -> str
         preamble = part.index.description
         if preamble:
             body_parts.append(
-                f"#part({typst_str(part.title)}, preamble: [{escape_typst_content(preamble)}])"
+                f"#book-part({typst_str(part.title)}, preamble: [{escape_typst_content(preamble)}])"
             )
         else:
-            body_parts.append(f"#part({typst_str(part.title)})")
+            body_parts.append(f"#book-part({typst_str(part.title)})")
         for ch in part.chapters:
             rel = ch.path.relative_to(part.dir.parent).as_posix()
             body_parts.append(f"#chapter-render({typst_str(rel)})")
