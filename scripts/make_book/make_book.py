@@ -148,7 +148,8 @@ def typst_str(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-TEMPLATE = r"""#import "@preview/cmarker:0.1.8"
+TEMPLATE = r"""#import "@preview/classicthesis:0.1.0": classicthesis, part
+#import "@preview/cmarker:0.1.8"
 #import "@preview/mitex:0.2.7": mi, mitex
 
 #let math-renderer(body, block: false) = if block { mitex(body) } else { mi(body) }
@@ -156,94 +157,29 @@ TEMPLATE = r"""#import "@preview/cmarker:0.1.8"
 #let chapter-render(path) = cmarker.render(
   read(path),
   math: math-renderer,
-  h1-level: 2,
+  h1-level: 1,
   smart-punctuation: true,
 )
 
-#set document(title: __TITLE__, author: __AUTHOR__)
-
-#set page(
+#show: classicthesis.with(
+  title: __TITLE__,
+  subtitle: __SUBTITLE_VAL__,
+  author: __AUTHOR__,
+  date: __DATE__,
   paper: "a4",
-  margin: (inside: 2.4cm, outside: 2.0cm, top: 2.4cm, bottom: 2.4cm),
-)
-#set text(
-  font: ("New Computer Modern", "Libertinus Serif"),
-  size: 10.5pt,
   lang: "en",
 )
-#show raw: set text(font: ("DejaVu Sans Mono", "Menlo"), size: 9.5pt)
-#set par(justify: true, leading: 0.62em, first-line-indent: (amount: 1.2em, all: false))
-#show link: set text(rgb("#1f4ea1"))
+
+// Math fonts: keep equation glyphs in New Computer Modern Math (LaTeX feel)
+// while body text follows classicthesis (Pagella → Libertinus → NCM fallback).
+#show math.equation: set text(font: "New Computer Modern Math")
+
+// Tighten classicthesis defaults a touch and add good table/raw styling.
+#set par(leading: 0.7em)
 #set table(stroke: 0.4pt + luma(160))
 #show table.cell.where(y: 0): strong
-
-#show heading.where(level: 1): it => {
-  pagebreak(weak: true)
-  v(2em)
-  block(text(weight: "bold", size: 26pt, it.body))
-  v(0.3em)
-  line(length: 100%, stroke: 0.6pt + luma(120))
-  v(1.6em)
-}
-#show heading.where(level: 2): it => {
-  pagebreak(weak: true)
-  v(1.2em)
-  block(text(weight: "bold", size: 18pt, it.body))
-  v(0.4em)
-}
-#show heading.where(level: 3): it => {
-  v(0.8em)
-  block(text(weight: "bold", size: 13pt, it.body))
-  v(0.1em)
-}
-#show heading.where(level: 4): it => {
-  v(0.4em)
-  block(text(weight: "bold", size: 11pt, style: "italic", it.body))
-}
-
-// ---------- Cover ----------
-#set page(numbering: none, header: none, footer: none)
-#align(center + horizon)[
-  #text(weight: "bold", size: 36pt)[#__TITLE__]
-  #v(0.8cm)
-  #if __SUBTITLE_NONEMPTY__ [
-    #text(size: 14pt, style: "italic")[#__SUBTITLE__]
-    #v(1.2cm)
-  ]
-  #text(size: 12pt)[#__AUTHOR__]
-  #v(0.3cm)
-  #text(size: 11pt, fill: luma(80))[#__DATE__]
-]
-#pagebreak()
-
-// ---------- Front matter (TOC) ----------
-#set page(
-  numbering: "i",
-  header: none,
-  footer: context align(center, text(9pt, fill: luma(120))[#counter(page).display("i")]),
-)
-#counter(page).update(1)
-#show outline.entry.where(level: 1): it => {
-  v(0.6em, weak: true)
-  strong(it)
-}
-#outline(title: [Contents], depth: 2, indent: auto)
-#pagebreak()
-
-// ---------- Body ----------
-#set page(
-  numbering: "1",
-  header: context {
-    let n = counter(page).get().first()
-    if calc.even(n) {
-      align(left, text(9pt, fill: luma(120))[#__TITLE__])
-    } else {
-      align(right, text(9pt, fill: luma(120), style: "italic")[#__SHORT_TITLE__])
-    }
-  },
-  footer: context align(center, text(9pt, fill: luma(120))[#counter(page).display("1")]),
-)
-#counter(page).update(1)
+#show raw: set text(font: ("DejaVu Sans Mono", "Menlo"), size: 0.92em)
+#show link: set text(rgb("#1f4ea1"))
 
 __BODY__
 """
@@ -252,31 +188,31 @@ __BODY__
 def render_typst(root: Doc, parts: list[Part], *, author: str, date: str) -> str:
     title = root.title
     subtitle = root.description
-    short_title = title
 
     body_parts: list[str] = []
     for part in parts:
-        part_title = part.title
-        # Hugo part titles are usually like "I. Foundations". Prepend "Part " for
-        # full parts but leave appendix-style titles ("Appendices") alone.
-        if re.match(r"^[IVXLCDM]+\.\s", part_title):
-            display = f"Part {part_title}"
+        # Hugo part titles are like "I. Foundations". Use them as-is; classicthesis
+        # adds the "PART" prefix automatically.
+        preamble = part.index.description
+        if preamble:
+            body_parts.append(
+                f"#part({typst_str(part.title)}, preamble: [{escape_typst_content(preamble)}])"
+            )
         else:
-            display = part_title
-        body_parts.append(f"#heading(level: 1)[{escape_typst_content(display)}]")
+            body_parts.append(f"#part({typst_str(part.title)})")
         for ch in part.chapters:
             rel = ch.path.relative_to(part.dir.parent).as_posix()
             body_parts.append(f"#chapter-render({typst_str(rel)})")
     body = "\n\n".join(body_parts)
 
+    subtitle_val = typst_str(subtitle) if subtitle.strip() else "none"
+
     return (
         TEMPLATE
         .replace("__TITLE__", typst_str(title))
         .replace("__AUTHOR__", typst_str(author))
-        .replace("__SUBTITLE__", typst_str(subtitle))
-        .replace("__SUBTITLE_NONEMPTY__", "true" if subtitle.strip() else "false")
+        .replace("__SUBTITLE_VAL__", subtitle_val)
         .replace("__DATE__", typst_str(date))
-        .replace("__SHORT_TITLE__", typst_str(short_title))
         .replace("__BODY__", body)
     )
 
