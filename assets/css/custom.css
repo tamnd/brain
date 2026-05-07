@@ -1111,33 +1111,7 @@ body {
 }
 
 
-/* ===== Hextra sidebar tree polish (kill guideline + retint) ============== */
-
-/* Remove the vertical line indent guide */
-.hextra-sidebar-children > ul::before {
-  display: none !important;
-}
-
-.hextra-sidebar-children > ul {
-  padding-left: 0.75rem !important;
-  margin-left: 0 !important;
-}
-
-/* Active item: replace primary-cyan with our --accent (mono inversion) */
-.hextra-sidebar-active-item,
-a.hextra-sidebar-active-item {
-  background-color: var(--accent) !important;
-  color: var(--accent-fg) !important;
-  font-weight: 500 !important;
-}
-
-/* Hover */
-.hextra-sidebar-item a:not(.hextra-sidebar-active-item):hover {
-  background-color: var(--muted) !important;
-  color: var(--fg) !important;
-}
-
-.hextra-sidebar-container { /* no separator border */ }
+/* ===== Hextra sidebar — kill theme-toggle shadow gradient ================ */
 
 /* Theme/lang switch row at bottom: kill its shadow gradient */
 .hextra-sidebar-container .hx\:shadow-\[0_-12px_16px_\#fff\],

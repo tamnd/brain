@@ -14,7 +14,7 @@ defaultContentLanguageInSubdir = false
 
 [module]
   [[module.imports]]
-    path = "github.com/imfing/hextra"
+    path = "github.com/tamnd/hugo-brainy"
 
 [languages]
   [languages.en]
