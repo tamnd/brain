@@ -1,6 +1,6 @@
 ---
 title: "gopy gc, weakrefs, finalizers"
-description: "v0.10 cycle GC port. Maps Python/gc.c, Python/gc_gil.c, Python/object_stack.c, Objects/weakrefobject.c onto gopy/gc and objects/weakref. Defines what "100% behavioural compatibility" means when the host runtime is Go (which already collects cycles)."
+description: "v0.10 cycle GC port. Maps Python/gc.c, Python/gc_gil.c, Python/object_stack.c, Objects/weakrefobject.c onto gopy/gc and objects/weakref. Defines what '100% behavioural compatibility' means when the host runtime is Go (which already collects cycles)."
 tags: ["gopy", "spec"]
 weight: 1613
 ---
