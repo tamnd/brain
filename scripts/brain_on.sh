@@ -53,6 +53,11 @@ while true; do
     while IFS= read -r line; do log "${YLW}cite: ${line}${RST}"; done <<< "$CITE_OUT"
   fi
 
+  # Normalize block-math delimiters: \[ \] → $$ $$.
+  if MATH_OUT="$(python3 "$REPO_DIR/scripts/fix_mathdelim.py" 2>&1)" && [ -n "$MATH_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}math: ${line}${RST}"; done <<< "$MATH_OUT"
+  fi
+
   _did_something=false
 
   # Commit any local changes (always safe to commit locally).
