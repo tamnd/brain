@@ -27,10 +27,13 @@ jobs:
       - name: Install pandoc and fonts
         run: |
           sudo apt-get update
+          # Latin Modern (LaTeX's free Computer Modern) is the primary body and
+          # math font; STIX Two and Libertinus are fallbacks; DejaVu Mono for raw.
           sudo apt-get install -y --no-install-recommends \
             pandoc \
+            fonts-lmodern \
             fonts-stix \
-            fonts-liberation \
+            fonts-libertinus \
             fonts-dejavu \
             fonts-urw-base35
 

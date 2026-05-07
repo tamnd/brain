@@ -381,8 +381,8 @@ def render_typst(root: Doc, parts: list[Part], *, author: str, date: str) -> str
 
     if subtitle.strip():
         subtitle_block = (
-            f"#text(font: sans, weight: \"regular\", size: 13pt, "
-            f"fill: luma(60), style: \"italic\")[{escape_typst_content(subtitle)}]"
+            f"#text(size: 13pt, fill: luma(60), style: \"italic\")"
+            f"[{escape_typst_content(subtitle)}]"
         )
     else:
         subtitle_block = ""
