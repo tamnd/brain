@@ -1,5 +1,8 @@
 ---
 title: "Linear Algebra"
+description: "A comprehensive book covering linear algebra from foundations through spectral theory, matrix decompositions, numerical methods, and modern applications in ten parts with appendices."
+tags: ["linear-algebra", "mathematics", "book"]
+weight: 1
 ---
 
 # Linear Algebra 
