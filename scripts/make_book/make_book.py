@@ -172,7 +172,7 @@ TEMPLATE = r"""// Springer SVMono-inspired book template.
 )
 #let mono = ("DejaVu Sans Mono", "Menlo", "Liberation Mono", "Courier")
 
-#set document(title: __TITLE__, author: __AUTHOR__)
+#set document(title: __TITLE_STR__, author: __AUTHOR_STR__)
 
 #set page(
   width: 15.6cm, height: 23.4cm,
@@ -400,10 +400,12 @@ def render_typst(root: Doc, parts: list[Part], *, author: str, date: str) -> str
 
     return (
         TEMPLATE
-        .replace("__TITLE__", typst_str(title))
-        .replace("__AUTHOR__", typst_str(author))
+        .replace("__TITLE_STR__", typst_str(title))
+        .replace("__AUTHOR_STR__", typst_str(author))
+        .replace("__TITLE__", escape_typst_content(title))
+        .replace("__AUTHOR__", escape_typst_content(author))
         .replace("__SUBTITLE_BLOCK__", subtitle_block)
-        .replace("__DATE__", typst_str(date))
+        .replace("__DATE__", escape_typst_content(date))
         .replace("__BODY__", body)
     )
 

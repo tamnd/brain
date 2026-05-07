@@ -11,10 +11,48 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      BOOKS: "linear-algebra"
     steps:
       - uses: actions/checkout@v6
 
+      - name: Install typst
+        uses: typst-community/setup-typst@v4
+        with:
+          typst-version: latest
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install pandoc and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pandoc \
+            fonts-stix \
+            fonts-liberation \
+            fonts-dejavu \
+            fonts-urw-base35
+
+      - name: Build books
+        run: |
+          mkdir -p out
+          for book in $BOOKS; do
+            src="content/en/write/book/$book"
+            if [ ! -d "$src" ]; then
+              echo "skipping $book: $src not found" >&2
+              continue
+            fi
+            echo "::group::Building $book"
+            uv run scripts/make_book/make_book.py "$src" \
+              --pdf "out/$book.pdf" \
+              --epub "out/$book.epub"
+            echo "::endgroup::"
+          done
+          ls -lh out/
+
       - name: Create daily release
+        id: release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -28,3 +66,17 @@ jobs:
             --title "Notes $TAG" \
             --notes "Daily snapshot on $(TZ=Asia/Bangkok date '+%Y-%m-%d')." \
             --latest=false
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Upload book assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          shopt -s nullglob
+          assets=(out/*.pdf out/*.epub)
+          if [ ${#assets[@]} -eq 0 ]; then
+            echo "no book assets to upload"
+            exit 0
+          fi
+          gh release upload "$TAG" "${assets[@]}" --clobber
