@@ -78,7 +78,6 @@ This volume traces the evolution of mathematical ideas, methods, and communities
 8.4 Preservation and expansion of Greek works
 8.5 Transmission to Europe
 
-
 ## Part IV. European Renaissance and Early Modern Period
 
 ### Chapter 9. Medieval Europe
@@ -105,7 +104,6 @@ This volume traces the evolution of mathematical ideas, methods, and communities
 11.4 Early applications
 11.5 Foundations and rigor issues
 
-
 ## Part V. 18th and 19th Century Expansion
 
 ### Chapter 12. Analysis and Rigor
@@ -131,7 +129,6 @@ This volume traces the evolution of mathematical ideas, methods, and communities
 14.3 Bernhard Riemann manifolds
 14.4 Topological thinking
 14.5 Geometry and physics
-
 
 ## Part VI. 20th Century Developments
 
@@ -211,7 +208,6 @@ This volume traces the evolution of mathematical ideas, methods, and communities
 23.4 Evolution of disciplines
 23.5 Knowledge dissemination
 
-
 ## Appendix
 
 A. Timeline of major developments
@@ -219,6 +215,5 @@ B. Key mathematicians index
 C. Primary sources guide
 D. Historical notation evolution
 E. Cross-reference to MSC classification
-
 
 This volume gives the temporal and human dimension of mathematics. It explains how ideas arise, spread, and stabilize across cultures and eras.

@@ -32,8 +32,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Editor integration (VSCode)
 25. Minimal working examples
 
-
-
 ###### Chapter 2. Propositions and Proofs
 
 1. Propositions as types
@@ -61,8 +59,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Combining tactics and terms
 24. Small proof refactoring
 25. Proof readability patterns
-
-
 
 #### Chapter 3. Tactic Framework
 
@@ -92,8 +88,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Combining tactics
 25. Debugging tactic scripts
 
-
-
 #### Chapter 4. Equality and Rewriting
 
 1. Definitional equality
@@ -121,8 +115,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Rewriting with equivalences
 24. Rewriting in structures
 25. Common pitfalls
-
-
 
 #### Chapter 5. Inductive Types
 
@@ -152,8 +144,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Design patterns
 25. Performance considerations
 
-
-
 #### Chapter 6. Structures and Typeclasses
 
 1. Structures definition
@@ -181,8 +171,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Interoperability
 24. Extending libraries
 25. Pitfalls
-
-
 
 #### Chapter 7. Functions and Recursion
 
@@ -212,8 +200,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Abstraction patterns
 25. Refactoring functions
 
-
-
 #### Chapter 8. Lists and Collections
 
 1. Lists basics
@@ -241,8 +227,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Interoperability
 24. Common lemmas
 25. Design patterns
-
-
 
 #### Chapter 9. Arithmetic and Algebra
 
@@ -272,8 +256,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Optimization
 25. Integration with libraries
 
-
-
 #### Chapter 10. Logic Engineering
 
 1. Encoding syntax
@@ -301,8 +283,6 @@ date: 2026-05-03T09:35:53+07:00
 23. DSL design
 24. Meta-theory proofs
 25. Case studies
-
-
 
 #### Chapter 11. Metaprogramming
 
@@ -332,8 +312,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Testing meta code
 25. Design patterns
 
-
-
 #### Chapter 12. Automation
 
 1. Simplification strategies
@@ -361,8 +339,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Benchmarking
 24. Scaling automation
 25. Case studies
-
-
 
 #### Chapter 13. Formalizing Mathematics
 
@@ -392,8 +368,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Review processes
 25. Case studies
 
-
-
 #### Chapter 14. Large Projects
 
 1. Project architecture
@@ -421,8 +395,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Library evolution
 24. Migration strategies
 25. Case studies
-
-
 
 #### Chapter 15. Interoperability
 
@@ -452,8 +424,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Monitoring
 25. Case studies
 
-
-
 #### Chapter 16. Performance and Optimization
 
 1. Evaluation model
@@ -481,8 +451,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Performance metrics
 24. Scaling strategies
 25. Case studies
-
-
 
 #### Chapter 17. Debugging and Diagnostics
 
@@ -512,8 +480,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Common pitfalls
 25. Debugging checklist
 
-
-
 #### Chapter 18. Proof Patterns
 
 1. Direct proofs
@@ -542,8 +508,6 @@ date: 2026-05-03T09:35:53+07:00
 24. Anti-patterns
 25. Case studies
 
-
-
 #### Chapter 19. Domain-Specific Libraries
 
 1. Mathlib overview
@@ -571,8 +535,6 @@ date: 2026-05-03T09:35:53+07:00
 23. Maintenance
 24. Governance
 25. Case studies
-
-
 
 #### Chapter 20. End-to-End Case Studies
 

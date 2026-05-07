@@ -48,6 +48,11 @@ while true; do
     while IFS= read -r line; do log "${YLW}lang: ${line}${RST}"; done <<< "$LANG_OUT"
   fi
 
+  # Strip ChatGPT oai_citation references before they reach the repo.
+  if CITE_OUT="$(python3 "$REPO_DIR/scripts/fix_chatgpt.py" 2>&1)" && [ -n "$CITE_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}cite: ${line}${RST}"; done <<< "$CITE_OUT"
+  fi
+
   _did_something=false
 
   # Commit any local changes (always safe to commit locally).

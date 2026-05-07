@@ -213,4 +213,4 @@ weight: 1
 | J | Theorem Index |
 | K | Symbol Index |
 
-This structure combines the standard undergraduate sequence with numerical, computational, geometric, and modern applied directions. It follows the progression used in many major references and courses: systems and matrices, vector spaces, linear maps, inner products, spectral theory, decompositions, then advanced and applied topics.  [oai_citation:0‡MIT OpenCourseWare](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/syllabus/?utm_source=chatgpt.com)
+This structure combines the standard undergraduate sequence with numerical, computational, geometric, and modern applied directions. It follows the progression used in many major references and courses: systems and matrices, vector spaces, linear maps, inner products, spectral theory, decompositions, then advanced and applied topics.
