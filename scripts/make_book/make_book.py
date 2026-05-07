@@ -45,6 +45,9 @@ import yaml
 FRONTMATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 INLINE_MATH_RE = re.compile(r"\\\((.+?)\\\)", re.DOTALL)
 DISPLAY_MATH_RE = re.compile(r"\\\[(.+?)\\\]", re.DOTALL)
+LEADING_H1_RE = re.compile(r"\A\s*#[^\n#].*\n+")
+CHAPTER_TITLE_RE = re.compile(r"^(?:Chapter|Appendix)\s+([\w\d]+)\.\s+(.+)$")
+PART_TITLE_RE = re.compile(r"^([\w\d]+)\.\s+(.+)$")
 
 
 @dataclass
@@ -148,54 +151,221 @@ def typst_str(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-TEMPLATE = r"""#import "@preview/classicthesis:0.1.0": classicthesis, part as ct-part
+TEMPLATE = r"""// Springer SVMono-inspired book template.
+//   Trim: 15.6 x 23.4 cm  (Springer royal octavo).
+//   Body: STIX Two Text + STIX Two Math (Times-compatible).
+//   Heads/sections: Helvetica-class sans-serif.
+
 #import "@preview/cmarker:0.1.8"
 #import "@preview/mitex:0.2.7": mi, mitex
 
-#let math-renderer(body, block: false) = if block { mitex(body) } else { mi(body) }
+#let serif = (
+  "STIX Two Text", "Times New Roman", "Times",
+  "Liberation Serif", "Nimbus Roman", "Libertinus Serif",
+)
+#let sans = (
+  "Helvetica Neue", "Helvetica", "Arial",
+  "Liberation Sans", "Nimbus Sans", "DejaVu Sans",
+)
+#let math-font = (
+  "STIX Two Math", "New Computer Modern Math",
+)
+#let mono = ("DejaVu Sans Mono", "Menlo", "Liberation Mono", "Courier")
 
+#set document(title: __TITLE__, author: __AUTHOR__)
+
+#set page(
+  width: 15.6cm, height: 23.4cm,
+  margin: (inside: 22mm, outside: 16mm, top: 22mm, bottom: 22mm),
+  binding: left,
+)
+#set text(font: serif, size: 10pt, lang: "en")
+#show math.equation: set text(font: math-font)
+#set par(
+  justify: true,
+  leading: 0.55em,
+  first-line-indent: (amount: 1em, all: false),
+  spacing: 0.65em,
+)
+#set list(indent: 1em, body-indent: 0.6em)
+#set enum(indent: 1em, body-indent: 0.6em)
+#set table(stroke: 0.4pt + luma(170), inset: 5pt)
+#show table.cell.where(y: 0): set text(weight: "bold", font: sans)
+#show raw: set text(font: mono, size: 0.92em)
+#show link: set text(rgb("#1f4ea1"))
+
+// Springer levels:
+//   level 1 = part divider          (visual rendered by `book-part`)
+//   level 2 = chapter heading       (visual rendered by `chapter-opener`)
+//   level 3 = section (e.g. 1.1 Vectors)
+//   level 4 = subsection
+//   level 5 = paragraph
+// Levels 1 and 2 carry only outline/bookmark info; their visual rendering
+// happens in dedicated functions.
+#show heading.where(level: 1): _ => []
+#show heading.where(level: 2): _ => []
+
+#show heading.where(level: 3): it => block(above: 1.4em, below: 0.4em)[
+  #set par(first-line-indent: 0pt)
+  #text(font: sans, weight: "bold", size: 11.5pt, it.body)
+]
+#show heading.where(level: 4): it => block(above: 1em, below: 0.3em)[
+  #set par(first-line-indent: 0pt)
+  #text(font: sans, weight: "bold", size: 10.5pt, it.body)
+]
+#show heading.where(level: 5): it => block(above: 0.8em, below: 0.2em)[
+  #set par(first-line-indent: 0pt)
+  #text(font: sans, weight: "regular", style: "italic", size: 10pt, it.body)
+]
+
+// First paragraph after a heading should not indent.
+#show heading: it => it + " "
+
+#let math-renderer(body, block: false) = if block { mitex(body) } else { mi(body) }
 #let chapter-render(path) = cmarker.render(
   read(path),
   math: math-renderer,
-  h1-level: 1,
+  h1-level: 2,
   smart-punctuation: true,
 )
 
-// A "book part" combines the classicthesis part divider page with an invisible
-// outlined heading so parts appear in the table of contents.
-#let book-part(title, preamble: none) = {
-  // Outline-only marker: rendered as a no-op block but registered for TOC.
-  [
-    #show heading.where(level: 1): _ => none
-    #heading(level: 1, outlined: true, bookmarked: true, numbering: none)[#title]
+#let chapter-opener(num, name) = {
+  pagebreak(weak: true)
+  heading(level: 2, outlined: true, bookmarked: true, numbering: none)[#num. #name]
+  v(2cm)
+  block(width: 100%, above: 0pt, below: 0pt)[
+    #set par(justify: false, first-line-indent: 0pt)
+    #text(font: sans, weight: "regular", size: 12pt, fill: luma(70), tracking: 0.10em)[CHAPTER #upper(num)]
+    #v(0.4em)
+    #text(font: sans, weight: "bold", size: 24pt)[#name]
+    #v(0.6em)
+    #line(length: 100%, stroke: 0.5pt + luma(170))
   ]
-  ct-part(title, preamble: preamble)
+  v(1.2cm)
 }
 
-#show: classicthesis.with(
-  title: __TITLE__,
-  subtitle: __SUBTITLE_VAL__,
-  author: __AUTHOR__,
-  date: __DATE__,
-  paper: "a4",
-  lang: "en",
+#let book-part(label, name, preamble: none) = {
+  pagebreak(weak: true, to: "odd")
+  heading(level: 1, outlined: true, bookmarked: true, numbering: none)[Part #label. #name]
+  set page(header: none, footer: none)
+  v(1fr)
+  align(center)[
+    #text(font: sans, weight: "regular", size: 14pt, tracking: 0.18em, fill: luma(70))[PART #upper(label)]
+    #v(0.7cm)
+    #text(font: sans, weight: "bold", size: 28pt)[#name]
+    #if preamble != none {
+      v(1.2cm)
+      block(width: 75%)[
+        #set par(justify: true, first-line-indent: 0pt, leading: 0.6em)
+        #set text(font: serif, size: 10.5pt, style: "italic")
+        #preamble
+      ]
+    }
+  ]
+  v(1fr)
+  pagebreak(weak: true, to: "odd")
+}
+
+// ============================================================
+// Front matter — half-title page + title page
+// ============================================================
+#set page(numbering: none, header: none, footer: none)
+
+// Title page
+#align(center)[
+  #v(2.5cm)
+  #text(font: sans, weight: "bold", size: 28pt)[__TITLE__]
+  #v(0.5cm)
+  __SUBTITLE_BLOCK__
+  #v(3.5cm)
+  #text(font: sans, weight: "regular", size: 14pt)[__AUTHOR__]
+  #v(0.4cm)
+  #text(font: sans, weight: "regular", size: 11pt, fill: luma(80))[__DATE__]
+  #v(1fr)
+  #text(font: sans, size: 9pt, fill: luma(120))[Built with Typst · cmarker · mitex]
+]
+#pagebreak(to: "odd")
+
+// ============================================================
+// Table of contents
+// ============================================================
+#set page(numbering: "i")
+#counter(page).update(1)
+#block[
+  #set par(first-line-indent: 0pt)
+  #text(font: sans, weight: "bold", size: 22pt)[Contents]
+]
+#v(0.5em)
+#line(length: 100%, stroke: 0.5pt + luma(170))
+#v(0.6em)
+#set outline(depth: 2)
+#show outline.entry.where(level: 1): it => {
+  v(0.7em, weak: true)
+  set text(font: sans, weight: "bold", size: 11pt)
+  it
+}
+#show outline.entry.where(level: 2): it => {
+  set text(font: serif, size: 10pt)
+  pad(left: 0.8em, it)
+}
+#outline(title: none, indent: auto)
+
+#pagebreak(to: "odd")
+
+// ============================================================
+// Main matter
+// ============================================================
+#set page(
+  numbering: "1",
+  header: context {
+    let pn = counter(page).get().first()
+    let here-page = here().page()
+    let parts-here = query(heading.where(level: 1)).filter(h => h.location().page() == here-page)
+    let chaps-here = query(heading.where(level: 2)).filter(h => h.location().page() == here-page)
+    if parts-here.len() > 0 or chaps-here.len() > 0 { return [] }
+
+    let chapters-before = query(heading.where(level: 2).before(here()))
+    let sections-before = query(heading.where(level: 3).before(here()))
+    let chap = if chapters-before.len() > 0 { chapters-before.last() } else { none }
+    let sec = if sections-before.len() > 0 { sections-before.last() } else { none }
+    if sec != none and chap != none and sec.location().page() < chap.location().page() {
+      sec = none
+    }
+
+    set text(font: sans, size: 8.5pt, fill: luma(70))
+    if calc.even(pn) {
+      grid(columns: (auto, 1fr, auto),
+        [#pn], [], align(right, if chap != none { chap.body } else []),
+      )
+    } else {
+      grid(columns: (auto, 1fr, auto),
+        align(left, if sec != none { sec.body } else if chap != none { chap.body } else []),
+        [], [#pn],
+      )
+    }
+  },
+  footer: none,
 )
-
-// Math equations stay in New Computer Modern Math for the LaTeX feel.
-#show math.equation: set text(font: "New Computer Modern Math")
-
-// TOC: chapters and parts only — sections would balloon into ~70 pages.
-#set outline(depth: 1)
-
-// Tweaks on top of classicthesis defaults.
-#set par(leading: 0.7em)
-#set table(stroke: 0.4pt + luma(160))
-#show table.cell.where(y: 0): strong
-#show raw: set text(font: ("DejaVu Sans Mono", "Menlo"), size: 0.92em)
-#show link: set text(rgb("#1f4ea1"))
+#counter(page).update(1)
 
 __BODY__
 """
+
+
+def split_chapter_title(title: str) -> tuple[str, str]:
+    """`Chapter 1. Foo` -> ('1', 'Foo'); fallback returns ('', title)."""
+    m = CHAPTER_TITLE_RE.match(title.strip())
+    if m:
+        return m.group(1), m.group(2).strip()
+    return "", title
+
+
+def split_part_title(title: str) -> tuple[str, str]:
+    """`I. Foundations` -> ('I', 'Foundations'); fallback returns ('', title)."""
+    m = PART_TITLE_RE.match(title.strip())
+    if m:
+        return m.group(1), m.group(2).strip()
+    return "", title
 
 
 def render_typst(root: Doc, parts: list[Part], *, author: str, date: str) -> str:
@@ -204,27 +374,35 @@ def render_typst(root: Doc, parts: list[Part], *, author: str, date: str) -> str
 
     body_parts: list[str] = []
     for part in parts:
-        # Hugo part titles are like "I. Foundations". Use them as-is; classicthesis
-        # adds the "PART" prefix automatically.
-        preamble = part.index.description
+        label, name = split_part_title(part.title)
+        preamble = part.index.description.strip()
+        args = [typst_str(label), typst_str(name)]
+        kwargs = ""
         if preamble:
-            body_parts.append(
-                f"#book-part({typst_str(part.title)}, preamble: [{escape_typst_content(preamble)}])"
-            )
-        else:
-            body_parts.append(f"#book-part({typst_str(part.title)})")
+            kwargs = f", preamble: [{escape_typst_content(preamble)}]"
+        body_parts.append(f"#book-part({', '.join(args)}{kwargs})")
         for ch in part.chapters:
+            num, ch_name = split_chapter_title(ch.title)
             rel = ch.path.relative_to(part.dir.parent).as_posix()
+            body_parts.append(
+                f"#chapter-opener({typst_str(num)}, {typst_str(ch_name)})"
+            )
             body_parts.append(f"#chapter-render({typst_str(rel)})")
     body = "\n\n".join(body_parts)
 
-    subtitle_val = typst_str(subtitle) if subtitle.strip() else "none"
+    if subtitle.strip():
+        subtitle_block = (
+            f"#text(font: sans, weight: \"regular\", size: 13pt, "
+            f"fill: luma(60), style: \"italic\")[{escape_typst_content(subtitle)}]"
+        )
+    else:
+        subtitle_block = ""
 
     return (
         TEMPLATE
         .replace("__TITLE__", typst_str(title))
         .replace("__AUTHOR__", typst_str(author))
-        .replace("__SUBTITLE_VAL__", subtitle_val)
+        .replace("__SUBTITLE_BLOCK__", subtitle_block)
         .replace("__DATE__", typst_str(date))
         .replace("__BODY__", body)
     )
@@ -249,13 +427,16 @@ def escape_typst_content(s: str) -> str:
 
 def stage_workspace(book_dir: Path, parts: list[Part], workdir: Path) -> None:
     """Mirror book content into workdir with frontmatter stripped and math
-    delimiters normalised so cmarker can pick up on them."""
+    delimiters normalised so cmarker can pick up on them. The leading H1 line
+    (e.g. `# Chapter 1. ...`) is stripped because the chapter heading is
+    rendered externally via `chapter-opener` for Springer-style typography."""
     for part in parts:
         out_part = workdir / part.dir.relative_to(book_dir)
         out_part.mkdir(parents=True, exist_ok=True)
         for ch in part.chapters:
+            stripped = LEADING_H1_RE.sub("", ch.body, count=1)
             (workdir / ch.path.relative_to(book_dir)).write_text(
-                ch.body, encoding="utf-8"
+                stripped, encoding="utf-8"
             )
 
 
