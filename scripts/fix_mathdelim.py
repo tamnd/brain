@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-r"""Normalize block-math delimiters: \[ and \] → $$ on their own lines.
+r"""Normalize block-math delimiters and fix setext-heading interference.
 
-Idempotent: files already using $$ are untouched. Prints one line per
-repaired file (read by brain_on.sh) and a summary at the end.
+Two passes over every .md file under content/:
 
-Skips content inside fenced code blocks (``` or ~~~) so that LaTeX
-source examples are never altered.
+1. Delimiter normalisation: \[ and \] on their own lines → $$ on their own lines.
+2. Setext-heading fix: a bare = or - line inside a $$ block gets appended to the
+   preceding line (= triggers Goldmark setext-h1, - triggers setext-h2 even inside
+   passthrough blocks when the passthrough parser loses the race).
+
+Both passes are idempotent. Skips content inside fenced code blocks.
 """
 import re
 import sys
@@ -19,20 +22,39 @@ _FENCE = re.compile(r'^[ \t]*(```|~~~)')
 def fix(text: str) -> tuple[str, bool]:
     lines = text.split('\n')
     out = []
-    in_code = False
+    in_fence = False
+    in_math = False
 
     for line in lines:
         if _FENCE.match(line):
-            in_code = not in_code
+            in_fence = not in_fence
             out.append(line)
             continue
 
-        if not in_code and line.strip() in (r'\[', r'\]'):
-            # Preserve any leading indentation, replace the delimiter only.
+        if in_fence:
+            out.append(line)
+            continue
+
+        stripped = line.strip()
+
+        # Pass 1: \[ / \] → $$  (both toggle in_math just like $$)
+        if stripped in (r'\[', r'\]'):
             indent = line[: len(line) - len(line.lstrip())]
             out.append(indent + '$$')
-        else:
+            in_math = not in_math
+            continue
+
+        if stripped == '$$':
+            in_math = not in_math
             out.append(line)
+            continue
+
+        # Pass 2: bare = or - inside $$ → append to previous line
+        if in_math and stripped in ('=', '-') and out:
+            out[-1] = out[-1] + ' ' + stripped
+            continue
+
+        out.append(line)
 
     new = '\n'.join(out)
     return new, new != text
