@@ -80,6 +80,35 @@ while true; do
     if HUGO_OUT="$(hugo --renderToMemory --gc 2>&1)"; then
       if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
         log "${GRN}✓ pushed${RST}"
+        # Wait for GitHub Pages deploy and report result + duration.
+        _deploy_start=$(date +%s)
+        log "${GRY}  waiting for deploy…${RST}"
+        _run_id=""
+        for _i in $(seq 1 12); do
+          sleep 10
+          _run_id=$(gh run list --repo tamnd/brain --branch "$BRANCH" \
+            --event push --limit 1 --json databaseId,status \
+            --jq '.[0] | select(.status != "completed") | .databaseId' 2>/dev/null || true)
+          [ -n "$_run_id" ] && break
+          # Also accept if already completed within this window.
+          _run_id=$(gh run list --repo tamnd/brain --branch "$BRANCH" \
+            --event push --limit 1 --json databaseId,status,conclusion,updatedAt \
+            --jq '.[0] | select(.status == "completed") | .databaseId' 2>/dev/null || true)
+          [ -n "$_run_id" ] && break
+        done
+        if [ -n "$_run_id" ]; then
+          gh run watch "$_run_id" --exit-status &>/dev/null && _conclusion="success" || _conclusion="failure"
+          _deploy_end=$(date +%s)
+          _elapsed=$(( _deploy_end - _deploy_start ))
+          _mins=$(( _elapsed / 60 )); _secs=$(( _elapsed % 60 ))
+          if [ "$_conclusion" = "success" ]; then
+            log "${GRN}✓ deployed in ${_mins}m${_secs}s${RST}"
+          else
+            log "${YLW}✗ deploy failed after ${_mins}m${_secs}s${RST}"
+          fi
+        else
+          log "${YLW}· deploy run not found${RST}"
+        fi
       else
         while IFS= read -r line; do log "${YLW}push: ${line}${RST}"; done <<< "$PUSH_OUT"
         log "${YLW}✗ push failed — commit held locally, retry next cycle${RST}"
