@@ -178,9 +178,10 @@ TEMPLATE = r"""// Springer SVMono-inspired book template, LaTeX-flavoured.
 
 #set document(title: __TITLE_STR__, author: __AUTHOR_STR__)
 
+// A4 trim (21 x 29.7 cm) with generous academic margins.
 #set page(
-  width: 15.5cm, height: 23.4cm,
-  margin: (inside: 23mm, outside: 17mm, top: 24mm, bottom: 25mm),
+  paper: "a4",
+  margin: (inside: 30mm, outside: 25mm, top: 28mm, bottom: 30mm),
   binding: left,
 )
 #set text(font: serif, size: 10.5pt, lang: "en")
