@@ -1,7 +1,6 @@
 ---
 title: "Chapter 27"
 weight: 27
-date: 2026-05-09T01:19:10Z
 ---
 
 # Chapter 27

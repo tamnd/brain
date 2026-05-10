@@ -1,7 +1,6 @@
 ---
 title: "Part IX"
 weight: 9
-date: 2026-05-09T01:21:59Z
 ---
 
 # Part IX

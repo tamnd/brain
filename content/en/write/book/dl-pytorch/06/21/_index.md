@@ -1,7 +1,6 @@
 ---
 title: "Chapter 21"
 weight: 21
-date: 2026-05-09T01:09:57Z
 ---
 
 # Chapter 21

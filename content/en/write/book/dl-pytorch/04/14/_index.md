@@ -1,7 +1,6 @@
 ---
 title: "Chapter 14"
 weight: 14
-date: 2026-05-09T00:53:48Z
 ---
 
 # Chapter 14

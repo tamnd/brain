@@ -1,7 +1,6 @@
 ---
 title: "Chapter 18"
 weight: 18
-date: 2026-05-09T01:06:00Z
 ---
 
 # Chapter 18

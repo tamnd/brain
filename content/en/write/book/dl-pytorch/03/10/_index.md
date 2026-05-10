@@ -1,7 +1,6 @@
 ---
 title: "Chapter 10"
 weight: 10
-date: 2026-05-09T00:43:50Z
 ---
 
 # Chapter 10

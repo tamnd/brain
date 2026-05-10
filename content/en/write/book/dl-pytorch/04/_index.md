@@ -1,7 +1,6 @@
 ---
 title: "Part IV"
 weight: 4
-date: 2026-05-09T00:53:48Z
 ---
 
 # Part IV

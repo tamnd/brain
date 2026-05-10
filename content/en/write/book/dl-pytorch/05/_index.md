@@ -1,7 +1,6 @@
 ---
 title: "Part V"
 weight: 5
-date: 2026-05-09T01:06:00Z
 ---
 
 # Part V

@@ -1,7 +1,6 @@
 ---
 title: "Chapter 31"
 weight: 31
-date: 2026-05-09T01:23:00Z
 ---
 
 # Chapter 31

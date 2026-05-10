@@ -1,7 +1,6 @@
 ---
 title: "Part VIII"
 weight: 8
-date: 2026-05-09T01:17:02Z
 ---
 
 # Part VIII
