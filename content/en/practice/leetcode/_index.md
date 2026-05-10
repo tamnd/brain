@@ -370,3 +370,28 @@ Practice notes grouped by problem number.
 | 398 | [LeetCode 398: Random Pick Index](03/0398.md) | Medium | A clear explanation of picking a uniformly random index for a target value using reservoir sampling, with an alternative hash map approach. |
 | 399 | [LeetCode 399: Evaluate Division](03/0399.md) | Medium | A clear explanation of solving division equations using graph traversal and weighted edges. |
 | 400 | [LeetCode 400: Nth Digit](04/0400.md) | Medium | A clear explanation of finding the nth digit in the infinite integer sequence using digit groups and arithmetic. |
+| 426 | [LeetCode 426: Convert Binary Search Tree to Sorted Doubly Linked List](04/0426.md) | Medium | Convert a BST into a sorted circular doubly linked list in-place using inorder traversal. |
+| 427 | [LeetCode 427: Construct Quad Tree](04/0427.md) | Medium | Build a quad tree from a binary square grid using recursive divide and conquer. |
+| 428 | [LeetCode 428: Serialize and Deserialize N-ary Tree](04/0428.md) | Hard | Serialize an N-ary tree into a string and reconstruct the same tree using preorder traversal with child counts. |
+| 429 | [LeetCode 429: N-ary Tree Level Order Traversal](04/0429.md) | Medium | Traverse an N-ary tree level by level using breadth-first search. |
+| 430 | [LeetCode 430: Flatten a Multilevel Doubly Linked List](04/0430.md) | Medium | Flatten a multilevel doubly linked list in-place using depth-first traversal and pointer splicing. |
+| 431 | [LeetCode 431: Encode N-ary Tree to Binary Tree](04/0431.md) | Hard | Convert an N-ary tree into a binary tree and reconstruct it using the left-child right-sibling representation. |
+| 432 | [LeetCode 432: All O'one Data Structure](04/0432.md) | Hard | Design a data structure that supports increment, decrement, get minimum key, and get maximum key in average O(1) time. |
+| 433 | [LeetCode 433: Minimum Genetic Mutation](04/0433.md) | Medium | Find the minimum number of valid one-character gene mutations using breadth-first search. |
+| 434 | [LeetCode 434: Number of Segments in a String](04/0434.md) | Easy | Count the number of word segments in a string by detecting transitions from spaces to non-space characters. |
+| 435 | [LeetCode 435: Non-overlapping Intervals](04/0435.md) | Medium | Remove the minimum number of intervals so the remaining intervals do not overlap, using greedy sorting by end time. |
+| 436 | [LeetCode 436: Find Right Interval](04/0436.md) | Medium | Find, for each interval, the interval with the smallest start point greater than or equal to its end point using sorting and binary search. |
+| 437 | [LeetCode 437: Path Sum III](04/0437.md) | Medium | Count downward paths in a binary tree whose values sum to targetSum using DFS and prefix sums. |
+| 438 | [LeetCode 438: Find All Anagrams in a String](04/0438.md) | Medium | Find all starting indices where an anagram of p appears in s using a fixed-size sliding window. |
+| 439 | [LeetCode 439: Ternary Expression Parser](04/0439.md) | Medium | Evaluate a nested ternary expression using a right-to-left stack parser. |
+| 440 | [LeetCode 440: K-th Smallest in Lexicographical Order](04/0440.md) | Hard | Find the k-th integer in lexicographical order without generating all numbers, using prefix counting over a conceptual trie. |
+| 441 | [LeetCode 441: Arranging Coins](04/0441.md) | Easy | Find the maximum number of complete staircase rows that can be formed using binary search and triangular numbers. |
+| 442 | [LeetCode 442: Find All Duplicates in an Array](04/0442.md) | Medium | Find all duplicated numbers in an array in O(n) time and O(1) extra space using index marking. |
+| 443 | [LeetCode 443: String Compression](04/0443.md) | Medium | Compress a character array in-place using two pointers and grouped character counting. |
+| 444 | [LeetCode 444: Sequence Reconstruction](04/0444.md) | Medium | Check whether nums is the unique shortest supersequence of given subsequences using topological sorting. |
+| 445 | [LeetCode 445: Add Two Numbers II](04/0445.md) | Medium | Add two numbers stored in forward-order linked lists using stacks and carry propagation. |
+| 446 | [LeetCode 446: Arithmetic Slices II - Subsequence](04/0446.md) | Hard | Count arithmetic subsequences of length at least three using dynamic programming with one hash map per ending index. |
+| 447 | [LeetCode 447: Number of Boomerangs](04/0447.md) | Medium | Count ordered boomerang tuples by fixing each point as the center and grouping other points by squared distance. |
+| 448 | [LeetCode 448: Find All Numbers Disappeared in an Array](04/0448.md) | Easy | Find all missing numbers from 1 to n in O(n) time using in-place index marking. |
+| 449 | [LeetCode 449: Serialize and Deserialize BST](04/0449.md) | Medium | Serialize a binary search tree compactly with preorder traversal and rebuild it using BST value bounds. |
+| 450 | [LeetCode 450: Delete Node in a BST](04/0450.md) | Medium | Delete a node from a binary search tree while preserving the BST property using recursive search and inorder successor replacement. |
