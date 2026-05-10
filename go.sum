@@ -10,3 +10,5 @@ github.com/tamnd/hugo-brainy v0.3.0 h1:hGBKCGYj5tPujjNgecxyOLREgG2hkYQoPBRyo9WLl
 github.com/tamnd/hugo-brainy v0.3.0/go.mod h1:aspJm44AAcsn951ee8GqzPeCUj3Ghap5brTtBcKJpfc=
 github.com/tamnd/hugo-brainy v0.3.1 h1:++nUj+MxqDeiehWcihAzXkCbONozT7YSm2gBdCHAb/Y=
 github.com/tamnd/hugo-brainy v0.3.1/go.mod h1:aspJm44AAcsn951ee8GqzPeCUj3Ghap5brTtBcKJpfc=
+github.com/tamnd/hugo-brainy v0.3.2 h1:Btzt2/bZPxuRbTNpQkNaO+wBlox1n5FtQVg6eyB+yNk=
+github.com/tamnd/hugo-brainy v0.3.2/go.mod h1:F1gqu18e6d7P7RCVp3zINvBwTiBwKX2WciQfyjgs6vo=
