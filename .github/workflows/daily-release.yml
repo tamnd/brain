@@ -14,26 +14,26 @@ jobs:
     env:
       BOOKS: "linear-algebra"
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
 
       - name: Install typst
-        uses: typst-community/setup-typst@v4
+        uses: typst-community/setup-typst@v5.1.0
         with:
           typst-version: latest
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v8.1.0
 
       - name: Install pandoc and fonts
         run: |
           sudo apt-get update
-          # Latin Modern (LaTeX's free Computer Modern) is the primary body and
-          # math font; STIX Two and Libertinus are fallbacks; DejaVu Mono for raw.
+          # Latin Modern is the primary body and math font; STIX Two and
+          # FreeFont are fallbacks; DejaVu Mono is used for raw monospace text.
           sudo apt-get install -y --no-install-recommends \
             pandoc \
             fonts-lmodern \
             fonts-stix \
-            fonts-libertinus \
+            fonts-freefont-otf \
             fonts-dejavu \
             fonts-urw-base35
 
