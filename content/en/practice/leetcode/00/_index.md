@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 00xx"
-description: "LeetCode practice notes for problems 1 through 25, including A clear explanation of the Two Sum problem using brute force first, then an optimized hash map solution.."
+description: "LeetCode practice notes for problems 1 through 25, including A clear explanation of the Two Sum problem using brute force first, then an optimized hash map solution."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 0
 ---
