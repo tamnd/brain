@@ -420,6 +420,31 @@ Practice notes grouped by problem number.
 | 448 | [LeetCode 448: Find All Numbers Disappeared in an Array](04/0448.md) | Easy | Find all missing numbers from 1 to n in O(n) time using in-place index marking. |
 | 449 | [LeetCode 449: Serialize and Deserialize BST](04/0449.md) | Medium | Serialize a binary search tree compactly with preorder traversal and rebuild it using BST value bounds. |
 | 450 | [LeetCode 450: Delete Node in a BST](04/0450.md) | Medium | Delete a node from a binary search tree while preserving the BST property using recursive search and inorder successor replacement. |
+| 451 | [LeetCode 451: Sort Characters By Frequency](04/0451.md) | Medium | A clear explanation of sorting characters by decreasing frequency using a hash map and sorting. |
+| 452 | [LeetCode 452: Minimum Number of Arrows to Burst Balloons](04/0452.md) | Medium | A clear explanation of the greedy interval solution for finding the minimum number of arrows needed to burst all balloons. |
+| 453 | [LeetCode 453: Minimum Moves to Equal Array Elements](04/0453.md) | Medium | A clear explanation of the math behind making all array elements equal by incrementing n - 1 elements at a time. |
+| 454 | [LeetCode 454: 4Sum II](04/0454.md) | Medium | A clear explanation of counting zero-sum tuples across four arrays using pair sums and a hash map. |
+| 455 | [LeetCode 455: Assign Cookies](04/0455.md) | Easy | A clear explanation of the greedy two-pointer solution for maximizing the number of content children. |
+| 456 | [LeetCode 456: 132 Pattern](04/0456.md) | Medium | A clear explanation of detecting a 132 pattern using reverse traversal and a monotonic stack. |
+| 457 | [LeetCode 457: Circular Array Loop](04/0457.md) | Medium | A clear explanation of detecting a valid cycle in a circular array using fast and slow pointers. |
+| 458 | [LeetCode 458: Poor Pigs](04/0458.md) | Hard | A clear explanation of the combinatorics behind finding the minimum number of pigs needed to identify the poisonous bucket. |
+| 459 | [LeetCode 459: Repeated Substring Pattern](04/0459.md) | Easy | A clear explanation of checking whether a string can be built by repeating one of its proper substrings. |
+| 460 | [LeetCode 460: LFU Cache](04/0460.md) | Hard | A clear explanation of designing an LFU cache with O(1) average get and put operations. |
+| 461 | [LeetCode 461: Hamming Distance](04/0461.md) | Easy | A clear explanation of computing the Hamming distance between two integers using XOR and bit counting. |
+| 462 | [LeetCode 462: Minimum Moves to Equal Array Elements II](04/0462.md) | Medium | A clear explanation of why the median minimizes the number of moves needed to make all array elements equal. |
+| 463 | [LeetCode 463: Island Perimeter](04/0463.md) | Easy | A clear explanation of counting the perimeter of an island in a grid by adding land-cell edges and subtracting shared edges. |
+| 464 | [LeetCode 464: Can I Win](04/0464.md) | Medium | A clear explanation of solving the Can I Win game using minimax recursion, bitmask state compression, and memoization. |
+| 465 | [LeetCode 465: Optimal Account Balancing](04/0465.md) | Hard | A clear explanation of minimizing debt-settlement transactions using net balances, backtracking, and memoization-style pruning. |
+| 466 | [LeetCode 466: Count The Repetitions](04/0466.md) | Hard | A clear explanation of counting how many repeated copies of one string can be obtained as a subsequence of another repeated string. |
+| 467 | [LeetCode 467: Unique Substrings in Wraparound String](04/0467.md) | Medium | A clear explanation of counting unique substrings that appear in the infinite alphabet wraparound string using dynamic programming by ending character. |
+| 468 | [LeetCode 468: Validate IP Address](04/0468.md) | Medium | A clear explanation of validating IPv4 and IPv6 addresses by checking segment count, length, characters, range, and leading-zero rules. |
+| 469 | [LeetCode 469: Convex Polygon](04/0469.md) | Medium | A clear explanation of checking whether ordered points form a convex polygon using cross products. |
+| 470 | [LeetCode 470: Implement Rand10() Using Rand7()](04/0470.md) | Medium | A clear explanation of generating a uniform random integer from 1 to 10 using only rand7 and rejection sampling. |
+| 471 | [LeetCode 471: Encode String with Shortest Length](04/0471.md) | Hard | A clear explanation of interval dynamic programming for encoding a string into the shortest k[encoded_string] form. |
+| 472 | [LeetCode 472: Concatenated Words](04/0472.md) | Hard | A clear explanation of finding all words that can be formed by concatenating at least two shorter words from the same list. |
+| 473 | [LeetCode 473: Matchsticks to Square](04/0473.md) | Medium | A clear explanation of deciding whether matchsticks can form a square using backtracking, sorting, and pruning. |
+| 474 | [LeetCode 474: Ones and Zeroes](04/0474.md) | Medium | A clear explanation of solving the largest subset problem as a two-dimensional 0/1 knapsack over zero and one counts. |
+| 475 | [LeetCode 475: Heaters](04/0475.md) | Medium | A clear explanation of finding the minimum heater radius by sorting positions and matching each house to its nearest heater. |
 | 476 | [LeetCode 476: Number Complement](04/0476.md) | Easy | A clear explanation of finding the bitwise complement of a positive integer using a binary mask. |
 | 477 | [LeetCode 477: Total Hamming Distance](04/0477.md) | Medium | A clear explanation of computing the total Hamming distance across all pairs by counting different bits column by column. |
 | 478 | [LeetCode 478: Generate Random Point in a Circle](04/0478.md) | Medium | A clear explanation of generating uniformly random points inside a circle using polar coordinates. |
