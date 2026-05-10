@@ -1,9 +1,9 @@
 ---
 title: "Part VII"
+description: "Part VII of Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 7
 ---
-
-# Part VII
 
 ## Chapters
 

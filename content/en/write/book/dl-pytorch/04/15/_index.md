@@ -1,9 +1,9 @@
 ---
 title: "Chapter 15"
+description: "Chapter 15 sections from Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 15
 ---
-
-# Chapter 15
 
 ## Sections
 

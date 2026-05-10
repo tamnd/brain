@@ -1,9 +1,9 @@
 ---
 title: "Part IV"
+description: "Part IV of Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 4
 ---
-
-# Part IV
 
 ## Chapters
 

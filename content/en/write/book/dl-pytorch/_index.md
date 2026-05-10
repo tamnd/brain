@@ -1,8 +1,8 @@
 ---
 title: "Deep Learning with PyTorch"
+description: "1.1 What Is Deep Learning 1.2 The PyTorch Ecosystem 1.3 Dynamic Computation Graphs 1.4 Tensor-Based Computation 1.5 GPUs and Accelerators 1.6 PyTorch Versus Other Frameworks 1.7 Installing and Configuring PyTorch 1.8"
+tags: ["deep-learning", "pytorch"]
 ---
-
-# Deep Learning with PyTorch
 
 ## Part I. PyTorch Foundations
 

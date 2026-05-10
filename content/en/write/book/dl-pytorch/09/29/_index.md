@@ -1,9 +1,9 @@
 ---
 title: "Chapter 29"
+description: "Chapter 29 sections from Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 29
 ---
-
-# Chapter 29
 
 ## Sections
 

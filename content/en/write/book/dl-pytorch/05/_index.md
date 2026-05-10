@@ -1,9 +1,9 @@
 ---
 title: "Part V"
+description: "Part V of Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 5
 ---
-
-# Part V
 
 ## Chapters
 

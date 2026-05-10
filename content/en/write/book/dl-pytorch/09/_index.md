@@ -1,9 +1,9 @@
 ---
 title: "Part IX"
+description: "Part IX of Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 9
 ---
-
-# Part IX
 
 ## Chapters
 

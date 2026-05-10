@@ -1,9 +1,9 @@
 ---
 title: "Part VI"
+description: "Part VI of Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 6
 ---
-
-# Part VI
 
 ## Chapters
 

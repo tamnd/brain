@@ -1,9 +1,9 @@
 ---
 title: "Chapter 26"
+description: "Chapter 26 sections from Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 26
 ---
-
-# Chapter 26
 
 ## Sections
 

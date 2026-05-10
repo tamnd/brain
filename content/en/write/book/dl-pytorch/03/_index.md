@@ -1,9 +1,9 @@
 ---
 title: "Part III"
+description: "Part III of Deep Learning with PyTorch."
+tags: ["deep-learning", "pytorch"]
 weight: 3
 ---
-
-# Part III
 
 ## Chapters
 
