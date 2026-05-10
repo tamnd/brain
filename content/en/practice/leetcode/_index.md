@@ -245,3 +245,28 @@ Practice notes grouped by problem number.
 | 273 | [LeetCode 273: Integer to English Words](02/0273.md) | Hard | A clear explanation of the Integer to English Words problem using three-digit chunks and scale words. |
 | 274 | [LeetCode 274: H-Index](02/0274.md) | Medium | A clear explanation of the H-Index problem using sorting, then an optimized counting approach. |
 | 275 | [LeetCode 275: H-Index II](02/0275.md) | Medium | A clear explanation of the H-Index II problem using binary search on a sorted citations array. |
+| 276 | [LeetCode 276: Paint Fence](02/0276.md) | Medium | A dynamic programming solution for counting ways to paint fence posts with no more than two adjacent posts sharing the same color. |
+| 277 | [LeetCode 277: Find the Celebrity](02/0277.md) | Medium | A two-pass solution for finding a celebrity using the knows API with O(n) calls and O(1) extra space. |
+| 278 | [LeetCode 278: First Bad Version](02/0278.md) | Easy | A binary search solution for finding the first bad version while minimizing calls to the isBadVersion API. |
+| 279 | [LeetCode 279: Perfect Squares](02/0279.md) | Medium | A dynamic programming solution for finding the least number of perfect square numbers that sum to n. |
+| 280 | [LeetCode 280: Wiggle Sort](02/0280.md) | Medium | A greedy in-place solution for rearranging an array into a non-strict wiggle pattern. |
+| 281 | [LeetCode 281: Zigzag Iterator](02/0281.md) | Medium | A queue-based iterator design for returning elements from two vectors in alternating order, with a clean extension to k vectors. |
+| 282 | [LeetCode 282: Expression Add Operators](02/0282.md) | Hard | A backtracking solution for inserting operators into a numeric string so the expression evaluates to a target value. |
+| 283 | [LeetCode 283: Move Zeroes](02/0283.md) | Easy | A two-pointer in-place solution for moving all zeroes to the end while preserving the relative order of non-zero elements. |
+| 284 | [LeetCode 284: Peeking Iterator](02/0284.md) | Medium | A wrapper iterator design that supports peeking at the next element without advancing the iterator. |
+| 285 | [LeetCode 285: Inorder Successor in BST](02/0285.md) | Medium | A binary-search-style solution for finding the smallest node greater than p in a binary search tree. |
+| 286 | [LeetCode 286: Walls and Gates](02/0286.md) | Medium | A multi-source BFS solution for filling each empty room with its shortest distance to the nearest gate. |
+| 287 | [LeetCode 287: Find the Duplicate Number](02/0287.md) | Medium | A Floyd cycle detection solution for finding the repeated number without modifying the array and using constant extra space. |
+| 288 | [LeetCode 288: Unique Word Abbreviation](02/0288.md) | Medium | A hash map design for checking whether a word's abbreviation is unique in a dictionary. |
+| 289 | [LeetCode 289: Game of Life](02/0289.md) | Medium | An in-place matrix simulation for computing the next state of Conway's Game of Life using temporary encoded states. |
+| 290 | [LeetCode 290: Word Pattern](02/0290.md) | Easy | A hash map solution for checking whether a pattern string and a space-separated word string form a bijection. |
+| 291 | [LeetCode 291: Word Pattern II](02/0291.md) | Medium | A backtracking solution for matching a pattern string to a target string using a bijective character-to-substring mapping. |
+| 292 | [LeetCode 292: Nim Game](02/0292.md) | Easy | A game theory solution for deciding whether the first player can win by using the losing-position pattern of multiples of four. |
+| 293 | [LeetCode 293: Flip Game](02/0293.md) | Easy | A simple string scanning solution for generating every possible next state after flipping one consecutive ++ pair into --. |
+| 294 | [LeetCode 294: Flip Game II](02/0294.md) | Medium | A recursive game theory solution with memoization for deciding whether the starting player can force a win. |
+| 295 | [LeetCode 295: Find Median from Data Stream](02/0295.md) | Hard | A two-heap data structure for adding numbers from a stream and returning the current median in constant time. |
+| 296 | [LeetCode 296: Best Meeting Point](02/0296.md) | Hard | A median-based solution for minimizing total Manhattan distance in a grid. |
+| 297 | [LeetCode 297: Serialize and Deserialize Binary Tree](02/0297.md) | Hard | A preorder DFS codec for converting a binary tree to a string and reconstructing the same tree from that string. |
+| 298 | [LeetCode 298: Binary Tree Longest Consecutive Sequence](02/0298.md) | Medium | A DFS solution for finding the longest parent-to-child path where each node value increases by exactly one. |
+| 299 | [LeetCode 299: Bulls and Cows](02/0299.md) | Medium | A counting solution for producing the Bulls and Cows hint while handling duplicate digits correctly. |
+| 300 | [LeetCode 300: Longest Increasing Subsequence](03/0300.md) | Medium | A dynamic programming and patience sorting solution for finding the longest strictly increasing subsequence in an array. |
