@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 03xx"
-description: "LeetCode practice notes for problems 300 through 350, including A dynamic programming and patience sorting solution for finding the longest strictly increasing subsequence in an array."
+description: "LeetCode practice notes for problems 300 through 375, including A dynamic programming and patience sorting solution for finding the longest strictly increasing subsequence in an array."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 3
 ---
@@ -60,3 +60,28 @@ weight: 3
 | 348 | [LeetCode 348: Design Tic-Tac-Toe](0348.md) | Medium | A clear explanation of Design Tic-Tac-Toe using row, column, and diagonal counters for constant-time winner checks. |
 | 349 | [LeetCode 349: Intersection of Two Arrays](0349.md) | Easy | A clear explanation of Intersection of Two Arrays using hash sets for uniqueness and fast lookup. |
 | 350 | [LeetCode 350: Intersection of Two Arrays II](0350.md) | Easy | A clear explanation of Intersection of Two Arrays II using frequency counting. |
+| 351 | [LeetCode 351: Android Unlock Patterns](0351.md) | Medium | A clear explanation of Android Unlock Patterns using backtracking, a jump table, and symmetry optimization. |
+| 352 | [LeetCode 352: Data Stream as Disjoint Intervals](0352.md) | Hard | A clear explanation of maintaining disjoint sorted intervals from a stream using insertion and merging. |
+| 353 | [LeetCode 353: Design Snake Game](0353.md) | Medium | A clear explanation of implementing Snake Game with a deque for body order and a set for constant-time collision checks. |
+| 354 | [LeetCode 354: Russian Doll Envelopes](0354.md) | Hard | A clear explanation of solving Russian Doll Envelopes using sorting and longest increasing subsequence. |
+| 355 | [LeetCode 355: Design Twitter](0355.md) | Medium | A clear explanation of implementing a simplified Twitter using hash maps, sets, timestamps, and a heap. |
+| 356 | [LeetCode 356: Line Reflection](0356.md) | Medium | A clear explanation of checking whether 2D points are symmetric around a vertical line using min and max x-coordinates. |
+| 357 | [LeetCode 357: Count Numbers with Unique Digits](0357.md) | Medium | A clear explanation of counting numbers with unique digits using combinatorics. |
+| 358 | [LeetCode 358: Rearrange String k Distance Apart](0358.md) | Hard | A clear explanation of rearranging a string so equal characters are at least k positions apart using a heap and cooldown queue. |
+| 359 | [LeetCode 359: Logger Rate Limiter](0359.md) | Easy | A clear explanation of designing a logger that prints each message at most once every 10 seconds using a hash map. |
+| 360 | [LeetCode 360: Sort Transformed Array](0360.md) | Medium | A clear explanation of sorting values after applying a quadratic function using two pointers. |
+| 361 | [LeetCode 361: Bomb Enemy](0361.md) | Medium | A clear explanation of finding the best bomb placement in a grid using cached row and column segment counts. |
+| 362 | [LeetCode 362: Design Hit Counter](0362.md) | Medium | A clear explanation of designing a hit counter for the last 5 minutes using a queue with compressed timestamps. |
+| 363 | [LeetCode 363: Max Sum of Rectangle No Larger Than K](0363.md) | Hard | A clear explanation of reducing a 2D rectangle problem to a 1D prefix-sum problem with binary search. |
+| 364 | [LeetCode 364: Nested List Weight Sum II](0364.md) | Medium | A clear explanation of computing inverse depth weighted sum using level-order traversal. |
+| 365 | [LeetCode 365: Water and Jug Problem](0365.md) | Medium | A clear explanation of solving the Water and Jug Problem using Bézout's identity and greatest common divisor. |
+| 366 | [LeetCode 366: Find Leaves of Binary Tree](0366.md) | Medium | A clear explanation of grouping binary tree nodes by the round in which they become leaves using postorder DFS. |
+| 367 | [LeetCode 367: Valid Perfect Square](0367.md) | Easy | A clear explanation of checking whether an integer is a perfect square using binary search without sqrt. |
+| 368 | [LeetCode 368: Largest Divisible Subset](0368.md) | Medium | A clear explanation of finding the largest subset where every pair is divisible using sorting, dynamic programming, and parent reconstruction. |
+| 369 | [LeetCode 369: Plus One Linked List](0369.md) | Medium | A clear explanation of adding one to a number stored as a linked list using the rightmost non-nine digit. |
+| 370 | [LeetCode 370: Range Addition](0370.md) | Medium | A clear explanation of applying many range updates efficiently using a difference array and prefix sums. |
+| 371 | [LeetCode 371: Sum of Two Integers](0371.md) | Medium | A clear explanation of adding two integers without using plus or minus by using XOR, AND, carry, and a 32-bit mask. |
+| 372 | [LeetCode 372: Super Pow](0372.md) | Medium | A clear explanation of computing large modular exponentiation using fast power, modular arithmetic, and digit decomposition. |
+| 373 | [LeetCode 373: Find K Pairs with Smallest Sums](0373.md) | Medium | A clear explanation of finding the k smallest pair sums from two sorted arrays using a min heap and best-first search. |
+| 374 | [LeetCode 374: Guess Number Higher or Lower](0374.md) | Easy | A clear explanation of finding the picked number using binary search and the guess API. |
+| 375 | [LeetCode 375: Guess Number Higher or Lower II](0375.md) | Medium | A clear explanation of finding the minimum guaranteed cost using interval dynamic programming. |
