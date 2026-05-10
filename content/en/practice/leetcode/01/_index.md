@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 01xx"
-description: "LeetCode practice notes for problems 100 through 125, including A detailed guide to solving Same Tree with recursive DFS and structural comparison."
+description: "LeetCode practice notes for problems 100 through 150, including A detailed guide to solving Same Tree with recursive DFS and structural comparison."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 1
 ---
@@ -35,3 +35,28 @@ weight: 1
 | 123 | [LeetCode 123: Best Time to Buy and Sell Stock III](0123.md) | Hard | A clear explanation of maximizing stock profit with at most two transactions using dynamic programming. |
 | 124 | [LeetCode 124: Binary Tree Maximum Path Sum](0124.md) | Hard | A clear explanation of finding the maximum path sum in a binary tree using bottom-up depth-first search. |
 | 125 | [LeetCode 125: Valid Palindrome](0125.md) | Easy | A clear explanation of checking whether a string is a palindrome after ignoring non-alphanumeric characters and case. |
+| 126 | [LeetCode 126: Word Ladder II](0126.md) | Hard | Find all shortest word transformation sequences using BFS to build shortest-path parents, then backtracking to reconstruct every answer. |
+| 127 | [LeetCode 127: Word Ladder](0127.md) | Hard | Use breadth-first search to find the shortest transformation sequence length between two words. |
+| 128 | [LeetCode 128: Longest Consecutive Sequence](0128.md) | Medium | Find the longest run of consecutive integers in an unsorted array using a hash set and sequence-start detection. |
+| 129 | [LeetCode 129: Sum Root to Leaf Numbers](0129.md) | Medium | Compute the sum of all numbers formed by root-to-leaf paths using depth-first search and decimal accumulation. |
+| 130 | [LeetCode 130: Surrounded Regions](0130.md) | Medium | Capture surrounded O regions by marking border-connected O cells first, then flipping the remaining O cells. |
+| 131 | [LeetCode 131: Palindrome Partitioning](0131.md) | Medium | Generate all ways to split a string so that every piece is a palindrome, using backtracking with palindrome precomputation. |
+| 132 | [LeetCode 132: Palindrome Partitioning II](0132.md) | Hard | Find the minimum number of cuts needed to split a string into palindromic substrings using palindrome precomputation and dynamic programming. |
+| 133 | [LeetCode 133: Clone Graph](0133.md) | Medium | Create a deep copy of a connected undirected graph using DFS and a hash map from original nodes to cloned nodes. |
+| 134 | [LeetCode 134: Gas Station](0134.md) | Medium | Find the unique starting gas station index using a greedy scan with total fuel balance and current tank balance. |
+| 135 | [LeetCode 135: Candy](0135.md) | Hard | Compute the minimum candies needed using two greedy passes, one from the left and one from the right. |
+| 136 | [LeetCode 136: Single Number](0136.md) | Easy | Find the only number that appears once using the XOR operator, while every other number appears exactly twice. |
+| 137 | [LeetCode 137: Single Number II](0137.md) | Medium | Find the number that appears once when every other number appears three times using bit counting or finite-state bit manipulation. |
+| 138 | [LeetCode 138: Copy List with Random Pointer](0138.md) | Medium | Create a deep copy of a linked list with next and random pointers using hash maps or interleaved node cloning. |
+| 139 | [LeetCode 139: Word Break](0139.md) | Medium | Decide whether a string can be segmented into dictionary words using dynamic programming over prefixes. |
+| 140 | [LeetCode 140: Word Break II](0140.md) | Hard | Return all valid sentences formed by inserting spaces into a string so every word belongs to the dictionary, using DFS with memoization. |
+| 141 | [LeetCode 141: Linked List Cycle](0141.md) | Easy | Detect whether a linked list contains a cycle using Floyd’s tortoise and hare two-pointer algorithm. |
+| 142 | [LeetCode 142: Linked List Cycle II](0142.md) | Medium | Find the node where a linked list cycle begins using Floyd’s tortoise and hare algorithm with cycle entry mathematics. |
+| 143 | [LeetCode 143: Reorder List](0143.md) | Medium | Reorder a singly linked list in-place by finding the middle, reversing the second half, and merging the two halves alternately. |
+| 144 | [LeetCode 144: Binary Tree Preorder Traversal](0144.md) | Easy | Return the preorder traversal of a binary tree using recursion or an explicit stack. |
+| 145 | [LeetCode 145: Binary Tree Postorder Traversal](0145.md) | Easy | Return the postorder traversal of a binary tree using recursion or an iterative stack-based approach. |
+| 146 | [LeetCode 146: LRU Cache](0146.md) | Medium | Design an LRU cache with O(1) get and put operations using a hash map and doubly linked list. |
+| 147 | [LeetCode 147: Insertion Sort List](0147.md) | Medium | Sort a singly linked list using insertion sort by splicing each node into a growing sorted list. |
+| 148 | [LeetCode 148: Sort List](0148.md) | Medium | Sort a singly linked list in ascending order using merge sort with fast and slow pointers. |
+| 149 | [LeetCode 149: Max Points on a Line](0149.md) | Hard | Find the maximum number of points lying on the same straight line using slope counting and normalization. |
+| 150 | [LeetCode 150: Evaluate Reverse Polish Notation](0150.md) | Medium | Evaluate an arithmetic expression written in Reverse Polish Notation using a stack. |
