@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 02xx"
-description: "LeetCode practice notes for problems 200 through 225, including A clear explanation of counting connected groups of land cells in a grid using DFS or BFS."
+description: "LeetCode practice notes for problems 200 through 275, including A clear explanation of counting connected groups of land cells in a grid using DFS or BFS."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 2
 ---
@@ -35,3 +35,28 @@ weight: 2
 | 223 | [LeetCode 223: Rectangle Area](0223.md) | Medium | A clear explanation of computing the total covered area of two axis-aligned rectangles by subtracting their overlap. |
 | 224 | [LeetCode 224: Basic Calculator](0224.md) | Hard | A clear explanation of evaluating an expression with plus, minus, spaces, and parentheses using a stack. |
 | 225 | [LeetCode 225: Implement Stack using Queues](0225.md) | Easy | A clear explanation of implementing a LIFO stack using only FIFO queue operations. |
+| 251 | [LeetCode 251: Flatten 2D Vector](0251.md) | Medium | A clear explanation of the Flatten 2D Vector problem using row and column pointers to implement an iterator. |
+| 252 | [LeetCode 252: Meeting Rooms](0252.md) | Easy | A clear explanation of the Meeting Rooms problem using interval sorting to detect overlaps. |
+| 253 | [LeetCode 253: Meeting Rooms II](0253.md) | Medium | A clear explanation of the Meeting Rooms II problem using a min heap to track active meeting end times. |
+| 254 | [LeetCode 254: Factor Combinations](0254.md) | Medium | A clear explanation of the Factor Combinations problem using DFS backtracking with non-decreasing factors. |
+| 255 | [LeetCode 255: Verify Preorder Sequence in Binary Search Tree](0255.md) | Medium | A clear explanation of the Verify Preorder Sequence in Binary Search Tree problem using a monotonic stack and lower bound tracking. |
+| 256 | [LeetCode 256: Paint House](0256.md) | Medium | A clear explanation of the Paint House problem using dynamic programming with constant space. |
+| 257 | [LeetCode 257: Binary Tree Paths](0257.md) | Easy | A clear explanation of the Binary Tree Paths problem using DFS backtracking to collect every root-to-leaf path. |
+| 258 | [LeetCode 258: Add Digits](0258.md) | Easy | A clear explanation of the Add Digits problem using repeated digit sums first, then the digital root formula. |
+| 259 | [LeetCode 259: 3Sum Smaller](0259.md) | Medium | A clear explanation of the 3Sum Smaller problem using sorting and the two-pointer technique. |
+| 260 | [LeetCode 260: Single Number III](0260.md) | Medium | A clear explanation of the Single Number III problem using XOR partitioning to isolate the two unique numbers. |
+| 261 | [LeetCode 261: Graph Valid Tree](0261.md) | Medium | A clear explanation of the Graph Valid Tree problem using Union Find to detect cycles and verify connectivity. |
+| 262 | [LeetCode 262: Trips and Users](0262.md) | Hard | A clear explanation of the Trips and Users SQL problem using joins, filtering, grouping, and conditional aggregation. |
+| 263 | [LeetCode 263: Ugly Number](0263.md) | Easy | A clear explanation of the Ugly Number problem using repeated division by the only allowed prime factors. |
+| 264 | [LeetCode 264: Ugly Number II](0264.md) | Medium | A clear explanation of the Ugly Number II problem using dynamic programming with three pointers. |
+| 265 | [LeetCode 265: Paint House II](0265.md) | Hard | A clear explanation of the Paint House II problem using optimized dynamic programming with minimum and second minimum tracking. |
+| 266 | [LeetCode 266: Palindrome Permutation](0266.md) | Easy | A clear explanation of the Palindrome Permutation problem using character parity counting. |
+| 267 | [LeetCode 267: Palindrome Permutation II](0267.md) | Medium | A clear explanation of the Palindrome Permutation II problem using character counts and backtracking over half of the palindrome. |
+| 268 | [LeetCode 268: Missing Number](0268.md) | Easy | A clear explanation of the Missing Number problem using sum formula and XOR. |
+| 269 | [LeetCode 269: Alien Dictionary](0269.md) | Hard | A clear explanation of the Alien Dictionary problem using graph construction and topological sorting. |
+| 270 | [LeetCode 270: Closest Binary Search Tree Value](0270.md) | Easy | A clear explanation of the Closest Binary Search Tree Value problem using the BST property to walk toward the target. |
+| 271 | [LeetCode 271: Encode and Decode Strings](0271.md) | Medium | A clear explanation of the Encode and Decode Strings problem using length-prefix encoding. |
+| 272 | [LeetCode 272: Closest Binary Search Tree Value II](0272.md) | Hard | A clear explanation of the Closest Binary Search Tree Value II problem using inorder traversal and a fixed-size sliding window. |
+| 273 | [LeetCode 273: Integer to English Words](0273.md) | Hard | A clear explanation of the Integer to English Words problem using three-digit chunks and scale words. |
+| 274 | [LeetCode 274: H-Index](0274.md) | Medium | A clear explanation of the H-Index problem using sorting, then an optimized counting approach. |
+| 275 | [LeetCode 275: H-Index II](0275.md) | Medium | A clear explanation of the H-Index II problem using binary search on a sorted citations array. |
