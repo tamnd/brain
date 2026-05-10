@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 03xx"
-description: "LeetCode practice notes for problems 300 through 375, including A dynamic programming and patience sorting solution for finding the longest strictly increasing subsequence in an array."
+description: "LeetCode practice notes for problems 300 through 399, including A dynamic programming and patience sorting solution for finding the longest strictly increasing subsequence in an array."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 3
 ---
@@ -85,3 +85,27 @@ weight: 3
 | 373 | [LeetCode 373: Find K Pairs with Smallest Sums](0373.md) | Medium | A clear explanation of finding the k smallest pair sums from two sorted arrays using a min heap and best-first search. |
 | 374 | [LeetCode 374: Guess Number Higher or Lower](0374.md) | Easy | A clear explanation of finding the picked number using binary search and the guess API. |
 | 375 | [LeetCode 375: Guess Number Higher or Lower II](0375.md) | Medium | A clear explanation of finding the minimum guaranteed cost using interval dynamic programming. |
+| 376 | [LeetCode 376: Wiggle Subsequence](0376.md) | Medium | A clear explanation of the Wiggle Subsequence problem using dynamic programming intuition and an optimized greedy solution. |
+| 377 | [LeetCode 377: Combination Sum IV](0377.md) | Medium | A clear explanation of Combination Sum IV using dynamic programming to count ordered combinations that sum to a target. |
+| 378 | [LeetCode 378: Kth Smallest Element in a Sorted Matrix](0378.md) | Medium | A clear explanation of finding the kth smallest value in a row-sorted and column-sorted matrix using binary search on values. |
+| 379 | [LeetCode 379: Design Phone Directory](0379.md) | Medium | A clear explanation of designing a phone directory that can allocate, check, and release numbers efficiently. |
+| 380 | [LeetCode 380: Insert Delete GetRandom O(1)](0380.md) | Medium | A clear explanation of designing a randomized set with average O(1) insert, remove, and getRandom operations. |
+| 381 | [LeetCode 381: Insert Delete GetRandom O(1) - Duplicates Allowed](0381.md) | Hard | A clear explanation of designing a randomized multiset with average O(1) insert, remove, and getRandom operations. |
+| 382 | [LeetCode 382: Linked List Random Node](0382.md) | Medium | A clear explanation of selecting a random linked list node with equal probability using reservoir sampling. |
+| 383 | [LeetCode 383: Ransom Note](0383.md) | Easy | A clear explanation of checking whether one string can be constructed from another using character frequency counting. |
+| 384 | [LeetCode 384: Shuffle an Array](0384.md) | Medium | A clear explanation of shuffling an array uniformly using the Fisher-Yates algorithm while supporting reset. |
+| 385 | [LeetCode 385: Mini Parser](0385.md) | Medium | A clear explanation of parsing a serialized nested integer string using a stack. |
+| 386 | [LeetCode 386: Lexicographical Numbers](0386.md) | Medium | A clear explanation of generating numbers from 1 to n in lexicographical order using an iterative DFS-style traversal. |
+| 387 | [LeetCode 387: First Unique Character in a String](0387.md) | Easy | A clear explanation of finding the first non-repeating character in a string using character frequency counting. |
+| 388 | [LeetCode 388: Longest Absolute File Path](0388.md) | Medium | A clear explanation of computing the longest absolute path to a file from a serialized file system string using path lengths by depth. |
+| 389 | [LeetCode 389: Find the Difference](0389.md) | Easy | A clear explanation of finding the extra character added to a shuffled string using counting and XOR. |
+| 390 | [LeetCode 390: Elimination Game](0390.md) | Medium | A clear explanation of finding the last remaining number after alternating left-to-right and right-to-left eliminations. |
+| 391 | [LeetCode 391: Perfect Rectangle](0391.md) | Hard | A clear explanation of checking whether many small axis-aligned rectangles form one exact rectangular cover using area and corner parity. |
+| 392 | [LeetCode 392: Is Subsequence](0392.md) | Easy | A clear explanation of checking whether one string is a subsequence of another using two pointers. |
+| 393 | [LeetCode 393: UTF-8 Validation](0393.md) | Medium | A clear explanation of validating a byte sequence as UTF-8 using bit masks and a continuation-byte counter. |
+| 394 | [LeetCode 394: Decode String](0394.md) | Medium | A clear explanation of decoding nested repeat expressions using a stack. |
+| 395 | [LeetCode 395: Longest Substring with At Least K Repeating Characters](0395.md) | Medium | A clear explanation of finding the longest substring where every character appears at least k times using divide and conquer. |
+| 396 | [LeetCode 396: Rotate Function](0396.md) | Medium | A clear explanation of maximizing the rotation function using a recurrence instead of simulating every rotation. |
+| 397 | [LeetCode 397: Integer Replacement](0397.md) | Medium | A clear explanation of reducing an integer to 1 with the fewest operations using greedy bit decisions. |
+| 398 | [LeetCode 398: Random Pick Index](0398.md) | Medium | A clear explanation of picking a uniformly random index for a target value using reservoir sampling, with an alternative hash map approach. |
+| 399 | [LeetCode 399: Evaluate Division](0399.md) | Medium | A clear explanation of solving division equations using graph traversal and weighted edges. |
