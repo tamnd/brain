@@ -220,6 +220,23 @@ Practice notes grouped by problem number.
 | 223 | [LeetCode 223: Rectangle Area](02/0223.md) | Medium | A clear explanation of computing the total covered area of two axis-aligned rectangles by subtracting their overlap. |
 | 224 | [LeetCode 224: Basic Calculator](02/0224.md) | Hard | A clear explanation of evaluating an expression with plus, minus, spaces, and parentheses using a stack. |
 | 225 | [LeetCode 225: Implement Stack using Queues](02/0225.md) | Easy | A clear explanation of implementing a LIFO stack using only FIFO queue operations. |
+| 226 | [LeetCode 226: Invert Binary Tree](02/0226.md) | Easy | A clear explanation of inverting a binary tree using recursive depth-first traversal. |
+| 227 | [LeetCode 227: Basic Calculator II](02/0227.md) | Medium | A detailed explanation of evaluating arithmetic expressions with stack-based parsing and operator precedence. |
+| 228 | [LeetCode 228: Summary Ranges](02/0228.md) | Easy | A clear explanation of summarizing a sorted unique integer array into compact consecutive ranges. |
+| 229 | [LeetCode 229: Majority Element II](02/0229.md) | Medium | A clear explanation of finding all elements that appear more than n/3 times using the extended Boyer-Moore voting algorithm. |
+| 230 | [LeetCode 230: Kth Smallest Element in a BST](02/0230.md) | Medium | A clear explanation of finding the kth smallest value in a binary search tree using inorder traversal. |
+| 231 | [LeetCode 231: Power of Two](02/0231.md) | Easy | A clear explanation of determining whether an integer is a power of two using binary properties and bit manipulation. |
+| 232 | [LeetCode 232: Implement Queue using Stacks](02/0232.md) | Easy | A detailed explanation of implementing a FIFO queue using two LIFO stacks with amortized constant time operations. |
+| 233 | [LeetCode 233: Number of Digit One](02/0233.md) | Hard | A detailed explanation of counting how many times digit one appears from 0 to n using positional digit analysis. |
+| 234 | [LeetCode 234: Palindrome Linked List](02/0234.md) | Easy | A clear explanation of checking whether a singly linked list is a palindrome using fast and slow pointers plus in-place reversal. |
+| 235 | [LeetCode 235: Lowest Common Ancestor of a Binary Search Tree](02/0235.md) | Medium | A clear explanation of finding the lowest common ancestor in a binary search tree using BST ordering properties. |
+| 236 | [LeetCode 236: Lowest Common Ancestor of a Binary Tree](02/0236.md) | Medium | A clear explanation of finding the lowest common ancestor in a normal binary tree using recursive depth-first search. |
+| 237 | [LeetCode 237: Delete Node in a Linked List](02/0237.md) | Medium | A clear explanation of deleting a node from a singly linked list when only that node is given. |
+| 238 | [LeetCode 238: Product of Array Except Self](02/0238.md) | Medium | A clear explanation of computing each product except self using prefix and suffix products without division. |
+| 239 | [LeetCode 239: Sliding Window Maximum](02/0239.md) | Hard | A clear explanation of finding the maximum value in every sliding window using a monotonic deque. |
+| 240 | [LeetCode 240: Search a 2D Matrix II](02/0240.md) | Medium | A clear explanation of searching a row-sorted and column-sorted matrix using the top-right corner elimination method. |
+| 241 | [LeetCode 241: Different Ways to Add Parentheses](02/0241.md) | Medium | A clear explanation of generating all possible results from different parenthesizations using divide and conquer recursion. |
+| 242 | [LeetCode 242: Valid Anagram](02/0242.md) | Easy | A clear explanation of checking whether two strings are anagrams using character frequency counting. |
 | 251 | [LeetCode 251: Flatten 2D Vector](02/0251.md) | Medium | A clear explanation of the Flatten 2D Vector problem using row and column pointers to implement an iterator. |
 | 252 | [LeetCode 252: Meeting Rooms](02/0252.md) | Easy | A clear explanation of the Meeting Rooms problem using interval sorting to detect overlaps. |
 | 253 | [LeetCode 253: Meeting Rooms II](02/0253.md) | Medium | A clear explanation of the Meeting Rooms II problem using a min heap to track active meeting end times. |
