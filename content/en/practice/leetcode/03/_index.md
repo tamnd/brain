@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 03xx"
-description: "LeetCode practice notes for problems 300 through 325, including A dynamic programming and patience sorting solution for finding the longest strictly increasing subsequence in an array."
+description: "LeetCode practice notes for problems 300 through 350, including A dynamic programming and patience sorting solution for finding the longest strictly increasing subsequence in an array."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 3
 ---
@@ -35,3 +35,28 @@ weight: 3
 | 323 | [LeetCode 323: Number of Connected Components in an Undirected Graph](0323.md) | Medium | A clear explanation of counting connected components using Union-Find and graph traversal. |
 | 324 | [LeetCode 324: Wiggle Sort II](0324.md) | Medium | A clear explanation of Wiggle Sort II using sorting, median splitting, and virtual indexing. |
 | 325 | [LeetCode 325: Maximum Size Subarray Sum Equals k](0325.md) | Medium | A clear explanation of Maximum Size Subarray Sum Equals k using prefix sums and earliest-index hashing. |
+| 326 | [LeetCode 326: Power of Three](0326.md) | Easy | A clear explanation of the Power of Three problem using repeated division and integer arithmetic. |
+| 327 | [LeetCode 327: Count of Range Sum](0327.md) | Hard | A clear explanation of Count of Range Sum using prefix sums and merge sort counting. |
+| 328 | [LeetCode 328: Odd Even Linked List](0328.md) | Medium | A clear explanation of Odd Even Linked List using in-place pointer rewiring. |
+| 329 | [LeetCode 329: Longest Increasing Path in a Matrix](0329.md) | Hard | A clear explanation of Longest Increasing Path in a Matrix using DFS with memoization. |
+| 330 | [LeetCode 330: Patching Array](0330.md) | Hard | A clear explanation of Patching Array using a greedy smallest-missing-sum invariant. |
+| 331 | [LeetCode 331: Verify Preorder Serialization of a Binary Tree](0331.md) | Medium | A clear explanation of verifying preorder serialization using slot counting without reconstructing the tree. |
+| 332 | [LeetCode 332: Reconstruct Itinerary](0332.md) | Hard | A clear explanation of Reconstruct Itinerary using a directed graph and Hierholzer's algorithm. |
+| 333 | [LeetCode 333: Largest BST Subtree](0333.md) | Medium | A clear explanation of Largest BST Subtree using postorder traversal and subtree state propagation. |
+| 334 | [LeetCode 334: Increasing Triplet Subsequence](0334.md) | Medium | A clear explanation of Increasing Triplet Subsequence using greedy tracking of two minimum values. |
+| 335 | [LeetCode 335: Self Crossing](0335.md) | Hard | A clear explanation of Self Crossing using constant-space checks for the only possible crossing patterns. |
+| 336 | [LeetCode 336: Palindrome Pairs](0336.md) | Hard | A clear explanation of Palindrome Pairs using reversed-word lookup and palindrome split checks. |
+| 337 | [LeetCode 337: House Robber III](0337.md) | Medium | A clear explanation of House Robber III using tree dynamic programming with rob and skip states. |
+| 338 | [LeetCode 338: Counting Bits](0338.md) | Easy | A clear explanation of Counting Bits using dynamic programming and bit manipulation. |
+| 339 | [LeetCode 339: Nested List Weight Sum](0339.md) | Medium | A clear explanation of Nested List Weight Sum using depth-first search over a nested structure. |
+| 340 | [LeetCode 340: Longest Substring with At Most K Distinct Characters](0340.md) | Medium | A clear explanation of Longest Substring with At Most K Distinct Characters using a sliding window and character counts. |
+| 341 | [LeetCode 341: Flatten Nested List Iterator](0341.md) | Medium | A clear explanation of Flatten Nested List Iterator using lazy stack-based flattening. |
+| 342 | [LeetCode 342: Power of Four](0342.md) | Easy | A clear explanation of Power of Four using bit manipulation and binary properties. |
+| 343 | [LeetCode 343: Integer Break](0343.md) | Medium | A clear explanation of Integer Break using dynamic programming, with a note on the greedy math solution. |
+| 344 | [LeetCode 344: Reverse String](0344.md) | Easy | A clear explanation of Reverse String using two pointers and in-place swaps. |
+| 345 | [LeetCode 345: Reverse Vowels of a String](0345.md) | Easy | A clear explanation of Reverse Vowels of a String using two pointers and selective swaps. |
+| 346 | [LeetCode 346: Moving Average from Data Stream](0346.md) | Easy | A clear explanation of Moving Average from Data Stream using a queue and rolling sum. |
+| 347 | [LeetCode 347: Top K Frequent Elements](0347.md) | Medium | A clear explanation of Top K Frequent Elements using frequency counting and bucket sort. |
+| 348 | [LeetCode 348: Design Tic-Tac-Toe](0348.md) | Medium | A clear explanation of Design Tic-Tac-Toe using row, column, and diagonal counters for constant-time winner checks. |
+| 349 | [LeetCode 349: Intersection of Two Arrays](0349.md) | Easy | A clear explanation of Intersection of Two Arrays using hash sets for uniqueness and fast lookup. |
+| 350 | [LeetCode 350: Intersection of Two Arrays II](0350.md) | Easy | A clear explanation of Intersection of Two Arrays II using frequency counting. |
