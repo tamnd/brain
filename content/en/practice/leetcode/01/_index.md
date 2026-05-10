@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 01xx"
-description: "LeetCode practice notes for problems 100 through 174, including A detailed guide to solving Same Tree with recursive DFS and structural comparison."
+description: "LeetCode practice notes for problems 100 through 199, including A detailed guide to solving Same Tree with recursive DFS and structural comparison."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 1
 ---
@@ -84,3 +84,21 @@ weight: 1
 | 172 | [LeetCode 172: Factorial Trailing Zeroes](0172.md) | Medium | A clear explanation of counting trailing zeroes in n! by counting factors of 5 instead of computing the factorial directly. |
 | 173 | [LeetCode 173: Binary Search Tree Iterator](0173.md) | Medium | A clear explanation of designing an iterator over a BST using controlled inorder traversal with a stack. |
 | 174 | [LeetCode 174: Dungeon Game](0174.md) | Hard | A clear explanation of computing the minimum initial health needed to survive a dungeon using reverse dynamic programming. |
+| 176 | [LeetCode 176: Second Highest Salary](0176.md) | Medium | A clear SQL solution for finding the second highest distinct salary from the Employee table. |
+| 177 | [LeetCode 177: Nth Highest Salary](0177.md) | Medium | A clear SQL solution for finding the nth highest distinct salary from the Employee table. |
+| 178 | [LeetCode 178: Rank Scores](0178.md) | Medium | A clear SQL solution for ranking scores with dense ranking, where ties share the same rank and no rank numbers are skipped. |
+| 179 | [LeetCode 179: Largest Number](0179.md) | Medium | A clear explanation of arranging non-negative integers to form the largest possible concatenated number using a custom sort order. |
+| 180 | [LeetCode 180: Consecutive Numbers](0180.md) | Medium | A clear SQL solution for finding numbers that appear at least three times consecutively in the Logs table. |
+| 181 | [LeetCode 181: Employees Earning More Than Their Managers](0181.md) | Easy | A clear SQL solution for finding employees whose salary is greater than their manager's salary using a self join. |
+| 182 | [LeetCode 182: Duplicate Emails](0182.md) | Easy | A clear SQL solution for reporting email values that appear more than once in the Person table. |
+| 183 | [LeetCode 183: Customers Who Never Order](0183.md) | Easy | A clear SQL solution for finding customers who have no matching rows in the Orders table. |
+| 184 | [LeetCode 184: Department Highest Salary](0184.md) | Medium | A clear SQL solution for finding every employee who earns the highest salary in their department. |
+| 185 | [LeetCode 185: Department Top Three Salaries](0185.md) | Hard | A clear SQL solution for finding employees whose salaries are in the top three unique salary levels within their department. |
+| 186 | [LeetCode 186: Reverse Words in a String II](0186.md) | Medium | A clear explanation of reversing the order of words in a character array in-place using two reversals. |
+| 187 | [LeetCode 187: Repeated DNA Sequences](0187.md) | Medium | A clear explanation of finding repeated 10-letter DNA substrings using a fixed-size sliding window and hash sets. |
+| 188 | [LeetCode 188: Best Time to Buy and Sell Stock IV](0188.md) | Hard | A clear explanation of maximizing stock trading profit with at most k transactions using dynamic programming. |
+| 189 | [LeetCode 189: Rotate Array](0189.md) | Medium | A clear explanation of rotating an array to the right by k steps using in-place reversal. |
+| 190 | [LeetCode 190: Reverse Bits](0190.md) | Easy | A clear explanation of reversing the bits of a 32-bit integer using bit manipulation. |
+| 191 | [LeetCode 191: Number of 1 Bits](0191.md) | Easy | A clear explanation of counting set bits in an integer using bit manipulation and Brian Kernighan's algorithm. |
+| 198 | [LeetCode 198: House Robber](0198.md) | Medium | A clear explanation of maximizing robbery profit without robbing adjacent houses using dynamic programming. |
+| 199 | [LeetCode 199: Binary Tree Right Side View](0199.md) | Medium | A clear explanation of returning the visible nodes from the right side of a binary tree using level-order traversal. |
