@@ -370,6 +370,31 @@ Practice notes grouped by problem number.
 | 398 | [LeetCode 398: Random Pick Index](03/0398.md) | Medium | A clear explanation of picking a uniformly random index for a target value using reservoir sampling, with an alternative hash map approach. |
 | 399 | [LeetCode 399: Evaluate Division](03/0399.md) | Medium | A clear explanation of solving division equations using graph traversal and weighted edges. |
 | 400 | [LeetCode 400: Nth Digit](04/0400.md) | Medium | A clear explanation of finding the nth digit in the infinite integer sequence using digit groups and arithmetic. |
+| 401 | [LeetCode 401: Binary Watch](04/0401.md) | Easy | A clear explanation of the Binary Watch problem using bit counting over all valid times. |
+| 402 | [LeetCode 402: Remove K Digits](04/0402.md) | Medium | A clear explanation of the Remove K Digits problem using a greedy monotonic stack. |
+| 403 | [LeetCode 403: Frog Jump](04/0403.md) | Hard | A clear explanation of the Frog Jump problem using dynamic programming with reachable jump sizes. |
+| 404 | [LeetCode 404: Sum of Left Leaves](04/0404.md) | Easy | A clear explanation of the Sum of Left Leaves problem using depth-first traversal of a binary tree. |
+| 405 | [LeetCode 405: Convert a Number to Hexadecimal](04/0405.md) | Easy | A clear explanation of converting integers to hexadecimal using bit manipulation and two's complement representation. |
+| 406 | [LeetCode 406: Queue Reconstruction by Height](04/0406.md) | Medium | A clear explanation of reconstructing a queue using greedy sorting and indexed insertion. |
+| 407 | [LeetCode 407: Trapping Rain Water II](04/0407.md) | Hard | A clear explanation of trapping rain water in a 2D elevation map using a min heap and boundary expansion. |
+| 408 | [LeetCode 408: Valid Word Abbreviation](04/0408.md) | Easy | A clear explanation of validating a word abbreviation using two pointers and number parsing. |
+| 409 | [LeetCode 409: Longest Palindrome](04/0409.md) | Easy | A clear explanation of finding the longest palindrome length that can be built from given letters using character counts. |
+| 410 | [LeetCode 410: Split Array Largest Sum](04/0410.md) | Hard | A clear explanation of minimizing the largest subarray sum using binary search on the answer and greedy validation. |
+| 411 | [LeetCode 411: Minimum Unique Word Abbreviation](04/0411.md) | Hard | A clear explanation of finding the shortest abbreviation that does not conflict with any dictionary word using bit masks. |
+| 412 | [LeetCode 412: Fizz Buzz](04/0412.md) | Easy | A clear explanation of the Fizz Buzz problem using direct simulation and divisibility checks. |
+| 413 | [LeetCode 413: Arithmetic Slices](04/0413.md) | Medium | A clear explanation of counting arithmetic subarrays using dynamic programming and consecutive differences. |
+| 414 | [LeetCode 414: Third Maximum Number](04/0414.md) | Easy | A clear explanation of finding the third distinct maximum number using one pass and constant space. |
+| 415 | [LeetCode 415: Add Strings](04/0415.md) | Easy | A clear explanation of adding two non-negative integer strings using manual digit-by-digit simulation. |
+| 416 | [LeetCode 416: Partition Equal Subset Sum](04/0416.md) | Medium | A clear explanation of deciding whether an array can be split into two equal-sum subsets using 0/1 knapsack dynamic programming. |
+| 417 | [LeetCode 417: Pacific Atlantic Water Flow](04/0417.md) | Medium | A clear explanation of finding cells that can flow to both oceans using reverse graph traversal from the borders. |
+| 418 | [LeetCode 418: Sentence Screen Fitting](04/0418.md) | Medium | A clear explanation of fitting a sentence onto a screen using cyclic string simulation and greedy row transitions. |
+| 419 | [LeetCode 419: Battleships in a Board](04/0419.md) | Medium | A clear explanation of counting battleships in a board using one-pass observation without modifying the grid. |
+| 420 | [LeetCode 420: Strong Password Checker](04/0420.md) | Hard | A clear explanation of checking the minimum edits needed to make a password strong using greedy handling of length, missing character types, and repeated runs. |
+| 421 | [LeetCode 421: Maximum XOR of Two Numbers in an Array](04/0421.md) | Medium | A clear explanation of finding the maximum XOR of two numbers using greedy bit prefixes. |
+| 422 | [LeetCode 422: Valid Word Square](04/0422.md) | Easy | A clear explanation of checking whether rows and columns read the same using direct index comparison. |
+| 423 | [LeetCode 423: Reconstruct Original Digits from English](04/0423.md) | Medium | A clear explanation of reconstructing digits from shuffled English words using character frequency counts and unique identifying letters. |
+| 424 | [LeetCode 424: Longest Repeating Character Replacement](04/0424.md) | Medium | A clear explanation of finding the longest substring that can become all one letter using a sliding window. |
+| 425 | [LeetCode 425: Word Squares](04/0425.md) | Hard | A clear explanation of building all word squares using backtracking with prefix pruning. |
 | 426 | [LeetCode 426: Convert Binary Search Tree to Sorted Doubly Linked List](04/0426.md) | Medium | Convert a BST into a sorted circular doubly linked list in-place using inorder traversal. |
 | 427 | [LeetCode 427: Construct Quad Tree](04/0427.md) | Medium | Build a quad tree from a binary square grid using recursive divide and conquer. |
 | 428 | [LeetCode 428: Serialize and Deserialize N-ary Tree](04/0428.md) | Hard | Serialize an N-ary tree into a string and reconstruct the same tree using preorder traversal with child counts. |
