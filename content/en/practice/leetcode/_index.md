@@ -395,3 +395,28 @@ Practice notes grouped by problem number.
 | 448 | [LeetCode 448: Find All Numbers Disappeared in an Array](04/0448.md) | Easy | Find all missing numbers from 1 to n in O(n) time using in-place index marking. |
 | 449 | [LeetCode 449: Serialize and Deserialize BST](04/0449.md) | Medium | Serialize a binary search tree compactly with preorder traversal and rebuild it using BST value bounds. |
 | 450 | [LeetCode 450: Delete Node in a BST](04/0450.md) | Medium | Delete a node from a binary search tree while preserving the BST property using recursive search and inorder successor replacement. |
+| 476 | [LeetCode 476: Number Complement](04/0476.md) | Easy | A clear explanation of finding the bitwise complement of a positive integer using a binary mask. |
+| 477 | [LeetCode 477: Total Hamming Distance](04/0477.md) | Medium | A clear explanation of computing the total Hamming distance across all pairs by counting different bits column by column. |
+| 478 | [LeetCode 478: Generate Random Point in a Circle](04/0478.md) | Medium | A clear explanation of generating uniformly random points inside a circle using polar coordinates. |
+| 479 | [LeetCode 479: Largest Palindrome Product](04/0479.md) | Hard | A clear explanation of finding the largest palindrome made from the product of two n-digit numbers by generating palindrome candidates directly. |
+| 480 | [LeetCode 480: Sliding Window Median](04/0480.md) | Hard | A clear explanation of maintaining the median of each fixed-size window using two heaps and lazy deletion. |
+| 481 | [LeetCode 481: Magical String](04/0481.md) | Medium | A clear explanation of constructing the magical string by using the string itself as run-length instructions. |
+| 482 | [LeetCode 482: License Key Formatting](04/0482.md) | Easy | A clear explanation of reformatting a license key by removing dashes, uppercasing characters, and grouping from the right. |
+| 483 | [LeetCode 483: Smallest Good Base](04/0483.md) | Hard | A clear explanation of finding the smallest base where n is written as all ones using geometric series and binary search. |
+| 484 | [LeetCode 484: Find Permutation](04/0484.md) | Medium | A clear explanation of constructing the lexicographically smallest permutation that matches an I and D pattern. |
+| 485 | [LeetCode 485: Max Consecutive Ones](04/0485.md) | Easy | A clear explanation of finding the longest streak of 1s in a binary array with a single pass. |
+| 486 | [LeetCode 486: Predict the Winner](04/0486.md) | Medium | A clear explanation of predicting whether Player 1 can win using minimax dynamic programming over score difference. |
+| 487 | [LeetCode 487: Max Consecutive Ones II](04/0487.md) | Medium | A clear explanation of finding the longest run of 1s after flipping at most one 0 using a sliding window. |
+| 488 | [LeetCode 488: Zuma Game](04/0488.md) | Hard | A clear explanation of solving Zuma Game with DFS, memoization, and chain-removal simulation. |
+| 489 | [LeetCode 489: Robot Room Cleaner](04/0489.md) | Hard | A clear explanation of cleaning an unknown grid using DFS, relative coordinates, and physical backtracking. |
+| 490 | [LeetCode 490: The Maze](04/0490.md) | Medium | A clear explanation of deciding whether a rolling ball can stop at the destination using BFS or DFS over stopping cells. |
+| 491 | [LeetCode 491: Non-decreasing Subsequences](04/0491.md) | Medium | A clear explanation of generating all distinct non-decreasing subsequences using DFS, backtracking, and per-level duplicate control. |
+| 492 | [LeetCode 492: Construct the Rectangle](04/0492.md) | Easy | A clear explanation of finding rectangle dimensions with a fixed area and the smallest length-width difference. |
+| 493 | [LeetCode 493: Reverse Pairs](04/0493.md) | Hard | A clear explanation of counting pairs where nums[i] is greater than twice nums[j] using merge sort. |
+| 494 | [LeetCode 494: Target Sum](04/0494.md) | Medium | A clear explanation of counting sign assignments that reach a target using recursion first, then subset-sum dynamic programming. |
+| 495 | [LeetCode 495: Teemo Attacking](04/0495.md) | Easy | A clear explanation of calculating total poisoned duration by merging overlapping attack intervals. |
+| 496 | [LeetCode 496: Next Greater Element I](04/0496.md) | Easy | A clear explanation of finding the next greater element using a monotonic decreasing stack and hash map. |
+| 497 | [LeetCode 497: Random Point in Non-overlapping Rectangles](04/0497.md) | Medium | A clear explanation of uniformly picking an integer point from non-overlapping rectangles using prefix sums and binary search. |
+| 498 | [LeetCode 498: Diagonal Traverse](04/0498.md) | Medium | A clear explanation of returning matrix elements in diagonal zigzag order by grouping cells with the same row plus column index. |
+| 499 | [LeetCode 499: The Maze III](04/0499.md) | Hard | A clear explanation of finding the shortest rolling-ball path to the hole using Dijkstra with lexicographic tie-breaking. |
+| 500 | [LeetCode 500: Keyboard Row](05/0500.md) | Easy | A clear explanation of filtering words that can be typed using only one row of an American keyboard. |
