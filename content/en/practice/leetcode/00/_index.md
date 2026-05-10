@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 00xx"
-description: "LeetCode practice notes for problems 1 through 40, including A clear explanation of the Two Sum problem using brute force first, then an optimized hash map solution."
+description: "LeetCode practice notes for problems 1 through 75, including A clear explanation of the Two Sum problem using brute force first, then an optimized hash map solution."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 0
 ---
@@ -49,3 +49,28 @@ weight: 0
 | 38 | [LeetCode 38: Count and Say](0038.md) | Medium | A clear explanation of generating the count-and-say sequence using run-length encoding. |
 | 39 | [LeetCode 39: Combination Sum](0039.md) | Medium | A clear explanation of finding all unique combinations that sum to a target using backtracking. |
 | 40 | [LeetCode 40: Combination Sum II](0040.md) | Medium | A clear explanation of finding unique combinations that sum to a target when each array element may be used at most once. |
+| 51 | [LeetCode 51: N-Queens](0051.md) | Hard | A clear guide to solving N-Queens with backtracking, row-by-row placement, and constant-time conflict checks. |
+| 52 | [LeetCode 52: N-Queens II](0052.md) | Hard | A clear guide to solving N-Queens II by counting valid queen placements with backtracking. |
+| 53 | [LeetCode 53: Maximum Subarray](0053.md) | Medium | A clear guide to solving Maximum Subarray with brute force first, then Kadane's dynamic programming algorithm. |
+| 54 | [LeetCode 54: Spiral Matrix](0054.md) | Medium | A clear guide to reading a matrix in spiral order using shrinking boundaries. |
+| 55 | [LeetCode 55: Jump Game](0055.md) | Medium | A clear guide to solving Jump Game with greedy reachability. |
+| 56 | [LeetCode 56: Merge Intervals](0056.md) | Medium | A clear guide to solving Merge Intervals by sorting intervals and merging them in one pass. |
+| 57 | [LeetCode 57: Insert Interval](0057.md) | Medium | A clear guide to solving Insert Interval with one linear scan over sorted, non-overlapping intervals. |
+| 58 | [LeetCode 58: Length of Last Word](0058.md) | Easy | A clear guide to solving Length of Last Word by scanning the string from right to left. |
+| 59 | [LeetCode 59: Spiral Matrix II](0059.md) | Medium | A clear guide to generating an n x n matrix filled from 1 to n squared in spiral order. |
+| 60 | [LeetCode 60: Permutation Sequence](0060.md) | Hard | A clear guide to finding the kth permutation sequence using factorial blocks instead of generating all permutations. |
+| 61 | [LeetCode 61: Rotate List](0061.md) | Medium | A clear guide to rotating a linked list to the right by k places using a circular list. |
+| 62 | [LeetCode 62: Unique Paths](0062.md) | Medium | A clear guide to counting unique paths in a grid using dynamic programming. |
+| 63 | [LeetCode 63: Unique Paths II](0063.md) | Medium | A clear guide to counting unique paths in a grid with obstacles using dynamic programming. |
+| 64 | [LeetCode 64: Minimum Path Sum](0064.md) | Medium | A clear guide to finding the minimum path sum in a grid using dynamic programming. |
+| 65 | [LeetCode 65: Valid Number](0065.md) | Hard | A clear guide to validating whether a string is a valid number using grammar rules and one left-to-right scan. |
+| 66 | [LeetCode 66: Plus One](0066.md) | Easy | A clear guide to adding one to a large integer represented as an array of digits. |
+| 67 | [LeetCode 67: Add Binary](0067.md) | Easy | A clear guide to adding two binary strings using two pointers and a carry. |
+| 68 | [LeetCode 68: Text Justification](0068.md) | Hard | A clear guide to formatting text with greedy line packing and even space distribution. |
+| 69 | [LeetCode 69: Sqrt(x)](0069.md) | Easy | A clear guide to computing the integer square root using binary search without built-in exponent functions. |
+| 70 | [LeetCode 70: Climbing Stairs](0070.md) | Easy | A clear guide to counting distinct ways to climb stairs using dynamic programming. |
+| 71 | [LeetCode 71: Simplify Path](0071.md) | Medium | A clear guide to simplifying Unix-style file paths using a stack. |
+| 72 | [LeetCode 72: Edit Distance](0072.md) | Hard | A clear guide to computing the minimum number of insert, delete, and replace operations needed to convert one string into another. |
+| 73 | [LeetCode 73: Set Matrix Zeroes](0073.md) | Medium | A clear guide to setting matrix rows and columns to zero in place using the first row and first column as markers. |
+| 74 | [LeetCode 74: Search a 2D Matrix](0074.md) | Medium | A clear guide to searching a sorted 2D matrix using binary search over a virtual one-dimensional array. |
+| 75 | [LeetCode 75: Sort Colors](0075.md) | Medium | A clear guide to sorting an array of 0s, 1s, and 2s in place using the Dutch National Flag algorithm. |
