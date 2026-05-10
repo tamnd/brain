@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 01xx"
-description: "LeetCode practice notes for problems 100 through 150, including A detailed guide to solving Same Tree with recursive DFS and structural comparison."
+description: "LeetCode practice notes for problems 100 through 174, including A detailed guide to solving Same Tree with recursive DFS and structural comparison."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 1
 ---
@@ -60,3 +60,27 @@ weight: 1
 | 148 | [LeetCode 148: Sort List](0148.md) | Medium | Sort a singly linked list in ascending order using merge sort with fast and slow pointers. |
 | 149 | [LeetCode 149: Max Points on a Line](0149.md) | Hard | Find the maximum number of points lying on the same straight line using slope counting and normalization. |
 | 150 | [LeetCode 150: Evaluate Reverse Polish Notation](0150.md) | Medium | Evaluate an arithmetic expression written in Reverse Polish Notation using a stack. |
+| 151 | [LeetCode 151: Reverse Words in a String](0151.md) | Medium | A clear explanation of reversing word order while removing extra spaces. |
+| 152 | [LeetCode 152: Maximum Product Subarray](0152.md) | Medium | A detailed explanation of tracking both maximum and minimum products while scanning the array. |
+| 153 | [LeetCode 153: Find Minimum in Rotated Sorted Array](0153.md) | Medium | A clear explanation of finding the minimum element in a rotated sorted array using binary search. |
+| 154 | [LeetCode 154: Find Minimum in Rotated Sorted Array II](0154.md) | Hard | A clear explanation of finding the minimum element in a rotated sorted array that may contain duplicates. |
+| 155 | [LeetCode 155: Min Stack](0155.md) | Medium | A clear explanation of designing a stack that can return the current minimum element in constant time. |
+| 156 | [LeetCode 156: Binary Tree Upside Down](0156.md) | Medium | A clear explanation of flipping a binary tree upside down by rewiring pointers from the left spine. |
+| 157 | [LeetCode 157: Read N Characters Given Read4](0157.md) | Easy | A clear explanation of implementing read using the given read4 API and copying only the needed characters. |
+| 158 | [LeetCode 158: Read N Characters Given read4 II - Call Multiple Times](0158.md) | Hard | A clear explanation of implementing read with read4 when read may be called multiple times. |
+| 159 | [LeetCode 159: Longest Substring with At Most Two Distinct Characters](0159.md) | Medium | A clear explanation of finding the longest substring with at most two distinct characters using a sliding window. |
+| 160 | [LeetCode 160: Intersection of Two Linked Lists](0160.md) | Easy | A clear explanation of finding the node where two singly linked lists intersect using two pointers. |
+| 161 | [LeetCode 161: One Edit Distance](0161.md) | Medium | A clear explanation of checking whether two strings are exactly one edit apart using a linear scan. |
+| 162 | [LeetCode 162: Find Peak Element](0162.md) | Medium | A clear explanation of finding any peak element using binary search on the slope of the array. |
+| 163 | [LeetCode 163: Missing Ranges](0163.md) | Easy | A clear explanation of finding all missing ranges inside an inclusive interval by scanning sorted unique numbers. |
+| 164 | [LeetCode 164: Maximum Gap](0164.md) | Medium | A clear explanation of finding the maximum adjacent gap in sorted order using buckets and the pigeonhole principle. |
+| 165 | [LeetCode 165: Compare Version Numbers](0165.md) | Medium | A clear explanation of comparing version strings revision by revision while ignoring leading zeros. |
+| 166 | [LeetCode 166: Fraction to Recurring Decimal](0166.md) | Medium | A clear explanation of converting a fraction into decimal form and detecting repeating fractional parts with a hash map. |
+| 167 | [LeetCode 167: Two Sum II - Input Array Is Sorted](0167.md) | Medium | A clear explanation of finding two numbers in a sorted array using two pointers and constant extra space. |
+| 168 | [LeetCode 168: Excel Sheet Column Title](0168.md) | Easy | A clear explanation of converting a positive integer into an Excel column title using bijective base 26. |
+| 169 | [LeetCode 169: Majority Element](0169.md) | Easy | A clear explanation of finding the element that appears more than half the time using Boyer-Moore voting. |
+| 170 | [LeetCode 170: Two Sum III - Data Structure Design](0170.md) | Easy | A clear explanation of designing a data structure that supports add and find operations for pair sums. |
+| 171 | [LeetCode 171: Excel Sheet Column Number](0171.md) | Easy | A clear explanation of converting an Excel column title into its numeric index using base 26 accumulation. |
+| 172 | [LeetCode 172: Factorial Trailing Zeroes](0172.md) | Medium | A clear explanation of counting trailing zeroes in n! by counting factors of 5 instead of computing the factorial directly. |
+| 173 | [LeetCode 173: Binary Search Tree Iterator](0173.md) | Medium | A clear explanation of designing an iterator over a BST using controlled inorder traversal with a stack. |
+| 174 | [LeetCode 174: Dungeon Game](0174.md) | Hard | A clear explanation of computing the minimum initial health needed to survive a dungeon using reverse dynamic programming. |
