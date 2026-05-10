@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 00xx"
-description: "LeetCode practice notes for problems 1 through 75, including A clear explanation of the Two Sum problem using brute force first, then an optimized hash map solution."
+description: "LeetCode practice notes for problems 1 through 99, including A clear explanation of the Two Sum problem using brute force first, then an optimized hash map solution."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 0
 ---
@@ -74,3 +74,27 @@ weight: 0
 | 73 | [LeetCode 73: Set Matrix Zeroes](0073.md) | Medium | A clear guide to setting matrix rows and columns to zero in place using the first row and first column as markers. |
 | 74 | [LeetCode 74: Search a 2D Matrix](0074.md) | Medium | A clear guide to searching a sorted 2D matrix using binary search over a virtual one-dimensional array. |
 | 75 | [LeetCode 75: Sort Colors](0075.md) | Medium | A clear guide to sorting an array of 0s, 1s, and 2s in place using the Dutch National Flag algorithm. |
+| 76 | [LeetCode 76: Minimum Window Substring](0076.md) | Hard | A detailed guide to solving Minimum Window Substring with a sliding window and frequency counters. |
+| 77 | [LeetCode 77: Combinations](0077.md) | Medium | A detailed guide to solving Combinations with backtracking and pruning. |
+| 78 | [LeetCode 78: Subsets](0078.md) | Medium | A detailed guide to solving Subsets with backtracking and the include-or-skip recursion idea. |
+| 79 | [LeetCode 79: Word Search](0079.md) | Medium | A detailed guide to solving Word Search with depth-first search and backtracking on a grid. |
+| 80 | [LeetCode 80: Remove Duplicates from Sorted Array II](0080.md) | Medium | A detailed guide to solving Remove Duplicates from Sorted Array II with an in-place two-pointer method. |
+| 81 | [LeetCode 81: Search in Rotated Sorted Array II](0081.md) | Medium | A detailed guide to solving Search in Rotated Sorted Array II with modified binary search and duplicate handling. |
+| 82 | [LeetCode 82: Remove Duplicates from Sorted List II](0082.md) | Medium | A detailed guide to solving Remove Duplicates from Sorted List II with a dummy node and pointer rewiring. |
+| 83 | [LeetCode 83: Remove Duplicates from Sorted List](0083.md) | Easy | A detailed guide to solving Remove Duplicates from Sorted List with one pointer and in-place linked list rewiring. |
+| 84 | [LeetCode 84: Largest Rectangle in Histogram](0084.md) | Hard | A detailed guide to solving Largest Rectangle in Histogram with a monotonic increasing stack. |
+| 85 | [LeetCode 85: Maximal Rectangle](0085.md) | Hard | A detailed guide to solving Maximal Rectangle by converting each matrix row into a histogram and applying a monotonic stack. |
+| 86 | [LeetCode 86: Partition List](0086.md) | Medium | A detailed guide to solving Partition List with two dummy lists while preserving relative order. |
+| 87 | [LeetCode 87: Scramble String](0087.md) | Hard | A detailed guide to solving Scramble String with recursive dynamic programming and memoization. |
+| 88 | [LeetCode 88: Merge Sorted Array](0088.md) | Easy | A detailed guide to solving Merge Sorted Array in-place by merging from the back with three pointers. |
+| 89 | [LeetCode 89: Gray Code](0089.md) | Medium | A detailed guide to solving Gray Code using the binary-to-Gray-code formula. |
+| 90 | [LeetCode 90: Subsets II](0090.md) | Medium | A detailed guide to solving Subsets II with sorting, backtracking, and duplicate skipping. |
+| 91 | [LeetCode 91: Decode Ways](0091.md) | Medium | A detailed guide to solving Decode Ways with dynamic programming and careful handling of zeroes. |
+| 92 | [LeetCode 92: Reverse Linked List II](0092.md) | Medium | A detailed guide to solving Reverse Linked List II with a dummy node and in-place sublist reversal. |
+| 93 | [LeetCode 93: Restore IP Addresses](0093.md) | Medium | A detailed guide to solving Restore IP Addresses with backtracking over four valid IP segments. |
+| 94 | [LeetCode 94: Binary Tree Inorder Traversal](0094.md) | Easy | A detailed guide to solving Binary Tree Inorder Traversal with recursion and an iterative stack. |
+| 95 | [LeetCode 95: Unique Binary Search Trees II](0095.md) | Medium | A detailed guide to solving Unique Binary Search Trees II with recursive tree generation over value ranges. |
+| 96 | [LeetCode 96: Unique Binary Search Trees](0096.md) | Medium | A detailed guide to solving Unique Binary Search Trees with dynamic programming and the Catalan recurrence. |
+| 97 | [LeetCode 97: Interleaving String](0097.md) | Medium | A detailed guide to solving Interleaving String with two-dimensional dynamic programming. |
+| 98 | [LeetCode 98: Validate Binary Search Tree](0098.md) | Medium | A detailed guide to solving Validate Binary Search Tree with recursive lower and upper bounds. |
+| 99 | [LeetCode 99: Recover Binary Search Tree](0099.md) | Medium | A detailed guide to solving Recover Binary Search Tree with inorder traversal and two misplaced nodes. |
