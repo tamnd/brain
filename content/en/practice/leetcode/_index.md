@@ -495,3 +495,28 @@ Practice notes grouped by problem number.
 | 523 | [LeetCode 523: Continuous Subarray Sum](05/0523.md) | Medium | A clear explanation of detecting a subarray whose sum is a multiple of k using prefix sums and modular arithmetic. |
 | 524 | [LeetCode 524: Longest Word in Dictionary through Deleting](05/0524.md) | Medium | A clear explanation of finding the longest dictionary word obtainable as a subsequence using two pointers and sorting rules. |
 | 525 | [LeetCode 525: Contiguous Array](05/0525.md) | Medium | A clear explanation of finding the longest contiguous subarray with equal numbers of 0 and 1 using prefix sums and a hash map. |
+| 526 | [LeetCode 526: Beautiful Arrangement](05/0526.md) | Medium | A clear explanation of counting beautiful arrangements using backtracking and divisibility pruning. |
+| 527 | [LeetCode 527: Word Abbreviation](05/0527.md) | Hard | A clear explanation of generating minimal unique word abbreviations using grouping and trie prefixes. |
+| 528 | [LeetCode 528: Random Pick with Weight](05/0528.md) | Medium | A clear explanation of weighted random sampling using prefix sums and binary search. |
+| 529 | [LeetCode 529: Minesweeper](05/0529.md) | Medium | A clear explanation of updating a Minesweeper board using DFS flood fill and adjacent mine counting. |
+| 530 | [LeetCode 530: Minimum Absolute Difference in BST](05/0530.md) | Easy | A clear explanation of finding the minimum difference between two BST node values using inorder traversal. |
+| 531 | [LeetCode 531: Lonely Pixel I](05/0531.md) | Medium | A clear explanation of counting black pixels that are alone in both their row and column. |
+| 532 | [LeetCode 532: K-diff Pairs in an Array](05/0532.md) | Medium | A clear explanation of counting unique pairs whose absolute difference is k using frequency counting. |
+| 533 | [LeetCode 533: Lonely Pixel II](05/0533.md) | Medium | A clear explanation of counting black lonely pixels using row counts, column counts, and duplicate row patterns. |
+| 534 | [LeetCode 534: Game Play Analysis III](05/0534.md) | Medium | A clear explanation of computing cumulative games played per player and date using SQL window functions. |
+| 535 | [LeetCode 535: Encode and Decode TinyURL](05/0535.md) | Medium | A clear explanation of designing a simple URL encoder and decoder using a hash map and generated keys. |
+| 536 | [LeetCode 536: Construct Binary Tree from String](05/0536.md) | Medium | A clear explanation of parsing a parenthesized string recursively to construct a binary tree. |
+| 537 | [LeetCode 537: Complex Number Multiplication](05/0537.md) | Medium | A clear explanation of multiplying complex numbers represented as strings using algebraic expansion. |
+| 538 | [LeetCode 538: Convert BST to Greater Tree](05/0538.md) | Medium | A clear explanation of converting a BST into a greater tree using reverse inorder traversal and a running sum. |
+| 539 | [LeetCode 539: Minimum Time Difference](05/0539.md) | Medium | A clear explanation of finding the minimum difference between 24-hour clock times using minute conversion and sorting. |
+| 540 | [LeetCode 540: Single Element in a Sorted Array](05/0540.md) | Medium | A clear explanation of finding the only non-duplicate element in a sorted array using binary search. |
+| 541 | [LeetCode 541: Reverse String II](05/0541.md) | Easy | A clear explanation of reversing the first k characters in every 2k block of a string. |
+| 542 | [LeetCode 542: 01 Matrix](05/0542.md) | Medium | A clear explanation of computing the distance to the nearest zero in a binary matrix using multi-source BFS. |
+| 543 | [LeetCode 543: Diameter of Binary Tree](05/0543.md) | Easy | A clear explanation of finding the longest path between any two nodes in a binary tree using DFS height computation. |
+| 544 | [LeetCode 544: Output Contest Matches](05/0544.md) | Medium | A clear explanation of building the final tournament bracket by repeatedly pairing strongest and weakest teams. |
+| 545 | [LeetCode 545: Boundary of Binary Tree](05/0545.md) | Medium | A clear explanation of collecting the boundary of a binary tree using separate left boundary, leaves, and right boundary traversals. |
+| 546 | [LeetCode 546: Remove Boxes](05/0546.md) | Hard | A clear explanation of maximizing remove-box scores using interval dynamic programming with memoization. |
+| 547 | [LeetCode 547: Number of Provinces](05/0547.md) | Medium | A clear explanation of counting connected components in an undirected graph represented by an adjacency matrix. |
+| 548 | [LeetCode 548: Split Array with Equal Sum](05/0548.md) | Hard | A clear explanation of splitting an array into four equal-sum parts using prefix sums and set-based search. |
+| 549 | [LeetCode 549: Binary Tree Longest Consecutive Sequence II](05/0549.md) | Medium | A clear explanation of finding the longest increasing or decreasing consecutive path in a binary tree using DFS. |
+| 550 | [LeetCode 550: Game Play Analysis IV](05/0550.md) | Medium | A clear explanation of calculating the fraction of players who logged in again the day after their first login. |
