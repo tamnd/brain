@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 05xx"
-description: "LeetCode practice notes for problems 500 through 550, including A clear explanation of filtering words that can be typed using only one row of an American keyboard."
+description: "LeetCode practice notes for problems 500 through 575, including A clear explanation of filtering words that can be typed using only one row of an American keyboard."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 5
 ---
@@ -60,3 +60,28 @@ weight: 5
 | 548 | [LeetCode 548: Split Array with Equal Sum](0548.md) | Hard | A clear explanation of splitting an array into four equal-sum parts using prefix sums and set-based search. |
 | 549 | [LeetCode 549: Binary Tree Longest Consecutive Sequence II](0549.md) | Medium | A clear explanation of finding the longest increasing or decreasing consecutive path in a binary tree using DFS. |
 | 550 | [LeetCode 550: Game Play Analysis IV](0550.md) | Medium | A clear explanation of calculating the fraction of players who logged in again the day after their first login. |
+| 551 | [LeetCode 551: Student Attendance Record I](0551.md) | Easy | A clear explanation of Student Attendance Record I using simple string checks and a one-pass counter solution. |
+| 552 | [LeetCode 552: Student Attendance Record II](0552.md) | Hard | A clear explanation of Student Attendance Record II using dynamic programming over absence count and late streak. |
+| 553 | [LeetCode 553: Optimal Division](0553.md) | Medium | A clear explanation of Optimal Division using the structure of division expressions to build the maximum-value expression. |
+| 554 | [LeetCode 554: Brick Wall](0554.md) | Medium | A clear explanation of Brick Wall using prefix sums and a hash map to find the best vertical cut position. |
+| 555 | [LeetCode 555: Split Concatenated Strings](0555.md) | Medium | A clear explanation of Split Concatenated Strings using string reversal choices and enumeration of every possible cut point. |
+| 556 | [LeetCode 556: Next Greater Element III](0556.md) | Medium | A clear explanation of Next Greater Element III using the next permutation algorithm on the digits of an integer. |
+| 557 | [LeetCode 557: Reverse Words in a String III](0557.md) | Easy | A clear explanation of Reverse Words in a String III using two-pointer scanning and string reversal. |
+| 558 | [LeetCode 558: Logical OR of Two Binary Grids Represented as Quad-Trees](0558.md) | Medium | A clear explanation of merging two quad-trees using recursive logical OR operations. |
+| 559 | [LeetCode 559: Maximum Depth of N-ary Tree](0559.md) | Easy | A clear explanation of Maximum Depth of N-ary Tree using recursive depth-first search. |
+| 560 | [LeetCode 560: Subarray Sum Equals K](0560.md) | Medium | A clear explanation of Subarray Sum Equals K using prefix sums and a hash map to count matching subarrays in linear time. |
+| 561 | [LeetCode 561: Array Partition](0561.md) | Easy | A clear explanation of Array Partition using sorting and adjacent pairing to maximize the sum of pair minimums. |
+| 562 | [LeetCode 562: Longest Line of Consecutive One in Matrix](0562.md) | Medium | A clear explanation of Longest Line of Consecutive One in Matrix using dynamic programming over four directions. |
+| 563 | [LeetCode 563: Binary Tree Tilt](0563.md) | Easy | A clear explanation of Binary Tree Tilt using postorder DFS to compute subtree sums and accumulate tilt. |
+| 564 | [LeetCode 564: Find the Closest Palindrome](0564.md) | Hard | A clear explanation of Find the Closest Palindrome using prefix mirroring and a small candidate set. |
+| 565 | [LeetCode 565: Array Nesting](0565.md) | Medium | A clear explanation of Array Nesting using cycle detection over a permutation. |
+| 566 | [LeetCode 566: Reshape the Matrix](0566.md) | Easy | A clear explanation of Reshape the Matrix using index mapping from the original matrix to the reshaped matrix. |
+| 567 | [LeetCode 567: Permutation in String](0567.md) | Medium | A clear explanation of Permutation in String using a fixed-size sliding window and character frequency counts. |
+| 568 | [LeetCode 568: Maximum Vacation Days](0568.md) | Hard | A clear explanation of Maximum Vacation Days using dynamic programming over weeks and cities. |
+| 569 | [LeetCode 569: Median Employee Salary](0569.md) | Hard | A clear explanation of Median Employee Salary using SQL window functions to rank employees inside each company. |
+| 570 | [LeetCode 570: Managers with at Least 5 Direct Reports](0570.md) | Medium | A clear explanation of Managers with at Least 5 Direct Reports using grouping and a self join. |
+| 571 | [LeetCode 571: Find Median Given Frequency of Numbers](0571.md) | Hard | A clear explanation of Find Median Given Frequency of Numbers using cumulative frequency and SQL window functions. |
+| 572 | [LeetCode 572: Subtree of Another Tree](0572.md) | Easy | A clear explanation of Subtree of Another Tree using recursive tree matching and DFS. |
+| 573 | [LeetCode 573: Squirrel Simulation](0573.md) | Medium | A clear explanation of Squirrel Simulation using Manhattan distance and the special first trip. |
+| 574 | [LeetCode 574: Winning Candidate](0574.md) | Medium | A clear explanation of Winning Candidate using SQL aggregation to count votes and return the candidate with the most votes. |
+| 575 | [LeetCode 575: Distribute Candies](0575.md) | Easy | A clear explanation of Distribute Candies using a set to count candy types and a simple limit argument. |
