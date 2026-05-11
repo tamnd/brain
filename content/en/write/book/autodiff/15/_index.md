@@ -1,6 +1,6 @@
 ---
-title: "Chapter 15. Automatic Differentiation"
-description: "Automatic Differentiation chapter from Auto Diff."
+title: "Chapter 15. Differentiable Systems Architecture"
+description: "An end-to-end differentiable pipeline is a system whose final objective can send derivative information backward through every trainable or tunable stage of computation...."
 tags: ["autodiff", "book"]
 weight: 15
 draft: false
@@ -8,14 +8,12 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 15. Automatic Differentiation |
-| [2](2/) | End-to-End Differentiable Pipelines |
-| [3](3/) | Differentiable Databases |
-| [4](4/) | Differentiable Rendering |
-| [5](5/) | Differentiable Physics Engines |
-| [6](6/) | Differentiable Search and Retrieval |
-| [7](7/) | Differentiable Compilers |
-| [8](8/) | Differentiable Operating Systems |
-| [9](9/) | Hybrid Symbolic-Numeric Systems |
-| [10](10/) | Summary |
-| [11](11/) | Chapter 16. Sparse and Structured Differentiation |
+| [1](1/) | Chapter 15. Differentiable Systems Architecture |
+| [2](2/) | Differentiable Databases |
+| [3](3/) | Differentiable Rendering |
+| [4](4/) | Differentiable Physics Engines |
+| [5](5/) | Differentiable Search and Retrieval |
+| [6](6/) | Differentiable Compilers |
+| [7](7/) | Differentiable Operating Systems |
+| [8](8/) | Hybrid Symbolic-Numeric Systems |
+| [9](9/) | Summary |

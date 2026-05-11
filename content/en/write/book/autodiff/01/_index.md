@@ -1,6 +1,6 @@
 ---
-title: "Chapter 1. Automatic Differentiation"
-description: "Automatic Differentiation chapter from Auto Diff."
+title: "Chapter 1. Introduction"
+description: "A derivative measures how an output changes when an input changes. That sentence is simple, but it is one of the main ideas behind numerical computing, optimization, machine..."
 tags: ["autodiff", "book"]
 weight: 1
 draft: false
@@ -8,13 +8,10 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 1. Automatic Differentiation |
-| [2](2/) | Why Derivatives Matter |
-| [3](3/) | Numerical Differentiation |
-| [4](4/) | Symbolic Differentiation |
-| [5](5/) | Automatic Differentiation |
-| [6](6/) | Accuracy, Complexity, and Stability |
-| [7](7/) | Historical Development |
-| [8](8/) | Applications Across Science and Engineering |
-| [9](9/) | 2. Mathematical Foundations |
-| [10](10/) | Multivariate Calculus |
+| [1](1/) | Chapter 1. Introduction |
+| [2](2/) | Numerical Differentiation |
+| [3](3/) | Symbolic Differentiation |
+| [4](4/) | Automatic Differentiation |
+| [5](5/) | Accuracy, Complexity, and Stability |
+| [6](6/) | Historical Development |
+| [7](7/) | Applications Across Science and Engineering |

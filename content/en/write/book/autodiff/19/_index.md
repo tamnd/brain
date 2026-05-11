@@ -1,6 +1,6 @@
 ---
-title: "Chapter 19. Automatic Differentiation"
-description: "Automatic Differentiation chapter from Auto Diff."
+title: "Chapter 19. Theory and Foundations"
+description: "Automatic differentiation is often described by a simple rule:"
 tags: ["autodiff", "book"]
 weight: 19
 draft: false
@@ -8,14 +8,12 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 19. Automatic Differentiation |
-| [2](2/) | Complexity Bounds |
-| [3](3/) | Algebraic Semantics |
-| [4](4/) | Categorical Semantics |
-| [5](5/) | Differential Categories |
-| [6](6/) | Lambda Calculus and AD |
-| [7](7/) | Program Equivalence |
-| [8](8/) | Formal Verification |
-| [9](9/) | Denotational Models |
-| [10](10/) | Differentiation as Functorial Transformation |
-| [11](11/) | 20. Building an AD Engine |
+| [1](1/) | Chapter 19. Theory and Foundations |
+| [2](2/) | Algebraic Semantics |
+| [3](3/) | Categorical Semantics |
+| [4](4/) | Differential Categories |
+| [5](5/) | Lambda Calculus and AD |
+| [6](6/) | Program Equivalence |
+| [7](7/) | Formal Verification |
+| [8](8/) | Denotational Models |
+| [9](9/) | Differentiation as Functorial Transformation |

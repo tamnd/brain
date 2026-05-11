@@ -1,6 +1,6 @@
 ---
-title: "Chapter 6. Automatic Differentiation"
-description: "Automatic Differentiation chapter from Auto Diff."
+title: "Chapter 6. Reverse Mode Automatic Differentiation"
+description: "Reverse mode automatic differentiation computes derivatives by propagating sensitivities backward through a computation. In forward mode, each intermediate value carries a..."
 tags: ["autodiff", "book"]
 weight: 6
 draft: false
@@ -8,14 +8,13 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 6. Automatic Differentiation |
-| [2](2/) | Adjoint Propagation |
-| [3](3/) | Reverse Computational Graphs |
-| [4](4/) | Vector-Jacobian Products |
-| [5](5/) | Reverse Accumulation Algorithms |
-| [6](6/) | Tape-Based Systems |
-| [7](7/) | Wengert Lists |
-| [8](8/) | Memory-Time Tradeoffs |
-| [9](9/) | Checkpointing |
-| [10](10/) | Reverse Mode in Deep Learning |
-| [11](11/) | Case Studies |
+| [1](1/) | Chapter 6. Reverse Mode Automatic Differentiation |
+| [2](2/) | Reverse Computational Graphs |
+| [3](3/) | Vector-Jacobian Products |
+| [4](4/) | Reverse Accumulation Algorithms |
+| [5](5/) | Tape-Based Systems |
+| [6](6/) | Wengert Lists |
+| [7](7/) | Memory-Time Tradeoffs |
+| [8](8/) | Checkpointing |
+| [9](9/) | Reverse Mode in Deep Learning |
+| [10](10/) | Case Studies |
