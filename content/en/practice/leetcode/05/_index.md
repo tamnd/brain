@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 05xx"
-description: "LeetCode practice notes for problems 500 through 575, including A clear explanation of filtering words that can be typed using only one row of an American keyboard."
+description: "LeetCode practice notes for problems 500 through 599, including A clear explanation of filtering words that can be typed using only one row of an American keyboard."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 5
 ---
@@ -85,3 +85,27 @@ weight: 5
 | 573 | [LeetCode 573: Squirrel Simulation](0573.md) | Medium | A clear explanation of Squirrel Simulation using Manhattan distance and the special first trip. |
 | 574 | [LeetCode 574: Winning Candidate](0574.md) | Medium | A clear explanation of Winning Candidate using SQL aggregation to count votes and return the candidate with the most votes. |
 | 575 | [LeetCode 575: Distribute Candies](0575.md) | Easy | A clear explanation of Distribute Candies using a set to count candy types and a simple limit argument. |
+| 576 | [LeetCode 576: Out of Boundary Paths](0576.md) | Medium | A clear dynamic programming solution for counting paths that move a ball out of a grid boundary. |
+| 577 | [LeetCode 577: Employee Bonus](0577.md) | Easy | A clear SQL guide for finding employees whose bonus is less than 1000 or missing. |
+| 578 | [LeetCode 578: Get Highest Answer Rate Question](0578.md) | Medium | A clear SQL guide for finding the question with the highest answer rate from survey logs. |
+| 579 | [LeetCode 579: Find Cumulative Salary of an Employee](0579.md) | Hard | A clear SQL guide for computing each employee's 3-month cumulative salary while excluding their most recent month. |
+| 580 | [LeetCode 580: Count Student Number in Departments](0580.md) | Medium | A clear SQL guide for counting students in every department, including departments with zero students. |
+| 581 | [LeetCode 581: Shortest Unsorted Continuous Subarray](0581.md) | Medium | A clear linear-time solution for finding the shortest subarray that must be sorted to make the whole array sorted. |
+| 582 | [LeetCode 582: Kill Process](0582.md) | Medium | A clear graph traversal solution for finding all processes terminated when killing a target process. |
+| 583 | [LeetCode 583: Delete Operation for Two Strings](0583.md) | Medium | A clear dynamic programming solution for finding the minimum deletions needed to make two strings equal. |
+| 584 | [LeetCode 584: Find Customer Referee](0584.md) | Easy | A clear SQL guide for selecting customers who were not referred by customer 2, including customers with no referee. |
+| 585 | [LeetCode 585: Investments in 2016](0585.md) | Medium | A clear SQL guide for summing 2016 investments for policies with repeated 2015 investment values and unique locations. |
+| 586 | [LeetCode 586: Customer Placing the Largest Number of Orders](0586.md) | Easy | A clear SQL guide for finding the customer who placed the most orders. |
+| 587 | [LeetCode 587: Erect the Fence](0587.md) | Hard | A clear convex hull solution for returning all trees that lie on the fence boundary. |
+| 588 | [LeetCode 588: Design In-Memory File System](0588.md) | Hard | A clear design guide for implementing an in-memory file system with directory listing, directory creation, file append, and file read operations. |
+| 589 | [LeetCode 589: N-ary Tree Preorder Traversal](0589.md) | Easy | A clear DFS solution for returning the preorder traversal of an N-ary tree. |
+| 590 | [LeetCode 590: N-ary Tree Postorder Traversal](0590.md) | Easy | A clear DFS solution for returning the postorder traversal of an N-ary tree. |
+| 591 | [LeetCode 591: Tag Validator](0591.md) | Hard | A clear stack-based parser for validating nested XML-like tags with CDATA sections. |
+| 592 | [LeetCode 592: Fraction Addition and Subtraction](0592.md) | Medium | A clear parsing and math solution for evaluating fraction addition and subtraction expressions. |
+| 593 | [LeetCode 593: Valid Square](0593.md) | Medium | A clear geometry solution for checking whether four unordered points form a valid square. |
+| 594 | [LeetCode 594: Longest Harmonious Subsequence](0594.md) | Easy | A clear hash map solution for finding the longest subsequence whose maximum and minimum differ by exactly one. |
+| 595 | [LeetCode 595: Big Countries](0595.md) | Easy | A clear SQL guide for finding countries with either large area or large population. |
+| 596 | [LeetCode 596: Classes With at Least 5 Students](0596.md) | Easy | A clear SQL guide for finding classes that have at least five students. |
+| 597 | [LeetCode 597: Friend Requests I: Overall Acceptance Rate](0597.md) | Easy | A clear SQL guide for computing the overall friend request acceptance rate with duplicate pairs counted once. |
+| 598 | [LeetCode 598: Range Addition II](0598.md) | Easy | A clear math solution for counting the maximum values after repeated top-left matrix increment operations. |
+| 599 | [LeetCode 599: Minimum Index Sum of Two Lists](0599.md) | Easy | A clear hash map solution for finding common strings with the smallest index sum. |
