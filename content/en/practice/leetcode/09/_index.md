@@ -34,6 +34,7 @@ weight: 9
 | 922 | [LeetCode 922: Sort Array By Parity II](0922.md) | Easy | A clear explanation of placing even numbers at even indices and odd numbers at odd indices using two pointers. |
 | 923 | [LeetCode 923: 3Sum With Multiplicity](0923.md) | Medium | A clear explanation of counting index triplets with duplicate values using frequency counts and combinatorics. |
 | 924 | [LeetCode 924: Minimize Malware Spread](0924.md) | Hard | A clear explanation of minimizing malware spread by analyzing connected components with Union Find. |
+| 925 | [LeetCode 925: Long Pressed Name](0925.md) | Easy | A clear explanation of the Long Pressed Name problem using a two-pointer scan. |
 | 926 | [LeetCode 926: Flip String to Monotone Increasing](0926.md) | Medium | A clear explanation of solving Flip String to Monotone Increasing with a one-pass dynamic programming approach. |
 | 927 | [LeetCode 927: Three Equal Parts](0927.md) | Hard | A clear explanation of solving Three Equal Parts by counting ones, locating the three binary patterns, and comparing them in one pass. |
 | 928 | [LeetCode 928: Minimize Malware Spread II](0928.md) | Hard | A clear explanation of solving Minimize Malware Spread II by removing each infected node and simulating the final malware spread. |
