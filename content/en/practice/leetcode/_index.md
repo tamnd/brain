@@ -186,6 +186,7 @@ Practice notes grouped by problem number.
 | 172 | [LeetCode 172: Factorial Trailing Zeroes](01/0172.md) | Medium | A clear explanation of counting trailing zeroes in n! by counting factors of 5 instead of computing the factorial directly. |
 | 173 | [LeetCode 173: Binary Search Tree Iterator](01/0173.md) | Medium | A clear explanation of designing an iterator over a BST using controlled inorder traversal with a stack. |
 | 174 | [LeetCode 174: Dungeon Game](01/0174.md) | Hard | A clear explanation of computing the minimum initial health needed to survive a dungeon using reverse dynamic programming. |
+| 175 | [LeetCode 175: Combine Two Tables](01/0175.md) | Easy | A clear SQL guide for solving Combine Two Tables using LEFT JOIN. |
 | 176 | [LeetCode 176: Second Highest Salary](01/0176.md) | Medium | A clear SQL solution for finding the second highest distinct salary from the Employee table. |
 | 177 | [LeetCode 177: Nth Highest Salary](01/0177.md) | Medium | A clear SQL solution for finding the nth highest distinct salary from the Employee table. |
 | 178 | [LeetCode 178: Rank Scores](01/0178.md) | Medium | A clear SQL solution for ranking scores with dense ranking, where ties share the same rank and no rank numbers are skipped. |
