@@ -640,3 +640,28 @@ Practice notes grouped by problem number.
 | 673 | [LeetCode 673: Number of Longest Increasing Subsequence](06/0673.md) | Medium | A clear explanation of counting how many longest strictly increasing subsequences exist using dynamic programming. |
 | 674 | [LeetCode 674: Longest Continuous Increasing Subsequence](06/0674.md) | Easy | A clear explanation of finding the longest strictly increasing contiguous subarray using a single scan. |
 | 675 | [LeetCode 675: Cut Off Trees for Golf Event](06/0675.md) | Hard | A clear explanation of cutting trees in increasing height order using repeated BFS on a grid. |
+| 676 | [LeetCode 676: Implement Magic Dictionary](06/0676.md) | Medium | Design a dictionary that can check whether a word can match a stored word after changing exactly one character. |
+| 677 | [LeetCode 677: Map Sum Pairs](06/0677.md) | Medium | Design a map that supports key-value insertion and prefix-sum queries using a hash map and trie. |
+| 678 | [LeetCode 678: Valid Parenthesis String](06/0678.md) | Medium | Check whether a string containing parentheses and wildcard stars can be made valid using a greedy range of possible open counts. |
+| 679 | [LeetCode 679: 24 Game](06/0679.md) | Hard | Determine whether four numbers can be combined with arithmetic operations and parentheses to produce 24. |
+| 680 | [LeetCode 680: Valid Palindrome II](06/0680.md) | Easy | Check whether a string can become a palindrome after deleting at most one character using two pointers. |
+| 681 | [LeetCode 681: Next Closest Time](06/0681.md) | Medium | Find the next valid 24-hour time using only the digits from the current time. |
+| 682 | [LeetCode 682: Baseball Game](06/0682.md) | Easy | Simulate a baseball scoring system using a stack to process operations and compute the final score. |
+| 683 | [LeetCode 683: K Empty Slots](06/0683.md) | Hard | Find the earliest day when two turned-on bulbs have exactly k turned-off bulbs between them using a sliding window over bloom days. |
+| 684 | [LeetCode 684: Redundant Connection](06/0684.md) | Medium | Find the extra edge in an undirected graph that creates a cycle using Union-Find. |
+| 685 | [LeetCode 685: Redundant Connection II](06/0685.md) | Hard | Find the directed edge to remove so a graph becomes a rooted tree again, handling both cycles and nodes with two parents. |
+| 686 | [LeetCode 686: Repeated String Match](06/0686.md) | Medium | Find the minimum number of times one string must be repeated so another string becomes a substring. |
+| 687 | [LeetCode 687: Longest Univalue Path](06/0687.md) | Medium | Find the longest path in a binary tree where every node on the path has the same value using depth-first search. |
+| 688 | [LeetCode 688: Knight Probability in Chessboard](06/0688.md) | Medium | Compute the probability that a knight remains on an n x n chessboard after exactly k random moves using dynamic programming. |
+| 689 | [LeetCode 689: Maximum Sum of 3 Non-Overlapping Subarrays](06/0689.md) | Hard | Find three non-overlapping subarrays of length k with maximum total sum and return the lexicographically smallest starting indices. |
+| 690 | [LeetCode 690: Employee Importance](06/0690.md) | Medium | Compute the total importance of an employee and all direct and indirect subordinates using a hash map and depth-first search. |
+| 691 | [LeetCode 691: Stickers to Spell Word](06/0691.md) | Hard | Find the minimum number of stickers needed to form a target string using top-down dynamic programming with memoization. |
+| 692 | [LeetCode 692: Top K Frequent Words](06/0692.md) | Medium | Find the k most frequent words using frequency counting and custom sorting by count and lexicographical order. |
+| 693 | [LeetCode 693: Binary Number with Alternating Bits](06/0693.md) | Easy | Check whether every adjacent bit in a positive integer's binary representation is different. |
+| 694 | [LeetCode 694: Number of Distinct Islands](06/0694.md) | Medium | Count unique island shapes in a binary grid using DFS and relative coordinates. |
+| 695 | [LeetCode 695: Max Area of Island](06/0695.md) | Medium | Find the largest connected island area in a binary grid using depth-first search. |
+| 696 | [LeetCode 696: Count Binary Substrings](06/0696.md) | Easy | Count substrings with equal consecutive groups of 0s and 1s using run lengths. |
+| 697 | [LeetCode 697: Degree of an Array](06/0697.md) | Easy | Find the shortest contiguous subarray with the same degree as the whole array using frequency counts and first occurrence indices. |
+| 698 | [LeetCode 698: Partition to K Equal Sum Subsets](06/0698.md) | Medium | Decide whether an array can be divided into k non-empty subsets with equal sums using backtracking and pruning. |
+| 699 | [LeetCode 699: Falling Squares](06/0699.md) | Hard | Simulate falling squares on a number line and track the maximum stack height after each placement. |
+| 700 | [LeetCode 700: Search in a Binary Search Tree](07/0700.md) | Easy | Search for a target value in a binary search tree and return the subtree rooted at the matching node. |
