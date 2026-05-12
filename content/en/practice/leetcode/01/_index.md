@@ -101,5 +101,11 @@ weight: 1
 | 189 | [LeetCode 189: Rotate Array](0189.md) | Medium | A clear explanation of rotating an array to the right by k steps using in-place reversal. |
 | 190 | [LeetCode 190: Reverse Bits](0190.md) | Easy | A clear explanation of reversing the bits of a 32-bit integer using bit manipulation. |
 | 191 | [LeetCode 191: Number of 1 Bits](0191.md) | Easy | A clear explanation of counting set bits in an integer using bit manipulation and Brian Kernighan's algorithm. |
+| 192 | [LeetCode 192: Word Frequency](0192.md) | Medium | A clear explanation of the Word Frequency shell problem using Unix text-processing tools. |
+| 193 | [LeetCode 193: Valid Phone Numbers](0193.md) | Easy | A clear explanation of the Valid Phone Numbers shell problem using grep and regular expressions. |
+| 194 | [LeetCode 194: Transpose File](0194.md) | Medium | A clear explanation of the Transpose File shell problem using awk to transform rows into columns. |
+| 195 | [LeetCode 195: Tenth Line](0195.md) | Easy | A clear explanation of the Tenth Line shell problem using awk, sed, head, and tail. |
+| 196 | [LeetCode 196: Delete Duplicate Emails](0196.md) | Easy | A clear explanation of the Delete Duplicate Emails SQL problem using DELETE with a self join. |
+| 197 | [LeetCode 197: Rising Temperature](0197.md) | Easy | A clear explanation of the Rising Temperature SQL problem using a self join and date comparison. |
 | 198 | [LeetCode 198: House Robber](0198.md) | Medium | A clear explanation of maximizing robbery profit without robbing adjacent houses using dynamic programming. |
 | 199 | [LeetCode 199: Binary Tree Right Side View](0199.md) | Medium | A clear explanation of returning the visible nodes from the right side of a binary tree using level-order traversal. |
