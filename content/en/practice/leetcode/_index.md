@@ -590,3 +590,28 @@ Practice notes grouped by problem number.
 | 618 | [LeetCode 618: Students Report By Geography](06/0618.md) | Hard | A SQL guide for pivoting rows into columns using ranking and conditional aggregation. |
 | 619 | [LeetCode 619: Biggest Single Number](06/0619.md) | Easy | A SQL guide for finding the largest number that appears exactly once in a table. |
 | 620 | [LeetCode 620: Not Boring Movies](06/0620.md) | Easy | A SQL guide for filtering movies with odd IDs and non-boring descriptions, then sorting by rating. |
+| 626 | [LeetCode 626: Exchange Seats](06/0626.md) | Medium | A SQL solution for swapping every pair of adjacent student seats while leaving the final seat unchanged when the row count is odd. |
+| 627 | [LeetCode 627: Swap Salary](06/0627.md) | Easy | A SQL update solution for swapping all m and f values in the Salary table using a single statement. |
+| 628 | [LeetCode 628: Maximum Product of Three Numbers](06/0628.md) | Easy | A clear explanation of finding the largest product of three numbers using sorting or constant-space tracking. |
+| 629 | [LeetCode 629: K Inverse Pairs Array](06/0629.md) | Hard | A dynamic programming solution for counting permutations of 1 to n with exactly k inverse pairs. |
+| 630 | [LeetCode 630: Course Schedule III](06/0630.md) | Hard | A greedy heap solution for taking the maximum number of courses before their deadlines. |
+| 631 | [LeetCode 631: Design Excel Sum Formula](06/0631.md) | Hard | A design solution for a small Excel-like spreadsheet that supports set, get, and dynamic sum formulas. |
+| 632 | [LeetCode 632: Smallest Range Covering Elements from K Lists](06/0632.md) | Hard | A heap-based solution for finding the smallest range that contains at least one number from each sorted list. |
+| 633 | [LeetCode 633: Sum of Square Numbers](06/0633.md) | Medium | A two-pointer and number theory solution for checking whether an integer can be written as the sum of two square numbers. |
+| 634 | [LeetCode 634: Find the Derangement of An Array](06/0634.md) | Medium | A dynamic programming and combinatorics solution for counting permutations with no fixed positions. |
+| 635 | [LeetCode 635: Design Log Storage System](06/0635.md) | Medium | A design solution for storing timestamped logs and retrieving IDs by inclusive time range at a chosen granularity. |
+| 636 | [LeetCode 636: Exclusive Time of Functions](06/0636.md) | Medium | A stack-based solution for computing exclusive execution time from nested start and end logs. |
+| 637 | [LeetCode 637: Average of Levels in Binary Tree](06/0637.md) | Easy | A breadth-first search solution for computing the average value of nodes at each level of a binary tree. |
+| 638 | [LeetCode 638: Shopping Offers](06/0638.md) | Medium | A DFS and memoization solution for finding the minimum cost to satisfy item needs using individual prices and reusable special offers. |
+| 639 | [LeetCode 639: Decode Ways II](06/0639.md) | Hard | A dynamic programming solution for counting decodings of a digit string with wildcard characters. |
+| 640 | [LeetCode 640: Solve the Equation](06/0640.md) | Medium | A string parsing solution for reducing a linear equation into coefficient and constant terms. |
+| 641 | [LeetCode 641: Design Circular Deque](06/0641.md) | Medium | An array-based circular buffer solution for implementing a fixed-size double-ended queue. |
+| 642 | [LeetCode 642: Design Search Autocomplete System](06/0642.md) | Hard | A trie-based design for returning the top three historical sentences for a typed prefix. |
+| 643 | [LeetCode 643: Maximum Average Subarray I](06/0643.md) | Easy | A sliding window solution for finding the maximum average among all contiguous subarrays of fixed length k. |
+| 644 | [LeetCode 644: Maximum Average Subarray II](06/0644.md) | Hard | A binary search solution for finding the maximum average of any contiguous subarray with length at least k. |
+| 645 | [LeetCode 645: Set Mismatch](06/0645.md) | Easy | A counting and math solution for finding the duplicated number and the missing number in a corrupted set. |
+| 646 | [LeetCode 646: Maximum Length of Pair Chain](06/0646.md) | Medium | A greedy interval scheduling solution for finding the longest chain of valid pairs. |
+| 647 | [LeetCode 647: Palindromic Substrings](06/0647.md) | Medium | A center expansion solution for counting every palindromic substring in a string. |
+| 648 | [LeetCode 648: Replace Words](06/0648.md) | Medium | A trie-based solution for replacing each derivative word with the shortest matching root. |
+| 649 | [LeetCode 649: Dota2 Senate](06/0649.md) | Medium | A queue-based simulation for predicting which party wins after senators ban opponents in turn order. |
+| 650 | [LeetCode 650: 2 Keys Keyboard](06/0650.md) | Medium | A dynamic programming and prime factorization solution for finding the minimum operations needed to produce n characters. |
