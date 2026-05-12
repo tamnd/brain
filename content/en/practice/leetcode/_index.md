@@ -254,6 +254,14 @@ Practice notes grouped by problem number.
 | 240 | [LeetCode 240: Search a 2D Matrix II](02/0240.md) | Medium | A clear explanation of searching a row-sorted and column-sorted matrix using the top-right corner elimination method. |
 | 241 | [LeetCode 241: Different Ways to Add Parentheses](02/0241.md) | Medium | A clear explanation of generating all possible results from different parenthesizations using divide and conquer recursion. |
 | 242 | [LeetCode 242: Valid Anagram](02/0242.md) | Easy | A clear explanation of checking whether two strings are anagrams using character frequency counting. |
+| 243 | [LeetCode 243: Shortest Word Distance](02/0243.md) | Easy | A clear explanation of the Shortest Word Distance problem using one pass and the latest seen indices of both words. |
+| 244 | [LeetCode 244: Shortest Word Distance II](02/0244.md) | Medium | A clear explanation of the Shortest Word Distance II problem using preprocessing and two pointers. |
+| 245 | [LeetCode 245: Shortest Word Distance III](02/0245.md) | Medium | A clear explanation of the Shortest Word Distance III problem, including the special case where both target words are the same. |
+| 246 | [LeetCode 246: Strobogrammatic Number](02/0246.md) | Easy | A clear explanation of the Strobogrammatic Number problem using digit rotation rules and two pointers. |
+| 247 | [LeetCode 247: Strobogrammatic Number II](02/0247.md) | Medium | A clear explanation of generating all strobogrammatic numbers of length n using recursion from the inside out. |
+| 248 | [LeetCode 248: Strobogrammatic Number III](02/0248.md) | Hard | A clear explanation of counting strobogrammatic numbers in a string range using recursive generation and range filtering. |
+| 249 | [LeetCode 249: Group Shifted Strings](02/0249.md) | Medium | A clear explanation of grouping strings by their shifting sequence using normalized hash keys. |
+| 250 | [LeetCode 250: Count Univalue Subtrees](02/0250.md) | Medium | A clear explanation of counting uni-value subtrees using post-order DFS. |
 | 251 | [LeetCode 251: Flatten 2D Vector](02/0251.md) | Medium | A clear explanation of the Flatten 2D Vector problem using row and column pointers to implement an iterator. |
 | 252 | [LeetCode 252: Meeting Rooms](02/0252.md) | Easy | A clear explanation of the Meeting Rooms problem using interval sorting to detect overlaps. |
 | 253 | [LeetCode 253: Meeting Rooms II](02/0253.md) | Medium | A clear explanation of the Meeting Rooms II problem using a min heap to track active meeting end times. |
