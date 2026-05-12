@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 08xx"
-description: "LeetCode practice notes for problems 800 through 875, including A clear explanation of finding the closest shorthand RGB color by rounding each color channel to the nearest repeated hexadecimal pair."
+description: "LeetCode practice notes for problems 800 through 899, including A clear explanation of finding the closest shorthand RGB color by rounding each color channel to the nearest repeated hexadecimal pair."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 8
 ---
@@ -85,3 +85,27 @@ weight: 8
 | 873 | [LeetCode 873: Length of Longest Fibonacci Subsequence](0873.md) | Medium | A clear explanation of finding the longest Fibonacci-like subsequence using dynamic programming and value-to-index lookup. |
 | 874 | [LeetCode 874: Walking Robot Simulation](0874.md) | Medium | A clear explanation of simulating robot movement on an infinite grid using direction vectors and obstacle lookup. |
 | 875 | [LeetCode 875: Koko Eating Bananas](0875.md) | Medium | A clear explanation of finding the minimum banana-eating speed using binary search on the answer. |
+| 876 | [LeetCode 876: Middle of the Linked List](0876.md) | Easy | A clear explanation of finding the middle node of a singly linked list using slow and fast pointers. |
+| 877 | [LeetCode 877: Stone Game](0877.md) | Medium | A clear explanation of the Stone Game problem using game theory and interval dynamic programming. |
+| 878 | [LeetCode 878: Nth Magical Number](0878.md) | Hard | A clear explanation of finding the nth magical number using binary search, greatest common divisor, least common multiple, and inclusion-exclusion. |
+| 879 | [LeetCode 879: Profitable Schemes](0879.md) | Hard | A clear explanation of counting profitable crime schemes using 0/1 knapsack dynamic programming with members and profit states. |
+| 880 | [LeetCode 880: Decoded String at Index](0880.md) | Medium | A clear explanation of finding the kth character in a decoded string without building the full decoded string. |
+| 881 | [LeetCode 881: Boats to Save People](0881.md) | Medium | A clear explanation of minimizing rescue boats using sorting, greedy choice, and two pointers. |
+| 882 | [LeetCode 882: Reachable Nodes In Subdivided Graph](0882.md) | Hard | A clear explanation of counting reachable original and subdivided nodes using Dijkstra's shortest path algorithm. |
+| 883 | [LeetCode 883: Projection Area of 3D Shapes](0883.md) | Easy | A clear explanation of computing the projection areas of stacked cubes from top, front, and side views. |
+| 884 | [LeetCode 884: Uncommon Words from Two Sentences](0884.md) | Easy | A clear explanation of finding uncommon words by counting word frequencies across both sentences. |
+| 885 | [LeetCode 885: Spiral Matrix III](0885.md) | Medium | A clear explanation of generating grid coordinates in an outward clockwise spiral using simulation. |
+| 886 | [LeetCode 886: Possible Bipartition](0886.md) | Medium | A clear explanation of checking whether people can be split into two groups using graph coloring and bipartite graph detection. |
+| 887 | [LeetCode 887: Super Egg Drop](0887.md) | Hard | A clear explanation of finding the minimum worst-case number of moves using dynamic programming over eggs and moves. |
+| 888 | [LeetCode 888: Fair Candy Swap](0888.md) | Easy | A clear explanation of finding one candy box swap that makes Alice and Bob have equal total candies. |
+| 889 | [LeetCode 889: Construct Binary Tree from Preorder and Postorder Traversal](0889.md) | Medium | A clear explanation of reconstructing a binary tree from preorder and postorder traversals using recursion and index ranges. |
+| 890 | [LeetCode 890: Find and Replace Pattern](0890.md) | Medium | A clear explanation of finding words that match a pattern using bijective character mapping. |
+| 891 | [LeetCode 891: Sum of Subsequence Widths](0891.md) | Hard | A clear explanation of summing subsequence widths by sorting and counting each element as a maximum and minimum. |
+| 892 | [LeetCode 892: Surface Area of 3D Shapes](0892.md) | Easy | A clear explanation of computing the exposed surface area of stacked cubes by adding tower area and subtracting shared faces. |
+| 893 | [LeetCode 893: Groups of Special-Equivalent Strings](0893.md) | Medium | A clear explanation of counting special-equivalent string groups by building canonical signatures from even and odd positions. |
+| 894 | [LeetCode 894: All Possible Full Binary Trees](0894.md) | Medium | A clear explanation of generating all full binary trees with n nodes using recursion and memoization. |
+| 895 | [LeetCode 895: Maximum Frequency Stack](0895.md) | Hard | A clear explanation of designing a stack that pops the most frequent value, breaking ties by most recent insertion. |
+| 896 | [LeetCode 896: Monotonic Array](0896.md) | Easy | A clear explanation of checking whether an array is monotonic using one pass and direction flags. |
+| 897 | [LeetCode 897: Increasing Order Search Tree](0897.md) | Easy | A clear explanation of rearranging a binary search tree into an increasing right-only tree using inorder traversal. |
+| 898 | [LeetCode 898: Bitwise ORs of Subarrays](0898.md) | Medium | A clear explanation of counting distinct bitwise OR results from all non-empty subarrays using rolling sets. |
+| 899 | [LeetCode 899: Orderly Queue](0899.md) | Hard | A clear explanation of finding the lexicographically smallest string after queue operations using rotation and sorting. |
