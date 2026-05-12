@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 07xx"
-description: "LeetCode practice notes for problems 700 through 775, including Search for a target value in a binary search tree and return the subtree rooted at the matching node."
+description: "LeetCode practice notes for problems 700 through 799, including Search for a target value in a binary search tree and return the subtree rooted at the matching node."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 7
 ---
@@ -85,3 +85,27 @@ weight: 7
 | 773 | [LeetCode 773: Sliding Puzzle](0773.md) | Hard | A clear explanation of solving the 2 x 3 sliding puzzle using breadth-first search over board states. |
 | 774 | [LeetCode 774: Minimize Max Distance to Gas Station](0774.md) | Hard | A clear explanation of minimizing the largest adjacent gas-station distance using binary search on the answer. |
 | 775 | [LeetCode 775: Global and Local Inversions](0775.md) | Medium | A clear explanation of checking whether every global inversion is also a local inversion using distance constraints. |
+| 776 | [LeetCode 776: Split BST](0776.md) | Medium | A clear explanation of splitting a binary search tree into two BSTs using recursion and pointer rewiring. |
+| 777 | [LeetCode 777: Swap Adjacent in LR String](0777.md) | Medium | A clear explanation of validating string transformation using two pointers and movement constraints. |
+| 778 | [LeetCode 778: Swim in Rising Water](0778.md) | Hard | A clear explanation of finding the minimum time to reach the bottom-right cell using a priority queue and minimax path reasoning. |
+| 779 | [LeetCode 779: K-th Symbol in Grammar](0779.md) | Medium | A clear explanation of finding the kth symbol in the grammar sequence using recursion and the parent-child relationship. |
+| 780 | [LeetCode 780: Reaching Points](0780.md) | Hard | A clear explanation of checking whether one point can reach another by working backward with modulo. |
+| 781 | [LeetCode 781: Rabbits in Forest](0781.md) | Medium | A clear explanation of finding the minimum possible number of rabbits using counting and greedy grouping. |
+| 782 | [LeetCode 782: Transform to Chessboard](0782.md) | Hard | A clear explanation of transforming a binary board into a chessboard using feasibility checks and minimum row and column swaps. |
+| 783 | [LeetCode 783: Minimum Distance Between BST Nodes](0783.md) | Easy | A clear explanation of finding the minimum difference between any two nodes in a BST using inorder traversal. |
+| 784 | [LeetCode 784: Letter Case Permutation](0784.md) | Medium | A clear explanation of generating all strings formed by independently changing each letter to lowercase or uppercase. |
+| 785 | [LeetCode 785: Is Graph Bipartite?](0785.md) | Medium | A clear explanation of checking whether an undirected graph can be split into two independent sets using graph coloring. |
+| 786 | [LeetCode 786: K-th Smallest Prime Fraction](0786.md) | Medium | A clear explanation of finding the kth smallest fraction from a sorted array using a min-heap. |
+| 787 | [LeetCode 787: Cheapest Flights Within K Stops](0787.md) | Medium | A clear explanation of finding the cheapest flight route with at most k stops using bounded Bellman-Ford relaxation. |
+| 788 | [LeetCode 788: Rotated Digits](0788.md) | Medium | A clear explanation of counting good numbers after rotating every digit by 180 degrees. |
+| 789 | [LeetCode 789: Escape The Ghosts](0789.md) | Medium | A clear explanation of deciding whether escape is possible by comparing Manhattan distances to the target. |
+| 790 | [LeetCode 790: Domino and Tromino Tiling](0790.md) | Medium | A clear explanation of counting tilings of a 2 x n board using dominoes and L-shaped trominoes with dynamic programming. |
+| 791 | [LeetCode 791: Custom Sort String](0791.md) | Medium | A clear explanation of rearranging a string so that selected characters follow a custom order. |
+| 792 | [LeetCode 792: Number of Matching Subsequences](0792.md) | Medium | A clear explanation of counting how many words are subsequences of a string using waiting queues. |
+| 793 | [LeetCode 793: Preimage Size of Factorial Zeroes Function](0793.md) | Hard | A clear explanation of finding how many integers have exactly k trailing zeroes in their factorial. |
+| 794 | [LeetCode 794: Valid Tic-Tac-Toe State](0794.md) | Medium | A clear explanation of validating whether a Tic-Tac-Toe board can occur in a legal game. |
+| 795 | [LeetCode 795: Number of Subarrays with Bounded Maximum](0795.md) | Medium | A clear explanation of counting contiguous subarrays whose maximum value lies inside a given inclusive range. |
+| 796 | [LeetCode 796: Rotate String](0796.md) | Easy | A clear explanation of checking whether one string can become another by repeated left rotations. |
+| 797 | [LeetCode 797: All Paths From Source to Target](0797.md) | Medium | A clear explanation of finding every path from node 0 to node n - 1 in a directed acyclic graph using DFS and backtracking. |
+| 798 | [LeetCode 798: Smallest Rotation with Highest Score](0798.md) | Hard | A clear explanation of finding the smallest rotation with maximum score using a difference array. |
+| 799 | [LeetCode 799: Champagne Tower](0799.md) | Medium | A clear explanation of simulating overflow in a champagne glass pyramid using dynamic programming. |
