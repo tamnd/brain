@@ -737,3 +737,28 @@ Practice notes grouped by problem number.
 | 723 | [LeetCode 723: Candy Crush](07/0723.md) | Medium | A clear explanation of restoring a Candy Crush board to a stable state using repeated marking, crushing, and gravity simulation. |
 | 724 | [LeetCode 724: Find Pivot Index](07/0724.md) | Easy | A clear explanation of finding the leftmost pivot index using prefix sums and a running left sum. |
 | 725 | [LeetCode 725: Split Linked List in Parts](07/0725.md) | Medium | A clear explanation of splitting a linked list into k consecutive parts with sizes as equal as possible. |
+| 726 | [LeetCode 726: Number of Atoms](07/0726.md) | Hard | Parse a chemical formula with nested parentheses, atom names, and multipliers using recursive descent. |
+| 727 | [LeetCode 727: Minimum Window Subsequence](07/0727.md) | Hard | Find the shortest substring of s1 that contains s2 as a subsequence using dynamic programming. |
+| 728 | [LeetCode 728: Self Dividing Numbers](07/0728.md) | Easy | Check each number in a range by extracting its digits and testing whether every digit divides the original number. |
+| 729 | [LeetCode 729: My Calendar I](07/0729.md) | Medium | Implement a calendar that accepts a booking only when it does not overlap with any existing booking. |
+| 730 | [LeetCode 730: Count Different Palindromic Subsequences](07/0730.md) | Hard | Count distinct non-empty palindromic subsequences using interval dynamic programming and duplicate handling. |
+| 731 | [LeetCode 731: My Calendar II](07/0731.md) | Medium | Allow double bookings but reject triple bookings using overlap interval tracking. |
+| 732 | [LeetCode 732: My Calendar III](07/0732.md) | Hard | Track the maximum number of overlapping calendar events using a sweep line difference map. |
+| 733 | [LeetCode 733: Flood Fill](07/0733.md) | Easy | Recolor the connected component containing the starting pixel using depth-first search. |
+| 734 | [LeetCode 734: Sentence Similarity](07/0734.md) | Easy | Check whether two word arrays are sentence-similar using a hash set of symmetric similar word pairs. |
+| 735 | [LeetCode 735: Asteroid Collision](07/0735.md) | Medium | Simulate asteroid collisions using a stack that keeps the surviving asteroids in order. |
+| 736 | [LeetCode 736: Parse Lisp Expression](07/0736.md) | Hard | Evaluate a Lisp-like expression with integers, variables, let bindings, addition, multiplication, and lexical scope. |
+| 737 | [LeetCode 737: Sentence Similarity II](07/0737.md) | Medium | Check sentence similarity with transitive word relationships using union-find. |
+| 738 | [LeetCode 738: Monotone Increasing Digits](07/0738.md) | Medium | Find the largest number less than or equal to n whose digits are monotone increasing using a greedy digit adjustment. |
+| 739 | [LeetCode 739: Daily Temperatures](07/0739.md) | Medium | Find how many days each temperature must wait for a warmer future day using a monotonic stack. |
+| 740 | [LeetCode 740: Delete and Earn](07/0740.md) | Medium | Transform the problem into House Robber dynamic programming by grouping equal values into total points. |
+| 741 | [LeetCode 741: Cherry Pickup](07/0741.md) | Hard | Maximize cherries collected on a round trip by converting the problem into two simultaneous forward paths and solving with dynamic programming. |
+| 742 | [LeetCode 742: Closest Leaf in a Binary Tree](07/0742.md) | Medium | Find the nearest leaf to a target node by converting the tree into an undirected graph and running breadth-first search. |
+| 743 | [LeetCode 743: Network Delay Time](07/0743.md) | Medium | Find the time needed for a signal to reach all nodes in a directed weighted graph using Dijkstra's algorithm. |
+| 744 | [LeetCode 744: Find Smallest Letter Greater Than Target](07/0744.md) | Easy | Use binary search to find the smallest character strictly greater than the target with wraparound handling. |
+| 745 | [LeetCode 745: Prefix and Suffix Search](07/0745.md) | Hard | Support fast prefix and suffix queries by indexing every prefix-suffix combination with the largest word index. |
+| 746 | [LeetCode 746: Min Cost Climbing Stairs](07/0746.md) | Easy | Find the minimum cost to reach the top of the staircase using dynamic programming. |
+| 747 | [LeetCode 747: Largest Number At Least Twice of Others](07/0747.md) | Easy | Find whether the maximum element is at least twice every other element using a single linear scan. |
+| 748 | [LeetCode 748: Shortest Completing Word](07/0748.md) | Easy | Find the shortest word that contains all required license plate letters using frequency counting. |
+| 749 | [LeetCode 749: Contain Virus](07/0749.md) | Hard | Simulate virus containment by repeatedly quarantining the most dangerous infected region and spreading the remaining regions. |
+| 750 | [LeetCode 750: Number Of Corner Rectangles](07/0750.md) | Medium | Count axis-aligned rectangles whose four corners are 1 using column-pair frequency counting. |
