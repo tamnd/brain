@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 09xx"
-description: "LeetCode practice notes for problems 900 through 950, including A clear explanation of designing an iterator over a run-length encoded sequence without expanding it."
+description: "LeetCode practice notes for problems 900 through 975, including A clear explanation of designing an iterator over a run-length encoded sequence without expanding it."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 9
 ---
@@ -59,3 +59,28 @@ weight: 9
 | 948 | [LeetCode 948: Bag of Tokens](0948.md) | Medium | A clear explanation of solving Bag of Tokens using sorting, greedy choices, and two pointers. |
 | 949 | [LeetCode 949: Largest Time for Given Digits](0949.md) | Medium | A clear explanation of solving Largest Time for Given Digits by checking all permutations of four digits. |
 | 950 | [LeetCode 950: Reveal Cards In Increasing Order](0950.md) | Medium | A clear explanation of solving Reveal Cards In Increasing Order using sorting and queue simulation over indices. |
+| 951 | [LeetCode 951: Flip Equivalent Binary Trees](0951.md) | Medium | A clear explanation of checking whether two binary trees are equivalent after swapping left and right children at any number of nodes. |
+| 952 | [LeetCode 952: Largest Component Size by Common Factor](0952.md) | Hard | A clear explanation of solving Largest Component Size by Common Factor using prime factorization and union find. |
+| 953 | [LeetCode 953: Verifying an Alien Dictionary](0953.md) | Easy | A clear explanation of checking whether words are sorted according to a custom alien alphabet order. |
+| 954 | [LeetCode 954: Array of Doubled Pairs](0954.md) | Medium | A clear explanation of checking whether an array can be reordered into pairs where one number is double the other. |
+| 955 | [LeetCode 955: Delete Columns to Make Sorted II](0955.md) | Medium | A clear explanation of deleting the minimum number of columns so rows become lexicographically sorted. |
+| 956 | [LeetCode 956: Tallest Billboard](0956.md) | Hard | A clear explanation of solving Tallest Billboard using dynamic programming over height differences. |
+| 957 | [LeetCode 957: Prison Cells After N Days](0957.md) | Medium | A clear explanation of simulating prison cell transitions efficiently using cycle detection. |
+| 958 | [LeetCode 958: Check Completeness of a Binary Tree](0958.md) | Medium | A clear explanation of checking whether a binary tree is complete using level-order traversal. |
+| 959 | [LeetCode 959: Regions Cut By Slashes](0959.md) | Medium | A clear explanation of counting regions formed by slashes using union find over four triangles per cell. |
+| 960 | [LeetCode 960: Delete Columns to Make Sorted III](0960.md) | Hard | A clear explanation of deleting the minimum number of columns so every remaining row is individually sorted. |
+| 961 | [LeetCode 961: N-Repeated Element in Size 2N Array](0961.md) | Easy | A clear explanation of finding the element repeated N times using a hash set. |
+| 962 | [LeetCode 962: Maximum Width Ramp](0962.md) | Medium | A clear explanation of finding the maximum width ramp using a monotonic decreasing stack. |
+| 963 | [LeetCode 963: Minimum Area Rectangle II](0963.md) | Medium | A clear explanation of finding the minimum-area rectangle from points when the rectangle may be rotated. |
+| 964 | [LeetCode 964: Least Operators to Express Number](0964.md) | Hard | A clear explanation of expressing a target using the fewest operators with repeated uses of x. |
+| 965 | [LeetCode 965: Univalued Binary Tree](0965.md) | Easy | A clear explanation of checking whether every node in a binary tree has the same value. |
+| 966 | [LeetCode 966: Vowel Spellchecker](0966.md) | Medium | A clear explanation of implementing a spellchecker with exact, case-insensitive, and vowel-error matching. |
+| 967 | [LeetCode 967: Numbers With Same Consecutive Differences](0967.md) | Medium | A clear explanation of generating all n-digit numbers whose adjacent digits differ by k. |
+| 968 | [LeetCode 968: Binary Tree Cameras](0968.md) | Hard | A clear explanation of placing the minimum number of cameras in a binary tree using postorder DFS. |
+| 969 | [LeetCode 969: Pancake Sorting](0969.md) | Medium | A clear explanation of sorting an array using prefix reversals by repeatedly placing the largest remaining value. |
+| 970 | [LeetCode 970: Powerful Integers](0970.md) | Medium | A clear explanation of generating all powerful integers using bounded powers and a set. |
+| 971 | [LeetCode 971: Flip Binary Tree To Match Preorder Traversal](0971.md) | Medium | A clear explanation of matching a binary tree preorder traversal by greedily flipping nodes. |
+| 972 | [LeetCode 972: Equal Rational Numbers](0972.md) | Hard | A clear explanation of comparing rational numbers written as decimal strings with optional repeating parts. |
+| 973 | [LeetCode 973: K Closest Points to Origin](0973.md) | Medium | A clear explanation of returning the k closest points to the origin using squared distance and sorting. |
+| 974 | [LeetCode 974: Subarray Sums Divisible by K](0974.md) | Medium | A clear explanation of counting subarrays whose sum is divisible by k using prefix sums and remainder frequencies. |
+| 975 | [LeetCode 975: Odd Even Jump](0975.md) | Hard | A clear explanation of counting good starting indices using next-jump preprocessing and dynamic programming. |
