@@ -632,6 +632,11 @@ Practice notes grouped by problem number.
 | 618 | [LeetCode 618: Students Report By Geography](06/0618.md) | Hard | A SQL guide for pivoting rows into columns using ranking and conditional aggregation. |
 | 619 | [LeetCode 619: Biggest Single Number](06/0619.md) | Easy | A SQL guide for finding the largest number that appears exactly once in a table. |
 | 620 | [LeetCode 620: Not Boring Movies](06/0620.md) | Easy | A SQL guide for filtering movies with odd IDs and non-boring descriptions, then sorting by rating. |
+| 621 | [LeetCode 621: Task Scheduler](06/0621.md) | Medium | A clear explanation of Task Scheduler using frequency counting and the greedy block formula. |
+| 622 | [LeetCode 622: Design Circular Queue](06/0622.md) | Medium | A clear explanation of Design Circular Queue using a fixed array, a front pointer, and a size counter. |
+| 623 | [LeetCode 623: Add One Row to Tree](06/0623.md) | Medium | A clear explanation of Add One Row to Tree using tree traversal and careful subtree reconnection. |
+| 624 | [LeetCode 624: Maximum Distance in Arrays](06/0624.md) | Medium | A clear explanation of Maximum Distance in Arrays using sorted endpoints and a greedy scan. |
+| 625 | [LeetCode 625: Minimum Factorization](06/0625.md) | Medium | A clear explanation of Minimum Factorization using greedy digit factors from 9 down to 2. |
 | 626 | [LeetCode 626: Exchange Seats](06/0626.md) | Medium | A SQL solution for swapping every pair of adjacent student seats while leaving the final seat unchanged when the row count is odd. |
 | 627 | [LeetCode 627: Swap Salary](06/0627.md) | Easy | A SQL update solution for swapping all m and f values in the Salary table using a single statement. |
 | 628 | [LeetCode 628: Maximum Product of Three Numbers](06/0628.md) | Easy | A clear explanation of finding the largest product of three numbers using sorting or constant-space tracking. |
