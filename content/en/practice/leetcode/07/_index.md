@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 07xx"
-description: "LeetCode practice notes for problems 700 through 750, including Search for a target value in a binary search tree and return the subtree rooted at the matching node."
+description: "LeetCode practice notes for problems 700 through 775, including Search for a target value in a binary search tree and return the subtree rooted at the matching node."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 7
 ---
@@ -60,3 +60,28 @@ weight: 7
 | 748 | [LeetCode 748: Shortest Completing Word](0748.md) | Easy | Find the shortest word that contains all required license plate letters using frequency counting. |
 | 749 | [LeetCode 749: Contain Virus](0749.md) | Hard | Simulate virus containment by repeatedly quarantining the most dangerous infected region and spreading the remaining regions. |
 | 750 | [LeetCode 750: Number Of Corner Rectangles](0750.md) | Medium | Count axis-aligned rectangles whose four corners are 1 using column-pair frequency counting. |
+| 751 | [LeetCode 751: IP to CIDR](0751.md) | Medium | A clear explanation of converting a range of IPv4 addresses into the shortest list of CIDR blocks using greedy bit manipulation. |
+| 752 | [LeetCode 752: Open the Lock](0752.md) | Medium | A clear explanation of solving Open the Lock using breadth-first search over lock states. |
+| 753 | [LeetCode 753: Cracking the Safe](0753.md) | Hard | A clear explanation of Cracking the Safe using a de Bruijn sequence and depth-first search over password states. |
+| 754 | [LeetCode 754: Reach a Number](0754.md) | Medium | A clear explanation of reaching a target on a number line using cumulative sums and parity. |
+| 755 | [LeetCode 755: Pour Water](0755.md) | Medium | A clear explanation of simulating water droplets over an elevation map by checking left first, then right. |
+| 756 | [LeetCode 756: Pyramid Transition Matrix](0756.md) | Medium | A clear explanation of solving Pyramid Transition Matrix using backtracking and memoization over pyramid rows. |
+| 757 | [LeetCode 757: Set Intersection Size At Least Two](0757.md) | Hard | A clear explanation of solving interval intersection constraints using greedy sorting and minimal point selection. |
+| 758 | [LeetCode 758: Bold Words in String](0758.md) | Easy | A clear explanation of marking matching substrings and merging overlapping bold ranges. |
+| 759 | [LeetCode 759: Employee Free Time](0759.md) | Hard | A clear explanation of finding common free time by merging all employee busy intervals and returning the gaps. |
+| 760 | [LeetCode 760: Find Anagram Mappings](0760.md) | Easy | A clear explanation of mapping each element in one array to a matching index in its anagram using a hash map. |
+| 761 | [LeetCode 761: Special Binary String](0761.md) | Hard | A clear explanation of making a special binary string lexicographically largest using recursive decomposition and sorting. |
+| 762 | [LeetCode 762: Prime Number of Set Bits in Binary Representation](0762.md) | Easy | A clear explanation of counting numbers whose binary representation has a prime number of set bits. |
+| 763 | [LeetCode 763: Partition Labels](0763.md) | Medium | A clear explanation of partitioning a string into the maximum number of parts so each character appears in at most one part. |
+| 764 | [LeetCode 764: Largest Plus Sign](0764.md) | Medium | A clear explanation of finding the largest plus sign in a mined grid using four directional dynamic programming scans. |
+| 765 | [LeetCode 765: Couples Holding Hands](0765.md) | Hard | A clear explanation of minimizing swaps so every couple sits together using greedy position tracking. |
+| 766 | [LeetCode 766: Toeplitz Matrix](0766.md) | Easy | A clear explanation of checking whether every top-left to bottom-right diagonal in a matrix has the same value. |
+| 767 | [LeetCode 767: Reorganize String](0767.md) | Medium | A clear explanation of rearranging characters so no two adjacent characters are equal using a greedy max heap. |
+| 768 | [LeetCode 768: Max Chunks To Make Sorted II](0768.md) | Hard | A clear explanation of splitting an array into the maximum number of chunks so sorting each chunk gives the fully sorted array. |
+| 769 | [LeetCode 769: Max Chunks To Make Sorted](0769.md) | Medium | A clear explanation of splitting a permutation into the maximum number of chunks using prefix maximums. |
+| 770 | [LeetCode 770: Basic Calculator IV](0770.md) | Hard | A clear explanation of simplifying algebraic expressions by parsing, substituting variables, and combining polynomial terms. |
+| 771 | [LeetCode 771: Jewels and Stones](0771.md) | Easy | A clear explanation of counting how many stones are jewels using a hash set for fast membership checks. |
+| 772 | [LeetCode 772: Basic Calculator III](0772.md) | Hard | A clear explanation of evaluating arithmetic expressions with parentheses, precedence, and integer division. |
+| 773 | [LeetCode 773: Sliding Puzzle](0773.md) | Hard | A clear explanation of solving the 2 x 3 sliding puzzle using breadth-first search over board states. |
+| 774 | [LeetCode 774: Minimize Max Distance to Gas Station](0774.md) | Hard | A clear explanation of minimizing the largest adjacent gas-station distance using binary search on the answer. |
+| 775 | [LeetCode 775: Global and Local Inversions](0775.md) | Medium | A clear explanation of checking whether every global inversion is also a local inversion using distance constraints. |
