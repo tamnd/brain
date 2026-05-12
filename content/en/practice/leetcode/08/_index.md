@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 08xx"
-description: "LeetCode practice notes for problems 800 through 850, including A clear explanation of finding the closest shorthand RGB color by rounding each color channel to the nearest repeated hexadecimal pair."
+description: "LeetCode practice notes for problems 800 through 875, including A clear explanation of finding the closest shorthand RGB color by rounding each color channel to the nearest repeated hexadecimal pair."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 8
 ---
@@ -60,3 +60,28 @@ weight: 8
 | 848 | [LeetCode 848: Shifting Letters](0848.md) | Medium | A clear explanation of the Shifting Letters problem using suffix sums and modulo arithmetic. |
 | 849 | [LeetCode 849: Maximize Distance to Closest Person](0849.md) | Medium | A clear explanation of the Maximize Distance to Closest Person problem using gaps between occupied seats. |
 | 850 | [LeetCode 850: Rectangle Area II](0850.md) | Hard | A clear explanation of the Rectangle Area II problem using sweep line and merged active y-intervals. |
+| 851 | [LeetCode 851: Loud and Rich](0851.md) | Medium | A clear explanation of Loud and Rich using graph traversal, DFS, and memoization. |
+| 852 | [LeetCode 852: Peak Index in a Mountain Array](0852.md) | Medium | A clear explanation of finding the peak index in a mountain array using binary search. |
+| 853 | [LeetCode 853: Car Fleet](0853.md) | Medium | A clear explanation of counting car fleets by sorting cars by position and tracking arrival times. |
+| 854 | [LeetCode 854: K-Similar Strings](0854.md) | Hard | A clear explanation of finding the minimum number of swaps needed to transform one anagram string into another using BFS. |
+| 855 | [LeetCode 855: Exam Room](0855.md) | Medium | A clear explanation of simulating an exam room by maintaining occupied seats in sorted order. |
+| 856 | [LeetCode 856: Score of Parentheses](0856.md) | Medium | A clear explanation of scoring a balanced parentheses string using depth counting. |
+| 857 | [LeetCode 857: Minimum Cost to Hire K Workers](0857.md) | Hard | A clear explanation of hiring exactly k workers with minimum total cost using wage-to-quality ratios, sorting, and a max heap. |
+| 858 | [LeetCode 858: Mirror Reflection](0858.md) | Medium | A clear explanation of Mirror Reflection using room unfolding, least common multiples, and parity. |
+| 859 | [LeetCode 859: Buddy Strings](0859.md) | Easy | A clear explanation of checking whether one swap in a string can make it equal to another string. |
+| 860 | [LeetCode 860: Lemonade Change](0860.md) | Easy | A clear explanation of Lemonade Change using greedy simulation and bill counting. |
+| 861 | [LeetCode 861: Score After Flipping Matrix](0861.md) | Medium | A clear explanation of maximizing a binary matrix score using greedy row and column flips. |
+| 862 | [LeetCode 862: Shortest Subarray with Sum at Least K](0862.md) | Hard | A clear explanation of finding the shortest non-empty subarray with sum at least k using prefix sums and a monotonic deque. |
+| 863 | [LeetCode 863: All Nodes Distance K in Binary Tree](0863.md) | Medium | A clear explanation of finding all binary tree nodes at distance k from a target node by treating the tree as an undirected graph. |
+| 864 | [LeetCode 864: Shortest Path to Get All Keys](0864.md) | Hard | A clear explanation of finding the minimum moves to collect all keys in a grid using BFS with key bitmasks. |
+| 865 | [LeetCode 865: Smallest Subtree with all the Deepest Nodes](0865.md) | Medium | A clear explanation of finding the smallest subtree that contains all deepest nodes using bottom-up DFS. |
+| 866 | [LeetCode 866: Prime Palindrome](0866.md) | Medium | A clear explanation of finding the smallest prime palindrome greater than or equal to n by generating odd-length palindromes and testing primality. |
+| 867 | [LeetCode 867: Transpose Matrix](0867.md) | Easy | A clear explanation of transposing a matrix by swapping row and column indices. |
+| 868 | [LeetCode 868: Binary Gap](0868.md) | Easy | A clear explanation of finding the maximum distance between adjacent set bits in a binary representation. |
+| 869 | [LeetCode 869: Reordered Power of 2](0869.md) | Medium | A clear explanation of checking whether the digits of a number can be reordered to form a power of two using digit frequency signatures. |
+| 870 | [LeetCode 870: Advantage Shuffle](0870.md) | Medium | A clear explanation of maximizing the advantage of one array over another using sorting, greedy matching, and two pointers. |
+| 871 | [LeetCode 871: Minimum Number of Refueling Stops](0871.md) | Hard | A clear explanation of minimizing refueling stops using a greedy max heap over reachable stations. |
+| 872 | [LeetCode 872: Leaf-Similar Trees](0872.md) | Easy | A clear explanation of comparing two binary trees by collecting their leaf value sequences with DFS. |
+| 873 | [LeetCode 873: Length of Longest Fibonacci Subsequence](0873.md) | Medium | A clear explanation of finding the longest Fibonacci-like subsequence using dynamic programming and value-to-index lookup. |
+| 874 | [LeetCode 874: Walking Robot Simulation](0874.md) | Medium | A clear explanation of simulating robot movement on an infinite grid using direction vectors and obstacle lookup. |
+| 875 | [LeetCode 875: Koko Eating Bananas](0875.md) | Medium | A clear explanation of finding the minimum banana-eating speed using binary search on the answer. |
