@@ -52,6 +52,16 @@ Practice notes grouped by problem number.
 | 38 | [LeetCode 38: Count and Say](00/0038.md) | Medium | A clear explanation of generating the count-and-say sequence using run-length encoding. |
 | 39 | [LeetCode 39: Combination Sum](00/0039.md) | Medium | A clear explanation of finding all unique combinations that sum to a target using backtracking. |
 | 40 | [LeetCode 40: Combination Sum II](00/0040.md) | Medium | A clear explanation of finding unique combinations that sum to a target when each array element may be used at most once. |
+| 41 | [LeetCode 41: First Missing Positive](00/0041.md) | Hard | A clear explanation of the First Missing Positive problem using in-place index placement to achieve O(n) time and O(1) extra space. |
+| 42 | [LeetCode 42: Trapping Rain Water](00/0042.md) | Hard | A clear explanation of the Trapping Rain Water problem using left and right boundaries, then an optimized two-pointer solution. |
+| 43 | [LeetCode 43: Multiply Strings](00/0043.md) | Medium | A clear explanation of Multiply Strings using grade-school multiplication with digit arrays. |
+| 44 | [LeetCode 44: Wildcard Matching](00/0044.md) | Hard | A clear explanation of Wildcard Matching using dynamic programming over string and pattern prefixes. |
+| 45 | [LeetCode 45: Jump Game II](00/0045.md) | Medium | A clear explanation of Jump Game II using a greedy range expansion approach to find the minimum number of jumps. |
+| 46 | [LeetCode 46: Permutations](00/0046.md) | Medium | A clear explanation of Permutations using depth-first search and backtracking. |
+| 47 | [LeetCode 47: Permutations II](00/0047.md) | Medium | A clear explanation of Permutations II using sorting, depth-first search, and duplicate-skipping backtracking. |
+| 48 | [LeetCode 48: Rotate Image](00/0048.md) | Medium | A clear explanation of Rotate Image using in-place matrix transpose and row reversal. |
+| 49 | [LeetCode 49: Group Anagrams](00/0049.md) | Medium | A clear explanation of Group Anagrams using a hash map keyed by each word's sorted character signature. |
+| 50 | [LeetCode 50: Pow(x, n)](00/0050.md) | Medium | A clear explanation of Pow(x, n) using binary exponentiation to compute powers in logarithmic time. |
 | 51 | [LeetCode 51: N-Queens](00/0051.md) | Hard | A clear guide to solving N-Queens with backtracking, row-by-row placement, and constant-time conflict checks. |
 | 52 | [LeetCode 52: N-Queens II](00/0052.md) | Hard | A clear guide to solving N-Queens II by counting valid queen placements with backtracking. |
 | 53 | [LeetCode 53: Maximum Subarray](00/0053.md) | Medium | A clear guide to solving Maximum Subarray with brute force first, then Kadane's dynamic programming algorithm. |
