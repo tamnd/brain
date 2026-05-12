@@ -986,3 +986,28 @@ Practice notes grouped by problem number.
 | 973 | [LeetCode 973: K Closest Points to Origin](09/0973.md) | Medium | A clear explanation of returning the k closest points to the origin using squared distance and sorting. |
 | 974 | [LeetCode 974: Subarray Sums Divisible by K](09/0974.md) | Medium | A clear explanation of counting subarrays whose sum is divisible by k using prefix sums and remainder frequencies. |
 | 975 | [LeetCode 975: Odd Even Jump](09/0975.md) | Hard | A clear explanation of counting good starting indices using next-jump preprocessing and dynamic programming. |
+| 976 | [LeetCode 976: Largest Perimeter Triangle](09/0976.md) | Easy | A clear explanation of finding the largest valid triangle perimeter using sorting and a greedy scan. |
+| 977 | [LeetCode 977: Squares of a Sorted Array](09/0977.md) | Easy | A clear explanation of sorting squared values from a sorted array using two pointers. |
+| 978 | [LeetCode 978: Longest Turbulent Subarray](09/0978.md) | Medium | A clear explanation of finding the longest subarray whose adjacent comparisons alternate between greater-than and less-than. |
+| 979 | [LeetCode 979: Distribute Coins in Binary Tree](09/0979.md) | Medium | A clear explanation of balancing coins in a binary tree using postorder DFS and subtree coin balance. |
+| 980 | [LeetCode 980: Unique Paths III](09/0980.md) | Hard | A clear explanation of counting all paths from start to end that visit every non-obstacle square exactly once using backtracking. |
+| 981 | [LeetCode 981: Time Based Key-Value Store](09/0981.md) | Medium | A clear explanation of designing a time-based key-value store using a hash map and binary search. |
+| 982 | [LeetCode 982: Triples with Bitwise AND Equal To Zero](09/0982.md) | Hard | A clear explanation of counting ordered triples whose bitwise AND is zero using pairwise AND counts. |
+| 983 | [LeetCode 983: Minimum Cost For Tickets](09/0983.md) | Medium | A clear explanation of finding the cheapest way to cover all travel days using dynamic programming. |
+| 984 | [LeetCode 984: String Without AAA or BBB](09/0984.md) | Medium | A clear explanation of constructing a string with exact counts of a and b while avoiding three equal consecutive characters. |
+| 985 | [LeetCode 985: Sum of Even Numbers After Queries](09/0985.md) | Medium | A clear explanation of maintaining the sum of even numbers after each array update. |
+| 986 | [LeetCode 986: Interval List Intersections](09/0986.md) | Medium | A clear explanation of finding intersections between two sorted disjoint interval lists using two pointers. |
+| 987 | [LeetCode 987: Vertical Order Traversal of a Binary Tree](09/0987.md) | Hard | A clear explanation of vertical tree traversal using coordinates, DFS, sorting, and column grouping. |
+| 988 | [LeetCode 988: Smallest String Starting From Leaf](09/0988.md) | Medium | A clear explanation of finding the lexicographically smallest leaf-to-root string in a binary tree using DFS. |
+| 989 | [LeetCode 989: Add to Array-Form of Integer](09/0989.md) | Easy | A clear explanation of adding an integer to an array-form number using digit-by-digit simulation. |
+| 990 | [LeetCode 990: Satisfiability of Equality Equations](09/0990.md) | Medium | A clear explanation of checking equality and inequality constraints using union-find. |
+| 991 | [LeetCode 991: Broken Calculator](09/0991.md) | Medium | A clear explanation of finding the minimum operations by working backward from target to startValue. |
+| 992 | [LeetCode 992: Subarrays with K Different Integers](09/0992.md) | Hard | A clear explanation of counting subarrays with exactly k distinct integers using the at-most-k sliding window trick. |
+| 993 | [LeetCode 993: Cousins in Binary Tree](09/0993.md) | Easy | A clear explanation of checking whether two binary tree nodes are cousins using BFS with parent tracking. |
+| 994 | [LeetCode 994: Rotting Oranges](09/0994.md) | Medium | A clear explanation of finding the minimum time for all oranges to rot using multi-source BFS. |
+| 995 | [LeetCode 995: Minimum Number of K Consecutive Bit Flips](09/0995.md) | Hard | A clear explanation of making all bits equal to 1 using greedy left-to-right flips and a sliding window flip parity. |
+| 996 | [LeetCode 996: Number of Squareful Arrays](09/0996.md) | Hard | A clear explanation of counting unique permutations where every adjacent pair sums to a perfect square using backtracking. |
+| 997 | [LeetCode 997: Find the Town Judge](09/0997.md) | Easy | A clear explanation of identifying the town judge using trust indegree and outdegree counts. |
+| 998 | [LeetCode 998: Maximum Binary Tree II](09/0998.md) | Medium | A clear explanation of inserting a value into a maximum binary tree by following the right spine. |
+| 999 | [LeetCode 999: Available Captures for Rook](09/0999.md) | Easy | A clear explanation of counting how many pawns a rook can capture by scanning four directions on a chessboard. |
+| 1000 | [LeetCode 1000: Minimum Cost to Merge Stones](10/1000.md) | Hard | A clear explanation of merging consecutive stone piles with minimum cost using interval dynamic programming. |
