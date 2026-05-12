@@ -936,3 +936,28 @@ Practice notes grouped by problem number.
 | 922 | [LeetCode 922: Sort Array By Parity II](09/0922.md) | Easy | A clear explanation of placing even numbers at even indices and odd numbers at odd indices using two pointers. |
 | 923 | [LeetCode 923: 3Sum With Multiplicity](09/0923.md) | Medium | A clear explanation of counting index triplets with duplicate values using frequency counts and combinatorics. |
 | 924 | [LeetCode 924: Minimize Malware Spread](09/0924.md) | Hard | A clear explanation of minimizing malware spread by analyzing connected components with Union Find. |
+| 926 | [LeetCode 926: Flip String to Monotone Increasing](09/0926.md) | Medium | A clear explanation of solving Flip String to Monotone Increasing with a one-pass dynamic programming approach. |
+| 927 | [LeetCode 927: Three Equal Parts](09/0927.md) | Hard | A clear explanation of solving Three Equal Parts by counting ones, locating the three binary patterns, and comparing them in one pass. |
+| 928 | [LeetCode 928: Minimize Malware Spread II](09/0928.md) | Hard | A clear explanation of solving Minimize Malware Spread II by removing each infected node and simulating the final malware spread. |
+| 929 | [LeetCode 929: Unique Email Addresses](09/0929.md) | Easy | A clear explanation of solving Unique Email Addresses using string normalization and a hash set. |
+| 930 | [LeetCode 930: Binary Subarrays With Sum](09/0930.md) | Medium | A clear explanation of solving Binary Subarrays With Sum using prefix sums and a frequency map. |
+| 931 | [LeetCode 931: Minimum Falling Path Sum](09/0931.md) | Medium | A clear explanation of solving Minimum Falling Path Sum using dynamic programming over matrix rows. |
+| 932 | [LeetCode 932: Beautiful Array](09/0932.md) | Medium | A clear explanation of solving Beautiful Array using divide and conquer with odd and even transformations. |
+| 933 | [LeetCode 933: Number of Recent Calls](09/0933.md) | Easy | A clear explanation of solving Number of Recent Calls using a queue as a sliding time window. |
+| 934 | [LeetCode 934: Shortest Bridge](09/0934.md) | Medium | A clear explanation of solving Shortest Bridge using DFS to mark one island and BFS to expand toward the other island. |
+| 935 | [LeetCode 935: Knight Dialer](09/0935.md) | Medium | A clear explanation of solving Knight Dialer using dynamic programming over the phone keypad graph. |
+| 936 | [LeetCode 936: Stamping The Sequence](09/0936.md) | Hard | A clear explanation of solving Stamping The Sequence using reverse simulation and BFS-style processing. |
+| 937 | [LeetCode 937: Reorder Data in Log Files](09/0937.md) | Easy | A clear explanation of solving Reorder Data in Log Files using custom sorting and stable handling of digit logs. |
+| 938 | [LeetCode 938: Range Sum of BST](09/0938.md) | Easy | A clear explanation of solving Range Sum of BST using DFS with binary search tree pruning. |
+| 939 | [LeetCode 939: Minimum Area Rectangle](09/0939.md) | Medium | A clear explanation of solving Minimum Area Rectangle using diagonal point pairs and constant-time point lookup. |
+| 940 | [LeetCode 940: Distinct Subsequences II](09/0940.md) | Hard | A clear explanation of solving Distinct Subsequences II using dynamic programming and last occurrence tracking. |
+| 941 | [LeetCode 941: Valid Mountain Array](09/0941.md) | Easy | A clear explanation of solving Valid Mountain Array by walking up the increasing slope and then down the decreasing slope. |
+| 942 | [LeetCode 942: DI String Match](09/0942.md) | Easy | A clear explanation of solving DI String Match using a greedy two-pointer construction. |
+| 943 | [LeetCode 943: Find the Shortest Superstring](09/0943.md) | Hard | A clear explanation of solving Find the Shortest Superstring using pairwise overlaps and bitmask dynamic programming. |
+| 944 | [LeetCode 944: Delete Columns to Make Sorted](09/0944.md) | Easy | A clear explanation of solving Delete Columns to Make Sorted by checking each column independently. |
+| 945 | [LeetCode 945: Minimum Increment to Make Array Unique](09/0945.md) | Medium | A clear explanation of solving Minimum Increment to Make Array Unique by sorting and greedily assigning the next available value. |
+| 946 | [LeetCode 946: Validate Stack Sequences](09/0946.md) | Medium | A clear explanation of solving Validate Stack Sequences by simulating stack push and pop operations. |
+| 947 | [LeetCode 947: Most Stones Removed with Same Row or Column](09/0947.md) | Medium | A clear explanation of solving Most Stones Removed with Same Row or Column using connected components and union-find. |
+| 948 | [LeetCode 948: Bag of Tokens](09/0948.md) | Medium | A clear explanation of solving Bag of Tokens using sorting, greedy choices, and two pointers. |
+| 949 | [LeetCode 949: Largest Time for Given Digits](09/0949.md) | Medium | A clear explanation of solving Largest Time for Given Digits by checking all permutations of four digits. |
+| 950 | [LeetCode 950: Reveal Cards In Increasing Order](09/0950.md) | Medium | A clear explanation of solving Reveal Cards In Increasing Order using sorting and queue simulation over indices. |
