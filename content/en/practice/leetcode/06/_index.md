@@ -1,6 +1,6 @@
 ---
 title: "LeetCode 06xx"
-description: "LeetCode practice notes for problems 600 through 650, including A clear digit dynamic programming solution for counting numbers whose binary representation does not contain consecutive ones."
+description: "LeetCode practice notes for problems 600 through 675, including A clear digit dynamic programming solution for counting numbers whose binary representation does not contain consecutive ones."
 tags: ["leetcode", "algorithms", "practice"]
 weight: 6
 ---
@@ -55,3 +55,28 @@ weight: 6
 | 648 | [LeetCode 648: Replace Words](0648.md) | Medium | A trie-based solution for replacing each derivative word with the shortest matching root. |
 | 649 | [LeetCode 649: Dota2 Senate](0649.md) | Medium | A queue-based simulation for predicting which party wins after senators ban opponents in turn order. |
 | 650 | [LeetCode 650: 2 Keys Keyboard](0650.md) | Medium | A dynamic programming and prime factorization solution for finding the minimum operations needed to produce n characters. |
+| 651 | [LeetCode 651: 4 Keys Keyboard](0651.md) | Medium | A dynamic programming solution for maximizing the number of A characters printed with a limited number of keyboard operations. |
+| 652 | [LeetCode 652: Find Duplicate Subtrees](0652.md) | Medium | A clear explanation of finding duplicate binary tree subtrees using postorder traversal, serialization, and a hash map. |
+| 653 | [LeetCode 653: Two Sum IV - Input is a BST](0653.md) | Easy | A clear explanation of finding whether two different nodes in a binary search tree sum to a target value. |
+| 654 | [LeetCode 654: Maximum Binary Tree](0654.md) | Medium | A clear explanation of constructing a maximum binary tree recursively using divide and conquer. |
+| 655 | [LeetCode 655: Print Binary Tree](0655.md) | Medium | A clear explanation of formatting a binary tree into a 2D string matrix using tree height and recursive placement. |
+| 656 | [LeetCode 656: Coin Path](0656.md) | Hard | A clear explanation of finding the minimum-cost path with bounded jumps, blocked cells, and lexicographic tie-breaking. |
+| 657 | [LeetCode 657: Robot Return to Origin](0657.md) | Easy | A clear explanation of determining whether a robot returns to the origin after executing movement instructions. |
+| 658 | [LeetCode 658: Find K Closest Elements](0658.md) | Medium | A clear explanation of finding the k closest elements to a target using binary search and a sliding window. |
+| 659 | [LeetCode 659: Split Array into Consecutive Subsequences](0659.md) | Medium | A clear explanation of deciding whether a sorted array can be split into consecutive subsequences of length at least three. |
+| 660 | [LeetCode 660: Remove 9](0660.md) | Hard | A clear explanation of finding the nth positive integer that does not contain the digit 9 using base-9 conversion. |
+| 661 | [LeetCode 661: Image Smoother](0661.md) | Easy | A clear explanation of averaging neighboring pixels in a matrix using direct simulation. |
+| 662 | [LeetCode 662: Maximum Width of Binary Tree](0662.md) | Medium | A clear explanation of computing the maximum width of a binary tree using level-order traversal and complete-tree indices. |
+| 663 | [LeetCode 663: Equal Tree Partition](0663.md) | Medium | A clear explanation of checking whether a binary tree can be split into two equal-sum trees by removing one edge. |
+| 664 | [LeetCode 664: Strange Printer](0664.md) | Hard | A clear explanation of minimizing printer turns using interval dynamic programming. |
+| 665 | [LeetCode 665: Non-decreasing Array](0665.md) | Medium | A clear explanation of checking whether an array can become non-decreasing by modifying at most one element. |
+| 666 | [LeetCode 666: Path Sum IV](0666.md) | Medium | A clear explanation of computing all root-to-leaf path sums from a compact three-digit binary tree encoding. |
+| 667 | [LeetCode 667: Beautiful Arrangement II](0667.md) | Medium | A clear explanation of constructing an array with exactly k distinct adjacent differences using a greedy pattern. |
+| 668 | [LeetCode 668: Kth Smallest Number in Multiplication Table](0668.md) | Hard | A clear explanation of finding the kth smallest value in an m by n multiplication table using binary search on answer. |
+| 669 | [LeetCode 669: Trim a Binary Search Tree](0669.md) | Medium | A clear explanation of trimming a BST so that all remaining node values lie inside a given inclusive range. |
+| 670 | [LeetCode 670: Maximum Swap](0670.md) | Medium | A clear explanation of maximizing an integer by swapping at most two digits once. |
+| 671 | [LeetCode 671: Second Minimum Node In a Binary Tree](0671.md) | Easy | A clear explanation of finding the second minimum value in a special binary tree using DFS. |
+| 672 | [LeetCode 672: Bulb Switcher II](0672.md) | Medium | A clear explanation of counting possible bulb states after pressing four toggle buttons exactly presses times. |
+| 673 | [LeetCode 673: Number of Longest Increasing Subsequence](0673.md) | Medium | A clear explanation of counting how many longest strictly increasing subsequences exist using dynamic programming. |
+| 674 | [LeetCode 674: Longest Continuous Increasing Subsequence](0674.md) | Easy | A clear explanation of finding the longest strictly increasing contiguous subarray using a single scan. |
+| 675 | [LeetCode 675: Cut Off Trees for Golf Event](0675.md) | Hard | A clear explanation of cutting trees in increasing height order using repeated BFS on a grid. |
