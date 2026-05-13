@@ -9,8 +9,8 @@ draft: false
 
 | Chapter | Title | Description |
 |---|---|---|
-| 1 | [Chapter 1. Learn Zig 1.16](01/) | Learn Zig 1.16 chapter from Zig. |
-| 2 | [Chapter 2. Learn Zig 1.16](02/) | Learn Zig 1.16 chapter from Zig. |
-| 3 | [Chapter 3. Learn Zig 1.16](03/) | Learn Zig 1.16 chapter from Zig. |
-| 4 | [Chapter 4. Learn Zig 1.16](04/) | Learn Zig 1.16 chapter from Zig. |
-| 5 | [Chapter 5. Learn Zig 1.16](05/) | Learn Zig 1.16 chapter from Zig. |
+| 1 | [Part 1. Learn Zig 1.16](01/) | Learn Zig 1.16 chapter from Zig. |
+| 2 | [Part 2. Learn Zig 1.16](02/) | Learn Zig 1.16 chapter from Zig. |
+| 3 | [Part 3. Learn Zig 1.16](03/) | Learn Zig 1.16 chapter from Zig. |
+| 4 | [Part 4. Learn Zig 1.16](04/) | Learn Zig 1.16 chapter from Zig. |
+| 5 | [Part 5. Learn Zig 1.16](05/) | Learn Zig 1.16 chapter from Zig. |

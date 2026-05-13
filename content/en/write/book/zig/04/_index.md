@@ -1,5 +1,5 @@
 ---
-title: "Chapter 4. Learn Zig 1.16"
+title: "Part 4. Learn Zig 1.16"
 description: "Learn Zig 1.16 chapter from Zig."
 tags: ["zig", "book"]
 weight: 4
@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 4. Learn Zig 1.16 |
+| [1](1/) | Part 4. Learn Zig 1.16 |
 | [2](2/) | Zig - Part 4 |
 | [3](3/) | The Structure of a Function |
 | [4](4/) | Parameter Syntax |
