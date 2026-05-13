@@ -1,11 +1,11 @@
 ---
-title: "Number Theory"
-description: "Number Theory book notes exported from ChatGPT, organized into 5 chapters."
+title: "Modern Number Theory"
+description: "Modern Number Theory book notes exported from ChatGPT, organized into 5 chapters."
 tags: ["number-theory", "book"]
 draft: false
 ---
 
-# Number Theory
+# Modern Number Theory
 
 | Chapter | Title | Description |
 |---|---|---|
