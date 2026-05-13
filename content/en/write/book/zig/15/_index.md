@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 15. Build System and Tooling |
+| [1](1/) | Introduction to `build.zig` |
 | [2](2/) | Creating Build Steps |
 | [3](3/) | Adding Dependencies |
 | [4](4/) | Build Options |

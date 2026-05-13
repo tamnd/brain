@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 8. Structs, Enums, and Unions |
+| [1](1/) | Struct Definitions |
 | [2](2/) | Struct Methods |
 | [3](3/) | Default Field Values |
 | [4](4/) | Packed Structs |

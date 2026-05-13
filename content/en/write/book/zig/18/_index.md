@@ -8,6 +8,6 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 18. Concurrency and Async |
+| [1](1/) | Threads in Zig |
 | [2](2/) | Mutexes |
 | [3](3/) | Atomics |

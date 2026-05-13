@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 7. Arrays, Slices, and Strings |
+| [1](1/) | Fixed Arrays |
 | [2](2/) | Array Literals |
 | [3](3/) | Multidimensional Arrays |
 | [4](4/) | Slices in Detail |

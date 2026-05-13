@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 2. Zig Language Fundamentals |
+| [1](1/) | Variables and Constants |
 | [2](2/) | Primitive Types |
 | [3](3/) | Integer Types and Overflow |
 | [4](4/) | Floating Point Numbers |

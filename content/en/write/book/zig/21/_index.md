@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 21. Advanced Zig |
+| [1](1/) | Custom Formatting |
 | [2](2/) | Reflection Systems |
 | [3](3/) | Plugin Architectures |
 | [4](4/) | Embedded Development |

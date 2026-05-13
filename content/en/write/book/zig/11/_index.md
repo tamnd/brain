@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 11. Zig Builtins |
+| [1](1/) | Understanding `@` Builtins |
 | [2](2/) | `@import` |
 | [3](3/) | `@sizeOf` |
 | [4](4/) | `@alignOf` |

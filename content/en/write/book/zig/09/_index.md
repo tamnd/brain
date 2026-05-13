@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 9. Optionals and Advanced Types |
+| [1](1/) | Optional Types |
 | [2](2/) | Optional Unwrapping |
 | [3](3/) | Nullable Pointers |
 | [4](4/) | Vectors |

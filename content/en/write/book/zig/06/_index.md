@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 6. Pointers and Memory |
+| [1](1/) | Memory Model Basics |
 | [2](2/) | Single Item Pointers |
 | [3](3/) | Many Item Pointers |
 | [4](4/) | Slices |

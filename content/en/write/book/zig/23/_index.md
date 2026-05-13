@@ -8,6 +8,6 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 23. Real Projects |
+| [1](1/) | Build a CLI Calculator |
 | [2](2/) | Build a JSON Parser |
 | [3](3/) | Build a Static File Server |

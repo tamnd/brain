@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 24. Reading and Contributing to Zig |
+| [1](1/) | Zig Compiler Architecture |
 | [2](2/) | Zig Source Tree |
 | [3](3/) | Understanding Stage2 |
 | [4](4/) | How Parsing Works |

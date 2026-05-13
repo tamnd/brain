@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 3. Control Flow |
+| [1](1/) | `if` Expressions |
 | [2](2/) | `switch` |
 | [3](3/) | `while` Loops |
 | [4](4/) | `for` Loops |

@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Appendix |
+| [1](1/) | What Is Zig |
 | [2](2/) | Appendix A. Zig 0.16 New Features |
 | [3](3/) | Appendix B. Zig Cheat Sheet |
 | [4](4/) | Appendix C. Common Compiler Errors |

@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 17. Interfacing with C |
+| [1](1/) | Why Zig Works Well with C |
 | [2](2/) | `@cImport` |
 | [3](3/) | Calling C Functions |
 | [4](4/) | Using C Structs |

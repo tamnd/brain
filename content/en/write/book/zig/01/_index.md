@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 1. Introduction and Setup |
+| [1](1/) | What Is Zig |
 | [2](2/) | What Is Zig |
 | [3](3/) | Why Zig Exists |
 | [4](4/) | Installing Zig |

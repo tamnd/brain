@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 10. Compile-Time Programming |
+| [1](1/) | What Is `comptime` |
 | [2](2/) | Compile-Time Variables |
 | [3](3/) | Inline Branching |
 | [4](4/) | Compile-Time Loops |

@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 4. Functions |
+| [1](1/) | The Structure of a Function |
 | [2](2/) | Parameter Syntax |
 | [3](3/) | The `return` Keyword |
 | [4](4/) | Returning a Struct |

@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 20. Performance and Optimization |
+| [1](1/) | What Actually Makes Programs Slow? |
 | [2](2/) | Why Profiling Matters |
 | [3](3/) | The Basic Idea |
 | [4](4/) | Why SIMD Matters |

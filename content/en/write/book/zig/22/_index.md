@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 22. Cross-Platform Development |
+| [1](1/) | Windows Support |
 | [2](2/) | Linux Support |
 | [3](3/) | macOS Support |
 | [4](4/) | WebAssembly |

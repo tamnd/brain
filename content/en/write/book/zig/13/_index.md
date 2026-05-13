@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 13. Collections and Data Structures |
+| [1](1/) | Importing ArrayList |
 | [2](2/) | The Basic Idea |
 | [3](3/) | Why StringHashMap Exists |
 | [4](4/) | Why Linked Lists Exist |

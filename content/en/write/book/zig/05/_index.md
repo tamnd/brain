@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 5. Error Handling |
+| [1](1/) | Why Zig Has No Exceptions |
 | [2](2/) | Error Sets |
 | [3](3/) | Error Union Types |
 | [4](4/) | `try` |

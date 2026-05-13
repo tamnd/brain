@@ -8,6 +8,6 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 14. The Standard Library |
+| [1](1/) | Tour of `std` |
 | [2](2/) | Reading Files |
 | [3](3/) | Writing Files |
