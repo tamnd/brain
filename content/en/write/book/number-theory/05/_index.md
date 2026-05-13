@@ -1,5 +1,5 @@
 ---
-title: "Chapter 5. Modern Number Theory"
+title: "Chapter 5. Foundations of Arithmetic"
 description: "1.1 Counting and the Natural Numbers"
 tags: ["number-theory", "book"]
 weight: 5
@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 5. Modern Number Theory |
+| [1](1/) | Chapter 5. Foundations of Arithmetic |
 | [2](2/) | The Natural Numbers |
 | [3](3/) | Affine and Projective Varieties |
 | [4](4/) | Schemes |

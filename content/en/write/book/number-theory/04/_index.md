@@ -1,5 +1,5 @@
 ---
-title: "Chapter 4. Modern Number Theory"
+title: "Chapter 4. Foundations of Arithmetic"
 description: "1.1 Counting and the Natural Numbers"
 tags: ["number-theory", "book"]
 weight: 4
@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 4. Modern Number Theory |
+| [1](1/) | Chapter 4. Foundations of Arithmetic |
 | [2](2/) | The Natural Numbers |
 | [3](3/) | Field Extensions |
 | [4](4/) | Splitting Fields |

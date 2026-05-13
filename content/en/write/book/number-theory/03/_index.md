@@ -1,5 +1,5 @@
 ---
-title: "Chapter 3. Modern Number Theory"
+title: "Chapter 3. Foundations of Arithmetic"
 description: "1.1 Counting and the Natural Numbers"
 tags: ["number-theory", "book"]
 weight: 3
@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 3. Modern Number Theory |
+| [1](1/) | Chapter 3. Foundations of Arithmetic |
 | [2](2/) | The Natural Numbers |
 | [3](3/) | Harmonic Series |
 | [4](4/) | Infinite Products |
