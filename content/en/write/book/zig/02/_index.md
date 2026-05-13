@@ -1,6 +1,6 @@
 ---
-title: "Part 2. Learn Zig 1.16"
-description: "Learn Zig 1.16 chapter from Zig."
+title: "Part 2. Zig Language Fundamentals"
+description: "A program stores values so it can use them later. In Zig, you store values with two main keywords:"
 tags: ["zig", "book"]
 weight: 2
 draft: false
@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 2. Learn Zig 1.16 |
+| [1](1/) | Part 2. Zig Language Fundamentals |
 | [2](2/) | Zig - Part 2 |
 | [3](3/) | Zig - Part 2 |
 | [4](4/) | Zig - Part 2 |
@@ -20,6 +20,3 @@ draft: false
 | [10](10/) | Zig - Part 2 |
 | [11](11/) | Zig - Part 2 |
 | [12](12/) | Zig - Part 2 |
-| [13](13/) | Zig - Part 2 |
-| [14](14/) | Zig - Part 2 |
-| [15](15/) | Zig - Part 2 |

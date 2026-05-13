@@ -1,6 +1,6 @@
 ---
-title: "Part 1. Learn Zig 1.16"
-description: "Learn Zig 1.16 chapter from Zig."
+title: "Part 1. Introduction and Setup"
+description: "Zig is a programming language for writing fast, small, reliable programs."
 tags: ["zig", "book"]
 weight: 1
 draft: false
@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 1. Learn Zig 1.16 |
+| [1](1/) | Part 1. Introduction and Setup |
 | [2](2/) | Zig - Part 1 |
 | [3](3/) | Zig - Part 1 |
 | [4](4/) | Zig - Part 1 |
@@ -19,5 +19,3 @@ draft: false
 | [9](9/) | Zig - Part 1 |
 | [10](10/) | Zig - Part 1 |
 | [11](11/) | Zig - Part 1 |
-| [12](12/) | Zig - Part 1 |
-| [13](13/) | Zig - Part 1 |

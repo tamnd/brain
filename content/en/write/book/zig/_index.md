@@ -9,8 +9,8 @@ draft: false
 
 | Chapter | Title | Description |
 |---|---|---|
-| 1 | [Part 1. Learn Zig 1.16](01/) | Learn Zig 1.16 chapter from Zig. |
-| 2 | [Part 2. Learn Zig 1.16](02/) | Learn Zig 1.16 chapter from Zig. |
-| 3 | [Part 3. Learn Zig 1.16](03/) | Learn Zig 1.16 chapter from Zig. |
-| 4 | [Part 4. Learn Zig 1.16](04/) | Learn Zig 1.16 chapter from Zig. |
-| 5 | [Part 5. Learn Zig 1.16](05/) | Learn Zig 1.16 chapter from Zig. |
+| 1 | [Part 1. Introduction and Setup](01/) | Zig is a programming language for writing fast, small, reliable programs. |
+| 2 | [Part 2. Zig Language Fundamentals](02/) | A program stores values so it can use them later. In Zig, you store values with two main keywords: |
+| 3 | [Part 3. Control Flow](03/) | Programs need to make choices. |
+| 4 | [Part 4. Functions](04/) | Functions are reusable blocks of code. |
+| 5 | [Part 5. Error Handling](05/) | Most programming languages need a way to handle failure. |

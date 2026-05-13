@@ -1,6 +1,6 @@
 ---
-title: "Part 4. Learn Zig 1.16"
-description: "Learn Zig 1.16 chapter from Zig."
+title: "Part 4. Functions"
+description: "Functions are reusable blocks of code."
 tags: ["zig", "book"]
 weight: 4
 draft: false
@@ -8,16 +8,14 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Part 4. Learn Zig 1.16 |
-| [2](2/) | Zig - Part 4 |
-| [3](3/) | The Structure of a Function |
-| [4](4/) | Parameter Syntax |
-| [5](5/) | The `return` Keyword |
-| [6](6/) | Returning a Struct |
-| [7](7/) | A First Example |
-| [8](8/) | A First Example |
-| [9](9/) | What Anonymous Functions Usually Mean |
-| [10](10/) | A Simple Function |
-| [11](11/) | A Mental Model |
-| [12](12/) | What “Exported” Means |
-| [13](13/) | Zig Generics Use `comptime` |
+| [1](1/) | Part 4. Functions |
+| [2](2/) | Parameter Syntax |
+| [3](3/) | The `return` Keyword |
+| [4](4/) | Returning a Struct |
+| [5](5/) | A First Example |
+| [6](6/) | A First Example |
+| [7](7/) | What Anonymous Functions Usually Mean |
+| [8](8/) | A Simple Function |
+| [9](9/) | A Mental Model |
+| [10](10/) | What “Exported” Means |
+| [11](11/) | Zig Generics Use `comptime` |
