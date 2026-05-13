@@ -1,5 +1,5 @@
 ---
-title: "Chapter 2. Foundations of Arithmetic"
+title: "Chapter 2. Modern Number Theory"
 description: "1.1 Counting and the Natural Numbers"
 tags: ["number-theory", "book"]
 weight: 2
@@ -8,7 +8,7 @@ draft: false
 
 | Section | Title |
 |---|---|
-| [1](1/) | Chapter 2. Foundations of Arithmetic |
+| [1](1/) | Chapter 2. Modern Number Theory |
 | [2](2/) | The Natural Numbers |
 | [3](3/) | Linear Diophantine Equations |
 | [4](4/) | Pythagorean Triples |
