@@ -1,6 +1,6 @@
 ---
 title: "Zig"
-description: "Zig book notes exported from ChatGPT."
+description: "Zig book notes exported from ChatGPT, organized into 5 chapters."
 tags: ["zig", "book"]
 draft: false
 ---
@@ -9,8 +9,8 @@ draft: false
 
 | Chapter | Title | Description |
 |---|---|---|
-| Part 1 | [Part 1](misc/) | Part 1 chapter from Zig. |
-| Part 2 | [Part 2](misc/) | Part 2 chapter from Zig. |
-| Part 3 | [Part 3](misc/) | Part 3 chapter from Zig. |
-| Part 4 | [Part 4](misc/) | Part 4 chapter from Zig. |
-| Part 5 | [Part 5](misc/) | Part 5 chapter from Zig. |
+| 1 | [Chapter 1. Learn Zig 1.16](01/) | Learn Zig 1.16 chapter from Zig. |
+| 2 | [Chapter 2. Learn Zig 1.16](02/) | Learn Zig 1.16 chapter from Zig. |
+| 3 | [Chapter 3. Learn Zig 1.16](03/) | Learn Zig 1.16 chapter from Zig. |
+| 4 | [Chapter 4. Learn Zig 1.16](04/) | Learn Zig 1.16 chapter from Zig. |
+| 5 | [Chapter 5. Learn Zig 1.16](05/) | Learn Zig 1.16 chapter from Zig. |
