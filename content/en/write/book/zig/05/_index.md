@@ -9,12 +9,12 @@ draft: false
 | Section | Title |
 |---|---|
 | [1](1/) | Part 5. Error Handling |
-| [2](2/) | Zig - Part 5 |
-| [3](3/) | Zig - Part 5 |
-| [4](4/) | Zig - Part 5 |
-| [5](5/) | Zig - Part 5 |
-| [6](6/) | Zig - Part 5 |
-| [7](7/) | Zig - Part 5 |
-| [8](8/) | Zig - Part 5 |
-| [9](9/) | Zig - Part 5 |
-| [10](10/) | Zig - Part 5 |
+| [2](2/) | Error Sets |
+| [3](3/) | Error Union Types |
+| [4](4/) | `try` |
+| [5](5/) | `catch` |
+| [6](6/) | `errdefer` |
+| [7](7/) | Propagating Errors |
+| [8](8/) | Designing Error APIs |
+| [9](9/) | Custom Error Types |
+| [10](10/) | Panic and Crash Behavior |
