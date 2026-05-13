@@ -1,6 +1,6 @@
 ---
 title: "Zig"
-description: "Zig book notes exported from ChatGPT, organized into 24 chapters."
+description: "Zig book notes exported from ChatGPT, organized into 16 chapters."
 tags: ["zig", "book"]
 draft: false
 ---
@@ -9,15 +9,7 @@ draft: false
 
 | Chapter | Title | Description |
 |---|---|---|
-| 1 | [Part 1. Introduction and Setup](01/) | Zig is a programming language for writing fast, small, reliable programs. |
-| 2 | [Part 2. Zig Language Fundamentals](02/) | A program stores values so it can use them later. In Zig, you store values with two main keywords: |
-| 3 | [Part 3. Control Flow](03/) | Programs need to make choices. |
-| 4 | [Part 4. Functions](04/) | Functions are reusable blocks of code. |
-| 5 | [Part 5. Error Handling](05/) | Most programming languages need a way to handle failure. |
 | 6 | [Part 6. Pointers and Memory](06/) | Memory is where a program keeps its data while it runs. |
-| 7 | [Part 7. Arrays, Slices, and Strings](07/) | An array is a group of values stored next to each other. |
-| 8 | [Part 8. Structs, Enums, and Unions](08/) | A struct is a type that groups several values together. |
-| 9 | [Part 9. Optionals and Advanced Types](09/) | An optional type is a type that can hold either a value or no value. |
 | 10 | [Part 10. Compile-Time Programming](10/) | comptime means “compile time.” |
 | 11 | [Part 11. Zig Builtins](11/) | Zig has special built-in functions whose names start with @. |
 | 12 | [Part 12. Allocators and Memory Management](12/) | Memory is one of the most important ideas in Zig. |
