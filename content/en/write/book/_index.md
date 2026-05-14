@@ -1,6 +1,6 @@
 ---
 title: "Book"
-description: "Notes on books worth reading twice."
+description: "Books I wrote to learn by teaching."
 tags: ["book"]
 draft: false
 ---
