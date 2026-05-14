@@ -13,3 +13,8 @@ draft: false
 | [3](3/) | Why StringHashMap Exists |
 | [4](4/) | Why Linked Lists Exist |
 | [5](5/) | The Basic Difference |
+| [6](6/) | Why Bit Sets Matter |
+| [7](7/) | The Core Idea |
+| [8](8/) | Why Trees Matter |
+| [9](9/) | Start with the Rule |
+| [10](10/) | Start with the Operations |

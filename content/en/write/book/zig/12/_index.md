@@ -15,3 +15,6 @@ draft: false
 | [5](5/) | Page Allocator |
 | [6](6/) | Custom Allocators |
 | [7](7/) | Allocation Failure Handling |
+| [8](8/) | Memory Leak Detection |
+| [9](9/) | Lifetime Management |
+| [10](10/) | Building Allocation-Friendly APIs |

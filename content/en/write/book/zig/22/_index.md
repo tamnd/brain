@@ -12,3 +12,8 @@ draft: false
 | [2](2/) | Linux Support |
 | [3](3/) | macOS Support |
 | [4](4/) | WebAssembly |
+| [5](5/) | ARM and Embedded Targets |
+| [6](6/) | Cross-Target Debugging |
+| [7](7/) | Portable APIs |
+| [8](8/) | Handling Platform Differences |
+| [9](9/) | Packaging Cross-Platform Apps |

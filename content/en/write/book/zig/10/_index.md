@@ -16,3 +16,5 @@ draft: false
 | [6](6/) | Reflection with `@typeInfo` |
 | [7](7/) | Building Generic Data Structures |
 | [8](8/) | Static Dispatch |
+| [9](9/) | Metaprogramming Patterns |
+| [10](10/) | When Not to Use `comptime` |

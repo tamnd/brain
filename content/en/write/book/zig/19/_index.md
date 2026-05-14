@@ -12,3 +12,9 @@ draft: false
 | [2](2/) | System Calls |
 | [3](3/) | Working with the OS |
 | [4](4/) | Terminal Programming |
+| [5](5/) | Binary File Formats |
+| [6](6/) | Endianness |
+| [7](7/) | Network Protocols |
+| [8](8/) | Writing a TCP Server |
+| [9](9/) | Writing a CLI Tool |
+| [10](10/) | Writing a Small Shell |

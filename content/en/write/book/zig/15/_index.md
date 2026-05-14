@@ -12,3 +12,10 @@ draft: false
 | [2](2/) | Creating Build Steps |
 | [3](3/) | Adding Dependencies |
 | [4](4/) | Build Options |
+| [5](5/) | Cross Compilation |
+| [6](6/) | Static and Dynamic Linking |
+| [7](7/) | Release Modes |
+| [8](8/) | Running Tests |
+| [9](9/) | Installing Binaries |
+| [10](10/) | Packaging Applications |
+| [11](11/) | Build System Changes in Zig 0.16 |
