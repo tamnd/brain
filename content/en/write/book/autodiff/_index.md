@@ -1,6 +1,6 @@
 ---
 title: "Auto Diff"
-description: "Auto Diff book notes exported from ChatGPT, organized into 22 chapters."
+description: "Auto Diff book notes, into 22 chapters."
 tags: ["autodiff", "book"]
 draft: false
 ---

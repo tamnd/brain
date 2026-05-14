@@ -442,7 +442,7 @@ $$
 x^2+1=(x-i)(x+i).
 $$
 
-This theorem is one reason why complex vector spaces have a cleaner spectral theory than real vector spaces. ([en.wikipedia.org](https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra?utm_source=chatgpt.com))
+This theorem is one reason why complex vector spaces have a cleaner spectral theory than real vector spaces.
 
 ## D.12 Multiplicity of Roots
 

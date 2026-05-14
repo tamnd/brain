@@ -1,6 +1,6 @@
 ---
 title: "LeetCode"
-description: "LeetCode practice notes exported from ChatGPT lessons."
+description: "LeetCode practice notes."
 tags: ["leetcode", "algorithms", "practice"]
 ---
 

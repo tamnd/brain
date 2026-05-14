@@ -1,6 +1,6 @@
 ---
 title: "Book"
-description: "Books exported from ChatGPT conversations."
+description: "Book notes from AI conversations."
 tags: ["book"]
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Learn Zig"
-description: "Learn Zig book notes exported from ChatGPT, organized into 20 chapters."
+description: "Learn Zig book notes, into 20 chapters."
 tags: ["zig", "book"]
 draft: false
 ---
