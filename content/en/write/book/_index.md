@@ -1,6 +1,6 @@
 ---
 title: "Book"
-description: "Book notes from AI conversations."
+description: "Notes on books worth reading twice."
 tags: ["book"]
 draft: false
 ---
