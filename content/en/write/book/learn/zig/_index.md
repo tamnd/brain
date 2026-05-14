@@ -1,6 +1,6 @@
 ---
 title: "Learn Zig"
-description: "Learn Zig book notes, into 20 chapters."
+description: "Learn Zig book notes, organized into 20 chapters."
 tags: ["zig", "book"]
 draft: false
 ---
@@ -9,7 +9,7 @@ draft: false
 
 | Chapter | Title | Description |
 |---|---|---|
-| 1 | [Chapter 1. The Zig Programming Language](01/) | A book outline in the style of The C Programming Language: small examples first, precise explanations, exercises throughout, and a compact reference at the end. Target: Zig... |
+| 1 | [Chapter 1. Hello, Zig](01/) | The first program in Zig is small. |
 | 2 | [Chapter 2. Names and Declarations](02/) | A Zig program is made from declarations. |
 | 3 | [Chapter 3. Blocks are Expressions](03/) | A block is a sequence of statements inside braces. |
 | 4 | [Chapter 4. Defining Functions](04/) | A function groups statements into a single operation. Functions are the basic unit of organization in a Zig program. |
@@ -29,4 +29,4 @@ draft: false
 | 18 | [Chapter 18. Threads](18/) | A thread is an independent flow of execution. |
 | 19 | [Chapter 19. Undefined Behavior](19/) | Zig gives the programmer direct access to memory, integers, pointers, and machine operations. This makes many programs simple and efficient. It also makes some operations... |
 | 20 | [Chapter 20. A Command-Line Parser](20/) | Many programs begin the same way: they read command-line arguments, decide what the user requested, then execute an operation. |
-| Appendix | [Appendix](app/) | A book outline in the style of The C Programming Language: small examples first, precise explanations, exercises throughout, and a compact reference at the end. Target: Zig... |
+| Appendix | [Appendix](app/) | The first program in Zig is small. |
