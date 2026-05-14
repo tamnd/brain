@@ -19,3 +19,4 @@ draft: false
 | [9](9/) | Stack vs Heap |
 | [10](10/) | Dangling Pointers |
 | [11](11/) | Memory Safety in Zig |
+| [12](12/) | Volatile and Atomic Memory |
