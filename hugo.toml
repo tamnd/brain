@@ -65,7 +65,7 @@ defaultContentLanguageInSubdir = false
     enable = true
     type = "flexsearch"
     [params.search.flexsearch]
-      index = "content"
+      index = "summary"
 
   [params.editURL]
     enable = true
