@@ -6,13 +6,13 @@ weight: 11
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 11, Testing and CI gates
+# MEP-45 research note 11, Testing and CI gates
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 The single most important property a transpiler can have is *output
-correctness*. This note describes how MEP-5600 proves it.
+correctness*. This note describes how MEP-45 proves it.
 
 ## 1. Differential testing against the VM
 
@@ -48,7 +48,7 @@ Phasing per the MEP body:
   cross-target triple.
 - Phase 5.2.1 (already shipped): Linux + wasm run-gates.
 
-The MEP-5600 phasing extends this by *introducing* the C-target
+The MEP-45 phasing extends this by *introducing* the C-target
 fixtures alongside the existing VM ones.
 
 ## 3. Run gate per target
@@ -129,8 +129,8 @@ the binary. If reproducibility breaks, the PR is rejected.
 Per the memory note `feedback_spec_in_sync`: any PR that lands a
 codegen change must update the MEP file (or its referenced research
 notes) in the same PR. A bot enforces this by checking that any change
-under `internal/aot/c/` is accompanied by a change under `spec/5600/`
-or `spec/MEP-5600.md`.
+under `internal/aot/c/` is accompanied by a change under `spec/0045/`
+or `spec/MEP-45.md`.
 
 ## 10. Phasing gates
 

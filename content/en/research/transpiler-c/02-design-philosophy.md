@@ -6,9 +6,9 @@ weight: 2
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 02, Design philosophy
+# MEP-45 research note 02, Design philosophy
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 This note records the *principles* the C target should be designed against,
@@ -82,7 +82,7 @@ Every code-generation rule is documented in the MEP body before it is
 implemented. The MEP is the unit of review; the code lands in PRs that
 cite the MEP section they implement. This is the "spec-in-sync" rule
 already imposed on the Mochi MEP corpus (memory `feedback_spec_in_sync`)
-and it applies to MEP-5600 from day zero.
+and it applies to MEP-45 from day zero.
 
 ### 3.2 Boring C
 
@@ -173,7 +173,7 @@ flavours of "language → C" transpilation, and we have to pick:
    Rust / Cone / Roc / TigerBeetle style; closest to "human-readable
    C".
 
-MEP-5600 picks **#3 with selective boxing for sum types and `any`-typed
+MEP-45 picks **#3 with selective boxing for sum types and `any`-typed
 ports**. Concretely:
 
 - `list<int>`, `list<string>`, `list<Point>` are three separate C types.
@@ -315,4 +315,4 @@ extensions), and 3.5 (compiles under sanitisers).
 > and that preserves every safety guarantee Mochi makes at the source
 > level.
 
-Everything else in MEP-5600 is downstream of that statement.
+Everything else in MEP-45 is downstream of that statement.

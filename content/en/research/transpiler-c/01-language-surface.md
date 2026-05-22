@@ -6,9 +6,9 @@ weight: 1
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 01, Mochi language surface
+# MEP-45 research note 01, Mochi language surface
 
-Author: research pass for MEP-5600 (Mochi → C transpiler).
+Author: research pass for MEP-45 (Mochi → C transpiler).
 Date: 2026-05-22 (GMT+7).
 Sources: `docs/features/*.md`, `docs/index.md`, `docs/common-language-errors.md`,
 `mcp/cheatsheet.mochi`, `ROADMAP.md`, `examples/v0.2`–`v0.7`, normative security

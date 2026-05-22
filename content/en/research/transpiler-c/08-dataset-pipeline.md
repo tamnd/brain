@@ -6,9 +6,9 @@ weight: 8
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 08, Dataset pipeline lowering
+# MEP-45 research note 08, Dataset pipeline lowering
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 Mochi's headline feature is the query DSL on collections. The same

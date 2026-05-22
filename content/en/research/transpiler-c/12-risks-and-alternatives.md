@@ -6,9 +6,9 @@ weight: 12
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 12, Risks and alternatives
+# MEP-45 research note 12, Risks and alternatives
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 This note is the "what could go wrong, and what would we do instead"
@@ -220,13 +220,13 @@ Verdict: rejected.
 
 ### 2.7 Custom bytecode + AOT compiler
 
-This is the current VM path. The MEP-5600 transpiler does *not*
+This is the current VM path. The MEP-45 transpiler does *not*
 replace the VM; it adds a parallel "AOT to native" path. Users keep
 `mochi run` for fast iteration and use `mochi build` for shipping.
 
 ## 3. Kill switches
 
-If MEP-5600 fails to meet its gates, here is how the project
+If MEP-45 fails to meet its gates, here is how the project
 recovers without disrupting users:
 
 ### 3.1 Demote to "experimental"
@@ -278,7 +278,7 @@ The "transpile to C" path has been chosen by:
 - GHC's STG -> C / -> LLVM duality.
 - MLton (whole-program SML -> C historically).
 
-The path is well-trodden. The novelty in MEP-5600 is not the path but
+The path is well-trodden. The novelty in MEP-45 is not the path but
 the integration shape: a transpiler tightly coupled to a single
 maintained runtime, with byte-equal differential testing against an
 existing VM as the master gate.

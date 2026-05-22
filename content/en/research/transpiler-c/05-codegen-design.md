@@ -6,13 +6,13 @@ weight: 5
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 05, Codegen design
+# MEP-45 research note 05, Codegen design
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 This note specifies the *shape* of the C the transpiler emits and the IR
-it uses to get there. It is the technical heart of MEP-5600 and is
+it uses to get there. It is the technical heart of MEP-45 and is
 intended to be a working blueprint. Lowering of the eight sub-languages
 is described in note 01 §1–10; this note covers the cross-cutting
 mechanics.
@@ -31,7 +31,7 @@ Mochi MIR  ─►  M2C lowering  ─►  C IR (in-memory)  ─►  C printer  �
 ```
 
 The first three stages are reused from the existing Mochi compiler (the
-parser, the type-checker, the MIR). MEP-5600 adds the rightmost three:
+parser, the type-checker, the MIR). MEP-45 adds the rightmost three:
 **M2C lowering**, **C IR**, and **C printer**. M2C is the only place
 where Mochi-specific knowledge meets C-specific knowledge.
 

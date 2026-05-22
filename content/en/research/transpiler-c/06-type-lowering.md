@@ -6,9 +6,9 @@ weight: 6
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 06, Type-system lowering details
+# MEP-45 research note 06, Type-system lowering details
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 Companion to note 05. Focused on the type-system corners and how they

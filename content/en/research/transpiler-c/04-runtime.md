@@ -6,9 +6,9 @@ weight: 4
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 04, Runtime building blocks
+# MEP-45 research note 04, Runtime building blocks
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 This note inventories the third-party and home-grown components the C

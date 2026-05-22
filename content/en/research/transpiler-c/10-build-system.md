@@ -6,9 +6,9 @@ weight: 10
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 10, Build system
+# MEP-45 research note 10, Build system
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 
 This note covers the build driver. The driver is the thing that takes

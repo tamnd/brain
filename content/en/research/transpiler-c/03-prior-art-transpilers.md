@@ -6,9 +6,9 @@ weight: 3
 date: 2026-05-22T18:00:00+07:00
 ---
 
-# MEP-5600 research note 03, Prior art: language → C compilation (2024–2026)
+# MEP-45 research note 03, Prior art: language → C compilation (2024–2026)
 
-Author: research pass for MEP-5600.
+Author: research pass for MEP-45.
 Date: 2026-05-22 (GMT+7).
 Method: structured web research by a delegated agent; verbatim report
 preserved below with light section-anchor edits.
