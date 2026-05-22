@@ -14,3 +14,4 @@ Long-form research notes that back specific design documents. Each subsection co
 
 - [Memory Management](memory-management/) — the substrate for [Mochi MEP-41](https://mochi-lang.dev/docs/mep/mep-0041): capability machines, generational references, ownership systems, runtime techniques, formal verification, and 2026 industry policy.
 - [Native Code Emission](assembly/) — the substrate for [Mochi MEP-42](https://mochi-lang.dev/docs/mep/mep-0042): copy-and-patch JIT, C-as-target AOT, target ISAs and ABIs, object formats, linkers, runtime, debug info, and recent codegen papers.
+- [Mochi-to-C Transpiler](transpiler-c/) -- the substrate for [Mochi MEP-45](https://mochi-lang.dev/docs/mep/mep-0045): the C-AOT half of MEP-42, broken out as 12 notes on the language surface, runtime, codegen, type lowering, portability, build system, and risks.
