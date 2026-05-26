@@ -15,16 +15,16 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 
 | # | Title | Date |
 |---|---|---|
-| 1 | [Problem 1](1.md) | 2026-05-25 |
-| 2 | [Problem 2](2.md) | 2026-05-25 |
-| 3 | [Problem 3](3.md) | 2026-05-25 |
-| 4 | [Problem 4](4.md) | 2026-05-25 |
-| 5 | [Problem 5](5.md) | 2026-05-25 |
-| 6 | [Problem 6](6.md) | 2026-05-25 |
-| 7 | [Problem 7](7.md) | 2026-05-25 |
-| 8 | [Problem 8](8.md) | 2026-05-25 |
-| 9 | [Problem 9](9.md) | 2026-05-25 |
-| 10 | [Problem 10](10.md) | 2026-05-25 |
+| 1 | [Problem 1](1.md) | 2026-05-26 |
+| 2 | [Problem 2](2.md) | 2026-05-26 |
+| 3 | [Problem 3](3.md) | 2026-05-26 |
+| 4 | [Problem 4](4.md) | 2026-05-26 |
+| 5 | [Problem 5](5.md) | 2026-05-26 |
+| 6 | [Problem 6](6.md) | 2026-05-26 |
+| 7 | [Problem 7](7.md) | 2026-05-26 |
+| 8 | [Problem 8](8.md) | 2026-05-26 |
+| 9 | [Problem 9](9.md) | 2026-05-26 |
+| 10 | [Problem 10](10.md) | 2026-05-26 |
 | 11 | [Problem 11](11.md) | 2026-05-25 |
 | 12 | [Problem 12](12.md) | 2026-05-25 |
 | 13 | [Problem 13](13.md) | 2026-05-25 |
@@ -971,7 +971,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 954 | [Problem 954](954.md) | 2026-05-25 |
 | 955 | [Problem 955](955.md) | 2026-05-25 |
 | 956 | [Problem 956](956.md) | 2026-05-25 |
-| 957 | [Problem 957](957.md) | 2026-05-25 |
+| 957 | [Problem 957](957.md) | 2026-05-26 |
 | 958 | [Problem 958](958.md) | 2026-05-26 |
 | 959 | [Problem 959](959.md) | 2026-05-26 |
 | 960 | [Problem 960](960.md) | 2026-05-26 |
@@ -1011,3 +1011,4 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 994 | [Problem 994](994.md) | 2026-05-26 |
 | 995 | [Problem 995](995.md) | 2026-05-26 |
 | 996 | [Problem 996](996.md) | 2026-05-26 |
+| 997 | [Problem 997](997.md) | 2026-05-26 |
