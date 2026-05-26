@@ -216,6 +216,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 205 | [Problem 205](205.md) | 2026-05-26 |
 | 206 | [Problem 206](206.md) | 2026-05-26 |
 | 207 | [Problem 207](207.md) | 2026-05-26 |
+| 208 | [Problem 208](208.md) | 2026-05-26 |
 | 209 | [Problem 209](209.md) | 2026-05-26 |
 | 210 | [Problem 210](210.md) | 2026-05-26 |
 | 211 | [Problem 211](211.md) | 2026-05-26 |
@@ -490,6 +491,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 480 | [Problem 480](480.md) | 2026-05-26 |
 | 481 | [Problem 481](481.md) | 2026-05-26 |
 | 482 | [Problem 482](482.md) | 2026-05-26 |
+| 483 | [Problem 483](483.md) | 2026-05-26 |
 | 484 | [Problem 484](484.md) | 2026-05-26 |
 | 485 | [Problem 485](485.md) | 2026-05-26 |
 | 486 | [Problem 486](486.md) | 2026-05-26 |
