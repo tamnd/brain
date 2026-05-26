@@ -988,7 +988,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 972 | [Problem 972](972.md) | 2026-05-27 |
 | 973 | [Problem 973](973.md) | 2026-05-27 |
 | 974 | [Problem 974](974.md) | 2026-05-27 |
-| 975 | [Problem 975](975.md) | 2026-05-26 |
+| 975 | [Problem 975](975.md) | 2026-05-27 |
 | 976 | [Problem 976](976.md) | 2026-05-27 |
 | 977 | [Problem 977](977.md) | 2026-05-27 |
 | 978 | [Problem 978](978.md) | 2026-05-27 |
@@ -999,14 +999,14 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 983 | [Problem 983](983.md) | 2026-05-27 |
 | 984 | [Problem 984](984.md) | 2026-05-27 |
 | 985 | [Problem 985](985.md) | 2026-05-27 |
-| 986 | [Problem 986](986.md) | 2026-05-26 |
+| 986 | [Problem 986](986.md) | 2026-05-27 |
 | 987 | [Problem 987](987.md) | 2026-05-27 |
 | 988 | [Problem 988](988.md) | 2026-05-27 |
 | 989 | [Problem 989](989.md) | 2026-05-26 |
 | 990 | [Problem 990](990.md) | 2026-05-26 |
-| 991 | [Problem 991](991.md) | 2026-05-26 |
+| 991 | [Problem 991](991.md) | 2026-05-27 |
 | 992 | [Problem 992](992.md) | 2026-05-27 |
-| 993 | [Problem 993](993.md) | 2026-05-26 |
+| 993 | [Problem 993](993.md) | 2026-05-27 |
 | 994 | [Problem 994](994.md) | 2026-05-27 |
 | 995 | [Problem 995](995.md) | 2026-05-26 |
 | 996 | [Problem 996](996.md) | 2026-05-27 |
