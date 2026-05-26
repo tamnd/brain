@@ -552,6 +552,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 548 | [Problem 548](548.md) | 2026-05-26 |
 | 549 | [Problem 549](549.md) | 2026-05-26 |
 | 550 | [Problem 550](550.md) | 2026-05-26 |
+| 551 | [Problem 551](551.md) | 2026-05-26 |
 | 555 | [Problem 555](555.md) | 2026-05-26 |
 | 556 | [Problem 556](556.md) | 2026-05-26 |
 | 561 | [Problem 561](561.md) | 2026-05-26 |
