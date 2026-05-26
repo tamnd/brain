@@ -120,6 +120,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 103 | [Problem 103](103.md) | 2026-05-26 |
 | 104 | [Problem 104](104.md) | 2026-05-26 |
 | 105 | [Problem 105](105.md) | 2026-05-26 |
+| 106 | [Problem 106](106.md) | 2026-05-26 |
 | 107 | [Problem 107](107.md) | 2026-05-26 |
 | 108 | [Problem 108](108.md) | 2026-05-26 |
 | 109 | [Problem 109](109.md) | 2026-05-26 |
