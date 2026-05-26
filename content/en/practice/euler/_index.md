@@ -731,6 +731,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 866 | [Problem 866](866.md) | 2026-05-26 |
 | 867 | [Problem 867](867.md) | 2026-05-26 |
 | 868 | [Problem 868](868.md) | 2026-05-26 |
+| 869 | [Problem 869](869.md) | 2026-05-26 |
 | 941 | [Problem 941](941.md) | 2026-05-25 |
 | 942 | [Problem 942](942.md) | 2026-05-25 |
 | 943 | [Problem 943](943.md) | 2026-05-25 |
