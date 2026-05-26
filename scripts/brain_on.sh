@@ -58,6 +58,11 @@ while true; do
     while IFS= read -r line; do log "${YLW}math: ${line}${RST}"; done <<< "$MATH_OUT"
   fi
 
+  # Fix KaTeX-invalid sequences: \* \+ \= etc. inside math.
+  if KATEX_OUT="$(python3 "$REPO_DIR/scripts/fix_katex.py" 2>&1)" && [ -n "$KATEX_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}katex: ${line}${RST}"; done <<< "$KATEX_OUT"
+  fi
+
   _did_something=false
 
   # Commit any local changes (always safe to commit locally).
@@ -123,7 +128,32 @@ while true; do
         log "${YLW}fix these files:${RST}"
         while IFS= read -r f; do log "  ${YLW}→ $f${RST}"; done <<< "$errfiles"
       fi
-      log "${YLW}✗ hugo error — commit held locally, retry next cycle${RST}"
+      # Auto-fix: re-run KaTeX and math fixers, then retry hugo once.
+      _katex_retry="$(python3 "$REPO_DIR/scripts/fix_katex.py" 2>&1)"
+      _math_retry="$(python3 "$REPO_DIR/scripts/fix_mathdelim.py" 2>&1)"
+      if [ -n "$_katex_retry" ] || [ -n "$_math_retry" ]; then
+        [ -n "$_katex_retry" ] && log "${YLW}katex auto-fix: ${_katex_retry}${RST}"
+        [ -n "$_math_retry"  ] && log "${YLW}math auto-fix:  ${_math_retry}${RST}"
+        # Amend the last commit with the fixes applied.
+        if [ -n "$(git status --porcelain)" ]; then
+          git add -A
+          git commit -q --amend --no-edit
+          log "${YLW}· amended commit with auto-fixes${RST}"
+        fi
+        # Retry hugo.
+        if HUGO_OUT2="$(hugo --renderToMemory --gc 2>&1)"; then
+          if PUSH_OUT2="$(git push -q --force-with-lease origin "$BRANCH" 2>&1)"; then
+            log "${GRN}✓ pushed after auto-fix${RST}"
+          else
+            log "${YLW}✗ push failed after auto-fix: ${PUSH_OUT2}${RST}"
+          fi
+        else
+          log "${YLW}✗ hugo still failing after auto-fix — held locally${RST}"
+          while IFS= read -r line; do log "${YLW}hugo: ${line}${RST}"; done <<< "$HUGO_OUT2"
+        fi
+      else
+        log "${YLW}✗ hugo error — commit held locally, retry next cycle${RST}"
+      fi
     fi
     _did_something=true
   fi
