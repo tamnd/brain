@@ -378,18 +378,18 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 361 | [Problem 361](361.md) | 1m 58s | The Thue-Morse sequence Tn is a binary sequence satisfying: - T0 = 0 - T{2n} … |
 | 362 | [Problem 362](362.md) | 2m 11s | Consider the number 54. |
 | 363 | [Problem 363](363.md) | 1m 20s | A cubic Bézier curve is defined by four points: P0, P1, P2, and P3. |
-| 364 | [Problem 364](364.md) | 1m 38s | There are N seats in a row. |
+| 364 | [Problem 364](364.md) | 2m 52s | There are N seats in a row. |
 | 365 | [Problem 365](365.md) | 44s | The binomial coefficient displaystyle{binom{10^{18}}{10^9}} is a number with … |
 | 366 | [Problem 366](366.md) | 56s | Two players, Anton and Bernhard, are playing the following game. |
-| 367 | [Problem 367](367.md) | 1m 48s | Bozo sort, not to be confused with the slightly less efficient bogo sort, con… |
+| 367 | [Problem 367](367.md) | 3m 55s | Bozo sort, not to be confused with the slightly less efficient bogo sort, con… |
 | 368 | [Problem 368](368.md) | 4m 24s | The harmonic series 1 + frac 1 2 + frac 1 3 + frac 1 4 + cdots is well known … |
-| 369 | [Problem 369](369.md) | 1m 50s | In a standard 52 card deck of playing cards, a set of 4 cards is a Badugi if … |
+| 369 | [Problem 369](369.md) | 4m 28s | In a standard 52 card deck of playing cards, a set of 4 cards is a Badugi if … |
 | 370 | [Problem 370](370.md) | 53s | Let us define a geometric triangle as an integer sided triangle with sides a … |
 | 371 | [Problem 371](371.md) | 1m 10s | Oregon licence plates consist of three letters followed by a three digit numb… |
 | 372 | [Problem 372](372.md) | 2m 6s | Let R(M, N) be the number of lattice points (x, y) which satisfy MltxleN, Mlt… |
 | 373 | [Problem 373](373.md) | 2m 33s | Every triangle has a circumscribed circle that goes through the three vertices. |
-| 374 | [Problem 374](374.md) | 49s | An integer partition of a number n is a way of writing n as a sum of positive… |
-| 375 | [Problem 375](375.md) | 3m 23s | Let Sn be an integer sequence produced with the following pseudo-random numbe… |
+| 374 | [Problem 374](374.md) | 9m | An integer partition of a number n is a way of writing n as a sum of positive… |
+| 375 | [Problem 375](375.md) | 5m 2s | Let Sn be an integer sequence produced with the following pseudo-random numbe… |
 | 376 | [Problem 376](376.md) | 3m 48s | Consider the following set of dice with nonstandard pips: Die A: 1 4 4 4 4 4 … |
 | 377 | [Problem 377](377.md) | 1m 39s | There are 16 positive integers that do not have a zero in their digits and th… |
 | 378 | [Problem 378](378.md) | 45s | Let T(n) be the nth triangle number, so T(n) = dfrac{n(n + 1)}{2}. |
@@ -398,7 +398,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 381 | [Problem 381](381.md) | 1m 3s | For a prime p let S(p) = (sum (p-k)!) bmod (p) for 1 le k le 5. |
 | 382 | [Problem 382](382.md) | 4m 21s | A polygon is a flat shape consisting of straight line segments that are joine… |
 | 383 | [Problem 383](383.md) | 2m 4s | Let f5(n) be the largest integer x for which 5^x divides n. |
-| 384 | [Problem 384](384.md) | 17m 29s | Define the sequence a(n) as the number of adjacent pairs of ones in the binar… |
+| 384 | [Problem 384](384.md) | 1m 30s | Define the sequence a(n) as the number of adjacent pairs of ones in the binar… |
 | 385 | [Problem 385](385.md) | 3m 46s | For any triangle T in the plane, it can be shown that there is a unique ellip… |
 | 386 | [Problem 386](386.md) | 3m 30s | Let n be an integer and S(n) be the set of factors of n. |
 | 387 | [Problem 387](387.md) | 50s | A Harshad or Niven number is a number that is divisible by the sum of its dig… |
@@ -975,8 +975,8 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 959 | [Problem 959](959.md) | 1m 49s | A frog is placed on the number line. |
 | 960 | [Problem 960](960.md) | 1m 43s | nThere are n distinct piles of stones, each of size n-1. |
 | 961 | [Problem 961](961.md) | 2m 4s | nThis game starts with a positive integer. |
-| 962 | [Problem 962](962.md) | 1m 2s | Given is an integer sided triangle ABC with BC le AC le AB.nk is the angular … |
-| 963 | [Problem 963](963.md) | 2m 8s | NOTE: This problem is related to Problem 882. |
+| 962 | [Problem 962](962.md) | 47s | Given is an integer sided triangle ABC with BC le AC le AB.nk is the angular … |
+| 963 | [Problem 963](963.md) | 1m 48s | NOTE: This problem is related to Problem 882. |
 | 964 | [Problem 964](964.md) | 3m 20s | A group of k(k-1) / 2 + 1 children play a game of k rounds.nAt the beginning,… |
 | 965 | [Problem 965](965.md) | 2m 46s | Let {x} denote the fractional part of a real number x.nnDefine fN(x) to be th… |
 | 966 | [Problem 966](966.md) | 2m 9s | nLet I(a, b, c) be the largest possible area of intersection between a triang… |
@@ -1003,7 +1003,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 987 | [Problem 987](987.md) | 3m 43s | --- |
 | 988 | [Problem 988](988.md) | 6m 1s | --- |
 | 989 | [Problem 989](989.md) | — | See Project Euler Problem 989. |
-| 990 | [Problem 990](990.md) | — | See Project Euler Problem 990. |
+| 990 | [Problem 990](990.md) | 4m 23s | --- |
 | 991 | [Problem 991](991.md) | 5m 32s | --- |
 | 992 | [Problem 992](992.md) | 4m 19s | --- |
 | 993 | [Problem 993](993.md) | 2m 1s | --- |
