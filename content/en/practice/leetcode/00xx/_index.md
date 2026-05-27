@@ -79,3 +79,14 @@ draft: false
 | 78 | [Subsets](78.md) | 🟡 Medium | 55s | This problem asks us to generate every possible subset of a given a… |
 | 79 | [Word Search](79.md) | 🟡 Medium | 1m 7s | This problem gives us a two dimensional grid of characters called b… |
 | 80 | [Remove Duplicates from Sorted Array II](80.md) | 🟡 Medium | 54s | This problem asks us to modify a sorted array in-place so that each… |
+| 81 | [Search in Rotated Sorted Array II](81.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a target value exists ins… |
+| 82 | [Remove Duplicates from Sorted List II](82.md) | 🟡 Medium | 1m 53s | This problem asks us to modify a sorted singly linked list so that … |
+| 83 | [Remove Duplicates from Sorted List](83.md) | 🟢 Easy | 58s | This problem gives us the head of a singly linked list where the va… |
+| 84 | [Largest Rectangle in Histogram](84.md) | 🔴 Hard | 1m 52s | In this problem, we are given an array called heights, where each v… |
+| 85 | [Maximal Rectangle](85.md) | 🔴 Hard | 1m 9s | You are given a 2D binary matrix where each cell contains either '0… |
+| 86 | [Partition List](86.md) | 🟡 Medium | 1m 1s | This problem asks us to rearrange a singly linked list around a piv… |
+| 87 | [Scramble String](87.md) | 🔴 Hard | 1m 8s | This problem asks us to determine whether one string can be transfo… |
+| 88 | [Merge Sorted Array](88.md) | 🟢 Easy | 1m 9s | This problem gives us two arrays, nums1 and nums2, that are already… |
+| 89 | [Gray Code](89.md) | 🟡 Medium | 52s | This problem asks us to generate a valid n-bit Gray code sequence. … |
+| 90 | [Subsets II](90.md) | 🟡 Medium | 1m 17s | The problem asks us to generate every possible subset of a given in… |
+| 91 | [Decode Ways](91.md) | 🟡 Medium | 1m 1s | The problem gives us a string s containing only digits, where each … |
