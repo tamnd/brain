@@ -2208,3 +2208,11 @@ html.dark .pres-cluster {
 .brain-sidebar-backdrop--open {
   display: block;
 }
+
+/* ===== Code syntax highlighting ========================================== */
+
+.chroma {
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  font-size: 0.875em;
+}
