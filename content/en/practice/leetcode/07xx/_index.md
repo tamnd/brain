@@ -43,8 +43,25 @@ draft: false
 | 731 | [My Calendar II](731.md) | 🟡 Medium | 1m 14s | The problem asks us to design a calendar system that supports booki… |
 | 732 | [My Calendar III](732.md) | 🔴 Hard | 1m 19s | This problem asks us to design a calendar system that supports addi… |
 | 733 | [Flood Fill](733.md) | 🟢 Easy | 41s | The problem is asking us to simulate a flood fill operation on a 2D… |
-| 751 | [IP to CIDR](751.md) | 🟡 Medium | 42s | The problem is asking us to convert a range of IP addresses into a … |
-| 752 | [Open the Lock](752.md) | 🟡 Medium | 38s | The problem presents a 4-wheel combination lock, where each wheel c… |
+| 734 | [Sentence Similarity](734.md) | 🟢 Easy | 1m 9s | The problem gives us two sentences, where each sentence is represen… |
+| 735 | [Asteroid Collision](735.md) | 🟡 Medium | 1m 23s | The problem gives us a list of integers representing asteroids movi… |
+| 736 | [Parse Lisp Expression](736.md) | 🔴 Hard | 1m 24s | The problem asks us to evaluate a Lisp-like expression represented … |
+| 737 | [Sentence Similarity II](737.md) | 🟡 Medium | 1m 17s | This problem asks us to determine whether two sentences are conside… |
+| 738 | [Monotone Increasing Digits](738.md) | 🟡 Medium | 1m 16s | The problem asks us to find the largest integer less than or equal … |
+| 739 | [Daily Temperatures](739.md) | 🟡 Medium | 1m 18s | The problem gives an array called temperatures, where each element … |
+| 740 | [Delete and Earn](740.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums, and we want to maximize… |
+| 741 | [Cherry Pickup](741.md) | 🔴 Hard | 1m 30s | This problem asks us to collect the maximum possible number of cher… |
+| 742 | [Closest Leaf in a Binary Tree](742.md) | 🟡 Medium | 38s | The problem asks us to find the closest leaf node to a given target… |
+| 743 | [Network Delay Time](743.md) | 🟡 Medium | 1m 7s | This problem models a directed weighted graph. Each node represents… |
+| 744 | [Find Smallest Letter Greater Than Target](744.md) | 🟢 Easy | 1m 8s | The problem gives us a sorted array of lowercase English letters an… |
+| 745 | [Prefix and Suffix Search](745.md) | 🔴 Hard | 1m 16s | The problem asks us to design a data structure that supports effici… |
+| 746 | [Min Cost Climbing Stairs](746.md) | 🟢 Easy | 52s | This problem gives us an array named cost, where each element repre… |
+| 747 | [Largest Number At Least Twice of Others](747.md) | 🟢 Easy | 1m 1s | The problem gives us an integer array nums in which the largest val… |
+| 748 | [Shortest Completing Word](748.md) | 🟢 Easy | 1m 7s | The problem gives us a string called licensePlate and an array of c… |
+| 749 | [Contain Virus](749.md) | 🔴 Hard | 1m 26s | This problem models the spread of a virus on a two-dimensional grid… |
+| 750 | [Number Of Corner Rectangles](750.md) | 🟡 Medium | 57s | The problem asks us to count the number of corner rectangles in a b… |
+| 751 | [IP to CIDR](751.md) | 🟡 Medium | 39s | This problem is asking us to take a starting IPv4 address and a num… |
+| 752 | [Open the Lock](752.md) | 🟡 Medium | 30s | The problem presents a lock with four wheels, each wheel labeled fr… |
 | 753 | [Cracking the Safe](753.md) | 🔴 Hard | 1m 11s | This problem asks us to generate the shortest possible string that … |
 | 754 | [Reach a Number](754.md) | 🟡 Medium | 38s | The problem asks us to find the minimum number of moves required to… |
 | 755 | [Pour Water](755.md) | 🟡 Medium | 1m 42s | This problem asks us to simulate how water droplets behave when pou… |
@@ -78,3 +95,16 @@ draft: false
 | 783 | [Minimum Distance Between BST Nodes](783.md) | 🟢 Easy | 45s | The problem asks us to find the minimum difference between values o… |
 | 784 | [Letter Case Permutation](784.md) | 🟡 Medium | 1m 6s | The problem asks us to generate every possible string that can be f… |
 | 785 | [Is Graph Bipartite?](785.md) | 🟡 Medium | 39s | The problem asks whether a given undirected graph is bipartite. In … |
+| 786 | [K-th Smallest Prime Fraction](786.md) | 🟡 Medium | 43s | The problem asks us to find the k-th smallest fraction that can be … |
+| 787 | [Cheapest Flights Within K Stops](787.md) | 🟡 Medium | 56s | Here’s a complete, detailed technical solution guide for LeetCode 7… |
+| 788 | [Rotated Digits](788.md) | 🟡 Medium | 1m 13s | The problem asks us to count the number of good integers within a g… |
+| 789 | [Escape The Ghosts](789.md) | 🟡 Medium | 1m 40s | This problem takes place on an infinite two dimensional grid. You b… |
+| 790 | [Domino and Tromino Tiling](790.md) | 🟡 Medium | 41s | The problem asks us to compute the number of ways to completely til… |
+| 791 | [Custom Sort String](791.md) | 🟡 Medium | 1m 22s | The problem gives us two strings, order and s. The string order def… |
+| 792 | [Number of Matching Subsequences](792.md) | 🟡 Medium | 57s | The problem asks us to count how many words in a given list are sub… |
+| 793 | [Preimage Size of Factorial Zeroes Function](793.md) | 🔴 Hard | 53s | This problem asks us to determine how many non-negative integers x … |
+| 795 | [Number of Subarrays with Bounded Maximum](795.md) | 🟡 Medium | 1m | The problem asks us to count how many contiguous, non-empty subarra… |
+| 796 | [Rotate String](796.md) | 🟢 Easy | 59s | The problem asks us to determine whether one string can be transfor… |
+| 797 | [All Paths From Source to Target](797.md) | 🟡 Medium | 58s | The problem gives us a directed acyclic graph, usually abbreviated … |
+| 798 | [Smallest Rotation with Highest Score](798.md) | 🔴 Hard | 33s | The problem asks us to determine the optimal rotation of an array n… |
+| 799 | [Champagne Tower](799.md) | 🟡 Medium | 33s | The problem asks us to simulate a process of pouring champagne into… |
