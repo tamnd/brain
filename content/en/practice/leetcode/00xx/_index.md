@@ -63,3 +63,19 @@ draft: false
 | 61 | [Rotate List](61.md) | 🟡 Medium | 56s | This problem asks us to rotate a singly linked list to the right by… |
 | 62 | [Unique Paths](62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
 | 63 | [Unique Paths II](63.md) | 🟡 Medium | 55s | This problem asks us to count how many different valid ways a robot… |
+| 64 | [Minimum Path Sum](64.md) | 🟡 Medium | 1m 11s | The problem gives us a two dimensional grid of non negative integer… |
+| 65 | [Valid Number](65.md) | 🔴 Hard | 2m 8s | This problem asks us to determine whether a given string represents… |
+| 66 | [Plus One](66.md) | 🟢 Easy | 2m 20s | The problem gives us a non-negative integer represented as an array… |
+| 67 | [Add Binary](67.md) | 🟢 Easy | 1m 12s | The problem gives us two strings, a and b, where each string repres… |
+| 68 | [Text Justification](68.md) | 🔴 Hard | 1m 2s | The problem asks us to format a sequence of words into fully justif… |
+| 69 | [Sqrt(x)](69.md) | 🟢 Easy | 1m 10s | The problem asks us to compute the integer square root of a non-neg… |
+| 70 | [Climbing Stairs](70.md) | 🟢 Easy | 59s | The problem describes a staircase with n total steps, and you want … |
+| 71 | [Simplify Path](71.md) | 🟡 Medium | 1m 32s | This problem asks us to take an absolute Unix-style file path and c… |
+| 72 | [Edit Distance](72.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum number of edit operat… |
+| 73 | [Set Matrix Zeroes](73.md) | 🟡 Medium | 1m 37s | The problem gives us a two dimensional matrix of integers with dime… |
+| 74 | [Search a 2D Matrix](74.md) | 🟡 Medium | 1m 1s | The problem gives us a two dimensional matrix with two very importa… |
+| 75 | [Sort Colors](75.md) | 🟡 Medium | 1m 17s | This problem asks us to sort an array containing only three possibl… |
+| 77 | [Combinations](77.md) | 🟡 Medium | 1m 5s | The problem asks us to generate every possible combination of exact… |
+| 78 | [Subsets](78.md) | 🟡 Medium | 55s | This problem asks us to generate every possible subset of a given a… |
+| 79 | [Word Search](79.md) | 🟡 Medium | 1m 7s | This problem gives us a two dimensional grid of characters called b… |
+| 80 | [Remove Duplicates from Sorted Array II](80.md) | 🟡 Medium | 54s | This problem asks us to modify a sorted array in-place so that each… |
