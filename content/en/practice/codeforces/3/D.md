@@ -20,7 +20,6 @@ draft: false
 **Tags:** greedy  
 **Solve time:** 2m 21s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a172277-5124-83ec-be4e-543814d557ee  
 
 ## Solution
 ## Problem Understanding

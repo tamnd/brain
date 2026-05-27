@@ -20,7 +20,6 @@ draft: false
 **Tags:** dp, greedy, strings  
 **Solve time:** 2m 41s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a171c49-4c7c-83ec-9cba-45270fdc46cb  
 
 ## Solution
 ## Problem Understanding

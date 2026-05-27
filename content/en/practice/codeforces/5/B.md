@@ -20,7 +20,6 @@ draft: false
 **Tags:** implementation, strings  
 **Solve time:** 3m 7s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a17224c-69e4-83ec-a904-d4ed640fb74c  
 
 ## Solution
 ## Problem Understanding

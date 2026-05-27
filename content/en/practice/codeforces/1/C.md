@@ -20,7 +20,6 @@ draft: false
 **Tags:** geometry, math  
 **Solve time:** 1m 35s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a172022-d074-83ec-93b2-21eeb0df9518  
 
 ## Solution
 ## Problem Understanding

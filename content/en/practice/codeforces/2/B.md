@@ -20,7 +20,6 @@ draft: false
 **Tags:** dp, math  
 **Solve time:** 2m 37s  
 **Verified:** no  
-**Share:** https://chatgpt.com/share/6a1721bc-d1f8-83ec-bdec-611a72c4aa15  
 
 ## Solution
 ## Problem Understanding

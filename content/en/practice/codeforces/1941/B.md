@@ -20,7 +20,6 @@ draft: false
 **Tags:** brute force, dp, greedy, math  
 **Solve time:** 2m 47s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a171b5f-d594-83ec-ab71-14d4370d059a  
 
 ## Solution
 # Problem Understanding

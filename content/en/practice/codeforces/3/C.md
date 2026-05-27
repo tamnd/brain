@@ -20,7 +20,6 @@ draft: false
 **Tags:** brute force, games, implementation  
 **Solve time:** 1m 43s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a172218-b5fc-83ec-b31f-66f83a2faf7e  
 
 ## Solution
 ## Problem Understanding

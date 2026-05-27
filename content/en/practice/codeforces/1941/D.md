@@ -20,7 +20,6 @@ draft: false
 **Tags:** dfs and similar, dp, implementation  
 **Solve time:** 2m 17s  
 **Verified:** no  
-**Share:** https://chatgpt.com/share/6a171d18-6298-83ec-831d-6698730a866d  
 
 ## Solution
 ## Problem Understanding

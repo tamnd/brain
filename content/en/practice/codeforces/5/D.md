@@ -20,7 +20,6 @@ draft: false
 **Tags:** implementation, math  
 **Solve time:** 1m 20s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a172303-a530-83ec-b39f-82eda99400e2  
 
 ## Solution
 ## Problem Understanding

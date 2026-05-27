@@ -20,7 +20,6 @@ draft: false
 **Tags:** dp, sortings  
 **Solve time:** 1m 10s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a1722c4-b9c8-83ec-ae99-8061a066716b  
 
 ## Solution
 ## Problem Understanding

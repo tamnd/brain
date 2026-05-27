@@ -20,7 +20,6 @@ draft: false
 **Tags:** math  
 **Solve time:** 52s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a171ff7-6658-83ec-baee-af846ddf7457  
 
 ## Solution
 ## Problem Understanding

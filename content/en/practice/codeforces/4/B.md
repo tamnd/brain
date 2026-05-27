@@ -20,7 +20,6 @@ draft: false
 **Tags:** constructive algorithms, greedy  
 **Solve time:** 1m 12s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a172280-84f4-83ec-9e0d-bf7c310af5ed  
 
 ## Solution
 ## Problem Understanding
