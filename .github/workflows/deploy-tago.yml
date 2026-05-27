@@ -33,6 +33,7 @@ jobs:
           repository: tamnd/tago
           path: .tago-src
           fetch-depth: 1
+          token: ${{ secrets.GH_PAT }}
 
       - name: Cache tago binary
         id: tago-bin-cache
