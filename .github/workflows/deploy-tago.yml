@@ -47,6 +47,13 @@ jobs:
           cd .tago-src
           go build -o /usr/local/bin/tago ./cmd/tago/
 
+      - name: Cache tago DB
+        uses: actions/cache@v5.0.5
+        with:
+          path: .tago-cache.db
+          key: tago-db-${{ runner.os }}-${{ github.sha }}
+          restore-keys: tago-db-${{ runner.os }}-
+
       - name: Cache tago output (incremental)
         uses: actions/cache@v5.0.5
         with:
@@ -55,12 +62,14 @@ jobs:
           restore-keys: tago-output-${{ runner.os }}-
 
       - name: Build site
-        run: tago build --base-url "https://brain.tamnd.com/"
+        run: |
+          mkdir -p public
+          [ -f .tago-cache.db ] && cp .tago-cache.db public/.tago-cache.db || true
+          tago build --base-url "https://brain.tamnd.com/"
+          cp public/.tago-cache.db .tago-cache.db 2>/dev/null || true
 
       - name: Remove oversized files before deploy
-        run: |
-          find public -size +24M -print -delete
-          ls -lah public/ | head -20
+        run: find public -size +24M -print -delete
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4.0.0
