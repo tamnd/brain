@@ -26,7 +26,10 @@ draft: false
 | 14 | [Longest Common Prefix](14.md) | 🟢 Easy | 58s | The problem asks us to find the longest prefix shared by every stri… |
 | 15 | [3Sum](15.md) | 🟡 Medium | 1m 33s | The problem asks us to find all unique triplets in an integer array… |
 | 16 | [3Sum Closest](16.md) | 🟡 Medium | 1m 18s | The problem asks us to find three numbers in the array whose sum is… |
+| 17 | [Letter Combinations of a Phone Number](17.md) | 🟡 Medium | 1m 46s | The problem gives us a string of digits where each digit is between… |
+| 18 | [4Sum](18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
 | 19 | [Remove Nth Node From End of List](19.md) | 🟡 Medium | 1m 11s | The problem gives us the head of a singly linked list and an intege… |
+| 20 | [Valid Parentheses](20.md) | 🟢 Easy | 1m 15s | The problem asks us to determine whether a string containing only b… |
 | 21 | [Merge Two Sorted Lists](21.md) | 🟢 Easy | 1m 33s | This problem asks us to merge two already sorted singly linked list… |
 | 22 | [Generate Parentheses](22.md) | 🟡 Medium | 2m 41s | The problem asks us to generate every possible valid combination of… |
 | 23 | [Merge k Sorted Lists](23.md) | 🔴 Hard | 2m 6s | The problem gives us an array named lists, where each element is th… |
