@@ -1003,13 +1003,13 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 986 | [Problem 986](986.md) | 6m 17s | Solution to Project Euler Problem 986. |
 | 987 | [Problem 987](987.md) | 3m 43s | Solution to Project Euler Problem 987. |
 | 988 | [Problem 988](988.md) | 6m 1s | Solution to Project Euler Problem 988. |
-| 989 | [Problem 989](989.md) | 5m 31s | Write Fn for the n-th Fibonacci number, with F1 = F2 = 1 and F{n+1} = Fn + F{… |
+| 989 | [Problem 989](989.md) | 2m 54s | Write Fn for the n-th Fibonacci number, with F1 = F2 = 1 and F{n+1} = Fn + F{… |
 | 990 | [Problem 990](990.md) | 4m 23s | Solution to Project Euler Problem 990. |
 | 991 | [Problem 991](991.md) | 5m 32s | Solution to Project Euler Problem 991. |
 | 992 | [Problem 992](992.md) | 4m 19s | Solution to Project Euler Problem 992. |
 | 993 | [Problem 993](993.md) | 2m 1s | Solution to Project Euler Problem 993. |
 | 994 | [Problem 994](994.md) | 5m 5s | Solution to Project Euler Problem 994. |
-| 995 | [Problem 995](995.md) | 14m 4s | For each prime p and each positive integer n define two polynomials: Let S(p)… |
+| 995 | [Problem 995](995.md) | 14m 29s | For each prime p and each positive integer n define two polynomials: Let S(p)… |
 | 996 | [Problem 996](996.md) | 2m 38s | Solution to Project Euler Problem 996. |
 | 997 | [Problem 997](997.md) | 4m 48s | There are xyz dice arranged in an x times y times z box such that touching fa… |
-| 998 | [Problem 998](998.md) | 8m 27s | The minimum bounding square of a triangle is the smallest square that can be … |
+| 998 | [Problem 998](998.md) | 15m 56s | The minimum bounding square of a triangle is the smallest square that can be … |
