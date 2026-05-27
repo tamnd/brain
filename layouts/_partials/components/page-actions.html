@@ -1,0 +1,58 @@
+{{- /*
+  Renders icon-only action buttons in the page header.
+  Uses GitHub raw URL for the markdown view/copy instead of Hugo output format.
+*/ -}}
+
+{{- $githubURL := "" -}}
+{{- $rawURL    := "" -}}
+{{- $editBase  := site.Params.editURL.base -}}
+{{- if and .File $editBase -}}
+  {{- $viewBase := replace $editBase "/edit/" "/blob/" -}}
+  {{- $rawBase  := replace $editBase "/edit/" "/raw/" -}}
+  {{- with .File -}}
+    {{- $sourceDir := replace (strings.TrimPrefix .FileInfo.Meta.BaseDir .FileInfo.Meta.SourceRoot) "\\" "/" -}}
+    {{- $sourceDir = strings.TrimPrefix "/content" $sourceDir -}}
+    {{- $path := replace .Path "\\" "/" -}}
+    {{- $githubURL = urls.JoinPath $viewBase $sourceDir $path -}}
+    {{- $rawURL    = urls.JoinPath $rawBase  $sourceDir $path -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if or $githubURL $rawURL -}}
+<div class="brain-page-actions" role="group" aria-label="Page actions">
+
+  {{- if $githubURL -}}
+  <a href="{{ $githubURL }}"
+     target="_blank" rel="noopener noreferrer"
+     class="brain-page-action"
+     title="View source on GitHub"
+     aria-label="View source on GitHub">
+    {{- partial "utils/lucide.html" (dict "name" "github" "size" 16) -}}
+  </a>
+  {{- end -}}
+
+  {{- if $rawURL -}}
+  <a href="{{ $rawURL }}"
+     target="_blank" rel="noopener noreferrer"
+     class="brain-page-action"
+     title="View raw Markdown"
+     aria-label="View raw Markdown">
+    {{- partial "utils/lucide.html" (dict "name" "file-text" "size" 16) -}}
+  </a>
+
+  <button type="button"
+     class="brain-page-action brain-page-action--copy hextra-page-context-menu-copy"
+     data-url="{{ $rawURL }}"
+     title="Copy page as Markdown"
+     aria-label="Copy page as Markdown">
+    <span class="brain-page-action__icon brain-page-action__icon--copy">
+      {{- partial "utils/lucide.html" (dict "name" "copy" "size" 16) -}}
+    </span>
+    <span class="brain-page-action__icon brain-page-action__icon--check">
+      {{- partial "utils/lucide.html" (dict "name" "check" "size" 16) -}}
+    </span>
+  </button>
+  {{- end -}}
+
+</div>
+{{- end -}}

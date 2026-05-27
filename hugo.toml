@@ -121,6 +121,6 @@ defaultContentLanguageInSubdir = false
 [outputs]
   home     = ["html"]
   section  = ["html"]
-  page     = ["html", "markdown"]
+  page     = ["html"]
   taxonomy = ["html"]
   term     = ["html"]
