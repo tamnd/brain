@@ -1002,12 +1002,12 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 986 | [Problem 986](986.md) | 6m 17s | --- |
 | 987 | [Problem 987](987.md) | 3m 43s | --- |
 | 988 | [Problem 988](988.md) | 6m 1s | --- |
-| 989 | [Problem 989](989.md) | — | See Project Euler Problem 989. |
+| 989 | [Problem 989](989.md) | 4m 1s | --- |
 | 990 | [Problem 990](990.md) | 4m 23s | --- |
 | 991 | [Problem 991](991.md) | 5m 32s | --- |
 | 992 | [Problem 992](992.md) | 4m 19s | --- |
 | 993 | [Problem 993](993.md) | 2m 1s | --- |
 | 994 | [Problem 994](994.md) | 5m 5s | --- |
-| 995 | [Problem 995](995.md) | — | See Project Euler Problem 995. |
+| 995 | [Problem 995](995.md) | 1m 44s | --- |
 | 996 | [Problem 996](996.md) | 2m 38s | --- |
-| 997 | [Problem 997](997.md) | — | --- |
+| 997 | [Problem 997](997.md) | 1m 47s | --- |
