@@ -32,19 +32,19 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 15 | [3Sum](00xx/15.md) | 🟡 Medium | 1m 43s | The problem gives us an integer array nums, and we need to find eve… |
 | 16 | [3Sum Closest](00xx/16.md) | 🟡 Medium | 1m 12s | The problem gives us an integer array nums and a target integer tar… |
 | 17 | [Letter Combinations of a Phone Number](00xx/17.md) | 🟡 Medium | 3m 42s | The problem gives a string of digits where each digit is between 2 … |
-| 18 | [4Sum](00xx/18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
+| 18 | [4Sum](00xx/18.md) | 🟡 Medium | 2m 28s | We are given an integer array nums and an integer target. The goal … |
 | 19 | [Remove Nth Node From End of List](00xx/19.md) | 🟡 Medium | 1m 7s | This problem asks us to remove the nth node counted from the end of… |
 | 20 | [Valid Parentheses](00xx/20.md) | 🟢 Easy | 1m 6s | The problem gives a string containing only six possible characters:… |
 | 21 | [Merge Two Sorted Lists](00xx/21.md) | 🟢 Easy | 2m 51s | This problem asks us to merge two already sorted singly linked list… |
 | 22 | [Generate Parentheses](00xx/22.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every possible valid combination of… |
 | 23 | [Merge k Sorted Lists](00xx/23.md) | 🔴 Hard | 1m 14s | The problem gives us an array of k sorted linked lists. Each linked… |
 | 24 | [Swap Nodes in Pairs](00xx/24.md) | 🟡 Medium | 2m 58s | The problem gives us the head of a singly linked list and asks us t… |
-| 25 | [Reverse Nodes in k-Group](00xx/25.md) | 🔴 Hard | 1m 25s | This problem asks us to reverse a linked list in groups of size k. … |
+| 25 | [Reverse Nodes in k-Group](00xx/25.md) | 🔴 Hard | 1m 46s | This problem asks us to reverse a singly linked list in groups of s… |
 | 26 | [Remove Duplicates from Sorted Array](00xx/26.md) | 🟢 Easy | 1m 55s | The problem gives us a sorted integer array nums in non-decreasing … |
 | 27 | [Remove Element](00xx/27.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and a target value val. … |
-| 28 | [Find the Index of the First Occurrence in a String](00xx/28.md) | 🟢 Easy | 1m 21s | The problem asks us to find the first position where the string nee… |
+| 28 | [Find the Index of the First Occurrence in a String](00xx/28.md) | 🟢 Easy | 5m 54s | This problem asks us to locate the first occurrence of one string i… |
 | 29 | [Divide Two Integers](00xx/29.md) | 🟡 Medium | 1m 29s | The problem asks us to implement integer division without using the… |
-| 30 | [Substring with Concatenation of All Words](00xx/30.md) | 🔴 Hard | 1m 46s | The problem gives us a string s and a list of words called words. E… |
+| 30 | [Substring with Concatenation of All Words](00xx/30.md) | 🔴 Hard | 1m 1s | The problem asks us to find all starting indices in a string s wher… |
 | 31 | [Next Permutation](00xx/31.md) | 🟡 Medium | 1m 8s | The problem asks us to modify an integer array so that it becomes t… |
 | 32 | [Longest Valid Parentheses](00xx/32.md) | 🔴 Hard | 1m 6s | The problem asks us to find the length of the longest contiguous su… |
 | 33 | [Search in Rotated Sorted Array](00xx/33.md) | 🟡 Medium | 1m 14s | The problem gives us an array that was originally sorted in ascendi… |
@@ -66,8 +66,8 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 49 | [Group Anagrams](00xx/49.md) | 🟡 Medium | 1m 38s | The problem asks us to group together all strings that are anagrams… |
 | 50 | [Pow(x, n)](00xx/50.md) | 🟡 Medium | 1m 26s | The problem asks us to implement exponentiation manually, specifica… |
 | 51 | [N-Queens](00xx/51.md) | 🔴 Hard | 3m 41s | The N-Queens problem asks us to place n queens on an n x n chessboa… |
-| 52 | [N-Queens II](00xx/52.md) | 🔴 Hard | 12m 17s | The problem asks us to count how many valid ways we can place n que… |
-| 53 | [Maximum Subarray](00xx/53.md) | 🟡 Medium | 12m 17s | The problem gives an integer array nums and asks us to find the con… |
+| 52 | [N-Queens II](00xx/52.md) | 🔴 Hard | 1m 7s | The n-queens puzzle asks us to place n queens on an n x n chessboar… |
+| 53 | [Maximum Subarray](00xx/53.md) | 🟡 Medium | 1m 2s | The problem gives an integer array nums and asks us to find a conti… |
 | 54 | [Spiral Matrix](00xx/54.md) | 🟡 Medium | 1m 8s | The problem gives an m x n matrix and asks us to return all element… |
 | 55 | [Jump Game](00xx/55.md) | 🟡 Medium | 1m 44s | The problem gives us an integer array nums, where each value repres… |
 | 56 | [Merge Intervals](00xx/56.md) | 🟡 Medium | 1m 30s | The problem gives an array of intervals, where each interval is rep… |
@@ -76,7 +76,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 59 | [Spiral Matrix II](00xx/59.md) | 🟡 Medium | 1m 34s | The problem asks us to generate an n x n matrix and fill it with nu… |
 | 60 | [Permutation Sequence](00xx/60.md) | 🔴 Hard | 5m 16s | The problem gives us the numbers from 1 to n, and asks us to find t… |
 | 61 | [Rotate List](00xx/61.md) | 🟡 Medium | 1m 11s | This problem asks us to rotate a singly linked list to the right by… |
-| 62 | [Unique Paths](00xx/62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
+| 62 | [Unique Paths](00xx/62.md) | 🟡 Medium | 1m 3s | The problem describes a robot moving on a rectangular m x n grid. T… |
 | 63 | [Unique Paths II](00xx/63.md) | 🟡 Medium | 1m 22s | This problem asks us to count how many different valid paths exist … |
 | 64 | [Minimum Path Sum](00xx/64.md) | 🟡 Medium | 2m 24s | The problem gives us a two dimensional grid of size m x n, where ea… |
 | 65 | [Valid Number](00xx/65.md) | 🔴 Hard | 2m 46s | This is a comprehensive, multi section technical guide that will be… |
@@ -84,8 +84,8 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 67 | [Add Binary](00xx/67.md) | 🟢 Easy | 2m 25s | You are given two strings, a and b, where each string represents a … |
 | 68 | [Text Justification](00xx/68.md) | 🔴 Hard | 1m 23s | This problem asks us to simulate how text is formatted in a text ed… |
 | 69 | [Sqrt(x)](00xx/69.md) | 🟢 Easy | 57s | The problem asks us to compute the integer square root of a non neg… |
-| 70 | [Climbing Stairs](00xx/70.md) | 🟢 Easy | 59s | The problem describes a staircase with n total steps, and you want … |
-| 71 | [Simplify Path](00xx/71.md) | 🟡 Medium | 1m 32s | This problem asks us to take an absolute Unix-style file path and c… |
+| 70 | [Climbing Stairs](00xx/70.md) | 🟢 Easy | 1m 8s | The problem describes a staircase with n total steps. You start at … |
+| 71 | [Simplify Path](00xx/71.md) | 🟡 Medium | 1m 1s | The problem gives us an absolute Unix-style file path and asks us t… |
 | 72 | [Edit Distance](00xx/72.md) | 🟡 Medium | 1m 37s | The problem asks us to compute the minimum number of edit operation… |
 | 73 | [Set Matrix Zeroes](00xx/73.md) | 🟡 Medium | 1m 27s | The problem gives us a two dimensional matrix of integers with m ro… |
 | 74 | [Search a 2D Matrix](00xx/74.md) | 🟡 Medium | 1m 36s | This problem gives us a two dimensional matrix with two very import… |
@@ -96,7 +96,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 79 | [Word Search](00xx/79.md) | 🟡 Medium | 2m 21s | In this problem, we are given a two dimensional grid of characters … |
 | 80 | [Remove Duplicates from Sorted Array II](00xx/80.md) | 🟡 Medium | 4m 7s | This problem asks us to modify a sorted integer array in-place so t… |
 | 81 | [Search in Rotated Sorted Array II](00xx/81.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a target value exists ins… |
-| 82 | [Remove Duplicates from Sorted List II](00xx/82.md) | 🟡 Medium | 1m 53s | This problem asks us to modify a sorted singly linked list so that … |
+| 82 | [Remove Duplicates from Sorted List II](00xx/82.md) | 🟡 Medium | 1m 11s | This problem asks us to process a sorted singly linked list and rem… |
 | 83 | [Remove Duplicates from Sorted List](00xx/83.md) | 🟢 Easy | 4m 18s | This problem asks us to remove duplicate values from a sorted singl… |
 | 84 | [Largest Rectangle in Histogram](00xx/84.md) | 🔴 Hard | 1m 12s | This problem asks us to find the largest rectangular area that can … |
 | 85 | [Maximal Rectangle](00xx/85.md) | 🔴 Hard | 1m 23s | The problem asks us to find the area of the largest rectangle conta… |
@@ -117,7 +117,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 100 | [Same Tree](01xx/100.md) | 🟢 Easy | 1m 39s | The problem asks us to determine whether two binary trees are exact… |
 | 101 | [Symmetric Tree](01xx/101.md) | 🟢 Easy | 1m 25s | The problem asks us to determine whether a binary tree is symmetric… |
 | 102 | [Binary Tree Level Order Traversal](01xx/102.md) | 🟡 Medium | 1m 30s | The problem asks us to perform a level order traversal on a binary … |
-| 103 | [Binary Tree Zigzag Level Order Traversal](01xx/103.md) | 🟡 Medium | 5m 39s | The problem asks us to perform a modified level order traversal on … |
+| 103 | [Binary Tree Zigzag Level Order Traversal](01xx/103.md) | 🟡 Medium | 1h 33m | The problem asks us to perform a level order traversal of a binary … |
 | 104 | [Maximum Depth of Binary Tree](01xx/104.md) | 🟢 Easy | 2m 53s | The problem asks us to determine the maximum depth of a binary tree… |
 | 105 | [Construct Binary Tree from Preorder and Inorder Traversal](01xx/105.md) | 🟡 Medium | 59s | The problem is asking us to reconstruct a binary tree given two tra… |
 | 106 | [Construct Binary Tree from Inorder and Postorder Traversal](01xx/106.md) | 🟡 Medium | 1m 9s | The problem provides two traversal orders of the same binary tree: … |
@@ -133,7 +133,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 116 | [Populating Next Right Pointers in Each Node](01xx/116.md) | 🟡 Medium | 53s | This problem asks us to populate the next pointers of nodes in a pe… |
 | 117 | [Populating Next Right Pointers in Each Node II](01xx/117.md) | 🟡 Medium | 1m 8s | The problem asks us to populate the next pointer for every node in … |
 | 118 | [Pascal's Triangle](01xx/118.md) | 🟢 Easy | 40s | The problem is asking us to generate the first numRows of Pascal's … |
-| 119 | [Pascal's Triangle II](01xx/119.md) | 🟢 Easy | 1m 21s | The problem asks us to return a specific row from Pascal's Triangle… |
+| 119 | [Pascal's Triangle II](01xx/119.md) | 🟢 Easy | 59s | This problem asks us to return a specific row from Pascal's Triangl… |
 | 120 | [Triangle](01xx/120.md) | 🟡 Medium | 1m 24s | The problem gives us a triangular array of integers and asks us to … |
 | 121 | [Best Time to Buy and Sell Stock](01xx/121.md) | 🟢 Easy | 56s | This problem asks us to determine the maximum profit that can be ma… |
 | 122 | [Best Time to Buy and Sell Stock II](01xx/122.md) | 🟡 Medium | 1m 2s | This problem asks us to maximize profit from stock trading over a s… |
@@ -143,7 +143,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 126 | [Word Ladder II](01xx/126.md) | 🔴 Hard | 1m 22s | This problem asks us to find all shortest transformation sequences … |
 | 127 | [Word Ladder](01xx/127.md) | 🔴 Hard | 1m 19s | This problem asks us to determine the length of the shortest transf… |
 | 128 | [Longest Consecutive Sequence](01xx/128.md) | 🟡 Medium | 59s | The problem asks us to find the length of the longest sequence of c… |
-| 129 | [Sum Root to Leaf Numbers](01xx/129.md) | 🟡 Medium | 1m 19s | This problem asks us to compute the sum of all numbers formed by ro… |
+| 129 | [Sum Root to Leaf Numbers](01xx/129.md) | 🟡 Medium | 1m 8s | The problem gives us the root of a binary tree where every node con… |
 | 130 | [Surrounded Regions](01xx/130.md) | 🟡 Medium | 1m 13s | The problem gives us a two dimensional grid called board, where eac… |
 | 131 | [Palindrome Partitioning](01xx/131.md) | 🟡 Medium | 1m 11s | The problem gives us a string s and asks us to divide it into subst… |
 | 132 | [Palindrome Partitioning II](01xx/132.md) | 🔴 Hard | 1m 41s | The problem asks us to split a string into substrings such that eve… |
@@ -158,7 +158,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 141 | [Linked List Cycle](01xx/141.md) | 🟢 Easy | 1m 12s | This problem asks us to determine whether a singly linked list cont… |
 | 142 | [Linked List Cycle II](01xx/142.md) | 🟡 Medium | 1m 6s | This problem asks us to determine whether a singly linked list cont… |
 | 143 | [Reorder List](01xx/143.md) | 🟡 Medium | 1m 34s | The problem gives us the head of a singly linked list and asks us t… |
-| 144 | [Binary Tree Preorder Traversal](01xx/144.md) | 🟢 Easy | 58s | This problem asks us to perform a preorder traversal on a binary tr… |
+| 144 | [Binary Tree Preorder Traversal](01xx/144.md) | 🟢 Easy | 1m 35s | This problem asks us to return the preorder traversal of a binary t… |
 | 145 | [Binary Tree Postorder Traversal](01xx/145.md) | 🟢 Easy | 1m 26s | The problem asks us to return the postorder traversal of a binary t… |
 | 146 | [LRU Cache](01xx/146.md) | 🟡 Medium | 1m 24s | The problem asks us to design an efficient cache that follows the L… |
 | 147 | [Insertion Sort List](01xx/147.md) | 🟡 Medium | 1m 23s | The problem asks us to sort a singly linked list using the insertio… |
@@ -174,7 +174,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 157 | [Read N Characters Given Read4](01xx/157.md) | 🟢 Easy | 1m 13s | This problem asks us to implement a read function using a restricte… |
 | 158 | [Read N Characters Given read4 II - Call Multiple Times](01xx/158.md) | 🔴 Hard | 1m 1s | This problem asks us to implement a read(buf, n) function using a r… |
 | 159 | [Longest Substring with At Most Two Distinct Characters](01xx/159.md) | 🟡 Medium | 1m 12s | The problem asks us to find the length of the longest contiguous su… |
-| 160 | [Intersection of Two Linked Lists](01xx/160.md) | 🟢 Easy | 59s | This problem asks us to determine whether two singly linked lists i… |
+| 160 | [Intersection of Two Linked Lists](01xx/160.md) | 🟢 Easy | 1m 21s | This problem asks us to determine whether two singly linked lists s… |
 | 161 | [One Edit Distance](01xx/161.md) | 🟡 Medium | 1m 7s | The problem asks us to determine whether two strings are exactly on… |
 | 162 | [Find Peak Element](01xx/162.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums and asks us to find the … |
 | 163 | [Missing Ranges](01xx/163.md) | 🟢 Easy | 1m 11s | This problem gives us three inputs: - A sorted array nums - A lower… |
@@ -182,11 +182,11 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 165 | [Compare Version Numbers](01xx/165.md) | 🟡 Medium | 59s | This problem asks us to compare two software version numbers repres… |
 | 166 | [Fraction to Recurring Decimal](01xx/166.md) | 🟡 Medium | 1m 5s | This problem asks us to convert a fraction, represented by an integ… |
 | 167 | [Two Sum II - Input Array Is Sorted](01xx/167.md) | 🟡 Medium | 1m 1s | This problem gives us a sorted, 1-indexed array of integers called … |
-| 168 | [Excel Sheet Column Title](01xx/168.md) | 🟢 Easy | 1m | The problem asks us to convert a positive integer into the column n… |
+| 168 | [Excel Sheet Column Title](01xx/168.md) | 🟢 Easy | 1m 23s | The problem asks us to convert a positive integer into the column n… |
 | 169 | [Majority Element](01xx/169.md) | 🟢 Easy | 30s | The problem asks us to identify the majority element in a given arr… |
 | 170 | [Two Sum III - Data structure design](01xx/170.md) | 🟢 Easy | 1m 6s | The problem asks us to design a data structure that supports two op… |
 | 171 | [Excel Sheet Column Number](01xx/171.md) | 🟢 Easy | 1m 3s | This problem asks us to convert an Excel-style column title into it… |
-| 172 | [Factorial Trailing Zeroes](01xx/172.md) | 🟡 Medium | 46s | The problem asks us to determine how many trailing zeroes appear at… |
+| 172 | [Factorial Trailing Zeroes](01xx/172.md) | 🟡 Medium | 1m 36s | The problem asks us to determine how many trailing zeroes appear at… |
 | 173 | [Binary Search Tree Iterator](01xx/173.md) | 🟡 Medium | 56s | It looks like your prompt accidentally concatenated two problems. I… |
 | 174 | [Dungeon Game](01xx/174.md) | 🔴 Hard | 1m 10s | This problem asks us to determine the minimum initial health a knig… |
 | 175 | [Combine Two Tables](01xx/175.md) | 🟢 Easy | 46s | The problem is asking us to combine two relational database tables,… |
@@ -195,15 +195,15 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 178 | [Rank Scores](01xx/178.md) | 🟡 Medium | 1m 17s | The problem gives us a database table named Scores that contains tw… |
 | 179 | [Largest Number](01xx/179.md) | 🟡 Medium | 1m 18s | This problem asks us to rearrange a list of non-negative integers s… |
 | 180 | [Consecutive Numbers](01xx/180.md) | 🟡 Medium | 41s | This problem asks us to find numbers in a table that appear at leas… |
-| 181 | [Employees Earning More Than Their Managers](01xx/181.md) | 🟢 Easy | 54s | This problem asks us to identify employees whose salary is greater … |
-| 182 | [Duplicate Emails](01xx/182.md) | 🟢 Easy | 1m 11s | This problem provides a database table named Person with two column… |
-| 183 | [Customers Who Never Order](01xx/183.md) | 🟢 Easy | 1m 8s | This problem provides two database tables, Customers and Orders. Th… |
-| 184 | [Department Highest Salary](01xx/184.md) | 🟡 Medium | 1m 41s | This problem asks us to identify the employee or employees who earn… |
-| 185 | [Department Top Three Salaries](01xx/185.md) | 🔴 Hard | 1m 9s | This problem asks us to identify the employees who belong to the to… |
-| 186 | [Reverse Words in a String II](01xx/186.md) | 🟡 Medium | 50s | This problem asks us to reverse the order of words inside a charact… |
-| 187 | [Repeated DNA Sequences](01xx/187.md) | 🟡 Medium | 2m 17s | The problem gives us a DNA string consisting only of the four chara… |
-| 188 | [Best Time to Buy and Sell Stock IV](01xx/188.md) | 🔴 Hard | 57s | This problem asks us to maximize profit from buying and selling a s… |
-| 189 | [Rotate Array](01xx/189.md) | 🟡 Medium | 1m | The problem asks us to rotate an array to the right by k positions.… |
+| 181 | [Employees Earning More Than Their Managers](01xx/181.md) | 🟢 Easy | 1m 15s | This problem gives us a single database table named Employee. Each … |
+| 182 | [Duplicate Emails](01xx/182.md) | 🟢 Easy | 2m 51s | The problem gives us a database table named Person with two columns… |
+| 183 | [Customers Who Never Order](01xx/183.md) | 🟢 Easy | 31s | This problem is asking us to identify all customers from a Customer… |
+| 184 | [Department Highest Salary](01xx/184.md) | 🟡 Medium | 39s | The problem asks us to find employees with the highest salary in ea… |
+| 185 | [Department Top Three Salaries](01xx/185.md) | 🔴 Hard | 1m 12s | This is a SQL database problem where we need to identify the employ… |
+| 186 | [Reverse Words in a String II](01xx/186.md) | 🟡 Medium | 39s | The problem asks us to reverse the order of words in a character ar… |
+| 187 | [Repeated DNA Sequences](01xx/187.md) | 🟡 Medium | 53s | This problem asks us to find all repeated DNA subsequences of a fix… |
+| 188 | [Best Time to Buy and Sell Stock IV](01xx/188.md) | 🔴 Hard | 39s | This problem asks us to maximize the profit from stock trading unde… |
+| 189 | [Rotate Array](01xx/189.md) | 🟡 Medium | 50s | The problem asks us to rotate a given integer array nums to the rig… |
 | 190 | [Reverse Bits](01xx/190.md) | 🟢 Easy | 56s | The problem asks us to reverse the binary representation of a 32-bi… |
 | 191 | [Number of 1 Bits](01xx/191.md) | 🟢 Easy | 53s | The problem asks us to count how many bits are set to 1 in the bina… |
 | 192 | [Word Frequency](01xx/192.md) | 🟡 Medium | 2m 21s | This problem asks us to write a shell script that reads a text file… |
@@ -494,24 +494,73 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 477 | [Total Hamming Distance](04xx/477.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the total Hamming distance between e… |
 | 478 | [Generate Random Point in a Circle](04xx/478.md) | 🟡 Medium | 1m 23s | This problem asks us to generate random points uniformly inside a c… |
 | 479 | [Largest Palindrome Product](04xx/479.md) | 🔴 Hard | 1m 14s | The problem asks us to find the largest palindrome number that can … |
-| 480 | [Sliding Window Median](04xx/480.md) | 🔴 Hard | 1m 30s | The problem asks us to compute the median for every contiguous suba… |
-| 481 | [Magical String](04xx/481.md) | 🟡 Medium | 57s | The problem defines a special sequence called the magical string. T… |
-| 482 | [License Key Formatting](04xx/482.md) | 🟢 Easy | 44s | The problem is asking us to reformat a string representing a licens… |
-| 483 | [Smallest Good Base](04xx/483.md) | 🔴 Hard | 1m 6s | The problem gives us a decimal integer n as a string, and asks us t… |
-| 484 | [Find Permutation](04xx/484.md) | 🟡 Medium | 1m 2s | The problem gives us a string s consisting only of the characters '… |
-| 485 | [Max Consecutive Ones](04xx/485.md) | 🟢 Easy | 58s | The problem gives us a binary array named nums, meaning every eleme… |
+| 480 | [Sliding Window Median](04xx/480.md) | 🔴 Hard | 1m 32s | The problem asks us to compute the median for every contiguous suba… |
+| 481 | [Magical String](04xx/481.md) | 🟡 Medium | 1m 26s | This problem defines a special infinite sequence called the magical… |
+| 482 | [License Key Formatting](04xx/482.md) | 🟢 Easy | 1m 10s | The problem gives us a string s that represents a license key. The … |
+| 483 | [Smallest Good Base](04xx/483.md) | 🔴 Hard | 57s | The problem is asking us to find the smallest integer k = 2 such th… |
+| 484 | [Find Permutation](04xx/484.md) | 🟡 Medium | 1m 9s | The problem gives us a string s consisting only of the characters '… |
+| 485 | [Max Consecutive Ones](04xx/485.md) | 🟢 Easy | 57s | The problem gives us a binary array named nums, where every element… |
 | 486 | [Predict the Winner](04xx/486.md) | 🟡 Medium | 1m 9s | The problem describes a two-player game played on an integer array.… |
-| 487 | [Max Consecutive Ones II](04xx/487.md) | 🟡 Medium | 1m 37s | The problem gives us a binary array, meaning every element is eithe… |
-| 488 | [Zuma Game](04xx/488.md) | 🔴 Hard | 1m 36s | The problem models a recursive elimination game. We are given a str… |
-| 489 | [Robot Room Cleaner](04xx/489.md) | 🔴 Hard | 1m 5s | This problem is an interactive grid traversal problem where we cont… |
+| 487 | [Max Consecutive Ones II](04xx/487.md) | 🟡 Medium | 1m | The problem gives us a binary array nums, where every element is ei… |
+| 488 | [Zuma Game](04xx/488.md) | 🔴 Hard | 1m 24s | The problem models a recursive elimination game played on a row of … |
+| 489 | [Robot Room Cleaner](04xx/489.md) | 🔴 Hard | 1m 7s | This problem is an interactive backtracking problem where we must c… |
 | 490 | [The Maze](04xx/490.md) | 🟡 Medium | 1m 22s | This problem asks us to determine whether a rolling ball can stop e… |
-| 491 | [Non-decreasing Subsequences](04xx/491.md) | 🟡 Medium | 1m 27s | The problem asks us to generate every distinct subsequence of the i… |
-| 492 | [Construct the Rectangle](04xx/492.md) | 🟢 Easy | 57s | The problem gives us a single integer area, representing the total … |
-| 493 | [Reverse Pairs](04xx/493.md) | 🔴 Hard | 30s | The problem asks us to count the number of reverse pairs in an arra… |
+| 491 | [Non-decreasing Subsequences](04xx/491.md) | 🟡 Medium | 2m 43s | The problem gives us an integer array nums and asks us to return ev… |
+| 492 | [Construct the Rectangle](04xx/492.md) | 🟢 Easy | 43s | The problem gives us a single integer, area, which represents the a… |
+| 493 | [Reverse Pairs](04xx/493.md) | 🔴 Hard | 59s | The problem asks us to count how many pairs of indices (i, j) satis… |
 | 494 | [Target Sum](04xx/494.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many different ways we can assign … |
-| 495 | [Teemo Attacking](04xx/495.md) | 🟢 Easy | 54s | The problem describes a sequence of poison attacks applied by Teemo… |
-| 496 | [Next Greater Element I](04xx/496.md) | 🟢 Easy | 1m 4s | The problem asks us to find the "next greater element" for every nu… |
-| 497 | [Random Point in Non-overlapping Rectangles](04xx/497.md) | 🟡 Medium | 1m 10s | The problem gives us a collection of non-overlapping axis-aligned r… |
-| 498 | [Diagonal Traverse](04xx/498.md) | 🟡 Medium | 35s | This problem asks us to traverse a given m x n matrix in a diagonal… |
-| 499 | [The Maze III](04xx/499.md) | 🔴 Hard | 2m 7s | This problem asks us to navigate a rolling ball through a maze and … |
-| 500 | [Keyboard Row](05xx/500.md) | 🟢 Easy | 46s | This problem asks us to identify words from a list that can be type… |
+| 495 | [Teemo Attacking](04xx/495.md) | 🟢 Easy | 34s | The problem asks us to calculate the total duration that Ashe is po… |
+| 496 | [Next Greater Element I](04xx/496.md) | 🟢 Easy | 55s | The problem is asking us to find the next greater element for each … |
+| 497 | [Random Point in Non-overlapping Rectangles](04xx/497.md) | 🟡 Medium | 32s | The problem asks us to randomly pick an integer point from a set of… |
+| 498 | [Diagonal Traverse](04xx/498.md) | 🟡 Medium | 1m 30s | This problem asks us to traverse a matrix in a specific diagonal pa… |
+| 499 | [The Maze III](04xx/499.md) | 🔴 Hard | 2m 15s | This problem extends the mechanics introduced in earlier Maze probl… |
+| 500 | [Keyboard Row](05xx/500.md) | 🟢 Easy | 1m | This problem asks us to determine which words in a given list can b… |
+| 501 | [Find Mode in Binary Search Tree](05xx/501.md) | 🟢 Easy | 55s | This problem asks us to find the mode(s) in a Binary Search Tree (B… |
+| 502 | [IPO](05xx/502.md) | 🔴 Hard | 1m 16s | The problem describes a scenario where we have a limited number of … |
+| 503 | [Next Greater Element II](05xx/503.md) | 🟡 Medium | 1m 20s | The problem gives us a circular array nums, and for every element, … |
+| 504 | [Base 7](05xx/504.md) | 🟢 Easy | 38s | The problem asks us to convert a given integer num into its represe… |
+| 505 | [The Maze II](05xx/505.md) | 🟡 Medium | 35s | This problem presents a maze represented as a 2D grid of size m x n… |
+| 506 | [Relative Ranks](05xx/506.md) | 🟢 Easy | 1m 2s | The problem gives us an array named score, where each element repre… |
+| 507 | [Perfect Number](05xx/507.md) | 🟢 Easy | 52s | This problem asks us to determine whether a given positive integer … |
+| 508 | [Most Frequent Subtree Sum](05xx/508.md) | 🟡 Medium | 1m 7s | The problem asks us to compute the subtree sum for every node in a … |
+| 509 | [Fibonacci Number](05xx/509.md) | 🟢 Easy | 56s | This problem asks us to compute the nth Fibonacci number. The Fibon… |
+| 510 | [Inorder Successor in BST II](05xx/510.md) | 🟡 Medium | 1m 14s | This problem asks us to find the in-order successor of a given node… |
+| 511 | [Game Play Analysis I](05xx/511.md) | 🟢 Easy | 1m 6s | This problem asks us to determine the first day each player logged … |
+| 512 | [Game Play Analysis II](05xx/512.md) | 🟢 Easy | 1m 18s | The Activity table records gameplay sessions for different players.… |
+| 513 | [Find Bottom Left Tree Value](05xx/513.md) | 🟡 Medium | 49s | The problem asks us to find the leftmost value in the last row of a… |
+| 514 | [Freedom Trail](05xx/514.md) | 🔴 Hard | 1m 22s | The problem models a circular dial, represented by the string ring,… |
+| 515 | [Find Largest Value in Each Tree Row](05xx/515.md) | 🟡 Medium | 44s | The problem asks us to find the largest value in each row of a bina… |
+| 516 | [Longest Palindromic Subsequence](05xx/516.md) | 🟡 Medium | 42s | The problem asks us to determine the length of the longest palindro… |
+| 517 | [Super Washing Machines](05xx/517.md) | 🔴 Hard | 1m 56s | The problem gives us a line of washing machines, where each machine… |
+| 518 | [Coin Change II](05xx/518.md) | 🟡 Medium | 1m 19s | This problem asks us to compute the number of distinct combinations… |
+| 519 | [Random Flip Matrix](05xx/519.md) | 🟡 Medium | 55s | This problem asks us to design a data structure that simulates rand… |
+| 520 | [Detect Capital](05xx/520.md) | 🟢 Easy | 1m 21s | only conditions are satisfied. |
+| 521 | [Longest Uncommon Subsequence I](05xx/521.md) | 🟢 Easy | 51s | The problem asks us to find the length of the longest uncommon subs… |
+| 522 | [Longest Uncommon Subsequence II](05xx/522.md) | 🟡 Medium | 53s | The problem asks us to find the length of the longest string in the… |
+| 523 | [Continuous Subarray Sum](05xx/523.md) | 🟡 Medium | 1m 7s | The problem asks us to determine whether an array contains a contin… |
+| 524 | [Longest Word in Dictionary through Deleting](05xx/524.md) | 🟡 Medium | 57s | The problem gives us a source string s and a list of candidate word… |
+| 525 | [Contiguous Array](05xx/525.md) | 🟡 Medium | 1m 24s | This problem asks us to find the maximum length of a contiguous sub… |
+| 526 | [Beautiful Arrangement](05xx/526.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many permutations of the integers … |
+| 527 | [Word Abbreviation](05xx/527.md) | 🔴 Hard | 1m | This problem asks us to generate the shortest possible unique abbre… |
+| 528 | [Random Pick with Weight](05xx/528.md) | 🟡 Medium | 52s | The problem asks us to design a data structure that supports weight… |
+| 529 | [Minesweeper](05xx/529.md) | 🟡 Medium | 1m 9s | This problem asks us to simulate one move in the classic Minesweepe… |
+| 530 | [Minimum Absolute Difference in BST](05xx/530.md) | 🟢 Easy | 36s | The problem asks us to find the minimum absolute difference between… |
+| 531 | [Lonely Pixel I](05xx/531.md) | 🟡 Medium | 1m 7s | The problem gives us a 2D grid called picture, where each cell cont… |
+| 532 | [K-diff Pairs in an Array](05xx/532.md) | 🟡 Medium | 1m 3s | The problem asks us to determine the number of unique k-diff pairs … |
+| 534 | [Game Play Analysis III](05xx/534.md) | 🟡 Medium | 1m 29s | The problem provides a database table named Activity, where each ro… |
+| 535 | [Encode and Decode TinyURL](05xx/535.md) | 🟡 Medium | 1m 19s | The problem asks us to design a service that can take any valid URL… |
+| 536 | [Construct Binary Tree from String](05xx/536.md) | 🟡 Medium | 1m | This problem requires constructing a binary tree from a string repr… |
+| 537 | [Complex Number Multiplication](05xx/537.md) | 🟡 Medium | 49s | This problem asks us to perform multiplication of two complex numbe… |
+| 538 | [Convert BST to Greater Tree](05xx/538.md) | 🟡 Medium | 47s | This problem asks us to transform a Binary Search Tree (BST) into a… |
+| 539 | [Minimum Time Difference](05xx/539.md) | 🟡 Medium | 1m 8s | The problem gives a list of time points represented as strings in 2… |
+| 540 | [Single Element in a Sorted Array](05xx/540.md) | 🟡 Medium | 1m 28s | The problem gives us a sorted integer array where every value appea… |
+| 541 | [Reverse String II](05xx/541.md) | 🟢 Easy | 1m 21s | The problem asks us to process a string in fixed-size segments and … |
+| 542 | [01 Matrix](05xx/542.md) | 🟡 Medium | 38s | The problem asks us to compute, for each cell in a binary matrix, t… |
+| 543 | [Diameter of Binary Tree](05xx/543.md) | 🟢 Easy | 56s | This problem asks us to compute the diameter of a binary tree. The … |
+| 544 | [Output Contest Matches](05xx/544.md) | 🟡 Medium | 56s | This problem asks us to simulate the structure of a tournament brac… |
+| 545 | [Boundary of Binary Tree](05xx/545.md) | 🟡 Medium | 1m 18s | This problem asks us to compute the boundary traversal of a binary … |
+| 546 | [Remove Boxes](05xx/546.md) | 🔴 Hard | 1m 21s | In this problem, we are given an array called boxes, where each int… |
+| 547 | [Number of Provinces](05xx/547.md) | 🟡 Medium | 38s | The problem asks us to find the number of provinces in a network of… |
+| 548 | [Split Array with Equal Sum](05xx/548.md) | 🔴 Hard | 37s | The problem asks us to determine whether an integer array nums can … |
+| 549 | [Binary Tree Longest Consecutive Sequence II](05xx/549.md) | 🟡 Medium | 1m 4s | This problem asks us to find the longest path in a binary tree wher… |
+| 550 | [Game Play Analysis IV](05xx/550.md) | 🟡 Medium | 1m 23s | The problem asks us to calculate the fraction of players who return… |

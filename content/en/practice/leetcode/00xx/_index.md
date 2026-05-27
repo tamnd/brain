@@ -27,19 +27,19 @@ draft: false
 | 15 | [3Sum](15.md) | 🟡 Medium | 1m 43s | The problem gives us an integer array nums, and we need to find eve… |
 | 16 | [3Sum Closest](16.md) | 🟡 Medium | 1m 12s | The problem gives us an integer array nums and a target integer tar… |
 | 17 | [Letter Combinations of a Phone Number](17.md) | 🟡 Medium | 3m 42s | The problem gives a string of digits where each digit is between 2 … |
-| 18 | [4Sum](18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
+| 18 | [4Sum](18.md) | 🟡 Medium | 2m 28s | We are given an integer array nums and an integer target. The goal … |
 | 19 | [Remove Nth Node From End of List](19.md) | 🟡 Medium | 1m 7s | This problem asks us to remove the nth node counted from the end of… |
 | 20 | [Valid Parentheses](20.md) | 🟢 Easy | 1m 6s | The problem gives a string containing only six possible characters:… |
 | 21 | [Merge Two Sorted Lists](21.md) | 🟢 Easy | 2m 51s | This problem asks us to merge two already sorted singly linked list… |
 | 22 | [Generate Parentheses](22.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every possible valid combination of… |
 | 23 | [Merge k Sorted Lists](23.md) | 🔴 Hard | 1m 14s | The problem gives us an array of k sorted linked lists. Each linked… |
 | 24 | [Swap Nodes in Pairs](24.md) | 🟡 Medium | 2m 58s | The problem gives us the head of a singly linked list and asks us t… |
-| 25 | [Reverse Nodes in k-Group](25.md) | 🔴 Hard | 1m 25s | This problem asks us to reverse a linked list in groups of size k. … |
+| 25 | [Reverse Nodes in k-Group](25.md) | 🔴 Hard | 1m 46s | This problem asks us to reverse a singly linked list in groups of s… |
 | 26 | [Remove Duplicates from Sorted Array](26.md) | 🟢 Easy | 1m 55s | The problem gives us a sorted integer array nums in non-decreasing … |
 | 27 | [Remove Element](27.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and a target value val. … |
-| 28 | [Find the Index of the First Occurrence in a String](28.md) | 🟢 Easy | 1m 21s | The problem asks us to find the first position where the string nee… |
+| 28 | [Find the Index of the First Occurrence in a String](28.md) | 🟢 Easy | 5m 54s | This problem asks us to locate the first occurrence of one string i… |
 | 29 | [Divide Two Integers](29.md) | 🟡 Medium | 1m 29s | The problem asks us to implement integer division without using the… |
-| 30 | [Substring with Concatenation of All Words](30.md) | 🔴 Hard | 1m 46s | The problem gives us a string s and a list of words called words. E… |
+| 30 | [Substring with Concatenation of All Words](30.md) | 🔴 Hard | 1m 1s | The problem asks us to find all starting indices in a string s wher… |
 | 31 | [Next Permutation](31.md) | 🟡 Medium | 1m 8s | The problem asks us to modify an integer array so that it becomes t… |
 | 32 | [Longest Valid Parentheses](32.md) | 🔴 Hard | 1m 6s | The problem asks us to find the length of the longest contiguous su… |
 | 33 | [Search in Rotated Sorted Array](33.md) | 🟡 Medium | 1m 14s | The problem gives us an array that was originally sorted in ascendi… |
@@ -61,8 +61,8 @@ draft: false
 | 49 | [Group Anagrams](49.md) | 🟡 Medium | 1m 38s | The problem asks us to group together all strings that are anagrams… |
 | 50 | [Pow(x, n)](50.md) | 🟡 Medium | 1m 26s | The problem asks us to implement exponentiation manually, specifica… |
 | 51 | [N-Queens](51.md) | 🔴 Hard | 3m 41s | The N-Queens problem asks us to place n queens on an n x n chessboa… |
-| 52 | [N-Queens II](52.md) | 🔴 Hard | 12m 17s | The problem asks us to count how many valid ways we can place n que… |
-| 53 | [Maximum Subarray](53.md) | 🟡 Medium | 12m 17s | The problem gives an integer array nums and asks us to find the con… |
+| 52 | [N-Queens II](52.md) | 🔴 Hard | 1m 7s | The n-queens puzzle asks us to place n queens on an n x n chessboar… |
+| 53 | [Maximum Subarray](53.md) | 🟡 Medium | 1m 2s | The problem gives an integer array nums and asks us to find a conti… |
 | 54 | [Spiral Matrix](54.md) | 🟡 Medium | 1m 8s | The problem gives an m x n matrix and asks us to return all element… |
 | 55 | [Jump Game](55.md) | 🟡 Medium | 1m 44s | The problem gives us an integer array nums, where each value repres… |
 | 56 | [Merge Intervals](56.md) | 🟡 Medium | 1m 30s | The problem gives an array of intervals, where each interval is rep… |
@@ -71,7 +71,7 @@ draft: false
 | 59 | [Spiral Matrix II](59.md) | 🟡 Medium | 1m 34s | The problem asks us to generate an n x n matrix and fill it with nu… |
 | 60 | [Permutation Sequence](60.md) | 🔴 Hard | 5m 16s | The problem gives us the numbers from 1 to n, and asks us to find t… |
 | 61 | [Rotate List](61.md) | 🟡 Medium | 1m 11s | This problem asks us to rotate a singly linked list to the right by… |
-| 62 | [Unique Paths](62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
+| 62 | [Unique Paths](62.md) | 🟡 Medium | 1m 3s | The problem describes a robot moving on a rectangular m x n grid. T… |
 | 63 | [Unique Paths II](63.md) | 🟡 Medium | 1m 22s | This problem asks us to count how many different valid paths exist … |
 | 64 | [Minimum Path Sum](64.md) | 🟡 Medium | 2m 24s | The problem gives us a two dimensional grid of size m x n, where ea… |
 | 65 | [Valid Number](65.md) | 🔴 Hard | 2m 46s | This is a comprehensive, multi section technical guide that will be… |
@@ -79,8 +79,8 @@ draft: false
 | 67 | [Add Binary](67.md) | 🟢 Easy | 2m 25s | You are given two strings, a and b, where each string represents a … |
 | 68 | [Text Justification](68.md) | 🔴 Hard | 1m 23s | This problem asks us to simulate how text is formatted in a text ed… |
 | 69 | [Sqrt(x)](69.md) | 🟢 Easy | 57s | The problem asks us to compute the integer square root of a non neg… |
-| 70 | [Climbing Stairs](70.md) | 🟢 Easy | 59s | The problem describes a staircase with n total steps, and you want … |
-| 71 | [Simplify Path](71.md) | 🟡 Medium | 1m 32s | This problem asks us to take an absolute Unix-style file path and c… |
+| 70 | [Climbing Stairs](70.md) | 🟢 Easy | 1m 8s | The problem describes a staircase with n total steps. You start at … |
+| 71 | [Simplify Path](71.md) | 🟡 Medium | 1m 1s | The problem gives us an absolute Unix-style file path and asks us t… |
 | 72 | [Edit Distance](72.md) | 🟡 Medium | 1m 37s | The problem asks us to compute the minimum number of edit operation… |
 | 73 | [Set Matrix Zeroes](73.md) | 🟡 Medium | 1m 27s | The problem gives us a two dimensional matrix of integers with m ro… |
 | 74 | [Search a 2D Matrix](74.md) | 🟡 Medium | 1m 36s | This problem gives us a two dimensional matrix with two very import… |
@@ -91,7 +91,7 @@ draft: false
 | 79 | [Word Search](79.md) | 🟡 Medium | 2m 21s | In this problem, we are given a two dimensional grid of characters … |
 | 80 | [Remove Duplicates from Sorted Array II](80.md) | 🟡 Medium | 4m 7s | This problem asks us to modify a sorted integer array in-place so t… |
 | 81 | [Search in Rotated Sorted Array II](81.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a target value exists ins… |
-| 82 | [Remove Duplicates from Sorted List II](82.md) | 🟡 Medium | 1m 53s | This problem asks us to modify a sorted singly linked list so that … |
+| 82 | [Remove Duplicates from Sorted List II](82.md) | 🟡 Medium | 1m 11s | This problem asks us to process a sorted singly linked list and rem… |
 | 83 | [Remove Duplicates from Sorted List](83.md) | 🟢 Easy | 4m 18s | This problem asks us to remove duplicate values from a sorted singl… |
 | 84 | [Largest Rectangle in Histogram](84.md) | 🔴 Hard | 1m 12s | This problem asks us to find the largest rectangular area that can … |
 | 85 | [Maximal Rectangle](85.md) | 🔴 Hard | 1m 23s | The problem asks us to find the area of the largest rectangle conta… |
