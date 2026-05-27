@@ -57,8 +57,10 @@ jobs:
       - name: Build site
         run: tago build --base-url "https://brain.tamnd.com/"
 
-      - name: Remove cache db before deploy
-        run: rm -f public/.tago-cache.db
+      - name: Remove oversized files before deploy
+        run: |
+          find public -size +24M -print -delete
+          ls -lah public/ | head -20
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4.0.0
