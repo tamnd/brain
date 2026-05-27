@@ -20,7 +20,6 @@ draft: false
 **Tags:** brute force, math  
 **Solve time:** 46s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a172382-2e80-83ec-99cf-854c2b908859  
 
 ## Solution
 ## Problem Understanding

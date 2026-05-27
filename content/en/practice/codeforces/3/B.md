@@ -20,7 +20,6 @@ draft: false
 **Tags:** greedy, sortings  
 **Solve time:** 2m 48s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a1723a8-b9f8-83ec-bd21-ba94adf59709  
 
 ## Solution
 ## Problem Understanding

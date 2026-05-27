@@ -8,6 +8,7 @@ contest_type: "Beta"
 rating_range: "2000-2000"
 n_problems: 1
 n_verified: 0
+total_solve_s: 157
 date: "2026-05-27T00:00:00+07:00"
 weight: 2
 draft: false
@@ -15,8 +16,8 @@ draft: false
 
 # [Codeforces Beta Round 2](https://codeforces.com/contest/2)
 
-**Type:** Beta | **Problems:** 1 | **Verified:** 0/1 | **Rating range:** 2000-2000 | **Date:** 2026-05-27
+**Type:** Beta | **Problems:** 1 | **Verified:** 0/1 | **Rating range:** 2000-2000 | **Time:** 2m 37s
 
-| Problem | Name | Rating | Tags | Solve Time | Share | Verified |
-|---|---|---|---|---|---|---|
-| [B](B.md) | [The least round way](https://codeforces.com/problemset/problem/2/B) | 2000 | dp, math | 2m 37s | [share](https://chatgpt.com/share/6a1721bc-d1f8-83ec-bdec-611a72c4aa15) | ✗ |
+| Problem | Name | Rating | Tags | Solve Time | Verified |
+|---|---|---|---|---|---|
+| [B](B/) | [The least round way](https://codeforces.com/problemset/problem/2/B) | 2000 | dp, math | 2m 37s | ✗ |

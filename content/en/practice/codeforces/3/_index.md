@@ -8,6 +8,7 @@ contest_type: "Beta"
 rating_range: "1800-2600"
 n_problems: 3
 n_verified: 3
+total_solve_s: 412
 date: "2026-05-28T00:00:00+07:00"
 weight: 3
 draft: false
@@ -15,10 +16,10 @@ draft: false
 
 # [Codeforces Beta Round 3](https://codeforces.com/contest/3)
 
-**Type:** Beta | **Problems:** 3 | **Verified:** 3/3 | **Rating range:** 1800-2600 | **Date:** 2026-05-28
+**Type:** Beta | **Problems:** 3 | **Verified:** 3/3 | **Rating range:** 1800-2600 | **Time:** 6m 52s
 
-| Problem | Name | Rating | Tags | Solve Time | Share | Verified |
-|---|---|---|---|---|---|---|
-| [B](B.md) | [Lorry](https://codeforces.com/problemset/problem/3/B) | 1900 | greedy, sortings | 2m 48s | [share](https://chatgpt.com/share/6a1723a8-b9f8-83ec-bd21-ba94adf59709) | ✓ |
-| [C](C.md) | [Tic-tac-toe](https://codeforces.com/problemset/problem/3/C) | 1800 | brute-force, games, implementation | 1m 43s | [share](https://chatgpt.com/share/6a172218-b5fc-83ec-b31f-66f83a2faf7e) | ✓ |
-| [D](D.md) | [Least Cost Bracket Sequence](https://codeforces.com/problemset/problem/3/D) | 2600 | greedy | 2m 21s | [share](https://chatgpt.com/share/6a172277-5124-83ec-be4e-543814d557ee) | ✓ |
+| Problem | Name | Rating | Tags | Solve Time | Verified |
+|---|---|---|---|---|---|
+| [B](B/) | [Lorry](https://codeforces.com/problemset/problem/3/B) | 1900 | greedy, sortings | 2m 48s | ✓ |
+| [C](C/) | [Tic-tac-toe](https://codeforces.com/problemset/problem/3/C) | 1800 | brute-force, games, implementation | 1m 43s | ✓ |
+| [D](D/) | [Least Cost Bracket Sequence](https://codeforces.com/problemset/problem/3/D) | 2600 | greedy | 2m 21s | ✓ |

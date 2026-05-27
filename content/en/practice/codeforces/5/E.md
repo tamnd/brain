@@ -20,7 +20,6 @@ draft: false
 **Tags:** data structures  
 **Solve time:** 1m 21s  
 **Verified:** yes  
-**Share:** https://chatgpt.com/share/6a172351-da7c-83ec-aff7-72ba2dbd8b54  
 
 ## Solution
 ## Problem Understanding
