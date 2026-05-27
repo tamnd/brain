@@ -50,3 +50,16 @@ draft: false
 | 48 | [Rotate Image](48.md) | 🟡 Medium | 6m 20s | The problem gives us an n x n matrix that represents an image. Each… |
 | 49 | [Group Anagrams](49.md) | 🟡 Medium | 1m 36s | The problem asks us to take an array of strings and group together … |
 | 50 | [Pow(x, n)](50.md) | 🟡 Medium | 1m 19s | The problem asks us to implement a function that computes x raised … |
+| 51 | [N-Queens](51.md) | 🔴 Hard | 11m 42s | The problem asks us to place n queens on an n x n chessboard such t… |
+| 52 | [N-Queens II](52.md) | 🔴 Hard | 12m 17s | The problem asks us to count how many valid ways we can place n que… |
+| 53 | [Maximum Subarray](53.md) | 🟡 Medium | 12m 17s | The problem gives an integer array nums and asks us to find the con… |
+| 54 | [Spiral Matrix](54.md) | 🟡 Medium | 1m 6s | The problem asks us to traverse a two dimensional matrix in spiral … |
+| 55 | [Jump Game](55.md) | 🟡 Medium | 2m 19s | The problem gives us an integer array nums, where each element repr… |
+| 56 | [Merge Intervals](56.md) | 🟡 Medium | 1m 46s | The problem gives an array of intervals, where each interval is rep… |
+| 57 | [Insert Interval](57.md) | 🟡 Medium | 2m 19s | This problem asks us to insert a new interval into an already sorte… |
+| 58 | [Length of Last Word](58.md) | 🟢 Easy | 52s | This problem asks us to find the length of the final word in a stri… |
+| 59 | [Spiral Matrix II](59.md) | 🟡 Medium | 1m 16s | This problem asks us to generate an n x n square matrix and fill it… |
+| 60 | [Permutation Sequence](60.md) | 🔴 Hard | 1m 20s | This problem asks us to find the kth permutation of the numbers fro… |
+| 61 | [Rotate List](61.md) | 🟡 Medium | 56s | This problem asks us to rotate a singly linked list to the right by… |
+| 62 | [Unique Paths](62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
+| 63 | [Unique Paths II](63.md) | 🟡 Medium | 55s | This problem asks us to count how many different valid ways a robot… |
