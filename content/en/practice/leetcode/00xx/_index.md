@@ -30,15 +30,15 @@ draft: false
 | 18 | [4Sum](18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
 | 19 | [Remove Nth Node From End of List](19.md) | 🟡 Medium | 1m 7s | This problem asks us to remove the nth node counted from the end of… |
 | 20 | [Valid Parentheses](20.md) | 🟢 Easy | 1m 6s | The problem gives a string containing only six possible characters:… |
-| 21 | [Merge Two Sorted Lists](21.md) | 🟢 Easy | 1m 33s | This problem asks us to merge two already sorted singly linked list… |
-| 22 | [Generate Parentheses](22.md) | 🟡 Medium | 2m 41s | The problem asks us to generate every possible valid combination of… |
-| 23 | [Merge k Sorted Lists](23.md) | 🔴 Hard | 2m 6s | The problem gives us an array named lists, where each element is th… |
-| 24 | [Swap Nodes in Pairs](24.md) | 🟡 Medium | 1m 3s | This problem asks us to modify a singly linked list so that every p… |
+| 21 | [Merge Two Sorted Lists](21.md) | 🟢 Easy | 2m 51s | This problem asks us to merge two already sorted singly linked list… |
+| 22 | [Generate Parentheses](22.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every possible valid combination of… |
+| 23 | [Merge k Sorted Lists](23.md) | 🔴 Hard | 1m 14s | The problem gives us an array of k sorted linked lists. Each linked… |
+| 24 | [Swap Nodes in Pairs](24.md) | 🟡 Medium | 2m 58s | The problem gives us the head of a singly linked list and asks us t… |
 | 25 | [Reverse Nodes in k-Group](25.md) | 🔴 Hard | 1m 25s | This problem asks us to reverse a linked list in groups of size k. … |
-| 26 | [Remove Duplicates from Sorted Array](26.md) | 🟢 Easy | 3m 8s | This problem asks us to modify a sorted integer array in-place so t… |
-| 27 | [Remove Element](27.md) | 🟢 Easy | 3m 3s | The problem asks us to remove all occurrences of a specific value, … |
+| 26 | [Remove Duplicates from Sorted Array](26.md) | 🟢 Easy | 1m 55s | The problem gives us a sorted integer array nums in non-decreasing … |
+| 27 | [Remove Element](27.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and a target value val. … |
 | 28 | [Find the Index of the First Occurrence in a String](28.md) | 🟢 Easy | 1m 21s | The problem asks us to find the first position where the string nee… |
-| 29 | [Divide Two Integers](29.md) | 🟡 Medium | 1m 20s | This problem asks us to implement integer division manually, withou… |
+| 29 | [Divide Two Integers](29.md) | 🟡 Medium | 1m 29s | The problem asks us to implement integer division without using the… |
 | 30 | [Substring with Concatenation of All Words](30.md) | 🔴 Hard | 1m 46s | The problem gives us a string s and a list of words called words. E… |
 | 31 | [Next Permutation](31.md) | 🟡 Medium | 2m 53s | The problem asks us to rearrange an array of integers into its next… |
 | 32 | [Longest Valid Parentheses](32.md) | 🔴 Hard | 1m 52s | The problem gives a string containing only two characters, '(' and … |
