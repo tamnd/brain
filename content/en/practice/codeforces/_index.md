@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 6 contests, 17 problems, 15 verified."
+description: "ChatGPT-solved Codeforces problems with full editorial. 6 contests, 17 problems, 15 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -9,15 +9,15 @@ draft: false
 
 # Codeforces Solutions
 
-Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
+Each problem below was solved by ChatGPT with a full editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. No problem statement is reproduced here — follow the CF link to read the original.
 
 **6 contests, 17 problems, 15 verified.**
 
-| Contest | Name | Type | Rating Range | Verified | Time |
+| Contest | Name | Type | Rating Range | Verified | Date |
 |---|---|---|---|---|---|
-| [1](1/) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 3m 39s |
-| [2](2/) | [Codeforces Beta Round 2](https://codeforces.com/contest/2) | Beta | 2000-2000 | 0/1 | 2m 37s |
-| [3](3/) | [Codeforces Beta Round 3](https://codeforces.com/contest/3) | Beta | 1800-2600 | 3/3 | 6m 52s |
-| [4](4/) | [Codeforces Beta Round 4 (Div. 2 Only)](https://codeforces.com/contest/4) | Div. 2 | 800-1700 | 3/3 | 3m 8s |
-| [5](5/) | [Codeforces Beta Round 5](https://codeforces.com/contest/5) | Beta | 1200-2400 | 3/3 | 5m 48s |
-| [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-1200 | 3/4 | 9m 8s |
+| [1](1/_index.md) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 2026-05-27 |
+| [2](2/_index.md) | [Codeforces Beta Round 2](https://codeforces.com/contest/2) | Beta | 2000-2000 | 0/1 | 2026-05-27 |
+| [3](3/_index.md) | [Codeforces Beta Round 3](https://codeforces.com/contest/3) | Beta | 1800-2600 | 3/3 | 2026-05-28 |
+| [4](4/_index.md) | [Codeforces Beta Round 4 (Div. 2 Only)](https://codeforces.com/contest/4) | Div. 2 | 800-1700 | 3/3 | 2026-05-28 |
+| [5](5/_index.md) | [Codeforces Beta Round 5](https://codeforces.com/contest/5) | Beta | 1200-2400 | 3/3 | 2026-05-27 |
+| [1941](1941/_index.md) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-1200 | 3/4 | 2026-05-27 |
