@@ -55,3 +55,53 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 48 | [Rotate Image](00xx/48.md) | 🟡 Medium | 6m 20s | The problem gives us an n x n matrix that represents an image. Each… |
 | 49 | [Group Anagrams](00xx/49.md) | 🟡 Medium | 1m 36s | The problem asks us to take an array of strings and group together … |
 | 50 | [Pow(x, n)](00xx/50.md) | 🟡 Medium | 1m 19s | The problem asks us to implement a function that computes x raised … |
+| 51 | [N-Queens](00xx/51.md) | 🔴 Hard | 11m 42s | The problem asks us to place n queens on an n x n chessboard such t… |
+| 52 | [N-Queens II](00xx/52.md) | 🔴 Hard | 12m 17s | The problem asks us to count how many valid ways we can place n que… |
+| 53 | [Maximum Subarray](00xx/53.md) | 🟡 Medium | 12m 17s | The problem gives an integer array nums and asks us to find the con… |
+| 54 | [Spiral Matrix](00xx/54.md) | 🟡 Medium | 1m 6s | The problem asks us to traverse a two dimensional matrix in spiral … |
+| 55 | [Jump Game](00xx/55.md) | 🟡 Medium | 2m 19s | The problem gives us an integer array nums, where each element repr… |
+| 56 | [Merge Intervals](00xx/56.md) | 🟡 Medium | 1m 46s | The problem gives an array of intervals, where each interval is rep… |
+| 57 | [Insert Interval](00xx/57.md) | 🟡 Medium | 2m 19s | This problem asks us to insert a new interval into an already sorte… |
+| 58 | [Length of Last Word](00xx/58.md) | 🟢 Easy | 52s | This problem asks us to find the length of the final word in a stri… |
+| 59 | [Spiral Matrix II](00xx/59.md) | 🟡 Medium | 1m 16s | This problem asks us to generate an n x n square matrix and fill it… |
+| 60 | [Permutation Sequence](00xx/60.md) | 🔴 Hard | 1m 20s | This problem asks us to find the kth permutation of the numbers fro… |
+| 61 | [Rotate List](00xx/61.md) | 🟡 Medium | 56s | This problem asks us to rotate a singly linked list to the right by… |
+| 62 | [Unique Paths](00xx/62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
+| 63 | [Unique Paths II](00xx/63.md) | 🟡 Medium | 55s | This problem asks us to count how many different valid ways a robot… |
+| 64 | [Minimum Path Sum](00xx/64.md) | 🟡 Medium | 1m 11s | The problem gives us a two dimensional grid of non negative integer… |
+| 65 | [Valid Number](00xx/65.md) | 🔴 Hard | 2m 8s | This problem asks us to determine whether a given string represents… |
+| 66 | [Plus One](00xx/66.md) | 🟢 Easy | 2m 20s | The problem gives us a non-negative integer represented as an array… |
+| 67 | [Add Binary](00xx/67.md) | 🟢 Easy | 1m 12s | The problem gives us two strings, a and b, where each string repres… |
+| 68 | [Text Justification](00xx/68.md) | 🔴 Hard | 1m 2s | The problem asks us to format a sequence of words into fully justif… |
+| 69 | [Sqrt(x)](00xx/69.md) | 🟢 Easy | 1m 10s | The problem asks us to compute the integer square root of a non-neg… |
+| 70 | [Climbing Stairs](00xx/70.md) | 🟢 Easy | 59s | The problem describes a staircase with n total steps, and you want … |
+| 71 | [Simplify Path](00xx/71.md) | 🟡 Medium | 1m 32s | This problem asks us to take an absolute Unix-style file path and c… |
+| 72 | [Edit Distance](00xx/72.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum number of edit operat… |
+| 73 | [Set Matrix Zeroes](00xx/73.md) | 🟡 Medium | 1m 37s | The problem gives us a two dimensional matrix of integers with dime… |
+| 74 | [Search a 2D Matrix](00xx/74.md) | 🟡 Medium | 1m 1s | The problem gives us a two dimensional matrix with two very importa… |
+| 75 | [Sort Colors](00xx/75.md) | 🟡 Medium | 1m 17s | This problem asks us to sort an array containing only three possibl… |
+| 76 | [Minimum Window Substring](00xx/76.md) | 🔴 Hard | 10m 30s | Unusual activity has been detected from your device. Try again late… |
+| 77 | [Combinations](00xx/77.md) | 🟡 Medium | 1m 5s | The problem asks us to generate every possible combination of exact… |
+| 78 | [Subsets](00xx/78.md) | 🟡 Medium | 55s | This problem asks us to generate every possible subset of a given a… |
+| 79 | [Word Search](00xx/79.md) | 🟡 Medium | 1m 7s | This problem gives us a two dimensional grid of characters called b… |
+| 80 | [Remove Duplicates from Sorted Array II](00xx/80.md) | 🟡 Medium | 54s | This problem asks us to modify a sorted array in-place so that each… |
+| 81 | [Search in Rotated Sorted Array II](00xx/81.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a target value exists ins… |
+| 82 | [Remove Duplicates from Sorted List II](00xx/82.md) | 🟡 Medium | 1m 53s | This problem asks us to modify a sorted singly linked list so that … |
+| 83 | [Remove Duplicates from Sorted List](00xx/83.md) | 🟢 Easy | 58s | This problem gives us the head of a singly linked list where the va… |
+| 84 | [Largest Rectangle in Histogram](00xx/84.md) | 🔴 Hard | 1m 52s | In this problem, we are given an array called heights, where each v… |
+| 85 | [Maximal Rectangle](00xx/85.md) | 🔴 Hard | 1m 9s | You are given a 2D binary matrix where each cell contains either '0… |
+| 86 | [Partition List](00xx/86.md) | 🟡 Medium | 1m 1s | This problem asks us to rearrange a singly linked list around a piv… |
+| 87 | [Scramble String](00xx/87.md) | 🔴 Hard | 1m 8s | This problem asks us to determine whether one string can be transfo… |
+| 88 | [Merge Sorted Array](00xx/88.md) | 🟢 Easy | 1m 9s | This problem gives us two arrays, nums1 and nums2, that are already… |
+| 89 | [Gray Code](00xx/89.md) | 🟡 Medium | 52s | This problem asks us to generate a valid n-bit Gray code sequence. … |
+| 90 | [Subsets II](00xx/90.md) | 🟡 Medium | 1m 17s | The problem asks us to generate every possible subset of a given in… |
+| 91 | [Decode Ways](00xx/91.md) | 🟡 Medium | 1m 1s | The problem gives us a string s containing only digits, where each … |
+| 92 | [Reverse Linked List II](00xx/92.md) | 🟡 Medium | 1m 14s | This problem asks us to reverse only a specific portion of a singly… |
+| 93 | [Restore IP Addresses](00xx/93.md) | 🟡 Medium | 1m 59s | The problem asks us to take a string of digits and determine every … |
+| 94 | [Binary Tree Inorder Traversal](00xx/94.md) | 🟢 Easy | 1m 9s | This problem asks us to perform an inorder traversal on a binary tr… |
+| 95 | [Unique Binary Search Trees II](00xx/95.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every structurally unique Binary Se… |
+| 96 | [Unique Binary Search Trees](00xx/96.md) | 🟡 Medium | 1m 8s | This problem asks us to determine how many structurally unique Bina… |
+| 97 | [Interleaving String](00xx/97.md) | 🟡 Medium | 1m 9s | This problem asks us to determine whether a third string, s3, can b… |
+| 98 | [Validate Binary Search Tree](00xx/98.md) | 🟡 Medium | 1m 9s | The problem gives us the root of a binary tree and asks whether the… |
+| 99 | [Recover Binary Search Tree](00xx/99.md) | 🟡 Medium | 1m 21s | The problem gives us the root of a Binary Search Tree (BST) in whic… |
+| 100 | [Same Tree](01xx/100.md) | 🟢 Easy | 1m 5s | The problem gives two binary tree roots, p and q, and asks whether … |

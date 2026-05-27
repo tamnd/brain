@@ -75,6 +75,7 @@ draft: false
 | 73 | [Set Matrix Zeroes](73.md) | 🟡 Medium | 1m 37s | The problem gives us a two dimensional matrix of integers with dime… |
 | 74 | [Search a 2D Matrix](74.md) | 🟡 Medium | 1m 1s | The problem gives us a two dimensional matrix with two very importa… |
 | 75 | [Sort Colors](75.md) | 🟡 Medium | 1m 17s | This problem asks us to sort an array containing only three possibl… |
+| 76 | [Minimum Window Substring](76.md) | 🔴 Hard | 10m 30s | Unusual activity has been detected from your device. Try again late… |
 | 77 | [Combinations](77.md) | 🟡 Medium | 1m 5s | The problem asks us to generate every possible combination of exact… |
 | 78 | [Subsets](78.md) | 🟡 Medium | 55s | This problem asks us to generate every possible subset of a given a… |
 | 79 | [Word Search](79.md) | 🟡 Medium | 1m 7s | This problem gives us a two dimensional grid of characters called b… |
@@ -90,3 +91,11 @@ draft: false
 | 89 | [Gray Code](89.md) | 🟡 Medium | 52s | This problem asks us to generate a valid n-bit Gray code sequence. … |
 | 90 | [Subsets II](90.md) | 🟡 Medium | 1m 17s | The problem asks us to generate every possible subset of a given in… |
 | 91 | [Decode Ways](91.md) | 🟡 Medium | 1m 1s | The problem gives us a string s containing only digits, where each … |
+| 92 | [Reverse Linked List II](92.md) | 🟡 Medium | 1m 14s | This problem asks us to reverse only a specific portion of a singly… |
+| 93 | [Restore IP Addresses](93.md) | 🟡 Medium | 1m 59s | The problem asks us to take a string of digits and determine every … |
+| 94 | [Binary Tree Inorder Traversal](94.md) | 🟢 Easy | 1m 9s | This problem asks us to perform an inorder traversal on a binary tr… |
+| 95 | [Unique Binary Search Trees II](95.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every structurally unique Binary Se… |
+| 96 | [Unique Binary Search Trees](96.md) | 🟡 Medium | 1m 8s | This problem asks us to determine how many structurally unique Bina… |
+| 97 | [Interleaving String](97.md) | 🟡 Medium | 1m 9s | This problem asks us to determine whether a third string, s3, can b… |
+| 98 | [Validate Binary Search Tree](98.md) | 🟡 Medium | 1m 9s | The problem gives us the root of a binary tree and asks whether the… |
+| 99 | [Recover Binary Search Tree](99.md) | 🟡 Medium | 1m 21s | The problem gives us the root of a Binary Search Tree (BST) in whic… |
