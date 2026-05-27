@@ -1,0 +1,16 @@
+{{define "page-main"}}
+<div class="tags-page">
+  <div class="tags-page__header">
+    <h1 class="tags-page__title">Tags</h1>
+    <p class="tags-page__subtitle">{{len .Tags}} tags across all pages</p>
+  </div>
+  <div class="tags-page__cloud">
+    {{range .Tags}}
+    <a href="/tags/{{urlize .Name}}/" class="tags-page__tag" style="font-size:{{tagFontSize .Count}}rem;">
+      {{.Name}}
+      <span class="tags-page__tag-count">{{.Count}}</span>
+    </a>
+    {{end}}
+  </div>
+</div>
+{{end}}

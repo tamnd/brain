@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="{{.Page.Lang}}" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{if and .Page.Title (ne .Page.Kind "home")}}{{.Page.Title}} | {{.Site.Title}}{{else}}{{.Site.Title}}{{end}}</title>
+  {{if .Page.Description}}<meta name="description" content="{{.Page.Description}}">{{end}}
+  {{if .Page.NoIndex}}<meta name="robots" content="noindex, nofollow">{{else}}<meta name="robots" content="index, follow">{{end}}
+  <link rel="canonical" href="{{trimSlash .Site.BaseURL}}{{.Page.RelPermalink}}">
+  <link rel="stylesheet" href="/css/brain.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+  <script>
+  (function(){
+    var t=localStorage.getItem('brain-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    if(t==='dark')document.documentElement.classList.add('dark');
+  })();
+  </script>
+</head>
+<body>
+
+<header class="hextra-nav-container" style="position:sticky;top:0;z-index:20;width:100%;print:hidden;">
+  <div class="hextra-nav-container-blur" style="pointer-events:none;position:absolute;z-index:-1;inset:0;"></div>
+  <nav style="display:flex;align-items:center;gap:0.25rem;height:3.5rem;padding-inline:1.5rem;max-width:90rem;margin:auto;">
+    <a href="/" class="brain-nav-logo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6a6 6 0 1 0 6 6"/><circle cx="12" cy="12" r="2"/></svg>
+      {{.Site.Title}}
+    </a>
+    <div style="flex:1"></div>
+    <a href="/graph/" class="brain-nav-graph{{if eq .Page.RelPermalink "/graph/"}} brain-nav-graph--active{{end}}" title="Graph" aria-label="Knowledge graph" style="padding:0.4rem;display:inline-flex;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    </a>
+    <a href="/tree/" class="brain-nav-graph{{if eq .Page.RelPermalink "/tree/"}} brain-nav-graph--active{{end}}" title="Mindmap" aria-label="Mindmap tree" style="padding:0.4rem;display:inline-flex;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+    </a>
+    <a href="/calendar/" class="brain-nav-graph{{if eq .Page.RelPermalink "/calendar/"}} brain-nav-graph--active{{end}}" title="Calendar" aria-label="Calendar" style="padding:0.4rem;display:inline-flex;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </a>
+    <a href="/search/" class="brain-nav-graph{{if eq .Page.RelPermalink "/search/"}} brain-nav-graph--active{{end}}" title="Search" aria-label="Search" style="padding:0.4rem;display:inline-flex;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </a>
+    <button type="button" id="brain-theme-btn" class="brain-nav-graph" title="Toggle theme" aria-label="Toggle dark/light mode" style="padding:0.4rem;background:none;border:none;cursor:pointer;display:inline-flex;">
+      <svg id="brain-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="brain-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </nav>
+</header>
+
+{{$fullscreen := or (eq .Page.Type "graph") (eq .Page.Type "tree") (eq .Page.Type "calendar")}}
+<div style="display:flex;min-height:calc(100vh - 3.5rem);">
+
+  {{if not $fullscreen}}
+  <aside class="brain-sidebar hextra-sidebar-container" style="display:flex;flex-direction:column;">
+    <div class="brain-sidebar__scroll">
+      {{if .SidebarBack}}
+      <a href="{{.SidebarBack.RelPermalink}}" class="brain-sidebar__back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        {{with .SidebarBack.LinkTitle}}{{.}}{{else}}{{.SidebarBack.Title}}{{end}}
+      </a>
+      {{end}}
+      {{if .SidebarRoot}}
+        {{if .SidebarBack}}
+          <a class="brain-sidebar__heading" href="{{.SidebarRoot.RelPermalink}}">{{with .SidebarRoot.LinkTitle}}{{.}}{{else}}{{.SidebarRoot.Title}}{{end}}</a>
+        {{else}}
+          <span class="brain-sidebar__heading">{{if eq .Page.Kind "home"}}Areas{{else}}{{with .SidebarRoot.LinkTitle}}{{.}}{{else}}{{.SidebarRoot.Title}}{{end}}{{end}}</span>
+        {{end}}
+      {{end}}
+      <ul class="brain-sidebar__list">
+        {{range .SidebarItems}}
+        <li class="brain-sidebar__item">
+          <a href="{{.URL}}" class="brain-sidebar__link{{if .IsParent}} brain-sidebar__link--parent{{end}}{{if .Active}} brain-sidebar__link--active{{end}}">{{.Title}}</a>
+          {{if and .IsParent .Children}}{{template "brain-sidebar-subtree" .Children}}{{end}}
+        </li>
+        {{end}}
+      </ul>
+    </div>
+    <div class="brain-sidebar__footer"></div>
+  </aside>
+  {{end}}
+
+  <main style="flex:1;min-width:0;{{if $fullscreen}}display:flex;flex-direction:column;{{end}}">
+    {{template "page-main" .}}
+  </main>
+</div>
+
+<footer class="hextra-footer" style="background-color:var(--muted)!important;">
+  <div style="max-width:90rem;margin:auto;padding:0.75rem 1.5rem;font-size:0.75rem;color:var(--muted-fg);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+    <span>© {{.Site.Title}}</span>
+    <span>Built with <a href="https://github.com/tamnd/tago" style="color:var(--muted-fg);text-decoration:underline;">tago</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('brain-theme-btn');
+  var sun=document.getElementById('brain-icon-sun');
+  var moon=document.getElementById('brain-icon-moon');
+  function sync(){
+    var dark=document.documentElement.classList.contains('dark');
+    if(sun)sun.style.display=dark?'none':'inline';
+    if(moon)moon.style.display=dark?'inline':'none';
+  }
+  sync();
+  btn&&btn.addEventListener('click',function(){
+    var dark=document.documentElement.classList.toggle('dark');
+    localStorage.setItem('brain-theme',dark?'dark':'light');
+    sync();
+  });
+})();
+</script>
+
+{{template "page-live-reload" .}}
+</body>
+</html>
+
+{{define "brain-sidebar-subtree"}}
+<ul class="brain-sidebar__list brain-sidebar__list--nested">
+  {{range .}}
+  <li class="brain-sidebar__item">
+    <a href="{{.URL}}" class="brain-sidebar__link{{if .IsParent}} brain-sidebar__link--parent{{end}}{{if .Active}} brain-sidebar__link--active{{end}}">{{.Title}}</a>
+    {{if and .IsParent .Children}}{{template "brain-sidebar-subtree" .Children}}{{end}}
+  </li>
+  {{end}}
+</ul>
+{{end}}

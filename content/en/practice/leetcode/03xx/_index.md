@@ -19,12 +19,42 @@ draft: false
 | 306 | [Additive Number](306.md) | 🟡 Medium | 1m 24s | The problem asks us to determine whether a given string of digits c… |
 | 307 | [Range Sum Query - Mutable](307.md) | 🟡 Medium | 2m 22s | The problem asks us to design a mutable range sum data structure. W… |
 | 308 | [Range Sum Query 2D - Mutable](308.md) | 🟡 Medium | 2m 21s | The problem asks us to design a mutable 2D range sum data structure… |
-| 309 | [Best Time to Buy and Sell Stock with Cooldown](309.md) | 🟡 Medium | 1m 32s | The problem gives an array prices where prices[i] represents the st… |
-| 310 | [Minimum Height Trees](310.md) | 🟡 Medium | 1m 44s | The problem gives us an undirected tree with n nodes labeled from 0… |
-| 311 | [Sparse Matrix Multiplication](311.md) | 🟡 Medium | 1m 35s | The problem asks us to multiply two matrices, mat1 and mat2, and re… |
-| 312 | [Burst Balloons](312.md) | 🔴 Hard | 1m 23s | The problem gives us an array nums, where each element represents a… |
-| 313 | [Super Ugly Number](313.md) | 🟡 Medium | 1m 27s | The problem asks us to generate the sequence of "super ugly numbers… |
-| 314 | [Binary Tree Vertical Order Traversal](314.md) | 🟡 Medium | 1m 15s | The problem asks us to compute the vertical order traversal of a bi… |
-| 315 | [Count of Smaller Numbers After Self](315.md) | 🔴 Hard | 1m 13s | The problem asks us to compute, for every position in the array, ho… |
-| 316 | [Remove Duplicate Letters](316.md) | 🟡 Medium | 1m 8s | The problem gives us a string s consisting only of lowercase Englis… |
-| 317 | [Shortest Distance from All Buildings](317.md) | 🔴 Hard | 1m 24s | This problem asks us to find the best empty land cell in a grid whe… |
+| 309 | [Best Time to Buy and Sell Stock with Cooldown](309.md) | 🟡 Medium | 6m 31s | This problem asks us to maximize profit from stock trading under a … |
+| 310 | [Minimum Height Trees](310.md) | 🟡 Medium | 7m 25s | This problem gives us an undirected tree with n nodes labeled from … |
+| 311 | [Sparse Matrix Multiplication](311.md) | 🟡 Medium | 1m 43s | This problem asks us to multiply two matrices, but with an importan… |
+| 312 | [Burst Balloons](312.md) | 🔴 Hard | 3m 25s | The problem gives us an array nums, where each element represents a… |
+| 313 | [Super Ugly Number](313.md) | 🟡 Medium | 3m 19s | This problem asks us to find the nth number in a special sequence c… |
+| 314 | [Binary Tree Vertical Order Traversal](314.md) | 🟡 Medium | 1m 11s | The problem asks us to group the nodes of a binary tree by their ve… |
+| 315 | [Count of Smaller Numbers After Self](315.md) | 🔴 Hard | 1m 19s | The problem asks us to compute, for every element in the array, how… |
+| 316 | [Remove Duplicate Letters](316.md) | 🟡 Medium | 1m 2s | This problem asks us to construct a new string from the input strin… |
+| 317 | [Shortest Distance from All Buildings](317.md) | 🔴 Hard | 51s | The problem asks us to find the optimal location to build a house o… |
+| 318 | [Maximum Product of Word Lengths](318.md) | 🟡 Medium | 1m 2s | The problem gives us an array of lowercase English words. We need t… |
+| 319 | [Bulb Switcher](319.md) | 🟡 Medium | 1m 9s | The problem describes a sequence of n bulbs, all initially turned o… |
+| 320 | [Generalized Abbreviation](320.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every possible generalized abbrevi… |
+| 321 | [Create Maximum Number](321.md) | 🔴 Hard | 1m 29s | This problem asks us to build the lexicographically largest possibl… |
+| 322 | [Coin Change](322.md) | 🟡 Medium | 1m 9s | The problem gives us an array called coins, where each element repr… |
+| 323 | [Number of Connected Components in an Undirected Graph](323.md) | 🟡 Medium | 1m 15s | The problem asks us to determine how many connected components exis… |
+| 324 | [Wiggle Sort II](324.md) | 🟡 Medium | 1m 10s | The problem asks us to rearrange an array so that it follows a stri… |
+| 325 | [Maximum Size Subarray Sum Equals k](325.md) | 🟡 Medium | 1m 13s | The problem asks us to find the longest contiguous subarray whose s… |
+| 326 | [Power of Three](326.md) | 🟢 Easy | 1m 11s | The problem asks us to determine whether a given integer n can be r… |
+| 327 | [Count of Range Sum](327.md) | 🔴 Hard | 1m 15s | This problem asks us to count how many subarrays have sums that fal… |
+| 328 | [Odd Even Linked List](328.md) | 🟡 Medium | 1m 16s | This problem asks us to reorder a singly linked list so that all no… |
+| 329 | [Longest Increasing Path in a Matrix](329.md) | 🔴 Hard | 1m 33s | The problem gives us a two-dimensional grid of integers called matr… |
+| 330 | [Patching Array](330.md) | 🔴 Hard | 59s | The problem gives us a sorted array of positive integers, nums, and… |
+| 331 | [Verify Preorder Serialization of a Binary Tree](331.md) | 🟡 Medium | 1m 8s | The problem gives us a string that represents the preorder serializ… |
+| 332 | [Reconstruct Itinerary](332.md) | 🔴 Hard | 1m 4s | The problem is asking us to reconstruct a flight itinerary given a … |
+| 333 | [Largest BST Subtree](333.md) | 🟡 Medium | 1m 41s | The problem gives us the root of an arbitrary binary tree and asks … |
+| 334 | [Increasing Triplet Subsequence](334.md) | 🟡 Medium | 1m 13s | The problem asks us to determine whether an array contains three nu… |
+| 335 | [Self Crossing](335.md) | 🔴 Hard | 1m 17s | The problem describes a path traced on a two-dimensional grid. We b… |
+| 336 | [Palindrome Pairs](336.md) | 🔴 Hard | 1m 5s | The problem gives us a list of unique strings called words. We must… |
+| 337 | [House Robber III](337.md) | 🟡 Medium | 1m 3s | This problem is a variation of the classic House Robber dynamic pro… |
+| 338 | [Counting Bits](338.md) | 🟢 Easy | 1m 4s | The problem asks us to compute the number of set bits, also called … |
+| 339 | [Nested List Weight Sum](339.md) | 🟡 Medium | 1m 1s | This problem gives us a special nested data structure called Nested… |
+| 340 | [Longest Substring with At Most K Distinct Characters](340.md) | 🟡 Medium | 1m 1s | The problem asks us to find the length of the longest contiguous su… |
+| 341 | [Flatten Nested List Iterator](341.md) | 🟡 Medium | 1m 17s | The problem gives us a nested list structure where each element can… |
+| 342 | [Power of Four](342.md) | 🟢 Easy | 1m 17s | The problem asks us to determine whether a given integer n is a pow… |
+| 344 | [Reverse String](344.md) | 🟢 Easy | 1m 12s | The problem asks us to reverse a string that is represented as an a… |
+| 345 | [Reverse Vowels of a String](345.md) | 🟢 Easy | 1m 10s | The problem asks us to reverse only the vowels in a string while le… |
+| 346 | [Moving Average from Data Stream](346.md) | 🟢 Easy | 34s | The problem is asking us to design a class MovingAverage that compu… |
+| 347 | [Top K Frequent Elements](347.md) | 🟡 Medium | 1m 8s | The problem gives us an integer array nums and an integer k. Our ta… |
+| 348 | [Design Tic-Tac-Toe](348.md) | 🟡 Medium | 1m 13s | The problem asks us to design a Tic-Tac-Toe game that supports effi… |

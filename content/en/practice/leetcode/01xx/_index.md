@@ -10,29 +10,29 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 100 | [Same Tree](100.md) | 🟢 Easy | 1m 5s | The problem gives two binary tree roots, p and q, and asks whether … |
-| 101 | [Symmetric Tree](101.md) | 🟢 Easy | 5m 20s | This problem asks us to determine whether a binary tree is symmetri… |
-| 102 | [Binary Tree Level Order Traversal](102.md) | 🟡 Medium | 5m 20s | The problem asks us to traverse a binary tree level by level and re… |
+| 100 | [Same Tree](100.md) | 🟢 Easy | 1m 39s | The problem asks us to determine whether two binary trees are exact… |
+| 101 | [Symmetric Tree](101.md) | 🟢 Easy | 1m 25s | The problem asks us to determine whether a binary tree is symmetric… |
+| 102 | [Binary Tree Level Order Traversal](102.md) | 🟡 Medium | 1m 30s | The problem asks us to perform a level order traversal on a binary … |
 | 103 | [Binary Tree Zigzag Level Order Traversal](103.md) | 🟡 Medium | 5m 39s | The problem asks us to perform a modified level order traversal on … |
-| 104 | [Maximum Depth of Binary Tree](104.md) | 🟢 Easy | 59s | The problem gives us the root node of a binary tree and asks us to … |
-| 105 | [Construct Binary Tree from Preorder and Inorder Traversal](105.md) | 🟡 Medium | 1m | This problem gives us two arrays representing different traversal o… |
-| 106 | [Construct Binary Tree from Inorder and Postorder Traversal](106.md) | 🟡 Medium | 1m 7s | The problem gives two traversal orders of the same binary tree: - i… |
-| 107 | [Binary Tree Level Order Traversal II](107.md) | 🟡 Medium | 1m 12s | The problem asks us to perform a level order traversal of a binary … |
-| 108 | [Convert Sorted Array to Binary Search Tree](108.md) | 🟢 Easy | 1m | This problem asks us to convert a sorted array in ascending order i… |
-| 109 | [Convert Sorted List to Binary Search Tree](109.md) | 🟡 Medium | 58s | The problem gives us the head of a singly linked list where all val… |
-| 110 | [Balanced Binary Tree](110.md) | 🟢 Easy | 54s | This problem asks us to determine whether a binary tree is height-b… |
-| 111 | [Minimum Depth of Binary Tree](111.md) | 🟢 Easy | 1m 3s | The problem asks us to compute the minimum depth of a binary tree. … |
-| 112 | [Path Sum](112.md) | 🟢 Easy | 1m 2s | This problem asks us to determine whether a binary tree contains at… |
-| 113 | [Path Sum II](113.md) | 🟡 Medium | 1m 18s | The problem asks us to find all root-to-leaf paths in a binary tree… |
-| 114 | [Flatten Binary Tree to Linked List](114.md) | 🟡 Medium | 1m 3s | The problem gives us the root of a binary tree and asks us to trans… |
-| 115 | [Distinct Subsequences](115.md) | 🔴 Hard | 3m 14s | The problem asks us to count how many distinct subsequences of a st… |
-| 116 | [Populating Next Right Pointers in Each Node](116.md) | 🟡 Medium | 1m 12s | This problem asks us to populate the next pointer for every node in… |
-| 117 | [Populating Next Right Pointers in Each Node II](117.md) | 🟡 Medium | 1m 25s | This problem asks us to connect nodes at the same depth level in a … |
-| 118 | [Pascal's Triangle](118.md) | 🟢 Easy | 58s | The problem asks us to generate the first numRows rows of Pascal's … |
+| 104 | [Maximum Depth of Binary Tree](104.md) | 🟢 Easy | 2m 53s | The problem asks us to determine the maximum depth of a binary tree… |
+| 105 | [Construct Binary Tree from Preorder and Inorder Traversal](105.md) | 🟡 Medium | 59s | The problem is asking us to reconstruct a binary tree given two tra… |
+| 106 | [Construct Binary Tree from Inorder and Postorder Traversal](106.md) | 🟡 Medium | 1m 9s | The problem provides two traversal orders of the same binary tree: … |
+| 107 | [Binary Tree Level Order Traversal II](107.md) | 🟡 Medium | 36s | The problem asks us to traverse a binary tree and return the node v… |
+| 108 | [Convert Sorted Array to Binary Search Tree](108.md) | 🟢 Easy | 1m 22s | The problem gives us a sorted integer array nums in strictly increa… |
+| 109 | [Convert Sorted List to Binary Search Tree](109.md) | 🟡 Medium | 1m 20s | The problem gives us the head of a singly linked list whose values … |
+| 110 | [Balanced Binary Tree](110.md) | 🟢 Easy | 1m 11s | This problem asks us to determine whether a given binary tree is he… |
+| 111 | [Minimum Depth of Binary Tree](111.md) | 🟢 Easy | 37s | The problem asks us to determine the minimum depth of a binary tree… |
+| 112 | [Path Sum](112.md) | 🟢 Easy | 1m 9s | This problem asks us to determine whether a binary tree contains at… |
+| 113 | [Path Sum II](113.md) | 🟡 Medium | 1m 17s | This problem asks us to find all root-to-leaf paths in a binary tre… |
+| 114 | [Flatten Binary Tree to Linked List](114.md) | 🟡 Medium | 1m 11s | The problem asks us to transform a binary tree into a flattened str… |
+| 115 | [Distinct Subsequences](115.md) | 🔴 Hard | 1m 30s | This problem asks us to count how many distinct subsequences of a s… |
+| 116 | [Populating Next Right Pointers in Each Node](116.md) | 🟡 Medium | 53s | This problem asks us to populate the next pointers of nodes in a pe… |
+| 117 | [Populating Next Right Pointers in Each Node II](117.md) | 🟡 Medium | 1m 8s | The problem asks us to populate the next pointer for every node in … |
+| 118 | [Pascal's Triangle](118.md) | 🟢 Easy | 40s | The problem is asking us to generate the first numRows of Pascal's … |
 | 119 | [Pascal's Triangle II](119.md) | 🟢 Easy | 1m 21s | The problem asks us to return a specific row from Pascal's Triangle… |
-| 120 | [Triangle](120.md) | 🟡 Medium | 1m 32s | The problem gives us a triangular array of integers and asks for th… |
-| 121 | [Best Time to Buy and Sell Stock](121.md) | 🟢 Easy | 1m 57s | The problem gives us an integer array called prices, where each ele… |
-| 122 | [Best Time to Buy and Sell Stock II](122.md) | 🟡 Medium | 59s | This problem asks us to maximize profit from stock trading over a s… |
+| 120 | [Triangle](120.md) | 🟡 Medium | 1m 24s | The problem gives us a triangular array of integers and asks us to … |
+| 121 | [Best Time to Buy and Sell Stock](121.md) | 🟢 Easy | 56s | This problem asks us to determine the maximum profit that can be ma… |
+| 122 | [Best Time to Buy and Sell Stock II](122.md) | 🟡 Medium | 1m 2s | This problem asks us to maximize profit from stock trading over a s… |
 | 123 | [Best Time to Buy and Sell Stock III](123.md) | 🔴 Hard | 1m 11s | This problem asks us to maximize profit from stock trading under a … |
 | 124 | [Binary Tree Maximum Path Sum](124.md) | 🔴 Hard | 1m 12s | This problem asks us to compute the maximum possible sum of values … |
 | 125 | [Valid Palindrome](125.md) | 🟢 Easy | 1m 1s | The problem asks us to determine whether a given string is a palind… |

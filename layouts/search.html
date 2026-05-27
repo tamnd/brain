@@ -1,0 +1,110 @@
+{{define "page-main"}}
+<div class="brain-single-page">
+  <main class="brain-single-content">
+    <div class="brain-page-header">
+      <h1>Search</h1>
+    </div>
+    <div style="margin-bottom:1.5rem;">
+      <input
+        id="brain-search-input"
+        type="search"
+        placeholder="Search pages…"
+        autocomplete="off"
+        spellcheck="false"
+        style="width:100%;padding:0.6rem 0.875rem;font:inherit;font-size:1rem;background:var(--bg);color:var(--fg);border:1px solid var(--border);border-radius:var(--radius);outline:none;transition:border-color 0.15s;"
+        onfocus="this.style.borderColor='var(--fg)'"
+        onblur="this.style.borderColor='var(--border)'"
+      >
+    </div>
+    <div id="brain-search-results" style="display:flex;flex-direction:column;"></div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.43/dist/flexsearch.bundle.js" defer></script>
+<script>
+(function(){
+  var INDEX_URL = '/en.search-data.json';
+  var index, docs;
+
+  function highlight(text, query) {
+    if (!query) return text;
+    var re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+    return text.replace(re, '<mark style="background:var(--accent);color:var(--accent-fg);border-radius:2px;padding:0 2px;">$1</mark>');
+  }
+
+  function renderResults(results, query) {
+    var container = document.getElementById('brain-search-results');
+    if (!results || results.length === 0) {
+      container.innerHTML = query
+        ? '<p style="color:var(--muted-fg);font-size:0.9375rem;">No results for <strong>' + query + '</strong></p>'
+        : '';
+      return;
+    }
+    var html = results.slice(0, 30).map(function(r) {
+      var doc = docs[r];
+      if (!doc) return '';
+      var title = highlight(doc.title || r, query);
+      var snippet = '';
+      if (doc.data && doc.data['']) {
+        var plain = doc.data[''];
+        var idx = plain.toLowerCase().indexOf(query.toLowerCase());
+        if (idx >= 0) {
+          var start = Math.max(0, idx - 60);
+          var end = Math.min(plain.length, idx + query.length + 100);
+          snippet = (start > 0 ? '…' : '') + plain.slice(start, end) + (end < plain.length ? '…' : '');
+        } else {
+          snippet = plain.slice(0, 160) + (plain.length > 160 ? '…' : '');
+        }
+        snippet = highlight(snippet, query);
+      }
+      return '<div class="feed-card">' +
+        '<a href="' + r + '" class="feed-card__link">' +
+        '<h2 class="feed-card__title" style="font-size:1rem;">' + title + '</h2>' +
+        (snippet ? '<p class="feed-card__desc">' + snippet + '</p>' : '') +
+        '</a>' +
+        '<div class="feed-card__footer"><span class="feed-card__meta" style="font-size:0.6875rem;opacity:0.6;">' + r + '</span></div>' +
+        '</div>';
+    }).join('');
+    container.innerHTML = html;
+  }
+
+  function initSearch(data) {
+    docs = data;
+    index = new FlexSearch.Document({
+      document: { id: 'id', field: ['title', 'content'] },
+      tokenize: 'forward',
+      cache: 100,
+    });
+    Object.keys(data).forEach(function(url) {
+      var d = data[url];
+      index.add({ id: url, title: d.title || '', content: (d.data && d.data['']) || '' });
+    });
+    var input = document.getElementById('brain-search-input');
+    var q = new URLSearchParams(location.search).get('q') || '';
+    if (q) { input.value = q; doSearch(q); }
+    input.addEventListener('input', function() { doSearch(this.value.trim()); });
+  }
+
+  function doSearch(q) {
+    if (!q) { renderResults([], ''); return; }
+    history.replaceState(null, '', '?q=' + encodeURIComponent(q));
+    var results = index.search(q, { limit: 30, suggest: true });
+    var ids = [];
+    results.forEach(function(r) { r.result.forEach(function(id) { if (ids.indexOf(id) < 0) ids.push(id); }); });
+    renderResults(ids, q);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    fetch(INDEX_URL)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (typeof FlexSearch !== 'undefined') { initSearch(data); }
+        else {
+          var s = document.querySelector('script[src*="flexsearch"]');
+          s && s.addEventListener('load', function() { initSearch(data); });
+        }
+      })
+      .catch(function(e) { console.error('search index load failed', e); });
+  });
+})();
+</script>
+{{end}}

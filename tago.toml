@@ -1,0 +1,6 @@
+title       = "brain"
+baseURL     = "https://brain.tamnd.com/"
+description = "tamnd's digital brain — notes, problems, research"
+contentDir  = "content/en"
+outputDir   = "public"
+staticDir   = "static"

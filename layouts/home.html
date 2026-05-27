@@ -1,0 +1,21 @@
+{{define "page-main"}}
+<div class="home-feed">
+  <div class="home-feed__header">
+    <h1 class="home-feed__title">{{.Site.Title}}</h1>
+    {{with .Site.Description}}<p class="home-feed__tagline">{{.}}</p>{{end}}
+    {{if .Page.ContentHTML}}<div class="content" style="margin-top:1rem;">{{rawHTML .Page.ContentHTML}}</div>{{end}}
+  </div>
+  <div class="home-feed__list">
+    {{range .Pages}}
+    {{if not .Draft}}
+    <div class="feed-card">
+      <a href="{{.RelPermalink}}" class="feed-card__link">
+        <h2 class="feed-card__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</h2>
+        {{with .Description}}<p class="feed-card__desc">{{.}}</p>{{end}}
+      </a>
+    </div>
+    {{end}}
+    {{end}}
+  </div>
+</div>
+{{end}}

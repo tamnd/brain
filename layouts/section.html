@@ -1,0 +1,46 @@
+{{define "page-main"}}
+<div class="home-feed">
+  <div class="home-feed__header">
+    {{if .Page.Ancestors}}
+    <nav class="brain-breadcrumb" aria-label="Breadcrumb" style="margin-bottom:0.75rem;">
+      {{range .Page.Ancestors}}
+        {{if ne .Kind "home"}}
+        <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+        <span class="brain-breadcrumb__sep" aria-hidden="true">›</span>
+        {{end}}
+      {{end}}
+      <span class="brain-breadcrumb__current">{{.Page.Title}}</span>
+    </nav>
+    {{end}}
+    <h1 class="home-feed__title">{{.Page.Title}}</h1>
+    {{with .Page.Description}}<p class="home-feed__tagline">{{.}}</p>{{end}}
+    {{if .Page.ContentHTML}}<div class="content" style="margin-top:1rem;">{{rawHTML .Page.ContentHTML}}</div>{{end}}
+  </div>
+  <div class="home-feed__list">
+    {{range .Pages}}
+    {{if not .Draft}}
+    <div class="feed-card">
+      {{if .Ancestors}}
+      <div class="feed-card__path">
+        {{range .Ancestors}}{{if ne .Kind "home"}}
+        <a href="{{.RelPermalink}}" class="feed-card__path-crumb">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+        <span class="feed-card__path-sep" aria-hidden="true">›</span>
+        {{end}}{{end}}
+      </div>
+      {{end}}
+      <a href="{{.RelPermalink}}" class="feed-card__link">
+        <h2 class="feed-card__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</h2>
+        {{with .Summary}}<p class="feed-card__desc">{{.}}</p>{{end}}
+      </a>
+      <div class="feed-card__footer">
+        {{if not .Date.IsZero}}<span class="feed-card__date">{{formatDate .Date}}</span>{{end}}
+        {{if and (not .Date.IsZero) .ReadingTime}}<span class="feed-card__footer-sep">·</span>{{end}}
+        {{if .ReadingTime}}<span class="feed-card__meta">{{.ReadingTime}} min read</span>{{end}}
+        {{if .WordCount}}<span class="feed-card__footer-sep">·</span><span class="feed-card__meta">{{.WordCount}} words</span>{{end}}
+      </div>
+    </div>
+    {{end}}
+    {{end}}
+  </div>
+</div>
+{{end}}

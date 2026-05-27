@@ -1,0 +1,50 @@
+{{define "page-main"}}
+<div class="brain-single-page">
+  <main id="content" class="brain-single-content">
+    {{if .Page.Ancestors}}
+    <nav class="brain-breadcrumb" aria-label="Breadcrumb">
+      {{range .Page.Ancestors}}
+        {{if ne .Kind "home"}}
+        <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+        <span class="brain-breadcrumb__sep" aria-hidden="true">›</span>
+        {{end}}
+      {{end}}
+      <span class="brain-breadcrumb__current">{{.Page.Title}}</span>
+    </nav>
+    {{end}}
+
+    <div class="brain-page-header">
+      <div class="brain-page-header__title-row">
+        <h1>{{.Page.Title}}</h1>
+      </div>
+      {{with .Page.Description}}<p class="brain-page-header__desc">{{.}}</p>{{end}}
+      {{if .Page.Tags}}
+      <div class="brain-page-header__meta">
+        <div class="brain-page-header__tags">
+          {{range .Page.Tags}}<a href="/tags/{{urlize .}}/" class="brain-tag">{{.}}</a>{{end}}
+        </div>
+      </div>
+      {{end}}
+    </div>
+
+    <div class="content">{{rawHTML .Page.ContentHTML}}</div>
+
+    {{if or .PrevPage .NextPage}}
+    <nav class="brain-pager" aria-label="Previous and next pages">
+      {{if .PrevPage}}
+      <a href="{{.PrevPage.RelPermalink}}" class="brain-pager__btn brain-pager__btn--prev">
+        <span class="brain-pager__label">← Previous</span>
+        <span class="brain-pager__title">{{with .PrevPage.LinkTitle}}{{.}}{{else}}{{.PrevPage.Title}}{{end}}</span>
+      </a>
+      {{else}}<span></span>{{end}}
+      {{if .NextPage}}
+      <a href="{{.NextPage.RelPermalink}}" class="brain-pager__btn brain-pager__btn--next">
+        <span class="brain-pager__label">Next →</span>
+        <span class="brain-pager__title">{{with .NextPage.LinkTitle}}{{.}}{{else}}{{.NextPage.Title}}{{end}}</span>
+      </a>
+      {{end}}
+    </nav>
+    {{end}}
+  </main>
+</div>
+{{end}}
