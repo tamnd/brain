@@ -53,11 +53,13 @@ draft: false
 | 540 | [Single Element in a Sorted Array](540.md) | 🟡 Medium | 2m 19s | The problem gives us a sorted integer array where every value appea… |
 | 541 | [Reverse String II](541.md) | 🟢 Easy | 1m 22s | The problem requires us to manipulate a string s in a structured wa… |
 | 542 | [01 Matrix](542.md) | 🟡 Medium | 1m 8s | This problem gives us an m x n binary matrix where every cell conta… |
-| 543 | [Diameter of Binary Tree](543.md) | 🟢 Easy | 56s | This problem asks us to compute the diameter of a binary tree. The … |
-| 544 | [Output Contest Matches](544.md) | 🟡 Medium | 56s | This problem asks us to simulate the structure of a tournament brac… |
-| 545 | [Boundary of Binary Tree](545.md) | 🟡 Medium | 1m 18s | This problem asks us to compute the boundary traversal of a binary … |
+| 543 | [Diameter of Binary Tree](543.md) | 🟢 Easy | 1m 26s | The problem asks us to compute the diameter of a binary tree. The d… |
+| 544 | [Output Contest Matches](544.md) | 🟡 Medium | 1m 5s | The problem asks us to simulate the structure of a playoff tourname… |
+| 545 | [Boundary of Binary Tree](545.md) | 🟡 Medium | 1m 9s | This problem asks us to compute the boundary traversal of a binary … |
 | 546 | [Remove Boxes](546.md) | 🔴 Hard | 1m 21s | In this problem, we are given an array called boxes, where each int… |
 | 547 | [Number of Provinces](547.md) | 🟡 Medium | 38s | The problem asks us to find the number of provinces in a network of… |
 | 548 | [Split Array with Equal Sum](548.md) | 🔴 Hard | 37s | The problem asks us to determine whether an integer array nums can … |
 | 549 | [Binary Tree Longest Consecutive Sequence II](549.md) | 🟡 Medium | 1m 4s | This problem asks us to find the longest path in a binary tree wher… |
 | 550 | [Game Play Analysis IV](550.md) | 🟡 Medium | 1m 23s | The problem asks us to calculate the fraction of players who return… |
+| 551 | [Student Attendance Record I](551.md) | 🟢 Easy | 1m 1s | The problem gives us a string s where each character represents a s… |
+| 553 | [Optimal Division](553.md) | 🟡 Medium | 1m 9s | In this problem, we are given an array of positive integers nums. T… |

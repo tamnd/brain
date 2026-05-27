@@ -4,6 +4,7 @@ set -euo pipefail
 REPO_DIR="$HOME/github/tamnd/brain"
 BRANCH="main"
 INTERVAL=300
+BASE_URL="https://brain.tamnd.com/"
 
 # colors
 GRN='\033[0;32m'; CYN='\033[0;36m'; YLW='\033[0;33m'; GRY='\033[0;90m'; RST='\033[0m'
@@ -38,7 +39,7 @@ build_commit_msg() {
 }
 
 while true; do
-  # Auto-repair malformed Hugo front matter before staging.
+  # Auto-repair malformed front matter before staging.
   if FIX_OUT="$(python3 "$REPO_DIR/scripts/fix_frontmatter.py" 2>&1)" && [ -n "$FIX_OUT" ]; then
     while IFS= read -r line; do log "${YLW}fm: ${line}${RST}"; done <<< "$FIX_OUT"
   fi
@@ -53,7 +54,7 @@ while true; do
     while IFS= read -r line; do log "${YLW}cite: ${line}${RST}"; done <<< "$CITE_OUT"
   fi
 
-  # Normalize block-math delimiters: \[ \] → $$ $$.
+  # Normalize block-math delimiters: \[ \] -> $$ $$.
   if MATH_OUT="$(python3 "$REPO_DIR/scripts/fix_mathdelim.py" 2>&1)" && [ -n "$MATH_OUT" ]; then
     while IFS= read -r line; do log "${YLW}math: ${line}${RST}"; done <<< "$MATH_OUT"
   fi
@@ -78,16 +79,15 @@ while true; do
     _did_something=true
   fi
 
-  # Push only after a local hugo build passes — catches render errors
-  # (KaTeX, broken shortcodes, etc.) before they break GitHub Pages.
-  # If hugo fails the commit stays local; the next cycle retries.
+  # Push only after a tago build passes — catches render errors before CI.
+  # If tago fails the commit stays local; the next cycle retries.
   if git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null | grep -q .; then
-    if HUGO_OUT="$(hugo --renderToMemory --gc 2>&1)"; then
+    if TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
       if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
         log "${GRN}✓ pushed${RST}"
-        # Wait for GitHub Pages deploy and report result + duration.
+        # Wait for GitHub Actions deploy and report result + duration.
         _deploy_start=$(date +%s)
-        log "${GRY}  waiting for deploy…${RST}"
+        log "${GRY}  waiting for deploy...${RST}"
         _run_id=""
         for _i in $(seq 1 12); do
           sleep 10
@@ -119,16 +119,8 @@ while true; do
         log "${YLW}✗ push failed — commit held locally, retry next cycle${RST}"
       fi
     else
-      while IFS= read -r line; do log "${YLW}hugo: ${line}${RST}"; done <<< "$HUGO_OUT"
-      errfiles=$(printf '%s\n' "$HUGO_OUT" \
-        | grep -oE 'see "[^"]+"' \
-        | sed 's/^see "//; s/"$//; s|'"$REPO_DIR/"'||; s/:[0-9]*$//' \
-        | sort -u)
-      if [ -n "$errfiles" ]; then
-        log "${YLW}fix these files:${RST}"
-        while IFS= read -r f; do log "  ${YLW}→ $f${RST}"; done <<< "$errfiles"
-      fi
-      # Auto-fix: re-run KaTeX and math fixers, then retry hugo once.
+      while IFS= read -r line; do log "${YLW}tago: ${line}${RST}"; done <<< "$TAGO_OUT"
+      # Auto-fix: re-run KaTeX and math fixers, then retry tago once.
       _katex_retry="$(python3 "$REPO_DIR/scripts/fix_katex.py" 2>&1)"
       _math_retry="$(python3 "$REPO_DIR/scripts/fix_mathdelim.py" 2>&1)"
       if [ -n "$_katex_retry" ] || [ -n "$_math_retry" ]; then
@@ -140,19 +132,19 @@ while true; do
           git commit -q --amend --no-edit
           log "${YLW}· amended commit with auto-fixes${RST}"
         fi
-        # Retry hugo.
-        if HUGO_OUT2="$(hugo --renderToMemory --gc 2>&1)"; then
+        # Retry tago.
+        if TAGO_OUT2="$(tago build --base-url "$BASE_URL" 2>&1)"; then
           if PUSH_OUT2="$(git push -q --force-with-lease origin "$BRANCH" 2>&1)"; then
             log "${GRN}✓ pushed after auto-fix${RST}"
           else
             log "${YLW}✗ push failed after auto-fix: ${PUSH_OUT2}${RST}"
           fi
         else
-          log "${YLW}✗ hugo still failing after auto-fix — held locally${RST}"
-          while IFS= read -r line; do log "${YLW}hugo: ${line}${RST}"; done <<< "$HUGO_OUT2"
+          log "${YLW}✗ tago still failing after auto-fix — held locally${RST}"
+          while IFS= read -r line; do log "${YLW}tago: ${line}${RST}"; done <<< "$TAGO_OUT2"
         fi
       else
-        log "${YLW}✗ hugo error — commit held locally, retry next cycle${RST}"
+        log "${YLW}✗ tago build error — commit held locally, retry next cycle${RST}"
       fi
     fi
     _did_something=true

@@ -90,23 +90,23 @@ draft: false
 | 477 | [Total Hamming Distance](477.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the total Hamming distance between e… |
 | 478 | [Generate Random Point in a Circle](478.md) | 🟡 Medium | 1m 23s | This problem asks us to generate random points uniformly inside a c… |
 | 479 | [Largest Palindrome Product](479.md) | 🔴 Hard | 1m 14s | The problem asks us to find the largest palindrome number that can … |
-| 480 | [Sliding Window Median](480.md) | 🔴 Hard | 1m 30s | The problem asks us to compute the median for every contiguous suba… |
-| 481 | [Magical String](481.md) | 🟡 Medium | 57s | The problem defines a special sequence called the magical string. T… |
-| 482 | [License Key Formatting](482.md) | 🟢 Easy | 44s | The problem is asking us to reformat a string representing a licens… |
-| 483 | [Smallest Good Base](483.md) | 🔴 Hard | 1m 6s | The problem gives us a decimal integer n as a string, and asks us t… |
-| 484 | [Find Permutation](484.md) | 🟡 Medium | 1m 2s | The problem gives us a string s consisting only of the characters '… |
-| 485 | [Max Consecutive Ones](485.md) | 🟢 Easy | 58s | The problem gives us a binary array named nums, meaning every eleme… |
+| 480 | [Sliding Window Median](480.md) | 🔴 Hard | 1m 32s | The problem asks us to compute the median for every contiguous suba… |
+| 481 | [Magical String](481.md) | 🟡 Medium | 1m 26s | This problem defines a special infinite sequence called the magical… |
+| 482 | [License Key Formatting](482.md) | 🟢 Easy | 1m 10s | The problem gives us a string s that represents a license key. The … |
+| 483 | [Smallest Good Base](483.md) | 🔴 Hard | 57s | The problem is asking us to find the smallest integer k = 2 such th… |
+| 484 | [Find Permutation](484.md) | 🟡 Medium | 1m 9s | The problem gives us a string s consisting only of the characters '… |
+| 485 | [Max Consecutive Ones](485.md) | 🟢 Easy | 57s | The problem gives us a binary array named nums, where every element… |
 | 486 | [Predict the Winner](486.md) | 🟡 Medium | 1m 9s | The problem describes a two-player game played on an integer array.… |
-| 487 | [Max Consecutive Ones II](487.md) | 🟡 Medium | 1m 37s | The problem gives us a binary array, meaning every element is eithe… |
-| 488 | [Zuma Game](488.md) | 🔴 Hard | 1m 36s | The problem models a recursive elimination game. We are given a str… |
-| 489 | [Robot Room Cleaner](489.md) | 🔴 Hard | 1m 5s | This problem is an interactive grid traversal problem where we cont… |
+| 487 | [Max Consecutive Ones II](487.md) | 🟡 Medium | 1m | The problem gives us a binary array nums, where every element is ei… |
+| 488 | [Zuma Game](488.md) | 🔴 Hard | 1m 24s | The problem models a recursive elimination game played on a row of … |
+| 489 | [Robot Room Cleaner](489.md) | 🔴 Hard | 1m 7s | This problem is an interactive backtracking problem where we must c… |
 | 490 | [The Maze](490.md) | 🟡 Medium | 1m 22s | This problem asks us to determine whether a rolling ball can stop e… |
-| 491 | [Non-decreasing Subsequences](491.md) | 🟡 Medium | 1m 27s | The problem asks us to generate every distinct subsequence of the i… |
-| 492 | [Construct the Rectangle](492.md) | 🟢 Easy | 57s | The problem gives us a single integer area, representing the total … |
-| 493 | [Reverse Pairs](493.md) | 🔴 Hard | 30s | The problem asks us to count the number of reverse pairs in an arra… |
+| 491 | [Non-decreasing Subsequences](491.md) | 🟡 Medium | 2m 43s | The problem gives us an integer array nums and asks us to return ev… |
+| 492 | [Construct the Rectangle](492.md) | 🟢 Easy | 43s | The problem gives us a single integer, area, which represents the a… |
+| 493 | [Reverse Pairs](493.md) | 🔴 Hard | 59s | The problem asks us to count how many pairs of indices (i, j) satis… |
 | 494 | [Target Sum](494.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many different ways we can assign … |
-| 495 | [Teemo Attacking](495.md) | 🟢 Easy | 54s | The problem describes a sequence of poison attacks applied by Teemo… |
-| 496 | [Next Greater Element I](496.md) | 🟢 Easy | 1m 4s | The problem asks us to find the "next greater element" for every nu… |
-| 497 | [Random Point in Non-overlapping Rectangles](497.md) | 🟡 Medium | 1m 10s | The problem gives us a collection of non-overlapping axis-aligned r… |
-| 498 | [Diagonal Traverse](498.md) | 🟡 Medium | 35s | This problem asks us to traverse a given m x n matrix in a diagonal… |
-| 499 | [The Maze III](499.md) | 🔴 Hard | 2m 7s | This problem asks us to navigate a rolling ball through a maze and … |
+| 495 | [Teemo Attacking](495.md) | 🟢 Easy | 34s | The problem asks us to calculate the total duration that Ashe is po… |
+| 496 | [Next Greater Element I](496.md) | 🟢 Easy | 55s | The problem is asking us to find the next greater element for each … |
+| 497 | [Random Point in Non-overlapping Rectangles](497.md) | 🟡 Medium | 32s | The problem asks us to randomly pick an integer point from a set of… |
+| 498 | [Diagonal Traverse](498.md) | 🟡 Medium | 1m 30s | This problem asks us to traverse a matrix in a specific diagonal pa… |
+| 499 | [The Maze III](499.md) | 🔴 Hard | 2m 15s | This problem extends the mechanics introduced in earlier Maze probl… |

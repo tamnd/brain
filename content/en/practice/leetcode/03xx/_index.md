@@ -107,6 +107,6 @@ draft: false
 | 394 | [Decode String](394.md) | 🟡 Medium | 1m 15s | The problem gives us a string that contains encoded patterns of the… |
 | 395 | [Longest Substring with At Least K Repeating Characters](395.md) | 🟡 Medium | 1m 14s | The problem asks us to find the length of the longest substring in … |
 | 396 | [Rotate Function](396.md) | 🟡 Medium | 1m 19s | The problem defines a special value called the rotation function fo… |
-| 397 | [Integer Replacement](397.md) | 🟡 Medium | 41s | The problem asks us to reduce a given positive integer n to 1 using… |
-| 398 | [Random Pick Index](398.md) | 🟡 Medium | 34s | The problem requires designing a data structure that allows random … |
-| 399 | [Evaluate Division](399.md) | 🟡 Medium | 1m 22s | This problem gives us a collection of mathematical relationships be… |
+| 397 | [Integer Replacement](397.md) | 🟡 Medium | 1m 19s | The problem gives us a positive integer n and asks for the minimum … |
+| 398 | [Random Pick Index](398.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums that may contain duplica… |
+| 399 | [Evaluate Division](399.md) | 🟡 Medium | 1m 24s | This problem gives us a collection of equations between variables, … |
