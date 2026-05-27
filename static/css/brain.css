@@ -125,23 +125,18 @@ body {
 .brain-nav-logo:hover { opacity: 0.7; }
 
 
-/* ===== Sidebar (overridden template uses these classes) =================== */
+/* ===== Sidebar — always an overlay, never takes page space ================ */
 
 .brain-sidebar {
-  flex-shrink: 0;
+  position: fixed;
+  inset: 3.5rem 0 0 0;
+  z-index: 30;
+  width: min(20rem, 90vw);
   background-color: var(--bg);
-}
-
-/* Desktop only: give the sidebar its fixed width and sticky positioning.
-   On mobile, hextra's sidebar.css takes over with position:fixed + width:100%. */
-@media (min-width: 48rem) {
-  .brain-sidebar {
-    width: var(--sidebar-w);
-    position: sticky;
-    top: 3.5rem;
-    align-self: flex-start;
-    height: calc(100vh - 3.5rem);
-  }
+  border-right: 1px solid var(--border);
+  box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
 }
 
 .brain-sidebar__scroll {
@@ -2186,10 +2181,10 @@ html.dark .pres-cluster {
   .pres-slide > ol { font-size: 1rem; }
 }
 
-/* ===== Mobile sidebar toggle ============================================== */
+/* ===== Sidebar toggle (hamburger — always visible) ======================== */
 
 .brain-sidebar-toggle {
-  display: none;
+  display: inline-flex;
   padding: 0.4rem;
   background: none;
   border: none;
@@ -2198,34 +2193,18 @@ html.dark .pres-cluster {
   flex-shrink: 0;
 }
 
-@media (max-width: 47.9rem) {
-  .brain-sidebar-toggle { display: inline-flex; }
+.brain-sidebar--open {
+  transform: translateX(0);
+}
 
-  .brain-sidebar {
-    position: fixed;
-    inset: 3.5rem 0 0 0;
-    z-index: 30;
-    width: 100% !important;
-    max-width: 20rem;
-    transform: translateX(-100%);
-    transition: transform 0.2s ease;
-    border-right: 1px solid var(--border);
-    box-shadow: 2px 0 12px rgba(0,0,0,0.12);
-  }
+.brain-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 3.5rem 0 0 0;
+  z-index: 29;
+  background: rgba(0,0,0,0.35);
+}
 
-  .brain-sidebar--open {
-    transform: translateX(0);
-  }
-
-  .brain-sidebar-backdrop {
-    display: none;
-    position: fixed;
-    inset: 3.5rem 0 0 0;
-    z-index: 29;
-    background: rgba(0,0,0,0.35);
-  }
-
-  .brain-sidebar-backdrop--open {
-    display: block;
-  }
+.brain-sidebar-backdrop--open {
+  display: block;
 }
