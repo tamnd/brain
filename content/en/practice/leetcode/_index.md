@@ -81,26 +81,26 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 64 | [Minimum Path Sum](00xx/64.md) | 🟡 Medium | 2m 24s | The problem gives us a two dimensional grid of size m x n, where ea… |
 | 65 | [Valid Number](00xx/65.md) | 🔴 Hard | 2m 46s | This is a comprehensive, multi section technical guide that will be… |
 | 66 | [Plus One](00xx/66.md) | 🟢 Easy | 2m 21s | The problem gives us a non-empty array of digits that together repr… |
-| 67 | [Add Binary](00xx/67.md) | 🟢 Easy | 1m 12s | The problem gives us two strings, a and b, where each string repres… |
-| 68 | [Text Justification](00xx/68.md) | 🔴 Hard | 1m 2s | The problem asks us to format a sequence of words into fully justif… |
-| 69 | [Sqrt(x)](00xx/69.md) | 🟢 Easy | 1m 10s | The problem asks us to compute the integer square root of a non-neg… |
+| 67 | [Add Binary](00xx/67.md) | 🟢 Easy | 2m 25s | You are given two strings, a and b, where each string represents a … |
+| 68 | [Text Justification](00xx/68.md) | 🔴 Hard | 1m 23s | This problem asks us to simulate how text is formatted in a text ed… |
+| 69 | [Sqrt(x)](00xx/69.md) | 🟢 Easy | 57s | The problem asks us to compute the integer square root of a non neg… |
 | 70 | [Climbing Stairs](00xx/70.md) | 🟢 Easy | 59s | The problem describes a staircase with n total steps, and you want … |
 | 71 | [Simplify Path](00xx/71.md) | 🟡 Medium | 1m 32s | This problem asks us to take an absolute Unix-style file path and c… |
-| 72 | [Edit Distance](00xx/72.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum number of edit operat… |
-| 73 | [Set Matrix Zeroes](00xx/73.md) | 🟡 Medium | 1m 37s | The problem gives us a two dimensional matrix of integers with dime… |
-| 74 | [Search a 2D Matrix](00xx/74.md) | 🟡 Medium | 1m 1s | The problem gives us a two dimensional matrix with two very importa… |
-| 75 | [Sort Colors](00xx/75.md) | 🟡 Medium | 1m 17s | This problem asks us to sort an array containing only three possibl… |
-| 76 | [Minimum Window Substring](00xx/76.md) | 🔴 Hard | 10m 30s | Unusual activity has been detected from your device. Try again late… |
-| 77 | [Combinations](00xx/77.md) | 🟡 Medium | 1m 5s | The problem asks us to generate every possible combination of exact… |
-| 78 | [Subsets](00xx/78.md) | 🟡 Medium | 55s | This problem asks us to generate every possible subset of a given a… |
-| 79 | [Word Search](00xx/79.md) | 🟡 Medium | 1m 7s | This problem gives us a two dimensional grid of characters called b… |
-| 80 | [Remove Duplicates from Sorted Array II](00xx/80.md) | 🟡 Medium | 54s | This problem asks us to modify a sorted array in-place so that each… |
+| 72 | [Edit Distance](00xx/72.md) | 🟡 Medium | 1m 37s | The problem asks us to compute the minimum number of edit operation… |
+| 73 | [Set Matrix Zeroes](00xx/73.md) | 🟡 Medium | 1m 27s | The problem gives us a two dimensional matrix of integers with m ro… |
+| 74 | [Search a 2D Matrix](00xx/74.md) | 🟡 Medium | 1m 36s | This problem gives us a two dimensional matrix with two very import… |
+| 75 | [Sort Colors](00xx/75.md) | 🟡 Medium | 6m 34s | This problem asks us to sort an array that contains only three dist… |
+| 76 | [Minimum Window Substring](00xx/76.md) | 🔴 Hard | 1m 30s | The problem asks us to find the smallest contiguous substring insid… |
+| 77 | [Combinations](00xx/77.md) | 🟡 Medium | 1m 3s | This problem asks us to generate all possible combinations of size … |
+| 78 | [Subsets](00xx/78.md) | 🟡 Medium | 2m 23s | This problem asks us to generate every possible subset of a given a… |
+| 79 | [Word Search](00xx/79.md) | 🟡 Medium | 2m 21s | In this problem, we are given a two dimensional grid of characters … |
+| 80 | [Remove Duplicates from Sorted Array II](00xx/80.md) | 🟡 Medium | 4m 7s | This problem asks us to modify a sorted integer array in-place so t… |
 | 81 | [Search in Rotated Sorted Array II](00xx/81.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a target value exists ins… |
 | 82 | [Remove Duplicates from Sorted List II](00xx/82.md) | 🟡 Medium | 1m 53s | This problem asks us to modify a sorted singly linked list so that … |
-| 83 | [Remove Duplicates from Sorted List](00xx/83.md) | 🟢 Easy | 58s | This problem gives us the head of a singly linked list where the va… |
-| 84 | [Largest Rectangle in Histogram](00xx/84.md) | 🔴 Hard | 1m 52s | In this problem, we are given an array called heights, where each v… |
-| 85 | [Maximal Rectangle](00xx/85.md) | 🔴 Hard | 1m 9s | You are given a 2D binary matrix where each cell contains either '0… |
-| 86 | [Partition List](00xx/86.md) | 🟡 Medium | 1m 1s | This problem asks us to rearrange a singly linked list around a piv… |
+| 83 | [Remove Duplicates from Sorted List](00xx/83.md) | 🟢 Easy | 4m 18s | This problem asks us to remove duplicate values from a sorted singl… |
+| 84 | [Largest Rectangle in Histogram](00xx/84.md) | 🔴 Hard | 1m 12s | This problem asks us to find the largest rectangular area that can … |
+| 85 | [Maximal Rectangle](00xx/85.md) | 🔴 Hard | 1m 23s | The problem asks us to find the area of the largest rectangle conta… |
+| 86 | [Partition List](00xx/86.md) | 🟡 Medium | 42s | It looks like you want the full detailed solution guide, but the sp… |
 | 87 | [Scramble String](00xx/87.md) | 🔴 Hard | 1m 8s | This problem asks us to determine whether one string can be transfo… |
 | 88 | [Merge Sorted Array](00xx/88.md) | 🟢 Easy | 1m 9s | This problem gives us two arrays, nums1 and nums2, that are already… |
 | 89 | [Gray Code](00xx/89.md) | 🟡 Medium | 52s | This problem asks us to generate a valid n-bit Gray code sequence. … |
@@ -275,6 +275,8 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 258 | [Add Digits](02xx/258.md) | 🟢 Easy | 1m 24s | The problem asks us to repeatedly transform a number by summing its… |
 | 259 | [3Sum Smaller](02xx/259.md) | 🟡 Medium | 1m 38s | The problem asks us to count how many distinct index triplets (i, j… |
 | 260 | [Single Number III](02xx/260.md) | 🟡 Medium | 4m 36s | The problem gives an integer array nums where every value appears e… |
+| 261 | [Graph Valid Tree](02xx/261.md) | 🟡 Medium | 1m 17s | The problem asks whether a given undirected graph forms a valid tre… |
+| 262 | [Trips and Users](02xx/262.md) | 🔴 Hard | 1m 31s | This problem asks us to compute the daily cancellation rate for tax… |
 | 263 | [Ugly Number](02xx/263.md) | 🟢 Easy | 1m 34s | The problem asks us to determine whether a given integer n is an ug… |
 | 264 | [Ugly Number II](02xx/264.md) | 🟡 Medium | 1m 23s | The problem asks us to generate the sequence of ugly numbers and re… |
 | 265 | [Paint House II](02xx/265.md) | 🔴 Hard | 1m 25s | The problem gives us a matrix called costs, where costs[i][j] repre… |
@@ -291,3 +293,30 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 276 | [Paint Fence](02xx/276.md) | 🟡 Medium | 58s | The problem gives us a fence with n posts and k available colors. E… |
 | 277 | [Find the Celebrity](02xx/277.md) | 🟡 Medium | 2m 14s | This problem asks us to identify whether there is a "celebrity" amo… |
 | 278 | [First Bad Version](02xx/278.md) | 🟢 Easy | 2m 28s | The problem gives us a sequence of product versions numbered from 1… |
+| 279 | [Perfect Squares](02xx/279.md) | 🟡 Medium | 4m 47s | The problem asks for the minimum number of perfect square numbers w… |
+| 280 | [Wiggle Sort](02xx/280.md) | 🟡 Medium | 1m 18s | The problem asks us to rearrange an integer array so that it follow… |
+| 281 | [Zigzag Iterator](02xx/281.md) | 🟡 Medium | 1m 23s | The problem asks us to design an iterator that alternates between t… |
+| 282 | [Expression Add Operators](02xx/282.md) | 🔴 Hard | 1m 30s | The problem gives us a numeric string num and an integer target. We… |
+| 283 | [Move Zeroes](02xx/283.md) | 🟢 Easy | 1m 46s | The problem gives us an integer array nums and asks us to move ever… |
+| 284 | [Peeking Iterator](02xx/284.md) | 🟡 Medium | 2m 44s | The problem asks us to extend the functionality of a standard itera… |
+| 285 | [Inorder Successor in BST](02xx/285.md) | 🟡 Medium | 3m 5s | This problem asks us to find the in-order successor of a given node… |
+| 286 | [Walls and Gates](02xx/286.md) | 🟡 Medium | 1m 23s | The problem gives us a 2D grid called rooms, where each cell repres… |
+| 287 | [Find the Duplicate Number](02xx/287.md) | 🟡 Medium | 1m 38s | The problem gives us an integer array nums of length n + 1, where e… |
+| 288 | [Unique Word Abbreviation](02xx/288.md) | 🟡 Medium | 6m 40s | The problem asks us to design a data structure that determines whet… |
+| 289 | [Game of Life](02xx/289.md) | 🟡 Medium | 1m 20s | The problem asks us to simulate one iteration of Conway's Game of L… |
+| 290 | [Word Pattern](02xx/290.md) | 🟢 Easy | 1m 10s | The problem gives two inputs: a pattern string and a space-separate… |
+| 291 | [Word Pattern II](02xx/291.md) | 🟡 Medium | 4m 16s | The problem asks us to determine whether a given string s can be fo… |
+| 292 | [Nim Game](02xx/292.md) | 🟢 Easy | 2m 19s | The problem describes a two-player game involving a single heap of … |
+| 293 | [Flip Game](02xx/293.md) | 🟢 Easy | 2m 20s | This problem is asking us to simulate a single move in a simple two… |
+| 294 | [Flip Game II](02xx/294.md) | 🟡 Medium | 1m 47s | This problem describes a two-player impartial game played on a stri… |
+| 295 | [Find Median from Data Stream](02xx/295.md) | 🔴 Hard | 1m 33s | The problem asks us to design a data structure that continuously re… |
+| 296 | [Best Meeting Point](02xx/296.md) | 🔴 Hard | 2m 19s | The problem gives us a two-dimensional binary grid where each cell … |
+| 297 | [Serialize and Deserialize Binary Tree](02xx/297.md) | 🔴 Hard | 4m 52s | The problem asks us to design two complementary operations for a bi… |
+| 298 | [Binary Tree Longest Consecutive Sequence](02xx/298.md) | 🟡 Medium | 3m 30s | The problem asks us to find the length of the longest consecutive s… |
+| 299 | [Bulls and Cows](02xx/299.md) | 🟡 Medium | 1m 3s | The problem gives two strings, secret and guess, representing two n… |
+| 300 | [Longest Increasing Subsequence](03xx/300.md) | 🟡 Medium | 1m 18s | The problem asks us to find the length of the longest strictly incr… |
+| 301 | [Remove Invalid Parentheses](03xx/301.md) | 🔴 Hard | 2m 59s | The problem asks us to remove the minimum number of invalid parenth… |
+| 302 | [Smallest Rectangle Enclosing Black Pixels](03xx/302.md) | 🔴 Hard | 2m 44s | This problem gives us a binary matrix where each cell contains eith… |
+| 303 | [Range Sum Query - Immutable](03xx/303.md) | 🟢 Easy | 1m 22s | The problem asks us to design a data structure that supports effici… |
+| 305 | [Number of Islands II](03xx/305.md) | 🔴 Hard | 1m 26s | The problem gives us an initially empty m x n grid where every cell… |
+| 306 | [Additive Number](03xx/306.md) | 🟡 Medium | 1m 24s | The problem asks us to determine whether a given string of digits c… |

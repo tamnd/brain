@@ -93,8 +93,8 @@ draft: false
 | 280 | [Wiggle Sort](280.md) | 🟡 Medium | 1m 18s | The problem asks us to rearrange an integer array so that it follow… |
 | 281 | [Zigzag Iterator](281.md) | 🟡 Medium | 1m 23s | The problem asks us to design an iterator that alternates between t… |
 | 282 | [Expression Add Operators](282.md) | 🔴 Hard | 1m 30s | The problem gives us a numeric string num and an integer target. We… |
-| 283 | [Move Zeroes](283.md) | 🟢 Easy | 1m 3s | The problem gives an integer array nums and asks us to move every 0… |
-| 284 | [Peeking Iterator](284.md) | 🟡 Medium | 1m 24s | This problem asks us to design a wrapper around an existing iterato… |
+| 283 | [Move Zeroes](283.md) | 🟢 Easy | 1m 46s | The problem gives us an integer array nums and asks us to move ever… |
+| 284 | [Peeking Iterator](284.md) | 🟡 Medium | 2m 44s | The problem asks us to extend the functionality of a standard itera… |
 | 285 | [Inorder Successor in BST](285.md) | 🟡 Medium | 3m 5s | This problem asks us to find the in-order successor of a given node… |
 | 286 | [Walls and Gates](286.md) | 🟡 Medium | 1m 23s | The problem gives us a 2D grid called rooms, where each cell repres… |
 | 287 | [Find the Duplicate Number](287.md) | 🟡 Medium | 1m 38s | The problem gives us an integer array nums of length n + 1, where e… |
