@@ -15,16 +15,16 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 1 | [Two Sum](00xx/1.md) | 🟢 Easy | 1m | The problem asks us to find two distinct numbers in an integer arra… |
-| 2 | [Add Two Numbers](00xx/2.md) | 🟡 Medium | 1m 19s | This problem asks us to add two non-negative integers, but instead … |
-| 3 | [Longest Substring Without Repeating Characters](00xx/3.md) | 🟡 Medium | 1m 13s | The problem gives us a string s and asks for the length of the long… |
-| 4 | [Median of Two Sorted Arrays](00xx/4.md) | 🔴 Hard | 1m 17s | This problem asks us to find the median of two individually sorted … |
-| 5 | [Longest Palindromic Substring](00xx/5.md) | 🟡 Medium | 1m 8s | The problem asks us to find the longest substring of a given string… |
-| 6 | [Zigzag Conversion](00xx/6.md) | 🟡 Medium | 1m 1s | The problem asks us to rearrange a string into a zigzag pattern acr… |
-| 7 | [Reverse Integer](00xx/7.md) | 🟡 Medium | 1m 3s | The problem asks us to reverse the digits of a signed 32-bit intege… |
-| 8 | [String to Integer (atoi)](00xx/8.md) | 🟡 Medium | 1m 9s | The problem asks us to implement a simplified version of the C/C++ … |
-| 9 | [Palindrome Number](00xx/9.md) | 🟢 Easy | 1m 2s | The problem asks us to determine whether a given integer reads the … |
-| 10 | [Regular Expression Matching](00xx/10.md) | 🔴 Hard | 1m 12s | This problem asks us to determine whether an entire input string ma… |
+| 1 | [Two Sum](00xx/1.md) | 🟢 Easy | 4m | The problem gives us an integer array called nums and another integ… |
+| 2 | [Add Two Numbers](00xx/2.md) | 🟡 Medium | 2m 35s | The problem gives us two non empty singly linked lists. Each linked… |
+| 3 | [Longest Substring Without Repeating Characters](00xx/3.md) | 🟡 Medium | 1m 9s | The problem gives a string s and asks for the length of the longest… |
+| 4 | [Median of Two Sorted Arrays](00xx/4.md) | 🔴 Hard | 1m 25s | The problem gives two individually sorted integer arrays, nums1 and… |
+| 5 | [Longest Palindromic Substring](00xx/5.md) | 🟡 Medium | 3m 13s | The problem asks us to find the longest substring of a given string… |
+| 6 | [Zigzag Conversion](00xx/6.md) | 🟡 Medium | 1m 31s | The problem asks us to transform a string into a zigzag pattern acr… |
+| 7 | [Reverse Integer](00xx/7.md) | 🟡 Medium | 1m 15s | The problem asks us to reverse the digits of a signed 32-bit intege… |
+| 8 | [String to Integer (atoi)](00xx/8.md) | 🟡 Medium | 1m 52s | The problem asks us to implement a simplified version of the C/C++ … |
+| 9 | [Palindrome Number](00xx/9.md) | 🟢 Easy | 1m 47s | The problem asks us to determine whether a given integer reads the … |
+| 10 | [Regular Expression Matching](00xx/10.md) | 🔴 Hard | 1m 20s | This problem asks us to implement a simplified regular expression e… |
 | 11 | [Container With Most Water](00xx/11.md) | 🟡 Medium | 2m 4s | The problem gives an array called height, where each element repres… |
 | 12 | [Integer to Roman](00xx/12.md) | 🟡 Medium | 1m | The problem asks us to convert a positive integer into its Roman nu… |
 | 13 | [Roman to Integer](00xx/13.md) | 🟢 Easy | 56s | The problem asks us to convert a Roman numeral string into its corr… |
@@ -165,3 +165,58 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 148 | [Sort List](01xx/148.md) | 🟡 Medium | 1m 8s | The problem gives us the head of a singly linked list and asks us t… |
 | 149 | [Max Points on a Line](01xx/149.md) | 🔴 Hard | 1m 24s | This problem asks us to determine the maximum number of points that… |
 | 150 | [Evaluate Reverse Polish Notation](01xx/150.md) | 🟡 Medium | 1m 6s | This problem asks us to evaluate an arithmetic expression written i… |
+| 151 | [Reverse Words in a String](01xx/151.md) | 🟡 Medium | 2m 52s | This problem asks us to reverse the order of words in a string whil… |
+| 152 | [Maximum Product Subarray](01xx/152.md) | 🟡 Medium | 2m 19s | The problem gives an integer array nums and asks us to find the con… |
+| 153 | [Find Minimum in Rotated Sorted Array](01xx/153.md) | 🟡 Medium | 3m 26s | The problem gives us an array that was originally sorted in ascendi… |
+| 154 | [Find Minimum in Rotated Sorted Array II](01xx/154.md) | 🔴 Hard | 58s | This problem gives us an array that was originally sorted in ascend… |
+| 155 | [Min Stack](01xx/155.md) | 🟡 Medium | 52s | This problem asks us to design a stack data structure that supports… |
+| 156 | [Binary Tree Upside Down](01xx/156.md) | 🟡 Medium | 1m 35s | This problem asks us to transform a binary tree into a new structur… |
+| 157 | [Read N Characters Given Read4](01xx/157.md) | 🟢 Easy | 2m 59s | This problem asks us to implement a custom read function using a li… |
+| 158 | [Read N Characters Given read4 II - Call Multiple Times](01xx/158.md) | 🔴 Hard | 1m | This problem asks us to implement a custom read(buf, n) function us… |
+| 159 | [Longest Substring with At Most Two Distinct Characters](01xx/159.md) | 🟡 Medium | 58s | The problem asks us to find the length of the longest contiguous su… |
+| 160 | [Intersection of Two Linked Lists](01xx/160.md) | 🟢 Easy | 59s | This problem asks us to determine whether two singly linked lists i… |
+| 161 | [One Edit Distance](01xx/161.md) | 🟡 Medium | 51s | This problem asks us to determine whether two strings are exactly o… |
+| 162 | [Find Peak Element](01xx/162.md) | 🟡 Medium | 1m | This problem asks us to find the index of any "peak" element in an … |
+| 163 | [Missing Ranges](01xx/163.md) | 🟢 Easy | 2m | The problem gives us three inputs: - A sorted array nums containing… |
+| 164 | [Maximum Gap](01xx/164.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the largest difference between two c… |
+| 165 | [Compare Version Numbers](01xx/165.md) | 🟡 Medium | 59s | The problem asks us to compare two version numbers represented as s… |
+| 166 | [Fraction to Recurring Decimal](01xx/166.md) | 🟡 Medium | 1m 1s | This problem asks us to convert a fraction, represented by a numera… |
+| 167 | [Two Sum II - Input Array Is Sorted](01xx/167.md) | 🟡 Medium | 1m 1s | The problem gives us a sorted integer array called numbers and a ta… |
+| 168 | [Excel Sheet Column Title](01xx/168.md) | 🟢 Easy | 1m | The problem asks us to convert a positive integer into the column n… |
+| 169 | [Majority Element](01xx/169.md) | 🟢 Easy | 52s | This problem asks us to find the majority element in an integer arr… |
+| 170 | [Two Sum III - Data structure design](01xx/170.md) | 🟢 Easy | 1m 4s | The problem asks us to design a reusable data structure that contin… |
+| 171 | [Excel Sheet Column Number](01xx/171.md) | 🟢 Easy | 1m 14s | This problem asks us to convert an Excel-style column title into it… |
+| 172 | [Factorial Trailing Zeroes](01xx/172.md) | 🟡 Medium | 46s | The problem asks us to determine how many trailing zeroes appear at… |
+| 173 | [Binary Search Tree Iterator](01xx/173.md) | 🟡 Medium | 1m 5s | This problem asks us to design an iterator for a Binary Search Tree… |
+| 174 | [Dungeon Game](01xx/174.md) | 🔴 Hard | 1m 29s | This problem asks us to determine the minimum initial health a knig… |
+| 175 | [Combine Two Tables](01xx/175.md) | 🟢 Easy | 48s | This problem provides two database tables, Person and Address, and … |
+| 176 | [Second Highest Salary](01xx/176.md) | 🟡 Medium | 1m 3s | This problem asks us to retrieve the second highest distinct salary… |
+| 177 | [Nth Highest Salary](01xx/177.md) | 🟡 Medium | 1m 18s | This problem asks us to write a SQL query that returns the nth high… |
+| 178 | [Rank Scores](01xx/178.md) | 🟡 Medium | 1m 13s | This problem asks us to assign rankings to game scores stored in a … |
+| 179 | [Largest Number](01xx/179.md) | 🟡 Medium | 1m 3s | The problem gives an array of non-negative integers and asks us to … |
+| 180 | [Consecutive Numbers](01xx/180.md) | 🟡 Medium | 1m 15s | This problem provides a database table named Logs with two columns:… |
+| 181 | [Employees Earning More Than Their Managers](01xx/181.md) | 🟢 Easy | 54s | This problem asks us to identify employees whose salary is greater … |
+| 182 | [Duplicate Emails](01xx/182.md) | 🟢 Easy | 1m 11s | This problem provides a database table named Person with two column… |
+| 183 | [Customers Who Never Order](01xx/183.md) | 🟢 Easy | 1m 8s | This problem provides two database tables, Customers and Orders. Th… |
+| 184 | [Department Highest Salary](01xx/184.md) | 🟡 Medium | 1m 41s | This problem asks us to identify the employee or employees who earn… |
+| 185 | [Department Top Three Salaries](01xx/185.md) | 🔴 Hard | 1m 9s | This problem asks us to identify the employees who belong to the to… |
+| 186 | [Reverse Words in a String II](01xx/186.md) | 🟡 Medium | 50s | This problem asks us to reverse the order of words inside a charact… |
+| 187 | [Repeated DNA Sequences](01xx/187.md) | 🟡 Medium | 2m 17s | The problem gives us a DNA string consisting only of the four chara… |
+| 188 | [Best Time to Buy and Sell Stock IV](01xx/188.md) | 🔴 Hard | 57s | This problem asks us to maximize profit from buying and selling a s… |
+| 189 | [Rotate Array](01xx/189.md) | 🟡 Medium | 1m | The problem asks us to rotate an array to the right by k positions.… |
+| 190 | [Reverse Bits](01xx/190.md) | 🟢 Easy | 56s | The problem asks us to reverse the binary representation of a 32-bi… |
+| 191 | [Number of 1 Bits](01xx/191.md) | 🟢 Easy | 53s | The problem asks us to count how many bits are set to 1 in the bina… |
+| 192 | [Word Frequency](01xx/192.md) | 🟡 Medium | 2m 21s | This problem asks us to write a shell script that reads a text file… |
+| 193 | [Valid Phone Numbers](01xx/193.md) | 🟢 Easy | 1m 27s | This problem asks us to process a text file named file.txt and prin… |
+| 194 | [Transpose File](01xx/194.md) | 🟡 Medium | 1m 6s | This problem asks us to transpose the contents of a text file. Tran… |
+| 195 | [Tenth Line](01xx/195.md) | 🟢 Easy | 52s | This problem asks us to print exactly the 10th line from a text fil… |
+| 196 | [Delete Duplicate Emails](01xx/196.md) | 🟢 Easy | 52s | This problem provides a database table named Person with two column… |
+| 197 | [Rising Temperature](01xx/197.md) | 🟢 Easy | 3m 42s | The problem gives us a database table named Weather that stores dai… |
+| 198 | [House Robber](01xx/198.md) | 🟡 Medium | 3m 4s | The problem describes a row of houses, where each house contains so… |
+| 199 | [Binary Tree Right Side View](01xx/199.md) | 🟡 Medium | 1m 34s | The problem gives us the root node of a binary tree and asks us to … |
+| 200 | [Number of Islands](02xx/200.md) | 🟡 Medium | 1m 20s | The problem gives us a two-dimensional grid where each cell contain… |
+| 201 | [Bitwise AND of Numbers Range](02xx/201.md) | 🟡 Medium | 1m 28s | The problem asks us to compute the bitwise AND of every integer in … |
+| 202 | [Happy Number](02xx/202.md) | 🟢 Easy | 1m 19s | This problem asks us to determine whether a given positive integer … |
+| 203 | [Remove Linked List Elements](02xx/203.md) | 🟢 Easy | 1m 48s | The problem asks us to remove every node from a singly linked list … |
+| 204 | [Count Primes](02xx/204.md) | 🟡 Medium | 1m 27s | The problem asks us to count how many prime numbers exist that are … |
+| 206 | [Reverse Linked List](02xx/206.md) | 🟢 Easy | 1m 6s | The problem asks us to reverse a singly linked list. A singly linke… |

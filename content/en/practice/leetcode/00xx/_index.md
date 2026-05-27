@@ -13,13 +13,13 @@ draft: false
 | 1 | [Two Sum](1.md) | 🟢 Easy | 4m | The problem gives us an integer array called nums and another integ… |
 | 2 | [Add Two Numbers](2.md) | 🟡 Medium | 2m 35s | The problem gives us two non empty singly linked lists. Each linked… |
 | 3 | [Longest Substring Without Repeating Characters](3.md) | 🟡 Medium | 1m 9s | The problem gives a string s and asks for the length of the longest… |
-| 4 | [Median of Two Sorted Arrays](4.md) | 🔴 Hard | 1m 9s | The problem gives us two individually sorted integer arrays, nums1 … |
-| 5 | [Longest Palindromic Substring](5.md) | 🟡 Medium | 1m 8s | The problem asks us to find the longest substring of a given string… |
-| 6 | [Zigzag Conversion](6.md) | 🟡 Medium | 1m 1s | The problem asks us to rearrange a string into a zigzag pattern acr… |
-| 7 | [Reverse Integer](7.md) | 🟡 Medium | 1m 3s | The problem asks us to reverse the digits of a signed 32-bit intege… |
-| 8 | [String to Integer (atoi)](8.md) | 🟡 Medium | 1m 9s | The problem asks us to implement a simplified version of the C/C++ … |
-| 9 | [Palindrome Number](9.md) | 🟢 Easy | 1m 2s | The problem asks us to determine whether a given integer reads the … |
-| 10 | [Regular Expression Matching](10.md) | 🔴 Hard | 1m 12s | This problem asks us to determine whether an entire input string ma… |
+| 4 | [Median of Two Sorted Arrays](4.md) | 🔴 Hard | 1m 25s | The problem gives two individually sorted integer arrays, nums1 and… |
+| 5 | [Longest Palindromic Substring](5.md) | 🟡 Medium | 3m 13s | The problem asks us to find the longest substring of a given string… |
+| 6 | [Zigzag Conversion](6.md) | 🟡 Medium | 1m 31s | The problem asks us to transform a string into a zigzag pattern acr… |
+| 7 | [Reverse Integer](7.md) | 🟡 Medium | 1m 15s | The problem asks us to reverse the digits of a signed 32-bit intege… |
+| 8 | [String to Integer (atoi)](8.md) | 🟡 Medium | 1m 52s | The problem asks us to implement a simplified version of the C/C++ … |
+| 9 | [Palindrome Number](9.md) | 🟢 Easy | 1m 47s | The problem asks us to determine whether a given integer reads the … |
+| 10 | [Regular Expression Matching](10.md) | 🔴 Hard | 1m 20s | This problem asks us to implement a simplified regular expression e… |
 | 11 | [Container With Most Water](11.md) | 🟡 Medium | 2m 4s | The problem gives an array called height, where each element repres… |
 | 12 | [Integer to Roman](12.md) | 🟡 Medium | 1m | The problem asks us to convert a positive integer into its Roman nu… |
 | 13 | [Roman to Integer](13.md) | 🟢 Easy | 56s | The problem asks us to convert a Roman numeral string into its corr… |
