@@ -49,17 +49,25 @@ draft: false
 | 536 | [Construct Binary Tree from String](536.md) | 🟡 Medium | 1m 2s | This problem asks us to reconstruct a binary tree from a specially … |
 | 537 | [Complex Number Multiplication](537.md) | 🟡 Medium | 50s | This problem asks us to multiply two complex numbers represented as… |
 | 538 | [Convert BST to Greater Tree](538.md) | 🟡 Medium | 1m 6s | This problem asks us to transform a Binary Search Tree, abbreviated… |
-| 539 | [Minimum Time Difference](539.md) | 🟡 Medium | 1m 8s | The problem gives a list of time points represented as strings in 2… |
+| 539 | [Minimum Time Difference](539.md) | 🟡 Medium | 5m 19s | The problem gives a list of time points in 24-hour clock format, wh… |
 | 540 | [Single Element in a Sorted Array](540.md) | 🟡 Medium | 2m 19s | The problem gives us a sorted integer array where every value appea… |
 | 541 | [Reverse String II](541.md) | 🟢 Easy | 1m 22s | The problem requires us to manipulate a string s in a structured wa… |
 | 542 | [01 Matrix](542.md) | 🟡 Medium | 1m 8s | This problem gives us an m x n binary matrix where every cell conta… |
 | 543 | [Diameter of Binary Tree](543.md) | 🟢 Easy | 1m 26s | The problem asks us to compute the diameter of a binary tree. The d… |
 | 544 | [Output Contest Matches](544.md) | 🟡 Medium | 1m 5s | The problem asks us to simulate the structure of a playoff tourname… |
 | 545 | [Boundary of Binary Tree](545.md) | 🟡 Medium | 1m 9s | This problem asks us to compute the boundary traversal of a binary … |
-| 546 | [Remove Boxes](546.md) | 🔴 Hard | 1m 21s | In this problem, we are given an array called boxes, where each int… |
-| 547 | [Number of Provinces](547.md) | 🟡 Medium | 38s | The problem asks us to find the number of provinces in a network of… |
+| 546 | [Remove Boxes](546.md) | 🔴 Hard | 1m 24s | The problem gives us an array called boxes, where each integer repr… |
+| 547 | [Number of Provinces](547.md) | 🟡 Medium | 1m 52s | The problem is asking us to determine the number of provinces in a … |
 | 548 | [Split Array with Equal Sum](548.md) | 🔴 Hard | 37s | The problem asks us to determine whether an integer array nums can … |
-| 549 | [Binary Tree Longest Consecutive Sequence II](549.md) | 🟡 Medium | 1m 4s | This problem asks us to find the longest path in a binary tree wher… |
-| 550 | [Game Play Analysis IV](550.md) | 🟡 Medium | 1m 23s | The problem asks us to calculate the fraction of players who return… |
+| 549 | [Binary Tree Longest Consecutive Sequence II](549.md) | 🟡 Medium | 1m 21s | This problem asks us to find the length of the longest consecutive … |
+| 550 | [Game Play Analysis IV](550.md) | 🟡 Medium | 2m 24s | This problem is asking us to calculate a retention metric from a ta… |
 | 551 | [Student Attendance Record I](551.md) | 🟢 Easy | 1m 1s | The problem gives us a string s where each character represents a s… |
+| 552 | [Student Attendance Record II](552.md) | 🔴 Hard | 1m 46s | The problem asks us to count how many attendance records of length … |
 | 553 | [Optimal Division](553.md) | 🟡 Medium | 1m 9s | In this problem, we are given an array of positive integers nums. T… |
+| 554 | [Brick Wall](554.md) | 🟡 Medium | 1m 10s | The problem gives us a wall represented as a list of rows, where ea… |
+| 555 | [Split Concatenated Strings](555.md) | 🟡 Medium | 1m 21s | The problem gives an array of strings, and we must arrange them int… |
+| 556 | [Next Greater Element III](556.md) | 🟡 Medium | 1m 5s | This problem asks us to find the smallest integer that is strictly … |
+| 557 | [Reverse Words in a String III](557.md) | 🟢 Easy | 47s | The problem requires reversing the characters of each individual wo… |
+| 558 | [Logical OR of Two Binary Grids Represented as Quad-Trees](558.md) | 🟡 Medium | 1m 27s | This problem gives us two Quad-Trees, where each tree represents a … |
+| 561 | [Array Partition](561.md) | 🟢 Easy | 1m 6s | The problem gives an array nums containing 2n integers. Our task is… |
+| 562 | [Longest Line of Consecutive One in Matrix](562.md) | 🟡 Medium | 1m 13s | The problem gives us a binary matrix mat of size m x n, where every… |
