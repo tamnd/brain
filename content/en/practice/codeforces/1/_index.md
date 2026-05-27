@@ -8,6 +8,7 @@ contest_type: "Beta"
 rating_range: "1000-2100"
 n_problems: 3
 n_verified: 3
+total_solve_s: 219
 date: "2026-05-27T00:00:00+07:00"
 weight: 1
 draft: false
@@ -15,7 +16,7 @@ draft: false
 
 # [Codeforces Beta Round 1](https://codeforces.com/contest/1)
 
-**Type:** Beta | **Problems:** 3 | **Verified:** 3/3 | **Rating range:** 1000-2100 | **Date:** 2026-05-27
+**Type:** Beta | **Problems:** 3 | **Verified:** 3/3 | **Rating range:** 1000-2100 | **Time:** 3m 39s | **Date:** 2026-05-27
 
 | Problem | Name | Rating | Tags | Solve Time | Share | Verified |
 |---|---|---|---|---|---|---|
