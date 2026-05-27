@@ -25,5 +25,27 @@ draft: false
 | 112 | [Path Sum](112.md) | 🟢 Easy | 1m 2s | This problem asks us to determine whether a binary tree contains at… |
 | 113 | [Path Sum II](113.md) | 🟡 Medium | 1m 18s | The problem asks us to find all root-to-leaf paths in a binary tree… |
 | 114 | [Flatten Binary Tree to Linked List](114.md) | 🟡 Medium | 1m 3s | The problem gives us the root of a binary tree and asks us to trans… |
+| 115 | [Distinct Subsequences](115.md) | 🔴 Hard | 3m 14s | The problem asks us to count how many distinct subsequences of a st… |
 | 116 | [Populating Next Right Pointers in Each Node](116.md) | 🟡 Medium | 1m 12s | This problem asks us to populate the next pointer for every node in… |
 | 117 | [Populating Next Right Pointers in Each Node II](117.md) | 🟡 Medium | 1m 25s | This problem asks us to connect nodes at the same depth level in a … |
+| 118 | [Pascal's Triangle](118.md) | 🟢 Easy | 58s | The problem asks us to generate the first numRows rows of Pascal's … |
+| 119 | [Pascal's Triangle II](119.md) | 🟢 Easy | 1m 21s | The problem asks us to return a specific row from Pascal's Triangle… |
+| 120 | [Triangle](120.md) | 🟡 Medium | 1m 32s | The problem gives us a triangular array of integers and asks for th… |
+| 121 | [Best Time to Buy and Sell Stock](121.md) | 🟢 Easy | 1m 57s | The problem gives us an integer array called prices, where each ele… |
+| 122 | [Best Time to Buy and Sell Stock II](122.md) | 🟡 Medium | 59s | This problem asks us to maximize profit from stock trading over a s… |
+| 123 | [Best Time to Buy and Sell Stock III](123.md) | 🔴 Hard | 1m 11s | This problem asks us to maximize profit from stock trading under a … |
+| 124 | [Binary Tree Maximum Path Sum](124.md) | 🔴 Hard | 1m 12s | This problem asks us to compute the maximum possible sum of values … |
+| 125 | [Valid Palindrome](125.md) | 🟢 Easy | 1m 1s | The problem asks us to determine whether a given string is a palind… |
+| 126 | [Word Ladder II](126.md) | 🔴 Hard | 1m 22s | Difficulty: Hard Topics: Hash Table, String, Backtracking, Breadth-… |
+| 127 | [Word Ladder](127.md) | 🔴 Hard | 1m 11s | The problem asks us to find the length of the shortest transformati… |
+| 128 | [Longest Consecutive Sequence](128.md) | 🟡 Medium | 1m 6s | The problem gives us an unsorted array of integers and asks for the… |
+| 129 | [Sum Root to Leaf Numbers](129.md) | 🟡 Medium | 1m 19s | This problem asks us to compute the sum of all numbers formed by ro… |
+| 130 | [Surrounded Regions](130.md) | 🟡 Medium | 1m 8s | This problem asks us to modify a two-dimensional grid in-place by i… |
+| 131 | [Palindrome Partitioning](131.md) | 🟡 Medium | 1m 11s | This problem asks us to split a string into multiple substrings suc… |
+| 132 | [Palindrome Partitioning II](132.md) | 🔴 Hard | 3m 5s | The problem asks us to divide a string s into contiguous substrings… |
+| 133 | [Clone Graph](133.md) | 🟡 Medium | 2m 19s | This problem asks us to create a deep copy of an undirected connect… |
+| 134 | [Gas Station](134.md) | 🟡 Medium | 2m 19s | The problem describes a circular route of gas stations. Each statio… |
+| 135 | [Candy](135.md) | 🔴 Hard | 2m 9s | The problem gives us an array called ratings, where each element re… |
+| 136 | [Single Number](136.md) | 🟢 Easy | 2m | The problem gives us a non-empty integer array nums. Every value in… |
+| 137 | [Single Number II](137.md) | 🟡 Medium | 57s | This problem asks us to find the one unique number in an array wher… |
+| 138 | [Copy List with Random Pointer](138.md) | 🟡 Medium | 1m | The problem asks us to create a deep copy of a linked list where ea… |
