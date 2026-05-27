@@ -27,6 +27,22 @@ draft: false
 | 814 | [Binary Tree Pruning](814.md) | 🟡 Medium | 1m 14s | This problem asks us to modify a binary tree by removing every subt… |
 | 815 | [Bus Routes](815.md) | 🔴 Hard | 29s | This problem asks us to determine the minimum number of buses requi… |
 | 816 | [Ambiguous Coordinates](816.md) | 🟡 Medium | 1m 10s | The problem gives us a compressed string representation of a 2D coo… |
-| 817 | [Linked List Components](817.md) | 🟡 Medium | 1m | The problem gives us a singly linked list where every node contains… |
-| 818 | [Race Car](818.md) | 🔴 Hard | 1m 4s | In this problem, we control a car moving on an infinite number line… |
-| 819 | [Most Common Word](819.md) | 🟢 Easy | 33s | The problem asks us to find the most frequent word in a paragraph t… |
+| 817 | [Linked List Components](817.md) | 🟡 Medium | 52s | The problem gives us a singly linked list where every node contains… |
+| 818 | [Race Car](818.md) | 🔴 Hard | 1m 9s | This problem asks us to control a car moving on an infinite one dim… |
+| 819 | [Most Common Word](819.md) | 🟢 Easy | 1m 20s | The problem asks us to process a paragraph of text and determine wh… |
+| 820 | [Short Encoding of Words](820.md) | 🟡 Medium | 52s | The problem asks us to find the length of the shortest reference st… |
+| 821 | [Shortest Distance to a Character](821.md) | 🟢 Easy | 1m 20s | The problem gives us a string s and a target character c. For every… |
+| 822 | [Card Flipping Game](822.md) | 🟡 Medium | 1m 1s | In this problem, we are given a collection of cards where each card… |
+| 823 | [Binary Trees With Factors](823.md) | 🟡 Medium | 42s | The problem asks us to determine the number of distinct binary tree… |
+| 824 | [Goat Latin](824.md) | 🟢 Easy | 1m 15s | In this problem, we are given a sentence containing words separated… |
+| 825 | [Friends Of Appropriate Ages](825.md) | 🟡 Medium | 1m 4s | This problem asks us to count how many friend requests are sent bet… |
+| 826 | [Most Profit Assigning Work](826.md) | 🟡 Medium | 53s | The problem gives us three arrays: - difficulty[i] represents how h… |
+| 827 | [Making A Large Island](827.md) | 🔴 Hard | 1m 45s | The problem asks us to find the largest possible island size in a b… |
+| 828 | [Count Unique Characters of All Substrings of a Given String](828.md) | 🔴 Hard | 1m 52s | The problem asks us to compute the total number of unique character… |
+| 829 | [Consecutive Numbers Sum](829.md) | 🔴 Hard | 1m 6s | The problem asks us to count how many different ways an integer n c… |
+| 830 | [Positions of Large Groups](830.md) | 🟢 Easy | 46s | The problem asks us to identify "large groups" of consecutive ident… |
+| 831 | [Masking Personal Information](831.md) | 🟡 Medium | 1m 5s | This problem asks us to take a string representing personal informa… |
+| 832 | [Flipping an Image](832.md) | 🟢 Easy | 1m 13s | The problem gives us an n x n binary matrix called image. Every ele… |
+| 833 | [Find And Replace in String](833.md) | 🟡 Medium | 1m 16s | The problem requires performing a series of conditional string repl… |
+| 834 | [Sum of Distances in Tree](834.md) | 🔴 Hard | 1m 13s | The problem gives us an undirected tree with n nodes labeled from 0… |
+| 835 | [Image Overlap](835.md) | 🟡 Medium | 1m 22s | The problem gives us two binary square matrices, img1 and img2, eac… |
