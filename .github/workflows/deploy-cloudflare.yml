@@ -19,11 +19,11 @@ jobs:
     env:
       HUGO_VERSION: "0.160.1"
       HUGO_BASEURL: "https://brain.tamnd.com/"
+      HUGO_ENABLEGITINFO: "false"
     steps:
       - uses: actions/checkout@v6.0.2
         with:
-          fetch-depth: 0
-          filter: blob:none
+          fetch-depth: 1
 
       - name: Setup Go
         uses: actions/setup-go@v6.4.0
