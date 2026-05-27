@@ -526,14 +526,14 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 509 | [Fibonacci Number](05xx/509.md) | 🟢 Easy | 56s | This problem asks us to compute the nth Fibonacci number. The Fibon… |
 | 510 | [Inorder Successor in BST II](05xx/510.md) | 🟡 Medium | 1m 14s | This problem asks us to find the in-order successor of a given node… |
 | 511 | [Game Play Analysis I](05xx/511.md) | 🟢 Easy | 1m 6s | This problem asks us to determine the first day each player logged … |
-| 512 | [Game Play Analysis II](05xx/512.md) | 🟢 Easy | 1m 18s | The Activity table records gameplay sessions for different players.… |
+| 512 | [Game Play Analysis II](05xx/512.md) | 🟢 Easy | 3m 3s | The problem provides a database table named Activity. Each row repr… |
 | 513 | [Find Bottom Left Tree Value](05xx/513.md) | 🟡 Medium | 49s | The problem asks us to find the leftmost value in the last row of a… |
 | 514 | [Freedom Trail](05xx/514.md) | 🔴 Hard | 1m 22s | The problem models a circular dial, represented by the string ring,… |
 | 515 | [Find Largest Value in Each Tree Row](05xx/515.md) | 🟡 Medium | 44s | The problem asks us to find the largest value in each row of a bina… |
 | 516 | [Longest Palindromic Subsequence](05xx/516.md) | 🟡 Medium | 42s | The problem asks us to determine the length of the longest palindro… |
 | 517 | [Super Washing Machines](05xx/517.md) | 🔴 Hard | 1m 56s | The problem gives us a line of washing machines, where each machine… |
 | 518 | [Coin Change II](05xx/518.md) | 🟡 Medium | 1m 19s | This problem asks us to compute the number of distinct combinations… |
-| 519 | [Random Flip Matrix](05xx/519.md) | 🟡 Medium | 55s | This problem asks us to design a data structure that simulates rand… |
+| 519 | [Random Flip Matrix](05xx/519.md) | 🟡 Medium | 3m 39s | The problem gives us an m x n matrix where every cell initially con… |
 | 520 | [Detect Capital](05xx/520.md) | 🟢 Easy | 1m 21s | only conditions are satisfied. |
 | 521 | [Longest Uncommon Subsequence I](05xx/521.md) | 🟢 Easy | 51s | The problem asks us to find the length of the longest uncommon subs… |
 | 522 | [Longest Uncommon Subsequence II](05xx/522.md) | 🟡 Medium | 53s | The problem asks us to find the length of the longest string in the… |
@@ -541,21 +541,22 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 524 | [Longest Word in Dictionary through Deleting](05xx/524.md) | 🟡 Medium | 57s | The problem gives us a source string s and a list of candidate word… |
 | 525 | [Contiguous Array](05xx/525.md) | 🟡 Medium | 1m 24s | This problem asks us to find the maximum length of a contiguous sub… |
 | 526 | [Beautiful Arrangement](05xx/526.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many permutations of the integers … |
-| 527 | [Word Abbreviation](05xx/527.md) | 🔴 Hard | 1m | This problem asks us to generate the shortest possible unique abbre… |
+| 527 | [Word Abbreviation](05xx/527.md) | 🔴 Hard | 19m 21s | The problem asks us to compute minimal unique abbreviations for an … |
 | 528 | [Random Pick with Weight](05xx/528.md) | 🟡 Medium | 52s | The problem asks us to design a data structure that supports weight… |
 | 529 | [Minesweeper](05xx/529.md) | 🟡 Medium | 1m 9s | This problem asks us to simulate one move in the classic Minesweepe… |
-| 530 | [Minimum Absolute Difference in BST](05xx/530.md) | 🟢 Easy | 36s | The problem asks us to find the minimum absolute difference between… |
+| 530 | [Minimum Absolute Difference in BST](05xx/530.md) | 🟢 Easy | 1m 47s | This problem gives us the root node of a Binary Search Tree, abbrev… |
 | 531 | [Lonely Pixel I](05xx/531.md) | 🟡 Medium | 1m 7s | The problem gives us a 2D grid called picture, where each cell cont… |
-| 532 | [K-diff Pairs in an Array](05xx/532.md) | 🟡 Medium | 1m 3s | The problem asks us to determine the number of unique k-diff pairs … |
-| 534 | [Game Play Analysis III](05xx/534.md) | 🟡 Medium | 1m 29s | The problem provides a database table named Activity, where each ro… |
-| 535 | [Encode and Decode TinyURL](05xx/535.md) | 🟡 Medium | 1m 19s | The problem asks us to design a service that can take any valid URL… |
-| 536 | [Construct Binary Tree from String](05xx/536.md) | 🟡 Medium | 1m | This problem requires constructing a binary tree from a string repr… |
-| 537 | [Complex Number Multiplication](05xx/537.md) | 🟡 Medium | 49s | This problem asks us to perform multiplication of two complex numbe… |
-| 538 | [Convert BST to Greater Tree](05xx/538.md) | 🟡 Medium | 47s | This problem asks us to transform a Binary Search Tree (BST) into a… |
+| 532 | [K-diff Pairs in an Array](05xx/532.md) | 🟡 Medium | 54s | The problem asks us to count how many unique pairs of integers in t… |
+| 533 | [Lonely Pixel II](05xx/533.md) | 🟡 Medium | 2m 6s | The problem gives us a matrix called picture, where each cell conta… |
+| 534 | [Game Play Analysis III](05xx/534.md) | 🟡 Medium | 33s | The problem is asking us to track cumulative game activity for each… |
+| 535 | [Encode and Decode TinyURL](05xx/535.md) | 🟡 Medium | 40s | The problem asks us to implement a URL shortening service, similar … |
+| 536 | [Construct Binary Tree from String](05xx/536.md) | 🟡 Medium | 1m 2s | This problem asks us to reconstruct a binary tree from a specially … |
+| 537 | [Complex Number Multiplication](05xx/537.md) | 🟡 Medium | 50s | This problem asks us to multiply two complex numbers represented as… |
+| 538 | [Convert BST to Greater Tree](05xx/538.md) | 🟡 Medium | 1m 6s | This problem asks us to transform a Binary Search Tree, abbreviated… |
 | 539 | [Minimum Time Difference](05xx/539.md) | 🟡 Medium | 1m 8s | The problem gives a list of time points represented as strings in 2… |
-| 540 | [Single Element in a Sorted Array](05xx/540.md) | 🟡 Medium | 1m 28s | The problem gives us a sorted integer array where every value appea… |
-| 541 | [Reverse String II](05xx/541.md) | 🟢 Easy | 1m 21s | The problem asks us to process a string in fixed-size segments and … |
-| 542 | [01 Matrix](05xx/542.md) | 🟡 Medium | 38s | The problem asks us to compute, for each cell in a binary matrix, t… |
+| 540 | [Single Element in a Sorted Array](05xx/540.md) | 🟡 Medium | 2m 19s | The problem gives us a sorted integer array where every value appea… |
+| 541 | [Reverse String II](05xx/541.md) | 🟢 Easy | 1m 22s | The problem requires us to manipulate a string s in a structured wa… |
+| 542 | [01 Matrix](05xx/542.md) | 🟡 Medium | 1m 8s | This problem gives us an m x n binary matrix where every cell conta… |
 | 543 | [Diameter of Binary Tree](05xx/543.md) | 🟢 Easy | 56s | This problem asks us to compute the diameter of a binary tree. The … |
 | 544 | [Output Contest Matches](05xx/544.md) | 🟡 Medium | 56s | This problem asks us to simulate the structure of a tournament brac… |
 | 545 | [Boundary of Binary Tree](05xx/545.md) | 🟡 Medium | 1m 18s | This problem asks us to compute the boundary traversal of a binary … |
