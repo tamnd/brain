@@ -6,6 +6,7 @@ tags: ["codeforces", "competitive-programming", "brute-force", "dp", "greedy", "
 categories: ["algorithms"]
 codeforces_contest: 1941
 codeforces_index: "B"
+codeforces_contest_name: ""
 rating: 1000
 weight: 1941
 solve_time_s: 167
