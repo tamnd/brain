@@ -21,8 +21,13 @@ draft: false
 | 208 | [Implement Trie (Prefix Tree)](208.md) | 🟡 Medium | 1m 14s | The problem asks us to design and implement a Trie, also called a P… |
 | 209 | [Minimum Size Subarray Sum](209.md) | 🟡 Medium | 1m 17s | The problem gives us an array of positive integers called nums and … |
 | 210 | [Course Schedule II](210.md) | 🟡 Medium | 1m 14s | This problem asks us to determine a valid order in which courses ca… |
+| 211 | [Design Add and Search Words Data Structure](211.md) | 🟡 Medium | 3m 26s | The problem asks us to design a data structure that supports two op… |
 | 212 | [Word Search II](212.md) | 🔴 Hard | 2m 31s | The problem gives us a two dimensional grid of lowercase English ch… |
 | 213 | [House Robber II](213.md) | 🟡 Medium | 1m 20s | This problem is a variation of the classic House Robber dynamic pro… |
-| 214 | [Shortest Palindrome](214.md) | 🔴 Hard | 1m 6s | The problem asks us to transform a given string s into a palindrome… |
+| 214 | [Shortest Palindrome](214.md) | 🔴 Hard | 1m 8s | The problem gives a string s and asks us to create the shortest pos… |
 | 215 | [Kth Largest Element in an Array](215.md) | 🟡 Medium | 1m 13s | The problem asks us to find the kth largest element in an unsorted … |
 | 216 | [Combination Sum III](216.md) | 🟡 Medium | 1m 10s | This problem asks us to find all unique combinations of exactly k d… |
+| 217 | [Contains Duplicate](217.md) | 🟢 Easy | 1m | The problem asks us to determine whether an integer array contains … |
+| 218 | [The Skyline Problem](218.md) | 🔴 Hard | 33s | This will be a very large response because you requested a fully co… |
+| 219 | [Contains Duplicate II](219.md) | 🟢 Easy | 1m 4s | The problem asks us to determine whether an array contains any dupl… |
+| 220 | [Contains Duplicate III](220.md) | 🔴 Hard | 1m 29s | The problem asks us to determine whether there exist two different … |

@@ -21,15 +21,15 @@ draft: false
 | 9 | [Palindrome Number](9.md) | 🟢 Easy | 1m 47s | The problem asks us to determine whether a given integer reads the … |
 | 10 | [Regular Expression Matching](10.md) | 🔴 Hard | 6m 5s | LeetCode 10, Regular Expression Matching, asks us to determine whet… |
 | 11 | [Container With Most Water](11.md) | 🟡 Medium | 1m 11s | The problem gives an array called height, where each element repres… |
-| 12 | [Integer to Roman](12.md) | 🟡 Medium | 1m | The problem asks us to convert a positive integer into its Roman nu… |
+| 12 | [Integer to Roman](12.md) | 🟡 Medium | 1m 27s | The problem asks us to convert a positive integer into its Roman nu… |
 | 13 | [Roman to Integer](13.md) | 🟢 Easy | 1m 11s | The problem gives a Roman numeral string and asks us to convert it … |
 | 14 | [Longest Common Prefix](14.md) | 🟢 Easy | 1m 24s | The problem gives an array of strings and asks us to find the longe… |
 | 15 | [3Sum](15.md) | 🟡 Medium | 1m 43s | The problem gives us an integer array nums, and we need to find eve… |
 | 16 | [3Sum Closest](16.md) | 🟡 Medium | 1m 12s | The problem gives us an integer array nums and a target integer tar… |
-| 17 | [Letter Combinations of a Phone Number](17.md) | 🟡 Medium | 1m 46s | The problem gives us a string of digits where each digit is between… |
+| 17 | [Letter Combinations of a Phone Number](17.md) | 🟡 Medium | 3m 42s | The problem gives a string of digits where each digit is between 2 … |
 | 18 | [4Sum](18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
-| 19 | [Remove Nth Node From End of List](19.md) | 🟡 Medium | 1m 11s | The problem gives us the head of a singly linked list and an intege… |
-| 20 | [Valid Parentheses](20.md) | 🟢 Easy | 1m 15s | The problem asks us to determine whether a string containing only b… |
+| 19 | [Remove Nth Node From End of List](19.md) | 🟡 Medium | 1m 7s | This problem asks us to remove the nth node counted from the end of… |
+| 20 | [Valid Parentheses](20.md) | 🟢 Easy | 1m 6s | The problem gives a string containing only six possible characters:… |
 | 21 | [Merge Two Sorted Lists](21.md) | 🟢 Easy | 1m 33s | This problem asks us to merge two already sorted singly linked list… |
 | 22 | [Generate Parentheses](22.md) | 🟡 Medium | 2m 41s | The problem asks us to generate every possible valid combination of… |
 | 23 | [Merge k Sorted Lists](23.md) | 🔴 Hard | 2m 6s | The problem gives us an array named lists, where each element is th… |
