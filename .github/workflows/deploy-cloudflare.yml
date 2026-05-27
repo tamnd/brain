@@ -52,7 +52,16 @@ jobs:
           key: hugo-resources-${{ runner.os }}-${{ hashFiles('go.sum', 'assets/**', 'layouts/**') }}
           restore-keys: hugo-resources-${{ runner.os }}-
 
+      - name: Cache Hugo output
+        id: hugo-output-cache
+        uses: actions/cache@v5.0.5
+        with:
+          path: public
+          key: hugo-output-${{ runner.os }}-${{ hashFiles('content/**', 'static/**', 'hugo.toml', 'i18n/**') }}
+          restore-keys: hugo-output-${{ runner.os }}-
+
       - name: Build
+        if: steps.hugo-output-cache.outputs.cache-hit != 'true'
         run: hugo --minify --gc --baseURL "${HUGO_BASEURL}"
 
       - name: Publish to Cloudflare Pages
