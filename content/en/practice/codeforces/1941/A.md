@@ -13,6 +13,14 @@ solve_time_s: 83
 verified: true
 draft: false
 ---
+
+[CF 1941A - Rudolf and the Ticket](https://codeforces.com/problemset/problem/1941/A)
+
+**Rating:** 800  
+**Tags:** brute force, math  
+**Solve time:** 1m 23s  
+**Verified:** yes  
+
 ## Solution
 ## Problem Understanding
 

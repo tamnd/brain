@@ -13,6 +13,14 @@ solve_time_s: 161
 verified: true
 draft: false
 ---
+
+[CF 1941C - Rudolf and the Ugly String](https://codeforces.com/problemset/problem/1941/C)
+
+**Rating:** 900  
+**Tags:** dp, greedy, strings  
+**Solve time:** 2m 41s  
+**Verified:** yes  
+
 ## Solution
 ## Problem Understanding
 
