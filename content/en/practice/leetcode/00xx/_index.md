@@ -84,15 +84,15 @@ draft: false
 | 72 | [Edit Distance](72.md) | 🟡 Medium | 1m 37s | The problem asks us to compute the minimum number of edit operation… |
 | 73 | [Set Matrix Zeroes](73.md) | 🟡 Medium | 1m 27s | The problem gives us a two dimensional matrix of integers with m ro… |
 | 74 | [Search a 2D Matrix](74.md) | 🟡 Medium | 1m 36s | This problem gives us a two dimensional matrix with two very import… |
-| 75 | [Sort Colors](75.md) | 🟡 Medium | 1m 17s | This problem asks us to sort an array containing only three possibl… |
-| 76 | [Minimum Window Substring](76.md) | 🔴 Hard | 10m 30s | Unusual activity has been detected from your device. Try again late… |
-| 77 | [Combinations](77.md) | 🟡 Medium | 1m 5s | The problem asks us to generate every possible combination of exact… |
-| 78 | [Subsets](78.md) | 🟡 Medium | 55s | This problem asks us to generate every possible subset of a given a… |
-| 79 | [Word Search](79.md) | 🟡 Medium | 1m 7s | This problem gives us a two dimensional grid of characters called b… |
-| 80 | [Remove Duplicates from Sorted Array II](80.md) | 🟡 Medium | 54s | This problem asks us to modify a sorted array in-place so that each… |
+| 75 | [Sort Colors](75.md) | 🟡 Medium | 6m 34s | This problem asks us to sort an array that contains only three dist… |
+| 76 | [Minimum Window Substring](76.md) | 🔴 Hard | 1m 30s | The problem asks us to find the smallest contiguous substring insid… |
+| 77 | [Combinations](77.md) | 🟡 Medium | 1m 3s | This problem asks us to generate all possible combinations of size … |
+| 78 | [Subsets](78.md) | 🟡 Medium | 2m 23s | This problem asks us to generate every possible subset of a given a… |
+| 79 | [Word Search](79.md) | 🟡 Medium | 2m 21s | In this problem, we are given a two dimensional grid of characters … |
+| 80 | [Remove Duplicates from Sorted Array II](80.md) | 🟡 Medium | 4m 7s | This problem asks us to modify a sorted integer array in-place so t… |
 | 81 | [Search in Rotated Sorted Array II](81.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a target value exists ins… |
 | 82 | [Remove Duplicates from Sorted List II](82.md) | 🟡 Medium | 1m 53s | This problem asks us to modify a sorted singly linked list so that … |
-| 83 | [Remove Duplicates from Sorted List](83.md) | 🟢 Easy | 58s | This problem gives us the head of a singly linked list where the va… |
+| 83 | [Remove Duplicates from Sorted List](83.md) | 🟢 Easy | 4m 18s | This problem asks us to remove duplicate values from a sorted singl… |
 | 84 | [Largest Rectangle in Histogram](84.md) | 🔴 Hard | 1m 52s | In this problem, we are given an array called heights, where each v… |
 | 85 | [Maximal Rectangle](85.md) | 🔴 Hard | 1m 9s | You are given a 2D binary matrix where each cell contains either '0… |
 | 86 | [Partition List](86.md) | 🟡 Medium | 1m 1s | This problem asks us to rearrange a singly linked list around a piv… |
