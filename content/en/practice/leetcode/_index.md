@@ -101,50 +101,50 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 84 | [Largest Rectangle in Histogram](00xx/84.md) | 🔴 Hard | 1m 12s | This problem asks us to find the largest rectangular area that can … |
 | 85 | [Maximal Rectangle](00xx/85.md) | 🔴 Hard | 1m 23s | The problem asks us to find the area of the largest rectangle conta… |
 | 86 | [Partition List](00xx/86.md) | 🟡 Medium | 42s | It looks like you want the full detailed solution guide, but the sp… |
-| 87 | [Scramble String](00xx/87.md) | 🔴 Hard | 1m 8s | This problem asks us to determine whether one string can be transfo… |
-| 88 | [Merge Sorted Array](00xx/88.md) | 🟢 Easy | 1m 9s | This problem gives us two arrays, nums1 and nums2, that are already… |
-| 89 | [Gray Code](00xx/89.md) | 🟡 Medium | 52s | This problem asks us to generate a valid n-bit Gray code sequence. … |
-| 90 | [Subsets II](00xx/90.md) | 🟡 Medium | 1m 17s | The problem asks us to generate every possible subset of a given in… |
-| 91 | [Decode Ways](00xx/91.md) | 🟡 Medium | 1m 1s | The problem gives us a string s containing only digits, where each … |
-| 92 | [Reverse Linked List II](00xx/92.md) | 🟡 Medium | 1m 14s | This problem asks us to reverse only a specific portion of a singly… |
-| 93 | [Restore IP Addresses](00xx/93.md) | 🟡 Medium | 1m 59s | The problem asks us to take a string of digits and determine every … |
-| 94 | [Binary Tree Inorder Traversal](00xx/94.md) | 🟢 Easy | 1m 9s | This problem asks us to perform an inorder traversal on a binary tr… |
-| 95 | [Unique Binary Search Trees II](00xx/95.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every structurally unique Binary Se… |
-| 96 | [Unique Binary Search Trees](00xx/96.md) | 🟡 Medium | 1m 8s | This problem asks us to determine how many structurally unique Bina… |
-| 97 | [Interleaving String](00xx/97.md) | 🟡 Medium | 1m 9s | This problem asks us to determine whether a third string, s3, can b… |
-| 98 | [Validate Binary Search Tree](00xx/98.md) | 🟡 Medium | 1m 9s | The problem gives us the root of a binary tree and asks whether the… |
-| 99 | [Recover Binary Search Tree](00xx/99.md) | 🟡 Medium | 1m 21s | The problem gives us the root of a Binary Search Tree (BST) in whic… |
-| 100 | [Same Tree](01xx/100.md) | 🟢 Easy | 1m 5s | The problem gives two binary tree roots, p and q, and asks whether … |
-| 101 | [Symmetric Tree](01xx/101.md) | 🟢 Easy | 5m 20s | This problem asks us to determine whether a binary tree is symmetri… |
-| 102 | [Binary Tree Level Order Traversal](01xx/102.md) | 🟡 Medium | 5m 20s | The problem asks us to traverse a binary tree level by level and re… |
+| 87 | [Scramble String](00xx/87.md) | 🔴 Hard | 2m 21s | This problem asks us to determine whether one string can be transfo… |
+| 88 | [Merge Sorted Array](00xx/88.md) | 🟢 Easy | 1m 33s | This problem gives us two arrays, nums1 and nums2, where both array… |
+| 89 | [Gray Code](00xx/89.md) | 🟡 Medium | 3m 16s | The problem asks us to generate a valid Gray code sequence for a gi… |
+| 90 | [Subsets II](00xx/90.md) | 🟡 Medium | 1m 22s | The problem asks us to generate every possible subset of a given in… |
+| 91 | [Decode Ways](00xx/91.md) | 🟡 Medium | 1m 21s | This problem asks us to determine how many different valid ways a n… |
+| 92 | [Reverse Linked List II](00xx/92.md) | 🟡 Medium | 1m 9s | This problem asks us to reverse only a specific portion of a singly… |
+| 93 | [Restore IP Addresses](00xx/93.md) | 🟡 Medium | 1m 19s | The problem asks us to take a string containing only digits and det… |
+| 94 | [Binary Tree Inorder Traversal](00xx/94.md) | 🟢 Easy | 1m 17s | This problem asks us to perform an inorder traversal on a binary tr… |
+| 95 | [Unique Binary Search Trees II](00xx/95.md) | 🟡 Medium | 36s | The problem asks us to generate all structurally unique binary sear… |
+| 96 | [Unique Binary Search Trees](00xx/96.md) | 🟡 Medium | 1m 8s | This problem asks us to determine how many structurally different B… |
+| 97 | [Interleaving String](00xx/97.md) | 🟡 Medium | 1m 27s | This problem asks us to determine whether a string s3 can be formed… |
+| 98 | [Validate Binary Search Tree](00xx/98.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a given binary tree satis… |
+| 99 | [Recover Binary Search Tree](00xx/99.md) | 🟡 Medium | 1m 12s | The problem gives us the root of a binary search tree, but exactly … |
+| 100 | [Same Tree](01xx/100.md) | 🟢 Easy | 1m 39s | The problem asks us to determine whether two binary trees are exact… |
+| 101 | [Symmetric Tree](01xx/101.md) | 🟢 Easy | 1m 25s | The problem asks us to determine whether a binary tree is symmetric… |
+| 102 | [Binary Tree Level Order Traversal](01xx/102.md) | 🟡 Medium | 1m 30s | The problem asks us to perform a level order traversal on a binary … |
 | 103 | [Binary Tree Zigzag Level Order Traversal](01xx/103.md) | 🟡 Medium | 5m 39s | The problem asks us to perform a modified level order traversal on … |
-| 104 | [Maximum Depth of Binary Tree](01xx/104.md) | 🟢 Easy | 59s | The problem gives us the root node of a binary tree and asks us to … |
-| 105 | [Construct Binary Tree from Preorder and Inorder Traversal](01xx/105.md) | 🟡 Medium | 1m | This problem gives us two arrays representing different traversal o… |
-| 106 | [Construct Binary Tree from Inorder and Postorder Traversal](01xx/106.md) | 🟡 Medium | 1m 7s | The problem gives two traversal orders of the same binary tree: - i… |
-| 107 | [Binary Tree Level Order Traversal II](01xx/107.md) | 🟡 Medium | 1m 12s | The problem asks us to perform a level order traversal of a binary … |
-| 108 | [Convert Sorted Array to Binary Search Tree](01xx/108.md) | 🟢 Easy | 1m | This problem asks us to convert a sorted array in ascending order i… |
-| 109 | [Convert Sorted List to Binary Search Tree](01xx/109.md) | 🟡 Medium | 58s | The problem gives us the head of a singly linked list where all val… |
-| 110 | [Balanced Binary Tree](01xx/110.md) | 🟢 Easy | 54s | This problem asks us to determine whether a binary tree is height-b… |
-| 111 | [Minimum Depth of Binary Tree](01xx/111.md) | 🟢 Easy | 1m 3s | The problem asks us to compute the minimum depth of a binary tree. … |
-| 112 | [Path Sum](01xx/112.md) | 🟢 Easy | 1m 2s | This problem asks us to determine whether a binary tree contains at… |
-| 113 | [Path Sum II](01xx/113.md) | 🟡 Medium | 1m 18s | The problem asks us to find all root-to-leaf paths in a binary tree… |
-| 114 | [Flatten Binary Tree to Linked List](01xx/114.md) | 🟡 Medium | 1m 3s | The problem gives us the root of a binary tree and asks us to trans… |
-| 115 | [Distinct Subsequences](01xx/115.md) | 🔴 Hard | 3m 14s | The problem asks us to count how many distinct subsequences of a st… |
-| 116 | [Populating Next Right Pointers in Each Node](01xx/116.md) | 🟡 Medium | 1m 12s | This problem asks us to populate the next pointer for every node in… |
-| 117 | [Populating Next Right Pointers in Each Node II](01xx/117.md) | 🟡 Medium | 1m 25s | This problem asks us to connect nodes at the same depth level in a … |
-| 118 | [Pascal's Triangle](01xx/118.md) | 🟢 Easy | 58s | The problem asks us to generate the first numRows rows of Pascal's … |
+| 104 | [Maximum Depth of Binary Tree](01xx/104.md) | 🟢 Easy | 2m 53s | The problem asks us to determine the maximum depth of a binary tree… |
+| 105 | [Construct Binary Tree from Preorder and Inorder Traversal](01xx/105.md) | 🟡 Medium | 59s | The problem is asking us to reconstruct a binary tree given two tra… |
+| 106 | [Construct Binary Tree from Inorder and Postorder Traversal](01xx/106.md) | 🟡 Medium | 1m 9s | The problem provides two traversal orders of the same binary tree: … |
+| 107 | [Binary Tree Level Order Traversal II](01xx/107.md) | 🟡 Medium | 36s | The problem asks us to traverse a binary tree and return the node v… |
+| 108 | [Convert Sorted Array to Binary Search Tree](01xx/108.md) | 🟢 Easy | 1m 22s | The problem gives us a sorted integer array nums in strictly increa… |
+| 109 | [Convert Sorted List to Binary Search Tree](01xx/109.md) | 🟡 Medium | 1m 20s | The problem gives us the head of a singly linked list whose values … |
+| 110 | [Balanced Binary Tree](01xx/110.md) | 🟢 Easy | 1m 11s | This problem asks us to determine whether a given binary tree is he… |
+| 111 | [Minimum Depth of Binary Tree](01xx/111.md) | 🟢 Easy | 37s | The problem asks us to determine the minimum depth of a binary tree… |
+| 112 | [Path Sum](01xx/112.md) | 🟢 Easy | 1m 9s | This problem asks us to determine whether a binary tree contains at… |
+| 113 | [Path Sum II](01xx/113.md) | 🟡 Medium | 1m 17s | This problem asks us to find all root-to-leaf paths in a binary tre… |
+| 114 | [Flatten Binary Tree to Linked List](01xx/114.md) | 🟡 Medium | 1m 11s | The problem asks us to transform a binary tree into a flattened str… |
+| 115 | [Distinct Subsequences](01xx/115.md) | 🔴 Hard | 1m 30s | This problem asks us to count how many distinct subsequences of a s… |
+| 116 | [Populating Next Right Pointers in Each Node](01xx/116.md) | 🟡 Medium | 53s | This problem asks us to populate the next pointers of nodes in a pe… |
+| 117 | [Populating Next Right Pointers in Each Node II](01xx/117.md) | 🟡 Medium | 1m 8s | The problem asks us to populate the next pointer for every node in … |
+| 118 | [Pascal's Triangle](01xx/118.md) | 🟢 Easy | 40s | The problem is asking us to generate the first numRows of Pascal's … |
 | 119 | [Pascal's Triangle II](01xx/119.md) | 🟢 Easy | 1m 21s | The problem asks us to return a specific row from Pascal's Triangle… |
-| 120 | [Triangle](01xx/120.md) | 🟡 Medium | 1m 32s | The problem gives us a triangular array of integers and asks for th… |
-| 121 | [Best Time to Buy and Sell Stock](01xx/121.md) | 🟢 Easy | 1m 57s | The problem gives us an integer array called prices, where each ele… |
-| 122 | [Best Time to Buy and Sell Stock II](01xx/122.md) | 🟡 Medium | 59s | This problem asks us to maximize profit from stock trading over a s… |
-| 123 | [Best Time to Buy and Sell Stock III](01xx/123.md) | 🔴 Hard | 1m 11s | This problem asks us to maximize profit from stock trading under a … |
-| 124 | [Binary Tree Maximum Path Sum](01xx/124.md) | 🔴 Hard | 1m 12s | This problem asks us to compute the maximum possible sum of values … |
-| 125 | [Valid Palindrome](01xx/125.md) | 🟢 Easy | 1m 1s | The problem asks us to determine whether a given string is a palind… |
-| 126 | [Word Ladder II](01xx/126.md) | 🔴 Hard | 1m 22s | Difficulty: Hard Topics: Hash Table, String, Backtracking, Breadth-… |
-| 127 | [Word Ladder](01xx/127.md) | 🔴 Hard | 1m 11s | The problem asks us to find the length of the shortest transformati… |
-| 128 | [Longest Consecutive Sequence](01xx/128.md) | 🟡 Medium | 1m 6s | The problem gives us an unsorted array of integers and asks for the… |
+| 120 | [Triangle](01xx/120.md) | 🟡 Medium | 1m 24s | The problem gives us a triangular array of integers and asks us to … |
+| 121 | [Best Time to Buy and Sell Stock](01xx/121.md) | 🟢 Easy | 56s | This problem asks us to determine the maximum profit that can be ma… |
+| 122 | [Best Time to Buy and Sell Stock II](01xx/122.md) | 🟡 Medium | 1m 2s | This problem asks us to maximize profit from stock trading over a s… |
+| 123 | [Best Time to Buy and Sell Stock III](01xx/123.md) | 🔴 Hard | 46s | The problem asks us to determine the maximum profit we can earn fro… |
+| 124 | [Binary Tree Maximum Path Sum](01xx/124.md) | 🔴 Hard | 49s | The problem is asking us to find the maximum path sum in a binary t… |
+| 125 | [Valid Palindrome](01xx/125.md) | 🟢 Easy | 53s | This problem asks us to determine whether a given string is a palin… |
+| 126 | [Word Ladder II](01xx/126.md) | 🔴 Hard | 1m 22s | This problem asks us to find all shortest transformation sequences … |
+| 127 | [Word Ladder](01xx/127.md) | 🔴 Hard | 1m 19s | This problem asks us to determine the length of the shortest transf… |
+| 128 | [Longest Consecutive Sequence](01xx/128.md) | 🟡 Medium | 59s | The problem asks us to find the length of the longest sequence of c… |
 | 129 | [Sum Root to Leaf Numbers](01xx/129.md) | 🟡 Medium | 1m 19s | This problem asks us to compute the sum of all numbers formed by ro… |
-| 130 | [Surrounded Regions](01xx/130.md) | 🟡 Medium | 1m 8s | This problem asks us to modify a two-dimensional grid in-place by i… |
+| 130 | [Surrounded Regions](01xx/130.md) | 🟡 Medium | 1m 13s | The problem gives us a two dimensional grid called board, where eac… |
 | 131 | [Palindrome Partitioning](01xx/131.md) | 🟡 Medium | 1m 11s | This problem asks us to split a string into multiple substrings suc… |
 | 132 | [Palindrome Partitioning II](01xx/132.md) | 🔴 Hard | 3m 5s | The problem asks us to divide a string s into contiguous substrings… |
 | 133 | [Clone Graph](01xx/133.md) | 🟡 Medium | 2m 19s | This problem asks us to create a deep copy of an undirected connect… |
@@ -318,5 +318,61 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 301 | [Remove Invalid Parentheses](03xx/301.md) | 🔴 Hard | 2m 59s | The problem asks us to remove the minimum number of invalid parenth… |
 | 302 | [Smallest Rectangle Enclosing Black Pixels](03xx/302.md) | 🔴 Hard | 2m 44s | This problem gives us a binary matrix where each cell contains eith… |
 | 303 | [Range Sum Query - Immutable](03xx/303.md) | 🟢 Easy | 1m 22s | The problem asks us to design a data structure that supports effici… |
+| 304 | [Range Sum Query 2D - Immutable](03xx/304.md) | 🟡 Medium | 2m 23s | The problem asks us to design a data structure that can efficiently… |
 | 305 | [Number of Islands II](03xx/305.md) | 🔴 Hard | 1m 26s | The problem gives us an initially empty m x n grid where every cell… |
 | 306 | [Additive Number](03xx/306.md) | 🟡 Medium | 1m 24s | The problem asks us to determine whether a given string of digits c… |
+| 307 | [Range Sum Query - Mutable](03xx/307.md) | 🟡 Medium | 2m 22s | The problem asks us to design a mutable range sum data structure. W… |
+| 308 | [Range Sum Query 2D - Mutable](03xx/308.md) | 🟡 Medium | 2m 21s | The problem asks us to design a mutable 2D range sum data structure… |
+| 309 | [Best Time to Buy and Sell Stock with Cooldown](03xx/309.md) | 🟡 Medium | 6m 31s | This problem asks us to maximize profit from stock trading under a … |
+| 310 | [Minimum Height Trees](03xx/310.md) | 🟡 Medium | 7m 25s | This problem gives us an undirected tree with n nodes labeled from … |
+| 311 | [Sparse Matrix Multiplication](03xx/311.md) | 🟡 Medium | 1m 43s | This problem asks us to multiply two matrices, but with an importan… |
+| 312 | [Burst Balloons](03xx/312.md) | 🔴 Hard | 3m 25s | The problem gives us an array nums, where each element represents a… |
+| 313 | [Super Ugly Number](03xx/313.md) | 🟡 Medium | 3m 19s | This problem asks us to find the nth number in a special sequence c… |
+| 314 | [Binary Tree Vertical Order Traversal](03xx/314.md) | 🟡 Medium | 1m 11s | The problem asks us to group the nodes of a binary tree by their ve… |
+| 315 | [Count of Smaller Numbers After Self](03xx/315.md) | 🔴 Hard | 1m 19s | The problem asks us to compute, for every element in the array, how… |
+| 316 | [Remove Duplicate Letters](03xx/316.md) | 🟡 Medium | 1m 2s | This problem asks us to construct a new string from the input strin… |
+| 317 | [Shortest Distance from All Buildings](03xx/317.md) | 🔴 Hard | 51s | The problem asks us to find the optimal location to build a house o… |
+| 318 | [Maximum Product of Word Lengths](03xx/318.md) | 🟡 Medium | 1m 2s | The problem gives us an array of lowercase English words. We need t… |
+| 319 | [Bulb Switcher](03xx/319.md) | 🟡 Medium | 1m 9s | The problem describes a sequence of n bulbs, all initially turned o… |
+| 320 | [Generalized Abbreviation](03xx/320.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every possible generalized abbrevi… |
+| 321 | [Create Maximum Number](03xx/321.md) | 🔴 Hard | 1m 29s | This problem asks us to build the lexicographically largest possibl… |
+| 322 | [Coin Change](03xx/322.md) | 🟡 Medium | 1m 9s | The problem gives us an array called coins, where each element repr… |
+| 323 | [Number of Connected Components in an Undirected Graph](03xx/323.md) | 🟡 Medium | 1m 15s | The problem asks us to determine how many connected components exis… |
+| 324 | [Wiggle Sort II](03xx/324.md) | 🟡 Medium | 1m 10s | The problem asks us to rearrange an array so that it follows a stri… |
+| 325 | [Maximum Size Subarray Sum Equals k](03xx/325.md) | 🟡 Medium | 1m 13s | The problem asks us to find the longest contiguous subarray whose s… |
+| 326 | [Power of Three](03xx/326.md) | 🟢 Easy | 1m 11s | The problem asks us to determine whether a given integer n can be r… |
+| 327 | [Count of Range Sum](03xx/327.md) | 🔴 Hard | 1m 15s | This problem asks us to count how many subarrays have sums that fal… |
+| 328 | [Odd Even Linked List](03xx/328.md) | 🟡 Medium | 1m 16s | This problem asks us to reorder a singly linked list so that all no… |
+| 329 | [Longest Increasing Path in a Matrix](03xx/329.md) | 🔴 Hard | 1m 33s | The problem gives us a two-dimensional grid of integers called matr… |
+| 330 | [Patching Array](03xx/330.md) | 🔴 Hard | 59s | The problem gives us a sorted array of positive integers, nums, and… |
+| 331 | [Verify Preorder Serialization of a Binary Tree](03xx/331.md) | 🟡 Medium | 1m 8s | The problem gives us a string that represents the preorder serializ… |
+| 332 | [Reconstruct Itinerary](03xx/332.md) | 🔴 Hard | 1m 4s | The problem is asking us to reconstruct a flight itinerary given a … |
+| 333 | [Largest BST Subtree](03xx/333.md) | 🟡 Medium | 1m 41s | The problem gives us the root of an arbitrary binary tree and asks … |
+| 334 | [Increasing Triplet Subsequence](03xx/334.md) | 🟡 Medium | 1m 13s | The problem asks us to determine whether an array contains three nu… |
+| 335 | [Self Crossing](03xx/335.md) | 🔴 Hard | 1m 17s | The problem describes a path traced on a two-dimensional grid. We b… |
+| 336 | [Palindrome Pairs](03xx/336.md) | 🔴 Hard | 1m 5s | The problem gives us a list of unique strings called words. We must… |
+| 337 | [House Robber III](03xx/337.md) | 🟡 Medium | 1m 3s | This problem is a variation of the classic House Robber dynamic pro… |
+| 338 | [Counting Bits](03xx/338.md) | 🟢 Easy | 1m 4s | The problem asks us to compute the number of set bits, also called … |
+| 339 | [Nested List Weight Sum](03xx/339.md) | 🟡 Medium | 1m 1s | This problem gives us a special nested data structure called Nested… |
+| 340 | [Longest Substring with At Most K Distinct Characters](03xx/340.md) | 🟡 Medium | 1m 1s | The problem asks us to find the length of the longest contiguous su… |
+| 341 | [Flatten Nested List Iterator](03xx/341.md) | 🟡 Medium | 1m 18s | This problem asks us to design an iterator that can traverse a deep… |
+| 342 | [Power of Four](03xx/342.md) | 🟢 Easy | 1m 10s | This problem asks us to determine whether a given integer n is an e… |
+| 343 | [Integer Break](03xx/343.md) | 🟡 Medium | 1m 37s | The problem asks us to split a positive integer n into the sum of a… |
+| 344 | [Reverse String](03xx/344.md) | 🟢 Easy | 1m 1s | The problem asks us to reverse a string that is represented as an a… |
+| 345 | [Reverse Vowels of a String](03xx/345.md) | 🟢 Easy | 57s | The problem asks us to reverse only the vowels in a string while le… |
+| 346 | [Moving Average from Data Stream](03xx/346.md) | 🟢 Easy | 50s | The problem asks us to design a data structure that continuously re… |
+| 347 | [Top K Frequent Elements](03xx/347.md) | 🟡 Medium | 1m 10s | The problem asks us to return the k most frequently occurring eleme… |
+| 348 | [Design Tic-Tac-Toe](03xx/348.md) | 🟡 Medium | 1m 22s | The problem asks us to design a data structure that simulates an n … |
+| 349 | [Intersection of Two Arrays](03xx/349.md) | 🟢 Easy | 1m 6s | The problem gives us two integer arrays, nums1 and nums2, and asks … |
+| 350 | [Intersection of Two Arrays II](03xx/350.md) | 🟢 Easy | 1m 6s | The problem asks us to find the intersection of two integer arrays,… |
+| 351 | [Android Unlock Patterns](03xx/351.md) | 🟡 Medium | 1m 25s | The problem models the Android lock screen as a 3 x 3 grid containi… |
+| 352 | [Data Stream as Disjoint Intervals](03xx/352.md) | 🔴 Hard | 1m 20s | This problem asks us to process a stream of non-negative integers a… |
+| 353 | [Design Snake Game](03xx/353.md) | 🟡 Medium | 1m 23s | The problem asks us to design a mutable data structure that simulat… |
+| 354 | [Russian Doll Envelopes](03xx/354.md) | 🔴 Hard | 1m 8s | The problem gives a list of envelopes, where each envelope is repre… |
+| 355 | [Design Twitter](03xx/355.md) | 🟡 Medium | 1m 29s | This problem asks us to design a simplified version of a social med… |
+| 356 | [Line Reflection](03xx/356.md) | 🟡 Medium | 1m 9s | The problem gives us a collection of points on a 2D plane, where ea… |
+| 357 | [Count Numbers with Unique Digits](03xx/357.md) | 🟡 Medium | 1m | The problem asks us to count how many integers in the range 0 <= x … |
+| 358 | [Rearrange String k Distance Apart](03xx/358.md) | 🔴 Hard | 1m 32s | The problem gives us a string s and an integer k. We must rearrange… |
+| 359 | [Logger Rate Limiter](03xx/359.md) | 🟢 Easy | 1m 6s | The problem asks us to design a logging system that controls how fr… |
+| 360 | [Sort Transformed Array](03xx/360.md) | 🟡 Medium | 1m 18s | The problem gives us a sorted integer array nums and a quadratic tr… |
+| 361 | [Bomb Enemy](03xx/361.md) | 🟡 Medium | 33s | The problem presents an m x n matrix called grid where each element… |

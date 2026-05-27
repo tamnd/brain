@@ -51,10 +51,24 @@ draft: false
 | 338 | [Counting Bits](338.md) | 🟢 Easy | 1m 4s | The problem asks us to compute the number of set bits, also called … |
 | 339 | [Nested List Weight Sum](339.md) | 🟡 Medium | 1m 1s | This problem gives us a special nested data structure called Nested… |
 | 340 | [Longest Substring with At Most K Distinct Characters](340.md) | 🟡 Medium | 1m 1s | The problem asks us to find the length of the longest contiguous su… |
-| 341 | [Flatten Nested List Iterator](341.md) | 🟡 Medium | 1m 17s | The problem gives us a nested list structure where each element can… |
-| 342 | [Power of Four](342.md) | 🟢 Easy | 1m 17s | The problem asks us to determine whether a given integer n is a pow… |
-| 344 | [Reverse String](344.md) | 🟢 Easy | 1m 12s | The problem asks us to reverse a string that is represented as an a… |
-| 345 | [Reverse Vowels of a String](345.md) | 🟢 Easy | 1m 10s | The problem asks us to reverse only the vowels in a string while le… |
-| 346 | [Moving Average from Data Stream](346.md) | 🟢 Easy | 34s | The problem is asking us to design a class MovingAverage that compu… |
-| 347 | [Top K Frequent Elements](347.md) | 🟡 Medium | 1m 8s | The problem gives us an integer array nums and an integer k. Our ta… |
-| 348 | [Design Tic-Tac-Toe](348.md) | 🟡 Medium | 1m 13s | The problem asks us to design a Tic-Tac-Toe game that supports effi… |
+| 341 | [Flatten Nested List Iterator](341.md) | 🟡 Medium | 1m 18s | This problem asks us to design an iterator that can traverse a deep… |
+| 342 | [Power of Four](342.md) | 🟢 Easy | 1m 10s | This problem asks us to determine whether a given integer n is an e… |
+| 343 | [Integer Break](343.md) | 🟡 Medium | 1m 37s | The problem asks us to split a positive integer n into the sum of a… |
+| 344 | [Reverse String](344.md) | 🟢 Easy | 1m 1s | The problem asks us to reverse a string that is represented as an a… |
+| 345 | [Reverse Vowels of a String](345.md) | 🟢 Easy | 57s | The problem asks us to reverse only the vowels in a string while le… |
+| 346 | [Moving Average from Data Stream](346.md) | 🟢 Easy | 50s | The problem asks us to design a data structure that continuously re… |
+| 347 | [Top K Frequent Elements](347.md) | 🟡 Medium | 1m 10s | The problem asks us to return the k most frequently occurring eleme… |
+| 348 | [Design Tic-Tac-Toe](348.md) | 🟡 Medium | 1m 22s | The problem asks us to design a data structure that simulates an n … |
+| 349 | [Intersection of Two Arrays](349.md) | 🟢 Easy | 1m 6s | The problem gives us two integer arrays, nums1 and nums2, and asks … |
+| 350 | [Intersection of Two Arrays II](350.md) | 🟢 Easy | 1m 6s | The problem asks us to find the intersection of two integer arrays,… |
+| 351 | [Android Unlock Patterns](351.md) | 🟡 Medium | 1m 25s | The problem models the Android lock screen as a 3 x 3 grid containi… |
+| 352 | [Data Stream as Disjoint Intervals](352.md) | 🔴 Hard | 1m 20s | This problem asks us to process a stream of non-negative integers a… |
+| 353 | [Design Snake Game](353.md) | 🟡 Medium | 1m 23s | The problem asks us to design a mutable data structure that simulat… |
+| 354 | [Russian Doll Envelopes](354.md) | 🔴 Hard | 1m 8s | The problem gives a list of envelopes, where each envelope is repre… |
+| 355 | [Design Twitter](355.md) | 🟡 Medium | 1m 29s | This problem asks us to design a simplified version of a social med… |
+| 356 | [Line Reflection](356.md) | 🟡 Medium | 1m 9s | The problem gives us a collection of points on a 2D plane, where ea… |
+| 357 | [Count Numbers with Unique Digits](357.md) | 🟡 Medium | 1m | The problem asks us to count how many integers in the range 0 <= x … |
+| 358 | [Rearrange String k Distance Apart](358.md) | 🔴 Hard | 1m 32s | The problem gives us a string s and an integer k. We must rearrange… |
+| 359 | [Logger Rate Limiter](359.md) | 🟢 Easy | 1m 6s | The problem asks us to design a logging system that controls how fr… |
+| 360 | [Sort Transformed Array](360.md) | 🟡 Medium | 1m 18s | The problem gives us a sorted integer array nums and a quadratic tr… |
+| 361 | [Bomb Enemy](361.md) | 🟡 Medium | 33s | The problem presents an m x n matrix called grid where each element… |
