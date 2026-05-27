@@ -2185,3 +2185,47 @@ html.dark .pres-cluster {
   .pres-slide > ul,
   .pres-slide > ol { font-size: 1rem; }
 }
+
+/* ===== Mobile sidebar toggle ============================================== */
+
+.brain-sidebar-toggle {
+  display: none;
+  padding: 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  flex-shrink: 0;
+}
+
+@media (max-width: 47.9rem) {
+  .brain-sidebar-toggle { display: inline-flex; }
+
+  .brain-sidebar {
+    position: fixed;
+    inset: 3.5rem 0 0 0;
+    z-index: 30;
+    width: 100% !important;
+    max-width: 20rem;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    border-right: 1px solid var(--border);
+    box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+  }
+
+  .brain-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .brain-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 3.5rem 0 0 0;
+    z-index: 29;
+    background: rgba(0,0,0,0.35);
+  }
+
+  .brain-sidebar-backdrop--open {
+    display: block;
+  }
+}

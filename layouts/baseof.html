@@ -28,6 +28,9 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6a6 6 0 1 0 6 6"/><circle cx="12" cy="12" r="2"/></svg>
       {{.Site.Title}}
     </a>
+    <button type="button" id="brain-menu-btn" class="brain-sidebar-toggle" aria-label="Toggle menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <div style="flex:1"></div>
     <a href="/graph/" class="brain-nav-graph{{if eq .Page.RelPermalink "/graph/"}} brain-nav-graph--active{{end}}" title="Graph" aria-label="Knowledge graph" style="padding:0.4rem;display:inline-flex;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -49,6 +52,7 @@
 </header>
 
 {{$fullscreen := or (eq .Page.Type "graph") (eq .Page.Type "tree") (eq .Page.Type "calendar")}}
+<div id="brain-sidebar-backdrop" class="brain-sidebar-backdrop"></div>
 <div style="display:flex;min-height:calc(100vh - 3.5rem);">
 
   {{if not $fullscreen}}
@@ -111,6 +115,24 @@
 })();
 </script>
 
+<script>
+(function(){
+  var btn=document.getElementById('brain-menu-btn');
+  var sidebar=document.querySelector('.brain-sidebar');
+  var backdrop=document.getElementById('brain-sidebar-backdrop');
+  if(!btn||!sidebar) return;
+  function open(){
+    sidebar.classList.add('brain-sidebar--open');
+    backdrop.classList.add('brain-sidebar-backdrop--open');
+  }
+  function close(){
+    sidebar.classList.remove('brain-sidebar--open');
+    backdrop.classList.remove('brain-sidebar-backdrop--open');
+  }
+  btn.addEventListener('click',function(){ sidebar.classList.contains('brain-sidebar--open')?close():open(); });
+  backdrop.addEventListener('click',close);
+})();
+</script>
 {{template "page-live-reload" .}}
 </body>
 </html>
