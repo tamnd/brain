@@ -24,11 +24,11 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 7 | [Reverse Integer](00xx/7.md) | 🟡 Medium | 1m 15s | The problem asks us to reverse the digits of a signed 32-bit intege… |
 | 8 | [String to Integer (atoi)](00xx/8.md) | 🟡 Medium | 1m 52s | The problem asks us to implement a simplified version of the C/C++ … |
 | 9 | [Palindrome Number](00xx/9.md) | 🟢 Easy | 1m 47s | The problem asks us to determine whether a given integer reads the … |
-| 10 | [Regular Expression Matching](00xx/10.md) | 🔴 Hard | 1m 20s | This problem asks us to implement a simplified regular expression e… |
-| 11 | [Container With Most Water](00xx/11.md) | 🟡 Medium | 2m 4s | The problem gives an array called height, where each element repres… |
+| 10 | [Regular Expression Matching](00xx/10.md) | 🔴 Hard | 6m 5s | LeetCode 10, Regular Expression Matching, asks us to determine whet… |
+| 11 | [Container With Most Water](00xx/11.md) | 🟡 Medium | 1m 11s | The problem gives an array called height, where each element repres… |
 | 12 | [Integer to Roman](00xx/12.md) | 🟡 Medium | 1m | The problem asks us to convert a positive integer into its Roman nu… |
-| 13 | [Roman to Integer](00xx/13.md) | 🟢 Easy | 56s | The problem asks us to convert a Roman numeral string into its corr… |
-| 14 | [Longest Common Prefix](00xx/14.md) | 🟢 Easy | 58s | The problem asks us to find the longest prefix shared by every stri… |
+| 13 | [Roman to Integer](00xx/13.md) | 🟢 Easy | 1m 11s | The problem gives a Roman numeral string and asks us to convert it … |
+| 14 | [Longest Common Prefix](00xx/14.md) | 🟢 Easy | 1m 24s | The problem gives an array of strings and asks us to find the longe… |
 | 15 | [3Sum](00xx/15.md) | 🟡 Medium | 1m 33s | The problem asks us to find all unique triplets in an integer array… |
 | 16 | [3Sum Closest](00xx/16.md) | 🟡 Medium | 1m 18s | The problem asks us to find three numbers in the array whose sum is… |
 | 17 | [Letter Combinations of a Phone Number](00xx/17.md) | 🟡 Medium | 1m 46s | The problem gives us a string of digits where each digit is between… |
@@ -214,9 +214,15 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 197 | [Rising Temperature](01xx/197.md) | 🟢 Easy | 3m 42s | The problem gives us a database table named Weather that stores dai… |
 | 198 | [House Robber](01xx/198.md) | 🟡 Medium | 3m 4s | The problem describes a row of houses, where each house contains so… |
 | 199 | [Binary Tree Right Side View](01xx/199.md) | 🟡 Medium | 1m 34s | The problem gives us the root node of a binary tree and asks us to … |
-| 200 | [Number of Islands](02xx/200.md) | 🟡 Medium | 1m 20s | The problem gives us a two-dimensional grid where each cell contain… |
+| 200 | [Number of Islands](02xx/200.md) | 🟡 Medium | 10m 21s | The problem gives us a two dimensional grid where each cell contain… |
 | 201 | [Bitwise AND of Numbers Range](02xx/201.md) | 🟡 Medium | 1m 28s | The problem asks us to compute the bitwise AND of every integer in … |
 | 202 | [Happy Number](02xx/202.md) | 🟢 Easy | 1m 19s | This problem asks us to determine whether a given positive integer … |
 | 203 | [Remove Linked List Elements](02xx/203.md) | 🟢 Easy | 1m 48s | The problem asks us to remove every node from a singly linked list … |
 | 204 | [Count Primes](02xx/204.md) | 🟡 Medium | 1m 27s | The problem asks us to count how many prime numbers exist that are … |
+| 205 | [Isomorphic Strings](02xx/205.md) | 🟢 Easy | 2m 56s | The problem asks us to determine whether two strings, s and t, are … |
 | 206 | [Reverse Linked List](02xx/206.md) | 🟢 Easy | 1m 6s | The problem asks us to reverse a singly linked list. A singly linke… |
+| 207 | [Course Schedule](02xx/207.md) | 🟡 Medium | 1m 17s | This problem models course dependencies as a directed graph. Each c… |
+| 208 | [Implement Trie (Prefix Tree)](02xx/208.md) | 🟡 Medium | 1m 14s | The problem asks us to design and implement a Trie, also called a P… |
+| 209 | [Minimum Size Subarray Sum](02xx/209.md) | 🟡 Medium | 1m 17s | The problem gives us an array of positive integers called nums and … |
+| 210 | [Course Schedule II](02xx/210.md) | 🟡 Medium | 1m 14s | This problem asks us to determine a valid order in which courses ca… |
+| 213 | [House Robber II](02xx/213.md) | 🟡 Medium | 1m 20s | This problem is a variation of the classic House Robber dynamic pro… |

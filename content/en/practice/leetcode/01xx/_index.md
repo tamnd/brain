@@ -107,5 +107,6 @@ draft: false
 | 194 | [Transpose File](194.md) | 🟡 Medium | 1m 6s | This problem asks us to transpose the contents of a text file. Tran… |
 | 195 | [Tenth Line](195.md) | 🟢 Easy | 52s | This problem asks us to print exactly the 10th line from a text fil… |
 | 196 | [Delete Duplicate Emails](196.md) | 🟢 Easy | 52s | This problem provides a database table named Person with two column… |
-| 197 | [Rising Temperature](197.md) | 🟢 Easy | 56s | The problem provides a database table named Weather, where each row… |
-| 198 | [House Robber](198.md) | 🟡 Medium | 57s | The problem describes a row of houses, where each house contains so… |
+| 197 | [Rising Temperature](197.md) | 🟢 Easy | 3m 42s | The problem gives us a database table named Weather that stores dai… |
+| 198 | [House Robber](198.md) | 🟡 Medium | 3m 4s | The problem describes a row of houses, where each house contains so… |
+| 199 | [Binary Tree Right Side View](199.md) | 🟡 Medium | 1m 34s | The problem gives us the root node of a binary tree and asks us to … |
