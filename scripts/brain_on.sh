@@ -81,7 +81,8 @@ while true; do
 
   # Push only after a tago build passes — catches render errors before CI.
   # If tago fails the commit stays local; the next cycle retries.
-  if git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null | grep -q .; then
+  _unpushed=$(git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null || true)
+  if [ -n "$_unpushed" ]; then
     if TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
       if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
         log "${GRN}✓ pushed${RST}"
@@ -94,12 +95,12 @@ while true; do
           _run_id=$(gh run list --repo tamnd/brain --branch "$BRANCH" \
             --event push --limit 1 --json databaseId,status \
             --jq '.[0] | select(.status != "completed") | .databaseId' 2>/dev/null || true)
-          [ -n "$_run_id" ] && break
+          if [ -n "$_run_id" ]; then break; fi
           # Also accept if already completed within this window.
           _run_id=$(gh run list --repo tamnd/brain --branch "$BRANCH" \
             --event push --limit 1 --json databaseId,status,conclusion,updatedAt \
             --jq '.[0] | select(.status == "completed") | .databaseId' 2>/dev/null || true)
-          [ -n "$_run_id" ] && break
+          if [ -n "$_run_id" ]; then break; fi
         done
         if [ -n "$_run_id" ]; then
           gh run watch "$_run_id" --exit-status &>/dev/null && _conclusion="success" || _conclusion="failure"

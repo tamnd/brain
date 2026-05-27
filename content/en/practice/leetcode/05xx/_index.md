@@ -61,13 +61,16 @@ draft: false
 | 548 | [Split Array with Equal Sum](548.md) | 🔴 Hard | 37s | The problem asks us to determine whether an integer array nums can … |
 | 549 | [Binary Tree Longest Consecutive Sequence II](549.md) | 🟡 Medium | 1m 21s | This problem asks us to find the length of the longest consecutive … |
 | 550 | [Game Play Analysis IV](550.md) | 🟡 Medium | 2m 24s | This problem is asking us to calculate a retention metric from a ta… |
-| 551 | [Student Attendance Record I](551.md) | 🟢 Easy | 1m 1s | The problem gives us a string s where each character represents a s… |
-| 552 | [Student Attendance Record II](552.md) | 🔴 Hard | 1m 46s | The problem asks us to count how many attendance records of length … |
-| 553 | [Optimal Division](553.md) | 🟡 Medium | 1m 9s | In this problem, we are given an array of positive integers nums. T… |
-| 554 | [Brick Wall](554.md) | 🟡 Medium | 1m 10s | The problem gives us a wall represented as a list of rows, where ea… |
+| 551 | [Student Attendance Record I](551.md) | 🟢 Easy | 3m 32s | The problem gives us a string s where each character represents a s… |
+| 552 | [Student Attendance Record II](552.md) | 🔴 Hard | 1m 10s | The problem asks us to count how many attendance records of length … |
+| 553 | [Optimal Division](553.md) | 🟡 Medium | 1m 46s | The problem gives us an array of positive integers, and the array e… |
+| 554 | [Brick Wall](554.md) | 🟡 Medium | 1m 11s | The problem gives us a wall made of multiple rows of bricks. Each r… |
 | 555 | [Split Concatenated Strings](555.md) | 🟡 Medium | 1m 21s | The problem gives an array of strings, and we must arrange them int… |
 | 556 | [Next Greater Element III](556.md) | 🟡 Medium | 1m 5s | This problem asks us to find the smallest integer that is strictly … |
 | 557 | [Reverse Words in a String III](557.md) | 🟢 Easy | 47s | The problem requires reversing the characters of each individual wo… |
 | 558 | [Logical OR of Two Binary Grids Represented as Quad-Trees](558.md) | 🟡 Medium | 1m 27s | This problem gives us two Quad-Trees, where each tree represents a … |
 | 561 | [Array Partition](561.md) | 🟢 Easy | 1m 6s | The problem gives an array nums containing 2n integers. Our task is… |
 | 562 | [Longest Line of Consecutive One in Matrix](562.md) | 🟡 Medium | 1m 13s | The problem gives us a binary matrix mat of size m x n, where every… |
+| 563 | [Binary Tree Tilt](563.md) | 🟢 Easy | 1m 7s | The problem asks us to compute the total tilt of an entire binary t… |
+| 564 | [Find the Closest Palindrome](564.md) | 🔴 Hard | 1m 29s | The problem gives us a string n representing a positive integer, an… |
+| 565 | [Array Nesting](565.md) | 🟡 Medium | 2m 41s | The problem gives us an array nums that is guaranteed to be a permu… |
