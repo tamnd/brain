@@ -72,3 +72,41 @@ draft: false
 | 359 | [Logger Rate Limiter](359.md) | 🟢 Easy | 1m 6s | The problem asks us to design a logging system that controls how fr… |
 | 360 | [Sort Transformed Array](360.md) | 🟡 Medium | 1m 18s | The problem gives us a sorted integer array nums and a quadratic tr… |
 | 361 | [Bomb Enemy](361.md) | 🟡 Medium | 33s | The problem presents an m x n matrix called grid where each element… |
+| 362 | [Design Hit Counter](362.md) | 🟡 Medium | 1m 25s | The problem asks us to design a data structure that tracks how many… |
+| 363 | [Max Sum of Rectangle No Larger Than K](363.md) | 🔴 Hard | 1m 43s | The problem asks us to find the rectangular submatrix whose sum is … |
+| 364 | [Nested List Weight Sum II](364.md) | 🟡 Medium | 1m 36s | The problem gives us a nested list structure where each element can… |
+| 365 | [Water and Jug Problem](365.md) | 🟡 Medium | 1m 20s | The problem gives us two water jugs with capacities x and y. We can… |
+| 366 | [Find Leaves of Binary Tree](366.md) | 🟡 Medium | 1m 13s | The problem asks us to repeatedly remove all leaf nodes from a bina… |
+| 367 | [Valid Perfect Square](367.md) | 🟢 Easy | 1m 7s | The problem asks us to determine whether a given positive integer n… |
+| 368 | [Largest Divisible Subset](368.md) | 🟡 Medium | 1m 27s | The problem gives us an array of distinct positive integers and ask… |
+| 369 | [Plus One Linked List](369.md) | 🟡 Medium | 47s | The problem requires us to add one to a non-negative integer that i… |
+| 370 | [Range Addition](370.md) | 🟡 Medium | 1m 26s | The problem gives us an initially zero-filled array of size length.… |
+| 371 | [Sum of Two Integers](371.md) | 🟡 Medium | 1m | The problem asks us to compute the sum of two integers without usin… |
+| 372 | [Super Pow](372.md) | 🟡 Medium | 1m 18s | The problem asks us to compute: The complication is that the expone… |
+| 373 | [Find K Pairs with Smallest Sums](373.md) | 🟡 Medium | 1m 28s | The problem gives us two sorted integer arrays, nums1 and nums2, an… |
+| 374 | [Guess Number Higher or Lower](374.md) | 🟢 Easy | 1m 13s | The problem describes a classic interactive guessing game. A hidden… |
+| 375 | [Guess Number Higher or Lower II](375.md) | 🟡 Medium | 34s | This problem is a variant of the classic number guessing game with … |
+| 376 | [Wiggle Subsequence](376.md) | 🟡 Medium | 1m 9s | The problem asks us to find the length of the longest subsequence i… |
+| 377 | [Combination Sum IV](377.md) | 🟡 Medium | 1m 15s | The problem gives us an array of distinct positive integers called … |
+| 378 | [Kth Smallest Element in a Sorted Matrix](378.md) | 🟡 Medium | 1m 18s | The problem gives us an n x n matrix where both rows and columns ar… |
+| 379 | [Design Phone Directory](379.md) | 🟡 Medium | 1m 11s | The problem asks us to design a data structure that manages a fixed… |
+| 380 | [Insert Delete GetRandom O(1)](380.md) | 🟡 Medium | 1m 19s | This problem asks us to design a custom data structure called Rando… |
+| 381 | [Insert Delete GetRandom O(1) - Duplicates allowed](381.md) | 🔴 Hard | 1m 28s | The problem asks us to design a data structure called RandomizedCol… |
+| 382 | [Linked List Random Node](382.md) | 🟡 Medium | 1m 19s | The problem gives us the head of a singly linked list and asks us t… |
+| 383 | [Ransom Note](383.md) | 🟢 Easy | 1m 12s | This problem asks whether it is possible to construct the string ra… |
+| 384 | [Shuffle an Array](384.md) | 🟡 Medium | 1m 15s | The problem asks us to design a data structure that supports two op… |
+| 385 | [Mini Parser](385.md) | 🟡 Medium | 1m 32s | The problem gives us a string representation of a nested integer st… |
+| 386 | [Lexicographical Numbers](386.md) | 🟡 Medium | 1m 22s | The problem asks us to generate all integers from 1 to n, but not i… |
+| 387 | [First Unique Character in a String](387.md) | 🟢 Easy | 1m 1s | The problem gives us a string s consisting only of lowercase Englis… |
+| 388 | [Longest Absolute File Path](388.md) | 🟡 Medium | 1m 27s | The problem gives us a string representation of a file system hiera… |
+| 389 | [Find the Difference](389.md) | 🟢 Easy | 47s | This problem gives us two strings, s and t. The string t is created… |
+| 390 | [Elimination Game](390.md) | 🟡 Medium | 1m 6s | The problem gives us a sorted list containing every integer from 1 … |
+| 391 | [Perfect Rectangle](391.md) | 🔴 Hard | 1m 33s | This problem asks whether a collection of smaller axis-aligned rect… |
+| 392 | [Is Subsequence](392.md) | 🟢 Easy | 1m 8s | The problem asks whether string s can be formed from string t by de… |
+| 393 | [UTF-8 Validation](393.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a sequence of integers rep… |
+| 394 | [Decode String](394.md) | 🟡 Medium | 1m 15s | The problem gives us a string that contains encoded patterns of the… |
+| 395 | [Longest Substring with At Least K Repeating Characters](395.md) | 🟡 Medium | 1m 14s | The problem asks us to find the length of the longest substring in … |
+| 396 | [Rotate Function](396.md) | 🟡 Medium | 1m 19s | The problem defines a special value called the rotation function fo… |
+| 397 | [Integer Replacement](397.md) | 🟡 Medium | 41s | The problem asks us to reduce a given positive integer n to 1 using… |
+| 398 | [Random Pick Index](398.md) | 🟡 Medium | 34s | The problem requires designing a data structure that allows random … |
+| 399 | [Evaluate Division](399.md) | 🟡 Medium | 1m 22s | This problem gives us a collection of mathematical relationships be… |
