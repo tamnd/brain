@@ -35,15 +35,31 @@ draft: false
 | 222 | [Count Complete Tree Nodes](222.md) | 🟢 Easy | 1m 21s | The problem asks us to count how many nodes exist in a complete bin… |
 | 223 | [Rectangle Area](223.md) | 🟡 Medium | 1m 32s | The problem gives the coordinates of two axis-aligned rectangles on… |
 | 224 | [Basic Calculator](224.md) | 🔴 Hard | 1m 38s | The problem gives us a string representing a mathematical expressio… |
-| 225 | [Implement Stack using Queues](225.md) | 🟢 Easy | 1m 24s | This problem asks us to implement a stack using only queue operatio… |
-| 226 | [Invert Binary Tree](226.md) | 🟢 Easy | 1m 34s | The problem asks us to take a binary tree and invert it. Inverting … |
-| 227 | [Basic Calculator II](227.md) | 🟡 Medium | 1m 28s | The problem gives us a string representing a mathematical expressio… |
-| 228 | [Summary Ranges](228.md) | 🟢 Easy | 1m 2s | This problem asks us to summarize consecutive numbers in a sorted a… |
-| 229 | [Majority Element II](229.md) | 🟡 Medium | 1m 17s | The problem asks us to find every integer in an array that appears … |
-| 230 | [Kth Smallest Element in a BST](230.md) | 🟡 Medium | 4m 19s | This problem asks us to find the kth smallest element in a Binary S… |
-| 231 | [Power of Two](231.md) | 🟢 Easy | 3m 34s | The problem asks us to determine whether a given integer n is a pow… |
+| 225 | [Implement Stack using Queues](225.md) | 🟢 Easy | 2m 26s | The problem asks us to implement a stack data structure while using… |
+| 226 | [Invert Binary Tree](226.md) | 🟢 Easy | 2m 53s | The problem gives the root node of a binary tree and asks us to inv… |
+| 227 | [Basic Calculator II](227.md) | 🟡 Medium | 1m 21s | The problem gives us a string representing a mathematical expressio… |
+| 228 | [Summary Ranges](228.md) | 🟢 Easy | 1m 6s | The problem gives us a sorted array of unique integers and asks us … |
+| 229 | [Majority Element II](229.md) | 🟡 Medium | 2m 20s | The problem asks us to find every element in an integer array that … |
+| 230 | [Kth Smallest Element in a BST](230.md) | 🟡 Medium | 1m 2s | This problem gives us the root of a Binary Search Tree, abbreviated… |
+| 231 | [Power of Two](231.md) | 🟢 Easy | 51s | The problem asks us to determine whether a given integer n is a pow… |
 | 232 | [Implement Queue using Stacks](232.md) | 🟢 Easy | 1m 18s | The problem asks us to implement a queue using only stack operation… |
-| 233 | [Number of Digit One](233.md) | 🔴 Hard | 1m 11s | The problem asks us to count how many times the digit 1 appears in … |
-| 234 | [Palindrome Linked List](234.md) | 🟢 Easy | 1m 24s | The problem gives us the head of a singly linked list and asks whet… |
-| 235 | [Lowest Common Ancestor of a Binary Search Tree](235.md) | 🟡 Medium | 1m 33s | The problem gives us the root of a Binary Search Tree (BST) and two… |
-| 238 | [Product of Array Except Self](238.md) | 🟡 Medium | 1m 18s | The problem asks us to construct a new array where each position co… |
+| 233 | [Number of Digit One](233.md) | 🔴 Hard | 2m 2s | Given a non-negative integer n, we must count how many times the di… |
+| 234 | [Palindrome Linked List](234.md) | 🟢 Easy | 2m 45s | The problem gives us the head of a singly linked list and asks whet… |
+| 235 | [Lowest Common Ancestor of a Binary Search Tree](235.md) | 🟡 Medium | 1m 1s | The problem asks us to find the Lowest Common Ancestor, commonly ab… |
+| 236 | [Lowest Common Ancestor of a Binary Tree](236.md) | 🟡 Medium | 2m 13s | The problem asks us to find the Lowest Common Ancestor, usually abb… |
+| 237 | [Delete Node in a Linked List](237.md) | 🟡 Medium | 57s | This problem asks us to delete a node from a singly linked list, bu… |
+| 238 | [Product of Array Except Self](238.md) | 🟡 Medium | 1m 4s | The problem gives an integer array nums, and for every index i, we … |
+| 239 | [Sliding Window Maximum](239.md) | 🔴 Hard | 1m 11s | The problem gives an integer array nums and a window size k. A slid… |
+| 240 | [Search a 2D Matrix II](240.md) | 🟡 Medium | 1m 15s | The problem gives us an m x n matrix of integers where two ordering… |
+| 241 | [Different Ways to Add Parentheses](241.md) | 🟡 Medium | 29s | You already provided the problem details for LeetCode 241 - Differe… |
+| 242 | [Valid Anagram](242.md) | 🟢 Easy | 1m 3s | The problem asks us to determine whether two strings are anagrams o… |
+| 243 | [Shortest Word Distance](243.md) | 🟢 Easy | 1m | This problem asks us to find the minimum distance between two speci… |
+| 244 | [Shortest Word Distance II](244.md) | 🟡 Medium | 1m 11s | The problem asks us to design a reusable data structure that can ef… |
+| 245 | [Shortest Word Distance III](245.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the minimum distance between two wo… |
+| 246 | [Strobogrammatic Number](246.md) | 🟢 Easy | 59s | The problem asks us to determine whether a given numeric string is … |
+| 247 | [Strobogrammatic Number II](247.md) | 🟡 Medium | 1m 13s | The problem asks us to generate all strobogrammatic numbers of a gi… |
+| 248 | [Strobogrammatic Number III](248.md) | 🔴 Hard | 3m 35s | Difficulty: Hard Topics: Array, String, Recursion This problem asks… |
+| 249 | [Group Shifted Strings](249.md) | 🟡 Medium | 1m 12s | The problem asks us to group strings that belong to the same cyclic… |
+| 250 | [Count Univalue Subtrees](250.md) | 🟡 Medium | 1m 19s | The problem asks us to count how many subtrees in a binary tree are… |
+| 251 | [Flatten 2D Vector](251.md) | 🟡 Medium | 1m 28s | The problem asks us to design an iterator that traverses a two dime… |
+| 252 | [Meeting Rooms](252.md) | 🟢 Easy | 1m 3s | The problem provides a list of meeting intervals, where each interv… |

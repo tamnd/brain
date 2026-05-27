@@ -6,8 +6,8 @@ enableRobotsTXT = true
 enableEmoji = true
 
 [frontmatter]
-  date    = ["date", ":git", "publishDate"]
-  lastmod = ["lastmod", ":git", "date", "publishDate"]
+  date    = ["date", "publishDate"]
+  lastmod = ["lastmod", "date", "publishDate"]
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
@@ -119,4 +119,8 @@ defaultContentLanguageInSubdir = false
     type = "language-switch"
 
 [outputs]
-  page = ["html", "markdown"]
+  home     = ["html"]
+  section  = ["html"]
+  page     = ["html", "markdown"]
+  taxonomy = ["html"]
+  term     = ["html"]

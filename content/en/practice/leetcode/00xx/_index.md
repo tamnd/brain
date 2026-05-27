@@ -40,17 +40,17 @@ draft: false
 | 28 | [Find the Index of the First Occurrence in a String](28.md) | 🟢 Easy | 1m 21s | The problem asks us to find the first position where the string nee… |
 | 29 | [Divide Two Integers](29.md) | 🟡 Medium | 1m 29s | The problem asks us to implement integer division without using the… |
 | 30 | [Substring with Concatenation of All Words](30.md) | 🔴 Hard | 1m 46s | The problem gives us a string s and a list of words called words. E… |
-| 31 | [Next Permutation](31.md) | 🟡 Medium | 2m 53s | The problem asks us to rearrange an array of integers into its next… |
-| 32 | [Longest Valid Parentheses](32.md) | 🔴 Hard | 1m 52s | The problem gives a string containing only two characters, '(' and … |
-| 33 | [Search in Rotated Sorted Array](33.md) | 🟡 Medium | 1m 17s | The problem gives us an array of integers that was originally sorte… |
-| 34 | [Find First and Last Position of Element in Sorted Array](34.md) | 🟡 Medium | 1m 21s | This problem gives us a sorted integer array nums and a target valu… |
-| 35 | [Search Insert Position](35.md) | 🟢 Easy | 2m 55s | This problem gives us a sorted array of distinct integers and a tar… |
-| 36 | [Valid Sudoku](36.md) | 🟡 Medium | 2m 43s | The problem gives us a 9 x 9 Sudoku board that may be partially fil… |
-| 37 | [Sudoku Solver](37.md) | 🔴 Hard | 1m 32s | This problem asks us to solve a partially completed Sudoku board by… |
-| 38 | [Count and Say](38.md) | 🟡 Medium | 1m 2s | The problem asks us to generate the nth term in the "count-and-say"… |
-| 39 | [Combination Sum](39.md) | 🟡 Medium | 2m 19s | The problem gives us an array of distinct positive integers called … |
-| 40 | [Combination Sum II](40.md) | 🟡 Medium | 2m 19s | The problem asks us to find all unique combinations of numbers from… |
-| 41 | [First Missing Positive](41.md) | 🔴 Hard | 2m 31s | The problem asks us to find the smallest positive integer that does… |
+| 31 | [Next Permutation](31.md) | 🟡 Medium | 1m 8s | The problem asks us to modify an integer array so that it becomes t… |
+| 32 | [Longest Valid Parentheses](32.md) | 🔴 Hard | 1m 6s | The problem asks us to find the length of the longest contiguous su… |
+| 33 | [Search in Rotated Sorted Array](33.md) | 🟡 Medium | 1m 14s | The problem gives us an array that was originally sorted in ascendi… |
+| 34 | [Find First and Last Position of Element in Sorted Array](34.md) | 🟡 Medium | 1m 9s | The problem gives us a sorted integer array nums and a target value… |
+| 35 | [Search Insert Position](35.md) | 🟢 Easy | 1m 5s | The problem gives us a sorted array of distinct integers and a targ… |
+| 36 | [Valid Sudoku](36.md) | 🟡 Medium | 1m 21s | This problem asks us to validate whether a partially filled Sudoku … |
+| 37 | [Sudoku Solver](37.md) | 🔴 Hard | 1m 30s | The problem asks us to build a complete Sudoku solver. We are given… |
+| 38 | [Count and Say](38.md) | 🟡 Medium | 1m 10s | The problem asks us to generate the nth term of the "count-and-say"… |
+| 39 | [Combination Sum](39.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every possible unique combination … |
+| 40 | [Combination Sum II](40.md) | 🟡 Medium | 1m 28s | This problem asks us to find all unique combinations of numbers fro… |
+| 41 | [First Missing Positive](41.md) | 🔴 Hard | 1m 24s | The problem asks us to find the smallest positive integer that does… |
 | 42 | [Trapping Rain Water](42.md) | 🔴 Hard | 2m 19s | This problem asks us to determine how much rainwater can be trapped… |
 | 43 | [Multiply Strings](43.md) | 🟡 Medium | 2m 29s | The problem asks us to multiply two non-negative integers where eac… |
 | 44 | [Wildcard Matching](44.md) | 🔴 Hard | 1m 18s | This problem asks us to determine whether an entire input string s … |
