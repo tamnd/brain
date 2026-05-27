@@ -81,3 +81,31 @@ draft: false
 | 168 | [Excel Sheet Column Title](168.md) | 🟢 Easy | 1m | The problem asks us to convert a positive integer into the column n… |
 | 169 | [Majority Element](169.md) | 🟢 Easy | 52s | This problem asks us to find the majority element in an integer arr… |
 | 170 | [Two Sum III - Data structure design](170.md) | 🟢 Easy | 1m 4s | The problem asks us to design a reusable data structure that contin… |
+| 171 | [Excel Sheet Column Number](171.md) | 🟢 Easy | 1m 14s | This problem asks us to convert an Excel-style column title into it… |
+| 172 | [Factorial Trailing Zeroes](172.md) | 🟡 Medium | 46s | The problem asks us to determine how many trailing zeroes appear at… |
+| 173 | [Binary Search Tree Iterator](173.md) | 🟡 Medium | 1m 5s | This problem asks us to design an iterator for a Binary Search Tree… |
+| 174 | [Dungeon Game](174.md) | 🔴 Hard | 1m 29s | This problem asks us to determine the minimum initial health a knig… |
+| 175 | [Combine Two Tables](175.md) | 🟢 Easy | 48s | This problem provides two database tables, Person and Address, and … |
+| 176 | [Second Highest Salary](176.md) | 🟡 Medium | 1m 3s | This problem asks us to retrieve the second highest distinct salary… |
+| 177 | [Nth Highest Salary](177.md) | 🟡 Medium | 1m 18s | This problem asks us to write a SQL query that returns the nth high… |
+| 178 | [Rank Scores](178.md) | 🟡 Medium | 1m 13s | This problem asks us to assign rankings to game scores stored in a … |
+| 179 | [Largest Number](179.md) | 🟡 Medium | 1m 3s | The problem gives an array of non-negative integers and asks us to … |
+| 180 | [Consecutive Numbers](180.md) | 🟡 Medium | 1m 15s | This problem provides a database table named Logs with two columns:… |
+| 181 | [Employees Earning More Than Their Managers](181.md) | 🟢 Easy | 54s | This problem asks us to identify employees whose salary is greater … |
+| 182 | [Duplicate Emails](182.md) | 🟢 Easy | 1m 11s | This problem provides a database table named Person with two column… |
+| 183 | [Customers Who Never Order](183.md) | 🟢 Easy | 1m 8s | This problem provides two database tables, Customers and Orders. Th… |
+| 184 | [Department Highest Salary](184.md) | 🟡 Medium | 1m 41s | This problem asks us to identify the employee or employees who earn… |
+| 185 | [Department Top Three Salaries](185.md) | 🔴 Hard | 1m 9s | This problem asks us to identify the employees who belong to the to… |
+| 186 | [Reverse Words in a String II](186.md) | 🟡 Medium | 50s | This problem asks us to reverse the order of words inside a charact… |
+| 187 | [Repeated DNA Sequences](187.md) | 🟡 Medium | 2m 17s | The problem gives us a DNA string consisting only of the four chara… |
+| 188 | [Best Time to Buy and Sell Stock IV](188.md) | 🔴 Hard | 57s | This problem asks us to maximize profit from buying and selling a s… |
+| 189 | [Rotate Array](189.md) | 🟡 Medium | 1m | The problem asks us to rotate an array to the right by k positions.… |
+| 190 | [Reverse Bits](190.md) | 🟢 Easy | 56s | The problem asks us to reverse the binary representation of a 32-bi… |
+| 191 | [Number of 1 Bits](191.md) | 🟢 Easy | 53s | The problem asks us to count how many bits are set to 1 in the bina… |
+| 192 | [Word Frequency](192.md) | 🟡 Medium | 2m 21s | This problem asks us to write a shell script that reads a text file… |
+| 193 | [Valid Phone Numbers](193.md) | 🟢 Easy | 1m 27s | This problem asks us to process a text file named file.txt and prin… |
+| 194 | [Transpose File](194.md) | 🟡 Medium | 1m 6s | This problem asks us to transpose the contents of a text file. Tran… |
+| 195 | [Tenth Line](195.md) | 🟢 Easy | 52s | This problem asks us to print exactly the 10th line from a text fil… |
+| 196 | [Delete Duplicate Emails](196.md) | 🟢 Easy | 52s | This problem provides a database table named Person with two column… |
+| 197 | [Rising Temperature](197.md) | 🟢 Easy | 56s | The problem provides a database table named Weather, where each row… |
+| 198 | [House Robber](198.md) | 🟡 Medium | 57s | The problem describes a row of houses, where each house contains so… |
