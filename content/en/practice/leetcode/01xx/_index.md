@@ -61,3 +61,7 @@ draft: false
 | 148 | [Sort List](148.md) | 🟡 Medium | 1m 8s | The problem gives us the head of a singly linked list and asks us t… |
 | 149 | [Max Points on a Line](149.md) | 🔴 Hard | 1m 24s | This problem asks us to determine the maximum number of points that… |
 | 150 | [Evaluate Reverse Polish Notation](150.md) | 🟡 Medium | 1m 6s | This problem asks us to evaluate an arithmetic expression written i… |
+| 151 | [Reverse Words in a String](151.md) | 🟡 Medium | 2m 52s | This problem asks us to reverse the order of words in a string whil… |
+| 152 | [Maximum Product Subarray](152.md) | 🟡 Medium | 2m 19s | The problem gives an integer array nums and asks us to find the con… |
+| 153 | [Find Minimum in Rotated Sorted Array](153.md) | 🟡 Medium | 3m 26s | The problem gives us an array that was originally sorted in ascendi… |
+| 154 | [Find Minimum in Rotated Sorted Array II](154.md) | 🔴 Hard | 58s | This problem gives us an array that was originally sorted in ascend… |
