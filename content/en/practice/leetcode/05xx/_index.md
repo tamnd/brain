@@ -74,3 +74,13 @@ draft: false
 | 563 | [Binary Tree Tilt](563.md) | 🟢 Easy | 1m 7s | The problem asks us to compute the total tilt of an entire binary t… |
 | 564 | [Find the Closest Palindrome](564.md) | 🔴 Hard | 1m 29s | The problem gives us a string n representing a positive integer, an… |
 | 565 | [Array Nesting](565.md) | 🟡 Medium | 2m 41s | The problem gives us an array nums that is guaranteed to be a permu… |
+| 567 | [Permutation in String](567.md) | 🟡 Medium | 3m 37s | This problem asks us to determine whether any permutation of s1 app… |
+| 568 | [Maximum Vacation Days](568.md) | 🔴 Hard | 1m 11s | This problem asks us to maximize the total number of vacation days … |
+| 569 | [Median Employee Salary](569.md) | 🔴 Hard | 1m 12s | The problem gives us an Employee table containing three columns: | … |
+| 570 | [Managers with at Least 5 Direct Reports](570.md) | 🟡 Medium | 1m 8s | The Employee table represents a company hierarchy. Every row corres… |
+| 571 | [Find Median Given Frequency of Numbers](571.md) | 🔴 Hard | 2m 31s | This problem provides a compressed representation of a dataset inst… |
+| 572 | [Subtree of Another Tree](572.md) | 🟢 Easy | 1m 12s | This problem asks us to determine whether one binary tree appears a… |
+| 573 | [Squirrel Simulation](573.md) | 🟡 Medium | 1m 6s | This problem models a squirrel collecting nuts in a 2D garden grid.… |
+| 574 | [Winning Candidate](574.md) | 🟡 Medium | 1m 12s | This problem provides two database tables, Candidate and Vote, and … |
+| 575 | [Distribute Candies](575.md) | 🟢 Easy | 1m 46s | This problem asks us to maximize the number of distinct candy types… |
+| 576 | [Out of Boundary Paths](576.md) | 🟡 Medium | 1m 10s | This problem asks us to count how many different ways a ball can le… |
