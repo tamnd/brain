@@ -49,3 +49,11 @@ draft: false
 | 136 | [Single Number](136.md) | 🟢 Easy | 2m | The problem gives us a non-empty integer array nums. Every value in… |
 | 137 | [Single Number II](137.md) | 🟡 Medium | 57s | This problem asks us to find the one unique number in an array wher… |
 | 138 | [Copy List with Random Pointer](138.md) | 🟡 Medium | 1m | The problem asks us to create a deep copy of a linked list where ea… |
+| 139 | [Word Break](139.md) | 🟡 Medium | 3m 14s | The problem gives us a string s and a dictionary of valid words cal… |
+| 140 | [Word Break II](140.md) | 🔴 Hard | 1m 42s | The problem gives us a string s and a list of valid dictionary word… |
+| 141 | [Linked List Cycle](141.md) | 🟢 Easy | 1m 49s | This problem asks us to determine whether a singly linked list cont… |
+| 142 | [Linked List Cycle II](142.md) | 🟡 Medium | 58s | This problem asks us to determine whether a singly linked list cont… |
+| 143 | [Reorder List](143.md) | 🟡 Medium | 1m 4s | This problem asks us to reorder a singly linked list in a very spec… |
+| 144 | [Binary Tree Preorder Traversal](144.md) | 🟢 Easy | 58s | This problem asks us to perform a preorder traversal on a binary tr… |
+| 145 | [Binary Tree Postorder Traversal](145.md) | 🟢 Easy | 1m 55s | In this problem, we are given the root node of a binary tree, and w… |
+| 146 | [LRU Cache](146.md) | 🟡 Medium | 2m 22s | This problem asks us to design an efficient cache system that follo… |
