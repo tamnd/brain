@@ -95,3 +95,10 @@ draft: false
 | 282 | [Expression Add Operators](282.md) | 🔴 Hard | 1m 30s | The problem gives us a numeric string num and an integer target. We… |
 | 283 | [Move Zeroes](283.md) | 🟢 Easy | 1m 3s | The problem gives an integer array nums and asks us to move every 0… |
 | 284 | [Peeking Iterator](284.md) | 🟡 Medium | 1m 24s | This problem asks us to design a wrapper around an existing iterato… |
+| 285 | [Inorder Successor in BST](285.md) | 🟡 Medium | 3m 5s | This problem asks us to find the in-order successor of a given node… |
+| 286 | [Walls and Gates](286.md) | 🟡 Medium | 1m 23s | The problem gives us a 2D grid called rooms, where each cell repres… |
+| 287 | [Find the Duplicate Number](287.md) | 🟡 Medium | 1m 38s | The problem gives us an integer array nums of length n + 1, where e… |
+| 288 | [Unique Word Abbreviation](288.md) | 🟡 Medium | 1m 4s | This problem asks us to design a data structure that can determine … |
+| 289 | [Game of Life](289.md) | 🟡 Medium | 1m 9s | This problem asks us to simulate one iteration of Conway's Game of … |
+| 290 | [Word Pattern](290.md) | 🟢 Easy | 1m 31s | The problem gives two inputs: a string called pattern and another s… |
+| 291 | [Word Pattern II](291.md) | 🟡 Medium | 1m 30s | This problem asks us to determine whether a pattern string can be m… |

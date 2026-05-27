@@ -81,9 +81,9 @@ draft: false
 | 69 | [Sqrt(x)](69.md) | 🟢 Easy | 57s | The problem asks us to compute the integer square root of a non neg… |
 | 70 | [Climbing Stairs](70.md) | 🟢 Easy | 59s | The problem describes a staircase with n total steps, and you want … |
 | 71 | [Simplify Path](71.md) | 🟡 Medium | 1m 32s | This problem asks us to take an absolute Unix-style file path and c… |
-| 72 | [Edit Distance](72.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum number of edit operat… |
-| 73 | [Set Matrix Zeroes](73.md) | 🟡 Medium | 1m 37s | The problem gives us a two dimensional matrix of integers with dime… |
-| 74 | [Search a 2D Matrix](74.md) | 🟡 Medium | 1m 1s | The problem gives us a two dimensional matrix with two very importa… |
+| 72 | [Edit Distance](72.md) | 🟡 Medium | 1m 37s | The problem asks us to compute the minimum number of edit operation… |
+| 73 | [Set Matrix Zeroes](73.md) | 🟡 Medium | 1m 27s | The problem gives us a two dimensional matrix of integers with m ro… |
+| 74 | [Search a 2D Matrix](74.md) | 🟡 Medium | 1m 36s | This problem gives us a two dimensional matrix with two very import… |
 | 75 | [Sort Colors](75.md) | 🟡 Medium | 1m 17s | This problem asks us to sort an array containing only three possibl… |
 | 76 | [Minimum Window Substring](76.md) | 🔴 Hard | 10m 30s | Unusual activity has been detected from your device. Try again late… |
 | 77 | [Combinations](77.md) | 🟡 Medium | 1m 5s | The problem asks us to generate every possible combination of exact… |
