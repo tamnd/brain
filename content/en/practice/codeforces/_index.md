@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Solutions to Codeforces competitive programming problems."
+description: "ChatGPT-solved Codeforces problems with full editorial. 2 contests, 7 problems, 3 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -9,9 +9,11 @@ draft: false
 
 # Codeforces Solutions
 
-Solutions to Codeforces competitive programming problems. Click any problem link to view the original on codeforces.com.
+Each problem below was solved by ChatGPT with a full editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. No problem statement is reproduced here — follow the CF link to read the original.
 
-| Contest | Name | Type | Problems | Verified | Date |
+**2 contests, 7 problems, 3 verified.**
+
+| Contest | Name | Type | Rating Range | Verified | Date |
 |---|---|---|---|---|---|
-| [1](1/_index.md) | Codeforces Beta Round 1 | - | 3 | 3/3 | 2026-05-27 |
-| [1941](1941/_index.md) | Codeforces Round 933 (Div. 3) | - | 4 | 3/4 | 2026-05-27 |
+| [1](1/_index.md) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 2026-05-27 |
+| [1941](1941/_index.md) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | - | 0/4 | - |
