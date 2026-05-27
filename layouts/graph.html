@@ -1,0 +1,35 @@
+{{define "page-main"}}
+<div class="brain-graph-page">
+  <header class="brain-graph__header">
+    <div class="brain-graph__header-text">
+      <h1 class="brain-graph__title" id="brain-graph-title">Graph</h1>
+      <p class="brain-graph__subtitle">
+        <span id="brain-graph-stats"><span id="brain-graph-count"></span></span>
+        <a href="/graph/" id="brain-graph-clear-focus" class="brain-graph__clear-focus" hidden>← Show all</a>
+      </p>
+    </div>
+    <div class="brain-graph__controls">
+      <input
+        type="search"
+        id="brain-graph-search"
+        class="brain-graph__search"
+        placeholder="Filter nodes…"
+        aria-label="Filter graph nodes"
+      />
+      <button type="button" id="brain-graph-reset" class="brain-graph__btn" title="Reset view">Reset</button>
+    </div>
+  </header>
+
+  <div class="brain-graph__canvas-wrap" id="brain-graph-wrap">
+    <svg id="brain-graph" class="brain-graph__svg" aria-label="Knowledge graph"></svg>
+    <div class="brain-graph__tooltip" id="brain-graph-tooltip" hidden></div>
+    <div class="brain-graph__hint">
+      Drag to pan · scroll to zoom · click a node to open
+    </div>
+  </div>
+</div>
+
+<script id="brain-graph-data" type="application/json">{{.GraphDataJSON | safeJS}}</script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" defer></script>
+<script src="{{index .Assets.Extra "brain-graph.js"}}" defer></script>
+{{end}}

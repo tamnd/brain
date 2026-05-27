@@ -1,0 +1,35 @@
+{{define "page-main"}}
+<div class="brain-tree-page">
+  <header class="brain-tree__header">
+    <div class="brain-tree__header-text">
+      <h1 class="brain-tree__title" id="brain-tree-title">Tree</h1>
+      <p class="brain-tree__subtitle">
+        <span id="brain-tree-stats"><span id="brain-tree-count"></span></span>
+      </p>
+    </div>
+    <div class="brain-tree__controls">
+      <input
+        type="search"
+        id="brain-tree-search"
+        class="brain-tree__search"
+        placeholder="Search…"
+        aria-label="Search tree"
+      />
+      <button type="button" id="brain-tree-expand"   class="brain-tree__btn" title="Expand all">Expand</button>
+      <button type="button" id="brain-tree-collapse" class="brain-tree__btn" title="Collapse all">Collapse</button>
+      <button type="button" id="brain-tree-reset"    class="brain-tree__btn" title="Reset view">Reset</button>
+    </div>
+  </header>
+
+  <div class="brain-tree__canvas-wrap" id="brain-tree-wrap">
+    <svg id="brain-tree" class="brain-tree__svg" aria-label="Knowledge mindmap"></svg>
+    <div class="brain-tree__hint">
+      Drag to pan · scroll to zoom · click ▸ to expand · click a leaf to open
+    </div>
+  </div>
+</div>
+
+<script id="brain-tree-data" type="application/json">{{.TreeDataJSON | safeJS}}</script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" defer></script>
+<script src="{{index .Assets.Extra "brain-tree.js"}}" defer></script>
+{{end}}

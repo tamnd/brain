@@ -1,0 +1,202 @@
+{{define "page-main"}}
+<div class="cal-page">
+  <header class="cal-page__header">
+    <h1 class="cal-page__title">Calendar</h1>
+    <p class="cal-page__sub" id="js-cal-total"></p>
+  </header>
+
+  <div class="cal-body">
+    <div class="cal-wrap">
+      <div class="cal-nav">
+        <button class="cal-nav__btn" id="js-cal-prev" aria-label="Previous month">&#8592;</button>
+        <span class="cal-nav__label" id="js-cal-label"></span>
+        <button class="cal-nav__btn" id="js-cal-next" aria-label="Next month">&#8594;</button>
+      </div>
+      <div class="cal-dow">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+        <span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="cal-grid" id="js-cal-grid"></div>
+    </div>
+
+    <div class="cal-posts" id="js-cal-posts">
+      <div class="cal-posts__empty" id="js-posts-empty">Pick a day</div>
+      <div class="cal-posts__filled" id="js-posts-filled" style="display:none">
+        <div class="cal-posts__header">
+          <strong class="cal-posts__date" id="js-posts-date"></strong>
+          <span class="cal-posts__count" id="js-posts-count"></span>
+        </div>
+        <div class="cal-posts__body" id="js-posts-body"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // tago CalendarDataJSON is already map[date]→[]entries
+  var byDate = {{.CalendarDataJSON | safeJS}};
+
+  // sort each day's entries by time
+  for (var d in byDate) {
+    byDate[d].sort(function(a,b){ return a.time < b.time ? -1 : 1; });
+  }
+
+  // compute total for header
+  var total = 0;
+  for (var d in byDate) total += byDate[d].length;
+  var totalEl = document.getElementById("js-cal-total");
+  if (totalEl) totalEl.textContent = total + " notes";
+
+  var MONTHS = ["January","February","March","April","May","June",
+                "July","August","September","October","November","December"];
+  var WDAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  var allDates = Object.keys(byDate).sort();
+  var curYear, curMonth, selDate = null;
+  if (allDates.length) {
+    var latest = allDates[allDates.length - 1];
+    var sp = latest.split("-");
+    curYear  = +sp[0]; curMonth = +sp[1] - 1; selDate = latest;
+  } else {
+    var now = new Date();
+    curYear = now.getFullYear(); curMonth = now.getMonth();
+  }
+
+  var gridEl   = document.getElementById("js-cal-grid");
+  var labelEl  = document.getElementById("js-cal-label");
+  var emptyEl  = document.getElementById("js-posts-empty");
+  var filledEl = document.getElementById("js-posts-filled");
+  var dateEl   = document.getElementById("js-posts-date");
+  var countEl  = document.getElementById("js-posts-count");
+  var bodyEl   = document.getElementById("js-posts-body");
+
+  function pad(n) { return n < 10 ? "0"+n : ""+n; }
+
+  function renderMonth(y, mo) {
+    labelEl.textContent = MONTHS[mo] + " " + y;
+    gridEl.innerHTML = "";
+    var firstDow    = new Date(y, mo, 1).getDay();
+    var daysInMonth = new Date(y, mo+1, 0).getDate();
+    var td = new Date(); var ty = td.getFullYear(), tm = td.getMonth(), tday = td.getDate();
+
+    for (var b = 0; b < firstDow; b++) {
+      var blank = document.createElement("div");
+      blank.className = "cal-cell cal-cell--blank";
+      gridEl.appendChild(blank);
+    }
+    for (var day = 1; day <= daysInMonth; day++) {
+      var key = y+"-"+pad(mo+1)+"-"+pad(day);
+      var btn = document.createElement("button");
+      btn.className = "cal-cell";
+      btn.type = "button";
+      btn.dataset.date = key;
+
+      var numEl = document.createElement("span");
+      numEl.className = "cal-cell__num";
+      numEl.textContent = day;
+      btn.appendChild(numEl);
+
+      var hasPosts = !!byDate[key];
+      if (hasPosts) {
+        var ct = byDate[key].length;
+        var dot = document.createElement("span");
+        dot.className = "cal-cell__dot" + (ct >= 10 ? " cal-cell__dot--lg" : ct >= 4 ? " cal-cell__dot--md" : "");
+        btn.appendChild(dot);
+      } else {
+        btn.disabled = true;
+      }
+      if (day === tday && mo === tm && y === ty) btn.classList.add("cal-cell--today");
+      if (key === selDate) btn.classList.add("cal-cell--sel");
+
+      (function(k){ btn.addEventListener("click", function(){ selectDate(k); }); })(key);
+      gridEl.appendChild(btn);
+    }
+  }
+
+  function selectDate(key) {
+    selDate = key;
+    gridEl.querySelectorAll(".cal-cell").forEach(function(c) {
+      c.classList.remove("cal-cell--sel");
+      if (c.dataset.date === key) c.classList.add("cal-cell--sel");
+    });
+    var posts = byDate[key];
+    if (!posts || !posts.length) {
+      emptyEl.style.display = ""; filledEl.style.display = "none"; return;
+    }
+    emptyEl.style.display = "none"; filledEl.style.display = "";
+
+    var sp = key.split("-");
+    var dateObj = new Date(+sp[0], +sp[1]-1, +sp[2]);
+    dateEl.textContent = WDAYS[dateObj.getDay()]+", "+MONTHS[dateObj.getMonth()]+" "+parseInt(sp[2])+", "+sp[0];
+    countEl.textContent = posts.length + (posts.length === 1 ? " note" : " notes");
+
+    var byHour = {};
+    posts.forEach(function(p) {
+      if (!byHour[p.hour]) byHour[p.hour] = [];
+      byHour[p.hour].push(p);
+    });
+    var hours = Object.keys(byHour).sort(function(a,b){ return +a - +b; });
+
+    bodyEl.innerHTML = "";
+    hours.forEach(function(hour) {
+      var grp = document.createElement("div");
+      grp.className = "cal-hour-group";
+      var lbl = document.createElement("div");
+      lbl.className = "cal-hour-group__label";
+      lbl.textContent = hour + ":00";
+      grp.appendChild(lbl);
+
+      byHour[hour].forEach(function(post) {
+        var row = document.createElement("a");
+        row.href = post.url;
+        row.className = "cal-entry";
+
+        var timeEl = document.createElement("span");
+        timeEl.className = "cal-entry__time";
+        timeEl.textContent = post.time;
+
+        var mid = document.createElement("span");
+        mid.className = "cal-entry__mid";
+
+        var titleEl = document.createElement("span");
+        titleEl.className = "cal-entry__title";
+        titleEl.textContent = post.title;
+
+        var pathEl = document.createElement("span");
+        pathEl.className = "cal-entry__path";
+        pathEl.textContent = post.path;
+
+        mid.appendChild(titleEl);
+        mid.appendChild(pathEl);
+
+        var meta = document.createElement("span");
+        meta.className = "cal-entry__meta";
+        var parts = [];
+        if (post.words > 0) parts.push(post.words + " w");
+        if (post.rt) parts.push(post.rt);
+        meta.textContent = parts.join(" · ");
+
+        row.appendChild(timeEl); row.appendChild(mid); row.appendChild(meta);
+        grp.appendChild(row);
+      });
+      bodyEl.appendChild(grp);
+    });
+
+    if (window.innerWidth < 900) filledEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  document.getElementById("js-cal-prev").addEventListener("click", function() {
+    if (--curMonth < 0) { curMonth = 11; curYear--; }
+    renderMonth(curYear, curMonth);
+  });
+  document.getElementById("js-cal-next").addEventListener("click", function() {
+    if (++curMonth > 11) { curMonth = 0; curYear++; }
+    renderMonth(curYear, curMonth);
+  });
+
+  renderMonth(curYear, curMonth);
+  if (selDate) selectDate(selDate);
+})();
+</script>
+{{end}}
