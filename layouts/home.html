@@ -1,21 +1,41 @@
 {{define "page-main"}}
-<div class="home-feed">
-  <div class="home-feed__header">
-    <h1 class="home-feed__title">{{.Site.Title}}</h1>
-    {{with .Site.Description}}<p class="home-feed__tagline">{{.}}</p>{{end}}
-    {{if .Page.ContentHTML}}<div class="content" style="margin-top:1rem;">{{rawHTML .Page.ContentHTML}}</div>{{end}}
-  </div>
+<main class="home-feed">
+  <header class="home-feed__header">
+    <p class="home-feed__tagline">What you learn is what you note.</p>
+    <p class="home-feed__subtitle">{{len .Pages}} notes</p>
+  </header>
   <div class="home-feed__list">
     {{range .Pages}}
-    {{if not .Draft}}
-    <div class="feed-card">
+    <article class="feed-card">
+      {{if .Ancestors}}
+      <nav class="feed-card__path" aria-label="location">
+        {{range .Ancestors}}{{if ne .Kind "home"}}
+        <a href="{{.RelPermalink}}" class="feed-card__path-crumb">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+        <span class="feed-card__path-sep">›</span>
+        {{end}}{{end}}
+      </nav>
+      {{end}}
       <a href="{{.RelPermalink}}" class="feed-card__link">
         <h2 class="feed-card__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</h2>
         {{with .Description}}<p class="feed-card__desc">{{.}}</p>{{end}}
       </a>
-    </div>
-    {{end}}
+      <footer class="feed-card__footer">
+        {{if not .Date.IsZero}}
+        <time class="feed-card__date" datetime="{{.Date.Format "2006-01-02"}}">{{formatDate .Date}}</time>
+        {{end}}
+        {{if gt .WordCount 0}}
+        <span class="feed-card__footer-sep">·</span>
+        <span class="feed-card__meta">{{.WordCount}} words</span>
+        <span class="feed-card__footer-sep">·</span>
+        <span class="feed-card__meta">{{.ReadingTime}} min read</span>
+        {{end}}
+        {{if .Tags}}
+        <span class="feed-card__footer-sep">·</span>
+        {{range .Tags}}<a href="/en/tags/{{.}}/" class="brain-tag">{{.}}</a> {{end}}
+        {{end}}
+      </footer>
+    </article>
     {{end}}
   </div>
-</div>
+</main>
 {{end}}

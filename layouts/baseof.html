@@ -52,10 +52,11 @@
 </header>
 
 {{$fullscreen := or (eq .Page.Type "graph") (eq .Page.Type "tree") (eq .Page.Type "calendar")}}
+{{$noSidebar := or $fullscreen (eq .Page.Kind "home")}}
 <div id="brain-sidebar-backdrop" class="brain-sidebar-backdrop"></div>
 <div style="display:flex;min-height:calc(100vh - 3.5rem);">
 
-  {{if not $fullscreen}}
+  {{if not $noSidebar}}
   <aside class="brain-sidebar hextra-sidebar-container" style="display:flex;flex-direction:column;">
     <div class="brain-sidebar__scroll">
       {{if .SidebarBack}}
