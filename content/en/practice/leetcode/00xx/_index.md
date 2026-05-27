@@ -74,11 +74,11 @@ draft: false
 | 62 | [Unique Paths](62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
 | 63 | [Unique Paths II](63.md) | 🟡 Medium | 1m 22s | This problem asks us to count how many different valid paths exist … |
 | 64 | [Minimum Path Sum](64.md) | 🟡 Medium | 2m 24s | The problem gives us a two dimensional grid of size m x n, where ea… |
-| 65 | [Valid Number](65.md) | 🔴 Hard | 2m 8s | This problem asks us to determine whether a given string represents… |
-| 66 | [Plus One](66.md) | 🟢 Easy | 2m 20s | The problem gives us a non-negative integer represented as an array… |
-| 67 | [Add Binary](67.md) | 🟢 Easy | 1m 12s | The problem gives us two strings, a and b, where each string repres… |
-| 68 | [Text Justification](68.md) | 🔴 Hard | 1m 2s | The problem asks us to format a sequence of words into fully justif… |
-| 69 | [Sqrt(x)](69.md) | 🟢 Easy | 1m 10s | The problem asks us to compute the integer square root of a non-neg… |
+| 65 | [Valid Number](65.md) | 🔴 Hard | 2m 46s | This is a comprehensive, multi section technical guide that will be… |
+| 66 | [Plus One](66.md) | 🟢 Easy | 2m 21s | The problem gives us a non-empty array of digits that together repr… |
+| 67 | [Add Binary](67.md) | 🟢 Easy | 2m 25s | You are given two strings, a and b, where each string represents a … |
+| 68 | [Text Justification](68.md) | 🔴 Hard | 1m 23s | This problem asks us to simulate how text is formatted in a text ed… |
+| 69 | [Sqrt(x)](69.md) | 🟢 Easy | 57s | The problem asks us to compute the integer square root of a non neg… |
 | 70 | [Climbing Stairs](70.md) | 🟢 Easy | 59s | The problem describes a staircase with n total steps, and you want … |
 | 71 | [Simplify Path](71.md) | 🟡 Medium | 1m 32s | This problem asks us to take an absolute Unix-style file path and c… |
 | 72 | [Edit Distance](72.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum number of edit operat… |

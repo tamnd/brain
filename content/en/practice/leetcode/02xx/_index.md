@@ -71,6 +71,8 @@ draft: false
 | 258 | [Add Digits](258.md) | 🟢 Easy | 1m 24s | The problem asks us to repeatedly transform a number by summing its… |
 | 259 | [3Sum Smaller](259.md) | 🟡 Medium | 1m 38s | The problem asks us to count how many distinct index triplets (i, j… |
 | 260 | [Single Number III](260.md) | 🟡 Medium | 4m 36s | The problem gives an integer array nums where every value appears e… |
+| 261 | [Graph Valid Tree](261.md) | 🟡 Medium | 1m 17s | The problem asks whether a given undirected graph forms a valid tre… |
+| 262 | [Trips and Users](262.md) | 🔴 Hard | 1m 31s | This problem asks us to compute the daily cancellation rate for tax… |
 | 263 | [Ugly Number](263.md) | 🟢 Easy | 1m 34s | The problem asks us to determine whether a given integer n is an ug… |
 | 264 | [Ugly Number II](264.md) | 🟡 Medium | 1m 23s | The problem asks us to generate the sequence of ugly numbers and re… |
 | 265 | [Paint House II](265.md) | 🔴 Hard | 1m 25s | The problem gives us a matrix called costs, where costs[i][j] repre… |
@@ -87,3 +89,9 @@ draft: false
 | 276 | [Paint Fence](276.md) | 🟡 Medium | 58s | The problem gives us a fence with n posts and k available colors. E… |
 | 277 | [Find the Celebrity](277.md) | 🟡 Medium | 2m 14s | This problem asks us to identify whether there is a "celebrity" amo… |
 | 278 | [First Bad Version](278.md) | 🟢 Easy | 2m 28s | The problem gives us a sequence of product versions numbered from 1… |
+| 279 | [Perfect Squares](279.md) | 🟡 Medium | 4m 47s | The problem asks for the minimum number of perfect square numbers w… |
+| 280 | [Wiggle Sort](280.md) | 🟡 Medium | 1m 18s | The problem asks us to rearrange an integer array so that it follow… |
+| 281 | [Zigzag Iterator](281.md) | 🟡 Medium | 1m 23s | The problem asks us to design an iterator that alternates between t… |
+| 282 | [Expression Add Operators](282.md) | 🔴 Hard | 1m 30s | The problem gives us a numeric string num and an integer target. We… |
+| 283 | [Move Zeroes](283.md) | 🟢 Easy | 1m 3s | The problem gives an integer array nums and asks us to move every 0… |
+| 284 | [Peeking Iterator](284.md) | 🟡 Medium | 1m 24s | This problem asks us to design a wrapper around an existing iterato… |
