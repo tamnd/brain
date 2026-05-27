@@ -987,13 +987,13 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 971 | [Problem 971](971.md) | 3m 5s | Let p be a prime of the form 5k-4 and define fp(x) = left(x^k+xright) bmod p.… |
 | 972 | [Problem 972](972.md) | 9m 29s | nThe hyperbolic plane can be represented by the open unit disc, namely the se… |
 | 973 | [Problem 973](973.md) | 3m 45s | --- |
-| 974 | [Problem 974](974.md) | 2m 41s | --- |
+| 974 | [Problem 974](974.md) | 2m 41s | Solution to Project Euler Problem 974. |
 | 975 | [Problem 975](975.md) | 4m 3s | --- |
 | 976 | [Problem 976](976.md) | 5m 25s | --- |
 | 977 | [Problem 977](977.md) | 9m 7s | --- |
 | 978 | [Problem 978](978.md) | 1m 56s | --- |
 | 979 | [Problem 979](979.md) | 1m 50s | --- |
-| 980 | [Problem 980](980.md) | 3m 54s | --- |
+| 980 | [Problem 980](980.md) | 3m 54s | Solution to Project Euler Problem 980. |
 | 981 | [Problem 981](981.md) | 2m | --- |
 | 982 | [Problem 982](982.md) | 3m 25s | --- |
 | 983 | [Problem 983](983.md) | 2m 45s | --- |
@@ -1003,7 +1003,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 987 | [Problem 987](987.md) | 3m 43s | --- |
 | 988 | [Problem 988](988.md) | 6m 1s | --- |
 | 989 | [Problem 989](989.md) | 5m 31s | Write Fn for the n-th Fibonacci number, with F1 = F2 = 1 and F{n+1} = Fn + F{… |
-| 990 | [Problem 990](990.md) | 4m 23s | --- |
+| 990 | [Problem 990](990.md) | 4m 23s | Solution to Project Euler Problem 990. |
 | 991 | [Problem 991](991.md) | 5m 32s | --- |
 | 992 | [Problem 992](992.md) | 4m 19s | --- |
 | 993 | [Problem 993](993.md) | 2m 1s | --- |
