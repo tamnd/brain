@@ -1008,6 +1008,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 992 | [Problem 992](992.md) | 4m 19s | Solution to Project Euler Problem 992. |
 | 993 | [Problem 993](993.md) | 2m 1s | Solution to Project Euler Problem 993. |
 | 994 | [Problem 994](994.md) | 5m 5s | Solution to Project Euler Problem 994. |
-| 995 | [Problem 995](995.md) | 1m 44s | Solution to Project Euler Problem 995. |
+| 995 | [Problem 995](995.md) | 14m 4s | For each prime p and each positive integer n define two polynomials: Let S(p)… |
 | 996 | [Problem 996](996.md) | 2m 38s | Solution to Project Euler Problem 996. |
-| 997 | [Problem 997](997.md) | 1m 47s | Solution to Project Euler Problem 997. |
+| 997 | [Problem 997](997.md) | 4m 48s | There are xyz dice arranged in an x times y times z box such that touching fa… |
+| 998 | [Problem 998](998.md) | 8m 27s | The minimum bounding square of a triangle is the smallest square that can be … |
