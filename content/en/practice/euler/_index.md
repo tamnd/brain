@@ -461,6 +461,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 444 | [Problem 444](444.md) | 39s | A group of p people decide to sit down at a round table and play a lottery-ti… |
 | 445 | [Problem 445](445.md) | 5m 30s | For every integer n1, the family of functions f{n,a,b} is defined by f{n,a,b}… |
 | 446 | [Problem 446](446.md) | 1m 18s | For every integer n1, the family of functions f{n,a,b} is defined by f{n,a,b}… |
+| 447 | [Problem 447](447.md) | 3m | For every integer n 1, the family of functions f{n,a,b} is defined by for int… |
 | 448 | [Problem 448](448.md) | 1m 1s | The function operatorname{mathbf{lcm}}(a,b) denotes the least common multiple… |
 | 449 | [Problem 449](449.md) | 5m 21s | Phil the confectioner is making a new batch of chocolate covered candy. |
 | 450 | [Problem 450](450.md) | 44s | A hypocycloid is the curve drawn by a point on a small circle rolling inside … |
