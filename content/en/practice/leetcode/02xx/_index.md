@@ -49,17 +49,27 @@ draft: false
 | 236 | [Lowest Common Ancestor of a Binary Tree](236.md) | 🟡 Medium | 2m 13s | The problem asks us to find the Lowest Common Ancestor, usually abb… |
 | 237 | [Delete Node in a Linked List](237.md) | 🟡 Medium | 57s | This problem asks us to delete a node from a singly linked list, bu… |
 | 238 | [Product of Array Except Self](238.md) | 🟡 Medium | 1m 4s | The problem gives an integer array nums, and for every index i, we … |
-| 239 | [Sliding Window Maximum](239.md) | 🔴 Hard | 1m 11s | The problem gives an integer array nums and a window size k. A slid… |
-| 240 | [Search a 2D Matrix II](240.md) | 🟡 Medium | 1m 15s | The problem gives us an m x n matrix of integers where two ordering… |
-| 241 | [Different Ways to Add Parentheses](241.md) | 🟡 Medium | 29s | You already provided the problem details for LeetCode 241 - Differe… |
-| 242 | [Valid Anagram](242.md) | 🟢 Easy | 1m 3s | The problem asks us to determine whether two strings are anagrams o… |
-| 243 | [Shortest Word Distance](243.md) | 🟢 Easy | 1m | This problem asks us to find the minimum distance between two speci… |
-| 244 | [Shortest Word Distance II](244.md) | 🟡 Medium | 1m 11s | The problem asks us to design a reusable data structure that can ef… |
-| 245 | [Shortest Word Distance III](245.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the minimum distance between two wo… |
-| 246 | [Strobogrammatic Number](246.md) | 🟢 Easy | 59s | The problem asks us to determine whether a given numeric string is … |
+| 239 | [Sliding Window Maximum](239.md) | 🔴 Hard | 2m 34s | The problem gives us an integer array nums and a window size k. A s… |
+| 240 | [Search a 2D Matrix II](240.md) | 🟡 Medium | 1m 16s | The problem asks us to determine whether a given integer target exi… |
+| 241 | [Different Ways to Add Parentheses](241.md) | 🟡 Medium | 1m 12s | The problem gives us a mathematical expression as a string containi… |
+| 242 | [Valid Anagram](242.md) | 🟢 Easy | 1m 16s | The problem asks us to determine whether two strings are anagrams o… |
+| 243 | [Shortest Word Distance](243.md) | 🟢 Easy | 1m 17s | The problem gives us an array of strings called wordsDict, along wi… |
+| 244 | [Shortest Word Distance II](244.md) | 🟡 Medium | 1m 25s | This problem asks us to design a reusable data structure that can e… |
+| 245 | [Shortest Word Distance III](245.md) | 🟡 Medium | 1m 16s | The problem gives us an array of strings, wordsDict, and two target… |
+| 246 | [Strobogrammatic Number](246.md) | 🟢 Easy | 58s | The problem asks us to determine whether a given numeric string rem… |
 | 247 | [Strobogrammatic Number II](247.md) | 🟡 Medium | 1m 13s | The problem asks us to generate all strobogrammatic numbers of a gi… |
 | 248 | [Strobogrammatic Number III](248.md) | 🔴 Hard | 3m 35s | Difficulty: Hard Topics: Array, String, Recursion This problem asks… |
 | 249 | [Group Shifted Strings](249.md) | 🟡 Medium | 1m 12s | The problem asks us to group strings that belong to the same cyclic… |
 | 250 | [Count Univalue Subtrees](250.md) | 🟡 Medium | 1m 19s | The problem asks us to count how many subtrees in a binary tree are… |
 | 251 | [Flatten 2D Vector](251.md) | 🟡 Medium | 1m 28s | The problem asks us to design an iterator that traverses a two dime… |
 | 252 | [Meeting Rooms](252.md) | 🟢 Easy | 1m 3s | The problem provides a list of meeting intervals, where each interv… |
+| 253 | [Meeting Rooms II](253.md) | 🟡 Medium | 5m 31s | The problem gives us a list of meeting intervals where each interva… |
+| 254 | [Factor Combinations](254.md) | 🟡 Medium | 1m 20s | The problem asks us to generate every unique way to express a numbe… |
+| 255 | [Verify Preorder Sequence in Binary Search Tree](255.md) | 🟡 Medium | 1m 25s | The problem gives an array of unique integers called preorder. This… |
+| 256 | [Paint House](256.md) | 🟡 Medium | 1m 11s | The problem gives us a row of houses, where each house must be pain… |
+| 257 | [Binary Tree Paths](257.md) | 🟢 Easy | 1m 17s | The problem asks us to return every path from the root of a binary … |
+| 258 | [Add Digits](258.md) | 🟢 Easy | 1m 24s | The problem asks us to repeatedly transform a number by summing its… |
+| 259 | [3Sum Smaller](259.md) | 🟡 Medium | 1m 38s | The problem asks us to count how many distinct index triplets (i, j… |
+| 260 | [Single Number III](260.md) | 🟡 Medium | 4m 36s | The problem gives an integer array nums where every value appears e… |
+| 263 | [Ugly Number](263.md) | 🟢 Easy | 1m 34s | The problem asks us to determine whether a given integer n is an ug… |
+| 264 | [Ugly Number II](264.md) | 🟡 Medium | 1m 23s | The problem asks us to generate the sequence of ugly numbers and re… |

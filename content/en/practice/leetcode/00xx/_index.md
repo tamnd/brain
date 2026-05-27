@@ -51,21 +51,21 @@ draft: false
 | 39 | [Combination Sum](39.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every possible unique combination … |
 | 40 | [Combination Sum II](40.md) | 🟡 Medium | 1m 28s | This problem asks us to find all unique combinations of numbers fro… |
 | 41 | [First Missing Positive](41.md) | 🔴 Hard | 1m 24s | The problem asks us to find the smallest positive integer that does… |
-| 42 | [Trapping Rain Water](42.md) | 🔴 Hard | 2m 19s | This problem asks us to determine how much rainwater can be trapped… |
-| 43 | [Multiply Strings](43.md) | 🟡 Medium | 2m 29s | The problem asks us to multiply two non-negative integers where eac… |
-| 44 | [Wildcard Matching](44.md) | 🔴 Hard | 1m 18s | This problem asks us to determine whether an entire input string s … |
-| 45 | [Jump Game II](45.md) | 🟡 Medium | 1m 9s | The problem gives us an array nums where each element represents th… |
-| 46 | [Permutations](46.md) | 🟡 Medium | 58s | This problem asks us to generate every possible ordering of the num… |
-| 47 | [Permutations II](47.md) | 🟡 Medium | 1m 18s | This problem asks us to generate every possible permutation of the … |
-| 48 | [Rotate Image](48.md) | 🟡 Medium | 6m 20s | The problem gives us an n x n matrix that represents an image. Each… |
-| 49 | [Group Anagrams](49.md) | 🟡 Medium | 1m 36s | The problem asks us to take an array of strings and group together … |
-| 50 | [Pow(x, n)](50.md) | 🟡 Medium | 1m 19s | The problem asks us to implement a function that computes x raised … |
-| 51 | [N-Queens](51.md) | 🔴 Hard | 11m 42s | The problem asks us to place n queens on an n x n chessboard such t… |
+| 42 | [Trapping Rain Water](42.md) | 🔴 Hard | 1m 25s | The problem gives an array called height, where each element repres… |
+| 43 | [Multiply Strings](43.md) | 🟡 Medium | 1m 33s | The problem asks us to multiply two non-negative integers where eac… |
+| 44 | [Wildcard Matching](44.md) | 🔴 Hard | 1m 36s | This problem asks us to determine whether an entire input string s … |
+| 45 | [Jump Game II](45.md) | 🟡 Medium | 1m 5s | The problem gives an array nums where each value represents the max… |
+| 46 | [Permutations](46.md) | 🟡 Medium | 1m 15s | The problem gives us an array of distinct integers called nums, and… |
+| 47 | [Permutations II](47.md) | 🟡 Medium | 1m 44s | The problem asks us to generate every possible permutation of the g… |
+| 48 | [Rotate Image](48.md) | 🟡 Medium | 1m 26s | The problem gives us an n x n square matrix that represents an imag… |
+| 49 | [Group Anagrams](49.md) | 🟡 Medium | 1m 38s | The problem asks us to group together all strings that are anagrams… |
+| 50 | [Pow(x, n)](50.md) | 🟡 Medium | 1m 26s | The problem asks us to implement exponentiation manually, specifica… |
+| 51 | [N-Queens](51.md) | 🔴 Hard | 3m 41s | The N-Queens problem asks us to place n queens on an n x n chessboa… |
 | 52 | [N-Queens II](52.md) | 🔴 Hard | 12m 17s | The problem asks us to count how many valid ways we can place n que… |
 | 53 | [Maximum Subarray](53.md) | 🟡 Medium | 12m 17s | The problem gives an integer array nums and asks us to find the con… |
-| 54 | [Spiral Matrix](54.md) | 🟡 Medium | 1m 6s | The problem asks us to traverse a two dimensional matrix in spiral … |
-| 55 | [Jump Game](55.md) | 🟡 Medium | 2m 19s | The problem gives us an integer array nums, where each element repr… |
-| 56 | [Merge Intervals](56.md) | 🟡 Medium | 1m 46s | The problem gives an array of intervals, where each interval is rep… |
+| 54 | [Spiral Matrix](54.md) | 🟡 Medium | 1m 8s | The problem gives an m x n matrix and asks us to return all element… |
+| 55 | [Jump Game](55.md) | 🟡 Medium | 1m 44s | The problem gives us an integer array nums, where each value repres… |
+| 56 | [Merge Intervals](56.md) | 🟡 Medium | 1m 30s | The problem gives an array of intervals, where each interval is rep… |
 | 57 | [Insert Interval](57.md) | 🟡 Medium | 2m 19s | This problem asks us to insert a new interval into an already sorte… |
 | 58 | [Length of Last Word](58.md) | 🟢 Easy | 52s | This problem asks us to find the length of the final word in a stri… |
 | 59 | [Spiral Matrix II](59.md) | 🟡 Medium | 1m 16s | This problem asks us to generate an n x n square matrix and fill it… |
