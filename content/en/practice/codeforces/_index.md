@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "ChatGPT-solved Codeforces problems with full editorial. 2 contests, 7 problems, 3 verified."
+description: "ChatGPT-solved Codeforces problems with full editorial. 6 contests, 14 problems, 9 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,13 @@ draft: false
 
 Each problem below was solved by ChatGPT with a full editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. No problem statement is reproduced here — follow the CF link to read the original.
 
-**2 contests, 7 problems, 3 verified.**
+**6 contests, 14 problems, 9 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Date |
 |---|---|---|---|---|---|
-| [1](1/_index.md) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 2026-05-27 |
-| [1941](1941/_index.md) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | - | 0/4 | - |
+| [1](1/) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 2026-05-27 |
+| [2](2/) | [Codeforces Beta Round 2](https://codeforces.com/contest/2) | Beta | 2000-2000 | 0/1 | 2026-05-27 |
+| [3](3/) | [Codeforces Beta Round 3](https://codeforces.com/contest/3) | Beta | 1800-2600 | 2/2 | 2026-05-27 |
+| [4](4/) | [Codeforces Beta Round 4 (Div. 2 Only)](https://codeforces.com/contest/4) | Div. 2 | 1200-1700 | 2/2 | 2026-05-27 |
+| [5](5/) | [Codeforces Beta Round 5](https://codeforces.com/contest/5) | Beta | 1200-2100 | 2/2 | 2026-05-27 |
+| [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | - | 0/4 | - |

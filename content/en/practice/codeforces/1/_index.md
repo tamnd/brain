@@ -19,6 +19,6 @@ draft: false
 
 | Problem | Name | Rating | Tags | Solve Time | Share | Verified |
 |---|---|---|---|---|---|---|
-| [A](A.md) | [Theatre Square](https://codeforces.com/problemset/problem/1/A) | 1000 | math | 52s | [share](https://chatgpt.com/share/6a171ff7-6658-83ec-baee-af846ddf7457) | ✓ |
-| [B](B.md) | [Spreadsheet](https://codeforces.com/problemset/problem/1/B) | 1600 | implementation, math | 1m 12s | [share](https://chatgpt.com/share/6a17200b-6f58-83ec-ba0b-7495bab2371c) | ✓ |
-| [C](C.md) | [Ancient Berland Circus](https://codeforces.com/problemset/problem/1/C) | 2100 | geometry, math | 1m 35s | [share](https://chatgpt.com/share/6a172022-d074-83ec-93b2-21eeb0df9518) | ✓ |
+| [A](A/) | [Theatre Square](https://codeforces.com/problemset/problem/1/A) | 1000 | math | 52s | [share](https://chatgpt.com/share/6a171ff7-6658-83ec-baee-af846ddf7457) | ✓ |
+| [B](B/) | [Spreadsheet](https://codeforces.com/problemset/problem/1/B) | 1600 | implementation, math | 1m 12s | [share](https://chatgpt.com/share/6a17200b-6f58-83ec-ba0b-7495bab2371c) | ✓ |
+| [C](C/) | [Ancient Berland Circus](https://codeforces.com/problemset/problem/1/C) | 2100 | geometry, math | 1m 35s | [share](https://chatgpt.com/share/6a172022-d074-83ec-93b2-21eeb0df9518) | ✓ |
