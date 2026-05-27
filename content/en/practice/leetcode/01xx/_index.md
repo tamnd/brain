@@ -65,3 +65,19 @@ draft: false
 | 152 | [Maximum Product Subarray](152.md) | 🟡 Medium | 2m 19s | The problem gives an integer array nums and asks us to find the con… |
 | 153 | [Find Minimum in Rotated Sorted Array](153.md) | 🟡 Medium | 3m 26s | The problem gives us an array that was originally sorted in ascendi… |
 | 154 | [Find Minimum in Rotated Sorted Array II](154.md) | 🔴 Hard | 58s | This problem gives us an array that was originally sorted in ascend… |
+| 155 | [Min Stack](155.md) | 🟡 Medium | 52s | This problem asks us to design a stack data structure that supports… |
+| 156 | [Binary Tree Upside Down](156.md) | 🟡 Medium | 1m 35s | This problem asks us to transform a binary tree into a new structur… |
+| 157 | [Read N Characters Given Read4](157.md) | 🟢 Easy | 2m 59s | This problem asks us to implement a custom read function using a li… |
+| 158 | [Read N Characters Given read4 II - Call Multiple Times](158.md) | 🔴 Hard | 1m | This problem asks us to implement a custom read(buf, n) function us… |
+| 159 | [Longest Substring with At Most Two Distinct Characters](159.md) | 🟡 Medium | 58s | The problem asks us to find the length of the longest contiguous su… |
+| 160 | [Intersection of Two Linked Lists](160.md) | 🟢 Easy | 59s | This problem asks us to determine whether two singly linked lists i… |
+| 161 | [One Edit Distance](161.md) | 🟡 Medium | 51s | This problem asks us to determine whether two strings are exactly o… |
+| 162 | [Find Peak Element](162.md) | 🟡 Medium | 1m | This problem asks us to find the index of any "peak" element in an … |
+| 163 | [Missing Ranges](163.md) | 🟢 Easy | 2m | The problem gives us three inputs: - A sorted array nums containing… |
+| 164 | [Maximum Gap](164.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the largest difference between two c… |
+| 165 | [Compare Version Numbers](165.md) | 🟡 Medium | 59s | The problem asks us to compare two version numbers represented as s… |
+| 166 | [Fraction to Recurring Decimal](166.md) | 🟡 Medium | 1m 1s | This problem asks us to convert a fraction, represented by a numera… |
+| 167 | [Two Sum II - Input Array Is Sorted](167.md) | 🟡 Medium | 1m 1s | The problem gives us a sorted integer array called numbers and a ta… |
+| 168 | [Excel Sheet Column Title](168.md) | 🟢 Easy | 1m | The problem asks us to convert a positive integer into the column n… |
+| 169 | [Majority Element](169.md) | 🟢 Easy | 52s | This problem asks us to find the majority element in an integer arr… |
+| 170 | [Two Sum III - Data structure design](170.md) | 🟢 Easy | 1m 4s | The problem asks us to design a reusable data structure that contin… |
