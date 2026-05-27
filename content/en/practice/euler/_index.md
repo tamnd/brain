@@ -1002,7 +1002,7 @@ Solutions to [Project Euler](https://projecteuler.net) problems.
 | 986 | [Problem 986](986.md) | 6m 17s | --- |
 | 987 | [Problem 987](987.md) | 3m 43s | --- |
 | 988 | [Problem 988](988.md) | 6m 1s | --- |
-| 989 | [Problem 989](989.md) | 4m 1s | --- |
+| 989 | [Problem 989](989.md) | 5m 31s | Write Fn for the n-th Fibonacci number, with F1 = F2 = 1 and F{n+1} = Fn + F{… |
 | 990 | [Problem 990](990.md) | 4m 23s | --- |
 | 991 | [Problem 991](991.md) | 5m 32s | --- |
 | 992 | [Problem 992](992.md) | 4m 19s | --- |
