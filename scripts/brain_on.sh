@@ -66,6 +66,12 @@ while true; do
 
   _did_something=false
 
+  # Sync with remote before doing anything — avoids rejected pushes.
+  git fetch -q origin "$BRANCH" 2>/dev/null || true
+  if git log "HEAD..origin/$BRANCH" --oneline 2>/dev/null | grep -q .; then
+    git rebase -q "origin/$BRANCH" 2>/dev/null || true
+  fi
+
   # Commit any local changes (always safe to commit locally).
   if [ -n "$(git status --porcelain)" ]; then
     git add -A

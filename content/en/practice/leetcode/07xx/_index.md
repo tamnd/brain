@@ -26,6 +26,7 @@ draft: false
 | 714 | [Best Time to Buy and Sell Stock with Transaction Fee](714.md) | 🟡 Medium | 1m 11s | This problem asks us to maximize profit from stock trading over a s… |
 | 715 | [Range Module](715.md) | 🔴 Hard | 1m 21s | This problem asks us to design a data structure that dynamically tr… |
 | 716 | [Max Stack](716.md) | 🔴 Hard | 37s | The problem asks us to design a stack data structure, MaxStack, whi… |
+| 717 | [1-bit and 2-bit Characters](717.md) | 🟢 Easy | 1m 11s | In this problem, we are given a binary array called bits. The array… |
 | 751 | [IP to CIDR](751.md) | 🟡 Medium | 42s | The problem is asking us to convert a range of IP addresses into a … |
 | 752 | [Open the Lock](752.md) | 🟡 Medium | 38s | The problem presents a 4-wheel combination lock, where each wheel c… |
 | 753 | [Cracking the Safe](753.md) | 🔴 Hard | 1m 11s | This problem asks us to generate the shortest possible string that … |
@@ -40,3 +41,5 @@ draft: false
 | 762 | [Prime Number of Set Bits in Binary Representation](762.md) | 🟢 Easy | 47s | The problem requires counting the numbers within a given inclusive … |
 | 763 | [Partition Labels](763.md) | 🟡 Medium | 43s | The problem is asking us to partition a string s into as many conti… |
 | 764 | [Largest Plus Sign](764.md) | 🟡 Medium | 1m 12s | This problem asks us to find the largest axis-aligned plus sign mad… |
+| 765 | [Couples Holding Hands](765.md) | 🔴 Hard | 1m 11s | This problem gives us a row of seats represented by the array row, … |
+| 766 | [Toeplitz Matrix](766.md) | 🟢 Easy | 1m 4s | The problem asks us to determine whether a given matrix satisfies t… |
