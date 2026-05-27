@@ -66,11 +66,11 @@ draft: false
 | 54 | [Spiral Matrix](54.md) | 🟡 Medium | 1m 8s | The problem gives an m x n matrix and asks us to return all element… |
 | 55 | [Jump Game](55.md) | 🟡 Medium | 1m 44s | The problem gives us an integer array nums, where each value repres… |
 | 56 | [Merge Intervals](56.md) | 🟡 Medium | 1m 30s | The problem gives an array of intervals, where each interval is rep… |
-| 57 | [Insert Interval](57.md) | 🟡 Medium | 2m 19s | This problem asks us to insert a new interval into an already sorte… |
-| 58 | [Length of Last Word](58.md) | 🟢 Easy | 52s | This problem asks us to find the length of the final word in a stri… |
-| 59 | [Spiral Matrix II](59.md) | 🟡 Medium | 1m 16s | This problem asks us to generate an n x n square matrix and fill it… |
+| 57 | [Insert Interval](57.md) | 🟡 Medium | 1m 15s | The problem gives us a list of intervals that are already sorted by… |
+| 58 | [Length of Last Word](58.md) | 🟢 Easy | 1m 14s | The problem gives us a string s that contains English letters and s… |
+| 59 | [Spiral Matrix II](59.md) | 🟡 Medium | 1m 34s | The problem asks us to generate an n x n matrix and fill it with nu… |
 | 60 | [Permutation Sequence](60.md) | 🔴 Hard | 1m 20s | This problem asks us to find the kth permutation of the numbers fro… |
-| 61 | [Rotate List](61.md) | 🟡 Medium | 56s | This problem asks us to rotate a singly linked list to the right by… |
+| 61 | [Rotate List](61.md) | 🟡 Medium | 1m 11s | This problem asks us to rotate a singly linked list to the right by… |
 | 62 | [Unique Paths](62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
 | 63 | [Unique Paths II](63.md) | 🟡 Medium | 55s | This problem asks us to count how many different valid ways a robot… |
 | 64 | [Minimum Path Sum](64.md) | 🟡 Medium | 1m 11s | The problem gives us a two dimensional grid of non negative integer… |

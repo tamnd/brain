@@ -60,7 +60,7 @@ draft: false
 | 247 | [Strobogrammatic Number II](247.md) | 🟡 Medium | 1m 13s | The problem asks us to generate all strobogrammatic numbers of a gi… |
 | 248 | [Strobogrammatic Number III](248.md) | 🔴 Hard | 3m 35s | Difficulty: Hard Topics: Array, String, Recursion This problem asks… |
 | 249 | [Group Shifted Strings](249.md) | 🟡 Medium | 1m 12s | The problem asks us to group strings that belong to the same cyclic… |
-| 250 | [Count Univalue Subtrees](250.md) | 🟡 Medium | 1m 19s | The problem asks us to count how many subtrees in a binary tree are… |
+| 250 | [Count Univalue Subtrees](250.md) | 🟡 Medium | 1m 6s | The problem asks us to count how many subtrees in a binary tree are… |
 | 251 | [Flatten 2D Vector](251.md) | 🟡 Medium | 1m 28s | The problem asks us to design an iterator that traverses a two dime… |
 | 252 | [Meeting Rooms](252.md) | 🟢 Easy | 1m 3s | The problem provides a list of meeting intervals, where each interv… |
 | 253 | [Meeting Rooms II](253.md) | 🟡 Medium | 5m 31s | The problem gives us a list of meeting intervals where each interva… |
@@ -73,3 +73,7 @@ draft: false
 | 260 | [Single Number III](260.md) | 🟡 Medium | 4m 36s | The problem gives an integer array nums where every value appears e… |
 | 263 | [Ugly Number](263.md) | 🟢 Easy | 1m 34s | The problem asks us to determine whether a given integer n is an ug… |
 | 264 | [Ugly Number II](264.md) | 🟡 Medium | 1m 23s | The problem asks us to generate the sequence of ugly numbers and re… |
+| 265 | [Paint House II](265.md) | 🔴 Hard | 1m 25s | The problem gives us a matrix called costs, where costs[i][j] repre… |
+| 266 | [Palindrome Permutation](266.md) | 🟢 Easy | 1m 49s | The problem asks whether the characters of a given string can be re… |
+| 267 | [Palindrome Permutation II](267.md) | 🟡 Medium | 1m 38s | The problem asks us to generate every unique palindrome that can be… |
+| 268 | [Missing Number](268.md) | 🟢 Easy | 1m 20s | The problem gives an array nums containing n distinct integers. Eve… |
