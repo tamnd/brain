@@ -69,11 +69,11 @@ draft: false
 | 57 | [Insert Interval](57.md) | 🟡 Medium | 1m 15s | The problem gives us a list of intervals that are already sorted by… |
 | 58 | [Length of Last Word](58.md) | 🟢 Easy | 1m 14s | The problem gives us a string s that contains English letters and s… |
 | 59 | [Spiral Matrix II](59.md) | 🟡 Medium | 1m 34s | The problem asks us to generate an n x n matrix and fill it with nu… |
-| 60 | [Permutation Sequence](60.md) | 🔴 Hard | 1m 20s | This problem asks us to find the kth permutation of the numbers fro… |
+| 60 | [Permutation Sequence](60.md) | 🔴 Hard | 5m 16s | The problem gives us the numbers from 1 to n, and asks us to find t… |
 | 61 | [Rotate List](61.md) | 🟡 Medium | 1m 11s | This problem asks us to rotate a singly linked list to the right by… |
 | 62 | [Unique Paths](62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
-| 63 | [Unique Paths II](63.md) | 🟡 Medium | 55s | This problem asks us to count how many different valid ways a robot… |
-| 64 | [Minimum Path Sum](64.md) | 🟡 Medium | 1m 11s | The problem gives us a two dimensional grid of non negative integer… |
+| 63 | [Unique Paths II](63.md) | 🟡 Medium | 1m 22s | This problem asks us to count how many different valid paths exist … |
+| 64 | [Minimum Path Sum](64.md) | 🟡 Medium | 2m 24s | The problem gives us a two dimensional grid of size m x n, where ea… |
 | 65 | [Valid Number](65.md) | 🔴 Hard | 2m 8s | This problem asks us to determine whether a given string represents… |
 | 66 | [Plus One](66.md) | 🟢 Easy | 2m 20s | The problem gives us a non-negative integer represented as an array… |
 | 67 | [Add Binary](67.md) | 🟢 Easy | 1m 12s | The problem gives us two strings, a and b, where each string repres… |
