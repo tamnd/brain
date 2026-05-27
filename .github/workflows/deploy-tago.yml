@@ -17,26 +17,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 1
 
       - name: Checkout tago
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
         with:
           repository: tamnd/tago
           path: .tago-src
           fetch-depth: 1
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6.4.0
         with:
           go-version-file: .tago-src/go.mod
           cache: false
 
       - name: Cache tago binary
         id: tago-bin-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5.0.5
         with:
           path: /usr/local/bin/tago
           key: tago-bin-${{ runner.os }}-${{ hashFiles('.tago-src/go.sum', '.tago-src/**/*.go') }}
@@ -45,10 +45,10 @@ jobs:
         if: steps.tago-bin-cache.outputs.cache-hit != 'true'
         run: |
           cd .tago-src
-          CGO_ENABLED=1 go build -o /usr/local/bin/tago ./cmd/tago/
+          go build -o /usr/local/bin/tago ./cmd/tago/
 
       - name: Cache tago output (incremental)
-        uses: actions/cache@v4
+        uses: actions/cache@v5.0.5
         with:
           path: public
           key: tago-output-${{ runner.os }}-${{ github.sha }}
@@ -61,7 +61,7 @@ jobs:
         run: rm -f public/.tago-cache.db
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4.0.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
