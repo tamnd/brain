@@ -26,61 +26,61 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 9 | [Palindrome Number](00xx/9.md) | 🟢 Easy | 1m 47s | The problem asks us to determine whether a given integer reads the … |
 | 10 | [Regular Expression Matching](00xx/10.md) | 🔴 Hard | 6m 5s | LeetCode 10, Regular Expression Matching, asks us to determine whet… |
 | 11 | [Container With Most Water](00xx/11.md) | 🟡 Medium | 1m 11s | The problem gives an array called height, where each element repres… |
-| 12 | [Integer to Roman](00xx/12.md) | 🟡 Medium | 1m | The problem asks us to convert a positive integer into its Roman nu… |
+| 12 | [Integer to Roman](00xx/12.md) | 🟡 Medium | 1m 27s | The problem asks us to convert a positive integer into its Roman nu… |
 | 13 | [Roman to Integer](00xx/13.md) | 🟢 Easy | 1m 11s | The problem gives a Roman numeral string and asks us to convert it … |
 | 14 | [Longest Common Prefix](00xx/14.md) | 🟢 Easy | 1m 24s | The problem gives an array of strings and asks us to find the longe… |
-| 15 | [3Sum](00xx/15.md) | 🟡 Medium | 1m 33s | The problem asks us to find all unique triplets in an integer array… |
-| 16 | [3Sum Closest](00xx/16.md) | 🟡 Medium | 1m 18s | The problem asks us to find three numbers in the array whose sum is… |
-| 17 | [Letter Combinations of a Phone Number](00xx/17.md) | 🟡 Medium | 1m 46s | The problem gives us a string of digits where each digit is between… |
+| 15 | [3Sum](00xx/15.md) | 🟡 Medium | 1m 43s | The problem gives us an integer array nums, and we need to find eve… |
+| 16 | [3Sum Closest](00xx/16.md) | 🟡 Medium | 1m 12s | The problem gives us an integer array nums and a target integer tar… |
+| 17 | [Letter Combinations of a Phone Number](00xx/17.md) | 🟡 Medium | 3m 42s | The problem gives a string of digits where each digit is between 2 … |
 | 18 | [4Sum](00xx/18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
-| 19 | [Remove Nth Node From End of List](00xx/19.md) | 🟡 Medium | 1m 11s | The problem gives us the head of a singly linked list and an intege… |
-| 20 | [Valid Parentheses](00xx/20.md) | 🟢 Easy | 1m 15s | The problem asks us to determine whether a string containing only b… |
-| 21 | [Merge Two Sorted Lists](00xx/21.md) | 🟢 Easy | 1m 33s | This problem asks us to merge two already sorted singly linked list… |
-| 22 | [Generate Parentheses](00xx/22.md) | 🟡 Medium | 2m 41s | The problem asks us to generate every possible valid combination of… |
-| 23 | [Merge k Sorted Lists](00xx/23.md) | 🔴 Hard | 2m 6s | The problem gives us an array named lists, where each element is th… |
-| 24 | [Swap Nodes in Pairs](00xx/24.md) | 🟡 Medium | 1m 3s | This problem asks us to modify a singly linked list so that every p… |
+| 19 | [Remove Nth Node From End of List](00xx/19.md) | 🟡 Medium | 1m 7s | This problem asks us to remove the nth node counted from the end of… |
+| 20 | [Valid Parentheses](00xx/20.md) | 🟢 Easy | 1m 6s | The problem gives a string containing only six possible characters:… |
+| 21 | [Merge Two Sorted Lists](00xx/21.md) | 🟢 Easy | 2m 51s | This problem asks us to merge two already sorted singly linked list… |
+| 22 | [Generate Parentheses](00xx/22.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every possible valid combination of… |
+| 23 | [Merge k Sorted Lists](00xx/23.md) | 🔴 Hard | 1m 14s | The problem gives us an array of k sorted linked lists. Each linked… |
+| 24 | [Swap Nodes in Pairs](00xx/24.md) | 🟡 Medium | 2m 58s | The problem gives us the head of a singly linked list and asks us t… |
 | 25 | [Reverse Nodes in k-Group](00xx/25.md) | 🔴 Hard | 1m 25s | This problem asks us to reverse a linked list in groups of size k. … |
-| 26 | [Remove Duplicates from Sorted Array](00xx/26.md) | 🟢 Easy | 3m 8s | This problem asks us to modify a sorted integer array in-place so t… |
-| 27 | [Remove Element](00xx/27.md) | 🟢 Easy | 3m 3s | The problem asks us to remove all occurrences of a specific value, … |
+| 26 | [Remove Duplicates from Sorted Array](00xx/26.md) | 🟢 Easy | 1m 55s | The problem gives us a sorted integer array nums in non-decreasing … |
+| 27 | [Remove Element](00xx/27.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and a target value val. … |
 | 28 | [Find the Index of the First Occurrence in a String](00xx/28.md) | 🟢 Easy | 1m 21s | The problem asks us to find the first position where the string nee… |
-| 29 | [Divide Two Integers](00xx/29.md) | 🟡 Medium | 1m 20s | This problem asks us to implement integer division manually, withou… |
+| 29 | [Divide Two Integers](00xx/29.md) | 🟡 Medium | 1m 29s | The problem asks us to implement integer division without using the… |
 | 30 | [Substring with Concatenation of All Words](00xx/30.md) | 🔴 Hard | 1m 46s | The problem gives us a string s and a list of words called words. E… |
-| 31 | [Next Permutation](00xx/31.md) | 🟡 Medium | 2m 53s | The problem asks us to rearrange an array of integers into its next… |
-| 32 | [Longest Valid Parentheses](00xx/32.md) | 🔴 Hard | 1m 52s | The problem gives a string containing only two characters, '(' and … |
-| 33 | [Search in Rotated Sorted Array](00xx/33.md) | 🟡 Medium | 1m 17s | The problem gives us an array of integers that was originally sorte… |
-| 34 | [Find First and Last Position of Element in Sorted Array](00xx/34.md) | 🟡 Medium | 1m 21s | This problem gives us a sorted integer array nums and a target valu… |
-| 35 | [Search Insert Position](00xx/35.md) | 🟢 Easy | 2m 55s | This problem gives us a sorted array of distinct integers and a tar… |
-| 36 | [Valid Sudoku](00xx/36.md) | 🟡 Medium | 2m 43s | The problem gives us a 9 x 9 Sudoku board that may be partially fil… |
-| 37 | [Sudoku Solver](00xx/37.md) | 🔴 Hard | 1m 32s | This problem asks us to solve a partially completed Sudoku board by… |
-| 38 | [Count and Say](00xx/38.md) | 🟡 Medium | 1m 2s | The problem asks us to generate the nth term in the "count-and-say"… |
-| 39 | [Combination Sum](00xx/39.md) | 🟡 Medium | 2m 19s | The problem gives us an array of distinct positive integers called … |
-| 40 | [Combination Sum II](00xx/40.md) | 🟡 Medium | 2m 19s | The problem asks us to find all unique combinations of numbers from… |
-| 41 | [First Missing Positive](00xx/41.md) | 🔴 Hard | 2m 31s | The problem asks us to find the smallest positive integer that does… |
-| 42 | [Trapping Rain Water](00xx/42.md) | 🔴 Hard | 2m 19s | This problem asks us to determine how much rainwater can be trapped… |
-| 43 | [Multiply Strings](00xx/43.md) | 🟡 Medium | 2m 29s | The problem asks us to multiply two non-negative integers where eac… |
-| 44 | [Wildcard Matching](00xx/44.md) | 🔴 Hard | 1m 18s | This problem asks us to determine whether an entire input string s … |
-| 45 | [Jump Game II](00xx/45.md) | 🟡 Medium | 1m 9s | The problem gives us an array nums where each element represents th… |
-| 46 | [Permutations](00xx/46.md) | 🟡 Medium | 58s | This problem asks us to generate every possible ordering of the num… |
-| 47 | [Permutations II](00xx/47.md) | 🟡 Medium | 1m 18s | This problem asks us to generate every possible permutation of the … |
-| 48 | [Rotate Image](00xx/48.md) | 🟡 Medium | 6m 20s | The problem gives us an n x n matrix that represents an image. Each… |
-| 49 | [Group Anagrams](00xx/49.md) | 🟡 Medium | 1m 36s | The problem asks us to take an array of strings and group together … |
-| 50 | [Pow(x, n)](00xx/50.md) | 🟡 Medium | 1m 19s | The problem asks us to implement a function that computes x raised … |
-| 51 | [N-Queens](00xx/51.md) | 🔴 Hard | 11m 42s | The problem asks us to place n queens on an n x n chessboard such t… |
+| 31 | [Next Permutation](00xx/31.md) | 🟡 Medium | 1m 8s | The problem asks us to modify an integer array so that it becomes t… |
+| 32 | [Longest Valid Parentheses](00xx/32.md) | 🔴 Hard | 1m 6s | The problem asks us to find the length of the longest contiguous su… |
+| 33 | [Search in Rotated Sorted Array](00xx/33.md) | 🟡 Medium | 1m 14s | The problem gives us an array that was originally sorted in ascendi… |
+| 34 | [Find First and Last Position of Element in Sorted Array](00xx/34.md) | 🟡 Medium | 1m 9s | The problem gives us a sorted integer array nums and a target value… |
+| 35 | [Search Insert Position](00xx/35.md) | 🟢 Easy | 1m 5s | The problem gives us a sorted array of distinct integers and a targ… |
+| 36 | [Valid Sudoku](00xx/36.md) | 🟡 Medium | 1m 21s | This problem asks us to validate whether a partially filled Sudoku … |
+| 37 | [Sudoku Solver](00xx/37.md) | 🔴 Hard | 1m 30s | The problem asks us to build a complete Sudoku solver. We are given… |
+| 38 | [Count and Say](00xx/38.md) | 🟡 Medium | 1m 10s | The problem asks us to generate the nth term of the "count-and-say"… |
+| 39 | [Combination Sum](00xx/39.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every possible unique combination … |
+| 40 | [Combination Sum II](00xx/40.md) | 🟡 Medium | 1m 28s | This problem asks us to find all unique combinations of numbers fro… |
+| 41 | [First Missing Positive](00xx/41.md) | 🔴 Hard | 1m 24s | The problem asks us to find the smallest positive integer that does… |
+| 42 | [Trapping Rain Water](00xx/42.md) | 🔴 Hard | 1m 25s | The problem gives an array called height, where each element repres… |
+| 43 | [Multiply Strings](00xx/43.md) | 🟡 Medium | 1m 33s | The problem asks us to multiply two non-negative integers where eac… |
+| 44 | [Wildcard Matching](00xx/44.md) | 🔴 Hard | 1m 36s | This problem asks us to determine whether an entire input string s … |
+| 45 | [Jump Game II](00xx/45.md) | 🟡 Medium | 1m 5s | The problem gives an array nums where each value represents the max… |
+| 46 | [Permutations](00xx/46.md) | 🟡 Medium | 1m 15s | The problem gives us an array of distinct integers called nums, and… |
+| 47 | [Permutations II](00xx/47.md) | 🟡 Medium | 1m 44s | The problem asks us to generate every possible permutation of the g… |
+| 48 | [Rotate Image](00xx/48.md) | 🟡 Medium | 1m 26s | The problem gives us an n x n square matrix that represents an imag… |
+| 49 | [Group Anagrams](00xx/49.md) | 🟡 Medium | 1m 38s | The problem asks us to group together all strings that are anagrams… |
+| 50 | [Pow(x, n)](00xx/50.md) | 🟡 Medium | 1m 26s | The problem asks us to implement exponentiation manually, specifica… |
+| 51 | [N-Queens](00xx/51.md) | 🔴 Hard | 3m 41s | The N-Queens problem asks us to place n queens on an n x n chessboa… |
 | 52 | [N-Queens II](00xx/52.md) | 🔴 Hard | 12m 17s | The problem asks us to count how many valid ways we can place n que… |
 | 53 | [Maximum Subarray](00xx/53.md) | 🟡 Medium | 12m 17s | The problem gives an integer array nums and asks us to find the con… |
-| 54 | [Spiral Matrix](00xx/54.md) | 🟡 Medium | 1m 6s | The problem asks us to traverse a two dimensional matrix in spiral … |
-| 55 | [Jump Game](00xx/55.md) | 🟡 Medium | 2m 19s | The problem gives us an integer array nums, where each element repr… |
-| 56 | [Merge Intervals](00xx/56.md) | 🟡 Medium | 1m 46s | The problem gives an array of intervals, where each interval is rep… |
-| 57 | [Insert Interval](00xx/57.md) | 🟡 Medium | 2m 19s | This problem asks us to insert a new interval into an already sorte… |
-| 58 | [Length of Last Word](00xx/58.md) | 🟢 Easy | 52s | This problem asks us to find the length of the final word in a stri… |
-| 59 | [Spiral Matrix II](00xx/59.md) | 🟡 Medium | 1m 16s | This problem asks us to generate an n x n square matrix and fill it… |
-| 60 | [Permutation Sequence](00xx/60.md) | 🔴 Hard | 1m 20s | This problem asks us to find the kth permutation of the numbers fro… |
-| 61 | [Rotate List](00xx/61.md) | 🟡 Medium | 56s | This problem asks us to rotate a singly linked list to the right by… |
+| 54 | [Spiral Matrix](00xx/54.md) | 🟡 Medium | 1m 8s | The problem gives an m x n matrix and asks us to return all element… |
+| 55 | [Jump Game](00xx/55.md) | 🟡 Medium | 1m 44s | The problem gives us an integer array nums, where each value repres… |
+| 56 | [Merge Intervals](00xx/56.md) | 🟡 Medium | 1m 30s | The problem gives an array of intervals, where each interval is rep… |
+| 57 | [Insert Interval](00xx/57.md) | 🟡 Medium | 1m 15s | The problem gives us a list of intervals that are already sorted by… |
+| 58 | [Length of Last Word](00xx/58.md) | 🟢 Easy | 1m 14s | The problem gives us a string s that contains English letters and s… |
+| 59 | [Spiral Matrix II](00xx/59.md) | 🟡 Medium | 1m 34s | The problem asks us to generate an n x n matrix and fill it with nu… |
+| 60 | [Permutation Sequence](00xx/60.md) | 🔴 Hard | 5m 16s | The problem gives us the numbers from 1 to n, and asks us to find t… |
+| 61 | [Rotate List](00xx/61.md) | 🟡 Medium | 1m 11s | This problem asks us to rotate a singly linked list to the right by… |
 | 62 | [Unique Paths](00xx/62.md) | 🟡 Medium | 1m 10s | The problem describes a robot moving on a rectangular m x n grid. T… |
-| 63 | [Unique Paths II](00xx/63.md) | 🟡 Medium | 55s | This problem asks us to count how many different valid ways a robot… |
-| 64 | [Minimum Path Sum](00xx/64.md) | 🟡 Medium | 1m 11s | The problem gives us a two dimensional grid of non negative integer… |
-| 65 | [Valid Number](00xx/65.md) | 🔴 Hard | 2m 8s | This problem asks us to determine whether a given string represents… |
-| 66 | [Plus One](00xx/66.md) | 🟢 Easy | 2m 20s | The problem gives us a non-negative integer represented as an array… |
+| 63 | [Unique Paths II](00xx/63.md) | 🟡 Medium | 1m 22s | This problem asks us to count how many different valid paths exist … |
+| 64 | [Minimum Path Sum](00xx/64.md) | 🟡 Medium | 2m 24s | The problem gives us a two dimensional grid of size m x n, where ea… |
+| 65 | [Valid Number](00xx/65.md) | 🔴 Hard | 2m 46s | This is a comprehensive, multi section technical guide that will be… |
+| 66 | [Plus One](00xx/66.md) | 🟢 Easy | 2m 21s | The problem gives us a non-empty array of digits that together repr… |
 | 67 | [Add Binary](00xx/67.md) | 🟢 Easy | 1m 12s | The problem gives us two strings, a and b, where each string repres… |
 | 68 | [Text Justification](00xx/68.md) | 🔴 Hard | 1m 2s | The problem asks us to format a sequence of words into fully justif… |
 | 69 | [Sqrt(x)](00xx/69.md) | 🟢 Easy | 1m 10s | The problem asks us to compute the integer square root of a non-neg… |
@@ -225,4 +225,69 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 208 | [Implement Trie (Prefix Tree)](02xx/208.md) | 🟡 Medium | 1m 14s | The problem asks us to design and implement a Trie, also called a P… |
 | 209 | [Minimum Size Subarray Sum](02xx/209.md) | 🟡 Medium | 1m 17s | The problem gives us an array of positive integers called nums and … |
 | 210 | [Course Schedule II](02xx/210.md) | 🟡 Medium | 1m 14s | This problem asks us to determine a valid order in which courses ca… |
+| 211 | [Design Add and Search Words Data Structure](02xx/211.md) | 🟡 Medium | 3m 26s | The problem asks us to design a data structure that supports two op… |
+| 212 | [Word Search II](02xx/212.md) | 🔴 Hard | 1m 39s | LeetCode 212, LeetCode Word Search II, asks us to find every word f… |
 | 213 | [House Robber II](02xx/213.md) | 🟡 Medium | 1m 20s | This problem is a variation of the classic House Robber dynamic pro… |
+| 214 | [Shortest Palindrome](02xx/214.md) | 🔴 Hard | 1m 8s | The problem gives a string s and asks us to create the shortest pos… |
+| 215 | [Kth Largest Element in an Array](02xx/215.md) | 🟡 Medium | 3m 9s | The problem asks us to find the kth largest element in an unsorted … |
+| 216 | [Combination Sum III](02xx/216.md) | 🟡 Medium | 2m 21s | This problem asks us to generate all unique combinations of exactly… |
+| 217 | [Contains Duplicate](02xx/217.md) | 🟢 Easy | 2m 55s | The problem gives an integer array nums and asks whether any number… |
+| 218 | [The Skyline Problem](02xx/218.md) | 🔴 Hard | 2m 23s | The Skyline Problem asks us to compute the visible outer contour fo… |
+| 219 | [Contains Duplicate II](02xx/219.md) | 🟢 Easy | 2m 19s | The problem asks us to determine whether an array contains two equa… |
+| 220 | [Contains Duplicate III](02xx/220.md) | 🔴 Hard | 3m 23s | The problem asks whether there exists a pair of different indices (… |
+| 221 | [Maximal Square](02xx/221.md) | 🟡 Medium | 1m 25s | The problem gives us a two dimensional binary matrix where each cel… |
+| 222 | [Count Complete Tree Nodes](02xx/222.md) | 🟢 Easy | 1m 21s | The problem asks us to count how many nodes exist in a complete bin… |
+| 223 | [Rectangle Area](02xx/223.md) | 🟡 Medium | 1m 32s | The problem gives the coordinates of two axis-aligned rectangles on… |
+| 224 | [Basic Calculator](02xx/224.md) | 🔴 Hard | 1m 38s | The problem gives us a string representing a mathematical expressio… |
+| 225 | [Implement Stack using Queues](02xx/225.md) | 🟢 Easy | 2m 26s | The problem asks us to implement a stack data structure while using… |
+| 226 | [Invert Binary Tree](02xx/226.md) | 🟢 Easy | 2m 53s | The problem gives the root node of a binary tree and asks us to inv… |
+| 227 | [Basic Calculator II](02xx/227.md) | 🟡 Medium | 1m 21s | The problem gives us a string representing a mathematical expressio… |
+| 228 | [Summary Ranges](02xx/228.md) | 🟢 Easy | 1m 6s | The problem gives us a sorted array of unique integers and asks us … |
+| 229 | [Majority Element II](02xx/229.md) | 🟡 Medium | 2m 20s | The problem asks us to find every element in an integer array that … |
+| 230 | [Kth Smallest Element in a BST](02xx/230.md) | 🟡 Medium | 1m 2s | This problem gives us the root of a Binary Search Tree, abbreviated… |
+| 231 | [Power of Two](02xx/231.md) | 🟢 Easy | 51s | The problem asks us to determine whether a given integer n is a pow… |
+| 232 | [Implement Queue using Stacks](02xx/232.md) | 🟢 Easy | 1m 22s | The problem asks us to implement a queue using only stack operation… |
+| 233 | [Number of Digit One](02xx/233.md) | 🔴 Hard | 2m 2s | Given a non-negative integer n, we must count how many times the di… |
+| 234 | [Palindrome Linked List](02xx/234.md) | 🟢 Easy | 2m 45s | The problem gives us the head of a singly linked list and asks whet… |
+| 235 | [Lowest Common Ancestor of a Binary Search Tree](02xx/235.md) | 🟡 Medium | 1m 1s | The problem asks us to find the Lowest Common Ancestor, commonly ab… |
+| 236 | [Lowest Common Ancestor of a Binary Tree](02xx/236.md) | 🟡 Medium | 2m 13s | The problem asks us to find the Lowest Common Ancestor, usually abb… |
+| 237 | [Delete Node in a Linked List](02xx/237.md) | 🟡 Medium | 57s | This problem asks us to delete a node from a singly linked list, bu… |
+| 238 | [Product of Array Except Self](02xx/238.md) | 🟡 Medium | 1m 4s | The problem gives an integer array nums, and for every index i, we … |
+| 239 | [Sliding Window Maximum](02xx/239.md) | 🔴 Hard | 2m 34s | The problem gives us an integer array nums and a window size k. A s… |
+| 240 | [Search a 2D Matrix II](02xx/240.md) | 🟡 Medium | 1m 16s | The problem asks us to determine whether a given integer target exi… |
+| 241 | [Different Ways to Add Parentheses](02xx/241.md) | 🟡 Medium | 1m 12s | The problem gives us a mathematical expression as a string containi… |
+| 242 | [Valid Anagram](02xx/242.md) | 🟢 Easy | 1m 16s | The problem asks us to determine whether two strings are anagrams o… |
+| 243 | [Shortest Word Distance](02xx/243.md) | 🟢 Easy | 1m 17s | The problem gives us an array of strings called wordsDict, along wi… |
+| 244 | [Shortest Word Distance II](02xx/244.md) | 🟡 Medium | 1m 25s | This problem asks us to design a reusable data structure that can e… |
+| 245 | [Shortest Word Distance III](02xx/245.md) | 🟡 Medium | 1m 16s | The problem gives us an array of strings, wordsDict, and two target… |
+| 246 | [Strobogrammatic Number](02xx/246.md) | 🟢 Easy | 58s | The problem asks us to determine whether a given numeric string rem… |
+| 247 | [Strobogrammatic Number II](02xx/247.md) | 🟡 Medium | 2m 20s | The problem asks us to generate every strobogrammatic number of a g… |
+| 248 | [Strobogrammatic Number III](02xx/248.md) | 🔴 Hard | 2m 19s | The problem asks us to count how many numbers within the inclusive … |
+| 249 | [Group Shifted Strings](02xx/249.md) | 🟡 Medium | 2m 36s | The problem asks us to group strings that belong to the same cyclic… |
+| 250 | [Count Univalue Subtrees](02xx/250.md) | 🟡 Medium | 1m 6s | The problem asks us to count how many subtrees in a binary tree are… |
+| 251 | [Flatten 2D Vector](02xx/251.md) | 🟡 Medium | 1m 28s | The problem asks us to design an iterator that traverses a two dime… |
+| 252 | [Meeting Rooms](02xx/252.md) | 🟢 Easy | 1m 3s | The problem provides a list of meeting intervals, where each interv… |
+| 253 | [Meeting Rooms II](02xx/253.md) | 🟡 Medium | 5m 31s | The problem gives us a list of meeting intervals where each interva… |
+| 254 | [Factor Combinations](02xx/254.md) | 🟡 Medium | 1m 20s | The problem asks us to generate every unique way to express a numbe… |
+| 255 | [Verify Preorder Sequence in Binary Search Tree](02xx/255.md) | 🟡 Medium | 1m 25s | The problem gives an array of unique integers called preorder. This… |
+| 256 | [Paint House](02xx/256.md) | 🟡 Medium | 1m 11s | The problem gives us a row of houses, where each house must be pain… |
+| 257 | [Binary Tree Paths](02xx/257.md) | 🟢 Easy | 1m 17s | The problem asks us to return every path from the root of a binary … |
+| 258 | [Add Digits](02xx/258.md) | 🟢 Easy | 1m 24s | The problem asks us to repeatedly transform a number by summing its… |
+| 259 | [3Sum Smaller](02xx/259.md) | 🟡 Medium | 1m 38s | The problem asks us to count how many distinct index triplets (i, j… |
+| 260 | [Single Number III](02xx/260.md) | 🟡 Medium | 4m 36s | The problem gives an integer array nums where every value appears e… |
+| 263 | [Ugly Number](02xx/263.md) | 🟢 Easy | 1m 34s | The problem asks us to determine whether a given integer n is an ug… |
+| 264 | [Ugly Number II](02xx/264.md) | 🟡 Medium | 1m 23s | The problem asks us to generate the sequence of ugly numbers and re… |
+| 265 | [Paint House II](02xx/265.md) | 🔴 Hard | 1m 25s | The problem gives us a matrix called costs, where costs[i][j] repre… |
+| 266 | [Palindrome Permutation](02xx/266.md) | 🟢 Easy | 1m 49s | The problem asks whether the characters of a given string can be re… |
+| 267 | [Palindrome Permutation II](02xx/267.md) | 🟡 Medium | 1m 38s | The problem asks us to generate every unique palindrome that can be… |
+| 268 | [Missing Number](02xx/268.md) | 🟢 Easy | 1m 20s | The problem gives an array nums containing n distinct integers. Eve… |
+| 269 | [Alien Dictionary](02xx/269.md) | 🔴 Hard | 2m 28s | This problem asks us to reconstruct the ordering of characters in a… |
+| 270 | [Closest Binary Search Tree Value](02xx/270.md) | 🟢 Easy | 1m 57s | The problem gives us the root of a Binary Search Tree, abbreviated … |
+| 271 | [Encode and Decode Strings](02xx/271.md) | 🟡 Medium | 1m 51s | The problem asks us to design a reversible encoding system for a li… |
+| 272 | [Closest Binary Search Tree Value II](02xx/272.md) | 🔴 Hard | 1m 30s | This problem asks us to find the k values in a Binary Search Tree, … |
+| 273 | [Integer to English Words](02xx/273.md) | 🔴 Hard | 2m 32s | The problem asks us to convert a non-negative integer into its Engl… |
+| 274 | [H-Index](02xx/274.md) | 🟡 Medium | 1m 17s | The problem gives an array called citations, where each element rep… |
+| 275 | [H-Index II](02xx/275.md) | 🟡 Medium | 1m 5s | This problem asks us to compute a researcher's h-index from a sorte… |
+| 276 | [Paint Fence](02xx/276.md) | 🟡 Medium | 58s | The problem gives us a fence with n posts and k available colors. E… |
+| 277 | [Find the Celebrity](02xx/277.md) | 🟡 Medium | 2m 14s | This problem asks us to identify whether there is a "celebrity" amo… |
+| 278 | [First Bad Version](02xx/278.md) | 🟢 Easy | 2m 28s | The problem gives us a sequence of product versions numbered from 1… |

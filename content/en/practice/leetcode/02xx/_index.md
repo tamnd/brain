@@ -57,9 +57,9 @@ draft: false
 | 244 | [Shortest Word Distance II](244.md) | 🟡 Medium | 1m 25s | This problem asks us to design a reusable data structure that can e… |
 | 245 | [Shortest Word Distance III](245.md) | 🟡 Medium | 1m 16s | The problem gives us an array of strings, wordsDict, and two target… |
 | 246 | [Strobogrammatic Number](246.md) | 🟢 Easy | 58s | The problem asks us to determine whether a given numeric string rem… |
-| 247 | [Strobogrammatic Number II](247.md) | 🟡 Medium | 1m 13s | The problem asks us to generate all strobogrammatic numbers of a gi… |
-| 248 | [Strobogrammatic Number III](248.md) | 🔴 Hard | 3m 35s | Difficulty: Hard Topics: Array, String, Recursion This problem asks… |
-| 249 | [Group Shifted Strings](249.md) | 🟡 Medium | 1m 12s | The problem asks us to group strings that belong to the same cyclic… |
+| 247 | [Strobogrammatic Number II](247.md) | 🟡 Medium | 2m 20s | The problem asks us to generate every strobogrammatic number of a g… |
+| 248 | [Strobogrammatic Number III](248.md) | 🔴 Hard | 2m 19s | The problem asks us to count how many numbers within the inclusive … |
+| 249 | [Group Shifted Strings](249.md) | 🟡 Medium | 2m 36s | The problem asks us to group strings that belong to the same cyclic… |
 | 250 | [Count Univalue Subtrees](250.md) | 🟡 Medium | 1m 6s | The problem asks us to count how many subtrees in a binary tree are… |
 | 251 | [Flatten 2D Vector](251.md) | 🟡 Medium | 1m 28s | The problem asks us to design an iterator that traverses a two dime… |
 | 252 | [Meeting Rooms](252.md) | 🟢 Easy | 1m 3s | The problem provides a list of meeting intervals, where each interv… |
@@ -85,3 +85,5 @@ draft: false
 | 274 | [H-Index](274.md) | 🟡 Medium | 1m 17s | The problem gives an array called citations, where each element rep… |
 | 275 | [H-Index II](275.md) | 🟡 Medium | 1m 5s | This problem asks us to compute a researcher's h-index from a sorte… |
 | 276 | [Paint Fence](276.md) | 🟡 Medium | 58s | The problem gives us a fence with n posts and k available colors. E… |
+| 277 | [Find the Celebrity](277.md) | 🟡 Medium | 2m 14s | This problem asks us to identify whether there is a "celebrity" amo… |
+| 278 | [First Bad Version](278.md) | 🟢 Easy | 2m 28s | The problem gives us a sequence of product versions numbered from 1… |
