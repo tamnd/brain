@@ -160,32 +160,32 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 143 | [Reorder List](01xx/143.md) | 🟡 Medium | 1m 34s | The problem gives us the head of a singly linked list and asks us t… |
 | 144 | [Binary Tree Preorder Traversal](01xx/144.md) | 🟢 Easy | 58s | This problem asks us to perform a preorder traversal on a binary tr… |
 | 145 | [Binary Tree Postorder Traversal](01xx/145.md) | 🟢 Easy | 1m 26s | The problem asks us to return the postorder traversal of a binary t… |
-| 146 | [LRU Cache](01xx/146.md) | 🟡 Medium | 2m 22s | This problem asks us to design an efficient cache system that follo… |
-| 147 | [Insertion Sort List](01xx/147.md) | 🟡 Medium | 3m 43s | The problem asks us to sort a singly linked list using the insertio… |
-| 148 | [Sort List](01xx/148.md) | 🟡 Medium | 1m 8s | The problem gives us the head of a singly linked list and asks us t… |
-| 149 | [Max Points on a Line](01xx/149.md) | 🔴 Hard | 1m 24s | This problem asks us to determine the maximum number of points that… |
-| 150 | [Evaluate Reverse Polish Notation](01xx/150.md) | 🟡 Medium | 1m 6s | This problem asks us to evaluate an arithmetic expression written i… |
-| 151 | [Reverse Words in a String](01xx/151.md) | 🟡 Medium | 2m 52s | This problem asks us to reverse the order of words in a string whil… |
-| 152 | [Maximum Product Subarray](01xx/152.md) | 🟡 Medium | 2m 19s | The problem gives an integer array nums and asks us to find the con… |
-| 153 | [Find Minimum in Rotated Sorted Array](01xx/153.md) | 🟡 Medium | 3m 26s | The problem gives us an array that was originally sorted in ascendi… |
-| 154 | [Find Minimum in Rotated Sorted Array II](01xx/154.md) | 🔴 Hard | 58s | This problem gives us an array that was originally sorted in ascend… |
-| 155 | [Min Stack](01xx/155.md) | 🟡 Medium | 52s | This problem asks us to design a stack data structure that supports… |
-| 156 | [Binary Tree Upside Down](01xx/156.md) | 🟡 Medium | 1m 35s | This problem asks us to transform a binary tree into a new structur… |
-| 157 | [Read N Characters Given Read4](01xx/157.md) | 🟢 Easy | 2m 59s | This problem asks us to implement a custom read function using a li… |
-| 158 | [Read N Characters Given read4 II - Call Multiple Times](01xx/158.md) | 🔴 Hard | 1m | This problem asks us to implement a custom read(buf, n) function us… |
-| 159 | [Longest Substring with At Most Two Distinct Characters](01xx/159.md) | 🟡 Medium | 58s | The problem asks us to find the length of the longest contiguous su… |
+| 146 | [LRU Cache](01xx/146.md) | 🟡 Medium | 1m 24s | The problem asks us to design an efficient cache that follows the L… |
+| 147 | [Insertion Sort List](01xx/147.md) | 🟡 Medium | 1m 23s | The problem asks us to sort a singly linked list using the insertio… |
+| 148 | [Sort List](01xx/148.md) | 🟡 Medium | 1m 11s | The problem asks us to sort a singly linked list in ascending order… |
+| 149 | [Max Points on a Line](01xx/149.md) | 🔴 Hard | 1m 43s | The problem gives us a list of points on a 2D coordinate plane. Eac… |
+| 150 | [Evaluate Reverse Polish Notation](01xx/150.md) | 🟡 Medium | 1m 18s | This problem asks us to evaluate an arithmetic expression written i… |
+| 151 | [Reverse Words in a String](01xx/151.md) | 🟡 Medium | 33s | The problem asks us to take a string s containing words separated b… |
+| 152 | [Maximum Product Subarray](01xx/152.md) | 🟡 Medium | 1m 12s | The problem asks us to find the contiguous subarray within an integ… |
+| 153 | [Find Minimum in Rotated Sorted Array](01xx/153.md) | 🟡 Medium | 1m | This problem asks us to find the smallest element in a sorted array… |
+| 154 | [Find Minimum in Rotated Sorted Array II](01xx/154.md) | 🔴 Hard | 1m 1s | This problem asks us to find the minimum value in a sorted array th… |
+| 155 | [Min Stack](01xx/155.md) | 🟡 Medium | 1m 5s | The problem asks us to design a custom stack data structure that be… |
+| 156 | [Binary Tree Upside Down](01xx/156.md) | 🟡 Medium | 32s | The problem asks us to transform a binary tree into its "upside-dow… |
+| 157 | [Read N Characters Given Read4](01xx/157.md) | 🟢 Easy | 1m 13s | This problem asks us to implement a read function using a restricte… |
+| 158 | [Read N Characters Given read4 II - Call Multiple Times](01xx/158.md) | 🔴 Hard | 1m 1s | This problem asks us to implement a read(buf, n) function using a r… |
+| 159 | [Longest Substring with At Most Two Distinct Characters](01xx/159.md) | 🟡 Medium | 1m 12s | The problem asks us to find the length of the longest contiguous su… |
 | 160 | [Intersection of Two Linked Lists](01xx/160.md) | 🟢 Easy | 59s | This problem asks us to determine whether two singly linked lists i… |
-| 161 | [One Edit Distance](01xx/161.md) | 🟡 Medium | 51s | This problem asks us to determine whether two strings are exactly o… |
-| 162 | [Find Peak Element](01xx/162.md) | 🟡 Medium | 1m | This problem asks us to find the index of any "peak" element in an … |
-| 163 | [Missing Ranges](01xx/163.md) | 🟢 Easy | 2m | The problem gives us three inputs: - A sorted array nums containing… |
+| 161 | [One Edit Distance](01xx/161.md) | 🟡 Medium | 1m 7s | The problem asks us to determine whether two strings are exactly on… |
+| 162 | [Find Peak Element](01xx/162.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums and asks us to find the … |
+| 163 | [Missing Ranges](01xx/163.md) | 🟢 Easy | 1m 11s | This problem gives us three inputs: - A sorted array nums - A lower… |
 | 164 | [Maximum Gap](01xx/164.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the largest difference between two c… |
-| 165 | [Compare Version Numbers](01xx/165.md) | 🟡 Medium | 59s | The problem asks us to compare two version numbers represented as s… |
-| 166 | [Fraction to Recurring Decimal](01xx/166.md) | 🟡 Medium | 1m 1s | This problem asks us to convert a fraction, represented by a numera… |
-| 167 | [Two Sum II - Input Array Is Sorted](01xx/167.md) | 🟡 Medium | 1m 1s | The problem gives us a sorted integer array called numbers and a ta… |
+| 165 | [Compare Version Numbers](01xx/165.md) | 🟡 Medium | 59s | This problem asks us to compare two software version numbers repres… |
+| 166 | [Fraction to Recurring Decimal](01xx/166.md) | 🟡 Medium | 1m 5s | This problem asks us to convert a fraction, represented by an integ… |
+| 167 | [Two Sum II - Input Array Is Sorted](01xx/167.md) | 🟡 Medium | 1m 1s | This problem gives us a sorted, 1-indexed array of integers called … |
 | 168 | [Excel Sheet Column Title](01xx/168.md) | 🟢 Easy | 1m | The problem asks us to convert a positive integer into the column n… |
-| 169 | [Majority Element](01xx/169.md) | 🟢 Easy | 52s | This problem asks us to find the majority element in an integer arr… |
-| 170 | [Two Sum III - Data structure design](01xx/170.md) | 🟢 Easy | 1m 4s | The problem asks us to design a reusable data structure that contin… |
-| 171 | [Excel Sheet Column Number](01xx/171.md) | 🟢 Easy | 1m 14s | This problem asks us to convert an Excel-style column title into it… |
+| 169 | [Majority Element](01xx/169.md) | 🟢 Easy | 30s | The problem asks us to identify the majority element in a given arr… |
+| 170 | [Two Sum III - Data structure design](01xx/170.md) | 🟢 Easy | 1m 6s | The problem asks us to design a data structure that supports two op… |
+| 171 | [Excel Sheet Column Number](01xx/171.md) | 🟢 Easy | 1m 3s | This problem asks us to convert an Excel-style column title into it… |
 | 172 | [Factorial Trailing Zeroes](01xx/172.md) | 🟡 Medium | 46s | The problem asks us to determine how many trailing zeroes appear at… |
 | 173 | [Binary Search Tree Iterator](01xx/173.md) | 🟡 Medium | 1m 5s | This problem asks us to design an iterator for a Binary Search Tree… |
 | 174 | [Dungeon Game](01xx/174.md) | 🔴 Hard | 1m 29s | This problem asks us to determine the minimum initial health a knig… |
@@ -411,7 +411,71 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 394 | [Decode String](03xx/394.md) | 🟡 Medium | 1m 15s | The problem gives us a string that contains encoded patterns of the… |
 | 395 | [Longest Substring with At Least K Repeating Characters](03xx/395.md) | 🟡 Medium | 1m 14s | The problem asks us to find the length of the longest substring in … |
 | 396 | [Rotate Function](03xx/396.md) | 🟡 Medium | 1m 19s | The problem defines a special value called the rotation function fo… |
-| 397 | [Integer Replacement](03xx/397.md) | 🟡 Medium | 41s | The problem asks us to reduce a given positive integer n to 1 using… |
-| 398 | [Random Pick Index](03xx/398.md) | 🟡 Medium | 34s | The problem requires designing a data structure that allows random … |
-| 399 | [Evaluate Division](03xx/399.md) | 🟡 Medium | 1m 22s | This problem gives us a collection of mathematical relationships be… |
-| 400 | [Nth Digit](04xx/400.md) | 🟡 Medium | 37s | The problem asks us to find the nth digit in an infinitely long seq… |
+| 397 | [Integer Replacement](03xx/397.md) | 🟡 Medium | 1m 19s | The problem gives us a positive integer n and asks for the minimum … |
+| 398 | [Random Pick Index](03xx/398.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums that may contain duplica… |
+| 399 | [Evaluate Division](03xx/399.md) | 🟡 Medium | 1m 24s | This problem gives us a collection of equations between variables, … |
+| 400 | [Nth Digit](04xx/400.md) | 🟡 Medium | 1m 15s | The problem asks us to find the digit that appears at position n in… |
+| 401 | [Binary Watch](04xx/401.md) | 🟢 Easy | 1m 17s | The problem describes a binary watch that uses LEDs to represent ti… |
+| 402 | [Remove K Digits](04xx/402.md) | 🟡 Medium | 1m 26s | The problem gives us a numeric string num and an integer k. We must… |
+| 403 | [Frog Jump](04xx/403.md) | 🔴 Hard | 1m 17s | The problem describes a frog trying to cross a river by jumping acr… |
+| 404 | [Sum of Left Leaves](04xx/404.md) | 🟢 Easy | 1m 4s | The problem gives us the root node of a binary tree and asks us to … |
+| 405 | [Convert a Number to Hexadecimal](04xx/405.md) | 🟢 Easy | 40s | The problem asks us to convert a given 32-bit integer num into its … |
+| 406 | [Queue Reconstruction by Height](04xx/406.md) | 🟡 Medium | 1m 5s | This problem gives us a list of people where each person is represe… |
+| 407 | [Trapping Rain Water II](04xx/407.md) | 🔴 Hard | 1m 22s | This problem is the two dimensional version of the classic "Trappin… |
+| 408 | [Valid Word Abbreviation](04xx/408.md) | 🟢 Easy | 1m 26s | In this problem, we are given two strings: - word, the original ful… |
+| 409 | [Longest Palindrome](04xx/409.md) | 🟢 Easy | 38s | The problem asks us to find the length of the longest palindrome th… |
+| 410 | [Split Array Largest Sum](04xx/410.md) | 🔴 Hard | 1m 22s | The problem gives an integer array nums and an integer k. We must d… |
+| 411 | [Minimum Unique Word Abbreviation](04xx/411.md) | 🔴 Hard | 1m 10s | This problem asks us to generate the shortest possible abbreviation… |
+| 412 | [Fizz Buzz](04xx/412.md) | 🟢 Easy | 1m 27s | The problem asks us to generate a list of strings for all integers … |
+| 413 | [Arithmetic Slices](04xx/413.md) | 🟡 Medium | 1m 24s | The problem asks us to count how many contiguous subarrays of lengt… |
+| 414 | [Third Maximum Number](04xx/414.md) | 🟢 Easy | 1m 23s | The problem asks us to find the third distinct maximum number in an… |
+| 415 | [Add Strings](04xx/415.md) | 🟢 Easy | 1m 10s | The problem asks us to add two non-negative integers where each int… |
+| 416 | [Partition Equal Subset Sum](04xx/416.md) | 🟡 Medium | 1m 4s | The problem asks whether an array of positive integers can be divid… |
+| 417 | [Pacific Atlantic Water Flow](04xx/417.md) | 🟡 Medium | 1m 24s | The problem gives us a rectangular grid called heights, where each … |
+| 418 | [Sentence Screen Fitting](04xx/418.md) | 🟡 Medium | 1m 7s | The problem gives us a screen with a fixed number of rows and cols,… |
+| 419 | [Battleships in a Board](04xx/419.md) | 🟡 Medium | 1m | This problem gives us a two dimensional grid where each cell contai… |
+| 420 | [Strong Password Checker](04xx/420.md) | 🔴 Hard | 1m 21s | The problem asks us to determine the minimum number of operations r… |
+| 421 | [Maximum XOR of Two Numbers in an Array](04xx/421.md) | 🟡 Medium | 1m 29s | The problem gives us an array of non-negative integers called nums.… |
+| 422 | [Valid Word Square](04xx/422.md) | 🟢 Easy | 30s | The problem asks us to determine whether a given list of strings fo… |
+| 423 | [Reconstruct Original Digits from English](04xx/423.md) | 🟡 Medium | 40s | The problem asks us to reconstruct digits from a jumbled string of … |
+| 424 | [Longest Repeating Character Replacement](04xx/424.md) | 🟡 Medium | 1m 15s | The problem gives us a string s consisting only of uppercase Englis… |
+| 425 | [Word Squares](04xx/425.md) | 🔴 Hard | 39s | The problem is asking us to generate all possible word squares from… |
+| 426 | [Convert Binary Search Tree to Sorted Doubly Linked List](04xx/426.md) | 🟡 Medium | 1m 8s | The problem asks us to transform a Binary Search Tree, abbreviated … |
+| 427 | [Construct Quad Tree](04xx/427.md) | 🟡 Medium | 1m 23s | The problem asks us to convert a binary matrix into a Quad-Tree rep… |
+| 428 | [Serialize and Deserialize N-ary Tree](04xx/428.md) | 🔴 Hard | 1m 24s | LeetCode 428, LeetCode Serialize and Deserialize N-ary Tree, asks u… |
+| 429 | [N-ary Tree Level Order Traversal](04xx/429.md) | 🟡 Medium | 40s | The problem asks us to perform a level order traversal of an n-ary … |
+| 430 | [Flatten a Multilevel Doubly Linked List](04xx/430.md) | 🟡 Medium | 1m 24s | The problem gives us a special type of doubly linked list where eve… |
+| 431 | [Encode N-ary Tree to Binary Tree](04xx/431.md) | 🔴 Hard | 1m 29s | This problem asks us to design a reversible transformation between … |
+| 432 | [All O`one Data Structure](04xx/432.md) | 🔴 Hard | 1m 24s | The problem asks us to design a special data structure that stores … |
+| 433 | [Minimum Genetic Mutation](04xx/433.md) | 🟡 Medium | 1m 34s | The problem describes a mutation process between genetic sequences.… |
+| 434 | [Number of Segments in a String](04xx/434.md) | 🟢 Easy | 1m 1s | The problem asks us to count how many separate word-like groups exi… |
+| 435 | [Non-overlapping Intervals](04xx/435.md) | 🟡 Medium | 1m 28s | The problem gives an array of intervals where each interval is repr… |
+| 436 | [Find Right Interval](04xx/436.md) | 🟡 Medium | 44s | This problem asks us to find, for each interval in a list, the "rig… |
+| 437 | [Path Sum III](04xx/437.md) | 🟡 Medium | 1m 11s | The problem gives us the root of a binary tree and an integer targe… |
+| 438 | [Find All Anagrams in a String](04xx/438.md) | 🟡 Medium | 1m 21s | The problem gives two strings, s and p, both containing only lowerc… |
+| 439 | [Ternary Expression Parser](04xx/439.md) | 🟡 Medium | 1m 16s | The problem gives us a string representing a nested ternary express… |
+| 440 | [K-th Smallest in Lexicographical Order](04xx/440.md) | 🔴 Hard | 1m 19s | The problem asks us to find the k-th smallest number in lexicograph… |
+| 441 | [Arranging Coins](04xx/441.md) | 🟢 Easy | 1m 9s | The problem asks us to determine how many complete rows of a coin s… |
+| 442 | [Find All Duplicates in an Array](04xx/442.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums of length n, where every… |
+| 443 | [String Compression](04xx/443.md) | 🟡 Medium | 1m 4s | The problem asks us to perform in place string compression on an ar… |
+| 444 | [Sequence Reconstruction](04xx/444.md) | 🟡 Medium | 1m 21s | This problem asks us to determine whether the given array nums is b… |
+| 445 | [Add Two Numbers II](04xx/445.md) | 🟡 Medium | 1m 12s | The problem gives us two non-empty singly linked lists where each n… |
+| 446 | [Arithmetic Slices II - Subsequence](04xx/446.md) | 🔴 Hard | 1m 20s | The problem asks us to count how many arithmetic subsequences exist… |
+| 447 | [Number of Boomerangs](04xx/447.md) | 🟡 Medium | 1m 20s | The problem asks us to count the number of valid boomerangs among a… |
+| 448 | [Find All Numbers Disappeared in an Array](04xx/448.md) | 🟢 Easy | 54s | The problem asks us to find all the integers in the range [1, n] th… |
+| 449 | [Serialize and Deserialize BST](04xx/449.md) | 🟡 Medium | 1m 8s | The problem asks us to design two operations for a Binary Search Tr… |
+| 450 | [Delete Node in a BST](04xx/450.md) | 🟡 Medium | 1m 29s | The problem asks us to delete a node with a specific value, key, fr… |
+| 451 | [Sort Characters By Frequency](04xx/451.md) | 🟡 Medium | 54s | The problem asks us to rearrange the characters of a string so that… |
+| 452 | [Minimum Number of Arrows to Burst Balloons](04xx/452.md) | 🟡 Medium | 41s | This problem is asking us to determine the minimum number of vertic… |
+| 453 | [Minimum Moves to Equal Array Elements](04xx/453.md) | 🟡 Medium | 44s | The problem gives an integer array nums with n elements. In a singl… |
+| 454 | [4Sum II](04xx/454.md) | 🟡 Medium | 1m 13s | The problem gives four integer arrays, nums1, nums2, nums3, and num… |
+| 455 | [Assign Cookies](04xx/455.md) | 🟢 Easy | 48s | This problem asks us to maximize the number of children who can be … |
+| 456 | [132 Pattern](04xx/456.md) | 🟡 Medium | 1m 19s | The problem asks us to determine whether an array contains a specif… |
+| 457 | [Circular Array Loop](04xx/457.md) | 🟡 Medium | 1m 25s | This problem asks us to determine whether a circular array contains… |
+| 458 | [Poor Pigs](04xx/458.md) | 🔴 Hard | 57s | The problem gives us a set of buckets where exactly one bucket cont… |
+| 459 | [Repeated Substring Pattern](04xx/459.md) | 🟢 Easy | 48s | The problem asks us to determine whether a given string can be form… |
+| 460 | [LFU Cache](04xx/460.md) | 🔴 Hard | 1m 11s | The problem asks us to design a cache that supports two operations:… |
+| 461 | [Hamming Distance](04xx/461.md) | 🟢 Easy | 46s | The problem asks us to compute the Hamming distance between two int… |
+| 462 | [Minimum Moves to Equal Array Elements II](04xx/462.md) | 🟡 Medium | 53s | This problem asks us to determine the minimum number of moves requi… |
+| 463 | [Island Perimeter](04xx/463.md) | 🟢 Easy | 32s | The problem asks us to calculate the perimeter of an island represe… |
+| 464 | [Can I Win](04xx/464.md) | 🟡 Medium | 56s | This problem describes a two-player turn-based game. Players take t… |
