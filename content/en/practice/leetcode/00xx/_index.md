@@ -24,8 +24,8 @@ draft: false
 | 12 | [Integer to Roman](12.md) | 🟡 Medium | 1m | The problem asks us to convert a positive integer into its Roman nu… |
 | 13 | [Roman to Integer](13.md) | 🟢 Easy | 1m 11s | The problem gives a Roman numeral string and asks us to convert it … |
 | 14 | [Longest Common Prefix](14.md) | 🟢 Easy | 1m 24s | The problem gives an array of strings and asks us to find the longe… |
-| 15 | [3Sum](15.md) | 🟡 Medium | 1m 33s | The problem asks us to find all unique triplets in an integer array… |
-| 16 | [3Sum Closest](16.md) | 🟡 Medium | 1m 18s | The problem asks us to find three numbers in the array whose sum is… |
+| 15 | [3Sum](15.md) | 🟡 Medium | 1m 43s | The problem gives us an integer array nums, and we need to find eve… |
+| 16 | [3Sum Closest](16.md) | 🟡 Medium | 1m 12s | The problem gives us an integer array nums and a target integer tar… |
 | 17 | [Letter Combinations of a Phone Number](17.md) | 🟡 Medium | 1m 46s | The problem gives us a string of digits where each digit is between… |
 | 18 | [4Sum](18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
 | 19 | [Remove Nth Node From End of List](19.md) | 🟡 Medium | 1m 11s | The problem gives us the head of a singly linked list and an intege… |

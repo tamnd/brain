@@ -21,4 +21,8 @@ draft: false
 | 208 | [Implement Trie (Prefix Tree)](208.md) | 🟡 Medium | 1m 14s | The problem asks us to design and implement a Trie, also called a P… |
 | 209 | [Minimum Size Subarray Sum](209.md) | 🟡 Medium | 1m 17s | The problem gives us an array of positive integers called nums and … |
 | 210 | [Course Schedule II](210.md) | 🟡 Medium | 1m 14s | This problem asks us to determine a valid order in which courses ca… |
+| 212 | [Word Search II](212.md) | 🔴 Hard | 2m 31s | The problem gives us a two dimensional grid of lowercase English ch… |
 | 213 | [House Robber II](213.md) | 🟡 Medium | 1m 20s | This problem is a variation of the classic House Robber dynamic pro… |
+| 214 | [Shortest Palindrome](214.md) | 🔴 Hard | 1m 6s | The problem asks us to transform a given string s into a palindrome… |
+| 215 | [Kth Largest Element in an Array](215.md) | 🟡 Medium | 1m 13s | The problem asks us to find the kth largest element in an unsorted … |
+| 216 | [Combination Sum III](216.md) | 🟡 Medium | 1m 10s | This problem asks us to find all unique combinations of exactly k d… |
