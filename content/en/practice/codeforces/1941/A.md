@@ -6,7 +6,7 @@ tags: ["codeforces", "competitive-programming", "brute-force", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1941
 codeforces_index: "A"
-codeforces_contest_name: ""
+codeforces_contest_name: "Codeforces Round 933 (Div. 3)"
 rating: 800
 weight: 1941
 solve_time_s: 83

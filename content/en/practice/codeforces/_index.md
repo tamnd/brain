@@ -13,4 +13,4 @@ Solutions to Codeforces competitive programming problems. Click any problem link
 
 | Contest | Name | Type | Problems | Verified | Date |
 |---|---|---|---|---|---|
-| [1941](1941/_index.md) | Codeforces Round 1941 | - | 3 | 3/3 | 2026-05-27 |
+| [1941](1941/_index.md) | Codeforces Round 933 (Div. 3) | - | 4 | 3/4 | 2026-05-27 |
