@@ -187,14 +187,14 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 170 | [Two Sum III - Data structure design](01xx/170.md) | 🟢 Easy | 1m 6s | The problem asks us to design a data structure that supports two op… |
 | 171 | [Excel Sheet Column Number](01xx/171.md) | 🟢 Easy | 1m 3s | This problem asks us to convert an Excel-style column title into it… |
 | 172 | [Factorial Trailing Zeroes](01xx/172.md) | 🟡 Medium | 46s | The problem asks us to determine how many trailing zeroes appear at… |
-| 173 | [Binary Search Tree Iterator](01xx/173.md) | 🟡 Medium | 1m 5s | This problem asks us to design an iterator for a Binary Search Tree… |
-| 174 | [Dungeon Game](01xx/174.md) | 🔴 Hard | 1m 29s | This problem asks us to determine the minimum initial health a knig… |
-| 175 | [Combine Two Tables](01xx/175.md) | 🟢 Easy | 48s | This problem provides two database tables, Person and Address, and … |
-| 176 | [Second Highest Salary](01xx/176.md) | 🟡 Medium | 1m 3s | This problem asks us to retrieve the second highest distinct salary… |
-| 177 | [Nth Highest Salary](01xx/177.md) | 🟡 Medium | 1m 18s | This problem asks us to write a SQL query that returns the nth high… |
-| 178 | [Rank Scores](01xx/178.md) | 🟡 Medium | 1m 13s | This problem asks us to assign rankings to game scores stored in a … |
-| 179 | [Largest Number](01xx/179.md) | 🟡 Medium | 1m 3s | The problem gives an array of non-negative integers and asks us to … |
-| 180 | [Consecutive Numbers](01xx/180.md) | 🟡 Medium | 1m 15s | This problem provides a database table named Logs with two columns:… |
+| 173 | [Binary Search Tree Iterator](01xx/173.md) | 🟡 Medium | 56s | It looks like your prompt accidentally concatenated two problems. I… |
+| 174 | [Dungeon Game](01xx/174.md) | 🔴 Hard | 1m 10s | This problem asks us to determine the minimum initial health a knig… |
+| 175 | [Combine Two Tables](01xx/175.md) | 🟢 Easy | 46s | The problem is asking us to combine two relational database tables,… |
+| 176 | [Second Highest Salary](01xx/176.md) | 🟡 Medium | 2m 36s | This problem asks us to retrieve the second highest distinct salary… |
+| 177 | [Nth Highest Salary](01xx/177.md) | 🟡 Medium | 1m 12s | This problem asks us to write a SQL function that returns the nth h… |
+| 178 | [Rank Scores](01xx/178.md) | 🟡 Medium | 1m 17s | The problem gives us a database table named Scores that contains tw… |
+| 179 | [Largest Number](01xx/179.md) | 🟡 Medium | 1m 18s | This problem asks us to rearrange a list of non-negative integers s… |
+| 180 | [Consecutive Numbers](01xx/180.md) | 🟡 Medium | 41s | This problem asks us to find numbers in a table that appear at leas… |
 | 181 | [Employees Earning More Than Their Managers](01xx/181.md) | 🟢 Easy | 54s | This problem asks us to identify employees whose salary is greater … |
 | 182 | [Duplicate Emails](01xx/182.md) | 🟢 Easy | 1m 11s | This problem provides a database table named Person with two column… |
 | 183 | [Customers Who Never Order](01xx/183.md) | 🟢 Easy | 1m 8s | This problem provides two database tables, Customers and Orders. Th… |
@@ -479,3 +479,39 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 462 | [Minimum Moves to Equal Array Elements II](04xx/462.md) | 🟡 Medium | 53s | This problem asks us to determine the minimum number of moves requi… |
 | 463 | [Island Perimeter](04xx/463.md) | 🟢 Easy | 32s | The problem asks us to calculate the perimeter of an island represe… |
 | 464 | [Can I Win](04xx/464.md) | 🟡 Medium | 56s | This problem describes a two-player turn-based game. Players take t… |
+| 465 | [Optimal Account Balancing](04xx/465.md) | 🔴 Hard | 1m 33s | The problem gives a list of money transfers between people. Each tr… |
+| 466 | [Count The Repetitions](04xx/466.md) | 🔴 Hard | 34s | The problem asks us to find the maximum number of times a string st… |
+| 467 | [Unique Substrings in Wraparound String](04xx/467.md) | 🟡 Medium | 1m 16s | The problem defines an infinite cyclic string built from the lowerc… |
+| 468 | [Validate IP Address](04xx/468.md) | 🟡 Medium | 1m 19s | The problem asks us to determine whether a given string represents … |
+| 469 | [Convex Polygon](04xx/469.md) | 🟡 Medium | 1m 6s | The problem gives us a sequence of points on a 2D plane. These poin… |
+| 470 | [Implement Rand10() Using Rand7()](04xx/470.md) | 🟡 Medium | 1m 19s | The problem provides access to a single API, rand7(), which returns… |
+| 471 | [Encode String with Shortest Length](04xx/471.md) | 🔴 Hard | 48s | Here’s a fully detailed technical solution guide following your req… |
+| 472 | [Concatenated Words](04xx/472.md) | 🔴 Hard | 39s | The problem asks us to identify all words in a given list that can … |
+| 473 | [Matchsticks to Square](04xx/473.md) | 🟡 Medium | 1m 15s | The problem gives us an array called matchsticks, where each elemen… |
+| 474 | [Ones and Zeroes](04xx/474.md) | 🟡 Medium | 1m 13s | This problem asks us to select the largest possible subset of binar… |
+| 475 | [Heaters](04xx/475.md) | 🟡 Medium | 54s | The problem gives two arrays, houses and heaters, where each value … |
+| 476 | [Number Complement](04xx/476.md) | 🟢 Easy | 56s | The problem asks us to compute the complement of a positive integer… |
+| 477 | [Total Hamming Distance](04xx/477.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the total Hamming distance between e… |
+| 478 | [Generate Random Point in a Circle](04xx/478.md) | 🟡 Medium | 1m 23s | This problem asks us to generate random points uniformly inside a c… |
+| 479 | [Largest Palindrome Product](04xx/479.md) | 🔴 Hard | 1m 14s | The problem asks us to find the largest palindrome number that can … |
+| 480 | [Sliding Window Median](04xx/480.md) | 🔴 Hard | 1m 30s | The problem asks us to compute the median for every contiguous suba… |
+| 481 | [Magical String](04xx/481.md) | 🟡 Medium | 57s | The problem defines a special sequence called the magical string. T… |
+| 482 | [License Key Formatting](04xx/482.md) | 🟢 Easy | 44s | The problem is asking us to reformat a string representing a licens… |
+| 483 | [Smallest Good Base](04xx/483.md) | 🔴 Hard | 1m 6s | The problem gives us a decimal integer n as a string, and asks us t… |
+| 484 | [Find Permutation](04xx/484.md) | 🟡 Medium | 1m 2s | The problem gives us a string s consisting only of the characters '… |
+| 485 | [Max Consecutive Ones](04xx/485.md) | 🟢 Easy | 58s | The problem gives us a binary array named nums, meaning every eleme… |
+| 486 | [Predict the Winner](04xx/486.md) | 🟡 Medium | 1m 9s | The problem describes a two-player game played on an integer array.… |
+| 487 | [Max Consecutive Ones II](04xx/487.md) | 🟡 Medium | 1m 37s | The problem gives us a binary array, meaning every element is eithe… |
+| 488 | [Zuma Game](04xx/488.md) | 🔴 Hard | 1m 36s | The problem models a recursive elimination game. We are given a str… |
+| 489 | [Robot Room Cleaner](04xx/489.md) | 🔴 Hard | 1m 5s | This problem is an interactive grid traversal problem where we cont… |
+| 490 | [The Maze](04xx/490.md) | 🟡 Medium | 1m 22s | This problem asks us to determine whether a rolling ball can stop e… |
+| 491 | [Non-decreasing Subsequences](04xx/491.md) | 🟡 Medium | 1m 27s | The problem asks us to generate every distinct subsequence of the i… |
+| 492 | [Construct the Rectangle](04xx/492.md) | 🟢 Easy | 57s | The problem gives us a single integer area, representing the total … |
+| 493 | [Reverse Pairs](04xx/493.md) | 🔴 Hard | 30s | The problem asks us to count the number of reverse pairs in an arra… |
+| 494 | [Target Sum](04xx/494.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many different ways we can assign … |
+| 495 | [Teemo Attacking](04xx/495.md) | 🟢 Easy | 54s | The problem describes a sequence of poison attacks applied by Teemo… |
+| 496 | [Next Greater Element I](04xx/496.md) | 🟢 Easy | 1m 4s | The problem asks us to find the "next greater element" for every nu… |
+| 497 | [Random Point in Non-overlapping Rectangles](04xx/497.md) | 🟡 Medium | 1m 10s | The problem gives us a collection of non-overlapping axis-aligned r… |
+| 498 | [Diagonal Traverse](04xx/498.md) | 🟡 Medium | 35s | This problem asks us to traverse a given m x n matrix in a diagonal… |
+| 499 | [The Maze III](04xx/499.md) | 🔴 Hard | 2m 7s | This problem asks us to navigate a rolling ball through a maze and … |
+| 500 | [Keyboard Row](05xx/500.md) | 🟢 Easy | 46s | This problem asks us to identify words from a list that can be type… |

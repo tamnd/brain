@@ -75,3 +75,38 @@ draft: false
 | 462 | [Minimum Moves to Equal Array Elements II](462.md) | 🟡 Medium | 53s | This problem asks us to determine the minimum number of moves requi… |
 | 463 | [Island Perimeter](463.md) | 🟢 Easy | 32s | The problem asks us to calculate the perimeter of an island represe… |
 | 464 | [Can I Win](464.md) | 🟡 Medium | 56s | This problem describes a two-player turn-based game. Players take t… |
+| 465 | [Optimal Account Balancing](465.md) | 🔴 Hard | 1m 33s | The problem gives a list of money transfers between people. Each tr… |
+| 466 | [Count The Repetitions](466.md) | 🔴 Hard | 34s | The problem asks us to find the maximum number of times a string st… |
+| 467 | [Unique Substrings in Wraparound String](467.md) | 🟡 Medium | 1m 16s | The problem defines an infinite cyclic string built from the lowerc… |
+| 468 | [Validate IP Address](468.md) | 🟡 Medium | 1m 19s | The problem asks us to determine whether a given string represents … |
+| 469 | [Convex Polygon](469.md) | 🟡 Medium | 1m 6s | The problem gives us a sequence of points on a 2D plane. These poin… |
+| 470 | [Implement Rand10() Using Rand7()](470.md) | 🟡 Medium | 1m 19s | The problem provides access to a single API, rand7(), which returns… |
+| 471 | [Encode String with Shortest Length](471.md) | 🔴 Hard | 48s | Here’s a fully detailed technical solution guide following your req… |
+| 472 | [Concatenated Words](472.md) | 🔴 Hard | 39s | The problem asks us to identify all words in a given list that can … |
+| 473 | [Matchsticks to Square](473.md) | 🟡 Medium | 1m 15s | The problem gives us an array called matchsticks, where each elemen… |
+| 474 | [Ones and Zeroes](474.md) | 🟡 Medium | 1m 13s | This problem asks us to select the largest possible subset of binar… |
+| 475 | [Heaters](475.md) | 🟡 Medium | 54s | The problem gives two arrays, houses and heaters, where each value … |
+| 476 | [Number Complement](476.md) | 🟢 Easy | 56s | The problem asks us to compute the complement of a positive integer… |
+| 477 | [Total Hamming Distance](477.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the total Hamming distance between e… |
+| 478 | [Generate Random Point in a Circle](478.md) | 🟡 Medium | 1m 23s | This problem asks us to generate random points uniformly inside a c… |
+| 479 | [Largest Palindrome Product](479.md) | 🔴 Hard | 1m 14s | The problem asks us to find the largest palindrome number that can … |
+| 480 | [Sliding Window Median](480.md) | 🔴 Hard | 1m 30s | The problem asks us to compute the median for every contiguous suba… |
+| 481 | [Magical String](481.md) | 🟡 Medium | 57s | The problem defines a special sequence called the magical string. T… |
+| 482 | [License Key Formatting](482.md) | 🟢 Easy | 44s | The problem is asking us to reformat a string representing a licens… |
+| 483 | [Smallest Good Base](483.md) | 🔴 Hard | 1m 6s | The problem gives us a decimal integer n as a string, and asks us t… |
+| 484 | [Find Permutation](484.md) | 🟡 Medium | 1m 2s | The problem gives us a string s consisting only of the characters '… |
+| 485 | [Max Consecutive Ones](485.md) | 🟢 Easy | 58s | The problem gives us a binary array named nums, meaning every eleme… |
+| 486 | [Predict the Winner](486.md) | 🟡 Medium | 1m 9s | The problem describes a two-player game played on an integer array.… |
+| 487 | [Max Consecutive Ones II](487.md) | 🟡 Medium | 1m 37s | The problem gives us a binary array, meaning every element is eithe… |
+| 488 | [Zuma Game](488.md) | 🔴 Hard | 1m 36s | The problem models a recursive elimination game. We are given a str… |
+| 489 | [Robot Room Cleaner](489.md) | 🔴 Hard | 1m 5s | This problem is an interactive grid traversal problem where we cont… |
+| 490 | [The Maze](490.md) | 🟡 Medium | 1m 22s | This problem asks us to determine whether a rolling ball can stop e… |
+| 491 | [Non-decreasing Subsequences](491.md) | 🟡 Medium | 1m 27s | The problem asks us to generate every distinct subsequence of the i… |
+| 492 | [Construct the Rectangle](492.md) | 🟢 Easy | 57s | The problem gives us a single integer area, representing the total … |
+| 493 | [Reverse Pairs](493.md) | 🔴 Hard | 30s | The problem asks us to count the number of reverse pairs in an arra… |
+| 494 | [Target Sum](494.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many different ways we can assign … |
+| 495 | [Teemo Attacking](495.md) | 🟢 Easy | 54s | The problem describes a sequence of poison attacks applied by Teemo… |
+| 496 | [Next Greater Element I](496.md) | 🟢 Easy | 1m 4s | The problem asks us to find the "next greater element" for every nu… |
+| 497 | [Random Point in Non-overlapping Rectangles](497.md) | 🟡 Medium | 1m 10s | The problem gives us a collection of non-overlapping axis-aligned r… |
+| 498 | [Diagonal Traverse](498.md) | 🟡 Medium | 35s | This problem asks us to traverse a given m x n matrix in a diagonal… |
+| 499 | [The Maze III](499.md) | 🔴 Hard | 2m 7s | This problem asks us to navigate a rolling ball through a maze and … |
