@@ -93,19 +93,19 @@ draft: false
 | 81 | [Search in Rotated Sorted Array II](81.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a target value exists ins… |
 | 82 | [Remove Duplicates from Sorted List II](82.md) | 🟡 Medium | 1m 53s | This problem asks us to modify a sorted singly linked list so that … |
 | 83 | [Remove Duplicates from Sorted List](83.md) | 🟢 Easy | 4m 18s | This problem asks us to remove duplicate values from a sorted singl… |
-| 84 | [Largest Rectangle in Histogram](84.md) | 🔴 Hard | 1m 52s | In this problem, we are given an array called heights, where each v… |
-| 85 | [Maximal Rectangle](85.md) | 🔴 Hard | 1m 9s | You are given a 2D binary matrix where each cell contains either '0… |
-| 86 | [Partition List](86.md) | 🟡 Medium | 1m 1s | This problem asks us to rearrange a singly linked list around a piv… |
-| 87 | [Scramble String](87.md) | 🔴 Hard | 1m 8s | This problem asks us to determine whether one string can be transfo… |
-| 88 | [Merge Sorted Array](88.md) | 🟢 Easy | 1m 9s | This problem gives us two arrays, nums1 and nums2, that are already… |
-| 89 | [Gray Code](89.md) | 🟡 Medium | 52s | This problem asks us to generate a valid n-bit Gray code sequence. … |
-| 90 | [Subsets II](90.md) | 🟡 Medium | 1m 17s | The problem asks us to generate every possible subset of a given in… |
-| 91 | [Decode Ways](91.md) | 🟡 Medium | 1m 1s | The problem gives us a string s containing only digits, where each … |
-| 92 | [Reverse Linked List II](92.md) | 🟡 Medium | 1m 14s | This problem asks us to reverse only a specific portion of a singly… |
-| 93 | [Restore IP Addresses](93.md) | 🟡 Medium | 1m 59s | The problem asks us to take a string of digits and determine every … |
-| 94 | [Binary Tree Inorder Traversal](94.md) | 🟢 Easy | 1m 9s | This problem asks us to perform an inorder traversal on a binary tr… |
-| 95 | [Unique Binary Search Trees II](95.md) | 🟡 Medium | 1m 18s | The problem asks us to generate every structurally unique Binary Se… |
-| 96 | [Unique Binary Search Trees](96.md) | 🟡 Medium | 1m 8s | This problem asks us to determine how many structurally unique Bina… |
-| 97 | [Interleaving String](97.md) | 🟡 Medium | 1m 9s | This problem asks us to determine whether a third string, s3, can b… |
-| 98 | [Validate Binary Search Tree](98.md) | 🟡 Medium | 1m 9s | The problem gives us the root of a binary tree and asks whether the… |
-| 99 | [Recover Binary Search Tree](99.md) | 🟡 Medium | 1m 21s | The problem gives us the root of a Binary Search Tree (BST) in whic… |
+| 84 | [Largest Rectangle in Histogram](84.md) | 🔴 Hard | 1m 12s | This problem asks us to find the largest rectangular area that can … |
+| 85 | [Maximal Rectangle](85.md) | 🔴 Hard | 1m 23s | The problem asks us to find the area of the largest rectangle conta… |
+| 86 | [Partition List](86.md) | 🟡 Medium | 42s | It looks like you want the full detailed solution guide, but the sp… |
+| 87 | [Scramble String](87.md) | 🔴 Hard | 2m 21s | This problem asks us to determine whether one string can be transfo… |
+| 88 | [Merge Sorted Array](88.md) | 🟢 Easy | 1m 33s | This problem gives us two arrays, nums1 and nums2, where both array… |
+| 89 | [Gray Code](89.md) | 🟡 Medium | 3m 16s | The problem asks us to generate a valid Gray code sequence for a gi… |
+| 90 | [Subsets II](90.md) | 🟡 Medium | 1m 22s | The problem asks us to generate every possible subset of a given in… |
+| 91 | [Decode Ways](91.md) | 🟡 Medium | 1m 21s | This problem asks us to determine how many different valid ways a n… |
+| 92 | [Reverse Linked List II](92.md) | 🟡 Medium | 1m 9s | This problem asks us to reverse only a specific portion of a singly… |
+| 93 | [Restore IP Addresses](93.md) | 🟡 Medium | 1m 19s | The problem asks us to take a string containing only digits and det… |
+| 94 | [Binary Tree Inorder Traversal](94.md) | 🟢 Easy | 1m 17s | This problem asks us to perform an inorder traversal on a binary tr… |
+| 95 | [Unique Binary Search Trees II](95.md) | 🟡 Medium | 36s | The problem asks us to generate all structurally unique binary sear… |
+| 96 | [Unique Binary Search Trees](96.md) | 🟡 Medium | 1m 8s | This problem asks us to determine how many structurally different B… |
+| 97 | [Interleaving String](97.md) | 🟡 Medium | 1m 27s | This problem asks us to determine whether a string s3 can be formed… |
+| 98 | [Validate Binary Search Tree](98.md) | 🟡 Medium | 1m 10s | This problem asks us to determine whether a given binary tree satis… |
+| 99 | [Recover Binary Search Tree](99.md) | 🟡 Medium | 1m 12s | The problem gives us the root of a binary search tree, but exactly … |
