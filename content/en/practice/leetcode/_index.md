@@ -31,7 +31,9 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 14 | [Longest Common Prefix](00xx/14.md) | 🟢 Easy | 58s | The problem asks us to find the longest prefix shared by every stri… |
 | 15 | [3Sum](00xx/15.md) | 🟡 Medium | 1m 33s | The problem asks us to find all unique triplets in an integer array… |
 | 16 | [3Sum Closest](00xx/16.md) | 🟡 Medium | 1m 18s | The problem asks us to find three numbers in the array whose sum is… |
+| 18 | [4Sum](00xx/18.md) | 🟡 Medium | 1m 13s | The problem asks us to find every unique combination of four number… |
 | 19 | [Remove Nth Node From End of List](00xx/19.md) | 🟡 Medium | 1m 11s | The problem gives us the head of a singly linked list and an intege… |
+| 20 | [Valid Parentheses](00xx/20.md) | 🟢 Easy | 1m 15s | The problem asks us to determine whether a string containing only b… |
 | 21 | [Merge Two Sorted Lists](00xx/21.md) | 🟢 Easy | 1m 33s | This problem asks us to merge two already sorted singly linked list… |
 | 22 | [Generate Parentheses](00xx/22.md) | 🟡 Medium | 2m 41s | The problem asks us to generate every possible valid combination of… |
 | 23 | [Merge k Sorted Lists](00xx/23.md) | 🔴 Hard | 2m 6s | The problem gives us an array named lists, where each element is th… |
@@ -146,4 +148,19 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 132 | [Palindrome Partitioning II](01xx/132.md) | 🔴 Hard | 3m 5s | The problem asks us to divide a string s into contiguous substrings… |
 | 133 | [Clone Graph](01xx/133.md) | 🟡 Medium | 2m 19s | This problem asks us to create a deep copy of an undirected connect… |
 | 134 | [Gas Station](01xx/134.md) | 🟡 Medium | 2m 19s | The problem describes a circular route of gas stations. Each statio… |
+| 135 | [Candy](01xx/135.md) | 🔴 Hard | 2m 9s | The problem gives us an array called ratings, where each element re… |
+| 136 | [Single Number](01xx/136.md) | 🟢 Easy | 2m | The problem gives us a non-empty integer array nums. Every value in… |
 | 137 | [Single Number II](01xx/137.md) | 🟡 Medium | 57s | This problem asks us to find the one unique number in an array wher… |
+| 138 | [Copy List with Random Pointer](01xx/138.md) | 🟡 Medium | 1m | The problem asks us to create a deep copy of a linked list where ea… |
+| 139 | [Word Break](01xx/139.md) | 🟡 Medium | 3m 14s | The problem gives us a string s and a dictionary of valid words cal… |
+| 140 | [Word Break II](01xx/140.md) | 🔴 Hard | 1m 42s | The problem gives us a string s and a list of valid dictionary word… |
+| 141 | [Linked List Cycle](01xx/141.md) | 🟢 Easy | 1m 49s | This problem asks us to determine whether a singly linked list cont… |
+| 142 | [Linked List Cycle II](01xx/142.md) | 🟡 Medium | 58s | This problem asks us to determine whether a singly linked list cont… |
+| 143 | [Reorder List](01xx/143.md) | 🟡 Medium | 1m 4s | This problem asks us to reorder a singly linked list in a very spec… |
+| 144 | [Binary Tree Preorder Traversal](01xx/144.md) | 🟢 Easy | 58s | This problem asks us to perform a preorder traversal on a binary tr… |
+| 145 | [Binary Tree Postorder Traversal](01xx/145.md) | 🟢 Easy | 1m 55s | In this problem, we are given the root node of a binary tree, and w… |
+| 146 | [LRU Cache](01xx/146.md) | 🟡 Medium | 2m 22s | This problem asks us to design an efficient cache system that follo… |
+| 147 | [Insertion Sort List](01xx/147.md) | 🟡 Medium | 3m 43s | The problem asks us to sort a singly linked list using the insertio… |
+| 148 | [Sort List](01xx/148.md) | 🟡 Medium | 1m 8s | The problem gives us the head of a singly linked list and asks us t… |
+| 149 | [Max Points on a Line](01xx/149.md) | 🔴 Hard | 1m 24s | This problem asks us to determine the maximum number of points that… |
+| 150 | [Evaluate Reverse Polish Notation](01xx/150.md) | 🟡 Medium | 1m 6s | This problem asks us to evaluate an arithmetic expression written i… |

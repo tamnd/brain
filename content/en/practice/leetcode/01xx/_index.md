@@ -57,3 +57,7 @@ draft: false
 | 144 | [Binary Tree Preorder Traversal](144.md) | 🟢 Easy | 58s | This problem asks us to perform a preorder traversal on a binary tr… |
 | 145 | [Binary Tree Postorder Traversal](145.md) | 🟢 Easy | 1m 55s | In this problem, we are given the root node of a binary tree, and w… |
 | 146 | [LRU Cache](146.md) | 🟡 Medium | 2m 22s | This problem asks us to design an efficient cache system that follo… |
+| 147 | [Insertion Sort List](147.md) | 🟡 Medium | 3m 43s | The problem asks us to sort a singly linked list using the insertio… |
+| 148 | [Sort List](148.md) | 🟡 Medium | 1m 8s | The problem gives us the head of a singly linked list and asks us t… |
+| 149 | [Max Points on a Line](149.md) | 🔴 Hard | 1m 24s | This problem asks us to determine the maximum number of points that… |
+| 150 | [Evaluate Reverse Polish Notation](150.md) | 🟡 Medium | 1m 6s | This problem asks us to evaluate an arithmetic expression written i… |
