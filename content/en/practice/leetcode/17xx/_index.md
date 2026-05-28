@@ -52,3 +52,6 @@ draft: false
 | 1740 | [Find Distance in a Binary Tree](1740.md) | 🟡 Medium | 1m 29s | This problem asks us to determine the distance between two nodes in… |
 | 1742 | [Maximum Number of Balls in a Box](1742.md) | 🟢 Easy | 59s | The problem describes a scenario in which you have a sequence of ba… |
 | 1744 | [Can You Eat Your Favorite Candy on Your Favorite Day?](1744.md) | 🟡 Medium | 2m 24s | The problem gives us an array candiesCount where candiesCount[i] re… |
+| 1745 | [Palindrome Partitioning IV](1745.md) | 🔴 Hard | 1m 8s | The problem asks us to determine whether a given string s can be sp… |
+| 1746 | [Maximum Subarray Sum After One Operation](1746.md) | 🟡 Medium | 1m 33s | The problem gives us an integer array nums, and we must perform exa… |
+| 1747 | [Leetflex Banned Accounts](1747.md) | 🟡 Medium | 1m 28s | This problem asks us to identify suspicious accounts in the LogInfo… |
