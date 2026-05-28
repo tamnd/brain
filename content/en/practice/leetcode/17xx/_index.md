@@ -27,3 +27,16 @@ draft: false
 | 1715 | [Count Apples and Oranges](1715.md) | 🟡 Medium | 3m 40s | This problem asks us to compute the total number of apples and oran… |
 | 1716 | [Calculate Money in Leetcode Bank](1716.md) | 🟢 Easy | 1m 17s | The problem describes a repeating weekly saving pattern. Hercy depo… |
 | 1717 | [Maximum Score From Removing Substrings](1717.md) | 🟡 Medium | 1m 32s | The problem gives us a string s and two scoring rules: - Removing t… |
+| 1718 | [Construct the Lexicographically Largest Valid Sequence](1718.md) | 🟡 Medium | 2m 18s | The problem asks us to construct a special integer sequence using n… |
+| 1719 | [Number Of Ways To Reconstruct A Tree](1719.md) | 🔴 Hard | 1m 11s | The problem provides an array of pairs, where each pair [xi, yi] in… |
+| 1720 | [Decode XORed Array](1720.md) | 🟢 Easy | 1m 30s | The problem gives us an encoded array where each element represents… |
+| 1721 | [Swapping Nodes in a Linked List](1721.md) | 🟡 Medium | 1m 12s | The problem provides a singly linked list and an integer k. The tas… |
+| 1722 | [Minimize Hamming Distance After Swap Operations](1722.md) | 🟡 Medium | 1m 21s | The problem asks us to find the minimum Hamming distance between tw… |
+| 1723 | [Find Minimum Time to Finish All Jobs](1723.md) | 🔴 Hard | 1m 11s | This problem is asking us to assign a set of jobs, each with a spec… |
+| 1724 | [Checking Existence of Edge Length Limited Paths II](1724.md) | 🔴 Hard | 2m 2s | This problem gives us an undirected weighted graph with n nodes and… |
+| 1725 | [Number Of Rectangles That Can Form The Largest Square](1725.md) | 🟢 Easy | 1m 44s | The problem gives us a list of rectangles, where each rectangle is … |
+| 1726 | [Tuple with Same Product](1726.md) | 🟡 Medium | 2m 24s | The problem asks us to count all tuples (a, b, c, d) from a given a… |
+| 1727 | [Largest Submatrix With Rearrangements](1727.md) | 🟡 Medium | 1m 24s | The problem gives us a binary matrix, meaning every cell contains e… |
+| 1728 | [Cat and Mouse II](1728.md) | 🔴 Hard | 2m | This problem describes a two-player perfect-information game played… |
+| 1729 | [Find Followers Count](1729.md) | 🟢 Easy | 1m 16s | The problem is asking us to determine, for each user in a social me… |
+| 1730 | [Shortest Path to Get Food](1730.md) | 🟡 Medium | 1m 1s | The problem asks us to find the shortest path from a starting locat… |
