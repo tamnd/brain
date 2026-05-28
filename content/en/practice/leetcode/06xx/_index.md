@@ -10,7 +10,10 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
+| 600 | [Non-negative Integers without Consecutive Ones](600.md) | 🔴 Hard | 2m 16s | That is a long-form technical guide request with multiple required … |
 | 601 | [Human Traffic of Stadium](601.md) | 🔴 Hard | 1m 42s | The problem asks us to extract all consecutive records from a Stadi… |
+| 602 | [Friend Requests II: Who Has the Most Friends](602.md) | 🟡 Medium | 1m 10s | The problem gives us a database table named RequestAccepted, where … |
+| 603 | [Consecutive Available Seats](603.md) | 🟢 Easy | 1m 24s | The problem gives us a database table named Cinema with two columns… |
 | 604 | [Design Compressed String Iterator](604.md) | 🟢 Easy | 33s | This problem asks us to implement a compressed string iterator. We … |
 | 605 | [Can Place Flowers](605.md) | 🟢 Easy | 56s | The problem gives us a binary array called flowerbed, where: - 0 re… |
 | 606 | [Construct String from Binary Tree](606.md) | 🟡 Medium | 1m 10s | This problem asks us to convert a binary tree into a string using a… |
@@ -32,6 +35,11 @@ draft: false
 | 622 | [Design Circular Queue](622.md) | 🟡 Medium | 52s | The problem asks us to implement a circular queue, a fixed-size que… |
 | 623 | [Add One Row to Tree](623.md) | 🟡 Medium | 44s | The problem asks us to modify a binary tree by adding a new row of … |
 | 624 | [Maximum Distance in Arrays](624.md) | 🟡 Medium | 38s | The problem presents a list of m arrays, each individually sorted i… |
+| 625 | [Minimum Factorization](625.md) | 🟡 Medium | 1m 3s | The problem asks us to find the smallest positive integer x such th… |
+| 626 | [Exchange Seats](626.md) | 🟡 Medium | 41s | This problem asks us to swap the seat IDs of every two consecutive … |
+| 628 | [Maximum Product of Three Numbers](628.md) | 🟢 Easy | 58s | The problem gives an integer array nums and asks us to select exact… |
+| 629 | [K Inverse Pairs Array](629.md) | 🔴 Hard | 34s | Here’s a full technical solution guide following your formatting ru… |
+| 630 | [Course Schedule III](630.md) | 🔴 Hard | 1m 18s | The problem gives a list of online courses, where each course is re… |
 | 651 | [4 Keys Keyboard](651.md) | 🟡 Medium | 57s | The problem gives us a keyboard with four operations: - Press A, wh… |
 | 652 | [Find Duplicate Subtrees](652.md) | 🟡 Medium | 1m 16s | The problem gives us the root of a binary tree and asks us to ident… |
 | 653 | [Two Sum IV - Input is a BST](653.md) | 🟢 Easy | 1m 1s | This problem gives us the root of a Binary Search Tree (BST) and an… |
