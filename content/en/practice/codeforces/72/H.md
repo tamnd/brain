@@ -1,6 +1,6 @@
 ---
 title: "CF 72H - Reverse It!"
-description: "We are given an integer in string form that can be very large, up to 10,000 digits, and it may include leading zeros. The goal is to reverse its digits while preserving the sign if it is negative and removing any leading zeros from the final reversed number."
+description: "The task is to reverse a number given as a string, taking care of signs and leading zeros. The input can be a very large integer, up to 10,000 digits, possibly with leading zeros."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "implementation"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "Unknown Language Round 2"
 rating: 1600
 weight: 72
-solve_time_s: 78
+solve_time_s: 208
 verified: true
 draft: false
 ---
@@ -18,38 +18,38 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** *special, implementation  
-**Solve time:** 1m 18s  
+**Solve time:** 3m 28s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an integer in string form that can be very large, up to 10,000 digits, and it may include leading zeros. The goal is to reverse its digits while preserving the sign if it is negative and removing any leading zeros from the final reversed number. For example, an input of `00420` should produce `24`, and an input of `-1200` should produce `-21`.
+The task is to reverse a number given as a string, taking care of signs and leading zeros. The input can be a very large integer, up to 10,000 digits, possibly with leading zeros. We need to remove those leading zeros first, reverse the remaining digits, and output the result as a string representing an integer. If the number is negative, the reversed number must retain the negative sign. Leading zeros in the reversed number must also be omitted.
 
-The constraints indicate that the number may exceed the size of standard numeric types, so we cannot rely on converting it directly to an integer and using arithmetic operations. Instead, we must work with it as a string. The time limit of 4 seconds is generous relative to the input size, so an `O(n)` solution, where `n` is the length of the string, is acceptable. Edge cases arise around leading zeros, negative signs, and inputs that are all zeros. For instance, an input of `0000` should output `0`, not an empty string. Similarly, `-00012` should reverse to `-21`, correctly removing both the negative’s leading zeros and the trailing zeros from the reversed portion.
+The constraints imply we cannot rely on standard integer types, because a 10,000-digit number exceeds any built-in numeric type. Instead, we must treat the number as a string, manipulating characters directly. Since the input size is at most 10,000 characters, an O(n) solution is feasible, but anything worse than O(n log n) could be too slow. Non-obvious edge cases include numbers like "0000123", which should reverse to "321", or negative numbers like "-00120", which should become "-21". A careless implementation could leave trailing zeros after reversing or mishandle the negative sign.
 
 ## Approaches
 
-The brute-force approach is straightforward. We could parse the string character by character, reverse it, handle the negative sign, and then convert it back to a number to drop leading zeros. This works because string reversal is `O(n)` and Python handles arbitrarily large integers, but the conversion to `int` and back might be unnecessary and slightly slower for extremely large strings.
+A brute-force approach would attempt to convert the string into an integer, then reverse the digits by repeatedly dividing by 10 and collecting remainders. This works for small numbers, but it fails here because Python integers could handle the size, but in other languages it would overflow. Moreover, the input can have leading zeros which are lost when converting to integer, making direct reversal impossible.
 
-The optimal approach treats the input purely as a string. We first strip any leading zeros, then detect if the number is negative. We then reverse the remaining numeric characters and remove any leading zeros from the reversed string. If the original number was negative, we prepend a `-` to the reversed string. This approach is linear in the length of the input and does not depend on numeric conversion, making it simple, robust, and efficient.
+The key observation is that the problem is naturally a string manipulation problem. We can trim leading zeros, check for a negative sign, reverse the substring representing the digits, and then remove any leading zeros that appear after reversal. This reduces the problem to a simple linear pass over the input string. The negative sign is handled separately, ensuring the final output has correct sign placement.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (int conversion) | O(n) | O(n) | Accepted but slightly heavier for max-size input |
-| String manipulation | O(n) | O(n) | Accepted, optimal for problem constraints |
+| Brute Force (integer conversion) | O(n) | O(n) | Conceptually correct but fails for very large numbers |
+| String Manipulation | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input number as a string and strip any surrounding whitespace.
-2. Check if the first character is `-`. If it is, mark the number as negative and remove the sign for now. This simplifies string reversal.
-3. Remove any leading zeros from the remaining numeric portion. If this leaves an empty string, set it to `0` to handle cases like `0000`.
-4. Reverse the string using slicing. The last character becomes the first, the second-to-last becomes second, etc.
-5. Remove any leading zeros from the reversed string. If the result is empty, set it to `0`.
-6. If the original number was negative and the reversed string is not `0`, prepend a `-` sign.
-7. Print the final result.
+1. Read the input string representing the number and remove any surrounding whitespace. This ensures we do not misinterpret accidental spaces as digits.
+2. Check if the first character is a negative sign. If it is, store this information and work on the substring excluding the minus sign. This allows uniform processing of digits.
+3. Remove leading zeros from the numeric substring. Python’s `lstrip('0')` achieves this. If the string becomes empty, the number is zero.
+4. Reverse the cleaned numeric string using slicing `[::-1]`. Reversing a string in-place is O(n) and preserves the order of digits properly.
+5. Remove any leading zeros that appear after reversal, using the same method as in step 3. This is crucial for numbers like "1000" which reverse to "0001".
+6. Prepend the negative sign if the original number was negative and the reversed string is not empty. This ensures the sign is correct and we do not produce "-0".
+7. If the final string is empty, output "0" to represent the zero value. Otherwise, print the reversed string.
 
-The invariant here is that at every step, the string accurately represents the integer we intend to reverse, with no leading zeros except for the single zero case. By handling the negative sign separately and using string operations, we ensure correctness even for extremely large inputs.
+The invariant is that after each transformation step, the string represents the current numeric value without invalid leading zeros. This guarantees that reversing and trimming produces the correct integer representation.
 
 ## Python Solution
 
@@ -57,72 +57,70 @@ The invariant here is that at every step, the string accurately represents the i
 import sys
 input = sys.stdin.readline
 
-n = input().strip()
+def main():
+    s = input().strip()
+    if not s:
+        print(0)
+        return
 
-negative = n.startswith('-')
-if negative:
-    n = n[1:]
+    negative = s[0] == '-'
+    if negative:
+        s = s[1:]
 
-# remove leading zeros
-n = n.lstrip('0')
-if not n:
-    n = '0'
+    s = s.lstrip('0')
+    if not s:
+        print(0)
+        return
 
-# reverse digits
-reversed_n = n[::-1].lstrip('0')
-if not reversed_n:
-    reversed_n = '0'
+    reversed_s = s[::-1].lstrip('0')
+    if negative:
+        reversed_s = '-' + reversed_s
 
-if negative and reversed_n != '0':
-    reversed_n = '-' + reversed_n
+    print(reversed_s)
 
-print(reversed_n)
+if __name__ == "__main__":
+    main()
 ```
 
-The solution reads the input efficiently and handles all edge cases with string operations. Removing leading zeros before and after the reversal ensures we never output a string like `00421` or `0000`. Handling the negative sign separately avoids mistakes when the number is zero after reversal.
+The solution begins by stripping whitespace to prevent errors from extraneous characters. Detecting the negative sign early allows us to handle reversal uniformly. Leading zeros are removed before and after reversal to handle both inputs like "000123" and outputs like "1000". The explicit empty string check ensures we correctly return "0" for inputs that are all zeros.
 
 ## Worked Examples
 
-### Example 1
+For input "23":
 
-Input: `23`
+| Step | Variable | Value |
+| --- | --- | --- |
+| Read input | s | "23" |
+| Check negative | negative | False |
+| Strip leading zeros | s | "23" |
+| Reverse | reversed_s | "32" |
+| Output | print | "32" |
 
-| Step | Value of n | Reversed n | Notes |
-| --- | --- | --- | --- |
-| Initial | `23` | - | input |
-| Strip sign | `23` | - | not negative |
-| Remove leading zeros | `23` | - | none to remove |
-| Reverse | `32` | `32` | reversed |
-| Remove leading zeros | `32` | `32` | no zeros |
-| Add negative | `32` | `32` | not negative |
+This confirms a basic two-digit positive number is reversed correctly.
 
-Output: `32`
+For input "-00120":
 
-### Example 2
+| Step | Variable | Value |
+| --- | --- | --- |
+| Read input | s | "-00120" |
+| Check negative | negative | True |
+| Remove sign | s | "00120" |
+| Strip leading zeros | s | "120" |
+| Reverse | reversed_s | "021" |
+| Strip leading zeros after reverse | reversed_s | "21" |
+| Prepend negative | reversed_s | "-21" |
+| Output | print | "-21" |
 
-Input: `-00120`
-
-| Step | Value of n | Reversed n | Notes |
-| --- | --- | --- | --- |
-| Initial | `-00120` | - | input |
-| Strip sign | `00120` | - | negative flagged |
-| Remove leading zeros | `120` | - | `00` removed |
-| Reverse | `021` | `021` | reversed |
-| Remove leading zeros | `21` | `21` | zeros removed |
-| Add negative | `21` | `-21` | prepend negative |
-
-Output: `-21`
-
-These traces demonstrate correct handling of leading zeros, negative numbers, and the reversal.
+This trace demonstrates correct handling of negative numbers and both leading and trailing zeros.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each step-stripping zeros, reversing, prepending sign-is linear in string length |
-| Space | O(n) | Reversed string and intermediate copies require linear space |
+| Time | O(n) | Each character is visited a constant number of times for stripping, slicing, and reversing |
+| Space | O(n) | Reversal and substring operations create new strings proportional to input length |
 
-The solution easily handles the input limit of 10,000 characters, staying well within time and memory constraints.
+Given n ≤ 10,000, these operations are comfortably within the 4-second time limit.
 
 ## Test Cases
 
@@ -131,41 +129,33 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = input().strip()
-    negative = n.startswith('-')
-    if negative:
-        n = n[1:]
-    n = n.lstrip('0')
-    if not n:
-        n = '0'
-    reversed_n = n[::-1].lstrip('0')
-    if not reversed_n:
-        reversed_n = '0'
-    if negative and reversed_n != '0':
-        reversed_n = '-' + reversed_n
-    return reversed_n
+    sys.stdout = io.StringIO()
+    main()
+    return sys.stdout.getvalue().strip()
 
-# Provided sample
+# provided sample
 assert run("23\n") == "32", "sample 1"
-
-# Custom test cases
+# negative number
+assert run("-00120\n") == "-21", "negative number with leading zeros"
+# only zeros
 assert run("0000\n") == "0", "all zeros"
-assert run("-00012\n") == "-21", "negative with leading zeros"
-assert run("1200\n") == "21", "trailing zeros reversed"
-assert run("-1000\n") == "-1", "negative, trailing zeros"
-assert run("1\n") == "1", "single digit"
-assert run("1000000000000000000000\n") == "1", "large input with zeros"
+# large number
+assert run("100000000000000000000\n") == "1", "large power-of-ten number"
+# single digit
+assert run("7\n") == "7", "single digit number"
+# negative single digit
+assert run("-9\n") == "-9", "negative single digit"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0000` | `0` | All zeros input |
-| `-00012` | `-21` | Negative number with leading zeros |
-| `1200` | `21` | Trailing zeros removed after reversal |
-| `-1000` | `-1` | Negative number, reversed correctly |
-| `1` | `1` | Single digit |
-| `1000000000000000000000` | `1` | Large number with zeros |
+| "23" | "32" | Basic positive number reversal |
+| "-00120" | "-21" | Negative number with leading zeros |
+| "0000" | "0" | Input of all zeros |
+| "100000000000000000000" | "1" | Very large number with trailing zeros |
+| "7" | "7" | Single-digit input |
+| "-9" | "-9" | Single-digit negative input |
 
 ## Edge Cases
 
-An input like `-0000` is handled by first stripping the negative sign and leading zeros, which produces an empty string, then replaced with `0`. After reversal, the output remains `0`, correctly ignoring the negative sign. An input like `0001234000` first becomes `1234000`, then reversed to `0004321`, and stripping leading zeros after reversal yields `4321`, as expected. Negative numbers and single-digit inputs behave correctly because the code treats the negative sign separately and ensures at least one digit remains.
+For input "0000", the algorithm first strips leading zeros, leaving an empty string. The empty string check then prints "0". For input "-00120", after stripping leading zeros the string becomes "120", reversing produces "021", and stripping zeros after reversal produces "21", then the negative sign is prepended to yield "-21". The approach correctly handles both zero-only inputs and numbers with complex leading/trailing zero patterns.

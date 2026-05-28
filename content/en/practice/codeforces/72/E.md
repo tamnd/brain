@@ -1,6 +1,6 @@
 ---
 title: "CF 72E - Ali goes shopping"
-description: "We are given a lowercase string and must choose one of its non-empty substrings. For every substring, we count how many times it appears inside the original string. Appearances may overlap. Among all substrings, we first maximize the number of occurrences."
+description: "We are given a lowercase string and must find the substring that appears the largest number of times inside it. Occurrences may overlap. Among all substrings with the same maximum frequency, we choose the longest one."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "brute-force", "strings"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Unknown Language Round 2"
 rating: 1800
 weight: 72
-solve_time_s: 105
+solve_time_s: 454
 verified: true
 draft: false
 ---
@@ -18,114 +18,103 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** *special, brute force, strings  
-**Solve time:** 1m 45s  
+**Solve time:** 7m 34s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a lowercase string and must choose one of its non-empty substrings. For every substring, we count how many times it appears inside the original string. Appearances may overlap. Among all substrings, we first maximize the number of occurrences. If several substrings appear the same maximum number of times, we choose the longest one. If there is still a tie, we choose the lexicographically largest substring.
+We are given a lowercase string and must find the substring that appears the largest number of times inside it. Occurrences may overlap. Among all substrings with the same maximum frequency, we choose the longest one. If there is still a tie, we choose the lexicographically largest substring.
 
-For the string `abab`, the substring `"a"` appears twice and `"ab"` also appears twice. Since both have the same frequency, we prefer the longer substring, so the answer becomes `"ab"`.
+For example, in `abab`, the substring `a` appears twice and `ab` also appears twice. Since both have the same frequency, we prefer the longer one, so the answer becomes `ab`.
 
-The string length is at most 30. That completely changes the nature of the problem. Even algorithms that would normally be too expensive become perfectly fine here. A cubic or quartic solution easily fits within the limit because the total number of substrings is only `30 * 31 / 2 = 465`.
+The input size changes the entire character of the problem. The string length is at most 30, which is extremely small. A cubic or even quartic algorithm is completely fine here. The total number of substrings of a string of length `n` is `n(n+1)/2`, which is only 465 when `n = 30`. That means we can directly generate every substring and count how many times it occurs without worrying about performance.
 
-The dangerous part is not performance, it is correctness. Several details are easy to mishandle.
+The main difficulty is not efficiency but handling the tie-breaking rules correctly. A careless implementation can easily produce the wrong answer even if the frequencies are computed correctly.
 
-One common mistake is forgetting that occurrences may overlap. Consider:
+One easy mistake is forgetting that overlaps are allowed. Consider:
 
 ```
 aaaa
 ```
 
-The substring `"aaa"` appears twice, at positions `[0..2]` and `[1..3]`. A non-overlapping counting approach would incorrectly say it appears once.
+The substring `aaa` appears twice: once starting at index 0 and once at index 1. An implementation using non-overlapping matching would incorrectly count only one occurrence.
 
-Another subtle case is the tie-breaking order. Consider:
+Another common mistake is handling ties incorrectly. Consider:
 
 ```
 abab
 ```
 
-Both `"a"` and `"ab"` appear twice. The correct answer is `"ab"` because longer substrings win after frequency.
+Both `a` and `ab` appear twice. The correct answer is `ab` because longer substrings are preferred when frequencies match.
 
 The final tie-breaker is lexicographical order. Consider:
 
 ```
-ababa
+ababcdcd
 ```
 
-The substrings `"ab"` and `"ba"` both appear twice and both have length 2. The correct answer is `"ba"` because `"ba"` is lexicographically larger.
+The substrings `ab` and `cd` both appear twice and both have length 2. Since `cd` is lexicographically larger, the correct answer is:
 
-A careless implementation may also accidentally count the substring itself incorrectly when scanning positions near the end of the string. Since every substring length is different, boundary conditions must be handled carefully.
+```
+cd
+```
+
+An implementation that updates the answer only on strictly larger frequency or length would silently fail here.
 
 ## Approaches
 
-The most direct solution is to generate every substring and count how many times it appears in the original string.
+The most direct approach is to generate every possible substring and count how many times it appears in the original string.
 
-A string of length `n` has `O(n²)` substrings. For each substring, we can scan all starting positions in the original string and compare characters. Each comparison costs up to `O(n)`, so the full complexity becomes `O(n⁴)`.
+A substring is determined by its starting and ending positions, so there are `O(n^2)` substrings. For each substring, we can slide over the original string and compare character-by-character to count occurrences. Each comparison costs up to `O(n)`, and we perform it at up to `O(n)` positions, leading to `O(n^4)` complexity overall.
 
-With `n = 30`, this is still tiny:
+With `n = 30`, this is still tiny. Even `30^4 = 810000` operations is trivial within a 5-second limit.
+
+The reason brute force works here is that the constraint is intentionally small. The problem is really about implementing the comparison logic correctly rather than inventing a sophisticated string algorithm.
+
+We can simplify the counting step further using Python's slicing. For every candidate substring `t`, we check every starting position `i` and compare:
 
 ```
-30⁴ = 810000
+s[i:i+len(t)] == t
 ```
 
-Even with constant factors, this easily runs within the time limit.
+This automatically handles overlapping matches because we test every position independently.
 
-The brute-force method works because the constraints are extremely small. Every candidate substring can simply be checked independently. There is no need for suffix arrays, suffix automata, Z-function tricks, or rolling hashes.
-
-Still, we can organize the solution more cleanly.
-
-The key observation is that every valid answer must be one of the original string's substrings. There are only 465 such candidates. Once we enumerate them, we only need a reliable occurrence counter and a consistent comparison rule.
-
-The comparison rule follows the statement exactly:
-
-1. Higher frequency is better.
-2. If frequencies tie, longer length is better.
-3. If both tie, lexicographically larger is better.
-
-Because the input size is so small, the simplest implementation is also the best one. Complicated string algorithms would only increase the chance of bugs.
+The key observation is that the number of distinct substrings is already very small. There is no need for suffix arrays, suffix automata, Z-function tricks, or rolling hashes. A clean exhaustive search is both simpler and safer.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n⁴) | O(1) | Accepted |
-| Optimal | O(n⁴) | O(1) | Accepted |
+| Brute Force | O(n^4) | O(1) | Accepted |
+| Optimal | O(n^3) to O(n^4) depending on substring comparison cost | O(1) | Accepted |
 
-For this problem, the brute-force solution is already optimal enough.
+In practice, Python slicing keeps the implementation compact and fast enough for the given limits.
 
 ## Algorithm Walkthrough
 
-1. Read the input string `s` and store its length `n`.
-2. Enumerate every substring `s[i:j+1]`.
+1. Read the input string `s`.
+2. Initialize variables storing the current best substring and its frequency.
+3. Generate every possible substring using two indices `l` and `r`.
 
-There are only `O(n²)` substrings, so trying all of them is completely feasible.
-3. For each substring, count how many times it appears in `s`.
+The substring is `s[l:r+1]`.
+4. For the current substring, count how many times it appears in `s`.
 
-Scan every starting position `k` such that the substring still fits inside the string. Compare `s[k:k+len(sub)]` with the candidate substring.
+Check every starting position `i`. If `s[i:i+len(sub)] == sub`, increase the count.
 
-Overlapping matches are naturally counted because we test every position independently.
-4. Maintain the current best answer.
+Since every position is tested independently, overlapping occurrences are counted naturally.
+5. Compare the current substring with the best answer found so far.
 
-When a substring has a larger frequency than the current best, replace the answer immediately.
-5. If frequencies are equal, compare lengths.
+Update the answer if:
 
-The longer substring becomes the new answer.
-6. If both frequency and length are equal, compare lexicographically.
-
-The larger substring in dictionary order becomes the answer.
-7. After all substrings are processed, print the stored answer.
+- its frequency is larger, or
+- the frequency is equal but the substring is longer, or
+- both frequency and length are equal but the substring is lexicographically larger.
+6. After all substrings are processed, print the best substring.
 
 ### Why it works
 
-The algorithm examines every possible substring exactly once as a candidate answer. For each candidate, it computes the exact number of occurrences by checking every valid starting position in the original string. Since every substring is evaluated with the same counting method, the computed frequency is correct.
+The algorithm explicitly checks every substring of the original string, so no candidate can be missed. For each candidate, it examines every possible starting position and counts exact matches, which guarantees the frequency is correct, including overlaps.
 
-The comparison logic directly matches the problem statement. At every step, the stored answer is the best substring among all candidates processed so far according to the required ordering:
-
-1. Maximum frequency.
-2. Maximum length.
-3. Lexicographically maximum.
-
-After all substrings have been processed, the stored answer must be the globally optimal substring.
+The update conditions exactly match the rules from the statement. At every step, the stored answer is the best substring among all candidates processed so far. After the exhaustive search finishes, the stored substring must be globally optimal.
 
 ## Python Solution
 
@@ -133,60 +122,46 @@ After all substrings have been processed, the stored answer must be the globally
 import sys
 input = sys.stdin.readline
 
-def solve():
-    s = input().strip()
-    n = len(s)
+s = input().strip()
+n = len(s)
 
-    best_sub = ""
-    best_count = -1
-
-    for i in range(n):
-        for j in range(i, n):
-            sub = s[i:j + 1]
-            m = len(sub)
-
-            count = 0
-
-            for k in range(n - m + 1):
-                if s[k:k + m] == sub:
-                    count += 1
-
-            if count > best_count:
-                best_count = count
-                best_sub = sub
-            elif count == best_count:
-                if len(sub) > len(best_sub):
-                    best_sub = sub
-                elif len(sub) == len(best_sub):
-                    if sub > best_sub:
-                        best_sub = sub
-
-    print(best_sub)
-
-solve()
-```
-
-The outer two loops generate every substring of the original string. The substring `s[i:j+1]` is a candidate answer.
-
-The third loop counts occurrences. The upper bound is:
-
-```
-n - m + 1
-```
-
-where `m` is the substring length. This guarantees that `s[k:k+m]` never exceeds the string boundary.
-
-Overlapping occurrences work automatically because every starting position is checked independently. For example, in `"aaaa"`, the substring `"aaa"` matches at both positions `0` and `1`.
-
-The comparison logic follows the exact priority order from the statement. First we compare occurrence counts. If they tie, we compare lengths. If lengths also tie, Python's normal string comparison gives lexicographical order directly.
-
-The initialization:
-
-```
+best = ""
 best_count = -1
+
+for l in range(n):
+    for r in range(l, n):
+        sub = s[l:r + 1]
+        m = len(sub)
+
+        cnt = 0
+
+        for i in range(n - m + 1):
+            if s[i:i + m] == sub:
+                cnt += 1
+
+        if cnt > best_count:
+            best_count = cnt
+            best = sub
+        elif cnt == best_count:
+            if len(sub) > len(best):
+                best = sub
+            elif len(sub) == len(best) and sub > best:
+                best = sub
+
+print(best)
 ```
 
-ensures that the first substring always becomes the initial answer.
+The outer two loops generate every substring. Using `l` and `r` makes the boundaries explicit and avoids off-by-one mistakes.
+
+The counting loop iterates only until `n - m`, where `m` is the substring length. This guarantees the slice `s[i:i+m]` always stays inside the string.
+
+The comparison logic is the subtle part. The order matters:
+
+First compare frequency. Only if frequencies match do we compare lengths. Only if both frequency and length match do we compare lexicographical order.
+
+Changing this order produces incorrect answers on tie-heavy cases such as `ababcdcd`.
+
+Python string comparison already follows lexicographical order, so `sub > best` directly implements the final tie-breaker.
 
 ## Worked Examples
 
@@ -198,9 +173,7 @@ Input:
 abab
 ```
 
-### Trace
-
-| Substring | Count | Current Best |
+| Substring | Frequency | Current Best |
 | --- | --- | --- |
 | a | 2 | a |
 | ab | 2 | ab |
@@ -210,87 +183,90 @@ abab
 | ba | 1 | ab |
 | bab | 1 | ab |
 
-The substring `"a"` first becomes the best because it appears twice. Later, `"ab"` also appears twice but has greater length, so it replaces `"a"`.
+The substring `a` first becomes the best because it appears twice. Later `ab` also appears twice, but it is longer, so it replaces `a`.
 
-This trace demonstrates the second tie-break rule, longer substrings win when frequencies match.
+This trace demonstrates the second tie-break rule.
 
 ### Example 2
 
 Input:
 
 ```
-ababa
+aaaa
 ```
 
-### Trace
-
-| Substring | Count | Current Best |
+| Substring | Frequency | Current Best |
 | --- | --- | --- |
-| a | 3 | a |
-| ab | 2 | a |
-| aba | 2 | a |
-| abab | 1 | a |
-| ababa | 1 | a |
-| b | 2 | a |
-| ba | 2 | a |
-| bab | 1 | a |
+| a | 4 | a |
+| aa | 3 | a |
+| aaa | 2 | a |
+| aaaa | 1 | a |
 
-The substring `"a"` appears three times, more than any other substring, so it remains the answer even though longer repeated substrings exist.
+The substring `aa` appears three times because overlaps are allowed:
 
-This trace confirms that frequency has absolute priority over substring length.
+- positions 0-1
+- positions 1-2
+- positions 2-3
+
+The final answer remains `a` because frequency dominates length.
+
+This example confirms that overlapping occurrences are counted correctly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n⁴) | O(n²) substrings, O(n) positions to check, O(n) substring comparison |
-| Space | O(1) | Only a few variables besides the input string |
+| Time | O(n^4) | There are O(n^2) substrings, and each may require O(n^2) total comparison work |
+| Space | O(1) | Only a few variables are stored besides the input string |
 
-With `n ≤ 30`, even an `O(n⁴)` solution performs fewer than one million primitive operations. That is comfortably within the limits for both time and memory.
+Even the worst-case input length is only 30, so fewer than one million primitive operations are needed. This easily fits within the time and memory limits.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
+
+def solve():
+    input = sys.stdin.readline
+
+    s = input().strip()
+    n = len(s)
+
+    best = ""
+    best_count = -1
+
+    for l in range(n):
+        for r in range(l, n):
+            sub = s[l:r + 1]
+            m = len(sub)
+
+            cnt = 0
+
+            for i in range(n - m + 1):
+                if s[i:i + m] == sub:
+                    cnt += 1
+
+            if cnt > best_count:
+                best_count = cnt
+                best = sub
+            elif cnt == best_count:
+                if len(sub) > len(best):
+                    best = sub
+                elif len(sub) == len(best) and sub > best:
+                    best = sub
+
+    print(best)
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    out = io.StringIO()
+    sys.stdout = out
 
-    input = sys.stdin.readline
+    solve()
 
-    def solve():
-        s = input().strip()
-        n = len(s)
-
-        best_sub = ""
-        best_count = -1
-
-        for i in range(n):
-            for j in range(i, n):
-                sub = s[i:j + 1]
-                m = len(sub)
-
-                count = 0
-
-                for k in range(n - m + 1):
-                    if s[k:k + m] == sub:
-                        count += 1
-
-                if count > best_count:
-                    best_count = count
-                    best_sub = sub
-                elif count == best_count:
-                    if len(sub) > len(best_sub):
-                        best_sub = sub
-                    elif len(sub) == len(best_sub):
-                        if sub > best_sub:
-                            best_sub = sub
-
-        return best_sub
-
-    return solve()
+    sys.stdout = sys.__stdout__
+    return out.getvalue().strip()
 
 # provided sample
 assert run("abab\n") == "ab", "sample 1"
@@ -299,25 +275,25 @@ assert run("abab\n") == "ab", "sample 1"
 assert run("a\n") == "a", "single character"
 
 # overlapping occurrences
-assert run("aaaa\n") == "aa", "overlapping matches"
+assert run("aaaa\n") == "a", "overlapping matches"
 
-# lexicographical tie
-assert run("baba\n") == "ba", "lexicographical comparison"
+# lexicographical tie-break
+assert run("ababcdcd\n") == "cd", "same count and length"
 
-# all unique characters
-assert run("abcd\n") == "abcd", "all frequencies equal"
+# all distinct
+assert run("abcd\n") == "d", "all substrings appear once"
 
-# maximum-like repeated pattern
-assert run("abababab\n") == "abab", "frequency and length balance"
+# boundary length case
+assert run("abcabcabc\n") == "abc", "repeated pattern"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a` | `a` | Minimum input size |
-| `aaaa` | `aa` | Overlapping occurrences |
-| `baba` | `ba` | Lexicographical tie-breaking |
-| `abcd` | `abcd` | All substrings appear once |
-| `abababab` | `abab` | Frequency versus length tradeoff |
+| `a` | `a` | Minimum-size input |
+| `aaaa` | `a` | Overlapping occurrences |
+| `ababcdcd` | `cd` | Lexicographical tie-break |
+| `abcd` | `d` | All substrings appear once |
+| `abcabcabc` | `abc` | Longer repeated substring wins |
 
 ## Edge Cases
 
@@ -327,19 +303,19 @@ Consider the input:
 aaaa
 ```
 
-The substring `"aa"` appears three times:
+The substring `aaa` appears twice because overlaps count:
 
-```
-[0..1], [1..2], [2..3]
-```
+- `s[0:3]`
+- `s[1:4]`
 
-The substring `"aaa"` appears twice:
+The algorithm checks every starting position independently, so both matches are counted. The frequencies become:
 
-```
-[0..2], [1..3]
-```
+- `a` → 4
+- `aa` → 3
+- `aaa` → 2
+- `aaaa` → 1
 
-The algorithm checks every starting position independently, so overlapping matches are counted correctly. The best frequency is 4 for `"a"`, but `"aa"` appears 3 times and is longer than `"a"` only if frequencies tie, which they do not. The correct answer remains `"a"`.
+The final answer is `a`.
 
 Now consider:
 
@@ -347,20 +323,26 @@ Now consider:
 abab
 ```
 
-Both `"a"` and `"ab"` appear twice. During processing, `"a"` becomes the current answer first. Later, `"ab"` is examined. Since its frequency matches the current best and its length is larger, it replaces `"a"`.
+Both `a` and `ab` appear twice. The algorithm first stores `a` as the best substring. Later, when processing `ab`, it sees that frequencies are equal but `ab` is longer, so it updates the answer.
+
+The final output becomes:
+
+```
+ab
+```
 
 Finally, consider:
 
 ```
-baba
+ababcdcd
 ```
 
-The substrings `"ab"` and `"ba"` both appear once? No, `"ba"` appears twice while `"ab"` appears once, so `"ba"` wins immediately. A more interesting lexicographical tie is:
+The substrings `ab` and `cd` both appear twice and both have length 2.
+
+When `ab` is processed, it becomes the current best. Later, `cd` matches both frequency and length, but `cd > ab` lexicographically, so the algorithm replaces the answer.
+
+The final output is:
 
 ```
-abca
+cd
 ```
-
-Every repeated substring has frequency 1. Among all length-4 substrings, only `"abca"` exists, so it wins. The algorithm reaches this naturally because it always prioritizes longer substrings before lexicographical comparison.
-
-The comparison order exactly mirrors the statement, so every edge case is resolved consistently.

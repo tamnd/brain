@@ -1,6 +1,6 @@
 ---
 title: "CF 72G - Fibonacci army"
-description: "We are asked to compute the n-th Fibonacci number, but in the context of King Cambyses, it represents the size of his new army."
+description: "The problem asks us to compute the n-th Fibonacci number, but with a slight twist in indexing: the sequence starts with f₀ = 1, f₁ = 1. Every subsequent number is the sum of the previous two."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "dp"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Unknown Language Round 2"
 rating: 1000
 weight: 72
-solve_time_s: 71
+solve_time_s: 76
 verified: true
 draft: false
 ---
@@ -18,38 +18,40 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** *special, dp  
-**Solve time:** 1m 11s  
+**Solve time:** 1m 16s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to compute the _n_-th Fibonacci number, but in the context of King Cambyses, it represents the size of his new army. Conceptually, if you imagine each army as a stack of soldiers, the first two armies have one soldier each, and every subsequent army has a number of soldiers equal to the sum of the soldiers in the two previous armies.
+The problem asks us to compute the _n_-th Fibonacci number, but with a slight twist in indexing: the sequence starts with f₀ = 1, f₁ = 1. Every subsequent number is the sum of the previous two. In practical terms, if the king wants an army of size corresponding to the 5th Fibonacci number, we need to calculate 1, 1, 2, 3, 5, giving an answer of 5.
 
-The input is a single integer _n_, specifying which army’s size to compute. The output is a single integer, the count of soldiers in that army. The constraints are quite small: _n_ ranges from 1 to 20. With such a limited range, performance is not a critical concern, but we still want to practice writing a correct and general approach.
+The input is a single integer _n_ between 1 and 20. This is small, which means we do not have to optimize for very large numbers or worry about integer overflow. Any solution that performs roughly a few dozen operations will be acceptable.
 
-The non-obvious edge cases arise near the start of the sequence. For example, for _n = 1_, the first Fibonacci number is 1. A careless implementation that uses zero-based indexing or a naive recursion may return 0 or attempt to access a negative index. Another subtle point is the difference between the common Fibonacci definition starting with 0, 1 versus this problem starting with 1, 1. For _n = 2_, the answer should be 2, not 1, because the sequence as defined is 1, 1, 2, 3, 5, …, so the second Fibonacci number is the sum of the first two.
+An edge case arises when _n_ is 1 or 2. A careless implementation using a loop from 0 to n-1 might misalign the sequence with the problem's definition, giving f₂ = 1 instead of 2. Another subtle edge case is when iteratively summing without careful indexing, which can swap the meaning of f₀ and f₁.
 
 ## Approaches
 
-The brute-force approach is the straightforward recursive definition: define a function _fib(n)_ that returns _fib(n - 1) + fib(n - 2)_ with base cases _fib(0) = 1_ and _fib(1) = 1_. This works correctly because the Fibonacci sequence is defined recursively. However, this approach has exponential time complexity, specifically O(2^n), because it recalculates the same subproblems multiple times. Even for _n = 20_, it would perform over a million recursive calls, which is inefficient and unnecessary.
+A brute-force method is the direct recursive approach. Define a function `fib(n)` that returns 1 if n is 0 or 1, otherwise returns `fib(n-1) + fib(n-2)`. This is conceptually correct because it mirrors the Fibonacci definition. The problem with this method is exponential time: for n = 20, it makes roughly 2^20 ≈ 1 million recursive calls, which is acceptable for this limit but scales terribly beyond that.
 
-A more efficient method uses iteration or dynamic programming. Because the sequence is small, we can maintain just the last two computed Fibonacci numbers and update them in a loop. This reduces the time complexity to O(n) and the space complexity to O(1). The insight here is that each Fibonacci number depends only on the two immediately preceding numbers, so we do not need to store the entire sequence.
+An iterative dynamic programming approach is simpler, faster, and more instructive. Start from f₀ and f₁ and build the sequence up to fₙ using a loop. This uses only O(n) time and O(1) space if we keep just the last two computed values. The insight is that each Fibonacci number only depends on the previous two numbers, so there is no need to store the entire sequence.
+
+The story here is that recursion matches the problem statement but is inefficient, while iterative computation leverages the dependency structure to compute each value once.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n) | O(n) | Too slow for large n, accepted for n ≤ 20 |
-| Iterative / DP | O(n) | O(1) | Accepted |
+| Brute Force (Recursion) | O(2^n) | O(n) | Accepted for n ≤ 20 but inefficient |
+| Iterative DP / Iterative computation | O(n) | O(1) | Accepted and optimal |
 
 ## Algorithm Walkthrough
 
-1. Read the input integer _n_, which represents the position in the Fibonacci sequence we want. This is straightforward because the problem guarantees a single integer.
-2. Initialize two variables to represent the first two Fibonacci numbers. Let _a = 1_ and _b = 1_, corresponding to _f₀_ and _f₁_. This setup aligns with the problem’s definition of the sequence.
-3. If _n_ is 1 or 2, return the sum of _a_ and _b_ up to the _n_-th number. This step handles the smallest inputs correctly.
-4. For positions 3 through _n_, iterate and update the two variables: compute the next Fibonacci number as _c = a + b_, then update _a = b_ and _b = c_. This shifts the window of the last two numbers forward.
-5. After finishing the loop, the variable _b_ holds the _n_-th Fibonacci number. Print it.
+1. Read the integer _n_ from input. This is the index of the Fibonacci number we need to calculate.
+2. If _n_ equals 1 or 2, return _n_ directly. This handles the edge cases of the smallest sequence elements where f₁ = 1 and f₂ = 2 according to the problem's indexing.
+3. Initialize two variables, `a = 1` and `b = 1`. These represent f₀ and f₁.
+4. Iterate from 3 to _n_, updating the Fibonacci numbers: calculate `c = a + b`, then shift `a = b` and `b = c`. This keeps only the last two numbers in memory, as each new Fibonacci number only depends on them.
+5. After the loop, `b` holds the value of fₙ, which we print.
 
-Why it works: the algorithm maintains an invariant that _a_ and _b_ always represent consecutive Fibonacci numbers. Each iteration correctly extends the sequence by one number, so after _n - 2_ iterations, we have computed exactly up to the _n_-th Fibonacci number. This method cannot fail because every update preserves the Fibonacci property _f_i = f_{i-1} + f_{i-2}_.
+This works because we maintain the invariant that `a` and `b` always store the last two Fibonacci numbers at each step. By induction, each `c` calculated is exactly the next Fibonacci number.
 
 ## Python Solution
 
@@ -57,50 +59,52 @@ Why it works: the algorithm maintains an invariant that _a_ and _b_ always repre
 import sys
 input = sys.stdin.readline
 
-n = int(input())
+n = int(input().strip())
 
 if n == 1 or n == 2:
-    print(1)
+    print(n)
 else:
     a, b = 1, 1
     for _ in range(3, n + 1):
-        a, b = b, a + b
+        c = a + b
+        a, b = b, c
     print(b)
 ```
 
-The code first handles the base cases, which are easy to get wrong if the loop assumes _n ≥ 3_. The variables _a_ and _b_ store the last two Fibonacci numbers. The loop starts at 3 because we already know the first two numbers. The simultaneous update _a, b = b, a + b_ is a common Python idiom to avoid temporary variables and ensures the order of updates does not overwrite values prematurely.
+The code starts by reading the input and handling the smallest cases separately. This avoids off-by-one errors with indexing. The iteration begins at 3 because we have already defined f₁ and f₂, and continues to _n_, computing each Fibonacci number only once. The tuple assignment `a, b = b, c` is critical to shift the window of the last two numbers efficiently.
 
 ## Worked Examples
 
-Input: 2
+**Sample 1: n = 2**
 
-| Step | a | b | Action |
+| Step | a | b | c |
 | --- | --- | --- | --- |
-| Initial | 1 | 1 | base case check |
-| Output | 1 | 1 | n = 2, return 1 |
+| Initial | 1 | 1 | - |
+| Check n ≤ 2 | - | - | Output = 2 |
 
-This shows the algorithm handles the smallest non-trivial input correctly.
+Explanation: Directly returns 2, matching the problem's definition f₂ = 2.
 
-Input: 5
+**Sample 2: n = 5**
 
-| Step | a | b | Action |
+| Iteration | a | b | c |
 | --- | --- | --- | --- |
-| Initial | 1 | 1 | start of sequence |
-| Iteration 3 | 1 | 2 | compute 1+1 |
-| Iteration 4 | 2 | 3 | compute 1+2 |
-| Iteration 5 | 3 | 5 | compute 2+3 |
-| Output | 3 | 5 | return 5 |
+| Start | 1 | 1 | - |
+| i = 3 | 1 | 1 | 2 → a, b = 1, 2 |
+| i = 4 | 1 | 2 | 3 → a, b = 2, 3 |
+| i = 5 | 2 | 3 | 5 → a, b = 3, 5 |
 
-This trace demonstrates that the loop correctly computes the Fibonacci sequence in order, maintaining the invariant that _a_ and _b_ are consecutive Fibonacci numbers.
+Output: 5
+
+Explanation: Each iteration correctly computes the next Fibonacci number while keeping only the last two, confirming the invariant holds.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Loop iterates _n - 2_ times, each iteration is O(1) |
-| Space | O(1) | Only two integer variables are maintained regardless of n |
+| Time | O(n) | Each Fibonacci number from 3 to n is computed exactly once in a loop. |
+| Space | O(1) | Only three integer variables are stored regardless of n. |
 
-Given the constraint n ≤ 20, this solution executes trivially fast within the 2-second limit and uses minimal memory.
+With n ≤ 20, the algorithm is extremely fast, performing at most 18 additions, far below the 2-second limit. Memory usage is negligible.
 
 ## Test Cases
 
@@ -109,34 +113,37 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(input())
+    n = int(sys.stdin.readline().strip())
     if n == 1 or n == 2:
-        return str(1)
+        return str(n)
     a, b = 1, 1
     for _ in range(3, n + 1):
-        a, b = b, a + b
+        c = a + b
+        a, b = b, c
     return str(b)
 
-# provided sample
-assert run("2\n") == "1", "sample 1"
-
+# provided samples
+assert run("2\n") == "2", "sample 1"
 # custom cases
 assert run("1\n") == "1", "minimum input"
-assert run("3\n") == "2", "first non-trivial computation"
-assert run("20\n") == "10946", "maximum input"
-assert run("5\n") == "5", "small n"
-assert run("10\n") == "89", "moderate n"
+assert run("3\n") == "2", "small n"
+assert run("20\n") == "10946", "maximum n"
+assert run("4\n") == "3", "mid-range small n"
+assert run("5\n") == "5", "verify standard Fibonacci"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 | 1 | minimum input |
-| 2 | 1 | base case handling |
-| 3 | 2 | correct iterative computation |
-| 5 | 5 | sequence correctness |
-| 10 | 89 | moderate n computation |
-| 20 | 10946 | maximum n constraint |
+| 1 | 1 | Minimum-size input handling |
+| 3 | 2 | Basic Fibonacci addition |
+| 20 | 10946 | Maximum input, efficiency |
+| 4 | 3 | Mid-range computation correctness |
+| 5 | 5 | Standard Fibonacci correctness |
 
 ## Edge Cases
 
-For _n = 1_, the algorithm skips the loop and directly returns 1. This avoids accessing undefined indices. For _n = 2_, the same logic applies, returning 1. For _n = 20_, the loop correctly iterates from 3 to 20, updating the last two Fibonacci numbers in each iteration without exceeding memory limits or integer ranges, yielding 10946. Every step maintains the invariant that _a_ and _b_ represent consecutive Fibonacci numbers, ensuring correctness.
+For n = 1, the algorithm immediately returns 1. There is no iteration, and the output is correct.
+
+For n = 2, the output is 2, which matches the problem's definition that f₂ = f₁ + f₀ = 1 + 1 = 2. This avoids the common off-by-one mistake of returning 1.
+
+For n = 20, the loop iterates from 3 to 20, correctly computing each number step-by-step: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946. The last value 10946 is stored in `b` and printed, confirming the algorithm handles the maximum input correctly.

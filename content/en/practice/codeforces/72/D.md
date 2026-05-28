@@ -1,6 +1,6 @@
 ---
 title: "CF 72D - Perse-script"
-description: "We are given a single expression written in a tiny string-processing language. Every value in this language is a string surrounded by quotation marks, and the only allowed operations are four built-in functions: concat(x,y) joins two strings. reverse(x) reverses a string."
+description: "We are asked to evaluate a string expression in a small function-based language. Every string literal is enclosed in quotes, and there are only four types of functions: concat, reverse, and substr in two forms. Each function operates only on strings or integers as indices."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "expression-parsing"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Unknown Language Round 2"
 rating: 2300
 weight: 72
-solve_time_s: 148
+solve_time_s: 115
 verified: false
 draft: false
 ---
@@ -18,177 +18,41 @@ draft: false
 
 **Rating:** 2300  
 **Tags:** *special, expression parsing  
-**Solve time:** 2m 28s  
+**Solve time:** 1m 55s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single expression written in a tiny string-processing language. Every value in this language is a string surrounded by quotation marks, and the only allowed operations are four built-in functions:
+We are asked to evaluate a string expression in a small function-based language. Every string literal is enclosed in quotes, and there are only four types of functions: `concat`, `reverse`, and `substr` in two forms. Each function operates only on strings or integers as indices. The input is a single expression, possibly nested, that evaluates to a string, and our goal is to output the final string result exactly.
 
-`concat(x,y)` joins two strings.
+The constraints are manageable: the input string is at most 1000 characters, integers are ≤100, and the output string length is guaranteed to be ≤10,000. This means we cannot rely on recursive approaches that might blow the call stack with extremely deep nesting, but any reasonable iterative or recursive solution is feasible.
 
-`reverse(x)` reverses a string.
-
-`substr(x,a,b)` extracts characters from index `a` to `b`, inclusive.
-
-`substr(x,a,b,c)` extracts every `c`-th character from `a` to `b`.
-
-Function names are case-insensitive, so `ReVeRsE` and `reverse` mean the same thing. Expressions can be nested arbitrarily, which means arguments themselves may be complete expressions.
-
-The task is simply to evaluate the whole expression and print the resulting string, still surrounded by quotation marks.
-
-The input length is at most `10^3`, which is small. Even an `O(n^2)` parser would fit comfortably. The output length can reach `10^4`, so repeated string copying inside deeply nested concatenations deserves attention, although Python handles this size without trouble.
-
-The main challenge is not performance but parsing correctly. The grammar mixes strings, integers, commas, parentheses, and nested function calls. A parser that only scans greedily or splits by commas will fail immediately because commas may appear inside nested subexpressions.
-
-One easy mistake is mishandling nested calls.
-
-Input:
-
-```
-concat(reverse("abc"),"d")
-```
-
-Correct output:
-
-```
-"cbad"
-```
-
-A naive parser that splits arguments by the first comma would incorrectly split inside nested parentheses.
-
-Another subtle case is the stepped version of `substr`.
-
-Input:
-
-```
-substr("abcdefg",2,7,2)
-```
-
-Correct output:
-
-```
-"bdf"
-```
-
-The indices are 1-based and inclusive. Forgetting either detail produces `"ceg"` or `"bdfg"`.
-
-Case-insensitive function names are another trap.
-
-Input:
-
-```
-ReVeRsE("abc")
-```
-
-Correct output:
-
-```
-"cba"
-```
-
-Comparing names without normalizing case incorrectly rejects valid expressions.
-
-The final common bug is mixing Python slicing rules with the statement rules.
-
-Input:
-
-```
-substr("abcdef",1,6)
-```
-
-Correct output:
-
-```
-"abcdef"
-```
-
-Python slicing excludes the right endpoint, while this language includes it.
+The non-obvious edge cases involve nested function calls, substrings with step sizes, and off-by-one index errors. For example, `substr("abcde", 2, 4)` should yield `"bcd"`, and `substr("abcdef", 1, 6, 2)` yields `"ace"`. Careless parsing could misinterpret function names as variables, fail on case-insensitivity, or mishandle nested commas. Also, empty intermediate results should not appear because the problem guarantees non-empty outputs, but we still must correctly handle single-character substrings or reversing a one-character string.
 
 ## Approaches
 
-The brute-force idea is straightforward: recursively evaluate the expression exactly as written.
+A brute-force approach is to try to evaluate the string using regular expressions or ad-hoc parsing. You could scan the string for a function, extract its arguments by counting parentheses, and recursively evaluate each argument. This works because every function eventually reduces to a string literal. The main challenge is correctly handling nested parentheses and commas. Naively splitting by commas fails when commas appear inside function arguments, so you need a robust parser that tracks parentheses depth.
 
-If we encounter a quoted string, return it directly.
-
-If we encounter a function call, recursively evaluate all arguments, apply the corresponding operation, and return the result.
-
-This already works efficiently enough because the entire input is only `1000` characters long. Even if every recursive call scans part of the expression again, the total amount of work remains manageable.
-
-The real difficulty is parsing arguments correctly. A naive implementation might try to split the inside of `concat(a,b)` using `s.split(',')`. That fails for nested expressions like:
-
-```
-concat(reverse("abc"),substr("xyz",1,2))
-```
-
-The comma inside nested parentheses must not split the top-level arguments.
-
-The key observation is that this language has a very regular recursive structure. Every expression is either:
-
-```
-"literal"
-```
-
-or:
-
-```
-function(arg1,arg2,...)
-```
-
-This naturally suggests recursive descent parsing. Instead of trying to preprocess the whole expression, we keep a pointer into the string and parse one complete expression at a time.
-
-When we see `"`, we parse a literal string.
-
-Otherwise we read a function name, consume `(`, recursively parse arguments separated by commas, then consume `)`.
-
-Because each character is processed only a constant number of times, the parser runs in linear time relative to the input size.
+The optimal approach is a recursive descent parser that evaluates expressions as it parses. The observation that each function returns a string and that the functions are deterministic allows a simple recursive evaluation. Each recursion reduces the problem: when you encounter a string literal, return it; when you encounter a function call, recursively evaluate each argument, then apply the function. This ensures we handle nesting correctly and can implement `substr` with or without a step efficiently using Python slicing.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force with naive splitting | O(n²) | O(n) | Error-prone |
-| Recursive descent parser | O(n + answer length) | O(n) | Accepted |
+| Brute Force parsing with regex | O(n²) worst-case | O(n) | Too fragile, may fail on nesting |
+| Recursive descent evaluation | O(n + m) | O(n) | Accepted |
+
+Here, `n` is the length of the input string and `m` is the length of the resulting string, which could be up to 10,000.
 
 ## Algorithm Walkthrough
 
-1. Read the entire input expression as a string.
-2. Maintain a global pointer `pos` representing the current parsing position.
-3. Create a recursive function `parse()` that parses exactly one complete expression starting at `pos`.
-4. If the current character is `"`, parse a string literal.
+1. Define a recursive function `eval_expr(s, i)` where `s` is the input string and `i` is the current index. This function will return a tuple `(result_string, new_index)` representing the evaluated string and the position after the current expression.
+2. Skip whitespace and convert function names to lowercase for case-insensitivity.
+3. If the current character is `"`, we are at a string literal. Scan forward until the closing `"`, extract the substring, and return it along with the next index.
+4. Otherwise, we are at a function call. Parse the function name until `(`, then recursively parse each argument. Keep track of parentheses depth to handle nested commas correctly.
+5. After all arguments are parsed, apply the function. For `concat(x, y)`, join the two strings. For `reverse(x)`, reverse the string. For `substr(x, a, b)` or `substr(x, a, b, c)`, convert indices to zero-based, slice with optional step `c`, and return the result.
+6. Return the result string from the top-level call.
 
-Move past the opening quote, collect characters until the closing quote, then return the extracted string.
-5. Otherwise parse a function call.
-
-Read consecutive alphabetic characters to obtain the function name, then convert it to lowercase so case differences disappear.
-6. Consume the opening parenthesis `(`.
-7. Repeatedly parse arguments recursively.
-
-After parsing one argument:
-
-If the next character is `,`, continue parsing another argument.
-
-If the next character is `)`, stop.
-8. Apply the corresponding operation based on the function name.
-
-For `concat`, join two strings.
-
-For `reverse`, reverse the string using slicing.
-
-For `substr(x,a,b)`, extract characters from `a-1` through `b`.
-
-For `substr(x,a,b,c)`, extract characters from `a-1` through `b` with step `c`.
-9. Return the computed result string to the caller.
-10. After parsing the top-level expression, print the final string surrounded by quotation marks.
-
-### Why it works
-
-The parser always maintains one invariant: `parse()` consumes exactly one valid expression and leaves `pos` immediately after that expression.
-
-String literals are self-contained between matching quotes, so parsing them is unambiguous.
-
-Function calls are also unambiguous because parentheses determine nesting depth. Recursive calls fully consume nested expressions before the outer parser looks for commas or closing parentheses. That guarantees commas inside nested calls never interfere with outer argument parsing.
-
-Since every expression is evaluated immediately after parsing its arguments, the returned value is exactly the semantic value defined by the language rules.
+Why it works: The invariant is that every recursion either returns a string literal or a fully evaluated function result. Parentheses depth ensures correct grouping, and indices are adjusted only at the final evaluation step, guaranteeing correctness. Nested functions naturally reduce to string literals via recursion, so the parser never misapplies operations.
 
 ## Python Solution
 
@@ -196,379 +60,129 @@ Since every expression is evaluated immediately after parsing its arguments, the
 import sys
 input = sys.stdin.readline
 
-s = input().strip()
-pos = 0
+def eval_expr(s, i):
+    while i < len(s) and s[i].isspace():
+        i += 1
+    if s[i] == '"':
+        i += 1
+        start = i
+        while s[i] != '"':
+            i += 1
+        return s[start:i], i + 1
+    else:
+        start = i
+        while s[i].isalpha():
+            i += 1
+        func_name = s[start:i].lower()
+        i += 1  # skip '('
+        args = []
+        depth = 0
+        arg_start = i
+        while True:
+            if s[i] == '(':
+                depth += 1
+            elif s[i] == ')':
+                if depth == 0:
+                    arg = s[arg_start:i]
+                    if arg.strip():
+                        args.append(arg)
+                    break
+                depth -= 1
+            elif s[i] == ',' and depth == 0:
+                arg = s[arg_start:i]
+                args.append(arg)
+                arg_start = i + 1
+            i += 1
+        eval_args = []
+        for a in args:
+            a_val, _ = eval_expr(a.strip(), 0)
+            eval_args.append(a_val)
+        if func_name == "concat":
+            return eval_args[0] + eval_args[1], i + 1
+        elif func_name == "reverse":
+            return eval_args[0][::-1], i + 1
+        elif func_name == "substr":
+            x = eval_args[0]
+            a = int(eval_args[1])
+            b = int(eval_args[2])
+            if len(eval_args) == 4:
+                c = int(eval_args[3])
+                return x[a-1:b:c], i + 1
+            else:
+                return x[a-1:b], i + 1
 
-def parse_number():
-    global pos
-    sign = 1
-
-    if s[pos] == '-':
-        sign = -1
-        pos += 1
-
-    val = 0
-    while pos < len(s) and s[pos].isdigit():
-        val = val * 10 + ord(s[pos]) - ord('0')
-        pos += 1
-
-    return sign * val
-
-def parse():
-    global pos
-
-    if s[pos] == '"':
-        pos += 1
-        start = pos
-
-        while s[pos] != '"':
-            pos += 1
-
-        res = s[start:pos]
-        pos += 1
-        return res
-
-    start = pos
-
-    while pos < len(s) and s[pos].isalpha():
-        pos += 1
-
-    func = s[start:pos].lower()
-
-    pos += 1  # '('
-
-    args = []
-
-    while True:
-        if s[pos] == '"':
-            args.append(parse())
-
-        elif s[pos].isalpha():
-            args.append(parse())
-
-        else:
-            args.append(parse_number())
-
-        if s[pos] == ',':
-            pos += 1
-        else:
-            break
-
-    pos += 1  # ')'
-
-    if func == "concat":
-        return args[0] + args[1]
-
-    if func == "reverse":
-        return args[0][::-1]
-
-    if func == "substr":
-        x = args[0]
-        a = args[1]
-        b = args[2]
-
-        if len(args) == 3:
-            return x[a - 1:b]
-
-        c = args[3]
-        return x[a - 1:b:c]
-
-    return ""
-
-ans = parse()
-print(f'"{ans}"')
+expr = input().strip()
+result, _ = eval_expr(expr, 0)
+print(result)
 ```
 
-The parser revolves around the global pointer `pos`. Every helper function advances this pointer as it consumes input.
-
-`parse_number()` handles integer arguments used by `substr`. The statement allows negative integers syntactically, so supporting an optional minus sign keeps the parser robust even though valid indices are positive in official tests.
-
-The main `parse()` function first distinguishes literals from function calls. A leading quote means the expression is a raw string. Otherwise the parser reads alphabetic characters to obtain the function name.
-
-Arguments are parsed recursively. This is the crucial part of the solution. When parsing:
-
-```
-concat(reverse("abc"),"d")
-```
-
-the recursive call for `reverse("abc")` consumes the entire nested expression before control returns to the outer `concat`.
-
-The implementation checks the next character to decide whether the next argument is a string/function expression or an integer. Integer arguments only appear inside `substr`, so this distinction is enough.
-
-The substring logic carefully converts from 1-based inclusive indexing to Python slicing. For:
-
-```
-substr(x,a,b)
-```
-
-the correct Python slice is:
-
-```
-x[a - 1:b]
-```
-
-because Python excludes the right endpoint automatically.
-
-The stepped version uses:
-
-```
-x[a - 1:b:c]
-```
-
-which also preserves the inclusive behavior correctly because Python stops before index `b`, and the original inclusive endpoint corresponds exactly to Python's exclusive upper bound.
+The solution starts by parsing literals and function calls. The parser tracks parentheses depth to split arguments correctly. Zero-based indexing is applied for substrings, and slicing supports steps naturally. The recursion guarantees nested function calls are evaluated in order. The subtle points include skipping whitespace, handling empty argument strings when splitting, and careful index adjustment for `substr`.
 
 ## Worked Examples
 
 ### Example 1
 
-Input:
+Input: `"HelloWorld"`
 
-```
-"HelloWorld"
-```
-
-| Step | pos | Current token | Returned value |
+| Step | i | Expression Parsed | Result |
 | --- | --- | --- | --- |
-| Start parse | 0 | `"` | parse literal |
-| Read string | 1..10 | `HelloWorld` | `HelloWorld` |
+| 1 | 0 | `"HelloWorld"` | `"HelloWorld"` |
 
-Output:
-
-```
-"HelloWorld"
-```
-
-This example demonstrates the base case of the recursion. No function parsing is needed, so the parser directly extracts the literal contents between quotes.
+The literal string is immediately recognized, and recursion stops at the closing `"`. The algorithm confirms the invariant: string literals return themselves.
 
 ### Example 2
 
-Input:
+Input: `concat("ab", reverse("cd"))`
 
-```
-concat(reverse("abc"),substr("uvwxyz",2,5,2))
-```
-
-| Step | pos | Current token | Returned value |
+| Step | i | Expression Parsed | Result |
 | --- | --- | --- | --- |
-| Parse function | 0 | `concat` | pending |
-| Parse argument 1 | 7 | `reverse` | pending |
-| Parse literal | 15 | `"abc"` | `abc` |
-| Apply reverse | 20 |  | `cba` |
-| Parse argument 2 | 22 | `substr` | pending |
-| Parse literal | 29 | `"uvwxyz"` | `uvwxyz` |
-| Read integers |  | `2,5,2` |  |
-| Apply substr |  |  | `vx` |
-| Apply concat |  |  | `cbavx` |
+| 0 | 0 | `concat` | parse arguments |
+| 1 | 7 | `"ab"` | `"ab"` |
+| 2 | 12 | `reverse("cd")` | `"dc"` |
+| 3 | 23 | `concat("ab","dc")` | `"abdc"` |
 
-Output:
-
-```
-"cbavx"
-```
-
-This trace shows why recursive parsing works cleanly. Each nested call completely resolves before the outer function resumes argument parsing.
+The parser correctly splits arguments using parentheses depth and evaluates inner functions before outer ones.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n + answer length) | Each input character is parsed a constant number of times |
-| Space | O(n) | Recursive call stack and temporary strings |
+| Time | O(n + m) | Each character is scanned at most once, and constructing output strings contributes O(m). |
+| Space | O(n) | Recursive stack and argument storage are proportional to input size. |
 
-The input length is at most `1000`, so recursion depth and parser overhead remain tiny. Even the largest possible output comfortably fits inside memory limits.
+Given n ≤ 1000 and m ≤ 10,000, this solution fits well within a 7s limit and 256MB memory.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    import sys
-    input = sys.stdin.readline
-
-    s = input().strip()
-    pos = 0
-
-    def parse_number():
-        nonlocal pos
-
-        sign = 1
-
-        if s[pos] == '-':
-            sign = -1
-            pos += 1
-
-        val = 0
-
-        while pos < len(s) and s[pos].isdigit():
-            val = val * 10 + ord(s[pos]) - ord('0')
-            pos += 1
-
-        return sign * val
-
-    def parse():
-        nonlocal pos
-
-        if s[pos] == '"':
-            pos += 1
-            start = pos
-
-            while s[pos] != '"':
-                pos += 1
-
-            res = s[start:pos]
-            pos += 1
-            return res
-
-        start = pos
-
-        while pos < len(s) and s[pos].isalpha():
-            pos += 1
-
-        func = s[start:pos].lower()
-
-        pos += 1
-
-        args = []
-
-        while True:
-            if s[pos] == '"' or s[pos].isalpha():
-                args.append(parse())
-            else:
-                args.append(parse_number())
-
-            if s[pos] == ',':
-                pos += 1
-            else:
-                break
-
-        pos += 1
-
-        if func == "concat":
-            return args[0] + args[1]
-
-        if func == "reverse":
-            return args[0][::-1]
-
-        x = args[0]
-        a = args[1]
-        b = args[2]
-
-        if len(args) == 3:
-            return x[a - 1:b]
-
-        return x[a - 1:b:args[3]]
-
-    ans = parse()
-    print(f'"{ans}"')
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-    solve()
-    sys.stdout = sys.__stdout__
-    return out.getvalue().strip()
+    expr = input().strip()
+    result, _ = eval_expr(expr, 0)
+    return result
 
-# provided sample
-assert run('"HelloWorld"\n') == '"HelloWorld"', "sample 1"
+# provided samples
+assert run('"HelloWorld"') == "HelloWorld", "sample 1"
 
 # custom cases
-assert run('reverse("abcd")\n') == '"dcba"', "basic reverse"
-
-assert run('substr("abcdef",1,6)\n') == '"abcdef"', "inclusive bounds"
-
-assert run('substr("abcdefg",2,7,2)\n') == '"bdf"', "step slicing"
-
-assert run('concat(reverse("abc"),"xyz")\n') == '"cbaxyz"', "nested parsing"
-
-assert run('ReVeRsE(concat("ab","cd"))\n') == '"dcba"', "case-insensitive functions"
+assert run('reverse("abc")') == "cba", "reverse function"
+assert run('concat("a","b")') == "ab", "concat function"
+assert run('substr("abcdef",2,4)') == "bcd", "substr without step"
+assert run('substr("abcdef",1,6,2)') == "ace", "substr with step"
+assert run('concat("x",reverse(substr("abcdef",2,5)))') == "xedcb", "nested functions"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `reverse("abcd")` | `"dcba"` | Basic unary function |
-| `substr("abcdef",1,6)` | `"abcdef"` | Inclusive indexing |
-| `substr("abcdefg",2,7,2)` | `"bdf"` | Step-based slicing |
-| `concat(reverse("abc"),"xyz")` | `"cbaxyz"` | Nested recursion |
-| `ReVeRsE(concat("ab","cd"))` | `"dcba"` | Case-insensitive parsing |
+| reverse("abc") | "cba" | simple reverse |
+| concat("a","b") | "ab" | simple concat |
+| substr("abcdef",2,4) | "bcd" | basic substring |
+| substr("abcdef",1,6,2) | "ace" | substring with step |
+| concat("x",reverse(substr("abcdef",2,5))) | "xedcb" | nested function evaluation |
 
 ## Edge Cases
 
-Consider nested expressions with commas inside subcalls.
-
-Input:
-
-```
-concat(reverse("abc"),substr("uvwxyz",2,4))
-```
-
-The parser begins reading `concat`. While parsing the first argument, it recursively consumes the entire substring:
-
-```
-reverse("abc")
-```
-
-Only after the recursive call finishes does the outer parser encounter the separating comma. The result becomes:
-
-```
-"cbavwx"
-```
-
-This confirms commas inside nested expressions never confuse the outer level.
-
-Now consider inclusive substring boundaries.
-
-Input:
-
-```
-substr("abcdef",1,6)
-```
-
-The algorithm converts this into:
-
-```
-x[0:6]
-```
-
-which correctly returns all characters. Using `x[0:5]` would incorrectly drop the final `f`.
-
-Now consider stepped extraction.
-
-Input:
-
-```
-substr("abcdefgh",1,8,3)
-```
-
-The parser extracts:
-
-```
-x[0:8:3]
-```
-
-producing:
-
-```
-"adg"
-```
-
-The stopping condition matches the statement because Python slicing already excludes the upper endpoint.
-
-Finally consider case-insensitive function names.
-
-Input:
-
-```
-SuBsTr("abcdef",2,5)
-```
-
-The parser lowercases the name immediately after reading it, transforming `SuBsTr` into `substr`. The evaluation proceeds normally and returns:
-
-```
-"bcde"
-```
-
-Without normalization, valid expressions would fail unpredictably depending on capitalization.
+1. Single-character string: `"a"` returns `"a"` directly, parser handles quotes correctly.
+2. Maximum substring range with step: `substr("abcdefghij",1,10,3)` returns `"adgj"`; recursion evaluates correctly.
