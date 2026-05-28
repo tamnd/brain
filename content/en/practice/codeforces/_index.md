@@ -91,7 +91,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [74](74/) | [Codeforces Beta Round 68](https://codeforces.com/contest/74) | Beta | 1000-2800 | 4/5 | 22m 53s |
 | [75](75/) | [Codeforces Beta Round 67 (Div. 2)](https://codeforces.com/contest/75) | Div. 2 | 1000-2400 | 4/5 | 9m 31s |
 | [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 1700-2700 | 5/6 | 12m 33s |
-| [77](77/) | [Codeforces Beta Round 69 (Div. 1 Only)](https://codeforces.com/contest/77) | Div. 1 | 1400-2800 | 2/5 | 10m 10s |
+| [77](77/) | [Codeforces Beta Round 69 (Div. 1 Only)](https://codeforces.com/contest/77) | Div. 1 | 1400-2800 | 2/5 | 11m 16s |
 | [78](78/) | [Codeforces Beta Round 70 (Div. 2)](https://codeforces.com/contest/78) | Div. 2 | 800-2300 | 4/5 | 12m 27s |
 | [79](79/) | [Codeforces Beta Round 71](https://codeforces.com/contest/79) | Beta | 1200-2900 | 4/5 | 8m 40s |
 | [80](80/) | [Codeforces Beta Round 69 (Div. 2 Only)](https://codeforces.com/contest/80) | Div. 2 | 800-1200 | 1/2 | 3m 11s |

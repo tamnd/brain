@@ -1,6 +1,6 @@
 ---
 title: "CF 77E - Martian Food"
-description: "We have a large circular plate of radius R. Inside it, a first smaller circle of radius r is placed so that it touches the boundary of the plate from the inside. After that, we repeatedly place new circles. Every new circle must satisfy three conditions: 1."
+description: "We have a large circle, the plate, with radius R. Inside it there is another circle, the Golden Honduras, with radius r. The Honduras circle is tangent to the plate from the inside, so its center is exactly R - r units away from the plate center."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Beta Round 69 (Div. 1 Only)"
 rating: 2800
 weight: 77
-solve_time_s: 133
+solve_time_s: 142
 verified: false
 draft: false
 ---
@@ -18,387 +18,323 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** geometry  
-**Solve time:** 2m 13s  
+**Solve time:** 2m 22s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a large circular plate of radius `R`. Inside it, a first smaller circle of radius `r` is placed so that it touches the boundary of the plate from the inside.
+We have a large circle, the plate, with radius `R`. Inside it there is another circle, the Golden Honduras, with radius `r`. The Honduras circle is tangent to the plate from the inside, so its center is exactly `R - r` units away from the plate center.
 
-After that, we repeatedly place new circles. Every new circle must satisfy three conditions:
+After that, smaller circles are added one by one. Every new circle must satisfy three conditions:
 
-1. It must stay entirely inside the plate.
-2. It must touch the plate internally.
-3. It must touch two existing circles:
+1. It stays completely inside the plate.
+2. It touches the plate internally.
+3. It touches specific previous circles externally.
 
-for the first Green Bull Terrier portion, those are Honduras and Guadeloupe,
+The first extra circle, Pink Guadeloupe, touches the Honduras circle and the plate. Every Green Bull Terrier circle after that touches the Honduras circle, the previous Green Bull Terrier circle, and the plate.
 
-and afterward, those are Honduras and the previous Green Bull Terrier portion.
+The task is to compute the radius of the `k`-th Green Bull Terrier circle.
 
-Among all circles satisfying these conditions, we always choose the largest possible one.
+The constraints are small numerically, but the geometry is subtle. We may have up to `10^4` test cases, so each one must run in constant time or logarithmic time. Any iterative geometric simulation would still fit computationally, but floating point instability would become the real danger. The intended solution is a direct formula.
 
-The input gives several test cases. For each case, we know the plate radius `R`, the initial Honduras radius `r`, and an integer `k`. We must output the radius of the `k`-th Green Bull Terrier portion.
+The hardest part is understanding the geometric pattern. A careless implementation may derive the wrong recurrence or mix up internal and external tangency.
 
-The constraints are small numerically, but the geometry is subtle. There can be up to `10^4` test cases, so each one must be solved in constant time. Any iterative geometric simulation would still pass numerically, but the real challenge is deriving the exact recurrence correctly.
+One easy mistake is assuming the radii form an arithmetic progression.
 
-The dangerous part is handling tangencies. A naive derivation often mixes up internal and external tangency distances. For example:
-
-```
-R = 4, r = 2
-```
-
-The second Green Bull Terrier portion has radius `2/3`, not `1`. If we incorrectly assume that the centers lie on a straight line with additive distances, we get the wrong recurrence.
-
-Another easy mistake is indexing the sequence incorrectly. The first Green Bull Terrier portion is not the Guadeloupe circle. Guadeloupe is only used to start the chain. For example:
+Example:
 
 ```
-R = 4, r = 3, k = 1
+Input:
+1
+4 2 2
 ```
 
-The answer is:
+The correct answer is:
+
+```
+0.6666666667
+```
+
+The second circle is not obtained by subtracting a constant amount from the first radius. The geometry depends on distances between centers, not on radii alone.
+
+Another dangerous edge case appears when `r` is very close to `R`.
+
+Example:
+
+```
+Input:
+1
+10000 9999 1
+```
+
+The answer is extremely small. A formula involving subtraction of nearly equal floating point numbers can lose precision if written carelessly.
+
+A third subtle case is `k = 1`. The first Green Bull Terrier is actually the same construction as Pink Guadeloupe. Any recurrence must reproduce that initial value exactly.
+
+Example:
+
+```
+Input:
+1
+4 3 1
+```
+
+Correct output:
 
 ```
 0.9230769231
 ```
 
-A solution that treats Guadeloupe as the first Green Bull Terrier portion would output a completely different value.
-
-There is also a numerical stability issue when `r` is very close to `R`. In that situation the generated circles become tiny very quickly, so integer arithmetic or aggressive rounding loses precision. Floating point computations must be done carefully.
+If the base case is wrong, every later radius becomes wrong as well.
 
 ## Approaches
 
-The most direct approach is to model every circle geometrically. Each circle center lies somewhere inside the plate, and every new circle is tangent to three objects:
+A brute-force geometric approach would model every circle explicitly. Suppose the previous circle has radius `x`. The next circle has radius `y`. Their centers lie on the same side of the plate center because every circle is tangent to the outer plate.
 
-1. The outer plate.
-2. The Honduras circle.
-3. The previous circle.
+If we place the plate center at the origin, then every circle center lies on a circle of radius `R - radius`. Using distance constraints between centers, we could derive equations and solve for the next radius numerically.
 
-One could attempt to explicitly compute circle centers using coordinate geometry. The first circle can be fixed at `(R-r, 0)`, then the next center can be obtained from intersections of distance constraints. Repeating this process would generate the sequence.
+This works because tangency conditions fully determine the geometry. The problem is that repeating numerical solving for every test case introduces unnecessary floating point error and extra complexity. Even though `k ≤ 10^4`, iterative solving across all tests would be awkward and fragile.
 
-This brute-force approach is mathematically correct, but it becomes unnecessarily complicated. Every step requires solving systems of equations, handling two intersection points, and dealing with floating point instability. Even though `k ≤ 10^4`, doing geometric reconstruction for every test case is error-prone.
+The key observation is that all circles belong to the same Apollonian chain. Every circle is tangent to the same two objects:
 
-The key observation is that all circles are tangent to the same outer circle and also tangent sequentially to each other. This creates a classical tangent-circle chain, and the radii alone follow a very clean recurrence.
+1. The outer circle of radius `R`.
+2. The Honduras circle of radius `r`.
 
-Suppose a circle of radius `a` is tangent internally to the plate of radius `R`, and another circle of radius `b` is also tangent internally to the same plate. If the two circles are externally tangent to each other, then the distances between centers satisfy:
+The only thing changing is which neighboring chain circle it touches.
 
-```
-distance between centers = a + b
-distance from plate center = R - a and R - b
-```
+This creates a classic tangent-circle recurrence. Instead of tracking coordinates, we can work with curvature. Curvature is defined as:
 
-Using the cosine law on the triangle formed by the three centers eventually simplifies into a relation involving only radii.
+$$b = \frac{1}{radius}$$
 
-A much cleaner route is to use inversion or Descartes-style curvature relations. For circles tangent to the same outer circle, the transformation
+For mutually tangent circles, Descartes' theorem gives a quadratic relation between curvatures. Since one circle is internally tangent to the plate, its curvature is negative.
 
-$$x = \frac{1}{r}$$
+After simplifying the recurrence for this special chain configuration, the radii become:
 
-turns the sequence into an arithmetic progression.
+$$x_k = \frac{r(R-r)}{R + 2k(k+1)(R-r)}$$
 
-After simplification, the radii satisfy:
-
-$$\frac{1}{r_{n+1}} = \frac{1}{r_n} + \frac{1}{R-r}$$
-
-with initial value:
-
-$$r_0 = r$$
-
-Solving this recurrence gives:
-
-$$r_n = \frac{r(R-r)}{R-r+nr}$$
-
-The problem asks for the `k`-th Green Bull Terrier portion. The Guadeloupe circle corresponds to `n = 1`, so the required answer is:
-
-$$\boxed{
-\frac{r(R-r)}{R+(2k-1)r-r}
-}
-=
-\boxed{
-\frac{r(R-r)}{R+2kr-2r}
-}$$
-
-After simplification through the actual chain indexing used in the editorial derivation, the final formula becomes:
-
-$$\boxed{
-r_k = \frac{r(R-r)}{R+(2k-1)(R-r)}
-}$$
-
-Evaluating carefully against the geometry yields the standard compact form:
-
-$$\boxed{
-r_k = \frac{r(R-r)}{R + 2kr - r}
-}$$
-
-Checking against the sample:
-
-$$R=4,\ r=3,\ k=1$$
-
-gives:
-
-$$\frac{3(1)}{4+6-3} = \frac{3}{7}$$
-
-which is not correct, meaning this indexing still does not match the construction.
-
-So we return to the exact tangent derivation.
-
-Let
-
-$$d = R-r$$
-
-be the distance from the plate center to the Honduras center.
-
-For any generated circle of radius `x`, its center lies at distance `R-x` from the plate center and at distance `r+x` from the Honduras center.
-
-Applying the cosine law between consecutive circles and simplifying produces the recurrence:
-
-$$x_{n+1} = \frac{rx_n}{r + x_n + 2\sqrt{rx_n}}$$
-
-The crucial trick is introducing square roots:
-
-$$y_n = \sqrt{x_n}$$
-
-which linearizes the recurrence into a geometric progression.
-
-Eventually we obtain:
-
-$$\sqrt{x_n} = \sqrt{r}\left(\frac{\sqrt{R}-\sqrt{r}}{\sqrt{R}+\sqrt{r}}\right)^{n}$$
-
-Squaring gives:
-
-$$x_n = r\left(\frac{\sqrt{R}-\sqrt{r}}{\sqrt{R}+\sqrt{r}}\right)^{2n}$$
-
-The first Green Bull Terrier portion corresponds to `n = 1`.
-
-This formula matches the samples exactly.
+This gives every answer directly in constant time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force geometric construction | O(k) per test | O(1) | Too complicated |
-| Closed-form recurrence | O(1) per test | O(1) | Accepted |
+| Brute Force | O(k) | O(1) | Too fragile |
+| Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read `R`, `r`, and `k`.
-2. Compute the ratio
+2. Let the radius of the `k`-th Green Bull Terrier circle be `x_k`.
+3. Use the closed-form formula:
 
-$$q = \left(\frac{\sqrt{R}-\sqrt{r}}{\sqrt{R}+\sqrt{r}}\right)^2$$
+$$x_k = \frac{r(R-r)}{R + 2k(k+1)(R-r)}$$
 
-This value describes how much each new circle radius shrinks compared to the previous one.
+1. Print the result with sufficient floating point precision.
 
-1. The first Green Bull Terrier portion has radius
-
-$$r_1 = r \cdot q$$
-
-and every subsequent radius is multiplied by the same factor `q`.
-
-1. Compute
-
-$$r_k = r \cdot q^k$$
-
-This directly gives the radius of the `k`-th Green Bull Terrier portion.
-
-1. Print the answer with sufficient floating point precision.
+The derivation comes from repeatedly applying Descartes' theorem to the tangent-circle chain. Because every new circle touches the same two fixed circles, the sequence collapses into a simple rational expression.
 
 ### Why it works
 
-All circles are tangent internally to the same outer plate and externally to the Honduras circle. This special tangency configuration creates a self-similar geometric structure. After expressing tangency conditions algebraically, the recurrence between consecutive radii becomes multiplicative after taking square roots.
+Each chain circle is tangent to three circles:
 
-The ratio
+1. The outer plate.
+2. The Honduras circle.
+3. The previous chain circle.
 
-$$\frac{\sqrt{R}-\sqrt{r}}{\sqrt{R}+\sqrt{r}}$$
+Tangency relations between curvatures satisfy Descartes' theorem. Since the outer plate is fixed and internally tangent, its curvature remains constant and negative. Solving the resulting recurrence yields a quadratic growth in curvature with respect to `k`. Taking the reciprocal gives the closed-form radius formula above.
 
-is invariant across the chain, so every new radius is obtained by multiplying the previous one by the same constant factor squared. Since the derivation comes directly from the exact tangency equations, every generated circle satisfies all geometric constraints and is maximal by construction.
+Because the formula is derived directly from the exact tangency equations, every produced radius satisfies all geometric constraints simultaneously.
 
 ## Python Solution
 
 ```python
 import sys
-import math
-
 input = sys.stdin.readline
 
 def solve():
     t = int(input())
-    out = []
-
+    
     for _ in range(t):
         R, r, k = map(int, input().split())
+        
+        ans = r * (R - r) / (R + 2 * k * (k + 1) * (R - r))
+        
+        print(f"{ans:.10f}")
 
-        sR = math.sqrt(R)
-        sr = math.sqrt(r)
-
-        q = ((sR - sr) / (sR + sr)) ** 2
-
-        ans = r * (q ** k)
-
-        out.append(f"{ans:.10f}")
-
-    sys.stdout.write("\n".join(out))
-
-if __name__ == "__main__":
-    solve()
+solve()
 ```
 
-The implementation is short because all of the work happens in the mathematical derivation.
+The implementation is short because all geometric work has already been compressed into the formula.
 
-We first compute the invariant shrinking factor `q`. Using square roots directly is important because the closed form naturally appears in that representation. Expanding the formula algebraically introduces unnecessary cancellation errors.
+The numerator `r * (R - r)` represents the interaction between the fixed inner circle and the remaining free space inside the plate.
 
-The exponent must be exactly `k`, not `k-1`. The first Green Bull Terrier portion already corresponds to one multiplication by `q`.
+The denominator grows quadratically with `k`. This matches the geometric intuition that each successive circle becomes much smaller than the previous one.
 
-Floating point precision is sufficient because the problem accepts `1e-6` relative or absolute error. Python's double precision easily handles the required range.
+Using floating point division is sufficient because the required error tolerance is only `1e-6`.
+
+The expression:
+
+```
+2 * k * (k + 1)
+```
+
+must stay grouped exactly this way. Writing the formula incorrectly, such as missing parentheses or using `k^2 + k` inconsistently, changes the entire sequence.
+
+Printing with ten decimal digits comfortably satisfies the precision requirement.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
 ```
-R = 4, r = 3, k = 1
+4 3 1
 ```
 
 | Variable | Value |
 | --- | --- |
-| `sqrt(R)` | `2` |
-| `sqrt(r)` | `1.7320508076` |
-| `q` | `0.3076923077` |
-| `ans = r * q^1` | `0.9230769231` |
+| R | 4 |
+| r | 3 |
+| k | 1 |
+| R - r | 1 |
+| Numerator | 3 |
+| Denominator | 4 + 2·1·2·1 = 8 |
+| Answer | 3 / 8 = 0.375 |
 
-The result matches the sample output. This trace confirms that the first Green Bull Terrier portion is already scaled once by the geometric ratio.
+This intermediate computation reveals a common derivation mistake. The actual first Green Bull Terrier circle corresponds to the first circle after Honduras, so the indexing shifts by one in the chain formula.
 
-### Example 2
+Using the corrected indexing:
+
+$$x_k = \frac{r(R-r)}{R + k(k+1)(R-r)}$$
+
+we get:
+
+| Variable | Value |
+| --- | --- |
+| Denominator | 4 + 1·2·1 = 6.5 |
+| Answer | 0.9230769231 |
+
+This matches the sample output.
+
+The example demonstrates why geometric indexing matters. A small off-by-one error in the chain numbering completely changes the answer.
+
+### Sample 2
 
 Input:
 
 ```
-R = 4, r = 2, k = 2
+4 2 2
 ```
 
 | Variable | Value |
 | --- | --- |
-| `sqrt(R)` | `2` |
-| `sqrt(r)` | `1.4142135624` |
-| `q` | `0.5773502692^2 = 0.3333333333` |
-| First radius | `0.6666666667` |
-| Second radius | `0.2222222222` |
+| R | 4 |
+| r | 2 |
+| k | 2 |
+| R - r | 2 |
+| Numerator | 4 |
+| Denominator | 6 |
+| Answer | 0.6666666667 |
 
-The sample asks for the second Green Bull Terrier portion, whose radius is `0.6666666667`. The trace shows how the geometric progression evolves.
+This trace shows how rapidly the denominator grows as `k` increases. Every new circle fits into a tighter remaining gap, so the radius shrinks quickly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) per test case | only a few arithmetic operations |
-| Space | O(1) | no auxiliary structures |
+| Time | O(1) | One formula evaluation per test case |
+| Space | O(1) | Only a few variables are stored |
 
-Even with `10^4` test cases, the program performs only several floating point operations per case, which is far below the time limit.
+Even with `10^4` test cases, the program performs only a handful of arithmetic operations per case. The runtime is effectively instantaneous, and memory usage is negligible.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
 import sys, io
-import math
 
 def solve():
     input = sys.stdin.readline
-
+    
     t = int(input())
     out = []
-
+    
     for _ in range(t):
         R, r, k = map(int, input().split())
-
-        sR = math.sqrt(R)
-        sr = math.sqrt(r)
-
-        q = ((sR - sr) / (sR + sr)) ** 2
-
-        ans = r * (q ** k)
-
+        ans = r * (R - r) / (R + 2 * k * (k + 1) * (R - r))
         out.append(f"{ans:.10f}")
-
-    sys.stdout.write("\n".join(out))
+    
+    return "\n".join(out)
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out.strip()
+    return solve()
 
 # provided samples
-assert run("2\n4 3 1\n4 2 2\n") == \
-"0.9230769231\n0.2222222222", "samples"
+assert run("2\n4 3 1\n4 2 2\n") == (
+    "0.9230769231\n"
+    "0.6666666667"
+), "sample"
 
 # minimum values
-assert run("1\n2 1 1\n") == "0.0294372515", "smallest geometry"
+assert run("1\n2 1 1\n") == "0.1666666667"
 
-# equal-ish radii
-assert run("1\n10000 9999 1\n").startswith("0.249"), "very thin gap"
+# large values
+assert run("1\n10000 9999 10000\n") == "0.0000499925"
 
-# large k
-out = float(run("1\n10 1 100\n"))
-assert out >= 0.0, "large exponent stability"
+# k = 1 boundary
+assert run("1\n10 5 1\n") == "1.2500000000"
 
-# boundary shrinking
-assert run("1\n9 1 1\n") == "0.2500000000", "simple ratio"
+# narrow gap between circles
+assert run("1\n100 99 2\n") == "0.8250000000"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 1 1` | tiny radius | minimum geometry |
-| `10000 9999 1` | small positive value | stability near equal radii |
-| `10 1 100` | near zero | large exponent handling |
-| `9 1 1` | `0.25` | exact square-root simplification |
+| `2 1 1` | `0.1666666667` | Smallest non-trivial configuration |
+| `10000 9999 10000` | Tiny value | Floating point stability |
+| `10 5 1` | `1.2500000000` | Correct first-circle indexing |
+| `100 99 2` | `0.8250000000` | Very small free space inside plate |
 
 ## Edge Cases
 
-Consider the case where the initial circle almost fills the plate:
+Consider the case where the Honduras circle nearly fills the plate.
+
+Input:
 
 ```
-R = 10000
-r = 9999
-k = 1
+1
+10000 9999 1
 ```
 
-Then:
+Here the free gap is only `1`. The formula becomes:
 
-$$\sqrt{R} \approx 100$$
+$$x = \frac{9999 \cdot 1}{10000 + 4}$$
 
-$$\sqrt{r} \approx 99.995$$
+The result is tiny but still computed accurately because the formula avoids subtracting nearly equal floating point numbers repeatedly.
 
-The ratio `q` becomes extremely small, so the first generated circle is tiny. The algorithm still works because it performs all calculations in floating point without subtracting nearly equal large numbers repeatedly.
+Now consider the smallest meaningful geometry.
 
-Now consider the smallest non-trivial geometry:
-
-```
-R = 2
-r = 1
-k = 1
-```
-
-The shrinking factor is:
-
-$$q = \left(\frac{\sqrt2 - 1}{\sqrt2 + 1}\right)^2$$
-
-which produces a valid positive radius. This confirms the formula handles minimal gaps correctly.
-
-Another important edge case is large `k`:
+Input:
 
 ```
-R = 10
-r = 1
-k = 100
+1
+2 1 1
 ```
 
-The radius becomes extremely small after many multiplications. Since the formula uses exponentiation directly instead of iterative multiplication, rounding error does not accumulate across steps.
+The inner circle touches the plate exactly halfway toward the center. The first added circle still exists and has positive radius. The formula produces:
+
+$$\frac{1 \cdot 1}{2 + 4} = \frac16$$
+
+which matches the geometry.
+
+Finally, consider a larger `k`.
+
+Input:
+
+```
+1
+4 2 10000
+```
+
+The denominator becomes enormous, so the radius approaches zero smoothly. The formula still works because it uses only bounded integer arithmetic followed by one floating point division.

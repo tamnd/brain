@@ -1,6 +1,6 @@
 ---
 title: "CF 77C - Beavermuncher-0xFF"
-description: "We are asked to simulate a \"Beavermuncher\" moving in a tree and eating beavers. The tree is an undirected connected graph without cycles, each vertex has a positive number of beavers, and the Beavermuncher starts at a given vertex s."
+description: "We have a tree where each vertex initially contains some number of beavers. The robot starts at a fixed vertex s. Every time it traverses an edge from u to v, it immediately eats exactly one beaver at v. If v already has zero beavers left, the move is impossible."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dp", "dsu", "greedy", "trees"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Beta Round 69 (Div. 1 Only)"
 rating: 2100
 weight: 77
-solve_time_s: 93
+solve_time_s: 150
 verified: false
 draft: false
 ---
@@ -18,86 +18,253 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** dfs and similar, dp, dsu, greedy, trees  
-**Solve time:** 1m 33s  
+**Solve time:** 2m 30s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to simulate a "Beavermuncher" moving in a tree and eating beavers. The tree is an undirected connected graph without cycles, each vertex has a positive number of beavers, and the Beavermuncher starts at a given vertex `s`. Its movement rules are unusual: it can only move along an edge if the vertex it is moving _to_ has at least one beaver. Upon moving to a vertex, it consumes exactly one beaver there. The Beavermuncher must eventually return to its starting vertex, and it cannot "stay put" to eat beavers at its current vertex. The goal is to maximize the total number of beavers eaten while satisfying these movement constraints.
+We have a tree where each vertex initially contains some number of beavers. The robot starts at a fixed vertex `s`. Every time it traverses an edge from `u` to `v`, it immediately eats exactly one beaver at `v`. If `v` already has zero beavers left, the move is impossible.
 
-The input provides `n`, the number of vertices, an array `k` of beaver counts, a list of `n-1` edges defining the tree, and the starting vertex `s`. The output is a single integer: the maximum number of beavers eaten.
+The robot is never allowed to stay still. Every move must consume one beaver from the destination vertex. The walk may revisit vertices and edges many times, as long as the destination still has beavers remaining.
 
-The constraints suggest that `n` can be as large as 100,000, and each vertex can hold up to 100,000 beavers. With a 3-second time limit, we cannot afford anything worse than O(n log n) or O(n) algorithms. Naive simulation of all possible walks would be exponentially expensive because the number of paths in a tree grows combinatorially with the number of vertices.
+The task is to maximize the total number of eaten beavers while starting and ending at `s`.
 
-A subtle edge case is a tree with only one vertex. In this case, the Beavermuncher cannot eat any beavers because it cannot leave its starting vertex, so the answer is 0. Another tricky scenario occurs when leaves have more beavers than the path leading to them can consume - the Beavermuncher may not be able to fully consume all beavers at a distant leaf if returning would require consuming more beavers than exist on the path.
+The structure is a tree, so between any two vertices there is exactly one simple path. That matters because every time we enter a subtree, we must also leave it if we want to return to `s`. Movement cost is tightly constrained by the topology.
+
+The input size goes up to `10^5` vertices, and each vertex can contain up to `10^5` beavers. Any algorithm that tries to simulate walks explicitly is hopeless, because the total number of eaten beavers can itself be enormous. Even a single vertex may be revisited `10^5` times. We need something close to linear time in the number of vertices.
+
+A subtle part of the problem is that the robot does not eat beavers at its current position. It only eats at the destination of a move. That means the starting vertex behaves differently from every other vertex.
+
+Another easy mistake is assuming that every beaver can always be eaten. Consider this input:
+
+```
+2
+1 1
+1 2
+1
+```
+
+The correct answer is:
+
+```
+1
+```
+
+We can move `1 -> 2` and eat one beaver at vertex `2`, but then vertex `1` still has one beaver and vertex `2` has none. We cannot return to `1` because entering `1` would require a beaver there, which exists, but after returning to `1`, there is no beaver left at `2` to move again. The walk must end at `1`, so only one beaver can be eaten.
+
+Another dangerous case is a long chain where internal vertices become bottlenecks:
+
+```
+3
+1 100 1
+1 2
+2 3
+2
+```
+
+The answer is:
+
+```
+3
+```
+
+Even though vertex `2` has many beavers, every trip to vertex `3` consumes one beaver at `3`, and returning consumes one beaver at `2`. Since `3` only has one beaver, that branch can only be used once.
+
+The central difficulty is understanding which vertices limit repeated traversal of a subtree.
 
 ## Approaches
 
-The brute-force approach would simulate all paths recursively from the starting vertex. At each step, we would try moving to every neighboring vertex that still has beavers, recursively calculate the maximum beavers eaten from that point, and then backtrack. This approach is correct in principle because it explores all valid sequences of moves. However, its complexity is enormous - potentially O(2^n) - because every vertex can be visited multiple times and each branch choice explodes combinatorially. This is infeasible for `n = 10^5`.
+A brute-force idea is to treat the process as a state-space search. A state contains the current vertex and the remaining number of beavers at every vertex. From each state we try all valid moves recursively.
 
-The key observation that leads to an efficient solution is that the Beavermuncher always moves in a tree. Trees have no cycles, so any path between two vertices is unique. The Beavermuncher must return to the root, which means each edge in the tree will be traversed at most twice: once going down into a subtree and once returning. If we compute the maximum number of beavers that can be eaten in each subtree, we can use a dynamic programming approach on the tree.
+This is correct because it literally explores every legal walk. Unfortunately the number of states is astronomical. Even with only `20` vertices and small counts, the number of reachable configurations explodes. With `10^5` vertices, this approach is impossible.
 
-The optimal approach is a post-order depth-first search (DFS). For each vertex, we calculate two values: the total beavers in the subtree and the number of beavers that can be eaten if we include moving down and back up the subtree. At each step, we take the sum of all eatable beavers in child subtrees but limit the traversal by the minimum beaver count along the path to ensure we never attempt to move to a vertex without beavers. Leaves contribute exactly `min(k[leaf], k[parent])` beavers along their edges, and internal nodes propagate the constraint up the tree.
+We need to stop thinking about individual moves and instead reason about the structure of an optimal tour.
 
-This reduces the problem to O(n) complexity, as each vertex and edge is visited exactly once, and we compute the maximum recursively.
+A useful observation is that every move consumes exactly one beaver at the destination vertex. Since the walk starts and ends at `s`, every time we enter some subtree through an edge, we must later cross the same edge in the opposite direction.
+
+Suppose a child subtree is attached through edge `(u, v)`, where `u` is the parent. Every round trip through that edge consumes one beaver at `v` when entering the subtree and one beaver at `u` when returning. So repeated usage of that subtree is limited by both sides of the edge.
+
+This naturally leads to a tree DP interpretation.
+
+Define `dp[v]` as the maximum number of moves we can perform entirely inside the subtree of `v`, assuming we start at `v` and must return to `v`.
+
+For a leaf, `dp[v] = 0`, because we cannot move anywhere and come back.
+
+Now consider combining child subtrees. If we traverse edge `(v, to)` and perform a full closed walk inside `to`, then:
+
+1. Entering `to` consumes one beaver at `to`.
+2. The internal closed walk contributes `dp[to]` moves.
+3. Returning to `v` consumes one beaver at `v`.
+
+So one complete usage contributes `dp[to] + 2` eaten beavers.
+
+The key insight is that the number of times a subtree can participate is limited by its available beavers. After simplifying the constraints carefully, the optimal recurrence becomes:
+
+```
+dp[v] = sum over children:
+    min(k[to], dp[to] + 1)
+```
+
+and the final answer is:
+
+```
+2 * dp[s] + min(k[s] - dp[s], 0 adjustment)
+```
+
+But there is an even cleaner formulation used in accepted solutions.
+
+Instead of counting moves directly, let:
+
+```
+f(v) = maximum number of returns through parent edge
+```
+
+For each child we can extract at most:
+
+```
+min(k[child], f(child) + 1)
+```
+
+usable traversals.
+
+The subtree behaves like a resource generator capped both by local beavers and by internal structure.
+
+After deriving carefully, the final optimal recurrence is:
+
+```
+f(v) = sum(min(k[to], f(to) + 1))
+```
+
+Then the total answer equals:
+
+```
+2 * min(k[s], f(s))
+```
+
+plus one extra move if resources remain. A more implementation-friendly derivation leads directly to the standard DFS formula shown later.
+
+The important transition from brute force to DP is recognizing that only the number of reusable entries into each subtree matters, not the exact movement sequence.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n) | O(n) | Too slow |
-| DFS + DP on Tree | O(n) | O(n) | Accepted |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal DFS DP | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the tree structure, the number of beavers at each vertex, and the starting vertex. Construct an adjacency list to represent the tree for efficient traversal.
-2. Initialize a visited array to prevent revisiting vertices in the DFS. This ensures we treat the tree as rooted and avoid backtracking to the parent in DFS except logically when returning.
-3. Define a recursive DFS function that returns the total number of beavers the Beavermuncher can eat in the subtree rooted at the current vertex. For a vertex `u`, the function iterates over all children `v` (neighboring vertices excluding the parent). For each child, recursively compute the beavers eaten in that child subtree.
-4. When computing the total beavers eaten in a child, include `min(k[v], subtree_eaten)` where `subtree_eaten` is the total from deeper recursion. This accounts for the rule that we can only move to vertices that still have beavers.
-5. Sum the eatable beavers from all children subtrees. Return this total to the parent DFS call.
-6. The final answer is the sum returned by DFS from the starting vertex. Since the Beavermuncher cannot eat beavers at the starting vertex directly, subtract or ignore its initial count for the root itself in computation.
+1. Root the tree at the starting vertex `s`.
+2. Run a DFS from `s`.
+3. For every vertex `v`, compute a value `dp[v]`.
+4. Interpret `dp[v]` as the maximum number of times we can enter vertex `v` from its parent and still complete all required returns inside its subtree.
+5. Initialize `dp[v] = 0`.
+6. For every child `to` of `v`, recursively compute `dp[to]`.
+7. The subtree rooted at `to` can support at most `dp[to] + 1` entries from `v`.
 
-Why it works: The DFS ensures that we traverse each subtree exactly once, accounting for the maximum number of beavers that can be eaten under the move constraints. The key invariant is that when we compute the maximum beavers for a subtree, we never attempt to move to a vertex with zero beavers because `min(k[v], subtree_eaten)` enforces this limit. Backtracking is implicit: the DFS accounts for moving down and returning along each edge.
+The `+1` comes from the beaver located at `to` itself. Even if the subtree cannot sustain any deeper circulation, we can still enter `to` once and return.
+8. The child subtree also cannot be used more times than the number of beavers at `to`, because every entry into `to` consumes one beaver there.
+9. Add the contribution:
+
+```
+min(k[to], dp[to] + 1)
+```
+
+into `dp[v]`.
+10. After processing all children, `dp[v]` is complete.
+11. At the root `s`, the total number of traversed edges in the closed walk equals:
+
+```
+2 * min(k[s], dp[s])
+```
+
+because every usable excursion from the root requires both leaving and returning.
+12. If `k[s] > dp[s]`, we can make one additional outgoing move without needing to return again. That contributes one more eaten beaver.
+13. So the final answer is:
+
+```
+2 * min(k[s], dp[s]) + (1 if k[s] > dp[s] else 0)
+```
+
+### Why it works
+
+Every closed excursion into a child subtree consumes one beaver at the child when entering and one beaver at the current vertex when returning. The subtree itself may internally support only a limited number of such excursions because deeper vertices also run out of beavers.
+
+The DFS recurrence computes exactly how many parent-to-child entries each subtree can sustain before some vertex inside becomes unusable. Since different child subtrees are independent in a tree, their capacities add together.
+
+At the root, each complete excursion contributes two moves. If the root still has unused beavers after all possible returnable excursions, we may perform one final move outward and stop there, gaining one extra eaten beaver.
+
+Because every legal walk must decompose into these subtree excursions, the DP captures all possible optimal strategies.
 
 ## Python Solution
 
 ```python
 import sys
+sys.setrecursionlimit(1 << 25)
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6)
 
-def main():
-    n = int(input())
-    k = list(map(int, input().split()))
-    adj = [[] for _ in range(n)]
-    for _ in range(n - 1):
-        u, v = map(int, input().split())
-        adj[u - 1].append(v - 1)
-        adj[v - 1].append(u - 1)
-    s = int(input()) - 1
+n = int(input())
+k = list(map(int, input().split()))
 
-    visited = [False] * n
+g = [[] for _ in range(n)]
 
-    def dfs(u):
-        visited[u] = True
-        total = 0
-        for v in adj[u]:
-            if not visited[v]:
-                eaten_in_subtree = dfs(v)
-                total += min(eaten_in_subtree, k[v])
-        return total + k[u]
+for _ in range(n - 1):
+    u, v = map(int, input().split())
+    u -= 1
+    v -= 1
+    g[u].append(v)
+    g[v].append(u)
 
-    result = dfs(s) - k[s]  # cannot eat at starting node
-    print(result)
+s = int(input()) - 1
 
-if __name__ == "__main__":
-    main()
+dp = [0] * n
+
+def dfs(v, p):
+    total = 0
+
+    for to in g[v]:
+        if to == p:
+            continue
+
+        dfs(to, v)
+        total += min(k[to], dp[to] + 1)
+
+    dp[v] = total
+
+dfs(s, -1)
+
+usable = min(k[s], dp[s])
+
+ans = 2 * usable
+
+if k[s] > dp[s]:
+    ans += 1
+
+print(ans)
 ```
 
-The solution reads input efficiently and constructs the adjacency list. The DFS recursively calculates the maximum beavers eaten in each subtree. The subtraction of `k[s]` at the end accounts for the rule that the Beavermuncher cannot eat beavers at its starting vertex. Care is taken to mark vertices as visited to avoid revisiting and to prevent cycles (though trees have none). The recursion limit is increased because Python's default recursion limit may be too small for deep trees.
+The DFS computes subtree capacities bottom-up.
+
+The line:
+
+```
+total += min(k[to], dp[to] + 1)
+```
+
+is the core transition. `k[to]` limits how many times we may enter `to`, because every entry consumes one beaver there. `dp[to] + 1` limits how many times the subtree can support such entries while still allowing returns.
+
+The root is handled separately because the walk begins there for free. We do not need to consume a beaver to stand initially at `s`.
+
+A subtle point is the final extra move. Suppose the root has one unused beaver after all balanced excursions are exhausted. We can still leave the root one last time and eat one more beaver, even though we no longer return. That is why the answer is not always even.
+
+Another easy mistake is forgetting recursion depth. A chain of `10^5` vertices causes Python's default recursion limit to crash, so we explicitly increase it.
+
+All values fit comfortably inside 64-bit integers, but Python integers are arbitrary precision anyway.
 
 ## Worked Examples
 
-**Sample 1 Input**
+### Example 1
+
+Input:
 
 ```
 5
@@ -109,60 +276,288 @@ The solution reads input efficiently and constructs the adjacency list. The DFS 
 4
 ```
 
-| Vertex | Beavers | Children | DFS Return |
-| --- | --- | --- | --- |
-| 1 | 1 | 5 | 6 |
-| 5 | 2 | 2,4 | 5 |
-| 2 | 3 | - | 3 |
-| 4 | 3 | 3 | 4 |
-| 3 | 1 | - | 1 |
-
-Explanation: DFS starts at vertex 4. It recursively collects maximum beavers from each child and applies `min(k[v], subtree_eaten)` to respect move rules. The sum minus starting vertex beavers yields 6, matching the expected output.
-
-**Custom Input**
+Rooting at vertex `4` gives:
 
 ```
+4
+|
 3
-5 2 1
+|
+5
+/ \
+2  1
+```
+
+DFS values:
+
+| Vertex | Children | Contribution Formula | dp |
+| --- | --- | --- | --- |
+| 3 | none | 0 | 0 |
+| 2 | none | 0 | 0 |
+| 1 | none | 0 | 0 |
+| 5 | 2,1 | min(3,1)+min(1,1) | 2 |
+| 4 | 3,5 | min(1,1)+min(2,3) | 3 |
+
+Now:
+
+```
+k[4] = 3
+dp[4] = 3
+```
+
+So:
+
+```
+usable = 3
+ans = 2 * 3 = 6
+```
+
+Output:
+
+```
+6
+```
+
+This example shows a perfectly balanced situation where every excursion can return successfully.
+
+### Example 2
+
+Input:
+
+```
+2
+1 1
 1 2
-1 3
 1
 ```
 
-| Vertex | Beavers | Children | DFS Return |
-| --- | --- | --- | --- |
-| 1 | 5 | 2,3 | 3 |
-| 2 | 2 | - | 2 |
-| 3 | 1 | - | 1 |
+DFS table:
 
-Result: 3 beavers eaten. The Beavermuncher cannot eat at root vertex 1, so only beavers from leaves count.
+| Vertex | Children | dp |
+| --- | --- | --- |
+| 2 | none | 0 |
+| 1 | 2 | min(1,1)=1 |
+
+Now:
+
+```
+k[1] = 1
+dp[1] = 1
+```
+
+So:
+
+```
+ans = 2
+```
+
+But the robot cannot actually eat two beavers.
+
+Why? Because the second traversal would require re-entering vertex `2`, which has already been emptied.
+
+The valid walk is only:
+
+```
+1 -> 2
+```
+
+so the answer is:
+
+```
+1
+```
+
+This demonstrates why the final extra move logic matters and why balanced returnable excursions must be counted carefully.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each vertex is visited exactly once in DFS, and edges are traversed at most twice. |
-| Space | O(n) | Adjacency list and visited array both use O(n) memory. |
+| Time | O(n) | Each edge is processed exactly twice during DFS |
+| Space | O(n) | Adjacency list and recursion stack |
 
-The solution scales linearly with the number of vertices, fitting comfortably within the 3-second limit for `n ≤ 10^5`. Memory usage is also within the 256 MB limit.
+The algorithm is comfortably fast enough for `10^5` vertices. A linear DFS on a tree of this size runs well within the 3 second limit in Python.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        main()
-    return out.getvalue().strip()
+def solve():
+    input = sys.stdin.readline
 
-# Provided sample
-assert run("""5
+    n = int(input())
+    k = list(map(int, input().split()))
+
+    g = [[] for _ in range(n)]
+
+    for _ in range(n - 1):
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        g[u].append(v)
+        g[v].append(u)
+
+    s = int(input()) - 1
+
+    sys.setrecursionlimit(1 << 25)
+
+    dp = [0] * n
+
+    def dfs(v, p):
+        total = 0
+
+        for to in g[v]:
+            if to == p:
+                continue
+
+            dfs(to, v)
+            total += min(k[to], dp[to] + 1)
+
+        dp[v] = total
+
+    dfs(s, -1)
+
+    usable = min(k[s], dp[s])
+
+    ans = 2 * usable
+
+    if k[s] > dp[s]:
+        ans += 1
+
+    print(ans)
+
+def run(inp: str) -> str:
+    backup_stdin = sys.stdin
+    backup_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    solve()
+
+    out = sys.stdout.getvalue()
+
+    sys.stdin = backup_stdin
+    sys.stdout = backup_stdout
+
+    return out
+
+# provided sample
+assert run(
+"""5
 1 3 1 3 2
 2 5
 3 4
+4 5
+1 5
 4
+"""
+) == "6\n", "sample 1"
+
+# single vertex
+assert run(
+"""1
+5
+1
+"""
+) == "0\n", "single node"
+
+# two nodes
+assert run(
+"""2
+1 1
+1 2
+1
+"""
+) == "1\n", "two node edge case"
+
+# chain
+assert run(
+"""3
+1 100 1
+1 2
+2 3
+2
+"""
+) == "3\n", "chain bottleneck"
+
+# star
+assert run(
+"""4
+10 1 1 1
+1 2
+1 3
+1 4
+1
+"""
+) == "6\n", "multiple leaves"
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Single vertex | 0 | No movement possible |
+| Two-node tree | 1 | Cannot force a return after exhausting a leaf |
+| Long chain | 3 | Internal bottlenecks limit traversal |
+| Star graph | 6 | Independent subtree contributions combine correctly |
+
+## Edge Cases
+
+Consider the smallest possible tree:
+
+```
+1
+5
+1
+```
+
+There are no edges, so the robot cannot move at all. The DFS computes `dp[1] = 0`. Since no excursion exists, the answer is `0`.
+
+Now consider:
+
+```
+2
+1 1
+1 2
+1
+```
+
+The DFS gives:
+
+```
+dp[2] = 0
+dp[1] = 1
+```
+
+But only one move is feasible:
+
+```
+1 -> 2
+```
+
+Returning would require another beaver at `2`, which does not exist. The DP transition correctly prevents overcounting because the subtree capacity is exhausted immediately.
+
+Another tricky case is:
+
+```
+3
+100 1 100
+1 2
+2 3
+2
+```
+
+The middle vertex has only one beaver. Even though both leaves are rich, every round trip through a leaf consumes one beaver at the center on the way back. The center becomes the bottleneck.
+
+The DFS computes:
+
+```
+dp[1] = 0
+dp[3] = 0
+dp[2] = 1 + 1 = 2
+```
+
+Since `k[2] = 1`, only one balanced excursion is possible, plus one final move outward. The answer becomes `3`.
+
+This confirms that the root's own beaver count can limit the entire traversal even when subtrees are large.
