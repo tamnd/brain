@@ -23,6 +23,12 @@ draft: false
 | 1110 | [Delete Nodes And Return Forest](1110.md) | 🟡 Medium | 1m 23s | This problem gives us the root of a binary tree and a list of node … |
 | 1111 | [Maximum Nesting Depth of Two Valid Parentheses Strings](1111.md) | 🟡 Medium | 47s | The problem asks us to take a valid parentheses string seq and spli… |
 | 1112 | [Highest Grade For Each Student](1112.md) | 🟡 Medium | 1m 8s | The problem gives us a database table named Enrollments. Each row r… |
-| 1113 | [Reported Posts](1113.md) | 🟢 Easy | 44s | This problem is asking us to compute the number of reports made on … |
-| 1116 | [Print Zero Even Odd](1116.md) | 🟡 Medium | 46s | This problem asks us to coordinate three threads to print numbers i… |
-| 1117 | [Building H2O](1117.md) | 🟡 Medium | 1m 12s | This problem asks us to coordinate multiple concurrent threads so t… |
+| 1113 | [Reported Posts](1113.md) | 🟢 Easy | 51s | The problem is asking us to determine the number of posts that were… |
+| 1116 | [Print Zero Even Odd](1116.md) | 🟡 Medium | 46s | The problem requires us to implement a multithreaded class ZeroEven… |
+| 1117 | [Building H2O](1117.md) | 🟡 Medium | 1m 7s | This problem asks us to coordinate multiple concurrent threads so t… |
+| 1118 | [Number of Days in a Month](1118.md) | 🟢 Easy | 40s | The problem asks us to determine the number of days in a specific m… |
+| 1120 | [Maximum Average Subtree](1120.md) | 🟡 Medium | 1m 11s | The problem asks us to compute the maximum average value among all … |
+| 1121 | [Divide Array Into Increasing Sequences](1121.md) | 🔴 Hard | 1m 6s | This problem gives us a sorted integer array nums and an integer k.… |
+| 1122 | [Relative Sort Array](1122.md) | 🟢 Easy | 1m 13s | This problem asks us to reorder the elements of arr1 according to t… |
+| 1123 | [Lowest Common Ancestor of Deepest Leaves](1123.md) | 🟡 Medium | 39s | This problem asks us to find the lowest common ancestor (LCA) of th… |
+| 1124 | [Longest Well-Performing Interval](1124.md) | 🟡 Medium | 1m 24s | The problem gives us an array hours, where each element represents … |
