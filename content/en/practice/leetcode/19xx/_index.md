@@ -47,4 +47,24 @@ draft: false
 | 1936 | [Add Minimum Number of Rungs](1936.md) | 🟡 Medium | 1m | The problem gives us a ladder represented by a strictly increasing … |
 | 1937 | [Maximum Number of Points with Cost](1937.md) | 🟡 Medium | 1m 23s | The problem gives us an m x n matrix called points. We must choose … |
 | 1938 | [Maximum Genetic Difference Query](1938.md) | 🔴 Hard | 44s | The problem presents a rooted tree where each node is uniquely iden… |
+| 1939 | [Users That Actively Request Confirmation Messages](1939.md) | 🟢 Easy | 5m 1s | This problem asks us to identify users who requested confirmation m… |
+| 1940 | [Longest Common Subsequence Between Sorted Arrays](1940.md) | 🟡 Medium | 43s | The problem asks us to find the longest common subsequence (LCS) am… |
+| 1941 | [Check if All Characters Have Equal Number of Occurrences](1941.md) | 🟢 Easy | 53s | The problem asks us to determine whether a given string s is good, … |
+| 1942 | [The Number of the Smallest Unoccupied Chair](1942.md) | 🟡 Medium | 40s | This problem describes a scenario where a group of friends attends … |
+| 1943 | [Describe the Painting](1943.md) | 🟡 Medium | 1m 19s | The problem describes a painting laid out on a number line. Each se… |
+| 1944 | [Number of Visible People in a Queue](1944.md) | 🔴 Hard | 33s | The problem gives a queue of n people standing from left to right, … |
+| 1945 | [Sum of Digits of String After Convert](1945.md) | 🟢 Easy | 29s | This problem asks us to take a string of lowercase English letters … |
+| 1946 | [Largest Number After Mutating Substring](1946.md) | 🟡 Medium | 38s | This problem asks us to construct the lexicographically largest pos… |
+| 1947 | [Maximum Compatibility Score Sum](1947.md) | 🟡 Medium | 49s | The problem is asking us to optimally pair students with mentors su… |
+| 1948 | [Delete Duplicate Folders in System](1948.md) | 🔴 Hard | 37s | The problem gives a hierarchical file system represented as a list … |
 | 1949 | [Strong Friendship](1949.md) | 🟡 Medium | 1m 25s | The problem gives us a table named Friendship, where every row repr… |
+| 1950 | [Maximum of Minimum Values in All Subarrays](1950.md) | 🟡 Medium | 1m 23s | This problem asks us to compute, for every possible subarray size, … |
+| 1951 | [All the Pairs With the Maximum Number of Common Followers](1951.md) | 🟡 Medium | 52s | The problem provides a relational table named Relations, where each… |
+| 1952 | [Three Divisors](1952.md) | 🟢 Easy | 35s | The problem asks us to determine whether a given integer n has exac… |
+| 1953 | [Maximum Number of Weeks for Which You Can Work](1953.md) | 🟡 Medium | 1m 16s | The problem gives us an array called milestones, where each value r… |
+| 1954 | [Minimum Garden Perimeter to Collect Enough Apples](1954.md) | 🟡 Medium | 1m 13s | The problem describes an infinite two dimensional grid where every … |
+| 1955 | [Count Number of Special Subsequences](1955.md) | 🔴 Hard | 59s | This problem asks us to count the number of special subsequences in… |
+| 1956 | [Minimum Time For K Virus Variants to Spread](1956.md) | 🔴 Hard | 1m 39s | The problem describes multiple virus variants spreading across an i… |
+| 1957 | [Delete Characters to Make Fancy String](1957.md) | 🟢 Easy | 1m 14s | The problem asks us to transform a given string into a "fancy strin… |
+| 1958 | [Check if Move is Legal](1958.md) | 🟡 Medium | 55s | This problem asks us to determine whether a move in a board game is… |
+| 1959 | [Minimum Total Space Wasted With K Resizing Operations](1959.md) | 🟡 Medium | 35s | Let's go through a full, detailed technical solution guide for Leet… |
