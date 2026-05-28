@@ -73,3 +73,11 @@ draft: false
 | 662 | [Maximum Width of Binary Tree](662.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum width among all levels o… |
 | 663 | [Equal Tree Partition](663.md) | 🟡 Medium | 1m 15s | The problem asks whether it is possible to split a binary tree into… |
 | 665 | [Non-decreasing Array](665.md) | 🟡 Medium | 37s | The problem asks whether it is possible to transform a given intege… |
+| 666 | [Path Sum IV](666.md) | 🟡 Medium | 1m 10s | This problem encodes a binary tree into a compact array of three-di… |
+| 667 | [Beautiful Arrangement II](667.md) | 🟡 Medium | 1m 12s | The problem asks us to construct a permutation of the integers from… |
+| 668 | [Kth Smallest Number in Multiplication Table](668.md) | 🔴 Hard | 1m 12s | The problem gives us an m x n multiplication table where each cell … |
+| 669 | [Trim a Binary Search Tree](669.md) | 🟡 Medium | 1m 8s | LeetCode 669, Trim a Binary Search Tree, asks us to modify a binary… |
+| 670 | [Maximum Swap](670.md) | 🟡 Medium | 38s | The problem asks us to take an integer num and find the maximum num… |
+| 671 | [Second Minimum Node In a Binary Tree](671.md) | 🟢 Easy | 38s | The problem provides a special binary tree where each node either h… |
+| 672 | [Bulb Switcher II](672.md) | 🟡 Medium | 1m 14s | The problem describes a room containing n light bulbs, where every … |
+| 673 | [Number of Longest Increasing Subsequence](673.md) | 🟡 Medium | 1m 4s | The problem asks us to determine how many longest strictly increasi… |

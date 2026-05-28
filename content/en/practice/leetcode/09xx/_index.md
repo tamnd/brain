@@ -39,14 +39,24 @@ draft: false
 | 926 | [Flip String to Monotone Increasing](926.md) | 🟡 Medium | 1m 8s | The problem asks us to transform a binary string into a monotone in… |
 | 927 | [Three Equal Parts](927.md) | 🔴 Hard | 44s | The problem asks us to partition a binary array arr into three non-… |
 | 928 | [Minimize Malware Spread II](928.md) | 🔴 Hard | 41s | The problem is about a network of computers represented as an undir… |
-| 929 | [Unique Email Addresses](929.md) | 🟢 Easy | 1m 7s | The problem asks us to determine how many unique email addresses ac… |
+| 929 | [Unique Email Addresses](929.md) | 🟢 Easy | 2m 19s | The problem gives us a list of email addresses and asks how many un… |
 | 930 | [Binary Subarrays With Sum](930.md) | 🟡 Medium | 59s | The problem asks us to count the number of contiguous subarrays in … |
-| 931 | [Minimum Falling Path Sum](931.md) | 🟡 Medium | 1m 20s | The problem gives us an n x n matrix of integers and asks for the m… |
-| 932 | [Beautiful Array](932.md) | 🟡 Medium | 33s | The problem asks us to construct a beautiful array of length n. A b… |
-| 933 | [Number of Recent Calls](933.md) | 🟢 Easy | 1m 3s | This problem asks us to design a data structure that tracks recent … |
-| 934 | [Shortest Bridge](934.md) | 🟡 Medium | 1m 8s | This problem asks us to connect two separate islands in a binary ma… |
+| 931 | [Minimum Falling Path Sum](931.md) | 🟡 Medium | 1m 3s | The problem asks for the minimum sum of any falling path through an… |
+| 932 | [Beautiful Array](932.md) | 🟡 Medium | 1m 2s | The problem asks us to construct a permutation of the integers from… |
+| 933 | [Number of Recent Calls](933.md) | 🟢 Easy | 36s | The problem asks us to implement a class RecentCounter that tracks … |
+| 934 | [Shortest Bridge](934.md) | 🟡 Medium | 1m 14s | The problem gives us an n x n binary matrix called grid. Each cell … |
 | 935 | [Knight Dialer](935.md) | 🟡 Medium | 1m 13s | The problem asks us to count how many distinct phone numbers of len… |
 | 936 | [Stamping The Sequence](936.md) | 🔴 Hard | 1m 17s | This problem asks us to reconstruct a target string by repeatedly a… |
 | 937 | [Reorder Data in Log Files](937.md) | 🟡 Medium | 1m 21s | In this problem, we are given a list of log strings. Each log conta… |
 | 938 | [Range Sum of BST](938.md) | 🟢 Easy | 1m 4s | The problem gives us the root of a Binary Search Tree (BST) and two… |
+| 939 | [Minimum Area Rectangle](939.md) | 🟡 Medium | 2m 19s | The problem gives us a list of unique points on a 2D coordinate pla… |
 | 940 | [Distinct Subsequences II](940.md) | 🔴 Hard | 1m 3s | The problem asks us to count how many distinct non-empty subsequenc… |
+| 941 | [Valid Mountain Array](941.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given integer array form… |
+| 942 | [DI String Match](942.md) | 🟢 Easy | 1m 11s | In this problem, we are given a string s consisting only of the cha… |
+| 943 | [Find the Shortest Superstring](943.md) | 🔴 Hard | 1m 30s | The problem gives us an array of unique strings called words. Our t… |
+| 944 | [Delete Columns to Make Sorted](944.md) | 🟢 Easy | 1m 8s | The problem gives us an array of strings where every string has the… |
+| 945 | [Minimum Increment to Make Array Unique](945.md) | 🟡 Medium | 41s | This problem is asking us to make all elements in an integer array … |
+| 946 | [Validate Stack Sequences](946.md) | 🟡 Medium | 1m 7s | The problem gives us two arrays, pushed and popped, both containing… |
+| 947 | [Most Stones Removed with Same Row or Column](947.md) | 🟡 Medium | 34s | The problem presents a 2D grid with n stones placed at integer coor… |
+| 948 | [Bag of Tokens](948.md) | 🟡 Medium | 1m 15s | The problem gives us a collection of tokens, where each token has a… |
+| 950 | [Reveal Cards In Increasing Order](950.md) | 🟡 Medium | 1m 11s | The problem gives us a deck of unique integer cards and asks us to … |
