@@ -98,3 +98,10 @@ draft: false
 | 1585 | [Check If String Is Transformable With Substring Sort Operations](1585.md) | 🔴 Hard | 1m 29s | This problem asks whether we can transform one digit string, s, int… |
 | 1586 | [Binary Search Tree Iterator II](1586.md) | 🟡 Medium | 52s | The problem requires implementing a bidirectional iterator over a b… |
 | 1587 | [Bank Account Summary II](1587.md) | 🟢 Easy | 1m 26s | This problem asks us to analyze banking transaction data and determ… |
+| 1588 | [Sum of All Odd Length Subarrays](1588.md) | 🟢 Easy | 47s | The problem asks us to calculate the sum of all odd-length subarray… |
+| 1589 | [Maximum Sum Obtained of Any Permutation](1589.md) | 🟡 Medium | 1m 30s | The problem gives us an integer array nums and a collection of rang… |
+| 1590 | [Make Sum Divisible by P](1590.md) | 🟡 Medium | 55s | This problem asks us to determine the smallest contiguous subarray … |
+| 1591 | [Strange Printer II](1591.md) | 🔴 Hard | 56s | The problem describes a "strange printer" that can only print solid… |
+| 1592 | [Rearrange Spaces Between Words](1592.md) | 🟢 Easy | 1m 16s | This problem gives us a string that contains lowercase English word… |
+| 1593 | [Split a String Into the Max Number of Unique Substrings](1593.md) | 🟡 Medium | 51s | The problem asks us to split a given string s into the maximum numb… |
+| 1594 | [Maximum Non Negative Product in a Matrix](1594.md) | 🟡 Medium | 1m 42s | The problem gives us an m x n matrix called grid, where each cell c… |
