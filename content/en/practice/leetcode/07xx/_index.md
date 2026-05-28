@@ -10,6 +10,7 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
+| 700 | [Search in a Binary Search Tree](700.md) | 🟢 Easy | 1m 12s | This problem gives us the root node of a Binary Search Tree, common… |
 | 701 | [Insert into a Binary Search Tree](701.md) | 🟡 Medium | 1m 18s | This problem asks us to insert a new value into an existing Binary … |
 | 702 | [Search in a Sorted Array of Unknown Size](702.md) | 🟡 Medium | 1m 21s | This problem asks us to search for a target value inside a sorted a… |
 | 703 | [Kth Largest Element in a Stream](703.md) | 🟢 Easy | 27s | The problem asks us to design a data structure that continuously tr… |
@@ -103,6 +104,7 @@ draft: false
 | 791 | [Custom Sort String](791.md) | 🟡 Medium | 1m 22s | The problem gives us two strings, order and s. The string order def… |
 | 792 | [Number of Matching Subsequences](792.md) | 🟡 Medium | 57s | The problem asks us to count how many words in a given list are sub… |
 | 793 | [Preimage Size of Factorial Zeroes Function](793.md) | 🔴 Hard | 53s | This problem asks us to determine how many non-negative integers x … |
+| 794 | [Valid Tic-Tac-Toe State](794.md) | 🟡 Medium | 1m 6s | This problem asks us to determine whether a given Tic-Tac-Toe board… |
 | 795 | [Number of Subarrays with Bounded Maximum](795.md) | 🟡 Medium | 1m | The problem asks us to count how many contiguous, non-empty subarra… |
 | 796 | [Rotate String](796.md) | 🟢 Easy | 59s | The problem asks us to determine whether one string can be transfor… |
 | 797 | [All Paths From Source to Target](797.md) | 🟡 Medium | 58s | The problem gives us a directed acyclic graph, usually abbreviated … |

@@ -61,7 +61,23 @@ draft: false
 | 948 | [Bag of Tokens](948.md) | 🟡 Medium | 1m 15s | The problem gives us a collection of tokens, where each token has a… |
 | 949 | [Largest Time for Given Digits](949.md) | 🟡 Medium | 1m 6s | The problem provides an array of exactly four digits. Using each di… |
 | 950 | [Reveal Cards In Increasing Order](950.md) | 🟡 Medium | 1m 11s | The problem gives us a deck of unique integer cards and asks us to … |
-| 951 | [Flip Equivalent Binary Trees](951.md) | 🟡 Medium | 1m 16s | The problem asks whether two binary trees can be made identical by … |
-| 952 | [Largest Component Size by Common Factor](952.md) | 🔴 Hard | 39s | This problem asks us to find the size of the largest connected comp… |
-| 953 | [Verifying an Alien Dictionary](953.md) | 🟢 Easy | 1m 17s | This problem asks us to determine whether a list of words is sorted… |
+| 951 | [Flip Equivalent Binary Trees](951.md) | 🟡 Medium | 1m 7s | This problem asks us to determine whether two binary trees can be m… |
+| 952 | [Largest Component Size by Common Factor](952.md) | 🔴 Hard | 38s | The problem asks us to find the largest connected component in a gr… |
+| 953 | [Verifying an Alien Dictionary](953.md) | 🟢 Easy | 1m 4s | This problem asks us to verify whether a list of words is sorted ac… |
 | 954 | [Array of Doubled Pairs](954.md) | 🟡 Medium | 29s | The problem asks whether it is possible to reorder an even-length a… |
+| 955 | [Delete Columns to Make Sorted II](955.md) | 🟡 Medium | 1m 12s | LeetCode 955, LeetCode "Delete Columns to Make Sorted II", asks us … |
+| 956 | [Tallest Billboard](956.md) | 🔴 Hard | 1m 13s | In this problem, we are given a list of steel rods. Each rod has a … |
+| 957 | [Prison Cells After N Days](957.md) | 🟡 Medium | 1m 11s | The problem gives us a row of exactly eight prison cells, where eac… |
+| 958 | [Check Completeness of a Binary Tree](958.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given binary tree is a c… |
+| 959 | [Regions Cut By Slashes](959.md) | 🟡 Medium | 1m 20s | The problem gives us an n x n grid where every cell contains one of… |
+| 960 | [Delete Columns to Make Sorted III](960.md) | 🔴 Hard | 33s | This problem asks us to find the minimum number of columns to delet… |
+| 961 | [N-Repeated Element in Size 2N Array](961.md) | 🟢 Easy | 1m 24s | The problem gives an integer array nums whose length is exactly 2 n… |
+| 962 | [Maximum Width Ramp](962.md) | 🟡 Medium | 1m 12s | The problem asks us to find the maximum width ramp in an array of i… |
+| 964 | [Least Operators to Express Number](964.md) | 🔴 Hard | 1m 23s | This problem asks us to construct a mathematical expression using o… |
+| 965 | [Univalued Binary Tree](965.md) | 🟢 Easy | 38s | The problem asks us to determine whether a given binary tree is uni… |
+| 966 | [Vowel Spellchecker](966.md) | 🟡 Medium | 1m 42s | The problem asks us to build a spellchecker with very specific matc… |
+| 967 | [Numbers With Same Consecutive Differences](967.md) | 🟡 Medium | 41s | This problem asks us to generate all integers of a specific length … |
+| 968 | [Binary Tree Cameras](968.md) | 🔴 Hard | 1m 10s | LeetCode 968, Binary Tree Cameras, asks us to determine the minimum… |
+| 969 | [Pancake Sorting](969.md) | 🟡 Medium | 42s | The problem is asking us to sort an array of unique integers using … |
+| 970 | [Powerful Integers](970.md) | 🟡 Medium | 1m 12s | The problem asks us to generate every integer of the form: where bo… |
+| 971 | [Flip Binary Tree To Match Preorder Traversal](971.md) | 🟡 Medium | 1m 9s | The problem gives us a binary tree and a target preorder traversal … |

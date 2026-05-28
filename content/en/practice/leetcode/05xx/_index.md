@@ -76,6 +76,7 @@ draft: false
 | 563 | [Binary Tree Tilt](563.md) | 🟢 Easy | 1m 7s | The problem asks us to compute the total tilt of an entire binary t… |
 | 564 | [Find the Closest Palindrome](564.md) | 🔴 Hard | 1m 29s | The problem gives us a string n representing a positive integer, an… |
 | 565 | [Array Nesting](565.md) | 🟡 Medium | 2m 41s | The problem gives us an array nums that is guaranteed to be a permu… |
+| 566 | [Reshape the Matrix](566.md) | 🟢 Easy | 40s | The problem is asking us to take an existing m x n matrix and "resh… |
 | 567 | [Permutation in String](567.md) | 🟡 Medium | 3m 37s | This problem asks us to determine whether any permutation of s1 app… |
 | 568 | [Maximum Vacation Days](568.md) | 🔴 Hard | 1m 11s | This problem asks us to maximize the total number of vacation days … |
 | 569 | [Median Employee Salary](569.md) | 🔴 Hard | 1m 12s | The problem gives us an Employee table containing three columns: | … |
@@ -86,6 +87,7 @@ draft: false
 | 574 | [Winning Candidate](574.md) | 🟡 Medium | 1m 12s | This problem provides two database tables, Candidate and Vote, and … |
 | 575 | [Distribute Candies](575.md) | 🟢 Easy | 1m 46s | This problem asks us to maximize the number of distinct candy types… |
 | 576 | [Out of Boundary Paths](576.md) | 🟡 Medium | 1m 10s | This problem asks us to count how many different ways a ball can le… |
+| 577 | [Employee Bonus](577.md) | 🟢 Easy | 55s | In this problem, we are given two database tables, Employee and Bon… |
 | 578 | [Get Highest Answer Rate Question](578.md) | 🟡 Medium | 1m 16s | This problem asks us to analyze user interaction data stored in the… |
 | 579 | [Find Cumulative Salary of an Employee](579.md) | 🔴 Hard | 41s | This problem asks us to compute a cumulative salary summary for eac… |
 | 580 | [Count Student Number in Departments](580.md) | 🟡 Medium | 29s | This problem asks us to determine how many students are enrolled in… |

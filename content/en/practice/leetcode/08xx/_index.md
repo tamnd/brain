@@ -87,7 +87,7 @@ draft: false
 | 874 | [Walking Robot Simulation](874.md) | 🟡 Medium | 1m 18s | The problem describes a robot moving on an infinite two dimensional… |
 | 875 | [Koko Eating Bananas](875.md) | 🟡 Medium | 41s | The problem asks us to determine the minimum eating speed k for Kok… |
 | 876 | [Middle of the Linked List](876.md) | 🟢 Easy | 55s | The problem gives us the head of a singly linked list and asks us t… |
-| 877 | [Stone Game](877.md) | 🟡 Medium | 33s | This problem involves a two-player game where Alice and Bob take tu… |
+| 877 | [Stone Game](877.md) | 🟡 Medium | 1m 10s | The problem describes a two-player game played on an array of stone… |
 | 878 | [Nth Magical Number](878.md) | 🔴 Hard | 1m 13s | The problem asks us to find the nth positive integer that is divisi… |
 | 879 | [Profitable Schemes](879.md) | 🔴 Hard | 1m 16s | This problem asks us to count how many subsets of crimes satisfy tw… |
 | 880 | [Decoded String at Index](880.md) | 🟡 Medium | 1m 12s | The problem gives us an encoded string s that represents a potentia… |

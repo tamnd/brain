@@ -37,6 +37,7 @@ draft: false
 | 624 | [Maximum Distance in Arrays](624.md) | 🟡 Medium | 38s | The problem presents a list of m arrays, each individually sorted i… |
 | 625 | [Minimum Factorization](625.md) | 🟡 Medium | 1m 3s | The problem asks us to find the smallest positive integer x such th… |
 | 626 | [Exchange Seats](626.md) | 🟡 Medium | 41s | This problem asks us to swap the seat IDs of every two consecutive … |
+| 627 | [Swap Sex of Employees](627.md) | 🟢 Easy | 42s | The problem is asking us to swap the sex values of all employees in… |
 | 628 | [Maximum Product of Three Numbers](628.md) | 🟢 Easy | 58s | The problem gives an integer array nums and asks us to select exact… |
 | 629 | [K Inverse Pairs Array](629.md) | 🔴 Hard | 34s | Here’s a full technical solution guide following your formatting ru… |
 | 630 | [Course Schedule III](630.md) | 🔴 Hard | 1m 18s | The problem gives a list of online courses, where each course is re… |
@@ -52,6 +53,7 @@ draft: false
 | 640 | [Solve the Equation](640.md) | 🟡 Medium | 41s | The problem is asking us to solve a linear equation containing a si… |
 | 641 | [Design Circular Deque](641.md) | 🟡 Medium | 1m 7s | The problem asks us to design a circular double-ended queue, also c… |
 | 642 | [Design Search Autocomplete System](642.md) | 🔴 Hard | 1m 18s | The problem asks us to design an autocomplete system that behaves s… |
+| 643 | [Maximum Average Subarray I](643.md) | 🟢 Easy | 47s | The problem asks us to find the maximum average value among all con… |
 | 644 | [Maximum Average Subarray II](644.md) | 🔴 Hard | 1m 5s | The problem asks us to find the maximum possible average value amon… |
 | 645 | [Set Mismatch](645.md) | 🟢 Easy | 59s | The problem describes a corrupted set of integers. Originally, the … |
 | 646 | [Maximum Length of Pair Chain](646.md) | 🟡 Medium | 1m 12s | The problem gives us an array of integer pairs, where each pair rep… |
@@ -72,6 +74,7 @@ draft: false
 | 661 | [Image Smoother](661.md) | 🟢 Easy | 45s | The problem is asking us to implement an image smoother, a filter t… |
 | 662 | [Maximum Width of Binary Tree](662.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum width among all levels o… |
 | 663 | [Equal Tree Partition](663.md) | 🟡 Medium | 1m 15s | The problem asks whether it is possible to split a binary tree into… |
+| 664 | [Strange Printer](664.md) | 🔴 Hard | 55s | The problem describes a "strange printer" that can print sequences … |
 | 665 | [Non-decreasing Array](665.md) | 🟡 Medium | 37s | The problem asks whether it is possible to transform a given intege… |
 | 666 | [Path Sum IV](666.md) | 🟡 Medium | 1m 10s | This problem encodes a binary tree into a compact array of three-di… |
 | 667 | [Beautiful Arrangement II](667.md) | 🟡 Medium | 1m 12s | The problem asks us to construct a permutation of the integers from… |
@@ -86,6 +89,7 @@ draft: false
 | 676 | [Implement Magic Dictionary](676.md) | 🟡 Medium | 1m 11s | The problem asks us to design a dictionary-like data structure that… |
 | 677 | [Map Sum Pairs](677.md) | 🟡 Medium | 1m 7s | The problem asks us to design a custom data structure that behaves … |
 | 678 | [Valid Parenthesis String](678.md) | 🟡 Medium | 32s | This problem is asking whether a string containing the characters '… |
+| 679 | [24 Game](679.md) | 🔴 Hard | 40s | The problem is asking us to determine whether it is possible to use… |
 | 680 | [Valid Palindrome II](680.md) | 🟢 Easy | 59s | The problem asks whether a given string s can become a palindrome a… |
 | 681 | [Next Closest Time](681.md) | 🟡 Medium | 1m 14s | The problem gives us a valid time string in the format "HH:MM" and … |
 | 682 | [Baseball Game](682.md) | 🟢 Easy | 58s | This problem asks us to simulate a baseball scoring system with a s… |
@@ -100,3 +104,8 @@ draft: false
 | 692 | [Top K Frequent Words](692.md) | 🟡 Medium | 1m 16s | The problem gives us an array of strings called words and an intege… |
 | 693 | [Binary Number with Alternating Bits](693.md) | 🟢 Easy | 41s | The problem asks us to determine whether the binary representation … |
 | 694 | [Number of Distinct Islands](694.md) | 🟡 Medium | 1m 20s | The problem gives us a binary matrix called grid, where each cell c… |
+| 695 | [Max Area of Island](695.md) | 🟡 Medium | 31s | The problem is asking us to find the largest connected area of land… |
+| 696 | [Count Binary Substrings](696.md) | 🟢 Easy | 1m | The problem gives us a binary string, meaning the string contains o… |
+| 697 | [Degree of an Array](697.md) | 🟢 Easy | 46s | The problem asks us to find the shortest contiguous subarray of an … |
+| 698 | [Partition to K Equal Sum Subsets](698.md) | 🟡 Medium | 44s | The problem is asking whether an array of integers nums can be divi… |
+| 699 | [Falling Squares](699.md) | 🔴 Hard | 1m 15s | The problem describes a simulation of squares falling onto the X-ax… |
