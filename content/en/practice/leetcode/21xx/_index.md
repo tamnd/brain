@@ -66,7 +66,9 @@ draft: false
 | 2153 | [The Number of Passengers in Each Bus II](2153.md) | 🔴 Hard | 1m 4s | The problem describes a scenario at a bus station where buses and p… |
 | 2154 | [Keep Multiplying Found Values by Two](2154.md) | 🟢 Easy | 6m 45s | The problem is asking us to repeatedly search for a number in an ar… |
 | 2155 | [All Divisions With the Highest Score of a Binary Array](2155.md) | 🟡 Medium | 2m 19s | The problem gives you a binary array nums of length n and asks you … |
+| 2156 | [Find Substring With Given Hash Value](2156.md) | 🔴 Hard | 1m 20s | We are given a string s and a polynomial rolling hash function. For… |
 | 2157 | [Groups of Strings](2157.md) | 🔴 Hard | 1m 43s | The problem gives us an array of strings where every string contain… |
+| 2158 | [Amount of New Area Painted Each Day](2158.md) | 🔴 Hard | 1m 6s | The problem describes a painting process on a number line. Each day… |
 | 2159 | [Order Two Columns Independently](2159.md) | 🟡 Medium | 1m 14s | This problem provides a database table named Data with two integer … |
 | 2160 | [Minimum Sum of Four Digit Number After Splitting Digits](2160.md) | 🟢 Easy | 50s | The problem requires taking a four-digit positive integer num and s… |
 | 2161 | [Partition Array According to Given Pivot](2161.md) | 🟡 Medium | 1m 17s | This problem asks us to rearrange an array around a given pivot val… |
@@ -80,14 +82,17 @@ draft: false
 | 2169 | [Count Operations to Obtain Zero](2169.md) | 🟢 Easy | 1m 10s | The problem gives us two non-negative integers, num1 and num2. In e… |
 | 2170 | [Minimum Operations to Make the Array Alternating](2170.md) | 🟡 Medium | 1m 35s | The problem asks us to transform an array into an alternating array… |
 | 2171 | [Removing Minimum Number of Magic Beans](2171.md) | 🟡 Medium | 54s | The problem presents an array of positive integers beans, each repr… |
+| 2172 | [Maximum AND Sum of Array](2172.md) | 🔴 Hard | 1m 20s | This problem asks us to distribute numbers into slots in a way that… |
 | 2173 | [Longest Winning Streak](2173.md) | 🔴 Hard | 53s | The problem asks us to compute the longest winning streak for each … |
 | 2174 | [Remove All Ones With Row and Column Flips II](2174.md) | 🟡 Medium | 1m 38s | This problem gives us a binary matrix, meaning every cell contains … |
 | 2175 | [The Change in Global Rankings](2175.md) | 🟡 Medium | 1m 40s | This problem asks us to measure how the global ranking of national … |
 | 2176 | [Count Equal and Divisible Pairs in an Array](2176.md) | 🟢 Easy | 1m 23s | The problem gives us a 0-indexed integer array nums and an integer … |
 | 2177 | [Find Three Consecutive Integers That Sum to a Given Number](2177.md) | 🟡 Medium | 50s | The problem asks us to find three consecutive integers whose sum eq… |
 | 2178 | [Maximum Split of Positive Even Integers](2178.md) | 🟡 Medium | 1m 15s | The problem gives us a single integer called finalSum, and asks us … |
+| 2179 | [Count Good Triplets in an Array](2179.md) | 🔴 Hard | 1m 20s | The problem gives us two arrays, nums1 and nums2, each containing e… |
 | 2180 | [Count Integers With Even Digit Sum](2180.md) | 🟢 Easy | 1m 10s | The problem gives us a positive integer num, and asks us to count h… |
 | 2181 | [Merge Nodes in Between Zeros](2181.md) | 🟡 Medium | 53s | This problem provides a singly linked list in which integers are se… |
+| 2182 | [Construct String With Repeat Limit](2182.md) | 🟡 Medium | 1m 12s | The problem gives us a string s consisting only of lowercase Englis… |
 | 2183 | [Count Array Pairs Divisible by K](2183.md) | 🔴 Hard | 1m 17s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2184 | [Number of Ways to Build Sturdy Brick Wall](2184.md) | 🟡 Medium | 1m 8s | The problem asks us to count how many different sturdy brick walls … |
 | 2185 | [Counting Words With a Given Prefix](2185.md) | 🟢 Easy | 55s | The problem gives us two inputs: - An array of strings called words… |
@@ -100,6 +105,7 @@ draft: false
 | 2192 | [All Ancestors of a Node in a Directed Acyclic Graph](2192.md) | 🟡 Medium | 1m 32s | The problem gives us a directed acyclic graph, also called a DAG, w… |
 | 2193 | [Minimum Number of Moves to Make Palindrome](2193.md) | 🔴 Hard | 47s | Here’s a full technical guide for LeetCode 2193 following your form… |
 | 2194 | [Cells in a Range on an Excel Sheet](2194.md) | 🟢 Easy | 2m 38s | This problem asks us to generate every Excel cell contained within … |
+| 2195 | [Append K Integers With Minimal Sum](2195.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2196 | [Create Binary Tree From Descriptions](2196.md) | 🟡 Medium | 1m 29s | The problem gives us a list of parent-child relationships that toge… |
 | 2197 | [Replace Non-Coprime Numbers in Array](2197.md) | 🔴 Hard | 1m 22s | The problem gives an integer array nums and asks us to repeatedly m… |
 | 2198 | [Number of Single Divisor Triplets](2198.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums containing positive integers. We… |
