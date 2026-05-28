@@ -58,6 +58,9 @@ draft: false
 | 1045 | [Customers Who Bought All Products](1045.md) | 🟡 Medium | 1m | This problem asks us to identify all customers who have purchased e… |
 | 1046 | [Last Stone Weight](1046.md) | 🟢 Easy | 59s | This problem asks us to repeatedly simulate a process involving sto… |
 | 1047 | [Remove All Adjacent Duplicates In String](1047.md) | 🟢 Easy | 1m 8s | The problem gives us a string s containing only lowercase English l… |
-| 1048 | [Longest String Chain](1048.md) | 🟡 Medium | 1m 10s | The problem gives us a list of lowercase English words and asks for… |
-| 1049 | [Last Stone Weight II](1049.md) | 🟡 Medium | 1m 4s | The problem presents a list of integers, stones, where each integer… |
-| 1050 | [Actors and Directors Who Cooperated At Least Three Times](1050.md) | 🟢 Easy | 1m 7s | The problem gives us a database table named ActorDirector. Each row… |
+| 1048 | [Longest String Chain](1048.md) | 🟡 Medium | 2m 17s | That is a long, structured technical guide that will exceed a pract… |
+| 1049 | [Last Stone Weight II](1049.md) | 🟡 Medium | 1m 24s | The problem is essentially about simulating the process of repeated… |
+| 1050 | [Actors and Directors Who Cooperated At Least Three Times](1050.md) | 🟢 Easy | 1m 1s | This problem asks us to identify every (actorid, directorid) pair w… |
+| 1051 | [Height Checker](1051.md) | 🟢 Easy | 1m 13s | The problem gives us an array called heights, where each value repr… |
+| 1052 | [Grumpy Bookstore Owner](1052.md) | 🟡 Medium | 2m 32s | This problem asks us to maximize the number of satisfied customers … |
+| 1053 | [Previous Permutation With One Swap](1053.md) | 🟡 Medium | 2m 19s | The problem asks us to find the lexicographically largest permutati… |
