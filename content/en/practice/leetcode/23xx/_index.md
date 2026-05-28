@@ -97,5 +97,8 @@ draft: false
 | 2391 | [Minimum Amount of Time to Collect Garbage](2391.md) | 🟡 Medium | 1m 22s | This problem models a city garbage collection system with three sep… |
 | 2392 | [Build a Matrix With Conditions](2392.md) | 🔴 Hard | 1m 1s | The problem asks us to construct a k x k matrix containing integers… |
 | 2393 | [Count Strictly Increasing Subarrays](2393.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums and asks us to count how… |
+| 2394 | [Employees With Deductions](2394.md) | 🟡 Medium | 2m 20s | In this problem, we are given two database tables, Employees and Lo… |
 | 2395 | [Find Subarrays With Equal Sum](2395.md) | 🟢 Easy | 1m 21s | The problem gives us a 0-indexed integer array nums and asks whethe… |
+| 2396 | [Strictly Palindromic Number](2396.md) | 🟡 Medium | 1m 31s | The problem asks us to determine whether a given integer n is stric… |
+| 2397 | [Maximum Rows Covered by Columns](2397.md) | 🟡 Medium | 1m 14s | This problem asks us to choose exactly numSelect columns from a bin… |
 | 2398 | [Maximum Number of Robots Within Budget](2398.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum number of consecutive … |
