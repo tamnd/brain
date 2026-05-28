@@ -98,10 +98,10 @@ draft: false
 | 2185 | [Counting Words With a Given Prefix](2185.md) | 🟢 Easy | 1m 16s | The problem gives us two inputs: - An array of strings called words… |
 | 2186 | [Minimum Number of Steps to Make Two Strings Anagram II](2186.md) | 🟡 Medium | 49s | The problem asks us to find the minimum number of steps required to… |
 | 2187 | [Minimum Time to Complete Trips](2187.md) | 🟡 Medium | 1m 10s | The problem gives us an array called time, where each element repre… |
-| 2188 | [Minimum Time to Finish the Race](2188.md) | 🔴 Hard | 44s | The problem asks us to find the minimum total time to complete a ra… |
+| 2188 | [Minimum Time to Finish the Race](2188.md) | 🔴 Hard | 5m 35s | The problem asks us to find the minimum total time to complete a ra… |
 | 2189 | [Number of Ways to Build House of Cards](2189.md) | 🟡 Medium | 1m | The problem asks us to count how many distinct houses of cards can … |
-| 2190 | [Most Frequent Number Following Key In an Array](2190.md) | 🟢 Easy | 1m 15s | The problem gives us an integer array nums and a specific integer k… |
-| 2191 | [Sort the Jumbled Numbers](2191.md) | 🟡 Medium | 43s | This problem requires sorting an array of integers nums based not o… |
+| 2190 | [Most Frequent Number Following Key In an Array](2190.md) | 🟢 Easy | 2m 20s | The problem asks us to find the integer that appears most frequentl… |
+| 2191 | [Sort the Jumbled Numbers](2191.md) | 🟡 Medium | 37s | The problem asks us to sort an array of integers based on a custom … |
 | 2192 | [All Ancestors of a Node in a Directed Acyclic Graph](2192.md) | 🟡 Medium | 1m 32s | The problem gives us a directed acyclic graph, also called a DAG, w… |
 | 2193 | [Minimum Number of Moves to Make Palindrome](2193.md) | 🔴 Hard | 47s | Here’s a full technical guide for LeetCode 2193 following your form… |
 | 2194 | [Cells in a Range on an Excel Sheet](2194.md) | 🟢 Easy | 2m 38s | This problem asks us to generate every Excel cell contained within … |

@@ -57,3 +57,15 @@ draft: false
 | 2448 | [Minimum Cost to Make Array Equal](2448.md) | 🔴 Hard | 1m 7s | The problem gives us two arrays, nums and cost, both of length n. E… |
 | 2449 | [Minimum Number of Operations to Make Arrays Similar](2449.md) | 🔴 Hard | 1m | The problem asks us to transform one array nums into another array … |
 | 2450 | [Number of Distinct Binary Strings After Applying Operations](2450.md) | 🟡 Medium | 1m 23s | The problem asks us to determine how many distinct binary strings c… |
+| 2451 | [Odd String Difference](2451.md) | 🟢 Easy | 3m 10s | In this problem, every string in the input array can be transformed… |
+| 2452 | [Words Within Two Edits of Dictionary](2452.md) | 🟡 Medium | 1m 54s | The problem gives us two arrays of strings, queries and dictionary.… |
+| 2453 | [Destroy Sequential Targets](2453.md) | 🟡 Medium | 3m 50s | This problem asks us to maximize the number of targets that can be … |
+| 2454 | [Next Greater Element IV](2454.md) | 🔴 Hard | 1m 22s | The problem asks us to compute, for every element in the array, the… |
+| 2455 | [Average Value of Even Numbers That Are Divisible by Three](2455.md) | 🟢 Easy | 50s | The problem asks us to compute the average of all integers in an in… |
+| 2456 | [Most Popular Video Creator](2456.md) | 🟡 Medium | 47s | The problem asks us to identify the most popular video creators bas… |
+| 2458 | [Height of Binary Tree After Subtree Removal Queries](2458.md) | 🔴 Hard | 1m 29s | This problem asks us to process multiple independent subtree remova… |
+| 2459 | [Sort Array by Moving Items to Empty Space](2459.md) | 🔴 Hard | 1m 29s | We are given a permutation of the integers from 0 to n - 1. Every n… |
+| 2460 | [Apply Operations to an Array](2460.md) | 🟢 Easy | 1m 13s | The problem gives us a 0-indexed integer array nums containing non-… |
+| 2461 | [Maximum Sum of Distinct Subarrays With Length K](2461.md) | 🟡 Medium | 1m 25s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2462 | [Total Cost to Hire K Workers](2462.md) | 🟡 Medium | 44s | We are asked to simulate a hiring process for k workers from an arr… |
+| 2464 | [Minimum Subarrays in a Valid Split](2464.md) | 🟡 Medium | 1m 19s | The problem asks us to split the array into the minimum possible nu… |
