@@ -69,6 +69,7 @@ draft: false
 | 556 | [Next Greater Element III](556.md) | 🟡 Medium | 1m 5s | This problem asks us to find the smallest integer that is strictly … |
 | 557 | [Reverse Words in a String III](557.md) | 🟢 Easy | 47s | The problem requires reversing the characters of each individual wo… |
 | 558 | [Logical OR of Two Binary Grids Represented as Quad-Trees](558.md) | 🟡 Medium | 1m 27s | This problem gives us two Quad-Trees, where each tree represents a … |
+| 560 | [Subarray Sum Equals K](560.md) | 🟡 Medium | 1m 3s | The problem asks us to count how many contiguous, non-empty subarra… |
 | 561 | [Array Partition](561.md) | 🟢 Easy | 1m 6s | The problem gives an array nums containing 2n integers. Our task is… |
 | 562 | [Longest Line of Consecutive One in Matrix](562.md) | 🟡 Medium | 1m 13s | The problem gives us a binary matrix mat of size m x n, where every… |
 | 563 | [Binary Tree Tilt](563.md) | 🟢 Easy | 1m 7s | The problem asks us to compute the total tilt of an entire binary t… |

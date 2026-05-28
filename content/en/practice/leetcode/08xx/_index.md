@@ -55,12 +55,12 @@ draft: false
 | 842 | [Split Array into Fibonacci Sequence](842.md) | 🟡 Medium | 1m 41s | The problem gives us a string consisting only of digits, and asks u… |
 | 843 | [Guess the Word](843.md) | 🔴 Hard | 1m 16s | This is an interactive problem where we must identify a hidden six-… |
 | 844 | [Backspace String Compare](844.md) | 🟢 Easy | 1m 22s | The problem gives us two strings, s and t, that represent text type… |
-| 845 | [Longest Mountain in Array](845.md) | 🟡 Medium | 1m 3s | The problem asks us to find the length of the longest contiguous su… |
-| 846 | [Hand of Straights](846.md) | 🟡 Medium | 1m 14s | The problem gives us an array called hand, where each value represe… |
-| 847 | [Shortest Path Visiting All Nodes](847.md) | 🔴 Hard | 1m 13s | This problem gives us an undirected, connected graph with n nodes n… |
-| 848 | [Shifting Letters](848.md) | 🟡 Medium | 1m 10s | The problem gives us a lowercase English string s and an integer ar… |
-| 849 | [Maximize Distance to Closest Person](849.md) | 🟡 Medium | 42s | This problem asks us to find the seat in a row of seats that maximi… |
-| 850 | [Rectangle Area II](850.md) | 🔴 Hard | 41s | The problem asks us to compute the total area covered by a set of a… |
+| 845 | [Longest Mountain in Array](845.md) | 🟡 Medium | 58s | The problem asks us to find the length of the longest contiguous su… |
+| 846 | [Hand of Straights](846.md) | 🟡 Medium | 40s | The problem asks us to determine whether a given collection of card… |
+| 847 | [Shortest Path Visiting All Nodes](847.md) | 🔴 Hard | 1m 25s | The problem gives us an undirected and connected graph with n nodes… |
+| 848 | [Shifting Letters](848.md) | 🟡 Medium | 59s | This problem asks us to repeatedly apply character shifts to a stri… |
+| 849 | [Maximize Distance to Closest Person](849.md) | 🟡 Medium | 1m 18s | In this problem, we are given a binary array called seats. Each pos… |
+| 850 | [Rectangle Area II](850.md) | 🔴 Hard | 39s | This problem asks us to compute the total area covered by a set of … |
 | 851 | [Loud and Rich](851.md) | 🟡 Medium | 1m 15s | This problem describes a group of people where some people are know… |
 | 852 | [Peak Index in a Mountain Array](852.md) | 🟡 Medium | 1m 9s | This problem gives us a special type of array called a mountain arr… |
 | 853 | [Car Fleet](853.md) | 🟡 Medium | 1m 16s | The problem describes a set of cars driving toward the same destina… |
@@ -82,3 +82,16 @@ draft: false
 | 869 | [Reordered Power of 2](869.md) | 🟡 Medium | 1m 11s | The problem gives us a positive integer n and asks whether its digi… |
 | 870 | [Advantage Shuffle](870.md) | 🟡 Medium | 34s | The problem asks us to maximize the advantage of one array over ano… |
 | 871 | [Minimum Number of Refueling Stops](871.md) | 🔴 Hard | 1m 7s | The problem describes a car traveling from position 0 to a destinat… |
+| 872 | [Leaf-Similar Trees](872.md) | 🟢 Easy | 1m 4s | This problem asks us to compare two binary trees based only on thei… |
+| 873 | [Length of Longest Fibonacci Subsequence](873.md) | 🟡 Medium | 1m 12s | The problem asks us to find the length of the longest subsequence i… |
+| 874 | [Walking Robot Simulation](874.md) | 🟡 Medium | 1m 18s | The problem describes a robot moving on an infinite two dimensional… |
+| 875 | [Koko Eating Bananas](875.md) | 🟡 Medium | 41s | The problem asks us to determine the minimum eating speed k for Kok… |
+| 876 | [Middle of the Linked List](876.md) | 🟢 Easy | 55s | The problem gives us the head of a singly linked list and asks us t… |
+| 878 | [Nth Magical Number](878.md) | 🔴 Hard | 1m 13s | The problem asks us to find the nth positive integer that is divisi… |
+| 879 | [Profitable Schemes](879.md) | 🔴 Hard | 1m 16s | This problem asks us to count how many subsets of crimes satisfy tw… |
+| 880 | [Decoded String at Index](880.md) | 🟡 Medium | 1m 12s | The problem gives us an encoded string s that represents a potentia… |
+| 881 | [Boats to Save People](881.md) | 🟡 Medium | 1m 10s | This problem asks us to determine the minimum number of boats requi… |
+| 882 | [Reachable Nodes In Subdivided Graph](882.md) | 🔴 Hard | 2m 1s | The problem gives us an undirected graph with n original nodes. Eac… |
+| 883 | [Projection Area of 3D Shapes](883.md) | 🟢 Easy | 1m 14s | The problem gives us an n x n matrix called grid. Each cell grid[i]… |
+| 884 | [Uncommon Words from Two Sentences](884.md) | 🟢 Easy | 56s | This problem asks us to find all words that are considered "uncommo… |
+| 885 | [Spiral Matrix III](885.md) | 🟡 Medium | 34s | The problem is asking us to generate the coordinates of cells in a … |
