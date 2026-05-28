@@ -69,9 +69,19 @@ draft: false
 | 1056 | [Confusing Number](1056.md) | 🟢 Easy | 4m 11s | The problem asks us to determine whether a given integer becomes a … |
 | 1057 | [Campus Bikes](1057.md) | 🟡 Medium | 1m 16s | This problem models a matching process between workers and bikes on… |
 | 1058 | [Minimize Rounding Error to Meet Target](1058.md) | 🟡 Medium | 41s | The problem asks us to round an array of decimal prices to integers… |
+| 1059 | [All Paths from Source Lead to Destination](1059.md) | 🟡 Medium | 5m 6s | This problem gives us a directed graph with n nodes labeled from 0 … |
 | 1060 | [Missing Element in Sorted Array](1060.md) | 🟡 Medium | 42s | The problem asks us to find the k-th missing number in a sorted, st… |
-| 1061 | [Lexicographically Smallest Equivalent String](1061.md) | 🟡 Medium | 1m 23s | This problem asks us to build groups of equivalent characters and t… |
-| 1062 | [Longest Repeating Substring](1062.md) | 🟡 Medium | 1m 11s | In this problem, we are given a string s consisting only of lowerca… |
-| 1063 | [Number of Valid Subarrays](1063.md) | 🔴 Hard | 50s | The problem asks us to count the number of non-empty contiguous sub… |
+| 1061 | [Lexicographically Smallest Equivalent String](1061.md) | 🟡 Medium | 1m 2s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 1062 | [Longest Repeating Substring](1062.md) | 🟡 Medium | 1m 24s | The problem asks us to find the length of the longest substring tha… |
+| 1063 | [Number of Valid Subarrays](1063.md) | 🔴 Hard | 57s | The problem is asking us to count the number of valid subarrays in … |
 | 1064 | [Fixed Point](1064.md) | 🟢 Easy | 46s | The problem asks us to find a "fixed point" in a sorted array of di… |
 | 1065 | [Index Pairs of a String](1065.md) | 🟢 Easy | 1m 24s | The problem gives us a string text and a list of unique words calle… |
+| 1066 | [Campus Bikes II](1066.md) | 🟡 Medium | 1m 27s | This problem asks us to assign bikes to workers in a way that minim… |
+| 1067 | [Digit Count in Range](1067.md) | 🔴 Hard | 1m 17s | The problem asks us to count how many times a specific digit d appe… |
+| 1068 | [Product Sales Analysis I](1068.md) | 🟢 Easy | 52s | This problem provides two database tables, Sales and Product, and a… |
+| 1069 | [Product Sales Analysis II](1069.md) | 🟢 Easy | 1m 56s | The problem asks us to compute the total quantity sold for each pro… |
+| 1071 | [Greatest Common Divisor of Strings](1071.md) | 🟢 Easy | 1m 26s | The problem asks us to find the greatest common divisor (GCD) of tw… |
+| 1072 | [Flip Columns For Maximum Number of Equal Rows](1072.md) | 🟡 Medium | 58s | This problem asks us to analyze a binary matrix and determine the m… |
+| 1073 | [Adding Two Negabinary Numbers](1073.md) | 🟡 Medium | 46s | The problem requires adding two numbers that are represented in neg… |
+| 1075 | [Project Employees I](1075.md) | 🟢 Easy | 1m 25s | This problem asks us to compute the average number of experience ye… |
+| 1076 | [Project Employees II](1076.md) | 🟢 Easy | 1m 19s | This problem asks us to identify the project or projects that have … |
