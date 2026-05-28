@@ -77,17 +77,17 @@ draft: false
 | 1365 | [How Many Numbers Are Smaller Than the Current Number](1365.md) | 🟢 Easy | 1m 3s | The problem asks us to determine, for each element in an array, how… |
 | 1366 | [Rank Teams by Votes](1366.md) | 🟡 Medium | 1m 13s | The problem describes a voting based ranking system where every vot… |
 | 1367 | [Linked List in Binary Tree](1367.md) | 🟡 Medium | 1m 18s | This problem asks whether a linked list appears as a continuous dow… |
-| 1368 | [Minimum Cost to Make at Least One Valid Path in a Grid](1368.md) | 🔴 Hard | 53s | This problem asks us to find the minimum cost to make at least one … |
-| 1369 | [Get the Second Most Recent Activity](1369.md) | 🔴 Hard | 55s | The problem asks us to extract the second most recent activity of e… |
-| 1370 | [Increasing Decreasing String](1370.md) | 🟢 Easy | 1m 17s | The problem asks us to repeatedly build a new string by alternating… |
-| 1371 | [Find the Longest Substring Containing Vowels in Even Counts](1371.md) | 🟡 Medium | 1m 19s | The problem asks us to find the length of the longest substring in … |
-| 1372 | [Longest ZigZag Path in a Binary Tree](1372.md) | 🟡 Medium | 1m 16s | The problem gives us the root of a binary tree and asks us to find … |
+| 1368 | [Minimum Cost to Make at Least One Valid Path in a Grid](1368.md) | 🔴 Hard | 1m 19s | This problem gives us a two dimensional grid where every cell conta… |
+| 1369 | [Get the Second Most Recent Activity](1369.md) | 🔴 Hard | 1m 43s | The problem gives us a database table named UserActivity that store… |
+| 1370 | [Increasing Decreasing String](1370.md) | 🟢 Easy | 54s | The problem requires us to reorder a string s by repeatedly picking… |
+| 1371 | [Find the Longest Substring Containing Vowels in Even Counts](1371.md) | 🟡 Medium | 1m 1s | This problem asks us to find the length of the longest contiguous s… |
+| 1372 | [Longest ZigZag Path in a Binary Tree](1372.md) | 🟡 Medium | 1m 20s | In this problem, we are given the root node of a binary tree, and w… |
 | 1373 | [Maximum Sum BST in Binary Tree](1373.md) | 🔴 Hard | 1m 31s | This problem asks us to examine every possible subtree inside a bin… |
-| 1374 | [Generate a String With Characters That Have Odd Counts](1374.md) | 🟢 Easy | 1m 8s | The problem asks us to construct a string of length n using only lo… |
-| 1375 | [Number of Times Binary String Is Prefix-Aligned](1375.md) | 🟡 Medium | 54s | The problem is asking us to simulate flipping bits in a binary stri… |
-| 1376 | [Time Needed to Inform All Employees](1376.md) | 🟡 Medium | 1m 24s | This problem models a company hierarchy as a tree. Every employee h… |
-| 1377 | [Frog Position After T Seconds](1377.md) | 🔴 Hard | 1m 33s | The problem gives us an undirected tree with n vertices numbered fr… |
-| 1378 | [Replace Employee ID With The Unique Identifier](1378.md) | 🟢 Easy | 47s | This problem asks us to combine information from two database table… |
+| 1374 | [Generate a String With Characters That Have Odd Counts](1374.md) | 🟢 Easy | 1m 1s | The problem asks us to generate a string of length n such that each… |
+| 1375 | [Number of Times Binary String Is Prefix-Aligned](1375.md) | 🟡 Medium | 1m 3s | The problem asks us to determine how many times a binary string bec… |
+| 1376 | [Time Needed to Inform All Employees](1376.md) | 🟡 Medium | 1m | The problem asks us to calculate the total time it takes for a piec… |
+| 1377 | [Frog Position After T Seconds](1377.md) | 🔴 Hard | 1m 32s | This problem describes a frog moving through an undirected tree. A … |
+| 1378 | [Replace Employee ID With The Unique Identifier](1378.md) | 🟢 Easy | 1m 30s | This problem asks us to combine information from two database table… |
 | 1379 | [Find a Corresponding Node of a Binary Tree in a Clone of That Tree](1379.md) | 🟢 Easy | 1m 20s | The problem gives us two binary trees, original and cloned. The clo… |
 | 1380 | [Lucky Numbers in a Matrix](1380.md) | 🟢 Easy | 1m 17s | The problem gives us an m x n matrix containing distinct integers. … |
 | 1381 | [Design a Stack With Increment Operation](1381.md) | 🟡 Medium | 5m 37s | This problem asks us to implement a stack data structure with a twi… |
