@@ -109,14 +109,17 @@ while true; do
           if [ -n "$_run_id" ]; then break; fi
         done
         if [ -n "$_run_id" ]; then
-          gh run watch "$_run_id" --exit-status &>/dev/null && _conclusion="success" || _conclusion="failure"
+          gh run watch "$_run_id" &>/dev/null || true
+          _conclusion=$(gh run view "$_run_id" --json conclusion --jq '.conclusion' 2>/dev/null || echo "unknown")
           _deploy_end=$(date +%s)
           _elapsed=$(( _deploy_end - _deploy_start ))
           _mins=$(( _elapsed / 60 )); _secs=$(( _elapsed % 60 ))
           if [ "$_conclusion" = "success" ]; then
             log "${GRN}✓ deployed in ${_mins}m${_secs}s${RST}"
+          elif [ "$_conclusion" = "cancelled" ]; then
+            log "${GRY}· run cancelled (superseded by newer push) — content will deploy with next run${RST}"
           else
-            log "${YLW}✗ deploy failed after ${_mins}m${_secs}s${RST}"
+            log "${YLW}✗ deploy failed after ${_mins}m${_secs}s (conclusion: ${_conclusion})${RST}"
           fi
         else
           log "${YLW}· deploy run not found${RST}"
