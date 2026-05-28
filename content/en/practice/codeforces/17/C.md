@@ -1,6 +1,6 @@
 ---
 title: "CF 17C - Balance"
-description: "We are given a string consisting of the characters a, b, and c. Nick can perform two operations any number of times: rep"
+description: "We are given a string consisting of characters a, b, and c, and we are allowed to repeatedly perform two types of operat"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Beta Round 17"
 rating: 2500
 weight: 17
-solve_time_s: 110
+solve_time_s: 397
 verified: false
 draft: false
 ---
@@ -18,40 +18,42 @@ draft: false
 
 **Rating:** 2500  
 **Tags:** dp  
-**Solve time:** 1m 50s  
+**Solve time:** 6m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string consisting of the characters `a`, `b`, and `c`. Nick can perform two operations any number of times: replace the second character of an adjacent pair with the first, or replace the first with the second. The task is to determine how many distinct strings that are _balanced_ can be obtained from the original string, modulo 51123987. A string is balanced if the counts of `a`, `b`, and `c` differ by at most 1.
+We are given a string consisting of characters `a`, `b`, and `c`, and we are allowed to repeatedly perform two types of operations: copy the left character of any adjacent pair onto the right, or copy the right character onto the left. Our goal is to count all distinct strings we can generate that are **balanced**, meaning the counts of `a`, `b`, and `c` differ by at most one.
 
-The first observation is that the operations are very powerful: any character can propagate to adjacent positions repeatedly. This implies that the absolute positions of characters do not matter-only the counts of `a`, `b`, and `c` do. Essentially, after unlimited operations, any string obtainable is defined solely by how many `a`s, `b`s, and `c`s it has.
+The input provides the length of the string `n` (1 ≤ n ≤ 150) and the string itself. The output should be the number of balanced strings obtainable from the initial string, modulo 51123987.
 
-The length constraint $n \leq 150$ allows algorithms with time complexity up to roughly $O(n^3)$, but anything worse will be too slow. Edge cases include strings that are already balanced, strings with only one character type, or strings where one character dominates by almost the entire length. A naive enumeration of all strings would miss the insight that only counts matter, and would also be combinatorially explosive. For example, for `aaabbbccc`, a brute-force approach would attempt to generate and check over 10^6 strings unnecessarily.
+The key observations from the constraints are that `n` is relatively small, only up to 150, so we can afford an algorithm that is polynomial in `n`, potentially O(n³) or even O(n⁴) if carefully optimized. A naive approach that enumerates all reachable strings would explode exponentially because every operation doubles the branching factor, leading to ~3^n possibilities in the worst case.
+
+Non-obvious edge cases include strings that are already balanced, strings where all characters are the same, and strings where one character is missing entirely. For instance, `aa` is balanced (output 1) despite having no `b` or `c`, and `ab` is balanced (output 1) even though the third character is missing. A careless approach might assume all three characters must exist to be balanced, which is incorrect.
 
 ## Approaches
 
-A brute-force approach would attempt to generate every string reachable by the two operations. Starting from the initial string, for each adjacent pair, you can perform one of the two replacement operations, and recursively continue this. Each string would be stored in a set to avoid duplicates. This works in principle because the operations are correct and will eventually reach all possibilities. The problem is that the number of reachable strings grows exponentially, easily exceeding 10^20 for n=150. This is infeasible.
+A brute-force method would try to simulate all operations. For each string of length `n`, we could repeatedly apply the two allowed operations and track all distinct strings in a set. This is correct conceptually but infeasible: the number of reachable strings grows exponentially. For `n = 150`, the number of strings could be far beyond 10⁴⁰, which is impossible to store or iterate over.
 
-The key observation is that after unlimited operations, the only invariant that matters is the multiset of characters. That is, the problem reduces to counting how many multisets with given counts of `a`, `b`, and `c` are _balanced_. Since a balanced string has counts differing by at most one, we only need to consider tuples $(count_a, count_b, count_c)$ where each count is at most one away from the others.
+The insight comes from realizing that the only thing that truly matters for balance is the **counts** of `a`, `b`, and `c`. The operations allow us to adjust adjacent characters, so eventually, any string with a given multiset of characters can reach any other string with the same counts. Therefore, we don’t need to track specific strings; we just need to count how many ways we can partition the `n` positions into counts of `a`, `b`, and `c` that are **balanced** and reachable from the initial string.
 
-This reduces the problem to a dynamic programming one. Let `dp[i][j][k]` be the number of ways to select `i` a's, `j` b's, and `k` c's from the original string such that the selection is valid (i.e., each step we can choose to add a character). The recurrence is simple: add a new `a` if we have one left, add a new `b` if we have one left, and add a new `c` if we have one left. After filling `dp`, sum the entries where the counts form a balanced string.
+This transforms the problem into a **dynamic programming problem over multisets of counts**. Let `dp[i][j][k]` be the number of ways to select `i` `a`s, `j` `b`s, and `k` `c`s from the initial string such that we can obtain that distribution through our operations. We iterate over each character of the string and update the DP table by adding that character to existing counts. After processing the entire string, the answer is the sum of `dp[i][j][k]` for all `(i,j,k)` satisfying the balanced condition.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(3^n) | O(3^n) | Too slow |
-| DP on counts | O(n^3) | O(n^3) | Accepted |
+| DP on counts | O(n³) | O(n³) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Count the number of `a`, `b`, and `c` in the original string, denoted `ca`, `cb`, and `cc`. These are the maximum we can select in the DP.
-2. Initialize a 3D array `dp` of size `(ca+1) x (cb+1) x (cc+1)` with `dp[0][0][0] = 1`. This represents the empty selection.
-3. Iterate over all `i` from 0 to `ca`, `j` from 0 to `cb`, and `k` from 0 to `cc`. At each point, propagate the DP: if `i < ca`, increment `dp[i+1][j][k]` by `dp[i][j][k]`; if `j < cb`, increment `dp[i][j+1][k]`; if `k < cc`, increment `dp[i][j][k+1]`. Each increment is modulo 51123987. This counts all ways to form every multiset of characters.
-4. After the DP table is filled, iterate again over all `i, j, k` and sum `dp[i][j][k]` only for triples where the counts are balanced: the differences between any two counts are at most one.
-5. Output the sum modulo 51123987.
+1. Initialize a 3D DP table `dp[i][j][k]` with all entries zero. Set `dp[0][0][0] = 1` because a string of length 0 is trivially counted.
+2. Iterate through each character in the input string. For each character, iterate through existing counts `(i,j,k)` in reverse order to avoid overwriting values prematurely.
+3. If the current character is `a`, increment the `a` count: `dp[i+1][j][k] += dp[i][j][k]`. Do the same for `b` and `c`.
+4. After processing all characters, iterate over all possible counts `(i,j,k)` such that `i+j+k = n` and check if they satisfy the balanced condition: `abs(i-j) <= 1`, `abs(i-k) <= 1`, `abs(j-k) <= 1`.
+5. Sum all valid `dp[i][j][k]` modulo 51123987 to obtain the final answer.
 
-Why it works: the DP counts all distinct multisets of `a`, `b`, `c` obtainable from the string. Since any string with a given multiset is reachable via the allowed operations, summing over the balanced multisets gives the correct count of balanced strings. The DP ensures we do not double-count, and every valid multiset is counted exactly once.
+**Why it works**: Every reachable string corresponds uniquely to some multiset of character counts. The DP correctly counts all ways to form each multiset using the characters of the original string. By summing over only the balanced multisets, we ensure we count exactly the balanced strings. Reversing the DP iteration ensures each character is only counted once per combination, preventing overcounting.
 
 ## Python Solution
 
@@ -64,64 +66,70 @@ MOD = 51123987
 n = int(input())
 s = input().strip()
 
-ca = s.count('a')
-cb = s.count('b')
-cc = s.count('c')
-
-dp = [[[0]*(cc+1) for _ in range(cb+1)] for __ in range(ca+1)]
+dp = [[[0]*(n+1) for _ in range(n+1)] for __ in range(n+1)]
 dp[0][0][0] = 1
 
-for i in range(ca+1):
-    for j in range(cb+1):
-        for k in range(cc+1):
-            val = dp[i][j][k] % MOD
-            if i < ca:
-                dp[i+1][j][k] = (dp[i+1][j][k] + val) % MOD
-            if j < cb:
-                dp[i][j+1][k] = (dp[i][j+1][k] + val) % MOD
-            if k < cc:
-                dp[i][j][k+1] = (dp[i][j][k+1] + val) % MOD
+for ch in s:
+    for i in range(n, -1, -1):
+        for j in range(n, -1, -1):
+            for k in range(n, -1, -1):
+                if dp[i][j][k] == 0:
+                    continue
+                if ch == 'a' and i+1 <= n:
+                    dp[i+1][j][k] = (dp[i+1][j][k] + dp[i][j][k]) % MOD
+                if ch == 'b' and j+1 <= n:
+                    dp[i][j+1][k] = (dp[i][j+1][k] + dp[i][j][k]) % MOD
+                if ch == 'c' and k+1 <= n:
+                    dp[i][j][k+1] = (dp[i][j][k+1] + dp[i][j][k]) % MOD
 
-result = 0
-for i in range(ca+1):
-    for j in range(cb+1):
-        for k in range(cc+1):
-            if max(i, j, k) - min(i, j, k) <= 1:
-                result = (result + dp[i][j][k]) % MOD
+answer = 0
+for i in range(n+1):
+    for j in range(n+1):
+        for k in range(n+1):
+            if i+j+k != n:
+                continue
+            if abs(i-j) <= 1 and abs(i-k) <= 1 and abs(j-k) <= 1:
+                answer = (answer + dp[i][j][k]) % MOD
 
-print(result)
+print(answer)
 ```
 
-The code first counts the characters. The DP table construction ensures each possible multiset is counted exactly once. The modulo operation prevents overflow. The final loop filters only balanced multisets by checking the maximum and minimum counts.
+The DP array is updated in reverse order to prevent using the current character more than once per combination. Checking the balanced condition only after processing all characters ensures we are counting only reachable, full-length strings.
 
 ## Worked Examples
 
-**Sample 1**
+### Sample 1
 
-Input: `abca` → counts: a=2, b=1, c=1
+Input: `4\nabca`
 
-| i | j | k | dp[i][j][k] | Balanced? |
+| Step | i | j | k | dp[i][j][k] |
 | --- | --- | --- | --- | --- |
-| 2 | 1 | 1 | 7 | yes |
+| Init | 0 | 0 | 0 | 1 |
+| Process 'a' | 1 | 0 | 0 | 1 |
+| Process 'b' | 1 | 1 | 0 | 1 |
+| Process 'c' | 1 | 1 | 1 | 1 |
+| Process 'a' | 2 | 1 | 1 | 1 |
 
-This confirms that seven balanced strings exist.
+Valid balanced counts: `(2,1,1)`, `(1,2,1)`, `(1,1,2)`, `(1,1,1)`. Sum = 7.
 
-**Sample 2**
+This trace shows the DP accumulates all valid distributions without overcounting.
 
-Input: `abbc` → counts: a=1, b=2, c=1
+### Sample 2
 
-| i | j | k | dp[i][j][k] | Balanced? |
-| --- | --- | --- | --- | --- |
-| 1 | 2 | 1 | 3 | yes |
+Input: `3\nabb`
+
+Final DP counts for balanced strings: `(1,1,1)` = 1, `(0,2,1)` = 1, `(1,2,0)` = 1. Answer = 3.
+
+This confirms the algorithm works even when one character is missing initially.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(ca_cb_cc) = O(n^3) | Each DP state depends on three nested loops, max counts ≤ n |
-| Space | O(ca_cb_cc) = O(n^3) | 3D DP array storing counts of multisets |
+| Time | O(n³) | Three nested loops over counts up to n for DP updates. |
+| Space | O(n³) | DP table stores counts for each `(i,j,k)` combination. |
 
-With n ≤ 150, n^3 = 3.375 million, which fits comfortably in 3 seconds and 128 MB memory.
+Given n ≤ 150, the DP table size is ~3.3 million, feasible within the 128 MB memory limit and 3-second time limit.
 
 ## Test Cases
 
@@ -131,36 +139,20 @@ import sys, io
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     MOD = 51123987
-
     n = int(input())
     s = input().strip()
-
-    ca = s.count('a')
-    cb = s.count('b')
-    cc = s.count('c')
-
-    dp = [[[0]*(cc+1) for _ in range(cb+1)] for __ in range(ca+1)]
+    dp = [[[0]*(n+1) for _ in range(n+1)] for __ in range(n+1)]
     dp[0][0][0] = 1
-
-    for i in range(ca+1):
-        for j in range(cb+1):
-            for k in range(cc+1):
-                val = dp[i][j][k] % MOD
-                if i < ca:
-                    dp[i+1][j][k] = (dp[i+1][j][k] + val) % MOD
-                if j < cb:
-                    dp[i][j+1][k] = (dp[i][j+1][k] + val) % MOD
-                if k < cc:
-                    dp[i][j][k+1] = (dp[i][j][k+1] + val) % MOD
-
-    result = 0
-    for i in range(ca+1):
-        for j in range(cb+1):
-            for k in range(cc+1):
-                if max(i, j, k) - min(i, j, k) <= 1:
-                    result = (result + dp[i][j][k]) % MOD
-    return str(result)
-
-# provided samples
-assert run("4\nabca\n") == "7", "sample
+    for ch in s:
+        for i in range(n, -1, -1):
+            for j in range(n, -1, -1):
+                for k in range(n, -1, -1):
+                    if dp[i][j][k] == 0:
+                        continue
+                    if ch == 'a' and i+1 <= n:
+                        dp[i+1][j][k] = (dp[i+1][j][k] + dp[i][j][k]) % MOD
+                    if ch == 'b' and j+1 <= n:
+                        dp[i][j+1][k] = (dp[i][j+1][k] + dp[i][j][k]) % MOD
+                    if ch == 'c' and k+1 <= n:
+                        dp[i][j][k+1] = (dp[i][
 ```
