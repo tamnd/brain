@@ -89,16 +89,16 @@ draft: false
 | 1277 | [Count Square Submatrices with All Ones](1277.md) | 🟡 Medium | 1m 29s | The problem gives us a binary matrix of size m x n, where every cel… |
 | 1278 | [Palindrome Partitioning III](1278.md) | 🔴 Hard | 1m 27s | The problem gives us a string s and an integer k. We are allowed to… |
 | 1279 | [Traffic Light Controlled Intersection](1279.md) | 🟢 Easy | 1m 22s | This problem asks us to design a thread-safe traffic light system f… |
-| 1280 | [Students and Examinations](1280.md) | 🟢 Easy | 1m 21s | This problem asks us to generate a complete report showing how many… |
+| 1280 | [Students and Examinations](1280.md) | 🟢 Easy | 1m 28s | This problem asks us to generate a complete report showing how many… |
 | 1281 | [Subtract the Product and Sum of Digits of an Integer](1281.md) | 🟢 Easy | 51s | The problem asks us to compute a simple mathematical transformation… |
-| 1282 | [Group the People Given the Group Size They Belong To](1282.md) | 🟡 Medium | 1m 11s | The problem gives us an array called groupSizes, where each index r… |
-| 1283 | [Find the Smallest Divisor Given a Threshold](1283.md) | 🟡 Medium | 1m 4s | The problem asks us to find the smallest positive integer divisor s… |
-| 1284 | [Minimum Number of Flips to Convert Binary Matrix to Zero Matrix](1284.md) | 🔴 Hard | 48s | This problem asks us to determine the minimum number of flips requi… |
+| 1282 | [Group the People Given the Group Size They Belong To](1282.md) | 🟡 Medium | 1m 24s | The problem gives us an array called groupSizes, where each index r… |
+| 1283 | [Find the Smallest Divisor Given a Threshold](1283.md) | 🟡 Medium | 48s | The problem asks us to find the smallest positive integer divisor f… |
+| 1284 | [Minimum Number of Flips to Convert Binary Matrix to Zero Matrix](1284.md) | 🔴 Hard | 59s | The problem asks us to transform a given binary matrix mat into a z… |
 | 1285 | [Find the Start and End Number of Continuous Ranges](1285.md) | 🟡 Medium | 56s | Here’s a full technical solution guide for LeetCode 1285 following … |
 | 1286 | [Iterator for Combination](1286.md) | 🟡 Medium | 51s | The problem asks us to design a class CombinationIterator that gene… |
-| 1287 | [Element Appearing More Than 25% In Sorted Array](1287.md) | 🟢 Easy | 1m 11s | The problem gives us a sorted integer array in non-decreasing order… |
-| 1288 | [Remove Covered Intervals](1288.md) | 🟡 Medium | 52s | The problem asks us to process a list of intervals, where each inte… |
-| 1289 | [Minimum Falling Path Sum II](1289.md) | 🔴 Hard | 48s | The problem requires finding the minimum sum of a falling path thro… |
+| 1287 | [Element Appearing More Than 25% In Sorted Array](1287.md) | 🟢 Easy | 1m 8s | The problem gives us a sorted integer array in non-decreasing order… |
+| 1288 | [Remove Covered Intervals](1288.md) | 🟡 Medium | 1m 9s | The problem gives us a list of intervals, where each interval is re… |
+| 1289 | [Minimum Falling Path Sum II](1289.md) | 🔴 Hard | 46s | The problem asks us to compute the minimum sum of a falling path wi… |
 | 1290 | [Convert Binary Number in a Linked List to Integer](1290.md) | 🟢 Easy | 1m 7s | The problem gives us the head of a singly linked list where every n… |
 | 1291 | [Sequential Digits](1291.md) | 🟡 Medium | 53s | The problem asks us to generate all integers within a given range [… |
 | 1292 | [Maximum Side Length of a Square with Sum Less than or Equal to Threshold](1292.md) | 🟡 Medium | 1m 33s | The problem gives us a two dimensional matrix mat of size m x n, al… |
