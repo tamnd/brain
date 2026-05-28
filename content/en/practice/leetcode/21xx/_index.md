@@ -39,4 +39,13 @@ draft: false
 | 2131 | [Longest Palindrome by Concatenating Two Letter Words](2131.md) | 🟡 Medium | 51s | The problem provides an array of two-letter lowercase strings, and … |
 | 2132 | [Stamping the Grid](2132.md) | 🔴 Hard | 1m 2s | The problem is asking us to determine if a given m x n binary grid … |
 | 2134 | [Minimum Swaps to Group All 1's Together II](2134.md) | 🟡 Medium | 57s | The problem asks us to compute the minimum number of swaps needed t… |
+| 2135 | [Count Words Obtained After Adding a Letter](2135.md) | 🟡 Medium | 56s | This problem asks us to determine how many words in targetWords can… |
+| 2136 | [Earliest Possible Day of Full Bloom](2136.md) | 🔴 Hard | 1m 26s | The problem gives us two arrays, plantTime and growTime, where each… |
+| 2137 | [Pour Water Between Buckets to Make Water Levels Equal](2137.md) | 🟡 Medium | 59s | The problem asks us to equalize the amount of water in a collection… |
+| 2138 | [Divide a String Into Groups of Size k](2138.md) | 🟢 Easy | 1m 20s | The problem asks us to divide a string into consecutive groups, whe… |
+| 2139 | [Minimum Moves to Reach Target Score](2139.md) | 🟡 Medium | 1m 10s | The problem asks us to determine the minimum number of moves needed… |
+| 2140 | [Solving Questions With Brainpower](2140.md) | 🟡 Medium | 1m 17s | This problem asks us to maximize the number of points earned while … |
+| 2141 | [Maximum Running Time of N Computers](2141.md) | 🔴 Hard | 53s | The problem asks us to determine the maximum number of minutes n co… |
+| 2142 | [The Number of Passengers in Each Bus I](2142.md) | 🟡 Medium | 57s | This problem involves two tables, Buses and Passengers, that record… |
 | 2143 | [Choose Numbers From Two Arrays in Range](2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |
+| 2146 | [K Highest Ranked Items Within a Price Range](2146.md) | 🟡 Medium | 1m 5s | The problem presents a 2D grid representing a shop layout where eac… |

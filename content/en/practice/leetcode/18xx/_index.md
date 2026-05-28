@@ -45,4 +45,11 @@ draft: false
 | 1838 | [Frequency of the Most Frequent Element](1838.md) | 🟡 Medium | 59s | This problem asks us to determine the maximum frequency of an eleme… |
 | 1839 | [Longest Substring Of All Vowels in Order](1839.md) | 🟡 Medium | 1m 37s | The problem asks us to find the length of the longest substring tha… |
 | 1840 | [Maximum Building Height](1840.md) | 🔴 Hard | 1m 49s | This problem asks us to construct heights for n buildings arranged … |
+| 1841 | [League Statistics](1841.md) | 🟡 Medium | 3m 27s | This problem asks us to compute a complete league table from two da… |
+| 1842 | [Next Palindrome Using Same Digits](1842.md) | 🔴 Hard | 1m 39s | The input is a numeric string num that is guaranteed to already be … |
+| 1843 | [Suspicious Bank Accounts](1843.md) | 🟡 Medium | 1m 35s | This problem asks us to identify bank accounts whose monthly income… |
+| 1845 | [Seat Reservation Manager](1845.md) | 🟡 Medium | 54s | The problem requires designing a system to manage seat reservations… |
+| 1846 | [Maximum Element After Decreasing and Rearranging](1846.md) | 🟡 Medium | 1m 3s | The problem provides an array of positive integers and asks us to p… |
+| 1848 | [Minimum Distance to the Target Element](1848.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums, a value called target, … |
+| 1849 | [Splitting a String Into Descending Consecutive Values](1849.md) | 🟡 Medium | 1m 52s | The problem gives us a numeric string s and asks whether it can be … |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
