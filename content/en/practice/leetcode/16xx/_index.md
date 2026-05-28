@@ -77,6 +77,7 @@ draft: false
 | 1664 | [Ways to Make a Fair Array](1664.md) | 🟡 Medium | 1m 32s | The problem gives us an integer array nums, and asks us to remove e… |
 | 1665 | [Minimum Initial Energy to Finish Tasks](1665.md) | 🔴 Hard | 1m 50s | The problem gives us a list of tasks, where each task is represente… |
 | 1666 | [Change the Root of a Binary Tree](1666.md) | 🟡 Medium | 3m 28s | This problem asks us to reroot a binary tree at a given leaf node. … |
+| 1667 | [Fix Names in a Table](1667.md) | 🟢 Easy | 1m 17s | This problem provides a database table named Users with two columns… |
 | 1668 | [Maximum Repeating Substring](1668.md) | 🟢 Easy | 1m | This problem asks us to determine how many times a given string wor… |
 | 1669 | [Merge In Between Linked Lists](1669.md) | 🟡 Medium | 2m 16s | The problem asks us to merge two singly linked lists in a very spec… |
 | 1670 | [Design Front Middle Back Queue](1670.md) | 🟡 Medium | 1m 11s | The problem is asking us to design a specialized queue that allows … |
@@ -90,11 +91,22 @@ draft: false
 | 1678 | [Goal Parser Interpretation](1678.md) | 🟢 Easy | 1m 13s | This problem asks us to interpret a Goal Parser command string. The… |
 | 1679 | [Max Number of K-Sum Pairs](1679.md) | 🟡 Medium | 1m 9s | The problem asks us to repeatedly remove pairs of numbers from an a… |
 | 1680 | [Concatenation of Consecutive Binary Numbers](1680.md) | 🟡 Medium | 1m 20s | The problem asks us to build a very large binary number by concaten… |
-| 1681 | [Minimum Incompatibility](1681.md) | 🔴 Hard | 7m 41s | This problem asks us to divide the array nums into exactly k subset… |
+| 1681 | [Minimum Incompatibility](1681.md) | 🔴 Hard | 6m 17s | The problem is asking us to partition an integer array nums into ex… |
 | 1682 | [Longest Palindromic Subsequence II](1682.md) | 🟡 Medium | 1m 35s | The problem is asking us to find the length of the longest good pal… |
 | 1683 | [Invalid Tweets](1683.md) | 🟢 Easy | 1m 27s | This problem gives us a database table named Tweets with two column… |
 | 1684 | [Count the Number of Consistent Strings](1684.md) | 🟢 Easy | 1m 15s | This problem asks us to determine how many strings in the words arr… |
 | 1685 | [Sum of Absolute Differences in a Sorted Array](1685.md) | 🟡 Medium | 1m 28s | The problem gives us a sorted integer array nums, arranged in non-d… |
 | 1686 | [Stone Game VI](1686.md) | 🟡 Medium | 48s | This is a long, structured technical guide with multiple substantia… |
-| 1687 | [Delivering Boxes from Storage to Ports](1687.md) | 🔴 Hard | 1m 50s | This problem asks us to determine the minimum number of ship trips … |
+| 1687 | [Delivering Boxes from Storage to Ports](1687.md) | 🔴 Hard | 2m 35s | This problem asks us to minimize the total number of ship trips req… |
 | 1688 | [Count of Matches in Tournament](1688.md) | 🟢 Easy | 1m | The problem describes a tournament where teams compete until only o… |
+| 1689 | [Partitioning Into Minimum Number Of Deci-Binary Numbers](1689.md) | 🟡 Medium | 1m 24s | The problem asks us to determine the minimum number of positive dec… |
+| 1690 | [Stone Game VII](1690.md) | 🟡 Medium | 2m 36s | This problem describes a two player game played on an array of ston… |
+| 1691 | [Maximum Height by Stacking Cuboids ](1691.md) | 🔴 Hard | 3m 33s | This problem gives us a collection of 3D cuboids, where each cuboid… |
+| 1692 | [Count Ways to Distribute Candies](1692.md) | 🔴 Hard | 1m 20s | The problem asks us to compute the number of ways to distribute n d… |
+| 1693 | [Daily Leads and Partners](1693.md) | 🟢 Easy | 56s | The problem provides a database table named DailySales, where each … |
+| 1694 | [Reformat Phone Number](1694.md) | 🟢 Easy | 1m 6s | The problem requires reformatting a phone number string in a specif… |
+| 1695 | [Maximum Erasure Value](1695.md) | 🟡 Medium | 1m 35s | This problem asks us to find a contiguous subarray that contains on… |
+| 1696 | [Jump Game VI](1696.md) | 🟡 Medium | 1m 36s | The problem gives us an integer array nums and a maximum jump dista… |
+| 1697 | [Checking Existence of Edge Length Limited Paths](1697.md) | 🔴 Hard | 1m 55s | This problem gives us an undirected weighted graph with n nodes. Ea… |
+| 1698 | [Number of Distinct Substrings in a String](1698.md) | 🟡 Medium | 1m 8s | The problem asks for the total number of distinct substrings of a g… |
+| 1699 | [Number of Calls Between Two Persons](1699.md) | 🟡 Medium | 2m 2s | This problem provides a database table named Calls, where each row … |

@@ -1656,3 +1656,53 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1648 | [Sell Diminishing-Valued Colored Balls](16xx/1648.md) | 🟡 Medium | 1m 18s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 1649 | [Create Sorted Array through Instructions](16xx/1649.md) | 🔴 Hard | 1m 28s | The problem asks us to simulate building a sorted array incremental… |
 | 1650 | [Lowest Common Ancestor of a Binary Tree III](16xx/1650.md) | 🟡 Medium | 1m 29s | This problem asks us to find the lowest common ancestor, usually ab… |
+| 1651 | [Hopper Company Queries III](16xx/1651.md) | 🔴 Hard | 1m 2s | The problem requires computing a rolling 3-month average of ride di… |
+| 1652 | [Defuse the Bomb](16xx/1652.md) | 🟢 Easy | 1m 17s | The problem gives us a circular array called code and an integer k.… |
+| 1653 | [Minimum Deletions to Make String Balanced](16xx/1653.md) | 🟡 Medium | 1m 3s | The problem asks us to make a string containing only characters 'a'… |
+| 1654 | [Minimum Jumps to Reach Home](16xx/1654.md) | 🟡 Medium | 1m 37s | This problem asks us to find the minimum number of jumps required f… |
+| 1655 | [Distribute Repeating Integers](16xx/1655.md) | 🔴 Hard | 1m 30s | This problem asks whether we can satisfy a set of customer requests… |
+| 1656 | [Design an Ordered Stream](16xx/1656.md) | 🟢 Easy | 1m 9s | This problem asks us to simulate a data stream where each element a… |
+| 1657 | [Determine if Two Strings Are Close](16xx/1657.md) | 🟡 Medium | 1m 3s | The problem asks whether two strings, word1 and word2, are "close" … |
+| 1658 | [Minimum Operations to Reduce X to Zero](16xx/1658.md) | 🟡 Medium | 1m 18s | The problem gives us an integer array nums and a target integer x. … |
+| 1659 | [Maximize Grid Happiness](16xx/1659.md) | 🔴 Hard | 1m 56s | This problem asks us to place introverts and extroverts inside an m… |
+| 1660 | [Correct a Binary Tree](16xx/1660.md) | 🟡 Medium | 1m 25s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1661 | [Average Time of Process per Machine](16xx/1661.md) | 🟢 Easy | 3m 19s | The problem provides a database table named Activity, which stores … |
+| 1662 | [Check If Two String Arrays are Equivalent](16xx/1662.md) | 🟢 Easy | 1m 37s | The problem gives us two arrays of strings, word1 and word2. Each a… |
+| 1663 | [Smallest String With A Given Numeric Value](16xx/1663.md) | 🟡 Medium | 1m 33s | The problem asks us to construct a lowercase string of length n suc… |
+| 1664 | [Ways to Make a Fair Array](16xx/1664.md) | 🟡 Medium | 1m 32s | The problem gives us an integer array nums, and asks us to remove e… |
+| 1665 | [Minimum Initial Energy to Finish Tasks](16xx/1665.md) | 🔴 Hard | 1m 50s | The problem gives us a list of tasks, where each task is represente… |
+| 1666 | [Change the Root of a Binary Tree](16xx/1666.md) | 🟡 Medium | 3m 28s | This problem asks us to reroot a binary tree at a given leaf node. … |
+| 1667 | [Fix Names in a Table](16xx/1667.md) | 🟢 Easy | 1m 17s | This problem provides a database table named Users with two columns… |
+| 1668 | [Maximum Repeating Substring](16xx/1668.md) | 🟢 Easy | 1m | This problem asks us to determine how many times a given string wor… |
+| 1669 | [Merge In Between Linked Lists](16xx/1669.md) | 🟡 Medium | 2m 16s | The problem asks us to merge two singly linked lists in a very spec… |
+| 1670 | [Design Front Middle Back Queue](16xx/1670.md) | 🟡 Medium | 1m 11s | The problem is asking us to design a specialized queue that allows … |
+| 1671 | [Minimum Number of Removals to Make Mountain Array](16xx/1671.md) | 🔴 Hard | 1m 49s | This problem asks us to remove the minimum number of elements from … |
+| 1672 | [Richest Customer Wealth](16xx/1672.md) | 🟢 Easy | 4m 43s | This problem gives us a two dimensional integer array called accoun… |
+| 1673 | [Find the Most Competitive Subsequence](16xx/1673.md) | 🟡 Medium | 1m 38s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1674 | [Minimum Moves to Make Array Complementary](16xx/1674.md) | 🟡 Medium | 1m 17s | The problem requires us to transform an array nums of even length n… |
+| 1675 | [Minimize Deviation in Array](16xx/1675.md) | 🔴 Hard | 2m 57s | The problem asks us to minimize the deviation in an array of positi… |
+| 1676 | [Lowest Common Ancestor of a Binary Tree IV](16xx/1676.md) | 🟡 Medium | 1m 35s | This problem asks us to find the Lowest Common Ancestor, or LCA, of… |
+| 1677 | [Product's Worth Over Invoices](16xx/1677.md) | 🟢 Easy | 1m 8s | The problem asks us to calculate aggregate monetary information for… |
+| 1678 | [Goal Parser Interpretation](16xx/1678.md) | 🟢 Easy | 1m 13s | This problem asks us to interpret a Goal Parser command string. The… |
+| 1679 | [Max Number of K-Sum Pairs](16xx/1679.md) | 🟡 Medium | 1m 9s | The problem asks us to repeatedly remove pairs of numbers from an a… |
+| 1680 | [Concatenation of Consecutive Binary Numbers](16xx/1680.md) | 🟡 Medium | 1m 20s | The problem asks us to build a very large binary number by concaten… |
+| 1681 | [Minimum Incompatibility](16xx/1681.md) | 🔴 Hard | 6m 17s | The problem is asking us to partition an integer array nums into ex… |
+| 1682 | [Longest Palindromic Subsequence II](16xx/1682.md) | 🟡 Medium | 1m 35s | The problem is asking us to find the length of the longest good pal… |
+| 1683 | [Invalid Tweets](16xx/1683.md) | 🟢 Easy | 1m 27s | This problem gives us a database table named Tweets with two column… |
+| 1684 | [Count the Number of Consistent Strings](16xx/1684.md) | 🟢 Easy | 1m 15s | This problem asks us to determine how many strings in the words arr… |
+| 1685 | [Sum of Absolute Differences in a Sorted Array](16xx/1685.md) | 🟡 Medium | 1m 28s | The problem gives us a sorted integer array nums, arranged in non-d… |
+| 1686 | [Stone Game VI](16xx/1686.md) | 🟡 Medium | 48s | This is a long, structured technical guide with multiple substantia… |
+| 1687 | [Delivering Boxes from Storage to Ports](16xx/1687.md) | 🔴 Hard | 2m 35s | This problem asks us to minimize the total number of ship trips req… |
+| 1688 | [Count of Matches in Tournament](16xx/1688.md) | 🟢 Easy | 1m | The problem describes a tournament where teams compete until only o… |
+| 1689 | [Partitioning Into Minimum Number Of Deci-Binary Numbers](16xx/1689.md) | 🟡 Medium | 1m 24s | The problem asks us to determine the minimum number of positive dec… |
+| 1690 | [Stone Game VII](16xx/1690.md) | 🟡 Medium | 2m 36s | This problem describes a two player game played on an array of ston… |
+| 1691 | [Maximum Height by Stacking Cuboids ](16xx/1691.md) | 🔴 Hard | 3m 33s | This problem gives us a collection of 3D cuboids, where each cuboid… |
+| 1692 | [Count Ways to Distribute Candies](16xx/1692.md) | 🔴 Hard | 1m 20s | The problem asks us to compute the number of ways to distribute n d… |
+| 1693 | [Daily Leads and Partners](16xx/1693.md) | 🟢 Easy | 56s | The problem provides a database table named DailySales, where each … |
+| 1694 | [Reformat Phone Number](16xx/1694.md) | 🟢 Easy | 1m 6s | The problem requires reformatting a phone number string in a specif… |
+| 1695 | [Maximum Erasure Value](16xx/1695.md) | 🟡 Medium | 1m 35s | This problem asks us to find a contiguous subarray that contains on… |
+| 1696 | [Jump Game VI](16xx/1696.md) | 🟡 Medium | 1m 36s | The problem gives us an integer array nums and a maximum jump dista… |
+| 1697 | [Checking Existence of Edge Length Limited Paths](16xx/1697.md) | 🔴 Hard | 1m 55s | This problem gives us an undirected weighted graph with n nodes. Ea… |
+| 1698 | [Number of Distinct Substrings in a String](16xx/1698.md) | 🟡 Medium | 1m 8s | The problem asks for the total number of distinct substrings of a g… |
+| 1699 | [Number of Calls Between Two Persons](16xx/1699.md) | 🟡 Medium | 2m 2s | This problem provides a database table named Calls, where each row … |
+| 1700 | [Number of Students Unable to Eat Lunch](17xx/1700.md) | 🟢 Easy | 1m 13s | This problem simulates a school cafeteria where students line up to… |
