@@ -40,3 +40,15 @@ draft: false
 | 1728 | [Cat and Mouse II](1728.md) | 🔴 Hard | 2m | This problem describes a two-player perfect-information game played… |
 | 1729 | [Find Followers Count](1729.md) | 🟢 Easy | 1m 16s | The problem is asking us to determine, for each user in a social me… |
 | 1730 | [Shortest Path to Get Food](1730.md) | 🟡 Medium | 1m 1s | The problem asks us to find the shortest path from a starting locat… |
+| 1731 | [The Number of Employees Which Report to Each Employee](1731.md) | 🟢 Easy | 2m 5s | The Employees table stores information about employees inside a com… |
+| 1732 | [Find the Highest Altitude](1732.md) | 🟢 Easy | 1m 52s | In this problem, a biker starts at altitude 0 and travels through a… |
+| 1733 | [Minimum Number of People to Teach](1733.md) | 🟡 Medium | 1m 58s | This problem models communication in a social network where each us… |
+| 1734 | [Decode XORed Permutation](1734.md) | 🟡 Medium | 1m 34s | The problem gives us an array called encoded, which was generated f… |
+| 1735 | [Count Ways to Make Array With Product](1735.md) | 🔴 Hard | 1m 14s | The problem asks us to count the number of ways to fill an array of… |
+| 1736 | [Latest Time by Replacing Hidden Digits](1736.md) | 🟢 Easy | 1m 45s | The problem presents a string time formatted as hh:mm, where h and … |
+| 1737 | [Change Minimum Characters to Satisfy One of Three Conditions](1737.md) | 🟡 Medium | 2m 19s | The problem gives us two lowercase English strings, a and b. In a s… |
+| 1738 | [Find Kth Largest XOR Coordinate Value](1738.md) | 🟡 Medium | 1m 18s | The problem asks us to compute the XOR coordinate value for each el… |
+| 1739 | [Building Boxes](1739.md) | 🔴 Hard | 1m 37s | The problem gives us n identical unit cubes that must be placed ins… |
+| 1740 | [Find Distance in a Binary Tree](1740.md) | 🟡 Medium | 1m 29s | This problem asks us to determine the distance between two nodes in… |
+| 1742 | [Maximum Number of Balls in a Box](1742.md) | 🟢 Easy | 59s | The problem describes a scenario in which you have a sequence of ba… |
+| 1744 | [Can You Eat Your Favorite Candy on Your Favorite Day?](1744.md) | 🟡 Medium | 2m 24s | The problem gives us an array candiesCount where candiesCount[i] re… |
