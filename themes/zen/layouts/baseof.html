@@ -142,6 +142,34 @@
 })();
 </script>
 
+<script>
+(function(){
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('pre').forEach(function(pre){
+      var wrap=document.createElement('div');
+      wrap.className='zen-copy-wrap';
+      pre.parentNode.insertBefore(wrap,pre);
+      wrap.appendChild(pre);
+      var btn=document.createElement('button');
+      btn.className='zen-copy-btn';
+      btn.setAttribute('aria-label','Copy code');
+      btn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy';
+      btn.addEventListener('click',function(){
+        var text=pre.querySelector('code')?pre.querySelector('code').innerText:pre.innerText;
+        navigator.clipboard.writeText(text).then(function(){
+          btn.textContent='Copied!';
+          btn.classList.add('zen-copy-btn--copied');
+          setTimeout(function(){
+            btn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy';
+            btn.classList.remove('zen-copy-btn--copied');
+          },2000);
+        });
+      });
+      wrap.appendChild(btn);
+    });
+  });
+})();
+</script>
 {{template "page-live-reload" .}}
 </body>
 </html>

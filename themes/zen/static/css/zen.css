@@ -754,6 +754,46 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   box-shadow: 0 0 0 3px rgb(96 79 205 / 0.12);
 }
 
+/* ===== Copy button on code blocks ======================================== */
+
+.zen-copy-wrap {
+  position: relative;
+}
+
+.zen-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--muted-fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1.4;
+}
+
+.zen-copy-wrap:hover .zen-copy-btn { opacity: 1; }
+
+.zen-copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.zen-copy-btn--copied {
+  color: var(--success) !important;
+  border-color: var(--success) !important;
+  opacity: 1 !important;
+}
+
 /* ===== Calendar styles (copied from brain, adapted) ====================== */
 
 .cal-page { display: flex; flex-direction: column; gap: 0; max-width: 900px; }
