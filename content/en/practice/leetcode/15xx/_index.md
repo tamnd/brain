@@ -18,10 +18,10 @@ draft: false
 | 1505 | [Minimum Possible Integer After at Most K Adjacent Swaps On Digits](1505.md) | 🔴 Hard | 1m 16s | The problem gives us a numeric string num and an integer k. Each op… |
 | 1506 | [Find Root of N-Ary Tree](1506.md) | 🟡 Medium | 1m 7s | This problem gives us every node of an N-ary tree in an arbitrary o… |
 | 1507 | [Reformat Date](1507.md) | 🟢 Easy | 1m 14s | The problem gives a date string in a human readable format such as … |
-| 1508 | [Range Sum of Sorted Subarray Sums](1508.md) | 🟡 Medium | 50s | The problem asks us to take an input array nums of positive integer… |
+| 1508 | [Range Sum of Sorted Subarray Sums](1508.md) | 🟡 Medium | 56s | The problem requires calculating the sum of a subrange of all possi… |
 | 1509 | [Minimum Difference Between Largest and Smallest Value in Three Moves](1509.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array nums, and we are allowed to p… |
-| 1510 | [Stone Game IV](1510.md) | 🔴 Hard | 1m 20s | This problem describes a two player game between Alice and Bob. The… |
-| 1511 | [Customer Order Frequency](1511.md) | 🟢 Easy | 46s | The problem asks us to identify customers who spent at least $100 i… |
+| 1510 | [Stone Game IV](1510.md) | 🔴 Hard | 1m 11s | This problem is a two-player combinatorial game problem where Alice… |
+| 1511 | [Customer Order Frequency](1511.md) | 🟢 Easy | 58s | This problem asks us to identify customers who consistently spend a… |
 | 1512 | [Number of Good Pairs](1512.md) | 🟢 Easy | 1m 16s | The problem gives us an integer array nums and asks us to count how… |
 | 1513 | [Number of Substrings With Only 1s](1513.md) | 🟡 Medium | 1m 7s | The problem gives a binary string s, consisting only of the charact… |
 | 1514 | [Path with Maximum Probability](1514.md) | 🟡 Medium | 55s | Your requested guide is substantial enough that a high quality vers… |
@@ -34,9 +34,9 @@ draft: false
 | 1521 | [Find a Value of a Mysterious Function Closest to Target](1521.md) | 🔴 Hard | 1m 10s | The problem defines a mysterious function func(arr, l, r) that comp… |
 | 1522 | [Diameter of N-Ary Tree](1522.md) | 🟡 Medium | 1m 12s | This problem asks us to compute the diameter of an N-ary tree. An N… |
 | 1523 | [Count Odd Numbers in an Interval Range](1523.md) | 🟢 Easy | 1m 37s | The problem gives two non-negative integers, low and high, represen… |
-| 1524 | [Number of Sub-arrays With Odd Sum](1524.md) | 🟡 Medium | 1m 6s | The problem gives an integer array arr and asks us to count how man… |
-| 1525 | [Number of Good Ways to Split a String](1525.md) | 🟡 Medium | 1m 33s | The problem asks us to determine how many ways we can split a given… |
-| 1526 | [Minimum Number of Increments on Subarrays to Form a Target Array](1526.md) | 🔴 Hard | 2m 42s | The problem gives us a target array and asks us to build it startin… |
+| 1524 | [Number of Sub-arrays With Odd Sum](1524.md) | 🟡 Medium | 54s | The problem asks us to count the number of subarrays within a given… |
+| 1525 | [Number of Good Ways to Split a String](1525.md) | 🟡 Medium | 1m 26s | The problem asks us to count how many ways we can split a string in… |
+| 1526 | [Minimum Number of Increments on Subarrays to Form a Target Array](1526.md) | 🔴 Hard | 1m 28s | The problem gives us a target array and asks us to build it startin… |
 | 1527 | [Patients With a Condition](1527.md) | 🟢 Easy | 1m 29s | The problem asks us to query a database table Patients and return t… |
 | 1528 | [Shuffle String](1528.md) | 🟢 Easy | 1m 4s | The problem asks us to take a string s and an integer array indices… |
 | 1529 | [Minimum Suffix Flips](1529.md) | 🟡 Medium | 53s | This problem is asking us to transform an initial binary string s (… |
@@ -49,13 +49,16 @@ draft: false
 | 1536 | [Minimum Swaps to Arrange a Binary Grid](1536.md) | 🟡 Medium | 1m 32s | The problem gives us an n x n binary matrix called grid. Each cell … |
 | 1537 | [Get the Maximum Score](1537.md) | 🔴 Hard | 49s | Here’s a complete, detailed technical solution guide for LeetCode 1… |
 | 1538 | [Guess the Majority in a Hidden Array](1538.md) | 🟡 Medium | 1m 46s | This problem is an interactive problem. We do not receive the actua… |
-| 1539 | [Kth Missing Positive Number](1539.md) | 🟢 Easy | 54s | The problem asks us to find the kth positive integer that is missin… |
-| 1540 | [Can Convert String in K Moves](1540.md) | 🟡 Medium | 1m 24s | The problem gives us two lowercase English strings, s and t, along … |
-| 1541 | [Minimum Insertions to Balance a Parentheses String](1541.md) | 🟡 Medium | 53s | This problem requires us to balance a string of parentheses under a… |
-| 1542 | [Find Longest Awesome Substring](1542.md) | 🔴 Hard | 1m 31s | The problem asks us to find the length of the longest substring of … |
-| 1543 | [Fix Product Name Format](1543.md) | 🟢 Easy | 51s | The problem is asking us to clean and aggregate sales data from a S… |
-| 1545 | [Find Kth Bit in Nth Binary String](1545.md) | 🟡 Medium | 1m 19s | The problem defines a recursively generated binary string sequence:… |
-| 1546 | [Maximum Number of Non-Overlapping Subarrays With Sum Equals Target](1546.md) | 🟡 Medium | 1m 32s | The problem gives us an integer array nums and an integer target. W… |
-| 1547 | [Minimum Cost to Cut a Stick](1547.md) | 🔴 Hard | 53s | This problem asks us to determine the minimum cost of cutting a sti… |
-| 1549 | [The Most Recent Orders for Each Product](1549.md) | 🟡 Medium | 1m 28s | This problem asks us to retrieve the most recent order or orders fo… |
-| 1550 | [Three Consecutive Odds](1550.md) | 🟢 Easy | 1m 8s | The problem gives us an integer array arr and asks whether the arra… |
+| 1539 | [Kth Missing Positive Number](1539.md) | 🟢 Easy | 1m 12s | The problem gives us a strictly increasing array of positive intege… |
+| 1540 | [Can Convert String in K Moves](1540.md) | 🟡 Medium | 55s | The problem is asking whether it is possible to convert one string … |
+| 1541 | [Minimum Insertions to Balance a Parentheses String](1541.md) | 🟡 Medium | 1m 15s | This problem asks us to transform a string of parentheses into a sp… |
+| 1542 | [Find Longest Awesome Substring](1542.md) | 🔴 Hard | 53s | The problem asks us to find the length of the longest awesome subst… |
+| 1543 | [Fix Product Name Format](1543.md) | 🟢 Easy | 54s | The problem asks us to clean and aggregate sales data from a Sales … |
+| 1544 | [Make The String Great](1544.md) | 🟢 Easy | 46s | The problem asks us to process a string s consisting of lowercase a… |
+| 1545 | [Find Kth Bit in Nth Binary String](1545.md) | 🟡 Medium | 1m 20s | The problem defines a recursively constructed binary string sequenc… |
+| 1546 | [Maximum Number of Non-Overlapping Subarrays With Sum Equals Target](1546.md) | 🟡 Medium | 1m | This problem asks us to find the maximum number of non-overlapping … |
+| 1547 | [Minimum Cost to Cut a Stick](1547.md) | 🔴 Hard | 59s | The problem asks us to determine the minimum total cost of cutting … |
+| 1548 | [The Most Similar Path in a Graph](1548.md) | 🔴 Hard | 1m 52s | The problem gives us an undirected connected graph where each node … |
+| 1549 | [The Most Recent Orders for Each Product](1549.md) | 🟡 Medium | 1m 37s | This problem asks us to find the most recent order for every produc… |
+| 1550 | [Three Consecutive Odds](1550.md) | 🟢 Easy | 51s | This problem asks us to examine a list of integers, arr, and determ… |
+| 1551 | [Minimum Operations to Make Array Equal](1551.md) | 🟡 Medium | 51s | The problem presents an array arr of length n where each element is… |
