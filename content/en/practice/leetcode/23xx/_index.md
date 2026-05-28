@@ -61,3 +61,8 @@ draft: false
 | 2348 | [Number of Zero-Filled Subarrays](2348.md) | 🟡 Medium | 54s | The problem asks us to count all subarrays of a given integer array… |
 | 2349 | [Design a Number Container System](2349.md) | 🟡 Medium | 1m 26s | This problem asks us to design a data structure that supports two o… |
 | 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 48s | The problem asks us to find the length of the shortest sequence of … |
+| 2351 | [First Letter to Appear Twice](2351.md) | 🟢 Easy | 55s | The problem asks us to find the first letter in a string that appea… |
+| 2352 | [Equal Row and Column Pairs](2352.md) | 🟡 Medium | 1m 28s | In this problem, we are given an n x n matrix called grid. Each row… |
+| 2354 | [Number of Excellent Pairs](2354.md) | 🔴 Hard | 1m 16s | The problem asks us to count the number of distinct ordered pairs (… |
+| 2355 | [Maximum Number of Books You Can Take](2355.md) | 🔴 Hard | 52s | The problem provides a 0-indexed array books where each element rep… |
+| 2358 | [Maximum Number of Groups Entering a Competition](2358.md) | 🟡 Medium | 1m 4s | The problem gives us an array called grades, where each element rep… |
