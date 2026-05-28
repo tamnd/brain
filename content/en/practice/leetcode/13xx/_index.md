@@ -61,7 +61,7 @@ draft: false
 | 1349 | [Maximum Students Taking Exam](1349.md) | 🔴 Hard | 35s | LeetCode 1349 is long and detailed enough that a complete high qual… |
 | 1350 | [Students With Invalid Departments](1350.md) | 🟢 Easy | 1m 13s | This problem asks us to identify students who are enrolled in unive… |
 | 1351 | [Count Negative Numbers in a Sorted Matrix](1351.md) | 🟢 Easy | 49s | The problem asks us to count all the negative numbers in a 2D matri… |
-| 1352 | [Product of the Last K Numbers](1352.md) | 🟡 Medium | 1m 20s | This problem asks us to design a data structure that processes a st… |
+| 1352 | [Product of the Last K Numbers](1352.md) | 🟡 Medium | 1m 7s | This problem asks us to design a data structure that continuously p… |
 | 1353 | [Maximum Number of Events That Can Be Attended](1353.md) | 🟡 Medium | 1m 32s | The problem gives us a list of events, where each event is represen… |
 | 1354 | [Construct Target Array With Multiple Sums](1354.md) | 🔴 Hard | 1m | The problem asks whether it is possible to construct a given target… |
 | 1355 | [Activity Participants](1355.md) | 🟡 Medium | 45s | This problem asks us to find all activities that have neither the m… |
@@ -84,4 +84,17 @@ draft: false
 | 1376 | [Time Needed to Inform All Employees](1376.md) | 🟡 Medium | 1m 24s | This problem models a company hierarchy as a tree. Every employee h… |
 | 1377 | [Frog Position After T Seconds](1377.md) | 🔴 Hard | 1m 33s | The problem gives us an undirected tree with n vertices numbered fr… |
 | 1378 | [Replace Employee ID With The Unique Identifier](1378.md) | 🟢 Easy | 47s | This problem asks us to combine information from two database table… |
+| 1381 | [Design a Stack With Increment Operation](1381.md) | 🟡 Medium | 5m 37s | This problem asks us to implement a stack data structure with a twi… |
 | 1382 | [Balance a Binary Search Tree](1382.md) | 🟡 Medium | 55s | The problem asks us to take an input binary search tree (BST) and r… |
+| 1383 | [Maximum Performance of a Team](1383.md) | 🔴 Hard | 1m 31s | The problem gives us n engineers, where each engineer has two attri… |
+| 1384 | [Total Sales Amount by Year](1384.md) | 🔴 Hard | 1m 49s | This problem asks us to transform sales periods into yearly sales t… |
+| 1385 | [Find the Distance Value Between Two Arrays](1385.md) | 🟢 Easy | 1m 11s | The problem gives us two integer arrays, arr1 and arr2, along with … |
+| 1386 | [Cinema Seat Allocation](1386.md) | 🟡 Medium | 1m 3s | The problem asks us to maximize the number of four-person groups th… |
+| 1387 | [Sort Integers by The Power Value](1387.md) | 🟡 Medium | 52s | The problem asks us to compute a "power value" for each integer in … |
+| 1388 | [Pizza With 3n Slices](1388.md) | 🔴 Hard | 49s | The problem is asking us to maximize the sum of pizza slices you ca… |
+| 1389 | [Create Target Array in the Given Order](1389.md) | 🟢 Easy | 56s | This problem asks us to construct a target array by inserting eleme… |
+| 1390 | [Four Divisors](1390.md) | 🟡 Medium | 1m 4s | The problem asks us to process an array of integers, nums, and comp… |
+| 1391 | [Check if There is a Valid Path in a Grid](1391.md) | 🟡 Medium | 1m 32s | This problem gives us a two dimensional grid where every cell conta… |
+| 1392 | [Longest Happy Prefix](1392.md) | 🔴 Hard | 1m 5s | The problem asks us to find the longest substring that satisfies tw… |
+| 1393 | [Capital Gain/Loss](1393.md) | 🟡 Medium | 52s | The problem is asking us to calculate the capital gain or loss for … |
+| 1395 | [Count Number of Teams](1395.md) | 🟡 Medium | 1m 3s | This problem asks us to count the number of valid teams of three so… |
