@@ -43,19 +43,19 @@ draft: false
 | 2130 | [Maximum Twin Sum of a Linked List](2130.md) | 🟡 Medium | 7m 7s | The problem gives us a singly linked list with an even number of no… |
 | 2131 | [Longest Palindrome by Concatenating Two Letter Words](2131.md) | 🟡 Medium | 57s | This problem asks us to construct the longest possible palindrome u… |
 | 2132 | [Stamping the Grid](2132.md) | 🔴 Hard | 1m 43s | In this problem, we are given a binary matrix called grid. Every ce… |
-| 2133 | [Check if Every Row and Column Contains All Numbers](2133.md) | 🟢 Easy | 56s | The problem asks us to determine whether a given n x n integer matr… |
-| 2134 | [Minimum Swaps to Group All 1's Together II](2134.md) | 🟡 Medium | 57s | The problem asks us to compute the minimum number of swaps needed t… |
-| 2135 | [Count Words Obtained After Adding a Letter](2135.md) | 🟡 Medium | 56s | This problem asks us to determine how many words in targetWords can… |
-| 2136 | [Earliest Possible Day of Full Bloom](2136.md) | 🔴 Hard | 1m 26s | The problem gives us two arrays, plantTime and growTime, where each… |
-| 2137 | [Pour Water Between Buckets to Make Water Levels Equal](2137.md) | 🟡 Medium | 59s | The problem asks us to equalize the amount of water in a collection… |
-| 2138 | [Divide a String Into Groups of Size k](2138.md) | 🟢 Easy | 1m 20s | The problem asks us to divide a string into consecutive groups, whe… |
-| 2139 | [Minimum Moves to Reach Target Score](2139.md) | 🟡 Medium | 1m 10s | The problem asks us to determine the minimum number of moves needed… |
-| 2140 | [Solving Questions With Brainpower](2140.md) | 🟡 Medium | 1m 17s | This problem asks us to maximize the number of points earned while … |
-| 2141 | [Maximum Running Time of N Computers](2141.md) | 🔴 Hard | 53s | The problem asks us to determine the maximum number of minutes n co… |
-| 2142 | [The Number of Passengers in Each Bus I](2142.md) | 🟡 Medium | 57s | This problem involves two tables, Buses and Passengers, that record… |
+| 2133 | [Check if Every Row and Column Contains All Numbers](2133.md) | 🟢 Easy | 2m 20s | In this problem, we are given an n x n matrix where every value is … |
+| 2134 | [Minimum Swaps to Group All 1's Together II](2134.md) | 🟡 Medium | 2m 20s | The problem is asking us to find the minimum number of swaps requir… |
+| 2135 | [Count Words Obtained After Adding a Letter](2135.md) | 🟡 Medium | 47s | The problem requires us to determine how many strings in targetWord… |
+| 2136 | [Earliest Possible Day of Full Bloom](2136.md) | 🔴 Hard | 46s | The problem presents a scenario where we have n flower seeds, each … |
+| 2137 | [Pour Water Between Buckets to Make Water Levels Equal](2137.md) | 🟡 Medium | 49s | This problem asks us to equalize the water levels in a series of bu… |
+| 2138 | [Divide a String Into Groups of Size k](2138.md) | 🟢 Easy | 1m 18s | The problem asks us to split a string into consecutive groups, wher… |
+| 2139 | [Minimum Moves to Reach Target Score](2139.md) | 🟡 Medium | 1m 12s | The problem asks us to transform the integer 1 into the integer tar… |
+| 2140 | [Solving Questions With Brainpower](2140.md) | 🟡 Medium | 1m 18s | The problem gives us an array called questions, where each element … |
+| 2141 | [Maximum Running Time of N Computers](2141.md) | 🔴 Hard | 50s | The problem is asking us to determine the maximum number of minutes… |
+| 2142 | [The Number of Passengers in Each Bus I](2142.md) | 🟡 Medium | 48s | This problem involves simulating passengers arriving at a bus stati… |
 | 2143 | [Choose Numbers From Two Arrays in Range](2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |
 | 2144 | [Minimum Cost of Buying Candies With Discount](2144.md) | 🟢 Easy | 2m 28s | The problem gives us an array called cost, where each element repre… |
-| 2145 | [Count the Hidden Sequences](2145.md) | 🟡 Medium | 4m 29s | In this problem, we are given an array called differences, where ea… |
+| 2145 | [Count the Hidden Sequences](2145.md) | 🟡 Medium | 50s | The problem asks us to determine how many possible sequences of int… |
 | 2146 | [K Highest Ranked Items Within a Price Range](2146.md) | 🟡 Medium | 1m 5s | The problem presents a 2D grid representing a shop layout where eac… |
 | 2147 | [Number of Ways to Divide a Long Corridor](2147.md) | 🔴 Hard | 1m 21s | The corridor is represented as a string containing two kinds of cha… |
 | 2148 | [Count Elements With Strictly Smaller and Greater Elements ](2148.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and asks us to count how… |
