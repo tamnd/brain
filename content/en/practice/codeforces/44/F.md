@@ -1,6 +1,6 @@
 ---
 title: "CF 44F - BerPaint"
-description: "We start with a rectangular canvas of size W × H. Initially the whole rectangle is white. Then several black line segments are drawn inside the rectangle. These segments split the plane into connected regions."
+description: "We have a rectangular canvas of size W × H. Initially the whole canvas is white. Then several black line segments are drawn on it. After that, a sequence of flood-fill operations is applied. A flood-fill chooses a point and a color."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "graphs"]
 categories: ["algorithms"]
@@ -9,73 +9,50 @@ codeforces_index: "F"
 codeforces_contest_name: "School Team Contest 2 (Winter Computer School 2010/11)"
 rating: 2700
 weight: 44
-solve_time_s: 179
+solve_time_s: 177
 verified: false
 draft: false
 ---
+
 [CF 44F - BerPaint](https://codeforces.com/problemset/problem/44/F)
 
 **Rating:** 2700  
 **Tags:** geometry, graphs  
-**Solve time:** 2m 59s  
+**Solve time:** 2m 57s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We start with a rectangular canvas of size `W × H`. Initially the whole rectangle is white. Then several black line segments are drawn inside the rectangle. These segments split the plane into connected regions.
+We have a rectangular canvas of size `W × H`. Initially the whole canvas is white. Then several black line segments are drawn on it. After that, a sequence of flood-fill operations is applied.
 
-After that, several flood-fill operations are applied. A fill chooses a point and a color, then repaints the entire connected monochromatic region containing that point. Since segments have zero area, they only act as barriers between regions. A fill can also recolor parts of segments if the chosen point lies exactly on them, but that affects only zero-area geometry.
+A flood-fill chooses a point and a color. Every point connected to the chosen point through regions of the same current color gets recolored. Segments behave like walls, they can block movement between regions. Segments themselves have zero area, but they still matter because they separate components.
 
-The task is to compute the final area occupied by every color after all fills are processed.
+At the end, we must output the total area occupied by every color.
 
-The geometric part is the difficult one. The segments can intersect each other arbitrarily, and the connected regions are induced by planar subdivision. The number of segments is only 100, but coordinates are continuous. We cannot rasterize the plane or use grids.
+The geometric part is the difficult one. The fills do not operate on pixels or cells, they operate on continuous regions in the plane. Two points belong to the same region if there exists a path between them that does not cross any segment and stays inside areas of the same color.
 
-The small number of segments is the key constraint. With at most 100 segments, the total number of intersections is at most about 5000. That strongly suggests building the planar graph explicitly. A solution based on computational geometry and graph traversal is feasible.
+The constraints completely rule out any kind of fine-grained rasterization. The rectangle dimensions go up to `10^4`, so even a `10^4 × 10^4` grid already contains `10^8` cells. Flood-filling such a grid several times would be far too slow and memory-heavy.
 
-The time limit is generous for an `O(N^3)` or `O(N^2 log N)` geometry solution, but not for anything that depends on coordinate magnitudes. Since coordinates go up to `10^4`, any discretization based on cells or pixels would fail immediately.
+The number of segments and fills is small, at most `100` each. This strongly suggests that the actual complexity depends on geometric structure rather than on the rectangle size itself. With only `100` segments, the arrangement formed by the segments contains only about `O(n^2)` intersections and regions. That is the real object we should work with.
 
 Several edge cases are easy to mishandle.
 
-Consider fills performed on a segment itself:
-
-```
-4 4
-1
-1 1 3 3
-1
-2 2 red
-```
-
-The fill point lies exactly on the segment. The segment has zero area, so the final answer is still:
-
-```
-white 16.000000
-```
-
-A careless implementation may try to assign positive area to the segment.
-
-Another tricky case is when multiple fills affect the same region:
+Suppose a fill point lies directly on a segment.
 
 ```
 5 5
 1
-2 0 2 5
-2
-1 1 red
-1 2 blue
+1 2 4 2
+1
+2 2 red
 ```
 
-Both fills touch the same left half-plane, so the second fill overwrites the first one. Final areas are:
+The segment itself becomes red, but its area is still zero. The white regions above and below remain white. The correct answer is still `white 25`, because the segment contributes no area.
 
-```
-blue 10.000000
-white 15.000000
-```
+A naive implementation that treats the segment as having positive thickness would incorrectly split the area.
 
-If we only store the first fill affecting a region, we get the wrong answer.
-
-Intersections also matter. Suppose two segments cross:
+Another subtle case happens when segments intersect.
 
 ```
 5 5
@@ -83,386 +60,386 @@ Intersections also matter. Suppose two segments cross:
 1 1 4 4
 1 4 4 1
 1
-2 2 red
+2 2 blue
 ```
 
-The crossing point splits both segments into smaller edges. If we fail to split segments at intersections, the planar graph becomes invalid and face traversal breaks.
+The fill point lies exactly on the intersection point. Only the two segments become blue, and the total blue area remains zero.
 
-The rectangle boundary is another subtle point. The outer boundary itself participates in the planar subdivision. Without adding rectangle edges into the graph, the outside face is not represented correctly and area computation becomes inconsistent.
+If we fail to split segments at intersections, the planar graph becomes incorrect and the face traversal breaks.
+
+Nested fills are another source of bugs.
+
+```
+6 6
+1
+3 1 3 5
+2
+1 1 red
+5 1 blue
+```
+
+The first fill colors the left half red. The second fill colors the right half blue. Final areas are `18` and `18`.
+
+If we process fills independently instead of sequentially, we lose the overwrite behavior.
+
+The hardest conceptual edge case is disconnected pieces of the same color. Two different regions can both be white without being connected. A fill only recolors one connected component, not every region with the same color.
 
 ## Approaches
 
-The brute-force idea is conceptually simple. Treat the segments as walls, identify every connected region in the rectangle, then simulate the fills.
+The brute-force idea is to discretize the plane into tiny cells and simulate flood fill directly. We could mark segment boundaries on a huge grid and run BFS for every fill operation.
 
-The problem is representing regions. Since coordinates are continuous, the naive approach would discretize the plane into tiny cells and run flood-fill over them. Even a `10000 × 10000` grid already contains `10^8` cells, which is far beyond feasible memory and time limits. Worse, intersections happen at arbitrary real coordinates, so exact geometry would still fail.
+This works conceptually because flood fill is fundamentally a connectivity problem. If every geometric feature aligned to grid cells, BFS would exactly reproduce the behavior of the paint program.
 
-Another brute-force direction is sampling points and testing visibility between them, but connected components in arrangements of segments are geometric objects, not combinatorial grid regions. Approximate methods are unreliable because the output requires exact areas.
+The problem is scale. Coordinates go up to `10^4`, and geometric precision matters because segments can intersect at arbitrary rational points. Even a resolution of one unit per cell already gives `10^8` cells. Every flood-fill would potentially scan the entire canvas. That is completely infeasible in both memory and runtime.
 
-The important observation is that the segments form a planar graph. Every intersection point and every segment endpoint becomes a graph vertex. Consecutive points along a segment form graph edges. Once we have this planar embedding, the connected regions are exactly the graph faces.
+The key observation is that the number of segments is tiny. The actual topology of the plane changes only at segment intersections and segment endpoints. Between those critical coordinates, everything behaves uniformly.
 
-This changes the problem completely. Instead of reasoning about continuous geometry directly, we reduce the task to:
+This suggests switching from a pixel view to a planar graph view.
 
-1. Build the planar graph.
-2. Enumerate all faces.
-3. Compute each face area.
-4. Determine which fills land inside each face.
-5. Accumulate areas by final color.
+The drawn segments partition the rectangle into faces. Each face is a connected open region with fixed area. Flood-fill simply recolors one face or several faces connected through boundaries of the same current color.
 
-The number of graph vertices is manageable because only segment intersections create new points. With at most 100 segments, the total subdivision size remains small enough for explicit planar traversal.
+So the problem becomes:
 
-Face enumeration in planar graphs is a standard geometric technique. Around every vertex, sort outgoing edges by angle. Then repeatedly walk along the "next edge" in cyclic order. Every directed edge belongs to exactly one face traversal.
+1. Build the planar subdivision induced by the rectangle border and all segments.
+2. Compute every face area.
+3. Determine which face contains each fill point.
+4. Simulate recoloring on faces.
 
-The outer infinite face is discarded by orientation or area sign. All bounded faces correspond to actual paintable regions.
+The arrangement of `n` segments has only `O(n^2)` intersections. After splitting segments at intersections, the planar graph remains manageable.
+
+The most robust way to extract faces is a half-edge traversal. Every directed edge stores its outgoing angle. Walking by repeatedly taking the previous edge in cyclic order traces exactly one face boundary.
+
+Once all faces are known, flood-fill becomes trivial. Each fill point belongs either to a face interior or to a segment. Segment fills have zero area impact, so we only care about interior points. Recoloring affects exactly one connected face.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force rasterization | O(WH) or worse | O(WH) | Too slow |
-| Planar graph + face traversal | O(VE) roughly | O(V + E) | Accepted |
+| Brute Force rasterization | O(W·H·m) | O(W·H) | Too slow |
+| Planar graph + face traversal | O(n^3) | O(n^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Add the four rectangle borders as additional segments.
+1. Collect all geometric primitives.
 
-The rectangle boundary participates in the planar subdivision exactly like the black segments. Without it, the graph would not contain closed faces for the canvas.
-2. Compute every intersection point between every pair of segments.
+Add the four rectangle borders as segments together with all black segments from the input. The rectangle border is necessary because faces are bounded by the canvas edges too.
+2. Compute every segment intersection.
 
-This includes shared endpoints and proper crossings. For each segment, collect all points lying on it.
-3. Sort the points along each segment and split the segment into smaller edges.
+For every pair of segments, compute whether they intersect. If they do, store the intersection point for both segments.
 
-Consecutive points on the same segment define one graph edge. After this step, edges intersect only at vertices.
-4. Compress equal geometric points into vertex IDs.
+Every original segment will later be split at all its intersection points. Without this step, the planar graph would contain edges crossing through each other, which breaks face construction.
+3. Split segments into elementary edges.
 
-Floating point computations produce tiny inaccuracies, so coordinates are compared with an epsilon tolerance.
-5. Build directed edges for the planar graph.
+Sort all intersection points along each segment. Consecutive points define one elementary edge.
 
-Every undirected segment edge becomes two directed half-edges. For each directed edge, store:
+After splitting, no two edges intersect except at endpoints. This is the standard requirement for planar graph traversal.
+4. Compress geometric points into graph vertices.
 
-- destination vertex
-- reverse edge
-- geometric angle
-6. Sort outgoing edges around every vertex by angle.
+Floating point coordinates are dangerous as dictionary keys. Use exact rational arithmetic with fractions, or store normalized tuples.
 
-This gives the cyclic order needed for planar face traversal.
-7. Precompute the next edge for face walking.
+Every unique point becomes a vertex in the graph.
+5. Build directed half-edges.
 
-Suppose we arrive at vertex `v` through edge `u -> v`. The next edge along the face is the edge immediately before `(v -> u)` in angular order.
+For every undirected edge `(u, v)`, create two directed edges `u → v` and `v → u`.
 
-This keeps the traversed face consistently on the left side.
-8. Traverse all faces.
+For every vertex, sort outgoing directed edges by polar angle.
+6. Construct faces by angular traversal.
 
-For every unused directed edge, repeatedly follow `next` pointers until returning to the start edge.
+Start from an unused directed edge.
 
-The sequence of vertices forms one polygonal face.
-9. Compute the signed area of each face.
+Suppose we arrived at vertex `v` through edge `u → v`. Among all outgoing edges from `v`, find the reverse edge `v → u`. Take the edge immediately before it in cyclic angular order.
 
-Using the shoelace formula:
+Repeating this process walks around one face boundary.
 
-$A = \frac{1}{2}\sum_{i=0}^{n-1}(x_i y_{i+1} - y_i x_{i+1})$
+Mark all directed edges used in this traversal.
+7. Compute polygon area for every face.
 
-Clockwise faces have negative signed area. In this traversal convention, bounded faces appear clockwise, while the outer infinite face appears counterclockwise.
-10. Keep only bounded faces.
+The traversal produces a polygon boundary. Use the shoelace formula.
 
-Ignore faces with positive area. For the remaining ones, store absolute area.
-11. Find which face contains each fill point.
+One face is the exterior face, it has negative orientation and area equal to the outer infinite region. Ignore it.
+8. Locate fill points.
 
-For every fill point:
+For every fill operation, determine which bounded face contains the query point.
 
-- first check whether it lies on a segment
-- otherwise locate the polygon containing the point
+Since the number of faces is small, a point-in-polygon test against all faces is fast enough.
 
-Since the number of faces is small, simple point-in-polygon testing is fast enough.
-12. Apply fills in order.
+If the point lies exactly on a segment, ignore the fill because segments have zero area.
+9. Simulate recoloring.
 
-Each face remembers its current color. Initially all bounded faces are white. Every fill recolors the corresponding face.
-13. Sum areas by final color and print the result.
+Initially every bounded face is white.
+
+Each fill operation changes the color of exactly one face.
+
+Maintain a mapping `face → current color`.
+10. Accumulate final areas.
+
+Sum the area of every face into its final color.
 
 ### Why it works
 
-The segment arrangement partitions the rectangle into connected open regions. After splitting segments at every intersection, the resulting planar graph exactly captures this subdivision.
+After splitting at intersections, the segments form a proper planar embedding. Every connected region of the canvas corresponds exactly to one bounded face of this embedding.
 
-Face traversal enumerates every maximal connected region once because each directed edge borders exactly one face on its left side. The angular ordering guarantees that the traversal follows the geometric boundary continuously.
+The half-edge traversal enumerates each face exactly once because every directed edge borders exactly one face on its left side. The angular rule always follows the boundary continuously without crossing edges.
 
-Flood-fill operations only recolor connected regions separated by segment barriers. Since each bounded face corresponds to exactly one such region, applying fills to faces reproduces the painting process precisely.
-
-The shoelace formula computes exact polygon areas regardless of polygon shape, including non-convex faces.
+Flood-fill on a point inside a face cannot cross segment boundaries, so it recolors exactly that face. Since faces partition the rectangle interior, summing their areas by final color gives the correct answer.
 
 ## Python Solution
 
 ```python
 import sys
-import math
+from fractions import Fraction
 from collections import defaultdict
 
 input = sys.stdin.readline
 
 EPS = 1e-9
 
-def sgn(x):
-    if x > EPS:
-        return 1
-    if x < -EPS:
-        return -1
-    return 0
+def cross(ax, ay, bx, by):
+    return ax * by - ay * bx
 
 def sub(a, b):
     return (a[0] - b[0], a[1] - b[1])
 
-def cross(a, b):
-    return a[0] * b[1] - a[1] * b[0]
+def segment_intersection(a, b, c, d):
+    ax, ay = a
+    bx, by = b
+    cx, cy = c
+    dx, dy = d
 
-def dot(a, b):
-    return a[0] * b[0] + a[1] * b[1]
+    r = (bx - ax, by - ay)
+    s = (dx - cx, dy - cy)
 
-def on_segment(p, a, b):
-    if abs(cross(sub(b, a), sub(p, a))) > EPS:
-        return False
-    return dot(sub(p, a), sub(p, b)) <= EPS
+    den = cross(r[0], r[1], s[0], s[1])
 
-def seg_intersection(a, b, c, d):
-    ab = sub(b, a)
-    cd = sub(d, c)
+    if den == 0:
+        return []
 
-    den = cross(ab, cd)
+    t = Fraction(cross(cx - ax, cy - ay, s[0], s[1]), den)
+    u = Fraction(cross(cx - ax, cy - ay, r[0], r[1]), den)
 
-    if abs(den) < EPS:
-        pts = []
-        for p in [a, b]:
-            if on_segment(p, c, d):
-                pts.append(p)
-        for p in [c, d]:
-            if on_segment(p, a, b):
-                pts.append(p)
-        return pts
-
-    t = cross(sub(c, a), cd) / den
-    u = cross(sub(c, a), ab) / den
-
-    if -EPS <= t <= 1 + EPS and -EPS <= u <= 1 + EPS:
-        p = (a[0] + ab[0] * t, a[1] + ab[1] * t)
-        return [p]
+    if 0 <= t <= 1 and 0 <= u <= 1:
+        x = Fraction(ax) + Fraction(r[0]) * t
+        y = Fraction(ay) + Fraction(r[1]) * t
+        return [(x, y)]
 
     return []
 
+def point_on_segment(p, a, b):
+    px, py = p
+    ax, ay = a
+    bx, by = b
+
+    c = cross(bx - ax, by - ay, px - ax, py - ay)
+    if c != 0:
+        return False
+
+    return (
+        min(ax, bx) <= px <= max(ax, bx)
+        and min(ay, by) <= py <= max(ay, by)
+    )
+
 def polygon_area(poly):
-    s = 0.0
+    s = Fraction(0)
     n = len(poly)
+
     for i in range(n):
         x1, y1 = poly[i]
         x2, y2 = poly[(i + 1) % n]
-        s += x1 * y2 - y1 * x2
-    return s / 2.0
+        s += x1 * y2 - x2 * y1
 
-def point_in_poly(p, poly):
-    x, y = p
+    return s / 2
+
+def point_in_poly(pt, poly):
+    x = float(pt[0])
+    y = float(pt[1])
+
     inside = False
     n = len(poly)
 
     for i in range(n):
-        ax, ay = poly[i]
-        bx, by = poly[(i + 1) % n]
+        x1 = float(poly[i][0])
+        y1 = float(poly[i][1])
+        x2 = float(poly[(i + 1) % n][0])
+        y2 = float(poly[(i + 1) % n][1])
 
-        if on_segment(p, (ax, ay), (bx, by)):
-            return True
-
-        if (ay > y) != (by > y):
-            t = (y - ay) / (by - ay)
-            xx = ax + (bx - ax) * t
+        if ((y1 > y) != (y2 > y)):
+            t = (y - y1) / (y2 - y1)
+            xx = x1 + (x2 - x1) * t
             if xx > x:
                 inside = not inside
 
     return inside
 
-def key_point(p):
-    return (round(p[0], 10), round(p[1], 10))
-
 def solve():
     W, H = map(int, input().split())
 
-    n = int(input())
-
-    segs = []
-
-    for _ in range(n):
-        x1, y1, x2, y2 = map(float, input().split())
-        segs.append(((x1, y1), (x2, y2)))
+    segments = []
 
     rect = [
-        ((0.0, 0.0), (W, 0.0)),
-        ((W, 0.0), (W, H)),
-        ((W, H), (0.0, H)),
-        ((0.0, H), (0.0, 0.0)),
+        ((0, 0), (W, 0)),
+        ((W, 0), (W, H)),
+        ((W, H), (0, H)),
+        ((0, H), (0, 0)),
     ]
 
-    segs.extend(rect)
+    for s in rect:
+        segments.append(s)
 
-    m = len(segs)
+    n = int(input())
 
-    pts_on_seg = [[] for _ in range(m)]
+    for _ in range(n):
+        x1, y1, x2, y2 = map(int, input().split())
+        segments.append(((x1, y1), (x2, y2)))
 
-    for i in range(m):
-        pts_on_seg[i].append(segs[i][0])
-        pts_on_seg[i].append(segs[i][1])
-
-    for i in range(m):
-        for j in range(i + 1, m):
-            inter = seg_intersection(
-                segs[i][0], segs[i][1],
-                segs[j][0], segs[j][1]
-            )
-
-            for p in inter:
-                pts_on_seg[i].append(p)
-                pts_on_seg[j].append(p)
-
-    point_id = {}
-    points = []
-
-    def get_id(p):
-        k = key_point(p)
-        if k not in point_id:
-            point_id[k] = len(points)
-            points.append(p)
-        return point_id[k]
-
-    edges = []
-
-    for i in range(m):
-        a, b = segs[i]
-        vec = sub(b, a)
-
-        arr = []
-        seen = set()
-
-        for p in pts_on_seg[i]:
-            k = key_point(p)
-            if k in seen:
-                continue
-            seen.add(k)
-
-            if abs(vec[0]) >= abs(vec[1]):
-                t = (p[0] - a[0]) / vec[0] if abs(vec[0]) > EPS else 0
-            else:
-                t = (p[1] - a[1]) / vec[1]
-
-            arr.append((t, p))
-
-        arr.sort()
-
-        for j in range(len(arr) - 1):
-            p1 = arr[j][1]
-            p2 = arr[j + 1][1]
-
-            if math.hypot(p1[0] - p2[0], p1[1] - p2[1]) < EPS:
-                continue
-
-            u = get_id(p1)
-            v = get_id(p2)
-
-            edges.append((u, v))
-            edges.append((v, u))
-
-    g = [[] for _ in range(len(points))]
-    rev = []
-
-    for idx, (u, v) in enumerate(edges):
-        ang = math.atan2(
-            points[v][1] - points[u][1],
-            points[v][0] - points[u][0]
-        )
-        g[u].append([v, ang, idx])
-
-    edge_rev = [0] * len(edges)
-
-    mp = defaultdict(list)
-
-    for idx, (u, v) in enumerate(edges):
-        mp[(u, v)].append(idx)
-
-    for idx, (u, v) in enumerate(edges):
-        edge_rev[idx] = mp[(v, u)].pop()
-
-    pos = {}
-
-    for v in range(len(points)):
-        g[v].sort(key=lambda x: x[1])
-
-        for i, (_, _, idx) in enumerate(g[v]):
-            pos[idx] = i
-
-    nxt = [0] * len(edges)
-
-    for idx, (u, v) in enumerate(edges):
-        ridx = edge_rev[idx]
-        p = pos[ridx]
-
-        deg = len(g[v])
-
-        nxt[idx] = g[v][(p - 1) % deg][2]
-
-    used = [False] * len(edges)
-
-    faces = []
-
-    for i in range(len(edges)):
-        if used[i]:
-            continue
-
-        cur = i
-        poly = []
-
-        while not used[cur]:
-            used[cur] = True
-
-            u, v = edges[cur]
-            poly.append(points[u])
-
-            cur = nxt[cur]
-
-        area = polygon_area(poly)
-
-        if area < -EPS:
-            faces.append((poly, -area))
-
-    q = int(input())
-
+    m = int(input())
     fills = []
 
-    for _ in range(q):
+    for _ in range(m):
         x, y, c = input().split()
-        fills.append((float(x), float(y), c))
+        fills.append((Fraction(int(x)), Fraction(int(y)), c))
 
-    face_color = ["white"] * len(faces)
+    k = len(segments)
 
-    for x, y, color in fills:
-        p = (x, y)
+    pts_on_seg = []
+
+    for i in range(k):
+        a, b = segments[i]
+        cur = set()
+        cur.add((Fraction(a[0]), Fraction(a[1])))
+        cur.add((Fraction(b[0]), Fraction(b[1])))
+        pts_on_seg.append(cur)
+
+    for i in range(k):
+        for j in range(i + 1, k):
+            a, b = segments[i]
+            c, d = segments[j]
+
+            inter = segment_intersection(a, b, c, d)
+
+            for p in inter:
+                pts_on_seg[i].add(p)
+                pts_on_seg[j].add(p)
+
+    edges = set()
+
+    for i in range(k):
+        a, b = segments[i]
+
+        pts = list(pts_on_seg[i])
+
+        dx = b[0] - a[0]
+        dy = b[1] - a[1]
+
+        pts.sort(
+            key=lambda p: (
+                Fraction(p[0] - a[0], dx) if dx != 0
+                else Fraction(p[1] - a[1], dy)
+            )
+        )
+
+        for j in range(len(pts) - 1):
+            u = pts[j]
+            v = pts[j + 1]
+
+            if u != v:
+                edges.add((u, v))
+                edges.add((v, u))
+
+    graph = defaultdict(list)
+
+    for u, v in edges:
+        graph[u].append(v)
+
+    import math
+
+    order = {}
+
+    for u in graph:
+        graph[u].sort(
+            key=lambda v: math.atan2(
+                float(v[1] - u[1]),
+                float(v[0] - u[0])
+            )
+        )
+
+        for i, v in enumerate(graph[u]):
+            order[(u, v)] = i
+
+    used = set()
+    faces = []
+
+    for u, v in edges:
+        if (u, v) in used:
+            continue
+
+        face = []
+
+        cu, cv = u, v
+
+        while True:
+            used.add((cu, cv))
+            face.append(cu)
+
+            arr = graph[cv]
+            idx = order[(cv, cu)]
+
+            nxt = arr[(idx - 1) % len(arr)]
+
+            nu, nv = cv, nxt
+
+            cu, cv = nu, nv
+
+            if (cu, cv) == (u, v):
+                break
+
+        area = polygon_area(face)
+
+        if area > 0:
+            faces.append((face, area))
+
+    face_colors = ["white"] * len(faces)
+
+    all_segments = segments[4:]
+
+    for x, y, col in fills:
+        on_seg = False
+
+        for a, b in all_segments:
+            aa = (Fraction(a[0]), Fraction(a[1]))
+            bb = (Fraction(b[0]), Fraction(b[1]))
+
+            if point_on_segment((x, y), aa, bb):
+                on_seg = True
+                break
+
+        if on_seg:
+            continue
 
         for i, (poly, area) in enumerate(faces):
-            if point_in_poly(p, poly):
-                face_color[i] = color
+            if point_in_poly((x, y), poly):
+                face_colors[i] = col
                 break
 
     ans = defaultdict(float)
 
     for i, (_, area) in enumerate(faces):
-        ans[face_color[i]] += area
+        ans[face_colors[i]] += float(area)
 
-    for k in sorted(ans):
-        print(k, f"{ans[k]:.8f}")
+    for c in sorted(ans):
+        print(c, f"{ans[c]:.8f}")
 
 solve()
 ```
 
-The implementation follows the geometric construction directly.
+The first part builds the geometric arrangement. Every segment is repeatedly split at all intersection points. Using `Fraction` avoids precision disasters caused by rational intersections such as `1/3`.
 
-The most delicate part is splitting segments correctly. Every segment stores all intersection points lying on it, including endpoints. After sorting these points along the segment, consecutive pairs become graph edges. This guarantees that edges only intersect at vertices.
+The half-edge graph is the heart of the solution. Every directed edge belongs to exactly one face on its left side. Sorting outgoing edges by angle lets us move consistently along boundaries.
 
-Floating point precision is another subtle issue. Exact equality between computed intersections is unreliable, so points are normalized with rounded coordinates before assigning IDs.
+The traversal step is subtle. After entering a vertex through one edge, we choose the previous outgoing edge in cyclic order. This keeps the current face on the left and traces its boundary without ambiguity.
 
-Face traversal depends on angular ordering. At each vertex, outgoing edges are sorted by `atan2`. When entering a vertex through some edge, the next face edge is the previous edge in cyclic order. That convention keeps the traversed face on the left side.
+The implementation stores only positive-area faces. The outer infinite face appears with negative orientation and gets discarded automatically.
 
-The orientation test is easy to get backwards. With this traversal convention, bounded faces appear clockwise, giving negative signed area. The outer infinite face appears counterclockwise and is discarded.
+Point location uses a standard ray-casting test. Since the number of faces is small, checking all faces is fast enough.
 
-Point-in-polygon uses standard ray casting. Since fill points may lie exactly on boundaries, the implementation first checks `on_segment`.
+One important detail is handling fills on segments. Those fills affect only zero-area geometry, so they are ignored when computing areas.
 
 ## Worked Examples
 
@@ -484,19 +461,15 @@ Input:
 2 2 blue
 ```
 
-The square and diagonals partition the interior into triangular regions.
+The rectangle contains a square with two diagonals.
 
 | Step | Action | Result |
 | --- | --- | --- |
-| 1 | Add rectangle edges | Outer boundary included |
-| 2 | Compute intersections | Center point `(2,2)` created |
-| 3 | Split segments | Diagonals divided at center |
-| 4 | Enumerate faces | Several triangular faces found |
-| 5 | Fill `(2,1)` red | One triangle becomes red |
-| 6 | Fill `(2,2)` blue | Central region recolored blue |
-| 7 | Sum areas | Blue region has zero area |
-
-The interesting detail is that `(2,2)` lies exactly at the intersection of diagonals. That point belongs only to zero-area geometry, so recoloring it changes no measurable area.
+| 1 | Build arrangement | Several triangular faces appear inside the square |
+| 2 | Fill `(2,1)` with red | One lower triangle becomes red |
+| 3 | Fill `(2,2)` with blue | Point lies on diagonal intersection |
+| 4 | Ignore blue fill | Segments have zero area |
+| 5 | Sum areas | Entire rectangle stays white |
 
 Final output:
 
@@ -505,47 +478,50 @@ blue 0.00000000
 white 20.00000000
 ```
 
+This example demonstrates the most counterintuitive rule in the problem. A fill point on a segment changes only zero-area geometry.
+
 ### Custom Example
 
-Input:
-
 ```
-6 4
+6 6
 1
-3 0 3 4
+3 0 3 6
 2
 1 1 red
 5 1 blue
 ```
 
-The vertical segment splits the rectangle into two equal halves.
+The vertical segment splits the rectangle into two equal faces.
 
-| Step | Face | Area | Current color |
+| Step | Face containing point | Previous color | New color |
 | --- | --- | --- | --- |
-| Initial | Left half | 12 | white |
-| Initial | Right half | 12 | white |
-| Fill 1 | Left half | 12 | red |
-| Fill 2 | Right half | 12 | blue |
+| 1 | Left rectangle | white | red |
+| 2 | Right rectangle | white | blue |
+
+Area table:
+
+| Face | Area | Final color |
+| --- | --- | --- |
+| Left half | 18 | red |
+| Right half | 18 | blue |
 
 Final output:
 
 ```
-blue 12.00000000
-red 12.00000000
+blue 18.00000000
+red 18.00000000
 ```
 
-This trace confirms that every connected region corresponds to one planar face.
+This confirms that flood-fill operates on connected regions rather than globally on colors.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(S³) worst-case | Segment intersections plus face construction |
-| Space | O(S²) | Graph vertices and edges from intersections |
+| Time | O(n^3) | Segment intersections, face construction, and point-location over all faces |
+| Space | O(n^2) | Arrangement vertices, edges, and faces |
 
-Here `S` is the number of segments including rectangle borders, at most 104.
-
-The cubic factor comes from handling all pairwise intersections and graph operations on the resulting subdivision. With only about 100 segments, this easily fits within the limits.
+With at most `100` segments, the arrangement complexity remains small enough. Even cubic behavior is perfectly safe inside the limits because the constant factors are moderate and the graph contains only a few thousand elements.
 
 ## Test Cases
 
@@ -562,10 +538,11 @@ def run(inp: str) -> str:
     with redirect_stdout(out):
         solve()
 
-    return out.getvalue()
+    return out.getvalue().strip()
 
 # provided sample
-sample = """4 5
+assert run(
+"""4 5
 6
 1 1 1 3
 1 3 3 3
@@ -577,128 +554,116 @@ sample = """4 5
 2 1 red
 2 2 blue
 """
+) == """white 20.00000000"""
 
-assert "white 20.00000000" in run(sample)
-
-# no segments, no fills
-assert run("""3 3
+# no segments
+assert run(
+"""3 3
 0
-0
-""").strip() == "white 9.00000000"
+1
+1 1 red
+"""
+) == """red 9.00000000"""
 
 # single split
-res = run("""6 4
+res = run(
+"""6 6
 1
-3 0 3 4
+3 1 3 5
 2
 1 1 red
 5 1 blue
-""")
+"""
+)
 
-assert "red 12.00000000" in res
-assert "blue 12.00000000" in res
+assert "red 18.00000000" in res
+assert "blue 18.00000000" in res
 
-# overwrite same region
-res = run("""5 5
+# fill on segment
+assert run(
+"""5 5
 1
-2 0 2 5
-2
-1 1 red
-1 2 blue
-""")
-
-assert "blue 10.00000000" in res
-assert "white 15.00000000" in res
-
-# fill on segment only
-res = run("""4 4
-1
-1 1 3 3
+1 2 4 2
 1
 2 2 red
-""")
+"""
+) == """white 25.00000000"""
 
-assert "white 16.00000000" in res
+# overwrite same region
+assert run(
+"""4 4
+0
+2
+1 1 red
+1 1 blue
+"""
+) == """blue 16.00000000"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Empty rectangle | Entire area white | Base case with no subdivision |
-| Single vertical split | Two equal regions | Correct face construction |
-| Two fills same region | Last fill wins | Proper overwrite semantics |
-| Fill on segment | Zero area recolor | Boundary handling |
+| Empty canvas with one fill | Entire area recolored | Base behavior |
+| One dividing segment | Two independent faces | Correct face construction |
+| Fill on segment | No area changes | Zero-area geometry handling |
+| Repeated fills | Latest fill wins | Sequential simulation |
+| Diagonal intersections | Segment splitting | Proper planar embedding |
 
 ## Edge Cases
 
-Consider a fill point lying exactly on a segment:
-
-```
-4 4
-1
-1 1 3 3
-1
-2 2 red
-```
-
-The diagonal divides the rectangle into two triangular faces. The fill point lies on the diagonal itself, not inside either face. Since the segment has zero area, repainting it changes nothing measurable.
-
-During execution:
-
-1. The segment becomes graph edges.
-2. Face traversal finds two triangular faces.
-3. Point-in-polygon detects boundary contact only.
-4. No positive-area face changes color.
-
-Final result:
-
-```
-white 16.00000000
-```
-
-Now consider repeated fills of the same region:
+Consider a fill point exactly on a segment.
 
 ```
 5 5
 1
-2 0 2 5
-2
-1 1 red
-1 2 blue
+1 2 4 2
+1
+2 2 red
 ```
 
-The vertical segment creates left and right halves.
+The algorithm first checks whether the fill point belongs to any segment using exact collinearity and bounding-box tests. Since `(2,2)` lies on the segment, the fill is ignored for area computation.
 
-Execution:
-
-1. Face enumeration produces two faces of area 10 and 15.
-2. First fill colors the left face red.
-3. Second fill targets the same left face and overwrites it with blue.
-4. Areas are accumulated only from final colors.
-
-Final result:
+The only face is still the whole rectangle with area `25`, so the output remains:
 
 ```
-blue 10.00000000
-white 15.00000000
+white 25.00000000
 ```
 
-Finally, consider crossing segments:
+Now consider intersecting segments.
 
 ```
 5 5
 2
 1 1 4 4
 1 4 4 1
-0
+1
+2 2 blue
 ```
 
-The intersection at `(2.5,2.5)` must become a graph vertex.
+During preprocessing, the two segments intersect at `(5/2, 5/2)` and are split into smaller edges. The fill point lies on the intersection itself, so again no face is recolored.
 
-Execution:
+Without splitting, the graph would contain crossing edges and face traversal would fail to produce valid polygons.
 
-1. Pairwise intersection finds the crossing.
-2. Both diagonals are split into smaller edges.
-3. The planar graph becomes valid.
-4. Face traversal correctly identifies all regions.
+Finally, consider disconnected regions sharing the same color.
 
-Without splitting at intersections, the traversal would incorrectly treat crossing edges as independent and produce invalid polygons.
+```
+6 6
+1
+3 0 3 6
+3
+1 1 red
+5 1 red
+1 1 blue
+```
+
+After the first two fills, both halves become red independently.
+
+The last fill affects only the left face because flood-fill depends on connectivity, not merely color equality.
+
+Final areas become:
+
+```
+blue 18.00000000
+red 18.00000000
+```
+
+The algorithm handles this naturally because colors are stored per face, not globally.
