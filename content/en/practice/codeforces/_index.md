@@ -53,7 +53,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [36](36/) | [Codeforces Beta Round 36](https://codeforces.com/contest/36) | Beta | 1300-2600 | 2/5 | 9m 36s |
 | [37](37/) | [Codeforces Beta Round 37](https://codeforces.com/contest/37) | Beta | 1000-2600 | 4/5 | 8m 37s |
 | [38](38/) | [School Personal Contest #1 (Winter Computer School 2010/11) - Codeforces Beta Round 38 (ACM-ICPC Rules)](https://codeforces.com/contest/38) | Beta | 800-2400 | 5/8 | 13m 48s |
-| [39](39/) | [School Team Contest 1 (Winter Computer School 2010/11)](https://codeforces.com/contest/39) | Special | 1100-2600 | 9/11 | 21m 37s |
+| [39](39/) | [School Team Contest 1 (Winter Computer School 2010/11)](https://codeforces.com/contest/39) | Special | 1100-2600 | 9/11 | 23m 20s |
 | [40](40/) | [Codeforces Beta Round 39](https://codeforces.com/contest/40) | Beta | 1300-2600 | 5/5 | 7m 51s |
 | [41](41/) | [Codeforces Beta Round 40 (Div. 2)](https://codeforces.com/contest/41) | Div. 2 | 800-1900 | 3/5 | 7m 28s |
 | [42](42/) | [Codeforces Beta Round 41](https://codeforces.com/contest/42) | Beta | 1400-2700 | 4/5 | 10m 20s |
