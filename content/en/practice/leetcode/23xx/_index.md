@@ -73,12 +73,13 @@ draft: false
 | 2360 | [Longest Cycle in a Graph](2360.md) | 🔴 Hard | 1m 14s | This problem gives us a directed graph represented by an array call… |
 | 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 37s | This problem models a scenario where you are traversing a train lin… |
 | 2362 | [Generate the Invoice](2362.md) | 🔴 Hard | 1m 36s | This problem asks us to identify the invoice with the highest total… |
-| 2363 | [Merge Similar Items](2363.md) | 🟢 Easy | 1m 16s | The problem requires merging two lists of items, where each item is… |
-| 2364 | [Count Number of Bad Pairs](2364.md) | 🟡 Medium | 1m 10s | We are given a 0-indexed integer array nums. A pair of indices (i, … |
-| 2365 | [Task Scheduler II](2365.md) | 🟡 Medium | 1m 21s | The problem gives us an array tasks where each value represents a t… |
-| 2366 | [Minimum Replacements to Sort the Array](2366.md) | 🔴 Hard | 1m 18s | The problem gives us a 0-indexed integer array nums. We are allowed… |
-| 2367 | [Number of Arithmetic Triplets](2367.md) | 🟢 Easy | 1m 21s | The problem gives us a strictly increasing array nums and a positiv… |
+| 2363 | [Merge Similar Items](2363.md) | 🟢 Easy | 1m 7s | The problem gives us two collections of items, items1 and items2, w… |
+| 2364 | [Count Number of Bad Pairs](2364.md) | 🟡 Medium | 1m 17s | The problem asks us to count the number of bad pairs in an array. W… |
+| 2365 | [Task Scheduler II](2365.md) | 🟡 Medium | 1m 8s | The problem gives us an array tasks, where each value represents a … |
+| 2366 | [Minimum Replacements to Sort the Array](2366.md) | 🔴 Hard | 2m 19s | The problem asks us to transform a given integer array nums into a … |
+| 2367 | [Number of Arithmetic Triplets](2367.md) | 🟢 Easy | 2m 19s | The problem requires us to find the number of arithmetic triplets i… |
 | 2368 | [Reachable Nodes With Restrictions](2368.md) | 🟡 Medium | 1m 28s | The problem is asking us to determine how many nodes in a tree are … |
+| 2369 | [Check if There is a Valid Partition For The Array](2369.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array nums, and we must determine w… |
 | 2370 | [Longest Ideal Subsequence](2370.md) | 🟡 Medium | 1m 13s | The problem asks us to find the length of the longest subsequence o… |
 | 2372 | [Calculate the Influence of Each Salesperson](2372.md) | 🟡 Medium | 1m 13s | This problem gives us an undirected tree with n nodes numbered from… |
 | 2373 | [Largest Local Values in a Matrix](2373.md) | 🟢 Easy | 54s | The problem asks us to process an n x n matrix grid and generate a … |

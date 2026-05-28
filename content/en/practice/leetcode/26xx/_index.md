@@ -26,18 +26,26 @@ draft: false
 | 2615 | [Sum of Distances](2615.md) | 🟡 Medium | 1m 7s | The problem gives us a 0-indexed integer array nums. For every posi… |
 | 2616 | [Minimize the Maximum Difference of Pairs](2616.md) | 🟡 Medium | 1m 13s | The problem asks us to select exactly p disjoint pairs from the arr… |
 | 2617 | [Minimum Number of Visited Cells in a Grid](2617.md) | 🔴 Hard | 1m 23s | The problem gives us a 2D grid where each cell contains a non-negat… |
+| 2619 | [Array Prototype Last](2619.md) | 🟢 Easy | 2m 33s | This problem asks us to extend the built in JavaScript Array object… |
 | 2620 | [Counter](2620.md) | 🟢 Easy | 36s | The problem is asking us to implement a counter generator that star… |
+| 2621 | [Sleep](2621.md) | 🟢 Easy | 2m 16s | The problem is asking us to implement an asynchronous function slee… |
 | 2622 | [Cache With Time Limit](2622.md) | 🟡 Medium | 1m 9s | This problem asks us to design a cache system where each key-value … |
 | 2623 | [Memoize](2623.md) | 🟡 Medium | 53s | This problem asks us to create a memoized version of a function. Me… |
+| 2624 | [Snail Traversal](2624.md) | 🟡 Medium | 43s | The problem is asking us to take a one-dimensional array of numbers… |
+| 2625 | [Flatten Deeply Nested Array](2625.md) | 🟡 Medium | 1m 8s | We are given a multi-dimensional array arr and a non-negative integ… |
 | 2626 | [Array Reduce Transformation](2626.md) | 🟢 Easy | 40s | The problem is asking us to simulate the behavior of a "reduce" fun… |
 | 2628 | [JSON Deep Equal](2628.md) | 🟡 Medium | 42s | The problem is asking us to determine whether two JSON-parsed value… |
 | 2629 | [Function Composition](2629.md) | 🟢 Easy | 1m 21s | The problem is asking us to implement a function composition operat… |
+| 2630 | [Memoize II](2630.md) | 🔴 Hard | 42s | The problem asks us to implement a memoized version of a function f… |
 | 2631 | [Group By](2631.md) | 🟡 Medium | 1m 27s | This problem asks us to extend JavaScript arrays with a custom meth… |
 | 2633 | [Convert Object to JSON String](2633.md) | 🟡 Medium | 44s | This problem asks us to convert a given JavaScript-like object into… |
 | 2634 | [Filter Elements from Array](2634.md) | 🟢 Easy | 1m 8s | The problem asks us to implement our own version of array filtering… |
+| 2636 | [Promise Pool](2636.md) | 🟡 Medium | 1m | This problem asks us to implement a concurrency-controlled executor… |
 | 2637 | [Promise Time Limit](2637.md) | 🟡 Medium | 1m | This problem asks us to build a higher order asynchronous function.… |
+| 2638 | [Count the Number of K-Free Subsets](2638.md) | 🟡 Medium | 1m 7s | The problem asks us to count how many subsets of the array nums are… |
 | 2639 | [Find the Width of Columns of a Grid](2639.md) | 🟢 Easy | 1m 6s | This problem gives us a two dimensional integer matrix called grid,… |
 | 2640 | [Find the Score of All Prefixes of an Array](2640.md) | 🟡 Medium | 1m 5s | The problem defines a special transformation called the conversion … |
+| 2642 | [Design Graph With Shortest Path Calculator](2642.md) | 🔴 Hard | 1m 21s | This problem asks us to design a mutable directed weighted graph th… |
 | 2643 | [Row With Maximum Ones](2643.md) | 🟢 Easy | 1m 4s | This problem gives us a binary matrix mat of size m x n, where ever… |
 | 2645 | [Minimum Additions to Make Valid String](2645.md) | 🟡 Medium | 48s | The problem asks us to transform a given string word into a valid s… |
 | 2646 | [Minimize the Total Price of the Trips](2646.md) | 🔴 Hard | 1m 22s | The problem gives us an undirected tree with n nodes. Every node ha… |
