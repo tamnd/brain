@@ -15,3 +15,6 @@ draft: false
 | 903 | [Valid Permutations for DI Sequence](903.md) | 🔴 Hard | 1m 15s | The problem gives us a string s of length n, where each character d… |
 | 904 | [Fruit Into Baskets](904.md) | 🟡 Medium | 1m 6s | This problem asks us to find the length of the longest contiguous s… |
 | 905 | [Sort Array By Parity](905.md) | 🟢 Easy | 1m | The problem asks us to rearrange an array so that all even numbers … |
+| 906 | [Super Palindromes](906.md) | 🔴 Hard | 1m 34s | This problem asks us to count how many numbers within a given inclu… |
+| 907 | [Sum of Subarray Minimums](907.md) | 🟡 Medium | 1m 21s | The problem asks us to compute the sum of the minimum value of ever… |
+| 908 | [Smallest Range I](908.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and an integer k. For ev… |

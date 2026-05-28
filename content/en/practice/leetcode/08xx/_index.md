@@ -105,7 +105,7 @@ draft: false
 | 892 | [Surface Area of 3D Shapes](892.md) | 🟢 Easy | 1m 14s | The problem gives us an n x n matrix called grid, where each cell c… |
 | 893 | [Groups of Special-Equivalent Strings](893.md) | 🟡 Medium | 1m 21s | The problem asks us to group strings based on a special equivalence… |
 | 894 | [All Possible Full Binary Trees](894.md) | 🟡 Medium | 1m 11s | The problem asks us to generate every possible full binary tree tha… |
-| 895 | [Maximum Frequency Stack](895.md) | 🔴 Hard | 1m 16s | The problem asks us to design a special stack-like data structure c… |
+| 895 | [Maximum Frequency Stack](895.md) | 🔴 Hard | 42s | The problem is asking us to design a custom stack-like data structu… |
 | 896 | [Monotonic Array](896.md) | 🟢 Easy | 38s | This problem asks us to determine whether a given array of integers… |
 | 897 | [Increasing Order Search Tree](897.md) | 🟢 Easy | 1m 1s | This problem gives us the root of a Binary Search Tree, abbreviated… |
 | 898 | [Bitwise ORs of Subarrays](898.md) | 🟡 Medium | 1m 12s | The problem asks us to compute every possible bitwise OR value that… |

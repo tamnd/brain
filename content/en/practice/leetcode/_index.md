@@ -593,7 +593,28 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 578 | [Get Highest Answer Rate Question](05xx/578.md) | 🟡 Medium | 1m 16s | This problem asks us to analyze user interaction data stored in the… |
 | 579 | [Find Cumulative Salary of an Employee](05xx/579.md) | 🔴 Hard | 41s | This problem asks us to compute a cumulative salary summary for eac… |
 | 580 | [Count Student Number in Departments](05xx/580.md) | 🟡 Medium | 29s | This problem asks us to determine how many students are enrolled in… |
+| 581 | [Shortest Unsorted Continuous Subarray](05xx/581.md) | 🟡 Medium | 1m 9s | The problem gives an integer array nums and asks for the length of … |
+| 582 | [Kill Process](05xx/582.md) | 🟡 Medium | 1m 27s | This problem models processes in an operating system as a tree stru… |
+| 583 | [Delete Operation for Two Strings](05xx/583.md) | 🟡 Medium | 40s | The problem asks us to determine the minimum number of deletion ste… |
+| 584 | [Find Customer Referee](05xx/584.md) | 🟢 Easy | 40s | The problem provides a Customer table with three columns: id, name,… |
+| 585 | [Investments in 2016](05xx/585.md) | 🟡 Medium | 32s | Here’s a full, detailed technical solution guide for LeetCode 585 f… |
+| 586 | [Customer Placing the Largest Number of Orders](05xx/586.md) | 🟢 Easy | 59s | The problem gives us a database table named Orders with two columns… |
+| 587 | [Erect the Fence](05xx/587.md) | 🔴 Hard | 42s | This problem is asking us to find the convex hull of a set of point… |
+| 588 | [Design In-Memory File System](05xx/588.md) | 🔴 Hard | 44s | The problem asks us to design an in-memory file system that simulat… |
+| 589 | [N-ary Tree Preorder Traversal](05xx/589.md) | 🟢 Easy | 43s | The problem asks for a preorder traversal of an n-ary tree. In a pr… |
+| 590 | [N-ary Tree Postorder Traversal](05xx/590.md) | 🟢 Easy | 1m 14s | This problem asks us to perform a postorder traversal on an n-ary t… |
+| 591 | [Tag Validator](05xx/591.md) | 🔴 Hard | 1m 31s | This problem asks us to validate whether a given string represents … |
+| 592 | [Fraction Addition and Subtraction](05xx/592.md) | 🟡 Medium | 43s | The problem requires computing the result of a mathematical express… |
+| 593 | [Valid Square](05xx/593.md) | 🟡 Medium | 1m 11s | The problem gives four points in a 2D coordinate system and asks wh… |
+| 594 | [Longest Harmonious Subsequence](05xx/594.md) | 🟢 Easy | 38s | The problem asks us to find the length of the longest harmonious su… |
+| 595 | [Big Countries](05xx/595.md) | 🟢 Easy | 1m 6s | This problem asks us to query a database table named World and retu… |
+| 596 | [Classes With at Least 5 Students](05xx/596.md) | 🟢 Easy | 39s | This problem is asking us to find classes in a school database that… |
+| 597 | [Friend Requests I: Overall Acceptance Rate](05xx/597.md) | 🟢 Easy | 1m 16s | This problem asks us to compute the overall acceptance rate of frie… |
+| 599 | [Minimum Index Sum of Two Lists](05xx/599.md) | 🟢 Easy | 33s | This problem is asking us to find the common elements between two l… |
+| 600 | [Non-negative Integers without Consecutive Ones](06xx/600.md) | 🔴 Hard | 2m 16s | That is a long-form technical guide request with multiple required … |
 | 601 | [Human Traffic of Stadium](06xx/601.md) | 🔴 Hard | 1m 42s | The problem asks us to extract all consecutive records from a Stadi… |
+| 602 | [Friend Requests II: Who Has the Most Friends](06xx/602.md) | 🟡 Medium | 1m 10s | The problem gives us a database table named RequestAccepted, where … |
+| 603 | [Consecutive Available Seats](06xx/603.md) | 🟢 Easy | 1m 24s | The problem gives us a database table named Cinema with two columns… |
 | 604 | [Design Compressed String Iterator](06xx/604.md) | 🟢 Easy | 33s | This problem asks us to implement a compressed string iterator. We … |
 | 605 | [Can Place Flowers](06xx/605.md) | 🟢 Easy | 56s | The problem gives us a binary array called flowerbed, where: - 0 re… |
 | 606 | [Construct String from Binary Tree](06xx/606.md) | 🟡 Medium | 1m 10s | This problem asks us to convert a binary tree into a string using a… |
@@ -802,6 +823,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 874 | [Walking Robot Simulation](08xx/874.md) | 🟡 Medium | 1m 18s | The problem describes a robot moving on an infinite two dimensional… |
 | 875 | [Koko Eating Bananas](08xx/875.md) | 🟡 Medium | 41s | The problem asks us to determine the minimum eating speed k for Kok… |
 | 876 | [Middle of the Linked List](08xx/876.md) | 🟢 Easy | 55s | The problem gives us the head of a singly linked list and asks us t… |
+| 877 | [Stone Game](08xx/877.md) | 🟡 Medium | 33s | This problem involves a two-player game where Alice and Bob take tu… |
 | 878 | [Nth Magical Number](08xx/878.md) | 🔴 Hard | 1m 13s | The problem asks us to find the nth positive integer that is divisi… |
 | 879 | [Profitable Schemes](08xx/879.md) | 🔴 Hard | 1m 16s | This problem asks us to count how many subsets of crimes satisfy tw… |
 | 880 | [Decoded String at Index](08xx/880.md) | 🟡 Medium | 1m 12s | The problem gives us an encoded string s that represents a potentia… |
@@ -817,3 +839,18 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 890 | [Find and Replace Pattern](08xx/890.md) | 🟡 Medium | 1m 8s | The problem gives us a list of words and a target pattern string. W… |
 | 891 | [Sum of Subsequence Widths](08xx/891.md) | 🔴 Hard | 41s | The problem asks us to calculate the sum of widths for all non-empt… |
 | 892 | [Surface Area of 3D Shapes](08xx/892.md) | 🟢 Easy | 1m 14s | The problem gives us an n x n matrix called grid, where each cell c… |
+| 893 | [Groups of Special-Equivalent Strings](08xx/893.md) | 🟡 Medium | 1m 21s | The problem asks us to group strings based on a special equivalence… |
+| 894 | [All Possible Full Binary Trees](08xx/894.md) | 🟡 Medium | 1m 11s | The problem asks us to generate every possible full binary tree tha… |
+| 895 | [Maximum Frequency Stack](08xx/895.md) | 🔴 Hard | 42s | The problem is asking us to design a custom stack-like data structu… |
+| 896 | [Monotonic Array](08xx/896.md) | 🟢 Easy | 38s | This problem asks us to determine whether a given array of integers… |
+| 897 | [Increasing Order Search Tree](08xx/897.md) | 🟢 Easy | 1m 1s | This problem gives us the root of a Binary Search Tree, abbreviated… |
+| 898 | [Bitwise ORs of Subarrays](08xx/898.md) | 🟡 Medium | 1m 12s | The problem asks us to compute every possible bitwise OR value that… |
+| 899 | [Orderly Queue](08xx/899.md) | 🔴 Hard | 57s | This problem gives us a string s and an integer k. We are allowed t… |
+| 900 | [RLE Iterator](09xx/900.md) | 🟡 Medium | 1m 12s | This problem asks us to design an iterator over a run-length encode… |
+| 902 | [Numbers At Most N Given Digit Set](09xx/902.md) | 🔴 Hard | 1m 17s | The problem gives us a set of allowed digits, stored as strings, an… |
+| 903 | [Valid Permutations for DI Sequence](09xx/903.md) | 🔴 Hard | 1m 15s | The problem gives us a string s of length n, where each character d… |
+| 904 | [Fruit Into Baskets](09xx/904.md) | 🟡 Medium | 1m 6s | This problem asks us to find the length of the longest contiguous s… |
+| 905 | [Sort Array By Parity](09xx/905.md) | 🟢 Easy | 1m | The problem asks us to rearrange an array so that all even numbers … |
+| 906 | [Super Palindromes](09xx/906.md) | 🔴 Hard | 1m 34s | This problem asks us to count how many numbers within a given inclu… |
+| 907 | [Sum of Subarray Minimums](09xx/907.md) | 🟡 Medium | 1m 21s | The problem asks us to compute the sum of the minimum value of ever… |
+| 908 | [Smallest Range I](09xx/908.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and an integer k. For ev… |
