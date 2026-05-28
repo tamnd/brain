@@ -81,3 +81,17 @@ draft: false
 | 671 | [Second Minimum Node In a Binary Tree](671.md) | 🟢 Easy | 38s | The problem provides a special binary tree where each node either h… |
 | 672 | [Bulb Switcher II](672.md) | 🟡 Medium | 1m 14s | The problem describes a room containing n light bulbs, where every … |
 | 673 | [Number of Longest Increasing Subsequence](673.md) | 🟡 Medium | 1m 4s | The problem asks us to determine how many longest strictly increasi… |
+| 674 | [Longest Continuous Increasing Subsequence](674.md) | 🟢 Easy | 1m 2s | The problem asks us to find the length of the longest strictly incr… |
+| 675 | [Cut Off Trees for Golf Event](675.md) | 🔴 Hard | 1m 23s | The problem gives us a two dimensional grid representing a forest. … |
+| 676 | [Implement Magic Dictionary](676.md) | 🟡 Medium | 1m 11s | The problem asks us to design a dictionary-like data structure that… |
+| 677 | [Map Sum Pairs](677.md) | 🟡 Medium | 1m 7s | The problem asks us to design a custom data structure that behaves … |
+| 678 | [Valid Parenthesis String](678.md) | 🟡 Medium | 32s | This problem is asking whether a string containing the characters '… |
+| 680 | [Valid Palindrome II](680.md) | 🟢 Easy | 59s | The problem asks whether a given string s can become a palindrome a… |
+| 681 | [Next Closest Time](681.md) | 🟡 Medium | 1m 14s | The problem gives us a valid time string in the format "HH:MM" and … |
+| 682 | [Baseball Game](682.md) | 🟢 Easy | 58s | This problem asks us to simulate a baseball scoring system with a s… |
+| 683 | [K Empty Slots](683.md) | 🔴 Hard | 33s | Let's go through a complete, detailed technical solution guide for … |
+| 684 | [Redundant Connection](684.md) | 🟡 Medium | 32s | The problem is asking us to identify a redundant edge in a graph th… |
+| 685 | [Redundant Connection II](685.md) | 🔴 Hard | 38s | The problem asks us to identify a redundant edge in a directed grap… |
+| 686 | [Repeated String Match](686.md) | 🟡 Medium | 34s | The problem asks us to determine the minimum number of times a stri… |
+| 687 | [Longest Univalue Path](687.md) | 🟡 Medium | 1m 1s | This problem asks us to find the longest path in a binary tree wher… |
+| 688 | [Knight Probability in Chessboard](688.md) | 🟡 Medium | 1m 23s | The problem asks us to compute the probability that a chess knight … |

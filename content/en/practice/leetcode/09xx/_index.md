@@ -47,10 +47,10 @@ draft: false
 | 934 | [Shortest Bridge](934.md) | 🟡 Medium | 1m 14s | The problem gives us an n x n binary matrix called grid. Each cell … |
 | 935 | [Knight Dialer](935.md) | 🟡 Medium | 1m 13s | The problem asks us to count how many distinct phone numbers of len… |
 | 936 | [Stamping The Sequence](936.md) | 🔴 Hard | 1m 17s | This problem asks us to reconstruct a target string by repeatedly a… |
-| 937 | [Reorder Data in Log Files](937.md) | 🟡 Medium | 1m 21s | In this problem, we are given a list of log strings. Each log conta… |
-| 938 | [Range Sum of BST](938.md) | 🟢 Easy | 1m 4s | The problem gives us the root of a Binary Search Tree (BST) and two… |
-| 939 | [Minimum Area Rectangle](939.md) | 🟡 Medium | 2m 19s | The problem gives us a list of unique points on a 2D coordinate pla… |
-| 940 | [Distinct Subsequences II](940.md) | 🔴 Hard | 1m 3s | The problem asks us to count how many distinct non-empty subsequenc… |
+| 937 | [Reorder Data in Log Files](937.md) | 🟡 Medium | 1m 4s | In this problem, we are given a list of log strings. Each log conta… |
+| 938 | [Range Sum of BST](938.md) | 🟢 Easy | 1m | This problem gives us the root of a Binary Search Tree, abbreviated… |
+| 939 | [Minimum Area Rectangle](939.md) | 🟡 Medium | 1m 18s | The problem gives us a collection of distinct points on a 2D plane.… |
+| 940 | [Distinct Subsequences II](940.md) | 🔴 Hard | 1m 8s | The problem asks us to count how many distinct non-empty subsequenc… |
 | 941 | [Valid Mountain Array](941.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given integer array form… |
 | 942 | [DI String Match](942.md) | 🟢 Easy | 1m 11s | In this problem, we are given a string s consisting only of the cha… |
 | 943 | [Find the Shortest Superstring](943.md) | 🔴 Hard | 1m 30s | The problem gives us an array of unique strings called words. Our t… |
