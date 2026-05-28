@@ -48,14 +48,14 @@ draft: false
 | 1035 | [Uncrossed Lines](1035.md) | 🟡 Medium | 2m 49s | The problem gives us two integer arrays, nums1 and nums2. We are al… |
 | 1036 | [Escape a Large Maze](1036.md) | 🔴 Hard | 1m 42s | The problem gives us a massive 1,000,000 x 1,000,000 grid. Each cel… |
 | 1037 | [Valid Boomerang](1037.md) | 🟢 Easy | 48s | This problem asks us to determine whether three given points in a 2… |
-| 1038 | [Binary Search Tree to Greater Sum Tree](1038.md) | 🟡 Medium | 2m 19s | The problem gives us the root of a Binary Search Tree (BST) and ask… |
+| 1038 | [Binary Search Tree to Greater Sum Tree](1038.md) | 🟡 Medium | 1m 13s | The problem gives us the root of a Binary Search Tree, abbreviated … |
 | 1039 | [Minimum Score Triangulation of Polygon](1039.md) | 🟡 Medium | 2m 15s | This problem asks us to triangulate a convex polygon in such a way … |
-| 1040 | [Moving Stones Until Consecutive II](1040.md) | 🟡 Medium | 47s | This problem asks us to determine the minimum and maximum number of… |
-| 1041 | [Robot Bounded In Circle](1041.md) | 🟡 Medium | 49s | The problem asks us to determine whether a robot that follows a set… |
-| 1042 | [Flower Planting With No Adjacent](1042.md) | 🟡 Medium | 52s | This problem asks us to assign one of four flower types to n garden… |
-| 1043 | [Partition Array for Maximum Sum](1043.md) | 🟡 Medium | 1m 52s | The problem asks us to partition an array of integers into contiguo… |
-| 1044 | [Longest Duplicate Substring](1044.md) | 🔴 Hard | 1m 44s | The problem asks us to find the longest duplicated substring in a g… |
-| 1045 | [Customers Who Bought All Products](1045.md) | 🟡 Medium | 51s | Here’s a full technical solution guide for LeetCode 1045 following … |
+| 1040 | [Moving Stones Until Consecutive II](1040.md) | 🟡 Medium | 47s | The problem gives an array stones representing positions of stones … |
+| 1041 | [Robot Bounded In Circle](1041.md) | 🟡 Medium | 1m | This problem asks us to determine whether a robot moving on an infi… |
+| 1042 | [Flower Planting With No Adjacent](1042.md) | 🟡 Medium | 57s | The problem presents n gardens, labeled from 1 to n, and a list of … |
+| 1043 | [Partition Array for Maximum Sum](1043.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array arr and an integer k. We are … |
+| 1044 | [Longest Duplicate Substring](1044.md) | 🔴 Hard | 1m | Here is the complete, detailed technical solution guide for LeetCod… |
+| 1045 | [Customers Who Bought All Products](1045.md) | 🟡 Medium | 1m | This problem asks us to identify all customers who have purchased e… |
 | 1046 | [Last Stone Weight](1046.md) | 🟢 Easy | 1m 12s | The problem gives us an array called stones, where each value repre… |
 | 1047 | [Remove All Adjacent Duplicates In String](1047.md) | 🟢 Easy | 1m 8s | The problem gives us a string s containing only lowercase English l… |
 | 1049 | [Last Stone Weight II](1049.md) | 🟡 Medium | 1m 4s | The problem presents a list of integers, stones, where each integer… |
