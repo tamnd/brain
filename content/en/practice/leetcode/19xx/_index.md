@@ -29,4 +29,22 @@ draft: false
 | 1918 | [Kth Smallest Subarray Sum](1918.md) | 🟡 Medium | 46s | The problem asks us to find the kth smallest sum among all possible… |
 | 1919 | [Leetcodify Similar Friends](1919.md) | 🔴 Hard | 47s | This problem involves analyzing two database tables, Listens and Fr… |
 | 1920 | [Build Array from Permutation](1920.md) | 🟢 Easy | 1m 7s | The problem gives us a zero-based permutation array called nums. A … |
+| 1921 | [Eliminate Maximum Number of Monsters](1921.md) | 🟡 Medium | 1m 31s | This problem asks us to determine how many monsters we can eliminat… |
+| 1922 | [Count Good Numbers](1922.md) | 🟡 Medium | 1m 21s | The problem asks us to count how many digit strings of length n sat… |
+| 1923 | [Longest Common Subpath](1923.md) | 🔴 Hard | 1m 32s | The problem asks us to find the maximum length of a contiguous sequ… |
+| 1924 | [Erect the Fence II](1924.md) | 🔴 Hard | 51s | Here is a fully detailed technical solution guide for LeetCode 1924… |
+| 1925 | [Count Square Sum Triples](1925.md) | 🟢 Easy | 55s | This problem asks us to count all ordered triples (a, b, c) such th… |
+| 1926 | [Nearest Exit from Entrance in Maze](1926.md) | 🟡 Medium | 1m 26s | The problem gives us a rectangular maze represented by a 2D grid. E… |
+| 1927 | [Sum Game](1927.md) | 🟡 Medium | 1m 14s | The problem describes a two player game played on a numeric string … |
+| 1928 | [Minimum Cost to Reach Destination in Time](1928.md) | 🔴 Hard | 38s | The problem asks us to find the minimum cost to travel from city 0 … |
+| 1929 | [Concatenation of Array](1929.md) | 🟢 Easy | 33s | This problem asks us to take an input array nums of length n and pr… |
+| 1930 | [Unique Length-3 Palindromic Subsequences](1930.md) | 🟡 Medium | 52s | The problem asks us to count unique palindromic subsequences of len… |
+| 1931 | [Painting a Grid With Three Different Colors](1931.md) | 🔴 Hard | 51s | The problem is asking us to count the number of ways to paint an m … |
+| 1932 | [Merge BSTs to Create Single BST](1932.md) | 🔴 Hard | 38s | This problem asks us to take multiple very small binary search tree… |
+| 1933 | [Check if String Is Decomposable Into Value-Equal Substrings](1933.md) | 🟢 Easy | 52s | The problem asks us to determine if a given string s, consisting so… |
+| 1934 | [Confirmation Rate](1934.md) | 🟡 Medium | 57s | This problem asks us to calculate the confirmation rate for each us… |
+| 1935 | [Maximum Number of Words You Can Type](1935.md) | 🟢 Easy | 31s | The problem is asking us to determine how many words in a given str… |
+| 1936 | [Add Minimum Number of Rungs](1936.md) | 🟡 Medium | 1m | The problem gives us a ladder represented by a strictly increasing … |
+| 1937 | [Maximum Number of Points with Cost](1937.md) | 🟡 Medium | 1m 23s | The problem gives us an m x n matrix called points. We must choose … |
+| 1938 | [Maximum Genetic Difference Query](1938.md) | 🔴 Hard | 44s | The problem presents a rooted tree where each node is uniquely iden… |
 | 1949 | [Strong Friendship](1949.md) | 🟡 Medium | 1m 25s | The problem gives us a table named Friendship, where every row repr… |
