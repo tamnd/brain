@@ -99,3 +99,8 @@ draft: false
 | 2191 | [Sort the Jumbled Numbers](2191.md) | 🟡 Medium | 43s | This problem requires sorting an array of integers nums based not o… |
 | 2192 | [All Ancestors of a Node in a Directed Acyclic Graph](2192.md) | 🟡 Medium | 1m 32s | The problem gives us a directed acyclic graph, also called a DAG, w… |
 | 2193 | [Minimum Number of Moves to Make Palindrome](2193.md) | 🔴 Hard | 47s | Here’s a full technical guide for LeetCode 2193 following your form… |
+| 2194 | [Cells in a Range on an Excel Sheet](2194.md) | 🟢 Easy | 2m 38s | This problem asks us to generate every Excel cell contained within … |
+| 2196 | [Create Binary Tree From Descriptions](2196.md) | 🟡 Medium | 1m 29s | The problem gives us a list of parent-child relationships that toge… |
+| 2197 | [Replace Non-Coprime Numbers in Array](2197.md) | 🔴 Hard | 1m 22s | The problem gives an integer array nums and asks us to repeatedly m… |
+| 2198 | [Number of Single Divisor Triplets](2198.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums containing positive integers. We… |
+| 2199 | [Finding the Topic of Each Post](2199.md) | 🔴 Hard | 1m 19s | This problem asks us to determine which topics are associated with … |

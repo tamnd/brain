@@ -10,6 +10,7 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
+| 2200 | [Find All K-Distant Indices in an Array](2200.md) | 🟢 Easy | 51s | The problem asks us to find all k-distant indices in a given array … |
 | 2224 | [Minimum Number of Operations to Convert Time](2224.md) | 🟢 Easy | 1m 11s | The problem asks us to calculate the minimum number of operations t… |
 | 2229 | [Check if an Array Is Consecutive](2229.md) | 🟢 Easy | 1m 21s | The problem asks us to determine whether an integer array forms a p… |
 | 2231 | [Largest Number After Digit Swaps by Parity](2231.md) | 🟢 Easy | 1m 15s | The problem gives us a positive integer num and allows us to swap d… |

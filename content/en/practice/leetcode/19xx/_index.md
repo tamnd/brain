@@ -22,4 +22,11 @@ draft: false
 | 1910 | [Remove All Occurrences of a Substring](1910.md) | 🟡 Medium | 1m 13s | The problem asks us to repeatedly remove occurrences of a substring… |
 | 1911 | [Maximum Alternating Subsequence Sum](1911.md) | 🟡 Medium | 1m 35s | The problem asks us to compute the maximum possible alternating sum… |
 | 1912 | [Design Movie Rental System](1912.md) | 🔴 Hard | 58s | The problem requires designing a movie rental system for multiple s… |
+| 1914 | [Cyclically Rotating a Grid](1914.md) | 🟡 Medium | 1m 39s | The problem gives us an m x n matrix called grid, along with an int… |
+| 1915 | [Number of Wonderful Substrings](1915.md) | 🟡 Medium | 1m 36s | The problem asks us to count how many non-empty substrings of a giv… |
+| 1916 | [Count Ways to Build Rooms in an Ant Colony](1916.md) | 🔴 Hard | 47s | The problem asks us to count the number of valid ways to sequential… |
+| 1917 | [Leetcodify Friends Recommendations](1917.md) | 🔴 Hard | 49s | This problem requires generating friend recommendations for users o… |
+| 1918 | [Kth Smallest Subarray Sum](1918.md) | 🟡 Medium | 46s | The problem asks us to find the kth smallest sum among all possible… |
+| 1919 | [Leetcodify Similar Friends](1919.md) | 🔴 Hard | 47s | This problem involves analyzing two database tables, Listens and Fr… |
+| 1920 | [Build Array from Permutation](1920.md) | 🟢 Easy | 1m 7s | The problem gives us a zero-based permutation array called nums. A … |
 | 1949 | [Strong Friendship](1949.md) | 🟡 Medium | 1m 25s | The problem gives us a table named Friendship, where every row repr… |
