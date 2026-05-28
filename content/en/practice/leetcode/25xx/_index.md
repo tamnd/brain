@@ -36,3 +36,11 @@ draft: false
 | 2532 | [Time to Cross a Bridge](2532.md) | 🔴 Hard | 43s | The problem asks us to simulate the process of transporting n boxes… |
 | 2533 | [Number of Good Binary Strings](2533.md) | 🟡 Medium | 1m 14s | The problem asks us to count how many binary strings satisfy a very… |
 | 2534 | [Time Taken to Cross the Door](2534.md) | 🔴 Hard | 1m 20s | This problem asks us to simulate how people pass through a single d… |
+| 2536 | [Increment Submatrices by One](2536.md) | 🟡 Medium | 1m 17s | The problem gives us an n x n matrix that initially contains only z… |
+| 2538 | [Difference Between Maximum and Minimum Price Sum](2538.md) | 🔴 Hard | 47s | This problem involves analyzing a tree, an undirected, connected ac… |
+| 2539 | [Count the Number of Good Subsequences](2539.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many subsequences of a given strin… |
+| 2540 | [Minimum Common Value](2540.md) | 🟢 Easy | 1m 7s | The problem gives us two integer arrays, nums1 and nums2, and both … |
+| 2541 | [Minimum Operations to Make Array Equal II](2541.md) | 🟡 Medium | 1m 12s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2544 | [Alternating Digit Sum](2544.md) | 🟢 Easy | 44s | The problem asks us to calculate an alternating sum of the digits o… |
+| 2546 | [Apply Bitwise Operations to Make Strings Equal](2546.md) | 🟡 Medium | 1m 3s | This problem gives us two binary strings, s and target, both of the… |
+| 2547 | [Minimum Cost to Split an Array](2547.md) | 🔴 Hard | 45s | The problem presents a large, theoretically infinite grid where you… |

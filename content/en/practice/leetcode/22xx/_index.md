@@ -86,26 +86,26 @@ draft: false
 | 2273 | [Find Resultant Array After Removing Anagrams](2273.md) | 🟢 Easy | 1m 5s | This problem asks us to repeatedly remove words from an array when … |
 | 2274 | [Maximum Consecutive Floors Without Special Floors](2274.md) | 🟡 Medium | 1m 27s | The problem gives us a range of rented floors in a building, from b… |
 | 2275 | [Largest Combination With Bitwise AND Greater Than Zero](2275.md) | 🟡 Medium | 1m 3s | The problem asks us to find the largest possible group of numbers f… |
-| 2276 | [Count Integers in Intervals](2276.md) | 🔴 Hard | 2m 20s | The problem asks us to design a data structure that efficiently man… |
-| 2277 | [Closest Node to Path in Tree](2277.md) | 🔴 Hard | 1m 22s | The problem gives us an undirected tree with n nodes numbered from … |
-| 2278 | [Percentage of Letter in String](2278.md) | 🟢 Easy | 1m 5s | The problem gives us a string s and a character letter. We need to … |
-| 2279 | [Maximum Bags With Full Capacity of Rocks](2279.md) | 🟡 Medium | 1m 20s | This problem gives us two arrays, capacity and rocks, where each in… |
-| 2280 | [Minimum Lines to Represent a Line Chart](2280.md) | 🟡 Medium | 1m 27s | The problem gives us a collection of stock price points, where each… |
-| 2281 | [Sum of Total Strength of Wizards](2281.md) | 🔴 Hard | 47s | The problem asks us to compute the sum of the total strengths of al… |
-| 2282 | [Number of People That Can Be Seen in a Grid](2282.md) | 🟡 Medium | 1m 23s | The problem gives us a 2D grid called heights, where each cell repr… |
-| 2283 | [Check if Number Has Equal Digit Count and Digit Value](2283.md) | 🟢 Easy | 1m 18s | The problem gives us a string num consisting only of digits. The st… |
-| 2284 | [Sender With Largest Word Count](2284.md) | 🟡 Medium | 1m 31s | The problem gives us two arrays of equal length: - messages[i] repr… |
-| 2285 | [Maximum Total Importance of Roads](2285.md) | 🟡 Medium | 1m 18s | The problem gives us n cities labeled from 0 to n - 1 and a list of… |
-| 2286 | [Booking Concert Tickets in Groups](2286.md) | 🔴 Hard | 59s | This problem requires designing a ticket booking system for a conce… |
+| 2276 | [Count Integers in Intervals](2276.md) | 🔴 Hard | 1m 16s | This problem asks us to design a data structure that dynamically ma… |
+| 2277 | [Closest Node to Path in Tree](2277.md) | 🔴 Hard | 46s | The problem is asking us to process queries on a tree structure. Ea… |
+| 2278 | [Percentage of Letter in String](2278.md) | 🟢 Easy | 40s | This problem asks us to calculate the percentage of a given charact… |
+| 2279 | [Maximum Bags With Full Capacity of Rocks](2279.md) | 🟡 Medium | 45s | The problem presents n bags, each with a defined maximum capacity a… |
+| 2280 | [Minimum Lines to Represent a Line Chart](2280.md) | 🟡 Medium | 1m 18s | In this problem, we are given a list of stock prices over different… |
+| 2281 | [Sum of Total Strength of Wizards](2281.md) | 🔴 Hard | 1m 29s | The problem asks us to compute the sum of total strengths across ev… |
+| 2282 | [Number of People That Can Be Seen in a Grid](2282.md) | 🟡 Medium | 47s | The problem asks us to determine, for each person in a 2D grid of h… |
+| 2283 | [Check if Number Has Equal Digit Count and Digit Value](2283.md) | 🟢 Easy | 41s | This problem asks us to verify a self-descriptive property of a str… |
+| 2284 | [Sender With Largest Word Count](2284.md) | 🟡 Medium | 57s | The problem asks us to analyze a chat log containing n messages and… |
+| 2285 | [Maximum Total Importance of Roads](2285.md) | 🟡 Medium | 55s | Here is the complete technical solution guide for LeetCode 2285 fol… |
+| 2286 | [Booking Concert Tickets in Groups](2286.md) | 🔴 Hard | 1m 42s | The problem asks us to design a ticket reservation system for a con… |
 | 2287 | [Rearrange Characters to Make Target String](2287.md) | 🟢 Easy | 1m | This problem asks us to determine how many copies of a target strin… |
-| 2288 | [Apply Discount to Prices](2288.md) | 🟡 Medium | 1m 20s | The problem gives us a sentence where words are separated by single… |
-| 2289 | [Steps to Make Array Non-decreasing](2289.md) | 🟡 Medium | 56s | The problem asks us to transform a given array nums into a non-decr… |
-| 2290 | [Minimum Obstacle Removal to Reach Corner](2290.md) | 🔴 Hard | 1m 32s | This problem asks us to move from the top left corner of a grid to … |
-| 2291 | [Maximum Profit From Trading Stocks](2291.md) | 🟡 Medium | 57s | The problem is asking us to maximize the profit from trading stocks… |
-| 2292 | [Products With Three or More Orders in Two Consecutive Years](2292.md) | 🟡 Medium | 53s | The problem requires identifying products that were ordered three o… |
-| 2293 | [Min Max Game](2293.md) | 🟢 Easy | 1m 18s | The problem gives us a 0-indexed integer array nums whose length is… |
+| 2288 | [Apply Discount to Prices](2288.md) | 🟡 Medium | 44s | The problem asks us to process a string representing a sentence con… |
+| 2289 | [Steps to Make Array Non-decreasing](2289.md) | 🟡 Medium | 47s | The problem asks us to determine how many steps it takes to make a … |
+| 2290 | [Minimum Obstacle Removal to Reach Corner](2290.md) | 🔴 Hard | 1m 20s | This problem gives us a 2D grid where every cell is either empty or… |
+| 2291 | [Maximum Profit From Trading Stocks](2291.md) | 🟡 Medium | 1m 9s | The problem gives us two arrays, present and future, where each ind… |
+| 2292 | [Products With Three or More Orders in Two Consecutive Years](2292.md) | 🟡 Medium | 1m 17s | This problem provides a table named Orders, where each row represen… |
+| 2293 | [Min Max Game](2293.md) | 🟢 Easy | 52s | This problem asks us to repeatedly transform an array until only on… |
 | 2294 | [Partition Array Such That Maximum Difference Is K](2294.md) | 🟡 Medium | 1m 27s | The problem gives us an integer array nums and an integer k. We mus… |
-| 2295 | [Replace Elements in an Array](2295.md) | 🟡 Medium | 1m 31s | The problem gives us an array nums containing distinct positive int… |
+| 2295 | [Replace Elements in an Array](2295.md) | 🟡 Medium | 51s | The problem asks us to perform a series of replacement operations o… |
 | 2296 | [Design a Text Editor](2296.md) | 🔴 Hard | 1m 26s | This problem asks us to design a simplified text editor that suppor… |
 | 2297 | [Jump Game VIII](2297.md) | 🟡 Medium | 57s | This problem asks us to compute the minimum cost to reach the last … |
 | 2298 | [Tasks Count in the Weekend](2298.md) | 🟡 Medium | 47s | The problem asks us to compute the number of tasks submitted during… |
