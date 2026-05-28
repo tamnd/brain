@@ -61,26 +61,34 @@ draft: false
 | 2554 | [Maximum Number of Integers to Choose From a Range I](2554.md) | 🟡 Medium | 32s | This problem asks us to construct the largest possible subset of in… |
 | 2555 | [Maximize Win From Two Segments](2555.md) | 🟡 Medium | 46s | This problem asks us to select two integer-length segments of fixed… |
 | 2556 | [Disconnect Path in a Binary Matrix by at Most One Flip](2556.md) | 🟡 Medium | 48s | The problem gives an m x n binary grid where movement is only allow… |
+| 2557 | [Maximum Number of Integers to Choose From a Range II](2557.md) | 🟡 Medium | 43s | The problem asks us to determine the maximum number of integers we … |
 | 2558 | [Take Gifts From the Richest Pile](2558.md) | 🟢 Easy | 52s | This problem is asking us to simulate a repeated operation on a col… |
 | 2559 | [Count Vowel Strings in Ranges](2559.md) | 🟡 Medium | 28s | This problem asks us to process multiple range queries over an arra… |
 | 2560 | [House Robber IV](2560.md) | 🟡 Medium | 44s | This problem is a variation of the classic House Robber problem, wi… |
 | 2561 | [Rearranging Fruits](2561.md) | 🔴 Hard | 52s | The problem presents two baskets of fruits, each containing n fruit… |
+| 2562 | [Find the Array Concatenation Value](2562.md) | 🟢 Easy | 52s | The problem asks us to compute the concatenation value of an intege… |
 | 2563 | [Count the Number of Fair Pairs](2563.md) | 🟡 Medium | 41s | The problem is asking us to count the number of pairs of indices (i… |
 | 2564 | [Substring XOR Queries](2564.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s and a list of queries. Each … |
 | 2565 | [Subsequence With the Minimum Score](2565.md) | 🔴 Hard | 7m 7s | The problem gives us two strings, s and t. We are allowed to delete… |
+| 2566 | [Maximum Difference by Remapping a Digit](2566.md) | 🟢 Easy | 1m 19s | We start with two numbers on a blackboard, 0 on top and 1 on bottom… |
 | 2567 | [Minimum Score by Changing Two Elements](2567.md) | 🟡 Medium | 1m 3s | The problem gives us an integer array nums and defines two values b… |
 | 2570 | [Merge Two 2D Arrays by Summing Values](2570.md) | 🟢 Easy | 1m 12s | The problem gives us two sorted 2D integer arrays, nums1 and nums2.… |
 | 2571 | [Minimum Operations to Reduce an Integer to 0](2571.md) | 🟡 Medium | 1m 21s | The problem gives us two arrays, nums1 and nums2, along with a sequ… |
 | 2572 | [Count the Number of Square-Free Subsets](2572.md) | 🟡 Medium | 1m 19s | The problem asks us to count how many non-empty subsets of the arra… |
 | 2573 | [Find the String with LCP](2573.md) | 🔴 Hard | 46s | The problem asks us to reconstruct a string given its lcp matrix. T… |
+| 2574 | [Left and Right Sum Differences](2574.md) | 🟢 Easy | 56s | The problem gives us an integer array nums and asks us to compute a… |
+| 2575 | [Find the Divisibility Array of a String](2575.md) | 🟡 Medium | 43s | The problem asks us to compute the divisibility array for a given s… |
 | 2576 | [Find the Maximum Number of Marked Indices](2576.md) | 🟡 Medium | 40s | The problem asks us to maximize the number of indices we can "mark"… |
 | 2577 | [Minimum Time to Visit a Cell In a Grid](2577.md) | 🔴 Hard | 41s | The problem asks us to find the minimum time required to travel fro… |
+| 2578 | [Split With Minimum Sum](2578.md) | 🟢 Easy | 36s | The problem asks us to take a positive integer num and split its di… |
 | 2579 | [Count Total Number of Colored Cells](2579.md) | 🟡 Medium | 39s | This problem is asking us to determine how many cells will be color… |
 | 2580 | [Count Ways to Group Overlapping Ranges](2580.md) | 🟡 Medium | 49s | The problem asks us to determine the number of ways to split a coll… |
+| 2582 | [Pass the Pillow](2582.md) | 🟢 Easy | 31s | The problem describes a simulation of passing a pillow along a line… |
 | 2583 | [Kth Largest Sum in a Binary Tree](2583.md) | 🟡 Medium | 2m 7s | Perfect! I just need a quick clarification before I craft the full … |
 | 2584 | [Split the Array to Make Coprime Products](2584.md) | 🔴 Hard | 43s | The problem asks us to split an array nums at some index i such tha… |
 | 2585 | [Number of Ways to Earn Points](2585.md) | 🔴 Hard | 3m 9s | The problem gives us a target score and several question types. Eac… |
 | 2586 | [Count the Number of Vowel Strings in Range](2586.md) | 🟢 Easy | 1m 6s | The problem gives us a 0-indexed array of strings called words, alo… |
+| 2587 | [Rearrange Array to Maximize Prefix Score](2587.md) | 🟡 Medium | 36s | The problem presents a 0-indexed integer array nums and allows you … |
 | 2588 | [Count the Number of Beautiful Subarrays](2588.md) | 🟡 Medium | 1m 19s | The problem gives us an array nums, and defines a special operation… |
 | 2590 | [Design a Todo List](2590.md) | 🟡 Medium | 1m 17s | This problem asks us to design a small task management system that … |
 | 2591 | [Distribute Money to Maximum Children](2591.md) | 🟢 Easy | 1m 8s | This problem asks us to distribute a fixed amount of money among a … |

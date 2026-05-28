@@ -41,9 +41,9 @@ draft: false
 | 2328 | [Number of Increasing Paths in a Grid](2328.md) | 🔴 Hard | 1m 10s | In this problem, we are given a two dimensional matrix called grid.… |
 | 2329 | [Product Sales Analysis V](2329.md) | 🟢 Easy | 1m 3s | This problem asks us to calculate how much money each user has spen… |
 | 2330 | [Valid Palindrome IV](2330.md) | 🟡 Medium | 1m 13s | The problem gives us a string s containing only lowercase English l… |
-| 2331 | [Evaluate Boolean Binary Tree](2331.md) | 🟢 Easy | 51s | The problem presents a full binary tree in which leaf nodes represe… |
-| 2332 | [The Latest Time to Catch a Bus](2332.md) | 🟡 Medium | 1m 20s | This problem asks us to determine the latest possible arrival time … |
-| 2333 | [Minimum Sum of Squared Difference](2333.md) | 🟡 Medium | 1m 32s | The problem gives us two arrays, nums1 and nums2, each of length n.… |
+| 2331 | [Evaluate Boolean Binary Tree](2331.md) | 🟢 Easy | 46s | The problem asks us to evaluate a full binary tree where each node … |
+| 2332 | [The Latest Time to Catch a Bus](2332.md) | 🟡 Medium | 48s | The problem asks us to determine the latest time we can arrive at a… |
+| 2333 | [Minimum Sum of Squared Difference](2333.md) | 🟡 Medium | 37s | I can do that, but the complete guide with all requested sections a… |
 | 2334 | [Subarray With Elements Greater Than Varying Threshold](2334.md) | 🔴 Hard | 49s | The problem requires us to find a contiguous subarray in a given in… |
 | 2335 | [Minimum Amount of Time to Fill Cups](2335.md) | 🟢 Easy | 1m 15s | The problem gives us an array amount of length 3. Each index repres… |
 | 2336 | [Smallest Number in Infinite Set](2336.md) | 🟡 Medium | 54s | The problem requires designing a data structure that represents an … |
