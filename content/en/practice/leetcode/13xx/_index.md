@@ -72,7 +72,8 @@ draft: false
 | 1360 | [Number of Days Between Two Dates](1360.md) | 🟢 Easy | 1m 16s | The problem gives two dates in the format YYYY-MM-DD and asks us to… |
 | 1361 | [Validate Binary Tree Nodes](1361.md) | 🟡 Medium | 1m 26s | The problem gives us n nodes labeled from 0 to n - 1. For every nod… |
 | 1362 | [Closest Divisors](1362.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, and asks us to find two intege… |
-| 1363 | [Largest Multiple of Three](1363.md) | 🔴 Hard | 1m 27s | The problem gives us an array of digits, where each element is an i… |
+| 1363 | [Largest Multiple of Three](1363.md) | 🔴 Hard | 36s | I can do that, but the guide will be very long and may get truncate… |
+| 1364 | [Number of Trusted Contacts of a Customer](1364.md) | 🟡 Medium | 1m 3s | This problem requires analyzing relationships between three tables … |
 | 1366 | [Rank Teams by Votes](1366.md) | 🟡 Medium | 1m 31s | The problem gives us a list of votes, where each vote is a string r… |
 | 1367 | [Linked List in Binary Tree](1367.md) | 🟡 Medium | 1m 21s | This problem asks us to determine whether a linked list appears as … |
 | 1368 | [Minimum Cost to Make at Least One Valid Path in a Grid](1368.md) | 🔴 Hard | 53s | This problem asks us to find the minimum cost to make at least one … |
