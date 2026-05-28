@@ -55,3 +55,4 @@ draft: false
 | 1745 | [Palindrome Partitioning IV](1745.md) | 🔴 Hard | 1m 8s | The problem asks us to determine whether a given string s can be sp… |
 | 1746 | [Maximum Subarray Sum After One Operation](1746.md) | 🟡 Medium | 1m 33s | The problem gives us an integer array nums, and we must perform exa… |
 | 1747 | [Leetflex Banned Accounts](1747.md) | 🟡 Medium | 1m 28s | This problem asks us to identify suspicious accounts in the LogInfo… |
+| 1749 | [Maximum Absolute Sum of Any Subarray](1749.md) | 🟡 Medium | 1m 4s | The problem asks us to calculate the maximum absolute sum of any co… |
