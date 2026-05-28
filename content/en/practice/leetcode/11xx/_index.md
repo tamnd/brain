@@ -48,4 +48,11 @@ draft: false
 | 1137 | [N-th Tribonacci Number](1137.md) | 🟢 Easy | 56s | This problem asks us to compute the n-th Tribonacci number, which i… |
 | 1138 | [Alphabet Board Path](1138.md) | 🟡 Medium | 1m 8s | The problem gives us a special alphabet board and asks us to genera… |
 | 1139 | [Largest 1-Bordered Square](1139.md) | 🟡 Medium | 38s | That is a long, detailed reference document with multiple required … |
-| 1140 | [Stone Game II](1140.md) | 🟡 Medium | 1m 33s | This problem describes a two-player game between Alice and Bob. The… |
+| 1140 | [Stone Game II](1140.md) | 🟡 Medium | 47s | The problem is a two-player turn-based game played on a row of ston… |
+| 1141 | [User Activity for the Past 30 Days I](1141.md) | 🟢 Easy | 1m 16s | This problem asks us to compute the number of distinct active users… |
+| 1142 | [User Activity for the Past 30 Days II](1142.md) | 🟢 Easy | 53s | This problem asks us to compute the average number of sessions per … |
+| 1143 | [Longest Common Subsequence](1143.md) | 🟡 Medium | 1m 20s | The problem asks us to compute the length of the longest common sub… |
+| 1144 | [Decrease Elements To Make Array Zigzag](1144.md) | 🟡 Medium | 1m 18s | The problem gives an integer array nums and allows only one type of… |
+| 1145 | [Binary Tree Coloring Game](1145.md) | 🟡 Medium | 2m 37s | The problem is a two-player game played on a binary tree, where eac… |
+| 1146 | [Snapshot Array](1146.md) | 🟡 Medium | 1m 5s | The problem asks us to design a data structure, SnapshotArray, whic… |
+| 1148 | [Article Views I](1148.md) | 🟢 Easy | 2m 12s | The problem provides a database table named Views. Each row represe… |
