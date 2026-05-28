@@ -98,3 +98,5 @@ draft: false
 | 690 | [Employee Importance](690.md) | 🟡 Medium | 1m 15s | The problem provides a collection of employees where each employee … |
 | 691 | [Stickers to Spell Word](691.md) | 🔴 Hard | 34s | Let's dive deep into a detailed technical solution guide for LeetCo… |
 | 692 | [Top K Frequent Words](692.md) | 🟡 Medium | 1m 16s | The problem gives us an array of strings called words and an intege… |
+| 693 | [Binary Number with Alternating Bits](693.md) | 🟢 Easy | 41s | The problem asks us to determine whether the binary representation … |
+| 694 | [Number of Distinct Islands](694.md) | 🟡 Medium | 1m 20s | The problem gives us a binary matrix called grid, where each cell c… |

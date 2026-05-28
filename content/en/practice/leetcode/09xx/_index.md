@@ -61,3 +61,7 @@ draft: false
 | 948 | [Bag of Tokens](948.md) | 🟡 Medium | 1m 15s | The problem gives us a collection of tokens, where each token has a… |
 | 949 | [Largest Time for Given Digits](949.md) | 🟡 Medium | 1m 6s | The problem provides an array of exactly four digits. Using each di… |
 | 950 | [Reveal Cards In Increasing Order](950.md) | 🟡 Medium | 1m 11s | The problem gives us a deck of unique integer cards and asks us to … |
+| 951 | [Flip Equivalent Binary Trees](951.md) | 🟡 Medium | 1m 16s | The problem asks whether two binary trees can be made identical by … |
+| 952 | [Largest Component Size by Common Factor](952.md) | 🔴 Hard | 39s | This problem asks us to find the size of the largest connected comp… |
+| 953 | [Verifying an Alien Dictionary](953.md) | 🟢 Easy | 1m 17s | This problem asks us to determine whether a list of words is sorted… |
+| 954 | [Array of Doubled Pairs](954.md) | 🟡 Medium | 29s | The problem asks whether it is possible to reorder an even-length a… |
