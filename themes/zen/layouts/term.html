@@ -1,0 +1,35 @@
+{{define "page-main"}}
+<div>
+  <div class="zen-section-header">
+    <div class="zen-page-header__tags" style="margin-bottom:0.5rem;">
+      <span class="zen-tag" style="background:var(--accent-light);color:var(--accent);border-color:var(--accent);">tag</span>
+    </div>
+    <h1>#{{.Page.Title}}</h1>
+    <p class="zen-section-header__meta">{{len .Pages}} pages tagged</p>
+  </div>
+  <div class="zen-card-grid">
+    {{range .Pages}}
+    {{if not .Draft}}
+    <div class="zen-card">
+      {{if .Ancestors}}
+      <div class="zen-card__path">
+        {{range .Ancestors}}{{if ne .Kind "home"}}
+        <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+        <span>›</span>
+        {{end}}{{end}}
+      </div>
+      {{end}}
+      <a href="{{.RelPermalink}}" class="zen-card__link">
+        <h2 class="zen-card__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</h2>
+        {{with .Summary}}<p class="zen-card__desc">{{.}}</p>{{end}}
+      </a>
+      <div class="zen-card__footer">
+        {{if not .Date.IsZero}}<span class="zen-card__date">{{formatDate .Date}}</span>{{end}}
+        {{if .ReadingTime}}<span class="zen-card__sep">·</span><span class="zen-card__meta">{{.ReadingTime}} min read</span>{{end}}
+      </div>
+    </div>
+    {{end}}
+    {{end}}
+  </div>
+</div>
+{{end}}
