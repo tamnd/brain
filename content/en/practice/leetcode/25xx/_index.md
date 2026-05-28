@@ -48,7 +48,10 @@ draft: false
 | 2539 | [Count the Number of Good Subsequences](2539.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many subsequences of a given strin… |
 | 2540 | [Minimum Common Value](2540.md) | 🟢 Easy | 1m 7s | The problem gives us two integer arrays, nums1 and nums2, and both … |
 | 2541 | [Minimum Operations to Make Array Equal II](2541.md) | 🟡 Medium | 1m 12s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2542 | [Maximum Subsequence Score](2542.md) | 🟡 Medium | 1m 18s | This problem asks us to select exactly k indices from two arrays, n… |
 | 2544 | [Alternating Digit Sum](2544.md) | 🟢 Easy | 44s | The problem asks us to calculate an alternating sum of the digits o… |
 | 2546 | [Apply Bitwise Operations to Make Strings Equal](2546.md) | 🟡 Medium | 1m 3s | This problem gives us two binary strings, s and target, both of the… |
 | 2547 | [Minimum Cost to Split an Array](2547.md) | 🔴 Hard | 45s | The problem presents a large, theoretically infinite grid where you… |
+| 2548 | [Maximum Price to Fill a Bag](2548.md) | 🟡 Medium | 1m 2s | This problem describes a variation of the classic fractional knapsa… |
+| 2549 | [Count Distinct Numbers on Board](2549.md) | 🟢 Easy | 51s | The problem gives us a starting integer n that is initially written… |
 | 2550 | [Count Collisions of Monkeys on a Polygon](2550.md) | 🟡 Medium | 1m | The problem describes a regular convex polygon with n vertices. Eac… |

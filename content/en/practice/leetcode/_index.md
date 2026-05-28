@@ -2229,70 +2229,70 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2239 | [Find Closest Number to Zero](22xx/2239.md) | 🟢 Easy | 57s | The problem gives us an integer array nums, and we need to return t… |
 | 2240 | [Number of Ways to Buy Pens and Pencils](22xx/2240.md) | 🟡 Medium | 54s | The problem asks us to determine the number of distinct ways to spe… |
 | 2241 | [Design an ATM Machine](22xx/2241.md) | 🟡 Medium | 1m 19s | The problem asks us to design an ATM machine that supports two oper… |
-| 2242 | [Maximum Score of a Node Sequence](22xx/2242.md) | 🔴 Hard | 58s | The problem presents an undirected graph with n nodes, where each n… |
-| 2243 | [Calculate Digit Sum of a String](22xx/2243.md) | 🟢 Easy | 1m 8s | The problem gives us a numeric string s and an integer k. We repeat… |
-| 2244 | [Minimum Rounds to Complete All Tasks](22xx/2244.md) | 🟡 Medium | 1m 3s | The problem gives us an array named tasks, where each integer repre… |
-| 2245 | [Maximum Trailing Zeros in a Cornered Path](22xx/2245.md) | 🟡 Medium | 1m 27s | The problem gives us a two dimensional grid of positive integers. W… |
-| 2246 | [Longest Path With Different Adjacent Characters](22xx/2246.md) | 🔴 Hard | 50s | The problem gives us a tree structure, represented by a parent arra… |
-| 2247 | [Maximum Cost of Trip With K Highways](22xx/2247.md) | 🔴 Hard | 1m 25s | In this problem, we are given an undirected weighted graph represen… |
-| 2248 | [Intersection of Multiple Arrays](22xx/2248.md) | 🟢 Easy | 1m 11s | The problem gives us a 2D integer array called nums. Each element o… |
-| 2249 | [Count Lattice Points Inside a Circle](22xx/2249.md) | 🟡 Medium | 52s | The problem asks us to compute the number of lattice points (points… |
-| 2250 | [Count Number of Rectangles Containing Each Point](22xx/2250.md) | 🟡 Medium | 1m 22s | This problem gives us a collection of axis-aligned rectangles and a… |
-| 2251 | [Number of Flowers in Full Bloom](22xx/2251.md) | 🔴 Hard | 37s | This problem asks us to determine, for each person arriving at a sp… |
-| 2252 | [Dynamic Pivoting of a Table](22xx/2252.md) | 🔴 Hard | 54s | The problem asks us to transform a normalized database table Produc… |
-| 2253 | [Dynamic Unpivoting of a Table](22xx/2253.md) | 🔴 Hard | 57s | The problem is asking to transform a table that has a fixed number … |
-| 2254 | [Design Video Sharing Platform](22xx/2254.md) | 🔴 Hard | 3m 50s | Something went wrong. If this issue persists please contact us thro… |
-| 2255 | [Count Prefixes of a Given String](22xx/2255.md) | 🟢 Easy | 49s | The problem asks us to determine how many strings from a given list… |
-| 2256 | [Minimum Average Difference](22xx/2256.md) | 🟡 Medium | 1m 14s | The problem gives us a 0-indexed integer array nums, and for every … |
-| 2257 | [Count Unguarded Cells in the Grid](22xx/2257.md) | 🟡 Medium | 46s | The problem asks us to determine how many cells in a grid are ungua… |
-| 2258 | [Escape the Spreading Fire](22xx/2258.md) | 🔴 Hard | 1m 31s | This problem combines two simultaneous processes on a grid: 1. Your… |
-| 2259 | [Remove Digit From Number to Maximize Result](22xx/2259.md) | 🟢 Easy | 1m 3s | The problem gives us a string called number that represents a posit… |
-| 2260 | [Minimum Consecutive Cards to Pick Up](22xx/2260.md) | 🟡 Medium | 1m 26s | The problem gives us an integer array called cards, where each elem… |
-| 2261 | [K Divisible Elements Subarrays](22xx/2261.md) | 🟡 Medium | 43s | The problem asks us to count the number of distinct subarrays of a … |
+| 2242 | [Maximum Score of a Node Sequence](22xx/2242.md) | 🔴 Hard | 1m 21s | The problem gives us an undirected graph with n nodes. Each node ha… |
+| 2243 | [Calculate Digit Sum of a String](22xx/2243.md) | 🟢 Easy | 55s | This problem asks us to repeatedly transform a numeric string until… |
+| 2244 | [Minimum Rounds to Complete All Tasks](22xx/2244.md) | 🟡 Medium | 2m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 2245 | [Maximum Trailing Zeros in a Cornered Path](22xx/2245.md) | 🟡 Medium | 2m 21s | This problem asks us to find a path in a matrix whose product conta… |
+| 2246 | [Longest Path With Different Adjacent Characters](22xx/2246.md) | 🔴 Hard | 3m 8s | The problem gives a tree with n nodes labeled 0 to n-1, rooted at n… |
+| 2247 | [Maximum Cost of Trip With K Highways](22xx/2247.md) | 🔴 Hard | 2m 20s | The problem gives us an undirected weighted graph with n cities and… |
+| 2248 | [Intersection of Multiple Arrays](22xx/2248.md) | 🟢 Easy | 39s | The problem is asking us to find the intersection of multiple array… |
+| 2249 | [Count Lattice Points Inside a Circle](22xx/2249.md) | 🟡 Medium | 42s | The problem asks us to determine how many lattice points lie inside… |
+| 2250 | [Count Number of Rectangles Containing Each Point](22xx/2250.md) | 🟡 Medium | 1m 2s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 2251 | [Number of Flowers in Full Bloom](22xx/2251.md) | 🔴 Hard | 38s | The problem asks us to determine, for a list of people arriving at … |
+| 2252 | [Dynamic Pivoting of a Table](22xx/2252.md) | 🔴 Hard | 1m 12s | This problem requires implementing a SQL-style pivot operation prog… |
+| 2253 | [Dynamic Unpivoting of a Table](22xx/2253.md) | 🔴 Hard | 1m 13s | This problem asks us to transform a wide table into a normalized ro… |
+| 2254 | [Design Video Sharing Platform](22xx/2254.md) | 🔴 Hard | 6m 4s | Certainly. Here is a complete, detailed technical solution guide fo… |
+| 2255 | [Count Prefixes of a Given String](22xx/2255.md) | 🟢 Easy | 1m 9s | The problem asks us to determine how many strings in a given array … |
+| 2256 | [Minimum Average Difference](22xx/2256.md) | 🟡 Medium | 1m 15s | In this problem, we are given a 0-indexed integer array nums, and f… |
+| 2257 | [Count Unguarded Cells in the Grid](22xx/2257.md) | 🟡 Medium | 1m 16s | This problem gives us an m x n grid containing three types of cells… |
+| 2258 | [Escape the Spreading Fire](22xx/2258.md) | 🔴 Hard | 1m 26s | This problem asks us to determine how long we can safely wait befor… |
+| 2259 | [Remove Digit From Number to Maximize Result](22xx/2259.md) | 🟢 Easy | 1m 15s | The problem gives us a string called number, which represents a pos… |
+| 2260 | [Minimum Consecutive Cards to Pick Up](22xx/2260.md) | 🟡 Medium | 1m 9s | The problem gives an integer array cards, where each number represe… |
+| 2261 | [K Divisible Elements Subarrays](22xx/2261.md) | 🟡 Medium | 44s | This problem requires counting the number of distinct subarrays of … |
 | 2262 | [Total Appeal of A String](22xx/2262.md) | 🔴 Hard | 39s | The problem asks us to calculate the total appeal of all substrings… |
-| 2263 | [Make Array Non-decreasing or Non-increasing](22xx/2263.md) | 🔴 Hard | 1m 20s | The problem gives us an integer array nums, and we are allowed to p… |
-| 2264 | [Largest 3-Same-Digit Number in String](22xx/2264.md) | 🟢 Easy | 45s | The problem asks us to find the largest "good" integer in a given s… |
-| 2265 | [Count Nodes Equal to Average of Subtree](22xx/2265.md) | 🟡 Medium | 1m 14s | This problem gives us the root of a binary tree and asks us to coun… |
-| 2266 | [Count Number of Texts](22xx/2266.md) | 🟡 Medium | 3m 20s | The problem gives us a string called pressedKeys, which represents … |
-| 2267 | [ Check if There Is a Valid Parentheses String Path](22xx/2267.md) | 🔴 Hard | 2m 22s | The problem asks us to determine whether there exists a path in a 2… |
-| 2268 | [Minimum Number of Keypresses](22xx/2268.md) | 🟡 Medium | 1m 3s | The problem gives us a string s consisting of lowercase English let… |
-| 2269 | [Find the K-Beauty of a Number](22xx/2269.md) | 🟢 Easy | 2m 14s | The problem asks us to compute the "k-beauty" of a number. We are g… |
-| 2270 | [Number of Ways to Split Array](22xx/2270.md) | 🟡 Medium | 1m 18s | The problem gives us a 0-indexed integer array nums and asks us to … |
-| 2271 | [Maximum White Tiles Covered by a Carpet](22xx/2271.md) | 🟡 Medium | 1m 23s | In this problem, we are given several disjoint intervals representi… |
-| 2272 | [Substring With Largest Variance](22xx/2272.md) | 🔴 Hard | 1m 14s | This problem asks us to compute the maximum possible variance among… |
-| 2273 | [Find Resultant Array After Removing Anagrams](22xx/2273.md) | 🟢 Easy | 58s | The problem asks us to process an array of strings words by repeate… |
-| 2274 | [Maximum Consecutive Floors Without Special Floors](22xx/2274.md) | 🟡 Medium | 2m 20s | The problem describes a building where Alice has rented every floor… |
-| 2275 | [Largest Combination With Bitwise AND Greater Than Zero](22xx/2275.md) | 🟡 Medium | 5m 43s | The problem asks us to find the largest group of numbers from the a… |
-| 2276 | [Count Integers in Intervals](22xx/2276.md) | 🔴 Hard | 2m 20s | The problem asks us to design a data structure that efficiently man… |
-| 2277 | [Closest Node to Path in Tree](22xx/2277.md) | 🔴 Hard | 1m 22s | The problem gives us an undirected tree with n nodes numbered from … |
-| 2278 | [Percentage of Letter in String](22xx/2278.md) | 🟢 Easy | 1m 5s | The problem gives us a string s and a character letter. We need to … |
-| 2279 | [Maximum Bags With Full Capacity of Rocks](22xx/2279.md) | 🟡 Medium | 1m 20s | This problem gives us two arrays, capacity and rocks, where each in… |
-| 2280 | [Minimum Lines to Represent a Line Chart](22xx/2280.md) | 🟡 Medium | 1m 27s | The problem gives us a collection of stock price points, where each… |
-| 2281 | [Sum of Total Strength of Wizards](22xx/2281.md) | 🔴 Hard | 47s | The problem asks us to compute the sum of the total strengths of al… |
-| 2282 | [Number of People That Can Be Seen in a Grid](22xx/2282.md) | 🟡 Medium | 1m 23s | The problem gives us a 2D grid called heights, where each cell repr… |
-| 2283 | [Check if Number Has Equal Digit Count and Digit Value](22xx/2283.md) | 🟢 Easy | 1m 18s | The problem gives us a string num consisting only of digits. The st… |
-| 2284 | [Sender With Largest Word Count](22xx/2284.md) | 🟡 Medium | 1m 31s | The problem gives us two arrays of equal length: - messages[i] repr… |
-| 2285 | [Maximum Total Importance of Roads](22xx/2285.md) | 🟡 Medium | 1m 18s | The problem gives us n cities labeled from 0 to n - 1 and a list of… |
-| 2286 | [Booking Concert Tickets in Groups](22xx/2286.md) | 🔴 Hard | 59s | This problem requires designing a ticket booking system for a conce… |
+| 2263 | [Make Array Non-decreasing or Non-increasing](22xx/2263.md) | 🔴 Hard | 48s | The problem asks us to transform a given integer array nums into ei… |
+| 2264 | [Largest 3-Same-Digit Number in String](22xx/2264.md) | 🟢 Easy | 6m 20s | The problem requires identifying the largest "good" integer from a … |
+| 2265 | [Count Nodes Equal to Average of Subtree](22xx/2265.md) | 🟡 Medium | 6m 13s | This problem asks us to count how many nodes in a binary tree satis… |
+| 2266 | [Count Number of Texts](22xx/2266.md) | 🟡 Medium | 45s | The problem requires determining how many possible text messages Al… |
+| 2267 | [ Check if There Is a Valid Parentheses String Path](22xx/2267.md) | 🔴 Hard | 40s | This problem is asking us to determine whether there exists a path … |
+| 2268 | [Minimum Number of Keypresses](22xx/2268.md) | 🟡 Medium | 44s | The problem asks us to determine the minimum number of keypresses r… |
+| 2269 | [Find the K-Beauty of a Number](22xx/2269.md) | 🟢 Easy | 56s | The problem asks us to calculate the k-beauty of a given integer nu… |
+| 2270 | [Number of Ways to Split Array](22xx/2270.md) | 🟡 Medium | 52s | The problem asks us to determine the number of ways to split a give… |
+| 2271 | [Maximum White Tiles Covered by a Carpet](22xx/2271.md) | 🟡 Medium | 1m 19s | That is a long-form reference guide request. To avoid truncation an… |
+| 2272 | [Substring With Largest Variance](22xx/2272.md) | 🔴 Hard | 1m 13s | This problem asks us to find the maximum possible variance among al… |
+| 2273 | [Find Resultant Array After Removing Anagrams](22xx/2273.md) | 🟢 Easy | 1m 5s | This problem asks us to repeatedly remove words from an array when … |
+| 2274 | [Maximum Consecutive Floors Without Special Floors](22xx/2274.md) | 🟡 Medium | 1m 27s | The problem gives us a range of rented floors in a building, from b… |
+| 2275 | [Largest Combination With Bitwise AND Greater Than Zero](22xx/2275.md) | 🟡 Medium | 1m 3s | The problem asks us to find the largest possible group of numbers f… |
+| 2276 | [Count Integers in Intervals](22xx/2276.md) | 🔴 Hard | 1m 16s | This problem asks us to design a data structure that dynamically ma… |
+| 2277 | [Closest Node to Path in Tree](22xx/2277.md) | 🔴 Hard | 46s | The problem is asking us to process queries on a tree structure. Ea… |
+| 2278 | [Percentage of Letter in String](22xx/2278.md) | 🟢 Easy | 40s | This problem asks us to calculate the percentage of a given charact… |
+| 2279 | [Maximum Bags With Full Capacity of Rocks](22xx/2279.md) | 🟡 Medium | 45s | The problem presents n bags, each with a defined maximum capacity a… |
+| 2280 | [Minimum Lines to Represent a Line Chart](22xx/2280.md) | 🟡 Medium | 1m 18s | In this problem, we are given a list of stock prices over different… |
+| 2281 | [Sum of Total Strength of Wizards](22xx/2281.md) | 🔴 Hard | 1m 29s | The problem asks us to compute the sum of total strengths across ev… |
+| 2282 | [Number of People That Can Be Seen in a Grid](22xx/2282.md) | 🟡 Medium | 47s | The problem asks us to determine, for each person in a 2D grid of h… |
+| 2283 | [Check if Number Has Equal Digit Count and Digit Value](22xx/2283.md) | 🟢 Easy | 41s | This problem asks us to verify a self-descriptive property of a str… |
+| 2284 | [Sender With Largest Word Count](22xx/2284.md) | 🟡 Medium | 57s | The problem asks us to analyze a chat log containing n messages and… |
+| 2285 | [Maximum Total Importance of Roads](22xx/2285.md) | 🟡 Medium | 55s | Here is the complete technical solution guide for LeetCode 2285 fol… |
+| 2286 | [Booking Concert Tickets in Groups](22xx/2286.md) | 🔴 Hard | 1m 42s | The problem asks us to design a ticket reservation system for a con… |
 | 2287 | [Rearrange Characters to Make Target String](22xx/2287.md) | 🟢 Easy | 1m | This problem asks us to determine how many copies of a target strin… |
-| 2288 | [Apply Discount to Prices](22xx/2288.md) | 🟡 Medium | 1m 20s | The problem gives us a sentence where words are separated by single… |
-| 2289 | [Steps to Make Array Non-decreasing](22xx/2289.md) | 🟡 Medium | 56s | The problem asks us to transform a given array nums into a non-decr… |
-| 2290 | [Minimum Obstacle Removal to Reach Corner](22xx/2290.md) | 🔴 Hard | 1m 32s | This problem asks us to move from the top left corner of a grid to … |
-| 2291 | [Maximum Profit From Trading Stocks](22xx/2291.md) | 🟡 Medium | 57s | The problem is asking us to maximize the profit from trading stocks… |
-| 2292 | [Products With Three or More Orders in Two Consecutive Years](22xx/2292.md) | 🟡 Medium | 53s | The problem requires identifying products that were ordered three o… |
-| 2293 | [Min Max Game](22xx/2293.md) | 🟢 Easy | 1m 18s | The problem gives us a 0-indexed integer array nums whose length is… |
+| 2288 | [Apply Discount to Prices](22xx/2288.md) | 🟡 Medium | 44s | The problem asks us to process a string representing a sentence con… |
+| 2289 | [Steps to Make Array Non-decreasing](22xx/2289.md) | 🟡 Medium | 47s | The problem asks us to determine how many steps it takes to make a … |
+| 2290 | [Minimum Obstacle Removal to Reach Corner](22xx/2290.md) | 🔴 Hard | 1m 20s | This problem gives us a 2D grid where every cell is either empty or… |
+| 2291 | [Maximum Profit From Trading Stocks](22xx/2291.md) | 🟡 Medium | 1m 9s | The problem gives us two arrays, present and future, where each ind… |
+| 2292 | [Products With Three or More Orders in Two Consecutive Years](22xx/2292.md) | 🟡 Medium | 1m 17s | This problem provides a table named Orders, where each row represen… |
+| 2293 | [Min Max Game](22xx/2293.md) | 🟢 Easy | 52s | This problem asks us to repeatedly transform an array until only on… |
 | 2294 | [Partition Array Such That Maximum Difference Is K](22xx/2294.md) | 🟡 Medium | 1m 27s | The problem gives us an integer array nums and an integer k. We mus… |
-| 2295 | [Replace Elements in an Array](22xx/2295.md) | 🟡 Medium | 1m 31s | The problem gives us an array nums containing distinct positive int… |
-| 2296 | [Design a Text Editor](22xx/2296.md) | 🔴 Hard | 1m 26s | This problem asks us to design a simplified text editor that suppor… |
-| 2297 | [Jump Game VIII](22xx/2297.md) | 🟡 Medium | 57s | This problem asks us to compute the minimum cost to reach the last … |
-| 2298 | [Tasks Count in the Weekend](22xx/2298.md) | 🟡 Medium | 47s | The problem asks us to compute the number of tasks submitted during… |
-| 2299 | [Strong Password Checker II](22xx/2299.md) | 🟢 Easy | 52s | The problem asks us to determine if a given string password is a st… |
-| 2300 | [Successful Pairs of Spells and Potions](23xx/2300.md) | 🟡 Medium | 1m 28s | The problem gives us two arrays: - spells, where each value represe… |
-| 2301 | [Match Substring After Replacement](23xx/2301.md) | 🔴 Hard | 1m 26s | The problem gives us three inputs: - A string s, which is the large… |
-| 2302 | [Count Subarrays With Score Less Than K](23xx/2302.md) | 🔴 Hard | 59s | This problem asks us to count the number of non-empty contiguous su… |
-| 2303 | [Calculate Amount Paid in Taxes](23xx/2303.md) | 🟢 Easy | 58s | The problem asks us to compute the total amount of tax a person owe… |
-| 2304 | [Minimum Path Cost in a Grid](23xx/2304.md) | 🟡 Medium | 1m 31s | The problem gives us a matrix called grid with m rows and n columns… |
-| 2305 | [Fair Distribution of Cookies](23xx/2305.md) | 🟡 Medium | 1m 59s | The problem gives us an array called cookies, where each element re… |
+| 2295 | [Replace Elements in an Array](22xx/2295.md) | 🟡 Medium | 51s | The problem asks us to perform a series of replacement operations o… |
+| 2296 | [Design a Text Editor](22xx/2296.md) | 🔴 Hard | 1m 13s | This problem asks us to design a simplified text editor that suppor… |
+| 2297 | [Jump Game VIII](22xx/2297.md) | 🟡 Medium | 1m 27s | This problem asks us to compute the minimum total cost required to … |
+| 2298 | [Tasks Count in the Weekend](22xx/2298.md) | 🟡 Medium | 1m 14s | This problem provides a database table named Tasks, where each row … |
+| 2299 | [Strong Password Checker II](22xx/2299.md) | 🟢 Easy | 1m 3s | The problem asks us to determine whether a given password string sa… |
+| 2300 | [Successful Pairs of Spells and Potions](23xx/2300.md) | 🟡 Medium | 35s | The problem asks us to determine, for each spell, how many potions … |
+| 2301 | [Match Substring After Replacement](23xx/2301.md) | 🔴 Hard | 1m 26s | The problem gives us a string s, a target string sub, and a list of… |
+| 2302 | [Count Subarrays With Score Less Than K](23xx/2302.md) | 🔴 Hard | 42s | The problem asks us to count the number of contiguous subarrays of … |
+| 2303 | [Calculate Amount Paid in Taxes](23xx/2303.md) | 🟢 Easy | 37s | This problem is asking us to simulate a progressive tax system. We … |
+| 2304 | [Minimum Path Cost in a Grid](23xx/2304.md) | 🟡 Medium | 1m 13s | The problem gives us a matrix called grid with m rows and n columns… |
+| 2305 | [Fair Distribution of Cookies](23xx/2305.md) | 🟡 Medium | 37s | The problem asks us to distribute a set of cookie bags among k chil… |
 | 2306 | [Naming a Company](23xx/2306.md) | 🔴 Hard | 1m 22s | The problem gives us a list of unique strings called ideas. We must… |
 | 2307 | [Check for Contradictions in Equations](23xx/2307.md) | 🔴 Hard | 57s | The problem presents a system of multiplicative equations expressed… |
 | 2308 | [Arrange Table by Gender](23xx/2308.md) | 🟡 Medium | 1m 33s | The problem asks us to rearrange the rows of a Genders table in a s… |
@@ -2471,6 +2471,50 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2498 | [Frog Jump II](24xx/2498.md) | 🟡 Medium | 50s | The problem presents a sequence of stones in a river represented by… |
 | 2499 | [Minimum Total Cost to Make Arrays Unequal](24xx/2499.md) | 🔴 Hard | 6m 16s | We are given two arrays, nums1 and nums2, both of length n. We may … |
 | 2500 | [Delete Greatest Value in Each Row](25xx/2500.md) | 🟢 Easy | 1m 11s | The problem gives us an m x n matrix called grid, where every value… |
+| 2501 | [Longest Square Streak in an Array](25xx/2501.md) | 🟡 Medium | 2m 20s | The problem gives us an integer array nums, and we need to find the… |
+| 2502 | [Design Memory Allocator](25xx/2502.md) | 🟡 Medium | 2m 49s | This problem asks us to simulate a very simple memory allocation sy… |
+| 2503 | [Maximum Number of Points From Grid Queries](25xx/2503.md) | 🔴 Hard | 2m 19s | This problem gives us a two dimensional grid of positive integers a… |
+| 2504 | [Concatenate the Name and the Profession](25xx/2504.md) | 🟢 Easy | 3m 20s | The problem asks us to manipulate data from a SQL table named Perso… |
+| 2505 | [Bitwise OR of All Subsequence Sums](25xx/2505.md) | 🟡 Medium | 5m 35s | The problem asks us to compute the bitwise OR of the sums of all po… |
+| 2506 | [Count Pairs Of Similar Strings](25xx/2506.md) | 🟢 Easy | 4m 5s | The problem gives us an array of strings called words. We need to c… |
+| 2507 | [Smallest Value After Replacing With Sum of Prime Factors](25xx/2507.md) | 🟡 Medium | 1m 6s | The problem gives us a positive integer n and asks us to repeatedly… |
+| 2508 | [Add Edges to Make Degrees of All Nodes Even](25xx/2508.md) | 🔴 Hard | 1m 31s | The problem gives us an undirected graph with n nodes and a list of… |
+| 2509 | [Cycle Length Queries in a Tree](25xx/2509.md) | 🔴 Hard | 51s | The problem asks us to analyze queries on a complete binary tree of… |
+| 2510 | [Check if There is a Path With Equal Number of 0's And 1's](25xx/2510.md) | 🟡 Medium | 41s | This problem asks us to determine whether there exists a path from … |
+| 2511 | [Maximum Enemy Forts That Can Be Captured](25xx/2511.md) | 🟢 Easy | 2m 38s | The problem gives us an array called forts, where each position rep… |
+| 2512 | [Reward Top K Students](25xx/2512.md) | 🟡 Medium | 1m 19s | This problem asks us to rank students based on the sentiment of wor… |
+| 2513 | [Minimize the Maximum of Two Arrays](25xx/2513.md) | 🟡 Medium | 3m 26s | This problem asks us to construct two arrays of positive integers, … |
+| 2514 | [Count Anagrams](25xx/2514.md) | 🔴 Hard | 1m 28s | The problem asks us to count how many distinct sentence anagrams ca… |
+| 2515 | [Shortest Distance to Target String in a Circular Array](25xx/2515.md) | 🟢 Easy | 45s | The problem asks us to find the shortest distance from a given star… |
+| 2516 | [Take K of Each Character From Left and Right](25xx/2516.md) | 🟡 Medium | 1m 7s | The problem gives us a string s containing only the characters 'a',… |
+| 2517 | [Maximum Tastiness of Candy Basket](25xx/2517.md) | 🟡 Medium | 1m 15s | The problem gives us an array price where each element represents t… |
+| 2519 | [Count the Number of K-Big Indices](25xx/2519.md) | 🔴 Hard | 5m 31s | The problem asks us to find the number of k-big indices in a given … |
+| 2520 | [Count the Digits That Divide a Number](25xx/2520.md) | 🟢 Easy | 40s | The problem asks us to count how many digits in a given integer num… |
+| 2521 | [Distinct Prime Factors of Product of Array](25xx/2521.md) | 🟡 Medium | 1m 27s | The problem asks us to determine how many unique prime numbers appe… |
+| 2522 | [Partition String Into Substrings With Values at Most K](25xx/2522.md) | 🟡 Medium | 57s | The problem gives us a numeric string s and an integer k. We must s… |
+| 2524 | [Maximum Frequency Score of a Subarray](25xx/2524.md) | 🔴 Hard | 1m 29s | The problem gives us an integer array nums and a fixed window size … |
+| 2525 | [Categorize Box According to Criteria](25xx/2525.md) | 🟢 Easy | 1m 5s | This problem asks us to classify a box into one of four categories … |
+| 2526 | [Find Consecutive Integers from a Data Stream](25xx/2526.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure that processes a str… |
+| 2528 | [Maximize the Minimum Powered City](25xx/2528.md) | 🔴 Hard | 44s | The problem gives an array stations of length n where each element … |
+| 2529 | [Maximum Count of Positive Integer and Negative Integer](25xx/2529.md) | 🟢 Easy | 41s | The problem asks us to determine whether, in a given sorted integer… |
+| 2531 | [Make Number of Distinct Characters Equal](25xx/2531.md) | 🟡 Medium | 1m 5s | The problem gives us two lowercase English strings, word1 and word2… |
+| 2532 | [Time to Cross a Bridge](25xx/2532.md) | 🔴 Hard | 43s | The problem asks us to simulate the process of transporting n boxes… |
+| 2533 | [Number of Good Binary Strings](25xx/2533.md) | 🟡 Medium | 1m 14s | The problem asks us to count how many binary strings satisfy a very… |
+| 2534 | [Time Taken to Cross the Door](25xx/2534.md) | 🔴 Hard | 1m 20s | This problem asks us to simulate how people pass through a single d… |
+| 2535 | [Difference Between Element Sum and Digit Sum of an Array](25xx/2535.md) | 🟢 Easy | 1m 3s | The problem gives us an array of positive integers called nums. We … |
+| 2536 | [Increment Submatrices by One](25xx/2536.md) | 🟡 Medium | 1m 17s | The problem gives us an n x n matrix that initially contains only z… |
+| 2537 | [Count the Number of Good Subarrays](25xx/2537.md) | 🟡 Medium | 1m 10s | The problem asks us to count how many contiguous subarrays contain … |
+| 2538 | [Difference Between Maximum and Minimum Price Sum](25xx/2538.md) | 🔴 Hard | 47s | This problem involves analyzing a tree, an undirected, connected ac… |
+| 2539 | [Count the Number of Good Subsequences](25xx/2539.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many subsequences of a given strin… |
+| 2540 | [Minimum Common Value](25xx/2540.md) | 🟢 Easy | 1m 7s | The problem gives us two integer arrays, nums1 and nums2, and both … |
+| 2541 | [Minimum Operations to Make Array Equal II](25xx/2541.md) | 🟡 Medium | 1m 12s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2542 | [Maximum Subsequence Score](25xx/2542.md) | 🟡 Medium | 1m 18s | This problem asks us to select exactly k indices from two arrays, n… |
+| 2544 | [Alternating Digit Sum](25xx/2544.md) | 🟢 Easy | 44s | The problem asks us to calculate an alternating sum of the digits o… |
+| 2546 | [Apply Bitwise Operations to Make Strings Equal](25xx/2546.md) | 🟡 Medium | 1m 3s | This problem gives us two binary strings, s and target, both of the… |
+| 2547 | [Minimum Cost to Split an Array](25xx/2547.md) | 🔴 Hard | 45s | The problem presents a large, theoretically infinite grid where you… |
+| 2548 | [Maximum Price to Fill a Bag](25xx/2548.md) | 🟡 Medium | 1m 2s | This problem describes a variation of the classic fractional knapsa… |
+| 2549 | [Count Distinct Numbers on Board](25xx/2549.md) | 🟢 Easy | 51s | The problem gives us a starting integer n that is initially written… |
+| 2550 | [Count Collisions of Monkeys on a Polygon](25xx/2550.md) | 🟡 Medium | 1m | The problem describes a regular convex polygon with n vertices. Eac… |
 | 2907 | [Maximum Profitable Triplets With Increasing Prices I](29xx/2907.md) | 🟡 Medium | 1m 49s | This problem asks us to select exactly three items from a store whi… |
 | 2921 | [Maximum Profitable Triplets With Increasing Prices II](29xx/2921.md) | 🔴 Hard | 1m 29s | The problem asks us to select three items from a store such that th… |
 | 2963 | [Count the Number of Good Partitions](29xx/2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
