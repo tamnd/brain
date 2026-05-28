@@ -106,7 +106,7 @@ draft: false
 | 2293 | [Min Max Game](2293.md) | 🟢 Easy | 52s | This problem asks us to repeatedly transform an array until only on… |
 | 2294 | [Partition Array Such That Maximum Difference Is K](2294.md) | 🟡 Medium | 1m 27s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2295 | [Replace Elements in an Array](2295.md) | 🟡 Medium | 51s | The problem asks us to perform a series of replacement operations o… |
-| 2296 | [Design a Text Editor](2296.md) | 🔴 Hard | 1m 26s | This problem asks us to design a simplified text editor that suppor… |
-| 2297 | [Jump Game VIII](2297.md) | 🟡 Medium | 57s | This problem asks us to compute the minimum cost to reach the last … |
-| 2298 | [Tasks Count in the Weekend](2298.md) | 🟡 Medium | 47s | The problem asks us to compute the number of tasks submitted during… |
-| 2299 | [Strong Password Checker II](2299.md) | 🟢 Easy | 52s | The problem asks us to determine if a given string password is a st… |
+| 2296 | [Design a Text Editor](2296.md) | 🔴 Hard | 1m 13s | This problem asks us to design a simplified text editor that suppor… |
+| 2297 | [Jump Game VIII](2297.md) | 🟡 Medium | 1m 27s | This problem asks us to compute the minimum total cost required to … |
+| 2298 | [Tasks Count in the Weekend](2298.md) | 🟡 Medium | 1m 14s | This problem provides a database table named Tasks, where each row … |
+| 2299 | [Strong Password Checker II](2299.md) | 🟢 Easy | 1m 3s | The problem asks us to determine whether a given password string sa… |

@@ -10,10 +10,10 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 2300 | [Successful Pairs of Spells and Potions](2300.md) | 🟡 Medium | 1m 28s | The problem gives us two arrays: - spells, where each value represe… |
-| 2301 | [Match Substring After Replacement](2301.md) | 🔴 Hard | 1m 26s | The problem gives us three inputs: - A string s, which is the large… |
-| 2302 | [Count Subarrays With Score Less Than K](2302.md) | 🔴 Hard | 59s | This problem asks us to count the number of non-empty contiguous su… |
-| 2303 | [Calculate Amount Paid in Taxes](2303.md) | 🟢 Easy | 58s | The problem asks us to compute the total amount of tax a person owe… |
+| 2300 | [Successful Pairs of Spells and Potions](2300.md) | 🟡 Medium | 35s | The problem asks us to determine, for each spell, how many potions … |
+| 2301 | [Match Substring After Replacement](2301.md) | 🔴 Hard | 1m 26s | The problem gives us a string s, a target string sub, and a list of… |
+| 2302 | [Count Subarrays With Score Less Than K](2302.md) | 🔴 Hard | 42s | The problem asks us to count the number of contiguous subarrays of … |
+| 2303 | [Calculate Amount Paid in Taxes](2303.md) | 🟢 Easy | 37s | This problem is asking us to simulate a progressive tax system. We … |
 | 2304 | [Minimum Path Cost in a Grid](2304.md) | 🟡 Medium | 1m 31s | The problem gives us a matrix called grid with m rows and n columns… |
 | 2305 | [Fair Distribution of Cookies](2305.md) | 🟡 Medium | 1m 59s | The problem gives us an array called cookies, where each element re… |
 | 2306 | [Naming a Company](2306.md) | 🔴 Hard | 1m 22s | The problem gives us a list of unique strings called ideas. We must… |
