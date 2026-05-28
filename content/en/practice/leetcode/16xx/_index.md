@@ -76,6 +76,15 @@ draft: false
 | 1663 | [Smallest String With A Given Numeric Value](1663.md) | 🟡 Medium | 1m 33s | The problem asks us to construct a lowercase string of length n suc… |
 | 1664 | [Ways to Make a Fair Array](1664.md) | 🟡 Medium | 1m 32s | The problem gives us an integer array nums, and asks us to remove e… |
 | 1665 | [Minimum Initial Energy to Finish Tasks](1665.md) | 🔴 Hard | 1m 50s | The problem gives us a list of tasks, where each task is represente… |
-| 1666 | [Change the Root of a Binary Tree](1666.md) | 🟡 Medium | 2m 29s | The problem asks us to reroot a binary tree so that a given leaf no… |
-| 1668 | [Maximum Repeating Substring](1668.md) | 🟢 Easy | 2m 20s | The problem is asking us to find the maximum number of times a give… |
-| 1669 | [Merge In Between Linked Lists](1669.md) | 🟡 Medium | 1m 47s | This problem asks us to merge one linked list into another at a spe… |
+| 1666 | [Change the Root of a Binary Tree](1666.md) | 🟡 Medium | 3m 28s | This problem asks us to reroot a binary tree at a given leaf node. … |
+| 1668 | [Maximum Repeating Substring](1668.md) | 🟢 Easy | 1m | This problem asks us to determine how many times a given string wor… |
+| 1669 | [Merge In Between Linked Lists](1669.md) | 🟡 Medium | 2m 16s | The problem asks us to merge two singly linked lists in a very spec… |
+| 1670 | [Design Front Middle Back Queue](1670.md) | 🟡 Medium | 1m 11s | The problem is asking us to design a specialized queue that allows … |
+| 1671 | [Minimum Number of Removals to Make Mountain Array](1671.md) | 🔴 Hard | 1m 49s | This problem asks us to remove the minimum number of elements from … |
+| 1672 | [Richest Customer Wealth](1672.md) | 🟢 Easy | 4m 43s | This problem gives us a two dimensional integer array called accoun… |
+| 1673 | [Find the Most Competitive Subsequence](1673.md) | 🟡 Medium | 1m 38s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1674 | [Minimum Moves to Make Array Complementary](1674.md) | 🟡 Medium | 1m 17s | The problem requires us to transform an array nums of even length n… |
+| 1675 | [Minimize Deviation in Array](1675.md) | 🔴 Hard | 1m 24s | The problem asks us to minimize the deviation in an array of positi… |
+| 1676 | [Lowest Common Ancestor of a Binary Tree IV](1676.md) | 🟡 Medium | 1m 40s | This problem asks us to find the Lowest Common Ancestor, abbreviate… |
+| 1677 | [Product's Worth Over Invoices](1677.md) | 🟢 Easy | 1m 36s | The problem provides two database tables, Product and Invoice. The … |
+| 1678 | [Goal Parser Interpretation](1678.md) | 🟢 Easy | 1m 5s | The problem is asking us to interpret a string command for a Goal P… |
