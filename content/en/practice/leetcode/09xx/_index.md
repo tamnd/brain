@@ -90,8 +90,8 @@ draft: false
 | 978 | [Longest Turbulent Subarray](978.md) | 🟡 Medium | 1m 16s | The problem asks us to find the length of the longest turbulent sub… |
 | 979 | [Distribute Coins in Binary Tree](979.md) | 🟡 Medium | 1m 5s | In this problem, we are given a binary tree where every node contai… |
 | 980 | [Unique Paths III](980.md) | 🔴 Hard | 1m 18s | This problem asks us to count the number of valid paths in a grid u… |
-| 982 | [Triples with Bitwise AND Equal To Zero](982.md) | 🔴 Hard | 1m 9s | The problem asks us to count how many ordered triples of indices (i… |
-| 983 | [Minimum Cost For Tickets](983.md) | 🟡 Medium | 45s | The problem asks us to calculate the minimum cost to travel on a se… |
+| 982 | [Triples with Bitwise AND Equal To Zero](982.md) | 🔴 Hard | 44s | This problem asks us to count the number of triples (i, j, k) from … |
+| 983 | [Minimum Cost For Tickets](983.md) | 🟡 Medium | 1m 7s | In this problem, we are given a list of travel days during a single… |
 | 984 | [String Without AAA or BBB](984.md) | 🟡 Medium | 1m 12s | The problem gives us two integers, a and b, representing how many '… |
 | 985 | [Sum of Even Numbers After Queries](985.md) | 🟡 Medium | 1m 3s | The problem gives us an integer array nums and a list of update ope… |
 | 986 | [Interval List Intersections](986.md) | 🟡 Medium | 1m 8s | The problem gives us two lists of closed intervals. Each interval i… |
