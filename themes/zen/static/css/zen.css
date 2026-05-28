@@ -6,32 +6,32 @@
 :root {
   /* Core (shared names with chroma + inline template styles) */
   --bg:            #ffffff;
-  --fg:            #130b43;
-  --muted:         #f6f7fb;
-  --muted-fg:      #5c5589;
-  --border:        #d5d8e4;
-  --border-strong: #b5bbcc;
-  --accent:        #604fcd;
+  --fg:            #1e1b4b;
+  --muted:         #f8fafc;
+  --muted-fg:      #64748b;
+  --border:        #cbd5e1;
+  --border-strong: #94a3b8;
+  --accent:        #4f46e5;
   --accent-fg:     #ffffff;
-  --ring:          #8b7fe8;
+  --ring:          #818cf8;
   --code-bg:       #ffffff;
 
   /* Zen extras */
-  --bg-subtle:     #f6f7fb;
-  --border-subtle: #eaecf3;
-  --link:          #2e57e8;
-  --link-hover:    #1a43ce;
-  --accent-light:  #ece9fb;
-  --accent-hover:  #4a3aad;
-  --text-muted:    #5c5589;
-  --success:       #3db591;
-  --success-bg:    #e7fdf6;
+  --bg-subtle:     #f8fafc;
+  --border-subtle: #e2e8f0;
+  --link:          #2563eb;
+  --link-hover:    #1d4ed8;
+  --accent-light:  #ede9fe;
+  --accent-hover:  #4338ca;
+  --text-muted:    #64748b;
+  --success:       #10b981;
+  --success-bg:    #ecfdf5;
 
   /* Shadows — blue-purple tinted (matches brand purple) */
-  --shadow-sm: 0px 4px 16px 0px rgba(79, 114, 205, 0.10);
-  --shadow:    0px 4px 24px 0px rgba(79, 114, 205, 0.12);
-  --shadow-md: 0px 4px 24px 0px rgba(79, 114, 205, 0.28);
-  --shadow-lg: 0px 4px 42px 0px rgba(79, 114, 205, 0.20);
+  --shadow-sm: 0px 4px 16px 0px rgba(59, 130, 246, 0.10);
+  --shadow:    0px 4px 24px 0px rgba(59, 130, 246, 0.12);
+  --shadow-md: 0px 4px 24px 0px rgba(59, 130, 246, 0.28);
+  --shadow-lg: 0px 4px 42px 0px rgba(59, 130, 246, 0.20);
 
   /* Layout */
   --nav-h:      64px;
@@ -51,28 +51,28 @@
 }
 
 html.dark {
-  --bg:            #13111e;
-  --fg:            #e9ebf0;
-  --muted:         #252238;
-  --muted-fg:      #9ba3b8;
-  --border:        #3d3f5c;
-  --border-strong: #4f5270;
-  --accent:        #8b7fe8;
+  --bg:            #0f172a;
+  --fg:            #e2e8f0;
+  --muted:         #1e293b;
+  --muted-fg:      #94a3b8;
+  --border:        #334155;
+  --border-strong: #475569;
+  --accent:        #818cf8;
   --accent-fg:     #ffffff;
-  --ring:          #6056c5;
-  --code-bg:       #1e1c30;
+  --ring:          #4338ca;
+  --code-bg:       #1e1b4b;
 
-  --bg-subtle:     #1c1a2e;
-  --border-subtle: #2e304a;
-  --link:          #7ba8ff;
-  --link-hover:    #99beff;
-  --accent-light:  #2a2455;
-  --accent-hover:  #a08ef0;
+  --bg-subtle:     #1e293b;
+  --border-subtle: #1e293b;
+  --link:          #93c5fd;
+  --link-hover:    #bfdbfe;
+  --accent-light:  #1e1b4b;
+  --accent-hover:  #a78bfa;
 
-  --shadow-sm: 0px 4px 16px 0px rgba(96, 79, 205, 0.25);
-  --shadow:    0px 4px 24px 0px rgba(96, 79, 205, 0.30);
-  --shadow-md: 0px 4px 24px 0px rgba(96, 79, 205, 0.45);
-  --shadow-lg: 0px 4px 42px 0px rgba(96, 79, 205, 0.35);
+  --shadow-sm: 0px 4px 16px 0px rgba(99, 102, 241, 0.25);
+  --shadow:    0px 4px 24px 0px rgba(99, 102, 241, 0.30);
+  --shadow-md: 0px 4px 24px 0px rgba(99, 102, 241, 0.45);
+  --shadow-lg: 0px 4px 42px 0px rgba(99, 102, 241, 0.35);
 }
 
 /* ===== Base ============================================================== */
@@ -179,7 +179,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 .zen-nav__action:hover,
 .zen-nav__action--active {
-  background: #f0f3f9;
+  background: #f1f5f9;
   color: var(--fg);
   text-decoration: none;
 }
@@ -267,7 +267,7 @@ html.dark .zen-nav__action--active {
 }
 
 .zen-sidebar__link:hover {
-  background: #f0f3f9;
+  background: #f1f5f9;
   color: var(--fg);
   text-decoration: none;
 }
@@ -418,7 +418,7 @@ html.dark .zen-sidebar__link:hover {
 .zen-content li { margin: 0.25em 0; }
 
 .zen-content blockquote {
-  border-left: 4px solid #cbc9d9;
+  border-left: 4px solid #cbd5e1;
   margin: 1em 0 1.25em;
   padding: 0 1.25em;
   background: transparent;
@@ -433,21 +433,21 @@ html.dark .zen-content blockquote {
 .zen-content code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: #e1ebff;
-  color: #271b72;
+  background: #e0e7ff;
+  color: #312e81;
   border: none;
   border-radius: 5px;
   padding: 0.2em 0.45em;
 }
 
 html.dark .zen-content code {
-  background: rgba(139, 127, 232, 0.18);
-  color: #c4baff;
+  background: rgba(129, 140, 248, 0.18);
+  color: #c4b5fd;
 }
 
 .zen-content pre {
   background: var(--code-bg);
-  border: 1px solid #cbc9d9;
+  border: 1px solid #cbd5e1;
   border-radius: var(--radius);
   overflow-x: auto;
   padding: 0.75rem 1.25rem;
@@ -523,7 +523,7 @@ html.dark .zen-content pre {
 /* Chroma syntax highlight overrides for zen */
 .chroma {
   background: var(--code-bg) !important;
-  border: 1px solid #cbc9d9;
+  border: 1px solid #cbd5e1;
   border-radius: var(--radius);
   overflow-x: auto;
   font-size: 0.875em;
@@ -673,17 +673,17 @@ html.dark .chroma {
   flex-shrink: 0;
 }
 
-/* Exact exercism difficulty palette */
-.zen-diff--easy   { color: rgb(95,178,104); background: #effff1; border-color: rgb(95,178,104); }
-.zen-diff--easy   .zen-diff__dot { background: rgb(95,178,104); }
-.zen-diff--medium { color: rgb(165,162,86); background: #f7f5e0; border-color: rgb(165,162,86); }
-.zen-diff--medium .zen-diff__dot { background: rgb(165,162,86); }
-.zen-diff--hard   { color: rgb(203,141,106); background: #f4ebe5; border-color: rgb(203,141,106); }
-.zen-diff--hard   .zen-diff__dot { background: rgb(203,141,106); }
+/* Difficulty palette — Tailwind green-600 / amber-600 / orange-600 */
+.zen-diff--easy   { color: #16a34a; background: #f0fdf4; border-color: #16a34a; }
+.zen-diff--easy   .zen-diff__dot { background: #16a34a; }
+.zen-diff--medium { color: #d97706; background: #fffbeb; border-color: #d97706; }
+.zen-diff--medium .zen-diff__dot { background: #d97706; }
+.zen-diff--hard   { color: #ea580c; background: #fff7ed; border-color: #ea580c; }
+.zen-diff--hard   .zen-diff__dot { background: #ea580c; }
 
-html.dark .zen-diff--easy   { color: rgb(95,178,104); background: rgb(95,178,104, 0.12); border-color: rgb(95 178 104 / 0.4); }
-html.dark .zen-diff--medium { color: rgb(165,162,86); background: rgb(165,162,86, 0.12); border-color: rgb(165 162 86 / 0.4); }
-html.dark .zen-diff--hard   { color: rgb(203,141,106); background: rgb(203,141,106, 0.12); border-color: rgb(203 141 106 / 0.4); }
+html.dark .zen-diff--easy   { color: #16a34a; background: rgba(22, 163, 74, 0.12); border-color: rgb(22 163 74 / 0.4); }
+html.dark .zen-diff--medium { color: #d97706; background: rgba(217, 119, 6, 0.12); border-color: rgb(217 119 6 / 0.4); }
+html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12); border-color: rgb(234 88 12 / 0.4); }
 
 /* ===== Home page ========================================================= */
 
@@ -697,7 +697,7 @@ html.dark .zen-diff--hard   { color: rgb(203,141,106); background: rgb(203,141,1
   font-weight: 700;
   letter-spacing: -0.025em;
   margin: 0 0 0.5rem;
-  background: linear-gradient(135deg, #2200ff 0%, #9e00ff 100%);
+  background: linear-gradient(135deg, #4338ca 0%, #9333ea 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -832,7 +832,7 @@ html.dark .zen-diff--hard   { color: rgb(203,141,106); background: rgb(203,141,1
 
 .zen-search-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgb(96 79 205 / 0.12);
+  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.12);
 }
 
 /* ===== Copy button on code blocks ======================================== */
@@ -1012,7 +1012,7 @@ html.dark .zen-diff--hard   { color: rgb(203,141,106); background: rgb(203,141,1
 /* ===== Footer ============================================================ */
 
 .zen-footer {
-  background: #130b43;
+  background: #1e1b4b;
   margin-top: 2rem;
 }
 
@@ -1026,14 +1026,14 @@ html.dark .zen-diff--hard   { color: rgb(203,141,106); background: rgb(203,141,1
   flex-wrap: wrap;
   gap: 0.5rem;
   font-size: 0.8125rem;
-  color: #a9a6bd;
+  color: #94a3b8;
 }
 
-.zen-footer a { color: #a9a6bd; }
-.zen-footer a:hover { color: #e8edf7; text-decoration: none; }
+.zen-footer a { color: #94a3b8; }
+.zen-footer a:hover { color: #e2e8f0; text-decoration: none; }
 
 html.dark .zen-footer {
-  background: #0d0b18;
+  background: #020617;
 }
 
 /* ===== Sidebar overlay (mobile) ========================================== */

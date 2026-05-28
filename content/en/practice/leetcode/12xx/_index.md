@@ -104,8 +104,8 @@ draft: false
 | 1292 | [Maximum Side Length of a Square with Sum Less than or Equal to Threshold](1292.md) | 🟡 Medium | 35s | That is a very large, multi-section request covering a full detaile… |
 | 1293 | [Shortest Path in a Grid with Obstacles Elimination](1293.md) | 🔴 Hard | 1m 42s | This problem asks us to find the minimum number of steps required t… |
 | 1294 | [Weather Type in Each Country](1294.md) | 🟢 Easy | 53s | This problem asks us to determine the weather type for each country… |
-| 1295 | [Find Numbers with Even Number of Digits](1295.md) | 🟢 Easy | 54s | The problem asks us to determine, from a given list of integers num… |
-| 1296 | [Divide Array in Sets of K Consecutive Numbers](1296.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and a positive integer k… |
-| 1297 | [Maximum Number of Occurrences of a Substring](1297.md) | 🟡 Medium | 46s | The problem asks us to analyze a string s and determine the maximum… |
-| 1298 | [Maximum Candies You Can Get from Boxes](1298.md) | 🔴 Hard | 1m 2s | The problem asks us to compute the maximum number of candies we can… |
-| 1299 | [Replace Elements with Greatest Element on Right Side](1299.md) | 🟢 Easy | 57s | The problem requires us to transform a given array arr such that ea… |
+| 1295 | [Find Numbers with Even Number of Digits](1295.md) | 🟢 Easy | 55s | The problem asks us to determine how many numbers in a given array … |
+| 1296 | [Divide Array in Sets of K Consecutive Numbers](1296.md) | 🟡 Medium | 1m 31s | The problem gives us an integer array nums and an integer k. We nee… |
+| 1297 | [Maximum Number of Occurrences of a Substring](1297.md) | 🟡 Medium | 2m 25s | Please provide the missing problem number or title you want the gui… |
+| 1298 | [Maximum Candies You Can Get from Boxes](1298.md) | 🔴 Hard | 48s | The problem asks us to determine the maximum number of candies we c… |
+| 1299 | [Replace Elements with Greatest Element on Right Side](1299.md) | 🟢 Easy | 1m 13s | The problem gives us an integer array arr and asks us to replace ev… |
