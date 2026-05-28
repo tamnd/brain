@@ -50,7 +50,9 @@ draft: false
 | 2441 | [Largest Positive Integer That Exists With Its Negative](2441.md) | 🟢 Easy | 57s | The problem requires finding the largest positive integer k in an a… |
 | 2442 | [Count Number of Distinct Integers After Reverse Operations](2442.md) | 🟡 Medium | 1m 15s | The problem gives us an array of positive integers called nums. For… |
 | 2443 | [Sum of Number and Its Reverse](2443.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given non-negative integ… |
+| 2444 | [Count Subarrays With Fixed Bounds](2444.md) | 🔴 Hard | 5m 36s | The problem asks us to count how many contiguous subarrays satisfy … |
 | 2445 | [Number of Nodes With Value One](2445.md) | 🟡 Medium | 1m 11s | Here is a comprehensive technical solution guide for LeetCode 2445,… |
+| 2446 | [Determine if Two Events Have Conflict](2446.md) | 🟢 Easy | 6m 29s | This problem is asking us to determine whether two events on the sa… |
 | 2447 | [Number of Subarrays With GCD Equal to K](2447.md) | 🟡 Medium | 53s | The problem requires counting the number of contiguous subarrays in… |
 | 2448 | [Minimum Cost to Make Array Equal](2448.md) | 🔴 Hard | 1m 7s | The problem gives us two arrays, nums and cost, both of length n. E… |
 | 2449 | [Minimum Number of Operations to Make Arrays Similar](2449.md) | 🔴 Hard | 1m | The problem asks us to transform one array nums into another array … |
