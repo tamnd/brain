@@ -90,5 +90,11 @@ draft: false
 | 1577 | [Number of Ways Where Square of Number Is Equal to Product of Two Numbers](1577.md) | 🟡 Medium | 1m 35s | The problem gives us two integer arrays, nums1 and nums2. We must c… |
 | 1578 | [Minimum Time to Make Rope Colorful](1578.md) | 🟡 Medium | 1m 3s | The problem requires transforming a rope of balloons into a "colorf… |
 | 1579 | [Remove Max Number of Edges to Keep Graph Fully Traversable](1579.md) | 🔴 Hard | 59s | The problem presents an undirected graph with n nodes and three typ… |
-| 1580 | [Put Boxes Into the Warehouse II](1580.md) | 🟡 Medium | 59s | The problem is asking us to determine the maximum number of boxes w… |
-| 1582 | [Special Positions in a Binary Matrix](1582.md) | 🟢 Easy | 57s | The problem is asking to find special positions in a binary matrix.… |
+| 1580 | [Put Boxes Into the Warehouse II](1580.md) | 🟡 Medium | 1m 45s | In this problem, we are given two arrays: - boxes, where each value… |
+| 1581 | [Customer Who Visited but Did Not Make Any Transactions](1581.md) | 🟢 Easy | 3m | The problem gives us two database tables, Visits and Transactions. … |
+| 1582 | [Special Positions in a Binary Matrix](1582.md) | 🟢 Easy | 58s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1583 | [Count Unhappy Friends](1583.md) | 🟡 Medium | 1m 38s | In this problem, we are given n friends, where n is always even. Ev… |
+| 1584 | [Min Cost to Connect All Points](1584.md) | 🟡 Medium | 1m 30s | This problem asks us to connect all given points on a 2D plane with… |
+| 1585 | [Check If String Is Transformable With Substring Sort Operations](1585.md) | 🔴 Hard | 1m 29s | This problem asks whether we can transform one digit string, s, int… |
+| 1586 | [Binary Search Tree Iterator II](1586.md) | 🟡 Medium | 52s | The problem requires implementing a bidirectional iterator over a b… |
+| 1587 | [Bank Account Summary II](1587.md) | 🟢 Easy | 1m 26s | This problem asks us to analyze banking transaction data and determ… |
