@@ -15,6 +15,7 @@ draft: false
 | 2003 | [Smallest Missing Genetic Value in Each Subtree](2003.md) | 🔴 Hard | 6m 10s | This problem asks us to compute, for every node in a rooted tree, t… |
 | 2004 | [The Number of Seniors and Juniors to Join the Company](2004.md) | 🔴 Hard | 1m 20s | This problem requires determining how many candidates a company can… |
 | 2005 | [Subtree Removal Game with Fibonacci Tree](2005.md) | 🔴 Hard | 1m 12s | The problem defines a special kind of binary tree called a Fibonacc… |
+| 2006 | [Count Number of Pairs With Absolute Difference K](2006.md) | 🟢 Easy | 1m 19s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2007 | [Find Original Array From Doubled Array](2007.md) | 🟡 Medium | 1m 27s | The problem gives us an array called changed, which was supposedly … |
 | 2009 | [Minimum Number of Operations to Make Array Continuous](2009.md) | 🔴 Hard | 1m 1s | The problem asks us to transform a given integer array nums into a … |
 | 2010 | [The Number of Seniors and Juniors to Join the Company II](2010.md) | 🔴 Hard | 1m 25s | The problem asks us to simulate a hiring process with a fixed salar… |
@@ -45,3 +46,11 @@ draft: false
 | 2039 | [The Time When the Network Becomes Idle](2039.md) | 🟡 Medium | 1m 12s | The problem describes a network of n servers connected by bidirecti… |
 | 2040 | [Kth Smallest Product of Two Sorted Arrays](2040.md) | 🔴 Hard | 1m 31s | The problem asks us to find the kth smallest value among all possib… |
 | 2041 | [Accepted Candidates From the Interviews](2041.md) | 🟡 Medium | 42s | This problem is asking us to identify candidates from an interview … |
+| 2042 | [Check if Numbers Are Ascending in a Sentence](2042.md) | 🟢 Easy | 1m 31s | The problem gives us a sentence made up of tokens separated by sing… |
+| 2043 | [Simple Bank System](2043.md) | 🟡 Medium | 1m 8s | The problem requires designing a simple banking system that can han… |
+| 2045 | [Second Minimum Time to Reach Destination](2045.md) | 🔴 Hard | 1m 57s | This problem gives us an undirected connected graph with n nodes. E… |
+| 2046 | [Sort Linked List Already Sorted Using Absolute Values](2046.md) | 🟡 Medium | 1m 34s | The problem gives us a singly linked list where the nodes are sorte… |
+| 2047 | [Number of Valid Words in a Sentence](2047.md) | 🟢 Easy | 1m 25s | This problem asks us to analyze a sentence and determine how many o… |
+| 2048 | [Next Greater Numerically Balanced Number](2048.md) | 🟡 Medium | 58s | The problem asks us to find the next numerically balanced number gr… |
+| 2049 | [Count Nodes With the Highest Score](2049.md) | 🟡 Medium | 1m 25s | This problem gives us a rooted binary tree represented by a parents… |
+| 2050 | [Parallel Courses III](2050.md) | 🔴 Hard | 1m 33s | This problem models course scheduling as a directed acyclic graph, … |

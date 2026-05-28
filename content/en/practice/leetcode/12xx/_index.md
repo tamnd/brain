@@ -10,6 +10,7 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
+| 1200 | [Minimum Absolute Difference](1200.md) | 🟢 Easy | 51s | The problem asks us to find all pairs of numbers in an array that h… |
 | 1201 | [Ugly Number III](1201.md) | 🟡 Medium | 1m 23s | The problem defines an "ugly number" as any positive integer that i… |
 | 1202 | [Smallest String With Swaps](1202.md) | 🟡 Medium | 1m 27s | The problem gives us a string s and a list of index pairs called pa… |
 | 1203 | [Sort Items by Groups Respecting Dependencies](1203.md) | 🔴 Hard | 1m 44s | This problem asks us to sort n items while satisfying two different… |

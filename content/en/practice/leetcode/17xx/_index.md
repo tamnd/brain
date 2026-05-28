@@ -22,6 +22,7 @@ draft: false
 | 1709 | [Biggest Window Between Visits](1709.md) | 🟡 Medium | 1m 27s | The UserVisits table stores records of when users visited a retaile… |
 | 1710 | [Maximum Units on a Truck](1710.md) | 🟢 Easy | 1m 40s | The problem gives us several types of boxes, where each box type co… |
 | 1711 | [Count Good Meals](1711.md) | 🟡 Medium | 2m 52s | The problem asks us to count the number of good meals that can be f… |
+| 1712 | [Ways to Split Array Into Three Subarrays](1712.md) | 🟡 Medium | 1m 35s | The problem asks us to count the number of valid ways to divide an … |
 | 1713 | [Minimum Operations to Make a Subsequence](1713.md) | 🔴 Hard | 1m 39s | The problem gives us two arrays, target and arr. The target array c… |
 | 1714 | [Sum Of Special Evenly-Spaced Elements In Array](1714.md) | 🔴 Hard | 3m 29s | The problem requires calculating sums of specific subsets of an int… |
 | 1715 | [Count Apples and Oranges](1715.md) | 🟡 Medium | 3m 40s | This problem asks us to compute the total number of apples and oran… |
@@ -50,9 +51,20 @@ draft: false
 | 1738 | [Find Kth Largest XOR Coordinate Value](1738.md) | 🟡 Medium | 1m 18s | The problem asks us to compute the XOR coordinate value for each el… |
 | 1739 | [Building Boxes](1739.md) | 🔴 Hard | 1m 37s | The problem gives us n identical unit cubes that must be placed ins… |
 | 1740 | [Find Distance in a Binary Tree](1740.md) | 🟡 Medium | 1m 29s | This problem asks us to determine the distance between two nodes in… |
+| 1741 | [Find Total Time Spent by Each Employee](1741.md) | 🟢 Easy | 1m 15s | The problem asks us to calculate the total time each employee spend… |
 | 1742 | [Maximum Number of Balls in a Box](1742.md) | 🟢 Easy | 59s | The problem describes a scenario in which you have a sequence of ba… |
+| 1743 | [Restore the Array From Adjacent Pairs](1743.md) | 🟡 Medium | 1m 33s | The problem gives us all adjacent pairs from an unknown array nums,… |
 | 1744 | [Can You Eat Your Favorite Candy on Your Favorite Day?](1744.md) | 🟡 Medium | 2m 24s | The problem gives us an array candiesCount where candiesCount[i] re… |
 | 1745 | [Palindrome Partitioning IV](1745.md) | 🔴 Hard | 1m 8s | The problem asks us to determine whether a given string s can be sp… |
 | 1746 | [Maximum Subarray Sum After One Operation](1746.md) | 🟡 Medium | 1m 33s | The problem gives us an integer array nums, and we must perform exa… |
 | 1747 | [Leetflex Banned Accounts](1747.md) | 🟡 Medium | 1m 28s | This problem asks us to identify suspicious accounts in the LogInfo… |
+| 1748 | [Sum of Unique Elements](1748.md) | 🟢 Easy | 1m 12s | The problem gives us an integer array nums and asks us to compute t… |
 | 1749 | [Maximum Absolute Sum of Any Subarray](1749.md) | 🟡 Medium | 1m 4s | The problem asks us to calculate the maximum absolute sum of any co… |
+| 1750 | [Minimum Length of String After Deleting Similar Ends](1750.md) | 🟡 Medium | 1m 27s | The problem gives us a string s containing only the characters 'a',… |
+| 1751 | [Maximum Number of Events That Can Be Attended II](1751.md) | 🔴 Hard | 1m 33s | You are given a list of events, where each event is represented as:… |
+| 1752 | [Check if Array Is Sorted and Rotated](1752.md) | 🟢 Easy | 54s | The problem is asking us to determine whether a given array nums co… |
+| 1753 | [Maximum Score From Removing Stones](1753.md) | 🟡 Medium | 1m 13s | The problem is a combinatorial game involving three piles of stones… |
+| 1754 | [Largest Merge Of Two Strings](1754.md) | 🟡 Medium | 1m 27s | This problem asks us to build the lexicographically largest possibl… |
+| 1755 | [Closest Subsequence Sum](1755.md) | 🔴 Hard | 53s | The problem asks us to find a subsequence of a given integer array … |
+| 1756 | [Design Most Recently Used Queue](1756.md) | 🟡 Medium | 1m 34s | The problem asks us to design a special queue called an "Most Recen… |
+| 1757 | [Recyclable and Low Fat Products](1757.md) | 🟢 Easy | 1m 34s | This problem gives us a database table named Products. Each row rep… |

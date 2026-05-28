@@ -98,6 +98,7 @@ draft: false
 | 1185 | [Day of the Week](1185.md) | 🟢 Easy | 1m 11s | This problem asks us to determine which day of the week corresponds… |
 | 1186 | [Maximum Subarray Sum with One Deletion](1186.md) | 🟡 Medium | 51s | The problem is asking us to find the maximum sum of a contiguous su… |
 | 1187 | [Make Array Strictly Increasing](1187.md) | 🔴 Hard | 40s | The problem is asking us to transform the array arr1 into a strictl… |
+| 1188 | [Design Bounded Blocking Queue](1188.md) | 🟡 Medium | 1m 8s | This problem asks us to implement a thread-safe bounded blocking qu… |
 | 1189 | [Maximum Number of Balloons](1189.md) | 🟢 Easy | 46s | The problem asks us to determine the maximum number of times the wo… |
 | 1190 | [Reverse Substrings Between Each Pair of Parentheses](1190.md) | 🟡 Medium | 1m 15s | The problem gives us a string s containing lowercase English letter… |
 | 1191 | [K-Concatenation Maximum Sum](1191.md) | 🟡 Medium | 1m 41s | This problem asks us to find the maximum possible sum of a contiguo… |
@@ -107,4 +108,5 @@ draft: false
 | 1195 | [Fizz Buzz Multithreaded](1195.md) | 🟡 Medium | 1m 24s | The problem asks us to coordinate four separate threads so they col… |
 | 1196 | [How Many Apples Can You Put into the Basket](1196.md) | 🟢 Easy | 36s | This problem is asking us to determine how many apples we can fit i… |
 | 1197 | [Minimum Knight Moves](1197.md) | 🟡 Medium | 49s | This problem asks us to compute the minimum number of moves a knigh… |
+| 1198 | [Find Smallest Common Element in All Rows](1198.md) | 🟡 Medium | 1m 4s | The problem asks us to find the smallest element that appears in ev… |
 | 1199 | [Minimum Time to Build Blocks](1199.md) | 🔴 Hard | 1m 43s | The problem requires determining the minimum amount of time to buil… |

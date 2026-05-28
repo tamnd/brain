@@ -46,6 +46,7 @@ draft: false
 | 1333 | [Filter Restaurants by Vegan-Friendly, Price and Distance](1333.md) | 🟡 Medium | 1m 3s | The problem is asking us to filter and sort a list of restaurants b… |
 | 1334 | [Find the City With the Smallest Number of Neighbors at a Threshold Distance](1334.md) | 🟡 Medium | 1m 46s | Edit This problem gives us a weighted, undirected graph where each … |
 | 1335 | [Minimum Difficulty of a Job Schedule](1335.md) | 🔴 Hard | 1m 28s | The problem gives us an array jobDifficulty, where each element rep… |
+| 1336 | [Number of Transactions per Visit](1336.md) | 🔴 Hard | 59s | The problem asks us to analyze two database tables, Visits and Tran… |
 | 1337 | [The K Weakest Rows in a Matrix](1337.md) | 🟢 Easy | 59s | Here is a comprehensive, detailed solution guide for LeetCode 1337 … |
 | 1338 | [Reduce Array Size to The Half](1338.md) | 🟡 Medium | 1m 27s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 1339 | [Maximum Product of Splitted Binary Tree](1339.md) | 🟡 Medium | 2m 22s | That is a long, structured technical document with multiple require… |
