@@ -29,11 +29,11 @@ draft: false
 | 1316 | [Distinct Echo Substrings](1316.md) | 🔴 Hard | 59s | The problem asks us to find the number of distinct non-empty substr… |
 | 1317 | [Convert Integer to the Sum of Two No-Zero Integers](1317.md) | 🟢 Easy | 1m 10s | The problem asks us to split a given integer n into two positive in… |
 | 1318 | [Minimum Flips to Make a OR b Equal to c](1318.md) | 🟡 Medium | 1m 5s | The problem gives us three positive integers, a, b, and c. We are a… |
-| 1319 | [Number of Operations to Make Network Connected](1319.md) | 🟡 Medium | 1m 31s | The problem describes a network of n computers connected by etherne… |
-| 1320 | [Minimum Distance to Type a Word Using Two Fingers](1320.md) | 🔴 Hard | 1m 29s | The problem gives us a virtual keyboard layout containing all upper… |
-| 1321 | [Restaurant Growth](1321.md) | 🟡 Medium | 1m 10s | The problem provides a Customer table that records restaurant trans… |
-| 1322 | [Ads Performance](1322.md) | 🟢 Easy | 1m 22s | The problem asks us to calculate the click-through rate (CTR) for e… |
-| 1323 | [Maximum 69 Number](1323.md) | 🟢 Easy | 1m 6s | The problem gives us a positive integer num that contains only the … |
+| 1319 | [Number of Operations to Make Network Connected](1319.md) | 🟡 Medium | 1m 29s | This problem models a computer network as an undirected graph. Each… |
+| 1320 | [Minimum Distance to Type a Word Using Two Fingers](1320.md) | 🔴 Hard | 1m 30s | The keyboard is arranged in a fixed grid layout containing the 26 u… |
+| 1321 | [Restaurant Growth](1321.md) | 🟡 Medium | 1m 38s | This problem asks us to compute a rolling seven day summary of rest… |
+| 1322 | [Ads Performance](1322.md) | 🟢 Easy | 1m 12s | This problem asks us to calculate the Click-Through Rate, abbreviat… |
+| 1323 | [Maximum 69 Number](1323.md) | 🟢 Easy | 1m 7s | The problem gives us a positive integer num that contains only the … |
 | 1324 | [Print Words Vertically](1324.md) | 🟡 Medium | 51s | The problem requires us to take a string s containing multiple word… |
 | 1325 | [Delete Leaves With a Given Value](1325.md) | 🟡 Medium | 59s | The problem is asking us to remove all leaf nodes from a binary tre… |
 | 1326 | [Minimum Number of Taps to Open to Water a Garden](1326.md) | 🔴 Hard | 1m 24s | The problem describes a one-dimensional garden that stretches from … |
