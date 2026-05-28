@@ -21,7 +21,6 @@ draft: false
 **Solve time:** 4m 37s  
 **Verified:** yes  
 
-## Solution
 ## Problem Understanding
 
 We are given a snapshot of a tic-tac-toe board, represented as a 3×3 grid. Each cell is either empty (`.`), contains a cross (`X`), or contains a nought (`0`). The first player always places crosses, and the second player places noughts. The board might be partially filled, completely filled, or even in an impossible state.

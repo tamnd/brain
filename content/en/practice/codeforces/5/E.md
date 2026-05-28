@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We have `n` hills arranged in a circle. Two watchmen can communicate if there exists at least one of the two circular arcs between them such that every hill on that arc is not taller than the shorter of the two endpoints.

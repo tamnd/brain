@@ -1,6 +1,6 @@
 ---
 title: "CF 1A - Theatre Square"
-description: "Here’s a detailed, thoughtful editorial for Codeforces 1A - Theatre Square following your requested style. We are given"
+description: "We are given a rectangular plaza with dimensions n×m meters, to be paved with a×a square flagstones. Find the minimum number of flagstones needed."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,9 +13,6 @@ solve_time_s: 241
 verified: true
 draft: false
 ---
-## Solution
-Here’s a detailed, thoughtful editorial for **Codeforces 1A - Theatre Square** following your requested style.
-
 ## Problem Understanding
 
 We are given a rectangular plaza, the Theatre Square, with dimensions _n_ meters in length and _m_ meters in width. The city wants to pave the entire area with square flagstones of side _a_. The question asks for the minimum number of flagstones required to cover the square completely. Each flagstone must be placed aligned with the sides of the square; we cannot cut them, but it is acceptable for flagstones to extend beyond the edges of the square.

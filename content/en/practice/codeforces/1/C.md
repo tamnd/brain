@@ -13,7 +13,6 @@ solve_time_s: 100
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We are given the coordinates of three vertices of some regular polygon. The polygon itself is unknown: we do not know how many sides it has, where its center is, or which vertices the three points correspond to. Among all regular polygons that could contain these three points as vertices, we must find the one with the smallest area.

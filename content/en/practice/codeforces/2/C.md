@@ -13,7 +13,6 @@ solve_time_s: 96
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We are given three circles on the plane. Each circle represents a stadium, with a center point and a radius. We need to find a point from which all three stadiums are seen under the same angle.

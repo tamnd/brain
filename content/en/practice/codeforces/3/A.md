@@ -21,7 +21,6 @@ draft: false
 **Solve time:** 4m 37s  
 **Verified:** yes  
 
-## Solution
 ## Problem Understanding
 
 We are asked to move a chess king from one square to another on a standard 8×8 board in the fewest number of moves. The king can move to any adjacent square in eight possible directions: vertically, horizontally, or diagonally. The input specifies the start and target squares using standard chess notation, where the first character is a letter from `a` to `h` representing the column and the second character is a digit from `1` to `8` representing the row. The output should be the minimum number of moves followed by a sequence of moves that achieves it.

@@ -13,7 +13,6 @@ solve_time_s: 80
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We drive along a straight road of length `l`. The car starts from rest, accelerates or decelerates with constant magnitude `a`, and can never exceed the global maximum speed `v`.

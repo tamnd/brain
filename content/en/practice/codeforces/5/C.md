@@ -13,7 +13,6 @@ solve_time_s: 160
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We are given a string containing only `'('` and `')'`. Among all substrings, we need to find the longest one that forms a valid bracket sequence. After that, we also need to count how many substrings achieve that maximum length.

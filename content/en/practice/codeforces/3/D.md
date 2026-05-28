@@ -21,7 +21,6 @@ draft: false
 **Solve time:** 1m 23s  
 **Verified:** yes  
 
-## Solution
 ## Problem Understanding
 
 We are given a bracket string containing three kinds of characters: `'('`, `')'`, and `'?'`. Every `'?'` must eventually become either an opening or closing bracket. For each unknown position, the input provides two costs, one for replacing it with `'('` and one for replacing it with `')'`.

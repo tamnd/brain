@@ -21,7 +21,6 @@ draft: false
 **Solve time:** 4m 5s  
 **Verified:** yes  
 
-## Solution
 ## Problem Understanding
 
 We have a lorry with capacity `v`. There are two kinds of boats.

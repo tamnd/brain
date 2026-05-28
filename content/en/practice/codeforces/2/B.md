@@ -13,7 +13,6 @@ solve_time_s: 187
 verified: false
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We have an `n × n` grid of non-negative integers. Starting from the top-left corner, we may move only right or down until we reach the bottom-right corner. Along a chosen path, we multiply every visited value together. The goal is to make the resulting product end with as few trailing zeros as possible.

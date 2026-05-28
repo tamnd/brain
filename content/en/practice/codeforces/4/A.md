@@ -13,7 +13,6 @@ solve_time_s: 46
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 The problem gives a single integer `w`, the weight of a watermelon. We need to decide whether it can be split into two positive parts such that both parts are even numbers.

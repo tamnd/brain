@@ -13,7 +13,6 @@ solve_time_s: 72
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We are given `d` days and a target total number of study hours, `sumTime`. For every day, Peter must study at least `minTime[i]` hours and at most `maxTime[i]` hours. The task is to construct any valid schedule whose total sum is exactly `sumTime`.

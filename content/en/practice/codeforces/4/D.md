@@ -13,7 +13,6 @@ solve_time_s: 70
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 We are given a card with dimensions `(w, h)` and `n` envelopes. Each envelope also has a width and height.

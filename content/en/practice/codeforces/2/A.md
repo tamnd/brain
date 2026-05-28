@@ -13,7 +13,6 @@ solve_time_s: 69
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 The game records a sequence of rounds. In each round, one player either gains or loses some number of points. At the end, the player with the highest total score should win.

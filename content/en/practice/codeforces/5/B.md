@@ -13,7 +13,6 @@ solve_time_s: 187
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 The task is to print a block of text inside a rectangular frame made of `*` characters. Every line of text must be centered horizontally.

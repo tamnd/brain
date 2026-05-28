@@ -13,7 +13,6 @@ solve_time_s: 295
 verified: true
 draft: false
 ---
-## Solution
 ## Problem Understanding
 
 The task gives spreadsheet cell coordinates written in one of two formats, and for every coordinate we must convert it into the other format.
