@@ -42,9 +42,9 @@ draft: false
 | 1429 | [First Unique Number](1429.md) | 🟡 Medium | 1m 12s | The problem requires designing a data structure that can efficientl… |
 | 1430 | [Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree](1430.md) | 🟡 Medium | 56s | The problem asks us to determine whether a given array of integers … |
 | 1431 | [Kids With the Greatest Number of Candies](1431.md) | 🟢 Easy | 1m 1s | This problem asks us to determine which children could potentially … |
-| 1432 | [Max Difference You Can Get From Changing an Integer](1432.md) | 🟡 Medium | 1m 15s | The problem gives us an integer num, and we are allowed to perform … |
-| 1433 | [Check If a String Can Break Another String](1433.md) | 🟡 Medium | 1m 22s | The problem gives two strings, s1 and s2, both of the same length. … |
-| 1434 | [Number of Ways to Wear Different Hats to Each Other](1434.md) | 🔴 Hard | 1m 38s | The problem gives us n people and 40 different hat types numbered f… |
+| 1432 | [Max Difference You Can Get From Changing an Integer](1432.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, and we are allowed to perform … |
+| 1433 | [Check If a String Can Break Another String](1433.md) | 🟡 Medium | 56s | The problem asks us to determine whether one string can "break" ano… |
+| 1434 | [Number of Ways to Wear Different Hats to Each Other](1434.md) | 🔴 Hard | 1m 17s | This problem asks us to count how many valid ways exist to assign h… |
 | 1435 | [Create a Session Bar Chart](1435.md) | 🟢 Easy | 1m 28s | This problem gives us a database table named Sessions with two colu… |
 | 1436 | [Destination City](1436.md) | 🟢 Easy | 1m | The problem gives us a list of directed paths between cities. Each … |
 | 1437 | [Check If All 1's Are at Least Length K Places Away](1437.md) | 🟢 Easy | 1m 16s | The problem gives us a binary array nums, where each element is eit… |
