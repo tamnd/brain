@@ -61,6 +61,7 @@ draft: false
 | 1148 | [Article Views I](1148.md) | 🟢 Easy | 40s | The problem is asking us to identify all authors who have viewed at… |
 | 1149 | [Article Views II](1149.md) | 🟡 Medium | 1m 15s | The problem gives us a database table named Views. Each row represe… |
 | 1150 | [Check If a Number Is Majority Element in a Sorted Array](1150.md) | 🟢 Easy | 44s | This problem asks us to determine if a given target integer is a ma… |
+| 1151 | [Minimum Swaps to Group All 1's Together](1151.md) | 🟡 Medium | 1m 13s | This problem asks us to determine the minimum number of swaps neede… |
 | 1152 | [Analyze User Website Visit Pattern](1152.md) | 🟡 Medium | 1m 1s | Here is a comprehensive, detailed technical solution guide for Leet… |
 | 1153 | [String Transforms Into Another String](1153.md) | 🔴 Hard | 1m 17s | The problem gives us two strings, str1 and str2, which are guarante… |
 | 1154 | [Day of the Year](1154.md) | 🟢 Easy | 43s | The problem asks us to compute the ordinal day number of a year giv… |
@@ -71,3 +72,7 @@ draft: false
 | 1159 | [Market Analysis II](1159.md) | 🔴 Hard | 1m 5s | This problem asks us to determine, for every user in the marketplac… |
 | 1160 | [Find Words That Can Be Formed by Characters](1160.md) | 🟢 Easy | 1m 7s | This problem asks us to determine which words from a given list can… |
 | 1161 | [Maximum Level Sum of a Binary Tree](1161.md) | 🟡 Medium | 1m 24s | In this problem, we are given the root node of a binary tree. Every… |
+| 1162 | [As Far from Land as Possible](1162.md) | 🟡 Medium | 1m 15s | The problem requires finding the water cell in a given n x n grid t… |
+| 1163 | [Last Substring in Lexicographical Order](1163.md) | 🔴 Hard | 1m 11s | The problem asks us to find the substring of a given string s that … |
+| 1164 | [Product Price at a Given Date](1164.md) | 🟡 Medium | 1m 19s | The problem provides a database table named Products, where each ro… |
+| 1166 | [Design File System](1166.md) | 🟡 Medium | 1m 14s | This problem asks us to design a simplified file system that suppor… |
