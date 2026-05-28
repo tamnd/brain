@@ -69,3 +69,10 @@ draft: false
 | 2461 | [Maximum Sum of Distinct Subarrays With Length K](2461.md) | 🟡 Medium | 1m 25s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2462 | [Total Cost to Hire K Workers](2462.md) | 🟡 Medium | 44s | We are asked to simulate a hiring process for k workers from an arr… |
 | 2464 | [Minimum Subarrays in a Valid Split](2464.md) | 🟡 Medium | 1m 19s | The problem asks us to split the array into the minimum possible nu… |
+| 2466 | [Count Ways To Build Good Strings](2466.md) | 🟡 Medium | 2m 23s | The problem asks us to count the number of "good" strings that can … |
+| 2467 | [Most Profitable Path in a Tree](2467.md) | 🟡 Medium | 1m 24s | The problem gives us an undirected tree with n nodes rooted at node… |
+| 2468 | [Split Message Based on Limit](2468.md) | 🔴 Hard | 51s | This problem requires splitting a given string message into multipl… |
+| 2469 | [Convert the Temperature](2469.md) | 🟢 Easy | 2m 19s | The problem gives us a single floating point number, celsius, repre… |
+| 2471 | [Minimum Number of Operations to Sort a Binary Tree by Level](2471.md) | 🟡 Medium | 2m 22s | The problem requires us to sort each level of a binary tree in stri… |
+| 2473 | [Minimum Cost to Buy Apples](2473.md) | 🟡 Medium | 42s | This problem involves a weighted undirected graph where nodes repre… |
+| 2474 | [Customers With Strictly Increasing Purchases](2474.md) | 🔴 Hard | 51s | This problem requires identifying customers whose total annual purc… |

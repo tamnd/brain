@@ -10,9 +10,9 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 2200 | [Find All K-Distant Indices in an Array](2200.md) | 🟢 Easy | 51s | The problem asks us to find all k-distant indices in a given array … |
-| 2201 | [Count Artifacts That Can Be Extracted](2201.md) | 🟡 Medium | 46s | The problem describes a square n x n grid containing several rectan… |
-| 2202 | [Maximize the Topmost Element After K Moves](2202.md) | 🟡 Medium | 1m 11s | The problem gives us a stack-like pile represented as an array nums… |
+| 2200 | [Find All K-Distant Indices in an Array](2200.md) | 🟢 Easy | 47s | The problem requires identifying all indices in an array nums that … |
+| 2201 | [Count Artifacts That Can Be Extracted](2201.md) | 🟡 Medium | 1m 30s | This problem models an excavation process on a square n x n grid. S… |
+| 2202 | [Maximize the Topmost Element After K Moves](2202.md) | 🟡 Medium | 1m 19s | In this problem, we are given a pile of integers represented as an … |
 | 2203 | [Minimum Weighted Subgraph With the Required Paths](2203.md) | 🔴 Hard | 51s | The problem asks us to find the minimum-weight subgraph of a weight… |
 | 2204 | [Distance to a Cycle in Undirected Graph](2204.md) | 🔴 Hard | 37s | This problem asks us to compute the minimum distance from every nod… |
 | 2205 | [The Number of Users That Are Eligible for Discount](2205.md) | 🟢 Easy | 48s | The problem asks us to determine how many users are eligible for a … |

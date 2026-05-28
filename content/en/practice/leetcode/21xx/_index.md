@@ -102,11 +102,11 @@ draft: false
 | 2189 | [Number of Ways to Build House of Cards](2189.md) | 🟡 Medium | 1m | The problem asks us to count how many distinct houses of cards can … |
 | 2190 | [Most Frequent Number Following Key In an Array](2190.md) | 🟢 Easy | 2m 20s | The problem asks us to find the integer that appears most frequentl… |
 | 2191 | [Sort the Jumbled Numbers](2191.md) | 🟡 Medium | 37s | The problem asks us to sort an array of integers based on a custom … |
-| 2192 | [All Ancestors of a Node in a Directed Acyclic Graph](2192.md) | 🟡 Medium | 1m 32s | The problem gives us a directed acyclic graph, also called a DAG, w… |
-| 2193 | [Minimum Number of Moves to Make Palindrome](2193.md) | 🔴 Hard | 47s | Here’s a full technical guide for LeetCode 2193 following your form… |
-| 2194 | [Cells in a Range on an Excel Sheet](2194.md) | 🟢 Easy | 2m 38s | This problem asks us to generate every Excel cell contained within … |
-| 2195 | [Append K Integers With Minimal Sum](2195.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2192 | [All Ancestors of a Node in a Directed Acyclic Graph](2192.md) | 🟡 Medium | 1m 49s | This problem gives us a Directed Acyclic Graph (DAG) with n nodes l… |
+| 2193 | [Minimum Number of Moves to Make Palindrome](2193.md) | 🔴 Hard | 1m 15s | This problem asks us to transform a given string into a palindrome … |
+| 2194 | [Cells in a Range on an Excel Sheet](2194.md) | 🟢 Easy | 39s | This problem is asking us to generate all the Excel-style cell refe… |
+| 2195 | [Append K Integers With Minimal Sum](2195.md) | 🟡 Medium | 2m 24s | The problem asks us to append k unique positive integers to an exis… |
 | 2196 | [Create Binary Tree From Descriptions](2196.md) | 🟡 Medium | 1m 29s | The problem gives us a list of parent-child relationships that toge… |
-| 2197 | [Replace Non-Coprime Numbers in Array](2197.md) | 🔴 Hard | 1m 22s | The problem gives an integer array nums and asks us to repeatedly m… |
-| 2198 | [Number of Single Divisor Triplets](2198.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums containing positive integers. We… |
-| 2199 | [Finding the Topic of Each Post](2199.md) | 🔴 Hard | 1m 19s | This problem asks us to determine which topics are associated with … |
+| 2197 | [Replace Non-Coprime Numbers in Array](2197.md) | 🔴 Hard | 2m 21s | The problem asks us to repeatedly replace adjacent non-coprime numb… |
+| 2198 | [Number of Single Divisor Triplets](2198.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many ordered triplets of distinct … |
+| 2199 | [Finding the Topic of Each Post](2199.md) | 🔴 Hard | 1m 20s | The problem gives us two database tables, Keywords and Posts. The K… |
