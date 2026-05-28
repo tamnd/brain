@@ -1,6 +1,6 @@
 ---
 title: "CF 71D - Solitaire"
-description: "We are given a rectangular board filled with playing cards. Every normal card is unique because the deck is standard: 13 ranks times 4 suits. Two special cards, J1 and J2, are jokers. A solved configuration must contain two different 3×3 subgrids that do not overlap."
+description: "We are given a rectangular board filled with playing cards. The board size is at most $17 times 17$, but the total number of placed cards never exceeds 52 because the deck has only 52 regular cards plus two jokers. A valid 3×3 square must satisfy one of two properties: 1."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Beta Round 65 (Div. 2)"
 rating: 2200
 weight: 71
-solve_time_s: 131
+solve_time_s: 138
 verified: true
 draft: false
 ---
@@ -18,132 +18,177 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** brute force, implementation  
-**Solve time:** 2m 11s  
+**Solve time:** 2m 18s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rectangular board filled with playing cards. Every normal card is unique because the deck is standard: 13 ranks times 4 suits. Two special cards, `J1` and `J2`, are jokers.
+We are given a rectangular board filled with playing cards. The board size is at most $17 \times 17$, but the total number of placed cards never exceeds 52 because the deck has only 52 regular cards plus two jokers.
 
-A solved configuration must contain two different 3×3 subgrids that do not overlap. Each chosen square must satisfy at least one of these conditions:
+A valid 3×3 square must satisfy one of two properties:
 
-1. All 9 cards inside the square have the same suit.
-2. All 9 cards inside the square have pairwise different ranks.
+1. All 9 cards have the same suit.
+2. All 9 cards have pairwise distinct ranks.
 
-Jokers cannot remain on the board. Before checking the condition, we may replace every joker with any unused card from the remaining deck. Each replacement card must be distinct and must not already appear on the board.
+Two such squares must exist without overlapping.
 
-The task is not only to decide whether such a configuration exists, but also to print one valid replacement assignment and the coordinates of the two 3×3 squares.
+The twist comes from jokers. The input may contain `J1` and `J2`, representing two distinct jokers from the deck. Before checking the condition, we may replace each joker with any unused card from the remaining deck. The replacement cards must be distinct and must not already appear on the board.
 
-The constraints completely shape the solution. The board dimensions are at most 17×17, but the product `n * m` never exceeds 52 because at most 52 non-joker cards exist in the deck. That means the number of possible 3×3 squares is small:
+The task is not only to decide whether a solution exists, but also to print one valid joker replacement and the coordinates of the two 3×3 squares.
 
-$$(n-2)(m-2) \le 15 \cdot 15 = 225$$
+The constraints are small enough that brute force over board positions is realistic. The number of possible 3×3 squares is at most:
 
-This is tiny. We can afford to examine every possible square and every pair of squares. The only expensive part is joker replacement, but there are at most two jokers, so even brute force over possible replacement cards is manageable.
+$$(17 - 2)^2 = 225$$
 
-A subtle detail is that a square may satisfy both properties simultaneously. For example, nine cards of suit `S` can also have nine distinct ranks. The implementation should treat such a square as valid immediately.
+So even checking all pairs of squares is cheap:
 
-Another easy mistake is forgetting that the two squares must not overlap by cells. Sharing even one cell is forbidden. Consider this example:
+$$225^2 \approx 5 \times 10^4$$
+
+The expensive part is joker replacement. A naive search over all possible card assignments can reach roughly:
+
+$$54^2 \cdot 225^2 \approx 1.5 \times 10^8$$
+
+which is uncomfortable in Python once validation logic is added.
+
+The key observation is that each 3×3 square contains only 9 cells. Whether a square can become valid depends only on those 9 cards, not on the rest of the board. That allows us to preprocess every square independently and record which joker assignments make it valid.
+
+Several edge cases are easy to mishandle.
+
+A joker may lie outside the chosen squares. In that case, its replacement still matters because every card in the deck must remain unique. A careless implementation might assign the same replacement card to both jokers simply because neither joker participates in a square.
+
+For example:
 
 ```
-3 5
-2S 3S 4S 5S 6S
-7S 8S 9S TS JS
-QS KS AS 2H 3H
+3 6
+2S 3S 4S 5S 6S 7S
+8S 9S TS JS QS KS
+AS J1 J2 2H 3H 4H
 ```
 
-The left 3×3 and right 3×3 both satisfy the same-suit condition, but they overlap in a 3×1 strip. The correct answer is still `No solution.`
+The two jokers are irrelevant to the valid square, but they still must receive distinct unused cards.
 
-Joker replacement also creates pitfalls. Suppose we have:
+Another subtle case is overlap detection. Two 3×3 squares are invalid if they share even one cell.
+
+For example, in a 4×4 board:
 
 ```
-3 3
-J1 2S 3S
-4S 5S 6S
-7S 8S 9S
+(1,1) square covers rows 1..3 and cols 1..3
+(2,2) square covers rows 2..4 and cols 2..4
 ```
 
-A careless implementation might replace `J1` with `2H`, since only one cell is missing for nine distinct ranks. But the square already contains rank `2`, so the distinct-rank condition fails. The correct replacement is something like `AS`, which preserves same-suit.
+These overlap in a 2×2 region and cannot be used together.
 
-The final subtlety is deck consistency. Replacement cards must come from cards not already used on the board. If `AS` already exists somewhere outside the target square, we cannot use another `AS` for a joker.
+A common bug is checking only whether top-left corners differ.
+
+The rank condition also requires all 9 ranks to be pairwise distinct. Duplicate ranks immediately invalidate the square, even if suits differ.
+
+Example:
+
+```
+2S 3H 4D
+5C 6S 7H
+8D 2C 9S
+```
+
+This is not valid under the rank rule because rank `2` appears twice.
 
 ## Approaches
 
-The most direct brute-force solution is to try every possible joker replacement and then test every pair of 3×3 squares.
+The most direct solution is brute force.
 
-There are at most two jokers. A full deck has 52 normal cards, so the number of replacement assignments is at most:
+We can enumerate every pair of 3×3 squares, enumerate every possible replacement for each joker, build the final board, and test whether both squares satisfy either condition.
 
-$$52 \cdot 51 = 2652$$
+The board contains at most 225 possible squares. There are at most 54 candidate cards for each joker. Testing one square costs constant time because it always contains exactly 9 cells.
 
-For each assignment, we enumerate every 3×3 square. There are at most 225 of them. Checking one square costs constant time because it always contains exactly 9 cards.
+That gives a worst-case complexity around:
 
-After collecting all valid squares, we test every pair for non-overlap. That is at most:
+$$225^2 \cdot 54^2$$
 
-$$225^2 = 50625$$
+which is already more than 100 million combinations before accounting for validation overhead. Python can struggle with this.
 
-So the total work is comfortably below a few hundred million primitive operations, even in Python.
+The important structural observation is that squares are independent. A square only cares about the cards inside its own 9 cells. So instead of trying all global joker assignments first, we can preprocess each square and ask:
 
-The brute-force succeeds because the search space is naturally tiny. The constraints never allow large boards or many jokers.
+"Which joker replacements make this particular square valid?"
 
-The key observation is that we do not need any complicated pruning or dynamic programming. The problem looks combinatorial because of the card deck, but the actual branching factor is bounded by the two jokers. Once replacements are fixed, the rest becomes pure enumeration.
+Since there are at most two jokers, the number of replacement combinations is tiny:
 
-A tempting but unnecessary optimization is to reason locally about only squares containing jokers. That complicates the implementation because a replacement may affect multiple candidate squares at once. Since the total number of assignments is already tiny, full recomputation is simpler and safer.
+- no jokers: exactly one state
+- one joker: at most 52 possible cards
+- two jokers: at most $52 \cdot 51$
+
+For each square, we test every legal joker assignment once and store all assignments that make the square valid.
+
+After preprocessing, solving the problem becomes easy:
+
+1. Enumerate pairs of non-overlapping squares.
+2. Check whether their valid assignment sets are compatible.
+3. Compatibility means both squares agree on the final joker replacement.
+
+This transforms the problem from repeated expensive validation into a lookup problem.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over all placements and square pairs | O(52² · S²) | O(S) | Accepted |
-| Optimized local reasoning | More complicated | More complicated | Unnecessary |
+| Brute Force | $O(S^2 \cdot C^2)$ | $O(1)$ | Too slow |
+| Optimal | $O(S \cdot C^2 + S^2 \cdot A)$ | $O(S \cdot A)$ | Accepted |
 
-Here `S = (n-2)(m-2)` is the number of 3×3 squares.
+Here:
+
+- $S \le 225$ is the number of squares
+- $C \le 54$ is the number of card assignments
+- $A$ is the number of valid assignments per square
+
+In practice, $A$ is small.
 
 ## Algorithm Walkthrough
 
-1. Parse the board and collect all used non-joker cards.
+1. Parse the board and collect all used regular cards.
 
-We need this so joker replacements only use cards still available in the deck.
-2. Generate the full 52-card deck.
+Jokers are excluded because they may later become any unused card.
+2. Generate the list of unused cards from the full 52-card deck.
 
-The ranks are `23456789TJQKA` and the suits are `CDHS`.
-3. Build the list of available replacement cards.
+These are the only legal replacements for jokers.
+3. Enumerate every 3×3 square on the board.
 
-Every card not already present on the board can be assigned to a joker.
-4. Generate every valid joker replacement assignment.
+A square is identified by its top-left corner.
+4. For each square, test every possible joker assignment.
 
-If there are no jokers, there is exactly one assignment.
+If there are no jokers, there is only one assignment.
 
-If there is one joker, try every available card.
+If there is one joker, try every unused card.
 
-If there are two jokers, try every ordered pair of distinct available cards.
+If there are two jokers, try every ordered pair of distinct unused cards.
+5. After substituting joker values inside the square, test whether the square is valid.
 
-The order matters because `J1` and `J2` are distinct positions.
-5. For each assignment, create the completed board.
+A square is valid if either:
 
-Replace joker cells with the chosen cards.
-6. Enumerate every possible 3×3 square.
+- all suits are identical
+- all ranks are distinct
+6. Store every assignment that makes the square valid.
 
-The upper-left corner ranges from `(0,0)` to `(n-3,m-3)`.
-7. Check whether a square is valid.
+The stored key is the full global joker assignment:
 
-Extract its 9 cards.
+- `()` if no jokers
+- `(card,)` if one joker exists
+- `(card1, card2)` if both exist
+7. Enumerate all pairs of squares.
 
-The square is valid if either:
+Skip pairs whose areas overlap.
+8. For a non-overlapping pair, check whether there exists a joker assignment present in both squares' valid assignment sets.
 
-- all suits are identical, or
-- all ranks are distinct.
-8. Store every valid square.
-
-We only need its upper-left coordinates.
-9. Try every pair of valid squares.
-
-Two squares are compatible if their cell sets do not intersect.
-10. As soon as a non-overlapping pair is found, print the assignment and coordinates.
-
-Any valid answer is acceptable.
-11. If all assignments fail, print `No solution.`
+Since joker replacements are global, both squares must agree on the same final assignment.
+9. As soon as one compatible pair is found, print the required output.
+10. If no pair works, print `"No solution."`
 
 ### Why it works
 
-The algorithm explicitly examines every legal completed board because every joker replacement assignment is tried. For each completed board, it explicitly checks every possible 3×3 square and every possible pair of squares. A solution exists if and only if at least one examined pair satisfies both validity and non-overlap conditions. Since no configuration is skipped, the algorithm cannot miss a valid answer.
+Each square is evaluated under every legal joker replacement. The preprocessing step records exactly the assignments under which the square becomes valid.
+
+Later, when combining two squares, requiring a shared assignment guarantees that the same global joker replacement makes both squares valid simultaneously.
+
+Non-overlap is checked explicitly, so the final configuration always satisfies all constraints.
+
+Because every legal assignment and every square pair is examined, no valid solution can be missed.
 
 ## Python Solution
 
@@ -154,127 +199,139 @@ input = sys.stdin.readline
 RANKS = "23456789TJQKA"
 SUITS = "CDHS"
 
-FULL_DECK = [r + s for r in RANKS for s in SUITS]
-
-def valid_square(board, r, c):
-    suits = set()
-    ranks = set()
-
-    for i in range(r, r + 3):
-        for j in range(c, c + 3):
-            card = board[i][j]
-            ranks.add(card[0])
-            suits.add(card[1])
-
-    return len(suits) == 1 or len(ranks) == 9
+ALL_CARDS = [r + s for r in RANKS for s in SUITS]
 
 def overlap(r1, c1, r2, c2):
-    cells1 = set()
-    cells2 = set()
+    return not (
+        r1 + 2 < r2 or
+        r2 + 2 < r1 or
+        c1 + 2 < c2 or
+        c2 + 2 < c1
+    )
 
-    for i in range(r1, r1 + 3):
-        for j in range(c1, c1 + 3):
-            cells1.add((i, j))
+def valid_square(cells):
+    suits = [x[1] for x in cells]
+    if len(set(suits)) == 1:
+        return True
 
-    for i in range(r2, r2 + 3):
-        for j in range(c2, c2 + 3):
-            cells2.add((i, j))
-
-    return not cells1.isdisjoint(cells2)
+    ranks = [x[0] for x in cells]
+    return len(set(ranks)) == 9
 
 def solve():
     n, m = map(int, input().split())
+    board = [input().split() for _ in range(n)]
 
-    board = []
     jokers = []
     used = set()
 
     for i in range(n):
-        row = input().split()
-        board.append(row)
-
-        for j, card in enumerate(row):
+        for j in range(m):
+            card = board[i][j]
             if card in ("J1", "J2"):
-                jokers.append((card, i, j))
+                jokers.append(card)
             else:
                 used.add(card)
 
-    available = [card for card in FULL_DECK if card not in used]
+    unused = [c for c in ALL_CARDS if c not in used]
+
+    joker_count = len(jokers)
 
     assignments = []
 
-    if len(jokers) == 0:
-        assignments.append({})
-    elif len(jokers) == 1:
-        name, _, _ = jokers[0]
-        for card in available:
-            assignments.append({name: card})
+    if joker_count == 0:
+        assignments.append(())
+    elif joker_count == 1:
+        for c in unused:
+            assignments.append((c,))
     else:
-        for i in range(len(available)):
-            for j in range(len(available)):
-                if i == j:
-                    continue
-                assignments.append({
-                    "J1": available[i],
-                    "J2": available[j]
-                })
+        for c1 in unused:
+            for c2 in unused:
+                if c1 != c2:
+                    assignments.append((c1, c2))
 
-    for assign in assignments:
-        cur = [row[:] for row in board]
+    square_info = []
 
-        for name, r, c in jokers:
-            cur[r][c] = assign[name]
+    for r in range(n - 2):
+        for c in range(m - 2):
+            valid_assignments = set()
 
-        good = []
+            for assn in assignments:
+                cells = []
 
-        for r in range(n - 2):
-            for c in range(m - 2):
-                if valid_square(cur, r, c):
-                    good.append((r, c))
+                ok = True
 
-        for i in range(len(good)):
-            for j in range(i + 1, len(good)):
-                r1, c1 = good[i]
-                r2, c2 = good[j]
+                for i in range(r, r + 3):
+                    for j in range(c, c + 3):
+                        card = board[i][j]
 
-                if not overlap(r1, c1, r2, c2):
-                    print("Solution exists.")
+                        if card == "J1":
+                            if joker_count == 1:
+                                card = assn[0]
+                            else:
+                                card = assn[0]
+                        elif card == "J2":
+                            card = assn[1]
 
-                    if len(jokers) == 0:
-                        print("There are no jokers.")
-                    elif len(jokers) == 1:
-                        print(f"Replace {jokers[0][0]} with {assign[jokers[0][0]]}.")
-                    else:
-                        print(
-                            f"Replace J1 with {assign['J1']} and J2 with {assign['J2']}."
-                        )
+                        cells.append(card)
 
-                    print(f"Put the first square to ({r1 + 1}, {c1 + 1}).")
-                    print(f"Put the second square to ({r2 + 1}, {c2 + 1}).")
-                    return
+                if valid_square(cells):
+                    valid_assignments.add(assn)
+
+            square_info.append((r, c, valid_assignments))
+
+    total = len(square_info)
+
+    for i in range(total):
+        r1, c1, s1 = square_info[i]
+
+        if not s1:
+            continue
+
+        for j in range(i + 1, total):
+            r2, c2, s2 = square_info[j]
+
+            if not s2:
+                continue
+
+            if overlap(r1, c1, r2, c2):
+                continue
+
+            common = s1 & s2
+
+            if common:
+                assn = next(iter(common))
+
+                print("Solution exists.")
+
+                if joker_count == 0:
+                    print("There are no jokers.")
+                elif joker_count == 1:
+                    print(f"Replace {jokers[0]} with {assn[0]}.")
+                else:
+                    print(f"Replace J1 with {assn[0]} and J2 with {assn[1]}.")
+
+                print(f"Put the first square to ({r1 + 1}, {c1 + 1}).")
+                print(f"Put the second square to ({r2 + 1}, {c2 + 1}).")
+                return
 
     print("No solution.")
 
 solve()
 ```
 
-The solution follows the brute-force structure directly because the constraints are small enough to allow exhaustive search.
+The implementation follows the preprocessing strategy directly.
 
-The `valid_square` function checks the two allowed properties independently. The square is accepted if either all suits are equal or all ranks are distinct. Using sets makes this clean: one suit means `len(suits) == 1`, while nine distinct ranks means `len(ranks) == 9`.
+`valid_square` checks the two allowed patterns. Suit equality is tested first because it is slightly cheaper. Rank uniqueness simply uses a set.
 
-The overlap check is implemented with explicit cell sets. Since each square always contains only 9 cells, this stays constant time and avoids tricky rectangle arithmetic mistakes.
+The `assignments` list represents every legal global joker replacement. The ordering matters when both jokers exist because `J1 -> A`, `J2 -> B` differs from `J1 -> B`, `J2 -> A`.
 
-The assignment generation is careful about deck legality. Replacement cards come only from `available`, which excludes every non-joker card already present on the board. When there are two jokers, the code forbids using the same replacement card twice.
+Each square stores a set of valid assignments. Using a set makes intersection testing efficient later.
 
-A subtle implementation detail is copying the board correctly:
+The overlap test is easy to get wrong. Two 3×3 squares do not overlap only if one lies completely above, below, left, or right of the other. Every other configuration overlaps.
 
-```
-cur = [row[:] for row in board]
-```
+The replacement logic inside square construction intentionally substitutes only joker cells. All normal cards remain unchanged.
 
-Using `board[:]` alone would create a shallow copy and mutate the original rows.
-
-The coordinates printed in the output are 1-indexed, so the code adds 1 before printing.
+The final search simply finds a pair of squares with a non-empty assignment intersection.
 
 ## Worked Examples
 
@@ -290,60 +347,72 @@ Input:
 2D 2C 3C 4C 5C 6C
 ```
 
-Possible 3×3 squares:
+Possible squares:
 
-| Top-left | Valid? | Reason |
+| Square | Top-left | Valid |
 | --- | --- | --- |
-| (1,1) | No | Mixed suits, repeated ranks |
-| (1,2) | No | Mixed suits, repeated ranks |
-| (1,3) | No | Mixed suits, repeated ranks |
-| (1,4) | No | Mixed suits, repeated ranks |
-| (2,1) | No | Mixed suits, repeated ranks |
-| (2,2) | No | Mixed suits, repeated ranks |
-| (2,3) | No | Mixed suits, repeated ranks |
-| (2,4) | No | Mixed suits, repeated ranks |
+| A | (1,1) | No |
+| B | (1,2) | No |
+| C | (1,3) | No |
+| D | (1,4) | No |
+| E | (2,1) | No |
+| F | (2,2) | No |
+| G | (2,3) | No |
+| H | (2,4) | No |
 
-No valid square exists at all, so forming two non-overlapping valid squares is impossible.
+No square satisfies either rule, so no pair can work.
 
-The trace demonstrates that the algorithm does not assume every dense suit region is valid. The distinct-rank condition is global over all 9 cards.
+Output:
+
+```
+No solution.
+```
+
+This example demonstrates that even visually structured regions may fail because rank uniqueness requires all nine ranks to differ exactly.
 
 ### Example 2
 
 Input:
 
 ```
-6 6
-2S 3S 4S 2H 3H 4H
-5S 6S 7S 5H 6H 7H
-8S 9S TS 8H 9H TH
-2D 3D 4D 2C 3C 4C
-5D 6D 7D 5C 6C 7C
-8D 9D TD 8C 9C TC
+3 6
+2S 3S 4S 5H 6H 7H
+5S 6S 7S 8H 9H TH
+8S 9S TS J1 QH KH
 ```
 
-Valid squares:
+Unused cards include many possibilities.
 
-| Top-left | Valid? | Reason |
+The left 3×3 square contains:
+
+| 2S | 3S | 4S |
 | --- | --- | --- |
-| (1,1) | Yes | All suits are S |
-| (1,4) | Yes | All suits are H |
-| (4,1) | Yes | All suits are D |
-| (4,4) | Yes | All suits are C |
+| 5S | 6S | 7S |
+| 8S | 9S | TS |
 
-The algorithm immediately finds two non-overlapping squares, for example `(1,1)` and `(1,4)`.
+All suits are `S`, so the square is valid immediately.
 
-This trace confirms the overlap logic. Even though four valid squares exist, the algorithm still checks that chosen pairs do not share cells.
+The right 3×3 square contains ranks:
+
+| H | H | H |
+| --- | --- | --- |
+| H | H | H |
+| J1 | H | H |
+
+Replacing `J1` with `AH` makes all ranks distinct:
+
+$$5,6,7,8,9,T,A,Q,K$$
+
+The algorithm records this assignment as valid for the second square and finds a compatible pair.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(52² · S²) | At most 2652 joker assignments and at most 225 squares |
-| Space | O(S) | Stores all valid squares |
+| Time | $O(S \cdot C^2 + S^2 \cdot A)$ | preprocess all squares and assignments, then test square pairs |
+| Space | $O(S \cdot A)$ | stores valid assignments for each square |
 
-Here `S = (n-2)(m-2)`.
-
-The worst-case operation count easily fits within the 2-second limit because every component is bounded by small constants. Memory usage is negligible.
+With at most 225 squares and at most a few thousand joker assignments, the solution easily fits within the limits.
 
 ## Test Cases
 
@@ -355,91 +424,105 @@ import io
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
 
+    out = io.StringIO()
+    sys.stdout = out
+
     RANKS = "23456789TJQKA"
     SUITS = "CDHS"
-    FULL_DECK = [r + s for r in RANKS for s in SUITS]
+
+    ALL_CARDS = [r + s for r in RANKS for s in SUITS]
+
+    def overlap(r1, c1, r2, c2):
+        return not (
+            r1 + 2 < r2 or
+            r2 + 2 < r1 or
+            c1 + 2 < c2 or
+            c2 + 2 < c1
+        )
+
+    def valid_square(cells):
+        suits = [x[1] for x in cells]
+        if len(set(suits)) == 1:
+            return True
+
+        ranks = [x[0] for x in cells]
+        return len(set(ranks)) == 9
 
     input = sys.stdin.readline
 
-    def valid_square(board, r, c):
-        suits = set()
-        ranks = set()
-
-        for i in range(r, r + 3):
-            for j in range(c, c + 3):
-                card = board[i][j]
-                suits.add(card[1])
-                ranks.add(card[0])
-
-        return len(suits) == 1 or len(ranks) == 9
-
-    def overlap(r1, c1, r2, c2):
-        s1 = set()
-        s2 = set()
-
-        for i in range(r1, r1 + 3):
-            for j in range(c1, c1 + 3):
-                s1.add((i, j))
-
-        for i in range(r2, r2 + 3):
-            for j in range(c2, c2 + 3):
-                s2.add((i, j))
-
-        return not s1.isdisjoint(s2)
-
     n, m = map(int, input().split())
+    board = [input().split() for _ in range(n)]
 
-    board = []
     jokers = []
     used = set()
 
     for i in range(n):
-        row = input().split()
-        board.append(row)
-
-        for j, card in enumerate(row):
+        for j in range(m):
+            card = board[i][j]
             if card in ("J1", "J2"):
-                jokers.append((card, i, j))
+                jokers.append(card)
             else:
                 used.add(card)
 
-    available = [x for x in FULL_DECK if x not in used]
+    unused = [c for c in ALL_CARDS if c not in used]
+
+    joker_count = len(jokers)
 
     assignments = []
 
-    if len(jokers) == 0:
-        assignments.append({})
-    elif len(jokers) == 1:
-        for c in available:
-            assignments.append({jokers[0][0]: c})
+    if joker_count == 0:
+        assignments.append(())
+    elif joker_count == 1:
+        for c in unused:
+            assignments.append((c,))
     else:
-        for a in available:
-            for b in available:
-                if a != b:
-                    assignments.append({"J1": a, "J2": b})
+        for c1 in unused:
+            for c2 in unused:
+                if c1 != c2:
+                    assignments.append((c1, c2))
 
-    out = []
+    square_info = []
 
-    for assign in assignments:
-        cur = [r[:] for r in board]
+    for r in range(n - 2):
+        for c in range(m - 2):
+            valid_assignments = set()
 
-        for name, r, c in jokers:
-            cur[r][c] = assign[name]
+            for assn in assignments:
+                cells = []
 
-        good = []
+                for i in range(r, r + 3):
+                    for j in range(c, c + 3):
+                        card = board[i][j]
 
-        for r in range(n - 2):
-            for c in range(m - 2):
-                if valid_square(cur, r, c):
-                    good.append((r, c))
+                        if card == "J1":
+                            card = assn[0]
+                        elif card == "J2":
+                            card = assn[1]
 
-        for i in range(len(good)):
-            for j in range(i + 1, len(good)):
-                if not overlap(*good[i], *good[j]):
-                    out.append("Solution exists.")
-                    return "\n".join(out)
+                        cells.append(card)
 
-    return "No solution."
+                if valid_square(cells):
+                    valid_assignments.add(assn)
+
+            square_info.append((r, c, valid_assignments))
+
+    total = len(square_info)
+
+    for i in range(total):
+        r1, c1, s1 = square_info[i]
+
+        for j in range(i + 1, total):
+            r2, c2, s2 = square_info[j]
+
+            if overlap(r1, c1, r2, c2):
+                continue
+
+            if s1 & s2:
+                print("Solution exists.")
+                return out.getvalue()
+
+    print("No solution.")
+    return out.getvalue()
 
 # provided sample
 assert run(
@@ -449,92 +532,119 @@ assert run(
 8H 9H TH 7C 8C 9C
 2D 2C 3C 4C 5C 6C
 """
-) == "No solution.", "sample 1"
+).strip() == "No solution.", "sample 1"
 
-# simple valid case
-assert run(
-"""6 6
+# minimum board
+assert "No solution." in run(
+"""3 3
+2S 3S 4S
+5S 6S 7S
+8S 9S TS
+"""
+), "single square cannot form two non-overlapping squares"
+
+# simple positive case
+assert "Solution exists." in run(
+"""3 6
 2S 3S 4S 2H 3H 4H
 5S 6S 7S 5H 6H 7H
 8S 9S TS 8H 9H TH
-2D 3D 4D 2C 3C 4C
-5D 6D 7D 5C 6C 7C
-8D 9D TD 8C 9C TC
 """
-).startswith("Solution exists."), "two obvious suit squares"
+), "two disjoint suit squares"
 
-# one joker needed
-assert run(
+# overlap trap
+assert "No solution." in run(
+"""4 4
+2S 3S 4S 5S
+6S 7S 8S 9S
+TS JS QS KS
+AH 2H 3H 4H
+"""
+), "overlapping valid squares are forbidden"
+
+# joker replacement
+assert "Solution exists." in run(
 """3 6
-J1 3S 4S 2H 3H 4H
-5S 6S 7S 5H 6H 7H
-8S 9S TS 8H 9H TH
+2S 3S 4S 5H 6H 7H
+5S 6S 7S 8H 9H TH
+8S 9S TS J1 QH KH
 """
-).startswith("Solution exists."), "joker replacement"
-
-# overlapping-only valid squares
-assert run(
-"""3 5
-2S 3S 4S 5S 6S
-7S 8S 9S TS JS
-QS KS AS 2H 3H
-"""
-) == "No solution.", "overlap detection"
+), "joker creates distinct ranks"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Sample 1 | No solution. | No valid squares exist |
-| 6×6 four-suit blocks | Solution exists. | Basic successful detection |
-| One joker board | Solution exists. | Joker replacement correctness |
-| 3×5 overlapping squares | No solution. | Non-overlap condition |
+| 3×3 single valid square | No solution | Need two non-overlapping squares |
+| Two horizontal suit squares | Solution exists | Basic positive case |
+| 4×4 overlapping candidates | No solution | Correct overlap detection |
+| One joker repair | Solution exists | Joker substitution logic |
 
 ## Edge Cases
 
-Consider the overlap-only configuration:
+Consider the overlap issue again.
+
+Input:
 
 ```
-3 5
-2S 3S 4S 5S 6S
-7S 8S 9S TS JS
-QS KS AS 2H 3H
+4 4
+2S 3S 4S 5S
+6S 7S 8S 9S
+TS JS QS KS
+AH 2H 3H 4H
 ```
 
-The algorithm finds two valid squares:
+The square at `(1,1)` is valid because all suits are spades.
 
-- top-left `(1,1)`
-- top-left `(1,2)`
-
-Both are all-spade squares. During pair checking, the overlap function builds the two 9-cell sets and detects shared cells. Since every pair overlaps, the final answer becomes `No solution.`
-
-Now consider a joker case:
+The square at `(2,2)` also looks promising:
 
 ```
-3 3
-J1 2S 3S
-4S 5S 6S
 7S 8S 9S
+JS QS KS
+2H 3H 4H
 ```
 
-The available deck excludes every card already present. The algorithm tries all remaining cards for `J1`.
+A buggy implementation might accept both because their top-left coordinates differ.
 
-When trying `AS`, the square becomes entirely spades, so it is valid.
+The algorithm correctly rejects them because rows `2..3` and columns `2..3` overlap.
 
-When trying `2H`, the ranks become:
+Another tricky case involves duplicate ranks.
 
-```
-2 2 3 4 5 6 7 8 9
-```
-
-There are only 8 distinct ranks, so the distinct-rank condition fails. The algorithm rejects this assignment automatically because the set size is not 9.
-
-Finally, consider the smallest possible board:
+Input:
 
 ```
 3 3
-2S 3S 4S
-5S 6S 7S
-8S 9S TS
+2S 3H 4D
+5C 6S 7H
+8D 2C 9S
 ```
 
-Only one 3×3 square exists. Even though it is valid, there cannot be two non-overlapping squares. The algorithm stores exactly one valid square, so the pair loop never finds a solution and correctly prints `No solution.`
+The suits are not uniform.
+
+The ranks are:
+
+```
+2 3 4
+5 6 7
+8 2 9
+```
+
+Rank `2` appears twice, so the square is invalid.
+
+The algorithm uses `len(set(ranks)) == 9`, which catches this immediately.
+
+Finally, consider jokers outside the active squares.
+
+Input:
+
+```
+3 6
+2S 3S 4S 5S 6S 7S
+8S 9S TS JS QS KS
+AS J1 J2 2H 3H 4H
+```
+
+The left square already satisfies the suit condition. The jokers are irrelevant to it.
+
+A careless solution might assign both jokers the same unused card because they are never inspected.
+
+The algorithm generates assignments using ordered distinct pairs only, guaranteeing deck consistency globally.

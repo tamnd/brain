@@ -1,6 +1,6 @@
 ---
 title: "CF 71A - Way Too Long Words"
-description: "We are given several lowercase English words. For each word, we must decide whether it is “too long”. A word is considered too long if its length is greater than 10. Short words stay unchanged. Long words are compressed into a shorter form built from three pieces: 1."
+description: "We are given several lowercase words and must shorten only the ones that are considered \"too long\". A word is too long if its length is greater than 10. The shortening rule is very specific."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "strings"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Beta Round 65 (Div. 2)"
 rating: 800
 weight: 71
-solve_time_s: 89
+solve_time_s: 88
 verified: true
 draft: false
 ---
@@ -18,126 +18,129 @@ draft: false
 
 **Rating:** 800  
 **Tags:** strings  
-**Solve time:** 1m 29s  
+**Solve time:** 1m 28s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given several lowercase English words. For each word, we must decide whether it is “too long”. A word is considered too long if its length is greater than 10.
+We are given several lowercase words and must shorten only the ones that are considered "too long". A word is too long if its length is greater than 10.
 
-Short words stay unchanged. Long words are compressed into a shorter form built from three pieces:
+The shortening rule is very specific. We keep the first character and the last character, then replace everything in between with the count of removed characters. For example, `"localization"` has 12 characters, so we keep `'l'` and `'n'`, and there are 10 characters between them. The result becomes `"l10n"`.
 
-1. The first character.
-2. The number of characters between the first and last character.
-3. The last character.
+Each input word is processed independently. For every word, we either print it unchanged or print its abbreviation.
 
-For example, `"localization"` has 12 characters. The first letter is `'l'`, the last letter is `'n'`, and there are 10 characters between them, so the result becomes `"l10n"`.
+The constraints are very small. There are at most 100 words, and each word has length at most 100. Even a straightforward character-by-character solution easily fits within the limits. The total amount of text processed is tiny, so any linear-time approach is more than enough.
 
-The input begins with an integer `n`, followed by `n` words. We process each word independently and print the transformed version.
+The tricky part is not performance, it is handling the boundary conditions correctly.
 
-The constraints are extremely small. There are at most 100 words, and each word has length at most 100. Even a simple character-by-character solution runs comfortably within the limits. A solution with linear complexity in the total input size is more than enough.
+One common mistake is abbreviating words whose length is exactly 10. The condition says strictly more than 10.
 
-The tricky part is not performance, it is handling boundary conditions correctly.
-
-One easy mistake is using `>= 10` instead of `> 10`. Words of exactly length 10 must remain unchanged.
-
-Consider this input:
+Example input:
 
 ```
 1
 abcdefghij
 ```
 
-The correct output is:
+Correct output:
 
 ```
 abcdefghij
 ```
 
-A careless implementation might produce `"a8j"` because it abbreviates words with length at least 10 instead of strictly greater than 10.
+A careless implementation using `>= 10` would incorrectly produce:
 
-Another common mistake is computing the middle count incorrectly. The number written in the abbreviation is not the total length, it is the number of characters strictly between the first and last.
+```
+a8j
+```
 
-For example:
+Another mistake is computing the middle count incorrectly. The number inserted is the count of characters between the first and last characters, which is `len(word) - 2`.
+
+Example input:
 
 ```
 1
 localization
 ```
 
-The word length is 12. The correct abbreviation is:
+Correct output:
 
 ```
 l10n
 ```
 
-Using `len(word) - 1` instead of `len(word) - 2` would incorrectly produce `"l11n"`.
+If someone uses `len(word) - 1`, they would incorrectly print:
 
-A third subtle issue is indexing the last character. Python allows negative indexing, but using the wrong position can silently produce incorrect output.
+```
+l11n
+```
 
-Example:
+Single-character words are another edge case worth checking.
+
+Example input:
 
 ```
 1
-abcdefghijk
+a
 ```
 
 Correct output:
 
 ```
-a9k
+a
 ```
 
-If someone accidentally uses `word[len(word) - 2]`, the output becomes `"a9j"`.
+The word is not long enough to abbreviate, so it must remain unchanged. Accessing the first and last character is still valid here because they are the same character.
 
 ## Approaches
 
-The most direct approach is to process every word separately and explicitly build its abbreviation when needed.
+The most direct way to solve the problem is brute force simulation. For every word, we check its length. If the length is at most 10, we print the word unchanged. Otherwise, we build the abbreviation by taking the first character, computing how many characters lie in the middle, and appending the last character.
 
-For each word, we first check its length. If the length is at most 10, we print the original word. Otherwise, we take the first character, compute how many characters lie in the middle, append the last character, and print the result.
+This already works efficiently because the constraints are extremely small. Even if every word had length 100, we would process at most 10,000 characters total. That is effectively instant.
 
-This already solves the problem efficiently because the input is tiny. If there are at most 100 words and each has length at most 100, then even scanning every character multiple times costs only around 10,000 operations.
+A slower brute-force variant would literally count the middle characters one by one instead of using arithmetic. For example, for a word of length 20, we could loop from index 1 to index 18 and increment a counter. This still passes because the input is tiny, but it performs unnecessary work.
 
-A more “brute-force” interpretation would be constructing the middle portion explicitly and counting it manually. For example, for `"localization"` we could slice `"ocalizatio"` and count its characters one by one before forming the abbreviation. This works correctly but performs unnecessary work.
-
-The key observation is that the middle count is always:
+The key observation is that the number of removed characters does not need to be counted manually. Once we know the word length, the middle count is always:
 
 ```
 length - 2
 ```
 
-We never need to inspect the middle characters themselves. Only the first and last characters matter. Once we realize this, the solution becomes a constant amount of work per word aside from reading the input.
+That reduces the operation to constant time per word, aside from reading the input itself.
+
+The brute-force idea works because every word is independent. There is no interaction between words, no complicated data structure, and no hidden optimization trick. The only task is applying a fixed transformation rule consistently.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(total characters) | O(word length) | Accepted |
-| Optimal | O(total characters) | O(1) extra | Accepted |
-
-Even though both versions have the same asymptotic complexity under these constraints, the optimal version is cleaner and avoids unnecessary temporary work.
+| Brute Force counting middle letters manually | O(total characters) | O(1) | Accepted |
+| Optimal arithmetic construction | O(total characters) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integer `n`, the number of words to process.
+1. Read the integer `n`, the number of words.
 2. Repeat `n` times and read one word each iteration.
-3. Check the length of the current word.
-4. If the length is less than or equal to 10, print the word unchanged.
+3. Check the word length.
 
-Words of length exactly 10 are not abbreviated, so the condition must be `<= 10`.
-5. Otherwise, build the abbreviation:
+If the length is less than or equal to 10, print the word unchanged because it is not considered too long.
+4. Otherwise, construct the abbreviation.
 
-- Take the first character with `word[0]`.
-- Compute the number of middle characters as `len(word) - 2`.
-- Take the last character with `word[-1]`.
-6. Concatenate these three parts and print the result.
+Take the first character using `word[0]`.
+5. Compute how many characters are between the first and last characters.
+
+This value is `len(word) - 2` because we exclude exactly two characters, the first and the last.
+6. Take the last character using `word[-1]`.
+7. Concatenate the first character, the middle count converted to a string, and the last character, then print the result.
 
 ### Why it works
 
-For every long word, the required abbreviation format is uniquely defined by the problem: first letter, count of internal letters, last letter.
+The algorithm directly follows the definition of the abbreviation. Every long word is transformed into:
 
-If a word has length `L`, then removing the first and last characters leaves exactly `L - 2` middle characters. The algorithm computes exactly this value and preserves the required boundary characters, so every produced abbreviation matches the specification.
+```
+first letter + number of middle letters + last letter
+```
 
-For short words, the algorithm prints the original word unchanged, which is also exactly what the problem asks for.
+The count of middle letters is always the total length minus the two preserved boundary characters. Since every word is processed independently and the transformation exactly matches the required format, the algorithm always produces the correct output.
 
 ## Python Solution
 
@@ -153,42 +156,19 @@ for _ in range(n):
     if len(word) <= 10:
         print(word)
     else:
-        print(word[0] + str(len(word) - 2) + word[-1])
+        abbreviated = word[0] + str(len(word) - 2) + word[-1]
+        print(abbreviated)
 ```
 
-The program starts by reading the number of words.
+The program starts by reading the number of words. Then it processes each word independently.
 
-For each word, `strip()` removes the trailing newline character from the input. Without this step, the newline would incorrectly affect the length calculation.
+The `strip()` call removes the trailing newline character from the input. Without it, the newline would become part of the string length and produce incorrect results.
 
-The condition `len(word) <= 10` handles the boundary correctly. Only words with strictly greater length are abbreviated.
+The condition `len(word) <= 10` matches the problem statement exactly. Using `< 10` or `>= 10` would introduce an off-by-one bug.
 
-The abbreviation construction is compact but important to understand carefully:
+For long words, the abbreviation is built from three pieces. `word[0]` gives the first character, `len(word) - 2` gives the number of skipped middle characters, and `word[-1]` gives the final character.
 
-```
-word[0]
-```
-
-extracts the first character.
-
-```
-len(word) - 2
-```
-
-counts how many characters remain after excluding the first and last positions.
-
-```
-word[-1]
-```
-
-extracts the final character safely using Python’s negative indexing.
-
-The count must be converted to a string before concatenation:
-
-```
-str(len(word) - 2)
-```
-
-Otherwise Python would raise a type error when combining strings and integers.
+Using `word[-1]` is convenient because it always refers to the last character regardless of the word length.
 
 ## Worked Examples
 
@@ -206,44 +186,48 @@ pneumonoultramicroscopicsilicovolcanoconiosis
 
 Trace:
 
-| Word | Length | Too Long? | Abbreviation | Output |
+| Word | Length | Too Long? | Middle Count | Output |
 | --- | --- | --- | --- | --- |
 | word | 4 | No | - | word |
-| localization | 12 | Yes | l10n | l10n |
-| internationalization | 20 | Yes | i18n | i18n |
-| pneumonoultramicroscopicsilicovolcanoconiosis | 45 | Yes | p43s | p43s |
+| localization | 12 | Yes | 10 | l10n |
+| internationalization | 20 | Yes | 18 | i18n |
+| pneumonoultramicroscopicsilicovolcanoconiosis | 45 | Yes | 43 | p43s |
 
-This example shows both branches of the algorithm. Short words pass through unchanged, while long words are compressed using the exact middle-character count.
+This trace shows the central rule of the problem. Short words remain untouched, while long words are compressed into the first letter, the middle count, and the last letter.
 
 ### Example 2
 
 Input:
 
 ```
-3
+5
 abcdefghij
 abcdefghijk
-hi
+a
+codeforces
+short
 ```
 
 Trace:
 
-| Word | Length | Too Long? | Abbreviation | Output |
+| Word | Length | Too Long? | Middle Count | Output |
 | --- | --- | --- | --- | --- |
 | abcdefghij | 10 | No | - | abcdefghij |
-| abcdefghijk | 11 | Yes | a9k | a9k |
-| hi | 2 | No | - | hi |
+| abcdefghijk | 11 | Yes | 9 | a9k |
+| a | 1 | No | - | a |
+| codeforces | 10 | No | - | codeforces |
+| short | 5 | No | - | short |
 
-This trace focuses on the boundary at length 10. The first word must remain unchanged, while the second word, with length 11, is abbreviated.
+This example focuses on the boundary condition. Words of length exactly 10 are not abbreviated. Only lengths strictly greater than 10 qualify.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(total characters) | Each word is read once and processed in constant additional work |
-| Space | O(1) extra | Only a few variables are used |
+| Time | O(total characters) | Each word is read once and processed in linear time relative to its length |
+| Space | O(1) | Only a few variables are used regardless of input size |
 
-The total input size is tiny, at most 10,000 characters. A linear scan over the input easily fits within the 1 second time limit and the 256 MB memory limit.
+The limits are tiny, so this solution easily fits within both the 1 second time limit and the 256 MB memory limit. Even processing every character individually would be fast enough.
 
 ## Test Cases
 
@@ -269,20 +253,12 @@ def solve():
     print("\n".join(out))
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
     solve()
 
-    output = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return output
+    return sys.stdout.getvalue()
 
 # provided sample
 assert run(
@@ -300,7 +276,7 @@ p43s
 """
 ), "sample 1"
 
-# minimum size input
+# minimum-size input
 assert run(
 """1
 a
@@ -310,17 +286,19 @@ a
 """
 ), "single character word"
 
-# boundary length exactly 10
+# boundary length 10 should not abbreviate
 assert run(
-"""1
+"""2
 abcdefghij
+codeforces
 """
 ) == (
 """abcdefghij
+codeforces
 """
-), "length 10 should not abbreviate"
+), "length exactly 10"
 
-# boundary length 11
+# length 11 should abbreviate
 assert run(
 """1
 abcdefghijk
@@ -328,9 +306,9 @@ abcdefghijk
 ) == (
 """a9k
 """
-), "length 11 should abbreviate"
+), "length 11"
 
-# multiple identical long words
+# multiple equal long words
 assert run(
 """3
 localization
@@ -342,21 +320,19 @@ localization
 l10n
 l10n
 """
-), "repeated words"
-
-print("All tests passed!")
+), "repeated inputs"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
 | `a` | `a` | Minimum possible word length |
-| `abcdefghij` | `abcdefghij` | Length exactly 10 stays unchanged |
-| `abcdefghijk` | `a9k` | First abbreviation boundary |
-| Three copies of `localization` | Three copies of `l10n` | Repeated processing consistency |
+| `abcdefghij` | `abcdefghij` | Boundary condition at length 10 |
+| `abcdefghijk` | `a9k` | First length that should abbreviate |
+| Repeated `localization` | Repeated `l10n` | Consistent processing across multiple words |
 
 ## Edge Cases
 
-A word with exactly 10 characters is the most important boundary case.
+A word with length exactly 10 must remain unchanged.
 
 Input:
 
@@ -365,62 +341,60 @@ Input:
 abcdefghij
 ```
 
-The algorithm computes `len(word) == 10`. Since the condition is `<= 10`, it prints the word unchanged:
+The algorithm checks `len(word) <= 10`. Since the length is exactly 10, the condition is true and the original word is printed.
+
+Output:
 
 ```
 abcdefghij
 ```
 
-This avoids the common mistake of abbreviating length-10 words.
+This avoids the common off-by-one mistake of abbreviating words that should stay unchanged.
 
-Another subtle case is verifying the middle count.
+A very long word must compute the middle count correctly.
 
 Input:
 
 ```
 1
-localization
+internationalization
 ```
 
-The length is 12. The algorithm computes:
+The length is 20. The algorithm computes:
 
 ```
-12 - 2 = 10
+20 - 2 = 18
 ```
 
 Then it combines:
 
 ```
-'l' + '10' + 'n'
+i + 18 + n
 ```
 
-which produces:
+Output:
 
 ```
-l10n
+i18n
 ```
 
-This confirms the algorithm counts only the characters strictly between the endpoints.
+This confirms that the count refers only to the characters between the first and last letters.
 
-A final edge case checks correct last-character access.
+Single-character words also work correctly.
 
 Input:
 
 ```
 1
-abcdefghijk
+a
 ```
 
-The algorithm uses:
+The length is 1, so the word is not abbreviated. The algorithm directly prints the original word.
+
+Output:
 
 ```
-word[-1]
+a
 ```
 
-which correctly selects `'k'`. The result becomes:
-
-```
-a9k
-```
-
-Using the wrong index would silently produce the wrong abbreviation, so this confirms the indexing logic is correct.
+No special-case handling is needed because the condition prevents unnecessary abbreviation logic.

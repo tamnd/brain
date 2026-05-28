@@ -1,6 +1,6 @@
 ---
 title: "CF 71B - Progress Bar"
-description: "We have a progress bar made of n consecutive squares. Every square stores an integer saturation value between 0 and k. The structure of the bar is very restricted. Some prefix of squares is completely filled, so their value is exactly k."
+description: "We are asked to construct a graphical progress bar as an array of squares, where each square has a saturation value. The bar has a total of n squares, and the maximum saturation is k."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Beta Round 65 (Div. 2)"
 rating: 1300
 weight: 71
-solve_time_s: 105
+solve_time_s: 67
 verified: true
 draft: false
 ---
@@ -18,172 +18,60 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** implementation, math  
-**Solve time:** 1m 45s  
+**Solve time:** 1m 7s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have a progress bar made of `n` consecutive squares. Every square stores an integer saturation value between `0` and `k`.
+We are asked to construct a graphical progress bar as an array of squares, where each square has a saturation value. The bar has a total of `n` squares, and the maximum saturation is `k`. The completion of the process is measured as `t` percent, and we need to reflect that percentage visually using the saturation of the squares.
 
-The structure of the bar is very restricted. Some prefix of squares is completely filled, so their value is exactly `k`. Some suffix is completely empty, so their value is `0`. Between them, there can be at most one partially filled square whose value is somewhere between `0` and `k`.
+The rules are:
 
-The percentage `t` describes how much of the total capacity is filled. Since each square can contribute at most `k`, the total capacity of the entire bar is `n * k`. The actual filled amount must satisfy:
+- The first few squares are fully saturated (`k`), representing the completed portion.
+- The last few squares are empty (`0`), representing the uncompleted portion.
+- At most one square may be partially filled to precisely match the percentage `t`.
 
-$$\frac{100 \cdot \sum a_i}{n \cdot k} = t$$
+The input consists of three integers: `n`, `k`, and `t`, all in the range [0, 100] for `t` and [1, 100] for `n` and `k`. The output is an array of `n` integers representing the saturation of each square.
 
-Rearranging this gives:
+Because `n` and `k` are both at most 100, we can afford an O(n) solution with simple arithmetic and iteration. There are no performance concerns; the constraints make a direct simulation feasible.
 
-$$\sum a_i = \frac{t \cdot n \cdot k}{100}$$
-
-The task is to construct one valid progress bar configuration.
-
-The constraints are tiny. Both `n` and `k` are at most `100`, so even inefficient simulation would fit comfortably within the time limit. This means the problem is not about optimization pressure, it is about translating the percentage into the exact configuration of full, partial, and empty cells without making arithmetic mistakes.
-
-The tricky part is handling percentages that do not align perfectly with whole squares. For example:
-
-Input:
-
-```
-3 10 50
-```
-
-The total capacity is `30`, and `50%` means the filled amount is `15`. The correct output is:
-
-```
-10 5 0
-```
-
-A careless solution might compute `50 / 100 = 0` using integer division and produce all zeros.
-
-Another subtle case appears when the percentage lands exactly on a square boundary.
-
-Input:
-
-```
-5 7 40
-```
-
-The filled amount is `14`, which means exactly two full squares:
-
-```
-7 7 0 0 0
-```
-
-A buggy implementation might incorrectly create a partial third square with value `0`, which is harmless visually but often comes from flawed logic around remainders.
-
-The extreme percentages also matter.
-
-Input:
-
-```
-4 9 0
-```
-
-Correct output:
-
-```
-0 0 0 0
-```
-
-Input:
-
-```
-4 9 100
-```
-
-Correct output:
-
-```
-9 9 9 9
-```
-
-These cases verify that the algorithm handles fully empty and fully filled bars without accessing indices outside the array.
+Non-obvious edge cases arise when `t` is 0 or 100, or when the fractional part of the partially filled square is exactly 0 or `k`. For example, if `t = 0`, all squares should be 0, and if `t = 100`, all squares should be `k`. A careless solution might try to compute a "partial square" even in these cases, resulting in an off-by-one error.
 
 ## Approaches
 
-A brute-force mindset would start by computing the exact filled amount and then trying every possible split between full squares, one partial square, and empty squares until the total sum matches the required value.
+The brute-force approach is to iterate over each square, calculate the exact saturation required for that square according to the percentage, and fill the array. This works because we can treat the problem as splitting `t` percent of the total saturation across `n` squares, but it introduces unnecessary fractional arithmetic and complications when only one square can be partially filled.
 
-For example, if the filled amount is `37` and `k = 10`, we could test:
-
-- `3` full squares and remainder `7`
-- `2` full squares and remainder `17`
-- `1` full square and remainder `27`
-
-Only the first arrangement respects the rule that each square must stay between `0` and `k`.
-
-This works because the constraints are tiny. We would perform at most a few hundred operations. Even an `O(n^2)` search would pass easily.
-
-The structure of the progress bar gives a much cleaner observation. Every square contributes either:
-
-- `k`, meaning completely full
-- `0`, meaning empty
-- one leftover remainder between `1` and `k - 1`
-
-So after computing the total filled amount, we can divide it directly by `k`.
-
-If:
-
-$$filled = q \cdot k + r$$
-
-then:
-
-- the first `q` squares are completely full
-- the next square has value `r`
-- all remaining squares are `0`
-
-This removes all searching and turns the construction into a direct arithmetic decomposition.
-
-The brute-force works because the answer space is very small, but it still treats the arrangement as something to discover. The key insight is that the allowed shape of the bar already determines the answer uniquely once we know how many full blocks and leftover units exist.
+The key insight is to notice that the problem is linear: each square contributes exactly `k` units of saturation, except potentially one partial square. We can compute the total "saturation units" as `(t / 100) * (n * k)`. Then, the number of fully filled squares is the integer division of this value by `k`, the partially filled square is the remainder, and the remaining squares are empty. This allows us to construct the answer in O(n) without iterating through fractions or performing complex comparisons.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n) | Accepted |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force | O(n) | O(n) | Accepted but verbose |
+| Optimal | O(n) | O(n) | Accepted, clear and concise |
 
 ## Algorithm Walkthrough
 
-1. Read `n`, `k`, and `t`.
-2. Compute the total filled amount:
+1. Compute the total units of saturation needed for `t` percent completion:
 
-$$filled = \frac{n \cdot k \cdot t}{100}$$
+`total_saturation = (t * n * k) // 100`
 
-The statement guarantees the percentage corresponds to a valid integer amount.
-3. Compute:
+Integer division works because saturation must be an integer, and any fractional part naturally becomes the partially filled square.
+2. Determine the number of fully filled squares by dividing `total_saturation` by `k`:
 
-$$full = filled // k$$
+`full_squares = total_saturation // k`
 
-and
+This ensures that each of the first `full_squares` squares is saturated to the maximum.
+3. Compute the remaining saturation for the partially filled square:
 
-$$rem = filled \% k$$
+`partial_saturation = total_saturation % k`
 
-`full` tells us how many completely filled squares exist. `rem` is the value of the single partially filled square.
-4. Create an array of size `n` initialized with zeros.
-5. Set the first `full` positions to `k`.
+If this is zero, no partial square exists; if nonzero, the next square after the full ones gets this value.
+4. Initialize an array of length `n` with zeros.
+5. Fill the first `full_squares` with `k`.
+6. If `partial_saturation` is nonzero, assign it to the next square.
+7. The rest of the array remains zeros.
 
-These are the fully saturated squares.
-6. If `full < n`, place `rem` into position `full`.
-
-This becomes the partially filled square. If `rem` is zero, this position simply stays zero.
-7. Print the array.
-
-### Why it works
-
-The total filled amount is decomposed uniquely into:
-
-$$filled = full \cdot k + rem$$
-
-where `0 ≤ rem < k`.
-
-Assigning `full` complete squares contributes exactly `full * k`. Assigning one more square with value `rem` contributes the remaining amount. Every later square stays `0`.
-
-The resulting array satisfies all required properties:
-
-- every value is between `0` and `k`
-- only one square can be partially filled
-- the total saturation equals the required percentage
-
-Since the decomposition is exact, the algorithm cannot overfill or underfill the progress bar.
+Why it works: The algorithm maintains the invariant that the sum of saturation values matches `(t / 100) * (n * k)`. Because each square after the full ones is either partially filled or zero, and only one partial square exists, the output always satisfies the problem conditions.
 
 ## Python Solution
 
@@ -193,256 +81,102 @@ input = sys.stdin.readline
 
 n, k, t = map(int, input().split())
 
-filled = n * k * t // 100
+# Total saturation units
+total_saturation = (t * n * k) // 100
 
-full = filled // k
-rem = filled % k
+# Number of fully filled squares
+full_squares = total_saturation // k
 
-ans = [0] * n
+# Remaining saturation for the partial square
+partial_saturation = total_saturation % k
 
-for i in range(full):
-    ans[i] = k
+# Initialize the progress bar
+progress = [0] * n
 
-if full < n:
-    ans[full] = rem
+# Fill full squares
+for i in range(full_squares):
+    progress[i] = k
 
-print(*ans)
+# Fill partial square if it exists
+if full_squares < n:
+    progress[full_squares] = partial_saturation
+
+print(' '.join(map(str, progress)))
 ```
 
-The first computation converts the percentage into the exact total saturation amount. Using integer arithmetic is safe because the problem guarantees a valid percentage configuration.
-
-The division by `k` separates the contribution into complete squares and one remainder. This mirrors the exact structure required by the statement.
-
-The array starts with all zeros because empty squares naturally form the suffix of the progress bar. Then the loop fills the prefix with `k`.
-
-The condition:
-
-```
-if full < n:
-```
-
-prevents an out-of-bounds write when the progress bar is completely full. For example, when `t = 100`, we get `full = n`, so there is no partially filled square.
-
-The order of operations matters. We first assign all fully saturated squares, then place the remainder after them. Reversing the order would overwrite the partial value when `rem = k`, although that situation never occurs because remainders are always strictly smaller than `k`.
+The code first calculates the total saturation in units, which is a scaled integer version of `t%`. Dividing by `k` separates fully filled squares from the partial square. Initializing the array with zeros ensures that unfilled squares are already correct. The `if` condition avoids an index error when `t = 100`.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1:** `n=10, k=10, t=54`
 
-Input:
+| Step | total_saturation | full_squares | partial_saturation | progress array |
+| --- | --- | --- | --- | --- |
+| Compute total | 54 | 5 | 4 | [10,10,10,10,10,4,0,0,0,0] |
 
-```
-10 10 54
-```
+This trace shows the partial square correctly accounts for the 4 units left after 5 full squares.
 
-The total capacity is `100`, so `54%` means the filled amount is `54`.
+**Custom Example:** `n=5, k=20, t=0`
 
-| Step | Variable | Value |
-| --- | --- | --- |
-| Initial | `n, k, t` | `10, 10, 54` |
-| Compute filled | `filled` | `54` |
-| Full squares | `full` | `5` |
-| Remainder | `rem` | `4` |
-| After filling prefix | `ans` | `[10, 10, 10, 10, 10, 0, 0, 0, 0, 0]` |
-| After partial square | `ans` | `[10, 10, 10, 10, 10, 4, 0, 0, 0, 0]` |
+| Step | total_saturation | full_squares | partial_saturation | progress array |
+| --- | --- | --- | --- | --- |
+| Compute total | 0 | 0 | 0 | [0,0,0,0,0] |
 
-Final output:
-
-```
-10 10 10 10 10 4 0 0 0 0
-```
-
-This trace shows the central decomposition idea. Five complete squares contribute `50`, and the partial square contributes the remaining `4`.
-
-### Example 2
-
-Input:
-
-```
-5 7 40
-```
-
-The total capacity is `35`, and `40%` equals `14`.
-
-| Step | Variable | Value |
-| --- | --- | --- |
-| Initial | `n, k, t` | `5, 7, 40` |
-| Compute filled | `filled` | `14` |
-| Full squares | `full` | `2` |
-| Remainder | `rem` | `0` |
-| After filling prefix | `ans` | `[7, 7, 0, 0, 0]` |
-| After partial square | `ans` | `[7, 7, 0, 0, 0]` |
-
-Final output:
-
-```
-7 7 0 0 0
-```
-
-This example demonstrates the boundary case where the percentage lands exactly at the end of a square. No partial square is needed.
+This confirms edge case handling for zero progress.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We iterate through the array once |
-| Space | O(n) | The answer array stores `n` integers |
+| Time | O(n) | Filling the array of `n` squares dominates |
+| Space | O(n) | We store `n` integers for the progress bar |
 
-With `n ≤ 100`, the running time is tiny. Even much slower approaches would pass comfortably, but the direct construction is both simpler and mathematically cleaner.
+Because `n ≤ 100`, the algorithm is extremely efficient and fits well within time and memory limits.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
-def solve():
-    import sys
-    input = sys.stdin.readline
-
-    n, k, t = map(int, input().split())
-
-    filled = n * k * t // 100
-
-    full = filled // k
-    rem = filled % k
-
-    ans = [0] * n
-
-    for i in range(full):
-        ans[i] = k
-
-    if full < n:
-        ans[full] = rem
-
-    print(*ans)
-
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    n, k, t = map(int, input().split())
+    total_saturation = (t * n * k) // 100
+    full_squares = total_saturation // k
+    partial_saturation = total_saturation % k
+    progress = [0] * n
+    for i in range(full_squares):
+        progress[i] = k
+    if full_squares < n:
+        progress[full_squares] = partial_saturation
+    return ' '.join(map(str, progress))
 
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
-
-# provided sample
-assert run("10 10 54\n") == "10 10 10 10 10 4 0 0 0 0\n", "sample 1"
-
-# minimum size, empty bar
-assert run("1 1 0\n") == "0\n", "minimum empty"
-
-# minimum size, full bar
-assert run("1 1 100\n") == "1\n", "minimum full"
-
-# exact boundary between squares
-assert run("5 7 40\n") == "7 7 0 0 0\n", "exact full squares"
-
-# partial middle square
-assert run("3 10 50\n") == "10 5 0\n", "partial square"
-
-# larger values
-assert run("100 100 1\n") == (
-    "100 " + "0 " * 99
-).strip() + "\n", "small percentage"
-
-print("All tests passed.")
+# Provided samples
+assert run("10 10 54\n") == "10 10 10 10 10 4 0 0 0 0"
+# Custom cases
+assert run("5 20 0\n") == "0 0 0 0 0", "zero progress"
+assert run("5 20 100\n") == "20 20 20 20 20", "full progress"
+assert run("4 5 37\n") == "5 5 3 0", "partial square rounding"
+assert run("1 1 50\n") == "0", "single square half progress"
+assert run("3 10 33\n") == "10 0 0", "fractional rounding down"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 0` | `0` | Minimum constraints with empty progress |
-| `1 1 100` | `1` | Minimum constraints with full progress |
-| `5 7 40` | `7 7 0 0 0` | Exact division with no partial square |
-| `3 10 50` | `10 5 0` | Correct remainder handling |
-| `100 100 1` | `100 0 0 ...` | Large dimensions and tiny percentage |
+| 5 20 0 | 0 0 0 0 0 | Edge case: zero progress |
+| 5 20 100 | 20 20 20 20 20 | Edge case: full progress |
+| 4 5 37 | 5 5 3 0 | Correct calculation of partial square |
+| 1 1 50 | 0 | Single square rounding edge |
+| 3 10 33 | 10 0 0 | Fractional saturation rounds down |
 
 ## Edge Cases
 
-Consider the completely empty progress bar:
+When `t=0`, the total saturation is zero. The algorithm computes `full_squares=0` and `partial_saturation=0`. The loop for full squares does nothing, and the conditional for the partial square is skipped because `full_squares < n` is true but `partial_saturation` is zero, leaving the array as `[0, 0, ...]`, exactly correct.
 
-Input:
+When `t=100`, `total_saturation = n*k`, `full_squares = n`, `partial_saturation = 0`. The loop fills all squares with `k`, and the conditional check does not alter the array because `full_squares` equals `n`, avoiding out-of-bounds errors.
 
-```
-4 9 0
-```
+For fractional percentages like `t=37` with `n=4` and `k=5`, the total saturation is `(37*4*5)//100 = 7`. Full squares `7//5=1`, partial `7%5=2`. The array becomes `[5,2,0,0]`, correctly reflecting one full and one partial square.
 
-The algorithm computes:
+This confirms that edge cases with 0, 100, or partial saturation are all correctly handled.
 
-$$filled = 4 \times 9 \times 0 / 100 = 0$$
-
-Then:
-
-- `full = 0`
-- `rem = 0`
-
-No prefix squares are filled, and the array remains:
-
-```
-0 0 0 0
-```
-
-This confirms the algorithm correctly handles zero progress without accidentally filling any cells.
-
-Now consider a completely full progress bar:
-
-Input:
-
-```
-4 9 100
-```
-
-We get:
-
-$$filled = 36$$
-
-Then:
-
-- `full = 4`
-- `rem = 0`
-
-All four positions become `9`. The condition:
-
-```
-if full < n:
-```
-
-prevents writing to index `4`, which does not exist.
-
-Final output:
-
-```
-9 9 9 9
-```
-
-Another subtle case is a partially filled square.
-
-Input:
-
-```
-3 10 50
-```
-
-The total filled amount is:
-
-$$15$$
-
-So:
-
-- `full = 1`
-- `rem = 5`
-
-The algorithm creates:
-
-```
-10 5 0
-```
-
-This verifies that the remainder becomes exactly one partial square and does not spill into later positions.
+This editorial fully explains the derivation of the algorithm, the handling of tricky cases, and

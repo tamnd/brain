@@ -85,5 +85,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [68](68/) | [Codeforces Beta Round 62](https://codeforces.com/contest/68) | Beta | 1100-2900 | 5/5 | 26m 18s |
 | [69](69/) | [Codeforces Beta Round 63 (Div. 2)](https://codeforces.com/contest/69) | Div. 2 | 1000-2000 | 5/5 | 9m 17s |
 | [70](70/) | [Codeforces Beta Round 64](https://codeforces.com/contest/70) | Beta | 1300-2700 | 4/5 | 10m 23s |
-| [71](71/) | [Codeforces Beta Round 65 (Div. 2)](https://codeforces.com/contest/71) | Div. 2 | 800-2200 | 4/5 | 9m 49s |
+| [71](71/) | [Codeforces Beta Round 65 (Div. 2)](https://codeforces.com/contest/71) | Div. 2 | 800-2200 | 4/5 | 8m 23s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
