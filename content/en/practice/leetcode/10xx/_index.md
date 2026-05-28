@@ -102,9 +102,10 @@ draft: false
 | 1089 | [Duplicate Zeros](1089.md) | 🟢 Easy | 48s | The problem asks us to modify a fixed-length integer array in-place… |
 | 1090 | [Largest Values From Labels](1090.md) | 🟡 Medium | 1m 21s | This problem gives us two arrays, values and labels, where each ind… |
 | 1091 | [Shortest Path in Binary Matrix](1091.md) | 🟡 Medium | 52s | The problem asks us to find the shortest path from the top-left cor… |
-| 1093 | [Statistics from a Large Sample](1093.md) | 🟡 Medium | 1m 26s | This problem gives us a compressed representation of a very large d… |
-| 1094 | [Car Pooling](1094.md) | 🟡 Medium | 1m 6s | The problem describes a car traveling only in one direction, east. … |
+| 1092 | [Shortest Common Supersequence ](1092.md) | 🔴 Hard | 1m 11s | The problem gives us two strings, str1 and str2, and asks us to con… |
+| 1093 | [Statistics from a Large Sample](1093.md) | 🟡 Medium | 53s | This problem asks us to compute several descriptive statistics-mini… |
+| 1094 | [Car Pooling](1094.md) | 🟡 Medium | 1m 9s | This problem asks us to determine whether a car can successfully co… |
 | 1095 | [Find in Mountain Array](1095.md) | 🔴 Hard | 3m 36s | This problem gives us a special type of array called a mountain arr… |
-| 1096 | [Brace Expansion II](1096.md) | 🔴 Hard | 54s | This problem asks us to evaluate a string expression that represent… |
+| 1096 | [Brace Expansion II](1096.md) | 🔴 Hard | 1m 10s | The problem asks us to interpret a string expression representing a… |
 | 1098 | [Unpopular Books](1098.md) | 🟡 Medium | 55s | Let's solve LeetCode 1098 - Unpopular Books in the requested detail… |
 | 1099 | [Two Sum Less Than K](1099.md) | 🟢 Easy | 46s | The problem is asking us to find the largest sum of two distinct el… |
