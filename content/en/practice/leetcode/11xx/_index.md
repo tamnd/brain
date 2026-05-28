@@ -102,3 +102,4 @@ draft: false
 | 1195 | [Fizz Buzz Multithreaded](1195.md) | 🟡 Medium | 1m 24s | The problem asks us to coordinate four separate threads so they col… |
 | 1196 | [How Many Apples Can You Put into the Basket](1196.md) | 🟢 Easy | 36s | This problem is asking us to determine how many apples we can fit i… |
 | 1197 | [Minimum Knight Moves](1197.md) | 🟡 Medium | 49s | This problem asks us to compute the minimum number of moves a knigh… |
+| 1199 | [Minimum Time to Build Blocks](1199.md) | 🔴 Hard | 1m 43s | The problem requires determining the minimum amount of time to buil… |
