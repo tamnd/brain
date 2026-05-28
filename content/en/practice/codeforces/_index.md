@@ -103,7 +103,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [86](86/) | [Yandex.Algorithm 2011: Round 2](https://codeforces.com/contest/86) | Special | 1600-2700 | 5/5 | 11m 50s |
 | [87](87/) | [Codeforces Beta Round 73 (Div. 1 Only)](https://codeforces.com/contest/87) | Div. 1 | 1500-2600 | 5/5 | 9m 48s |
 | [88](88/) | [Codeforces Beta Round 73 (Div. 2 Only)](https://codeforces.com/contest/88) | Div. 2 | 1200-1500 | 2/2 | 2m 30s |
-| [89](89/) | [Codeforces Beta Round 74 (Div. 1 Only)](https://codeforces.com/contest/89) | Div. 1 | 1800-2900 | 4/5 | 11m 57s |
+| [89](89/) | [Codeforces Beta Round 74 (Div. 1 Only)](https://codeforces.com/contest/89) | Div. 1 | 1800-2900 | 4/5 | 12m 50s |
 | [90](90/) | [Codeforces Beta Round 74 (Div. 2 Only)](https://codeforces.com/contest/90) | Div. 2 | 1000-1100 | 2/2 | 3m 17s |
 | [91](91/) | [Codeforces Beta Round 75 (Div. 1 Only)](https://codeforces.com/contest/91) | Div. 1 | 1500-2600 | 4/5 | 12m 29s |
 | [92](92/) | [Codeforces Beta Round 75 (Div. 2 Only)](https://codeforces.com/contest/92) | Div. 2 | 800-1300 | 2/2 | 4m 34s |
