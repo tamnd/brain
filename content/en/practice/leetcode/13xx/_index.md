@@ -88,17 +88,17 @@ draft: false
 | 1376 | [Time Needed to Inform All Employees](1376.md) | 🟡 Medium | 1m | The problem asks us to calculate the total time it takes for a piec… |
 | 1377 | [Frog Position After T Seconds](1377.md) | 🔴 Hard | 1m 32s | This problem describes a frog moving through an undirected tree. A … |
 | 1378 | [Replace Employee ID With The Unique Identifier](1378.md) | 🟢 Easy | 1m 30s | This problem asks us to combine information from two database table… |
-| 1379 | [Find a Corresponding Node of a Binary Tree in a Clone of That Tree](1379.md) | 🟢 Easy | 1m 20s | The problem gives us two binary trees, original and cloned. The clo… |
-| 1380 | [Lucky Numbers in a Matrix](1380.md) | 🟢 Easy | 1m 17s | The problem gives us an m x n matrix containing distinct integers. … |
-| 1381 | [Design a Stack With Increment Operation](1381.md) | 🟡 Medium | 5m 37s | This problem asks us to implement a stack data structure with a twi… |
-| 1382 | [Balance a Binary Search Tree](1382.md) | 🟡 Medium | 55s | The problem asks us to take an input binary search tree (BST) and r… |
-| 1383 | [Maximum Performance of a Team](1383.md) | 🔴 Hard | 1m 31s | The problem gives us n engineers, where each engineer has two attri… |
-| 1384 | [Total Sales Amount by Year](1384.md) | 🔴 Hard | 1m 49s | This problem asks us to transform sales periods into yearly sales t… |
-| 1385 | [Find the Distance Value Between Two Arrays](1385.md) | 🟢 Easy | 1m 11s | The problem gives us two integer arrays, arr1 and arr2, along with … |
-| 1386 | [Cinema Seat Allocation](1386.md) | 🟡 Medium | 1m 3s | The problem asks us to maximize the number of four-person groups th… |
-| 1387 | [Sort Integers by The Power Value](1387.md) | 🟡 Medium | 52s | The problem asks us to compute a "power value" for each integer in … |
-| 1388 | [Pizza With 3n Slices](1388.md) | 🔴 Hard | 49s | The problem is asking us to maximize the sum of pizza slices you ca… |
-| 1389 | [Create Target Array in the Given Order](1389.md) | 🟢 Easy | 56s | This problem asks us to construct a target array by inserting eleme… |
+| 1379 | [Find a Corresponding Node of a Binary Tree in a Clone of That Tree](1379.md) | 🟢 Easy | 5m 1s | The traversal is by reference, not value. |
+| 1380 | [Lucky Numbers in a Matrix](1380.md) | 🟢 Easy | 1m 10s | This problem asks us to identify all lucky numbers in a given matri… |
+| 1381 | [Design a Stack With Increment Operation](1381.md) | 🟡 Medium | 2m 20s | This problem requires designing a specialized stack data structure,… |
+| 1382 | [Balance a Binary Search Tree](1382.md) | 🟡 Medium | 1m 11s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1383 | [Maximum Performance of a Team](1383.md) | 🔴 Hard | 1m 35s | This problem asks us to build a team of at most k engineers such th… |
+| 1384 | [Total Sales Amount by Year](1384.md) | 🔴 Hard | 1m 26s | This is a SQL database problem where we need to calculate the total… |
+| 1385 | [Find the Distance Value Between Two Arrays](1385.md) | 🟢 Easy | 56s | The problem is asking us to compute the distance value between two … |
+| 1386 | [Cinema Seat Allocation](1386.md) | 🟡 Medium | 1m 10s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1387 | [Sort Integers by The Power Value](1387.md) | 🟡 Medium | 1m 15s | This problem asks us to rank integers according to a special metric… |
+| 1388 | [Pizza With 3n Slices](1388.md) | 🔴 Hard | 1m 39s | In this problem, we are given a circular pizza divided into 3n slic… |
+| 1389 | [Create Target Array in the Given Order](1389.md) | 🟢 Easy | 1m 4s | This problem asks us to build a new array called target by followin… |
 | 1390 | [Four Divisors](1390.md) | 🟡 Medium | 1m 4s | The problem asks us to process an array of integers, nums, and comp… |
 | 1391 | [Check if There is a Valid Path in a Grid](1391.md) | 🟡 Medium | 1m 32s | This problem gives us a two dimensional grid where every cell conta… |
 | 1392 | [Longest Happy Prefix](1392.md) | 🔴 Hard | 1m 5s | The problem asks us to find the longest substring that satisfies tw… |
