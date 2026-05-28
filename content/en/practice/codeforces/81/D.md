@@ -1,6 +1,6 @@
 ---
 title: "CF 81D - Polycarp's Picture Gallery"
-description: "We have several photo albums, and album i contains a[i] photos. We must build a cyclic gallery of exactly n photos. Each chosen photo is represented only by its album number, because the individual identities of photos do not matter. The gallery is circular."
+description: "We have several photo albums. Album i contains a[i] photos. We must build a cyclic gallery containing exactly n photos. Instead of choosing concrete photo IDs, we only need to output the album number for each position. The gallery is circular, so every position has two neighbors."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Yandex.Algorithm Open 2011: Qualification 1"
 rating: 2100
 weight: 81
-solve_time_s: 159
+solve_time_s: 168
 verified: false
 draft: false
 ---
@@ -18,21 +18,21 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** constructive algorithms, greedy  
-**Solve time:** 2m 39s  
+**Solve time:** 2m 48s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have several photo albums, and album `i` contains `a[i]` photos. We must build a cyclic gallery of exactly `n` photos. Each chosen photo is represented only by its album number, because the individual identities of photos do not matter.
+We have several photo albums. Album `i` contains `a[i]` photos. We must build a cyclic gallery containing exactly `n` photos. Instead of choosing concrete photo IDs, we only need to output the album number for each position.
 
-The gallery is circular. Position `1` is adjacent to positions `2` and `n`, position `2` is adjacent to positions `1` and `3`, and so on. The requirement is that adjacent positions must never come from the same album.
+The gallery is circular, so every position has two neighbors. Position `1` is adjacent to both positions `2` and `n`. The requirement is that adjacent positions must always come from different albums.
 
-We may use at most `a[i]` photos from album `i`. We do not need to use every available photo, only exactly `n` total photos.
+We are free to choose any subset of photos from the albums, as long as we place exactly `n` photos total and never exceed the available count of any album.
 
-The constraints are small enough to allow constructive greedy algorithms. `m ≤ 40`, which means the number of albums is tiny. `n ≤ 1000`, so even quadratic work is completely safe. A solution around `O(n log m)` or `O(nm)` easily fits inside the limit.
+The constraints are small enough that we can afford quadratic work. `n ≤ 1000` and `m ≤ 40`, so even an `O(n^2)` or `O(n log n)` construction is easily fast enough. What we cannot do is brute force over permutations or perform exponential search, because the number of possible cyclic arrangements grows astronomically even for `n = 20`.
 
-The dangerous part of the problem is the cyclic condition. Many linear arrangements that look valid fail when the first and last elements are checked.
+The tricky part is not selecting photos, but arranging them so that the first and last positions also differ. A sequence that works linearly may still fail cyclically.
 
 Consider this example:
 
@@ -41,108 +41,148 @@ n = 5
 albums = [3, 2]
 ```
 
-A careless greedy may build:
+A naive greedy might produce:
 
 ```
 1 2 1 2 1
 ```
 
-All consecutive pairs inside the array are valid, but the last and first positions are both `1`, so the cycle is invalid.
+Every adjacent pair inside the array differs, but the last and first positions are both `1`, so the cycle is invalid.
 
-Another subtle case appears when one album is too large.
+Another dangerous case is when one album is too large.
 
 ```
 n = 6
-albums = [6, 1, 1]
+albums = [6]
 ```
 
-Even though there are many photos overall, we cannot place six photos without two neighboring `1`s. In any cycle, one color cannot occupy more than `n / 2` positions. Here album `1` would need too many slots.
+Every chosen photo would come from the same album, so avoiding equal neighbors is impossible.
 
-A different trap is forgetting that we may discard photos.
+More subtly:
+
+```
+n = 7
+albums = [4, 3]
+```
+
+A valid cycle exists:
+
+```
+1 2 1 2 1 2 1
+```
+
+Wait, this actually fails because the first and last positions are both `1`.
+
+For a cycle, the largest album cannot exceed `n / 2`. Here `4 > floor(7/2)`, so no valid arrangement exists.
+
+A careless implementation that only checks linear adjacency would incorrectly accept such cases.
+
+One more edge case appears when we have more available photos than needed. We are not required to use every photo.
+
+Example:
 
 ```
 n = 4
-albums = [100, 1, 1]
+albums = [1, 100]
 ```
 
-Using all photos is impossible, but we only need four positions. The correct construction is:
+We should select only four photos total. The correct answer is impossible because any cyclic arrangement of length `4` needs at most `2` copies of the same album, but album `2` dominates too heavily and album `1` contributes only one separator.
 
-```
-1 2 1 3
-```
-
-A solution that blindly tries to use every available photo would fail unnecessarily.
+Understanding that we may discard photos is essential. The construction should first decide how many photos to take from each album.
 
 ## Approaches
 
-The brute force approach tries every possible cyclic sequence of length `n`. For each position we choose one of `m` albums, verify the usage limits, and finally check all adjacent pairs.
+The brute-force idea is straightforward. First choose which photos to use, then try every permutation and check whether adjacent positions differ cyclically.
 
-That gives roughly `m^n` possibilities. Even with `m = 10` and `n = 20`, this is already astronomically large. The brute force works conceptually because the constraints are purely local, we only care about adjacent elements, but the state space explodes immediately.
+Even if we only think in terms of album labels instead of concrete photos, the number of arrangements is enormous. With `n = 1000`, even `1000!` possibilities are beyond impossible to enumerate. A backtracking search with pruning still explodes because many prefixes remain feasible until very deep into the recursion.
 
-The next idea is to think about what actually makes a cycle impossible. Suppose one album appears more than half the time. Then even if we separate its occurrences as much as possible, two copies must become neighbors somewhere in the cycle. This is the same obstruction as rearranging characters in a string so equal letters do not touch.
+The reason brute force works conceptually is that the condition is purely local. We only care about neighboring positions. Unfortunately, local constraints do not reduce the search space enough.
 
-That observation changes the problem from exhaustive search into constructive placement.
+The key observation is that this is really a frequency-balancing problem. We only need to distribute repeated album labels around a circle. Once no album appears too many times, a valid arrangement can always be constructed greedily.
 
-We first decide how many photos to take from each album. Obviously we can never take more than `⌊n / 2⌋` from a single album. So we greedily take photos from the albums while respecting that limit, until the total chosen count becomes exactly `n`.
+For a cyclic arrangement, no album may occupy more than half the positions. Otherwise two copies of that album must become adjacent by the pigeonhole principle.
 
-After that, we have a multiset of album labels whose frequencies already satisfy the necessary condition:
+That condition is also sufficient.
+
+So the problem becomes:
+
+1. Decide how many photos to take from each album, with total exactly `n`.
+2. Ensure the maximum chosen count is at most `n / 2`.
+3. Construct the cyclic arrangement.
+
+The elegant construction is based on sorting all chosen album labels and placing them into the answer using alternating positions.
+
+Suppose the multiset is:
 
 ```
-max_frequency ≤ n / 2
+1 1 1 2 2 3
 ```
 
-For such multisets, a cyclic arrangement always exists.
+We place them into positions:
 
-The remaining task is constructing it.
+```
+0, 2, 4, 1, 3, 5
+```
 
-A clean strategy is to sort albums by frequency, write all chosen labels into an array, then place them into even positions first and odd positions second. This spacing automatically separates equal labels because copies of the same album are distributed across the array before wrapping around.
+The repeated labels become naturally separated because equal elements in the sorted list get distributed across distant indices.
 
-The whole process is small and efficient because `m` is only `40`.
+This transforms the problem from exponential search into a deterministic greedy construction.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(m^n) | O(n) | Too slow |
+| Brute Force | O(n!) | O(n) | Too slow |
 | Optimal | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read all album sizes.
-2. For every album, take as many photos as possible, but never more than `n // 2`.
+2. For every album, initially take as many photos as possible, but never more than `n / 2`.
 
-This limit is mandatory in any valid cycle. If one album exceeded it, two neighboring positions would eventually become equal.
-3. Keep adding albums until the total number of selected photos reaches exactly `n`.
+This is necessary because any album appearing more than `n / 2` times would force two adjacent copies in the cycle.
+3. Sum the chosen counts.
+4. If the total chosen count is still smaller than `n`, print `-1`.
 
-If the total selectable amount is still smaller than `n`, print `-1`.
-4. Build a list containing the chosen album numbers repeated according to their selected counts.
+This means that even after using the maximum safe amount from every album, we cannot reach `n` photos.
+5. Otherwise, reduce the chosen counts until their sum becomes exactly `n`.
+
+We can decrease any positive count arbitrarily. Reducing counts never hurts feasibility because it only lowers frequencies.
+6. Build an array containing each album index repeated according to its chosen count.
 
 Example:
 
 ```
-counts:
-album 1 -> 2
-album 2 -> 3
-album 3 -> 1
-
-list:
-[2, 2, 2, 1, 1, 3]
+counts = [2,1,3]
 ```
-5. Sort this list by frequency in descending order.
 
-The most frequent albums are the hardest to place, so we distribute them first.
-6. Create an answer array of size `n`.
-7. Fill positions `0, 2, 4, ...` first, then continue with `1, 3, 5, ...`.
+becomes
 
-This spacing keeps equal albums apart naturally.
-8. Output the constructed cycle.
-9. As a safety check, verify that every neighboring pair differs, including the pair formed by the last and first positions.
+```
+[1,1,2,3,3,3]
+```
+7. Sort this list.
+
+Equal labels become consecutive, which makes the next placement step predictable.
+8. Create an empty answer array of size `n`.
+9. Fill even indices first, then odd indices.
+
+Use the order:
+
+```
+0, 2, 4, ..., 1, 3, 5, ...
+```
+
+Place the sorted labels one by one into these positions.
+10. Output the final arrangement.
 
 ### Why it works
 
-The key invariant is that no album frequency exceeds `n / 2`.
+The crucial invariant is that no album count exceeds `n / 2`.
 
-When we place elements into alternating positions, copies of the same album are separated by at least one slot because the algorithm exhausts all even positions before touching odd ones. Since the largest frequency is at most half the cycle size, the placements never force two equal labels together.
+When we distribute the sorted labels into alternating positions, copies of the same album become separated by at least one other position. Since equal labels appear consecutively in the sorted list, placing them into positions spaced two apart prevents collisions.
 
-The cyclic boundary also remains valid. The first and last positions belong to different parity groups during filling, so the construction avoids creating an equal pair at the wraparound edge.
+The only remaining danger is the cyclic edge between the last and first positions. The `max_count ≤ n/2` condition guarantees that the alternating placement never wraps equal labels onto both ends simultaneously.
+
+This construction is equivalent to interleaving the largest frequencies across the circle. The feasibility condition is both necessary and sufficient, so whenever the algorithm does not print `-1`, the produced arrangement is valid.
 
 ## Python Solution
 
@@ -154,53 +194,43 @@ def solve():
     n, m = map(int, input().split())
     a = list(map(int, input().split()))
 
-    chosen = []
-    total = 0
+    take = [min(x, n // 2) for x in a]
 
-    # take at most n//2 from every album
-    for i in range(m):
-        take = min(a[i], n // 2)
-
-        if total + take > n:
-            take = n - total
-
-        total += take
-
-        for _ in range(take):
-            chosen.append(i + 1)
-
-        if total == n:
-            break
+    total = sum(take)
 
     if total < n:
         print(-1)
         return
 
-    # frequency map
-    freq = {}
-    for x in chosen:
-        freq[x] = freq.get(x, 0) + 1
+    extra = total - n
 
-    # impossible if some frequency exceeds n//2
-    if max(freq.values()) > n // 2:
-        print(-1)
-        return
+    for i in range(m):
+        dec = min(take[i], extra)
+        take[i] -= dec
+        extra -= dec
+        if extra == 0:
+            break
 
-    # sort by frequency descending
-    chosen.sort(key=lambda x: freq[x], reverse=True)
+    vals = []
+
+    for i in range(m):
+        vals.extend([i + 1] * take[i])
+
+    vals.sort()
 
     ans = [0] * n
 
-    idx = 0
+    pos = []
 
-    # even positions first
-    for x in chosen:
-        ans[idx] = x
-        idx += 2
-        if idx >= n:
-            idx = 1
+    for i in range(0, n, 2):
+        pos.append(i)
 
-    # final verification
+    for i in range(1, n, 2):
+        pos.append(i)
+
+    for i in range(n):
+        ans[pos[i]] = vals[i]
+
     for i in range(n):
         if ans[i] == ans[(i + 1) % n]:
             print(-1)
@@ -211,27 +241,23 @@ def solve():
 solve()
 ```
 
-The first section decides how many photos to use from each album. The critical detail is the cap `n // 2`. Without this restriction, a valid cycle may become impossible even though enough photos exist.
+The first stage computes how many photos we are allowed to use from each album. Capping every album at `n // 2` encodes the feasibility condition directly into the construction.
 
-The code stops once exactly `n` photos are collected. We never need to use all available photos.
+After that, the total chosen amount may exceed `n`, because several albums together can still provide many usable photos. We simply remove extra copies arbitrarily. Reducing counts cannot create a new conflict because adjacency only becomes easier when frequencies shrink.
 
-The sorting step is subtle. If low-frequency albums are placed first, a large block of equal albums may remain near the end and become impossible to separate. Sorting by descending frequency distributes difficult elements early.
+The `vals` array stores the multiset of album labels. Sorting is important because the placement strategy assumes identical labels are grouped together.
 
-The placement loop uses alternating indices:
+The position order is the core trick. We first fill all even indices, then all odd indices. This spreads equal labels apart automatically.
 
-```
-0, 2, 4, ...
-```
+The final verification loop is not strictly necessary if the reasoning is correct, but it is a useful defensive check and costs only `O(n)`.
 
-then wraps to:
+One subtle point is that the cycle check uses modulo indexing:
 
 ```
-1, 3, 5, ...
+ans[(i + 1) % n]
 ```
 
-This is the same trick used in classic "reorganize string" problems.
-
-The final validation is defensive programming. The construction is mathematically correct, but checking the result makes debugging easier and guarantees no accidental implementation bug survives.
+Without the modulo, the code would only validate linear adjacency and miss the edge between the last and first positions.
 
 ## Worked Examples
 
@@ -244,82 +270,87 @@ Input:
 1 3 5
 ```
 
-Chosen counts become:
+After capping by `n // 2 = 2`:
+
+| Album | Original | Chosen |
+| --- | --- | --- |
+| 1 | 1 | 1 |
+| 2 | 3 | 2 |
+| 3 | 5 | 2 |
+
+Total is `5`, but we only need `4`.
+
+We remove one extra copy.
+
+| Album | Final Count |
+| --- | --- |
+| 1 | 0 |
+| 2 | 2 |
+| 3 | 2 |
+
+The multiset becomes:
 
 ```
-album 1 -> 1
-album 2 -> 2
-album 3 -> 1
+[2, 2, 3, 3]
 ```
 
-The sorted multiset is:
+Placement order is:
 
 ```
-[2, 2, 1, 3]
+0, 2, 1, 3
 ```
 
-| Step | Position Filled | Value | Current Answer |
+| Step | Value | Position | Array |
 | --- | --- | --- | --- |
-| 1 | 0 | 2 | [2, 0, 0, 0] |
-| 2 | 2 | 2 | [2, 0, 2, 0] |
-| 3 | 1 | 1 | [2, 1, 2, 0] |
-| 4 | 3 | 3 | [2, 1, 2, 3] |
+| 1 | 2 | 0 | [2,0,0,0] |
+| 2 | 2 | 2 | [2,0,2,0] |
+| 3 | 3 | 1 | [2,3,2,0] |
+| 4 | 3 | 3 | [2,3,2,3] |
 
-Final cycle:
+Final answer:
 
 ```
-2 1 2 3
+2 3 2 3
 ```
 
-Every adjacent pair differs, including `3` and `2` across the boundary.
+Every neighboring pair differs, including the cyclic pair `(3,2)`.
 
-This trace demonstrates the main invariant. The most frequent album is distributed into alternating positions before anything else is inserted.
+This trace demonstrates how alternating placement separates repeated labels automatically.
 
 ### Example 2
 
 Input:
 
 ```
-6 3
-6 1 1
+7 2
+4 3
 ```
 
-Chosen counts become:
+After capping by `n // 2 = 3`:
 
-```
-album 1 -> 3
-album 2 -> 1
-album 3 -> 1
-```
+| Album | Original | Chosen |
+| --- | --- | --- |
+| 1 | 4 | 3 |
+| 2 | 3 | 3 |
 
-Total selected photos:
+Total is `6`, smaller than `7`.
 
-```
-5
-```
-
-We cannot reach `n = 6`, so the algorithm outputs:
+The algorithm prints:
 
 ```
 -1
 ```
 
-| Album | Available | Maximum Allowed | Taken |
-| --- | --- | --- | --- |
-| 1 | 6 | 3 | 3 |
-| 2 | 1 | 3 | 1 |
-| 3 | 1 | 3 | 1 |
-
-This example shows why the `n // 2` restriction is necessary. Even though there are eight total photos, the cyclic adjacency condition prevents using six of them safely.
+This confirms the necessary condition. Even after limiting album frequencies to safe values, we cannot gather enough photos.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting the selected labels dominates |
-| Space | O(n) | The constructed gallery stores exactly `n` labels |
+| Time | O(n log n) | Sorting the constructed multiset dominates |
+| Space | O(n) | Arrays storing chosen labels and the final answer |
 
-With `n ≤ 1000`, even quadratic solutions would pass comfortably. This implementation stays well within the limits and runs essentially instantly.
+With `n ≤ 1000`, this complexity is comfortably within limits. The sorting step handles at most 1000 elements, which is trivial for Python in a 2-second limit.
 
 ## Test Cases
 
@@ -336,43 +367,41 @@ def solve_io(inp: str) -> str:
     n, m = map(int, input().split())
     a = list(map(int, input().split()))
 
-    chosen = []
-    total = 0
+    take = [min(x, n // 2) for x in a]
 
-    for i in range(m):
-        take = min(a[i], n // 2)
-
-        if total + take > n:
-            take = n - total
-
-        total += take
-
-        for _ in range(take):
-            chosen.append(i + 1)
-
-        if total == n:
-            break
+    total = sum(take)
 
     if total < n:
         return "-1"
 
-    freq = {}
-    for x in chosen:
-        freq[x] = freq.get(x, 0) + 1
+    extra = total - n
 
-    if max(freq.values()) > n // 2:
-        return "-1"
+    for i in range(m):
+        dec = min(take[i], extra)
+        take[i] -= dec
+        extra -= dec
+        if extra == 0:
+            break
 
-    chosen.sort(key=lambda x: freq[x], reverse=True)
+    vals = []
+
+    for i in range(m):
+        vals.extend([i + 1] * take[i])
+
+    vals.sort()
 
     ans = [0] * n
-    idx = 0
 
-    for x in chosen:
-        ans[idx] = x
-        idx += 2
-        if idx >= n:
-            idx = 1
+    pos = []
+
+    for i in range(0, n, 2):
+        pos.append(i)
+
+    for i in range(1, n, 2):
+        pos.append(i)
+
+    for i in range(n):
+        ans[pos[i]] = vals[i]
 
     for i in range(n):
         if ans[i] == ans[(i + 1) % n]:
@@ -382,108 +411,110 @@ def solve_io(inp: str) -> str:
 
 # provided sample
 out = solve_io("4 3\n1 3 5\n")
-vals = list(map(int, out.split()))
-assert len(vals) == 4
+arr = list(map(int, out.split()))
+assert len(arr) == 4
+for i in range(4):
+    assert arr[i] != arr[(i + 1) % 4]
 
-# minimum valid case
+# impossible case
+assert solve_io("7 2\n4 3\n") == "-1"
+
+# minimum valid size
 out = solve_io("3 3\n1 1 1\n")
-vals = list(map(int, out.split()))
-assert len(vals) == 3
+arr = list(map(int, out.split()))
+for i in range(3):
+    assert arr[i] != arr[(i + 1) % 3]
 
-# impossible because dominant album too large
-assert solve_io("6 3\n6 1 1\n") == "-1"
+# all equal albums
+assert solve_io("5 1\n10\n") == "-1"
 
-# exactly balanced
-out = solve_io("8 2\n4 4\n")
-vals = list(map(int, out.split()))
-for i in range(8):
-    assert vals[i] != vals[(i + 1) % 8]
+# balanced large frequencies
+out = solve_io("6 2\n3 3\n")
+arr = list(map(int, out.split()))
+for i in range(6):
+    assert arr[i] != arr[(i + 1) % 6]
 
-# many albums, sparse counts
-out = solve_io("5 5\n1 1 1 1 1\n")
-vals = list(map(int, out.split()))
-assert len(vals) == 5
-assert len(set(vals)) == 5
+# extra unused photos
+out = solve_io("5 3\n10 10 10\n")
+arr = list(map(int, out.split()))
+assert len(arr) == 5
+for i in range(5):
+    assert arr[i] != arr[(i + 1) % 5]
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `3 3 / 1 1 1` | Any valid cycle | Smallest meaningful cycle |
-| `6 3 / 6 1 1` | `-1` | Dominant album impossibility |
-| `8 2 / 4 4` | Alternating arrangement | Boundary case where max frequency equals `n/2` |
-| `5 5 / 1 1 1 1 1` | Any permutation | Distinct albums everywhere |
+| `7 2 / 4 3` | `-1` | Largest frequency exceeds cyclic limit |
+| `3 3 / 1 1 1` | Any valid cycle | Minimum valid size |
+| `5 1 / 10` | `-1` | Single album impossible |
+| `6 2 / 3 3` | Any alternating cycle | Perfectly balanced counts |
+| `5 3 / 10 10 10` | Any valid cycle | Correct handling of discarded photos |
 
 ## Edge Cases
 
-Consider the case where one album almost dominates the gallery.
-
-Input:
-
-```
-8 3
-4 2 2
-```
-
-The maximum allowed frequency is `4`, so this is still feasible.
-
-The construction becomes:
-
-```
-1 1 1 1 2 2 3 3
-```
-
-After alternating placement:
-
-```
-1 2 1 2 1 3 1 3
-```
-
-Checking cyclic neighbors confirms validity. This example shows that frequency exactly equal to `n / 2` is still safe.
-
-Now consider a case where the cyclic boundary is the only danger.
-
-Input:
+Consider:
 
 ```
 5 2
 3 2
 ```
 
-A naive linear greedy could build:
+The maximum allowed frequency is `2`, because `n // 2 = 2`.
+
+After capping:
 
 ```
-1 2 1 2 1
+2 2
 ```
 
-The last and first elements collide.
+The total becomes `4`, smaller than `5`, so the algorithm prints `-1`.
 
-Our alternating placement instead produces:
+This is correct. Any cycle of odd length requires some album to appear at least three times, but three copies in a cycle of length five inevitably force an adjacency.
 
-```
-1 2 1 2 1
-```
-
-and the final validation detects the collision. Since no valid cycle exists for these frequencies, the algorithm correctly outputs `-1`.
-
-Finally, consider the case where many photos are available but only some should be used.
-
-Input:
+Now consider:
 
 ```
-4 3
-100 1 1
+6 3
+6 1 1
 ```
 
-The algorithm caps album `1` at `2` photos:
+After capping:
 
 ```
-1 1 2 3
+3 1 1
 ```
 
-After placement:
+The total is `5`, still below `6`.
+
+Again the algorithm prints `-1`.
+
+Intuitively, the dominant album needs separators between all its copies. Two extra albums provide only two separators, not enough to place six photos cyclically.
+
+Finally, consider:
 
 ```
-1 2 1 3
+8 4
+2 2 2 100
 ```
 
-The cycle is valid. This confirms that discarding excess photos is essential for correctness.
+After capping:
+
+```
+2 2 2 4
+```
+
+The total is `10`, so we remove two extras.
+
+One possible final count set is:
+
+```
+0 2 2 4
+```
+
+The construction yields something like:
+
+```
+4 2 4 3 4 2 4 3
+```
+
+The largest album occupies exactly half the positions, which is still safe. Every copy is separated by another album, including across the cyclic boundary.

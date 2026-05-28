@@ -95,6 +95,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [78](78/) | [Codeforces Beta Round 70 (Div. 2)](https://codeforces.com/contest/78) | Div. 2 | 800-2300 | 4/5 | 12m 16s |
 | [79](79/) | [Codeforces Beta Round 71](https://codeforces.com/contest/79) | Beta | 1200-2900 | 5/5 | 7m 45s |
 | [80](80/) | [Codeforces Beta Round 69 (Div. 2 Only)](https://codeforces.com/contest/80) | Div. 2 | 800-1200 | 2/2 | 2m 56s |
-| [81](81/) | [Yandex.Algorithm Open 2011: Qualification 1](https://codeforces.com/contest/81) | Special | 1400-2700 | 3/5 | 12m 57s |
+| [81](81/) | [Yandex.Algorithm Open 2011: Qualification 1](https://codeforces.com/contest/81) | Special | 1400-2700 | 3/5 | 13m 8s |
 | [82](82/) | [Yandex.Algorithm 2011: Qualification 2](https://codeforces.com/contest/82) | Special | 1100-2600 | 3/5 | 11m 10s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
