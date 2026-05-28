@@ -99,6 +99,7 @@ draft: false
 | 686 | [Repeated String Match](686.md) | 🟡 Medium | 34s | The problem asks us to determine the minimum number of times a stri… |
 | 687 | [Longest Univalue Path](687.md) | 🟡 Medium | 1m 1s | This problem asks us to find the longest path in a binary tree wher… |
 | 688 | [Knight Probability in Chessboard](688.md) | 🟡 Medium | 1m 23s | The problem asks us to compute the probability that a chess knight … |
+| 689 | [Maximum Sum of 3 Non-Overlapping Subarrays](689.md) | 🔴 Hard | 1m 21s | The problem asks us to select exactly three non-overlapping subarra… |
 | 690 | [Employee Importance](690.md) | 🟡 Medium | 1m 15s | The problem provides a collection of employees where each employee … |
 | 691 | [Stickers to Spell Word](691.md) | 🔴 Hard | 34s | Let's dive deep into a detailed technical solution guide for LeetCo… |
 | 692 | [Top K Frequent Words](692.md) | 🟡 Medium | 1m 16s | The problem gives us an array of strings called words and an intege… |

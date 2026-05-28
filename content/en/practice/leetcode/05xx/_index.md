@@ -108,4 +108,5 @@ draft: false
 | 595 | [Big Countries](595.md) | 🟢 Easy | 1m 6s | This problem asks us to query a database table named World and retu… |
 | 596 | [Classes With at Least 5 Students](596.md) | 🟢 Easy | 39s | This problem is asking us to find classes in a school database that… |
 | 597 | [Friend Requests I: Overall Acceptance Rate](597.md) | 🟢 Easy | 1m 16s | This problem asks us to compute the overall acceptance rate of frie… |
+| 598 | [Range Addition II](598.md) | 🟢 Easy | 34s | The problem presents an m x n matrix M initialized with all zeros. … |
 | 599 | [Minimum Index Sum of Two Lists](599.md) | 🟢 Easy | 33s | This problem is asking us to find the common elements between two l… |

@@ -580,6 +580,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 563 | [Binary Tree Tilt](05xx/563.md) | 🟢 Easy | 1m 7s | The problem asks us to compute the total tilt of an entire binary t… |
 | 564 | [Find the Closest Palindrome](05xx/564.md) | 🔴 Hard | 1m 29s | The problem gives us a string n representing a positive integer, an… |
 | 565 | [Array Nesting](05xx/565.md) | 🟡 Medium | 2m 41s | The problem gives us an array nums that is guaranteed to be a permu… |
+| 566 | [Reshape the Matrix](05xx/566.md) | 🟢 Easy | 40s | The problem is asking us to take an existing m x n matrix and "resh… |
 | 567 | [Permutation in String](05xx/567.md) | 🟡 Medium | 3m 37s | This problem asks us to determine whether any permutation of s1 app… |
 | 568 | [Maximum Vacation Days](05xx/568.md) | 🔴 Hard | 1m 11s | This problem asks us to maximize the total number of vacation days … |
 | 569 | [Median Employee Salary](05xx/569.md) | 🔴 Hard | 1m 12s | The problem gives us an Employee table containing three columns: | … |
@@ -590,6 +591,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 574 | [Winning Candidate](05xx/574.md) | 🟡 Medium | 1m 12s | This problem provides two database tables, Candidate and Vote, and … |
 | 575 | [Distribute Candies](05xx/575.md) | 🟢 Easy | 1m 46s | This problem asks us to maximize the number of distinct candy types… |
 | 576 | [Out of Boundary Paths](05xx/576.md) | 🟡 Medium | 1m 10s | This problem asks us to count how many different ways a ball can le… |
+| 577 | [Employee Bonus](05xx/577.md) | 🟢 Easy | 55s | In this problem, we are given two database tables, Employee and Bon… |
 | 578 | [Get Highest Answer Rate Question](05xx/578.md) | 🟡 Medium | 1m 16s | This problem asks us to analyze user interaction data stored in the… |
 | 579 | [Find Cumulative Salary of an Employee](05xx/579.md) | 🔴 Hard | 41s | This problem asks us to compute a cumulative salary summary for eac… |
 | 580 | [Count Student Number in Departments](05xx/580.md) | 🟡 Medium | 29s | This problem asks us to determine how many students are enrolled in… |
@@ -610,6 +612,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 595 | [Big Countries](05xx/595.md) | 🟢 Easy | 1m 6s | This problem asks us to query a database table named World and retu… |
 | 596 | [Classes With at Least 5 Students](05xx/596.md) | 🟢 Easy | 39s | This problem is asking us to find classes in a school database that… |
 | 597 | [Friend Requests I: Overall Acceptance Rate](05xx/597.md) | 🟢 Easy | 1m 16s | This problem asks us to compute the overall acceptance rate of frie… |
+| 598 | [Range Addition II](05xx/598.md) | 🟢 Easy | 34s | The problem presents an m x n matrix M initialized with all zeros. … |
 | 599 | [Minimum Index Sum of Two Lists](05xx/599.md) | 🟢 Easy | 33s | This problem is asking us to find the common elements between two l… |
 | 600 | [Non-negative Integers without Consecutive Ones](06xx/600.md) | 🔴 Hard | 2m 16s | That is a long-form technical guide request with multiple required … |
 | 601 | [Human Traffic of Stadium](06xx/601.md) | 🔴 Hard | 1m 42s | The problem asks us to extract all consecutive records from a Stadi… |
@@ -638,6 +641,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 624 | [Maximum Distance in Arrays](06xx/624.md) | 🟡 Medium | 38s | The problem presents a list of m arrays, each individually sorted i… |
 | 625 | [Minimum Factorization](06xx/625.md) | 🟡 Medium | 1m 3s | The problem asks us to find the smallest positive integer x such th… |
 | 626 | [Exchange Seats](06xx/626.md) | 🟡 Medium | 41s | This problem asks us to swap the seat IDs of every two consecutive … |
+| 627 | [Swap Sex of Employees](06xx/627.md) | 🟢 Easy | 42s | The problem is asking us to swap the sex values of all employees in… |
 | 628 | [Maximum Product of Three Numbers](06xx/628.md) | 🟢 Easy | 58s | The problem gives an integer array nums and asks us to select exact… |
 | 629 | [K Inverse Pairs Array](06xx/629.md) | 🔴 Hard | 34s | Here’s a full technical solution guide following your formatting ru… |
 | 630 | [Course Schedule III](06xx/630.md) | 🔴 Hard | 1m 18s | The problem gives a list of online courses, where each course is re… |
@@ -653,6 +657,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 640 | [Solve the Equation](06xx/640.md) | 🟡 Medium | 41s | The problem is asking us to solve a linear equation containing a si… |
 | 641 | [Design Circular Deque](06xx/641.md) | 🟡 Medium | 1m 7s | The problem asks us to design a circular double-ended queue, also c… |
 | 642 | [Design Search Autocomplete System](06xx/642.md) | 🔴 Hard | 1m 18s | The problem asks us to design an autocomplete system that behaves s… |
+| 643 | [Maximum Average Subarray I](06xx/643.md) | 🟢 Easy | 47s | The problem asks us to find the maximum average value among all con… |
 | 644 | [Maximum Average Subarray II](06xx/644.md) | 🔴 Hard | 1m 5s | The problem asks us to find the maximum possible average value amon… |
 | 645 | [Set Mismatch](06xx/645.md) | 🟢 Easy | 59s | The problem describes a corrupted set of integers. Originally, the … |
 | 646 | [Maximum Length of Pair Chain](06xx/646.md) | 🟡 Medium | 1m 12s | The problem gives us an array of integer pairs, where each pair rep… |
@@ -673,6 +678,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 661 | [Image Smoother](06xx/661.md) | 🟢 Easy | 45s | The problem is asking us to implement an image smoother, a filter t… |
 | 662 | [Maximum Width of Binary Tree](06xx/662.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum width among all levels o… |
 | 663 | [Equal Tree Partition](06xx/663.md) | 🟡 Medium | 1m 15s | The problem asks whether it is possible to split a binary tree into… |
+| 664 | [Strange Printer](06xx/664.md) | 🔴 Hard | 55s | The problem describes a "strange printer" that can print sequences … |
 | 665 | [Non-decreasing Array](06xx/665.md) | 🟡 Medium | 37s | The problem asks whether it is possible to transform a given intege… |
 | 666 | [Path Sum IV](06xx/666.md) | 🟡 Medium | 1m 10s | This problem encodes a binary tree into a compact array of three-di… |
 | 667 | [Beautiful Arrangement II](06xx/667.md) | 🟡 Medium | 1m 12s | The problem asks us to construct a permutation of the integers from… |
@@ -687,6 +693,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 676 | [Implement Magic Dictionary](06xx/676.md) | 🟡 Medium | 1m 11s | The problem asks us to design a dictionary-like data structure that… |
 | 677 | [Map Sum Pairs](06xx/677.md) | 🟡 Medium | 1m 7s | The problem asks us to design a custom data structure that behaves … |
 | 678 | [Valid Parenthesis String](06xx/678.md) | 🟡 Medium | 32s | This problem is asking whether a string containing the characters '… |
+| 679 | [24 Game](06xx/679.md) | 🔴 Hard | 40s | The problem is asking us to determine whether it is possible to use… |
 | 680 | [Valid Palindrome II](06xx/680.md) | 🟢 Easy | 59s | The problem asks whether a given string s can become a palindrome a… |
 | 681 | [Next Closest Time](06xx/681.md) | 🟡 Medium | 1m 14s | The problem gives us a valid time string in the format "HH:MM" and … |
 | 682 | [Baseball Game](06xx/682.md) | 🟢 Easy | 58s | This problem asks us to simulate a baseball scoring system with a s… |
@@ -696,6 +703,18 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 686 | [Repeated String Match](06xx/686.md) | 🟡 Medium | 34s | The problem asks us to determine the minimum number of times a stri… |
 | 687 | [Longest Univalue Path](06xx/687.md) | 🟡 Medium | 1m 1s | This problem asks us to find the longest path in a binary tree wher… |
 | 688 | [Knight Probability in Chessboard](06xx/688.md) | 🟡 Medium | 1m 23s | The problem asks us to compute the probability that a chess knight … |
+| 689 | [Maximum Sum of 3 Non-Overlapping Subarrays](06xx/689.md) | 🔴 Hard | 1m 21s | The problem asks us to select exactly three non-overlapping subarra… |
+| 690 | [Employee Importance](06xx/690.md) | 🟡 Medium | 1m 15s | The problem provides a collection of employees where each employee … |
+| 691 | [Stickers to Spell Word](06xx/691.md) | 🔴 Hard | 34s | Let's dive deep into a detailed technical solution guide for LeetCo… |
+| 692 | [Top K Frequent Words](06xx/692.md) | 🟡 Medium | 1m 16s | The problem gives us an array of strings called words and an intege… |
+| 693 | [Binary Number with Alternating Bits](06xx/693.md) | 🟢 Easy | 41s | The problem asks us to determine whether the binary representation … |
+| 694 | [Number of Distinct Islands](06xx/694.md) | 🟡 Medium | 1m 20s | The problem gives us a binary matrix called grid, where each cell c… |
+| 695 | [Max Area of Island](06xx/695.md) | 🟡 Medium | 31s | The problem is asking us to find the largest connected area of land… |
+| 696 | [Count Binary Substrings](06xx/696.md) | 🟢 Easy | 1m | The problem gives us a binary string, meaning the string contains o… |
+| 697 | [Degree of an Array](06xx/697.md) | 🟢 Easy | 46s | The problem asks us to find the shortest contiguous subarray of an … |
+| 698 | [Partition to K Equal Sum Subsets](06xx/698.md) | 🟡 Medium | 44s | The problem is asking whether an array of integers nums can be divi… |
+| 699 | [Falling Squares](06xx/699.md) | 🔴 Hard | 1m 15s | The problem describes a simulation of squares falling onto the X-ax… |
+| 700 | [Search in a Binary Search Tree](07xx/700.md) | 🟢 Easy | 1m 12s | This problem gives us the root node of a Binary Search Tree, common… |
 | 701 | [Insert into a Binary Search Tree](07xx/701.md) | 🟡 Medium | 1m 18s | This problem asks us to insert a new value into an existing Binary … |
 | 702 | [Search in a Sorted Array of Unknown Size](07xx/702.md) | 🟡 Medium | 1m 21s | This problem asks us to search for a target value inside a sorted a… |
 | 703 | [Kth Largest Element in a Stream](07xx/703.md) | 🟢 Easy | 27s | The problem asks us to design a data structure that continuously tr… |
@@ -789,6 +808,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 791 | [Custom Sort String](07xx/791.md) | 🟡 Medium | 1m 22s | The problem gives us two strings, order and s. The string order def… |
 | 792 | [Number of Matching Subsequences](07xx/792.md) | 🟡 Medium | 57s | The problem asks us to count how many words in a given list are sub… |
 | 793 | [Preimage Size of Factorial Zeroes Function](07xx/793.md) | 🔴 Hard | 53s | This problem asks us to determine how many non-negative integers x … |
+| 794 | [Valid Tic-Tac-Toe State](07xx/794.md) | 🟡 Medium | 1m 6s | This problem asks us to determine whether a given Tic-Tac-Toe board… |
 | 795 | [Number of Subarrays with Bounded Maximum](07xx/795.md) | 🟡 Medium | 1m | The problem asks us to count how many contiguous, non-empty subarra… |
 | 796 | [Rotate String](07xx/796.md) | 🟢 Easy | 59s | The problem asks us to determine whether one string can be transfor… |
 | 797 | [All Paths From Source to Target](07xx/797.md) | 🟡 Medium | 58s | The problem gives us a directed acyclic graph, usually abbreviated … |
@@ -871,7 +891,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 874 | [Walking Robot Simulation](08xx/874.md) | 🟡 Medium | 1m 18s | The problem describes a robot moving on an infinite two dimensional… |
 | 875 | [Koko Eating Bananas](08xx/875.md) | 🟡 Medium | 41s | The problem asks us to determine the minimum eating speed k for Kok… |
 | 876 | [Middle of the Linked List](08xx/876.md) | 🟢 Easy | 55s | The problem gives us the head of a singly linked list and asks us t… |
-| 877 | [Stone Game](08xx/877.md) | 🟡 Medium | 33s | This problem involves a two-player game where Alice and Bob take tu… |
+| 877 | [Stone Game](08xx/877.md) | 🟡 Medium | 1m 10s | The problem describes a two-player game played on an array of stone… |
 | 878 | [Nth Magical Number](08xx/878.md) | 🔴 Hard | 1m 13s | The problem asks us to find the nth positive integer that is divisi… |
 | 879 | [Profitable Schemes](08xx/879.md) | 🔴 Hard | 1m 16s | This problem asks us to count how many subsets of crimes satisfy tw… |
 | 880 | [Decoded String at Index](08xx/880.md) | 🟡 Medium | 1m 12s | The problem gives us an encoded string s that represents a potentia… |
@@ -938,10 +958,32 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 941 | [Valid Mountain Array](09xx/941.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given integer array form… |
 | 942 | [DI String Match](09xx/942.md) | 🟢 Easy | 1m 15s | In this problem, we are given a string s consisting only of the cha… |
 | 943 | [Find the Shortest Superstring](09xx/943.md) | 🔴 Hard | 39s | The problem asks us to find the shortest superstring that contains … |
-| 944 | [Delete Columns to Make Sorted](09xx/944.md) | 🟢 Easy | 1m 8s | The problem gives us an array of strings where every string has the… |
-| 945 | [Minimum Increment to Make Array Unique](09xx/945.md) | 🟡 Medium | 41s | This problem is asking us to make all elements in an integer array … |
-| 946 | [Validate Stack Sequences](09xx/946.md) | 🟡 Medium | 1m 7s | The problem gives us two arrays, pushed and popped, both containing… |
-| 947 | [Most Stones Removed with Same Row or Column](09xx/947.md) | 🟡 Medium | 34s | The problem presents a 2D grid with n stones placed at integer coor… |
+| 944 | [Delete Columns to Make Sorted](09xx/944.md) | 🟢 Easy | 1m 6s | The problem gives us an array of strings where every string has exa… |
+| 945 | [Minimum Increment to Make Array Unique](09xx/945.md) | 🟡 Medium | 41s | This problem asks us to take an integer array nums and perform a se… |
+| 946 | [Validate Stack Sequences](09xx/946.md) | 🟡 Medium | 35s | This problem asks whether two sequences of integers, pushed and pop… |
+| 947 | [Most Stones Removed with Same Row or Column](09xx/947.md) | 🟡 Medium | 1m 17s | The problem gives us a collection of stones placed on a 2D grid. Ea… |
 | 948 | [Bag of Tokens](09xx/948.md) | 🟡 Medium | 1m 15s | The problem gives us a collection of tokens, where each token has a… |
-| 949 | [Largest Time for Given Digits](09xx/949.md) | 🟡 Medium | 1m 18s | This problem asks us to construct the largest possible valid 24 hou… |
+| 949 | [Largest Time for Given Digits](09xx/949.md) | 🟡 Medium | 1m 6s | The problem provides an array of exactly four digits. Using each di… |
 | 950 | [Reveal Cards In Increasing Order](09xx/950.md) | 🟡 Medium | 1m 11s | The problem gives us a deck of unique integer cards and asks us to … |
+| 951 | [Flip Equivalent Binary Trees](09xx/951.md) | 🟡 Medium | 1m 7s | This problem asks us to determine whether two binary trees can be m… |
+| 952 | [Largest Component Size by Common Factor](09xx/952.md) | 🔴 Hard | 38s | The problem asks us to find the largest connected component in a gr… |
+| 953 | [Verifying an Alien Dictionary](09xx/953.md) | 🟢 Easy | 1m 4s | This problem asks us to verify whether a list of words is sorted ac… |
+| 954 | [Array of Doubled Pairs](09xx/954.md) | 🟡 Medium | 29s | The problem asks whether it is possible to reorder an even-length a… |
+| 955 | [Delete Columns to Make Sorted II](09xx/955.md) | 🟡 Medium | 1m 20s | This problem asks us to remove the minimum number of columns from a… |
+| 956 | [Tallest Billboard](09xx/956.md) | 🔴 Hard | 1m 13s | In this problem, we are given a list of steel rods. Each rod has a … |
+| 957 | [Prison Cells After N Days](09xx/957.md) | 🟡 Medium | 1m 11s | The problem gives us a row of exactly eight prison cells, where eac… |
+| 958 | [Check Completeness of a Binary Tree](09xx/958.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given binary tree is a c… |
+| 959 | [Regions Cut By Slashes](09xx/959.md) | 🟡 Medium | 1m 20s | The problem gives us an n x n grid where every cell contains one of… |
+| 960 | [Delete Columns to Make Sorted III](09xx/960.md) | 🔴 Hard | 33s | This problem asks us to find the minimum number of columns to delet… |
+| 961 | [N-Repeated Element in Size 2N Array](09xx/961.md) | 🟢 Easy | 1m 24s | The problem gives an integer array nums whose length is exactly 2 n… |
+| 962 | [Maximum Width Ramp](09xx/962.md) | 🟡 Medium | 1m 12s | The problem asks us to find the maximum width ramp in an array of i… |
+| 964 | [Least Operators to Express Number](09xx/964.md) | 🔴 Hard | 1m 23s | This problem asks us to construct a mathematical expression using o… |
+| 965 | [Univalued Binary Tree](09xx/965.md) | 🟢 Easy | 38s | The problem asks us to determine whether a given binary tree is uni… |
+| 966 | [Vowel Spellchecker](09xx/966.md) | 🟡 Medium | 1m 42s | The problem asks us to build a spellchecker with very specific matc… |
+| 967 | [Numbers With Same Consecutive Differences](09xx/967.md) | 🟡 Medium | 41s | This problem asks us to generate all integers of a specific length … |
+| 968 | [Binary Tree Cameras](09xx/968.md) | 🔴 Hard | 1m 10s | LeetCode 968, Binary Tree Cameras, asks us to determine the minimum… |
+| 969 | [Pancake Sorting](09xx/969.md) | 🟡 Medium | 42s | The problem is asking us to sort an array of unique integers using … |
+| 970 | [Powerful Integers](09xx/970.md) | 🟡 Medium | 1m 12s | The problem asks us to generate every integer of the form: where bo… |
+| 971 | [Flip Binary Tree To Match Preorder Traversal](09xx/971.md) | 🟡 Medium | 1m 9s | The problem gives us a binary tree and a target preorder traversal … |
+| 972 | [Equal Rational Numbers](09xx/972.md) | 🔴 Hard | 1m 14s | The problem asks us to determine whether two string representations… |
+| 973 | [K Closest Points to Origin](09xx/973.md) | 🟡 Medium | 41s | This problem asks us to find the k points that are closest to the o… |
