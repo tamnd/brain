@@ -56,18 +56,18 @@ draft: false
 | 2243 | [Calculate Digit Sum of a String](2243.md) | 🟢 Easy | 55s | This problem asks us to repeatedly transform a numeric string until… |
 | 2244 | [Minimum Rounds to Complete All Tasks](2244.md) | 🟡 Medium | 2m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 2245 | [Maximum Trailing Zeros in a Cornered Path](2245.md) | 🟡 Medium | 2m 21s | This problem asks us to find a path in a matrix whose product conta… |
-| 2246 | [Longest Path With Different Adjacent Characters](2246.md) | 🔴 Hard | 50s | The problem gives us a tree structure, represented by a parent arra… |
-| 2247 | [Maximum Cost of Trip With K Highways](2247.md) | 🔴 Hard | 1m 25s | In this problem, we are given an undirected weighted graph represen… |
-| 2248 | [Intersection of Multiple Arrays](2248.md) | 🟢 Easy | 1m 11s | The problem gives us a 2D integer array called nums. Each element o… |
-| 2249 | [Count Lattice Points Inside a Circle](2249.md) | 🟡 Medium | 52s | The problem asks us to compute the number of lattice points (points… |
-| 2250 | [Count Number of Rectangles Containing Each Point](2250.md) | 🟡 Medium | 1m 22s | This problem gives us a collection of axis-aligned rectangles and a… |
-| 2251 | [Number of Flowers in Full Bloom](2251.md) | 🔴 Hard | 37s | This problem asks us to determine, for each person arriving at a sp… |
-| 2252 | [Dynamic Pivoting of a Table](2252.md) | 🔴 Hard | 54s | The problem asks us to transform a normalized database table Produc… |
-| 2253 | [Dynamic Unpivoting of a Table](2253.md) | 🔴 Hard | 57s | The problem is asking to transform a table that has a fixed number … |
+| 2246 | [Longest Path With Different Adjacent Characters](2246.md) | 🔴 Hard | 3m 8s | The problem gives a tree with n nodes labeled 0 to n-1, rooted at n… |
+| 2247 | [Maximum Cost of Trip With K Highways](2247.md) | 🔴 Hard | 2m 20s | The problem gives us an undirected weighted graph with n cities and… |
+| 2248 | [Intersection of Multiple Arrays](2248.md) | 🟢 Easy | 39s | The problem is asking us to find the intersection of multiple array… |
+| 2249 | [Count Lattice Points Inside a Circle](2249.md) | 🟡 Medium | 42s | The problem asks us to determine how many lattice points lie inside… |
+| 2250 | [Count Number of Rectangles Containing Each Point](2250.md) | 🟡 Medium | 1m 2s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 2251 | [Number of Flowers in Full Bloom](2251.md) | 🔴 Hard | 38s | The problem asks us to determine, for a list of people arriving at … |
+| 2252 | [Dynamic Pivoting of a Table](2252.md) | 🔴 Hard | 1m 12s | This problem requires implementing a SQL-style pivot operation prog… |
+| 2253 | [Dynamic Unpivoting of a Table](2253.md) | 🔴 Hard | 1m 13s | This problem asks us to transform a wide table into a normalized ro… |
 | 2254 | [Design Video Sharing Platform](2254.md) | 🔴 Hard | 3m 50s | Something went wrong. If this issue persists please contact us thro… |
-| 2255 | [Count Prefixes of a Given String](2255.md) | 🟢 Easy | 49s | The problem asks us to determine how many strings from a given list… |
-| 2256 | [Minimum Average Difference](2256.md) | 🟡 Medium | 1m 14s | The problem gives us a 0-indexed integer array nums, and for every … |
-| 2257 | [Count Unguarded Cells in the Grid](2257.md) | 🟡 Medium | 46s | The problem asks us to determine how many cells in a grid are ungua… |
+| 2255 | [Count Prefixes of a Given String](2255.md) | 🟢 Easy | 1m 9s | The problem asks us to determine how many strings in a given array … |
+| 2256 | [Minimum Average Difference](2256.md) | 🟡 Medium | 1m 15s | In this problem, we are given a 0-indexed integer array nums, and f… |
+| 2257 | [Count Unguarded Cells in the Grid](2257.md) | 🟡 Medium | 1m 16s | This problem gives us an m x n grid containing three types of cells… |
 | 2258 | [Escape the Spreading Fire](2258.md) | 🔴 Hard | 1m 31s | This problem combines two simultaneous processes on a grid: 1. Your… |
 | 2259 | [Remove Digit From Number to Maximize Result](2259.md) | 🟢 Easy | 1m 3s | The problem gives us a string called number that represents a posit… |
 | 2260 | [Minimum Consecutive Cards to Pick Up](2260.md) | 🟡 Medium | 1m 26s | The problem gives us an integer array called cards, where each elem… |
