@@ -43,4 +43,5 @@ draft: false
 | 1132 | [Reported Posts II](1132.md) | 🟡 Medium | 48s | The problem asks us to calculate the average daily percentage of po… |
 | 1133 | [Largest Unique Number](1133.md) | 🟢 Easy | 59s | The problem gives us an integer array nums and asks us to find the … |
 | 1134 | [Armstrong Number](1134.md) | 🟢 Easy | 52s | In this problem, we are given an integer n, and we must determine w… |
-| 1135 | [Connecting Cities With Minimum Cost](1135.md) | 🟡 Medium | 45s | The problem is asking us to connect n cities with a set of bidirect… |
+| 1135 | [Connecting Cities With Minimum Cost](1135.md) | 🟡 Medium | 1m 23s | This problem asks us to connect n cities together using a set of po… |
+| 1136 | [Parallel Courses](1136.md) | 🟡 Medium | 45s | The problem is asking us to determine the minimum number of semeste… |
