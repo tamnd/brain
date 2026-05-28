@@ -24,3 +24,5 @@ draft: false
 | 1111 | [Maximum Nesting Depth of Two Valid Parentheses Strings](1111.md) | 🟡 Medium | 47s | The problem asks us to take a valid parentheses string seq and spli… |
 | 1112 | [Highest Grade For Each Student](1112.md) | 🟡 Medium | 1m 8s | The problem gives us a database table named Enrollments. Each row r… |
 | 1113 | [Reported Posts](1113.md) | 🟢 Easy | 44s | This problem is asking us to compute the number of reports made on … |
+| 1116 | [Print Zero Even Odd](1116.md) | 🟡 Medium | 46s | This problem asks us to coordinate three threads to print numbers i… |
+| 1117 | [Building H2O](1117.md) | 🟡 Medium | 1m 12s | This problem asks us to coordinate multiple concurrent threads so t… |
