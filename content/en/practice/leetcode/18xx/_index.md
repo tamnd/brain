@@ -16,4 +16,9 @@ draft: false
 | 1805 | [Number of Different Integers in a String](1805.md) | 🟢 Easy | 1m | The problem requires us to process a string word that contains both… |
 | 1806 | [Minimum Number of Operations to Reinitialize a Permutation](1806.md) | 🟡 Medium | 1m 10s | The problem gives us an even integer n and defines an initial permu… |
 | 1807 | [Evaluate the Bracket Pairs of a String](1807.md) | 🟡 Medium | 2m 34s | The problem asks us to process a string s that contains bracketed k… |
+| 1809 | [Ad-Free Sessions](1809.md) | 🟢 Easy | 50s | The problem is asking us to identify all playback sessions during w… |
+| 1810 | [Minimum Path Cost in a Hidden Grid](1810.md) | 🟡 Medium | 1m 56s | This problem is an interactive shortest path problem on a hidden we… |
+| 1811 | [Find Interview Candidates](1811.md) | 🟡 Medium | 1m 2s | The problem is asking us to identify users who qualify as interview… |
+| 1812 | [Determine Color of a Chessboard Square](1812.md) | 🟢 Easy | 1m 11s | This problem asks us to determine whether a given chessboard square… |
+| 1813 | [Sentence Similarity III](1813.md) | 🟡 Medium | 1m 15s | The problem is asking us to determine whether two sentences can be … |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
