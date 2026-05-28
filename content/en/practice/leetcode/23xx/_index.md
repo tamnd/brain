@@ -52,9 +52,9 @@ draft: false
 | 2339 | [All the Matches of the League](2339.md) | 🟢 Easy | 58s | The Teams table contains the names of all teams participating in a … |
 | 2340 | [Minimum Adjacent Swaps to Make a Valid Array](2340.md) | 🟡 Medium | 1m 15s | In this problem, we are given an integer array nums, and we may rep… |
 | 2341 | [Maximum Number of Pairs in Array](2341.md) | 🟢 Easy | 52s | This problem asks us to determine how many pairs of equal integers … |
-| 2342 | [Max Sum of a Pair With Equal Sum of Digits](2342.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers called nums. We … |
-| 2343 | [Query Kth Smallest Trimmed Number](2343.md) | 🟡 Medium | 51s | The problem presents a list of numeric strings nums, all of the sam… |
-| 2344 | [Minimum Deletions to Make Array Divisible](2344.md) | 🔴 Hard | 1m 20s | This problem gives us two integer arrays, nums and numsDivide. We a… |
+| 2342 | [Max Sum of a Pair With Equal Sum of Digits](2342.md) | 🟡 Medium | 42s | The problem requires finding the maximum sum of a pair of numbers i… |
+| 2343 | [Query Kth Smallest Trimmed Number](2343.md) | 🟡 Medium | 41s | This problem provides a list of numbers represented as strings, all… |
+| 2344 | [Minimum Deletions to Make Array Divisible](2344.md) | 🔴 Hard | 1m 18s | The problem gives us two arrays of positive integers, nums and nums… |
 | 2345 | [Finding the Number of Visible Mountains](2345.md) | 🟡 Medium | 1m 20s | Each mountain is defined by a peak (x, y). Because the mountain has… |
 | 2346 | [Compute the Rank as a Percentage](2346.md) | 🟡 Medium | 1m 19s | The problem gives us a database table named Students. Each row cont… |
 | 2347 | [Best Poker Hand](2347.md) | 🟢 Easy | 1m 21s | The problem gives us exactly five poker cards. Each card has two pr… |
