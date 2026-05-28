@@ -16,7 +16,7 @@ draft: false
 | 1103 | [Distribute Candies to People](1103.md) | 🟢 Easy | 6m 19s | The problem describes a sequential candy distribution process acros… |
 | 1104 | [Path In Zigzag Labelled Binary Tree](1104.md) | 🟡 Medium | 1m 9s | This problem describes an infinite binary tree where nodes are norm… |
 | 1105 | [Filling Bookcase Shelves](1105.md) | 🟡 Medium | 57s | The problem asks us to arrange a sequence of books on a bookshelf w… |
-| 1106 | [Parsing A Boolean Expression](1106.md) | 🔴 Hard | 47s | The problem is asking us to evaluate a boolean expression that is p… |
+| 1106 | [Parsing A Boolean Expression](1106.md) | 🔴 Hard | 48s | The problem asks us to evaluate a boolean expression represented as… |
 | 1107 | [New Users Daily Count](1107.md) | 🟡 Medium | 1m 18s | We are given a database table called Traffic that records different… |
 | 1108 | [Defanging an IP Address](1108.md) | 🟢 Easy | 51s | The problem asks us to transform a valid IPv4 address into its "def… |
 | 1109 | [Corporate Flight Bookings](1109.md) | 🟡 Medium | 52s | The problem is asking us to compute the total number of seats reser… |
@@ -24,11 +24,12 @@ draft: false
 | 1111 | [Maximum Nesting Depth of Two Valid Parentheses Strings](1111.md) | 🟡 Medium | 47s | The problem asks us to take a valid parentheses string seq and spli… |
 | 1112 | [Highest Grade For Each Student](1112.md) | 🟡 Medium | 1m 8s | The problem gives us a database table named Enrollments. Each row r… |
 | 1113 | [Reported Posts](1113.md) | 🟢 Easy | 51s | The problem is asking us to determine the number of posts that were… |
-| 1114 | [Print in Order](1114.md) | 🟢 Easy | 6m 53s | This problem asks us to coordinate the execution order of three met… |
-| 1115 | [Print FooBar Alternately](1115.md) | 🟡 Medium | 6m 31s | The problem asks us to coordinate two threads so that they alternat… |
+| 1114 | [Print in Order](1114.md) | 🟢 Easy | 1m 20s | This problem asks us to coordinate three independent threads so tha… |
+| 1115 | [Print FooBar Alternately](1115.md) | 🟡 Medium | 1m 6s | This problem is a classic concurrency synchronization task. We are … |
 | 1116 | [Print Zero Even Odd](1116.md) | 🟡 Medium | 46s | The problem requires us to implement a multithreaded class ZeroEven… |
 | 1117 | [Building H2O](1117.md) | 🟡 Medium | 1m 7s | This problem asks us to coordinate multiple concurrent threads so t… |
 | 1118 | [Number of Days in a Month](1118.md) | 🟢 Easy | 40s | The problem asks us to determine the number of days in a specific m… |
+| 1119 | [Remove Vowels from a String](1119.md) | 🟢 Easy | 45s | The problem asks us to remove vowels from a given string s. Specifi… |
 | 1120 | [Maximum Average Subtree](1120.md) | 🟡 Medium | 1m 5s | This problem asks us to find the maximum average value among all su… |
 | 1121 | [Divide Array Into Increasing Sequences](1121.md) | 🔴 Hard | 39s | The problem asks us to determine if a sorted integer array nums can… |
 | 1122 | [Relative Sort Array](1122.md) | 🟢 Easy | 1m 2s | This problem asks us to sort arr1, but not in ordinary ascending or… |
@@ -62,3 +63,6 @@ draft: false
 | 1152 | [Analyze User Website Visit Pattern](1152.md) | 🟡 Medium | 1m 1s | Here is a comprehensive, detailed technical solution guide for Leet… |
 | 1153 | [String Transforms Into Another String](1153.md) | 🔴 Hard | 1m 17s | The problem gives us two strings, str1 and str2, which are guarante… |
 | 1154 | [Day of the Year](1154.md) | 🟢 Easy | 43s | The problem asks us to compute the ordinal day number of a year giv… |
+| 1155 | [Number of Dice Rolls With Target Sum](1155.md) | 🟡 Medium | 1m 41s | The problem gives us n identical dice, where each die has faces num… |
+| 1156 | [Swap For Longest Repeated Character Substring](1156.md) | 🟡 Medium | 48s | The problem asks us to determine the length of the longest substrin… |
+| 1157 | [Online Majority Element In Subarray](1157.md) | 🔴 Hard | 41s | The problem asks us to design a data structure that can efficiently… |
