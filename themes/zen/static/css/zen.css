@@ -333,8 +333,6 @@ html.dark .zen-sidebar__link:hover {
 
 .zen-page-header {
   max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 2rem;
 }
 
@@ -390,8 +388,6 @@ html.dark .zen-sidebar__link:hover {
 
 .zen-content {
   max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -577,7 +573,7 @@ html.dark .chroma {
 .zen-card-grid {
   display: grid;
   gap: 0.75rem;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
 }
 
 .zen-card {
@@ -734,8 +730,6 @@ html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12
 
 .zen-pager {
   max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   gap: 1rem;
   margin-top: 3rem;
@@ -902,7 +896,7 @@ html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12
 
 .cal-body { display: flex; gap: 2rem; align-items: flex-start; }
 
-.cal-wrap { flex-shrink: 0; width: 340px; }
+.cal-wrap { flex: 1; min-width: 260px; max-width: 320px; }
 .cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
 .cal-nav__btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -935,7 +929,7 @@ html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12
 .cal-cell__dot--lg { width: 7px; height: 7px; opacity: 1; }
 
 .cal-posts {
-  flex: 1; min-width: 0; background: var(--bg-subtle);
+  flex: 3; min-width: 0; background: var(--bg-subtle);
   border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
   padding: 1.25rem;
 }
@@ -1102,20 +1096,20 @@ html.no-transition *::after {
 /* lg: 1024px+ — start expanding nav padding */
 @media (min-width: 1024px) {
   .zen-nav__inner { padding: 0 2rem; }
+  .zen-main { padding-left: 2rem; padding-right: 2rem; }
 }
 
 /* xl: 1280px+ — wider prose column, larger hero + headings */
 @media (min-width: 1280px) {
   :root { --content-max: 900px; }
   .zen-nav__inner { padding: 0 2.5rem; }
-  .zen-main { padding: 2.5rem 2rem 5rem; }
+  .zen-main { padding: 2.5rem 2.5rem 5rem; }
   .zen-home-header { padding: 4rem 0 2.5rem; margin-bottom: 3rem; }
   .zen-home-header__title { font-size: 2.375rem; }
   .zen-page-header h1 { font-size: 2rem; }
   .zen-section-header h1 { font-size: 2rem; }
   .zen-card-grid { gap: 1rem; }
 
-  .cal-wrap { width: 400px; }
   .cal-body { gap: 3rem; }
   .cal-cell__num { font-size: 0.8125rem; }
   .cal-page__title { font-size: 2rem; }
@@ -1125,12 +1119,11 @@ html.no-transition *::after {
 @media (min-width: 1536px) {
   :root { --content-max: 980px; }
   .zen-nav__inner { padding: 0 3rem; }
-  .zen-main { padding: 3rem 2.5rem 6rem; }
+  .zen-main { padding: 3rem 3rem 6rem; }
   .zen-home-header { margin-bottom: 3.5rem; }
   .zen-home-header__title { font-size: 2.625rem; }
   .zen-card-grid { gap: 1.25rem; }
 
-  .cal-wrap { width: 460px; }
   .cal-body { gap: 4rem; }
   .cal-cell__num { font-size: 0.875rem; }
   .cal-nav__label { font-size: 1rem; }
