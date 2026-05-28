@@ -63,17 +63,21 @@ draft: false
 | 2454 | [Next Greater Element IV](2454.md) | 🔴 Hard | 1m 22s | The problem asks us to compute, for every element in the array, the… |
 | 2455 | [Average Value of Even Numbers That Are Divisible by Three](2455.md) | 🟢 Easy | 50s | The problem asks us to compute the average of all integers in an in… |
 | 2456 | [Most Popular Video Creator](2456.md) | 🟡 Medium | 47s | The problem asks us to identify the most popular video creators bas… |
+| 2457 | [Minimum Addition to Make Integer Beautiful](2457.md) | 🟡 Medium | 1m 13s | The problem gives us two positive integers, n and target. An intege… |
 | 2458 | [Height of Binary Tree After Subtree Removal Queries](2458.md) | 🔴 Hard | 1m 29s | This problem asks us to process multiple independent subtree remova… |
 | 2459 | [Sort Array by Moving Items to Empty Space](2459.md) | 🔴 Hard | 1m 29s | We are given a permutation of the integers from 0 to n - 1. Every n… |
 | 2460 | [Apply Operations to an Array](2460.md) | 🟢 Easy | 1m 13s | The problem gives us a 0-indexed integer array nums containing non-… |
 | 2461 | [Maximum Sum of Distinct Subarrays With Length K](2461.md) | 🟡 Medium | 1m 25s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2462 | [Total Cost to Hire K Workers](2462.md) | 🟡 Medium | 44s | We are asked to simulate a hiring process for k workers from an arr… |
+| 2463 | [Minimum Total Distance Traveled](2463.md) | 🔴 Hard | 1m 48s | This problem asks us to assign robots to factories in a way that mi… |
 | 2464 | [Minimum Subarrays in a Valid Split](2464.md) | 🟡 Medium | 1m 19s | The problem asks us to split the array into the minimum possible nu… |
+| 2465 | [Number of Distinct Averages](2465.md) | 🟢 Easy | 1m 18s | The problem asks us to repeatedly remove the smallest and largest e… |
 | 2466 | [Count Ways To Build Good Strings](2466.md) | 🟡 Medium | 2m 23s | The problem asks us to count the number of "good" strings that can … |
 | 2467 | [Most Profitable Path in a Tree](2467.md) | 🟡 Medium | 1m 24s | The problem gives us an undirected tree with n nodes rooted at node… |
 | 2468 | [Split Message Based on Limit](2468.md) | 🔴 Hard | 51s | This problem requires splitting a given string message into multipl… |
 | 2469 | [Convert the Temperature](2469.md) | 🟢 Easy | 2m 19s | The problem gives us a single floating point number, celsius, repre… |
 | 2471 | [Minimum Number of Operations to Sort a Binary Tree by Level](2471.md) | 🟡 Medium | 2m 22s | The problem requires us to sort each level of a binary tree in stri… |
+| 2472 | [Maximum Number of Non-overlapping Palindrome Substrings](2472.md) | 🔴 Hard | 3m 16s | The problem asks us to find the maximum number of non-overlapping p… |
 | 2473 | [Minimum Cost to Buy Apples](2473.md) | 🟡 Medium | 42s | This problem involves a weighted undirected graph where nodes repre… |
 | 2474 | [Customers With Strictly Increasing Purchases](2474.md) | 🔴 Hard | 51s | This problem requires identifying customers whose total annual purc… |
 | 2477 | [Minimum Fuel Cost to Report to the Capital](2477.md) | 🟡 Medium | 1m 19s | This problem describes a country road network that forms a tree. A … |
@@ -85,6 +89,7 @@ draft: false
 | 2487 | [Remove Nodes From Linked List](2487.md) | 🟡 Medium | 38s | The problem asks us to process a singly-linked list and remove node… |
 | 2489 | [Number of Substrings With Fixed Ratio](2489.md) | 🟡 Medium | 1m 16s | We are given a binary string s consisting only of '0' and '1', alon… |
 | 2492 | [Minimum Score of a Path Between Two Cities](2492.md) | 🟡 Medium | 1m 19s | The problem asks us to find the minimum possible score of a path be… |
+| 2493 | [Divide Nodes Into the Maximum Number of Groups](2493.md) | 🔴 Hard | 6m 43s | We are given an undirected graph with n nodes and a list of edges. … |
 | 2494 | [Merge Overlapping Events in the Same Hall](2494.md) | 🔴 Hard | 1m 6s | This problem gives us a database table named HallEvents. Each row r… |
 | 2497 | [Maximum Star Sum of a Graph](2497.md) | 🟡 Medium | 1m 21s | The problem gives us an undirected graph with n nodes. Each node ha… |
 | 2498 | [Frog Jump II](2498.md) | 🟡 Medium | 50s | The problem presents a sequence of stones in a river represented by… |
