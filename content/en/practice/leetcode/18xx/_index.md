@@ -70,4 +70,12 @@ draft: false
 | 1868 | [Product of Two Run-Length Encoded Arrays](1868.md) | 🟡 Medium | 1m 28s | This problem asks us to multiply two arrays that are already stored… |
 | 1869 | [Longer Contiguous Segments of Ones than Zeros](1869.md) | 🟢 Easy | 1m 17s | The problem gives us a binary string s, which means the string cont… |
 | 1870 | [Minimum Speed to Arrive on Time](1870.md) | 🟡 Medium | 2m 22s | The problem asks us to find the minimum constant speed (in kilomete… |
+| 1871 | [Jump Game VII](1871.md) | 🟡 Medium | 1m 41s | The problem gives us a binary string s, where each character is eit… |
+| 1873 | [Calculate Special Bonus](1873.md) | 🟢 Easy | 1m 49s | This problem asks us to write an SQL query that calculates a specia… |
+| 1874 | [Minimize Product Sum of Two Arrays](1874.md) | 🟡 Medium | 1m 24s | The problem defines the product sum of two arrays as the sum of the… |
+| 1875 | [Group Employees of the Same Salary](1875.md) | 🟡 Medium | 1m 9s | This is a SQL database problem where we need to group employees int… |
+| 1876 | [Substrings of Size Three with Distinct Characters](1876.md) | 🟢 Easy | 1m 8s | The problem asks us to count how many substrings of length exactly … |
+| 1877 | [Minimize Maximum Pair Sum in Array](1877.md) | 🟡 Medium | 53s | The problem asks us to pair elements in an array of even length suc… |
+| 1878 | [Get Biggest Three Rhombus Sums in a Grid](1878.md) | 🟡 Medium | 45s | The problem asks us to compute the largest three distinct rhombus s… |
+| 1879 | [Minimum XOR Sum of Two Arrays](1879.md) | 🔴 Hard | 57s | The problem asks us to take two integer arrays of equal length, num… |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |

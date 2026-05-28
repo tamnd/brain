@@ -61,3 +61,8 @@ draft: false
 | 2148 | [Count Elements With Strictly Smaller and Greater Elements ](2148.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and asks us to count how… |
 | 2149 | [Rearrange Array Elements by Sign](2149.md) | 🟡 Medium | 1m 32s | The problem gives us an array nums that contains an equal number of… |
 | 2150 | [Find All Lonely Numbers in the Array](2150.md) | 🟡 Medium | 4m 51s | The problem asks us to identify all "lonely" numbers in an integer … |
+| 2151 | [Maximum Good People Based on Statements](2151.md) | 🔴 Hard | 57s | This problem asks us to determine the maximum number of good people… |
+| 2152 | [Minimum Number of Lines to Cover Points](2152.md) | 🟡 Medium | 58s | The problem asks us to find the minimum number of straight lines re… |
+| 2153 | [The Number of Passengers in Each Bus II](2153.md) | 🔴 Hard | 1m 4s | The problem describes a scenario at a bus station where buses and p… |
+| 2155 | [All Divisions With the Highest Score of a Binary Array](2155.md) | 🟡 Medium | 2m 19s | The problem gives you a binary array nums of length n and asks you … |
+| 2157 | [Groups of Strings](2157.md) | 🔴 Hard | 1m 43s | The problem gives us an array of strings where every string contain… |
