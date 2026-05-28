@@ -19,6 +19,8 @@
   (function(){
     var t=localStorage.getItem('brain-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
     if(t==='dark')document.documentElement.classList.add('dark');
+    var ui=localStorage.getItem('brain-ui-theme')||'zen';
+    document.documentElement.setAttribute('data-ui-theme',ui);
   })();
   </script>
 </head>
@@ -40,6 +42,9 @@
       <a href="/search/" class="zen-nav__action{{if eq .Page.RelPermalink "/search/"}} zen-nav__action--active{{end}}" title="Search" aria-label="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </a>
+      <button type="button" id="zen-ui-theme-btn" class="zen-nav__action zen-nav__action--text" title="Switch theme" aria-label="Switch UI theme">
+        <span id="zen-ui-theme-label">zen</span>
+      </button>
       <button type="button" id="zen-theme-btn" class="zen-nav__action" title="Toggle dark/light" aria-label="Toggle dark/light mode">
         <svg id="zen-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg id="zen-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -167,6 +172,29 @@
       });
       wrap.appendChild(btn);
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('zen-ui-theme-btn');
+  var label=document.getElementById('zen-ui-theme-label');
+  var themes=['zen','github'];
+  function getTheme(){ return localStorage.getItem('brain-ui-theme')||'zen'; }
+  function applyTheme(ui){
+    var s=document.createElement('style');
+    s.textContent='*,*::before,*::after{transition:none!important}';
+    document.head.appendChild(s);
+    document.documentElement.setAttribute('data-ui-theme',ui);
+    localStorage.setItem('brain-ui-theme',ui);
+    if(label)label.textContent=ui==='github'?'gh':'zen';
+    requestAnimationFrame(function(){document.head.removeChild(s);});
+  }
+  if(label)label.textContent=getTheme()==='github'?'gh':'zen';
+  btn&&btn.addEventListener('click',function(){
+    var cur=getTheme();
+    var next=themes[(themes.indexOf(cur)+1)%themes.length];
+    applyTheme(next);
   });
 })();
 </script>

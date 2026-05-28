@@ -75,22 +75,37 @@ draft: false
 | 1263 | [Minimum Moves to Move a Box to Their Target Location](1263.md) | 🔴 Hard | 1m 9s | The problem is a variant of the classic "Sokoban" puzzle. You are g… |
 | 1264 | [Page Recommendations](1264.md) | 🟡 Medium | 1m 12s | This problem models a small social network with two database tables… |
 | 1265 | [Print Immutable Linked List in Reverse](1265.md) | 🟡 Medium | 1m 17s | This problem gives us a special type of linked list called an immut… |
-| 1266 | [Minimum Time Visiting All Points](1266.md) | 🟢 Easy | 43s | The problem asks us to calculate the minimum time required to visit… |
-| 1267 | [Count Servers that Communicate](1267.md) | 🟡 Medium | 1m 30s | The problem gives us a two dimensional grid representing a server c… |
-| 1268 | [Search Suggestions System](1268.md) | 🟡 Medium | 46s | The problem asks us to implement a search suggestion system for a l… |
-| 1269 | [Number of Ways to Stay in the Same Place After Some Steps](1269.md) | 🔴 Hard | 48s | This problem asks us to compute the number of sequences of moves th… |
-| 1270 | [All People Report to the Given Manager](1270.md) | 🟡 Medium | 40s | Let's dive into a detailed technical guide for LeetCode 1270. The p… |
-| 1271 | [Hexspeak](1271.md) | 🟢 Easy | 1m 15s | The problem asks us to convert a decimal number into a special hexa… |
-| 1272 | [Remove Interval](1272.md) | 🟡 Medium | 1m 20s | The problem gives us a sorted list of disjoint half open intervals.… |
-| 1273 | [Delete Tree Nodes](1273.md) | 🟡 Medium | 1m 20s | The problem gives us a rooted tree with nodes total vertices. Every… |
-| 1274 | [Number of Ships in a Rectangle](1274.md) | 🔴 Hard | 1m 23s | This problem is an interactive divide and conquer problem where we … |
-| 1275 | [Find Winner on a Tic Tac Toe Game](1275.md) | 🟢 Easy | 1m 22s | This problem asks us to simulate a game of Tic-Tac-Toe on a standar… |
-| 1276 | [Number of Burgers with No Waste of Ingredients](1276.md) | 🟡 Medium | 1m 1s | The problem gives us two integers, tomatoSlices and cheeseSlices, w… |
-| 1277 | [Count Square Submatrices with All Ones](1277.md) | 🟡 Medium | 1m 20s | The problem gives us a binary matrix of size m x n, where each cell… |
-| 1278 | [Palindrome Partitioning III](1278.md) | 🔴 Hard | 56s | This problem asks us to transform a string s into k palindromic sub… |
-| 1279 | [Traffic Light Controlled Intersection](1279.md) | 🟢 Easy | 1m 16s | This problem asks us to design a system for controlling a traffic l… |
+| 1266 | [Minimum Time Visiting All Points](1266.md) | 🟢 Easy | 1m 7s | The problem gives a sequence of points on a 2D coordinate plane. Ea… |
+| 1267 | [Count Servers that Communicate](1267.md) | 🟡 Medium | 1m 14s | The problem gives us a two dimensional grid representing a server c… |
+| 1268 | [Search Suggestions System](1268.md) | 🟡 Medium | 1m 14s | This problem asks us to build a product suggestion system similar t… |
+| 1269 | [Number of Ways to Stay in the Same Place After Some Steps](1269.md) | 🔴 Hard | 1m 19s | This problem asks us to count how many different ways a pointer can… |
+| 1270 | [All People Report to the Given Manager](1270.md) | 🟡 Medium | 46s | The problem asks us to identify all employees in a company who dire… |
+| 1271 | [Hexspeak](1271.md) | 🟢 Easy | 53s | The problem asks us to convert a decimal number given as a string i… |
+| 1272 | [Remove Interval](1272.md) | 🟡 Medium | 54s | The problem asks us to remove a given interval toBeRemoved from a l… |
+| 1273 | [Delete Tree Nodes](1273.md) | 🟡 Medium | 1m 3s | The problem provides a tree rooted at node 0, represented in two pa… |
+| 1274 | [Number of Ships in a Rectangle](1274.md) | 🔴 Hard | 44s | The problem presents an interactive scenario where ships are placed… |
+| 1275 | [Find Winner on a Tic Tac Toe Game](1275.md) | 🟢 Easy | 57s | This problem asks us to simulate a game of Tic-Tac-Toe on a 3 x 3 g… |
+| 1276 | [Number of Burgers with No Waste of Ingredients](1276.md) | 🟡 Medium | 1m 25s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1277 | [Count Square Submatrices with All Ones](1277.md) | 🟡 Medium | 1m 29s | The problem gives us a binary matrix of size m x n, where every cel… |
+| 1278 | [Palindrome Partitioning III](1278.md) | 🔴 Hard | 1m 27s | The problem gives us a string s and an integer k. We are allowed to… |
+| 1279 | [Traffic Light Controlled Intersection](1279.md) | 🟢 Easy | 1m 22s | This problem asks us to design a thread-safe traffic light system f… |
 | 1280 | [Students and Examinations](1280.md) | 🟢 Easy | 1m 21s | This problem asks us to generate a complete report showing how many… |
-| 1281 | [Subtract the Product and Sum of Digits of an Integer](1281.md) | 🟢 Easy | 50s | The problem gives us a positive integer n and asks us to compute tw… |
+| 1281 | [Subtract the Product and Sum of Digits of an Integer](1281.md) | 🟢 Easy | 51s | The problem asks us to compute a simple mathematical transformation… |
 | 1282 | [Group the People Given the Group Size They Belong To](1282.md) | 🟡 Medium | 1m 11s | The problem gives us an array called groupSizes, where each index r… |
 | 1283 | [Find the Smallest Divisor Given a Threshold](1283.md) | 🟡 Medium | 1m 4s | The problem asks us to find the smallest positive integer divisor s… |
 | 1284 | [Minimum Number of Flips to Convert Binary Matrix to Zero Matrix](1284.md) | 🔴 Hard | 48s | This problem asks us to determine the minimum number of flips requi… |
+| 1285 | [Find the Start and End Number of Continuous Ranges](1285.md) | 🟡 Medium | 56s | Here’s a full technical solution guide for LeetCode 1285 following … |
+| 1286 | [Iterator for Combination](1286.md) | 🟡 Medium | 51s | The problem asks us to design a class CombinationIterator that gene… |
+| 1287 | [Element Appearing More Than 25% In Sorted Array](1287.md) | 🟢 Easy | 1m 11s | The problem gives us a sorted integer array in non-decreasing order… |
+| 1288 | [Remove Covered Intervals](1288.md) | 🟡 Medium | 52s | The problem asks us to process a list of intervals, where each inte… |
+| 1289 | [Minimum Falling Path Sum II](1289.md) | 🔴 Hard | 48s | The problem requires finding the minimum sum of a falling path thro… |
+| 1290 | [Convert Binary Number in a Linked List to Integer](1290.md) | 🟢 Easy | 1m 7s | The problem gives us the head of a singly linked list where every n… |
+| 1291 | [Sequential Digits](1291.md) | 🟡 Medium | 53s | The problem asks us to generate all integers within a given range [… |
+| 1292 | [Maximum Side Length of a Square with Sum Less than or Equal to Threshold](1292.md) | 🟡 Medium | 1m 33s | The problem gives us a two dimensional matrix mat of size m x n, al… |
+| 1293 | [Shortest Path in a Grid with Obstacles Elimination](1293.md) | 🔴 Hard | 2m 7s | The problem gives us a two-dimensional grid where each cell contain… |
+| 1294 | [Weather Type in Each Country](1294.md) | 🟢 Easy | 47s | The problem requires us to determine the type of weather in each co… |
+| 1295 | [Find Numbers with Even Number of Digits](1295.md) | 🟢 Easy | 54s | The problem asks us to determine, from a given list of integers num… |
+| 1296 | [Divide Array in Sets of K Consecutive Numbers](1296.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and a positive integer k… |
+| 1297 | [Maximum Number of Occurrences of a Substring](1297.md) | 🟡 Medium | 46s | The problem asks us to analyze a string s and determine the maximum… |
+| 1298 | [Maximum Candies You Can Get from Boxes](1298.md) | 🔴 Hard | 1m 2s | The problem asks us to compute the maximum number of candies we can… |
+| 1299 | [Replace Elements with Greatest Element on Right Side](1299.md) | 🟢 Easy | 57s | The problem requires us to transform a given array arr such that ea… |

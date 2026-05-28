@@ -1051,3 +1051,481 @@ html.dark .zen-diff--hard   { color: #e0a880; background: rgb(203 141 106 / 0.12
 html.dark .zen-card {
   background: var(--bg-subtle);
 }
+
+/* ===== Theme switcher label button ======================================= */
+
+.zen-nav__action--text {
+  width: auto;
+  padding: 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GITHUB THEME
+   Applied when <html data-ui-theme="github"> is set.
+   Overrides zen tokens + key components to match GitHub's Primer design.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens: light ───────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] {
+  --bg:            #ffffff;
+  --fg:            #1f2328;
+  --muted:         #f6f8fa;
+  --muted-fg:      #636c76;
+  --border:        #d0d7de;
+  --border-strong: #afb8c1;
+  --accent:        #0969da;
+  --accent-fg:     #ffffff;
+  --ring:          #0969da;
+  --code-bg:       #f6f8fa;
+
+  --bg-subtle:     #f6f8fa;
+  --border-subtle: #d0d7de;
+  --link:          #0969da;
+  --link-hover:    #0550ae;
+  --accent-light:  #ddf4ff;
+  --accent-hover:  #0550ae;
+  --text-muted:    #636c76;
+  --success:       #1a7f37;
+  --success-bg:    #dafbe1;
+
+  --shadow-sm: 0 1px 0 rgba(27,31,36,0.04);
+  --shadow:    0 1px 0 rgba(27,31,36,0.04), 0 0 0 1px rgba(27,31,36,0.04);
+  --shadow-md: 0 3px 6px rgba(140,149,159,0.15);
+  --shadow-lg: 0 8px 24px rgba(140,149,159,0.2);
+
+  --nav-h:       48px;
+  --sidebar-w:   240px;
+  --content-max: 800px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --radius-sm:   6px;
+  --radius:      6px;
+  --radius-lg:   8px;
+  --radius-pill: 2em;
+}
+
+/* ── Tokens: dark ────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"].dark {
+  --bg:            #0d1117;
+  --fg:            #e6edf3;
+  --muted:         #161b22;
+  --muted-fg:      #7d8590;
+  --border:        #30363d;
+  --border-strong: #3d444d;
+  --accent:        #4493f8;
+  --accent-fg:     #ffffff;
+  --ring:          #4493f8;
+  --code-bg:       #161b22;
+
+  --bg-subtle:     #161b22;
+  --border-subtle: #21262d;
+  --link:          #4493f8;
+  --link-hover:    #669cf8;
+  --accent-light:  #12223a;
+  --accent-hover:  #669cf8;
+
+  --shadow-sm: 0 0 0 1px #30363d;
+  --shadow:    0 0 0 1px #30363d;
+  --shadow-md: 0 3px 6px rgba(1,4,9,0.4);
+  --shadow-lg: 0 8px 24px rgba(1,4,9,0.5);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* ── Navigation ──────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-nav {
+  background: var(--muted);
+  border-bottom: 1px solid var(--border);
+  height: var(--nav-h);
+}
+
+html[data-ui-theme="github"] .zen-nav__logo {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+html[data-ui-theme="github"] .zen-nav__logo-icon {
+  background: var(--fg);
+  border-radius: 4px;
+}
+
+html[data-ui-theme="github"] .zen-nav__action {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+html[data-ui-theme="github"] .zen-nav__action:hover,
+html[data-ui-theme="github"] .zen-nav__action--active {
+  background: rgba(175, 184, 193, 0.2);
+  color: var(--fg);
+}
+
+html[data-ui-theme="github"].dark .zen-nav__action:hover,
+html[data-ui-theme="github"].dark .zen-nav__action--active {
+  background: rgba(177, 186, 196, 0.12);
+}
+
+html[data-ui-theme="github"] .zen-nav__action--text {
+  width: auto;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-sidebar {
+  background: transparent;
+  padding-top: 1rem;
+}
+
+html[data-ui-theme="github"] .zen-sidebar__section {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted-fg);
+}
+
+html[data-ui-theme="github"] .zen-sidebar__link {
+  font-size: 0.875rem;
+  padding: 0.3125rem 1rem;
+  border-radius: 6px;
+  margin: 0 0.25rem;
+}
+
+html[data-ui-theme="github"] .zen-sidebar__link:hover {
+  background: rgba(175, 184, 193, 0.2);
+}
+
+html[data-ui-theme="github"].dark .zen-sidebar__link:hover {
+  background: rgba(177, 186, 196, 0.12);
+}
+
+html[data-ui-theme="github"] .zen-sidebar__link--active {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  border-left: 2px solid var(--accent);
+  padding-left: calc(1rem - 2px);
+}
+
+html[data-ui-theme="github"] .zen-sidebar__link--active:hover {
+  background: rgba(9, 105, 218, 0.08);
+}
+
+html[data-ui-theme="github"].dark .zen-sidebar__link--active:hover {
+  background: rgba(68, 147, 248, 0.1);
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-breadcrumb {
+  font-size: 0.8125rem;
+}
+
+html[data-ui-theme="github"] .zen-breadcrumb a:hover {
+  color: var(--accent);
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-card {
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  box-shadow: none;
+  background: var(--bg);
+}
+
+html[data-ui-theme="github"] .zen-card:hover {
+  transform: none;
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+html[data-ui-theme="github"] .zen-card__title {
+  font-size: 0.9375rem;
+}
+
+html[data-ui-theme="github"] .zen-card:hover .zen-card__title {
+  color: var(--accent);
+}
+
+html[data-ui-theme="github"] .zen-card__desc {
+  font-size: 0.8125rem;
+}
+
+html[data-ui-theme="github"].dark .zen-card {
+  background: var(--bg);
+}
+
+/* ── Tags (GitHub label style) ───────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-tag {
+  border-radius: 6px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: rgba(9, 105, 218, 0.2);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 0.1em 0.6em;
+}
+
+html[data-ui-theme="github"] .zen-tag:hover {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+html[data-ui-theme="github"].dark .zen-tag {
+  background: rgba(68, 147, 248, 0.15);
+  color: #4493f8;
+  border-color: rgba(68, 147, 248, 0.3);
+}
+
+html[data-ui-theme="github"].dark .zen-tag:hover {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+/* ── Content prose ───────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-content {
+  max-width: var(--content-max);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+html[data-ui-theme="github"] .zen-content h1,
+html[data-ui-theme="github"] .zen-content h2,
+html[data-ui-theme="github"] .zen-content h3,
+html[data-ui-theme="github"] .zen-content h4,
+html[data-ui-theme="github"] .zen-content h5,
+html[data-ui-theme="github"] .zen-content h6 {
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 1.5em 0 0.5em;
+}
+
+html[data-ui-theme="github"] .zen-content h1 { font-size: 2em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+html[data-ui-theme="github"] .zen-content h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+html[data-ui-theme="github"] .zen-content h3 { font-size: 1.25em; }
+html[data-ui-theme="github"] .zen-content h4 { font-size: 1em; }
+
+html[data-ui-theme="github"] .zen-content p { margin: 0 0 1em; }
+
+html[data-ui-theme="github"] .zen-content ul,
+html[data-ui-theme="github"] .zen-content ol {
+  padding-left: 2em;
+  margin: 0 0 1em;
+}
+
+html[data-ui-theme="github"] .zen-content li + li { margin-top: 0.25em; }
+
+html[data-ui-theme="github"] .zen-content blockquote {
+  border-left: 4px solid var(--border);
+  background: transparent;
+  border-radius: 0;
+  color: var(--muted-fg);
+  padding: 0 1em;
+  margin: 0 0 1em;
+}
+
+/* Inline code */
+html[data-ui-theme="github"] .zen-content code {
+  font-family: var(--font-mono);
+  font-size: 85%;
+  background: rgba(175, 184, 193, 0.2);
+  border: none;
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+}
+
+html[data-ui-theme="github"].dark .zen-content code {
+  background: rgba(110, 118, 129, 0.4);
+}
+
+/* Code blocks */
+html[data-ui-theme="github"] .zen-content pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow-x: auto;
+  margin: 0 0 1em;
+}
+
+html[data-ui-theme="github"] .zen-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+html[data-ui-theme="github"] .chroma {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 85%;
+  line-height: 1.45;
+}
+
+/* Tables — GitHub Markdown style */
+html[data-ui-theme="github"] .zen-content table {
+  border-collapse: collapse;
+  border: none;
+  border-radius: 0;
+  font-size: 0.9375rem;
+  display: table;
+  width: 100%;
+  box-shadow: none;
+}
+
+html[data-ui-theme="github"] .zen-content thead tr {
+  background: var(--muted);
+}
+
+html[data-ui-theme="github"] .zen-content th {
+  border: 1px solid var(--border);
+  padding: 6px 13px;
+  font-size: inherit;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--fg);
+}
+
+html[data-ui-theme="github"] .zen-content td {
+  border: 1px solid var(--border);
+  padding: 6px 13px;
+  border-bottom: none;
+}
+
+html[data-ui-theme="github"] .zen-content td:last-child { border-bottom: 1px solid var(--border); }
+html[data-ui-theme="github"] .zen-content tbody tr:last-child td { border-bottom: 1px solid var(--border); }
+
+html[data-ui-theme="github"] .zen-content tbody tr:nth-child(even) td {
+  background: var(--muted);
+}
+
+html[data-ui-theme="github"] .zen-content tbody tr:hover td {
+  background: rgba(175, 184, 193, 0.1);
+}
+
+html[data-ui-theme="github"].dark .zen-content tbody tr:hover td {
+  background: rgba(177, 186, 196, 0.06);
+}
+
+/* ── Section / home headers ───────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-section-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+html[data-ui-theme="github"] .zen-home-header__title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  background: none;
+  -webkit-text-fill-color: var(--fg);
+  color: var(--fg);
+}
+
+/* ── Pager ───────────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-pager__btn {
+  border-radius: 6px;
+}
+
+html[data-ui-theme="github"] .zen-pager__btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* ── Search ──────────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-search-input {
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+html[data-ui-theme="github"] .zen-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+}
+
+html[data-ui-theme="github"].dark .zen-search-input:focus {
+  box-shadow: 0 0 0 3px rgba(68, 147, 248, 0.2);
+}
+
+/* ── Tags cloud ──────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-tags-cloud__tag {
+  border-radius: 6px;
+}
+
+html[data-ui-theme="github"] .zen-tags-cloud__tag:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: rgba(9, 105, 218, 0.2);
+}
+
+/* ── Difficulty badges (keep colors, adjust radius) ─────────────────────── */
+
+html[data-ui-theme="github"] .zen-diff {
+  border-radius: 6px;
+}
+
+/* ── Copy button ──────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-copy-btn {
+  border-radius: 6px;
+  font-family: var(--font-sans);
+}
+
+html[data-ui-theme="github"] .zen-copy-btn--copied {
+  color: var(--success) !important;
+  border-color: var(--success) !important;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-footer {
+  border-top: 1px solid var(--border);
+  background: var(--muted);
+}
+
+/* ── Calendar ─────────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .cal-posts {
+  border-radius: 6px;
+}
+
+html[data-ui-theme="github"] .cal-nav__btn {
+  border-radius: 6px;
+}
+
+/* ── Page header ──────────────────────────────────────────────────────────── */
+
+html[data-ui-theme="github"] .zen-page-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
