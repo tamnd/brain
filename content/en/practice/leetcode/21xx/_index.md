@@ -72,7 +72,7 @@ draft: false
 | 2159 | [Order Two Columns Independently](2159.md) | 🟡 Medium | 1m 14s | This problem provides a database table named Data with two integer … |
 | 2160 | [Minimum Sum of Four Digit Number After Splitting Digits](2160.md) | 🟢 Easy | 45s | The problem asks us to take a four-digit integer num and split its … |
 | 2161 | [Partition Array According to Given Pivot](2161.md) | 🟡 Medium | 1m 17s | This problem asks us to rearrange an array around a given pivot val… |
-| 2162 | [Minimum Cost to Set Cooking Time](2162.md) | 🟡 Medium | 54s | The problem asks us to determine the minimum cost to set a microwav… |
+| 2162 | [Minimum Cost to Set Cooking Time](2162.md) | 🟡 Medium | 1m 18s | This problem asks us to simulate the process of entering a cooking … |
 | 2163 | [Minimum Difference in Sums After Removal of Elements](2163.md) | 🔴 Hard | 54s | The problem presents a 0-indexed integer array nums of length 3 n a… |
 | 2164 | [Sort Even and Odd Indices Independently](2164.md) | 🟢 Easy | 1m 27s | The problem gives us a 0-indexed integer array nums and asks us to … |
 | 2165 | [Smallest Value of the Rearranged Number](2165.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, which may be positive, negativ… |

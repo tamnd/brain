@@ -29,3 +29,11 @@ draft: false
 | 2424 | [Longest Uploaded Prefix](2424.md) | 🟡 Medium | 3m 6s | The problem asks us to design a data structure that tracks uploaded… |
 | 2425 | [Bitwise XOR of All Pairings](2425.md) | 🟡 Medium | 47s | The problem asks us to compute the bitwise XOR of all pairings betw… |
 | 2427 | [Number of Common Factors](2427.md) | 🟢 Easy | 1m 5s | The problem gives us two positive integers, a and b, and asks us to… |
+| 2429 | [Minimize XOR](2429.md) | 🟡 Medium | 2m 19s | The problem asks us to find a positive integer x such that it has t… |
+| 2430 | [Maximum Deletions on a String](2430.md) | 🔴 Hard | 3m 44s | The problem gives us a string s containing lowercase English letter… |
+| 2431 | [Maximize Total Tastiness of Purchased Fruits](2431.md) | 🟡 Medium | 48s | The problem asks us to maximize the total tastiness of fruits we ca… |
+| 2433 | [Find The Original Array of Prefix Xor](2433.md) | 🟡 Medium | 1m 55s | The problem is asking us to reverse-engineer an array arr from its … |
+| 2434 | [Using a Robot to Print the Lexicographically Smallest String](2434.md) | 🟡 Medium | 2m 49s | The problem requires simulating a robot that constructs a final str… |
+| 2435 | [Paths in Matrix Whose Sum Is Divisible by K](2435.md) | 🔴 Hard | 1m 21s | The problem gives us a matrix grid of size m x n and an integer k. … |
+| 2436 | [Minimum Split Into Subarrays With GCD Greater Than One](2436.md) | 🟡 Medium | 1m 18s | This problem asks us to divide an array into the smallest possible … |
+| 2438 | [Range Product Queries of Powers](2438.md) | 🟡 Medium | 47s | The problem asks us to compute the product of certain ranges of pow… |
