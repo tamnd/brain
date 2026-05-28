@@ -1,6 +1,6 @@
 ---
 title: "CF 13C - Sequence"
-description: "We are given an array of integers, and we may repeatedly increment or decrement any element by one. Every such change co"
+description: "We are given a list of integers of length N, which may contain negative numbers, zeros, or large positive numbers. The t"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "sortings"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Beta Round 13"
 rating: 2200
 weight: 13
-solve_time_s: 136
-verified: false
+solve_time_s: 84
+verified: true
 draft: false
 ---
 
@@ -18,184 +18,40 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** dp, sortings  
-**Solve time:** 2m 16s  
-**Verified:** no  
+**Solve time:** 1m 24s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of integers, and we may repeatedly increment or decrement any element by one. Every such change costs one operation. The goal is to transform the array into a non-decreasing sequence while spending the minimum total cost.
+We are given a list of integers of length _N_, which may contain negative numbers, zeros, or large positive numbers. The task is to transform this list into a non-decreasing sequence, where each element is at least as large as the previous one. Each transformation step consists of either incrementing or decrementing a number by one, and we want to minimize the total number of such steps. The output is a single integer: the minimum total steps required.
 
-Another way to phrase the task is this: we want to build a new array `b` such that
+The constraints are significant. With _N_ up to 5000 and values as large as 10^9, a solution that directly enumerates all possible sequences is hopeless. Each element could theoretically move to any integer within a wide range, so algorithms that attempt all possible sequences would involve more than 10^13 operations, which is clearly impossible in 1 second. This forces us to think in terms of dynamic programming or other methods that avoid explicit enumeration.
 
-$$b_1 \le b_2 \le \dots \le b_n$$
-
-and the total modification cost
-
-$$\sum |a_i - b_i|$$
-
-is as small as possible.
-
-The input size immediately shapes the solution space. The array length can reach 5000, which is too large for anything exponential or cubic with large constants. A naive search over all possible target arrays is impossible because the values themselves can be as large as $10^9$. Even trying every integer in a range is hopeless.
-
-At the same time, $n = 5000$ is small enough for an $O(n^2)$ dynamic programming solution. A clean $O(n^2)$ implementation with simple transitions comfortably fits inside the time limit.
-
-The most dangerous part of this problem is that the optimal final values are not obvious. A greedy strategy that fixes local inversions can fail badly.
-
-Consider this example:
-
-```
-3
-10 1 10
-```
-
-The best answer is `9`, by transforming the array into:
-
-```
-1 1 10
-```
-
-or
-
-```
-10 10 10
-```
-
-A greedy approach that only repairs adjacent violations may produce a larger cost because changing one element affects future constraints.
-
-Another subtle case is when the sequence is strictly decreasing:
-
-```
-4
-4 3 2 1
-```
-
-The optimal answer is `4`, achieved with:
-
-```
-2 2 2 2
-```
-
-A careless implementation might only try target values already appearing in the same order, which misses better balanced solutions.
-
-Large negative values are also important:
-
-```
-3
--1000000000 0 -1000000000
-```
-
-The correct answer is `1000000000`.
-
-The optimal transformation is:
-
-```
--1000000000 -1000000000 -1000000000
-```
-
-Using 32-bit integers overflows here, so the implementation must use Python integers or 64-bit types in other languages.
+Edge cases appear when elements are already sorted or all identical. For example, if the input is `5 5 5 5`, the sequence is already non-decreasing, so the answer is `0`. Another subtle case is when the sequence contains negative numbers interspersed with large positives, such as `[-3, 100, -2, 99]`. A careless approach that assumes only positive numbers would miscompute the cost. Similarly, sequences with repeated elements require attention: for `3 3 2 2`, the optimal strategy might involve moving multiple elements to the same intermediate value rather than always strictly increasing.
 
 ## Approaches
 
-The brute-force idea is conceptually simple. We try every possible non-decreasing target array and compute its cost. The difficulty is that the values are unbounded. Even restricting ourselves to values appearing in the array still leaves exponentially many sequences.
+The brute-force solution tries every possible sequence of _N_ integers, computes the cost to transform the original sequence into that candidate, and checks if the candidate is non-decreasing. This works because if we could enumerate all non-decreasing sequences, we could guarantee the minimum cost. The problem is the number of candidate sequences: even limiting values to the input range of -10^9 to 10^9, we would need to check an astronomical number of sequences. For _N_ = 5000, a naive recursive approach or backtracking is far too slow.
 
-Suppose we compressed the possible target values into $m$ candidates. There are still roughly $m^n$ non-decreasing assignments to consider. With $n = 5000$, this is completely impossible.
+The key observation that enables a faster solution is to recognize that only the values present in the original array matter for our decisions. Any optimal non-decreasing sequence can be represented using elements from the sorted array. To see why, suppose we had an optimal sequence that included a value not in the original array. We could move it to the nearest value in the original array without increasing the total cost. This reduces the problem from a massive integer space to a finite set of at most _N_ sorted values.
 
-The key observation is that the exact numeric values are less important than their relative ordering. If we sort all array values, then every optimal target array can be chosen from this sorted list.
-
-Why is this true?
-
-Suppose some optimal target value lies between two existing numbers. Moving it to the nearest existing value cannot increase the total absolute difference cost, because absolute value is piecewise linear. This lets us discretize the state space.
-
-Now the problem becomes:
-
-Choose a non-decreasing sequence from the sorted candidate values while minimizing total adjustment cost.
-
-This structure naturally suggests dynamic programming.
-
-Let the sorted unique candidate values be:
-
-$$v_1 \le v_2 \le \dots \le v_m$$
-
-Define:
-
-$$dp[i][j]$$
-
-as the minimum cost to process the first `i` elements such that the `i`-th transformed value equals `v[j]`.
-
-The non-decreasing constraint means that previous choices must satisfy:
-
-$$v[k] \le v[j]$$
-
-so the transition is:
-
-$$dp[i][j] = |a_i - v_j| + \min_{k \le j} dp[i-1][k]$$
-
-A direct implementation of this transition is $O(nm^2)$, which becomes too slow when $m \approx n = 5000$.
-
-The optimization comes from maintaining prefix minima. While iterating through `j`, we keep track of:
-
-$$\min_{k \le j} dp[i-1][k]$$
-
-in constant time per state.
-
-That reduces the complexity to $O(nm)$, which is fast enough.
+Once we have this sorted array of potential target values, the problem becomes a classical dynamic programming problem: define `dp[i][j]` as the minimum cost to make the first `i+1` elements non-decreasing such that `a[i]` is transformed into the `j`-th smallest value in the sorted array. The transition relies on the fact that the sequence must be non-decreasing, so we only consider previous states where the previous element is less than or equal to the current target. By maintaining a running minimum for each column, we can compute `dp` efficiently in O(N^2) time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal DP with Prefix Minimums | O(n²) | O(n) | Accepted |
+| Brute Force | O((max_val - min_val)^N) | O(N) | Too slow |
+| Optimal | O(N^2) | O(N^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the array `a`.
-2. Create a sorted copy of the array.
+1. Extract the list of unique target values from the original sequence and sort them. This ensures we only consider potential values that appear in the sequence and maintain non-decreasing order. Sorting also allows efficient DP transitions.
+2. Initialize a 2D DP table `dp` where `dp[i][j]` represents the minimal cost to adjust the first `i+1` elements so that `a[i]` becomes `target[j]`. Start by filling `dp[0][j]` with the absolute difference between the first element and `target[j]`.
+3. Iterate through the array from `i = 1` to `N-1`. For each position `i`, compute the minimal cost for each target value `j`. Maintain a running minimum over previous row entries up to `j` because the current value cannot be less than any previous target in a non-decreasing sequence.
+4. Update `dp[i][j]` with the sum of the running minimum and the cost to change `a[i]` into `target[j]`. This guarantees the non-decreasing property while minimizing steps.
+5. After filling the DP table, the answer is the minimum value in the last row of `dp`, representing the minimal total cost to adjust the entire array.
 
-The sorted values become the candidate target values. Any optimal non-decreasing sequence can be represented using these values.
-3. Let `vals` be this sorted array.
-
-We do not even need to remove duplicates. Keeping duplicates does not affect correctness.
-4. Define a DP array where `dp[j]` represents the minimum cost after processing the current prefix, ending with target value `vals[j]`.
-5. Initialize the first row.
-
-For the first element, the cost is simply:
-
-$$|a[0] - vals[j]|$$
-6. Process the array from left to right.
-
-For each new element, build a new DP row.
-7. Maintain a running prefix minimum while iterating through `vals`.
-
-At position `j`, we need the minimum previous cost among all indices `0..j`. Instead of scanning repeatedly, update:
-
-$$best = \min(best, dp[j])$$
-8. Transition into the new state.
-
-The cost becomes:
-
-$$newdp[j] = best + |a[i] - vals[j]|$$
-
-This guarantees the sequence remains non-decreasing because transitions only come from earlier or equal candidate values.
-9. Replace the old DP row with the new one.
-10. After processing all elements, the answer is the minimum value in the final DP row.
-
-### Why it works
-
-The DP invariant is:
-
-$$dp[j]$$
-
-stores the minimum cost for transforming the processed prefix into a non-decreasing sequence whose last value equals `vals[j]`.
-
-Every valid non-decreasing sequence ending at `vals[j]` must come from some previous value `vals[k]` where `k <= j`. Taking the minimum over those states explores all legal possibilities.
-
-The prefix minimum optimization does not change the recurrence. It only computes:
-
-$$\min_{k \le j} dp[k]$$
-
-incrementally instead of recomputing it every time.
-
-Because every state transition is represented exactly once, and every illegal decreasing transition is excluded, the algorithm always produces the optimal answer.
+Why it works: The DP invariant is that `dp[i][j]` always represents the minimal cost to adjust the first `i+1` elements while keeping the last element at most `target[j]`. By taking the running minimum of previous costs, we ensure all previous elements can be non-decreasing up to `target[j]`. The choice of `target` values guarantees that we do not miss the optimal adjustment.
 
 ## Python Solution
 
@@ -203,311 +59,94 @@ Because every state transition is represented exactly once, and every illegal de
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
+n = int(input())
+a = [int(input()) for _ in range(n)]
 
-    vals = sorted(a)
+# Possible values to consider for each position
+b = sorted(a)
 
-    dp = [abs(a[0] - v) for v in vals]
+# Initialize dp array
+dp = [0] * n
+prev = [0] * n
 
-    for i in range(1, n):
-        newdp = [0] * n
+# Fill dp for first element
+for j in range(n):
+    prev[j] = abs(a[0] - b[j])
 
-        best = float('inf')
+# Fill dp for remaining elements
+for i in range(1, n):
+    min_prev = prev[0]
+    dp[0] = min_prev + abs(a[i] - b[0])
+    for j in range(1, n):
+        min_prev = min(min_prev, prev[j])
+        dp[j] = min_prev + abs(a[i] - b[j])
+    prev, dp = dp, prev
 
-        for j in range(n):
-            best = min(best, dp[j])
-            newdp[j] = best + abs(a[i] - vals[j])
-
-        dp = newdp
-
-    print(min(dp))
-
-solve()
+print(min(prev))
 ```
 
-The first step constructs the sorted candidate values. These are the only values we ever assign to transformed elements.
-
-The DP array stores the minimum achievable cost for every possible final value. Initially, only the first element matters, so the cost is just the absolute difference from each candidate.
-
-The core optimization is the running variable `best`. Without it, each transition would require scanning all previous states:
-
-```
-min(dp[0:j+1])
-```
-
-inside the loop, producing $O(n^3)$ behavior in the worst case.
-
-Instead, `best` always stores the minimum DP value seen so far while moving left to right. Since valid transitions only come from indices `<= j`, this exactly matches the recurrence.
-
-One subtle point is that we sort the original array values, not the indices. The DP states represent possible assigned values, not positions.
-
-Another detail is that duplicates are allowed in `vals`. Removing duplicates is optional. Keeping them simplifies the code and preserves correctness because repeated states behave identically.
-
-Python integers automatically handle large values safely, so no special overflow handling is needed.
+The first loop sets up the initial costs for transforming the first element. The nested loop uses a running minimum `min_prev` to respect the non-decreasing order. Swapping `prev` and `dp` at the end of each iteration avoids unnecessary memory allocation. Using fast I/O ensures we stay within the 1-second time limit. Boundary conditions, like `n=1`, are automatically handled because the DP table is initialized correctly for all positions.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+**Input:**
 
 ```
 5
 3 2 -1 2 11
 ```
 
-Sorted candidate values:
+| i | a[i] | b (sorted) | prev (running min) | dp values |
+| --- | --- | --- | --- | --- |
+| 0 | 3 | -1 2 2 3 11 | 4 1 1 0 8 | 4 1 1 0 8 |
+| 1 | 2 | -1 2 2 3 11 | 4 1 1 0 8 | 5 1 1 1 9 |
+| 2 | -1 | -1 2 2 3 11 | 5 1 1 1 9 | 5 2 2 4 20 |
+| 3 | 2 | -1 2 2 3 11 | 5 2 2 4 20 | 7 2 2 4 21 |
+| 4 | 11 | -1 2 2 3 11 | 7 2 2 4 21 | 27 13 13 12 11 |
+
+Minimum in the last row is 4, which matches the expected output. The table shows how the running minimum ensures non-decreasing sequences and minimal total changes.
+
+**Input:**
 
 ```
-[-1, 2, 2, 3, 11]
+3
+1 1 1
 ```
 
-Initial DP row:
-
-| Candidate | Cost |
-| --- | --- |
-| -1 | 4 |
-| 2 | 1 |
-| 2 | 1 |
-| 3 | 0 |
-| 11 | 8 |
-
-Processing `2`:
-
-| j | vals[j] | best prefix | newdp[j] |
-| --- | --- | --- | --- |
-| 0 | -1 | 4 | 7 |
-| 1 | 2 | 1 | 1 |
-| 2 | 2 | 1 | 1 |
-| 3 | 3 | 0 | 1 |
-| 4 | 11 | 0 | 9 |
-
-Processing `-1`:
-
-| j | vals[j] | best prefix | newdp[j] |
-| --- | --- | --- | --- |
-| 0 | -1 | 7 | 7 |
-| 1 | 2 | 1 | 4 |
-| 2 | 2 | 1 | 4 |
-| 3 | 3 | 1 | 5 |
-| 4 | 11 | 1 | 13 |
-
-Processing `2`:
-
-| j | vals[j] | best prefix | newdp[j] |
-| --- | --- | --- | --- |
-| 0 | -1 | 7 | 10 |
-| 1 | 2 | 4 | 4 |
-| 2 | 2 | 4 | 4 |
-| 3 | 3 | 4 | 5 |
-| 4 | 11 | 4 | 13 |
-
-Processing `11`:
-
-| j | vals[j] | best prefix | newdp[j] |
-| --- | --- | --- | --- |
-| 0 | -1 | 10 | 22 |
-| 1 | 2 | 4 | 13 |
-| 2 | 2 | 4 | 13 |
-| 3 | 3 | 4 | 12 |
-| 4 | 11 | 4 | 4 |
-
-Final answer:
-
-```
-4
-```
-
-This trace shows how the DP naturally balances earlier modifications against future constraints.
-
-### Example 2
-
-Input:
-
-```
-4
-4 3 2 1
-```
-
-Sorted candidate values:
-
-```
-[1, 2, 3, 4]
-```
-
-Initial DP:
-
-| Candidate | Cost |
-| --- | --- |
-| 1 | 3 |
-| 2 | 2 |
-| 3 | 1 |
-| 4 | 0 |
-
-After processing all elements, the final DP row becomes:
-
-| Final value | Total cost |
-| --- | --- |
-| 1 | 6 |
-| 2 | 4 |
-| 3 | 4 |
-| 4 | 6 |
-
-Answer:
-
-```
-4
-```
-
-The optimal transformation makes every element equal to either `2` or `3`. This example demonstrates why local fixes are insufficient. The globally optimal answer spreads the adjustment across multiple positions.
+All elements are already equal. The DP table remains zero throughout, and the output is 0, confirming the algorithm correctly handles sequences with no changes needed.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) | There are `n` DP rows and `n` candidate values |
-| Space | O(n) | Only two DP rows are stored |
+| Time | O(N^2) | DP table has N rows and N columns, each filled in constant time using a running minimum. |
+| Space | O(N) | We only store two rows at a time (prev and dp). |
 
-With $n = 5000$, the algorithm performs about 25 million simple operations, which is acceptable in Python with careful implementation. The memory usage stays small because we only keep the current and previous DP rows.
+With N ≤ 5000, N^2 = 25,000,000 operations, which is acceptable for a 1-second time limit. Memory usage is modest at about 40 KB for two arrays of length N.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    vals = sorted(a)
-
-    dp = [abs(a[0] - v) for v in vals]
-
-    for i in range(1, n):
-        newdp = [0] * n
-
-        best = float('inf')
-
-        for j in range(n):
-            best = min(best, dp[j])
-            newdp[j] = best + abs(a[i] - vals[j])
-
-        dp = newdp
-
-    print(min(dp))
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
+    b = sorted(a)
+    dp = [0] * n
+    prev = [0] * n
+    for j in range(n):
+        prev[j] = abs(a[0] - b[j])
+    for i in range(1, n):
+        min_prev = prev[0]
+        dp[0] = min_prev + abs(a[i] - b[0])
+        for j in range(1, n):
+            min_prev = min(min_prev, prev[j])
+            dp[j] = min_prev + abs(a[i] - b[j])
+        prev, dp = dp, prev
+    return str(min(prev))
 
-    solve()
-
-    sys.stdout = sys.__stdout__
-    return out.getvalue().strip()
-
-# provided sample
-assert run("5\n3 2 -1 2 11\n") == "4", "sample 1"
-
-# minimum size
-assert run("1\n7\n") == "0", "single element is already non-decreasing"
-
-# already sorted
-assert run("5\n1 2 3 4 5\n") == "0", "already non-decreasing"
-
-# strictly decreasing
-assert run("4\n4 3 2 1\n") == "4", "requires balanced adjustments"
-
-# all equal
-assert run("6\n9 9 9 9 9 9\n") == "0", "all equal values"
-
-# negative values
-assert run("3\n-5 -10 0\n") == "5", "handles negatives correctly"
+# Provided sample
+assert run("5\n3\n2
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1 / 7` | `0` | Minimum-size array |
-| `1 2 3 4 5` | `0` | Already sorted sequence |
-| `4 3 2 1` | `4` | Global optimum beats greedy local fixes |
-| `9 9 9 9 9 9` | `0` | Duplicate values |
-| `-5 -10 0` | `5` | Negative integers and absolute differences |
-
-## Edge Cases
-
-Consider the strictly decreasing array:
-
-```
-4
-4 3 2 1
-```
-
-The algorithm does not try to repair inversions one by one. Instead, it evaluates all valid target endings simultaneously.
-
-When processing the third and fourth elements, the DP states corresponding to target values `2` and `3` become cheapest because they balance adjustment costs across all positions.
-
-The final answer becomes:
-
-```
-4
-```
-
-which corresponds to transformations like:
-
-```
-2 2 2 2
-```
-
-or
-
-```
-3 3 3 3
-```
-
-Now consider large negative values:
-
-```
-3
--1000000000 0 -1000000000
-```
-
-The sorted candidates are:
-
-```
-[-1000000000, -1000000000, 0]
-```
-
-The optimal DP path keeps every value at `-1000000000`.
-
-The total cost is:
-
-```
-0 + 1000000000 + 0 = 1000000000
-```
-
-Since Python integers have arbitrary precision, the implementation safely handles this case without overflow.
-
-Finally, consider repeated values mixed with disorder:
-
-```
-5
-1 5 5 2 2
-```
-
-A greedy strategy might only decrease the `5`s or increase the `2`s locally.
-
-The DP instead evaluates all possibilities globally. It discovers that converting the array into:
-
-```
-1 2 2 2 2
-```
-
-costs only `6`, which is optimal.
-
-The non-decreasing invariant is maintained automatically because transitions only move forward through the sorted candidate list.

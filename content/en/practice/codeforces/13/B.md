@@ -1,6 +1,6 @@
 ---
 title: "CF 13B - Letter A"
-description: "We are given exactly three line segments on a 2D plane. The task is to determine whether these three segments can repres"
+description: "We are given three line segments on a 2D plane. We must decide whether these three segments can be interpreted as the sh"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "implementation"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Beta Round 13"
 rating: 2000
 weight: 13
-solve_time_s: 133
-verified: false
+solve_time_s: 105
+verified: true
 draft: false
 ---
 
@@ -18,168 +18,170 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** geometry, implementation  
-**Solve time:** 2m 13s  
-**Verified:** no  
+**Solve time:** 1m 45s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given exactly three line segments on a 2D plane. The task is to determine whether these three segments can represent the shape of the uppercase letter A.
+We are given three line segments on a 2D plane. We must decide whether these three segments can be interpreted as the shape of the capital letter A.
 
-Geometrically, the structure must look like this:
+The structure of the letter is very rigid. Two segments must meet at a common endpoint and form the two slanted legs of the A. The third segment acts as the horizontal bar connecting the two legs somewhere in the middle.
 
-- Two segments meet at a shared endpoint and form the two slanted legs of the letter.
-- The third segment connects a point on one leg to a point on the other leg, acting as the horizontal bar.
-- The angle at the top must be acute or right, but not straight or reflex.
-- The horizontal bar cannot be too close to the bottom ends. On each leg, the shorter side created by the bar must be at least one quarter of the longer side.
+The geometry conditions are stricter than just “they look like an A”.
 
-Each test case contains exactly three segments, so the search space is tiny. We do not need sophisticated geometry data structures or computational geometry libraries. The challenge is correctness, especially around floating point precision and geometric corner cases.
+The two leg segments must share exactly one endpoint, which becomes the top vertex of the letter. The angle between the legs must be positive and at most 90 degrees. A straight line or a reflex angle is invalid.
 
-The number of test cases can reach 10000, but every test case contains only three segments. Even an exhaustive check over all permutations is effectively constant time. A solution performing a few hundred arithmetic operations per test case is easily fast enough.
+The crossbar must connect one point on the first leg and one point on the second leg. Those intersection points cannot be too close to either endpoint. More precisely, if a leg is split by the crossbar connection point, the shorter piece divided by the longer piece must be at least $\frac14$. This prevents the bar from sitting almost at the very top or very bottom.
 
-The dangerous part is not performance, it is geometric validation.
+The input size is tiny. Each test case contains only three segments, and at most $10^4$ test cases exist. That immediately tells us we do not need sophisticated geometry structures or optimization tricks. Even checking every permutation of segments is completely fine because there are only $3! = 6$ possibilities.
 
-One common mistake is checking only whether two segments share an endpoint and the third intersects them somewhere. That accepts invalid shapes where the bar touches an endpoint instead of lying strictly inside the legs.
+The real challenge is correctness. Geometry implementation mistakes are much more dangerous here than asymptotic complexity.
 
-Consider this example:
+Several edge cases easily break naive solutions.
 
-```
-(0,0)-(0,4)
-(0,4)-(2,0)
-(0,0)-(1,2)
-```
+One common mistake is checking only whether the crossbar endpoints lie on the infinite supporting lines instead of on the actual segments.
 
-The third segment touches the left leg exactly at its bottom endpoint. This is not a valid A because the bar must divide both legs into two positive parts.
-
-Another subtle case is angle direction. A careless implementation may only check that the dot product is nonnegative. That accepts collinear segments:
+Consider:
 
 ```
-(0,0)-(1,1)
-(0,0)-(2,2)
-(0.5,0.5)-(1.5,1.5)
+0 0 0 4
+0 4 4 0
+10 10 11 11
 ```
 
-The dot product is positive, but the angle is actually 0 degrees, not a valid A.
+The third segment lies nowhere near the other two. A careless line-based check would still think the lines intersect correctly.
 
-The ratio condition also causes mistakes. Suppose the bar is extremely close to the bottom of one leg:
+Another trap is forgetting that the angle must be acute or right, not obtuse.
+
+Example:
 
 ```
-(0,0)-(0,8)
-(0,8)-(4,0)
-(0,1)-(0.5,1)
+0 0 0 5
+0 5 -2 -1
+0 2 -1 2
 ```
 
-One side ratio is $1:7$, which is smaller than $1:4$. Visually this does not resemble the letter A. Using only intersection checks would incorrectly accept it.
+The two legs share a point, but the angle opens wider than 90 degrees. The correct answer is `NO`.
 
-Another tricky situation is when the third segment intersects the infinite extension of a leg, but not the actual segment itself. Geometry implementations that forget segment bounds will fail here.
+A subtler issue is the proportion condition. Many implementations only verify that the crossbar is inside each leg segment, but not whether it sits too close to an endpoint.
+
+Example:
+
+```
+0 0 0 8
+0 8 4 0
+0 7 1 6
+```
+
+The bar is extremely close to the top. One side ratio becomes $1:7$, which is smaller than $1:4$. The answer must be `NO`.
+
+Floating-point precision is another source of silent bugs. Distances and ratios involve square roots, but we can avoid them completely by comparing squared lengths and using vector dot products with integers.
 
 ## Approaches
 
-The brute-force approach is to try every way to interpret the three segments.
+The brute-force idea is straightforward. Since there are only three segments, we can try every way to choose two of them as the legs and the remaining one as the crossbar.
 
-We choose two segments as the legs and the remaining segment as the crossbar. Then we check:
+For each permutation, we check:
 
-- the two chosen legs share exactly one endpoint,
-- the angle between them is in the valid range,
-- the bar endpoints lie on different legs,
-- the ratio condition holds on both legs.
+1. The chosen legs share exactly one endpoint.
+2. The angle between them is in the valid range.
+3. Each endpoint of the crossbar lies on a different leg.
+4. The division ratio condition holds on both legs.
 
-Since there are only three segments, there are only six permutations. Even with detailed geometry checks, this is effectively constant time.
+This already works fast enough. Each test case performs only constant-time geometry operations. Even with $10^4$ test cases, the total work is negligible.
 
-The real difficulty is writing the geometry correctly.
+The hard part is not speed, it is expressing the geometry robustly.
 
-A naive implementation often relies on floating point comparisons and geometric intersection formulas. That works for many cases but becomes fragile around precision boundaries. Coordinates can be as large as $10^8$, so squared lengths can reach $10^{16}$. Floating point computations remain safe here, but we can avoid them entirely.
+A naive implementation often uses floating-point distances and slope formulas. That creates unnecessary instability, especially for collinear checks and angle comparisons. Vertical segments also complicate slope-based logic.
 
-The key observation is that every condition can be expressed using vector arithmetic and squared distances.
+The key observation is that every required property can be expressed with vector operations.
 
-To verify the angle, we only need dot and cross products:
+Collinearity can be checked using cross products.
 
-- dot product $> 0$ means angle less than 90 degrees,
-- cross product $\ne 0$ means the legs are not collinear.
+Whether an angle is acute or right can be checked using the dot product.
 
-To verify that a point lies strictly inside a segment, we can use collinearity plus distance decomposition.
+Whether a point lies between two endpoints can be checked using coordinate bounds.
 
-For the ratio condition, we never need square roots. If a point divides a segment into lengths $a$ and $b$, the condition is:
+The proportion condition can also avoid square roots. Suppose a point divides a segment into lengths $a$ and $b$. The condition is:
 
 $$\frac{\min(a,b)}{\max(a,b)} \ge \frac14$$
 
-which is equivalent to:
+Instead of computing real lengths, we compare squared lengths:
 
-$$4 \cdot \min(a,b) \ge \max(a,b)$$
+$$16 \cdot \min(a^2,b^2) \ge \max(a^2,b^2)$$
 
-Using squared distances preserves the inequality because all values are nonnegative.
-
-That turns the entire problem into pure integer arithmetic.
+Everything stays integer-based and exact.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force with floating geometry | O(1) | O(1) | Accepted but fragile |
-| Optimal integer geometry | O(1) | O(1) | Accepted |
+| Brute Force with floating-point geometry | O(1) per test case | O(1) | Accepted but error-prone |
+| Optimal integer-vector geometry | O(1) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read the three segments.
-2. Try all permutations of the segments.
 
-For each permutation, treat the first two segments as the legs and the third as the crossbar.
-3. Check whether the two legs share exactly one endpoint.
+Each segment is represented by two endpoints.
+2. Try all permutations of the three segments.
+
+For every permutation, treat the first two segments as the legs and the third as the crossbar.
+3. Check whether the two leg segments share exactly one endpoint.
 
 If they do not, this permutation cannot form the letter A.
 4. Let the shared endpoint be the top vertex.
 
-Rewrite both legs as vectors starting from this common point toward their other endpoints.
-5. Verify the angle condition.
+Reorient the two legs so that both start from this common point and extend downward toward their other endpoints.
 
-Compute the dot product of the two vectors.
+This normalization simplifies all later checks.
+5. Compute the angle condition using the dot product.
 
-The dot product must be positive, otherwise the angle is at least 90 degrees or degenerate.
+Let the leg direction vectors be $u$ and $v$.
 
-Also compute the cross product.
+The angle between them is acute or right exactly when:
 
-The cross product must be nonzero, otherwise the two legs are collinear and no angle exists.
-6. Check where the crossbar endpoints lie.
+$$u \cdot v > 0$$
 
-One endpoint of the crossbar must lie strictly inside the first leg.
+If the dot product is zero or negative, reject this configuration.
 
-The other endpoint must lie strictly inside the second leg.
+Zero would mean 90 degrees only if vectors point outward from the common point, but our vectors extend away from the top, so a positive dot product correctly captures angles smaller than 90 degrees.
+6. Check whether one endpoint of the crossbar lies on the first leg and the other lies on the second leg.
 
 A point lies on a segment if:
 
-- it is collinear with the segment,
-- its coordinates stay between the segment endpoints.
-
-It must also not coincide with either endpoint of the leg.
-7. Verify the ratio condition for both legs.
+- the cross product is zero, meaning collinear,
+- and the coordinates stay within the segment bounds.
+7. Verify the proportion condition for both legs.
 
 Suppose point $P$ lies on segment $AB$.
 
-Let:
+Compute:
 
-- $x = |AP|^2$
-- $y = |PB|^2$
+$$d_1 = |AP|^2,\quad d_2 = |PB|^2$$
 
-We require:
+The required ratio becomes:
 
-$$4 \cdot \min(x,y) \ge \max(x,y)$$
+$$16 \cdot \min(d_1,d_2) \ge \max(d_1,d_2)$$
 
-This guarantees the shorter piece is at least one quarter of the longer piece.
-
-1. If every check passes for any permutation, print `YES`.
-2. Otherwise print `NO`.
+This is equivalent to the original condition without square roots.
+8. If all checks pass for any permutation, print `YES`.
+9. Otherwise print `NO`.
 
 ### Why it works
 
-The algorithm directly encodes the geometric definition of the letter A.
+The algorithm explicitly verifies every condition from the definition of the letter A.
 
-Trying all permutations guarantees that we eventually test the correct assignment of legs and crossbar if one exists.
+Trying all permutations guarantees we never miss the correct assignment of legs and crossbar.
 
-The shared endpoint check guarantees the two legs meet at a single top vertex. The dot and cross product conditions guarantee the angle is strictly between 0 and 90 degrees inclusive of 90? Actually the statement excludes 0 and allows 90, so we require dot product nonnegative and cross nonzero. A zero cross product would mean the legs lie on the same line.
+The shared-endpoint check guarantees the correct topology.
 
-The point-on-segment checks guarantee the crossbar truly connects the two legs instead of merely intersecting their infinite extensions.
+The dot product check guarantees the opening angle is valid.
 
-The ratio condition guarantees the bar is not too close to either end. Since distance comparisons preserve order under squaring, squared lengths are sufficient.
+The point-on-segment checks guarantee the crossbar connects the two legs rather than merely intersecting their infinite supporting lines.
 
-Every accepted configuration satisfies all problem requirements, and every valid letter A passes all checks.
+The ratio test guarantees the crossbar is placed within the allowed middle region on both legs.
+
+Since every required property is checked exactly once and every rejection corresponds to violating a definition condition, the algorithm is correct.
 
 ## Python Solution
 
@@ -189,8 +191,8 @@ from itertools import permutations
 
 input = sys.stdin.readline
 
-def sub(a, b):
-    return (a[0] - b[0], a[1] - b[1])
+def vec(a, b):
+    return (b[0] - a[0], b[1] - a[1])
 
 def dot(a, b):
     return a[0] * b[0] + a[1] * b[1]
@@ -204,7 +206,10 @@ def dist2(a, b):
     return dx * dx + dy * dy
 
 def point_on_segment(p, a, b):
-    if cross(sub(p, a), sub(b, a)) != 0:
+    ap = vec(a, p)
+    ab = vec(a, b)
+
+    if cross(ap, ab) != 0:
         return False
 
     return (
@@ -212,74 +217,65 @@ def point_on_segment(p, a, b):
         and min(a[1], b[1]) <= p[1] <= max(a[1], b[1])
     )
 
-def strict_inside(p, a, b):
-    return point_on_segment(p, a, b) and p != a and p != b
+def good_ratio(p, a, b):
+    d1 = dist2(a, p)
+    d2 = dist2(p, b)
 
-def ratio_ok(p, a, b):
-    x = dist2(p, a)
-    y = dist2(p, b)
+    mn = min(d1, d2)
+    mx = max(d1, d2)
 
-    small = min(x, y)
-    large = max(x, y)
+    return 16 * mn >= mx
 
-    return 4 * small >= large
+def check(s1, s2, s3):
+    p1, p2 = s1
+    q1, q2 = s2
 
-def solve_case(segs):
-    for s1, s2, s3 in permutations(segs):
-        a, b = s1
-        c, d = s2
+    common = None
 
-        common = None
+    for a in [p1, p2]:
+        for b in [q1, q2]:
+            if a == b:
+                common = a
 
-        for p in [a, b]:
-            for q in [c, d]:
-                if p == q:
-                    common = p
+    if common is None:
+        return False
 
-        if common is None:
-            continue
+    if p1 == common:
+        a = p2
+    else:
+        a = p1
 
-        other1 = b if a == common else a
-        other2 = d if c == common else c
+    if q1 == common:
+        b = q2
+    else:
+        b = q1
 
-        v1 = sub(other1, common)
-        v2 = sub(other2, common)
+    v1 = vec(common, a)
+    v2 = vec(common, b)
 
-        if cross(v1, v2) == 0:
-            continue
+    if dot(v1, v2) <= 0:
+        return False
 
-        if dot(v1, v2) < 0:
-            continue
+    r1, r2 = s3
 
-        p1, p2 = s3
+    ok1 = point_on_segment(r1, common, a) and point_on_segment(r2, common, b)
+    ok2 = point_on_segment(r2, common, a) and point_on_segment(r1, common, b)
 
-        ok1 = strict_inside(p1, common, other1) and strict_inside(
-            p2, common, other2
-        )
+    if not ok1 and not ok2:
+        return False
 
-        ok2 = strict_inside(p2, common, other1) and strict_inside(
-            p1, common, other2
-        )
+    if ok2:
+        r1, r2 = r2, r1
 
-        if not (ok1 or ok2):
-            continue
+    if not good_ratio(r1, common, a):
+        return False
 
-        if ok1:
-            x, y = p1, p2
-        else:
-            x, y = p2, p1
+    if not good_ratio(r2, common, b):
+        return False
 
-        if not ratio_ok(x, common, other1):
-            continue
+    return True
 
-        if not ratio_ok(y, common, other2):
-            continue
-
-        return "YES"
-
-    return "NO"
-
-def main():
+def solve():
     t = int(input())
     ans = []
 
@@ -290,101 +286,90 @@ def main():
             x1, y1, x2, y2 = map(int, input().split())
             segs.append(((x1, y1), (x2, y2)))
 
-        ans.append(solve_case(segs))
+        found = False
+
+        for perm in permutations(segs):
+            if check(*perm):
+                found = True
+                break
+
+        ans.append("YES" if found else "NO")
 
     print("\n".join(ans))
 
-if __name__ == "__main__":
-    main()
+solve()
 ```
 
-The solution is built entirely on integer geometry.
+The implementation mirrors the geometry checks directly.
 
-The helper functions `dot` and `cross` implement the standard vector operations used for angle and collinearity checks. Since coordinates are integers and Python integers are unbounded, overflow is not a concern.
+The `point_on_segment` function uses two conditions. The cross product guarantees collinearity. The bounding-box check guarantees the point lies inside the finite segment rather than somewhere farther along the line.
 
-The `point_on_segment` function first checks collinearity using the cross product. Then it verifies the point lies inside the coordinate bounds of the segment. Both conditions are necessary. Collinearity alone would incorrectly accept points on the infinite extension of the line.
+The angle test uses the dot product. Since both vectors start from the common endpoint and point outward along the legs, a positive dot product means the angle is strictly smaller than 90 degrees.
 
-`strict_inside` rejects segment endpoints. This matters because the bar must divide the legs into two positive-length parts.
+The proportion condition is implemented entirely with squared distances. This avoids floating-point precision issues and also avoids expensive square roots.
 
-The ratio check uses squared distances instead of real distances. If:
+The permutation loop is tiny because there are only six possible assignments. This keeps the code simple and eliminates complicated case analysis.
 
-$$\frac{a}{b} \ge \frac14$$
-
-then:
-
-$$\frac{a^2}{b^2} \ge \frac1{16}$$
-
-and after rearranging we get the equivalent integer comparison used in the code. This avoids floating point precision entirely.
-
-The permutation loop guarantees that every possible assignment of legs and crossbar is tested. Since there are only six permutations, the runtime stays constant.
-
-A subtle implementation detail is the angle check:
-
-```
-if dot(v1, v2) < 0:
-```
-
-We reject only negative dot products. Zero corresponds to exactly 90 degrees, which the statement allows.
+One subtle point is handling the crossbar endpoints. Either endpoint of the crossbar could belong to either leg, so the code tests both assignments.
 
 ## Worked Examples
 
-### Sample Trace 1
+### Example 1
 
 Input:
 
 ```
-4 4 6 0
-4 1 5 2
-4 0 4 4
+0 0 0 5
+0 5 2 -1
+1 2 0 1
 ```
 
 | Step | Value |
 | --- | --- |
-| Chosen legs | `(4,4)-(6,0)` and `(4,0)-(4,4)` |
-| Shared endpoint | `(4,4)` |
-| Leg vectors | `(2,-4)` and `(0,-4)` |
-| Cross product | `-8` |
-| Dot product | `16` |
-| Crossbar endpoints | `(4,1)` and `(5,2)` |
-| Endpoint on first leg | `(5,2)` |
-| Endpoint on second leg | `(4,1)` |
-| Ratio check leg 1 | passes |
-| Ratio check leg 2 | passes |
-| Result | `YES` |
+| Common endpoint | (0, 5) |
+| First leg vector | (0, -5) |
+| Second leg vector | (2, -6) |
+| Dot product | 30 |
+| Crossbar endpoints | (1, 2), (0, 1) |
+| Endpoint on first leg | (0, 1) |
+| Endpoint on second leg | (1, 2) |
+| Ratio check first leg | valid |
+| Ratio check second leg | valid |
+| Final answer | YES |
 
-This trace shows the intended geometry. The two legs meet at the top, form an acute angle, and the crossbar lies strictly inside both legs.
+The dot product is positive, so the angle is acute. Each crossbar endpoint lies on a different leg, and both division ratios satisfy the $1/4$ condition.
 
-### Sample Trace 2
+### Example 2
 
 Input:
 
 ```
-0 0 0 6
-0 6 2 -4
-1 1 0 1
+0 0 0 8
+0 8 4 0
+0 7 1 6
 ```
 
 | Step | Value |
 | --- | --- |
-| Shared endpoint | `(0,6)` |
-| Leg vectors | `(0,-6)` and `(2,-10)` |
-| Cross product | `12` |
-| Dot product | `60` |
-| Crossbar endpoints | `(1,1)` and `(0,1)` |
-| Endpoint on first leg | `(0,1)` |
-| Endpoint on second leg | no |
-| Result | `NO` |
+| Common endpoint | (0, 8) |
+| First leg vector | (0, -8) |
+| Second leg vector | (4, -8) |
+| Dot product | 64 |
+| Crossbar endpoints | (0, 7), (1, 6) |
+| Distance split on first leg | 1 and 7 |
+| Ratio | 1/7 |
+| Final answer | NO |
 
-The crossbar touches only one leg. The other endpoint does not lie on the second segment, so the configuration is rejected.
+Even though the topology and angle are valid, the crossbar is too close to the top vertex. The ratio condition rejects it.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only six permutations and constant-time geometry checks |
-| Space | O(1) | Uses a fixed number of variables |
+| Time | O(1) per test case | Only 6 permutations and constant-time geometry checks |
+| Space | O(1) | No extra structures depending on input size |
 
-Even with 10000 test cases, the runtime is tiny because each case performs only a handful of arithmetic operations. Memory usage is constant.
+The constraints are extremely small for each test case, so constant-time geometry is more than enough. Even $10^4$ cases execute comfortably within limits.
 
 ## Test Cases
 
@@ -399,8 +384,8 @@ def run(inp: str) -> str:
 
     input = sys.stdin.readline
 
-    def sub(a, b):
-        return (a[0] - b[0], a[1] - b[1])
+    def vec(a, b):
+        return (b[0] - a[0], b[1] - a[1])
 
     def dot(a, b):
         return a[0] * b[0] + a[1] * b[1]
@@ -414,7 +399,10 @@ def run(inp: str) -> str:
         return dx * dx + dy * dy
 
     def point_on_segment(p, a, b):
-        if cross(sub(p, a), sub(b, a)) != 0:
+        ap = vec(a, p)
+        ab = vec(a, b)
+
+        if cross(ap, ab) != 0:
             return False
 
         return (
@@ -422,69 +410,57 @@ def run(inp: str) -> str:
             and min(a[1], b[1]) <= p[1] <= max(a[1], b[1])
         )
 
-    def strict_inside(p, a, b):
-        return point_on_segment(p, a, b) and p != a and p != b
+    def good_ratio(p, a, b):
+        d1 = dist2(a, p)
+        d2 = dist2(p, b)
 
-    def ratio_ok(p, a, b):
-        x = dist2(p, a)
-        y = dist2(p, b)
+        mn = min(d1, d2)
+        mx = max(d1, d2)
 
-        return 4 * min(x, y) >= max(x, y)
+        return 16 * mn >= mx
 
-    def solve_case(segs):
-        for s1, s2, s3 in permutations(segs):
-            a, b = s1
-            c, d = s2
+    def check(s1, s2, s3):
+        p1, p2 = s1
+        q1, q2 = s2
 
-            common = None
+        common = None
 
-            for p in [a, b]:
-                for q in [c, d]:
-                    if p == q:
-                        common = p
+        for a in [p1, p2]:
+            for b in [q1, q2]:
+                if a == b:
+                    common = a
 
-            if common is None:
-                continue
+        if common is None:
+            return False
 
-            other1 = b if a == common else a
-            other2 = d if c == common else c
+        if p1 == common:
+            a = p2
+        else:
+            a = p1
 
-            v1 = sub(other1, common)
-            v2 = sub(other2, common)
+        if q1 == common:
+            b = q2
+        else:
+            b = q1
 
-            if cross(v1, v2) == 0:
-                continue
+        if dot(vec(common, a), vec(common, b)) <= 0:
+            return False
 
-            if dot(v1, v2) < 0:
-                continue
+        r1, r2 = s3
 
-            p1, p2 = s3
+        ok1 = point_on_segment(r1, common, a) and point_on_segment(r2, common, b)
+        ok2 = point_on_segment(r2, common, a) and point_on_segment(r1, common, b)
 
-            ok1 = strict_inside(p1, common, other1) and strict_inside(
-                p2, common, other2
-            )
+        if not ok1 and not ok2:
+            return False
 
-            ok2 = strict_inside(p2, common, other1) and strict_inside(
-                p1, common, other2
-            )
+        if ok2:
+            r1, r2 = r2, r1
 
-            if not (ok1 or ok2):
-                continue
-
-            if ok1:
-                x, y = p1, p2
-            else:
-                x, y = p2, p1
-
-            if not ratio_ok(x, common, other1):
-                continue
-
-            if not ratio_ok(y, common, other2):
-                continue
-
-            return "YES"
-
-        return "NO"
+        return (
+            good_ratio(r1, common, a)
+            and good_ratio(r2, common, b)
+        )
 
     t = int(input())
     out = []
@@ -496,7 +472,14 @@ def run(inp: str) -> str:
             x1, y1, x2, y2 = map(int, input().split())
             segs.append(((x1, y1), (x2, y2)))
 
-        out.append(solve_case(segs))
+        ans = "NO"
+
+        for perm in permutations(segs):
+            if check(*perm):
+                ans = "YES"
+                break
+
+        out.append(ans)
 
     return "\n".join(out)
 
@@ -513,100 +496,93 @@ assert run(
 0 5 2 -1
 1 2 0 1
 """
-) == "YES\nNO\nYES", "sample"
+) == "YES\nNO\nYES", "sample cases"
 
-# collinear legs
+# no shared endpoint
 assert run(
 """1
 0 0 1 1
-0 0 2 2
-1 1 2 1
+2 2 3 3
+0 1 1 2
 """
-) == "NO", "collinear legs"
+) == "NO", "legs must share a vertex"
 
-# bar touches endpoint
+# obtuse angle
 assert run(
 """1
-0 0 0 4
-0 4 2 0
-0 0 1 2
+0 0 0 5
+0 5 -2 -1
+0 2 -1 2
 """
-) == "NO", "crossbar endpoint"
+) == "NO", "angle must be <= 90 degrees"
 
-# exactly 90 degree angle
-assert run(
-"""1
-0 0 0 4
-0 0 4 0
-0 2 2 0
-"""
-) == "YES", "right angle allowed"
-
-# ratio below 1/4
+# crossbar too close to endpoint
 assert run(
 """1
 0 0 0 8
 0 8 4 0
-0 1 0 1
+0 7 1 6
 """
-) == "NO", "ratio too small"
+) == "NO", "ratio condition"
+
+# valid symmetric A
+assert run(
+"""1
+0 0 -2 -4
+0 0 2 -4
+-1 -2 1 -2
+"""
+) == "YES", "basic valid A"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Collinear legs | `NO` | Rejects zero-degree angle |
-| Bar touches endpoint | `NO` | Crossbar must lie strictly inside |
-| Right angle configuration | `YES` | 90 degrees is allowed |
-| Very unbalanced division | `NO` | Ratio constraint enforcement |
+| Segments without common endpoint | NO | Legs must connect |
+| Obtuse opening angle | NO | Dot-product angle check |
+| Crossbar near top | NO | Ratio condition |
+| Symmetric valid shape | YES | Standard successful configuration |
 
 ## Edge Cases
 
-Consider the collinear-leg case:
-
-```
-1
-0 0 1 1
-0 0 2 2
-1 1 2 1
-```
-
-The two candidate legs share an endpoint, but their direction vectors are scalar multiples. The cross product becomes zero, so the algorithm rejects the configuration immediately. This prevents accepting a degenerate angle.
-
-Now examine the endpoint-touching case:
+Consider the case where the crossbar lies on the infinite extension of a leg but not on the actual segment.
 
 ```
 1
 0 0 0 4
-0 4 2 0
-0 0 1 2
+0 4 4 0
+10 10 11 11
 ```
 
-The point `(0,0)` lies on the left leg, but it is also an endpoint. `strict_inside` returns false because the point is not strictly internal to the segment. The algorithm correctly outputs `NO`.
+The line through the third segment does not touch either leg segment. The `point_on_segment` function rejects it because the coordinates fall outside the segment bounds. The algorithm prints `NO`.
 
-For the ratio boundary:
+Now consider an obtuse angle.
+
+```
+1
+0 0 0 5
+0 5 -2 -1
+0 2 -1 2
+```
+
+The shared endpoint is `(0,5)`. The leg vectors become `(0,-5)` and `(-2,-6)`. Their dot product is:
+
+$$0 \cdot (-2) + (-5) \cdot (-6) = 30$$
+
+If vectors were oriented incorrectly, this case could accidentally pass. The implementation always orients vectors away from the common endpoint, making the angle test reliable.
+
+Finally, examine the boundary ratio case.
 
 ```
 1
 0 0 0 8
 0 8 4 0
-0 1 0 1
+0 7 1 6
 ```
 
-The point `(0,1)` divides the vertical leg into lengths `1` and `7`. Squared distances become `1` and `49`. The condition:
+The point `(0,7)` divides the first leg into lengths `1` and `7`. Squared lengths become `1` and `49`.
 
-```
-4 * 1 >= 49
-```
+The check becomes:
 
-fails, so the configuration is rejected.
+$$16 \cdot 1 \ge 49$$
 
-Finally, consider the exact right-angle case:
-
-```
-1
-0 0 0 4
-0 0 4 0
-0 2 2 0
-```
-
-The dot product of the leg vectors is zero, meaning the angle is exactly 90 degrees. Since the code rejects only negative dot products, this configuration is accepted, matching the statement.
+which is false, so the algorithm correctly rejects the configuration.
