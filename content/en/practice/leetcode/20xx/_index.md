@@ -65,9 +65,19 @@ draft: false
 | 2058 | [Find the Minimum and Maximum Number of Nodes Between Critical Points](2058.md) | 🟡 Medium | 1m 43s | The problem gives us a singly linked list and asks us to identify a… |
 | 2059 | [Minimum Operations to Convert Number](2059.md) | 🟡 Medium | 55s | The problem asks us to transform a starting number start into a tar… |
 | 2060 | [Check if an Original String Exists Given Two Encoded Strings](2060.md) | 🔴 Hard | 2m 19s | Here’s a full, detailed technical solution guide for LeetCode 2060 … |
+| 2061 | [Number of Spaces Cleaning Robot Cleaned](2061.md) | 🟡 Medium | 7m 5s | In this problem, we are given a 2D binary matrix called room. Each … |
 | 2062 | [Count Vowel Substrings of a String](2062.md) | 🟢 Easy | 2m 19s | The problem asks us to count how many substrings of a given string … |
 | 2063 | [Vowels of All Substrings](2063.md) | 🟡 Medium | 57s | The problem asks us to compute the total number of vowels that appe… |
 | 2064 | [Minimized Maximum of Products Distributed to Any Store](2064.md) | 🟡 Medium | 59s | This problem asks us to distribute a given set of products of diffe… |
 | 2065 | [Maximum Path Quality of a Graph](2065.md) | 🔴 Hard | 1m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 2066 | [Account Balance](2066.md) | 🟡 Medium | 1m | The problem asks us to calculate the running balance of each accoun… |
 | 2068 | [Check Whether Two Strings are Almost Equivalent](2068.md) | 🟢 Easy | 1m 19s | The problem asks us to determine whether two strings are "almost eq… |
+| 2069 | [Walking Robot Simulation II](2069.md) | 🟡 Medium | 1m 39s | The problem describes a robot moving on the boundary and interior e… |
+| 2070 | [Most Beautiful Item for Each Query](2070.md) | 🟡 Medium | 1m 31s | The problem gives us a list of items, where each item has two value… |
+| 2071 | [Maximum Number of Tasks You Can Assign](2071.md) | 🔴 Hard | 58s | The problem asks us to determine the maximum number of tasks that c… |
+| 2072 | [The Winner University](2072.md) | 🟢 Easy | 56s | The problem describes a competition between two universities: New Y… |
+| 2073 | [Time Needed to Buy Tickets](2073.md) | 🟢 Easy | 50s | This problem is asking us to simulate a queue where each person buy… |
+| 2074 | [Reverse Nodes in Even Length Groups](2074.md) | 🟡 Medium | 58s | This problem asks us to manipulate a singly linked list by reversin… |
+| 2075 | [Decode the Slanted Ciphertext](2075.md) | 🟡 Medium | 1m 34s | This problem describes a custom string encoding process based on a … |
+| 2076 | [Process Restricted Friend Requests](2076.md) | 🔴 Hard | 1m 48s | This problem models a dynamic friendship network with restrictions … |
+| 2077 | [Paths in Maze That Lead to Same Room](2077.md) | 🟡 Medium | 1m 35s | This problem gives us an undirected graph representing a maze. Each… |

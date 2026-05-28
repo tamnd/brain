@@ -88,3 +88,11 @@ draft: false
 | 1776 | [Car Fleet II](1776.md) | 🔴 Hard | 54s | The problem is asking us to compute the time at which each car in a… |
 | 1777 | [Product's Price for Each Store](1777.md) | 🟢 Easy | 1m 50s | The problem provides a table named Products, where each row represe… |
 | 1778 | [Shortest Path in a Hidden Grid](1778.md) | 🟡 Medium | 1m 43s | This problem asks us to find the shortest path from a robot's unkno… |
+| 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](1779.md) | 🟢 Easy | 1m 22s | The problem gives your current position on a 2D Cartesian grid as (… |
+| 1780 | [Check if Number is a Sum of Powers of Three](1780.md) | 🟡 Medium | 1m 17s | The problem asks whether a given integer n can be expressed as the … |
+| 1781 | [Sum of Beauty of All Substrings](1781.md) | 🟡 Medium | 50s | The problem asks us to calculate the sum of beauty for all substrin… |
+| 1783 | [Grand Slam Titles](1783.md) | 🟡 Medium | 1m 38s | This problem asks us to compute how many Grand Slam tennis titles e… |
+| 1784 | [Check if Binary String Has at Most One Segment of Ones](1784.md) | 🟢 Easy | 1m 5s | In this problem, we are given a binary string s that contains only … |
+| 1785 | [Minimum Elements to Add to Form a Given Sum](1785.md) | 🟡 Medium | 1m 24s | The problem gives us an integer array nums, a maximum allowed absol… |
+| 1786 | [Number of Restricted Paths From First to Last Node](1786.md) | 🟡 Medium | 2m | This problem gives us an undirected weighted graph with n nodes lab… |
+| 1788 | [Maximize the Beauty of the Garden](1788.md) | 🔴 Hard | 1m 47s | We are given an integer array flowers, where each element represent… |
