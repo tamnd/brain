@@ -18,12 +18,13 @@ draft: false
 | 1305 | [All Elements in Two Binary Search Trees](1305.md) | 🟡 Medium | 1m 20s | The problem gives us two binary search trees, root1 and root2. A bi… |
 | 1306 | [Jump Game III](1306.md) | 🟡 Medium | 1m 19s | The problem gives us an array of non-negative integers and a starti… |
 | 1307 | [Verbal Arithmetic Puzzle](1307.md) | 🔴 Hard | 1m 34s | The problem gives a collection of words on the left side of an equa… |
-| 1308 | [Running Total for Different Genders](1308.md) | 🟡 Medium | 1m | Here’s a fully detailed technical solution guide for LeetCode 1308 … |
-| 1309 | [Decrypt String from Alphabet to Integer Mapping](1309.md) | 🟢 Easy | 1m 13s | The problem asks us to take a string s composed of digits ('0' to '… |
-| 1311 | [Get Watched Videos by Your Friends](1311.md) | 🟡 Medium | 1m 19s | In this problem, we are given a social network represented as a gra… |
-| 1312 | [Minimum Insertion Steps to Make a String Palindrome](1312.md) | 🔴 Hard | 54s | This problem asks us to determine the minimum number of insertions … |
+| 1308 | [Running Total for Different Genders](1308.md) | 🟡 Medium | 55s | The problem is asking us to compute cumulative scores for each gend… |
+| 1309 | [Decrypt String from Alphabet to Integer Mapping](1309.md) | 🟢 Easy | 1m 17s | The problem gives us a string containing digits and the '' characte… |
+| 1310 | [XOR Queries of a Subarray](1310.md) | 🟡 Medium | 46s | You asked for the complete guide in a single response, but your pre… |
+| 1311 | [Get Watched Videos by Your Friends](1311.md) | 🟡 Medium | 1m 33s | This problem models a social network as an undirected graph. Each p… |
+| 1312 | [Minimum Insertion Steps to Make a String Palindrome](1312.md) | 🔴 Hard | 1m 25s | Edit The problem gives us a string s and asks for the minimum numbe… |
 | 1313 | [Decompress Run-Length Encoded List](1313.md) | 🟢 Easy | 1m 13s | This problem asks us to reconstruct an array that was compressed us… |
-| 1314 | [Matrix Block Sum](1314.md) | 🟡 Medium | 1m 21s | The problem gives us a two dimensional matrix mat of size m x n and… |
+| 1314 | [Matrix Block Sum](1314.md) | 🟡 Medium | 59s | The problem requires computing a matrix block sum. Given a matrix m… |
 | 1315 | [Sum of Nodes with Even-Valued Grandparent](1315.md) | 🟡 Medium | 1m 15s | The problem gives us the root of a binary tree and asks us to compu… |
 | 1316 | [Distinct Echo Substrings](1316.md) | 🔴 Hard | 1m 1s | The problem asks us to count the number of distinct echo substrings… |
 | 1317 | [Convert Integer to the Sum of Two No-Zero Integers](1317.md) | 🟢 Easy | 1m 10s | The problem asks us to split a given integer n into two positive in… |
@@ -45,3 +46,5 @@ draft: false
 | 1333 | [Filter Restaurants by Vegan-Friendly, Price and Distance](1333.md) | 🟡 Medium | 1m 35s | The problem gives us a list of restaurants where each restaurant is… |
 | 1334 | [Find the City With the Smallest Number of Neighbors at a Threshold Distance](1334.md) | 🟡 Medium | 52s | The problem asks us to find a city in a weighted, undirected graph … |
 | 1337 | [The K Weakest Rows in a Matrix](1337.md) | 🟢 Easy | 1m 24s | The problem gives us a binary matrix where each row represents a gr… |
+| 1338 | [Reduce Array Size to The Half](1338.md) | 🟡 Medium | 54s | The problem asks us to reduce an array to at most half its size by … |
+| 1339 | [Maximum Product of Splitted Binary Tree](1339.md) | 🟡 Medium | 45s | The problem asks us to maximize the product of sums obtained by spl… |
