@@ -100,10 +100,10 @@ draft: false
 | 1288 | [Remove Covered Intervals](1288.md) | 🟡 Medium | 1m 9s | The problem gives us a list of intervals, where each interval is re… |
 | 1289 | [Minimum Falling Path Sum II](1289.md) | 🔴 Hard | 46s | The problem asks us to compute the minimum sum of a falling path wi… |
 | 1290 | [Convert Binary Number in a Linked List to Integer](1290.md) | 🟢 Easy | 1m 7s | The problem gives us the head of a singly linked list where every n… |
-| 1291 | [Sequential Digits](1291.md) | 🟡 Medium | 53s | The problem asks us to generate all integers within a given range [… |
-| 1292 | [Maximum Side Length of a Square with Sum Less than or Equal to Threshold](1292.md) | 🟡 Medium | 1m 33s | The problem gives us a two dimensional matrix mat of size m x n, al… |
-| 1293 | [Shortest Path in a Grid with Obstacles Elimination](1293.md) | 🔴 Hard | 2m 7s | The problem gives us a two-dimensional grid where each cell contain… |
-| 1294 | [Weather Type in Each Country](1294.md) | 🟢 Easy | 47s | The problem requires us to determine the type of weather in each co… |
+| 1291 | [Sequential Digits](1291.md) | 🟡 Medium | 46s | The problem asks us to find all integers within a given range [low,… |
+| 1292 | [Maximum Side Length of a Square with Sum Less than or Equal to Threshold](1292.md) | 🟡 Medium | 35s | That is a very large, multi-section request covering a full detaile… |
+| 1293 | [Shortest Path in a Grid with Obstacles Elimination](1293.md) | 🔴 Hard | 1m 42s | This problem asks us to find the minimum number of steps required t… |
+| 1294 | [Weather Type in Each Country](1294.md) | 🟢 Easy | 53s | This problem asks us to determine the weather type for each country… |
 | 1295 | [Find Numbers with Even Number of Digits](1295.md) | 🟢 Easy | 54s | The problem asks us to determine, from a given list of integers num… |
 | 1296 | [Divide Array in Sets of K Consecutive Numbers](1296.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and a positive integer k… |
 | 1297 | [Maximum Number of Occurrences of a Substring](1297.md) | 🟡 Medium | 46s | The problem asks us to analyze a string s and determine the maximum… |
