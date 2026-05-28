@@ -87,6 +87,7 @@ draft: false
 | 874 | [Walking Robot Simulation](874.md) | 🟡 Medium | 1m 18s | The problem describes a robot moving on an infinite two dimensional… |
 | 875 | [Koko Eating Bananas](875.md) | 🟡 Medium | 41s | The problem asks us to determine the minimum eating speed k for Kok… |
 | 876 | [Middle of the Linked List](876.md) | 🟢 Easy | 55s | The problem gives us the head of a singly linked list and asks us t… |
+| 877 | [Stone Game](877.md) | 🟡 Medium | 33s | This problem involves a two-player game where Alice and Bob take tu… |
 | 878 | [Nth Magical Number](878.md) | 🔴 Hard | 1m 13s | The problem asks us to find the nth positive integer that is divisi… |
 | 879 | [Profitable Schemes](879.md) | 🔴 Hard | 1m 16s | This problem asks us to count how many subsets of crimes satisfy tw… |
 | 880 | [Decoded String at Index](880.md) | 🟡 Medium | 1m 12s | The problem gives us an encoded string s that represents a potentia… |
@@ -102,3 +103,10 @@ draft: false
 | 890 | [Find and Replace Pattern](890.md) | 🟡 Medium | 1m 8s | The problem gives us a list of words and a target pattern string. W… |
 | 891 | [Sum of Subsequence Widths](891.md) | 🔴 Hard | 41s | The problem asks us to calculate the sum of widths for all non-empt… |
 | 892 | [Surface Area of 3D Shapes](892.md) | 🟢 Easy | 1m 14s | The problem gives us an n x n matrix called grid, where each cell c… |
+| 893 | [Groups of Special-Equivalent Strings](893.md) | 🟡 Medium | 1m 21s | The problem asks us to group strings based on a special equivalence… |
+| 894 | [All Possible Full Binary Trees](894.md) | 🟡 Medium | 1m 11s | The problem asks us to generate every possible full binary tree tha… |
+| 895 | [Maximum Frequency Stack](895.md) | 🔴 Hard | 1m 16s | The problem asks us to design a special stack-like data structure c… |
+| 896 | [Monotonic Array](896.md) | 🟢 Easy | 38s | This problem asks us to determine whether a given array of integers… |
+| 897 | [Increasing Order Search Tree](897.md) | 🟢 Easy | 1m 1s | This problem gives us the root of a Binary Search Tree, abbreviated… |
+| 898 | [Bitwise ORs of Subarrays](898.md) | 🟡 Medium | 1m 24s | The problem asks us to compute how many distinct values can be prod… |
+| 899 | [Orderly Queue](899.md) | 🔴 Hard | 54s | The problem gives us a string s and an integer k. In one operation,… |

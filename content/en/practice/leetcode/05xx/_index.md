@@ -69,6 +69,7 @@ draft: false
 | 556 | [Next Greater Element III](556.md) | 🟡 Medium | 1m 5s | This problem asks us to find the smallest integer that is strictly … |
 | 557 | [Reverse Words in a String III](557.md) | 🟢 Easy | 47s | The problem requires reversing the characters of each individual wo… |
 | 558 | [Logical OR of Two Binary Grids Represented as Quad-Trees](558.md) | 🟡 Medium | 1m 27s | This problem gives us two Quad-Trees, where each tree represents a … |
+| 559 | [Maximum Depth of N-ary Tree](559.md) | 🟢 Easy | 1m 18s | The problem asks us to compute the maximum depth of an n-ary tree. … |
 | 560 | [Subarray Sum Equals K](560.md) | 🟡 Medium | 1m 3s | The problem asks us to count how many contiguous, non-empty subarra… |
 | 561 | [Array Partition](561.md) | 🟢 Easy | 1m 6s | The problem gives an array nums containing 2n integers. Our task is… |
 | 562 | [Longest Line of Consecutive One in Matrix](562.md) | 🟡 Medium | 1m 13s | The problem gives us a binary matrix mat of size m x n, where every… |
@@ -85,3 +86,9 @@ draft: false
 | 574 | [Winning Candidate](574.md) | 🟡 Medium | 1m 12s | This problem provides two database tables, Candidate and Vote, and … |
 | 575 | [Distribute Candies](575.md) | 🟢 Easy | 1m 46s | This problem asks us to maximize the number of distinct candy types… |
 | 576 | [Out of Boundary Paths](576.md) | 🟡 Medium | 1m 10s | This problem asks us to count how many different ways a ball can le… |
+| 578 | [Get Highest Answer Rate Question](578.md) | 🟡 Medium | 1m 16s | This problem asks us to analyze user interaction data stored in the… |
+| 579 | [Find Cumulative Salary of an Employee](579.md) | 🔴 Hard | 41s | This problem asks us to compute a cumulative salary summary for eac… |
+| 580 | [Count Student Number in Departments](580.md) | 🟡 Medium | 29s | This problem asks us to determine how many students are enrolled in… |
+| 581 | [Shortest Unsorted Continuous Subarray](581.md) | 🟡 Medium | 1m 9s | The problem gives an integer array nums and asks for the length of … |
+| 582 | [Kill Process](582.md) | 🟡 Medium | 1m 27s | This problem models processes in an operating system as a tree stru… |
+| 583 | [Delete Operation for Two Strings](583.md) | 🟡 Medium | 40s | The problem asks us to determine the minimum number of deletion ste… |
