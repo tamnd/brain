@@ -31,21 +31,21 @@ draft: false
 | 2218 | [Maximum Value of K Coins From Piles](2218.md) | 🔴 Hard | 3m 40s | This problem asks us to maximize the total value of coins collected… |
 | 2219 | [Maximum Sum Score of Array](2219.md) | 🟡 Medium | 1m 18s | The problem gives us a 0-indexed integer array nums of length n and… |
 | 2220 | [Minimum Bit Flips to Convert Number](2220.md) | 🟢 Easy | 42s | The problem asks us to determine the minimum number of bit flips re… |
-| 2221 | [Find Triangular Sum of an Array](2221.md) | 🟡 Medium | 45s | The problem asks us to compute the triangular sum of an array of di… |
-| 2222 | [Number of Ways to Select Buildings](2222.md) | 🟡 Medium | 1m 3s | The problem gives us a binary string s, where each character repres… |
-| 2223 | [Sum of Scores of Built Strings](2223.md) | 🔴 Hard | 45s | The problem asks us to compute the sum of scores of built strings w… |
+| 2221 | [Find Triangular Sum of an Array](2221.md) | 🟡 Medium | 56s | The problem asks us to compute the triangular sum of an array of di… |
+| 2222 | [Number of Ways to Select Buildings](2222.md) | 🟡 Medium | 4m 10s | The problem asks us to count the number of ways to select exactly 3… |
+| 2223 | [Sum of Scores of Built Strings](2223.md) | 🔴 Hard | 2m 48s | The problem gives us a final string s and describes a process where… |
 | 2224 | [Minimum Number of Operations to Convert Time](2224.md) | 🟢 Easy | 1m 11s | The problem asks us to calculate the minimum number of operations t… |
-| 2225 | [Find Players With Zero or One Losses](2225.md) | 🟡 Medium | 1m 16s | The problem gives a list of match results, where each match is repr… |
-| 2226 | [Maximum Candies Allocated to K Children](2226.md) | 🟡 Medium | 48s | The problem asks us to distribute candies from a given list of pile… |
+| 2225 | [Find Players With Zero or One Losses](2225.md) | 🟡 Medium | 1m 36s | The problem gives us a list of match results. Each match is represe… |
+| 2226 | [Maximum Candies Allocated to K Children](2226.md) | 🟡 Medium | 1m 3s | This problem asks us to determine the largest number of candies tha… |
 | 2227 | [Encrypt and Decrypt Strings](2227.md) | 🔴 Hard | 2m 19s | The problem asks us to design a data structure that supports two op… |
-| 2228 | [Users With Two Purchases Within Seven Days](2228.md) | 🟡 Medium | 3m 7s | The problem asks us to find users who have made at least two purcha… |
+| 2228 | [Users With Two Purchases Within Seven Days](2228.md) | 🟡 Medium | 55s | The problem requires identifying users who made at least two purcha… |
 | 2229 | [Check if an Array Is Consecutive](2229.md) | 🟢 Easy | 1m 21s | The problem asks us to determine whether an integer array forms a p… |
-| 2230 | [The Users That Are Eligible for Discount](2230.md) | 🟢 Easy | 4m 26s | The problem gives us a database table named Purchases. Each row rep… |
+| 2230 | [The Users That Are Eligible for Discount](2230.md) | 🟢 Easy | 1m 22s | This problem asks us to identify all users who qualify for a discou… |
 | 2231 | [Largest Number After Digit Swaps by Parity](2231.md) | 🟢 Easy | 1m 15s | The problem gives us a positive integer num and allows us to swap d… |
-| 2232 | [Minimize Result by Adding Parentheses to Expression](2232.md) | 🟡 Medium | 1m 15s | The problem gives us a string expression in the format: Both num1 a… |
+| 2232 | [Minimize Result by Adding Parentheses to Expression](2232.md) | 🟡 Medium | 53s | The problem presents a string expression in the form "<num1+<num2",… |
 | 2233 | [Maximum Product After K Increments](2233.md) | 🟡 Medium | 1m 22s | The problem asks us to maximize the product of an array of non-nega… |
 | 2234 | [Maximum Total Beauty of the Gardens](2234.md) | 🔴 Hard | 1m 33s | The problem gives us n gardens, where flowers[i] represents the num… |
-| 2235 | [Add Two Integers](2235.md) | 🟢 Easy | 41s | The problem is asking for a very straightforward calculation: given… |
+| 2235 | [Add Two Integers](2235.md) | 🟢 Easy | 37s | The problem is asking for the sum of two integers num1 and num2. In… |
 | 2236 | [Root Equals Sum of Children](2236.md) | 🟢 Easy | 56s | The problem asks us to determine whether the value of the root node… |
 | 2237 | [Count Positions on Street With Required Brightness](2237.md) | 🟡 Medium | 52s | The problem asks us to determine how many positions on a street mee… |
 | 2238 | [Number of Times a Driver Was a Passenger](2238.md) | 🟡 Medium | 1m 35s | The problem gives us a database table named Rides. Each row represe… |
