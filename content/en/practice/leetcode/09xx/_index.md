@@ -107,6 +107,6 @@ draft: false
 | 994 | [Rotting Oranges](994.md) | 🟡 Medium | 1m 30s | You are given a 2D grid where each cell represents one of three pos… |
 | 995 | [Minimum Number of K Consecutive Bit Flips](995.md) | 🔴 Hard | 39s | The problem gives us a binary array nums consisting of 0s and 1s an… |
 | 996 | [Number of Squareful Arrays](996.md) | 🔴 Hard | 36s | The problem asks us to count all permutations of a given integer ar… |
-| 997 | [Find the Town Judge](997.md) | 🟢 Easy | 1m 6s | This problem asks us to determine whether a special person called t… |
-| 998 | [Maximum Binary Tree II](998.md) | 🟡 Medium | 1m 19s | The problem gives us the root of an existing maximum binary tree an… |
-| 999 | [Available Captures for Rook](999.md) | 🟢 Easy | 1m 13s | This problem gives us an 8 x 8 chessboard represented as a matrix o… |
+| 997 | [Find the Town Judge](997.md) | 🟢 Easy | 1m 5s | The problem describes a town containing n people labeled from 1 to … |
+| 998 | [Maximum Binary Tree II](998.md) | 🟡 Medium | 1m 8s | A maximum tree is a special binary tree where every node contains a… |
+| 999 | [Available Captures for Rook](999.md) | 🟢 Easy | 1m 32s | The problem gives us an 8 x 8 chessboard represented as a matrix of… |
