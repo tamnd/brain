@@ -17,6 +17,7 @@ draft: false
 | 2005 | [Subtree Removal Game with Fibonacci Tree](2005.md) | 🔴 Hard | 1m 12s | The problem defines a special kind of binary tree called a Fibonacc… |
 | 2006 | [Count Number of Pairs With Absolute Difference K](2006.md) | 🟢 Easy | 1m 19s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2007 | [Find Original Array From Doubled Array](2007.md) | 🟡 Medium | 1m 27s | The problem gives us an array called changed, which was supposedly … |
+| 2008 | [Maximum Earnings From Taxi](2008.md) | 🟡 Medium | 1m 37s | This problem asks us to maximize the total money earned while drivi… |
 | 2009 | [Minimum Number of Operations to Make Array Continuous](2009.md) | 🔴 Hard | 1m 1s | The problem asks us to transform a given integer array nums into a … |
 | 2010 | [The Number of Seniors and Juniors to Join the Company II](2010.md) | 🔴 Hard | 1m 25s | The problem asks us to simulate a hiring process with a fixed salar… |
 | 2011 | [Final Value of Variable After Performing Operations](2011.md) | 🟢 Easy | 57s | This problem asks us to simulate a simple programming language with… |
