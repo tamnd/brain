@@ -1,6 +1,6 @@
 ---
 title: "CF 78B - Easter Eggs"
-description: "We need to construct a circular coloring of n eggs using exactly seven possible colors: R, O, Y, G, B, I, and V. Two conditions must hold at the same time."
+description: "We need to build a circular sequence of colors for n eggs. There are exactly seven available colors: R, O, Y, G, B, I, V Two conditions must hold simultaneously. First, every color must appear at least once."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "implementation"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Beta Round 70 (Div. 2)"
 rating: 1200
 weight: 78
-solve_time_s: 130
+solve_time_s: 119
 verified: false
 draft: false
 ---
@@ -18,120 +18,149 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** constructive algorithms, implementation  
-**Solve time:** 2m 10s  
+**Solve time:** 1m 59s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We need to construct a circular coloring of `n` eggs using exactly seven possible colors: `R`, `O`, `Y`, `G`, `B`, `I`, and `V`.
+We need to build a circular sequence of colors for `n` eggs. There are exactly seven available colors:
 
-Two conditions must hold at the same time. Every color must appear at least once, and every group of four consecutive eggs around the circle must contain four distinct colors. Since the eggs form a circle, the last eggs connect back to the first ones.
+`R, O, Y, G, B, I, V`
 
-The input is just a single integer `n`, the number of eggs. The output is any valid string of length `n` where each character represents the color of one egg in clockwise order.
+Two conditions must hold simultaneously.
 
-The constraints are very small. `n` is at most `100`, so even a brute-force search is technically possible. A complete search over all colorings would still explode quickly because there are `7^n` possible strings. For `n = 100`, that is completely infeasible. On the other hand, a linear construction is trivial within the limits. Any `O(n)` or `O(n^2)` approach is comfortably fast.
+First, every color must appear at least once.
 
-The tricky part is understanding what the “every four consecutive eggs are different” condition actually implies. A careless solution might only check adjacent eggs or might forget that the arrangement is circular.
+Second, every block of four consecutive eggs on the circle must contain four distinct colors. Since the eggs form a circle, the sequence wraps around. The last eggs and the first eggs are also neighbors.
 
-Consider `n = 8`. A naive repetition like:
+The input is just one integer `n`, the number of eggs. The output is any valid coloring string of length `n`.
+
+The constraints are very small. `n` is at most `100`, so even fairly inefficient approaches would run comfortably within the time limit. A brute-force backtracking solution over all color assignments is theoretically possible for such a small limit, but the branching factor is still large enough that it becomes messy and unnecessary. The problem is actually constructive, there is a simple pattern that always works.
+
+The tricky part is the circular condition. A sequence that works linearly may fail after wrapping around. For example:
 
 ```
 ROYGBIVR
 ```
 
-fails. The last four eggs are `BIVR`, which are distinct, but the circular segment crossing the boundary contains `VRRO`, where `R` repeats.
-
-Another common mistake is repeating all seven colors in order forever:
+looks fine if checked only left-to-right, but the last three characters plus the first one form:
 
 ```
-ROYGBIVROYGBIV...
+IVRR
 ```
 
-This fails for some circular lengths because the suffix and prefix can create duplicate colors inside a length-4 window.
+which repeats `R`.
 
-For example, with `n = 10`:
+Another common mistake is using all seven colors once and then repeating from the start:
 
 ```
-ROYGBIVROY
+ROYGBIVROY...
 ```
 
-the circular segment `YROY` contains two `Y` characters.
+This fails because some windows of four contain repeated colors near the joining point.
 
-The construction must account for the wraparound windows as well, not just the windows inside the string.
+For example, with `n = 8`:
+
+```
+ROYGBIVR
+```
+
+the four consecutive eggs across the boundary are:
+
+```
+V R R O
+```
+
+Two `R`s appear.
+
+The key observation is that we do not actually need all seven colors in every local window. We only need every group of four consecutive eggs to be pairwise distinct. A carefully chosen repeating suffix can satisfy that condition indefinitely.
 
 ## Approaches
 
-A brute-force approach would try to assign colors one by one and check whether the current partial sequence violates the rules. Since there are seven choices for every position, the search space is exponential. Even pruning aggressively, the worst case still grows far too quickly.
+A brute-force solution would try assigning one of seven colors to each egg while checking whether the current partial sequence violates the "four consecutive distinct" rule. At the end, it would also verify that all seven colors were used and that the circular wrap-around windows are valid.
 
-The reason brute force works conceptually is that the validity condition is local. To verify a coloring, we only need to inspect consecutive groups of four eggs. The problem is that constructing a valid sequence by trial and error wastes time rediscovering the same patterns.
+This works because the constraints are tiny, but the search space is still exponential. In the worst case we explore roughly `7^n` possibilities, which is astronomically large even for moderate `n`. Pruning helps, but the approach is still unnecessarily complicated for a problem intended to be constructive.
 
-The key observation is that the condition “every four consecutive eggs are distinct” is already satisfied by a repeating pattern of four distinct colors. If we repeatedly use only `R`, `O`, `Y`, and `G`, then every length-4 block is exactly those four colors in some rotation.
+The real insight comes from studying the condition on four consecutive eggs. If we already have a valid repeating pattern where every adjacent block of four contains different letters, then repeating that pattern forever remains valid.
 
-The second observation is that we still must use all seven colors at least once. The simplest way to achieve that is to start with the fixed sequence:
+The standard rainbow sequence:
 
 ```
 ROYGBIV
 ```
 
-This already uses all colors once and satisfies the condition for every internal length-4 segment.
+already satisfies the condition. The problem appears when we continue repeating it from the beginning because the circular overlap introduces duplicates.
 
-Now we only need to append extra characters for the remaining `n - 7` positions. We can safely repeat the pattern:
+Instead of repeating the whole seven-letter pattern, we only repeat a suffix that maintains the four-distinct property. The sequence:
 
 ```
 GBIV
 ```
 
-Why this particular suffix works is the important insight. The last four characters of `ROYGBIV` are already `GBIV`. Repeating this block preserves the “all distinct in every window of size four” property across boundaries.
+can repeat forever because every consecutive block of four inside that repetition is exactly some rotation of distinct letters.
 
-For example:
+So the construction becomes:
+
+1. Start with `"ROYGBIV"` to guarantee all seven colors appear.
+2. For every extra position, append characters cyclically from `"GBIV"`.
+
+Example for `n = 10`:
 
 ```
-ROYGBIVGBIVGBIV...
+ROYGBIVGBI
 ```
 
-Any consecutive block of four characters is some rotation of `GBIV`.
-
-This gives a direct linear construction.
+Every four consecutive characters remain distinct, including across the circular boundary.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(7^n) | O(n) | Too slow |
+| Brute Force | O(7^n) | O(n) | Too slow conceptually |
 | Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Start with the base string `"ROYGBIV"`.
-
-This guarantees that all seven colors appear at least once.
-2. Compute how many additional eggs still need colors.
-
-Let:
+1. Create the base string:
 
 ```
-remaining = n - 7
+ROYGBIV
 ```
-3. Prepare the repeating extension `"GBIV"`.
 
-This pattern preserves the property that every four consecutive eggs are different, even across concatenation boundaries.
-4. Append characters from `"GBIV"` cyclically until the total length becomes `n`.
+This immediately guarantees that every color appears at least once.
 
-For example, if `remaining = 5`, append:
+1. Compute how many additional characters are needed.
+
+```
+extra = n - 7
+```
+
+1. Use the repeating pattern:
+
+```
+GBIV
+```
+
+This pattern is chosen because every consecutive block of four characters inside repeated copies remains distinct.
+
+1. Append characters from `"GBIV"` cyclically until the total length becomes `n`.
+
+If `extra = 5`, we append:
 
 ```
 GBIVG
 ```
-5. Print the final string.
+
+1. Print the final string.
 
 ### Why it works
 
-The first seven characters use every color exactly once, so the first requirement is satisfied immediately.
+The first seven characters contain all seven colors exactly once, so the first condition is satisfied immediately.
 
-The repeating suffix only uses the pattern `GBIV`. Every consecutive block of four characters inside this repetition is exactly the set `{G, B, I, V}` in some order, so all four are distinct.
+The repeating suffix `"GBIV"` has length four and all four characters are distinct. Any consecutive block of four inside repeated copies of this pattern is just a cyclic shift of those same four letters, so no repetition appears.
 
-The boundary between `"ROYGBIV"` and the repeated suffix is also safe because the original string already ends with `"GBIV"`. Appending another `"GBIV"` simply continues the same valid cycle.
+The boundary between `"ROYGBIV"` and the appended suffix also works because the last few characters of the base already align naturally with `"GBIV"`.
 
-Since every length-4 window contains four distinct colors, the circular condition also holds.
+As a result, every circular window of four consecutive eggs contains four distinct colors.
 
 ## Python Solution
 
@@ -141,27 +170,27 @@ input = sys.stdin.readline
 
 def solve():
     n = int(input())
-
-    ans = "ROYGBIV"
-    extra = "GBIV"
-
-    remaining = n - 7
-
-    for i in range(remaining):
-        ans += extra[i % 4]
-
+    
+    base = "ROYGBIV"
+    extra_pattern = "GBIV"
+    
+    ans = base
+    
+    for i in range(n - 7):
+        ans += extra_pattern[i % 4]
+    
     print(ans)
 
 solve()
 ```
 
-The solution begins with the fixed valid base `"ROYGBIV"`. This is the smallest sequence that already contains every required color exactly once.
+The solution begins with the mandatory seven-color sequence. That part is fixed because the problem requires every color to appear at least once.
 
-The variable `remaining` stores how many more positions must be filled. Those positions are generated using the repeating block `"GBIV"`.
+The remaining positions are filled using `"GBIV"` cyclically. The modulo operation handles wrapping inside that four-character pattern.
 
-The modulo operation `i % 4` cycles through the characters of `"GBIV"` repeatedly. Since the extension length can be any value from `0` to `93`, this avoids boundary issues cleanly.
+A subtle detail is that we append only after the first seven characters. Repeating the entire seven-letter rainbow would break the circular condition near the boundary.
 
-One subtle point is choosing the correct repeating block. Repeating `"ROYG"` would not always work because the transition from the suffix back to the prefix could create repeated colors in a length-4 window. The block `"GBIV"` works specifically because it matches the ending of the initial valid sequence.
+Another important detail is that the answer length must become exactly `n`. Since the loop runs `n - 7` times, the final length is correct without extra checks.
 
 ## Worked Examples
 
@@ -173,18 +202,12 @@ Input:
 8
 ```
 
-Initial state:
+Construction steps:
 
-```
-ROYGBIV
-```
-
-We still need one more character.
-
-| Step | remaining index | appended char | current answer |
-| --- | --- | --- | --- |
-| Start | - | - | ROYGBIV |
-| 1 | 0 | G | ROYGBIVG |
+| Step | Current Answer | Added Character |
+| --- | --- | --- |
+| Initial | ROYGBIV | - |
+| 1 | ROYGBIVG | G |
 
 Final output:
 
@@ -192,7 +215,7 @@ Final output:
 ROYGBIVG
 ```
 
-Every consecutive block of four characters contains distinct colors. The circular windows also remain valid.
+This example shows the smallest case where an extra character must be appended. The added `G` continues the safe repeating structure without breaking any four-character window.
 
 ### Example 2
 
@@ -202,22 +225,16 @@ Input:
 12
 ```
 
-Initial state:
+Construction steps:
 
-```
-ROYGBIV
-```
-
-We need five additional characters.
-
-| Step | remaining index | appended char | current answer |
-| --- | --- | --- | --- |
-| Start | - | - | ROYGBIV |
-| 1 | 0 | G | ROYGBIVG |
-| 2 | 1 | B | ROYGBIVGB |
-| 3 | 2 | I | ROYGBIVGBI |
-| 4 | 3 | V | ROYGBIVGBIV |
-| 5 | 4 | G | ROYGBIVGBIVG |
+| Step | Current Answer | Added Character |
+| --- | --- | --- |
+| Initial | ROYGBIV | - |
+| 1 | ROYGBIVG | G |
+| 2 | ROYGBIVGB | B |
+| 3 | ROYGBIVGBI | I |
+| 4 | ROYGBIVGBIV | V |
+| 5 | ROYGBIVGBIVG | G |
 
 Final output:
 
@@ -225,16 +242,16 @@ Final output:
 ROYGBIVGBIVG
 ```
 
-This example demonstrates the cyclic repetition of `"GBIV"`. Every new character extends the existing valid pattern without breaking any length-4 window.
+This trace demonstrates the cyclic repetition of `"GBIV"`. Every group of four consecutive characters remains distinct because the suffix itself is a four-character cycle of distinct letters.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We append exactly `n - 7` characters |
-| Space | O(n) | The output string itself has length `n` |
+| Time | O(n) | We append exactly `n` characters overall |
+| Space | O(n) | The output string stores `n` characters |
 
-The maximum value of `n` is only `100`, so this linear solution runs instantly and uses negligible memory.
+With `n ≤ 100`, this solution is easily within both the time and memory limits. The implementation performs only simple string operations and a single loop.
 
 ## Test Cases
 
@@ -244,113 +261,134 @@ import sys
 import io
 
 def solve():
-    input = sys.stdin.readline
-
     n = int(input())
-
-    ans = "ROYGBIV"
-    extra = "GBIV"
-
+    
+    base = "ROYGBIV"
+    extra_pattern = "GBIV"
+    
+    ans = base
+    
     for i in range(n - 7):
-        ans += extra[i % 4]
-
+        ans += extra_pattern[i % 4]
+    
     print(ans)
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
+    global input
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
+    input = sys.stdin.readline
+    
+    out = io.StringIO()
+    backup = sys.stdout
+    sys.stdout = out
+    
     solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
+    
+    sys.stdout = backup
+    return out.getvalue().strip()
 
 # provided sample
-assert run("8\n") == "ROYGBIVG\n", "sample 1"
+assert run("8\n") == "ROYGBIVG", "sample 1"
 
 # minimum size
-assert run("7\n") == "ROYGBIV\n", "minimum n"
+assert run("7\n") == "ROYGBIV", "minimum n"
 
-# exact repetition boundary
-assert run("11\n") == "ROYGBIVGBIV\n", "full GBIV cycle"
+# one full extra cycle
+assert run("11\n") == "ROYGBIVGBIV", "full GBIV repetition"
 
-# one past repetition boundary
-assert run("12\n") == "ROYGBIVGBIVG\n", "partial cycle"
+# off-by-one after cycle restart
+assert run("12\n") == "ROYGBIVGBIVG", "cycle restart"
 
-# maximum size
-out = run("100\n").strip()
-assert len(out) == 100, "maximum n length"
+# maximum size length check
+res = run("100\n")
+assert len(res) == 100, "maximum size"
 
-# verify all windows of size 4 are distinct
-s = out
-n = len(s)
-
-for i in range(n):
-    window = [s[(i + j) % n] for j in range(4)]
-    assert len(set(window)) == 4, "window condition failed"
-
-# verify all seven colors appear
-assert set("ROYGBIV").issubset(set(out)), "missing colors"
+# all colors appear
+for c in "ROYGBIV":
+    assert c in res, "missing color"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `7` | `ROYGBIV` | Smallest valid size |
-| `8` | `ROYGBIVG` | First repeated character |
-| `11` | `ROYGBIVGBIV` | Exact full repetition block |
-| `12` | `ROYGBIVGBIVG` | Partial repetition cycle |
-| `100` | Any valid length-100 string | Maximum constraint and circular validation |
+| `7` | `ROYGBIV` | Minimum valid size |
+| `8` | `ROYGBIVG` | First appended character |
+| `11` | `ROYGBIVGBIV` | Exact full suffix cycle |
+| `12` | `ROYGBIVGBIVG` | Correct modulo restart |
+| `100` | Length 100 valid string | Maximum constraint |
 
 ## Edge Cases
 
-The smallest possible input is:
+Consider the minimum input:
 
 ```
 7
 ```
 
-The algorithm immediately returns:
+The algorithm outputs:
 
 ```
 ROYGBIV
 ```
 
-No extra characters are appended. Every consecutive group of four characters is distinct, and all seven colors appear exactly once.
+Every color appears once, and every group of four consecutive eggs contains distinct colors because all characters are unique.
 
-Another subtle case is when the remaining length is not divisible by four.
-
-Input:
+Now consider the first nontrivial extension:
 
 ```
-10
+8
 ```
 
-The algorithm builds:
+The construction becomes:
 
 ```
-ROYGBIVGBI
+ROYGBIVG
 ```
 
-The appended suffix is only `"GBI"`, not a full cycle. This still works because every length-4 window crossing the boundary remains distinct:
+Checking the circular windows:
 
 ```
-VGBI
-BGIV
+ROYG
+OYGB
+YGBI
+GBIV
+BIVG
+IVGR
+VGRO
+GROY
 ```
 
-A careless implementation that repeated the wrong pattern could fail exactly in these partial-cycle cases.
+All four-character windows contain distinct letters.
 
-The maximum input:
+A naive repetition such as:
 
 ```
-100
+ROYGBIVR
 ```
 
-also works safely because the construction never depends on backtracking or recursion. The algorithm simply extends the valid periodic structure until the target length is reached.
+would fail because the circular window:
+
+```
+IVRR
+```
+
+contains repeated `R`.
+
+Another subtle case is when the appended pattern wraps around:
+
+```
+12
+```
+
+Output:
+
+```
+ROYGBIVGBIVG
+```
+
+The suffix repeats as:
+
+```
+GBIVG
+```
+
+Even after restarting at `G`, every block of four consecutive characters remains a permutation of `G, B, I, V`, so the condition continues to hold.

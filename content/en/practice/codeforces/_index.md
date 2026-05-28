@@ -92,7 +92,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [75](75/) | [Codeforces Beta Round 67 (Div. 2)](https://codeforces.com/contest/75) | Div. 2 | 1000-2400 | 4/5 | 9m 31s |
 | [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 1700-2700 | 5/6 | 12m 33s |
 | [77](77/) | [Codeforces Beta Round 69 (Div. 1 Only)](https://codeforces.com/contest/77) | Div. 1 | 1400-2800 | 2/5 | 11m 16s |
-| [78](78/) | [Codeforces Beta Round 70 (Div. 2)](https://codeforces.com/contest/78) | Div. 2 | 800-2300 | 4/5 | 12m 27s |
+| [78](78/) | [Codeforces Beta Round 70 (Div. 2)](https://codeforces.com/contest/78) | Div. 2 | 800-2300 | 4/5 | 12m 16s |
 | [79](79/) | [Codeforces Beta Round 71](https://codeforces.com/contest/79) | Beta | 1200-2900 | 4/5 | 8m 40s |
 | [80](80/) | [Codeforces Beta Round 69 (Div. 2 Only)](https://codeforces.com/contest/80) | Div. 2 | 800-1200 | 1/2 | 3m 11s |
 | [81](81/) | [Yandex.Algorithm Open 2011: Qualification 1](https://codeforces.com/contest/81) | Special | 1400-2700 | 3/5 | 12m 57s |
