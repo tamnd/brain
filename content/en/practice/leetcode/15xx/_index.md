@@ -62,3 +62,20 @@ draft: false
 | 1549 | [The Most Recent Orders for Each Product](1549.md) | 🟡 Medium | 1m 37s | This problem asks us to find the most recent order for every produc… |
 | 1550 | [Three Consecutive Odds](1550.md) | 🟢 Easy | 51s | This problem asks us to examine a list of integers, arr, and determ… |
 | 1551 | [Minimum Operations to Make Array Equal](1551.md) | 🟡 Medium | 51s | The problem presents an array arr of length n where each element is… |
+| 1552 | [Magnetic Force Between Two Balls](1552.md) | 🟡 Medium | 48s | The problem asks us to distribute m balls into n baskets located at… |
+| 1553 | [Minimum Number of Days to Eat N Oranges](1553.md) | 🔴 Hard | 1m 18s | This problem asks us to compute the minimum number of days required… |
+| 1554 | [Strings Differ by One Character](1554.md) | 🟡 Medium | 1m 15s | This problem gives us an array of unique strings called dict, where… |
+| 1555 | [Bank Account Summary](1555.md) | 🟡 Medium | 1m 33s | The problem gives us two database tables, Users and Transactions, a… |
+| 1556 | [Thousand Separator](1556.md) | 🟢 Easy | 1m 9s | The problem asks us to format a non-negative integer so that every … |
+| 1557 | [Minimum Number of Vertices to Reach All Nodes](1557.md) | 🟡 Medium | 54s | The problem is asking us to identify the minimum set of vertices in… |
+| 1558 | [Minimum Numbers of Function Calls to Make Target Array](1558.md) | 🟡 Medium | 55s | This problem asks us to transform an initial array arr of zeros int… |
+| 1559 | [Detect Cycles in 2D Grid](1559.md) | 🟡 Medium | 55s | The problem asks us to detect cycles in a 2D grid of characters whe… |
+| 1560 | [Most Visited Sector in  a Circular Track](1560.md) | 🟢 Easy | 1m 18s | This problem describes a marathon taking place on a circular track … |
+| 1561 | [Maximum Number of Coins You Can Get](1561.md) | 🟡 Medium | 1m 21s | The problem gives us an array called piles, where each element repr… |
+| 1562 | [Find Latest Group of Size M](1562.md) | 🟡 Medium | 1m 31s | Edit This problem gives us a permutation array arr containing integ… |
+| 1563 | [Stone Game V](1563.md) | 🔴 Hard | 1m 31s | In this game, we are given an array stoneValue where each element r… |
+| 1564 | [Put Boxes Into the Warehouse I](1564.md) | 🟡 Medium | 1m 32s | The problem gives us two arrays: - boxes, where each value represen… |
+| 1565 | [Unique Orders and Customers Per Month](1565.md) | 🟢 Easy | 39s | This problem requires analyzing a table of orders to calculate mont… |
+| 1566 | [Detect Pattern of Length M Repeated K or More Times](1566.md) | 🟢 Easy | 1m 25s | The problem gives us an integer array arr along with two integers, … |
+| 1567 | [Maximum Length of Subarray With Positive Product](1567.md) | 🟡 Medium | 1m 18s | The problem asks us to find the length of the longest contiguous su… |
+| 1568 | [Minimum Number of Days to Disconnect Island](1568.md) | 🔴 Hard | 47s | The problem gives us an m x n binary grid grid where 1 represents l… |
