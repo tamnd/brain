@@ -81,3 +81,14 @@ draft: false
 | 1568 | [Minimum Number of Days to Disconnect Island](1568.md) | 🔴 Hard | 1m 34s | The problem gives us a binary matrix where each cell is either land… |
 | 1569 | [Number of Ways to Reorder Array to Get Same BST](1569.md) | 🔴 Hard | 1m 27s | The problem gives us a permutation of integers from 1 to n, and we … |
 | 1570 | [Dot Product of Two Sparse Vectors](1570.md) | 🟡 Medium | 1m 21s | This problem asks us to efficiently compute the dot product between… |
+| 1571 | [Warehouse Manager](1571.md) | 🟢 Easy | 1m 40s | This problem asks us to calculate the total storage volume occupied… |
+| 1572 | [Matrix Diagonal Sum](1572.md) | 🟢 Easy | 1m 7s | The problem gives us a square matrix mat of size n x n. A square ma… |
+| 1573 | [Number of Ways to Split a String](1573.md) | 🟡 Medium | 1m 28s | The problem gives us a binary string s, meaning the string contains… |
+| 1574 | [Shortest Subarray to be Removed to Make Array Sorted](1574.md) | 🟡 Medium | 48s | Please provide the full problem statement or LeetCode number you wa… |
+| 1575 | [Count All Possible Routes](1575.md) | 🔴 Hard | 1m 24s | This problem gives us a set of cities positioned on a number line. … |
+| 1576 | [Replace All ?'s to Avoid Consecutive Repeating Characters](1576.md) | 🟢 Easy | 1m 28s | This problem asks us to replace every '?' character in a string wit… |
+| 1577 | [Number of Ways Where Square of Number Is Equal to Product of Two Numbers](1577.md) | 🟡 Medium | 1m 35s | The problem gives us two integer arrays, nums1 and nums2. We must c… |
+| 1578 | [Minimum Time to Make Rope Colorful](1578.md) | 🟡 Medium | 1m 3s | The problem requires transforming a rope of balloons into a "colorf… |
+| 1579 | [Remove Max Number of Edges to Keep Graph Fully Traversable](1579.md) | 🔴 Hard | 59s | The problem presents an undirected graph with n nodes and three typ… |
+| 1580 | [Put Boxes Into the Warehouse II](1580.md) | 🟡 Medium | 59s | The problem is asking us to determine the maximum number of boxes w… |
+| 1582 | [Special Positions in a Binary Matrix](1582.md) | 🟢 Easy | 57s | The problem is asking to find special positions in a binary matrix.… |
