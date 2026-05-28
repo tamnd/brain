@@ -61,3 +61,12 @@ draft: false
 | 1648 | [Sell Diminishing-Valued Colored Balls](1648.md) | 🟡 Medium | 1m 18s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 1649 | [Create Sorted Array through Instructions](1649.md) | 🔴 Hard | 1m 28s | The problem asks us to simulate building a sorted array incremental… |
 | 1650 | [Lowest Common Ancestor of a Binary Tree III](1650.md) | 🟡 Medium | 1m 29s | This problem asks us to find the lowest common ancestor, usually ab… |
+| 1651 | [Hopper Company Queries III](1651.md) | 🔴 Hard | 1m 2s | The problem requires computing a rolling 3-month average of ride di… |
+| 1652 | [Defuse the Bomb](1652.md) | 🟢 Easy | 1m 17s | The problem gives us a circular array called code and an integer k.… |
+| 1653 | [Minimum Deletions to Make String Balanced](1653.md) | 🟡 Medium | 1m 3s | The problem asks us to make a string containing only characters 'a'… |
+| 1654 | [Minimum Jumps to Reach Home](1654.md) | 🟡 Medium | 1m 37s | This problem asks us to find the minimum number of jumps required f… |
+| 1655 | [Distribute Repeating Integers](1655.md) | 🔴 Hard | 1m 30s | This problem asks whether we can satisfy a set of customer requests… |
+| 1656 | [Design an Ordered Stream](1656.md) | 🟢 Easy | 1m 9s | This problem asks us to simulate a data stream where each element a… |
+| 1657 | [Determine if Two Strings Are Close](1657.md) | 🟡 Medium | 1m 3s | The problem asks whether two strings, word1 and word2, are "close" … |
+| 1658 | [Minimum Operations to Reduce X to Zero](1658.md) | 🟡 Medium | 1m 18s | The problem gives us an integer array nums and a target integer x. … |
+| 1659 | [Maximize Grid Happiness](1659.md) | 🔴 Hard | 49s | I can do that, but a truly comprehensive guide for LeetCode 1659 fo… |
