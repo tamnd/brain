@@ -65,14 +65,14 @@ draft: false
 | 952 | [Largest Component Size by Common Factor](952.md) | 🔴 Hard | 38s | The problem asks us to find the largest connected component in a gr… |
 | 953 | [Verifying an Alien Dictionary](953.md) | 🟢 Easy | 1m 4s | This problem asks us to verify whether a list of words is sorted ac… |
 | 954 | [Array of Doubled Pairs](954.md) | 🟡 Medium | 29s | The problem asks whether it is possible to reorder an even-length a… |
-| 955 | [Delete Columns to Make Sorted II](955.md) | 🟡 Medium | 1m 12s | LeetCode 955, LeetCode "Delete Columns to Make Sorted II", asks us … |
-| 956 | [Tallest Billboard](956.md) | 🔴 Hard | 1m 13s | In this problem, we are given a list of steel rods. Each rod has a … |
-| 957 | [Prison Cells After N Days](957.md) | 🟡 Medium | 1m 11s | The problem gives us a row of exactly eight prison cells, where eac… |
-| 958 | [Check Completeness of a Binary Tree](958.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given binary tree is a c… |
-| 959 | [Regions Cut By Slashes](959.md) | 🟡 Medium | 1m 20s | The problem gives us an n x n grid where every cell contains one of… |
+| 955 | [Delete Columns to Make Sorted II](955.md) | 🟡 Medium | 1m 20s | This problem asks us to remove the minimum number of columns from a… |
+| 956 | [Tallest Billboard](956.md) | 🔴 Hard | 1m 11s | This problem asks us to split a collection of steel rods into two g… |
+| 957 | [Prison Cells After N Days](957.md) | 🟡 Medium | 39s | The problem presents a simulation scenario with a row of exactly 8 … |
+| 958 | [Check Completeness of a Binary Tree](958.md) | 🟡 Medium | 36s | The problem asks us to determine whether a given binary tree is a c… |
+| 959 | [Regions Cut By Slashes](959.md) | 🟡 Medium | 40s | Let's dive into a full, detailed technical solution guide for LeetC… |
 | 960 | [Delete Columns to Make Sorted III](960.md) | 🔴 Hard | 33s | This problem asks us to find the minimum number of columns to delet… |
-| 961 | [N-Repeated Element in Size 2N Array](961.md) | 🟢 Easy | 1m 24s | The problem gives an integer array nums whose length is exactly 2 n… |
-| 962 | [Maximum Width Ramp](962.md) | 🟡 Medium | 1m 12s | The problem asks us to find the maximum width ramp in an array of i… |
+| 961 | [N-Repeated Element in Size 2N Array](961.md) | 🟢 Easy | 2m 48s | The problem gives us an integer array nums whose length is exactly … |
+| 962 | [Maximum Width Ramp](962.md) | 🟡 Medium | 28s | The problem asks us to find the maximum width ramp in an array of i… |
 | 964 | [Least Operators to Express Number](964.md) | 🔴 Hard | 1m 23s | This problem asks us to construct a mathematical expression using o… |
 | 965 | [Univalued Binary Tree](965.md) | 🟢 Easy | 38s | The problem asks us to determine whether a given binary tree is uni… |
 | 966 | [Vowel Spellchecker](966.md) | 🟡 Medium | 1m 42s | The problem asks us to build a spellchecker with very specific matc… |
@@ -81,3 +81,16 @@ draft: false
 | 969 | [Pancake Sorting](969.md) | 🟡 Medium | 42s | The problem is asking us to sort an array of unique integers using … |
 | 970 | [Powerful Integers](970.md) | 🟡 Medium | 1m 12s | The problem asks us to generate every integer of the form: where bo… |
 | 971 | [Flip Binary Tree To Match Preorder Traversal](971.md) | 🟡 Medium | 1m 9s | The problem gives us a binary tree and a target preorder traversal … |
+| 972 | [Equal Rational Numbers](972.md) | 🔴 Hard | 1m 14s | The problem asks us to determine whether two string representations… |
+| 973 | [K Closest Points to Origin](973.md) | 🟡 Medium | 41s | This problem asks us to find the k points that are closest to the o… |
+| 974 | [Subarray Sums Divisible by K](974.md) | 🟡 Medium | 1m 4s | The problem asks us to count how many non-empty contiguous subarray… |
+| 975 | [Odd Even Jump](975.md) | 🔴 Hard | 44s | The problem is asking us to determine how many starting indices in … |
+| 976 | [Largest Perimeter Triangle](976.md) | 🟢 Easy | 43s | This problem asks us to find the largest perimeter of a triangle th… |
+| 977 | [Squares of a Sorted Array](977.md) | 🟢 Easy | 1m 7s | The problem gives us an integer array nums that is already sorted i… |
+| 978 | [Longest Turbulent Subarray](978.md) | 🟡 Medium | 1m 16s | The problem asks us to find the length of the longest turbulent sub… |
+| 979 | [Distribute Coins in Binary Tree](979.md) | 🟡 Medium | 34s | The problem asks us to redistribute coins in a binary tree so that … |
+| 980 | [Unique Paths III](980.md) | 🔴 Hard | 1m 25s | LeetCode 980, Unique Paths III, asks us to count how many valid pat… |
+| 982 | [Triples with Bitwise AND Equal To Zero](982.md) | 🔴 Hard | 1m 9s | The problem asks us to count how many ordered triples of indices (i… |
+| 983 | [Minimum Cost For Tickets](983.md) | 🟡 Medium | 45s | The problem asks us to calculate the minimum cost to travel on a se… |
+| 984 | [String Without AAA or BBB](984.md) | 🟡 Medium | 1m 12s | The problem gives us two integers, a and b, representing how many '… |
+| 985 | [Sum of Even Numbers After Queries](985.md) | 🟡 Medium | 1m 3s | The problem gives us an integer array nums and a list of update ope… |
