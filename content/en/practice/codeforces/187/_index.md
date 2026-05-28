@@ -1,14 +1,14 @@
 ---
 title: "Codeforces Round 119 (Div. 1)"
-description: "Solutions for Codeforces Round 119 (Div. 1) (contest 187). 4/4 problems verified against sample I/O. Difficulty range: 1500-2800."
+description: "Solutions for Codeforces Round 119 (Div. 1) (contest 187). 4/5 problems verified against sample I/O. Difficulty range: 1500-2900."
 tags: ["codeforces", "competitive-programming", "greedy", "dp", "shortest-paths", "dfs-and-similar", "dsu", "data-structures"]
 categories: ["algorithms"]
 contest_id: 187
 contest_type: "Div. 1"
-rating_range: "1500-2800"
-n_problems: 4
+rating_range: "1500-2900"
+n_problems: 5
 n_verified: 4
-total_solve_s: 461
+total_solve_s: 603
 date: "2026-05-29T00:00:00+07:00"
 weight: 187
 draft: false
@@ -16,7 +16,7 @@ draft: false
 
 # [Codeforces Round 119 (Div. 1)](https://codeforces.com/contest/187)
 
-**Type:** Div. 1 | **Problems:** 4 | **Verified:** 4/4 | **Rating range:** 1500-2800 | **Time:** 7m 41s
+**Type:** Div. 1 | **Problems:** 5 | **Verified:** 4/5 | **Rating range:** 1500-2900 | **Time:** 10m 3s
 
 | Problem | Name | Rating | Tags | Solve Time | Verified |
 |---|---|---|---|---|---|
@@ -24,3 +24,4 @@ draft: false
 | [B](B/) | [AlgoRace](https://codeforces.com/problemset/problem/187/B) | 1800 | dp, shortest-paths | 2m 5s | ✓ |
 | [C](C/) | [Weak Memory](https://codeforces.com/problemset/problem/187/C) | 2000 | dfs-and-similar, dsu | 2m 12s | ✓ |
 | [D](D/) | [BRT Contract ](https://codeforces.com/problemset/problem/187/D) | 2800 | data-structures | 1m 54s | ✓ |
+| [E](E/) | [Heaven Tour](https://codeforces.com/problemset/problem/187/E) | 2900 | data-structures, greedy | 2m 22s | ✗ |
