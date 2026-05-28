@@ -96,3 +96,9 @@ draft: false
 | 2091 | [Removing Minimum and Maximum From Array](2091.md) | 🟡 Medium | 2m 19s | The problem gives us a 0-indexed array of distinct integers. Among … |
 | 2092 | [Find All People With Secret](2092.md) | 🔴 Hard | 1m 49s | The problem describes a network of people who meet at different tim… |
 | 2093 | [Minimum Cost to Reach City With Discounts](2093.md) | 🟡 Medium | 52s | This problem asks us to find the minimum cost to travel from city 0… |
+| 2094 | [Finding 3-Digit Even Numbers](2094.md) | 🟢 Easy | 1m 32s | The problem gives us an array called digits, where every element is… |
+| 2095 | [Delete the Middle Node of a Linked List](2095.md) | 🟡 Medium | 1m 31s | The problem gives us the head of a singly linked list and asks us t… |
+| 2096 | [Step-By-Step Directions From a Binary Tree Node to Another](2096.md) | 🟡 Medium | 1m 32s | This problem gives us a binary tree where every node has a unique v… |
+| 2097 | [Valid Arrangement of Pairs](2097.md) | 🔴 Hard | 52s | The problem is asking us to take a list of directed pairs, where ea… |
+| 2098 | [Subsequence of Size K With the Largest Even Sum](2098.md) | 🟡 Medium | 1m 39s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2099 | [Find Subsequence of Length K With the Largest Sum](2099.md) | 🟢 Easy | 1m 26s | The problem gives us an integer array nums and an integer k. We mus… |
