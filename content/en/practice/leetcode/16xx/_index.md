@@ -69,4 +69,13 @@ draft: false
 | 1656 | [Design an Ordered Stream](1656.md) | 🟢 Easy | 1m 9s | This problem asks us to simulate a data stream where each element a… |
 | 1657 | [Determine if Two Strings Are Close](1657.md) | 🟡 Medium | 1m 3s | The problem asks whether two strings, word1 and word2, are "close" … |
 | 1658 | [Minimum Operations to Reduce X to Zero](1658.md) | 🟡 Medium | 1m 18s | The problem gives us an integer array nums and a target integer x. … |
-| 1659 | [Maximize Grid Happiness](1659.md) | 🔴 Hard | 49s | I can do that, but a truly comprehensive guide for LeetCode 1659 fo… |
+| 1659 | [Maximize Grid Happiness](1659.md) | 🔴 Hard | 1m 56s | This problem asks us to place introverts and extroverts inside an m… |
+| 1660 | [Correct a Binary Tree](1660.md) | 🟡 Medium | 1m 25s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1661 | [Average Time of Process per Machine](1661.md) | 🟢 Easy | 3m 19s | The problem provides a database table named Activity, which stores … |
+| 1662 | [Check If Two String Arrays are Equivalent](1662.md) | 🟢 Easy | 1m 37s | The problem gives us two arrays of strings, word1 and word2. Each a… |
+| 1663 | [Smallest String With A Given Numeric Value](1663.md) | 🟡 Medium | 1m 33s | The problem asks us to construct a lowercase string of length n suc… |
+| 1664 | [Ways to Make a Fair Array](1664.md) | 🟡 Medium | 1m 32s | The problem gives us an integer array nums, and asks us to remove e… |
+| 1665 | [Minimum Initial Energy to Finish Tasks](1665.md) | 🔴 Hard | 1m 50s | The problem gives us a list of tasks, where each task is represente… |
+| 1666 | [Change the Root of a Binary Tree](1666.md) | 🟡 Medium | 2m 29s | The problem asks us to reroot a binary tree so that a given leaf no… |
+| 1668 | [Maximum Repeating Substring](1668.md) | 🟢 Easy | 2m 20s | The problem is asking us to find the maximum number of times a give… |
+| 1669 | [Merge In Between Linked Lists](1669.md) | 🟡 Medium | 1m 47s | This problem asks us to merge one linked list into another at a spe… |
