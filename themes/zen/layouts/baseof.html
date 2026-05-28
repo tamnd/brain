@@ -113,15 +113,13 @@
   }
   sync();
   btn&&btn.addEventListener('click',function(){
-    // Suppress all transitions while switching to avoid slow cross-fade
-    var s=document.createElement('style');
-    s.textContent='*,*::before,*::after{transition:none!important}';
-    document.head.appendChild(s);
-    var dark=document.documentElement.classList.toggle('dark');
+    var html=document.documentElement;
+    html.classList.add('no-transition');
+    void html.offsetHeight; // force reflow so no-transition applies before class change
+    var dark=html.classList.toggle('dark');
     localStorage.setItem('brain-theme',dark?'dark':'light');
     sync();
-    // Re-enable transitions on next paint
-    requestAnimationFrame(function(){document.head.removeChild(s);});
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ html.classList.remove('no-transition'); }); });
   });
 })();
 </script>
@@ -182,13 +180,13 @@
   var themes=['zen','github'];
   function getTheme(){ return localStorage.getItem('brain-ui-theme')||'zen'; }
   function applyTheme(ui){
-    var s=document.createElement('style');
-    s.textContent='*,*::before,*::after{transition:none!important}';
-    document.head.appendChild(s);
-    document.documentElement.setAttribute('data-ui-theme',ui);
+    var html=document.documentElement;
+    html.classList.add('no-transition');
+    void html.offsetHeight;
+    html.setAttribute('data-ui-theme',ui);
     localStorage.setItem('brain-ui-theme',ui);
     if(label)label.textContent=ui==='github'?'gh':'zen';
-    requestAnimationFrame(function(){document.head.removeChild(s);});
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ html.classList.remove('no-transition'); }); });
   }
   if(label)label.textContent=getTheme()==='github'?'gh':'zen';
   btn&&btn.addEventListener('click',function(){

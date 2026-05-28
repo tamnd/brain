@@ -190,29 +190,33 @@ html.dark .zen-nav__action--active {
 }
 
 .zen-nav__menu-btn {
-  display: none;
+  display: inline-flex;
 }
 
 /* ===== Layout ============================================================ */
 
 .zen-layout {
-  display: flex;
-  max-width: var(--page-max);
+  max-width: var(--content-max);
   margin: 0 auto;
   min-height: calc(100vh - var(--nav-h) - 60px);
+  padding: 0 1.5rem;
 }
 
-/* ===== Sidebar =========================================================== */
+/* ===== Sidebar (always slide-out overlay) ================================ */
 
 .zen-sidebar {
-  width: var(--sidebar-w);
-  flex-shrink: 0;
-  position: sticky;
-  top: var(--nav-h);
-  height: calc(100vh - var(--nav-h));
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100vh;
+  z-index: 35;
+  width: min(var(--sidebar-w), 85vw);
   overflow-y: auto;
-  padding: 1.5rem 0 2rem;
+  padding-top: calc(var(--nav-h) + 1rem);
+  padding-bottom: 2rem;
   background: var(--bg);
+  border-right: 1px solid var(--border);
+  transition: left 0.22s ease;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
 }
@@ -303,9 +307,7 @@ html.dark .zen-sidebar__link:hover {
 /* ===== Main content area ================================================= */
 
 .zen-main {
-  flex: 1;
-  min-width: 0;
-  padding: 2rem 2.5rem 4rem;
+  padding: 2rem 0 4rem;
 }
 
 /* ===== Breadcrumb ======================================================== */
@@ -1036,7 +1038,7 @@ html.dark .zen-footer {
   background: #020617;
 }
 
-/* ===== Sidebar overlay (mobile) ========================================== */
+/* ===== Sidebar overlay backdrop ========================================== */
 
 .zen-sidebar-backdrop {
   display: none;
@@ -1046,29 +1048,23 @@ html.dark .zen-footer {
   background: rgb(0 0 0 / 0.4);
 }
 
+.zen-sidebar--open { left: 0 !important; }
+.zen-sidebar-backdrop--open { display: block; }
+
+/* ===== Transition suppression during theme/dark switch =================== */
+
+html.no-transition,
+html.no-transition *,
+html.no-transition *::before,
+html.no-transition *::after {
+  transition: none !important;
+}
+
 /* ===== Responsive ======================================================== */
 
 @media (max-width: 768px) {
-  .zen-nav__menu-btn { display: inline-flex; }
-
-  .zen-layout { display: block; }
-
-  .zen-sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100vh;
-    z-index: 35;
-    width: min(var(--sidebar-w), 85vw);
-    transition: left 0.25s ease;
-    border-right: 1px solid var(--border);
-    padding-top: calc(var(--nav-h) + 1rem);
-  }
-
-  .zen-sidebar--open { left: 0; }
-  .zen-sidebar-backdrop--open { display: block; }
-
-  .zen-main { padding: 1.5rem 1rem 3rem; }
+  .zen-layout { padding: 0 1rem; }
+  .zen-main { padding: 1.5rem 0 3rem; }
 
   .cal-body { flex-direction: column; }
   .cal-wrap { width: 100%; }
@@ -1251,20 +1247,11 @@ html[data-ui-theme="github"] .zen-nav__action--text {
   font-family: var(--font-mono);
 }
 
-/* ── Hide sidebar — GitHub has no left sidebar ───────────────────────────── */
-
-html[data-ui-theme="github"] .zen-sidebar,
-html[data-ui-theme="github"] .zen-sidebar-backdrop,
-html[data-ui-theme="github"] .zen-nav__menu-btn {
-  display: none !important;
-}
-
 /* ── Layout — full-width, centered ──────────────────────────────────────────*/
 
 html[data-ui-theme="github"] .zen-layout {
-  display: block;
   max-width: var(--page-max);
-  margin: 0 auto;
+  padding: 0;
 }
 
 html[data-ui-theme="github"] .zen-main {
