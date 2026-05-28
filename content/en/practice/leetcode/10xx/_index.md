@@ -83,12 +83,21 @@ draft: false
 | 1070 | [Product Sales Analysis III](1070.md) | 🟡 Medium | 40s | The problem presents a Sales table, where each row represents a sal… |
 | 1071 | [Greatest Common Divisor of Strings](1071.md) | 🟢 Easy | 1m 26s | The problem asks us to find the greatest common divisor (GCD) of tw… |
 | 1072 | [Flip Columns For Maximum Number of Equal Rows](1072.md) | 🟡 Medium | 1m 6s | The problem gives us an m x n binary matrix, where every element is… |
-| 1073 | [Adding Two Negabinary Numbers](1073.md) | 🟡 Medium | 46s | The problem requires adding two numbers that are represented in neg… |
-| 1075 | [Project Employees I](1075.md) | 🟢 Easy | 1m 25s | This problem asks us to compute the average number of experience ye… |
+| 1073 | [Adding Two Negabinary Numbers](1073.md) | 🟡 Medium | 56s | The problem asks us to add two numbers that are represented in nega… |
+| 1074 | [Number of Submatrices That Sum to Target](1074.md) | 🔴 Hard | 43s | This problem asks us to count the number of submatrices in a given … |
+| 1075 | [Project Employees I](1075.md) | 🟢 Easy | 54s | This problem provides two database tables, Project and Employee. Th… |
 | 1076 | [Project Employees II](1076.md) | 🟢 Easy | 1m 19s | This problem asks us to identify the project or projects that have … |
-| 1077 | [Project Employees III](1077.md) | 🟡 Medium | 1m 26s | The problem gives us two database tables, Project and Employee. The… |
-| 1078 | [Occurrences After Bigram](1078.md) | 🟢 Easy | 2m 7s | The problem gives us a string called text and two target words, fir… |
+| 1077 | [Project Employees III](1077.md) | 🟡 Medium | 43s | The problem asks us to find the most experienced employees in each … |
+| 1078 | [Occurrences After Bigram](1078.md) | 🟢 Easy | 1m 3s | The problem gives us a string called text and two target words, fir… |
 | 1079 | [Letter Tile Possibilities](1079.md) | 🟡 Medium | 1m 3s | The problem asks us to count all possible non-empty sequences that … |
 | 1080 | [Insufficient Nodes in Root to Leaf Paths](1080.md) | 🟡 Medium | 53s | This problem asks us to prune a binary tree based on the sum of nod… |
 | 1081 | [Smallest Subsequence of Distinct Characters](1081.md) | 🟡 Medium | 1m 15s | The problem asks us to construct the lexicographically smallest sub… |
 | 1082 | [Sales Analysis I](1082.md) | 🟢 Easy | 42s | The problem is asking us to determine the seller or sellers who ach… |
+| 1083 | [Sales Analysis II](1083.md) | 🟢 Easy | 56s | This problem is asking us to identify buyers who purchased a specif… |
+| 1084 | [Sales Analysis III](1084.md) | 🟢 Easy | 1m 24s | The problem gives us two database tables, Product and Sales. The Pr… |
+| 1085 | [Sum of Digits in the Minimum Number](1085.md) | 🟢 Easy | 5m 3s | The problem gives us an integer array called nums. Our task is to f… |
+| 1086 | [High Five](1086.md) | 🟢 Easy | 51s | The problem requires calculating the top five average score for eac… |
+| 1087 | [Brace Expansion](1087.md) | 🟡 Medium | 45s | The problem is asking us to generate all possible words from a comp… |
+| 1088 | [Confusing Number II](1088.md) | 🔴 Hard | 1m 5s | The problem asks us to count confusing numbers between 1 and n, inc… |
+| 1089 | [Duplicate Zeros](1089.md) | 🟢 Easy | 48s | The problem asks us to modify a fixed-length integer array in-place… |
+| 1091 | [Shortest Path in Binary Matrix](1091.md) | 🟡 Medium | 1m 10s | The problem asks us to find the shortest path from the top-left cor… |
