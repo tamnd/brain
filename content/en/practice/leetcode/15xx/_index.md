@@ -30,7 +30,11 @@ draft: false
 | 1517 | [Find Users With Valid E-Mails](1517.md) | 🟢 Easy | 1m 24s | This problem asks us to query a database table named Users and retu… |
 | 1518 | [Water Bottles](1518.md) | 🟢 Easy | 40s | The problem is asking us to determine the maximum number of water b… |
 | 1519 | [Number of Nodes in the Sub-Tree With the Same Label](1519.md) | 🟡 Medium | 49s | The problem gives us a tree with n nodes numbered from 0 to n - 1. … |
-| 1520 | [Maximum Number of Non-Overlapping Substrings](1520.md) | 🔴 Hard | 1m 28s | The problem asks us to select as many non-overlapping substrings as… |
-| 1521 | [Find a Value of a Mysterious Function Closest to Target](1521.md) | 🔴 Hard | 1m 24s | The problem defines a mysterious function func(arr, l, r) that comp… |
-| 1522 | [Diameter of N-Ary Tree](1522.md) | 🟡 Medium | 1m 16s | The problem gives us the root of an N-ary tree and asks us to compu… |
-| 1523 | [Count Odd Numbers in an Interval Range](1523.md) | 🟢 Easy | 1m 1s | The problem asks us to count how many odd integers exist in the inc… |
+| 1520 | [Maximum Number of Non-Overlapping Substrings](1520.md) | 🔴 Hard | 1m 18s | This problem asks us to select as many non-overlapping substrings a… |
+| 1521 | [Find a Value of a Mysterious Function Closest to Target](1521.md) | 🔴 Hard | 1m 10s | The problem defines a mysterious function func(arr, l, r) that comp… |
+| 1522 | [Diameter of N-Ary Tree](1522.md) | 🟡 Medium | 1m 12s | This problem asks us to compute the diameter of an N-ary tree. An N… |
+| 1523 | [Count Odd Numbers in an Interval Range](1523.md) | 🟢 Easy | 1m 37s | The problem gives two non-negative integers, low and high, represen… |
+| 1524 | [Number of Sub-arrays With Odd Sum](1524.md) | 🟡 Medium | 1m 6s | The problem gives an integer array arr and asks us to count how man… |
+| 1527 | [Patients With a Condition](1527.md) | 🟢 Easy | 1m 14s | The problem gives us a database table named Patients with three col… |
+| 1528 | [Shuffle String](1528.md) | 🟢 Easy | 1m 10s | In this problem, we are given two inputs: - A string s - An integer… |
+| 1529 | [Minimum Suffix Flips](1529.md) | 🟡 Medium | 1m 17s | The problem gives us a binary string target, and we start with anot… |
