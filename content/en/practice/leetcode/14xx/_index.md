@@ -35,11 +35,11 @@ draft: false
 | 1422 | [Maximum Score After Splitting a String](1422.md) | 🟢 Easy | 1m 2s | The problem asks us to split a binary string s, consisting only of … |
 | 1423 | [Maximum Points You Can Obtain from Cards](1423.md) | 🟡 Medium | 59s | The problem asks us to maximize the total points we can collect fro… |
 | 1424 | [Diagonal Traverse II](1424.md) | 🟡 Medium | 1m 10s | The problem asks us to traverse a jagged 2D integer array nums diag… |
-| 1425 | [Constrained Subsequence Sum](1425.md) | 🔴 Hard | 1m 35s | The problem asks us to find the maximum possible sum of a non-empty… |
+| 1425 | [Constrained Subsequence Sum](1425.md) | 🔴 Hard | 2m 20s | That is a long, structured reference document. To make sure I targe… |
 | 1426 | [Counting Elements](1426.md) | 🟢 Easy | 2m 21s | The problem asks us to count the number of elements in an array arr… |
 | 1427 | [Perform String Shifts](1427.md) | 🟢 Easy | 1m 13s | This problem asks us to simulate a sequence of string shift operati… |
-| 1428 | [Leftmost Column with at Least a One](1428.md) | 🟡 Medium | 1m 34s | This problem gives us access to a binary matrix where every row is … |
-| 1429 | [First Unique Number](1429.md) | 🟡 Medium | 7m 6s | This problem asks us to design a data structure that continuously t… |
+| 1428 | [Leftmost Column with at Least a One](1428.md) | 🟡 Medium | 1m 23s | This problem gives us access to a binary matrix where every row is … |
+| 1429 | [First Unique Number](1429.md) | 🟡 Medium | 1m 12s | The problem requires designing a data structure that can efficientl… |
 | 1430 | [Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree](1430.md) | 🟡 Medium | 56s | The problem asks us to determine whether a given array of integers … |
 | 1431 | [Kids With the Greatest Number of Candies](1431.md) | 🟢 Easy | 1m 1s | This problem asks us to determine which children could potentially … |
 | 1432 | [Max Difference You Can Get From Changing an Integer](1432.md) | 🟡 Medium | 1m 15s | The problem gives us an integer num, and we are allowed to perform … |
@@ -55,3 +55,6 @@ draft: false
 | 1443 | [Minimum Time to Collect All Apples in a Tree](1443.md) | 🟡 Medium | 1m 32s | This problem gives us an undirected tree with n nodes numbered from… |
 | 1444 | [Number of Ways of Cutting a Pizza](1444.md) | 🔴 Hard | 1m 37s | This problem asks us to count how many valid ways we can divide a r… |
 | 1445 | [Apples & Oranges](1445.md) | 🟡 Medium | 1m 32s | This problem provides a database table named Sales that stores the … |
+| 1446 | [Consecutive Characters](1446.md) | 🟢 Easy | 1m 19s | The problem asks us to compute the "power" of a string. The power i… |
+| 1447 | [Simplified Fractions](1447.md) | 🟡 Medium | 1m 30s | The problem asks us to generate every fraction strictly between 0 a… |
+| 1449 | [Form Largest Integer With Digits That Add up to Target](1449.md) | 🔴 Hard | 1m 1s | The problem asks us to construct the largest possible integer using… |
