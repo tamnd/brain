@@ -57,3 +57,5 @@ draft: false
 | 1545 | [Find Kth Bit in Nth Binary String](1545.md) | 🟡 Medium | 1m 19s | The problem defines a recursively generated binary string sequence:… |
 | 1546 | [Maximum Number of Non-Overlapping Subarrays With Sum Equals Target](1546.md) | 🟡 Medium | 1m 32s | The problem gives us an integer array nums and an integer target. W… |
 | 1547 | [Minimum Cost to Cut a Stick](1547.md) | 🔴 Hard | 53s | This problem asks us to determine the minimum cost of cutting a sti… |
+| 1549 | [The Most Recent Orders for Each Product](1549.md) | 🟡 Medium | 1m 28s | This problem asks us to retrieve the most recent order or orders fo… |
+| 1550 | [Three Consecutive Odds](1550.md) | 🟢 Easy | 1m 8s | The problem gives us an integer array arr and asks whether the arra… |
