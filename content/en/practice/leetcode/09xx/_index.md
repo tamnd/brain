@@ -102,11 +102,11 @@ draft: false
 | 989 | [Add to Array-Form of Integer](989.md) | 🟢 Easy | 40s | The problem is asking us to perform addition between a number repre… |
 | 990 | [Satisfiability of Equality Equations](990.md) | 🟡 Medium | 46s | The problem is asking us to determine if a set of equations between… |
 | 991 | [Broken Calculator](991.md) | 🟡 Medium | 54s | This problem gives us a calculator that starts with an integer star… |
-| 992 | [Subarrays with K Different Integers](992.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many contiguous subarrays contain … |
-| 993 | [Cousins in Binary Tree](993.md) | 🟢 Easy | 46s | The problem asks us to determine if two nodes in a binary tree are … |
-| 994 | [Rotting Oranges](994.md) | 🟡 Medium | 1m 15s | This problem models the spread of rot through a grid of oranges ove… |
-| 995 | [Minimum Number of K Consecutive Bit Flips](995.md) | 🔴 Hard | 1m 4s | This problem asks us to transform a binary array so that every elem… |
-| 996 | [Number of Squareful Arrays](996.md) | 🔴 Hard | 1m 11s | The problem asks us to count how many distinct permutations of an a… |
+| 992 | [Subarrays with K Different Integers](992.md) | 🔴 Hard | 1m 19s | The problem asks us to count how many contiguous subarrays contain … |
+| 993 | [Cousins in Binary Tree](993.md) | 🟢 Easy | 1m 22s | The problem asks us to determine whether two nodes in a binary tree… |
+| 994 | [Rotting Oranges](994.md) | 🟡 Medium | 1m 30s | You are given a 2D grid where each cell represents one of three pos… |
+| 995 | [Minimum Number of K Consecutive Bit Flips](995.md) | 🔴 Hard | 39s | The problem gives us a binary array nums consisting of 0s and 1s an… |
+| 996 | [Number of Squareful Arrays](996.md) | 🔴 Hard | 36s | The problem asks us to count all permutations of a given integer ar… |
 | 997 | [Find the Town Judge](997.md) | 🟢 Easy | 1m 6s | This problem asks us to determine whether a special person called t… |
 | 998 | [Maximum Binary Tree II](998.md) | 🟡 Medium | 1m 19s | The problem gives us the root of an existing maximum binary tree an… |
 | 999 | [Available Captures for Rook](999.md) | 🟢 Easy | 1m 13s | This problem gives us an 8 x 8 chessboard represented as a matrix o… |

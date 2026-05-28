@@ -19,3 +19,8 @@ draft: false
 | 1006 | [Clumsy Factorial](1006.md) | 🟡 Medium | 44s | The problem asks us to compute a "clumsy factorial" of a positive i… |
 | 1008 | [Construct Binary Search Tree from Preorder Traversal](1008.md) | 🟡 Medium | 1m 6s | The problem gives us the preorder traversal of a Binary Search Tree… |
 | 1009 | [Complement of Base 10 Integer](1009.md) | 🟢 Easy | 1m 23s | The problem asks us to compute the complement of a non-negative int… |
+| 1011 | [Capacity To Ship Packages Within D Days](1011.md) | 🟡 Medium | 1m 25s | This problem asks us to determine the minimum ship capacity require… |
+| 1012 | [Numbers With Repeated Digits](1012.md) | 🔴 Hard | 1m 19s | The problem asks us to count how many integers in the range [1, n] … |
+| 1013 | [Partition Array Into Three Parts With Equal Sum](1013.md) | 🟢 Easy | 50s | The problem asks us to determine if a given array of integers can b… |
+| 1014 | [Best Sightseeing Pair](1014.md) | 🟡 Medium | 55s | The problem presents an array values where each element represents … |
+| 1015 | [Smallest Integer Divisible by K](1015.md) | 🟡 Medium | 44s | The problem is asking us to find the smallest positive integer comp… |
