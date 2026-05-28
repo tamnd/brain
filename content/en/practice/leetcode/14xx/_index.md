@@ -56,8 +56,8 @@ draft: false
 | 1443 | [Minimum Time to Collect All Apples in a Tree](1443.md) | 🟡 Medium | 1m 6s | The problem is asking for the minimum time required to collect all … |
 | 1444 | [Number of Ways of Cutting a Pizza](1444.md) | 🔴 Hard | 1m 25s | Edit This problem asks us to count the number of valid ways to divi… |
 | 1445 | [Apples & Oranges](1445.md) | 🟡 Medium | 1m 32s | This problem provides a database table named Sales that stores the … |
-| 1446 | [Consecutive Characters](1446.md) | 🟢 Easy | 1m 19s | The problem asks us to compute the "power" of a string. The power i… |
-| 1447 | [Simplified Fractions](1447.md) | 🟡 Medium | 1m 30s | The problem asks us to generate every fraction strictly between 0 a… |
+| 1446 | [Consecutive Characters](1446.md) | 🟢 Easy | 1m 5s | The problem asks us to compute the power of a string. The power is … |
+| 1447 | [Simplified Fractions](1447.md) | 🟡 Medium | 1m 4s | The problem asks us to generate all simplified fractions between 0 … |
 | 1448 | [Count Good Nodes in Binary Tree](1448.md) | 🟡 Medium | 1m 22s | The problem gives us the root of a binary tree and asks us to count… |
 | 1449 | [Form Largest Integer With Digits That Add up to Target](1449.md) | 🔴 Hard | 1m 1s | The problem asks us to construct the largest possible integer using… |
 | 1450 | [Number of Students Doing Homework at a Given Time](1450.md) | 🟢 Easy | 1m 15s | The problem gives us two integer arrays, startTime and endTime, alo… |
