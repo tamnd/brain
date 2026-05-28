@@ -20,6 +20,15 @@ draft: false
 | 1607 | [Sellers With No Sales](1607.md) | 🟢 Easy | 1m 16s | This problem asks us to identify all sellers who did not make any s… |
 | 1608 | [Special Array With X Elements Greater Than or Equal X](1608.md) | 🟢 Easy | 1m 19s | The problem gives us an array nums containing non-negative integers… |
 | 1609 | [Even Odd Tree](1609.md) | 🟡 Medium | 1m 23s | Here’s a fully detailed, reference-style solution guide for LeetCod… |
+| 1610 | [Maximum Number of Visible Points](1610.md) | 🔴 Hard | 2m 19s | In this problem, we are standing at a fixed position on a 2D plane,… |
 | 1611 | [Minimum One Bit Operations to Make Integers Zero](1611.md) | 🔴 Hard | 52s | This problem asks us to transform a given integer n into 0 using a … |
 | 1612 | [Check If Two Expression Trees are Equivalent](1612.md) | 🟡 Medium | 55s | The problem asks us to determine whether two binary expression tree… |
 | 1613 | [Find the Missing IDs](1613.md) | 🟡 Medium | 1m 26s | The problem gives us a database table named Customers, where each r… |
+| 1614 | [Maximum Nesting Depth of the Parentheses](1614.md) | 🟢 Easy | 2m 19s | This problem asks us to compute the maximum nesting depth of parent… |
+| 1615 | [Maximal Network Rank](1615.md) | 🟡 Medium | 1m 28s | The problem describes a network of n cities connected by bidirectio… |
+| 1616 | [Split Two Strings to Make Palindrome](1616.md) | 🟡 Medium | 1m 27s | This problem gives us two strings, a and b, both having the same le… |
+| 1617 | [Count Subtrees With Max Distance Between Cities](1617.md) | 🔴 Hard | 1m 38s | The input describes an undirected tree with n cities. Since the gra… |
+| 1618 | [Maximum Font to Fit a Sentence in a Screen](1618.md) | 🟡 Medium | 1m 24s | In this problem, we are given a string text that must be displayed … |
+| 1619 | [Mean of Array After Removing Some Elements](1619.md) | 🟢 Easy | 2m 12s | The problem asks us to compute the average value of an array after … |
+| 1620 | [Coordinate With Maximum Network Quality](1620.md) | 🟡 Medium | 51s | The problem asks us to identify a coordinate on a 2D integer grid w… |
+| 1621 | [Number of Sets of K Non-Overlapping Line Segments](1621.md) | 🟡 Medium | 58s | This problem asks us to compute the number of ways to select exactl… |
