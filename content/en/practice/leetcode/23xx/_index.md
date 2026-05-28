@@ -30,10 +30,10 @@ draft: false
 | 2317 | [Maximum XOR After Operations ](2317.md) | 🟡 Medium | 1m 5s | The problem gives us an integer array nums, and we may perform a sp… |
 | 2318 | [Number of Distinct Roll Sequences](2318.md) | 🔴 Hard | 39s | The problem is asking us to compute the total number of distinct se… |
 | 2319 | [Check if Matrix Is X-Matrix](2319.md) | 🟢 Easy | 1m 19s | The problem gives us a square matrix grid of size n x n. We must de… |
-| 2320 | [Count Number of Ways to Place Houses](2320.md) | 🟡 Medium | 1m 9s | The problem describes a street with two independent sides. Each sid… |
-| 2321 | [Maximum Score Of Spliced Array](2321.md) | 🔴 Hard | 1m 26s | We are given two arrays, nums1 and nums2, both with the same length… |
-| 2322 | [Minimum Score After Removals on a Tree](2322.md) | 🔴 Hard | 1m 27s | The problem gives us an undirected tree with n nodes. Each node con… |
-| 2323 | [Find Minimum Time to Finish All Jobs II](2323.md) | 🟡 Medium | 47s | The problem asks us to assign n jobs to n workers such that each wo… |
+| 2320 | [Count Number of Ways to Place Houses](2320.md) | 🟡 Medium | 46s | The problem presents a street with n plots on each side, for a tota… |
+| 2321 | [Maximum Score Of Spliced Array](2321.md) | 🔴 Hard | 48s | The problem presents two integer arrays, nums1 and nums2, of equal … |
+| 2322 | [Minimum Score After Removals on a Tree](2322.md) | 🔴 Hard | 43s | That is a long, multi-section technical guide with code, worked exa… |
+| 2323 | [Find Minimum Time to Finish All Jobs II](2323.md) | 🟡 Medium | 1m 1s | This problem asks us to assign jobs to workers in a way that minimi… |
 | 2324 | [Product Sales Analysis IV](2324.md) | 🟡 Medium | 1m 29s | This problem gives us two database tables, Sales and Product. The S… |
 | 2325 | [Decode the Message](2325.md) | 🟢 Easy | 49s | This problem is asking us to decode a message using a substitution … |
 | 2326 | [Spiral Matrix IV](2326.md) | 🟡 Medium | 1m 19s | This problem combines two common data structures and traversal patt… |

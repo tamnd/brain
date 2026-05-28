@@ -73,3 +73,9 @@ draft: false
 | 2571 | [Minimum Operations to Reduce an Integer to 0](2571.md) | 🟡 Medium | 1m 21s | The problem gives us two arrays, nums1 and nums2, along with a sequ… |
 | 2572 | [Count the Number of Square-Free Subsets](2572.md) | 🟡 Medium | 1m 19s | The problem asks us to count how many non-empty subsets of the arra… |
 | 2573 | [Find the String with LCP](2573.md) | 🔴 Hard | 46s | The problem asks us to reconstruct a string given its lcp matrix. T… |
+| 2576 | [Find the Maximum Number of Marked Indices](2576.md) | 🟡 Medium | 40s | The problem asks us to maximize the number of indices we can "mark"… |
+| 2577 | [Minimum Time to Visit a Cell In a Grid](2577.md) | 🔴 Hard | 41s | The problem asks us to find the minimum time required to travel fro… |
+| 2579 | [Count Total Number of Colored Cells](2579.md) | 🟡 Medium | 39s | This problem is asking us to determine how many cells will be color… |
+| 2580 | [Count Ways to Group Overlapping Ranges](2580.md) | 🟡 Medium | 49s | The problem asks us to determine the number of ways to split a coll… |
+| 2583 | [Kth Largest Sum in a Binary Tree](2583.md) | 🟡 Medium | 2m 7s | Perfect! I just need a quick clarification before I craft the full … |
+| 2584 | [Split the Array to Make Coprime Products](2584.md) | 🔴 Hard | 43s | The problem asks us to split an array nums at some index i such tha… |
