@@ -74,14 +74,21 @@ draft: false
 | 1061 | [Lexicographically Smallest Equivalent String](1061.md) | 🟡 Medium | 1m 2s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 1062 | [Longest Repeating Substring](1062.md) | 🟡 Medium | 1m 24s | The problem asks us to find the length of the longest substring tha… |
 | 1063 | [Number of Valid Subarrays](1063.md) | 🔴 Hard | 57s | The problem is asking us to count the number of valid subarrays in … |
-| 1064 | [Fixed Point](1064.md) | 🟢 Easy | 46s | The problem asks us to find a "fixed point" in a sorted array of di… |
-| 1065 | [Index Pairs of a String](1065.md) | 🟢 Easy | 1m 24s | The problem gives us a string text and a list of unique words calle… |
-| 1066 | [Campus Bikes II](1066.md) | 🟡 Medium | 1m 27s | This problem asks us to assign bikes to workers in a way that minim… |
-| 1067 | [Digit Count in Range](1067.md) | 🔴 Hard | 1m 17s | The problem asks us to count how many times a specific digit d appe… |
-| 1068 | [Product Sales Analysis I](1068.md) | 🟢 Easy | 52s | This problem provides two database tables, Sales and Product, and a… |
-| 1069 | [Product Sales Analysis II](1069.md) | 🟢 Easy | 1m 56s | The problem asks us to compute the total quantity sold for each pro… |
+| 1064 | [Fixed Point](1064.md) | 🟢 Easy | 55s | The problem is asking us to find a "fixed point" in a sorted array … |
+| 1065 | [Index Pairs of a String](1065.md) | 🟢 Easy | 1m 21s | The problem gives us a string called text and a list of dictionary … |
+| 1066 | [Campus Bikes II](1066.md) | 🟡 Medium | 2m 23s | That is a long-form technical guide with multiple required sections… |
+| 1067 | [Digit Count in Range](1067.md) | 🔴 Hard | 56s | This problem asks us to count how many times a given digit d appear… |
+| 1068 | [Product Sales Analysis I](1068.md) | 🟢 Easy | 1m 9s | This problem asks us to combine information from two database table… |
+| 1069 | [Product Sales Analysis II](1069.md) | 🟢 Easy | 2m 51s | This problem asks us to calculate the total quantity sold for each … |
+| 1070 | [Product Sales Analysis III](1070.md) | 🟡 Medium | 40s | The problem presents a Sales table, where each row represents a sal… |
 | 1071 | [Greatest Common Divisor of Strings](1071.md) | 🟢 Easy | 1m 26s | The problem asks us to find the greatest common divisor (GCD) of tw… |
-| 1072 | [Flip Columns For Maximum Number of Equal Rows](1072.md) | 🟡 Medium | 58s | This problem asks us to analyze a binary matrix and determine the m… |
+| 1072 | [Flip Columns For Maximum Number of Equal Rows](1072.md) | 🟡 Medium | 1m 6s | The problem gives us an m x n binary matrix, where every element is… |
 | 1073 | [Adding Two Negabinary Numbers](1073.md) | 🟡 Medium | 46s | The problem requires adding two numbers that are represented in neg… |
 | 1075 | [Project Employees I](1075.md) | 🟢 Easy | 1m 25s | This problem asks us to compute the average number of experience ye… |
 | 1076 | [Project Employees II](1076.md) | 🟢 Easy | 1m 19s | This problem asks us to identify the project or projects that have … |
+| 1077 | [Project Employees III](1077.md) | 🟡 Medium | 1m 26s | The problem gives us two database tables, Project and Employee. The… |
+| 1078 | [Occurrences After Bigram](1078.md) | 🟢 Easy | 2m 7s | The problem gives us a string called text and two target words, fir… |
+| 1079 | [Letter Tile Possibilities](1079.md) | 🟡 Medium | 1m 3s | The problem asks us to count all possible non-empty sequences that … |
+| 1080 | [Insufficient Nodes in Root to Leaf Paths](1080.md) | 🟡 Medium | 53s | This problem asks us to prune a binary tree based on the sum of nod… |
+| 1081 | [Smallest Subsequence of Distinct Characters](1081.md) | 🟡 Medium | 1m 15s | The problem asks us to construct the lexicographically smallest sub… |
+| 1082 | [Sales Analysis I](1082.md) | 🟢 Easy | 42s | The problem is asking us to determine the seller or sellers who ach… |
