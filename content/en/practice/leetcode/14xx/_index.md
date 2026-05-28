@@ -95,11 +95,15 @@ draft: false
 | 1482 | [Minimum Number of Days to Make m Bouquets](1482.md) | 🟡 Medium | 48s | This problem asks us to determine the minimum number of days requir… |
 | 1483 | [Kth Ancestor of a Tree Node](1483.md) | 🔴 Hard | 52s | The problem presents a rooted tree with n nodes numbered from 0 to … |
 | 1484 | [Group Sold Products By The Date](1484.md) | 🟢 Easy | 1m 29s | The problem gives us a database table named Activities with two col… |
-| 1485 | [Clone Binary Tree With Random Pointer](1485.md) | 🟡 Medium | 1m 30s | The problem asks us to create a deep copy of a binary tree where ea… |
-| 1486 | [XOR Operation in an Array](1486.md) | 🟢 Easy | 1m 6s | In this problem, we are given two integers, n and start. We must co… |
+| 1485 | [Clone Binary Tree With Random Pointer](1485.md) | 🟡 Medium | 2m 24s | That’s a detailed reference guide with multiple required sections a… |
+| 1486 | [XOR Operation in an Array](1486.md) | 🟢 Easy | 1m | The problem gives us two integers, n and start. We must construct a… |
 | 1487 | [Making File Names Unique](1487.md) | 🟡 Medium | 1m 33s | The problem asks us to simulate how a file system assigns folder na… |
-| 1488 | [Avoid Flood in The City](1488.md) | 🟡 Medium | 1m 6s | This problem involves managing a series of lakes over several days,… |
+| 1488 | [Avoid Flood in The City](1488.md) | 🟡 Medium | 55s | The problem asks us to simulate rainfall over a series of lakes and… |
 | 1489 | [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](1489.md) | 🔴 Hard | 1m 50s | The problem gives us a connected, weighted, undirected graph with n… |
 | 1490 | [Clone N-ary Tree](1490.md) | 🟡 Medium | 1m 18s | LeetCode 1490, LeetCode Clone N-ary Tree, asks us to create a compl… |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](1491.md) | 🟢 Easy | 1m 16s | The problem gives an array called salary, where each element repres… |
 | 1493 | [Longest Subarray of 1's After Deleting One Element](1493.md) | 🟡 Medium | 54s | The problem asks us to find the length of the longest contiguous su… |
+| 1495 | [Friendly Movies Streamed Last Month](1495.md) | 🟢 Easy | 1m 30s | This problem asks us to find the titles of movies that satisfy thre… |
+| 1496 | [Path Crossing](1496.md) | 🟢 Easy | 1m 13s | In this problem, we are given a string called path that represents … |
+| 1497 | [Check If Array Pairs Are Divisible by k](1497.md) | 🟡 Medium | 1m 37s | The problem gives us an integer array arr whose length is guarantee… |
+| 1498 | [Number of Subsequences That Satisfy the Given Sum Condition](1498.md) | 🟡 Medium | 1m 24s | This problem asks us to count how many non-empty subsequences of th… |

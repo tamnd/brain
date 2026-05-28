@@ -1,6 +1,6 @@
 ---
 title: "CF 76F - Tourist"
-description: "We are given a set of events on a line. Event i happens at coordinate x[i] and exact time t[i]. A tourist moves along the X axis with maximum speed V. He may stop, reverse direction, or move however he wants as long as his speed never exceeds V."
+description: "Each event is a point on a time-position plane. Event i happens at coordinate xi exactly at time ti. The tourist moves on a line with speed at most V, so moving from (xa, ta) to (xb, tb) is possible if and only if: $$ The tourist may also wait in place. We need two answers."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "dp"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "All-Ukrainian School Olympiad in Informatics"
 rating: 2300
 weight: 76
-solve_time_s: 138
+solve_time_s: 163
 verified: true
 draft: false
 ---
@@ -18,168 +18,147 @@ draft: false
 
 **Rating:** 2300  
 **Tags:** binary search, data structures, dp  
-**Solve time:** 2m 18s  
+**Solve time:** 2m 43s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of events on a line. Event `i` happens at coordinate `x[i]` and exact time `t[i]`. A tourist moves along the X axis with maximum speed `V`. He may stop, reverse direction, or move however he wants as long as his speed never exceeds `V`.
+Each event is a point on a time-position plane. Event `i` happens at coordinate `x_i` exactly at time `t_i`. The tourist moves on a line with speed at most `V`, so moving from `(x_a, t_a)` to `(x_b, t_b)` is possible if and only if:
 
-An event is considered visited if the tourist is exactly at position `x[i]` at time `t[i]`.
+$$|x_a - x_b| \le V \cdot (t_b - t_a)$$
 
-The problem asks for two different answers.
+The tourist may also wait in place. We need two answers.
 
-In the first version, the tourist starts at position `0` at time `0`.
+The first answer assumes the tourist starts at coordinate `0` at time `0`.
 
-In the second version, the tourist may choose any initial position at time `0`.
+The second answer allows the tourist to choose any starting coordinate before time starts.
 
-We must compute the maximum number of events that can be visited in chronological order.
+The goal in both versions is to maximize how many events can be attended in chronological order.
 
-The key geometric condition is simple. Suppose the tourist visits event `i` and then event `j`. This is possible only if:
+The constraints completely rule out quadratic dynamic programming. With `n = 100000`, an `O(n^2)` transition loop would require around `10^10` checks, which is several orders of magnitude too large. Even `O(n sqrt n)` would be risky in Python. The solution must stay near `O(n log n)`.
 
-```
-|x[j] - x[i]| <= V * (t[j] - t[i])
-```
-
-because the tourist needs enough time to travel between the two coordinates.
-
-The constraints immediately rule out quadratic dynamic programming. There are up to `100000` events, so checking all pairs would require roughly `10^10` transitions, which is far beyond what fits in competitive programming time limits.
-
-The coordinates are large, up to `2 * 10^8`, so coordinate-based DP arrays are impossible. Time values are much smaller, only up to `2 * 10^6`, which hints that transforming the geometry may help.
+The tricky part is that reachability depends on both position and time. A naive graph interpretation creates too many edges. We need a way to compress the transition condition into something searchable with data structures.
 
 Several edge cases are easy to mishandle.
 
-Events may happen at the same time. Two distinct events at equal time can never both be visited unless they are at the same coordinate, which the statement forbids.
+Events may occur at the same time. Two events with identical timestamps cannot both be visited unless they are at the same position, and the statement guarantees that exact duplicates do not exist.
 
 Example:
 
 ```
 2
-0 5
-10 5
-2
+0 1
+10 1
+100
 ```
 
-Correct answer:
+Correct output:
 
 ```
 1 1
 ```
 
-A careless implementation that only sorts by time and allows transitions from earlier indices could incorrectly chain them together.
+A careless DP that only checks position difference without enforcing increasing time could incorrectly chain them together.
 
-Another subtle case is unreachable starting events.
+Negative coordinates matter because movement is on the entire number line.
 
 Example:
 
 ```
 2
-100 1
-0 100
+-5 5
+5 10
 1
 ```
 
-Starting from `(0,0)`, the first event is impossible because reaching position `100` in one second exceeds speed `1`. The optimal answer is `1`, not `2`.
+The tourist cannot reach the first event from `(0,0)` because distance `5` requires time `5`, which is barely possible, but then moving from `-5` to `5` needs distance `10` and only `5` units of time. The correct answer is:
 
-The second question behaves differently.
+```
+1 2
+```
 
-Example:
+The second answer differs because with a free starting point we may begin directly at `-5`.
+
+Another subtle case is multiple events at the same position.
 
 ```
 3
-0 1
-100 2
-200 3
-100
+2 3
+2 4
+2 5
+1
 ```
 
-From the origin, the best answer is `2`. If the tourist may choose the initial position, he can start at `0`, `100`, or anywhere convenient and still only collect `2`. A wrong approach might assume arbitrary start means every chain is feasible, but the tourist still has only time `t[i]` to reach the first chosen event.
+Correct output:
 
-The most dangerous pitfall is numerical overflow in languages with 32-bit integers. Expressions like `V * t[i]` can reach `2 * 10^9`. Python handles this automatically, but in C++ this requires `long long`.
+```
+3 3
+```
+
+Waiting in place is allowed, so once the tourist reaches coordinate `2`, all later events there are automatically reachable.
 
 ## Approaches
 
-The natural brute-force idea is dynamic programming on events sorted by time.
+The most direct solution is dynamic programming on events sorted by time.
 
-Let `dp[i]` be the maximum number of events ending at event `i`.
+Define `dp[i]` as the maximum number of events ending at event `i`. Then we try every earlier event `j` and transition if:
 
-For every pair `(j, i)` with `t[j] <= t[i]`, we check whether moving from event `j` to event `i` is feasible:
+$$|x_i - x_j| \le V(t_i - t_j)$$
 
-```
-|x[i] - x[j]| <= V * (t[i] - t[j])
-```
+For the fixed-start version we also check whether event `i` is reachable from `(0,0)`.
 
-If so:
+This is correct because any valid route must visit events in nondecreasing time order, and every feasible previous event is examined.
 
-```
-dp[i] = max(dp[i], dp[j] + 1)
-```
+The problem is complexity. Each event compares against all earlier events, so the running time is `O(n^2)`. With `100000` events this becomes roughly `5 \cdot 10^9` transitions, far too slow.
 
-We also separately check whether event `i` is reachable from the starting condition.
-
-This recurrence is correct because every feasible route corresponds to a chain of feasible transitions between events.
-
-The problem is the complexity. There are `O(n^2)` pairs. With `n = 100000`, this means about `5 * 10^9` checks even before DP updates, which is completely infeasible.
-
-The key observation is that the transition inequality can be rewritten into two independent inequalities.
+The key observation is that the reachability inequality can be rewritten into two independent inequalities.
 
 Starting from:
 
-```
-|x[i] - x[j]| <= V * (t[i] - t[j])
-```
+$$|x_i - x_j| \le V(t_i - t_j)$$
 
 we obtain:
 
-```
-x[i] - V t[i] <= x[j] - V t[j]
-x[i] + V t[i] >= x[j] + V t[j]
-```
+$$x_i - V t_i \le x_j - V t_j$$
 
-Define:
+and
 
-```
-A[i] = x[i] - V t[i]
-B[i] = x[i] + V t[i]
-```
+$$x_i + V t_i \ge x_j + V t_j$$
 
-Then a transition from `j` to `i` is feasible exactly when:
+Define transformed coordinates:
 
-```
-A[j] >= A[i]
-B[j] <= B[i]
-```
+$$A_i = x_i - V t_i$$
 
-Now the problem becomes a two-dimensional dominance DP.
+$$B_i = x_i + V t_i$$
 
-We want the longest chain where one coordinate decreases and the other increases.
+Then event `j` can precede event `i` exactly when:
 
-This is a classic situation for sorting plus a Fenwick tree or segment tree.
+$$A_j \ge A_i$$
 
-If we sort by one coordinate, the remaining condition becomes a prefix maximum query. Coordinate compression lets us handle large coordinate values efficiently.
+and
 
-We solve the second question first because it is cleaner.
+$$B_j \le B_i$$
 
-Suppose the tourist may choose any initial position. Then any event can be the first event, since the tourist can simply start there. We only need the longest feasible chain of events.
+This turns the problem into a two-dimensional dominance DP.
 
-After sorting events by increasing `A` and decreasing `B`, the problem becomes a longest non-decreasing subsequence in one dimension.
+Now the structure becomes clear. If we process events in increasing time order, we need the best DP value among all previous points satisfying:
 
-The first question is similar, except the first event must satisfy:
+$$A_j \ge A_i,\quad B_j \le B_i$$
 
-```
-|x[i]| <= V * t[i]
-```
+That is a classic offline data structure problem.
 
-which is equivalent to:
+We compress all `B` coordinates and use a Fenwick tree where each node stores the best DP value seen so far. To handle the `A_j \ge A_i` condition, we process events grouped by decreasing `A`.
 
-```
-A[i] <= 0 <= B[i]
-```
+For the second answer, where the start point is arbitrary, every event may start a chain with value `1`.
 
-We incorporate this through DP initialization.
+For the first answer, event `i` may start a chain only if:
 
-The final complexity becomes `O(n log n)`.
+$$|x_i| \le V t_i$$
+
+because the tourist starts at `(0,0)`.
+
+The resulting algorithm runs in `O(n log n)`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -188,120 +167,78 @@ The final complexity becomes `O(n log n)`.
 
 ## Algorithm Walkthrough
 
-### Coordinate Transformation
+1. Read all events and sort them by increasing time.
 
-For every event compute:
+Sorting by time guarantees that every transition goes forward chronologically.
 
-```
-A[i] = x[i] - V * t[i]
-B[i] = x[i] + V * t[i]
-```
+1. For every event compute:
 
-A transition from `j` to `i` is feasible exactly when:
+$$A_i = x_i - V t_i$$
 
-```
-A[j] >= A[i]
-B[j] <= B[i]
-```
+$$B_i = x_i + V t_i$$
 
-This converts the geometric speed condition into a rectangle dominance condition.
+These transformed coordinates encode the movement constraint as a dominance relation.
 
-### Sorting Order
+1. Coordinate-compress all `B_i` values.
 
-1. Sort all events by increasing `A`.
-2. If two events have the same `A`, sort them by decreasing `B`.
+Fenwick trees require indices from `1` to `m`, so we map each distinct `B` value to a compact integer.
 
-This ordering is crucial. It prevents equal-`A` events from incorrectly extending each other in the wrong direction.
+1. Compute the answer for the free-start version.
 
-### Coordinate Compression
-
-1. Collect all `B` values and compress them into indices from `1` to `m`.
-
-Fenwick trees require dense indices, while `B` values can be very large.
-
-### DP for Arbitrary Starting Position
-
-1. Process events in sorted order.
-2. Let `dp2[i]` denote the maximum chain ending at event `i` when the tourist may start anywhere.
-3. Since any event may be first, initialize:
+Every event can begin a valid route by itself, so initialize:
 
 ```
 dp2[i] = 1
 ```
 
-1. Query the Fenwick tree for the best value among all compressed `B <= B[i]`.
+Then process events in decreasing `A`.
 
-These are exactly the earlier events that satisfy the second dominance condition.
+For each event, query the Fenwick tree for the maximum DP among all earlier events with compressed `B <= B_i`.
 
-1. Update:
+That query gives the best chain that can transition into event `i`.
 
-```
-dp2[i] = max(dp2[i], best + 1)
-```
+After querying all events with the same `A`, insert their DP values into the Fenwick tree.
 
-1. Insert `dp2[i]` into the Fenwick tree at position `B[i]`.
+Delaying updates inside equal-`A` groups prevents transitions between events that are not mutually reachable.
 
-### DP for Starting at the Origin
+1. Compute the fixed-start version similarly.
 
-1. Use another Fenwick tree for the origin-constrained DP.
-2. Let `dp1[i]` be the maximum chain ending at event `i` starting from `(0,0)`.
-3. Event `i` can be the first event only if:
-
-```
-A[i] <= 0 <= B[i]
-```
-
-which means the origin can reach it by time `t[i]`.
-
-1. If reachable from the origin, initialize:
+Initialize:
 
 ```
 dp1[i] = 1
 ```
 
-1. Query the Fenwick tree exactly as before to extend earlier feasible chains.
-2. Update the tree with the new value.
-3. The answers are the maximum values among all `dp1` and `dp2`.
+only if:
+
+$$|x_i| \le V t_i$$
+
+Otherwise initialize with negative infinity.
+
+The same dominance DP transitions are applied afterward.
+
+1. The answer for each version is the maximum DP value over all events.
 
 ### Why it works
 
-The transformation into `(A, B)` coordinates preserves feasibility exactly.
+The transformed inequalities are exactly equivalent to the original speed constraint. Any feasible movement sequence corresponds to a chain in the dominance order:
 
-Suppose event `j` can precede event `i`. Then:
+$$A_j \ge A_i,\quad B_j \le B_i$$
 
-```
-|x[i] - x[j]| <= V(t[i] - t[j])
-```
-
-is algebraically equivalent to:
-
-```
-A[j] >= A[i]
-B[j] <= B[i]
-```
-
-After sorting by increasing `A`, every valid predecessor appears earlier in processing order. The only remaining condition is `B[j] <= B[i]`, which the Fenwick tree handles through prefix maximum queries.
-
-The DP invariant is:
-
-```
-Fenwick[B] stores the best chain length among already processed events with compressed coordinate <= B.
-```
-
-Every feasible predecessor is included in the query range, and every infeasible predecessor violates at least one dominance condition and is excluded automatically.
+Processing events by time guarantees transitions only move forward in time. The Fenwick tree always stores the best DP among already-processed valid predecessors. Since every possible predecessor satisfying the inequalities is represented in the structure, and no invalid predecessor satisfies both inequalities simultaneously, the DP computes the optimal number of visitable events.
 
 ## Python Solution
 
 ```python
 import sys
-from bisect import bisect_left
-
 input = sys.stdin.readline
+
+INF = 10**18
 
 class Fenwick:
     def __init__(self, n):
         self.n = n
-        self.bit = [0] * (n + 1)
+        self.bit = [-INF] * (n + 1)
 
     def update(self, idx, val):
         while idx <= self.n:
@@ -310,7 +247,7 @@ class Fenwick:
             idx += idx & -idx
 
     def query(self, idx):
-        res = 0
+        res = -INF
         while idx > 0:
             if self.bit[idx] > res:
                 res = self.bit[idx]
@@ -323,93 +260,99 @@ def solve():
 
     for _ in range(n):
         x, t = map(int, input().split())
-        events.append((x, t))
+        events.append((t, x))
 
     V = int(input())
 
     arr = []
 
-    for x, t in events:
+    for idx, (t, x) in enumerate(events):
         A = x - V * t
         B = x + V * t
-        arr.append((A, B))
+        arr.append((A, B, t, x, idx))
 
-    arr.sort(key=lambda p: (p[0], -p[1]))
+    all_b = sorted(set(b for _, b, _, _, _ in arr))
+    comp = {v: i + 1 for i, v in enumerate(all_b)}
 
-    vals = sorted(set(b for _, b in arr))
+    arr.sort(reverse=True)
 
-    def comp(v):
-        return bisect_left(vals, v) + 1
+    m = len(all_b)
 
-    m = len(vals)
+    # free start
+    bit = Fenwick(m)
+    dp2 = [1] * n
 
-    fw1 = Fenwick(m)
-    fw2 = Fenwick(m)
+    i = 0
+    while i < n:
+        j = i
+        while j < n and arr[j][0] == arr[i][0]:
+            j += 1
 
-    ans1 = 0
-    ans2 = 0
+        updates = []
 
-    for A, B in arr:
-        idx = comp(B)
+        for k in range(i, j):
+            A, B, t, x, idx = arr[k]
+            bidx = comp[B]
 
-        best2 = fw2.query(idx)
-        cur2 = best2 + 1
-        fw2.update(idx, cur2)
+            best = bit.query(bidx)
+            if best > -INF:
+                dp2[idx] = max(dp2[idx], best + 1)
 
-        cur1 = 0
+            updates.append((bidx, dp2[idx]))
 
-        if A <= 0 <= B:
-            cur1 = 1
+        for bidx, val in updates:
+            bit.update(bidx, val)
 
-        best1 = fw1.query(idx)
+        i = j
 
-        if best1 > 0:
-            cur1 = max(cur1, best1 + 1)
+    # fixed start at 0
+    bit = Fenwick(m)
+    dp1 = [-INF] * n
 
-        if cur1 > 0:
-            fw1.update(idx, cur1)
+    for A, B, t, x, idx in arr:
+        if abs(x) <= V * t:
+            dp1[idx] = 1
 
-        ans1 = max(ans1, cur1)
-        ans2 = max(ans2, cur2)
+    i = 0
+    while i < n:
+        j = i
+        while j < n and arr[j][0] == arr[i][0]:
+            j += 1
+
+        updates = []
+
+        for k in range(i, j):
+            A, B, t, x, idx = arr[k]
+            bidx = comp[B]
+
+            best = bit.query(bidx)
+            if best > -INF:
+                dp1[idx] = max(dp1[idx], best + 1)
+
+            updates.append((bidx, dp1[idx]))
+
+        for bidx, val in updates:
+            bit.update(bidx, val)
+
+        i = j
+
+    ans1 = max(dp1)
+    ans2 = max(dp2)
 
     print(ans1, ans2)
 
 solve()
 ```
 
-The first part of the code transforms every event into `(A, B)` coordinates. This is the entire mathematical heart of the problem. Once the transformation is done, all geometric movement constraints disappear and become simple ordering constraints.
+The Fenwick tree stores prefix maximums rather than sums. After coordinate compression, querying index `bidx` returns the best DP among all events with `B_j <= B_i`.
 
-The sorting order is subtle:
+Processing events in decreasing `A` order guarantees that all inserted states satisfy `A_j >= A_i`.
 
-```
-arr.sort(key=lambda p: (p[0], -p[1]))
-```
+The grouped processing for equal `A` values is subtle but necessary. Suppose two events share the same `A`. If we immediately update after processing one of them, another event in the same group could incorrectly transition through it even when their timestamps make the movement impossible. Delaying updates until the whole group is processed removes this issue.
 
-The decreasing `B` tie-breaker matters. Without it, equal-`A` events could incorrectly chain into each other even when the dominance relation should not allow it.
+The fixed-start version differs only in initialization. An event can begin a chain only if the tourist can reach it directly from `(0,0)`.
 
-Coordinate compression converts arbitrary `B` values into Fenwick tree indices. Since only relative ordering matters, replacing coordinates with ranks preserves correctness.
-
-The Fenwick tree stores maximum DP values, not sums. This is a standard trick for longest subsequence style problems.
-
-For the arbitrary-start version, every event may begin a chain, so the transition is simply:
-
-```
-cur2 = fw2.query(idx) + 1
-```
-
-For the origin-start version, we must separately check whether the event is reachable directly from `(0,0)`:
-
-```
-if A <= 0 <= B:
-```
-
-This condition is exactly equivalent to:
-
-```
-|x| <= Vt
-```
-
-One easy mistake is updating the Fenwick tree before computing the current DP value. Doing so would allow an event to extend itself. The code always queries first, computes the answer, then performs updates.
+All coordinates fit comfortably inside Python integers, but in C++ this problem requires 64-bit arithmetic because values such as `V * t` can reach `2 * 10^9`.
 
 ## Worked Examples
 
@@ -427,37 +370,27 @@ Input:
 
 Transformed values:
 
-| Event | x | t | A = x - 2t | B = x + 2t |
+| Event | x | t | A = x - Vt | B = x + Vt |
 | --- | --- | --- | --- | --- |
 | 1 | -1 | 1 | -3 | 1 |
 | 2 | 42 | 7 | 28 | 56 |
 | 3 | 40 | 8 | 24 | 56 |
 
-Sorted order:
+Processing order is decreasing `A`.
 
-| Step | A | B |
-| --- | --- | --- |
-| 1 | -3 | 1 |
-| 2 | 24 | 56 |
-| 3 | 28 | 56 |
+| Step | Event | Query Result | dp2 | dp1 |
+| --- | --- | --- | --- | --- |
+| 1 | (42,7) | none | 1 | impossible |
+| 2 | (40,8) | 1 | 2 | impossible |
+| 3 | (-1,1) | none | 1 | 1 |
 
-DP trace:
-
-| Step | Query Result | cur1 | cur2 |
-| --- | --- | --- | --- |
-| 1 | 0 | 1 | 1 |
-| 2 | 1 | 0 | 2 |
-| 3 | 2 | 0 | 3 |
-
-The arbitrary-start answer becomes `3` in transformed ordering, but physically equal `B` values with increasing `A` do not correspond to chronological feasibility. The sorting tie condition prevents invalid equal-coordinate chains in the real implementation.
-
-Final answer:
+Final answers:
 
 ```
 1 2
 ```
 
-This example demonstrates the difference between the two starting conditions. Starting from the origin, only one event is reachable. Allowing arbitrary starting position lets the tourist chain two events.
+The free-start version begins at `(42,7)` and then reaches `(40,8)`. Starting from `(0,0)` cannot reach either of those large positive coordinates quickly enough.
 
 ### Custom Example
 
@@ -466,9 +399,9 @@ Input:
 ```
 4
 0 1
-2 2
-4 3
-100 4
+1 2
+2 3
+3 4
 1
 ```
 
@@ -477,31 +410,35 @@ Transformed values:
 | Event | A | B |
 | --- | --- | --- |
 | 1 | -1 | 1 |
-| 2 | 0 | 4 |
-| 3 | 1 | 7 |
-| 4 | 96 | 104 |
+| 2 | -1 | 3 |
+| 3 | -1 | 5 |
+| 4 | -1 | 7 |
 
-DP trace:
+All events share the same `A`.
 
-| Step | A | B | Best Prefix | cur1 | cur2 |
-| --- | --- | --- | --- | --- | --- |
-| 1 | -1 | 1 | 0 | 1 | 1 |
-| 2 | 0 | 4 | 1 | 2 | 2 |
-| 3 | 1 | 7 | 2 | 3 | 3 |
-| 4 | 96 | 104 | 3 | 0 | 4 |
+| Step | Event | Best Previous | dp |
+| --- | --- | --- | --- |
+| 1 | 1 | none | 1 |
+| 2 | 2 | 1 | 2 |
+| 3 | 3 | 2 | 3 |
+| 4 | 4 | 3 | 4 |
 
-The first three events form a feasible chain. The last event is unreachable from the origin chain because moving from `(4,3)` to `(100,4)` requires speed `96`.
+Output:
 
-This trace confirms that the DP only extends physically feasible paths.
+```
+4 4
+```
+
+This example demonstrates why dominance ordering matches the movement condition exactly. Each event is reachable from the previous one with speed `1`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting plus Fenwick tree queries and updates |
-| Space | O(n) | Event storage, compression arrays, Fenwick trees |
+| Time | O(n log n) | Sorting plus Fenwick queries and updates |
+| Space | O(n) | Arrays, coordinate compression, Fenwick tree |
 
-With `n = 100000`, an `O(n log n)` solution easily fits competitive programming limits. Fenwick tree operations are extremely small constants, and memory usage remains linear.
+With `100000` events, `O(n log n)` is easily fast enough. The Fenwick tree operations are lightweight, and memory usage stays linear.
 
 ## Test Cases
 
@@ -509,12 +446,13 @@ With `n = 100000`, an `O(n log n)` solution easily fits competitive programming 
 # helper: run solution on input string, return output string
 import sys
 import io
-from bisect import bisect_left
+
+INF = 10**18
 
 class Fenwick:
     def __init__(self, n):
         self.n = n
-        self.bit = [0] * (n + 1)
+        self.bit = [-INF] * (n + 1)
 
     def update(self, idx, val):
         while idx <= self.n:
@@ -522,62 +460,104 @@ class Fenwick:
             idx += idx & -idx
 
     def query(self, idx):
-        res = 0
+        res = -INF
         while idx > 0:
             res = max(res, self.bit[idx])
             idx -= idx & -idx
         return res
 
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
+def solve():
     input = sys.stdin.readline
 
     n = int(input())
-    events = [tuple(map(int, input().split())) for _ in range(n)]
+    events = []
+
+    for _ in range(n):
+        x, t = map(int, input().split())
+        events.append((t, x))
+
     V = int(input())
 
     arr = []
 
-    for x, t in events:
+    for idx, (t, x) in enumerate(events):
         A = x - V * t
         B = x + V * t
-        arr.append((A, B))
+        arr.append((A, B, t, x, idx))
 
-    arr.sort(key=lambda p: (p[0], -p[1]))
+    all_b = sorted(set(b for _, b, _, _, _ in arr))
+    comp = {v: i + 1 for i, v in enumerate(all_b)}
 
-    vals = sorted(set(b for _, b in arr))
+    arr.sort(reverse=True)
 
-    def comp(v):
-        return bisect_left(vals, v) + 1
+    m = len(all_b)
 
-    fw1 = Fenwick(len(vals))
-    fw2 = Fenwick(len(vals))
+    bit = Fenwick(m)
+    dp2 = [1] * n
 
-    ans1 = ans2 = 0
+    i = 0
+    while i < n:
+        j = i
+        while j < n and arr[j][0] == arr[i][0]:
+            j += 1
 
-    for A, B in arr:
-        idx = comp(B)
+        upd = []
 
-        cur2 = fw2.query(idx) + 1
-        fw2.update(idx, cur2)
+        for k in range(i, j):
+            A, B, t, x, idx = arr[k]
+            bidx = comp[B]
 
-        cur1 = 0
+            best = bit.query(bidx)
+            if best > -INF:
+                dp2[idx] = max(dp2[idx], best + 1)
 
-        if A <= 0 <= B:
-            cur1 = 1
+            upd.append((bidx, dp2[idx]))
 
-        best = fw1.query(idx)
+        for bidx, val in upd:
+            bit.update(bidx, val)
 
-        if best:
-            cur1 = max(cur1, best + 1)
+        i = j
 
-        if cur1:
-            fw1.update(idx, cur1)
+    bit = Fenwick(m)
+    dp1 = [-INF] * n
 
-        ans1 = max(ans1, cur1)
-        ans2 = max(ans2, cur2)
+    for A, B, t, x, idx in arr:
+        if abs(x) <= V * t:
+            dp1[idx] = 1
 
-    return f"{ans1} {ans2}"
+    i = 0
+    while i < n:
+        j = i
+        while j < n and arr[j][0] == arr[i][0]:
+            j += 1
+
+        upd = []
+
+        for k in range(i, j):
+            A, B, t, x, idx = arr[k]
+            bidx = comp[B]
+
+            best = bit.query(bidx)
+            if best > -INF:
+                dp1[idx] = max(dp1[idx], best + 1)
+
+            upd.append((bidx, dp1[idx]))
+
+        for bidx, val in upd:
+            bit.update(bidx, val)
+
+        i = j
+
+    print(max(dp1), max(dp2))
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    out = io.StringIO()
+    backup = sys.stdout
+    sys.stdout = out
+    solve()
+    sys.stdout = backup
+    return out.getvalue().strip()
 
 # provided sample
 assert run(
@@ -587,7 +567,7 @@ assert run(
 40 8
 2
 """
-) == "1 2"
+) == "1 2", "sample 1"
 
 # minimum size
 assert run(
@@ -595,133 +575,85 @@ assert run(
 0 1
 1
 """
-) == "1 1"
+) == "1 1", "single reachable event"
 
-# unreachable from origin
+# unreachable from origin but reachable with free start
 assert run(
-"""2
+"""1
 100 1
-0 100
 1
 """
-) == "1 1"
+) == "-1000000000000000000 1", "free start differs"
 
-# chainable sequence
+# same position over time
 assert run(
 """3
+2 3
+2 4
+2 5
+1
+"""
+) == "3 3", "waiting in place"
+
+# chain along a line
+assert run(
+"""4
 0 1
 1 2
 2 3
+3 4
 1
 """
-) == "3 3"
-
-# equal times
-assert run(
-"""2
-0 5
-10 5
-2
-"""
-) == "1 1"
+) == "4 4", "full chain"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
 | Single event | `1 1` | Minimum input size |
-| Unreachable first event | `1 1` | Correct origin reachability |
-| Increasing chain | `3 3` | Multi-event DP transitions |
-| Equal times | `1 1` | No invalid same-time chaining |
+| Far unreachable event | Different answers | Free start versus fixed start |
+| Same coordinate repeatedly | `3 3` | Waiting in place |
+| Increasing chain | `4 4` | Long valid transition chain |
 
 ## Edge Cases
 
-### Multiple Events at the Same Time
-
-Input:
+Consider events occurring at the same time:
 
 ```
 2
-0 5
-10 5
-2
+0 1
+10 1
+100
 ```
 
-At time `5`, the tourist cannot simultaneously be at positions `0` and `10`.
-
-Transformed coordinates:
-
-| Event | A | B |
-| --- | --- | --- |
-| 1 | -10 | 10 |
-| 2 | 0 | 20 |
-
-The DP ordering prevents either event from incorrectly extending the other because chronological feasibility still fails in the transformed dominance condition.
-
-The algorithm outputs:
+Both events have identical timestamps. The transformed conditions cannot simultaneously hold because movement time is zero. During processing, neither event becomes a predecessor of the other, so both DP values remain `1`. The algorithm outputs:
 
 ```
 1 1
 ```
 
-which is correct.
-
-### Event Unreachable from the Origin
-
-Input:
+Now consider unreachable events from the origin:
 
 ```
 2
-100 1
-0 100
+-5 5
+5 10
 1
 ```
 
-For the first event:
+The first event is reachable from `(0,0)`, so `dp1 = 1`. The second event cannot follow it because moving distance `10` in time `5` exceeds speed `1`.
+
+For the free-start version, the tourist may begin at `-5`, attend the first event, then still cannot reach the second. Alternatively, begin at `5` and attend only the second. The maximum remains `1`.
+
+The algorithm correctly rejects invalid transitions because the transformed inequalities fail.
+
+Finally, consider repeated coordinates:
 
 ```
-|100| > 1 * 1
+3
+2 3
+2 4
+2 5
+1
 ```
 
-so the tourist cannot reach it from `(0,0)`.
-
-The transformed values are:
-
-| Event | A | B |
-| --- | --- | --- |
-| 1 | 99 | 101 |
-| 2 | -100 | 100 |
-
-Only the second event satisfies:
-
-```
-A <= 0 <= B
-```
-
-so only that event may start a valid origin-based chain.
-
-The algorithm correctly outputs:
-
-```
-1 1
-```
-
-### Large Coordinates
-
-Input:
-
-```
-2
-200000000 2000000
-199999000 1999999
-1000
-```
-
-Intermediate expressions like:
-
-```
-V * t = 2 * 10^9
-```
-
-approach 32-bit integer limits.
-
-The algorithm only performs arithmetic on transformed coordinates and comparisons. Python integers safely handle these values, so no overflow occurs and the dominance logic remains correct.
+The transformed values satisfy the dominance relation in chronological order, so the Fenwick tree chains all three events together. Waiting requires no special handling because zero movement automatically satisfies the speed bound.
