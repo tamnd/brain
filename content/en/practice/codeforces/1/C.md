@@ -1,7 +1,7 @@
 ---
 title: "CF 1C - Ancient Berland Circus"
-description: "We are given three vertices of some regular polygon. The polygon itself is unknown: we do not know how many sides it has"
-date: "2026-05-27T00:00:00+07:00"
+description: "We are given the coordinates of three vertices of some regular polygon. The polygon itself is unknown: we do not know ho"
+date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Beta Round 1"
 rating: 2100
 weight: 1
-solve_time_s: 95
+solve_time_s: 100
 verified: true
 draft: false
 ---
@@ -18,134 +18,118 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** geometry, math  
-**Solve time:** 1m 35s  
+**Solve time:** 1m 40s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given three vertices of some regular polygon. The polygon itself is unknown: we do not know how many sides it has, how it is rotated, or which vertices the three given points correspond to.
+We are given the coordinates of three vertices of some regular polygon. The polygon itself is unknown: we do not know how many sides it has, where its center is, or which vertices the three points correspond to. Among all regular polygons that could contain these three points as vertices, we must find the one with the smallest area.
 
-The task is to find the smallest possible area of a regular polygon that contains all three points as its vertices.
+The key geometric fact is that every regular polygon has a circumcircle. All vertices lie on the same circle, equally spaced by angle. Since three non-collinear points uniquely determine a circle, the three pillars already fix the circumcircle completely. The only remaining question is how many equally spaced vertices exist on that circle so that all three given points land on vertex positions.
 
-The first thing to notice is that any regular polygon lies on a circle. All of its vertices are equally spaced around the circumcircle. Since three non-collinear points uniquely define a circle, the three given pillars already determine the circumcircle of the original polygon.
+The constraints are tiny in terms of input size, there are only three points. The challenge is entirely mathematical. A brute-force search over all polygons up to 100 sides is completely feasible, but we still need a reliable geometric characterization of when three points can belong to the same regular polygon.
 
-That changes the problem completely. We are no longer searching over arbitrary polygons. We only need to determine the smallest number of equally spaced points on this circle such that the three given points are among them.
+Floating point precision is the dangerous part of this problem. The correct polygon may depend on angles like π/7 or π/13, and direct equality checks will fail because of rounding error. Another subtle issue is that the three points are not guaranteed to be adjacent vertices. A naive solution that assumes consecutive vertices immediately produces wrong answers.
 
-The number of polygon sides is guaranteed to be at most 100, which is small. That immediately suggests brute-forcing the number of sides is practical. Even if we try every `n` from 3 to 100 and do several trigonometric operations for each, the total work is tiny.
-
-The tricky part is not performance, it is numerical stability.
-
-A common mistake is comparing floating point angles directly. Suppose the three central angles are theoretically multiples of `2π / n`, but because of floating point error we get values like:
-
-```
-1.0471975512
-1.0471975510
-1.0471975515
-```
-
-A strict equality check would fail even though they represent the same mathematical value. Any correct solution needs an epsilon tolerance.
-
-Another easy mistake appears when the triangle is already a regular polygon. Consider:
+Consider this example:
 
 ```
 0 0
 1 0
-0.5 0.8660254038
+0 1
 ```
 
-These are vertices of an equilateral triangle. A careless solution might keep searching and accidentally accept `n = 6`, `n = 9`, and so on. Those polygons also contain the points, but the problem asks for the smallest possible area. Since all polygons share the same circumradius, area grows with the number of sides. The correct answer comes from `n = 3`.
+These three points form a right triangle. A careless approach might assume the polygon is a triangle because three vertices are known. But these points are actually vertices of a square, whose area is smaller than the circumscribed equilateral triangle through the same points.
 
-There is also a subtle geometric edge case with angle wrapping. Suppose one point corresponds to angle `359°` and another to `1°`. Their actual separation is `2°`, not `358°`. Using raw angle differences without normalization breaks the logic. Working with central angles derived from side lengths avoids this issue entirely.
+Another tricky situation appears when the polygon has many sides and the central angles become very small. For example, if the true polygon has 97 sides, accumulated floating point error in repeated angle computations can easily make a gcd-style angle reduction unstable unless we use an epsilon carefully.
+
+A third common mistake is computing the circumcenter incorrectly for nearly degenerate triangles. Even though the input guarantees a valid answer, unstable formulas can produce huge precision loss if implemented carelessly.
 
 ## Approaches
 
-A brute-force idea is to reconstruct the circumcircle, then try every polygon size `n` from 3 to 100.
+The brute-force idea starts from the observation that the number of polygon sides is at most 100. We can try every possible `n` from 3 to 100.
 
-For a fixed `n`, a regular polygon divides the circle into arcs of size:
+For a fixed `n`, a regular `n`-gon divides the circle into arcs of angle `2π/n`. If the three given points are vertices of that polygon, then the central angles between every pair of points must be integer multiples of `2π/n`.
 
-```
-2π / n
-```
+So the brute-force algorithm looks like this:
 
-If the three given points are vertices of this polygon, then every central angle between pairs of points must be an integer multiple of this base angle.
+1. Compute the circumcenter and circumradius of the three points.
+2. Compute the polar angle of each point around the center.
+3. For every `n` from 3 to 100:
 
-So we can:
+- Check whether all pairwise angle differences are multiples of `2π/n`.
+- If yes, compute the polygon area.
+4. Output the minimum area.
 
-1. Compute the circumradius `R`.
-2. Compute the three central angles subtended by the triangle edges.
-3. For each `n`, check whether all three angles are multiples of `2π / n`.
+This already works within limits. We only test 98 polygon sizes, and each test uses constant-time geometry. The total work is negligible.
 
-The first valid `n` gives the minimum-area polygon.
-
-This already runs comfortably fast. We only test at most 98 polygon sizes, and each test uses constant-time geometry.
-
-The key mathematical insight is how to compute the central angles reliably.
-
-Suppose a triangle side has length `a`. If the circumradius is `R`, then the corresponding central angle `θ` satisfies the chord formula:
-
-$a = 2R\sin\left(\frac{\theta}{2}\right)$
-
-Rearranging gives:
+The real challenge is not speed but correctness. Comparing floating point angles against exact multiples is fragile. If we check:
 
 ```
-θ = 2 * asin(a / (2R))
+diff % step == 0
 ```
 
-These three central angles represent the arc distances between the given vertices on the circumcircle.
+the solution fails immediately because of precision noise.
 
-Now consider a regular `n`-gon. Its basic step angle is:
+The important insight is that the polygon structure can be described through the greatest common divisor of central angles.
+
+Suppose the three points correspond to vertices separated by `a`, `b`, and `c` steps on the polygon. Their central angles are:
 
 ```
-step = 2π / n
+a * 2π/n
+b * 2π/n
+c * 2π/n
 ```
 
-If every central angle is an integer multiple of `step`, then all three points align with polygon vertices.
+That means every angle difference must share the same fundamental unit angle. The smallest valid polygon is exactly the one whose unit angle is the gcd of all central angle differences.
 
-Once we know `n` and `R`, the polygon area comes directly from the standard formula:
+In integer arithmetic we use Euclid's algorithm for gcd. For floating point angles, we simulate the same idea numerically. Since `n ≤ 100`, an even simpler strategy is enough: try every `n` and verify whether all angles are integer multiples of `2π/n` within epsilon.
+
+Once the correct `n` is known, the polygon area follows from a standard decomposition into isosceles triangles. A regular `n`-gon with circumradius `R` has area:
 
 $A = \frac{nR^2\sin\left(\frac{2\pi}{n}\right)}{2}$
 
-The brute-force succeeds because the bound `n ≤ 100` is tiny. The real challenge is identifying the correct polygon despite floating point error. The angle divisibility check is the critical part.
+The brute-force and optimal approaches are effectively the same asymptotically because the side limit is only 100. The optimality comes from the geometric insight that reduces the validation of a polygon to angle divisibility on the circumcircle.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over all polygons geometrically | O(100) | O(1) | Accepted |
-| Optimal angle-divisibility method | O(100) | O(1) | Accepted |
+| Brute Force over all polygons with naive angle checks | O(100) | O(1) | Risky due to precision |
+| Geometric angle divisibility with epsilon | O(100) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the three points and compute the triangle side lengths.
+1. Read the three points.
 
-We need the side lengths to reconstruct the circumcircle and the corresponding central angles.
-2. Compute the triangle area using the cross product formula.
+The three points uniquely determine a circumcircle because they are guaranteed to be non-collinear.
+2. Compute the side lengths of the triangle formed by the points.
 
-The circumradius formula depends on the triangle area.
-3. Compute the circumradius `R`.
+We need these lengths to compute the circumradius using the triangle area formula.
+3. Compute the triangle area using the cross product.
 
-For triangle sides `a`, `b`, `c` and area `S`:
+If the triangle vertices are `A`, `B`, and `C`, then:
 
-$R = \frac{abc}{4S}$
+$\text{Area} = \frac{|(B-A) \times (C-A)|}{2}$
+4. Compute the circumradius `R`.
 
-Every regular polygon passing through the three points must use this same circumcircle.
-4. Compute the three central angles.
+Using the standard relation:
 
-For each side length `x`:
+$R = \frac{abc}{4\Delta}$
 
-```
-angle = 2 * asin(x / (2R))
-```
+where `a`, `b`, and `c` are the side lengths and `Δ` is the triangle area.
+5. Compute the three central angles.
 
-These are the angular distances between the corresponding vertices on the circle.
-5. Try every polygon size `n` from 3 to 100.
+Each side of the triangle subtends some angle at the circumcenter. By the extended law of sines:
 
-The smallest valid `n` gives the minimum-area polygon.
-6. For each `n`, compute the base angle:
+$\theta = 2\arcsin\left(\frac{a}{2R}\right)$
 
-```
-step = 2π / n
-```
-7. Check whether every central angle is a multiple of `step`.
+We compute this for all three triangle sides.
+6. Try every polygon size `n` from 3 to 100.
+
+The basic angle step of a regular `n`-gon is:
+
+$\frac{2\pi}{n}$
+7. For each central angle, check whether it is an integer multiple of the step angle.
 
 We compute:
 
@@ -153,18 +137,20 @@ We compute:
 ratio = angle / step
 ```
 
-and verify that `ratio` is extremely close to an integer.
-8. The first valid `n` is the answer.
+and verify that `ratio` is sufficiently close to an integer.
+8. The first valid `n` gives the smallest area.
 
-Since all candidate polygons use the same circumradius, larger `n` always produces larger area.
-9. Compute the polygon area.
+A larger `n` means more sides on the same circumcircle, which always increases the polygon area toward the circle area.
+9. Compute the area of the regular polygon using the circumradius formula.
+10. Print the answer with enough precision.
 
-Use:
+### Why it works
 
-```
-area = n * R * R * sin(2π / n) / 2
-```
-10. Print the result with sufficient precision.
+The three points lie on a unique circumcircle. Any regular polygon containing them must use this exact circle as its circumcircle.
+
+A regular `n`-gon partitions the circle into equal angular steps of `2π/n`. So every arc between two polygon vertices must be an integer multiple of that step. The three given points determine three central angles, and these angles must all be divisible by the same fundamental step angle.
+
+By checking every `n` from smallest to largest, the first valid polygon is guaranteed to have minimum area. For a fixed circumradius, increasing the number of sides strictly increases the regular polygon area.
 
 ## Python Solution
 
@@ -174,72 +160,71 @@ import math
 
 input = sys.stdin.readline
 
-EPS = 1e-7
+EPS = 1e-6
 
 def dist(x1, y1, x2, y2):
     return math.hypot(x1 - x2, y1 - y2)
 
-x1, y1 = map(float, input().split())
-x2, y2 = map(float, input().split())
-x3, y3 = map(float, input().split())
+def is_multiple(angle, step):
+    k = round(angle / step)
+    return abs(angle - k * step) < EPS
 
-a = dist(x2, y2, x3, y3)
-b = dist(x1, y1, x3, y3)
-c = dist(x1, y1, x2, y2)
+def solve():
+    points = [tuple(map(float, input().split())) for _ in range(3)]
 
-# Triangle area using cross product
-area_triangle = abs(
-    (x2 - x1) * (y3 - y1) -
-    (y2 - y1) * (x3 - x1)
-) / 2.0
+    (x1, y1), (x2, y2), (x3, y3) = points
 
-# Circumradius
-R = a * b * c / (4.0 * area_triangle)
+    a = dist(x2, y2, x3, y3)
+    b = dist(x1, y1, x3, y3)
+    c = dist(x1, y1, x2, y2)
 
-angles = [
-    2.0 * math.asin(a / (2.0 * R)),
-    2.0 * math.asin(b / (2.0 * R)),
-    2.0 * math.asin(c / (2.0 * R))
-]
+    cross = abs((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1))
+    triangle_area = cross / 2.0
 
-answer = 0.0
+    R = (a * b * c) / (4.0 * triangle_area)
 
-for n in range(3, 101):
-    step = 2.0 * math.pi / n
+    angles = []
+    for side in [a, b, c]:
+        value = side / (2.0 * R)
+        value = max(-1.0, min(1.0, value))
+        angles.append(2.0 * math.asin(value))
 
-    ok = True
+    answer = 0.0
 
-    for angle in angles:
-        ratio = angle / step
+    for n in range(3, 101):
+        step = 2.0 * math.pi / n
 
-        if abs(ratio - round(ratio)) > EPS:
-            ok = False
+        ok = True
+
+        for angle in angles:
+            if not is_multiple(angle, step):
+                ok = False
+                break
+
+        if ok:
+            answer = 0.5 * n * R * R * math.sin(2.0 * math.pi / n)
             break
 
-    if ok:
-        answer = n * R * R * math.sin(2.0 * math.pi / n) / 2.0
-        break
+    print(f"{answer:.10f}")
 
-print(f"{answer:.10f}")
+solve()
 ```
 
-The first section computes the triangle geometry. We extract the three side lengths and the triangle area. The area formula uses a 2D cross product because it is compact and numerically stable.
+The first section computes the triangle side lengths and area. The cross product formula is numerically stable and avoids Heron's formula, which can lose precision for skinny triangles.
 
-Next we compute the circumradius. This is the radius of the unique circle passing through the three points.
+The circumradius computation uses the classic relation between side lengths and triangle area. Since all coordinates are small, floating point overflow is not a concern.
 
-The `angles` array stores the three central angles corresponding to the triangle edges. Each angle is derived from the chord-length formula.
-
-The loop over `n` tries every regular polygon size from smallest to largest. The first valid polygon is automatically optimal because all polygons share the same circumcircle, and polygon area increases with `n`.
-
-The most delicate implementation detail is the integer-multiple check:
+The central angles are derived from chord lengths. For a chord of length `a` in a circle of radius `R`, the corresponding central angle satisfies:
 
 ```
-abs(ratio - round(ratio)) > EPS
+a = 2R sin(theta / 2)
 ```
 
-Using exact equality fails because trigonometric functions introduce tiny floating point errors.
+We invert this relation using `asin`. The clamp to `[-1, 1]` is important because floating point error can produce values like `1.0000000002`, which would crash `asin`.
 
-Another subtle point is the use of `asin`. Due to precision issues, values like `a / (2R)` can become slightly larger than `1.0` mathematically. In stricter environments it is common to clamp the value into `[-1, 1]`. Python's floating point behavior for this problem is usually stable enough, but clamping is still a reasonable defensive improvement.
+The validation step checks whether each angle is a multiple of the polygon step angle. We round the ratio to the nearest integer and compare the reconstruction error against epsilon. Direct modulus operations on floating point numbers are much less reliable.
+
+The loop starts from `n = 3`, so the first valid polygon automatically has minimum area.
 
 ## Worked Examples
 
@@ -253,109 +238,40 @@ Input:
 0 1
 ```
 
-The points form a right triangle.
+The points form three vertices of a square.
 
 | Variable | Value |
 | --- | --- |
-| a | 1.000000 |
-| b | 1.414214 |
-| c | 1.000000 |
-| Triangle Area | 0.500000 |
-| R | 0.707107 |
+| a | 1 |
+| b | 1 |
+| c | √2 |
+| Triangle area | 0.5 |
+| Circumradius R | 0.70710678 |
 
 The central angles become:
 
-| Side | Central Angle |
+| Side | Central angle |
 | --- | --- |
-| a | π/2 |
-| b | π |
-| c | π/2 |
+| 1 | π/2 |
+| 1 | π/2 |
+| √2 | π |
 
-Now we test polygon sizes.
+Now we test polygon sizes:
 
-| n | step = 2π/n | Valid? |
+| n | Step angle | Valid? |
 | --- | --- | --- |
-| 3 | 2.094395 | No |
-| 4 | 1.570796 | Yes |
-
-The smallest valid polygon is a square.
+| 3 | 2π/3 | No |
+| 4 | π/2 | Yes |
 
 Area:
 
-| Formula | Value |
-| --- | --- |
-| `4 * R² * sin(π/2) / 2` | `1.000000` |
+| Formula result |
+| --- |
+| 1.0 |
 
-This example confirms that the algorithm correctly reconstructs a square from only three of its vertices.
+This trace shows why the polygon is not necessarily a triangle. The three points align perfectly with the vertex spacing of a square.
 
 ### Example 2
-
-Input:
-
-```
-0 0
-1 0
-0.5 0.8660254038
-```
-
-These are vertices of an equilateral triangle.
-
-| Variable | Value |
-| --- | --- |
-| a | 1.000000 |
-| b | 1.000000 |
-| c | 1.000000 |
-| Triangle Area | 0.433013 |
-| R | 0.577350 |
-
-The central angles are:
-
-| Side | Central Angle |
-| --- | --- |
-| a | 2π/3 |
-| b | 2π/3 |
-| c | 2π/3 |
-
-Polygon checks:
-
-| n | step | Valid? |
-| --- | --- | --- |
-| 3 | 2π/3 | Yes |
-
-The first valid polygon is already found, so the answer is the area of the equilateral triangle itself.
-
-This trace confirms that the algorithm prefers the smallest polygon even when larger polygons also contain the same vertices.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(100) | We try every polygon size from 3 to 100 |
-| Space | O(1) | Only a few floating point variables are stored |
-
-The runtime is effectively constant. Even with several trigonometric operations per iteration, the program finishes instantly within the 2 second limit. Memory usage is negligible.
-
-## Test Cases
-
-### Test Case 1
-
-Input:
-
-```
-0 0
-1 0
-0.5 0.8660254038
-```
-
-Expected output:
-
-```
-0.43301270
-```
-
-This verifies the minimal polygon case where the triangle itself is the regular polygon.
-
-### Test Case 2
 
 Input:
 
@@ -365,63 +281,154 @@ Input:
 -1 0
 ```
 
-Expected output:
+These are three vertices of a regular hexagon on the unit circle.
 
-```
-2.00000000
-```
+| Variable | Value |
+| --- | --- |
+| a | √2 |
+| b | 2 |
+| c | √2 |
+| Triangle area | 1 |
+| Circumradius R | 1 |
 
-These are three vertices of a square inscribed in the unit circle.
+Central angles:
 
-### Test Case 3
+| Side | Central angle |
+| --- | --- |
+| √2 | π/2 |
+| 2 | π |
+| √2 | π/2 |
 
-Input:
+Polygon search:
 
-```
+| n | Step angle | Valid? |
+| --- | --- | --- |
+| 3 | 2π/3 | No |
+| 4 | π/2 | Yes |
+
+Area:
+
+| Formula result |
+| --- |
+| 2.0 |
+
+This example demonstrates that multiple polygons may contain the same three points. A hexagon works, but the square appears earlier and has smaller area.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(100) | We test at most 98 polygon sizes |
+| Space | O(1) | Only a few floating point variables are stored |
+
+The runtime is effectively constant. Even Python handles this instantly because all computations are basic trigonometric operations on a fixed number of values. The memory usage is negligible.
+
+## Test Cases
+
+```python
+# helper: run solution on input string, return output string
+import sys
+import io
+import math
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+
+    input = sys.stdin.readline
+    EPS = 1e-6
+
+    def dist(x1, y1, x2, y2):
+        return math.hypot(x1 - x2, y1 - y2)
+
+    def is_multiple(angle, step):
+        k = round(angle / step)
+        return abs(angle - k * step) < EPS
+
+    points = [tuple(map(float, input().split())) for _ in range(3)]
+
+    (x1, y1), (x2, y2), (x3, y3) = points
+
+    a = dist(x2, y2, x3, y3)
+    b = dist(x1, y1, x3, y3)
+    c = dist(x1, y1, x2, y2)
+
+    cross = abs((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1))
+    triangle_area = cross / 2.0
+
+    R = (a * b * c) / (4.0 * triangle_area)
+
+    angles = []
+
+    for side in [a, b, c]:
+        value = side / (2.0 * R)
+        value = max(-1.0, min(1.0, value))
+        angles.append(2.0 * math.asin(value))
+
+    answer = 0.0
+
+    for n in range(3, 101):
+        step = 2.0 * math.pi / n
+
+        ok = True
+
+        for angle in angles:
+            if not is_multiple(angle, step):
+                ok = False
+                break
+
+        if ok:
+            answer = 0.5 * n * R * R * math.sin(2.0 * math.pi / n)
+            break
+
+    return f"{answer:.8f}"
+
+# provided sample
+assert run(
+"""0 0
+1 1
+0 1
+"""
+) == "1.00000000", "sample 1"
+
+# equilateral triangle
+assert run(
+"""0 0
 1 0
 0.5 0.8660254038
+"""
+) == "0.43301270", "equilateral triangle"
+
+# square on unit circle
+assert run(
+"""1 0
+0 1
+-1 0
+"""
+) == "2.00000000", "square"
+
+# regular hexagon vertices
+assert run(
+"""1 0
+0.5 0.8660254038
 -0.5 0.8660254038
+"""
+) == "2.59807621", "hexagon"
+
+print("All tests passed")
 ```
 
-Expected output:
-
-```
-2.59807621
-```
-
-These are consecutive vertices of a regular hexagon with circumradius 1.
-
-### Test Case 4
-
-Input:
-
-```
-2 0
-0 2
--2 0
-```
-
-Expected output:
-
-```
-8.00000000
-```
-
-This checks larger coordinates and confirms the circumradius computation works correctly.
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Sample input | 1.00000000 | Basic correctness |
+| Equilateral triangle | 0.43301270 | Smallest possible polygon |
+| Unit circle square points | 2.00000000 | Non-adjacent vertices |
+| Hexagon vertices | 2.59807621 | Larger regular polygons |
 
 ## Edge Cases
 
-Consider the equilateral triangle:
+A common failure case is assuming the three points are consecutive vertices.
 
-```
-0 0
-1 0
-0.5 0.8660254038
-```
-
-The algorithm computes all three central angles as `2π/3`. When `n = 3`, the step angle is also `2π/3`, so every ratio becomes exactly `1`. The search stops immediately and returns the triangle area. Even though `n = 6` and `n = 9` would also work, they are ignored because we scan `n` in increasing order.
-
-Now consider a case sensitive to floating point precision:
+Input:
 
 ```
 0 0
@@ -429,21 +436,28 @@ Now consider a case sensitive to floating point precision:
 0 1
 ```
 
-Theoretically, two central angles are exactly `π/2`. In floating point arithmetic they may become:
+The triangle formed by these points is not regular. A naive algorithm might stop at `n = 3` and compute the circumtriangle area. Our algorithm instead checks divisibility of central angles. The triangle fails because the angles are not multiples of `2π/3`. The square succeeds because all angles are multiples of `π/2`.
+
+Another subtle case is when floating point rounding pushes values slightly outside valid trigonometric ranges.
+
+Input:
 
 ```
-1.5707963267
-1.5707963269
-```
-
-For `n = 4`, the step angle is also near `1.5707963268`. Direct equality would fail. The epsilon comparison correctly recognizes them as integer multiples.
-
-Finally, consider a wrap-around configuration on the circle:
-
-```
-cos(1°) sin(1°)
 1 0
-cos(359°) sin(359°)
+-1 0
+0 1
 ```
 
-The geometric separation between the first and third points is `2°`, not `358°`. Solutions based on raw polar-angle subtraction often fail here. Our method never subtracts polar angles directly. It derives central angles from chord lengths, so the smaller arc is obtained automatically.
+Mathematically, one chord length equals exactly `2R`, so the expression inside `asin` should be exactly `1`. Floating point arithmetic may produce `1.0000000001`. Without clamping, `asin` throws a domain error. The implementation explicitly bounds the value to `[-1, 1]`.
+
+A third dangerous scenario is polygons with many sides, where angular steps become tiny.
+
+Input:
+
+```
+1 0
+0.9980267284 0.0627905195
+0.9921147013 0.1253332336
+```
+
+These are consecutive vertices of a regular 100-gon. Direct equality checks on floating point angles fail because the computed angles contain accumulated numerical noise. The epsilon-based integer multiple check correctly recognizes the polygon structure.
