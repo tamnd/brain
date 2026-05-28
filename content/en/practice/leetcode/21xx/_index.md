@@ -34,12 +34,12 @@ draft: false
 | 2121 | [Intervals Between Identical Elements](2121.md) | 🟡 Medium | 1m 14s | You are given a 0-indexed integer array arr. For every index i, you… |
 | 2122 | [Recover the Original Array](2122.md) | 🔴 Hard | 57s | The problem presents a scenario in which Alice has an original arra… |
 | 2123 | [Minimum Operations to Remove Adjacent Ones in Matrix](2123.md) | 🔴 Hard | 50s | The problem presents a binary matrix where each element is either 0… |
-| 2124 | [Check if All A's Appears Before All B's](2124.md) | 🟢 Easy | 1m | The problem asks us to determine whether all occurrences of the cha… |
-| 2125 | [Number of Laser Beams in a Bank](2125.md) | 🟡 Medium | 1m | The problem presents a binary matrix representing a bank floor plan… |
-| 2126 | [Destroying Asteroids](2126.md) | 🟡 Medium | 48s | The problem describes a scenario where a planet with an initial mas… |
+| 2124 | [Check if All A's Appears Before All B's](2124.md) | 🟢 Easy | 1m 56s | The problem gives us a string s that contains only two possible cha… |
+| 2125 | [Number of Laser Beams in a Bank](2125.md) | 🟡 Medium | 3m 24s | The problem describes a bank floor plan as a binary matrix, represe… |
+| 2126 | [Destroying Asteroids](2126.md) | 🟡 Medium | 1m 19s | In this problem, we are given the starting mass of a planet and a l… |
 | 2127 | [Maximum Employees to Be Invited to a Meeting](2127.md) | 🔴 Hard | 1m 41s | This problem describes a directed graph where each employee points … |
 | 2128 | [Remove All Ones With Row and Column Flips](2128.md) | 🟡 Medium | 1m 21s | The problem gives us an m x n binary matrix named grid, where every… |
-| 2129 | [Capitalize the Title](2129.md) | 🟢 Easy | 54s | The problem is asking us to take a string title composed of words s… |
+| 2129 | [Capitalize the Title](2129.md) | 🟢 Easy | 1m 5s | The problem asks us to transform the capitalization of every word i… |
 | 2130 | [Maximum Twin Sum of a Linked List](2130.md) | 🟡 Medium | 1m 27s | The problem gives us a singly linked list with an even number of no… |
 | 2131 | [Longest Palindrome by Concatenating Two Letter Words](2131.md) | 🟡 Medium | 51s | The problem provides an array of two-letter lowercase strings, and … |
 | 2132 | [Stamping the Grid](2132.md) | 🔴 Hard | 1m 2s | The problem is asking us to determine if a given m x n binary grid … |

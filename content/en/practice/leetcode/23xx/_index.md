@@ -63,8 +63,11 @@ draft: false
 | 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 48s | The problem asks us to find the length of the shortest sequence of … |
 | 2351 | [First Letter to Appear Twice](2351.md) | 🟢 Easy | 55s | The problem asks us to find the first letter in a string that appea… |
 | 2352 | [Equal Row and Column Pairs](2352.md) | 🟡 Medium | 1m 28s | In this problem, we are given an n x n matrix called grid. Each row… |
+| 2353 | [Design a Food Rating System](2353.md) | 🟡 Medium | 1m 38s | This problem asks us to design a data structure that supports two o… |
 | 2354 | [Number of Excellent Pairs](2354.md) | 🔴 Hard | 1m 16s | The problem asks us to count the number of distinct ordered pairs (… |
 | 2355 | [Maximum Number of Books You Can Take](2355.md) | 🔴 Hard | 52s | The problem provides a 0-indexed array books where each element rep… |
+| 2356 | [Number of Unique Subjects Taught by Each Teacher](2356.md) | 🟢 Easy | 2m 53s | The problem provides a database table named Teacher. Each row repre… |
+| 2357 | [Make Array Zero by Subtracting Equal Amounts](2357.md) | 🟢 Easy | 1m 8s | The problem gives us an array of non-negative integers called nums.… |
 | 2358 | [Maximum Number of Groups Entering a Competition](2358.md) | 🟡 Medium | 1m 4s | The problem gives us an array called grades, where each element rep… |
 | 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 55s | The problem asks us to compute the minimum cost to reach each stop … |
 | 2363 | [Merge Similar Items](2363.md) | 🟢 Easy | 1m 16s | The problem requires merging two lists of items, where each item is… |
@@ -88,3 +91,4 @@ draft: false
 | 2392 | [Build a Matrix With Conditions](2392.md) | 🔴 Hard | 1m 1s | The problem asks us to construct a k x k matrix containing integers… |
 | 2393 | [Count Strictly Increasing Subarrays](2393.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums and asks us to count how… |
 | 2395 | [Find Subarrays With Equal Sum](2395.md) | 🟢 Easy | 1m 21s | The problem gives us a 0-indexed integer array nums and asks whethe… |
+| 2398 | [Maximum Number of Robots Within Budget](2398.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum number of consecutive … |
