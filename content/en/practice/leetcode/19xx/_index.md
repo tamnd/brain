@@ -94,3 +94,5 @@ draft: false
 | 1986 | [Minimum Number of Work Sessions to Finish the Tasks](1986.md) | 🟡 Medium | 1m 55s | This problem asks us to schedule a collection of tasks into the min… |
 | 1987 | [Number of Unique Good Subsequences](1987.md) | 🔴 Hard | 44s | The problem asks us to count how many distinct subsequences of a bi… |
 | 1988 | [Find Cutoff Score for Each School](1988.md) | 🟡 Medium | 40s | This problem asks us to compute a minimum score requirement (cutoff… |
+| 1989 | [Maximum Number of People That Can Be Caught in Tag](1989.md) | 🟡 Medium | 37s | The problem describes a line of people represented by a binary arra… |
+| 1990 | [Count the Number of Experiments](1990.md) | 🟡 Medium | 1m 9s | This problem gives us a database table named Experiments. Each row … |
