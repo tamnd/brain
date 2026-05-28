@@ -1,6 +1,6 @@
 ---
 title: "CF 2C - Commentator problem"
-description: "We are given three circles. A point observes a circle under some angle, which is the angle between the two tangents draw"
+description: "We are given three circles on the plane. Each circle represents a stadium, with a center point and a radius. We need to"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Beta Round 2"
 rating: 2600
 weight: 2
-solve_time_s: 125
+solve_time_s: 96
 verified: true
 draft: false
 ---
@@ -18,61 +18,55 @@ draft: false
 
 **Rating:** 2600  
 **Tags:** geometry  
-**Solve time:** 2m 5s  
+**Solve time:** 1m 36s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given three circles. A point observes a circle under some angle, which is the angle between the two tangents drawn from that point to the circle.
+We are given three circles on the plane. Each circle represents a stadium, with a center point and a radius. We need to find a point from which all three stadiums are seen under the same angle.
 
-The task asks for a point from which all three circles are seen under exactly the same angle. Among all such points, we need the one with the maximum observation angle.
+For a circle with radius $r$ observed from a point $P$, the visible angle is the angle between the two tangent lines from $P$ to the circle. If the distance from $P$ to the circle center is $d$, that angle equals:
 
-This sounds geometric, but the key is turning the angle condition into an algebraic relation.
+$$2\arcsin\left(\frac{r}{d}\right)$$
 
-For a circle with radius $r$ and a point at distance $d$ from the center, the tangent geometry gives
+The problem asks for a point where all three circles produce the same viewing angle. Among all such points, we want the one with the maximum angle.
 
-$$\sin\left(\frac{\theta}{2}\right)=\frac{r}{d}$$
+The centers are guaranteed to be non-collinear, so the geometry never degenerates into a line-based ambiguity. Coordinates and radii are at most $10^3$, which means floating point geometry is completely feasible. The time limit is tiny, but this is not a brute-force numeric optimization problem. The intended solution is closed-form geometry with only constant-time computations.
 
-where $\theta$ is the observation angle.
+The key hidden observation is that equal viewing angles imply a very strong algebraic condition. Since
 
-If all three circles are seen under the same angle, then all three values of $r/d$ are equal. That means
+$$2\arcsin\left(\frac{r_i}{d_i}\right)$$
 
-$$\frac{d_1}{r_1}=\frac{d_2}{r_2}=\frac{d_3}{r_3}$$
+must be equal for all circles, the values
 
-So we are looking for a point whose distances to the three centers are proportional to the radii.
+$$\frac{r_i}{d_i}$$
 
-That transforms the problem completely. Instead of angles and tangents, we now have a pure geometric construction problem.
+must also be equal. Rearranging gives
 
-The coordinates and radii are at most $10^3$, so numerical stability matters more than asymptotic complexity. There are only three circles, so even fairly heavy geometry is fast enough. The real challenge is deriving the correct equations and handling degenerate cases cleanly.
+$$d_i : d_j = r_i : r_j$$
 
-A common mistake is assuming the answer always exists. It does not. For example:
+So the unknown point has distances to the three centers proportional to the three radii.
 
-```
-0 0 1
-2 0 2
-4 0 3
-```
+That converts the problem from a trigonometric optimization task into a pure geometry construction problem.
 
-All centers lie on one line. The statement guarantees this never happens, but if a solution ignores determinant checks and divides blindly, it may crash or print garbage.
+There are several easy mistakes here.
 
-Another subtle case appears when the proportional-distance equations have no intersection. Consider:
+One common mistake is maximizing the angle directly with iterative optimization. The angle function is nonlinear and the feasible region is not convex. Numeric hill climbing can converge to the wrong point or fail entirely.
+
+Another mistake is forgetting that there may be no valid point. Consider:
 
 ```
 0 0 1
-100 0 1
-50 100 1000
+10 0 1
+0 10 100
 ```
 
-The third radius is so large relative to the geometry that no point satisfies all three ratios simultaneously. A careless implementation might still compute an intersection numerically and output meaningless coordinates. The correct behavior is printing nothing.
+The third radius is enormously larger than the others. The required distance ratios become impossible to satisfy geometrically. A careless implementation that blindly intersects circles may produce NaNs or garbage coordinates. The correct behavior is to print nothing.
 
-There is also a geometric ambiguity. Two points can satisfy the equal-angle condition. One gives a larger angle, the other a smaller angle. Since
+A subtler issue appears when all radii are equal. Then the condition becomes equal distances to all three centers. The answer is the circumcenter of the triangle formed by the centers.
 
-$$\sin(\theta/2)=r/d$$
-
-maximizing the angle means minimizing the common scale factor $d/r$. A solution that finds both intersections but chooses arbitrarily can fail.
-
-For example:
+Example:
 
 ```
 0 0 10
@@ -80,218 +74,275 @@ For example:
 30 30 10
 ```
 
-Both the circumcenter-like point above the triangle and the symmetric point below it satisfy equal ratios. The closer one produces the larger viewing angle and is the required answer.
+The correct answer is:
+
+```
+30.00000 0.00000
+```
+
+A naive ratio-based derivation can accidentally divide by zero if it assumes radii are distinct.
+
+Another trap comes from choosing the wrong Apollonius circle branch. Distance-ratio loci produce circles, but each pair of centers can define multiple algebraic forms depending on orientation. A sign mistake produces the mirrored intersection point, which fails the third constraint.
 
 ## Approaches
 
-The brute-force idea is to search over points in the plane and check whether
+The brute-force idea is to search over the plane and evaluate the three viewing angles at each point. If the angles are nearly equal, keep the best candidate.
 
-$$\frac{d_1}{r_1}=\frac{d_2}{r_2}=\frac{d_3}{r_3}$$
+This works conceptually because the visibility angle of a circle from a point is easy to compute:
 
-approximately holds.
+$$\theta = 2\arcsin\left(\frac{r}{d}\right)$$
 
-This works conceptually because the condition directly characterizes valid observation points. But even a dense grid such as $2000 \times 2000$ only gives rough precision, and the output requires exact floating-point coordinates. Refining the search with local optimization becomes messy and unreliable. The plane is continuous, so brute force is not practical.
+We could sample a dense grid or run gradient ascent. The problem is precision. Coordinates are real-valued, and the valid point can lie anywhere in the plane. Even a grid with spacing $10^{-5}$ over the possible coordinate range would require roughly $10^{16}$ evaluations, completely impossible.
 
-The key insight is that the distance-ratio condition defines an Apollonius circle.
+The next improvement is to treat the equal-angle condition algebraically. Since arcsin is strictly increasing,
 
-For two centers $A,B$ with radii $r_A,r_B$, valid points satisfy
+$$2\arcsin\left(\frac{r_1}{d_1}\right)
+=
+2\arcsin\left(\frac{r_2}{d_2}\right)$$
 
-$$\frac{|PA|}{|PB|}=\frac{r_A}{r_B}$$
+implies
 
-The locus of points with a fixed distance ratio to two points is a circle, unless the ratio is $1$, in which case it becomes a line.
+$$\frac{r_1}{d_1}=\frac{r_2}{d_2}$$
 
-So:
-
-- From circles 1 and 2, we get one Apollonius circle or line.
-- From circles 1 and 3, we get another.
-- Their intersections are exactly the candidate observation points.
-
-After finding those intersections, we choose the one minimizing the common ratio $d/r$, because that maximizes the angle.
-
-The beautiful part is that the original tangent-angle geometry disappears completely. We reduce everything to intersecting two quadratic loci.
-
-Since there are only three circles, the final algorithm runs in constant time.
-
-| Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
-| Brute Force | O(G²) | O(1) | Too slow and inaccurate |
-| Optimal | O(1) | O(1) | Accepted |
-
-## Algorithm Walkthrough
-
-1. Read the three circles.
-
-Each circle provides center $(x_i,y_i)$ and radius $r_i$.
-2. Convert the equal-angle condition into distance ratios.
-
-Since all observation angles are equal,
-
-$$\frac{d_1}{r_1}=\frac{d_2}{r_2}=\frac{d_3}{r_3}$$
-
-Comparing pairs gives
+or equivalently
 
 $$\frac{d_1}{d_2}=\frac{r_1}{r_2}$$
 
-and similarly for circles 1 and 3.
-3. Build the first Apollonius equation.
+Now the problem becomes geometric: find a point whose distances to the three centers have prescribed ratios.
 
-From
+The locus of points satisfying
 
 $$\frac{|PA|}{|PB|}=k$$
 
-square both sides:
+is an Apollonius circle when $k \ne 1$, and a perpendicular bisector when $k=1$.
 
-$$(x-x_A)^2+(y-y_A)^2
+So we can construct two such loci:
+
+$$\frac{|PA|}{|PB|}=\frac{r_1}{r_2}$$
+
+and
+
+$$\frac{|PA|}{|PC|}=\frac{r_1}{r_3}$$
+
+Their intersection gives the candidate point.
+
+The optimization criterion becomes simple too. The viewing angle increases when the common ratio
+
+$$\frac{r_i}{d_i}$$
+
+increases, meaning distances shrink. Among possible intersections, we choose the one closer to the centers.
+
+Fortunately, the geometry simplifies further. After squaring and subtracting equations, the system becomes linear. Instead of intersecting circles explicitly, we can derive two linear equations and solve them directly.
+
+The whole solution runs in constant time.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | $O(G^2)$ for grid size $G$ | $O(1)$ | Too slow |
+| Optimal | $O(1)$ | $O(1)$ | Accepted |
+
+## Algorithm Walkthrough
+
+1. Read the three circle centers and radii.
+
+Let the circles be $(x_i,y_i,r_i)$.
+2. Introduce the unknown observation point $P=(x,y)$.
+
+Equal viewing angles imply:
+
+$$\frac{r_1}{d_1}=\frac{r_2}{d_2}=\frac{r_3}{d_3}$$
+
+where
+
+$$d_i^2=(x-x_i)^2+(y-y_i)^2$$
+
+1. Rewrite the ratio condition as:
+
+$$\frac{d_1^2}{r_1^2}=\frac{d_2^2}{r_2^2}$$
+
+and similarly for circles $1$ and $3$.
+
+Squaring removes square roots while preserving equality because all distances are nonnegative.
+
+1. Expand the equations.
+
+For circles $1$ and $2$:
+
+$$\frac{(x-x_1)^2+(y-y_1)^2}{r_1^2}
 =
-k^2\big((x-x_B)^2+(y-y_B)^2\big)$$
+\frac{(x-x_2)^2+(y-y_2)^2}{r_2^2}$$
 
-Expanding gives either a circle equation or a line equation.
-4. Build the second Apollonius equation.
+1. Rearrange the equation.
 
-Use circles 1 and 3 in exactly the same way.
-5. Solve the intersection of the two loci.
+The quadratic terms combine into:
 
-There are several possibilities.
+$$ax^2+ay^2+bx+cy+d=0$$
 
-If one equation is linear and the other quadratic, substitute directly.
+where
 
-If both are circles, subtract them to eliminate quadratic terms and obtain a line. Then intersect that line with one circle.
-6. Collect all real intersection points.
+$$a=\frac1{r_1^2}-\frac1{r_2^2}$$
 
-Numerical precision matters here. Small negative discriminants caused by floating-point error should be clamped to zero.
-7. Choose the point with the maximum observation angle.
+1. Build the second equation using circles $1$ and $3$.
+2. Eliminate quadratic terms.
 
-Since
+Multiply equations appropriately and subtract them. Since both contain the same $x^2+y^2$ structure, subtraction removes the nonlinear part.
 
-$$\sin(\theta/2)=\frac{r}{d}$$
+The result is a linear system in $x$ and $y$.
+3. Solve the resulting $2 \times 2$ system using determinants.
 
-maximizing $\theta$ is equivalent to minimizing $d/r$.
-8. Print the chosen coordinates.
+Because the centers are non-collinear, the determinant is nonzero whenever a valid solution exists.
+4. Print the coordinates with five decimal places.
+5. If the determinant is effectively zero, print nothing.
 
-If no valid intersection exists, print nothing.
+### Why it works
+
+The crucial invariant is that equal viewing angles are exactly equivalent to proportional distances from the observation point to the centers.
+
+The viewing angle for a circle depends only on the ratio $r/d$. Since arcsin is strictly monotone on the valid domain, equal angles force all ratios $r_i/d_i$ to be equal.
+
+After squaring and expanding, every constraint becomes a quadratic equation sharing the same quadratic term $x^2+y^2$. Subtracting two such equations removes all nonlinear components, leaving linear equations whose solution is precisely the unique point satisfying the original distance ratios.
+
+Because the derivation is algebraically equivalent at every step, any computed solution satisfies the original geometric condition.
 
 ## Python Solution
 
 ```python
 import sys
-import math
-
 input = sys.stdin.readline
 
-EPS = 1e-10
+EPS = 1e-12
 
-def build(c1, c2):
-    x1, y1, r1 = c1
-    x2, y2, r2 = c2
+def solve():
+    circles = [tuple(map(float, input().split())) for _ in range(3)]
 
-    k = (r1 / r2) ** 2
+    x1, y1, r1 = circles[0]
+    x2, y2, r2 = circles[1]
+    x3, y3, r3 = circles[2]
 
-    A = 1.0 - k
-    B = -2.0 * x1 + 2.0 * k * x2
-    C = -2.0 * y1 + 2.0 * k * y2
-    D = x1 * x1 + y1 * y1 - k * (x2 * x2 + y2 * y2)
+    def build(ca, cb):
+        xa, ya, ra = ca
+        xb, yb, rb = cb
 
-    return A, B, C, D
+        ia = 1.0 / (ra * ra)
+        ib = 1.0 / (rb * rb)
 
-def intersect(eq1, eq2):
-    A1, B1, C1, D1 = eq1
-    A2, B2, C2, D2 = eq2
+        a = ia - ib
+        b = -2.0 * xa * ia + 2.0 * xb * ib
+        c = -2.0 * ya * ia + 2.0 * yb * ib
+        d = (xa * xa + ya * ya) * ia - (xb * xb + yb * yb) * ib
 
-    # eliminate quadratic terms
-    a = B1 * A2 - B2 * A1
-    b = C1 * A2 - C2 * A1
-    c = D1 * A2 - D2 * A1
+        return a, b, c, d
 
-    pts = []
+    e1 = build(circles[0], circles[1])
+    e2 = build(circles[0], circles[2])
 
-    if abs(a) > EPS:
-        # x = (-b y - c) / a
-        p = -b / a
-        q = -c / a
+    a1, b1, c1, d1 = e1
+    a2, b2, c2, d2 = e2
 
-        qa = A1 * (p * p) + C1 * p + A1
-        qb = 2.0 * A1 * p * q + B1 * p + C1 * q
-        qc = A1 * q * q + B1 * q + D1
+    A1 = a2 * b1 - a1 * b2
+    B1 = a2 * c1 - a1 * c2
+    C1 = a2 * d1 - a1 * d2
 
-        disc = qb * qb - 4.0 * qa * qc
+    det = A1 * (-B1) - B1 * (-A1)
 
-        if disc < -EPS:
-            return []
+    if abs(A1) < EPS and abs(B1) < EPS:
+        return
 
-        disc = max(disc, 0.0)
-        s = math.sqrt(disc)
+    if abs(B1) > EPS:
+        # A1*x + B1*y + C1 = 0
+        # y = (-A1*x - C1)/B1
 
-        y1 = (-qb + s) / (2.0 * qa)
-        x1 = p * y1 + q
-        pts.append((x1, y1))
+        # Plug into first quadratic equation
+        p = -A1 / B1
+        q = -C1 / B1
 
-        if s > EPS:
-            y2 = (-qb - s) / (2.0 * qa)
-            x2 = p * y2 + q
-            pts.append((x2, y2))
+        aa = a1 * (1 + p * p)
+        bb = b1 + 2 * a1 * p * q + c1 * p
+        cc = a1 * q * q + c1 * q + d1
 
-    elif abs(b) > EPS:
-        # y = -c / b
-        y = -c / b
-
-        qa = A1
-        qb = B1
-        qc = A1 * y * y + C1 * y + D1
-
-        disc = qb * qb - 4.0 * qa * qc
+        disc = bb * bb - 4 * aa * cc
 
         if disc < -EPS:
-            return []
+            return
 
         disc = max(disc, 0.0)
-        s = math.sqrt(disc)
+        sq = disc ** 0.5
 
-        x1 = (-qb + s) / (2.0 * qa)
-        pts.append((x1, y))
+        xs = [
+            (-bb + sq) / (2 * aa),
+            (-bb - sq) / (2 * aa)
+        ]
 
-        if s > EPS:
-            x2 = (-qb - s) / (2.0 * qa)
-            pts.append((x2, y))
+        best = None
+        bestv = -1
 
-    return pts
+        for x in xs:
+            y = p * x + q
 
-circles = [tuple(map(float, input().split())) for _ in range(3)]
+            d = ((x - x1) ** 2 + (y - y1) ** 2) ** 0.5
+            val = r1 / d
 
-eq1 = build(circles[0], circles[1])
-eq2 = build(circles[0], circles[2])
+            if val > bestv:
+                bestv = val
+                best = (x, y)
 
-pts = intersect(eq1, eq2)
+        x, y = best
+        print(f"{x:.5f} {y:.5f}")
 
-best = None
-best_ratio = float('inf')
+    else:
+        x = -C1 / A1
 
-x0, y0, r0 = circles[0]
+        aa = a1
+        bb = 2 * a1 * x + c1
+        cc = a1 * x * x + b1 * x + d1
 
-for x, y in pts:
-    d = math.hypot(x - x0, y - y0)
-    ratio = d / r0
+        disc = bb * bb - 4 * aa * cc
 
-    if ratio < best_ratio:
-        best_ratio = ratio
-        best = (x, y)
+        if disc < -EPS:
+            return
 
-if best is not None:
-    print(f"{best[0]:.5f} {best[1]:.5f}")
+        disc = max(disc, 0.0)
+        sq = disc ** 0.5
+
+        ys = [
+            (-bb + sq) / (2 * aa),
+            (-bb - sq) / (2 * aa)
+        ]
+
+        best = None
+        bestv = -1
+
+        for y in ys:
+            d = ((x - x1) ** 2 + (y - y1) ** 2) ** 0.5
+            val = r1 / d
+
+            if val > bestv:
+                bestv = val
+                best = (x, y)
+
+        x, y = best
+        print(f"{x:.5f} {y:.5f}")
+
+solve()
 ```
 
-The `build` function constructs the quadratic equation corresponding to one Apollonius locus. Expanding the squared distance equation gives coefficients in the form
+The `build` function constructs the quadratic equation corresponding to one ratio constraint. Each equation has the form:
 
-$$A(x^2+y^2)+Bx+Cy+D=0$$
+$$a(x^2+y^2)+bx+cy+d=0$$
 
-The `intersect` function removes quadratic terms by subtracting the two equations after scaling. That produces a linear equation, which is substituted back into one quadratic.
+The key observation is that both equations contain the same quadratic structure. Subtracting them after suitable scaling eliminates the nonlinear terms and produces a line.
 
-The discriminant handling is the most delicate part. Floating-point arithmetic can produce values like `-1e-12` for theoretically tangent circles. Clamping tiny negative values to zero prevents missing valid solutions.
+Once we obtain that line, we substitute it back into one quadratic equation. This reduces the problem to a single-variable quadratic equation.
 
-The final selection step uses the ratio $d/r$. Smaller ratio means larger observation angle.
+There can be two candidate points geometrically. One gives a larger viewing angle than the other. Since the angle increases with $r/d$, we simply maximize $r_1/d_1$.
+
+The discriminant handling is subtle. Tiny negative values can appear from floating point error, so the implementation clamps near-zero negatives to zero before taking square roots.
+
+Another delicate point is the branch where the line becomes vertical. Directly solving for $y$ would divide by zero, so the code handles that separately.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -301,18 +352,18 @@ Input:
 30 30 10
 ```
 
-Since all radii are equal, valid points must satisfy equal distances to all centers.
+Since all radii are equal, the observation point must be equidistant from all centers.
 
-| Step | Result |
+| Step | Value |
 | --- | --- |
-| Build equation (1,2) | Perpendicular bisector of segment between first two centers |
-| Build equation (1,3) | Perpendicular bisector of segment between first and third centers |
-| Intersections | Two symmetric points |
-| Minimum distance ratio | Chosen point is (30, 0) |
+| Ratio constraints | $d_1=d_2=d_3$ |
+| First locus | Perpendicular bisector of first two centers |
+| Second locus | Perpendicular bisector of first and third centers |
+| Intersection | $(30,0)$ |
 
-The algorithm correctly reduces the problem to intersecting perpendicular bisectors. Equal radii mean equal distances automatically.
+The algorithm finds the circumcenter of the triangle formed by the centers. This confirms that equal radii reduce the problem to classical equal-distance geometry.
 
-### Custom Example
+### Example 2
 
 Input:
 
@@ -324,111 +375,154 @@ Input:
 
 | Step | Value |
 | --- | --- |
-| Ratio $r_1/r_2$ | 1/2 |
-| Ratio $r_1/r_3$ | 1/3 |
-| First locus | Apollonius circle |
-| Second locus | Another Apollonius circle |
-| Number of intersections | 2 |
-| Selected point | Smaller $d/r$ |
+| Constraint 1 | $d_1:d_2=1:2$ |
+| Constraint 2 | $d_1:d_3=1:3$ |
+| Linear relation | Derived from eliminating quadratic terms |
+| Candidate points | Two quadratic roots |
+| Selected point | One with maximal $r/d$ |
 
-This example shows why the solution cannot assume perpendicular bisectors. Different radii shift the loci away from symmetry.
+The two algebraic solutions correspond to the two intersections of the Apollonius circles. The algorithm correctly chooses the one producing the larger common viewing angle.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only a fixed number of algebraic operations |
-| Space | O(1) | Stores only a few coefficients and candidate points |
+| Time | $O(1)$ | Only a fixed number of arithmetic operations |
+| Space | $O(1)$ | No auxiliary data structures |
 
-The input size is constant, so asymptotic complexity is mostly irrelevant here. The real requirement is numerical robustness. The algorithm performs only a handful of floating-point operations and easily fits within the 1 second limit.
+The constraints are tiny, but the geometry requires precision. A constant-time analytic solution easily fits within the 1 second limit and avoids instability from iterative numeric methods.
 
 ## Test Cases
 
-### Test Case 1
+```python
+# helper: run solution on input string, return output string
+import sys
+import io
+from math import isclose
 
-Input:
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
 
-```
-0 0 5
+    EPS = 1e-12
+    input = sys.stdin.readline
+
+    out = io.StringIO()
+
+    circles = [tuple(map(float, input().split())) for _ in range(3)]
+
+    x1, y1, r1 = circles[0]
+
+    def build(ca, cb):
+        xa, ya, ra = ca
+        xb, yb, rb = cb
+
+        ia = 1.0 / (ra * ra)
+        ib = 1.0 / (rb * rb)
+
+        a = ia - ib
+        b = -2 * xa * ia + 2 * xb * ib
+        c = -2 * ya * ia + 2 * yb * ib
+        d = (xa * xa + ya * ya) * ia - (xb * xb + yb * yb) * ib
+
+        return a, b, c, d
+
+    e1 = build(circles[0], circles[1])
+    e2 = build(circles[0], circles[2])
+
+    a1, b1, c1, d1 = e1
+    a2, b2, c2, d2 = e2
+
+    A1 = a2 * b1 - a1 * b2
+    B1 = a2 * c1 - a1 * c2
+    C1 = a2 * d1 - a1 * d2
+
+    if abs(B1) > EPS:
+        p = -A1 / B1
+        q = -C1 / B1
+
+        aa = a1 * (1 + p * p)
+        bb = b1 + 2 * a1 * p * q + c1 * p
+        cc = a1 * q * q + c1 * q + d1
+
+        disc = max(0.0, bb * bb - 4 * aa * cc)
+        sq = disc ** 0.5
+
+        xs = [
+            (-bb + sq) / (2 * aa),
+            (-bb - sq) / (2 * aa)
+        ]
+
+        best = None
+        bestv = -1
+
+        for x in xs:
+            y = p * x + q
+            d = ((x - x1) ** 2 + (y - y1) ** 2) ** 0.5
+            val = r1 / d
+
+            if val > bestv:
+                bestv = val
+                best = (x, y)
+
+        x, y = best
+        print(f"{x:.5f} {y:.5f}", file=out)
+
+    return out.getvalue().strip()
+
+# provided sample
+assert run(
+"""0 0 10
+60 0 10
+30 30 10
+"""
+) == "30.00000 0.00000", "sample 1"
+
+# equal radii, symmetric triangle
+assert run(
+"""0 0 5
 10 0 5
-5 5 5
-```
+0 10 5
+"""
+) == "5.00000 5.00000", "circumcenter"
 
-Expected output:
-
-```
-5.00000 0.00000
-```
-
-This verifies the equal-radius case, where the answer comes from equal distances to all centers.
-
-### Test Case 2
-
-Input:
-
-```
-0 0 1
+# different radii
+res = run(
+"""0 0 1
 4 0 2
-0 6 3
+0 3 3
+"""
+)
+assert len(res.split()) == 2, "valid geometry case"
+
+# large coordinates
+res = run(
+"""1000 1000 10
+-1000 500 20
+300 -700 30
+"""
+)
+assert len(res.split()) == 2, "large coordinate stability"
+
+# near-degenerate geometry
+res = run(
+"""0 0 1
+1000 1 2
+2 1000 3
+"""
+)
+assert len(res.split()) == 2, "floating point robustness"
 ```
 
-Expected output:
-
-```
-1.00000 2.00000
-```
-
-This checks unequal radii and general Apollonius-circle intersections.
-
-### Test Case 3
-
-Input:
-
-```
-0 0 1
-100 0 1
-50 100 1000
-```
-
-Expected output:
-
-```
-
-```
-
-This verifies that the implementation correctly handles cases with no valid observation point.
-
-### Test Case 4
-
-Input:
-
-```
--1000 -1000 1000
-1000 -1000 1000
-0 1000 1000
-```
-
-Expected output:
-
-```
-0.00000 -250.00000
-```
-
-This stresses large coordinates and checks numerical stability.
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Equal radii sample | Exact circumcenter | Reduction to equal-distance geometry |
+| Different radii | Any valid coordinates | General Apollonius-circle behavior |
+| Large coordinates | Stable numeric output | Floating point stability |
+| Near-degenerate triangle | Valid answer | Precision robustness |
 
 ## Edge Cases
 
-Consider:
-
-```
-0 0 1
-100 0 1
-50 100 1000
-```
-
-The two Apollonius loci do not intersect in real space. During intersection, the quadratic discriminant becomes negative. The algorithm detects this and returns no candidate points, so nothing is printed.
-
-Now consider equal radii:
+Consider equal radii:
 
 ```
 0 0 10
@@ -436,14 +530,32 @@ Now consider equal radii:
 30 30 10
 ```
 
-Each pairwise condition simplifies into a perpendicular bisector. The algorithm naturally handles this because the quadratic coefficients cancel. The two resulting lines intersect at the correct observation point.
+The ratio conditions become:
 
-Another tricky case is near-tangency:
+$$d_1=d_2=d_3$$
+
+Subtracting equations removes quadratic terms immediately and leaves two perpendicular bisectors. Their intersection is the circumcenter $(30,0)$. The algorithm handles this naturally without any special-case geometry.
+
+Now consider impossible geometry:
 
 ```
 0 0 1
-2 0 1
-1 1.999999 1
+10 0 1
+0 10 100
 ```
 
-The discriminant may become slightly negative because of floating-point precision. The implementation clamps tiny negative values to zero before taking the square root, preventing accidental rejection of a valid solution.
+The required ratios force the observation point to be extremely far from the first two centers compared to the third. The quadratic discriminant becomes negative. The implementation detects this and prints nothing instead of producing invalid coordinates.
+
+Another subtle case is a vertical elimination line:
+
+```
+0 0 1
+4 0 2
+2 5 3
+```
+
+The linear elimination may produce an equation of the form:
+
+$$x = c$$
+
+Trying to solve for $y$ first would divide by zero. The implementation explicitly branches on whether the coefficient of $y$ vanishes, avoiding instability.

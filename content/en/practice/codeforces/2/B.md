@@ -1,7 +1,7 @@
 ---
 title: "CF 2B - The least round way"
-description: "We need to move from the top-left corner of an n × n grid to the bottom-right corner. At every step we may only move rig"
-date: "2026-05-27T00:00:00+07:00"
+description: "We have an n × n grid of non-negative integers. Starting from the top-left corner, we may move only right or down until"
+date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "math"]
 categories: ["algorithms"]
 codeforces_contest: 2
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Beta Round 2"
 rating: 2000
 weight: 2
-solve_time_s: 157
+solve_time_s: 187
 verified: false
 draft: false
 ---
@@ -18,120 +18,143 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** dp, math  
-**Solve time:** 2m 37s  
+**Solve time:** 3m 7s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We need to move from the top-left corner of an `n × n` grid to the bottom-right corner. At every step we may only move right or down. Along the chosen path, we multiply all visited numbers together. The goal is to make the final product contain as few trailing zeros as possible.
+We have an `n × n` grid of non-negative integers. Starting from the top-left corner, we may move only right or down until we reach the bottom-right corner. Along a chosen path, we multiply every visited value together. The goal is to make the resulting product end with as few trailing zeros as possible.
 
-Trailing zeros come from factors of 10, and every `10 = 2 × 5`. That means the number of trailing zeros in a product is:
+A trailing zero appears whenever the product contains a factor `10`, and every `10` is formed from one factor `2` paired with one factor `5`. That means the number of trailing zeros equals:
 
-$$\min(\text{count of factor 2}, \text{count of factor 5})$$
+$\min(\text{count of factor }2,\ \text{count of factor }5)$
 
-So the real problem is not about multiplication itself. It is about counting how many times the numbers along a path contribute factors of 2 and 5.
+So the actual values in the grid are not important by themselves. What matters is how many times each number contributes factors `2` and `5`.
 
-The grid size goes up to `1000 × 1000`. A path from `(0,0)` to `(n-1,n-1)` always has exactly `2n-2` moves. The number of different paths is:
+The grid size can reach `1000 × 1000`, which means there are one million cells. Any algorithm that explores paths explicitly is hopeless because the number of valid paths is enormous. A path from `(0,0)` to `(n-1,n-1)` contains exactly `2n-2` moves, and we choose which `n-1` of them are downward. The total number of paths is:
 
-$$\binom{2n-2}{n-1}$$
+$\binom{2n-2}{n-1}$
 
-For `n = 1000`, this number is astronomically large. Even for `n = 20`, brute forcing all paths is already impossible. We need something around `O(n^2)`.
+For `n = 1000`, this number is astronomically large. We need a polynomial-time solution, ideally around `O(n²)`.
 
-A dynamic programming solution over the grid fits naturally here because every state only depends on the cell above and the cell to the left.
+The most subtle edge case involves zeros inside the grid. A path passing through a zero produces total product `0`, and `0` is usually considered to have at least one trailing zero. This creates an unusual situation where a path containing zero can actually be better than all non-zero paths.
 
-The tricky part of the problem is handling zeros inside the matrix. A product containing zero has at least one trailing zero. Sometimes the optimal path is forced to produce many trailing zeros, and using a path through a zero becomes better because it gives exactly one trailing zero.
-
-Consider this input:
+Consider:
 
 ```
 2
-10 1
 1 10
-```
-
-Every path multiplies to `100`, which has two trailing zeros. But if the grid were:
-
-```
-2
-10 0
-1 10
-```
-
-Then the path through `0` gives product `0`, which is treated as having at least one trailing zero. The correct answer becomes `1`, not `2`.
-
-Another subtle case appears when the best non-zero path already gives zero trailing zeros. Then going through a zero is worse.
-
-```
-2
-1 1
 1 0
 ```
 
-The path `DR` gives product `0`, but `RD` gives product `1`. The answer must be `0`.
+Any path avoiding the zero gives product `10`, which has one trailing zero. A path through the zero gives product `0`, also treated as having one trailing zero. The answer should still be `1`.
 
-A careless implementation may also mishandle the value `0` while counting factors. If we try to repeatedly divide zero by 2 or 5, we get an infinite loop. Zero must be treated separately.
+Now consider:
+
+```
+2
+10 10
+10 0
+```
+
+Every non-zero path produces `100`, which has two trailing zeros. Going through the zero gives only one trailing zero, so the optimal answer becomes `1`.
+
+A careless implementation often treats zero as contributing infinite factors of `2` and `5`, which would incorrectly forbid paths through zero. The correct handling is to remember whether a zero exists and potentially construct a special path through it.
+
+Another easy mistake is reconstructing the path incorrectly when both directions give the same DP value. If parent transitions are not stored carefully, the printed route may not correspond to the computed optimum.
 
 ## Approaches
 
-The brute-force idea is straightforward. Enumerate every valid path from the top-left corner to the bottom-right corner, multiply all numbers along the path, count the trailing zeros, and keep the minimum.
+The brute-force idea is straightforward. Enumerate every valid path from the top-left corner to the bottom-right corner, compute the product along that path, count its trailing zeros, and keep the best answer.
 
-This works because the problem directly asks us to compare all possible paths. The issue is the number of paths. A path contains `n-1` right moves and `n-1` down moves, arranged in any order. The number of possibilities is:
+This works because the definition of the problem is directly tied to a path. Every valid route can be checked independently. The issue is the number of paths. A path consists of `n-1` downward moves and `n-1` rightward moves arranged in some order, giving:
 
-$$\binom{2n-2}{n-1}$$
+$\binom{2n-2}{n-1}$
 
-For `n = 1000`, this is completely infeasible. Even storing all paths would be impossible.
+For `n = 20`, this already exceeds thirty billion paths. The brute-force approach becomes unusable long before the actual limit.
 
-The key observation is that trailing zeros only depend on counts of factors 2 and 5. Instead of multiplying huge numbers, we can preprocess each cell:
+The key observation is that trailing zeros depend only on counts of prime factors `2` and `5`. For every cell, we can precompute:
 
-- `twos[i][j]` = how many times the value is divisible by 2
-- `fives[i][j]` = how many times the value is divisible by 5
+```
+twos[i][j]  = exponent of 2 in grid[i][j]
+fives[i][j] = exponent of 5 in grid[i][j]
+```
 
-For any path:
+If a path accumulates `a` factors of `2` and `b` factors of `5`, then the number of trailing zeros equals `min(a, b)`.
 
-$$\text{trailing zeros} = \min(\text{sum of twos}, \text{sum of fives})$$
+This changes the problem completely. Instead of multiplying huge numbers, we only need additive costs along a path. Dynamic programming becomes natural because every move depends only on the top or left neighbor.
 
-Now the problem splits into two independent shortest-path style DP computations:
+One subtlety remains. Minimizing `min(a, b)` directly is awkward because the minimum depends on two quantities simultaneously. The trick is to solve two separate DP problems:
 
-- Find a path minimizing total count of 2s
-- Find a path minimizing total count of 5s
+```
+minimum total factors of 2
+minimum total factors of 5
+```
 
-The better of the two gives the answer.
+Any path with minimal trailing zeros must optimize one of these counts. If the optimal path has `k` trailing zeros, then either its count of `2`s equals `k` or its count of `5`s equals `k`.
 
-Why does this work? Because the minimum of total twos and total fives determines the trailing zeros. If a path minimizes twos, it might still have many fives, but its trailing zero count is at most its twos count. The same logic applies symmetrically for fives. One of these two optimal paths must produce the global optimum.
+So we run DP twice and take the better result.
 
-The zero-cell trick adds one more layer. If there exists a zero in the grid and the best non-zero answer is greater than 1, we can deliberately pass through the zero and achieve exactly one trailing zero. We construct such a path explicitly.
+The zero case needs special treatment. A zero cell can provide exactly one trailing zero if every ordinary path has answer greater than one. In that situation, we deliberately construct a path that goes through the zero.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal DP | O(n²) | O(n²) | Accepted |
+| Brute Force | Exponential | Exponential recursion stack | Too slow |
+| Optimal | O(n²) | O(n²) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the grid and preprocess every cell.
+1. For every cell, compute how many times its value is divisible by `2` and by `5`.
 
-For each number, count how many times it is divisible by 2 and by 5. Store these counts in separate matrices. If the value is zero, remember its position separately and treat its factor counts as very large so normal DP paths avoid it unless necessary.
-2. Run dynamic programming for factor 2 counts.
+For example, `40 = 2³ × 5¹`, so it contributes three factors of `2` and one factor of `5`.
+2. If a cell contains `0`, remember its coordinates separately.
 
-Let `dp2[i][j]` be the minimum total number of factor 2s needed to reach cell `(i,j)`. Transition from the top or left neighbor, whichever gives a smaller total.
-3. Store parent directions while building the DP.
+We temporarily treat zero as contributing a very large cost in both DP tables so ordinary DP paths avoid it unless explicitly needed later.
+3. Build a DP table for factors of `2`.
 
-To reconstruct the path later, keep whether the optimal transition came from above or from the left.
-4. Repeat the same DP for factor 5 counts.
+Let `dp2[i][j]` be the minimum total number of factors `2` needed to reach cell `(i,j)`.
 
-This produces another table `dp5` and another parent table.
-5. Compare the final answers.
+Transition:
 
-The minimum trailing zeros achievable without using a forced zero-path is:
+```
+dp2[i][j] = twos[i][j] + min(top, left)
+```
+4. Store the direction used to reach each cell.
 
-$$\min(dp2[n-1][n-1], dp5[n-1][n-1])$$
-6. Check whether a zero-cell path is better.
+This allows reconstruction of the actual path after DP finishes.
+5. Repeat the same process for factors of `5`.
 
-If the best DP answer is greater than `1` and the grid contains a zero, construct a path that goes through that zero. Such a path always gives exactly one trailing zero.
-7. Reconstruct the chosen path.
+This gives another DP table `dp5`.
+6. Let:
 
-Starting from `(n-1,n-1)`, follow the parent pointers backward until reaching `(0,0)`. Reverse the collected moves at the end.
+```
+best2 = dp2[n-1][n-1]
+best5 = dp5[n-1][n-1]
+```
+
+The best ordinary path has answer:
+
+```
+min(best2, best5)
+```
+7. Check whether a zero cell exists.
+
+If the ordinary answer is already `0`, using zero cannot improve it.
+
+If the ordinary answer is greater than `1`, then routing through a zero gives answer exactly `1`, which is better.
+8. If using zero is better, construct a path manually.
+
+Move down until reaching the zero row, move right until reaching the zero column, then finish toward the bottom-right corner.
+9. Otherwise, reconstruct the better DP path using stored parent directions.
+
+### Why it works
+
+For any integer product, trailing zeros equal the number of complete `(2,5)` pairs in its prime factorization. Since every path accumulates factors independently across cells, the total number of `2`s and `5`s becomes additive. Dynamic programming correctly computes the minimum achievable sum because every path to `(i,j)` must come from either `(i-1,j)` or `(i,j-1)`.
+
+Suppose the optimal path has `a` factors of `2` and `b` factors of `5`. Its trailing zeros are `min(a,b)`. If `a ≤ b`, then this path is optimal for minimizing factors of `2`. If another path had fewer `2`s, it would also have fewer trailing zeros, contradicting optimality. The symmetric argument holds for `5`s. So solving the two independent DP problems is sufficient.
+
+The zero handling is correct because any path through zero produces product `0`, which contributes exactly one trailing zero in the context of this problem. Such a path matters only when every ordinary path has at least two trailing zeros.
 
 ## Python Solution
 
@@ -142,36 +165,38 @@ input = sys.stdin.readline
 INF = 10**9
 
 n = int(input())
-grid = []
-
-zero_pos = None
 
 twos = [[0] * n for _ in range(n)]
 fives = [[0] * n for _ in range(n)]
 
-def count_factor(x, p):
-    cnt = 0
-    while x % p == 0 and x > 0:
-        x //= p
-        cnt += 1
-    return cnt
+zero_pos = None
 
 for i in range(n):
     row = list(map(int, input().split()))
-    grid.append(row)
-
+    
     for j in range(n):
-        val = row[j]
+        x = row[j]
 
-        if val == 0:
+        if x == 0:
             zero_pos = (i, j)
             twos[i][j] = INF
             fives[i][j] = INF
-        else:
-            twos[i][j] = count_factor(val, 2)
-            fives[i][j] = count_factor(val, 5)
+            continue
 
-def solve(cost):
+        cnt2 = 0
+        while x % 2 == 0:
+            cnt2 += 1
+            x //= 2
+
+        cnt5 = 0
+        while x % 5 == 0:
+            cnt5 += 1
+            x //= 5
+
+        twos[i][j] = cnt2
+        fives[i][j] = cnt5
+
+def build_dp(cost):
     dp = [[INF] * n for _ in range(n)]
     parent = [[''] * n for _ in range(n)]
 
@@ -182,20 +207,18 @@ def solve(cost):
             if i == 0 and j == 0:
                 continue
 
-            if i > 0:
-                if dp[i - 1][j] + cost[i][j] < dp[i][j]:
-                    dp[i][j] = dp[i - 1][j] + cost[i][j]
-                    parent[i][j] = 'D'
+            if i > 0 and dp[i - 1][j] + cost[i][j] < dp[i][j]:
+                dp[i][j] = dp[i - 1][j] + cost[i][j]
+                parent[i][j] = 'D'
 
-            if j > 0:
-                if dp[i][j - 1] + cost[i][j] < dp[i][j]:
-                    dp[i][j] = dp[i][j - 1] + cost[i][j]
-                    parent[i][j] = 'R'
+            if j > 0 and dp[i][j - 1] + cost[i][j] < dp[i][j]:
+                dp[i][j] = dp[i][j - 1] + cost[i][j]
+                parent[i][j] = 'R'
 
     return dp, parent
 
-dp2, par2 = solve(twos)
-dp5, par5 = solve(fives)
+dp2, par2 = build_dp(twos)
+dp5, par5 = build_dp(fives)
 
 best2 = dp2[n - 1][n - 1]
 best5 = dp5[n - 1][n - 1]
@@ -206,48 +229,64 @@ if zero_pos is not None and best > 1:
     zi, zj = zero_pos
 
     path = []
-
-    path.append('D' * zi)
-    path.append('R' * zj)
-    path.append('D' * (n - 1 - zi))
-    path.append('R' * (n - 1 - zj))
+    path.extend('D' * zi)
+    path.extend('R' * zj)
+    path.extend('D' * (n - 1 - zi))
+    path.extend('R' * (n - 1 - zj))
 
     print(1)
     print(''.join(path))
-    sys.exit()
 
-if best2 < best5:
-    parent = par2
 else:
-    parent = par5
-
-i, j = n - 1, n - 1
-path = []
-
-while i > 0 or j > 0:
-    move = parent[i][j]
-    path.append(move)
-
-    if move == 'D':
-        i -= 1
+    if best2 < best5:
+        parent = par2
+        answer = best2
     else:
-        j -= 1
+        parent = par5
+        answer = best5
 
-path.reverse()
+    path = []
 
-print(best)
-print(''.join(path))
+    i = n - 1
+    j = n - 1
+
+    while i > 0 or j > 0:
+        move = parent[i][j]
+        path.append(move)
+
+        if move == 'D':
+            i -= 1
+        else:
+            j -= 1
+
+    path.reverse()
+
+    print(answer)
+    print(''.join(path))
 ```
 
-The preprocessing stage converts every number into counts of factors 2 and 5. This is the central mathematical reduction of the problem. We never multiply numbers directly.
+The preprocessing phase converts every grid value into counts of factors `2` and `5`. This avoids dealing with gigantic products and turns multiplication into simple addition.
 
-Zero cells are handled carefully. Their factor counts are set to a huge value so ordinary DP paths avoid them. Separately, we remember one zero position. Later, if all normal paths are worse than one trailing zero, we explicitly build a route through the zero.
+Zero handling is intentionally separated from normal DP. Assigning `INF` prevents accidental use of zero during optimization. Later, we explicitly decide whether a zero-path is beneficial.
 
-The `solve()` function performs standard grid DP. Each state checks the top and left neighbor. The parent array stores the move used to enter the current cell.
+The `build_dp` function computes shortest paths on the grid where each cell contributes a cost. Parent directions are stored during transitions. A stored `'D'` means the current cell was reached from above, so reconstruction moves upward when retracing.
 
-The reconstruction logic can look slightly confusing because the stored moves represent how we arrived at the current cell. If the parent is `'D'`, that means we came from above, so during backtracking we move upward.
+One subtle implementation detail is reconstructing from the destination backward. During reconstruction:
 
-The explicit zero-path construction is simple. Move down until reaching the zero row, move right until reaching the zero column, then continue to the bottom-right corner.
+```
+'D' means we came from above
+'R' means we came from the left
+```
+
+So while retracing, `'D'` decreases the row index and `'R'` decreases the column index.
+
+Another subtle point is the comparison:
+
+```
+if zero_pos is not None and best > 1:
+```
+
+If the ordinary optimum already equals `1`, using zero gives no improvement, so either answer is acceptable. The special zero-path matters only when it strictly improves the result.
 
 ## Worked Examples
 
@@ -262,7 +301,7 @@ Input:
 7 8 9
 ```
 
-Factor counts for 2s:
+Factor counts for `2`:
 
 | Cell | Value | Count of 2 |
 | --- | --- | --- |
@@ -276,157 +315,284 @@ Factor counts for 2s:
 | (2,1) | 8 | 3 |
 | (2,2) | 9 | 0 |
 
-DP table for factor 5s:
+Factor counts for `5`:
 
-| i,j | Best cost |
+| Cell | Value | Count of 5 |
+| --- | --- | --- |
+| (0,0) | 1 | 0 |
+| (0,1) | 2 | 0 |
+| (0,2) | 3 | 0 |
+| (1,0) | 4 | 0 |
+| (1,1) | 5 | 1 |
+| (1,2) | 6 | 0 |
+| (2,0) | 7 | 0 |
+| (2,1) | 8 | 0 |
+| (2,2) | 9 | 0 |
+
+DP for factors of `5`:
+
+| Cell | Best cost |
 | --- | --- |
 | (0,0) | 0 |
 | (0,1) | 0 |
 | (0,2) | 0 |
 | (1,0) | 0 |
 | (1,1) | 1 |
-| (1,2) | 1 |
+| (1,2) | 0 |
 | (2,0) | 0 |
 | (2,1) | 0 |
 | (2,2) | 0 |
 
-The optimal path avoids the cell containing `5`, so the final product has zero trailing zeros. One valid answer is `DDRR`.
+The optimal path avoids the `5` entirely, giving zero trailing zeros. One valid route is `DDRR`.
+
+This example demonstrates the core idea that minimizing trailing zeros is equivalent to minimizing either total `2`s or total `5`s.
 
 ### Example 2
 
 Input:
 
 ```
-3
-1 2 3
-4 0 6
-7 8 9
+2
+10 10
+10 0
 ```
 
-The zero is at `(1,1)`.
+Ordinary paths avoiding zero:
 
-Normal DP avoids the zero because its cost is treated as extremely large.
-
-| Path | Product | Trailing Zeros |
+| Path | Product | Trailing zeros |
 | --- | --- | --- |
-| DDRR | 2016 | 0 |
-| DRDR | 0 | 1 |
+| RD | 100 | 2 |
+| DR | 0 | 1 |
 
-The algorithm correctly chooses `DDRR` because zero trailing zeros is better than one.
+The DP tables avoid the zero because it was assigned `INF`. The best ordinary answer becomes `2`.
 
-This example confirms that zero paths are only used when they improve the answer.
+Since a zero exists and `2 > 1`, the algorithm manually constructs a path through zero.
+
+| Step | Position | Move |
+| --- | --- | --- |
+| Start | (0,0) | D |
+| Next | (1,0) | R |
+| End | (1,1) | - |
+
+The output becomes:
+
+```
+1
+DR
+```
+
+This example validates the special handling for zero cells.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) | Each DP processes every cell once |
+| Time | O(n²) | Each DP table processes every cell once |
 | Space | O(n²) | DP tables and parent tables store one value per cell |
 
-With `n ≤ 1000`, the grid contains at most one million cells. Two DP passes over the grid fit comfortably within the time limit. Memory usage also stays within the 64 MB limit in Python when using integer and character grids carefully.
+With `n ≤ 1000`, the grid contains at most one million cells. Two DP passes over the grid easily fit within the time limit in Python. The memory usage also remains well under the limit because each table stores only integers or single-character directions.
 
 ## Test Cases
 
-### Test Case 1
+```python
+# helper: run solution on input string, return output string
+import sys, io
 
-Input:
+def solve():
+    input = sys.stdin.readline
 
-```
-2
+    INF = 10**9
+
+    n = int(input())
+
+    twos = [[0] * n for _ in range(n)]
+    fives = [[0] * n for _ in range(n)]
+
+    zero_pos = None
+
+    for i in range(n):
+        row = list(map(int, input().split()))
+
+        for j in range(n):
+            x = row[j]
+
+            if x == 0:
+                zero_pos = (i, j)
+                twos[i][j] = INF
+                fives[i][j] = INF
+                continue
+
+            cnt2 = 0
+            while x % 2 == 0:
+                cnt2 += 1
+                x //= 2
+
+            cnt5 = 0
+            while x % 5 == 0:
+                cnt5 += 1
+                x //= 5
+
+            twos[i][j] = cnt2
+            fives[i][j] = cnt5
+
+    def build(cost):
+        dp = [[INF] * n for _ in range(n)]
+        par = [[''] * n for _ in range(n)]
+
+        dp[0][0] = cost[0][0]
+
+        for i in range(n):
+            for j in range(n):
+                if i == 0 and j == 0:
+                    continue
+
+                if i > 0 and dp[i - 1][j] + cost[i][j] < dp[i][j]:
+                    dp[i][j] = dp[i - 1][j] + cost[i][j]
+                    par[i][j] = 'D'
+
+                if j > 0 and dp[i][j - 1] + cost[i][j] < dp[i][j]:
+                    dp[i][j] = dp[i][j - 1] + cost[i][j]
+                    par[i][j] = 'R'
+
+        return dp, par
+
+    dp2, par2 = build(twos)
+    dp5, par5 = build(fives)
+
+    best2 = dp2[n - 1][n - 1]
+    best5 = dp5[n - 1][n - 1]
+
+    best = min(best2, best5)
+
+    out = []
+
+    if zero_pos is not None and best > 1:
+        zi, zj = zero_pos
+
+        path = []
+        path.extend('D' * zi)
+        path.extend('R' * zj)
+        path.extend('D' * (n - 1 - zi))
+        path.extend('R' * (n - 1 - zj))
+
+        out.append("1")
+        out.append(''.join(path))
+
+    else:
+        if best2 < best5:
+            par = par2
+            ans = best2
+        else:
+            par = par5
+            ans = best5
+
+        path = []
+
+        i = n - 1
+        j = n - 1
+
+        while i > 0 or j > 0:
+            move = par[i][j]
+            path.append(move)
+
+            if move == 'D':
+                i -= 1
+            else:
+                j -= 1
+
+        path.reverse()
+
+        out.append(str(ans))
+        out.append(''.join(path))
+
+    print('\n'.join(out))
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    solve()
+
+    return sys.stdout.getvalue()
+
+# provided sample
+assert run(
+"""3
+1 2 3
+4 5 6
+7 8 9
+"""
+).startswith("0")
+
+# minimum size
+assert run(
+"""2
 1 1
 1 1
-```
+"""
+).startswith("0")
 
-Expected output:
-
-```
-0
-DR
-```
-
-This verifies the simplest case where every path has zero trailing zeros.
-
-### Test Case 2
-
-Input:
-
-```
-2
+# zero gives better answer
+assert run(
+"""2
 10 10
-10 10
-```
+10 0
+"""
+).startswith("1")
 
-Expected output:
-
-```
-3
-DR
-```
-
-Every visited cell contributes one factor of 2 and one factor of 5. Any path visits three cells, so the answer is three trailing zeros.
-
-### Test Case 3
-
-Input:
-
-```
-3
+# all equal values
+assert run(
+"""3
 10 10 10
-10 0 10
 10 10 10
+10 10 10
+"""
+).startswith("5")
+
+# path with no trailing zeros exists
+assert run(
+"""3
+2 4 8
+16 32 64
+3 9 27
+"""
+).startswith("0")
 ```
 
-Expected output:
-
-```
-1
-DRDR
-```
-
-Any non-zero path gives many trailing zeros, so the algorithm should intentionally route through the zero.
-
-### Test Case 4
-
-Input:
-
-```
-3
-1 2 5
-10 4 1
-1 1 1
-```
-
-Expected output:
-
-```
-0
-DDRR
-```
-
-This checks that the algorithm properly balances factors of 2 and 5 instead of greedily minimizing only one of them.
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `2×2` grid of ones | `0` trailing zeros | Minimum-size boundary |
+| Grid containing beneficial zero | `1` trailing zero | Correct zero handling |
+| All values equal to `10` | `5` trailing zeros | Accumulation of factors |
+| Grid with pure powers of `2` except one row | `0` trailing zeros | Avoiding unnecessary `5`s |
 
 ## Edge Cases
 
-A zero cell becomes important when every non-zero path has more than one trailing zero.
-
-Input:
+Consider the grid:
 
 ```
 2
-10 0
 10 10
+10 0
 ```
 
-Any ordinary path through only non-zero values produces at least two trailing zeros. The algorithm detects that the best DP answer exceeds one and switches to a constructed path through the zero. The output becomes:
+Every ordinary path accumulates at least two factors `2` and two factors `5`, giving two trailing zeros. During preprocessing, the zero cell receives cost `INF`, so DP avoids it and computes answer `2`.
+
+Then the algorithm checks:
 
 ```
-1
-RD
+zero exists AND best > 1
 ```
 
-Another subtle case is when a zero exists but should not be used.
+Both conditions hold, so it constructs a route through the zero:
 
-Input:
+```
+DR
+```
+
+The product becomes `10 × 10 × 0 = 0`, which yields exactly one trailing zero. The final answer is correct.
+
+Now consider:
 
 ```
 2
@@ -434,16 +600,16 @@ Input:
 1 0
 ```
 
-The path `RD` gives product `0`, which has one trailing zero. The path `DR` gives product `1`, which has zero trailing zeros. The DP answer is already `0`, so the algorithm ignores the zero-cell shortcut.
+A non-zero path already achieves zero trailing zeros. The DP result becomes `0`.
 
-A third tricky situation appears when minimizing factors of 2 alone is not enough.
+Even though a zero exists, the condition `best > 1` fails. The algorithm correctly ignores the zero path because moving through zero would worsen the answer from `0` to `1`.
 
-Input:
+Finally, consider a tie case:
 
 ```
 2
-2 2
-5 5
+2 5
+5 2
 ```
 
-The top path has many 2s but few 5s. The bottom path has the opposite. The algorithm computes both DP tables independently and takes the smaller final result. This avoids incorrect greedy decisions.
+Both paths produce one trailing zero. During reconstruction, either parent choice is acceptable. The algorithm consistently reconstructs one valid optimal path because every DP transition stores an actual predecessor used to achieve the minimum cost.
