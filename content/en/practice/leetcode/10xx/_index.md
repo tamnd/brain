@@ -80,11 +80,11 @@ draft: false
 | 1067 | [Digit Count in Range](1067.md) | 🔴 Hard | 56s | This problem asks us to count how many times a given digit d appear… |
 | 1068 | [Product Sales Analysis I](1068.md) | 🟢 Easy | 1m 9s | This problem asks us to combine information from two database table… |
 | 1069 | [Product Sales Analysis II](1069.md) | 🟢 Easy | 2m 51s | This problem asks us to calculate the total quantity sold for each … |
-| 1070 | [Product Sales Analysis III](1070.md) | 🟡 Medium | 40s | The problem presents a Sales table, where each row represents a sal… |
+| 1070 | [Product Sales Analysis III](1070.md) | 🟡 Medium | 4m 5s | The problem asks us to analyze sales data stored in a Sales table a… |
 | 1071 | [Greatest Common Divisor of Strings](1071.md) | 🟢 Easy | 1m 26s | The problem asks us to find the greatest common divisor (GCD) of tw… |
 | 1072 | [Flip Columns For Maximum Number of Equal Rows](1072.md) | 🟡 Medium | 1m 6s | The problem gives us an m x n binary matrix, where every element is… |
 | 1073 | [Adding Two Negabinary Numbers](1073.md) | 🟡 Medium | 56s | The problem asks us to add two numbers that are represented in nega… |
-| 1074 | [Number of Submatrices That Sum to Target](1074.md) | 🔴 Hard | 43s | This problem asks us to count the number of submatrices in a given … |
+| 1074 | [Number of Submatrices That Sum to Target](1074.md) | 🔴 Hard | 4m 24s | The problem asks us to count how many non-empty rectangular submatr… |
 | 1075 | [Project Employees I](1075.md) | 🟢 Easy | 54s | This problem provides two database tables, Project and Employee. Th… |
 | 1076 | [Project Employees II](1076.md) | 🟢 Easy | 1m 19s | This problem asks us to identify the project or projects that have … |
 | 1077 | [Project Employees III](1077.md) | 🟡 Medium | 43s | The problem asks us to find the most experienced employees in each … |
@@ -100,12 +100,13 @@ draft: false
 | 1087 | [Brace Expansion](1087.md) | 🟡 Medium | 1m 3s | In this problem, we are given a string that represents multiple pos… |
 | 1088 | [Confusing Number II](1088.md) | 🔴 Hard | 1m 6s | In this problem, we are given an integer n, and we must count how m… |
 | 1089 | [Duplicate Zeros](1089.md) | 🟢 Easy | 48s | The problem asks us to modify a fixed-length integer array in-place… |
-| 1090 | [Largest Values From Labels](1090.md) | 🟡 Medium | 1m 21s | This problem gives us two arrays, values and labels, where each ind… |
+| 1090 | [Largest Values From Labels](1090.md) | 🟡 Medium | 4m 5s | The problem gives us two arrays, values and labels, where each inde… |
 | 1091 | [Shortest Path in Binary Matrix](1091.md) | 🟡 Medium | 52s | The problem asks us to find the shortest path from the top-left cor… |
-| 1092 | [Shortest Common Supersequence ](1092.md) | 🔴 Hard | 1m 11s | The problem gives us two strings, str1 and str2, and asks us to con… |
+| 1092 | [Shortest Common Supersequence ](1092.md) | 🔴 Hard | 1m 17s | The problem asks us to construct the shortest possible string that … |
 | 1093 | [Statistics from a Large Sample](1093.md) | 🟡 Medium | 53s | This problem asks us to compute several descriptive statistics-mini… |
 | 1094 | [Car Pooling](1094.md) | 🟡 Medium | 1m 9s | This problem asks us to determine whether a car can successfully co… |
 | 1095 | [Find in Mountain Array](1095.md) | 🔴 Hard | 3m 36s | This problem gives us a special type of array called a mountain arr… |
 | 1096 | [Brace Expansion II](1096.md) | 🔴 Hard | 1m 10s | The problem asks us to interpret a string expression representing a… |
-| 1098 | [Unpopular Books](1098.md) | 🟡 Medium | 55s | Let's solve LeetCode 1098 - Unpopular Books in the requested detail… |
+| 1097 | [Game Play Analysis V](1097.md) | 🔴 Hard | 1m 1s | This problem requires calculating the day one retention metric for … |
+| 1098 | [Unpopular Books](1098.md) | 🟡 Medium | 1m 46s | The problem asks us to identify books from a Books table that are c… |
 | 1099 | [Two Sum Less Than K](1099.md) | 🟢 Easy | 46s | The problem is asking us to find the largest sum of two distinct el… |
