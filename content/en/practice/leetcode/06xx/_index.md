@@ -40,6 +40,15 @@ draft: false
 | 628 | [Maximum Product of Three Numbers](628.md) | 🟢 Easy | 58s | The problem gives an integer array nums and asks us to select exact… |
 | 629 | [K Inverse Pairs Array](629.md) | 🔴 Hard | 34s | Here’s a full technical solution guide following your formatting ru… |
 | 630 | [Course Schedule III](630.md) | 🔴 Hard | 1m 18s | The problem gives a list of online courses, where each course is re… |
+| 631 | [Design Excel Sum Formula](631.md) | 🔴 Hard | 1m 11s | The problem asks us to design a miniature spreadsheet system simila… |
+| 632 | [Smallest Range Covering Elements from K Lists](632.md) | 🔴 Hard | 1m 16s | The problem gives us k sorted integer lists, and we must find the s… |
+| 633 | [Sum of Square Numbers](633.md) | 🟡 Medium | 1m 2s | The problem gives a non-negative integer c and asks whether it can … |
+| 634 | [Find the Derangement of An Array](634.md) | 🟡 Medium | 56s | The problem asks us to count how many permutations of the numbers 1… |
+| 635 | [Design Log Storage System](635.md) | 🟡 Medium | 35s | The problem is asking us to design a log storage system that suppor… |
+| 636 | [Exclusive Time of Functions](636.md) | 🟡 Medium | 1m 7s | This problem models how functions execute on a single-threaded CPU.… |
+| 637 | [Average of Levels in Binary Tree](637.md) | 🟢 Easy | 1m 10s | In this problem, we are given the root node of a binary tree, and w… |
+| 638 | [Shopping Offers](638.md) | 🟡 Medium | 34s | This problem asks us to find the minimum cost to buy a set of items… |
+| 639 | [Decode Ways II](639.md) | 🔴 Hard | 42s | The problem asks us to determine the number of ways an encoded stri… |
 | 651 | [4 Keys Keyboard](651.md) | 🟡 Medium | 57s | The problem gives us a keyboard with four operations: - Press A, wh… |
 | 652 | [Find Duplicate Subtrees](652.md) | 🟡 Medium | 1m 16s | The problem gives us the root of a binary tree and asks us to ident… |
 | 653 | [Two Sum IV - Input is a BST](653.md) | 🟢 Easy | 1m 1s | This problem gives us the root of a Binary Search Tree (BST) and an… |
