@@ -180,7 +180,7 @@
       bodyEl.appendChild(grp);
     });
 
-    if (window.innerWidth < 900) filledEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (window.innerWidth <= 768) filledEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   document.getElementById("js-cal-prev").addEventListener("click", function() {

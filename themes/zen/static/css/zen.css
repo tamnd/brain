@@ -894,7 +894,7 @@ html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12
 
 /* ===== Calendar styles (copied from brain, adapted) ====================== */
 
-.cal-page { display: flex; flex-direction: column; gap: 0; max-width: 900px; }
+.cal-page { display: flex; flex-direction: column; gap: 0; }
 .cal-page__header { margin-bottom: 1.5rem; }
 .cal-page__title { font-size: 1.75rem; font-weight: 700; margin: 0 0 0.25rem; letter-spacing: -0.02em; }
 .cal-page__sub { font-size: 0.9375rem; color: var(--muted-fg); margin: 0; }
@@ -1080,9 +1080,9 @@ html.no-transition *::after {
 @media (max-width: 768px) {
   .zen-main { padding: 1.5rem 0.75rem 3rem; }
 
-  .cal-body { flex-direction: column; gap: 1rem; }
+  .cal-body { flex-direction: column; gap: 1.25rem; }
   .cal-wrap { width: 100%; max-width: 100%; }
-  .cal-grid { gap: 1px; }
+  .cal-grid { gap: 2px; }
   .cal-posts { width: 100%; box-sizing: border-box; }
 
   .zen-pager { flex-direction: column; }
@@ -1113,6 +1113,11 @@ html.no-transition *::after {
   .zen-page-header h1 { font-size: 2rem; }
   .zen-section-header h1 { font-size: 2rem; }
   .zen-card-grid { gap: 1rem; }
+
+  .cal-wrap { width: 400px; }
+  .cal-body { gap: 3rem; }
+  .cal-cell__num { font-size: 0.8125rem; }
+  .cal-page__title { font-size: 2rem; }
 }
 
 /* 2xl: 1536px+ — push further */
@@ -1122,6 +1127,12 @@ html.no-transition *::after {
   .zen-main { padding: 3rem 2.5rem 6rem; }
   .zen-home-header__title { font-size: 2.625rem; }
   .zen-card-grid { gap: 1.25rem; }
+
+  .cal-wrap { width: 460px; }
+  .cal-body { gap: 4rem; }
+  .cal-cell__num { font-size: 0.875rem; }
+  .cal-nav__label { font-size: 1rem; }
+  .cal-posts { padding: 1.5rem; }
 }
 
 /* ===== Dark mode adjustments ============================================= */
