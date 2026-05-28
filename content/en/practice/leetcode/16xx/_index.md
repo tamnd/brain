@@ -37,7 +37,14 @@ draft: false
 | 1624 | [Largest Substring Between Two Equal Characters](1624.md) | 🟢 Easy | 3m 48s | The problem asks us to find the length of the longest substring tha… |
 | 1625 | [Lexicographically Smallest String After Applying Operations](1625.md) | 🟡 Medium | 1m 30s | The problem gives us a numeric string s of even length and two oper… |
 | 1626 | [Best Team With No Conflicts](1626.md) | 🟡 Medium | 1m 29s | The problem asks us to build a basketball team with the maximum pos… |
-| 1627 | [Graph Connectivity With Threshold](1627.md) | 🔴 Hard | 1m 29s | The problem gives us n cities labeled from 1 to n. Two cities are d… |
-| 1628 | [Design an Expression Tree With Evaluate Function](1628.md) | 🟡 Medium | 1m 24s | This problem asks us to design a binary expression tree that can ev… |
-| 1629 | [Slowest Key](1629.md) | 🟢 Easy | 59s | The problem asks us to analyze a sequence of keypresses on a keypad… |
-| 1630 | [Arithmetic Subarrays](1630.md) | 🟡 Medium | 1m 22s | The problem gives us an integer array nums and multiple queries rep… |
+| 1627 | [Graph Connectivity With Threshold](1627.md) | 🔴 Hard | 1m 21s | The problem gives us n cities labeled from 1 to n. Two cities are d… |
+| 1628 | [Design an Expression Tree With Evaluate Function](1628.md) | 🟡 Medium | 45s | The problem requires constructing a binary expression tree from a p… |
+| 1629 | [Slowest Key](1629.md) | 🟢 Easy | 1m 10s | This problem asks us to determine which key on a keypad was pressed… |
+| 1630 | [Arithmetic Subarrays](1630.md) | 🟡 Medium | 1m 37s | The problem asks us to determine whether subarrays of a given array… |
+| 1631 | [Path With Minimum Effort](1631.md) | 🟡 Medium | 2m 12s | The problem gives us a grid called heights, where each cell contain… |
+| 1632 | [Rank Transform of a Matrix](1632.md) | 🔴 Hard | 1m 52s | In this problem, we are given an m x n matrix of integers, and we m… |
+| 1633 | [Percentage of Users Attended a Contest](1633.md) | 🟢 Easy | 44s | This problem asks us to calculate the percentage of users who atten… |
+| 1634 | [Add Two Polynomials Represented as Linked Lists](1634.md) | 🟡 Medium | 52s | This problem asks us to add two polynomials represented as singly l… |
+| 1635 | [Hopper Company Queries I](1635.md) | 🔴 Hard | 1m 33s | This problem asks us to generate monthly statistics for the year 20… |
+| 1636 | [Sort Array by Increasing Frequency](1636.md) | 🟢 Easy | 52s | The problem requires sorting an array of integers based on the freq… |
+| 1638 | [Count Substrings That Differ by One Character](1638.md) | 🟡 Medium | 1m 27s | The problem asks us to count how many pairs of substrings, one take… |
