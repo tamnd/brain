@@ -54,12 +54,13 @@ draft: false
 | 1342 | [Number of Steps to Reduce a Number to Zero](1342.md) | 🟢 Easy | 1m 13s | The problem gives us a non-negative integer num and asks us to comp… |
 | 1343 | [Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](1343.md) | 🟡 Medium | 1m 15s | This problem asks us to count how many contiguous subarrays of leng… |
 | 1344 | [Angle Between Hands of a Clock](1344.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the smaller angle formed between th… |
-| 1345 | [Jump Game IV](1345.md) | 🔴 Hard | 1m 5s | The problem is asking us to find the minimum number of jumps requir… |
-| 1346 | [Check If N and Its Double Exist](1346.md) | 🟢 Easy | 44s | This problem asks us to determine whether, in a given integer array… |
+| 1345 | [Jump Game IV](1345.md) | 🔴 Hard | 59s | The problem is asking for the minimum number of steps required to r… |
+| 1346 | [Check If N and Its Double Exist](1346.md) | 🟢 Easy | 1m 40s | The problem gives an integer array arr and asks whether there exist… |
 | 1347 | [Minimum Number of Steps to Make Two Strings Anagram](1347.md) | 🟡 Medium | 1m 22s | This problem asks us to determine the minimum number of character r… |
 | 1348 | [Tweet Counts Per Frequency](1348.md) | 🟡 Medium | 56s | The problem is asking us to design a system that tracks tweets by t… |
-| 1349 | [Maximum Students Taking Exam](1349.md) | 🔴 Hard | 1m 37s | The problem gives us a classroom represented as a 2D matrix called … |
-| 1351 | [Count Negative Numbers in a Sorted Matrix](1351.md) | 🟢 Easy | 1m 13s | The problem gives us a two dimensional matrix called grid, where ea… |
+| 1349 | [Maximum Students Taking Exam](1349.md) | 🔴 Hard | 35s | LeetCode 1349 is long and detailed enough that a complete high qual… |
+| 1350 | [Students With Invalid Departments](1350.md) | 🟢 Easy | 1m 13s | This problem asks us to identify students who are enrolled in unive… |
+| 1351 | [Count Negative Numbers in a Sorted Matrix](1351.md) | 🟢 Easy | 49s | The problem asks us to count all the negative numbers in a 2D matri… |
 | 1352 | [Product of the Last K Numbers](1352.md) | 🟡 Medium | 1m 20s | This problem asks us to design a data structure that processes a st… |
 | 1353 | [Maximum Number of Events That Can Be Attended](1353.md) | 🟡 Medium | 1m 32s | The problem gives us a list of events, where each event is represen… |
 | 1354 | [Construct Target Array With Multiple Sums](1354.md) | 🔴 Hard | 1m | The problem asks whether it is possible to construct a given target… |
@@ -83,3 +84,4 @@ draft: false
 | 1376 | [Time Needed to Inform All Employees](1376.md) | 🟡 Medium | 1m 24s | This problem models a company hierarchy as a tree. Every employee h… |
 | 1377 | [Frog Position After T Seconds](1377.md) | 🔴 Hard | 1m 33s | The problem gives us an undirected tree with n vertices numbered fr… |
 | 1378 | [Replace Employee ID With The Unique Identifier](1378.md) | 🟢 Easy | 47s | This problem asks us to combine information from two database table… |
+| 1382 | [Balance a Binary Search Tree](1382.md) | 🟡 Medium | 55s | The problem asks us to take an input binary search tree (BST) and r… |
