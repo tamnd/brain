@@ -42,6 +42,7 @@ draft: false
 | 2229 | [Check if an Array Is Consecutive](2229.md) | 🟢 Easy | 1m 21s | The problem asks us to determine whether an integer array forms a p… |
 | 2230 | [The Users That Are Eligible for Discount](2230.md) | 🟢 Easy | 4m 26s | The problem gives us a database table named Purchases. Each row rep… |
 | 2231 | [Largest Number After Digit Swaps by Parity](2231.md) | 🟢 Easy | 1m 15s | The problem gives us a positive integer num and allows us to swap d… |
+| 2232 | [Minimize Result by Adding Parentheses to Expression](2232.md) | 🟡 Medium | 1m 15s | The problem gives us a string expression in the format: Both num1 a… |
 | 2233 | [Maximum Product After K Increments](2233.md) | 🟡 Medium | 1m 22s | The problem asks us to maximize the product of an array of non-nega… |
 | 2234 | [Maximum Total Beauty of the Gardens](2234.md) | 🔴 Hard | 1m 33s | The problem gives us n gardens, where flowers[i] represents the num… |
 | 2235 | [Add Two Integers](2235.md) | 🟢 Easy | 41s | The problem is asking for a very straightforward calculation: given… |
@@ -52,3 +53,11 @@ draft: false
 | 2240 | [Number of Ways to Buy Pens and Pencils](2240.md) | 🟡 Medium | 1m 11s | The problem gives us a total amount of money, along with the indivi… |
 | 2241 | [Design an ATM Machine](2241.md) | 🟡 Medium | 1m 19s | The problem asks us to design an ATM machine that supports two oper… |
 | 2242 | [Maximum Score of a Node Sequence](2242.md) | 🔴 Hard | 58s | The problem presents an undirected graph with n nodes, where each n… |
+| 2243 | [Calculate Digit Sum of a String](2243.md) | 🟢 Easy | 1m 8s | The problem gives us a numeric string s and an integer k. We repeat… |
+| 2244 | [Minimum Rounds to Complete All Tasks](2244.md) | 🟡 Medium | 1m 3s | The problem gives us an array named tasks, where each integer repre… |
+| 2245 | [Maximum Trailing Zeros in a Cornered Path](2245.md) | 🟡 Medium | 1m 27s | The problem gives us a two dimensional grid of positive integers. W… |
+| 2246 | [Longest Path With Different Adjacent Characters](2246.md) | 🔴 Hard | 50s | The problem gives us a tree structure, represented by a parent arra… |
+| 2247 | [Maximum Cost of Trip With K Highways](2247.md) | 🔴 Hard | 1m 25s | In this problem, we are given an undirected weighted graph represen… |
+| 2248 | [Intersection of Multiple Arrays](2248.md) | 🟢 Easy | 1m 11s | The problem gives us a 2D integer array called nums. Each element o… |
+| 2249 | [Count Lattice Points Inside a Circle](2249.md) | 🟡 Medium | 52s | The problem asks us to compute the number of lattice points (points… |
+| 2250 | [Count Number of Rectangles Containing Each Point](2250.md) | 🟡 Medium | 1m 22s | This problem gives us a collection of axis-aligned rectangles and a… |
