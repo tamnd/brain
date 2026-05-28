@@ -108,5 +108,5 @@ draft: false
 | 895 | [Maximum Frequency Stack](895.md) | 🔴 Hard | 1m 16s | The problem asks us to design a special stack-like data structure c… |
 | 896 | [Monotonic Array](896.md) | 🟢 Easy | 38s | This problem asks us to determine whether a given array of integers… |
 | 897 | [Increasing Order Search Tree](897.md) | 🟢 Easy | 1m 1s | This problem gives us the root of a Binary Search Tree, abbreviated… |
-| 898 | [Bitwise ORs of Subarrays](898.md) | 🟡 Medium | 1m 24s | The problem asks us to compute how many distinct values can be prod… |
-| 899 | [Orderly Queue](899.md) | 🔴 Hard | 54s | The problem gives us a string s and an integer k. In one operation,… |
+| 898 | [Bitwise ORs of Subarrays](898.md) | 🟡 Medium | 1m 12s | The problem asks us to compute every possible bitwise OR value that… |
+| 899 | [Orderly Queue](899.md) | 🔴 Hard | 57s | This problem gives us a string s and an integer k. We are allowed t… |

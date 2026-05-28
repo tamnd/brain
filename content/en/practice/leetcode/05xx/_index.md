@@ -92,3 +92,18 @@ draft: false
 | 581 | [Shortest Unsorted Continuous Subarray](581.md) | 🟡 Medium | 1m 9s | The problem gives an integer array nums and asks for the length of … |
 | 582 | [Kill Process](582.md) | 🟡 Medium | 1m 27s | This problem models processes in an operating system as a tree stru… |
 | 583 | [Delete Operation for Two Strings](583.md) | 🟡 Medium | 40s | The problem asks us to determine the minimum number of deletion ste… |
+| 584 | [Find Customer Referee](584.md) | 🟢 Easy | 40s | The problem provides a Customer table with three columns: id, name,… |
+| 585 | [Investments in 2016](585.md) | 🟡 Medium | 32s | Here’s a full, detailed technical solution guide for LeetCode 585 f… |
+| 586 | [Customer Placing the Largest Number of Orders](586.md) | 🟢 Easy | 59s | The problem gives us a database table named Orders with two columns… |
+| 587 | [Erect the Fence](587.md) | 🔴 Hard | 42s | This problem is asking us to find the convex hull of a set of point… |
+| 588 | [Design In-Memory File System](588.md) | 🔴 Hard | 44s | The problem asks us to design an in-memory file system that simulat… |
+| 589 | [N-ary Tree Preorder Traversal](589.md) | 🟢 Easy | 43s | The problem asks for a preorder traversal of an n-ary tree. In a pr… |
+| 590 | [N-ary Tree Postorder Traversal](590.md) | 🟢 Easy | 1m 14s | This problem asks us to perform a postorder traversal on an n-ary t… |
+| 591 | [Tag Validator](591.md) | 🔴 Hard | 1m 31s | This problem asks us to validate whether a given string represents … |
+| 592 | [Fraction Addition and Subtraction](592.md) | 🟡 Medium | 43s | The problem requires computing the result of a mathematical express… |
+| 593 | [Valid Square](593.md) | 🟡 Medium | 1m 11s | The problem gives four points in a 2D coordinate system and asks wh… |
+| 594 | [Longest Harmonious Subsequence](594.md) | 🟢 Easy | 38s | The problem asks us to find the length of the longest harmonious su… |
+| 595 | [Big Countries](595.md) | 🟢 Easy | 1m 6s | This problem asks us to query a database table named World and retu… |
+| 596 | [Classes With at Least 5 Students](596.md) | 🟢 Easy | 39s | This problem is asking us to find classes in a school database that… |
+| 597 | [Friend Requests I: Overall Acceptance Rate](597.md) | 🟢 Easy | 1m 16s | This problem asks us to compute the overall acceptance rate of frie… |
+| 599 | [Minimum Index Sum of Two Lists](599.md) | 🟢 Easy | 33s | This problem is asking us to find the common elements between two l… |
