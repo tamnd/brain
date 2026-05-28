@@ -31,24 +31,25 @@ draft: false
 | 1219 | [Path with Maximum Gold](1219.md) | 🟡 Medium | 1m 21s | The problem gives us a two dimensional grid representing a gold min… |
 | 1220 | [Count Vowels Permutation](1220.md) | 🔴 Hard | 1m 14s | The problem asks us to count how many valid strings of length n can… |
 | 1221 | [Split a String in Balanced Strings](1221.md) | 🟢 Easy | 59s | This problem gives us a string s that contains only the characters … |
-| 1222 | [Queens That Can Attack the King](1222.md) | 🟡 Medium | 1m 21s | This problem models the movement and attack rules of queens in ches… |
+| 1222 | [Queens That Can Attack the King](1222.md) | 🟡 Medium | 1m 14s | In this problem, we are given the positions of several black queens… |
 | 1223 | [Dice Roll Simulation](1223.md) | 🔴 Hard | 47s | The problem asks us to calculate the total number of valid sequence… |
-| 1224 | [Maximum Equal Frequency](1224.md) | 🔴 Hard | 42s | This problem is asking us to find the longest prefix of an array nu… |
-| 1225 | [Report Contiguous Dates](1225.md) | 🔴 Hard | 1m 19s | The problem provides two database tables, Failed and Succeeded, whi… |
-| 1226 | [The Dining Philosophers](1226.md) | 🟡 Medium | 1m 17s | This problem is a classic synchronization and concurrency challenge… |
-| 1227 | [Airplane Seat Assignment Probability](1227.md) | 🟡 Medium | 44s | The problem describes a scenario where n passengers are boarding an… |
-| 1228 | [Missing Number In Arithmetic Progression](1228.md) | 🟢 Easy | 1m 4s | This problem gives us an array that originally formed an arithmetic… |
-| 1229 | [Meeting Scheduler](1229.md) | 🟡 Medium | 58s | This problem asks us to find a common time slot between two people’… |
-| 1230 | [Toss Strange Coins](1230.md) | 🟡 Medium | 51s | The problem asks us to calculate the probability of obtaining exact… |
-| 1231 | [Divide Chocolate](1231.md) | 🔴 Hard | 1m 18s | This problem gives us an array called sweetness, where each element… |
+| 1224 | [Maximum Equal Frequency](1224.md) | 🔴 Hard | 1m 22s | The problem gives an array nums consisting of positive integers. We… |
+| 1225 | [Report Contiguous Dates](1225.md) | 🔴 Hard | 42s | The problem asks us to analyze a system that runs one task per day … |
+| 1226 | [The Dining Philosophers](1226.md) | 🟡 Medium | 1m 24s | This problem asks us to implement a concurrent synchronization mech… |
+| 1227 | [Airplane Seat Assignment Probability](1227.md) | 🟡 Medium | 39s | This problem involves a scenario with n passengers and n seats on a… |
+| 1228 | [Missing Number In Arithmetic Progression](1228.md) | 🟢 Easy | 48s | The problem asks us to find a missing value from an array that orig… |
+| 1229 | [Meeting Scheduler](1229.md) | 🟡 Medium | 1m 2s | This problem asks us to find the earliest overlapping time slot of … |
+| 1230 | [Toss Strange Coins](1230.md) | 🟡 Medium | 58s | This problem is asking us to calculate the probability that, when t… |
+| 1231 | [Divide Chocolate](1231.md) | 🔴 Hard | 45s | The problem asks us to divide a chocolate bar into k + 1 consecutiv… |
 | 1232 | [Check If It Is a Straight Line](1232.md) | 🟢 Easy | 39s | The problem asks us to determine whether a given set of points in a… |
 | 1233 | [Remove Sub-Folders from the Filesystem](1233.md) | 🟡 Medium | 46s | This problem asks us to process a list of folder paths and remove a… |
-| 1234 | [Replace the Substring for Balanced String](1234.md) | 🟡 Medium | 53s | The problem gives us a string s of length n containing only the cha… |
-| 1235 | [Maximum Profit in Job Scheduling](1235.md) | 🔴 Hard | 1m 25s | This problem asks us to maximize the total profit earned by selecti… |
-| 1236 | [Web Crawler](1236.md) | 🟡 Medium | 44s | The problem asks us to implement a web crawler that starts from a g… |
+| 1234 | [Replace the Substring for Balanced String](1234.md) | 🟡 Medium | 45s | The problem asks us to balance a string composed of exactly four ty… |
+| 1235 | [Maximum Profit in Job Scheduling](1235.md) | 🔴 Hard | 1m 20s | The problem gives us three arrays of equal length: - startTime[i] r… |
+| 1236 | [Web Crawler](1236.md) | 🟡 Medium | 1m 14s | The problem asks us to implement a simplified web crawler. We are g… |
 | 1237 | [Find Positive Integer Solution for a Given Equation](1237.md) | 🟡 Medium | 56s | The problem asks us to find all positive integer pairs (x, y) such … |
 | 1238 | [Circular Permutation in Binary Representation](1238.md) | 🟡 Medium | 51s | The problem asks us to generate a sequence of integers representing… |
 | 1239 | [Maximum Length of a Concatenated String with Unique Characters](1239.md) | 🟡 Medium | 1m 18s | The problem asks us to find the maximum length of a string that can… |
+| 1240 | [Tiling a Rectangle with the Fewest Squares](1240.md) | 🔴 Hard | 1m 28s | The problem asks us to tile an n x m rectangle using the minimum po… |
 | 1241 | [Number of Comments per Post](1241.md) | 🟢 Easy | 40s | This problem is asking us to analyze a table of submissions that ca… |
 | 1242 | [Web Crawler Multithreaded](1242.md) | 🟡 Medium | 1m 14s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 1243 | [Array Transformation](1243.md) | 🟢 Easy | 1m 26s | The problem asks us to repeatedly transform an array according to a… |
