@@ -1451,8 +1451,58 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1443 | [Minimum Time to Collect All Apples in a Tree](14xx/1443.md) | 🟡 Medium | 1m 6s | The problem is asking for the minimum time required to collect all … |
 | 1444 | [Number of Ways of Cutting a Pizza](14xx/1444.md) | 🔴 Hard | 1m 25s | Edit This problem asks us to count the number of valid ways to divi… |
 | 1445 | [Apples & Oranges](14xx/1445.md) | 🟡 Medium | 1m 32s | This problem provides a database table named Sales that stores the … |
-| 1446 | [Consecutive Characters](14xx/1446.md) | 🟢 Easy | 1m 19s | The problem asks us to compute the "power" of a string. The power i… |
-| 1447 | [Simplified Fractions](14xx/1447.md) | 🟡 Medium | 1m 30s | The problem asks us to generate every fraction strictly between 0 a… |
+| 1446 | [Consecutive Characters](14xx/1446.md) | 🟢 Easy | 1m 5s | The problem asks us to compute the power of a string. The power is … |
+| 1447 | [Simplified Fractions](14xx/1447.md) | 🟡 Medium | 1m 4s | The problem asks us to generate all simplified fractions between 0 … |
 | 1448 | [Count Good Nodes in Binary Tree](14xx/1448.md) | 🟡 Medium | 1m 22s | The problem gives us the root of a binary tree and asks us to count… |
-| 1449 | [Form Largest Integer With Digits That Add up to Target](14xx/1449.md) | 🔴 Hard | 1m 1s | The problem asks us to construct the largest possible integer using… |
-| 1450 | [Number of Students Doing Homework at a Given Time](14xx/1450.md) | 🟢 Easy | 1m 15s | The problem gives us two integer arrays, startTime and endTime, alo… |
+| 1449 | [Form Largest Integer With Digits That Add up to Target](14xx/1449.md) | 🔴 Hard | 1m 22s | This problem asks us to construct the numerically largest possible … |
+| 1450 | [Number of Students Doing Homework at a Given Time](14xx/1450.md) | 🟢 Easy | 57s | This problem asks us to determine how many students are doing homew… |
+| 1451 | [Rearrange Words in a Sentence](14xx/1451.md) | 🟡 Medium | 1m 37s | The problem gives us a sentence where words are separated by single… |
+| 1452 | [People Whose List of Favorite Companies Is Not a Subset of Another List](14xx/1452.md) | 🟡 Medium | 55s | The problem requires identifying all people in a group whose list o… |
+| 1453 | [Maximum Number of Darts Inside of a Circular Dartboard](14xx/1453.md) | 🔴 Hard | 1m 19s | In this problem, we are given the coordinates of several darts thro… |
+| 1454 | [Active Users](14xx/1454.md) | 🟡 Medium | 1m 7s | The problem asks us to identify active users from a database contai… |
+| 1455 | [Check If a Word Occurs As a Prefix of Any Word in a Sentence](14xx/1455.md) | 🟢 Easy | 52s | The problem asks us to determine whether a given searchWord occurs … |
+| 1456 | [Maximum Number of Vowels in a Substring of Given Length](14xx/1456.md) | 🟡 Medium | 56s | This problem asks us to determine the maximum number of vowels that… |
+| 1457 | [Pseudo-Palindromic Paths in a Binary Tree](14xx/1457.md) | 🟡 Medium | 1m 19s | This problem asks us to count how many root to leaf paths in a bina… |
+| 1458 | [Max Dot Product of Two Subsequences](14xx/1458.md) | 🔴 Hard | 1m 14s | The problem is asking to find the maximum dot product of two non-em… |
+| 1459 | [Rectangles Area](14xx/1459.md) | 🟡 Medium | 1m 10s | You included two different problems in one message, and the second … |
+| 1460 | [Make Two Arrays Equal by Reversing Subarrays](14xx/1460.md) | 🟢 Easy | 1m 20s | This problem asks whether one integer array, arr, can be transforme… |
+| 1461 | [Check If a String Contains All Binary Codes of Size K](14xx/1461.md) | 🟡 Medium | 1m 24s | The problem gives us a binary string s and an integer k. A binary s… |
+| 1462 | [Course Schedule IV](14xx/1462.md) | 🟡 Medium | 1m 38s | This problem gives us a directed acyclic graph representing course … |
+| 1463 | [Cherry Pickup II](14xx/1463.md) | 🔴 Hard | 1m 16s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1464 | [Maximum Product of Two Elements in an Array](14xx/1464.md) | 🟢 Easy | 1m 15s | The problem gives an integer array nums, and asks us to choose two … |
+| 1465 | [Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts](14xx/1465.md) | 🟡 Medium | 1m 8s | This problem gives us a rectangular cake with height h and width w.… |
+| 1466 | [Reorder Routes to Make All Paths Lead to the City Zero](14xx/1466.md) | 🟡 Medium | 1m 26s | The problem gives us a directed graph of cities connected by roads.… |
+| 1467 | [Probability of a Two Boxes Having The Same Number of Distinct Balls](14xx/1467.md) | 🔴 Hard | 1m 24s | The problem gives us several colors of balls, where balls[i] repres… |
+| 1468 | [Calculate Salaries](14xx/1468.md) | 🟡 Medium | 1m | This problem asks us to compute the post tax salary for every emplo… |
+| 1469 | [Find All The Lonely Nodes](14xx/1469.md) | 🟢 Easy | 1m 17s | This problem asks us to traverse a binary tree and identify every n… |
+| 1470 | [Shuffle the Array](14xx/1470.md) | 🟢 Easy | 1m 18s | The problem gives us an array nums with exactly 2n elements. The st… |
+| 1471 | [The k Strongest Values in an Array](14xx/1471.md) | 🟡 Medium | 1m 16s | This problem asks us to find the k strongest values in an array acc… |
+| 1472 | [Design Browser History](14xx/1472.md) | 🟡 Medium | 54s | The problem is asking us to simulate a single-tab browser with a hi… |
+| 1473 | [Paint House III](14xx/1473.md) | 🔴 Hard | 1m 20s | This problem asks us to paint a row of houses while satisfying two … |
+| 1474 | [Delete N Nodes After M Nodes of a Linked List](14xx/1474.md) | 🟢 Easy | 1m 11s | This problem gives us the head of a singly linked list and two inte… |
+| 1475 | [Final Prices With a Special Discount in a Shop](14xx/1475.md) | 🟢 Easy | 1m 2s | The problem presents a scenario where you are buying items in a sho… |
+| 1476 | [Subrectangle Queries](14xx/1476.md) | 🟡 Medium | 1m 40s | The problem asks us to design a class called SubrectangleQueries th… |
+| 1477 | [Find Two Non-overlapping Sub-arrays Each With Target Sum](14xx/1477.md) | 🟡 Medium | 1m 19s | The problem asks us to find two different subarrays inside the give… |
+| 1478 | [Allocate Mailboxes](14xx/1478.md) | 🔴 Hard | 1m 39s | Here’s a complete, detailed technical solution guide for LeetCode 1… |
+| 1479 | [Sales by Day of the Week](14xx/1479.md) | 🔴 Hard | 1m 7s | The problem asks us to generate a sales report that summarizes the … |
+| 1480 | [Running Sum of 1d Array](14xx/1480.md) | 🟢 Easy | 1m 1s | The problem asks us to compute the running sum, also called the pre… |
+| 1481 | [Least Number of Unique Integers after K Removals](14xx/1481.md) | 🟡 Medium | 58s | This problem asks us to minimize the number of unique integers in a… |
+| 1482 | [Minimum Number of Days to Make m Bouquets](14xx/1482.md) | 🟡 Medium | 48s | This problem asks us to determine the minimum number of days requir… |
+| 1483 | [Kth Ancestor of a Tree Node](14xx/1483.md) | 🔴 Hard | 1m 35s | The problem gives us a rooted tree with n nodes labeled from 0 to n… |
+| 1484 | [Group Sold Products By The Date](14xx/1484.md) | 🟢 Easy | 1m 29s | The problem gives us a database table named Activities with two col… |
+| 1485 | [Clone Binary Tree With Random Pointer](14xx/1485.md) | 🟡 Medium | 2m 24s | That’s a detailed reference guide with multiple required sections a… |
+| 1486 | [XOR Operation in an Array](14xx/1486.md) | 🟢 Easy | 1m | The problem gives us two integers, n and start. We must construct a… |
+| 1487 | [Making File Names Unique](14xx/1487.md) | 🟡 Medium | 1m 33s | The problem asks us to simulate how a file system assigns folder na… |
+| 1488 | [Avoid Flood in The City](14xx/1488.md) | 🟡 Medium | 55s | The problem asks us to simulate rainfall over a series of lakes and… |
+| 1489 | [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](14xx/1489.md) | 🔴 Hard | 1m 50s | The problem gives us a connected, weighted, undirected graph with n… |
+| 1490 | [Clone N-ary Tree](14xx/1490.md) | 🟡 Medium | 1m 10s | This problem asks us to create a deep copy of an N-ary tree. An N-a… |
+| 1491 | [Average Salary Excluding the Minimum and Maximum Salary](14xx/1491.md) | 🟢 Easy | 1m 8s | The problem gives us an array called salary, where each element rep… |
+| 1492 | [The kth Factor of n](14xx/1492.md) | 🟡 Medium | 48s | The problem asks us to find the kth factor of a given integer n. A … |
+| 1493 | [Longest Subarray of 1's After Deleting One Element](14xx/1493.md) | 🟡 Medium | 54s | The problem asks us to find the length of the longest contiguous su… |
+| 1494 | [Parallel Courses II](14xx/1494.md) | 🔴 Hard | 1m 37s | The problem describes a directed acyclic graph where each node repr… |
+| 1495 | [Friendly Movies Streamed Last Month](14xx/1495.md) | 🟢 Easy | 1m 30s | This problem asks us to find the titles of movies that satisfy thre… |
+| 1496 | [Path Crossing](14xx/1496.md) | 🟢 Easy | 1m 13s | In this problem, we are given a string called path that represents … |
+| 1497 | [Check If Array Pairs Are Divisible by k](14xx/1497.md) | 🟡 Medium | 1m 37s | The problem gives us an integer array arr whose length is guarantee… |
+| 1498 | [Number of Subsequences That Satisfy the Given Sum Condition](14xx/1498.md) | 🟡 Medium | 1m 24s | This problem asks us to count how many non-empty subsequences of th… |
+| 1499 | [Max Value of Equation](14xx/1499.md) | 🔴 Hard | 1m 22s | The problem gives us a list of 2D points sorted by their x-coordina… |
+| 1500 | [Design a File Sharing System](15xx/1500.md) | 🟡 Medium | 1m 26s | This problem asks us to design a miniature peer-to-peer file sharin… |
