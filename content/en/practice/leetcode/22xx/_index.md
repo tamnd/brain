@@ -109,3 +109,4 @@ draft: false
 | 2296 | [Design a Text Editor](2296.md) | 🔴 Hard | 1m 26s | This problem asks us to design a simplified text editor that suppor… |
 | 2297 | [Jump Game VIII](2297.md) | 🟡 Medium | 57s | This problem asks us to compute the minimum cost to reach the last … |
 | 2298 | [Tasks Count in the Weekend](2298.md) | 🟡 Medium | 47s | The problem asks us to compute the number of tasks submitted during… |
+| 2299 | [Strong Password Checker II](2299.md) | 🟢 Easy | 52s | The problem asks us to determine if a given string password is a st… |
