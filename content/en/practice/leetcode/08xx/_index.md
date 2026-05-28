@@ -51,9 +51,9 @@ draft: false
 | 838 | [Push Dominoes](838.md) | 🟡 Medium | 1m | This problem models a chain reaction of falling dominoes. We are gi… |
 | 839 | [Similar String Groups](839.md) | 🔴 Hard | 41s | The problem asks us to determine the number of similarity groups wi… |
 | 840 | [Magic Squares In Grid](840.md) | 🟡 Medium | 1m 12s | The problem asks us to count how many 3 x 3 subgrids inside a large… |
-| 841 | [Keys and Rooms](841.md) | 🟡 Medium | 45s | The problem asks whether you can visit all rooms in a building if e… |
-| 842 | [Split Array into Fibonacci Sequence](842.md) | 🟡 Medium | 1m 34s | This problem asks us to determine whether a string of digits can be… |
-| 843 | [Guess the Word](843.md) | 🔴 Hard | 1m 20s | This is an interactive problem. Unlike standard LeetCode problems w… |
+| 841 | [Keys and Rooms](841.md) | 🟡 Medium | 50s | This problem can be interpreted as a graph traversal challenge. Eac… |
+| 842 | [Split Array into Fibonacci Sequence](842.md) | 🟡 Medium | 1m 41s | The problem gives us a string consisting only of digits, and asks u… |
+| 843 | [Guess the Word](843.md) | 🔴 Hard | 1m 16s | This is an interactive problem where we must identify a hidden six-… |
 | 844 | [Backspace String Compare](844.md) | 🟢 Easy | 1m 22s | The problem gives us two strings, s and t, that represent text type… |
 | 845 | [Longest Mountain in Array](845.md) | 🟡 Medium | 1m 3s | The problem asks us to find the length of the longest contiguous su… |
 | 846 | [Hand of Straights](846.md) | 🟡 Medium | 1m 14s | The problem gives us an array called hand, where each value represe… |
@@ -64,3 +64,21 @@ draft: false
 | 851 | [Loud and Rich](851.md) | 🟡 Medium | 1m 15s | This problem describes a group of people where some people are know… |
 | 852 | [Peak Index in a Mountain Array](852.md) | 🟡 Medium | 1m 9s | This problem gives us a special type of array called a mountain arr… |
 | 853 | [Car Fleet](853.md) | 🟡 Medium | 1m 16s | The problem describes a set of cars driving toward the same destina… |
+| 854 | [K-Similar Strings](854.md) | 🔴 Hard | 1m 18s | The problem asks us to determine the minimum number of swaps needed… |
+| 855 | [Exam Room](855.md) | 🟡 Medium | 50s | This problem requires designing a simulation for an exam room seati… |
+| 856 | [Score of Parentheses](856.md) | 🟡 Medium | 44s | The problem is asking us to compute a score for a string of balance… |
+| 857 | [Minimum Cost to Hire K Workers](857.md) | 🔴 Hard | 1m 30s | In this problem, we are given two arrays, quality and wage, where e… |
+| 858 | [Mirror Reflection](858.md) | 🟡 Medium | 1m 8s | This problem describes a square room with perfectly reflective wall… |
+| 859 | [Buddy Strings](859.md) | 🟢 Easy | 1m 11s | The problem asks whether it is possible to make two strings equal b… |
+| 860 | [Lemonade Change](860.md) | 🟢 Easy | 39s | This problem simulates a lemonade stand where each lemonade costs 5… |
+| 861 | [Score After Flipping Matrix](861.md) | 🟡 Medium | 38s | The problem provides an m x n binary matrix, grid, where each eleme… |
+| 862 | [Shortest Subarray with Sum at Least K](862.md) | 🔴 Hard | 1m 12s | The problem asks us to find the length of the shortest contiguous s… |
+| 863 | [All Nodes Distance K in Binary Tree](863.md) | 🟡 Medium | 1m 22s | This problem gives us the root of a binary tree, a specific target … |
+| 864 | [Shortest Path to Get All Keys](864.md) | 🔴 Hard | 34s | This problem asks us to find the shortest path to collect all keys … |
+| 865 | [Smallest Subtree with all the Deepest Nodes](865.md) | 🟡 Medium | 1m 15s | The problem gives us the root of a binary tree and asks us to find … |
+| 866 | [Prime Palindrome](866.md) | 🟡 Medium | 1m 4s | This problem asks us to find the smallest number greater than or eq… |
+| 867 | [Transpose Matrix](867.md) | 🟢 Easy | 1m 7s | This problem asks us to compute the transpose of a given two dimens… |
+| 868 | [Binary Gap](868.md) | 🟢 Easy | 58s | The problem asks us to examine the binary representation of a posit… |
+| 869 | [Reordered Power of 2](869.md) | 🟡 Medium | 1m 11s | The problem gives us a positive integer n and asks whether its digi… |
+| 870 | [Advantage Shuffle](870.md) | 🟡 Medium | 34s | The problem asks us to maximize the advantage of one array over ano… |
+| 871 | [Minimum Number of Refueling Stops](871.md) | 🔴 Hard | 1m 7s | The problem describes a car traveling from position 0 to a destinat… |
