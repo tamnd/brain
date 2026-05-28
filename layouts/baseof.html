@@ -8,7 +8,7 @@
   {{if .Page.NoIndex}}<meta name="robots" content="noindex, nofollow">{{else}}<meta name="robots" content="index, follow">{{end}}
   <link rel="canonical" href="{{trimSlash .Site.BaseURL}}{{.Page.RelPermalink}}">
   <link rel="stylesheet" href="{{.Assets.CSS}}">
-  <link rel="stylesheet" href="/css/chroma.css">
+  <link rel="stylesheet" href="{{.Assets.ChromaCSS}}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" crossorigin="anonymous"
