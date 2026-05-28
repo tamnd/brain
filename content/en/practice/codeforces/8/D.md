@@ -1,6 +1,6 @@
 ---
 title: "CF 8D - Two Friends"
-description: "We have three points on a plane: the cinema, the house, and the shop. Bob starts at the cinema and eventually reaches th"
+description: "We have three points on a plane: the cinema, the house, and the shop."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "geometry"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 114
 verified: true
 draft: false
 ---
-
 [CF 8D - Two Friends](https://codeforces.com/problemset/problem/8/D)
 
 **Rating:** 2600  

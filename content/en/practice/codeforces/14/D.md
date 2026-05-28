@@ -1,6 +1,6 @@
 ---
 title: "CF 14D - Two Paths"
-description: "We are given a tree of n cities, meaning each city is connected in such a way that there is exactly one simple path betw"
+description: "We are given a tree of n cities, meaning each city is connected in such a way that there is exactly one simple path between any two cities. Roads are undirected, and each road has a length of 1."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dp", "graphs", "shortest-paths", "trees", "two-pointers"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 87
 verified: true
 draft: false
 ---
-
 [CF 14D - Two Paths](https://codeforces.com/problemset/problem/14/D)
 
 **Rating:** 1900  

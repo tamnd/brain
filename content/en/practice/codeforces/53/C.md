@@ -1,6 +1,6 @@
 ---
 title: "CF 53C - Little Frog"
-description: "We have n mounds placed on a straight line at positions 1, 2, ..., n. The frog wants to visit every mound exactly once, so we must output a permutation of these positions. The interesting restriction is on the jumps. If the frog visits mounds in order p1, p2, ..."
+description: "We have n mounds placed on a straight line at positions 1, 2, ..., n. The frog wants to visit every mound exactly once, so we must output a permutation of these positions."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 95
 verified: true
 draft: false
 ---
-
 [CF 53C - Little Frog](https://codeforces.com/problemset/problem/53/C)
 
 **Rating:** 1200  

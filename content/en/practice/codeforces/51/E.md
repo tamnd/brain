@@ -1,6 +1,6 @@
 ---
 title: "CF 51E - Pentagon"
-description: "We are asked to count the number of distinct cycles of length five in a given undirected simple graph. Each junction represents a vertex, and each road is an undirected edge connecting two vertices. A \"Pentagon\" corresponds to a cycle with exactly five vertices."
+description: "We are asked to count the number of distinct cycles of length five in a given undirected simple graph. Each junction represents a vertex, and each road is an undirected edge connecting two vertices. A \"Pentagon\" corresponds to a cycle with exactly five vertices."Pentagon\" corresponds to a cycle with exactly five vertices."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "graphs", "matrices"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 122
 verified: false
 draft: false
 ---
-
 [CF 51E - Pentagon](https://codeforces.com/problemset/problem/51/E)
 
 **Rating:** 2400  

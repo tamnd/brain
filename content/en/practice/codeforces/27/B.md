@@ -1,6 +1,6 @@
 ---
 title: "CF 27B - Tournament"
-description: "We are asked to reconstruct the missing result of a round-robin tournament. There are n participants, and every particip"
+description: "We are asked to reconstruct the missing result of a round-robin tournament. There are _n_ participants, and every participant plays against every other participant exactly once."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "brute-force", "dfs-and-similar", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 63
 verified: true
 draft: false
 ---
-
 [CF 27B - Tournament](https://codeforces.com/problemset/problem/27/B)
 
 **Rating:** 1300  

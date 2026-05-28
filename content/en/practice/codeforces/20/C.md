@@ -1,6 +1,6 @@
 ---
 title: "CF 20C - Dijkstra?"
-description: "We are given an undirected weighted graph. Every edge connects two vertices and has a positive cost. The task is to star"
+description: "We are given an undirected weighted graph. Every edge connects two vertices and has a positive cost. The task is to start at vertex 1, reach vertex n, and print one shortest path. If no route exists, we print -1."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "graphs", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 96
 verified: true
 draft: false
 ---
-
 [CF 20C - Dijkstra?](https://codeforces.com/problemset/problem/20/C)
 
 **Rating:** 1900  

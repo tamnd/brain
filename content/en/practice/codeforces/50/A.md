@@ -1,6 +1,6 @@
 ---
 title: "CF 50A - Domino piling"
-description: "We are asked to place as many standard dominoes as possible on a rectangular board of size M by N. Each domino covers exactly two adjacent squares, and dominoes cannot overlap or extend outside the board."
+description: "We are asked to place as many standard dominoes as possible on a rectangular board of size _M_ by _N_. Each domino covers exactly two adjacent squares, and dominoes cannot overlap or extend outside the board."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 65
 verified: true
 draft: false
 ---
-
 [CF 50A - Domino piling](https://codeforces.com/problemset/problem/50/A)
 
 **Rating:** 800  

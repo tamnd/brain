@@ -1,6 +1,6 @@
 ---
 title: "CF 32E - Hide-and-Seek"
-description: "We have two people represented as points on the plane, Victor and Peter. The room contains exactly two objects, a solid"
+description: "We have two people represented as points on the plane, Victor and Peter. The room contains exactly two objects, a solid wall segment and a double-sided mirror segment. Victor wants to know whether he can see Peter either directly or through a single reflection in the mirror."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 145
 verified: true
 draft: false
 ---
-
 [CF 32E - Hide-and-Seek](https://codeforces.com/problemset/problem/32/E)
 
 **Rating:** 2400  

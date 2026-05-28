@@ -1,6 +1,6 @@
 ---
 title: "CF 38F - Smart Boy"
-description: "We start with an empty string. The first player picks any single letter that appears somewhere inside at least one dicti"
+description: "We start with an empty string. The first player picks any single letter that appears somewhere inside at least one dictionary word. After that, players alternately extend the current string by adding exactly one character either to the front or to the back."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "games", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 169
 verified: false
 draft: false
 ---
-
 [CF 38F - Smart Boy](https://codeforces.com/problemset/problem/38/F)
 
 **Rating:** 2100  

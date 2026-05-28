@@ -1,6 +1,6 @@
 ---
 title: "CF 5A - Chat Servers Outgoing Traffic"
-description: "We are given a sequence of chat server events. A user can join the chat, leave the chat, or send a message. Every time s"
+description: "We are given a sequence of chat server events. A user can join the chat, leave the chat, or send a message. Every time someone sends a message, the server delivers that message to every user currently inside the chat, including the sender."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 69
 verified: true
 draft: false
 ---
-
 [CF 5A - Chat Servers Outgoing Traffic](https://codeforces.com/problemset/problem/5/A)
 
 **Rating:** 1000  

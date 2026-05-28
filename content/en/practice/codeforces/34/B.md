@@ -1,6 +1,6 @@
 ---
 title: "CF 34B - Sale"
-description: "Bob is at a sale with a collection of old TVs, each with a price. Some TVs are free, some have positive prices, and some"
+description: "Bob is at a sale with a collection of old TVs, each with a price. Some TVs are free, some have positive prices, and some even have negative prices, which means the owner is willing to pay Bob to take them away."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 79
 verified: true
 draft: false
 ---
-
 [CF 34B - Sale](https://codeforces.com/problemset/problem/34/B)
 
 **Rating:** 900  

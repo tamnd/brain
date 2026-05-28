@@ -1,6 +1,6 @@
 ---
 title: "CF 35D - Animals"
-description: "We are asked to simulate a farm in which animals arrive one per day over n days. Each animal has a fixed daily food requ"
+description: "We are asked to simulate a farm in which animals arrive one per day over n days. Each animal has a fixed daily food requirement starting from the day it arrives. The farm starts with X tons of food."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 74
 verified: true
 draft: false
 ---
-
 [CF 35D - Animals](https://codeforces.com/problemset/problem/35/D)
 
 **Rating:** 1700  

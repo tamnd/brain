@@ -1,6 +1,6 @@
 ---
 title: "CF 30B - Codeforces World Finals"
-description: "We are given two dates in the format DD.MM.YY: one representing the day of the Codeforces World Finals and the other rep"
+description: "We are given two dates in the format DD.MM.YY: one representing the day of the Codeforces World Finals and the other representing Bob's date of birth. Bob can rearrange the components of his birth date-the day, month, and year-but only as complete numbers, not individual digits."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 61
 verified: true
 draft: false
 ---
-
 [CF 30B - Codeforces World Finals](https://codeforces.com/problemset/problem/30/B)
 
 **Rating:** 1700  

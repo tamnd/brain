@@ -1,6 +1,6 @@
 ---
 title: "CF 28E - DravDe saves the world"
-description: "We are given a simple polygon on the plane, representing the incubator area. DravDe starts at point $A$, which is guaran"
+description: "We are given a simple polygon on the plane, representing the incubator area. DravDe starts at point , which is guaranteed to lie strictly outside the polygon."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 139
 verified: false
 draft: false
 ---
-
 [CF 28E - DravDe saves the world](https://codeforces.com/problemset/problem/28/E)
 
 **Rating:** 2800  

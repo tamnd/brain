@@ -1,6 +1,6 @@
 ---
 title: "CF 16E - Fish"
-description: "We have n fish in a lake. Every day, exactly one unordered pair of currently alive fish is chosen uniformly at random. W"
+description: "We have n fish in a lake. Every day, exactly one unordered pair of currently alive fish is chosen uniformly at random. When fish i meets fish j, fish i eats fish j with probability a[i][j], and fish j eats fish i with probability a[j][i] = 1 - a[i][j]."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dp", "probabilities"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 94
 verified: true
 draft: false
 ---
-
 [CF 16E - Fish](https://codeforces.com/problemset/problem/16/E)
 
 **Rating:** 1900  

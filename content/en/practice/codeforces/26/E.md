@@ -1,6 +1,6 @@
 ---
 title: "CF 26E - Multithreading"
-description: "Each process repeatedly executes two atomic instructions: The shared variable y starts at 0. Every process has its own p"
+description: "Each process repeatedly executes two atomic instructions:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 97
 verified: true
 draft: false
 ---
-
 [CF 26E - Multithreading](https://codeforces.com/problemset/problem/26/E)
 
 **Rating:** 2400  

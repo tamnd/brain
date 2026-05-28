@@ -1,6 +1,6 @@
 ---
 title: "CF 41E - 3-cycles"
-description: "We need to build an undirected graph on n cities such that no triangle exists. A triangle means three distinct cities wh"
+description: "We need to build an undirected graph on n cities such that no triangle exists. A triangle means three distinct cities where every pair is directly connected."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "graphs", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 108
 verified: false
 draft: false
 ---
-
 [CF 41E - 3-cycles](https://codeforces.com/problemset/problem/41/E)
 
 **Rating:** 1900  

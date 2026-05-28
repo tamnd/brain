@@ -1,6 +1,6 @@
 ---
 title: "CF 45A - Codecraft III"
-description: "We are given the current month as a string and an integer k representing how many months later a new game release will happen. The task is to determine the month after advancing exactly k months forward in the calendar. The calendar is cyclic. After December comes January again."
+description: "We are given the current month as a string and an integer k representing how many months later a new game release will happen. The task is to determine the month after advancing exactly k months forward in the calendar."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 74
 verified: true
 draft: false
 ---
-
 [CF 45A - Codecraft III](https://codeforces.com/problemset/problem/45/A)
 
 **Rating:** 900  

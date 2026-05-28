@@ -1,6 +1,6 @@
 ---
 title: "CF 5E - Bindian Signalizing"
-description: "We are given a circular arrangement of hills around a capital. Each hill has a height and a watchman who can send signal"
+description: "We are given a circular arrangement of hills around a capital. Each hill has a height and a watchman who can send signals via fire. The core question is: how many pairs of watchmen can see each other’s signals?"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 71
 verified: true
 draft: false
 ---
-
 [CF 5E - Bindian Signalizing](https://codeforces.com/problemset/problem/5/E)
 
 **Rating:** 2400  

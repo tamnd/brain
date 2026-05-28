@@ -1,6 +1,6 @@
 ---
 title: "CF 23A - You're Given a String..."
-description: "We are given a string of lowercase letters, and the task is to find the length of the longest substring that occurs at l"
+description: "We are given a string of lowercase letters, and the task is to find the length of the longest substring that occurs at least twice in the string. The repeated occurrences may overlap. The input is a single string of at most 100 characters."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 115
 verified: true
 draft: false
 ---
-
 [CF 23A - You're Given a String...](https://codeforces.com/problemset/problem/23/A)
 
 **Rating:** 1200  

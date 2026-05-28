@@ -1,6 +1,6 @@
 ---
 title: "CF 26A - Almost Prime"
-description: "We are asked to count numbers between 1 and $n$ that have exactly two distinct prime factors. For instance, 6 is almost"
+description: "We are asked to count numbers between 1 and that have exactly two distinct prime factors. For instance, 6 is almost prime because it can be factored as , and both 2 and 3 are prime. Numbers like 4 or 8 are not almost prime because they are powers of a single prime."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 78
 verified: true
 draft: false
 ---
-
 [CF 26A - Almost Prime](https://codeforces.com/problemset/problem/26/A)
 
 **Rating:** 900  

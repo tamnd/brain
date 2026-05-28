@@ -1,6 +1,6 @@
 ---
 title: "CF 19D - Points"
-description: "We maintain a dynamic set of points on a 2D plane. Three operations are supported. add x y inserts a point. remove x y d"
+description: "We maintain a dynamic set of points on a 2D plane. Three operations are supported."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 229
 verified: true
 draft: false
 ---
-
 [CF 19D - Points](https://codeforces.com/problemset/problem/19/D)
 
 **Rating:** 2800  

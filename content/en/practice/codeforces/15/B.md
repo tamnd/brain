@@ -1,6 +1,6 @@
 ---
 title: "CF 15B - Laser"
-description: "We have a rectangular grid with n columns and m rows. Two lasers point at two different cells. Both lasers always move t"
+description: "We have a rectangular grid with n columns and m rows. Two lasers point at two different cells. Both lasers always move together, meaning their relative offset never changes. If one laser moves by (dx, dy), the other must move by exactly the same vector."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 174
 verified: true
 draft: false
 ---
-
 [CF 15B - Laser](https://codeforces.com/problemset/problem/15/B)
 
 **Rating:** 1800  

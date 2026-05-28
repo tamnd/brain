@@ -1,6 +1,6 @@
 ---
 title: "CF 36E - Two Paths"
-description: "Each paper describes an undirected edge between two cities. We are told that all papers came from exactly two travel jou"
+description: "Each paper describes an undirected edge between two cities. We are told that all papers came from exactly two travel journals."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "dsu", "graphs", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 155
 verified: false
 draft: false
 ---
-
 [CF 36E - Two Paths](https://codeforces.com/problemset/problem/36/E)
 
 **Rating:** 2600  

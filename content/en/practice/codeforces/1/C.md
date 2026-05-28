@@ -1,6 +1,6 @@
 ---
 title: "CF 1C - Ancient Berland Circus"
-description: "We are given the coordinates of three vertices of some regular polygon. The polygon itself is unknown: we do not know ho"
+description: "We are given the coordinates of three vertices of some regular polygon. The polygon itself is unknown: we do not know how many sides it has, where its center is, or which vertices the three points correspond to."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "math"]
 categories: ["algorithms"]

@@ -1,6 +1,6 @@
 ---
 title: "CF 14B - Young Photographer"
-description: "The problem asks us to determine how far Bob, a photographer, must move along a straight racetrack to take pictures of e"
+description: "The problem asks us to determine how far Bob, a photographer, must move along a straight racetrack to take pictures of every sportsman. Each sportsman runs back and forth along a fixed segment of the racetrack, defined by two positions ai and bi."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 80
 verified: true
 draft: false
 ---
-
 [CF 14B - Young Photographer](https://codeforces.com/problemset/problem/14/B)
 
 **Rating:** 1000  

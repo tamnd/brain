@@ -1,6 +1,6 @@
 ---
 title: "CF 25A - IQ test"
-description: "We are given a sequence of n natural numbers, where n is at least 3 and at most 100, and each number is at most 100. Amo"
+description: "We are given a sequence of n natural numbers, where n is at least 3 and at most 100, and each number is at most 100. Among these numbers, all except one share the same parity - either even or odd - and exactly one number differs."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 67
 verified: true
 draft: false
 ---
-
 [CF 25A - IQ test](https://codeforces.com/problemset/problem/25/A)
 
 **Rating:** 1300  

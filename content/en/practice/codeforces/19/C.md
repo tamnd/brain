@@ -1,6 +1,6 @@
 ---
 title: "CF 19C - Deletion of Repeats"
-description: "We are given a sequence of integers representing a string of \"letters,\" each between 0 and 10^9. Each letter occurs at m"
+description: "We are given a sequence of integers representing a string of \"letters,\" each between 0 and 10^9. Each letter occurs at most 10 times. A repeat is a contiguous substring of even length where the first half matches the second half exactly."letters,\" each between 0 and 10^9. Each letter occurs at m"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "hashing", "string-suffix-structures"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 122
 verified: true
 draft: false
 ---
-
 [CF 19C - Deletion of Repeats](https://codeforces.com/problemset/problem/19/C)
 
 **Rating:** 2200  

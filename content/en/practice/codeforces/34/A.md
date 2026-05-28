@@ -1,6 +1,6 @@
 ---
 title: "CF 34A - Reconnaissance 2"
-description: "We are given the heights of soldiers standing in a circle. Two soldiers can form a reconnaissance unit if they stand nex"
+description: "We are given the heights of soldiers standing in a circle. Two soldiers can form a reconnaissance unit if they stand next to each other and their height difference is as small as possible among all neighboring pairs."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 78
 verified: true
 draft: false
 ---
-
 [CF 34A - Reconnaissance 2](https://codeforces.com/problemset/problem/34/A)
 
 **Rating:** 800  

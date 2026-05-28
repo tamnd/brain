@@ -1,6 +1,6 @@
 ---
 title: "CF 13A - Numbers"
-description: "We are asked to compute the average sum of digits of a number A when it is expressed in all bases from 2 up to A - 1. Th"
+description: "We are asked to compute the average sum of digits of a number _A_ when it is expressed in all bases from 2 up to _A_ - 1. The input is a single integer _A_ between 3 and 1000."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 63
 verified: true
 draft: false
 ---
-
 [CF 13A - Numbers](https://codeforces.com/problemset/problem/13/A)
 
 **Rating:** 1000  

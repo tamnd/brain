@@ -1,6 +1,6 @@
 ---
 title: "CF 47A - Triangular numbers"
-description: "We are asked to determine if a given positive integer can be represented as a triangular number. Triangular numbers are formed by arranging dots into an equilateral triangle, so the n-th triangular number is the sum of the first n positive integers."
+description: "We are asked to determine if a given positive integer can be represented as a triangular number. Triangular numbers are formed by arranging dots into an equilateral triangle, so the _n_-th triangular number is the sum of the first _n_ positive integers."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 70
 verified: true
 draft: false
 ---
-
 [CF 47A - Triangular numbers](https://codeforces.com/problemset/problem/47/A)
 
 **Rating:** 800  

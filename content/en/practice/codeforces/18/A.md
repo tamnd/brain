@@ -1,6 +1,6 @@
 ---
 title: "CF 18A - Triangle"
-description: "We are given three points on the plane with integer coordinates. These three points already form a valid triangle, meani"
+description: "We are given three points on the plane with integer coordinates. These three points already form a valid triangle, meaning they are not collinear."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "geometry"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 108
 verified: true
 draft: false
 ---
-
 [CF 18A - Triangle](https://codeforces.com/problemset/problem/18/A)
 
 **Rating:** 1500  

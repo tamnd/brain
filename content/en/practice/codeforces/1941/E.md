@@ -1,6 +1,6 @@
 ---
 title: "CF 1941E - Rudolf and k Bridges"
-description: "Each row of the river can be treated independently. Along a chosen row, we want to place supports in some columns so tha"
+description: "Each row of the river can be treated independently. Along a chosen row, we want to place supports in some columns so that the first and last columns always contain supports, and the number of cells skipped between two neighboring supports is at most d."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "dp", "two-pointers"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 126
 verified: true
 draft: false
 ---
-
 [CF 1941E - Rudolf and k Bridges](https://codeforces.com/problemset/problem/1941/E)
 
 **Rating:** 1600  

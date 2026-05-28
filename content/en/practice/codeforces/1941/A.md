@@ -1,6 +1,6 @@
 ---
 title: "CF 1941A - Rudolf and the Ticket"
-description: "The problem gives us two arrays of coin values. The first array represents coins in Rudolf's left pocket, and the second"
+description: "The problem gives us two arrays of coin values. The first array represents coins in Rudolf's left pocket, and the second array represents coins in his right pocket."
 date: "2026-05-27T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 83
 verified: true
 draft: false
 ---
-
 [CF 1941A - Rudolf and the Ticket](https://codeforces.com/problemset/problem/1941/A)
 
 **Rating:** 800  

@@ -1,6 +1,6 @@
 ---
 title: "CF 11C - How Many Squares?"
-description: "We are given a binary grid. A valid object is not a filled square, it is only the border of a square drawn with 1s. Ever"
+description: "We are given a binary grid. A valid object is not a filled square, it is only the border of a square drawn with 1s. Every cell not belonging to the border must be 0."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 162
 verified: true
 draft: false
 ---
-
 [CF 11C - How Many Squares?](https://codeforces.com/problemset/problem/11/C)
 
 **Rating:** 2200  

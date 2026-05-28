@@ -1,6 +1,6 @@
 ---
 title: "CF 42A - Guilty --- to the kitchen!"
-description: "We want to cook soup using several ingredients that must appear in a fixed ratio. If the recipe says the proportions are"
+description: "We want to cook soup using several ingredients that must appear in a fixed ratio. If the recipe says the proportions are a1, a2, ..., an, then the final soup must contain:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 92
 verified: true
 draft: false
 ---
-
 [CF 42A - Guilty --- to the kitchen!](https://codeforces.com/problemset/problem/42/A)
 
 **Rating:** 1400  

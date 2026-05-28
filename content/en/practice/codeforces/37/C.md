@@ -1,6 +1,6 @@
 ---
 title: "CF 37C - Old Berland Language"
-description: "We need to construct a binary prefix code. The input gives the lengths of all words in the language. Every word may cont"
+description: "We need to construct a binary prefix code."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "greedy", "trees"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 102
 verified: true
 draft: false
 ---
-
 [CF 37C - Old Berland Language](https://codeforces.com/problemset/problem/37/C)
 
 **Rating:** 1900  

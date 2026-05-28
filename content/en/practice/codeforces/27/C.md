@@ -1,6 +1,6 @@
 ---
 title: "CF 27C - Unordered Subsequence"
-description: "We are given a sequence of integers, and we are asked to extract the shortest subsequence that is not ordered. A sequenc"
+description: "We are given a sequence of integers, and we are asked to extract the shortest subsequence that is _not ordered_. A sequence is considered ordered if it is either entirely non-decreasing or entirely non-increasing."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 78
 verified: false
 draft: false
 ---
-
 [CF 27C - Unordered Subsequence](https://codeforces.com/problemset/problem/27/C)
 
 **Rating:** 1900  

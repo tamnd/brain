@@ -1,6 +1,6 @@
 ---
 title: "CF 17A - Noldbach problem"
-description: "We are given two integers, n and k. We look at all prime numbers from 2 up to n. Among those primes, we want to count ho"
+description: "We are given two integers, n and k. We look at all prime numbers from 2 up to n. Among those primes, we want to count how many can be written in the form:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "math", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 106
 verified: true
 draft: false
 ---
-
 [CF 17A - Noldbach problem](https://codeforces.com/problemset/problem/17/A)
 
 **Rating:** 1000  

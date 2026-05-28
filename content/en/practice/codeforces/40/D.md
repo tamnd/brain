@@ -1,6 +1,6 @@
 ---
 title: "CF 40D - Interesting Sequence"
-description: "The sequence starts with two fixed values: $$d1 = 2,quad d2 = 13$$ For every later year, the population satisfies one of"
+description: "The sequence starts with two fixed values:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 115
 verified: true
 draft: false
 ---
-
 [CF 40D - Interesting Sequence](https://codeforces.com/problemset/problem/40/D)
 
 **Rating:** 2600  

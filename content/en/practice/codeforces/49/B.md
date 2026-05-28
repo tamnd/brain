@@ -1,6 +1,6 @@
 ---
 title: "CF 49B - Sum"
-description: "We are given two integers, a and b, written in some unknown base p. Vasya wants to compute the sum a + b in all valid bases and determine which base gives the sum with the largest number of digits."
+description: "We are given two integers, _a_ and _b_, written in some unknown base _p_. Vasya wants to compute the sum _a + b_ in all valid bases and determine which base gives the sum with the largest number of digits."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 49B - Sum](https://codeforces.com/problemset/problem/49/B)
 
 **Rating:** 1500  

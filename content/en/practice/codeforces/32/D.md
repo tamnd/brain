@@ -1,6 +1,6 @@
 ---
 title: "CF 32D - Constellation"
-description: "We are given a 2D grid of size n by m, each cell either containing a star or empty .. The task is to locate constellatio"
+description: "We are given a 2D grid of size _n_ by _m_, each cell either containing a star * or empty .. The task is to locate constellations shaped like a cross."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 59
 verified: true
 draft: false
 ---
-
 [CF 32D - Constellation](https://codeforces.com/problemset/problem/32/D)
 
 **Rating:** 1600  

@@ -1,6 +1,6 @@
 ---
 title: "CF 39F - Pacifist frogs"
-description: "Thumbelina wants to cross a swamp by riding a single frog. The swamp contains hills numbered from 1 to n, where hill i i"
+description: "Thumbelina wants to cross a swamp by riding a single frog. The swamp contains hills numbered from 1 to n, where hill i is exactly i meters away from the island. A frog with jump length d lands on hills d, 2d, 3d, ..."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 98
 verified: true
 draft: false
 ---
-
 [CF 39F - Pacifist frogs](https://codeforces.com/problemset/problem/39/F)
 
 **Rating:** 1300  

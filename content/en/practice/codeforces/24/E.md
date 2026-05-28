@@ -1,6 +1,6 @@
 ---
 title: "CF 24E - Berland collider"
-description: "We are given a one-dimensional collider with n particles, each with a starting position xi and a velocity vi. Positive v"
+description: "We are given a one-dimensional collider with n particles, each with a starting position x_i and a velocity v_i. Positive velocity means a particle moves right, negative velocity means it moves left."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 68
 verified: true
 draft: false
 ---
-
 [CF 24E - Berland collider](https://codeforces.com/problemset/problem/24/E)
 
 **Rating:** 2300  

@@ -1,6 +1,6 @@
 ---
 title: "CF 1941C - Rudolf and the Ugly String"
-description: "We are given a string and want to remove the minimum number of characters so that the resulting string no longer contain"
+description: "We are given a string and want to remove the minimum number of characters so that the resulting string no longer contains \"pie\" or \"map\" as a substring."
 date: "2026-05-27T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 161
 verified: true
 draft: false
 ---
-
 [CF 1941C - Rudolf and the Ugly String](https://codeforces.com/problemset/problem/1941/C)
 
 **Rating:** 900  

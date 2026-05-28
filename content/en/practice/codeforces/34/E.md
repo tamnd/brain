@@ -1,6 +1,6 @@
 ---
 title: "CF 34E - Collisions"
-description: "We have several point-like balls moving on a one-dimensional line. Every ball starts at some coordinate with its own vel"
+description: "We have several point-like balls moving on a one-dimensional line. Every ball starts at some coordinate with its own velocity and mass."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 126
 verified: true
 draft: false
 ---
-
 [CF 34E - Collisions](https://codeforces.com/problemset/problem/34/E)
 
 **Rating:** 2000  

@@ -1,6 +1,6 @@
 ---
 title: "CF 21A - Jabber ID"
-description: "We need to validate whether a string follows the exact syntax of a Jabber ID. A valid ID has three possible pieces: user"
+description: "We need to validate whether a string follows the exact syntax of a Jabber ID."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 97
 verified: false
 draft: false
 ---
-
 [CF 21A - Jabber ID](https://codeforces.com/problemset/problem/21/A)
 
 **Rating:** 1900  

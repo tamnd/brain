@@ -1,6 +1,6 @@
 ---
 title: "CF 21C - Stripe 2"
-description: "We are given a stripe consisting of n squares, each containing an integer. The task is to cut this stripe into three con"
+description: "We are given a stripe consisting of n squares, each containing an integer. The task is to cut this stripe into three contiguous, non-empty segments such that the sum of numbers in each segment is identical. The output is the number of valid ways to perform these cuts."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "dp", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 86
 verified: true
 draft: false
 ---
-
 [CF 21C - Stripe 2](https://codeforces.com/problemset/problem/21/C)
 
 **Rating:** 2000  

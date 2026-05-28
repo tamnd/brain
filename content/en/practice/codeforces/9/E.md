@@ -1,6 +1,6 @@
 ---
 title: "CF 9E - Interestring graph and Apples"
-description: "We start with an undirected multigraph. Multiple edges are allowed, and loops are also allowed. We may add new edges, an"
+description: "We start with an undirected multigraph. Multiple edges are allowed, and loops are also allowed. We may add new edges, and the goal is to transform the graph into a very specific structure."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dsu", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 108
 verified: true
 draft: false
 ---
-
 [CF 9E - Interestring graph and Apples](https://codeforces.com/problemset/problem/9/E)
 
 **Rating:** 2300  

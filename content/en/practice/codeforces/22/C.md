@@ -1,6 +1,6 @@
 ---
 title: "CF 22C - System Administrator"
-description: "We are asked to design a network of servers where each server is a node, and each connection between two servers is an u"
+description: "We are asked to design a network of servers where each server is a node, and each connection between two servers is an undirected edge. There are n servers and we are allowed exactly m connections."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 85
 verified: false
 draft: false
 ---
-
 [CF 22C - System Administrator](https://codeforces.com/problemset/problem/22/C)
 
 **Rating:** 1700  

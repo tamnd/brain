@@ -1,6 +1,6 @@
 ---
 title: "CF 2B - The least round way"
-description: "We have an n × n grid of non-negative integers. Starting from the top-left corner, we may move only right or down until"
+description: "We have an n × n grid of non-negative integers. Starting from the top-left corner, we may move only right or down until we reach the bottom-right corner. Along a chosen path, we multiply every visited value together."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "math"]
 categories: ["algorithms"]

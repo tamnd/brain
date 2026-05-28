@@ -1,6 +1,6 @@
 ---
 title: "CF 15C - Industrial Nim"
-description: "Each quarry contributes a consecutive range of heap sizes to a standard Nim game. If a quarry gives us values (x, m), th"
+description: "Each quarry contributes a consecutive range of heap sizes to a standard Nim game."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "games"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 145
 verified: true
 draft: false
 ---
-
 [CF 15C - Industrial Nim](https://codeforces.com/problemset/problem/15/C)
 
 **Rating:** 2000  

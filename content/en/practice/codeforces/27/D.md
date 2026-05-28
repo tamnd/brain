@@ -1,6 +1,6 @@
 ---
 title: "CF 27D - Ring Road 2"
-description: "We have a cycle of n cities arranged on a ring. Every pair of consecutive cities is already connected by the outer ring"
+description: "We have a cycle of n cities arranged on a ring. Every pair of consecutive cities is already connected by the outer ring road, and city n is also connected back to city 1."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "2-sat", "dfs-and-similar", "dsu", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 90
 verified: true
 draft: false
 ---
-
 [CF 27D - Ring Road 2](https://codeforces.com/problemset/problem/27/D)
 
 **Rating:** 2200  

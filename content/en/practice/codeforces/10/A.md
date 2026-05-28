@@ -1,6 +1,6 @@
 ---
 title: "CF 10A - Power Consumption Calculation"
-description: "Tom uses his laptop during several disjoint time intervals. While he is actively using it, the laptop stays in normal mo"
+description: "Tom uses his laptop during several disjoint time intervals. While he is actively using it, the laptop stays in normal mode and consumes P1 watts per minute. When he stops interacting with the laptop, the machine does not immediately switch to lower-power states."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 90
 verified: true
 draft: false
 ---
-
 [CF 10A - Power Consumption Calculation](https://codeforces.com/problemset/problem/10/A)
 
 **Rating:** 900  

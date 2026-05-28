@@ -1,6 +1,6 @@
 ---
 title: "CF 38D - Vasya the Architect"
-description: "We stack cubes one by one. Every cube is axis-aligned, and its projection on the ground is a square. Since the cubes are"
+description: "We stack cubes one by one. Every cube is axis-aligned, and its projection on the ground is a square. Since the cubes are actual cubes, the side length is determined by the square base."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 98
 verified: true
 draft: false
 ---
-
 [CF 38D - Vasya the Architect](https://codeforces.com/problemset/problem/38/D)
 
 **Rating:** 1900  

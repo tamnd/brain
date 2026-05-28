@@ -1,6 +1,6 @@
 ---
 title: "CF 13B - Letter A"
-description: "We are given three line segments on a 2D plane. We must decide whether these three segments can be interpreted as the sh"
+description: "We are given three line segments on a 2D plane. We must decide whether these three segments can be interpreted as the shape of the capital letter A."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 105
 verified: true
 draft: false
 ---
-
 [CF 13B - Letter A](https://codeforces.com/problemset/problem/13/B)
 
 **Rating:** 2000  

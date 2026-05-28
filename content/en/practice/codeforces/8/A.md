@@ -1,6 +1,6 @@
 ---
 title: "CF 8A - Train and Peter"
-description: "We are given a string that represents the sequence of station flags seen while traveling from city A to city B. Peter wo"
+description: "We are given a string that represents the sequence of station flags seen while traveling from city A to city B. Peter woke up twice during the trip and wrote down two substrings he saw, in chronological order."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 77
 verified: true
 draft: false
 ---
-
 [CF 8A - Train and Peter](https://codeforces.com/problemset/problem/8/A)
 
 **Rating:** 1200  

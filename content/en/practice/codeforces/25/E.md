@@ -1,6 +1,6 @@
 ---
 title: "CF 25E - Test"
-description: "We are given three lowercase strings. We want to build a single string that contains all three as substrings, and we wan"
+description: "We are given three lowercase strings. We want to build a single string that contains all three as substrings, and we want this resulting string to be as short as possible."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "hashing", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 88
 verified: true
 draft: false
 ---
-
 [CF 25E - Test](https://codeforces.com/problemset/problem/25/E)
 
 **Rating:** 2200  

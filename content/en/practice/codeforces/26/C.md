@@ -1,6 +1,6 @@
 ---
 title: "CF 26C - Parquet"
-description: "We are tasked with tiling a rectangular floor of size n by m using three types of wooden planks. The planks are 1×2 mete"
+description: "We are tasked with tiling a rectangular floor of size _n_ by _m_ using three types of wooden planks. The planks are 1×2 meters (horizontal), 2×1 meters (vertical), and 2×2 meters (square)."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "constructive-algorithms", "greedy", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 106
 verified: false
 draft: false
 ---
-
 [CF 26C - Parquet](https://codeforces.com/problemset/problem/26/C)
 
 **Rating:** 2000  

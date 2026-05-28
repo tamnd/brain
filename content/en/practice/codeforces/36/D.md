@@ -1,6 +1,6 @@
 ---
 title: "CF 36D - New Game with a Chess Piece"
-description: "We are asked to analyze a two-player game on an $n times m$ rectangular board. The players take turns moving a single ch"
+description: "We are asked to analyze a two-player game on an rectangular board. The players take turns moving a single chess piece starting in the top-left corner. On each turn, a player can move the piece one cell right, one cell down, or diagonally cells down-right."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "games"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 103
 verified: false
 draft: false
 ---
-
 [CF 36D - New Game with a Chess Piece](https://codeforces.com/problemset/problem/36/D)
 
 **Rating:** 2300  

@@ -1,6 +1,6 @@
 ---
 title: "CF 25C - Roads in Berland"
-description: "We are given a map of n cities in Berland, where the shortest distances between all pairs are already known. Conceptuall"
+description: "We are given a map of _n_ cities in Berland, where the shortest distances between all pairs are already known. Conceptually, this means the country is fully connected via some unknown set of roads, and the distance matrix is already the all-pairs shortest path result."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "graphs", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 58
 verified: true
 draft: false
 ---
-
 [CF 25C - Roads in Berland](https://codeforces.com/problemset/problem/25/C)
 
 **Rating:** 1900  

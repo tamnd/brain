@@ -1,6 +1,6 @@
 ---
 title: "CF 42C - Safe cracking"
-description: "We are given four positive integers arranged in a circle, representing a \"safe\" combination. The goal is to transform al"
+description: "We are given four positive integers arranged in a circle, representing a \"safe\" combination. The goal is to transform all four numbers into one using only two types of operations. The first operation allows us to pick two adjacent numbers and increment both by one."safe\" combination. The goal is to transform al"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 62
 verified: true
 draft: false
 ---
-
 [CF 42C - Safe cracking](https://codeforces.com/problemset/problem/42/C)
 
 **Rating:** 2200  

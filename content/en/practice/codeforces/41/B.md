@@ -1,6 +1,6 @@
 ---
 title: "CF 41B - Martian Dollar"
-description: "We are asked to maximize the amount of money Vasya can have at the end of n days if he starts with a given sum of bourle"
+description: "We are asked to maximize the amount of money Vasya can have at the end of _n_ days if he starts with a given sum of bourles and can buy and later sell Martian dollars."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 68
 verified: true
 draft: false
 ---
-
 [CF 41B - Martian Dollar](https://codeforces.com/problemset/problem/41/B)
 
 **Rating:** 1400  

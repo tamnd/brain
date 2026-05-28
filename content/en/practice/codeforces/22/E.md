@@ -1,6 +1,6 @@
 ---
 title: "CF 22E - Scheme"
-description: "Each person points to exactly one other person. If someone learns the news, they call the person they point to, who then"
+description: "Each person points to exactly one other person. If someone learns the news, they call the person they point to, who then calls the next person, and so on. We may add extra directed edges of the form x -> y, meaning person x must also call y."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "graphs", "trees"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 108
 verified: true
 draft: false
 ---
-
 [CF 22E - Scheme](https://codeforces.com/problemset/problem/22/E)
 
 **Rating:** 2300  

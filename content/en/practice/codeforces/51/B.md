@@ -1,6 +1,6 @@
 ---
 title: "CF 51B - bHTML Tables Analisys"
-description: "We are given a string that represents a simplified HTML table language. The language contains only three kinds of tags: <table, <tr, and <td, together with their matching closing tags."
+description: "We are given a string that represents a simplified HTML table language. The language contains only three kinds of tags: <table>, <tr>, and <td>, together with their matching closing tags."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "expression-parsing"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 217
 verified: true
 draft: false
 ---
-
 [CF 51B - bHTML Tables Analisys](https://codeforces.com/problemset/problem/51/B)
 
 **Rating:** 1700  

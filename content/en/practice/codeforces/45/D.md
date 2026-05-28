@@ -1,6 +1,6 @@
 ---
 title: "CF 45D - Event Dates"
-description: "Each event has a range of possible days when it could have happened. For the $i$-th event, any integer day between $li$ and $ri$ is acceptable. We must assign exactly one day to every event, and no two events may share the same day."
+description: "Each event has a range of possible days when it could have happened. For the -th event, any integer day between and is acceptable. We must assign exactly one day to every event, and no two events may share the same day."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "meet-in-the-middle", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 95
 verified: true
 draft: false
 ---
-
 [CF 45D - Event Dates](https://codeforces.com/problemset/problem/45/D)
 
 **Rating:** 1900  

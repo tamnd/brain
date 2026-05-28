@@ -1,6 +1,6 @@
 ---
 title: "CF 25B - Phone numbers"
-description: "We are given a string of digits representing a phone number. The task is to split this string into pieces where every pi"
+description: "We are given a string of digits representing a phone number. The task is to split this string into pieces where every piece has length either 2 or 3. The groups must appear in the original order, and they are joined with - characters in the output."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 25B - Phone numbers](https://codeforces.com/problemset/problem/25/B)
 
 **Rating:** 1100  

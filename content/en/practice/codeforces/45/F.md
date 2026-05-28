@@ -1,6 +1,6 @@
 ---
 title: "CF 45F - Goats and Wolves"
-description: "We have the classical river crossing setting, but with a precise safety rule that changes how transitions work. Initially, there are m goats and m wolves on the left bank. The goal is to move all animals to the right bank using a boat that can carry at most n animals at a time."
+description: "We have the classical river crossing setting, but with a precise safety rule that changes how transitions work."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 145
 verified: true
 draft: false
 ---
-
 [CF 45F - Goats and Wolves](https://codeforces.com/problemset/problem/45/F)
 
 **Rating:** 2500  

@@ -1,6 +1,6 @@
 ---
 title: "CF 11D - A Simple Task"
-description: "We are asked to count the number of simple cycles in an undirected graph. A simple cycle is a closed loop where no verte"
+description: "We are asked to count the number of simple cycles in an undirected graph. A simple cycle is a closed loop where no vertex or edge is repeated."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dp", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 89
 verified: true
 draft: false
 ---
-
 [CF 11D - A Simple Task](https://codeforces.com/problemset/problem/11/D)
 
 **Rating:** 2200  

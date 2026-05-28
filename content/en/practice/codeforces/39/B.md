@@ -1,6 +1,6 @@
 ---
 title: "CF 39B - Company Income Growth"
-description: "We are given a sequence of integers representing the yearly income of a company starting from 2001. The first number is"
+description: "We are given a sequence of integers representing the yearly income of a company starting from 2001. The first number is the income in 2001, the second in 2002, and so on. These values may be negative if the company incurred a loss that year."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 207
 verified: true
 draft: false
 ---
-
 [CF 39B - Company Income Growth](https://codeforces.com/problemset/problem/39/B)
 
 **Rating:** 1300  

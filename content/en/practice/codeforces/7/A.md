@@ -1,6 +1,6 @@
 ---
 title: "CF 7A - Kalevitch and Chess"
-description: "The problem asks us to simulate a painter working on an 8×8 chessboard. Every square starts white, and the painter can p"
+description: "The problem asks us to simulate a painter working on an 8×8 chessboard. Every square starts white, and the painter can perform only two operations: paint an entire row black or paint an entire column black. Painting the same square multiple times has no effect beyond the first."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 65
 verified: true
 draft: false
 ---
-
 [CF 7A - Kalevitch and Chess](https://codeforces.com/problemset/problem/7/A)
 
 **Rating:** 1100  

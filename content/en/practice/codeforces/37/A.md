@@ -1,6 +1,6 @@
 ---
 title: "CF 37A - Towers"
-description: "We are given a set of wooden bars, each with a positive integer length. Vasya wants to build towers by stacking bars of"
+description: "We are given a set of wooden bars, each with a positive integer length. Vasya wants to build towers by stacking bars of the same length. Each tower must consist of bars that are identical in length, but different towers can have different lengths."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 53
 verified: true
 draft: false
 ---
-
 [CF 37A - Towers](https://codeforces.com/problemset/problem/37/A)
 
 **Rating:** 1000  

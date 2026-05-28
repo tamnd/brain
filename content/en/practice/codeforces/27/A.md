@@ -1,6 +1,6 @@
 ---
 title: "CF 27A - Next Test"
-description: "We are given the indices of tests that already exist in the system. Every index is a positive integer, and all indices a"
+description: "We are given the indices of tests that already exist in the system. Every index is a positive integer, and all indices are distinct. The task is to find the smallest positive integer that does not appear in the list."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 73
 verified: true
 draft: false
 ---
-
 [CF 27A - Next Test](https://codeforces.com/problemset/problem/27/A)
 
 **Rating:** 1200  

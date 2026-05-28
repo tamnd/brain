@@ -1,6 +1,6 @@
 ---
 title: "CF 31C - Schedule"
-description: "We are given a list of n lessons, each with a start and end time, scheduled in a single room. Two lessons overlap if one"
+description: "We are given a list of n lessons, each with a start and end time, scheduled in a single room. Two lessons overlap if one starts before another ends. The goal is to find which single lesson can be removed so that the remaining lessons have no overlaps."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 58
 verified: true
 draft: false
 ---
-
 [CF 31C - Schedule](https://codeforces.com/problemset/problem/31/C)
 
 **Rating:** 1700  

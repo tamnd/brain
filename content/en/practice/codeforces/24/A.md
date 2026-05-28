@@ -1,6 +1,6 @@
 ---
 title: "CF 24A - Ring road"
-description: "The problem describes a country, Berland, with n cities arranged in a perfect ring. Originally, each city had two-way ro"
+description: "The problem describes a country, Berland, with n cities arranged in a perfect ring. Originally, each city had two-way roads connecting it to its two neighbors, so it was trivial to travel from any city to any other."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 216
 verified: true
 draft: false
 ---
-
 [CF 24A - Ring road](https://codeforces.com/problemset/problem/24/A)
 
 **Rating:** 1400  

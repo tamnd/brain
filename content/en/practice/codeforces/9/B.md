@@ -1,6 +1,6 @@
 ---
 title: "CF 9B - Running Student"
-description: "The student is already riding a bus that moves along the x-axis from left to right. The bus stops at fixed positions (xi"
+description: "The student is already riding a bus that moves along the x-axis from left to right. The bus stops at fixed positions (xi, 0) in increasing order. At any stop except the first one, the student may get off and run directly to the university located at (xu, yu)."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "geometry", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 86
 verified: true
 draft: false
 ---
-
 [CF 9B - Running Student](https://codeforces.com/problemset/problem/9/B)
 
 **Rating:** 1200  

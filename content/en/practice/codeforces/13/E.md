@@ -1,6 +1,6 @@
 ---
 title: "CF 13E - Holes"
-description: "We have a line of holes indexed from left to right. Every hole contains a jump length. If a ball is dropped into hole i,"
+description: "We have a line of holes indexed from left to right. Every hole contains a jump length. If a ball is dropped into hole i, it immediately moves to i + a[i]. From there it jumps again using the value of the new hole, and this continues until the next jump leaves the array."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dsu"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 113
 verified: true
 draft: false
 ---
-
 [CF 13E - Holes](https://codeforces.com/problemset/problem/13/E)
 
 **Rating:** 2700  

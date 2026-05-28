@@ -1,6 +1,6 @@
 ---
 title: "CF 39K - Testing"
-description: "We are given an $n times m$ rectangular grid representing a field, and within this field there are $k$ non-overlapping r"
+description: "We are given an rectangular grid representing a field, and within this field there are non-overlapping rectangles representing objects. Each rectangle occupies contiguous cells marked by '*', and all other cells are '.'."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 91
 verified: true
 draft: false
 ---
-
 [CF 39K - Testing](https://codeforces.com/problemset/problem/39/K)
 
 **Rating:** 2600  

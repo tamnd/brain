@@ -1,6 +1,6 @@
 ---
 title: "CF 23D - Tetragon"
-description: "We are given three points in the plane. Each point is the midpoint of one side of an unknown strictly convex quadrilater"
+description: "We are given three points in the plane. Each point is the midpoint of one side of an unknown strictly convex quadrilateral, and all four sides of that quadrilateral have equal length."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 131
 verified: false
 draft: false
 ---
-
 [CF 23D - Tetragon](https://codeforces.com/problemset/problem/23/D)
 
 **Rating:** 2600  

@@ -1,6 +1,6 @@
 ---
 title: "CF 39A - C*++ Calculations"
-description: "We are given an arithmetic expression built from terms involving a single variable a. Every term is one of two forms: wh"
+description: "We are given an arithmetic expression built from terms involving a single variable a. Every term is one of two forms:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "expression-parsing", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 162
 verified: true
 draft: false
 ---
-
 [CF 39A - C*++ Calculations](https://codeforces.com/problemset/problem/39/A)
 
 **Rating:** 2000  

@@ -1,6 +1,6 @@
 ---
 title: "CF 40A - Find Color"
-description: "The plane is colored using concentric rings centered at the origin. Every ring between two consecutive integer distances"
+description: "The plane is colored using concentric rings centered at the origin. Every ring between two consecutive integer distances alternates color. The borders themselves, meaning all points whose distance from the origin is an integer, are always black."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "geometry", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 40A - Find Color](https://codeforces.com/problemset/problem/40/A)
 
 **Rating:** 1300  

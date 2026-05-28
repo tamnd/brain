@@ -1,6 +1,6 @@
 ---
 title: "CF 30E - Tricky and Clever Password"
-description: "We are given a single lowercase string. Somewhere inside this string, there exists a hidden palindrome of odd length, bu"
+description: "We are given a single lowercase string. Somewhere inside this string, there exists a hidden palindrome of odd length, but the palindrome was split into three consecutive parts:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "constructive-algorithms", "data-structures", "greedy", "hashing", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 110
 verified: true
 draft: false
 ---
-
 [CF 30E - Tricky and Clever Password](https://codeforces.com/problemset/problem/30/E)
 
 **Rating:** 2800  

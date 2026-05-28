@@ -1,6 +1,6 @@
 ---
 title: "CF 44G - Shooting Gallery"
-description: "The problem can be restated as simulating bullets flying along the positive Z axis at given coordinates on a 2D shooting plane (XOY). Each bullet may hit one of multiple rectangular targets floating at distinct heights along the Z axis."
+description: "The problem can be restated as simulating bullets flying along the positive _Z_ axis at given coordinates on a 2D shooting plane (_XOY_). Each bullet may hit one of multiple rectangular targets floating at distinct heights along the _Z_ axis."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 83
 verified: true
 draft: false
 ---
-
 [CF 44G - Shooting Gallery](https://codeforces.com/problemset/problem/44/G)
 
 **Rating:** 2500  

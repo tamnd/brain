@@ -1,6 +1,6 @@
 ---
 title: "CF 32A - Reconnaissance"
-description: "We are tasked with counting how many pairs of soldiers in a detachment can form a reconnaissance unit. A unit consists o"
+description: "We are tasked with counting how many pairs of soldiers in a detachment can form a reconnaissance unit. A unit consists of exactly two soldiers, and the difference in their heights cannot exceed a given threshold _d_."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 65
 verified: true
 draft: false
 ---
-
 [CF 32A - Reconnaissance](https://codeforces.com/problemset/problem/32/A)
 
 **Rating:** 800  

@@ -1,6 +1,6 @@
 ---
 title: "CF 2C - Commentator problem"
-description: "We are given three circles on the plane. Each circle represents a stadium, with a center point and a radius. We need to"
+description: "We are given three circles on the plane. Each circle represents a stadium, with a center point and a radius. We need to find a point from which all three stadiums are seen under the same angle."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry"]
 categories: ["algorithms"]

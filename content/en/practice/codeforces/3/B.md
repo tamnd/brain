@@ -1,6 +1,6 @@
 ---
 title: "CF 3B - Lorry"
-description: "We have a lorry with capacity v. There are two kinds of boats. A kayak occupies 1 unit of space. A catamaran occupies 2"
+description: "We have a lorry with capacity v. There are two kinds of boats."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 245
 verified: true
 draft: false
 ---
-
 [CF 3B - Lorry](https://codeforces.com/problemset/problem/3/B)
 
 **Rating:** 1900  

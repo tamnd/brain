@@ -1,6 +1,6 @@
 ---
 title: "CF 46E - Comb"
-description: "Each row of the table contains integers, and from every row we must take a positive-length prefix. If we choose c[i] cells from row i, then the selected cells in that row are exactly the first c[i] entries. The total reward is the sum of all selected numbers."
+description: "Each row of the table contains integers, and from every row we must take a positive-length prefix. If we choose c[i] cells from row i, then the selected cells in that row are exactly the first c[i] entries."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 112
 verified: true
 draft: false
 ---
-
 [CF 46E - Comb](https://codeforces.com/problemset/problem/46/E)
 
 **Rating:** 1900  

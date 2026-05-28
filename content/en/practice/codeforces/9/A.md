@@ -1,6 +1,6 @@
 ---
 title: "CF 9A - Die Roll"
-description: "We are asked to calculate the probability that Dot wins a simple dice game against Yakko and Wakko. Each character rolls"
+description: "We are asked to calculate the probability that Dot wins a simple dice game against Yakko and Wakko. Each character rolls a standard six-sided die. Dot wins if her roll is at least as large as the maximum of Yakko’s and Wakko’s rolls."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math", "probabilities"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 163
 verified: true
 draft: false
 ---
-
 [CF 9A - Die Roll](https://codeforces.com/problemset/problem/9/A)
 
 **Rating:** 800  

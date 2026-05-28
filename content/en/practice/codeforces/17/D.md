@@ -1,6 +1,6 @@
 ---
 title: "CF 17D - Notepad"
-description: "Nick wants to list all numbers of a given length n in base b, where digits range from 0 to b-1, but numbers cannot start"
+description: "Nick wants to list all numbers of a given length n in base b, where digits range from 0 to b-1, but numbers cannot start with 0. Each page in his notepad holds exactly c numbers. We are asked to compute how many numbers appear on the last page he fills."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 184
 verified: true
 draft: false
 ---
-
 [CF 17D - Notepad](https://codeforces.com/problemset/problem/17/D)
 
 **Rating:** 2400  

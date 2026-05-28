@@ -1,6 +1,6 @@
 ---
 title: "CF 6B - President's Office"
-description: "The office is represented as a rectangular grid. Every uppercase letter represents part of a desk, and all cells with th"
+description: "The office is represented as a rectangular grid. Every uppercase letter represents part of a desk, and all cells with the same letter belong to the same rectangular desk. The president’s desk color is given as c."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 78
 verified: true
 draft: false
 ---
-
 [CF 6B - President's Office](https://codeforces.com/problemset/problem/6/B)
 
 **Rating:** 1100  

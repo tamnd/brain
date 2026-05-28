@@ -1,6 +1,6 @@
 ---
 title: "CF 36A - Extra-terrestrial Intelligence"
-description: "We are given a binary string representing Vasya's observations over several days. A character '1' means a signal was rec"
+description: "We are given a binary string representing Vasya's observations over several days. A character '1' means a signal was received on that day, while '0' means no signal appeared."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
 [CF 36A - Extra-terrestrial Intelligence](https://codeforces.com/problemset/problem/36/A)
 
 **Rating:** 1300  

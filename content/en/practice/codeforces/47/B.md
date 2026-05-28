@@ -1,6 +1,6 @@
 ---
 title: "CF 47B - Coins"
-description: "We have three coins labeled A, B, and C. Every pair of coins has already been compared once using a balance scale, and each comparison tells us which coin is heavier. A line like AB means coin A is heavier than coin B."
+description: "We have three coins labeled A, B, and C. Every pair of coins has already been compared once using a balance scale, and each comparison tells us which coin is heavier."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 102
 verified: true
 draft: false
 ---
-
 [CF 47B - Coins](https://codeforces.com/problemset/problem/47/B)
 
 **Rating:** 1200  

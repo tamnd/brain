@@ -1,6 +1,6 @@
 ---
 title: "CF 14A - Letter"
-description: "We are given a rectangular grid representing a sheet of graph paper with n rows and m columns. Some of the squares are s"
+description: "We are given a rectangular grid representing a sheet of graph paper with _n_ rows and _m_ columns. Some of the squares are shaded, marked by *, and the rest are unshaded, marked by .."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 68
 verified: true
 draft: false
 ---
-
 [CF 14A - Letter](https://codeforces.com/problemset/problem/14/A)
 
 **Rating:** 800  

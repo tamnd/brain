@@ -1,6 +1,6 @@
 ---
 title: "CF 38A - Army"
-description: "Vasya currently holds rank a in the army and wants to eventually reach rank b. Moving from rank i to rank i + 1 requires"
+description: "Vasya currently holds rank a in the army and wants to eventually reach rank b. Moving from rank i to rank i + 1 requires a fixed number of years, stored in the array d."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 78
 verified: true
 draft: false
 ---
-
 [CF 38A - Army](https://codeforces.com/problemset/problem/38/A)
 
 **Rating:** 800  

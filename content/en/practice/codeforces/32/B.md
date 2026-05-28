@@ -1,6 +1,6 @@
 ---
 title: "CF 32B - Borze"
-description: "We are given a string written in the Borze encoding system. Every digit of a ternary number is represented by one of thr"
+description: "We are given a string written in the Borze encoding system. Every digit of a ternary number is represented by one of three patterns:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "expression-parsing", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 77
 verified: true
 draft: false
 ---
-
 [CF 32B - Borze](https://codeforces.com/problemset/problem/32/B)
 
 **Rating:** 800  

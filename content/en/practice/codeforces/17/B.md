@@ -1,6 +1,6 @@
 ---
 title: "CF 17B - Hierarchy"
-description: "We have employees and directed supervisor offers between them. An offer (a, b, c) means employee a is willing to supervi"
+description: "We have employees and directed supervisor offers between them. An offer (a, b, c) means employee a is willing to supervise employee b for cost c. Qualifications are strictly decreasing along every offer, so q[a] > q[b]."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dsu", "greedy", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 94
 verified: true
 draft: false
 ---
-
 [CF 17B - Hierarchy](https://codeforces.com/problemset/problem/17/B)
 
 **Rating:** 1500  

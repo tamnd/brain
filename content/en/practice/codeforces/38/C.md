@@ -1,6 +1,6 @@
 ---
 title: "CF 38C - Blinds"
-description: "We have a set of horizontal blind stripes of varying lengths, and our goal is to construct a rectangular blind for a win"
+description: "We have a set of horizontal blind stripes of varying lengths, and our goal is to construct a rectangular blind for a window using these stripes. Each stripe can be cut into smaller pieces, but pieces cannot be shorter than a given minimum length, l."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 67
 verified: true
 draft: false
 ---
-
 [CF 38C - Blinds](https://codeforces.com/problemset/problem/38/C)
 
 **Rating:** 1400  

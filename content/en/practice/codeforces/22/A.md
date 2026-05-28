@@ -1,6 +1,6 @@
 ---
 title: "CF 22A - Second Order Statistics"
-description: "We are given a small array of integers and need to find the smallest value that is strictly larger than the minimum elem"
+description: "We are given a small array of integers and need to find the smallest value that is strictly larger than the minimum element in the array."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
 [CF 22A - Second Order Statistics](https://codeforces.com/problemset/problem/22/A)
 
 **Rating:** 800  

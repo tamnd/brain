@@ -1,6 +1,6 @@
 ---
 title: "CF 40C - Berland Square"
-description: "We have two families of circles on the infinite plane. The first family contains circles centered at (x, 0) with radii 1"
+description: "We have two families of circles on the infinite plane."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 98
 verified: true
 draft: false
 ---
-
 [CF 40C - Berland Square](https://codeforces.com/problemset/problem/40/C)
 
 **Rating:** 2300  

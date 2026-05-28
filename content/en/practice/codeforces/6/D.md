@@ -1,6 +1,6 @@
 ---
 title: "CF 6D - Lizards and Basements 2"
-description: "We have a line of archers, each with some health. A fireball can only be thrown at positions 2 ... n-1. If we throw at p"
+description: "We have a line of archers, each with some health. A fireball can only be thrown at positions 2 ... n-1. If we throw at position i, then:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 138
 verified: true
 draft: false
 ---
-
 [CF 6D - Lizards and Basements 2](https://codeforces.com/problemset/problem/6/D)
 
 **Rating:** 2600  

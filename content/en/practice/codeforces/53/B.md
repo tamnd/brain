@@ -1,6 +1,6 @@
 ---
 title: "CF 53B - Blog Photo"
-description: "We are given the dimensions of an uploaded photo, height h and width w. We want to cut out a smaller rectangle from it. The cut rectangle must satisfy three conditions. First, its dimensions must be integers. Second, its aspect ratio must stay within the allowed range: $0."
+description: "We are given the dimensions of an uploaded photo, height h and width w. We want to cut out a smaller rectangle from it. The cut rectangle must satisfy three conditions."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 141
 verified: true
 draft: false
 ---
-
 [CF 53B - Blog Photo](https://codeforces.com/problemset/problem/53/B)
 
 **Rating:** 1700  

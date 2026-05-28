@@ -1,6 +1,6 @@
 ---
 title: "CF 16A - Flag"
-description: "We are given a rectangular grid representing a country’s flag. Each cell in the grid has a color, encoded as a digit fro"
+description: "We are given a rectangular grid representing a country’s flag. Each cell in the grid has a color, encoded as a digit from 0 to 9. The dimensions of the flag are rows by columns. The goal is to determine whether the flag is “striped” according to the new ISO standard."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 68
 verified: true
 draft: false
 ---
-
 [CF 16A - Flag](https://codeforces.com/problemset/problem/16/A)
 
 **Rating:** 800  

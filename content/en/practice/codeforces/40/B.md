@@ -1,6 +1,6 @@
 ---
 title: "CF 40B - Repaintings"
-description: "We start with an n × m chessboard. The top-left cell is black, so the coloring alternates exactly like a normal chessboa"
+description: "We start with an n × m chessboard. The top-left cell is black, so the coloring alternates exactly like a normal chessboard. Only the initially black cells participate in the repainting process."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 104
 verified: true
 draft: false
 ---
-
 [CF 40B - Repaintings](https://codeforces.com/problemset/problem/40/B)
 
 **Rating:** 1600  

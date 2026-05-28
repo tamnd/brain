@@ -1,6 +1,6 @@
 ---
 title: "CF 18B - Platforms"
-description: "We have a line with a series of discrete platforms. Each platform has a fixed length l and is separated from the next by"
+description: "We have a line with a series of discrete platforms. Each platform has a fixed length l and is separated from the next by a fixed distance m - l, so platform k occupies the segment from (k-1)m to (k-1)m + l."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 73
 verified: true
 draft: false
 ---
-
 [CF 18B - Platforms](https://codeforces.com/problemset/problem/18/B)
 
 **Rating:** 1700  

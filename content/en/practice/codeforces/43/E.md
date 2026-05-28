@@ -1,6 +1,6 @@
 ---
 title: "CF 43E - Race"
-description: "We are asked to analyze a straight-line race of length s kilometers involving n cars. Each car has a list of driving seg"
+description: "We are asked to analyze a straight-line race of length _s_ kilometers involving _n_ cars. Each car has a list of driving segments, and each segment specifies a constant speed and a duration. The car moves at that speed for the given time before switching to the next segment."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation", "two-pointers"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 207
 verified: true
 draft: false
 ---
-
 [CF 43E - Race](https://codeforces.com/problemset/problem/43/E)
 
 **Rating:** 2300  

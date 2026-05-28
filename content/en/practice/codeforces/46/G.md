@@ -1,6 +1,6 @@
 ---
 title: "CF 46G - Emperor's Problem"
-description: "We are asked to construct a convex polygon with $n$ vertices that satisfies three conditions. First, all vertices must lie on lattice points, meaning each coordinate is an integer. Second, all sides must have distinct lengths."
+description: "We are asked to construct a convex polygon with vertices that satisfies three conditions. First, all vertices must lie on lattice points, meaning each coordinate is an integer. Second, all sides must have distinct lengths."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 93
 verified: false
 draft: false
 ---
-
 [CF 46G - Emperor's Problem](https://codeforces.com/problemset/problem/46/G)
 
 **Rating:** 2500  

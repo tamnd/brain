@@ -1,6 +1,6 @@
 ---
 title: "CF 18E - Flag 2"
-description: "We are given a flag represented as an n×m grid where each cell is painted with one of 26 colours labeled a to z. The goa"
+description: "We are given a flag represented as an _n_×_m_ grid where each cell is painted with one of 26 colours labeled a to z. The goal is to repaint as few squares as possible so that two conditions hold. First, each row can use at most two different colours."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 72
 verified: true
 draft: false
 ---
-
 [CF 18E - Flag 2](https://codeforces.com/problemset/problem/18/E)
 
 **Rating:** 2000  

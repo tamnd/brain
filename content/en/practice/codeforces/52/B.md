@@ -1,6 +1,6 @@
 ---
 title: "CF 52B - Right Triangles"
-description: "We are given a rectangular grid where each cell is either empty or marked with . Every cell represents a point located at the center of that cell."
+description: "We are given a rectangular grid where each cell is either empty or marked with . Every cell represents a point located at the center of that cell. We need to count how many right triangles can be formed such that:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 98
 verified: true
 draft: false
 ---
-
 [CF 52B - Right Triangles](https://codeforces.com/problemset/problem/52/B)
 
 **Rating:** 1600  

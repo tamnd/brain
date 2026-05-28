@@ -1,6 +1,6 @@
 ---
 title: "CF 35B - Warehouse"
-description: "We are asked to simulate a warehouse with a grid-like shelving system. Each shelf has m sections, and there are n shelve"
+description: "We are asked to simulate a warehouse with a grid-like shelving system. Each shelf has m sections, and there are n shelves stacked from top to bottom. Every section can hold at most one box."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
 [CF 35B - Warehouse](https://codeforces.com/problemset/problem/35/B)
 
 **Rating:** 1700  

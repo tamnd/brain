@@ -1,6 +1,6 @@
 ---
 title: "CF 12E - Start of the session"
-description: "We are asked to construct a square matrix of size n × n, where n is an even number. The matrix must satisfy four propert"
+description: "We are asked to construct a square matrix of size _n_ × _n_, where _n_ is an even number. The matrix must satisfy four properties. The main diagonal contains only zeroes."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 73
 verified: true
 draft: false
 ---
-
 [CF 12E - Start of the session](https://codeforces.com/problemset/problem/12/E)
 
 **Rating:** 2100  

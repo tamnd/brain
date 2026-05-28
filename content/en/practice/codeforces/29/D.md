@@ -1,6 +1,6 @@
 ---
 title: "CF 29D - Ant on the Tree"
-description: "We are asked to construct a path for an ant on a tree. The tree has n vertices, with vertex 1 as the root, and n-1 edges"
+description: "We are asked to construct a path for an ant on a tree. The tree has n vertices, with vertex 1 as the root, and n-1 edges connecting them so the graph is connected."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "dfs-and-similar", "trees"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 79
 verified: true
 draft: false
 ---
-
 [CF 29D - Ant on the Tree](https://codeforces.com/problemset/problem/29/D)
 
 **Rating:** 2000  

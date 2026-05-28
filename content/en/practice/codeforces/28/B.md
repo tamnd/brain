@@ -1,6 +1,6 @@
 ---
 title: "CF 28B - pSort"
-description: "We start with an array where position i initially contains value i. Each position also has a fixed jump distance d[i]. A"
+description: "We start with an array where position i initially contains value i. Each position also has a fixed jump distance d[i]. A swap is allowed between positions i and j only if |i - j| = d[i]."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dsu", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 93
 verified: true
 draft: false
 ---
-
 [CF 28B - pSort](https://codeforces.com/problemset/problem/28/B)
 
 **Rating:** 1600  

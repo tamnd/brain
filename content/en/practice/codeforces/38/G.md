@@ -1,6 +1,6 @@
 ---
 title: "CF 38G - Queue"
-description: "We are asked to simulate a queue of people where each person has two properties: an importance value a[i] and a patience"
+description: "We are asked to simulate a queue of people where each person has two properties: an importance value a[i] and a patience limit c[i]."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 61
 verified: true
 draft: false
 ---
-
 [CF 38G - Queue](https://codeforces.com/problemset/problem/38/G)
 
 **Rating:** 2300  

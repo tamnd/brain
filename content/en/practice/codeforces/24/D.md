@@ -1,6 +1,6 @@
 ---
 title: "CF 24D - Broken robot"
-description: "The board has N rows and M columns. A robot starts at cell (i, j) and repeatedly performs one random move. From an inter"
+description: "The board has N rows and M columns. A robot starts at cell (i, j) and repeatedly performs one random move. From an interior cell it has four equally likely choices: stay in place, move left, move right, or move down."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "math", "probabilities"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 94
 verified: true
 draft: false
 ---
-
 [CF 24D - Broken robot](https://codeforces.com/problemset/problem/24/D)
 
 **Rating:** 2400  

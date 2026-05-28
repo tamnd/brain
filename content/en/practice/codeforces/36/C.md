@@ -1,6 +1,6 @@
 ---
 title: "CF 36C - Bowls"
-description: "Each bowl is a frustum, a cone with its tip cut off. A bowl is described by its height h, bottom radius r, and top radiu"
+description: "Each bowl is a frustum, a cone with its tip cut off. A bowl is described by its height h, bottom radius r, and top radius R. The bowls are stacked in the given order, always sharing the same vertical axis."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 125
 verified: false
 draft: false
 ---
-
 [CF 36C - Bowls](https://codeforces.com/problemset/problem/36/C)
 
 **Rating:** 2200  

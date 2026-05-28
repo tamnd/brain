@@ -1,6 +1,6 @@
 ---
 title: "CF 22B - Bargaining Table"
-description: "The office floor is represented as an n × m grid. Each cell is either free, written as 0, or blocked by furniture, writt"
+description: "The office floor is represented as an n × m grid. Each cell is either free, written as 0, or blocked by furniture, written as 1. We want to place one rectangular table whose sides stay aligned with the grid. Every cell covered by the rectangle must be free."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 100
 verified: true
 draft: false
 ---
-
 [CF 22B - Bargaining Table](https://codeforces.com/problemset/problem/22/B)
 
 **Rating:** 1500  

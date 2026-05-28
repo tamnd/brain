@@ -1,6 +1,6 @@
 ---
 title: "CF 37D - Lesson Timetable"
-description: "Each student group attends exactly two lessons. For a group, the classroom used in the first lesson must not exceed the"
+description: "Each student group attends exactly two lessons. For a group, the classroom used in the first lesson must not exceed the classroom used in the second lesson."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 143
 verified: false
 draft: false
 ---
-
 [CF 37D - Lesson Timetable](https://codeforces.com/problemset/problem/37/D)
 
 **Rating:** 2300  

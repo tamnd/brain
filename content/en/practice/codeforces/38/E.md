@@ -1,6 +1,6 @@
 ---
 title: "CF 38E - Let's Go Rolling!"
-description: "We are given n marbles on a one-dimensional axis, each with a position x[i] and a pin cost c[i]. You can stick a pin in"
+description: "We are given n marbles on a one-dimensional axis, each with a position x[i] and a pin cost c[i]. You can stick a pin in some marbles, paying the associated cost, and unpinned marbles will roll left until they hit the nearest pinned marble."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 38E - Let's Go Rolling!](https://codeforces.com/problemset/problem/38/E)
 
 **Rating:** 1800  

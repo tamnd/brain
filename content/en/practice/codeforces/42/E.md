@@ -1,6 +1,6 @@
 ---
 title: "CF 42E - Baldman and the military"
-description: "We are asked to prepare a set of additional undirected edges, called wormholes, on top of an unknown tunnel system. The"
+description: "We are asked to prepare a set of additional undirected edges, called wormholes, on top of an unknown tunnel system."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "graphs", "trees"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 233
 verified: true
 draft: false
 ---
-
 [CF 42E - Baldman and the military](https://codeforces.com/problemset/problem/42/E)
 
 **Rating:** 2700  

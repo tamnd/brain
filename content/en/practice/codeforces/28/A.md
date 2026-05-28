@@ -1,6 +1,6 @@
 ---
 title: "CF 28A - Bender Problem"
-description: "We are given a sequence of nails in the plane, each with integer coordinates, and a collection of straight rods. The nai"
+description: "We are given a sequence of nails in the plane, each with integer coordinates, and a collection of straight rods. The nails define the vertices of a closed polyline that only moves along horizontal or vertical segments."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 77
 verified: true
 draft: false
 ---
-
 [CF 28A - Bender Problem](https://codeforces.com/problemset/problem/28/A)
 
 **Rating:** 1600  

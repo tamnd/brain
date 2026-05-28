@@ -1,6 +1,6 @@
 ---
 title: "CF 2A - Winner"
-description: "The game records a sequence of rounds. In each round, one player either gains or loses some number of points. At the end"
+description: "The game records a sequence of rounds. In each round, one player either gains or loses some number of points. At the end, the player with the highest total score should win."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "hashing", "implementation"]
 categories: ["algorithms"]

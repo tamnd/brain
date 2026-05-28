@@ -1,6 +1,6 @@
 ---
 title: "CF 39C - Moon Craters"
-description: "Each crater is represented by a center position c on a line and a radius r. Since every crater is circular and the robot"
+description: "Each crater is represented by a center position c on a line and a radius r. Since every crater is circular and the robot only moves along one straight path, every crater can be viewed as an interval on the line:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 162
 verified: false
 draft: false
 ---
-
 [CF 39C - Moon Craters](https://codeforces.com/problemset/problem/39/C)
 
 **Rating:** 2100  

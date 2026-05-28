@@ -1,6 +1,6 @@
 ---
 title: "CF 33C - Wonderful Randomized Sum"
-description: "We are given a sequence of integers, and the task is to maximize its sum by performing two operations: first, we may cho"
+description: "We are given a sequence of integers, and the task is to maximize its sum by performing two operations: first, we may choose any prefix of the sequence and multiply every element in it by -1; second, we may choose any suffix of the sequence and multiply every element in it by -1."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 186
 verified: true
 draft: false
 ---
-
 [CF 33C - Wonderful Randomized Sum](https://codeforces.com/problemset/problem/33/C)
 
 **Rating:** 1800  

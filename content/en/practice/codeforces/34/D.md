@@ -1,6 +1,6 @@
 ---
 title: "CF 34D - Road Map"
-description: "We are given a tree with n cities. Originally, city r1 is considered the capital, and for every other city we know its p"
+description: "We are given a tree with n cities. Originally, city r1 is considered the capital, and for every other city we know its parent in the rooted tree. The value p[i] means that if we walk from the old capital toward city i, the last city before reaching i is p[i]."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 89
 verified: true
 draft: false
 ---
-
 [CF 34D - Road Map](https://codeforces.com/problemset/problem/34/D)
 
 **Rating:** 1600  

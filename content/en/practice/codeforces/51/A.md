@@ -1,6 +1,6 @@
 ---
 title: "CF 51A - Cheaterius's Problem"
-description: "Each amulet is a 2 x 2 square filled with numbers from 1 to 6. We can think of it as four cells: Two amulets belong to the same pile if one can be rotated into the other. Flipping is forbidden, only rotations by 90°, 180°, or 270° are allowed. The input gives several amulets."
+description: "Each amulet is a 2 x 2 square filled with numbers from 1 to 6. We can think of it as four cells:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 97
 verified: true
 draft: false
 ---
-
 [CF 51A - Cheaterius's Problem](https://codeforces.com/problemset/problem/51/A)
 
 **Rating:** 1300  

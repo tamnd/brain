@@ -1,6 +1,6 @@
 ---
 title: "CF 18D - Seller Bob"
-description: "Bob experiences one event per day. A day is either a prize day or a customer day. On a prize day, Bob receives a memory"
+description: "Bob experiences one event per day. A day is either a prize day or a customer day."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 114
 verified: true
 draft: false
 ---
-
 [CF 18D - Seller Bob](https://codeforces.com/problemset/problem/18/D)
 
 **Rating:** 2000  

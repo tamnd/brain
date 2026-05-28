@@ -1,6 +1,6 @@
 ---
 title: "CF 11A - Increasing Sequence"
-description: "We have an array of integers, and we want every element to become strictly larger than the one before it. The only opera"
+description: "We have an array of integers, and we want every element to become strictly larger than the one before it. The only operation allowed is choosing a single element and increasing it by exactly d. Every use of this operation counts as one move."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 11A - Increasing Sequence](https://codeforces.com/problemset/problem/11/A)
 
 **Rating:** 900  

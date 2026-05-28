@@ -1,6 +1,6 @@
 ---
 title: "CF 39G - Inverse Function"
-description: "We are given the source code of a tiny recursive function f(n) written in a heavily restricted subset of C++. The functi"
+description: "We are given the source code of a tiny recursive function f(n) written in a heavily restricted subset of C++. The function only contains sequential if (...) return ...; statements and unconditional return ...; statements."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 122
 verified: true
 draft: false
 ---
-
 [CF 39G - Inverse Function](https://codeforces.com/problemset/problem/39/G)
 
 **Rating:** 2400  

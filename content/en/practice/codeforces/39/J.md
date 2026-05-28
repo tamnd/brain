@@ -1,6 +1,6 @@
 ---
 title: "CF 39J - Spelling Check"
-description: "We are given two lowercase strings. The first string is exactly one character longer than the second. We want to find ev"
+description: "We are given two lowercase strings. The first string is exactly one character longer than the second. We want to find every position in the first string such that removing the character at that position makes the two strings identical."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "hashing", "implementation", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 94
 verified: true
 draft: false
 ---
-
 [CF 39J - Spelling Check](https://codeforces.com/problemset/problem/39/J)
 
 **Rating:** 1500  

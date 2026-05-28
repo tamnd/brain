@@ -1,6 +1,6 @@
 ---
 title: "CF 54D - Writing a Song"
-description: "We are asked to construct a string of length N using only the first K letters of the alphabet, in such a way that a given \"name\" string P occurs exactly at certain starting positions and nowhere else."
+description: "We are asked to construct a string of length N using only the first K letters of the alphabet, in such a way that a given \"name\" string P occurs exactly at certain starting positions and nowhere else."name\" string P occurs exactly at certain starting positions and nowhere else."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 63
 verified: true
 draft: false
 ---
-
 [CF 54D - Writing a Song](https://codeforces.com/problemset/problem/54/D)
 
 **Rating:** 2100  

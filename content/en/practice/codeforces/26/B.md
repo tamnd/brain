@@ -1,6 +1,6 @@
 ---
 title: "CF 26B - Regular Bracket Sequence"
-description: "We are given a string consisting solely of opening and closing parentheses. The task is to determine the maximum length"
+description: "We are given a string consisting solely of opening and closing parentheses. The task is to determine the maximum length of a subsequence that forms a valid, or regular, bracket sequence."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 80
 verified: true
 draft: false
 ---
-
 [CF 26B - Regular Bracket Sequence](https://codeforces.com/problemset/problem/26/B)
 
 **Rating:** 1400  

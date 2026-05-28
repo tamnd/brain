@@ -1,6 +1,6 @@
 ---
 title: "CF 31D - Chocolate"
-description: "We are given a rectangular chocolate bar with integer width W and height H. Bob breaks the chocolate multiple times alon"
+description: "We are given a rectangular chocolate bar with integer width _W_ and height _H_. Bob breaks the chocolate multiple times along vertical or horizontal lines that go from one edge to the opposite edge of a piece."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 59
 verified: true
 draft: false
 ---
-
 [CF 31D - Chocolate](https://codeforces.com/problemset/problem/31/D)
 
 **Rating:** 2000  

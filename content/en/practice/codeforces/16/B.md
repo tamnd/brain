@@ -1,6 +1,6 @@
 ---
 title: "CF 16B - Burglar and Matches"
-description: "We have a burglar who can carry exactly n matchboxes. In the warehouse, there are m containers. Each container i has ai"
+description: "We have a burglar who can carry exactly n matchboxes. In the warehouse, there are m containers. Each container i has a_i matchboxes, and every matchbox in that container contains b_i matches."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 73
 verified: true
 draft: false
 ---
-
 [CF 16B - Burglar and Matches](https://codeforces.com/problemset/problem/16/B)
 
 **Rating:** 900  

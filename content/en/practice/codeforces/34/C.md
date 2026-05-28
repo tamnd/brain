@@ -1,6 +1,6 @@
 ---
 title: "CF 34C - Page Numbers"
-description: "We are asked to process a user-entered sequence of page numbers for printing. The input is a single string of positive i"
+description: "We are asked to process a user-entered sequence of page numbers for printing. The input is a single string of positive integers separated by commas, such as 1,2,3,1,1,2,6,6,2. Some numbers may repeat, possibly non-consecutively."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "expression-parsing", "implementation", "sortings", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 67
 verified: true
 draft: false
 ---
-
 [CF 34C - Page Numbers](https://codeforces.com/problemset/problem/34/C)
 
 **Rating:** 1300  

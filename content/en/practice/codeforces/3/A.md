@@ -1,6 +1,6 @@
 ---
 title: "CF 3A - Shortest path of the king"
-description: "We are asked to move a chess king from one square to another on a standard 8×8 board in the fewest number of moves. The"
+description: "We are asked to move a chess king from one square to another on a standard 8×8 board in the fewest number of moves. The king can move to any adjacent square in eight possible directions: vertically, horizontally, or diagonally."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 277
 verified: true
 draft: false
 ---
-
 [CF 3A - Shortest path of the king](https://codeforces.com/problemset/problem/3/A)
 
 **Rating:** 1000  

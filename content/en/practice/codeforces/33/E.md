@@ -1,6 +1,6 @@
 ---
 title: "CF 33E - Helper"
-description: "Valera has a list of subjects he knows how to solve. Every subject takes a fixed amount of working time. Students come w"
+description: "Valera has a list of subjects he knows how to solve. Every subject takes a fixed amount of working time. Students come with requests: each request has a subject, an exam deadline, and a reward. If Valera finishes the solution strictly before the exam starts, he gets paid."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 177
 verified: false
 draft: false
 ---
-
 [CF 33E - Helper](https://codeforces.com/problemset/problem/33/E)
 
 **Rating:** 2600  

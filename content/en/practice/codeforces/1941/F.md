@@ -1,6 +1,6 @@
 ---
 title: "CF 1941F - Rudolf and Imbalance"
-description: "We start with a strictly increasing array of problem complexities. The imbalance of the set is defined as the largest di"
+description: "We start with a strictly increasing array of problem complexities. The imbalance of the set is defined as the largest difference between two neighboring elements after sorting."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "greedy", "sortings", "two-pointers"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 96
 verified: true
 draft: false
 ---
-
 [CF 1941F - Rudolf and Imbalance](https://codeforces.com/problemset/problem/1941/F)
 
 **Rating:** 1800  

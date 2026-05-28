@@ -1,6 +1,6 @@
 ---
 title: "CF 31B - Sysadmin Bob"
-description: "We are given a single string that represents multiple email addresses concatenated together with no separators. Each ema"
+description: "We are given a single string that represents multiple email addresses concatenated together with no separators. Each email address has the form A@B, where A and B are non-empty strings consisting of lowercase Latin letters."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 71
 verified: true
 draft: false
 ---
-
 [CF 31B - Sysadmin Bob](https://codeforces.com/problemset/problem/31/B)
 
 **Rating:** 1500  

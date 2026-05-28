@@ -1,6 +1,6 @@
 ---
 title: "CF 10D - LCIS"
-description: "We are given two integer arrays. We need to build the longest sequence that satisfies two conditions at the same time. T"
+description: "We are given two integer arrays. We need to build the longest sequence that satisfies two conditions at the same time."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 120
 verified: false
 draft: false
 ---
-
 [CF 10D - LCIS](https://codeforces.com/problemset/problem/10/D)
 
 **Rating:** 2800  

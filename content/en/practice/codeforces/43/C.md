@@ -1,6 +1,6 @@
 ---
 title: "CF 43C - Lucky Tickets"
-description: "We are given a collection of ticket pieces. Each piece is a number, representing the fragment of a ticket that was origi"
+description: "We are given a collection of ticket pieces. Each piece is a number, representing the fragment of a ticket that was originally divisible by three. The problem asks us to reconstruct the maximum number of lucky tickets we can from these pieces."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 72
 verified: true
 draft: false
 ---
-
 [CF 43C - Lucky Tickets](https://codeforces.com/problemset/problem/43/C)
 
 **Rating:** 1300  

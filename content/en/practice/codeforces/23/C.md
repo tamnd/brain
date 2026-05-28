@@ -1,6 +1,6 @@
 ---
 title: "CF 23C - Oranges and Apples"
-description: "We have 2N - 1 boxes. Every box contains two numbers, the number of apples and the number of oranges inside it. We must"
+description: "We have 2N - 1 boxes. Every box contains two numbers, the number of apples and the number of oranges inside it. We must choose exactly N boxes such that the chosen set contains at least half of all apples and at least half of all oranges across every box."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 149
 verified: true
 draft: false
 ---
-
 [CF 23C - Oranges and Apples](https://codeforces.com/problemset/problem/23/C)
 
 **Rating:** 2500  

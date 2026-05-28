@@ -1,6 +1,6 @@
 ---
 title: "CF 24B - F1 Champions"
-description: "We are given the results of an entire Formula One season. Each race lists drivers from first place to last place. The ch"
+description: "We are given the results of an entire Formula One season. Each race lists drivers from first place to last place. The championship winner depends on one of two ranking systems."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 139
 verified: true
 draft: false
 ---
-
 [CF 24B - F1 Champions](https://codeforces.com/problemset/problem/24/B)
 
 **Rating:** 1500  

@@ -1,6 +1,6 @@
 ---
 title: "CF 8B - Obsession with Robots"
-description: "We are asked to analyze a robot's path on an infinite 2D grid. The robot can move up, down, left, or right, and its move"
+description: "We are asked to analyze a robot's path on an infinite 2D grid. The robot can move up, down, left, or right, and its moves are recorded as a string of the characters U, D, L, R."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "graphs", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 56
 verified: true
 draft: false
 ---
-
 [CF 8B - Obsession with Robots](https://codeforces.com/problemset/problem/8/B)
 
 **Rating:** 1400  

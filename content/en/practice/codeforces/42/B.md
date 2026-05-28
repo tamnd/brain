@@ -1,6 +1,6 @@
 ---
 title: "CF 42B - Game of chess unfinished"
-description: "We are given a chess position containing exactly four pieces on a standard 8×8 board. White has two rooks and one king,"
+description: "We are given a chess position containing exactly four pieces on a standard 8×8 board. White has two rooks and one king, black has only a king. The position is already legal, meaning no two pieces share a square and the two kings are not adjacent."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 123
 verified: true
 draft: false
 ---
-
 [CF 42B - Game of chess unfinished](https://codeforces.com/problemset/problem/42/B)
 
 **Rating:** 1700  

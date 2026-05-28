@@ -1,6 +1,6 @@
 ---
 title: "CF 16D - Logging"
-description: "We are given a sequence of log entries in the exact order they were written. Originally every entry had both a date and"
+description: "We are given a sequence of log entries in the exact order they were written. Originally every entry had both a date and a time, but the dates were lost, so only the 12-hour clock timestamps remain."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 94
 verified: true
 draft: false
 ---
-
 [CF 16D - Logging](https://codeforces.com/problemset/problem/16/D)
 
 **Rating:** 1900  

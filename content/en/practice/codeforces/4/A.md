@@ -1,6 +1,6 @@
 ---
 title: "CF 4A - Watermelon"
-description: "The problem gives a single integer w, the weight of a watermelon. We need to decide whether it can be split into two pos"
+description: "The problem gives a single integer w, the weight of a watermelon. We need to decide whether it can be split into two positive parts such that both parts are even numbers."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 46
 verified: true
 draft: false
 ---
-
 [CF 4A - Watermelon](https://codeforces.com/problemset/problem/4/A)
 
 **Rating:** 800  

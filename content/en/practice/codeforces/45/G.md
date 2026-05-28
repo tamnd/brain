@@ -1,6 +1,6 @@
 ---
 title: "CF 45G - Prime Problem"
-description: "We have houses numbered from 1 to n. Every house must receive a color. For each color, if we add together all house indices painted with that color, the result must be a prime number. The goal is not to maximize anything about the partition itself."
+description: "We have houses numbered from 1 to n. Every house must receive a color. For each color, if we add together all house indices painted with that color, the result must be a prime number."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 136
 verified: false
 draft: false
 ---
-
 [CF 45G - Prime Problem](https://codeforces.com/problemset/problem/45/G)
 
 **Rating:** 2200  

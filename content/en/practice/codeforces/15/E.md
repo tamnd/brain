@@ -1,6 +1,6 @@
 ---
 title: "CF 15E - Triangles"
-description: "The picture in the statement describes a recursive triangular arrangement of paths and blocked regions. The black segmen"
+description: "The picture in the statement describes a recursive triangular arrangement of paths and blocked regions. The black segments form a planar graph, and the gray triangles represent forbidden forest areas."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
 [CF 15E - Triangles](https://codeforces.com/problemset/problem/15/E)
 
 **Rating:** 2600  

@@ -1,6 +1,6 @@
 ---
 title: "CF 29C - Mail Stamps"
-description: "Each stamp describes a direct transfer between two cities. If the envelope contains n stamps, then the letter passed thr"
+description: "Each stamp describes a direct transfer between two cities. If the envelope contains n stamps, then the letter passed through exactly n + 1 cities in sequence. The route never revisits a city, so the entire journey forms a simple path."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dfs-and-similar", "graphs", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 97
 verified: false
 draft: false
 ---
-
 [CF 29C - Mail Stamps](https://codeforces.com/problemset/problem/29/C)
 
 **Rating:** 1700  

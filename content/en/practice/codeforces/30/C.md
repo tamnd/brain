@@ -1,6 +1,6 @@
 ---
 title: "CF 30C - Shooting Gallery"
-description: "We are asked to help King Copa maximize his expected number of hits in a shooting gallery. The gallery is represented as"
+description: "We are asked to help King Copa maximize his expected number of hits in a shooting gallery. The gallery is represented as a 2D plane, and each target appears at a specific point exactly at a specific time and disappears immediately afterward."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "probabilities"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 60
 verified: true
 draft: false
 ---
-
 [CF 30C - Shooting Gallery](https://codeforces.com/problemset/problem/30/C)
 
 **Rating:** 1800  

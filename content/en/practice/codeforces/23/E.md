@@ -1,6 +1,6 @@
 ---
 title: "CF 23E - Tree"
-description: "We are given a tree with n nodes, described by n-1 edges. A tree is a connected acyclic graph, so there is exactly one p"
+description: "We are given a tree with _n_ nodes, described by _n-1_ edges. A tree is a connected acyclic graph, so there is exactly one path between any two vertices. Bob can delete any subset of edges, possibly none, and then he looks at the sizes of the resulting connected components."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 73
 verified: true
 draft: false
 ---
-
 [CF 23E - Tree](https://codeforces.com/problemset/problem/23/E)
 
 **Rating:** 2500  

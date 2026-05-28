@@ -1,6 +1,6 @@
 ---
 title: "CF 38B - Chess"
-description: "We are given the positions of two chess pieces on a standard 8 × 8 board, one rook and one knight. Their starting positi"
+description: "We are given the positions of two chess pieces on a standard 8 × 8 board, one rook and one knight. Their starting positions are guaranteed to be safe, meaning the rook does not attack the knight and the knight does not attack the rook."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 120
 verified: false
 draft: false
 ---
-
 [CF 38B - Chess](https://codeforces.com/problemset/problem/38/B)
 
 **Rating:** 1200  

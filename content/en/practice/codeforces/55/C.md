@@ -1,6 +1,6 @@
 ---
 title: "CF 55C - Pie or die"
-description: "We have an $n times m$ grid. Some cells contain pies, and several pies may share the same cell. Each turn has two phases. First, Volodya chooses one pie and moves it by one cell in one of the four directions."
+description: "We have an grid. Some cells contain pies, and several pies may share the same cell."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "games"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 103
 verified: true
 draft: false
 ---
-
 [CF 55C - Pie or die](https://codeforces.com/problemset/problem/55/C)
 
 **Rating:** 1900  

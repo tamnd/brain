@@ -1,6 +1,6 @@
 ---
 title: "CF 20B - Equation"
-description: "We are asked to solve a quadratic equation of the form $Ax^2 + Bx + C = 0$, where $A$, $B$, and $C$ are integers in the"
+description: "We are asked to solve a quadratic equation of the form , where , , and are integers in the range . The goal is to find all real roots of the equation, count them, and print them in ascending order with high precision."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 65
 verified: true
 draft: false
 ---
-
 [CF 20B - Equation](https://codeforces.com/problemset/problem/20/B)
 
 **Rating:** 2000  

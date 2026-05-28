@@ -1,6 +1,6 @@
 ---
 title: "CF 30D - King's Problem?"
-description: "We have n + 1 cities. The first n cities lie on the x-axis at positions (x1, 0), (x2, 0), ..., (xn, 0). One additional c"
+description: "We have n + 1 cities. The first n cities lie on the x-axis at positions (x1, 0), (x2, 0), ..., (xn, 0). One additional city is somewhere off the axis at (x_{n+1}, y_{n+1})."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 132
 verified: false
 draft: false
 ---
-
 [CF 30D - King's Problem?](https://codeforces.com/problemset/problem/30/D)
 
 **Rating:** 2600  

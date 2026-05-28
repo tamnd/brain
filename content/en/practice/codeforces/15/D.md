@@ -1,6 +1,6 @@
 ---
 title: "CF 15D - Map"
-description: "We are given a rectangular map of size n × m, where each cell has a non-negative height. Peter wants to build cities of"
+description: "We are given a rectangular map of size n × m, where each cell has a non-negative height. Peter wants to build cities of size a × b. To place a city, he must level the ground inside its rectangle by reducing all cells to the minimum height within that rectangle."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "implementation", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 132
 verified: true
 draft: false
 ---
-
 [CF 15D - Map](https://codeforces.com/problemset/problem/15/D)
 
 **Rating:** 2500  

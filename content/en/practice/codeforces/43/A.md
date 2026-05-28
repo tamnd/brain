@@ -1,6 +1,6 @@
 ---
 title: "CF 43A - Football"
-description: "We are given the sequence of goals scored during a football match. Every line after the first contains the name of the t"
+description: "We are given the sequence of goals scored during a football match. Every line after the first contains the name of the team that scored one goal. The task is to determine which team scored more goals overall."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 89
 verified: true
 draft: false
 ---
-
 [CF 43A - Football](https://codeforces.com/problemset/problem/43/A)
 
 **Rating:** 1000  

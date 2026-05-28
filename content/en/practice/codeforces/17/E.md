@@ -1,6 +1,6 @@
 ---
 title: "CF 17E - Palisection"
-description: "We are given a string and we consider every palindromic substring inside it. Each occurrence matters separately, even if"
+description: "We are given a string and we consider every palindromic substring inside it. Each occurrence matters separately, even if two substrings have the same text. For example, in \"aaa\" there are three different occurrences of \"a\"."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 230
 verified: true
 draft: false
 ---
-
 [CF 17E - Palisection](https://codeforces.com/problemset/problem/17/E)
 
 **Rating:** 2900  

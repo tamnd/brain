@@ -1,6 +1,6 @@
 ---
 title: "CF 37E - Trial for Chief"
-description: "We are given a rectangular slab divided into an $N times M$ grid of squares. Each square is either black or white in the"
+description: "We are given a rectangular slab divided into an grid of squares. Each square is either black or white in the final design, which is provided as input. The slab initially starts entirely white."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "graphs", "greedy", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 103
 verified: true
 draft: false
 ---
-
 [CF 37E - Trial for Chief](https://codeforces.com/problemset/problem/37/E)
 
 **Rating:** 2600  

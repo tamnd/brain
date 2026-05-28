@@ -1,6 +1,6 @@
 ---
 title: "CF 10C - Digital Root"
-description: "We are given an integer N. Consider all triples (A, B, C) where every value lies in the range [1, N]. Billy wants to ver"
+description: "We are given an integer N. Consider all triples (A, B, C) where every value lies in the range [1, N]."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 101
 verified: true
 draft: false
 ---
-
 [CF 10C - Digital Root](https://codeforces.com/problemset/problem/10/C)
 
 **Rating:** 2000  

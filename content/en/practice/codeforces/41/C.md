@@ -1,6 +1,6 @@
 ---
 title: "CF 41C - Email address"
-description: "We are given a string representing an email address, but all the . symbols have been spelled out as dot and all the @ sy"
+description: "We are given a string representing an email address, but all the . symbols have been spelled out as dot and all the @ symbols as at. Our goal is to reconstruct the original, valid email address in its shortest form."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "expression-parsing", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 101
 verified: false
 draft: false
 ---
-
 [CF 41C - Email address](https://codeforces.com/problemset/problem/41/C)
 
 **Rating:** 1300  

@@ -1,6 +1,6 @@
 ---
 title: "CF 13D - Triangles"
-description: "We have two sets of points on the plane. Red points may be used as triangle vertices, blue points are obstacles. No thre"
+description: "We have two sets of points on the plane. Red points may be used as triangle vertices, blue points are obstacles. No three points are collinear, which removes all degeneracies involving points on triangle borders."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "geometry"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 98
 verified: true
 draft: false
 ---
-
 [CF 13D - Triangles](https://codeforces.com/problemset/problem/13/D)
 
 **Rating:** 2600  

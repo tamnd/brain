@@ -1,6 +1,6 @@
 ---
 title: "CF 16C - Monitor"
-description: "We start with a monitor whose dimensions are a × b. Both values are integers. We want to shrink this monitor so that the"
+description: "We start with a monitor whose dimensions are a × b. Both values are integers. We want to shrink this monitor so that the new dimensions keep the exact aspect ratio x : y."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 97
 verified: true
 draft: false
 ---
-
 [CF 16C - Monitor](https://codeforces.com/problemset/problem/16/C)
 
 **Rating:** 1800  

@@ -1,6 +1,6 @@
 ---
 title: "CF 8C - Looking for Order"
-description: "We have a fixed starting point, the handbag, and up to 24 scattered objects on a 2D plane. Lena always starts at the han"
+description: "We have a fixed starting point, the handbag, and up to 24 scattered objects on a 2D plane. Lena always starts at the handbag, walks around collecting at most two objects, returns to the handbag, then repeats until every object is stored back."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 108
 verified: true
 draft: false
 ---
-
 [CF 8C - Looking for Order](https://codeforces.com/problemset/problem/8/C)
 
 **Rating:** 2000  

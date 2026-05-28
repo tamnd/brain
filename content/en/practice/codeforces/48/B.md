@@ -1,6 +1,6 @@
 ---
 title: "CF 48B - Land Lot"
-description: "The garden is represented as an n × m grid. Each cell contains either 0 or 1. A 1 means there is a tree in that square, while 0 means the square is empty. We want to place a rectangular house plot somewhere inside the grid."
+description: "The garden is represented as an n × m grid. Each cell contains either 0 or 1. A 1 means there is a tree in that square, while 0 means the square is empty."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 107
 verified: true
 draft: false
 ---
-
 [CF 48B - Land Lot](https://codeforces.com/problemset/problem/48/B)
 
 **Rating:** 1200  

@@ -1,6 +1,6 @@
 ---
 title: "CF 21B - Intersection"
-description: "Each input line describes a geometric object in the plane. The equation $$Ax + By + C = 0$$ represents a line. The task"
+description: "Each input line describes a geometric object in the plane. The equation"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
 [CF 21B - Intersection](https://codeforces.com/problemset/problem/21/B)
 
 **Rating:** 2000  

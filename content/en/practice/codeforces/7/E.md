@@ -1,6 +1,6 @@
 ---
 title: "CF 7E - Defining Macros"
-description: "We are given a set of C-style define macros and an expression, and we are asked to determine whether the expression beco"
+description: "We are given a set of C-style #define macros and an expression, and we are asked to determine whether the expression becomes \"suspicious\" after macro substitution."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "expression-parsing", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 67
 verified: true
 draft: false
 ---
-
 [CF 7E - Defining Macros](https://codeforces.com/problemset/problem/7/E)
 
 **Rating:** 2600  

@@ -1,6 +1,6 @@
 ---
 title: "CF 3C - Tic-tac-toe"
-description: "We are given a snapshot of a tic-tac-toe board, represented as a 3×3 grid. Each cell is either empty (.), contains a cro"
+description: "We are given a snapshot of a tic-tac-toe board, represented as a 3×3 grid. Each cell is either empty (.), contains a cross (X), or contains a nought (0). The first player always places crosses, and the second player places noughts."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "games", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 277
 verified: true
 draft: false
 ---
-
 [CF 3C - Tic-tac-toe](https://codeforces.com/problemset/problem/3/C)
 
 **Rating:** 1800  

@@ -1,6 +1,6 @@
 ---
 title: "CF 5C - Longest Regular Bracket Sequence"
-description: "We are given a string made only of ( and ). Among all contiguous substrings, we need to find the maximum length of a sub"
+description: "We are given a string made only of ( and ). Among all contiguous substrings, we need to find the maximum length of a substring that forms a valid bracket sequence. We also need to count how many substrings achieve that maximum length."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "data-structures", "dp", "greedy", "sortings", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
 [CF 5C - Longest Regular Bracket Sequence](https://codeforces.com/problemset/problem/5/C)
 
 **Rating:** 1900  

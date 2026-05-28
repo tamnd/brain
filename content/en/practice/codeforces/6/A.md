@@ -1,6 +1,6 @@
 ---
 title: "CF 6A - Triangle"
-description: "We are given four stick lengths, and we must choose exactly three of them. Depending on the relationship between those t"
+description: "We are given four stick lengths, and we must choose exactly three of them. Depending on the relationship between those three lengths, there are three possible outcomes."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "geometry"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 78
 verified: true
 draft: false
 ---
-
 [CF 6A - Triangle](https://codeforces.com/problemset/problem/6/A)
 
 **Rating:** 900  

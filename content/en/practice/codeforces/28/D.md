@@ -1,6 +1,6 @@
 ---
 title: "CF 28D - Don't fear, DravDe is kind"
-description: "We have a fixed sequence of trucks. For every truck we know its value, the number of people inside it, and two fear cons"
+description: "We have a fixed sequence of trucks. For every truck we know its value, the number of people inside it, and two fear constraints."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "dp", "hashing"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 100
 verified: true
 draft: false
 ---
-
 [CF 28D - Don't fear, DravDe is kind](https://codeforces.com/problemset/problem/28/D)
 
 **Rating:** 2400  

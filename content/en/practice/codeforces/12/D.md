@@ -1,6 +1,6 @@
 ---
 title: "CF 12D - Ball"
-description: "Each lady is described by three independent values: beauty, intellect, and richness. A lady becomes a \"probable self-mur"
+description: "Each lady is described by three independent values: beauty, intellect, and richness. A lady becomes a \"probable self-murderer\" if there exists another lady whose values are strictly larger in all three dimensions."probable self-mur"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 112
 verified: true
 draft: false
 ---
-
 [CF 12D - Ball](https://codeforces.com/problemset/problem/12/D)
 
 **Rating:** 2400  

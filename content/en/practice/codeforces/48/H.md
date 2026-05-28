@@ -1,6 +1,6 @@
 ---
 title: "CF 48H - Black and White"
-description: "We are asked to tile an $n times m$ rectangular floor with three types of 2x2 square tiles: black, white, and mixed tiles that have a black and a white section in a diagonal pattern."
+description: "We are asked to tile an rectangular floor with three types of 2x2 square tiles: black, white, and mixed tiles that have a black and a white section in a diagonal pattern."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 106
 verified: false
 draft: false
 ---
-
 [CF 48H - Black and White](https://codeforces.com/problemset/problem/48/H)
 
 **Rating:** 2800  

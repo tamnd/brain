@@ -1,6 +1,6 @@
 ---
 title: "CF 3D - Least Cost Bracket Sequence"
-description: "We are given a bracket string containing three kinds of characters: '(', ')', and '?'. Every '?' must eventually become"
+description: "We are given a bracket string containing three kinds of characters: '(', ')', and '?'. Every '?' must eventually become either an opening or closing bracket. For each unknown position, the input provides two costs, one for replacing it with '(' and one for replacing it with ')'."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 83
 verified: true
 draft: false
 ---
-
 [CF 3D - Least Cost Bracket Sequence](https://codeforces.com/problemset/problem/3/D)
 
 **Rating:** 2600  

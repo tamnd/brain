@@ -1,6 +1,6 @@
 ---
 title: "CF 45J - Planting Trees"
-description: "We need to place the integers from 1 to n m into an n × m grid so that every pair of side-adjacent cells differs by at least 2. Two cells are adjacent only if they share an edge, diagonal neighbors do not matter. The grid must contain every number exactly once."
+description: "We need to place the integers from 1 to n * m into an n × m grid so that every pair of side-adjacent cells differs by at least 2. Two cells are adjacent only if they share an edge, diagonal neighbors do not matter."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 143
 verified: false
 draft: false
 ---
-
 [CF 45J - Planting Trees](https://codeforces.com/problemset/problem/45/J)
 
 **Rating:** 1800  

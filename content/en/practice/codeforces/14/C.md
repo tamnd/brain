@@ -1,6 +1,6 @@
 ---
 title: "CF 14C - Four Segments"
-description: "We are given exactly four line segments on the 2D plane. Every segment is axis-aligned, or may even degenerate into a si"
+description: "We are given exactly four line segments on the 2D plane. Every segment is axis-aligned, or may even degenerate into a single point."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "constructive-algorithms", "geometry", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 108
 verified: true
 draft: false
 ---
-
 [CF 14C - Four Segments](https://codeforces.com/problemset/problem/14/C)
 
 **Rating:** 1700  

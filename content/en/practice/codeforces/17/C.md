@@ -1,6 +1,6 @@
 ---
 title: "CF 17C - Balance"
-description: "We are given a string consisting of characters a, b, and c, and we are allowed to repeatedly perform two types of operat"
+description: "We are given a string consisting of characters a, b, and c, and we are allowed to repeatedly perform two types of operations: copy the left character of any adjacent pair onto the right, or copy the right character onto the left."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 397
 verified: false
 draft: false
 ---
-
 [CF 17C - Balance](https://codeforces.com/problemset/problem/17/C)
 
 **Rating:** 2500  

@@ -1,6 +1,6 @@
 ---
 title: "CF 38H - The Great Marathon"
-description: "We have a connected weighted graph of cities. Runner i starts from city i and finishes in some other city. The finish ci"
+description: "We have a connected weighted graph of cities. Runner i starts from city i and finishes in some other city. The finish city is chosen independently for every runner, and several runners may share the same destination."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 151
 verified: false
 draft: false
 ---
-
 [CF 38H - The Great Marathon](https://codeforces.com/problemset/problem/38/H)
 
 **Rating:** 2400  

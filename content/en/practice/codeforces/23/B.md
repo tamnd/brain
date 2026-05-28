@@ -1,6 +1,6 @@
 ---
 title: "CF 23B - Party"
-description: "We can think of the party as an undirected friendship graph. Every person is a vertex, and an edge means two people are"
+description: "We can think of the party as an undirected friendship graph. Every person is a vertex, and an edge means two people are friends."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "graphs", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 207
 verified: true
 draft: false
 ---
-
 [CF 23B - Party](https://codeforces.com/problemset/problem/23/B)
 
 **Rating:** 1600  

@@ -1,6 +1,6 @@
 ---
 title: "CF 7C - Line"
-description: "We are asked to find an integer point on a straight line described by the equation Ax + By + C = 0. The inputs are three"
+description: "We are asked to find an integer point on a straight line described by the equation Ax + By + C = 0. The inputs are three integers, A, B, and C, which define the slope and position of the line."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 52
 verified: true
 draft: false
 ---
-
 [CF 7C - Line](https://codeforces.com/problemset/problem/7/C)
 
 **Rating:** 1800  

@@ -1,6 +1,6 @@
 ---
 title: "CF 40E - Number Table"
-description: "We are given a table representing the economy of Berland over n days and m months. Each cell in the table contains eithe"
+description: "We are given a table representing the economy of Berland over n days and m months. Each cell in the table contains either 1 or -1, indicating a profit or a loss for that day of that month."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 70
 verified: true
 draft: false
 ---
-
 [CF 40E - Number Table](https://codeforces.com/problemset/problem/40/E)
 
 **Rating:** 2500  

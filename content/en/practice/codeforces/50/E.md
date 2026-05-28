@@ -1,6 +1,6 @@
 ---
 title: "CF 50E - Square Equation Roots"
-description: "We are asked to count all distinct real roots of quadratic equations of the form $x^2 + 2bx + c = 0$, where $b$ ranges from 1 to $n$ and $c$ ranges from 1 to $m$. Each pair $(b, c)$ defines one quadratic."
+description: "We are asked to count all distinct real roots of quadratic equations of the form , where ranges from 1 to and ranges from 1 to . Each pair defines one quadratic. The output is the total number of distinct real roots across all these quadratics."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 118
 verified: true
 draft: false
 ---
-
 [CF 50E - Square Equation Roots](https://codeforces.com/problemset/problem/50/E)
 
 **Rating:** 2300  

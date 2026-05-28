@@ -1,6 +1,6 @@
 ---
 title: "CF 29A - Spit Problem"
-description: "Each camel stands at a unique coordinate on a number line. A camel at position x spits exactly toward position x + d. If"
+description: "Each camel stands at a unique coordinate on a number line. A camel at position x spits exactly toward position x + d. If another camel stands there, it gets hit. We need to determine whether there exists a pair of camels such that each one hits the other."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 72
 verified: true
 draft: false
 ---
-
 [CF 29A - Spit Problem](https://codeforces.com/problemset/problem/29/A)
 
 **Rating:** 1000  

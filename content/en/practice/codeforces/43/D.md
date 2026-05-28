@@ -1,6 +1,6 @@
 ---
 title: "CF 43D - Journey"
-description: "We have an n × m grid. The king starts at the top-left cell (1,1) and must end there as well. Every other cell must be v"
+description: "We have an n × m grid. The king starts at the top-left cell (1,1) and must end there as well. Every other cell must be visited exactly once. Normal movement is allowed only between side-adjacent cells, but we may additionally install directed teleporters."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "constructive-algorithms", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 99
 verified: true
 draft: false
 ---
-
 [CF 43D - Journey](https://codeforces.com/problemset/problem/43/D)
 
 **Rating:** 2000  

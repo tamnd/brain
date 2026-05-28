@@ -1,6 +1,6 @@
 ---
 title: "CF 39H - Multiplication Table"
-description: "We are asked to construct a multiplication table for numbers in a positional numeral system of base k, where k ranges fr"
+description: "We are asked to construct a multiplication table for numbers in a positional numeral system of base k, where k ranges from 2 to 10. Concretely, the table should have k-1 rows and k-1 columns, representing the numbers 1 through k-1 in both the row and column axes."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 122
 verified: false
 draft: false
 ---
-
 [CF 39H - Multiplication Table](https://codeforces.com/problemset/problem/39/H)
 
 **Rating:** 1300  

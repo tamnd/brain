@@ -1,6 +1,6 @@
 ---
 title: "CF 35A - Shell Game"
-description: "We have three cups arranged in a line, and a ball starts under one of them. The performer performs exactly three swaps."
+description: "We have three cups arranged in a line, and a ball starts under one of them. The performer performs exactly three swaps. Each swap exchanges the positions of two cups. After all swaps finish, we must determine which cup contains the ball."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 86
 verified: true
 draft: false
 ---
-
 [CF 35A - Shell Game](https://codeforces.com/problemset/problem/35/A)
 
 **Rating:** 1000  

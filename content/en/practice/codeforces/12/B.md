@@ -1,6 +1,6 @@
 ---
 title: "CF 12B - Correct Solution?"
-description: "Alice gives Bob a decimal number and asks him to rearrange its digits so that the resulting number is as small as possib"
+description: "Alice gives Bob a decimal number and asks him to rearrange its digits so that the resulting number is as small as possible, while still being a valid decimal number without leading zeroes."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 79
 verified: true
 draft: false
 ---
-
 [CF 12B - Correct Solution?](https://codeforces.com/problemset/problem/12/B)
 
 **Rating:** 1100  

@@ -1,6 +1,6 @@
 ---
 title: "CF 12C - Fruits"
-description: "Valera has a shopping list containing a number of fruits, possibly with duplicates if he wants more than one of the same"
+description: "Valera has a shopping list containing a number of fruits, possibly with duplicates if he wants more than one of the same type. At the market, the stall has _n_ types of fruits and _n_ price tags, but the tags are not yet attached to the fruits."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 62
 verified: true
 draft: false
 ---
-
 [CF 12C - Fruits](https://codeforces.com/problemset/problem/12/C)
 
 **Rating:** 1100  

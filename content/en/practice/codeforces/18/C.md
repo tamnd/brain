@@ -1,6 +1,6 @@
 ---
 title: "CF 18C - Stripe"
-description: "We have a strip of cells, and each cell contains an integer. We may cut the strip only between adjacent cells, which spl"
+description: "We have a strip of cells, and each cell contains an integer. We may cut the strip only between adjacent cells, which splits the array into a left part and a right part. The task is to count how many cut positions produce two non-empty parts with equal sums."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 103
 verified: true
 draft: false
 ---
-
 [CF 18C - Stripe](https://codeforces.com/problemset/problem/18/C)
 
 **Rating:** 1200  

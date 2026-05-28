@@ -1,6 +1,6 @@
 ---
 title: "CF 7D - Palindrome Degree"
-description: "We are given a string consisting of letters and digits, and we are asked to compute a special measure for every prefix c"
+description: "We are given a string consisting of letters and digits, and we are asked to compute a special measure for every prefix called the _palindrome degree_."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "hashing", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 65
 verified: true
 draft: false
 ---
-
 [CF 7D - Palindrome Degree](https://codeforces.com/problemset/problem/7/D)
 
 **Rating:** 2200  

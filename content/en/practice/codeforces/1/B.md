@@ -1,6 +1,6 @@
 ---
 title: "CF 1B - Spreadsheet"
-description: "The task gives spreadsheet cell coordinates written in one of two formats, and for every coordinate we must convert it i"
+description: "The task gives spreadsheet cell coordinates written in one of two formats, and for every coordinate we must convert it into the other format."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]

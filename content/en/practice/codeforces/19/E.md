@@ -1,6 +1,6 @@
 ---
 title: "CF 19E - Fairy"
-description: "We are given an undirected graph. Each edge represents a segment drawn between two points. We may erase exactly one edge"
+description: "We are given an undirected graph. Each edge represents a segment drawn between two points. We may erase exactly one edge, and after removing it we want the remaining graph to become bipartite."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "divide-and-conquer", "dsu"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 110
 verified: true
 draft: false
 ---
-
 [CF 19E - Fairy](https://codeforces.com/problemset/problem/19/E)
 
 **Rating:** 2900  

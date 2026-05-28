@@ -1,6 +1,6 @@
 ---
 title: "CF 28C - Bath Queue"
-description: "Every student independently chooses one of the bathroom rooms uniformly at random. A room may contain several wash basin"
+description: "Every student independently chooses one of the bathroom rooms uniformly at random. A room may contain several wash basins, so students entering that room are split into several queues."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp", "probabilities"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 104
 verified: true
 draft: false
 ---
-
 [CF 28C - Bath Queue](https://codeforces.com/problemset/problem/28/C)
 
 **Rating:** 2200  

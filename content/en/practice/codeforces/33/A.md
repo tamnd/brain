@@ -1,6 +1,6 @@
 ---
 title: "CF 33A - What is for dinner?"
-description: "Each tooth belongs to exactly one row. When Valerie eats one crucian using a row, every tooth in that row loses one unit"
+description: "Each tooth belongs to exactly one row. When Valerie eats one crucian using a row, every tooth in that row loses one unit of viability. A row becomes unusable as soon as at least one tooth inside it would drop below zero."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 233
 verified: true
 draft: false
 ---
-
 [CF 33A - What is for dinner?](https://codeforces.com/problemset/problem/33/A)
 
 **Rating:** 1200  

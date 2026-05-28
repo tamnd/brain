@@ -1,6 +1,6 @@
 ---
 title: "CF 39I - Tram"
-description: "We are given a directed graph where nodes represent crossroads and edges represent one-way tramlines. The engine house i"
+description: "We are given a directed graph where nodes represent crossroads and edges represent one-way tramlines. The engine house is at node 1. Every node has at least one outgoing edge, so the tram is never trapped."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 64
 verified: true
 draft: false
 ---
-
 [CF 39I - Tram](https://codeforces.com/problemset/problem/39/I)
 
 **Rating:** 2500  

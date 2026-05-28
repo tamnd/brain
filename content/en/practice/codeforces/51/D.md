@@ -1,6 +1,6 @@
 ---
 title: "CF 51D - Geometrical problem"
-description: "We are given an integer array and must classify it into one of three categories. A sequence is considered a geometric progression if there exist real numbers $c$ and $b$ such that every element has the form $c cdot b^{i-1}$."
+description: "We are given an integer array and must classify it into one of three categories."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 115
 verified: true
 draft: false
 ---
-
 [CF 51D - Geometrical problem](https://codeforces.com/problemset/problem/51/D)
 
 **Rating:** 2200  

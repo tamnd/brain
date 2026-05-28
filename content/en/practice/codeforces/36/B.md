@@ -1,6 +1,6 @@
 ---
 title: "CF 36B - Fractal"
-description: "We start with an n × n pattern consisting of black cells () and white cells (.). This pattern acts like a template. The"
+description: "We start with an n × n pattern consisting of black cells (*) and white cells (.). This pattern acts like a template."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 112
 verified: true
 draft: false
 ---
-
 [CF 36B - Fractal](https://codeforces.com/problemset/problem/36/B)
 
 **Rating:** 1600  

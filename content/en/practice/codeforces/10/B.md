@@ -1,6 +1,6 @@
 ---
 title: "CF 10B - Cinema Cashier"
-description: "The problem describes a cinema hall in Berland with K rows and K seats per row, where K is always odd. Customers come in"
+description: "The problem describes a cinema hall in Berland with K rows and K seats per row, where K is always odd. Customers come in groups of size M and request consecutive seats."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 10B - Cinema Cashier](https://codeforces.com/problemset/problem/10/B)
 
 **Rating:** 1500  

@@ -1,6 +1,6 @@
 ---
 title: "CF 10E - Greedy Change"
-description: "We are asked to investigate whether the greedy algorithm for making change can fail with a given set of coin denominatio"
+description: "We are asked to investigate whether the greedy algorithm for making change can fail with a given set of coin denominations."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 88
 verified: true
 draft: false
 ---
-
 [CF 10E - Greedy Change](https://codeforces.com/problemset/problem/10/E)
 
 **Rating:** 2600  

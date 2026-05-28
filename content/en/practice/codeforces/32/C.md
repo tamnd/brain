@@ -1,6 +1,6 @@
 ---
 title: "CF 32C - Flea"
-description: "We have a grid of size $n times m$ where each cell is 1 centimeter square. A flea starts at some cell and can jump exact"
+description: "We have a grid of size where each cell is 1 centimeter square. A flea starts at some cell and can jump exactly centimeters either vertically or horizontally, staying inside the board."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 72
 verified: true
 draft: false
 ---
-
 [CF 32C - Flea](https://codeforces.com/problemset/problem/32/C)
 
 **Rating:** 1700  

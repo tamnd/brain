@@ -1,6 +1,6 @@
 ---
 title: "CF 11E - Forward, march!"
-description: "Jack repeats a cyclic sequence consisting of three possible actions. L means a left-foot step, R means a right-foot step"
+description: "Jack repeats a cyclic sequence consisting of three possible actions. L means a left-foot step, R means a right-foot step, and X means standing still for one beat. The sergeant expects the infinite alternating pattern:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "dp", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 105
 verified: true
 draft: false
 ---
-
 [CF 11E - Forward, march!](https://codeforces.com/problemset/problem/11/E)
 
 **Rating:** 2800  

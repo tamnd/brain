@@ -1,6 +1,6 @@
 ---
 title: "CF 22D - Segments"
-description: "We are given several closed intervals on the number line. A nail placed at an integer coordinate covers every segment th"
+description: "We are given several closed intervals on the number line. A nail placed at an integer coordinate covers every segment that contains that coordinate, including endpoints."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 85
 verified: true
 draft: false
 ---
-
 [CF 22D - Segments](https://codeforces.com/problemset/problem/22/D)
 
 **Rating:** 1900  

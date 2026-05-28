@@ -1,6 +1,6 @@
 ---
 title: "CF 43B - Letter"
-description: "We are given two strings. The first string is the newspaper headline, and the second string is the anonymous letter Vasy"
+description: "We are given two strings. The first string is the newspaper headline, and the second string is the anonymous letter Vasya wants to build from it."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 91
 verified: true
 draft: false
 ---
-
 [CF 43B - Letter](https://codeforces.com/problemset/problem/43/B)
 
 **Rating:** 1100  

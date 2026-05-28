@@ -1,6 +1,6 @@
 ---
 title: "CF 31E - TV Game"
-description: "We are given a string of 2n digits. The digits are processed strictly from left to right. At every step, either Homer or"
+description: "We are given a string of 2n digits. The digits are processed strictly from left to right. At every step, either Homer or Marge takes the current leftmost digit and appends it to their own number. By the end, both players must have taken exactly n digits."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 118
 verified: false
 draft: false
 ---
-
 [CF 31E - TV Game](https://codeforces.com/problemset/problem/31/E)
 
 **Rating:** 2400  

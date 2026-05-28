@@ -1,6 +1,6 @@
 ---
 title: "CF 46D - Parking Lot"
-description: "We have a parking segment represented by the interval [0, L]. Cars arrive one at a time, always driving from left to right, and each driver wants to park at the earliest possible position. If a car of length x parks with its back at coordinate p, then the car occupies [p, p + x]."
+description: "We have a parking segment represented by the interval [0, L]. Cars arrive one at a time, always driving from left to right, and each driver wants to park at the earliest possible position."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 114
 verified: true
 draft: false
 ---
-
 [CF 46D - Parking Lot](https://codeforces.com/problemset/problem/46/D)
 
 **Rating:** 1800  

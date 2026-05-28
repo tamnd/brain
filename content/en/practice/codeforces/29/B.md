@@ -1,6 +1,6 @@
 ---
 title: "CF 29B - Traffic Lights"
-description: "A car starts at point A and moves along a straight road toward point B. The total distance is l meters, and the car alwa"
+description: "A car starts at point A and moves along a straight road toward point B. The total distance is l meters, and the car always moves at a fixed speed v. Somewhere along the road, exactly d meters from the start, there is a traffic light."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 83
 verified: true
 draft: false
 ---
-
 [CF 29B - Traffic Lights](https://codeforces.com/problemset/problem/29/B)
 
 **Rating:** 1500  

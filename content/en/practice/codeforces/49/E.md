@@ -1,6 +1,6 @@
 ---
 title: "CF 49E - Common ancestor"
-description: "Each DNA string evolves by repeatedly applying rules of the form a - bc. One character is replaced by exactly two characters, and this operation can be repeated any number of times. Starting from some ancestor string, evolution only increases the length."
+description: "Each DNA string evolves by repeatedly applying rules of the form a -> bc. One character is replaced by exactly two characters, and this operation can be repeated any number of times. Starting from some ancestor string, evolution only increases the length."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 121
 verified: true
 draft: false
 ---
-
 [CF 49E - Common ancestor](https://codeforces.com/problemset/problem/49/E)
 
 **Rating:** 2300  

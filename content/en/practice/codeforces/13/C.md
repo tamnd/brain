@@ -1,6 +1,6 @@
 ---
 title: "CF 13C - Sequence"
-description: "We are given a list of integers of length N, which may contain negative numbers, zeros, or large positive numbers. The t"
+description: "We are given a list of integers of length _N_, which may contain negative numbers, zeros, or large positive numbers. The task is to transform this list into a non-decreasing sequence, where each element is at least as large as the previous one."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 13C - Sequence](https://codeforces.com/problemset/problem/13/C)
 
 **Rating:** 2200  

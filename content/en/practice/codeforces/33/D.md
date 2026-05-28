@@ -1,6 +1,6 @@
 ---
 title: "CF 33D - Knights"
-description: "We are given a map of Berland with several control points and circular fences. Each knight occupies a control point. Fen"
+description: "We are given a map of Berland with several control points and circular fences. Each knight occupies a control point. Fences separate the kingdom into regions, and a knight must cross fences to move between control points."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "graphs", "shortest-paths", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 92
 verified: true
 draft: false
 ---
-
 [CF 33D - Knights](https://codeforces.com/problemset/problem/33/D)
 
 **Rating:** 2000  

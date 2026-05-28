@@ -1,6 +1,6 @@
 ---
 title: "CF 49A - Sleuth"
-description: "We are given a single sentence that represents a question. The sentence always ends with a question mark, but the answer is determined by the last alphabetic letter before that question mark. If that final letter is a vowel, the correct response is \"YES\"."
+description: "We are given a single sentence that represents a question. The sentence always ends with a question mark, but the answer is determined by the last alphabetic letter before that question mark. If that final letter is a vowel, the correct response is \"YES\"."YES\"."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
 [CF 49A - Sleuth](https://codeforces.com/problemset/problem/49/A)
 
 **Rating:** 800  

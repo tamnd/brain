@@ -1,6 +1,6 @@
 ---
 title: "CF 41D - Pawn"
-description: "We have a grid of digits. The pawn starts somewhere on the bottom row and moves upward one row at a time. At each step i"
+description: "We have a grid of digits. The pawn starts somewhere on the bottom row and moves upward one row at a time. At each step it may go diagonally left or diagonally right. Every visited cell contributes its digit to the total collected peas."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 97
 verified: true
 draft: false
 ---
-
 [CF 41D - Pawn](https://codeforces.com/problemset/problem/41/D)
 
 **Rating:** 1900  

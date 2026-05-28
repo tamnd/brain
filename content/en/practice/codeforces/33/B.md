@@ -1,6 +1,6 @@
 ---
 title: "CF 33B - String Problem"
-description: "We are given two lowercase strings of the same length. We may repeatedly transform characters using directed conversion"
+description: "We are given two lowercase strings of the same length. We may repeatedly transform characters using directed conversion rules. A rule like a -> b with cost 5 means we can change one occurrence of a into b by paying 5."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 421
 verified: true
 draft: false
 ---
-
 [CF 33B - String Problem](https://codeforces.com/problemset/problem/33/B)
 
 **Rating:** 1800  

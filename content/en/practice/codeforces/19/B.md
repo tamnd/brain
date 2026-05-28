@@ -1,6 +1,6 @@
 ---
 title: "CF 19B - Checkout Assistant"
-description: "Each item has two properties. If Bob pays for that item, the cashier spends t[i] seconds processing it and Bob also spen"
+description: "Each item has two properties. If Bob pays for that item, the cashier spends t[i] seconds processing it and Bob also spends c[i] money. During those t[i] seconds, Bob can steal other items, one item per second."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 185
 verified: true
 draft: false
 ---
-
 [CF 19B - Checkout Assistant](https://codeforces.com/problemset/problem/19/B)
 
 **Rating:** 1900  

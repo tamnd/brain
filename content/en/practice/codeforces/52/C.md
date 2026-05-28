@@ -1,6 +1,6 @@
 ---
 title: "CF 52C - Circular RMQ"
-description: "We have an array arranged in a circle. Every operation works on a segment between two indices, but the segment may wrap around the end of the array. There are two operations. The first operation adds a value to every element in a range."
+description: "We have an array arranged in a circle. Every operation works on a segment between two indices, but the segment may wrap around the end of the array."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 138
 verified: true
 draft: false
 ---
-
 [CF 52C - Circular RMQ](https://codeforces.com/problemset/problem/52/C)
 
 **Rating:** 2200  

@@ -1,6 +1,6 @@
 ---
 title: "CF 31A - Worms Evolution"
-description: "We are given an array of worm lengths. Each position represents a different worm form, and we need to find three distinc"
+description: "We are given an array of worm lengths. Each position represents a different worm form, and we need to find three distinct indices such that the length at one index equals the sum of the lengths at the other two indices."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 106
 verified: true
 draft: false
 ---
-
 [CF 31A - Worms Evolution](https://codeforces.com/problemset/problem/31/A)
 
 **Rating:** 1200  

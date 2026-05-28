@@ -1,6 +1,6 @@
 ---
 title: "CF 1A - Theatre Square"
-description: "We are given a rectangular plaza with dimensions n×m meters, to be paved with a×a square flagstones. Find the minimum number of flagstones needed."
+description: "We are given a rectangular plaza, the Theatre Square, with dimensions _n_ meters in length and _m_ meters in width. The city wants to pave the entire area with square flagstones of side _a_."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]

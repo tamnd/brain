@@ -1,6 +1,6 @@
 ---
 title: "CF 35C - Fire Again"
-description: "We have a rectangular grid of trees. A fire starts simultaneously from several cells, and every minute it spreads to nei"
+description: "We have a rectangular grid of trees. A fire starts simultaneously from several cells, and every minute it spreads to neighboring cells that share a side. The task is to find any cell whose burning time is as large as possible, meaning it catches fire later than every other tree."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dfs-and-similar", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 130
 verified: true
 draft: false
 ---
-
 [CF 35C - Fire Again](https://codeforces.com/problemset/problem/35/C)
 
 **Rating:** 1500  

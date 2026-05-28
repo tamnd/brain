@@ -1,6 +1,6 @@
 ---
 title: "CF 1941D - Rudolf and the Ball Game"
-description: "We have a circle of n players, numbered 1 through n clockwise. The ball starts with player x. There are m throws, and ea"
+description: "We have a circle of n players, numbered 1 through n clockwise. The ball starts with player x. There are m throws, and each throw has a distance r_i and a remembered direction c_i. The direction could be clockwise (0), counterclockwise (1), or unknown (?)."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dp", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 77
 verified: false
 draft: false
 ---
-
 [CF 1941D - Rudolf and the Ball Game](https://codeforces.com/problemset/problem/1941/D)
 
 **Rating:** 1200  

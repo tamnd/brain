@@ -1,6 +1,6 @@
 ---
 title: "CF 4D - Mysterious Present"
-description: "We are given a collection of envelopes, each with a width and height. A postcard already has fixed dimensions, and we wa"
+description: "We are given a collection of envelopes, each with a width and height. A postcard already has fixed dimensions, and we want to build the longest possible nesting chain of envelopes such that:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 77
 verified: true
 draft: false
 ---
-
 [CF 4D - Mysterious Present](https://codeforces.com/problemset/problem/4/D)
 
 **Rating:** 1700  

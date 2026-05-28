@@ -1,6 +1,6 @@
 ---
 title: "CF 46C - Hamsters and Tigers"
-description: "We are given a circle of animals, each either a hamster or a tiger. The circle is represented as a string of length n containing the characters \"H\" and \"T\"."
+description: "We are given a circle of animals, each either a hamster or a tiger. The circle is represented as a string of length _n_ containing the characters \"H\" and \"T\"."H\" and \"T\"."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "two-pointers"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 78
 verified: true
 draft: false
 ---
-
 [CF 46C - Hamsters and Tigers](https://codeforces.com/problemset/problem/46/C)
 
 **Rating:** 1600  

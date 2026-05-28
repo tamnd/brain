@@ -1,6 +1,6 @@
 ---
 title: "CF 54C - First Digit Law"
-description: "We are given a set of N random integers, where each integer i can take any value in a given inclusive range [Li, Ri], all values equally likely. The task is to compute the probability that at least K% of these N integers start with the digit 1."
+description: "We are given a set of N random integers, where each integer i can take any value in a given inclusive range [L_i, R_i], all values equally likely. The task is to compute the probability that at least K% of these N integers start with the digit 1."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "math", "probabilities"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 70
 verified: true
 draft: false
 ---
-
 [CF 54C - First Digit Law](https://codeforces.com/problemset/problem/54/C)
 
 **Rating:** 2000  

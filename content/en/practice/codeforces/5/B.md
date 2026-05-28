@@ -1,6 +1,6 @@
 ---
 title: "CF 5B - Center Alignment"
-description: "We are given several lines of text. Every line may contain letters, digits, and spaces inside the line, but never at the"
+description: "We are given several lines of text. Every line may contain letters, digits, and spaces inside the line, but never at the beginning or end. The task is to print all lines inside a rectangular frame made of * characters."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 84
 verified: true
 draft: false
 ---
-
 [CF 5B - Center Alignment](https://codeforces.com/problemset/problem/5/B)
 
 **Rating:** 1200  

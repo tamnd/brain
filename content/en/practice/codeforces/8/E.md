@@ -1,6 +1,6 @@
 ---
 title: "CF 8E - Beads"
-description: "We are asked to generate a specific string of beads of length n according to a Martian’s unique notion of string equival"
+description: "We are asked to generate a specific string of beads of length n according to a Martian’s unique notion of string equivalence. Each bead is either red (0) or blue (1)."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 64
 verified: true
 draft: false
 ---
-
 [CF 8E - Beads](https://codeforces.com/problemset/problem/8/E)
 
 **Rating:** 2600  

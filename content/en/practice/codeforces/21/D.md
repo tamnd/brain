@@ -1,6 +1,6 @@
 ---
 title: "CF 21D - Traveling Graph"
-description: "We are given a weighted undirected graph with up to 15 vertices and up to 2000 edges. Each edge has a positive weight, a"
+description: "We are given a weighted undirected graph with up to 15 vertices and up to 2000 edges. Each edge has a positive weight, and there may be multiple edges connecting the same pair of vertices or edges that loop back to the same vertex."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "graph-matchings", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 42
 verified: true
 draft: false
 ---
-
 [CF 21D - Traveling Graph](https://codeforces.com/problemset/problem/21/D)
 
 **Rating:** 2400  

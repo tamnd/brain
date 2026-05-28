@@ -1,6 +1,6 @@
 ---
 title: "CF 19A - World Football Cup"
-description: "We are given the full results of a football tournament where every pair of teams plays exactly one match. For each match"
+description: "We are given the full results of a football tournament where every pair of teams plays exactly one match. For each match, we know how many goals each side scored. Using the tournament rules, we must determine which teams advance to the knockout stage."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 351
 verified: true
 draft: false
 ---
-
 [CF 19A - World Football Cup](https://codeforces.com/problemset/problem/19/A)
 
 **Rating:** 1400  

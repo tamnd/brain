@@ -1,6 +1,6 @@
 ---
 title: "CF 37B - Computer Game"
-description: "The boss starts with max health and regenerates reg health every second. We own several scrolls. Each scroll can only be"
+description: "The boss starts with max health and regenerates reg health every second. We own several scrolls. Each scroll can only be activated when the boss health is at most some percentage of the original health."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 116
 verified: true
 draft: false
 ---
-
 [CF 37B - Computer Game](https://codeforces.com/problemset/problem/37/B)
 
 **Rating:** 1800  

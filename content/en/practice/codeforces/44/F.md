@@ -1,6 +1,6 @@
 ---
 title: "CF 44F - BerPaint"
-description: "We start with a rectangular canvas of size W × H. Initially the whole rectangle is white. Then several black line segments are drawn inside the rectangle. These segments split the plane into connected regions. After that, several flood-fill operations are applied."
+description: "We start with a rectangular canvas of size W × H. Initially the whole rectangle is white. Then several black line segments are drawn inside the rectangle. These segments split the plane into connected regions."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "graphs"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 179
 verified: false
 draft: false
 ---
-
 [CF 44F - BerPaint](https://codeforces.com/problemset/problem/44/F)
 
 **Rating:** 2700  

@@ -1,6 +1,6 @@
 ---
 title: "CF 11B - Jumping Jack"
-description: "Jack starts at position 0 on a number line. His jumps have fixed lengths: the first jump must have length 1, the second"
+description: "Jack starts at position 0 on a number line. His jumps have fixed lengths: the first jump must have length 1, the second jump length 2, the third jump length 3, and so on. For every jump he may choose either direction."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 86
 verified: true
 draft: false
 ---
-
 [CF 11B - Jumping Jack](https://codeforces.com/problemset/problem/11/B)
 
 **Rating:** 1600  

@@ -1,6 +1,6 @@
 ---
 title: "CF 42D - Strange town"
-description: "We are asked to construct a fully connected graph of N tourist attractions, where each road has a distinct positive inte"
+description: "We are asked to construct a fully connected graph of _N_ tourist attractions, where each road has a distinct positive integer cost not exceeding 1000."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 110
 verified: false
 draft: false
 ---
-
 [CF 42D - Strange town](https://codeforces.com/problemset/problem/42/D)
 
 **Rating:** 2300  

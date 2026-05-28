@@ -1,6 +1,6 @@
 ---
 title: "CF 6E - Exposition"
-description: "We are given a sequence of books by Berlbury, each with a known height, arranged chronologically. The library wants to o"
+description: "We are given a sequence of books by Berlbury, each with a known height, arranged chronologically. The library wants to organize an exposition by selecting consecutive books such that the difference between the tallest and shortest book in the selection does not exceed a given…"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "dsu", "trees", "two-pointers"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 58
 verified: true
 draft: false
 ---
-
 [CF 6E - Exposition](https://codeforces.com/problemset/problem/6/E)
 
 **Rating:** 1900  

@@ -1,6 +1,6 @@
 ---
 title: "CF 12A - Super Agent"
-description: "We are asked to check whether a password entered on a 3×3 keypad is symmetric with respect to its central button. The ke"
+description: "We are asked to check whether a password entered on a 3×3 keypad is symmetric with respect to its central button. The keypad is represented as a 3×3 grid of characters, where \"X\" indicates a pressed button and \".\" indicates an unpressed one."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 75
 verified: true
 draft: false
 ---
-
 [CF 12A - Super Agent](https://codeforces.com/problemset/problem/12/A)
 
 **Rating:** 800  

@@ -1,6 +1,6 @@
 ---
 title: "CF 39E - What Has Dirichlet Got to Do with That?"
-description: "We start with a distinct boxes and b distinct items. Since boxes may stay empty and every item independently chooses one"
+description: "We start with a distinct boxes and b distinct items. Since boxes may stay empty and every item independently chooses one of the boxes, the number of possible placements is simply:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "games"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 117
 verified: true
 draft: false
 ---
-
 [CF 39E - What Has Dirichlet Got to Do with That?](https://codeforces.com/problemset/problem/39/E)
 
 **Rating:** 2000  

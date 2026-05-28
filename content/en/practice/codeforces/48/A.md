@@ -1,6 +1,6 @@
 ---
 title: "CF 48A - Rock-paper-scissors"
-description: "Three players simultaneously choose one of the classic rock-paper-scissors gestures: \"rock\", \"paper\", or \"scissors\". A player wins only if their gesture defeats the gestures shown by both other players."
+description: "Three players simultaneously choose one of the classic rock-paper-scissors gestures: \"rock\", \"paper\", or \"scissors\". A player wins only if their gesture defeats the gestures shown by both other players."rock\", \"paper\", or \"scissors\". A player wins only if their gesture defeats the gestures shown by both other players."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "schedules"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 91
 verified: true
 draft: false
 ---
-
 [CF 48A - Rock-paper-scissors](https://codeforces.com/problemset/problem/48/A)
 
 **Rating:** 900  

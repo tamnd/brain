@@ -1,6 +1,6 @@
 ---
 title: "CF 24C - Sequence of points"
-description: "We are given a sequence of points on the 2D integer grid: a starting point M0 and a sequence of n points A0, A1, …, An-1"
+description: "We are given a sequence of points on the 2D integer grid: a starting point M0 and a sequence of n points A0, A1, …, An-1, where n is always odd. We then define a new sequence M1, M2, … where each Mi is the reflection of Mi-1 over one of the Ai points."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 155
 verified: true
 draft: false
 ---
-
 [CF 24C - Sequence of points](https://codeforces.com/problemset/problem/24/C)
 
 **Rating:** 1800  

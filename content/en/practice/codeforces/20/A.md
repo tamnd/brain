@@ -1,6 +1,6 @@
 ---
 title: "CF 20A - BerOS file system"
-description: "We are given a filesystem path as a string. In this operating system, multiple consecutive '/' characters are treated ex"
+description: "We are given a filesystem path as a string. In this operating system, multiple consecutive '/' characters are treated exactly the same as a single '/'. That means paths like ///home//user///docs and /home/user/docs refer to the same location."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 80
 verified: true
 draft: false
 ---
-
 [CF 20A - BerOS file system](https://codeforces.com/problemset/problem/20/A)
 
 **Rating:** 1700  

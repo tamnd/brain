@@ -1,6 +1,6 @@
 ---
 title: "CF 7B - Memory Manager"
-description: "We are asked to implement a simple memory manager for a linear memory array of size m. Each memory cell can either be fr"
+description: "We are asked to implement a simple memory manager for a linear memory array of size _m_. Each memory cell can either be free or occupied by a block. We are to process a sequence of operations: alloc n, erase x, and defragment."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 61
 verified: true
 draft: false
 ---
-
 [CF 7B - Memory Manager](https://codeforces.com/problemset/problem/7/B)
 
 **Rating:** 1600  

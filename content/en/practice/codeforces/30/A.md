@@ -1,6 +1,6 @@
 ---
 title: "CF 30A - Accounting"
-description: "We are given three integers, A, B, and n. The task is to find an integer value X such that: $A cdot X^n = B$ A represent"
+description: "We are given three integers, A, B, and n. The task is to find an integer value X such that:"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 83
 verified: true
 draft: false
 ---
-
 [CF 30A - Accounting](https://codeforces.com/problemset/problem/30/A)
 
 **Rating:** 1400  

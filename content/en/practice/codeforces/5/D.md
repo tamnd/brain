@@ -1,6 +1,6 @@
 ---
 title: "CF 5D - Follow Traffic Rules"
-description: "We are asked to compute the minimum travel time for a car moving along a straight road from Berland to Bercouver. The ro"
+description: "We are asked to compute the minimum travel time for a car moving along a straight road from Berland to Bercouver. The road has length _l_, and at a distance _d_ from the start there is a speed sign that limits the car's instantaneous speed to _w_."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 54
 verified: true
 draft: false
 ---
-
 [CF 5D - Follow Traffic Rules](https://codeforces.com/problemset/problem/5/D)
 
 **Rating:** 2100  

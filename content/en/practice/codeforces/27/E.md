@@ -1,6 +1,6 @@
 ---
 title: "CF 27E - Number With The Given Amount Of Divisors"
-description: "We are given a single integer n, and we need to construct the smallest positive integer whose number of divisors is exac"
+description: "We are given a single integer n, and we need to construct the smallest positive integer whose number of divisors is exactly n."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "number-theory"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 94
 verified: true
 draft: false
 ---
-
 [CF 27E - Number With The Given Amount Of Divisors](https://codeforces.com/problemset/problem/27/E)
 
 **Rating:** 2000  

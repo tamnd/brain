@@ -1,6 +1,6 @@
 ---
 title: "CF 25D - Roads not only in Berland"
-description: "We are given a collection of n cities connected by n-1 roads. This means the current network forms a forest: a set of tr"
+description: "We are given a collection of n cities connected by n-1 roads. This means the current network forms a forest: a set of trees, because in graph terms, a connected tree with n nodes has exactly n-1 edges."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dsu", "graphs", "trees"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 75
 verified: true
 draft: false
 ---
-
 [CF 25D - Roads not only in Berland](https://codeforces.com/problemset/problem/25/D)
 
 **Rating:** 1900  

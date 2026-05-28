@@ -1,6 +1,6 @@
 ---
 title: "CF 29E - Quarrel"
-description: "We are asked to route two people, Bob and Alex, across a town represented as an undirected graph with n crossroads and m"
+description: "We are asked to route two people, Bob and Alex, across a town represented as an undirected graph with n crossroads and m roads. Bob starts at node 1 and wants to reach node n, while Alex starts at node n and wants to reach node 1."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "graphs", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 76
 verified: false
 draft: false
 ---
-
 [CF 29E - Quarrel](https://codeforces.com/problemset/problem/29/E)
 
 **Rating:** 2400  

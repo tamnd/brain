@@ -1,6 +1,6 @@
 ---
 title: "CF 4B - Before an Exam"
-description: "We are given d days and a target total number of study hours, sumTime. For every day, Peter must study at least minTime["
+description: "We are given d days and a target total number of study hours, sumTime. For every day, Peter must study at least minTime[i] hours and at most maxTime[i] hours. The task is to construct any valid schedule whose total sum is exactly sumTime."
 date: "2026-05-27T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 72
 verified: true
 draft: false
 ---
-
 [CF 4B - Before an Exam](https://codeforces.com/problemset/problem/4/B)
 
 **Rating:** 1200  

@@ -1,6 +1,6 @@
 ---
 title: "CF 15A - Cottage Village"
-description: "We are given a one-dimensional map of a village where all the houses lie along the x-axis. Each house is square, specifi"
+description: "We are given a one-dimensional map of a village where all the houses lie along the _x_-axis. Each house is square, specified by its center coordinate and its side length. No two houses overlap, though they may touch edges."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 141
 verified: true
 draft: false
 ---
-
 [CF 15A - Cottage Village](https://codeforces.com/problemset/problem/15/A)
 
 **Rating:** 1200  

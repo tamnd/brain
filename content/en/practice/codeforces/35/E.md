@@ -1,6 +1,6 @@
 ---
 title: "CF 35E - Parade"
-description: "Each skyscraper is an axis-aligned rectangle sitting on the ground. A building with parameters (h, l, r) occupies every"
+description: "Each skyscraper is an axis-aligned rectangle sitting on the ground. A building with parameters (h, l, r) occupies every point with l ≤ x ≤ r and 0 ≤ y ≤ h."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "sortings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 101
 verified: true
 draft: false
 ---
-
 [CF 35E - Parade](https://codeforces.com/problemset/problem/35/E)
 
 **Rating:** 2100  

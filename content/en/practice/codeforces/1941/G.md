@@ -1,6 +1,6 @@
 ---
 title: "CF 1941G - Rudolf and Subway"
-description: "The problem describes a subway system as an undirected graph where each vertex is a station and each edge represents a d"
+description: "The problem describes a subway system as an undirected graph where each vertex is a station and each edge represents a direct connection between two stations. Every edge is labeled with a color representing the subway line it belongs to."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "dfs-and-similar", "graphs", "shortest-paths"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 68
 verified: true
 draft: false
 ---
-
 [CF 1941G - Rudolf and Subway](https://codeforces.com/problemset/problem/1941/G)
 
 **Rating:** 2000  

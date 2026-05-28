@@ -1,6 +1,6 @@
 ---
 title: "CF 6C - Alice, Bob and Chocolate"
-description: "We have a row of chocolate bars, and each bar takes a certain amount of time to eat. Alice starts from the left end and"
+description: "We have a row of chocolate bars, and each bar takes a certain amount of time to eat. Alice starts from the left end and keeps moving right. Bob starts from the right end and keeps moving left."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "two-pointers"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 89
 verified: true
 draft: false
 ---
-
 [CF 6C - Alice, Bob and Chocolate](https://codeforces.com/problemset/problem/6/C)
 
 **Rating:** 1200  

@@ -1,6 +1,6 @@
 ---
 title: "CF 41A - Translation"
-description: "We are given two lowercase strings. The first string is a word in one language, and the second string is supposed to be"
+description: "We are given two lowercase strings. The first string is a word in one language, and the second string is supposed to be its translation into another language where every word is written backwards."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 74
 verified: true
 draft: false
 ---
-
 [CF 41A - Translation](https://codeforces.com/problemset/problem/41/A)
 
 **Rating:** 800  

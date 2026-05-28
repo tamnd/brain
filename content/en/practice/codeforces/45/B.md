@@ -1,6 +1,6 @@
 ---
 title: "CF 45B - School"
-description: "Each student points to exactly one other student, the person they call whenever they hear news. This creates a directed functional graph, every node has out-degree exactly one. On day i, one student starts spreading a piece of news with initial strength b[i]."
+description: "Each student points to exactly one other student, the person they call whenever they hear news. This creates a directed functional graph, every node has out-degree exactly one."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "dsu"]
 categories: ["algorithms"]
@@ -13,7 +13,6 @@ solve_time_s: 126
 verified: true
 draft: false
 ---
-
 [CF 45B - School](https://codeforces.com/problemset/problem/45/B)
 
 **Rating:** 2200  
