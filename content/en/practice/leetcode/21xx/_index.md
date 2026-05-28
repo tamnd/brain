@@ -74,14 +74,14 @@ draft: false
 | 2161 | [Partition Array According to Given Pivot](2161.md) | 🟡 Medium | 1m 17s | This problem asks us to rearrange an array around a given pivot val… |
 | 2162 | [Minimum Cost to Set Cooking Time](2162.md) | 🟡 Medium | 1m 18s | This problem asks us to simulate the process of entering a cooking … |
 | 2163 | [Minimum Difference in Sums After Removal of Elements](2163.md) | 🔴 Hard | 54s | The problem presents a 0-indexed integer array nums of length 3 n a… |
-| 2164 | [Sort Even and Odd Indices Independently](2164.md) | 🟢 Easy | 1m 27s | The problem gives us a 0-indexed integer array nums and asks us to … |
-| 2165 | [Smallest Value of the Rearranged Number](2165.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, which may be positive, negativ… |
-| 2166 | [Design Bitset](2166.md) | 🟡 Medium | 55s | The problem asks us to implement a Bitset class, which is a compact… |
-| 2167 | [Minimum Time to Remove All Cars Containing Illegal Goods](2167.md) | 🔴 Hard | 58s | The problem presents a sequence of train cars represented as a bina… |
-| 2168 | [Unique Substrings With Equal Digit Frequency](2168.md) | 🟡 Medium | 45s | The problem asks us to count the number of unique substrings of a g… |
-| 2169 | [Count Operations to Obtain Zero](2169.md) | 🟢 Easy | 1m 10s | The problem gives us two non-negative integers, num1 and num2. In e… |
-| 2170 | [Minimum Operations to Make the Array Alternating](2170.md) | 🟡 Medium | 1m 35s | The problem asks us to transform an array into an alternating array… |
-| 2171 | [Removing Minimum Number of Magic Beans](2171.md) | 🟡 Medium | 54s | The problem presents an array of positive integers beans, each repr… |
+| 2164 | [Sort Even and Odd Indices Independently](2164.md) | 🟢 Easy | 2m 19s | The problem asks us to take an integer array nums and sort its elem… |
+| 2165 | [Smallest Value of the Rearranged Number](2165.md) | 🟡 Medium | 1m 7s | In this problem, we are given an integer num, which may be positive… |
+| 2166 | [Design Bitset](2166.md) | 🟡 Medium | 1m 29s | This problem asks us to design a custom Bitset data structure that … |
+| 2167 | [Minimum Time to Remove All Cars Containing Illegal Goods](2167.md) | 🔴 Hard | 47s | The problem presents a binary string s representing a sequence of t… |
+| 2168 | [Unique Substrings With Equal Digit Frequency](2168.md) | 🟡 Medium | 1m 18s | The problem gives us a string s consisting only of digits from '0' … |
+| 2169 | [Count Operations to Obtain Zero](2169.md) | 🟢 Easy | 44s | The problem asks us to count the number of operations required to r… |
+| 2170 | [Minimum Operations to Make the Array Alternating](2170.md) | 🟡 Medium | 49s | The problem requires transforming a given integer array nums into a… |
+| 2171 | [Removing Minimum Number of Magic Beans](2171.md) | 🟡 Medium | 53s | The problem asks us to remove beans from bags in such a way that al… |
 | 2172 | [Maximum AND Sum of Array](2172.md) | 🔴 Hard | 1m 20s | This problem asks us to distribute numbers into slots in a way that… |
 | 2173 | [Longest Winning Streak](2173.md) | 🔴 Hard | 53s | The problem asks us to compute the longest winning streak for each … |
 | 2174 | [Remove All Ones With Row and Column Flips II](2174.md) | 🟡 Medium | 1m 38s | This problem gives us a binary matrix, meaning every cell contains … |

@@ -37,3 +37,11 @@ draft: false
 | 2435 | [Paths in Matrix Whose Sum Is Divisible by K](2435.md) | 🔴 Hard | 1m 21s | The problem gives us a matrix grid of size m x n and an integer k. … |
 | 2436 | [Minimum Split Into Subarrays With GCD Greater Than One](2436.md) | 🟡 Medium | 1m 18s | This problem asks us to divide an array into the smallest possible … |
 | 2438 | [Range Product Queries of Powers](2438.md) | 🟡 Medium | 47s | The problem asks us to compute the product of certain ranges of pow… |
+| 2440 | [Create Components With Same Value](2440.md) | 🔴 Hard | 2m 19s | A complete guide with all requested sections, detailed walkthroughs… |
+| 2441 | [Largest Positive Integer That Exists With Its Negative](2441.md) | 🟢 Easy | 57s | The problem requires finding the largest positive integer k in an a… |
+| 2442 | [Count Number of Distinct Integers After Reverse Operations](2442.md) | 🟡 Medium | 1m 15s | The problem gives us an array of positive integers called nums. For… |
+| 2443 | [Sum of Number and Its Reverse](2443.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given non-negative integ… |
+| 2445 | [Number of Nodes With Value One](2445.md) | 🟡 Medium | 1m 11s | Here is a comprehensive technical solution guide for LeetCode 2445,… |
+| 2447 | [Number of Subarrays With GCD Equal to K](2447.md) | 🟡 Medium | 53s | The problem requires counting the number of contiguous subarrays in… |
+| 2448 | [Minimum Cost to Make Array Equal](2448.md) | 🔴 Hard | 1m 7s | The problem gives us two arrays, nums and cost, both of length n. E… |
+| 2449 | [Minimum Number of Operations to Make Arrays Similar](2449.md) | 🔴 Hard | 1m | The problem asks us to transform one array nums into another array … |
