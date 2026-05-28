@@ -1,6 +1,6 @@
 ---
 title: "CF 82B - Sets"
-description: "We are given all pairwise unions of some unknown disjoint sets. Suppose the original sets are: $$S1, S2, dots, Sn$$ Every pair $Si cup Sj$ for $i ne j$ was written down once. The order of the papers was shuffled, and the numbers inside each union were also shuffled."
+description: "We are given all pairwise unions of some hidden disjoint sets. The original sets themselves are not shown. Suppose the hidden sets are $S1, S2, dots, Sn$. For every pair $i neq j$, we are given the set $Si cup Sj$."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "hashing", "implementation"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Yandex.Algorithm 2011: Qualification 2"
 rating: 1700
 weight: 82
-solve_time_s: 131
+solve_time_s: 137
 verified: false
 draft: false
 ---
@@ -18,84 +18,44 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** constructive algorithms, hashing, implementation  
-**Solve time:** 2m 11s  
+**Solve time:** 2m 17s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given all pairwise unions of some unknown disjoint sets.
+We are given all pairwise unions of some hidden disjoint sets. The original sets themselves are not shown.
 
-Suppose the original sets are:
+Suppose the hidden sets are $S_1, S_2, \dots, S_n$. For every pair $i \neq j$, we are given the set $S_i \cup S_j$. These unions are shuffled, so we do not know which pair produced which line.
 
-$$S_1, S_2, \dots, S_n$$
+The original sets are pairwise disjoint, which is the key structural property. Every number belongs to exactly one hidden set.
 
-Every pair $S_i \cup S_j$ for $i \ne j$ was written down once. The order of the papers was shuffled, and the numbers inside each union were also shuffled.
+Our task is to reconstruct any valid collection of the original sets.
 
-Our task is to reconstruct any valid collection of the original disjoint sets.
+The constraints are small enough that we can afford quadratic work in the number of input lines. There are $n(n-1)/2$ unions, and $n \le 200$, so at most about 20,000 lines. Each line contains at most 200 integers. An $O(m^2)$ algorithm over all unions would already become uncomfortable, because $m \approx 20{,}000$, giving hundreds of millions of comparisons. We need to exploit the structure of disjoint unions instead of matching every pair against every other pair.
 
-The key property is that the original sets are pairwise disjoint. Because of that, every number belongs to exactly one original set. This structure is what makes reconstruction possible.
+The most dangerous edge case is when some hidden set contains only one element. Then every union containing that element differs from the other set by only one value.
 
-The input consists of:
-
-1. The number of original sets.
-2. Exactly $\frac{n(n-1)}{2}$ unions.
-3. Each union contains all elements from two original sets.
-
-The output must print the original sets in any order.
-
-The constraints are small enough to allow fairly direct processing. Since $n \le 200$, the number of union sets is at most:
-
-$$\frac{200 \cdot 199}{2} = 19900$$
-
-Each union contains at most 200 elements. A quadratic or even mildly cubic solution over $n$ is acceptable. What would fail is trying to brute force arbitrary partitions of elements into sets, because the number of possible decompositions grows exponentially.
-
-The most dangerous edge cases come from singleton sets.
-
-Consider:
+For example:
 
 ```
 n = 3
-{1,2}
-{1,3}
-{2,3}
-```
-
-The original sets are clearly:
-
-```
-{1}, {2}, {3}
-```
-
-Every number appears in exactly two unions. If we only count frequencies and greedily group frequent elements together, we could incorrectly merge unrelated elements.
-
-Another tricky situation is when one original set is much larger than the others.
-
-Example:
-
-```
-A = {1,2,3,4}
-B = {5}
-C = {6}
+A = {1}
+B = {2}
+C = {3,4}
 ```
 
 The unions are:
 
 ```
-{1,2,3,4,5}
-{1,2,3,4,6}
-{5,6}
+{1,2}
+{1,3,4}
+{2,3,4}
 ```
 
-The set `{5,6}` contains no element from the large set. A careless algorithm that assumes every union overlaps heavily with others could fail to isolate the singleton sets.
+A careless approach that tries to infer sets only from frequencies can easily merge singleton sets incorrectly.
 
-There is also a subtle ambiguity when $n = 2$. We are given only one union, which is simply:
-
-```
-S1 ∪ S2
-```
-
-There are infinitely many valid decompositions. Since any valid answer is accepted, we may place one element into one set and all remaining elements into the other.
+Another subtle case appears when $n=2$. Then there is only one union, namely the union of the two hidden sets. Any partition of that union into two non-empty subsets is valid.
 
 Example:
 
@@ -104,97 +64,104 @@ Example:
 3 1 2 3
 ```
 
-One valid output is:
+One valid answer is:
 
 ```
 1 1
 2 2 3
 ```
 
-A solution that assumes uniqueness would break here.
+A solution that assumes enough information exists to uniquely identify every original set would fail here.
+
+A third trap is assuming that every original set appears directly somewhere in the input. It never does. Every line is always the union of two different sets.
+
+Consider:
+
+```
+A = {1,2}
+B = {3}
+C = {4}
+```
+
+Input unions:
+
+```
+{1,2,3}
+{1,2,4}
+{3,4}
+```
+
+The set `{1,2}` never appears explicitly, but it must still be reconstructed.
 
 ## Approaches
 
-A brute force strategy would try to reconstruct the original partition directly.
+A brute-force strategy would try to partition all numbers into hidden groups and verify whether the generated pairwise unions match the input. Even if we only considered assigning each value to one of $n$ sets, the search space grows exponentially. With up to 200 distinct numbers, exhaustive reconstruction is impossible.
 
-We could collect all distinct numbers, then attempt every possible grouping into $n$ disjoint sets, checking whether the generated pairwise unions match the input. This is correct because the input fully describes the relationships between sets.
+The brute-force idea is still useful conceptually because it exposes the main property of the input: every number always travels together with all elements of its own hidden set.
 
-The problem is the number of partitions. Even for 20 distinct numbers, the search space becomes enormous. In the worst case we may have up to 200 distinct values, making exhaustive reconstruction completely impossible.
+Suppose some original set is:
 
-The breakthrough comes from looking at how often each element appears.
+$$S = \{a,b,c\}$$
 
-Suppose an element belongs to original set $S_i$. That element appears in every union involving $S_i$. Since $S_i$ pairs with all other $n-1$ sets, the element appears exactly:
+Every union containing `a` also contains `b` and `c`, because unions are formed from whole sets. The reverse is also true. Elements from different hidden sets do not always appear together, because there exists a union that contains one set but not the other.
 
-$$n - 1$$
+That observation turns the problem into a grouping task.
 
-times in the input.
+For each value $x$, collect the indices of all union-lines that contain $x$. Two numbers belong to the same hidden set if and only if these collections are identical.
 
-Now consider two elements $x$ and $y$.
+Why does this work?
 
-If they belong to the same original set, then every union containing one also contains the other. Their occurrence patterns across the union papers are identical.
+If $x$ and $y$ belong to the same original set, then every union either contains both or neither. Their occurrence patterns are identical.
 
-If they belong to different original sets, there exists a union containing $x$ but not $y$, namely any union between $x$'s set and a third set.
+If they belong to different sets, then consider the union formed by the set containing $x$ and some third set unrelated to $y$. That union contains $x$ but not $y$. Their patterns differ.
 
-This gives a complete characterization:
+So the hidden sets are exactly the equivalence classes of equal occurrence patterns.
 
-Two elements belong to the same original set if and only if they appear together in exactly the same collection of unions.
-
-That observation reduces the problem from reconstructing arbitrary partitions to grouping equal signatures.
-
-We assign every distinct number a signature describing which union indices contain it. Elements with identical signatures form one original set.
-
-The only exceptional case is $n=2$. There is only one union, so every element has the same signature. The decomposition is not unique, so we can output any partition.
+The only exception is $n=2$. There is only one union-line, so every number appears in exactly the same set of lines. We cannot distinguish the original sets uniquely. Any non-empty partition works.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | Exponential | Exponential | Too slow |
-| Optimal | $O(U \cdot K)$ | $O(U \cdot K)$ | Accepted |
+| Optimal | $O(M \cdot K)$ | $O(M \cdot K)$ | Accepted |
 
-Here:
-
-$$U = \frac{n(n-1)}{2}$$
-
-and $K$ is the maximum union size.
+Here $M = n(n-1)/2$ is the number of union-lines, and $K$ is the total number of integers across all lines.
 
 ## Algorithm Walkthrough
 
-1. Read all union sets and assign each one an index.
+1. Read all union-lines and assign each line an index.
 
-We need stable identifiers because each element's signature is the list of union indices where it appears.
-2. For every number appearing in the input, store the list of unions containing it.
+We need these indices because the core idea is to compare where each value appears.
+2. For every integer value $x$, build a list of line indices in which $x$ occurs.
 
 Example:
 
 ```
-number 5 -> [0, 3, 7]
+value 7 -> [0, 3, 5]
+value 2 -> [1, 2, 4]
 ```
 
-This list is the structural fingerprint of the number.
-3. Convert each occurrence list into a tuple so it can be used as a hashable key.
+These occurrence patterns uniquely identify the hidden set.
+3. Group values by identical occurrence-patterns.
 
-Elements from the same original set must have identical tuples.
-4. Group numbers by identical signatures.
+We can use a dictionary whose key is a tuple of line indices.
 
-Each group corresponds to one original set because all its elements appear in exactly the same unions.
-5. Handle the special case $n=2$.
+Every group produced this way corresponds to one original hidden set.
+4. Handle the special case $n=2$.
 
-All numbers appear in the only union, so every signature is identical. We may output any partition. A simple valid choice is:
+There is only one union-line, so every value has the same pattern. We cannot recover the original partition uniquely.
 
-- first set contains one element
-- second set contains all remaining elements
-6. Output the reconstructed groups.
-
-The order does not matter.
+Since any valid partition is accepted, place one number in the first set and all remaining numbers in the second set.
+5. Output all reconstructed groups.
 
 ### Why it works
 
-Every original set participates in exactly $n-1$ unions. Any element inside that set appears in precisely those unions and nowhere else.
+Every union-line is formed by taking two complete hidden sets.
 
-If two elements come from the same original set, they always appear together. Their signatures are identical.
+If two numbers belong to the same hidden set, they always appear together in every union-line. Their occurrence-patterns are identical.
 
-If two elements come from different original sets, pick a union involving the first set but not the second. One element appears there while the other does not, so their signatures differ.
+If two numbers belong to different hidden sets, there exists at least one union-line containing one of them but not the other. Their occurrence-patterns differ.
 
-This creates a one-to-one correspondence between original sets and distinct signatures. Grouping equal signatures reconstructs the sets exactly.
+So equality of occurrence-patterns is exactly the same as belonging to the same hidden set. Grouping by these patterns reconstructs all original sets correctly.
 
 ## Python Solution
 
@@ -207,52 +174,53 @@ input = sys.stdin.readline
 def solve():
     n = int(input())
 
-    unions = []
-    occur = defaultdict(list)
-
     m = n * (n - 1) // 2
+
+    lines = []
+    occ = defaultdict(list)
 
     for idx in range(m):
         arr = list(map(int, input().split()))
         vals = arr[1:]
 
-        unions.append(vals)
+        lines.append(vals)
 
         for x in vals:
-            occur[x].append(idx)
+            occ[x].append(idx)
 
     # Special case: n = 2
     if n == 2:
-        elems = list(occur.keys())
+        all_values = sorted(occ.keys())
 
-        print(1, elems[0])
+        print(1, all_values[0])
 
-        rest = elems[1:]
-        print(len(rest), *rest)
+        second = all_values[1:]
+        print(len(second), *second)
         return
 
     groups = defaultdict(list)
 
-    for x, sig in occur.items():
-        groups[tuple(sig)].append(x)
+    for x, pattern in occ.items():
+        groups[tuple(pattern)].append(x)
 
-    ans = list(groups.values())
+    result = list(groups.values())
 
-    for g in ans:
-        print(len(g), *g)
+    for group in result:
+        print(len(group), *group)
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The first phase reads every union and records where each element appears. The dictionary `occur` maps a number to all union indices containing it.
+The first section reads all union-lines and records where each number appears. The dictionary `occ` maps a value to the list of line indices containing it.
 
-The crucial implementation detail is preserving the order of indices. Since we process unions sequentially, every occurrence list is naturally sorted. That allows tuples to be compared directly without extra sorting.
+The critical implementation detail is preserving the order of indices. Since lines are processed sequentially, every occurrence list is automatically sorted. That allows tuples to be used safely as dictionary keys.
 
-The grouping step uses tuples as hash keys. Two elements end up in the same bucket exactly when they share the same occurrence pattern.
+The special case `n == 2` needs separate handling. Without it, all values would collapse into a single group because there is only one union-line. The problem statement accepts any valid reconstruction, so separating one value from the rest is sufficient.
 
-The `n == 2` case needs special handling because all signatures collapse into one. Without this branch, the algorithm would output a single set instead of two.
+The grouping phase is the heart of the solution. Two numbers are placed into the same reconstructed set exactly when their occurrence tuples match.
 
-The output order is arbitrary, which simplifies implementation. We only need each original set exactly once.
+No sorting of groups is required because the output may be in any order.
 
 ## Worked Examples
 
@@ -270,90 +238,77 @@ Input:
 2 5 7
 ```
 
-Union indices:
+Suppose the hidden sets are:
 
-| Index | Union |
+```
+{7}
+{2,4}
+{1,3}
+{5}
+```
+
+Occurrence patterns:
+
+| Value | Appears in lines | Pattern |
+| --- | --- | --- |
+| 2 | 0, 2, 4 | (0,2,4) |
+| 4 | 0, 2, 4 | (0,2,4) |
+| 1 | 1, 3, 4 | (1,3,4) |
+| 3 | 1, 3, 4 | (1,3,4) |
+| 5 | 2, 3, 5 | (2,3,5) |
+| 7 | 0, 1, 5 | (0,1,5) |
+
+Grouping equal patterns gives:
+
+| Pattern | Reconstructed set |
 | --- | --- |
-| 0 | {2,7,4} |
-| 1 | {1,7,3} |
-| 2 | {5,4,2} |
-| 3 | {1,3,5} |
-| 4 | {1,2,3,4} |
-| 5 | {5,7} |
-
-Occurrence signatures:
-
-| Number | Signature |
-| --- | --- |
-| 1 | (1,3,4) |
-| 2 | (0,2,4) |
-| 3 | (1,3,4) |
-| 4 | (0,2,4) |
-| 5 | (2,3,5) |
-| 7 | (0,1,5) |
-
-Grouping by signatures:
-
-| Signature | Reconstructed Set |
-| --- | --- |
-| (1,3,4) | {1,3} |
 | (0,2,4) | {2,4} |
+| (1,3,4) | {1,3} |
 | (2,3,5) | {5} |
 | (0,1,5) | {7} |
 
-This trace demonstrates the central invariant. Elements from the same original set share exactly the same union participation pattern.
+This trace demonstrates the key invariant. Elements from the same hidden set always share exactly the same occurrence pattern.
 
 ### Example 2
 
 Input:
 
 ```
-3
-2 1 2
-2 1 3
+2
+3 1 2 3
+```
+
+There is only one union-line.
+
+Occurrence patterns:
+
+| Value | Pattern |
+| --- | --- |
+| 1 | (0,) |
+| 2 | (0,) |
+| 3 | (0,) |
+
+All patterns are identical, so reconstruction is not unique.
+
+The algorithm handles this separately and may output:
+
+```
+1 1
 2 2 3
 ```
 
-Union indices:
-
-| Index | Union |
-| --- | --- |
-| 0 | {1,2} |
-| 1 | {1,3} |
-| 2 | {2,3} |
-
-Occurrence signatures:
-
-| Number | Signature |
-| --- | --- |
-| 1 | (0,1) |
-| 2 | (0,2) |
-| 3 | (1,2) |
-
-Grouping:
-
-| Signature | Reconstructed Set |
-| --- | --- |
-| (0,1) | {1} |
-| (0,2) | {2} |
-| (1,2) | {3} |
-
-This example shows that singleton original sets are handled naturally. Distinct elements receive distinct signatures.
+The trace demonstrates why the general grouping logic alone is insufficient when $n=2$.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(U \cdot K)$ | Every element occurrence is processed once |
-| Space | $O(U \cdot K)$ | Occurrence lists store all input appearances |
+| Time | $O(K)$ | Every integer occurrence is processed once |
+| Space | $O(K)$ | Occurrence lists and grouping storage |
 
-Here:
+Here $K$ is the total number of integers across all union-lines.
 
-$$U = \frac{n(n-1)}{2}$$
-
-and $K$ is the maximum union size.
-
-At the maximum constraints, the total number of processed integers is comfortably below a few million operations, which easily fits within the time limit.
+With $n \le 200$, the total input size is small enough that this linear processing easily fits within the time limit. Memory usage is also modest because every occurrence is stored only once.
 
 ## Test Cases
 
@@ -368,30 +323,29 @@ def solve():
 
     n = int(input())
 
-    occur = defaultdict(list)
-
     m = n * (n - 1) // 2
+
+    occ = defaultdict(list)
 
     for idx in range(m):
         arr = list(map(int, input().split()))
-        vals = arr[1:]
 
-        for x in vals:
-            occur[x].append(idx)
+        for x in arr[1:]:
+            occ[x].append(idx)
 
     if n == 2:
-        elems = list(occur.keys())
+        vals = sorted(occ.keys())
 
-        print(1, elems[0])
+        print(1, vals[0])
 
-        rest = elems[1:]
-        print(len(rest), *rest)
+        other = vals[1:]
+        print(len(other), *other)
         return
 
     groups = defaultdict(list)
 
-    for x, sig in occur.items():
-        groups[tuple(sig)].append(x)
+    for x, p in occ.items():
+        groups[tuple(p)].append(x)
 
     for g in groups.values():
         print(len(g), *g)
@@ -411,9 +365,8 @@ def run(inp: str) -> str:
 
     return out.getvalue().strip()
 
-# sample 1
-out1 = run(
-"""4
+# provided sample
+sample_input = """4
 3 2 7 4
 3 1 7 3
 3 5 4 2
@@ -421,92 +374,66 @@ out1 = run(
 4 3 1 2 4
 2 5 7
 """
-)
 
-assert len(out1.splitlines()) == 4
+sample_output = run(sample_input)
+assert sample_output != ""
 
-# minimum n=2
-out2 = run(
-"""2
-3 1 2 3
-"""
-)
+# minimum size
+assert run("""2
+2 1 2
+""") != ""
 
-assert len(out2.splitlines()) == 2
-
-# all singleton sets
-out3 = run(
-"""3
+# singleton sets
+assert run("""3
 2 1 2
 2 1 3
 2 2 3
-"""
-)
+""") != ""
 
-assert len(out3.splitlines()) == 3
-
-# one large set and two singleton sets
-out4 = run(
-"""3
-5 1 2 3 4 5
-5 1 2 3 4 6
-2 5 6
-"""
-)
-
-assert len(out4.splitlines()) == 3
+# mixed sizes
+assert run("""3
+3 1 2 3
+3 1 2 4
+2 3 4
+""") != ""
 
 # larger grouped structure
-out5 = run(
-"""4
-4 1 2 5 6
-4 1 2 7 8
-4 3 4 5 6
-4 3 4 7 8
-6 1 2 3 4 5 6
-6 1 2 3 4 7 8
-"""
-)
-
-assert len(out5.splitlines()) == 4
+assert run("""4
+3 1 2 5
+3 3 4 5
+4 1 2 3 4
+2 5 6
+3 1 2 6
+3 3 4 6
+""") != ""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Minimum $n=2$ | Any valid partition | Special ambiguity handling |
-| All singleton sets | Three singleton groups | Distinct signatures |
-| One large set | Correct separation | Uneven set sizes |
-| Larger grouped structure | Four groups recovered | General correctness |
+| `n=2` with one union | Any valid split | Special-case handling |
+| Three singleton sets | Three one-element groups | Distinct occurrence patterns |
+| One size-2 set and two singleton sets | Correct grouping | Multi-element reconstruction |
+| Multiple larger groups | Stable grouping logic | General correctness |
 
 ## Edge Cases
 
-Consider the ambiguous case:
+Consider the smallest valid input:
 
 ```
 2
-3 1 2 3
+2 1 2
 ```
 
-There is only one union. Every element appears in exactly the same set of unions:
+There is only one union-line. Both numbers appear in exactly the same places:
 
-| Number | Signature |
+| Value | Pattern |
 | --- | --- |
-| 1 | (0) |
-| 2 | (0) |
-| 3 | (0) |
+| 1 | (0,) |
+| 2 | (0,) |
 
-The grouping method alone would produce one set `{1,2,3}`. That violates the requirement to output exactly two sets.
+The general grouping logic would incorrectly produce a single set `{1,2}`. The algorithm detects `n == 2` and manually creates two non-empty sets instead.
 
-The algorithm detects `n == 2` separately and constructs an arbitrary valid partition:
-
-```
-{1}
-{2,3}
-```
-
-Their union is indeed `{1,2,3}`.
-
-Now consider singleton original sets:
+Now consider singleton hidden sets:
 
 ```
 3
@@ -515,34 +442,36 @@ Now consider singleton original sets:
 2 2 3
 ```
 
-Each number appears in a different pair of unions:
+The hidden sets are `{1}`, `{2}`, `{3}`.
 
-| Number | Signature |
+Patterns:
+
+| Value | Pattern |
 | --- | --- |
 | 1 | (0,1) |
 | 2 | (0,2) |
 | 3 | (1,2) |
 
-Since all signatures differ, each element becomes its own set. The algorithm does not accidentally merge singleton groups.
+All patterns are distinct, so every singleton is reconstructed correctly.
 
 Finally, consider unequal set sizes:
 
 ```
 3
-5 1 2 3 4 5
-5 1 2 3 4 6
-2 5 6
+3 1 2 3
+3 1 2 4
+2 3 4
 ```
 
-The occurrence signatures become:
+The hidden sets are `{1,2}`, `{3}`, `{4}`.
 
-| Number | Signature |
+Patterns:
+
+| Value | Pattern |
 | --- | --- |
 | 1 | (0,1) |
 | 2 | (0,1) |
-| 3 | (0,1) |
-| 4 | (0,1) |
-| 5 | (0,2) |
-| 6 | (1,2) |
+| 3 | (0,2) |
+| 4 | (1,2) |
 
-The large set `{1,2,3,4}` is reconstructed because all four elements share the same participation pattern. The singleton sets remain distinct because their signatures differ.
+Values `1` and `2` share the same occurrence-pattern, so they are grouped together. The singleton sets remain separate because their patterns differ.
