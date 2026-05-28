@@ -23,4 +23,8 @@ draft: false
 | 2111 | [Minimum Operations to Make the Array K-Increasing](2111.md) | 🔴 Hard | 1m 10s | The problem asks us to transform a given array arr into a K-increas… |
 | 2113 | [Elements in Array After Removing and Replacing Elements](2113.md) | 🟡 Medium | 1m 3s | This problem asks us to simulate a repeated process on an array, bu… |
 | 2114 | [Maximum Number of Words Found in Sentences](2114.md) | 🟢 Easy | 1m 3s | The problem asks us to determine the maximum number of words in a s… |
+| 2115 | [Find All Possible Recipes from Given Supplies](2115.md) | 🟡 Medium | 1m 31s | The problem asks us to determine all the recipes that can be made g… |
+| 2116 | [Check if a Parentheses String Can Be Valid](2116.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given parentheses string… |
+| 2117 | [Abbreviating the Product of a Range](2117.md) | 🔴 Hard | 59s | The problem asks us to compute the product of all integers in a giv… |
+| 2119 | [A Number After a Double Reversal](2119.md) | 🟢 Easy | 51s | The problem asks us to determine whether a number remains the same … |
 | 2143 | [Choose Numbers From Two Arrays in Range](2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |
