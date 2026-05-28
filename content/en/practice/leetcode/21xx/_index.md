@@ -73,7 +73,7 @@ draft: false
 | 2160 | [Minimum Sum of Four Digit Number After Splitting Digits](2160.md) | 🟢 Easy | 45s | The problem asks us to take a four-digit integer num and split its … |
 | 2161 | [Partition Array According to Given Pivot](2161.md) | 🟡 Medium | 1m 17s | This problem asks us to rearrange an array around a given pivot val… |
 | 2162 | [Minimum Cost to Set Cooking Time](2162.md) | 🟡 Medium | 1m 18s | This problem asks us to simulate the process of entering a cooking … |
-| 2163 | [Minimum Difference in Sums After Removal of Elements](2163.md) | 🔴 Hard | 54s | The problem presents a 0-indexed integer array nums of length 3 n a… |
+| 2163 | [Minimum Difference in Sums After Removal of Elements](2163.md) | 🔴 Hard | 9m 32s | The array contains exactly 3 n elements. We must remove exactly n e… |
 | 2164 | [Sort Even and Odd Indices Independently](2164.md) | 🟢 Easy | 2m 19s | The problem asks us to take an integer array nums and sort its elem… |
 | 2165 | [Smallest Value of the Rearranged Number](2165.md) | 🟡 Medium | 1m 7s | In this problem, we are given an integer num, which may be positive… |
 | 2166 | [Design Bitset](2166.md) | 🟡 Medium | 1m 29s | This problem asks us to design a custom Bitset data structure that … |
@@ -84,7 +84,7 @@ draft: false
 | 2171 | [Removing Minimum Number of Magic Beans](2171.md) | 🟡 Medium | 53s | The problem asks us to remove beans from bags in such a way that al… |
 | 2172 | [Maximum AND Sum of Array](2172.md) | 🔴 Hard | 1m 20s | This problem asks us to distribute numbers into slots in a way that… |
 | 2173 | [Longest Winning Streak](2173.md) | 🔴 Hard | 53s | The problem asks us to compute the longest winning streak for each … |
-| 2174 | [Remove All Ones With Row and Column Flips II](2174.md) | 🟡 Medium | 1m 38s | This problem gives us a binary matrix, meaning every cell contains … |
+| 2174 | [Remove All Ones With Row and Column Flips II](2174.md) | 🟡 Medium | 4m 20s | The problem gives us an m x n binary matrix where every cell contai… |
 | 2175 | [The Change in Global Rankings](2175.md) | 🟡 Medium | 1m 40s | This problem asks us to measure how the global ranking of national … |
 | 2176 | [Count Equal and Divisible Pairs in an Array](2176.md) | 🟢 Easy | 1m 23s | The problem gives us a 0-indexed integer array nums and an integer … |
 | 2177 | [Find Three Consecutive Integers That Sum to a Given Number](2177.md) | 🟡 Medium | 50s | The problem asks us to find three consecutive integers whose sum eq… |
