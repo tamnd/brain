@@ -27,4 +27,12 @@ draft: false
 | 2116 | [Check if a Parentheses String Can Be Valid](2116.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given parentheses string… |
 | 2117 | [Abbreviating the Product of a Range](2117.md) | 🔴 Hard | 59s | The problem asks us to compute the product of all integers in a giv… |
 | 2119 | [A Number After a Double Reversal](2119.md) | 🟢 Easy | 51s | The problem asks us to determine whether a number remains the same … |
+| 2120 | [Execution of All Suffix Instructions Staying in a Grid](2120.md) | 🟡 Medium | 59s | The problem asks us to simulate a robot moving on an n x n grid, st… |
+| 2121 | [Intervals Between Identical Elements](2121.md) | 🟡 Medium | 1m 22s | The problem asks us to compute, for every index in the array, the t… |
+| 2122 | [Recover the Original Array](2122.md) | 🔴 Hard | 1m 32s | The problem gives us an array nums of length 2n. This array was for… |
+| 2123 | [Minimum Operations to Remove Adjacent Ones in Matrix](2123.md) | 🔴 Hard | 50s | The problem presents a binary matrix where each element is either 0… |
+| 2124 | [Check if All A's Appears Before All B's](2124.md) | 🟢 Easy | 1m | The problem asks us to determine whether all occurrences of the cha… |
+| 2125 | [Number of Laser Beams in a Bank](2125.md) | 🟡 Medium | 1m | The problem presents a binary matrix representing a bank floor plan… |
+| 2126 | [Destroying Asteroids](2126.md) | 🟡 Medium | 48s | The problem describes a scenario where a planet with an initial mas… |
+| 2129 | [Capitalize the Title](2129.md) | 🟢 Easy | 54s | The problem is asking us to take a string title composed of words s… |
 | 2143 | [Choose Numbers From Two Arrays in Range](2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |

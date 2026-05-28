@@ -37,4 +37,6 @@ draft: false
 | 1827 | [Minimum Operations to Make the Array Increasing](1827.md) | 🟢 Easy | 59s | The problem asks us to transform a given integer array nums into a … |
 | 1829 | [Maximum XOR for Each Query](1829.md) | 🟡 Medium | 1m 26s | The problem gives us a sorted array nums and an integer maximumBit.… |
 | 1830 | [Minimum Number of Operations to Make String Sorted](1830.md) | 🔴 Hard | 1m 27s | The operation described in the problem is exactly the process of ge… |
+| 1831 | [Maximum Transaction Each Day](1831.md) | 🟡 Medium | 3m 51s | The problem gives us a table named Transactions where each row repr… |
+| 1833 | [Maximum Ice Cream Bars](1833.md) | 🟡 Medium | 1m 1s | This problem asks us to determine the maximum number of ice cream b… |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
