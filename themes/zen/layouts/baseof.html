@@ -108,9 +108,15 @@
   }
   sync();
   btn&&btn.addEventListener('click',function(){
+    // Suppress all transitions while switching to avoid slow cross-fade
+    var s=document.createElement('style');
+    s.textContent='*,*::before,*::after{transition:none!important}';
+    document.head.appendChild(s);
     var dark=document.documentElement.classList.toggle('dark');
     localStorage.setItem('brain-theme',dark?'dark':'light');
     sync();
+    // Re-enable transitions on next paint
+    requestAnimationFrame(function(){document.head.removeChild(s);});
   });
 })();
 </script>
