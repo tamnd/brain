@@ -99,12 +99,13 @@ draft: false
 | 1387 | [Sort Integers by The Power Value](1387.md) | 🟡 Medium | 1m 15s | This problem asks us to rank integers according to a special metric… |
 | 1388 | [Pizza With 3n Slices](1388.md) | 🔴 Hard | 1m 39s | In this problem, we are given a circular pizza divided into 3n slic… |
 | 1389 | [Create Target Array in the Given Order](1389.md) | 🟢 Easy | 1m 4s | This problem asks us to build a new array called target by followin… |
-| 1390 | [Four Divisors](1390.md) | 🟡 Medium | 1m 4s | The problem asks us to process an array of integers, nums, and comp… |
-| 1391 | [Check if There is a Valid Path in a Grid](1391.md) | 🟡 Medium | 1m 32s | This problem gives us a two dimensional grid where every cell conta… |
-| 1392 | [Longest Happy Prefix](1392.md) | 🔴 Hard | 1m 5s | The problem asks us to find the longest substring that satisfies tw… |
-| 1393 | [Capital Gain/Loss](1393.md) | 🟡 Medium | 52s | The problem is asking us to calculate the capital gain or loss for … |
-| 1395 | [Count Number of Teams](1395.md) | 🟡 Medium | 1m 3s | This problem asks us to count the number of valid teams of three so… |
-| 1396 | [Design Underground System](1396.md) | 🟡 Medium | 1m 27s | This problem asks us to design a small tracking system for an under… |
+| 1390 | [Four Divisors](1390.md) | 🟡 Medium | 1m 8s | The problem asks us to calculate the sum of divisors for numbers in… |
+| 1391 | [Check if There is a Valid Path in a Grid](1391.md) | 🟡 Medium | 1m 16s | The problem presents a grid where each cell represents a street seg… |
+| 1392 | [Longest Happy Prefix](1392.md) | 🔴 Hard | 1m 27s | The problem asks us to find the longest substring that is both a pr… |
+| 1393 | [Capital Gain/Loss](1393.md) | 🟡 Medium | 1m 20s | The Stocks table records stock trading activity. Each row represent… |
+| 1394 | [Find Lucky Integer in an Array](1394.md) | 🟢 Easy | 1m 6s | This problem asks us to identify a special number in an array calle… |
+| 1395 | [Count Number of Teams](1395.md) | 🟡 Medium | 1m 4s | The problem asks us to count the number of valid teams of three sol… |
+| 1396 | [Design Underground System](1396.md) | 🟡 Medium | 1m 26s | This problem asks us to design a small tracking system for an under… |
 | 1397 | [Find All Good Strings](1397.md) | 🔴 Hard | 1m 32s | The problem asks us to count how many strings of length n satisfy t… |
-| 1398 | [Customers Who Bought Products A and B but Not C](1398.md) | 🟡 Medium | 1m 39s | This problem gives us two database tables, Customers and Orders. Th… |
-| 1399 | [Count Largest Group](1399.md) | 🟢 Easy | 1m 10s | The problem asks us to group every integer from 1 to n based on the… |
+| 1398 | [Customers Who Bought Products A and B but Not C](1398.md) | 🟡 Medium | 1m 2s | The problem asks us to identify customers who meet a very specific … |
+| 1399 | [Count Largest Group](1399.md) | 🟢 Easy | 1m 21s | The problem asks us to group all integers from 1 to n based on the … |
