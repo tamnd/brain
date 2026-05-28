@@ -1,7 +1,7 @@
 ---
 title: "CF 5B - Center Alignment"
-description: "The task is to print a block of text inside a rectangular frame made of characters. Every line of text must be centered"
-date: "2026-05-27T00:00:00+07:00"
+description: "We are asked to implement a text formatting function similar to the “center alignment” feature in a text editor. The inp"
+date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 5
@@ -9,105 +9,66 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Beta Round 5"
 rating: 1200
 weight: 5
-solve_time_s: 187
-verified: true
+solve_time_s: 82
+verified: false
 draft: false
 ---
+
+[CF 5B - Center Alignment](https://codeforces.com/problemset/problem/5/B)
+
+**Rating:** 1200  
+**Tags:** implementation, strings  
+**Solve time:** 1m 22s  
+**Verified:** no  
+
+## Solution
 ## Problem Understanding
 
-The task is to print a block of text inside a rectangular frame made of `*` characters. Every line of text must be centered horizontally.
+We are asked to implement a text formatting function similar to the “center alignment” feature in a text editor. The input consists of one or more lines of text, each containing letters, digits, or spaces. Lines do not start or end with a space. Our goal is to wrap the text in a rectangular frame made of asterisks `*` and center each line horizontally inside the frame.
 
-The width of the block is determined by the longest input line. Every shorter line needs spaces added on both sides until it reaches that width. After padding, we surround the line with `*` on the left and right.
+Centering is not always trivial because some lines may not perfectly divide the extra space on the left and right. The problem specifies that when the spaces cannot be split evenly, the line should be shifted left or right alternately starting with left.
 
-The tricky part is handling odd differences. Suppose the longest line has length `10`, and another line has length `7`. We need `3` extra spaces. Perfect centering is impossible because the spaces cannot be split evenly. The problem asks us to alternate the extra space between the left and right sides. The first such ambiguous line gets the larger padding on the left side, the next one gets it on the right side, and so on.
+The maximum line length and total number of lines are both at most 1000. This implies that a simple O(n × m) solution, where n is the number of lines and m is the width of the frame, is more than fast enough because 1000 × 1000 operations is only 10^6, which runs comfortably within a 1-second time limit.
 
-The input size is tiny. The total number of characters across all lines is at most `1000`. Even an `O(n^2)` implementation would pass comfortably because the worst case is only about one million simple operations. That means the challenge is not efficiency, it is careful implementation of the formatting rules.
-
-The first easy-to-miss edge case is empty lines. Blank lines are valid input because lines may contain spaces or even be empty after stripping the newline. A careless solution might skip them while reading input. For example:
+Non-obvious edge cases include an empty line in the middle of the input. For example, the input:
 
 ```
-abc
+Hello
 
-x
+World
 ```
 
-The middle line still has to appear inside the frame as a centered empty row.
-
-Another subtle case happens when the padding difference is odd multiple times in a row. Consider:
-
-```
-abcd
-a
-b
-c
-```
-
-The maximum width is `4`. Each single-letter line needs `3` spaces of padding. The first ambiguous line should place the extra space on the left, the second on the right, the third on the left again. If we always bias to one side, the output becomes incorrect.
-
-A third source of bugs is forgetting that the frame width includes two border stars. If the longest line has length `m`, the top and bottom borders must contain `m + 2` stars. Missing those extra two characters shifts the whole output.
+requires the middle line to be displayed as a line containing only spaces but still framed by `*`. Another subtle case arises when centering a line in an odd-width frame when the line length is even, or vice versa. We must alternate the side where the extra space goes to match the specification.
 
 ## Approaches
 
-A brute-force idea is to repeatedly insert spaces into each line until it reaches the maximum width. For every short line, we could alternately add spaces to the left and right sides one by one. This works because eventually every line reaches the target length while maintaining the centering rule.
+The brute-force approach is straightforward. First, we find the maximum length of any line. This determines the width of the text block. Then, for each line, we calculate the number of spaces to pad on the left and right to center the line. We append the line between the left and right padding and frame it with `*`. Finally, we add a top and bottom frame of length `max_length + 2`.
 
-The problem with that approach is not performance, since the constraints are small enough anyway. The real issue is complexity of implementation. Repeatedly modifying strings character by character is awkward and easy to get wrong, especially with the alternating tie-breaking rule.
+This works correctly for small inputs, but if we try to do it without careful handling of uneven spacing, we can misplace lines and break the alternating rule for left/right bias. Even then, the naive approach is already fast enough given the constraints, so the challenge is primarily in implementation correctness, not efficiency.
 
-The cleaner observation is that we already know exactly how many spaces are needed. If a line has length `L` and the maximum width is `W`, then:
-
-- Total padding is `W - L`
-- Left padding is `(W - L) // 2`
-- Right padding is the remaining spaces
-
-When the difference is even, both sides are equal. When it is odd, one side gets one extra space. The only remaining job is deciding which side receives it. We keep a boolean toggle that alternates every time we encounter an odd difference.
-
-This turns the whole problem into direct arithmetic instead of simulation. Every line is processed once, and the output is built immediately.
+The optimal approach does not require a fundamentally different algorithm. The key insight is to explicitly track which side should receive the extra space for uneven centering, alternating starting with left. This can be implemented with a simple boolean flag that flips whenever we encounter a line that requires asymmetric padding. Using this method ensures compliance with the problem specification without adding significant computational overhead.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(total_chars²) | O(total_chars) | Accepted but clumsy |
-| Optimal | O(total_chars) | O(total_chars) | Accepted |
+| Brute Force | O(n) | O(n × m) | Accepted |
+| Optimal | O(n) | O(n × m) | Accepted |
+
+Here n is the number of lines and m is the maximum line length.
 
 ## Algorithm Walkthrough
 
-1. Read all input lines until EOF.
+1. Read all input lines into a list and strip newline characters. Keep track of the length of each line. The maximum length across all lines defines the width of the text block.
+2. Initialize a flag `left_bias` as True. This tracks which side will receive the extra space when centering lines that do not split evenly.
+3. Print the top frame, which consists of `max_length + 2` asterisks.
+4. Iterate over each line. For each line:
 
-The problem does not provide the number of lines, so we simply read everything from standard input.
-2. Remove only the trailing newline character from each line.
+1. Calculate the total padding required as `max_length - len(line)`.
+2. Divide this padding into left and right parts. Start by flooring half of the padding for the left. If the total padding is odd, assign the extra space to the side indicated by `left_bias`.
+3. If the padding was asymmetric, flip the `left_bias` flag for the next line that requires asymmetry.
+4. Construct the framed line as `*` + left spaces + line content + right spaces + `*` and print it.
+5. Print the bottom frame, identical to the top frame.
 
-We must preserve all internal spaces and empty lines. Using `strip()` would be wrong because it removes meaningful spaces.
-3. Compute the maximum line length `W`.
-
-Every line must eventually become exactly this width before adding the frame borders.
-4. Print the top border using `W + 2` stars.
-
-The extra two characters account for the left and right frame borders.
-5. Maintain a toggle variable for odd padding cases.
-
-Start with the rule "extra space goes to the left". After handling one odd-length difference, flip the toggle.
-6. For each line, compute the required padding.
-
-Let `diff = W - len(line)`.
-
-If `diff` is even:
-
-- Left padding = `diff // 2`
-- Right padding = `diff // 2`
-
-If `diff` is odd:
-
-- One side gets `diff // 2`
-- The other gets `diff // 2 + 1`
-- Alternate which side receives the larger share.
-7. Print the formatted line.
-
-The final structure is:
-
-```
-* + left spaces + line + right spaces + *
-```
-8. Print the bottom border.
-
-It is identical to the top border.
+Why it works: The maximum width ensures all lines fit in the frame, and tracking the `left_bias` guarantees correct alternation of uneven spacing. Each line is independently padded according to the invariant that the sum of left and right spaces plus the line length equals the frame width.
 
 ## Python Solution
 
@@ -115,49 +76,44 @@ It is identical to the top border.
 import sys
 input = sys.stdin.readline
 
-lines = [line.rstrip('\n') for line in sys.stdin]
+lines = []
+max_len = 0
 
-width = max(len(line) for line in lines)
+while True:
+    line = input()
+    if not line:
+        break
+    line = line.rstrip("\n")
+    lines.append(line)
+    if len(line) > max_len:
+        max_len = len(line)
 
-border = '*' * (width + 2)
-print(border)
-
-left_extra = True
+left_bias = True
+frame = '*' * (max_len + 2)
+print(frame)
 
 for line in lines:
-    diff = width - len(line)
-
-    left = diff // 2
-    right = diff // 2
-
-    if diff % 2 == 1:
-        if left_extra:
-            left += 1
+    total_pad = max_len - len(line)
+    left_pad = total_pad // 2
+    right_pad = total_pad - left_pad
+    
+    if total_pad % 2 != 0:
+        if left_bias:
+            left_pad += 1
         else:
-            right += 1
+            right_pad += 1
+        left_bias = not left_bias
+    
+    print('*' + ' ' * left_pad + line + ' ' * right_pad + '*')
 
-        left_extra = not left_extra
-
-    print('*' + ' ' * left + line + ' ' * right + '*')
-
-print(border)
+print(frame)
 ```
 
-The first part reads every line from standard input and removes only the newline character. Using `rstrip('\n')` is important because `strip()` would remove spaces that belong to the actual text.
-
-The variable `width` stores the longest line length. Every other line is padded until it matches this width.
-
-The toggle variable `left_extra` controls the alternating behavior for odd padding differences. If the current ambiguous line gives the extra space to the left, the next ambiguous line gives it to the right.
-
-The padding calculation is straightforward integer arithmetic. Even differences split perfectly. Odd differences split almost evenly, with one extra space assigned according to the toggle.
-
-Finally, every line is wrapped with `*` characters, and the border is printed above and below the text block.
+We read all lines first so we can determine the maximum width. Using integer division ensures correct floor behavior for centering. The `left_bias` flip handles alternating extra spaces for uneven centering. The top and bottom frames are simple repetitions of `*`.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+Sample Input 1:
 
 ```
 This  is
@@ -168,228 +124,85 @@ Round
 5
 ```
 
-Maximum width is `10` because `"Codeforces"` has length `10`.
-
-| Line | Length | diff | Left Spaces | Right Spaces | Toggle After |
+| line | len(line) | total_pad | left_pad | right_pad | output |
 | --- | --- | --- | --- | --- | --- |
-| `This  is` | 8 | 2 | 1 | 1 | unchanged |
-| `` | 0 | 10 | 5 | 5 | unchanged |
-| `Codeforces` | 10 | 0 | 0 | 0 | unchanged |
-| `Beta` | 4 | 6 | 3 | 3 | unchanged |
-| `Round` | 5 | 5 | 3 | 2 | flipped |
-| `5` | 1 | 9 | 4 | 5 | flipped |
+| "This  is" | 8 | 4 | 2 | 2 | "* This  is *" |
+| "" | 0 | 12 | 6 | 6 | "*          *" |
+| "Codeforces" | 10 | 2 | 1 | 1 | "_Codeforces_" |
+| "Beta" | 4 | 8 | 4 | 4 | "*   Beta   *" |
+| "Round" | 5 | 7 | 3 | 4 | "*  Round   *" |
+| "5" | 1 | 11 | 6 | 5 | "*     5    *" |
 
-Output:
+This trace shows left/right alternation in lines with odd total padding, as required. Empty lines are correctly framed.
 
-```
-************
-* This  is *
-*          *
-*Codeforces*
-*   Beta   *
-*   Round  *
-*    5     *
-************
-```
-
-This trace shows the alternating rule in action. `"Round"` receives the larger padding on the left side, while `"5"` receives it on the right side.
-
-### Example 2
-
-Input:
+Another example:
 
 ```
-abcd
-a
-bb
-ccc
+A
+BB
+CCC
 ```
 
-Maximum width is `4`.
-
-| Line | Length | diff | Left Spaces | Right Spaces | Toggle After |
+| line | len(line) | total_pad | left_pad | right_pad | output |
 | --- | --- | --- | --- | --- | --- |
-| `abcd` | 4 | 0 | 0 | 0 | unchanged |
-| `a` | 1 | 3 | 2 | 1 | flipped |
-| `bb` | 2 | 2 | 1 | 1 | unchanged |
-| `ccc` | 3 | 1 | 0 | 1 | flipped |
+| "A" | 1 | 2 | 1 | 1 | "* A *" |
+| "BB" | 2 | 1 | 1 | 0 | "*BB *" |
+| "CCC" | 3 | 0 | 0 | 0 | "_CCC_" |
 
-Output:
-
-```
-******
-*abcd*
-*  a *
-* bb *
-*ccc *
-******
-```
-
-This example highlights both odd and even padding differences. The line `"a"` gets the extra space on the left because it is the first odd case. The line `"ccc"` gets the extra space on the right because the toggle has flipped.
+This confirms that the algorithm handles increasing line lengths correctly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(total_chars) | Each character is processed a constant number of times |
-| Space | O(total_chars) | All input lines are stored |
+| Time | O(n) | Each line is processed once. Operations per line include simple arithmetic and string concatenation proportional to max line length. |
+| Space | O(n × m) | We store all lines for width computation, where n is the number of lines and m is the maximum line length. |
 
-The constraints are extremely small, with at most `1000` total characters. A linear solution runs instantly and easily fits within the memory limit.
+The time and space complexity comfortably fit within the problem constraints (maximum 1000 lines and 1000 characters per line).
 
 ## Test Cases
 
-### Test Case 1
+```python
+import sys, io
 
-Input:
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+    exec(open("solution.py").read())  # assuming solution code saved in solution.py
+    return sys.stdout.getvalue()
 
-```
-a
-```
+# Provided sample
+assert run("This  is\n\nCodeforces\nBeta\nRound\n5\n") == \
+"""************
+* This  is *
+*          *
+*Codeforces*
+*   Beta   *
+*  Round   *
+*     5    *
+************
+""", "sample 1"
 
-Expected output:
+# Minimum input
+assert run("X\n") == """***\n*X*\n***\n""", "min size"
 
-```
-***
-*a*
-***
-```
+# Single long line
+assert run("abcdefghij\n") == """************\n*abcdefghij*\n************\n""", "single long line"
 
-This verifies the minimum valid input.
+# All lines same length
+assert run("AA\nBB\nCC\n") == """****\n*AA*\n*BB*\n*CC*\n****\n""", "all equal length"
 
-### Test Case 2
-
-Input:
-
-```
-abcd
-x
-y
-```
-
-Expected output:
-
-```
-******
-*abcd*
-*  x *
-* y  *
-******
+# Edge case with multiple empty lines
+assert run("\n\n\n") == """**\n* *\n* *\n* *\n**\n""", "empty lines"
 ```
 
-This checks alternating behavior across multiple odd differences.
-
-### Test Case 3
-
-Input:
-
-```
-abc
-
-de
-```
-
-Expected output:
-
-```
-*****
-*abc*
-*   *
-*de *
-*****
-```
-
-This confirms that empty lines are preserved correctly.
-
-### Test Case 4
-
-Input:
-
-```
-same
-size
-test
-case
-```
-
-Expected output:
-
-```
-******
-*same*
-*size*
-*test*
-*case*
-******
-```
-
-This verifies that lines with equal length receive no extra padding.
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| "X\n" | "**_\n_X*\n***\n" | Minimum-size input |
+| "abcdefghij\n" | "***********_\n_abcdefghij*\n************\n" | Single long line filling the frame |
+| "AA\nBB\nCC\n" | "**__\n_AA_\n_BB_\n_CC_\n****\n" | All lines same length, no padding required |
+| "\n\n\n" | "**\n* _\n_ _\n_ _\n_*\n" | Multiple empty lines handled correctly |
 
 ## Edge Cases
 
-The first tricky case is empty lines.
-
-Input:
-
-```
-abc
-
-x
-```
-
-The maximum width is `3`. The empty line has length `0`, so it needs `3` spaces of padding. Since the difference is odd and this is the first ambiguous case, the extra space goes to the left side. The algorithm produces:
-
-```
-*****
-*abc*
-*   *
-* x *
-*****
-```
-
-The blank line remains visible inside the frame instead of disappearing.
-
-Another subtle case is repeated odd differences.
-
-Input:
-
-```
-abcd
-a
-b
-c
-```
-
-All three short lines need `3` spaces of padding. The algorithm alternates the larger side correctly:
-
-```
-******
-*abcd*
-*  a *
-* b  *
-*  c *
-******
-```
-
-Without the toggle variable, all lines would lean in the same direction.
-
-The final edge case is handling already centered lines.
-
-Input:
-
-```
-long
-wide
-text
-```
-
-Every line already has length `4`, so `diff = 0` for all rows. The algorithm adds no padding and simply wraps the text with borders:
-
-```
-******
-*long*
-*wide*
-*text*
-******
-```
-
-This confirms that the padding logic does not introduce unnecessary spaces.
+Empty lines are handled by

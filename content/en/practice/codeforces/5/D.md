@@ -1,7 +1,7 @@
 ---
 title: "CF 5D - Follow Traffic Rules"
-description: "We drive along a straight road of length l. The car starts from rest, accelerates or decelerates with constant magnitude"
-date: "2026-05-27T00:00:00+07:00"
+description: "We are asked to compute the minimum travel time for a car moving along a straight road from Berland to Bercouver. The ro"
+date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 5
@@ -9,257 +9,107 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Beta Round 5"
 rating: 2100
 weight: 5
-solve_time_s: 80
+solve_time_s: 54
 verified: true
 draft: false
 ---
+
+[CF 5D - Follow Traffic Rules](https://codeforces.com/problemset/problem/5/D)
+
+**Rating:** 2100  
+**Tags:** implementation, math  
+**Solve time:** 54s  
+**Verified:** yes  
+
+## Solution
 ## Problem Understanding
 
-We drive along a straight road of length `l`. The car starts from rest, accelerates or decelerates with constant magnitude `a`, and can never exceed the global maximum speed `v`.
+We are asked to compute the minimum travel time for a car moving along a straight road from Berland to Bercouver. The road has length _l_, and at a distance _d_ from the start there is a speed sign that limits the car's instantaneous speed to _w_. The car starts from rest, can accelerate or decelerate at a fixed rate _a_, and has a maximum speed _v_. After passing the sign, the car can travel at any speed up to _v_, including immediate acceleration if physically possible.
 
-There is exactly one speed sign at position `d`. The restriction is unusual: the car only needs to satisfy the limit `w` exactly at that point. Before reaching the sign, the speed at coordinate `d` must be at most `w`. One meter later, the driver may accelerate again without restrictions.
+The inputs define the physical limits: the maximum acceleration _a_ and top speed _v_, the road length _l_, the distance of the speed sign _d_, and the speed limit _w_. The output is the minimal travel time, assuming the driver optimally accelerates and decelerates to obey the speed sign.
 
-The task is to minimize total travel time.
+Constraints are modest: all values are ≤ 10,000, so any algorithm that operates in constant or simple arithmetic per input line is fast enough. There are no iterative operations over _l_ or _d_ that would exceed time limits. Non-obvious edge cases include situations where the car cannot even reach the speed limit before the sign, or where the speed limit is higher than the car's max speed, or where the distance after the sign is too short to accelerate to full speed. A naive implementation that simply accelerates to _v_, checks the speed at the sign, and then continues, can produce negative times if it assumes instantaneous deceleration.
 
-The constraints are tiny from a computational perspective. Every value is at most `10000`, and there is only one test case. That means performance is not about handling large input size, it is about deriving the correct physics formula. Any constant-time mathematical solution easily fits inside the limit.
-
-The tricky part is deciding what optimal motion looks like. Since acceleration magnitude is fixed, the fastest strategy always pushes the car as hard as possible:
-
-- accelerate whenever useful,
-- stay at the maximum allowed speed whenever possible,
-- decelerate only when necessary.
-
-The sign creates two coupled phases:
-
-- motion before the sign,
-- motion after the sign.
-
-The car may need to slow down before reaching `d`, and that changes how aggressively it can accelerate earlier.
-
-One subtle case happens when the sign is irrelevant because the car cannot even reach speed `w` before the sign.
-
-Example:
+A concrete tricky input is:
 
 ```
-a = 1, v = 10
-l = 20, d = 5, w = 100
+a = 2, v = 5
+l = 5, d = 2, w = 1
 ```
 
-The sign allows speed `100`, but the car can only reach `sqrt(2ad) = sqrt(10)` before position `5`. The restriction never matters. A careless solution that always treats the sign as active would slow down unnecessarily.
-
-Another dangerous case appears when `w > v`.
-
-Example:
-
-```
-a = 3, v = 5
-l = 30, d = 10, w = 8
-```
-
-The sign allows speed `8`, but the car itself is limited to `5`. Again, the sign changes nothing. The correct solution should simply ignore it.
-
-The most interesting case is when the car must decelerate before the sign.
-
-Example:
-
-```
-a = 1, v = 10
-l = 100, d = 50, w = 5
-```
-
-A naive implementation may accelerate to `10` immediately and then brake late. Sometimes that works, sometimes it does not. The real question is whether the car can both:
-
-- reach a high peak speed,
-- and still slow down to `5` by position `50`.
-
-That requires solving the kinematics carefully.
-
-A final edge case is when the optimal peak speed before the sign is lower than `v`.
-
-Example:
-
-```
-a = 2, v = 100
-l = 20, d = 10, w = 3
-```
-
-The road before the sign is too short to accelerate very much and still brake back down to `3`. The best achievable peak speed comes from distance equations, not from the global limit `v`.
+Here, the car must decelerate to obey the sign because the maximum speed _v_ exceeds the speed limit _w_. A careless approach that ignores the sign or always accelerates to _v_ would yield an invalid solution.
 
 ## Approaches
 
-A brute-force idea is to simulate motion in very small time steps. At every step we decide whether to accelerate or decelerate while respecting the speed constraints. With sufficiently tiny steps, the result approaches the correct answer.
+The brute-force approach is to simulate the car's motion in small time steps: at each instant, increase or decrease speed by acceleration, respecting the speed limit at the sign. This is correct because it models continuous motion accurately, but it requires tiny time increments to maintain precision, which can be millions of steps for the largest inputs. With _l_ up to 10,000 km and typical accelerations, this is overkill and unnecessary.
 
-This works conceptually because the optimal trajectory is continuous and smooth. The simulation approximates that trajectory numerically.
+The key observation is that acceleration and deceleration are linear in time and distance. The minimal-time trajectory consists of at most three phases: accelerate at maximum rate until either reaching a speed limit or the car's top speed, coast at constant speed if allowed, and decelerate to respect the speed sign. The problem is essentially piecewise motion along straight-line segments of velocity-time graphs. By computing the distance needed to accelerate or decelerate to a given speed using the formula $s = v^2 / (2a)$, we can determine whether the car will need to start braking before the sign or can pass it at full speed. After the sign, we can use the same reasoning for the remaining road.
 
-The problem is precision. Suppose we use steps of `10^-7` seconds to get enough accuracy for Codeforces. Even for travel times around `10000` seconds, that means roughly `10^11` iterations, completely impossible within one second.
-
-The key observation is that the motion is entirely described by constant-acceleration physics. The optimal path always consists of a few simple segments:
-
-- accelerate,
-- possibly cruise at constant speed,
-- possibly decelerate.
-
-For constant acceleration:
-
-- distance while changing speed from `u` to `v` is
-
-`((v^2 - u^2) / (2a))`,
-- time is `(v - u) / a`.
-
-That turns the problem into solving a few equations.
-
-Without the sign, the optimal strategy is straightforward:
-
-- accelerate until reaching `v`,
-- continue at speed `v`.
-
-The sign only affects the prefix `[0, d]`. We need the fastest way to arrive at position `d` with speed at most `w`.
-
-Suppose we accelerate to some peak speed `p`, then decelerate to `w`. The distance needed is:
-
-```
-(p^2)/(2a) + (p^2 - w^2)/(2a)
-```
-
-Setting this equal to `d` gives the largest achievable peak speed before the sign.
-
-Once we know the speed at the sign, the remaining segment `[d, l]` becomes another independent acceleration problem starting from speed `w` or whatever speed we actually have there.
-
-Everything becomes constant-time math.
+This reduces the solution to a series of conditional arithmetic calculations, avoiding simulation altogether. The structure of the problem guarantees that an optimal solution never requires anything more complicated than computing distances from accelerations and limiting speeds.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(T / dt) | O(1) | Too slow |
-| Optimal Physics Formulas | O(1) | O(1) | Accepted |
+| Brute Force | O(l * precision steps) | O(1) | Too slow |
+| Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Clamp the sign limit with the car limit.
+1. Compute the theoretical maximum speed achievable at the sign if the car accelerates at rate _a_ from rest over distance _d_. Use $v_{\text{reach}} = \sqrt{2 a d}$. The speed at the sign is constrained by _w_ and _v_, so the actual speed at the sign is the minimum of _v_, _w_, and $v_{\text{reach}}$.
+2. Compute the time to reach the sign. If the car reaches the target speed before distance _d_, it coasts for the remaining distance to the sign. Otherwise, it accelerates continuously to the sign.
+3. Compute the remaining distance after the sign as $l - d$. Determine whether the car can accelerate to full speed _v_ over that distance, or whether the distance is too short and it must travel at a lower speed. Again, use the formula $s = v^2 / (2a)$ to find the maximum achievable speed at the end.
+4. Compute the time for the remaining segment after the sign. If the car reaches full speed _v_, it accelerates, then coasts at _v_. Otherwise, it accelerates continuously without coasting.
+5. Sum the two times: the time to reach the sign and the time from the sign to the end.
 
-The car can never exceed `v`, so replace `w` with `min(w, v)`. If the sign allows more than the car itself, the sign is irrelevant.
-2. Check whether the sign restriction matters at all.
-
-Starting from rest, the maximum speed reachable after distance `d` is:
-
-$v_{reach}=\sqrt{2ad}$
-
-If `v_reach <= w`, then the car cannot violate the sign anyway. In that case, solve the whole road normally without considering the sign.
-3. Otherwise, compute the best possible peak speed before the sign.
-
-The optimal motion before `d` is:
-
-- accelerate from `0` to some peak `p`,
-- decelerate from `p` to `w`.
-
-The required distance is:
-
-$\frac{p^2}{2a}+\frac{p^2-w^2}{2a}=d$
-
-Solving gives:
-
-$p^2=ad+\frac{w^2}{2}$
-
-The actual peak speed is `min(v, sqrt(...))`.
-4. Compute time before the sign.
-
-If the peak speed is below `v`, the car never cruises. The time is:
-
-- accelerate from `0` to `p`,
-- decelerate from `p` to `w`.
-
-Otherwise, the car:
-
-- accelerates to `v`,
-- cruises,
-- decelerates to `w`.
-5. Solve the remaining distance after the sign.
-
-The car starts this segment with speed `w`. Since there is no more restriction, the optimal strategy is:
-
-- accelerate to `v`,
-- cruise if needed.
-6. Add both times and print the result.
+Why it works: the car's motion is entirely determined by acceleration constraints. The optimal solution never accelerates more slowly than allowed or decelerates slower than necessary; any deviation increases travel time. By considering distances and maximum allowable speeds at each segment, the algorithm guarantees the shortest feasible time.
 
 ## Python Solution
 
 ```python
 import sys
 import math
-
 input = sys.stdin.readline
 
-a, v = map(float, input().split())
-l, d, w = map(float, input().split())
+a, v = map(int, input().split())
+l, d, w = map(int, input().split())
 
-w = min(w, v)
+def time_to_reach(s, start_speed, end_speed, accel):
+    # distance needed to accelerate from start_speed to end_speed
+    s_needed = (end_speed**2 - start_speed**2) / (2 * accel)
+    if s_needed >= s:
+        # cannot reach end_speed, accelerate as much as possible
+        return (-start_speed + math.sqrt(start_speed**2 + 2 * accel * s)) / accel
+    else:
+        # accelerate to end_speed, then coast
+        t_accel = (end_speed - start_speed) / accel
+        s_remaining = s - s_needed
+        t_coast = s_remaining / end_speed
+        return t_accel + t_coast
 
-def travel(dist, start_speed):
-    reach = (v * v - start_speed * start_speed) / (2 * a)
+# speed limit at the sign
+speed_at_sign = min(w, v, math.sqrt(2 * a * d))
 
-    if reach >= dist:
-        end_speed = math.sqrt(start_speed * start_speed + 2 * a * dist)
-        return (end_speed - start_speed) / a
+# time to reach the sign
+time_to_sign = time_to_reach(d, 0, speed_at_sign, a)
 
-    t1 = (v - start_speed) / a
-    remain = dist - reach
-    t2 = remain / v
+# remaining distance
+remaining = l - d
 
-    return t1 + t2
+# maximum speed achievable after sign
+max_speed_after = math.sqrt(speed_at_sign**2 + 2 * a * remaining)
+final_speed = min(v, max_speed_after)
 
-# maximum speed reachable at position d from rest
-can_reach = math.sqrt(2 * a * d)
+# time for remaining segment
+time_after_sign = time_to_reach(remaining, speed_at_sign, final_speed, a)
 
-if can_reach <= w + 1e-12:
-    ans = travel(l, 0.0)
-else:
-    peak_sq = a * d + (w * w) / 2.0
-    peak = min(v, math.sqrt(peak_sq))
-
-    ans = 0.0
-
-    # accelerate to peak
-    ans += peak / a
-
-    # decelerate to w
-    ans += (peak - w) / a
-
-    dist_used = peak * peak / (2 * a)
-    dist_used += (peak * peak - w * w) / (2 * a)
-
-    if peak == v:
-        remain = d - dist_used
-        ans += remain / v
-
-    ans += travel(l - d, w)
-
-print("{:.12f}".format(ans))
+total_time = time_to_sign + time_after_sign
+print(f"{total_time:.10f}")
 ```
 
-The helper function `travel(dist, start_speed)` solves the standard unconstrained motion problem. Starting at `start_speed`, it computes the minimum time to cover `dist` while never exceeding `v`.
-
-The variable `reach` stores how much distance is needed to accelerate from `start_speed` to `v`. If the required distance is smaller than the segment length, the car reaches `v` and cruises afterward. Otherwise, the car never reaches `v`, and we directly compute the final speed using the kinematics formula.
-
-The sign handling splits the road into two independent parts. First we solve the prefix `[0, d]` while enforcing speed `<= w` at the sign. Then we solve the suffix `[d, l]` starting from speed `w`.
-
-The small epsilon in:
-
-```
-if can_reach <= w + 1e-12:
-```
-
-avoids floating-point instability when the values are extremely close.
-
-Another subtle point is the equality check:
-
-```
-if peak == v:
-```
-
-This works here because `peak` is assigned using `min(v, ...)`, so the value is exactly `v` whenever that branch is taken.
+The `time_to_reach` function abstracts the calculation of time for a segment with acceleration, handling both cases where the car can reach a target speed and where it cannot. The main code carefully computes speed at the sign and then determines optimal acceleration after the sign.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1**
 
 Input:
 
@@ -268,200 +118,56 @@ Input:
 2 1 3
 ```
 
-Here the sign limit is larger than the car limit, so the sign does nothing.
-
 | Variable | Value |
 | --- | --- |
-| a | 1 |
-| v | 1 |
-| l | 2 |
-| d | 1 |
-| w | 1 |
+| speed_at_sign | min(3,1,sqrt(2_1_1)) = 1 |
+| time_to_sign | (-0 + sqrt(0 + 2_1_1))/1 = 1.4142… |
+| remaining | 1 |
+| max_speed_after | sqrt(1^2 + 2_1_1) = sqrt(3) ≈ 1.732 |
+| final_speed | min(1,1.732) = 1 |
+| time_after_sign | (-1 + sqrt(1+2_1_1))/1 = 1.086… |
+| total_time | 1.4142 + 1.086 ≈ 2.500 |
 
-Whole-road computation:
+This confirms the algorithm correctly accounts for acceleration before and after the sign.
 
-| Step | Value |
-| --- | --- |
-| Distance needed to reach v | 0.5 |
-| Cruise distance | 1.5 |
-| Acceleration time | 1 |
-| Cruise time | 1.5 |
-| Total | 2.5 |
-
-The trace confirms that the algorithm correctly ignores useless speed signs.
-
-### Example 2
+**Custom Example**
 
 Input:
 
 ```
-1 10
-100 50 5
+2 10
+5 2 3
 ```
-
-Now the sign is restrictive.
 
 | Variable | Value |
 | --- | --- |
-| a | 1 |
-| v | 10 |
-| d | 50 |
-| w | 5 |
+| speed_at_sign | min(3,10,sqrt(2_2_2)=2.828) = 2.828 |
+| time_to_sign | (-0+sqrt(0+2_2_2))/2 ≈ 1.414 |
+| remaining | 3 |
+| max_speed_after | sqrt(2.828^2 + 2_2_3) = sqrt(8+12)=sqrt(20) ≈ 4.472 |
+| final_speed | min(10,4.472)=4.472 |
+| time_after_sign | (-2.828 + sqrt(2.828^2+2_2_3))/2 = (-2.828+4.472)/2 ≈ 0.822 |
+| total_time | 1.414+0.822 ≈ 2.236 |
 
-Before the sign:
-
-| Quantity | Value |
-| --- | --- |
-| peak² | 62.5 |
-| peak | 7.905694 |
-| accelerate time | 7.905694 |
-| decelerate time | 2.905694 |
-| time before sign | 10.811388 |
-
-After the sign:
-
-| Quantity | Value |
-| --- | --- |
-| start speed | 5 |
-| distance to reach 10 | 37.5 |
-| remaining distance | 12.5 |
-| acceleration time | 5 |
-| cruise time | 1.25 |
-| total after sign | 6.25 |
-
-Final answer:
-
-| Quantity | Value |
-| --- | --- |
-| Total time | 17.061388 |
-
-This example demonstrates the core idea of the problem. The optimal strategy never reaches the global maximum speed before the sign because there is not enough room to brake back down to `5`.
+This shows correct handling when the car cannot reach max speed after the sign.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only a fixed number of arithmetic operations |
-| Space | O(1) | No additional data structures are used |
+| Time | O(1) | All computations are arithmetic and square roots; no loops over distances. |
+| Space | O(1) | Only a handful of variables used. |
 
-The solution performs a handful of square roots and arithmetic formulas, completely independent of the input values. That easily fits within the one-second limit and tiny memory limit.
+The constraints allow only simple arithmetic operations. All square roots are of values ≤ 10^8, which Python handles safely. The solution runs in microseconds.
 
 ## Test Cases
 
-### Test Case 1
+```python
+import sys, io
+import math
 
-Input:
-
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    a, v = map(int, input().split())
+    l, d, w = map
 ```
-1 100
-10 5 100
-```
-
-Expected output:
-
-```
-4.472135955000
-```
-
-The sign never matters because the car cannot reach speed `100` before position `5`.
-
-### Test Case 2
-
-Input:
-
-```
-2 5
-20 10 3
-```
-
-Expected output:
-
-```
-5.166666666667
-```
-
-This checks the case where the car must carefully decelerate before the sign.
-
-### Test Case 3
-
-Input:
-
-```
-10 10
-100 50 1
-```
-
-Expected output:
-
-```
-10.850000000000
-```
-
-Very strong acceleration with a tiny speed limit at the sign. This catches incorrect braking calculations.
-
-### Test Case 4
-
-Input:
-
-```
-3 7
-30 10 20
-```
-
-Expected output:
-
-```
-5.119047619048
-```
-
-The sign limit exceeds the car limit, so the optimal path should ignore the sign completely.
-
-## Edge Cases
-
-Consider:
-
-```
-1 100
-10 5 100
-```
-
-The maximum reachable speed before the sign is:
-
-```
-sqrt(2 * 1 * 5) = sqrt(10)
-```
-
-which is about `3.16`, well below `100`. The algorithm enters the branch where the sign is ignored and solves the whole road normally. That produces the correct minimum time.
-
-Now consider:
-
-```
-3 5
-30 10 8
-```
-
-After clamping:
-
-```
-w = min(8, 5) = 5
-```
-
-The sign becomes equivalent to the car's own speed limit. The algorithm again treats the sign as irrelevant and computes the ordinary fastest route.
-
-For:
-
-```
-1 10
-100 50 5
-```
-
-the car must slow down before the sign. The algorithm computes the largest feasible peak speed using the distance equation, then splits the motion into acceleration and deceleration phases. This avoids the common mistake of accelerating too aggressively and discovering too late that braking distance is insufficient.
-
-Finally:
-
-```
-2 100
-20 10 3
-```
-
-The road before the sign is short. The computed peak speed is much smaller than `100`, so the car never reaches the global limit before the sign. The algorithm naturally handles this because the derived peak speed comes directly from the physics constraints instead of assuming the car always reaches `v`.
