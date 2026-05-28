@@ -49,13 +49,19 @@ draft: false
 | 1237 | [Find Positive Integer Solution for a Given Equation](1237.md) | 🟡 Medium | 1m 14s | This problem gives us access to a hidden function f(x, y) through a… |
 | 1238 | [Circular Permutation in Binary Representation](1238.md) | 🟡 Medium | 1m 6s | This problem asks us to construct a special ordering of all integer… |
 | 1239 | [Maximum Length of a Concatenated String with Unique Characters](1239.md) | 🟡 Medium | 1m 35s | This problem asks us to select a subsequence of strings from the in… |
-| 1240 | [Tiling a Rectangle with the Fewest Squares](1240.md) | 🔴 Hard | 1m 28s | The problem asks us to tile an n x m rectangle using the minimum po… |
-| 1241 | [Number of Comments per Post](1241.md) | 🟢 Easy | 40s | This problem is asking us to analyze a table of submissions that ca… |
-| 1242 | [Web Crawler Multithreaded](1242.md) | 🟡 Medium | 1m 14s | Here is the complete, detailed technical solution guide for LeetCod… |
-| 1243 | [Array Transformation](1243.md) | 🟢 Easy | 1m 26s | The problem asks us to repeatedly transform an array according to a… |
+| 1240 | [Tiling a Rectangle with the Fewest Squares](1240.md) | 🔴 Hard | 40s | The problem is asking us to completely cover a rectangle of size n … |
+| 1241 | [Number of Comments per Post](1241.md) | 🟢 Easy | 1m 10s | This problem asks us to analyze a database table named Submissions … |
+| 1242 | [Web Crawler Multithreaded](1242.md) | 🟡 Medium | 49s | The problem asks us to implement a multi-threaded web crawler that … |
+| 1243 | [Array Transformation](1243.md) | 🟢 Easy | 40s | The problem requires simulating the transformation of an array over… |
 | 1244 | [Design A Leaderboard](1244.md) | 🟡 Medium | 44s | The problem requires designing a Leaderboard class to maintain scor… |
 | 1245 | [Tree Diameter](1245.md) | 🟡 Medium | 48s | The problem asks us to find the diameter of a tree, which is define… |
 | 1246 | [Palindrome Removal](1246.md) | 🔴 Hard | 53s | The problem is asking us to remove all elements from an integer arr… |
 | 1247 | [Minimum Swaps to Make Strings Equal](1247.md) | 🟡 Medium | 1m 11s | The problem gives us two strings, s1 and s2, that have the same len… |
 | 1249 | [Minimum Remove to Make Valid Parentheses](1249.md) | 🟡 Medium | 1m 8s | The problem gives a string containing three possible types of chara… |
 | 1250 | [Check If It Is a Good Array](1250.md) | 🔴 Hard | 1m 22s | This problem asks whether it is possible to create the value 1 usin… |
+| 1251 | [Average Selling Price](1251.md) | 🟢 Easy | 59s | This problem asks us to compute the average selling price for each … |
+| 1252 | [Cells with Odd Values in a Matrix](1252.md) | 🟢 Easy | 1m 12s | The problem gives us an m x n matrix where every cell initially con… |
+| 1253 | [Reconstruct a 2-Row Binary Matrix](1253.md) | 🟡 Medium | 1m 33s | The problem gives us three pieces of information about a binary mat… |
+| 1254 | [Number of Closed Islands](1254.md) | 🟡 Medium | 1m 20s | The problem gives us a 2D grid where: - 0 represents land - 1 repre… |
+| 1255 | [Maximum Score Words Formed by Letters](1255.md) | 🔴 Hard | 1m 24s | This problem asks us to choose a subset of words that can be formed… |
+| 1256 | [Encode Number](1256.md) | 🟡 Medium | 47s | Sure, let's build a full, detailed technical solution guide for Lee… |
