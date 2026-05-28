@@ -19,4 +19,4 @@ draft: false
 | 3 | [Problem 3](3.md) | solved | 8m59s | Let $a_1, a_2, a_3, \dots$ be an infinite sequence of positive integers, and let $N$ be a positive… |
 | 4 | [Problem 4](4.md) | solved | 1h06m | Let $ABC$ be a triangle with $AB < AC < BC$. Let the incentre and incircle of triangle $ABC$ be $I$… |
 | 5 | [Problem 5](5.md) | solved | 11m42s | Turbo the snail plays a game on a board with 2024 rows and 2023 columns. There are hidden monsters… |
-| 6 | [Problem 6](6.md) | solved | 50s | Let $\mathbb{Q}$ be the set of rational numbers. A function $f: \mathbb{Q} \to \mathbb{Q}$ is calle… |
+| 6 | [Problem 6](6.md) | solved | 17m40s | Let $\mathbb{Q}$ be the set of rational numbers. A function $f: \mathbb{Q} \to \mathbb{Q}$ is calle… |
