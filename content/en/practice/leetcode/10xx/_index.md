@@ -109,4 +109,4 @@ draft: false
 | 1096 | [Brace Expansion II](1096.md) | 🔴 Hard | 1m 10s | The problem asks us to interpret a string expression representing a… |
 | 1097 | [Game Play Analysis V](1097.md) | 🔴 Hard | 1m 1s | This problem requires calculating the day one retention metric for … |
 | 1098 | [Unpopular Books](1098.md) | 🟡 Medium | 1m 46s | The problem asks us to identify books from a Books table that are c… |
-| 1099 | [Two Sum Less Than K](1099.md) | 🟢 Easy | 46s | The problem is asking us to find the largest sum of two distinct el… |
+| 1099 | [Two Sum Less Than K](1099.md) | 🟢 Easy | 5m 37s | This problem asks us to find the maximum sum of any two distinct nu… |
