@@ -78,4 +78,8 @@ draft: false
 | 1877 | [Minimize Maximum Pair Sum in Array](1877.md) | 🟡 Medium | 53s | The problem asks us to pair elements in an array of even length suc… |
 | 1878 | [Get Biggest Three Rhombus Sums in a Grid](1878.md) | 🟡 Medium | 45s | The problem asks us to compute the largest three distinct rhombus s… |
 | 1879 | [Minimum XOR Sum of Two Arrays](1879.md) | 🔴 Hard | 57s | The problem asks us to take two integer arrays of equal length, num… |
+| 1881 | [Maximum Value after Insertion](1881.md) | 🟡 Medium | 1m 7s | This problem asks us to insert a single digit x into a very large i… |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
+| 1884 | [Egg Drop With 2 Eggs and N Floors](1884.md) | 🟡 Medium | 1m 12s | This problem asks us to determine the minimum number of moves requi… |
+| 1885 | [Count Pairs in Two Arrays](1885.md) | 🟡 Medium | 49s | The problem asks us to count the number of index pairs (i, j) such … |
+| 1886 | [Determine Whether Matrix Can Be Obtained By Rotation](1886.md) | 🟢 Easy | 1m 14s | The problem gives us two square binary matrices, mat and target, bo… |

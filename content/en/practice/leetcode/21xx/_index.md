@@ -64,5 +64,11 @@ draft: false
 | 2151 | [Maximum Good People Based on Statements](2151.md) | 🔴 Hard | 57s | This problem asks us to determine the maximum number of good people… |
 | 2152 | [Minimum Number of Lines to Cover Points](2152.md) | 🟡 Medium | 58s | The problem asks us to find the minimum number of straight lines re… |
 | 2153 | [The Number of Passengers in Each Bus II](2153.md) | 🔴 Hard | 1m 4s | The problem describes a scenario at a bus station where buses and p… |
+| 2154 | [Keep Multiplying Found Values by Two](2154.md) | 🟢 Easy | 6m 45s | The problem is asking us to repeatedly search for a number in an ar… |
 | 2155 | [All Divisions With the Highest Score of a Binary Array](2155.md) | 🟡 Medium | 2m 19s | The problem gives you a binary array nums of length n and asks you … |
 | 2157 | [Groups of Strings](2157.md) | 🔴 Hard | 1m 43s | The problem gives us an array of strings where every string contain… |
+| 2159 | [Order Two Columns Independently](2159.md) | 🟡 Medium | 1m 14s | This problem provides a database table named Data with two integer … |
+| 2160 | [Minimum Sum of Four Digit Number After Splitting Digits](2160.md) | 🟢 Easy | 50s | The problem requires taking a four-digit positive integer num and s… |
+| 2161 | [Partition Array According to Given Pivot](2161.md) | 🟡 Medium | 1m 17s | This problem asks us to rearrange an array around a given pivot val… |
+| 2162 | [Minimum Cost to Set Cooking Time](2162.md) | 🟡 Medium | 54s | The problem asks us to determine the minimum cost to set a microwav… |
+| 2163 | [Minimum Difference in Sums After Removal of Elements](2163.md) | 🔴 Hard | 54s | The problem presents a 0-indexed integer array nums of length 3 n a… |
