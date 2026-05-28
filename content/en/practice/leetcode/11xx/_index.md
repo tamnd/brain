@@ -75,4 +75,8 @@ draft: false
 | 1162 | [As Far from Land as Possible](1162.md) | 🟡 Medium | 1m 15s | The problem requires finding the water cell in a given n x n grid t… |
 | 1163 | [Last Substring in Lexicographical Order](1163.md) | 🔴 Hard | 1m 11s | The problem asks us to find the substring of a given string s that … |
 | 1164 | [Product Price at a Given Date](1164.md) | 🟡 Medium | 1m 19s | The problem provides a database table named Products, where each ro… |
+| 1165 | [Single-Row Keyboard](1165.md) | 🟢 Easy | 52s | The problem describes a single-row keyboard where each key is posit… |
 | 1166 | [Design File System](1166.md) | 🟡 Medium | 1m 14s | This problem asks us to design a simplified file system that suppor… |
+| 1167 | [Minimum Cost to Connect Sticks](1167.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers called sticks, w… |
+| 1168 | [Optimize Water Distribution in a Village](1168.md) | 🔴 Hard | 45s | The problem asks us to supply water to all houses in a village in t… |
+| 1171 | [Remove Zero Sum Consecutive Nodes from Linked List](1171.md) | 🟡 Medium | 47s | The problem requires us to repeatedly remove consecutive nodes in a… |
