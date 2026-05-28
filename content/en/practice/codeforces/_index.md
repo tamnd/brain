@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 47 contests, 240 problems, 206 verified."
+description: "Codeforces problem solutions with full editorial. 48 contests, 245 problems, 209 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**47 contests, 240 problems, 206 verified.**
+**48 contests, 245 problems, 209 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -61,4 +61,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [44](44/) | [School Team Contest 2 (Winter Computer School 2010/11)](https://codeforces.com/contest/44) | Special | 1300-2700 | 4/7 | 11m 47s |
 | [45](45/) | [School Team Contest 3 (Winter Computer School 2010/11)](https://codeforces.com/contest/45) | Special | 900-2500 | 7/10 | 19m 28s |
 | [46](46/) | [School Personal Contest #2 (Winter Computer School 2010/11) - Codeforces Beta Round 43 (ACM-ICPC Rules)](https://codeforces.com/contest/46) | Beta | 800-2500 | 6/7 | 10m 14s |
+| [47](47/) | [Codeforces Beta Round 44 (Div. 2)](https://codeforces.com/contest/47) | Div. 2 | 800-2200 | 3/5 | 8m 58s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
