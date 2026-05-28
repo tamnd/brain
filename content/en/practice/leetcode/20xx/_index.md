@@ -23,4 +23,8 @@ draft: false
 | 2013 | [Detect Squares](2013.md) | 🟡 Medium | 1m 41s | The problem presents a stream of points in a 2D plane and asks us t… |
 | 2015 | [Average Height of Buildings in Each Segment](2015.md) | 🟡 Medium | 1m 57s | The problem describes a street as a number line, and each building … |
 | 2016 | [Maximum Difference Between Increasing Elements](2016.md) | 🟢 Easy | 55s | The problem is asking us to find the maximum difference between two… |
+| 2017 | [Grid Game](2017.md) | 🟡 Medium | 1m 21s | The problem gives us a 2 x n grid where each cell contains some num… |
+| 2018 | [Check if Word Can Be Placed In Crossword](2018.md) | 🟡 Medium | 1m 8s | This problem asks us to determine whether a given word can be legal… |
+| 2020 | [Number of Accounts That Did Not Stream](2020.md) | 🟡 Medium | 1m 17s | This problem asks us to analyze two database tables, Subscriptions … |
+| 2021 | [Brightest Position on Street](2021.md) | 🟡 Medium | 1m 2s | The problem asks us to find the position on a straight street that … |
 | 2026 | [Low-Quality Problems](2026.md) | 🟢 Easy | 1m 26s | The problem gives us a database table named Problems. Each row repr… |
