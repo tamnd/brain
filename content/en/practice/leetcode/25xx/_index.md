@@ -92,6 +92,11 @@ draft: false
 | 2588 | [Count the Number of Beautiful Subarrays](2588.md) | 🟡 Medium | 1m 19s | The problem gives us an array nums, and defines a special operation… |
 | 2590 | [Design a Todo List](2590.md) | 🟡 Medium | 1m 17s | This problem asks us to design a small task management system that … |
 | 2591 | [Distribute Money to Maximum Children](2591.md) | 🟢 Easy | 1m 8s | This problem asks us to distribute a fixed amount of money among a … |
+| 2592 | [Maximize Greatness of an Array](2592.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums, and we are allowed to r… |
+| 2593 | [Find Score of an Array After Marking All Elements](2593.md) | 🟡 Medium | 1m 17s | In this problem, we are given an integer array nums, where every va… |
 | 2594 | [Minimum Time to Repair Cars](2594.md) | 🟡 Medium | 1m 21s | This problem gives us a list of mechanics, where each mechanic has … |
+| 2595 | [Number of Even and Odd Bits](2595.md) | 🟢 Easy | 53s | The problem gives us a positive integer n and asks us to analyze it… |
 | 2596 | [Check Knight Tour Configuration](2596.md) | 🟡 Medium | 1m 16s | This problem asks us to verify whether a given matrix represents a … |
 | 2597 | [The Number of Beautiful Subsets](2597.md) | 🟡 Medium | 47s | The problem asks us to count the number of non-empty subsets of a g… |
+| 2598 | [Smallest Missing Non-negative Integer After Operations](2598.md) | 🟡 Medium | 1m 14s | This problem asks us to maximize the MEX, the minimum excluded non-… |
+| 2599 | [Make the Prefix Sum Non-negative](2599.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums, and we are allowed to r… |
