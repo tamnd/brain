@@ -95,16 +95,16 @@ draft: false
 | 2082 | [The Number of Rich Customers](2082.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Store. Each row in the … |
 | 2083 | [Substrings That Begin and End With the Same Letter](2083.md) | 🟡 Medium | 42s | The problem asks us to count all substrings in a given string s tha… |
 | 2084 | [Drop Type 1 Orders for Customers With Type 0 Orders](2084.md) | 🟡 Medium | 53s | This problem involves filtering orders from a database table accord… |
-| 2085 | [Count Common Words With One Occurrence](2085.md) | 🟢 Easy | 1m 23s | The problem gives us two arrays of strings, words1 and words2. We n… |
-| 2086 | [Minimum Number of Food Buckets to Feed the Hamsters](2086.md) | 🟡 Medium | 55s | The problem requires us to place food buckets optimally in a linear… |
-| 2087 | [Minimum Cost Homecoming of a Robot in a Grid](2087.md) | 🟡 Medium | 59s | This problem asks us to calculate the minimum total cost for a robo… |
-| 2088 | [Count Fertile Pyramids in a Land](2088.md) | 🔴 Hard | 1m 40s | This problem gives us a binary matrix where each cell represents a … |
-| 2089 | [Find Target Indices After Sorting Array](2089.md) | 🟢 Easy | 1m 40s | The problem gives us an integer array nums and an integer target. W… |
-| 2090 | [K Radius Subarray Averages](2090.md) | 🟡 Medium | 1m 5s | This problem asks us to compute the k-radius average for each eleme… |
-| 2091 | [Removing Minimum and Maximum From Array](2091.md) | 🟡 Medium | 2m 19s | The problem gives us a 0-indexed array of distinct integers. Among … |
+| 2085 | [Count Common Words With One Occurrence](2085.md) | 🟢 Easy | 1m 18s | This problem gives us two arrays of strings, words1 and words2. Our… |
+| 2086 | [Minimum Number of Food Buckets to Feed the Hamsters](2086.md) | 🟡 Medium | 52s | The problem is asking us to place the minimum number of food bucket… |
+| 2087 | [Minimum Cost Homecoming of a Robot in a Grid](2087.md) | 🟡 Medium | 1m 23s | The problem gives us a robot located on a two dimensional grid. The… |
+| 2088 | [Count Fertile Pyramids in a Land](2088.md) | 🔴 Hard | 1m 32s | The problem gives us a binary matrix where each cell represents a p… |
+| 2089 | [Find Target Indices After Sorting Array](2089.md) | 🟢 Easy | 1m 4s | The problem gives us an integer array nums and an integer target. W… |
+| 2090 | [K Radius Subarray Averages](2090.md) | 🟡 Medium | 1m 11s | The problem asks us to compute a special average for every index in… |
+| 2091 | [Removing Minimum and Maximum From Array](2091.md) | 🟡 Medium | 1m 18s | The problem gives us a 0-indexed array of distinct integers. Among … |
 | 2092 | [Find All People With Secret](2092.md) | 🔴 Hard | 1m 49s | The problem describes a network of people who meet at different tim… |
-| 2093 | [Minimum Cost to Reach City With Discounts](2093.md) | 🟡 Medium | 52s | This problem asks us to find the minimum cost to travel from city 0… |
-| 2094 | [Finding 3-Digit Even Numbers](2094.md) | 🟢 Easy | 1m 32s | The problem gives us an array called digits, where every element is… |
+| 2093 | [Minimum Cost to Reach City With Discounts](2093.md) | 🟡 Medium | 1m 29s | This problem describes a weighted, undirected graph where each city… |
+| 2094 | [Finding 3-Digit Even Numbers](2094.md) | 🟢 Easy | 1m 45s | The problem gives us an array named digits, where every element is … |
 | 2095 | [Delete the Middle Node of a Linked List](2095.md) | 🟡 Medium | 1m 31s | The problem gives us the head of a singly linked list and asks us t… |
 | 2096 | [Step-By-Step Directions From a Binary Tree Node to Another](2096.md) | 🟡 Medium | 1m 32s | This problem gives us a binary tree where every node has a unique v… |
 | 2097 | [Valid Arrangement of Pairs](2097.md) | 🔴 Hard | 52s | The problem is asking us to take a list of directed pairs, where ea… |

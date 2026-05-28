@@ -44,3 +44,17 @@ draft: false
 | 2332 | [The Latest Time to Catch a Bus](2332.md) | 🟡 Medium | 1m 20s | This problem asks us to determine the latest possible arrival time … |
 | 2333 | [Minimum Sum of Squared Difference](2333.md) | 🟡 Medium | 1m 32s | The problem gives us two arrays, nums1 and nums2, each of length n.… |
 | 2334 | [Subarray With Elements Greater Than Varying Threshold](2334.md) | 🔴 Hard | 49s | The problem requires us to find a contiguous subarray in a given in… |
+| 2335 | [Minimum Amount of Time to Fill Cups](2335.md) | 🟢 Easy | 1m 15s | The problem gives us an array amount of length 3. Each index repres… |
+| 2336 | [Smallest Number in Infinite Set](2336.md) | 🟡 Medium | 54s | The problem requires designing a data structure that represents an … |
+| 2337 | [Move Pieces to Obtain a String](2337.md) | 🟡 Medium | 1m 10s | In this problem, we are given two strings, start and target, of equ… |
+| 2338 | [Count the Number of Ideal Arrays](2338.md) | 🔴 Hard | 1m 14s | The problem asks us to count how many arrays of length n satisfy a … |
+| 2339 | [All the Matches of the League](2339.md) | 🟢 Easy | 1m 17s | The Teams table contains the names of all teams participating in a … |
+| 2341 | [Maximum Number of Pairs in Array](2341.md) | 🟢 Easy | 52s | This problem asks us to determine how many pairs of equal integers … |
+| 2342 | [Max Sum of a Pair With Equal Sum of Digits](2342.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers called nums. We … |
+| 2343 | [Query Kth Smallest Trimmed Number](2343.md) | 🟡 Medium | 51s | The problem presents a list of numeric strings nums, all of the sam… |
+| 2344 | [Minimum Deletions to Make Array Divisible](2344.md) | 🔴 Hard | 1m 20s | This problem gives us two integer arrays, nums and numsDivide. We a… |
+| 2345 | [Finding the Number of Visible Mountains](2345.md) | 🟡 Medium | 1m 20s | Each mountain is defined by a peak (x, y). Because the mountain has… |
+| 2346 | [Compute the Rank as a Percentage](2346.md) | 🟡 Medium | 1m 19s | The problem gives us a database table named Students. Each row cont… |
+| 2347 | [Best Poker Hand](2347.md) | 🟢 Easy | 1m 21s | The problem gives us exactly five poker cards. Each card has two pr… |
+| 2348 | [Number of Zero-Filled Subarrays](2348.md) | 🟡 Medium | 54s | The problem asks us to count all subarrays of a given integer array… |
+| 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 48s | The problem asks us to find the length of the shortest sequence of … |
