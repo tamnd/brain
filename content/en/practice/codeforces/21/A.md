@@ -1,6 +1,6 @@
 ---
 title: "CF 21A - Jabber ID"
-description: "We are given a string that is supposed to represent a Jabber ID on a fictional service. A Jabber ID is structured as <us"
+description: "We need to validate whether a string follows the exact syntax of a Jabber ID. A valid ID has three possible pieces: user"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Alpha Round 21 (Codeforces format)"
 rating: 1900
 weight: 21
-solve_time_s: 99
+solve_time_s: 97
 verified: false
 draft: false
 ---
@@ -18,41 +18,153 @@ draft: false
 
 **Rating:** 1900  
 **Tags:** implementation, strings  
-**Solve time:** 1m 39s  
+**Solve time:** 1m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string that is supposed to represent a Jabber ID on a fictional service. A Jabber ID is structured as `<username>@<hostname>[/<resource>]`, where the `resource` part is optional. The username must be a string of letters, digits, or underscores, and its length is limited to 1-16 characters. The hostname is a dot-separated sequence of “words” with the same character restrictions and length between 1 and 16 per word, and the total hostname cannot exceed 32 characters. The resource, if present, also follows the same character rules with a 1-16 length limit.
+We need to validate whether a string follows the exact syntax of a Jabber ID.
 
-The input string can be any sequence of 1 to 100 ASCII characters. Our goal is to validate whether the string is a correctly formatted Jabber ID and print `YES` if it is, or `NO` otherwise.
+A valid ID has three possible pieces:
 
-The constraints are tight on character sets and lengths but loose on overall string length. Since the input is at most 100 characters, a linear scan of the string is fast enough, so our algorithm can iterate over the string several times without performance issues.
+`username@hostname`
 
-Non-obvious edge cases include strings missing the `@` symbol, usernames or hostnames that are empty, hostnames with empty segments like `host..com`, usernames or hostname words that exceed the length limit, and incorrect resource lengths. A careless implementation might, for example, accept `user@host..com` because it splits on `@` and `.` without checking for empty words, but the correct output is `NO`.
+or
+
+`username@hostname/resource`
+
+The username and resource follow the same rules. They may contain only English letters, digits, and underscores. Their lengths must be between 1 and 16.
+
+The hostname is slightly different. It is split into parts separated by dots. Every part must satisfy the same rules as the username, meaning each part must contain only letters, digits, and underscores and have length between 1 and 16. The entire hostname length must be between 1 and 32.
+
+The input is a single string, and we must print `YES` if every rule is satisfied, otherwise `NO`.
+
+The input length is at most 100, so performance is not a concern. Even quadratic parsing would easily fit. The challenge is correctness. Most wrong submissions fail because they parse separators incorrectly or forget one of the length conditions.
+
+Several edge cases are easy to mishandle.
+
+A hostname may contain multiple dot-separated words:
+
+```
+a@b.c.d
+```
+
+This is valid because each segment is non-empty and legal.
+
+A hostname with empty segments is invalid:
+
+```
+a@b..c
+```
+
+The correct answer is `NO` because the substring between the two dots is empty. A careless split-based implementation sometimes forgets to reject empty pieces.
+
+The resource part is optional, but if `/` exists then the resource cannot be empty:
+
+```
+a@b/
+```
+
+The answer is `NO`.
+
+The same applies to the username:
+
+```
+@abc
+```
+
+This is invalid because the username length must be at least 1.
+
+A common parsing mistake is allowing multiple `@` symbols:
+
+```
+a@b@c
+```
+
+This must be rejected because the structure allows exactly one username and one hostname.
+
+Another subtle case is hostname length. Even if every segment is valid individually, the whole hostname must still be at most 32 characters.
+
+```
+a@abcdefghij.abcdefghij.abcdefghijx
+```
+
+Each piece length is fine, but the total hostname exceeds 32, so the answer is `NO`.
 
 ## Approaches
 
-A naive approach would be to attempt parsing the string manually by scanning characters one by one, validating each segment against character sets and lengths. This works because the rules are explicit, but it is verbose and prone to off-by-one errors. Conceptually, you could split on `@` and then on `/`, then check each segment. The operation count is linear in string length, which is acceptable here because the string length is capped at 100.
+The most direct brute-force solution is to try every possible split position for `@` and `/`, then check whether the resulting substrings satisfy all rules.
 
-The key insight for a cleaner solution is to leverage Python’s string splitting and iteration while enforcing length and character constraints. We first separate the optional resource from the rest of the ID, then split on `@` to extract the username and hostname. Splitting the hostname on `.` gives us the hostname words. Each component is then validated for allowed characters and length. This method simplifies the brute-force scanning while remaining linear in the length of the string.
+For example, we can iterate over every possible `@` position, then every possible `/` position after it, and verify all pieces manually. Since the string length is at most 100, this still runs instantly. The worst case is roughly a few thousand substring checks.
+
+The weakness of this approach is not speed, but complexity of implementation. Once multiple separators are involved, brute-force parsing becomes error-prone. It is easy to accidentally accept malformed structures such as multiple `@` characters or empty hostname segments.
+
+The cleaner approach is to parse the string according to its grammar.
+
+The structure is rigid:
+
+1. There must be exactly one `@`.
+2. Everything before `@` is the username.
+3. Everything after `@` is either:
+
+- just a hostname
+- or hostname/resource
+
+Once the string is separated into these logical components, validation becomes local. Each piece can be checked independently.
+
+The key observation is that all atomic words share the same validation rule: only letters, digits, and underscores, with length between 1 and 16. That means we can write one reusable validator function and apply it everywhere.
+
+For the hostname, we additionally split by dots and validate every segment individually.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(N) | O(N) | Accepted |
-| Split and Validate | O(N) | O(N) | Accepted |
+| Brute Force | O(n²) | O(n) | Accepted |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Check if the string contains a `/`. If it does, split it into `main_part` and `resource`. If it does not, treat the entire string as `main_part` and set `resource` to `None`.
-2. If `resource` exists, verify its length is between 1 and 16 and that all characters are letters, digits, or underscores. If any check fails, print `NO`.
-3. Split `main_part` on `@`. If it does not produce exactly two segments, print `NO` because there must be exactly one `@`.
-4. Assign the segments to `username` and `hostname`. Validate that `username` has length 1-16 and contains only allowed characters. If not, print `NO`.
-5. Split `hostname` on `.`. Each word must be 1-16 characters and contain only letters, digits, or underscores. Additionally, the total hostname length must not exceed 32 characters. If any of these checks fail, print `NO`.
-6. If all checks pass, print `YES`.
+1. Read the input string.
+2. Check that the string contains exactly one `@`.
 
-Why it works: By splitting on `/` and `@` carefully, we isolate the three components of a Jabber ID. Each validation step enforces the explicit constraints given in the problem. Since every possible invalid pattern is rejected by at least one check, the algorithm cannot falsely accept a malformed ID.
+Without this restriction, malformed inputs like `a@b@c` could be parsed ambiguously.
+3. Split the string into `username` and `rest` using the `@`.
+4. Validate the username.
+
+The username must:
+
+- have length between 1 and 16
+- contain only letters, digits, or underscores
+5. Check whether `rest` contains a `/`.
+
+If it does, split into `hostname` and `resource`.
+
+If it does not, then the entire `rest` is the hostname and there is no resource.
+6. If a resource exists, validate it using the same rules as the username.
+
+An empty resource is invalid.
+7. Validate the hostname length.
+
+The whole hostname must have length between 1 and 32.
+8. Split the hostname by dots.
+9. Validate every hostname segment.
+
+Every segment must:
+
+- be non-empty
+- have length between 1 and 16
+- contain only letters, digits, or underscores
+10. If every check succeeds, print `YES`. Otherwise print `NO`.
+
+### Why it works
+
+The algorithm mirrors the exact formal structure of a valid Jabber ID.
+
+The `@` split guarantees that there is exactly one username and one hostname section. The optional `/` split isolates the resource if it exists. Every remaining atomic component is checked against the character and length rules.
+
+The hostname validation is correct because splitting by dots produces exactly the hostname words described in the specification. Rejecting empty segments prevents invalid forms like consecutive dots or leading/trailing dots.
+
+Since every rule from the specification is checked directly and independently, the algorithm accepts all valid IDs and rejects all invalid ones.
 
 ## Python Solution
 
@@ -60,126 +172,285 @@ Why it works: By splitting on `/` and `@` carefully, we isolate the three compon
 import sys
 input = sys.stdin.readline
 
-def is_valid_component(s, min_len, max_len):
-    if not (min_len <= len(s) <= max_len):
+def valid_word(s):
+    if not (1 <= len(s) <= 16):
         return False
-    for c in s:
-        if not (c.isalnum() or c == '_'):
+
+    for ch in s:
+        if not (ch.isalnum() or ch == '_'):
             return False
+
     return True
 
-def main():
+def solve():
     s = input().strip()
-    
-    if '/' in s:
-        main_part, resource = s.split('/', 1)
-        if not is_valid_component(resource, 1, 16):
+
+    if s.count('@') != 1:
+        print("NO")
+        return
+
+    username, rest = s.split('@')
+
+    if not valid_word(username):
+        print("NO")
+        return
+
+    if rest.count('/') > 1:
+        print("NO")
+        return
+
+    if '/' in rest:
+        hostname, resource = rest.split('/')
+
+        if not valid_word(resource):
             print("NO")
             return
     else:
-        main_part = s
+        hostname = rest
 
-    if main_part.count('@') != 1:
-        print("NO")
-        return
-
-    username, hostname = main_part.split('@')
-    if not is_valid_component(username, 1, 16):
-        print("NO")
-        return
-    
     if not (1 <= len(hostname) <= 32):
         print("NO")
         return
 
-    hostname_parts = hostname.split('.')
-    for part in hostname_parts:
-        if not is_valid_component(part, 1, 16):
+    parts = hostname.split('.')
+
+    for part in parts:
+        if not valid_word(part):
             print("NO")
             return
 
     print("YES")
 
-if __name__ == "__main__":
-    main()
+solve()
 ```
 
-The function `is_valid_component` centralizes the character and length checks to avoid repeating code. We carefully split only once on `/` to avoid accidentally splitting resource segments containing `/`. The username, hostname, and resource are checked independently. Hostname segments are split on `.` and validated individually, ensuring no empty segments are accepted.
+The solution revolves around one reusable helper, `valid_word`. This function implements the shared validation logic used by usernames, resources, and hostname segments.
+
+The first structural check is counting `@`. Using `count('@') != 1` immediately rejects malformed inputs before any deeper parsing happens.
+
+The resource parsing deserves careful handling. We first check whether more than one `/` exists inside the hostname-resource section. Inputs like:
+
+```
+a@b/c/d
+```
+
+must be rejected.
+
+Hostname validation happens in two layers. First we validate the total hostname length, since the statement imposes a separate limit of 32 characters. Then we split by dots and validate each segment individually.
+
+The split behavior naturally catches empty components. For example:
+
+```
+"ab..cd".split('.')
+```
+
+produces:
+
+```
+["ab", "", "cd"]
+```
+
+The empty string fails `valid_word`, which correctly rejects the hostname.
 
 ## Worked Examples
 
 ### Example 1
 
-Input: `[email protected]`
+Input:
 
-| Variable | Value |
-| --- | --- |
-| s | `[email protected]` |
-| main_part | `[email protected]` |
-| resource | None |
-| username | `user` |
-| hostname | `host` |
-| hostname_parts | `['host']` |
+```
+[email protected]
+```
 
-The username is valid, hostname has one word with valid characters and length, no resource is present. Output: `YES`.
+| Step | Variable | Value |
+| --- | --- | --- |
+| Read input | s | `codeforces@tests` |
+| Split by @ | username | `codeforces` |
+| Split by @ | rest | `tests` |
+| Validate username | result | valid |
+| Check / | found | no |
+| Hostname | hostname | `tests` |
+| Split hostname | parts | `["tests"]` |
+| Validate parts | result | valid |
+| Final answer | output | `YES` |
+
+This example shows the simplest valid structure without a resource part. Every component satisfies the allowed-character and length rules.
 
 ### Example 2
 
-Input: `[email protected]/contest`
+Input:
 
-| Variable | Value |
-| --- | --- |
-| s | `[email protected]/contest` |
-| main_part | `[email protected]` |
-| resource | `contest` |
-| username | `user` |
-| hostname | `host.com` |
-| hostname_parts | `['host', 'com']` |
+```
+a@b..c
+```
 
-All components meet character and length rules. Output: `YES`.
+| Step | Variable | Value |
+| --- | --- | --- |
+| Read input | s | `a@b..c` |
+| Split by @ | username | `a` |
+| Split by @ | rest | `b..c` |
+| Validate username | result | valid |
+| Hostname | hostname | `b..c` |
+| Split hostname | parts | `["b", "", "c"]` |
+| Validate empty part | result | invalid |
+| Final answer | output | `NO` |
+
+This trace demonstrates why empty hostname segments must be rejected. Consecutive dots create an empty substring between them.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N) | Each split and validation iterates over the string once, N ≤ 100 |
-| Space | O(N) | Splitting produces lists of at most O(N) size |
+| Time | O(n) | Each character is processed a constant number of times |
+| Space | O(n) | Splitting the string creates substring arrays |
 
-Linear complexity relative to string length is efficient because N is small. Memory usage is negligible compared to the 256 MB limit.
+The input length is at most 100, so the solution easily fits within the limits. Even inefficient implementations would pass comfortably, but the linear parser is cleaner and easier to reason about.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
+
+def solve():
+    s = input().strip()
+
+    def valid_word(x):
+        if not (1 <= len(x) <= 16):
+            return False
+
+        for ch in x:
+            if not (ch.isalnum() or ch == '_'):
+                return False
+
+        return True
+
+    if s.count('@') != 1:
+        print("NO")
+        return
+
+    username, rest = s.split('@')
+
+    if not valid_word(username):
+        print("NO")
+        return
+
+    if rest.count('/') > 1:
+        print("NO")
+        return
+
+    if '/' in rest:
+        hostname, resource = rest.split('/')
+
+        if not valid_word(resource):
+            print("NO")
+            return
+    else:
+        hostname = rest
+
+    if not (1 <= len(hostname) <= 32):
+        print("NO")
+        return
+
+    for part in hostname.split('.'):
+        if not valid_word(part):
+            print("NO")
+            return
+
+    print("YES")
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
-    main()
+
+    global input
+    input = sys.stdin.readline
+
+    solve()
+
     return sys.stdout.getvalue().strip()
 
-# Provided samples
-assert run("[email protected]") == "YES", "sample 1"
-assert run("[email protected]/contest") == "YES", "sample 2"
+# provided sample
+assert run("[email protected]\n") == "YES", "sample 1"
 
-# Custom cases
-assert run("a@b") == "YES", "minimum valid input"
-assert run("user_with_16char@host_with_16char") == "YES", "max username and hostname word length"
-assert run("user@host..com") == "NO", "empty hostname word"
-assert run("user@host.com/") == "NO", "empty resource"
-assert run("toolongusernameeeee@host") == "NO", "username too long"
-assert run("user@toolonghostnameeeeeeeeeeeeeeeeeeeeeeeeeee") == "NO", "hostname too long"
+# custom cases
+assert run("a@b\n") == "YES", "minimum valid case"
+
+assert run("@b\n") == "NO", "empty username"
+
+assert run("a@b..c\n") == "NO", "empty hostname segment"
+
+assert run("abcdefghijklmnopq@abc\n") == "NO", "username exceeds 16 chars"
+
+assert run("a@abc/\n") == "NO", "empty resource"
+
+assert run("a@b/c/d\n") == "NO", "multiple slashes"
+
+assert run("a_b@c_d.e_f/resource_1\n") == "YES", "underscores allowed"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a@b` | YES | minimal valid Jabber ID |
-| `user_with_16char@host_with_16char` | YES | maximum allowed word lengths |
-| `user@host..com` | NO | empty hostname segment |
-| `user@host.com/` | NO | empty resource after slash |
-| `toolongusernameeeee@host` | NO | username exceeds length limit |
-| `user@toolonghostnameeeeeeeeeeeeeeeeeeeeeeeeeee` | NO | hostname exceeds length limit |
+| `a@b` | `YES` | Smallest valid structure |
+| `@b` | `NO` | Username cannot be empty |
+| `a@b..c` | `NO` | Empty hostname segments are invalid |
+| `abcdefghijklmnopq@abc` | `NO` | Username length upper bound |
+| `a@abc/` | `NO` | Resource cannot be empty |
+| `a@b/c/d` | `NO` | Only one optional slash allowed |
+| `a_b@c_d.e_f/resource_1` | `YES` | Underscores are legal everywhere |
 
 ## Edge Cases
 
-An empty hostname segment like `user@host..com` triggers a split resulting in an empty string. Our loop over hostname words checks for length ≥1, so it correctly rejects this input. A resource of length 0, e.g., `user@host/`, fails the `is_valid_component` check for minimum length 1. Multiple `@` symbols, such as `user@host@domain`, are rejected by counting `@` in `main_part` and ensuring there is exactly one. Each edge case is handled systematically by the combination of splitting and component validation.
+Consider the input:
+
+```
+a@b..c
+```
+
+The algorithm splits the hostname into:
+
+```
+["b", "", "c"]
+```
+
+The empty middle segment fails `valid_word` because its length is 0. The algorithm correctly prints `NO`.
+
+Now consider:
+
+```
+a@b/
+```
+
+The parser detects `/` and splits into:
+
+```
+hostname = "b"
+resource = ""
+```
+
+The empty resource fails validation immediately, so the answer is `NO`.
+
+For multiple `@` symbols:
+
+```
+a@b@c
+```
+
+The first check counts the number of `@` characters. Since the count is not exactly 1, the string is rejected before any further parsing.
+
+For a hostname exceeding 32 characters:
+
+```
+a@abcdefghij.abcdefghij.abcdefghijx
+```
+
+The total hostname length becomes 33. Even though every individual segment is valid, the separate hostname-length condition fails, so the algorithm outputs `NO`.
+
+Finally, consider a valid complex example:
+
+```
+abc_DEF@host_1.server_2/resource_3
+```
+
+The username, every hostname segment, and the resource all satisfy the shared validation rule. The hostname length is within 32. The algorithm reaches the end without triggering any rejection and prints `YES`.
