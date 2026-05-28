@@ -13,6 +13,15 @@ solve_time_s: 46
 verified: true
 draft: false
 ---
+
+[CF 4A - Watermelon](https://codeforces.com/problemset/problem/4/A)
+
+**Rating:** 800  
+**Tags:** brute force, math  
+**Solve time:** 46s  
+**Verified:** yes  
+
+## Solution
 ## Problem Understanding
 
 The problem gives a single integer `w`, the weight of a watermelon. We need to decide whether it can be split into two positive parts such that both parts are even numbers.

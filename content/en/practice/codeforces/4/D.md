@@ -1,7 +1,7 @@
 ---
 title: "CF 4D - Mysterious Present"
-description: "We are given a card with dimensions (w, h) and n envelopes. Each envelope also has a width and height. We want to build"
-date: "2026-05-27T00:00:00+07:00"
+description: "We are given a collection of envelopes, each with a width and height. A postcard already has fixed dimensions, and we wa"
+date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 4
@@ -9,54 +9,79 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Beta Round 4 (Div. 2 Only)"
 rating: 1700
 weight: 4
-solve_time_s: 70
+solve_time_s: 77
 verified: true
 draft: false
 ---
+
+[CF 4D - Mysterious Present](https://codeforces.com/problemset/problem/4/D)
+
+**Rating:** 1700  
+**Tags:** dp, sortings  
+**Solve time:** 1m 17s  
+**Verified:** yes  
+
+## Solution
 ## Problem Understanding
 
-We are given a card with dimensions `(w, h)` and `n` envelopes. Each envelope also has a width and height.
+We are given a collection of envelopes, each with a width and height. A postcard already has fixed dimensions, and we want to build the longest possible nesting chain of envelopes such that:
 
-We want to build the longest possible sequence of envelopes such that every next envelope is strictly larger in both dimensions than the previous one. The first envelope in the chain must also be strictly larger than the card, otherwise the card cannot fit inside the chain.
+- the postcard fits into the first envelope,
+- every next envelope is strictly larger in both width and height than the previous one.
 
-The problem is really asking for the longest strictly increasing sequence in two dimensions.
+Rotation is forbidden, so width must compare with width and height with height directly.
 
-The constraints matter a lot here. `n` can be as large as `5000`. A fully brute-force search over all subsets would take `2^5000` states, which is completely impossible. Even trying every permutation is absurdly large.
+The output is not only the maximum chain length, but also one valid sequence of envelope indices in increasing nesting order.
 
-But `5000` is also small enough that an `O(n^2)` dynamic programming solution is perfectly fine. Around `25 million` comparisons is acceptable in Python within a 1 second limit if implemented carefully. That immediately suggests we should look for a DP over sorted envelopes.
+The constraint that matters most is `n ≤ 5000`. A brute-force search over all subsets or all permutations is impossible because even `2^5000` or `5000!` is astronomically large. On the other hand, quadratic dynamic programming with about `5000^2 = 25,000,000` comparisons is completely realistic in C++ and still acceptable in Python with careful implementation.
 
-A subtle detail is that envelopes cannot be rotated. An envelope `(5, 7)` cannot contain `(6, 4)` because width fails, even though areas might suggest otherwise. Both dimensions must increase strictly.
+The problem is essentially asking for the longest sequence where both dimensions increase strictly. That immediately suggests a longest increasing subsequence style dynamic programming solution after sorting.
 
-Another easy mistake is forgetting to filter envelopes that cannot hold the card. Suppose the input is:
+Several edge cases can quietly break incorrect implementations.
 
-```
-3 5 5
-4 10
-10 4
-6 6
-```
+Suppose multiple envelopes have the same dimensions.
 
-Only `(6, 6)` is usable. The first two envelopes fail because one dimension is not strictly larger than the card.
-
-Equal dimensions are another trap. Consider:
+Input:
 
 ```
-4 1 1
+3 1 1
 2 2
-2 3
+2 2
 3 3
+```
+
+Correct output:
+
+```
+2
+1 3
+```
+
+The two `(2,2)` envelopes cannot both appear in the chain because the increase must be strict in both dimensions. A careless LIS implementation using `>=` instead of `>` would incorrectly allow them.
+
+Another tricky case happens when an envelope fits only in one dimension.
+
+Input:
+
+```
+3 2 2
+3 2
+2 3
 4 4
 ```
 
-A careless LIS implementation on one dimension might try chaining `(2,2) -> (2,3)`, but width does not increase strictly. The correct longest chain is:
+Correct output:
 
 ```
-(2,2) -> (3,3) -> (4,4)
+1
+3
 ```
 
-with length `3`.
+Neither `(3,2)` nor `(2,3)` can hold the postcard because both dimensions must be strictly larger. Only `(4,4)` works. Filtering only by area or by one dimension would fail here.
 
-There is also the case where no envelope works at all:
+A third edge case appears when no envelope can hold the postcard.
+
+Input:
 
 ```
 2 5 5
@@ -64,92 +89,97 @@ There is also the case where no envelope works at all:
 6 5
 ```
 
-Both envelopes fail because the comparison must be strict in both dimensions. The correct output is just:
+Correct output:
 
 ```
 0
 ```
 
-Reconstructing the actual chain is another place where bugs happen. Many solutions compute only the maximum length but forget to store parents, making it impossible to print the sequence itself.
+Strict inequality matters again. Equal width or equal height is not enough.
 
 ## Approaches
 
-The brute-force idea is straightforward. Treat every envelope as a possible starting point and recursively try every larger envelope after it. Among all possible chains, keep the longest one.
+The brute-force idea is straightforward. We could try every subset of envelopes, then check whether the envelopes in that subset can be ordered into a valid chain. This works because the definition of a valid chain is easy to verify: every consecutive pair must strictly increase in both dimensions.
 
-This works logically because every valid chain is explored. The problem is the number of possibilities. In the worst case, every envelope can connect to many later envelopes, creating an exponential number of chains. Even for `n = 50`, this becomes hopeless.
+The problem is the number of subsets. With `n = 5000`, even iterating through all subsets is impossible. A recursive search that tries every possible continuation also explodes exponentially because each envelope can branch into many larger envelopes.
 
-A better observation is that after sorting the envelopes, the problem becomes very similar to Longest Increasing Subsequence.
+The structure of the problem gives a much cleaner path. If envelope `A` can go before envelope `B`, then `B` must be strictly larger in both dimensions. After sorting the envelopes, we can think of this as a directed acyclic graph where edges always move toward larger envelopes. Once the graph becomes acyclic, longest path dynamic programming becomes natural.
 
-Suppose we sort envelopes by width and then height. For any envelope `i`, we only need to know the best chain ending at earlier envelopes `j` such that:
+Sorting is the key observation. After sorting by width and height, any valid chain must move forward in the sorted order. Then we only need to compute:
 
-```
-width[j] < width[i]
-height[j] < height[i]
-```
+`dp[i] = longest valid chain ending at envelope i`
 
-If we already know the longest chain ending at `j`, then extending it with `i` gives a candidate chain for `i`.
+For every earlier envelope `j`, if both dimensions of `j` are smaller than those of `i`, then `i` can extend the chain ending at `j`.
 
-That leads directly to dynamic programming:
-
-```
-dp[i] = longest chain ending at envelope i
-```
-
-For every pair `(j, i)` with `j < i`, we try extending the chain.
-
-The reason this works is that sorting guarantees we process smaller candidates before larger ones. Every valid predecessor of `i` has already been considered when we compute `dp[i]`.
-
-Since `n = 5000`, an `O(n^2)` DP is fast enough.
+This turns the problem into a classic `O(n^2)` dynamic programming solution.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(2^n) | O(n) | Too slow |
-| Optimal DP + Sorting | O(n^2) | O(n) | Accepted |
+| Optimal DP with Sorting | O(n^2) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read all envelopes and keep their original indices.
 
-We must print envelope numbers from the original input order, so indices cannot be discarded after sorting.
-2. Remove every envelope that cannot contain the card.
+We must print indices from the original input order, so each envelope should store `(width, height, original_index)`.
+2. Remove envelopes that cannot contain the postcard.
 
 An envelope is usable only if:
 
 ```
-width > card_width
-height > card_height
+width > postcard_width
+height > postcard_height
 ```
 
-Any envelope failing this condition can never appear in the chain.
+Any envelope failing this condition can never appear in a valid chain.
 3. Sort the remaining envelopes by width, then by height.
 
-This guarantees that when processing envelope `i`, all possible smaller envelopes appear earlier in the array.
-4. Create a DP array where `dp[i]` stores the maximum chain length ending at envelope `i`.
+This guarantees that whenever we move from left to right, widths never decrease. It reduces the search space because valid transitions only need to consider earlier envelopes.
+4. Initialize dynamic programming arrays.
 
-Initially every envelope alone forms a chain of length `1`.
-5. Create a `parent` array for reconstruction.
+Let:
 
-`parent[i]` stores the previous envelope in the best chain ending at `i`.
-6. For every pair `(j, i)` with `j < i`, check whether envelope `j` can fit inside envelope `i`.
+```
+dp[i] = length of longest chain ending at i
+parent[i] = previous envelope index in that chain
+```
 
-The condition is:
+Initially every envelope forms a chain of length `1`.
+5. For every envelope `i`, check all earlier envelopes `j`.
+
+If:
 
 ```
 width[j] < width[i]
 height[j] < height[i]
 ```
-7. If extending the chain through `j` improves `dp[i]`, update both `dp[i]` and `parent[i]`.
 
-This keeps track of the best chain ending at every position.
-8. Find the position with the largest `dp` value.
+then envelope `i` can extend the chain ending at `j`.
 
-That position represents the end of the optimal chain.
-9. Reconstruct the answer using the `parent` array.
+Update:
 
-Start from the best ending position and repeatedly move to its parent until reaching `-1`.
-10. Reverse the reconstructed sequence and print it.
+```
+dp[i] = dp[j] + 1
+parent[i] = j
+```
+
+whenever this gives a longer chain.
+6. Find the envelope with maximum `dp[i]`.
+
+This is the end of the optimal chain.
+7. Reconstruct the chain using the `parent` array.
+
+Start from the best endpoint and repeatedly follow parents backward until `-1`.
+8. Reverse the reconstructed sequence and print it.
 
 Reconstruction happens backward, from largest envelope to smallest.
+
+### Why it works
+
+After sorting, every valid chain appears in increasing index order because widths and heights must both increase strictly. The DP transition considers every possible previous envelope that could legally precede the current one. Since `dp[j]` already stores the best chain ending at `j`, extending it with `i` gives the best chain ending at `i`.
+
+The recurrence explores every valid predecessor exactly once, so no possible chain is missed. The maximum over all `dp[i]` values is the longest valid nesting chain.
 
 ## Python Solution
 
@@ -157,70 +187,79 @@ Reconstruction happens backward, from largest envelope to smallest.
 import sys
 input = sys.stdin.readline
 
-n, w, h = map(int, input().split())
+def solve():
+    n, w, h = map(int, input().split())
 
-envelopes = []
+    envelopes = []
 
-for i in range(1, n + 1):
-    wi, hi = map(int, input().split())
+    for i in range(1, n + 1):
+        x, y = map(int, input().split())
 
-    if wi > w and hi > h:
-        envelopes.append((wi, hi, i))
+        if x > w and y > h:
+            envelopes.append((x, y, i))
 
-if not envelopes:
-    print(0)
-    sys.exit()
+    if not envelopes:
+        print(0)
+        return
 
-envelopes.sort()
+    envelopes.sort()
 
-m = len(envelopes)
+    m = len(envelopes)
 
-dp = [1] * m
-parent = [-1] * m
+    dp = [1] * m
+    parent = [-1] * m
 
-best_len = 1
-best_pos = 0
+    best_len = 1
+    best_idx = 0
 
-for i in range(m):
-    wi, hi, _ = envelopes[i]
+    for i in range(m):
+        wi, hi, _ = envelopes[i]
 
-    for j in range(i):
-        wj, hj, _ = envelopes[j]
+        for j in range(i):
+            wj, hj, _ = envelopes[j]
 
-        if wj < wi and hj < hi:
-            if dp[j] + 1 > dp[i]:
-                dp[i] = dp[j] + 1
-                parent[i] = j
+            if wj < wi and hj < hi:
+                if dp[j] + 1 > dp[i]:
+                    dp[i] = dp[j] + 1
+                    parent[i] = j
 
-    if dp[i] > best_len:
-        best_len = dp[i]
-        best_pos = i
+        if dp[i] > best_len:
+            best_len = dp[i]
+            best_idx = i
 
-answer = []
+    path = []
 
-cur = best_pos
+    cur = best_idx
 
-while cur != -1:
-    answer.append(envelopes[cur][2])
-    cur = parent[cur]
+    while cur != -1:
+        path.append(envelopes[cur][2])
+        cur = parent[cur]
 
-answer.reverse()
+    path.reverse()
 
-print(best_len)
-print(*answer)
+    print(best_len)
+    print(*path)
+
+solve()
 ```
 
-The first part filters unusable envelopes immediately. This reduces unnecessary work later and handles the zero-answer case naturally.
+The first part filters unusable envelopes immediately. This simplifies the DP because every remaining envelope is guaranteed to fit the postcard.
 
-Sorting is done on `(width, height)` tuples directly. Python tuple sorting already compares lexicographically, so widths are compared first and heights second.
+Sorting uses Python's default tuple ordering, so envelopes are ordered by width first, then height. Since transitions still require strict comparison on both dimensions, equal widths or equal heights never create invalid chains.
 
-The DP transition checks every earlier envelope. If envelope `j` fits into `i`, then extending the chain is legal. Whenever a longer chain is found, both the DP value and parent pointer are updated.
+The DP loop checks every earlier envelope as a possible predecessor. With `5000` envelopes, the worst-case number of comparisons is about twenty-five million, which is acceptable in Python when implemented iteratively.
 
-The `parent` array is the key to reconstruction. Without it, we would know only the chain length, not the actual sequence.
+The `parent` array is critical for reconstruction. Without it, we could compute the maximum chain length but would not know which envelopes formed that chain.
 
-One subtle point is strict comparison. The checks must use `<`, not `<=`. Equal widths or heights are invalid.
+One subtle detail is using strict inequalities:
 
-Another detail is reconstruction order. We follow parents from the largest envelope backward, so the sequence must be reversed before printing.
+```
+wj < wi and hj < hi
+```
+
+Replacing them with `<=` would incorrectly allow equal dimensions into the chain.
+
+Another subtle point is filtering before sorting. If unusable envelopes remain, the DP might accidentally build chains starting from envelopes that cannot contain the postcard.
 
 ## Worked Examples
 
@@ -236,12 +275,12 @@ Input:
 
 After filtering and sorting:
 
-| Position | Envelope | Original Index |
+| i | Envelope | Original Index |
 | --- | --- | --- |
 | 0 | (2,2) | 1 |
 | 1 | (2,2) | 2 |
 
-DP processing:
+DP progression:
 
 | i | Envelope | Valid Previous | dp[i] | parent[i] |
 | --- | --- | --- | --- | --- |
@@ -250,14 +289,14 @@ DP processing:
 
 Best chain length is `1`.
 
-Possible output:
+One valid answer:
 
 ```
 1
 1
 ```
 
-This example confirms that equal envelopes cannot chain together because dimensions must increase strictly.
+This example demonstrates why strict inequality matters. Even though the envelopes are identical, neither can contain the other.
 
 ### Example 2
 
@@ -265,179 +304,215 @@ Input:
 
 ```
 5 1 1
-2 2
-3 3
 2 3
+3 4
 4 5
+3 3
 5 6
 ```
 
 Sorted envelopes:
 
-| Position | Envelope | Original Index |
+| i | Envelope | Original Index |
 | --- | --- | --- |
-| 0 | (2,2) | 1 |
-| 1 | (2,3) | 3 |
-| 2 | (3,3) | 2 |
-| 3 | (4,5) | 4 |
+| 0 | (2,3) | 1 |
+| 1 | (3,3) | 4 |
+| 2 | (3,4) | 2 |
+| 3 | (4,5) | 3 |
 | 4 | (5,6) | 5 |
 
-DP transitions:
+DP progression:
 
 | i | Envelope | Best Previous | dp[i] | parent[i] |
 | --- | --- | --- | --- | --- |
-| 0 | (2,2) | none | 1 | -1 |
-| 1 | (2,3) | none | 1 | -1 |
-| 2 | (3,3) | (2,2) | 2 | 0 |
-| 3 | (4,5) | (3,3) | 3 | 2 |
+| 0 | (2,3) | none | 1 | -1 |
+| 1 | (3,3) | none | 1 | -1 |
+| 2 | (3,4) | (2,3) | 2 | 0 |
+| 3 | (4,5) | (3,4) | 3 | 2 |
 | 4 | (5,6) | (4,5) | 4 | 3 |
 
-Reconstructed chain:
+Reconstruction gives:
 
 ```
-(2,2) -> (3,3) -> (4,5) -> (5,6)
+1 -> 2 -> 3 -> 5
 ```
 
-Output:
-
-```
-4
-1 2 4 5
-```
-
-This trace shows why sorting plus DP works. Every valid predecessor is already processed before the current envelope.
+This trace shows how equal widths prevent transitions. Envelope `(3,3)` cannot precede `(3,4)` because widths must increase strictly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^2) | Every pair of envelopes may be compared once |
+| Time | O(n^2) | Every envelope checks all earlier envelopes |
 | Space | O(n) | DP and parent arrays store one value per envelope |
 
-With `n = 5000`, the algorithm performs about `25 million` comparisons in the worst case. That comfortably fits within the limits in Python when implemented iteratively.
+With `n ≤ 5000`, quadratic DP performs about twenty-five million comparisons in the worst case. That comfortably fits within the time limit in Python when implemented iteratively with fast input.
 
 ## Test Cases
 
-### Test Case 1
+```python
+# helper: run solution on input string, return output string
+import sys
+import io
 
-Input:
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
 
-```
-1 5 5
-6 6
-```
+    input = sys.stdin.readline
 
-Expected output:
+    def solve():
+        n, w, h = map(int, input().split())
 
-```
-1
-1
-```
+        envelopes = []
 
-This verifies the minimum non-empty valid chain.
+        for i in range(1, n + 1):
+            x, y = map(int, input().split())
 
-### Test Case 2
+            if x > w and y > h:
+                envelopes.append((x, y, i))
 
-Input:
+        if not envelopes:
+            return "0"
 
-```
-3 5 5
+        envelopes.sort()
+
+        m = len(envelopes)
+
+        dp = [1] * m
+        parent = [-1] * m
+
+        best_len = 1
+        best_idx = 0
+
+        for i in range(m):
+            wi, hi, _ = envelopes[i]
+
+            for j in range(i):
+                wj, hj, _ = envelopes[j]
+
+                if wj < wi and hj < hi:
+                    if dp[j] + 1 > dp[i]:
+                        dp[i] = dp[j] + 1
+                        parent[i] = j
+
+            if dp[i] > best_len:
+                best_len = dp[i]
+                best_idx = i
+
+        path = []
+
+        cur = best_idx
+
+        while cur != -1:
+            path.append(envelopes[cur][2])
+            cur = parent[cur]
+
+        path.reverse()
+
+        return str(best_len) + "\n" + " ".join(map(str, path))
+
+    return solve().strip()
+
+# provided sample
+assert run(
+"""2 1 1
+2 2
+2 2
+"""
+) in ["1\n1", "1\n2"], "sample 1"
+
+# no envelope fits
+assert run(
+"""2 5 5
 5 6
 6 5
-5 5
-```
+"""
+) == "0", "strict inequality"
 
-Expected output:
-
-```
-0
-```
-
-This checks strict inequality against the card dimensions.
-
-### Test Case 3
-
-Input:
-
-```
-5 1 1
+# simple increasing chain
+assert run(
+"""3 1 1
 2 2
+3 3
+4 4
+"""
+) == "3\n1 2 3", "basic chain"
+
+# equal widths block transitions
+assert run(
+"""4 1 1
 2 2
+2 3
+2 4
+3 5
+"""
+) in ["2\n1 4", "2\n2 4", "2\n3 4"], "equal widths"
+
+# single envelope
+assert run(
+"""1 1 1
 2 2
-2 2
-2 2
+"""
+) == "1\n1", "minimum valid case"
 ```
 
-Expected output:
-
-```
-1
-1
-```
-
-This verifies that equal envelopes cannot chain together.
-
-### Test Case 4
-
-Input:
-
-```
-6 1 1
-2 10
-3 4
-4 5
-5 3
-6 7
-7 8
-```
-
-Expected output:
-
-```
-4
-2 3 5 6
-```
-
-This catches implementations that greedily choose large heights too early.
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| No envelope fits | `0` | Strict inequality against postcard dimensions |
+| Strictly increasing envelopes | Full chain length | Basic DP correctness |
+| Equal widths | Chain cannot use equal widths | Correct transition condition |
+| Single valid envelope | Length `1` | Minimum non-empty case |
 
 ## Edge Cases
 
-Consider the case where equal widths appear:
+Consider the case where envelopes share dimensions.
+
+Input:
 
 ```
-4 1 1
+3 1 1
 2 2
-2 3
+2 2
 3 3
-4 4
 ```
 
 After sorting:
 
 ```
-(2,2), (2,3), (3,3), (4,4)
+(2,2), (2,2), (3,3)
 ```
 
-The algorithm checks strict inequalities only. `(2,2)` cannot transition to `(2,3)` because width is equal. The best chain becomes:
+When processing the second `(2,2)`, the condition:
 
 ```
-(2,2) -> (3,3) -> (4,4)
+2 < 2
 ```
 
-with length `3`.
+fails, so no transition occurs. Both copies remain chains of length `1`. Then `(3,3)` can extend either one, producing a final chain of length `2`.
 
-Now consider envelopes that fail the card constraint:
+Now consider envelopes that only partially exceed the postcard dimensions.
+
+Input:
 
 ```
-3 5 5
-4 10
-10 4
-6 6
+3 2 2
+3 2
+2 3
+4 4
 ```
 
-Filtering removes `(4,10)` and `(10,4)` immediately because one dimension is not strictly larger than the card. Only `(6,6)` remains, producing a chain of length `1`.
+Filtering removes `(3,2)` because height is not strictly larger than `2`, and removes `(2,3)` because width is not strictly larger than `2`.
 
-Finally, consider the fully impossible case:
+Only `(4,4)` remains, so the answer is:
+
+```
+1
+3
+```
+
+Finally, consider the fully impossible case.
+
+Input:
 
 ```
 2 5 5
@@ -445,10 +520,10 @@ Finally, consider the fully impossible case:
 6 5
 ```
 
-Both envelopes fail filtering. The envelope list becomes empty, so the algorithm directly prints:
+The first envelope fails because width is equal to the postcard width. The second fails because height is equal to the postcard height. The filtered list becomes empty immediately, and the algorithm prints:
 
 ```
 0
 ```
 
-No DP runs at all, which avoids unnecessary work and handles the case cleanly.
+This early filtering prevents invalid chains from ever entering the DP stage.
