@@ -90,3 +90,6 @@ draft: false
 | 1892 | [Page Recommendations II](1892.md) | 🔴 Hard | 1m 4s | The problem asks us to implement a page recommendation system based… |
 | 1893 | [Check if All the Integers in a Range Are Covered](1893.md) | 🟢 Easy | 48s | The problem asks us to determine whether every integer within a giv… |
 | 1894 | [Find the Student that Will Replace the Chalk](1894.md) | 🟡 Medium | 53s | The problem presents a classroom scenario where students are given … |
+| 1895 | [Largest Magic Square](1895.md) | 🟡 Medium | 56s | The problem asks us to find the largest magic square inside a given… |
+| 1896 | [Minimum Cost to Change the Final Value of Expression](1896.md) | 🔴 Hard | 1m 48s | This problem gives us a boolean expression containing only: - '0' a… |
+| 1899 | [Merge Triplets to Form Target Triplet](1899.md) | 🟡 Medium | 49s | The problem asks whether it is possible to create a specific target… |

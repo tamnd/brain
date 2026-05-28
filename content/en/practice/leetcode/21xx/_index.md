@@ -85,3 +85,6 @@ draft: false
 | 2175 | [The Change in Global Rankings](2175.md) | 🟡 Medium | 1m 40s | This problem asks us to measure how the global ranking of national … |
 | 2176 | [Count Equal and Divisible Pairs in an Array](2176.md) | 🟢 Easy | 1m 23s | The problem gives us a 0-indexed integer array nums and an integer … |
 | 2177 | [Find Three Consecutive Integers That Sum to a Given Number](2177.md) | 🟡 Medium | 50s | The problem asks us to find three consecutive integers whose sum eq… |
+| 2178 | [Maximum Split of Positive Even Integers](2178.md) | 🟡 Medium | 1m 15s | The problem gives us a single integer called finalSum, and asks us … |
+| 2180 | [Count Integers With Even Digit Sum](2180.md) | 🟢 Easy | 1m 10s | The problem gives us a positive integer num, and asks us to count h… |
+| 2181 | [Merge Nodes in Between Zeros](2181.md) | 🟡 Medium | 53s | This problem provides a singly linked list in which integers are se… |
