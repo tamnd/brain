@@ -1384,24 +1384,75 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1376 | [Time Needed to Inform All Employees](13xx/1376.md) | 🟡 Medium | 1m | The problem asks us to calculate the total time it takes for a piec… |
 | 1377 | [Frog Position After T Seconds](13xx/1377.md) | 🔴 Hard | 1m 32s | This problem describes a frog moving through an undirected tree. A … |
 | 1378 | [Replace Employee ID With The Unique Identifier](13xx/1378.md) | 🟢 Easy | 1m 30s | This problem asks us to combine information from two database table… |
-| 1379 | [Find a Corresponding Node of a Binary Tree in a Clone of That Tree](13xx/1379.md) | 🟢 Easy | 1m 20s | The problem gives us two binary trees, original and cloned. The clo… |
-| 1380 | [Lucky Numbers in a Matrix](13xx/1380.md) | 🟢 Easy | 1m 17s | The problem gives us an m x n matrix containing distinct integers. … |
-| 1381 | [Design a Stack With Increment Operation](13xx/1381.md) | 🟡 Medium | 5m 37s | This problem asks us to implement a stack data structure with a twi… |
-| 1382 | [Balance a Binary Search Tree](13xx/1382.md) | 🟡 Medium | 55s | The problem asks us to take an input binary search tree (BST) and r… |
-| 1383 | [Maximum Performance of a Team](13xx/1383.md) | 🔴 Hard | 1m 31s | The problem gives us n engineers, where each engineer has two attri… |
-| 1384 | [Total Sales Amount by Year](13xx/1384.md) | 🔴 Hard | 1m 49s | This problem asks us to transform sales periods into yearly sales t… |
-| 1385 | [Find the Distance Value Between Two Arrays](13xx/1385.md) | 🟢 Easy | 1m 11s | The problem gives us two integer arrays, arr1 and arr2, along with … |
-| 1386 | [Cinema Seat Allocation](13xx/1386.md) | 🟡 Medium | 1m 3s | The problem asks us to maximize the number of four-person groups th… |
-| 1387 | [Sort Integers by The Power Value](13xx/1387.md) | 🟡 Medium | 52s | The problem asks us to compute a "power value" for each integer in … |
-| 1388 | [Pizza With 3n Slices](13xx/1388.md) | 🔴 Hard | 49s | The problem is asking us to maximize the sum of pizza slices you ca… |
-| 1389 | [Create Target Array in the Given Order](13xx/1389.md) | 🟢 Easy | 56s | This problem asks us to construct a target array by inserting eleme… |
-| 1390 | [Four Divisors](13xx/1390.md) | 🟡 Medium | 1m 4s | The problem asks us to process an array of integers, nums, and comp… |
-| 1391 | [Check if There is a Valid Path in a Grid](13xx/1391.md) | 🟡 Medium | 1m 32s | This problem gives us a two dimensional grid where every cell conta… |
-| 1392 | [Longest Happy Prefix](13xx/1392.md) | 🔴 Hard | 1m 5s | The problem asks us to find the longest substring that satisfies tw… |
-| 1393 | [Capital Gain/Loss](13xx/1393.md) | 🟡 Medium | 52s | The problem is asking us to calculate the capital gain or loss for … |
-| 1395 | [Count Number of Teams](13xx/1395.md) | 🟡 Medium | 1m 3s | This problem asks us to count the number of valid teams of three so… |
-| 1396 | [Design Underground System](13xx/1396.md) | 🟡 Medium | 1m 27s | This problem asks us to design a small tracking system for an under… |
+| 1379 | [Find a Corresponding Node of a Binary Tree in a Clone of That Tree](13xx/1379.md) | 🟢 Easy | 5m 1s | The traversal is by reference, not value. |
+| 1380 | [Lucky Numbers in a Matrix](13xx/1380.md) | 🟢 Easy | 1m 10s | This problem asks us to identify all lucky numbers in a given matri… |
+| 1381 | [Design a Stack With Increment Operation](13xx/1381.md) | 🟡 Medium | 2m 20s | This problem requires designing a specialized stack data structure,… |
+| 1382 | [Balance a Binary Search Tree](13xx/1382.md) | 🟡 Medium | 1m 11s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1383 | [Maximum Performance of a Team](13xx/1383.md) | 🔴 Hard | 1m 35s | This problem asks us to build a team of at most k engineers such th… |
+| 1384 | [Total Sales Amount by Year](13xx/1384.md) | 🔴 Hard | 1m 26s | This is a SQL database problem where we need to calculate the total… |
+| 1385 | [Find the Distance Value Between Two Arrays](13xx/1385.md) | 🟢 Easy | 56s | The problem is asking us to compute the distance value between two … |
+| 1386 | [Cinema Seat Allocation](13xx/1386.md) | 🟡 Medium | 1m 10s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1387 | [Sort Integers by The Power Value](13xx/1387.md) | 🟡 Medium | 1m 15s | This problem asks us to rank integers according to a special metric… |
+| 1388 | [Pizza With 3n Slices](13xx/1388.md) | 🔴 Hard | 1m 39s | In this problem, we are given a circular pizza divided into 3n slic… |
+| 1389 | [Create Target Array in the Given Order](13xx/1389.md) | 🟢 Easy | 1m 4s | This problem asks us to build a new array called target by followin… |
+| 1390 | [Four Divisors](13xx/1390.md) | 🟡 Medium | 1m 8s | The problem asks us to calculate the sum of divisors for numbers in… |
+| 1391 | [Check if There is a Valid Path in a Grid](13xx/1391.md) | 🟡 Medium | 1m 16s | The problem presents a grid where each cell represents a street seg… |
+| 1392 | [Longest Happy Prefix](13xx/1392.md) | 🔴 Hard | 1m 27s | The problem asks us to find the longest substring that is both a pr… |
+| 1393 | [Capital Gain/Loss](13xx/1393.md) | 🟡 Medium | 1m 20s | The Stocks table records stock trading activity. Each row represent… |
+| 1394 | [Find Lucky Integer in an Array](13xx/1394.md) | 🟢 Easy | 1m 6s | This problem asks us to identify a special number in an array calle… |
+| 1395 | [Count Number of Teams](13xx/1395.md) | 🟡 Medium | 1m 4s | The problem asks us to count the number of valid teams of three sol… |
+| 1396 | [Design Underground System](13xx/1396.md) | 🟡 Medium | 1m 26s | This problem asks us to design a small tracking system for an under… |
 | 1397 | [Find All Good Strings](13xx/1397.md) | 🔴 Hard | 1m 32s | The problem asks us to count how many strings of length n satisfy t… |
-| 1398 | [Customers Who Bought Products A and B but Not C](13xx/1398.md) | 🟡 Medium | 1m 39s | This problem gives us two database tables, Customers and Orders. Th… |
-| 1399 | [Count Largest Group](13xx/1399.md) | 🟢 Easy | 1m 10s | The problem asks us to group every integer from 1 to n based on the… |
-| 1400 | [Construct K Palindrome Strings](14xx/1400.md) | 🟡 Medium | 55s | The problem asks us to determine whether it is possible to construc… |
+| 1398 | [Customers Who Bought Products A and B but Not C](13xx/1398.md) | 🟡 Medium | 1m 2s | The problem asks us to identify customers who meet a very specific … |
+| 1399 | [Count Largest Group](13xx/1399.md) | 🟢 Easy | 1m 21s | The problem asks us to group all integers from 1 to n based on the … |
+| 1400 | [Construct K Palindrome Strings](14xx/1400.md) | 🟡 Medium | 1m 12s | The problem is asking whether a given string s can be rearranged to… |
+| 1401 | [Circle and Rectangle Overlapping](14xx/1401.md) | 🟡 Medium | 4m 28s | The problem gives two geometric shapes: 1. A circle, defined by: - … |
+| 1402 | [Reducing Dishes](14xx/1402.md) | 🔴 Hard | 1m 9s | In this problem, we are given an integer array called satisfaction,… |
+| 1403 | [Minimum Subsequence in Non-Increasing Order](14xx/1403.md) | 🟢 Easy | 1m 24s | The problem gives an integer array nums and asks us to build a subs… |
+| 1404 | [Number of Steps to Reduce a Number in Binary Representation to One](14xx/1404.md) | 🟡 Medium | 1m 10s | The problem gives us a binary number represented as a string s. Our… |
+| 1405 | [Longest Happy String](14xx/1405.md) | 🟡 Medium | 1m 28s | The problem asks us to construct the longest possible string using … |
+| 1406 | [Stone Game III](14xx/1406.md) | 🔴 Hard | 1m 25s | In this game, two players, Alice and Bob, take turns removing stone… |
+| 1407 | [Top Travellers](14xx/1407.md) | 🟢 Easy | 1m 26s | This problem gives us two database tables, Users and Rides. The Use… |
+| 1408 | [String Matching in an Array](14xx/1408.md) | 🟢 Easy | 1m 4s | You included two different problems in one message, and the second … |
+| 1409 | [Queries on a Permutation With Key](14xx/1409.md) | 🟡 Medium | 1m 12s | This problem asks us to simulate a dynamic permutation of integers … |
+| 1410 | [HTML Entity Parser](14xx/1410.md) | 🟡 Medium | 1m 13s | Here is a complete, detailed technical guide for LeetCode 1410 foll… |
+| 1411 | [Number of Ways to Paint N \u00d7 3 Grid](14xx/1411.md) | 🔴 Hard | 1m 1s | The problem asks us to determine the number of ways to paint a grid… |
+| 1412 | [Find the Quiet Students in All Exams](14xx/1412.md) | 🔴 Hard | 2m 4s | This problem asks us to identify students who are "quiet" across al… |
+| 1413 | [Minimum Value to Get Positive Step by Step Sum](14xx/1413.md) | 🟢 Easy | 7m | The problem gives us an integer array nums and asks us to determine… |
+| 1414 | [Find the Minimum Number of Fibonacci Numbers Whose Sum Is K](14xx/1414.md) | 🟡 Medium | 1m 2s | The problem asks us to find the minimum number of Fibonacci numbers… |
+| 1415 | [The k-th Lexicographical String of All Happy Strings of Length n](14xx/1415.md) | 🟡 Medium | 2m 53s | The problem asks us to generate strings of length n using only the … |
+| 1416 | [Restore The Array](14xx/1416.md) | 🔴 Hard | 1m 5s | The problem gives us a string s that represents several positive in… |
+| 1417 | [Reformat The String](14xx/1417.md) | 🟢 Easy | 1m 8s | The problem gives us an alphanumeric string s that contains only lo… |
+| 1418 | [Display Table of Food Orders in a Restaurant](14xx/1418.md) | 🟡 Medium | 1m 42s | The problem gives a list of restaurant orders. Each order contains … |
+| 1419 | [Minimum Number of Frogs Croaking](14xx/1419.md) | 🟡 Medium | 1m | The problem asks us to determine the minimum number of frogs needed… |
+| 1420 | [Build Array Where You Can Find The Maximum Exactly K Comparisons](14xx/1420.md) | 🔴 Hard | 1m 4s | This problem asks us to count the number of arrays of length n wher… |
+| 1421 | [NPV Queries](14xx/1421.md) | 🟢 Easy | 47s | The problem presents two database tables: NPV and Queries. The NPV … |
+| 1422 | [Maximum Score After Splitting a String](14xx/1422.md) | 🟢 Easy | 1m 21s | The problem gives us a binary string s, meaning the string contains… |
+| 1423 | [Maximum Points You Can Obtain from Cards](14xx/1423.md) | 🟡 Medium | 59s | The problem asks us to maximize the total points we can collect fro… |
+| 1424 | [Diagonal Traverse II](14xx/1424.md) | 🟡 Medium | 1m 10s | The problem asks us to traverse a jagged 2D integer array nums diag… |
+| 1425 | [Constrained Subsequence Sum](14xx/1425.md) | 🔴 Hard | 2m 20s | That is a long, structured reference document. To make sure I targe… |
+| 1426 | [Counting Elements](14xx/1426.md) | 🟢 Easy | 2m 21s | The problem asks us to count the number of elements in an array arr… |
+| 1427 | [Perform String Shifts](14xx/1427.md) | 🟢 Easy | 1m 13s | This problem asks us to simulate a sequence of string shift operati… |
+| 1428 | [Leftmost Column with at Least a One](14xx/1428.md) | 🟡 Medium | 1m 23s | This problem gives us access to a binary matrix where every row is … |
+| 1429 | [First Unique Number](14xx/1429.md) | 🟡 Medium | 1m 12s | The problem requires designing a data structure that can efficientl… |
+| 1430 | [Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree](14xx/1430.md) | 🟡 Medium | 56s | The problem asks us to determine whether a given array of integers … |
+| 1431 | [Kids With the Greatest Number of Candies](14xx/1431.md) | 🟢 Easy | 1m 1s | This problem asks us to determine which children could potentially … |
+| 1432 | [Max Difference You Can Get From Changing an Integer](14xx/1432.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, and we are allowed to perform … |
+| 1433 | [Check If a String Can Break Another String](14xx/1433.md) | 🟡 Medium | 56s | The problem asks us to determine whether one string can "break" ano… |
+| 1434 | [Number of Ways to Wear Different Hats to Each Other](14xx/1434.md) | 🔴 Hard | 1m 17s | This problem asks us to count how many valid ways exist to assign h… |
+| 1435 | [Create a Session Bar Chart](14xx/1435.md) | 🟢 Easy | 1m 8s | The problem provides a database table named Sessions with two colum… |
+| 1436 | [Destination City](14xx/1436.md) | 🟢 Easy | 1m 9s | In this problem, we are given a list of directed paths between citi… |
+| 1437 | [Check If All 1's Are at Least Length K Places Away](14xx/1437.md) | 🟢 Easy | 1m 6s | The problem asks us to check whether all 1s in a given binary array… |
+| 1438 | [Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](14xx/1438.md) | 🟡 Medium | 52s | The problem asks us to find the length of the longest contiguous su… |
+| 1439 | [Find the Kth Smallest Sum of a Matrix With Sorted Rows](14xx/1439.md) | 🔴 Hard | 58s | The problem requires finding the kth smallest sum obtainable by sel… |
+| 1440 | [Evaluate Boolean Expression](14xx/1440.md) | 🟡 Medium | 1m 12s | This problem asks us to evaluate boolean expressions stored in a da… |
+| 1441 | [Build an Array With Stack Operations](14xx/1441.md) | 🟡 Medium | 1m 21s | The problem gives us a strictly increasing array called target and … |
+| 1442 | [Count Triplets That Can Form Two Arrays of Equal XOR](14xx/1442.md) | 🟡 Medium | 1m 9s | The problem asks us to find the number of triplets (i, j, k) in an … |
+| 1443 | [Minimum Time to Collect All Apples in a Tree](14xx/1443.md) | 🟡 Medium | 1m 6s | The problem is asking for the minimum time required to collect all … |
+| 1444 | [Number of Ways of Cutting a Pizza](14xx/1444.md) | 🔴 Hard | 1m 25s | Edit This problem asks us to count the number of valid ways to divi… |
+| 1445 | [Apples & Oranges](14xx/1445.md) | 🟡 Medium | 1m 32s | This problem provides a database table named Sales that stores the … |
+| 1446 | [Consecutive Characters](14xx/1446.md) | 🟢 Easy | 1m 19s | The problem asks us to compute the "power" of a string. The power i… |
+| 1447 | [Simplified Fractions](14xx/1447.md) | 🟡 Medium | 1m 30s | The problem asks us to generate every fraction strictly between 0 a… |
+| 1448 | [Count Good Nodes in Binary Tree](14xx/1448.md) | 🟡 Medium | 1m 22s | The problem gives us the root of a binary tree and asks us to count… |
+| 1449 | [Form Largest Integer With Digits That Add up to Target](14xx/1449.md) | 🔴 Hard | 1m 1s | The problem asks us to construct the largest possible integer using… |
+| 1450 | [Number of Students Doing Homework at a Given Time](14xx/1450.md) | 🟢 Easy | 1m 15s | The problem gives us two integer arrays, startTime and endTime, alo… |

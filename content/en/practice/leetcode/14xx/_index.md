@@ -28,11 +28,11 @@ draft: false
 | 1415 | [The k-th Lexicographical String of All Happy Strings of Length n](1415.md) | 🟡 Medium | 2m 53s | The problem asks us to generate strings of length n using only the … |
 | 1416 | [Restore The Array](1416.md) | 🔴 Hard | 1m 5s | The problem gives us a string s that represents several positive in… |
 | 1417 | [Reformat The String](1417.md) | 🟢 Easy | 1m 8s | The problem gives us an alphanumeric string s that contains only lo… |
-| 1418 | [Display Table of Food Orders in a Restaurant](1418.md) | 🟡 Medium | 1m 20s | This problem asks us to build a formatted summary table from a list… |
+| 1418 | [Display Table of Food Orders in a Restaurant](1418.md) | 🟡 Medium | 1m 42s | The problem gives a list of restaurant orders. Each order contains … |
 | 1419 | [Minimum Number of Frogs Croaking](1419.md) | 🟡 Medium | 1m | The problem asks us to determine the minimum number of frogs needed… |
 | 1420 | [Build Array Where You Can Find The Maximum Exactly K Comparisons](1420.md) | 🔴 Hard | 1m 4s | This problem asks us to count the number of arrays of length n wher… |
 | 1421 | [NPV Queries](1421.md) | 🟢 Easy | 47s | The problem presents two database tables: NPV and Queries. The NPV … |
-| 1422 | [Maximum Score After Splitting a String](1422.md) | 🟢 Easy | 1m 2s | The problem asks us to split a binary string s, consisting only of … |
+| 1422 | [Maximum Score After Splitting a String](1422.md) | 🟢 Easy | 1m 21s | The problem gives us a binary string s, meaning the string contains… |
 | 1423 | [Maximum Points You Can Obtain from Cards](1423.md) | 🟡 Medium | 59s | The problem asks us to maximize the total points we can collect fro… |
 | 1424 | [Diagonal Traverse II](1424.md) | 🟡 Medium | 1m 10s | The problem asks us to traverse a jagged 2D integer array nums diag… |
 | 1425 | [Constrained Subsequence Sum](1425.md) | 🔴 Hard | 2m 20s | That is a long, structured reference document. To make sure I targe… |
@@ -45,16 +45,19 @@ draft: false
 | 1432 | [Max Difference You Can Get From Changing an Integer](1432.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, and we are allowed to perform … |
 | 1433 | [Check If a String Can Break Another String](1433.md) | 🟡 Medium | 56s | The problem asks us to determine whether one string can "break" ano… |
 | 1434 | [Number of Ways to Wear Different Hats to Each Other](1434.md) | 🔴 Hard | 1m 17s | This problem asks us to count how many valid ways exist to assign h… |
-| 1435 | [Create a Session Bar Chart](1435.md) | 🟢 Easy | 1m 28s | This problem gives us a database table named Sessions with two colu… |
-| 1436 | [Destination City](1436.md) | 🟢 Easy | 1m | The problem gives us a list of directed paths between cities. Each … |
-| 1437 | [Check If All 1's Are at Least Length K Places Away](1437.md) | 🟢 Easy | 1m 16s | The problem gives us a binary array nums, where each element is eit… |
-| 1438 | [Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](1438.md) | 🟡 Medium | 1m 17s | The problem gives an integer array nums and an integer limit. We mu… |
+| 1435 | [Create a Session Bar Chart](1435.md) | 🟢 Easy | 1m 8s | The problem provides a database table named Sessions with two colum… |
+| 1436 | [Destination City](1436.md) | 🟢 Easy | 1m 9s | In this problem, we are given a list of directed paths between citi… |
+| 1437 | [Check If All 1's Are at Least Length K Places Away](1437.md) | 🟢 Easy | 1m 6s | The problem asks us to check whether all 1s in a given binary array… |
+| 1438 | [Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](1438.md) | 🟡 Medium | 52s | The problem asks us to find the length of the longest contiguous su… |
 | 1439 | [Find the Kth Smallest Sum of a Matrix With Sorted Rows](1439.md) | 🔴 Hard | 58s | The problem requires finding the kth smallest sum obtainable by sel… |
-| 1440 | [Evaluate Boolean Expression](1440.md) | 🟡 Medium | 51s | The problem is asking us to evaluate a set of boolean expressions d… |
-| 1442 | [Count Triplets That Can Form Two Arrays of Equal XOR](1442.md) | 🟡 Medium | 1m 26s | The problem gives us an integer array arr and asks us to count the … |
-| 1443 | [Minimum Time to Collect All Apples in a Tree](1443.md) | 🟡 Medium | 1m 32s | This problem gives us an undirected tree with n nodes numbered from… |
-| 1444 | [Number of Ways of Cutting a Pizza](1444.md) | 🔴 Hard | 1m 37s | This problem asks us to count how many valid ways we can divide a r… |
+| 1440 | [Evaluate Boolean Expression](1440.md) | 🟡 Medium | 1m 12s | This problem asks us to evaluate boolean expressions stored in a da… |
+| 1441 | [Build an Array With Stack Operations](1441.md) | 🟡 Medium | 1m 21s | The problem gives us a strictly increasing array called target and … |
+| 1442 | [Count Triplets That Can Form Two Arrays of Equal XOR](1442.md) | 🟡 Medium | 1m 9s | The problem asks us to find the number of triplets (i, j, k) in an … |
+| 1443 | [Minimum Time to Collect All Apples in a Tree](1443.md) | 🟡 Medium | 1m 6s | The problem is asking for the minimum time required to collect all … |
+| 1444 | [Number of Ways of Cutting a Pizza](1444.md) | 🔴 Hard | 1m 25s | Edit This problem asks us to count the number of valid ways to divi… |
 | 1445 | [Apples & Oranges](1445.md) | 🟡 Medium | 1m 32s | This problem provides a database table named Sales that stores the … |
 | 1446 | [Consecutive Characters](1446.md) | 🟢 Easy | 1m 19s | The problem asks us to compute the "power" of a string. The power i… |
 | 1447 | [Simplified Fractions](1447.md) | 🟡 Medium | 1m 30s | The problem asks us to generate every fraction strictly between 0 a… |
+| 1448 | [Count Good Nodes in Binary Tree](1448.md) | 🟡 Medium | 1m 22s | The problem gives us the root of a binary tree and asks us to count… |
 | 1449 | [Form Largest Integer With Digits That Add up to Target](1449.md) | 🔴 Hard | 1m 1s | The problem asks us to construct the largest possible integer using… |
+| 1450 | [Number of Students Doing Homework at a Given Time](1450.md) | 🟢 Easy | 1m 15s | The problem gives us two integer arrays, startTime and endTime, alo… |
