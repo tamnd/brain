@@ -702,11 +702,8 @@ html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12
 /* ===== Home page ========================================================= */
 
 .zen-home-header {
-  max-width: var(--content-max);
   padding: 3rem 0 2rem;
   margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 2rem;
 }
 
 .zen-home-header__title {
@@ -725,7 +722,6 @@ html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12
   font-size: 1rem;
   color: var(--muted-fg);
   margin: 0;
-  max-width: 560px;
 }
 
 .zen-home-header__count {
