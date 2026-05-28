@@ -13,14 +13,6 @@ solve_time_s: 168
 verified: true
 draft: false
 ---
-
-[CF 3B - Lorry](https://codeforces.com/problemset/problem/3/B)
-
-**Rating:** 1900  
-**Tags:** greedy, sortings  
-**Solve time:** 2m 48s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

@@ -13,14 +13,6 @@ solve_time_s: 80
 verified: true
 draft: false
 ---
-
-[CF 5D - Follow Traffic Rules](https://codeforces.com/problemset/problem/5/D)
-
-**Rating:** 2100  
-**Tags:** implementation, math  
-**Solve time:** 1m 20s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

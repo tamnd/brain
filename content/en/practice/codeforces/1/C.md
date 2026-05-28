@@ -13,14 +13,6 @@ solve_time_s: 100
 verified: true
 draft: false
 ---
-
-[CF 1C - Ancient Berland Circus](https://codeforces.com/problemset/problem/1/C)
-
-**Rating:** 2100  
-**Tags:** geometry, math  
-**Solve time:** 1m 40s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

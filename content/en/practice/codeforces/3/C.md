@@ -13,14 +13,6 @@ solve_time_s: 103
 verified: true
 draft: false
 ---
-
-[CF 3C - Tic-tac-toe](https://codeforces.com/problemset/problem/3/C)
-
-**Rating:** 1800  
-**Tags:** brute force, games, implementation  
-**Solve time:** 1m 43s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

@@ -13,14 +13,6 @@ solve_time_s: 167
 verified: true
 draft: false
 ---
-
-[CF 1941B - Rudolf and 121](https://codeforces.com/problemset/problem/1941/B)
-
-**Rating:** 1000  
-**Tags:** brute force, dp, greedy, math  
-**Solve time:** 2m 47s  
-**Verified:** yes  
-
 ## Solution
 # Problem Understanding
 

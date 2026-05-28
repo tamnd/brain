@@ -13,14 +13,6 @@ solve_time_s: 160
 verified: true
 draft: false
 ---
-
-[CF 5C - Longest Regular Bracket Sequence](https://codeforces.com/problemset/problem/5/C)
-
-**Rating:** 1900  
-**Tags:** constructive algorithms, data structures, dp, greedy, sortings, strings  
-**Solve time:** 2m 40s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

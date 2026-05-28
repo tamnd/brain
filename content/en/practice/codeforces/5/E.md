@@ -13,14 +13,6 @@ solve_time_s: 81
 verified: true
 draft: false
 ---
-
-[CF 5E - Bindian Signalizing](https://codeforces.com/problemset/problem/5/E)
-
-**Rating:** 2400  
-**Tags:** data structures  
-**Solve time:** 1m 21s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

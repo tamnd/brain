@@ -13,14 +13,6 @@ solve_time_s: 241
 verified: true
 draft: false
 ---
-
-[CF 1A - Theatre Square](https://codeforces.com/problemset/problem/1/A)
-
-**Rating:** 1000  
-**Tags:** math  
-**Solve time:** 4m 1s  
-**Verified:** yes  
-
 ## Solution
 Here’s a detailed, thoughtful editorial for **Codeforces 1A - Theatre Square** following your requested style.
 

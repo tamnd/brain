@@ -13,14 +13,6 @@ solve_time_s: 137
 verified: false
 draft: false
 ---
-
-[CF 1941D - Rudolf and the Ball Game](https://codeforces.com/problemset/problem/1941/D)
-
-**Rating:** 1200  
-**Tags:** dfs and similar, dp, implementation  
-**Solve time:** 2m 17s  
-**Verified:** no  
-
 ## Solution
 ## Problem Understanding
 

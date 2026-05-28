@@ -13,14 +13,6 @@ solve_time_s: 187
 verified: true
 draft: false
 ---
-
-[CF 5B - Center Alignment](https://codeforces.com/problemset/problem/5/B)
-
-**Rating:** 1200  
-**Tags:** implementation, strings  
-**Solve time:** 3m 7s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

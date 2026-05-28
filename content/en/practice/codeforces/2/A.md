@@ -13,14 +13,6 @@ solve_time_s: 69
 verified: true
 draft: false
 ---
-
-[CF 2A - Winner](https://codeforces.com/problemset/problem/2/A)
-
-**Rating:** 1500  
-**Tags:** hashing, implementation  
-**Solve time:** 1m 9s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

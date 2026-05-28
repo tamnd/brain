@@ -13,14 +13,6 @@ solve_time_s: 46
 verified: true
 draft: false
 ---
-
-[CF 4A - Watermelon](https://codeforces.com/problemset/problem/4/A)
-
-**Rating:** 800  
-**Tags:** brute force, math  
-**Solve time:** 46s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

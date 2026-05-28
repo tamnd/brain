@@ -13,14 +13,6 @@ solve_time_s: 141
 verified: true
 draft: false
 ---
-
-[CF 3D - Least Cost Bracket Sequence](https://codeforces.com/problemset/problem/3/D)
-
-**Rating:** 2600  
-**Tags:** greedy  
-**Solve time:** 2m 21s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

@@ -13,14 +13,6 @@ solve_time_s: 70
 verified: true
 draft: false
 ---
-
-[CF 4D - Mysterious Present](https://codeforces.com/problemset/problem/4/D)
-
-**Rating:** 1700  
-**Tags:** dp, sortings  
-**Solve time:** 1m 10s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

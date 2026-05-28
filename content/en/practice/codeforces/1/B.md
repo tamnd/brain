@@ -13,14 +13,6 @@ solve_time_s: 295
 verified: true
 draft: false
 ---
-
-[CF 1B - Spreadsheet](https://codeforces.com/problemset/problem/1/B)
-
-**Rating:** 1600  
-**Tags:** implementation, math  
-**Solve time:** 4m 55s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

@@ -13,14 +13,6 @@ solve_time_s: 96
 verified: true
 draft: false
 ---
-
-[CF 2C - Commentator problem](https://codeforces.com/problemset/problem/2/C)
-
-**Rating:** 2600  
-**Tags:** geometry  
-**Solve time:** 1m 36s  
-**Verified:** yes  
-
 ## Solution
 ## Problem Understanding
 

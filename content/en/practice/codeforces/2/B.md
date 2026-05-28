@@ -13,14 +13,6 @@ solve_time_s: 187
 verified: false
 draft: false
 ---
-
-[CF 2B - The least round way](https://codeforces.com/problemset/problem/2/B)
-
-**Rating:** 2000  
-**Tags:** dp, math  
-**Solve time:** 3m 7s  
-**Verified:** no  
-
 ## Solution
 ## Problem Understanding
 
