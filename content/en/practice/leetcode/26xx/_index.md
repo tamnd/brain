@@ -30,3 +30,9 @@ draft: false
 | 2629 | [Function Composition](2629.md) | 🟢 Easy | 1m 21s | The problem is asking us to implement a function composition operat… |
 | 2631 | [Group By](2631.md) | 🟡 Medium | 1m 27s | This problem asks us to extend JavaScript arrays with a custom meth… |
 | 2633 | [Convert Object to JSON String](2633.md) | 🟡 Medium | 44s | This problem asks us to convert a given JavaScript-like object into… |
+| 2634 | [Filter Elements from Array](2634.md) | 🟢 Easy | 1m 8s | The problem asks us to implement our own version of array filtering… |
+| 2637 | [Promise Time Limit](2637.md) | 🟡 Medium | 1m | This problem asks us to build a higher order asynchronous function.… |
+| 2639 | [Find the Width of Columns of a Grid](2639.md) | 🟢 Easy | 1m 6s | This problem gives us a two dimensional integer matrix called grid,… |
+| 2640 | [Find the Score of All Prefixes of an Array](2640.md) | 🟡 Medium | 1m 5s | The problem defines a special transformation called the conversion … |
+| 2643 | [Row With Maximum Ones](2643.md) | 🟢 Easy | 1m 4s | This problem gives us a binary matrix mat of size m x n, where ever… |
+| 2645 | [Minimum Additions to Make Valid String](2645.md) | 🟡 Medium | 48s | The problem asks us to transform a given string word into a valid s… |

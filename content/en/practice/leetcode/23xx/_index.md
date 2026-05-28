@@ -61,12 +61,12 @@ draft: false
 | 2348 | [Number of Zero-Filled Subarrays](2348.md) | 🟡 Medium | 33s | The problem asks us to count the number of contiguous subarrays in … |
 | 2349 | [Design a Number Container System](2349.md) | 🟡 Medium | 1m 10s | The problem asks us to design a data structure that supports two op… |
 | 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 56s | Here is a complete, detailed technical solution guide for LeetCode … |
-| 2351 | [First Letter to Appear Twice](2351.md) | 🟢 Easy | 55s | The problem asks us to find the first letter in a string that appea… |
-| 2352 | [Equal Row and Column Pairs](2352.md) | 🟡 Medium | 1m 28s | In this problem, we are given an n x n matrix called grid. Each row… |
+| 2351 | [First Letter to Appear Twice](2351.md) | 🟢 Easy | 1m 3s | The problem gives us a string s containing only lowercase English l… |
+| 2352 | [Equal Row and Column Pairs](2352.md) | 🟡 Medium | 1m 4s | The problem gives us a square matrix grid of size n x n, where ever… |
 | 2353 | [Design a Food Rating System](2353.md) | 🟡 Medium | 1m 38s | This problem asks us to design a data structure that supports two o… |
-| 2354 | [Number of Excellent Pairs](2354.md) | 🔴 Hard | 1m 16s | The problem asks us to count the number of distinct ordered pairs (… |
-| 2355 | [Maximum Number of Books You Can Take](2355.md) | 🔴 Hard | 52s | The problem provides a 0-indexed array books where each element rep… |
-| 2356 | [Number of Unique Subjects Taught by Each Teacher](2356.md) | 🟢 Easy | 2m 53s | The problem provides a database table named Teacher. Each row repre… |
+| 2354 | [Number of Excellent Pairs](2354.md) | 🔴 Hard | 49s | The problem provides a 0-indexed array of positive integers nums an… |
+| 2355 | [Maximum Number of Books You Can Take](2355.md) | 🔴 Hard | 2m 20s | That is a long, multi-section technical reference document. I can p… |
+| 2356 | [Number of Unique Subjects Taught by Each Teacher](2356.md) | 🟢 Easy | 38s | The problem requires calculating the number of unique subjects each… |
 | 2357 | [Make Array Zero by Subtracting Equal Amounts](2357.md) | 🟢 Easy | 1m 8s | The problem gives us an array of non-negative integers called nums.… |
 | 2358 | [Maximum Number of Groups Entering a Competition](2358.md) | 🟡 Medium | 1m 4s | The problem gives us an array called grades, where each element rep… |
 | 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 55s | The problem asks us to compute the minimum cost to reach each stop … |
