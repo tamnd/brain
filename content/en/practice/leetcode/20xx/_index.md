@@ -71,6 +71,7 @@ draft: false
 | 2064 | [Minimized Maximum of Products Distributed to Any Store](2064.md) | 🟡 Medium | 59s | This problem asks us to distribute a given set of products of diffe… |
 | 2065 | [Maximum Path Quality of a Graph](2065.md) | 🔴 Hard | 1m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 2066 | [Account Balance](2066.md) | 🟡 Medium | 1m | The problem asks us to calculate the running balance of each accoun… |
+| 2067 | [Number of Equal Count Substrings](2067.md) | 🟡 Medium | 52s | The problem asks us to count the number of substrings in a string s… |
 | 2068 | [Check Whether Two Strings are Almost Equivalent](2068.md) | 🟢 Easy | 1m 19s | The problem asks us to determine whether two strings are "almost eq… |
 | 2069 | [Walking Robot Simulation II](2069.md) | 🟡 Medium | 1m 39s | The problem describes a robot moving on the boundary and interior e… |
 | 2070 | [Most Beautiful Item for Each Query](2070.md) | 🟡 Medium | 1m 31s | The problem gives us a list of items, where each item has two value… |
@@ -93,6 +94,7 @@ draft: false
 | 2087 | [Minimum Cost Homecoming of a Robot in a Grid](2087.md) | 🟡 Medium | 59s | This problem asks us to calculate the minimum total cost for a robo… |
 | 2088 | [Count Fertile Pyramids in a Land](2088.md) | 🔴 Hard | 1m 40s | This problem gives us a binary matrix where each cell represents a … |
 | 2089 | [Find Target Indices After Sorting Array](2089.md) | 🟢 Easy | 1m 40s | The problem gives us an integer array nums and an integer target. W… |
+| 2090 | [K Radius Subarray Averages](2090.md) | 🟡 Medium | 1m 5s | This problem asks us to compute the k-radius average for each eleme… |
 | 2091 | [Removing Minimum and Maximum From Array](2091.md) | 🟡 Medium | 2m 19s | The problem gives us a 0-indexed array of distinct integers. Among … |
 | 2092 | [Find All People With Secret](2092.md) | 🔴 Hard | 1m 49s | The problem describes a network of people who meet at different tim… |
 | 2093 | [Minimum Cost to Reach City With Discounts](2093.md) | 🟡 Medium | 52s | This problem asks us to find the minimum cost to travel from city 0… |

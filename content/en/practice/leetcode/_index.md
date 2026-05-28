@@ -1778,6 +1778,44 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1762 | [Buildings With an Ocean View](17xx/1762.md) | 🟡 Medium | 1m 19s | This problem gives us an array called heights, where each element r… |
 | 1763 | [Longest Nice Substring](17xx/1763.md) | 🟢 Easy | 1m 58s | The problem asks us to find the longest "nice" substring within a g… |
 | 1764 | [Form Array by Concatenating Subarrays of Another Array](17xx/1764.md) | 🟡 Medium | 1m 11s | The problem asks us to determine whether we can select disjoint sub… |
+| 1765 | [Map of Highest Peak](17xx/1765.md) | 🟡 Medium | 1m 33s | The problem presents a matrix isWater of size m x n where each cell… |
+| 1766 | [Tree of Coprimes](17xx/1766.md) | 🔴 Hard | 1m 7s | This problem gives us a tree with n nodes numbered from 0 to n-1, r… |
+| 1767 | [Find the Subtasks That Did Not Execute](17xx/1767.md) | 🔴 Hard | 2m 17s | This problem revolves around identifying which subtasks of a task w… |
+| 1768 | [Merge Strings Alternately](17xx/1768.md) | 🟢 Easy | 3m 7s | The problem requires merging two input strings word1 and word2 in a… |
+| 1769 | [Minimum Number of Operations to Move All Balls to Each Box](17xx/1769.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the minimum number of moves require… |
+| 1770 | [Maximum Score from Performing Multiplication Operations](17xx/1770.md) | 🔴 Hard | 2m 19s | This problem asks us to maximize a score obtained by performing a s… |
+| 1771 | [Maximize Palindrome Length From Subsequences](17xx/1771.md) | 🔴 Hard | 2m 19s | The problem gives us two strings, word1 and word2. We must choose a… |
+| 1772 | [Sort Features by Popularity](17xx/1772.md) | 🟡 Medium | 1m 2s | This problem asks us to determine the popularity of product feature… |
+| 1773 | [Count Items Matching a Rule](17xx/1773.md) | 🟢 Easy | 56s | The problem asks us to determine how many items in a list satisfy a… |
+| 1774 | [Closest Dessert Cost](17xx/1774.md) | 🟡 Medium | 1m 3s | The problem asks us to create a dessert using one ice cream base an… |
+| 1775 | [Equal Sum Arrays With Minimum Number of Operations](17xx/1775.md) | 🟡 Medium | 1m 53s | The problem gives us two integer arrays, nums1 and nums2, where eve… |
+| 1776 | [Car Fleet II](17xx/1776.md) | 🔴 Hard | 54s | The problem is asking us to compute the time at which each car in a… |
+| 1777 | [Product's Price for Each Store](17xx/1777.md) | 🟢 Easy | 1m 50s | The problem provides a table named Products, where each row represe… |
+| 1778 | [Shortest Path in a Hidden Grid](17xx/1778.md) | 🟡 Medium | 1m 43s | This problem asks us to find the shortest path from a robot's unkno… |
+| 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](17xx/1779.md) | 🟢 Easy | 1m 22s | The problem gives your current position on a 2D Cartesian grid as (… |
+| 1780 | [Check if Number is a Sum of Powers of Three](17xx/1780.md) | 🟡 Medium | 1m 17s | The problem asks whether a given integer n can be expressed as the … |
+| 1781 | [Sum of Beauty of All Substrings](17xx/1781.md) | 🟡 Medium | 50s | The problem asks us to calculate the sum of beauty for all substrin… |
+| 1783 | [Grand Slam Titles](17xx/1783.md) | 🟡 Medium | 1m 38s | This problem asks us to compute how many Grand Slam tennis titles e… |
+| 1784 | [Check if Binary String Has at Most One Segment of Ones](17xx/1784.md) | 🟢 Easy | 1m 5s | In this problem, we are given a binary string s that contains only … |
+| 1785 | [Minimum Elements to Add to Form a Given Sum](17xx/1785.md) | 🟡 Medium | 1m 24s | The problem gives us an integer array nums, a maximum allowed absol… |
+| 1786 | [Number of Restricted Paths From First to Last Node](17xx/1786.md) | 🟡 Medium | 2m | This problem gives us an undirected weighted graph with n nodes lab… |
+| 1788 | [Maximize the Beauty of the Garden](17xx/1788.md) | 🔴 Hard | 1m 47s | We are given an integer array flowers, where each element represent… |
+| 1789 | [Primary Department for Each Employee](17xx/1789.md) | 🟢 Easy | 1m 34s | The problem provides a database table named Employee that stores in… |
+| 1790 | [Check if One String Swap Can Make Strings Equal](17xx/1790.md) | 🟢 Easy | 50s | The problem asks us to determine if two strings of equal length, s1… |
+| 1791 | [Find Center of Star Graph](17xx/1791.md) | 🟢 Easy | 48s | The problem is asking us to identify the center node of a star grap… |
+| 1792 | [Maximum Average Pass Ratio](17xx/1792.md) | 🟡 Medium | 1m 47s | The problem gives us several classes, where each class is represent… |
+| 1793 | [Maximum Score of a Good Subarray](17xx/1793.md) | 🔴 Hard | 1m 35s | In this problem, we are given an integer array nums and a specific … |
+| 1794 | [Count Pairs of Equal Substrings With Minimum Difference](17xx/1794.md) | 🟡 Medium | 53s | This problem asks us to count quadruples of indices (i, j, a, b) wh… |
+| 1795 | [Rearrange Products Table](17xx/1795.md) | 🟢 Easy | 1m 36s | The Products table stores product prices across three different sto… |
+| 1796 | [Second Largest Digit in a String](17xx/1796.md) | 🟢 Easy | 1m 19s | The problem gives us a string s that contains lowercase English let… |
+| 1797 | [Design Authentication Manager](17xx/1797.md) | 🟡 Medium | 51s | The problem asks us to design an authentication system that manages… |
+| 1798 | [Maximum Number of Consecutive Values You Can Make](17xx/1798.md) | 🟡 Medium | 1m 19s | The problem gives us an array of coin values, where each coin can b… |
+| 1799 | [Maximize Score After N Operations](17xx/1799.md) | 🔴 Hard | 1m 5s | The problem asks us to maximize the total score obtained by perform… |
+| 1800 | [Maximum Ascending Subarray Sum](18xx/1800.md) | 🟢 Easy | 1m 19s | The problem gives an array of positive integers called nums. We mus… |
+| 1801 | [Number of Orders in the Backlog](18xx/1801.md) | 🟡 Medium | 1m 45s | This problem simulates a simplified stock exchange order book. Each… |
+| 1802 | [Maximum Value at a Given Index in a Bounded Array](18xx/1802.md) | 🟡 Medium | 1m 26s | This problem asks us to construct an array of length n where every … |
+| 1805 | [Number of Different Integers in a String](18xx/1805.md) | 🟢 Easy | 1m | The problem requires us to process a string word that contains both… |
+| 1806 | [Minimum Number of Operations to Reinitialize a Permutation](18xx/1806.md) | 🟡 Medium | 1m 10s | The problem gives us an even integer n and defines an initial permu… |
 | 1807 | [Evaluate the Bracket Pairs of a String](18xx/1807.md) | 🟡 Medium | 2m 34s | The problem asks us to process a string s that contains bracketed k… |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](18xx/1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
 | 1906 | [Minimum Absolute Difference Queries](19xx/1906.md) | 🟡 Medium | 1m 7s | The problem asks us to compute the minimum absolute difference in s… |
@@ -1827,6 +1865,56 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2048 | [Next Greater Numerically Balanced Number](20xx/2048.md) | 🟡 Medium | 58s | The problem asks us to find the next numerically balanced number gr… |
 | 2049 | [Count Nodes With the Highest Score](20xx/2049.md) | 🟡 Medium | 1m 25s | This problem gives us a rooted binary tree represented by a parents… |
 | 2050 | [Parallel Courses III](20xx/2050.md) | 🔴 Hard | 1m 33s | This problem models course scheduling as a directed acyclic graph, … |
+| 2051 | [The Category of Each Member in the Store](20xx/2051.md) | 🟡 Medium | 1m 43s | This problem asks us to classify each store member into one of four… |
+| 2052 | [Minimum Cost to Separate Sentence Into Rows](20xx/2052.md) | 🟡 Medium | 1m 12s | The problem asks us to split a sentence into multiple rows while re… |
+| 2053 | [Kth Distinct String in an Array](20xx/2053.md) | 🟢 Easy | 1m 30s | The problem asks us to find the kth distinct string in an array of … |
+| 2054 | [Two Best Non-Overlapping Events](20xx/2054.md) | 🟡 Medium | 2m 51s | That is a large, structured reference document. I can provide the f… |
+| 2055 | [Plates Between Candles](20xx/2055.md) | 🟡 Medium | 1m 40s | The problem gives us a string s containing only two characters: - '… |
+| 2056 | [Number of Valid Move Combinations On Chessboard](20xx/2056.md) | 🔴 Hard | 56s | The problem asks us to compute the number of valid move combination… |
+| 2057 | [Smallest Index With Equal Value](20xx/2057.md) | 🟢 Easy | 50s | The problem asks us to find the smallest index i in a 0-indexed int… |
+| 2058 | [Find the Minimum and Maximum Number of Nodes Between Critical Points](20xx/2058.md) | 🟡 Medium | 1m 43s | The problem gives us a singly linked list and asks us to identify a… |
+| 2059 | [Minimum Operations to Convert Number](20xx/2059.md) | 🟡 Medium | 55s | The problem asks us to transform a starting number start into a tar… |
+| 2060 | [Check if an Original String Exists Given Two Encoded Strings](20xx/2060.md) | 🔴 Hard | 2m 19s | Here’s a full, detailed technical solution guide for LeetCode 2060 … |
+| 2061 | [Number of Spaces Cleaning Robot Cleaned](20xx/2061.md) | 🟡 Medium | 7m 5s | In this problem, we are given a 2D binary matrix called room. Each … |
+| 2062 | [Count Vowel Substrings of a String](20xx/2062.md) | 🟢 Easy | 2m 19s | The problem asks us to count how many substrings of a given string … |
+| 2063 | [Vowels of All Substrings](20xx/2063.md) | 🟡 Medium | 57s | The problem asks us to compute the total number of vowels that appe… |
+| 2064 | [Minimized Maximum of Products Distributed to Any Store](20xx/2064.md) | 🟡 Medium | 59s | This problem asks us to distribute a given set of products of diffe… |
+| 2065 | [Maximum Path Quality of a Graph](20xx/2065.md) | 🔴 Hard | 1m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 2066 | [Account Balance](20xx/2066.md) | 🟡 Medium | 1m | The problem asks us to calculate the running balance of each accoun… |
+| 2067 | [Number of Equal Count Substrings](20xx/2067.md) | 🟡 Medium | 52s | The problem asks us to count the number of substrings in a string s… |
+| 2068 | [Check Whether Two Strings are Almost Equivalent](20xx/2068.md) | 🟢 Easy | 1m 19s | The problem asks us to determine whether two strings are "almost eq… |
+| 2069 | [Walking Robot Simulation II](20xx/2069.md) | 🟡 Medium | 1m 39s | The problem describes a robot moving on the boundary and interior e… |
+| 2070 | [Most Beautiful Item for Each Query](20xx/2070.md) | 🟡 Medium | 1m 31s | The problem gives us a list of items, where each item has two value… |
+| 2071 | [Maximum Number of Tasks You Can Assign](20xx/2071.md) | 🔴 Hard | 58s | The problem asks us to determine the maximum number of tasks that c… |
+| 2072 | [The Winner University](20xx/2072.md) | 🟢 Easy | 56s | The problem describes a competition between two universities: New Y… |
+| 2073 | [Time Needed to Buy Tickets](20xx/2073.md) | 🟢 Easy | 50s | This problem is asking us to simulate a queue where each person buy… |
+| 2074 | [Reverse Nodes in Even Length Groups](20xx/2074.md) | 🟡 Medium | 58s | This problem asks us to manipulate a singly linked list by reversin… |
+| 2075 | [Decode the Slanted Ciphertext](20xx/2075.md) | 🟡 Medium | 1m 34s | This problem describes a custom string encoding process based on a … |
+| 2076 | [Process Restricted Friend Requests](20xx/2076.md) | 🔴 Hard | 1m 48s | This problem models a dynamic friendship network with restrictions … |
+| 2077 | [Paths in Maze That Lead to Same Room](20xx/2077.md) | 🟡 Medium | 1m 35s | This problem gives us an undirected graph representing a maze. Each… |
+| 2078 | [Two Furthest Houses With Different Colors](20xx/2078.md) | 🟢 Easy | 1m 12s | This problem asks us to find the maximum distance between any two h… |
+| 2079 | [Watering Plants](20xx/2079.md) | 🟡 Medium | 1m 24s | In this problem, we are given a row of plants where each plant requ… |
+| 2080 | [Range Frequency Queries](20xx/2080.md) | 🟡 Medium | 1m 29s | The problem asks us to design a data structure that can efficiently… |
+| 2081 | [Sum of k-Mirror Numbers](20xx/2081.md) | 🔴 Hard | 1m 51s | The problem asks us to find numbers that are palindromes in two dif… |
+| 2082 | [The Number of Rich Customers](20xx/2082.md) | 🟢 Easy | 55s | You included two different problems in one message, and the second … |
+| 2083 | [Substrings That Begin and End With the Same Letter](20xx/2083.md) | 🟡 Medium | 1m 16s | The problem asks us to count how many substrings of a given string … |
+| 2084 | [Drop Type 1 Orders for Customers With Type 0 Orders](20xx/2084.md) | 🟡 Medium | 53s | This problem involves filtering orders from a database table accord… |
+| 2085 | [Count Common Words With One Occurrence](20xx/2085.md) | 🟢 Easy | 1m 23s | The problem gives us two arrays of strings, words1 and words2. We n… |
+| 2086 | [Minimum Number of Food Buckets to Feed the Hamsters](20xx/2086.md) | 🟡 Medium | 55s | The problem requires us to place food buckets optimally in a linear… |
+| 2087 | [Minimum Cost Homecoming of a Robot in a Grid](20xx/2087.md) | 🟡 Medium | 59s | This problem asks us to calculate the minimum total cost for a robo… |
+| 2088 | [Count Fertile Pyramids in a Land](20xx/2088.md) | 🔴 Hard | 1m 40s | This problem gives us a binary matrix where each cell represents a … |
+| 2089 | [Find Target Indices After Sorting Array](20xx/2089.md) | 🟢 Easy | 1m 40s | The problem gives us an integer array nums and an integer target. W… |
+| 2090 | [K Radius Subarray Averages](20xx/2090.md) | 🟡 Medium | 1m 5s | This problem asks us to compute the k-radius average for each eleme… |
+| 2091 | [Removing Minimum and Maximum From Array](20xx/2091.md) | 🟡 Medium | 2m 19s | The problem gives us a 0-indexed array of distinct integers. Among … |
+| 2092 | [Find All People With Secret](20xx/2092.md) | 🔴 Hard | 1m 49s | The problem describes a network of people who meet at different tim… |
+| 2093 | [Minimum Cost to Reach City With Discounts](20xx/2093.md) | 🟡 Medium | 52s | This problem asks us to find the minimum cost to travel from city 0… |
+| 2094 | [Finding 3-Digit Even Numbers](20xx/2094.md) | 🟢 Easy | 1m 32s | The problem gives us an array called digits, where every element is… |
+| 2095 | [Delete the Middle Node of a Linked List](20xx/2095.md) | 🟡 Medium | 1m 31s | The problem gives us the head of a singly linked list and asks us t… |
+| 2096 | [Step-By-Step Directions From a Binary Tree Node to Another](20xx/2096.md) | 🟡 Medium | 1m 32s | This problem gives us a binary tree where every node has a unique v… |
+| 2097 | [Valid Arrangement of Pairs](20xx/2097.md) | 🔴 Hard | 52s | The problem is asking us to take a list of directed pairs, where ea… |
+| 2098 | [Subsequence of Size K With the Largest Even Sum](20xx/2098.md) | 🟡 Medium | 1m 39s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2099 | [Find Subsequence of Length K With the Largest Sum](20xx/2099.md) | 🟢 Easy | 1m 26s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2100 | [Find Good Days to Rob the Bank](21xx/2100.md) | 🟡 Medium | 56s | The problem asks us to identify the days that are good for robbing … |
 | 2143 | [Choose Numbers From Two Arrays in Range](21xx/2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |
 | 2224 | [Minimum Number of Operations to Convert Time](22xx/2224.md) | 🟢 Easy | 1m 11s | The problem asks us to calculate the minimum number of operations t… |
 | 2229 | [Check if an Array Is Consecutive](22xx/2229.md) | 🟢 Easy | 1m 21s | The problem asks us to determine whether an integer array forms a p… |
