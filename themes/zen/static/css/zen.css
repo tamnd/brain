@@ -110,7 +110,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   z-index: 40;
   height: var(--nav-h);
   background: var(--bg);
-  border-bottom: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
 }
@@ -397,6 +396,15 @@ html.dark .zen-sidebar__link:hover {
   line-height: 1.75;
 }
 
+/* Section _index.md inline content — full-width, no centering, no duplicate h1 */
+.zen-content.zen-section-body {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2rem;
+}
+.zen-content.zen-section-body > h1:first-child { display: none; }
+
 .zen-content h1, .zen-content h2, .zen-content h3,
 .zen-content h4, .zen-content h5, .zen-content h6 {
   font-weight: 700;
@@ -497,7 +505,7 @@ html.dark .zen-content pre {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--fg);
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
   white-space: nowrap;
 }
 
