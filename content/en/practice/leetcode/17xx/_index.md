@@ -96,3 +96,14 @@ draft: false
 | 1785 | [Minimum Elements to Add to Form a Given Sum](1785.md) | 🟡 Medium | 1m 24s | The problem gives us an integer array nums, a maximum allowed absol… |
 | 1786 | [Number of Restricted Paths From First to Last Node](1786.md) | 🟡 Medium | 2m | This problem gives us an undirected weighted graph with n nodes lab… |
 | 1788 | [Maximize the Beauty of the Garden](1788.md) | 🔴 Hard | 1m 47s | We are given an integer array flowers, where each element represent… |
+| 1789 | [Primary Department for Each Employee](1789.md) | 🟢 Easy | 1m 34s | The problem provides a database table named Employee that stores in… |
+| 1790 | [Check if One String Swap Can Make Strings Equal](1790.md) | 🟢 Easy | 50s | The problem asks us to determine if two strings of equal length, s1… |
+| 1791 | [Find Center of Star Graph](1791.md) | 🟢 Easy | 48s | The problem is asking us to identify the center node of a star grap… |
+| 1792 | [Maximum Average Pass Ratio](1792.md) | 🟡 Medium | 1m 47s | The problem gives us several classes, where each class is represent… |
+| 1793 | [Maximum Score of a Good Subarray](1793.md) | 🔴 Hard | 1m 35s | In this problem, we are given an integer array nums and a specific … |
+| 1794 | [Count Pairs of Equal Substrings With Minimum Difference](1794.md) | 🟡 Medium | 53s | This problem asks us to count quadruples of indices (i, j, a, b) wh… |
+| 1795 | [Rearrange Products Table](1795.md) | 🟢 Easy | 1m 36s | The Products table stores product prices across three different sto… |
+| 1796 | [Second Largest Digit in a String](1796.md) | 🟢 Easy | 1m 19s | The problem gives us a string s that contains lowercase English let… |
+| 1797 | [Design Authentication Manager](1797.md) | 🟡 Medium | 51s | The problem asks us to design an authentication system that manages… |
+| 1798 | [Maximum Number of Consecutive Values You Can Make](1798.md) | 🟡 Medium | 1m 19s | The problem gives us an array of coin values, where each coin can b… |
+| 1799 | [Maximize Score After N Operations](1799.md) | 🔴 Hard | 1m 5s | The problem asks us to maximize the total score obtained by perform… |

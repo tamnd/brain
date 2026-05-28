@@ -81,3 +81,18 @@ draft: false
 | 2075 | [Decode the Slanted Ciphertext](2075.md) | 🟡 Medium | 1m 34s | This problem describes a custom string encoding process based on a … |
 | 2076 | [Process Restricted Friend Requests](2076.md) | 🔴 Hard | 1m 48s | This problem models a dynamic friendship network with restrictions … |
 | 2077 | [Paths in Maze That Lead to Same Room](2077.md) | 🟡 Medium | 1m 35s | This problem gives us an undirected graph representing a maze. Each… |
+| 2078 | [Two Furthest Houses With Different Colors](2078.md) | 🟢 Easy | 1m 12s | This problem asks us to find the maximum distance between any two h… |
+| 2079 | [Watering Plants](2079.md) | 🟡 Medium | 1m 24s | In this problem, we are given a row of plants where each plant requ… |
+| 2080 | [Range Frequency Queries](2080.md) | 🟡 Medium | 1m 29s | The problem asks us to design a data structure that can efficiently… |
+| 2081 | [Sum of k-Mirror Numbers](2081.md) | 🔴 Hard | 1m 51s | The problem asks us to find numbers that are palindromes in two dif… |
+| 2082 | [The Number of Rich Customers](2082.md) | 🟢 Easy | 55s | You included two different problems in one message, and the second … |
+| 2083 | [Substrings That Begin and End With the Same Letter](2083.md) | 🟡 Medium | 1m 16s | The problem asks us to count how many substrings of a given string … |
+| 2084 | [Drop Type 1 Orders for Customers With Type 0 Orders](2084.md) | 🟡 Medium | 53s | This problem involves filtering orders from a database table accord… |
+| 2085 | [Count Common Words With One Occurrence](2085.md) | 🟢 Easy | 1m 23s | The problem gives us two arrays of strings, words1 and words2. We n… |
+| 2086 | [Minimum Number of Food Buckets to Feed the Hamsters](2086.md) | 🟡 Medium | 55s | The problem requires us to place food buckets optimally in a linear… |
+| 2087 | [Minimum Cost Homecoming of a Robot in a Grid](2087.md) | 🟡 Medium | 59s | This problem asks us to calculate the minimum total cost for a robo… |
+| 2088 | [Count Fertile Pyramids in a Land](2088.md) | 🔴 Hard | 1m 40s | This problem gives us a binary matrix where each cell represents a … |
+| 2089 | [Find Target Indices After Sorting Array](2089.md) | 🟢 Easy | 1m 40s | The problem gives us an integer array nums and an integer target. W… |
+| 2091 | [Removing Minimum and Maximum From Array](2091.md) | 🟡 Medium | 2m 19s | The problem gives us a 0-indexed array of distinct integers. Among … |
+| 2092 | [Find All People With Secret](2092.md) | 🔴 Hard | 1m 49s | The problem describes a network of people who meet at different tim… |
+| 2093 | [Minimum Cost to Reach City With Discounts](2093.md) | 🟡 Medium | 52s | This problem asks us to find the minimum cost to travel from city 0… |
