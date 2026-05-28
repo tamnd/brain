@@ -54,10 +54,10 @@ draft: false
 | 941 | [Valid Mountain Array](941.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given integer array form… |
 | 942 | [DI String Match](942.md) | 🟢 Easy | 1m 15s | In this problem, we are given a string s consisting only of the cha… |
 | 943 | [Find the Shortest Superstring](943.md) | 🔴 Hard | 39s | The problem asks us to find the shortest superstring that contains … |
-| 944 | [Delete Columns to Make Sorted](944.md) | 🟢 Easy | 1m 8s | The problem gives us an array of strings where every string has the… |
-| 945 | [Minimum Increment to Make Array Unique](945.md) | 🟡 Medium | 41s | This problem is asking us to make all elements in an integer array … |
-| 946 | [Validate Stack Sequences](946.md) | 🟡 Medium | 1m 7s | The problem gives us two arrays, pushed and popped, both containing… |
-| 947 | [Most Stones Removed with Same Row or Column](947.md) | 🟡 Medium | 34s | The problem presents a 2D grid with n stones placed at integer coor… |
+| 944 | [Delete Columns to Make Sorted](944.md) | 🟢 Easy | 1m 6s | The problem gives us an array of strings where every string has exa… |
+| 945 | [Minimum Increment to Make Array Unique](945.md) | 🟡 Medium | 41s | This problem asks us to take an integer array nums and perform a se… |
+| 946 | [Validate Stack Sequences](946.md) | 🟡 Medium | 35s | This problem asks whether two sequences of integers, pushed and pop… |
+| 947 | [Most Stones Removed with Same Row or Column](947.md) | 🟡 Medium | 1m 17s | The problem gives us a collection of stones placed on a 2D grid. Ea… |
 | 948 | [Bag of Tokens](948.md) | 🟡 Medium | 1m 15s | The problem gives us a collection of tokens, where each token has a… |
-| 949 | [Largest Time for Given Digits](949.md) | 🟡 Medium | 1m 18s | This problem asks us to construct the largest possible valid 24 hou… |
+| 949 | [Largest Time for Given Digits](949.md) | 🟡 Medium | 1m 6s | The problem provides an array of exactly four digits. Using each di… |
 | 950 | [Reveal Cards In Increasing Order](950.md) | 🟡 Medium | 1m 11s | The problem gives us a deck of unique integer cards and asks us to … |
