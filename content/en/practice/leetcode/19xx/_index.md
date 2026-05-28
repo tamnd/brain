@@ -68,3 +68,13 @@ draft: false
 | 1957 | [Delete Characters to Make Fancy String](1957.md) | 🟢 Easy | 1m 14s | The problem asks us to transform a given string into a "fancy strin… |
 | 1958 | [Check if Move is Legal](1958.md) | 🟡 Medium | 55s | This problem asks us to determine whether a move in a board game is… |
 | 1959 | [Minimum Total Space Wasted With K Resizing Operations](1959.md) | 🟡 Medium | 35s | Let's go through a full, detailed technical solution guide for Leet… |
+| 1961 | [Check If String Is a Prefix of Array](1961.md) | 🟢 Easy | 4m 3s | The problem is asking us to determine whether a given string s can … |
+| 1962 | [Remove Stones to Minimize the Total](1962.md) | 🟡 Medium | 2m 4s | The problem gives us an array called piles, where each element repr… |
+| 1964 | [Find the Longest Valid Obstacle Course at Each Position](1964.md) | 🔴 Hard | 1m 13s | The problem gives an array obstacles, where each value represents t… |
+| 1965 | [Employees With Missing Information](1965.md) | 🟢 Easy | 35s | The problem provides two relational tables, one named Employees and… |
+| 1966 | [Binary Searchable Numbers in an Unsorted Array](1966.md) | 🟡 Medium | 1m 19s | This problem asks us to identify how many numbers in an unsorted ar… |
+| 1967 | [Number of Strings That Appear as Substrings in Word](1967.md) | 🟢 Easy | 30s | The problem asks us to determine how many strings in the array patt… |
+| 1968 | [Array With Elements Not Equal to Average of Neighbors](1968.md) | 🟡 Medium | 36s | The problem asks us to rearrange a distinct integer array so that n… |
+| 1969 | [Minimum Non-Zero Product of the Array Elements](1969.md) | 🟡 Medium | 1m 8s | The problem gives us an integer p and defines an array containing e… |
+| 1970 | [Last Day Where You Can Still Cross](1970.md) | 🔴 Hard | 50s | This problem asks us to find the last day we can cross a grid from … |
+| 1972 | [First and Last Call On the Same Day](1972.md) | 🔴 Hard | 40s | The problem provides a table of phone call records where each row c… |

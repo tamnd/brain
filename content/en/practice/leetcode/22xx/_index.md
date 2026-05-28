@@ -35,7 +35,20 @@ draft: false
 | 2222 | [Number of Ways to Select Buildings](2222.md) | 🟡 Medium | 1m 3s | The problem gives us a binary string s, where each character repres… |
 | 2223 | [Sum of Scores of Built Strings](2223.md) | 🔴 Hard | 45s | The problem asks us to compute the sum of scores of built strings w… |
 | 2224 | [Minimum Number of Operations to Convert Time](2224.md) | 🟢 Easy | 1m 11s | The problem asks us to calculate the minimum number of operations t… |
+| 2225 | [Find Players With Zero or One Losses](2225.md) | 🟡 Medium | 1m 16s | The problem gives a list of match results, where each match is repr… |
 | 2226 | [Maximum Candies Allocated to K Children](2226.md) | 🟡 Medium | 48s | The problem asks us to distribute candies from a given list of pile… |
+| 2227 | [Encrypt and Decrypt Strings](2227.md) | 🔴 Hard | 2m 19s | The problem asks us to design a data structure that supports two op… |
+| 2228 | [Users With Two Purchases Within Seven Days](2228.md) | 🟡 Medium | 3m 7s | The problem asks us to find users who have made at least two purcha… |
 | 2229 | [Check if an Array Is Consecutive](2229.md) | 🟢 Easy | 1m 21s | The problem asks us to determine whether an integer array forms a p… |
+| 2230 | [The Users That Are Eligible for Discount](2230.md) | 🟢 Easy | 4m 26s | The problem gives us a database table named Purchases. Each row rep… |
 | 2231 | [Largest Number After Digit Swaps by Parity](2231.md) | 🟢 Easy | 1m 15s | The problem gives us a positive integer num and allows us to swap d… |
 | 2233 | [Maximum Product After K Increments](2233.md) | 🟡 Medium | 1m 22s | The problem asks us to maximize the product of an array of non-nega… |
+| 2234 | [Maximum Total Beauty of the Gardens](2234.md) | 🔴 Hard | 1m 33s | The problem gives us n gardens, where flowers[i] represents the num… |
+| 2235 | [Add Two Integers](2235.md) | 🟢 Easy | 41s | The problem is asking for a very straightforward calculation: given… |
+| 2236 | [Root Equals Sum of Children](2236.md) | 🟢 Easy | 56s | The problem asks us to determine whether the value of the root node… |
+| 2237 | [Count Positions on Street With Required Brightness](2237.md) | 🟡 Medium | 52s | The problem asks us to determine how many positions on a street mee… |
+| 2238 | [Number of Times a Driver Was a Passenger](2238.md) | 🟡 Medium | 1m 35s | The problem gives us a database table named Rides. Each row represe… |
+| 2239 | [Find Closest Number to Zero](2239.md) | 🟢 Easy | 1m 2s | The problem gives us an integer array nums and asks us to find the … |
+| 2240 | [Number of Ways to Buy Pens and Pencils](2240.md) | 🟡 Medium | 1m 11s | The problem gives us a total amount of money, along with the indivi… |
+| 2241 | [Design an ATM Machine](2241.md) | 🟡 Medium | 1m 19s | The problem asks us to design an ATM machine that supports two oper… |
+| 2242 | [Maximum Score of a Node Sequence](2242.md) | 🔴 Hard | 58s | The problem presents an undirected graph with n nodes, where each n… |
