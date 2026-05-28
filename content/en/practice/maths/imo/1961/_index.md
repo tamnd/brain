@@ -1,6 +1,6 @@
 ---
 title: "IMO 1961"
-description: "IMO 1961 — 1/6 solved."
+description: "IMO 1961 — 2/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1961
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1961
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/1961_IMO_Problems) &nbsp;·&nbsp; 1/6 solved.
+[Official problems](https://artofproblemsolving.com/wiki/index.php/1961_IMO_Problems) &nbsp;·&nbsp; 2/6 solved, 1 verified.
 
 | # | Problem | Status | Time | Topic |
 |---|---------|--------|------|-------|
@@ -19,4 +19,4 @@ draft: false
 | 3 | [Problem 3](3.md) | solved | 11m26s | Solve the equation |
 | 4 | Problem 4 | - | - | In the interior of [triangle](/wiki/index.php?title=Triangle "Triangle") $P_1 P_2 P_3$ a [point](/w… |
 | 5 | Problem 5 | - | - | Construct a triangle *ABC* if the following elements are given: $AC = b, AB = c$, and $\angle AMB =… |
-| 6 | Problem 6 | - | - | Consider a plane $\epsilon$ and three non-collinear points $A,B,C$ on the same side of $\epsilon$;… |
+| 6 | [Problem 6](6.md) | ✓ verified | 3m04s | Consider a plane $\epsilon$ and three non-collinear points $A,B,C$ on the same side of $\epsilon$;… |
