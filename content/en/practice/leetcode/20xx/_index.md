@@ -58,5 +58,16 @@ draft: false
 | 2051 | [The Category of Each Member in the Store](2051.md) | 🟡 Medium | 1m 43s | This problem asks us to classify each store member into one of four… |
 | 2052 | [Minimum Cost to Separate Sentence Into Rows](2052.md) | 🟡 Medium | 1m 12s | The problem asks us to split a sentence into multiple rows while re… |
 | 2053 | [Kth Distinct String in an Array](2053.md) | 🟢 Easy | 1m 30s | The problem asks us to find the kth distinct string in an array of … |
+| 2054 | [Two Best Non-Overlapping Events](2054.md) | 🟡 Medium | 2m 51s | That is a large, structured reference document. I can provide the f… |
 | 2055 | [Plates Between Candles](2055.md) | 🟡 Medium | 1m 40s | The problem gives us a string s containing only two characters: - '… |
 | 2056 | [Number of Valid Move Combinations On Chessboard](2056.md) | 🔴 Hard | 56s | The problem asks us to compute the number of valid move combination… |
+| 2057 | [Smallest Index With Equal Value](2057.md) | 🟢 Easy | 50s | The problem asks us to find the smallest index i in a 0-indexed int… |
+| 2058 | [Find the Minimum and Maximum Number of Nodes Between Critical Points](2058.md) | 🟡 Medium | 1m 43s | The problem gives us a singly linked list and asks us to identify a… |
+| 2059 | [Minimum Operations to Convert Number](2059.md) | 🟡 Medium | 55s | The problem asks us to transform a starting number start into a tar… |
+| 2060 | [Check if an Original String Exists Given Two Encoded Strings](2060.md) | 🔴 Hard | 2m 19s | Here’s a full, detailed technical solution guide for LeetCode 2060 … |
+| 2062 | [Count Vowel Substrings of a String](2062.md) | 🟢 Easy | 2m 19s | The problem asks us to count how many substrings of a given string … |
+| 2063 | [Vowels of All Substrings](2063.md) | 🟡 Medium | 57s | The problem asks us to compute the total number of vowels that appe… |
+| 2064 | [Minimized Maximum of Products Distributed to Any Store](2064.md) | 🟡 Medium | 59s | This problem asks us to distribute a given set of products of diffe… |
+| 2065 | [Maximum Path Quality of a Graph](2065.md) | 🔴 Hard | 1m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 2066 | [Account Balance](2066.md) | 🟡 Medium | 1m | The problem asks us to calculate the running balance of each accoun… |
+| 2068 | [Check Whether Two Strings are Almost Equivalent](2068.md) | 🟢 Easy | 1m 19s | The problem asks us to determine whether two strings are "almost eq… |

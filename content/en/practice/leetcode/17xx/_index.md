@@ -77,3 +77,14 @@ draft: false
 | 1765 | [Map of Highest Peak](1765.md) | 🟡 Medium | 1m 33s | The problem presents a matrix isWater of size m x n where each cell… |
 | 1766 | [Tree of Coprimes](1766.md) | 🔴 Hard | 1m 7s | This problem gives us a tree with n nodes numbered from 0 to n-1, r… |
 | 1767 | [Find the Subtasks That Did Not Execute](1767.md) | 🔴 Hard | 2m 17s | This problem revolves around identifying which subtasks of a task w… |
+| 1768 | [Merge Strings Alternately](1768.md) | 🟢 Easy | 3m 7s | The problem requires merging two input strings word1 and word2 in a… |
+| 1769 | [Minimum Number of Operations to Move All Balls to Each Box](1769.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the minimum number of moves require… |
+| 1770 | [Maximum Score from Performing Multiplication Operations](1770.md) | 🔴 Hard | 2m 19s | This problem asks us to maximize a score obtained by performing a s… |
+| 1771 | [Maximize Palindrome Length From Subsequences](1771.md) | 🔴 Hard | 2m 19s | The problem gives us two strings, word1 and word2. We must choose a… |
+| 1772 | [Sort Features by Popularity](1772.md) | 🟡 Medium | 1m 2s | This problem asks us to determine the popularity of product feature… |
+| 1773 | [Count Items Matching a Rule](1773.md) | 🟢 Easy | 56s | The problem asks us to determine how many items in a list satisfy a… |
+| 1774 | [Closest Dessert Cost](1774.md) | 🟡 Medium | 1m 3s | The problem asks us to create a dessert using one ice cream base an… |
+| 1775 | [Equal Sum Arrays With Minimum Number of Operations](1775.md) | 🟡 Medium | 1m 53s | The problem gives us two integer arrays, nums1 and nums2, where eve… |
+| 1776 | [Car Fleet II](1776.md) | 🔴 Hard | 54s | The problem is asking us to compute the time at which each car in a… |
+| 1777 | [Product's Price for Each Store](1777.md) | 🟢 Easy | 1m 50s | The problem provides a table named Products, where each row represe… |
+| 1778 | [Shortest Path in a Hidden Grid](1778.md) | 🟡 Medium | 1m 43s | This problem asks us to find the shortest path from a robot's unkno… |
