@@ -27,3 +27,4 @@ draft: false
 | 1218 | [Longest Arithmetic Subsequence of Given Difference](1218.md) | 🟡 Medium | 49s | The problem asks for the length of the longest arithmetic subsequen… |
 | 1219 | [Path with Maximum Gold](1219.md) | 🟡 Medium | 1m 29s | The problem gives a two dimensional grid where each cell contains e… |
 | 1222 | [Queens That Can Attack the King](1222.md) | 🟡 Medium | 1m 21s | This problem models the movement and attack rules of queens in ches… |
+| 1223 | [Dice Roll Simulation](1223.md) | 🔴 Hard | 1m 32s | This problem asks us to count how many valid dice roll sequences of… |
