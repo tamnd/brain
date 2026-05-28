@@ -27,13 +27,25 @@ draft: false
 | 1014 | [Best Sightseeing Pair](1014.md) | 🟡 Medium | 44s | The problem presents an array of integers values, where each elemen… |
 | 1015 | [Smallest Integer Divisible by K](1015.md) | 🟡 Medium | 1m 9s | The problem asks us to find the length of the smallest positive int… |
 | 1016 | [Binary String With Substrings Representing 1 To N](1016.md) | 🟡 Medium | 1m 7s | The problem gives us a binary string s and an integer n. We must de… |
-| 1017 | [Convert to Base -2](1017.md) | 🟡 Medium | 1m 54s | This problem asks us to convert a non-negative integer n into its r… |
+| 1017 | [Convert to Base -2](1017.md) | 🟡 Medium | 2m 52s | This problem asks us to convert a non-negative integer n into its r… |
 | 1018 | [Binary Prefix Divisible By 5](1018.md) | 🟢 Easy | 2m 19s | The problem presents a binary array nums, where each element is eit… |
-| 1019 | [Next Greater Node In Linked List](1019.md) | 🟡 Medium | 1m 24s | The problem asks us to process a singly linked list and determine, … |
-| 1020 | [Number of Enclaves](1020.md) | 🟡 Medium | 1m 11s | The problem gives us a binary matrix called grid, where: - 0 repres… |
-| 1022 | [Sum of Root To Leaf Binary Numbers](1022.md) | 🟢 Easy | 1m 1s | The problem asks us to compute the sum of all numbers formed by roo… |
-| 1023 | [Camelcase Matching](1023.md) | 🟡 Medium | 1m 52s | The problem asks us to determine, for each string in the queries ar… |
-| 1024 | [Video Stitching](1024.md) | 🟡 Medium | 2m 19s | The problem asks us to cover a sporting event of time seconds using… |
-| 1025 | [Divisor Game](1025.md) | 🟢 Easy | 1m 2s | The problem describes a two player game between Alice and Bob. The … |
-| 1026 | [Maximum Difference Between Node and Ancestor](1026.md) | 🟡 Medium | 52s | The problem asks us to find the maximum difference in value between… |
-| 1027 | [Longest Arithmetic Subsequence](1027.md) | 🟡 Medium | 2m 19s | The problem asks us to find the length of the longest arithmetic su… |
+| 1019 | [Next Greater Node In Linked List](1019.md) | 🟡 Medium | 2m 34s | The problem asks us to process a singly-linked list and, for each n… |
+| 1020 | [Number of Enclaves](1020.md) | 🟡 Medium | 2m 28s | The problem gives us a binary matrix called grid, where: - 0 repres… |
+| 1021 | [Remove Outermost Parentheses](1021.md) | 🟢 Easy | 10m 43s | Unusual activity has been detected from your device. Try again late… |
+| 1022 | [Sum of Root To Leaf Binary Numbers](1022.md) | 🟢 Easy | 1m 15s | This problem gives us the root of a binary tree where every node co… |
+| 1023 | [Camelcase Matching](1023.md) | 🟡 Medium | 1m 18s | The problem gives us a list of query strings and a target camel cas… |
+| 1024 | [Video Stitching](1024.md) | 🟡 Medium | 1m 3s | The problem asks us to cover a sporting event that lasts time secon… |
+| 1025 | [Divisor Game](1025.md) | 🟢 Easy | 2m 31s | The problem describes a two-player turn-based game between Alice an… |
+| 1026 | [Maximum Difference Between Node and Ancestor](1026.md) | 🟡 Medium | 1m 10s | This problem asks us to find the largest absolute difference betwee… |
+| 1027 | [Longest Arithmetic Subsequence](1027.md) | 🟡 Medium | 43s | Your requested guide is very long and detailed, especially with all… |
+| 1028 | [Recover a Tree From Preorder Traversal](1028.md) | 🔴 Hard | 53s | The problem provides a string traversal representing a preorder dep… |
+| 1029 | [Two City Scheduling](1029.md) | 🟡 Medium | 1m 14s | In this problem, we are given an array called costs, where each ele… |
+| 1030 | [Matrix Cells in Distance Order](1030.md) | 🟢 Easy | 1m 10s | This problem asks us to return every cell in a matrix, ordered by i… |
+| 1031 | [Maximum Sum of Two Non-Overlapping Subarrays](1031.md) | 🟡 Medium | 1m 14s | The problem gives us an integer array nums and two fixed subarray l… |
+| 1032 | [Stream of Characters](1032.md) | 🔴 Hard | 51s | The problem requires designing a system that can process a stream o… |
+| 1033 | [Moving Stones Until Consecutive](1033.md) | 🟡 Medium | 49s | The problem presents three stones placed on distinct positions alon… |
+| 1034 | [Coloring A Border](1034.md) | 🟡 Medium | 1m 11s | The problem gives us a two dimensional grid where each cell contain… |
+| 1035 | [Uncrossed Lines](1035.md) | 🟡 Medium | 51s | The problem asks us to find the maximum number of uncrossed connect… |
+| 1036 | [Escape a Large Maze](1036.md) | 🔴 Hard | 1m 27s | LeetCode 1036, Escape a Large Maze, asks whether it is possible to … |
+| 1037 | [Valid Boomerang](1037.md) | 🟢 Easy | 1m 12s | The problem gives exactly three points on a 2D coordinate plane. Ea… |
+| 1040 | [Moving Stones Until Consecutive II](1040.md) | 🟡 Medium | 47s | This problem asks us to determine the minimum and maximum number of… |
