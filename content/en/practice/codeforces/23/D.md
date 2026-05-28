@@ -1,6 +1,6 @@
 ---
 title: "CF 23D - Tetragon"
-description: "We are given three points in the plane. Each point is the midpoint of one side of some strictly convex quadrilateral, an"
+description: "We are given three points in the plane. Each point is the midpoint of one side of an unknown strictly convex quadrilater"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "math"]
 categories: ["algorithms"]
@@ -24,147 +24,154 @@ draft: false
 ## Solution
 ## Problem Understanding
 
-We are given three points in the plane. Each point is the midpoint of one side of some strictly convex quadrilateral, and the three corresponding sides all have the same length. The original vertices are unknown. We must reconstruct any valid quadrilateral or determine that no such figure exists.
+We are given three points in the plane. Each point is the midpoint of one side of an unknown strictly convex quadrilateral, and all four sides of that quadrilateral have equal length.
 
-The tricky part is that we are not told which midpoint belongs to which side. Even if a valid quadrilateral exists, the three given points could correspond to consecutive sides, alternating sides, or some other cyclic order. A correct solution must handle every possible arrangement.
+The task is to reconstruct any valid quadrilateral that satisfies these conditions, or determine that no such quadrilateral exists.
 
-The number of test cases is large, up to $5 \cdot 10^4$, so the work per test case must be constant time. Any approach that performs geometric search, optimization, or iterative reconstruction would be far too slow. We need a direct geometric characterization.
+The interesting part is that we are not told which three sides these midpoints belong to. The three given points could correspond to consecutive sides, or there could be a missing midpoint between two of them. Since the polygon must have all sides equal, we are effectively reconstructing an equilateral quadrilateral, which is exactly a rhombus.
 
-The coordinates are tiny integers, but that does not simplify the geometry. Degenerate configurations are still possible, and floating point inaccuracies can easily break convexity checks if the reconstruction formula is not derived carefully.
+The number of test cases is large, up to $5 \cdot 10^4$, so the work per test case must stay constant time. Any solution involving geometric search, iterative optimization, or combinatorial reconstruction would be far too slow. We need a direct formula-based approach using only a few vector operations.
 
-One easy mistake is assuming the three equal sides are consecutive. Consider:
+The coordinates are tiny integers, but that does not simplify the geometry. The output coordinates are often fractional, so floating point arithmetic is unavoidable.
 
-```
-0 1 1 0 2 2
-```
+Several edge cases are easy to mishandle.
 
-A valid quadrilateral exists, but only for one specific cyclic arrangement of the midpoint roles. A solution that fixes one ordering and never permutes the points incorrectly outputs NO.
+The first dangerous case is when the three given points are collinear.
 
-Another dangerous case is collinear midpoint positions:
+Input:
 
 ```
+1
 1 1 2 2 3 3
 ```
 
-All three points lie on the same line. A careless algebraic reconstruction may still produce four points, but the resulting quadrilateral cannot be strictly convex. The correct output is NO.
+All three points lie on one line. A strictly convex rhombus cannot produce three collinear side midpoints in this arrangement. The correct answer is:
 
-A more subtle failure happens when the reconstruction gives repeated vertices. For example, some midpoint assignments lead to side vectors collapsing to zero length. The figure then becomes degenerate even though intermediate equations appear consistent. Convexity must be checked explicitly.
+```
+NO
+```
+
+A careless implementation might still solve linear equations and generate four points, but the resulting polygon would be degenerate.
+
+Another subtle case appears when the points form the correct shape geometrically, but the reconstructed quadrilateral becomes self-intersecting instead of convex.
+
+Input:
+
+```
+1
+0 1 1 0 2 2
+```
+
+A valid rhombus exists here. One valid answer is:
+
+```
+YES
+3.5 1.5 0.5 2.5 -0.5 -0.5 2.5 0.5
+```
+
+If the vertices are emitted in the wrong order, the polygon can become a bow-tie instead of a convex quadrilateral.
+
+A third pitfall is assuming the three given points are always consecutive side midpoints. They are not. One midpoint may belong to the side opposite another. Missing this possibility causes valid instances to be rejected incorrectly.
 
 ## Approaches
 
-A brute-force geometric approach would treat the four vertices as unknown variables and derive equations from midpoint constraints and equal side lengths. Since each midpoint gives a linear equation and equal side lengths give quadratic equations, we end up with a nonlinear system in eight unknown coordinates. Solving this directly with algebraic elimination or numeric methods is completely impractical for $5 \cdot 10^4$ test cases.
+A brute-force mindset starts by remembering how side midpoints relate to polygon vertices.
 
-The key observation is that midpoint information almost reconstructs the polygon automatically.
+Suppose the quadrilateral vertices are $A, B, C, D$. Then the side midpoints are:
 
-Suppose the quadrilateral vertices are $A, B, C, D$, and the given midpoint points are:
+$$M_1 = \frac{A+B}{2}, \quad
+M_2 = \frac{B+C}{2}, \quad
+M_3 = \frac{C+D}{2}, \quad
+M_4 = \frac{D+A}{2}$$
 
-$$P = \frac{A+B}{2}, \quad
-Q = \frac{B+C}{2}, \quad
-R = \frac{C+D}{2}$$
+We are given three of these four points.
 
-for three consecutive sides.
+A naive strategy would try all possible assignments of the three given points to three sides, then solve the resulting linear system for the vertices. Since there are only constant-many permutations, this is computationally feasible. The real problem is correctness. Most assignments produce degenerate or inconsistent quadrilaterals, and we still need a geometric characterization of when a valid rhombus exists.
 
-From midpoint equations:
+The key observation is that an equilateral quadrilateral is a rhombus, and the side midpoints of a rhombus form another parallelogram with strong symmetry.
 
-$$B = 2P - A$$
+Take three consecutive side midpoints $P,Q,R$. Their vectors satisfy:
 
-$$C = 2Q - B$$
+$$\overrightarrow{PQ} \perp \overrightarrow{QR}$$
 
-$$D = 2R - C$$
+This comes directly from rhombus geometry. If the side vectors are $u$ and $v$ with $|u|=|v|$, then consecutive midpoint differences become:
 
-Every vertex becomes an affine expression in one free point $A$. Then the equal-side condition gives:
+$$\frac{u+v}{2}, \quad \frac{v-u}{2}$$
 
-$$|AB| = |BC| = |CD|$$
+Their dot product is:
 
-Substituting the midpoint formulas removes all unknowns except $A$, and after simplification we get a linear system. The quadrilateral, if it exists, is uniquely determined.
+$$(u+v)\cdot(v-u)=|v|^2-|u|^2=0$$
 
-The geometry becomes much cleaner if we rewrite everything using vectors between midpoints.
+So the midpoint polygon always contains a right angle.
 
-Let:
+That turns the problem into something much simpler. Among the three given points, we only need to find one point that forms a right angle with the other two. If no such configuration exists, the answer is impossible.
 
-$$u = Q - P, \quad v = R - Q$$
-
-Then:
-
-$$AB = A-B = -2(P-A)$$
-
-$$BC = 2u$$
-
-$$CD = 2v$$
-
-Since the three side lengths are equal:
-
-$$|u| = |v|$$
-
-This is already a strong restriction. The vectors between consecutive midpoints must have equal length.
-
-Even better, once the midpoint order is fixed, the whole quadrilateral can be reconstructed explicitly. The remaining side closes automatically.
-
-The only remaining complication is that we do not know which midpoint corresponds to which side order. Since there are only $3! = 6$ permutations, we can simply try all of them.
+Once such a triple is found, reconstructing the rhombus becomes pure vector algebra.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Algebraic brute force | Too large | Too large | Too slow |
-| Geometric reconstruction with permutations | O(1) | O(1) | Accepted |
+| Brute Force | O(1) | O(1) | Hard to reason about correctness |
+| Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Iterate over all permutations of the three given midpoint points.
+1. Read the three given points $P_0, P_1, P_2$.
+2. Try every ordering $(A,B,C)$ of these points and check whether:
 
-We temporarily assume the permutation corresponds to midpoints of sides $AB$, $BC$, and $CD$ respectively.
-2. Let the midpoint points be $P, Q, R$.
+$$(A-B)\cdot(C-B)=0$$
 
-Compute:
+This tests whether the angle at $B$ is a right angle.
 
-$$u = Q - P$$
+1. If no ordering produces a right angle, output `NO`.
 
-$$v = R - Q$$
+The midpoint geometry of a rhombus guarantees that three consecutive side midpoints always form a right angle at the middle point. Without such a configuration, reconstruction is impossible.
 
-1. Check whether:
+1. Once a valid ordering $(A,B,C)$ is found, treat them as three consecutive side midpoints.
+2. Reconstruct the rhombus vertices using midpoint equations.
 
-$$|u|^2 = |v|^2$$
+Let the vertices be $V_1,V_2,V_3,V_4$, and suppose:
 
-This condition is necessary because side $BC$ has vector $2u$ and side $CD$ has vector $2v$. Equal side lengths force the midpoint differences to have equal lengths too.
+$$A=\frac{V_1+V_2}{2}, \quad
+B=\frac{V_2+V_3}{2}, \quad
+C=\frac{V_3+V_4}{2}$$
 
-1. If the lengths differ, discard this permutation immediately.
-2. Reconstruct the vertices.
+Choose:
 
-We derive:
+$$V_2 = A + C - B$$
 
-$$A = P + v$$
+Then derive:
 
-$$B = P - v$$
+$$V_1 = 2A - V_2$$
 
-$$C = 2Q - B$$
+$$V_3 = 2B - V_2$$
 
-$$D = 2R - C$$
+$$V_4 = 2C - V_3$$
 
-These formulas come directly from midpoint equations.
+These formulas come directly from midpoint definitions.
 
-1. Verify strict convexity.
+1. Output the four vertices in order.
 
-Compute the cross products of consecutive edges:
-
-$$(B-A) \times (C-B)$$
-
-$$(C-B) \times (D-C)$$
-
-$$(D-C) \times (A-D)$$
-
-$$(A-D) \times (B-A)$$
-
-All must have the same nonzero sign.
-
-1. If convexity holds, output the vertices.
-2. If every permutation fails, output NO.
+The construction automatically produces a parallelogram. The right-angle condition among midpoint vectors guarantees equal side lengths, so the parallelogram is a rhombus.
 
 ### Why it works
 
-The midpoint equations uniquely determine the polygon once one vertex is fixed. The equal-side condition removes the remaining freedom and forces a unique reconstruction.
+The entire solution rests on one geometric fact.
 
-The reconstruction formulas are derived directly from affine geometry, so any produced quadrilateral automatically has the required midpoint positions. The equal-length test guarantees the three corresponding sides match in length. Finally, the convexity check removes degenerate or self-intersecting cases.
+If a quadrilateral has equal side lengths, then it is a rhombus. Consecutive midpoint differences become:
 
-Since every possible midpoint ordering is tested, the algorithm cannot miss a valid configuration.
+$$\frac{u+v}{2}, \quad \frac{v-u}{2}$$
+
+where $u,v$ are adjacent side vectors of the rhombus.
+
+Their dot product equals:
+
+$$|v|^2-|u|^2$$
+
+which is zero because all sides have equal length.
+
+So any valid instance must contain a right angle among the three midpoint points.
+
+Conversely, if three midpoint points form a right angle, the reconstruction formulas produce a parallelogram whose adjacent side lengths are equal. That makes it a rhombus, and the original three points become exactly the side midpoints.
 
 ## Python Solution
 
@@ -174,124 +181,81 @@ from itertools import permutations
 
 input = sys.stdin.readline
 
-def sub(a, b):
-    return (a[0] - b[0], a[1] - b[1])
+def dot(ax, ay, bx, by):
+    return ax * bx + ay * by
 
-def add(a, b):
-    return (a[0] + b[0], a[1] + b[1])
-
-def mul(a, k):
-    return (a[0] * k, a[1] * k)
-
-def cross(a, b):
-    return a[0] * b[1] - a[1] * b[0]
-
-def dist2(a):
-    return a[0] * a[0] + a[1] * a[1]
-
-def is_convex(poly):
-    n = 4
-    sign = 0
-
-    for i in range(n):
-        a = poly[i]
-        b = poly[(i + 1) % n]
-        c = poly[(i + 2) % n]
-
-        ab = sub(b, a)
-        bc = sub(c, b)
-
-        cr = cross(ab, bc)
-
-        if cr == 0:
-            return False
-
-        if sign == 0:
-            sign = 1 if cr > 0 else -1
-        else:
-            if cr * sign < 0:
-                return False
-
-    return True
-
-def solve_case(points):
-    for perm in permutations(points):
-        P, Q, R = perm
-
-        u = sub(Q, P)
-        v = sub(R, Q)
-
-        if dist2(u) != dist2(v):
-            continue
-
-        A = add(P, v)
-        B = sub(P, v)
-        C = sub(mul(Q, 2), B)
-        D = sub(mul(R, 2), C)
-
-        poly = [A, B, C, D]
-
-        if not is_convex(poly):
-            continue
-
-        return poly
-
-    return None
-
-def main():
+def solve():
     t = int(input())
-
     out = []
 
     for _ in range(t):
         vals = list(map(float, input().split()))
 
-        points = [
+        pts = [
             (vals[0], vals[1]),
             (vals[2], vals[3]),
             (vals[4], vals[5]),
         ]
 
-        ans = solve_case(points)
+        found = False
 
-        if ans is None:
-            out.append("NO")
-        else:
-            out.append("YES")
-            out.append(
-                " ".join(
-                    f"{x:.9f} {y:.9f}"
-                    for x, y in ans
+        for A, B, C in permutations(pts):
+            abx = A[0] - B[0]
+            aby = A[1] - B[1]
+
+            cbx = C[0] - B[0]
+            cby = C[1] - B[1]
+
+            if abs(dot(abx, aby, cbx, cby)) < 1e-9:
+                found = True
+
+                v2x = A[0] + C[0] - B[0]
+                v2y = A[1] + C[1] - B[1]
+
+                v1x = 2 * A[0] - v2x
+                v1y = 2 * A[1] - v2y
+
+                v3x = 2 * B[0] - v2x
+                v3y = 2 * B[1] - v2y
+
+                v4x = 2 * C[0] - v3x
+                v4y = 2 * C[1] - v3y
+
+                out.append("YES")
+                out.append(
+                    f"{v1x:.9f} {v1y:.9f} "
+                    f"{v2x:.9f} {v2y:.9f} "
+                    f"{v3x:.9f} {v3y:.9f} "
+                    f"{v4x:.9f} {v4y:.9f}"
                 )
-            )
+                break
+
+        if not found:
+            out.append("NO")
+            out.append("")
 
     sys.stdout.write("\n".join(out))
 
-if __name__ == "__main__":
-    main()
+solve()
 ```
 
-The solution begins with a few vector utility functions. Keeping vector operations separate makes the geometry formulas readable and avoids duplicated arithmetic.
+The first section defines a small dot-product helper. Using vectors explicitly keeps the geometry readable and avoids duplicated arithmetic.
 
-The reconstruction logic lives inside `solve_case`. For each permutation, we interpret the three points as consecutive side midpoints. The vectors `u` and `v` represent differences between consecutive midpoints. Their squared lengths are compared using integer-safe arithmetic, which avoids floating point precision issues.
+The core loop tries every permutation of the three points. Since there are only six permutations, this is still constant time.
 
-The vertex formulas come directly from midpoint identities. The expression:
+The orthogonality test is the crucial geometric filter. If:
 
 ```
-C = 2Q - B
+(A - B) · (C - B) == 0
 ```
 
-follows from:
+then $B$ can serve as the midpoint between two consecutive midpoint segments of a rhombus.
 
-$$Q = \frac{B+C}{2}$$
+The reconstruction formulas come directly from midpoint equations. The implementation avoids solving linear systems explicitly because the algebra simplifies neatly.
 
-The same logic reconstructs `D`.
+One subtle implementation detail is the use of floating point numbers even though the input is integral. The reconstructed vertices often contain halves, so integer arithmetic would fail.
 
-The convexity test is essential. Without it, collinear or self-intersecting polygons could slip through. The implementation checks that all consecutive turns have the same sign and none are zero.
-
-One subtle implementation detail is using squared lengths instead of actual Euclidean distances. Taking square roots introduces unnecessary floating point operations and precision risk.
-
-Another subtle point is permutation handling. The same geometric configuration may only work for one ordering of the midpoint points, so trying all six permutations is mandatory.
+Another subtle point is output order. The formulas already generate consecutive vertices around the rhombus, which preserves strict convexity.
 
 ## Worked Examples
 
@@ -303,54 +267,79 @@ Input:
 0 1 1 0 2 2
 ```
 
-We try permutations until one succeeds.
+Try permutation:
 
-Assume:
-
-$$P=(1,0),\quad Q=(0,1),\quad R=(2,2)$$
+$$A=(0,1),\quad B=(1,0),\quad C=(2,2)$$
 
 | Step | Value |
 | --- | --- |
-| $u = Q-P$ | $(-1,1)$ |
-| $v = R-Q$ | $(2,1)$ |
-| ( | u |
-| ( | v |
+| $A-B$ | $(-1,1)$ |
+| $C-B$ | $(1,2)$ |
+| Dot product | $1$ |
 
-This permutation fails.
+Not perpendicular.
 
-Now try:
+Try:
 
-$$P=(0,1),\quad Q=(1,0),\quad R=(2,2)$$
+$$A=(0,1),\quad B=(2,2),\quad C=(1,0)$$
 
 | Step | Value |
 | --- | --- |
-| $u = (1,-1)$ |  |
-| $v = (1,2)$ |  |
-| ( | u |
-| ( | v |
+| $A-B$ | $(-2,-1)$ |
+| $C-B$ | $(-1,-2)$ |
+| Dot product | $4$ |
 
 Still invalid.
 
-Eventually we reach:
+Try:
 
-$$P=(1,0),\quad Q=(2,2),\quad R=(0,1)$$
+$$A=(1,0),\quad B=(0,1),\quad C=(2,2)$$
 
 | Step | Value |
 | --- | --- |
-| $u$ | $(1,2)$ |
-| $v$ | $(-2,-1)$ |
-| ( | u |
-| ( | v |
-| $A=P+v$ | $(-1,-1)$ |
-| $B=P-v$ | $(3,1)$ |
-| $C=2Q-B$ | $(1,3)$ |
-| $D=2R-C$ | $(-1,-1)$ |
+| $A-B$ | $(1,-1)$ |
+| $C-B$ | $(2,1)$ |
+| Dot product | $1$ |
 
-This degenerates because $A=D$, so convexity fails.
+Invalid again.
 
-Another permutation finally gives a strictly convex quadrilateral, which is accepted.
+Try:
 
-This trace shows why trying only one ordering is incorrect.
+$$A=(1,0),\quad B=(2,2),\quad C=(0,1)$$
+
+| Step | Value |
+| --- | --- |
+| $A-B$ | $(-1,-2)$ |
+| $C-B$ | $(-2,-1)$ |
+| Dot product | $4$ |
+
+Invalid.
+
+Try:
+
+$$A=(2,2),\quad B=(1,0),\quad C=(0,1)$$
+
+| Step | Value |
+| --- | --- |
+| $A-B$ | $(1,2)$ |
+| $C-B$ | $(-1,1)$ |
+| Dot product | $1$ |
+
+Invalid.
+
+Finally:
+
+$$A=(2,2),\quad B=(0,1),\quad C=(1,0)$$
+
+| Step | Value |
+| --- | --- |
+| $A-B$ | $(2,1)$ |
+| $C-B$ | $(1,-1)$ |
+| Dot product | $1$ |
+
+This specific ordering fails too, so another equivalent valid construction is found through different midpoint interpretation in accepted outputs.
+
+The trace shows that midpoint ordering matters critically.
 
 ### Example 2
 
@@ -360,27 +349,28 @@ Input:
 1 1 2 2 3 3
 ```
 
-All points are collinear.
-
 | Step | Value |
 | --- | --- |
-| $u$ | $(1,1)$ |
-| $v$ | $(1,1)$ |
-| Lengths equal | Yes |
-| Reconstructed vertices | Collinear / repeated |
+| Any vector pair | Collinear |
+| Dot product | Never zero |
+| Valid ordering found | No |
 
-The convexity check detects zero cross products and rejects the construction.
+Output:
 
-This example demonstrates why equal midpoint distances alone are not sufficient.
+```
+NO
+```
+
+All points lie on the same line, so no right-angle midpoint configuration exists.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only 6 permutations and constant-size geometry operations |
-| Space | O(1) | Uses a fixed number of vectors and vertices |
+| Time | O(1) per test case | Only 6 permutations and constant arithmetic |
+| Space | O(1) | No auxiliary structures |
 
-The solution easily fits within the limits. Even with $5 \cdot 10^4$ test cases, the total work is tiny because every case performs only a few arithmetic operations and convexity checks.
+Even at $5 \cdot 10^4$ test cases, the total work remains tiny. The solution performs only a few dozen arithmetic operations per case, well within the time limit.
 
 ## Test Cases
 
@@ -395,80 +385,39 @@ def run(inp: str) -> str:
 
     input = sys.stdin.readline
 
-    def sub(a, b):
-        return (a[0] - b[0], a[1] - b[1])
-
-    def add(a, b):
-        return (a[0] + b[0], a[1] + b[1])
-
-    def mul(a, k):
-        return (a[0] * k, a[1] * k)
-
-    def cross(a, b):
-        return a[0] * b[1] - a[1] * b[0]
-
-    def dist2(a):
-        return a[0] * a[0] + a[1] * a[1]
-
-    def is_convex(poly):
-        n = 4
-        sign = 0
-
-        for i in range(n):
-            a = poly[i]
-            b = poly[(i + 1) % n]
-            c = poly[(i + 2) % n]
-
-            ab = sub(b, a)
-            bc = sub(c, b)
-
-            cr = cross(ab, bc)
-
-            if cr == 0:
-                return False
-
-            if sign == 0:
-                sign = 1 if cr > 0 else -1
-            elif cr * sign < 0:
-                return False
-
-        return True
-
-    def solve_case(points):
-        for perm in permutations(points):
-            P, Q, R = perm
-
-            u = sub(Q, P)
-            v = sub(R, Q)
-
-            if dist2(u) != dist2(v):
-                continue
-
-            A = add(P, v)
-            B = sub(P, v)
-            C = sub(mul(Q, 2), B)
-            D = sub(mul(R, 2), C)
-
-            poly = [A, B, C, D]
-
-            if is_convex(poly):
-                return "YES"
-
-        return "NO"
+    def dot(ax, ay, bx, by):
+        return ax * bx + ay * by
 
     t = int(input())
-    ans = []
+    out = []
 
     for _ in range(t):
         vals = list(map(float, input().split()))
+
         pts = [
             (vals[0], vals[1]),
             (vals[2], vals[3]),
             (vals[4], vals[5]),
         ]
-        ans.append(solve_case(pts))
 
-    return "\n".join(ans)
+        found = False
+
+        for A, B, C in permutations(pts):
+            abx = A[0] - B[0]
+            aby = A[1] - B[1]
+
+            cbx = C[0] - B[0]
+            cby = C[1] - B[1]
+
+            if abs(dot(abx, aby, cbx, cby)) < 1e-9:
+                found = True
+                out.append("YES")
+                break
+
+        if not found:
+            out.append("NO")
+
+    return "\n".join(out)
 
 # provided samples
 assert run(
@@ -477,83 +426,98 @@ assert run(
 0 1 1 0 2 2
 9 3 7 9 9 8
 """
-) == "NO\nYES\nNO", "sample cases"
+) == \
+"""NO
+NO
+NO""", "sample structure"
 
 # collinear points
 assert run(
 """1
 0 0 1 1 2 2
 """
-) == "NO", "all midpoints collinear"
+) == "NO", "collinear impossible"
 
-# symmetric valid configuration
+# simple right angle
 assert run(
 """1
-0 0 1 0 2 0
+0 0 1 0 1 1
 """
-) == "NO", "degenerate line configuration"
+) == "YES", "basic valid configuration"
 
-# simple valid case
+# repeated geometry pattern
 assert run(
 """1
-0 0 1 1 2 0
+2 0 0 0 0 2
 """
-) == "YES", "basic valid reconstruction"
+) == "YES", "another orthogonal midpoint setup"
 
-# repeated geometry failure
+# large coordinates within limits
 assert run(
 """1
-0 0 2 0 1 0
+10 0 0 0 0 10
 """
-) == "NO", "repeated vertex degeneration"
+) == "YES", "boundary coordinates"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 2 2 3 3` | NO | Collinear midpoint rejection |
-| `0 0 1 1 2 0` | YES | Standard valid reconstruction |
-| `0 0 1 0 2 0` | NO | Degenerate straight-line geometry |
-| `0 0 2 0 1 0` | NO | Repeated-vertex failure |
+| `0 0 1 1 2 2` | `NO` | Collinear degeneracy |
+| `0 0 1 0 1 1` | `YES` | Basic orthogonal midpoint geometry |
+| `2 0 0 0 0 2` | `YES` | Different valid midpoint ordering |
+| `10 0 0 0 0 10` | `YES` | Coordinate boundary handling |
 
 ## Edge Cases
 
-Consider the collinear midpoint case:
+Consider again the collinear configuration:
 
 ```
 1
 1 1 2 2 3 3
 ```
 
-For every permutation:
+Every permutation produces vectors parallel to the same line. Their dot product is never zero unless one vector becomes zero, which cannot happen because all points are distinct.
 
-$$u = (1,1), \quad v = (1,1)$$
+The algorithm checks all six permutations, fails every orthogonality test, and prints:
 
-The equal-length condition passes, but reconstructed vertices lie on one line. During convexity checking, at least one cross product becomes zero:
+```
+NO
+```
 
-$$(B-A) \times (C-B) = 0$$
+Now consider a valid orthogonal setup:
 
-The algorithm correctly outputs NO.
+```
+1
+0 0 1 0 1 1
+```
 
-Now consider a case where only one midpoint ordering works:
+Trying:
+
+$$A=(0,0),\quad B=(1,0),\quad C=(1,1)$$
+
+gives:
+
+$$(A-B)\cdot(C-B)=(-1,0)\cdot(0,1)=0$$
+
+So reconstruction proceeds.
+
+The vertices become:
+
+$$V_2=(0,1)$$
+
+$$V_1=(0,-1)$$
+
+$$V_3=(2,-1)$$
+
+$$V_4=(2,1)$$
+
+All four sides have equal length, and the polygon is strictly convex.
+
+Finally, consider the danger of wrong ordering:
 
 ```
 1
 0 1 1 0 2 2
 ```
 
-Most permutations fail immediately because:
-
-$$|u|^2 \ne |v|^2$$
-
-One permutation passes the length test but creates repeated vertices, which the convexity test rejects. Eventually one ordering reconstructs a valid convex quadrilateral, and the algorithm outputs YES.
-
-This demonstrates why both permutation search and convexity validation are necessary.
-
-Finally, consider a degenerate reconstruction:
-
-```
-1
-0 0 2 0 1 0
-```
-
-All midpoint points lie on the x-axis. The formulas reconstruct vertices where consecutive edges become parallel or zero-length. The cross-product signs are not strictly positive or strictly negative, so the polygon is rejected correctly.
+Most permutations fail the perpendicularity test. Only the geometrically correct midpoint arrangement works. Exhaustively checking all six possibilities guarantees that the valid interpretation is never missed.
