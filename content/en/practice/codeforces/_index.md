@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 72 contests, 373 problems, 316 verified."
+description: "Codeforces problem solutions with full editorial. 73 contests, 377 problems, 320 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**72 contests, 373 problems, 316 verified.**
+**73 contests, 377 problems, 320 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -28,7 +28,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [11](11/) | [Codeforces Beta Round 11](https://codeforces.com/contest/11) | Beta | 900-2800 | 5/5 | 8m 46s |
 | [12](12/) | [Codeforces Beta Round 12 (Div 2 Only)](https://codeforces.com/contest/12) | Beta | 800-2400 | 5/5 | 6m 41s |
 | [13](13/) | [Codeforces Beta Round 13](https://codeforces.com/contest/13) | Beta | 1000-2700 | 5/5 | 7m 43s |
-| [14](14/) | [Codeforces Beta Round 14 (Div. 2)](https://codeforces.com/contest/14) | Div. 2 | 800-1900 | 4/4 | 5m 43s |
+| [14](14/) | [Codeforces Beta Round 14 (Div. 2)](https://codeforces.com/contest/14) | Div. 2 | 800-1900 | 5/5 | 7m 42s |
 | [15](15/) | [Codeforces Beta Round 15](https://codeforces.com/contest/15) | Beta | 1200-2600 | 5/5 | 11m 13s |
 | [16](16/) | [Codeforces Beta Round 16 (Div. 2 Only)](https://codeforces.com/contest/16) | Div. 2 | 800-1900 | 5/5 | 7m 6s |
 | [17](17/) | [Codeforces Beta Round 17](https://codeforces.com/contest/17) | Beta | 1000-2900 | 4/5 | 16m 51s |
@@ -86,4 +86,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [69](69/) | [Codeforces Beta Round 63 (Div. 2)](https://codeforces.com/contest/69) | Div. 2 | 1000-2000 | 5/5 | 9m 17s |
 | [70](70/) | [Codeforces Beta Round 64](https://codeforces.com/contest/70) | Beta | 1300-2700 | 4/5 | 10m 23s |
 | [71](71/) | [Codeforces Beta Round 65 (Div. 2)](https://codeforces.com/contest/71) | Div. 2 | 800-2200 | 4/5 | 8m 23s |
+| [72](72/) | [Unknown Language Round 2](https://codeforces.com/contest/72) | Special | 1200-2200 | 3/3 | 5m 52s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
