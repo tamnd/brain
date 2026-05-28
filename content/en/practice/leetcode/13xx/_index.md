@@ -63,14 +63,15 @@ draft: false
 | 1351 | [Count Negative Numbers in a Sorted Matrix](1351.md) | 🟢 Easy | 49s | The problem asks us to count all the negative numbers in a 2D matri… |
 | 1352 | [Product of the Last K Numbers](1352.md) | 🟡 Medium | 1m 7s | This problem asks us to design a data structure that continuously p… |
 | 1353 | [Maximum Number of Events That Can Be Attended](1353.md) | 🟡 Medium | 1m 32s | The problem gives us a list of events, where each event is represen… |
-| 1354 | [Construct Target Array With Multiple Sums](1354.md) | 🔴 Hard | 1m | The problem asks whether it is possible to construct a given target… |
-| 1355 | [Activity Participants](1355.md) | 🟡 Medium | 45s | This problem asks us to find all activities that have neither the m… |
-| 1356 | [Sort Integers by The Number of 1 Bits](1356.md) | 🟢 Easy | 1m 34s | The problem asks us to sort an array of integers according to a cus… |
-| 1358 | [Number of Substrings Containing All Three Characters](1358.md) | 🟡 Medium | 1m 19s | In this problem, we are given a string s that contains only three p… |
-| 1359 | [Count All Valid Pickup and Delivery Options](1359.md) | 🔴 Hard | 37s | The problem is asking us to count all valid sequences of pickups an… |
+| 1354 | [Construct Target Array With Multiple Sums](1354.md) | 🔴 Hard | 58s | The problem asks whether it is possible to construct a given target… |
+| 1355 | [Activity Participants](1355.md) | 🟡 Medium | 1m 3s | This problem asks us to analyze participation counts for different … |
+| 1356 | [Sort Integers by The Number of 1 Bits](1356.md) | 🟢 Easy | 54s | The problem asks us to sort an integer array arr based on the numbe… |
+| 1357 | [Apply Discount Every n Orders](1357.md) | 🟡 Medium | 1m 5s | This problem asks us to implement a Cashier system that tracks cust… |
+| 1358 | [Number of Substrings Containing All Three Characters](1358.md) | 🟡 Medium | 54s | The problem asks us to count all substrings of a given string s tha… |
+| 1359 | [Count All Valid Pickup and Delivery Options](1359.md) | 🔴 Hard | 45s | This problem asks us to count the number of valid sequences for per… |
 | 1360 | [Number of Days Between Two Dates](1360.md) | 🟢 Easy | 1m 16s | The problem gives two dates in the format YYYY-MM-DD and asks us to… |
 | 1361 | [Validate Binary Tree Nodes](1361.md) | 🟡 Medium | 1m 26s | The problem gives us n nodes labeled from 0 to n - 1. For every nod… |
-| 1362 | [Closest Divisors](1362.md) | 🟡 Medium | 1m 17s | The problem gives us a positive integer num and asks us to find two… |
+| 1362 | [Closest Divisors](1362.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, and asks us to find two intege… |
 | 1363 | [Largest Multiple of Three](1363.md) | 🔴 Hard | 1m 27s | The problem gives us an array of digits, where each element is an i… |
 | 1366 | [Rank Teams by Votes](1366.md) | 🟡 Medium | 1m 31s | The problem gives us a list of votes, where each vote is a string r… |
 | 1367 | [Linked List in Binary Tree](1367.md) | 🟡 Medium | 1m 21s | This problem asks us to determine whether a linked list appears as … |
