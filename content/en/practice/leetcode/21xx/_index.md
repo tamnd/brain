@@ -88,3 +88,14 @@ draft: false
 | 2178 | [Maximum Split of Positive Even Integers](2178.md) | 🟡 Medium | 1m 15s | The problem gives us a single integer called finalSum, and asks us … |
 | 2180 | [Count Integers With Even Digit Sum](2180.md) | 🟢 Easy | 1m 10s | The problem gives us a positive integer num, and asks us to count h… |
 | 2181 | [Merge Nodes in Between Zeros](2181.md) | 🟡 Medium | 53s | This problem provides a singly linked list in which integers are se… |
+| 2183 | [Count Array Pairs Divisible by K](2183.md) | 🔴 Hard | 1m 17s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2184 | [Number of Ways to Build Sturdy Brick Wall](2184.md) | 🟡 Medium | 1m 8s | The problem asks us to count how many different sturdy brick walls … |
+| 2185 | [Counting Words With a Given Prefix](2185.md) | 🟢 Easy | 55s | The problem gives us two inputs: - An array of strings called words… |
+| 2186 | [Minimum Number of Steps to Make Two Strings Anagram II](2186.md) | 🟡 Medium | 58s | The problem gives us two strings, s and t, consisting only of lower… |
+| 2187 | [Minimum Time to Complete Trips](2187.md) | 🟡 Medium | 1m 10s | The problem gives us an array called time, where each element repre… |
+| 2188 | [Minimum Time to Finish the Race](2188.md) | 🔴 Hard | 44s | The problem asks us to find the minimum total time to complete a ra… |
+| 2189 | [Number of Ways to Build House of Cards](2189.md) | 🟡 Medium | 1m | The problem asks us to count how many distinct houses of cards can … |
+| 2190 | [Most Frequent Number Following Key In an Array](2190.md) | 🟢 Easy | 1m 15s | The problem gives us an integer array nums and a specific integer k… |
+| 2191 | [Sort the Jumbled Numbers](2191.md) | 🟡 Medium | 43s | This problem requires sorting an array of integers nums based not o… |
+| 2192 | [All Ancestors of a Node in a Directed Acyclic Graph](2192.md) | 🟡 Medium | 1m 32s | The problem gives us a directed acyclic graph, also called a DAG, w… |
+| 2193 | [Minimum Number of Moves to Make Palindrome](2193.md) | 🔴 Hard | 47s | Here’s a full technical guide for LeetCode 2193 following your form… |
