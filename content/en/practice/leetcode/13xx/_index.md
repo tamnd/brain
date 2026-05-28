@@ -66,26 +66,30 @@ draft: false
 | 1354 | [Construct Target Array With Multiple Sums](1354.md) | 🔴 Hard | 58s | The problem asks whether it is possible to construct a given target… |
 | 1355 | [Activity Participants](1355.md) | 🟡 Medium | 1m 3s | This problem asks us to analyze participation counts for different … |
 | 1356 | [Sort Integers by The Number of 1 Bits](1356.md) | 🟢 Easy | 54s | The problem asks us to sort an integer array arr based on the numbe… |
-| 1357 | [Apply Discount Every n Orders](1357.md) | 🟡 Medium | 1m 5s | This problem asks us to implement a Cashier system that tracks cust… |
+| 1357 | [Apply Discount Every n Orders](1357.md) | 🟡 Medium | 1m 7s | The problem describes a supermarket that sells products identified … |
 | 1358 | [Number of Substrings Containing All Three Characters](1358.md) | 🟡 Medium | 54s | The problem asks us to count all substrings of a given string s tha… |
 | 1359 | [Count All Valid Pickup and Delivery Options](1359.md) | 🔴 Hard | 45s | This problem asks us to count the number of valid sequences for per… |
 | 1360 | [Number of Days Between Two Dates](1360.md) | 🟢 Easy | 1m 16s | The problem gives two dates in the format YYYY-MM-DD and asks us to… |
 | 1361 | [Validate Binary Tree Nodes](1361.md) | 🟡 Medium | 1m 26s | The problem gives us n nodes labeled from 0 to n - 1. For every nod… |
 | 1362 | [Closest Divisors](1362.md) | 🟡 Medium | 1m 8s | The problem gives us an integer num, and asks us to find two intege… |
 | 1363 | [Largest Multiple of Three](1363.md) | 🔴 Hard | 36s | I can do that, but the guide will be very long and may get truncate… |
-| 1364 | [Number of Trusted Contacts of a Customer](1364.md) | 🟡 Medium | 1m 3s | This problem requires analyzing relationships between three tables … |
-| 1366 | [Rank Teams by Votes](1366.md) | 🟡 Medium | 1m 31s | The problem gives us a list of votes, where each vote is a string r… |
-| 1367 | [Linked List in Binary Tree](1367.md) | 🟡 Medium | 1m 21s | This problem asks us to determine whether a linked list appears as … |
+| 1364 | [Number of Trusted Contacts of a Customer](1364.md) | 🟡 Medium | 54s | This problem asks us to analyze relationships between customers, th… |
+| 1365 | [How Many Numbers Are Smaller Than the Current Number](1365.md) | 🟢 Easy | 1m 3s | The problem asks us to determine, for each element in an array, how… |
+| 1366 | [Rank Teams by Votes](1366.md) | 🟡 Medium | 1m 13s | The problem describes a voting based ranking system where every vot… |
+| 1367 | [Linked List in Binary Tree](1367.md) | 🟡 Medium | 1m 18s | This problem asks whether a linked list appears as a continuous dow… |
 | 1368 | [Minimum Cost to Make at Least One Valid Path in a Grid](1368.md) | 🔴 Hard | 53s | This problem asks us to find the minimum cost to make at least one … |
 | 1369 | [Get the Second Most Recent Activity](1369.md) | 🔴 Hard | 55s | The problem asks us to extract the second most recent activity of e… |
 | 1370 | [Increasing Decreasing String](1370.md) | 🟢 Easy | 1m 17s | The problem asks us to repeatedly build a new string by alternating… |
 | 1371 | [Find the Longest Substring Containing Vowels in Even Counts](1371.md) | 🟡 Medium | 1m 19s | The problem asks us to find the length of the longest substring in … |
+| 1372 | [Longest ZigZag Path in a Binary Tree](1372.md) | 🟡 Medium | 1m 16s | The problem gives us the root of a binary tree and asks us to find … |
 | 1373 | [Maximum Sum BST in Binary Tree](1373.md) | 🔴 Hard | 1m 31s | This problem asks us to examine every possible subtree inside a bin… |
 | 1374 | [Generate a String With Characters That Have Odd Counts](1374.md) | 🟢 Easy | 1m 8s | The problem asks us to construct a string of length n using only lo… |
 | 1375 | [Number of Times Binary String Is Prefix-Aligned](1375.md) | 🟡 Medium | 54s | The problem is asking us to simulate flipping bits in a binary stri… |
 | 1376 | [Time Needed to Inform All Employees](1376.md) | 🟡 Medium | 1m 24s | This problem models a company hierarchy as a tree. Every employee h… |
 | 1377 | [Frog Position After T Seconds](1377.md) | 🔴 Hard | 1m 33s | The problem gives us an undirected tree with n vertices numbered fr… |
 | 1378 | [Replace Employee ID With The Unique Identifier](1378.md) | 🟢 Easy | 47s | This problem asks us to combine information from two database table… |
+| 1379 | [Find a Corresponding Node of a Binary Tree in a Clone of That Tree](1379.md) | 🟢 Easy | 1m 20s | The problem gives us two binary trees, original and cloned. The clo… |
+| 1380 | [Lucky Numbers in a Matrix](1380.md) | 🟢 Easy | 1m 17s | The problem gives us an m x n matrix containing distinct integers. … |
 | 1381 | [Design a Stack With Increment Operation](1381.md) | 🟡 Medium | 5m 37s | This problem asks us to implement a stack data structure with a twi… |
 | 1382 | [Balance a Binary Search Tree](1382.md) | 🟡 Medium | 55s | The problem asks us to take an input binary search tree (BST) and r… |
 | 1383 | [Maximum Performance of a Team](1383.md) | 🔴 Hard | 1m 31s | The problem gives us n engineers, where each engineer has two attri… |
@@ -100,3 +104,7 @@ draft: false
 | 1392 | [Longest Happy Prefix](1392.md) | 🔴 Hard | 1m 5s | The problem asks us to find the longest substring that satisfies tw… |
 | 1393 | [Capital Gain/Loss](1393.md) | 🟡 Medium | 52s | The problem is asking us to calculate the capital gain or loss for … |
 | 1395 | [Count Number of Teams](1395.md) | 🟡 Medium | 1m 3s | This problem asks us to count the number of valid teams of three so… |
+| 1396 | [Design Underground System](1396.md) | 🟡 Medium | 1m 27s | This problem asks us to design a small tracking system for an under… |
+| 1397 | [Find All Good Strings](1397.md) | 🔴 Hard | 1m 32s | The problem asks us to count how many strings of length n satisfy t… |
+| 1398 | [Customers Who Bought Products A and B but Not C](1398.md) | 🟡 Medium | 1m 39s | This problem gives us two database tables, Customers and Orders. Th… |
+| 1399 | [Count Largest Group](1399.md) | 🟢 Easy | 1m 10s | The problem asks us to group every integer from 1 to n based on the… |
