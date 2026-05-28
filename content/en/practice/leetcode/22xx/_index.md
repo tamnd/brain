@@ -17,15 +17,15 @@ draft: false
 | 2204 | [Distance to a Cycle in Undirected Graph](2204.md) | 🔴 Hard | 1m 27s | This problem gives us a connected undirected graph with n nodes and… |
 | 2205 | [The Number of Users That Are Eligible for Discount](2205.md) | 🟢 Easy | 48s | The problem asks us to determine how many users are eligible for a … |
 | 2206 | [Divide Array Into Equal Pairs](2206.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums containing exactly 2 n e… |
-| 2207 | [Maximize Number of Subsequences in a String](2207.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of occurrences of a 2-ch… |
+| 2207 | [Maximize Number of Subsequences in a String](2207.md) | 🟡 Medium | 2m 1s | This problem asks us to maximize the number of times a two-characte… |
 | 2208 | [Minimum Operations to Halve Array Sum](2208.md) | 🟡 Medium | 1m 20s | The problem gives us an array of positive integers, and in one oper… |
-| 2209 | [Minimum White Tiles After Covering With Carpets](2209.md) | 🔴 Hard | 34s | The problem presents a binary string floor representing a row of ti… |
-| 2210 | [Count Hills and Valleys in an Array](2210.md) | 🟢 Easy | 1m 1s | The problem asks us to count how many distinct hills and valleys ex… |
-| 2211 | [Count Collisions on a Road](2211.md) | 🟡 Medium | 33s | This problem asks us to compute the total number of collisions that… |
-| 2212 | [Maximum Points in an Archery Competition](2212.md) | 🟡 Medium | 50s | This problem is about simulating a turn-based archery competition w… |
+| 2209 | [Minimum White Tiles After Covering With Carpets](2209.md) | 🔴 Hard | 43s | The problem presents a binary string floor representing a row of ti… |
+| 2210 | [Count Hills and Valleys in an Array](2210.md) | 🟢 Easy | 40s | The problem asks us to identify hills and valleys in an integer arr… |
+| 2211 | [Count Collisions on a Road](2211.md) | 🟡 Medium | 1m 13s | The problem describes a one dimensional road containing cars positi… |
+| 2212 | [Maximum Points in an Archery Competition](2212.md) | 🟡 Medium | 46s | The problem is asking us to determine the optimal way for Bob to di… |
 | 2213 | [Longest Substring of One Repeating Character](2213.md) | 🔴 Hard | 1m 35s | The problem gives us a string s and a sequence of update queries. E… |
-| 2214 | [Minimum Health to Beat Game](2214.md) | 🟡 Medium | 36s | This problem describes a linear sequence of game levels, each of wh… |
-| 2215 | [Find the Difference of Two Arrays](2215.md) | 🟢 Easy | 45s | The problem asks us to find the distinct integers that appear in on… |
+| 2214 | [Minimum Health to Beat Game](2214.md) | 🟡 Medium | 50s | The problem presents a sequential game consisting of n levels, wher… |
+| 2215 | [Find the Difference of Two Arrays](2215.md) | 🟢 Easy | 1m 10s | This problem asks us to compare two integer arrays and identify the… |
 | 2216 | [Minimum Deletions to Make Array Beautiful](2216.md) | 🟡 Medium | 37s | The problem asks us to transform an integer array into a “beautiful… |
 | 2217 | [Find Palindrome With Fixed Length](2217.md) | 🟡 Medium | 4m 50s | The problem asks us to find specific positive palindromic numbers o… |
 | 2218 | [Maximum Value of K Coins From Piles](2218.md) | 🔴 Hard | 2m 19s | The problem gives us several piles of coins, where each pile is rep… |

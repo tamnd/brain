@@ -84,3 +84,7 @@ draft: false
 | 2486 | [Append Characters to String to Make Subsequence](2486.md) | 🟡 Medium | 2m 30s | The problem gives us two strings, s and t, and asks for the minimum… |
 | 2487 | [Remove Nodes From Linked List](2487.md) | 🟡 Medium | 38s | The problem asks us to process a singly-linked list and remove node… |
 | 2489 | [Number of Substrings With Fixed Ratio](2489.md) | 🟡 Medium | 1m 16s | We are given a binary string s consisting only of '0' and '1', alon… |
+| 2492 | [Minimum Score of a Path Between Two Cities](2492.md) | 🟡 Medium | 1m 19s | The problem asks us to find the minimum possible score of a path be… |
+| 2494 | [Merge Overlapping Events in the Same Hall](2494.md) | 🔴 Hard | 1m 6s | This problem gives us a database table named HallEvents. Each row r… |
+| 2497 | [Maximum Star Sum of a Graph](2497.md) | 🟡 Medium | 1m 21s | The problem gives us an undirected graph with n nodes. Each node ha… |
+| 2498 | [Frog Jump II](2498.md) | 🟡 Medium | 50s | The problem presents a sequence of stones in a river represented by… |
