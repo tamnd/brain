@@ -17,3 +17,13 @@ draft: false
 | 1205 | [Monthly Transactions II](1205.md) | 🟡 Medium | 43s | The problem asks us to generate a monthly summary report of transac… |
 | 1207 | [Unique Number of Occurrences](1207.md) | 🟢 Easy | 1m 16s | The problem asks us to determine whether the number of times each i… |
 | 1209 | [Remove All Adjacent Duplicates in String II](1209.md) | 🟡 Medium | 49s | The problem is asking us to repeatedly remove k consecutive identic… |
+| 1211 | [Queries Quality and Percentage](1211.md) | 🟢 Easy | 1m 7s | Understood. I will create a complete technical solution guide for L… |
+| 1212 | [Team Scores in Football Tournament](1212.md) | 🟡 Medium | 37s | This problem asks us to compute the total points for each football … |
+| 1213 | [Intersection of Three Sorted Arrays](1213.md) | 🟢 Easy | 1m 9s | The problem gives us three integer arrays, arr1, arr2, and arr3. Ea… |
+| 1214 | [Two Sum BSTs](1214.md) | 🟡 Medium | 1m 5s | This problem gives us the roots of two Binary Search Trees (BSTs), … |
+| 1215 | [Stepping Numbers](1215.md) | 🟡 Medium | 46s | The problem is asking us to find all integers within a given range … |
+| 1216 | [Valid Palindrome III](1216.md) | 🔴 Hard | 44s | The problem asks us to determine whether a string s can be transfor… |
+| 1217 | [Minimum Cost to Move Chips to The Same Position](1217.md) | 🟢 Easy | 40s | The problem presents a scenario where we have n chips placed at var… |
+| 1218 | [Longest Arithmetic Subsequence of Given Difference](1218.md) | 🟡 Medium | 49s | The problem asks for the length of the longest arithmetic subsequen… |
+| 1219 | [Path with Maximum Gold](1219.md) | 🟡 Medium | 1m 29s | The problem gives a two dimensional grid where each cell contains e… |
+| 1222 | [Queens That Can Attack the King](1222.md) | 🟡 Medium | 1m 21s | This problem models the movement and attack rules of queens in ches… |

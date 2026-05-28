@@ -81,3 +81,15 @@ draft: false
 | 1168 | [Optimize Water Distribution in a Village](1168.md) | 🔴 Hard | 45s | The problem asks us to supply water to all houses in a village in t… |
 | 1171 | [Remove Zero Sum Consecutive Nodes from Linked List](1171.md) | 🟡 Medium | 47s | The problem requires us to repeatedly remove consecutive nodes in a… |
 | 1173 | [Immediate Food Delivery I](1173.md) | 🟢 Easy | 41s | The problem is asking to calculate the percentage of immediate food… |
+| 1174 | [Immediate Food Delivery II](1174.md) | 🟡 Medium | 1m 21s | The problem provides a Delivery table that records food delivery or… |
+| 1175 | [Prime Arrangements](1175.md) | 🟢 Easy | 48s | The problem asks us to count how many permutations of numbers from … |
+| 1176 | [Diet Plan Performance](1176.md) | 🟢 Easy | 40s | The problem is asking us to simulate a dieter’s performance over a … |
+| 1177 | [Can Make Palindrome from Substring](1177.md) | 🟡 Medium | 44s | The problem asks us to determine whether certain substrings of a gi… |
+| 1178 | [Number of Valid Words for Each Puzzle](1178.md) | 🔴 Hard | 1m 27s | The problem asks us to determine, for each given puzzle string, how… |
+| 1179 | [Reformat Department Table](1179.md) | 🟢 Easy | 43s | The problem is asking us to take a table Department that records re… |
+| 1180 | [Count Substrings with Only One Distinct Letter](1180.md) | 🟢 Easy | 1m 17s | The problem asks us to count how many substrings of a given string … |
+| 1181 | [Before and After Puzzle](1181.md) | 🟡 Medium | 1m 20s | The problem gives us an array of phrases, where each phrase is a st… |
+| 1182 | [Shortest Distance to Target Color](1182.md) | 🟡 Medium | 1m 11s | The problem gives us an array called colors, where each position co… |
+| 1184 | [Distance Between Bus Stops](1184.md) | 🟢 Easy | 1m 8s | In this problem, we are given a circular bus route with n stops num… |
+| 1185 | [Day of the Week](1185.md) | 🟢 Easy | 1m 11s | This problem asks us to determine which day of the week corresponds… |
+| 1187 | [Make Array Strictly Increasing](1187.md) | 🔴 Hard | 40s | The problem is asking us to transform the array arr1 into a strictl… |
