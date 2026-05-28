@@ -69,7 +69,9 @@ draft: false
 | 2356 | [Number of Unique Subjects Taught by Each Teacher](2356.md) | 🟢 Easy | 38s | The problem requires calculating the number of unique subjects each… |
 | 2357 | [Make Array Zero by Subtracting Equal Amounts](2357.md) | 🟢 Easy | 1m 8s | The problem gives us an array of non-negative integers called nums.… |
 | 2358 | [Maximum Number of Groups Entering a Competition](2358.md) | 🟡 Medium | 1m 4s | The problem gives us an array called grades, where each element rep… |
-| 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 55s | The problem asks us to compute the minimum cost to reach each stop … |
+| 2359 | [Find Closest Node to Given Two Nodes](2359.md) | 🟡 Medium | 39s | The problem asks us to find a node in a directed graph with a very … |
+| 2360 | [Longest Cycle in a Graph](2360.md) | 🔴 Hard | 1m 14s | This problem gives us a directed graph represented by an array call… |
+| 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 37s | This problem models a scenario where you are traversing a train lin… |
 | 2362 | [Generate the Invoice](2362.md) | 🔴 Hard | 1m 36s | This problem asks us to identify the invoice with the highest total… |
 | 2363 | [Merge Similar Items](2363.md) | 🟢 Easy | 1m 16s | The problem requires merging two lists of items, where each item is… |
 | 2364 | [Count Number of Bad Pairs](2364.md) | 🟡 Medium | 1m 10s | We are given a 0-indexed integer array nums. A pair of indices (i, … |
