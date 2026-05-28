@@ -46,9 +46,9 @@ draft: false
 | 1234 | [Replace the Substring for Balanced String](1234.md) | 🟡 Medium | 45s | The problem asks us to balance a string composed of exactly four ty… |
 | 1235 | [Maximum Profit in Job Scheduling](1235.md) | 🔴 Hard | 1m 20s | The problem gives us three arrays of equal length: - startTime[i] r… |
 | 1236 | [Web Crawler](1236.md) | 🟡 Medium | 1m 14s | The problem asks us to implement a simplified web crawler. We are g… |
-| 1237 | [Find Positive Integer Solution for a Given Equation](1237.md) | 🟡 Medium | 56s | The problem asks us to find all positive integer pairs (x, y) such … |
-| 1238 | [Circular Permutation in Binary Representation](1238.md) | 🟡 Medium | 51s | The problem asks us to generate a sequence of integers representing… |
-| 1239 | [Maximum Length of a Concatenated String with Unique Characters](1239.md) | 🟡 Medium | 1m 18s | The problem asks us to find the maximum length of a string that can… |
+| 1237 | [Find Positive Integer Solution for a Given Equation](1237.md) | 🟡 Medium | 1m 14s | This problem gives us access to a hidden function f(x, y) through a… |
+| 1238 | [Circular Permutation in Binary Representation](1238.md) | 🟡 Medium | 1m 6s | This problem asks us to construct a special ordering of all integer… |
+| 1239 | [Maximum Length of a Concatenated String with Unique Characters](1239.md) | 🟡 Medium | 1m 35s | This problem asks us to select a subsequence of strings from the in… |
 | 1240 | [Tiling a Rectangle with the Fewest Squares](1240.md) | 🔴 Hard | 1m 28s | The problem asks us to tile an n x m rectangle using the minimum po… |
 | 1241 | [Number of Comments per Post](1241.md) | 🟢 Easy | 40s | This problem is asking us to analyze a table of submissions that ca… |
 | 1242 | [Web Crawler Multithreaded](1242.md) | 🟡 Medium | 1m 14s | Here is the complete, detailed technical solution guide for LeetCod… |

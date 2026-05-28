@@ -1181,3 +1181,78 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1164 | [Product Price at a Given Date](11xx/1164.md) | 🟡 Medium | 1m 19s | The problem provides a database table named Products, where each ro… |
 | 1165 | [Single-Row Keyboard](11xx/1165.md) | 🟢 Easy | 52s | The problem describes a single-row keyboard where each key is posit… |
 | 1166 | [Design File System](11xx/1166.md) | 🟡 Medium | 1m 14s | This problem asks us to design a simplified file system that suppor… |
+| 1167 | [Minimum Cost to Connect Sticks](11xx/1167.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers called sticks, w… |
+| 1168 | [Optimize Water Distribution in a Village](11xx/1168.md) | 🔴 Hard | 45s | The problem asks us to supply water to all houses in a village in t… |
+| 1171 | [Remove Zero Sum Consecutive Nodes from Linked List](11xx/1171.md) | 🟡 Medium | 47s | The problem requires us to repeatedly remove consecutive nodes in a… |
+| 1173 | [Immediate Food Delivery I](11xx/1173.md) | 🟢 Easy | 41s | The problem is asking to calculate the percentage of immediate food… |
+| 1174 | [Immediate Food Delivery II](11xx/1174.md) | 🟡 Medium | 1m 21s | The problem provides a Delivery table that records food delivery or… |
+| 1175 | [Prime Arrangements](11xx/1175.md) | 🟢 Easy | 48s | The problem asks us to count how many permutations of numbers from … |
+| 1176 | [Diet Plan Performance](11xx/1176.md) | 🟢 Easy | 40s | The problem is asking us to simulate a dieter’s performance over a … |
+| 1177 | [Can Make Palindrome from Substring](11xx/1177.md) | 🟡 Medium | 44s | The problem asks us to determine whether certain substrings of a gi… |
+| 1178 | [Number of Valid Words for Each Puzzle](11xx/1178.md) | 🔴 Hard | 1m 27s | The problem asks us to determine, for each given puzzle string, how… |
+| 1179 | [Reformat Department Table](11xx/1179.md) | 🟢 Easy | 43s | The problem is asking us to take a table Department that records re… |
+| 1180 | [Count Substrings with Only One Distinct Letter](11xx/1180.md) | 🟢 Easy | 1m 17s | The problem asks us to count how many substrings of a given string … |
+| 1181 | [Before and After Puzzle](11xx/1181.md) | 🟡 Medium | 1m 20s | The problem gives us an array of phrases, where each phrase is a st… |
+| 1182 | [Shortest Distance to Target Color](11xx/1182.md) | 🟡 Medium | 1m 11s | The problem gives us an array called colors, where each position co… |
+| 1184 | [Distance Between Bus Stops](11xx/1184.md) | 🟢 Easy | 1m 8s | In this problem, we are given a circular bus route with n stops num… |
+| 1185 | [Day of the Week](11xx/1185.md) | 🟢 Easy | 1m 11s | This problem asks us to determine which day of the week corresponds… |
+| 1187 | [Make Array Strictly Increasing](11xx/1187.md) | 🔴 Hard | 40s | The problem is asking us to transform the array arr1 into a strictl… |
+| 1189 | [Maximum Number of Balloons](11xx/1189.md) | 🟢 Easy | 46s | The problem asks us to determine the maximum number of times the wo… |
+| 1190 | [Reverse Substrings Between Each Pair of Parentheses](11xx/1190.md) | 🟡 Medium | 1m 15s | The problem gives us a string s containing lowercase English letter… |
+| 1191 | [K-Concatenation Maximum Sum](11xx/1191.md) | 🟡 Medium | 1m 41s | This problem asks us to find the maximum possible sum of a contiguo… |
+| 1192 | [Critical Connections in a Network](11xx/1192.md) | 🔴 Hard | 1m 31s | This problem gives us an undirected graph representing a network of… |
+| 1193 | [Monthly Transactions I](11xx/1193.md) | 🟡 Medium | 47s | The problem is asking us to produce aggregated statistics on transa… |
+| 1194 | [Tournament Winners](11xx/1194.md) | 🔴 Hard | 44s | The problem asks us to determine the winner in each group of player… |
+| 1195 | [Fizz Buzz Multithreaded](11xx/1195.md) | 🟡 Medium | 1m 24s | The problem asks us to coordinate four separate threads so they col… |
+| 1196 | [How Many Apples Can You Put into the Basket](11xx/1196.md) | 🟢 Easy | 36s | This problem is asking us to determine how many apples we can fit i… |
+| 1197 | [Minimum Knight Moves](11xx/1197.md) | 🟡 Medium | 49s | This problem asks us to compute the minimum number of moves a knigh… |
+| 1199 | [Minimum Time to Build Blocks](11xx/1199.md) | 🔴 Hard | 1m 43s | The problem requires determining the minimum amount of time to buil… |
+| 1201 | [Ugly Number III](12xx/1201.md) | 🟡 Medium | 1m 23s | The problem defines an "ugly number" as any positive integer that i… |
+| 1202 | [Smallest String With Swaps](12xx/1202.md) | 🟡 Medium | 1m 27s | The problem gives us a string s and a list of index pairs called pa… |
+| 1203 | [Sort Items by Groups Respecting Dependencies](12xx/1203.md) | 🔴 Hard | 1m 44s | This problem asks us to sort n items while satisfying two different… |
+| 1204 | [Last Person to Fit in the Bus](12xx/1204.md) | 🟡 Medium | 1m 6s | This problem gives us a database table named Queue that represents … |
+| 1205 | [Monthly Transactions II](12xx/1205.md) | 🟡 Medium | 1m 2s | This problem asks us to generate a monthly financial summary for ea… |
+| 1206 | [Design Skiplist](12xx/1206.md) | 🔴 Hard | 43s | This problem asks us to implement a Skiplist from scratch, a probab… |
+| 1207 | [Unique Number of Occurrences](12xx/1207.md) | 🟢 Easy | 1m 1s | The problem gives us an integer array arr and asks whether every di… |
+| 1208 | [Get Equal Substrings Within Budget](12xx/1208.md) | 🟡 Medium | 2m 30s | The problem asks us to determine the longest contiguous substring o… |
+| 1209 | [Remove All Adjacent Duplicates in String II](12xx/1209.md) | 🟡 Medium | 1m 3s | The problem asks us to repeatedly remove groups of exactly k adjace… |
+| 1210 | [Minimum Moves to Reach Target with Rotations](12xx/1210.md) | 🔴 Hard | 1m 39s | This problem models a shortest path search on a grid, but the movin… |
+| 1211 | [Queries Quality and Percentage](12xx/1211.md) | 🟢 Easy | 1m 23s | The problem gives us a database table named Queries. Each row repre… |
+| 1212 | [Team Scores in Football Tournament](12xx/1212.md) | 🟡 Medium | 37s | This problem asks us to compute the total points for each football … |
+| 1213 | [Intersection of Three Sorted Arrays](12xx/1213.md) | 🟢 Easy | 1m 5s | The problem gives us three integer arrays, arr1, arr2, and arr3. Ea… |
+| 1214 | [Two Sum BSTs](12xx/1214.md) | 🟡 Medium | 1m 16s | The problem gives us two binary search trees, root1 and root2, alon… |
+| 1215 | [Stepping Numbers](12xx/1215.md) | 🟡 Medium | 46s | The problem is asking us to find all integers within a given range … |
+| 1216 | [Valid Palindrome III](12xx/1216.md) | 🔴 Hard | 39s | The problem asks us to determine whether a given string s can becom… |
+| 1217 | [Minimum Cost to Move Chips to The Same Position](12xx/1217.md) | 🟢 Easy | 1m 1s | The problem asks us to move n chips located at various positions al… |
+| 1218 | [Longest Arithmetic Subsequence of Given Difference](12xx/1218.md) | 🟡 Medium | 49s | The problem asks for the length of the longest arithmetic subsequen… |
+| 1219 | [Path with Maximum Gold](12xx/1219.md) | 🟡 Medium | 1m 21s | The problem gives us a two dimensional grid representing a gold min… |
+| 1220 | [Count Vowels Permutation](12xx/1220.md) | 🔴 Hard | 1m 14s | The problem asks us to count how many valid strings of length n can… |
+| 1221 | [Split a String in Balanced Strings](12xx/1221.md) | 🟢 Easy | 59s | This problem gives us a string s that contains only the characters … |
+| 1222 | [Queens That Can Attack the King](12xx/1222.md) | 🟡 Medium | 1m 14s | In this problem, we are given the positions of several black queens… |
+| 1223 | [Dice Roll Simulation](12xx/1223.md) | 🔴 Hard | 47s | The problem asks us to calculate the total number of valid sequence… |
+| 1224 | [Maximum Equal Frequency](12xx/1224.md) | 🔴 Hard | 1m 22s | The problem gives an array nums consisting of positive integers. We… |
+| 1225 | [Report Contiguous Dates](12xx/1225.md) | 🔴 Hard | 42s | The problem asks us to analyze a system that runs one task per day … |
+| 1226 | [The Dining Philosophers](12xx/1226.md) | 🟡 Medium | 1m 24s | This problem asks us to implement a concurrent synchronization mech… |
+| 1227 | [Airplane Seat Assignment Probability](12xx/1227.md) | 🟡 Medium | 39s | This problem involves a scenario with n passengers and n seats on a… |
+| 1228 | [Missing Number In Arithmetic Progression](12xx/1228.md) | 🟢 Easy | 48s | The problem asks us to find a missing value from an array that orig… |
+| 1229 | [Meeting Scheduler](12xx/1229.md) | 🟡 Medium | 1m 2s | This problem asks us to find the earliest overlapping time slot of … |
+| 1230 | [Toss Strange Coins](12xx/1230.md) | 🟡 Medium | 58s | This problem is asking us to calculate the probability that, when t… |
+| 1231 | [Divide Chocolate](12xx/1231.md) | 🔴 Hard | 45s | The problem asks us to divide a chocolate bar into k + 1 consecutiv… |
+| 1232 | [Check If It Is a Straight Line](12xx/1232.md) | 🟢 Easy | 39s | The problem asks us to determine whether a given set of points in a… |
+| 1233 | [Remove Sub-Folders from the Filesystem](12xx/1233.md) | 🟡 Medium | 46s | This problem asks us to process a list of folder paths and remove a… |
+| 1234 | [Replace the Substring for Balanced String](12xx/1234.md) | 🟡 Medium | 45s | The problem asks us to balance a string composed of exactly four ty… |
+| 1235 | [Maximum Profit in Job Scheduling](12xx/1235.md) | 🔴 Hard | 1m 20s | The problem gives us three arrays of equal length: - startTime[i] r… |
+| 1236 | [Web Crawler](12xx/1236.md) | 🟡 Medium | 1m 14s | The problem asks us to implement a simplified web crawler. We are g… |
+| 1237 | [Find Positive Integer Solution for a Given Equation](12xx/1237.md) | 🟡 Medium | 1m 14s | This problem gives us access to a hidden function f(x, y) through a… |
+| 1238 | [Circular Permutation in Binary Representation](12xx/1238.md) | 🟡 Medium | 1m 6s | This problem asks us to construct a special ordering of all integer… |
+| 1239 | [Maximum Length of a Concatenated String with Unique Characters](12xx/1239.md) | 🟡 Medium | 1m 35s | This problem asks us to select a subsequence of strings from the in… |
+| 1240 | [Tiling a Rectangle with the Fewest Squares](12xx/1240.md) | 🔴 Hard | 1m 28s | The problem asks us to tile an n x m rectangle using the minimum po… |
+| 1241 | [Number of Comments per Post](12xx/1241.md) | 🟢 Easy | 40s | This problem is asking us to analyze a table of submissions that ca… |
+| 1242 | [Web Crawler Multithreaded](12xx/1242.md) | 🟡 Medium | 1m 14s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 1243 | [Array Transformation](12xx/1243.md) | 🟢 Easy | 1m 26s | The problem asks us to repeatedly transform an array according to a… |
+| 1244 | [Design A Leaderboard](12xx/1244.md) | 🟡 Medium | 44s | The problem requires designing a Leaderboard class to maintain scor… |
+| 1245 | [Tree Diameter](12xx/1245.md) | 🟡 Medium | 48s | The problem asks us to find the diameter of a tree, which is define… |
+| 1246 | [Palindrome Removal](12xx/1246.md) | 🔴 Hard | 53s | The problem is asking us to remove all elements from an integer arr… |
+| 1247 | [Minimum Swaps to Make Strings Equal](12xx/1247.md) | 🟡 Medium | 1m 11s | The problem gives us two strings, s1 and s2, that have the same len… |
+| 1249 | [Minimum Remove to Make Valid Parentheses](12xx/1249.md) | 🟡 Medium | 1m 8s | The problem gives a string containing three possible types of chara… |
+| 1250 | [Check If It Is a Good Array](12xx/1250.md) | 🔴 Hard | 1m 22s | This problem asks whether it is possible to create the value 1 usin… |
