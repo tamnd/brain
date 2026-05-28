@@ -63,11 +63,24 @@ draft: false
 | 1450 | [Number of Students Doing Homework at a Given Time](1450.md) | 🟢 Easy | 57s | This problem asks us to determine how many students are doing homew… |
 | 1451 | [Rearrange Words in a Sentence](1451.md) | 🟡 Medium | 1m 37s | The problem gives us a sentence where words are separated by single… |
 | 1452 | [People Whose List of Favorite Companies Is Not a Subset of Another List](1452.md) | 🟡 Medium | 55s | The problem requires identifying all people in a group whose list o… |
-| 1453 | [Maximum Number of Darts Inside of a Circular Dartboard](1453.md) | 🔴 Hard | 56s | The problem is asking us to find the maximum number of darts that c… |
-| 1454 | [Active Users](1454.md) | 🟡 Medium | 58s | The problem is asking us to identify "active users" from a database… |
-| 1456 | [Maximum Number of Vowels in a Substring of Given Length](1456.md) | 🟡 Medium | 55s | The problem asks us to determine the maximum number of vowels prese… |
-| 1457 | [Pseudo-Palindromic Paths in a Binary Tree](1457.md) | 🟡 Medium | 1m 26s | The problem gives us a binary tree where every node contains a digi… |
-| 1458 | [Max Dot Product of Two Subsequences](1458.md) | 🔴 Hard | 1m 6s | The problem is asking us to compute the maximum dot product of two … |
-| 1459 | [Rectangles Area](1459.md) | 🟡 Medium | 1m 2s | This problem asks us to identify all possible axis-aligned rectangl… |
-| 1460 | [Make Two Arrays Equal by Reversing Subarrays](1460.md) | 🟢 Easy | 1m 20s | The problem gives us two integer arrays, target and arr, both havin… |
-| 1461 | [Check If a String Contains All Binary Codes of Size K](1461.md) | 🟡 Medium | 55s | The problem is asking us to determine if a given binary string s co… |
+| 1453 | [Maximum Number of Darts Inside of a Circular Dartboard](1453.md) | 🔴 Hard | 1m 19s | In this problem, we are given the coordinates of several darts thro… |
+| 1454 | [Active Users](1454.md) | 🟡 Medium | 1m 7s | The problem asks us to identify active users from a database contai… |
+| 1455 | [Check If a Word Occurs As a Prefix of Any Word in a Sentence](1455.md) | 🟢 Easy | 1m 5s | This problem asks us to determine whether a given string, searchWor… |
+| 1456 | [Maximum Number of Vowels in a Substring of Given Length](1456.md) | 🟡 Medium | 56s | This problem asks us to determine the maximum number of vowels that… |
+| 1457 | [Pseudo-Palindromic Paths in a Binary Tree](1457.md) | 🟡 Medium | 1m 19s | This problem asks us to count how many root to leaf paths in a bina… |
+| 1458 | [Max Dot Product of Two Subsequences](1458.md) | 🔴 Hard | 1m 14s | The problem is asking to find the maximum dot product of two non-em… |
+| 1459 | [Rectangles Area](1459.md) | 🟡 Medium | 1m 10s | You included two different problems in one message, and the second … |
+| 1460 | [Make Two Arrays Equal by Reversing Subarrays](1460.md) | 🟢 Easy | 1m 20s | This problem asks whether one integer array, arr, can be transforme… |
+| 1461 | [Check If a String Contains All Binary Codes of Size K](1461.md) | 🟡 Medium | 1m 24s | The problem gives us a binary string s and an integer k. A binary s… |
+| 1462 | [Course Schedule IV](1462.md) | 🟡 Medium | 1m 38s | This problem gives us a directed acyclic graph representing course … |
+| 1463 | [Cherry Pickup II](1463.md) | 🔴 Hard | 1m 16s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1464 | [Maximum Product of Two Elements in an Array](1464.md) | 🟢 Easy | 1m 15s | The problem gives an integer array nums, and asks us to choose two … |
+| 1465 | [Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts](1465.md) | 🟡 Medium | 1m 8s | This problem gives us a rectangular cake with height h and width w.… |
+| 1466 | [Reorder Routes to Make All Paths Lead to the City Zero](1466.md) | 🟡 Medium | 1m 1s | This problem involves a network of n cities connected by n - 1 road… |
+| 1467 | [Probability of a Two Boxes Having The Same Number of Distinct Balls](1467.md) | 🔴 Hard | 1m 24s | The problem gives us several colors of balls, where balls[i] repres… |
+| 1468 | [Calculate Salaries](1468.md) | 🟡 Medium | 1m | This problem asks us to compute the post tax salary for every emplo… |
+| 1469 | [Find All The Lonely Nodes](1469.md) | 🟢 Easy | 1m | The problem asks us to identify lonely nodes in a binary tree. A lo… |
+| 1470 | [Shuffle the Array](1470.md) | 🟢 Easy | 1m 18s | The problem gives us an array nums with exactly 2n elements. The st… |
+| 1471 | [The k Strongest Values in an Array](1471.md) | 🟡 Medium | 1m 24s | The problem asks us to return the k strongest values from an intege… |
+| 1472 | [Design Browser History](1472.md) | 🟡 Medium | 54s | The problem is asking us to simulate a single-tab browser with a hi… |
+| 1473 | [Paint House III](1473.md) | 🔴 Hard | 1m | The problem asks us to paint a row of m houses with n possible colo… |
