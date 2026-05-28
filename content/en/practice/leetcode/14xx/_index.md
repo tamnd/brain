@@ -59,5 +59,15 @@ draft: false
 | 1446 | [Consecutive Characters](1446.md) | 🟢 Easy | 1m 5s | The problem asks us to compute the power of a string. The power is … |
 | 1447 | [Simplified Fractions](1447.md) | 🟡 Medium | 1m 4s | The problem asks us to generate all simplified fractions between 0 … |
 | 1448 | [Count Good Nodes in Binary Tree](1448.md) | 🟡 Medium | 1m 22s | The problem gives us the root of a binary tree and asks us to count… |
-| 1449 | [Form Largest Integer With Digits That Add up to Target](1449.md) | 🔴 Hard | 1m 1s | The problem asks us to construct the largest possible integer using… |
-| 1450 | [Number of Students Doing Homework at a Given Time](1450.md) | 🟢 Easy | 1m 15s | The problem gives us two integer arrays, startTime and endTime, alo… |
+| 1449 | [Form Largest Integer With Digits That Add up to Target](1449.md) | 🔴 Hard | 1m 22s | This problem asks us to construct the numerically largest possible … |
+| 1450 | [Number of Students Doing Homework at a Given Time](1450.md) | 🟢 Easy | 57s | This problem asks us to determine how many students are doing homew… |
+| 1451 | [Rearrange Words in a Sentence](1451.md) | 🟡 Medium | 1m 37s | The problem gives us a sentence where words are separated by single… |
+| 1452 | [People Whose List of Favorite Companies Is Not a Subset of Another List](1452.md) | 🟡 Medium | 55s | The problem requires identifying all people in a group whose list o… |
+| 1453 | [Maximum Number of Darts Inside of a Circular Dartboard](1453.md) | 🔴 Hard | 56s | The problem is asking us to find the maximum number of darts that c… |
+| 1454 | [Active Users](1454.md) | 🟡 Medium | 58s | The problem is asking us to identify "active users" from a database… |
+| 1456 | [Maximum Number of Vowels in a Substring of Given Length](1456.md) | 🟡 Medium | 55s | The problem asks us to determine the maximum number of vowels prese… |
+| 1457 | [Pseudo-Palindromic Paths in a Binary Tree](1457.md) | 🟡 Medium | 1m 26s | The problem gives us a binary tree where every node contains a digi… |
+| 1458 | [Max Dot Product of Two Subsequences](1458.md) | 🔴 Hard | 1m 6s | The problem is asking us to compute the maximum dot product of two … |
+| 1459 | [Rectangles Area](1459.md) | 🟡 Medium | 1m 2s | This problem asks us to identify all possible axis-aligned rectangl… |
+| 1460 | [Make Two Arrays Equal by Reversing Subarrays](1460.md) | 🟢 Easy | 1m 20s | The problem gives us two integer arrays, target and arr, both havin… |
+| 1461 | [Check If a String Contains All Binary Codes of Size K](1461.md) | 🟡 Medium | 55s | The problem is asking us to determine if a given binary string s co… |
