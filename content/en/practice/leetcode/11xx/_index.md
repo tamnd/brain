@@ -80,3 +80,4 @@ draft: false
 | 1167 | [Minimum Cost to Connect Sticks](1167.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers called sticks, w… |
 | 1168 | [Optimize Water Distribution in a Village](1168.md) | 🔴 Hard | 45s | The problem asks us to supply water to all houses in a village in t… |
 | 1171 | [Remove Zero Sum Consecutive Nodes from Linked List](1171.md) | 🟡 Medium | 47s | The problem requires us to repeatedly remove consecutive nodes in a… |
+| 1173 | [Immediate Food Delivery I](1173.md) | 🟢 Easy | 41s | The problem is asking to calculate the percentage of immediate food… |
