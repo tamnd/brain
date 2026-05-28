@@ -25,10 +25,10 @@ draft: false
 | 2312 | [Selling Pieces of Wood](2312.md) | 🔴 Hard | 57s | The problem presents a rectangular piece of wood of size m x n and … |
 | 2313 | [Minimum Flips in Binary Tree to Get Result](2313.md) | 🔴 Hard | 35s | The problem presents a binary tree where leaf nodes represent boole… |
 | 2314 | [The First Day of the Maximum Recorded Degree in Each City](2314.md) | 🟡 Medium | 1m 29s | The problem provides a database table named Weather that stores tem… |
-| 2315 | [Count Asterisks](2315.md) | 🟢 Easy | 1m 22s | The problem gives us a string s containing lowercase English letter… |
+| 2315 | [Count Asterisks](2315.md) | 🟢 Easy | 1m 2s | The problem gives us a string s containing lowercase English letter… |
 | 2316 | [Count Unreachable Pairs of Nodes in an Undirected Graph](2316.md) | 🟡 Medium | 46s | This problem asks us to determine how many pairs of nodes in an und… |
-| 2317 | [Maximum XOR After Operations ](2317.md) | 🟡 Medium | 1m 6s | The problem gives us an array nums, and we may perform a special op… |
-| 2318 | [Number of Distinct Roll Sequences](2318.md) | 🔴 Hard | 1m 2s | This problem asks us to count the number of valid sequences of dice… |
+| 2317 | [Maximum XOR After Operations ](2317.md) | 🟡 Medium | 1m 5s | The problem gives us an integer array nums, and we may perform a sp… |
+| 2318 | [Number of Distinct Roll Sequences](2318.md) | 🔴 Hard | 39s | The problem is asking us to compute the total number of distinct se… |
 | 2319 | [Check if Matrix Is X-Matrix](2319.md) | 🟢 Easy | 1m 19s | The problem gives us a square matrix grid of size n x n. We must de… |
 | 2320 | [Count Number of Ways to Place Houses](2320.md) | 🟡 Medium | 1m 9s | The problem describes a street with two independent sides. Each sid… |
 | 2321 | [Maximum Score Of Spliced Array](2321.md) | 🔴 Hard | 1m 26s | We are given two arrays, nums1 and nums2, both with the same length… |

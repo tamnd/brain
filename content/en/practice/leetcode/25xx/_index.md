@@ -66,3 +66,10 @@ draft: false
 | 2560 | [House Robber IV](2560.md) | 🟡 Medium | 44s | This problem is a variation of the classic House Robber problem, wi… |
 | 2561 | [Rearranging Fruits](2561.md) | 🔴 Hard | 52s | The problem presents two baskets of fruits, each containing n fruit… |
 | 2563 | [Count the Number of Fair Pairs](2563.md) | 🟡 Medium | 41s | The problem is asking us to count the number of pairs of indices (i… |
+| 2564 | [Substring XOR Queries](2564.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s and a list of queries. Each … |
+| 2565 | [Subsequence With the Minimum Score](2565.md) | 🔴 Hard | 7m 7s | The problem gives us two strings, s and t. We are allowed to delete… |
+| 2567 | [Minimum Score by Changing Two Elements](2567.md) | 🟡 Medium | 1m 3s | The problem gives us an integer array nums and defines two values b… |
+| 2570 | [Merge Two 2D Arrays by Summing Values](2570.md) | 🟢 Easy | 1m 12s | The problem gives us two sorted 2D integer arrays, nums1 and nums2.… |
+| 2571 | [Minimum Operations to Reduce an Integer to 0](2571.md) | 🟡 Medium | 1m 21s | The problem gives us two arrays, nums1 and nums2, along with a sequ… |
+| 2572 | [Count the Number of Square-Free Subsets](2572.md) | 🟡 Medium | 1m 19s | The problem asks us to count how many non-empty subsets of the arra… |
+| 2573 | [Find the String with LCP](2573.md) | 🔴 Hard | 46s | The problem asks us to reconstruct a string given its lcp matrix. T… |
