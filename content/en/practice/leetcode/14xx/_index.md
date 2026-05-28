@@ -102,8 +102,8 @@ draft: false
 | 1489 | [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](1489.md) | 🔴 Hard | 1m 50s | The problem gives us a connected, weighted, undirected graph with n… |
 | 1490 | [Clone N-ary Tree](1490.md) | 🟡 Medium | 1m 10s | This problem asks us to create a deep copy of an N-ary tree. An N-a… |
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](1491.md) | 🟢 Easy | 1m 8s | The problem gives us an array called salary, where each element rep… |
-| 1492 | [The kth Factor of n](1492.md) | 🟡 Medium | 48s | The problem asks us to find the kth factor of a given integer n. A … |
-| 1493 | [Longest Subarray of 1's After Deleting One Element](1493.md) | 🟡 Medium | 54s | The problem asks us to find the length of the longest contiguous su… |
+| 1492 | [The kth Factor of n](1492.md) | 🟡 Medium | 1m 16s | The problem asks us to find the kth factor of a positive integer n,… |
+| 1493 | [Longest Subarray of 1's After Deleting One Element](1493.md) | 🟡 Medium | 52s | This problem asks us to find the longest contiguous subarray of 1s … |
 | 1494 | [Parallel Courses II](1494.md) | 🔴 Hard | 1m 37s | The problem describes a directed acyclic graph where each node repr… |
 | 1495 | [Friendly Movies Streamed Last Month](1495.md) | 🟢 Easy | 1m 30s | This problem asks us to find the titles of movies that satisfy thre… |
 | 1496 | [Path Crossing](1496.md) | 🟢 Easy | 1m 13s | In this problem, we are given a string called path that represents … |
