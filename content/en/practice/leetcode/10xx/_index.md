@@ -94,14 +94,17 @@ draft: false
 | 1081 | [Smallest Subsequence of Distinct Characters](1081.md) | 🟡 Medium | 1m 15s | The problem asks us to construct the lexicographically smallest sub… |
 | 1082 | [Sales Analysis I](1082.md) | 🟢 Easy | 1m 37s | This problem asks us to identify the seller or sellers who generate… |
 | 1083 | [Sales Analysis II](1083.md) | 🟢 Easy | 1m 22s | This problem asks us to identify all buyers who purchased the produ… |
-| 1084 | [Sales Analysis III](1084.md) | 🟢 Easy | 1m 24s | The problem gives us two database tables, Product and Sales. The Pr… |
-| 1085 | [Sum of Digits in the Minimum Number](1085.md) | 🟢 Easy | 5m 3s | The problem gives us an integer array called nums. Our task is to f… |
-| 1086 | [High Five](1086.md) | 🟢 Easy | 51s | The problem requires calculating the top five average score for eac… |
-| 1087 | [Brace Expansion](1087.md) | 🟡 Medium | 45s | The problem is asking us to generate all possible words from a comp… |
-| 1088 | [Confusing Number II](1088.md) | 🔴 Hard | 1m 5s | The problem asks us to count confusing numbers between 1 and n, inc… |
+| 1084 | [Sales Analysis III](1084.md) | 🟢 Easy | 5m 7s | The problem asks us to identify products that were sold only during… |
+| 1085 | [Sum of Digits in the Minimum Number](1085.md) | 🟢 Easy | 5m 42s | This problem asks us to examine the smallest number in the input ar… |
+| 1086 | [High Five](1086.md) | 🟢 Easy | 44s | The problem asks us to compute the top five average score for each … |
+| 1087 | [Brace Expansion](1087.md) | 🟡 Medium | 1m 3s | In this problem, we are given a string that represents multiple pos… |
+| 1088 | [Confusing Number II](1088.md) | 🔴 Hard | 1m 6s | In this problem, we are given an integer n, and we must count how m… |
 | 1089 | [Duplicate Zeros](1089.md) | 🟢 Easy | 48s | The problem asks us to modify a fixed-length integer array in-place… |
-| 1091 | [Shortest Path in Binary Matrix](1091.md) | 🟡 Medium | 1m 10s | The problem asks us to find the shortest path from the top-left cor… |
+| 1090 | [Largest Values From Labels](1090.md) | 🟡 Medium | 1m 21s | This problem gives us two arrays, values and labels, where each ind… |
+| 1091 | [Shortest Path in Binary Matrix](1091.md) | 🟡 Medium | 52s | The problem asks us to find the shortest path from the top-left cor… |
 | 1093 | [Statistics from a Large Sample](1093.md) | 🟡 Medium | 1m 26s | This problem gives us a compressed representation of a very large d… |
 | 1094 | [Car Pooling](1094.md) | 🟡 Medium | 1m 6s | The problem describes a car traveling only in one direction, east. … |
 | 1095 | [Find in Mountain Array](1095.md) | 🔴 Hard | 3m 36s | This problem gives us a special type of array called a mountain arr… |
 | 1096 | [Brace Expansion II](1096.md) | 🔴 Hard | 54s | This problem asks us to evaluate a string expression that represent… |
+| 1098 | [Unpopular Books](1098.md) | 🟡 Medium | 55s | Let's solve LeetCode 1098 - Unpopular Books in the requested detail… |
+| 1099 | [Two Sum Less Than K](1099.md) | 🟢 Easy | 46s | The problem is asking us to find the largest sum of two distinct el… |
