@@ -83,16 +83,23 @@ draft: false
 | 1470 | [Shuffle the Array](1470.md) | 🟢 Easy | 1m 18s | The problem gives us an array nums with exactly 2n elements. The st… |
 | 1471 | [The k Strongest Values in an Array](1471.md) | 🟡 Medium | 1m 16s | This problem asks us to find the k strongest values in an array acc… |
 | 1472 | [Design Browser History](1472.md) | 🟡 Medium | 54s | The problem is asking us to simulate a single-tab browser with a hi… |
-| 1473 | [Paint House III](1473.md) | 🔴 Hard | 1m | The problem asks us to paint a row of m houses with n possible colo… |
-| 1474 | [Delete N Nodes After M Nodes of a Linked List](1474.md) | 🟢 Easy | 1m 32s | The problem gives us the head of a singly linked list and two integ… |
-| 1475 | [Final Prices With a Special Discount in a Shop](1475.md) | 🟢 Easy | 1m 40s | The problem gives us an array called prices, where each element rep… |
-| 1476 | [Subrectangle Queries](1476.md) | 🟡 Medium | 1m 27s | The problem asks us to design a mutable 2D matrix data structure th… |
-| 1477 | [Find Two Non-overlapping Sub-arrays Each With Target Sum](1477.md) | 🟡 Medium | 53s | The problem asks us to find two non-overlapping sub-arrays in a giv… |
-| 1478 | [Allocate Mailboxes](1478.md) | 🔴 Hard | 58s | The problem asks us to allocate k mailboxes along a street in such … |
-| 1479 | [Sales by Day of the Week](1479.md) | 🔴 Hard | 1m 48s | This problem asks us to generate a pivot-style sales report from tw… |
-| 1480 | [Running Sum of 1d Array](1480.md) | 🟢 Easy | 1m 7s | The problem asks us to compute the running sum of a one dimensional… |
+| 1473 | [Paint House III](1473.md) | 🔴 Hard | 1m 20s | This problem asks us to paint a row of houses while satisfying two … |
+| 1474 | [Delete N Nodes After M Nodes of a Linked List](1474.md) | 🟢 Easy | 1m 11s | This problem gives us the head of a singly linked list and two inte… |
+| 1475 | [Final Prices With a Special Discount in a Shop](1475.md) | 🟢 Easy | 1m 2s | The problem presents a scenario where you are buying items in a sho… |
+| 1476 | [Subrectangle Queries](1476.md) | 🟡 Medium | 1m 40s | The problem asks us to design a class called SubrectangleQueries th… |
+| 1477 | [Find Two Non-overlapping Sub-arrays Each With Target Sum](1477.md) | 🟡 Medium | 1m 19s | The problem asks us to find two different subarrays inside the give… |
+| 1478 | [Allocate Mailboxes](1478.md) | 🔴 Hard | 1m 39s | Here’s a complete, detailed technical solution guide for LeetCode 1… |
+| 1479 | [Sales by Day of the Week](1479.md) | 🔴 Hard | 1m 7s | The problem asks us to generate a sales report that summarizes the … |
+| 1480 | [Running Sum of 1d Array](1480.md) | 🟢 Easy | 1m 1s | The problem asks us to compute the running sum, also called the pre… |
 | 1481 | [Least Number of Unique Integers after K Removals](1481.md) | 🟡 Medium | 58s | This problem asks us to minimize the number of unique integers in a… |
-| 1482 | [Minimum Number of Days to Make m Bouquets](1482.md) | 🟡 Medium | 1m 34s | The problem gives us an array bloomDay where bloomDay[i] represents… |
+| 1482 | [Minimum Number of Days to Make m Bouquets](1482.md) | 🟡 Medium | 48s | This problem asks us to determine the minimum number of days requir… |
+| 1483 | [Kth Ancestor of a Tree Node](1483.md) | 🔴 Hard | 52s | The problem presents a rooted tree with n nodes numbered from 0 to … |
 | 1484 | [Group Sold Products By The Date](1484.md) | 🟢 Easy | 1m 29s | The problem gives us a database table named Activities with two col… |
 | 1485 | [Clone Binary Tree With Random Pointer](1485.md) | 🟡 Medium | 1m 30s | The problem asks us to create a deep copy of a binary tree where ea… |
 | 1486 | [XOR Operation in an Array](1486.md) | 🟢 Easy | 1m 6s | In this problem, we are given two integers, n and start. We must co… |
+| 1487 | [Making File Names Unique](1487.md) | 🟡 Medium | 1m 33s | The problem asks us to simulate how a file system assigns folder na… |
+| 1488 | [Avoid Flood in The City](1488.md) | 🟡 Medium | 1m 6s | This problem involves managing a series of lakes over several days,… |
+| 1489 | [Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](1489.md) | 🔴 Hard | 1m 50s | The problem gives us a connected, weighted, undirected graph with n… |
+| 1490 | [Clone N-ary Tree](1490.md) | 🟡 Medium | 1m 18s | LeetCode 1490, LeetCode Clone N-ary Tree, asks us to create a compl… |
+| 1491 | [Average Salary Excluding the Minimum and Maximum Salary](1491.md) | 🟢 Easy | 1m 16s | The problem gives an array called salary, where each element repres… |
+| 1493 | [Longest Subarray of 1's After Deleting One Element](1493.md) | 🟡 Medium | 54s | The problem asks us to find the length of the longest contiguous su… |
