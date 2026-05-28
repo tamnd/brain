@@ -23,14 +23,14 @@
         {{with .Description}}<p class="zen-card__desc">{{.}}</p>{{end}}
       </a>
       <footer class="zen-card__footer">
-        {{if not .Date.IsZero}}<time class="zen-card__date" datetime="{{.Date.Format "2006-01-02"}}">{{formatDate .Date}}</time>{{end}}
-        {{if gt .WordCount 0}}
-        <span class="zen-card__sep">·</span>
-        <span class="zen-card__meta">{{.WordCount}} words</span>
-        <span class="zen-card__sep">·</span>
-        <span class="zen-card__meta">{{.ReadingTime}} min read</span>
+        {{range .Tags}}
+          {{if eq . "easy"}}<a href="/tags/easy/" class="zen-diff zen-diff--easy"><span class="zen-diff__dot"></span>Easy</a>
+          {{else if eq . "medium"}}<a href="/tags/medium/" class="zen-diff zen-diff--medium"><span class="zen-diff__dot"></span>Medium</a>
+          {{else if eq . "hard"}}<a href="/tags/hard/" class="zen-diff zen-diff--hard"><span class="zen-diff__dot"></span>Hard</a>
+          {{else}}<a href="/tags/{{urlize .}}/" class="zen-tag">{{.}}</a>
+          {{end}}
         {{end}}
-        {{range .Tags}}<a href="/tags/{{urlize .}}/" class="zen-tag">{{.}}</a>{{end}}
+        {{if not .Date.IsZero}}<time class="zen-card__date" datetime="{{.Date.Format "2006-01-02"}}" style="margin-left:auto;">{{formatDate .Date}}</time>{{end}}
       </footer>
     </article>
     {{end}}
