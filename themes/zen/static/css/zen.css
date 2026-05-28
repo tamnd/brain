@@ -306,8 +306,6 @@ html.dark .zen-sidebar__link:hover {
 /* ===== Main content area ================================================= */
 
 .zen-main {
-  max-width: var(--content-max);
-  margin: 0 auto;
   padding: 2rem 1.5rem 4rem;
 }
 
@@ -335,6 +333,9 @@ html.dark .zen-sidebar__link:hover {
 /* ===== Page header ======================================================= */
 
 .zen-page-header {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 2rem;
 }
 
@@ -390,6 +391,8 @@ html.dark .zen-sidebar__link:hover {
 
 .zen-content {
   max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -566,7 +569,7 @@ html.dark .chroma {
 .zen-card-grid {
   display: grid;
   gap: 0.75rem;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
 .zen-card {
@@ -721,6 +724,9 @@ html.dark .zen-diff--hard   { color: #ea580c; background: rgba(234, 88, 12, 0.12
 /* ===== Pager ============================================================= */
 
 .zen-pager {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   gap: 1rem;
   margin-top: 3rem;
@@ -1089,7 +1095,7 @@ html.no-transition *::after {
   .zen-nav__inner { padding: 0 2rem; }
 }
 
-/* xl: 1280px+ — wider content column, larger hero + headings */
+/* xl: 1280px+ — wider prose column, larger hero + headings */
 @media (min-width: 1280px) {
   :root { --content-max: 900px; }
   .zen-nav__inner { padding: 0 2.5rem; }
@@ -1098,14 +1104,16 @@ html.no-transition *::after {
   .zen-home-header__title { font-size: 2.375rem; }
   .zen-page-header h1 { font-size: 2rem; }
   .zen-section-header h1 { font-size: 2rem; }
+  .zen-card-grid { gap: 1rem; }
 }
 
 /* 2xl: 1536px+ — push further */
 @media (min-width: 1536px) {
   :root { --content-max: 980px; }
   .zen-nav__inner { padding: 0 3rem; }
-  .zen-main { padding: 3rem 2rem 6rem; }
+  .zen-main { padding: 3rem 2.5rem 6rem; }
   .zen-home-header__title { font-size: 2.625rem; }
+  .zen-card-grid { gap: 1.25rem; }
 }
 
 /* ===== Dark mode adjustments ============================================= */
@@ -1305,6 +1313,7 @@ html[data-ui-theme="github"] .zen-main {
   border-right: 1px solid #d1d9e0;
   min-height: calc(100vh - var(--nav-h) - 60px);
 }
+
 
 html[data-ui-theme="github"].dark .zen-main {
   background: #0d1117;
