@@ -80,3 +80,11 @@ draft: false
 | 2380 | [Time Needed to Rearrange a Binary String](2380.md) | 🟡 Medium | 1m 4s | The problem is asking us to simulate a process on a binary string s… |
 | 2381 | [Shifting Letters II](2381.md) | 🟡 Medium | 1m 20s | The problem gives us a lowercase English string s and a list of shi… |
 | 2383 | [Minimum Hours of Training to Win a Competition](2383.md) | 🟢 Easy | 1m 17s | The problem gives us two initial values, initialEnergy and initialE… |
+| 2384 | [Largest Palindromic Number](2384.md) | 🟡 Medium | 3m 8s | The problem gives us a string num that contains only digits from 0 … |
+| 2386 | [Find the K-Sum of an Array](2386.md) | 🔴 Hard | 1m 19s | The problem asks us to find the kth largest subsequence sum that ca… |
+| 2388 | [Change Null Values in a Table to the Previous Value](2388.md) | 🟡 Medium | 41s | The problem asks us to process a table called CoffeeShop that conta… |
+| 2389 | [Longest Subsequence With Limited Sum](2389.md) | 🟢 Easy | 1m 4s | The problem gives us two arrays: - nums, which contains positive in… |
+| 2391 | [Minimum Amount of Time to Collect Garbage](2391.md) | 🟡 Medium | 1m 22s | This problem models a city garbage collection system with three sep… |
+| 2392 | [Build a Matrix With Conditions](2392.md) | 🔴 Hard | 1m 1s | The problem asks us to construct a k x k matrix containing integers… |
+| 2393 | [Count Strictly Increasing Subarrays](2393.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums and asks us to count how… |
+| 2395 | [Find Subarrays With Equal Sum](2395.md) | 🟢 Easy | 1m 21s | The problem gives us a 0-indexed integer array nums and asks whethe… |

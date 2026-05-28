@@ -31,8 +31,8 @@ draft: false
 | 2118 | [Build the Equation](2118.md) | 🔴 Hard | 55s | The problem asks us to construct a polynomial equation from a datab… |
 | 2119 | [A Number After a Double Reversal](2119.md) | 🟢 Easy | 51s | The problem asks us to determine whether a number remains the same … |
 | 2120 | [Execution of All Suffix Instructions Staying in a Grid](2120.md) | 🟡 Medium | 59s | The problem asks us to simulate a robot moving on an n x n grid, st… |
-| 2121 | [Intervals Between Identical Elements](2121.md) | 🟡 Medium | 1m 22s | The problem asks us to compute, for every index in the array, the t… |
-| 2122 | [Recover the Original Array](2122.md) | 🔴 Hard | 1m 32s | The problem gives us an array nums of length 2n. This array was for… |
+| 2121 | [Intervals Between Identical Elements](2121.md) | 🟡 Medium | 1m 14s | You are given a 0-indexed integer array arr. For every index i, you… |
+| 2122 | [Recover the Original Array](2122.md) | 🔴 Hard | 57s | The problem presents a scenario in which Alice has an original arra… |
 | 2123 | [Minimum Operations to Remove Adjacent Ones in Matrix](2123.md) | 🔴 Hard | 50s | The problem presents a binary matrix where each element is either 0… |
 | 2124 | [Check if All A's Appears Before All B's](2124.md) | 🟢 Easy | 1m | The problem asks us to determine whether all occurrences of the cha… |
 | 2125 | [Number of Laser Beams in a Bank](2125.md) | 🟡 Medium | 1m | The problem presents a binary matrix representing a bank floor plan… |
