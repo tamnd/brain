@@ -25,8 +25,8 @@ draft: false
 | 1312 | [Minimum Insertion Steps to Make a String Palindrome](1312.md) | 🔴 Hard | 1m 25s | Edit The problem gives us a string s and asks for the minimum numbe… |
 | 1313 | [Decompress Run-Length Encoded List](1313.md) | 🟢 Easy | 1m 13s | This problem asks us to reconstruct an array that was compressed us… |
 | 1314 | [Matrix Block Sum](1314.md) | 🟡 Medium | 59s | The problem requires computing a matrix block sum. Given a matrix m… |
-| 1315 | [Sum of Nodes with Even-Valued Grandparent](1315.md) | 🟡 Medium | 1m 15s | The problem gives us the root of a binary tree and asks us to compu… |
-| 1316 | [Distinct Echo Substrings](1316.md) | 🔴 Hard | 1m 1s | The problem asks us to count the number of distinct echo substrings… |
+| 1315 | [Sum of Nodes with Even-Valued Grandparent](1315.md) | 🟡 Medium | 2m 26s | That is a long, structured reference document and will exceed a sin… |
+| 1316 | [Distinct Echo Substrings](1316.md) | 🔴 Hard | 59s | The problem asks us to find the number of distinct non-empty substr… |
 | 1317 | [Convert Integer to the Sum of Two No-Zero Integers](1317.md) | 🟢 Easy | 1m 10s | The problem asks us to split a given integer n into two positive in… |
 | 1318 | [Minimum Flips to Make a OR b Equal to c](1318.md) | 🟡 Medium | 1m 5s | The problem gives us three positive integers, a, b, and c. We are a… |
 | 1319 | [Number of Operations to Make Network Connected](1319.md) | 🟡 Medium | 1m 31s | The problem describes a network of n computers connected by etherne… |
@@ -48,3 +48,12 @@ draft: false
 | 1337 | [The K Weakest Rows in a Matrix](1337.md) | 🟢 Easy | 1m 24s | The problem gives us a binary matrix where each row represents a gr… |
 | 1338 | [Reduce Array Size to The Half](1338.md) | 🟡 Medium | 54s | The problem asks us to reduce an array to at most half its size by … |
 | 1339 | [Maximum Product of Splitted Binary Tree](1339.md) | 🟡 Medium | 45s | The problem asks us to maximize the product of sums obtained by spl… |
+| 1341 | [Movie Rating](1341.md) | 🟡 Medium | 1m 8s | This problem works with three relational database tables: Movies, U… |
+| 1342 | [Number of Steps to Reduce a Number to Zero](1342.md) | 🟢 Easy | 1m 13s | The problem gives us a non-negative integer num and asks us to comp… |
+| 1343 | [Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](1343.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array arr, along with two integers,… |
+| 1344 | [Angle Between Hands of a Clock](1344.md) | 🟡 Medium | 1m 12s | The problem asks us to compute the smaller angle formed between the… |
+| 1345 | [Jump Game IV](1345.md) | 🔴 Hard | 1m 5s | The problem is asking us to find the minimum number of jumps requir… |
+| 1346 | [Check If N and Its Double Exist](1346.md) | 🟢 Easy | 44s | This problem asks us to determine whether, in a given integer array… |
+| 1347 | [Minimum Number of Steps to Make Two Strings Anagram](1347.md) | 🟡 Medium | 1m 22s | This problem asks us to determine the minimum number of character r… |
+| 1348 | [Tweet Counts Per Frequency](1348.md) | 🟡 Medium | 56s | The problem is asking us to design a system that tracks tweets by t… |
+| 1349 | [Maximum Students Taking Exam](1349.md) | 🔴 Hard | 1m 37s | The problem gives us a classroom represented as a 2D matrix called … |
