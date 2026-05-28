@@ -1,0 +1,27 @@
+---
+title: "Codeforces Beta Round 89 (Div. 2)"
+description: "Solutions for Codeforces Beta Round 89 (Div. 2) (contest 118). 4/5 problems verified against sample I/O. Difficulty range: 1000-2000."
+tags: ["codeforces", "competitive-programming", "implementation", "strings", "constructive-algorithms", "brute-force", "greedy", "sortings"]
+categories: ["algorithms"]
+contest_id: 118
+contest_type: "Div. 2"
+rating_range: "1000-2000"
+n_problems: 5
+n_verified: 4
+total_solve_s: 604
+date: "2026-05-28T00:00:00+07:00"
+weight: 118
+draft: false
+---
+
+# [Codeforces Beta Round 89 (Div. 2)](https://codeforces.com/contest/118)
+
+**Type:** Div. 2 | **Problems:** 5 | **Verified:** 4/5 | **Rating range:** 1000-2000 | **Time:** 10m 4s
+
+| Problem | Name | Rating | Tags | Solve Time | Verified |
+|---|---|---|---|---|---|
+| [A](A/) | [String Task](https://codeforces.com/problemset/problem/118/A) | 1000 | implementation, strings | 1m 38s | ✓ |
+| [B](B/) | [Present from Lena](https://codeforces.com/problemset/problem/118/B) | 1000 | constructive-algorithms, implementation | 1m 42s | ✓ |
+| [C](C/) | [Fancy Number](https://codeforces.com/problemset/problem/118/C) | 1900 | brute-force, greedy, sortings | 2m 51s | ✓ |
+| [D](D/) | [Caesar's Legions](https://codeforces.com/problemset/problem/118/D) | 1700 | dp | 1m 37s | ✓ |
+| [E](E/) | [Bertown roads](https://codeforces.com/problemset/problem/118/E) | 2000 | dfs-and-similar, graphs | 2m 16s | ✗ |
