@@ -97,10 +97,10 @@ draft: false
 | 984 | [String Without AAA or BBB](984.md) | 🟡 Medium | 58s | The problem gives us two integers, a and b, representing how many '… |
 | 985 | [Sum of Even Numbers After Queries](985.md) | 🟡 Medium | 1m | The problem gives us an integer array nums and a list of update ope… |
 | 986 | [Interval List Intersections](986.md) | 🟡 Medium | 1m 8s | The problem gives us two lists of closed intervals. Each interval i… |
-| 987 | [Vertical Order Traversal of a Binary Tree](987.md) | 🔴 Hard | 1m 18s | The problem asks us to perform a vertical traversal of a binary tre… |
-| 988 | [Smallest String Starting From Leaf](988.md) | 🟡 Medium | 1m 23s | Edit This problem gives us the root of a binary tree where every no… |
-| 989 | [Add to Array-Form of Integer](989.md) | 🟢 Easy | 55s | The problem asks us to compute the sum of a non-negative integer re… |
-| 990 | [Satisfiability of Equality Equations](990.md) | 🟡 Medium | 1m 2s | The problem gives us a list of equations involving lowercase Englis… |
+| 987 | [Vertical Order Traversal of a Binary Tree](987.md) | 🔴 Hard | 41s | The problem asks us to compute the vertical order traversal of a bi… |
+| 988 | [Smallest String Starting From Leaf](988.md) | 🟡 Medium | 1m 8s | The problem gives us the root of a binary tree where every node sto… |
+| 989 | [Add to Array-Form of Integer](989.md) | 🟢 Easy | 40s | The problem is asking us to perform addition between a number repre… |
+| 990 | [Satisfiability of Equality Equations](990.md) | 🟡 Medium | 46s | The problem is asking us to determine if a set of equations between… |
 | 991 | [Broken Calculator](991.md) | 🟡 Medium | 54s | This problem gives us a calculator that starts with an integer star… |
 | 992 | [Subarrays with K Different Integers](992.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many contiguous subarrays contain … |
 | 993 | [Cousins in Binary Tree](993.md) | 🟢 Easy | 46s | The problem asks us to determine if two nodes in a binary tree are … |
