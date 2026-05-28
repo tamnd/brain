@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 77 contests, 411 problems, 349 verified."
+description: "Codeforces problem solutions with full editorial. 78 contests, 416 problems, 351 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**77 contests, 411 problems, 349 verified.**
+**78 contests, 416 problems, 351 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -90,5 +90,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [73](73/) | [Codeforces Beta Round 66](https://codeforces.com/contest/73) | Beta | 1600-2900 | 6/6 | 12m 59s |
 | [74](74/) | [Codeforces Beta Round 68](https://codeforces.com/contest/74) | Beta | 1000-2800 | 4/5 | 22m 53s |
 | [75](75/) | [Codeforces Beta Round 67 (Div. 2)](https://codeforces.com/contest/75) | Div. 2 | 1000-2400 | 4/5 | 9m 31s |
-| [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 1700-2700 | 5/6 | 12m 8s |
+| [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 1700-2700 | 5/6 | 12m 33s |
+| [77](77/) | [Codeforces Beta Round 69 (Div. 1 Only)](https://codeforces.com/contest/77) | Div. 1 | 1400-2800 | 2/5 | 11m 4s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
