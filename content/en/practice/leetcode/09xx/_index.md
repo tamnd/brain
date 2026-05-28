@@ -22,7 +22,7 @@ draft: false
 | 909 | [Snakes and Ladders](909.md) | 🟡 Medium | 41s | The problem is asking us to simulate a modified game of Snakes and … |
 | 910 | [Smallest Range II](910.md) | 🟡 Medium | 1m 12s | The problem gives us an integer array nums and an integer k. For ev… |
 | 911 | [Online Election](911.md) | 🟡 Medium | 48s | The problem is asking us to design a data structure that can effici… |
-| 912 | [Sort an Array](912.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array nums and asks us to sort it i… |
+| 912 | [Sort an Array](912.md) | 🟡 Medium | 1m 6s | The problem asks us to sort an integer array in ascending order wit… |
 | 913 | [Cat and Mouse](913.md) | 🔴 Hard | 1m 30s | In this problem, we are given an undirected graph where two players… |
 | 914 | [X of a Kind in a Deck of Cards](914.md) | 🟢 Easy | 38s | The problem asks whether it is possible to partition a deck of card… |
 | 915 | [Partition Array into Disjoint Intervals](915.md) | 🟡 Medium | 57s | The problem asks us to split an array into two contiguous parts, le… |
@@ -52,11 +52,12 @@ draft: false
 | 939 | [Minimum Area Rectangle](939.md) | 🟡 Medium | 1m 18s | The problem gives us a collection of distinct points on a 2D plane.… |
 | 940 | [Distinct Subsequences II](940.md) | 🔴 Hard | 1m 8s | The problem asks us to count how many distinct non-empty subsequenc… |
 | 941 | [Valid Mountain Array](941.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given integer array form… |
-| 942 | [DI String Match](942.md) | 🟢 Easy | 1m 11s | In this problem, we are given a string s consisting only of the cha… |
-| 943 | [Find the Shortest Superstring](943.md) | 🔴 Hard | 1m 30s | The problem gives us an array of unique strings called words. Our t… |
+| 942 | [DI String Match](942.md) | 🟢 Easy | 1m 15s | In this problem, we are given a string s consisting only of the cha… |
+| 943 | [Find the Shortest Superstring](943.md) | 🔴 Hard | 39s | The problem asks us to find the shortest superstring that contains … |
 | 944 | [Delete Columns to Make Sorted](944.md) | 🟢 Easy | 1m 8s | The problem gives us an array of strings where every string has the… |
 | 945 | [Minimum Increment to Make Array Unique](945.md) | 🟡 Medium | 41s | This problem is asking us to make all elements in an integer array … |
 | 946 | [Validate Stack Sequences](946.md) | 🟡 Medium | 1m 7s | The problem gives us two arrays, pushed and popped, both containing… |
 | 947 | [Most Stones Removed with Same Row or Column](947.md) | 🟡 Medium | 34s | The problem presents a 2D grid with n stones placed at integer coor… |
 | 948 | [Bag of Tokens](948.md) | 🟡 Medium | 1m 15s | The problem gives us a collection of tokens, where each token has a… |
+| 949 | [Largest Time for Given Digits](949.md) | 🟡 Medium | 1m 18s | This problem asks us to construct the largest possible valid 24 hou… |
 | 950 | [Reveal Cards In Increasing Order](950.md) | 🟡 Medium | 1m 11s | The problem gives us a deck of unique integer cards and asks us to … |
