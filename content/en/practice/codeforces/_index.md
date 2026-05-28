@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 76 contests, 405 problems, 344 verified."
+description: "Codeforces problem solutions with full editorial. 77 contests, 406 problems, 345 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**76 contests, 405 problems, 344 verified.**
+**77 contests, 406 problems, 345 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -84,10 +84,11 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [67](67/) | [Manthan 2011](https://codeforces.com/contest/67) | Special | 1800-2600 | 5/5 | 9m 26s |
 | [68](68/) | [Codeforces Beta Round 62](https://codeforces.com/contest/68) | Beta | 1100-2900 | 5/5 | 26m 18s |
 | [69](69/) | [Codeforces Beta Round 63 (Div. 2)](https://codeforces.com/contest/69) | Div. 2 | 1000-2000 | 5/5 | 9m 17s |
-| [70](70/) | [Codeforces Beta Round 64](https://codeforces.com/contest/70) | Beta | 1300-2700 | 4/5 | 10m 23s |
+| [70](70/) | [Codeforces Beta Round 64](https://codeforces.com/contest/70) | Beta | 1300-2700 | 4/5 | 11m 7s |
 | [71](71/) | [Codeforces Beta Round 65 (Div. 2)](https://codeforces.com/contest/71) | Div. 2 | 800-2200 | 4/5 | 8m 23s |
 | [72](72/) | [Unknown Language Round 2](https://codeforces.com/contest/72) | Special | 1000-2300 | 8/9 | 21m 37s |
 | [73](73/) | [Codeforces Beta Round 66](https://codeforces.com/contest/73) | Beta | 1600-2900 | 6/6 | 12m 59s |
 | [74](74/) | [Codeforces Beta Round 68](https://codeforces.com/contest/74) | Beta | 1000-2800 | 4/5 | 22m 53s |
 | [75](75/) | [Codeforces Beta Round 67 (Div. 2)](https://codeforces.com/contest/75) | Div. 2 | 1000-2400 | 4/5 | 9m 31s |
+| [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 2700-2700 | 1/1 | 2m 6s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
