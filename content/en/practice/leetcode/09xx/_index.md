@@ -88,8 +88,8 @@ draft: false
 | 976 | [Largest Perimeter Triangle](976.md) | 🟢 Easy | 1m 7s | The problem gives us an array of integers called nums, where each i… |
 | 977 | [Squares of a Sorted Array](977.md) | 🟢 Easy | 46s | The problem asks us to take an array of integers nums that is alrea… |
 | 978 | [Longest Turbulent Subarray](978.md) | 🟡 Medium | 1m 16s | The problem asks us to find the length of the longest turbulent sub… |
-| 979 | [Distribute Coins in Binary Tree](979.md) | 🟡 Medium | 34s | The problem asks us to redistribute coins in a binary tree so that … |
-| 980 | [Unique Paths III](980.md) | 🔴 Hard | 1m 25s | LeetCode 980, Unique Paths III, asks us to count how many valid pat… |
+| 979 | [Distribute Coins in Binary Tree](979.md) | 🟡 Medium | 1m 5s | In this problem, we are given a binary tree where every node contai… |
+| 980 | [Unique Paths III](980.md) | 🔴 Hard | 1m 18s | This problem asks us to count the number of valid paths in a grid u… |
 | 982 | [Triples with Bitwise AND Equal To Zero](982.md) | 🔴 Hard | 1m 9s | The problem asks us to count how many ordered triples of indices (i… |
 | 983 | [Minimum Cost For Tickets](983.md) | 🟡 Medium | 45s | The problem asks us to calculate the minimum cost to travel on a se… |
 | 984 | [String Without AAA or BBB](984.md) | 🟡 Medium | 1m 12s | The problem gives us two integers, a and b, representing how many '… |
