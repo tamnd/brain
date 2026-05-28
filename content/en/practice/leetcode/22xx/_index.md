@@ -64,16 +64,16 @@ draft: false
 | 2251 | [Number of Flowers in Full Bloom](2251.md) | 🔴 Hard | 38s | The problem asks us to determine, for a list of people arriving at … |
 | 2252 | [Dynamic Pivoting of a Table](2252.md) | 🔴 Hard | 1m 12s | This problem requires implementing a SQL-style pivot operation prog… |
 | 2253 | [Dynamic Unpivoting of a Table](2253.md) | 🔴 Hard | 1m 13s | This problem asks us to transform a wide table into a normalized ro… |
-| 2254 | [Design Video Sharing Platform](2254.md) | 🔴 Hard | 3m 50s | Something went wrong. If this issue persists please contact us thro… |
+| 2254 | [Design Video Sharing Platform](2254.md) | 🔴 Hard | 6m 4s | Certainly. Here is a complete, detailed technical solution guide fo… |
 | 2255 | [Count Prefixes of a Given String](2255.md) | 🟢 Easy | 1m 9s | The problem asks us to determine how many strings in a given array … |
 | 2256 | [Minimum Average Difference](2256.md) | 🟡 Medium | 1m 15s | In this problem, we are given a 0-indexed integer array nums, and f… |
 | 2257 | [Count Unguarded Cells in the Grid](2257.md) | 🟡 Medium | 1m 16s | This problem gives us an m x n grid containing three types of cells… |
-| 2258 | [Escape the Spreading Fire](2258.md) | 🔴 Hard | 1m 31s | This problem combines two simultaneous processes on a grid: 1. Your… |
-| 2259 | [Remove Digit From Number to Maximize Result](2259.md) | 🟢 Easy | 1m 3s | The problem gives us a string called number that represents a posit… |
-| 2260 | [Minimum Consecutive Cards to Pick Up](2260.md) | 🟡 Medium | 1m 26s | The problem gives us an integer array called cards, where each elem… |
-| 2261 | [K Divisible Elements Subarrays](2261.md) | 🟡 Medium | 43s | The problem asks us to count the number of distinct subarrays of a … |
+| 2258 | [Escape the Spreading Fire](2258.md) | 🔴 Hard | 1m 26s | This problem asks us to determine how long we can safely wait befor… |
+| 2259 | [Remove Digit From Number to Maximize Result](2259.md) | 🟢 Easy | 1m 15s | The problem gives us a string called number, which represents a pos… |
+| 2260 | [Minimum Consecutive Cards to Pick Up](2260.md) | 🟡 Medium | 1m 9s | The problem gives an integer array cards, where each number represe… |
+| 2261 | [K Divisible Elements Subarrays](2261.md) | 🟡 Medium | 44s | This problem requires counting the number of distinct subarrays of … |
 | 2262 | [Total Appeal of A String](2262.md) | 🔴 Hard | 39s | The problem asks us to calculate the total appeal of all substrings… |
-| 2263 | [Make Array Non-decreasing or Non-increasing](2263.md) | 🔴 Hard | 1m 20s | The problem gives us an integer array nums, and we are allowed to p… |
+| 2263 | [Make Array Non-decreasing or Non-increasing](2263.md) | 🔴 Hard | 48s | The problem asks us to transform a given integer array nums into ei… |
 | 2264 | [Largest 3-Same-Digit Number in String](2264.md) | 🟢 Easy | 45s | The problem asks us to find the largest "good" integer in a given s… |
 | 2265 | [Count Nodes Equal to Average of Subtree](2265.md) | 🟡 Medium | 1m 14s | This problem gives us the root of a binary tree and asks us to coun… |
 | 2266 | [Count Number of Texts](2266.md) | 🟡 Medium | 3m 20s | The problem gives us a string called pressedKeys, which represents … |
