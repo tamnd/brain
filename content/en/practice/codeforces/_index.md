@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 82 contests, 433 problems, 363 verified."
+description: "Codeforces problem solutions with full editorial. 83 contests, 438 problems, 366 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**82 contests, 433 problems, 363 verified.**
+**83 contests, 438 problems, 366 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -91,9 +91,10 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [74](74/) | [Codeforces Beta Round 68](https://codeforces.com/contest/74) | Beta | 1000-2800 | 4/5 | 22m 53s |
 | [75](75/) | [Codeforces Beta Round 67 (Div. 2)](https://codeforces.com/contest/75) | Div. 2 | 1000-2400 | 4/5 | 9m 31s |
 | [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 1700-2700 | 5/6 | 12m 33s |
-| [77](77/) | [Codeforces Beta Round 69 (Div. 1 Only)](https://codeforces.com/contest/77) | Div. 1 | 1400-2800 | 2/5 | 11m 4s |
+| [77](77/) | [Codeforces Beta Round 69 (Div. 1 Only)](https://codeforces.com/contest/77) | Div. 1 | 1400-2800 | 2/5 | 10m 10s |
 | [78](78/) | [Codeforces Beta Round 70 (Div. 2)](https://codeforces.com/contest/78) | Div. 2 | 800-2300 | 4/5 | 12m 27s |
 | [79](79/) | [Codeforces Beta Round 71](https://codeforces.com/contest/79) | Beta | 1200-2900 | 4/5 | 8m 40s |
 | [80](80/) | [Codeforces Beta Round 69 (Div. 2 Only)](https://codeforces.com/contest/80) | Div. 2 | 800-1200 | 1/2 | 3m 11s |
 | [81](81/) | [Yandex.Algorithm Open 2011: Qualification 1](https://codeforces.com/contest/81) | Special | 1400-2700 | 3/5 | 12m 57s |
+| [82](82/) | [Yandex.Algorithm 2011: Qualification 2](https://codeforces.com/contest/82) | Special | 1100-2600 | 3/5 | 11m 10s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
