@@ -83,3 +83,10 @@ draft: false
 | 1884 | [Egg Drop With 2 Eggs and N Floors](1884.md) | 🟡 Medium | 1m 12s | This problem asks us to determine the minimum number of moves requi… |
 | 1885 | [Count Pairs in Two Arrays](1885.md) | 🟡 Medium | 49s | The problem asks us to count the number of index pairs (i, j) such … |
 | 1886 | [Determine Whether Matrix Can Be Obtained By Rotation](1886.md) | 🟢 Easy | 1m 14s | The problem gives us two square binary matrices, mat and target, bo… |
+| 1888 | [Minimum Number of Flips to Make the Binary String Alternating](1888.md) | 🟡 Medium | 57s | The problem asks us to transform a binary string s into an alternat… |
+| 1889 | [Minimum Space Wasted From Packaging](1889.md) | 🔴 Hard | 1m 26s | The problem gives us a list of package sizes and several suppliers.… |
+| 1890 | [The Latest Login in 2020](1890.md) | 🟢 Easy | 54s | The problem provides a database table Logins that records user logi… |
+| 1891 | [Cutting Ribbons](1891.md) | 🟡 Medium | 1m 4s | The problem requires determining the maximum possible length x of r… |
+| 1892 | [Page Recommendations II](1892.md) | 🔴 Hard | 1m 4s | The problem asks us to implement a page recommendation system based… |
+| 1893 | [Check if All the Integers in a Range Are Covered](1893.md) | 🟢 Easy | 48s | The problem asks us to determine whether every integer within a giv… |
+| 1894 | [Find the Student that Will Replace the Chalk](1894.md) | 🟡 Medium | 53s | The problem presents a classroom scenario where students are given … |
