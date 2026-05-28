@@ -54,5 +54,11 @@ draft: false
 | 1143 | [Longest Common Subsequence](1143.md) | 🟡 Medium | 1m 20s | The problem asks us to compute the length of the longest common sub… |
 | 1144 | [Decrease Elements To Make Array Zigzag](1144.md) | 🟡 Medium | 1m 18s | The problem gives an integer array nums and allows only one type of… |
 | 1145 | [Binary Tree Coloring Game](1145.md) | 🟡 Medium | 2m 37s | The problem is a two-player game played on a binary tree, where eac… |
-| 1146 | [Snapshot Array](1146.md) | 🟡 Medium | 1m 5s | The problem asks us to design a data structure, SnapshotArray, whic… |
-| 1148 | [Article Views I](1148.md) | 🟢 Easy | 2m 12s | The problem provides a database table named Views. Each row represe… |
+| 1146 | [Snapshot Array](1146.md) | 🟡 Medium | 6m 58s | The problem asks us to implement a SnapshotArray, a data structure … |
+| 1147 | [Longest Chunked Palindrome Decomposition](1147.md) | 🔴 Hard | 42s | In this problem, we are given a string text, and we want to split i… |
+| 1148 | [Article Views I](1148.md) | 🟢 Easy | 40s | The problem is asking us to identify all authors who have viewed at… |
+| 1149 | [Article Views II](1149.md) | 🟡 Medium | 1m 15s | The problem gives us a database table named Views. Each row represe… |
+| 1150 | [Check If a Number Is Majority Element in a Sorted Array](1150.md) | 🟢 Easy | 44s | This problem asks us to determine if a given target integer is a ma… |
+| 1152 | [Analyze User Website Visit Pattern](1152.md) | 🟡 Medium | 1m 1s | Here is a comprehensive, detailed technical solution guide for Leet… |
+| 1153 | [String Transforms Into Another String](1153.md) | 🔴 Hard | 1m 17s | The problem gives us two strings, str1 and str2, which are guarante… |
+| 1154 | [Day of the Year](1154.md) | 🟢 Easy | 43s | The problem asks us to compute the ordinal day number of a year giv… |
