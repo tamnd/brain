@@ -104,9 +104,9 @@ draft: false
 | 1491 | [Average Salary Excluding the Minimum and Maximum Salary](1491.md) | 🟢 Easy | 1m 8s | The problem gives us an array called salary, where each element rep… |
 | 1492 | [The kth Factor of n](1492.md) | 🟡 Medium | 1m 16s | The problem asks us to find the kth factor of a positive integer n,… |
 | 1493 | [Longest Subarray of 1's After Deleting One Element](1493.md) | 🟡 Medium | 52s | This problem asks us to find the longest contiguous subarray of 1s … |
-| 1494 | [Parallel Courses II](1494.md) | 🔴 Hard | 1m 37s | The problem describes a directed acyclic graph where each node repr… |
+| 1494 | [Parallel Courses II](1494.md) | 🔴 Hard | 51s | The problem asks us to determine the minimum number of semesters re… |
 | 1495 | [Friendly Movies Streamed Last Month](1495.md) | 🟢 Easy | 1m 30s | This problem asks us to find the titles of movies that satisfy thre… |
-| 1496 | [Path Crossing](1496.md) | 🟢 Easy | 1m 13s | In this problem, we are given a string called path that represents … |
-| 1497 | [Check If Array Pairs Are Divisible by k](1497.md) | 🟡 Medium | 1m 37s | The problem gives us an integer array arr whose length is guarantee… |
-| 1498 | [Number of Subsequences That Satisfy the Given Sum Condition](1498.md) | 🟡 Medium | 1m 24s | This problem asks us to count how many non-empty subsequences of th… |
-| 1499 | [Max Value of Equation](1499.md) | 🔴 Hard | 1m 22s | The problem gives us a list of 2D points sorted by their x-coordina… |
+| 1496 | [Path Crossing](1496.md) | 🟢 Easy | 53s | This problem asks us to simulate movement on a 2D plane according t… |
+| 1497 | [Check If Array Pairs Are Divisible by k](1497.md) | 🟡 Medium | 50s | I can do that, but the full guide at the level of detail you reques… |
+| 1498 | [Number of Subsequences That Satisfy the Given Sum Condition](1498.md) | 🟡 Medium | 54s | The problem asks us to find the number of non-empty subsequences of… |
+| 1499 | [Max Value of Equation](1499.md) | 🔴 Hard | 1m 8s | This guide will focus on the optimal monotonic queue solution, whic… |
