@@ -52,8 +52,8 @@ draft: false
 | 1340 | [Jump Game V](1340.md) | 🔴 Hard | 47s | Here is a comprehensive solution guide for LeetCode 1340 following … |
 | 1341 | [Movie Rating](1341.md) | 🟡 Medium | 1m 8s | This problem works with three relational database tables: Movies, U… |
 | 1342 | [Number of Steps to Reduce a Number to Zero](1342.md) | 🟢 Easy | 1m 13s | The problem gives us a non-negative integer num and asks us to comp… |
-| 1343 | [Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](1343.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array arr, along with two integers,… |
-| 1344 | [Angle Between Hands of a Clock](1344.md) | 🟡 Medium | 1m 12s | The problem asks us to compute the smaller angle formed between the… |
+| 1343 | [Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](1343.md) | 🟡 Medium | 1m 15s | This problem asks us to count how many contiguous subarrays of leng… |
+| 1344 | [Angle Between Hands of a Clock](1344.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the smaller angle formed between th… |
 | 1345 | [Jump Game IV](1345.md) | 🔴 Hard | 1m 5s | The problem is asking us to find the minimum number of jumps requir… |
 | 1346 | [Check If N and Its Double Exist](1346.md) | 🟢 Easy | 44s | This problem asks us to determine whether, in a given integer array… |
 | 1347 | [Minimum Number of Steps to Make Two Strings Anagram](1347.md) | 🟡 Medium | 1m 22s | This problem asks us to determine the minimum number of character r… |
@@ -79,3 +79,7 @@ draft: false
 | 1371 | [Find the Longest Substring Containing Vowels in Even Counts](1371.md) | 🟡 Medium | 1m 19s | The problem asks us to find the length of the longest substring in … |
 | 1373 | [Maximum Sum BST in Binary Tree](1373.md) | 🔴 Hard | 1m 31s | This problem asks us to examine every possible subtree inside a bin… |
 | 1374 | [Generate a String With Characters That Have Odd Counts](1374.md) | 🟢 Easy | 1m 8s | The problem asks us to construct a string of length n using only lo… |
+| 1375 | [Number of Times Binary String Is Prefix-Aligned](1375.md) | 🟡 Medium | 54s | The problem is asking us to simulate flipping bits in a binary stri… |
+| 1376 | [Time Needed to Inform All Employees](1376.md) | 🟡 Medium | 1m 24s | This problem models a company hierarchy as a tree. Every employee h… |
+| 1377 | [Frog Position After T Seconds](1377.md) | 🔴 Hard | 1m 33s | The problem gives us an undirected tree with n vertices numbered fr… |
+| 1378 | [Replace Employee ID With The Unique Identifier](1378.md) | 🟢 Easy | 47s | This problem asks us to combine information from two database table… |
