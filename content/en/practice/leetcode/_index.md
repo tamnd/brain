@@ -970,20 +970,48 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 953 | [Verifying an Alien Dictionary](09xx/953.md) | 🟢 Easy | 1m 4s | This problem asks us to verify whether a list of words is sorted ac… |
 | 954 | [Array of Doubled Pairs](09xx/954.md) | 🟡 Medium | 29s | The problem asks whether it is possible to reorder an even-length a… |
 | 955 | [Delete Columns to Make Sorted II](09xx/955.md) | 🟡 Medium | 1m 20s | This problem asks us to remove the minimum number of columns from a… |
-| 956 | [Tallest Billboard](09xx/956.md) | 🔴 Hard | 1m 13s | In this problem, we are given a list of steel rods. Each rod has a … |
-| 957 | [Prison Cells After N Days](09xx/957.md) | 🟡 Medium | 1m 11s | The problem gives us a row of exactly eight prison cells, where eac… |
-| 958 | [Check Completeness of a Binary Tree](09xx/958.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given binary tree is a c… |
-| 959 | [Regions Cut By Slashes](09xx/959.md) | 🟡 Medium | 1m 20s | The problem gives us an n x n grid where every cell contains one of… |
+| 956 | [Tallest Billboard](09xx/956.md) | 🔴 Hard | 1m 11s | This problem asks us to split a collection of steel rods into two g… |
+| 957 | [Prison Cells After N Days](09xx/957.md) | 🟡 Medium | 39s | The problem presents a simulation scenario with a row of exactly 8 … |
+| 958 | [Check Completeness of a Binary Tree](09xx/958.md) | 🟡 Medium | 36s | The problem asks us to determine whether a given binary tree is a c… |
+| 959 | [Regions Cut By Slashes](09xx/959.md) | 🟡 Medium | 40s | Let's dive into a full, detailed technical solution guide for LeetC… |
 | 960 | [Delete Columns to Make Sorted III](09xx/960.md) | 🔴 Hard | 33s | This problem asks us to find the minimum number of columns to delet… |
-| 961 | [N-Repeated Element in Size 2N Array](09xx/961.md) | 🟢 Easy | 1m 24s | The problem gives an integer array nums whose length is exactly 2 n… |
-| 962 | [Maximum Width Ramp](09xx/962.md) | 🟡 Medium | 1m 12s | The problem asks us to find the maximum width ramp in an array of i… |
+| 961 | [N-Repeated Element in Size 2N Array](09xx/961.md) | 🟢 Easy | 2m 48s | The problem gives us an integer array nums whose length is exactly … |
+| 962 | [Maximum Width Ramp](09xx/962.md) | 🟡 Medium | 28s | The problem asks us to find the maximum width ramp in an array of i… |
+| 963 | [Minimum Area Rectangle II](09xx/963.md) | 🟡 Medium | 1m 28s | The problem gives us a collection of unique points on a 2D plane. O… |
 | 964 | [Least Operators to Express Number](09xx/964.md) | 🔴 Hard | 1m 23s | This problem asks us to construct a mathematical expression using o… |
-| 965 | [Univalued Binary Tree](09xx/965.md) | 🟢 Easy | 38s | The problem asks us to determine whether a given binary tree is uni… |
-| 966 | [Vowel Spellchecker](09xx/966.md) | 🟡 Medium | 1m 42s | The problem asks us to build a spellchecker with very specific matc… |
-| 967 | [Numbers With Same Consecutive Differences](09xx/967.md) | 🟡 Medium | 41s | This problem asks us to generate all integers of a specific length … |
-| 968 | [Binary Tree Cameras](09xx/968.md) | 🔴 Hard | 1m 10s | LeetCode 968, Binary Tree Cameras, asks us to determine the minimum… |
+| 965 | [Univalued Binary Tree](09xx/965.md) | 🟢 Easy | 1m 3s | The problem gives us the root node of a binary tree and asks whethe… |
+| 966 | [Vowel Spellchecker](09xx/966.md) | 🟡 Medium | 1m 35s | The problem asks us to build a spellchecker with three levels of ma… |
+| 967 | [Numbers With Same Consecutive Differences](09xx/967.md) | 🟡 Medium | 46s | The problem asks us to generate all integers of length n such that … |
+| 968 | [Binary Tree Cameras](09xx/968.md) | 🔴 Hard | 36s | This problem asks us to determine the minimum number of cameras req… |
 | 969 | [Pancake Sorting](09xx/969.md) | 🟡 Medium | 42s | The problem is asking us to sort an array of unique integers using … |
-| 970 | [Powerful Integers](09xx/970.md) | 🟡 Medium | 1m 12s | The problem asks us to generate every integer of the form: where bo… |
-| 971 | [Flip Binary Tree To Match Preorder Traversal](09xx/971.md) | 🟡 Medium | 1m 9s | The problem gives us a binary tree and a target preorder traversal … |
-| 972 | [Equal Rational Numbers](09xx/972.md) | 🔴 Hard | 1m 14s | The problem asks us to determine whether two string representations… |
+| 970 | [Powerful Integers](09xx/970.md) | 🟡 Medium | 1m 8s | This problem asks us to generate all integers that can be written i… |
+| 971 | [Flip Binary Tree To Match Preorder Traversal](09xx/971.md) | 🟡 Medium | 36s | This problem asks us to manipulate a binary tree so that its pre-or… |
+| 972 | [Equal Rational Numbers](09xx/972.md) | 🔴 Hard | 45s | The problem asks us to determine whether two strings s and t, each … |
 | 973 | [K Closest Points to Origin](09xx/973.md) | 🟡 Medium | 41s | This problem asks us to find the k points that are closest to the o… |
+| 974 | [Subarray Sums Divisible by K](09xx/974.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many non-empty contiguous subarray… |
+| 975 | [Odd Even Jump](09xx/975.md) | 🔴 Hard | 38s | The problem asks us to determine how many starting indices in an ar… |
+| 976 | [Largest Perimeter Triangle](09xx/976.md) | 🟢 Easy | 1m 7s | The problem gives us an array of integers called nums, where each i… |
+| 977 | [Squares of a Sorted Array](09xx/977.md) | 🟢 Easy | 46s | The problem asks us to take an array of integers nums that is alrea… |
+| 978 | [Longest Turbulent Subarray](09xx/978.md) | 🟡 Medium | 1m 16s | The problem asks us to find the length of the longest turbulent sub… |
+| 979 | [Distribute Coins in Binary Tree](09xx/979.md) | 🟡 Medium | 1m 5s | In this problem, we are given a binary tree where every node contai… |
+| 980 | [Unique Paths III](09xx/980.md) | 🔴 Hard | 1m 18s | This problem asks us to count the number of valid paths in a grid u… |
+| 981 | [Time Based Key-Value Store](09xx/981.md) | 🟡 Medium | 1m 15s | The problem asks us to design a data structure that behaves like a … |
+| 982 | [Triples with Bitwise AND Equal To Zero](09xx/982.md) | 🔴 Hard | 44s | This problem asks us to count the number of triples (i, j, k) from … |
+| 983 | [Minimum Cost For Tickets](09xx/983.md) | 🟡 Medium | 1m 7s | In this problem, we are given a list of travel days during a single… |
+| 984 | [String Without AAA or BBB](09xx/984.md) | 🟡 Medium | 58s | The problem gives us two integers, a and b, representing how many '… |
+| 985 | [Sum of Even Numbers After Queries](09xx/985.md) | 🟡 Medium | 1m | The problem gives us an integer array nums and a list of update ope… |
+| 986 | [Interval List Intersections](09xx/986.md) | 🟡 Medium | 1m 8s | The problem gives us two lists of closed intervals. Each interval i… |
+| 987 | [Vertical Order Traversal of a Binary Tree](09xx/987.md) | 🔴 Hard | 1m 18s | The problem asks us to perform a vertical traversal of a binary tre… |
+| 988 | [Smallest String Starting From Leaf](09xx/988.md) | 🟡 Medium | 1m 23s | Edit This problem gives us the root of a binary tree where every no… |
+| 989 | [Add to Array-Form of Integer](09xx/989.md) | 🟢 Easy | 55s | The problem asks us to compute the sum of a non-negative integer re… |
+| 990 | [Satisfiability of Equality Equations](09xx/990.md) | 🟡 Medium | 1m 2s | The problem gives us a list of equations involving lowercase Englis… |
+| 991 | [Broken Calculator](09xx/991.md) | 🟡 Medium | 54s | This problem gives us a calculator that starts with an integer star… |
+| 992 | [Subarrays with K Different Integers](09xx/992.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many contiguous subarrays contain … |
+| 993 | [Cousins in Binary Tree](09xx/993.md) | 🟢 Easy | 46s | The problem asks us to determine if two nodes in a binary tree are … |
+| 994 | [Rotting Oranges](09xx/994.md) | 🟡 Medium | 1m 15s | This problem models the spread of rot through a grid of oranges ove… |
+| 995 | [Minimum Number of K Consecutive Bit Flips](09xx/995.md) | 🔴 Hard | 1m 4s | This problem asks us to transform a binary array so that every elem… |
+| 996 | [Number of Squareful Arrays](09xx/996.md) | 🔴 Hard | 1m 11s | The problem asks us to count how many distinct permutations of an a… |
+| 997 | [Find the Town Judge](09xx/997.md) | 🟢 Easy | 1m 6s | This problem asks us to determine whether a special person called t… |
+| 998 | [Maximum Binary Tree II](09xx/998.md) | 🟡 Medium | 1m 19s | The problem gives us the root of an existing maximum binary tree an… |
+| 999 | [Available Captures for Rook](09xx/999.md) | 🟢 Easy | 1m 13s | This problem gives us an 8 x 8 chessboard represented as a matrix o… |
+| 1000 | [Minimum Cost to Merge Stones](10xx/1000.md) | 🔴 Hard | 38s | The problem asks us to merge an array of stone piles into a single … |

@@ -73,6 +73,7 @@ draft: false
 | 960 | [Delete Columns to Make Sorted III](960.md) | 🔴 Hard | 33s | This problem asks us to find the minimum number of columns to delet… |
 | 961 | [N-Repeated Element in Size 2N Array](961.md) | 🟢 Easy | 2m 48s | The problem gives us an integer array nums whose length is exactly … |
 | 962 | [Maximum Width Ramp](962.md) | 🟡 Medium | 28s | The problem asks us to find the maximum width ramp in an array of i… |
+| 963 | [Minimum Area Rectangle II](963.md) | 🟡 Medium | 1m 28s | The problem gives us a collection of unique points on a 2D plane. O… |
 | 964 | [Least Operators to Express Number](964.md) | 🔴 Hard | 1m 23s | This problem asks us to construct a mathematical expression using o… |
 | 965 | [Univalued Binary Tree](965.md) | 🟢 Easy | 1m 3s | The problem gives us the root node of a binary tree and asks whethe… |
 | 966 | [Vowel Spellchecker](966.md) | 🟡 Medium | 1m 35s | The problem asks us to build a spellchecker with three levels of ma… |
@@ -90,17 +91,21 @@ draft: false
 | 978 | [Longest Turbulent Subarray](978.md) | 🟡 Medium | 1m 16s | The problem asks us to find the length of the longest turbulent sub… |
 | 979 | [Distribute Coins in Binary Tree](979.md) | 🟡 Medium | 1m 5s | In this problem, we are given a binary tree where every node contai… |
 | 980 | [Unique Paths III](980.md) | 🔴 Hard | 1m 18s | This problem asks us to count the number of valid paths in a grid u… |
+| 981 | [Time Based Key-Value Store](981.md) | 🟡 Medium | 1m 15s | The problem asks us to design a data structure that behaves like a … |
 | 982 | [Triples with Bitwise AND Equal To Zero](982.md) | 🔴 Hard | 44s | This problem asks us to count the number of triples (i, j, k) from … |
 | 983 | [Minimum Cost For Tickets](983.md) | 🟡 Medium | 1m 7s | In this problem, we are given a list of travel days during a single… |
-| 984 | [String Without AAA or BBB](984.md) | 🟡 Medium | 1m 12s | The problem gives us two integers, a and b, representing how many '… |
-| 985 | [Sum of Even Numbers After Queries](985.md) | 🟡 Medium | 1m 3s | The problem gives us an integer array nums and a list of update ope… |
+| 984 | [String Without AAA or BBB](984.md) | 🟡 Medium | 58s | The problem gives us two integers, a and b, representing how many '… |
+| 985 | [Sum of Even Numbers After Queries](985.md) | 🟡 Medium | 1m | The problem gives us an integer array nums and a list of update ope… |
 | 986 | [Interval List Intersections](986.md) | 🟡 Medium | 1m 8s | The problem gives us two lists of closed intervals. Each interval i… |
 | 987 | [Vertical Order Traversal of a Binary Tree](987.md) | 🔴 Hard | 1m 18s | The problem asks us to perform a vertical traversal of a binary tre… |
+| 988 | [Smallest String Starting From Leaf](988.md) | 🟡 Medium | 1m 23s | Edit This problem gives us the root of a binary tree where every no… |
 | 989 | [Add to Array-Form of Integer](989.md) | 🟢 Easy | 55s | The problem asks us to compute the sum of a non-negative integer re… |
+| 990 | [Satisfiability of Equality Equations](990.md) | 🟡 Medium | 1m 2s | The problem gives us a list of equations involving lowercase Englis… |
 | 991 | [Broken Calculator](991.md) | 🟡 Medium | 54s | This problem gives us a calculator that starts with an integer star… |
 | 992 | [Subarrays with K Different Integers](992.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many contiguous subarrays contain … |
 | 993 | [Cousins in Binary Tree](993.md) | 🟢 Easy | 46s | The problem asks us to determine if two nodes in a binary tree are … |
 | 994 | [Rotting Oranges](994.md) | 🟡 Medium | 1m 15s | This problem models the spread of rot through a grid of oranges ove… |
+| 995 | [Minimum Number of K Consecutive Bit Flips](995.md) | 🔴 Hard | 1m 4s | This problem asks us to transform a binary array so that every elem… |
 | 996 | [Number of Squareful Arrays](996.md) | 🔴 Hard | 1m 11s | The problem asks us to count how many distinct permutations of an a… |
 | 997 | [Find the Town Judge](997.md) | 🟢 Easy | 1m 6s | This problem asks us to determine whether a special person called t… |
 | 998 | [Maximum Binary Tree II](998.md) | 🟡 Medium | 1m 19s | The problem gives us the root of an existing maximum binary tree an… |
