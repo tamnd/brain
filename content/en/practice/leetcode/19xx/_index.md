@@ -96,3 +96,10 @@ draft: false
 | 1988 | [Find Cutoff Score for Each School](1988.md) | 🟡 Medium | 40s | This problem asks us to compute a minimum score requirement (cutoff… |
 | 1989 | [Maximum Number of People That Can Be Caught in Tag](1989.md) | 🟡 Medium | 37s | The problem describes a line of people represented by a binary arra… |
 | 1990 | [Count the Number of Experiments](1990.md) | 🟡 Medium | 1m 9s | This problem gives us a database table named Experiments. Each row … |
+| 1993 | [Operations on Tree](1993.md) | 🟡 Medium | 1m 32s | The problem asks us to design a mutable tree-based data structure t… |
+| 1994 | [The Number of Good Subsets](1994.md) | 🔴 Hard | 1m 32s | This problem asks us to count how many subsets of the input array h… |
+| 1995 | [Count Special Quadruplets](1995.md) | 🟢 Easy | 42s | The problem asks us to count the number of distinct quadruplets (a,… |
+| 1996 | [The Number of Weak Characters in the Game](1996.md) | 🟡 Medium | 1m 7s | In this problem, every character in the game has two attributes: - … |
+| 1997 | [First Day Where You Have Been in All the Rooms](1997.md) | 🟡 Medium | 44s | The problem describes a scenario where you visit a sequence of n ro… |
+| 1998 | [GCD Sort of an Array](1998.md) | 🔴 Hard | 58s | The problem asks whether it is possible to sort an integer array nu… |
+| 1999 | [Smallest Greater Multiple Made of Two Digits](1999.md) | 🟡 Medium | 59s | The problem asks us to find the smallest integer that satisfies thr… |

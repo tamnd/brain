@@ -76,5 +76,17 @@ draft: false
 | 2263 | [Make Array Non-decreasing or Non-increasing](2263.md) | 🔴 Hard | 1m 20s | The problem gives us an integer array nums, and we are allowed to p… |
 | 2264 | [Largest 3-Same-Digit Number in String](2264.md) | 🟢 Easy | 45s | The problem asks us to find the largest "good" integer in a given s… |
 | 2265 | [Count Nodes Equal to Average of Subtree](2265.md) | 🟡 Medium | 1m 14s | This problem gives us the root of a binary tree and asks us to coun… |
+| 2266 | [Count Number of Texts](2266.md) | 🟡 Medium | 3m 20s | The problem gives us a string called pressedKeys, which represents … |
 | 2267 | [ Check if There Is a Valid Parentheses String Path](2267.md) | 🔴 Hard | 2m 22s | The problem asks us to determine whether there exists a path in a 2… |
 | 2268 | [Minimum Number of Keypresses](2268.md) | 🟡 Medium | 1m 3s | The problem gives us a string s consisting of lowercase English let… |
+| 2269 | [Find the K-Beauty of a Number](2269.md) | 🟢 Easy | 2m 14s | The problem asks us to compute the "k-beauty" of a number. We are g… |
+| 2270 | [Number of Ways to Split Array](2270.md) | 🟡 Medium | 1m 18s | The problem gives us a 0-indexed integer array nums and asks us to … |
+| 2271 | [Maximum White Tiles Covered by a Carpet](2271.md) | 🟡 Medium | 1m 23s | In this problem, we are given several disjoint intervals representi… |
+| 2272 | [Substring With Largest Variance](2272.md) | 🔴 Hard | 1m 14s | This problem asks us to compute the maximum possible variance among… |
+| 2273 | [Find Resultant Array After Removing Anagrams](2273.md) | 🟢 Easy | 58s | The problem asks us to process an array of strings words by repeate… |
+| 2274 | [Maximum Consecutive Floors Without Special Floors](2274.md) | 🟡 Medium | 2m 20s | The problem describes a building where Alice has rented every floor… |
+| 2276 | [Count Integers in Intervals](2276.md) | 🔴 Hard | 2m 20s | The problem asks us to design a data structure that efficiently man… |
+| 2277 | [Closest Node to Path in Tree](2277.md) | 🔴 Hard | 1m 22s | The problem gives us an undirected tree with n nodes numbered from … |
+| 2278 | [Percentage of Letter in String](2278.md) | 🟢 Easy | 1m 5s | The problem gives us a string s and a character letter. We need to … |
+| 2279 | [Maximum Bags With Full Capacity of Rocks](2279.md) | 🟡 Medium | 1m 20s | This problem gives us two arrays, capacity and rocks, where each in… |
+| 2280 | [Minimum Lines to Represent a Line Chart](2280.md) | 🟡 Medium | 1m 27s | The problem gives us a collection of stock price points, where each… |
