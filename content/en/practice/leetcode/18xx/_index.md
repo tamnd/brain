@@ -39,4 +39,10 @@ draft: false
 | 1830 | [Minimum Number of Operations to Make String Sorted](1830.md) | 🔴 Hard | 1m 27s | The operation described in the problem is exactly the process of ge… |
 | 1831 | [Maximum Transaction Each Day](1831.md) | 🟡 Medium | 3m 51s | The problem gives us a table named Transactions where each row repr… |
 | 1833 | [Maximum Ice Cream Bars](1833.md) | 🟡 Medium | 1m 1s | This problem asks us to determine the maximum number of ice cream b… |
+| 1835 | [Find XOR Sum of All Pairs Bitwise AND](1835.md) | 🔴 Hard | 1m 17s | This problem asks us to compute the XOR sum of every possible pairw… |
+| 1836 | [Remove Duplicates From an Unsorted Linked List](1836.md) | 🟡 Medium | 1m 26s | This problem gives us the head of a singly linked list whose values… |
+| 1837 | [Sum of Digits in Base K](1837.md) | 🟢 Easy | 42s | The problem is asking us to convert a given integer n from base 10 … |
+| 1838 | [Frequency of the Most Frequent Element](1838.md) | 🟡 Medium | 59s | This problem asks us to determine the maximum frequency of an eleme… |
+| 1839 | [Longest Substring Of All Vowels in Order](1839.md) | 🟡 Medium | 1m 37s | The problem asks us to find the length of the longest substring tha… |
+| 1840 | [Maximum Building Height](1840.md) | 🔴 Hard | 1m 49s | This problem asks us to construct heights for n buildings arranged … |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |

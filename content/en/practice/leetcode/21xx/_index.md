@@ -35,4 +35,8 @@ draft: false
 | 2125 | [Number of Laser Beams in a Bank](2125.md) | 🟡 Medium | 1m | The problem presents a binary matrix representing a bank floor plan… |
 | 2126 | [Destroying Asteroids](2126.md) | 🟡 Medium | 48s | The problem describes a scenario where a planet with an initial mas… |
 | 2129 | [Capitalize the Title](2129.md) | 🟢 Easy | 54s | The problem is asking us to take a string title composed of words s… |
+| 2130 | [Maximum Twin Sum of a Linked List](2130.md) | 🟡 Medium | 1m 27s | The problem gives us a singly linked list with an even number of no… |
+| 2131 | [Longest Palindrome by Concatenating Two Letter Words](2131.md) | 🟡 Medium | 51s | The problem provides an array of two-letter lowercase strings, and … |
+| 2132 | [Stamping the Grid](2132.md) | 🔴 Hard | 1m 2s | The problem is asking us to determine if a given m x n binary grid … |
+| 2134 | [Minimum Swaps to Group All 1's Together II](2134.md) | 🟡 Medium | 57s | The problem asks us to compute the minimum number of swaps needed t… |
 | 2143 | [Choose Numbers From Two Arrays in Range](2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |
