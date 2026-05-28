@@ -54,4 +54,15 @@ draft: false
 | 1849 | [Splitting a String Into Descending Consecutive Values](1849.md) | 🟡 Medium | 1m 52s | The problem gives us a numeric string s and asks whether it can be … |
 | 1850 | [Minimum Adjacent Swaps to Reach the Kth Smallest Number](1850.md) | 🟡 Medium | 48s | The problem asks us to compute the minimum number of adjacent swaps… |
 | 1852 | [Distinct Numbers in Each Subarray](1852.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and an integer k. For ev… |
+| 1853 | [Convert Date Format](1853.md) | 🟢 Easy | 1m 24s | The problem provides a database table named Days with a single colu… |
+| 1854 | [Maximum Population Year](1854.md) | 🟢 Easy | 46s | The problem asks us to determine the year with the highest populati… |
+| 1855 | [Maximum Distance Between a Pair of Values](1855.md) | 🟡 Medium | 1m 31s | You are given two integer arrays, nums1 and nums2, and both arrays … |
+| 1856 | [Maximum Subarray Min-Product](1856.md) | 🟡 Medium | 57s | The problem asks us to find the maximum min-product of any contiguo… |
+| 1857 | [Largest Color Value in a Directed Graph](1857.md) | 🔴 Hard | 57s | The problem asks us to find the largest color value along any path … |
+| 1858 | [Longest Word With All Prefixes](1858.md) | 🟡 Medium | 1m 22s | The problem gives us an array of lowercase strings called words. We… |
+| 1859 | [Sorting the Sentence](1859.md) | 🟢 Easy | 53s | The problem gives us a shuffled sentence, where every word has a nu… |
+| 1860 | [Incremental Memory Leak](1860.md) | 🟡 Medium | 1m 3s | The problem models a faulty program that continuously consumes memo… |
+| 1861 | [Rotating the Box](1861.md) | 🟡 Medium | 2m 12s | Please provide the specific problem number/title you want the detai… |
+| 1862 | [Sum of Floored Pairs](1862.md) | 🔴 Hard | 59s | The problem asks us to calculate the sum of the integer division re… |
+| 1864 | [Minimum Number of Swaps to Make the Binary String Alternating](1864.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s that contains only '0' and '… |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
