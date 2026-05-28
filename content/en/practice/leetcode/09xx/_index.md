@@ -74,10 +74,10 @@ draft: false
 | 961 | [N-Repeated Element in Size 2N Array](961.md) | 🟢 Easy | 2m 48s | The problem gives us an integer array nums whose length is exactly … |
 | 962 | [Maximum Width Ramp](962.md) | 🟡 Medium | 28s | The problem asks us to find the maximum width ramp in an array of i… |
 | 964 | [Least Operators to Express Number](964.md) | 🔴 Hard | 1m 23s | This problem asks us to construct a mathematical expression using o… |
-| 965 | [Univalued Binary Tree](965.md) | 🟢 Easy | 38s | The problem asks us to determine whether a given binary tree is uni… |
-| 966 | [Vowel Spellchecker](966.md) | 🟡 Medium | 1m 42s | The problem asks us to build a spellchecker with very specific matc… |
-| 967 | [Numbers With Same Consecutive Differences](967.md) | 🟡 Medium | 41s | This problem asks us to generate all integers of a specific length … |
-| 968 | [Binary Tree Cameras](968.md) | 🔴 Hard | 1m 10s | LeetCode 968, Binary Tree Cameras, asks us to determine the minimum… |
+| 965 | [Univalued Binary Tree](965.md) | 🟢 Easy | 1m 3s | The problem gives us the root node of a binary tree and asks whethe… |
+| 966 | [Vowel Spellchecker](966.md) | 🟡 Medium | 1m 35s | The problem asks us to build a spellchecker with three levels of ma… |
+| 967 | [Numbers With Same Consecutive Differences](967.md) | 🟡 Medium | 46s | The problem asks us to generate all integers of length n such that … |
+| 968 | [Binary Tree Cameras](968.md) | 🔴 Hard | 36s | This problem asks us to determine the minimum number of cameras req… |
 | 969 | [Pancake Sorting](969.md) | 🟡 Medium | 42s | The problem is asking us to sort an array of unique integers using … |
 | 970 | [Powerful Integers](970.md) | 🟡 Medium | 1m 12s | The problem asks us to generate every integer of the form: where bo… |
 | 971 | [Flip Binary Tree To Match Preorder Traversal](971.md) | 🟡 Medium | 1m 9s | The problem gives us a binary tree and a target preorder traversal … |
@@ -94,3 +94,6 @@ draft: false
 | 983 | [Minimum Cost For Tickets](983.md) | 🟡 Medium | 45s | The problem asks us to calculate the minimum cost to travel on a se… |
 | 984 | [String Without AAA or BBB](984.md) | 🟡 Medium | 1m 12s | The problem gives us two integers, a and b, representing how many '… |
 | 985 | [Sum of Even Numbers After Queries](985.md) | 🟡 Medium | 1m 3s | The problem gives us an integer array nums and a list of update ope… |
+| 986 | [Interval List Intersections](986.md) | 🟡 Medium | 1m 8s | The problem gives us two lists of closed intervals. Each interval i… |
+| 987 | [Vertical Order Traversal of a Binary Tree](987.md) | 🔴 Hard | 1m 18s | The problem asks us to perform a vertical traversal of a binary tre… |
+| 989 | [Add to Array-Form of Integer](989.md) | 🟢 Easy | 55s | The problem asks us to compute the sum of a non-negative integer re… |
