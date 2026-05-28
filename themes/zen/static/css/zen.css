@@ -110,7 +110,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   z-index: 40;
   height: var(--nav-h);
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
 }
@@ -206,7 +205,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   top: var(--nav-h);
   height: calc(100vh - var(--nav-h));
   overflow-y: auto;
-  border-right: 1px solid var(--border);
   padding: 1.5rem 0 2rem;
   background: var(--bg);
   scrollbar-width: thin;
@@ -325,8 +323,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 .zen-page-header {
   margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
 .zen-page-header h1 {
@@ -395,7 +391,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 }
 
 .zen-content h1 { font-size: 1.75rem; }
-.zen-content h2 { font-size: 1.375rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.375em; }
+.zen-content h2 { font-size: 1.375rem; }
 .zen-content h3 { font-size: 1.125rem; }
 .zen-content h4 { font-size: 1rem; }
 
@@ -612,7 +608,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 .zen-home-header {
   padding: 3rem 0 2rem;
-  border-bottom: 1px solid var(--border-subtle);
   margin-bottom: 2rem;
 }
 
@@ -645,8 +640,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   display: flex;
   gap: 1rem;
   margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-subtle);
 }
 
 .zen-pager__btn {
@@ -898,7 +891,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 /* ===== Footer ============================================================ */
 
 .zen-footer {
-  border-top: 1px solid var(--border);
   background: var(--bg);
 }
 
