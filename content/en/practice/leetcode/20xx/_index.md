@@ -63,23 +63,23 @@ draft: false
 | 2050 | [Parallel Courses III](2050.md) | 🔴 Hard | 53s | The problem asks us to determine the minimum number of months requi… |
 | 2051 | [The Category of Each Member in the Store](2051.md) | 🟡 Medium | 1m 30s | This problem asks us to classify every store member into a category… |
 | 2052 | [Minimum Cost to Separate Sentence Into Rows](2052.md) | 🟡 Medium | 1m 26s | This problem asks us to format a sentence into multiple rows such t… |
-| 2053 | [Kth Distinct String in an Array](2053.md) | 🟢 Easy | 1m 30s | The problem asks us to find the kth distinct string in an array of … |
-| 2054 | [Two Best Non-Overlapping Events](2054.md) | 🟡 Medium | 2m 51s | That is a large, structured reference document. I can provide the f… |
-| 2055 | [Plates Between Candles](2055.md) | 🟡 Medium | 1m 40s | The problem gives us a string s containing only two characters: - '… |
-| 2056 | [Number of Valid Move Combinations On Chessboard](2056.md) | 🔴 Hard | 56s | The problem asks us to compute the number of valid move combination… |
-| 2057 | [Smallest Index With Equal Value](2057.md) | 🟢 Easy | 50s | The problem asks us to find the smallest index i in a 0-indexed int… |
-| 2058 | [Find the Minimum and Maximum Number of Nodes Between Critical Points](2058.md) | 🟡 Medium | 1m 43s | The problem gives us a singly linked list and asks us to identify a… |
-| 2059 | [Minimum Operations to Convert Number](2059.md) | 🟡 Medium | 55s | The problem asks us to transform a starting number start into a tar… |
-| 2060 | [Check if an Original String Exists Given Two Encoded Strings](2060.md) | 🔴 Hard | 2m 19s | Here’s a full, detailed technical solution guide for LeetCode 2060 … |
-| 2061 | [Number of Spaces Cleaning Robot Cleaned](2061.md) | 🟡 Medium | 7m 5s | In this problem, we are given a 2D binary matrix called room. Each … |
-| 2062 | [Count Vowel Substrings of a String](2062.md) | 🟢 Easy | 2m 19s | The problem asks us to count how many substrings of a given string … |
-| 2063 | [Vowels of All Substrings](2063.md) | 🟡 Medium | 57s | The problem asks us to compute the total number of vowels that appe… |
-| 2064 | [Minimized Maximum of Products Distributed to Any Store](2064.md) | 🟡 Medium | 59s | This problem asks us to distribute a given set of products of diffe… |
-| 2065 | [Maximum Path Quality of a Graph](2065.md) | 🔴 Hard | 1m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
-| 2066 | [Account Balance](2066.md) | 🟡 Medium | 1m | The problem asks us to calculate the running balance of each accoun… |
+| 2053 | [Kth Distinct String in an Array](2053.md) | 🟢 Easy | 1m 23s | The problem asks us to find the kth distinct string in an array of … |
+| 2054 | [Two Best Non-Overlapping Events](2054.md) | 🟡 Medium | 1m 27s | The problem gives us a list of events, where each event is represen… |
+| 2055 | [Plates Between Candles](2055.md) | 🟡 Medium | 1m 28s | The problem gives us a string s made of two characters: - '' repres… |
+| 2056 | [Number of Valid Move Combinations On Chessboard](2056.md) | 🔴 Hard | 53s | The problem asks us to calculate the total number of valid move com… |
+| 2057 | [Smallest Index With Equal Value](2057.md) | 🟢 Easy | 1m 12s | The problem gives us a 0-indexed integer array nums. We must find t… |
+| 2058 | [Find the Minimum and Maximum Number of Nodes Between Critical Points](2058.md) | 🟡 Medium | 1m 23s | The problem gives us a singly linked list and asks us to identify a… |
+| 2059 | [Minimum Operations to Convert Number](2059.md) | 🟡 Medium | 1m 25s | This problem asks us to transform a starting integer into a target … |
+| 2060 | [Check if an Original String Exists Given Two Encoded Strings](2060.md) | 🔴 Hard | 56s | The problem is asking us to determine whether there exists a single… |
+| 2061 | [Number of Spaces Cleaning Robot Cleaned](2061.md) | 🟡 Medium | 1m 22s | In this problem, we are given a 2D binary matrix called room. Each … |
+| 2062 | [Count Vowel Substrings of a String](2062.md) | 🟢 Easy | 52s | The problem requires counting the number of vowel substrings in a g… |
+| 2063 | [Vowels of All Substrings](2063.md) | 🟡 Medium | 1m 17s | The problem asks us to compute the total number of vowels that appe… |
+| 2064 | [Minimized Maximum of Products Distributed to Any Store](2064.md) | 🟡 Medium | 1m 15s | The problem gives us n retail stores and an array quantities, where… |
+| 2065 | [Maximum Path Quality of a Graph](2065.md) | 🔴 Hard | 1m 20s | We are given an undirected weighted graph where each node has an as… |
+| 2066 | [Account Balance](2066.md) | 🟡 Medium | 1m 16s | This problem asks us to compute the running balance for every bank … |
 | 2067 | [Number of Equal Count Substrings](2067.md) | 🟡 Medium | 52s | The problem asks us to count the number of substrings in a string s… |
-| 2068 | [Check Whether Two Strings are Almost Equivalent](2068.md) | 🟢 Easy | 1m 19s | The problem asks us to determine whether two strings are "almost eq… |
-| 2069 | [Walking Robot Simulation II](2069.md) | 🟡 Medium | 1m 39s | The problem describes a robot moving on the boundary and interior e… |
+| 2068 | [Check Whether Two Strings are Almost Equivalent](2068.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether two strings are "almost eq… |
+| 2069 | [Walking Robot Simulation II](2069.md) | 🟡 Medium | 53s | The problem describes a simulation of a robot moving on a rectangul… |
 | 2070 | [Most Beautiful Item for Each Query](2070.md) | 🟡 Medium | 1m 31s | The problem gives us a list of items, where each item has two value… |
 | 2071 | [Maximum Number of Tasks You Can Assign](2071.md) | 🔴 Hard | 58s | The problem asks us to determine the maximum number of tasks that c… |
 | 2072 | [The Winner University](2072.md) | 🟢 Easy | 56s | The problem describes a competition between two universities: New Y… |
