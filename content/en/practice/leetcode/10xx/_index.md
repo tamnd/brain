@@ -90,10 +90,10 @@ draft: false
 | 1077 | [Project Employees III](1077.md) | 🟡 Medium | 43s | The problem asks us to find the most experienced employees in each … |
 | 1078 | [Occurrences After Bigram](1078.md) | 🟢 Easy | 1m 3s | The problem gives us a string called text and two target words, fir… |
 | 1079 | [Letter Tile Possibilities](1079.md) | 🟡 Medium | 1m 3s | The problem asks us to count all possible non-empty sequences that … |
-| 1080 | [Insufficient Nodes in Root to Leaf Paths](1080.md) | 🟡 Medium | 53s | This problem asks us to prune a binary tree based on the sum of nod… |
+| 1080 | [Insufficient Nodes in Root to Leaf Paths](1080.md) | 🟡 Medium | 58s | This problem asks us to prune a binary tree by removing insufficien… |
 | 1081 | [Smallest Subsequence of Distinct Characters](1081.md) | 🟡 Medium | 1m 15s | The problem asks us to construct the lexicographically smallest sub… |
-| 1082 | [Sales Analysis I](1082.md) | 🟢 Easy | 42s | The problem is asking us to determine the seller or sellers who ach… |
-| 1083 | [Sales Analysis II](1083.md) | 🟢 Easy | 56s | This problem is asking us to identify buyers who purchased a specif… |
+| 1082 | [Sales Analysis I](1082.md) | 🟢 Easy | 1m 37s | This problem asks us to identify the seller or sellers who generate… |
+| 1083 | [Sales Analysis II](1083.md) | 🟢 Easy | 1m 22s | This problem asks us to identify all buyers who purchased the produ… |
 | 1084 | [Sales Analysis III](1084.md) | 🟢 Easy | 1m 24s | The problem gives us two database tables, Product and Sales. The Pr… |
 | 1085 | [Sum of Digits in the Minimum Number](1085.md) | 🟢 Easy | 5m 3s | The problem gives us an integer array called nums. Our task is to f… |
 | 1086 | [High Five](1086.md) | 🟢 Easy | 51s | The problem requires calculating the top five average score for eac… |
@@ -101,3 +101,7 @@ draft: false
 | 1088 | [Confusing Number II](1088.md) | 🔴 Hard | 1m 5s | The problem asks us to count confusing numbers between 1 and n, inc… |
 | 1089 | [Duplicate Zeros](1089.md) | 🟢 Easy | 48s | The problem asks us to modify a fixed-length integer array in-place… |
 | 1091 | [Shortest Path in Binary Matrix](1091.md) | 🟡 Medium | 1m 10s | The problem asks us to find the shortest path from the top-left cor… |
+| 1093 | [Statistics from a Large Sample](1093.md) | 🟡 Medium | 1m 26s | This problem gives us a compressed representation of a very large d… |
+| 1094 | [Car Pooling](1094.md) | 🟡 Medium | 1m 6s | The problem describes a car traveling only in one direction, east. … |
+| 1095 | [Find in Mountain Array](1095.md) | 🔴 Hard | 3m 36s | This problem gives us a special type of array called a mountain arr… |
+| 1096 | [Brace Expansion II](1096.md) | 🔴 Hard | 54s | This problem asks us to evaluate a string expression that represent… |
