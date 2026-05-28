@@ -45,3 +45,7 @@ draft: false
 | 1134 | [Armstrong Number](1134.md) | 🟢 Easy | 52s | In this problem, we are given an integer n, and we must determine w… |
 | 1135 | [Connecting Cities With Minimum Cost](1135.md) | 🟡 Medium | 1m 23s | This problem asks us to connect n cities together using a set of po… |
 | 1136 | [Parallel Courses](1136.md) | 🟡 Medium | 45s | The problem is asking us to determine the minimum number of semeste… |
+| 1137 | [N-th Tribonacci Number](1137.md) | 🟢 Easy | 56s | This problem asks us to compute the n-th Tribonacci number, which i… |
+| 1138 | [Alphabet Board Path](1138.md) | 🟡 Medium | 1m 8s | The problem gives us a special alphabet board and asks us to genera… |
+| 1139 | [Largest 1-Bordered Square](1139.md) | 🟡 Medium | 38s | That is a long, detailed reference document with multiple required … |
+| 1140 | [Stone Game II](1140.md) | 🟡 Medium | 1m 33s | This problem describes a two-player game between Alice and Bob. The… |
