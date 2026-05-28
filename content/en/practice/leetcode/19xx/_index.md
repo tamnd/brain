@@ -77,4 +77,20 @@ draft: false
 | 1968 | [Array With Elements Not Equal to Average of Neighbors](1968.md) | 🟡 Medium | 36s | The problem asks us to rearrange a distinct integer array so that n… |
 | 1969 | [Minimum Non-Zero Product of the Array Elements](1969.md) | 🟡 Medium | 1m 8s | The problem gives us an integer p and defines an array containing e… |
 | 1970 | [Last Day Where You Can Still Cross](1970.md) | 🔴 Hard | 50s | This problem asks us to find the last day we can cross a grid from … |
+| 1971 | [Find if Path Exists in Graph](1971.md) | 🟢 Easy | 49s | The problem asks us to determine whether a path exists between two … |
 | 1972 | [First and Last Call On the Same Day](1972.md) | 🔴 Hard | 40s | The problem provides a table of phone call records where each row c… |
+| 1973 | [Count Nodes Equal to Sum of Descendants](1973.md) | 🟡 Medium | 44s | This problem asks us to analyze a binary tree and count how many no… |
+| 1974 | [Minimum Time to Type Word Using Special Typewriter](1974.md) | 🟢 Easy | 1m 12s | The problem describes a circular typewriter containing all lowercas… |
+| 1975 | [Maximum Matrix Sum](1975.md) | 🟡 Medium | 46s | The problem gives an n x n integer matrix and allows an operation w… |
+| 1976 | [Number of Ways to Arrive at Destination](1976.md) | 🟡 Medium | 1m 41s | This problem gives us a weighted, undirected graph. Each intersecti… |
+| 1977 | [Number of Ways to Separate Numbers](1977.md) | 🔴 Hard | 44s | The problem asks us to determine the number of ways a string of dig… |
+| 1978 | [Employees Whose Manager Left the Company](1978.md) | 🟢 Easy | 38s | The problem is asking us to find employees in a company who meet tw… |
+| 1979 | [Find Greatest Common Divisor of Array](1979.md) | 🟢 Easy | 29s | The problem asks us to compute the greatest common divisor (GCD) of… |
+| 1980 | [Find Unique Binary String](1980.md) | 🟡 Medium | 41s | The problem is asking us to find a binary string of length n that d… |
+| 1981 | [Minimize the Difference Between Target and Chosen Elements](1981.md) | 🟡 Medium | 54s | This problem asks us to select exactly one element from each row of… |
+| 1982 | [Find Array Given Subset Sums](1982.md) | 🔴 Hard | 35s | The problem gives us an integer n and an array sums of length 2^n, … |
+| 1983 | [Widest Pair of Indices With Equal Range Sum](1983.md) | 🟡 Medium | 52s | The problem asks us to find the widest subarray (continuous segment… |
+| 1985 | [Find the Kth Largest Integer in the Array](1985.md) | 🟡 Medium | 43s | This problem asks us to find the kth largest value among a list of … |
+| 1986 | [Minimum Number of Work Sessions to Finish the Tasks](1986.md) | 🟡 Medium | 1m 55s | This problem asks us to schedule a collection of tasks into the min… |
+| 1987 | [Number of Unique Good Subsequences](1987.md) | 🔴 Hard | 44s | The problem asks us to count how many distinct subsequences of a bi… |
+| 1988 | [Find Cutoff Score for Each School](1988.md) | 🟡 Medium | 40s | This problem asks us to compute a minimum score requirement (cutoff… |

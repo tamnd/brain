@@ -61,3 +61,6 @@ draft: false
 | 2248 | [Intersection of Multiple Arrays](2248.md) | 🟢 Easy | 1m 11s | The problem gives us a 2D integer array called nums. Each element o… |
 | 2249 | [Count Lattice Points Inside a Circle](2249.md) | 🟡 Medium | 52s | The problem asks us to compute the number of lattice points (points… |
 | 2250 | [Count Number of Rectangles Containing Each Point](2250.md) | 🟡 Medium | 1m 22s | This problem gives us a collection of axis-aligned rectangles and a… |
+| 2251 | [Number of Flowers in Full Bloom](2251.md) | 🔴 Hard | 37s | This problem asks us to determine, for each person arriving at a sp… |
+| 2252 | [Dynamic Pivoting of a Table](2252.md) | 🔴 Hard | 54s | The problem asks us to transform a normalized database table Produc… |
+| 2253 | [Dynamic Unpivoting of a Table](2253.md) | 🔴 Hard | 57s | The problem is asking to transform a table that has a fixed number … |
