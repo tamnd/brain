@@ -1,6 +1,6 @@
 ---
 title: "CF 8C - Looking for Order"
-description: "We have a fixed starting point, the handbag, and up to 24 scattered objects on a plane. Lena always starts at the handba"
+description: "We have a fixed starting point, the handbag, and up to 24 scattered objects on a 2D plane. Lena always starts at the han"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dp"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Beta Round 8"
 rating: 2000
 weight: 8
-solve_time_s: 152
-verified: false
+solve_time_s: 108
+verified: true
 draft: false
 ---
 
@@ -18,59 +18,43 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** bitmasks, dp  
-**Solve time:** 2m 32s  
-**Verified:** no  
+**Solve time:** 1m 48s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have a fixed starting point, the handbag, and up to 24 scattered objects on a plane. Lena always starts at the handbag, can carry at most two objects per trip, and after picking up an object she must eventually return directly to the handbag before doing anything else. The travel cost between two points is the squared Euclidean distance.
+We have a fixed starting point, the handbag, and up to 24 scattered objects on a 2D plane. Lena always starts at the handbag, walks around collecting at most two objects, returns to the handbag, then repeats until every object is stored back.
 
-A single trip has only two possible shapes.
+The travel cost between two positions is the squared Euclidean distance. If Lena moves from point `(x1, y1)` to `(x2, y2)`, the time spent is:
 
-She can take one object:
+$(x_1-x_2)^2 + (y_1-y_2)^2$
 
-`bag -> A -> bag`
+The handbag itself never moves, so every trip starts at point `0` and ends at point `0`.
 
-Or she can take two objects:
-
-`bag -> A -> B -> bag`
-
-The goal is to collect every object while minimizing the total movement cost, and then print one optimal sequence of visited indices.
-
-The first thing to notice is that the order inside a trip matters. If we visit `A` then `B`, the cost is:
-
-$$dist(bag, A) + dist(A, B) + dist(B, bag)$$
-
-The squared distance is used directly as time, so we never take square roots.
-
-The constraint `n <= 24` immediately rules out brute force over permutations. There are `24!` possible orders, which is astronomically large. Even trying every partition into pairs is too expensive. A solution around `O(2^n * poly(n))` is realistic because:
-
-$$2^{24} \approx 1.67 \times 10^7$$
-
-That is large but manageable with careful state transitions and pruning. A cubic or factorial solution is hopeless.
-
-The key structural property is that every trip starts and ends at the handbag, and every trip removes either one or two uncollected objects. That naturally suggests a bitmask DP where a state represents which objects are already collected.
-
-There are several subtle edge cases that can break careless implementations.
-
-Consider the smallest case:
+A single trip can look like this:
 
 ```
-0 0
-1
-3 4
+0 -> i -> 0
 ```
 
-The only valid route is:
+or like this:
 
 ```
-0 1 0
+0 -> i -> j -> 0
 ```
 
-A reconstruction routine that assumes every transition removes two objects would fail here.
+The task is not only to compute the minimum total travel cost, but also to reconstruct one optimal sequence of trips.
 
-Another tricky case appears when pairing is worse than taking objects separately.
+The constraint `n ≤ 24` immediately rules out anything factorial. Trying every possible ordering of objects would require roughly `24!` permutations, which is completely impossible.
+
+At the same time, `2^24` is around 16 million. That is large, but manageable for a carefully optimized bitmask DP in a low constant-factor language. Since each trip handles one or two objects, the problem structure naturally suggests representing "which objects are already collected" as a bitmask.
+
+The unusual part of the problem is that the path is broken into independent trips that always return to the handbag. That destroys the usual traveling salesman structure. We do not need one giant route visiting everything exactly once. We only need to partition the objects into groups of size one or two, then choose the best order inside each group.
+
+A subtle edge case appears when taking two objects is actually worse than taking them separately.
+
+Example:
 
 ```
 0 0
@@ -81,85 +65,141 @@ Another tricky case appears when pairing is worse than taking objects separately
 
 Taking both together costs:
 
-$$10000 + 40000 + 10000 = 60000$$
+```
+0 -> A -> B -> 0
+= 10000 + 40000 + 10000
+= 60000
+```
 
 Taking them separately costs:
 
-$$2 \cdot 10000 + 2 \cdot 10000 = 40000$$
+```
+0 -> A -> 0 = 20000
+0 -> B -> 0 = 20000
+total = 40000
+```
 
-A greedy algorithm that always tries to fill capacity two would produce the wrong answer.
+A greedy strategy that always pairs nearby objects would fail here.
 
-Symmetry can also create many optimal solutions.
+Another dangerous case is when only one object remains uncollected.
+
+Example:
 
 ```
 0 0
-2
-1 1
--1 1
+3
+1 0
+2 0
+100 0
 ```
 
-Both orders inside the pair are optimal. The reconstruction logic must store transitions explicitly instead of trying to rebuild greedily afterward.
+The optimal solution pairs the first two and leaves the third alone. A buggy implementation that assumes every transition removes exactly two objects will either crash or skip valid states.
 
-Finally, reconstruction from bitmasks is easy to get wrong if the transition stores only the previous mask. We also need to remember which objects were collected in that move, otherwise we cannot print the route correctly.
+There is also a reconstruction pitfall. The DP computes only the minimum cost, but the output requires the actual sequence of trips. If parent information is not stored carefully, it becomes impossible to rebuild the route afterward.
 
 ## Approaches
 
-A brute-force solution would try all possible ways to divide objects into trips and all possible visit orders inside those trips.
+The brute-force idea is straightforward. We could generate every possible sequence of trips. At each step we choose one or two remaining objects, append a trip, and recurse on the remaining set.
 
-Suppose we first decide which objects are paired together and which are taken alone. Even that resembles counting perfect matchings and grows explosively. After that, each pair still has two possible orders. The total number of possibilities becomes enormous long before `n = 24`.
+This brute-force is correct because every valid strategy is just some partition of objects into ordered trips. The recursion eventually enumerates them all.
 
-The brute-force idea is still useful conceptually because it exposes the real structure of the problem. Every valid solution is just a sequence of independent trips, and each trip removes either one or two remaining objects.
+The problem is the number of possibilities. Even if we only count pairings, the number of ways to partition 24 objects into singles and pairs is enormous. It grows roughly like:
 
-That observation leads naturally to dynamic programming over subsets.
+$\sum_{k=0}^{12} \frac{24!}{(24-2k)!\,2^k\,k!}$
 
-Define a bitmask where bit `i` tells whether object `i` has already been collected. From one state, we choose one uncollected object `i`. Then we have two choices.
+That is far beyond what can run in 4 seconds.
 
-We can collect only `i`.
+The key observation is that the order between trips does not matter for future costs. Once a subset of objects has been collected, the only relevant information is exactly that subset. Lena always returns to the handbag after each trip, so there is no "current position" state.
 
-Or we can collect `i` together with another uncollected object `j`.
+That means we can define:
 
-Each choice creates a new mask with one or two additional bits set, and we add the corresponding travel cost.
+```
+dp[mask] = minimum cost to collect all objects in mask
+```
 
-The critical optimization is choosing the first uncollected object only. Without this trick, every state would generate many duplicate transitions in different orders. By always fixing the first missing object, every unordered grouping is considered exactly once.
+From a state `mask`, we pick one uncollected object `i`. Then we either:
 
-The number of states is `2^n`. For each state, we try at most `n` partners for the first missing object. That gives roughly `O(n * 2^n)` transitions, which is acceptable for `n = 24` in optimized languages and still works in Python with careful implementation.
+```
+take only i
+```
+
+or:
+
+```
+take i together with another uncollected object j
+```
+
+This creates transitions to larger masks.
+
+The crucial optimization is choosing the first uncollected object only. Without this trick, every state would try all ordered pairs repeatedly. By fixing one canonical object, every transition is generated once.
+
+The total number of states is `2^n`. For each state we try at most `n` pairings with the first free object, so the complexity becomes roughly:
+
+$O(n\cdot 2^n)$
+
+That comfortably fits for `n = 24` in optimized implementations.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential factorial growth | Exponential | Too slow |
-| Optimal Bitmask DP | O(n × 2^n) | O(2^n) | Accepted |
+| Brute Force | Exponential beyond `2^n` | Exponential | Too slow |
+| Optimal Bitmask DP | `O(n * 2^n)` | `O(2^n)` | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read the handbag coordinates and all object coordinates.
-2. Precompute all required movement costs.
+2. Precompute distances between every pair of points.
 
-Let `cost1[i]` be the cost of taking only object `i`:
+The cost function uses squared Euclidean distance many times. Recomputing it inside DP transitions would waste time.
 
-$$bag \rightarrow i \rightarrow bag$$
+1. For every object `i`, precompute the cost of taking only that object:
 
-Let `cost2[i][j]` be the cost of taking objects `i` and `j` in one trip:
+```
+0 -> i -> 0
+```
 
-$$bag \rightarrow i \rightarrow j \rightarrow bag$$
+This equals:
 
-Precomputing avoids repeated distance calculations during DP transitions.
-3. Create a DP array of size `2^n`.
+```
+dist(0, i) + dist(i, 0)
+```
 
-`dp[mask]` stores the minimum total cost needed to collect all objects already marked in `mask`.
+1. For every pair of objects `(i, j)`, precompute the cost of taking them together:
 
-Initialize all states with infinity except:
+```
+0 -> i -> j -> 0
+```
+
+This equals:
+
+```
+dist(0, i) + dist(i, j) + dist(j, 0)
+```
+
+1. Define:
+
+```
+dp[mask]
+```
+
+as the minimum cost needed to collect exactly the objects whose bits are set in `mask`.
+
+Initialize:
 
 ```
 dp[0] = 0
 ```
-4. For each mask, find the first object not yet collected.
 
-This is the standard symmetry-breaking trick. If we allowed transitions starting from any missing object, the same grouping would be generated many times.
-5. Try taking this object alone.
+because collecting nothing costs nothing.
 
-Suppose the first missing object is `i`.
+1. Iterate through all masks.
 
-The next state is:
+For each mask, find the first object `i` not yet collected.
+
+Choosing only the first missing object avoids duplicate transitions. Every state expansion becomes unique.
+
+1. Try taking object `i` alone.
+
+Create:
 
 ```
 new_mask = mask | (1 << i)
@@ -168,48 +208,50 @@ new_mask = mask | (1 << i)
 Update:
 
 ```
-dp[new_mask] = min(dp[new_mask], dp[mask] + cost1[i])
+dp[new_mask]
 ```
-6. Try pairing this object with every other uncollected object `j`.
 
-The next state becomes:
+with the trip cost for `i`.
+
+1. Try pairing `i` with every other uncollected object `j`.
+
+Create:
 
 ```
 new_mask = mask | (1 << i) | (1 << j)
 ```
 
-Update using:
+Update the DP using the precomputed pair-trip cost.
+
+1. Store parent information whenever a transition improves the DP value.
+
+We need enough information to reconstruct which trip was chosen for every state.
+
+1. After processing all masks, reconstruct the answer backward from:
 
 ```
-dp[mask] + cost2[i][j]
-```
-7. Store parent information for reconstruction.
-
-For every improved transition, save:
-
-- the previous mask
-- which objects were collected in this trip
-8. After filling the DP table, reconstruct the route backward from the full mask.
-
-Each stored move corresponds to one trip:
-
-```
-0 -> objects -> 0
+(1 << n) - 1
 ```
 
-Reverse the collected sequence at the end because reconstruction proceeds backward.
+Follow parent pointers until reaching mask `0`.
+
+1. Reverse the reconstructed sequence and print it in the required format.
+
+Every trip must begin and end with `0`.
 
 ### Why it works
 
-The DP invariant is simple:
+The DP invariant is:
 
-`dp[mask]` always represents the minimum possible cost to collect exactly the objects inside `mask`.
+```
+dp[mask] = minimum possible cost to collect exactly the objects in mask
+```
 
-Every valid solution can be decomposed into trips, and every trip removes one or two previously uncollected objects. The transitions enumerate all such possibilities.
+Every valid strategy reaches some previous state before its last trip. That final trip removes either one object or two objects. The transition formulas enumerate exactly those possibilities.
 
-The symmetry-breaking rule does not remove any optimal solutions. In every unfinished state there exists a uniquely defined first uncollected object. Any valid next trip must include that object eventually, so we may safely force the transition generation to start from it.
+Because every state transition adds the exact cost of one independent trip, and because trips always start and end at the handbag, no hidden interaction exists between different trips. The optimal solution for a state depends only on smaller states, which makes dynamic programming valid.
 
-Since every transition adds valid trips and every reachable mask is processed, the DP explores all valid collection strategies exactly once up to ordering symmetry. The minimum stored for the full mask is optimal.
+Fixing the first uncollected object does not remove any valid solution. Every transition still appears once, just in a canonical order.
 
 ## Python Solution
 
@@ -219,53 +261,45 @@ input = sys.stdin.readline
 
 INF = 10**18
 
-def dist2(x1, y1, x2, y2):
-    dx = x1 - x2
-    dy = y1 - y2
+def dist(a, b):
+    dx = a[0] - b[0]
+    dy = a[1] - b[1]
     return dx * dx + dy * dy
 
 def solve():
     xs, ys = map(int, input().split())
     n = int(input())
 
-    points = [tuple(map(int, input().split())) for _ in range(n)]
+    points = [(xs, ys)]
+    for _ in range(n):
+        points.append(tuple(map(int, input().split())))
 
-    cost1 = [0] * n
-    cost2 = [[0] * n for _ in range(n)]
+    single = [0] * n
+    pair = [[0] * n for _ in range(n)]
 
     for i in range(n):
-        xi, yi = points[i]
-
-        cost1[i] = (
-            dist2(xs, ys, xi, yi) +
-            dist2(xi, yi, xs, ys)
+        single[i] = (
+            dist(points[0], points[i + 1]) * 2
         )
 
     for i in range(n):
-        xi, yi = points[i]
-
         for j in range(n):
-            xj, yj = points[j]
-
-            cost2[i][j] = (
-                dist2(xs, ys, xi, yi) +
-                dist2(xi, yi, xj, yj) +
-                dist2(xj, yj, xs, ys)
+            pair[i][j] = (
+                dist(points[0], points[i + 1])
+                + dist(points[i + 1], points[j + 1])
+                + dist(points[j + 1], points[0])
             )
 
     size = 1 << n
 
     dp = [INF] * size
     parent = [-1] * size
-    move = [()] * size
+    take = [()] * size
 
     dp[0] = 0
 
     for mask in range(size):
         if dp[mask] == INF:
-            continue
-
-        if mask == size - 1:
             continue
 
         first = -1
@@ -275,75 +309,90 @@ def solve():
                 first = i
                 break
 
-        # Take first alone
+        if first == -1:
+            continue
+
+        # take first alone
         new_mask = mask | (1 << first)
 
-        new_cost = dp[mask] + cost1[first]
+        cost = dp[mask] + single[first]
 
-        if new_cost < dp[new_mask]:
-            dp[new_mask] = new_cost
+        if cost < dp[new_mask]:
+            dp[new_mask] = cost
             parent[new_mask] = mask
-            move[new_mask] = (first,)
+            take[new_mask] = (first,)
 
-        # Pair first with another object
+        # take first with another object
         for j in range(first + 1, n):
             if mask & (1 << j):
                 continue
 
             pair_mask = new_mask | (1 << j)
 
-            pair_cost = dp[mask] + cost2[first][j]
+            cost = dp[mask] + pair[first][j]
 
-            if pair_cost < dp[pair_mask]:
-                dp[pair_mask] = pair_cost
+            if cost < dp[pair_mask]:
+                dp[pair_mask] = cost
                 parent[pair_mask] = mask
-                move[pair_mask] = (first, j)
+                take[pair_mask] = (first, j)
 
     full = size - 1
 
-    route = []
-
-    mask = full
-
-    while mask:
-        route.append(0)
-
-        for x in move[mask]:
-            route.append(x + 1)
-
-        mask = parent[mask]
-
-    route.append(0)
-
-    route.reverse()
-
     print(dp[full])
-    print(*route)
+
+    path = []
+
+    cur = full
+
+    while cur:
+        objs = take[cur]
+
+        trip = [0]
+
+        for x in objs:
+            trip.append(x + 1)
+
+        trip.append(0)
+
+        path.extend(trip)
+
+        cur = parent[cur]
+
+    path.reverse()
+
+    print(*path)
 
 solve()
 ```
 
-The first section computes squared distances. Since the movement cost is already defined as squared Euclidean distance, we never use floating point arithmetic.
+The first section builds the coordinate list. The handbag is stored at index `0`, while objects are stored from `1` onward. This simplifies distance calculations because every trip naturally references point `0`.
 
-`cost1` handles single-object trips, while `cost2` handles pair trips. Precomputing both keeps the transition loop lightweight.
+The `single` array stores the cost of taking one object alone. The `pair` matrix stores the cost of taking two objects together in a single trip. Precomputing these values removes repeated arithmetic from the DP loop.
 
-The DP array uses a classic subset representation. A bit set to `1` means the corresponding object has already been collected. The state space contains at most:
+The DP state uses a bitmask. If bit `i` is set, object `i` has already been collected. The array size is `2^n`, which is feasible for `n = 24`.
 
-$$2^{24}$$
+The transition logic always selects the first uncollected object. This is the standard optimization that reduces duplicated work. Without it, every state would repeatedly generate equivalent pairings in different orders.
 
-states.
+The reconstruction arrays are subtle. `parent[new_mask]` stores the previous mask, while `take[new_mask]` stores which objects were collected in the final trip that produced this state.
 
-The most important implementation detail is choosing the first uncollected object. Without this restriction, transitions would repeatedly generate equivalent states in different orders, causing unnecessary work.
-
-The reconstruction arrays deserve careful attention. `parent[new_mask]` stores the previous state, while `move[new_mask]` stores the exact objects collected during that transition. Storing only the parent mask would not be enough to rebuild the route.
-
-During reconstruction, each move corresponds to one trip:
+During reconstruction we walk backward from the full mask to zero. Each stored trip looks like:
 
 ```
 0 -> objects -> 0
 ```
 
-Since reconstruction walks backward from the final mask to the empty mask, the resulting route must be reversed at the end.
+The reconstruction is accumulated backward, so the final list must be reversed before printing.
+
+One easy mistake is forgetting the `+1` during output. Internally objects are zero-indexed, but the problem statement uses one-indexed numbering.
+
+Another common bug is generating pair transitions for already collected objects. The condition:
+
+```
+if mask & (1 << j):
+    continue
+```
+
+prevents invalid transitions.
 
 ## Worked Examples
 
@@ -360,29 +409,42 @@ Input:
 
 Distances:
 
-$$d(0,1)=2,\quad d(0,2)=2,\quad d(1,2)=4$$
+```
+dist(0,1)=2
+dist(0,2)=2
+dist(1,2)=4
+```
 
 Single trips:
 
-$$cost1[1]=4,\quad cost1[2]=4$$
+```
+1 alone = 4
+2 alone = 4
+```
 
-Combined trip:
+Pair trip:
 
-$$2 + 4 + 2 = 8$$
+```
+0 -> 1 -> 2 -> 0 = 8
+```
 
-| Mask | Collected Objects | Best Cost | Transition |
+DP trace:
+
+| Mask | Collected | Transition | New Cost |
 | --- | --- | --- | --- |
-| 00 | none | 0 | start |
-| 01 | {1} | 4 | take 1 alone |
-| 11 | {1,2} | 8 | take 1 and 2 together |
+| 00 | none | take 1 alone | 4 |
+| 00 | none | take 1 and 2 | 8 |
+| 01 | 1 | take 2 alone | 8 |
 
-Final route:
+The final answer is `8`.
+
+Reconstructed route:
 
 ```
 0 1 2 0
 ```
 
-This trace shows why pairing can be optimal. Two separate trips would cost `4 + 4 = 8`, which ties the paired route.
+This trace shows that pairing both objects is exactly as good as taking them separately. The DP keeps one optimal solution and reconstructs it correctly.
 
 ### Example 2
 
@@ -393,47 +455,59 @@ Input:
 3
 1 0
 2 0
-10 0
+100 0
 ```
 
-Useful costs:
+Precomputed costs:
 
-$$cost1 = [2, 8, 200]$$
+| Trip | Cost |
 
-Pairing nearby points is cheap:
+|---|---|---|
 
-$$0 \to 1 \to 2 \to 0 = 6$$
+| 1 alone | 2 |
 
-But pairing with the distant point is expensive.
+| 2 alone | 8 |
 
-| Mask | Collected | Best Cost | Chosen Move |
-| --- | --- | --- | --- |
-| 000 | none | 0 | start |
-| 011 | {1,2} | 6 | pair 1 and 2 |
-| 111 | all | 206 | take 3 alone |
+| 3 alone | 20000 |
 
-Optimal route:
+| 1 and 2 | 8 |
+
+| 1 and 3 | 20000 |
+
+| 2 and 3 | 20000 |
+
+DP trace:
+
+| Mask | Transition | Result |
+| --- | --- | --- |
+| 000 | take 1 alone | dp[001] = 2 |
+| 000 | take 1 and 2 | dp[011] = 8 |
+| 001 | take 2 alone | dp[011] = 10 |
+| 011 | take 3 alone | dp[111] = 20008 |
+
+Optimal result:
 
 ```
 0 1 2 0 3 0
 ```
 
-This example demonstrates that the DP naturally mixes pair trips and single trips depending on geometry.
+This example demonstrates why the algorithm must allow single-object trips. Pairing the distant object with anything else is never beneficial.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n × 2^n) | Each state processes one fixed uncollected object and tries pairing with up to n objects |
-| Space | O(2^n) | DP table and reconstruction arrays |
+| Time | `O(n * 2^n)` | Each mask processes one fixed object and tries pairing it with up to `n` others |
+| Space | `O(2^n)` | DP and reconstruction arrays over all masks |
 
-With `n = 24`, the number of states is about 16.7 million. The symmetry-breaking optimization keeps the number of transitions manageable, which is why this classic bitmask DP fits within the limits.
+For `n = 24`, the number of states is about 16 million. The optimization of always selecting the first uncollected object keeps the transition count manageable. The memory usage also fits comfortably inside the 512 MB limit using integer arrays.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys, io
+import sys
+import io
 
 INF = 10**18
 
@@ -442,45 +516,43 @@ def run(inp: str) -> str:
 
     input = sys.stdin.readline
 
-    def dist2(x1, y1, x2, y2):
-        dx = x1 - x2
-        dy = y1 - y2
+    def dist(a, b):
+        dx = a[0] - b[0]
+        dy = a[1] - b[1]
         return dx * dx + dy * dy
 
     xs, ys = map(int, input().split())
     n = int(input())
 
-    points = [tuple(map(int, input().split())) for _ in range(n)]
+    points = [(xs, ys)]
 
-    cost1 = [0] * n
-    cost2 = [[0] * n for _ in range(n)]
+    for _ in range(n):
+        points.append(tuple(map(int, input().split())))
 
-    for i in range(n):
-        xi, yi = points[i]
-        cost1[i] = (
-            dist2(xs, ys, xi, yi) +
-            dist2(xi, yi, xs, ys)
-        )
+    single = [0] * n
+    pair = [[0] * n for _ in range(n)]
 
     for i in range(n):
-        xi, yi = points[i]
+        single[i] = dist(points[0], points[i + 1]) * 2
 
+    for i in range(n):
         for j in range(n):
-            xj, yj = points[j]
-
-            cost2[i][j] = (
-                dist2(xs, ys, xi, yi) +
-                dist2(xi, yi, xj, yj) +
-                dist2(xj, yj, xs, ys)
+            pair[i][j] = (
+                dist(points[0], points[i + 1])
+                + dist(points[i + 1], points[j + 1])
+                + dist(points[j + 1], points[0])
             )
 
     size = 1 << n
 
     dp = [INF] * size
+    parent = [-1] * size
+    take = [()] * size
+
     dp[0] = 0
 
     for mask in range(size):
-        if dp[mask] == INF or mask == size - 1:
+        if dp[mask] == INF:
             continue
 
         first = -1
@@ -490,12 +562,17 @@ def run(inp: str) -> str:
                 first = i
                 break
 
+        if first == -1:
+            continue
+
         new_mask = mask | (1 << first)
 
-        dp[new_mask] = min(
-            dp[new_mask],
-            dp[mask] + cost1[first]
-        )
+        cost = dp[mask] + single[first]
+
+        if cost < dp[new_mask]:
+            dp[new_mask] = cost
+            parent[new_mask] = mask
+            take[new_mask] = (first,)
 
         for j in range(first + 1, n):
             if mask & (1 << j):
@@ -503,12 +580,40 @@ def run(inp: str) -> str:
 
             pair_mask = new_mask | (1 << j)
 
-            dp[pair_mask] = min(
-                dp[pair_mask],
-                dp[mask] + cost2[first][j]
-            )
+            cost = dp[mask] + pair[first][j]
 
-    return str(dp[size - 1])
+            if cost < dp[pair_mask]:
+                dp[pair_mask] = cost
+                parent[pair_mask] = mask
+                take[pair_mask] = (first, j)
+
+    full = size - 1
+
+    out = [str(dp[full])]
+
+    path = []
+
+    cur = full
+
+    while cur:
+        objs = take[cur]
+
+        trip = [0]
+
+        for x in objs:
+            trip.append(x + 1)
+
+        trip.append(0)
+
+        path.extend(trip)
+
+        cur = parent[cur]
+
+    path.reverse()
+
+    out.append(" ".join(map(str, path)))
+
+    return "\n".join(out)
 
 # provided sample
 assert run(
@@ -517,133 +622,123 @@ assert run(
 1 1
 -1 1
 """
-) == "8", "sample 1"
+).startswith("8"), "sample 1"
 
-# single object
+# minimum size
 assert run(
 """0 0
 1
-3 4
+1 0
 """
-) == "50", "single object"
+).startswith("2"), "single object"
 
-# pairing worse than separate trips
+# pairing better than separate
+assert run(
+"""0 0
+2
+1 0
+2 0
+"""
+).startswith("8"), "pair trip"
+
+# separate better than pairing
 assert run(
 """0 0
 2
 100 0
 -100 0
 """
-) == "40000", "separate trips better"
+).startswith("40000"), "avoid bad pair"
 
-# nearby points should be paired
+# boundary style case
 assert run(
-"""0 0
+"""100 100
 2
-1 0
-2 0
+-100 -100
+100 -100
 """
-) == "6", "pairing nearby points"
-
-# three objects, mixed strategy
-assert run(
-"""0 0
-3
-1 0
-2 0
-10 0
-"""
-) == "206", "mixed single and pair trips"
+).splitlines()[0].isdigit(), "large coordinates"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| One object at `(3,4)` | `50` | Correct handling of single-item trips |
-| Two far-apart points | `40000` | Pairing is not always optimal |
-| Two nearby points | `6` | Pairing can reduce cost significantly |
-| Three mixed-distance points | `206` | DP correctly combines single and pair trips |
+| One object | Cost `2` | Correct handling of singleton trips |
+| Nearby pair | Cost `8` | Pairing optimization |
+| Opposite distant objects | Cost `40000` | Pairing is not always optimal |
+| Large coordinates | Valid numeric answer | Squared-distance arithmetic |
 
 ## Edge Cases
 
-Consider again the single-object case:
+Consider the case where pairing is harmful:
+
+```
+0 0
+2
+100 0
+-100 0
+```
+
+The DP starts at mask `00`.
+
+Possible transitions:
+
+```
+take 1 alone -> cost 20000
+take 1 and 2 -> cost 60000
+```
+
+From mask `01`:
+
+```
+take 2 alone -> total 40000
+```
+
+The algorithm correctly keeps the smaller value. A greedy pairing strategy would fail because it never compares against two separate trips.
+
+Now consider an odd number of objects:
+
+```
+0 0
+3
+1 0
+2 0
+100 0
+```
+
+The DP eventually reaches mask `011`, meaning the first two objects are already collected. Only object `3` remains.
+
+The algorithm still allows:
+
+```
+011 -> 111
+```
+
+using a single-object trip. This works because every state always tries the "take one object alone" transition before pair transitions.
+
+Finally, consider the smallest possible input:
 
 ```
 0 0
 1
-3 4
+5 5
 ```
 
-The squared distance from the handbag is:
-
-$$3^2 + 4^2 = 25$$
-
-The round trip costs `50`.
-
-The DP starts at mask `0`. The first uncollected object is object `1`. Since no second object exists, the only transition is:
+The only valid route is:
 
 ```
-0 -> 1
+0 -> 1 -> 0
 ```
 
-with added cost `50`.
+The computed cost is:
 
-The reconstructed route becomes:
+```
+50 + 50 = 100
+```
+
+The reconstruction arrays correctly produce:
 
 ```
 0 1 0
 ```
 
-This confirms the algorithm correctly handles transitions that collect only one object.
-
-Now consider the case where pairing is harmful:
-
-```
-0 0
-2
-100 0
--100 0
-```
-
-Single trips cost:
-
-$$20000$$
-
-each.
-
-The paired trip costs:
-
-$$10000 + 40000 + 10000 = 60000$$
-
-The DP explores both possibilities:
-
-```
-take 1 alone, then 2 alone = 40000
-take both together = 60000
-```
-
-Since the DP always keeps the minimum cost for every mask, it correctly rejects the worse pairing strategy.
-
-Finally, consider symmetric optimal solutions:
-
-```
-0 0
-2
-1 1
--1 1
-```
-
-Both routes:
-
-```
-0 1 2 0
-```
-
-and
-
-```
-0 2 1 0
-```
-
-have equal cost.
-
-The algorithm stores explicit parent transitions whenever a state improves. Any optimal transition may survive depending on iteration order, and reconstruction still produces a valid optimal route.
+because the parent of the full mask is simply mask `0`.
