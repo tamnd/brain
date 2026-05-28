@@ -1,14 +1,14 @@
 ---
 title: "Abbyy Cup 2.0 - Final (unofficial)"
-description: "Solutions for Abbyy Cup 2.0 - Final (unofficial) (contest 207). 11/14 problems verified against sample I/O. Difficulty range: 1600-2700."
+description: "Solutions for Abbyy Cup 2.0 - Final (unofficial) (contest 207). 14/17 problems verified against sample I/O. Difficulty range: 1600-2700."
 tags: ["codeforces", "competitive-programming", "greedy", "data-structures"]
 categories: ["algorithms"]
 contest_id: 207
 contest_type: "Special"
 rating_range: "1600-2700"
-n_problems: 14
-n_verified: 11
-total_solve_s: 1242
+n_problems: 17
+n_verified: 14
+total_solve_s: 1503
 date: "2026-05-29T00:00:00+07:00"
 weight: 207
 draft: false
@@ -16,7 +16,7 @@ draft: false
 
 # [Abbyy Cup 2.0 - Final (unofficial)](https://codeforces.com/contest/207)
 
-**Type:** Special | **Problems:** 14 | **Verified:** 11/14 | **Rating range:** 1600-2700 | **Time:** 20m 42s
+**Type:** Special | **Problems:** 17 | **Verified:** 14/17 | **Rating range:** 1600-2700 | **Time:** 25m 3s
 
 | Problem | Name | Rating | Tags | Solve Time | Verified |
 |---|---|---|---|---|---|
@@ -34,3 +34,6 @@ draft: false
 | [D3](D3/) | [The Beaver's Problem - 3](https://codeforces.com/problemset/problem/207/D3) | 2000 | - | 1m 13s | ✓ |
 | [D5](D5/) | [The Beaver's Problem - 3](https://codeforces.com/problemset/problem/207/D5) | 1600 | - | 1m 7s | ✓ |
 | [D6](D6/) | [The Beaver's Problem - 3](https://codeforces.com/problemset/problem/207/D6) | 2100 | - | 1m 24s | ✓ |
+| [D7](D7/) | [The Beaver's Problem - 3](https://codeforces.com/problemset/problem/207/D7) | 1600 | - | 1m 36s | ✓ |
+| [D8](D8/) | [The Beaver's Problem - 3](https://codeforces.com/problemset/problem/207/D8) | 2300 | - | 1m 24s | ✓ |
+| [D9](D9/) | [The Beaver's Problem - 3](https://codeforces.com/problemset/problem/207/D9) | 1800 | - | 1m 21s | ✓ |
