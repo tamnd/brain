@@ -16,7 +16,7 @@ draft: false
 | 1303 | [Find the Team Size](1303.md) | 🟢 Easy | 1m 5s | This problem provides a database table named Employee, where every … |
 | 1304 | [Find N Unique Integers Sum up to Zero](1304.md) | 🟢 Easy | 54s | The problem asks us to construct an array containing exactly n uniq… |
 | 1305 | [All Elements in Two Binary Search Trees](1305.md) | 🟡 Medium | 1m 20s | The problem gives us two binary search trees, root1 and root2. A bi… |
-| 1306 | [Jump Game III](1306.md) | 🟡 Medium | 1m 16s | The problem gives us an array of non-negative integers called arr a… |
+| 1306 | [Jump Game III](1306.md) | 🟡 Medium | 1m 19s | The problem gives us an array of non-negative integers and a starti… |
 | 1307 | [Verbal Arithmetic Puzzle](1307.md) | 🔴 Hard | 1m 34s | The problem gives a collection of words on the left side of an equa… |
 | 1308 | [Running Total for Different Genders](1308.md) | 🟡 Medium | 1m | Here’s a fully detailed technical solution guide for LeetCode 1308 … |
 | 1309 | [Decrypt String from Alphabet to Integer Mapping](1309.md) | 🟢 Easy | 1m 13s | The problem asks us to take a string s composed of digits ('0' to '… |
@@ -32,3 +32,16 @@ draft: false
 | 1320 | [Minimum Distance to Type a Word Using Two Fingers](1320.md) | 🔴 Hard | 1m 29s | The problem gives us a virtual keyboard layout containing all upper… |
 | 1321 | [Restaurant Growth](1321.md) | 🟡 Medium | 1m 10s | The problem provides a Customer table that records restaurant trans… |
 | 1322 | [Ads Performance](1322.md) | 🟢 Easy | 1m 22s | The problem asks us to calculate the click-through rate (CTR) for e… |
+| 1323 | [Maximum 69 Number](1323.md) | 🟢 Easy | 1m 6s | The problem gives us a positive integer num that contains only the … |
+| 1324 | [Print Words Vertically](1324.md) | 🟡 Medium | 51s | The problem requires us to take a string s containing multiple word… |
+| 1325 | [Delete Leaves With a Given Value](1325.md) | 🟡 Medium | 59s | The problem is asking us to remove all leaf nodes from a binary tre… |
+| 1326 | [Minimum Number of Taps to Open to Water a Garden](1326.md) | 🔴 Hard | 1m 24s | The problem describes a one-dimensional garden that stretches from … |
+| 1327 | [List the Products Ordered in a Period](1327.md) | 🟢 Easy | 1m 1s | The problem asks us to identify products that were ordered in Febru… |
+| 1328 | [Break a Palindrome](1328.md) | 🟡 Medium | 43s | The problem is asking us to modify a given palindromic string by ch… |
+| 1329 | [Sort the Matrix Diagonally](1329.md) | 🟡 Medium | 1m 34s | The problem asks us to sort every diagonal of a matrix independentl… |
+| 1330 | [Reverse Subarray To Maximize Array Value](1330.md) | 🔴 Hard | 54s | The problem asks us to maximize the "value" of an integer array, wh… |
+| 1331 | [Rank Transform of an Array](1331.md) | 🟢 Easy | 1m 11s | The problem asks us to replace every number in the input array with… |
+| 1332 | [Remove Palindromic Subsequences](1332.md) | 🟢 Easy | 1m 6s | This problem asks us to determine the minimum number of operations … |
+| 1333 | [Filter Restaurants by Vegan-Friendly, Price and Distance](1333.md) | 🟡 Medium | 1m 35s | The problem gives us a list of restaurants where each restaurant is… |
+| 1334 | [Find the City With the Smallest Number of Neighbors at a Threshold Distance](1334.md) | 🟡 Medium | 52s | The problem asks us to find a city in a weighted, undirected graph … |
+| 1337 | [The K Weakest Rows in a Matrix](1337.md) | 🟢 Easy | 1m 24s | The problem gives us a binary matrix where each row represents a gr… |
