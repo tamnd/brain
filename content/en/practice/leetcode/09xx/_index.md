@@ -79,14 +79,14 @@ draft: false
 | 967 | [Numbers With Same Consecutive Differences](967.md) | 🟡 Medium | 46s | The problem asks us to generate all integers of length n such that … |
 | 968 | [Binary Tree Cameras](968.md) | 🔴 Hard | 36s | This problem asks us to determine the minimum number of cameras req… |
 | 969 | [Pancake Sorting](969.md) | 🟡 Medium | 42s | The problem is asking us to sort an array of unique integers using … |
-| 970 | [Powerful Integers](970.md) | 🟡 Medium | 1m 12s | The problem asks us to generate every integer of the form: where bo… |
-| 971 | [Flip Binary Tree To Match Preorder Traversal](971.md) | 🟡 Medium | 1m 9s | The problem gives us a binary tree and a target preorder traversal … |
-| 972 | [Equal Rational Numbers](972.md) | 🔴 Hard | 1m 14s | The problem asks us to determine whether two string representations… |
+| 970 | [Powerful Integers](970.md) | 🟡 Medium | 1m 8s | This problem asks us to generate all integers that can be written i… |
+| 971 | [Flip Binary Tree To Match Preorder Traversal](971.md) | 🟡 Medium | 36s | This problem asks us to manipulate a binary tree so that its pre-or… |
+| 972 | [Equal Rational Numbers](972.md) | 🔴 Hard | 45s | The problem asks us to determine whether two strings s and t, each … |
 | 973 | [K Closest Points to Origin](973.md) | 🟡 Medium | 41s | This problem asks us to find the k points that are closest to the o… |
-| 974 | [Subarray Sums Divisible by K](974.md) | 🟡 Medium | 1m 4s | The problem asks us to count how many non-empty contiguous subarray… |
-| 975 | [Odd Even Jump](975.md) | 🔴 Hard | 44s | The problem is asking us to determine how many starting indices in … |
-| 976 | [Largest Perimeter Triangle](976.md) | 🟢 Easy | 43s | This problem asks us to find the largest perimeter of a triangle th… |
-| 977 | [Squares of a Sorted Array](977.md) | 🟢 Easy | 1m 7s | The problem gives us an integer array nums that is already sorted i… |
+| 974 | [Subarray Sums Divisible by K](974.md) | 🟡 Medium | 1m 9s | The problem asks us to count how many non-empty contiguous subarray… |
+| 975 | [Odd Even Jump](975.md) | 🔴 Hard | 38s | The problem asks us to determine how many starting indices in an ar… |
+| 976 | [Largest Perimeter Triangle](976.md) | 🟢 Easy | 1m 7s | The problem gives us an array of integers called nums, where each i… |
+| 977 | [Squares of a Sorted Array](977.md) | 🟢 Easy | 46s | The problem asks us to take an array of integers nums that is alrea… |
 | 978 | [Longest Turbulent Subarray](978.md) | 🟡 Medium | 1m 16s | The problem asks us to find the length of the longest turbulent sub… |
 | 979 | [Distribute Coins in Binary Tree](979.md) | 🟡 Medium | 34s | The problem asks us to redistribute coins in a binary tree so that … |
 | 980 | [Unique Paths III](980.md) | 🔴 Hard | 1m 25s | LeetCode 980, Unique Paths III, asks us to count how many valid pat… |
@@ -97,3 +97,11 @@ draft: false
 | 986 | [Interval List Intersections](986.md) | 🟡 Medium | 1m 8s | The problem gives us two lists of closed intervals. Each interval i… |
 | 987 | [Vertical Order Traversal of a Binary Tree](987.md) | 🔴 Hard | 1m 18s | The problem asks us to perform a vertical traversal of a binary tre… |
 | 989 | [Add to Array-Form of Integer](989.md) | 🟢 Easy | 55s | The problem asks us to compute the sum of a non-negative integer re… |
+| 991 | [Broken Calculator](991.md) | 🟡 Medium | 54s | This problem gives us a calculator that starts with an integer star… |
+| 992 | [Subarrays with K Different Integers](992.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many contiguous subarrays contain … |
+| 993 | [Cousins in Binary Tree](993.md) | 🟢 Easy | 46s | The problem asks us to determine if two nodes in a binary tree are … |
+| 994 | [Rotting Oranges](994.md) | 🟡 Medium | 1m 15s | This problem models the spread of rot through a grid of oranges ove… |
+| 996 | [Number of Squareful Arrays](996.md) | 🔴 Hard | 1m 11s | The problem asks us to count how many distinct permutations of an a… |
+| 997 | [Find the Town Judge](997.md) | 🟢 Easy | 1m 6s | This problem asks us to determine whether a special person called t… |
+| 998 | [Maximum Binary Tree II](998.md) | 🟡 Medium | 1m 19s | The problem gives us the root of an existing maximum binary tree an… |
+| 999 | [Available Captures for Rook](999.md) | 🟢 Easy | 1m 13s | This problem gives us an 8 x 8 chessboard represented as a matrix o… |
