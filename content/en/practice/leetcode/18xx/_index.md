@@ -52,4 +52,6 @@ draft: false
 | 1846 | [Maximum Element After Decreasing and Rearranging](1846.md) | 🟡 Medium | 1m 3s | The problem provides an array of positive integers and asks us to p… |
 | 1848 | [Minimum Distance to the Target Element](1848.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums, a value called target, … |
 | 1849 | [Splitting a String Into Descending Consecutive Values](1849.md) | 🟡 Medium | 1m 52s | The problem gives us a numeric string s and asks whether it can be … |
+| 1850 | [Minimum Adjacent Swaps to Reach the Kth Smallest Number](1850.md) | 🟡 Medium | 48s | The problem asks us to compute the minimum number of adjacent swaps… |
+| 1852 | [Distinct Numbers in Each Subarray](1852.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and an integer k. For ev… |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |

@@ -49,3 +49,6 @@ draft: false
 | 2142 | [The Number of Passengers in Each Bus I](2142.md) | 🟡 Medium | 57s | This problem involves two tables, Buses and Passengers, that record… |
 | 2143 | [Choose Numbers From Two Arrays in Range](2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |
 | 2146 | [K Highest Ranked Items Within a Price Range](2146.md) | 🟡 Medium | 1m 5s | The problem presents a 2D grid representing a shop layout where eac… |
+| 2147 | [Number of Ways to Divide a Long Corridor](2147.md) | 🔴 Hard | 1m 21s | The corridor is represented as a string containing two kinds of cha… |
+| 2148 | [Count Elements With Strictly Smaller and Greater Elements ](2148.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and asks us to count how… |
+| 2149 | [Rearrange Array Elements by Sign](2149.md) | 🟡 Medium | 1m 32s | The problem gives us an array nums that contains an equal number of… |
