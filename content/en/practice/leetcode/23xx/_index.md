@@ -66,3 +66,9 @@ draft: false
 | 2354 | [Number of Excellent Pairs](2354.md) | 🔴 Hard | 1m 16s | The problem asks us to count the number of distinct ordered pairs (… |
 | 2355 | [Maximum Number of Books You Can Take](2355.md) | 🔴 Hard | 52s | The problem provides a 0-indexed array books where each element rep… |
 | 2358 | [Maximum Number of Groups Entering a Competition](2358.md) | 🟡 Medium | 1m 4s | The problem gives us an array called grades, where each element rep… |
+| 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 55s | The problem asks us to compute the minimum cost to reach each stop … |
+| 2363 | [Merge Similar Items](2363.md) | 🟢 Easy | 1m 16s | The problem requires merging two lists of items, where each item is… |
+| 2364 | [Count Number of Bad Pairs](2364.md) | 🟡 Medium | 1m 10s | We are given a 0-indexed integer array nums. A pair of indices (i, … |
+| 2366 | [Minimum Replacements to Sort the Array](2366.md) | 🔴 Hard | 1m 18s | The problem gives us a 0-indexed integer array nums. We are allowed… |
+| 2367 | [Number of Arithmetic Triplets](2367.md) | 🟢 Easy | 1m 21s | The problem gives us a strictly increasing array nums and a positiv… |
+| 2370 | [Longest Ideal Subsequence](2370.md) | 🟡 Medium | 1m 13s | The problem asks us to find the length of the longest subsequence o… |

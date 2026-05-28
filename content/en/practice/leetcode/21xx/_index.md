@@ -16,10 +16,10 @@ draft: false
 | 2103 | [Rings and Rods](2103.md) | 🟢 Easy | 52s | The problem is asking us to determine how many rods, labeled from 0… |
 | 2104 | [Sum of Subarray Ranges](2104.md) | 🟡 Medium | 1m 11s | The problem asks us to calculate the sum of ranges of all subarrays… |
 | 2105 | [Watering Plants II](2105.md) | 🟡 Medium | 56s | The problem asks us to simulate two gardeners, Alice and Bob, water… |
-| 2106 | [Maximum Fruits Harvested After at Most K Steps](2106.md) | 🔴 Hard | 1m 43s | The problem gives us a list of fruit locations on a one dimensional… |
-| 2107 | [Number of Unique Flavors After Sharing K Candies](2107.md) | 🟡 Medium | 1m 27s | The problem gives us an array candies, where each value represents … |
-| 2108 | [Find First Palindromic String in the Array](2108.md) | 🟢 Easy | 57s | The problem gives us an array of strings called words, and we must … |
-| 2109 | [Adding Spaces to a String](2109.md) | 🟡 Medium | 1m 8s | The problem asks us to modify a string s by inserting spaces at spe… |
+| 2106 | [Maximum Fruits Harvested After at Most K Steps](2106.md) | 🔴 Hard | 1m 32s | In this problem, we are given several fruit piles placed on an infi… |
+| 2107 | [Number of Unique Flavors After Sharing K Candies](2107.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array candies, where each value rep… |
+| 2108 | [Find First Palindromic String in the Array](2108.md) | 🟢 Easy | 1m 28s | The problem asks us to examine an array of strings, words, and iden… |
+| 2109 | [Adding Spaces to a String](2109.md) | 🟡 Medium | 39s | The problem requires us to insert spaces into a given string s at s… |
 | 2110 | [Number of Smooth Descent Periods of a Stock](2110.md) | 🟡 Medium | 53s | This problem asks us to count all contiguous periods in a stock pri… |
 | 2111 | [Minimum Operations to Make the Array K-Increasing](2111.md) | 🔴 Hard | 1m 10s | The problem asks us to transform a given array arr into a K-increas… |
 | 2112 | [The Airport With the Most Traffic](2112.md) | 🟡 Medium | 1m 29s | The problem provides a database table named Flights. Each row repre… |
