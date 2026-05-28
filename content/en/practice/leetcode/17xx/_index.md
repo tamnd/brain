@@ -68,3 +68,12 @@ draft: false
 | 1755 | [Closest Subsequence Sum](1755.md) | 🔴 Hard | 53s | The problem asks us to find a subsequence of a given integer array … |
 | 1756 | [Design Most Recently Used Queue](1756.md) | 🟡 Medium | 1m 34s | The problem asks us to design a special queue called an "Most Recen… |
 | 1757 | [Recyclable and Low Fat Products](1757.md) | 🟢 Easy | 1m 34s | This problem gives us a database table named Products. Each row rep… |
+| 1758 | [Minimum Changes To Make Alternating Binary String](1758.md) | 🟢 Easy | 1m 25s | The problem gives us a binary string s, which means the string cont… |
+| 1759 | [Count Number of Homogenous Substrings](1759.md) | 🟡 Medium | 1m 34s | The problem asks us to count all substrings in a string where every… |
+| 1760 | [Minimum Limit of Balls in a Bag](1760.md) | 🟡 Medium | 1m 32s | You are given several bags of balls, where nums[i] represents how m… |
+| 1762 | [Buildings With an Ocean View](1762.md) | 🟡 Medium | 1m 19s | This problem gives us an array called heights, where each element r… |
+| 1763 | [Longest Nice Substring](1763.md) | 🟢 Easy | 1m 58s | The problem asks us to find the longest "nice" substring within a g… |
+| 1764 | [Form Array by Concatenating Subarrays of Another Array](1764.md) | 🟡 Medium | 1m 11s | The problem asks us to determine whether we can select disjoint sub… |
+| 1765 | [Map of Highest Peak](1765.md) | 🟡 Medium | 1m 33s | The problem presents a matrix isWater of size m x n where each cell… |
+| 1766 | [Tree of Coprimes](1766.md) | 🔴 Hard | 1m 7s | This problem gives us a tree with n nodes numbered from 0 to n-1, r… |
+| 1767 | [Find the Subtasks That Did Not Execute](1767.md) | 🔴 Hard | 2m 17s | This problem revolves around identifying which subtasks of a task w… |

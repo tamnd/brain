@@ -55,3 +55,8 @@ draft: false
 | 2048 | [Next Greater Numerically Balanced Number](2048.md) | 🟡 Medium | 58s | The problem asks us to find the next numerically balanced number gr… |
 | 2049 | [Count Nodes With the Highest Score](2049.md) | 🟡 Medium | 1m 25s | This problem gives us a rooted binary tree represented by a parents… |
 | 2050 | [Parallel Courses III](2050.md) | 🔴 Hard | 1m 33s | This problem models course scheduling as a directed acyclic graph, … |
+| 2051 | [The Category of Each Member in the Store](2051.md) | 🟡 Medium | 1m 43s | This problem asks us to classify each store member into one of four… |
+| 2052 | [Minimum Cost to Separate Sentence Into Rows](2052.md) | 🟡 Medium | 1m 12s | The problem asks us to split a sentence into multiple rows while re… |
+| 2053 | [Kth Distinct String in an Array](2053.md) | 🟢 Easy | 1m 30s | The problem asks us to find the kth distinct string in an array of … |
+| 2055 | [Plates Between Candles](2055.md) | 🟡 Medium | 1m 40s | The problem gives us a string s containing only two characters: - '… |
+| 2056 | [Number of Valid Move Combinations On Chessboard](2056.md) | 🔴 Hard | 56s | The problem asks us to compute the number of valid move combination… |
