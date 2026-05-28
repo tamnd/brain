@@ -40,6 +40,7 @@ draft: false
 | 2327 | [Number of People Aware of a Secret](2327.md) | 🟡 Medium | 1m 27s | The problem models how a secret spreads through a population over a… |
 | 2328 | [Number of Increasing Paths in a Grid](2328.md) | 🔴 Hard | 58s | This problem asks us to count all strictly increasing paths in a 2D… |
 | 2329 | [Product Sales Analysis V](2329.md) | 🟢 Easy | 53s | This problem asks us to compute the total spending of each user bas… |
+| 2330 | [Valid Palindrome IV](2330.md) | 🟡 Medium | 1m 13s | The problem gives us a string s containing only lowercase English l… |
 | 2331 | [Evaluate Boolean Binary Tree](2331.md) | 🟢 Easy | 51s | The problem presents a full binary tree in which leaf nodes represe… |
 | 2332 | [The Latest Time to Catch a Bus](2332.md) | 🟡 Medium | 1m 20s | This problem asks us to determine the latest possible arrival time … |
 | 2333 | [Minimum Sum of Squared Difference](2333.md) | 🟡 Medium | 1m 32s | The problem gives us two arrays, nums1 and nums2, each of length n.… |
@@ -49,6 +50,7 @@ draft: false
 | 2337 | [Move Pieces to Obtain a String](2337.md) | 🟡 Medium | 1m 10s | In this problem, we are given two strings, start and target, of equ… |
 | 2338 | [Count the Number of Ideal Arrays](2338.md) | 🔴 Hard | 1m 14s | The problem asks us to count how many arrays of length n satisfy a … |
 | 2339 | [All the Matches of the League](2339.md) | 🟢 Easy | 1m 17s | The Teams table contains the names of all teams participating in a … |
+| 2340 | [Minimum Adjacent Swaps to Make a Valid Array](2340.md) | 🟡 Medium | 1m 15s | In this problem, we are given an integer array nums, and we may rep… |
 | 2341 | [Maximum Number of Pairs in Array](2341.md) | 🟢 Easy | 52s | This problem asks us to determine how many pairs of equal integers … |
 | 2342 | [Max Sum of a Pair With Equal Sum of Digits](2342.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers called nums. We … |
 | 2343 | [Query Kth Smallest Trimmed Number](2343.md) | 🟡 Medium | 51s | The problem presents a list of numeric strings nums, all of the sam… |
@@ -57,4 +59,5 @@ draft: false
 | 2346 | [Compute the Rank as a Percentage](2346.md) | 🟡 Medium | 1m 19s | The problem gives us a database table named Students. Each row cont… |
 | 2347 | [Best Poker Hand](2347.md) | 🟢 Easy | 1m 21s | The problem gives us exactly five poker cards. Each card has two pr… |
 | 2348 | [Number of Zero-Filled Subarrays](2348.md) | 🟡 Medium | 54s | The problem asks us to count all subarrays of a given integer array… |
+| 2349 | [Design a Number Container System](2349.md) | 🟡 Medium | 1m 26s | This problem asks us to design a data structure that supports two o… |
 | 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 48s | The problem asks us to find the length of the shortest sequence of … |
