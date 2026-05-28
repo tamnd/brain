@@ -29,6 +29,15 @@ draft: false
 | 1616 | [Split Two Strings to Make Palindrome](1616.md) | 🟡 Medium | 1m 27s | This problem gives us two strings, a and b, both having the same le… |
 | 1617 | [Count Subtrees With Max Distance Between Cities](1617.md) | 🔴 Hard | 1m 38s | The input describes an undirected tree with n cities. Since the gra… |
 | 1618 | [Maximum Font to Fit a Sentence in a Screen](1618.md) | 🟡 Medium | 1m 24s | In this problem, we are given a string text that must be displayed … |
-| 1619 | [Mean of Array After Removing Some Elements](1619.md) | 🟢 Easy | 2m 12s | The problem asks us to compute the average value of an array after … |
-| 1620 | [Coordinate With Maximum Network Quality](1620.md) | 🟡 Medium | 51s | The problem asks us to identify a coordinate on a 2D integer grid w… |
-| 1621 | [Number of Sets of K Non-Overlapping Line Segments](1621.md) | 🟡 Medium | 58s | This problem asks us to compute the number of ways to select exactl… |
+| 1619 | [Mean of Array After Removing Some Elements](1619.md) | 🟢 Easy | 1m 31s | The problem gives us an integer array arr and asks us to compute th… |
+| 1620 | [Coordinate With Maximum Network Quality](1620.md) | 🟡 Medium | 44s | The problem asks us to find the integral coordinate on a 2D plane w… |
+| 1621 | [Number of Sets of K Non-Overlapping Line Segments](1621.md) | 🟡 Medium | 2m 20s | This guide is quite large and highly detailed under your required s… |
+| 1622 | [Fancy Sequence](1622.md) | 🔴 Hard | 1m 56s | The problem asks us to design a mutable sequence data structure tha… |
+| 1623 | [All Valid Triplets That Can Represent a Country](1623.md) | 🟢 Easy | 2m 10s | The problem asks us to generate all valid triplets of students repr… |
+| 1624 | [Largest Substring Between Two Equal Characters](1624.md) | 🟢 Easy | 3m 48s | The problem asks us to find the length of the longest substring tha… |
+| 1625 | [Lexicographically Smallest String After Applying Operations](1625.md) | 🟡 Medium | 1m 30s | The problem gives us a numeric string s of even length and two oper… |
+| 1626 | [Best Team With No Conflicts](1626.md) | 🟡 Medium | 1m 29s | The problem asks us to build a basketball team with the maximum pos… |
+| 1627 | [Graph Connectivity With Threshold](1627.md) | 🔴 Hard | 1m 29s | The problem gives us n cities labeled from 1 to n. Two cities are d… |
+| 1628 | [Design an Expression Tree With Evaluate Function](1628.md) | 🟡 Medium | 1m 24s | This problem asks us to design a binary expression tree that can ev… |
+| 1629 | [Slowest Key](1629.md) | 🟢 Easy | 59s | The problem asks us to analyze a sequence of keypresses on a keypad… |
+| 1630 | [Arithmetic Subarrays](1630.md) | 🟡 Medium | 1m 22s | The problem gives us an integer array nums and multiple queries rep… |
