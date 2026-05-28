@@ -35,10 +35,10 @@ draft: false
 | 1322 | [Ads Performance](1322.md) | 🟢 Easy | 1m 12s | This problem asks us to calculate the Click-Through Rate, abbreviat… |
 | 1323 | [Maximum 69 Number](1323.md) | 🟢 Easy | 1m 7s | The problem gives us a positive integer num that contains only the … |
 | 1324 | [Print Words Vertically](1324.md) | 🟡 Medium | 51s | The problem requires us to take a string s containing multiple word… |
-| 1325 | [Delete Leaves With a Given Value](1325.md) | 🟡 Medium | 59s | The problem is asking us to remove all leaf nodes from a binary tre… |
+| 1325 | [Delete Leaves With a Given Value](1325.md) | 🟡 Medium | 1m 27s | This problem asks us to repeatedly remove leaf nodes from a binary … |
 | 1326 | [Minimum Number of Taps to Open to Water a Garden](1326.md) | 🔴 Hard | 1m 24s | The problem describes a one-dimensional garden that stretches from … |
-| 1327 | [List the Products Ordered in a Period](1327.md) | 🟢 Easy | 1m 1s | The problem asks us to identify products that were ordered in Febru… |
-| 1328 | [Break a Palindrome](1328.md) | 🟡 Medium | 43s | The problem is asking us to modify a given palindromic string by ch… |
+| 1327 | [List the Products Ordered in a Period](1327.md) | 🟢 Easy | 54s | The problem asks us to list all products that have been ordered in … |
+| 1328 | [Break a Palindrome](1328.md) | 🟡 Medium | 1m 1s | The problem asks us to modify a given palindromic string in such a … |
 | 1329 | [Sort the Matrix Diagonally](1329.md) | 🟡 Medium | 1m 34s | The problem asks us to sort every diagonal of a matrix independentl… |
 | 1330 | [Reverse Subarray To Maximize Array Value](1330.md) | 🔴 Hard | 54s | The problem asks us to maximize the "value" of an integer array, wh… |
 | 1331 | [Rank Transform of an Array](1331.md) | 🟢 Easy | 1m 11s | The problem asks us to replace every number in the input array with… |
@@ -57,3 +57,14 @@ draft: false
 | 1347 | [Minimum Number of Steps to Make Two Strings Anagram](1347.md) | 🟡 Medium | 1m 22s | This problem asks us to determine the minimum number of character r… |
 | 1348 | [Tweet Counts Per Frequency](1348.md) | 🟡 Medium | 56s | The problem is asking us to design a system that tracks tweets by t… |
 | 1349 | [Maximum Students Taking Exam](1349.md) | 🔴 Hard | 1m 37s | The problem gives us a classroom represented as a 2D matrix called … |
+| 1351 | [Count Negative Numbers in a Sorted Matrix](1351.md) | 🟢 Easy | 1m 13s | The problem gives us a two dimensional matrix called grid, where ea… |
+| 1352 | [Product of the Last K Numbers](1352.md) | 🟡 Medium | 1m 20s | This problem asks us to design a data structure that processes a st… |
+| 1353 | [Maximum Number of Events That Can Be Attended](1353.md) | 🟡 Medium | 1m 32s | The problem gives us a list of events, where each event is represen… |
+| 1354 | [Construct Target Array With Multiple Sums](1354.md) | 🔴 Hard | 1m | The problem asks whether it is possible to construct a given target… |
+| 1355 | [Activity Participants](1355.md) | 🟡 Medium | 45s | This problem asks us to find all activities that have neither the m… |
+| 1356 | [Sort Integers by The Number of 1 Bits](1356.md) | 🟢 Easy | 1m 34s | The problem asks us to sort an array of integers according to a cus… |
+| 1358 | [Number of Substrings Containing All Three Characters](1358.md) | 🟡 Medium | 1m 19s | In this problem, we are given a string s that contains only three p… |
+| 1359 | [Count All Valid Pickup and Delivery Options](1359.md) | 🔴 Hard | 37s | The problem is asking us to count all valid sequences of pickups an… |
+| 1360 | [Number of Days Between Two Dates](1360.md) | 🟢 Easy | 1m 16s | The problem gives two dates in the format YYYY-MM-DD and asks us to… |
+| 1361 | [Validate Binary Tree Nodes](1361.md) | 🟡 Medium | 1m 26s | The problem gives us n nodes labeled from 0 to n - 1. For every nod… |
+| 1362 | [Closest Divisors](1362.md) | 🟡 Medium | 1m 17s | The problem gives us a positive integer num and asks us to find two… |
