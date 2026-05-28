@@ -72,3 +72,11 @@ draft: false
 | 2366 | [Minimum Replacements to Sort the Array](2366.md) | 🔴 Hard | 1m 18s | The problem gives us a 0-indexed integer array nums. We are allowed… |
 | 2367 | [Number of Arithmetic Triplets](2367.md) | 🟢 Easy | 1m 21s | The problem gives us a strictly increasing array nums and a positiv… |
 | 2370 | [Longest Ideal Subsequence](2370.md) | 🟡 Medium | 1m 13s | The problem asks us to find the length of the longest subsequence o… |
+| 2372 | [Calculate the Influence of Each Salesperson](2372.md) | 🟡 Medium | 1m 13s | This problem gives us an undirected tree with n nodes numbered from… |
+| 2373 | [Largest Local Values in a Matrix](2373.md) | 🟢 Easy | 54s | The problem asks us to process an n x n matrix grid and generate a … |
+| 2376 | [Count Special Integers](2376.md) | 🔴 Hard | 3m 4s | The problem asks us to count how many integers in the range [1, n] … |
+| 2377 | [Sort the Olympic Table](2377.md) | 🟢 Easy | 1m 3s | The problem gives us a database table named Olympic that stores med… |
+| 2378 | [Choose Edges to Maximize Score in a Tree](2378.md) | 🟡 Medium | 1m 35s | This problem gives us a rooted weighted tree with n nodes labeled f… |
+| 2380 | [Time Needed to Rearrange a Binary String](2380.md) | 🟡 Medium | 1m 4s | The problem is asking us to simulate a process on a binary string s… |
+| 2381 | [Shifting Letters II](2381.md) | 🟡 Medium | 1m 20s | The problem gives us a lowercase English string s and a list of shi… |
+| 2383 | [Minimum Hours of Training to Win a Competition](2383.md) | 🟢 Easy | 1m 17s | The problem gives us two initial values, initialEnergy and initialE… |

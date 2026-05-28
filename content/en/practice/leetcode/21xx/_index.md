@@ -21,14 +21,14 @@ draft: false
 | 2108 | [Find First Palindromic String in the Array](2108.md) | 🟢 Easy | 1m 28s | The problem asks us to examine an array of strings, words, and iden… |
 | 2109 | [Adding Spaces to a String](2109.md) | 🟡 Medium | 39s | The problem requires us to insert spaces into a given string s at s… |
 | 2110 | [Number of Smooth Descent Periods of a Stock](2110.md) | 🟡 Medium | 53s | This problem asks us to count all contiguous periods in a stock pri… |
-| 2111 | [Minimum Operations to Make the Array K-Increasing](2111.md) | 🔴 Hard | 1m 10s | The problem asks us to transform a given array arr into a K-increas… |
-| 2112 | [The Airport With the Most Traffic](2112.md) | 🟡 Medium | 1m 29s | The problem provides a database table named Flights. Each row repre… |
-| 2113 | [Elements in Array After Removing and Replacing Elements](2113.md) | 🟡 Medium | 1m 3s | This problem asks us to simulate a repeated process on an array, bu… |
-| 2114 | [Maximum Number of Words Found in Sentences](2114.md) | 🟢 Easy | 1m 3s | The problem asks us to determine the maximum number of words in a s… |
-| 2115 | [Find All Possible Recipes from Given Supplies](2115.md) | 🟡 Medium | 1m 31s | The problem asks us to determine all the recipes that can be made g… |
-| 2116 | [Check if a Parentheses String Can Be Valid](2116.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given parentheses string… |
-| 2117 | [Abbreviating the Product of a Range](2117.md) | 🔴 Hard | 59s | The problem asks us to compute the product of all integers in a giv… |
-| 2118 | [Build the Equation](2118.md) | 🔴 Hard | 1m 24s | This problem asks us to construct a formatted polynomial equation s… |
+| 2111 | [Minimum Operations to Make the Array K-Increasing](2111.md) | 🔴 Hard | 52s | The problem asks us to transform a given array arr into a K-increas… |
+| 2112 | [The Airport With the Most Traffic](2112.md) | 🟡 Medium | 55s | This problem asks us to find the airport(s) with the most traffic u… |
+| 2113 | [Elements in Array After Removing and Replacing Elements](2113.md) | 🟡 Medium | 1m 23s | The problem describes an array that continuously goes through a rep… |
+| 2114 | [Maximum Number of Words Found in Sentences](2114.md) | 🟢 Easy | 1m 6s | In this problem, we are given an array of strings called sentences.… |
+| 2115 | [Find All Possible Recipes from Given Supplies](2115.md) | 🟡 Medium | 1m 14s | This problem asks us to determine which recipes can be created when… |
+| 2116 | [Check if a Parentheses String Can Be Valid](2116.md) | 🟡 Medium | 1m 23s | This problem asks whether a given parentheses string can be transfo… |
+| 2117 | [Abbreviating the Product of a Range](2117.md) | 🔴 Hard | 1m 5s | We are given two integers, a and b. The task is deceptively small b… |
+| 2118 | [Build the Equation](2118.md) | 🔴 Hard | 55s | The problem asks us to construct a polynomial equation from a datab… |
 | 2119 | [A Number After a Double Reversal](2119.md) | 🟢 Easy | 51s | The problem asks us to determine whether a number remains the same … |
 | 2120 | [Execution of All Suffix Instructions Staying in a Grid](2120.md) | 🟡 Medium | 59s | The problem asks us to simulate a robot moving on an n x n grid, st… |
 | 2121 | [Intervals Between Identical Elements](2121.md) | 🟡 Medium | 1m 22s | The problem asks us to compute, for every index in the array, the t… |
