@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 101 contests, 510 problems, 434 verified."
+description: "Codeforces problem solutions with full editorial. 101 contests, 511 problems, 435 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**101 contests, 510 problems, 434 verified.**
+**101 contests, 511 problems, 435 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -110,7 +110,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [93](93/) | [Codeforces Beta Round 76 (Div. 1 Only)](https://codeforces.com/contest/93) | Div. 1 | 1700-2600 | 3/5 | 10m 8s |
 | [94](94/) | [Codeforces Beta Round 76 (Div. 2 Only)](https://codeforces.com/contest/94) | Div. 2 | 900-1300 | 2/2 | 3m 35s |
 | [95](95/) | [Codeforces Beta Round 77 (Div. 1 Only)](https://codeforces.com/contest/95) | Div. 1 | 1600-2500 | 5/5 | 7m 52s |
-| [96](96/) | [Codeforces Beta Round 77 (Div. 2 Only)](https://codeforces.com/contest/96) | Div. 2 | 900-900 | 1/1 | 1m 24s |
+| [96](96/) | [Codeforces Beta Round 77 (Div. 2 Only)](https://codeforces.com/contest/96) | Div. 2 | 900-1300 | 2/2 | 6m 15s |
 | [97](97/) | [Yandex.Algorithm 2011: Finals](https://codeforces.com/contest/97) | Special | 2200-2700 | 3/5 | 10m 37s |
 | [98](98/) | [Codeforces Beta Round 78 (Div. 1 Only)](https://codeforces.com/contest/98) | Div. 1 | 1700-2700 | 4/5 | 10m 58s |
 | [99](99/) | [Codeforces Beta Round 78 (Div. 2 Only)](https://codeforces.com/contest/99) | Div. 2 | 800-1300 | 2/2 | 2m 45s |
