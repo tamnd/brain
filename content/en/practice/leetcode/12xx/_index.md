@@ -28,3 +28,11 @@ draft: false
 | 1219 | [Path with Maximum Gold](1219.md) | 🟡 Medium | 1m 29s | The problem gives a two dimensional grid where each cell contains e… |
 | 1222 | [Queens That Can Attack the King](1222.md) | 🟡 Medium | 1m 21s | This problem models the movement and attack rules of queens in ches… |
 | 1223 | [Dice Roll Simulation](1223.md) | 🔴 Hard | 1m 32s | This problem asks us to count how many valid dice roll sequences of… |
+| 1225 | [Report Contiguous Dates](1225.md) | 🔴 Hard | 1m 19s | The problem provides two database tables, Failed and Succeeded, whi… |
+| 1226 | [The Dining Philosophers](1226.md) | 🟡 Medium | 1m 17s | This problem is a classic synchronization and concurrency challenge… |
+| 1227 | [Airplane Seat Assignment Probability](1227.md) | 🟡 Medium | 44s | The problem describes a scenario where n passengers are boarding an… |
+| 1228 | [Missing Number In Arithmetic Progression](1228.md) | 🟢 Easy | 1m 4s | This problem gives us an array that originally formed an arithmetic… |
+| 1229 | [Meeting Scheduler](1229.md) | 🟡 Medium | 58s | This problem asks us to find a common time slot between two people’… |
+| 1230 | [Toss Strange Coins](1230.md) | 🟡 Medium | 51s | The problem asks us to calculate the probability of obtaining exact… |
+| 1231 | [Divide Chocolate](1231.md) | 🔴 Hard | 1m 18s | This problem gives us an array called sweetness, where each element… |
+| 1233 | [Remove Sub-Folders from the Filesystem](1233.md) | 🟡 Medium | 46s | This problem asks us to process a list of folder paths and remove a… |

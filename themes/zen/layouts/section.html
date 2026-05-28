@@ -1,0 +1,54 @@
+{{define "page-main"}}
+<div>
+  {{if .Page.Ancestors}}
+  <nav class="zen-breadcrumb" aria-label="Breadcrumb" style="margin-bottom:1rem;">
+    {{range .Page.Ancestors}}
+      {{if ne .Kind "home"}}
+      <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+      <span class="zen-breadcrumb__sep" aria-hidden="true">›</span>
+      {{end}}
+    {{end}}
+    <span class="zen-breadcrumb__current">{{.Page.Title}}</span>
+  </nav>
+  {{end}}
+
+  <div class="zen-section-header">
+    <h1>{{.Page.Title}}</h1>
+    {{with .Page.Description}}<p class="zen-section-header__desc">{{.}}</p>{{end}}
+    {{if .Pages}}<p class="zen-section-header__meta">{{len .Pages}} items</p>{{end}}
+  </div>
+
+  {{if .Page.ContentHTML}}
+  <div class="zen-content" style="margin-bottom:2rem;">{{rawHTML .Page.ContentHTML}}</div>
+  {{end}}
+
+  {{if .Pages}}
+  <div class="zen-card-grid">
+    {{range .Pages}}
+    {{if not .Draft}}
+    <div class="zen-card">
+      {{if .Ancestors}}
+      <div class="zen-card__path">
+        {{range .Ancestors}}{{if ne .Kind "home"}}
+        <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+        <span>›</span>
+        {{end}}{{end}}
+      </div>
+      {{end}}
+      <a href="{{.RelPermalink}}" class="zen-card__link">
+        <h2 class="zen-card__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</h2>
+        {{with .Description}}<p class="zen-card__desc">{{.}}</p>{{end}}
+      </a>
+      <div class="zen-card__footer">
+        {{if not .Date.IsZero}}<span class="zen-card__date">{{formatDate .Date}}</span>{{end}}
+        {{if and (not .Date.IsZero) .ReadingTime}}<span class="zen-card__sep">·</span>{{end}}
+        {{if .ReadingTime}}<span class="zen-card__meta">{{.ReadingTime}} min</span>{{end}}
+        {{range .Tags}}<a href="/tags/{{urlize .}}/" class="zen-tag">{{.}}</a>{{end}}
+      </div>
+    </div>
+    {{end}}
+    {{end}}
+  </div>
+  {{end}}
+</div>
+{{end}}

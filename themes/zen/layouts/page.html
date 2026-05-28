@@ -1,0 +1,44 @@
+{{define "page-main"}}
+<div>
+  {{if .Page.Ancestors}}
+  <nav class="zen-breadcrumb" aria-label="Breadcrumb">
+    {{range .Page.Ancestors}}
+      {{if ne .Kind "home"}}
+      <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+      <span class="zen-breadcrumb__sep" aria-hidden="true">›</span>
+      {{end}}
+    {{end}}
+    <span class="zen-breadcrumb__current">{{.Page.Title}}</span>
+  </nav>
+  {{end}}
+
+  <div class="zen-page-header">
+    <h1>{{.Page.Title}}</h1>
+    {{with .Page.Description}}<p class="zen-page-header__desc">{{.}}</p>{{end}}
+    {{if .Page.Tags}}
+    <div class="zen-page-header__tags">
+      {{range .Page.Tags}}<a href="/tags/{{urlize .}}/" class="zen-tag">{{.}}</a>{{end}}
+    </div>
+    {{end}}
+  </div>
+
+  <div class="zen-content">{{rawHTML .Page.ContentHTML}}</div>
+
+  {{if or .PrevPage .NextPage}}
+  <nav class="zen-pager" aria-label="Previous and next pages">
+    {{if .PrevPage}}
+    <a href="{{.PrevPage.RelPermalink}}" class="zen-pager__btn zen-pager__btn--prev">
+      <span class="zen-pager__label">← Previous</span>
+      <span class="zen-pager__title">{{with .PrevPage.LinkTitle}}{{.}}{{else}}{{.PrevPage.Title}}{{end}}</span>
+    </a>
+    {{else}}<span></span>{{end}}
+    {{if .NextPage}}
+    <a href="{{.NextPage.RelPermalink}}" class="zen-pager__btn zen-pager__btn--next">
+      <span class="zen-pager__label">Next →</span>
+      <span class="zen-pager__title">{{with .NextPage.LinkTitle}}{{.}}{{else}}{{.NextPage.Title}}{{end}}</span>
+    </a>
+    {{end}}
+  </nav>
+  {{end}}
+</div>
+{{end}}

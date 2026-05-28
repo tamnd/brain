@@ -1,0 +1,40 @@
+{{define "page-main"}}
+<div>
+  <header class="zen-home-header">
+    <h1 class="zen-home-header__title">{{.Site.Title}}</h1>
+    {{with .Site.Description}}<p class="zen-home-header__sub">{{.}}</p>{{end}}
+    {{if .Pages}}<p class="zen-home-header__count">{{len .Pages}} notes</p>{{end}}
+  </header>
+
+  <div class="zen-card-grid">
+    {{range .Pages}}
+    {{if not .Draft}}
+    <article class="zen-card">
+      {{if .Ancestors}}
+      <nav class="zen-card__path" aria-label="location">
+        {{range .Ancestors}}{{if ne .Kind "home"}}
+        <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
+        <span>›</span>
+        {{end}}{{end}}
+      </nav>
+      {{end}}
+      <a href="{{.RelPermalink}}" class="zen-card__link">
+        <h2 class="zen-card__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</h2>
+        {{with .Description}}<p class="zen-card__desc">{{.}}</p>{{end}}
+      </a>
+      <footer class="zen-card__footer">
+        {{if not .Date.IsZero}}<time class="zen-card__date" datetime="{{.Date.Format "2006-01-02"}}">{{formatDate .Date}}</time>{{end}}
+        {{if gt .WordCount 0}}
+        <span class="zen-card__sep">·</span>
+        <span class="zen-card__meta">{{.WordCount}} words</span>
+        <span class="zen-card__sep">·</span>
+        <span class="zen-card__meta">{{.ReadingTime}} min read</span>
+        {{end}}
+        {{range .Tags}}<a href="/tags/{{urlize .}}/" class="zen-tag">{{.}}</a>{{end}}
+      </footer>
+    </article>
+    {{end}}
+    {{end}}
+  </div>
+</div>
+{{end}}

@@ -93,3 +93,12 @@ draft: false
 | 1184 | [Distance Between Bus Stops](1184.md) | 🟢 Easy | 1m 8s | In this problem, we are given a circular bus route with n stops num… |
 | 1185 | [Day of the Week](1185.md) | 🟢 Easy | 1m 11s | This problem asks us to determine which day of the week corresponds… |
 | 1187 | [Make Array Strictly Increasing](1187.md) | 🔴 Hard | 40s | The problem is asking us to transform the array arr1 into a strictl… |
+| 1189 | [Maximum Number of Balloons](1189.md) | 🟢 Easy | 46s | The problem asks us to determine the maximum number of times the wo… |
+| 1190 | [Reverse Substrings Between Each Pair of Parentheses](1190.md) | 🟡 Medium | 1m 15s | The problem gives us a string s containing lowercase English letter… |
+| 1191 | [K-Concatenation Maximum Sum](1191.md) | 🟡 Medium | 1m 41s | This problem asks us to find the maximum possible sum of a contiguo… |
+| 1192 | [Critical Connections in a Network](1192.md) | 🔴 Hard | 1m 31s | This problem gives us an undirected graph representing a network of… |
+| 1193 | [Monthly Transactions I](1193.md) | 🟡 Medium | 47s | The problem is asking us to produce aggregated statistics on transa… |
+| 1194 | [Tournament Winners](1194.md) | 🔴 Hard | 44s | The problem asks us to determine the winner in each group of player… |
+| 1195 | [Fizz Buzz Multithreaded](1195.md) | 🟡 Medium | 1m 24s | The problem asks us to coordinate four separate threads so they col… |
+| 1196 | [How Many Apples Can You Put into the Basket](1196.md) | 🟢 Easy | 36s | This problem is asking us to determine how many apples we can fit i… |
+| 1197 | [Minimum Knight Moves](1197.md) | 🟡 Medium | 49s | This problem asks us to compute the minimum number of moves a knigh… |
