@@ -13,10 +13,12 @@ draft: false
 | 1201 | [Ugly Number III](1201.md) | 🟡 Medium | 1m 23s | The problem defines an "ugly number" as any positive integer that i… |
 | 1202 | [Smallest String With Swaps](1202.md) | 🟡 Medium | 1m 27s | The problem gives us a string s and a list of index pairs called pa… |
 | 1203 | [Sort Items by Groups Respecting Dependencies](1203.md) | 🔴 Hard | 1m 44s | This problem asks us to sort n items while satisfying two different… |
-| 1204 | [Last Person to Fit in the Bus](1204.md) | 🟡 Medium | 42s | The problem is asking us to determine which person is the last to s… |
-| 1205 | [Monthly Transactions II](1205.md) | 🟡 Medium | 43s | The problem asks us to generate a monthly summary report of transac… |
-| 1207 | [Unique Number of Occurrences](1207.md) | 🟢 Easy | 1m 16s | The problem asks us to determine whether the number of times each i… |
-| 1209 | [Remove All Adjacent Duplicates in String II](1209.md) | 🟡 Medium | 49s | The problem is asking us to repeatedly remove k consecutive identic… |
+| 1204 | [Last Person to Fit in the Bus](1204.md) | 🟡 Medium | 1m 6s | This problem gives us a database table named Queue that represents … |
+| 1205 | [Monthly Transactions II](1205.md) | 🟡 Medium | 1m 2s | This problem asks us to generate a monthly financial summary for ea… |
+| 1206 | [Design Skiplist](1206.md) | 🔴 Hard | 1m 24s | This problem asks us to implement a probabilistic data structure ca… |
+| 1207 | [Unique Number of Occurrences](1207.md) | 🟢 Easy | 1m 1s | The problem gives us an integer array arr and asks whether every di… |
+| 1208 | [Get Equal Substrings Within Budget](1208.md) | 🟡 Medium | 40s | The problem is asking for the maximum length of a contiguous substr… |
+| 1209 | [Remove All Adjacent Duplicates in String II](1209.md) | 🟡 Medium | 1m 3s | The problem asks us to repeatedly remove groups of exactly k adjace… |
 | 1211 | [Queries Quality and Percentage](1211.md) | 🟢 Easy | 1m 7s | Understood. I will create a complete technical solution guide for L… |
 | 1212 | [Team Scores in Football Tournament](1212.md) | 🟡 Medium | 37s | This problem asks us to compute the total points for each football … |
 | 1213 | [Intersection of Three Sorted Arrays](1213.md) | 🟢 Easy | 1m 9s | The problem gives us three integer arrays, arr1, arr2, and arr3. Ea… |
@@ -41,3 +43,8 @@ draft: false
 | 1236 | [Web Crawler](1236.md) | 🟡 Medium | 44s | The problem asks us to implement a web crawler that starts from a g… |
 | 1238 | [Circular Permutation in Binary Representation](1238.md) | 🟡 Medium | 51s | The problem asks us to generate a sequence of integers representing… |
 | 1239 | [Maximum Length of a Concatenated String with Unique Characters](1239.md) | 🟡 Medium | 1m 18s | The problem asks us to find the maximum length of a string that can… |
+| 1241 | [Number of Comments per Post](1241.md) | 🟢 Easy | 40s | This problem is asking us to analyze a table of submissions that ca… |
+| 1242 | [Web Crawler Multithreaded](1242.md) | 🟡 Medium | 1m 14s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 1243 | [Array Transformation](1243.md) | 🟢 Easy | 1m 26s | The problem asks us to repeatedly transform an array according to a… |
+| 1244 | [Design A Leaderboard](1244.md) | 🟡 Medium | 44s | The problem requires designing a Leaderboard class to maintain scor… |
+| 1245 | [Tree Diameter](1245.md) | 🟡 Medium | 48s | The problem asks us to find the diameter of a tree, which is define… |
