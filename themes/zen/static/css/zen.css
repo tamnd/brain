@@ -1063,11 +1063,13 @@ html.no-transition *::after {
 /* ===== Responsive ======================================================== */
 
 @media (max-width: 768px) {
-  .zen-layout { padding: 0 1rem; }
+  .zen-layout { padding: 0 0.75rem; }
   .zen-main { padding: 1.5rem 0 3rem; }
 
-  .cal-body { flex-direction: column; }
-  .cal-wrap { width: 100%; }
+  .cal-body { flex-direction: column; gap: 1rem; }
+  .cal-wrap { width: 100%; max-width: 100%; }
+  .cal-grid { gap: 1px; }
+  .cal-posts { width: 100%; box-sizing: border-box; }
 
   .zen-pager { flex-direction: column; }
 }
@@ -1193,8 +1195,8 @@ html[data-ui-theme="github"].dark body {
 /* ── Navigation — GitHub's signature dark header ─────────────────────────── */
 
 html[data-ui-theme="github"] .zen-nav {
-  background: #25292e;
-  border-bottom: 1px solid rgba(87,96,106,0.2);
+  background: #f6f8fa;
+  border-bottom: 1px solid #d1d9e0;
   height: var(--nav-h);
 }
 
@@ -1208,27 +1210,28 @@ html[data-ui-theme="github"] .zen-nav__inner {
 }
 
 html[data-ui-theme="github"] .zen-nav__logo {
-  color: #fff;
+  color: #24292f;
   font-size: 0.875rem;
   font-weight: 600;
   gap: 0.5rem;
 }
 
 html[data-ui-theme="github"] .zen-nav__logo:hover {
-  color: rgba(255,255,255,0.85);
+  color: #0969da;
+  text-decoration: none;
 }
 
 html[data-ui-theme="github"] .zen-nav__logo-icon {
-  background: rgba(255,255,255,0.12);
+  background: rgba(9,105,218,0.1);
   border-radius: 6px;
 }
 
 html[data-ui-theme="github"] .zen-nav__logo-icon svg {
-  color: #fff;
+  color: #0969da;
 }
 
 html[data-ui-theme="github"] .zen-nav__action {
-  color: rgba(255,255,255,0.7);
+  color: #57606a;
   width: 32px;
   height: 32px;
   border-radius: 6px;
@@ -1236,16 +1239,26 @@ html[data-ui-theme="github"] .zen-nav__action {
 
 html[data-ui-theme="github"] .zen-nav__action:hover,
 html[data-ui-theme="github"] .zen-nav__action--active {
-  background: rgba(129,139,152,0.2);
-  color: #fff;
+  background: rgba(175,184,193,0.2);
+  color: #24292f;
 }
 
 html[data-ui-theme="github"] .zen-nav__action--text {
   width: auto;
   padding: 0 0.5rem;
-  color: rgba(255,255,255,0.6);
+  color: #57606a;
   font-family: var(--font-mono);
 }
+
+/* dark nav overrides */
+html[data-ui-theme="github"].dark .zen-nav__logo { color: #e6edf3; }
+html[data-ui-theme="github"].dark .zen-nav__logo:hover { color: #4493f8; }
+html[data-ui-theme="github"].dark .zen-nav__logo-icon { background: rgba(68,147,248,0.15); }
+html[data-ui-theme="github"].dark .zen-nav__logo-icon svg { color: #4493f8; }
+html[data-ui-theme="github"].dark .zen-nav__action { color: rgba(230,237,243,0.7); }
+html[data-ui-theme="github"].dark .zen-nav__action:hover,
+html[data-ui-theme="github"].dark .zen-nav__action--active { background: rgba(129,139,152,0.2); color: #e6edf3; }
+html[data-ui-theme="github"].dark .zen-nav__action--text { color: rgba(230,237,243,0.6); }
 
 /* ── Layout — full-width, centered ──────────────────────────────────────────*/
 
@@ -1789,8 +1802,11 @@ html[data-ui-theme="github"] .cal-posts {
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  html[data-ui-theme="github"] .zen-nav__inner {
+    padding: 0 1rem;
+  }
   html[data-ui-theme="github"] .zen-main {
-    padding: 1rem 1rem 2rem;
+    padding: 1rem 0.75rem 2rem;
     border-left: none;
     border-right: none;
   }

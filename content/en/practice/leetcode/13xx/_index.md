@@ -40,10 +40,10 @@ draft: false
 | 1327 | [List the Products Ordered in a Period](1327.md) | 🟢 Easy | 54s | The problem asks us to list all products that have been ordered in … |
 | 1328 | [Break a Palindrome](1328.md) | 🟡 Medium | 1m 1s | The problem asks us to modify a given palindromic string in such a … |
 | 1329 | [Sort the Matrix Diagonally](1329.md) | 🟡 Medium | 1m 34s | The problem asks us to sort every diagonal of a matrix independentl… |
-| 1330 | [Reverse Subarray To Maximize Array Value](1330.md) | 🔴 Hard | 54s | The problem asks us to maximize the "value" of an integer array, wh… |
+| 1330 | [Reverse Subarray To Maximize Array Value](1330.md) | 🔴 Hard | 1m 29s | The problem gives us an integer array nums and defines the "value" … |
 | 1331 | [Rank Transform of an Array](1331.md) | 🟢 Easy | 1m 11s | The problem asks us to replace every number in the input array with… |
-| 1332 | [Remove Palindromic Subsequences](1332.md) | 🟢 Easy | 1m 6s | This problem asks us to determine the minimum number of operations … |
-| 1333 | [Filter Restaurants by Vegan-Friendly, Price and Distance](1333.md) | 🟡 Medium | 1m 35s | The problem gives us a list of restaurants where each restaurant is… |
+| 1332 | [Remove Palindromic Subsequences](1332.md) | 🟢 Easy | 1m 11s | The problem gives us a string s that contains only the characters '… |
+| 1333 | [Filter Restaurants by Vegan-Friendly, Price and Distance](1333.md) | 🟡 Medium | 1m 3s | The problem is asking us to filter and sort a list of restaurants b… |
 | 1334 | [Find the City With the Smallest Number of Neighbors at a Threshold Distance](1334.md) | 🟡 Medium | 52s | The problem asks us to find a city in a weighted, undirected graph … |
 | 1337 | [The K Weakest Rows in a Matrix](1337.md) | 🟢 Easy | 1m 24s | The problem gives us a binary matrix where each row represents a gr… |
 | 1338 | [Reduce Array Size to The Half](1338.md) | 🟡 Medium | 54s | The problem asks us to reduce an array to at most half its size by … |
@@ -68,3 +68,4 @@ draft: false
 | 1360 | [Number of Days Between Two Dates](1360.md) | 🟢 Easy | 1m 16s | The problem gives two dates in the format YYYY-MM-DD and asks us to… |
 | 1361 | [Validate Binary Tree Nodes](1361.md) | 🟡 Medium | 1m 26s | The problem gives us n nodes labeled from 0 to n - 1. For every nod… |
 | 1362 | [Closest Divisors](1362.md) | 🟡 Medium | 1m 17s | The problem gives us a positive integer num and asks us to find two… |
+| 1363 | [Largest Multiple of Three](1363.md) | 🔴 Hard | 1m 27s | The problem gives us an array of digits, where each element is an i… |
