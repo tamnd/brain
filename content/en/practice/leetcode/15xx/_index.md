@@ -77,5 +77,7 @@ draft: false
 | 1564 | [Put Boxes Into the Warehouse I](1564.md) | 🟡 Medium | 1m 32s | The problem gives us two arrays: - boxes, where each value represen… |
 | 1565 | [Unique Orders and Customers Per Month](1565.md) | 🟢 Easy | 39s | This problem requires analyzing a table of orders to calculate mont… |
 | 1566 | [Detect Pattern of Length M Repeated K or More Times](1566.md) | 🟢 Easy | 1m 25s | The problem gives us an integer array arr along with two integers, … |
-| 1567 | [Maximum Length of Subarray With Positive Product](1567.md) | 🟡 Medium | 1m 18s | The problem asks us to find the length of the longest contiguous su… |
-| 1568 | [Minimum Number of Days to Disconnect Island](1568.md) | 🔴 Hard | 47s | The problem gives us an m x n binary grid grid where 1 represents l… |
+| 1567 | [Maximum Length of Subarray With Positive Product](1567.md) | 🟡 Medium | 1m 25s | The problem asks us to find the length of the longest contiguous su… |
+| 1568 | [Minimum Number of Days to Disconnect Island](1568.md) | 🔴 Hard | 1m 34s | The problem gives us a binary matrix where each cell is either land… |
+| 1569 | [Number of Ways to Reorder Array to Get Same BST](1569.md) | 🔴 Hard | 1m 27s | The problem gives us a permutation of integers from 1 to n, and we … |
+| 1570 | [Dot Product of Two Sparse Vectors](1570.md) | 🟡 Medium | 1m 21s | This problem asks us to efficiently compute the dot product between… |
