@@ -79,7 +79,10 @@ draft: false
 | 1166 | [Design File System](1166.md) | 🟡 Medium | 1m 14s | This problem asks us to design a simplified file system that suppor… |
 | 1167 | [Minimum Cost to Connect Sticks](1167.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers called sticks, w… |
 | 1168 | [Optimize Water Distribution in a Village](1168.md) | 🔴 Hard | 45s | The problem asks us to supply water to all houses in a village in t… |
+| 1169 | [Invalid Transactions](1169.md) | 🟡 Medium | 1m 14s | The problem asks us to identify transactions that are potentially i… |
+| 1170 | [Compare Strings by Frequency of the Smallest Character](1170.md) | 🟡 Medium | 1m 32s | The problem defines a function f(s) for a non-empty string s. This … |
 | 1171 | [Remove Zero Sum Consecutive Nodes from Linked List](1171.md) | 🟡 Medium | 47s | The problem requires us to repeatedly remove consecutive nodes in a… |
+| 1172 | [Dinner Plate Stacks](1172.md) | 🔴 Hard | 1m 44s | The problem asks us to design a data structure that behaves like an… |
 | 1173 | [Immediate Food Delivery I](1173.md) | 🟢 Easy | 41s | The problem is asking to calculate the percentage of immediate food… |
 | 1174 | [Immediate Food Delivery II](1174.md) | 🟡 Medium | 1m 21s | The problem provides a Delivery table that records food delivery or… |
 | 1175 | [Prime Arrangements](1175.md) | 🟢 Easy | 48s | The problem asks us to count how many permutations of numbers from … |
@@ -90,8 +93,10 @@ draft: false
 | 1180 | [Count Substrings with Only One Distinct Letter](1180.md) | 🟢 Easy | 1m 17s | The problem asks us to count how many substrings of a given string … |
 | 1181 | [Before and After Puzzle](1181.md) | 🟡 Medium | 1m 20s | The problem gives us an array of phrases, where each phrase is a st… |
 | 1182 | [Shortest Distance to Target Color](1182.md) | 🟡 Medium | 1m 11s | The problem gives us an array called colors, where each position co… |
+| 1183 | [Maximum Number of Ones](1183.md) | 🔴 Hard | 1m 23s | The problem gives us a binary matrix M with dimensions height x wid… |
 | 1184 | [Distance Between Bus Stops](1184.md) | 🟢 Easy | 1m 8s | In this problem, we are given a circular bus route with n stops num… |
 | 1185 | [Day of the Week](1185.md) | 🟢 Easy | 1m 11s | This problem asks us to determine which day of the week corresponds… |
+| 1186 | [Maximum Subarray Sum with One Deletion](1186.md) | 🟡 Medium | 51s | The problem is asking us to find the maximum sum of a contiguous su… |
 | 1187 | [Make Array Strictly Increasing](1187.md) | 🔴 Hard | 40s | The problem is asking us to transform the array arr1 into a strictl… |
 | 1189 | [Maximum Number of Balloons](1189.md) | 🟢 Easy | 46s | The problem asks us to determine the maximum number of times the wo… |
 | 1190 | [Reverse Substrings Between Each Pair of Parentheses](1190.md) | 🟡 Medium | 1m 15s | The problem gives us a string s containing lowercase English letter… |

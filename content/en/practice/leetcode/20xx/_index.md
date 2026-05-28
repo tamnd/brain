@@ -34,3 +34,14 @@ draft: false
 | 2027 | [Minimum Moves to Convert String](2027.md) | 🟢 Easy | 1m 1s | The problem asks us to transform a string s containing only charact… |
 | 2028 | [Find Missing Observations](2028.md) | 🟡 Medium | 1m 33s | The problem gives us the results of some dice rolls and asks us to … |
 | 2029 | [Stone Game IX](2029.md) | 🟡 Medium | 58s | The problem describes a turn-based game between Alice and Bob with … |
+| 2031 | [Count Subarrays With More Ones Than Zeros](2031.md) | 🟡 Medium | 1m 53s | This problem asks us to count all subarrays of a binary array nums … |
+| 2032 | [Two Out of Three](2032.md) | 🟢 Easy | 1m 4s | The problem asks us to identify all distinct integers that appear i… |
+| 2033 | [Minimum Operations to Make a Uni-Value Grid](2033.md) | 🟡 Medium | 1m 28s | The problem gives us a 2D integer matrix called grid and an integer… |
+| 2034 | [Stock Price Fluctuation ](2034.md) | 🟡 Medium | 1m 13s | Here’s a complete, detailed technical solution guide for LeetCode 2… |
+| 2035 | [Partition Array Into Two Arrays to Minimize Sum Difference](2035.md) | 🔴 Hard | 1m 37s | The problem gives an array nums containing exactly 2 n integers. We… |
+| 2036 | [Maximum Alternating Subarray Sum](2036.md) | 🟡 Medium | 56s | The problem asks us to compute the maximum alternating subarray sum… |
+| 2037 | [Minimum Number of Moves to Seat Everyone](2037.md) | 🟢 Easy | 1m 10s | This problem asks us to assign students to seats such that every st… |
+| 2038 | [Remove Colored Pieces if Both Neighbors are the Same Color](2038.md) | 🟡 Medium | 1m 5s | The problem presents a two-player game with pieces in a line, each … |
+| 2039 | [The Time When the Network Becomes Idle](2039.md) | 🟡 Medium | 1m 12s | The problem describes a network of n servers connected by bidirecti… |
+| 2040 | [Kth Smallest Product of Two Sorted Arrays](2040.md) | 🔴 Hard | 1m 31s | The problem asks us to find the kth smallest value among all possib… |
+| 2041 | [Accepted Candidates From the Interviews](2041.md) | 🟡 Medium | 42s | This problem is asking us to identify candidates from an interview … |
