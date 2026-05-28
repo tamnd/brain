@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 225 contests, 1028 problems, 869 verified."
+description: "Codeforces problem solutions with full editorial. 200 contests, 921 problems, 786 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**225 contests, 1028 problems, 869 verified.**
+**200 contests, 921 problems, 786 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -213,30 +213,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [200](200/) | [Codeforces Round 126 (Div. 2)](https://codeforces.com/contest/200) | Div. 2 | 800-2400 | 3/3 | 7m 2s |
 | [201](201/) | [Codeforces Round 127 (Div. 1)](https://codeforces.com/contest/201) | Div. 1 | 1700-2600 | 4/5 | 7m 7s |
 | [202](202/) | [Codeforces Round 127 (Div. 2)](https://codeforces.com/contest/202) | Div. 2 | 800-1700 | 2/2 | 4m 35s |
-| [203](203/) | [Codeforces Round 128 (Div. 2)](https://codeforces.com/contest/203) | Div. 2 | 1200-2300 | 4/5 | 6m 39s |
-| [204](204/) | [Codeforces Round 129 (Div. 1)](https://codeforces.com/contest/204) | Div. 1 | 1500-2800 | 4/5 | 5m 54s |
-| [205](205/) | [Codeforces Round 129 (Div. 2)](https://codeforces.com/contest/205) | Div. 2 | 900-1400 | 2/2 | 2m 24s |
-| [207](207/) | [Abbyy Cup 2.0 - Final (unofficial)](https://codeforces.com/contest/207) | Special | 1600-2700 | 14/17 | 25m 3s |
-| [208](208/) | [Codeforces Round 130 (Div. 2)](https://codeforces.com/contest/208) | Div. 2 | 900-2100 | 4/4 | 4m 49s |
-| [209](209/) | [VK Cup 2012 Finals, Practice Session](https://codeforces.com/contest/209) | Special | 1600-2400 | 3/3 | 11m 47s |
-| [212](212/) | [VK Cup 2012 Finals (unofficial online-version)](https://codeforces.com/contest/212) | Special | 1500-3000 | 1/5 | 9m 48s |
-| [213](213/) | [Codeforces Round 131 (Div. 1)](https://codeforces.com/contest/213) | Div. 1 | 1700-2700 | 3/5 | 7m 23s |
-| [214](214/) | [Codeforces Round 131 (Div. 2)](https://codeforces.com/contest/214) | Div. 2 | 800-1600 | 2/2 | 3m 45s |
-| [215](215/) | [Codeforces Round 132 (Div. 2)](https://codeforces.com/contest/215) | Div. 2 | 900-2100 | 4/5 | 8m 51s |
-| [216](216/) | [Codeforces Round 133 (Div. 2)](https://codeforces.com/contest/216) | Div. 2 | 1200-2000 | 3/5 | 7m 31s |
-| [217](217/) | [Codeforces Round 134 (Div. 1)](https://codeforces.com/contest/217) | Div. 1 | 1200-2900 | 3/4 | 12m 51s |
-| [218](218/) | [Codeforces Round 134 (Div. 2)](https://codeforces.com/contest/218) | Div. 2 | 1100-1100 | 0/2 | 4m 13s |
-| [219](219/) | [Codeforces Round 135 (Div. 2)](https://codeforces.com/contest/219) | Div. 2 | 1000-1600 | 3/3 | 5m 50s |
-| [220](220/) | [Codeforces Round 136 (Div. 1)](https://codeforces.com/contest/220) | Div. 1 | 1300-2500 | 3/4 | 8m 14s |
-| [221](221/) | [Codeforces Round 136 (Div. 2)](https://codeforces.com/contest/221) | Div. 2 | 1000-1300 | 2/2 | 3m 57s |
-| [222](222/) | [Codeforces Round 137 (Div. 2)](https://codeforces.com/contest/222) | Div. 2 | 1200-1900 | 3/4 | 6m 42s |
-| [223](223/) | [Codeforces Round 138 (Div. 1)](https://codeforces.com/contest/223) | Div. 1 | 1700-3000 | 3/4 | 8m 30s |
-| [224](224/) | [Codeforces Round 138 (Div. 2)](https://codeforces.com/contest/224) | Div. 2 | 1100-1500 | 2/2 | 2m 3s |
-| [225](225/) | [Codeforces Round 139 (Div. 2)](https://codeforces.com/contest/225) | Div. 2 | 1600-2200 | 3/4 | 9m 47s |
-| [226](226/) | [Codeforces Round 140 (Div. 1)](https://codeforces.com/contest/226) | Div. 1 | 1400-2900 | 4/5 | 14m 33s |
-| [227](227/) | [Codeforces Round 140 (Div. 2)](https://codeforces.com/contest/227) | Div. 2 | 1100-1300 | 2/2 | 6m 2s |
-| [228](228/) | [Codeforces Round 141 (Div. 2)](https://codeforces.com/contest/228) | Div. 2 | 800-2100 | 2/4 | 7m 21s |
-| [229](229/) | [Codeforces Round 142 (Div. 1)](https://codeforces.com/contest/229) | Div. 1 | 1500-2600 | 5/5 | 10m 59s |
-| [230](230/) | [Codeforces Round 142 (Div. 2)](https://codeforces.com/contest/230) | Div. 2 | 1000-1300 | 2/2 | 4m 23s |
-| [231](231/) | [Codeforces Round 143 (Div. 2)](https://codeforces.com/contest/231) | Div. 2 | 800-1600 | 3/3 | 5m 32s |
+| [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 1200-1200 | 1/1 | 1m 58s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
