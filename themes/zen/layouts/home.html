@@ -6,33 +6,21 @@
     {{if .Pages}}<p class="zen-home-header__count">{{len .Pages}} notes</p>{{end}}
   </header>
 
-  <div class="zen-card-grid">
+  <div class="zen-list">
     {{range .Pages}}
     {{if not .Draft}}
-    <article class="zen-card">
-      {{if .Ancestors}}
-      <nav class="zen-card__path" aria-label="location">
-        {{range .Ancestors}}{{if ne .Kind "home"}}
-        <a href="{{.RelPermalink}}">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</a>
-        <span>›</span>
-        {{end}}{{end}}
-      </nav>
+    <a href="{{.RelPermalink}}" class="zen-list-item">
+      <div class="zen-list-item__header">
+        <span class="zen-list-item__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</span>
+        {{if not .Date.IsZero}}<time class="zen-list-item__date" datetime="{{.Date.Format "2006-01-02"}}">{{formatDate .Date}}</time>{{end}}
+      </div>
+      {{with .Description}}<p class="zen-list-item__desc">{{.}}</p>{{end}}
+      {{if .Tags}}
+      <div class="zen-list-item__tags">
+        {{range .Tags}}<span class="zen-tag">{{.}}</span>{{end}}
+      </div>
       {{end}}
-      <a href="{{.RelPermalink}}" class="zen-card__link">
-        <h2 class="zen-card__title">{{with .LinkTitle}}{{.}}{{else}}{{.Title}}{{end}}</h2>
-        {{with .Description}}<p class="zen-card__desc">{{.}}</p>{{end}}
-      </a>
-      <footer class="zen-card__footer">
-        {{range .Tags}}
-          {{if eq . "easy"}}<a href="/tags/easy/" class="zen-diff zen-diff--easy"><span class="zen-diff__dot"></span>Easy</a>
-          {{else if eq . "medium"}}<a href="/tags/medium/" class="zen-diff zen-diff--medium"><span class="zen-diff__dot"></span>Medium</a>
-          {{else if eq . "hard"}}<a href="/tags/hard/" class="zen-diff zen-diff--hard"><span class="zen-diff__dot"></span>Hard</a>
-          {{else}}<a href="/tags/{{urlize .}}/" class="zen-tag">{{.}}</a>
-          {{end}}
-        {{end}}
-        {{if not .Date.IsZero}}<time class="zen-card__date" datetime="{{.Date.Format "2006-01-02"}}" style="margin-left:auto;">{{formatDate .Date}}</time>{{end}}
-      </footer>
-    </article>
+    </a>
     {{end}}
     {{end}}
   </div>
