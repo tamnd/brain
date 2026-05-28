@@ -27,4 +27,10 @@ draft: false
 | 2018 | [Check if Word Can Be Placed In Crossword](2018.md) | 🟡 Medium | 1m 8s | This problem asks us to determine whether a given word can be legal… |
 | 2020 | [Number of Accounts That Did Not Stream](2020.md) | 🟡 Medium | 1m 17s | This problem asks us to analyze two database tables, Subscriptions … |
 | 2021 | [Brightest Position on Street](2021.md) | 🟡 Medium | 1m 2s | The problem asks us to find the position on a straight street that … |
+| 2023 | [Number of Pairs of Strings With Concatenation Equal to Target](2023.md) | 🟡 Medium | 1m 2s | The problem asks us to find the number of ordered pairs of indices … |
+| 2024 | [Maximize the Confusion of an Exam](2024.md) | 🟡 Medium | 1m 26s | This problem asks us to maximize the length of a contiguous block o… |
+| 2025 | [Maximum Number of Ways to Partition an Array](2025.md) | 🔴 Hard | 1m 39s | The problem asks us to count how many valid partition points exist … |
 | 2026 | [Low-Quality Problems](2026.md) | 🟢 Easy | 1m 26s | The problem gives us a database table named Problems. Each row repr… |
+| 2027 | [Minimum Moves to Convert String](2027.md) | 🟢 Easy | 1m 1s | The problem asks us to transform a string s containing only charact… |
+| 2028 | [Find Missing Observations](2028.md) | 🟡 Medium | 1m 33s | The problem gives us the results of some dice rolls and asks us to … |
+| 2029 | [Stone Game IX](2029.md) | 🟡 Medium | 58s | The problem describes a turn-based game between Alice and Bob with … |
