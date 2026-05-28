@@ -45,6 +45,7 @@ draft: false
 | 1632 | [Rank Transform of a Matrix](1632.md) | 🔴 Hard | 1m 52s | In this problem, we are given an m x n matrix of integers, and we m… |
 | 1633 | [Percentage of Users Attended a Contest](1633.md) | 🟢 Easy | 44s | This problem asks us to calculate the percentage of users who atten… |
 | 1634 | [Add Two Polynomials Represented as Linked Lists](1634.md) | 🟡 Medium | 52s | This problem asks us to add two polynomials represented as singly l… |
-| 1635 | [Hopper Company Queries I](1635.md) | 🔴 Hard | 1m 33s | This problem asks us to generate monthly statistics for the year 20… |
+| 1635 | [Hopper Company Queries I](1635.md) | 🔴 Hard | 1m 50s | This problem asks us to generate monthly statistics for the year 20… |
 | 1636 | [Sort Array by Increasing Frequency](1636.md) | 🟢 Easy | 52s | The problem requires sorting an array of integers based on the freq… |
 | 1638 | [Count Substrings That Differ by One Character](1638.md) | 🟡 Medium | 1m 27s | The problem asks us to count how many pairs of substrings, one take… |
+| 1640 | [Check Array Formation Through Concatenation](1640.md) | 🟢 Easy | 2m 14s | In this problem, we are given two inputs: - arr, a one dimensional … |
