@@ -55,3 +55,14 @@ draft: false
 | 2548 | [Maximum Price to Fill a Bag](2548.md) | 🟡 Medium | 1m 2s | This problem describes a variation of the classic fractional knapsa… |
 | 2549 | [Count Distinct Numbers on Board](2549.md) | 🟢 Easy | 51s | The problem gives us a starting integer n that is initially written… |
 | 2550 | [Count Collisions of Monkeys on a Polygon](2550.md) | 🟡 Medium | 1m | The problem describes a regular convex polygon with n vertices. Eac… |
+| 2551 | [Put Marbles in Bags](2551.md) | 🔴 Hard | 1m 12s | The problem gives us an array weights, where each value represents … |
+| 2552 | [Count Increasing Quadruplets](2552.md) | 🔴 Hard | 34s | The problem asks us to count the number of increasing quadruplets i… |
+| 2553 | [Separate the Digits in an Array](2553.md) | 🟢 Easy | 38s | The problem asks us to take an input array of positive integers and… |
+| 2554 | [Maximum Number of Integers to Choose From a Range I](2554.md) | 🟡 Medium | 32s | This problem asks us to construct the largest possible subset of in… |
+| 2555 | [Maximize Win From Two Segments](2555.md) | 🟡 Medium | 46s | This problem asks us to select two integer-length segments of fixed… |
+| 2556 | [Disconnect Path in a Binary Matrix by at Most One Flip](2556.md) | 🟡 Medium | 48s | The problem gives an m x n binary grid where movement is only allow… |
+| 2558 | [Take Gifts From the Richest Pile](2558.md) | 🟢 Easy | 52s | This problem is asking us to simulate a repeated operation on a col… |
+| 2559 | [Count Vowel Strings in Ranges](2559.md) | 🟡 Medium | 28s | This problem asks us to process multiple range queries over an arra… |
+| 2560 | [House Robber IV](2560.md) | 🟡 Medium | 44s | This problem is a variation of the classic House Robber problem, wi… |
+| 2561 | [Rearranging Fruits](2561.md) | 🔴 Hard | 52s | The problem presents two baskets of fruits, each containing n fruit… |
+| 2563 | [Count the Number of Fair Pairs](2563.md) | 🟡 Medium | 41s | The problem is asking us to count the number of pairs of indices (i… |

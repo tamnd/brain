@@ -14,16 +14,16 @@ draft: false
 | 2301 | [Match Substring After Replacement](2301.md) | 🔴 Hard | 1m 26s | The problem gives us a string s, a target string sub, and a list of… |
 | 2302 | [Count Subarrays With Score Less Than K](2302.md) | 🔴 Hard | 42s | The problem asks us to count the number of contiguous subarrays of … |
 | 2303 | [Calculate Amount Paid in Taxes](2303.md) | 🟢 Easy | 37s | This problem is asking us to simulate a progressive tax system. We … |
-| 2304 | [Minimum Path Cost in a Grid](2304.md) | 🟡 Medium | 1m 31s | The problem gives us a matrix called grid with m rows and n columns… |
-| 2305 | [Fair Distribution of Cookies](2305.md) | 🟡 Medium | 1m 59s | The problem gives us an array called cookies, where each element re… |
+| 2304 | [Minimum Path Cost in a Grid](2304.md) | 🟡 Medium | 1m 13s | The problem gives us a matrix called grid with m rows and n columns… |
+| 2305 | [Fair Distribution of Cookies](2305.md) | 🟡 Medium | 37s | The problem asks us to distribute a set of cookie bags among k chil… |
 | 2306 | [Naming a Company](2306.md) | 🔴 Hard | 1m 22s | The problem gives us a list of unique strings called ideas. We must… |
 | 2307 | [Check for Contradictions in Equations](2307.md) | 🔴 Hard | 57s | The problem presents a system of multiplicative equations expressed… |
 | 2308 | [Arrange Table by Gender](2308.md) | 🟡 Medium | 1m 33s | The problem asks us to rearrange the rows of a Genders table in a s… |
-| 2309 | [Greatest English Letter in Upper and Lower Case](2309.md) | 🟢 Easy | 52s | The problem asks us to find the greatest English letter in a given … |
-| 2310 | [Sum of Numbers With Units Digit K](2310.md) | 🟡 Medium | 1m 18s | The problem gives us two integers, num and k. We must construct a s… |
-| 2311 | [Longest Binary Subsequence Less Than or Equal to K](2311.md) | 🟡 Medium | 1m 38s | The problem gives us a binary string s and an integer k. We must fi… |
-| 2312 | [Selling Pieces of Wood](2312.md) | 🔴 Hard | 54s | The problem asks us to maximize the revenue from cutting and sellin… |
-| 2313 | [Minimum Flips in Binary Tree to Get Result](2313.md) | 🔴 Hard | 1m 38s | This problem gives us a binary tree that represents a boolean expre… |
+| 2309 | [Greatest English Letter in Upper and Lower Case](2309.md) | 🟢 Easy | 58s | The problem gives us a string s containing only uppercase and lower… |
+| 2310 | [Sum of Numbers With Units Digit K](2310.md) | 🟡 Medium | 1m 2s | This problem asks us to construct a set of positive integers such t… |
+| 2311 | [Longest Binary Subsequence Less Than or Equal to K](2311.md) | 🟡 Medium | 47s | The problem asks us to find the length of the longest subsequence o… |
+| 2312 | [Selling Pieces of Wood](2312.md) | 🔴 Hard | 57s | The problem presents a rectangular piece of wood of size m x n and … |
+| 2313 | [Minimum Flips in Binary Tree to Get Result](2313.md) | 🔴 Hard | 35s | The problem presents a binary tree where leaf nodes represent boole… |
 | 2314 | [The First Day of the Maximum Recorded Degree in Each City](2314.md) | 🟡 Medium | 1m 29s | The problem provides a database table named Weather that stores tem… |
 | 2315 | [Count Asterisks](2315.md) | 🟢 Easy | 1m 22s | The problem gives us a string s containing lowercase English letter… |
 | 2316 | [Count Unreachable Pairs of Nodes in an Undirected Graph](2316.md) | 🟡 Medium | 46s | This problem asks us to determine how many pairs of nodes in an und… |
