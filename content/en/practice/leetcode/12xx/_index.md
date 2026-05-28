@@ -19,13 +19,14 @@ draft: false
 | 1207 | [Unique Number of Occurrences](1207.md) | 🟢 Easy | 1m 1s | The problem gives us an integer array arr and asks whether every di… |
 | 1208 | [Get Equal Substrings Within Budget](1208.md) | 🟡 Medium | 40s | The problem is asking for the maximum length of a contiguous substr… |
 | 1209 | [Remove All Adjacent Duplicates in String II](1209.md) | 🟡 Medium | 1m 3s | The problem asks us to repeatedly remove groups of exactly k adjace… |
-| 1211 | [Queries Quality and Percentage](1211.md) | 🟢 Easy | 1m 7s | Understood. I will create a complete technical solution guide for L… |
+| 1210 | [Minimum Moves to Reach Target with Rotations](1210.md) | 🔴 Hard | 1m 40s | This problem asks us to move a two-cell snake through an n x n grid… |
+| 1211 | [Queries Quality and Percentage](1211.md) | 🟢 Easy | 1m 23s | The problem gives us a database table named Queries. Each row repre… |
 | 1212 | [Team Scores in Football Tournament](1212.md) | 🟡 Medium | 37s | This problem asks us to compute the total points for each football … |
-| 1213 | [Intersection of Three Sorted Arrays](1213.md) | 🟢 Easy | 1m 9s | The problem gives us three integer arrays, arr1, arr2, and arr3. Ea… |
-| 1214 | [Two Sum BSTs](1214.md) | 🟡 Medium | 1m 5s | This problem gives us the roots of two Binary Search Trees (BSTs), … |
+| 1213 | [Intersection of Three Sorted Arrays](1213.md) | 🟢 Easy | 1m 5s | The problem gives us three integer arrays, arr1, arr2, and arr3. Ea… |
+| 1214 | [Two Sum BSTs](1214.md) | 🟡 Medium | 1m 16s | The problem gives us two binary search trees, root1 and root2, alon… |
 | 1215 | [Stepping Numbers](1215.md) | 🟡 Medium | 46s | The problem is asking us to find all integers within a given range … |
-| 1216 | [Valid Palindrome III](1216.md) | 🔴 Hard | 44s | The problem asks us to determine whether a string s can be transfor… |
-| 1217 | [Minimum Cost to Move Chips to The Same Position](1217.md) | 🟢 Easy | 40s | The problem presents a scenario where we have n chips placed at var… |
+| 1216 | [Valid Palindrome III](1216.md) | 🔴 Hard | 39s | The problem asks us to determine whether a given string s can becom… |
+| 1217 | [Minimum Cost to Move Chips to The Same Position](1217.md) | 🟢 Easy | 1m 1s | The problem asks us to move n chips located at various positions al… |
 | 1218 | [Longest Arithmetic Subsequence of Given Difference](1218.md) | 🟡 Medium | 49s | The problem asks for the length of the longest arithmetic subsequen… |
 | 1219 | [Path with Maximum Gold](1219.md) | 🟡 Medium | 1m 29s | The problem gives a two dimensional grid where each cell contains e… |
 | 1222 | [Queens That Can Attack the King](1222.md) | 🟡 Medium | 1m 21s | This problem models the movement and attack rules of queens in ches… |
@@ -48,3 +49,7 @@ draft: false
 | 1243 | [Array Transformation](1243.md) | 🟢 Easy | 1m 26s | The problem asks us to repeatedly transform an array according to a… |
 | 1244 | [Design A Leaderboard](1244.md) | 🟡 Medium | 44s | The problem requires designing a Leaderboard class to maintain scor… |
 | 1245 | [Tree Diameter](1245.md) | 🟡 Medium | 48s | The problem asks us to find the diameter of a tree, which is define… |
+| 1246 | [Palindrome Removal](1246.md) | 🔴 Hard | 53s | The problem is asking us to remove all elements from an integer arr… |
+| 1247 | [Minimum Swaps to Make Strings Equal](1247.md) | 🟡 Medium | 1m 11s | The problem gives us two strings, s1 and s2, that have the same len… |
+| 1249 | [Minimum Remove to Make Valid Parentheses](1249.md) | 🟡 Medium | 1m 8s | The problem gives a string containing three possible types of chara… |
+| 1250 | [Check If It Is a Good Array](1250.md) | 🔴 Hard | 1m 22s | This problem asks whether it is possible to create the value 1 usin… |
