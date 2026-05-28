@@ -34,4 +34,19 @@ draft: false
 | 921 | [Minimum Add to Make Parentheses Valid](921.md) | 🟡 Medium | 29s | The problem asks us to determine the minimum number of parentheses … |
 | 922 | [Sort Array By Parity II](922.md) | 🟢 Easy | 1m 9s | The problem gives an integer array nums where exactly half of the e… |
 | 923 | [3Sum With Multiplicity](923.md) | 🟡 Medium | 1m 28s | The problem asks us to count how many index triplets (i, j, k) sati… |
-| 924 | [Minimize Malware Spread](924.md) | 🔴 Hard | 35s | The problem describes a network of n nodes represented as an n x n … |
+| 924 | [Minimize Malware Spread](924.md) | 🔴 Hard | 1m 24s | In this problem, we are given an undirected graph represented as an… |
+| 925 | [Long Pressed Name](925.md) | 🟢 Easy | 1m 10s | In this problem, we are given two strings, name and typed. The stri… |
+| 926 | [Flip String to Monotone Increasing](926.md) | 🟡 Medium | 1m 8s | The problem asks us to transform a binary string into a monotone in… |
+| 927 | [Three Equal Parts](927.md) | 🔴 Hard | 44s | The problem asks us to partition a binary array arr into three non-… |
+| 928 | [Minimize Malware Spread II](928.md) | 🔴 Hard | 41s | The problem is about a network of computers represented as an undir… |
+| 929 | [Unique Email Addresses](929.md) | 🟢 Easy | 1m 7s | The problem asks us to determine how many unique email addresses ac… |
+| 930 | [Binary Subarrays With Sum](930.md) | 🟡 Medium | 59s | The problem asks us to count the number of contiguous subarrays in … |
+| 931 | [Minimum Falling Path Sum](931.md) | 🟡 Medium | 1m 20s | The problem gives us an n x n matrix of integers and asks for the m… |
+| 932 | [Beautiful Array](932.md) | 🟡 Medium | 33s | The problem asks us to construct a beautiful array of length n. A b… |
+| 933 | [Number of Recent Calls](933.md) | 🟢 Easy | 1m 3s | This problem asks us to design a data structure that tracks recent … |
+| 934 | [Shortest Bridge](934.md) | 🟡 Medium | 1m 8s | This problem asks us to connect two separate islands in a binary ma… |
+| 935 | [Knight Dialer](935.md) | 🟡 Medium | 1m 13s | The problem asks us to count how many distinct phone numbers of len… |
+| 936 | [Stamping The Sequence](936.md) | 🔴 Hard | 1m 17s | This problem asks us to reconstruct a target string by repeatedly a… |
+| 937 | [Reorder Data in Log Files](937.md) | 🟡 Medium | 1m 21s | In this problem, we are given a list of log strings. Each log conta… |
+| 938 | [Range Sum of BST](938.md) | 🟢 Easy | 1m 4s | The problem gives us the root of a Binary Search Tree (BST) and two… |
+| 940 | [Distinct Subsequences II](940.md) | 🔴 Hard | 1m 3s | The problem asks us to count how many distinct non-empty subsequenc… |

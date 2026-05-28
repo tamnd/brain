@@ -49,6 +49,16 @@ draft: false
 | 637 | [Average of Levels in Binary Tree](637.md) | 🟢 Easy | 1m 10s | In this problem, we are given the root node of a binary tree, and w… |
 | 638 | [Shopping Offers](638.md) | 🟡 Medium | 34s | This problem asks us to find the minimum cost to buy a set of items… |
 | 639 | [Decode Ways II](639.md) | 🔴 Hard | 42s | The problem asks us to determine the number of ways an encoded stri… |
+| 640 | [Solve the Equation](640.md) | 🟡 Medium | 41s | The problem is asking us to solve a linear equation containing a si… |
+| 641 | [Design Circular Deque](641.md) | 🟡 Medium | 1m 7s | The problem asks us to design a circular double-ended queue, also c… |
+| 642 | [Design Search Autocomplete System](642.md) | 🔴 Hard | 1m 18s | The problem asks us to design an autocomplete system that behaves s… |
+| 644 | [Maximum Average Subarray II](644.md) | 🔴 Hard | 1m 5s | The problem asks us to find the maximum possible average value amon… |
+| 645 | [Set Mismatch](645.md) | 🟢 Easy | 59s | The problem describes a corrupted set of integers. Originally, the … |
+| 646 | [Maximum Length of Pair Chain](646.md) | 🟡 Medium | 1m 12s | The problem gives us an array of integer pairs, where each pair rep… |
+| 647 | [Palindromic Substrings](647.md) | 🟡 Medium | 1m | The problem asks us to count how many palindromic substrings exist … |
+| 648 | [Replace Words](648.md) | 🟡 Medium | 56s | The problem asks us to replace words in a sentence using a set of p… |
+| 649 | [Dota2 Senate](649.md) | 🟡 Medium | 1m 5s | The problem describes a turn-based voting process between two parti… |
+| 650 | [2 Keys Keyboard](650.md) | 🟡 Medium | 57s | The problem is asking for the minimum number of operations required… |
 | 651 | [4 Keys Keyboard](651.md) | 🟡 Medium | 57s | The problem gives us a keyboard with four operations: - Press A, wh… |
 | 652 | [Find Duplicate Subtrees](652.md) | 🟡 Medium | 1m 16s | The problem gives us the root of a binary tree and asks us to ident… |
 | 653 | [Two Sum IV - Input is a BST](653.md) | 🟢 Easy | 1m 1s | This problem gives us the root of a Binary Search Tree (BST) and an… |
@@ -61,3 +71,5 @@ draft: false
 | 660 | [Remove 9](660.md) | 🔴 Hard | 1m 16s | The problem defines a modified sequence of positive integers where … |
 | 661 | [Image Smoother](661.md) | 🟢 Easy | 45s | The problem is asking us to implement an image smoother, a filter t… |
 | 662 | [Maximum Width of Binary Tree](662.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum width among all levels o… |
+| 663 | [Equal Tree Partition](663.md) | 🟡 Medium | 1m 15s | The problem asks whether it is possible to split a binary tree into… |
+| 665 | [Non-decreasing Array](665.md) | 🟡 Medium | 37s | The problem asks whether it is possible to transform a given intege… |
