@@ -80,20 +80,20 @@ draft: false
 | 2067 | [Number of Equal Count Substrings](2067.md) | 🟡 Medium | 52s | The problem asks us to count the number of substrings in a string s… |
 | 2068 | [Check Whether Two Strings are Almost Equivalent](2068.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether two strings are "almost eq… |
 | 2069 | [Walking Robot Simulation II](2069.md) | 🟡 Medium | 53s | The problem describes a simulation of a robot moving on a rectangul… |
-| 2070 | [Most Beautiful Item for Each Query](2070.md) | 🟡 Medium | 1m 31s | The problem gives us a list of items, where each item has two value… |
-| 2071 | [Maximum Number of Tasks You Can Assign](2071.md) | 🔴 Hard | 58s | The problem asks us to determine the maximum number of tasks that c… |
-| 2072 | [The Winner University](2072.md) | 🟢 Easy | 56s | The problem describes a competition between two universities: New Y… |
-| 2073 | [Time Needed to Buy Tickets](2073.md) | 🟢 Easy | 50s | This problem is asking us to simulate a queue where each person buy… |
-| 2074 | [Reverse Nodes in Even Length Groups](2074.md) | 🟡 Medium | 58s | This problem asks us to manipulate a singly linked list by reversin… |
-| 2075 | [Decode the Slanted Ciphertext](2075.md) | 🟡 Medium | 1m 34s | This problem describes a custom string encoding process based on a … |
-| 2076 | [Process Restricted Friend Requests](2076.md) | 🔴 Hard | 1m 48s | This problem models a dynamic friendship network with restrictions … |
-| 2077 | [Paths in Maze That Lead to Same Room](2077.md) | 🟡 Medium | 1m 35s | This problem gives us an undirected graph representing a maze. Each… |
-| 2078 | [Two Furthest Houses With Different Colors](2078.md) | 🟢 Easy | 1m 12s | This problem asks us to find the maximum distance between any two h… |
-| 2079 | [Watering Plants](2079.md) | 🟡 Medium | 1m 24s | In this problem, we are given a row of plants where each plant requ… |
-| 2080 | [Range Frequency Queries](2080.md) | 🟡 Medium | 1m 29s | The problem asks us to design a data structure that can efficiently… |
-| 2081 | [Sum of k-Mirror Numbers](2081.md) | 🔴 Hard | 1m 51s | The problem asks us to find numbers that are palindromes in two dif… |
-| 2082 | [The Number of Rich Customers](2082.md) | 🟢 Easy | 55s | You included two different problems in one message, and the second … |
-| 2083 | [Substrings That Begin and End With the Same Letter](2083.md) | 🟡 Medium | 1m 16s | The problem asks us to count how many substrings of a given string … |
+| 2070 | [Most Beautiful Item for Each Query](2070.md) | 🟡 Medium | 1m 22s | The problem gives us a list of items, where each item has two prope… |
+| 2071 | [Maximum Number of Tasks You Can Assign](2071.md) | 🔴 Hard | 1m 23s | This problem asks us to maximize the number of tasks that can be co… |
+| 2072 | [The Winner University](2072.md) | 🟢 Easy | 1m 26s | The problem gives us two database tables, NewYork and California. E… |
+| 2073 | [Time Needed to Buy Tickets](2073.md) | 🟢 Easy | 53s | This problem describes a queue of n people, each wanting to buy a c… |
+| 2074 | [Reverse Nodes in Even Length Groups](2074.md) | 🟡 Medium | 1m 25s | This problem gives us a singly linked list and asks us to process t… |
+| 2075 | [Decode the Slanted Ciphertext](2075.md) | 🟡 Medium | 46s | The problem requires decoding a string that was encoded using a sla… |
+| 2076 | [Process Restricted Friend Requests](2076.md) | 🔴 Hard | 1m 33s | This problem models a social network with friendship restrictions. … |
+| 2077 | [Paths in Maze That Lead to Same Room](2077.md) | 🟡 Medium | 48s | The problem asks us to analyze a maze represented as an undirected … |
+| 2078 | [Two Furthest Houses With Different Colors](2078.md) | 🟢 Easy | 1m | The problem is asking us to find the maximum distance between two h… |
+| 2079 | [Watering Plants](2079.md) | 🟡 Medium | 1m 2s | This problem asks us to simulate watering a row of plants with a wa… |
+| 2080 | [Range Frequency Queries](2080.md) | 🟡 Medium | 1m 25s | The problem asks us to design a data structure that can efficiently… |
+| 2081 | [Sum of k-Mirror Numbers](2081.md) | 🔴 Hard | 46s | The problem asks us to find the sum of the n smallest k-mirror numb… |
+| 2082 | [The Number of Rich Customers](2082.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Store. Each row in the … |
+| 2083 | [Substrings That Begin and End With the Same Letter](2083.md) | 🟡 Medium | 42s | The problem asks us to count all substrings in a given string s tha… |
 | 2084 | [Drop Type 1 Orders for Customers With Type 0 Orders](2084.md) | 🟡 Medium | 53s | This problem involves filtering orders from a database table accord… |
 | 2085 | [Count Common Words With One Occurrence](2085.md) | 🟢 Easy | 1m 23s | The problem gives us two arrays of strings, words1 and words2. We n… |
 | 2086 | [Minimum Number of Food Buckets to Feed the Hamsters](2086.md) | 🟡 Medium | 55s | The problem requires us to place food buckets optimally in a linear… |
