@@ -79,3 +79,11 @@ draft: false
 | 2580 | [Count Ways to Group Overlapping Ranges](2580.md) | 🟡 Medium | 49s | The problem asks us to determine the number of ways to split a coll… |
 | 2583 | [Kth Largest Sum in a Binary Tree](2583.md) | 🟡 Medium | 2m 7s | Perfect! I just need a quick clarification before I craft the full … |
 | 2584 | [Split the Array to Make Coprime Products](2584.md) | 🔴 Hard | 43s | The problem asks us to split an array nums at some index i such tha… |
+| 2585 | [Number of Ways to Earn Points](2585.md) | 🔴 Hard | 3m 9s | The problem gives us a target score and several question types. Eac… |
+| 2586 | [Count the Number of Vowel Strings in Range](2586.md) | 🟢 Easy | 1m 6s | The problem gives us a 0-indexed array of strings called words, alo… |
+| 2588 | [Count the Number of Beautiful Subarrays](2588.md) | 🟡 Medium | 1m 19s | The problem gives us an array nums, and defines a special operation… |
+| 2590 | [Design a Todo List](2590.md) | 🟡 Medium | 1m 17s | This problem asks us to design a small task management system that … |
+| 2591 | [Distribute Money to Maximum Children](2591.md) | 🟢 Easy | 1m 8s | This problem asks us to distribute a fixed amount of money among a … |
+| 2594 | [Minimum Time to Repair Cars](2594.md) | 🟡 Medium | 1m 21s | This problem gives us a list of mechanics, where each mechanic has … |
+| 2596 | [Check Knight Tour Configuration](2596.md) | 🟡 Medium | 1m 16s | This problem asks us to verify whether a given matrix represents a … |
+| 2597 | [The Number of Beautiful Subsets](2597.md) | 🟡 Medium | 47s | The problem asks us to count the number of non-empty subsets of a g… |

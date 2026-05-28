@@ -36,10 +36,10 @@ draft: false
 | 2323 | [Find Minimum Time to Finish All Jobs II](2323.md) | 🟡 Medium | 1m 1s | This problem asks us to assign jobs to workers in a way that minimi… |
 | 2324 | [Product Sales Analysis IV](2324.md) | 🟡 Medium | 1m 29s | This problem gives us two database tables, Sales and Product. The S… |
 | 2325 | [Decode the Message](2325.md) | 🟢 Easy | 49s | This problem is asking us to decode a message using a substitution … |
-| 2326 | [Spiral Matrix IV](2326.md) | 🟡 Medium | 1m 19s | This problem combines two common data structures and traversal patt… |
-| 2327 | [Number of People Aware of a Secret](2327.md) | 🟡 Medium | 1m 27s | The problem models how a secret spreads through a population over a… |
-| 2328 | [Number of Increasing Paths in a Grid](2328.md) | 🔴 Hard | 58s | This problem asks us to count all strictly increasing paths in a 2D… |
-| 2329 | [Product Sales Analysis V](2329.md) | 🟢 Easy | 53s | This problem asks us to compute the total spending of each user bas… |
+| 2326 | [Spiral Matrix IV](2326.md) | 🟡 Medium | 1m 12s | The problem gives us a linked list and asks us to place its values … |
+| 2327 | [Number of People Aware of a Secret](2327.md) | 🟡 Medium | 1m | The problem describes how a secret spreads over time. On day 1, exa… |
+| 2328 | [Number of Increasing Paths in a Grid](2328.md) | 🔴 Hard | 1m 10s | In this problem, we are given a two dimensional matrix called grid.… |
+| 2329 | [Product Sales Analysis V](2329.md) | 🟢 Easy | 1m 3s | This problem asks us to calculate how much money each user has spen… |
 | 2330 | [Valid Palindrome IV](2330.md) | 🟡 Medium | 1m 13s | The problem gives us a string s containing only lowercase English l… |
 | 2331 | [Evaluate Boolean Binary Tree](2331.md) | 🟢 Easy | 51s | The problem presents a full binary tree in which leaf nodes represe… |
 | 2332 | [The Latest Time to Catch a Bus](2332.md) | 🟡 Medium | 1m 20s | This problem asks us to determine the latest possible arrival time … |
