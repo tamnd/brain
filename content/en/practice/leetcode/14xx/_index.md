@@ -79,8 +79,20 @@ draft: false
 | 1466 | [Reorder Routes to Make All Paths Lead to the City Zero](1466.md) | 🟡 Medium | 1m 1s | This problem involves a network of n cities connected by n - 1 road… |
 | 1467 | [Probability of a Two Boxes Having The Same Number of Distinct Balls](1467.md) | 🔴 Hard | 1m 24s | The problem gives us several colors of balls, where balls[i] repres… |
 | 1468 | [Calculate Salaries](1468.md) | 🟡 Medium | 1m | This problem asks us to compute the post tax salary for every emplo… |
-| 1469 | [Find All The Lonely Nodes](1469.md) | 🟢 Easy | 1m | The problem asks us to identify lonely nodes in a binary tree. A lo… |
+| 1469 | [Find All The Lonely Nodes](1469.md) | 🟢 Easy | 1m 17s | This problem asks us to traverse a binary tree and identify every n… |
 | 1470 | [Shuffle the Array](1470.md) | 🟢 Easy | 1m 18s | The problem gives us an array nums with exactly 2n elements. The st… |
-| 1471 | [The k Strongest Values in an Array](1471.md) | 🟡 Medium | 1m 24s | The problem asks us to return the k strongest values from an intege… |
+| 1471 | [The k Strongest Values in an Array](1471.md) | 🟡 Medium | 1m 16s | This problem asks us to find the k strongest values in an array acc… |
 | 1472 | [Design Browser History](1472.md) | 🟡 Medium | 54s | The problem is asking us to simulate a single-tab browser with a hi… |
 | 1473 | [Paint House III](1473.md) | 🔴 Hard | 1m | The problem asks us to paint a row of m houses with n possible colo… |
+| 1474 | [Delete N Nodes After M Nodes of a Linked List](1474.md) | 🟢 Easy | 1m 32s | The problem gives us the head of a singly linked list and two integ… |
+| 1475 | [Final Prices With a Special Discount in a Shop](1475.md) | 🟢 Easy | 1m 40s | The problem gives us an array called prices, where each element rep… |
+| 1476 | [Subrectangle Queries](1476.md) | 🟡 Medium | 1m 27s | The problem asks us to design a mutable 2D matrix data structure th… |
+| 1477 | [Find Two Non-overlapping Sub-arrays Each With Target Sum](1477.md) | 🟡 Medium | 53s | The problem asks us to find two non-overlapping sub-arrays in a giv… |
+| 1478 | [Allocate Mailboxes](1478.md) | 🔴 Hard | 58s | The problem asks us to allocate k mailboxes along a street in such … |
+| 1479 | [Sales by Day of the Week](1479.md) | 🔴 Hard | 1m 48s | This problem asks us to generate a pivot-style sales report from tw… |
+| 1480 | [Running Sum of 1d Array](1480.md) | 🟢 Easy | 1m 7s | The problem asks us to compute the running sum of a one dimensional… |
+| 1481 | [Least Number of Unique Integers after K Removals](1481.md) | 🟡 Medium | 58s | This problem asks us to minimize the number of unique integers in a… |
+| 1482 | [Minimum Number of Days to Make m Bouquets](1482.md) | 🟡 Medium | 1m 34s | The problem gives us an array bloomDay where bloomDay[i] represents… |
+| 1484 | [Group Sold Products By The Date](1484.md) | 🟢 Easy | 1m 29s | The problem gives us a database table named Activities with two col… |
+| 1485 | [Clone Binary Tree With Random Pointer](1485.md) | 🟡 Medium | 1m 30s | The problem asks us to create a deep copy of a binary tree where ea… |
+| 1486 | [XOR Operation in an Array](1486.md) | 🟢 Easy | 1m 6s | In this problem, we are given two integers, n and start. We must co… |
