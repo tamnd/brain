@@ -65,4 +65,9 @@ draft: false
 | 1861 | [Rotating the Box](1861.md) | 🟡 Medium | 2m 12s | Please provide the specific problem number/title you want the detai… |
 | 1862 | [Sum of Floored Pairs](1862.md) | 🔴 Hard | 59s | The problem asks us to calculate the sum of the integer division re… |
 | 1864 | [Minimum Number of Swaps to Make the Binary String Alternating](1864.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s that contains only '0' and '… |
+| 1865 | [Finding Pairs With a Certain Sum](1865.md) | 🟡 Medium | 1m 9s | This problem asks us to design a mutable data structure that suppor… |
+| 1866 | [Number of Ways to Rearrange Sticks With K Sticks Visible](1866.md) | 🔴 Hard | 1m 17s | The problem gives us n sticks with unique lengths from 1 to n. We m… |
+| 1868 | [Product of Two Run-Length Encoded Arrays](1868.md) | 🟡 Medium | 1m 28s | This problem asks us to multiply two arrays that are already stored… |
+| 1869 | [Longer Contiguous Segments of Ones than Zeros](1869.md) | 🟢 Easy | 1m 17s | The problem gives us a binary string s, which means the string cont… |
+| 1870 | [Minimum Speed to Arrive on Time](1870.md) | 🟡 Medium | 2m 22s | The problem asks us to find the minimum constant speed (in kilomete… |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
