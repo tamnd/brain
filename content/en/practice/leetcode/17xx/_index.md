@@ -21,3 +21,9 @@ draft: false
 | 1708 | [Largest Subarray Length K](1708.md) | 🟢 Easy | 1m 36s | The problem asks us to find the lexicographically largest contiguou… |
 | 1709 | [Biggest Window Between Visits](1709.md) | 🟡 Medium | 1m 27s | The UserVisits table stores records of when users visited a retaile… |
 | 1710 | [Maximum Units on a Truck](1710.md) | 🟢 Easy | 1m 40s | The problem gives us several types of boxes, where each box type co… |
+| 1711 | [Count Good Meals](1711.md) | 🟡 Medium | 2m 52s | The problem asks us to count the number of good meals that can be f… |
+| 1713 | [Minimum Operations to Make a Subsequence](1713.md) | 🔴 Hard | 1m 39s | The problem gives us two arrays, target and arr. The target array c… |
+| 1714 | [Sum Of Special Evenly-Spaced Elements In Array](1714.md) | 🔴 Hard | 3m 29s | The problem requires calculating sums of specific subsets of an int… |
+| 1715 | [Count Apples and Oranges](1715.md) | 🟡 Medium | 3m 40s | This problem asks us to compute the total number of apples and oran… |
+| 1716 | [Calculate Money in Leetcode Bank](1716.md) | 🟢 Easy | 1m 17s | The problem describes a repeating weekly saving pattern. Hercy depo… |
+| 1717 | [Maximum Score From Removing Substrings](1717.md) | 🟡 Medium | 1m 32s | The problem gives us a string s and two scoring rules: - Removing t… |
