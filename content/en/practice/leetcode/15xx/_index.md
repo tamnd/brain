@@ -102,6 +102,11 @@ draft: false
 | 1589 | [Maximum Sum Obtained of Any Permutation](1589.md) | 🟡 Medium | 1m 30s | The problem gives us an integer array nums and a collection of rang… |
 | 1590 | [Make Sum Divisible by P](1590.md) | 🟡 Medium | 55s | This problem asks us to determine the smallest contiguous subarray … |
 | 1591 | [Strange Printer II](1591.md) | 🔴 Hard | 56s | The problem describes a "strange printer" that can only print solid… |
-| 1592 | [Rearrange Spaces Between Words](1592.md) | 🟢 Easy | 1m 16s | This problem gives us a string that contains lowercase English word… |
-| 1593 | [Split a String Into the Max Number of Unique Substrings](1593.md) | 🟡 Medium | 51s | The problem asks us to split a given string s into the maximum numb… |
-| 1594 | [Maximum Non Negative Product in a Matrix](1594.md) | 🟡 Medium | 1m 42s | The problem gives us an m x n matrix called grid, where each cell c… |
+| 1592 | [Rearrange Spaces Between Words](1592.md) | 🟢 Easy | 48s | The problem requires rearranging spaces in a given string text so t… |
+| 1593 | [Split a String Into the Max Number of Unique Substrings](1593.md) | 🟡 Medium | 1m 29s | This problem asks us to split a string into the largest possible nu… |
+| 1594 | [Maximum Non Negative Product in a Matrix](1594.md) | 🟡 Medium | 1m 13s | The problem asks us to navigate a m x n integer matrix grid from th… |
+| 1595 | [Minimum Cost to Connect Two Groups of Points](1595.md) | 🔴 Hard | 1m 14s | The problem is asking us to find the minimum cost to connect two gr… |
+| 1596 | [The Most Frequently Ordered Products for Each Customer](1596.md) | 🟡 Medium | 1m 6s | The problem requires us to find the most frequently ordered product… |
+| 1597 | [Build Binary Expression Tree From Infix Expression](1597.md) | 🔴 Hard | 1m 40s | The problem asks us to construct a binary expression tree from a va… |
+| 1598 | [Crawler Log Folder](1598.md) | 🟢 Easy | 3m 42s | In this problem, we are simulating navigation inside a file system.… |
+| 1599 | [Maximum Profit of Operating a Centennial Wheel](1599.md) | 🟡 Medium | 1m 48s | This problem asks us to simulate the operation of a Centennial Whee… |
