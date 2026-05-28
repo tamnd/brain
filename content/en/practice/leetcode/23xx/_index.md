@@ -57,10 +57,10 @@ draft: false
 | 2344 | [Minimum Deletions to Make Array Divisible](2344.md) | 🔴 Hard | 1m 18s | The problem gives us two arrays of positive integers, nums and nums… |
 | 2345 | [Finding the Number of Visible Mountains](2345.md) | 🟡 Medium | 1m 20s | Each mountain is defined by a peak (x, y). Because the mountain has… |
 | 2346 | [Compute the Rank as a Percentage](2346.md) | 🟡 Medium | 1m 19s | The problem gives us a database table named Students. Each row cont… |
-| 2347 | [Best Poker Hand](2347.md) | 🟢 Easy | 1m 21s | The problem gives us exactly five poker cards. Each card has two pr… |
-| 2348 | [Number of Zero-Filled Subarrays](2348.md) | 🟡 Medium | 54s | The problem asks us to count all subarrays of a given integer array… |
-| 2349 | [Design a Number Container System](2349.md) | 🟡 Medium | 1m 26s | This problem asks us to design a data structure that supports two o… |
-| 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 48s | The problem asks us to find the length of the shortest sequence of … |
+| 2347 | [Best Poker Hand](2347.md) | 🟢 Easy | 1m 6s | The problem gives us exactly five playing cards. Each card is repre… |
+| 2348 | [Number of Zero-Filled Subarrays](2348.md) | 🟡 Medium | 33s | The problem asks us to count the number of contiguous subarrays in … |
+| 2349 | [Design a Number Container System](2349.md) | 🟡 Medium | 1m 10s | The problem asks us to design a data structure that supports two op… |
+| 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 56s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 2351 | [First Letter to Appear Twice](2351.md) | 🟢 Easy | 55s | The problem asks us to find the first letter in a string that appea… |
 | 2352 | [Equal Row and Column Pairs](2352.md) | 🟡 Medium | 1m 28s | In this problem, we are given an n x n matrix called grid. Each row… |
 | 2353 | [Design a Food Rating System](2353.md) | 🟡 Medium | 1m 38s | This problem asks us to design a data structure that supports two o… |

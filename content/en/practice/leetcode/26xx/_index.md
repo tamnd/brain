@@ -23,3 +23,10 @@ draft: false
 | 2616 | [Minimize the Maximum Difference of Pairs](2616.md) | 🟡 Medium | 1m 13s | The problem asks us to select exactly p disjoint pairs from the arr… |
 | 2617 | [Minimum Number of Visited Cells in a Grid](2617.md) | 🔴 Hard | 1m 23s | The problem gives us a 2D grid where each cell contains a non-negat… |
 | 2620 | [Counter](2620.md) | 🟢 Easy | 36s | The problem is asking us to implement a counter generator that star… |
+| 2622 | [Cache With Time Limit](2622.md) | 🟡 Medium | 1m 9s | This problem asks us to design a cache system where each key-value … |
+| 2623 | [Memoize](2623.md) | 🟡 Medium | 53s | This problem asks us to create a memoized version of a function. Me… |
+| 2626 | [Array Reduce Transformation](2626.md) | 🟢 Easy | 40s | The problem is asking us to simulate the behavior of a "reduce" fun… |
+| 2628 | [JSON Deep Equal](2628.md) | 🟡 Medium | 42s | The problem is asking us to determine whether two JSON-parsed value… |
+| 2629 | [Function Composition](2629.md) | 🟢 Easy | 1m 21s | The problem is asking us to implement a function composition operat… |
+| 2631 | [Group By](2631.md) | 🟡 Medium | 1m 27s | This problem asks us to extend JavaScript arrays with a custom meth… |
+| 2633 | [Convert Object to JSON String](2633.md) | 🟡 Medium | 44s | This problem asks us to convert a given JavaScript-like object into… |
