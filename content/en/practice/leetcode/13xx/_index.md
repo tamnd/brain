@@ -44,10 +44,12 @@ draft: false
 | 1331 | [Rank Transform of an Array](1331.md) | 🟢 Easy | 1m 11s | The problem asks us to replace every number in the input array with… |
 | 1332 | [Remove Palindromic Subsequences](1332.md) | 🟢 Easy | 1m 11s | The problem gives us a string s that contains only the characters '… |
 | 1333 | [Filter Restaurants by Vegan-Friendly, Price and Distance](1333.md) | 🟡 Medium | 1m 3s | The problem is asking us to filter and sort a list of restaurants b… |
-| 1334 | [Find the City With the Smallest Number of Neighbors at a Threshold Distance](1334.md) | 🟡 Medium | 52s | The problem asks us to find a city in a weighted, undirected graph … |
-| 1337 | [The K Weakest Rows in a Matrix](1337.md) | 🟢 Easy | 1m 24s | The problem gives us a binary matrix where each row represents a gr… |
-| 1338 | [Reduce Array Size to The Half](1338.md) | 🟡 Medium | 54s | The problem asks us to reduce an array to at most half its size by … |
-| 1339 | [Maximum Product of Splitted Binary Tree](1339.md) | 🟡 Medium | 45s | The problem asks us to maximize the product of sums obtained by spl… |
+| 1334 | [Find the City With the Smallest Number of Neighbors at a Threshold Distance](1334.md) | 🟡 Medium | 1m 46s | Edit This problem gives us a weighted, undirected graph where each … |
+| 1335 | [Minimum Difficulty of a Job Schedule](1335.md) | 🔴 Hard | 1m 28s | The problem gives us an array jobDifficulty, where each element rep… |
+| 1337 | [The K Weakest Rows in a Matrix](1337.md) | 🟢 Easy | 59s | Here is a comprehensive, detailed solution guide for LeetCode 1337 … |
+| 1338 | [Reduce Array Size to The Half](1338.md) | 🟡 Medium | 1m 27s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 1339 | [Maximum Product of Splitted Binary Tree](1339.md) | 🟡 Medium | 2m 22s | That is a long, structured technical document with multiple require… |
+| 1340 | [Jump Game V](1340.md) | 🔴 Hard | 47s | Here is a comprehensive solution guide for LeetCode 1340 following … |
 | 1341 | [Movie Rating](1341.md) | 🟡 Medium | 1m 8s | This problem works with three relational database tables: Movies, U… |
 | 1342 | [Number of Steps to Reduce a Number to Zero](1342.md) | 🟢 Easy | 1m 13s | The problem gives us a non-negative integer num and asks us to comp… |
 | 1343 | [Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold](1343.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array arr, along with two integers,… |
@@ -69,3 +71,11 @@ draft: false
 | 1361 | [Validate Binary Tree Nodes](1361.md) | 🟡 Medium | 1m 26s | The problem gives us n nodes labeled from 0 to n - 1. For every nod… |
 | 1362 | [Closest Divisors](1362.md) | 🟡 Medium | 1m 17s | The problem gives us a positive integer num and asks us to find two… |
 | 1363 | [Largest Multiple of Three](1363.md) | 🔴 Hard | 1m 27s | The problem gives us an array of digits, where each element is an i… |
+| 1366 | [Rank Teams by Votes](1366.md) | 🟡 Medium | 1m 31s | The problem gives us a list of votes, where each vote is a string r… |
+| 1367 | [Linked List in Binary Tree](1367.md) | 🟡 Medium | 1m 21s | This problem asks us to determine whether a linked list appears as … |
+| 1368 | [Minimum Cost to Make at Least One Valid Path in a Grid](1368.md) | 🔴 Hard | 53s | This problem asks us to find the minimum cost to make at least one … |
+| 1369 | [Get the Second Most Recent Activity](1369.md) | 🔴 Hard | 55s | The problem asks us to extract the second most recent activity of e… |
+| 1370 | [Increasing Decreasing String](1370.md) | 🟢 Easy | 1m 17s | The problem asks us to repeatedly build a new string by alternating… |
+| 1371 | [Find the Longest Substring Containing Vowels in Even Counts](1371.md) | 🟡 Medium | 1m 19s | The problem asks us to find the length of the longest substring in … |
+| 1373 | [Maximum Sum BST in Binary Tree](1373.md) | 🔴 Hard | 1m 31s | This problem asks us to examine every possible subtree inside a bin… |
+| 1374 | [Generate a String With Characters That Have Odd Counts](1374.md) | 🟢 Easy | 1m 8s | The problem asks us to construct a string of length n using only lo… |
