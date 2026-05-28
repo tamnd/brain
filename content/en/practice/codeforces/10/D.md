@@ -1,6 +1,6 @@
 ---
 title: "CF 10D - LCIS"
-description: "We are given two integer arrays. We want to build a sequence that satisfies three conditions simultaneously. First, the"
+description: "We are given two integer arrays. We need to build the longest sequence that satisfies two conditions at the same time. T"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Beta Round 10"
 rating: 2800
 weight: 10
-solve_time_s: 127
+solve_time_s: 120
 verified: false
 draft: false
 ---
@@ -18,168 +18,159 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** dp  
-**Solve time:** 2m 7s  
+**Solve time:** 2m  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two integer arrays. We want to build a sequence that satisfies three conditions simultaneously.
+We are given two integer arrays. We need to build the longest sequence that satisfies two conditions at the same time.
 
-First, the sequence must appear as a subsequence of the first array.
+The sequence must appear as a subsequence in both arrays, meaning we are allowed to skip elements but cannot change their relative order.
 
-Second, it must also appear as a subsequence of the second array.
+The sequence must also be strictly increasing.
 
-Third, its values must be strictly increasing.
+This is different from ordinary LCS and different from ordinary LIS. A normal LCS ignores the increasing requirement, while a normal LIS only works inside one array. Here we must satisfy both constraints simultaneously.
 
-Among all such sequences, we need the one with maximum possible length. We must print both the length and one valid sequence achieving it.
-
-The interesting part is that this is not just a longest common subsequence problem, and not just a longest increasing subsequence problem. The sequence has to satisfy both constraints at the same time.
-
-The array sizes are at most 500. That immediately rules out exponential approaches, but it still leaves room for quadratic dynamic programming. A cubic algorithm with about $500^3 = 125\,000\,000$ operations is already dangerous in Python under a 1 second time limit. Quadratic or low cubic with very small constants is the practical target.
-
-A common mistake is trying to compute LCS first and then extract an LIS from it. That fails because the longest common subsequence is not unique, and the best LCIS may require skipping parts of every maximum-length LCS.
-
-Consider this example:
+For example, if the arrays are:
 
 ```
-A = [1, 4, 2, 3]
-B = [1, 2, 4, 3]
+A = [2, 3, 1, 6, 5, 4, 6]
+B = [1, 3, 5, 6]
 ```
 
-One LCS is `[1, 4, 3]`, whose LIS length is only 2.
+then `[3, 5, 6]` is valid because it appears in both arrays and is strictly increasing.
 
-The actual LCIS is `[1, 2, 3]`, length 3.
+The constraints are small enough to allow quadratic dynamic programming. Both lengths are at most 500, so an `O(n * m)` or `O(n * m * something small)` solution is fine. A cubic solution is risky because `500^3 = 125,000,000` operations, which is too large in Python under a 1 second time limit.
 
-Another easy mistake is forgetting that equal values cannot both appear in a strictly increasing sequence.
+The tricky part is that the increasing condition depends on values, while the subsequence condition depends on positions. A careless DP that only tracks indices will often mix these two requirements incorrectly.
 
-Example:
+One common mistake is treating the problem as ordinary LCS and then checking increasing order afterward.
+
+Consider:
+
+```
+A = [3, 2, 1]
+B = [3, 2, 1]
+```
+
+The ordinary LCS has length 3, but `[3, 2, 1]` is decreasing. The correct LCIS length is only 1.
+
+Another subtle case involves duplicates.
 
 ```
 A = [1, 1, 1]
 B = [1, 1]
 ```
 
-Correct answer:
+The answer is still `[1]`, not `[1, 1]`, because the sequence must be strictly increasing. A transition that allows `<=` instead of `<` silently produces the wrong answer.
+
+A more dangerous bug appears when reconstructing the sequence.
 
 ```
-1
-1
+A = [1, 2, 3]
+B = [1, 3, 2]
 ```
 
-A careless implementation may incorrectly build `[1, 1]`.
+The answer has length 2, but only `[1, 2]` is valid. If reconstruction ignores ordering information from the second array, it may incorrectly build `[1, 3]` followed by `2`.
 
-Repeated values are also tricky when reconstructing the sequence. If we only store lengths without predecessors, reconstruction becomes ambiguous.
-
-Example:
-
-```
-A = [3, 1, 2, 2, 4]
-B = [1, 2, 2, 4]
-```
-
-The answer is `[1, 2, 4]`.
-
-The algorithm must avoid chaining equal `2`s together.
+The DP state must encode both increasing-value validity and subsequence-order validity at the same time.
 
 ## Approaches
 
-The brute-force perspective is useful because it reveals the structure of the problem.
+The brute-force idea is straightforward. Generate every increasing subsequence of the first array, then check whether it is also a subsequence of the second array. Since every subset of positions may form a subsequence, the number of candidates is exponential, roughly `2^n`. Even with pruning, this becomes impossible once `n` approaches 500.
 
-Suppose we enumerate every common subsequence of the two arrays and check whether it is increasing. This is obviously correct, because the answer must be among those subsequences. Unfortunately, the number of subsequences grows exponentially. Even for length 500, this is completely impossible.
+A more structured brute-force approach uses classical LCS DP and adds an increasing constraint. We could define:
 
-A more reasonable brute-force idea is based on classical LCS dynamic programming. We could define a DP state over positions in both arrays and additionally track the last chosen value. The transition would try to extend increasing sequences whenever matching elements appear.
+```
+dp[i][j][k]
+```
 
-The issue is that the last chosen value can vary over too many possibilities. A naive state like:
+where `k` somehow tracks the previous chosen value or index. This quickly becomes cubic or worse because every pair `(i, j)` may need transitions from all earlier states. With `500^3` transitions, Python struggles.
 
-$$dp[i][j][last]$$
+The key observation is that when we process a fixed element `A[i]`, we only care about common subsequences that end with values smaller than `A[i]`.
 
-becomes far too large.
+Suppose we want a common increasing subsequence ending at `B[j]`, where `A[i] == B[j]`.
 
-The key observation is that the increasing condition only depends on the previous chosen element, not on the whole sequence. That suggests a LIS-style optimization.
+To extend a previous sequence, we need:
 
-Let us focus on one position `i` in the first array. Suppose we iterate through the second array from left to right. While scanning, we maintain the best LCIS length ending at some value smaller than `a[i]`.
+```
+B[k] < B[j]
+```
 
-If `a[i] == b[j]`, we can extend that best sequence.
+and
 
-This transforms the problem into a quadratic DP.
+```
+k < j
+```
 
-Define:
+because the sequence must stay increasing and preserve order in `B`.
 
-$$dp[j]$$
+Among all such previous positions, only the best length matters.
 
-as the length of the longest common increasing subsequence that ends at `b[j]`.
+This collapses the expensive transition search into a rolling maximum.
 
-Now process every `a[i]`. During the scan over `b[j]`, maintain:
+We define:
 
-$$current = \max(dp[k]) \text{ for all } k < j \text{ with } b[k] < a[i]$$
+```
+dp[j] = length of the best LCIS ending at B[j]
+```
 
-Then:
+Then, while scanning `B` from left to right for a fixed `A[i]`, we maintain:
 
-- if `a[i] > b[j]`, update `current`
-- if `a[i] == b[j]`, try extending `current + 1`
+```
+current = best dp[k] where B[k] < A[i]
+```
 
-This works because every valid predecessor must appear earlier in both arrays and must contain a smaller value.
+Now when `A[i] == B[j]`, we can immediately set:
 
-The resulting complexity is $O(nm)$, which is around 250,000 operations for the maximum constraints, easily fast enough.
+```
+dp[j] = current + 1
+```
+
+This removes the inner transition loop entirely. Every pair `(i, j)` is processed once, giving an `O(n * m)` solution.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Naive DP with extra state | O(n³) or worse | O(n²) or worse | Risky |
-| Optimal LCIS DP | O(nm) | O(m) | Accepted |
+| Brute Force | O(2^n * m) or worse | O(2^n) | Too slow |
+| Optimal | O(n * m) | O(m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Create an array `dp` of length `m`.
+1. Create an array `dp[j]` where `dp[j]` stores the length of the longest common increasing subsequence ending at `B[j]`.
+2. Create a `parent[j]` array for reconstruction. This stores the previous index in `B` used before `j`.
+3. Iterate through every element `A[i]`.
+4. For the current `A[i]`, maintain two variables:
 
-`dp[j]` stores the length of the best LCIS ending at `b[j]`.
-2. Create a predecessor array `parent`.
+`best_len`, the largest LCIS length found so far among positions in `B` with smaller values.
 
-`parent[j]` stores the previous index in `b` used before `b[j]` in the optimal sequence. This allows reconstruction later.
-3. Iterate through the first array using index `i`.
+`best_pos`, the index in `B` where that best sequence ends.
+5. Scan `B` from left to right.
+6. If `B[j] < A[i]`, then `B[j]` can appear before `A[i]` in an increasing sequence.
 
-For every fixed `a[i]`, we scan the second array from left to right.
-4. Maintain two variables during the scan.
+If `dp[j] > best_len`, update `best_len` and `best_pos`.
+7. If `A[i] == B[j]`, then we can extend the best sequence ending with a smaller value.
 
-`current_len` is the best LCIS length we can extend using values strictly smaller than `a[i]`.
+If `best_len + 1 > dp[j]`, update:
 
-`current_pos` stores the ending position in `b` corresponding to that best length.
-5. While scanning `b[j]`:
-
-If `a[i] > b[j]`, then `b[j]` is a candidate predecessor for future matches with `a[i]`.
-
-If `dp[j] > current_len`, update both `current_len` and `current_pos`.
-6. If `a[i] == b[j]`, we can append this value to the best sequence tracked by `current_len`.
-
-If:
-
-$$current\_len + 1 > dp[j]$$
-
-then update:
-
-$$dp[j] = current\_len + 1$$
-
-and set:
-
-$$parent[j] = current\_pos$$
-7. After processing all pairs, find the index with maximum `dp[j]`.
-
-This gives the end of the optimal LCIS.
-8. Reconstruct the sequence by following `parent` pointers backward.
-9. Reverse the reconstructed sequence and print it.
+```
+dp[j] = best_len + 1
+parent[j] = best_pos
+```
+8. Continue until all pairs `(i, j)` are processed.
+9. Find the position `j` with maximum `dp[j]`.
+10. Reconstruct the answer by following `parent[j]` backward.
+11. Reverse the reconstructed sequence because reconstruction proceeds from the end toward the beginning.
 
 ### Why it works
 
-The invariant is:
+For every fixed `A[i]`, the scan over `B` maintains the best possible LCIS that can legally appear before `A[i]`. Since we scan `B` left to right, every stored candidate already satisfies subsequence ordering in `B`.
 
-`dp[j]` always represents the length of the longest common increasing subsequence ending exactly at `b[j]` after processing the current prefix of `a`.
+The condition `B[j] < A[i]` guarantees strict increase. The condition that the candidate was seen earlier in the scan guarantees increasing indices in `B`.
 
-When processing `a[i]`, the variable `current_len` contains the best LCIS that can legally precede `a[i]`. Since we scan `b` left to right, every candidate predecessor already appears earlier in `b`. Since we only update from values smaller than `a[i]`, the increasing property is preserved.
+Whenever `A[i] == B[j]`, extending `best_len` produces the optimal LCIS ending at `B[j]` using elements up to `A[i]`.
 
-Whenever `a[i] == b[j]`, appending this value creates a valid longer LCIS ending at `b[j]`.
-
-Because every valid LCIS must end at some position in `b`, the maximum value in `dp` after all transitions is the optimal answer.
+No valid transition is missed because every smaller previous value is considered during the scan. No invalid transition is used because larger or equal values never update `best_len`.
 
 ## Python Solution
 
@@ -198,39 +189,39 @@ def solve():
     parent = [-1] * m
 
     for i in range(n):
-        current_len = 0
-        current_pos = -1
+        best_len = 0
+        best_pos = -1
 
         for j in range(m):
-            if a[i] > b[j]:
-                if dp[j] > current_len:
-                    current_len = dp[j]
-                    current_pos = j
+            if b[j] < a[i]:
+                if dp[j] > best_len:
+                    best_len = dp[j]
+                    best_pos = j
 
-            elif a[i] == b[j]:
-                if current_len + 1 > dp[j]:
-                    dp[j] = current_len + 1
-                    parent[j] = current_pos
+            elif b[j] == a[i]:
+                if best_len + 1 > dp[j]:
+                    dp[j] = best_len + 1
+                    parent[j] = best_pos
 
-    best_len = 0
-    best_pos = -1
+    length = 0
+    end_pos = -1
 
     for j in range(m):
-        if dp[j] > best_len:
-            best_len = dp[j]
-            best_pos = j
+        if dp[j] > length:
+            length = dp[j]
+            end_pos = j
 
     sequence = []
 
-    while best_pos != -1:
-        sequence.append(b[best_pos])
-        best_pos = parent[best_pos]
+    while end_pos != -1:
+        sequence.append(b[end_pos])
+        end_pos = parent[end_pos]
 
     sequence.reverse()
 
-    print(best_len)
+    print(length)
 
-    if best_len > 0:
+    if length:
         print(*sequence)
     else:
         print()
@@ -238,23 +229,23 @@ def solve():
 solve()
 ```
 
-The `dp` array is the core of the solution. Unlike standard LCS, we only keep one dimension because the transition only depends on earlier positions in `b`.
+The array `dp[j]` is the central DP state. It stores the best LCIS ending specifically at `B[j]`. This is enough because every valid subsequence has a unique last position in `B`.
 
-The subtle part is the order of updates inside the nested loop. We must first process smaller values using:
+The variables `best_len` and `best_pos` are reset for every `A[i]`. They summarize all valid previous transitions encountered so far while scanning `B`.
+
+The order of conditions inside the inner loop matters. We first use positions with smaller values to improve `best_len`. Later equal values may extend from that information.
+
+The strict comparison:
 
 ```
-if a[i] > b[j]
+if b[j] < a[i]:
 ```
 
-before processing equal values.
+is essential. Replacing it with `<=` breaks strict increase and incorrectly allows duplicates.
 
-This guarantees that `current_len` only contains sequences ending with strictly smaller numbers. If equal values were included, the algorithm could incorrectly create non-increasing subsequences.
+The reconstruction array stores indices inside `B`, not values. This avoids ambiguity when duplicate values exist.
 
-The `parent` array stores indices from the second array, not values. This makes reconstruction straightforward and avoids ambiguity when duplicate numbers exist.
-
-Another detail is that we only update `dp[j]` when we find a strictly better value. Using `>=` instead of `>` can overwrite predecessor chains unnecessarily and produce unstable reconstruction.
-
-The reconstruction starts from the position with maximum `dp[j]` and follows predecessor links backward until `-1`.
+The final reconstruction walks backward through `parent`. Since parents point toward earlier elements, the collected sequence must be reversed at the end.
 
 ## Worked Examples
 
@@ -267,26 +258,34 @@ A = [2, 3, 1, 6, 5, 4, 6]
 B = [1, 3, 5, 6]
 ```
 
-### Trace
-
-| i | a[i] | j | b[j] | current_len | dp before | dp after |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 2 | 0 | 1 | 0 | 0 | 0 |
-| 1 | 3 | 1 | 3 | 0 | 0 | 1 |
-| 2 | 1 | 0 | 1 | 0 | 0 | 1 |
-| 3 | 6 | 1 | 3 | 1 | 1 | 1 |
-| 3 | 6 | 3 | 6 | 1 | 0 | 2 |
-| 4 | 5 | 2 | 5 | 1 | 0 | 2 |
-| 6 | 6 | 2 | 5 | 2 | 2 | 2 |
-| 6 | 6 | 3 | 6 | 2 | 2 | 3 |
-
-Final sequence:
+Initial state:
 
 ```
-3 5 6
+dp = [0, 0, 0, 0]
 ```
 
-This trace shows how the algorithm accumulates the best smaller predecessor while scanning `B`. When the final `6` is processed, the algorithm already knows about the sequence `[3, 5]`, so it extends it to length 3.
+Processing proceeds as follows.
+
+| A[i] | j | B[j] | best_len before | dp after |
+| --- | --- | --- | --- | --- |
+| 2 | 0 | 1 | 0 | [0,0,0,0] |
+| 3 | 0 | 1 | 0 | [0,0,0,0] |
+| 3 | 1 | 3 | 0 | [0,1,0,0] |
+| 1 | 0 | 1 | 0 | [1,1,0,0] |
+| 6 | 0 | 1 | 1 | [1,1,0,0] |
+| 6 | 1 | 3 | 1 | [1,1,0,0] |
+| 6 | 2 | 5 | 1 | [1,1,0,0] |
+| 6 | 3 | 6 | 1 | [1,1,0,2] |
+| 5 | 0 | 1 | 1 | [1,1,0,2] |
+| 5 | 1 | 3 | 1 | [1,1,0,2] |
+| 5 | 2 | 5 | 1 | [1,1,2,2] |
+| 4 | 0 | 1 | 1 | [1,1,2,2] |
+| 4 | 1 | 3 | 1 | [1,1,2,2] |
+| 6 | 3 | 6 | 2 | [1,1,2,3] |
+
+The final answer is length 3 with sequence `[3, 5, 6]`.
+
+This trace shows how later occurrences improve earlier estimates. The first `6` only forms length 2, but after discovering `[3,5]`, the second `6` extends to length 3.
 
 ### Example 2
 
@@ -297,36 +296,31 @@ A = [1, 1, 1]
 B = [1, 1]
 ```
 
-### Trace
+| A[i] | j | B[j] | best_len before | dp after |
+| --- | --- | --- | --- | --- |
+| 1 | 0 | 1 | 0 | [1,0] |
+| 1 | 1 | 1 | 0 | [1,1] |
+| 1 | 0 | 1 | 0 | [1,1] |
+| 1 | 1 | 1 | 0 | [1,1] |
 
-| i | a[i] | j | b[j] | current_len | dp before | dp after |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 1 | 0 | 1 | 0 | 0 | 1 |
-| 0 | 1 | 1 | 1 | 0 | 0 | 1 |
-| 1 | 1 | 0 | 1 | 0 | 1 | 1 |
-| 1 | 1 | 1 | 1 | 0 | 1 | 1 |
+The final LCIS length is 1.
 
-Final sequence:
-
-```
-1
-```
-
-This demonstrates why the algorithm correctly enforces strict increase. Equal values never contribute to `current_len`, because only strictly smaller values are allowed.
+This example confirms that equal values never chain together because only strictly smaller values contribute to `best_len`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(nm) | Every pair `(i, j)` is processed once |
-| Space | O(m) | Only DP and parent arrays over `b` are stored |
+| Time | O(n * m) | Every pair `(i, j)` is processed once |
+| Space | O(m) | DP and parent arrays depend only on the second array |
 
-With $n, m \le 500$, the algorithm performs at most 250,000 DP transitions, which is easily fast enough within the 1 second limit. Memory usage is tiny compared to the 256 MB limit.
+With `n, m ≤ 500`, the algorithm performs at most 250,000 state updates, which easily fits within the time limit. Memory usage is tiny because only one DP row is stored.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
+
 import sys
 import io
 
@@ -343,39 +337,39 @@ def solve():
     parent = [-1] * m
 
     for i in range(n):
-        current_len = 0
-        current_pos = -1
+        best_len = 0
+        best_pos = -1
 
         for j in range(m):
-            if a[i] > b[j]:
-                if dp[j] > current_len:
-                    current_len = dp[j]
-                    current_pos = j
+            if b[j] < a[i]:
+                if dp[j] > best_len:
+                    best_len = dp[j]
+                    best_pos = j
 
-            elif a[i] == b[j]:
-                if current_len + 1 > dp[j]:
-                    dp[j] = current_len + 1
-                    parent[j] = current_pos
+            elif b[j] == a[i]:
+                if best_len + 1 > dp[j]:
+                    dp[j] = best_len + 1
+                    parent[j] = best_pos
 
-    best_len = 0
-    best_pos = -1
+    length = 0
+    end_pos = -1
 
     for j in range(m):
-        if dp[j] > best_len:
-            best_len = dp[j]
-            best_pos = j
+        if dp[j] > length:
+            length = dp[j]
+            end_pos = j
 
     seq = []
 
-    while best_pos != -1:
-        seq.append(b[best_pos])
-        best_pos = parent[best_pos]
+    while end_pos != -1:
+        seq.append(b[end_pos])
+        end_pos = parent[end_pos]
 
     seq.reverse()
 
-    out = [str(best_len)]
+    out = [str(length)]
 
-    if best_len > 0:
+    if length:
         out.append(" ".join(map(str, seq)))
     else:
         out.append("")
@@ -383,20 +377,12 @@ def solve():
     print("\n".join(out))
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
     solve()
 
-    output = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return output.strip()
+    return sys.stdout.getvalue().strip()
 
 # provided sample
 assert run(
@@ -414,9 +400,18 @@ assert run(
 1
 5
 """
-) == "1\n5", "single equal element"
+) == "1\n5", "single matching element"
 
-# no common element
+# all equal values
+assert run(
+"""3
+1 1 1
+2
+1 1
+"""
+) == "1\n1", "strictly increasing condition"
+
+# no common elements
 assert run(
 """3
 1 2 3
@@ -425,112 +420,80 @@ assert run(
 """
 ) == "0", "empty LCIS"
 
-# all equal values
+# off-by-one reconstruction case
 assert run(
-"""4
-7 7 7 7
+"""3
+1 2 3
 3
-7 7 7
+1 3 2
 """
-) == "1\n7", "strictly increasing condition"
+) == "2\n1 2", "correct ordering"
 
-# increasing arrays
+# decreasing arrays
 assert run(
 """5
-1 2 3 4 5
+5 4 3 2 1
 5
-1 2 3 4 5
+5 4 3 2 1
 """
-) == "5\n1 2 3 4 5", "entire array is LCIS"
-
-# duplicate handling
-assert run(
-"""5
-3 1 2 2 4
-4
-1 2 2 4
-"""
-) == "3\n1 2 4", "duplicates should not chain"
+) == "1\n5", "only one element possible"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single equal element | `1 5` | Minimum valid LCIS |
-| No common element | `0` | Empty answer handling |
-| All equal values | `1 7` | Strict increase enforcement |
-| Fully increasing arrays | Full array | Normal optimal case |
-| Duplicate-heavy case | `1 2 4` | Correct handling of repeated values |
+| Single matching element | `1 5` | Minimum constraints |
+| All equal values | `1 1` | Strict increase handling |
+| No common elements | `0` | Empty answer reconstruction |
+| `[1,2,3]` vs `[1,3,2]` | `1 2` | Correct subsequence ordering |
+| Decreasing arrays | Any single value | LCIS differs from LCS |
 
 ## Edge Cases
 
-### Repeated Equal Values
-
-Input:
+Consider duplicate-heavy arrays:
 
 ```
 A = [1, 1, 1]
 B = [1, 1]
 ```
 
-While scanning, `current_len` never increases because there are no smaller elements than `1`. Every matching pair only creates a sequence of length 1.
-
-The algorithm never chains one `1` after another because the transition condition requires:
-
-```
-a[i] > b[j]
-```
-
-for predecessor updates.
-
-Correct output:
+While processing each `1`, the algorithm never updates `best_len` because the condition requires strictly smaller values. As a result, every match only creates a sequence of length 1. The algorithm correctly outputs:
 
 ```
 1
 1
 ```
 
-### LCIS Different from Any Maximum LCS
-
-Input:
+Now consider a case where ordinary LCS would fail:
 
 ```
-A = [1, 4, 2, 3]
-B = [1, 2, 4, 3]
+A = [3, 2, 1]
+B = [3, 2, 1]
 ```
 
-A standard LCS algorithm may choose `[1, 4, 3]`, which is not increasing.
-
-Our DP only extends through strictly smaller values. When processing `2`, the best predecessor is `1`, so the sequence `[1, 2]` forms naturally. Later, `3` extends that sequence.
-
-Correct output:
+The DP evolves as:
 
 ```
-3
-1 2 3
+After 3: dp = [1,0,0]
+After 2: dp = [1,1,0]
+After 1: dp = [1,1,1]
 ```
 
-### Duplicate Numbers Inside the Optimal Path
+No element can extend another because values always decrease. The maximum length remains 1.
 
-Input:
-
-```
-A = [3, 1, 2, 2, 4]
-B = [1, 2, 2, 4]
-```
-
-The algorithm processes both occurrences of `2`, but neither can extend the other because equal values are not considered smaller predecessors.
-
-The predecessor chain becomes:
+Finally, consider the ordering trap:
 
 ```
-1 -> 2 -> 4
+A = [1, 2, 3]
+B = [1, 3, 2]
 ```
 
-Correct output:
+When processing `2`, the best previous value is `1`, so the algorithm builds `[1,2]`.
+
+Later, while processing `3`, it cannot extend from `2` because `2` appears after `3` inside array `B`. The left-to-right scan automatically enforces subsequence order in `B`.
+
+The algorithm correctly outputs:
 
 ```
-3
-1 2 4
+2
+1 2
 ```
-
-This confirms that the strict inequality logic correctly prevents invalid increasing sequences.

@@ -24,7 +24,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [7](7/) | [Codeforces Beta Round 7](https://codeforces.com/contest/7) | Beta | 1100-2600 | 5/5 | 5m 10s |
 | [8](8/) | [Codeforces Beta Round 8](https://codeforces.com/contest/8) | Beta | 1200-2600 | 5/5 | 6m 59s |
 | [9](9/) | [Codeforces Beta Round 9 (Div. 2 Only)](https://codeforces.com/contest/9) | Div. 2 | 800-2300 | 3/3 | 5m 57s |
-| [10](10/) | [Codeforces Beta Round 10](https://codeforces.com/contest/10) | Beta | 900-2800 | 4/5 | 8m 10s |
+| [10](10/) | [Codeforces Beta Round 10](https://codeforces.com/contest/10) | Beta | 900-2800 | 4/5 | 8m 3s |
 | [11](11/) | [Codeforces Beta Round 11](https://codeforces.com/contest/11) | Beta | 900-2800 | 5/5 | 8m 46s |
 | [12](12/) | [Codeforces Beta Round 12 (Div 2 Only)](https://codeforces.com/contest/12) | Beta | 800-2400 | 5/5 | 6m 41s |
 | [13](13/) | [Codeforces Beta Round 13](https://codeforces.com/contest/13) | Beta | 1000-2700 | 2/5 | 11m 8s |
