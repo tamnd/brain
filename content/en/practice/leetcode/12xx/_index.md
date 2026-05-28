@@ -53,15 +53,31 @@ draft: false
 | 1241 | [Number of Comments per Post](1241.md) | 🟢 Easy | 1m 10s | This problem asks us to analyze a database table named Submissions … |
 | 1242 | [Web Crawler Multithreaded](1242.md) | 🟡 Medium | 49s | The problem asks us to implement a multi-threaded web crawler that … |
 | 1243 | [Array Transformation](1243.md) | 🟢 Easy | 40s | The problem requires simulating the transformation of an array over… |
-| 1244 | [Design A Leaderboard](1244.md) | 🟡 Medium | 44s | The problem requires designing a Leaderboard class to maintain scor… |
-| 1245 | [Tree Diameter](1245.md) | 🟡 Medium | 48s | The problem asks us to find the diameter of a tree, which is define… |
-| 1246 | [Palindrome Removal](1246.md) | 🔴 Hard | 53s | The problem is asking us to remove all elements from an integer arr… |
-| 1247 | [Minimum Swaps to Make Strings Equal](1247.md) | 🟡 Medium | 1m 11s | The problem gives us two strings, s1 and s2, that have the same len… |
-| 1249 | [Minimum Remove to Make Valid Parentheses](1249.md) | 🟡 Medium | 1m 8s | The problem gives a string containing three possible types of chara… |
-| 1250 | [Check If It Is a Good Array](1250.md) | 🔴 Hard | 1m 22s | This problem asks whether it is possible to create the value 1 usin… |
-| 1251 | [Average Selling Price](1251.md) | 🟢 Easy | 59s | This problem asks us to compute the average selling price for each … |
-| 1252 | [Cells with Odd Values in a Matrix](1252.md) | 🟢 Easy | 1m 12s | The problem gives us an m x n matrix where every cell initially con… |
-| 1253 | [Reconstruct a 2-Row Binary Matrix](1253.md) | 🟡 Medium | 1m 33s | The problem gives us three pieces of information about a binary mat… |
-| 1254 | [Number of Closed Islands](1254.md) | 🟡 Medium | 1m 20s | The problem gives us a 2D grid where: - 0 represents land - 1 repre… |
-| 1255 | [Maximum Score Words Formed by Letters](1255.md) | 🔴 Hard | 1m 24s | This problem asks us to choose a subset of words that can be formed… |
+| 1244 | [Design A Leaderboard](1244.md) | 🟡 Medium | 1m 12s | This problem asks us to design a leaderboard system that supports t… |
+| 1245 | [Tree Diameter](1245.md) | 🟡 Medium | 42s | The problem asks us to find the diameter of a tree, which is define… |
+| 1246 | [Palindrome Removal](1246.md) | 🔴 Hard | 56s | The problem requires us to remove all elements from an integer arra… |
+| 1247 | [Minimum Swaps to Make Strings Equal](1247.md) | 🟡 Medium | 48s | This problem asks us to determine the minimum number of swaps neede… |
+| 1248 | [Count Number of Nice Subarrays](1248.md) | 🟡 Medium | 1m 13s | The problem asks us to count how many contiguous subarrays contain … |
+| 1249 | [Minimum Remove to Make Valid Parentheses](1249.md) | 🟡 Medium | 54s | The problem is asking us to process a string containing lowercase l… |
+| 1250 | [Check If It Is a Good Array](1250.md) | 🔴 Hard | 1m 12s | This problem asks whether it is possible to create the number 1 usi… |
+| 1251 | [Average Selling Price](1251.md) | 🟢 Easy | 1m 19s | This problem asks us to compute the average selling price for every… |
+| 1252 | [Cells with Odd Values in a Matrix](1252.md) | 🟢 Easy | 1m 16s | The problem gives us an m x n matrix where every cell initially con… |
+| 1253 | [Reconstruct a 2-Row Binary Matrix](1253.md) | 🟡 Medium | 50s | The problem asks us to reconstruct a binary matrix with exactly two… |
+| 1254 | [Number of Closed Islands](1254.md) | 🟡 Medium | 58s | This problem provides a 2D grid representing a map of land and wate… |
+| 1255 | [Maximum Score Words Formed by Letters](1255.md) | 🔴 Hard | 1m 21s | This problem asks us to select a subset of words that can be constr… |
 | 1256 | [Encode Number](1256.md) | 🟡 Medium | 47s | Sure, let's build a full, detailed technical solution guide for Lee… |
+| 1257 | [Smallest Common Region](1257.md) | 🟡 Medium | 1m 16s | This problem describes a hierarchical relationship between geograph… |
+| 1258 | [Synonymous Sentences](1258.md) | 🟡 Medium | 56s | This problem asks us to generate all possible synonymous variations… |
+| 1259 | [Handshakes That Don't Cross](1259.md) | 🔴 Hard | 1m 10s | In this problem, we are given an even number of people standing aro… |
+| 1260 | [Shift 2D Grid](1260.md) | 🟢 Easy | 37s | The problem asks us to "shift" the elements of a 2D grid k times. T… |
+| 1261 | [Find Elements in a Contaminated Binary Tree](1261.md) | 🟡 Medium | 1m 6s | This problem gives us a binary tree whose values have been complete… |
+| 1262 | [Greatest Sum Divisible by Three](1262.md) | 🟡 Medium | 1m 17s | The problem gives an integer array nums, and asks for the maximum p… |
+| 1263 | [Minimum Moves to Move a Box to Their Target Location](1263.md) | 🔴 Hard | 1m 48s | LeetCode 1263, LeetCode "Minimum Moves to Move a Box to Their Targe… |
+| 1265 | [Print Immutable Linked List in Reverse](1265.md) | 🟡 Medium | 1m 17s | This problem gives us access to a linked list through a restricted … |
+| 1266 | [Minimum Time Visiting All Points](1266.md) | 🟢 Easy | 43s | The problem asks us to calculate the minimum time required to visit… |
+| 1267 | [Count Servers that Communicate](1267.md) | 🟡 Medium | 1m 30s | The problem gives us a two dimensional grid representing a server c… |
+| 1268 | [Search Suggestions System](1268.md) | 🟡 Medium | 46s | The problem asks us to implement a search suggestion system for a l… |
+| 1269 | [Number of Ways to Stay in the Same Place After Some Steps](1269.md) | 🔴 Hard | 48s | This problem asks us to compute the number of sequences of moves th… |
+| 1270 | [All People Report to the Given Manager](1270.md) | 🟡 Medium | 40s | Let's dive into a detailed technical guide for LeetCode 1270. The p… |
+| 1271 | [Hexspeak](1271.md) | 🟢 Easy | 1m 15s | The problem asks us to convert a decimal number into a special hexa… |
+| 1272 | [Remove Interval](1272.md) | 🟡 Medium | 1m 20s | The problem gives us a sorted list of disjoint half open intervals.… |

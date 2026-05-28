@@ -29,12 +29,23 @@ def smart_truncate(text: str, max_chars: int = MAX_CHARS) -> str:
 
 
 def extract_desc_from_body(body: str) -> str:
-    """Re-derive a clean description from the solution markdown body."""
+    """Re-derive a clean description from the solution markdown body.
+
+    Skips the standard LeetCode header (link, Difficulty, Topics, ## Solution)
+    and grabs the first prose paragraph after it.
+    """
+    # Drop code blocks first
     text = re.sub(r"```.*?```", "", body, flags=re.DOTALL)
+    # Skip past "## Solution" heading — actual prose follows after it
+    solution_split = re.split(r"^##\s+Solution\b.*$", text, maxsplit=1, flags=re.MULTILINE)
+    if len(solution_split) == 2:
+        text = solution_split[1]
+    # Strip remaining headings, inline math, markdown formatting
     text = re.sub(r"#+\s+.*\n", "", text)
     text = re.sub(r"\$\$[^$]+\$\$", "", text)
     text = re.sub(r"\$[^$\n]+\$", "", text)
-    text = re.sub(r"[*_`#>\\]", "", text)
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)  # links → link text
+    text = re.sub(r"[*_`#>\\|]", "", text)
     text = re.sub(r"\s+", " ", text).strip()
     return smart_truncate(text)
 
@@ -45,12 +56,13 @@ DESC_RE = re.compile(r'^(description:\s*)"(.*)"(\s*)$', re.MULTILINE)
 def fix_file(path: Path) -> bool:
     raw = path.read_text(encoding="utf-8")
 
-    # Split frontmatter from body
+    # Split frontmatter from body — must find "---" on its own line
     if not raw.startswith("---"):
         return False
-    fm_end = raw.find("---", 3)
-    if fm_end == -1:
+    m_close = re.search(r"^\-{3}\s*$", raw[3:], re.MULTILINE)
+    if not m_close:
         return False
+    fm_end = 3 + m_close.start()
     fm = raw[:fm_end]
     body = raw[fm_end:]
 
