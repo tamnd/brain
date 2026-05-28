@@ -36,5 +36,9 @@ draft: false
 | 1124 | [Longest Well-Performing Interval](1124.md) | 🟡 Medium | 1m 22s | Edit The problem gives us an array hours, where each element repres… |
 | 1125 | [Smallest Sufficient Team](1125.md) | 🔴 Hard | 1m 12s | This problem asks us to build the smallest possible team that colle… |
 | 1126 | [Active Businesses](1126.md) | 🟡 Medium | 38s | The problem asks us to identify active businesses based on events d… |
-| 1127 | [User Purchase Platform](1127.md) | 🔴 Hard | 3m 3s | This problem gives us a database table named Spending that records … |
+| 1127 | [User Purchase Platform](1127.md) | 🔴 Hard | 3m 27s | The Spending table records purchases made by users on an e-commerce… |
 | 1128 | [Number of Equivalent Domino Pairs](1128.md) | 🟢 Easy | 46s | The problem is asking us to count all pairs of dominoes in a list t… |
+| 1130 | [Minimum Cost Tree From Leaf Values](1130.md) | 🟡 Medium | 45s | The problem asks us to construct a binary tree from an input array … |
+| 1131 | [Maximum of Absolute Value Expression](1131.md) | 🟡 Medium | 1m 10s | The problem gives us two integer arrays, arr1 and arr2, both having… |
+| 1132 | [Reported Posts II](1132.md) | 🟡 Medium | 48s | The problem asks us to calculate the average daily percentage of po… |
+| 1133 | [Largest Unique Number](1133.md) | 🟢 Easy | 59s | The problem gives us an integer array nums and asks us to find the … |
