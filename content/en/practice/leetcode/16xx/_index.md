@@ -46,6 +46,18 @@ draft: false
 | 1633 | [Percentage of Users Attended a Contest](1633.md) | 🟢 Easy | 44s | This problem asks us to calculate the percentage of users who atten… |
 | 1634 | [Add Two Polynomials Represented as Linked Lists](1634.md) | 🟡 Medium | 52s | This problem asks us to add two polynomials represented as singly l… |
 | 1635 | [Hopper Company Queries I](1635.md) | 🔴 Hard | 1m 50s | This problem asks us to generate monthly statistics for the year 20… |
-| 1636 | [Sort Array by Increasing Frequency](1636.md) | 🟢 Easy | 52s | The problem requires sorting an array of integers based on the freq… |
-| 1638 | [Count Substrings That Differ by One Character](1638.md) | 🟡 Medium | 1m 27s | The problem asks us to count how many pairs of substrings, one take… |
-| 1640 | [Check Array Formation Through Concatenation](1640.md) | 🟢 Easy | 2m 14s | In this problem, we are given two inputs: - arr, a one dimensional … |
+| 1636 | [Sort Array by Increasing Frequency](1636.md) | 🟢 Easy | 1m 19s | The problem asks us to reorder an array of integers based on the fr… |
+| 1637 | [Widest Vertical Area Between Two Points Containing No Points](1637.md) | 🟢 Easy | 1m 5s | The problem gives us a list of points on a 2D plane, where each poi… |
+| 1638 | [Count Substrings That Differ by One Character](1638.md) | 🟡 Medium | 1m 42s | The problem asks us to count how many pairs of substrings, one take… |
+| 1639 | [Number of Ways to Form a Target String Given a Dictionary](1639.md) | 🔴 Hard | 6m 7s | This is a long-form technical guide with many required sections and… |
+| 1640 | [Check Array Formation Through Concatenation](1640.md) | 🟢 Easy | 1m 31s | This problem gives us two inputs: - arr, a one-dimensional array of… |
+| 1641 | [Count Sorted Vowel Strings](1641.md) | 🟡 Medium | 1m 1s | The problem asks us to count the number of strings of length n comp… |
+| 1642 | [Furthest Building You Can Reach](1642.md) | 🟡 Medium | 1m 44s | The problem gives us an array heights, where each value represents … |
+| 1643 | [Kth Smallest Instructions](1643.md) | 🔴 Hard | 1m 12s | This problem asks us to generate a specific path for Bob from the t… |
+| 1644 | [Lowest Common Ancestor of a Binary Tree II](1644.md) | 🟡 Medium | 1m 14s | This problem asks us to find the lowest common ancestor (LCA) of tw… |
+| 1645 | [Hopper Company Queries II](1645.md) | 🔴 Hard | 1m 23s | This problem asks us to calculate, for every month in the year 2020… |
+| 1646 | [Get Maximum in Generated Array](1646.md) | 🟢 Easy | 59s | The problem asks us to generate an integer array nums of length n +… |
+| 1647 | [Minimum Deletions to Make Character Frequencies Unique](1647.md) | 🟡 Medium | 1m | The problem asks us to make a string good by ensuring that no two c… |
+| 1648 | [Sell Diminishing-Valued Colored Balls](1648.md) | 🟡 Medium | 1m 37s | This problem asks us to maximize the total profit earned by selling… |
+| 1649 | [Create Sorted Array through Instructions](1649.md) | 🔴 Hard | 1m 24s | The problem asks us to process the instructions array from left to … |
+| 1650 | [Lowest Common Ancestor of a Binary Tree III](1650.md) | 🟡 Medium | 1m 17s | This problem asks us to find the lowest common ancestor, often abbr… |
