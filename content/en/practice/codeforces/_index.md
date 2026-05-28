@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 75 contests, 394 problems, 336 verified."
+description: "Codeforces problem solutions with full editorial. 75 contests, 396 problems, 338 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**75 contests, 394 problems, 336 verified.**
+**75 contests, 396 problems, 338 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -53,7 +53,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [36](36/) | [Codeforces Beta Round 36](https://codeforces.com/contest/36) | Beta | 1300-2600 | 2/5 | 9m 36s |
 | [37](37/) | [Codeforces Beta Round 37](https://codeforces.com/contest/37) | Beta | 1000-2600 | 4/5 | 8m 37s |
 | [38](38/) | [School Personal Contest #1 (Winter Computer School 2010/11) - Codeforces Beta Round 38 (ACM-ICPC Rules)](https://codeforces.com/contest/38) | Beta | 800-2400 | 5/8 | 13m 48s |
-| [39](39/) | [School Team Contest 1 (Winter Computer School 2010/11)](https://codeforces.com/contest/39) | Special | 1300-2600 | 8/10 | 20m 39s |
+| [39](39/) | [School Team Contest 1 (Winter Computer School 2010/11)](https://codeforces.com/contest/39) | Special | 1100-2600 | 9/11 | 21m 37s |
 | [40](40/) | [Codeforces Beta Round 39](https://codeforces.com/contest/40) | Beta | 1300-2600 | 5/5 | 7m 51s |
 | [41](41/) | [Codeforces Beta Round 40 (Div. 2)](https://codeforces.com/contest/41) | Div. 2 | 800-1900 | 3/5 | 7m 28s |
 | [42](42/) | [Codeforces Beta Round 41](https://codeforces.com/contest/42) | Beta | 1400-2700 | 4/5 | 10m 20s |
@@ -88,5 +88,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [71](71/) | [Codeforces Beta Round 65 (Div. 2)](https://codeforces.com/contest/71) | Div. 2 | 800-2200 | 4/5 | 8m 23s |
 | [72](72/) | [Unknown Language Round 2](https://codeforces.com/contest/72) | Special | 1000-2300 | 8/9 | 21m 37s |
 | [73](73/) | [Codeforces Beta Round 66](https://codeforces.com/contest/73) | Beta | 1600-2900 | 6/6 | 12m 59s |
-| [74](74/) | [Codeforces Beta Round 68](https://codeforces.com/contest/74) | Beta | 1000-2400 | 4/4 | 6m 29s |
+| [74](74/) | [Codeforces Beta Round 68](https://codeforces.com/contest/74) | Beta | 1000-2800 | 5/5 | 8m 32s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
