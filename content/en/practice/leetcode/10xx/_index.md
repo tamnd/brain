@@ -63,4 +63,15 @@ draft: false
 | 1050 | [Actors and Directors Who Cooperated At Least Three Times](1050.md) | 🟢 Easy | 1m 1s | This problem asks us to identify every (actorid, directorid) pair w… |
 | 1051 | [Height Checker](1051.md) | 🟢 Easy | 1m 13s | The problem gives us an array called heights, where each value repr… |
 | 1052 | [Grumpy Bookstore Owner](1052.md) | 🟡 Medium | 2m 32s | This problem asks us to maximize the number of satisfied customers … |
-| 1053 | [Previous Permutation With One Swap](1053.md) | 🟡 Medium | 2m 19s | The problem asks us to find the lexicographically largest permutati… |
+| 1053 | [Previous Permutation With One Swap](1053.md) | 🟡 Medium | 1m 19s | The problem asks us to find the lexicographically largest permutati… |
+| 1054 | [Distant Barcodes](1054.md) | 🟡 Medium | 4m 7s | The problem is asking us to rearrange a list of barcodes so that no… |
+| 1055 | [Shortest Way to Form String](1055.md) | 🟡 Medium | 1m 16s | The problem asks us to construct the string target using the fewest… |
+| 1056 | [Confusing Number](1056.md) | 🟢 Easy | 4m 11s | The problem asks us to determine whether a given integer becomes a … |
+| 1057 | [Campus Bikes](1057.md) | 🟡 Medium | 1m 16s | This problem models a matching process between workers and bikes on… |
+| 1058 | [Minimize Rounding Error to Meet Target](1058.md) | 🟡 Medium | 41s | The problem asks us to round an array of decimal prices to integers… |
+| 1060 | [Missing Element in Sorted Array](1060.md) | 🟡 Medium | 42s | The problem asks us to find the k-th missing number in a sorted, st… |
+| 1061 | [Lexicographically Smallest Equivalent String](1061.md) | 🟡 Medium | 1m 23s | This problem asks us to build groups of equivalent characters and t… |
+| 1062 | [Longest Repeating Substring](1062.md) | 🟡 Medium | 1m 11s | In this problem, we are given a string s consisting only of lowerca… |
+| 1063 | [Number of Valid Subarrays](1063.md) | 🔴 Hard | 50s | The problem asks us to count the number of non-empty contiguous sub… |
+| 1064 | [Fixed Point](1064.md) | 🟢 Easy | 46s | The problem asks us to find a "fixed point" in a sorted array of di… |
+| 1065 | [Index Pairs of a String](1065.md) | 🟢 Easy | 1m 24s | The problem gives us a string text and a list of unique words calle… |
