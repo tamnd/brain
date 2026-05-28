@@ -1,6 +1,6 @@
 ---
 title: "CF 80A - Panoramix's Prediction"
-description: "We are given two numbers representing the number of Roman soldiers defeated on two consecutive days. The first number, n, is guaranteed to be prime. The second number, m, is larger than n. The task is to determine whether m is exactly the next prime number after n."
+description: "Yesterday the Gauls defeated n Roman soldiers, and n is guaranteed to be a prime number. Today they defeated m soldiers, where m n. We need to decide whether m is exactly the next prime number that comes immediately after n. The key detail is the phrase \"next prime\"."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Beta Round 69 (Div. 2 Only)"
 rating: 800
 weight: 80
-solve_time_s: 93
-verified: false
+solve_time_s: 78
+verified: true
 draft: false
 ---
 
@@ -18,19 +18,21 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force  
-**Solve time:** 1m 33s  
-**Verified:** no  
+**Solve time:** 1m 18s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given two numbers representing the number of Roman soldiers defeated on two consecutive days. The first number, `n`, is guaranteed to be prime. The second number, `m`, is larger than `n`.
+Yesterday the Gauls defeated `n` Roman soldiers, and `n` is guaranteed to be a prime number. Today they defeated `m` soldiers, where `m > n`. We need to decide whether `m` is exactly the next prime number that comes immediately after `n`.
 
-The task is to determine whether `m` is exactly the next prime number after `n`. Not just any larger prime, but the immediate one. For example, after `3` the next prime is `5`, so `(3, 5)` should produce `YES`. But `(3, 7)` should produce `NO` because `5` exists in between.
+The key detail is the phrase "next prime". It is not enough for both numbers to be prime. There must be no other prime between them.
 
-The constraints are extremely small. Both values are at most `50`, so even a very slow primality-checking approach is completely safe. A brute-force search through all numbers after `n` would perform only a few dozen operations in the worst case. There is no need for advanced number theory or sieves.
+The constraints are tiny. Both numbers are at most 50, so even very slow brute-force checking works comfortably within the time limit. A primality test by trial division up to the square root of a number takes only a few operations here. Even checking every number from `n + 1` upward is effectively instant.
 
-The main danger in this problem is misunderstanding what “next prime” means. A careless implementation might only check whether both `n` and `m` are prime and whether `m > n`. That would incorrectly accept inputs like:
+The main danger is misunderstanding what qualifies as the next prime.
+
+Consider this input:
 
 ```
 3 7
@@ -42,62 +44,78 @@ The correct answer is:
 NO
 ```
 
-because `5` is the next prime after `3`, not `7`.
+Both 3 and 7 are prime, but 5 lies between them and is also prime. A careless implementation that only checks whether `m` is prime would incorrectly print `YES`.
 
-Another subtle case appears when there is exactly one composite number between the primes:
+Another easy mistake is stopping too late while searching for the next prime.
+
+For example:
 
 ```
 7 11
 ```
 
-The correct output is:
+The next prime after 7 is actually 11, because 8, 9, and 10 are composite. The algorithm must skip non-prime numbers correctly instead of assuming primes are consecutive odd numbers.
+
+A final edge case is the smallest valid input:
+
+```
+2 3
+```
+
+The answer is:
 
 ```
 YES
 ```
 
-because `8`, `9`, and `10` are all composite, making `11` the immediate next prime after `7`.
-
-A buggy implementation might stop at the first odd number greater than `n`, assuming it is prime. That would fail here because `9` is not prime.
+Since 2 is the first prime, the next prime after it is 3.
 
 ## Approaches
 
-The brute-force idea is straightforward. Starting from `n + 1`, test every number until we find a prime. Once we discover the first prime larger than `n`, we compare it with `m`. If they match, print `YES`; otherwise print `NO`.
+The most direct approach is to generate all prime numbers greater than `n` until reaching `m`. We could repeatedly test each integer for primality and collect primes. Once we find the first prime larger than `n`, we compare it with `m`.
 
-Primality testing itself can also be done naively. For a number `x`, try dividing it by every integer from `2` to `x - 1`. If any divisor works, the number is composite; otherwise it is prime.
+This works because the constraints are extremely small. In the worst case we check numbers up to 50, and each primality test examines only a handful of divisors. Even an inefficient implementation runs instantly.
 
-Even this fully naive version is fast enough. The largest possible value is only `50`, so the worst-case operation count is tiny.
+A slightly different brute-force idea is to precompute every prime up to 50 using nested loops, then scan the list to see whether `m` immediately follows `n`. That also works comfortably within the limits.
 
-The key observation is that we do not need to generate all primes up to `50`. We only care about the first prime after one specific number. That lets us reduce the work to a small linear scan with a simple primality test.
+The cleaner solution uses a simple observation: we do not need all primes. We only need the very first prime greater than `n`.
 
-The brute-force solution already fits comfortably within the limits, so the “optimal” solution is really just a cleaner and slightly improved version. Instead of checking divisibility up to `x - 1`, we can stop at `sqrt(x)`. If a number has a divisor larger than its square root, the paired divisor must be smaller than the square root and would already have been found.
+So instead of generating everything, we start from `n + 1` and search upward until we encounter a prime number. That first prime is, by definition, the next prime after `n`. If it equals `m`, the answer is `YES`; otherwise it is `NO`.
+
+This reduces the task to two small components:
+
+1. A function that checks whether a number is prime.
+2. A loop that finds the first prime larger than `n`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(1) | Accepted |
-| Optimal | O(n√n) | O(1) | Accepted |
+| Brute Force precompute all primes up to 50 | O(50²) | O(50) | Accepted |
+| Optimal direct search for next prime | O(50√50) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read the integers `n` and `m`.
-2. Create a helper function `is_prime(x)` that checks whether `x` is prime.
+2. Write a helper function `is_prime(x)` that checks whether `x` is prime.
 
-The function tries all divisors from `2` up to `sqrt(x)`. If any divisor divides evenly, the number is composite.
-3. Start checking numbers from `n + 1` upward.
+A number is prime if it has no divisor between 2 and `√x`. If any divisor exists, the number is composite.
+3. Start checking integers from `n + 1` upward.
 
-We are searching for the first prime larger than `n`.
+We are looking for the first prime larger than `n`.
 4. For each candidate number, call `is_prime(candidate)`.
 
-The first candidate that returns `True` is the next prime after `n`.
-5. Compare this next prime with `m`.
+If the number is not prime, continue searching.
+5. As soon as the first prime is found, compare it with `m`.
 
 If they are equal, print `YES`. Otherwise print `NO`.
+6. Stop immediately after finding the first prime.
+
+We only care about the immediate next prime after `n`.
 
 ### Why it works
 
-The algorithm explicitly searches for the smallest prime greater than `n`. By definition, that value is the next prime after `n`.
+The algorithm searches integers in increasing order starting from `n + 1`. The first number encountered that passes the primality test is exactly the smallest prime greater than `n`, which matches the mathematical definition of the next prime.
 
-The scan checks numbers in increasing order, so the first prime encountered must be the immediate next one. Since we compare that exact value against `m`, the algorithm returns `YES` only when `m` is truly the next prime after `n`.
+If this number equals `m`, then `m` is the next prime after `n`. If it differs from `m`, then either `m` is not prime or another prime exists between `n` and `m`. In both cases the correct answer is `NO`.
 
 ## Python Solution
 
@@ -135,13 +153,11 @@ def solve():
 solve()
 ```
 
-The `is_prime` function implements the standard square-root optimization. If `x` has a divisor larger than `sqrt(x)`, the matching paired divisor must be smaller than `sqrt(x)`, so checking beyond that point is unnecessary.
+The `is_prime` function performs trial division. It checks every divisor from 2 up to the square root of the number. If any divisor divides evenly, the number is composite.
 
-The main loop starts from `n + 1` because the next prime must be larger than `n`. It keeps moving upward until it encounters the first prime number.
+The main loop begins at `n + 1` because we only care about numbers strictly larger than `n`. Each candidate is tested for primality. The first prime encountered is automatically the next prime after `n`.
 
-The moment that prime is found, the program compares it with `m` and immediately prints the answer. Returning immediately is important because we only care about the first prime after `n`, not later primes.
-
-A common off-by-one mistake is starting the search from `n` instead of `n + 1`. Since `n` itself is prime, that would incorrectly treat `n` as its own next prime.
+One subtle implementation detail is stopping immediately after finding the first prime. Continuing further would be incorrect because later primes are irrelevant. Another small detail is the loop condition `d * d <= x`. This avoids missing perfect-square divisors such as 7 for 49.
 
 ## Worked Examples
 
@@ -153,38 +169,40 @@ Input:
 3 5
 ```
 
-| Step | Candidate | Prime? | Action |
+| Step | candidate | is_prime(candidate) | Action |
 | --- | --- | --- | --- |
-| 1 | 4 | No | Continue |
-| 2 | 5 | Yes | Compare with `m` |
+| 1 | 4 | False | Continue |
+| 2 | 5 | True | Compare with m |
+| 3 | 5 | True | Print YES |
 
-The first prime after `3` is `5`, which matches `m`, so the output is `YES`.
+The first prime after 3 is 5, which matches `m`. The algorithm correctly prints `YES`.
 
 ### Example 2
 
 Input:
 
 ```
-3 7
+7 13
 ```
 
-| Step | Candidate | Prime? | Action |
+| Step | candidate | is_prime(candidate) | Action |
 | --- | --- | --- | --- |
-| 1 | 4 | No | Continue |
-| 2 | 5 | Yes | Compare with `m` |
+| 1 | 8 | False | Continue |
+| 2 | 9 | False | Continue |
+| 3 | 10 | False | Continue |
+| 4 | 11 | True | Compare with m |
+| 5 | 11 | True | Print NO |
 
-The algorithm stops as soon as it finds `5`, because that is the next prime after `3`. Since `5 != 7`, the output is `NO`.
-
-This trace demonstrates why checking only whether `m` is prime is insufficient. `7` is prime, but it is not the immediate next prime.
+The first prime after 7 is 11, not 13. Even though 13 is prime, it is not the immediate next prime, so the correct output is `NO`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n√n) | We scan numbers after `n`, and each primality test checks up to `sqrt(x)` divisors |
-| Space | O(1) | Only a few integer variables are used |
+| Time | O(50√50) | At most a few dozen numbers are checked, each with trial division up to its square root |
+| Space | O(1) | Only a few variables are stored |
 
-Since the maximum value is only `50`, the actual runtime is tiny. The program finishes almost instantly and uses negligible memory.
+The constraints are extremely small, so this solution easily fits within the time and memory limits. Even a much slower implementation would still pass comfortably.
 
 ## Test Cases
 
@@ -210,37 +228,38 @@ def run(inp: str) -> str:
 
         return True
 
-    def solve():
-        n, m = map(int, input().split())
+    n, m = map(int, input().split())
 
-        candidate = n + 1
+    candidate = n + 1
 
-        while True:
-            if is_prime(candidate):
-                return "YES" if candidate == m else "NO"
+    while True:
+        if is_prime(candidate):
+            return "YES\n" if candidate == m else "NO\n"
 
-            candidate += 1
-
-    return solve()
+        candidate += 1
 
 # provided sample
-assert run("3 5\n") == "YES", "sample 1"
+assert run("3 5\n") == "YES\n", "sample 1"
 
 # custom cases
-assert run("2 3\n") == "YES", "minimum valid primes"
-assert run("3 7\n") == "NO", "later prime but not next prime"
-assert run("7 11\n") == "YES", "multiple composite numbers in between"
-assert run("47 49\n") == "NO", "maximum range with composite target"
-assert run("47 53\n") == "YES", "largest valid next-prime pair"
+assert run("2 3\n") == "YES\n", "smallest primes"
+
+assert run("3 7\n") == "NO\n", "prime exists in between"
+
+assert run("7 11\n") == "YES\n", "skip composite numbers correctly"
+
+assert run("47 49\n") == "NO\n", "m is not prime"
+
+assert run("47 53\n") == "YES\n", "largest-range valid case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 3` | `YES` | Smallest valid input |
-| `3 7` | `NO` | Rejects non-immediate primes |
-| `7 11` | `YES` | Correctly skips several composites |
-| `47 49` | `NO` | Composite `m` near upper bound |
-| `47 53` | `YES` | Largest next-prime transition in range |
+| `2 3` | `YES` | Smallest valid primes |
+| `3 7` | `NO` | Another prime exists between them |
+| `7 11` | `YES` | Consecutive primes with composites in between |
+| `47 49` | `NO` | Second number is not prime |
+| `47 53` | `YES` | Correct handling near upper constraint |
 
 ## Edge Cases
 
@@ -250,7 +269,7 @@ Consider the input:
 3 7
 ```
 
-The algorithm checks `4`, then `5`. Since `5` is prime, the search stops immediately. The algorithm never reaches `7` because the next prime after `3` has already been found. Since `5 != 7`, the output is correctly `NO`.
+The algorithm starts from 4. It checks 4, which is composite, then checks 5, which is prime. Since 5 is the first prime greater than 3, it is the next prime after 3. Because 5 does not equal 7, the algorithm prints `NO`. This handles the common mistake of checking only whether `m` itself is prime.
 
 Now consider:
 
@@ -258,12 +277,12 @@ Now consider:
 7 11
 ```
 
-The scan proceeds through `8`, `9`, and `10`, all of which fail the primality test. When the algorithm reaches `11`, it identifies it as prime and compares it with `m`. Since they match, the output is `YES`.
+The search examines 8, 9, and 10, rejecting all of them because they are composite. The first prime found is 11, so the algorithm prints `YES`. This confirms that the algorithm correctly skips arbitrary stretches of composite numbers.
 
-Finally, consider the smallest valid case:
+Finally, consider the smallest boundary case:
 
 ```
 2 3
 ```
 
-The search starts from `3`. Since `3` is prime and equals `m`, the algorithm prints `YES`. This confirms that starting from `n + 1` handles boundary values correctly.
+The algorithm starts with candidate 3. Since 3 is prime and equals `m`, the output is `YES`. This confirms correct behavior at the lower bound of the constraints.
