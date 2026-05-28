@@ -37,12 +37,12 @@ draft: false
 | 2124 | [Check if All A's Appears Before All B's](2124.md) | 🟢 Easy | 1m 56s | The problem gives us a string s that contains only two possible cha… |
 | 2125 | [Number of Laser Beams in a Bank](2125.md) | 🟡 Medium | 3m 24s | The problem describes a bank floor plan as a binary matrix, represe… |
 | 2126 | [Destroying Asteroids](2126.md) | 🟡 Medium | 1m 19s | In this problem, we are given the starting mass of a planet and a l… |
-| 2127 | [Maximum Employees to Be Invited to a Meeting](2127.md) | 🔴 Hard | 1m 41s | This problem describes a directed graph where each employee points … |
+| 2127 | [Maximum Employees to Be Invited to a Meeting](2127.md) | 🔴 Hard | 5m 52s | This problem describes a group of employees sitting around a circul… |
 | 2128 | [Remove All Ones With Row and Column Flips](2128.md) | 🟡 Medium | 1m 21s | The problem gives us an m x n binary matrix named grid, where every… |
 | 2129 | [Capitalize the Title](2129.md) | 🟢 Easy | 1m 5s | The problem asks us to transform the capitalization of every word i… |
-| 2130 | [Maximum Twin Sum of a Linked List](2130.md) | 🟡 Medium | 1m 27s | The problem gives us a singly linked list with an even number of no… |
-| 2131 | [Longest Palindrome by Concatenating Two Letter Words](2131.md) | 🟡 Medium | 51s | The problem provides an array of two-letter lowercase strings, and … |
-| 2132 | [Stamping the Grid](2132.md) | 🔴 Hard | 1m 2s | The problem is asking us to determine if a given m x n binary grid … |
+| 2130 | [Maximum Twin Sum of a Linked List](2130.md) | 🟡 Medium | 7m 7s | The problem gives us a singly linked list with an even number of no… |
+| 2131 | [Longest Palindrome by Concatenating Two Letter Words](2131.md) | 🟡 Medium | 57s | This problem asks us to construct the longest possible palindrome u… |
+| 2132 | [Stamping the Grid](2132.md) | 🔴 Hard | 1m 43s | In this problem, we are given a binary matrix called grid. Every ce… |
 | 2133 | [Check if Every Row and Column Contains All Numbers](2133.md) | 🟢 Easy | 56s | The problem asks us to determine whether a given n x n integer matr… |
 | 2134 | [Minimum Swaps to Group All 1's Together II](2134.md) | 🟡 Medium | 57s | The problem asks us to compute the minimum number of swaps needed t… |
 | 2135 | [Count Words Obtained After Adding a Letter](2135.md) | 🟡 Medium | 56s | This problem asks us to determine how many words in targetWords can… |
