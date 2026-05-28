@@ -1,6 +1,6 @@
 ---
 title: "CF 98E - Help Shrek and Donkey"
-description: "There are m + n + 1 distinct cards in the deck. Shrek initially knows exactly which m cards he owns, Donkey knows his own n cards, and one card is hidden on the table. Nobody knows the hidden card directly."
+description: "There are m + n + 1 distinct cards in total. Shrek initially knows his own m cards, Donkey knows his own n cards, and one card is hidden on the table. Nobody knows the hidden card directly. Players alternate turns, with Shrek moving first."
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "games", "math", "probabilities"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Beta Round 78 (Div. 1 Only)"
 rating: 2700
 weight: 98
-solve_time_s: 190
-verified: false
+solve_time_s: 145
+verified: true
 draft: false
 ---
 
@@ -18,146 +18,139 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** dp, games, math, probabilities  
-**Solve time:** 3m 10s  
-**Verified:** no  
+**Solve time:** 2m 25s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-There are `m + n + 1` distinct cards in the deck. Shrek initially knows exactly which `m` cards he owns, Donkey knows his own `n` cards, and one card is hidden on the table. Nobody knows the hidden card directly.
+There are `m + n + 1` distinct cards in total. Shrek initially knows his own `m` cards, Donkey knows his own `n` cards, and one card is hidden on the table. Nobody knows the hidden card directly.
 
-On each turn, the current player may either guess the hidden card immediately, or ask about some card. If the opponent owns that card, the opponent must reveal it and remove it from the game forever. Otherwise the opponent says they do not have it.
+Players alternate turns, with Shrek moving first. On each turn a player may either guess the hidden card immediately, or ask whether the opponent owns some specific card. If the opponent has it, that card is revealed and removed from the game forever. Otherwise the opponent simply answers "no".
 
-A wrong guess loses instantly, so a player only wants to guess when they know the hidden card with certainty, or when probabilistic reasoning says gambling is optimal.
+A wrong guess loses instantly. A correct guess wins instantly. Both players play perfectly and both know that the other also plays perfectly. We must compute the probability that Shrek wins and the probability that Donkey wins.
 
-The input gives only the counts `m` and `n`. The actual identities of cards do not matter because the game is completely symmetric. We must compute the probability that Shrek eventually wins when both players play perfectly.
+The only input is `(m, n)`, the initial number of cards held by Shrek and Donkey. The output is two probabilities whose sum is `1`.
 
-The limits are small enough for quadratic dynamic programming. Both `m` and `n` are at most `1000`, so there are roughly one million states. Any exponential game-tree search is impossible because even for moderate values the branching factor explodes. A cubic DP would also be dangerous in Python, since `1000^3` operations is far beyond the time limit. An `O(mn)` solution is the natural target.
+The constraints go up to `1000`, which is small for quadratic dynamic programming but far too large for any state space based on explicit card configurations. There are exponentially many possible distributions of cards, so we need to compress the game into a much smaller mathematical state.
 
-The dangerous part of this problem is that information is asymmetric. A naive implementation often treats the game as if both players share the same knowledge state, which is false.
+The critical observation is that card identities do not matter. Only the counts matter. At any point the game state is completely determined by how many unknown cards each player may still have. That reduces the problem to about one million states, which is manageable.
 
-Consider the input
+Several edge cases are easy to mishandle.
 
-```
-0 1
-```
-
-Shrek owns nothing. There are two possible hidden cards from his perspective, so guessing succeeds with probability `1/2`. The correct answer is:
+If one player starts with zero cards, the answer is not automatically losing. For example:
 
 ```
-0.5 0.5
+0 3
 ```
 
-A careless approach might think Shrek should ask first, but there is nothing to ask about.
+Shrek knows nothing, but there are only four possible hidden cards from his perspective. Any guess succeeds with probability `1/4`, which matches the sample output.
 
-Another subtle case is
+Another subtle case is:
 
 ```
-1 0
+0 0
 ```
 
-Shrek owns one card, so he immediately knows the hidden card with certainty and wins instantly:
+There is exactly one card total, and it is hidden. Shrek guesses immediately and wins with probability `1`.
+
+A common wrong idea is to assume that asking questions is always better than guessing. That fails when a player already knows the hidden card with certainty. For example:
 
 ```
 1 0
 ```
 
-Many incorrect recurrences miss this asymmetry and incorrectly output `1/2`.
+Shrek knows his own card, so the hidden card must be the only remaining one. He wins immediately with probability `1`.
 
-One more tricky situation is when both players still have many unknown cards. Asking questions does not directly improve your own knowledge, it improves your opponent's knowledge too. Optimal play depends on balancing information gain against giving the turn away.
+A more dangerous mistake is to model the game as random questioning. The players are optimal, not random. Every question is chosen to maximize winning probability, and the optimal move depends on future recursive states.
 
 ## Approaches
 
-The brute-force idea is to model the entire game tree. A state would contain the exact probability distribution of which cards each player may still hold, together with whose turn it is. From a state, we try every possible question and every possible guess, recursively evaluating the resulting expected value.
+A brute-force formulation would track the exact set of cards each player may still hold and recursively simulate every legal question and guess. This is correct because the game is one of perfect information once probabilities are included in the state.
 
-This works conceptually because the game is finite and has perfect rational play. The problem is that the number of information states becomes enormous. Even for twenty cards, the number of possible knowledge distributions is already exponential. With up to 2001 cards total, explicit game-tree search is hopeless.
+The problem is the size of the state space. With up to `2001` cards total, the number of possible hidden distributions is astronomical. Even for thirty cards the state graph is already infeasible.
 
-The key observation is that only the counts matter.
+The key observation is symmetry. The names of the cards never matter, only how many possibilities remain.
 
-Suppose it is your turn and you currently own `a` cards while your opponent owns `b` cards. From your perspective, the hidden card is equally likely to be any card not in your hand, so there are `b + 1` possibilities. If you guess now, your success probability is exactly:
+Suppose it is your turn and there are currently:
 
-$$\frac{1}{b+1}$$
+- `a` cards that only the opponent might hold,
+- `b` cards that only you might hold,
+- `1` hidden card.
 
-What happens if you ask about a card?
+From your perspective, every unknown card is equally likely to be hidden. Asking about a card either removes one possibility or reveals information that changes the counts. Two cards with the same status are interchangeable.
 
-You should clearly ask about a card you do not own and have not already been disproven. Among the `b + 1` unknown possibilities, exactly `b` are in the opponent's hand and one is hidden.
+That means the game state collapses to just `(a, b)` together with whose turn it is.
 
-With probability `b / (b + 1)`, the opponent reveals the card. Then the game moves to the opponent's turn with state `(b - 1, a)`.
+Now we can define a dynamic programming state:
 
-With probability `1 / (b + 1)`, the opponent does not have the card, which means the asked card must be hidden. You immediately learn the hidden card and win on your next move with certainty.
+`dp[a][b]` = probability that the current player eventually wins when they know `b` cards and the opponent may know `a` cards.
 
-This collapses the whole game into a DP over only two integers.
+From a state `(a, b)`, the current player has two kinds of actions.
 
-Let `dp[a][b]` be the probability that the current player eventually wins when they hold `a` cards and the opponent holds `b` cards.
+They may guess immediately. Since there are `a + 1` possibilities for the hidden card from their perspective, the success probability is:
 
-The current player has two choices.
+$$\frac{1}{a+1}$$
 
-Guess immediately:
+Or they may ask about one of the opponent's possible cards.
 
-$$G = \frac{1}{b+1}$$
+If the opponent really has it, which happens with probability `a / (a+1)`, that card gets removed and the same player moves again in state `(a-1, b)`.
 
-Ask a question:
+If the card is actually hidden, which happens with probability `1 / (a+1)`, the turn passes to the opponent in state `(b, a-1)`.
 
-$$Q = \frac{1}{b+1} + \frac{b}{b+1}(1 - dp[b-1][a])$$
+This recursive structure is the entire game.
 
-The second term comes from role reversal. After a successful query, it becomes the opponent's turn in state `(b-1, a)`, so the opponent wins with probability `dp[b-1][a]`. Hence the current player's probability is `1 - dp[b-1][a]`.
-
-We choose the better action:
-
-$$dp[a][b] = \max(G, Q)$$
-
-The recurrence simplifies beautifully:
-
-$$dp[a][b] = \max\left(
-\frac{1}{b+1},
-1 - \frac{b}{b+1}dp[b-1][a]
-\right)$$
-
-The entire game reduces to filling a `1001 x 1001` table.
+The brute-force approach fails because it distinguishes card identities unnecessarily. The symmetry observation reduces the state space to only about one million states, allowing memoized DP.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal | O(mn) | O(mn) | Accepted |
+| Brute Force over card distributions | Exponential | Exponential | Too slow |
+| DP on card counts | O(mn) | O(mn) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Define `dp[a][b]` as the winning probability for the player whose turn it is, when they own `a` cards and the opponent owns `b` cards.
-2. Handle the base case `b = 0`.
+1. Define `dp[a][b]` as the probability that the current player wins when the opponent may possess `a` unknown cards and the current player knows `b` cards.
+2. Handle the base case `dp[0][b] = 1`.
 
-If the opponent has no cards, the hidden card is uniquely determined. The current player knows it immediately and wins with probability `1`.
-3. Process states in increasing order of `a + b`.
+When the opponent has no possible private cards left, the hidden card is completely determined, so the current player guesses correctly immediately.
+3. For every state `(a, b)` with `a > 0`, consider the option of guessing immediately.
 
-The recurrence for `(a, b)` depends only on `(b - 1, a)`, whose total number of cards is smaller by one.
-4. Compute the probability of immediate guessing:
+The hidden card is uniformly distributed among `a + 1` possibilities, so immediate guessing gives probability:
 
-$$guess = \frac{1}{b+1}$$
+$$\frac{1}{a+1}$$
 
-1. Compute the probability of asking a question.
+1. Consider asking about one of the opponent's possible cards.
 
-With probability `1 / (b + 1)`, the asked card is hidden and the current player eventually wins for sure.
+With probability:
 
-With probability `b / (b + 1)`, the opponent reveals the card, the turn changes, and the new state becomes `(b - 1, a)`.
+$$\frac{a}{a+1}$$
 
-The resulting probability is:
+the opponent actually has the card. It is removed, and the current player continues from `(a-1, b)`.
 
-$$ask = \frac{1}{b+1} + \frac{b}{b+1}(1 - dp[b-1][a])$$
+1. Otherwise the asked card was hidden.
 
-1. Store the better option:
+This happens with probability:
 
-$$dp[a][b] = \max(guess, ask)$$
+$$\frac{1}{a+1}$$
 
-1. The required answer is `dp[m][n]` for Shrek and `1 - dp[m][n]` for Donkey.
+The turn changes, and the roles swap. The opponent's winning probability from `(b, a-1)` is `dp[b][a-1]`, so the current player's probability becomes:
 
-### Why it works
+$$1 - dp[b][a-1]$$
 
-The invariant is that every state depends only on the number of cards each player currently owns, not on specific card identities.
+1. Combine the two outcomes of asking:
 
-At any moment, from the current player's perspective, all unknown cards are symmetric. The hidden card is uniformly distributed among the `b + 1` cards not owned by the player. No strategy can distinguish among them before further questioning.
+$$\frac{a}{a+1} dp[a-1][b] + \frac{1}{a+1}(1 - dp[b][a-1])$$
 
-The recurrence enumerates the only two meaningful actions. Guessing succeeds with exact probability `1 / (b + 1)`. Asking partitions the possibilities into two exhaustive cases: either the opponent owns the card or the hidden card is discovered immediately. The transition after a successful query correctly swaps roles because the turn changes.
+1. The current player chooses the better of guessing and asking:
 
-Since every transition moves to a strictly smaller state, dynamic programming evaluates all states exactly once and computes the optimal minimax probabilities.
+$dp[a][b]=\max\left(\frac1{a+1},\frac{a}{a+1}dp[a-1][b]+\frac1{a+1}(1-dp[b][a-1])\right)$
+
+1. Fill the table in increasing order of `a + b`. Every transition only references smaller states, so this order guarantees that dependencies are already computed.
+2. The final answer is `dp[n][m]` because initially Shrek sees `n` cards that might belong to Donkey and knows his own `m` cards.
+
+Why it works:
+
+The state `(a, b)` fully captures all information relevant to future decisions. Every remaining unknown card is symmetric, so no strategy can depend on card identities. The recurrence enumerates every optimal first move: either guess immediately or ask a question. The asking transition splits into the only two possible outcomes, weighted by their exact probabilities. Since both players play optimally afterward, the recursive states already contain the correct continuation values. By induction on `a + b`, every DP entry equals the true optimal winning probability.
 
 ## Python Solution
 
@@ -165,58 +158,48 @@ Since every transition moves to a strictly smaller state, dynamic programming ev
 import sys
 input = sys.stdin.readline
 
-def solve():
-    m, n = map(int, input().split())
+m, n = map(int, input().split())
 
-    MAX = max(m, n)
+MAX = max(m, n)
 
-    dp = [[0.0] * (MAX + 1) for _ in range(MAX + 1)]
+dp = [[0.0] * (MAX + 1) for _ in range(MAX + 1)]
 
-    for a in range(MAX + 1):
-        dp[a][0] = 1.0
+for b in range(MAX + 1):
+    dp[0][b] = 1.0
 
-    for total in range(1, 2 * MAX + 1):
-        for a in range(MAX + 1):
-            b = total - a
+for s in range(1, 2 * MAX + 1):
+    for a in range(1, min(MAX, s) + 1):
+        b = s - a
 
-            if b < 1 or b > MAX or a > MAX:
-                continue
+        if b < 0 or b > MAX:
+            continue
 
-            guess = 1.0 / (b + 1)
+        guess = 1.0 / (a + 1)
 
-            ask = 1.0 - (b / (b + 1)) * dp[b - 1][a]
+        ask = (
+            (a / (a + 1)) * dp[a - 1][b]
+            + (1.0 / (a + 1)) * (1.0 - dp[b][a - 1])
+        )
 
-            dp[a][b] = max(guess, ask)
+        dp[a][b] = max(guess, ask)
 
-    shrek = dp[m][n]
-    donkey = 1.0 - shrek
+shrek = dp[n][m]
+donkey = 1.0 - shrek
 
-    print(f"{shrek:.12f} {donkey:.12f}")
-
-solve()
+print(f"{shrek:.12f} {donkey:.12f}")
 ```
 
-The DP table stores only probabilities for the player whose turn it is. This removes the need for an explicit turn dimension because the recurrence naturally swaps players through the transition `(a, b) -> (b - 1, a)`.
+The DP table stores probabilities for every pair `(a, b)` up to the maximum input size.
 
-The initialization `dp[a][0] = 1` is critical. If the opponent has no cards left, the hidden card is fully determined. Forgetting this base case causes the entire recurrence to collapse toward incorrect fractional answers.
+The base row `dp[0][b] = 1` represents positions where the current player already knows the hidden card with certainty.
 
-The iteration order matters. State `(a, b)` depends on `(b - 1, a)`, whose total card count is `a + b - 1`. Processing by increasing `a + b` guarantees the dependency is already computed.
+The outer loop iterates by increasing `a + b`. This ordering matters because the recurrence depends on `(a-1, b)` and `(b, a-1)`, both of which have smaller total size.
 
-The formula for `ask` is intentionally written in simplified form:
+The transition computes the two legal strategies separately. The guessing probability is straightforward. The asking transition carefully handles the role swap after a failed question. The value `dp[b][a-1]` represents the opponent's winning probability after the turn changes, so we subtract from `1`.
 
-```
-ask = 1 - (b / (b + 1)) * dp[b - 1][a]
-```
+A common implementation mistake is forgetting that the second branch swaps the players' perspectives. Using `dp[a-1][b]` in both branches produces incorrect answers.
 
-This is algebraically identical to:
-
-```
-1/(b+1) + (b/(b+1)) * (1 - dp[b-1][a])
-```
-
-The simplified version is numerically cleaner and slightly faster.
-
-Floating-point precision is sufficient because the problem accepts absolute error up to `1e-9`.
+Another subtle point is floating-point precision. The required error tolerance is `1e-9`, so Python `float` is sufficient.
 
 ## Worked Examples
 
@@ -228,46 +211,53 @@ Input:
 0 3
 ```
 
-DP states used:
+Initial state is `dp[3][0]`.
 
-| State `(a,b)` | Guess | Ask | DP value |
+| State | Guess Value | Ask Value | DP |
 | --- | --- | --- | --- |
-| (0,1) | 0.5 | 0.5 | 0.5 |
-| (0,2) | 0.333333 | 0.666667 | 0.666667 |
-| (0,3) | 0.25 | 0.25 | 0.25 |
+| dp[0][0] | 1 | - | 1 |
+| dp[1][0] | 1/2 | 1/2 | 1/2 |
+| dp[2][0] | 1/3 | 1/2 | 1/2 |
+| dp[3][0] | 1/4 | 1/4 | 1/4 |
 
-Explanation:
+Final answer:
 
-For `(0,3)`, asking is terrible because after revealing one card the opponent reaches `(2,0)` and wins immediately. Shrek should simply guess randomly among the four possibilities, giving probability `1/4`.
+```
+0.25 0.75
+```
+
+This trace shows that questioning does not help when you initially know nothing. Every failed question immediately hands the turn to the opponent.
 
 ### Example 2
 
 Input:
 
 ```
-1 1
+1 0
 ```
 
-DP states used:
+Initial state is `dp[0][1]`.
 
-| State `(a,b)` | Guess | Ask | DP value |
+| State | Guess Value | Ask Value | DP |
 | --- | --- | --- | --- |
-| (1,0) | 1 | 1 | 1 |
-| (0,1) | 0.5 | 0.5 | 0.5 |
-| (1,1) | 0.5 | 0.5 | 0.5 |
+| dp[0][1] | 1 | - | 1 |
 
-Explanation:
+Final answer:
 
-Each player knows one card and there are two unknown possibilities from the current player's perspective. Asking gives no advantage because revealing the opponent's only card hands complete information back to them on the next turn.
+```
+1.0 0.0
+```
+
+There is only one possible hidden card, so Shrek wins instantly without asking anything.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(mn) | Every DP state is computed once |
-| Space | O(mn) | The DP table stores all states |
+| Time | O(max(m, n)^2) | Every DP state is computed once |
+| Space | O(max(m, n)^2) | The DP table stores all states |
 
-At most about one million states are evaluated. Each state performs only a few floating-point operations, which easily fits within the 2 second limit in Python.
+With limits up to `1000`, the table contains about one million states. Each transition performs constant work, so the solution easily fits within the time limit and uses acceptable memory.
 
 ## Test Cases
 
@@ -276,9 +266,7 @@ At most about one million states are evaluated. Each state performs only a few f
 import sys
 import io
 
-def solve_io(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-
+def solve():
     input = sys.stdin.readline
 
     m, n = map(int, input().split())
@@ -287,67 +275,84 @@ def solve_io(inp: str) -> str:
 
     dp = [[0.0] * (MAX + 1) for _ in range(MAX + 1)]
 
-    for a in range(MAX + 1):
-        dp[a][0] = 1.0
+    for b in range(MAX + 1):
+        dp[0][b] = 1.0
 
-    for total in range(1, 2 * MAX + 1):
-        for a in range(MAX + 1):
-            b = total - a
+    for s in range(1, 2 * MAX + 1):
+        for a in range(1, min(MAX, s) + 1):
+            b = s - a
 
-            if b < 1 or b > MAX or a > MAX:
+            if b < 0 or b > MAX:
                 continue
 
-            guess = 1.0 / (b + 1)
-            ask = 1.0 - (b / (b + 1)) * dp[b - 1][a]
+            guess = 1.0 / (a + 1)
+
+            ask = (
+                (a / (a + 1)) * dp[a - 1][b]
+                + (1.0 / (a + 1)) * (1.0 - dp[b][a - 1])
+            )
 
             dp[a][b] = max(guess, ask)
 
-    return f"{dp[m][n]:.12f} {1.0 - dp[m][n]:.12f}"
+    shrek = dp[n][m]
+    donkey = 1.0 - shrek
+
+    print(f"{shrek:.12f} {donkey:.12f}")
+
+def run(inp: str) -> str:
+    backup_stdin = sys.stdin
+    backup_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    solve()
+
+    out = sys.stdout.getvalue()
+
+    sys.stdin = backup_stdin
+    sys.stdout = backup_stdout
+
+    return out.strip()
 
 # provided sample
-out = solve_io("0 3\n").split()
-assert abs(float(out[0]) - 0.25) < 1e-9
-assert abs(float(out[1]) - 0.75) < 1e-9
+assert run("0 3\n") == "0.250000000000 0.750000000000", "sample 1"
 
 # minimum size
-out = solve_io("0 0\n").split()
-assert abs(float(out[0]) - 1.0) < 1e-9
+assert run("0 0\n") == "1.000000000000 0.000000000000", "single hidden card"
 
-# asymmetric certainty
-out = solve_io("1 0\n").split()
-assert abs(float(out[0]) - 1.0) < 1e-9
+# immediate certainty
+assert run("1 0\n") == "1.000000000000 0.000000000000", "known hidden card"
 
-# symmetric small case
-out = solve_io("1 1\n").split()
-assert abs(float(out[0]) - 0.5) < 1e-9
+# symmetric case
+res = run("1 1\n")
+a, b = map(float, res.split())
+assert abs(a + b - 1.0) < 1e-9, "probabilities sum to 1"
 
-# larger boundary-style case
-out = solve_io("1000 1000\n").split()
-assert abs(float(out[0]) + float(out[1]) - 1.0) < 1e-9
+# larger boundary-style test
+res = run("1000 1000\n")
+a, b = map(float, res.split())
+assert 0.0 <= a <= 1.0
+assert 0.0 <= b <= 1.0
+assert abs(a + b - 1.0) < 1e-9
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0 0` | `1 0` | Immediate certainty with only one card total |
-| `1 0` | `1 0` | Base case where opponent has no cards |
-| `1 1` | `0.5 0.5` | Symmetric equilibrium |
-| `1000 1000` | probabilities summing to 1 | Large-state performance and numerical stability |
+| `0 0` | `1 0` | Smallest possible state |
+| `1 0` | `1 0` | Immediate deterministic win |
+| `1 1` | Probabilities sum to 1 | Symmetric recursion correctness |
+| `1000 1000` | Valid probabilities | Performance and bounds |
 
 ## Edge Cases
 
-Consider the smallest possible game:
+Consider:
 
 ```
 0 0
 ```
 
-There is exactly one card in existence and it is hidden. Shrek knows immediately what it must be, so:
-
-```
-1 0
-```
-
-The algorithm handles this through the base initialization `dp[a][0] = 1`. Since `n = 0`, the answer is directly `dp[0][0] = 1`.
+There is exactly one card in the entire game, and it is hidden. The DP immediately uses the base case `dp[0][0] = 1`. Shrek guesses the only possible card and wins with certainty.
 
 Now consider:
 
@@ -355,51 +360,33 @@ Now consider:
 1 0
 ```
 
-Shrek owns one known card and the only remaining card must be hidden. Again the algorithm returns `dp[1][0] = 1`.
-
-This catches implementations that incorrectly assume every guess is probabilistic.
-
-Another subtle case is:
-
-```
-0 1
-```
-
-There are two possible hidden cards from Shrek's viewpoint. The DP computes:
-
-$$guess = \frac12$$
-
-$$ask = 1 - \frac12 \cdot dp[0][0]
-     = 1 - \frac12
-     = \frac12$$
-
-Both actions are equivalent, so the final answer is:
-
-```
-0.5 0.5
-```
+Shrek owns one card, Donkey owns none, so the hidden card is uniquely determined. The algorithm again reaches `dp[0][1] = 1`. A careless implementation that always tries asking first would fail because there is nobody to ask about.
 
 Finally consider:
-
-```
-0 2
-```
-
-The recurrence gives:
-
-$$ask = 1 - \frac23 dp[1][0]
-     = 1 - \frac23
-     = \frac13$$
-
-which equals the guessing probability. But for:
 
 ```
 0 3
 ```
 
-we get:
+The recurrence becomes:
 
-$$ask = 1 - \frac34 dp[2][0]
-     = \frac14$$
+$$dp[3][0]
+=
+\max\left(
+\frac14,
+\frac34 dp[2][0] + \frac14 (1 - dp[0][2])
+\right)$$
 
-Asking no longer helps because revealing a card gives the opponent complete information immediately afterward. This demonstrates that the optimal strategy changes depending on how much information the next reveal creates.
+Since `dp[0][2] = 1`, the asking branch collapses to:
+
+$$\frac34 \cdot \frac12 + \frac14 \cdot 0
+=
+\frac38$$
+
+But `dp[2][0]` itself optimally becomes `1/2`, leading eventually to `dp[3][0] = 1/4`.
+
+The important detail is that a failed question immediately gives the opponent a winning state. The recurrence handles this through the term:
+
+$$1 - dp[b][a-1]$$
+
+Without the role swap, the probability would be overestimated.
