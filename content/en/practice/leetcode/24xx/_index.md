@@ -76,3 +76,11 @@ draft: false
 | 2471 | [Minimum Number of Operations to Sort a Binary Tree by Level](2471.md) | 🟡 Medium | 2m 22s | The problem requires us to sort each level of a binary tree in stri… |
 | 2473 | [Minimum Cost to Buy Apples](2473.md) | 🟡 Medium | 42s | This problem involves a weighted undirected graph where nodes repre… |
 | 2474 | [Customers With Strictly Increasing Purchases](2474.md) | 🔴 Hard | 51s | This problem requires identifying customers whose total annual purc… |
+| 2477 | [Minimum Fuel Cost to Report to the Capital](2477.md) | 🟡 Medium | 1m 19s | This problem describes a country road network that forms a tree. A … |
+| 2478 | [Number of Beautiful Partitions](2478.md) | 🔴 Hard | 2m 20s | The problem gives us a string s containing only digits from '1' to … |
+| 2479 | [Maximum XOR of Two Non-Overlapping Subtrees](2479.md) | 🔴 Hard | 1m 53s | We are given a rooted tree with n nodes. The tree is rooted at node… |
+| 2481 | [Minimum Cuts to Divide a Circle](2481.md) | 🟢 Easy | 52s | The problem asks us to determine the minimum number of valid cuts n… |
+| 2483 | [Minimum Penalty for a Shop](2483.md) | 🟡 Medium | 48s | The problem asks us to determine the optimal closing time for a sho… |
+| 2486 | [Append Characters to String to Make Subsequence](2486.md) | 🟡 Medium | 2m 30s | The problem gives us two strings, s and t, and asks for the minimum… |
+| 2487 | [Remove Nodes From Linked List](2487.md) | 🟡 Medium | 38s | The problem asks us to process a singly-linked list and remove node… |
+| 2489 | [Number of Substrings With Fixed Ratio](2489.md) | 🟡 Medium | 1m 16s | We are given a binary string s consisting only of '0' and '1', alon… |

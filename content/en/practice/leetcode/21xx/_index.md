@@ -106,7 +106,7 @@ draft: false
 | 2193 | [Minimum Number of Moves to Make Palindrome](2193.md) | 🔴 Hard | 1m 15s | This problem asks us to transform a given string into a palindrome … |
 | 2194 | [Cells in a Range on an Excel Sheet](2194.md) | 🟢 Easy | 39s | This problem is asking us to generate all the Excel-style cell refe… |
 | 2195 | [Append K Integers With Minimal Sum](2195.md) | 🟡 Medium | 2m 24s | The problem asks us to append k unique positive integers to an exis… |
-| 2196 | [Create Binary Tree From Descriptions](2196.md) | 🟡 Medium | 1m 29s | The problem gives us a list of parent-child relationships that toge… |
+| 2196 | [Create Binary Tree From Descriptions](2196.md) | 🟡 Medium | 10m 30s | The problem asks us to construct a binary tree from a list of relat… |
 | 2197 | [Replace Non-Coprime Numbers in Array](2197.md) | 🔴 Hard | 2m 21s | The problem asks us to repeatedly replace adjacent non-coprime numb… |
 | 2198 | [Number of Single Divisor Triplets](2198.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many ordered triplets of distinct … |
 | 2199 | [Finding the Topic of Each Post](2199.md) | 🔴 Hard | 1m 20s | The problem gives us two database tables, Keywords and Posts. The K… |

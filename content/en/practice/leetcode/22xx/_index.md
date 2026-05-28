@@ -14,9 +14,9 @@ draft: false
 | 2201 | [Count Artifacts That Can Be Extracted](2201.md) | 🟡 Medium | 1m 30s | This problem models an excavation process on a square n x n grid. S… |
 | 2202 | [Maximize the Topmost Element After K Moves](2202.md) | 🟡 Medium | 1m 19s | In this problem, we are given a pile of integers represented as an … |
 | 2203 | [Minimum Weighted Subgraph With the Required Paths](2203.md) | 🔴 Hard | 51s | The problem asks us to find the minimum-weight subgraph of a weight… |
-| 2204 | [Distance to a Cycle in Undirected Graph](2204.md) | 🔴 Hard | 37s | This problem asks us to compute the minimum distance from every nod… |
+| 2204 | [Distance to a Cycle in Undirected Graph](2204.md) | 🔴 Hard | 1m 27s | This problem gives us a connected undirected graph with n nodes and… |
 | 2205 | [The Number of Users That Are Eligible for Discount](2205.md) | 🟢 Easy | 48s | The problem asks us to determine how many users are eligible for a … |
-| 2206 | [Divide Array Into Equal Pairs](2206.md) | 🟢 Easy | 1m 1s | The problem gives an array nums containing exactly 2 n integers. Ou… |
+| 2206 | [Divide Array Into Equal Pairs](2206.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums containing exactly 2 n e… |
 | 2207 | [Maximize Number of Subsequences in a String](2207.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of occurrences of a 2-ch… |
 | 2208 | [Minimum Operations to Halve Array Sum](2208.md) | 🟡 Medium | 1m 20s | The problem gives us an array of positive integers, and in one oper… |
 | 2209 | [Minimum White Tiles After Covering With Carpets](2209.md) | 🔴 Hard | 34s | The problem presents a binary string floor representing a row of ti… |
