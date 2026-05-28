@@ -24,3 +24,8 @@ draft: false
 | 2414 | [Length of the Longest Alphabetical Continuous Substring](2414.md) | 🟡 Medium | 1m 10s | The problem asks us to find the length of the longest substring in … |
 | 2417 | [Closest Fair Integer](2417.md) | 🟡 Medium | 41s | The problem asks us to find the smallest fair integer that is great… |
 | 2419 | [Longest Subarray With Maximum Bitwise AND](2419.md) | 🟡 Medium | 58s | The problem asks us to find the longest contiguous subarray whose b… |
+| 2421 | [Number of Good Paths](2421.md) | 🔴 Hard | 49s | The problem presents a tree with n nodes numbered from 0 to n - 1 a… |
+| 2422 | [Merge Operations to Turn Array Into a Palindrome](2422.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers and allows us to… |
+| 2424 | [Longest Uploaded Prefix](2424.md) | 🟡 Medium | 3m 6s | The problem asks us to design a data structure that tracks uploaded… |
+| 2425 | [Bitwise XOR of All Pairings](2425.md) | 🟡 Medium | 47s | The problem asks us to compute the bitwise XOR of all pairings betw… |
+| 2427 | [Number of Common Factors](2427.md) | 🟢 Easy | 1m 5s | The problem gives us two positive integers, a and b, and asks us to… |

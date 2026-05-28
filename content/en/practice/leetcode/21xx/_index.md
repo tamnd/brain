@@ -58,19 +58,19 @@ draft: false
 | 2145 | [Count the Hidden Sequences](2145.md) | 🟡 Medium | 50s | The problem asks us to determine how many possible sequences of int… |
 | 2146 | [K Highest Ranked Items Within a Price Range](2146.md) | 🟡 Medium | 1m 5s | The problem presents a 2D grid representing a shop layout where eac… |
 | 2147 | [Number of Ways to Divide a Long Corridor](2147.md) | 🔴 Hard | 1m 21s | The corridor is represented as a string containing two kinds of cha… |
-| 2148 | [Count Elements With Strictly Smaller and Greater Elements ](2148.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and asks us to count how… |
-| 2149 | [Rearrange Array Elements by Sign](2149.md) | 🟡 Medium | 1m 32s | The problem gives us an array nums that contains an equal number of… |
-| 2150 | [Find All Lonely Numbers in the Array](2150.md) | 🟡 Medium | 4m 51s | The problem asks us to identify all "lonely" numbers in an integer … |
-| 2151 | [Maximum Good People Based on Statements](2151.md) | 🔴 Hard | 57s | This problem asks us to determine the maximum number of good people… |
-| 2152 | [Minimum Number of Lines to Cover Points](2152.md) | 🟡 Medium | 58s | The problem asks us to find the minimum number of straight lines re… |
-| 2153 | [The Number of Passengers in Each Bus II](2153.md) | 🔴 Hard | 1m 4s | The problem describes a scenario at a bus station where buses and p… |
-| 2154 | [Keep Multiplying Found Values by Two](2154.md) | 🟢 Easy | 6m 45s | The problem is asking us to repeatedly search for a number in an ar… |
-| 2155 | [All Divisions With the Highest Score of a Binary Array](2155.md) | 🟡 Medium | 2m 19s | The problem gives you a binary array nums of length n and asks you … |
+| 2148 | [Count Elements With Strictly Smaller and Greater Elements ](2148.md) | 🟢 Easy | 1m 15s | The problem gives us an integer array nums and asks us to count how… |
+| 2149 | [Rearrange Array Elements by Sign](2149.md) | 🟡 Medium | 49s | The problem asks us to rearrange a given integer array nums such th… |
+| 2150 | [Find All Lonely Numbers in the Array](2150.md) | 🟡 Medium | 1m 32s | The corridor is represented as a string where each character is eit… |
+| 2151 | [Maximum Good People Based on Statements](2151.md) | 🔴 Hard | 1m | The problem asks us to determine the maximum number of good people … |
+| 2152 | [Minimum Number of Lines to Cover Points](2152.md) | 🟡 Medium | 54s | This problem asks us to determine the minimum number of straight li… |
+| 2153 | [The Number of Passengers in Each Bus II](2153.md) | 🔴 Hard | 46s | The problem describes a simulation of passengers arriving at a bus … |
+| 2154 | [Keep Multiplying Found Values by Two](2154.md) | 🟢 Easy | 1m 7s | This problem asks us to repeatedly search for a value inside an int… |
+| 2155 | [All Divisions With the Highest Score of a Binary Array](2155.md) | 🟡 Medium | 1m 13s | The problem gives us a binary array nums, meaning every element is … |
 | 2156 | [Find Substring With Given Hash Value](2156.md) | 🔴 Hard | 1m 20s | We are given a string s and a polynomial rolling hash function. For… |
-| 2157 | [Groups of Strings](2157.md) | 🔴 Hard | 1m 43s | The problem gives us an array of strings where every string contain… |
-| 2158 | [Amount of New Area Painted Each Day](2158.md) | 🔴 Hard | 1m 6s | The problem describes a painting process on a number line. Each day… |
+| 2157 | [Groups of Strings](2157.md) | 🔴 Hard | 56s | The problem asks us to group a list of unique lowercase strings bas… |
+| 2158 | [Amount of New Area Painted Each Day](2158.md) | 🔴 Hard | 43s | This problem describes a painting scenario represented as a one-dim… |
 | 2159 | [Order Two Columns Independently](2159.md) | 🟡 Medium | 1m 14s | This problem provides a database table named Data with two integer … |
-| 2160 | [Minimum Sum of Four Digit Number After Splitting Digits](2160.md) | 🟢 Easy | 50s | The problem requires taking a four-digit positive integer num and s… |
+| 2160 | [Minimum Sum of Four Digit Number After Splitting Digits](2160.md) | 🟢 Easy | 45s | The problem asks us to take a four-digit integer num and split its … |
 | 2161 | [Partition Array According to Given Pivot](2161.md) | 🟡 Medium | 1m 17s | This problem asks us to rearrange an array around a given pivot val… |
 | 2162 | [Minimum Cost to Set Cooking Time](2162.md) | 🟡 Medium | 54s | The problem asks us to determine the minimum cost to set a microwav… |
 | 2163 | [Minimum Difference in Sums After Removal of Elements](2163.md) | 🔴 Hard | 54s | The problem presents a 0-indexed integer array nums of length 3 n a… |
