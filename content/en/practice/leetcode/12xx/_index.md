@@ -69,11 +69,12 @@ draft: false
 | 1257 | [Smallest Common Region](1257.md) | 🟡 Medium | 1m 16s | This problem describes a hierarchical relationship between geograph… |
 | 1258 | [Synonymous Sentences](1258.md) | 🟡 Medium | 56s | This problem asks us to generate all possible synonymous variations… |
 | 1259 | [Handshakes That Don't Cross](1259.md) | 🔴 Hard | 1m 10s | In this problem, we are given an even number of people standing aro… |
-| 1260 | [Shift 2D Grid](1260.md) | 🟢 Easy | 37s | The problem asks us to "shift" the elements of a 2D grid k times. T… |
-| 1261 | [Find Elements in a Contaminated Binary Tree](1261.md) | 🟡 Medium | 1m 6s | This problem gives us a binary tree whose values have been complete… |
-| 1262 | [Greatest Sum Divisible by Three](1262.md) | 🟡 Medium | 1m 17s | The problem gives an integer array nums, and asks for the maximum p… |
-| 1263 | [Minimum Moves to Move a Box to Their Target Location](1263.md) | 🔴 Hard | 1m 48s | LeetCode 1263, LeetCode "Minimum Moves to Move a Box to Their Targe… |
-| 1265 | [Print Immutable Linked List in Reverse](1265.md) | 🟡 Medium | 1m 17s | This problem gives us access to a linked list through a restricted … |
+| 1260 | [Shift 2D Grid](1260.md) | 🟢 Easy | 1m 13s | This problem asks us to simulate repeated shift operations on a 2D … |
+| 1261 | [Find Elements in a Contaminated Binary Tree](1261.md) | 🟡 Medium | 1m 9s | The problem gives us a binary tree where every node value has been … |
+| 1262 | [Greatest Sum Divisible by Three](1262.md) | 🟡 Medium | 53s | The problem asks us to find the maximum sum of elements from an int… |
+| 1263 | [Minimum Moves to Move a Box to Their Target Location](1263.md) | 🔴 Hard | 1m 9s | The problem is a variant of the classic "Sokoban" puzzle. You are g… |
+| 1264 | [Page Recommendations](1264.md) | 🟡 Medium | 1m 12s | This problem models a small social network with two database tables… |
+| 1265 | [Print Immutable Linked List in Reverse](1265.md) | 🟡 Medium | 1m 17s | This problem gives us a special type of linked list called an immut… |
 | 1266 | [Minimum Time Visiting All Points](1266.md) | 🟢 Easy | 43s | The problem asks us to calculate the minimum time required to visit… |
 | 1267 | [Count Servers that Communicate](1267.md) | 🟡 Medium | 1m 30s | The problem gives us a two dimensional grid representing a server c… |
 | 1268 | [Search Suggestions System](1268.md) | 🟡 Medium | 46s | The problem asks us to implement a search suggestion system for a l… |
@@ -81,3 +82,15 @@ draft: false
 | 1270 | [All People Report to the Given Manager](1270.md) | 🟡 Medium | 40s | Let's dive into a detailed technical guide for LeetCode 1270. The p… |
 | 1271 | [Hexspeak](1271.md) | 🟢 Easy | 1m 15s | The problem asks us to convert a decimal number into a special hexa… |
 | 1272 | [Remove Interval](1272.md) | 🟡 Medium | 1m 20s | The problem gives us a sorted list of disjoint half open intervals.… |
+| 1273 | [Delete Tree Nodes](1273.md) | 🟡 Medium | 1m 20s | The problem gives us a rooted tree with nodes total vertices. Every… |
+| 1274 | [Number of Ships in a Rectangle](1274.md) | 🔴 Hard | 1m 23s | This problem is an interactive divide and conquer problem where we … |
+| 1275 | [Find Winner on a Tic Tac Toe Game](1275.md) | 🟢 Easy | 1m 22s | This problem asks us to simulate a game of Tic-Tac-Toe on a standar… |
+| 1276 | [Number of Burgers with No Waste of Ingredients](1276.md) | 🟡 Medium | 1m 1s | The problem gives us two integers, tomatoSlices and cheeseSlices, w… |
+| 1277 | [Count Square Submatrices with All Ones](1277.md) | 🟡 Medium | 1m 20s | The problem gives us a binary matrix of size m x n, where each cell… |
+| 1278 | [Palindrome Partitioning III](1278.md) | 🔴 Hard | 56s | This problem asks us to transform a string s into k palindromic sub… |
+| 1279 | [Traffic Light Controlled Intersection](1279.md) | 🟢 Easy | 1m 16s | This problem asks us to design a system for controlling a traffic l… |
+| 1280 | [Students and Examinations](1280.md) | 🟢 Easy | 1m 21s | This problem asks us to generate a complete report showing how many… |
+| 1281 | [Subtract the Product and Sum of Digits of an Integer](1281.md) | 🟢 Easy | 50s | The problem gives us a positive integer n and asks us to compute tw… |
+| 1282 | [Group the People Given the Group Size They Belong To](1282.md) | 🟡 Medium | 1m 11s | The problem gives us an array called groupSizes, where each index r… |
+| 1283 | [Find the Smallest Divisor Given a Threshold](1283.md) | 🟡 Medium | 1m 4s | The problem asks us to find the smallest positive integer divisor s… |
+| 1284 | [Minimum Number of Flips to Convert Binary Matrix to Zero Matrix](1284.md) | 🔴 Hard | 48s | This problem asks us to determine the minimum number of flips requi… |
