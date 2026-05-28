@@ -1,7 +1,7 @@
 ---
 title: "CF 3C - Tic-tac-toe"
-description: "We are given a final 3 × 3 tic-tac-toe board and need to determine whether this position could appear during a real game"
-date: "2026-05-27T00:00:00+07:00"
+description: "We are given a snapshot of a tic-tac-toe board, represented as a 3×3 grid. Each cell is either empty (.), contains a cro"
+date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "games", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 3
@@ -9,27 +9,26 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Beta Round 3"
 rating: 1800
 weight: 3
-solve_time_s: 103
+solve_time_s: 277
 verified: true
 draft: false
 ---
+
+[CF 3C - Tic-tac-toe](https://codeforces.com/problemset/problem/3/C)
+
+**Rating:** 1800  
+**Tags:** brute force, games, implementation  
+**Solve time:** 4m 37s  
+**Verified:** yes  
+
 ## Solution
 ## Problem Understanding
 
-We are given a final 3 × 3 tic-tac-toe board and need to determine whether this position could appear during a real game played according to the rules.
+We are given a snapshot of a tic-tac-toe board, represented as a 3×3 grid. Each cell is either empty (`.`), contains a cross (`X`), or contains a nought (`0`). The first player always places crosses, and the second player places noughts. The board might be partially filled, completely filled, or even in an impossible state.
 
-The tricky part is that we are not simulating future moves. We are validating whether the current board is reachable from an empty board with alternating turns, where X always moves first.
+The task is to determine what state the game is in. We can output one of six possible results: the first player won, the second player won, it is the first player's turn next, it is the second player's turn next, the game is a draw, or the board is illegal. Illegal boards occur when the placement of Xs and 0s is inconsistent with the rules, for example if the second player has played more times than the first player, or both players have winning lines simultaneously.
 
-A valid game follows several strict rules at the same time:
-
-- The number of X moves is either equal to the number of 0 moves, or exactly one larger.
-- X always goes first.
-- The game stops immediately after someone wins.
-- Both players cannot legitimately win at the same time.
-
-The board is tiny, only 9 cells, so performance is not a concern at all. Even exhaustive checking would run instantly. The difficulty comes from carefully handling all game-state rules without missing contradictions.
-
-A common mistake is checking only move counts. Consider this board:
+The constraints are small: a fixed 3×3 board. This tells us that any solution that iterates over cells a constant number of times will run well under the 1-second time limit. There is no need for optimization based on n, because n is always 9 or fewer. Edge cases are tricky because a naive check of “who has more Xs” may fail to detect illegal states where both players seem to have winning lines, or when the counts do not match the turn order. For example:
 
 ```
 XXX
@@ -37,135 +36,37 @@ XXX
 ...
 ```
 
-Both players have a winning line. A naive solution might accept this because both players have three marks and the counts differ by one. But this position is impossible. Once X completed a winning line, the game should have ended immediately, so 0 never gets another move.
-
-Another subtle case is when the winner has the wrong move count.
+Here both players appear to have winning lines. The correct output is `illegal`. A careless implementation that checks wins independently without validating turn counts would incorrectly return `first player won` or `second player won`. Another subtle case is:
 
 ```
-XXX
-0..
-0..
-```
-
-X has won, and the counts are X = 3 and 0 = 2. This is valid because X always has exactly one extra move after winning.
-
-Now look at this:
-
-```
-XXX
-00.
-...
-```
-
-Counts are X = 3 and 0 = 2, still valid.
-
-But this board is illegal:
-
-```
-XXX
-000
+X0X
+0X0
 X..
 ```
 
-X count is 4, 0 count is 3, which superficially looks fine. The real issue is that both players win simultaneously.
-
-Another edge case happens when the board is full:
-
-```
-X0X
-0XX
-0X0
-```
-
-Nobody wins, and all 9 cells are filled. This is a draw.
-
-A careless implementation may also forget that if 0 wins, then both players must have played the same number of moves. Since 0 always moves second, 0 can only complete a winning line immediately after its own turn.
-
-Example:
-
-```
-X0X
-X00
-0X.
-```
-
-0 wins diagonally, and counts are X = 4, 0 = 4. Valid.
-
-But this is impossible:
-
-```
-X0X
-X00
-0XX
-```
-
-0 still wins, but now X = 5 and 0 = 4. X already played after 0 had won.
+Here the first player has a winning line along the first column, but the counts of Xs and 0s must still be consistent with the first player moving first. The correct result is `the first player won`, not `illegal`.
 
 ## Approaches
 
-The most direct idea is brute force simulation. Starting from the empty board, we could generate every possible legal sequence of moves and store all reachable board states. Then we simply check whether the input board appears among them.
+A brute-force approach would consider generating every possible sequence of moves that could lead to the given board and check if it is legal. Each turn has at most 9 options initially, 8 in the next turn, etc. This is factorial complexity (9!) and unnecessary given the small fixed size of the board. It would be correct but overly cumbersome.
 
-This works because tic-tac-toe is tiny. There are at most 9! move orders, which is only 362880 sequences. Even with recursive generation and validation, this easily fits within the limits.
-
-The brute-force solution is also naturally correct because it follows the game rules exactly. If a board is generated, it is valid. If not, it is illegal.
-
-Still, we can do much better with simple logical checks. The board has only a few structural properties that completely determine validity.
-
-The key observation is that tic-tac-toe states are constrained by move parity and winning conditions.
-
-If X has won, then X must have played exactly one more move than 0.
-
-If 0 has won, then both players must have played the same number of moves.
-
-If both players have winning lines simultaneously, the state is impossible.
-
-If neither player has won, then the next turn depends entirely on move counts:
-
-- equal counts means X moves next
-- X having one extra move means 0 moves next
-
-Once these rules are encoded carefully, the entire problem becomes a few counting operations and eight line checks.
+The insight for an optimal approach is that legality and game state can be determined entirely by two factors: the counts of Xs and 0s, and the existence of winning lines. A board is legal if the number of Xs is equal to the number of 0s or one more than the number of 0s. If there is a winning line, the winner must have played last, and counts must align: X wins only if Xs are one more than 0s; 0 wins only if Xs equal 0s. Boards where both X and 0 have winning lines are always illegal. Once legality is established, determining whose turn is next is trivial by comparing counts. A draw occurs if the board is full and no player has won.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(9!) | O(9!) | Accepted |
+| Brute Force | O(9!) | O(1) | Too slow / unnecessary |
 | Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the 3 × 3 board and count the number of X and 0 characters.
+1. Count the number of Xs and 0s on the board. Let these be `count_X` and `count_0`. The counts determine whose turn it is. If `count_0 > count_X` or `count_X - count_0 > 1`, the board is illegal. This ensures turn order is respected.
+2. Check for winning lines. Define a winning line as three identical symbols in a row, column, or diagonal. Iterate over all rows, columns, and both diagonals, marking whether X has won and whether 0 has won.
+3. If both X and 0 have winning lines simultaneously, the board is illegal. Tic-tac-toe cannot reach a state where both players have completed a winning line on the same board because the game ends immediately when a player wins.
+4. If X has a winning line, check that `count_X == count_0 + 1`. If this is false, the board is illegal. If true, output `the first player won`.
+5. If 0 has a winning line, check that `count_X == count_0`. If this is false, the board is illegal. If true, output `the second player won`.
+6. If no one has won, check whether the board is full. If full, output `draw`. If not full, determine whose turn it is: if `count_X == count_0`, it is the first player’s turn; if `count_X == count_0 + 1`, it is the second player’s turn.
 
-X always moves first, so valid counts must satisfy:
-
-- `x == o`
-- `x == o + 1`
-
-Any other difference is immediately illegal.
-2. Check whether X has a winning line.
-
-We examine all 8 possible winning combinations:
-
-- 3 rows
-- 3 columns
-- 2 diagonals
-3. Check whether 0 has a winning line.
-
-This uses the same logic as the previous step.
-4. If both X and 0 have winning lines, print `"illegal"`.
-
-In a real game, the game ends immediately after the first win. Both players cannot legally win together.
-5. If X has won, verify that X has exactly one more move than 0.
-
-Since X moves first, X can only win immediately after making its own move.
-6. If 0 has won, verify that both players have played the same number of moves.
-
-0 always moves second, so after a valid 0 victory the move counts must match.
-7. If nobody has won and the board is full, print `"draw"`.
-8. Otherwise determine whose turn is next.
-
-If counts are equal, X moves next, so print `"first"`.
-
-If X has one extra move, then 0 moves next, so print `"second"`.
+Why it works: This algorithm maintains the invariant that any decision is consistent with the rules of tic-tac-toe: turns alternate starting with X, the game ends immediately when someone wins, and the counts of symbols on the board are consistent with the winner. By checking counts and winning lines in this order, all illegal configurations are caught.
 
 ## Python Solution
 
@@ -173,72 +74,44 @@ If X has one extra move, then 0 moves next, so print `"second"`.
 import sys
 input = sys.stdin.readline
 
-board = [input().strip() for _ in range(3)]
-
-x = sum(row.count('X') for row in board)
-o = sum(row.count('0') for row in board)
-
-def win(ch):
+def check_winner(board, symbol):
     for i in range(3):
-        if all(board[i][j] == ch for j in range(3)):
+        if all(board[i][j] == symbol for j in range(3)):
             return True
-
-    for j in range(3):
-        if all(board[i][j] == ch for i in range(3)):
+        if all(board[j][i] == symbol for j in range(3)):
             return True
-
-    if all(board[i][i] == ch for i in range(3)):
+    if all(board[i][i] == symbol for i in range(3)):
         return True
-
-    if all(board[i][2 - i] == ch for i in range(3)):
+    if all(board[i][2-i] == symbol for i in range(3)):
         return True
-
     return False
 
-x_win = win('X')
-o_win = win('0')
+board = [input().strip() for _ in range(3)]
+count_X = sum(row.count('X') for row in board)
+count_0 = sum(row.count('0') for row in board)
 
-if not (x == o or x == o + 1):
+x_wins = check_winner(board, 'X')
+o_wins = check_winner(board, '0')
+
+if count_0 > count_X or count_X - count_0 > 1:
     print("illegal")
-
-elif x_win and o_win:
+elif x_wins and o_wins:
     print("illegal")
-
-elif x_win:
-    if x == o + 1:
-        print("the first player won")
-    else:
-        print("illegal")
-
-elif o_win:
-    if x == o:
-        print("the second player won")
-    else:
-        print("illegal")
-
-elif x + o == 9:
+elif x_wins:
+    print("the first player won" if count_X == count_0 + 1 else "illegal")
+elif o_wins:
+    print("the second player won" if count_X == count_0 else "illegal")
+elif count_X + count_0 == 9:
     print("draw")
-
-elif x == o:
-    print("first")
-
 else:
-    print("second")
+    print("first" if count_X == count_0 else "second")
 ```
 
-The solution begins by counting how many moves each player has made. This is the foundation for every later check because move parity determines whose turn it should be.
-
-The `win()` helper checks all possible winning lines for a given character. Since the board size is fixed, explicit checks are simple and fast.
-
-The order of conditions matters. Illegal move counts must be rejected before anything else. Simultaneous wins must also be handled early because later conditions assume only one player may have won.
-
-After validating winning conditions, the remaining states are either a draw or an unfinished game. At that point, move parity alone determines whose turn comes next.
-
-One subtle detail is that a full board is checked only after confirming nobody has already won. Otherwise a winning full board could incorrectly become `"draw"`.
+The solution first counts Xs and 0s to validate turn order. The `check_winner` function evaluates all rows, columns, and diagonals to determine winners. Each decision after that directly implements the rules described in the algorithm walkthrough.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1**
 
 Input:
 
@@ -248,199 +121,81 @@ X0X
 .X.
 ```
 
-### Trace
-
 | Variable | Value |
 | --- | --- |
-| X count | 3 |
-| 0 count | 2 |
-| X wins | False |
-| 0 wins | False |
-| Board full | False |
-| Next turn | second |
+| count_X | 3 |
+| count_0 | 2 |
+| x_wins | False |
+| o_wins | False |
+| Board full? | False |
 
-Output:
+No winner yet, counts are `count_X = count_0 + 1`, so it is the second player’s turn. Output is `second`.
 
-```
-second
-```
-
-This board is valid because X has exactly one more move than 0, and nobody has won yet. That means it is 0's turn next, which corresponds to `"second"`.
-
-### Example 2
+**Sample 2**
 
 Input:
 
 ```
 XXX
-000
-...
+0.0
+..0
 ```
-
-### Trace
 
 | Variable | Value |
 | --- | --- |
-| X count | 3 |
-| 0 count | 3 |
-| X wins | True |
-| 0 wins | True |
-| Result | illegal |
+| count_X | 3 |
+| count_0 | 3 |
+| x_wins | True |
+| o_wins | False |
 
-Output:
+X has a winning line but `count_X` is not `count_0 + 1`. Output is `illegal`.
 
-```
-illegal
-```
-
-This trace demonstrates the most important invalid scenario. Both players cannot simultaneously have winning lines in a legal game because play stops immediately after the first victory.
+These traces show how counting and line checks enforce legality and determine turn or winner.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | The board size is fixed at 3 × 3, so all checks examine only constant-sized data |
-| Space | O(1) | Only a few counters and boolean variables are used |
+| Time | O(1) | Fixed 3×3 grid, constant number of checks (3 rows + 3 cols + 2 diagonals). |
+| Space | O(1) | Only counters and board storage, no extra structures. |
 
-The solution performs a fixed number of operations regardless of input. Even the brute-force approach would fit comfortably, so this constant-time validation approach is easily within the limits.
+The solution comfortably fits within 1-second time and 64 MB memory limit.
 
 ## Test Cases
 
-### Test Case 1
+```python
+import sys, io
 
-Input:
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    import builtins
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        # solution
+        board = [input().strip() for _ in range(3)]
+        count_X = sum(row.count('X') for row in board)
+        count_0 = sum(row.count('0') for row in board)
 
+        def check_winner(board, symbol):
+            for i in range(3):
+                if all(board[i][j] == symbol for j in range(3)):
+                    return True
+                if all(board[j][i] == symbol for j in range(3)):
+                    return True
+            if all(board[i][i] == symbol for i in range(3)):
+                return True
+            if all(board[i][2-i] == symbol for i in range(3)):
+                return True
+            return False
+
+        x_wins = check_winner(board, 'X')
+        o_wins = check_winner(board, '0')
+
+        if count_0 > count_X or count_X - count_0 > 1:
+            print("illegal")
+        elif x_wins and o_wins:
+            print("illegal")
+        elif x_wins:
+            print("the first player
 ```
-...
-...
-...
-```
-
-Expected output:
-
-```
-first
-```
-
-This verifies the empty starting position where X moves first.
-
-### Test Case 2
-
-Input:
-
-```
-XXX
-0..
-0..
-```
-
-Expected output:
-
-```
-the first player won
-```
-
-This checks a valid X victory with correct move counts.
-
-### Test Case 3
-
-Input:
-
-```
-XXX
-000
-...
-```
-
-Expected output:
-
-```
-illegal
-```
-
-This catches the simultaneous-win scenario.
-
-### Test Case 4
-
-Input:
-
-```
-X0X
-0XX
-0X0
-```
-
-Expected output:
-
-```
-draw
-```
-
-This verifies correct handling of a completely filled board with no winner.
-
-## Edge Cases
-
-Consider the simultaneous-win case again:
-
-```
-XXX
-000
-...
-```
-
-The algorithm counts:
-
-- X = 3
-- 0 = 3
-
-Both counts are individually valid. Then it checks winning lines:
-
-- X wins = true
-- 0 wins = true
-
-As soon as both become true, the algorithm prints `"illegal"`.
-
-Now look at an invalid 0 victory:
-
-```
-X0X
-X00
-0XX
-```
-
-Counts:
-
-- X = 5
-- 0 = 4
-
-0 has a winning line, but 0 can only win immediately after its own move, which requires equal counts. Since X already played once more after 0 won, the board is impossible. The algorithm correctly prints `"illegal"`.
-
-Another subtle case is a full board with no winner:
-
-```
-X0X
-0XX
-0X0
-```
-
-The algorithm finds:
-
-- no winning line
-- total moves = 9
-
-That directly maps to `"draw"`.
-
-Finally, consider an unfinished valid position:
-
-```
-X0.
-...
-...
-```
-
-Counts:
-
-- X = 1
-- 0 = 1
-
-Nobody has won and the board is not full. Equal counts mean it is X's turn next, so the algorithm prints `"first"` correctly.

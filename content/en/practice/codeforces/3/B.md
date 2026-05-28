@@ -1,6 +1,6 @@
 ---
 title: "CF 3B - Lorry"
-description: "We have two kinds of vehicles: - Kayaks, which take 1 unit of space. - Catamarans, which take 2 units of space. Each veh"
+description: "We have a lorry with capacity v. There are two kinds of boats. A kayak occupies 1 unit of space. A catamaran occupies 2"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings"]
 categories: ["algorithms"]
@@ -9,150 +9,198 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Beta Round 3"
 rating: 1900
 weight: 3
-solve_time_s: 168
+solve_time_s: 245
 verified: true
 draft: false
 ---
+
+[CF 3B - Lorry](https://codeforces.com/problemset/problem/3/B)
+
+**Rating:** 1900  
+**Tags:** greedy, sortings  
+**Solve time:** 4m 5s  
+**Verified:** yes  
+
 ## Solution
 ## Problem Understanding
 
-We have two kinds of vehicles:
+We have a lorry with capacity `v`. There are two kinds of boats.
 
-- Kayaks, which take 1 unit of space.
-- Catamarans, which take 2 units of space.
+A kayak occupies 1 unit of space.
 
-Each vehicle also has a value, its carrying capacity. The truck has total capacity `v`, and we want to choose a subset of vehicles whose total occupied space does not exceed `v`, while maximizing the sum of carrying capacities.
+A catamaran occupies 2 units of space.
 
-This is very close to a knapsack problem, but the item sizes are only `1` and `2`. That small restriction completely changes the problem. A general knapsack with `n = 10^5` and `v = 10^9` would be impossible with dynamic programming over capacity, because even an `O(n * v)` solution would explode immediately. With `10^14` states, there is no chance.
+Every boat also has a value, its carrying capacity. The goal is to load a subset of boats whose total occupied space does not exceed the lorry volume, while maximizing the sum of carrying capacities.
 
-The input size also rules out any quadratic approach. With `n = 10^5`, an `O(n^2)` algorithm performs around `10^10` operations in the worst case, which is far beyond the limit for a 2 second Codeforces problem.
+The input gives all boats one by one. For each boat we know its type and value. We must print the maximum total value and one optimal set of indices.
 
-The important observation is that all size-1 items are interchangeable from a space perspective, and all size-2 items are interchangeable as well. Only their values differ. That means after sorting by value, the optimal solution always prefers the best remaining items of each type.
+The constraints completely shape the solution. There can be up to `10^5` boats, which immediately rules out any subset-based dynamic programming over total volume. The volume itself can be as large as `10^9`, so even `O(n * v)` is impossible both in time and memory.
 
-There are several easy-to-miss corner cases.
+A quadratic solution is also too slow. With `10^5` items, even `O(n^2)` means around `10^10` operations, far beyond what fits in 2 seconds. We need something around `O(n log n)`.
 
-Suppose the truck has odd capacity:
+The tricky part is that items have only two possible weights, 1 and 2. That special structure is the entire reason the problem is solvable greedily.
 
-```
-v = 5
-```
+There are several edge cases that break naive reasoning.
 
-A careless greedy solution might repeatedly take the highest-value item available. That can fail because using too many size-2 items may leave unusable space. For example:
+Suppose we always take the boat with highest value first.
 
-```
-4 5
-2 100
-2 99
-2 98
-1 97
-```
-
-Taking the top two catamarans gives value `199` and leaves capacity `1`, so we can still take the kayak for total `296`. That works. But if the kayak were slightly stronger, the best solution could depend on preserving one unit of space intentionally.
-
-Another common mistake is assuming that taking the best size-2 item is always better than taking two size-1 items. Consider:
+Input:
 
 ```
 3 2
-1 100
-1 99
-2 150
+2 100
+1 60
+1 60
 ```
 
-The catamaran has larger individual value, but two kayaks together give `199`, which is better than `150`.
+The greedy-by-value choice takes the catamaran with value 100.
 
-There is also the case where the optimal solution does not fully use the truck capacity. For example:
+The optimal answer is both kayaks, total value 120.
 
-```
-2 10
-1 5
-2 6
-```
+The issue is that choosing a size-2 item can block two very strong size-1 items.
 
-We can only take both items for total value `11`. The remaining space stays unused, and that is perfectly valid.
+Another dangerous case appears when the remaining volume becomes odd.
 
-Finally, when one type is missing entirely, the solution still needs to work correctly:
+Input:
 
 ```
-3 4
-2 10
+4 3
+2 100
+2 99
+1 60
+1 50
+```
+
+Taking the two best catamarans is impossible because total size becomes 4.
+
+Taking one catamaran and one kayak gives 160.
+
+Taking three kayaks is impossible because only two exist.
+
+A careless implementation that separately optimizes each type can miss the mixed solution.
+
+One more subtle case is when many boats have equal values.
+
+Input:
+
+```
+5 4
+1 10
+1 10
 2 20
-2 30
+2 20
+1 10
 ```
 
-The answer is simply the best two catamarans. No special handling should be required.
+Several optimal answers exist. The algorithm must still output a valid set of original indices. Forgetting to preserve indices during sorting is a common mistake here.
 
 ## Approaches
 
-The brute-force idea is straightforward. Every vehicle can either be chosen or skipped, so we could enumerate all subsets, compute total occupied volume and total carrying capacity, then keep the best valid subset.
+The brute-force idea is straightforward. Every boat can either be taken or skipped, so we could iterate through all subsets, compute total occupied volume and total carrying capacity, then keep the best feasible subset.
 
-That works logically because it checks every possible answer. The problem is the number of subsets. With `n` vehicles, there are `2^n` possibilities. Even for `n = 40`, this is already around `10^12` subsets. With `n = 10^5`, brute force is completely impossible.
+This works logically because it checks every possible answer. The problem is the number of subsets. With `n = 10^5`, we would need to inspect `2^100000` combinations, which is astronomically impossible.
 
-A slightly less terrible approach is dynamic programming over capacity. Let `dp[x]` represent the best carrying capacity achievable with used volume `x`. Since item sizes are only `1` and `2`, transitions are easy.
+A more realistic brute-force direction is to decide how many catamarans we take. Once that number is fixed, the remaining space is determined, and we can fill it with kayaks.
 
-The problem is the capacity limit. `v` can be as large as `10^9`, so even storing the DP array is impossible.
+Suppose we sort all catamarans by value descending and all kayaks by value descending. Then for every possible number of catamarans `k`, we take the best `k` catamarans and the best possible number of kayaks that fit in the remaining space.
 
-The key insight is that item sizes are extremely restricted. Every item is either size `1` or size `2`. Once we separate them into two groups, the only thing that matters is which highest-value items we choose from each group.
+This already feels promising because once the lists are sorted, the best choice for a fixed count is always the prefix with largest values.
 
-Suppose we decide to take exactly `k` catamarans. They occupy `2k` space. The remaining space can only be filled optimally by taking the strongest available kayaks. Since all kayaks have identical size, the best choice is simply the top few after sorting.
+The key observation is that item weights are only 1 and 2. Because of that, every feasible solution can be represented as:
 
-This turns the problem into:
+`some prefix of the sorted size-1 list + some prefix of the sorted size-2 list`
 
-- Sort kayaks by value descending.
-- Sort catamarans by value descending.
-- Precompute prefix sums for both groups.
-- Try every possible number of catamarans.
-- Fill the remaining capacity with the best possible kayaks.
+There is never a reason to skip a stronger item while taking a weaker item of the same size.
 
-Now every candidate solution can be evaluated in `O(1)` time using prefix sums.
+After sorting, we can precompute prefix sums for both groups. Then trying every possible count of catamarans becomes efficient. For each `k`, we know:
 
-The total complexity becomes dominated by sorting, which is `O(n log n)`, easily fast enough for `10^5` items.
+Space used = `2 * k`
+
+Remaining space = `v - 2 * k`
+
+Best kayak contribution = prefix sum of the first `remaining space` kayaks
+
+The total value is computed in `O(1)` after preprocessing.
+
+We then reconstruct the indices corresponding to the best split.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(2^n) | O(n) | Too slow |
-| Capacity DP | O(nv) | O(v) | Impossible for large v |
-| Optimal Greedy + Prefix Sums | O(n log n) | O(n) | Accepted |
+| Optimal | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all vehicles and split them into two arrays.
+1. Read all boats and separate them into two arrays:
 
-Store kayaks separately from catamarans. For each item, keep both its carrying capacity and its original index because the output requires original numbering.
+`ones` for kayaks and `twos` for catamarans.
+
+Each entry stores both the value and the original index because the output requires original numbering.
 2. Sort both arrays in descending order of carrying capacity.
 
-If we ever want the best `k` kayaks, they will always be the first `k` items after sorting. The same idea applies to catamarans.
+After sorting, the best way to take `k` boats of the same type is simply taking the first `k`.
 3. Build prefix sums for both arrays.
 
-Let `pref1[i]` be the total carrying capacity of the first `i` kayaks. Let `pref2[i]` be the total carrying capacity of the first `i` catamarans.
+Let:
 
-This allows us to compute the total value of taking any number of items in constant time.
+`pref1[i]` = total value of the best `i` kayaks
+
+`pref2[i]` = total value of the best `i` catamarans
+
+This lets us evaluate any candidate solution in constant time.
 4. Iterate over the number of catamarans taken.
 
-Suppose we take `i` catamarans. They consume `2 * i` space.
+Suppose we take `k` catamarans. Their occupied space is `2 * k`.
 
-If this exceeds the truck capacity, skip this choice.
-5. Compute the remaining capacity for kayaks.
+If this already exceeds the lorry volume, stop considering larger `k`.
+5. Compute remaining capacity.
 
-The remaining volume is:
+Remaining space becomes:
 
-```
-rem = v - 2 * i
-```
+`rem = v - 2 * k`
 
-Since each kayak uses exactly one unit, we can take at most `rem` kayaks.
-6. Compute the total value for this combination.
+Since kayaks occupy size 1, we can take at most `rem` kayaks.
 
-The total carrying capacity becomes:
+We also cannot exceed the number of available kayaks, so:
 
-```
-pref2[i] + pref1[min(rem, number_of_kayaks)]
-```
-7. Track the best answer.
+`take1 = min(rem, len(ones))`
+6. Compute the total carrying capacity for this split.
 
-Whenever we find a larger total carrying capacity, store the current counts of kayaks and catamarans.
-8. Reconstruct the chosen indices.
+Total value becomes:
 
-Output the indices of the selected kayaks and catamarans from the sorted arrays.
+`pref2[k] + pref1[take1]`
+
+Compare it with the best answer seen so far.
+7. Store the best configuration.
+
+Save:
+
+`best_twos = k`
+
+`best_ones = take1`
+8. Reconstruct the answer.
+
+Output the indices of:
+
+the first `best_ones` kayaks and
+
+the first `best_twos` catamarans from the sorted arrays.
+
+### Why it works
+
+The correctness comes from an exchange argument.
+
+Consider any optimal solution. Among all chosen kayaks, if there exists an unchosen kayak with larger value, swapping them increases the total carrying capacity without changing occupied space. So in an optimal solution, the chosen kayaks must be the highest-valued kayaks among all kayaks.
+
+The same argument applies independently to catamarans.
+
+That means every optimal solution is fully determined by only two numbers:
+
+how many kayaks are chosen and how many catamarans are chosen.
+
+Once we fix the number of catamarans, the remaining capacity uniquely determines the maximum possible number of kayaks. Prefix sums then give the best achievable value for that split.
+
+Since we try every feasible count of catamarans, one of the iterations matches the optimal configuration.
 
 ## Python Solution
 
@@ -162,89 +210,79 @@ input = sys.stdin.readline
 
 n, v = map(int, input().split())
 
-one = []
-two = []
+ones = []
+twos = []
 
-for idx in range(1, n + 1):
+for i in range(1, n + 1):
     t, p = map(int, input().split())
 
     if t == 1:
-        one.append((p, idx))
+        ones.append((p, i))
     else:
-        two.append((p, idx))
+        twos.append((p, i))
 
-one.sort(reverse=True)
-two.sort(reverse=True)
+ones.sort(reverse=True)
+twos.sort(reverse=True)
 
 pref1 = [0]
-for val, _ in one:
+for val, _ in ones:
     pref1.append(pref1[-1] + val)
 
 pref2 = [0]
-for val, _ in two:
+for val, _ in twos:
     pref2.append(pref2[-1] + val)
 
 best = 0
-best_one = 0
-best_two = 0
+best_ones = 0
+best_twos = 0
 
-m1 = len(one)
-m2 = len(two)
-
-for take_two in range(m2 + 1):
-    used = 2 * take_two
+for k in range(len(twos) + 1):
+    used = 2 * k
 
     if used > v:
         break
 
     rem = v - used
-    take_one = min(rem, m1)
+    take1 = min(rem, len(ones))
 
-    total = pref2[take_two] + pref1[take_one]
+    total = pref2[k] + pref1[take1]
 
     if total > best:
         best = total
-        best_one = take_one
-        best_two = take_two
+        best_twos = k
+        best_ones = take1
 
 answer = []
 
-for i in range(best_one):
-    answer.append(str(one[i][1]))
+for i in range(best_ones):
+    answer.append(str(ones[i][1]))
 
-for i in range(best_two):
-    answer.append(str(two[i][1]))
+for i in range(best_twos):
+    answer.append(str(twos[i][1]))
 
 print(best)
 print(" ".join(answer))
 ```
 
-The first part separates the items into two groups while preserving original indices. Keeping indices is necessary because after sorting, the original order disappears.
+The first part separates boats by type while preserving original indices. Keeping indices during sorting is essential because the output requires positions from the original input order.
 
-Sorting in descending order is what makes the greedy choice valid. Once sorted, the best `k` items of a type are always just the first `k`.
+Sorting both groups descending guarantees that prefixes are always optimal for fixed counts.
 
-The prefix sum arrays are built with an extra leading zero. This avoids special cases when taking zero items.
+The prefix sum arrays are built with an extra leading zero. This makes expressions like `pref1[0]` valid naturally and removes boundary-condition checks.
 
-The main loop tries every feasible number of catamarans. Since each catamaran consumes exactly two units of space, we immediately know how much room remains for kayaks.
+The main loop iterates over the number of chosen catamarans. Since each catamaran consumes 2 units, the occupied volume is `2 * k`. As soon as this exceeds `v`, larger values of `k` are also impossible, so the loop stops immediately.
 
-One subtle detail is:
-
-```
-take_one = min(rem, m1)
-```
-
-The remaining capacity may allow more kayaks than actually exist. Without the `min`, the code would access invalid prefix sum positions.
-
-Another small but important optimization is:
+The expression:
 
 ```
-if used > v:
-    break
+take1 = min(rem, len(ones))
 ```
 
-Because the number of used units only increases as we take more catamarans, all later iterations are impossible too.
+is subtle. The remaining volume may be larger than the number of available kayaks. Forgetting the `min` causes out-of-bounds access.
 
-Finally, reconstruction is simple because the chosen items are exactly the first `best_one` kayaks and first `best_two` catamarans in sorted order.
+The reconstruction phase simply takes the corresponding prefixes from the sorted arrays. Because the proof established that optimal solutions always use prefixes, this reconstruction exactly matches the computed optimum.
+
+Python integers safely handle all sums here. The largest possible total value is at most `10^5 * 10^4 = 10^9`.
 
 ## Worked Examples
 
@@ -259,203 +297,281 @@ Input:
 1 3
 ```
 
-After sorting:
+Sorted groups:
 
-- Kayaks: `(3, idx=3), (2, idx=1)`
-- Catamarans: `(7, idx=2)`
+`ones = [(3, 3), (2, 1)]`
+
+`twos = [(7, 2)]`
 
 Prefix sums:
 
-- `pref1 = [0, 3, 5]`
-- `pref2 = [0, 7]`
+`pref1 = [0, 3, 5]`
 
-| take_two | used space | remaining | take_one | total value | best |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 0 | 2 | 2 | 5 | 5 |
-| 1 | 2 | 0 | 0 | 7 | 7 |
+`pref2 = [0, 7]`
 
-The optimal solution is taking the single catamaran with index `2`.
+| k | Used Space | Remaining | take1 | Total |
+| --- | --- | --- | --- | --- |
+| 0 | 0 | 2 | 2 | 5 |
+| 1 | 2 | 0 | 0 | 7 |
 
-This example shows why larger items are not automatically worse despite occupying more space. The single catamaran beats both kayaks combined.
+Best value is 7.
+
+Chosen indices:
+
+```
+2
+```
+
+This trace shows why blindly maximizing the number of boats is wrong. Two kayaks fit, but the single catamaran has larger total value.
 
 ### Example 2
 
 Input:
 
 ```
-5 5
-1 10
-1 9
+5 4
 1 8
-2 25
-2 24
+1 7
+2 15
+2 14
+1 6
 ```
 
-After sorting:
+Sorted groups:
 
-- Kayaks: `10, 9, 8`
-- Catamarans: `25, 24`
+`ones = [(8,1), (7,2), (6,5)]`
+
+`twos = [(15,3), (14,4)]`
 
 Prefix sums:
 
-- `pref1 = [0, 10, 19, 27]`
-- `pref2 = [0, 25, 49]`
+`pref1 = [0, 8, 15, 21]`
 
-| take_two | used space | remaining | take_one | total value |
+`pref2 = [0, 15, 29]`
+
+| k | Used Space | Remaining | take1 | Total |
 | --- | --- | --- | --- | --- |
-| 0 | 0 | 5 | 3 | 27 |
-| 1 | 2 | 3 | 3 | 52 |
-| 2 | 4 | 1 | 1 | 59 |
+| 0 | 0 | 4 | 3 | 21 |
+| 1 | 2 | 2 | 2 | 30 |
+| 2 | 4 | 0 | 0 | 29 |
 
-The best answer uses both catamarans and one kayak for total value `59`.
+Best answer is 30.
 
-This trace demonstrates how trying every possible count of size-2 items guarantees the optimal mix.
+Chosen boats:
+
+catamaran 3 and kayaks 1, 2.
+
+This example demonstrates that the optimal solution can mix both types. Taking only the strongest type globally is not enough.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting dominates the runtime |
-| Space | O(n) | Arrays and prefix sums store all items |
+| Time | O(n log n) | Sorting dominates the running time |
+| Space | O(n) | Arrays and prefix sums store all boats |
 
-The solution easily fits within the limits. Sorting `10^5` elements is fast in Python, and all remaining operations are linear. Memory usage is also small because we only store a few arrays of size `n`.
+With `n = 10^5`, `O(n log n)` is easily fast enough in Python. The memory usage is linear and comfortably fits inside 64 MB.
 
 ## Test Cases
 
-### Test Case 1
+```python
+# helper: run solution on input string, return output string
+import sys, io
 
-Input:
+def solve():
+    input = sys.stdin.readline
 
-```
+    n, v = map(int, input().split())
+
+    ones = []
+    twos = []
+
+    for i in range(1, n + 1):
+        t, p = map(int, input().split())
+
+        if t == 1:
+            ones.append((p, i))
+        else:
+            twos.append((p, i))
+
+    ones.sort(reverse=True)
+    twos.sort(reverse=True)
+
+    pref1 = [0]
+    for val, _ in ones:
+        pref1.append(pref1[-1] + val)
+
+    pref2 = [0]
+    for val, _ in twos:
+        pref2.append(pref2[-1] + val)
+
+    best = 0
+    best_ones = 0
+    best_twos = 0
+
+    for k in range(len(twos) + 1):
+        used = 2 * k
+
+        if used > v:
+            break
+
+        rem = v - used
+        take1 = min(rem, len(ones))
+
+        total = pref2[k] + pref1[take1]
+
+        if total > best:
+            best = total
+            best_twos = k
+            best_ones = take1
+
+    ans = []
+
+    for i in range(best_ones):
+        ans.append(str(ones[i][1]))
+
+    for i in range(best_twos):
+        ans.append(str(twos[i][1]))
+
+    print(best)
+    print(" ".join(ans))
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    out = io.StringIO()
+    sys.stdout = out
+
+    solve()
+
+    sys.stdout = sys.__stdout__
+    return out.getvalue()
+
+# provided sample
+assert run(
+"""3 2
+1 2
+2 7
+1 3
+"""
+).splitlines()[0] == "7", "sample 1"
+
+# minimum case
+assert run(
+"""1 1
+1 5
+"""
+).splitlines()[0] == "5", "single kayak"
+
+# only catamarans fit
+assert run(
+"""3 2
+2 10
+2 20
 1 1
-1 100
+"""
+).splitlines()[0] == "20", "best catamaran"
+
+# mixed optimal answer
+assert run(
+"""5 4
+1 8
+1 7
+2 15
+2 14
+1 6
+"""
+).splitlines()[0] == "30", "mixed choice"
+
+# equal values
+assert run(
+"""4 4
+1 10
+1 10
+2 20
+2 20
+"""
+).splitlines()[0] == "40", "multiple optimal answers"
 ```
 
-Expected output:
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Single kayak | 5 | Minimum-size input |
+| Strong catamaran | 20 | Choosing one size-2 item over weaker combinations |
+| Mixed optimal | 30 | Correct interaction between both types |
+| Equal values | 40 | Multiple optimal solutions and stable reconstruction |
 
-```
-100
-1
-```
+## Edge Cases
 
-This verifies the minimum-size input.
-
-### Test Case 2
+Consider the earlier counterexample against greedy-by-value.
 
 Input:
 
 ```
 3 2
-1 100
-1 99
-2 150
+2 100
+1 60
+1 60
 ```
 
-Expected output:
+Sorted groups:
 
-```
-199
-1 2
-```
+`ones = [60, 60]`
 
-This catches greedy solutions that incorrectly prefer the single larger-valued catamaran.
+`twos = [100]`
 
-### Test Case 3
+The algorithm evaluates:
+
+For `k = 0`:
+
+take two kayaks, total = 120
+
+For `k = 1`:
+
+take one catamaran, total = 100
+
+The algorithm correctly chooses 120. A naive greedy strategy that picks the largest single value first would fail here.
+
+Now consider the mixed-capacity case.
 
 Input:
 
 ```
-4 5
+4 3
 2 100
 2 99
-1 1
-1 1
+1 60
+1 50
 ```
 
-Expected output:
+The iterations are:
 
-```
-201
-1 2 3 4
-```
+For `k = 0`:
 
-This verifies that leftover space should still be filled whenever beneficial.
+take two kayaks, total = 110
 
-### Test Case 4
+For `k = 1`:
+
+remaining space = 1
+
+take one kayak, total = 160
+
+For `k = 2`:
+
+occupied space = 4, impossible
+
+The algorithm outputs the catamaran with value 100 and the kayak with value 60. This confirms that trying every feasible number of size-2 items correctly handles odd remaining capacity.
+
+Finally, consider equal-valued items.
 
 Input:
 
 ```
 5 4
-2 10
-2 10
-2 10
-2 10
-2 10
-```
-
-Expected output:
-
-```
-20
-1 2
-```
-
-This checks handling when only one item type exists.
-
-## Edge Cases
-
-Consider the case where two size-1 items beat one size-2 item:
-
-```
-3 2
-1 100
-1 99
-2 150
-```
-
-After sorting:
-
-- Kayaks: `100, 99`
-- Catamarans: `150`
-
-The algorithm checks:
-
-- `take_two = 0`, total = `199`
-- `take_two = 1`, total = `150`
-
-The maximum is correctly identified as `199`.
-
-Now consider an input where capacity is not fully used:
-
-```
-2 10
-1 5
-2 6
-```
-
-The algorithm evaluates:
-
-- Take no catamarans: total `5`
-- Take one catamaran: total `11`
-
-No more items exist, so unused space remains. The algorithm still outputs the correct maximum.
-
-Finally, consider the case where only catamarans exist:
-
-```
-3 4
-2 10
+1 10
+1 10
 2 20
-2 30
+2 20
+1 10
 ```
 
-Sorted catamarans become `30, 20, 10`.
-
-The algorithm checks:
-
-- `take_two = 0`, total `0`
-- `take_two = 1`, total `30`
-- `take_two = 2`, total `50`
-
-The answer is the first two catamarans, exactly as expected.
+Any combination of two catamarans or four total kayak-value units gives the same answer. The algorithm sorts while preserving indices and simply outputs one valid optimal prefix configuration. Since the problem accepts any optimal set, this is correct.
