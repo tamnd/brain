@@ -1001,17 +1001,67 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 984 | [String Without AAA or BBB](09xx/984.md) | 🟡 Medium | 58s | The problem gives us two integers, a and b, representing how many '… |
 | 985 | [Sum of Even Numbers After Queries](09xx/985.md) | 🟡 Medium | 1m | The problem gives us an integer array nums and a list of update ope… |
 | 986 | [Interval List Intersections](09xx/986.md) | 🟡 Medium | 1m 8s | The problem gives us two lists of closed intervals. Each interval i… |
-| 987 | [Vertical Order Traversal of a Binary Tree](09xx/987.md) | 🔴 Hard | 1m 18s | The problem asks us to perform a vertical traversal of a binary tre… |
-| 988 | [Smallest String Starting From Leaf](09xx/988.md) | 🟡 Medium | 1m 23s | Edit This problem gives us the root of a binary tree where every no… |
-| 989 | [Add to Array-Form of Integer](09xx/989.md) | 🟢 Easy | 55s | The problem asks us to compute the sum of a non-negative integer re… |
-| 990 | [Satisfiability of Equality Equations](09xx/990.md) | 🟡 Medium | 1m 2s | The problem gives us a list of equations involving lowercase Englis… |
+| 987 | [Vertical Order Traversal of a Binary Tree](09xx/987.md) | 🔴 Hard | 41s | The problem asks us to compute the vertical order traversal of a bi… |
+| 988 | [Smallest String Starting From Leaf](09xx/988.md) | 🟡 Medium | 1m 8s | The problem gives us the root of a binary tree where every node sto… |
+| 989 | [Add to Array-Form of Integer](09xx/989.md) | 🟢 Easy | 40s | The problem is asking us to perform addition between a number repre… |
+| 990 | [Satisfiability of Equality Equations](09xx/990.md) | 🟡 Medium | 46s | The problem is asking us to determine if a set of equations between… |
 | 991 | [Broken Calculator](09xx/991.md) | 🟡 Medium | 54s | This problem gives us a calculator that starts with an integer star… |
-| 992 | [Subarrays with K Different Integers](09xx/992.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many contiguous subarrays contain … |
-| 993 | [Cousins in Binary Tree](09xx/993.md) | 🟢 Easy | 46s | The problem asks us to determine if two nodes in a binary tree are … |
-| 994 | [Rotting Oranges](09xx/994.md) | 🟡 Medium | 1m 15s | This problem models the spread of rot through a grid of oranges ove… |
-| 995 | [Minimum Number of K Consecutive Bit Flips](09xx/995.md) | 🔴 Hard | 1m 4s | This problem asks us to transform a binary array so that every elem… |
-| 996 | [Number of Squareful Arrays](09xx/996.md) | 🔴 Hard | 1m 11s | The problem asks us to count how many distinct permutations of an a… |
-| 997 | [Find the Town Judge](09xx/997.md) | 🟢 Easy | 1m 6s | This problem asks us to determine whether a special person called t… |
-| 998 | [Maximum Binary Tree II](09xx/998.md) | 🟡 Medium | 1m 19s | The problem gives us the root of an existing maximum binary tree an… |
-| 999 | [Available Captures for Rook](09xx/999.md) | 🟢 Easy | 1m 13s | This problem gives us an 8 x 8 chessboard represented as a matrix o… |
-| 1000 | [Minimum Cost to Merge Stones](10xx/1000.md) | 🔴 Hard | 38s | The problem asks us to merge an array of stone piles into a single … |
+| 992 | [Subarrays with K Different Integers](09xx/992.md) | 🔴 Hard | 1m 19s | The problem asks us to count how many contiguous subarrays contain … |
+| 993 | [Cousins in Binary Tree](09xx/993.md) | 🟢 Easy | 1m 22s | The problem asks us to determine whether two nodes in a binary tree… |
+| 994 | [Rotting Oranges](09xx/994.md) | 🟡 Medium | 1m 30s | You are given a 2D grid where each cell represents one of three pos… |
+| 995 | [Minimum Number of K Consecutive Bit Flips](09xx/995.md) | 🔴 Hard | 39s | The problem gives us a binary array nums consisting of 0s and 1s an… |
+| 996 | [Number of Squareful Arrays](09xx/996.md) | 🔴 Hard | 36s | The problem asks us to count all permutations of a given integer ar… |
+| 997 | [Find the Town Judge](09xx/997.md) | 🟢 Easy | 1m 5s | The problem describes a town containing n people labeled from 1 to … |
+| 998 | [Maximum Binary Tree II](09xx/998.md) | 🟡 Medium | 1m 8s | A maximum tree is a special binary tree where every node contains a… |
+| 999 | [Available Captures for Rook](09xx/999.md) | 🟢 Easy | 1m 32s | The problem gives us an 8 x 8 chessboard represented as a matrix of… |
+| 1000 | [Minimum Cost to Merge Stones](10xx/1000.md) | 🔴 Hard | 1m 29s | The problem asks us to merge n piles of stones into a single pile u… |
+| 1001 | [Grid Illumination](10xx/1001.md) | 🔴 Hard | 4m 29s | This problem models a very large chessboard-like grid where certain… |
+| 1002 | [Find Common Characters](10xx/1002.md) | 🟢 Easy | 3m 8s | The problem gives us an array of lowercase strings called words. We… |
+| 1003 | [Check If Word Is Valid After Substitutions](10xx/1003.md) | 🟡 Medium | 1m 11s | The problem asks us to determine whether a given string can be cons… |
+| 1004 | [Max Consecutive Ones III](10xx/1004.md) | 🟡 Medium | 1m 33s | This problem asks us to find the length of the longest contiguous s… |
+| 1005 | [Maximize Sum Of Array After K Negations](10xx/1005.md) | 🟢 Easy | 47s | The problem is asking us to maximize the sum of an integer array af… |
+| 1006 | [Clumsy Factorial](10xx/1006.md) | 🟡 Medium | 45s | The problem asks us to compute a clumsy factorial for a given posit… |
+| 1007 | [Minimum Domino Rotations For Equal Row](10xx/1007.md) | 🟡 Medium | 1m 11s | The problem gives us two arrays, tops and bottoms, representing a s… |
+| 1008 | [Construct Binary Search Tree from Preorder Traversal](10xx/1008.md) | 🟡 Medium | 49s | Let's dive deep and construct a thorough technical guide for LeetCo… |
+| 1009 | [Complement of Base 10 Integer](10xx/1009.md) | 🟢 Easy | 48s | This problem asks us to compute the complement of a base-10 integer… |
+| 1010 | [Pairs of Songs With Total Durations Divisible by 60](10xx/1010.md) | 🟡 Medium | 40s | The problem asks us to find pairs of songs whose total duration is … |
+| 1011 | [Capacity To Ship Packages Within D Days](10xx/1011.md) | 🟡 Medium | 1m 18s | This problem asks us to determine the minimum ship capacity require… |
+| 1012 | [Numbers With Repeated Digits](10xx/1012.md) | 🔴 Hard | 1m 50s | The problem asks us to count how many integers in the range [1, n] … |
+| 1013 | [Partition Array Into Three Parts With Equal Sum](10xx/1013.md) | 🟢 Easy | 2m 30s | The problem gives us an integer array arr and asks whether it can b… |
+| 1014 | [Best Sightseeing Pair](10xx/1014.md) | 🟡 Medium | 44s | The problem presents an array of integers values, where each elemen… |
+| 1015 | [Smallest Integer Divisible by K](10xx/1015.md) | 🟡 Medium | 1m 9s | The problem asks us to find the length of the smallest positive int… |
+| 1016 | [Binary String With Substrings Representing 1 To N](10xx/1016.md) | 🟡 Medium | 55s | The problem asks us to determine whether a given binary string s co… |
+| 1017 | [Convert to Base -2](10xx/1017.md) | 🟡 Medium | 2m 52s | This problem asks us to convert a non-negative integer n into its r… |
+| 1018 | [Binary Prefix Divisible By 5](10xx/1018.md) | 🟢 Easy | 2m 19s | The problem presents a binary array nums, where each element is eit… |
+| 1019 | [Next Greater Node In Linked List](10xx/1019.md) | 🟡 Medium | 2m 34s | The problem asks us to process a singly-linked list and, for each n… |
+| 1020 | [Number of Enclaves](10xx/1020.md) | 🟡 Medium | 2m 28s | The problem gives us a binary matrix called grid, where: - 0 repres… |
+| 1021 | [Remove Outermost Parentheses](10xx/1021.md) | 🟢 Easy | 10m 43s | Unusual activity has been detected from your device. Try again late… |
+| 1022 | [Sum of Root To Leaf Binary Numbers](10xx/1022.md) | 🟢 Easy | 1m 15s | This problem gives us the root of a binary tree where every node co… |
+| 1023 | [Camelcase Matching](10xx/1023.md) | 🟡 Medium | 1m 18s | The problem gives us a list of query strings and a target camel cas… |
+| 1024 | [Video Stitching](10xx/1024.md) | 🟡 Medium | 1m 3s | The problem asks us to cover a sporting event that lasts time secon… |
+| 1025 | [Divisor Game](10xx/1025.md) | 🟢 Easy | 2m 31s | The problem describes a two-player turn-based game between Alice an… |
+| 1026 | [Maximum Difference Between Node and Ancestor](10xx/1026.md) | 🟡 Medium | 1m 10s | This problem asks us to find the largest absolute difference betwee… |
+| 1027 | [Longest Arithmetic Subsequence](10xx/1027.md) | 🟡 Medium | 43s | Your requested guide is very long and detailed, especially with all… |
+| 1028 | [Recover a Tree From Preorder Traversal](10xx/1028.md) | 🔴 Hard | 53s | The problem provides a string traversal representing a preorder dep… |
+| 1029 | [Two City Scheduling](10xx/1029.md) | 🟡 Medium | 1m 14s | In this problem, we are given an array called costs, where each ele… |
+| 1030 | [Matrix Cells in Distance Order](10xx/1030.md) | 🟢 Easy | 1m 10s | This problem asks us to return every cell in a matrix, ordered by i… |
+| 1031 | [Maximum Sum of Two Non-Overlapping Subarrays](10xx/1031.md) | 🟡 Medium | 1m 14s | The problem gives us an integer array nums and two fixed subarray l… |
+| 1032 | [Stream of Characters](10xx/1032.md) | 🔴 Hard | 2m 19s | The problem asks us to design a data structure that processes a str… |
+| 1033 | [Moving Stones Until Consecutive](10xx/1033.md) | 🟡 Medium | 49s | The problem presents three stones placed on distinct positions alon… |
+| 1034 | [Coloring A Border](10xx/1034.md) | 🟡 Medium | 1m 11s | The problem gives us a two dimensional grid where each cell contain… |
+| 1035 | [Uncrossed Lines](10xx/1035.md) | 🟡 Medium | 2m 49s | The problem gives us two integer arrays, nums1 and nums2. We are al… |
+| 1036 | [Escape a Large Maze](10xx/1036.md) | 🔴 Hard | 1m 42s | The problem gives us a massive 1,000,000 x 1,000,000 grid. Each cel… |
+| 1037 | [Valid Boomerang](10xx/1037.md) | 🟢 Easy | 48s | This problem asks us to determine whether three given points in a 2… |
+| 1038 | [Binary Search Tree to Greater Sum Tree](10xx/1038.md) | 🟡 Medium | 1m 13s | The problem gives us the root of a Binary Search Tree, abbreviated … |
+| 1039 | [Minimum Score Triangulation of Polygon](10xx/1039.md) | 🟡 Medium | 2m 15s | This problem asks us to triangulate a convex polygon in such a way … |
+| 1040 | [Moving Stones Until Consecutive II](10xx/1040.md) | 🟡 Medium | 47s | The problem gives an array stones representing positions of stones … |
+| 1041 | [Robot Bounded In Circle](10xx/1041.md) | 🟡 Medium | 1m | This problem asks us to determine whether a robot moving on an infi… |
+| 1042 | [Flower Planting With No Adjacent](10xx/1042.md) | 🟡 Medium | 57s | The problem presents n gardens, labeled from 1 to n, and a list of … |
+| 1043 | [Partition Array for Maximum Sum](10xx/1043.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array arr and an integer k. We are … |
+| 1044 | [Longest Duplicate Substring](10xx/1044.md) | 🔴 Hard | 1m | Here is the complete, detailed technical solution guide for LeetCod… |
+| 1045 | [Customers Who Bought All Products](10xx/1045.md) | 🟡 Medium | 1m | This problem asks us to identify all customers who have purchased e… |
+| 1046 | [Last Stone Weight](10xx/1046.md) | 🟢 Easy | 59s | This problem asks us to repeatedly simulate a process involving sto… |
+| 1047 | [Remove All Adjacent Duplicates In String](10xx/1047.md) | 🟢 Easy | 1m 8s | The problem gives us a string s containing only lowercase English l… |
+| 1048 | [Longest String Chain](10xx/1048.md) | 🟡 Medium | 1m 10s | The problem gives us a list of lowercase English words and asks for… |
+| 1049 | [Last Stone Weight II](10xx/1049.md) | 🟡 Medium | 1m 4s | The problem presents a list of integers, stones, where each integer… |
+| 1050 | [Actors and Directors Who Cooperated At Least Three Times](10xx/1050.md) | 🟢 Easy | 1m 7s | The problem gives us a database table named ActorDirector. Each row… |
