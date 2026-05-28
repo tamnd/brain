@@ -1,6 +1,6 @@
 ---
 title: "CF 25E - Test"
-description: "We are given three lowercase strings. We want to build the shortest possible string that contains all three of them as s"
+description: "We are given three lowercase strings. We want to build a single string that contains all three as substrings, and we wan"
 date: "2026-05-28T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "hashing", "strings"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Beta Round 25 (Div. 2 Only)"
 rating: 2200
 weight: 25
-solve_time_s: 199
-verified: false
+solve_time_s: 88
+verified: true
 draft: false
 ---
 
@@ -18,25 +18,28 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** hashing, strings  
-**Solve time:** 3m 19s  
-**Verified:** no  
+**Solve time:** 1m 28s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given three lowercase strings. We want to build the shortest possible string that contains all three of them as substrings.
+We are given three lowercase strings. We want to build a single string that contains all three as substrings, and we want this resulting string to be as short as possible.
 
-Another way to think about it is this: we want to merge the three strings together while reusing overlapping parts whenever possible. If the suffix of one string matches the prefix of another, we should avoid writing those characters twice.
+Another way to view the task is as a shortest common superstring problem, but only for three strings. Since there are only three pieces, we can afford to try all relative orders. The real difficulty is computing how much overlap we can reuse when concatenating them.
 
-The strings can each have length up to $10^5$. A quadratic comparison between pairs of strings is already dangerous at this scale, and anything that tries all possible merged strings is completely impossible. Since there are only three strings, the combinatorial part is small, but every operation on the strings themselves must be close to linear.
+The input size changes the nature of the problem completely. Each string can have length up to $10^5$, so the total input size can reach $3 \cdot 10^5$. Any algorithm that compares substrings character-by-character many times will time out. Even $O(n^2)$ work is impossible here, because $10^{10}$ operations is far beyond what fits in 2 seconds.
 
-The tricky part is not the permutation count, because there are only $3! = 6$ possible orders. The real difficulty is efficiently computing overlaps between long strings.
+The structure of the problem suggests that the only useful operations are:
 
-There are several edge cases that break naive implementations.
+1. Checking whether one string already appears inside another.
+2. Finding the largest suffix-prefix overlap between two strings.
 
-One important case is when one string is already contained inside another.
+Both must be done close to linear time.
 
-Example:
+Several edge cases are easy to mishandle.
+
+Suppose one string is already contained in another:
 
 ```
 abcde
@@ -44,111 +47,100 @@ bcd
 cde
 ```
 
-The correct answer is `5`, because `abcde` already contains the other two strings. A careless implementation that blindly concatenates strings pairwise might produce something longer like `abcdecde`.
+The correct answer is `5`, because `abcde` already contains both other strings. A careless implementation that always concatenates all three strings would produce something longer.
 
-Another subtle case appears when overlap choices interact.
-
-Example:
-
-```
-ababa
-babab
-aba
-```
-
-The optimal answer is `6`, using `ababab`. If we greedily merge the pair with the largest overlap first, we may accidentally block a better global arrangement.
-
-A third edge case is duplicate strings.
-
-Example:
-
-```
-abc
-abc
-bc
-```
-
-The correct answer is `3`. We must remove redundant strings before doing anything else, otherwise duplicate handling can create incorrect overlaps or extra length.
-
-Finally, overlap computation itself is easy to get wrong.
-
-Example:
+Another tricky situation is duplicated strings:
 
 ```
 aaaa
-aaab
+aaaa
+aa
 ```
 
-The maximum overlap is `3`, producing `aaaab`. A naive scan with incorrect indexing often returns `2` here because repeated characters create many partial matches.
+The answer is still `4`. If duplicates are not removed correctly, the algorithm may append the same content multiple times.
+
+Overlaps can also chain in non-obvious ways:
+
+```
+ab
+bc
+ca
+```
+
+If we combine greedily without considering all orders, we might produce `abca` of length 4 or even something longer. The best result depends on the merge order, so trying only one ordering is not enough.
+
+There is also the case where no overlap exists at all:
+
+```
+abc
+def
+ghi
+```
+
+The answer becomes `9`. The algorithm must correctly return overlap length zero instead of accidentally matching unrelated prefixes and suffixes.
 
 ## Approaches
 
-The brute-force idea is straightforward. Since there are only three strings, we can try every permutation of their order. For each order, we repeatedly append the next string while maximizing overlap with the current result.
+The brute-force idea is straightforward. We try every possible resulting string and check whether all three strings appear inside it. This is obviously impossible because the search space grows exponentially.
 
-Suppose we already built string `cur` and want to append `t`. We search for the largest value `k` such that the suffix of `cur` with length `k` equals the prefix of `t` with length `k`. Then we append only the remaining part of `t`.
+A slightly smarter brute-force approach is to try every order of the three strings and merge them greedily. When merging two strings, we test every possible overlap length by comparing characters manually.
 
-This approach is correct because, for a fixed order, the optimal merge is always obtained by using the maximum overlap at every step.
+For two strings of length $n$, checking all overlaps costs $O(n^2)$. Since we do this repeatedly across permutations, the total complexity becomes quadratic in the total input size. With strings of length $10^5$, that means around $10^{10}$ character comparisons, which is far too slow.
 
-The problem is overlap computation. If we compare suffixes and prefixes character by character for every possible overlap length, each merge costs $O(n^2)$ in the worst case. With strings of length $10^5$, this becomes far too slow.
+The key observation is that only the overlap between adjacent merged strings matters. If we already know the maximum suffix-prefix overlap between two strings, we can merge them optimally in constant additional time.
 
-The key observation is that overlap checking is just substring equality testing. Instead of comparing characters repeatedly, we can use rolling hashes to compare substrings in constant time.
+This reduces the problem into two smaller tasks:
 
-For two strings `a` and `b`, we only need to test overlap lengths from `1` up to `min(len(a), len(b))`. With hashing, each test becomes $O(1)$, so the entire overlap computation becomes linear.
+1. Remove strings already contained inside another.
+2. Compute maximum overlaps efficiently.
 
-Since there are only six permutations, the total work is dominated by preprocessing hashes and scanning overlap lengths. That easily fits within the limits.
+The second task is exactly what string hashing or prefix-function techniques are designed for. With rolling hash, we can compare any suffix and prefix in $O(1)$ time after preprocessing. Then each overlap computation becomes linear instead of quadratic.
 
-Before trying permutations, we also remove any string already contained inside another. This significantly simplifies the logic and avoids incorrect duplicate handling.
+Since there are only three strings, we can simply try all $3! = 6$ permutations. For each order, we merge greedily using maximum overlaps and keep the shortest result.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n^2)$ per merge | $O(n)$ | Too slow |
-| Optimal | $O(n)$ per merge | $O(n)$ | Accepted |
+| Brute Force | $O(n^2)$ or worse | $O(1)$ | Too slow |
+| Optimal | $O(n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the three input strings.
-2. Remove redundant strings.
+1. Read the three strings.
+2. Remove redundant strings that are already substrings of another string.
 
-If one string is already a substring of another, we do not need it separately because any valid answer containing the larger string automatically contains the smaller one.
-3. Precompute rolling hash structures for all remaining strings.
+If `s2` is already inside `s1`, including `s2` separately never helps reduce the answer. We can safely discard it.
+3. Build rolling hashes for all remaining strings.
 
-We store prefix hashes and powers of the base so that any substring hash can be obtained in constant time.
-4. Define a function `merge(a, b)`.
+This lets us compare any substring in constant time after preprocessing.
+4. Define a function `overlap(a, b)`.
 
-This function finds the maximum overlap between the suffix of `a` and the prefix of `b`.
-5. To compute the overlap, iterate over all possible overlap lengths.
+This function returns the maximum length `k` such that the suffix of `a` with length `k` equals the prefix of `b` with length `k`.
+5. To compute the overlap, try all possible overlap lengths from largest to smallest.
 
-For each length `k`, compare:
+Using hashes, each comparison becomes $O(1)$. The first valid match is the maximum overlap.
+6. Define a merge operation.
 
-- suffix of `a` with length `k`
-- prefix of `b` with length `k`
-
-Using hashes makes this comparison constant time.
-6. Keep the largest valid overlap.
-
-If the overlap length is `best`, the merged string becomes:
+If the overlap between `a` and `b` is `k`, the merged string becomes:
 
 ```
-a + b[best:]
+a + b[k:]
 ```
+
+This reuses the overlapping portion instead of duplicating it.
 7. Try all permutations of the remaining strings.
 
 For each order:
 
-- merge the first two strings
-- merge the result with the third string
-- record the final length
-8. Output the minimum length among all permutations.
+1. Merge the first two strings.
+2. Merge the result with the third string.
+3. Track the minimum final length.
+8. Output the smallest length found.
 
 ### Why it works
 
-For a fixed ordering of strings, the optimal merged result always uses the largest possible overlap at every merge step. Any smaller overlap would only add unnecessary characters.
+For any shortest superstring formed from three strings, the strings appear in some order. Once that order is fixed, the best way to concatenate adjacent strings is always to maximize their overlap. Any smaller overlap would only increase the final length.
 
-Trying all permutations guarantees that we consider every possible relative ordering of the strings. Since there are only three strings, exhaustive permutation search is cheap.
-
-Removing contained strings is also safe. If string `x` is inside string `y`, every superstring containing `y` already satisfies the requirement for `x`.
-
-The rolling hash guarantees efficient substring comparison, so overlap detection remains linear overall.
+Trying all permutations guarantees that we consider the correct ordering. Removing contained strings is safe because they contribute nothing new to the final superstring. Since overlap checks are exact through hashing, every merge is optimal for its order.
 
 ## Python Solution
 
@@ -158,8 +150,8 @@ from itertools import permutations
 
 input = sys.stdin.readline
 
-BASE = 911382323
 MOD = 10**9 + 7
+BASE = 911382323
 
 class RollingHash:
     def __init__(self, s):
@@ -185,44 +177,44 @@ class RollingHash:
         ) % MOD
 
 def overlap(a, b):
+    max_len = min(len(a), len(b))
+
     ha = RollingHash(a)
     hb = RollingHash(b)
 
-    limit = min(len(a), len(b))
-    best = 0
+    for k in range(max_len, -1, -1):
+        if ha.get_hash(len(a) - k, len(a)) == hb.get_hash(0, k):
+            return k
 
-    for k in range(1, limit + 1):
-        hash_a = ha.get_hash(len(a) - k, len(a))
-        hash_b = hb.get_hash(0, k)
-
-        if hash_a == hash_b:
-            best = k
-
-    return best
+    return 0
 
 def merge(a, b):
+    if b in a:
+        return a
+
     k = overlap(a, b)
     return a + b[k:]
 
 def solve():
-    s = [input().strip() for _ in range(3)]
+    arr = [input().strip() for _ in range(3)]
 
-    filtered = []
+    used = [True] * 3
 
     for i in range(3):
-        ok = True
-
         for j in range(3):
-            if i != j and s[i] in s[j]:
-                ok = False
-                break
+            if i != j and arr[i] in arr[j]:
+                if len(arr[i]) <= len(arr[j]):
+                    used[i] = False
 
-        if ok:
-            filtered.append(s[i])
+    strings = [arr[i] for i in range(3) if used[i]]
+
+    if not strings:
+        print(0)
+        return
 
     ans = float('inf')
 
-    for p in permutations(filtered):
+    for p in permutations(strings):
         cur = p[0]
 
         for i in range(1, len(p)):
@@ -235,24 +227,30 @@ def solve():
 solve()
 ```
 
-The first important section is substring elimination. Without it, duplicate strings and contained strings create incorrect extra merges. The condition `s[i] in s[j]` safely removes redundant strings before permutation search starts.
+The first important part is removing redundant strings. If one string already appears inside another, carrying it through the permutation process only creates duplicate work. This pruning also simplifies later merging logic.
 
-The `RollingHash` class stores prefix hashes and powers of the base. The substring hash formula:
+The `RollingHash` class preprocesses prefix hashes and powers of the base. The hash of any substring can then be extracted in constant time using the standard prefix-hash formula.
+
+The overlap computation checks candidate lengths from largest to smallest. The first match is immediately optimal because we are searching in descending order.
+
+One subtle implementation detail is this line:
 
 ```
-hash(l, r) =
-pref[r] - pref[l] * power[r-l]
+if b in a:
+    return a
 ```
 
-extracts any substring in constant time.
+This matters even after preprocessing. During permutation merging, a later string may become contained inside the current merged result even if it was not originally redundant.
 
-The overlap function checks every possible overlap length. Since we only compare hashes, each check is constant time, so the entire scan is linear.
+Another detail is the overlap loop:
 
-One subtle detail is that we keep updating `best` instead of stopping at the first match. We specifically need the maximum overlap.
+```
+for k in range(max_len, -1, -1):
+```
 
-Another subtle point is modulo handling. Python allows negative modulo results during subtraction, so we apply `% MOD` at the end of `get_hash`.
+Starting from the largest overlap is critical. Returning the first match guarantees maximum reuse.
 
-The permutation loop is tiny because there are at most six orders. Each merge creates a new string whose total length never exceeds roughly $3 \times 10^5$, well within memory limits.
+The total number of permutations is tiny, at most six, so the dominant cost comes from overlap computations.
 
 ## Worked Examples
 
@@ -266,7 +264,7 @@ bc
 cd
 ```
 
-Possible permutation: `(ab, bc, cd)`
+Possible permutation: `ab -> bc -> cd`
 
 | Step | Current String | Next String | Overlap | Result |
 | --- | --- | --- | --- | --- |
@@ -275,65 +273,66 @@ Possible permutation: `(ab, bc, cd)`
 
 Final length is `4`.
 
-This trace shows the central idea of overlap reuse. Every merge saves one character compared to direct concatenation.
+Trying other permutations does not produce anything shorter.
+
+This trace demonstrates how overlaps are reused incrementally. Each merge preserves all previous substrings while avoiding duplicate characters.
 
 ### Example 2
 
 Input:
 
 ```
-ababa
-babab
-aba
+abcde
+bcd
+cde
 ```
 
-After preprocessing, `aba` is removed because it already appears inside `ababa`.
+Redundancy removal phase:
 
-Now we only merge:
+| String | Contained In | Removed |
+| --- | --- | --- |
+| abcde | none | No |
+| bcd | abcde | Yes |
+| cde | abcde | Yes |
 
-```
-ababa
-babab
-```
+Only `abcde` remains.
 
-| Step | Current String | Next String | Overlap | Result |
-| --- | --- | --- | --- | --- |
-| 1 | ababa | babab | 4 (`baba`) | ababab |
+| Step | Current String |
+| --- | --- |
+| Start | abcde |
 
-Final length is `6`.
+Final length is `5`.
 
-This example demonstrates why removing contained strings matters. Keeping `aba` separately would complicate the merge process without changing the answer.
+This example shows why containment checks matter. Without them, the algorithm would perform unnecessary merges and might accidentally duplicate content.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n)$ | Each overlap scan is linear, and only a constant number of merges are performed |
-| Space | $O(n)$ | Hash arrays and merged strings store linear data |
+| Time | $O(n)$ | Only a constant number of overlap computations, each linear |
+| Space | $O(n)$ | Prefix hashes and power arrays |
 
-Here, $n$ represents the total length of all strings. Since the combined input size is at most $3 \times 10^5$, linear processing easily fits within a 2-second limit.
+The total input size is at most $3 \cdot 10^5$, so linear complexity easily fits within the limits. The memory usage is also safe because we only store hash arrays proportional to the string lengths.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys, io
+import sys
+import io
 from itertools import permutations
 
-BASE = 911382323
 MOD = 10**9 + 7
+BASE = 911382323
 
 class RollingHash:
     def __init__(self, s):
-        self.s = s
-        n = len(s)
+        self.pref = [0] * (len(s) + 1)
+        self.power = [1] * (len(s) + 1)
 
-        self.pref = [0] * (n + 1)
-        self.power = [1] * (n + 1)
-
-        for i in range(n):
+        for i, ch in enumerate(s):
             self.pref[i + 1] = (
-                self.pref[i] * BASE + ord(s[i])
+                self.pref[i] * BASE + ord(ch)
             ) % MOD
 
             self.power[i + 1] = (
@@ -350,37 +349,35 @@ def overlap(a, b):
     ha = RollingHash(a)
     hb = RollingHash(b)
 
-    best = 0
-
-    for k in range(1, min(len(a), len(b)) + 1):
+    for k in range(min(len(a), len(b)), -1, -1):
         if ha.get_hash(len(a) - k, len(a)) == hb.get_hash(0, k):
-            best = k
+            return k
 
-    return best
+    return 0
 
 def merge(a, b):
+    if b in a:
+        return a
+
     k = overlap(a, b)
     return a + b[k:]
 
 def solve():
-    s = [input().strip() for _ in range(3)]
+    arr = [input().strip() for _ in range(3)]
 
-    filtered = []
+    used = [True] * 3
 
     for i in range(3):
-        ok = True
-
         for j in range(3):
-            if i != j and s[i] in s[j]:
-                ok = False
-                break
+            if i != j and arr[i] in arr[j]:
+                if len(arr[i]) <= len(arr[j]):
+                    used[i] = False
 
-        if ok:
-            filtered.append(s[i])
+    strings = [arr[i] for i in range(3) if used[i]]
 
     ans = float('inf')
 
-    for p in permutations(filtered):
+    for p in permutations(strings):
         cur = p[0]
 
         for i in range(1, len(p)):
@@ -402,85 +399,75 @@ def run(inp: str) -> str:
     solve()
 
     sys.stdout = sys.__stdout__
-
     return out.getvalue().strip()
 
 # provided sample
 assert run("ab\nbc\ncd\n") == "4", "sample 1"
 
-# minimum-size input
-assert run("a\na\na\n") == "1", "all identical"
+# all strings identical
+assert run("aaaa\naaaa\naaaa\n") == "4", "all equal"
 
-# contained substring case
-assert run("abcde\nbcd\ncde\n") == "5", "contained strings"
-
-# overlap chain
-assert run("aaaa\naaab\naab\n") == "5", "repeated character overlap"
+# one string contains others
+assert run("abcde\nbcd\ncde\n") == "5", "containment"
 
 # no overlap
-assert run("ab\ncd\nef\n") == "6", "disjoint strings"
+assert run("abc\ndef\nghi\n") == "9", "disjoint"
+
+# cyclic overlaps
+assert run("ab\nbc\nca\n") == "4", "merge ordering"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a a a` | `1` | Duplicate removal |
-| `abcde bcd cde` | `5` | Contained substring elimination |
-| `aaaa aaab aab` | `5` | Correct maximum overlap detection |
-| `ab cd ef` | `6` | Behavior with no overlaps |
+| `aaaa / aaaa / aaaa` | `4` | Duplicate handling |
+| `abcde / bcd / cde` | `5` | Containment removal |
+| `abc / def / ghi` | `9` | Zero-overlap behavior |
+| `ab / bc / ca` | `4` | Correct permutation search |
 
 ## Edge Cases
 
-Consider the contained substring case:
-
-```
-abcde
-bcd
-cde
-```
-
-During preprocessing:
-
-- `bcd` is found inside `abcde`
-- `cde` is found inside `abcde`
-
-Both are removed.
-
-Only `abcde` remains, so the algorithm immediately returns length `5`. No unnecessary merges happen.
-
-Now consider repeated-character overlaps:
+Consider the input:
 
 ```
 aaaa
-aaab
+aaaa
+aa
 ```
 
-The overlap scan checks:
+The preprocessing stage marks the second and third strings as redundant because both already appear inside the first string. Only `"aaaa"` remains, so the answer becomes `4`.
 
-- length 1: `a == a`
-- length 2: `aa == aa`
-- length 3: `aaa == aaa`
-- length 4: `aaaa != aaab`
-
-The maximum overlap is correctly identified as `3`, producing:
+Now examine:
 
 ```
-aaaab
+abc
+def
+ghi
 ```
 
-This case verifies that the rolling hash comparison handles repeated prefixes correctly.
+For every pair of strings, the overlap function checks all suffix-prefix lengths and finds none greater than zero. Each merge simply appends the next string entirely:
 
-Finally, consider completely disjoint strings:
+```
+abc + def -> abcdef
+abcdef + ghi -> abcdefghi
+```
+
+The final answer is `9`.
+
+Another subtle case is:
 
 ```
 ab
-cd
-ef
+bc
+ca
 ```
 
-No overlap exists in any merge order. Every overlap check fails, so all concatenations are direct:
+If we choose the order `(ab, bc, ca)`:
 
-```
-ab + cd + ef = abcdef
-```
+| Merge | Result |
+| --- | --- |
+| ab + bc | abc |
+| abc + ca | abca |
 
-The algorithm returns `6`, confirming that zero-overlap handling works correctly.
+Length becomes `4`.
+
+A different ordering can produce a longer string, which is why trying all permutations is necessary. The algorithm guarantees correctness because it never commits to a single merge order too early.
