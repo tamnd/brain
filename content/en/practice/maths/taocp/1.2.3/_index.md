@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.3 — Sums and Products"
-description: "Section 1.2.3 exercises — 22/46 solved."
+description: "Section 1.2.3 exercises — 40/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.3. Sums and Products
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.3: 22/46 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.3: 40/46 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -45,22 +45,22 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.3: 22/46 solved.
 | 25 | &#9654; [*15*] | simple | - | - |
 | [26](26.md) |  [*25*] | medium | solved | 43s |
 | [27](27.md) |  [*M20*] | math-medium | solved | 29s |
-| 28 |  [*M22*] | math-medium | - | - |
-| 29 | &#9654; [*M30*] | math-hard | - | - |
-| 30 | &#9654; [*M23*] | math-medium | - | - |
+| [28](28.md) |  [*M22*] | math-medium | solved | 33s |
+| [29](29.md) | &#9654; [*M30*] | math-hard | solved | 53s |
+| [30](30.md) | &#9654; [*M23*] | math-medium | solved | 47s |
 | 31 |  [*M20*] | math-medium | - | - |
-| 32 |  [*M20*] | math-medium | - | - |
-| 33 | &#9654; [*M30*] | math-hard | - | - |
-| 34 |  [*M25*] | math-medium | - | - |
-| 35 |  [*HM20*] | hm-medium | - | - |
-| 36 |  [*M23*] | math-medium | - | - |
-| 37 | &#9654; [*M24*] | math-medium | - | - |
-| 38 | &#9654; [*M25*] | math-medium | - | - |
-| 39 |  [*M23*] | math-medium | - | - |
-| 40 |  [*M24*] | math-medium | - | - |
-| 41 |  [*M26*] | math-hard | - | - |
-| 42 |  [*M18*] | math-medium | - | - |
-| 43 |  [*M24*] | math-medium | - | - |
-| 44 | &#9654; [*M26*] | math-hard | - | - |
-| 45 | &#9654; [*M25*] | math-medium | - | - |
-| 46 | &#9654; [*M30*] | math-hard | - | - |
+| [32](32.md) |  [*M20*] | math-medium | solved | 31s |
+| [33](33.md) | &#9654; [*M30*] | math-hard | solved | 1m01s |
+| [34](34.md) |  [*M25*] | math-medium | solved | 35s |
+| [35](35.md) |  [*HM20*] | hm-medium | solved | 37s |
+| [36](36.md) |  [*M23*] | math-medium | solved | 32s |
+| [37](37.md) | &#9654; [*M24*] | math-medium | solved | 37s |
+| [38](38.md) | &#9654; [*M25*] | math-medium | solved | 46s |
+| [39](39.md) |  [*M23*] | math-medium | solved | 39s |
+| [40](40.md) |  [*M24*] | math-medium | solved | 42s |
+| [41](41.md) |  [*M26*] | math-hard | solved | 47s |
+| [42](42.md) |  [*M18*] | math-medium | solved | 23s |
+| [43](43.md) |  [*M24*] | math-medium | solved | 43s |
+| [44](44.md) | &#9654; [*M26*] | math-hard | solved | 49s |
+| [45](45.md) | &#9654; [*M25*] | math-medium | solved | 53s |
+| [46](46.md) | &#9654; [*M30*] | math-hard | solved | 2m26s |

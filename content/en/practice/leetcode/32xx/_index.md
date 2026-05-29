@@ -16,6 +16,7 @@ draft: false
 | 3203 | [Find Minimum Diameter After Merging Two Trees](3203.md) | 🔴 Hard | 2m 13s | We are given two separate undirected trees. The first tree contains… |
 | 3204 | [Bitwise User Permissions Analysis](3204.md) | 🟡 Medium | 55s | The problem is asking us to analyze a table of user permissions whe… |
 | 3205 | [Maximum Array Hopping Score I](3205.md) | 🟡 Medium | 1m 32s | The problem asks us to calculate the maximum score achievable by ho… |
+| 3206 | [Alternating Groups I](3206.md) | 🟢 Easy | 1m 9s | The problem gives us a circular array called colors, where each ele… |
 | 3207 | [Maximum Points After Enemy Battles](3207.md) | 🟡 Medium | 1m 8s | The problem gives us a list of enemies, where each enemy has an ass… |
 | 3208 | [Alternating Groups II](3208.md) | 🟡 Medium | 1m 12s | The problem gives us a circular array called colors, where each val… |
 | 3209 | [Number of Subarrays With AND Value of K](3209.md) | 🔴 Hard | 1m 17s | The problem asks us to count how many contiguous subarrays of nums … |
@@ -33,6 +34,7 @@ draft: false
 | 3221 | [Maximum Array Hopping Score II](3221.md) | 🟡 Medium | 1m 30s | The problem gives us an integer array nums, where each position rep… |
 | 3222 | [Find the Winning Player in Coin Game](3222.md) | 🟢 Easy | 1m 17s | The game gives us two types of coins: - x coins worth 75 - y coins … |
 | 3223 | [Minimum Length of String After Operations](3223.md) | 🟡 Medium | 1m 11s | The problem asks us to repeatedly remove characters from a string b… |
+| 3224 | [Minimum Array Changes to Make Differences Equal](3224.md) | 🟡 Medium | 45s | The problem gives us an integer array nums of even length n and an … |
 | 3225 | [Maximum Score From Grid Operations](3225.md) | 🔴 Hard | 1m 2s | This problem presents a 2D square matrix grid of size n x n where e… |
 | 3226 | [Number of Bit Changes to Make Two Integers Equal](3226.md) | 🟢 Easy | 1m 39s | The problem gives us two positive integers, n and k. We are allowed… |
 | 3227 | [Vowels Game in a String](3227.md) | 🟡 Medium | 1m | The problem describes a two-player game between Alice and Bob playe… |

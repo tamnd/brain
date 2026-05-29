@@ -18,6 +18,7 @@ draft: false
 | 3105 | [Longest Strictly Increasing or Strictly Decreasing Subarray](3105.md) | 🟢 Easy | 1m 59s | The problem gives us an integer array nums and asks us to find the … |
 | 3106 | [Lexicographically Smallest String After Operations With Constraint](3106.md) | 🟡 Medium | 1m 25s | This problem asks us to transform a given string s into another str… |
 | 3107 | [Minimum Operations to Make Median of Array Equal to K](3107.md) | 🟡 Medium | 1m 34s | The problem asks us to transform an integer array so that its media… |
+| 3108 | [Minimum Cost Walk in Weighted Graph](3108.md) | 🔴 Hard | 1m 19s | This problem gives us an undirected weighted graph with n vertices … |
 | 3109 | [Find the Index of Permutation](3109.md) | 🟡 Medium | 1m 20s | The problem gives us a permutation perm of the integers [1, 2, ...,… |
 | 3110 | [Score of a String](3110.md) | 🟢 Easy | 59s | This problem asks us to compute the score of a string, where the sc… |
 | 3111 | [Minimum Rectangles to Cover Points](3111.md) | 🟡 Medium | 1m 13s | The problem gives us a collection of 2D points, where each point is… |
@@ -28,6 +29,7 @@ draft: false
 | 3116 | [Kth Smallest Amount With Single Denomination Combination](3116.md) | 🔴 Hard | 1m 2s | The problem asks us to determine the kth smallest amount that can b… |
 | 3117 | [Minimum Sum of Values by Dividing Array](3117.md) | 🔴 Hard | 1m 4s | This problem asks us to partition an array nums into exactly m cont… |
 | 3118 | [Friday Purchase III ](3118.md) | 🟡 Medium | 54s | This problem asks us to calculate the total amount of money spent b… |
+| 3119 | [Maximum Number of Potholes That Can Be Fixed](3119.md) | 🟡 Medium | 1m 13s | We are given a road represented as a string containing only two cha… |
 | 3120 | [Count the Number of Special Characters I](3120.md) | 🟢 Easy | 46s | The problem asks us to count the number of special characters in a … |
 | 3121 | [Count the Number of Special Characters II](3121.md) | 🟡 Medium | 1m 12s | The problem gives us a string word containing uppercase and lowerca… |
 | 3122 | [Minimum Number of Operations to Satisfy Conditions](3122.md) | 🟡 Medium | 1m 1s | The problem presents a two-dimensional matrix grid of size m x n wi… |
@@ -43,6 +45,7 @@ draft: false
 | 3132 | [Find the Integer Added to Array II](3132.md) | 🟡 Medium | 1m 16s | We are given two integer arrays, nums1 and nums2. The array nums2 w… |
 | 3133 | [Minimum Array End](3133.md) | 🟡 Medium | 1m 11s | The problem asks us to construct a strictly increasing array nums o… |
 | 3134 | [Find the Median of the Uniqueness Array](3134.md) | 🔴 Hard | 1m 20s | The problem defines a special array called the uniqueness array. Fo… |
+| 3135 | [Equalize Strings by Adding or Removing Characters at Ends](3135.md) | 🟡 Medium | 1m 20s | The problem gives us two strings, initial and target. We want to tr… |
 | 3136 | [Valid Word](3136.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given string qualifies a… |
 | 3137 | [Minimum Number of Operations to Make Word K-Periodic](3137.md) | 🟡 Medium | 1m | The problem asks us to transform a given string word of length n in… |
 | 3138 | [Minimum Length of Anagram Concatenation](3138.md) | 🟡 Medium | 1m 15s | The problem gives us a string s that was formed by concatenating se… |
@@ -58,6 +61,7 @@ draft: false
 | 3148 | [Maximum Difference Score in a Grid](3148.md) | 🟡 Medium | 1m 42s | The problem gives us an m x n matrix called grid, where every cell … |
 | 3149 | [Find the Minimum Cost Array Permutation](3149.md) | 🔴 Hard | 51s | The problem presents an array nums of length n that is a permutatio… |
 | 3150 | [Invalid Tweets II](3150.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Tweets with two columns… |
+| 3151 | [Special Array I](3151.md) | 🟢 Easy | 1m 2s | The problem asks us to determine whether a given integer array is "… |
 | 3152 | [Special Array II](3152.md) | 🟡 Medium | 1m 22s | We are given an integer array nums and several queries. Each query … |
 | 3153 | [Sum of Digit Differences of All Pairs](3153.md) | 🟡 Medium | 1m 18s | The problem asks us to compute the total digit difference across ev… |
 | 3154 | [Find Number of Ways to Reach the K-th Stair](3154.md) | 🔴 Hard | 1m 8s | Let's dive into a comprehensive solution guide for LeetCode 3154 - … |
@@ -81,6 +85,7 @@ draft: false
 | 3173 | [Bitwise OR of Adjacent Elements](3173.md) | 🟢 Easy | 1m 6s | The problem gives us an integer array nums of length n. We must cre… |
 | 3174 | [Clear Digits](3174.md) | 🟢 Easy | 1m 1s | In this problem, we are given a string s that contains lowercase En… |
 | 3175 | [Find The First Player to win K Games in a Row](3175.md) | 🟡 Medium | 1m 6s | The problem describes a competition where players stand in a queue … |
+| 3176 | [Find the Maximum Length of a Good Subsequence I](3176.md) | 🟡 Medium | 1m 24s | We are given an integer array nums and a non-negative integer k. We… |
 | 3177 | [Find the Maximum Length of a Good Subsequence II](3177.md) | 🔴 Hard | 1m 23s | We are given an integer array nums and a non-negative integer k. We… |
 | 3178 | [Find the Child Who Has the Ball After K Seconds](3178.md) | 🟢 Easy | 52s | The problem asks us to simulate a game in which n children, numbere… |
 | 3179 | [Find the N-th Value After K Seconds](3179.md) | 🟡 Medium | 1m 1s | The problem requires computing the value of the last element in an … |
@@ -91,6 +96,7 @@ draft: false
 | 3185 | [Count Pairs That Form a Complete Day II](3185.md) | 🟡 Medium | 46s | The problem asks us to count pairs of elements in an integer array … |
 | 3186 | [Maximum Total Damage With Spell Casting](3186.md) | 🟡 Medium | 1m 22s | The problem gives us an array power, where each element represents … |
 | 3187 | [Peaks in Array](3187.md) | 🔴 Hard | 1m 29s | The problem asks us to process two kinds of operations on an intege… |
+| 3188 | [Find Top Scoring Students II](3188.md) | 🔴 Hard | 1m 18s | This problem asks us to identify students who satisfy a combination… |
 | 3189 | [Minimum Moves to Get a Peaceful Board](3189.md) | 🟡 Medium | 1m 7s | In this problem, we are given the positions of n rooks placed on an… |
 | 3190 | [Find Minimum Operations to Make All Elements Divisible by Three](3190.md) | 🟢 Easy | 1m 12s | The problem gives us an integer array nums. In one operation, we ar… |
 | 3192 | [Minimum Operations to Make Binary Array Elements Equal to One II](3192.md) | 🟡 Medium | 51s | This problem asks us to take a binary array nums, which contains on… |
