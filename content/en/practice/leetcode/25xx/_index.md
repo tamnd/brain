@@ -33,7 +33,8 @@ draft: false
 | 2520 | [Count the Digits That Divide a Number](2520.md) | 🟢 Easy | 55s | The problem asks us to determine, given a positive integer num, how… |
 | 2521 | [Distinct Prime Factors of Product of Array](2521.md) | 🟡 Medium | 1m 27s | The problem asks us to determine how many unique prime numbers appe… |
 | 2522 | [Partition String Into Substrings With Values at Most K](2522.md) | 🟡 Medium | 1m 10s | The problem gives us a numeric string s, where every character is a… |
-| 2524 | [Maximum Frequency Score of a Subarray](2524.md) | 🔴 Hard | 1m 29s | The problem gives us an integer array nums and a fixed window size … |
+| 2523 | [Closest Prime Numbers in Range](2523.md) | 🟡 Medium | 1m 15s | The problem asks us to find two prime numbers inside a given inclus… |
+| 2524 | [Maximum Frequency Score of a Subarray](2524.md) | 🔴 Hard | 48s | The problem asks us to compute the maximum frequency score among al… |
 | 2525 | [Categorize Box According to Criteria](2525.md) | 🟢 Easy | 1m 5s | This problem asks us to classify a box into one of four categories … |
 | 2526 | [Find Consecutive Integers from a Data Stream](2526.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure that processes a str… |
 | 2528 | [Maximize the Minimum Powered City](2528.md) | 🔴 Hard | 44s | The problem gives an array stations of length n where each element … |
