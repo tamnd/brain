@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "Incremental machine-translation pipeline for tamnd/brain"
 requires-python = ">=3.13"
 dependencies = [
-    "openai>=1.82.0",
-    "deepl>=1.20.0",
+    "deep-translator>=1.11.4",
+    "translators>=5.9.9",
     "pydantic>=2.11.0",
     "rich>=14.0.0",
     "typer>=0.15.3",

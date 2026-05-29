@@ -49,8 +49,8 @@ def utcnow() -> datetime:
 
 
 class TranslatorConfig(BaseModel):
-    provider: Literal["openai", "deepl"] = "openai"
-    model: str = "gpt-4o"
+    provider: str = "chatgpt"  # chatgpt | google | bing | yandex | baidu | google_dt | …
+    model: str = "gpt-4o"     # only used by chatgpt-tool internally
 
 
 class FileState(BaseModel):
@@ -59,7 +59,7 @@ class FileState(BaseModel):
     dest_path: str
     status: Literal["done", "failed"] = "done"
     tokens_used: int = 0
-    provider: str = "openai"
+    provider: str = "chatgpt"
 
 
 class TranslationState(BaseModel):
