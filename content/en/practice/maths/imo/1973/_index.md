@@ -17,7 +17,7 @@ draft: false
 | [1](1.md) | ✓ verified | 22m51s |
 | [2](2.md) | ✓ verified | 14m44s |
 | [3](3.md) | ✓ verified | 11m52s |
-| [4](4.md) | solved | 38m54s |
+| [4](4.md) | solved | 15m06s |
 | [5](5.md) | solved | 9m42s |
 | [6](6.md) | solved | 5m08s |
 
@@ -37,7 +37,7 @@ Let $a$ and $b$ be real numbers for which the equation $$
 x^4 + ax^3 + bx^2 + ax + 1 = 0
 $$ has at least one real solution. For all such pairs $(a, b)$, find the minimum value of $a^2 + b^2$.
 
-**Problem 4** &nbsp; *solved* · 38m54s · [Solution →](4.md)
+**Problem 4** &nbsp; *solved* · 15m06s · [Solution →](4.md)
 
 A soldier needs to check on the presence of mines in a region having the shape of an equilateral triangle. The radius of action of his detector is equal to half the altitude of the triangle. The soldier leaves from one vertex of the triangle. What path should he follow in order to travel the least possible distance and still accomplish his mission?
 

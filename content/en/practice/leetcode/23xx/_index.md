@@ -40,35 +40,35 @@ draft: false
 | 2327 | [Number of People Aware of a Secret](2327.md) | 🟡 Medium | 1m | The problem describes how a secret spreads over time. On day 1, exa… |
 | 2328 | [Number of Increasing Paths in a Grid](2328.md) | 🔴 Hard | 1m 10s | In this problem, we are given a two dimensional matrix called grid.… |
 | 2329 | [Product Sales Analysis V](2329.md) | 🟢 Easy | 1m 3s | This problem asks us to calculate how much money each user has spen… |
-| 2330 | [Valid Palindrome IV](2330.md) | 🟡 Medium | 1m 13s | The problem gives us a string s containing only lowercase English l… |
+| 2330 | [Valid Palindrome IV](2330.md) | 🟡 Medium | 1m 31s | The problem gives us a string s containing only lowercase English l… |
 | 2331 | [Evaluate Boolean Binary Tree](2331.md) | 🟢 Easy | 46s | The problem asks us to evaluate a full binary tree where each node … |
 | 2332 | [The Latest Time to Catch a Bus](2332.md) | 🟡 Medium | 48s | The problem asks us to determine the latest time we can arrive at a… |
 | 2333 | [Minimum Sum of Squared Difference](2333.md) | 🟡 Medium | 37s | I can do that, but the complete guide with all requested sections a… |
-| 2334 | [Subarray With Elements Greater Than Varying Threshold](2334.md) | 🔴 Hard | 49s | The problem requires us to find a contiguous subarray in a given in… |
+| 2334 | [Subarray With Elements Greater Than Varying Threshold](2334.md) | 🔴 Hard | 1m 20s | This problem asks us to find a contiguous subarray whose elements a… |
 | 2335 | [Minimum Amount of Time to Fill Cups](2335.md) | 🟢 Easy | 1m 15s | The problem gives us an array amount of length 3. Each index repres… |
 | 2336 | [Smallest Number in Infinite Set](2336.md) | 🟡 Medium | 51s | The problem asks us to implement a data structure representing an i… |
 | 2337 | [Move Pieces to Obtain a String](2337.md) | 🟡 Medium | 1m 14s | The problem gives us two strings, start and target, both having the… |
 | 2338 | [Count the Number of Ideal Arrays](2338.md) | 🔴 Hard | 1m 18s | The problem asks us to count how many arrays of length n satisfy a … |
 | 2339 | [All the Matches of the League](2339.md) | 🟢 Easy | 58s | The Teams table contains the names of all teams participating in a … |
-| 2340 | [Minimum Adjacent Swaps to Make a Valid Array](2340.md) | 🟡 Medium | 1m 15s | In this problem, we are given an integer array nums, and we may rep… |
-| 2341 | [Maximum Number of Pairs in Array](2341.md) | 🟢 Easy | 52s | This problem asks us to determine how many pairs of equal integers … |
+| 2340 | [Minimum Adjacent Swaps to Make a Valid Array](2340.md) | 🟡 Medium | 3m 13s | The previous solution fails immediately under a counterexample chec… |
+| 2341 | [Maximum Number of Pairs in Array](2341.md) | 🟢 Easy | 52s | The problem asks us to take an array of integers, nums, and repeate… |
 | 2342 | [Max Sum of a Pair With Equal Sum of Digits](2342.md) | 🟡 Medium | 42s | The problem requires finding the maximum sum of a pair of numbers i… |
 | 2343 | [Query Kth Smallest Trimmed Number](2343.md) | 🟡 Medium | 41s | This problem provides a list of numbers represented as strings, all… |
 | 2344 | [Minimum Deletions to Make Array Divisible](2344.md) | 🔴 Hard | 1m 18s | The problem gives us two arrays of positive integers, nums and nums… |
-| 2345 | [Finding the Number of Visible Mountains](2345.md) | 🟡 Medium | 1m 20s | Each mountain is defined by a peak (x, y). Because the mountain has… |
-| 2346 | [Compute the Rank as a Percentage](2346.md) | 🟡 Medium | 1m 19s | The problem gives us a database table named Students. Each row cont… |
+| 2345 | [Finding the Number of Visible Mountains](2345.md) | 🟡 Medium | 1m 32s | Each mountain is represented by a peak point (x, y). Because the mo… |
+| 2346 | [Compute the Rank as a Percentage](2346.md) | 🟡 Medium | 1m 37s | The problem provides a database table named Students, where each ro… |
 | 2347 | [Best Poker Hand](2347.md) | 🟢 Easy | 1m 6s | The problem gives us exactly five playing cards. Each card is repre… |
 | 2348 | [Number of Zero-Filled Subarrays](2348.md) | 🟡 Medium | 33s | The problem asks us to count the number of contiguous subarrays in … |
 | 2349 | [Design a Number Container System](2349.md) | 🟡 Medium | 1m 10s | The problem asks us to design a data structure that supports two op… |
 | 2350 | [Shortest Impossible Sequence of Rolls](2350.md) | 🔴 Hard | 56s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 2351 | [First Letter to Appear Twice](2351.md) | 🟢 Easy | 1m 3s | The problem gives us a string s containing only lowercase English l… |
 | 2352 | [Equal Row and Column Pairs](2352.md) | 🟡 Medium | 1m 4s | The problem gives us a square matrix grid of size n x n, where ever… |
-| 2353 | [Design a Food Rating System](2353.md) | 🟡 Medium | 1m 38s | This problem asks us to design a data structure that supports two o… |
+| 2353 | [Design a Food Rating System](2353.md) | 🟡 Medium | 1m | The problem is asking us to implement a food rating system that sup… |
 | 2354 | [Number of Excellent Pairs](2354.md) | 🔴 Hard | 49s | The problem provides a 0-indexed array of positive integers nums an… |
 | 2355 | [Maximum Number of Books You Can Take](2355.md) | 🔴 Hard | 2m 20s | That is a long, multi-section technical reference document. I can p… |
 | 2356 | [Number of Unique Subjects Taught by Each Teacher](2356.md) | 🟢 Easy | 38s | The problem requires calculating the number of unique subjects each… |
-| 2357 | [Make Array Zero by Subtracting Equal Amounts](2357.md) | 🟢 Easy | 1m 8s | The problem gives us an array of non-negative integers called nums.… |
-| 2358 | [Maximum Number of Groups Entering a Competition](2358.md) | 🟡 Medium | 1m 4s | The problem gives us an array called grades, where each element rep… |
+| 2357 | [Make Array Zero by Subtracting Equal Amounts](2357.md) | 🟢 Easy | 1m 6s | This problem gives us an array nums containing non-negative integer… |
+| 2358 | [Maximum Number of Groups Entering a Competition](2358.md) | 🟡 Medium | 49s | The problem asks us to partition a list of student grades into mult… |
 | 2359 | [Find Closest Node to Given Two Nodes](2359.md) | 🟡 Medium | 39s | The problem asks us to find a node in a directed graph with a very … |
 | 2360 | [Longest Cycle in a Graph](2360.md) | 🔴 Hard | 1m 14s | This problem gives us a directed graph represented by an array call… |
 | 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 37s | This problem models a scenario where you are traversing a train lin… |
