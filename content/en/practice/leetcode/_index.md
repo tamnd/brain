@@ -2572,66 +2572,74 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2585 | [Number of Ways to Earn Points](25xx/2585.md) | 🔴 Hard | 55s | This problem is essentially asking how many distinct ways we can se… |
 | 2586 | [Count the Number of Vowel Strings in Range](25xx/2586.md) | 🟢 Easy | 1m 1s | The problem gives us an array of lowercase strings called words and… |
 | 2587 | [Rearrange Array to Maximize Prefix Score](25xx/2587.md) | 🟡 Medium | 1m 4s | The problem gives us a 0-indexed array of integers, nums, which can… |
-| 2588 | [Count the Number of Beautiful Subarrays](25xx/2588.md) | 🟡 Medium | 1m 19s | The problem gives us an array nums, and defines a special operation… |
+| 2588 | [Count the Number of Beautiful Subarrays](25xx/2588.md) | 🟡 Medium | 6m 11s | The problem gives us an array nums, and we are allowed to repeatedl… |
 | 2589 | [Minimum Time to Complete All Tasks](25xx/2589.md) | 🔴 Hard | 58s | This problem is asking us to determine the minimum amount of time t… |
 | 2590 | [Design a Todo List](25xx/2590.md) | 🟡 Medium | 1m 19s | This problem asks us to design a small task management system, simi… |
 | 2591 | [Distribute Money to Maximum Children](25xx/2591.md) | 🟢 Easy | 1m 57s | Problem Understanding |
 | 2592 | [Maximize Greatness of an Array](25xx/2592.md) | 🟡 Medium | 1m 3s | Here is the complete, detailed technical solution guide for LeetCod… |
-| 2593 | [Find Score of an Array After Marking All Elements](25xx/2593.md) | 🟡 Medium | 1m 17s | In this problem, we are given an integer array nums, where every va… |
-| 2594 | [Minimum Time to Repair Cars](25xx/2594.md) | 🟡 Medium | 1m 21s | This problem gives us a list of mechanics, where each mechanic has … |
-| 2595 | [Number of Even and Odd Bits](25xx/2595.md) | 🟢 Easy | 53s | The problem gives us a positive integer n and asks us to analyze it… |
-| 2596 | [Check Knight Tour Configuration](25xx/2596.md) | 🟡 Medium | 1m 16s | This problem asks us to verify whether a given matrix represents a … |
-| 2597 | [The Number of Beautiful Subsets](25xx/2597.md) | 🟡 Medium | 47s | The problem asks us to count the number of non-empty subsets of a g… |
-| 2598 | [Smallest Missing Non-negative Integer After Operations](25xx/2598.md) | 🟡 Medium | 1m 14s | This problem asks us to maximize the MEX, the minimum excluded non-… |
-| 2599 | [Make the Prefix Sum Non-negative](25xx/2599.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums, and we are allowed to r… |
-| 2600 | [K Items With the Maximum Sum](26xx/2600.md) | 🟢 Easy | 40s | The problem presents a simple scenario: a bag contains a known numb… |
-| 2601 | [Prime Subtraction Operation](26xx/2601.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array nums, and we want to determin… |
-| 2602 | [Minimum Operations to Make All Array Elements Equal](26xx/2602.md) | 🟡 Medium | 42s | The problem asks us to compute the minimum number of operations nee… |
-| 2603 | [Collect Coins in a Tree](26xx/2603.md) | 🔴 Hard | 1m 21s | We are given an undirected tree with n nodes. A tree is a connected… |
-| 2604 | [Minimum Time to Eat All Grains](26xx/2604.md) | 🔴 Hard | 1m 14s | In this problem, we are given two sets of positions on a one dimens… |
-| 2605 | [Form Smallest Number From Two Digit Arrays](26xx/2605.md) | 🟢 Easy | 38s | The problem asks us to construct the smallest number possible that … |
-| 2606 | [Find the Substring With Maximum Cost](26xx/2606.md) | 🟡 Medium | 1m 16s | The problem gives us a string s and a custom character value mappin… |
-| 2607 | [Make K-Subarray Sums Equal](26xx/2607.md) | 🟡 Medium | 1m 9s | You are given a circular array arr and an integer k. Because the ar… |
-| 2608 | [Shortest Cycle in a Graph](26xx/2608.md) | 🔴 Hard | 1m 10s | The problem gives us an undirected graph with n vertices labeled fr… |
-| 2609 | [Find the Longest Balanced Substring of a Binary String](26xx/2609.md) | 🟢 Easy | 1m 15s | We are given a binary string s that contains only the characters '0… |
-| 2610 | [Convert an Array Into a 2D Array With Conditions](26xx/2610.md) | 🟡 Medium | 41s | This is a Type B - "Prove that" problem. The statement asks to comp… |
-| 2611 | [Mice and Cheese](26xx/2611.md) | 🟡 Medium | 1m 8s | The problem describes a scenario with two mice and several differen… |
-| 2614 | [Prime In Diagonal](26xx/2614.md) | 🟢 Easy | 1m 7s | This problem gives us a square matrix named nums, where the number … |
-| 2615 | [Sum of Distances](26xx/2615.md) | 🟡 Medium | 1m 7s | The problem gives us a 0-indexed integer array nums. For every posi… |
-| 2616 | [Minimize the Maximum Difference of Pairs](26xx/2616.md) | 🟡 Medium | 1m 13s | The problem asks us to select exactly p disjoint pairs from the arr… |
-| 2617 | [Minimum Number of Visited Cells in a Grid](26xx/2617.md) | 🔴 Hard | 1m 23s | The problem gives us a 2D grid where each cell contains a non-negat… |
-| 2619 | [Array Prototype Last](26xx/2619.md) | 🟢 Easy | 2m 33s | This problem asks us to extend the built in JavaScript Array object… |
-| 2620 | [Counter](26xx/2620.md) | 🟢 Easy | 36s | The problem is asking us to implement a counter generator that star… |
-| 2621 | [Sleep](26xx/2621.md) | 🟢 Easy | 2m 16s | The problem is asking us to implement an asynchronous function slee… |
-| 2622 | [Cache With Time Limit](26xx/2622.md) | 🟡 Medium | 1m 9s | This problem asks us to design a cache system where each key-value … |
+| 2593 | [Find Score of an Array After Marking All Elements](25xx/2593.md) | 🟡 Medium | 1m | Here is a comprehensive, detailed technical solution guide for Leet… |
+| 2594 | [Minimum Time to Repair Cars](25xx/2594.md) | 🟡 Medium | 1m 8s | The problem gives us a list of mechanics, where each mechanic has a… |
+| 2595 | [Number of Even and Odd Bits](25xx/2595.md) | 🟢 Easy | 1m 40s | The problem asks us to analyze the binary representation of a posit… |
+| 2596 | [Check Knight Tour Configuration](25xx/2596.md) | 🟡 Medium | 1m 14s | The problem gives us an n x n matrix called grid, where every numbe… |
+| 2597 | [The Number of Beautiful Subsets](25xx/2597.md) | 🟡 Medium | 1m 13s | The problem asks us to count how many non-empty subsets of the arra… |
+| 2598 | [Smallest Missing Non-negative Integer After Operations](25xx/2598.md) | 🟡 Medium | 1m 11s | That is a long, structured technical guide with multiple required s… |
+| 2599 | [Make the Prefix Sum Non-negative](25xx/2599.md) | 🟡 Medium | 48s | The problem asks us to manipulate an array of integers, nums, so th… |
+| 2600 | [K Items With the Maximum Sum](26xx/2600.md) | 🟢 Easy | 48s | The problem asks us to determine the maximum possible sum when pick… |
+| 2601 | [Prime Subtraction Operation](26xx/2601.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums and asks whether it is p… |
+| 2602 | [Minimum Operations to Make All Array Elements Equal](26xx/2602.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums and another array querie… |
+| 2603 | [Collect Coins in a Tree](26xx/2603.md) | 🔴 Hard | 45s | The problem is about collecting coins located on the nodes of a tre… |
+| 2604 | [Minimum Time to Eat All Grains](26xx/2604.md) | 🔴 Hard | 51s | The problem asks us to determine the minimum time needed for all he… |
+| 2605 | [Form Smallest Number From Two Digit Arrays](26xx/2605.md) | 🟢 Easy | 1m 18s | The problem gives us two arrays, nums1 and nums2, where each array … |
+| 2606 | [Find the Substring With Maximum Cost](26xx/2606.md) | 🟡 Medium | 51s | The problem asks us to find the substring of a given string s that … |
+| 2607 | [Make K-Subarray Sums Equal](26xx/2607.md) | 🟡 Medium | 47s | The problem asks us to transform a circular integer array so that e… |
+| 2608 | [Shortest Cycle in a Graph](26xx/2608.md) | 🔴 Hard | 1m 16s | The problem gives us an undirected graph with n vertices labeled fr… |
+| 2609 | [Find the Longest Balanced Substring of a Binary String](26xx/2609.md) | 🟢 Easy | 1m 11s | The problem gives us a binary string s, which means the string cont… |
+| 2610 | [Convert an Array Into a 2D Array With Conditions](26xx/2610.md) | 🟡 Medium | 50s | The problem asks us to transform a one-dimensional integer array nu… |
+| 2611 | [Mice and Cheese](26xx/2611.md) | 🟡 Medium | 1m 1s | The problem gives us two arrays, reward1 and reward2, where each in… |
+| 2612 | [Minimum Reverse Operations](26xx/2612.md) | 🔴 Hard | 48s | This will be a very large, multi-thousand-word technical guide beca… |
+| 2613 | [Beautiful Pairs](26xx/2613.md) | 🔴 Hard | 45s | The problem asks us to find a beautiful pair of indices (i, j) in t… |
+| 2614 | [Prime In Diagonal](26xx/2614.md) | 🟢 Easy | 1m 16s | The problem gives us a square matrix nums of size n x n. We need to… |
+| 2615 | [Sum of Distances](26xx/2615.md) | 🟡 Medium | 1m 28s | The problem asks us to compute, for every index i in the array nums… |
+| 2616 | [Minimize the Maximum Difference of Pairs](26xx/2616.md) | 🟡 Medium | 1m 5s | The problem asks us to select exactly p disjoint pairs from the arr… |
+| 2617 | [Minimum Number of Visited Cells in a Grid](26xx/2617.md) | 🔴 Hard | 50s | The problem asks us to determine the minimum number of cells we nee… |
+| 2618 | [Check if Object Instance of Class](26xx/2618.md) | 🟡 Medium | 50s | The problem asks us to implement a function that checks whether a g… |
+| 2619 | [Array Prototype Last](26xx/2619.md) | 🟢 Easy | 40s | The problem asks us to enhance all JavaScript arrays so that they h… |
+| 2620 | [Counter](26xx/2620.md) | 🟢 Easy | 46s | The problem is asking us to implement a simple counter function wit… |
+| 2621 | [Sleep](26xx/2621.md) | 🟢 Easy | 37s | The problem asks us to implement an asynchronous function sleep tha… |
+| 2622 | [Cache With Time Limit](26xx/2622.md) | 🟡 Medium | 1m 3s | This problem asks us to implement a cache that stores key-value pai… |
 | 2623 | [Memoize](26xx/2623.md) | 🟡 Medium | 53s | This problem asks us to create a memoized version of a function. Me… |
-| 2624 | [Snail Traversal](26xx/2624.md) | 🟡 Medium | 43s | The problem is asking us to take a one-dimensional array of numbers… |
-| 2625 | [Flatten Deeply Nested Array](26xx/2625.md) | 🟡 Medium | 1m 8s | We are given a multi-dimensional array arr and a non-negative integ… |
-| 2626 | [Array Reduce Transformation](26xx/2626.md) | 🟢 Easy | 40s | The problem is asking us to simulate the behavior of a "reduce" fun… |
-| 2628 | [JSON Deep Equal](26xx/2628.md) | 🟡 Medium | 42s | The problem is asking us to determine whether two JSON-parsed value… |
-| 2629 | [Function Composition](26xx/2629.md) | 🟢 Easy | 1m 21s | The problem is asking us to implement a function composition operat… |
-| 2630 | [Memoize II](26xx/2630.md) | 🔴 Hard | 42s | The problem asks us to implement a memoized version of a function f… |
-| 2631 | [Group By](26xx/2631.md) | 🟡 Medium | 1m 27s | This problem asks us to extend JavaScript arrays with a custom meth… |
-| 2633 | [Convert Object to JSON String](26xx/2633.md) | 🟡 Medium | 44s | This problem asks us to convert a given JavaScript-like object into… |
-| 2634 | [Filter Elements from Array](26xx/2634.md) | 🟢 Easy | 1m 8s | The problem asks us to implement our own version of array filtering… |
-| 2636 | [Promise Pool](26xx/2636.md) | 🟡 Medium | 1m | This problem asks us to implement a concurrency-controlled executor… |
-| 2637 | [Promise Time Limit](26xx/2637.md) | 🟡 Medium | 1m | This problem asks us to build a higher order asynchronous function.… |
-| 2638 | [Count the Number of K-Free Subsets](26xx/2638.md) | 🟡 Medium | 1m 7s | The problem asks us to count how many subsets of the array nums are… |
-| 2639 | [Find the Width of Columns of a Grid](26xx/2639.md) | 🟢 Easy | 1m 6s | This problem gives us a two dimensional integer matrix called grid,… |
-| 2640 | [Find the Score of All Prefixes of an Array](26xx/2640.md) | 🟡 Medium | 1m 5s | The problem defines a special transformation called the conversion … |
-| 2642 | [Design Graph With Shortest Path Calculator](26xx/2642.md) | 🔴 Hard | 1m 21s | This problem asks us to design a mutable directed weighted graph th… |
-| 2643 | [Row With Maximum Ones](26xx/2643.md) | 🟢 Easy | 1m 4s | This problem gives us a binary matrix mat of size m x n, where ever… |
-| 2645 | [Minimum Additions to Make Valid String](26xx/2645.md) | 🟡 Medium | 48s | The problem asks us to transform a given string word into a valid s… |
-| 2646 | [Minimize the Total Price of the Trips](26xx/2646.md) | 🔴 Hard | 1m 22s | The problem gives us an undirected tree with n nodes. Every node ha… |
-| 2648 | [Generate Fibonacci Sequence](26xx/2648.md) | 🟢 Easy | 1m 3s | This problem asks us to implement a generator function that produce… |
-| 2649 | [Nested Array Generator](26xx/2649.md) | 🟡 Medium | 35s | The problem requires implementing a generator for multi-dimensional… |
-| 2650 | [Design Cancellable Function](26xx/2650.md) | 🔴 Hard | 2m 30s | This problem asks us to build a utility that can control the execut… |
-| 2651 | [Calculate Delayed Arrival Time](26xx/2651.md) | 🟢 Easy | 38s | This problem asks us to compute the arrival time of a train after i… |
-| 2652 | [Sum Multiples](26xx/2652.md) | 🟢 Easy | 58s | The problem asks us to examine every integer in the inclusive range… |
-| 2653 | [Sliding Subarray Beauty](26xx/2653.md) | 🟡 Medium | 1m 7s | The problem asks us to process every contiguous subarray of length … |
+| 2624 | [Snail Traversal](26xx/2624.md) | 🟡 Medium | 50s | The problem asks us to take a 1D array of integers and convert it i… |
+| 2625 | [Flatten Deeply Nested Array](26xx/2625.md) | 🟡 Medium | 1m 12s | This problem is implemented in JavaScript on LeetCode, but you requ… |
+| 2626 | [Array Reduce Transformation](26xx/2626.md) | 🟢 Easy | 40s | The problem is asking us to simulate a "reduce" operation on an arr… |
+| 2627 | [Debounce](26xx/2627.md) | 🟡 Medium | 1m 3s | This problem asks us to implement a utility function called debounc… |
+| 2628 | [JSON Deep Equal](26xx/2628.md) | 🟡 Medium | 40s | The problem asks us to determine whether two JSON values, o1 and o2… |
+| 2629 | [Function Composition](26xx/2629.md) | 🟢 Easy | 1m 7s | This problem asks us to implement function composition. We are give… |
+| 2630 | [Memoize II](26xx/2630.md) | 🔴 Hard | 47s | The problem asks us to implement a memoized version of a given func… |
+| 2631 | [Group By](26xx/2631.md) | 🟡 Medium | 37s | The problem asks us to enhance arrays such that any array can call … |
+| 2632 | [Curry](26xx/2632.md) | 🟡 Medium | 47s | The problem is asking us to implement currying for a given function… |
+| 2633 | [Convert Object to JSON String](26xx/2633.md) | 🟡 Medium | 1m 38s | The problem asks us to manually implement the behavior of JavaScrip… |
+| 2634 | [Filter Elements from Array](26xx/2634.md) | 🟢 Easy | 44s | The problem asks us to implement a function that filters an array b… |
+| 2635 | [Apply Transform Over Each Element in Array](26xx/2635.md) | 🟢 Easy | 56s | This problem asks us to implement a custom version of the array tra… |
+| 2636 | [Promise Pool](26xx/2636.md) | 🟡 Medium | 1m 7s | This problem asks us to implement a concurrency limiter for asynchr… |
+| 2637 | [Promise Time Limit](26xx/2637.md) | 🟡 Medium | 46s | This problem asks us to implement a time-limited wrapper around an … |
+| 2638 | [Count the Number of K-Free Subsets](26xx/2638.md) | 🟡 Medium | 45s | That is a detailed, long-form solution guide request. Before I gene… |
+| 2639 | [Find the Width of Columns of a Grid](26xx/2639.md) | 🟢 Easy | 1m 14s | The problem gives us a two dimensional integer matrix called grid w… |
+| 2640 | [Find the Score of All Prefixes of an Array](26xx/2640.md) | 🟡 Medium | 40s | The problem requires calculating a score for all prefixes of an arr… |
+| 2642 | [Design Graph With Shortest Path Calculator](26xx/2642.md) | 🔴 Hard | 1m 47s | The problem asks us to design a graph data structure that supports … |
+| 2643 | [Row With Maximum Ones](26xx/2643.md) | 🟢 Easy | 56s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 2644 | [Find the Maximum Divisibility Score](26xx/2644.md) | 🟢 Easy | 59s | The problem asks us to identify, from a list of divisors, the integ… |
+| 2645 | [Minimum Additions to Make Valid String](26xx/2645.md) | 🟡 Medium | 1m 58s | This problem asks us to determine the minimum number of insertions … |
+| 2646 | [Minimize the Total Price of the Trips](26xx/2646.md) | 🔴 Hard | 1m 13s | The problem gives us an undirected tree with n nodes. Every node ha… |
+| 2647 | [Color the Triangle Red](26xx/2647.md) | 🔴 Hard | 46s | The problem asks us to determine the minimal set of initial triangl… |
+| 2648 | [Generate Fibonacci Sequence](26xx/2648.md) | 🟢 Easy | 35s | The problem asks us to implement a generator function that yields n… |
+| 2649 | [Nested Array Generator](26xx/2649.md) | 🟡 Medium | 1m 1s | This problem asks us to implement a generator that traverses a mult… |
+| 2650 | [Design Cancellable Function](26xx/2650.md) | 🔴 Hard | 43s | The problem asks us to implement a mechanism to run a generator tha… |
+| 2651 | [Calculate Delayed Arrival Time](26xx/2651.md) | 🟢 Easy | 35s | The problem asks us to calculate the arrival time of a train given … |
+| 2652 | [Sum Multiples](26xx/2652.md) | 🟢 Easy | 41s | The problem requires calculating the sum of all integers from 1 up … |
+| 2653 | [Sliding Subarray Beauty](26xx/2653.md) | 🟡 Medium | 37s | The problem asks us to compute the beauty of every contiguous subar… |
 | 2654 | [Minimum Number of Operations to Make All Array Elements Equal to 1](26xx/2654.md) | 🟡 Medium | 45s | This problem asks us to transform a given array of positive integer… |
 | 2655 | [Find Maximal Uncovered Ranges](26xx/2655.md) | 🟡 Medium | 1m 14s | The problem gives us an array of length n, indexed from 0 to n - 1.… |
-| 2656 | [Maximum Sum With Exactly K Elements ](26xx/2656.md) | 🟢 Easy | 48s | This problem asks us to maximize a score by repeatedly selecting el… |
+| 2656 | [Maximum Sum With Exactly K Elements ](26xx/2656.md) | 🟢 Easy | 1m 7s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2657 | [Find the Prefix Common Array of Two Arrays](26xx/2657.md) | 🟡 Medium | 45s | The problem asks us to compute a prefix common array C from two int… |
 | 2658 | [Maximum Number of Fish in a Grid](26xx/2658.md) | 🟡 Medium | 1m 15s | The problem gives us a 2D grid where each cell represents either la… |
 | 2659 | [Make Array Empty](26xx/2659.md) | 🔴 Hard | 44s | The problem asks us to count the number of operations required to e… |
@@ -2863,8 +2871,52 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2898 | [Maximum Linear Stock Score](28xx/2898.md) | 🟡 Medium | 46s | The problem asks us to find a subsequence of a given 1-indexed inte… |
 | 2899 | [Last Visited Integers](28xx/2899.md) | 🟢 Easy | 1m 4s | The problem gives us an integer array nums that contains either pos… |
 | 2900 | [Longest Unequal Adjacent Groups Subsequence I](29xx/2900.md) | 🟢 Easy | 1m 8s | The problem gives us two arrays of the same length: - words, where … |
+| 2901 | [Longest Unequal Adjacent Groups Subsequence II](29xx/2901.md) | 🟡 Medium | 37s | The problem asks us to select the longest subsequence of words from… |
+| 2902 | [Count of Sub-Multisets With Bounded Sum](29xx/2902.md) | 🔴 Hard | 1m 48s | The problem asks us to count how many distinct sub-multisets of the… |
+| 2903 | [Find Indices With Index and Value Difference I](29xx/2903.md) | 🟢 Easy | 39s | The problem asks us to find two indices i and j in an array nums th… |
+| 2904 | [Shortest and Lexicographically Smallest Beautiful String](29xx/2904.md) | 🟡 Medium | 43s | The problem asks us to identify a specific substring from a binary … |
+| 2905 | [Find Indices With Index and Value Difference II](29xx/2905.md) | 🟡 Medium | 1m 14s | The problem gives us an integer array nums, along with two constrai… |
+| 2906 | [Construct Product Matrix](29xx/2906.md) | 🟡 Medium | 1m 12s | The problem asks us to construct a new matrix p from a given matrix… |
 | 2907 | [Maximum Profitable Triplets With Increasing Prices I](29xx/2907.md) | 🟡 Medium | 1m 49s | This problem asks us to select exactly three items from a store whi… |
+| 2908 | [Minimum Sum of Mountain Triplets I](29xx/2908.md) | 🟢 Easy | 48s | The problem asks us to find the minimum sum of a mountain triplet i… |
+| 2909 | [Minimum Sum of Mountain Triplets II](29xx/2909.md) | 🟡 Medium | 1m 8s | The problem asks us to find a special triplet of indices (i, j, k) … |
+| 2910 | [Minimum Number of Groups to Create a Valid Assignment](29xx/2910.md) | 🟡 Medium | 48s | The problem requires us to determine the minimum number of boxes ne… |
+| 2911 | [Minimum Changes to Make K Semi-palindromes](29xx/2911.md) | 🔴 Hard | 1m 13s | We are given a string s and an integer k. The goal is to split the … |
+| 2912 | [Number of Ways to Reach Destination in the Grid](29xx/2912.md) | 🔴 Hard | 1m 24s | The problem gives us an n x m grid where every cell is identified u… |
+| 2913 | [Subarrays Distinct Element Sum of Squares I](29xx/2913.md) | 🟢 Easy | 1m 7s | The problem asks us to examine every possible non-empty subarray of… |
+| 2914 | [Minimum Number of Changes to Make Binary String Beautiful](29xx/2914.md) | 🟡 Medium | 58s | The problem gives us a binary string s consisting only of the chara… |
+| 2915 | [Length of the Longest Subsequence That Sums to Target](29xx/2915.md) | 🟡 Medium | 1m 13s | The problem gives us an array nums and an integer target. We must f… |
+| 2916 | [Subarrays Distinct Element Sum of Squares II](29xx/2916.md) | 🔴 Hard | 1m 28s | The problem asks us to compute, across every possible non-empty sub… |
+| 2917 | [Find the K-or of an Array](29xx/2917.md) | 🟢 Easy | 1m 5s | The problem introduces a modified version of the traditional bitwis… |
+| 2918 | [Minimum Equal Sum of Two Arrays After Replacing Zeros](29xx/2918.md) | 🟡 Medium | 1m 7s | The problem gives us two integer arrays, nums1 and nums2. Some elem… |
+| 2919 | [Minimum Increment Operations to Make Array Beautiful](29xx/2919.md) | 🟡 Medium | 1m 9s | We are given an integer array nums and a target value k. We may inc… |
+| 2920 | [Maximum Points After Collecting Coins From All Nodes](29xx/2920.md) | 🔴 Hard | 1m 25s | The problem gives us a rooted tree with n nodes, where node 0 is th… |
 | 2921 | [Maximum Profitable Triplets With Increasing Prices II](29xx/2921.md) | 🔴 Hard | 1m 29s | The problem asks us to select three items from a store such that th… |
+| 2922 | [Market Analysis III](29xx/2922.md) | 🟡 Medium | 1m 24s | This problem asks us to analyze sellers, their favorite brands, and… |
+| 2923 | [Find Champion I](29xx/2923.md) | 🟢 Easy | 40s | This problem is asking us to determine the champion team in a tourn… |
+| 2924 | [Find Champion II](29xx/2924.md) | 🟡 Medium | 1m 5s | This problem models a tournament as a directed acyclic graph, or DA… |
+| 2925 | [Maximum Score After Applying Operations on a Tree](29xx/2925.md) | 🟡 Medium | 1m 23s | The problem gives us an undirected tree with n nodes rooted at node… |
+| 2926 | [Maximum Balanced Subsequence Sum](29xx/2926.md) | 🔴 Hard | 46s | This problem asks us to find the maximum sum of a balanced subseque… |
+| 2927 | [Distribute Candies Among Children III](29xx/2927.md) | 🔴 Hard | 1m 18s | The problem asks us to count how many valid ways exist to distribut… |
+| 2928 | [Distribute Candies Among Children I](29xx/2928.md) | 🟢 Easy | 1m 9s | The problem asks us to count how many valid ways exist to distribut… |
+| 2929 | [Distribute Candies Among Children II](29xx/2929.md) | 🟡 Medium | 1m 11s | The problem asks us to count how many valid ways exist to distribut… |
+| 2930 | [Number of Strings Which Can Be Rearranged to Contain Substring](29xx/2930.md) | 🟡 Medium | 1m 7s | We are given an integer n, and we must count how many strings of le… |
+| 2931 | [Maximum Spending After Buying Items](29xx/2931.md) | 🔴 Hard | 1m 27s | We are given an m x n matrix called values, where each row represen… |
+| 2932 | [Maximum Strong Pair XOR I](29xx/2932.md) | 🟢 Easy | 1m 21s | The problem gives us an integer array nums, and we must choose two … |
+| 2934 | [Minimum Operations to Maximize Last Elements in Arrays](29xx/2934.md) | 🟡 Medium | 1m 15s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2935 | [Maximum Strong Pair XOR II](29xx/2935.md) | 🔴 Hard | 45s | The problem is asking us to find the maximum XOR value among all st… |
+| 2936 | [Number of Equal Numbers Blocks](29xx/2936.md) | 🟡 Medium | 45s | This problem asks us to count the number of contiguous blocks of eq… |
+| 2937 | [Make Three Strings Equal](29xx/2937.md) | 🟢 Easy | 1m | The problem gives us three strings, s1, s2, and s3. In one operatio… |
+| 2938 | [Separate Black and White Balls](29xx/2938.md) | 🟡 Medium | 41s | The problem asks us to rearrange a binary string representing balls… |
+| 2939 | [Maximum Xor Product](29xx/2939.md) | 🟡 Medium | 1m 14s | We are given three integers, a, b, and n. We must choose an integer… |
+| 2940 | [Find Building Where Alice and Bob Can Meet](29xx/2940.md) | 🔴 Hard | 1m 22s | You are given an array heights, where each index represents a build… |
+| 2941 | [Maximum GCD-Sum of a Subarray](29xx/2941.md) | 🔴 Hard | 45s | The problem asks us to find the maximum gcd-sum of any subarray of … |
+| 2943 | [Maximize Area of Square Hole in Grid](29xx/2943.md) | 🟡 Medium | 1m 8s | The problem describes a rectangular grid made from horizontal and v… |
+| 2944 | [Minimum Number of Coins for Fruits](29xx/2944.md) | 🟡 Medium | 1m 13s | You are given an array prices, where prices[i] represents the numbe… |
+| 2947 | [Count Beautiful Substrings I](29xx/2947.md) | 🟡 Medium | 46s | The problem asks us to find all non-empty substrings of a given str… |
+| 2948 | [Make Lexicographically Smallest Array by Swapping Elements](29xx/2948.md) | 🟡 Medium | 36s | The problem asks us to rearrange a given array nums of positive int… |
+| 2949 | [Count Beautiful Substrings II](29xx/2949.md) | 🔴 Hard | 53s | The problem requires counting the number of non-empty beautiful sub… |
+| 2950 | [Number of Divisible Substrings](29xx/2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
 | 2963 | [Count the Number of Good Partitions](29xx/2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](29xx/2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |
 | 3028 | [Ant on the Boundary](30xx/3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |

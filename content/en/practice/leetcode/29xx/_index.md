@@ -44,11 +44,16 @@ draft: false
 | 2931 | [Maximum Spending After Buying Items](2931.md) | 🔴 Hard | 1m 27s | We are given an m x n matrix called values, where each row represen… |
 | 2932 | [Maximum Strong Pair XOR I](2932.md) | 🟢 Easy | 1m 21s | The problem gives us an integer array nums, and we must choose two … |
 | 2934 | [Minimum Operations to Maximize Last Elements in Arrays](2934.md) | 🟡 Medium | 1m 15s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2935 | [Maximum Strong Pair XOR II](2935.md) | 🔴 Hard | 45s | The problem is asking us to find the maximum XOR value among all st… |
+| 2936 | [Number of Equal Numbers Blocks](2936.md) | 🟡 Medium | 45s | This problem asks us to count the number of contiguous blocks of eq… |
 | 2937 | [Make Three Strings Equal](2937.md) | 🟢 Easy | 1m | The problem gives us three strings, s1, s2, and s3. In one operatio… |
 | 2938 | [Separate Black and White Balls](2938.md) | 🟡 Medium | 41s | The problem asks us to rearrange a binary string representing balls… |
+| 2939 | [Maximum Xor Product](2939.md) | 🟡 Medium | 1m 14s | We are given three integers, a, b, and n. We must choose an integer… |
+| 2940 | [Find Building Where Alice and Bob Can Meet](2940.md) | 🔴 Hard | 1m 22s | You are given an array heights, where each index represents a build… |
 | 2941 | [Maximum GCD-Sum of a Subarray](2941.md) | 🔴 Hard | 45s | The problem asks us to find the maximum gcd-sum of any subarray of … |
 | 2943 | [Maximize Area of Square Hole in Grid](2943.md) | 🟡 Medium | 1m 8s | The problem describes a rectangular grid made from horizontal and v… |
 | 2944 | [Minimum Number of Coins for Fruits](2944.md) | 🟡 Medium | 1m 13s | You are given an array prices, where prices[i] represents the numbe… |
+| 2947 | [Count Beautiful Substrings I](2947.md) | 🟡 Medium | 46s | The problem asks us to find all non-empty substrings of a given str… |
 | 2948 | [Make Lexicographically Smallest Array by Swapping Elements](2948.md) | 🟡 Medium | 36s | The problem asks us to rearrange a given array nums of positive int… |
 | 2949 | [Count Beautiful Substrings II](2949.md) | 🔴 Hard | 53s | The problem requires counting the number of non-empty beautiful sub… |
 | 2950 | [Number of Divisible Substrings](2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
