@@ -22,7 +22,7 @@ draft: false
 | 2709 | [Greatest Common Divisor Traversal](2709.md) | 🔴 Hard | 1m 1s | Understood. I will provide the complete, detailed reference guide f… |
 | 2710 | [Remove Trailing Zeros From a String](2710.md) | 🟢 Easy | 38s | The problem asks us to remove all trailing zeros from a string repr… |
 | 2711 | [Difference of Number of Distinct Values on Diagonals](2711.md) | 🟡 Medium | 51s | The problem is asking us to compute a new matrix answer based on a … |
-| 2712 | [Minimum Cost to Make All Characters Equal](2712.md) | 🟡 Medium | 1m 2s | We are given a binary string s consisting only of '0' and '1'. The … |
+| 2712 | [Minimum Cost to Make All Characters Equal](2712.md) | 🟡 Medium | 3m 54s | The problem gives us a binary string s consisting only of character… |
 | 2713 | [Maximum Strictly Increasing Cells in a Matrix](2713.md) | 🔴 Hard | 1m 18s | The problem gives us an m x n matrix where each cell contains an in… |
 | 2714 | [Find Shortest Path with K Hops](2714.md) | 🔴 Hard | 1m 25s | This problem gives us an undirected weighted graph with n nodes and… |
 | 2715 | [Timeout Cancellation](2715.md) | 🟢 Easy | 48s | This problem asks us to implement a cancellable delayed function ex… |
