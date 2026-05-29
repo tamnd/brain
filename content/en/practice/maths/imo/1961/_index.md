@@ -16,7 +16,7 @@ draft: false
 |---|--------|------|
 | 1 | — | — |
 | 2 | — | — |
-| [3](3.md) | solved | 11m26s |
+| [3](3.md) | solved | 39m28s |
 | 4 | — | — |
 | 5 | — | — |
 | [6](6.md) | ✓ verified | 3m04s |
@@ -37,7 +37,7 @@ $a^2 + b^2 + c^2 \ge 4S\sqrt{3}$
 
 In what case does equality hold?
 
-**Problem 3** &nbsp; *solved* · 11m26s · [Solution →](3.md)
+**Problem 3** &nbsp; *solved* · 39m28s · [Solution →](3.md)
 
 Solve the equation
 
