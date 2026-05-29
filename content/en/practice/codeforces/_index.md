@@ -4,6 +4,7 @@ title: "Codeforces Solutions"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 description: "Codeforces problem solutions with full editorial. 264 contests, 1154 problems, 953 verified."
 =======
 description: "Codeforces problem solutions with full editorial. 291 contests, 1237 problems, 1001 verified."
@@ -17,6 +18,9 @@ description: "Codeforces problem solutions with full editorial. 286 contests, 12
 =======
 description: "Codeforces problem solutions with full editorial. 287 contests, 1222 problems, 1005 verified."
 >>>>>>> 0fef06c1 (codeforces: add contest 297 solutions)
+=======
+description: "Codeforces problem solutions with full editorial. 288 contests, 1225 problems, 1007 verified."
+>>>>>>> 59cfcb8f (codeforces: add contest 300 solutions)
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -27,6 +31,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -44,6 +49,9 @@ Each problem comes with a full written editorial: problem analysis, approach com
 =======
 **287 contests, 1222 problems, 1005 verified.**
 >>>>>>> 0fef06c1 (codeforces: add contest 297 solutions)
+=======
+**288 contests, 1225 problems, 1007 verified.**
+>>>>>>> 59cfcb8f (codeforces: add contest 300 solutions)
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -371,6 +379,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [295](295/) | [Codeforces Round 179 (Div. 1)](https://codeforces.com/contest/295) | Div. 1 | 1700-2500 | 4/4 | 11m 55s |
 | [296](296/) | [Codeforces Round 179 (Div. 2)](https://codeforces.com/contest/296) | Div. 2 | 1100-1100 | 1/1 | 57s |
 | [297](297/) | [Codeforces Round 180 (Div. 1)](https://codeforces.com/contest/297) | Div. 1 | 1600-3000 | 2/3 | 4m 3s |
+| [300](300/) | [Codeforces Round 181 (Div. 2)](https://codeforces.com/contest/300) | Div. 2 | 1500-2300 | 2/3 | 5m 24s |
 | [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 3m 30s |
 | [401](401/) | [Codeforces Round 235 (Div. 2)](https://codeforces.com/contest/401) | Div. 2 | 800-2000 | 2/3 | 6m 53s |
 | [402](402/) | [Codeforces Round 236 (Div. 2)](https://codeforces.com/contest/402) | Div. 2 | 1100-2200 | 1/4 | 11m 10s |
