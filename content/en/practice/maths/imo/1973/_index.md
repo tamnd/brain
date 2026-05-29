@@ -1,6 +1,6 @@
 ---
 title: "IMO 1973"
-description: "IMO 1973 — 6/6 solved, 3 verified."
+description: "IMO 1973 — 6/6 solved, 4 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1973
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1973
 
-[Official IMO 1973 problems](https://www.imo-official.org/year_info.aspx?year=1973) &nbsp;·&nbsp; 6/6 solved, 3 verified.
+[Official IMO 1973 problems](https://www.imo-official.org/year_info.aspx?year=1973) &nbsp;·&nbsp; 6/6 solved, 4 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -18,7 +18,7 @@ draft: false
 | [2](2.md) | ✓ verified | 14m44s |
 | [3](3.md) | ✓ verified | 11m52s |
 | [4](4.md) | solved | 15m06s |
-| [5](5.md) | solved | 9m42s |
+| [5](5.md) | ✓ verified | 36m23s |
 | [6](6.md) | solved | 5m08s |
 
 **Problem 1** &nbsp; *✓ verified* · 22m51s · [Solution →](1.md)
@@ -41,13 +41,13 @@ $$ has at least one real solution. For all such pairs $(a, b)$, find the minimum
 
 A soldier needs to check on the presence of mines in a region having the shape of an equilateral triangle. The radius of action of his detector is equal to half the altitude of the triangle. The soldier leaves from one vertex of the triangle. What path should he follow in order to travel the least possible distance and still accomplish his mission?
 
-**Problem 5** &nbsp; *solved* · 9m42s · [Solution →](5.md)
+**Problem 5** &nbsp; *✓ verified* · 36m23s · [Solution →](5.md)
 
 $G$ is a set of non-constant functions of the real variable $x$ of the form $$
 f(x) = ax + b, a \text{ and } b \text{ are real numbers,}
 $$ and $G$ has the following properties:
 
-(a) If $f$ and $g$ are in $G$, then $g \circ f$ is in $G$; here ![$(g \circ f)(x) = g\[f(x)\]$](//latex.artofproblemsolving.com/7/c/d/7cdf4b8f88415a15fd422f9b4c16636d7a6e2f88.png).
+(a) If $f$ and $g$ are in $G$, then $g \circ f$ is in $G$; here $(g \circ f)(x) = g\[f(x)\]$.
 
 (b) If $f$ is in $G$, then its inverse $f^{-1}$ is in $G$; here the inverse of $f(x) = ax + b$ is $f^{-1}(x) = (x - b) / a$.
 

@@ -63,3 +63,9 @@ draft: false
 | 3355 | [Zero Array Transformation I](3355.md) | 🟡 Medium | 54s | The problem asks whether it is possible to transform a given intege… |
 | 3357 | [Minimize the Maximum Adjacent Element Difference](3357.md) | 🔴 Hard | 2m 3s | The problem gives us an integer array nums, where some positions co… |
 | 3358 | [Books with NULL Ratings](3358.md) | 🟢 Easy | 1m 33s | This problem provides a database table named books. Each row in the… |
+| 3359 | [Find Sorted Submatrices With Maximum Element at Most K](3359.md) | 🔴 Hard | 1m 34s | We are given a matrix grid with m rows and n columns, along with an… |
+| 3361 | [Shift Distance Between Two Strings](3361.md) | 🟡 Medium | 1m 19s | The problem gives us two strings, s and t, of equal length. We want… |
+| 3362 | [Zero Array Transformation III](3362.md) | 🟡 Medium | 1m 39s | We are given an integer array nums and a list of interval queries. … |
+| 3363 | [Find the Maximum Number of Fruits Collected](3363.md) | 🔴 Hard | 45s | This problem asks us to maximize the total number of fruits collect… |
+| 3365 | [Rearrange K Substrings to Form Target String](3365.md) | 🟡 Medium | 2m 5s | This problem asks whether it is possible to rearrange k contiguous … |
+| 3367 | [Maximize Sum of Weights after Edge Removals](3367.md) | 🔴 Hard | 1m 46s | We are given an undirected weighted tree with n nodes and n - 1 edg… |
