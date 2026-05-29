@@ -110,6 +110,7 @@ description: "Codeforces problem solutions with full editorial. 311 contests, 12
 description: "Codeforces problem solutions with full editorial. 312 contests, 1296 problems, 1043 verified."
 description: "Codeforces problem solutions with full editorial. 313 contests, 1297 problems, 1043 verified."
 description: "Codeforces problem solutions with full editorial. 315 contests, 1302 problems, 1046 verified."
+description: "Codeforces problem solutions with full editorial. 316 contests, 1306 problems, 1047 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -230,6 +231,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **312 contests, 1296 problems, 1043 verified.**
 **313 contests, 1297 problems, 1043 verified.**
 **315 contests, 1302 problems, 1046 verified.**
+**316 contests, 1306 problems, 1047 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -570,8 +572,9 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [328](328/) | [Testing Round 8](https://codeforces.com/contest/328) | Special | 1500-1800 | 0/2 | 3m 11s |
 | [329](329/) | [Codeforces Round 192 (Div. 1)](https://codeforces.com/contest/329) | Div. 1 | 1500-3100 | 1/3 | 7m 40s |
 | [330](330/) | [Codeforces Round 192 (Div. 2)](https://codeforces.com/contest/330) | Div. 2 | 1300-1300 | 0/1 | 1m 46s |
-| [331](331/) | [ABBYY Cup 3.0 - Finals (online version)](https://codeforces.com/contest/331) | Special | 1100-2500 | 3/3 | 9m 20s |
+| [331](331/) | [ABBYY Cup 3.0 - Finals (online version)](https://codeforces.com/contest/331) | Special | 1100-2500 | 3/5 | 18m 20s |
 | [332](332/) | [Codeforces Round 193 (Div. 2)](https://codeforces.com/contest/332) | Div. 2 | 2200-2400 | 0/2 | 9m |
+| [333](333/) | [Codeforces Round 194 (Div. 1)](https://codeforces.com/contest/333) | Div. 1 | 1600-2100 | 1/2 | 3m 54s |
 | [401](401/) | [Codeforces Round 235 (Div. 2)](https://codeforces.com/contest/401) | Div. 2 | 800-2000 | 2/3 | 6m 53s |
 | [402](402/) | [Codeforces Round 236 (Div. 2)](https://codeforces.com/contest/402) | Div. 2 | 1100-2200 | 1/4 | 11m 10s |
 | [403](403/) | [Codeforces Round 236 (Div. 1)](https://codeforces.com/contest/403) | Div. 1 | 2300-2900 | 0/2 | 1m 57s |
