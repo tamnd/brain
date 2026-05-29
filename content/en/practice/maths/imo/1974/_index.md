@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974"
-description: "IMO 1974 — 3/6 solved, 1 verified."
+description: "IMO 1974 — 4/6 solved, 2 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1974
@@ -10,14 +10,14 @@ draft: false
 
 # IMO 1974
 
-[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 3/6 solved, 1 verified.
+[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 4/6 solved, 2 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m39s |
 | [2](2.md) | solved | 17m14s |
 | [3](3.md) | solved | 6m53s |
-| 4 | — | — |
+| [4](4.md) | ✓ verified | 10m53s |
 | 5 | — | — |
 | 6 | — | — |
 
@@ -45,7 +45,7 @@ Prove that the number $\textstyle \sum_{k = 0}^n \tbinom{2n+1}{2k+1} 2^{3k}$ is 
 
 ---
 
-**Problem 4**
+**Problem 4** &nbsp; *✓ verified* · 10m53s · [Solution →](4.md)
 
 Consider decompositions of an $8 \times 8$ chessboard into p non-overlapping rectangles subject to the following conditions:
 

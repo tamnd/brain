@@ -18,6 +18,8 @@ draft: false
 | 3012 | [Minimize Length of Array Using Operations](3012.md) | 🟡 Medium | 1m 14s | The problem gives us an array of positive integers and allows us to… |
 | 3013 | [Divide an Array Into Subarrays With Minimum Cost II](3013.md) | 🔴 Hard | 1m 33s | We are given an array nums, along with two integers k and dist. We … |
 | 3016 | [Minimum Number of Pushes to Type Word II](3016.md) | 🟡 Medium | 52s | The problem asks us to minimize the total number of key presses req… |
+| 3017 | [Count the Number of Houses at a Certain Distance II](3017.md) | 🔴 Hard | 48s | We are asked to count pairs of houses in a city where the distance … |
+| 3018 | [Maximum Number of Removal Queries That Can Be Processed I](3018.md) | 🔴 Hard | 1m 16s | The problem asks us to simulate a sequence of removal operations on… |
 | 3019 | [Number of Changing Keys](3019.md) | 🟢 Easy | 1m 10s | The problem gives us a string s representing keys typed by a user. … |
 | 3021 | [Alice and Bob Playing Flower Game](3021.md) | 🟡 Medium | 1m 20s | The problem describes a turn-based game involving two lanes of flow… |
 | 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums of length 3, where each … |

@@ -41,13 +41,13 @@ draft: false
 | 2728 | [Count Houses in a Circular Street](2728.md) | 🟢 Easy | 45s | The problem asks us to determine the number of houses on a circular… |
 | 2729 | [Check if The Number is Fascinating](2729.md) | 🟢 Easy | 1m 4s | The problem gives us a three digit integer n. We must determine whe… |
 | 2730 | [Find the Longest Semi-Repetitive Substring](2730.md) | 🟡 Medium | 1m 16s | The problem gives us a string s consisting only of digits from 0 to… |
-| 2731 | [Movement of Robots](2731.md) | 🟡 Medium | 50s | The problem is asking us to calculate the sum of distances between … |
+| 2731 | [Movement of Robots](2731.md) | 🟡 Medium | 5m 48s | The problem gives us a list of robots positioned on an infinite num… |
 | 2732 | [Find a Good Subset of the Matrix](2732.md) | 🔴 Hard | 54s | The problem asks us to find a subset of rows in a binary matrix whe… |
-| 2733 | [Neither Minimum nor Maximum](2733.md) | 🟢 Easy | 59s | The problem gives us an array of distinct positive integers and ask… |
-| 2734 | [Lexicographically Smallest String After Substring Operation](2734.md) | 🟡 Medium | 1m 25s | We are given a string s consisting only of lowercase English letter… |
+| 2733 | [Neither Minimum nor Maximum](2733.md) | 🟢 Easy | 56s | The problem asks us to select a number from an array of distinct po… |
+| 2734 | [Lexicographically Smallest String After Substring Operation](2734.md) | 🟡 Medium | 1m 12s | The problem gives us a lowercase English string s. We must perform … |
 | 2735 | [Collecting Chocolates](2735.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums, where nums[i] represents the co… |
 | 2736 | [Maximum Sum Queries](2736.md) | 🔴 Hard | 1m 15s | We are given two arrays, nums1 and nums2, both of length n. Each in… |
-| 2737 | [Find the Closest Marked Node](2737.md) | 🟡 Medium | 34s | This problem asks us to compute the shortest distance from a given … |
+| 2737 | [Find the Closest Marked Node](2737.md) | 🟡 Medium | 32s | That is a very large, detailed reference document with multiple lon… |
 | 2739 | [Total Distance Traveled](2739.md) | 🟢 Easy | 1m | This problem models a truck with two fuel tanks: - mainTank contain… |
 | 2741 | [Special Permutations](2741.md) | 🟡 Medium | 1m 9s | The problem gives us an array nums containing distinct positive int… |
 | 2742 | [Painting the Walls](2742.md) | 🔴 Hard | 1m 18s | The problem gives us two arrays, cost and time, where each index re… |
