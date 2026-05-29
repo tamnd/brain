@@ -54,10 +54,10 @@ draft: false
 | 2141 | [Maximum Running Time of N Computers](2141.md) | 🔴 Hard | 50s | The problem is asking us to determine the maximum number of minutes… |
 | 2142 | [The Number of Passengers in Each Bus I](2142.md) | 🟡 Medium | 48s | This problem involves simulating passengers arriving at a bus stati… |
 | 2143 | [Choose Numbers From Two Arrays in Range](2143.md) | 🔴 Hard | 1m 37s | In this problem, we are given two arrays, nums1 and nums2, both of … |
-| 2144 | [Minimum Cost of Buying Candies With Discount](2144.md) | 🟢 Easy | 2m 28s | The problem gives us an array called cost, where each element repre… |
+| 2144 | [Minimum Cost of Buying Candies With Discount](2144.md) | 🟢 Easy | 1m 39s | This problem asks us to minimize the total amount of money spent wh… |
 | 2145 | [Count the Hidden Sequences](2145.md) | 🟡 Medium | 50s | The problem asks us to determine how many possible sequences of int… |
-| 2146 | [K Highest Ranked Items Within a Price Range](2146.md) | 🟡 Medium | 1m 5s | The problem presents a 2D grid representing a shop layout where eac… |
-| 2147 | [Number of Ways to Divide a Long Corridor](2147.md) | 🔴 Hard | 1m 21s | The corridor is represented as a string containing two kinds of cha… |
+| 2146 | [K Highest Ranked Items Within a Price Range](2146.md) | 🟡 Medium | 1m 41s | This problem gives us a 2D grid representing a shop layout. Every c… |
+| 2147 | [Number of Ways to Divide a Long Corridor](2147.md) | 🔴 Hard | 1m 6s | The problem presents a long corridor represented as a string, where… |
 | 2148 | [Count Elements With Strictly Smaller and Greater Elements ](2148.md) | 🟢 Easy | 1m 15s | The problem gives us an integer array nums and asks us to count how… |
 | 2149 | [Rearrange Array Elements by Sign](2149.md) | 🟡 Medium | 49s | The problem asks us to rearrange a given integer array nums such th… |
 | 2150 | [Find All Lonely Numbers in the Array](2150.md) | 🟡 Medium | 1m 32s | The corridor is represented as a string where each character is eit… |

@@ -29,3 +29,15 @@ draft: false
 | 3319 | [K-th Largest Perfect Subtree Size in Binary Tree](3319.md) | 🟡 Medium | 1m 36s | We are given the root of a binary tree and an integer k. Our goal i… |
 | 3320 | [Count The Number of Winning Sequences](3320.md) | 🔴 Hard | 1m 35s | We are given a string s representing Alice’s moves across n rounds … |
 | 3321 | [Find X-Sum of All K-Long Subarrays II](3321.md) | 🔴 Hard | 1m 14s | The problem asks us to compute a specialized sum, called the x-sum,… |
+| 3322 | [Premier League Table Ranking III](3322.md) | 🟡 Medium | 1m 4s | The problem requires calculating a Premier League-style ranking for… |
+| 3323 | [Minimize Connected Groups by Inserting Interval](3323.md) | 🟡 Medium | 51s | The problem asks us to minimize the number of connected groups in a… |
+| 3324 | [Find the Sequence of Strings Appeared on the Screen](3324.md) | 🟡 Medium | 2m 2s | The problem gives us a target string and a very restricted keyboard… |
+| 3325 | [Count Substrings With K-Frequency Characters I](3325.md) | 🟡 Medium | 1m 9s | The problem asks us to count all substrings of a given string s suc… |
+| 3326 | [Minimum Division Operations to Make Array Non Decreasing](3326.md) | 🟡 Medium | 1m 22s | The problem asks us to make a given integer array nums non-decreasi… |
+| 3327 | [Check if DFS Strings Are Palindromes](3327.md) | 🔴 Hard | 1m 43s | We are given a rooted tree with n nodes. Node 0 is the root, and th… |
+| 3329 | [Count Substrings With K-Frequency Characters II](3329.md) | 🔴 Hard | 1m 41s | The problem asks us to count how many substrings of a given string … |
+| 3330 | [Find the Original Typed String I](3330.md) | 🟢 Easy | 55s | This problem asks us to determine the number of possible original s… |
+| 3331 | [Find Subtree Sizes After Changes](3331.md) | 🟡 Medium | 1m 44s | We are given a rooted tree with n nodes numbered from 0 to n - 1. T… |
+| 3332 | [Maximum Points Tourist Can Earn](3332.md) | 🟡 Medium | 52s | The problem asks us to maximize the points a tourist can earn over … |
+| 3334 | [Find the Maximum Factor Score of Array](3334.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum factor score of an array… |
+| 3336 | [Find the Number of Subsequences With Equal GCD](3336.md) | 🔴 Hard | 1m 6s | The problem asks us to count the number of pairs of non-empty disjo… |
