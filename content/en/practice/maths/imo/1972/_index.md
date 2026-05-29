@@ -16,7 +16,7 @@ draft: false
 |---|--------|------|
 | [1](1.md) | ✓ verified | 20m29s |
 | [2](2.md) | solved | 21m31s |
-| [3](3.md) | solved | 5m55s |
+| [3](3.md) | solved | 7m11s |
 | [4](4.md) | solved | 4m51s |
 | [5](5.md) | solved | 3m55s |
 | [6](6.md) | solved | 58m50s |
@@ -29,7 +29,7 @@ Prove that from a set of ten distinct two-digit numbers (in the decimal system),
 
 Prove that if $n \geq 4$, every quadrilateral that can be inscribed in a circle can be dissected into $n$ quadrilaterals each of which is inscribable in a circle.
 
-**Problem 3** &nbsp; *solved* · 5m55s · [Solution →](3.md)
+**Problem 3** &nbsp; *solved* · 7m11s · [Solution →](3.md)
 
 Let $m$ and $n$ be arbitrary non-negative integers. Prove that $$
 \frac{(2m)!(2n)!}{m!n!(m+n)!}

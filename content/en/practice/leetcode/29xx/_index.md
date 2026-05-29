@@ -91,16 +91,18 @@ draft: false
 | 2980 | [Check if Bitwise OR Has Trailing Zeros](2980.md) | 🟢 Easy | 52s | The problem asks us to determine whether we can select two or more … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |
 | 2982 | [Find Longest Special Substring That Occurs Thrice II](2982.md) | 🟡 Medium | 1m 4s | The problem asks us to find the maximum length of a special substri… |
+| 2983 | [Palindrome Rearrangement Queries](2983.md) | 🔴 Hard | 1m 51s | We are given a string s of even length n. For every query, we are a… |
 | 2984 | [Find Peak Calling Hours for Each City](2984.md) | 🟡 Medium | 51s | The problem is asking us to analyze call records from a Calls table… |
-| 2986 | [Find Third Transaction](2986.md) | 🟡 Medium | 1m 3s | The problem provides a database table named Transactions that store… |
-| 2987 | [Find Expensive Cities](2987.md) | 🟢 Easy | 2m 52s | This problem asks us to identify which cities have an average home … |
-| 2988 | [Manager of the Largest Department](2988.md) | 🟡 Medium | 2m 55s | The problem provides an Employees table containing information abou… |
+| 2985 | [Calculate Compressed Mean](2985.md) | 🟢 Easy | 59s | This problem asks us to compute the average number of items per ord… |
+| 2986 | [Find Third Transaction](2986.md) | 🟡 Medium | 1m 36s | The problem gives us a Transactions table that stores three pieces … |
+| 2987 | [Find Expensive Cities](2987.md) | 🟢 Easy | 1m | This problem provides a database table named Listings that contains… |
+| 2988 | [Manager of the Largest Department](2988.md) | 🟡 Medium | 54s | You included two different problems in one message, and the second … |
 | 2989 | [Class Performance](2989.md) | 🟡 Medium | 45s | The problem asks us to calculate the difference between the highest… |
-| 2990 | [Loan Types](2990.md) | 🟢 Easy | 1m 2s | The problem provides a table Loans that contains information about … |
-| 2991 | [Top Three Wineries ](2991.md) | 🔴 Hard | 48s | The problem asks us to generate a leaderboard of wineries grouped b… |
-| 2992 | [Number of Self-Divisible Permutations](2992.md) | 🟡 Medium | 1m 28s | We are given an integer n, and we must count how many permutations … |
-| 2993 | [Friday Purchases I](2993.md) | 🟡 Medium | 1m 28s | The problem provides a database table named Purchases, where each r… |
+| 2990 | [Loan Types](2990.md) | 🟢 Easy | 54s | The problem requires identifying users who have taken both a "Refin… |
+| 2991 | [Top Three Wineries ](2991.md) | 🔴 Hard | 54s | The problem asks us to determine the top three wineries in each cou… |
+| 2992 | [Number of Self-Divisible Permutations](2992.md) | 🟡 Medium | 1m 17s | The problem asks us to count how many permutations of the numbers 1… |
+| 2993 | [Friday Purchases I](2993.md) | 🟡 Medium | 56s | The problem asks us to compute the total amount spent on Fridays in… |
 | 2994 | [Friday Purchases II ](2994.md) | 🔴 Hard | 49s | The problem requires calculating the total spending by users on eac… |
-| 2995 | [Viewers Turned Streamers](2995.md) | 🔴 Hard | 46s | This problem involves analyzing a database table Sessions that reco… |
+| 2995 | [Viewers Turned Streamers](2995.md) | 🔴 Hard | 2m 52s | We are given a database table called Sessions, where each row repre… |
 | 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](2997.md) | 🟡 Medium | 47s | This problem asks us to determine the minimum number of bit flips r… |
 | 2998 | [Minimum Number of Operations to Make X and Y Equal](2998.md) | 🟡 Medium | 1m 32s | This problem gives us two positive integers, x and y, and asks for … |
