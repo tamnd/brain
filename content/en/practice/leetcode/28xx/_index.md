@@ -61,3 +61,5 @@ draft: false
 | 2848 | [Points That Intersect With Cars](2848.md) | 🟢 Easy | 2m 18s | The problem gives us a list of cars parked on a number line. Each c… |
 | 2849 | [Determine if a Cell Is Reachable at a Given Time](2849.md) | 🟡 Medium | 5m 3s | LeetCode 2849: Determine if a Cell Is Reachable at a Given Time (Me… |
 | 2850 | [Minimum Moves to Spread Stones Over Grid](2850.md) | 🟡 Medium | 2m 13s | The problem gives us a 3 x 3 grid where each cell contains some num… |
+| 2853 | [Highest Salaries Difference](2853.md) | 🟢 Easy | 1m 57s | The problem requires calculating the absolute difference between th… |
+| 2854 | [Rolling Average Steps](2854.md) | 🟡 Medium | 1m 39s | The problem gives us a database table named Steps. Each row represe… |

@@ -53,16 +53,17 @@ draft: false
 | 2542 | [Maximum Subsequence Score](2542.md) | 🟡 Medium | 1m 29s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
 | 2543 | [Check if Point Is Reachable](2543.md) | 🔴 Hard | 1m 9s | The problem gives us an infinite two dimensional grid and asks whet… |
 | 2544 | [Alternating Digit Sum](2544.md) | 🟢 Easy | 57s | The problem asks us to compute an alternating sum of the digits of … |
-| 2546 | [Apply Bitwise Operations to Make Strings Equal](2546.md) | 🟡 Medium | 1m 3s | This problem gives us two binary strings, s and target, both of the… |
-| 2547 | [Minimum Cost to Split an Array](2547.md) | 🔴 Hard | 45s | The problem presents a large, theoretically infinite grid where you… |
-| 2548 | [Maximum Price to Fill a Bag](2548.md) | 🟡 Medium | 1m 2s | This problem describes a variation of the classic fractional knapsa… |
-| 2549 | [Count Distinct Numbers on Board](2549.md) | 🟢 Easy | 51s | The problem gives us a starting integer n that is initially written… |
-| 2550 | [Count Collisions of Monkeys on a Polygon](2550.md) | 🟡 Medium | 1m | The problem describes a regular convex polygon with n vertices. Eac… |
-| 2551 | [Put Marbles in Bags](2551.md) | 🔴 Hard | 1m 12s | The problem gives us an array weights, where each value represents … |
-| 2552 | [Count Increasing Quadruplets](2552.md) | 🔴 Hard | 34s | The problem asks us to count the number of increasing quadruplets i… |
-| 2553 | [Separate the Digits in an Array](2553.md) | 🟢 Easy | 38s | The problem asks us to take an input array of positive integers and… |
-| 2554 | [Maximum Number of Integers to Choose From a Range I](2554.md) | 🟡 Medium | 32s | This problem asks us to construct the largest possible subset of in… |
-| 2555 | [Maximize Win From Two Segments](2555.md) | 🟡 Medium | 46s | This problem asks us to select two integer-length segments of fixed… |
+| 2545 | [Sort the Students by Their Kth Score](2545.md) | 🟡 Medium | 2m 19s | In this problem, we are given a matrix named score with dimensions … |
+| 2546 | [Apply Bitwise Operations to Make Strings Equal](2546.md) | 🟡 Medium | 2m 19s | The problem provides two binary strings, s and target, of equal len… |
+| 2547 | [Minimum Cost to Split an Array](2547.md) | 🔴 Hard | 1m 32s | The problem asks us to split the array nums into one or more contig… |
+| 2548 | [Maximum Price to Fill a Bag](2548.md) | 🟡 Medium | 1m | The problem is asking us to maximize the total price of items place… |
+| 2549 | [Count Distinct Numbers on Board](2549.md) | 🟢 Easy | 1m | The problem starts with a single integer n written on a board. Ever… |
+| 2550 | [Count Collisions of Monkeys on a Polygon](2550.md) | 🟡 Medium | 1m 5s | In this problem, we have a regular polygon with n vertices, and eac… |
+| 2551 | [Put Marbles in Bags](2551.md) | 🔴 Hard | 50s | The problem asks us to distribute weights.length marbles into k con… |
+| 2552 | [Count Increasing Quadruplets](2552.md) | 🔴 Hard | 3m 43s | The problem asks us to count the number of increasing quadruplets (… |
+| 2553 | [Separate the Digits in an Array](2553.md) | 🟢 Easy | 44s | This problem asks us to take an array of positive integers, nums, a… |
+| 2554 | [Maximum Number of Integers to Choose From a Range I](2554.md) | 🟡 Medium | 1m 16s | The problem gives us three inputs: - banned, an array of integers t… |
+| 2555 | [Maximize Win From Two Segments](2555.md) | 🟡 Medium | 1m 20s | The problem gives us a sorted array prizePositions, where each valu… |
 | 2556 | [Disconnect Path in a Binary Matrix by at Most One Flip](2556.md) | 🟡 Medium | 48s | The problem gives an m x n binary grid where movement is only allow… |
 | 2557 | [Maximum Number of Integers to Choose From a Range II](2557.md) | 🟡 Medium | 43s | The problem asks us to determine the maximum number of integers we … |
 | 2558 | [Take Gifts From the Richest Pile](2558.md) | 🟢 Easy | 52s | This problem is asking us to simulate a repeated operation on a col… |
