@@ -2798,98 +2798,98 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2814 | [Minimum Time Takes to Reach Destination Without Drowning](28xx/2814.md) | 🔴 Hard | 1m 33s | This problem takes place on a two-dimensional grid where each cell … |
 | 2815 | [Max Pair Sum in an Array](28xx/2815.md) | 🟢 Easy | 1m 10s | The problem gives us an array of integers nums. For every number, w… |
 | 2816 | [Double a Number Represented as a Linked List](28xx/2816.md) | 🟡 Medium | 56s | This problem asks us to double a number represented as a singly lin… |
-| 2817 | [Minimum Absolute Difference Between Elements With Constraint](28xx/2817.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array nums and an integer x. We nee… |
+| 2817 | [Minimum Absolute Difference Between Elements With Constraint](28xx/2817.md) | 🟡 Medium | 1m 32s | We are given an integer array nums and an integer x. We need to fin… |
 | 2818 | [Apply Operations to Maximize Score](28xx/2818.md) | 🔴 Hard | 1m 38s | The problem gives us an array nums and an integer k. We begin with … |
-| 2819 | [Minimum Relative Loss After Buying Chocolates](28xx/2819.md) | 🔴 Hard | 1m 27s | We are given an array prices, where each element represents the pri… |
-| 2820 | [Election Results](28xx/2820.md) | 🟡 Medium | 55s | The problem is asking us to calculate the winner of an election giv… |
-| 2821 | [Delay the Resolution of Each Promise](28xx/2821.md) | 🟡 Medium | 1m 43s | The problem requires creating a wrapper around an array of asynchro… |
-| 2822 | [Inversion of Object](28xx/2822.md) | 🟢 Easy | 3m 7s | The problem asks us to "invert" an object or array. In practical te… |
-| 2823 | [Deep Object Filter](28xx/2823.md) | 🟡 Medium | 5m 34s | The problem is asking us to implement a function deepFilter that re… |
-| 2824 | [Count Pairs Whose Sum is Less than Target](28xx/2824.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and an integer target. W… |
-| 2825 | [Make String a Subsequence Using Cyclic Increments](28xx/2825.md) | 🟡 Medium | 1m 13s | This problem asks whether we can transform str1 in such a way that … |
-| 2826 | [Sorting Three Groups](28xx/2826.md) | 🟡 Medium | 1m 4s | We are given an array nums where every element is either 1, 2, or 3… |
-| 2827 | [Number of Beautiful Integers in the Range](28xx/2827.md) | 🔴 Hard | 1m 21s | The problem asks us to count how many integers in the inclusive ran… |
-| 2828 | [Check if a String Is an Acronym of Words](28xx/2828.md) | 🟢 Easy | 1m 59s | The problem gives us two inputs: - An array of strings called words… |
+| 2819 | [Minimum Relative Loss After Buying Chocolates](28xx/2819.md) | 🔴 Hard | 1m 50s | We are given an array prices, where each value represents the price… |
+| 2820 | [Election Results](28xx/2820.md) | 🟡 Medium | 1m 52s | The Votes table records every voter-candidate selection. A voter ma… |
+| 2821 | [Delay the Resolution of Each Promise](28xx/2821.md) | 🟡 Medium | 1m 17s | The problem asks us to take an array of functions, each returning a… |
+| 2822 | [Inversion of Object](28xx/2822.md) | 🟢 Easy | 1m 23s | This problem asks us to invert the relationship between keys and va… |
+| 2823 | [Deep Object Filter](28xx/2823.md) | 🟡 Medium | 1m 31s | This problem asks us to recursively filter a JSON-like structure th… |
+| 2824 | [Count Pairs Whose Sum is Less than Target](28xx/2824.md) | 🟢 Easy | 1m 7s | This problem asks us to count the number of unique pairs of indices… |
+| 2825 | [Make String a Subsequence Using Cyclic Increments](28xx/2825.md) | 🟡 Medium | 1m 20s | The problem gives us two lowercase strings, str1 and str2. We are a… |
+| 2826 | [Sorting Three Groups](28xx/2826.md) | 🟡 Medium | 1m 11s | We are given an array nums where every element is either 1, 2, or 3… |
+| 2827 | [Number of Beautiful Integers in the Range](28xx/2827.md) | 🔴 Hard | 1m 29s | The problem asks us to count how many integers within the inclusive… |
+| 2828 | [Check if a String Is an Acronym of Words](28xx/2828.md) | 🟢 Easy | 1m 26s | This problem asks us to determine whether a given string s is exact… |
 | 2829 | [Determine the Minimum Sum of a k-avoiding Array](28xx/2829.md) | 🟡 Medium | 4m 5s | The problem asks us to construct an array of n distinct positive in… |
-| 2830 | [Maximize the Profit as the Salesman](28xx/2830.md) | 🟡 Medium | 2m 48s | The problem gives us n houses arranged on a number line, numbered f… |
-| 2831 | [Find the Longest Equal Subarray](28xx/2831.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and an integer k. We are… |
-| 2832 | [Maximal Range That Each Element Is Maximum in It](28xx/2832.md) | 🟡 Medium | 1m 20s | The problem gives us an array nums containing distinct integers. Fo… |
-| 2833 | [Furthest Point From Origin](28xx/2833.md) | 🟢 Easy | 1m 3s | The problem gives us a string called moves, where each character re… |
-| 2834 | [Find the Minimum Possible Sum of a Beautiful Array](28xx/2834.md) | 🟡 Medium | 1m 14s | The problem asks us to construct an array of length n using distinc… |
-| 2835 | [Minimum Operations to Form Subsequence With Target Sum](28xx/2835.md) | 🔴 Hard | 1m 40s | The problem gives us an array nums where every element is a power o… |
-| 2836 | [Maximize Value of Function in a Ball Passing Game](28xx/2836.md) | 🔴 Hard | 1m 32s | This problem describes a deterministic ball-passing game between n … |
-| 2837 | [Total Traveled Distance](28xx/2837.md) | 🟢 Easy | 1m 47s | This problem asks us to compute the total distance traveled by ever… |
-| 2838 | [Maximum Coins Heroes Can Collect](28xx/2838.md) | 🟡 Medium | 2m 30s | The problem gives us three arrays: - heroes[i] represents the power… |
+| 2830 | [Maximize the Profit as the Salesman](28xx/2830.md) | 🟡 Medium | 1m 38s | This problem gives us n houses arranged on a number line and a coll… |
+| 2831 | [Find the Longest Equal Subarray](28xx/2831.md) | 🟡 Medium | 1m 5s | The problem asks us to find the longest contiguous subarray where a… |
+| 2832 | [Maximal Range That Each Element Is Maximum in It](28xx/2832.md) | 🟡 Medium | 1m 11s | We are given an array nums consisting of distinct integers. For eve… |
+| 2833 | [Furthest Point From Origin](28xx/2833.md) | 🟢 Easy | 1m | This problem asks us to determine the maximum possible distance fro… |
+| 2834 | [Find the Minimum Possible Sum of a Beautiful Array](28xx/2834.md) | 🟡 Medium | 1m 12s | We are given two positive integers, n and target. We need to constr… |
+| 2835 | [Minimum Operations to Form Subsequence With Target Sum](28xx/2835.md) | 🔴 Hard | 1m 8s | The problem presents a 0-indexed array nums of non-negative powers … |
+| 2836 | [Maximize Value of Function in a Ball Passing Game](28xx/2836.md) | 🔴 Hard | 55s | This problem presents a ball-passing game among n players, represen… |
+| 2837 | [Total Traveled Distance](28xx/2837.md) | 🟢 Easy | 50s | The problem requires calculating the total distance traveled by eac… |
+| 2838 | [Maximum Coins Heroes Can Collect](28xx/2838.md) | 🟡 Medium | 1m 18s | This problem gives us three arrays: - heroes, where heroes[i] repre… |
 | 2839 | [Check if Strings Can be Made Equal With Operations I](28xx/2839.md) | 🟢 Easy | 2m 24s | The problem gives us two strings, s1 and s2, each containing exactl… |
-| 2840 | [Check if Strings Can be Made Equal With Operations II](28xx/2840.md) | 🟡 Medium | 4m 23s | LeetCode 2840: Check if Strings Can be Made Equal With Operations I… |
-| 2841 | [Maximum Sum of Almost Unique Subarray](28xx/2841.md) | 🟡 Medium | 4m 28s | LeetCode 2841: Maximum Sum of Almost Unique Subarray (Medium) |
-| 2842 | [Count K-Subsequences of a String With Maximum Beauty](28xx/2842.md) | 🔴 Hard | 4m 23s | LeetCode 2842: Count K-Subsequences of a String With Maximum Beauty… |
-| 2843 | [  Count Symmetric Integers](28xx/2843.md) | 🟢 Easy | 6m 1s | LeetCode 2843:   Count Symmetric Integers (Easy) |
-| 2844 | [Minimum Operations to Make a Special Number](28xx/2844.md) | 🟡 Medium | 49s | The problem asks us to transform a given string num, representing a… |
-| 2845 | [Count of Interesting Subarrays](28xx/2845.md) | 🟡 Medium | 2m 3s | The problem asks us to count how many contiguous subarrays satisfy … |
-| 2846 | [Minimum Edge Weight Equilibrium Queries in a Tree](28xx/2846.md) | 🔴 Hard | 1m 50s | This problem gives us a weighted undirected tree with n nodes. Sinc… |
-| 2847 | [Smallest Number With Given Digit Product](28xx/2847.md) | 🟡 Medium | 4m 57s | LeetCode 2847: Smallest Number With Given Digit Product (Medium) |
-| 2848 | [Points That Intersect With Cars](28xx/2848.md) | 🟢 Easy | 2m 18s | The problem gives us a list of cars parked on a number line. Each c… |
-| 2849 | [Determine if a Cell Is Reachable at a Given Time](28xx/2849.md) | 🟡 Medium | 5m 3s | LeetCode 2849: Determine if a Cell Is Reachable at a Given Time (Me… |
-| 2850 | [Minimum Moves to Spread Stones Over Grid](28xx/2850.md) | 🟡 Medium | 2m 13s | The problem gives us a 3 x 3 grid where each cell contains some num… |
-| 2851 | [String Transformation](28xx/2851.md) | 🔴 Hard | 7m 56s | The operation described in the problem is a cyclic rotation of the … |
-| 2852 | [Sum of Remoteness of All Cells](28xx/2852.md) | 🟡 Medium | 4m 30s | The problem asks us to calculate the "sum of remoteness" for all ce… |
-| 2853 | [Highest Salaries Difference](28xx/2853.md) | 🟢 Easy | 1m 57s | The problem requires calculating the absolute difference between th… |
-| 2854 | [Rolling Average Steps](28xx/2854.md) | 🟡 Medium | 1m 39s | The problem gives us a database table named Steps. Each row represe… |
-| 2855 | [Minimum Right Shifts to Sort the Array](28xx/2855.md) | 🟢 Easy | 1m 18s | The problem gives us a circular operation called a right shift on a… |
-| 2856 | [Minimum Array Length After Pair Removals](28xx/2856.md) | 🟡 Medium | 1m 20s | The problem gives us a sorted integer array nums in non-decreasing … |
-| 2857 | [Count Pairs of Points With Distance k](28xx/2857.md) | 🟡 Medium | 1m 21s | In this problem, we are given a list of 2D points, where each point… |
-| 2858 | [Minimum Edge Reversals So Every Node Is Reachable](28xx/2858.md) | 🔴 Hard | 1m 25s | This problem gives us a directed graph with n nodes and exactly n -… |
-| 2859 | [Sum of Values at Indices With K Set Bits](28xx/2859.md) | 🟢 Easy | 1m 6s | The problem gives us a 0-indexed integer array nums and an integer … |
-| 2860 | [Happy Students](28xx/2860.md) | 🟡 Medium | 1m 11s | The problem gives us an array nums where nums[i] represents a condi… |
-| 2861 | [Maximum Number of Alloys](28xx/2861.md) | 🟡 Medium | 50s | The problem is about maximizing the number of alloys a company can … |
-| 2862 | [Maximum Element-Sum of a Complete Subset of Indices](28xx/2862.md) | 🔴 Hard | 5m 50s | The problem asks us to select a subset of elements from a 1-indexed… |
+| 2840 | [Check if Strings Can be Made Equal With Operations II](28xx/2840.md) | 🟡 Medium | 1m 2s | The problem asks us to determine whether two strings s1 and s2 of e… |
+| 2841 | [Maximum Sum of Almost Unique Subarray](28xx/2841.md) | 🟡 Medium | 1m 17s | The problem gives us an integer array nums and two integers, m and … |
+| 2842 | [Count K-Subsequences of a String With Maximum Beauty](28xx/2842.md) | 🔴 Hard | 1m 2s | The problem requires us to count k-subsequences of a string s that … |
+| 2843 | [  Count Symmetric Integers](28xx/2843.md) | 🟢 Easy | 48s | The problem asks us to count symmetric integers within a given rang… |
+| 2844 | [Minimum Operations to Make a Special Number](28xx/2844.md) | 🟡 Medium | 1m 7s | The problem asks us to transform a string num representing a non-ne… |
+| 2845 | [Count of Interesting Subarrays](28xx/2845.md) | 🟡 Medium | 1m 3s | The problem is asking us to count the number of interesting subarra… |
+| 2846 | [Minimum Edge Weight Equilibrium Queries in a Tree](28xx/2846.md) | 🔴 Hard | 1m 36s | You are given an undirected weighted tree with n nodes. Since the g… |
+| 2847 | [Smallest Number With Given Digit Product](28xx/2847.md) | 🟡 Medium | 1m 18s | The problem gives us a positive integer n and asks us to construct … |
+| 2848 | [Points That Intersect With Cars](28xx/2848.md) | 🟢 Easy | 1m 5s | The problem asks us to determine how many integer points on a numbe… |
+| 2849 | [Determine if a Cell Is Reachable at a Given Time](28xx/2849.md) | 🟡 Medium | 1m 10s | This problem asks whether it is possible to reach a specific target… |
+| 2850 | [Minimum Moves to Spread Stones Over Grid](28xx/2850.md) | 🟡 Medium | 53s | This problem asks us to take a 3x3 grid of integers representing st… |
+| 2851 | [String Transformation](28xx/2851.md) | 🔴 Hard | 56s | The problem asks us to transform a string s into a target string t … |
+| 2852 | [Sum of Remoteness of All Cells](28xx/2852.md) | 🟡 Medium | 1m 12s | We are given an n × n grid where each cell is either: - A positive … |
+| 2853 | [Highest Salaries Difference](28xx/2853.md) | 🟢 Easy | 2m 59s | The problem provides a database table named Salaries with three col… |
+| 2854 | [Rolling Average Steps](28xx/2854.md) | 🟡 Medium | 1m 22s | This problem asks us to compute a 3-day rolling average of daily st… |
+| 2855 | [Minimum Right Shifts to Sort the Array](28xx/2855.md) | 🟢 Easy | 54s | The problem gives us a 0-indexed array nums of length n containing … |
+| 2856 | [Minimum Array Length After Pair Removals](28xx/2856.md) | 🟡 Medium | 1m 8s | This problem gives us a sorted integer array nums in non-decreasing… |
+| 2857 | [Count Pairs of Points With Distance k](28xx/2857.md) | 🟡 Medium | 1m 15s | We are given a list of 2D points, where each point is represented a… |
+| 2858 | [Minimum Edge Reversals So Every Node Is Reachable](28xx/2858.md) | 🔴 Hard | 1m 34s | This problem gives us a directed graph with n nodes and exactly n -… |
+| 2859 | [Sum of Values at Indices With K Set Bits](28xx/2859.md) | 🟢 Easy | 58s | The problem asks us to compute the sum of elements in an array, but… |
+| 2860 | [Happy Students](28xx/2860.md) | 🟡 Medium | 59s | The problem asks us to determine the number of ways to select a sub… |
+| 2861 | [Maximum Number of Alloys](28xx/2861.md) | 🟡 Medium | 2m 27s | This guide will be quite long because you requested a comprehensive… |
+| 2862 | [Maximum Element-Sum of a Complete Subset of Indices](28xx/2862.md) | 🔴 Hard | 1m 15s | The array nums is 1-indexed, meaning the first element corresponds … |
 | 2863 | [Maximum Length of Semi-Decreasing Subarrays](28xx/2863.md) | 🟡 Medium | 2m 20s | The problem gives us an integer array nums and asks for the length … |
-| 2864 | [Maximum Odd Binary Number](28xx/2864.md) | 🟢 Easy | 59s | The problem asks us to take a binary string s (consisting only of '… |
-| 2865 | [Beautiful Towers I](28xx/2865.md) | 🟡 Medium | 1m 16s | The problem gives us an array heights, where heights[i] represents … |
-| 2866 | [Beautiful Towers II](28xx/2866.md) | 🟡 Medium | 1m 16s | The problem gives us an array maxHeights, where maxHeights[i] repre… |
-| 2867 | [Count Valid Paths in a Tree](28xx/2867.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes labeled from 1 to n. A… |
-| 2868 | [The Wording Game](28xx/2868.md) | 🔴 Hard | 2m 22s | The problem presents a two-player game between Alice and Bob, each … |
-| 2869 | [Minimum Operations to Collect Elements](28xx/2869.md) | 🟢 Easy | 1m 6s | The problem gives us an array nums and an integer k. We repeatedly … |
-| 2870 | [Minimum Number of Operations to Make Array Empty](28xx/2870.md) | 🟡 Medium | 47s | The problem requires us to determine the minimum number of operatio… |
-| 2871 | [Split Array Into Maximum Number of Subarrays](28xx/2871.md) | 🟡 Medium | 49s | The problem is asking us to split a given array of non-negative int… |
+| 2864 | [Maximum Odd Binary Number](28xx/2864.md) | 🟢 Easy | 1m 7s | The problem gives us a binary string s, containing only '0' and '1'… |
+| 2865 | [Beautiful Towers I](28xx/2865.md) | 🟡 Medium | 1m 2s | The problem asks us to transform an array of tower heights into a m… |
+| 2866 | [Beautiful Towers II](28xx/2866.md) | 🟡 Medium | 1m 4s | The problem asks us to build a series of towers along a coordinate … |
+| 2867 | [Count Valid Paths in a Tree](28xx/2867.md) | 🔴 Hard | 2m 26s | That is a long, structured reference document with multiple require… |
+| 2868 | [The Wording Game](28xx/2868.md) | 🔴 Hard | 57s | The problem describes a turn-based game between Alice and Bob, wher… |
+| 2869 | [Minimum Operations to Collect Elements](28xx/2869.md) | 🟢 Easy | 1m 5s | This problem gives us an array nums and an integer k. We repeatedly… |
+| 2870 | [Minimum Number of Operations to Make Array Empty](28xx/2870.md) | 🟡 Medium | 1m 5s | The problem gives us an array nums containing positive integers. In… |
+| 2871 | [Split Array Into Maximum Number of Subarrays](28xx/2871.md) | 🟡 Medium | 57s | The problem is asking us to split a given array of non-negative int… |
 | 2872 | [Maximum Number of K-Divisible Components](28xx/2872.md) | 🔴 Hard | 53s | This problem is asking us to split a given undirected tree into as … |
-| 2873 | [Maximum Value of an Ordered Triplet I](28xx/2873.md) | 🟢 Easy | 55s | The problem asks us to find the maximum value of a triplet of indic… |
-| 2874 | [Maximum Value of an Ordered Triplet II](28xx/2874.md) | 🟡 Medium | 1m 7s | The problem asks us to find the maximum possible value of: subject … |
-| 2875 | [Minimum Size Subarray in Infinite Array](28xx/2875.md) | 🟡 Medium | 54s | The problem asks us to find the shortest subarray within an infinit… |
-| 2876 | [Count Visited Nodes in a Directed Graph](28xx/2876.md) | 🔴 Hard | 55s | The problem presents a directed graph with n nodes and n edges, for… |
-| 2877 | [Create a DataFrame from List](28xx/2877.md) | 🟢 Easy | 1m | The problem asks us to create a Pandas DataFrame from a given two d… |
-| 2878 | [Get the Size of a DataFrame](28xx/2878.md) | 🟢 Easy | 49s | This problem asks us to determine the size of a pandas DataFrame na… |
-| 2879 | [Display the First Three Rows](28xx/2879.md) | 🟢 Easy | 52s | This problem provides a Pandas DataFrame named employees with four … |
+| 2873 | [Maximum Value of an Ordered Triplet I](28xx/2873.md) | 🟢 Easy | 1m 41s | You are given an integer array nums and must choose three indices (… |
+| 2874 | [Maximum Value of an Ordered Triplet II](28xx/2874.md) | 🟡 Medium | 1m 21s | The problem gives us a 0-indexed integer array nums and asks us to … |
+| 2875 | [Minimum Size Subarray in Infinite Array](28xx/2875.md) | 🟡 Medium | 1m 17s | This problem gives us a finite array nums, but asks us to imagine a… |
+| 2876 | [Count Visited Nodes in a Directed Graph](28xx/2876.md) | 🔴 Hard | 47s | The problem presents a directed graph with n nodes, where each node… |
+| 2877 | [Create a DataFrame from List](28xx/2877.md) | 🟢 Easy | 1m | This problem asks us to create a Pandas DataFrame from a given two … |
+| 2878 | [Get the Size of a DataFrame](28xx/2878.md) | 🟢 Easy | 55s | The problem asks us to determine the size of a DataFrame named play… |
+| 2879 | [Display the First Three Rows](28xx/2879.md) | 🟢 Easy | 50s | The problem requires displaying the first three rows of a given Dat… |
 | 2880 | [Select Data](28xx/2880.md) | 🟢 Easy | 1m 4s | This problem provides a pandas DataFrame named students with three … |
-| 2881 | [Create a New Column](28xx/2881.md) | 🟢 Easy | 44s | This problem is asking us to augment an existing DataFrame of emplo… |
-| 2882 | [Drop Duplicate Rows](28xx/2882.md) | 🟢 Easy | 45s | The problem is asking us to remove duplicate rows in a DataFrame ba… |
-| 2883 | [Drop Missing Data](28xx/2883.md) | 🟢 Easy | 55s | This problem gives us a Pandas DataFrame named students with three … |
+| 2881 | [Create a New Column](28xx/2881.md) | 🟢 Easy | 45s | The problem is asking us to modify a given DataFrame named employee… |
+| 2882 | [Drop Duplicate Rows](28xx/2882.md) | 🟢 Easy | 54s | The problem asks us to process a DataFrame representing customers a… |
+| 2883 | [Drop Missing Data](28xx/2883.md) | 🟢 Easy | 1m | This problem provides a pandas DataFrame named students with three … |
 | 2884 | [Modify Columns](28xx/2884.md) | 🟢 Easy | 55s | The problem provides a Pandas DataFrame named employees with two co… |
-| 2885 | [Rename Columns](28xx/2885.md) | 🟢 Easy | 45s | This problem is asking us to rename the columns of a given table or… |
-| 2886 | [Change Data Type](28xx/2886.md) | 🟢 Easy | 1m 5s | This problem provides a Pandas DataFrame named students with four c… |
-| 2887 | [Fill Missing Data](28xx/2887.md) | 🟢 Easy | 1m 4s | The problem asks us to process a DataFrame of product information t… |
-| 2888 | [Reshape Data: Concatenate](28xx/2888.md) | 🟢 Easy | 38s | The problem is asking us to combine two DataFrames vertically. Each… |
+| 2885 | [Rename Columns](28xx/2885.md) | 🟢 Easy | 1m 3s | This problem asks us to rename the column names of a Pandas DataFra… |
+| 2886 | [Change Data Type](28xx/2886.md) | 🟢 Easy | 58s | This problem provides a Pandas DataFrame named students with four c… |
+| 2887 | [Fill Missing Data](28xx/2887.md) | 🟢 Easy | 56s | The problem provides a Pandas DataFrame named products with three c… |
+| 2888 | [Reshape Data: Concatenate](28xx/2888.md) | 🟢 Easy | 49s | The problem is asking us to vertically concatenate two DataFrames i… |
 | 2889 | [Reshape Data: Pivot](28xx/2889.md) | 🟢 Easy | 1m 2s | This problem gives us a Pandas DataFrame named weather with three c… |
-| 2890 | [Reshape Data: Melt](28xx/2890.md) | 🟢 Easy | 1m 3s | This problem asks us to reshape a pandas DataFrame from a wide form… |
-| 2891 | [Method Chaining](28xx/2891.md) | 🟢 Easy | 1m 2s | This problem provides a Pandas DataFrame named animals with four co… |
-| 2892 | [Minimizing Array After Replacing Pairs With Their Product](28xx/2892.md) | 🟡 Medium | 41s | The problem gives us an integer array nums and an integer k. We are… |
-| 2893 | [Calculate Orders Within Each Interval](28xx/2893.md) | 🟡 Medium | 1m 11s | The problem provides a database table named Orders, where each row … |
-| 2894 | [Divisible and Non-divisible Sums Difference](28xx/2894.md) | 🟢 Easy | 1m 3s | The problem gives us two positive integers, n and m. We must examin… |
-| 2895 | [Minimum Processing Time](28xx/2895.md) | 🟡 Medium | 1m | In this problem, we are given two arrays: - processorTime, where ea… |
-| 2896 | [Apply Operations to Make Two Strings Equal](28xx/2896.md) | 🟡 Medium | 1m 6s | The problem gives us two binary strings, s1 and s2, both of the sam… |
-| 2897 | [Apply Operations on Array to Maximize Sum of Squares](28xx/2897.md) | 🔴 Hard | 1m 1s | The problem gives us an integer array nums and an integer k. We are… |
-| 2898 | [Maximum Linear Stock Score](28xx/2898.md) | 🟡 Medium | 46s | The problem asks us to find a subsequence of a given 1-indexed inte… |
+| 2890 | [Reshape Data: Melt](28xx/2890.md) | 🟢 Easy | 49s | This problem asks us to reshape a dataset from a wide format to a l… |
+| 2891 | [Method Chaining](28xx/2891.md) | 🟢 Easy | 1m 1s | This problem provides a Pandas DataFrame named animals with four co… |
+| 2892 | [Minimizing Array After Replacing Pairs With Their Product](28xx/2892.md) | 🟡 Medium | 1m 6s | The problem gives us an integer array nums and a value k. We are al… |
+| 2893 | [Calculate Orders Within Each Interval](28xx/2893.md) | 🟡 Medium | 47s | The problem asks us to process an Orders table where each row conta… |
+| 2894 | [Divisible and Non-divisible Sums Difference](28xx/2894.md) | 🟢 Easy | 1m 2s | This problem gives us two positive integers, n and m. We need to ex… |
+| 2895 | [Minimum Processing Time](28xx/2895.md) | 🟡 Medium | 1m 11s | This problem gives us two arrays: - processorTime, where each value… |
+| 2896 | [Apply Operations to Make Two Strings Equal](28xx/2896.md) | 🟡 Medium | 1m 15s | We are given two binary strings, s1 and s2, of the same length n, a… |
+| 2897 | [Apply Operations on Array to Maximize Sum of Squares](28xx/2897.md) | 🔴 Hard | 59s | The problem presents an integer array nums and a positive integer k… |
+| 2898 | [Maximum Linear Stock Score](28xx/2898.md) | 🟡 Medium | 1m 7s | We are given a 1-indexed array prices, where prices[i] represents t… |
 | 2899 | [Last Visited Integers](28xx/2899.md) | 🟢 Easy | 1m 4s | The problem gives us an integer array nums that contains either pos… |
-| 2900 | [Longest Unequal Adjacent Groups Subsequence I](29xx/2900.md) | 🟢 Easy | 1m 8s | The problem gives us two arrays of the same length: - words, where … |
+| 2900 | [Longest Unequal Adjacent Groups Subsequence I](29xx/2900.md) | 🟢 Easy | 1m 21s | We are given two arrays of the same length: - words[i] is a string.… |
 | 2901 | [Longest Unequal Adjacent Groups Subsequence II](29xx/2901.md) | 🟡 Medium | 37s | The problem asks us to select the longest subsequence of words from… |
-| 2902 | [Count of Sub-Multisets With Bounded Sum](29xx/2902.md) | 🔴 Hard | 1m 48s | The problem asks us to count how many distinct sub-multisets of the… |
-| 2903 | [Find Indices With Index and Value Difference I](29xx/2903.md) | 🟢 Easy | 39s | The problem asks us to find two indices i and j in an array nums th… |
-| 2904 | [Shortest and Lexicographically Smallest Beautiful String](29xx/2904.md) | 🟡 Medium | 43s | The problem asks us to identify a specific substring from a binary … |
-| 2905 | [Find Indices With Index and Value Difference II](29xx/2905.md) | 🟡 Medium | 1m 14s | The problem gives us an integer array nums, along with two constrai… |
+| 2902 | [Count of Sub-Multisets With Bounded Sum](29xx/2902.md) | 🔴 Hard | 48s | The problem asks us to count all possible sub-multisets of an array… |
+| 2903 | [Find Indices With Index and Value Difference I](29xx/2903.md) | 🟢 Easy | 1m 5s | The problem asks us to find two indices i and j in the array such t… |
+| 2904 | [Shortest and Lexicographically Smallest Beautiful String](29xx/2904.md) | 🟡 Medium | 1m 1s | We are given a binary string s, meaning the string contains only th… |
+| 2905 | [Find Indices With Index and Value Difference II](29xx/2905.md) | 🟡 Medium | 54s | The problem asks us to find two indices i and j in an integer array… |
 | 2906 | [Construct Product Matrix](29xx/2906.md) | 🟡 Medium | 1m 12s | The problem asks us to construct a new matrix p from a given matrix… |
 | 2907 | [Maximum Profitable Triplets With Increasing Prices I](29xx/2907.md) | 🟡 Medium | 1m 49s | This problem asks us to select exactly three items from a store whi… |
-| 2908 | [Minimum Sum of Mountain Triplets I](29xx/2908.md) | 🟢 Easy | 48s | The problem asks us to find the minimum sum of a mountain triplet i… |
+| 2908 | [Minimum Sum of Mountain Triplets I](29xx/2908.md) | 🟢 Easy | 1m 1s | The problem asks us to find the minimum possible sum of a "mountain… |
 | 2909 | [Minimum Sum of Mountain Triplets II](29xx/2909.md) | 🟡 Medium | 1m 8s | The problem asks us to find a special triplet of indices (i, j, k) … |
 | 2910 | [Minimum Number of Groups to Create a Valid Assignment](29xx/2910.md) | 🟡 Medium | 48s | The problem requires us to determine the minimum number of boxes ne… |
 | 2911 | [Minimum Changes to Make K Semi-palindromes](29xx/2911.md) | 🔴 Hard | 1m 13s | We are given a string s and an integer k. The goal is to split the … |
@@ -3048,3 +3048,50 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3098 | [Find the Sum of Subsequence Powers](30xx/3098.md) | 🔴 Hard | 54s | The problem asks us to compute the sum of powers of all subsequence… |
 | 3099 | [Harshad Number](30xx/3099.md) | 🟢 Easy | 56s | The problem asks us to determine whether a given integer is a Harsh… |
 | 3100 | [Water Bottles II](31xx/3100.md) | 🟡 Medium | 1m 20s | This problem models a bottle exchange process where the exchange ra… |
+| 3101 | [Count Alternating Subarrays](31xx/3101.md) | 🟡 Medium | 1m 51s | The problem gives us a binary array nums, meaning every element is … |
+| 3102 | [Minimize Manhattan Distances](31xx/3102.md) | 🔴 Hard | 1m 41s | The problem asks us to minimize the maximum Manhattan distance betw… |
+| 3103 | [Find Trending Hashtags II ](31xx/3103.md) | 🔴 Hard | 1m 38s | The problem gives us a database table named Tweets, where each row … |
+| 3104 | [Find Longest Self-Contained Substring](31xx/3104.md) | 🔴 Hard | 1m 50s | The problem asks us to find the longest self-contained substring in… |
+| 3105 | [Longest Strictly Increasing or Strictly Decreasing Subarray](31xx/3105.md) | 🟢 Easy | 1m 59s | The problem gives us an integer array nums and asks us to find the … |
+| 3106 | [Lexicographically Smallest String After Operations With Constraint](31xx/3106.md) | 🟡 Medium | 1m 25s | This problem asks us to transform a given string s into another str… |
+| 3107 | [Minimum Operations to Make Median of Array Equal to K](31xx/3107.md) | 🟡 Medium | 1m 34s | The problem asks us to transform an integer array so that its media… |
+| 3109 | [Find the Index of Permutation](31xx/3109.md) | 🟡 Medium | 1m 20s | The problem gives us a permutation perm of the integers [1, 2, ...,… |
+| 3110 | [Score of a String](31xx/3110.md) | 🟢 Easy | 59s | This problem asks us to compute the score of a string, where the sc… |
+| 3111 | [Minimum Rectangles to Cover Points](31xx/3111.md) | 🟡 Medium | 1m 13s | The problem gives us a collection of 2D points, where each point is… |
+| 3112 | [Minimum Time to Visit Disappearing Nodes](31xx/3112.md) | 🟡 Medium | 1m 1s | The problem describes an undirected weighted graph with n vertices,… |
+| 3113 | [Find the Number of Subarrays Where Boundary Elements Are Maximum](31xx/3113.md) | 🔴 Hard | 1m 8s | We are given an array nums of positive integers. We need to count h… |
+| 3114 | [Latest Time You Can Obtain After Replacing Characters](31xx/3114.md) | 🟢 Easy | 1m 13s | The problem gives us a string representing a time in 12-hour format… |
+| 3115 | [Maximum Prime Difference](31xx/3115.md) | 🟡 Medium | 1m 13s | The problem gives us an integer array nums, and we need to find the… |
+| 3116 | [Kth Smallest Amount With Single Denomination Combination](31xx/3116.md) | 🔴 Hard | 1m 2s | The problem asks us to determine the kth smallest amount that can b… |
+| 3117 | [Minimum Sum of Values by Dividing Array](31xx/3117.md) | 🔴 Hard | 1m 4s | This problem asks us to partition an array nums into exactly m cont… |
+| 3118 | [Friday Purchase III ](31xx/3118.md) | 🟡 Medium | 54s | This problem asks us to calculate the total amount of money spent b… |
+| 3120 | [Count the Number of Special Characters I](31xx/3120.md) | 🟢 Easy | 46s | The problem asks us to count the number of special characters in a … |
+| 3121 | [Count the Number of Special Characters II](31xx/3121.md) | 🟡 Medium | 1m 12s | The problem gives us a string word containing uppercase and lowerca… |
+| 3122 | [Minimum Number of Operations to Satisfy Conditions](31xx/3122.md) | 🟡 Medium | 1m 1s | The problem presents a two-dimensional matrix grid of size m x n wi… |
+| 3123 | [Find Edges in Shortest Paths](31xx/3123.md) | 🔴 Hard | 1m 59s | The problem gives us an undirected weighted graph with n nodes and … |
+| 3124 | [Find Longest Calls](31xx/3124.md) | 🟡 Medium | 1m 26s | This problem asks us to analyze phone call records stored across tw… |
+| 3125 | [Maximum Number That Makes Result of Bitwise AND Zero](31xx/3125.md) | 🟡 Medium | 1m 26s | The problem asks us to find the largest integer x such that: - x <=… |
+| 3126 | [Server Utilization Time](31xx/3126.md) | 🟡 Medium | 1m 27s | This problem provides a table named Servers that records status cha… |
+| 3127 | [Make a Square with the Same Color](31xx/3127.md) | 🟢 Easy | 1m 13s | This problem gives us a fixed 3 x 3 grid containing only two possib… |
+| 3128 | [Right Triangles](31xx/3128.md) | 🟡 Medium | 1m 21s | The problem gives us a binary matrix grid, where each cell contains… |
+| 3129 | [Find All Possible Stable Binary Arrays I](31xx/3129.md) | 🟡 Medium | 1m 26s | In this problem, we need to count how many binary arrays can be for… |
+| 3130 | [Find All Possible Stable Binary Arrays II](31xx/3130.md) | 🔴 Hard | 1m 23s | The problem gives us three integers: - zero, the exact number of 0s… |
+| 3131 | [Find the Integer Added to Array I](31xx/3131.md) | 🟢 Easy | 1m 1s | The problem gives us two integer arrays, nums1 and nums2, which hav… |
+| 3132 | [Find the Integer Added to Array II](31xx/3132.md) | 🟡 Medium | 1m 16s | We are given two integer arrays, nums1 and nums2. The array nums2 w… |
+| 3133 | [Minimum Array End](31xx/3133.md) | 🟡 Medium | 1m 11s | The problem asks us to construct a strictly increasing array nums o… |
+| 3134 | [Find the Median of the Uniqueness Array](31xx/3134.md) | 🔴 Hard | 1m 20s | The problem defines a special array called the uniqueness array. Fo… |
+| 3136 | [Valid Word](31xx/3136.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given string qualifies a… |
+| 3137 | [Minimum Number of Operations to Make Word K-Periodic](31xx/3137.md) | 🟡 Medium | 1m | The problem asks us to transform a given string word of length n in… |
+| 3138 | [Minimum Length of Anagram Concatenation](31xx/3138.md) | 🟡 Medium | 1m 15s | The problem gives us a string s that was formed by concatenating se… |
+| 3139 | [Minimum Cost to Equalize Array](31xx/3139.md) | 🔴 Hard | 58s | This problem asks us to determine the minimum cost to make all elem… |
+| 3140 | [Consecutive Available Seats II](31xx/3140.md) | 🟡 Medium | 1m 43s | This problem asks us to analyze a cinema seating table and identify… |
+| 3141 | [Maximum Hamming Distances](31xx/3141.md) | 🔴 Hard | 54s | The problem asks us to compute the maximum Hamming distance for eac… |
+| 3142 | [Check if Grid Satisfies Conditions](31xx/3142.md) | 🟢 Easy | 1m 9s | The problem gives us a two dimensional matrix called grid with m ro… |
+| 3143 | [Maximum Points Inside the Square](31xx/3143.md) | 🟡 Medium | 1m 10s | The problem asks us to find the maximum number of points that can b… |
+| 3144 | [Minimum Substring Partition of Equal Character Frequency](31xx/3144.md) | 🟡 Medium | 1m 24s | In this problem, we are given a lowercase English string s, and we … |
+| 3145 | [Find Products of Elements of Big Array](31xx/3145.md) | 🔴 Hard | 59s | The problem asks us to work with a conceptual infinite array called… |
+| 3146 | [Permutation Difference between Two Strings](31xx/3146.md) | 🟢 Easy | 54s | The problem asks us to compute the permutation difference between t… |
+| 3147 | [Taking Maximum Energy From the Mystic Dungeon](31xx/3147.md) | 🟡 Medium | 1m 5s | The problem asks us to maximize the total energy gained from a sequ… |
+| 3148 | [Maximum Difference Score in a Grid](31xx/3148.md) | 🟡 Medium | 1m 42s | The problem gives us an m x n matrix called grid, where every cell … |
+| 3149 | [Find the Minimum Cost Array Permutation](31xx/3149.md) | 🔴 Hard | 51s | The problem presents an array nums of length n that is a permutatio… |
+| 3150 | [Invalid Tweets II](31xx/3150.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Tweets with two columns… |

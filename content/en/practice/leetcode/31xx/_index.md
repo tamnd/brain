@@ -46,6 +46,7 @@ draft: false
 | 3136 | [Valid Word](3136.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given string qualifies a… |
 | 3137 | [Minimum Number of Operations to Make Word K-Periodic](3137.md) | 🟡 Medium | 1m | The problem asks us to transform a given string word of length n in… |
 | 3138 | [Minimum Length of Anagram Concatenation](3138.md) | 🟡 Medium | 1m 15s | The problem gives us a string s that was formed by concatenating se… |
+| 3139 | [Minimum Cost to Equalize Array](3139.md) | 🔴 Hard | 58s | This problem asks us to determine the minimum cost to make all elem… |
 | 3140 | [Consecutive Available Seats II](3140.md) | 🟡 Medium | 1m 43s | This problem asks us to analyze a cinema seating table and identify… |
 | 3141 | [Maximum Hamming Distances](3141.md) | 🔴 Hard | 54s | The problem asks us to compute the maximum Hamming distance for eac… |
 | 3142 | [Check if Grid Satisfies Conditions](3142.md) | 🟢 Easy | 1m 9s | The problem gives us a two dimensional matrix called grid with m ro… |
@@ -54,3 +55,6 @@ draft: false
 | 3145 | [Find Products of Elements of Big Array](3145.md) | 🔴 Hard | 59s | The problem asks us to work with a conceptual infinite array called… |
 | 3146 | [Permutation Difference between Two Strings](3146.md) | 🟢 Easy | 54s | The problem asks us to compute the permutation difference between t… |
 | 3147 | [Taking Maximum Energy From the Mystic Dungeon](3147.md) | 🟡 Medium | 1m 5s | The problem asks us to maximize the total energy gained from a sequ… |
+| 3148 | [Maximum Difference Score in a Grid](3148.md) | 🟡 Medium | 1m 42s | The problem gives us an m x n matrix called grid, where every cell … |
+| 3149 | [Find the Minimum Cost Array Permutation](3149.md) | 🔴 Hard | 51s | The problem presents an array nums of length n that is a permutatio… |
+| 3150 | [Invalid Tweets II](3150.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Tweets with two columns… |
