@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979"
-description: "IMO 1979 — 4/6 solved, 1 verified."
+description: "IMO 1979 — 5/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1979
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1979
 
-[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 4/6 solved, 1 verified.
+[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 5/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -18,7 +18,7 @@ draft: false
 | [2](2.md) | solved | 43m03s |
 | [3](3.md) | solved | 14m28s |
 | [4](4.md) | solved | 16m50s |
-| 5 | — | — |
+| [5](5.md) | solved | 4m30s |
 | 6 | — | — |
 
 **Problem 1** &nbsp; *✓ verified* · 10m50s · [Solution →](1.md)
@@ -41,7 +41,7 @@ We consider a point $P$ in a plane $p$ and a point $Q \not\in p$. Determine all 
 \frac{QP+PR}{QR}
 $$is maximum.
 
-**Problem 5**
+**Problem 5** &nbsp; *solved* · 4m30s · [Solution →](5.md)
 
 Determine all real numbers a for which there exists non-negative reals $x_{1}, \ldots, x_{5}$ which satisfy the relations $\sum_{k=1}^{5} kx_{k}=a,$ $\sum_{k=1}^{5} k^{3}x_{k}=a^{2},$ $\sum_{k=1}^{5} k^{5}x_{k}=a^{3}.$
 
