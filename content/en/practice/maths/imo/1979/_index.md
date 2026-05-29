@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979"
-description: "IMO 1979 — 1/6 solved, 1 verified."
+description: "IMO 1979 — 2/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1979
@@ -10,12 +10,12 @@ draft: false
 
 # IMO 1979
 
-[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 1/6 solved, 1 verified.
+[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 2/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m50s |
-| 2 | — | — |
+| [2](2.md) | solved | 43m03s |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
@@ -27,7 +27,7 @@ If $p$ and $q$ are natural numbers so that$$
 \frac{p}{q}=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+ \ldots -\frac{1}{1318}+\frac{1}{1319},
 $$prove that $p$ is divisible by $1979$.
 
-**Problem 2**
+**Problem 2** &nbsp; *solved* · 43m03s · [Solution →](2.md)
 
 We consider a prism which has the upper and inferior basis the pentagons: $A_{1}A_{2}A_{3}A_{4}A_{5}$ and $B_{1}B_{2}B_{3}B_{4}B_{5}$. Each of the sides of the two pentagons and the segments $A_{i}B_{j}$ with $i,j=1,\ldots$,5 is colored in red or blue. In every triangle which has all sides colored there exists one red side and one blue side. Prove that all the 10 sides of the two basis are colored in the same color.
 

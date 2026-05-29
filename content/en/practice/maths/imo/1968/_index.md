@@ -1,6 +1,6 @@
 ---
 title: "IMO 1968"
-description: "IMO 1968 — 1/6 solved."
+description: "IMO 1968 — 1/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1968
@@ -10,14 +10,14 @@ draft: false
 
 # IMO 1968
 
-[Official IMO 1968 problems](https://www.imo-official.org/year_info.aspx?year=1968) &nbsp;·&nbsp; 1/6 solved.
+[Official IMO 1968 problems](https://www.imo-official.org/year_info.aspx?year=1968) &nbsp;·&nbsp; 1/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | 1 | — | — |
 | 2 | — | — |
 | 3 | — | — |
-| [4](4.md) | solved | 4m50s |
+| [4](4.md) | ✓ verified | 11m45s |
 | 5 | — | — |
 | 6 | — | — |
 
@@ -49,7 +49,7 @@ $$ with unknowns $x_1, x_2, \cdots, x_n$ where $a, b, c$ are real and $a \neq 0$
 
 (c) if $\Delta > 0$, there is more than one solution.
 
-**Problem 4** &nbsp; *solved* · 4m50s · [Solution →](4.md)
+**Problem 4** &nbsp; *✓ verified* · 11m45s · [Solution →](4.md)
 
 Prove that in every tetrahedron there is a vertex such that the three edges meeting there have lengths which are the sides of a triangle.
 
