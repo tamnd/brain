@@ -48,9 +48,10 @@ draft: false
 | 2735 | [Collecting Chocolates](2735.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums, where nums[i] represents the co… |
 | 2736 | [Maximum Sum Queries](2736.md) | 🔴 Hard | 1m 15s | We are given two arrays, nums1 and nums2, both of length n. Each in… |
 | 2737 | [Find the Closest Marked Node](2737.md) | 🟡 Medium | 32s | That is a very large, detailed reference document with multiple lon… |
-| 2739 | [Total Distance Traveled](2739.md) | 🟢 Easy | 1m | This problem models a truck with two fuel tanks: - mainTank contain… |
-| 2741 | [Special Permutations](2741.md) | 🟡 Medium | 1m 9s | The problem gives us an array nums containing distinct positive int… |
-| 2742 | [Painting the Walls](2742.md) | 🔴 Hard | 1m 18s | The problem gives us two arrays, cost and time, where each index re… |
+| 2738 | [Count Occurrences in Text](2738.md) | 🟡 Medium | 1m | The problem asks us to analyze a database table named Files that co… |
+| 2739 | [Total Distance Traveled](2739.md) | 🟢 Easy | 59s | This problem asks us to compute the maximum total distance a truck … |
+| 2741 | [Special Permutations](2741.md) | 🟡 Medium | 50s | The problem asks us to count the number of special permutations of … |
+| 2742 | [Painting the Walls](2742.md) | 🔴 Hard | 54s | The problem is asking us to determine the minimum total cost to pai… |
 | 2743 | [Count Substrings Without Repeating Character](2743.md) | 🟡 Medium | 50s | The problem asks us to count the number of substrings in a given st… |
 | 2744 | [Find Maximum Number of String Pairs](2744.md) | 🟢 Easy | 1m | The problem gives us an array of distinct strings called words. Eve… |
 | 2746 | [Decremental String Concatenation](2746.md) | 🟡 Medium | 1m 23s | The problem gives us an array of strings called words. We begin wit… |

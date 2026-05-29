@@ -46,3 +46,5 @@ draft: false
 | 3052 | [Maximize Items](3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |
 | 3053 | [Classifying Triangles by Lengths](3053.md) | 🟢 Easy | 1m 21s | The problem requires classifying triangles based on the lengths of … |
 | 3054 | [Binary Tree Nodes](3054.md) | 🟡 Medium | 1m 2s | This problem asks us to classify nodes in a binary tree based on th… |
+| 3055 | [Top Percentile Fraud](3055.md) | 🟡 Medium | 47s | This problem asks us to identify the top 5 percentile of insurance … |
+| 3056 | [Snaps Analysis](3056.md) | 🟡 Medium | 51s | The problem requires calculating the percentage of time each age gr… |

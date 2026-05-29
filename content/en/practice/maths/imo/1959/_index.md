@@ -17,8 +17,8 @@ draft: false
 | [1](1.md) | ✓ verified | 8m04s |
 | [2](2.md) | solved | 15m36s |
 | [3](3.md) | ✓ verified | 12m31s |
-| [4](4.md) | ✓ verified | 13m46s |
-| [5](5.md) | solved | 3m42s |
+| [4](4.md) | ✓ verified | 8m05s |
+| [5](5.md) | solved | 6m39s |
 | [6](6.md) | solved | 5m47s |
 
 **Problem 1** &nbsp; *✓ verified* · 8m04s · [Solution →](1.md)
@@ -41,11 +41,11 @@ $a\cos ^{2}x + b\cos{x} + c = 0.$
 
 Using the numbers $a,b,c$, form a quadratic equation in $\cos{2x}$, whose roots are the same as those of the original equation. Compare the equations in $\cos{x}$ and $\cos{2x}$ for $a=4, b=2, c=-1$.
 
-**Problem 4** &nbsp; *✓ verified* · 13m46s · [Solution →](4.md)
+**Problem 4** &nbsp; *✓ verified* · 8m05s · [Solution →](4.md)
 
 Construct a right triangle with a given hypotenuse $c$ such that the median drawn to the hypotenuse is the [geometric mean](/wiki/index.php?title=Geometric_mean "Geometric mean") of the two legs of the triangle.
 
-**Problem 5** &nbsp; *solved* · 3m42s · [Solution →](5.md)
+**Problem 5** &nbsp; *solved* · 6m39s · [Solution →](5.md)
 
 An arbitrary point $M$ is selected in the interior of the segment $AB$. The squares $AMCD$ and $MBEF$ are constructed on the same side of $AB$, with the segments $AM$ and $MB$ as their respective bases. The circles about these squares, with respective centers $P$ and $Q$, intersect at $M$ and also at another point $N$. Let $N'$ denote the point of intersection of the straight lines $AF$ and $BC$.
 
