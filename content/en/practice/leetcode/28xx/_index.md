@@ -72,6 +72,24 @@ draft: false
 | 2859 | [Sum of Values at Indices With K Set Bits](2859.md) | 🟢 Easy | 1m 6s | The problem gives us a 0-indexed integer array nums and an integer … |
 | 2860 | [Happy Students](2860.md) | 🟡 Medium | 1m 11s | The problem gives us an array nums where nums[i] represents a condi… |
 | 2861 | [Maximum Number of Alloys](2861.md) | 🟡 Medium | 50s | The problem is about maximizing the number of alloys a company can … |
+| 2862 | [Maximum Element-Sum of a Complete Subset of Indices](2862.md) | 🔴 Hard | 5m 50s | The problem asks us to select a subset of elements from a 1-indexed… |
 | 2863 | [Maximum Length of Semi-Decreasing Subarrays](2863.md) | 🟡 Medium | 2m 20s | The problem gives us an integer array nums and asks for the length … |
 | 2864 | [Maximum Odd Binary Number](2864.md) | 🟢 Easy | 59s | The problem asks us to take a binary string s (consisting only of '… |
 | 2865 | [Beautiful Towers I](2865.md) | 🟡 Medium | 1m 16s | The problem gives us an array heights, where heights[i] represents … |
+| 2866 | [Beautiful Towers II](2866.md) | 🟡 Medium | 1m 16s | The problem gives us an array maxHeights, where maxHeights[i] repre… |
+| 2867 | [Count Valid Paths in a Tree](2867.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes labeled from 1 to n. A… |
+| 2868 | [The Wording Game](2868.md) | 🔴 Hard | 2m 22s | The problem presents a two-player game between Alice and Bob, each … |
+| 2869 | [Minimum Operations to Collect Elements](2869.md) | 🟢 Easy | 1m 6s | The problem gives us an array nums and an integer k. We repeatedly … |
+| 2870 | [Minimum Number of Operations to Make Array Empty](2870.md) | 🟡 Medium | 47s | The problem requires us to determine the minimum number of operatio… |
+| 2871 | [Split Array Into Maximum Number of Subarrays](2871.md) | 🟡 Medium | 49s | The problem is asking us to split a given array of non-negative int… |
+| 2872 | [Maximum Number of K-Divisible Components](2872.md) | 🔴 Hard | 53s | This problem is asking us to split a given undirected tree into as … |
+| 2873 | [Maximum Value of an Ordered Triplet I](2873.md) | 🟢 Easy | 55s | The problem asks us to find the maximum value of a triplet of indic… |
+| 2874 | [Maximum Value of an Ordered Triplet II](2874.md) | 🟡 Medium | 1m 7s | The problem asks us to find the maximum possible value of: subject … |
+| 2875 | [Minimum Size Subarray in Infinite Array](2875.md) | 🟡 Medium | 54s | The problem asks us to find the shortest subarray within an infinit… |
+| 2876 | [Count Visited Nodes in a Directed Graph](2876.md) | 🔴 Hard | 55s | The problem presents a directed graph with n nodes and n edges, for… |
+| 2877 | [Create a DataFrame from List](2877.md) | 🟢 Easy | 1m | The problem asks us to create a Pandas DataFrame from a given two d… |
+| 2878 | [Get the Size of a DataFrame](2878.md) | 🟢 Easy | 49s | This problem asks us to determine the size of a pandas DataFrame na… |
+| 2879 | [Display the First Three Rows](2879.md) | 🟢 Easy | 52s | This problem provides a Pandas DataFrame named employees with four … |
+| 2880 | [Select Data](2880.md) | 🟢 Easy | 1m 4s | This problem provides a pandas DataFrame named students with three … |
+| 2881 | [Create a New Column](2881.md) | 🟢 Easy | 44s | This problem is asking us to augment an existing DataFrame of emplo… |
+| 2882 | [Drop Duplicate Rows](2882.md) | 🟢 Easy | 45s | The problem is asking us to remove duplicate rows in a DataFrame ba… |

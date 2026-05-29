@@ -70,23 +70,25 @@ draft: false
 | 2559 | [Count Vowel Strings in Ranges](2559.md) | 🟡 Medium | 1m 22s | The problem gives us an array of strings called words and a list of… |
 | 2560 | [House Robber IV](2560.md) | 🟡 Medium | 55s | The problem describes a scenario where a robber wants to steal from… |
 | 2561 | [Rearranging Fruits](2561.md) | 🔴 Hard | 1m 13s | This problem gives us two arrays, basket1 and basket2, where each e… |
-| 2562 | [Find the Array Concatenation Value](2562.md) | 🟢 Easy | 52s | The problem asks us to compute the concatenation value of an intege… |
+| 2562 | [Find the Array Concatenation Value](2562.md) | 🟢 Easy | 7m 50s | The problem is asking us to compute a special sum over a given arra… |
 | 2563 | [Count the Number of Fair Pairs](2563.md) | 🟡 Medium | 2m 20s | The problem asks us to count how many pairs of indices (i, j) satis… |
-| 2564 | [Substring XOR Queries](2564.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s and a list of queries. Each … |
-| 2565 | [Subsequence With the Minimum Score](2565.md) | 🔴 Hard | 7m 7s | The problem gives us two strings, s and t. We are allowed to delete… |
-| 2566 | [Maximum Difference by Remapping a Digit](2566.md) | 🟢 Easy | 1m 19s | We start with two numbers on a blackboard, 0 on top and 1 on bottom… |
-| 2567 | [Minimum Score by Changing Two Elements](2567.md) | 🟡 Medium | 1m 3s | The problem gives us an integer array nums and defines two values b… |
-| 2570 | [Merge Two 2D Arrays by Summing Values](2570.md) | 🟢 Easy | 1m 12s | The problem gives us two sorted 2D integer arrays, nums1 and nums2.… |
-| 2571 | [Minimum Operations to Reduce an Integer to 0](2571.md) | 🟡 Medium | 1m 21s | The problem gives us two arrays, nums1 and nums2, along with a sequ… |
-| 2572 | [Count the Number of Square-Free Subsets](2572.md) | 🟡 Medium | 1m 19s | The problem asks us to count how many non-empty subsets of the arra… |
-| 2573 | [Find the String with LCP](2573.md) | 🔴 Hard | 46s | The problem asks us to reconstruct a string given its lcp matrix. T… |
-| 2574 | [Left and Right Sum Differences](2574.md) | 🟢 Easy | 56s | The problem gives us an integer array nums and asks us to compute a… |
-| 2575 | [Find the Divisibility Array of a String](2575.md) | 🟡 Medium | 43s | The problem asks us to compute the divisibility array for a given s… |
-| 2576 | [Find the Maximum Number of Marked Indices](2576.md) | 🟡 Medium | 40s | The problem asks us to maximize the number of indices we can "mark"… |
-| 2577 | [Minimum Time to Visit a Cell In a Grid](2577.md) | 🔴 Hard | 41s | The problem asks us to find the minimum time required to travel fro… |
-| 2578 | [Split With Minimum Sum](2578.md) | 🟢 Easy | 36s | The problem asks us to take a positive integer num and split its di… |
-| 2579 | [Count Total Number of Colored Cells](2579.md) | 🟡 Medium | 39s | This problem is asking us to determine how many cells will be color… |
-| 2580 | [Count Ways to Group Overlapping Ranges](2580.md) | 🟡 Medium | 49s | The problem asks us to determine the number of ways to split a coll… |
+| 2564 | [Substring XOR Queries](2564.md) | 🟡 Medium | 1m 12s | The problem gives us a binary string s and a list of queries. Each … |
+| 2565 | [Subsequence With the Minimum Score](2565.md) | 🔴 Hard | 46s | This problem is long and deserves a detailed explanation to do it p… |
+| 2566 | [Maximum Difference by Remapping a Digit](2566.md) | 🟢 Easy | 1m 4s | The problem asks us to maximize the difference between two numbers … |
+| 2567 | [Minimum Score by Changing Two Elements](2567.md) | 🟡 Medium | 52s | The problem asks us to manipulate an array of integers, nums, in a … |
+| 2568 | [Minimum Impossible OR](2568.md) | 🟡 Medium | 48s | The problem asks us to find the smallest positive integer that cann… |
+| 2569 | [Handling Sum Queries After Update](2569.md) | 🔴 Hard | 1m 22s | This problem gives us two arrays, nums1 and nums2, both of the same… |
+| 2570 | [Merge Two 2D Arrays by Summing Values](2570.md) | 🟢 Easy | 1m 2s | The problem gives us two sorted 2D integer arrays, nums1 and nums2,… |
+| 2571 | [Minimum Operations to Reduce an Integer to 0](2571.md) | 🟡 Medium | 45s | The problem asks us to find the minimum number of operations requir… |
+| 2572 | [Count the Number of Square-Free Subsets](2572.md) | 🟡 Medium | 59s | The problem asks us to count all non-empty subsets of a given array… |
+| 2573 | [Find the String with LCP](2573.md) | 🔴 Hard | 1m 25s | The problem gives us an n x n matrix called lcp, where: - lcp[i][j]… |
+| 2574 | [Left and Right Sum Differences](2574.md) | 🟢 Easy | 51s | The problem asks us to compute the absolute difference between the … |
+| 2575 | [Find the Divisibility Array of a String](2575.md) | 🟡 Medium | 1m 14s | The problem gives us a numeric string word and an integer m. For ev… |
+| 2576 | [Find the Maximum Number of Marked Indices](2576.md) | 🟡 Medium | 42s | This problem asks us to maximize the number of indices in an array … |
+| 2577 | [Minimum Time to Visit a Cell In a Grid](2577.md) | 🔴 Hard | 48s | That is a long, multi-section technical guide. To make sure I targe… |
+| 2578 | [Split With Minimum Sum](2578.md) | 🟢 Easy | 52s | The problem asks us to take a positive integer num and split its di… |
+| 2579 | [Count Total Number of Colored Cells](2579.md) | 🟡 Medium | 56s | The problem describes a process of coloring cells on an infinite tw… |
+| 2580 | [Count Ways to Group Overlapping Ranges](2580.md) | 🟡 Medium | 1m 10s | The problem gives us a list of integer ranges, where each range rep… |
 | 2582 | [Pass the Pillow](2582.md) | 🟢 Easy | 31s | The problem describes a simulation of passing a pillow along a line… |
 | 2583 | [Kth Largest Sum in a Binary Tree](2583.md) | 🟡 Medium | 2m 7s | Perfect! I just need a quick clarification before I craft the full … |
 | 2584 | [Split the Array to Make Coprime Products](2584.md) | 🔴 Hard | 43s | The problem asks us to split an array nums at some index i such tha… |
