@@ -102,9 +102,9 @@ draft: false
 | 2691 | [Immutability Helper](2691.md) | 🔴 Hard | 48s | This problem is asking us to implement an immutability helper for J… |
 | 2692 | [Make Object Immutable](2692.md) | 🟡 Medium | 43s | The problem asks us to take an input object, which can either be a … |
 | 2693 | [Call Function with Custom Context](2693.md) | 🟡 Medium | 53s | This problem asks us to implement a custom version of JavaScript’s … |
-| 2694 | [Event Emitter](2694.md) | 🟡 Medium | 1m 25s | This problem asks us to design a lightweight event system, similar … |
-| 2695 | [Array Wrapper](2695.md) | 🟢 Easy | 46s | This problem requires us to create a class ArrayWrapper that wraps … |
-| 2696 | [Minimum String Length After Removing Substrings](2696.md) | 🟢 Easy | 1m 11s | The problem gives us a string s that contains only uppercase Englis… |
+| 2694 | [Event Emitter](2694.md) | 🟡 Medium | 1m 22s | This problem asks us to design a simplified event system similar to… |
+| 2695 | [Array Wrapper](2695.md) | 🟢 Easy | 52s | This problem asks us to implement a class ArrayWrapper that encapsu… |
+| 2696 | [Minimum String Length After Removing Substrings](2696.md) | 🟢 Easy | 57s | The problem asks us to determine the minimum possible length of a s… |
 | 2697 | [Lexicographically Smallest Palindrome](2697.md) | 🟢 Easy | 1m 5s | The problem gives us a string s consisting only of lowercase Englis… |
 | 2698 | [Find the Punishment Number of an Integer](2698.md) | 🟡 Medium | 1m 10s | The problem asks us to compute a special value called the punishmen… |
 | 2699 | [Modify Graph Edge Weights](2699.md) | 🔴 Hard | 1m 25s | This problem gives us an undirected, connected, weighted graph with… |
