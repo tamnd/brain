@@ -72,3 +72,11 @@ draft: false
 | 3167 | [Better Compression of String](3167.md) | 🟡 Medium | 1m 19s | The problem gives us a compressed string where every character is i… |
 | 3168 | [Minimum Number of Chairs in a Waiting Room](3168.md) | 🟢 Easy | 1m 13s | The problem gives us a string s that represents events happening in… |
 | 3171 | [Find Subarray With Bitwise OR Closest to K](3171.md) | 🔴 Hard | 58s | The problem asks us to find a subarray within a given array nums su… |
+| 3172 | [Second Day Verification](3172.md) | 🟢 Easy | 52s | The problem requires identifying users who verified their signup ex… |
+| 3173 | [Bitwise OR of Adjacent Elements](3173.md) | 🟢 Easy | 1m 6s | The problem gives us an integer array nums of length n. We must cre… |
+| 3174 | [Clear Digits](3174.md) | 🟢 Easy | 1m 1s | In this problem, we are given a string s that contains lowercase En… |
+| 3175 | [Find The First Player to win K Games in a Row](3175.md) | 🟡 Medium | 1m 6s | The problem describes a competition where players stand in a queue … |
+| 3178 | [Find the Child Who Has the Ball After K Seconds](3178.md) | 🟢 Easy | 52s | The problem asks us to simulate a game in which n children, numbere… |
+| 3179 | [Find the N-th Value After K Seconds](3179.md) | 🟡 Medium | 1m 1s | The problem requires computing the value of the last element in an … |
+| 3180 | [Maximum Total Reward Using Operations I](3180.md) | 🟡 Medium | 1m 2s | The problem asks us to maximize a running total reward by selecting… |
+| 3181 | [Maximum Total Reward Using Operations II](3181.md) | 🔴 Hard | 1m 29s | The problem gives us an array rewardValues, where each element repr… |
