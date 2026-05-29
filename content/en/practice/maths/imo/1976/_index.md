@@ -1,6 +1,6 @@
 ---
 title: "IMO 1976"
-description: "IMO 1976 — 0/6 solved."
+description: "IMO 1976 — 1/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1976
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1976
 
-[Official IMO 1976 problems](https://www.imo-official.org/year_info.aspx?year=1976) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1976 problems](https://www.imo-official.org/year_info.aspx?year=1976) &nbsp;·&nbsp; 1/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
@@ -18,7 +18,7 @@ draft: false
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
-| 5 | — | — |
+| [5](5.md) | solved | 45m37s |
 | 6 | — | — |
 
 **Problem 1**
@@ -37,7 +37,7 @@ A box whose shape is a parallelepiped can be completely filled with cubes of sid
 
 Find the largest number obtainable as the product of positive integers whose sum is $1976$.
 
-**Problem 5**
+**Problem 5** &nbsp; *solved* · 45m37s · [Solution →](5.md)
 
 Let a set of $p$ equations be given, $$
 \begin{array}{ccccccc} a_{11}x_1&+&\cdots&+&a_{1q}x_q&=&0,\\ a_{21}x_1&+&\cdots&+&a_{2q}x_q&=&0,\\ &&&\vdots&&&\\ a_{p1}x_1&+&\cdots&+&a_{pq}x_q&=&0,\\ \end{array}

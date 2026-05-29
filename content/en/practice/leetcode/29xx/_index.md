@@ -55,11 +55,13 @@ draft: false
 | 2943 | [Maximize Area of Square Hole in Grid](2943.md) | 🟡 Medium | 1m 21s | The grid is formed by n + 2 horizontal bars and m + 2 vertical bars… |
 | 2944 | [Minimum Number of Coins for Fruits](2944.md) | 🟡 Medium | 1m 32s | This problem asks us to determine the minimum number of coins requi… |
 | 2945 | [Find Maximum Non-decreasing Array Length](2945.md) | 🔴 Hard | 56s | This problem asks us to determine the maximum length of a non-decre… |
-| 2947 | [Count Beautiful Substrings I](2947.md) | 🟡 Medium | 46s | The problem asks us to find all non-empty substrings of a given str… |
-| 2948 | [Make Lexicographically Smallest Array by Swapping Elements](2948.md) | 🟡 Medium | 36s | The problem asks us to rearrange a given array nums of positive int… |
-| 2949 | [Count Beautiful Substrings II](2949.md) | 🔴 Hard | 53s | The problem requires counting the number of non-empty beautiful sub… |
+| 2946 | [Matrix Similarity After Cyclic Shifts](2946.md) | 🟢 Easy | 1m 9s | This problem asks us to determine whether a matrix remains identica… |
+| 2947 | [Count Beautiful Substrings I](2947.md) | 🟡 Medium | 1m 9s | We are given a lowercase English string s and a positive integer k.… |
+| 2948 | [Make Lexicographically Smallest Array by Swapping Elements](2948.md) | 🟡 Medium | 52s | The problem asks us to transform a given array of positive integers… |
+| 2949 | [Count Beautiful Substrings II](2949.md) | 🔴 Hard | 56s | The problem asks us to find the number of non-empty substrings in a… |
 | 2950 | [Number of Divisible Substrings](2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
 | 2951 | [Find the Peaks](2951.md) | 🟢 Easy | 40s | The problem is asking us to identify all the peaks in a given array… |
+| 2952 | [Minimum Number of Coins to be Added](2952.md) | 🟡 Medium | 1m 1s | The problem asks us to determine the minimum number of coins we nee… |
 | 2953 | [Count Complete Substrings](2953.md) | 🔴 Hard | 50s | Here’s a full, detailed technical solution guide for LeetCode 2953 … |
 | 2954 | [Count the Number of Infection Sequences](2954.md) | 🔴 Hard | 1m 49s | The problem describes a line of n people indexed from 0 to n - 1. S… |
 | 2955 | [Number of Same-End Substrings](2955.md) | 🟡 Medium | 1m 26s | We are given a string s and multiple queries. Each query specifies … |
