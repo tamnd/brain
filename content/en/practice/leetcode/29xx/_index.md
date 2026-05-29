@@ -24,23 +24,23 @@ draft: false
 | 2911 | [Minimum Changes to Make K Semi-palindromes](2911.md) | 🔴 Hard | 1m 10s | The problem asks us to partition a given string s into k contiguous… |
 | 2912 | [Number of Ways to Reach Destination in the Grid](2912.md) | 🔴 Hard | 1m 32s | We are given an n × m grid and two cells: - source = [sx, sy] - des… |
 | 2913 | [Subarrays Distinct Element Sum of Squares I](2913.md) | 🟢 Easy | 1m 20s | The problem asks us to examine every possible non-empty subarray of… |
-| 2914 | [Minimum Number of Changes to Make Binary String Beautiful](2914.md) | 🟡 Medium | 58s | The problem gives us a binary string s consisting only of the chara… |
-| 2915 | [Length of the Longest Subsequence That Sums to Target](2915.md) | 🟡 Medium | 1m 13s | The problem gives us an array nums and an integer target. We must f… |
-| 2916 | [Subarrays Distinct Element Sum of Squares II](2916.md) | 🔴 Hard | 1m 28s | The problem asks us to compute, across every possible non-empty sub… |
-| 2917 | [Find the K-or of an Array](2917.md) | 🟢 Easy | 1m 5s | The problem introduces a modified version of the traditional bitwis… |
-| 2918 | [Minimum Equal Sum of Two Arrays After Replacing Zeros](2918.md) | 🟡 Medium | 1m 7s | The problem gives us two integer arrays, nums1 and nums2. Some elem… |
-| 2919 | [Minimum Increment Operations to Make Array Beautiful](2919.md) | 🟡 Medium | 1m 9s | We are given an integer array nums and a target value k. We may inc… |
-| 2920 | [Maximum Points After Collecting Coins From All Nodes](2920.md) | 🔴 Hard | 1m 25s | The problem gives us a rooted tree with n nodes, where node 0 is th… |
+| 2914 | [Minimum Number of Changes to Make Binary String Beautiful](2914.md) | 🟡 Medium | 1m 10s | You are given a binary string s whose length is guaranteed to be ev… |
+| 2915 | [Length of the Longest Subsequence That Sums to Target](2915.md) | 🟡 Medium | 1m 26s | The problem gives us an array nums and an integer target. We must f… |
+| 2916 | [Subarrays Distinct Element Sum of Squares II](2916.md) | 🔴 Hard | 1m 51s | The problem asks us to consider every possible non-empty subarray o… |
+| 2917 | [Find the K-or of an Array](2917.md) | 🟢 Easy | 1m 20s | This problem introduces a generalized version of the bitwise OR ope… |
+| 2918 | [Minimum Equal Sum of Two Arrays After Replacing Zeros](2918.md) | 🟡 Medium | 1m 10s | The problem gives us two integer arrays, nums1 and nums2, where som… |
+| 2919 | [Minimum Increment Operations to Make Array Beautiful](2919.md) | 🟡 Medium | 1m 19s | The problem asks us to transform an input integer array nums into a… |
+| 2920 | [Maximum Points After Collecting Coins From All Nodes](2920.md) | 🔴 Hard | 1m 30s | We are given a tree with n nodes rooted at node 0. Each node contai… |
 | 2921 | [Maximum Profitable Triplets With Increasing Prices II](2921.md) | 🔴 Hard | 1m 29s | The problem asks us to select three items from a store such that th… |
-| 2922 | [Market Analysis III](2922.md) | 🟡 Medium | 1m 24s | This problem asks us to analyze sellers, their favorite brands, and… |
-| 2923 | [Find Champion I](2923.md) | 🟢 Easy | 40s | This problem is asking us to determine the champion team in a tourn… |
-| 2924 | [Find Champion II](2924.md) | 🟡 Medium | 1m 5s | This problem models a tournament as a directed acyclic graph, or DA… |
+| 2922 | [Market Analysis III](2922.md) | 🟡 Medium | 1m 22s | The problem asks us to analyze three relational tables: Users, Item… |
+| 2923 | [Find Champion I](2923.md) | 🟢 Easy | 1m 6s | This problem describes a tournament of n teams, where every pair of… |
+| 2924 | [Find Champion II](2924.md) | 🟡 Medium | 1m 20s | This problem models a tournament as a directed acyclic graph (DAG).… |
 | 2925 | [Maximum Score After Applying Operations on a Tree](2925.md) | 🟡 Medium | 1m 23s | The problem gives us an undirected tree with n nodes rooted at node… |
-| 2926 | [Maximum Balanced Subsequence Sum](2926.md) | 🔴 Hard | 46s | This problem asks us to find the maximum sum of a balanced subseque… |
-| 2927 | [Distribute Candies Among Children III](2927.md) | 🔴 Hard | 1m 18s | The problem asks us to count how many valid ways exist to distribut… |
-| 2928 | [Distribute Candies Among Children I](2928.md) | 🟢 Easy | 1m 9s | The problem asks us to count how many valid ways exist to distribut… |
-| 2929 | [Distribute Candies Among Children II](2929.md) | 🟡 Medium | 1m 11s | The problem asks us to count how many valid ways exist to distribut… |
-| 2930 | [Number of Strings Which Can Be Rearranged to Contain Substring](2930.md) | 🟡 Medium | 1m 7s | We are given an integer n, and we must count how many strings of le… |
+| 2926 | [Maximum Balanced Subsequence Sum](2926.md) | 🔴 Hard | 59s | This problem asks us to find the maximum sum of a balanced subseque… |
+| 2927 | [Distribute Candies Among Children III](2927.md) | 🔴 Hard | 1m 19s | We are given two integers, n and limit. There are exactly three chi… |
+| 2928 | [Distribute Candies Among Children I](2928.md) | 🟢 Easy | 51s | The problem asks us to calculate the number of ways to distribute n… |
+| 2929 | [Distribute Candies Among Children II](2929.md) | 🟡 Medium | 56s | The problem asks us to calculate the total number of ways to distri… |
+| 2930 | [Number of Strings Which Can Be Rearranged to Contain Substring](2930.md) | 🟡 Medium | 54s | The problem asks us to count how many strings of length n made of l… |
 | 2931 | [Maximum Spending After Buying Items](2931.md) | 🔴 Hard | 1m 27s | We are given an m x n matrix called values, where each row represen… |
 | 2932 | [Maximum Strong Pair XOR I](2932.md) | 🟢 Easy | 1m 21s | The problem gives us an integer array nums, and we must choose two … |
 | 2934 | [Minimum Operations to Maximize Last Elements in Arrays](2934.md) | 🟡 Medium | 1m 15s | The problem gives us two integer arrays, nums1 and nums2, both of t… |

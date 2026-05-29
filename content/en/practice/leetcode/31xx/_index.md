@@ -60,3 +60,9 @@ draft: false
 | 3150 | [Invalid Tweets II](3150.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Tweets with two columns… |
 | 3152 | [Special Array II](3152.md) | 🟡 Medium | 1m 22s | We are given an integer array nums and several queries. Each query … |
 | 3154 | [Find Number of Ways to Reach the K-th Stair](3154.md) | 🔴 Hard | 1m 8s | Let's dive into a comprehensive solution guide for LeetCode 3154 - … |
+| 3155 | [Maximum Number of Upgradable Servers](3155.md) | 🟡 Medium | 1m 23s | The problem requires calculating the maximum number of servers that… |
+| 3156 | [Employee Task Duration and Concurrent Tasks](3156.md) | 🔴 Hard | 1m 38s | The problem gives us a table named Tasks, where each row represents… |
+| 3157 | [Find the Level of Tree with Minimum Sum](3157.md) | 🟡 Medium | 1m 31s | The problem gives us the root of a binary tree, where every node co… |
+| 3160 | [Find the Number of Distinct Colors Among the Balls](3160.md) | 🟡 Medium | 1m 23s | The problem gives us limit + 1 balls labeled from 0 to limit. Initi… |
+| 3161 | [Block Placement Queries](3161.md) | 🔴 Hard | 1m 11s | The problem involves simulating operations on an infinite number li… |
+| 3162 | [Find the Number of Good Pairs I](3162.md) | 🟢 Easy | 1m 19s | The problem gives us two integer arrays, nums1 and nums2, along wit… |
