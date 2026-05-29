@@ -38,3 +38,7 @@ draft: false
 | 3141 | [Maximum Hamming Distances](3141.md) | 🔴 Hard | 54s | The problem asks us to compute the maximum Hamming distance for eac… |
 | 3142 | [Check if Grid Satisfies Conditions](3142.md) | 🟢 Easy | 1m 9s | The problem gives us a two dimensional matrix called grid with m ro… |
 | 3143 | [Maximum Points Inside the Square](3143.md) | 🟡 Medium | 1m 10s | The problem asks us to find the maximum number of points that can b… |
+| 3144 | [Minimum Substring Partition of Equal Character Frequency](3144.md) | 🟡 Medium | 1m 24s | In this problem, we are given a lowercase English string s, and we … |
+| 3145 | [Find Products of Elements of Big Array](3145.md) | 🔴 Hard | 59s | The problem asks us to work with a conceptual infinite array called… |
+| 3146 | [Permutation Difference between Two Strings](3146.md) | 🟢 Easy | 54s | The problem asks us to compute the permutation difference between t… |
+| 3147 | [Taking Maximum Energy From the Mystic Dungeon](3147.md) | 🟡 Medium | 1m 5s | The problem asks us to maximize the total energy gained from a sequ… |

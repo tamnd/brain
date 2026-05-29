@@ -95,10 +95,10 @@ draft: false
 | 2882 | [Drop Duplicate Rows](2882.md) | 🟢 Easy | 54s | The problem asks us to process a DataFrame representing customers a… |
 | 2883 | [Drop Missing Data](2883.md) | 🟢 Easy | 1m | This problem provides a pandas DataFrame named students with three … |
 | 2884 | [Modify Columns](2884.md) | 🟢 Easy | 55s | The problem provides a Pandas DataFrame named employees with two co… |
-| 2885 | [Rename Columns](2885.md) | 🟢 Easy | 45s | This problem is asking us to rename the columns of a given table or… |
-| 2886 | [Change Data Type](2886.md) | 🟢 Easy | 1m 5s | This problem provides a Pandas DataFrame named students with four c… |
-| 2887 | [Fill Missing Data](2887.md) | 🟢 Easy | 1m 4s | The problem asks us to process a DataFrame of product information t… |
-| 2888 | [Reshape Data: Concatenate](2888.md) | 🟢 Easy | 38s | The problem is asking us to combine two DataFrames vertically. Each… |
+| 2885 | [Rename Columns](2885.md) | 🟢 Easy | 1m 3s | This problem asks us to rename the column names of a Pandas DataFra… |
+| 2886 | [Change Data Type](2886.md) | 🟢 Easy | 58s | This problem provides a Pandas DataFrame named students with four c… |
+| 2887 | [Fill Missing Data](2887.md) | 🟢 Easy | 56s | The problem provides a Pandas DataFrame named products with three c… |
+| 2888 | [Reshape Data: Concatenate](2888.md) | 🟢 Easy | 49s | The problem is asking us to vertically concatenate two DataFrames i… |
 | 2889 | [Reshape Data: Pivot](2889.md) | 🟢 Easy | 1m 2s | This problem gives us a Pandas DataFrame named weather with three c… |
 | 2890 | [Reshape Data: Melt](2890.md) | 🟢 Easy | 1m 3s | This problem asks us to reshape a pandas DataFrame from a wide form… |
 | 2891 | [Method Chaining](2891.md) | 🟢 Easy | 1m 2s | This problem provides a Pandas DataFrame named animals with four co… |
