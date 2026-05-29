@@ -1,6 +1,6 @@
 ---
 title: "IMO 1960"
-description: "IMO 1960 — 6/7 solved, 5 verified."
+description: "IMO 1960 — 7/7 solved, 6 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1960
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1960
 
-[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 6/7 solved, 5 verified.
+[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 7/7 solved, 6 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -20,7 +20,7 @@ draft: false
 | [4](4.md) | ✓ verified | 33m08s |
 | [5](5.md) | ✓ verified | 4m30s |
 | [6](6.md) | ✓ verified | 3m00s |
-| 7 | — | — |
+| [7](7.md) | ✓ verified | 5m59s |
 
 **Problem 1** &nbsp; *solved* · 27m41s · [Solution →](1.md)
 
@@ -56,7 +56,7 @@ a) Prove that $V_1 \neq V_2$;
 
 b) Find the smallest number $k$ for which $V_1 = kV_2$; for this case, construct the angle subtended by a diamter of the base of the cone at the vertex of the cone.
 
-**Problem 7**
+**Problem 7** &nbsp; *✓ verified* · 5m59s · [Solution →](7.md)
 
 A regular cone is inscribed in a sphere. Around the sphere a cylinder is circumscribed so that its base lies in the same plane as the base of the cone. Let $V_1$ be the volume of the cone and $V_2$ that of the cylinder.
 
