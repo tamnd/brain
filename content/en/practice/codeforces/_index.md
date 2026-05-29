@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 284 contests, 1214 problems, 998 verified."
+description: "Codeforces problem solutions with full editorial. 290 contests, 1233 problems, 1001 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**284 contests, 1214 problems, 998 verified.**
+**290 contests, 1233 problems, 1001 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -298,4 +298,10 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [293](293/) | [Croc Champ 2013 - Round 2](https://codeforces.com/contest/293) | Special | 1500-2700 | 4/4 | 8m 33s |
 | [294](294/) | [Codeforces Round 178 (Div. 2)](https://codeforces.com/contest/294) | Div. 2 | 800-2500 | 3/4 | 6m 7s |
 | [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 3m 30s |
+| [401](401/) | [Codeforces Round 235 (Div. 2)](https://codeforces.com/contest/401) | Div. 2 | 800-2000 | 2/3 | 6m 53s |
+| [402](402/) | [Codeforces Round 236 (Div. 2)](https://codeforces.com/contest/402) | Div. 2 | 1100-2200 | 1/4 | 11m 10s |
+| [403](403/) | [Codeforces Round 236 (Div. 1)](https://codeforces.com/contest/403) | Div. 1 | 2300-2900 | 0/2 | 1m 57s |
+| [404](404/) | [Codeforces Round 237 (Div. 2)](https://codeforces.com/contest/404) | Div. 2 | 1000-1900 | 0/4 | 12m 42s |
+| [405](405/) | [Codeforces Round 238 (Div. 2)](https://codeforces.com/contest/405) | Div. 2 | 900-2300 | 0/4 | 15m 46s |
+| [406](406/) | [Codeforces Round 238 (Div. 1)](https://codeforces.com/contest/406) | Div. 1 | 2200-2800 | 0/2 | 6m 36s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
