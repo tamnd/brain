@@ -464,3 +464,174 @@ HSK 4 (B1) introduces approximately 1,000 new words, bringing the cumulative tot
 | 基本上 | jīběnshàng | basically; fundamentally; essentially | adv | 基本上完成 (basically complete), 基本上同意 (basically agree) |
 | 主要 | zhǔyào | mainly; primarily; chiefly | adv | 主要是因为 (mainly because), 主要表现在 (mainly reflected in) |
 | 分别 | fēnbié | separately; respectively; apart | adv | 分别讨论 (discuss separately), 分别介绍 (introduce respectively) |
+
+## Verbs: Communication and Expression II (表达动词II)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 表扬 | biǎoyáng | to praise, to commend | v | 受到表扬 (receive praise), 表扬学生 (praise students) |
+| 批准 | pīzhǔn | to approve, to ratify | v | 批准申请 (approve an application), 获得批准 (obtain approval) |
+| 收集 | shōují | to collect, to gather | v | 收集资料 (collect materials), 收集信息 (gather information) |
+| 协调 | xiétiáo | to coordinate, to harmonize | v | 协调工作 (coordinate work), 协调各方 (coordinate all parties) |
+| 评估 | pínggū | to evaluate, to assess | v | 评估风险 (assess risks), 进行评估 (conduct an evaluation) |
+| 宣传 | xuānchuán | to publicize, to promote | v | 宣传政策 (publicize policies), 宣传活动 (promotional activity) |
+| 推广 | tuīguǎng | to promote, to spread, to popularize | v | 推广产品 (promote a product), 推广经验 (spread experience) |
+| 汇报 | huìbào | to report (to superiors), to brief | v | 汇报工作 (report on work), 定期汇报 (report regularly) |
+| 表现 | biǎoxiàn | to perform, to show; performance | v/n | 表现出色 (perform excellently), 工作表现 (work performance) |
+| 面对 | miànduì | to face, to confront | v | 面对困难 (face difficulties), 面对现实 (face reality) |
+| 处于 | chǔyú | to be in (a state/situation) | v | 处于困境 (be in a difficult situation), 处于优势 (be in an advantageous position) |
+| 引导 | yǐndǎo | to guide, to lead, to direct | v | 引导学生 (guide students), 引导方向 (guide direction) |
+| 统计 | tǒngjì | to count, to compile statistics; statistics | v/n | 统计数据 (compile statistics), 数据统计 (data statistics) |
+| 分配 | fēnpèi | to distribute, to allocate, to assign | v | 分配任务 (assign tasks), 合理分配 (allocate reasonably) |
+| 应对 | yìngduì | to cope with, to respond to | v | 应对挑战 (cope with challenges), 应对危机 (respond to a crisis) |
+
+## Verbs: Social and Interpersonal II (社交动词II)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 安慰 | ānwèi | to comfort, to console | v | 安慰朋友 (comfort a friend), 给予安慰 (offer comfort) |
+| 鼓励 | gǔlì | to encourage, to motivate | v | 鼓励学生 (encourage students), 互相鼓励 (encourage each other) |
+| 威胁 | wēixié | to threaten; threat | v/n | 威胁安全 (threaten security), 受到威胁 (be threatened) |
+| 接触 | jiēchù | to contact, to come into contact with | v | 广泛接触 (have wide contact), 接触新事物 (come into contact with new things) |
+| 比较 | bǐjiào | to compare; comparatively | v/adv | 进行比较 (make a comparison), 比较好 (comparatively good) |
+| 尊重 | zūnzhòng | to respect; respect | v/n | 尊重他人 (respect others), 相互尊重 (mutual respect) |
+| 反对 | fǎnduì | to oppose, to object to | v | 表示反对 (express opposition), 坚决反对 (firmly oppose) |
+| 同意 | tóngyì | to agree, to consent | v | 表示同意 (express agreement), 完全同意 (completely agree) |
+| 拒绝 | jùjué | to refuse, to reject | v | 礼貌拒绝 (politely refuse), 拒绝邀请 (decline an invitation) |
+| 邀请 | yāoqǐng | to invite; invitation | v/n | 邀请朋友 (invite friends), 接受邀请 (accept an invitation) |
+| 参加 | cānjiā | to join, to take part in | v | 参加活动 (take part in an activity), 参加比赛 (join a competition) |
+| 帮助 | bāngzhù | to help, to assist; help | v/n | 互相帮助 (help each other), 寻求帮助 (seek help) |
+
+## Verbs: Cognitive and Mental (认知动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 想象 | xiǎngxiàng | to imagine; imagination | v/n | 难以想象 (hard to imagine), 发挥想象 (use one's imagination) |
+| 思考 | sīkǎo | to think, to ponder, to reflect | v | 深入思考 (think deeply), 独立思考 (think independently) |
+| 推测 | tuīcè | to infer, to speculate, to conjecture | v | 合理推测 (reasonable speculation), 无法推测 (unable to speculate) |
+| 怀疑 | huáiyí | to doubt, to suspect | v | 产生怀疑 (have doubts), 怀疑结果 (doubt the result) |
+| 否定 | fǒudìng | to negate, to deny; negative | v/adj | 否定观点 (negate a viewpoint), 持否定态度 (have a negative attitude) |
+| 认识 | rènshi | to know, to recognize; understanding | v/n | 认识朋友 (get to know friends), 加深认识 (deepen understanding) |
+| 明白 | míngbai | to understand, to realize; clear | v/adj | 完全明白 (completely understand), 说明白 (make it clear) |
+| 知道 | zhīdào | to know, to be aware of | v | 不知道 (don't know), 应该知道 (should know) |
+| 学会 | xuéhuì | to learn (how to do), to master | v | 学会技能 (learn a skill), 逐渐学会 (gradually learn) |
+| 思维 | sīwéi | thinking, thought; way of thinking | n | 逻辑思维 (logical thinking), 创新思维 (innovative thinking) |
+
+## Nouns: Knowledge and Education (知识教育名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 经验 | jīngyàn | experience, expertise | n | 积累经验 (accumulate experience), 丰富经验 (rich experience) |
+| 技能 | jìnéng | skill, ability, technique | n | 专业技能 (professional skills), 培养技能 (develop skills) |
+| 知识 | zhīshi | knowledge | n | 专业知识 (professional knowledge), 积累知识 (accumulate knowledge) |
+| 教育 | jiàoyù | education; to educate | n/v | 接受教育 (receive education), 教育水平 (education level) |
+| 培训 | péixùn | training; to train | n/v | 参加培训 (attend training), 职业培训 (vocational training) |
+| 结论 | jiélùn | conclusion | n | 得出结论 (reach a conclusion), 最终结论 (final conclusion) |
+| 方式 | fāngshì | way, manner, mode | n | 生活方式 (lifestyle), 表达方式 (way of expression) |
+| 质量 | zhìliàng | quality; mass (physics) | n | 提高质量 (improve quality), 产品质量 (product quality) |
+| 作用 | zuòyòng | role, function, effect | n | 发挥作用 (play a role), 重要作用 (important role) |
+| 功能 | gōngnéng | function, feature | n | 基本功能 (basic function), 新增功能 (new feature) |
+| 特点 | tèdiǎn | characteristic, feature, trait | n | 主要特点 (main characteristic), 个人特点 (personal trait) |
+| 规则 | guīzé | rule, regulation | n | 遵守规则 (follow the rules), 制定规则 (make rules) |
+
+## Nouns: People and Relationships (人际名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 同学 | tóngxué | classmate, schoolmate | n | 老同学 (old classmate), 和同学合作 (cooperate with classmates) |
+| 同事 | tóngshì | colleague, coworker | n | 与同事合作 (cooperate with colleagues), 同事关系 (colleague relationships) |
+| 老板 | lǎobǎn | boss, owner, employer | n | 向老板汇报 (report to the boss), 老板要求 (boss's requirements) |
+| 客户 | kèhù | client, customer | n | 服务客户 (serve clients), 客户需求 (client needs) |
+| 对手 | duìshǒu | opponent, rival, adversary | n | 强劲对手 (strong opponent), 了解对手 (understand the rival) |
+| 朋友 | péngyou | friend | n | 交朋友 (make friends), 好朋友 (good friend) |
+| 家人 | jiārén | family member(s) | n | 关心家人 (care for family), 家人支持 (family support) |
+| 老师 | lǎoshī | teacher | n | 尊重老师 (respect teachers), 向老师请教 (consult the teacher) |
+| 学生 | xuésheng | student, pupil | n | 指导学生 (guide students), 优秀学生 (outstanding student) |
+| 医生 | yīshēng | doctor, physician | n | 看医生 (see a doctor), 医生建议 (doctor's advice) |
+| 律师 | lǜshī | lawyer, attorney | n | 聘请律师 (hire a lawyer), 咨询律师 (consult a lawyer) |
+| 工程师 | gōngchéngshī | engineer | n | 软件工程师 (software engineer), 经验丰富的工程师 (experienced engineer) |
+| 设计师 | shèjìshī | designer | n | 平面设计师 (graphic designer), 优秀设计师 (outstanding designer) |
+| 记者 | jìzhě | journalist, reporter | n | 采访记者 (interviewing journalist), 新闻记者 (news reporter) |
+| 研究员 | yánjiūyuán | researcher | n | 高级研究员 (senior researcher), 科研研究员 (scientific researcher) |
+| 教授 | jiàoshòu | professor | n | 大学教授 (university professor), 邀请教授 (invite a professor) |
+| 专业人士 | zhuānyè rénshì | professional, expert | n | 行业专业人士 (industry professionals) |
+
+## Nouns: Abstract Concepts III (抽象名词III)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 情况 | qíngkuàng | situation, condition, circumstances | n | 了解情况 (understand the situation), 具体情况 (specific situation) |
+| 风险 | fēngxiǎn | risk, danger | n | 降低风险 (reduce risks), 承担风险 (take on risks) |
+| 危机 | wēijī | crisis | n | 应对危机 (respond to a crisis), 经济危机 (economic crisis) |
+| 劣势 | lièshì | disadvantage, weakness | n | 克服劣势 (overcome weaknesses), 转劣势为优势 (turn disadvantage into advantage) |
+| 进步 | jìnbù | progress; to make progress | n/v | 取得进步 (make progress), 明显进步 (obvious progress) |
+| 变化 | biànhuà | change, variation | n | 发生变化 (changes occur), 适应变化 (adapt to changes) |
+| 计划 | jìhuà | plan; to plan | n/v | 制定计划 (make a plan), 按计划进行 (proceed according to plan) |
+| 战略 | zhànlüè | strategy, strategic plan | n | 制定战略 (formulate a strategy), 长期战略 (long-term strategy) |
+| 机遇 | jīyù | opportunity, favorable chance | n | 抓住机遇 (seize the opportunity), 难得的机遇 (a rare opportunity) |
+
+## Adjectives: Character and Quality (性质形容词II)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 认真 | rènzhēn | serious, earnest, conscientious | adj | 认真工作 (work seriously), 态度认真 (earnest attitude) |
+| 仔细 | zǐxì | careful, meticulous, attentive | adj | 仔细检查 (carefully check), 仔细阅读 (read carefully) |
+| 耐心 | nàixīn | patient; patience | adj/n | 耐心等待 (wait patiently), 缺乏耐心 (lack patience) |
+| 热情 | rèqíng | enthusiastic, warm; enthusiasm | adj/n | 热情接待 (enthusiastic reception), 充满热情 (full of enthusiasm) |
+| 乐观 | lèguān | optimistic, positive | adj | 保持乐观 (remain optimistic), 乐观态度 (optimistic attitude) |
+| 悲观 | bēiguān | pessimistic, negative | adj | 不要悲观 (don't be pessimistic), 悲观情绪 (pessimistic mood) |
+| 自信 | zìxìn | confident; self-confidence | adj/n | 充满自信 (full of confidence), 自信心强 (strong self-confidence) |
+| 谦虚 | qiānxū | modest, humble | adj | 谦虚学习 (learn with humility), 为人谦虚 (a humble person) |
+| 勤奋 | qínfèn | diligent, hardworking, industrious | adj | 勤奋学习 (study diligently), 工作勤奋 (hardworking) |
+| 懒惰 | lǎnduò | lazy, idle, indolent | adj | 不能懒惰 (cannot be lazy), 克服懒惰 (overcome laziness) |
+| 诚实 | chéngshí | honest, truthful | adj | 诚实回答 (answer honestly), 为人诚实 (an honest person) |
+| 虚伪 | xūwěi | hypocritical, fake, insincere | adj | 虚伪的人 (a hypocritical person), 不要虚伪 (don't be insincere) |
+| 友好 | yǒuhǎo | friendly, amicable | adj | 友好态度 (friendly attitude), 友好合作 (friendly cooperation) |
+| 礼貌 | lǐmào | polite, courteous; politeness | adj/n | 讲礼貌 (be polite), 礼貌用语 (polite expressions) |
+| 粗鲁 | cūlǔ | rude, impolite, coarse | adj | 行为粗鲁 (rude behavior), 不要粗鲁 (don't be rude) |
+| 冷静 | lěngjìng | calm, composed, cool-headed | adj | 保持冷静 (stay calm), 冷静思考 (think calmly) |
+
+## Adjectives: Degree and Intensity II (程度形容词II)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 精确 | jīngquè | precise, accurate, exact | adj | 精确数据 (precise data), 计算精确 (calculation is accurate) |
+| 粗略 | cūlüè | rough, approximate, cursory | adj | 粗略估计 (rough estimate), 粗略了解 (a cursory understanding) |
+| 正确 | zhèngquè | correct, right, accurate | adj | 答案正确 (the answer is correct), 正确方向 (right direction) |
+| 错误 | cuòwù | wrong, mistaken; mistake, error | adj/n | 判断错误 (wrong judgment), 犯错误 (make a mistake) |
+| 不合理 | bùhélǐ | unreasonable, irrational | adj | 要求不合理 (unreasonable demand), 安排不合理 (irrational arrangement) |
+| 抽象 | chōuxiàng | abstract | adj | 抽象概念 (abstract concept), 太抽象 (too abstract) |
+| 模糊 | móhu | vague, blurry, unclear | adj | 概念模糊 (vague concept), 印象模糊 (blurry impression) |
+
+## Connectives and Discourse Markers (连词和语篇标记)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 所以 | suǒyǐ | so, therefore, thus | conj | 所以我决定 (so I decided), 所以需要 (therefore it is needed) |
+| 由于 | yóuyú | due to, owing to, because of | conj | 由于天气原因 (due to weather), 由于努力 (owing to hard work) |
+| 虽然 | suīrán | although, even though, though | conj | 虽然困难 (although difficult), 虽然如此 (even so) |
+| 但是 | dànshì | but, however, yet | conj | 但是需要注意 (but attention is needed), 很好，但是... (very good, but...) |
+| 不过 | búguò | however, but, yet | conj | 不过有个问题 (however there is an issue), 不过需要改进 (but it needs improvement) |
+| 总之 | zǒngzhī | in short, in a word, in summary | conj | 总之很重要 (in short, it is important), 总之需要努力 (in a word, hard work is needed) |
+| 例如 | lìrú | for example, for instance | conj | 例如汉语 (for example, Chinese), 例如这种情况 (for instance, this situation) |
+| 比如 | bǐrú | for example, such as, like | conj | 比如学习 (for example, studying), 很多方法，比如... (many methods, such as...) |
+| 相比之下 | xiāngbǐ zhīxià | by comparison, in comparison | phr | 相比之下更好 (better by comparison) |
+| 总的来说 | zǒng de lái shuō | generally speaking, on the whole | phr | 总的来说效果不错 (generally speaking, the effect is good) |
+| 综上所述 | zōng shàng suǒ shù | to sum up, in summary | phr | 综上所述，我们认为 (to sum up, we believe) |
+| 值得注意 | zhídé zhùyì | worth noting, it is noteworthy | phr | 值得注意的是 (it is worth noting that) |
+
+## Patterns and Expressions (句型)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 不得不 | bùdébù | have to, cannot but, be forced to | phr | 不得不承认 (have to admit), 不得不放弃 (be forced to give up) |
+| 没必要 | méi bìyào | there's no need to, unnecessary | phr | 没必要担心 (no need to worry), 没必要解释 (no need to explain) |
+| 有必要 | yǒu bìyào | it is necessary to, there is a need to | phr | 有必要了解 (it is necessary to understand), 有必要讨论 (there is a need to discuss) |
+| 一方面…另一方面 | yī fāngmiàn…lìng yī fāngmiàn | on one hand…on the other hand | phr | 一方面提高效率，另一方面节省成本 (on one hand improve efficiency, on the other hand save costs) |
+| 既然…就 | jìrán…jiù | since…then; given that…one should | phr | 既然决定了就坚持 (since you've decided, then persist) |
+| 宁可…也不 | nìngkě…yě bù | would rather…than; prefer to…rather than | phr | 宁可慢也不出错 (would rather be slow than make mistakes) |
+| 与其…不如 | yǔqí…bùrú | rather than…it is better to | phr | 与其等待，不如行动 (rather than waiting, it is better to act) |
+
+---
+
+*Total vocabulary: approximately 600 words across all sections (317 original + ~283 new entries).*
