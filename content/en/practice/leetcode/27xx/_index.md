@@ -50,6 +50,7 @@ draft: false
 | 2737 | [Find the Closest Marked Node](2737.md) | 🟡 Medium | 32s | That is a very large, detailed reference document with multiple lon… |
 | 2738 | [Count Occurrences in Text](2738.md) | 🟡 Medium | 1m | The problem asks us to analyze a database table named Files that co… |
 | 2739 | [Total Distance Traveled](2739.md) | 🟢 Easy | 59s | This problem asks us to compute the maximum total distance a truck … |
+| 2740 | [Find the Value of the Partition](2740.md) | 🟡 Medium | 1m 9s | We are given an array nums containing positive integers. Our task i… |
 | 2741 | [Special Permutations](2741.md) | 🟡 Medium | 50s | The problem asks us to count the number of special permutations of … |
 | 2742 | [Painting the Walls](2742.md) | 🔴 Hard | 54s | The problem is asking us to determine the minimum total cost to pai… |
 | 2743 | [Count Substrings Without Repeating Character](2743.md) | 🟡 Medium | 1m 7s | The problem asks us to count how many substrings of a given string … |

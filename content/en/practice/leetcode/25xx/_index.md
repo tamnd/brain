@@ -37,6 +37,7 @@ draft: false
 | 2524 | [Maximum Frequency Score of a Subarray](2524.md) | 🔴 Hard | 48s | The problem asks us to compute the maximum frequency score among al… |
 | 2525 | [Categorize Box According to Criteria](2525.md) | 🟢 Easy | 53s | The problem requires categorizing a box based on its dimensions and… |
 | 2526 | [Find Consecutive Integers from a Data Stream](2526.md) | 🟡 Medium | 57s | The problem asks us to design a data structure that continuously pr… |
+| 2527 | [Find Xor-Beauty of Array](2527.md) | 🟡 Medium | 59s | The problem defines a special value called the "effective value" fo… |
 | 2528 | [Maximize the Minimum Powered City](2528.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum possible minimum power… |
 | 2529 | [Maximum Count of Positive Integer and Negative Integer](2529.md) | 🟢 Easy | 8m 19s | The problem gives us a sorted integer array nums in non-decreasing … |
 | 2530 | [Maximal Score After Applying K Operations](2530.md) | 🟡 Medium | 52s | The problem asks us to maximize a score after performing exactly k … |

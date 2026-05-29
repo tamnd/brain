@@ -18,7 +18,7 @@ draft: false
 | [2](2.md) | ✓ verified | 25m30s |
 | [3](3.md) | ✓ verified | 2m18s |
 | [4](4.md) | ✓ verified | 21m14s |
-| [5](5.md) | solved | 9m26s |
+| [5](5.md) | solved | 11m25s |
 | 6 | — | — |
 | 7 | — | — |
 
@@ -43,7 +43,7 @@ A cube $ABCDA'B'C'D'$ is given. Point $X$ moves at constant speed along the squa
 
 Solve the equation $\cos^2 x + \cos^2 2x + \cos^2 3x = 1$.
 
-**Problem 5** &nbsp; *solved* · 9m26s · [Solution →](5.md)
+**Problem 5** &nbsp; *solved* · 11m25s · [Solution →](5.md)
 
 On a circle $k$ three points $A$, $B$, $C$ are given. Construct a fourth point $D$ on $k$ such that a circle can be inscribed in quadrilateral $ABCD$.
 

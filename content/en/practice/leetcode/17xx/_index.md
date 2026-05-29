@@ -92,6 +92,7 @@ draft: false
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](1779.md) | 🟢 Easy | 1m 22s | The problem gives your current position on a 2D Cartesian grid as (… |
 | 1780 | [Check if Number is a Sum of Powers of Three](1780.md) | 🟡 Medium | 1m 17s | The problem asks whether a given integer n can be expressed as the … |
 | 1781 | [Sum of Beauty of All Substrings](1781.md) | 🟡 Medium | 50s | The problem asks us to calculate the sum of beauty for all substrin… |
+| 1782 | [Count Pairs Of Nodes](1782.md) | 🔴 Hard | 1m 23s | We are given an undirected graph with n nodes and a list of edges. … |
 | 1783 | [Grand Slam Titles](1783.md) | 🟡 Medium | 1m 38s | This problem asks us to compute how many Grand Slam tennis titles e… |
 | 1784 | [Check if Binary String Has at Most One Segment of Ones](1784.md) | 🟢 Easy | 1m 5s | In this problem, we are given a binary string s that contains only … |
 | 1785 | [Minimum Elements to Add to Form a Given Sum](1785.md) | 🟡 Medium | 1m 24s | The problem gives us an integer array nums, a maximum allowed absol… |

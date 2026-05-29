@@ -23,6 +23,7 @@ draft: false
 | 1910 | [Remove All Occurrences of a Substring](1910.md) | 🟡 Medium | 1m 13s | The problem asks us to repeatedly remove occurrences of a substring… |
 | 1911 | [Maximum Alternating Subsequence Sum](1911.md) | 🟡 Medium | 1m 35s | The problem asks us to compute the maximum possible alternating sum… |
 | 1912 | [Design Movie Rental System](1912.md) | 🔴 Hard | 58s | The problem requires designing a movie rental system for multiple s… |
+| 1913 | [Maximum Product Difference Between Two Pairs](1913.md) | 🟢 Easy | 42s | This problem asks us to find the maximum product difference between… |
 | 1914 | [Cyclically Rotating a Grid](1914.md) | 🟡 Medium | 1m 39s | The problem gives us an m x n matrix called grid, along with an int… |
 | 1915 | [Number of Wonderful Substrings](1915.md) | 🟡 Medium | 1m 36s | The problem asks us to count how many non-empty substrings of a giv… |
 | 1916 | [Count Ways to Build Rooms in an Ant Colony](1916.md) | 🔴 Hard | 47s | The problem asks us to count the number of valid ways to sequential… |
@@ -69,8 +70,10 @@ draft: false
 | 1957 | [Delete Characters to Make Fancy String](1957.md) | 🟢 Easy | 1m 14s | The problem asks us to transform a given string into a "fancy strin… |
 | 1958 | [Check if Move is Legal](1958.md) | 🟡 Medium | 55s | This problem asks us to determine whether a move in a board game is… |
 | 1959 | [Minimum Total Space Wasted With K Resizing Operations](1959.md) | 🟡 Medium | 35s | Let's go through a full, detailed technical solution guide for Leet… |
+| 1960 | [Maximum Product of the Length of Two Palindromic Substrings](1960.md) | 🔴 Hard | 1m 40s | The problem asks us to find two non-overlapping odd-length palindro… |
 | 1961 | [Check If String Is a Prefix of Array](1961.md) | 🟢 Easy | 4m 3s | The problem is asking us to determine whether a given string s can … |
 | 1962 | [Remove Stones to Minimize the Total](1962.md) | 🟡 Medium | 2m 4s | The problem gives us an array called piles, where each element repr… |
+| 1963 | [Minimum Number of Swaps to Make the String Balanced](1963.md) | 🟡 Medium | 42s | The problem asks us to transform a given string of brackets into a … |
 | 1964 | [Find the Longest Valid Obstacle Course at Each Position](1964.md) | 🔴 Hard | 1m 13s | The problem gives an array obstacles, where each value represents t… |
 | 1965 | [Employees With Missing Information](1965.md) | 🟢 Easy | 35s | The problem provides two relational tables, one named Employees and… |
 | 1966 | [Binary Searchable Numbers in an Unsorted Array](1966.md) | 🟡 Medium | 1m 19s | This problem asks us to identify how many numbers in an unsorted ar… |
@@ -99,6 +102,7 @@ draft: false
 | 1989 | [Maximum Number of People That Can Be Caught in Tag](1989.md) | 🟡 Medium | 37s | The problem describes a line of people represented by a binary arra… |
 | 1990 | [Count the Number of Experiments](1990.md) | 🟡 Medium | 1m 9s | This problem gives us a database table named Experiments. Each row … |
 | 1991 | [Find the Middle Index in Array](1991.md) | 🟢 Easy | 1m 32s | The problem gives us a 0-indexed integer array called nums. We need… |
+| 1992 | [Find All Groups of Farmland](1992.md) | 🟡 Medium | 1m 26s | In this problem, we are given a binary matrix called land. Each cel… |
 | 1993 | [Operations on Tree](1993.md) | 🟡 Medium | 1m 32s | The problem asks us to design a mutable tree-based data structure t… |
 | 1994 | [The Number of Good Subsets](1994.md) | 🔴 Hard | 1m 32s | This problem asks us to count how many subsets of the input array h… |
 | 1995 | [Count Special Quadruplets](1995.md) | 🟢 Easy | 42s | The problem asks us to count the number of distinct quadruplets (a,… |

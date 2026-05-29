@@ -85,6 +85,7 @@ draft: false
 | 2973 | [Find Number of Coins to Place in Tree Nodes](2973.md) | 🔴 Hard | 52s | The problem gives us a tree with n nodes labeled from 0 to n - 1. T… |
 | 2974 | [Minimum Number Game](2974.md) | 🟢 Easy | 1m 6s | The problem gives us an integer array nums with an even number of e… |
 | 2975 | [Maximum Square Area by Removing Fences From a Field](2975.md) | 🟡 Medium | 1m 21s | The field is represented as a large rectangle whose outer boundarie… |
+| 2976 | [Minimum Cost to Convert String I](2976.md) | 🟡 Medium | 1m 29s | This problem asks us to transform one string into another while min… |
 | 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 31s | That is a very large, comprehensive request for a Hard problem, wit… |
 | 2978 | [Symmetric Coordinates](2978.md) | 🟡 Medium | 1m 8s | This problem asks us to identify symmetric coordinate pairs from a … |
 | 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 51s | This problem asks us to determine the largest price that cannot be … |
@@ -107,3 +108,4 @@ draft: false
 | 2996 | [Smallest Missing Integer Greater Than Sequential Prefix Sum](2996.md) | 🟢 Easy | 1m 5s | The problem asks us to find the smallest missing integer in the arr… |
 | 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](2997.md) | 🟡 Medium | 59s | This problem asks us to transform an array so that the bitwise XOR … |
 | 2998 | [Minimum Number of Operations to Make X and Y Equal](2998.md) | 🟡 Medium | 1m 3s | The problem asks us to transform an integer x into another integer … |
+| 2999 | [Count the Number of Powerful Integers](2999.md) | 🔴 Hard | 43s | The problem asks us to count all integers within a given range [sta… |
