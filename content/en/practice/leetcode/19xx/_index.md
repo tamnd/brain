@@ -19,6 +19,7 @@ draft: false
 | 1906 | [Minimum Absolute Difference Queries](1906.md) | 🟡 Medium | 1m 7s | The problem asks us to compute the minimum absolute difference in s… |
 | 1907 | [Count Salary Categories](1907.md) | 🟡 Medium | 1m 30s | This problem asks us to classify bank accounts into three salary ca… |
 | 1908 | [Game of Nim](1908.md) | 🟡 Medium | 1m 7s | This problem is the classic mathematical game known as Nim. We are … |
+| 1909 | [Remove One Element to Make the Array Strictly Increasing](1909.md) | 🟢 Easy | 1m 32s | The problem gives us a 0-indexed integer array nums and asks whethe… |
 | 1910 | [Remove All Occurrences of a Substring](1910.md) | 🟡 Medium | 1m 13s | The problem asks us to repeatedly remove occurrences of a substring… |
 | 1911 | [Maximum Alternating Subsequence Sum](1911.md) | 🟡 Medium | 1m 35s | The problem asks us to compute the maximum possible alternating sum… |
 | 1912 | [Design Movie Rental System](1912.md) | 🔴 Hard | 58s | The problem requires designing a movie rental system for multiple s… |

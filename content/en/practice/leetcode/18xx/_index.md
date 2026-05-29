@@ -70,6 +70,7 @@ draft: false
 | 1860 | [Incremental Memory Leak](1860.md) | 🟡 Medium | 1m 3s | The problem models a faulty program that continuously consumes memo… |
 | 1861 | [Rotating the Box](1861.md) | 🟡 Medium | 2m 12s | Please provide the specific problem number/title you want the detai… |
 | 1862 | [Sum of Floored Pairs](1862.md) | 🔴 Hard | 59s | The problem asks us to calculate the sum of the integer division re… |
+| 1863 | [Sum of All Subset XOR Totals](1863.md) | 🟢 Easy | 1m 9s | This problem asks us to compute the sum of the XOR values of every … |
 | 1864 | [Minimum Number of Swaps to Make the Binary String Alternating](1864.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s that contains only '0' and '… |
 | 1865 | [Finding Pairs With a Certain Sum](1865.md) | 🟡 Medium | 1m 9s | This problem asks us to design a mutable data structure that suppor… |
 | 1866 | [Number of Ways to Rearrange Sticks With K Sticks Visible](1866.md) | 🔴 Hard | 1m 17s | The problem gives us n sticks with unique lengths from 1 to n. We m… |
@@ -77,6 +78,7 @@ draft: false
 | 1869 | [Longer Contiguous Segments of Ones than Zeros](1869.md) | 🟢 Easy | 1m 17s | The problem gives us a binary string s, which means the string cont… |
 | 1870 | [Minimum Speed to Arrive on Time](1870.md) | 🟡 Medium | 2m 22s | The problem asks us to find the minimum constant speed (in kilomete… |
 | 1871 | [Jump Game VII](1871.md) | 🟡 Medium | 1m 41s | The problem gives us a binary string s, where each character is eit… |
+| 1872 | [Stone Game VIII](1872.md) | 🔴 Hard | 1m 15s | The problem describes a two-player turn-based game between Alice an… |
 | 1873 | [Calculate Special Bonus](1873.md) | 🟢 Easy | 1m 49s | This problem asks us to write an SQL query that calculates a specia… |
 | 1874 | [Minimize Product Sum of Two Arrays](1874.md) | 🟡 Medium | 1m 24s | The problem defines the product sum of two arrays as the sum of the… |
 | 1875 | [Group Employees of the Same Salary](1875.md) | 🟡 Medium | 1m 9s | This is a SQL database problem where we need to group employees int… |
@@ -85,10 +87,12 @@ draft: false
 | 1878 | [Get Biggest Three Rhombus Sums in a Grid](1878.md) | 🟡 Medium | 45s | The problem asks us to compute the largest three distinct rhombus s… |
 | 1879 | [Minimum XOR Sum of Two Arrays](1879.md) | 🔴 Hard | 57s | The problem asks us to take two integer arrays of equal length, num… |
 | 1881 | [Maximum Value after Insertion](1881.md) | 🟡 Medium | 1m 7s | This problem asks us to insert a single digit x into a very large i… |
+| 1882 | [Process Tasks Using Servers](1882.md) | 🟡 Medium | 1m 38s | This problem asks us to simulate a task scheduling system with two … |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
 | 1884 | [Egg Drop With 2 Eggs and N Floors](1884.md) | 🟡 Medium | 1m 12s | This problem asks us to determine the minimum number of moves requi… |
 | 1885 | [Count Pairs in Two Arrays](1885.md) | 🟡 Medium | 49s | The problem asks us to count the number of index pairs (i, j) such … |
 | 1886 | [Determine Whether Matrix Can Be Obtained By Rotation](1886.md) | 🟢 Easy | 1m 14s | The problem gives us two square binary matrices, mat and target, bo… |
+| 1887 | [Reduction Operations to Make the Array Elements Equal](1887.md) | 🟡 Medium | 1m 29s | This problem asks us to make all elements in an integer array equal… |
 | 1888 | [Minimum Number of Flips to Make the Binary String Alternating](1888.md) | 🟡 Medium | 57s | The problem asks us to transform a binary string s into an alternat… |
 | 1889 | [Minimum Space Wasted From Packaging](1889.md) | 🔴 Hard | 1m 26s | The problem gives us a list of package sizes and several suppliers.… |
 | 1890 | [The Latest Login in 2020](1890.md) | 🟢 Easy | 54s | The problem provides a database table Logins that records user logi… |
@@ -98,4 +102,6 @@ draft: false
 | 1894 | [Find the Student that Will Replace the Chalk](1894.md) | 🟡 Medium | 53s | The problem presents a classroom scenario where students are given … |
 | 1895 | [Largest Magic Square](1895.md) | 🟡 Medium | 56s | The problem asks us to find the largest magic square inside a given… |
 | 1896 | [Minimum Cost to Change the Final Value of Expression](1896.md) | 🔴 Hard | 1m 48s | This problem gives us a boolean expression containing only: - '0' a… |
+| 1897 | [Redistribute Characters to Make All Strings Equal](1897.md) | 🟢 Easy | 1m 19s | The problem asks whether it is possible to make all strings in the … |
+| 1898 | [Maximum Number of Removable Characters](1898.md) | 🟡 Medium | 1m 4s | The problem gives us two strings, s and p, and a list of indices re… |
 | 1899 | [Merge Triplets to Form Target Triplet](1899.md) | 🟡 Medium | 49s | The problem asks whether it is possible to create a specific target… |
