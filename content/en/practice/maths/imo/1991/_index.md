@@ -1,6 +1,6 @@
 ---
 title: "IMO 1991"
-description: "IMO 1991 — 2/6 solved."
+description: "IMO 1991 — 3/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1991
@@ -10,14 +10,14 @@ draft: false
 
 # IMO 1991
 
-[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 2/6 solved.
+[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 3/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 18m14s |
 | 2 | — | — |
 | [3](3.md) | solved | 31m33s |
-| 4 | — | — |
+| [4](4.md) | solved | 31m43s |
 | 5 | — | — |
 | 6 | — | — |
 
@@ -37,7 +37,7 @@ $$ prove that $\,n\,$ must be either a prime number or a power of $\,2$.
 
 Let $S = \{1,2,3,\cdots ,280\}$. Find the smallest integer $n$ such that each $n$-element subset of $S$ contains five numbers which are pairwise relatively prime.
 
-**Problem 4**
+**Problem 4** &nbsp; *solved* · 31m43s · [Solution →](4.md)
 
 Suppose $\,G\,$ is a connected graph with $\,k\,$ edges. Prove that it is possible to label the edges $1,2,\ldots ,k\,$ in such a way that at each vertex which belongs to two or more edges, the greatest common divisor of the integers labeling those edges is equal to 1.
 

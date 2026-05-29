@@ -1,6 +1,6 @@
 ---
 title: "IMO 1960"
-description: "IMO 1960 — 5/7 solved, 4 verified."
+description: "IMO 1960 — 6/7 solved, 5 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1960
@@ -10,14 +10,14 @@ draft: false
 
 # IMO 1960
 
-[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 5/7 solved, 4 verified.
+[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 6/7 solved, 5 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 27m41s |
 | [2](2.md) | ✓ verified | 7m41s |
 | [3](3.md) | ✓ verified | 17m36s |
-| 4 | — | — |
+| [4](4.md) | ✓ verified | 33m08s |
 | [5](5.md) | ✓ verified | 4m30s |
 | [6](6.md) | ✓ verified | 3m00s |
 | 7 | — | — |
@@ -36,7 +36,7 @@ $$\\frac{4x^2}{\\left(1 - \\sqrt{1+2x}\\right)^2} < 2x + 9\\,?$$
 A right-angled triangle $ABC$ is given for which the hypotenuse $BC$ has length $a$ and is divided into $n$ equal segments ($n$ odd). Let $\\alpha$ be the angle subtended at $A$ by the segment containing the midpoint of $BC$. If $h$ denotes the altitude from $A$, prove that
 $$\\tan\\alpha = \\frac{4nh}{(n^2-1)a}.$$
 
-**Problem 4**
+**Problem 4** &nbsp; *✓ verified* · 33m08s · [Solution →](4.md)
 
 Construct a triangle $ABC$ given the lengths of the altitudes $h_a$ and $h_b$ (from $A$ and $B$ respectively) and the length of the median $m_a$ from $A$.
 
