@@ -84,6 +84,7 @@ draft: false
 | 3372 | [Maximize the Number of Target Nodes After Connecting Trees I](3372.md) | 🟡 Medium | 1m 30s | We are given two separate undirected trees. The first tree contains… |
 | 3373 | [Maximize the Number of Target Nodes After Connecting Trees II](3373.md) | 🔴 Hard | 1m 43s | The problem gives us two separate undirected trees. The first tree … |
 | 3374 | [First Letter Capitalization II](3374.md) | 🔴 Hard | 1m 18s | This problem asks us to transform text stored in a database table w… |
+| 3375 | [Minimum Operations to Make Array Values Equal to K](3375.md) | 🟢 Easy | 1m 19s | The problem gives us an integer array nums and a target value k. Ou… |
 | 3377 | [Digit Operations to Make Two Integers Equal](3377.md) | 🟡 Medium | 1m 7s | The problem asks us to transform one integer n into another integer… |
 | 3378 | [Count Connected Components in LCM Graph](3378.md) | 🔴 Hard | 1m 34s | We are given an array nums, where each element represents the value… |
 | 3379 | [Transformed Array](3379.md) | 🟢 Easy | 40s | The problem asks us to transform a given integer array nums into a … |
@@ -96,10 +97,13 @@ draft: false
 | 3387 | [Maximize Amount After Two Days of Conversions](3387.md) | 🟡 Medium | 1m 27s | This problem models currency conversions as graph traversal across … |
 | 3388 | [Count Beautiful Splits in an Array](3388.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we want to count how many w… |
 | 3389 | [Minimum Operations to Make Character Frequencies Equal](3389.md) | 🔴 Hard | 43s | The problem requires transforming a given string s into a good stri… |
+| 3390 | [Longest Team Pass Streak](3390.md) | 🔴 Hard | 1m 39s | This problem asks us to analyze a football match pass sequence and … |
 | 3391 | [Design a 3D Binary Matrix with Efficient Layer Tracking](3391.md) | 🟡 Medium | 1m 30s | The problem asks us to design a data structure that manages a 3D bi… |
 | 3392 | [Count Subarrays of Length Three With a Condition](3392.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to count how… |
 | 3393 | [Count Paths With the Given XOR Value](3393.md) | 🟡 Medium | 1m 56s | The problem gives us an m x n grid where each cell contains a small… |
+| 3394 | [Check if Grid can be Cut into Sections](3394.md) | 🟡 Medium | 1m 27s | We are given an n x n grid and a list of non-overlapping rectangles… |
 | 3395 | [Subsequences with a Unique Middle Mode I](3395.md) | 🔴 Hard | 1m 45s | We are given an integer array nums, and we must count how many subs… |
 | 3396 | [Minimum Number of Operations to Make Elements in Array Distinct](3396.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, and our goal is to make… |
 | 3397 | [Maximum Number of Distinct Elements After Operations](3397.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of distinct elements in … |
 | 3398 | [Smallest Substring With Identical Characters I](3398.md) | 🔴 Hard | 55s | The problem gives us a binary string s consisting of only '0' and '… |
+| 3399 | [Smallest Substring With Identical Characters II](3399.md) | 🔴 Hard | 1m 15s | We are given a binary string s consisting only of '0' and '1', alon… |
