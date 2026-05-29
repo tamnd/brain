@@ -74,3 +74,13 @@ draft: false
 | 3268 | [Find Overlapping Shifts II](3268.md) | 🔴 Hard | 49s | The problem asks us to analyze shift overlaps for employees. We are… |
 | 3271 | [Hash Divided String](3271.md) | 🟡 Medium | 52s | The problem asks us to compute a hashed string from an input string… |
 | 3272 | [Find the Count of Good Integers](3272.md) | 🔴 Hard | 1m 15s | The problem asks us to count n-digit integers that are "good" with … |
+| 3273 | [Minimum Amount of Damage Dealt to Bob](3273.md) | 🔴 Hard | 1m 33s | This problem asks us to determine the minimum total damage Bob will… |
+| 3274 | [Check if Two Chessboard Squares Have the Same Color](3274.md) | 🟢 Easy | 1m 27s | The problem gives us two chessboard coordinates, such as "a1" or "h… |
+| 3275 | [K-th Nearest Obstacle Queries](3275.md) | 🟡 Medium | 1m 19s | The problem requires tracking obstacles on an infinite 2D plane and… |
+| 3276 | [Select Cells in Grid With Maximum Score](3276.md) | 🔴 Hard | 59s | The problem requires us to select cells from a 2D matrix grid such … |
+| 3277 | [Maximum XOR Score Subarray Queries](3277.md) | 🔴 Hard | 1m 35s | The problem gives us an integer array nums and several range querie… |
+| 3278 | [Find Candidates for Data Scientist Position II](3278.md) | 🟡 Medium | 2m 1s | This problem asks us to determine the best candidate for every proj… |
+| 3279 | [Maximum Total Area Occupied by Pistons](3279.md) | 🔴 Hard | 1m 10s | This problem is about simulating the motion of pistons in a car eng… |
+| 3281 | [Maximize Score of Numbers in Ranges](3281.md) | 🟡 Medium | 50s | The problem presents a list of intervals derived from the start arr… |
+| 3282 | [Reach End of Array With Max Score](3282.md) | 🟡 Medium | 1m 12s | We are given an integer array nums, where each position represents … |
+| 3285 | [Find Indices of Stable Mountains](3285.md) | 🟢 Easy | 46s | The problem asks us to find indices of "stable" mountains from a gi… |

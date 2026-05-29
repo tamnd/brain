@@ -1,6 +1,6 @@
 ---
 title: "IMO 1973"
-description: "IMO 1973 — 6/6 solved."
+description: "IMO 1973 — 6/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1973
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1973
 
-[Official IMO 1973 problems](https://www.imo-official.org/year_info.aspx?year=1973) &nbsp;·&nbsp; 6/6 solved.
+[Official IMO 1973 problems](https://www.imo-official.org/year_info.aspx?year=1973) &nbsp;·&nbsp; 6/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
-| [1](1.md) | solved | 8m53s |
+| [1](1.md) | ✓ verified | 22m51s |
 | [2](2.md) | solved | 31m22s |
 | [3](3.md) | solved | 6m58s |
 | [4](4.md) | solved | 14m45s |
 | [5](5.md) | solved | 9m42s |
 | [6](6.md) | solved | 5m08s |
 
-**Problem 1** &nbsp; *solved* · 8m53s · [Solution →](1.md)
+**Problem 1** &nbsp; *✓ verified* · 22m51s · [Solution →](1.md)
 
 Point $O$ lies on line $g$; $\overrightarrow{OP_1}, \overrightarrow{OP_2}, \ldots, \overrightarrow{OP_n}$ are unit vectors such that points $P_1, P_2, \ldots, P_n$ all lie in a plane containing $g$ and on one side of $g$. Prove that if $n$ is odd, $$
 \left\vert \overrightarrow{OP_1} + \overrightarrow{OP_2} + \ldots + \overrightarrow{OP_n} \right\vert \geq 1
