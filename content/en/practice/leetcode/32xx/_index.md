@@ -33,3 +33,15 @@ draft: false
 | 3228 | [Maximum Number of Operations to Move Ones to the End](3228.md) | 🟡 Medium | 1m 28s | The problem gives us a binary string s, consisting only of characte… |
 | 3229 | [Minimum Operations to Make Array Equal to Target](3229.md) | 🔴 Hard | 1m 43s | The problem gives us two arrays, nums and target, both of the same … |
 | 3230 | [Customer Purchasing Behavior Analysis](3230.md) | 🟡 Medium | 1m 16s | The problem asks us to analyze customer purchasing behavior using t… |
+| 3231 | [Minimum Number of Increasing Subsequence to Be Removed](3231.md) | 🔴 Hard | 2m 4s | We are given an integer array nums. In one operation, we may choose… |
+| 3232 | [Find if Digit Game Can Be Won](3232.md) | 🟢 Easy | 1m 47s | The problem presents a simple two-player game between Alice and Bob… |
+| 3233 | [Find the Count of Numbers Which Are Not Special](3233.md) | 🟡 Medium | 2m 10s | The problem asks us to count how many integers in the inclusive ran… |
+| 3234 | [Count the Number of Substrings With Dominant Ones](3234.md) | 🟡 Medium | 2m 56s | We are given a binary string s, containing only '0' and '1'. We mus… |
+| 3235 | [Check if the Rectangle Corner Is Reachable](3235.md) | 🔴 Hard | 2m 28s | The problem asks whether there is a clear, unobstructed path from t… |
+| 3237 | [Alt and Tab Simulation](3237.md) | 🟡 Medium | 2m 18s | The problem asks us to simulate the behavior of switching between o… |
+| 3238 | [Find the Number of Winning Players](3238.md) | 🟢 Easy | 2m 9s | The problem gives us n players and a list called pick, where each e… |
+| 3240 | [Minimum Number of Flips to Make Binary Grid Palindromic II](3240.md) | 🟡 Medium | 1m 59s | We are given a binary matrix grid with m rows and n columns. Every … |
+| 3241 | [Time Taken to Mark All Nodes](3241.md) | 🔴 Hard | 1m 41s | We are given an undirected tree with n nodes. A tree is a connected… |
+| 3242 | [Design Neighbor Sum Service](3242.md) | 🟢 Easy | 3m 28s | The problem asks us to design a service that works on a square matr… |
+| 3244 | [Shortest Distance After Road Addition Queries II](3244.md) | 🔴 Hard | 59s | The problem presents a sequence of n cities numbered from 0 to n - … |
+| 3245 | [Alternating Groups III](3245.md) | 🔴 Hard | 1m 45s | We are given a circular array called colors, where each element is … |

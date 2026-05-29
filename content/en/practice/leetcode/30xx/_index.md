@@ -21,17 +21,22 @@ draft: false
 | 3009 | [Maximum Number of Intersections on the Chart](3009.md) | 🔴 Hard | 1m 15s | I can provide the full guide, but I want to avoid giving you a tech… |
 | 3010 | [Divide an Array Into Subarrays With Minimum Cost I](3010.md) | 🟢 Easy | 1m 18s | The problem asks us to split a given array nums into exactly three … |
 | 3011 | [Find if Array Can Be Sorted](3011.md) | 🟡 Medium | 1m 29s | Here’s the complete, detailed technical solution guide for LeetCode… |
-| 3012 | [Minimize Length of Array Using Operations](3012.md) | 🟡 Medium | 1m 14s | The problem gives us an array of positive integers and allows us to… |
-| 3013 | [Divide an Array Into Subarrays With Minimum Cost II](3013.md) | 🔴 Hard | 1m 33s | We are given an array nums, along with two integers k and dist. We … |
-| 3016 | [Minimum Number of Pushes to Type Word II](3016.md) | 🟡 Medium | 52s | The problem asks us to minimize the total number of key presses req… |
-| 3017 | [Count the Number of Houses at a Certain Distance II](3017.md) | 🔴 Hard | 48s | We are asked to count pairs of houses in a city where the distance … |
-| 3018 | [Maximum Number of Removal Queries That Can Be Processed I](3018.md) | 🔴 Hard | 1m 16s | The problem asks us to simulate a sequence of removal operations on… |
-| 3019 | [Number of Changing Keys](3019.md) | 🟢 Easy | 1m 10s | The problem gives us a string s representing keys typed by a user. … |
-| 3021 | [Alice and Bob Playing Flower Game](3021.md) | 🟡 Medium | 1m 20s | The problem describes a turn-based game involving two lanes of flow… |
-| 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums of length 3, where each … |
-| 3026 | [Maximum Good Subarray Sum](3026.md) | 🟡 Medium | 1m 18s | We are given an integer array nums and a positive integer k. A suba… |
-| 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 52s | The problem asks us to count the number of valid pairs of points wh… |
+| 3012 | [Minimize Length of Array Using Operations](3012.md) | 🟡 Medium | 1m 12s | The problem gives us a 0-indexed array of positive integers and ask… |
+| 3013 | [Divide an Array Into Subarrays With Minimum Cost II](3013.md) | 🔴 Hard | 2m 57s | The problem asks us to divide a given array nums into k contiguous … |
+| 3014 | [Minimum Number of Pushes to Type Word I](3014.md) | 🟢 Easy | 2m 50s | We are given a word consisting of distinct lowercase English letter… |
+| 3015 | [Count the Number of Houses at a Certain Distance I](3015.md) | 🟡 Medium | 2m 45s | Here is a complete technical solution guide for LeetCode 3015 - Cou… |
+| 3016 | [Minimum Number of Pushes to Type Word II](3016.md) | 🟡 Medium | 2m | This problem asks us to redesign a telephone keypad so that typing … |
+| 3017 | [Count the Number of Houses at a Certain Distance II](3017.md) | 🔴 Hard | 1m 51s | We are given a graph of n houses arranged in a straight line. Norma… |
+| 3018 | [Maximum Number of Removal Queries That Can Be Processed I](3018.md) | 🔴 Hard | 1m 29s | The problem asks us to process a sequence of removal queries on an … |
+| 3019 | [Number of Changing Keys](3019.md) | 🟢 Easy | 1m 6s | The problem asks us to determine how many times a user changes keys… |
+| 3020 | [Find the Maximum Number of Elements in Subset](3020.md) | 🟡 Medium | 2m 11s | The problem gives us an array of positive integers and asks us to c… |
+| 3021 | [Alice and Bob Playing Flower Game](3021.md) | 🟡 Medium | 1m 5s | The game consists of two flower lanes containing x and y flowers re… |
+| 3023 | [Find Pattern in Infinite Stream I](3023.md) | 🟡 Medium | 1m | The problem asks us to detect the first occurrence of a given binar… |
+| 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 8s | The problem gives an integer array nums of length 3, where each val… |
+| 3026 | [Maximum Good Subarray Sum](3026.md) | 🟡 Medium | 1m 21s | The problem asks us to find the maximum possible sum of a contiguou… |
+| 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 1m | The problem asks us to determine how many valid placements of Alice… |
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
+| 3029 | [Minimum Time to Revert Word to Initial State I](3029.md) | 🟡 Medium | 1m 29s | The problem gives us a string word and an integer k. Every second, … |
 | 3030 | [Find the Grid of Region Average](3030.md) | 🟡 Medium | 1m 19s | We are given an m × n grayscale image where each cell contains an i… |
 | 3031 | [Minimum Time to Revert Word to Initial State II](3031.md) | 🔴 Hard | 55s | This problem requires determining the minimum number of operations … |
 | 3032 | [Count Numbers With Unique Digits II](3032.md) | 🟢 Easy | 1m 2s | This problem asks us to count how many integers in the inclusive ra… |
