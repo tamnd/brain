@@ -107,6 +107,6 @@ draft: false
 | 2894 | [Divisible and Non-divisible Sums Difference](2894.md) | 🟢 Easy | 1m 2s | This problem gives us two positive integers, n and m. We need to ex… |
 | 2895 | [Minimum Processing Time](2895.md) | 🟡 Medium | 1m 11s | This problem gives us two arrays: - processorTime, where each value… |
 | 2896 | [Apply Operations to Make Two Strings Equal](2896.md) | 🟡 Medium | 1m 15s | We are given two binary strings, s1 and s2, of the same length n, a… |
-| 2897 | [Apply Operations on Array to Maximize Sum of Squares](2897.md) | 🔴 Hard | 1m 1s | The problem gives us an integer array nums and an integer k. We are… |
-| 2898 | [Maximum Linear Stock Score](2898.md) | 🟡 Medium | 46s | The problem asks us to find a subsequence of a given 1-indexed inte… |
+| 2897 | [Apply Operations on Array to Maximize Sum of Squares](2897.md) | 🔴 Hard | 59s | The problem presents an integer array nums and a positive integer k… |
+| 2898 | [Maximum Linear Stock Score](2898.md) | 🟡 Medium | 1m 7s | We are given a 1-indexed array prices, where prices[i] represents t… |
 | 2899 | [Last Visited Integers](2899.md) | 🟢 Easy | 1m 4s | The problem gives us an integer array nums that contains either pos… |

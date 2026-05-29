@@ -31,10 +31,16 @@ draft: false
 | 3120 | [Count the Number of Special Characters I](3120.md) | 🟢 Easy | 46s | The problem asks us to count the number of special characters in a … |
 | 3121 | [Count the Number of Special Characters II](3121.md) | 🟡 Medium | 1m 12s | The problem gives us a string word containing uppercase and lowerca… |
 | 3122 | [Minimum Number of Operations to Satisfy Conditions](3122.md) | 🟡 Medium | 1m 1s | The problem presents a two-dimensional matrix grid of size m x n wi… |
+| 3123 | [Find Edges in Shortest Paths](3123.md) | 🔴 Hard | 1m 59s | The problem gives us an undirected weighted graph with n nodes and … |
+| 3124 | [Find Longest Calls](3124.md) | 🟡 Medium | 1m 26s | This problem asks us to analyze phone call records stored across tw… |
+| 3125 | [Maximum Number That Makes Result of Bitwise AND Zero](3125.md) | 🟡 Medium | 1m 26s | The problem asks us to find the largest integer x such that: - x <=… |
 | 3126 | [Server Utilization Time](3126.md) | 🟡 Medium | 1m 27s | This problem provides a table named Servers that records status cha… |
 | 3127 | [Make a Square with the Same Color](3127.md) | 🟢 Easy | 1m 13s | This problem gives us a fixed 3 x 3 grid containing only two possib… |
 | 3128 | [Right Triangles](3128.md) | 🟡 Medium | 1m 21s | The problem gives us a binary matrix grid, where each cell contains… |
 | 3129 | [Find All Possible Stable Binary Arrays I](3129.md) | 🟡 Medium | 1m 26s | In this problem, we need to count how many binary arrays can be for… |
+| 3130 | [Find All Possible Stable Binary Arrays II](3130.md) | 🔴 Hard | 1m 23s | The problem gives us three integers: - zero, the exact number of 0s… |
+| 3131 | [Find the Integer Added to Array I](3131.md) | 🟢 Easy | 1m 1s | The problem gives us two integer arrays, nums1 and nums2, which hav… |
+| 3132 | [Find the Integer Added to Array II](3132.md) | 🟡 Medium | 1m 16s | We are given two integer arrays, nums1 and nums2. The array nums2 w… |
 | 3133 | [Minimum Array End](3133.md) | 🟡 Medium | 1m 11s | The problem asks us to construct a strictly increasing array nums o… |
 | 3134 | [Find the Median of the Uniqueness Array](3134.md) | 🔴 Hard | 1m 20s | The problem defines a special array called the uniqueness array. Fo… |
 | 3136 | [Valid Word](3136.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given string qualifies a… |

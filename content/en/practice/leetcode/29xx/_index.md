@@ -10,12 +10,12 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 2900 | [Longest Unequal Adjacent Groups Subsequence I](2900.md) | 🟢 Easy | 1m 8s | The problem gives us two arrays of the same length: - words, where … |
+| 2900 | [Longest Unequal Adjacent Groups Subsequence I](2900.md) | 🟢 Easy | 1m 21s | We are given two arrays of the same length: - words[i] is a string.… |
 | 2901 | [Longest Unequal Adjacent Groups Subsequence II](2901.md) | 🟡 Medium | 37s | The problem asks us to select the longest subsequence of words from… |
-| 2902 | [Count of Sub-Multisets With Bounded Sum](2902.md) | 🔴 Hard | 1m 48s | The problem asks us to count how many distinct sub-multisets of the… |
-| 2903 | [Find Indices With Index and Value Difference I](2903.md) | 🟢 Easy | 39s | The problem asks us to find two indices i and j in an array nums th… |
-| 2904 | [Shortest and Lexicographically Smallest Beautiful String](2904.md) | 🟡 Medium | 43s | The problem asks us to identify a specific substring from a binary … |
-| 2905 | [Find Indices With Index and Value Difference II](2905.md) | 🟡 Medium | 1m 14s | The problem gives us an integer array nums, along with two constrai… |
+| 2902 | [Count of Sub-Multisets With Bounded Sum](2902.md) | 🔴 Hard | 48s | The problem asks us to count all possible sub-multisets of an array… |
+| 2903 | [Find Indices With Index and Value Difference I](2903.md) | 🟢 Easy | 1m 5s | The problem asks us to find two indices i and j in the array such t… |
+| 2904 | [Shortest and Lexicographically Smallest Beautiful String](2904.md) | 🟡 Medium | 1m 1s | We are given a binary string s, meaning the string contains only th… |
+| 2905 | [Find Indices With Index and Value Difference II](2905.md) | 🟡 Medium | 54s | The problem asks us to find two indices i and j in an integer array… |
 | 2906 | [Construct Product Matrix](2906.md) | 🟡 Medium | 1m 12s | The problem asks us to construct a new matrix p from a given matrix… |
 | 2907 | [Maximum Profitable Triplets With Increasing Prices I](2907.md) | 🟡 Medium | 1m 49s | This problem asks us to select exactly three items from a store whi… |
 | 2908 | [Minimum Sum of Mountain Triplets I](2908.md) | 🟢 Easy | 48s | The problem asks us to find the minimum sum of a mountain triplet i… |
