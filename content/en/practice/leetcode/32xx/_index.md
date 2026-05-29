@@ -89,6 +89,8 @@ draft: false
 | 3280 | [Convert Date to Binary](3280.md) | 🟢 Easy | 1m 13s | The problem gives us a date string in the format yyyy-mm-dd. The ye… |
 | 3281 | [Maximize Score of Numbers in Ranges](3281.md) | 🟡 Medium | 50s | The problem presents a list of intervals derived from the start arr… |
 | 3282 | [Reach End of Array With Max Score](3282.md) | 🟡 Medium | 1m 12s | We are given an integer array nums, where each position represents … |
+| 3283 | [Maximum Number of Moves to Kill All Pawns](3283.md) | 🔴 Hard | 1m 43s | The problem gives us a 50 x 50 chessboard containing exactly one kn… |
+| 3284 | [Sum of Consecutive Subarrays](3284.md) | 🟡 Medium | 59s | The problem asks us to compute the sum of all consecutive subarrays… |
 | 3285 | [Find Indices of Stable Mountains](3285.md) | 🟢 Easy | 46s | The problem asks us to find indices of "stable" mountains from a gi… |
 | 3286 | [Find a Safe Walk Through a Grid](3286.md) | 🟡 Medium | 51s | The problem requires determining whether there exists a path from t… |
 | 3287 | [Find the Maximum Sequence Value of Array](3287.md) | 🔴 Hard | 1m 34s | We are given an array nums and an integer k. We must choose a subse… |
@@ -96,9 +98,11 @@ draft: false
 | 3289 | [The Two Sneaky Numbers of Digitville](3289.md) | 🟢 Easy | 1m 13s | The problem is asking us to identify two numbers that appear twice … |
 | 3290 | [Maximum Multiplication Score](3290.md) | 🟡 Medium | 1m 31s | This problem gives us two integer arrays: - a, which always has exa… |
 | 3291 | [Minimum Number of Valid Strings to Form Target I](3291.md) | 🟡 Medium | 1m 32s | We are given a list of strings called words and another string call… |
+| 3292 | [Minimum Number of Valid Strings to Form Target II](3292.md) | 🔴 Hard | 1m 43s | We are given a collection of strings words and a target string targ… |
 | 3293 | [Calculate Product Final Price](3293.md) | 🟡 Medium | 1m 10s | The problem asks us to calculate the final price for each product i… |
 | 3294 | [Convert Doubly Linked List to Array II](3294.md) | 🟡 Medium | 1m 53s | This problem gives us a pointer to an arbitrary node inside a doubl… |
 | 3295 | [Report Spam Message](3295.md) | 🟡 Medium | 1m 29s | This problem asks us to determine whether a given message should be… |
 | 3296 | [Minimum Number of Seconds to Make Mountain Height Zero](3296.md) | 🟡 Medium | 1m 15s | The problem asks us to calculate the minimum amount of time require… |
 | 3297 | [Count Substrings That Can Be Rearranged to Contain a String I](3297.md) | 🟡 Medium | 1m 47s | We are given two lowercase strings, word1 and word2. A substring of… |
+| 3298 | [Count Substrings That Can Be Rearranged to Contain a String II](3298.md) | 🔴 Hard | 1m 32s | We are given two strings, word1 and word2. We need to count how man… |
 | 3299 | [Sum of Consecutive Subsequences](3299.md) | 🔴 Hard | 1m 44s | We are given an array nums, and we must consider all non-empty subs… |
