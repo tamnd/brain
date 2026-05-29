@@ -82,3 +82,9 @@ draft: false
 | 3382 | [Maximum Area Rectangle With Point Constraints II](3382.md) | 🔴 Hard | 49s | The problem asks us to find the maximum area rectangle that can be … |
 | 3384 | [Team Dominance by Pass Success](3384.md) | 🔴 Hard | 1m 45s | This problem asks us to compute a dominance score for each football… |
 | 3385 | [Minimum Time to Break Locks II](3385.md) | 🔴 Hard | 1m 14s | In this problem, Bob must break a collection of locks, where each l… |
+| 3387 | [Maximize Amount After Two Days of Conversions](3387.md) | 🟡 Medium | 1m 27s | This problem models currency conversions as graph traversal across … |
+| 3388 | [Count Beautiful Splits in an Array](3388.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we want to count how many w… |
+| 3389 | [Minimum Operations to Make Character Frequencies Equal](3389.md) | 🔴 Hard | 43s | The problem requires transforming a given string s into a good stri… |
+| 3391 | [Design a 3D Binary Matrix with Efficient Layer Tracking](3391.md) | 🟡 Medium | 1m 30s | The problem asks us to design a data structure that manages a 3D bi… |
+| 3392 | [Count Subarrays of Length Three With a Condition](3392.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to count how… |
+| 3393 | [Count Paths With the Given XOR Value](3393.md) | 🟡 Medium | 1m 56s | The problem gives us an m x n grid where each cell contains a small… |

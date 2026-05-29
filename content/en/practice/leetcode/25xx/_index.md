@@ -22,23 +22,24 @@ draft: false
 | 2509 | [Cycle Length Queries in a Tree](2509.md) | 🔴 Hard | 1m 20s | The problem gives us a complete binary tree where nodes are labeled… |
 | 2510 | [Check if There is a Path With Equal Number of 0's And 1's](2510.md) | 🟡 Medium | 45s | This problem asks us to determine if there exists a path in a binar… |
 | 2511 | [Maximum Enemy Forts That Can Be Captured](2511.md) | 🟢 Easy | 1m 12s | In this problem, we are given an array called forts, where each pos… |
-| 2512 | [Reward Top K Students](2512.md) | 🟡 Medium | 1m 19s | This problem asks us to rank students based on the sentiment of wor… |
+| 2512 | [Reward Top K Students](2512.md) | 🟡 Medium | 45s | The problem asks us to compute a ranking of students based on textu… |
 | 2513 | [Minimize the Maximum of Two Arrays](2513.md) | 🟡 Medium | 1m 17s | The problem gives us two empty arrays, arr1 and arr2, and asks us t… |
-| 2514 | [Count Anagrams](2514.md) | 🔴 Hard | 1m 28s | The problem asks us to count how many distinct sentence anagrams ca… |
-| 2515 | [Shortest Distance to Target String in a Circular Array](2515.md) | 🟢 Easy | 45s | The problem asks us to find the shortest distance from a given star… |
+| 2514 | [Count Anagrams](2514.md) | 🔴 Hard | 1m 17s | The problem asks us to count how many distinct anagram sentences ca… |
+| 2515 | [Shortest Distance to Target String in a Circular Array](2515.md) | 🟢 Easy | 51s | The problem asks us to find the shortest distance from a given star… |
 | 2516 | [Take K of Each Character From Left and Right](2516.md) | 🟡 Medium | 51s | The problem asks us to determine the minimum number of characters t… |
 | 2517 | [Maximum Tastiness of Candy Basket](2517.md) | 🟡 Medium | 1m 15s | The problem gives us an array price where each element represents t… |
 | 2518 | [Number of Great Partitions](2518.md) | 🔴 Hard | 1m | The problem requires us to partition an array of positive integers … |
 | 2519 | [Count the Number of K-Big Indices](2519.md) | 🔴 Hard | 1m 19s | This problem asks us to determine how many indices in an array sati… |
 | 2520 | [Count the Digits That Divide a Number](2520.md) | 🟢 Easy | 55s | The problem asks us to determine, given a positive integer num, how… |
-| 2521 | [Distinct Prime Factors of Product of Array](2521.md) | 🟡 Medium | 1m 27s | The problem asks us to determine how many unique prime numbers appe… |
+| 2521 | [Distinct Prime Factors of Product of Array](2521.md) | 🟡 Medium | 44s | The problem asks us to compute the number of distinct prime factors… |
 | 2522 | [Partition String Into Substrings With Values at Most K](2522.md) | 🟡 Medium | 1m 10s | The problem gives us a numeric string s, where every character is a… |
 | 2523 | [Closest Prime Numbers in Range](2523.md) | 🟡 Medium | 1m 15s | The problem asks us to find two prime numbers inside a given inclus… |
 | 2524 | [Maximum Frequency Score of a Subarray](2524.md) | 🔴 Hard | 48s | The problem asks us to compute the maximum frequency score among al… |
-| 2525 | [Categorize Box According to Criteria](2525.md) | 🟢 Easy | 1m 5s | This problem asks us to classify a box into one of four categories … |
+| 2525 | [Categorize Box According to Criteria](2525.md) | 🟢 Easy | 53s | The problem requires categorizing a box based on its dimensions and… |
 | 2526 | [Find Consecutive Integers from a Data Stream](2526.md) | 🟡 Medium | 57s | The problem asks us to design a data structure that continuously pr… |
 | 2528 | [Maximize the Minimum Powered City](2528.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum possible minimum power… |
 | 2529 | [Maximum Count of Positive Integer and Negative Integer](2529.md) | 🟢 Easy | 8m 19s | The problem gives us a sorted integer array nums in non-decreasing … |
+| 2530 | [Maximal Score After Applying K Operations](2530.md) | 🟡 Medium | 52s | The problem asks us to maximize a score after performing exactly k … |
 | 2531 | [Make Number of Distinct Characters Equal](2531.md) | 🟡 Medium | 1m 21s | The problem is a pure inequality with a geometric constraint. The c… |
 | 2532 | [Time to Cross a Bridge](2532.md) | 🔴 Hard | 57s | The problem asks us to simulate a scenario in which k workers trans… |
 | 2533 | [Number of Good Binary Strings](2533.md) | 🟡 Medium | 45s | The problem asks us to count how many binary strings satisfy a very… |
