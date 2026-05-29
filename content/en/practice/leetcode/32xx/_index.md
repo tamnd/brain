@@ -59,19 +59,24 @@ draft: false
 | 3248 | [Snake in Matrix](3248.md) | 🟢 Easy | 1m 3s | The problem describes a snake moving inside an n x n grid. Every ce… |
 | 3249 | [Count the Number of Good Nodes](3249.md) | 🟡 Medium | 2m 13s | We are given an undirected tree with n nodes labeled from 0 to n - … |
 | 3250 | [Find the Count of Monotonic Pairs I](3250.md) | 🔴 Hard | 1m 29s | The problem asks us to count the number of valid pairs of arrays (a… |
+| 3251 | [Find the Count of Monotonic Pairs II](3251.md) | 🔴 Hard | 58s | The problem asks us to count the number of ways we can split an arr… |
 | 3252 | [Premier League Table Ranking II](3252.md) | 🟡 Medium | 53s | The problem asks us to compute a Premier League-style ranking table… |
+| 3253 | [Construct String with Minimum Cost (Easy)](3253.md) | 🟡 Medium | 40s | === 1996-N5 === Origin: ROM Let denote the set of nonnegative integ… |
 | 3254 | [Find the Power of K-Size Subarrays I](3254.md) | 🟡 Medium | 1m 14s | The problem asks us to examine every contiguous subarray of length … |
 | 3255 | [Find the Power of K-Size Subarrays II](3255.md) | 🟡 Medium | 1m 10s | The problem asks us to evaluate every contiguous subarray of length… |
 | 3256 | [Maximum Value Sum by Placing Three Rooks I](3256.md) | 🔴 Hard | 1m 24s | We are given an m x n matrix called board, where each cell contains… |
 | 3257 | [Maximum Value Sum by Placing Three Rooks II](3257.md) | 🔴 Hard | 1m 18s | We are given an m x n matrix called board, where each cell contains… |
 | 3258 | [Count Substrings That Satisfy K-Constraint I](3258.md) | 🟢 Easy | 1m 9s | The problem gives us a binary string s, meaning the string contains… |
+| 3259 | [Maximum Energy Boost From Two Drinks](3259.md) | 🟡 Medium | 54s | This problem is asking you to plan the consumption of two energy dr… |
 | 3261 | [Count Substrings That Satisfy K-Constraint II](3261.md) | 🔴 Hard | 1m 34s | We are given a binary string s, an integer k, and many range querie… |
 | 3262 | [Find Overlapping Shifts](3262.md) | 🟡 Medium | 1m 43s | The problem requires counting overlapping shifts for each employee … |
 | 3263 | [Convert Doubly Linked List to Array I](3263.md) | 🟢 Easy | 51s | The problem asks us to convert a doubly linked list into a standard… |
 | 3264 | [Final Array State After K Multiplication Operations I](3264.md) | 🟢 Easy | 1m 14s | This problem asks us to repeatedly modify an array according to a v… |
+| 3265 | [Count Almost Equal Pairs I](3265.md) | 🟡 Medium | 52s | The problem asks us to find the number of index pairs (i, j) in an … |
 | 3266 | [Final Array State After K Multiplication Operations II](3266.md) | 🔴 Hard | 1m 35s | The problem gives us an integer array nums, an integer k, and an in… |
 | 3267 | [Count Almost Equal Pairs II](3267.md) | 🔴 Hard | 1m 23s | We are given an array nums containing positive integers. We need to… |
 | 3268 | [Find Overlapping Shifts II](3268.md) | 🔴 Hard | 49s | The problem asks us to analyze shift overlaps for employees. We are… |
+| 3269 | [Constructing Two Increasing Arrays](3269.md) | 🔴 Hard | 1m 29s | We are given two binary arrays, nums1 and nums2. Each element is ei… |
 | 3271 | [Hash Divided String](3271.md) | 🟡 Medium | 52s | The problem asks us to compute a hashed string from an input string… |
 | 3272 | [Find the Count of Good Integers](3272.md) | 🔴 Hard | 1m 15s | The problem asks us to count n-digit integers that are "good" with … |
 | 3273 | [Minimum Amount of Damage Dealt to Bob](3273.md) | 🔴 Hard | 1m 33s | This problem asks us to determine the minimum total damage Bob will… |
@@ -81,6 +86,7 @@ draft: false
 | 3277 | [Maximum XOR Score Subarray Queries](3277.md) | 🔴 Hard | 1m 35s | The problem gives us an integer array nums and several range querie… |
 | 3278 | [Find Candidates for Data Scientist Position II](3278.md) | 🟡 Medium | 2m 1s | This problem asks us to determine the best candidate for every proj… |
 | 3279 | [Maximum Total Area Occupied by Pistons](3279.md) | 🔴 Hard | 1m 10s | This problem is about simulating the motion of pistons in a car eng… |
+| 3280 | [Convert Date to Binary](3280.md) | 🟢 Easy | 1m 13s | The problem gives us a date string in the format yyyy-mm-dd. The ye… |
 | 3281 | [Maximize Score of Numbers in Ranges](3281.md) | 🟡 Medium | 50s | The problem presents a list of intervals derived from the start arr… |
 | 3282 | [Reach End of Array With Max Score](3282.md) | 🟡 Medium | 1m 12s | We are given an integer array nums, where each position represents … |
 | 3285 | [Find Indices of Stable Mountains](3285.md) | 🟢 Easy | 46s | The problem asks us to find indices of "stable" mountains from a gi… |

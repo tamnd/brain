@@ -15,8 +15,8 @@ draft: false
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 22m51s |
-| [2](2.md) | solved | 31m22s |
-| [3](3.md) | solved | 6m58s |
+| [2](2.md) | solved | 22m03s |
+| [3](3.md) | solved | 22m52s |
 | [4](4.md) | solved | 14m45s |
 | [5](5.md) | solved | 9m42s |
 | [6](6.md) | solved | 5m08s |
@@ -27,11 +27,11 @@ Point $O$ lies on line $g$; $\overrightarrow{OP_1}, \overrightarrow{OP_2}, \ldot
 \left\vert \overrightarrow{OP_1} + \overrightarrow{OP_2} + \ldots + \overrightarrow{OP_n} \right\vert \geq 1
 $$ Here $\left\vert \overrightarrow{OM} \right\vert$ denotes the length of vector $\overrightarrow{OM}$.
 
-**Problem 2** &nbsp; *solved* · 31m22s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 22m03s · [Solution →](2.md)
 
 Determine whether or not there exists a finite set $M$ of points in space not lying in the same plane such that, for any two points $A$ and $B$ of $M$, one can select two other points $C$ and $D$ of $M$ so that lines $AB$ and $CD$ are parallel and not coincident.
 
-**Problem 3** &nbsp; *solved* · 6m58s · [Solution →](3.md)
+**Problem 3** &nbsp; *solved* · 22m52s · [Solution →](3.md)
 
 Let $a$ and $b$ be real numbers for which the equation $$
 x^4 + ax^3 + bx^2 + ax + 1 = 0
