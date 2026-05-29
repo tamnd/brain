@@ -1,6 +1,6 @@
 ---
 title: "IMO 1963"
-description: "IMO 1963 — 1/6 solved."
+description: "IMO 1963 — 2/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1963
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1963
 
-[Official IMO 1963 problems](https://www.imo-official.org/year_info.aspx?year=1963) &nbsp;·&nbsp; 1/6 solved.
+[Official IMO 1963 problems](https://www.imo-official.org/year_info.aspx?year=1963) &nbsp;·&nbsp; 2/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | solved | 11m46s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | [5](5.md) | solved | 5m45s |
 | 6 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 11m46s · [Solution →](1.md)
 
 Find all real roots of the equation
 
