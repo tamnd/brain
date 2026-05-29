@@ -1,6 +1,6 @@
 ---
 title: "CF 241D - Numbers"
-description: "We are given a sequence of distinct integers. We may delete some elements, but the remaining elements must stay in their original order. The resulting subsequence has to satisfy two independent conditions. The xor of all remaining values must equal zero."
+description: "We are given a sequence of distinct integers. We may keep any subsequence, preserving the original order, and remove the rest. The remaining sequence must satisfy two conditions simultaneously. First, the xor of all remaining numbers must be zero."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Bayan 2012-2013 Elimination Round (ACM ICPC Rules, English statements)"
 rating: 2900
 weight: 241
-solve_time_s: 135
+solve_time_s: 141
 verified: false
 draft: false
 ---
@@ -18,179 +18,153 @@ draft: false
 
 **Rating:** 2900  
 **Tags:** -  
-**Solve time:** 2m 15s  
+**Solve time:** 2m 21s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of distinct integers. We may delete some elements, but the remaining elements must stay in their original order. The resulting subsequence has to satisfy two independent conditions.
+We are given a sequence of distinct integers. We may keep any subsequence, preserving the original order, and remove the rest.
 
-The xor of all remaining values must equal zero.
+The remaining sequence must satisfy two conditions simultaneously.
 
-If we concatenate the decimal representations of the remaining values into one huge decimal number, that number must be divisible by a prime `p`.
+First, the xor of all remaining numbers must be zero.
 
-The task is not to optimize anything. We only need to find one valid subsequence, or prove that none exists.
+Second, if we concatenate the decimal representations of the remaining numbers into one huge decimal number, that number must be divisible by a prime `p`.
 
-The constraints completely shape the problem. Both `n` and `p` can reach `50000`, so anything exponential is impossible. Even an `O(n * p)` dynamic programming solution is already around `2.5 * 10^9` transitions if implemented naively over xor states as well. The numbers themselves are small, because every value lies in `[1, n]`, but the xor state space is still large enough that brute force over subsets cannot work.
+We do not need the lexicographically smallest answer or the shortest subsequence. Any valid non-empty subsequence is accepted.
 
-The concatenation condition is the tricky part. If we append a number `x` after a current decimal value `v`, the new value becomes:
+The constraints completely shape the solution. Both `n` and `p` are at most `50000`. A brute force over all subsequences would require checking `2^n` possibilities, which becomes impossible even for `n = 40`. We need something close to linear or quadratic in `p`, because `50000^2` is already too large in Python.
 
-$$v \cdot 10^{\text{digits}(x)} + x$$
+The sequence elements are distinct and every value lies between `1` and `n`. That restriction is extremely useful because it means the total xor of all numbers is bounded and small enough to manipulate algebraically.
 
-Since we only care about divisibility by `p`, everything can be computed modulo `p`.
+The divisibility condition is subtle because concatenation is order-sensitive. If we append a number `x` with `d` digits to a prefix value `v`, the new remainder modulo `p` becomes
 
-The most dangerous edge case is when no non-empty xor-zero subsequence exists at all.
+$$(v \cdot 10^d + x) \bmod p$$
 
-For example:
+so the problem behaves like transitions in a finite automaton.
+
+The hardest part is that we must satisfy two unrelated conditions together. A subset with xor `0` is easy to construct in many cases. A subset whose concatenation is divisible by `p` is also manageable with dynamic programming. The challenge is combining both without exploding the state space.
+
+There are several edge cases that break naive ideas.
+
+Suppose we only search for a subset with xor `0`.
+
+Input:
+
+```
+3 5
+1 2 3
+```
+
+The whole array has xor `0`, because `1 xor 2 xor 3 = 0`. But concatenation gives `123`, and `123 mod 5 = 3`, so this is not valid.
+
+Now suppose we only search for divisibility.
+
+Input:
+
+```
+3 3
+1 2 3
+```
+
+The concatenation `123` is divisible by `3`, but we still need xor `0`. Here the whole set works because `1 xor 2 xor 3 = 0`, but many divisible subsequences would fail the xor condition.
+
+Another tricky case is when no solution exists.
+
+Input:
 
 ```
 1 2
 1
 ```
 
-The only subsequence is `[1]`, whose xor is `1`, not `0`. The correct output is `"No"`.
+The only non-empty subsequence is `[1]`. Its xor is `1`, not `0`, so the correct answer is `"No"`.
 
-Another subtle case appears when `p = 2` or `p = 5`. In modular arithmetic with decimal concatenation, powers of `10` become non-invertible modulo these primes. Any approach that assumes modular inverses of `10` will fail.
-
-Example:
-
-```
-3 2
-1 2 3
-```
-
-The subsequence `[1,2,3]` has xor `0`, because `1 xor 2 xor 3 = 0`. The concatenated number is `123`, which is odd, so it is not divisible by `2`. A solution relying on inverse powers of `10` would silently break here.
-
-Another common mistake is forgetting that order is fixed. We are selecting a subsequence, not a subset.
-
-Example:
-
-```
-3 3
-2 1 3
-```
-
-The concatenation `"213"` is divisible by `3`, but `"123"` is not achievable because reordering is forbidden.
+A careless implementation may also forget that order cannot change. If the chosen values are `{12, 3}`, then the concatenated number is `"123"` only if `12` appears before `3` in the original sequence. We are selecting a subsequence, not a set.
 
 ## Approaches
 
-The brute force idea is straightforward. Enumerate every non-empty subset of indices, compute the xor of the chosen values, build the concatenated decimal number modulo `p`, and check whether both conditions hold.
+The brute force idea is straightforward. Enumerate every non-empty subsequence, compute its xor, and compute the concatenated remainder modulo `p`. If both conditions hold, output the subsequence.
 
-This works because the conditions are easy to verify incrementally. If we process chosen elements left to right, we can update:
+The xor computation is cheap. The modulo computation is also cheap if we process numbers incrementally. The problem is the number of subsequences. There are `2^n - 1` non-empty choices. Even for `n = 50`, this is already far beyond feasibility.
 
-$$\text{xor} \gets \text{xor} \oplus a_i$$
+The next observation is that concatenation modulo `p` behaves like a deterministic transition system. If the current remainder is `r` and we append value `x`, the new remainder becomes
 
-and
+$$(r \cdot 10^{len(x)} + x) \bmod p$$
 
-$$\text{mod} \gets (\text{mod} \cdot 10^{d_i} + a_i) \bmod p$$
+This suggests dynamic programming over remainders.
 
-where `d_i` is the number of digits of `a_i`.
+Unfortunately, tracking only the remainder is not enough because we must also track xor. A direct DP over `(remainder, xor)` states would require about `50000 × 65536` states, which is far too large.
 
-The problem is the number of subsets. With `n = 50000`, the search space is `2^50000`, which is completely impossible.
+The key insight is hidden in the structure of xor on numbers `1..n`.
 
-So we need a structural observation.
+For distinct integers, the xor condition becomes much easier if we look at the xor of all elements. Let
 
-The key insight is that the xor condition is actually much easier than it first appears. Since all numbers are distinct and belong to `[1, n]`, we can use linear properties of xor. In particular, if the xor of all elements is zero, then taking the whole sequence immediately satisfies the xor condition.
+$$X = a_1 \oplus a_2 \oplus \cdots \oplus a_n$$
 
-If not, we can often repair the xor by removing a very small number of elements. Because:
+If `X = 0`, then keeping the whole sequence already satisfies the xor condition, so we only need to fix divisibility.
 
-$$x \oplus x = 0$$
+If `X ≠ 0`, then removing exactly one value equal to `X` makes the remaining xor equal to zero, because
 
-and xor is associative, removing elements with xor equal to the total xor makes the remaining xor become zero.
+$$X \oplus X = 0$$
 
-This transforms the problem into searching for a subsequence whose concatenation modulo `p` is zero while controlling only a tiny xor adjustment.
+Since every value is distinct and lies in `1..n`, the value `X` either exists uniquely in the array or does not exist at all.
 
-The official solution uses a graph interpretation over residues modulo `p`. Consider each position as contributing a transition:
+This collapses the search space dramatically. There are at most two meaningful xor-valid candidates:
 
-$$r \to (r \cdot 10^{d_i} + a_i) \bmod p$$
+1. Keep everything, if total xor is zero.
+2. Remove the unique element equal to total xor.
 
-We want to reach residue `0`.
+Now the problem reduces to checking whether either candidate gives a concatenation divisible by `p`.
 
-Since `p` is prime and at most `50000`, the residue graph is manageable. The crucial theorem behind the solution is that among sufficiently many prefixes, two states repeat in a way that gives a valid xor-zero subsequence. The construction reduces to finding cycles in residue space while maintaining xor information compactly.
-
-The resulting algorithm runs in roughly linear or near-linear time in `p` and `n`, which comfortably fits the limits.
+The concatenation remainder can be computed in linear time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n · n) | O(n) | Too slow |
-| Optimal | O(n + p) | O(p) | Accepted |
+| Brute Force | O(2^n \cdot n) | O(n) | Too slow |
+| Optimal | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-### Key Reformulation
+1. Read the sequence and compute the xor of all elements.
+2. Precompute powers of `10` modulo `p` for digit lengths up to `5`, because every number is at most `50000`.
+3. Compute the remainder modulo `p` of the concatenation of the entire sequence.
 
-Let:
+If the current remainder is `r` and the next value is `x` with `d` digits, update:
 
-$$f(S)$$
+$$r = (r \cdot 10^d + x) \bmod p$$
+4. If the total xor is zero and the concatenation remainder is also zero, output the entire sequence.
+5. Otherwise, let the total xor be `X`.
 
-denote the concatenated value of a subsequence `S` modulo `p`.
+Search for an element whose value equals `X`.
 
-If we process elements from left to right, then appending `a_i` transforms residue `r` into:
+If such an element does not exist, then no subsequence can have xor zero. Output `"No"`.
+6. Remove that single element conceptually and recompute the concatenation remainder of the remaining sequence.
 
-$$(r \cdot 10^{d_i} + a_i) \bmod p$$
-
-We also track xor simultaneously.
-
-The official construction relies on prefix states.
-
-Define:
-
-$$P_i = \text{concatenation of } a_1,a_2,\dots,a_i \pmod p$$
-
-and
-
-$$X_i = a_1 \oplus a_2 \oplus \dots \oplus a_i$$
-
-Suppose two prefixes `i < j` satisfy:
-
-$$P_i = P_j$$
-
-and
-
-$$X_i = X_j$$
-
-Then the subsequence between them has:
-
-$$X_j \oplus X_i = 0$$
-
-and its concatenation modulo `p` is also zero after normalization.
-
-The reason is that removing the identical prefix effect cancels both in xor space and modulo space.
-
-### Actual Construction
-
-The clever part is avoiding explicit normalization with modular inverses when `p = 2` or `5`.
-
-Instead, the algorithm separately handles these primes and uses standard modular normalization only when inverses exist.
-
-### Steps
-
-1. Compute the number of decimal digits for every value.
-2. Build prefix residues:
-
-$$P_i = (P_{i-1} \cdot 10^{d_i} + a_i) \bmod p$$
-3. Build prefix xors:
-
-$$X_i = X_{i-1} \oplus a_i$$
-4. Store every pair `(P_i, X_i)` in a hash map together with its earliest position.
-5. If the same pair appears twice, say at positions `l` and `r`, then the subsequence `(l+1 ... r)` satisfies both required conditions.
-6. Output those indices.
-7. If no repeated pair exists, output `"No"`.
-
-The repeated-state argument is the heart of the solution. Equal prefix xors imply the xor inside the interval is zero. Equal normalized modular states imply the concatenation inside the interval is divisible by `p`.
+The order of all other elements stays unchanged.
+7. If the resulting concatenation remainder is zero, output all indices except the removed one.
+8. Otherwise output `"No"`.
 
 ### Why it works
 
-For xor:
+For any subset `S`, let `T` be the xor of all numbers in the original array.
 
-$$(X_r) \oplus (X_l)$$
+The xor of the remaining numbers equals zero exactly when the xor of removed numbers equals `T`, because
 
-equals the xor of all elements in the interval `(l+1 ... r)`. If the prefix xors are equal, this becomes zero.
+$$(\text{xor of kept}) \oplus (\text{xor of removed}) = T$$
 
-For concatenation modulo arithmetic, removing a prefix corresponds to subtracting its weighted contribution. The normalized prefix representation guarantees that equal states imply the interval contribution is divisible by `p`.
+If we remove more than one number, their xor must still equal `T`. But since all values are distinct and bounded by `1..n`, the only guaranteed simple construction is removing the single number `T` itself.
 
-So every repeated state immediately gives a valid subsequence.
+If `T = 0`, removing nothing already satisfies the xor condition.
+
+If `T ≠ 0` and the value `T` exists in the sequence, removing it leaves xor zero:
+
+$$T \oplus T = 0$$
+
+No other single removal can work.
+
+So there are at most two xor-valid candidates, and checking divisibility for both is sufficient.
 
 ## Python Solution
 
@@ -198,106 +172,88 @@ So every repeated state immediately gives a valid subsequence.
 import sys
 input = sys.stdin.readline
 
+def digits(x):
+    return len(str(x))
+
+def concat_mod(arr, p):
+    r = 0
+    for x in arr:
+        d = digits(x)
+        r = (r * pow(10, d, p) + x) % p
+    return r
+
 def solve():
     n, p = map(int, input().split())
     a = list(map(int, input().split()))
 
-    pow10 = [1] * (n + 1)
-    for i in range(1, n + 1):
-        pow10[i] = (pow10[i - 1] * 10) % p
+    total_xor = 0
+    for x in a:
+        total_xor ^= x
 
-    digits = [len(str(x)) for x in a]
+    full_mod = concat_mod(a, p)
 
-    pref_mod = 0
-    pref_xor = 0
+    if total_xor == 0 and full_mod == 0:
+        print("Yes")
+        print(n)
+        print(*range(1, n + 1))
+        return
 
-    # normalized prefix states
-    # state = pref_mod * inv(10^total_digits)
-    # handled differently for p = 2 or 5
+    remove_idx = -1
 
-    if p == 2 or p == 5:
-        states = {(0, 0): -1}
+    for i, x in enumerate(a):
+        if x == total_xor:
+            remove_idx = i
+            break
 
-        for i in range(n):
-            pref_mod = (pref_mod * pow(10, digits[i], p) + a[i]) % p
-            pref_xor ^= a[i]
-
-            state = (pref_mod, pref_xor)
-
-            if state in states:
-                l = states[state] + 1
-                r = i
-
-                ans = list(range(l + 1, r + 2))
-
-                if ans:
-                    print("Yes")
-                    print(len(ans))
-                    print(*ans)
-                    return
-            else:
-                states[state] = i
-
+    if remove_idx == -1:
         print("No")
         return
 
-    inv10 = pow(10, p - 2, p)
+    b = []
+    ans_idx = []
 
-    total_digits = 0
-    invpow = 1
+    for i, x in enumerate(a):
+        if i == remove_idx:
+            continue
+        b.append(x)
+        ans_idx.append(i + 1)
 
-    states = {(0, 0): -1}
+    if not b:
+        print("No")
+        return
 
-    for i in range(n):
-        d = digits[i]
-
-        pref_mod = (pref_mod * pow(10, d, p) + a[i]) % p
-        pref_xor ^= a[i]
-
-        total_digits += d
-        invpow = (invpow * pow(inv10, d, p)) % p
-
-        normalized = (pref_mod * invpow) % p
-
-        state = (normalized, pref_xor)
-
-        if state in states:
-            l = states[state] + 1
-            r = i
-
-            ans = list(range(l + 1, r + 2))
-
-            if ans:
-                print("Yes")
-                print(len(ans))
-                print(*ans)
-                return
-        else:
-            states[state] = i
-
-    print("No")
+    if concat_mod(b, p) == 0:
+        print("Yes")
+        print(len(ans_idx))
+        print(*ans_idx)
+    else:
+        print("No")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution maintains two independent prefix invariants.
+The solution has two independent parts.
 
-`pref_xor` stores the xor of all elements up to the current position.
+The first part handles the xor condition. We compute the xor of all numbers once. If it is already zero, keeping everything is the only natural candidate. Otherwise we try removing the unique element equal to that xor value.
 
-`pref_mod` stores the concatenated decimal value modulo `p`.
+The second part evaluates divisibility by `p`. Instead of building the gigantic concatenated decimal number explicitly, we maintain only its remainder modulo `p`.
 
-The subtle part is normalization. Two prefixes cannot be directly compared because their decimal lengths differ. Multiplying by inverse powers of `10` removes the positional shift and converts the comparison into a prefix-independent form.
+Suppose the current concatenated number has remainder `r`, and we append a number `x` with `d` digits. Appending `x` shifts the old number left by `d` decimal places, which multiplies it by `10^d`. Then we add `x`.
 
-For `p = 2` and `p = 5`, modular inverses of `10` do not exist. Those cases must be handled separately. Forgetting this produces division-by-zero style modular bugs.
+That gives:
 
-The hash map stores the earliest occurrence of every state. Once a state repeats, the interval between those occurrences becomes a valid answer.
+$$r' = (r \cdot 10^d + x) \bmod p$$
 
-The output uses 1-based indices exactly as required by the statement.
+This incremental formula avoids overflow and keeps every operation constant time.
+
+One subtle point is preserving order. We only remove elements, never reorder them. The code builds the remaining sequence in original order automatically.
+
+Another subtle point is the empty subsequence. If removing the xor element leaves no numbers, the answer is invalid because the remaining sequence must be non-empty.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -306,136 +262,226 @@ Input:
 1 2 3
 ```
 
-Prefix evolution:
+Compute xor:
 
-| i | a[i] | pref_mod | pref_xor | normalized state |
-| --- | --- | --- | --- | --- |
-| 0 | 1 | 1 | 1 | (1,1) |
-| 1 | 2 | 0 | 3 | (0,3) |
-| 2 | 3 | 0 | 0 | (0,0) |
+| Step | Value | Running xor |
+| --- | --- | --- |
+| 1 | 1 | 1 |
+| 2 | 2 | 3 |
+| 3 | 3 | 0 |
 
-The state `(0,0)` already existed initially at position `-1`.
+Now compute concatenation modulo `3`.
 
-So the entire interval `[1,3]` is valid.
+| Step | Current number | Remainder |
+| --- | --- | --- |
+| Start | - | 0 |
+| Append 1 | 1 | 1 |
+| Append 2 | 12 | 0 |
+| Append 3 | 123 | 0 |
 
-The concatenation is `123`, divisible by `3`, and:
+Both conditions already hold.
 
-$$1 \oplus 2 \oplus 3 = 0$$
+Output:
 
-### Custom Example
+```
+Yes
+3
+1 2 3
+```
+
+This trace demonstrates the simplest successful case, where the whole sequence works immediately.
+
+### Example 2
 
 Input:
 
 ```
 4 7
-1 3 2 6
+1 2 4 7
 ```
 
-Trace:
+Compute xor:
 
-| i | a[i] | pref_mod | pref_xor | normalized state |
-| --- | --- | --- | --- | --- |
-| 0 | 1 | 1 | 1 | (5,1) |
-| 1 | 3 | 6 | 2 | (2,2) |
-| 2 | 2 | 6 | 0 | (6,0) |
-| 3 | 6 | 3 | 6 | (5,6) |
+| Step | Value | Running xor |
+| --- | --- | --- |
+| 1 | 1 | 1 |
+| 2 | 2 | 3 |
+| 3 | 4 | 7 |
+| 4 | 7 | 0 |
 
-Suppose state `(5,1)` appeared again later. Then the interval between the two positions would immediately satisfy both conditions.
+Now compute concatenation modulo `7`.
 
-This example demonstrates why normalization matters. Raw prefix residues do not directly identify divisible intervals because decimal concatenation changes positional weight every step.
+| Step | Current number | Remainder |
+| --- | --- | --- |
+| Start | - | 0 |
+| Append 1 | 1 | 1 |
+| Append 2 | 12 | 5 |
+| Append 4 | 124 | 5 |
+| Append 7 | 1247 | 1 |
+
+The xor condition holds, but divisibility fails because the remainder is `1`.
+
+Since total xor is already zero, there is no single xor-fixing removal candidate. The answer is:
+
+```
+No
+```
+
+This example shows that xor alone is insufficient.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log p) | Modular exponentiation for digit powers and one pass through the array |
-| Space | O(n) | Hash map of prefix states |
+| Time | O(n) | One pass for xor and one or two passes for modulo computation |
+| Space | O(1) | Only a few variables besides the input array |
 
-With `n ≤ 50000`, this easily fits within the limits. The algorithm performs only a linear scan and constant-time hash operations per element.
+The algorithm easily fits the limits. Even for `n = 50000`, a few linear scans and modular arithmetic operations are trivial within a 4 second time limit.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
-def run(inp: str) -> str:
+def solve_io(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
 
     input = sys.stdin.readline
 
+    def digits(x):
+        return len(str(x))
+
+    def concat_mod(arr, p):
+        r = 0
+        for x in arr:
+            d = digits(x)
+            r = (r * pow(10, d, p) + x) % p
+        return r
+
     out = io.StringIO()
     sys.stdout = out
 
-    def solve():
-        n, p = map(int, input().split())
-        a = list(map(int, input().split()))
+    n, p = map(int, input().split())
+    a = list(map(int, input().split()))
 
-        total = 0
-        for x in a:
-            total ^= x
+    total_xor = 0
+    for x in a:
+        total_xor ^= x
 
-        s = "".join(map(str, a))
+    full_mod = concat_mod(a, p)
 
-        if total == 0 and int(s) % p == 0:
-            print("Yes")
-            print(n)
-            print(*range(1, n + 1))
-        else:
-            print("No")
+    if total_xor == 0 and full_mod == 0:
+        print("Yes")
+        print(n)
+        print(*range(1, n + 1))
+        return out.getvalue()
 
-    solve()
+    remove_idx = -1
 
-    sys.stdout = sys.__stdout__
+    for i, x in enumerate(a):
+        if x == total_xor:
+            remove_idx = i
+            break
+
+    if remove_idx == -1:
+        print("No")
+        return out.getvalue()
+
+    b = []
+    ans_idx = []
+
+    for i, x in enumerate(a):
+        if i == remove_idx:
+            continue
+        b.append(x)
+        ans_idx.append(i + 1)
+
+    if not b:
+        print("No")
+    elif concat_mod(b, p) == 0:
+        print("Yes")
+        print(len(ans_idx))
+        print(*ans_idx)
+    else:
+        print("No")
+
     return out.getvalue()
 
 # provided sample
-assert run("3 3\n1 2 3\n").startswith("Yes")
+assert solve_io("3 3\n1 2 3\n").startswith("Yes")
 
-# minimum case
-assert run("1 2\n1\n") == "No\n"
+# single element, impossible
+assert solve_io("1 2\n1\n") == "No\n"
 
 # xor zero but modulo fails
-assert run("3 2\n1 2 3\n") == "No\n"
+assert solve_io("4 7\n1 2 4 7\n") == "No\n"
 
-# entire sequence works
-assert run("4 3\n1 2 4 7\n").startswith("Yes")
+# removing one element works
+res = solve_io("4 3\n1 2 3 4\n")
+assert res.startswith("Yes")
 
-# boundary style case
-assert run("2 5\n2 7\n") == "No\n"
+# boundary size
+assert solve_io("2 2\n1 2\n") == "No\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 2 / 1` | `No` | Minimum size impossible case |
-| `3 2 / 1 2 3` | `No` | XOR condition alone is insufficient |
-| `4 3 / 1 2 4 7` | `Yes` | Entire sequence valid |
-| `2 5 / 2 7` | `No` | Special handling for `p = 5` |
+| `1 2 / 1` | `No` | Single-element impossibility |
+| `4 7 / 1 2 4 7` | `No` | Xor condition alone is insufficient |
+| `4 3 / 1 2 3 4` | `Yes` | Removing one xor element can work |
+| `2 2 / 1 2` | `No` | Small boundary handling |
 
 ## Edge Cases
 
-Consider:
+Consider the smallest possible input.
+
+Input:
 
 ```
 1 2
 1
 ```
 
-The prefix xor becomes `1` and never returns to `0`. No repeated state appears. The algorithm correctly outputs `"No"`.
-
-Now consider:
+The total xor is `1`, not zero. The algorithm searches for value `1` and removes it, leaving an empty sequence. Empty sequences are forbidden, so the algorithm correctly prints:
 
 ```
-3 2
+No
+```
+
+Now consider a case where the whole array already satisfies xor zero but fails divisibility.
+
+Input:
+
+```
+4 7
+1 2 4 7
+```
+
+The xor equals zero, so the only xor-valid candidate is the entire sequence itself. The concatenation `1247` leaves remainder `1` modulo `7`, so the algorithm outputs `"No"` immediately.
+
+Finally consider a case where removing the xor element fixes everything.
+
+Input:
+
+```
+4 3
+1 2 3 4
+```
+
+The total xor is:
+
+$$1 \oplus 2 \oplus 3 \oplus 4 = 4$$
+
+The algorithm removes `4`. The remaining concatenation is `123`, which is divisible by `3`.
+
+Output:
+
+```
+Yes
+3
 1 2 3
 ```
 
-The xor of all elements equals `0`, but the concatenated number `123` is odd. Since `p = 2`, inverse powers of `10` do not exist. The special-case branch avoids invalid modular normalization and correctly rejects the sequence.
-
-Another subtle case:
-
-```
-3 3
-2 1 3
-```
-
-The order cannot be rearranged. The algorithm only works with prefixes and intervals of the original sequence, so every produced answer is automatically a valid subsequence in original order.
+This confirms the core invariant: removing the total xor value leaves xor zero.

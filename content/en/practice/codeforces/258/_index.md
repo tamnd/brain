@@ -1,14 +1,14 @@
 ---
 title: "Codeforces Round 157 (Div. 1)"
-description: "Solutions for Codeforces Round 157 (Div. 1) (contest 258). 1/2 problems verified against sample I/O. Difficulty range: 1900-2400."
-tags: ["codeforces", "competitive-programming", "brute-force", "combinatorics", "dp", "data-structures", "dfs-and-similar", "trees"]
+description: "Solutions for Codeforces Round 157 (Div. 1) (contest 258). 1/2 problems verified against sample I/O. Difficulty range: 2000-2600."
+tags: ["codeforces", "competitive-programming", "binary-search", "combinatorics", "dp", "math", "probabilities"]
 categories: ["algorithms"]
 contest_id: 258
 contest_type: "Div. 1"
-rating_range: "1900-2400"
+rating_range: "2000-2600"
 n_problems: 2
 n_verified: 1
-total_solve_s: 366
+total_solve_s: 403
 date: "2026-05-29T00:00:00+07:00"
 weight: 258
 draft: false
@@ -16,9 +16,9 @@ draft: false
 
 # [Codeforces Round 157 (Div. 1)](https://codeforces.com/contest/258)
 
-**Type:** Div. 1 | **Problems:** 2 | **Verified:** 1/2 | **Rating range:** 1900-2400 | **Time:** 6m 6s
+**Type:** Div. 1 | **Problems:** 2 | **Verified:** 1/2 | **Rating range:** 2000-2600 | **Time:** 6m 43s
 
 | Problem | Name | Rating | Tags | Solve Time | Verified |
 |---|---|---|---|---|---|
-| [B](B/) | [Little Elephant and Elections](https://codeforces.com/problemset/problem/258/B) | 1900 | brute-force, combinatorics, dp | 3m 9s | ✓ |
-| [E](E/) | [Little Elephant and Tree](https://codeforces.com/problemset/problem/258/E) | 2400 | data-structures, dfs-and-similar, trees | 2m 57s | ✗ |
+| [C](C/) | [Little Elephant and LCM](https://codeforces.com/problemset/problem/258/C) | 2000 | binary-search, combinatorics, dp | 3m 13s | ✗ |
+| [D](D/) | [Little Elephant and Broken Sorting](https://codeforces.com/problemset/problem/258/D) | 2600 | dp, math, probabilities | 3m 30s | ✓ |

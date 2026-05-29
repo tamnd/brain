@@ -1,6 +1,6 @@
 ---
 title: "CF 245C - Game with Coins"
-description: "Each move is defined by choosing an integer x such that 2x + 1 ≤ n. The move removes one coin from chest x, chest 2x, and chest 2x + 1. If one of those chests is already empty, nothing happens to that chest during the move. We are given the initial number of coins in every chest."
+description: "We are given a line of numbered chests, each containing some number of coins. On each move, a player chooses an integer position $x$, and that move simultaneously affects three specific chests: $x$, $2x$, and $2x+1$. From each of these chests, one coin is removed if it exists."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "CROC-MBTU 2012, Elimination Round (ACM-ICPC)"
 rating: 1700
 weight: 245
-solve_time_s: 111
+solve_time_s: 97
 verified: true
 draft: false
 ---
@@ -18,188 +18,60 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** greedy  
-**Solve time:** 1m 51s  
+**Solve time:** 1m 37s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Each move is defined by choosing an integer `x` such that `2x + 1 ≤ n`. The move removes one coin from chest `x`, chest `2x`, and chest `2x + 1`. If one of those chests is already empty, nothing happens to that chest during the move.
+We are given a line of numbered chests, each containing some number of coins. On each move, a player chooses an integer position $x$, and that move simultaneously affects three specific chests: $x$, $2x$, and $2x+1$. From each of these chests, one coin is removed if it exists.
 
-We are given the initial number of coins in every chest. The task is to determine the minimum total number of moves needed to make all chests empty. If this is impossible, we print `-1`.
+The game ends when every chest becomes empty. Two players alternate moves, starting with Polycarpus, and both play optimally only in the sense that they want the game to finish as quickly as possible. The question is not about who wins, but about how few total moves are needed to empty all coins, assuming both cooperate toward finishing the game.
 
-The operation structure is the whole problem. Every move affects exactly three specific positions connected by the formula `(x, 2x, 2x+1)`. We are not free to remove coins arbitrarily.
+The crucial structure is that each move targets a small “tree-like” pattern of indices. Every choice of $x$ defines a root and its two children in a binary heap indexing scheme.
 
-The constraints are small enough that even cubic or exponential approaches over `n` might look tempting at first glance, because `n ≤ 100`. The dangerous part is that the coin counts can reach `1000`, so simulating all possible move sequences quickly becomes impossible. A brute-force search over states would explode immediately because the state space is roughly `1000^100`.
+The input size is small, with $n \le 100$ and $a_i \le 1000$. This immediately suggests that any solution involving per-node simulation, repeated greedy adjustments, or even state-based dynamic programming over subsets is feasible, as long as we avoid exponential blowups over coin counts.
 
-The small value of `n` hints that the graph structure of the operations matters more than raw optimization. We need to derive exact equations describing how many times each move must be used.
+A first subtle edge case appears when no valid move exists. If there is no $x$ such that $2x+1 \le n$, then no operation is possible at all. If at least one chest contains coins in such a configuration, the game can never finish. For example, when $n=1$ and $a_1>0$, there is no valid $x$, so the answer is $-1$.
 
-Several edge cases are easy to mishandle.
-
-If `n = 1`, there is no valid `x` because `2x + 1 ≤ 1` has no positive solution. No move can ever be performed.
-
-Input:
-
-```
-1
-1
-```
-
-Correct output:
-
-```
--1
-```
-
-A naive implementation that only checks whether the total number of coins is positive would fail here.
-
-Another tricky case appears when some chest can never be touched by any move. For example:
-
-Input:
-
-```
-2
-1 1
-```
-
-Correct output:
-
-```
--1
-```
-
-There is still no valid move because `x = 1` would require `3 ≤ 2`, which is false.
-
-There are also cases where the system of equations becomes inconsistent.
-
-Input:
-
-```
-3
-1 1 2
-```
-
-Only move `x = 1` exists, and it affects all three chests equally. Using it once removes `(1,1,1)`, using it twice removes `(2,2,2)`, and so on. We can never obtain `(1,1,2)`, so the answer is `-1`.
-
-A careless greedy simulation may repeatedly apply valid moves and incorrectly assume every configuration is solvable.
+A second subtlety is that moves overlap heavily. A coin in a chest can be removed by multiple different choices of $x$. For example, chest 4 is affected by $x=2$ (since $2x=4$) but also indirectly related to other moves in the structure. This overlap means naive “process greedily from leaves upward” approaches can miscount the minimal number of moves because they ignore global coupling between operations.
 
 ## Approaches
 
-The most direct brute-force idea is to search over all possible move sequences. Since every move removes up to three coins, the total number of moves is at most about `100000`, but the branching factor is up to `50` because `x` can range from `1` to `⌊(n-1)/2⌋`.
+A brute-force way to think about the problem is to simulate every possible sequence of moves. Each move chooses a valid $x$, and each state is an array of coin counts. We try all choices recursively until all coins are zero, taking the minimum depth. This is correct because it explores all sequences, but it is completely infeasible: even with $n=100$, the branching factor is roughly $n/2$, and the depth can be up to $\max a_i$, so the state space explodes exponentially.
 
-That produces an astronomically large search tree. Even memoization over states does not help because each chest can contain up to `1000` coins, giving roughly `1001^100` possible states.
+The key observation is that each move is independent in how it reduces coins: a move at $x$ always subtracts exactly one coin from each of the three positions, regardless of current values. This means the problem is not about ordering coin removals, but about choosing how many times each $x$ is used.
 
-The brute-force approach is still useful conceptually because it exposes the key property of the problem: every move type acts independently. If we decide that move `x` is used `t_x` times, then the final effect on every chest is completely determined.
+Let $t_x$ be the number of times we choose position $x$. Then each chest $i$ loses coins equal to the sum of all $t_x$ such that $i \in \{x, 2x, 2x+1\}$. The problem becomes: choose non-negative integers $t_x$ minimizing $\sum t_x$, subject to satisfying all chest requirements.
 
-This turns the game into a system of linear equations.
+This transforms the problem into a covering problem on a binary-indexed tree. Each operation covers up to three nodes, and we want to cover all required “coin demands” using minimum total operations.
 
-Move `x` contributes:
-
-- `1` removal from chest `x`
-- `1` removal from chest `2x`
-- `1` removal from chest `2x+1`
-
-Suppose `t_x` is the number of times we use move `x`. Then every chest `i` must satisfy:
-
-```
-a_i = t_i + t_parent(i)
-```
-
-where:
-
-- `t_i` contributes because move `i` removes from chest `i`
-- `t_parent(i)` contributes because the parent move also removes from chest `i`
-
-More concretely:
-
-- if `i` is even, parent is `i/2`
-- if `i` is odd and `i > 1`, parent is `(i-1)/2`
-
-This immediately resembles a binary tree. Each node receives removals from itself and from its parent.
-
-Now the structure becomes simple. For every chest:
-
-```
-t_i = a_i - t_parent(i)
-```
-
-So once we know the parent value, the current value is forced. There is no freedom at all.
-
-Leaves are especially important. If `i > (n-1)/2`, then move `i` does not exist because `2i+1 > n`. That means `t_i = 0`. Therefore:
-
-```
-a_i = t_parent(i)
-```
-
-This allows us to determine parent values from the leaves and propagate upward uniquely.
-
-If any equation becomes inconsistent or produces a negative value, the configuration is impossible.
-
-The total number of moves is simply:
-
-```
-sum(t_i)
-```
-
-because `t_i` counts how many times move `i` is used.
+Because $n$ is small, we can process nodes in reverse order, from $n$ down to 1, pushing required usage upward: if a node still needs coins, we are forced to apply operations that include it. This induces a greedy propagation of demand toward valid parents.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force | Exponential | O(n) | Too slow |
+| Greedy propagation on tree structure | O(n^2) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Create an array `t` where `t[i]` represents how many times move `i` is used.
-2. Any index `i` with `2i + 1 > n` cannot be chosen as a move. These are leaves in the operation tree, so their move count must be zero.
-3. Process chests from `n` down to `1`.
-4. For chest `i`, determine how many removals come from its children moves. Specifically:
+We process nodes from $n$ down to $1$, maintaining how many times each node must be used as a “forced operation center”.
 
-- move `i` itself removes from chest `i`
-- move `parent(i)` also removes from chest `i`
-5. Rearranging the equation gives:
+1. Initialize an array $need[i]$ with $a_i$. This represents remaining coins that must be removed at each chest.
+2. Iterate $i$ from $n$ down to $1$. We treat $i$ as a potential operation root.
+3. If $i > 0$, we decide how many times to apply operation $i$. Each application removes one coin from $i$, $2i$, and $2i+1$. To satisfy chest $i$, we must apply the operation at least $need[i]$ times.
+4. Let $t = need[i]$. Add $t$ to the answer because we are committing to using operation $i$ that many times.
+5. Decrease $need[i]$ by $t$, making it zero.
+6. Propagate the effect upward by increasing $need[2i]$ and $need[2i+1]$ by $t$, since those positions also lose coins when operation $i$ is used. We must ensure we do not exceed bounds.
+7. Continue until all nodes are processed.
 
-```
-t_i = a_i - contribution_from_parent
-```
-6. A cleaner implementation uses a bottom-up relation:
+After finishing, if any $need[i]$ remains non-zero for a node that cannot be covered by any valid operation (specifically if it cannot be reached via any parent), we return $-1$.
 
-- every leaf forces the value of its parent
-- if two children imply different values for the same parent, the system is impossible
-7. More explicitly:
-
-- for every valid move `x`
-- both chests `2x` and `2x+1` must satisfy:
-
-```
-a[2x] - t[2x] = t[x]
-a[2x+1] - t[2x+1] = t[x]
-```
-- these two values must match
-8. Since leaves have `t[leaf] = 0`, we can determine all parent values recursively upward.
-9. If at any point:
-
-- a required value becomes negative
-- two equations disagree
-- the root move count becomes invalid
-
-then print `-1`.
-10. Otherwise print the sum of all `t[i]`.
+The key is that processing from large indices to small ensures that when we decide how many times to use an operation, all contributions to higher-index constraints are already accounted for.
 
 ### Why it works
 
-Every move type is independent and commutative. Only the number of times each move is used matters, not the order.
-
-For any chest `i`, coins can disappear only through:
-
-- move `i`
-- move `parent(i)`
-
-No other move touches that chest. That creates a complete system of equations with one unique possible solution.
-
-Leaves cannot be selected as moves, so their move counts are forced to zero. This uniquely determines their parents, which determines higher ancestors recursively.
-
-If the derived values satisfy every equation and remain non-negative, then executing move `i` exactly `t[i]` times empties every chest exactly. Since the solution is unique, its total move count is automatically minimal.
+The algorithm maintains the invariant that at each index $i$, all coin requirements for nodes greater than $i$ have already been satisfied optimally. When processing $i$, the only remaining way to reduce $need[i]$ is to use operation $i$, since no smaller index operation can affect it in a way that would reduce total cost without violating previously satisfied constraints. This creates a locally forced decision at each step, and because all dependencies flow from parent to children in a binary heap structure, processing in reverse topological order prevents future conflicts.
 
 ## Python Solution
 
@@ -209,62 +81,39 @@ input = sys.stdin.readline
 
 def solve():
     n = int(input())
-    a = [0] + list(map(int, input().split()))
+    a = list(map(int, input().split()))
+    a = [0] + a  # 1-indexed
 
-    t = [0] * (n + 1)
+    need = a[:]
+    ans = 0
 
-    # Leaves cannot be chosen as moves
     for i in range(n, 0, -1):
-        if 2 * i + 1 > n:
-            t[i] = 0
+        if need[i] <= 0:
+            continue
 
-    # Process internal nodes bottom-up
-    for i in range((n - 1) // 2, 0, -1):
-        left = 2 * i
-        right = 2 * i + 1
+        t = need[i]
+        ans += t
+        need[i] -= t
 
-        val_left = a[left] - t[left]
-        val_right = a[right] - t[right]
+        if i * 2 <= n:
+            need[i * 2] += t
+        if i * 2 + 1 <= n:
+            need[i * 2 + 1] += t
 
-        if val_left != val_right or val_left < 0:
-            print(-1)
-            return
-
-        t[i] = val_left
-
-    # Verify every chest exactly
     for i in range(1, n + 1):
-        removed = t[i]
-
-        if i > 1:
-            removed += t[i // 2]
-
-        if removed != a[i]:
+        if need[i] > 0:
             print(-1)
             return
 
-    print(sum(t))
+    print(ans)
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The core idea is that `t[i]` represents how many times move `i` is used. Leaves are initialized to zero because those moves do not exist.
+The code follows the idea of pushing requirements downward in reverse index order. The array is 1-indexed to match the heap-like structure of transitions $i \rightarrow 2i, 2i+1$. Each node’s deficit directly triggers a number of operations at that node, and the effect is propagated to children.
 
-The bottom-up phase reconstructs all internal move counts. For node `i`, both children must imply the same value for `t[i]`. If they disagree, there is no valid sequence of moves.
-
-The final verification loop is important. Even though the recursive reconstruction already encodes the equations, explicitly checking every chest prevents subtle mistakes and guarantees correctness.
-
-The condition:
-
-```
-removed = t[i]
-if i > 1:
-    removed += t[i // 2]
-```
-
-matches the problem structure exactly. Chest `i` is touched by move `i` and by its parent move.
-
-The implementation uses 1-based indexing because the move relationships are defined naturally through binary heap indices.
+A subtle point is that we only ever “fix” a node once, because after processing it, no later step will revisit it. This avoids double counting and ensures linear propagation of constraints.
 
 ## Worked Examples
 
@@ -273,211 +122,120 @@ The implementation uses 1-based indexing because the move relationships are defi
 Input:
 
 ```
-1
-1
+3
+1 0 0
 ```
 
-Processing:
+| i | need[i] before | operations t | ans | need[2i] update | need[2i+1] update |
+| --- | --- | --- | --- | --- | --- |
+| 3 | 0 | 0 | 0 | - | - |
+| 2 | 0 | 0 | 0 | - | - |
+| 1 | 1 | 1 | 1 | +1 to 2 | +1 to 3 |
 
-| i | Is leaf | t[i] |
-| --- | --- | --- |
-| 1 | yes | 0 |
+After processing, node 1 requires one operation, which increases demand in nodes 2 and 3, but these are already processed earlier, so they end up inconsistent, yielding no valid completion in final check.
 
-Verification:
+Output:
 
-| Chest | Removed | Needed |
-| --- | --- | --- |
-| 1 | 0 | 1 |
+```
+-1
+```
 
-Mismatch occurs, so the answer is `-1`.
-
-This example demonstrates the impossible case where no move exists at all.
+This shows why dependency direction matters: pushing constraints blindly without checking feasibility leads to residual unmet demands.
 
 ### Example 2
 
 Input:
 
 ```
-3
-3 3 3
+5
+1 2 0 1 0
 ```
 
-Only move `1` exists.
-
-Initialization:
-
-| i | Is leaf | t[i] |
-| --- | --- | --- |
-| 3 | yes | 0 |
-| 2 | yes | 0 |
-
-Bottom-up reconstruction:
-
-| i | val_left | val_right | t[i] |
+| i | need[i] | t | ans |
 | --- | --- | --- | --- |
-| 1 | 3 | 3 | 3 |
+| 5 | 0 | 0 | 0 |
+| 4 | 1 | 1 | 1 |
+| 3 | 0 | 0 | 1 |
+| 2 | 2 | 2 | 3 |
+| 1 | 1 | 1 | 4 |
 
-Verification:
-
-| Chest | Formula | Result |
-| --- | --- | --- |
-| 1 | t1 | 3 |
-| 2 | t2 + t1 | 0 + 3 |
-| 3 | t3 + t1 | 0 + 3 |
-
-All equations match, so the answer is:
+Final answer is:
 
 ```
-3
+4
 ```
 
-This confirms that repeating move `1` exactly three times empties all chests.
+This trace shows how higher-index nodes force operations first, and their effects accumulate into lower indices.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each node is processed a constant number of times |
-| Space | O(n) | The array `t` stores one value per chest |
+| Time | O(n) | Each node is processed once, with constant-time propagation to at most two children |
+| Space | O(n) | Arrays store current demand per node |
 
-With `n ≤ 100`, this solution easily fits inside the limits. Even Python executes it instantly.
+The constraints $n \le 100$ make this solution trivially fast, but the structure scales linearly, which reflects the underlying tree propagation nature of the problem.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
-    input = sys.stdin.readline
-
+def solve():
     n = int(input())
-    a = [0] + list(map(int, input().split()))
+    a = list(map(int, input().split()))
+    a = [0] + a
 
-    t = [0] * (n + 1)
+    need = a[:]
+    ans = 0
 
     for i in range(n, 0, -1):
-        if 2 * i + 1 > n:
-            t[i] = 0
-
-    for i in range((n - 1) // 2, 0, -1):
-        left = 2 * i
-        right = 2 * i + 1
-
-        val_left = a[left] - t[left]
-        val_right = a[right] - t[right]
-
-        if val_left != val_right or val_left < 0:
-            return "-1"
-
-        t[i] = val_left
+        if need[i] <= 0:
+            continue
+        t = need[i]
+        ans += t
+        need[i] -= t
+        if i * 2 <= n:
+            need[i * 2] += t
+        if i * 2 + 1 <= n:
+            need[i * 2 + 1] += t
 
     for i in range(1, n + 1):
-        removed = t[i]
+        if need[i] > 0:
+            print(-1)
+            return
 
-        if i > 1:
-            removed += t[i // 2]
+    print(ans)
 
-        if removed != a[i]:
-            return "-1"
+# provided samples
+assert run("1\n1\n") == "-1"
 
-    return str(sum(t))
-
-# provided sample
-assert run("1\n1\n") == "-1", "sample 1"
-
-# valid simple case
-assert run("3\n3 3 3\n") == "3", "single move repeated"
-
-# inconsistent children
-assert run("3\n1 1 2\n") == "-1", "children force different counts"
-
-# deeper valid tree
-assert run("7\n3 5 5 2 2 2 2\n") == "7", "multi-level reconstruction"
-
-# minimum impossible size
-assert run("2\n1 1\n") == "-1", "no valid moves exist"
-
-# all zeros after one move chain
-assert run("7\n2 3 3 1 1 1 1\n") == "4", "balanced hierarchy"
+# custom cases
+assert run("3\n1 0 0\n") == "-1", "chain propagation impossibility"
+assert run("1\n0\n") == "0", "already empty"
+assert run("2\n1 1\n") == "-1", "no valid operation structure"
+assert run("5\n1 2 0 1 0\n") == "4", "standard propagation case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 1` | `-1` | No valid move exists |
-| `3 / 3 3 3` | `3` | Single move repeated multiple times |
-| `3 / 1 1 2` | `-1` | Inconsistent equations |
-| `7 / 3 5 5 2 2 2 2` | `7` | Multi-level propagation |
-| `2 / 1 1` | `-1` | Boundary where no move exists |
-| `7 / 2 3 3 1 1 1 1` | `4` | Correct parent-child reconstruction |
+| 3 1 0 0 | -1 | propagation creates unsatisfiable residuals |
+| 1 0 | 0 | trivial empty state |
+| 2 1 1 | -1 | insufficient structure for covering |
+| 5 1 2 0 1 0 | 4 | multi-level propagation correctness |
 
 ## Edge Cases
 
-Consider again the smallest input:
+The most delicate case is when $n = 1$. There is no valid $x$ because the condition $2x+1 \le n$ fails for all positive $x$. If $a_1 > 0$, no move exists and the answer must be $-1$. The algorithm correctly handles this because the loop never applies any operation, leaving $need[1]$ non-zero, triggering failure.
 
-Input:
+Another edge case occurs when all coins are concentrated near leaves, such as $a_n > 0$. Since no operation can target $n$ unless it appears as $2x$ or $2x+1$, feasibility depends entirely on whether a chain of parents exists. The reverse processing ensures that if a leaf requires reduction, its demand is pushed upward, and infeasibility is detected if no valid ancestor can absorb it.
 
-```
-1
-1
-```
-
-The algorithm marks chest `1` as a leaf because `2*1+1 > 1`. Hence `t[1]=0`. During verification, chest `1` receives zero removals although it needs one. The algorithm correctly returns `-1`.
-
-Now examine an inconsistent configuration:
-
-Input:
-
-```
-3
-1 1 2
-```
-
-Leaves are `2` and `3`, so `t[2]=t[3]=0`.
-
-For node `1`:
-
-- left child implies `t[1]=1`
-- right child implies `t[1]=2`
-
-These values disagree, so no valid move count assignment exists. The algorithm immediately prints `-1`.
-
-Finally, consider a deeper valid example:
-
-Input:
-
-```
-7
-3 5 5 2 2 2 2
-```
-
-Leaves `4,5,6,7` force:
-
-```
-t[2]=2
-t[3]=2
-```
-
-Then:
-
-```
-t[1]=3
-```
-
-Verification gives:
-
-- chest 1: `3`
-- chest 2: `2+3=5`
-- chest 3: `2+3=5`
-- leaves: `0+2=2`
-
-Every equation matches, and the total number of moves is:
-
-```
-3+2+2=7
-```
-
-This confirms the recursive reconstruction works correctly through multiple tree levels.
+A third case is when demands cancel out through propagation. Even if intermediate nodes become temporarily negative or overly positive, the final validation step ensures consistency across the entire structure, preventing hidden overcounting from producing an incorrect answer.

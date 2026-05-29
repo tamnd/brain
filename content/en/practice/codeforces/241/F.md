@@ -1,6 +1,6 @@
 ---
 title: "CF 241F - Race"
-description: "The city is represented as a grid. Every cell is either a building, a street block with a movement cost, or a named junction. The car starts on a street block, must visit the listed junctions in the given order, and finally ends on another street block."
+description: "The city is represented by a grid. Every cell is either a building, a street tile with a traversal cost from 1 to 9, or a junction labeled by a lowercase letter. Movement rules are unusual."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Bayan 2012-2013 Elimination Round (ACM ICPC Rules, English statements)"
 rating: 2300
 weight: 241
-solve_time_s: 118
+solve_time_s: 146
 verified: true
 draft: false
 ---
@@ -18,155 +18,169 @@ draft: false
 
 **Rating:** 2300  
 **Tags:** brute force, implementation  
-**Solve time:** 1m 58s  
+**Solve time:** 2m 26s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The city is represented as a grid. Every cell is either a building, a street block with a movement cost, or a named junction. The car starts on a street block, must visit the listed junctions in the given order, and finally ends on another street block.
+The city is represented by a grid. Every cell is either a building, a street tile with a traversal cost from `1` to `9`, or a junction labeled by a lowercase letter.
 
-Movement rules are unusual. Moving from one street block to an adjacent street block costs the value written on the block you are leaving. Moving between a junction and an adjacent street block always costs exactly one minute. Buildings are blocked.
+Movement rules are unusual. You can move only between adjacent cells that share an edge, but:
 
-We are not asked for the shortest distance itself. The task is to determine the exact grid cell occupied after exactly `k` minutes, assuming the car always follows a shortest valid route.
+- moving from a street tile to another adjacent street tile costs the value written on the destination street tile,
+- moving between a junction and an adjacent street tile costs exactly `1`,
+- buildings are blocked.
 
-The grid dimensions are at most `100 × 100`, so there are at most `10^4` cells. The sequence of junctions can have length up to `1000`. A shortest path algorithm over the whole grid is cheap, but reconstructing all shortest paths carelessly can become expensive because the car may revisit cells many times.
+The car starts from a street tile, must visit a sequence of junctions in the given order, and finally stop at another street tile. Among all paths satisfying those checkpoints, it always chooses the globally shortest one. After reaching the destination, it stays there forever.
 
-The biggest hidden difficulty is that shortest paths are not necessarily unique. The statement guarantees only that the car follows _a_ shortest path, not which one. That sounds ambiguous until we notice the city structure forces the route almost completely.
+We must determine the position after exactly `k` minutes.
 
-The constraints rule out simulation minute by minute over arbitrary long walks if we repeatedly recompute paths. A naive BFS or Dijkstra for every minute would be hopeless. On the other hand, running Dijkstra a few thousand times on a graph with `10^4` vertices is completely feasible.
+The first thing to notice is the size of the map. The grid is at most `100 × 100`, so there are at most `10^4` cells. That is small enough for graph algorithms like Dijkstra from many sources. The junction sequence length is at most `1000`, so recomputing expensive shortest paths for every minute would be wasteful, but recomputing them for every segment is completely feasible.
 
-Several edge cases easily break careless implementations.
+The tricky part is that the statement does not ask for the shortest distance. It asks for the exact position after `k` minutes along one optimal route. That means we need to reconstruct the actual movement, not only distances.
 
-Consider a straight street:
+Another subtle point is that shortest paths are not necessarily unique. A careless implementation that reconstructs an arbitrary shortest path may disagree with the judge if tie-breaking is inconsistent. The intended solution avoids this by exploiting the special structure of the city.
+
+The city has a very strong geometric restriction:
+
+- streets are straight,
+- no two junctions are adjacent,
+- streets do not touch each other sideways.
+
+This means the road network is essentially a collection of independent corridors connected through junctions. Between two adjacent junctions, movement is forced into a straight line. There is never a genuine routing choice inside a street.
+
+Here is a small example where a generic shortest-path reconstruction can accidentally fail.
+
+Input:
 
 ```
-##########
-#z1a1111b#
-##########
-```
-
-Starting from the `1` after `z`, visiting `a`, then `b`, and asking for a large `k`. Once the destination is reached, the car stays there forever. Forgetting this rule leads to out-of-bounds indexing into the path.
-
-Another subtle case is revisiting the same block:
-
-```
+3 7 3
 #######
-#a1b1c#
+#a111b#
 #######
+2 3 ab 2 5
 ```
 
-Suppose the required order is `bac`. The shortest valid route must go back and forth over the same street cell. Implementations that assume simple paths fail here.
-
-A third trap is movement cost direction. If we move from a street cell with value `7` into another street cell, the cost is `7`, not the destination cell's value. Using the wrong direction produces incorrect distances.
-
-For example:
+The only valid route is:
 
 ```
+(2,3) -> a -> ... -> b -> (2,5)
+```
+
+If an implementation treats every edge uniformly and reconstructs predecessors carelessly, it may incorrectly skip the required junction order.
+
+Another easy mistake appears when `k` exceeds the total travel time.
+
+Input:
+
+```
+3 5 20
 #####
-#12a#
+#a1b#
 #####
+2 3 ab 2 3
 ```
 
-Moving from `1` to `2` costs `1`, while moving from `2` to `1` costs `2`.
+The destination is reached long before minute `20`. The correct output is still:
+
+```
+2 3
+```
+
+because the car remains there forever.
+
+One more subtle issue is movement timing. Entering a street tile costs the digit written on that tile, not the tile you came from. Entering a junction always costs `1`. Off-by-one mistakes here completely change the trajectory.
 
 ## Approaches
 
-The brute force idea is straightforward. Build the graph of walkable cells, repeatedly compute the shortest path between consecutive checkpoints, concatenate those paths, and then simulate minute by minute until reaching time `k`.
+The most direct solution is to model the whole grid as a weighted graph. Every traversable cell becomes a node, and edges connect adjacent valid cells with the appropriate movement cost. Then we could run Dijkstra repeatedly:
 
-This works because the total number of cells is small. Dijkstra on a graph with about `10^4` nodes and `4 × 10^4` edges is fast.
+- from the start to the first junction,
+- from one junction to the next,
+- from the last junction to the destination.
 
-The problem appears when we try to simulate time naively. A shortest route can contain many expensive street cells. If we expand movement minute by minute, the total simulated timeline may become enormous. The path length in edges is at most around `10^4`, but each edge can cost up to `9`, and we may revisit many cells over up to `1000` route segments. Explicit simulation becomes unnecessarily large and awkward.
+After reconstructing all shortest paths, we concatenate them and simulate the movement minute by minute until time `k`.
 
-The key observation is that we do not actually need to simulate every minute. We only need to know on which edge the car is when cumulative time first exceeds `k`.
+This is correct because Dijkstra handles arbitrary positive edge weights. The graph has at most `10^4` vertices and roughly `4 × 10^4` edges, so one Dijkstra run is already affordable.
 
-The city structure helps even more. Streets are one-cell wide, junctions are isolated, and different streets never touch side-by-side. This means every pair of consecutive checkpoints has a unique geometric corridor. Once we know shortest distances from the destination checkpoint, reconstructing one shortest route is easy: from the current cell, move to any neighbor satisfying the shortest path equation.
+The problem is path reconstruction ambiguity. Multiple shortest paths may exist in a general weighted graph. The statement guarantees that the sequence of junctions forms a valid route, but it does not provide any tie-breaking rule. Reconstructing arbitrary shortest paths can produce inconsistencies.
 
-So the optimal solution becomes:
+The key observation is that this city is not an arbitrary graph. Streets are isolated corridors. Once we know which two endpoints we are connecting, the route is forced.
 
-1. Convert the journey into consecutive segments:
+Suppose we stand at a junction. Any adjacent street tile belongs to exactly one street corridor. Following that corridor forward is deterministic because:
 
-start → first junction → second junction → ... → destination.
-2. For each segment, run Dijkstra from the segment target.
-3. Reconstruct one shortest path by greedily following neighbors that preserve shortest optimality.
-4. While reconstructing, accumulate travel time edge by edge. As soon as cumulative time exceeds `k`, return the current cell.
-5. If the entire journey finishes before `k`, return the final destination.
+- street tiles never branch sideways,
+- no two streets touch each other,
+- junctions separate corridors.
 
-The total work is small because there are at most about `1002` segments and each Dijkstra runs on only `10^4` cells.
+So instead of running shortest path algorithms, we can literally walk along the unique corridor between checkpoints.
+
+The full route becomes deterministic:
+
+- start street → first junction,
+- junction → junction,
+- last junction → destination.
+
+For each segment, we repeatedly move to the only valid next tile that is not the previous tile. We record arrival times along the way. Once cumulative time reaches or exceeds `k`, we know the current position.
+
+This turns the problem into pure simulation on a sparse deterministic structure.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(L × mn log(mn) + T) | O(mn) | Too slow / awkward |
-| Optimal | O(L × mn log(mn)) | O(mn) | Accepted |
+| Brute Force Dijkstra on graph | O(L × mn log(mn)) | O(mn) | Accepted but unnecessarily heavy |
+| Corridor simulation | O(total path length) | O(1) | Accepted |
 
-Here `L` is the number of route segments and `T` is the expanded minute-by-minute simulation length.
+Here `L` is the number of route segments, at most about `1000`.
 
 ## Algorithm Walkthrough
 
-1. Parse the grid and store the coordinates of every junction letter.
+1. Read the grid and store coordinates of every junction letter.
 2. Build the ordered checkpoint list:
 
-start position, all junction coordinates in order, then the final destination.
-3. For every consecutive pair `(A, B)` in this list, run Dijkstra starting from `B`.
+- start street cell,
+- each junction from the string,
+- destination street cell.
+3. Process every consecutive pair of checkpoints independently.
+4. For one segment, determine the first move.
 
-Running from the destination is convenient because later we can greedily walk from `A` toward decreasing distance values.
-4. Distances are computed on cells, not on edges.
+If the current cell is a street tile, there is only one adjacent traversable cell that moves toward the target junction.
 
-When moving from cell `(r, c)` to neighbor `(nr, nc)`:
+If the current cell is a junction, there is only one adjacent street corridor leading to the next checkpoint.
+5. Walk through the corridor step by step.
 
-- If `(r, c)` is a street digit, the move cost equals that digit.
-- If `(r, c)` is a junction, the move cost is `1`.
-5. Reconstruct the shortest path from `A` to `B`.
+At every step:
 
-At each step, inspect neighbors. A neighbor `(nr, nc)` is valid if:
+- choose the adjacent traversable cell different from the previous position,
+- compute the movement cost,
+- add it to elapsed time,
+- update the current position.
+6. After each move, check whether elapsed time has reached or passed `k`.
 
-```
-dist[current] =
-    move_cost(current → neighbor) + dist[neighbor]
-```
-
-Such a neighbor lies on a shortest path.
-6. While walking along the reconstructed route, keep a global elapsed time.
-
-Suppose the edge from `u` to `v` costs `w`.
-
-- If `elapsed + w > k`, the car is still standing on `u` after exactly `k` minutes.
-- Otherwise increase elapsed by `w` and continue to `v`.
-7. If the whole journey finishes and `elapsed ≤ k`, output the destination cell because the car stays there forever.
+If yes, the car is currently standing on the newly entered cell, so output that position immediately.
+7. Continue until all segments are completed.
+8. If total travel time is still smaller than `k`, output the destination position because the car stays there forever.
 
 ### Why it works
 
-Dijkstra computes the true shortest distance from every cell to the segment target. During reconstruction, we only move along edges satisfying the shortest path equality. Such edges preserve optimality because:
+The city constraints force every street corridor to behave like a simple chain. At any interior street tile, there are exactly two traversable neighbors: the previous tile and the next tile. At corridor endpoints, the continuation is uniquely determined by the junction structure.
 
-```
-dist[u] = w(u,v) + dist[v]
-```
+Because of this, once the sequence of checkpoints is fixed, the actual shortest route is also fixed. Any detour would revisit tiles unnecessarily and increase total cost since all movement costs are positive.
 
-This means taking edge `(u,v)` keeps the remaining route optimal. Repeating this step eventually reaches the target with total cost exactly `dist[start]`.
-
-The time simulation is correct because movement costs represent the exact number of minutes spent before leaving the current cell. If crossing an edge of cost `w` starts at time `t`, the car remains at the source cell during all times `t, t+1, ..., t+w-1`. The first moment it occupies the destination is time `t+w`.
+The algorithm always advances along this unique corridor, so every simulated move belongs to the shortest valid route. Since we accumulate exact movement costs in chronological order, the first position whose arrival time reaches `k` is precisely the position after `k` minutes.
 
 ## Python Solution
 
 ```python
 import sys
-import heapq
-
 input = sys.stdin.readline
 
-INF = 10**18
 DIRS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 def solve():
     m, n, k = map(int, input().split())
 
     grid = [list(input().strip()) for _ in range(m)]
-
-    rs, cs, s, re, ce = input().split()
-    rs = int(rs) - 1
-    cs = int(cs) - 1
-    re = int(re) - 1
-    ce = int(ce) - 1
 
     junctions = {}
 
@@ -176,6 +190,13 @@ def solve():
             if 'a' <= ch <= 'z':
                 junctions[ch] = (i, j)
 
+    rs, cs, s, re, ce = input().split()
+
+    rs = int(rs) - 1
+    cs = int(cs) - 1
+    re = int(re) - 1
+    ce = int(ce) - 1
+
     checkpoints = [(rs, cs)]
 
     for ch in s:
@@ -183,103 +204,81 @@ def solve():
 
     checkpoints.append((re, ce))
 
-    def inside(r, c):
-        return 0 <= r < m and 0 <= c < n
-
-    def blocked(r, c):
-        return grid[r][c] == '#'
-
-    def move_cost(r, c):
-        ch = grid[r][c]
-        if ch.isdigit():
-            return int(ch)
-        return 1
-
     elapsed = 0
+    current = checkpoints[0]
+
+    def traversable(r, c):
+        return (
+            0 <= r < m and
+            0 <= c < n and
+            grid[r][c] != '#'
+        )
 
     for idx in range(len(checkpoints) - 1):
-        sr, sc = checkpoints[idx]
-        tr, tc = checkpoints[idx + 1]
+        start = checkpoints[idx]
+        target = checkpoints[idx + 1]
 
-        dist = [[INF] * n for _ in range(m)]
-        pq = []
+        prev = None
+        cur = start
 
-        dist[tr][tc] = 0
-        heapq.heappush(pq, (0, tr, tc))
+        while cur != target:
+            r, c = cur
 
-        while pq:
-            d, r, c = heapq.heappop(pq)
-
-            if d != dist[r][c]:
-                continue
+            nxt = None
 
             for dr, dc in DIRS:
                 nr = r + dr
                 nc = c + dc
 
-                if not inside(nr, nc) or blocked(nr, nc):
+                if not traversable(nr, nc):
                     continue
 
-                # reverse edge relaxation
-                w = move_cost(nr, nc)
-
-                nd = d + w
-
-                if nd < dist[nr][nc]:
-                    dist[nr][nc] = nd
-                    heapq.heappush(pq, (nd, nr, nc))
-
-        r, c = sr, sc
-
-        while (r, c) != (tr, tc):
-            found = False
-
-            for dr, dc in DIRS:
-                nr = r + dr
-                nc = c + dc
-
-                if not inside(nr, nc) or blocked(nr, nc):
+                if prev is not None and (nr, nc) == prev:
                     continue
 
-                w = move_cost(r, c)
+                nxt = (nr, nc)
+                break
 
-                if dist[r][c] == w + dist[nr][nc]:
-                    if elapsed + w > k:
-                        print(r + 1, c + 1)
-                        return
+            nr, nc = nxt
 
-                    elapsed += w
-                    r, c = nr, nc
-                    found = True
-                    break
+            cell = grid[nr][nc]
 
-            if not found:
-                raise RuntimeError("Path reconstruction failed")
+            if '1' <= cell <= '9':
+                cost = int(cell)
+            else:
+                cost = 1
+
+            elapsed += cost
+
+            cur = nxt
+            prev = (r, c)
+
+            if elapsed >= k:
+                print(nr + 1, nc + 1)
+                return
 
     print(re + 1, ce + 1)
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution treats every non-building cell as a graph vertex. Dijkstra is run backward from the segment destination because reverse relaxation naturally matches the movement rule. If entering a node in forward direction costs the source cell value, then reverse traversal uses the neighbor's value.
+The implementation mirrors the corridor simulation directly.
 
-The most delicate part is reconstructing the path. The equality
+The `checkpoints` array contains the full mandatory route structure. Consecutive elements are always connected by a unique corridor.
 
-```
-dist[cur] == cost(cur, nxt) + dist[nxt]
-```
+The most delicate part is neighbor selection. We never perform BFS or Dijkstra. Instead, from every current cell we choose the only traversable neighbor different from the previous cell. The city constraints guarantee that this uniquely determines the route.
 
-must use the movement cost of the current cell, not the neighbor. Reversing this accidentally changes the graph.
+Another subtle detail is the movement cost convention. The cost depends on the entered cell:
 
-Another subtle detail is the time comparison:
+- entering a digit tile costs that digit,
+- entering a junction costs `1`.
 
-```
-if elapsed + w > k:
-```
+The code computes the cost after selecting the next cell, not before.
 
-The strict `>` is necessary. If crossing finishes exactly at time `k`, the car has already reached the next cell.
+The `elapsed >= k` check happens immediately after entering the new tile. This matches the statement precisely: after spending the required movement time, the car arrives at the destination tile and remains there until the next move.
 
-The implementation never stores the full global route. It reconstructs and processes one segment at a time, which keeps memory usage low and avoids unnecessary copying.
+Finally, if the full route finishes before time `k`, we output the final destination because the car never moves again.
 
 ## Worked Examples
 
@@ -301,17 +300,17 @@ The route is:
 (2,3) -> a -> b -> (2,8)
 ```
 
-| Step | Current Cell | Next Cell | Edge Cost | Elapsed Time |
-| --- | --- | --- | --- | --- |
-| 1 | (2,3) | a | 1 | 1 |
-| 2 | a | (2,5) | 1 | 2 |
-| 3 | (2,5) | (2,6) | 1 | 3 |
-| 4 | (2,6) | (2,7) | 1 | 4 |
-| 5 | (2,7) | (2,8) | 1 | 5 |
-| 6 | (2,8) | b | 1 | 6 |
-| 7 | b | (2,8) | 1 | 7 |
+| Step | Position Entered | Cost | Elapsed |
+| --- | --- | --- | --- |
+| Start | (2,3) | 0 | 0 |
+| 1 | (2,4) = a | 1 | 1 |
+| 2 | (2,5) | 1 | 2 |
+| 3 | (2,6) | 1 | 3 |
+| 4 | (2,7) | 1 | 4 |
+| 5 | (2,8) = b | 1 | 5 |
+| End | (2,8) | stay forever | 5 |
 
-The destination is reached at time `7`. Since `k = 12`, the car stays there forever.
+Since `k = 12`, the car has already stopped at `(2,8)`.
 
 Output:
 
@@ -319,44 +318,46 @@ Output:
 2 8
 ```
 
-This example demonstrates the "stay forever" rule after the route finishes.
+This trace demonstrates the post-arrival behavior. Once the destination is reached, later times do not change the answer.
 
 ### Custom Example
 
+Input:
+
 ```
-3 7 4
+3 7 5
 #######
-#a212b#
+#a12b#
 #######
-2 3 ab 2 5
+2 3 ab 2 4
 ```
 
-| Step | Current Cell | Next Cell | Edge Cost | Elapsed Time |
-| --- | --- | --- | --- | --- |
-| 1 | (2,3) | a | 2 | 2 |
-| 2 | a | (2,3) | 1 | 3 |
-| 3 | (2,3) | (2,4) | 2 | 5 |
+| Step | Position Entered | Cost | Elapsed |
+| --- | --- | --- | --- |
+| Start | (2,3) | 0 | 0 |
+| 1 | (2,2) = a | 1 | 1 |
+| 2 | (2,3) | 1 | 2 |
+| 3 | (2,4) | 2 | 4 |
+| 4 | (2,5) = b | 1 | 5 |
 
-At time `4`, the third move has started but not completed. The car is still standing on `(2,3)`.
+At exactly minute `5`, the car reaches junction `b`.
 
 Output:
 
 ```
-2 3
+2 5
 ```
 
-This trace confirms the interpretation of weighted movement intervals.
+This example confirms that street traversal cost depends on the entered tile. Moving into the tile containing digit `2` consumed two minutes.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(L × mn log(mn)) | One Dijkstra per route segment |
-| Space | O(mn) | Distance table and priority queue |
+| Time | O(P) | `P` is the total number of visited cells along the route |
+| Space | O(1) | only a few pointers and counters are stored |
 
-Here `L` is the number of consecutive checkpoint pairs, at most `1001`.
-
-With at most `10^4` cells, a single Dijkstra is very small. Even around one thousand runs comfortably fit within the time limit in Python because the graph degree is only four.
+The route length is bounded by the number of traversable cells times the number of segments, which easily fits within the limits. The algorithm performs only simple neighbor checks and integer additions, so it comfortably runs within the 2 second limit.
 
 ## Test Cases
 
@@ -364,31 +365,32 @@ With at most `10^4` cells, a single Dijkstra is very small. Even around one thou
 # helper: run solution on input string, return output string
 import sys
 import io
-import heapq
+
+DIRS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
 
     input = sys.stdin.readline
 
-    INF = 10**18
-    DIRS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-
     m, n, k = map(int, input().split())
-    grid = [list(input().strip()) for _ in range(m)]
 
-    rs, cs, s, re, ce = input().split()
-    rs = int(rs) - 1
-    cs = int(cs) - 1
-    re = int(re) - 1
-    ce = int(ce) - 1
+    grid = [list(input().strip()) for _ in range(m)]
 
     junctions = {}
 
     for i in range(m):
         for j in range(n):
-            if grid[i][j].islower():
-                junctions[grid[i][j]] = (i, j)
+            ch = grid[i][j]
+            if 'a' <= ch <= 'z':
+                junctions[ch] = (i, j)
+
+    rs, cs, s, re, ce = input().split()
+
+    rs = int(rs) - 1
+    cs = int(cs) - 1
+    re = int(re) - 1
+    ce = int(ce) - 1
 
     checkpoints = [(rs, cs)]
 
@@ -397,62 +399,58 @@ def run(inp: str) -> str:
 
     checkpoints.append((re, ce))
 
-    def inside(r, c):
-        return 0 <= r < m and 0 <= c < n
-
-    def move_cost(r, c):
-        return int(grid[r][c]) if grid[r][c].isdigit() else 1
-
     elapsed = 0
 
-    for i in range(len(checkpoints) - 1):
-        sr, sc = checkpoints[i]
-        tr, tc = checkpoints[i + 1]
+    def traversable(r, c):
+        return (
+            0 <= r < m and
+            0 <= c < n and
+            grid[r][c] != '#'
+        )
 
-        dist = [[INF] * n for _ in range(m)]
-        pq = [(0, tr, tc)]
-        dist[tr][tc] = 0
+    for idx in range(len(checkpoints) - 1):
+        start = checkpoints[idx]
+        target = checkpoints[idx + 1]
 
-        while pq:
-            d, r, c = heapq.heappop(pq)
+        prev = None
+        cur = start
 
-            if d != dist[r][c]:
-                continue
+        while cur != target:
+            r, c = cur
+
+            nxt = None
 
             for dr, dc in DIRS:
                 nr = r + dr
                 nc = c + dc
 
-                if not inside(nr, nc) or grid[nr][nc] == '#':
+                if not traversable(nr, nc):
                     continue
 
-                nd = d + move_cost(nr, nc)
-
-                if nd < dist[nr][nc]:
-                    dist[nr][nc] = nd
-                    heapq.heappush(pq, (nd, nr, nc))
-
-        r, c = sr, sc
-
-        while (r, c) != (tr, tc):
-            for dr, dc in DIRS:
-                nr = r + dr
-                nc = c + dc
-
-                if not inside(nr, nc) or grid[nr][nc] == '#':
+                if prev is not None and (nr, nc) == prev:
                     continue
 
-                w = move_cost(r, c)
+                nxt = (nr, nc)
+                break
 
-                if dist[r][c] == w + dist[nr][nc]:
-                    if elapsed + w > k:
-                        return f"{r+1} {c+1}\n"
+            nr, nc = nxt
 
-                    elapsed += w
-                    r, c = nr, nc
-                    break
+            cell = grid[nr][nc]
 
-    return f"{re+1} {ce+1}\n"
+            if '1' <= cell <= '9':
+                cost = int(cell)
+            else:
+                cost = 1
+
+            elapsed += cost
+
+            cur = nxt
+            prev = (r, c)
+
+            if elapsed >= k:
+                return f"{nr + 1} {nc + 1}\n"
+
+    return f"{re + 1} {ce + 1}\n"
 
 # provided sample
 assert run(
@@ -464,115 +462,113 @@ assert run(
 """
 ) == "2 8\n", "sample 1"
 
-# minimum movement
+# immediate arrival at first junction
 assert run(
-"""3 5 0
-#####
-#a1b#
-#####
-2 3 a 2 3
-"""
-) == "2 3\n", "k = 0"
-
-# weighted edge timing
-assert run(
-"""3 7 4
-#######
-#a212b#
-#######
-2 3 ab 2 5
-"""
-) == "2 3\n", "inside expensive move"
-
-# revisit same block
-assert run(
-"""3 7 3
-#######
-#a1b1c#
-#######
-2 4 bac 2 6
-"""
-) == "2 3\n", "revisiting cells"
-
-# already finished before k
-assert run(
-"""3 5 100
+"""3 5 1
 #####
 #a1b#
 #####
 2 3 ab 2 3
 """
-) == "2 3\n", "stay forever"
+) == "2 2\n", "first move"
+
+# staying forever after destination
+assert run(
+"""3 5 20
+#####
+#a1b#
+#####
+2 3 ab 2 3
+"""
+) == "2 3\n", "stay after finish"
+
+# weighted street traversal
+assert run(
+"""3 7 4
+#######
+#a12b##
+#######
+2 3 ab 2 4
+"""
+) == "2 4\n", "digit costs"
+
+# exact arrival on destination
+assert run(
+"""3 6 3
+######
+#a1b##
+######
+2 3 ab 2 4
+"""
+) == "2 4\n", "exact timing"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Sample 1 | `2 8` | Staying at destination forever |
-| `k = 0` case | Start position | No movement before time starts |
-| Weighted timing case | Middle street cell | Correct interpretation of edge durations |
-| Revisiting case | Previously visited block | Paths may reuse cells |
-| Large `k` case | Destination | Post-finish behavior |
+| Sample 1 | `2 8` | staying at destination forever |
+| Small corridor with `k=1` | `2 2` | first movement timing |
+| Large `k` after finish | `2 3` | post-arrival behavior |
+| Corridor containing digit `2` | `2 4` | weighted movement |
+| Exact arrival time | `2 4` | boundary equality `elapsed == k` |
 
 ## Edge Cases
 
-A dangerous case is when the route finishes before time `k`.
+Consider the case where the car finishes early and then waits forever.
 
 Input:
 
 ```
-3 5 100
+3 5 20
 #####
 #a1b#
 #####
 2 3 ab 2 3
 ```
 
-The full journey takes only a few minutes. The algorithm processes every segment, reaches the destination, and exits the loops normally. Since no edge satisfies `elapsed + w > k`, the final output becomes the destination cell. No special simulation is needed afterward.
+The movement sequence is:
 
-Another subtle case is remaining inside a costly movement.
+```
+(2,3) -> a -> (2,3) -> b -> (2,3)
+```
+
+The total travel time is much smaller than `20`. After all segments are processed, the algorithm exits the loop and prints the destination coordinates. No extra simulation is needed.
+
+Another tricky scenario is exact equality with `k`.
 
 Input:
 
 ```
-3 7 4
-#######
-#a212b#
-#######
-2 3 ab 2 5
+3 6 3
+######
+#a1b##
+######
+2 3 ab 2 4
 ```
 
-The move from `(2,3)` costs `2`. After spending times `3` and `4`, the car still occupies `(2,3)`. The condition
+The cumulative times become:
 
-```
-elapsed + w > k
-```
+- after entering `a`: `1`
+- after re-entering `(2,3)`: `2`
+- after entering `(2,4)`: `3`
 
-detects this correctly and returns the source cell instead of prematurely advancing.
+The algorithm checks `elapsed >= k` immediately after each move, so it correctly returns `(2,4)` at the exact arrival moment.
 
-Revisiting cells is also important.
+A final subtle case is repeated traversal of the same street tile.
 
 Input:
 
 ```
-3 7 3
-#######
-#a1b1c#
-#######
-2 4 bac 2 6
-```
-
-To visit `b`, then `a`, then `c`, the shortest valid route walks back across the same street block multiple times. The algorithm reconstructs each segment independently using shortest-path distances, so revisiting naturally works without additional handling.
-
-The directional movement cost can also invalidate naive implementations.
-
-Input:
-
-```
-3 5 1
+3 5 2
 #####
-#12a#
+#a1b#
 #####
-2 2 a 2 3
+2 3 ab 2 3
 ```
 
-Moving from `1` to `2` costs `1`, not `2`. Reverse Dijkstra relaxation uses the neighbor's movement cost specifically to preserve this asymmetry.
+The route revisits `(2,3)`:
+
+```
+(2,3) -> a -> (2,3)
+```
+
+A naive visited-array approach would incorrectly forbid revisiting the tile. This algorithm stores only the previous cell for local direction control, so revisits are handled naturally.

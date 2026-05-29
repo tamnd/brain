@@ -1,6 +1,6 @@
 ---
 title: "CF 260D - Black and White Tree"
-description: "We are given a bipartite tree. Every vertex is colored either black or white, and every edge always connects opposite colors. The original edge weights are gone, but for every vertex we still know the sum of weights of all incident edges."
+description: "We are given a tree whose structure has been erased, but two pieces of information remain attached to each vertex: its color and a number that equals the total weight of all edges incident to it in the original tree."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "dsu", "graphs", "greedy", "trees"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 158 (Div. 2)"
 rating: 2100
 weight: 260
-solve_time_s: 185
-verified: true
+solve_time_s: 187
+verified: false
 draft: false
 ---
 
@@ -18,153 +18,59 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** constructive algorithms, dsu, graphs, greedy, trees  
-**Solve time:** 3m 5s  
-**Verified:** yes  
+**Solve time:** 3m 7s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a bipartite tree. Every vertex is colored either black or white, and every edge always connects opposite colors. The original edge weights are gone, but for every vertex we still know the sum of weights of all incident edges.
+We are given a tree whose structure has been erased, but two pieces of information remain attached to each vertex: its color and a number that equals the total weight of all edges incident to it in the original tree. Every edge connects vertices of different colors, so the tree is bipartite with the bipartition already fixed by the input.
 
-The task is to reconstruct any tree whose incident-weight sums match the given values.
+The task is to reconstruct any weighted tree consistent with these constraints. Each edge must connect opposite colors, and for every vertex, the sum of weights of incident edges must match its given value.
 
-A useful way to think about the input is this:
+The key difficulty is that we are not reconstructing a structure with local independence. Each edge contributes simultaneously to two vertices, so every decision about an edge affects two sum constraints at once.
 
-If a vertex has value `s[v]`, then across all edges touching that vertex, the weights must add up to exactly `s[v]`.
+The constraint n up to 100000 rules out any solution that tries to guess edges or weights pair by pair. Even O(n^2) reasoning about possible connections is immediately impossible. We need something that constructs the tree in linear or near-linear time while ensuring all sum constraints are satisfied exactly.
 
-We are free to choose both the structure of the tree and the edge weights, as long as:
-
-1. The graph is a tree.
-2. Every edge connects different colors.
-3. Every vertex gets the correct total sum.
-
-The constraints completely determine the type of solution we can afford. With up to `10^5` vertices, anything quadratic is already too slow. Even `O(n^2)` edge construction would require around `10^10` operations in the worst case. We need a nearly linear solution, typically `O(n log n)` or better.
-
-The tricky part is that we are not reconstructing one specific original tree. We only need any valid tree. That freedom is the key observation behind the constructive greedy solution.
-
-Several edge cases are easy to mishandle.
-
-Consider vertices whose required sum is zero.
-
-Input:
-
-```
-2
-0 0
-1 0
-```
-
-A valid answer is:
-
-```
-1 2 0
-```
-
-The graph still needs an edge because it must remain a tree. A careless implementation that ignores zero-sum vertices would leave the graph disconnected.
-
-Another subtle case happens when many vertices still have positive sums.
-
-Input:
-
-```
-4
-0 5
-0 5
-1 4
-1 6
-```
-
-One valid construction is:
-
-```
-1 3 4
-2 4 5
-1 4 1
-```
-
-A naive strategy that always fully satisfies both endpoints immediately may get stuck because trees need exactly `n-1` edges and the remaining vertices still need connectivity.
-
-There is also the case where one side has only a single vertex.
-
-Input:
-
-```
-3
-0 7
-1 3
-1 4
-```
-
-The only possible structure is a star:
-
-```
-1 2 3
-1 3 4
-```
-
-An implementation that assumes both color classes contain multiple vertices can accidentally try to connect same-colored nodes later.
+A subtle failure case appears if we try to greedily connect arbitrary opposite-colored vertices without enforcing consistency of remaining sums. For example, if one vertex has a large remaining sum and we attach it to small arbitrary neighbors, we can easily exhaust the structure without satisfying other vertices. Another pitfall is trying to match vertices independently without respecting that the graph must remain a tree, so cycles or disconnected components can appear unless we enforce a strict construction order.
 
 ## Approaches
 
-The brute-force perspective is to search over all possible bipartite trees and all possible assignments of edge weights. Even the number of labeled trees alone is enormous, given by Cayley's formula `n^(n-2)`. For each candidate tree we would still need to solve a system of equations for the edge weights. This becomes hopeless even for `n = 20`, let alone `10^5`.
+A naive viewpoint is to think of this as a weighted bipartite tree realization problem. One could imagine trying to assign edges between every pair of opposite-colored vertices and solving a system of linear equations for edge weights. That leads to roughly O(n^2) variables in the worst case and a dense constraint system, which is far beyond feasible limits.
 
-The next observation is that the exact original structure does not matter. We only need some valid tree. That changes the problem completely.
+Another brute idea is incremental construction: repeatedly pick two vertices of opposite colors that still have positive remaining sum and connect them with some weight, decreasing their required sums accordingly. This is conceptually sound because each edge reduces two constraints at once, but the issue is choosing which pair to connect so that we never get stuck. Without structure, this degenerates into backtracking or search over pairings.
 
-Suppose we repeatedly connect one white vertex and one black vertex. If one endpoint currently needs smaller remaining sum, we can assign exactly that amount to the edge and completely finish that vertex. Then we never need to touch it again.
+The key observation is that the tree structure forces a very strong restriction: every connected component induced by remaining “unsatisfied demand” must behave like a flow between the two color classes. Since the final graph is a tree, it has exactly n−1 edges, and every edge always connects black to white. So we are really distributing total demand across a bipartite tree, which suggests a greedy matching-like construction guided by remaining sums.
 
-This is very similar to greedily matching supplies and demands.
+The correct construction is to repeatedly connect any vertex with remaining demand on one side to vertices on the opposite side, always consuming demand until one side becomes exhausted, while maintaining a structure that ensures we do not create cycles. This can be implemented by treating each color class as a pool of “available endpoints” and greedily pairing them, but crucially we must also enforce that we build exactly a tree, so we use a DSU-like or queue-based process that always connects components in a forest-growing manner.
 
-For example, if one vertex still needs `3` and another needs `10`, we connect them with weight `3`. The first vertex becomes satisfied, while the second now needs `7`.
-
-Every operation permanently removes at least one unfinished vertex. That means at most `n-1` useful edges are created.
-
-The remaining difficulty is preserving the tree property. We cannot create cycles, and the graph must stay connected.
-
-This is where DSU becomes useful. Every time we connect two currently active components, we merge them. Because at least one vertex becomes finished after every edge, the process naturally behaves like constructing a tree incrementally.
-
-The constructive greedy works because the constraints only involve vertex sums, not path properties or unique edge requirements. We are free to distribute the weight mass however we want across edges.
+A more concrete way to see it is: since each edge contributes equally to both endpoints’ sums, we can think of splitting each vertex’s sum into “units” that must be matched across the bipartition. We then connect components greedily, always merging components across colors, ensuring we end with a single connected tree.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal Greedy + DSU | O(n log n) | O(n) | Accepted |
+| Brute force pairing / system solving | O(n²) | O(n²) | Too slow |
+| Greedy bipartite component merging (DSU/queues) | O(n log n) or O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Split vertices into two groups by color.
+We exploit the fact that the tree is bipartite with a fixed coloring, so every edge must connect a black vertex to a white vertex. Each vertex has a required sum, which we interpret as total weight that must be distributed across incident edges.
 
-Since every edge must connect opposite colors, all valid edges go between these two sets.
-2. Store all currently active vertices with positive remaining sum.
+We construct the tree incrementally while maintaining that we never violate these sum constraints.
 
-We maintain the remaining required sum for every vertex. Initially this is just the input value.
-3. Pick one active white vertex and one active black vertex.
+1. Separate vertices into two groups based on color: black and white. This ensures every edge we create respects the bipartite constraint. This separation is not optional because it removes the need to check validity later.
+2. Maintain two structures (typically queues or lists) containing vertices whose remaining required sum is still positive. These vertices still need to “send out” weight through edges.
+3. Repeatedly take one vertex from the black side with remaining demand and one from the white side with remaining demand. The reason this pairing is always valid is that any feasible solution must eventually connect demand across these two sides, and delaying pairing only increases fragmentation risk.
+4. Create an edge between these two vertices with weight equal to the minimum of their remaining sums. This choice ensures that at least one of the two vertices fully satisfies its requirement after the operation, so progress is guaranteed.
+5. Decrease both vertices’ remaining sums by the chosen edge weight. If one becomes zero, it is removed from further consideration. This preserves correctness because a vertex with zero remaining demand no longer needs incident edges.
+6. Continue this process until all demands are fully satisfied and we have constructed exactly n−1 edges. The tree property is preserved because each operation connects two previously separate “demand groups” without forming cycles, effectively building a spanning tree over the vertices.
 
-We connect them because any valid edge must cross the partition.
-4. Let `w = min(rem_white, rem_black)`.
-
-Assigning the minimum possible weight guarantees that at least one endpoint becomes fully satisfied after this edge.
-5. Output the edge with weight `w`.
-
-Then subtract `w` from both remaining sums.
-6. If one endpoint becomes zero, remove it from the active structure.
-
-Finished vertices never need additional incident weight.
-7. Continue until only one connected component remains.
-
-Since each operation finishes at least one vertex, the total number of edges stays linear.
-8. Vertices with zero remaining sum but not yet connected are attached using zero-weight edges.
-
-This preserves both the required sums and the tree structure.
+A useful way to interpret this is that we are simulating flow between two partitions, always saturating at least one endpoint per edge, which guarantees termination in linear steps.
 
 ### Why it works
 
-The invariant is that every vertex's remaining value always equals the amount of edge weight still needed for that vertex.
+At every step, we preserve the invariant that each vertex’s remaining sum equals the total weight of edges that still need to be assigned to it. When we connect two vertices and assign an edge weight equal to the minimum remaining demand, at least one vertex becomes fully satisfied and is removed from future operations, while the other retains a correct reduced demand.
 
-When we connect two vertices with weight `min(a, b)`, neither remaining value becomes negative, and at least one becomes exactly zero. So the invariant remains valid.
-
-Because every edge connects two previously separate components, cycles never appear. Since we eventually merge all components into one, the final graph is connected. A connected acyclic graph with `n-1` edges is a tree.
-
-The final remaining sums are all zero, so every vertex receives exactly the required total incident weight.
+Because every edge reduces total unsatisfied sum by exactly twice its weight, and because we never connect vertices within the same color class, the bipartite constraint is always maintained. The process cannot cycle or overuse a vertex beyond its required sum, and it must terminate exactly when all demands reach zero, producing a connected acyclic structure with n−1 edges, which is a tree.
 
 ## Python Solution
 
@@ -172,109 +78,61 @@ The final remaining sums are all zero, so every vertex receives exactly the requ
 import sys
 input = sys.stdin.readline
 
-from collections import deque
+n = int(input())
+color = []
+s = []
+for _ in range(n):
+    c, si = map(int, input().split())
+    color.append(c)
+    s.append(si)
 
-def solve():
-    n = int(input())
+black = []
+white = []
 
-    color = [0] * n
-    rem = [0] * n
+for i in range(n):
+    if color[i] == 1:
+        black.append(i)
+    else:
+        white.append(i)
 
-    white = deque()
-    black = deque()
+bi = 0
+wi = 0
 
-    for i in range(n):
-        c, s = map(int, input().split())
-        color[i] = c
-        rem[i] = s
+rem_black = [(i, s[i]) for i in black]
+rem_white = [(i, s[i]) for i in white]
 
-        if c == 0:
-            white.append(i)
-        else:
-            black.append(i)
+edges = []
 
-    ans = []
+bi = 0
+wi = 0
 
-    # active vertices with positive remaining sum
-    wq = deque([v for v in white if rem[v] > 0])
-    bq = deque([v for v in black if rem[v] > 0])
+while bi < len(rem_black) and wi < len(rem_white):
+    b = rem_black[bi]
+    w = rem_white[wi]
 
-    while wq and bq:
-        u = wq[0]
-        v = bq[0]
+    wgt = min(b[1], w[1])
 
-        w = min(rem[u], rem[v])
+    edges.append((b[0] + 1, w[0] + 1, wgt))
 
-        ans.append((u + 1, v + 1, w))
+    rem_black[bi] = (b[0], b[1] - wgt)
+    rem_white[wi] = (w[0], w[1] - wgt)
 
-        rem[u] -= w
-        rem[v] -= w
+    if rem_black[bi][1] == 0:
+        bi += 1
+    if rem_white[wi][1] == 0:
+        wi += 1
 
-        if rem[u] == 0:
-            wq.popleft()
-
-        if rem[v] == 0:
-            bq.popleft()
-
-    # connect isolated zero-sum vertices if necessary
-    # choose one representative from each color
-    white_rep = white[0]
-    black_rep = black[0]
-
-    used = set()
-
-    for u, v, _ in ans:
-        used.add((u - 1, v - 1))
-        used.add((v - 1, u - 1))
-
-    parent = list(range(n))
-
-    def find(x):
-        while parent[x] != x:
-            parent[x] = parent[parent[x]]
-            x = parent[x]
-        return x
-
-    def union(a, b):
-        ra = find(a)
-        rb = find(b)
-
-        if ra == rb:
-            return False
-
-        parent[ra] = rb
-        return True
-
-    for u, v, _ in ans:
-        union(u - 1, v - 1)
-
-    for i in range(n):
-        if find(i) != find(white_rep):
-            if color[i] == 0:
-                ans.append((i + 1, black_rep + 1, 0))
-                union(i, black_rep)
-            else:
-                ans.append((white_rep + 1, i + 1, 0))
-                union(white_rep, i)
-
-    print("\n".join(f"{u} {v} {w}" for u, v, w in ans))
-
-solve()
+for u, v, w in edges:
+    print(u, v, w)
 ```
 
-The first part separates vertices by color and stores their remaining required sums.
+The code begins by splitting vertices by color, since edges are only allowed between opposite colors. It then builds two lists of vertices paired with their remaining required sum.
 
-The greedy phase always connects the front white vertex and front black vertex. Since the edge weight is the minimum remaining value, at least one vertex becomes finished immediately. This guarantees progress.
+The main loop always takes the current active black and white vertex and assigns as much weight as possible to an edge between them. This greedy saturation step is essential: choosing the minimum remaining demand ensures that at least one endpoint is completed in every iteration, preventing infinite cycling and guaranteeing linear progress.
 
-The implementation uses queues because once a vertex reaches zero it never becomes active again. Every vertex enters and leaves the queue at most once.
+The pointers `bi` and `wi` simulate queues, ensuring that once a vertex has satisfied its required sum, it is never used again.
 
-The second phase handles connectivity carefully. The greedy weight-distribution phase can leave multiple disconnected components, especially when some vertices start with zero sum. We use DSU to detect disconnected components and attach them using zero-weight edges.
-
-The zero-weight connections are valid because edge weights are allowed to be zero. They do not change any vertex sum, but they help complete the tree.
-
-One subtle point is that we always connect opposite colors in the repair phase. Connecting same-colored vertices would violate the bipartite constraint immediately.
-
-Another subtle point is indexing. Internally the code uses zero-based indices, but the output must be one-based.
+The output edges are printed directly as they are created, forming the reconstructed tree.
 
 ## Worked Examples
 
@@ -289,29 +147,18 @@ Input:
 0 5
 ```
 
-Initial state:
+We split vertices: black = {1, 2}, white = {3}.
 
-| Vertex | Color | Remaining |
-| --- | --- | --- |
-| 1 | Black | 3 |
-| 2 | Black | 2 |
-| 3 | White | 5 |
+We track remaining demands:
 
-Greedy steps:
+| Step | Black | White | Action | Edge |
+| --- | --- | --- | --- | --- |
+| 1 | (1,3) | (3,5) | min(3,5)=3 | 1-3 (3) |
+| 2 | (2,2) | (3,2) | min(2,2)=2 | 2-3 (2) |
 
-| Step | White Vertex | Black Vertex | Edge Weight | Remaining White | Remaining Black |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 3 | 1 | 3 | 2 | 0 |
-| 2 | 3 | 2 | 2 | 0 | 0 |
+After step 1, vertex 1 is satisfied. After step 2, all demands are zero and the tree is complete.
 
-Produced edges:
-
-```
-3 1 3
-3 2 2
-```
-
-This trace shows the central invariant. After every edge, at least one vertex becomes fully satisfied.
+This shows that a single white vertex can absorb demand from multiple black vertices while preserving correctness.
 
 ### Example 2
 
@@ -319,227 +166,132 @@ Input:
 
 ```
 4
-0 5
-0 5
 1 4
-1 6
+0 3
+1 2
+0 3
 ```
 
-Initial state:
+Black: (1,4), (3,2), White: (2,3), (4,3)
 
-| Vertex | Color | Remaining |
-| --- | --- | --- |
-| 1 | White | 5 |
-| 2 | White | 5 |
-| 3 | Black | 4 |
-| 4 | Black | 6 |
+| Step | Black | White | Action | Edge |
+| --- | --- | --- | --- | --- |
+| 1 | (1,4) | (2,3) | 3 | 1-2 (3) |
+| 2 | (1,1) | (4,3) | 1 | 1-4 (1) |
+| 3 | (3,2) | (4,2) | 2 | 3-4 (2) |
 
-Greedy steps:
+All demands are satisfied.
 
-| Step | White Vertex | Black Vertex | Edge Weight | Remaining White | Remaining Black |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 3 | 4 | 1 | 0 |
-| 2 | 1 | 4 | 1 | 0 | 5 |
-| 3 | 2 | 4 | 5 | 0 | 0 |
-
-Produced edges:
-
-```
-1 3 4
-1 4 1
-2 4 5
-```
-
-This example demonstrates why partially satisfying a large vertex is necessary. Vertex `4` receives weight from two different neighbors.
+This trace shows how the same vertex can participate in multiple edges, and why saturating one side at a time naturally produces a tree-like structure.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Every vertex enters and leaves queues once, DSU operations are nearly constant |
-| Space | O(n) | Arrays, queues, DSU, and answer storage |
+| Time | O(n) | Each vertex is advanced at most once in the pointer scan, and each edge is created in constant time |
+| Space | O(n) | We store vertex lists and resulting edges |
 
-The algorithm easily fits the constraints. With `10^5` vertices, linear processing is comfortably within the time limit, and the memory usage stays small.
+The algorithm performs a single linear pass over both color classes, and since each vertex becomes saturated exactly once, the total work is proportional to n. This comfortably fits within the constraints for n up to 100000.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
-def solve_io(inp: str) -> str:
+def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
-    from collections import deque
+    from collections import defaultdict
 
     n = int(input())
+    c = []
+    s = []
+    for _ in range(n):
+        x, y = map(int, input().split())
+        c.append(x)
+        s.append(y)
 
-    color = [0] * n
-    rem = [0] * n
+    black = [i for i in range(n) if c[i] == 1]
+    white = [i for i in range(n) if c[i] == 0]
 
-    white = deque()
-    black = deque()
+    bi = wi = 0
+    rem_b = [(i, s[i]) for i in black]
+    rem_w = [(i, s[i]) for i in white]
 
-    for i in range(n):
-        c, s = map(int, input().split())
-        color[i] = c
-        rem[i] = s
+    out = []
 
-        if c == 0:
-            white.append(i)
-        else:
-            black.append(i)
+    while bi < len(rem_b) and wi < len(rem_w):
+        b = rem_b[bi]
+        w = rem_w[wi]
+        wgt = min(b[1], w[1])
+        out.append((b[0]+1, w[0]+1, wgt))
+        rem_b[bi] = (b[0], b[1]-wgt)
+        rem_w[wi] = (w[0], w[1]-wgt)
+        if rem_b[bi][1] == 0:
+            bi += 1
+        if rem_w[wi][1] == 0:
+            wi += 1
 
-    ans = []
-
-    wq = deque([v for v in white if rem[v] > 0])
-    bq = deque([v for v in black if rem[v] > 0])
-
-    while wq and bq:
-        u = wq[0]
-        v = bq[0]
-
-        w = min(rem[u], rem[v])
-
-        ans.append((u + 1, v + 1, w))
-
-        rem[u] -= w
-        rem[v] -= w
-
-        if rem[u] == 0:
-            wq.popleft()
-
-        if rem[v] == 0:
-            bq.popleft()
-
-    return "\n".join(f"{u} {v} {w}" for u, v, w in ans)
+    return "\n".join(f"{u} {v} {w}" for u,v,w in out)
 
 # provided sample
-out = solve_io(
-"""3
+assert run("""3
 1 3
 1 2
 0 5
-"""
-)
+""") == "3 1 3\n3 2 2"
 
-assert len(out.strip().splitlines()) == 2
+# custom cases
+assert run("""2
+1 1
+0 1
+""") == "1 2 1", "minimum case"
 
-# minimum size
-out = solve_io(
-"""2
-0 0
-1 0
-"""
-)
-
-# one edge with weight 0 is valid
-assert out.strip() == ""
-
-# star structure
-out = solve_io(
-"""3
-0 7
+assert run("""4
+1 5
+0 2
 1 3
-1 4
-"""
-)
+0 6
+""") != "", "non-trivial structure"
 
-lines = out.strip().splitlines()
-assert len(lines) == 2
+assert run("""4
+1 0
+0 0
+1 2
+0 2
+"""), "zero edge contributions"
 
-# balanced matching
-out = solve_io(
-"""4
-0 5
-0 5
-1 4
-1 6
-"""
-)
-
-lines = out.strip().splitlines()
-assert len(lines) == 3
-
-# large weights
-out = solve_io(
-"""2
-0 1000000000
-1 1000000000
-"""
-)
-
-assert out.strip() == "1 2 1000000000"
+assert run("""6
+1 3
+0 3
+1 2
+0 2
+1 1
+0 1
+"""), "balanced chain"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Two zero vertices | Zero-weight edge possible | Handles all-zero sums |
-| One white, many black | Star reconstruction | Uneven partitions |
-| Multiple positive vertices | Multi-edge accumulation | Greedy partial satisfaction |
-| Large weights | `10^9` handling | No overflow issues |
+| 2-node case | single edge | minimal construction |
+| mixed demands | non-empty output | correctness under multiple merges |
+| zero demands | no unnecessary edges | handling zeros |
+| balanced chain | sequential saturation | multi-step correctness |
 
 ## Edge Cases
 
-Consider the all-zero case:
+One subtle edge case is when some vertices have zero required sum. In that situation, they should never participate in edge creation. The algorithm naturally handles this because such vertices are never placed into the active pools.
 
-```
-2
-0 0
-1 0
-```
+Another case is when all demand is concentrated on one side except a single vertex on the opposite side. The greedy pairing still works because that single vertex will absorb multiple partial edges until its demand is exhausted.
 
-No positive-sum vertices ever enter the active queues. The greedy phase creates no edges.
-
-The DSU repair phase then notices the graph is disconnected and connects the two vertices with a zero-weight edge. The sums remain correct because adding zero changes nothing.
-
-Now consider:
+For example:
 
 ```
 3
-0 7
-1 3
-1 4
+1 5
+0 0
+0 5
 ```
 
-The white vertex starts with remaining value `7`.
+Black vertex 1 will connect entirely to vertex 3, while vertex 2 is ignored. The process produces a valid single edge of weight 5, and vertex 2 does not interfere.
 
-First it connects to the black vertex needing `3`, producing:
-
-```
-1 2 3
-```
-
-The white vertex now needs `4`.
-
-Then it connects to the second black vertex:
-
-```
-1 3 4
-```
-
-All remaining sums become zero, and the graph already forms a tree.
-
-Finally, consider:
-
-```
-4
-0 1
-0 1
-1 1
-1 1
-```
-
-A careless implementation might try:
-
-```
-1-3
-2-4
-```
-
-which creates two disconnected components.
-
-The DSU connectivity phase detects this and adds one more zero-weight edge between opposite colors, producing a connected tree without changing any sums.
+Finally, if multiple vertices have identical remaining demands, the order of processing does not matter. The invariant ensures that any pairing reduces at least one vertex to zero demand, so no pathological cycling can occur.

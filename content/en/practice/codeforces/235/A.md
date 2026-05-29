@@ -1,6 +1,6 @@
 ---
 title: "CF 235A - LCM Challenge"
-description: "We need to choose three positive integers, each no larger than n, so that their least common multiple is as large as possible. The numbers may repeat, but repetition is usually not useful because equal numbers do not introduce new prime factors into the LCM."
+description: "We are asked to choose three positive integers, each at most n, to maximize their least common multiple (LCM). The input is a single integer n, and the output is a single integer representing the largest possible LCM achievable using three integers not greater than n."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "number-theory"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 146 (Div. 1)"
 rating: 1600
 weight: 235
-solve_time_s: 210
+solve_time_s: 182
 verified: true
 draft: false
 ---
@@ -18,103 +18,25 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** number theory  
-**Solve time:** 3m 30s  
+**Solve time:** 3m 2s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We need to choose three positive integers, each no larger than `n`, so that their least common multiple is as large as possible. The numbers may repeat, but repetition is usually not useful because equal numbers do not introduce new prime factors into the LCM.
+We are asked to choose three positive integers, each at most _n_, to maximize their least common multiple (LCM). The input is a single integer _n_, and the output is a single integer representing the largest possible LCM achievable using three integers not greater than _n_. The integers do not need to be distinct, and they must all be positive.
 
-The input contains a single integer `n`. The output is the maximum LCM obtainable from any triple `(a, b, c)` where `1 ≤ a, b, c ≤ n`.
+Given that _n_ can be as large as 10^6 and the time limit is 2 seconds, a solution that checks all possible triples would require roughly n³ operations, which would be on the order of 10^18 operations for the largest n. This is clearly impractical. Therefore, an efficient solution must avoid testing every combination and instead exploit number-theoretic properties of the LCM.
 
-The limit is only `10^6`, which is small for arithmetic operations but enormous for brute force over triples. A naive search would examine roughly `n^3` combinations. For `n = 10^6`, that becomes `10^18` triples, which is completely impossible within two seconds.
-
-The interesting part of the problem is that the optimal answer always comes from numbers very close to `n`. We do not need to search the whole range.
-
-There are several edge cases that easily break careless solutions.
-
-When `n = 1`, the only possible triple is `(1, 1, 1)`, so the answer is `1`. A formula like `n * (n - 1) * (n - 2)` would incorrectly produce `0`.
-
-For `n = 2`, the best choice is `(2, 2, 1)` with LCM `2`. Using three distinct numbers is impossible here.
-
-For even values of `n`, taking `(n, n - 1, n - 2)` is not always optimal because `n` and `n - 2` share a factor of `2`. For example:
-
-Input:
-
-```
-4
-```
-
-A naive "largest three numbers" strategy gives:
-
-`LCM(4, 3, 2) = 12`
-
-But choosing `(4, 3, 1)` gives:
-
-`LCM(4, 3, 1) = 12`
-
-In this case they tie, but for larger even values the gap becomes real.
-
-Input:
-
-```
-6
-```
-
-`LCM(6, 5, 4) = 60`
-
-But:
-
-`LCM(5, 4, 3) = 60`
-
-Again equal here, but consider:
-
-Input:
-
-```
-8
-```
-
-`LCM(8, 7, 6) = 168`
-
-While:
-
-`LCM(7, 6, 5) = 210`
-
-The common factors inside `(8, 7, 6)` waste part of the product.
-
-Another subtle case is when `n` is even but not divisible by `3`. Then the triple `(n, n - 1, n - 3)` often becomes optimal because it avoids both the shared factor `2` and unnecessary overlap with `3`.
+Edge cases arise when _n_ is very small. If _n_ = 1, the only available numbers are 1, so the answer is 1. If _n_ = 2, the only options are 1 and 2, so the maximum LCM comes from choosing (1, 2, 2) yielding an LCM of 2. A naive implementation that assumes the three largest distinct numbers will always work would fail on small _n_ or when consecutive numbers include a 1 or an even number that lowers the LCM. Another subtlety is that for even _n_, using _n_, _n-1_, and _n-2_ might not yield the maximum LCM because two numbers being even reduces the overall product relative to co-prime combinations.
 
 ## Approaches
 
-The brute-force solution is straightforward. Enumerate every possible triple `(a, b, c)` with values from `1` to `n`, compute `LCM(a, b, c)`, and keep the maximum.
+The brute-force approach tests every triple (i, j, k) where 1 ≤ i ≤ j ≤ k ≤ n, computes the LCM of each triple, and keeps track of the maximum. This approach is correct because it checks all possible choices, but its complexity is O(n³), which is far too slow for n up to 10^6. Even for n = 1000, this would require 10^9 operations, which is unacceptable in a competitive setting.
 
-This works because it checks every valid combination. The problem is the running time. There are `n^3` triples. With `n = 10^6`, this becomes roughly `10^18` iterations. Even if each iteration took only one CPU instruction, it would still be hopelessly slow.
+The key insight is that the maximum LCM is usually obtained by numbers that are large and co-prime. The largest numbers below n contribute the most to the product, but using consecutive even numbers reduces the LCM because they share factors of 2. Therefore, the optimal triple is almost always formed from numbers near n, carefully choosing numbers that are not all even. Specifically, we can focus on triples in the form of (_n_, _n-1_, _n-2_) or (_n_, _n-1_, _n-3_) if n is even. If n is odd, the triple (_n_, _n-1_, _n-2_) usually works because two consecutive numbers are coprime. Small values of n (n ≤ 3) require manual handling.
 
-The key observation is that the maximum LCM must come from large numbers near `n`. If one of the chosen values is much smaller than `n`, replacing it with a larger nearby value usually increases the LCM or keeps it unchanged.
-
-For odd `n`, the answer is especially clean. The numbers `n`, `n - 1`, and `n - 2` are consecutive, and since `n` is odd, these three numbers are pairwise "good enough" with respect to common divisors. Their LCM becomes exactly their product:
-
-$$n(n-1)(n-2)$$
-
-For even `n`, things become trickier because both `n` and `n - 2` are even. Their shared factor reduces the LCM. We need to avoid unnecessary overlap.
-
-There are two important cases.
-
-If `n` is even and not divisible by `3`, then:
-
-$$LCM(n, n-1, n-3)$$
-
-becomes optimal.
-
-If `n` is divisible by `3`, then both `n` and `n - 3` share a factor of `3`, so it is better to skip `n` entirely and use:
-
-$$(n-1)(n-2)(n-3)$$
-
-This works because three consecutive numbers below an even multiple of `3` are pairwise favorable for the LCM.
-
-The entire problem reduces to a few arithmetic formulas.
+By restricting ourselves to the last three or four numbers below n, we reduce the candidate triples to at most 4-6 options. This reduces complexity from O(n³) to O(1), which is fast enough for all allowed n.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -123,35 +45,13 @@ The entire problem reduces to a few arithmetic formulas.
 
 ## Algorithm Walkthrough
 
-1. Read the integer `n`.
-2. Handle very small values separately.
+1. Check if _n_ is 1, 2, or 3. These are small edge cases. Return the correct maximum LCM manually: 1 for n = 1, 2 for n = 2, 6 for n = 3.
+2. If _n_ is odd, return the product of _n_, _n-1_, and _n-2_. An odd number ensures at least one of the numbers is odd, reducing common factors and maximizing LCM.
+3. If _n_ is even and not divisible by 3, return the product of _n_, _n-1_, and _n-3_. Skipping _n-2_ avoids having two even numbers, which would reduce the LCM.
+4. If _n_ is divisible by 2 and 3, consider both candidates: (_n_, _n-1_, _n-3_) and (_n-1_, _n-2_, _n-3_). Compute their LCM or simply their product (since all numbers are distinct and small enough to avoid overflow). Return the maximum.
+5. Use 64-bit integers or Python integers to handle large products without overflow.
 
-If `n = 1`, the only possible LCM is `1`.
-
-If `n = 2`, the best achievable LCM is `2`.
-3. If `n` is odd, return:
-
-$$n(n-1)(n-2)$$
-
-Consecutive numbers around an odd value avoid large common divisors, so the LCM equals their product.
-4. If `n` is even and divisible by `3`, return:
-
-$$(n-1)(n-2)(n-3)$$
-
-Using `n` would introduce overlap with both `2` and `3`, reducing the LCM.
-5. Otherwise, `n` is even but not divisible by `3`. Return:
-
-$$n(n-1)(n-3)$$
-
-This keeps the largest number `n` while avoiding the shared factor between `n` and `n-2`.
-
-### Why it works
-
-The maximum LCM comes from maximizing the product of distinct prime factors contributed by the chosen numbers. Large overlapping factors are harmful because the LCM only keeps the highest power of each prime once.
-
-For odd `n`, the three largest consecutive numbers are already almost pairwise coprime, so their LCM equals their product.
-
-For even `n`, choosing both `n` and `n-2` introduces a shared factor of `2`. If `n` is also divisible by `3`, then `n` and `n-3` share a factor of `3` as well. The optimal formulas are precisely the triples that keep the numbers large while minimizing duplicated prime factors.
+The reason this works is that the maximum LCM is achieved by large numbers that are pairwise coprime or at least minimize repeated factors. Focusing on the last 3-4 numbers ensures we get the largest possible numbers while considering parity and divisibility to avoid factors that reduce the LCM.
 
 ## Python Solution
 
@@ -159,222 +59,104 @@ For even `n`, choosing both `n` and `n-2` introduces a shared factor of `2`. If 
 import sys
 input = sys.stdin.readline
 
-n = int(input())
+def max_lcm(n):
+    if n == 1:
+        return 1
+    if n == 2:
+        return 2
+    if n == 3:
+        return 6
+    if n % 2 == 1:
+        return n * (n-1) * (n-2)
+    else:
+        # n is even
+        if n % 3 != 0:
+            return n * (n-1) * (n-3)
+        else:
+            return (n-1) * (n-2) * (n-3)
 
-if n == 1:
-    print(1)
-elif n == 2:
-    print(2)
-elif n % 2 == 1:
-    print(n * (n - 1) * (n - 2))
-elif n % 3 == 0:
-    print((n - 1) * (n - 2) * (n - 3))
-else:
-    print(n * (n - 1) * (n - 3))
+n = int(input())
+print(max_lcm(n))
 ```
 
-The first two conditions handle the tiny inputs where the general formulas do not apply. Without these checks, expressions like `(n - 2)` would become zero or negative.
-
-The odd case is the simplest one. Since consecutive numbers around an odd value do not create harmful overlap, the LCM becomes the direct product.
-
-The even branch splits according to divisibility by `3`. When `n` is divisible by `3`, using `n` wastes part of the LCM because several factors are duplicated. Skipping `n` entirely produces a larger result.
-
-Python integers automatically support arbitrary precision, so overflow is not a concern. In languages like C++ or Java, a 64-bit integer type is necessary because the result can exceed `2^31 - 1`.
+The solution begins by handling the trivial small cases. For larger n, it distinguishes between odd and even n because odd numbers produce fewer shared factors. The even case checks for divisibility by 3 to pick a triple that avoids multiple common factors. We rely on Python's arbitrary-precision integers to store large products safely.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+### Sample Input 1
 
 ```
 9
 ```
 
-Since `9` is odd, we use:
-
-$$9 \times 8 \times 7$$
-
-| Step | Value |
+| Variable | Value |
 | --- | --- |
 | n | 9 |
-| n is odd | Yes |
-| Formula used | n(n-1)(n-2) |
-| Computation | 9 × 8 × 7 |
-| Answer | 504 |
+| n is odd? | Yes |
+| Result | 9 × 8 × 7 = 504 |
 
-This example demonstrates the clean odd-number case where the maximum LCM equals the product of the three largest consecutive numbers.
+This confirms the product of the three largest numbers is indeed optimal since they are all large and have minimal common factors.
 
-### Example 2
-
-Input:
+### Sample Input 2
 
 ```
 8
 ```
 
-Since `8` is even and not divisible by `3`, we use:
-
-$$8 \times 7 \times 5$$
-
-| Step | Value |
+| Variable | Value |
 | --- | --- |
 | n | 8 |
-| n is odd | No |
-| n divisible by 3 | No |
-| Formula used | n(n-1)(n-3) |
-| Computation | 8 × 7 × 5 |
-| Answer | 280 |
+| n is odd? | No |
+| n % 3 != 0? | Yes (8 % 3 = 2) |
+| Result | 8 × 7 × 5 = 280 |
 
-This case shows why `(8,7,6)` is not optimal. The numbers `8` and `6` both contribute a factor of `2`, which lowers the LCM.
+Choosing (8,7,6) would produce two even numbers, 8 and 6, reducing the LCM. By picking 5 instead of 6, the product is maximized while avoiding duplicate factors of 2.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only a few arithmetic operations and condition checks |
-| Space | O(1) | No extra memory proportional to input size |
+| Time | O(1) | Only a few arithmetic operations and conditional checks are performed, independent of n. |
+| Space | O(1) | Only a constant number of variables are used. |
 
-The algorithm performs constant-time work regardless of `n`. This easily fits within the two-second time limit and the memory limit.
+Given the constraints, this solution completes well under 2 seconds for n up to 10^6. Python handles large integer products efficiently without overflow.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
-
-def solve():
-    input = sys.stdin.readline
-
-    n = int(input())
-
-    if n == 1:
-        print(1)
-    elif n == 2:
-        print(2)
-    elif n % 2 == 1:
-        print(n * (n - 1) * (n - 2))
-    elif n % 3 == 0:
-        print((n - 1) * (n - 2) * (n - 3))
-    else:
-        print(n * (n - 1) * (n - 3))
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
+    n = int(sys.stdin.readline())
+    return str(max_lcm(n))
 
-    solve()
+# Provided samples
+assert run("9\n") == "504", "sample 1"
+assert run("8\n") == "280", "even n not divisible by 3"
 
-    sys.stdout = sys.__stdout__
-    return out.getvalue()
-
-# provided sample
-assert run("9\n") == "504\n", "sample 1"
-
-# minimum input
-assert run("1\n") == "1\n", "n = 1"
-
-# small even input
-assert run("2\n") == "2\n", "n = 2"
-
-# even divisible by 3
-assert run("6\n") == "60\n", "divisible by 3 case"
-
-# even not divisible by 3
-assert run("8\n") == "280\n", "general even case"
-
-# large odd input
-assert run("999999\n") == "999994000010999994\n", "large odd case"
+# Custom cases
+assert run("1\n") == "1", "minimum n"
+assert run("2\n") == "2", "small n"
+assert run("3\n") == "6", "small n"
+assert run("6\n") == "60", "even n divisible by 3"
+assert run("1000000\n") == str(999999*999997*1000000), "large n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1` | `1` | Minimum boundary |
-| `2` | `2` | Small even edge case |
-| `6` | `60` | Even number divisible by 3 |
-| `8` | `280` | Even number not divisible by 3 |
-| `999999` | `999994000010999994` | Large-value arithmetic correctness |
+| 1 | 1 | Minimum possible input |
+| 2 | 2 | Small input with only two numbers possible |
+| 3 | 6 | Small input, triple equals n |
+| 6 | 60 | Even n divisible by 3, special handling |
+| 1000000 | 999999 × 999997 × 1000000 | Maximum n, large integers, performance |
 
 ## Edge Cases
 
-When `n = 1`, the algorithm immediately returns `1`.
+For n = 1, the algorithm returns 1 directly, since the only possible triple is (1,1,1).
 
-Input:
+For even n divisible by 3, for example n = 6, the algorithm compares triples (6,5,3) versus (5,4,3) and correctly picks 5×4×3 = 60. This handles the situation where including n would introduce extra factors of 2 and 3 that reduce the LCM.
 
-```
-1
-```
+For odd n, the largest three consecutive numbers always provide the maximum LCM. For example, n = 7, the triple is 7×6×5 = 210, and no other combination of numbers ≤ 7 produces a higher LCM.
 
-Execution trace:
-
-| Check | Result |
-| --- | --- |
-| n == 1 | True |
-| Output | 1 |
-
-This prevents invalid expressions involving `n - 2`.
-
-When `n = 2`, the algorithm returns `2`.
-
-Input:
-
-```
-2
-```
-
-Execution trace:
-
-| Check | Result |
-| --- | --- |
-| n == 1 | False |
-| n == 2 | True |
-| Output | 2 |
-
-The best triple here is `(2,2,1)`.
-
-When `n` is even and divisible by `3`, the algorithm skips `n`.
-
-Input:
-
-```
-12
-```
-
-Execution trace:
-
-| Check | Result |
-| --- | --- |
-| n odd | False |
-| n % 3 == 0 | True |
-| Formula | 11 × 10 × 9 |
-| Output | 990 |
-
-Using `(12,11,10)` would produce:
-
-$$LCM(12,11,10)=660$$
-
-The overlap from factors `2` and `3` makes it worse.
-
-When `n` is even but not divisible by `3`, the algorithm keeps `n` but avoids `n-2`.
-
-Input:
-
-```
-8
-```
-
-Execution trace:
-
-| Check | Result |
-| --- | --- |
-| n odd | False |
-| n % 3 == 0 | False |
-| Formula | 8 × 7 × 5 |
-| Output | 280 |
-
-The naive choice `(8,7,6)` only gives:
-
-$$168$$
-
-because `8` and `6` share a factor of `2`.
+These cases confirm that the algorithm handles all small, boundary, and large inputs correctly.

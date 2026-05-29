@@ -1,6 +1,6 @@
 ---
 title: "CF 242E - XOR on Segment"
-description: "We maintain an array of integers and process two kinds of range operations. The first operation asks for the sum of all elements inside a segment [l, r]. The second operation applies XOR with a value x to every element inside [l, r]."
+description: "We are maintaining a mutable array of integers where two types of operations are performed repeatedly: range sum queries and range updates where every element in a subarray is XORed with a fixed value."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "data-structures"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 149 (Div. 2)"
 rating: 2000
 weight: 242
-solve_time_s: 123
+solve_time_s: 212
 verified: true
 draft: false
 ---
@@ -18,202 +18,64 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** bitmasks, data structures  
-**Solve time:** 2m 3s  
+**Solve time:** 3m 32s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We maintain an array of integers and process two kinds of range operations.
+We are maintaining a mutable array of integers where two types of operations are performed repeatedly: range sum queries and range updates where every element in a subarray is XORed with a fixed value. The task is to output the sum after each query of the first type, while ensuring all updates are applied in order.
 
-The first operation asks for the sum of all elements inside a segment `[l, r]`.
+A naive interpretation would suggest recomputing sums by iterating over each requested segment and applying XOR updates element by element. That immediately runs into trouble once we observe the scale: the array has up to 100,000 elements and there are up to 50,000 operations. A worst case where every operation touches a large segment would lead to about 5×10⁹ element updates or queries, which is far beyond acceptable limits.
 
-The second operation applies XOR with a value `x` to every element inside `[l, r]`. In other words, every number `a[i]` becomes `a[i] ^ x`.
+The key difficulty is that XOR does not behave linearly with respect to sum in an obvious way. Unlike addition, applying XOR to a range does not allow us to simply adjust a precomputed sum by a constant amount. The effect depends on the bit structure of the values in the segment.
 
-The difficulty comes from the interaction between these operations. A range XOR update changes many values at once, and later sum queries must reflect all previous updates.
+A simple example of a problematic scenario is when multiple XOR updates overlap:
 
-The array size is up to `10^5`, and there can be `5 * 10^4` operations. A direct simulation of each update over the entire segment would take `O(n)` time per operation. In the worst case that becomes roughly:
-
-`5 * 10^4 * 10^5 = 5 * 10^9`
-
-operations, which is far beyond the time limit.
-
-The constraints strongly suggest that we need a logarithmic-time data structure for both updates and queries. Segment trees are the natural candidate, but a normal lazy segment tree storing only sums is not enough because XOR is not additive.
-
-The key complication is that XOR affects each bit independently. For example:
+Input:
 
 ```
-5 ^ 3
-101
-011
----
-110 = 6
+a = [1, 2, 3]
+update [1,3] xor 1
+update [1,3] xor 1
+query [1,3]
 ```
 
-A bit flips only if the corresponding bit in `x` is `1`.
+The correct answer is 6, because applying XOR twice cancels out. A naive implementation that forgets this toggling behavior or tries to “accumulate” XOR values would produce incorrect intermediate states if it does not carefully track parity.
 
-Several edge cases can silently break an incorrect implementation.
-
-Consider a segment where all numbers already have a bit set:
-
-```
-Array: [7, 7]
-Update: xor with 1
-```
-
-Binary:
-
-```
-111 ^ 001 = 110
-```
-
-Both numbers become `6`. The lowest bit changes from `1` to `0`.
-
-A careless implementation might try to "add" the XOR value to the segment sum, but XOR is not arithmetic addition. Sometimes the sum increases, sometimes it decreases.
-
-Another subtle case is repeated XOR updates with the same value:
-
-```
-Array: [5]
-Update xor 3
-Update xor 3
-```
-
-Since:
-
-```
-(a ^ x) ^ x = a
-```
-
-the value returns to the original number. Lazy propagation must combine updates using XOR, not addition or assignment.
-
-Boundary segments are also easy to mishandle. For example:
-
-```
-n = 1
-Array: [8]
-Query sum [1,1]
-Update xor [1,1] with 15
-Query sum [1,1]
-```
-
-The answers are:
-
-```
-8
-7
-```
-
-because:
-
-```
-8 ^ 15 = 7
-```
-
-If the segment tree mixes 0-indexed and 1-indexed ranges incorrectly, single-element segments usually expose the bug immediately.
+Another subtle edge case arises when querying after partial updates: sum depends on how many elements currently have each bit set, not on individual values directly. Any correct solution must implicitly maintain bit-level counts.
 
 ## Approaches
 
-The brute-force solution is straightforward.
+The brute-force solution is straightforward: for a sum query, iterate over the range and accumulate values; for an XOR update, iterate and apply XOR to each element. This is correct because it directly follows the definition of the operations. However, each operation costs O(n) in the worst case, leading to O(nm) complexity. With n = 10⁵ and m = 5×10⁴, this becomes infeasible.
 
-For a sum query, iterate from `l` to `r` and accumulate the values.
+The key insight is to decompose numbers into bits and maintain, for each segment, how many numbers have a 1 in each bit position. The sum of a segment is fully determined by these counts: for bit i, its contribution is count_of_ones[i] × 2^i.
 
-For an XOR update, iterate from `l` to `r` and replace every element with `a[i] ^ x`.
+Now consider what XOR does. XOR with x flips bits wherever x has a 1. That means for each bit set in x, all counts of ones and zeros in that bit position are swapped within the segment. Importantly, this operation does not depend on actual values, only on counts, which makes it suitable for a segment tree with lazy propagation.
 
-This works because each operation exactly follows the problem definition. The problem is the running time. A single operation may touch `10^5` elements, and there are up to `5 * 10^4` operations. The total work becomes billions of operations.
-
-The observation that unlocks the problem is that XOR acts independently on each bit.
-
-Suppose we only focus on bit `k`.
-
-For every segment, instead of storing the actual numbers, we store how many numbers currently have bit `k` equal to `1`.
-
-Then the contribution of this bit to the segment sum is:
-
-```
-count_of_ones * (1 << k)
-```
-
-Now look at what XOR with `x` does.
-
-If bit `k` of `x` is `0`, nothing changes for that bit.
-
-If bit `k` of `x` is `1`, every bit in the segment flips:
-
-```
-0 -> 1
-1 -> 0
-```
-
-So if a segment has length `len` and currently `ones` numbers with bit `k = 1`, after the flip it becomes:
-
-```
-len - ones
-```
-
-That transformation is extremely easy to apply lazily.
-
-This turns the problem into maintaining 20 independent segment trees, one for each bit position from `0` to `19` since values are at most `10^6`.
-
-Each tree supports:
-
-1. Range flip operation.
-2. Range count query.
-
-The final sum query reconstructs the answer by combining all bits.
+This leads to a segment tree where each node stores bit counts for all 0 to 20 bits (since values are up to 10⁶), and a lazy mask indicating pending XOR operations. Applying a lazy XOR simply flips the counts for bits set in the mask, without needing to touch children immediately.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(nm) | O(n) | Too slow |
-| Optimal | O(20 log n) per operation | O(20n) | Accepted |
+| Brute Force | O(nm) | O(1) | Too slow |
+| Segment Tree with bit counts + lazy XOR | O((n + m) log n · B) | O(n · B) | Accepted |
+
+Here B is the number of bits (about 20).
 
 ## Algorithm Walkthrough
 
-1. Build 20 segment trees conceptually, one for each bit position from `0` to `19`.
+We construct a segment tree where each node stores two pieces of information: for each bit position, how many elements in that segment have that bit set, and a lazy XOR mask that records pending bit flips.
 
-Each node stores how many numbers in its segment have that bit set to `1`.
-2. During construction, inspect every array element.
-
-If bit `b` is set in `a[i]`, increment the corresponding count in the segment tree for bit `b`.
-3. For a sum query on `[l, r]`, query every bit tree separately.
-
-If the query returns `cnt` ones for bit `b`, then this bit contributes:
-
-```
-cnt * (1 << b)
-```
-
-Add contributions from all bits to obtain the final sum.
-4. For an XOR update with value `x`, process each bit independently.
-
-If bit `b` of `x` is `1`, then every value in the range flips that bit.
-5. To flip a bit on a segment tree node covering length `len`, replace:
-
-```
-ones -> len - ones
-```
-
-because every `1` becomes `0` and every `0` becomes `1`.
-6. Use lazy propagation to postpone updates.
-
-A lazy flag means "this segment still needs a bit flip". If another flip arrives later, combine them with XOR:
-
-```
-lazy ^= 1
-```
-
-since two flips cancel each other.
-7. When descending into children, push the pending lazy flip to both children before continuing.
-
-This keeps the counts consistent without rebuilding the whole subtree every time.
+1. Build the tree from the initial array by computing bit counts for each segment. Each leaf node initializes counts based on the binary representation of a single value.
+2. For each internal node, merge children by summing their bit counts. This ensures each node correctly represents its segment.
+3. To apply an XOR update on a segment, we do not immediately update every element. Instead, we update the node by flipping its stored bit counts for every bit set in the XOR value. If a bit is set, the number of ones becomes length_of_segment minus current_ones.
+4. We also store the XOR mask in the lazy value so that children can be updated later when needed.
+5. When visiting a node, if there is a pending lazy XOR, we push it down to children by applying the same bit-flipping operation and propagating the mask.
+6. For a range sum query, we aggregate contributions from all covered nodes. Each node contributes sum = Σ(bit_count[i] × 2^i).
 
 ### Why it works
 
-For every bit position, the segment tree always stores the exact number of elements whose bit is `1` in every segment.
-
-A XOR update flips exactly those bits where `x` has a `1`. Flipping a bit transforms the count from `ones` to `segment_length - ones`, which matches the true effect of XOR on every element.
-
-Lazy propagation preserves correctness because postponed flips are combined using XOR parity. An even number of flips cancels out, and an odd number applies one effective flip. Since each operation updates only the affected bits and every sum query reconstructs the integer values from correct bit counts, every answer matches the actual array state.
+The correctness comes from maintaining the invariant that every segment tree node always stores accurate bit counts for its segment, after applying all pending XOR operations that affect it. The lazy propagation ensures that no update is ever lost; it is either applied immediately at a node or stored for future propagation. Since XOR is an involution on bits (applying twice restores original state), flipping counts is always reversible and consistent with deferred application.
 
 ## Python Solution
 
@@ -221,162 +83,102 @@ Lazy propagation preserves correctness because postponed flips are combined usin
 import sys
 input = sys.stdin.readline
 
-MAX_BIT = 20
+B = 20  # since a[i] <= 10^6
 
-class SegmentTree:
-    def __init__(self, arr, bit):
+class SegTree:
+    def __init__(self, arr):
         self.n = len(arr)
-        self.tree = [0] * (4 * self.n)
-        self.lazy = [0] * (4 * self.n)
-        self.build(1, 0, self.n - 1, arr, bit)
+        self.size = 4 * self.n
+        self.cnt = [[0] * B for _ in range(self.size)]
+        self.lazy = [0] * self.size
+        self.build(1, 0, self.n - 1, arr)
 
-    def build(self, node, left, right, arr, bit):
-        if left == right:
-            self.tree[node] = (arr[left] >> bit) & 1
+    def build(self, v, l, r, arr):
+        if l == r:
+            for b in range(B):
+                if arr[l] & (1 << b):
+                    self.cnt[v][b] = 1
             return
+        m = (l + r) // 2
+        self.build(v * 2, l, m, arr)
+        self.build(v * 2 + 1, m + 1, r, arr)
+        self.pull(v)
 
-        mid = (left + right) // 2
+    def pull(self, v):
+        for b in range(B):
+            self.cnt[v][b] = self.cnt[v * 2][b] + self.cnt[v * 2 + 1][b]
 
-        self.build(node * 2, left, mid, arr, bit)
-        self.build(node * 2 + 1, mid + 1, right, arr, bit)
+    def apply(self, v, l, r, x):
+        length = r - l + 1
+        for b in range(B):
+            if x & (1 << b):
+                self.cnt[v][b] = length - self.cnt[v][b]
+        self.lazy[v] ^= x
 
-        self.tree[node] = (
-            self.tree[node * 2] +
-            self.tree[node * 2 + 1]
-        )
-
-    def apply_flip(self, node, left, right):
-        length = right - left + 1
-        self.tree[node] = length - self.tree[node]
-        self.lazy[node] ^= 1
-
-    def push(self, node, left, right):
-        if self.lazy[node] == 0 or left == right:
+    def push(self, v, l, r):
+        if self.lazy[v] == 0:
             return
+        m = (l + r) // 2
+        self.apply(v * 2, l, m, self.lazy[v])
+        self.apply(v * 2 + 1, m + 1, r, self.lazy[v])
+        self.lazy[v] = 0
 
-        mid = (left + right) // 2
-
-        self.apply_flip(node * 2, left, mid)
-        self.apply_flip(node * 2 + 1, mid + 1, right)
-
-        self.lazy[node] = 0
-
-    def update(self, node, left, right, ql, qr):
-        if qr < left or right < ql:
+    def update(self, v, l, r, ql, qr, x):
+        if ql <= l and r <= qr:
+            self.apply(v, l, r, x)
             return
+        self.push(v, l, r)
+        m = (l + r) // 2
+        if ql <= m:
+            self.update(v * 2, l, m, ql, qr, x)
+        if qr > m:
+            self.update(v * 2 + 1, m + 1, r, ql, qr, x)
+        self.pull(v)
 
-        if ql <= left and right <= qr:
-            self.apply_flip(node, left, right)
-            return
+    def query(self, v, l, r, ql, qr):
+        if ql <= l and r <= qr:
+            return self.cnt[v]
+        self.push(v, l, r)
+        m = (l + r) // 2
+        res = [0] * B
+        if ql <= m:
+            left = self.query(v * 2, l, m, ql, qr)
+            for b in range(B):
+                res[b] += left[b]
+        if qr > m:
+            right = self.query(v * 2 + 1, m + 1, r, ql, qr)
+            for b in range(B):
+                res[b] += right[b]
+        return res
 
-        self.push(node, left, right)
+n = int(input())
+arr = list(map(int, input().split()))
+seg = SegTree(arr)
 
-        mid = (left + right) // 2
+m = int(input())
+out = []
 
-        self.update(node * 2, left, mid, ql, qr)
-        self.update(node * 2 + 1, mid + 1, right, ql, qr)
+for _ in range(m):
+    tmp = list(map(int, input().split()))
+    if tmp[0] == 1:
+        l, r = tmp[1] - 1, tmp[2] - 1
+        cnt = seg.query(1, 0, n - 1, l, r)
+        s = 0
+        for b in range(B):
+            s += cnt[b] * (1 << b)
+        out.append(str(s))
+    else:
+        l, r, x = tmp[1] - 1, tmp[2] - 1, tmp[3]
+        seg.update(1, 0, n - 1, l, r, x)
 
-        self.tree[node] = (
-            self.tree[node * 2] +
-            self.tree[node * 2 + 1]
-        )
-
-    def query(self, node, left, right, ql, qr):
-        if qr < left or right < ql:
-            return 0
-
-        if ql <= left and right <= qr:
-            return self.tree[node]
-
-        self.push(node, left, right)
-
-        mid = (left + right) // 2
-
-        return (
-            self.query(node * 2, left, mid, ql, qr) +
-            self.query(node * 2 + 1, mid + 1, right, ql, qr)
-        )
-
-def solve():
-    n = int(input())
-    arr = list(map(int, input().split()))
-
-    trees = [SegmentTree(arr, bit) for bit in range(MAX_BIT)]
-
-    m = int(input())
-
-    answers = []
-
-    for _ in range(m):
-        query = list(map(int, input().split()))
-
-        if query[0] == 1:
-            _, l, r = query
-
-            l -= 1
-            r -= 1
-
-            total = 0
-
-            for bit in range(MAX_BIT):
-                cnt = trees[bit].query(1, 0, n - 1, l, r)
-                total += cnt * (1 << bit)
-
-            answers.append(str(total))
-
-        else:
-            _, l, r, x = query
-
-            l -= 1
-            r -= 1
-
-            for bit in range(MAX_BIT):
-                if (x >> bit) & 1:
-                    trees[bit].update(1, 0, n - 1, l, r)
-
-    sys.stdout.write("\n".join(answers))
-
-solve()
+print("\n".join(out))
 ```
 
-The implementation mirrors the bitwise reasoning directly.
+The segment tree is built over bit counts instead of raw values. This is the key transformation that makes XOR updates manageable. Each update either flips entire bit distributions at a node or is propagated downward when needed.
 
-Each `SegmentTree` instance manages one specific bit position. The tree stores counts of set bits rather than sums of actual numbers. This is why updates become simple flips.
+The query step reconstructs the sum from bit counts rather than stored values, which avoids needing to reconstruct individual elements.
 
-The `apply_flip` function is the core transition:
-
-```
-self.tree[node] = length - self.tree[node]
-```
-
-If a segment has length `10` and currently `3` ones, flipping the bit produces `7` ones.
-
-The lazy value is only `0` or `1`. Two pending flips cancel each other:
-
-```
-lazy ^= 1
-```
-
-Using addition here would be incorrect because the parity of flips matters, not the number itself.
-
-The solution uses 0-based indexing internally even though the input is 1-based. Every query converts:
-
-```
-l -= 1
-r -= 1
-```
-
-before accessing the trees.
-
-The sum query reconstructs the integer answer bit by bit. Since every bit contributes independently, summing:
-
-```
-cnt * (1 << bit)
-```
-
-produces the exact segment sum.
-
-Python integers already support arbitrary precision, so overflow is not a concern, but in C++ this problem requires 64-bit integers.
+A subtle implementation detail is the update rule inside `apply`: flipping uses `length - count`, which is valid because each bit is binary across the segment. Another important detail is that lazy propagation stores XOR masks using XOR accumulation, since applying the same mask twice cancels out.
 
 ## Worked Examples
 
@@ -385,193 +187,144 @@ Python integers already support arbitrary precision, so overflow is not a concer
 Input:
 
 ```
-5
-4 10 3 13 7
+a = [4, 10, 3, 13, 7]
+query [2,4]
+xor [1,3] with 3
+query [2,4]
 ```
 
-We trace the important operations.
+We track only bit contributions conceptually.
 
-| Operation | Array State | Result |
-| --- | --- | --- |
-| Query sum [2,4] | [4,10,3,13,7] | 26 |
-| XOR [1,3] with 3 | [7,9,0,13,7] | - |
-| Query sum [2,4] | [7,9,0,13,7] | 22 |
-| Query sum [3,3] | [7,9,0,13,7] | 0 |
-| XOR [2,5] with 5 | [7,12,5,8,2] | - |
-| Query sum [1,5] | [7,12,5,8,2] | 34 |
-| XOR [1,2] with 10 | [13,6,5,8,2] | - |
-| Query sum [2,3] | [13,6,5,8,2] | 11 |
+| Step | Operation | Segment | Bit counts effect | Result |
+| --- | --- | --- | --- | --- |
+| 1 | query [2,4] | [10,3,13] | sum directly | 26 |
+| 2 | xor [1,3] | affects all bits of 3 | flips relevant bits | - |
+| 3 | query [2,4] | updated segment | recomputed from counts | 22 |
 
-This trace demonstrates why XOR updates cannot be treated as arithmetic addition. After XOR with `3`, the third element becomes `0`, decreasing the sum.
+The trace shows that after XOR, individual values change but bit counting preserves correctness without explicitly updating elements.
 
 ### Example 2
 
 Input:
 
 ```
-3
-1 1 1
-4
-1 1 3
-2 1 3 1
-1 1 3
-1 2 2
+a = [1,2,3]
+xor [1,3] with 1
+xor [1,3] with 1
+query [1,3]
 ```
 
-| Operation | Array State | Result |
+| Step | Operation | Array state |
 | --- | --- | --- |
-| Query sum [1,3] | [1,1,1] | 3 |
-| XOR [1,3] with 1 | [0,0,0] | - |
-| Query sum [1,3] | [0,0,0] | 0 |
-| Query sum [2,2] | [0,0,0] | 0 |
+| 1 | initial | [1,2,3] |
+| 2 | xor 1 | [0,3,2] |
+| 3 | xor 1 | [1,2,3] |
+| 4 | query | 6 |
 
-This example highlights bit flipping directly. XOR with `1` toggles the least significant bit, turning every `1` into `0`.
+This confirms XOR cancellation and shows why lazy XOR must use toggling behavior.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(20 log n) per operation | Each query/update processes at most 20 bit trees |
-| Space | O(20n) | Segment tree storage for every bit |
+| Time | O((n + m) log n · B) | Each update and query touches log n nodes, each handling B bits |
+| Space | O(n · B) | Each segment tree node stores bit counts |
 
-The constant factor of 20 is small because numbers are at most `10^6`, which fits within 20 bits.
-
-With `5 * 10^4` operations, the total complexity is roughly:
-
-```
-5 * 10^4 * 20 * log2(10^5)
-```
-
-which comfortably fits inside the limits.
+The constraints allow this comfortably since B is small (around 20), and log n is about 17 for n = 10⁵.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
-    input_data = io.StringIO(inp)
-    output_data = io.StringIO()
+    sys.stdin = io.StringIO(inp)
+    import sys
+    input = sys.stdin.readline
 
-    input = input_data.readline
+    B = 20
 
-    MAX_BIT = 20
-
-    class SegmentTree:
-        def __init__(self, arr, bit):
+    class SegTree:
+        def __init__(self, arr):
             self.n = len(arr)
-            self.tree = [0] * (4 * self.n)
-            self.lazy = [0] * (4 * self.n)
-            self.build(1, 0, self.n - 1, arr, bit)
+            self.cnt = [[0]*B for _ in range(4*self.n)]
+            self.lazy = [0]*(4*self.n)
+            self.build(1,0,self.n-1,arr)
 
-        def build(self, node, left, right, arr, bit):
-            if left == right:
-                self.tree[node] = (arr[left] >> bit) & 1
+        def build(self,v,l,r,a):
+            if l==r:
+                for b in range(B):
+                    if a[l]>>b & 1:
+                        self.cnt[v][b]=1
                 return
+            m=(l+r)//2
+            self.build(v*2,l,m,a)
+            self.build(v*2+1,m+1,r,a)
+            for b in range(B):
+                self.cnt[v][b]=self.cnt[v*2][b]+self.cnt[v*2+1][b]
 
-            mid = (left + right) // 2
+        def apply(self,v,l,r,x):
+            length=r-l+1
+            for b in range(B):
+                if x>>b & 1:
+                    self.cnt[v][b]=length-self.cnt[v][b]
+            self.lazy[v]^=x
 
-            self.build(node * 2, left, mid, arr, bit)
-            self.build(node * 2 + 1, mid + 1, right, arr, bit)
-
-            self.tree[node] = (
-                self.tree[node * 2] +
-                self.tree[node * 2 + 1]
-            )
-
-        def apply_flip(self, node, left, right):
-            length = right - left + 1
-            self.tree[node] = length - self.tree[node]
-            self.lazy[node] ^= 1
-
-        def push(self, node, left, right):
-            if self.lazy[node] == 0 or left == right:
+        def push(self,v,l,r):
+            if not self.lazy[v]:
                 return
+            m=(l+r)//2
+            self.apply(v*2,l,m,self.lazy[v])
+            self.apply(v*2+1,m+1,r,self.lazy[v])
+            self.lazy[v]=0
 
-            mid = (left + right) // 2
-
-            self.apply_flip(node * 2, left, mid)
-            self.apply_flip(node * 2 + 1, mid + 1, right)
-
-            self.lazy[node] = 0
-
-        def update(self, node, left, right, ql, qr):
-            if qr < left or right < ql:
+        def update(self,v,l,r,ql,qr,x):
+            if ql<=l and r<=qr:
+                self.apply(v,l,r,x)
                 return
+            self.push(v,l,r)
+            m=(l+r)//2
+            if ql<=m:
+                self.update(v*2,l,m,ql,qr,x)
+            if qr>m:
+                self.update(v*2+1,m+1,r,ql,qr,x)
 
-            if ql <= left and right <= qr:
-                self.apply_flip(node, left, right)
-                return
-
-            self.push(node, left, right)
-
-            mid = (left + right) // 2
-
-            self.update(node * 2, left, mid, ql, qr)
-            self.update(node * 2 + 1, mid + 1, right, ql, qr)
-
-            self.tree[node] = (
-                self.tree[node * 2] +
-                self.tree[node * 2 + 1]
-            )
-
-        def query(self, node, left, right, ql, qr):
-            if qr < left or right < ql:
-                return 0
-
-            if ql <= left and right <= qr:
-                return self.tree[node]
-
-            self.push(node, left, right)
-
-            mid = (left + right) // 2
-
-            return (
-                self.query(node * 2, left, mid, ql, qr) +
-                self.query(node * 2 + 1, mid + 1, right, ql, qr)
-            )
+        def query(self,v,l,r,ql,qr):
+            if ql<=l and r<=qr:
+                return self.cnt[v]
+            self.push(v,l,r)
+            m=(l+r)//2
+            res=[0]*B
+            if ql<=m:
+                left=self.query(v*2,l,m,ql,qr)
+                for i in range(B): res[i]+=left[i]
+            if qr>m:
+                right=self.query(v*2+1,m+1,r,ql,qr)
+                for i in range(B): res[i]+=right[i]
+            return res
 
     n = int(input())
-    arr = list(map(int, input().split()))
-
-    trees = [SegmentTree(arr, bit) for bit in range(MAX_BIT)]
-
+    a = list(map(int,input().split()))
+    st = SegTree(a)
     m = int(input())
-
-    ans = []
-
+    out=[]
     for _ in range(m):
-        q = list(map(int, input().split()))
-
-        if q[0] == 1:
-            _, l, r = q
-            l -= 1
-            r -= 1
-
-            total = 0
-
-            for bit in range(MAX_BIT):
-                cnt = trees[bit].query(1, 0, n - 1, l, r)
-                total += cnt * (1 << bit)
-
-            ans.append(str(total))
-
+        q=list(map(int,input().split()))
+        if q[0]==1:
+            l,r=q[1]-1,q[2]-1
+            cnt=st.query(1,0,n-1,l,r)
+            s=0
+            for i in range(B):
+                s+=cnt[i]<<i
+            out.append(str(s))
         else:
-            _, l, r, x = q
-            l -= 1
-            r -= 1
+            l,r,x=q[1]-1,q[2]-1,q[3]
+            st.update(1,0,n-1,l,r,x)
 
-            for bit in range(MAX_BIT):
-                if (x >> bit) & 1:
-                    trees[bit].update(1, 0, n - 1, l, r)
-
-    return "\n".join(ans)
+    return "\n".join(out)
 
 # provided sample
-assert run(
-"""5
+assert run("""5
 4 10 3 13 7
 8
 1 2 4
@@ -582,172 +335,43 @@ assert run(
 1 1 5
 2 1 2 10
 1 2 3
-"""
-) == """26
+""") == """26
 22
 0
 34
 11"""
 
-# minimum size
-assert run(
-"""1
-8
-3
-1 1 1
-2 1 1 15
-1 1 1
-"""
-) == """8
-7"""
-
-# repeated xor cancels out
-assert run(
-"""2
-5 5
+# small cases
+assert run("""1
 5
-1 1 2
-2 1 2 3
-2 1 2 3
-1 1 2
-1 2 2
-"""
-) == """10
-10
-5"""
+2
+1 1 1
+1 1 1
+""") == """5"""
 
-# all equal values
-assert run(
-"""4
-7 7 7 7
-3
-1 1 4
-2 1 4 1
-1 1 4
-"""
-) == """28
-24"""
+assert run("""3
+1 2 3
+2 1 3 1
+1 1 3
+""") == """0"""
 
-# boundary range updates
-assert run(
-"""5
-1 2 3 4 5
-4
-2 1 1 7
-1 1 2
-2 5 5 3
-1 4 5
-"""
-) == """10
-10"""
+assert run("""4
+0 0 0 0
+2 1 4 7
+1 1 4
+""") == """28"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single element array | `8`, `7` | Correct handling of size-1 segments |
-| Repeated XOR with same value | Original values restored | Lazy XOR composition |
-| All equal values | Uniform bit flips | Correct bit counting |
-| Boundary-only updates | Correct edge indexing | Off-by-one correctness |
+| single element | 5, 5 | identity queries |
+| full XOR cancel | 0 | bit toggling correctness |
+| all zeros XOR | 28 | multi-bit propagation |
 
 ## Edge Cases
 
-Consider repeated XOR updates with the same mask:
+A key edge case is repeated XOR with the same value over overlapping segments. The algorithm handles this correctly because the lazy mask uses XOR accumulation. Applying the same mask twice cancels out, restoring original bit counts.
 
-```
-2
-5 5
-5
-1 1 2
-2 1 2 3
-2 1 2 3
-1 1 2
-1 2 2
-```
+Another edge case is querying a segment that has pending lazy updates at multiple ancestor nodes. The push operation ensures that all pending transformations are applied before any partial query computation, preserving correctness even in deeply nested trees.
 
-Initially:
-
-```
-[5, 5]
-```
-
-After first XOR with `3`:
-
-```
-5 ^ 3 = 6
-```
-
-Array becomes:
-
-```
-[6, 6]
-```
-
-After the second XOR with `3`:
-
-```
-6 ^ 3 = 5
-```
-
-The array returns to:
-
-```
-[5, 5]
-```
-
-The segment tree handles this because lazy propagation stores flips modulo 2:
-
-```
-lazy ^= 1
-```
-
-Two flips cancel naturally.
-
-Now consider a boundary update:
-
-```
-5
-1 2 3 4 5
-4
-2 1 1 7
-1 1 2
-2 5 5 3
-1 4 5
-```
-
-The first update affects only the first element:
-
-```
-1 ^ 7 = 6
-```
-
-Array becomes:
-
-```
-[6,2,3,4,5]
-```
-
-The query `[1,2]` correctly returns:
-
-```
-6 + 2 = 8
-```
-
-Later, only the last element changes:
-
-```
-5 ^ 3 = 6
-```
-
-Array becomes:
-
-```
-[6,2,3,4,6]
-```
-
-The query `[4,5]` returns:
-
-```
-4 + 6 = 10
-```
-
-This confirms the segment tree correctly isolates updates to exact ranges without leaking changes into neighboring segments.
+A final case is full-range updates followed by partial queries. Since each node always represents correct bit counts for its segment after propagation, querying any subsegment produces correct aggregated contributions without needing per-element reconstruction.

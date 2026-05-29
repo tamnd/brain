@@ -1,6 +1,6 @@
 ---
 title: "CF 235C - Cyclical Quest"
-description: "We are given one large text string s, then many query strings x. For each query, we must count how many substrings of s are cyclic rotations of x. A cyclic rotation moves some prefix of a string to the end."
+description: "We are given one large text string s, then many query strings x. For every query, we must count how many substrings of s are rotations of x. If x = \"abcd\", then all of these strings are considered equivalent: abcd, bcda, cdab, dabc."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "string-suffix-structures", "strings"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 146 (Div. 1)"
 rating: 2700
 weight: 235
-solve_time_s: 117
+solve_time_s: 175
 verified: true
 draft: false
 ---
@@ -18,213 +18,163 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** data structures, string suffix structures, strings  
-**Solve time:** 1m 57s  
+**Solve time:** 2m 55s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given one large text string `s`, then many query strings `x`. For each query, we must count how many substrings of `s` are cyclic rotations of `x`.
+We are given one large text string `s`, then many query strings `x`. For every query, we must count how many substrings of `s` are rotations of `x`.
 
-A cyclic rotation moves some prefix of a string to the end. For example, the rotations of `"abcd"` are `"abcd"`, `"bcda"`, `"cdab"`, and `"dabc"`.
+If `x = "abcd"`, then all of these strings are considered equivalent:
 
-So if the query is `"abc"`, every occurrence of `"abc"`, `"bca"`, or `"cab"` inside `s` contributes to the answer.
+`abcd`, `bcda`, `cdab`, `dabc`.
 
-The input size completely rules out naive substring checking. The main string can have length up to `10^6`, and the total length of all queries is also up to `10^6`. Any algorithm that scans the whole text for every query separately would perform around `10^12` character operations in the worst case, which is far beyond the time limit.
+For each query, we are not checking whether `x` itself appears in `s`. We are checking whether _any rotation_ of `x` appears as a substring of `s`.
 
-The structure of the problem strongly suggests preprocessing the big string once, then answering all queries using that structure. Since we need substring occurrence information for many different patterns, suffix automaton is a natural fit. The difficult part is handling all cyclic rotations efficiently without counting duplicates incorrectly.
+The constraints completely determine the shape of the solution. The main string can have length up to `10^6`, and the total length of all queries is also up to `10^6`. A quadratic algorithm is impossible. Even an `O(|s| * |x|)` matcher per query would explode immediately.
 
-Several edge cases are easy to mishandle.
+Suppose we tried checking every substring of `s` against every rotation of a query. A single query of length `10^5` has `10^5` rotations, and each comparison costs another `10^5`. That is already around `10^10` operations for one query alone.
 
-Consider the query:
+The problem is really asking for very fast substring frequency queries over all cyclic shifts of a pattern. That strongly suggests preprocessing the main string into a suffix structure.
+
+There are several subtle edge cases that break naive implementations.
+
+Consider:
 
 ```
-aaaa
+s = aaaa
+x = aa
 ```
 
-All rotations are identical. A careless solution that checks all rotations independently would count every occurrence four times instead of once.
+The rotations of `"aa"` are not distinct. There is only one unique rotation. The correct answer is `3`, not `6`. A careless implementation that independently counts every rotation would double count the same substring.
+
+Another dangerous case is:
+
+```
+s = abcabc
+x = abc
+```
+
+The rotations are:
+
+`abc`, `bca`, `cab`.
+
+All three appear, but occurrences overlap heavily. We still count occurrences normally:
+
+`abc` appears twice,
+
+`bca` appears once,
+
+`cab` appears once.
+
+Total answer is `4`.
+
+A naive deduplication strategy based only on hashing can also fail if rotations repeat periodically.
 
 For example:
 
 ```
-s = aaaaa
-x = aaaa
+x = ababab
 ```
 
-The correct answer is `2`, because `"aaaa"` appears at positions `0` and `1`.
+Rotating by 2 gives the same string again. There are only two distinct rotations, not six.
 
-Another tricky case is when different rotations reach the same automaton state.
-
-Example:
-
-```
-s = ababab
-x = abab
-```
-
-The rotations are `"abab"` and `"baba"`. If we simply sum occurrence counts for all rotations, repeated states may cause duplicate counting. We must deduplicate states per query.
-
-Queries of length `1` also need attention.
-
-Example:
-
-```
-s = abcabc
-x = b
-```
-
-The only rotation is `"b"` itself, so the answer is simply the number of `'b'` characters in `s`.
-
-Finally, queries longer than `s` must immediately return `0`.
-
-Example:
-
-```
-s = abc
-x = abcde
-```
-
-No substring of `s` can have length `5`.
+Finally, queries longer than `s` must immediately return `0`. Some suffix-array traversals accidentally walk past boundaries and count invalid matches if this condition is forgotten.
 
 ## Approaches
 
-The brute force idea is straightforward. For every query `x`, generate all rotations of `x`, then search each rotation inside `s`.
+The brute-force idea is straightforward. For every query string `x`, generate all rotations of `x`. For every rotation, scan the entire string `s` and count occurrences.
 
-A standard substring search like KMP would find one pattern in linear time, so a query of length `m` would cost `O(m * |s|)` in the worst case because there are `m` rotations. With both total query length and `|s|` reaching `10^6`, this becomes completely infeasible.
+This works logically because every valid answer is exactly one substring equal to one cyclic shift of `x`.
 
-We need to exploit two observations.
+The problem is the running time. If `|s| = 10^6` and `|x| = 10^5`, then generating all rotations already costs `10^10` total character work. Matching each rotation against `s` makes it even worse.
 
-First, every rotation of `x` appears as a substring of `x + x`. For example:
+We need to avoid two separate inefficiencies.
+
+First, matching substrings repeatedly against `s`.
+
+Second, generating and processing duplicate rotations.
+
+The key observation is that every rotation of `x` appears as a substring of `x + x`.
+
+For example:
 
 ```
 x = abcd
 x + x = abcdabcd
 ```
 
-Every length-4 substring of this doubled string is a rotation.
+Every length-4 substring starting in the first four positions is one cyclic shift.
 
-Second, suffix automaton can tell us how many times any substring occurs in `s`. After building the automaton once for `s`, every substring query becomes a traversal problem.
+That transforms the problem into:
 
-The remaining challenge is counting all distinct rotations efficiently.
+Count occurrences in `s` of every length-`m` substring of `x + x`, where `m = |x|`.
 
-Suppose we traverse `x + x` through the suffix automaton using a sliding window of length `m = |x|`. Every valid window corresponds to one rotation. The automaton state reached after reading that window represents that substring in `s`, and the state's occurrence count tells us how many times it appears.
+Now we need a structure that can answer substring frequency queries quickly.
 
-Different rotations may map to the same state. Since all substrings represented by one state have the same occurrence count, we should count each relevant state only once.
+A suffix automaton is perfect here.
 
-This leads to the optimal solution:
+A suffix automaton of `s` compactly stores all substrings of `s`. After building it once, we can walk any pattern through the automaton in linear time. Every state also stores how many times the represented substrings occur in `s`.
 
-We build a suffix automaton for `s`, compute occurrence counts for every state, then for each query:
+The remaining challenge is avoiding duplicate rotations.
 
-1. Traverse `x + x`.
-2. Maintain the longest suffix currently matched.
-3. Whenever the matched length reaches at least `m`, identify the automaton state representing the current rotation.
-4. Add that state's occurrence count once.
+Suppose `x = aaaa`. All rotations are identical. If we simply iterate all windows in `x + x`, we would count the same substring multiple times.
 
-The total work over all queries stays linear.
+We solve this by inserting all rotations into a set using rolling hash or another uniqueness method. Only distinct rotations contribute to the answer.
+
+The final complexity becomes linear in the total input size.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O( | s | × total query length²) |
-| Optimal | O( | s | + total query length) |
+| Brute Force | O(\|s\| · Σ\|x\|²) | O(\|x\|) | Too slow |
+| Optimal | O(\|s\| + Σ\|x\|) | O(\|s\|) | Accepted |
 
 ## Algorithm Walkthrough
 
-### 1. Build a suffix automaton for `s`
+1. Build a suffix automaton for the main string `s`.
 
-Each state stores:
+Every substring of `s` corresponds to some path in the automaton. Each state stores how many end positions belong to it, which lets us recover occurrence counts.
+2. Propagate occurrence counts through suffix links.
 
-- `next[26]`, transitions
-- `link`, suffix link
-- `len`, maximum length represented
-- `occ`, number of end positions
+During construction, every newly added character contributes one occurrence. After construction finishes, process states in decreasing order of length and push counts upward through suffix links.
 
-While inserting characters from `s`, every newly created state gets `occ = 1`.
+This makes every state know how many times its substrings appear in `s`.
+3. For a query string `x` of length `m`, create `t = x + x`.
 
-### 2. Propagate occurrence counts
-
-The raw counts only mark string endings. To obtain the number of occurrences of every substring, process states in decreasing order of `len`.
-
-For every state `v`:
-
-```
-occ[link[v]] += occ[v]
-```
-
-This standard suffix automaton DP accumulates occurrence frequencies upward through suffix links.
-
-### 3. Process each query independently
-
-Let the query length be `m`.
-
-If `m > |s|`, answer `0` immediately.
-
-Otherwise, form:
-
-```
-t = x + x
-```
-
-Every rotation appears as a length-`m` substring inside `t`.
-
-### 4. Traverse `t` through the automaton
+Every cyclic shift of `x` appears as a length-`m` substring of `t`.
+4. Traverse `t` through the suffix automaton using the standard online matching technique.
 
 Maintain:
 
-- `v`, current automaton state
-- `l`, current matched length
+`v` = current automaton state
 
-For every character:
+`l` = current matched length
 
-- Follow transitions if possible.
-- Otherwise move through suffix links until a transition exists.
-- Update the matched length accordingly.
+As characters are processed, follow transitions when possible. Otherwise move through suffix links until a valid transition exists.
+5. Whenever the current matched length becomes at least `m`, the current window represents one occurrence of some rotation.
 
-This is the standard online matching procedure on a suffix automaton.
+The current automaton state may represent substrings longer than `m`. Move upward through suffix links until its parent length becomes smaller than `m`.
 
-### 5. Keep only windows of size `m`
+Then this state corresponds exactly to the current length-`m` substring.
+6. Deduplicate rotations.
 
-After extending with a new character, the matched substring may become longer than `m`.
+Different windows in `x + x` may represent identical rotations. Use rolling hash to store which rotations were already counted.
+7. Add the occurrence count of each distinct rotation.
 
-We need the state corresponding exactly to the last `m` characters.
-
-While:
-
-```
-len[link[v]] >= m
-```
-
-move:
-
-```
-v = link[v]
-```
-
-After this adjustment, state `v` represents the current rotation.
-
-### 6. Count every state once
-
-Different rotations may produce the same state.
-
-Use a hash set or timestamp array to avoid duplicates.
-
-Whenever a valid rotation is found:
-
-- If state `v` was not counted before for this query:
-
-- add `occ[v]`
-- mark it visited
-
-### 7. Output the accumulated answer
-
-The sum of occurrence counts of all distinct rotation states is the final answer.
+The occurrence count is simply the `cnt` value stored in the corresponding automaton state.
 
 ### Why it works
 
-Every cyclic rotation of `x` appears exactly once as a length-`m` substring of `x + x` starting within the first `m` positions.
+The suffix automaton guarantees that every substring of `s` corresponds to one state interval. After occurrence propagation, the state associated with a substring stores exactly how many times that substring appears in `s`.
 
-During traversal, the automaton maintains the longest suffix of the processed prefix that appears in `s`. After shrinking through suffix links until the parent length becomes smaller than `m`, the current state represents exactly the current length-`m` window.
+Every cyclic shift of `x` appears exactly once as a length-`m` window inside the first `m` positions of `x + x`.
 
-All substrings represented by one suffix automaton state have identical occurrence counts in `s`. If multiple rotations map to the same state, they are actually the same substring in `s`, so they must only contribute once. Deduplicating states guarantees correct counting.
+The online traversal over `x + x` maintains the longest suffix currently present in `s`. Restricting the active state to length exactly `m` identifies the automaton state representing the current rotation.
+
+Deduplication guarantees that periodic strings such as `"aaaa"` or `"ababab"` contribute only once per distinct rotation.
+
+Because every valid rotation is processed and every counted substring corresponds to a valid rotation, the algorithm is correct.
 
 ## Python Solution
 
@@ -232,487 +182,66 @@ All substrings represented by one suffix automaton state have identical occurren
 import sys
 input = sys.stdin.readline
 
-MAXN = 2_000_005
+ALPHA = 26
+BASE = 911382323
+MOD = 10**18 + 3
 
-nexts = [[-1] * 26]
-link = [-1]
-length = [0]
-occ = [0]
+class SuffixAutomaton:
+    def __init__(self, n):
+        size = 2 * n
 
-last = 0
+        self.next = [[-1] * ALPHA for _ in range(size)]
+        self.link = [-1] * size
+        self.length = [0] * size
+        self.cnt = [0] * size
 
-def extend(ch):
-    global last
+        self.size = 1
+        self.last = 0
 
-    c = ord(ch) - 97
-
-    cur = len(nexts)
-
-    nexts.append(nexts[last][:])
-    nexts[cur] = [-1] * 26
-
-    length.append(length[last] + 1)
-    link.append(0)
-    occ.append(1)
-
-    p = last
-
-    while p != -1 and nexts[p][c] == -1:
-        nexts[p][c] = cur
-        p = link[p]
-
-    if p == -1:
-        link[cur] = 0
-    else:
-        q = nexts[p][c]
-
-        if length[p] + 1 == length[q]:
-            link[cur] = q
-        else:
-            clone = len(nexts)
-
-            nexts.append(nexts[q][:])
-            length.append(length[p] + 1)
-            link.append(link[q])
-            occ.append(0)
-
-            while p != -1 and nexts[p][c] == q:
-                nexts[p][c] = clone
-                p = link[p]
-
-            link[q] = clone
-            link[cur] = clone
-
-    last = cur
-
-s = input().strip()
-
-for ch in s:
-    extend(ch)
-
-size = len(nexts)
-
-cnt = [0] * (len(s) + 1)
-
-for v in range(size):
-    cnt[length[v]] += 1
-
-for i in range(1, len(cnt)):
-    cnt[i] += cnt[i - 1]
-
-order = [0] * size
-
-for v in range(size - 1, -1, -1):
-    l = length[v]
-    cnt[l] -= 1
-    order[cnt[l]] = v
-
-for v in range(size - 1, 0, -1):
-    state = order[v]
-    parent = link[state]
-
-    if parent >= 0:
-        occ[parent] += occ[state]
-
-n = int(input())
-
-vis = [0] * size
-timer = 0
-
-answers = []
-
-for _ in range(n):
-    x = input().strip()
-
-    m = len(x)
-
-    if m > len(s):
-        answers.append("0")
-        continue
-
-    timer += 1
-
-    t = x + x
-
-    v = 0
-    l = 0
-
-    ans = 0
-
-    for i, ch in enumerate(t[:-1]):
+    def extend(self, ch):
         c = ord(ch) - 97
 
-        while v != 0 and nexts[v][c] == -1:
-            v = link[v]
-            l = length[v]
+        cur = self.size
+        self.size += 1
 
-        if nexts[v][c] != -1:
-            v = nexts[v][c]
-            l += 1
-        else:
-            v = 0
-            l = 0
+        self.length[cur] = self.length[self.last] + 1
+        self.cnt[cur] = 1
 
-        while v != 0 and length[link[v]] >= m:
-            v = link[v]
+        p = self.last
 
-        if l >= m:
-            if vis[v] != timer:
-                vis[v] = timer
-                ans += occ[v]
-
-    answers.append(str(ans))
-
-print("\n".join(answers))
-```
-
-The suffix automaton construction follows the standard online algorithm. Each insertion either extends directly or creates a clone state when the transition structure would otherwise violate automaton properties.
-
-The occurrence propagation step is essential. During construction, `occ[v]` counts how many suffixes end at state `v`. After processing states in decreasing length order, it becomes the number of occurrences of every substring represented by that state.
-
-The query processing uses the classic automaton matching technique. The variables `v` and `l` always describe the longest suffix of the processed prefix that exists in `s`.
-
-The line:
-
-```
-while v != 0 and length[link[v]] >= m:
-    v = link[v]
-```
-
-is the subtle part. The current state may represent substrings longer than `m`. Climbing suffix links shrinks the represented interval until `m` becomes the smallest valid length inside the state.
-
-Another easy mistake is iterating over all of `x + x`. We use:
-
-```
-t[:-1]
-```
-
-because the doubled string contains exactly `m` distinct rotation windows starting in the first `m` positions. Processing the last character would duplicate the first rotation.
-
-The timestamp array avoids clearing a boolean array for every query. This matters because the automaton may contain about `2 * 10^6` states.
-
-## Worked Examples
-
-### Example 1
-
-Input:
-
-```
-s = baabaabaaa
-x = baa
-```
-
-Rotations are:
-
-```
-baa
-aab
-aba
-```
-
-Traversal over `"baabaa"`:
-
-| Position | Character | Current Window | SAM State Counted | occ |
-| --- | --- | --- | --- | --- |
-| 0 | b | b | No | - |
-| 1 | a | ba | No | - |
-| 2 | a | baa | Yes | 3 |
-| 3 | b | aab | Yes | 2 |
-| 4 | a | aba | Yes | 2 |
-| 5 | a | baa | Already counted | - |
-
-Final answer:
-
-```
-3 + 2 + 2 = 7
-```
-
-This trace shows why deduplication matters. The last `"baa"` rotation appears again in the doubled string, but it must not be counted twice.
-
-### Example 2
-
-Input:
-
-```
-s = aaaaa
-x = aaaa
-```
-
-Traversal over `"aaaaaaa"` excluding the last character:
-
-| Position | Character | Current Window | State Counted? | occ |
-| --- | --- | --- | --- | --- |
-| 0 | a | a | No | - |
-| 1 | a | aa | No | - |
-| 2 | a | aaa | No | - |
-| 3 | a | aaaa | Yes | 2 |
-| 4 | a | aaaa | Already counted | - |
-| 5 | a | aaaa | Already counted | - |
-
-Final answer:
-
-```
-2
-```
-
-All rotations are identical, so every valid window reaches the same automaton state.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O( | s |
-| Space | O( | s |
-
-The limits allow around a few million operations comfortably. The suffix automaton stays linear in size, and every query character is processed amortized `O(1)` times through suffix links.
-
-## Test Cases
-
-```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
-    nexts = [[-1] * 26]
-    link = [-1]
-    length = [0]
-    occ = [0]
-
-    last = 0
-
-    def extend(ch):
-        nonlocal last
-
-        c = ord(ch) - 97
-
-        cur = len(nexts)
-
-        nexts.append([-1] * 26)
-        length.append(length[last] + 1)
-        link.append(0)
-        occ.append(1)
-
-        p = last
-
-        while p != -1 and nexts[p][c] == -1:
-            nexts[p][c] = cur
-            p = link[p]
+        while p != -1 and self.next[p][c] == -1:
+            self.next[p][c] = cur
+            p = self.link[p]
 
         if p == -1:
-            link[cur] = 0
+            self.link[cur] = 0
         else:
-            q = nexts[p][c]
+            q = self.next[p][c]
 
-            if length[p] + 1 == length[q]:
-                link[cur] = q
+            if self.length[p] + 1 == self.length[q]:
+                self.link[cur] = q
             else:
-                clone = len(nexts)
+                clone = self.size
+                self.size += 1
 
-                nexts.append(nexts[q][:])
-                length.append(length[p] + 1)
-                link.append(link[q])
-                occ.append(0)
+                self.next[clone] = self.next[q][:]
+                self.length[clone] = self.length[p] + 1
+                self.link[clone] = self.link[q]
 
-                while p != -1 and nexts[p][c] == q:
-                    nexts[p][c] = clone
-                    p = link[p]
+                while p != -1 and self.next[p][c] == q:
+                    self.next[p][c] = clone
+                    p = self.link[p]
 
-                link[q] = clone
-                link[cur] = clone
+                self.link[q] = clone
+                self.link[cur] = clone
 
-        last = cur
+        self.last = cur
 
-    s = input().strip()
+    def build_counts(self):
+        max_len = max(self.length[:self.size])
 
-    for ch in s:
-        extend(ch)
+        bucket = [0] * (max_len + 1)
 
-    size = len(nexts)
-
-    cnt = [0] * (len(s) + 1)
-
-    for v in range(size):
-        cnt[length[v]] += 1
-
-    for i in range(1, len(cnt)):
-        cnt[i] += cnt[i - 1]
-
-    order = [0] * size
-
-    for v in range(size - 1, -1, -1):
-        l = length[v]
-        cnt[l] -= 1
-        order[cnt[l]] = v
-
-    for v in range(size - 1, 0, -1):
-        state = order[v]
-        occ[link[state]] += occ[state]
-
-    n = int(input())
-
-    vis = [0] * size
-    timer = 0
-
-    out = []
-
-    for _ in range(n):
-        x = input().strip()
-
-        m = len(x)
-
-        if m > len(s):
-            out.append("0")
-            continue
-
-        timer += 1
-
-        t = x + x
-
-        v = 0
-        l = 0
-
-        ans = 0
-
-        for ch in t[:-1]:
-            c = ord(ch) - 97
-
-            while v != 0 and nexts[v][c] == -1:
-                v = link[v]
-                l = length[v]
-
-            if nexts[v][c] != -1:
-                v = nexts[v][c]
-                l += 1
-            else:
-                v = 0
-                l = 0
-
-            while v != 0 and length[link[v]] >= m:
-                v = link[v]
-
-            if l >= m and vis[v] != timer:
-                vis[v] = timer
-                ans += occ[v]
-
-        out.append(str(ans))
-
-    return "\n".join(out)
-
-# provided sample
-assert run(
-"""baabaabaaa
-5
-a
-ba
-baa
-aabaa
-aaba
-"""
-) == \
-"""7
-5
-7
-3
-5"""
-
-# minimum size
-assert run(
-"""a
-1
-a
-"""
-) == \
-"""1"""
-
-# query longer than string
-assert run(
-"""abc
-1
-abcd
-"""
-) == \
-"""0"""
-
-# all equal characters
-assert run(
-"""aaaaa
-2
-aa
-aaaa
-"""
-) == \
-"""4
-2"""
-
-# cyclic duplicates
-assert run(
-"""ababab
-1
-abab
-"""
-) == \
-"""3"""
+        for i in range(self.size):
+            buc
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `s="a"` | `1` | Minimum valid input |
-| Query longer than text | `0` | Early rejection logic |
-| All equal characters | Correct duplicate handling | Rotations collapsing into one state |
-| `abab` in `ababab` | `3` | Multiple distinct rotations |
-
-## Edge Cases
-
-Consider:
-
-```
-s = aaaaa
-x = aaaa
-```
-
-The doubled string is:
-
-```
-aaaaaaaa
-```
-
-Every length-4 window is `"aaaa"` again. During traversal, all valid windows end in the same suffix automaton state. The timestamp array prevents adding its occurrence count repeatedly. The algorithm outputs `2`, which is correct.
-
-Now consider:
-
-```
-s = ababab
-x = abab
-```
-
-The rotations are:
-
-```
-abab
-baba
-```
-
-Both appear in `s`. Traversing `x + x = abababab` produces repeated windows:
-
-```
-abab
-baba
-abab
-baba
-```
-
-Without deduplication, the answer would become `6`. The visited marking guarantees each corresponding automaton state contributes once, producing the correct answer `3`.
-
-Finally, consider a query longer than the text:
-
-```
-s = abc
-x = abcde
-```
-
-No substring of `s` can match length `5`. The algorithm immediately returns `0` before any traversal, avoiding unnecessary work and preventing invalid window handling.

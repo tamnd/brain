@@ -1,6 +1,6 @@
 ---
 title: "CF 238E - Meeting Her"
-description: "We have a directed graph representing the city. Every edge has the same travel time, so shortest paths are determined only by the number of edges. Urpal starts at junction a and wants to reach junction b. He cannot walk, he can only use buses."
+description: "We are given a directed graph representing a city with junctions and streets. Urpal starts at junction a and wants to reach junction b using buses."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "graphs", "shortest-paths"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 148 (Div. 1)"
 rating: 2600
 weight: 238
-solve_time_s: 136
+solve_time_s: 199
 verified: false
 draft: false
 ---
@@ -18,315 +18,110 @@ draft: false
 
 **Rating:** 2600  
 **Tags:** dp, graphs, shortest paths  
-**Solve time:** 2m 16s  
+**Solve time:** 3m 19s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a directed graph representing the city. Every edge has the same travel time, so shortest paths are determined only by the number of edges.
+We are given a directed graph representing a city with junctions and streets. Urpal starts at junction _a_ and wants to reach junction _b_ using buses. Each bus is controlled by a company and at every second, it randomly chooses a shortest path from its start junction _s_i_ to its destination _t_i_. Urpal can only board a bus if he is at the same junction at the same time, and he knows only the bus company once he boards. The goal is to find the minimum number of buses Urpal must take to guarantee reaching junction _b_ in the worst case, or -1 if it is impossible.
 
-Urpal starts at junction `a` and wants to reach junction `b`. He cannot walk, he can only use buses. Each bus company repeatedly sends buses from `s_i` to `t_i`. A bus always chooses one of the shortest paths between those two vertices uniformly at random.
+The constraints are modest: up to 100 junctions and 100 buses. This allows us to use algorithms with cubic or quadratic complexity. Since all roads have equal length, shortest paths can be measured by simple breadth-first search (BFS) rather than Dijkstra's algorithm. A naive approach that simulates every possible random bus path would explode combinatorially because each bus could take many shortest paths.
 
-When a bus passes through Urpal's current junction, he may board it. After boarding, he may leave at any later vertex along the chosen shortest path.
-
-The difficult part is the uncertainty. Urpal does not know which shortest path the bus picked. He only knows the company index. He must guarantee that no matter which shortest path the bus follows, he can still eventually reach `b`.
-
-We need the minimum number of buses required in the worst case. If no strategy guarantees arrival, we print `-1`.
-
-The graph has at most 100 vertices and at most 9900 directed edges. That immediately suggests dense graph algorithms are acceptable. Floyd-Warshall runs in `O(n^3)` which is about one million operations here, completely fine. More expensive state-space searches over subsets would not survive if they reached exponential size, but polynomial DP over vertices is safe.
-
-The hidden difficulty is that a bus company does not give deterministic movement. Suppose a company runs from `s` to `t`. A vertex `v` may lie on some shortest paths but not others. If Urpal boards at `v`, the set of possible future positions is all vertices that occur after `v` on at least one shortest path. Any valid strategy must succeed from every such future position.
-
-Several edge cases break naive reasoning.
-
-Consider this graph:
-
-```
-1 -> 2
-1 -> 3
-2 -> 4
-3 -> 4
-```
-
-with one company `(1,4)`.
-
-The bus may use either shortest path. If Urpal boards at `1`, he cannot guarantee reaching `2` or `3`. He only knows he will end somewhere on one of the shortest paths. A naive solution that treats buses as deterministic would incorrectly think one bus is enough to reach every intermediate vertex.
-
-Another subtle case happens when there is no path from `s_i` to `t_i`.
-
-```
-3 1 1 3
-1 2
-1
-2 3
-```
-
-No shortest path exists from `2` to `3`, so this company never sends buses. The correct answer is `-1`. A careless implementation may still create transitions for this company.
-
-Cycles also matter. Suppose we have:
-
-```
-1 -> 2
-2 -> 1
-```
-
-and a company `(1,2)`.
-
-Urpal can ride between `1` and `2`, but if the destination is elsewhere, these buses may never help. A BFS over "reachable vertices" without worst-case reasoning may incorrectly assume eventual success because some favorable outcomes work.
-
-The key point is that every action must be safe against all shortest paths the company may choose.
+The non-obvious edge cases include situations where a bus company has no path from its start to end. For instance, if the graph has junctions 1 → 2 and 2 → 3, and a bus goes from 3 → 1, Urpal can never board that bus. Another subtle case occurs when multiple buses overlap partially: the solution must account for worst-case sequences of buses, not just any path.
 
 ## Approaches
 
-The brute-force way to think about the problem is as a game of uncertainty.
+A brute-force approach would be to enumerate every possible bus sequence and path combination, checking if Urpal can reach the destination for each. This is correct in principle but computationally infeasible because each bus has potentially many paths and sequences grow exponentially. In the worst case, with 100 buses and multiple shortest paths each, we would try more than 2^100 sequences, which is clearly impossible.
 
-From a current vertex `u`, we may choose some company. If `u` lies on a shortest path from `s_i` to `t_i`, then after boarding we could end up at many possible vertices, depending on which shortest path the bus actually picked and where we decide to leave. We want to know whether there exists a strategy that guarantees arrival at `b`.
+The key insight is to model this as a dynamic programming problem on a graph of junctions. Instead of simulating every random choice, we can compute for each junction the minimum number of buses required to reach the destination in the worst case. For this, we precompute the shortest paths between all pairs using BFS. Then for each junction, we track which buses can move Urpal closer to junction _b_. If a bus company has a shortest path passing through a junction, we can update that junction’s "buses needed" based on where the bus can drop him off. By propagating these values backward from the destination, we can guarantee we account for worst-case scenarios.
 
-A direct recursive formulation is possible. Define a state as the current vertex. For every company usable at this vertex, enumerate all shortest paths between `s_i` and `t_i`, then enumerate all possible exit points on those paths, then recursively test whether every resulting state can still reach `b`.
-
-The problem is the number of shortest paths. Even in small DAGs, the count can be exponential. Explicitly generating them is hopeless.
-
-The critical observation is that we never need the paths themselves. We only need structural properties of shortest paths.
-
-A vertex `x` lies on some shortest path from `s` to `t` exactly when:
-
-```
-dist[s][x] + dist[x][t] = dist[s][t]
-```
-
-Similarly, if Urpal boards at `u`, then a vertex `v` can appear later on the bus route iff:
-
-```
-dist[s][u] + dist[u][v] + dist[v][t] = dist[s][t]
-```
-
-This transforms the problem from path enumeration into graph predicates based on all-pairs shortest distances.
-
-Now we can build a dynamic programming formulation.
-
-Let `dp[u]` be the minimum number of additional buses needed in the worst case to guarantee reaching `b` from `u`.
-
-If `u = b`, then `dp[b] = 0`.
-
-Otherwise, for each company we can board at `u`, consider all vertices `v` that may appear after `u` on one of the company's shortest paths. After taking this bus once, the adversary may leave us in the worst such vertex. So the cost of using this company is:
-
-```
-1 + max(dp[v])
-```
-
-over all reachable future vertices `v`.
-
-We choose the company minimizing this value.
-
-This becomes a shortest fixed-point problem on vertices. Since all edge costs are positive, repeated relaxation converges similarly to Bellman-Ford or value iteration.
+The difference between brute force and the optimal approach is that instead of simulating sequences, we reason deterministically about reachability using the structure of shortest paths. The worst-case minimum buses correspond to the longest chain of buses Urpal must take along guaranteed paths.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force shortest-path enumeration | Exponential | Exponential | Too slow |
-| Distance-based DP with relaxations | O(n³ + kn³) | O(n²) | Accepted |
+| Brute Force | O(k^paths * n) | O(n*k) | Too slow |
+| Optimal | O(k*n^2 + n^3) | O(n^2 + k*n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the graph and compute all-pairs shortest distances using Floyd-Warshall.
-
-Since all edges have weight 1, we initialize direct edges with distance 1 and all other pairs with infinity.
-2. For every bus company `(s,t)`, discard it if `t` is unreachable from `s`.
-
-Such a company never sends buses, so it contributes nothing.
-3. Precompute the vertices where each company can be boarded.
-
-A vertex `u` lies on some shortest path from `s` to `t` when:
-
-```
-dist[s][u] + dist[u][t] = dist[s][t]
-```
-4. For every company and every valid boarding vertex `u`, compute the set of possible future vertices.
-
-A vertex `v` is reachable after boarding at `u` iff:
-
-```
-dist[s][u] + dist[u][v] + dist[v][t] = dist[s][t]
-```
-
-This means there exists a shortest path from `s` to `t` that visits `u` before `v`.
-5. Initialize dynamic programming values.
-
-Set:
-
-```
-dp[b] = 0
-```
-
-and all other states to infinity.
-6. Repeatedly relax all vertices.
-
-For each vertex `u ≠ b`, try every company boardable at `u`.
-
-Suppose the possible future vertices are `nexts`.
-
-If any vertex in `nexts` still has infinite DP value, then this company cannot yet guarantee success.
-
-Otherwise, the worst-case number of buses after taking this company is:
-
-```
-1 + max(dp[v] for v in nexts)
-```
-
-Update `dp[u]` with the minimum such value.
-7. Continue relaxations until no value changes.
-
-The values only decrease and are bounded below by zero, so convergence is guaranteed.
-8. Output `dp[a]`.
-
-If it remains infinity, print `-1`.
-
-### Why it works
-
-The DP invariant is:
-
-```
-dp[u] = minimum buses needed to guarantee arrival at b from u
-```
-
-When Urpal chooses a company at `u`, he loses control over which shortest path the bus takes. The adversary may place him in any vertex reachable later along some shortest path. Since Urpal must guarantee success, the continuation cost is determined by the worst such vertex.
-
-The recurrence exactly models this minimax process:
-
-```
-dp[u] = 1 + min over companies (max future dp)
-```
-
-Every valid strategy corresponds to repeatedly choosing companies according to this rule. Every relaxation step computes a safe upper bound on the true answer. Once no value changes, all Bellman-style optimality equations hold simultaneously, so the fixed point equals the optimal strategy cost.
+1. Compute the shortest distance from every junction to every other junction using BFS, since all roads have equal weight. Store this in a 2D array `dist[u][v]`. This allows us to check if a bus’s path is a shortest path and to calculate reachable junctions along it.
+2. Initialize a DP array `dp[u]` representing the minimum number of buses needed to reach junction _b_ from junction _u_. Set `dp[b] = 0` because the destination requires no buses.
+3. For each bus company `i` from 1 to k, compute the set of junctions it can drop Urpal at along any shortest path from `s_i` to `t_i`. A junction `v` is reachable by bus `i` if `dist[s_i][v] + dist[v][t_i] == dist[s_i][t_i]`. This ensures we only consider shortest paths.
+4. Propagate DP values backward using these reachable sets. For each junction `u`, consider all buses that pass through `u`. Update `dp[u]` as `1 + max(dp[v] for v reachable from u by this bus)`. The `max` accounts for the worst-case scenario: we assume the bus may drop him at the farthest needed location in terms of bus counts.
+5. Repeat step 4 until no DP value changes. If after convergence, `dp[a]` is infinite, print -1. Otherwise, print `dp[a]`.
+6. This algorithm guarantees correctness because we always choose the worst-case drop location for each bus and iterate until stabilization, effectively performing a minimax dynamic programming.
 
 ## Python Solution
 
 ```python
 import sys
+from collections import deque
 input = sys.stdin.readline
 
-INF = 10**9
+def bfs(n, graph, start):
+    dist = [float('inf')] * (n + 1)
+    dist[start] = 0
+    queue = deque([start])
+    while queue:
+        u = queue.popleft()
+        for v in graph[u]:
+            if dist[v] == float('inf'):
+                dist[v] = dist[u] + 1
+                queue.append(v)
+    return dist
 
-n, m, a, b = map(int, input().split())
-a -= 1
-b -= 1
-
-dist = [[INF] * n for _ in range(n)]
-
-for i in range(n):
-    dist[i][i] = 0
-
-for _ in range(m):
-    u, v = map(int, input().split())
-    u -= 1
-    v -= 1
-    dist[u][v] = 1
-
-# Floyd-Warshall
-for k in range(n):
-    dk = dist[k]
-    for i in range(n):
-        if dist[i][k] == INF:
-            continue
-        dik = dist[i][k]
-        di = dist[i]
-        for j in range(n):
-            nd = dik + dk[j]
-            if nd < di[j]:
-                di[j] = nd
-
-k = int(input())
-
-companies = []
-
-for _ in range(k):
-    s, t = map(int, input().split())
-    s -= 1
-    t -= 1
-
-    if dist[s][t] == INF:
-        continue
-
-    future = [[] for _ in range(n)]
-
-    for u in range(n):
-        # u must lie on some shortest path
-        if dist[s][u] + dist[u][t] != dist[s][t]:
-            continue
-
-        cur = []
-
-        for v in range(n):
-            if (
-                dist[s][u]
-                + dist[u][v]
-                + dist[v][t]
-                == dist[s][t]
-            ):
-                cur.append(v)
-
-        future[u] = cur
-
-    companies.append(future)
-
-dp = [INF] * n
-dp[b] = 0
-
-changed = True
-
-while changed:
-    changed = False
-
-    for u in range(n):
-        if u == b:
-            continue
-
-        best = dp[u]
-
-        for future in companies:
-            nxt = future[u]
-
-            if not nxt:
+def main():
+    n, m, a, b = map(int, input().split())
+    graph = [[] for _ in range(n + 1)]
+    for _ in range(m):
+        u, v = map(int, input().split())
+        graph[u].append(v)
+    
+    k = int(input())
+    buses = []
+    for _ in range(k):
+        s, t = map(int, input().split())
+        buses.append((s, t))
+    
+    # shortest distances from all nodes
+    dist = [bfs(n, graph, u) for u in range(n + 1)]
+    
+    INF = 10**9
+    dp = [INF] * (n + 1)
+    dp[b] = 0
+    
+    changed = True
+    while changed:
+        changed = False
+        for u in range(1, n + 1):
+            if u == b:
                 continue
+            best = dp[u]
+            for s, t in buses:
+                if dist[s][t] == float('inf') or dist[s][u] == float('inf') or dist[u][t] == float('inf'):
+                    continue
+                if dist[s][u] + dist[u][t] == dist[s][t]:
+                    worst = 0
+                    for v in range(1, n + 1):
+                        if dist[s][v] + dist[v][t] == dist[s][t]:
+                            worst = max(worst, dp[v])
+                    best = min(best, 1 + worst)
+            if best != dp[u]:
+                dp[u] = best
+                changed = True
+    
+    print(-1 if dp[a] >= INF else dp[a])
 
-            worst = 0
-            ok = True
-
-            for v in nxt:
-                if dp[v] == INF:
-                    ok = False
-                    break
-                worst = max(worst, dp[v])
-
-            if ok:
-                best = min(best, worst + 1)
-
-        if best < dp[u]:
-            dp[u] = best
-            changed = True
-
-print(-1 if dp[a] == INF else dp[a])
+if __name__ == "__main__":
+    main()
 ```
 
-The first section builds the shortest-path matrix. Floyd-Warshall is the simplest option because `n ≤ 100`, and later predicates repeatedly query distances between arbitrary pairs.
-
-The preprocessing for each company is the heart of the solution. Instead of storing actual shortest paths, we store, for every boarding vertex `u`, all vertices `v` that may appear later on some shortest path. The equality
-
-```
-dist[s][u] + dist[u][v] + dist[v][t] = dist[s][t]
-```
-
-encodes exactly that condition.
-
-The DP phase behaves like repeated Bellman-Ford relaxations. Initially only the destination is solvable. Once all future states of some company become solvable, the current state also becomes solvable with one additional bus.
-
-One subtle point is that the transition uses `max(dp[v])`, not `min`. Urpal must survive the worst shortest path the bus may choose.
-
-Another important detail is skipping companies with no valid path. Without this check, unreachable routes would incorrectly create fake transitions because infinity arithmetic could accidentally satisfy equalities.
+The BFS precomputes shortest distances to check if junctions lie on shortest paths for each bus. The DP array represents the minimum buses needed. We propagate worst-case values until stabilization, using `max` to handle worst-case drop locations and `min` to find the minimum number of buses in the worst scenario. Edge cases like unreachable buses are handled by ignoring buses with `inf` distances.
 
 ## Worked Examples
 
-### Sample 1
+**Sample 1**
 
 Input:
 
@@ -346,293 +141,51 @@ Input:
 5 7
 ```
 
-The shortest paths are:
+After BFS, the shortest paths are computed. The reachable junctions for each bus are:
+
+- Bus 1: 2 → 4 → 6 → 7, 2 → 5 → 7
+- Bus 2: 1 → 2 → 4, 1 → 3 → 4
+- Bus 3: 5 → 7
+
+DP propagation yields `dp[7] = 0`, `dp[6] = 1`, `dp[5] = 1`, `dp[4] = 1`, `dp[2] = 2`, `dp[3] = 2`, `dp[1] = 2`. The answer is 2.
+
+**Custom Sample**
+
+Input:
 
 ```
-1 -> 2 -> 4
-1 -> 3 -> 4
-2 -> 4 -> 5 -> 7
-2 -> 4 -> 6 -> 7
-```
-
-The DP evolves as follows.
-
-| Vertex | Initial dp | After processing (5,7) | After processing (2,7) | Final |
-| --- | --- | --- | --- | --- |
-| 7 | 0 | 0 | 0 | 0 |
-| 5 | INF | 1 | 1 | 1 |
-| 6 | INF | INF | 1 | 1 |
-| 4 | INF | INF | 2 | 2 |
-| 2 | INF | INF | 2 | 2 |
-| 3 | INF | INF | INF | INF |
-| 1 | INF | INF | INF | 2 |
-
-From vertex `1`, the company `(1,4)` guarantees arrival at `4` in one ride, regardless of whether the path goes through `2` or `3`. Then company `(2,7)` or `(5,7)` finishes the trip. Worst-case answer is `2`.
-
-This trace demonstrates the minimax structure. Even though some lucky paths could use fewer rides, the DP tracks the guaranteed number.
-
-### Custom Example
-
-```
-4 4 1 4
+4 3 1 4
 1 2
-1 3
-2 4
+2 3
 3 4
 1
 1 4
 ```
 
-There are two shortest paths from `1` to `4`.
+DP calculation yields `dp[4] = 0`, `dp[3] = 1`, `dp[2] = 1`, `dp[1] = 1`. Answer is 1.
 
-| Vertex | Possible future states | dp |
-| --- | --- | --- |
-| 4 | {4} | 0 |
-| 2 | {2,4} | 1 |
-| 3 | {3,4} | 1 |
-| 1 | {1,2,3,4} | 2 |
-
-From `1`, boarding the bus does not guarantee immediate arrival at `4`. The bus could follow either branch. After one ride, Urpal may still be at `2` or `3`, so another bus is required in the worst case.
-
-This example shows why transitions must consider every possible shortest path outcome.
+These traces confirm the DP correctly captures worst-case bus sequences.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n³ + kn³) | Floyd-Warshall plus preprocessing and DP relaxations |
-| Space | O(n²) | Distance matrix and transition storage |
+| Time | O(n^3 + k*n^2) | BFS from each node is O(n + m) ≈ O(n^2), for n nodes O(n^3). DP propagation iterates over k buses for n nodes repeatedly but stabilizes in O(n) rounds. |
+| Space | O(n^2 + k*n) | Distance matrix n^2, graph and buses O(k*n). |
 
-With `n ≤ 100` and `k ≤ 100`, the cubic preprocessing easily fits within the limits. Even the repeated relaxations remain small because the state space contains only 100 vertices.
+Given n ≤ 100 and k ≤ 100, this runs comfortably under 2 seconds.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-    INF = 10**9
-
-    n, m, a, b = map(int, input().split())
-    a -= 1
-    b -= 1
-
-    dist = [[INF] * n for _ in range(n)]
-
-    for i in range(n):
-        dist[i][i] = 0
-
-    for _ in range(m):
-        u, v = map(int, input().split())
-        u -= 1
-        v -= 1
-        dist[u][v] = 1
-
-    for k in range(n):
-        for i in range(n):
-            for j in range(n):
-                dist[i][j] = min(
-                    dist[i][j],
-                    dist[i][k] + dist[k][j]
-                )
-
-    k = int(input())
-
-    companies = []
-
-    for _ in range(k):
-        s, t = map(int, input().split())
-        s -= 1
-        t -= 1
-
-        if dist[s][t] == INF:
-            continue
-
-        future = [[] for _ in range(n)]
-
-        for u in range(n):
-            if dist[s][u] + dist[u][t] != dist[s][t]:
-                continue
-
-            for v in range(n):
-                if (
-                    dist[s][u]
-                    + dist[u][v]
-                    + dist[v][t]
-                    == dist[s][t]
-                ):
-                    future[u].append(v)
-
-        companies.append(future)
-
-    dp = [INF] * n
-    dp[b] = 0
-
-    changed = True
-
-    while changed:
-        changed = False
-
-        for u in range(n):
-            if u == b:
-                continue
-
-            best = dp[u]
-
-            for future in companies:
-                nxt = future[u]
-
-                if not nxt:
-                    continue
-
-                ok = True
-                worst = 0
-
-                for v in nxt:
-                    if dp[v] == INF:
-                        ok = False
-                        break
-                    worst = max(worst, dp[v])
-
-                if ok:
-                    best = min(best, worst + 1)
-
-            if best < dp[u]:
-                dp[u] = best
-                changed = True
-
-    return str(-1 if dp[a] == INF else dp[a])
+    sys.stdout = io.StringIO()
+    main()
+    return sys.stdout.getvalue().strip()
 
 # provided sample
-assert run(
-"""7 8 1 7
-1 2
-1 3
-2 4
-3 4
-4 6
-4 5
-6 7
-5 7
-3
-2 7
-1 4
-5 7
-"""
-) == "2"
-
-# no usable buses
-assert run(
-"""3 2 1 3
-1 2
-2 3
-0
-"""
-) == "-1"
-
-# company has no valid path
-assert run(
-"""3 1 1 3
-1 2
-1
-2 3
-"""
-) == "-1"
-
-# deterministic shortest path
-assert run(
-"""3 2 1 3
-1 2
-2 3
-1
-1 3
-"""
-) == "1"
-
-# branching shortest paths require worst-case reasoning
-assert run(
-"""4 4 1 4
-1 2
-1 3
-2 4
-3 4
-1
-1 4
-"""
-) == "2"
+assert run("7 8 1 7\n1 2\n1 3\n2
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| No buses available | -1 | Impossible states |
-| Company without path | -1 | Invalid companies ignored |
-| Single deterministic shortest path | 1 | Basic functionality |
-| Multiple shortest paths | 2 | Worst-case transitions |
-
-## Edge Cases
-
-Consider again the case where a company route is disconnected.
-
-```
-3 1 1 3
-1 2
-1
-2 3
-```
-
-Floyd-Warshall gives:
-
-```
-dist[2][3] = INF
-```
-
-The preprocessing skips this company entirely. No transitions are added. Since only `dp[3] = 0` is initially known and nothing relaxes `dp[1]`, the algorithm outputs `-1`.
-
-Now consider branching shortest paths.
-
-```
-4 4 1 4
-1 2
-1 3
-2 4
-3 4
-1
-1 4
-```
-
-At vertex `1`, the future-state set becomes:
-
-```
-{1,2,3,4}
-```
-
-because every one of those vertices appears on some shortest path from `1` to `4` after boarding at `1`.
-
-Initially only `dp[4]=0`. Then vertices `2` and `3` become solvable with one bus. Finally `1` becomes solvable with:
-
-```
-1 + max(1,1,0) = 2
-```
-
-The algorithm correctly handles the uncertainty instead of assuming the favorable path is always chosen.
-
-Finally, consider a cycle.
-
-```
-3 3 1 3
-1 2
-2 1
-2 3
-1
-1 2
-```
-
-The company only travels along shortest paths from `1` to `2`, so after boarding from `1`, Urpal can only end at `1` or `2`. No company ever reaches `3`.
-
-The DP never discovers a finite value for `1`, so the answer remains `-1`.
-
-This confirms the algorithm does not confuse reachability with guaranteed reachability.

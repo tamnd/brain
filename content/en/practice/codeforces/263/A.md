@@ -1,6 +1,6 @@
 ---
 title: "CF 263A - Beautiful Matrix"
-description: "We are given a fixed 5 × 5 matrix containing exactly one cell with value 1, while every other cell contains 0. The goal is to move the 1 into the center of the matrix, which is position (3, 3) using 1-based indexing."
+description: "We are given a fixed 5 by 5 grid that contains mostly zeros and exactly one cell containing a one. In one move, we are allowed to swap adjacent rows or swap adjacent columns. Each such swap moves the entire row or column by exactly one position."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 161 (Div. 2)"
 rating: 800
 weight: 263
-solve_time_s: 125
-verified: true
+solve_time_s: 91
+verified: false
 draft: false
 ---
 
@@ -18,108 +18,49 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation  
-**Solve time:** 2m 5s  
-**Verified:** yes  
+**Solve time:** 1m 31s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a fixed 5 × 5 matrix containing exactly one cell with value `1`, while every other cell contains `0`. The goal is to move the `1` into the center of the matrix, which is position `(3, 3)` using 1-based indexing.
+We are given a fixed 5 by 5 grid that contains mostly zeros and exactly one cell containing a one. In one move, we are allowed to swap adjacent rows or swap adjacent columns. Each such swap moves the entire row or column by exactly one position.
 
-A move allows swapping two adjacent rows or two adjacent columns. Swapping neighboring rows changes the row position of the `1` by exactly one. Swapping neighboring columns changes the column position of the `1` by exactly one.
+The goal is to move the single one into the center cell of the grid, which is at position (3, 3), using as few swaps as possible. Since each move only shifts a row or column by one step, the cost is purely determined by how far the one is from the center in grid distance terms, where we only move vertically via row swaps and horizontally via column swaps.
 
-The input is simply the matrix itself. The output is the minimum number of row and column swaps needed to move the `1` into the center cell.
+The constraints are trivial in size, since the grid is always 25 cells. This rules out any need for optimization techniques or data structures. Any solution that scans the grid once and computes a small arithmetic expression will run instantly.
 
-The constraints are extremely small because the matrix size is always fixed at 5 × 5. Even inefficient solutions would run instantly. This changes the nature of the problem completely. We do not need advanced optimization, graph search, or simulation. The real task is recognizing the mathematical structure behind the moves.
+A naive mistake comes from trying to simulate swaps literally. For example, if the one is at (1, 5), a simulation might repeatedly swap rows and columns until reaching the center. That works, but it is unnecessary and can easily introduce off-by-one mistakes or inefficient logic even though constraints are small.
 
-A common mistake is mixing 0-based and 1-based indexing. The center is the third row and third column in the statement, but in Python arrays that becomes index `(2, 2)`.
-
-Consider this input:
-
-```
-0 0 0 0 0
-0 0 0 0 1
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-```
-
-The `1` is at row `2`, column `5` using 1-based indexing. The answer is:
-
-```
-3
-```
-
-because we need two column swaps to move from column `5` to column `3`, and one row swap to move from row `2` to row `3`.
-
-Another easy mistake is trying to count diagonal movement as one operation. That is impossible because each move changes only a row or only a column.
-
-For example:
-
-```
-1 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-```
-
-The correct answer is:
-
-```
-4
-```
-
-The `1` must move two rows downward and two columns rightward. Those are independent operations, so the total is `2 + 2 = 4`.
-
-A different subtle bug happens when people stop searching after finding the row containing `1` but forget to record the column correctly. Since there is exactly one `1`, we must store both coordinates before computing the answer.
+Another subtle mistake is misunderstanding that row and column swaps are independent. Someone might incorrectly try to move diagonally in one step or count swaps incorrectly when mixing row and column operations in a single looped simulation.
 
 ## Approaches
 
-The brute-force idea is to simulate every possible sequence of swaps until the `1` reaches the center. We could model each matrix configuration as a state and run BFS over all reachable states. Since each move swaps neighboring rows or columns, BFS would eventually find the shortest path.
+The brute-force interpretation is to simulate moving the one step by step toward the center, repeatedly swapping either rows or columns until it reaches (3, 3). Each swap reduces either the row distance or column distance by exactly one. This is correct, but it overcomplicates the problem and risks incorrect bookkeeping if simulated explicitly.
 
-This works because every move has equal cost, so BFS guarantees the minimum number of operations.
+The key observation is that swapping adjacent rows is exactly equivalent to moving the one up or down by one cell, and swapping adjacent columns is exactly equivalent to moving it left or right by one cell. Since these two dimensions do not interact, the total number of moves is simply the Manhattan distance from the current position of the one to the center.
 
-The problem is that this completely ignores the structure of the matrix. Even though the state space is still manageable for a 5 × 5 grid, it is unnecessary work. We are not rearranging many values. Only one cell matters.
-
-The key observation is that row swaps and column swaps are independent. Moving the `1` vertically never affects its column, and moving it horizontally never affects its row.
-
-If the `1` is currently at `(r, c)`, then:
-
-- Moving it to row `3` needs `|r - 3|` row swaps.
-- Moving it to column `3` needs `|c - 3|` column swaps.
-
-Since these actions do not interfere with each other, the minimum total number of moves is simply:
-
-```
-|r - 3| + |c - 3|
-```
-
-This transforms the problem from state exploration into direct distance computation.
+So instead of simulating operations, we locate the position (r, c) of the one and compute how far it is from (3, 3). Each unit of vertical distance costs one row swap, and each unit of horizontal distance costs one column swap.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(states) | O(states) | Unnecessary |
-| Optimal | O(25) | O(1) | Accepted |
+| Simulation of swaps | O(k) | O(1) | Accepted but unnecessary |
+| Manhattan distance formula | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the 5 × 5 matrix.
-2. Scan every cell until the value `1` is found.
-3. Record its row index `r` and column index `c`.
-4. Compute the vertical distance from the center using `abs(r - 2)` if using 0-based indexing.
-5. Compute the horizontal distance from the center using `abs(c - 2)`.
-6. Add the two distances and print the result.
+We reduce the problem to finding the coordinates of the single nonzero element and computing its distance to the center.
 
-The reason this works is that every adjacent row swap changes the row position by exactly one, and every adjacent column swap changes the column position by exactly one. No move can reduce both distances simultaneously.
+1. Scan the 5 by 5 matrix to locate the cell (r, c) where the value is 1. This is the only meaningful information in the grid.
+2. Compute the vertical distance as |r - 3|. This counts how many adjacent row swaps are needed to bring the element to row 3.
+3. Compute the horizontal distance as |c - 3|. This counts how many adjacent column swaps are needed to bring the element to column 3.
+4. Add the two distances to obtain the total number of moves.
+
+The separation into row and column contributions works because row swaps never affect columns and column swaps never affect rows, so the two dimensions evolve independently.
 
 ### Why it works
 
-The algorithm relies on Manhattan distance. Each allowed operation changes exactly one coordinate by one unit. Reaching the center requires correcting the row difference and the column difference independently.
-
-Suppose the `1` starts at `(r, c)`. Any valid sequence of moves must perform at least `|r - 2|` row changes and at least `|c - 2|` column changes in 0-based indexing. Since each move changes only one coordinate, the minimum total is their sum.
-
-The algorithm computes exactly this quantity, so it cannot underestimate or overestimate the answer.
+Every move changes exactly one coordinate of the position of the one by ±1, either row or column. No move affects both coordinates simultaneously. This means any path from (r, c) to (3, 3) in this operation graph must consist of exactly |r - 3| row moves and |c - 3| column moves in some order. Any deviation would either fail to reach the target or use extra moves that undo progress, so the Manhattan distance is both necessary and sufficient.
 
 ## Python Solution
 
@@ -127,37 +68,24 @@ The algorithm computes exactly this quantity, so it cannot underestimate or over
 import sys
 input = sys.stdin.readline
 
-# solution
-
 def solve():
-    row = col = -1
-
+    r = c = -1
+    
     for i in range(5):
-        arr = list(map(int, input().split()))
-
+        row = list(map(int, input().split()))
         for j in range(5):
-            if arr[j] == 1:
-                row = i
-                col = j
+            if row[j] == 1:
+                r, c = i, j
+    
+    print(abs(r - 2) + abs(c - 2))
 
-    print(abs(row - 2) + abs(col - 2))
-
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The program scans the matrix once and stores the coordinates of the only cell containing `1`.
+The program scans the grid once and records the position of the single one. The indices are stored in zero-based form, so the center (3, 3) becomes (2, 2). The final answer is computed as the sum of absolute differences in both dimensions.
 
-The implementation uses 0-based indexing because Python lists are naturally 0-based. That means the center cell is `(2, 2)` rather than `(3, 3)`.
-
-The expression:
-
-```
-abs(row - 2) + abs(col - 2)
-```
-
-computes the Manhattan distance from the current position to the center.
-
-One subtle detail is that we should not stop after finding the row containing `1`. We must store both coordinates correctly. Another common mistake is accidentally using `(3, 3)` with 0-based indexing, which shifts the target one cell too far.
+A common implementation detail is index convention. The problem statement uses 1-based indexing, but the code uses 0-based indexing, so the center shifts from (3, 3) to (2, 2). Mixing these conventions is the main source of off-by-one errors.
 
 ## Worked Examples
 
@@ -173,16 +101,105 @@ Input:
 0 0 0 0 0
 ```
 
-| Step | row | col | Calculation |
-| --- | --- | --- | --- |
-| Found `1` | 1 | 4 | Using 0-based indexing |
-| Vertical distance | 1 | 4 | `abs(1 - 2) = 1` |
-| Horizontal distance | 1 | 4 | `abs(4 - 2) = 2` |
-| Final answer | 1 | 4 | `1 + 2 = 3` |
+The position of 1 is (2, 4) in 0-based indexing.
 
-The trace shows that vertical and horizontal movement are counted independently. One row swap and two column swaps are required.
+| Step | Row | Col | |r - 2| | |c - 2| | Total |
+
+|------|-----|-----|--------|--------|--------|--------|
+
+| Start | 2 | 4 | 0 | 2 | 2 |
+
+The row is already centered, but the column is two steps away, so two column swaps are required. This confirms that horizontal movement alone determines the cost here.
 
 ### Example 2
+
+Input:
+
+```
+1 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+```
+
+The position of 1 is (0, 0).
+
+| Step | Row | Col | |r - 2| | |c - 2| | Total |
+
+|------|-----|-----|--------|--------|--------|--------|
+
+| Start | 0 | 0 | 2 | 2 | 4 |
+
+Here both row and column are far from the center, and both contributions add up independently. This shows the independence of the two axes.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(1) | The grid size is constant (25 cells), so scanning is bounded |
+| Space | O(1) | Only a few integer variables are stored |
+
+The solution trivially satisfies the constraints since the input size never grows beyond a fixed 5 by 5 matrix.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    
+    input = sys.stdin.readline
+    grid = []
+    r = c = -1
+    
+    for i in range(5):
+        row = list(map(int, input().split()))
+        for j in range(5):
+            if row[j] == 1:
+                r, c = i, j
+    
+    return str(abs(r - 2) + abs(c - 2))
+
+# provided sample
+assert run("""0 0 0 0 0
+0 0 0 0 1
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0""") == "3"
+
+# center already
+assert run("""0 0 0 0 0
+0 0 0 0 0
+0 0 1 0 0
+0 0 0 0 0
+0 0 0 0 0""") == "0"
+
+# top-left corner
+assert run("""1 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0""") == "4"
+
+# bottom-right corner
+assert run("""0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 1 0""") == "4"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| center cell | 0 | no moves needed |
+| top-left | 4 | maximum symmetric distance |
+| bottom-right | 4 | opposite corner symmetry |
+
+## Edge Cases
+
+A potential edge case is when the one is already in the center. For example:
 
 Input:
 
@@ -194,171 +211,6 @@ Input:
 0 0 0 0 0
 ```
 
-| Step | row | col | Calculation |
-| --- | --- | --- | --- |
-| Found `1` | 2 | 2 | Already centered |
-| Vertical distance | 2 | 2 | `abs(2 - 2) = 0` |
-| Horizontal distance | 2 | 2 | `abs(2 - 2) = 0` |
-| Final answer | 2 | 2 | `0 + 0 = 0` |
+The scan finds (2, 2). The computation gives |2 - 2| + |2 - 2| = 0. No moves are needed, and the algorithm naturally handles this without special cases.
 
-This demonstrates the minimum possible answer. If the `1` already occupies the center, no swaps are needed.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(25) | We scan every cell of the fixed 5 × 5 matrix once |
-| Space | O(1) | Only a few integer variables are stored |
-
-Since the matrix size never changes, the running time is effectively constant. The solution easily fits within the time and memory limits.
-
-## Test Cases
-
-```python
-# helper: run solution on input string, return output string
-import sys, io
-
-def solve():
-    input = sys.stdin.readline
-
-    row = col = -1
-
-    for i in range(5):
-        arr = list(map(int, input().split()))
-
-        for j in range(5):
-            if arr[j] == 1:
-                row = i
-                col = j
-
-    print(abs(row - 2) + abs(col - 2))
-
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    output = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return output
-
-# provided sample
-assert run(
-"""0 0 0 0 0
-0 0 0 0 1
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-"""
-) == "3\n", "sample 1"
-
-# already centered
-assert run(
-"""0 0 0 0 0
-0 0 0 0 0
-0 0 1 0 0
-0 0 0 0 0
-0 0 0 0 0
-"""
-) == "0\n", "already centered"
-
-# top-left corner
-assert run(
-"""1 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-"""
-) == "4\n", "top-left corner"
-
-# bottom-right corner
-assert run(
-"""0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 1
-"""
-) == "4\n", "bottom-right corner"
-
-# same row as center, different column
-assert run(
-"""0 0 0 0 0
-0 0 0 0 0
-1 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-"""
-) == "2\n", "horizontal movement only"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1` already in center | `0` | Zero-move scenario |
-| `1` in top-left corner | `4` | Maximum upward and leftward distance |
-| `1` in bottom-right corner | `4` | Maximum downward and rightward distance |
-| `1` in center row only | `2` | Horizontal movement handled independently |
-
-## Edge Cases
-
-Consider the case where the `1` is already centered:
-
-```
-0 0 0 0 0
-0 0 0 0 0
-0 0 1 0 0
-0 0 0 0 0
-0 0 0 0 0
-```
-
-The algorithm finds `row = 2` and `col = 2` in 0-based indexing. It computes:
-
-```
-abs(2 - 2) + abs(2 - 2) = 0
-```
-
-The output is correctly `0`. This checks that the algorithm does not force unnecessary moves.
-
-Now consider a corner position:
-
-```
-1 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-```
-
-The coordinates are `(0, 0)`. The algorithm computes:
-
-```
-abs(0 - 2) + abs(0 - 2) = 2 + 2 = 4
-```
-
-The result is correct because the `1` must move two rows downward and two columns rightward.
-
-Another tricky case is when the `1` shares either the correct row or the correct column with the center:
-
-```
-0 0 0 0 0
-0 0 0 0 0
-1 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-```
-
-The `1` is already in the center row, so only horizontal movement is needed. The algorithm computes:
-
-```
-abs(2 - 2) + abs(0 - 2) = 0 + 2 = 2
-```
-
-This confirms that row and column distances are handled independently.
+Another edge case is when the one is in any corner. The algorithm treats all corners uniformly through Manhattan distance. For (0, 0), it computes 2 + 2 = 4, matching the fact that two row swaps and two column swaps are necessary, and no sequence can do better because each move only changes one coordinate by one step.

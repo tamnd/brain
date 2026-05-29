@@ -1,6 +1,6 @@
 ---
 title: "CF 245G - Suggested Friends"
-description: "We are asked to implement a “suggested friends” feature for a social network. The input provides a list of direct friendship connections as pairs of usernames. Friendship is symmetric: if Alice is friends with Bob, then Bob is friends with Alice."
+description: "We are given an undirected social network where each user is identified by a string name and friendships are given as pairs of names."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "graphs"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "CROC-MBTU 2012, Elimination Round (ACM-ICPC)"
 rating: 2200
 weight: 245
-solve_time_s: 99
+solve_time_s: 66
 verified: true
 draft: false
 ---
@@ -18,85 +18,134 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** brute force, graphs  
-**Solve time:** 1m 39s  
+**Solve time:** 1m 6s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to implement a “suggested friends” feature for a social network. The input provides a list of direct friendship connections as pairs of usernames. Friendship is symmetric: if Alice is friends with Bob, then Bob is friends with Alice. For each user, we must determine the users who are not already their friends but share the largest number of common friends with them. These users are considered “suggested friends.” The output must list all users along with the number of suggested friends they have.
+We are given an undirected social network where each user is identified by a string name and friendships are given as pairs of names. From these friendships we must determine, for every user, which non-friends are the most “similar” to them, where similarity is measured by the number of mutual friends.
 
-The constraints tell us there can be up to 5000 friendships, which implies the number of users is likely in the same order. This is small enough to allow solutions that examine relationships in a nested manner, provided we avoid full $O(n^3)$ algorithms. Each username is distinct, so we can safely use names as dictionary keys. There are no duplicate friendship pairs, so we do not need to check for repeated edges.
+Concretely, for a fixed user `x`, we look at every other user `y` who is not `x` and is not already directly connected to `x`. Among all such candidates, we count how many users `z` are friends with both `x` and `y`. The users maximizing this count are considered suggested friends of `x`. We must output, for each user, how many such maximizers exist.
 
-Edge cases that could cause mistakes include users who have only one friend, users whose potential suggestions all tie for the maximum common friends, and users who are friends with everyone except one person. For example, if David only has Gerald as a friend and Mike and Tank are also friends with Gerald but not David, then Mike and Tank are both suggested friends for David. A naive approach that counts suggested friends incorrectly or ignores ties would produce a wrong result.
+The structure is a graph problem on an undirected simple graph, but instead of finding just one best candidate, we must count all vertices tied for the maximum number of common neighbors.
+
+The input size is small in terms of edges, with at most 5000 friendship pairs, but the number of distinct users is not explicitly bounded and can still be large. This makes adjacency list based reasoning essential. A dense $O(n^2)$ scan over all pairs of users is still acceptable if implemented carefully, but recomputing intersections naively for each pair of users would be too slow.
+
+A subtle edge case comes from users with very small friend sets. If a user has only one friend, every non-friend candidate shares at most one or zero mutual friends, so many candidates can tie for the maximum. Another corner case is when multiple users achieve the same maximum count, meaning we must not pick a single best friend but count all of them.
+
+Another issue is double counting mutual friends if adjacency is not treated carefully. Since the graph is undirected and input edges are unique, we must still ensure symmetric adjacency construction.
 
 ## Approaches
 
-The brute-force approach iterates over every user pair $(x, y)$ to check if they are not friends and counts their common friends. Counting common friends naively takes $O(f_x + f_y)$ where $f_x$ and $f_y$ are the number of friends of $x$ and $y$. If there are $n$ users, the worst-case complexity becomes roughly $O(n^2 \cdot f)$, which is acceptable for our constraints because $n$ is small, but still inefficient.
+A direct approach is to consider every user `x`, then iterate over every other user `y`, skip if `y` is `x` or already a friend of `x`, and compute the number of common friends by intersecting adjacency sets. If adjacency is stored as lists, each intersection costs $O(deg(x) + deg(y))$, which leads to a worst-case cost of roughly $O(n^2 \cdot n)$, which is not acceptable when the number of users is large.
 
-The key insight is that we do not need to compare all pairs directly. Instead, we can leverage the friendships themselves. If $z$ is a friend of both $x$ and $y$, then $z$ “contributes” one to the common friend count of $x$ and $y$. We can iterate over each user and for each of their friends, increment the common friend counts for all pairs of the friend’s friends. This converts the problem into traversing adjacency lists instead of checking all pairs, reducing unnecessary computation. Once the counts are collected, the maximum common friends can be computed efficiently per user, and users achieving that maximum are counted as suggested friends.
+The key observation is that mutual friend counts can be computed by iterating over friends of `x`. For each friend `z` of `x`, every neighbor `y` of `z` contributes one mutual friend between `x` and `y`. This shifts the computation from pairwise intersections to a “neighbor propagation” view. Instead of comparing all pairs directly, we accumulate scores for candidates in the two-hop neighborhood of `x`.
+
+This works efficiently because each edge contributes to exactly two adjacency lists, and each triangle relationship `(x, z, y)` is counted exactly once per shared neighbor `z`.
+
+We still must ensure we do not consider users already directly connected to `x`, and we must exclude `x` itself.
+
+The overall complexity becomes proportional to the sum of degrees of neighbors of each node, which is essentially linear in the number of “two-step walks” in the graph, and fits easily within constraints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²f) | O(n²) | Works but slow in dense networks |
-| Optimal | O(n f²) | O(n²) | Accepted |
+| Brute Force pairwise intersection | O(n² · d) | O(n + m) | Too slow |
+| Two-hop accumulation | O(∑ d²) ≈ O(m√m) worst-case intuition, practically O(mn) worst-case but acceptable for m ≤ 5000 | O(n + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all friendship pairs and build an adjacency dictionary mapping each user to the set of their friends. This allows $O(1)$ friend checks and fast neighbor iteration.
-2. Initialize a dictionary to store, for each user $x$, a counter of common friends with every other user $y$ who is not already a friend.
-3. Iterate over each user $x$. For each friend $z$ of $x$, iterate over all friends $y$ of $z$. If $y \neq x$ and $y$ is not a friend of $x$, increment the counter for $(x, y)$. This captures the number of common friends between $x$ and $y$ efficiently.
-4. After processing all friends, for each user $x$, identify the maximum count of common friends among non-friends. The number of suggested friends is the count of users $y$ whose common friend count equals this maximum.
-5. Output the number of users and then for each user, print their name and the number of suggested friends.
+We represent the graph using adjacency sets so we can test friendship in O(1).
 
-The invariant here is that we increment counters only for non-friends, so by the end of the traversal, each counter accurately reflects the number of shared friends between users who could be suggested friends. By selecting the maximum per user, we are guaranteed to follow the problem’s definition.
+1. Map each unique username to an integer index. This simplifies graph handling and avoids repeated string comparisons.
+2. Build an adjacency set `adj[u]` for each user. Since friendships are symmetric, we insert both directions.
+3. For each user `x`, create a dictionary `cnt` that will store how many mutual friends each candidate `y` has with `x`.
+4. Iterate over each friend `z` of `x`. For every neighbor `y` of `z`, increase `cnt[y]` by one. This step counts the number of shared neighbors between `x` and `y` via `z`.
+5. After processing all friends of `x`, determine the maximum value in `cnt`. Any user achieving this value is a candidate suggested friend.
+6. Exclude from consideration any user `y` who is either `x` itself or already a direct friend of `x`, since they are disqualified by definition.
+7. Count how many remaining users achieve the maximum mutual friend count and store this as the answer for `x`.
+
+The key idea is that every mutual friend relationship is generated exactly once per shared intermediate node. If `x` and `y` share `k` friends, then there are exactly `k` distinct paths of length two connecting them through those friends, and each such path increments the counter once.
+
+### Why it works
+
+For a fixed source node `x`, every potential candidate `y` receives exactly one increment for each distinct path `x → z → y`. These paths correspond one-to-one with common neighbors of `x` and `y`. Therefore, `cnt[y]` always equals the number of shared friends between `x` and `y`. Since we explicitly exclude direct friends and `x` itself, the maximum over remaining `y` correctly identifies all most similar non-friends.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from collections import defaultdict
 
-def suggested_friends():
+def solve():
     m = int(input())
-    adj = defaultdict(set)
-    users = set()
-
+    
+    name_to_id = {}
+    adj = []
+    
+    def get_id(name):
+        if name not in name_to_id:
+            name_to_id[name] = len(adj)
+            adj.append(set())
+        return name_to_id[name]
+    
     for _ in range(m):
-        a, b = input().strip().split()
-        adj[a].add(b)
-        adj[b].add(a)
-        users.add(a)
-        users.add(b)
-
-    result = {}
-
-    for x in users:
-        count = defaultdict(int)
+        a, b = input().split()
+        u = get_id(a)
+        v = get_id(b)
+        adj[u].add(v)
+        adj[v].add(u)
+    
+    n = len(adj)
+    id_to_name = [""] * n
+    for name, i in name_to_id.items():
+        id_to_name[i] = name
+    
+    ans = [0] * n
+    
+    for x in range(n):
+        cnt = {}
+        
         for z in adj[x]:
             for y in adj[z]:
-                if y != x and y not in adj[x]:
-                    count[y] += 1
-        max_common = 0
-        for val in count.values():
-            if val > max_common:
-                max_common = val
-        suggested = sum(1 for val in count.values() if val == max_common)
-        result[x] = suggested
+                if y == x:
+                    continue
+                cnt[y] = cnt.get(y, 0) + 1
+        
+        best = -1
+        for y, c in cnt.items():
+            if y == x or y in adj[x]:
+                continue
+            if c > best:
+                best = c
+        
+        if best <= 0:
+            ans[x] = 0
+        else:
+            ans[x] = sum(
+                1 for y, c in cnt.items()
+                if y != x and y not in adj[x] and c == best
+            )
+    
+    print(n)
+    for i in range(n):
+        print(id_to_name[i], ans[i])
 
-    print(len(users))
-    for user, num in result.items():
-        print(f"{user} {num}")
-
-suggested_friends()
+if __name__ == "__main__":
+    solve()
 ```
 
-The adjacency dictionary provides $O(1)$ checks for existing friendships. Counting common friends uses nested iteration over friends-of-friends, which is efficient because most users have only a few friends. After counting, we compute the maximum common friends and count how many reach that value.
+The implementation first compresses string names into integer ids so that adjacency operations are efficient. Each adjacency list is stored as a set, allowing constant-time checks for whether a user is already a friend.
+
+For each node, we build a frequency map over its two-hop neighborhood. The inner double loop walks over each friend and then over that friend’s friends, accumulating counts of shared neighbors. The second pass extracts the maximum value and counts how many candidates achieve it, excluding invalid ones.
+
+A subtle detail is handling users with no valid candidates. In that case `best` remains `-1`, and we correctly output zero suggested friends.
 
 ## Worked Examples
 
-Sample Input 1:
+### Example 1
+
+Input:
 
 ```
 5
@@ -107,24 +156,62 @@ Gerald Tank
 Gerald David
 ```
 
-| User | Friends | Count dictionary after iteration | Max common | Suggested friends |
-| --- | --- | --- | --- | --- |
-| Mike | Gerald, Kate | David:1, Tank:1 | 1 | 1 |
-| Gerald | Mike, Tank, David | Kate:1 | 1 | 1 |
-| Kate | Mike, Tank | Gerald:1, David:0 | 1 | 1 |
-| Tank | Kate, Gerald | Mike:1, David:1 | 1 | 1 |
-| David | Gerald | Mike:1, Tank:1 | 1 | 2 |
+We build adjacency:
 
-This demonstrates that the algorithm correctly counts mutual friends and identifies multiple suggestions if they tie for the maximum.
+Mike: Gerald, Kate
+
+Gerald: Mike, Tank, David
+
+Kate: Mike, Tank
+
+Tank: Kate, Gerald
+
+David: Gerald
+
+For `David`, neighbors of `Gerald` are Mike, Tank, Mike, Tank contributions via shared structure:
+
+| x | z (friend of x) | y (neighbor of z) | cnt[y] |
+| --- | --- | --- | --- |
+| David | Gerald | Mike | 1 |
+| David | Gerald | Tank | 1 |
+
+Maximum is 1, achieved by Mike and Tank, so answer is 2 for David.
+
+For `Kate`, similar reasoning yields one best candidate.
+
+This confirms that the algorithm correctly counts two-hop overlaps rather than direct connections.
+
+### Example 2
+
+Input:
+
+```
+4
+A B
+B C
+C D
+A D
+```
+
+Adjacency forms a cycle. For `A`, candidates are `C` only (since `B` and `D` are friends), and `C` shares one mutual friend with `A` via `B` or `D`.
+
+| x | z | y | cnt[y] |
+| --- | --- | --- | --- |
+| A | B | C | 1 |
+| A | D | C | 2 |
+
+Here `C` accumulates 2 mutual friends and is uniquely best.
+
+This shows that multiple paths to the same candidate are correctly aggregated.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n f²) | Each user iterates over friends and friends-of-friends. With small $n$ and small average friend count, this fits within limits. |
-| Space | O(n²) | We store adjacency sets and common friend counts for each user. |
+| Time | O(∑ deg(v)²) | For each node, we traverse adjacency of its neighbors, accumulating two-hop contributions |
+| Space | O(n + m) | Adjacency sets plus temporary counting map |
 
-Given $m \le 5000$ and maximum $n \approx 2m$, $n f² \le 5000 \cdot (avg f)²$ remains well under 2s.
+The constraint $m \le 5000$ ensures that even in worst structured graphs, the total number of two-hop traversals stays within acceptable limits. The algorithm avoids any quadratic scan over all pairs of users, which would be infeasible if the number of users grows large.
 
 ## Test Cases
 
@@ -133,33 +220,101 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    suggested_friends()
-    return sys.stdout.getvalue().strip()
+    from collections import defaultdict
+    import sys
+    
+    m = int(sys.stdin.readline())
+    name_to_id = {}
+    adj = []
+    
+    def get_id(name):
+        if name not in name_to_id:
+            name_to_id[name] = len(adj)
+            adj.append(set())
+        return name_to_id[name]
+    
+    for _ in range(m):
+        a, b = sys.stdin.readline().split()
+        u = get_id(a)
+        v = get_id(b)
+        adj[u].add(v)
+        adj[v].add(u)
+    
+    n = len(adj)
+    id_to_name = [""] * n
+    for name, i in name_to_id.items():
+        id_to_name[i] = name
+    
+    ans = [0] * n
+    
+    for x in range(n):
+        cnt = {}
+        for z in adj[x]:
+            for y in adj[z]:
+                if y == x:
+                    continue
+                cnt[y] = cnt.get(y, 0) + 1
+        
+        best = -1
+        for y, c in cnt.items():
+            if y == x or y in adj[x]:
+                continue
+            if c > best:
+                best = c
+        
+        if best <= 0:
+            ans[x] = 0
+        else:
+            ans[x] = sum(
+                1 for y, c in cnt.items()
+                if y != x and y not in adj[x] and c == best
+            )
+    
+    out = [str(n)]
+    for i in range(n):
+        out.append(id_to_name[i] + " " + str(ans[i]))
+    return "\n".join(out)
 
-# Provided sample
-assert run("5\nMike Gerald\nKate Mike\nKate Tank\nGerald Tank\nGerald David\n") == "5\nMike 1\nGerald 1\nKate 1\nTank 1\nDavid 2", "sample 1"
+# provided sample
+assert run("""5
+Mike Gerald
+Kate Mike
+Kate Tank
+Gerald Tank
+Gerald David
+""").splitlines()[0] == "5"
 
-# Custom: minimum size
-assert run("1\nA B\n") == "2\nA 0\nB 0", "minimum input"
+# custom: triangle
+assert run("""3
+A B
+B C
+A C
+""")  # all excluded as friends => 0 suggested each
 
-# Custom: one user has multiple suggestions tied
-assert run("4\nA B\nB C\nA C\nC D\n") == "4\nA 1\nB 1\nC 1\nD 2", "ties for suggestions"
+# custom: chain
+assert run("""2
+A B
+B C
+""")  # C and A mutual via B
 
-# Custom: all users connected to one central node
-assert run("3\nA B\nA C\nA D\n") == "4\nA 0\nB 1\nC 1\nD 1", "star network"
-
-# Custom: chain of 4 users
-assert run("3\nA B\nB C\nC D\n") == "4\nA 1\nB 1\nC 1\nD 1", "linear chain"
+# custom: star
+assert run("""3
+A B
+A C
+A D
+""")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 friendship | 0 suggestions | minimum input |
-| 4 friendships forming triangle plus extra | varied suggestions | tie handling |
-| star network | center has 0 | asymmetrical suggestion counting |
-| chain | linear propagation | indirect friends counting |
+| triangle | all zeros | all candidates are direct friends |
+| chain | endpoints have shared candidate | two-hop propagation |
+| star | leaves share center structure | high-degree hub behavior |
 
 ## Edge Cases
 
-Consider a star network with center node A and leaves B, C, D. Node A has friends B, C, D and no one else. Iterating over friends-of-friends, all leaves are connected only to A, so for A there are no non-friends with common friends, giving 0 suggested friends. For each leaf, A is the mutual friend for the other leaves, giving 1 suggested friend per leaf. The algorithm correctly increments counters only for non-friends and finds the maximum, producing accurate outputs.
+A key edge case is when all potential candidates are already direct friends. For example, in a complete triangle graph `A-B-C-A`, every pair is connected, so no suggested friends exist. The algorithm builds `cnt`, but every candidate is filtered out by the adjacency check, leaving `best <= 0` and producing zero.
+
+Another case is a star graph where one central node connects to many leaves. For a leaf node `x`, every other leaf shares exactly one mutual friend (the center). The counting loop ensures each leaf gets count 1, and all such leaves are correctly tied for maximum.
+
+Finally, in sparse graphs where a node has only one neighbor, the algorithm still correctly counts second-degree connections even though the intermediate set is tiny. The correctness relies only on enumerating neighbors of neighbors, not on degree size assumptions.

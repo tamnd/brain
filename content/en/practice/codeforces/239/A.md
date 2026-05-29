@@ -1,6 +1,6 @@
 ---
 title: "CF 239A - Two Bags of Potatoes"
-description: "We know how many potatoes were in the second bag, y. The first bag contained some positive number x, but that value was lost. The only facts that remain are: x + y was divisible by k. x + y was not greater than n."
+description: "We know the second bag contains y potatoes. The first bag originally contained some positive number x, but that value was lost. The only remaining information is that the total number of potatoes, x + y, was divisible by k and did not exceed n."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "math"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 148 (Div. 2)"
 rating: 1200
 weight: 239
-solve_time_s: 94
+solve_time_s: 83
 verified: true
 draft: false
 ---
@@ -18,31 +18,23 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** greedy, implementation, math  
-**Solve time:** 1m 34s  
+**Solve time:** 1m 23s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We know how many potatoes were in the second bag, `y`. The first bag contained some positive number `x`, but that value was lost. The only facts that remain are:
-
-`x + y` was divisible by `k`.
-
-`x + y` was not greater than `n`.
+We know the second bag contains `y` potatoes. The first bag originally contained some positive number `x`, but that value was lost. The only remaining information is that the total number of potatoes, `x + y`, was divisible by `k` and did not exceed `n`.
 
 The task is to print every possible value of `x` that satisfies those conditions, in increasing order.
 
-Another way to think about the problem is this: we need all multiples of `k` that are larger than `y` and at most `n`. If such a multiple is `m`, then the missing value is simply:
+The constraints immediately point toward a simple arithmetic solution. The values themselves can be as large as `10^9`, so iterating over every possible `x` from `1` to `n` would be too expensive in a general setting. At the same time, the condition `n / k ≤ 10^5` is very revealing. It means the number of multiples of `k` up to `n` is at most `100000`, so iterating through valid totals directly is completely safe.
 
-$$x = m - y$$
+The key observation is that we are not really searching for arbitrary numbers. We only care about totals divisible by `k`.
 
-Since `x` must represent the number of potatoes in a bag, it has to be strictly positive.
+There are several easy-to-miss edge cases.
 
-The constraints are small in an interesting way. Although `n`, `k`, and `y` can each reach `10^9`, the value of `n / k` is at most `10^5`. That means the number of multiples of `k` up to `n` is never large. We cannot iterate through every integer from `1` to `n`, because that could require a billion iterations, but iterating through all multiples of `k` is completely safe.
-
-A few edge cases are easy to mishandle.
-
-Suppose the total already equals `n` and is divisible by `k`.
+Suppose the total cannot be larger than the already known bag.
 
 Input:
 
@@ -50,136 +42,101 @@ Input:
 10 1 10
 ```
 
-The only multiple of `1` up to `10` is every number from `1` to `10`, but any valid total must be strictly greater than `y = 10`, otherwise `x = total - y` becomes zero or negative. No valid `x` exists, so the correct output is:
+The total must be divisible by `1`, but also must satisfy `x + 10 ≤ 10`, which forces `x ≤ 0`. Since `x` must be positive, the correct answer is:
 
 ```
 -1
 ```
 
-A careless implementation might incorrectly include `x = 0`.
+A careless implementation might accidentally include `0`.
 
-Another subtle case appears when the first valid multiple is exactly `y`.
-
-Input:
-
-```
-5 5 20
-```
-
-Multiples of `5` are `5, 10, 15, 20`. The total `5` gives `x = 0`, which is invalid. The correct answers are:
-
-```
-5 10 15
-```
-
-If the code forgets to enforce `x > 0`, it will print an extra zero.
-
-One more corner case happens when no multiple larger than `y` exists at all.
+Another tricky case appears when the first valid multiple produces `x = 0`.
 
 Input:
 
 ```
-13 7 15
+5 5 15
 ```
 
-The multiples of `7` up to `15` are `7` and `14`. Only `14` exceeds `13`, giving:
+The multiples of `5` up to `15` are `5, 10, 15`.
+
+For totals `5` and `10`, we get `x = 0` and `x = 5`. Only positive values are allowed, so the answer is:
 
 ```
-1
+5 10
 ```
 
-But if the input were:
+If we forget to exclude zero, the output becomes incorrect.
+
+One more subtle situation is when there are no multiples larger than `y`.
+
+Input:
 
 ```
-14 7 15
+8 10 15
 ```
 
-then there would be no valid multiple strictly larger than `14`, so the output must be:
+The only multiple of `10` not exceeding `15` is `10`, which gives `x = 2`. That is valid, so the answer is:
 
 ```
--1
+2
 ```
 
-This strict inequality is the main source of off by one mistakes.
+The condition is about the total, not about `x` itself being divisible by `k`. A common mistake is checking `x % k == 0`, which would incorrectly reject this case.
 
 ## Approaches
 
-A direct brute-force solution would try every possible value of `x` from `1` to `n`. For each candidate, we would check whether `x + y` is divisible by `k` and whether the sum stays within the limit `n`.
+The brute-force approach is straightforward. We try every possible value of `x` from `1` to `n - y`. For each candidate, we check whether `(x + y) % k == 0`. Every valid value is added to the answer.
 
-This works because the conditions are easy to verify:
+This works because the conditions are easy to verify independently. The issue is scale. In the worst case, `n` can reach `10^9`, so iterating through all candidates would require up to a billion checks, far beyond what is practical.
 
-$$(x + y) \bmod k = 0$$
+The structure of the divisibility condition gives a much better direction. Instead of guessing `x`, we can think about the total number of potatoes.
 
-and
+The total `x + y` must be a multiple of `k`. That means every valid total has the form:
 
-$$x + y \le n$$
+$x+y=m\cdot k$
 
-The problem is the running time. In the worst case, `n` can be `10^9`, so scanning all candidates would require up to a billion iterations. That is far beyond what competitive programming time limits allow.
+for some integer `m`.
 
-The key observation is that we do not actually care about arbitrary values of `x`. We care about totals `x + y` that are divisible by `k`. Those totals are exactly the multiples of `k`.
+So rather than iterating over all possible `x`, we iterate over all multiples of `k` up to `n`. For each multiple `t`, we compute:
 
-Instead of searching over all `x`, we can search over all multiples of `k`:
+$x=t-y$
 
-$$k, 2k, 3k, \dots$$
+If `x > 0`, then it is a valid answer.
 
-up to `n`.
-
-For each multiple `m`, we compute:
-
-$$x = m - y$$
-
-If `x > 0`, it is a valid answer.
-
-This changes the complexity dramatically. The number of multiples of `k` up to `n` is:
-
-$$\left\lfloor \frac{n}{k} \right\rfloor$$
-
-and the constraints guarantee this value is at most `10^5`.
+The important difference is the number of candidates. There are only `n / k` multiples of `k` up to `n`, and the problem guarantees this quantity is at most `10^5`. That makes the optimized solution easily fast enough.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n) | O(1) | Too slow |
-| Optimal | O(n / k) | O(1) | Accepted |
+| Optimal | O(n / k) | O(1) excluding output | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read the integers `y`, `k`, and `n`.
 2. Iterate through every multiple of `k` from `k` up to `n`.
+3. For each multiple `t`, compute `x = t - y`.
+4. Check whether `x` is positive.
 
-We can generate these values using:
+The problem requires the first bag to contain at least one potato, so `x = 0` is invalid.
+5. If `x > 0`, append it to the answer list.
+6. After processing all multiples:
 
-$$m = k, 2k, 3k, \dots$$
-
-These are the only totals that could satisfy the divisibility condition.
-3. For each multiple `m`, compute:
-
-$$x = m - y$$
-
-Since `m = x + y`, subtracting `y` reconstructs the missing number of potatoes.
-4. Check whether `x > 0`.
-
-The first bag must contain at least one potato. Values `x = 0` or negative are invalid.
-5. Store every valid `x` in order.
-
-Since the multiples are processed in increasing order, the answers are automatically sorted.
-6. After the loop finishes, print all collected values separated by spaces.
-7. If no valid values were found, print `-1`.
+If the answer list is empty, print `-1`. Otherwise print all collected values separated by spaces.
 
 ### Why it works
 
-Every valid solution must satisfy:
+Every valid configuration must satisfy two conditions:
 
-$$x + y \equiv 0 \pmod{k}$$
+$x+y\le n$
 
-That means the total `x + y` must be some multiple of `k`. The algorithm enumerates every such multiple up to `n`, so no valid total is missed.
+and
 
-For each multiple `m`, the corresponding candidate:
+$(x+y)\bmod k=0$
 
-$$x = m - y$$
+The algorithm enumerates every multiple of `k` that does not exceed `n`. Each such multiple represents a possible total number of potatoes. Subtracting `y` gives the only corresponding value of `x`.
 
-is the only possible value that produces that total. The algorithm accepts it exactly when `x > 0`, which matches the requirement that the first bag contain a positive number of potatoes.
-
-Since every accepted value satisfies all constraints, and every valid value appears during enumeration, the algorithm is correct.
+No valid answer can be missed because every valid total must appear among those multiples. No invalid answer can be included because we only accept positive `x`.
 
 ## Python Solution
 
@@ -187,55 +144,40 @@ Since every accepted value satisfies all constraints, and every valid value appe
 import sys
 input = sys.stdin.readline
 
-def solve():
-    y, k, n = map(int, input().split())
+y, k, n = map(int, input().split())
 
-    ans = []
+ans = []
 
-    multiple = k
-    while multiple <= n:
-        x = multiple - y
+for total in range(k, n + 1, k):
+    x = total - y
+    if x > 0:
+        ans.append(str(x))
 
-        if x > 0:
-            ans.append(str(x))
-
-        multiple += k
-
-    if ans:
-        print(" ".join(ans))
-    else:
-        print(-1)
-
-solve()
+if ans:
+    print(" ".join(ans))
+else:
+    print(-1)
 ```
 
-The solution follows the exact reasoning from the walkthrough.
+The loop iterates directly over multiples of `k`. This matches the mathematical structure of the problem and avoids checking irrelevant values.
 
-The loop iterates only over multiples of `k`. This is the critical optimization. Iterating over every possible `x` would be far too slow when `n` is large.
-
-For each multiple, the code reconstructs the missing value using:
+The expression `range(k, n + 1, k)` generates:
 
 ```
-x = multiple - y
+k, 2k, 3k, ...
 ```
 
-The condition:
+up to `n`.
+
+For each total, we reconstruct the missing amount using:
 
 ```
-if x > 0:
+x = total - y
 ```
 
-is easy to underestimate, but it is essential. Without it, the program would incorrectly include cases where the first bag contains zero or a negative number of potatoes.
+The positivity check is crucial. Values where `x == 0` are invalid because the first bag originally contained at least one potato.
 
-The answers are stored as strings immediately. This avoids an extra conversion step during output formatting.
-
-The loop increments by `k` each time:
-
-```
-multiple += k
-```
-
-which guarantees we visit every divisible total exactly once and in sorted order.
+The solution stores answers as strings immediately, which makes the final printing step simple and efficient.
 
 ## Worked Examples
 
@@ -247,64 +189,55 @@ Input:
 10 1 10
 ```
 
-| Current multiple | x = multiple - y | Valid? | Answers |
+| total | x = total - y | Valid? | ans |
 | --- | --- | --- | --- |
 | 1 | -9 | No | [] |
 | 2 | -8 | No | [] |
 | 3 | -7 | No | [] |
-| 4 | -6 | No | [] |
-| 5 | -5 | No | [] |
-| 6 | -4 | No | [] |
-| 7 | -3 | No | [] |
-| 8 | -2 | No | [] |
-| 9 | -1 | No | [] |
+| ... | ... | ... | [] |
 | 10 | 0 | No | [] |
 
-No valid positive value of `x` appears. The algorithm correctly prints:
+Final output:
 
 ```
 -1
 ```
 
-This example demonstrates why the strict condition `x > 0` matters.
+This example demonstrates the strict positivity requirement. Even though every total is divisible by `1`, no positive value of `x` exists.
 
 ### Example 2
 
 Input:
 
 ```
-10 6 40
+5 3 20
 ```
 
-| Current multiple | x = multiple - y | Valid? | Answers |
+| total | x = total - y | Valid? | ans |
 | --- | --- | --- | --- |
-| 6 | -4 | No | [] |
-| 12 | 2 | Yes | [2] |
-| 18 | 8 | Yes | [2, 8] |
-| 24 | 14 | Yes | [2, 8, 14] |
-| 30 | 20 | Yes | [2, 8, 14, 20] |
-| 36 | 26 | Yes | [2, 8, 14, 20, 26] |
+| 3 | -2 | No | [] |
+| 6 | 1 | Yes | [1] |
+| 9 | 4 | Yes | [1, 4] |
+| 12 | 7 | Yes | [1, 4, 7] |
+| 15 | 10 | Yes | [1, 4, 7, 10] |
+| 18 | 13 | Yes | [1, 4, 7, 10, 13] |
 
-The output becomes:
+Final output:
 
 ```
-2 8 14 20 26
+1 4 7 10 13
 ```
 
-Each answer produces a total divisible by `6` while staying within the limit `40`.
+This trace shows how each multiple of `k` corresponds to exactly one possible value of `x`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n / k) | We iterate once over every multiple of `k` up to `n` |
-| Space | O(n / k) | In the worst case, all generated values are stored |
+| Time | O(n / k) | We iterate through every multiple of `k` up to `n` |
+| Space | O(1) excluding output | Only a few variables are used |
 
-The constraint:
-
-$$\frac{n}{k} \le 10^5$$
-
-guarantees that the loop never becomes large. Even in the worst case, the program performs only around one hundred thousand iterations, which easily fits within the limits.
+The constraint `n / k ≤ 10^5` guarantees the loop performs at most one hundred thousand iterations, which is trivial within the limits.
 
 ## Test Cases
 
@@ -319,14 +252,10 @@ def solve():
 
     ans = []
 
-    multiple = k
-    while multiple <= n:
-        x = multiple - y
-
+    for total in range(k, n + 1, k):
+        x = total - y
         if x > 0:
             ans.append(str(x))
-
-        multiple += k
 
     if ans:
         print(" ".join(ans))
@@ -334,110 +263,109 @@ def solve():
         print(-1)
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
     solve()
 
-    output = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return output
+    return sys.stdout.getvalue().strip()
 
 # provided sample
-assert run("10 1 10\n") == "-1\n", "sample 1"
+assert run("10 1 10\n") == "-1", "sample 1"
 
 # custom cases
-assert run("10 6 40\n") == "2 8 14 20 26\n", "basic valid case"
+assert run("5 3 20\n") == "1 4 7 10 13", "basic valid sequence"
 
-assert run("5 5 20\n") == "5 10 15\n", "must exclude x = 0"
+assert run("1 1 2\n") == "1", "minimum positive answer"
 
-assert run("14 7 15\n") == "-1\n", "no multiple strictly larger than y"
+assert run("5 5 15\n") == "5 10", "exclude x = 0"
 
-assert run("1 1000000000 1000000000\n") == "999999999\n", "large values"
+assert run("999999999 1000000000 1000000000\n") == "1", "large values"
 
-assert run("1 2 3\n") == "1\n", "single valid answer"
+assert run("8 10 15\n") == "2", "x itself need not be divisible by k"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `10 6 40` | `2 8 14 20 26` | Normal multi-answer scenario |
-| `5 5 20` | `5 10 15` | Excludes invalid zero answer |
-| `14 7 15` | `-1` | No valid multiple beyond `y` |
-| `1 1000000000 1000000000` | `999999999` | Handles very large numbers correctly |
-| `1 2 3` | `1` | Single valid candidate |
+| `5 3 20` | `1 4 7 10 13` | Standard progression of valid answers |
+| `1 1 2` | `1` | Smallest non-trivial valid case |
+| `5 5 15` | `5 10` | Ensures `x = 0` is excluded |
+| `999999999 1000000000 1000000000` | `1` | Correct handling of large integers |
+| `8 10 15` | `2` | Total must be divisible, not `x` |
 
 ## Edge Cases
 
-Consider the input:
+Consider the case where no positive value of `x` exists.
+
+Input:
 
 ```
 10 1 10
 ```
 
-The algorithm generates all multiples of `1` from `1` to `10`. Every computed value:
-
-$$x = multiple - 10$$
-
-is non-positive. Since the condition requires `x > 0`, none are accepted. The answer list stays empty, so the algorithm prints:
+The algorithm checks totals from `1` through `10`. Every computed value of `x = total - 10` is non-positive. Since the answer list remains empty, the algorithm prints:
 
 ```
 -1
 ```
 
-This correctly handles the case where the total cannot exceed the known second bag size.
+This correctly handles the situation where the known bag already uses the entire allowed total.
 
-Now examine:
+Now consider the boundary where the smallest multiple gives `x = 0`.
 
-```
-5 5 20
-```
-
-The generated multiples are `5`, `10`, `15`, and `20`.
-
-For `5`, the computed value is:
-
-$$x = 5 - 5 = 0$$
-
-which must be rejected.
-
-The remaining values produce:
-
-$$x = 5, 10, 15$$
-
-and all are valid. The algorithm prints:
+Input:
 
 ```
-5 10 15
+5 5 15
 ```
 
-This case confirms that the strict positivity check prevents off by one errors.
+The examined totals are `5`, `10`, and `15`.
 
-Finally, consider:
-
-```
-14 7 15
-```
-
-The multiples of `7` up to `15` are `7` and `14`.
-
-The computed values are:
-
-$$7 - 14 = -7$$
-
-and
-
-$$14 - 14 = 0$$
-
-Neither is positive, so the output becomes:
+For `total = 5`:
 
 ```
--1
+x = 5 - 5 = 0
 ```
 
-This demonstrates that equality is not enough. The total must be strictly larger than `y` so that the first bag contains at least one potato.
+This is rejected because the first bag must contain at least one potato.
+
+For the remaining totals:
+
+```
+x = 10 - 5 = 5
+x = 15 - 5 = 10
+```
+
+Both are accepted, producing:
+
+```
+5 10
+```
+
+This confirms the strict `x > 0` condition is handled correctly.
+
+Finally, consider a case where `x` itself is not divisible by `k`.
+
+Input:
+
+```
+8 10 15
+```
+
+The only multiple of `10` not exceeding `15` is `10`.
+
+The algorithm computes:
+
+```
+x = 10 - 8 = 2
+```
+
+Since `2 > 0`, it is printed.
+
+The output is:
+
+```
+2
+```
+
+This verifies that divisibility applies to the total `x + y`, not to `x` individually.

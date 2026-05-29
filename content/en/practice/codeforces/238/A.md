@@ -1,6 +1,6 @@
 ---
 title: "CF 238A - Not Wool Sequences"
-description: "We are counting arrays of length n where every element is chosen from the range [0, 2^m - 1]. A sequence is considered \"wool\" if some contiguous subarray has xor equal to 0. The task is to count the sequences that avoid this completely."
+description: "We work with arrays of length n, where every element is an integer from 0 to 2^m - 1. A sequence is called \"wool\" if there exists some contiguous subarray whose xor is 0. We are asked to count how many sequences are not wool, meaning every contiguous subarray has non-zero xor."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "math"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 148 (Div. 1)"
 rating: 1300
 weight: 238
-solve_time_s: 93
+solve_time_s: 318
 verified: true
 draft: false
 ---
@@ -18,151 +18,191 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** constructive algorithms, math  
-**Solve time:** 1m 33s  
+**Solve time:** 5m 18s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are counting arrays of length `n` where every element is chosen from the range `[0, 2^m - 1]`. A sequence is considered "wool" if some contiguous subarray has xor equal to `0`. The task is to count the sequences that avoid this completely.
+We work with arrays of length `n`, where every element is an integer from `0` to `2^m - 1`.
 
-Another way to phrase the condition is through prefix xors. Define:
+A sequence is called "wool" if there exists some contiguous subarray whose xor is `0`. We are asked to count how many sequences are _not_ wool, meaning every contiguous subarray has non-zero xor.
 
-$$pref_i = a_1 \oplus a_2 \oplus \dots \oplus a_i$$
+The answer must be computed modulo `10^9 + 9`.
 
-and let `pref_0 = 0`.
+The first thing to notice is that xor over a subarray is naturally connected to prefix xors. If we define
 
-A subarray xor from `l` to `r` equals:
+$$p_i = a_1 \oplus a_2 \oplus \cdots \oplus a_i$$
 
-$$pref_r \oplus pref_{l-1}$$
+with `p_0 = 0`, then the xor of subarray `[l, r]` equals
 
-This becomes `0` exactly when:
+$$p_r \oplus p_{l-1}$$
 
-$$pref_r = pref_{l-1}$$
+A subarray xor becomes zero exactly when two prefix xors are equal.
 
-So a sequence is not wool precisely when all prefix xors are distinct.
+So the problem is secretly asking:
 
-That reformulation changes the problem from "check all subarrays" into "count sequences whose prefix xor values never repeat".
+"How many arrays produce pairwise distinct prefix xors `p_0, p_1, ..., p_n`?"
 
-The constraints are large enough that brute force is impossible. Both `n` and `m` can reach `10^5`. The number of possible arrays is:
+That reformulation is the whole problem.
+
+The constraints are large enough that brute force enumeration is impossible. Both `n` and `m` can reach `10^5`. The number of arrays is
 
 $$(2^m)^n = 2^{mn}$$
 
-which is astronomically large even for moderate values. Any algorithm that tries to enumerate arrays or inspect all subarrays is ruled out immediately.
+which is astronomically large even for moderate values. Any solution that iterates over arrays, subsets, or xor states per position in quadratic fashion will fail.
 
-The target complexity should be close to linear or logarithmic in the input size. Since the answer only depends on combinatorial counting, the real challenge is finding the correct formula.
+The target complexity is roughly linear or logarithmic in `n` and `m`.
 
-One subtle edge case appears when `n > 2^m`. There are only `2^m` possible xor states because every xor value fits in `m` bits. Since the prefix xor sequence includes `pref_0`, we would need `n + 1` distinct prefix xor values to avoid repetition. That becomes impossible once:
+There are several easy-to-miss edge cases.
 
-$$n + 1 > 2^m$$
+If `n >= 2^m`, the answer is automatically zero. There are only `2^m` possible prefix xor values, but we need `n + 1` distinct values because of `p_0`. By the pigeonhole principle, repetition is unavoidable.
 
 For example:
 
 ```
-Input:
-4 1
+n = 2, m = 1
 ```
 
-Here the values are only `0` and `1`, so there are only two xor states. We would need five distinct prefix xors, which cannot happen. The correct answer is `0`.
+Allowed values are `{0, 1}`.
 
-Another easy mistake is forgetting that `pref_0 = 0` already exists before processing any elements. If some prefix xor later becomes `0`, then the subarray from the beginning has xor `0`. For example:
+There are only two possible prefix xors, but we need three distinct values:
+
+$$p_0, p_1, p_2$$
+
+Impossible, so the correct answer is `0`.
+
+A careless implementation may try to compute a falling factorial with negative terms and accidentally produce garbage instead of zero.
+
+Another subtle case is arrays containing zero. Any element `a_i = 0` immediately creates a zero-xor subarray of length one.
+
+For example:
 
 ```
-Input:
-1 2
+n = 1, m = 3
 ```
 
-The allowed values are `0,1,2,3`. The single-element sequence `[0]` is wool because its xor is `0`. Only `[1]`, `[2]`, and `[3]` are valid, so the answer is `3`.
+Allowed numbers are `0..7`.
 
-A careless implementation that only checks repeated prefix xors among positive indices would incorrectly count `[0]` as valid.
+Only value `0` is forbidden, so the answer is `7`.
+
+A buggy derivation that forgets about `p_i != p_{i-1}` would incorrectly count all `8` arrays.
 
 ## Approaches
 
-The brute-force idea is straightforward. Generate every possible sequence of length `n`, compute all subarray xors, and reject sequences containing a zero-xor segment.
+The brute force approach is straightforward. Generate every array of length `n`, compute xor for every subarray, and check whether any xor equals zero.
 
-There are `2^m` choices for each position, so the total number of arrays is:
+There are `2^{mn}` arrays. Even if we optimize subarray xor computation using prefix xors, each array still requires checking all `O(n^2)` subarrays.
 
-$$(2^m)^n$$
+The total complexity becomes
 
-Even if checking one sequence were free, this already explodes far beyond feasibility. With `n = 10^5`, brute force is completely impossible.
+$$O(2^{mn} \cdot n^2)$$
 
-The key observation comes from the prefix xor interpretation. A sequence is valid exactly when all prefix xors are distinct.
+which is hopeless even for tiny inputs.
 
-Suppose we build the sequence from left to right.
+The problem becomes manageable once we rewrite the condition using prefix xors.
 
-Initially:
+Define:
 
-$$pref_0 = 0$$
+$$p_0 = 0$$
 
-When choosing `a_1`, the new prefix xor becomes:
+$$p_i = a_1 \oplus a_2 \oplus \cdots \oplus a_i$$
 
-$$pref_1 = pref_0 \oplus a_1$$
+Then:
 
-To remain valid, `pref_1` must differ from all previous prefix xors. Since only `pref_0` exists, we cannot choose `a_1 = 0`.
+$$a_i = p_i \oplus p_{i-1}$$
 
-After choosing several elements, assume we already have `i` distinct prefix xor values:
+Every choice of prefix xors uniquely determines the array.
 
-$$pref_0, pref_1, \dots, pref_{i-1}$$
+A subarray `[l, r]` has xor zero exactly when:
 
-When selecting the next element, the next prefix xor is:
+$$p_r = p_{l-1}$$
 
-$$pref_i = pref_{i-1} \oplus a_i$$
+So a sequence is not wool precisely when all prefix xors are distinct.
 
-Because xor with a fixed value is a bijection, every forbidden prefix xor corresponds to exactly one forbidden value of `a_i`.
+Now the problem becomes combinatorial.
 
-There are exactly `i` forbidden xor states at step `i`, so there are exactly `i` forbidden choices for `a_i`.
+There are `2^m` possible xor values.
 
-Since the total number of possible values is `2^m`, the number of valid choices becomes:
+We already fixed `p_0 = 0`.
 
-$$2^m - i$$
+To choose `p_1`, we may use any value except `0`, giving:
 
-Multiplying these choices across all positions gives:
+$$2^m - 1$$
 
-$$(2^m - 1)(2^m - 2)\dots(2^m - n)$$
+choices.
 
-If `n \ge 2^m`, eventually one factor becomes zero, so the answer is zero automatically.
+For `p_2`, we must avoid the two used values:
+
+$$2^m - 2$$
+
+choices.
+
+Continuing this process:
+
+$$(2^m - 1)(2^m - 2)\cdots(2^m - n)$$
+
+This is just a falling factorial.
+
+If `n >= 2^m`, one factor becomes zero, so the answer is zero.
+
+The entire problem reduces to modular multiplication.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | $O(2^{mn} \cdot n^2)$ | $O(n)$ | Too slow |
-| Optimal | $O(n)$ | $O(1)$ | Accepted |
+| Optimal | $O(n + \log m)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read `n` and `m`.
-2. Compute:
+2. Compute
 
-$$k = 2^m$$
+$$K = 2^m \pmod{10^9+9}$$
 
-This is the total number of distinct xor states and also the number of possible element values.
+using fast modular exponentiation.
 
-1. If `n >= k`, print `0`.
+1. If `n >= K` in ordinary integer arithmetic, the answer must be zero because we need `n + 1` distinct prefix xor values but only `K` values exist.
 
-A valid sequence requires `n + 1` distinct prefix xor values including `pref_0`. Since only `k` xor states exist, this becomes impossible once `n + 1 > k`.
+Since `2^m` may be huge, we do not compute it directly. We only need to know whether `2^m <= n`.
 
-1. Otherwise, initialize the answer as `1`.
-2. For each `i` from `1` to `n`, multiply the answer by:
+Because `n ≤ 10^5`, we can safely check:
 
-$$k - i$$
+- if `m >= 17`, then `2^m > 10^5`, so `n < 2^m` automatically
+- otherwise compute `1 << m`
 
-At step `i`, exactly `i` prefix xor states are already occupied, so exactly `i` choices would create a repeated prefix xor. The remaining `k - i` choices are valid.
+1. Initialize `answer = 1`.
+2. For every `i` from `1` to `n`, multiply:
 
-1. Take every multiplication modulo `10^9 + 9`.
-2. Print the final answer.
+$$answer \gets answer \times (K - i)$$
+
+modulo `10^9 + 9`.
+
+This corresponds to choosing a new distinct prefix xor at each step.
+
+1. Print the final answer.
 
 ### Why it works
 
-The invariant is that after processing `i - 1` elements, all prefix xors are distinct.
+The invariant is that after processing position `i`, the prefix xor values
 
-When choosing the next element, each previously seen prefix xor corresponds to exactly one forbidden value of the new element because:
+$$p_0, p_1, \dots, p_i$$
 
-$$a_i = pref_{i-1} \oplus target$$
+are all distinct.
 
-for a desired next prefix xor `target`.
+At step `i`, exactly `i` xor values are already used, so there are:
 
-Since xor with a fixed value is bijective, different forbidden prefix xors produce different forbidden values. That means exactly `i` choices are invalid at step `i`.
+$$2^m - i$$
 
-Choosing any of the remaining values creates a brand new prefix xor, preserving the invariant. By induction, the counting formula counts exactly all valid sequences.
+valid choices for `p_i`.
+
+Every valid sequence of distinct prefix xors corresponds to exactly one array because:
+
+$$a_i = p_i \oplus p_{i-1}$$
+
+and every array produces exactly one prefix xor sequence.
+
+So counting valid arrays is identical to counting ways to choose distinct prefix xor values step by step.
 
 ## Python Solution
 
@@ -170,38 +210,53 @@ Choosing any of the remaining values creates a brand new prefix xor, preserving 
 import sys
 input = sys.stdin.readline
 
-MOD = 1000000009
+MOD = 10**9 + 9
 
-n, m = map(int, input().split())
+def solve():
+    n, m = map(int, input().split())
 
-k = 1 << m
+    # Check whether 2^m <= n without overflow
+    if m < 17 and (1 << m) <= n:
+        print(0)
+        return
 
-if n >= k:
-    print(0)
-else:
+    total = pow(2, m, MOD)
+
     ans = 1
 
     for i in range(1, n + 1):
-        ans = (ans * (k - i)) % MOD
+        ans = (ans * (total - i)) % MOD
 
     print(ans)
+
+solve()
 ```
 
-The implementation follows the counting argument directly.
+The first important detail is the early zero check.
 
-`k = 1 << m` computes `2^m` efficiently using bit shifting. Since `m ≤ 10^5` would normally make this enormous, many languages would overflow fixed-width integers. Python integers grow automatically, so this remains safe.
+The mathematical condition is:
 
-The condition `n >= k` is the impossibility check. We need `n + 1` distinct prefix xors, but only `k` exist. Rearranging gives the equivalent condition:
+$$n \ge 2^m$$
 
-$$n \ge k$$
+but directly computing `2^m` can become unnecessarily large. Since `n` is at most `100000`, any `m >= 17` automatically satisfies:
 
-The loop multiplies all valid choices:
+$$2^m > 100000$$
 
-$$(k - 1)(k - 2)\dots(k - n)$$
+so the answer cannot become zero from the pigeonhole principle. Only small `m` values need explicit checking.
 
-The modulo operation is applied after every multiplication to keep numbers manageable.
+The variable `total` stores:
 
-A common off-by-one mistake is starting the loop at `0`. The first element has `k - 1` valid choices because choosing `0` would immediately repeat `pref_0`.
+$$2^m \bmod MOD$$
+
+which is enough for all later multiplications because every operation is modulo `MOD`.
+
+The loop multiplies:
+
+$$(2^m - 1)(2^m - 2)\cdots(2^m - n)$$
+
+exactly matching the combinatorial derivation.
+
+The subtraction must happen before modulo multiplication. Forgetting parentheses here is a common source of bugs.
 
 ## Worked Examples
 
@@ -213,16 +268,18 @@ Input:
 3 2
 ```
 
-Here:
+We have:
 
-$$k = 2^2 = 4$$
+$$2^m = 4$$
 
-| Step | Used Prefix XORs | Valid Choices | Answer |
-| --- | --- | --- | --- |
-| Start | `{0}` | - | 1 |
-| i = 1 | 1 forbidden | 3 | 3 |
-| i = 2 | 2 forbidden | 2 | 6 |
-| i = 3 | 3 forbidden | 1 | 6 |
+The computation proceeds as follows.
+
+| Step | Factor | Answer |
+| --- | --- | --- |
+| Start | - | 1 |
+| i = 1 | 4 - 1 = 3 | 3 |
+| i = 2 | 4 - 2 = 2 | 6 |
+| i = 3 | 4 - 3 = 1 | 6 |
 
 Final answer:
 
@@ -230,48 +287,48 @@ Final answer:
 6
 ```
 
-This trace shows how each new prefix xor consumes one xor state permanently. The number of available choices decreases by one at every step.
+This matches the sample.
+
+The trace demonstrates the core counting idea. At each step we choose a new prefix xor that has not appeared earlier.
 
 ### Example 2
 
 Input:
 
 ```
-4 1
+2 1
 ```
 
-Here:
+Allowed xor values are `{0, 1}`.
 
-$$k = 2^1 = 2$$
+We need three distinct prefix xors:
 
-We would need `5` distinct prefix xors:
+$$p_0, p_1, p_2$$
 
-$$pref_0, pref_1, pref_2, pref_3, pref_4$$
-
-but only two xor states exist.
+which is impossible.
 
 | Step | Value |
 | --- | --- |
-| k | 2 |
-| n | 4 |
-| Check | $4 \ge 2$ |
+| $2^m$ | 2 |
+| Required distinct prefix xors | 3 |
+| Possible? | No |
 
-The algorithm immediately prints:
+Final answer:
 
 ```
 0
 ```
 
-This example demonstrates the pigeonhole principle behind the impossibility condition.
+This example demonstrates the pigeonhole principle edge case.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n)$ | One multiplication per position |
-| Space | $O(1)$ | Only a few variables are stored |
+| Time | $O(n + \log m)$ | modular exponentiation plus one loop over `n` |
+| Space | $O(1)$ | only a few integer variables are stored |
 
-The algorithm easily fits within the limits. Even for `n = 10^5`, the loop performs only one hundred thousand modular multiplications, which is trivial in Python.
+The loop runs at most `100000` iterations, which is trivial within the time limit. Memory usage is constant.
 
 ## Test Cases
 
@@ -279,23 +336,23 @@ The algorithm easily fits within the limits. Even for `n = 10^5`, the loop perfo
 # helper: run solution on input string, return output string
 import sys, io
 
-MOD = 1000000009
+MOD = 10**9 + 9
 
 def solve():
     input = sys.stdin.readline
 
     n, m = map(int, input().split())
 
-    k = 1 << m
-
-    if n >= k:
+    if m < 17 and (1 << m) <= n:
         print(0)
         return
+
+    total = pow(2, m, MOD)
 
     ans = 1
 
     for i in range(1, n + 1):
-        ans = (ans * (k - i)) % MOD
+        ans = (ans * (total - i)) % MOD
 
     print(ans)
 
@@ -304,104 +361,97 @@ def run(inp: str) -> str:
     backup_stdout = sys.stdout
 
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    out = io.StringIO()
+    sys.stdout = out
 
     solve()
-
-    out = sys.stdout.getvalue()
 
     sys.stdin = backup_stdin
     sys.stdout = backup_stdout
 
-    return out
+    return out.getvalue().strip()
 
 # provided sample
-assert run("3 2\n") == "6\n", "sample 1"
+assert run("3 2\n") == "6", "sample 1"
 
-# minimum size
-assert run("1 1\n") == "1\n", "minimum case"
+# minimum input
+assert run("1 1\n") == "1", "single nonzero value"
 
 # impossible because n >= 2^m
-assert run("4 1\n") == "0\n", "impossible case"
+assert run("2 1\n") == "0", "pigeonhole principle"
 
-# single element cannot be zero
-assert run("1 2\n") == "3\n", "exclude zero"
+# another small manual case
+assert run("1 3\n") == "7", "all values except zero"
 
-# exact boundary before impossible
-assert run("3 2\n") == "6\n", "boundary valid case"
+# boundary where n = 2^m - 1
+assert run("3 2\n") == "6", "largest possible nonzero case"
 
-# larger valid case
-assert run("2 3\n") == "42\n", "8*7 reduced by first forbidden choice"
+# large m where zero condition should not trigger
+res = int(run("100000 100000\n"))
+assert 0 <= res < MOD, "large limits"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1` | `1` | Smallest valid instance |
-| `4 1` | `0` | Impossible when xor states run out |
-| `1 2` | `3` | First element cannot be zero |
-| `3 2` | `6` | Boundary where all xor states are consumed exactly |
-| `2 3` | `42` | General multiplication formula |
+| `1 1` | `1` | smallest nontrivial case |
+| `2 1` | `0` | impossible distinct-prefix scenario |
+| `1 3` | `7` | zero element must be excluded |
+| `3 2` | `6` | falling factorial computation |
+| `100000 100000` | valid modulo value | performance at maximum limits |
 
 ## Edge Cases
 
-Consider the input:
+Consider:
 
 ```
-1 2
+2 1
 ```
 
-There are four possible values: `0,1,2,3`.
+There are only two xor states: `0` and `1`.
 
-The algorithm computes:
+The algorithm checks:
 
-$$k = 4$$
+$$2^1 = 2$$
 
-The first position has:
+Since `n = 2`, we need `3` distinct prefix xors, which is impossible. The early condition returns `0`.
 
-$$k - 1 = 3$$
+This avoids accidentally computing:
 
-valid choices.
+$$(2-1)(2-2)=0$$
 
-Those are exactly `1,2,3`. Choosing `0` creates:
-
-$$pref_1 = pref_0 = 0$$
-
-which immediately forms a zero-xor subarray. The algorithm correctly excludes it.
+through modular arithmetic after many unnecessary operations.
 
 Now consider:
 
 ```
-4 1
+1 3
 ```
 
-The xor states are only `0` and `1`.
-
-The algorithm checks:
-
-$$n \ge k$$
-
-which becomes:
-
-$$4 \ge 2$$
-
-so it outputs `0`.
-
-To see why, observe that a valid sequence would require five distinct prefix xors:
-
-$$pref_0, pref_1, pref_2, pref_3, pref_4$$
-
-but only two states exist. Repetition becomes unavoidable, which means some subarray xor must become zero.
-
-Finally, consider:
-
-```
-2 2
-```
+Allowed values are `0..7`.
 
 The algorithm computes:
 
-$$(4 - 1)(4 - 2) = 3 \cdot 2 = 6$$
+| Step | Factor | Answer |
+| --- | --- | --- |
+| Start | - | 1 |
+| i = 1 | 8 - 1 = 7 | 7 |
 
-The first element has three valid choices because `0` is forbidden. After selecting one prefix xor, two xor states remain available for the next step.
+The only forbidden array is `(0)` because a single zero already forms a zero-xor subarray.
 
-The distinct-prefix invariant remains true throughout the construction, so every counted sequence is valid.
+The algorithm handles this automatically because `p_1` cannot equal `p_0 = 0`.
+
+Finally consider:
+
+```
+3 1
+```
+
+Here:
+
+$$2^1 = 2$$
+
+but we would need four distinct prefix xors.
+
+The early check immediately returns `0`.
+
+Without that check, a careless implementation might continue multiplying negative values modulo `MOD`, producing a meaningless nonzero answer.

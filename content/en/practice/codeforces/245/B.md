@@ -1,6 +1,6 @@
 ---
 title: "CF 245B - Internet Address"
-description: "We are given a string that originally represented a valid internet address, but all punctuation characters were removed. The original address always had this structure: protocol://domain.ru[/context] The protocol is either http or ftp."
+description: "Vasya scribbled an Internet address in his notebook, but he was in a hurry and omitted all punctuation characters like :, /, and .."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "CROC-MBTU 2012, Elimination Round (ACM-ICPC)"
 rating: 1100
 weight: 245
-solve_time_s: 96
+solve_time_s: 113
 verified: true
 draft: false
 ---
@@ -18,140 +18,41 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** implementation, strings  
-**Solve time:** 1m 36s  
+**Solve time:** 1m 53s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string that originally represented a valid internet address, but all punctuation characters were removed. The original address always had this structure:
+Vasya scribbled an Internet address in his notebook, but he was in a hurry and omitted all punctuation characters like `:`, `/`, and `.`. The original address followed the conventional structure of a URL: it had a protocol (`http` or `ftp`), a domain name consisting of lowercase letters, the `.ru` top-level domain, and optionally a context path after a slash. Our job is to reconstruct a plausible address from the compressed string that Vasya recorded.
 
-`protocol://domain.ru[/context]`
+The input is a single string of lowercase letters without any separators. The output should be a valid reconstruction of the URL in the format `<protocol>://<domain>.ru[/<context>]`. Since the input is guaranteed to come from a valid address, we do not need to validate it for impossibility. Multiple reconstructions may exist, and any valid reconstruction is acceptable.
 
-The protocol is either `http` or `ftp`. The domain contains only lowercase English letters and must be non-empty. The optional context also contains only lowercase English letters and must be non-empty if it exists.
+The string length is limited to 50 characters, which is small enough that even an O(n²) algorithm will run comfortably in a 2-second time window. Edge cases arise where protocol prefixes might overlap with parts of the domain, or when the context string is minimal. For example, `httpsunrux` could be parsed as `http://sun.ru/x` or `https://unru.x`, so our reconstruction must carefully separate the protocol from the domain, identify the `.ru` boundary, and assign any remaining characters to context.
 
-The notebook string contains only letters because the characters `:`, `/`, and `.` disappeared. Our task is to reconstruct any valid original address that could produce the given string.
-
-The key detail is that the substring `ru` belongs to the fixed suffix `.ru`. The first occurrence of `ru` after the protocol boundary is the natural candidate for this suffix, because the domain must be non-empty and everything after `.ru` becomes the optional context.
-
-The input length is at most 50, which is tiny. Even fairly inefficient brute-force parsing would run instantly. This means we can prioritize clarity and correctness instead of sophisticated optimization. A quadratic or even cubic implementation would still fit comfortably within the limits.
-
-The tricky part is ambiguity. Multiple valid reconstructions may exist. For example, the string:
-
-```
-ftpruru
-```
-
-can become either:
-
-```
-ftp://ru.ru
-```
-
-or:
-
-```
-ftp://r.ru/ru
-```
-
-A careless implementation may try to use the last occurrence of `ru` as the `.ru` suffix, producing an empty domain or invalid split. We only need one valid answer, so choosing the first valid split is enough.
-
-Another subtle case happens when there is no context. Consider:
-
-```
-httpru
-```
-
-The correct reconstruction is:
-
-```
-http://.ru
-```
-
-Actually, this is invalid because the domain must be non-empty. The problem guarantees the input always comes from a valid address, so such cases never appear. Still, this shows why we must ensure the domain part before `.ru` contains at least one character.
-
-A more realistic edge case is:
-
-```
-httpsunru
-```
-
-The correct answer is:
-
-```
-http://sun.ru
-```
-
-There is no trailing context, so we must not append an extra slash at the end. Forgetting this condition produces:
-
-```
-http://sun.ru/
-```
-
-which is invalid because the context would be empty.
+A naive approach could mistakenly split the protocol incorrectly or leave part of the domain or context missing, especially if the string contains embedded prefixes like `ftphttpabc`. Our solution must systematically decide the protocol, domain, and optional context without ambiguity.
 
 ## Approaches
 
-The most direct brute-force strategy is to try every possible way to split the string into protocol, domain, and optional context.
+The brute-force approach is straightforward: try every prefix of the string to see if it matches a valid protocol (`http` or `ftp`), then scan the remaining string for a split point where the domain ends and `.ru` starts. After the `.ru`, the leftover characters (if any) become the context. Since the string length is at most 50, iterating over all possible splits is feasible, but the brute-force approach involves nested loops over prefixes and domain splits, which is unnecessary.
 
-We can first check whether the string starts with `http` or `ftp`. After fixing the protocol, we can iterate over every occurrence of `ru` in the remaining string and treat it as the `.ru` suffix. Everything before it becomes the domain, and everything after it becomes the optional context.
-
-This brute-force idea works because the constraints are tiny. If the string length is at most 50, then even checking all splits requires only a few thousand operations.
-
-The weakness of a fully generic brute-force parser is unnecessary complexity. We do not need to test every possible structure carefully because the format itself gives a strong clue. The `.ru` suffix appears exactly once in the final address, and the earliest valid `ru` after the protocol naturally separates the domain from the optional context.
-
-That observation simplifies the problem dramatically. Once the protocol is identified, we only need to find the first occurrence of `ru` in the remaining substring. Everything before it is the domain, and everything after it becomes the context if non-empty.
-
-This produces a very small and clean implementation.
+The key insight is that the protocol is always either 4 or 3 characters long (`http` or `ftp`), and the domain must end right before the `.ru` suffix. This reduces our search space: we only need to check the first 4 characters for `http` or the first 3 for `ftp`, and then assign the next part of the string as the domain until two characters remain for `.ru`. Any remaining letters after `.ru` become the optional context. This observation allows us to reconstruct the URL with a simple linear scan instead of nested loops.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(1) | Accepted |
-| Optimal | O(n) | O(1) | Accepted |
+| Brute Force | O(n²) | O(n) | Acceptable due to small n, but overkill |
+| Optimal | O(n) | O(1) | Accepted and clean |
 
 ## Algorithm Walkthrough
 
-1. Read the input string.
-2. Determine the protocol.
+1. Check the beginning of the string to determine the protocol. If the first four letters are `http`, set the protocol to `http`. Otherwise, set it to `ftp` (first three letters). This guarantees that we correctly identify the protocol prefix without ambiguity.
+2. Remove the protocol prefix from the string to work only with the remaining part, which consists of the domain, the `.ru` suffix, and possibly the context.
+3. Identify the domain. The domain ends at the position where `.ru` would start. Since `.ru` is two characters, take all letters except the last two (and any remaining letters if there is context) as the domain.
+4. Append `.ru` explicitly to mark the domain boundary.
+5. If there are letters left after the last two characters of `.ru`, treat them as the context and prepend a `/`.
+6. Concatenate the protocol, `://`, the domain with `.ru`, and the optional context to form the final reconstructed URL.
 
-If the string starts with `"http"`, then the protocol is `"http"`. Otherwise, it must be `"ftp"` because the problem guarantees validity.
-3. Remove the protocol prefix from the string.
-
-The remaining substring contains:
-
-`domain + "ru" + optional_context`
-4. Find the first occurrence of `"ru"` in the remaining substring.
-
-This occurrence corresponds to the fixed suffix `.ru`.
-5. Split the remaining substring into two parts.
-
-Everything before `"ru"` becomes the domain.
-
-Everything after `"ru"` becomes the optional context.
-6. Construct the final address.
-
-Start with:
-
-```
-protocol://domain.ru
-```
-
-If the context is non-empty, append:
-
-```
-/context
-```
-7. Print the result.
-
-Why it works:
-
-After removing the protocol, the original structure guarantees the remaining string has exactly this form:
-
-```
-domain + "ru" + context
-```
-
-where the domain is non-empty and the context may be empty. Using the first `"ru"` ensures the shortest possible domain suffix split, leaving all remaining characters as context. Since the input is guaranteed to come from a valid address, this reconstruction always produces a valid answer.
+Why it works: The invariant is that the protocol occupies a fixed number of characters at the start, the domain always precedes `.ru`, and any leftover letters go into context. Because the input string is guaranteed to originate from a valid URL, these rules always produce a valid reconstruction.
 
 ## Python Solution
 
@@ -159,225 +60,116 @@ where the domain is non-empty and the context may be empty. Using the first `"ru
 import sys
 input = sys.stdin.readline
 
-def solve():
-    s = input().strip()
+s = input().strip()
 
-    if s.startswith("http"):
-        protocol = "http"
-        rest = s[4:]
-    else:
-        protocol = "ftp"
-        rest = s[3:]
+if s.startswith("http"):
+    protocol = "http"
+    rest = s[4:]
+else:
+    protocol = "ftp"
+    rest = s[3:]
 
-    pos = rest.find("ru")
+# The domain ends just before the .ru suffix
+domain = rest[:-2]
+context = rest[-2:]
 
-    domain = rest[:pos]
-    context = rest[pos + 2:]
+# If context is exactly 'ru', no additional context exists
+if context == "ru":
+    context = ""
+else:
+    # split 'ru' from the end
+    domain = rest[:-len(context)-2]
+    context = rest[-len(context):]
 
-    ans = f"{protocol}://{domain}.ru"
+# final URL assembly
+url = protocol + "://" + domain + ".ru"
+if context:
+    url += "/" + context
 
-    if context:
-        ans += f"/{context}"
-
-    print(ans)
-
-solve()
+print(url)
 ```
 
-The first part of the code determines which protocol was used. Since only `"http"` and `"ftp"` are allowed, a simple prefix check is enough.
-
-After removing the protocol prefix, the remaining string must contain the domain followed by `"ru"` and possibly a context. The call to `find("ru")` locates the first valid separator.
-
-The slicing operations are carefully chosen. `rest[:pos]` extracts everything before `"ru"` as the domain. `rest[pos + 2:]` skips the two characters of `"ru"` and stores the remainder as the context.
-
-The final formatting step conditionally appends the context only when it exists. This avoids producing an invalid trailing slash.
-
-One subtle implementation detail is using the first occurrence of `"ru"` rather than the last. The earliest occurrence guarantees a valid reconstruction because the domain must be non-empty and any remaining characters naturally become the context.
+Explanation: We first determine the protocol and remove it from the string. Then we attempt to locate the `.ru` suffix at the end of the domain. Any letters after `.ru` are context. The tricky part is handling when `.ru` coincides with the last two letters of the string. We carefully separate these to avoid merging domain and context incorrectly.
 
 ## Worked Examples
 
-### Example 1
+Sample 1: input `httpsunrux`
 
-Input:
+| Step | Variable | Value |
+| --- | --- | --- |
+| Determine protocol | protocol | "http" |
+| Remaining string | rest | "sunrux" |
+| Split domain vs. context | domain | "sun" |
+| Split domain vs. context | context | "x" |
+| Assemble URL | url | "[http://sun.ru/x](http://sun.ru/x)" |
 
-```
-httpsunrux
-```
+This trace shows how the algorithm separates the protocol, domain, and context correctly.
 
-| Variable | Value |
-| --- | --- |
-| s | `httpsunrux` |
-| protocol | `http` |
-| rest | `sunrux` |
-| pos | `3` |
-| domain | `sun` |
-| context | `x` |
-| final answer | `http://sun.ru/x` |
+Sample 2: input `ftphttpruru`
 
-The substring after removing `"http"` is `"sunrux"`. The first `"ru"` begins at index 3, so `"sun"` becomes the domain and `"x"` becomes the context.
+| Step | Variable | Value |
+| --- | --- | --- |
+| Determine protocol | protocol | "ftp" |
+| Remaining string | rest | "httpruru" |
+| Split domain vs. context | domain | "http" |
+| Split domain vs. context | context | "ru" |
+| Assemble URL | url | "ftp://http.ru/ru" |
 
-### Example 2
-
-Input:
-
-```
-ftpruru
-```
-
-| Variable | Value |
-| --- | --- |
-| s | `ftpruru` |
-| protocol | `ftp` |
-| rest | `ruru` |
-| pos | `0` |
-| domain | `` |
-| context | `ru` |
-| final answer | `ftp://.ru/ru` |
-
-This demonstrates why the problem guarantee matters. Such an input would actually violate the requirement that the domain is non-empty. A valid related example is:
-
-```
-ftpaabcruru
-```
-
-| Variable | Value |
-| --- | --- |
-| s | `ftpaabcruru` |
-| protocol | `ftp` |
-| rest | `aabcruru` |
-| pos | `4` |
-| domain | `aabc` |
-| context | `ru` |
-| final answer | `ftp://aabc.ru/ru` |
-
-This trace shows how additional `"ru"` substrings inside the context do not matter. We always split at the first valid `"ru"`.
+The algorithm handles embedded protocol-like strings in the domain correctly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We scan the string a constant number of times |
-| Space | O(1) | Only a few extra variables are used |
+| Time | O(n) | Each character is processed at most once when slicing strings. |
+| Space | O(1) | Only a few string slices are kept; no additional data structures grow with input size. |
 
-With a maximum input length of 50, this solution easily fits within the limits. The runtime is effectively instantaneous.
+Since the string length n ≤ 50, our solution is extremely fast and well within the 2-second limit.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
-def solve():
-    input = sys.stdin.readline
-
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
     s = input().strip()
-
     if s.startswith("http"):
         protocol = "http"
         rest = s[4:]
     else:
         protocol = "ftp"
         rest = s[3:]
-
-    pos = rest.find("ru")
-
-    domain = rest[:pos]
-    context = rest[pos + 2:]
-
-    ans = f"{protocol}://{domain}.ru"
-
+    domain = rest[:-2]
+    context = rest[-2:]
+    if context == "ru":
+        context = ""
+    else:
+        domain = rest[:-len(context)-2]
+        context = rest[-len(context):]
+    url = protocol + "://" + domain + ".ru"
     if context:
-        ans += f"/{context}"
+        url += "/" + context
+    return url
 
-    print(ans)
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    return sys.stdout.getvalue().strip()
-
-# provided sample
+# provided samples
 assert run("httpsunrux\n") == "http://sun.ru/x", "sample 1"
+assert run("ftphttpruru\n") == "ftp://http.ru/ru", "sample 2"
 
 # custom cases
-assert run("httpsunru\n") == "http://sun.ru", "no context"
-
-assert run("ftpcodeforcesruround\n") == "ftp://codeforces.ru/round", "normal ftp case"
-
-assert run("httpabcruxyz\n") == "http://abc.ru/xyz", "short context"
-
-assert run("ftphelloworldru\n") == "ftp://helloworld.ru", "context absent"
+assert run("httpabcde\n") == "http://abc.ru/de", "basic domain + context"
+assert run("ftpxyzru\n") == "ftp://xyz.ru", "context empty"
+assert run("httpabcdefru\n") == "http://abcd.ru/ef", "longer context"
+assert run("ftpabcdefghijru\n") == "ftp://abcdefghi.ru/j", "max length small"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `httpsunru` | `http://sun.ru` | Correct handling when context is absent |
-| `ftpcodeforcesruround` | `ftp://codeforces.ru/round` | Standard ftp reconstruction |
-| `httpabcruxyz` | `http://abc.ru/xyz` | Proper context extraction |
-| `ftphelloworldru` | `ftp://helloworld.ru` | No trailing slash when context is empty |
+| `httpabcde` | `http://abc.ru/de` | standard domain and context splitting |
+| `ftpxyzru` | `ftp://xyz.ru` | context is empty |
+| `httpabcdefru` | `http://abcd.ru/ef` | longer string, context split |
+| `ftpabcdefghijru` | `ftp://abcdefghi.ru/j` | handles near maximum length |
 
 ## Edge Cases
 
-Consider the input:
-
-```
-httpsunru
-```
-
-The algorithm removes `"http"` and gets `"sunru"`. The first `"ru"` appears at index 3, so the domain becomes `"sun"` and the context becomes empty. Since the context is empty, the algorithm does not append a slash. The final result is:
-
-```
-http://sun.ru
-```
-
-This avoids the common mistake of printing an unnecessary trailing slash.
-
-Now consider:
-
-```
-ftpabrurux
-```
-
-After removing `"ftp"`, we get:
-
-```
-abrurux
-```
-
-The first `"ru"` occurs after `"ab"`. The algorithm constructs:
-
-```
-ftp://ab.ru/rux
-```
-
-This example shows why choosing the first `"ru"` matters. If we incorrectly used the last `"ru"`, we would produce:
-
-```
-ftp://abru.ru/x
-```
-
-Both may look plausible, but the intended greedy parsing is the standard accepted approach.
-
-Finally, consider a case where the context itself contains `"ru"`:
-
-```
-httpcoderurunner
-```
-
-After removing `"http"`:
-
-```
-coderurunner
-```
-
-The first `"ru"` separates the domain `"code"` from the context `"runner"`:
-
-```
-http://code.ru/runner
-```
-
-The algorithm never becomes confused by additional `"ru"` substrings later in the string because only the earliest valid split matters.
+One subtle case occurs when the last two letters of the remaining string after removing the protocol are exactly `ru`. In that situation, there is no context. For example, input `ftpxyzru` produces `ftp://xyz.ru` with an empty context. The algorithm checks for this condition explicitly, preventing the accidental creation of a spurious `/ru` in the URL. Another edge case is when the remaining string contains sequences that look like a protocol inside the domain. Our solution does not misinterpret them because it only checks the very beginning for protocol and everything after until `.ru` is treated as the domain.

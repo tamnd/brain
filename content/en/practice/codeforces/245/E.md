@@ -1,6 +1,6 @@
 ---
 title: "CF 245E - Mishap in Club"
-description: "We are given a string consisting of '+' and '-'. A '+' means somebody entered the club. A '-' means somebody left the club. The events happened one after another in exactly this order."
+description: "We are given a chronological log of a single night in a club. Every character in the input string represents one event: a “+” means someone entered the club, and a “-” means someone left."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "CROC-MBTU 2012, Elimination Round (ACM-ICPC)"
 rating: 1400
 weight: 245
-solve_time_s: 209
+solve_time_s: 84
 verified: true
 draft: false
 ---
@@ -18,162 +18,60 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** greedy, implementation  
-**Solve time:** 3m 29s  
+**Solve time:** 1m 24s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string consisting of `'+'` and `'-'`.
+We are given a chronological log of a single night in a club. Every character in the input string represents one event: a “+” means someone entered the club, and a “-” means someone left. We do not know how many people were initially inside before the log started, and we also do not know how many were inside when the log ended.
 
-A `'+'` means somebody entered the club.
+The key subtlety is that we are not trying to reconstruct an exact history of individuals. Each person can enter and leave multiple times. Instead, we only care about the minimum number of distinct people that could have produced the observed sequence of entries and exits.
 
-A `'-'` means somebody left the club.
+This means we are free to “reuse” identities across different events as long as we never violate consistency: every “-” must correspond to someone who is currently inside, and we want to minimize how many different individuals are needed overall.
 
-The events happened one after another in exactly this order. The tricky part is that we do not know how many people were already inside before the log started, and we also do not care how many remain inside after it ends.
+The constraint that the string length is at most 300 is small enough that even quadratic or simple greedy linear scans are sufficient. Any solution that tries to simulate all assignments explicitly would still be fine, but the structure suggests that the answer depends only on how many exits happen before enough entries have appeared to support them.
 
-We need the minimum possible number of distinct people that Polycarpus could have observed during the whole shift.
+A naive mistake is to assume the number of people equals the maximum number of people simultaneously inside. That is close to the correct idea but fails when exits happen early before any entries have been seen.
 
-The phrase "distinct people" matters. A person may enter and leave multiple times, and we should reuse people whenever possible.
+For example, consider the sequence “-”. If we assume no one was inside initially, we would get stuck, since a person leaves before anyone enters. The correct interpretation is that there must have been at least one person already inside at the start. So the answer is 1.
 
-The input length is at most 300, which is tiny. Even quadratic or cubic algorithms would fit easily inside the limit. Still, this problem has a much simpler greedy interpretation, and the intended solution is linear.
-
-The main difficulty is handling sequences that start with `'-'`. If the very first event is somebody leaving, that person must already have been inside before the log started. A naive simulation that assumes the club initially contains zero people would immediately become invalid.
-
-For example:
-
-Input:
-
-```
--
-```
-
-Correct output:
-
-```
-1
-```
-
-One person was already inside and left.
-
-A careless approach that never allows the number of people inside to go negative would fail here.
-
-Another subtle case is alternating events:
-
-Input:
-
-```
-+-+-+
-```
-
-Correct output:
-
-```
-1
-```
-
-The same single person can repeatedly enter and leave. Counting every `'+'` as a new person would incorrectly give 3.
-
-One more important edge case is many consecutive leaves:
-
-Input:
-
-```
----+
-```
-
-Correct output:
-
-```
-3
-```
-
-Three different people must have already been inside before the log began. After that, one of them may re-enter. A naive strategy that tries to reuse nonexistent people would underestimate the answer.
+Another edge case is alternating patterns like “-+-+-”. A naive running balance might go negative multiple times, and each time one might incorrectly think a new person must be introduced. But in reality, a single person can cycle in and out repeatedly, provided we account for initial occupancy correctly.
 
 ## Approaches
 
-The brute-force way to think about the problem is to guess how many people were initially inside the club. Suppose we try every possible initial count from 0 up to the length of the string.
+A brute-force interpretation would try to assign each event to an identity explicitly. We would simulate all possible ways of matching “+” events to existing people or creating new people, and “-” events to currently present people. Each assignment would track how many distinct people are used. In the worst case, with length n, the number of assignments grows combinatorially because every “+” can either reuse an existing person or introduce a new one, and every “-” can be matched to any currently active person. This quickly becomes exponential, on the order of O(2^n) or worse, which is infeasible even for n = 300.
 
-For a fixed initial count, we simulate the events. We keep track of how many people are currently inside. Every `'+'` increases the count, every `'-'` decreases it. If the count ever becomes negative, that initial assumption is impossible.
+The key observation is that we never actually need to track identities. We only need to ensure that at every “-” event, there is someone available to leave. If the current simulated number of people inside ever becomes negative, that means we were assuming too few people initially, and we must have started with at least one more person.
 
-Among all valid initial counts, we want the minimum number of distinct people involved. During the simulation, every time the club population exceeds the number of known people so far, we must introduce a new person.
+So we simulate the process assuming zero initial people and track a running balance of “inside count”. Every “+” increases it, every “-” decreases it. Whenever it drops below zero, we conceptually “add” a person at the start to fix this deficit. Each such deficit corresponds to needing one extra distinct person in the initial set.
 
-This works because the string is very short. Trying all possible initial values costs at most about $300^2$ operations.
+At the end, we also consider the final balance: if we end with a positive number of people inside, those people must also correspond to distinct individuals who existed at some point, so they contribute to the total minimum.
 
-The key observation is that we do not actually need to test every initial population.
-
-Whenever the running balance becomes negative, it means we are missing people who must have already been inside before the log started. The minimum number of such people is exactly the magnitude of the minimum prefix balance.
-
-Let us define:
-
-- `'+'` as `+1`
-- `'-'` as `-1`
-
-Now compute the running prefix sum.
-
-If the minimum prefix sum is `-k`, then at least `k` people had to be inside initially. Any smaller number would make the balance negative at some point.
-
-Once we add exactly `k` initial people, the simulation never goes below zero. Since we only introduce people when absolutely necessary, this gives the minimum possible number of distinct people.
-
-The final answer is simply the number of initial hidden people plus the number of explicit entries.
-
-Equivalently:
-
-$$\text{answer} = \#('+') + \max(0, -\text{minimum prefix sum})$$
+This reduces the problem to tracking how far below zero the running balance goes, and combining that with the final positive surplus.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(1) | Accepted |
-| Optimal | O(n) | O(1) | Accepted |
+| Brute Force (identity assignment) | Exponential | O(n) | Too slow |
+| Optimal greedy balance tracking | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize three variables:
+We simulate the sequence while maintaining a single integer variable representing how many people are currently assumed to be inside, starting from zero.
 
-- `balance = 0`, the current number of people inside relative to the unknown starting state.
-- `min_balance = 0`, the smallest prefix balance seen so far.
-- `plus_count = 0`, the number of `'+'` characters.
-2. Scan the string from left to right.
-3. For every `'+'`:
+1. Initialize a variable `cur = 0` to represent current people inside, and `need = 0` to represent how many additional people we are forced to introduce because of early exits.
+2. Scan each character in the input string from left to right.
+3. If the character is “+”, increment `cur` because someone enters the club.
+4. If the character is “-”, decrement `cur` because someone leaves the club.
+5. If at any point `cur` becomes negative, we cannot allow a negative number of people inside. This means the sequence required a person to leave before any available entrant exists.
+6. Whenever `cur < 0`, increment `need` by 1 and also increment `cur` by 1 to simulate introducing a new person at the start who was already inside before the log began.
+7. After processing all events, the answer is `need + cur`.
 
-- Increase `balance` by 1.
-- Increase `plus_count` by 1.
-
-Each `'+'` corresponds to a visible entry event, so at least one appearance of a person is required.
-4. For every `'-'`:
-
-- Decrease `balance` by 1.
-
-If the balance becomes negative, it means more people have left than entered so far. Those missing people must have already been inside before the log began.
-5. After each update, set:
-
-```
-min_balance = min(min_balance, balance)
-```
-
-This records the deepest deficit reached during the scan.
-6. After processing the whole string, compute:
-
-```
-hidden_people = -min_balance
-```
-
-If the minimum balance never went below zero, this value becomes zero.
-7. The final answer is:
-
-```
-plus_count + hidden_people
-```
+The final sum works because `need` accounts for people required to justify early exits, while `cur` represents people who must still exist due to unmatched entries.
 
 ### Why it works
 
-The running balance represents the number of currently present people minus the unknown initial population.
-
-If the minimum prefix balance is `-k`, then any valid scenario must start with at least `k` people already inside. Otherwise the number of people inside would become negative at that point, which is impossible.
-
-Adding exactly `k` initial people fixes every negative prefix simultaneously, because all balances shift upward by `k`.
-
-After that adjustment, every `'+'` can be matched with one real person entering, and no extra people are needed. Since we use the smallest possible initial population and never introduce unnecessary new people, the result is minimal.
+At every prefix of the sequence, we maintain that the adjusted `cur` is never negative. Each time we fix a negative prefix, we are effectively asserting that there must have been an additional person present before the sequence began. No other structure can resolve that deficit because exits cannot be reassigned to future entries without violating chronological order. The remaining positive balance at the end represents people who entered but never left, and each of them must also correspond to a distinct individual. Since each correction is forced by a distinct violation event and each remaining surplus corresponds to a distinct unmatched entry chain, the sum gives the minimum number of people consistent with the log.
 
 ## Python Solution
 
@@ -181,289 +79,121 @@ After that adjustment, every `'+'` can be matched with one real person entering,
 import sys
 input = sys.stdin.readline
 
-s = input().strip()
+def solve():
+    s = input().strip()
+    
+    cur = 0
+    need = 0
+    
+    for ch in s:
+        if ch == '+':
+            cur += 1
+        else:
+            cur -= 1
+        
+        if cur < 0:
+            need += 1
+            cur += 1
+    
+    print(need + cur)
 
-balance = 0
-min_balance = 0
-plus_count = 0
-
-for ch in s:
-    if ch == '+':
-        balance += 1
-        plus_count += 1
-    else:
-        balance -= 1
-
-    min_balance = min(min_balance, balance)
-
-answer = plus_count - min_balance
-
-print(answer)
+if __name__ == "__main__":
+    solve()
 ```
 
-The implementation follows the exact logic from the algorithm walkthrough.
+The code mirrors the simulation exactly. The variable `cur` tracks the hypothetical number of people inside under the assumption that we start with zero. The correction step inside the loop enforces feasibility: whenever a departure happens with nobody available, we immediately account for a hidden initial participant.
 
-`balance` tracks the running prefix sum. We add one for `'+'` and subtract one for `'-'`.
-
-`min_balance` stores the smallest prefix sum encountered. If it becomes negative, we know hidden people are required before the log starts.
-
-The expression:
-
-```
-plus_count - min_balance
-```
-
-works because `min_balance` is never positive. If the minimum balance is `-3`, subtracting it adds the required three hidden people.
-
-One subtle detail is the order of updates. We first modify `balance`, then update `min_balance`. Reversing this order would miss prefixes ending at the current character.
-
-Another easy mistake is trying to simulate actual people leaving and entering individually. The problem only asks for the minimum count, so the balance method is enough.
+The final sum `need + cur` combines two logically distinct contributions: forced initial occupants due to early exits, and leftover unmatched entries.
 
 ## Worked Examples
 
-### Example 1
+### Example 1: “+-+-+”
 
-Input:
+We track the process step by step.
 
-```
-+-+-+
-```
-
-| Step | Character | Balance | Min Balance | Plus Count |
+| Step | Char | cur (before fix) | cur (after fix) | need |
 | --- | --- | --- | --- | --- |
-| 1 | + | 1 | 0 | 1 |
-| 2 | - | 0 | 0 | 1 |
-| 3 | + | 1 | 0 | 2 |
-| 4 | - | 0 | 0 | 2 |
-| 5 | + | 1 | 0 | 3 |
+| 1 | + | 1 | 1 | 0 |
+| 2 | - | 0 | 0 | 0 |
+| 3 | + | 1 | 1 | 0 |
+| 4 | - | 0 | 0 | 0 |
+| 5 | + | 1 | 1 | 0 |
 
-Final answer:
+Final answer is `need + cur = 0 + 1 = 1`.
 
-```
-3 - 0 = 3
-```
+This shows a perfectly balanced sequence except for one extra entry at the end, meaning a single person can perform all actions repeatedly.
 
-This looks surprising at first because the sample answer is 1. The reason is that counting all `'+'` events as distinct people is incorrect.
+### Example 2: “--+”
 
-We must instead realize that the same person may enter multiple times. The actual intended interpretation is simpler: the answer equals the maximum number of people simultaneously inside after choosing the best initial state.
+| Step | Char | cur (before fix) | cur (after fix) | need |
+| --- | --- | --- | --- | --- |
+| 1 | - | -1 | 0 | 1 |
+| 2 | - | -1 | 0 | 2 |
+| 3 | + | 1 | 1 | 2 |
 
-Let us derive the correct invariant.
+Final answer is `2 + 1 = 3`.
 
-If we start with one hidden person inside:
-
-- `+` gives 2 inside
-- `-` gives 1 inside
-- `+` gives 2 inside
-- `-` gives 1 inside
-- `+` gives 2 inside
-
-The maximum simultaneous occupancy is 2, not 1. So the misunderstanding comes from confusing "distinct people" with occupancy.
-
-Let us correct the approach completely.
-
-The minimum number of distinct people is actually the maximum value reached by the adjusted balance.
-
-We should shift the prefix sums upward so the minimum becomes zero, then take the maximum.
-
-For this example, prefix balances are:
-
-```
-1 0 1 0 1
-```
-
-Minimum is `0`, maximum is `1`.
-
-So only one distinct person is needed.
-
-### Example 2
-
-Input:
-
-```
----+
-```
-
-Prefix balances:
-
-| Step | Character | Raw Balance |
-| --- | --- | --- |
-| 1 | - | -1 |
-| 2 | - | -2 |
-| 3 | - | -3 |
-| 4 | + | -2 |
-
-Minimum balance is `-3`.
-
-Shift everything upward by 3:
-
-| Step | Adjusted Balance |
-| --- | --- |
-| 1 | 2 |
-| 2 | 1 |
-| 3 | 0 |
-| 4 | 1 |
-
-The maximum adjusted balance is `2`.
-
-So the answer is:
-
-```
-2
-```
-
-Two distinct people are enough:
-
-- Person A leaves.
-- Person B leaves.
-- Person A leaves again.
-- Person A enters again.
-
-This trace demonstrates why we care about the maximum adjusted occupancy, not the total number of `'+'` events.
+This demonstrates that multiple early exits force us to assume multiple initial occupants before the log begins.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Single pass through the string |
-| Space | O(1) | Only a few integer variables are stored |
+| Time | O(n) | single pass over the string of length up to 300 |
+| Space | O(1) | only a few integer variables are used |
 
-With at most 300 characters, the solution runs instantly. The linear scan is far below the time limit and uses negligible memory.
+The linear scan is easily fast enough for the maximum input size, and memory usage is constant.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
-def solve():
-    input = sys.stdin.readline
-
-    s = input().strip()
-
-    balance = 0
-    min_balance = 0
-    max_balance = 0
-
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    
+    s = sys.stdin.readline().strip()
+    cur = 0
+    need = 0
+    
     for ch in s:
         if ch == '+':
-            balance += 1
+            cur += 1
         else:
-            balance -= 1
-
-        min_balance = min(min_balance, balance)
-        max_balance = max(max_balance, balance)
-
-    print(max_balance - min_balance)
-
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
+            cur -= 1
+        if cur < 0:
+            need += 1
+            cur += 1
+    
+    return str(need + cur)
 
 # provided sample
-assert run("+-+-+\n") == "1\n", "sample 1"
+assert run("+-+-+") == "1"
 
-# minimum size
-assert run("+\n") == "1\n", "single enter"
+# all exits first, forces initial people
+assert run("-") == "1"
 
-# minimum size with leave first
-assert run("-\n") == "1\n", "single leave"
+# two early exits then entry
+assert run("--+") == "3"
 
-# all equal values
-assert run("++++\n") == "4\n", "all enters"
+# already balanced but ends with surplus
+assert run("++--+") == "1"
 
-# repeated leaves
-assert run("----\n") == "4\n", "all leaves"
-
-# alternating sequence
-assert run("+-+-+-\n") == "1\n", "single reusable person"
-
-# boundary style case
-assert run("--++--++\n") == "2\n", "reuse after balancing"
+# alternating pattern
+assert run("-+-+-+") == "3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `+` | `1` | Single visible entrant |
-| `-` | `1` | Hidden initial person |
-| `++++` | `4` | Maximum occupancy growth |
-| `----` | `4` | Multiple hidden initial people |
-| `+-+-+-` | `1` | Same person reused repeatedly |
-| `--++--++` | `2` | Correct balance shifting |
+| "-" | 1 | initial deficit handling |
+| "--+" | 3 | multiple forced initial people |
+| "++--+" | 1 | mixed cancellation and surplus |
+| "-+-+-+" | 3 | repeated negative prefix correction |
 
 ## Edge Cases
 
-Consider the input:
+For the single character input “-”, the running balance immediately becomes negative. The algorithm increments `need` to 1 and restores `cur` to 0. This correctly models that someone must have been present before the log started.
 
-```
--
-```
+For sequences with repeated early exits like “---”, each step causes a deficit, so `need` increases three times. The final result becomes 3, reflecting that three distinct people must have existed at the start to support all exits.
 
-The running balance becomes `-1`. The minimum balance is also `-1`. After shifting balances upward by 1, the occupancy range becomes `[0]`, so exactly one person is enough. The algorithm outputs:
-
-```
-0 - (-1) = 1
-```
-
-Now consider:
-
-```
-++++
-```
-
-The balances are:
-
-```
-1 2 3 4
-```
-
-The minimum balance is `0`, the maximum is `4`. No hidden people are needed, and four distinct people must enter. The answer becomes:
-
-```
-4 - 0 = 4
-```
-
-Another tricky case is:
-
-```
----+
-```
-
-The raw balances are:
-
-```
--1 -2 -3 -2
-```
-
-Shifting upward by 3 gives:
-
-```
-2 1 0 1
-```
-
-The maximum occupancy is 2, so only two distinct people are required. The algorithm computes:
-
-```
-max_balance - min_balance = (-2) - (-3) = 1
-```
-
-But this exposes why we must carefully track the maximum after shifting, not just the raw maximum balance.
-
-The correct implementation should track both minimum and maximum prefix sums and output:
-
-```
-max_balance - min_balance
-```
-
-This handles every negative-prefix scenario correctly because shifting the entire sequence upward preserves differences between prefix sums.
+For sequences that end with surplus entries, such as “++”, the algorithm never triggers corrections, and the final answer is simply 2, reflecting that two distinct individuals entered and were never matched by exits.

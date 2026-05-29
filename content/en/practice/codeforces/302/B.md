@@ -1,6 +1,6 @@
 ---
 title: "CF 302B - Eugeny and Play List"
-description: "Eugeny has a playlist made of several songs. Song i lasts t[i] minutes, and he repeats that same song c[i] times before moving to the next one. The playlist order never changes."
+description: "The playlist is built from blocks of repeated songs. Song i has duration t[i], and Eugeny listens to it c[i] times consecutively before moving to the next song. If a song lasts 4 minutes and is repeated 3 times, that block contributes 12 minutes to the playlist timeline."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "implementation", "two-pointers"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 182 (Div. 2)"
 rating: 1200
 weight: 302
-solve_time_s: 118
+solve_time_s: 205
 verified: true
 draft: false
 ---
@@ -18,86 +18,109 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** binary search, implementation, two pointers  
-**Solve time:** 1m 58s  
+**Solve time:** 3m 25s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Eugeny has a playlist made of several songs. Song `i` lasts `t[i]` minutes, and he repeats that same song `c[i]` times before moving to the next one. The playlist order never changes.
+The playlist is built from blocks of repeated songs. Song `i` has duration `t[i]`, and Eugeny listens to it `c[i]` times consecutively before moving to the next song.
 
-If a song has duration 4 and is repeated 3 times, that song occupies 12 consecutive minutes in the global timeline of the playlist. After all songs are expanded this way, Eugeny writes down several moments in time, and for each moment we must determine which song was playing during that minute.
+If a song lasts 4 minutes and is repeated 3 times, that block contributes 12 minutes to the playlist timeline. Queries ask questions like:
 
-The core difficulty is that the playlist can become extremely large if we expand every repeated song explicitly. A song may repeat up to `10^9` times, and each repeat may last up to `10^9` minutes. Even though the total playlist duration is capped at `10^9`, explicitly constructing a minute-by-minute array would still be far too expensive.
+“During the 57-th minute from the beginning of the playlist, which song was playing?”
 
-The number of songs and queries can both reach `10^5`. That immediately rules out any solution that scans all songs for every query, because `10^5 × 10^5 = 10^10` operations, far beyond what fits into a 2 second limit. We need something closer to `O(n log n)` or `O((n + m) log n)`.
+The important detail is that we are not asked which repetition of the song was playing, only the song index itself.
 
-A subtle detail is that the queries ask for the song playing during the `x`-th minute, using 1-based indexing. Off-by-one mistakes are common here. For example:
+The playlist can contain up to `10^5` song blocks and `10^5` queries. A direct minute-by-minute simulation is impossible because each `c[i] * t[i]` can be very large. The total playlist duration can reach `10^9`, which means building an explicit array of all minutes would require billions of elements.
 
-```
-1 3
-2 5
-1 5 10
-```
+With `10^5` queries under a 2 second limit, we should expect something around `O(n log n)` or `O(n + m)` to pass comfortably. Any solution that scans the entire playlist for every query would become too slow.
 
-The song occupies minutes `[1, 10]`, not `[0, 9]`. Every query should return song `1`.
+One subtle point is that queries are 1-indexed in terms of time. If a song occupies minutes `[1, 16]`, then query `16` still belongs to that song, while query `17` belongs to the next one. Off-by-one mistakes are very common here.
 
-Another easy mistake appears at segment boundaries. Consider:
+Consider this example:
 
 ```
 2 3
-1 2
 1 3
-2 3 5
+1 2
+1 3 4
 ```
 
-Song 1 occupies minutes `[1, 2]`.
+The playlist timeline is:
 
-Song 2 occupies minutes `[3, 5]`.
+```
+minutes 1..3 -> song 1
+minutes 4..5 -> song 2
+```
 
-Correct answers:
+Correct output:
 
 ```
 1
+1
 2
-2
 ```
 
-A careless binary search that uses `<` instead of `<=` may incorrectly assign minute `2` to song `2`.
+A careless implementation using strict `<` instead of `<=` during binary search would incorrectly map minute `3` to song `2`.
 
-Large values also matter. Suppose:
+Another tricky case happens when one song block is extremely large:
 
 ```
-1 1
-1000000000 1000000000
-1000000000
+1 3
+1000000000 1
+1 500000000 1000000000
 ```
 
-The cumulative durations can become very large, so the implementation must avoid fixed-width integer overflow in languages like C++. Python handles this naturally, but the editorial logic should still treat cumulative sums carefully.
+All queries must still return song `1`. This rules out any approach that expands the playlist minute by minute.
+
+A final detail is that queries are already sorted increasingly. Some solutions exploit this with two pointers, but binary search on prefix sums is also fast enough and simpler to reason about.
 
 ## Approaches
 
-The brute-force idea is straightforward. We can build the full expanded playlist minute by minute. For each song, repeat its index `c[i] * t[i]` times in an array. Then every query becomes a direct lookup.
+The brute-force idea is straightforward. We could generate the full playlist timeline minute by minute and store which song plays at each minute.
 
-This works because the playlist timeline is linear and every minute belongs to exactly one song. If the playlist were small, direct expansion would be simple and correct.
-
-The problem is scale. The total duration can reach `10^9` minutes. Constructing an array of one billion elements already exceeds reasonable memory limits, and iterating through it would also be too slow.
-
-The next idea is to avoid storing every minute separately. Each song occupies one continuous interval on the global timeline.
-
-Suppose we compute cumulative ending times:
+For example:
 
 ```
-Song 1 ends at minute 10
-Song 2 ends at minute 25
-Song 3 ends at minute 40
+song 1: duration 2, repeats 3 times
 ```
 
-Now consider query minute `17`. We want the first cumulative ending time that is at least `17`. That song must contain minute `17`.
+would contribute:
 
-This transforms the problem into repeated searches on a sorted array. Since cumulative end times are strictly increasing, binary search becomes the natural tool.
+```
+[1, 1, 1, 1, 1, 1]
+```
 
-The observation that each song corresponds to one continuous interval lets us compress potentially billions of minutes into only `n` prefix sums.
+because the song occupies 6 total minutes.
+
+Then every query becomes a direct lookup.
+
+This works logically because every minute is explicitly represented. The problem is the size. The total duration can reach `10^9`, so this array could contain one billion entries. Both memory and running time become impossible.
+
+The next improvement is observing that each song occupies one continuous interval on the global timeline.
+
+Suppose we compute cumulative durations:
+
+```
+song 1 ends at minute 10
+song 2 ends at minute 25
+song 3 ends at minute 40
+```
+
+Now a query `x` simply asks:
+
+“What is the first song whose ending time is at least `x`?”
+
+That is exactly a binary search problem.
+
+The cumulative ending times are naturally sorted because every song adds a positive duration. For each query, we binary search the first prefix sum `>= x`.
+
+This reduces the work dramatically:
+
+Instead of scanning minutes individually, we store only one number per song block.
+
+Instead of searching linearly for every query, we use binary search in `O(log n)` time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -106,47 +129,45 @@ The observation that each song corresponds to one continuous interval lets us co
 
 ## Algorithm Walkthrough
 
-1. Read all songs and queries.
-2. For every song, compute how many total minutes it contributes.
+1. Read the number of song blocks `n` and the number of queries `m`.
+2. Build an array of prefix sums.
 
-The contribution is `c[i] * t[i]` because the song lasts `t[i]` minutes and is repeated `c[i]` times.
-3. Build a prefix sum array of cumulative ending times.
-
-If the first song contributes 10 minutes and the second contributes 15 minutes, the prefix array becomes:
+For each song block, compute:
 
 ```
-[10, 25]
+block_duration = c[i] * t[i]
 ```
 
-This means:
+Then append the cumulative total duration so far.
 
-Song 1 occupies minutes `[1, 10]`
+If the prefix sums become:
 
-Song 2 occupies minutes `[11, 25]`
-4. For each query minute `x`, binary search the prefix array for the first value greater than or equal to `x`.
+```
+[10, 25, 40]
+```
 
-That index corresponds to the song playing during minute `x`.
-5. Output the song index using 1-based numbering.
+it means:
+
+Song 1 occupies minutes `1..10`
+
+Song 2 occupies minutes `11..25`
+
+Song 3 occupies minutes `26..40`
+3. Read every query minute `x`.
+4. Binary search the prefix sum array for the first value greater than or equal to `x`.
+
+This gives the song block containing minute `x`.
+5. Output the song index as 1-based indexing.
 
 ### Why it works
 
-The prefix array partitions the entire playlist timeline into consecutive ranges.
+The prefix sum array stores the ending minute of every song block. Since every block duration is positive, these ending times are strictly increasing.
 
-If `prefix[i]` is the ending minute of song `i`, then song `i` occupies:
+For any query minute `x`, the correct song is exactly the first block whose ending time is at least `x`.
 
-```
-(prefix[i-1] + 1) to prefix[i]
-```
+If the previous prefix sum is smaller than `x`, then all earlier songs ended before minute `x`. If the current prefix sum is at least `x`, then the current song has already started and has not ended yet.
 
-For a query minute `x`, the first prefix value satisfying:
-
-```
-prefix[i] >= x
-```
-
-must be the segment containing `x`. Any earlier song ends before `x`, and any later song starts after `x`.
-
-Binary search correctly finds this boundary because the prefix sums are strictly increasing.
+Because binary search finds precisely this boundary, the algorithm always returns the correct song.
 
 ## Python Solution
 
@@ -180,23 +201,31 @@ def solve():
 solve()
 ```
 
-The solution starts by constructing cumulative ending times for every song. The variable `total` tracks the total number of minutes processed so far.
+The core of the solution is the `prefix` array. Each entry stores the final minute occupied by that song block.
 
-For each song, the contribution is `c * t`. After adding that contribution, we append the new cumulative total to `prefix`.
-
-The `prefix` array stays sorted because every contribution is positive. That property is what makes binary search possible.
-
-The query handling uses `bisect_left`. This function returns the first index where `x` could be inserted while preserving sorted order. In other words, it finds the first position where:
+For example, if:
 
 ```
-prefix[idx] >= x
+prefix = [6, 15, 21]
 ```
 
-That exactly matches the song interval containing minute `x`.
+then:
 
-The `+1` during output converts the zero-based Python index into the one-based song numbering required by the problem.
+```
+song 1 -> minutes 1..6
+song 2 -> minutes 7..15
+song 3 -> minutes 16..21
+```
 
-One subtle detail is boundary handling. If a query equals a cumulative ending time exactly, the answer should still be the current song, not the next one. `bisect_left` handles this correctly because it returns the leftmost valid position.
+`bisect_left(prefix, x)` returns the first index whose value is at least `x`. That is exactly the song containing minute `x`.
+
+The `+1` is necessary because Python lists use 0-based indexing while song numbers are 1-based.
+
+A common mistake is using `bisect_right`. That would fail for boundary minutes where a song ends exactly at `x`.
+
+Another easy mistake is forgetting that the timeline starts from minute `1`, not minute `0`. Using cumulative ending times avoids this issue naturally.
+
+Python integers safely handle the maximum possible totals here, so no special overflow handling is required.
 
 ## Worked Examples
 
@@ -210,9 +239,17 @@ Input:
 1 16
 ```
 
-The single song lasts 8 minutes and repeats twice.
+The playlist contains one song repeated twice, each repetition lasting 8 minutes.
 
-| Song | c | t | Contribution | Prefix Total |
+Total occupied interval:
+
+```
+minutes 1..16 -> song 1
+```
+
+Prefix sums:
+
+| Song | c | t | Block Duration | Prefix Sum |
 | --- | --- | --- | --- | --- |
 | 1 | 2 | 8 | 16 | 16 |
 
@@ -230,7 +267,7 @@ Output:
 1
 ```
 
-This example confirms that exact boundary values belong to the same song interval.
+This example confirms that boundary minutes belong to the same song block.
 
 ### Example 2
 
@@ -238,37 +275,37 @@ Input:
 
 ```
 3 5
-1 3
-2 2
+1 2
+2 3
 1 4
-1 3 4 7 11
+1 2 5 8 12
 ```
 
-The playlist structure becomes:
+Construct the timeline.
 
-Song 1: 3 minutes
+Song 1 contributes `1 * 2 = 2` minutes.
 
-Song 2: 4 minutes
+Song 2 contributes `2 * 3 = 6` minutes.
 
-Song 3: 4 minutes
+Song 3 contributes `1 * 4 = 4` minutes.
 
-Cumulative endings:
+Prefix sums:
 
-| Song | Contribution | Prefix Total |
+| Song | Block Duration | Prefix Sum |
 | --- | --- | --- |
-| 1 | 3 | 3 |
-| 2 | 4 | 7 |
-| 3 | 4 | 11 |
+| 1 | 2 | 2 |
+| 2 | 6 | 8 |
+| 3 | 4 | 12 |
 
 Queries:
 
-| Query Minute | First Prefix ≥ Query | Song |
+| Query Minute | Binary Search Result | Song |
 | --- | --- | --- |
-| 1 | 3 | 1 |
-| 3 | 3 | 1 |
-| 4 | 7 | 2 |
-| 7 | 7 | 2 |
-| 11 | 11 | 3 |
+| 1 | 2 | 1 |
+| 2 | 2 | 1 |
+| 5 | 8 | 2 |
+| 8 | 8 | 2 |
+| 12 | 12 | 3 |
 
 Output:
 
@@ -280,16 +317,16 @@ Output:
 3
 ```
 
-This trace demonstrates how the binary search transitions correctly at song boundaries.
+This trace shows how different query positions map into contiguous intervals defined by the prefix sums.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
 | Time | O(n + m log n) | Building prefix sums is linear, each query uses binary search |
-| Space | O(n) | The prefix array stores one value per song |
+| Space | O(n) | The prefix sum array stores one value per song block |
 
-With `n, m ≤ 10^5`, this complexity easily fits the limits. Around `10^5` binary searches on a `10^5` sized array is well within acceptable runtime in Python.
+With `n, m ≤ 10^5`, this easily fits within the limits. Around `10^5` binary searches on an array of size `10^5` is well within the allowed runtime in Python.
 
 ## Test Cases
 
@@ -319,122 +356,151 @@ def solve():
     for x in queries:
         ans.append(str(bisect_left(prefix, x) + 1))
 
-    return "\n".join(ans)
+    sys.stdout.write("\n".join(ans))
 
 def run(inp: str) -> str:
+    backup_stdin = sys.stdin
+    backup_stdout = sys.stdout
+
     sys.stdin = io.StringIO(inp)
-    return solve()
+    sys.stdout = io.StringIO()
+
+    solve()
+
+    output = sys.stdout.getvalue()
+
+    sys.stdin = backup_stdin
+    sys.stdout = backup_stdout
+
+    return output
 
 # provided sample
 assert run(
     "1 2\n"
     "2 8\n"
     "1 16\n"
-) == "1\n1", "sample 1"
+) == "1\n1"
 
-# minimum size
+# minimum-size input
 assert run(
     "1 1\n"
     "1 1\n"
     "1\n"
-) == "1", "minimum input"
+) == "1"
 
-# boundary transitions
+# boundary transition between songs
 assert run(
     "2 4\n"
-    "1 2\n"
     "1 3\n"
-    "1 2 3 5\n"
-) == "1\n1\n2\n2", "boundary minutes"
-
-# repeated long segment
-assert run(
-    "3 3\n"
-    "2 2\n"
-    "3 1\n"
-    "1 5\n"
-    "1 5 10\n"
-) == "1\n2\n3", "multiple segments"
-
-# large values
-assert run(
     "1 2\n"
+    "1 3 4 5\n"
+) == "1\n1\n2\n2"
+
+# all queries inside same large block
+assert run(
+    "1 3\n"
     "1000000000 1\n"
-    "1 1000000000\n"
-) == "1\n1", "large cumulative values"
+    "1 500000000 1000000000\n"
+) == "1\n1\n1"
+
+# mixed intervals
+assert run(
+    "3 5\n"
+    "1 2\n"
+    "2 3\n"
+    "1 4\n"
+    "1 2 5 8 12\n"
+) == "1\n1\n2\n2\n3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single song, single query | `1` | Minimum valid input |
-| Queries on exact boundaries | `1 1 2 2` | Off-by-one correctness |
-| Multiple song ranges | `1 2 3` | Correct interval transitions |
-| Large repetition counts | `1 1` | Large cumulative sums |
+| Single song with one query | `1` | Minimum valid input |
+| Query exactly at song boundary | Correct transition | Off-by-one correctness |
+| Huge repeated block | All `1` | No minute-by-minute expansion |
+| Mixed intervals | `1 1 2 2 3` | General correctness |
 
 ## Edge Cases
 
-Consider the boundary case where a query lands exactly at the final minute of a song.
+Consider the boundary case where a query lands exactly on the final minute of a song block.
 
 Input:
 
 ```
-2 2
-1 2
-1 3
 2 3
+1 3
+1 2
+3 4 5
 ```
 
-The prefix array becomes:
+Prefix sums become:
 
 ```
-[2, 5]
+[3, 5]
 ```
 
-For query `2`, binary search finds the first prefix value greater than or equal to `2`, which is index `0`. The answer is song `1`.
+For query `3`, binary search finds the first prefix sum `>= 3`, which is index `0`. The algorithm correctly returns song `1`.
 
-For query `3`, binary search finds index `1`, which corresponds to song `2`.
+For query `4`, the first prefix sum `>= 4` is `5`, corresponding to song `2`.
 
 Output:
 
 ```
 1
 2
+2
 ```
 
-This confirms that the algorithm handles segment endpoints correctly.
+This confirms that the intervals are handled inclusively on the right boundary.
 
-Now consider extremely large durations.
+Now consider a very large duration.
 
 Input:
 
 ```
-1 1
-1000000000 1000000000
-1000000000
+1 2
+1000000000 1
+1 1000000000
 ```
 
-The song contributes `10^18` total minutes. Python integers safely store this value, and the prefix array becomes:
+The prefix sum array contains only:
 
 ```
-[1000000000000000000]
+[1000000000]
 ```
 
-The query minute `1000000000` still maps correctly to song `1`.
+Both queries binary search directly into this single interval and return song `1`.
 
-Finally, consider the smallest possible playlist.
+The algorithm never constructs a billion-minute array, so it remains fast and memory efficient.
+
+Finally, consider many tiny song blocks.
 
 Input:
 
 ```
+4 4
 1 1
 1 1
+1 1
+1 1
+1 2 3 4
+```
+
+Prefix sums:
+
+```
+[1, 2, 3, 4]
+```
+
+Each query maps exactly to one distinct song.
+
+Output:
+
+```
 1
+2
+3
+4
 ```
 
-The prefix array is `[1]`. Binary search immediately returns index `0`, so the output is:
-
-```
-1
-```
-
-This verifies that the implementation handles single-element arrays without special cases.
+This validates that consecutive boundaries are handled correctly without skipping or overlapping intervals.

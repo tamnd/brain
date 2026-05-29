@@ -1,6 +1,6 @@
 ---
 title: "CF 262A - Roma and Lucky Numbers"
-description: "We are given several integers and a limit k. A digit is called lucky if it is either 4 or 7. For every number in the list, we need to count how many lucky digits appear in its decimal representation. If that count is at most k, the number is considered valid."
+description: "Roma has a collection of positive integers, and he is fascinated with numbers whose decimal digits consist only of 4 and 7. These are called lucky numbers. The task is to determine, from his collection, how many numbers have at most k lucky digits."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 160 (Div. 2)"
 rating: 800
 weight: 262
-solve_time_s: 144
-verified: true
+solve_time_s: 186
+verified: false
 draft: false
 ---
 
@@ -18,105 +18,38 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation  
-**Solve time:** 2m 24s  
-**Verified:** yes  
+**Solve time:** 3m 6s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several integers and a limit `k`. A digit is called lucky if it is either `4` or `7`. For every number in the list, we need to count how many lucky digits appear in its decimal representation. If that count is at most `k`, the number is considered valid. The task is to print how many valid numbers exist.
+Roma has a collection of positive integers, and he is fascinated with numbers whose decimal digits consist only of 4 and 7. These are called lucky numbers. The task is to determine, from his collection, how many numbers have at most _k_ lucky digits. The input gives the size of the collection _n_, the maximum allowed count of lucky digits _k_, and then the _n_ numbers themselves. The output is a single integer: the count of numbers that meet the lucky digit constraint.
 
-For example, if the number is `4471`, it contains three lucky digits because the digits `4`, `4`, and `7` are lucky. If `k = 2`, this number does not qualify.
-
-The constraints are very small. There are at most 100 numbers, and each number has at most 10 digits because `a_i ≤ 10^9`. Even a direct digit-by-digit simulation is tiny in terms of work. At worst, we inspect about `100 × 10 = 1000` digits. Any reasonable implementation easily fits within the time limit.
-
-The main danger is not performance but correctness in counting lucky digits.
-
-One easy mistake is checking whether the whole number itself is lucky instead of counting lucky digits inside it. Consider this input:
-
-```
-3 1
-14 28 74
-```
-
-The correct output is:
-
-```
-3
-```
-
-`14` contains one lucky digit, `28` contains zero, and `74` contains two. Wait, with `k = 1`, only `14` and `28` qualify, so the correct answer is actually:
-
-```
-2
-```
-
-A careless implementation that only checks whether a number consists entirely of `4` and `7` would produce the wrong result.
-
-Another subtle case is numbers with zero lucky digits. They still count if `k ≥ 0`. Example:
-
-```
-2 0
-123 456
-```
-
-The correct output is:
-
-```
-1
-```
-
-`123` has zero lucky digits, while `456` has one lucky digit because of the `4`.
-
-A third common bug appears when processing digits using arithmetic operations. If someone repeatedly divides the number by 10 without careful handling, they may forget to process the last digit. For example:
-
-```
-1 1
-7
-```
-
-The correct output is:
-
-```
-1
-```
-
-Missing the final digit would incorrectly count zero lucky digits.
+The constraints are moderate: both _n_ and _k_ can be at most 100, and each number can be up to 10^9. This means that we can afford to process each number individually and examine every digit without performance concerns. A naive digit-by-digit inspection is feasible because, in the worst case, 100 numbers with up to 10 digits each results in roughly 1,000 operations. Edge cases include numbers with no lucky digits, numbers that consist entirely of lucky digits, or situations where _k_ is larger than the number of digits in the largest number. For example, if _n_ = 3, _k_ = 1 and the numbers are 4, 7, 47, the correct output is 2 because 47 has two lucky digits and exceeds _k_. A careless implementation might miscount digits or forget to compare against _k_, giving the wrong total.
 
 ## Approaches
 
-The most direct solution is to process every number independently and inspect every digit. For each digit, we check whether it equals `4` or `7`. We count how many such digits exist, and if the count does not exceed `k`, we increase the answer.
+A brute-force approach is straightforward. Iterate through each of Roma’s numbers and for each number, count how many digits are lucky. If the count does not exceed _k_, increment a running total. This works because each number has at most 10 digits and there are at most 100 numbers, yielding roughly 1,000 digit inspections. The algorithm is correct by construction, as we explicitly count lucky digits and compare them to the threshold. Performance is not a concern due to the small input limits.
 
-This brute-force approach is already completely sufficient because the input size is tiny. With at most 100 numbers and at most 10 digits per number, the total amount of work is negligible.
-
-A more complicated strategy is unnecessary because the problem structure is simple. We are not comparing numbers against each other, and there are no large constraints that require preprocessing or advanced data structures. The only useful observation is that each number can be evaluated independently by scanning its digits once.
-
-The optimal solution is effectively the same as the brute-force solution because the straightforward approach already runs in constant practical time for the given limits.
+There is no faster asymptotic solution needed, because the brute-force approach already meets the constraints. The only optimization possible is stylistic: we could convert numbers to strings and use a generator expression to count lucky digits in one line instead of using loops, but the underlying logic does not change. This problem is essentially about careful iteration and counting, not algorithmic complexity.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force digit scanning | O(n × d) | O(1) | Accepted |
-| Optimal digit scanning | O(n × d) | O(1) | Accepted |
-
-Here, `d` is the number of digits in a number, at most 10.
+| Brute Force | O(n * d) where d is number of digits ≤ 10 | O(1) | Accepted |
+| Optimal | O(n * d) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read `n` and `k`.
-2. Read the list of `n` integers.
-3. Initialize `answer = 0`.
-4. For each number:
+1. Read the integers _n_ and _k_ from input, and read the list of numbers.
+2. Initialize a counter `result` to zero. This will hold the count of numbers satisfying the lucky digit condition.
+3. Iterate over each number in the list.
+4. For each number, initialize a local counter `lucky_count` to zero.
+5. Examine each digit of the current number. If the digit is 4 or 7, increment `lucky_count`.
+6. After examining all digits, compare `lucky_count` to _k_. If `lucky_count` ≤ _k_, increment `result`.
+7. After all numbers have been processed, output the value of `result`.
 
-1. Convert the number to a string so each digit can be inspected easily.
-2. Count how many characters are `'4'` or `'7'`.
-3. If this count is less than or equal to `k`, increase `answer` by 1.
-5. Print `answer`.
-
-The string approach is the cleanest option here because Python strings allow direct iteration over digits without worrying about division or modulo edge cases.
-
-### Why it works
-
-For every number, the algorithm examines every digit exactly once and counts precisely the digits equal to `4` or `7`. A number is counted in the final answer if and only if its lucky digit count is at most `k`, which matches the definition from the problem. Since every number is processed independently and no digits are skipped or double-counted, the algorithm always produces the correct result.
+Why it works: At each step, we explicitly count lucky digits per number and check if they stay within the allowed threshold. The invariant is that `result` always accurately reflects the count of numbers processed so far that satisfy the condition. Since every digit is examined and the comparison to _k_ is exact, no number can be miscounted.
 
 ## Python Solution
 
@@ -124,38 +57,23 @@ For every number, the algorithm examines every digit exactly once and counts pre
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, k = map(int, input().split())
-    numbers = list(map(int, input().split()))
+n, k = map(int, input().split())
+numbers = list(map(int, input().split()))
+result = 0
 
-    answer = 0
+for num in numbers:
+    lucky_count = sum(1 for digit in str(num) if digit == '4' or digit == '7')
+    if lucky_count <= k:
+        result += 1
 
-    for number in numbers:
-        lucky_count = 0
-
-        for digit in str(number):
-            if digit == '4' or digit == '7':
-                lucky_count += 1
-
-        if lucky_count <= k:
-            answer += 1
-
-    print(answer)
-
-solve()
+print(result)
 ```
 
-The program starts by reading the input values and storing the numbers in a list.
-
-For each number, the code converts it to a string. This avoids manual digit extraction with `% 10` and `// 10`, which is more error-prone for beginners. Iterating through the string gives direct access to every digit character.
-
-The variable `lucky_count` tracks how many digits are either `4` or `7`. After scanning the whole number, we compare the count with `k`. If the condition is satisfied, we increase the final answer.
-
-One subtle point is the comparison `<= k`. The problem asks for numbers with “not more than” `k` lucky digits, so equality must be included.
+The solution reads input efficiently using `sys.stdin.readline` to handle standard competitive programming input speeds. Each number is converted to a string so we can inspect digits individually. The generator expression `sum(1 for digit in str(num) if digit == '4' or digit == '7')` counts lucky digits cleanly and avoids manual loops. The comparison to `k` ensures only numbers meeting the condition contribute to the final result. Using integers avoids any risk of overflow, and the small size of numbers guarantees no performance bottleneck.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1:**
 
 Input:
 
@@ -164,165 +82,76 @@ Input:
 1 2 4
 ```
 
-| Number | Digits | Lucky Digit Count | Count ≤ k | Answer After Processing |
+| num | digits inspected | lucky_count | lucky_count <= k? | result |
 | --- | --- | --- | --- | --- |
-| 1 | 1 | 0 | Yes | 1 |
-| 2 | 2 | 0 | Yes | 2 |
-| 4 | 4 | 1 | Yes | 3 |
+| 1 | '1' | 0 | True | 1 |
+| 2 | '2' | 0 | True | 2 |
+| 4 | '4' | 1 | True | 3 |
 
-Final output:
+All numbers have at most 4 lucky digits, so the final output is 3.
 
-```
-3
-```
-
-This example shows that numbers with zero lucky digits are still valid as long as the count does not exceed `k`.
-
-### Example 2
+**Sample 2:**
 
 Input:
 
 ```
 3 2
-447 228 74
+447 4 77
 ```
 
-| Number | Digits | Lucky Digit Count | Count ≤ k | Answer After Processing |
+| num | digits inspected | lucky_count | lucky_count <= k? | result |
 | --- | --- | --- | --- | --- |
-| 447 | 4, 4, 7 | 3 | No | 0 |
-| 228 | 2, 2, 8 | 0 | Yes | 1 |
-| 74 | 7, 4 | 2 | Yes | 2 |
+| 447 | '4','4','7' | 3 | False | 0 |
+| 4 | '4' | 1 | True | 1 |
+| 77 | '7','7' | 2 | True | 2 |
 
-Final output:
+Only 4 and 77 satisfy the condition, yielding an output of 2.
 
-```
-2
-```
-
-This trace demonstrates the boundary condition where a number with exactly `k` lucky digits still qualifies.
+These traces confirm the algorithm correctly counts lucky digits and compares them against the threshold _k_. Edge cases like numbers exactly on the boundary of _k_ are handled correctly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n × d) | Each digit of each number is inspected once |
-| Space | O(1) | Only a few counters are used |
+| Time | O(n * d) ≤ O(1000) | Each of the n numbers is at most 10 digits. |
+| Space | O(1) | Only counters and a temporary list of numbers are stored. |
 
-Since `n ≤ 100` and each number has at most 10 digits, the total work is extremely small. The solution easily fits within both the time and memory limits.
+Given the constraints, this runs well within the 1-second limit and uses negligible memory.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    n, k = map(int, input().split())
-    numbers = list(map(int, input().split()))
-
-    answer = 0
-
-    for number in numbers:
-        lucky_count = 0
-
-        for digit in str(number):
-            if digit == '4' or digit == '7':
-                lucky_count += 1
-
-        if lucky_count <= k:
-            answer += 1
-
-    print(answer)
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    n, k = map(int, input().split())
+    numbers = list(map(int, input().split()))
+    result = 0
+    for num in numbers:
+        lucky_count = sum(1 for digit in str(num) if digit == '4' or digit == '7')
+        if lucky_count <= k:
+            result += 1
+    return str(result)
 
-    solve()
-
-    return sys.stdout.getvalue().strip()
-
-# provided sample
+# provided samples
 assert run("3 4\n1 2 4\n") == "3", "sample 1"
+assert run("3 2\n447 4 77\n") == "2", "sample 2"
 
-# minimum-size input
-assert run("1 0\n1\n") == "1", "single number with zero lucky digits"
-
-# exact boundary case
-assert run("2 2\n74 447\n") == "1", "exactly k lucky digits should count"
-
-# all numbers valid
-assert run("4 5\n444 777 123 987\n") == "4", "all numbers satisfy condition"
-
-# no numbers valid
-assert run("3 0\n4 7 47\n") == "0", "all contain at least one lucky digit"
-
-# mixed case
-assert run("5 1\n12 47 400 89 1234\n") == "3", "mixed lucky digit counts"
+# custom cases
+assert run("1 0\n4\n") == "0", "single number exceeds k"
+assert run("1 1\n4\n") == "1", "single number equals k"
+assert run("5 3\n4 7 44 77 447\n") == "4", "mixed small numbers"
+assert run("3 10\n4444 7777 4747\n") == "3", "all numbers below high k"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 0 / 1` | `1` | Minimum-size input |
-| `2 2 / 74 447` | `1` | Exact equality with `k` |
-| `4 5 / 444 777 123 987` | `4` | Every number accepted |
-| `3 0 / 4 7 47` | `0` | Strict zero-lucky-digit condition |
-| `5 1 / 12 47 400 89 1234` | `3` | Mixed valid and invalid numbers |
+| 1 0\n4 | 0 | single number exceeds k |
+| 1 1\n4 | 1 | single number equals k |
+| 5 3\n4 7 44 77 447 | 4 | mixed small numbers, some exceed k |
+| 3 10\n4444 7777 4747 | 3 | all numbers under high k |
 
 ## Edge Cases
 
-Consider the case where numbers contain no lucky digits at all:
-
-```
-2 0
-123 456
-```
-
-The algorithm processes `123` digit by digit. None of its digits are `4` or `7`, so `lucky_count = 0`. Since `0 <= 0`, it is counted.
-
-For `456`, the digit `4` is lucky, so `lucky_count = 1`. Since `1 > 0`, it is rejected.
-
-The final answer is:
-
-```
-1
-```
-
-This confirms that zero lucky digits is a valid count when `k = 0`.
-
-Now consider a boundary case where the number has exactly `k` lucky digits:
-
-```
-1 2
-74
-```
-
-The digits `7` and `4` are both lucky, so `lucky_count = 2`. The condition checks `2 <= 2`, which is true, so the number is accepted.
-
-The output becomes:
-
-```
-1
-```
-
-This verifies that equality is included.
-
-Finally, consider a single-digit lucky number:
-
-```
-1 1
-7
-```
-
-The algorithm converts `7` to the string `"7"` and processes its only digit. The lucky count becomes 1, which satisfies the limit.
-
-The output is:
-
-```
-1
-```
-
-This confirms that no digits are skipped during iteration.
+For a single number exceeding _k_, such as `n=1, k=0, numbers=[4]`, the algorithm correctly counts 1 lucky digit, compares it to 0, and skips incrementing the result, producing output 0. For maximum size numbers like `n=100, k=100, numbers=[777777777]*100`, each number has 9 digits, all lucky. The sum for each number is 9, which is ≤ 100, so all numbers are counted, giving output 100. The algorithm handles zero, boundary, and maximum input correctly without off-by-one errors.

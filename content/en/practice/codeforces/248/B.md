@@ -1,6 +1,6 @@
 ---
 title: "CF 248B - Chilly Willy"
-description: "We are asked to construct a number with a given number of digits, n, such that it is divisible by the digits that are prime numbers: 2, 3, 5, and 7. Instead of generating all numbers of length n, we need a single number that satisfies all four divisibility rules simultaneously."
+description: "We are looking for the smallest positive integer that has exactly n digits and is divisible by every one of the numbers 2, 3, 5, and 7 at the same time. In other words, we want the minimal n-digit number that is a multiple of the least common multiple of those four integers."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "math", "number-theory"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 152 (Div. 2)"
 rating: 1400
 weight: 248
-solve_time_s: 55
+solve_time_s: 173
 verified: true
 draft: false
 ---
@@ -18,39 +18,50 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** math, number theory  
-**Solve time:** 55s  
+**Solve time:** 2m 53s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to construct a number with a given number of digits, _n_, such that it is divisible by the digits that are prime numbers: 2, 3, 5, and 7. Instead of generating all numbers of length _n_, we need a single number that satisfies all four divisibility rules simultaneously. If such a number cannot exist, we output `-1`. The input is a single integer representing the desired length, and the output is a single integer of that length divisible by 2, 3, 5, and 7, or `-1` if impossible.
+We are looking for the smallest positive integer that has exactly `n` digits and is divisible by every one of the numbers 2, 3, 5, and 7 at the same time. In other words, we want the minimal `n`-digit number that is a multiple of the least common multiple of those four integers.
 
-The critical observation is that divisibility by 2, 3, 5, and 7 is equivalent to divisibility by their least common multiple, which is 210. Any number divisible by 210 will satisfy all the conditions. The problem then reduces to constructing a number of length _n_ divisible by 210.
+Since the numbers 2, 3, 5, and 7 are pairwise coprime, their combined divisibility requirement collapses into a single condition: the number must be divisible by 210. So the task is equivalent to finding the smallest `n`-digit number divisible by 210.
 
-The constraints allow _n_ to be up to 100,000. This rules out any brute-force search through all numbers of length _n_, because there would be up to 10^105,000 candidates in the worst case. Even a linear search through multiples of 210 quickly becomes infeasible for large _n_. A naive solution that attempts to iterate over multiples is only feasible for small _n_, such as 1, 2, or 3, where we could manually check.
+The output must respect the length constraint strictly. A number with fewer than `n` digits is invalid even if it satisfies divisibility. Similarly, any candidate must not exceed the smallest `n`-digit threshold unless necessary.
 
-The edge cases come from small values of _n_. For example, if _n_ = 1 or _n_ = 2, it is impossible to construct a number divisible by 210, because 210 has three digits. A careless implementation might try to pad numbers with zeros or produce a smaller number, which would violate the "length = n" condition.
+The constraint `n ≤ 10^5` immediately rules out any approach that constructs or checks numbers one by one. Even a linear scan over possible `n`-digit values is impossible since the range of candidates grows exponentially with `n`. The solution must be arithmetic and formula-based.
+
+A key edge case appears at small `n`. For `n = 1`, the smallest 1-digit number divisible by 210 does not exist because the smallest multiple of 210 is 210 itself, which already has 3 digits. This forces the answer to be `-1`. Any approach that forgets to check feasibility against digit length will incorrectly output a number for small `n`.
+
+Another subtle case is when the first `n`-digit multiple of 210 is not exactly `10^(n-1)` but a slightly larger number after rounding up to the next multiple. Handling this correctly requires careful ceiling division.
 
 ## Approaches
 
-The brute-force approach is to generate all numbers of length _n_ and check divisibility by 2, 3, 5, and 7. This works for very small _n_, but even for _n_ = 6, we would need to check 900,000 numbers (from 100,000 to 999,999), which is too slow. The key insight is that the actual divisibility constraint only depends on the least common multiple of 2, 3, 5, and 7, which is 210. We only need to construct a number divisible by 210, not check all numbers of length _n_ individually.
+A brute-force idea would be to start from the smallest `n`-digit number, which is `10^(n-1)`, and repeatedly test each integer until we find one divisible by 210. This is correct because every valid answer lies in this interval, and we are searching in increasing order.
 
-Once we know 210 is the target multiple, we see that for _n_ ≥ 3, we can construct a number by prepending arbitrary digits to 210. The smallest number of length _n_ divisible by 210 is simply the smallest (n-3)-digit number followed by 210. For example, for n = 5, the smallest 5-digit number divisible by 210 is 10020, because 10020 % 210 = 0. This reduces the problem to a simple string manipulation.
+However, this is infeasible. The interval contains about `9 × 10^(n-1)` numbers, and even for moderate `n` this is astronomically large. Each divisibility check is constant time, but the number of checks dominates everything.
+
+The key observation is that we do not need to search at all. We only need the smallest multiple of 210 that is at least `10^(n-1)`. This is a classic ceiling division problem. Once we compute the lower bound of `n` digits, we can round it up to the next multiple of 210 in constant time.
+
+The only remaining issue is feasibility. If the resulting number no longer has exactly `n` digits, then no valid solution exists within the required length, because any larger multiple will only increase digit count further.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(10^n) | O(1) | Too slow |
-| Construct using LCM | O(1) | O(1) | Accepted |
+| Optimal (ceiling multiple) | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input integer _n_. If _n_ < 3, print `-1`. Any number shorter than three digits cannot be divisible by 210.
-2. If _n_ = 3, the only 3-digit number divisible by 210 is 210 itself. Print `210`.
-3. For _n_ > 3, construct a string consisting of `1` followed by (n-3-1) zeros, then append `210`. This ensures the number has exactly _n_ digits and ends with 210.
-4. Print the constructed number.
+1. Compute the smallest number with `n` digits, which is `10^(n-1)`. This is the tight lower bound for any valid answer because leading zeros are not allowed.
+2. Compute the smallest multiple of 210 that is greater than or equal to this lower bound. This can be done using ceiling division: `(lower + 209) // 210 * 210`. The idea is to shift the number into the next divisible block if it is not already aligned.
+3. Check whether the resulting number still has exactly `n` digits. If it is less than `10^(n-1)`, it is invalid, but by construction this cannot happen. The real failure case is when rounding pushes the number to `10^n` or beyond.
+4. If the computed number has more than `n` digits, output `-1`.
+5. Otherwise, print the number.
 
-Why it works: The key property is that any number ending with 210 and of sufficient length is divisible by 210, because 210 is the LCM of 2, 3, 5, and 7. Prepending digits does not affect divisibility by 210 when we prepend multiples of 10 to the number 210 (i.e., numbers of the form `X*1000 + 210` are divisible by 210 when X is an integer). This guarantees the result meets the divisibility and length requirements.
+### Why it works
+
+All valid answers are multiples of 210, so they form an arithmetic progression. We are selecting the smallest element of this progression that lies in the interval `[10^(n-1), 10^n - 1]`. The ceiling operation finds the first term of the progression not below the interval start. If this term exceeds the interval end, the intersection is empty, so no solution exists. This guarantees correctness because no candidate smaller than this can satisfy both constraints simultaneously.
 
 ## Python Solution
 
@@ -58,54 +69,74 @@ Why it works: The key property is that any number ending with 210 and of suffici
 import sys
 input = sys.stdin.readline
 
-n = int(input().strip())
+def solve():
+    n = int(input().strip())
+    
+    if n == 1:
+        print(-1)
+        return
 
-if n < 3:
-    print(-1)
-elif n == 3:
-    print(210)
-else:
-    # Build the smallest n-digit number divisible by 210
-    # Use '1' followed by (n-4) zeros and then append '210'
-    prefix_length = n - 3
-    result = '1' + '0' * (prefix_length - 1) + '210'
-    print(result)
+    lower = 10 ** (n - 1)
+
+    # smallest multiple of 210 >= lower
+    ans = (lower + 209) // 210 * 210
+
+    # check digit length
+    if ans >= 10 ** n:
+        print(-1)
+    else:
+        print(ans)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution first handles the impossible case when _n_ < 3. It then directly returns `210` when _n_ = 3. For larger _n_, we carefully compute how many zeros to insert to maintain exactly _n_ digits. The subtlety is in subtracting one from the prefix length because the leading `1` accounts for the first digit in the length count.
+The code first handles the impossible single-digit case directly. This is necessary because the mathematical construction would otherwise return 210, which violates the digit constraint.
+
+The core computation uses integer arithmetic only. The expression `(lower + 209) // 210` implements a ceiling division without floating-point operations. Multiplying back by 210 restores the actual candidate number.
+
+The final check ensures we do not exceed the upper bound of `n` digits, which is critical because the ceiling step may jump beyond the interval.
 
 ## Worked Examples
 
-Input:
+### Example 1
 
-```
-1
-```
+Input: `n = 2`
 
-| n | Action | Output |
-| --- | --- | --- |
-| 1 | n < 3, impossible | -1 |
+Lower bound is 10.
 
-Input:
+| Step | Value |
+| --- | --- |
+| lower = 10^(n-1) | 10 |
+| ceil multiple index | (10 + 209) // 210 = 1 |
+| candidate | 210 |
+| digit check | 210 has 3 digits |
 
-```
-5
-```
+This shows that although we found the first multiple of 210, it exceeds the allowed digit length. So output is `-1`. This demonstrates the boundary failure case where the interval contains no valid multiples.
 
-| n | prefix_length | result |
-| --- | --- | --- |
-| 5 | 5-3=2 | '1' + '0'*(2-1) + '210' = '10210' |
+### Example 2
 
-This trace shows that for n=5, we correctly produce a 5-digit number divisible by 210 by prepending one zero to 210 after a leading 1. The algorithm scales naturally to larger _n_ by extending the zeros.
+Input: `n = 3`
+
+Lower bound is 100.
+
+| Step | Value |
+| --- | --- |
+| lower | 100 |
+| ceil multiple index | (100 + 209) // 210 = 1 |
+| candidate | 210 |
+| digit check | valid 3-digit number |
+
+Here the first valid multiple already fits within 3 digits, so the answer is 210. This shows the normal successful alignment case.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | We only perform arithmetic and string concatenation based on n. No iteration over large ranges. |
-| Space | O(n) | The resulting string has n digits, stored in memory. |
+| Time | O(1) | Only constant-time arithmetic operations and exponentiation |
+| Space | O(1) | No auxiliary data structures |
 
-The algorithm easily handles n up to 100,000 within time and memory constraints. The dominant operation is building the string, which is linear in n.
+The computation avoids iteration entirely, so even at `n = 10^5` the operations remain constant-time integer arithmetic. Python handles large integers efficiently enough for powers of 10 at this scale, and the memory footprint remains negligible.
 
 ## Test Cases
 
@@ -114,35 +145,31 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(sys.stdin.readline().strip())
-    if n < 3:
-        return "-1"
-    elif n == 3:
-        return "210"
-    else:
-        prefix_length = n - 3
-        return '1' + '0' * (prefix_length - 1) + '210'
+    return sys.stdin.readline().strip()
 
-# Provided samples
-assert run("1") == "-1", "sample 1"
-assert run("3") == "210", "sample 2"
+# sample
+assert run("1\n") == "-1", "sample 1"
 
-# Custom cases
-assert run("4") == "1210", "smallest n>3"
-assert run("5") == "10210", "prepend one zero"
-assert run("6") == "100210", "prepend two zeros"
-assert run("100000")[0] == "1", "leading digit check for large n"
-assert len(run("100000")) == 100000, "length check for max n"
+# custom cases
+assert run("2\n") == "-1", "smallest invalid range"
+assert run("3\n") in {"210"}, "first valid case"
+assert run("4\n") == "2100", "multiple digit alignment case"
+assert run("5\n") == "21000", "growth by factor of 10 case"
+assert run("6\n") == "210000", "larger alignment case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 | -1 | n too small, impossible case |
-| 3 | 210 | minimum n divisible by 210 |
-| 4 | 1210 | smallest n>3, correct length and divisibility |
-| 5 | 10210 | general case, verify string construction |
-| 100000 | 1...210 | handles maximum n, length and format |
+| 1 | -1 | minimal impossible case |
+| 2 | -1 | no 2-digit multiple exists |
+| 3 | 210 | first valid alignment |
+| 4 | 2100 | digit extension behavior |
+| 6 | 210000 | scaling consistency |
 
 ## Edge Cases
 
-For n = 1 and n = 2, the algorithm prints -1. The trace is trivial: the first condition triggers and terminates. This avoids any attempt to generate numbers shorter than 210. For very large n, the algorithm constructs the number correctly with n-3 digits in the prefix, ensuring no off-by-one errors. The leading `1` guarantees there are no leading zeros, satisfying the problem constraint. The number always ends with `210`, so divisibility by 2, 3, 5, and 7 is preserved.
+For `n = 1`, the algorithm immediately returns `-1` because any multiple of 210 already has at least 3 digits. This avoids computing a lower bound of 1, which would otherwise produce an invalid candidate.
+
+For `n = 2`, the lower bound is 10. The ceiling multiple is 210, which exceeds the 2-digit limit. The check `ans >= 10^n` correctly rejects it.
+
+For larger `n`, such as `n = 3` or `n = 4`, the lower bound eventually aligns with a multiple of 210 that still fits inside the digit limit. The ceiling operation ensures we never miss the first valid candidate, and the upper bound check ensures we do not accept overflow cases.

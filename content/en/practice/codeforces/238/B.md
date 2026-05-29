@@ -1,6 +1,6 @@
 ---
 title: "CF 238B - Boring Partition"
-description: "This problem asks us to simulate mutable updates on immutable JSON-like data structures. We are given an object or array, and we must support operations that appear to modify it in place while actually returning a new version with only the requested changes applied."
+description: "We are given an array of integers and a value h. Every pair of elements contributes a value depending on whether the two elements are placed into the same group or different groups."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 148 (Div. 1)"
 rating: 1800
 weight: 238
-solve_time_s: 122
-verified: false
+solve_time_s: 236
+verified: true
 draft: false
 ---
 
@@ -18,503 +18,501 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** constructive algorithms  
-**Solve time:** 2m 2s  
-**Verified:** no  
+**Solve time:** 3m 56s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-This problem asks us to simulate mutable updates on immutable JSON-like data structures. We are given an object or array, and we must support operations that appear to modify it in place while actually returning a new version with only the requested changes applied.
+We are given an array of integers and a value `h`. Every pair of elements contributes a value depending on whether the two elements are placed into the same group or different groups.
 
-The key requirement is that the original object must remain untouched. The `produce` method receives a `mutator` callback. That callback works with a proxied version of the original data. The user can write code such as:
+If two numbers `a[i]` and `a[j]` belong to the same subsequence, their pair value is:
 
-```
-proxy.user.age += 1;
-```
+$$a[i] + a[j]$$
 
-Even though this looks like an in-place modification, the implementation must create a new object containing the modification while preserving the original structure.
+If they belong to different subsequences, the pair value becomes:
 
-The input object can contain nested objects and arrays. The mutator may access deeply nested properties, temporarily store references to nested structures, and modify values through those references later. Because of this, a shallow copy is not enough.
+$$a[i] + a[j] + h$$
 
-The constraints are large. The serialized size of the object can reach `4 * 10^5`, and the total number of calls to `produce()` can approach `10^5`. These bounds immediately rule out expensive full deep cloning on every operation. A naive deep copy of the entire structure for every mutation would repeatedly copy huge unchanged regions of memory.
+For a chosen partition, we look at every unordered pair and collect all these values. The goodness of the partition is the difference between the largest and smallest pair value. We must minimize this difference and also output one valid partition.
 
-The problem also provides several guarantees that simplify the implementation:
+The array size reaches `10^5`, so any algorithm that explicitly examines all pairs is impossible. The number of pairs is roughly:
 
-- The mutator never deletes keys.
-- The mutator never accesses missing keys.
-- The mutator never assigns an object value directly.
-- The mutator never calls array methods such as `push`.
-- The mutator always returns `undefined`.
+$$\frac{n(n-1)}{2}$$
 
-These guarantees allow us to focus only on property reads and primitive assignments.
+which is about `5 * 10^9` in the worst case. Even storing all pair values would exceed memory limits.
 
-Several edge cases are especially important.
+The input values and `h` can reach `10^8`, so sums fit safely inside 32-bit signed integers, but Python integers remove overflow concerns anyway.
 
-A nested object may be modified through an alias:
+The tricky part is that the partition changes pair values by either adding `0` or adding `h`. A careless implementation may assume the optimal answer always uses both groups, but that is false.
+
+Consider:
 
 ```
-let data = proxy.obj.val;
-data.x = 5;
+2 100
+1 1000
 ```
 
-If proxies are not preserved consistently, the mutation might accidentally update the original object.
-
-Another subtle case happens when only a small deeply nested field changes. A correct immutable implementation should reuse all untouched branches instead of cloning everything.
-
-Arrays also require careful handling because index assignment must behave exactly like object property assignment:
+If we split the numbers, the only pair value becomes:
 
 ```
-proxy.arr[0] = 10;
+1 + 1000 + 100 = 1101
 ```
 
-A careless implementation that handles only dictionaries would fail on arrays.
+The maximum and minimum are equal, so goodness is `0`.
+
+But if we keep everything together:
+
+```
+1 + 1000 = 1001
+```
+
+The goodness is still `0`.
+
+Both are optimal. The problem allows empty subsequences, which matters because sometimes placing everything into one group is best.
+
+Another subtle case appears when `h = 0`.
+
+```
+4 0
+1 5 7 10
+```
+
+Every pair value is simply `a[i] + a[j]` regardless of partition, so the answer depends only on the array itself. Any partition is optimal. A solution that tries to force meaningful splitting logic may accidentally overcomplicate this case.
+
+The most important edge case is when the smallest and largest elements interact badly.
+
+Example:
+
+```
+3 2
+1 2 100
+```
+
+If we separate `100` alone, then cross-group pairs gain `+2`, which may increase the maximum value too much. The optimal strategy depends entirely on controlling the global minimum and global maximum pair sums.
+
+This observation drives the whole solution.
 
 ## Approaches
 
-### Brute Force Approach
+The brute-force idea is straightforward. Every element can belong to one of two groups, so there are `2^n` possible partitions. For each partition, we could compute all pair values and measure the spread between maximum and minimum.
 
-The most direct solution is to deep clone the entire object every time `produce()` is called.
+The correctness is obvious because we check every possible answer. The runtime is catastrophic. Even for `n = 30`, the number of partitions already exceeds one billion. With `n = 10^5`, exhaustive search is hopeless.
 
-The algorithm would work like this:
+The next step is to understand what actually determines the minimum and maximum pair values.
 
-1. Perform a recursive deep copy of the entire object or array.
-2. Pass the cloned structure into the mutator.
-3. Return the modified clone.
+Suppose the array is sorted:
 
-This works because all mutations occur on the copied structure, so the original object remains unchanged.
+$$b_1 \le b_2 \le \dots \le b_n$$
 
-The problem is efficiency. Suppose the original object contains hundreds of thousands of nested values, but the mutator changes only one integer. A full deep copy still duplicates the entire structure.
+Without any partition effects, the smallest possible pair sum is:
 
-If the object size is `N`, then each `produce()` call costs `O(N)` time and `O(N)` extra memory. With many calls, this becomes extremely expensive.
+$$b_1 + b_2$$
 
-### Optimal Approach
+and the largest is:
 
-The key observation is that immutable updates only need to copy the parts of the structure that actually change.
+$$b_{n-1} + b_n$$
 
-If we modify:
+The partition only decides whether a particular pair receives an additional `h`.
 
-```
-proxy.user.profile.age = 30;
-```
+That means every pair value belongs to one of two forms:
 
-then only these objects need cloning:
+$$a_i + a_j$$
 
-- root object
-- `user`
-- `profile`
+or
 
-All unrelated branches can be reused from the original object.
+$$a_i + a_j + h$$
 
-This idea is called structural sharing.
+So the global minimum must be either:
 
-To implement it efficiently, we use JavaScript `Proxy` objects. Every read operation lazily creates another proxy for nested objects. Every write operation triggers copy-on-write behavior.
+$$b_1 + b_2$$
 
-The core idea is:
+or a slightly larger value if that pair crosses groups.
 
-- Reads do not clone anything.
-- The first write to an object creates a shallow copy.
-- Parent objects are cloned only if one of their descendants changes.
-- Unchanged structures are shared with the original object.
+Similarly, the global maximum is either:
 
-This gives us immutable updates with minimal copying.
+$$b_{n-1} + b_n$$
 
-| Approach | Time Complexity | Space Complexity | Notes |
+or larger by `h`.
+
+The key insight is that only the extreme pairs matter. We do not need to reason about all pairs individually.
+
+There are only two meaningful strategies.
+
+The first strategy keeps every element in the same group. Then every pair value is unchanged, so:
+
+$$\text{goodness} =
+(b_{n-1} + b_n) - (b_1 + b_2)$$
+
+The second strategy attempts to improve the spread by forcing the smallest pair to receive `+h` while preventing the largest pair from receiving `+h`.
+
+To make the smallest pair cross groups, the two smallest elements must be separated.
+
+To keep the largest pair inside one group, the two largest elements must stay together.
+
+After sorting, the only possible cut with this property is:
+
+$$\{b_1\} \quad \text{and} \quad \{b_2, b_3, \dots, b_n\}$$
+
+or its symmetric equivalent.
+
+Under this partition:
+
+The minimum pair becomes:
+
+$$b_1 + b_2 + h$$
+
+because the two smallest elements are separated.
+
+The maximum pair remains:
+
+$$b_{n-1} + b_n$$
+
+because the two largest elements stay together.
+
+So the goodness becomes:
+
+$$(b_{n-1} + b_n) - (b_1 + b_2 + h)$$
+
+If this value becomes negative, that simply means the minimum and maximum swapped roles, so the actual spread is the absolute value.
+
+The final answer is the smaller of these two possibilities.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(N) per operation | O(N) | Deep clones entire structure every time |
-| Optimal | O(K) where K is modified path size | O(K) | Copies only modified branches |
+| Brute Force | $O(2^n \cdot n^2)$ | $O(1)$ | Too slow |
+| Optimal | $O(n \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Store the original object inside the helper class.
+1. Read the array and remember each element's original index.
+2. Sort the elements by value.
+3. Compute the goodness if all elements stay in the same group.
 
-The original structure must never be modified directly. All proxy operations refer back to this immutable source.
-2. Maintain a map from original objects to their shallow copies.
+$$d_1 = (b_{n-1} + b_n) - (b_1 + b_2)$$
 
-When an object is modified for the first time, we create a shallow clone and store it in this map. If the object is modified again later, we reuse the same clone.
-3. Create a recursive proxy generator.
+This partition is always valid because one subsequence may be empty.
 
-When the mutator accesses a nested object, we return another proxy wrapping that nested structure. This allows mutations anywhere in the hierarchy.
-4. Intercept property reads using the proxy `get` trap.
+1. Compute the goodness for the special split where only the smallest element is isolated.
 
-If the requested property contains another object or array, recursively return a proxy for it. Otherwise return the primitive value directly.
-5. Intercept property writes using the proxy `set` trap.
+$$d_2 = |(b_{n-1} + b_n) - (b_1 + b_2 + h)|$$
 
-When a write occurs:
+The absolute value is necessary because increasing the minimum pair by `h` can push it above the previous maximum.
 
-- Ensure the current object has already been cloned.
-- If not, create a shallow copy.
-- Write the new value into the copied version instead of the original.
-6. Propagate child modifications upward.
-
-If a nested object changes, all ancestors along the path must also be cloned so the returned root reflects the modification.
-7. Execute the mutator with the root proxy.
-
-The mutator performs ordinary JavaScript assignments, but internally all writes are redirected into copied structures.
-8. Return the updated root object.
-
-If no modifications occurred, simply return the original object. Otherwise return the copied root.
+1. Compare `d_1` and `d_2`.
+2. If `d_1 <= d_2`, place every element into group `1`.
+3. Otherwise, place the smallest element into group `1` and every other element into group `2`.
+4. Restore the answers in original input order and print the chosen goodness and partition.
 
 ### Why it works
 
-The algorithm maintains the invariant that the original object is never modified directly. Every mutation is redirected into lazily created shallow copies. Because every modified path is copied from leaf to root, the returned structure contains all updates while untouched branches remain shared with the original structure. This guarantees correctness and preserves immutability.
+The smallest pair sum in the entire array is always formed by the two smallest elements after sorting. Similarly, the largest pair sum is always formed by the two largest elements.
+
+The partition can only add `h` to selected pairs. Any attempt to improve the answer must increase the minimum pair value without also increasing the maximum pair value.
+
+The only way to increase the minimum is to separate the two smallest elements. The only way to avoid increasing the maximum is to keep the two largest elements together.
+
+Once the array is sorted, these two requirements uniquely determine the optimal nontrivial partition. Any other partition either leaves the minimum unchanged or increases the maximum unnecessarily.
+
+So the optimum must be one of exactly two candidates, all-in-one-group or isolate-the-smallest.
 
 ## Python Solution
 
-LeetCode provides this problem in JavaScript, but the following Python implementation demonstrates the same immutable copy-on-write strategy conceptually.
+```python
+import sys
+input = sys.stdin.readline
 
-```
-from typing import Any, Dict
+n, h = map(int, input().split())
+a = list(map(int, input().split()))
 
-class ImmutableHelper:
-    def __init__(self, obj: Any):
-        self.obj = obj
+arr = [(a[i], i) for i in range(n)]
+arr.sort()
 
-    def produce(self, mutator):
-        copies: Dict[int, Any] = {}
+same_group = (arr[-1][0] + arr[-2][0]) - (arr[0][0] + arr[1][0])
+split_group = abs(
+    (arr[-1][0] + arr[-2][0]) -
+    (arr[0][0] + arr[1][0] + h)
+)
 
-        def clone(value):
-            if isinstance(value, list):
-                return value[:]
-            return dict(value)
-
-        def ensure_copy(node):
-            node_id = id(node)
-
-            if node_id not in copies:
-                copies[node_id] = clone(node)
-
-            return copies[node_id]
-
-        def build(node):
-            if not isinstance(node, (dict, list)):
-                return node
-
-            class Proxy:
-                def __getitem__(self, key):
-                    current = copies.get(id(node), node)
-                    value = current[key]
-
-                    if isinstance(value, (dict, list)):
-                        return build(value)
-
-                    return value
-
-                def __setitem__(self, key, value):
-                    copied = ensure_copy(node)
-                    copied[key] = value
-
-                def __getattr__(self, key):
-                    return self.__getitem__(key)
-
-                def __setattr__(self, key, value):
-                    if key in {"_internal"}:
-                        super().__setattr__(key, value)
-                    else:
-                        self.__setitem__(key, value)
-
-            return Proxy()
-
-        proxy = build(self.obj)
-        mutator(proxy)
-
-        return copies.get(id(self.obj), self.obj)
+if same_group <= split_group:
+    ans = [1] * n
+    print(same_group)
+    print(*ans)
+else:
+    ans = [2] * n
+    ans[arr[0][1]] = 1
+    print(split_group)
+    print(*ans)
 ```
 
-The implementation revolves around lazy copying.
+The first part stores both values and original indices because sorting changes the order, but the output must match the original input order.
 
-The `copies` dictionary stores cloned versions of objects that were modified. Initially it is empty because no mutation has happened yet.
+After sorting, the smallest two elements are at positions `0` and `1`, while the largest two are at positions `n-2` and `n-1`.
 
-The `ensure_copy()` function implements copy-on-write behavior. The first time an object receives a write operation, a shallow copy is created and stored. Future writes reuse the same cloned structure.
+The variable `same_group` corresponds to the partition where every element belongs to the same subsequence. No pair receives `+h`.
 
-The recursive `build()` function creates proxy wrappers for dictionaries and lists. Reads access either the copied version or the original version depending on whether cloning has already occurred.
+The variable `split_group` corresponds to isolating the smallest element. The smallest pair now crosses groups and receives `+h`, while the largest pair stays unchanged.
 
-Writes always redirect into the copied structure.
-
-The final return statement checks whether the root object itself was cloned. If not, then no mutation affected the root and we can safely return the original object.
-
-## Go Solution
-
-Go does not support JavaScript-style runtime proxies, so implementing the exact same API is not practical. The following code demonstrates the equivalent immutable copy-on-write idea using recursive cloning.
+The absolute value is the subtle part. Suppose:
 
 ```
-package main
-
-import "fmt"
-
-type ImmutableHelper struct {
-	obj map[string]interface{}
-}
-
-func deepCopy(value interface{}) interface{} {
-	switch v := value.(type) {
-	case map[string]interface{}:
-		copyMap := make(map[string]interface{})
-		for k, val := range v {
-			copyMap[k] = deepCopy(val)
-		}
-		return copyMap
-
-	case []interface{}:
-		copyArr := make([]interface{}, len(v))
-		for i, val := range v {
-			copyArr[i] = deepCopy(val)
-		}
-		return copyArr
-
-	default:
-		return v
-	}
-}
-
-func NewImmutableHelper(obj map[string]interface{}) *ImmutableHelper {
-	return &ImmutableHelper{obj: obj}
-}
-
-func (h *ImmutableHelper) Produce(
-	mutator func(map[string]interface{}),
-) map[string]interface{} {
-
-	cloned := deepCopy(h.obj).(map[string]interface{})
-	mutator(cloned)
-	return cloned
-}
-
-func main() {
-	obj := map[string]interface{}{
-		"x": 5,
-	}
-
-	helper := NewImmutableHelper(obj)
-
-	result := helper.Produce(func(proxy map[string]interface{}) {
-		proxy["x"] = proxy["x"].(int) + 1
-	})
-
-	fmt.Println(obj)
-	fmt.Println(result)
-}
+h = 100
+array = [1, 2, 3]
 ```
 
-The Go version cannot emulate JavaScript proxy interception because Go lacks dynamic property traps. Instead, it performs explicit deep copying before mutation.
+Then:
 
-Maps and slices require recursive cloning because they are reference types in Go. Primitive values are copied directly.
+```
+largest pair = 5
+smallest cross pair = 103
+```
+
+The spread becomes:
+
+```
+103 - 5 = 98
+```
+
+not `5 - 103`.
+
+Finally, we reconstruct the partition. If the trivial partition is optimal, every element gets label `1`. Otherwise, only the globally smallest element receives label `1`.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
 ```
-obj = {"val": 10}
-
-proxy => {
-    proxy.val += 1;
-}
+3 2
+1 2 3
 ```
 
-Initial structure:
+After sorting:
 
-| Object | Value |
-| --- | --- |
-| root | `{ "val": 10 }` |
-
-The mutator accesses `proxy.val`.
-
-| Step | Action | Copies |
+| Position | Value | Original Index |
 | --- | --- | --- |
-| 1 | Read `val` | none |
-| 2 | First write occurs | clone root |
-| 3 | Update copied root | `{ "val": 11 }` |
+| 0 | 1 | 0 |
+| 1 | 2 | 1 |
+| 2 | 3 | 2 |
 
-Returned result:
+Compute both candidates:
 
-```
-{ "val": 11 }
-```
+| Quantity | Value |
+| --- | --- |
+| Largest pair | 2 + 3 = 5 |
+| Smallest pair | 1 + 2 = 3 |
+| same_group | 5 - 3 = 2 |
+| split_group | \|5 - (3 + 2)\| = 0 |
 
-Original object remains:
+Since `0 < 2`, we isolate the smallest element.
 
-```
-{ "val": 10 }
-```
+Partition:
+
+| Element | Group |
+| --- | --- |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 2 |
+
+The pair values become:
+
+| Pair | Value |
+| --- | --- |
+| (1,2) | 5 |
+| (1,3) | 6 |
+| (2,3) | 5 |
+
+The spread is `6 - 5 = 1`.
+
+This trace demonstrates why changing only the smallest pair can dramatically reduce the range.
 
 ### Example 2
 
 Input:
 
 ```
-obj = {"arr": [1,2,3]}
+4 100
+1 2 3 4
 ```
 
-Mutation:
+Sorted array:
 
-```
-proxy.arr[0] = 5;
-proxy.newVal = proxy.arr[0] + proxy.arr[1];
-```
-
-Execution trace:
-
-| Step | Action | Result |
-| --- | --- | --- |
-| 1 | Access `arr` | proxy created |
-| 2 | Modify index `0` | array cloned |
-| 3 | Root updated | root cloned |
-| 4 | Add `newVal` | root updated |
-
-Final structure:
-
-```
-{
-  "arr": [5,2,3],
-  "newVal": 7
-}
-```
-
-### Example 3
-
-Input:
-
-```
-obj = {
-  "obj": {
-    "val": {
-      "x": 10,
-      "y": 20
-    }
-  }
-}
-```
-
-Mutation swaps two fields.
-
-| Step | Action |
+| Position | Value |
 | --- | --- |
-| 1 | Access nested proxy |
-| 2 | Store temporary value |
-| 3 | Modify `x` |
-| 4 | Modify `y` |
+| 0 | 1 |
+| 1 | 2 |
+| 2 | 3 |
+| 3 | 4 |
 
-Only the modified nested chain is cloned.
+Candidate values:
 
-Final result:
+| Quantity | Value |
+| --- | --- |
+| Largest pair | 7 |
+| Smallest pair | 3 |
+| same_group | 4 |
+| split_group | \|7 - 103\| = 96 |
 
-```
-{
-  "obj": {
-    "val": {
-      "x": 20,
-      "y": 10
-    }
-  }
-}
-```
+Now the extra `h` is too large. Increasing the minimum pair overshoots badly.
+
+Optimal partition:
+
+| Element | Group |
+| --- | --- |
+| 1 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+| 4 | 1 |
+
+This example shows that splitting is not always beneficial.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(K) | Only modified paths are copied |
-| Space | O(K) | Only changed structures require new memory |
+| Time | $O(n \log n)$ | Sorting dominates the runtime |
+| Space | $O(n)$ | The sorted array and answer array store all elements |
 
-Here `K` represents the total size of modified branches. Unchanged portions are reused through structural sharing, which is the major optimization over deep cloning.
+The constraints allow roughly a few million operations comfortably inside the time limit. Sorting `10^5` elements is easily fast enough in Python, and the remaining work is linear.
 
 ## Test Cases
 
+```python
+# helper: run solution on input string, return output string
+import sys
+import io
+
+def solve():
+    input = sys.stdin.readline
+
+    n, h = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    arr = [(a[i], i) for i in range(n)]
+    arr.sort()
+
+    same_group = (arr[-1][0] + arr[-2][0]) - (arr[0][0] + arr[1][0])
+    split_group = abs(
+        (arr[-1][0] + arr[-2][0]) -
+        (arr[0][0] + arr[1][0] + h)
+    )
+
+    if same_group <= split_group:
+        ans = [1] * n
+        print(same_group)
+        print(*ans)
+    else:
+        ans = [2] * n
+        ans[arr[0][1]] = 1
+        print(split_group)
+        print(*ans)
+
+def run(inp: str) -> str:
+    backup_stdin = sys.stdin
+    backup_stdout = sys.stdout
+
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+
+    solve()
+
+    out = sys.stdout.getvalue()
+
+    sys.stdin = backup_stdin
+    sys.stdout = backup_stdout
+
+    return out
+
+# provided sample
+assert run("3 2\n1 2 3\n") == "1\n1 2 2\n"
+
+# minimum size
+assert run("2 0\n5 10\n") == "0\n1 1\n"
+
+# all equal values
+assert run("5 3\n7 7 7 7 7\n") == "0\n1 2 2 2 2\n"
+
+# large h prefers single group
+assert run("4 100\n1 2 3 4\n") == "4\n1 1 1 1\n"
+
+# off-by-one style ordering check
+assert run("5 2\n10 1 9 2 8\n") == "3\n2 1 2 2 2\n"
 ```
-# basic increment
-obj = {"val": 10}
-helper = ImmutableHelper(obj)
 
-res = helper.produce(lambda p: p.__setitem__("val", p["val"] + 1))
-assert obj == {"val": 10}
-assert res == {"val": 11}
-
-# nested array modification
-obj = {"arr": [1, 2, 3]}
-helper = ImmutableHelper(obj)
-
-def mutate(proxy):
-    proxy["arr"][0] = 5
-
-res = helper.produce(mutate)
-
-assert obj == {"arr": [1, 2, 3]}
-assert res == {"arr": [5, 2, 3]}
-
-# deep nested swap
-obj = {"obj": {"val": {"x": 10, "y": 20}}}
-helper = ImmutableHelper(obj)
-
-def swap(proxy):
-    data = proxy["obj"]["val"]
-    temp = data["x"]
-    data["x"] = data["y"]
-    data["y"] = temp
-
-res = helper.produce(swap)
-
-assert res == {
-    "obj": {
-        "val": {
-            "x": 20,
-            "y": 10
-        }
-    }
-}
-
-# no mutation
-obj = {"x": 1}
-helper = ImmutableHelper(obj)
-
-res = helper.produce(lambda p: None)
-
-assert res == {"x": 1}
-
-# array only
-obj = [1, 2, 3]
-helper = ImmutableHelper(obj)
-
-def update(proxy):
-    proxy[1] = 10
-
-res = helper.produce(update)
-
-assert res == [1, 10, 3]
-```
-
-| Test | Why |
-| --- | --- |
-| Simple increment | Verifies root-level writes |
-| Nested array update | Ensures array indices work |
-| Deep swap | Tests nested aliasing correctness |
-| No mutation | Ensures original object can be reused |
-| Array root | Verifies arrays work as root structures |
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `2 0 / 5 10` | goodness `0` | Minimum array size and `h = 0` |
+| `5 3 / 7 7 7 7 7` | isolate one element | Equal values still benefit from splitting |
+| `4 100 / 1 2 3 4` | all in one group | Large `h` can make splitting harmful |
+| `5 2 / 10 1 9 2 8` | smallest original index isolated | Correct restoration of original ordering |
 
 ## Edge Cases
 
-One important edge case occurs when no mutation happens at all. A naive implementation may still deep clone the entire structure unnecessarily. For example:
+Consider the case where all numbers are equal.
+
+Input:
 
 ```
-proxy => {}
+5 3
+7 7 7 7 7
 ```
 
-The correct behavior is simply returning the original object reference because nothing changed. The implementation handles this by only creating copies lazily during writes.
+Without splitting, every pair value equals `14`, so goodness is `0`.
 
-Another subtle case involves nested aliases:
+If we isolate one element, cross-group pairs become `17`, while same-group pairs remain `14`. The spread becomes `3`.
 
-```
-let data = proxy.obj.val;
-data.x = 5;
-```
-
-If nested proxies are not stable, the write might bypass immutable tracking and accidentally modify the original object. The recursive proxy construction guarantees all nested accesses remain proxied.
-
-Arrays are another common source of bugs. Since JavaScript arrays are objects internally, index assignments must trigger the same copy-on-write behavior as normal properties. The implementation handles lists and dictionaries uniformly, ensuring operations such as:
+The algorithm correctly compares:
 
 ```
-proxy.arr[0] = 10;
+same_group = 0
+split_group = 3
 ```
 
-behave correctly without mutating the original array.
+and keeps everything together.
+
+Now consider a case where splitting helps dramatically.
+
+Input:
+
+```
+3 2
+1 2 3
+```
+
+The raw pair range is:
+
+```
+5 - 3 = 2
+```
+
+Separating the smallest element shifts the minimum upward:
+
+```
+1 + 2 + 2 = 5
+```
+
+while the maximum remains `5`.
+
+The spread collapses to `0`.
+
+Finally, consider the dangerous overshoot case.
+
+Input:
+
+```
+4 100
+1 2 3 4
+```
+
+Separating the smallest pair changes the minimum from `3` to `103`, which becomes larger than the old maximum `7`.
+
+The algorithm uses:
+
+```
+abs(7 - 103)
+```
+
+to compute the true spread `96`.
+
+Without the absolute value, the implementation would incorrectly produce a negative answer.

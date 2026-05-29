@@ -8,7 +8,7 @@ contest_type: "Div. 2"
 rating_range: "800-1300"
 n_problems: 2
 n_verified: 2
-total_solve_s: 272
+total_solve_s: 312
 date: "2026-05-29T00:00:00+07:00"
 weight: 236
 draft: false
@@ -16,9 +16,9 @@ draft: false
 
 # [Codeforces Round 146 (Div. 2)](https://codeforces.com/contest/236)
 
-**Type:** Div. 2 | **Problems:** 2 | **Verified:** 2/2 | **Rating range:** 800-1300 | **Time:** 4m 32s
+**Type:** Div. 2 | **Problems:** 2 | **Verified:** 2/2 | **Rating range:** 800-1300 | **Time:** 5m 12s
 
 | Problem | Name | Rating | Tags | Solve Time | Verified |
 |---|---|---|---|---|---|
-| [A](A/) | [Boy or Girl](https://codeforces.com/problemset/problem/236/A) | 800 | brute-force, implementation, strings | 1m 39s | ✓ |
-| [B](B/) | [Easy Number Challenge](https://codeforces.com/problemset/problem/236/B) | 1300 | implementation, number-theory | 2m 53s | ✓ |
+| [A](A/) | [Boy or Girl](https://codeforces.com/problemset/problem/236/A) | 800 | brute-force, implementation, strings | 3m 27s | ✓ |
+| [B](B/) | [Easy Number Challenge](https://codeforces.com/problemset/problem/236/B) | 1300 | implementation, number-theory | 1m 45s | ✓ |

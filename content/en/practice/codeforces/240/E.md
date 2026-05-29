@@ -1,6 +1,6 @@
 ---
 title: "CF 240E - Road Repairs"
-description: "We are given a directed graph of cities and roads. City 1 is the capital. Every road already exists, but some roads are broken and cannot currently be used. A broken road may be repaired, after which it becomes usable."
+description: "We have a directed graph of cities and roads. City 1 is the capital. Every road is either already usable or broken. A broken road may be repaired, after which it behaves like a normal directed edge. The government wants every city to become reachable from the capital."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "graphs", "greedy"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 145 (Div. 1, ACM-ICPC Rules)"
 rating: 2800
 weight: 240
-solve_time_s: 235
+solve_time_s: 118
 verified: true
 draft: false
 ---
@@ -18,326 +18,245 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** dfs and similar, graphs, greedy  
-**Solve time:** 3m 55s  
+**Solve time:** 1m 58s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a directed graph of cities and roads. City `1` is the capital. Every road already exists, but some roads are broken and cannot currently be used. A broken road may be repaired, after which it becomes usable.
+We have a directed graph of cities and roads. City `1` is the capital. Every road is either already usable or broken. A broken road may be repaired, after which it behaves like a normal directed edge.
 
-The goal is to choose the minimum number of roads to repair so that every city becomes reachable from the capital through directed paths consisting only of good roads and repaired roads.
+The government wants every city to become reachable from the capital. We are allowed to repair any subset of broken roads, and we must minimize how many repairs are performed.
 
-The graph has up to `10^5` vertices and `10^5` edges, so the solution must be close to linear. Anything quadratic is immediately impossible. Even an `O(nm)` traversal would require around `10^10` operations in the worst case, which is far beyond the time limit. This strongly suggests a graph traversal combined with a shortest-path style optimization.
+The graph is directed, which changes the problem completely. A road from `u` to `v` helps only in that direction. Even if there is a path back, that does not help the capital reach the city.
 
-A subtle detail is that we are not minimizing path lengths. We are minimizing how many broken edges must appear in the final reachable structure. A city may be reachable through many different paths, and we only care about the number of repaired edges used.
+The input gives every edge together with a flag:
 
-Another important detail is that the repaired roads do not need to form a tree explicitly. The only requirement is global reachability from city `1`. Still, any valid solution can always be reduced to a directed spanning arborescence rooted at `1`, because extra reachable edges are unnecessary. That observation is what allows the problem to become manageable.
+- `0` means the road already works.
+- `1` means the road is broken and can only be used if repaired.
 
-One easy mistake is to greedily repair locally cheap edges without considering downstream consequences.
+The output is either:
 
-Consider:
+- `-1` if some city is unreachable even after repairing every broken road, or
+- the minimum number of repaired roads together with one valid set of edge indices.
+
+The constraints are large: both `n` and `m` are up to `10^5`. Any algorithm that repeatedly runs graph traversals or recomputes reachability from scratch will fail. For example, trying every subset of broken roads is impossible, and even running BFS once per vertex would already become too slow.
+
+A linear or near-linear graph algorithm is required. Something around `O(n + m)` is ideal.
+
+Several edge cases are easy to mishandle.
+
+Consider this graph:
 
 ```
 1 -> 2 (broken)
-1 -> 3 (good)
-3 -> 2 (good)
+2 -> 3 (good)
 ```
 
 Input:
 
 ```
-3 3
+3 2
 1 2 1
-1 3 0
-3 2 0
+2 3 0
 ```
 
-The correct answer is `0`, because city `2` is already reachable through `1 -> 3 -> 2`. A careless algorithm that repairs every broken edge leaving already reachable nodes would incorrectly output `1`.
+Repairing only the first edge is enough. A careless solution that separately minimizes repairs for every city could mistakenly count the same repaired edge multiple times.
 
-Another dangerous case is disconnected graphs.
+Another dangerous case is unreachable components:
 
 ```
 4 2
 1 2 0
-3 4 0
+3 4 1
 ```
 
-Cities `3` and `4` can never be reached from `1`, even if all roads are repaired. The correct output is:
+Cities `3` and `4` are disconnected from the capital even if every road is repaired. The correct answer is:
 
 ```
 -1
 ```
 
-An implementation that only optimizes repair counts without first verifying reachability in the full graph would silently produce nonsense.
+Some implementations only search using currently good roads and incorrectly conclude that repairing one edge somewhere would help.
 
-A third tricky situation appears when multiple paths exist with different repair counts.
+Cycles also matter:
 
 ```
-4 4
+3 3
 1 2 1
-1 3 0
+2 3 0
 3 2 0
-2 4 0
 ```
 
-The best way to reach city `2` uses zero repaired roads through city `3`. If we permanently commit to the direct broken edge too early, we unnecessarily increase the total answer.
+Repairing edge `1 -> 2` unlocks both `2` and `3`. The optimal answer repairs one edge, not two.
 
-The key challenge is global optimization over reachability, not independent optimization per node.
+The structure of the problem is global. We are not independently connecting cities. We are building one directed reachable region from the capital.
 
 ## Approaches
 
-A brute-force approach would try every subset of broken edges. For each subset, we temporarily repair those edges and run a DFS or BFS from city `1` to check whether all cities become reachable.
+The brute-force idea is straightforward. Treat every broken edge as optional, try all subsets of broken edges, and check whether all vertices become reachable from the capital.
 
-If there are `k` broken edges, this requires checking `2^k` subsets. In the worst case, `k` can be `10^5`, making this completely impossible.
+If there are `k` broken edges, this requires `2^k` subsets. Reachability checking costs `O(n + m)` each time. Even with only `40` broken edges, this becomes astronomically large.
 
-A slightly smarter brute-force idea is to think in terms of shortest paths. For every city, we want a path from the capital minimizing the number of repaired edges. Since edge weights are only `0` or `1`, we can run 0-1 BFS from node `1`.
+A slightly smarter brute-force tries shortest paths independently for every city. Assign cost `0` to good edges and cost `1` to broken edges. Then compute the minimum repair count needed to reach every vertex.
 
-This correctly computes, for each city, the minimum number of repaired edges needed along a path from the capital. Unfortunately, summing those values is wrong because different cities may share repaired edges.
+This works for individual cities, but it does not solve the real optimization target. Different cities can share repaired edges. Summing independent shortest-path costs overcounts repairs.
 
-For example:
+The key observation is that we only care whether every vertex becomes reachable, not about minimizing each path separately.
 
-```
-1 -> 2 (broken)
-2 -> 3 (good)
-2 -> 4 (good)
-```
+Suppose we assign weight:
 
-Repairing edge `1 -> 2` once reaches all cities. But shortest-path sums would count that broken edge separately for every node.
+- `0` to good edges,
+- `1` to broken edges.
 
-So the problem is not independent shortest paths. We need one global structure.
+Now imagine building a shortest path tree rooted at the capital, where the distance of a node means the minimum number of repaired edges needed to reach it.
 
-The crucial observation is that any feasible solution corresponds to a directed spanning tree rooted at `1`. Every city except the root has exactly one incoming edge in this tree. The number of repaired edges equals the number of broken edges chosen in the tree.
+If every node is reachable in this weighted graph, then selecting the parent edge used in the shortest path tree gives a globally optimal set of repaired roads.
 
-This transforms the problem into finding a minimum-cost arborescence rooted at node `1`, where good edges have cost `0` and broken edges have cost `1`.
+Why does this work?
 
-General minimum arborescence algorithms are complicated, but this problem has a special structure. Every edge cost is only `0` or `1`, and we only care about reachability from a single source.
+Every repaired edge in the final solution must appear somewhere on a path from the capital. A shortest path tree guarantees that each node is reached with the minimum possible number of repaired edges. More importantly, the union of all parent edges forms a directed arborescence. Any repaired edge in that tree contributes to reaching at least one new vertex. No repair is wasted.
 
-We can process the graph using DFS-style augmentations:
-
-If a node is already reachable using only good edges, no repair is needed for it.
-
-Whenever we encounter an unreached strongly connected region, we want to enter it using as few repaired edges as possible. Since all repair costs are either `0` or `1`, the optimal structure can be built greedily by always prioritizing free edges and only repairing when absolutely necessary.
-
-The standard solution uses DFS with strongly connected components condensation and greedily selects one entering broken edge whenever a new component must be activated.
-
-Another elegant viewpoint is this:
-
-We first consider only good edges. Any node already reachable from `1` is free. Every remaining SCC behaves like an indivisible block because once we repair one incoming edge into the SCC, all nodes inside may become reachable through internal paths.
-
-The condensation graph is a DAG. Every unreachable SCC with indegree zero in this DAG must receive at least one repaired incoming edge. Repairing exactly one such edge per required SCC is optimal.
+Since edge weights are only `0` and `1`, we can compute shortest paths using 0-1 BFS in linear time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over repaired subsets | O(2^m · (n + m)) | O(n + m) | Too slow |
-| Shortest paths independently | O(n + m) | O(n + m) | Incorrect |
-| SCC condensation + greedy repairs | O(n + m) | O(n + m) | Accepted |
+| Brute Force over repaired subsets | $O(2^k \cdot (n+m))$ | $O(n+m)$ | Too slow |
+| Independent shortest paths per city | $O(n(n+m))$ | $O(n+m)$ | Incorrect idea |
+| 0-1 BFS + shortest path tree | $O(n+m)$ | $O(n+m)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-### Step 1
+1. Build the directed graph.
 
-Build two adjacency lists.
+For every edge, store:
 
-One graph contains all edges. Another graph contains only good edges with `c = 0`.
+- destination vertex,
+- repair cost (`0` or `1`),
+- original edge index.
+2. Run 0-1 BFS from city `1`.
 
-We need the full graph later for SCC construction, but the good-edge graph tells us which cities are already reachable without repairs.
+Moving through a good edge costs `0`.
 
-### Step 2
+Moving through a broken edge costs `1`.
 
-Run DFS or BFS from city `1` using only good edges.
+Because all weights are either `0` or `1`, we can use a deque:
 
-Every visited city is already reachable for free and never needs any repaired edge.
+- push front for cost `0`,
+- push back for cost `1`.
 
-### Step 3
+This computes the minimum number of repaired edges needed to reach every city.
+3. While relaxing edges, store the parent edge that produced the best distance.
 
-Run Kosaraju's algorithm on the full graph to compute strongly connected components.
+For each vertex `v`, keep:
 
-Inside an SCC, every node can reach every other node after the SCC becomes activated. Treating SCCs as single units simplifies the global structure.
+- `parent[v]` = edge index used to reach `v`,
+- `parent_cost[v]` = whether that edge is broken.
+4. If some city remains unreachable, print `-1`.
 
-### Step 4
+This means no directed path exists even after repairing every broken edge.
+5. Reconstruct the chosen repair set.
 
-Mark every SCC that already contains a free-reachable node from Step 2.
+Every vertex except the capital has exactly one parent edge in the shortest path tree.
 
-Those SCCs are already active.
+Traverse all vertices:
 
-### Step 5
+- if the parent edge is broken, add its index to the answer.
+6. Output the collected edge indices.
 
-Build the condensation DAG implicitly.
-
-For every original edge `u -> v`:
-
-If `comp[u] != comp[v]`, then there is a DAG edge from `comp[u]` to `comp[v]`.
-
-We only care about SCCs not already active.
-
-### Step 6
-
-For every inactive SCC, compute whether it has an incoming edge from another inactive SCC.
-
-If an inactive SCC has no incoming edge from another inactive SCC, then it is a source in the inactive condensation graph.
-
-Such an SCC cannot become reachable unless we repair at least one edge entering it from the active side.
-
-### Step 7
-
-For every inactive source SCC, choose any broken edge entering it from an active SCC.
-
-Repairing one such edge activates the entire SCC and everything reachable from it.
-
-The number of such SCCs is minimal, because every inactive source SCC requires at least one repaired entry edge.
+The number of such edges is minimal.
 
 ### Why it works
 
-The condensation graph of SCCs is a DAG.
+The algorithm maintains the invariant that `dist[v]` equals the minimum number of repaired edges needed to reach `v` from the capital.
 
-All SCCs already reachable using good edges are initially active. Every remaining SCC belongs to the inactive subgraph.
+The parent pointers define a shortest path tree. Every vertex is connected to the capital through a path achieving this minimum repair count.
 
-Any inactive SCC with indegree zero inside the inactive subgraph cannot be reached through another inactive SCC. The only way to activate it is through a repaired edge entering from the active side.
+Suppose another solution repaired fewer roads overall. Then at least one vertex in our tree would need to be reached using fewer repaired edges than its shortest-path distance, which is impossible.
 
-Since every such SCC needs at least one repaired edge, the number of inactive source SCCs is a lower bound on the answer.
+The selected repaired edges are exactly the broken edges that appear in the shortest path tree. Removing any one of them disconnects at least one subtree from the capital. Every chosen repair is necessary for the tree structure.
 
-Repairing one entering edge for each inactive source SCC is also sufficient. Once entered, the SCC becomes active, and reachability propagates forward through the DAG.
-
-So the algorithm achieves both the lower bound and feasibility, proving optimality.
+Because the tree reaches all vertices and uses the minimum possible number of repaired edges along every root-to-vertex path, the total number of repaired roads is globally minimal.
 
 ## Python Solution
 
 ```python
 import sys
-sys.setrecursionlimit(1 << 25)
+from collections import deque
+
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
+def solve():
+    n, m = map(int, input().split())
 
-g = [[] for _ in range(n)]
-rg = [[] for _ in range(n)]
-good = [[] for _ in range(n)]
+    graph = [[] for _ in range(n + 1)]
 
-edges = []
+    for idx in range(1, m + 1):
+        a, b, c = map(int, input().split())
+        graph[a].append((b, c, idx))
 
-for idx in range(m):
-    a, b, c = map(int, input().split())
-    a -= 1
-    b -= 1
+    INF = 10**18
 
-    edges.append((a, b, c))
+    dist = [INF] * (n + 1)
+    parent = [-1] * (n + 1)
+    parent_cost = [0] * (n + 1)
 
-    g[a].append((b, idx))
-    rg[b].append(a)
+    dist[1] = 0
 
-    if c == 0:
-        good[a].append(b)
+    dq = deque([1])
 
-# Step 1: reachable using only good edges
-reachable = [False] * n
+    while dq:
+        u = dq.popleft()
 
-stack = [0]
-reachable[0] = True
+        for v, w, idx in graph[u]:
+            nd = dist[u] + w
 
-while stack:
-    u = stack.pop()
+            if nd < dist[v]:
+                dist[v] = nd
+                parent[v] = idx
+                parent_cost[v] = w
 
-    for v in good[u]:
-        if not reachable[v]:
-            reachable[v] = True
-            stack.append(v)
+                if w == 0:
+                    dq.appendleft(v)
+                else:
+                    dq.append(v)
 
-# If even full graph cannot reach all nodes, answer is impossible
-vis = [False] * n
-stack = [0]
-vis[0] = True
+    for v in range(1, n + 1):
+        if dist[v] == INF:
+            print(-1)
+            return
 
-while stack:
-    u = stack.pop()
+    ans = []
 
-    for v, _ in g[u]:
-        if not vis[v]:
-            vis[v] = True
-            stack.append(v)
+    for v in range(2, n + 1):
+        if parent_cost[v] == 1:
+            ans.append(parent[v])
 
-if not all(vis):
-    print(-1)
-    sys.exit()
+    if not ans:
+        print(0)
+    else:
+        print(len(ans))
+        print(*ans)
 
-# Kosaraju
-used = [False] * n
-order = []
-
-def dfs1(u):
-    used[u] = True
-
-    for v, _ in g[u]:
-        if not used[v]:
-            dfs1(v)
-
-    order.append(u)
-
-for i in range(n):
-    if not used[i]:
-        dfs1(i)
-
-comp = [-1] * n
-
-def dfs2(u, c):
-    comp[u] = c
-
-    for v in rg[u]:
-        if comp[v] == -1:
-            dfs2(v, c)
-
-cid = 0
-
-for u in reversed(order):
-    if comp[u] == -1:
-        dfs2(u, cid)
-        cid += 1
-
-active = [False] * cid
-
-for i in range(n):
-    if reachable[i]:
-        active[comp[i]] = True
-
-indeg = [0] * cid
-candidate = [-1] * cid
-
-for idx, (u, v, w) in enumerate(edges):
-    cu = comp[u]
-    cv = comp[v]
-
-    if cu == cv:
-        continue
-
-    if not active[cv]:
-        if not active[cu]:
-            indeg[cv] += 1
-        elif w == 1 and candidate[cv] == -1:
-            candidate[cv] = idx + 1
-
-answer = []
-
-for c in range(cid):
-    if not active[c] and indeg[c] == 0:
-        answer.append(candidate[c])
-
-print(len(answer))
-
-if answer:
-    print(*answer)
+solve()
 ```
 
-The first traversal computes which cities are already reachable using only good roads. Those cities never force repairs.
+The graph is stored as adjacency lists because the constraints are too large for adjacency matrices.
 
-The second traversal over the full graph checks feasibility. This is essential because SCC reasoning only matters if the graph is fundamentally reachable after repairs.
+The central part of the implementation is the 0-1 BFS. Ordinary BFS only works for unweighted graphs, while Dijkstra would work but is unnecessarily expensive here. Since every edge weight is either `0` or `1`, a deque simulates Dijkstra in linear time.
 
-Kosaraju's algorithm computes SCC identifiers for every node. The implementation stores both the original graph and the reverse graph, which is standard for Kosaraju.
+When a relaxation improves `dist[v]`, the code also updates:
 
-The subtle part is computing indegrees only inside the inactive condensation subgraph. We do not care about edges from active SCCs here, because those are exactly the edges that can activate a source SCC.
+- the edge used to enter `v`,
+- whether that edge required repair.
 
-The `candidate` array stores one broken edge entering each inactive SCC from an active SCC. We only need one such edge because activating the SCC once is enough.
+The shortest path tree is implicitly stored through these parent pointers.
 
-Another subtle implementation detail is indexing. Input edges are 1-indexed in the output, so the stored edge index uses `idx + 1`.
+One subtle point is that we only update when `nd < dist[v]`, not `<=`. Once a vertex already has an optimal distance, replacing it with another equal-distance parent is unnecessary.
+
+Another important detail is unreachable detection. If a node still has distance `INF` after BFS, then even repairing all broken edges cannot connect it to the capital, because no directed path exists at all.
+
+Finally, the answer is reconstructed by scanning parent edges. Every broken parent edge must be repaired.
 
 ## Worked Examples
 
@@ -351,30 +270,21 @@ Input:
 3 2 1
 ```
 
-Initially reachable through good edges:
+| Step | Current Node | Relaxed Edge | New Distance | Parent |
+| --- | --- | --- | --- | --- |
+| Start | 1 | - | dist[1] = 0 | - |
+| 1 | 1 | 1 → 3 (0) | dist[3] = 0 | edge 1 |
+| 2 | 3 | 3 → 2 (1) | dist[2] = 1 | edge 2 |
 
-| Step | Current Node | Reachable Cities |
-| --- | --- | --- |
-| Start | 1 | {1} |
-| Use 1 -> 3 | 3 | {1, 3} |
+Final distances:
 
-City `2` is still unreachable.
-
-SCC decomposition:
-
-| City | SCC |
+| Vertex | Distance |
 | --- | --- |
-| 1 | A |
-| 3 | B |
-| 2 | C |
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 0 |
 
-Inactive SCCs:
-
-| SCC | Active | Inactive Indegree |
-| --- | --- | --- |
-| C | No | 0 |
-
-The only entering edge is broken edge `3 -> 2`, so we repair it.
+The shortest path tree uses edge `1` and edge `2`. Only edge `2` is broken, so it must be repaired.
 
 Output:
 
@@ -383,7 +293,7 @@ Output:
 2
 ```
 
-This example shows the simplest situation where exactly one repair is unavoidable.
+This trace shows how zero-cost edges propagate immediately through the deque while broken roads contribute one repair cost.
 
 ### Example 2
 
@@ -394,38 +304,42 @@ Input:
 1 2 1
 1 3 0
 3 2 0
-2 4 0
+2 4 1
 ```
 
-Good-edge reachability:
+| Step | Current Node | Relaxed Edge | New Distance | Parent |
+| --- | --- | --- | --- | --- |
+| Start | 1 | - | dist[1] = 0 | - |
+| 1 | 1 | 1 → 2 (1) | dist[2] = 1 | edge 1 |
+| 2 | 1 | 1 → 3 (0) | dist[3] = 0 | edge 2 |
+| 3 | 3 | 3 → 2 (0) | dist[2] = 0 | edge 3 |
+| 4 | 2 | 2 → 4 (1) | dist[4] = 1 | edge 4 |
 
-| Step | Current Node | Reachable Cities |
-| --- | --- | --- |
-| Start | 1 | {1} |
-| Use 1 -> 3 | 3 | {1, 3} |
-| Use 3 -> 2 | 2 | {1, 2, 3} |
-| Use 2 -> 4 | 4 | {1, 2, 3, 4} |
+Final parent edges:
 
-All cities are already reachable.
+- vertex 2 uses edge 3,
+- vertex 3 uses edge 2,
+- vertex 4 uses edge 4.
 
-No SCC requires activation.
+Only edge `4` is broken inside the shortest path tree.
 
 Output:
 
 ```
-0
+1
+4
 ```
 
-This demonstrates why greedily repairing direct broken edges is wrong. The broken edge `1 -> 2` is unnecessary.
+This example demonstrates why independent shortest paths are dangerous. A naive solution might repair edge `1 -> 2`, but the algorithm correctly discovers a free alternative path through city `3`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n + m) | DFS traversals and SCC construction are linear |
-| Space | O(n + m) | Graph storage and auxiliary arrays |
+| Time | $O(n+m)$ | Every edge is processed a constant number of times in 0-1 BFS |
+| Space | $O(n+m)$ | Adjacency lists, distance arrays, and parent arrays |
 
-The graph contains at most `10^5` vertices and edges, so linear complexity easily fits within the limits. Python handles a few hundred thousand adjacency operations comfortably within one second when implemented iteratively or with increased recursion limits.
+With `10^5` vertices and edges, linear complexity easily fits within the limits. The deque operations are all constant time, and memory usage stays proportional to the graph size.
 
 ## Test Cases
 
@@ -433,187 +347,113 @@ The graph contains at most `10^5` vertices and edges, so linear complexity easil
 # helper: run solution on input string, return output string
 import sys
 import io
-
-def solve():
-    sys.setrecursionlimit(1 << 25)
-    input = sys.stdin.readline
-
-    n, m = map(int, input().split())
-
-    g = [[] for _ in range(n)]
-    rg = [[] for _ in range(n)]
-    good = [[] for _ in range(n)]
-
-    edges = []
-
-    for idx in range(m):
-        a, b, c = map(int, input().split())
-        a -= 1
-        b -= 1
-
-        edges.append((a, b, c))
-
-        g[a].append((b, idx))
-        rg[b].append(a)
-
-        if c == 0:
-            good[a].append(b)
-
-    reachable = [False] * n
-
-    stack = [0]
-    reachable[0] = True
-
-    while stack:
-        u = stack.pop()
-
-        for v in good[u]:
-            if not reachable[v]:
-                reachable[v] = True
-                stack.append(v)
-
-    vis = [False] * n
-    stack = [0]
-    vis[0] = True
-
-    while stack:
-        u = stack.pop()
-
-        for v, _ in g[u]:
-            if not vis[v]:
-                vis[v] = True
-                stack.append(v)
-
-    if not all(vis):
-        print(-1)
-        return
-
-    used = [False] * n
-    order = []
-
-    def dfs1(u):
-        used[u] = True
-
-        for v, _ in g[u]:
-            if not used[v]:
-                dfs1(v)
-
-        order.append(u)
-
-    for i in range(n):
-        if not used[i]:
-            dfs1(i)
-
-    comp = [-1] * n
-
-    def dfs2(u, c):
-        comp[u] = c
-
-        for v in rg[u]:
-            if comp[v] == -1:
-                dfs2(v, c)
-
-    cid = 0
-
-    for u in reversed(order):
-        if comp[u] == -1:
-            dfs2(u, cid)
-            cid += 1
-
-    active = [False] * cid
-
-    for i in range(n):
-        if reachable[i]:
-            active[comp[i]] = True
-
-    indeg = [0] * cid
-    candidate = [-1] * cid
-
-    for idx, (u, v, w) in enumerate(edges):
-        cu = comp[u]
-        cv = comp[v]
-
-        if cu == cv:
-            continue
-
-        if not active[cv]:
-            if not active[cu]:
-                indeg[cv] += 1
-            elif w == 1 and candidate[cv] == -1:
-                candidate[cv] = idx + 1
-
-    ans = []
-
-    for c in range(cid):
-        if not active[c] and indeg[c] == 0:
-            ans.append(candidate[c])
-
-    print(len(ans))
-
-    if ans:
-        print(*ans)
+from collections import deque
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
 
-    solve()
+    input = sys.stdin.readline
 
-    return sys.stdout.getvalue()
+    out = io.StringIO()
+    sys.stdout = out
+
+    n, m = map(int, input().split())
+
+    graph = [[] for _ in range(n + 1)]
+
+    for idx in range(1, m + 1):
+        a, b, c = map(int, input().split())
+        graph[a].append((b, c, idx))
+
+    INF = 10**18
+
+    dist = [INF] * (n + 1)
+    parent = [-1] * (n + 1)
+    parent_cost = [0] * (n + 1)
+
+    dist[1] = 0
+
+    dq = deque([1])
+
+    while dq:
+        u = dq.popleft()
+
+        for v, w, idx in graph[u]:
+            nd = dist[u] + w
+
+            if nd < dist[v]:
+                dist[v] = nd
+                parent[v] = idx
+                parent_cost[v] = w
+
+                if w == 0:
+                    dq.appendleft(v)
+                else:
+                    dq.append(v)
+
+    for v in range(1, n + 1):
+        if dist[v] == INF:
+            print(-1)
+            return out.getvalue()
+
+    ans = []
+
+    for v in range(2, n + 1):
+        if parent_cost[v] == 1:
+            ans.append(parent[v])
+
+    if not ans:
+        print(0)
+    else:
+        print(len(ans))
+        print(*ans)
+
+    return out.getvalue()
 
 # provided sample
 assert run(
-"""3 2
-1 3 0
-3 2 1
-"""
+    "3 2\n"
+    "1 3 0\n"
+    "3 2 1\n"
 ) == "1\n2\n"
 
-# already reachable
+# minimum size
 assert run(
-"""4 4
-1 2 1
-1 3 0
-3 2 0
-2 4 0
-"""
+    "1 1\n"
+    "1 1 0\n"
 ) == "0\n"
 
-# disconnected graph
+# unreachable component
 assert run(
-"""4 2
-1 2 0
-3 4 0
-"""
+    "4 2\n"
+    "1 2 0\n"
+    "3 4 1\n"
 ) == "-1\n"
 
-# minimum input
+# all good roads
 assert run(
-"""1 1
-1 1 0
-"""
+    "3 2\n"
+    "1 2 0\n"
+    "2 3 0\n"
 ) == "0\n"
 
-# one repair activates SCC
-out = run(
-"""4 4
-1 2 1
-2 3 0
-3 2 0
-3 4 0
-"""
-)
-
-assert out.startswith("1\n")
+# alternative cheaper path
+assert run(
+    "4 4\n"
+    "1 2 1\n"
+    "1 3 0\n"
+    "3 2 0\n"
+    "2 4 1\n"
+) == "1\n4\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Sample 1 | Repair edge 2 | Basic repair selection |
-| Already reachable graph | 0 | Avoid unnecessary repairs |
-| Disconnected graph | -1 | Feasibility detection |
-| Single node graph | 0 | Minimum boundary case |
-| SCC activation case | One repaired edge | Correct SCC condensation logic |
+| Single vertex graph | `0` | Capital already reaches all cities |
+| Disconnected graph | `-1` | Detects impossible reachability |
+| All roads good | `0` | No unnecessary repairs |
+| Alternative free path | Repair only edge 4 | Confirms shortest-path-tree logic |
+| Sample case | Repair edge 2 | Basic correctness |
 
 ## Edge Cases
 
@@ -622,78 +462,57 @@ Consider the disconnected graph:
 ```
 4 2
 1 2 0
-3 4 0
+3 4 1
 ```
 
-The DFS over the full graph starting from city `1` visits only cities `1` and `2`.
+The BFS starts from city `1` and only reaches city `2`. Cities `3` and `4` remain at distance `INF`.
 
-| City | Reachable in Full Graph |
-| --- | --- |
-| 1 | Yes |
-| 2 | Yes |
-| 3 | No |
-| 4 | No |
-
-Since not all cities are reachable even after allowing every road, the algorithm immediately prints:
+The algorithm immediately prints:
 
 ```
 -1
 ```
 
-This prevents invalid SCC processing on impossible instances.
+This is correct because no directed path from the capital exists, even if every broken road is repaired.
 
-Now consider:
+Now consider shared repairs:
 
 ```
-4 4
+3 2
 1 2 1
-1 3 0
-3 2 0
-2 4 0
+2 3 0
 ```
 
-The good-edge DFS already reaches all nodes.
+Distances become:
 
-| Step | Visited |
-| --- | --- |
-| Start | {1} |
-| Through 1 -> 3 | {1, 3} |
-| Through 3 -> 2 | {1, 2, 3} |
-| Through 2 -> 4 | {1, 2, 3, 4} |
+- `dist[2] = 1`
+- `dist[3] = 1`
 
-All SCCs become active immediately, so no inactive source SCC exists.
+Both cities depend on the same repaired edge `1 -> 2`. The shortest path tree contains only one broken edge, so the answer is:
+
+```
+1
+1
+```
+
+A naive per-city approach could incorrectly count two repairs.
+
+Finally, consider cycles:
+
+```
+3 3
+1 2 1
+2 3 0
+3 2 0
+```
+
+The BFS repairs edge `1 -> 2` once, then the cycle between `2` and `3` is already usable through good roads.
 
 The algorithm outputs:
 
 ```
-0
+1
+1
 ```
 
-This confirms that the method never repairs redundant roads.
-
-Finally, consider an SCC activation case:
-
-```
-5 5
-1 2 1
-2 3 0
-3 2 0
-3 4 0
-4 5 0
-```
-
-Cities `2` and `3` form an SCC.
-
-Without repairing edge `1 -> 2`, none of the SCC becomes reachable.
-
-The inactive condensation graph has exactly one source SCC:
-
-| SCC | Contains | Inactive Indegree |
-| --- | --- | --- |
-| A | {2,3} | 0 |
-| B | {4} | 1 |
-| C | {5} | 1 |
-
-Repairing a single edge entering SCC `A` activates the entire chain.
-
-The algorithm repairs only edge `1 -> 2`, which is optimal.
+The cycle does not confuse the parent-tree construction because every vertex keeps only the best known incoming edge.

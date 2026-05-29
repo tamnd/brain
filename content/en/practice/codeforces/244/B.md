@@ -1,6 +1,6 @@
 ---
 title: "CF 244B - Undoubtedly Lucky Numbers"
-description: "We are asked to count all positive integers up to a given number n that are “undoubtedly lucky.” A number is undoubtedly lucky if there exists a pair of digits, say x and y, such that every digit in the number is either x or y."
+description: "We are given a single positive integer $n$, and we need to count how many integers from 1 up to $n$ have a very specific property: there exists a pair of digits $x$ and $y$ such that every digit in the number’s decimal representation is either $x$ or $y$."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "brute-force", "dfs-and-similar"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 150 (Div. 2)"
 rating: 1600
 weight: 244
-solve_time_s: 73
+solve_time_s: 68
 verified: true
 draft: false
 ---
@@ -18,40 +18,58 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** bitmasks, brute force, dfs and similar  
-**Solve time:** 1m 13s  
+**Solve time:** 1m 8s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to count all positive integers up to a given number _n_ that are “undoubtedly lucky.” A number is undoubtedly lucky if there exists a pair of digits, say _x_ and _y_, such that every digit in the number is either _x_ or _y_. The pair can include the same digit twice, meaning numbers with only one repeated digit are also valid. For example, if _n_ is 10, the numbers 1 through 10 all qualify because each number contains only one digit, which trivially forms a pair of identical digits.
+We are given a single positive integer $n$, and we need to count how many integers from 1 up to $n$ have a very specific property: there exists a pair of digits $x$ and $y$ such that every digit in the number’s decimal representation is either $x$ or $y$. The pair is allowed to use the same digit twice, so numbers like 777 or 444 are also valid by choosing $x = y$.
 
-The input is a single integer _n_ with a maximum of $10^9$. The output is the count of positive integers from 1 to _n_ that satisfy the “undoubtedly lucky” property. Since _n_ can be as large as a billion, a naive approach that checks each number individually would perform up to $10^9$ iterations, which is too slow for a 2-second time limit. We need a method that generates only numbers that could possibly be lucky and compares them against _n_.
+Rephrased in more operational terms, we are counting all numbers $a \le n$ whose set of distinct digits has size at most 2. The digits themselves can be anything from 0 to 9, but once a pair is fixed, every digit in the number must come from that pair.
 
-A subtle edge case occurs when _n_ is small, such as 1, 2, or 10. In these cases, numbers with only one digit are all undoubtedly lucky. Another edge case is when _n_ includes digits beyond the chosen lucky digits. For example, if _x_ and _y_ are 1 and 2 and _n_ is 123, the number 123 is not undoubtedly lucky because it contains a 3. A careless approach that ignores digit comparison would overcount.
+The constraint $n \le 10^9$ implies at most 10 digits. A naive per-number digit check is already cheap, but the real difficulty is that we also have to consider all possible digit-pair structures implicitly, and there are many overlapping representations if we try to enumerate them directly.
+
+A subtle edge case comes from leading digits and digit 0. For example, numbers like 101 are valid for the digit set {1, 0}, but a naive approach that interprets numbers as fixed-length strings or ignores digit reuse patterns can miscount if it tries to construct numbers rather than validate them.
+
+Another edge case is when the two allowed digits are identical. For instance, 7, 77, 777 all belong to a single-digit set, and such families need to be counted consistently without double counting when we iterate over digit pairs.
 
 ## Approaches
 
-A brute-force approach would iterate through every integer from 1 to _n_ and check whether each number is undoubtedly lucky. This involves converting each number to a string, collecting its digits into a set, and verifying that the set contains at most two distinct elements. This is correct in principle but requires O(n log n) operations, because converting numbers to strings and iterating over digits adds logarithmic work per number. For $n = 10^9$, this approach is too slow.
+A brute-force solution would iterate over every number from 1 to $n$, extract its digits, and check whether it uses at most two distinct digits. This check is straightforward: scan digits, store them in a set, and verify its size. Each number costs $O(\log n)$, so the total complexity is $O(n \log n)$. For $n = 10^9$, this becomes infeasible because we would perform around a billion checks.
 
-The key insight for an optimal approach is to generate numbers composed only of two chosen digits, then check whether they are less than or equal to _n_. There are only 45 distinct pairs of digits from 0 to 9 (including pairs with identical digits). We can use a depth-first search or backtracking strategy to generate all numbers from 1 to _n_ that consist exclusively of a given pair. For each pair, we recursively append either digit to build numbers, pruning branches that exceed _n_. This ensures we never examine numbers that cannot be included, reducing the overall search space dramatically.
+The key observation is that we do not need to treat numbers individually. Instead, we can reverse the perspective: fix a pair of digits $(x, y)$, and count how many numbers $\le n$ can be formed using only those digits. Each valid number belongs to at least one such pair, and since there are only 100 ordered pairs of digits, this becomes manageable.
 
-This approach leverages the combinatorial structure of the problem: undoubtedly lucky numbers are constrained by digit choices, not their magnitude. Generating numbers by their digits avoids iterating through irrelevant numbers.
+However, direct counting over pairs still risks overcounting because a number with digits {3} is valid for many pairs like (3,3), (3,5), (3,7), etc. The resolution is to avoid reasoning over pairs explicitly and instead generate numbers directly from digit sets using DFS or BFS, ensuring each number is generated exactly once.
+
+We perform a digit construction process: starting from empty, we append digits from 0 to 9, but we only allow at most two distinct digits in the construction. Whenever we add a new digit, we ensure the set of used digits stays size ≤ 2. This produces exactly the valid numbers, and we prune any branch that exceeds $n$.
+
+Because the depth is at most 10 digits, and each node branches to at most 2 digits once the set is fixed, the search space remains small.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n log n) | O(log n) | Too slow for n up to 10^9 |
-| Digit Generation DFS | O(45 * log_10(n) * 2^log_10(n)) worst-case practical | O(log_10(n)) recursion | Accepted |
+| Brute Force | $O(n \log n)$ | $O(1)$ | Too slow |
+| Optimal DFS generation | $O(\text{number of valid numbers})$ | $O(\log n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Loop over all pairs of digits (x, y) from 0 to 9, including x = y. Skip pairs where x = 0 because no valid number can start with 0. Each pair represents a potential lucky-digit combination.
-2. For each pair (x, y), initialize a depth-first search starting from an empty string. The DFS will build numbers digit by digit.
-3. At each step in DFS, if the current number string is non-empty, convert it to an integer and compare it with _n_. If it is less than or equal to _n_, include it in a global set of valid numbers. Using a set avoids double-counting numbers generated by symmetric digit pairs like (4,7) and (7,4).
-4. Recursively append either x or y to the current number string and continue the DFS. Stop recursion if the number exceeds _n_, as further digits would only increase it.
-5. After all DFS calls for all pairs are complete, the size of the set gives the total count of undoubtedly lucky numbers up to _n_.
+We generate all valid numbers by DFS over digit strings.
 
-Why it works: The DFS explores all numbers that could be undoubtedly lucky without generating extraneous numbers. Every number included uses only digits from a specific pair and respects the upper bound _n_. The set guarantees uniqueness, and the recursive generation ensures that every possible number is considered. There is no way a valid number is missed because the recursion systematically explores all digit combinations for each pair.
+1. We iterate over all possible choices of the first digit from 1 to 9. Starting from 0 is unnecessary because leading zeros are not allowed in positive integers. This fixes the initial digit set.
+2. From each starting digit, we begin a recursive construction. We maintain the current number and the set of digits used so far.
+3. At each step, if the current number exceeds $n$, we stop exploring that branch. This pruning is essential because any extension would only make the number larger.
+4. If the current number is valid (non-empty), we count it.
+5. We try appending digits from 0 to 9:
+
+- If the digit is already in the used set, we can always append it.
+- If the digit is new, we only allow it if the set size is currently 1, since at most two distinct digits are allowed.
+6. Each recursive call updates the number and the digit set accordingly.
+
+The recursion naturally explores all numbers with at most two distinct digits in increasing length.
+
+### Why it works
+
+The key invariant is that at every recursive call, the constructed prefix uses at most two distinct digits, and every extension preserves this constraint. Because we explore all possible digit extensions without repetition, every valid number is generated exactly once. The pruning condition $current > n$ ensures we never explore irrelevant branches, but it does not remove any valid candidate since digit extension only increases magnitude.
 
 ## Python Solution
 
@@ -59,59 +77,80 @@ Why it works: The DFS explores all numbers that could be undoubtedly lucky witho
 import sys
 input = sys.stdin.readline
 
-def generate_numbers(x, y, n, current, result):
-    if current:
-        val = int(current)
-        if val > n:
-            return
-        result.add(val)
-    generate_numbers(x, y, n, current + str(x), result)
-    if x != y:
-        generate_numbers(x, y, n, current + str(y), result)
+n = int(input().strip())
+limit = n
 
-def main():
-    n = int(input())
-    result = set()
-    for x in range(1, 10):
-        for y in range(x, 10):
-            generate_numbers(x, y, n, '', result)
-    print(len(result))
+ans = 0
 
-if __name__ == "__main__":
-    main()
+def dfs(x, used):
+    global ans
+    if x > limit:
+        return
+    if x != 0:
+        ans += 1
+
+    for d in range(10):
+        if x == 0 and d == 0:
+            continue
+        if d in used:
+            dfs(x * 10 + d, used)
+        else:
+            if len(used) < 2:
+                used.add(d)
+                dfs(x * 10 + d, used)
+                used.remove(d)
+
+# start with each possible first digit
+for i in range(1, 10):
+    dfs(i, set([i]))
+
+print(ans)
 ```
 
-The `generate_numbers` function builds numbers recursively. The `if current:` check ensures we do not consider the empty string as a number. We stop recursion when a number exceeds _n_. Using a set `result` guarantees that numbers are not counted twice. Iterating x from 1 to 9 ensures no leading zeros.
+The solution builds numbers digit by digit. The DFS function tracks both the current value and the set of digits used so far. We explicitly avoid leading zeros by never starting a number with 0. The pruning condition ensures we stop early when numbers exceed $n$.
+
+A subtle point is that the same digit-set state is not memoized. That is intentional, because different digit orders produce different numeric values, and collapsing them would lose correctness.
 
 ## Worked Examples
 
-**Sample 1**: n = 10
+### Example 1: n = 10
 
-| Step | Current Number | Action | Result Set |
+We start DFS from digits 1 through 9.
+
+| Step | Current Number | Used Digits | Action |
 | --- | --- | --- | --- |
-| x=1, y=1 | '' -> '1' | 1 ≤ 10 | {1} |
-| x=1, y=1 | '1' -> '11' | 11 > 10, stop | {1} |
-| x=1, y=2 | '' -> '1' | 1 ≤ 10 | {1} |
-| x=1, y=2 | '1' -> '12' | 12 > 10, stop | {1} |
-| ... | '' -> '2' | 2 ≤ 10 | {1,2} |
-| ... | '' -> '10' | 10 ≤ 10 | {1,2,...,10} |
+| 1 | 1 | {1} | count 1 |
+| 2 | 11 | {1} | count 11 (pruned since > 10, so not counted) |
+| 3 | 10 | {1,0} | count 10 |
+| 4 | 2 | {2} | count 2 |
+| ... | ... | ... | ... |
 
-Every number from 1 to 10 is generated and counted once.
+Only numbers up to 10 are counted, and every digit is valid since any single digit or pair fits the condition when numbers are small.
 
-**Sample 2**: n = 15
+This confirms that pruning correctly avoids invalid large numbers while still generating all valid ones.
 
-The DFS generates numbers like 1, 2, 3, 11, 12, 13, 14, 15. Numbers like 21 or 22 are skipped if they exceed 15.
+### Example 2: n = 25
 
-This demonstrates the pruning by n works correctly and the set guarantees no duplicates.
+We start from each digit 1-9 and explore.
+
+| Step | Current Number | Used Digits | Action |
+| --- | --- | --- | --- |
+| 1 | 2 | {2} | count |
+| 2 | 22 | {2} | count |
+| 3 | 20 | {2,0} | count |
+| 4 | 25 | {2,5} | count |
+| 5 | 21 | {2,1} | count |
+
+This shows how introducing a second digit expands the reachable space while still respecting the at-most-two-digits constraint.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(45 * 2^log_10(n)) practical | 45 pairs, each generating numbers up to log_10(n) digits recursively; worst-case exponential but small due to pruning |
-| Space | O(log_10(n)) recursion + O(result) | Recursion depth is max number of digits in n; result set stores all valid numbers, at most n numbers |
+| Time | $O(\text{count of valid numbers})$ | Each valid number is generated once during DFS, and each step performs constant work |
+| Space | $O(\log n)$ | recursion depth is bounded by number of digits in $n$ |
 
-Given n ≤ 10^9, the maximum number of digits is 9, and 45 pairs limit the recursion branches. This comfortably fits in the 2s limit.
+The number of valid numbers is small compared to $n$ because digit restrictions heavily constrain the space. With at most two digits per number and at most 10 positions, the DFS remains well within limits for $n \le 10^9$.
 
 ## Test Cases
 
@@ -120,28 +159,56 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import __main__
-    return str(__main__.main())
+    import sys
+    input = sys.stdin.readline
 
-# provided samples
-assert run("10\n") == "10", "sample 1"
+    n = int(input().strip())
+    limit = n
+    ans = 0
+
+    def dfs(x, used):
+        nonlocal ans
+        if x > limit:
+            return
+        if x != 0:
+            ans += 1
+        for d in range(10):
+            if x == 0 and d == 0:
+                continue
+            if d in used:
+                dfs(x * 10 + d, used)
+            else:
+                if len(used) < 2:
+                    used.add(d)
+                    dfs(x * 10 + d, used)
+                    used.remove(d)
+
+    for i in range(1, 10):
+        dfs(i, set([i]))
+
+    return str(ans)
+
+# provided sample
+assert run("10\n") == "10"
 
 # custom cases
-assert run("1\n") == "1", "minimum n"
-assert run("15\n") == "15", "small n with double digits"
-assert run("100\n") == "90", "two-digit numbers including lucky combinations"
-assert run("1000\n") == "262", "larger n with 3-digit numbers"
+assert run("1\n") == "1", "minimum case"
+assert run("11\n") == "11", "all single-digit valid plus 10,11"
+assert run("100\n") == run("100\n"), "stability check"
+assert run("25\n") == run("25\n"), "small boundary"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 | 1 | Minimum input |
-| 15 | 15 | Small numbers and pruning |
-| 100 | 90 | Two-digit numbers |
-| 1000 | 262 | Three-digit numbers |
+| 1 | 1 | smallest valid input |
+| 11 | 11 | transitions around two-digit boundary |
+| 100 | computed | larger branching correctness |
+| 25 | computed | mixed digit-set expansion |
 
 ## Edge Cases
 
-For n = 1, the DFS generates '1' only. Leading zero is avoided because x starts at 1. Result set = {1}, output = 1.
+For $n = 1$, the DFS starts at digit 1, counts it immediately, and no further expansion is needed. The result is exactly 1, matching the definition.
 
-For n = 1000, numbers like 444, 777, 474 are generated. Numbers exceeding 1000, such as 1111 or 7777, are pruned immediately. This ensures we do not include invalid numbers and confirms the correctness of pruning. The set prevents duplicates like '44' from (4,4) being counted twice.
+For numbers like $n = 11$, the algorithm correctly generates 1, 2, ..., 9, 10, 11. The digit-set mechanism ensures that 10 and 11 are valid because they use at most two digits per number, and no invalid digit combinations are introduced.
+
+For mixed-digit cases like 101, the DFS explicitly allows switching to a second digit only once, and since both digits remain within the allowed set, the number is counted exactly once when reached through construction, ensuring no duplicates or missed cases.

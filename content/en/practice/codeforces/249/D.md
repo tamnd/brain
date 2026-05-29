@@ -1,6 +1,6 @@
 ---
 title: "CF 249D - Donkey and Stars"
-description: "We are asked to model a chain of stars in a 2D plane, originating from the point (0,0). Each star is defined by its coordinates, and two rays emanate from the origin at slopes defined by fractions α1 = a/b and α2 = c/d."
+description: "We are asked to find the longest chain of stars the Donkey can select under a geometric rule. The stars are points on a plane, and we begin at the origin. From any star, we imagine two rays at fixed angles relative to the horizontal axis."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dp", "geometry", "math", "sortings"]
 categories: ["algorithms"]
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 152 (Div. 1)"
 rating: 2700
 weight: 249
-solve_time_s: 75
-verified: true
+solve_time_s: 116
+verified: false
 draft: false
 ---
 
@@ -18,27 +18,23 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** data structures, dp, geometry, math, sortings  
-**Solve time:** 1m 15s  
-**Verified:** yes  
+**Solve time:** 1m 56s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to model a chain of stars in a 2D plane, originating from the point (0,0). Each star is defined by its coordinates, and two rays emanate from the origin at slopes defined by fractions α1 = a/b and α2 = c/d. A valid chain starts at the origin and moves from one star to another, where the next star must lie strictly between the two rays projected from the current star. The task is to find the maximum length of such a chain.
+We are asked to find the longest chain of stars the Donkey can select under a geometric rule. The stars are points on a plane, and we begin at the origin. From any star, we imagine two rays at fixed angles relative to the horizontal axis. A star can be included next in the chain only if it lies strictly between these two rays emanating from the previous star. The goal is to maximize the number of stars in such a chain.
 
-The input gives up to 100,000 stars with integer coordinates up to 100,000. With a time limit of 2 seconds, any solution iterating over all possible pairs of stars directly would require O(n²) operations, which is roughly 10¹⁰ and far too slow. Therefore, we need an algorithm that works in O(n log n) or O(n) per query.
+The input gives the number of stars $n$ and two fractions defining slopes of the rays. Each star's coordinates are provided as integers. With $n$ up to $10^5$, any algorithm with $O(n^2)$ behavior would likely exceed the time limit, so we need an approach around $O(n \log n)$ or better. Because coordinates can go up to $10^5$, using floating-point calculations naively might introduce precision errors, so representing the slope as rational numbers or using integer cross products is preferable.
 
-A non-obvious edge case arises when multiple stars lie collinear with the rays. Since stars on the boundary of the rays cannot be chosen, the chain must strictly avoid these. Another tricky scenario is when all stars are either entirely above, below, or to the left of each other - a naive top-down sweep could miss a valid chain that starts farther left but climbs more gradually.
-
-For example, consider stars at coordinates (1,1), (2,2), (3,3) with α1 = 1/2 and α2 = 2/1. The longest chain is length 2, but if the code incorrectly treats stars on the rays as valid, it might return 3.
+A subtle edge case occurs when stars are exactly on a ray. These must be excluded. Another is when multiple stars have the same $x$ or $y$ positions relative to the current chain-these can create ambiguities if we do not sort or compare carefully. For instance, if all stars lie on a line parallel to one of the rays, the chain length may be just one, not zero, because no star can strictly lie between rays in that case.
 
 ## Approaches
 
-A brute-force solution would attempt to start a chain from each star and recursively search for all next stars that fall strictly between the rays projected from it. This is correct but impractical: each search could iterate over O(n) stars, giving O(n²) complexity.
+A brute-force approach would try every possible star as the start, then recursively find all stars lying between rays emanating from that star. This works because we are just following the geometric rule, but it becomes infeasible when $n$ is large: each star could check $O(n)$ others for a valid next star, leading to $O(n^2)$ time, which is roughly $10^{10}$ operations in the worst case.
 
-The key observation is that the problem can be transformed into a type of 2D dynamic programming based on dominance order. By computing for each star its transformed coordinates relative to the rays, the problem reduces to finding the longest chain such that each subsequent star has a greater "left slope" and a smaller "right slope." Sorting the stars by one coordinate (say x) and applying a variant of the Longest Increasing Subsequence (LIS) in the second coordinate yields an O(n log n) solution.
-
-This works because the strict inequalities implied by the rays translate to strict inequalities on the transformed slopes. Once we have this order, LIS guarantees that no valid chain is missed and the maximum possible chain is found efficiently.
+The key insight is to transform the problem into a one-dimensional sequence problem using slopes. By representing the rays’ slopes as integers, we can compute a linear transformation that converts each star's position into a pair of values representing its position between the rays. Sorting the stars by one axis, then computing the longest increasing subsequence (LIS) in the transformed coordinate, allows us to find the maximal chain efficiently. This works because the "between rays" condition translates to an inequality involving the slope ratios, and LIS captures the maximal sequence of stars that satisfy these inequalities.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -47,54 +43,56 @@ This works because the strict inequalities implied by the rays translate to stri
 
 ## Algorithm Walkthrough
 
-1. Parse the slope fractions α1 = a/b and α2 = c/d and compute them as rational numbers. These define the left and right rays.
-2. For each star (x_i, y_i), compute its transformed values relative to the rays. Specifically, compute `left = y_i - (a/b) * x_i` and `right = y_i - (c/d) * x_i`. These numbers measure vertical distance from the rays; a star is strictly between the rays if left > 0 and right < 0.
-3. Filter out all stars that do not satisfy left > 0 and right < 0.
-4. Sort the remaining stars primarily by `left` ascending, and secondarily by `right` descending. This ensures that when we apply LIS on `right`, we maintain the dominance property: a star later in the chain will have higher `left` and lower `right`.
-5. Apply a Longest Increasing Subsequence algorithm on the negative of `right` values. Using a binary search approach, maintain a list that keeps the minimum ending `right` value for LIS of each length.
-6. The length of the LIS is the maximum number of stars in the chain.
+1. Parse the two fractions $a/b$ and $c/d$ and convert them to integers representing slopes as $(a, b)$ and $(c, d)$. This avoids floating-point precision issues and allows integer comparisons.
+2. Read the list of stars as coordinate pairs $(x_i, y_i)$.
+3. Transform each star into a pair of values $(y_i \cdot b - x_i \cdot a, y_i \cdot d - x_i \cdot c)$. These represent where the star lies relative to each ray from the origin.
+4. Filter out stars that do not lie strictly between the two rays, i.e., for which the transformed values are not both positive.
+5. Sort the remaining stars by one transformed coordinate (for example, the first). Sorting ensures that any subsequent star that extends the chain respects one side of the inequality.
+6. Compute the LIS on the second transformed coordinate. This identifies the maximum sequence where each star is strictly between the rays of the previous star.
+7. Output the length of this LIS.
 
-Why it works: Sorting by `left` guarantees that any subsequent star has strictly larger `left` than its predecessors. Applying LIS on `-right` ensures that the next star in the chain also has a strictly smaller `right`. Combining these two guarantees preserves the invariant that each star lies strictly between the rays of its predecessor.
+Why it works: Sorting by the first coordinate guarantees that for any pair of stars $i < j$ in the sorted list, the first inequality (with respect to one ray) holds. The LIS then ensures that the second inequality is satisfied for the entire sequence. Because the rays define a convex wedge, any star outside the wedge will violate one of these inequalities. Thus, no chain longer than the LIS can exist.
 
 ## Python Solution
 
 ```python
 import sys
-import bisect
 input = sys.stdin.readline
+from bisect import bisect_left
 
-n = int(input())
-a_b, c_d = input().split()
-a, b = map(int, a_b.split('/'))
-c, d = map(int, c_d.split('/'))
+def main():
+    n = int(input())
+    f1, f2 = input().split()
+    a, b = map(int, f1.split('/'))
+    c, d = map(int, f2.split('/'))
+    
+    stars = []
+    for _ in range(n):
+        x, y = map(int, input().split())
+        # compute transformed coordinates relative to rays
+        u = y * b - x * a
+        v = y * d - x * c
+        if u > 0 and v > 0:  # strictly between the rays
+            stars.append((u, v))
+    
+    stars.sort()
+    
+    # compute LIS on second coordinate
+    import bisect
+    lis = []
+    for _, v in stars:
+        pos = bisect.bisect_left(lis, v)
+        if pos == len(lis):
+            lis.append(v)
+        else:
+            lis[pos] = v
+    print(len(lis))
 
-stars = []
-for _ in range(n):
-    x, y = map(int, input().split())
-    # left = y - (a/b) * x > 0  => b*y - a*x > 0
-    # right = y - (c/d) * x < 0 => d*y - c*x < 0
-    left = b * y - a * x
-    right = d * y - c * x
-    if left > 0 and right < 0:
-        stars.append((left, right))
-
-# sort by left ascending, then right descending
-stars.sort(key=lambda p: (p[0], -p[1]))
-
-# compute LIS on -right
-lis = []
-for _, r in stars:
-    r_neg = -r
-    idx = bisect.bisect_left(lis, r_neg)
-    if idx == len(lis):
-        lis.append(r_neg)
-    else:
-        lis[idx] = r_neg
-
-print(len(lis))
+if __name__ == "__main__":
+    main()
 ```
 
-The code first converts fractions to integer multipliers to avoid floating-point precision issues. Filtering ensures only stars strictly inside the initial rays are considered. Sorting by `left` ascending and `right` descending preserves the proper order for LIS. Using `bisect_left` allows O(n log n) LIS computation. Using `-right` instead of `right` ensures we maintain decreasing `right` in the chain.
+We first convert the slope fractions into integer pairs to avoid floating-point errors. The transformation $u = y b - x a$, $v = y d - x c$ turns the geometric wedge check into a pair of inequalities. Sorting the stars by $u$ allows LIS to be applied to $v$, guaranteeing that the strict ordering between rays is preserved. The `bisect_left` function efficiently maintains the LIS in $O(n \log n)$ time.
 
 ## Worked Examples
 
@@ -122,66 +120,67 @@ Input:
 12 4
 ```
 
-After filtering, transformed coordinates are computed as `left = 3*y - 1*x`, `right = 2*y - 1*x`. Only stars with left > 0 and right < 0 are considered. Sorted by `left` ascending, `right` descending, the LIS on `-right` finds the maximum chain length 4.
+After transformation, the stars that lie strictly between rays produce pairs like $(u,v)$:
 
-| Star | left | right | lis state |
-| --- | --- | --- | --- |
-| (1,3) | 8 | 5 | [ -5 ] |
-| (2,5) | 13 | 8 | [ -8, -5 ] |
-| (3,4) | 9 | 5 | [ -8, -5 ] |
-| ... | ... | ... | ... |
+| x | y | u = y_3 - x_1 | v = y_1 - x_2 | include? |
+| --- | --- | --- | --- | --- |
+| 3 | 1 | 0 | -5 | no |
+| 4 | 2 | 2 | -6 | no |
+| 2 | 5 | 13 | 1 | yes |
+| 3 | 4 | 9 | -2 | no |
+| 4 | 5 | 11 | -3 | no |
+| 6 | 6 | 12 | -6 | no |
+| 1 | 6 | 17 | 4 | yes |
+| 2 | 1 | -1 | -3 | no |
+| ... | ... | ... | ... | ... |
 
-### Custom Input
+After filtering and sorting by $u$ and computing LIS on $v$, we find the maximum chain length is 4.
+
+### Custom Small Case
+
+Input:
 
 ```
 3
 1/1 2/1
-1 1
-2 2
-3 3
+1 2
+2 5
+3 7
 ```
 
-Only the middle star satisfies left > 0 and right < 0. LIS gives length 2.
+Transformed coordinates:
+
+| x | y | u | v |
+| --- | --- | --- | --- |
+| 1 | 2 | 1 | 0 |
+| 2 | 5 | 3 | 1 |
+| 3 | 7 | 4 | 1 |
+
+Sorted by u: [(3,1), (4,1)] → LIS on v is [1,1] length 2. Output: 2.
+
+This demonstrates that stars exactly on a boundary are excluded.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting and LIS with binary search dominate the cost. |
-| Space | O(n) | Storing filtered stars and LIS array. |
+| Time | O(n log n) | Sorting takes O(n log n), LIS with binary search is O(n log n). |
+| Space | O(n) | Store transformed coordinates and LIS array. |
 
-With n ≤ 10^5, O(n log n) operations is roughly 5*10^5, well within the 2-second limit.
+This complexity fits comfortably within the 2-second limit for $n \le 10^5$ and memory limit 256 MB.
 
 ## Test Cases
 
 ```python
-import sys, io, bisect
+import sys, io
+from contextlib import redirect_stdout
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(input())
-    a_b, c_d = input().split()
-    a, b = map(int, a_b.split('/'))
-    c, d = map(int, c_d.split('/'))
-
-    stars = []
-    for _ in range(n):
-        x, y = map(int, input().split())
-        left = b * y - a * x
-        right = d * y - c * x
-        if left > 0 and right < 0:
-            stars.append((left, right))
-
-    stars.sort(key=lambda p: (p[0], -p[1]))
-    lis = []
-    for _, r in stars:
-        r_neg = -r
-        idx = bisect.bisect_left(lis, r_neg)
-        if idx == len(lis):
-            lis.append(r_neg)
-        else:
-            lis[idx] = r_neg
-    return str(len(lis))
+    f = io.StringIO()
+    with redirect_stdout(f):
+        main()
+    return f.getvalue().strip()
 
 # provided sample
 assert run("""15
@@ -204,11 +203,30 @@ assert run("""15
 """) == "4", "sample 1"
 
 # minimum input
-assert run("1\n1/1 2/1\n1 1\n") == "0", "min input"
+assert run("""1
+1/1 1/2
+1 1
+""") == "1", "min input"
 
-# increasing diagonal
-assert run("3\n1/1 2/1\n1 1\n2 2\n3 3\n") == "2", "diagonal"
+# all stars on boundary
+assert run("""3
+1/1 1/1
+1 1
+2 2
+3 3
+""") == "0", "all on ray"
 
-# all stars outside rays
-assert run("2\n1/3 2/1\n1 10\n10 1\n")
+# random small input
+assert run("""5
+1/2 3/1
+1 2
+2 3
+3 1
+4 5
+2 1
+""") == "3", "small test"
+
+# maximum coordinate values
+import random
+stars = "\n".join(f"{random.randint(1,10**
 ```

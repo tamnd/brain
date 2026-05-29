@@ -1,6 +1,6 @@
 ---
 title: "CF 244A - Dividing Orange"
-description: "We are given an orange divided into n k segments, and k children. Each child has already chosen one segment they must receive. The task is to assign exactly n segments to each child, making sure each child gets the segment they selected and no two children share a segment."
+description: "We are asked to divide an orange consisting of nk segments among k children so that each child receives exactly n segments, each child definitely receives the segment they chose, and no segment is given to more than one child."
 date: "2026-05-29T00:00:00+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 150 (Div. 2)"
 rating: 900
 weight: 244
-solve_time_s: 83
+solve_time_s: 193
 verified: false
 draft: false
 ---
@@ -18,25 +18,25 @@ draft: false
 
 **Rating:** 900  
 **Tags:** implementation  
-**Solve time:** 1m 23s  
+**Solve time:** 3m 13s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an orange divided into `n * k` segments, and `k` children. Each child has already chosen one segment they must receive. The task is to assign exactly `n` segments to each child, making sure each child gets the segment they selected and no two children share a segment.
+We are asked to divide an orange consisting of `n*k` segments among `k` children so that each child receives exactly `n` segments, each child definitely receives the segment they chose, and no segment is given to more than one child. The input provides the total number of segments per child `n`, the number of children `k`, and a list of `k` distinct segment numbers, each corresponding to the segment a child wants.
 
-The input consists of two numbers `n` and `k`, followed by `k` distinct integers indicating the required segments. The output is a sequence of `n * k` numbers, partitioned into `k` groups of size `n`, each group representing the segments assigned to one child. The order within each child’s group does not matter.
+The output is a list of `n*k` integers partitioned into `k` consecutive groups of `n` numbers, representing the segments assigned to each child. The order within each child’s group does not matter.
 
-Constraints are small: `n` and `k` are at most 30, so the total number of segments is at most 900. This allows a simple solution with linear scans, since even O(n*k²) operations would execute quickly. The main challenges are correctness and ensuring no segment is assigned twice.
+The constraints `1 ≤ n, k ≤ 30` mean the total number of segments is at most `900`, so any algorithm that iterates over segments or children a few times is feasible. The low bounds also imply that we do not need to optimize heavily for time, as even a simple greedy approach that picks unused segments one by one will run comfortably.
 
-Non-obvious edge cases include when the selected segments are clustered at the high or low end of the range. For example, `n=2`, `k=3`, and chosen segments `1,2,3` could lead a careless approach that fills children greedily from 1 upwards to try to satisfy the "first available" principle, accidentally assigning a chosen segment to the wrong child. The algorithm must always respect the chosen segments.
+An edge case arises when children pick segments that are at the extreme ends of the total segments, such as `1` or `n*k`. If one implements the solution by filling children’s segments sequentially without checking which segments are free, it is easy to accidentally assign the same segment to multiple children or miss filling a child’s quota.
 
 ## Approaches
 
-A naive approach is to try generating all permutations of the remaining segments for each child and check if the chosen segment is included. This is overkill: the operation count grows factorially and is unnecessary given the guarantees.
+A brute-force approach would be to generate all permutations of the segments and then test each assignment to see if it satisfies the constraints. This would be correct but impractical because the number of permutations of `n*k` segments grows factorially. Even for `n=k=10`, there are `100!` permutations, which is infeasible.
 
-The optimal approach uses a greedy allocation: first, assign the chosen segment to each child. Then iterate through all segment numbers in order, skipping already assigned segments, and assign remaining segments to children until each child has `n` segments. This works because each child needs exactly `n` segments, there are exactly `n*k` segments, and all chosen segments are distinct. The observation that the problem reduces to filling up each child’s slots in any order after securing the required segments makes the solution straightforward.
+The key observation is that we do not need to consider all permutations. Each child already “reserves” one segment. We can fill the remaining `n-1` segments for each child from the set of unassigned segments. Since the problem guarantees that an answer exists and segments can be assigned in any order, a simple greedy approach works: iterate over all segments in increasing order and assign each unassigned segment to the current child until their quota is met. This avoids collisions because we maintain a record of assigned segments.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -45,12 +45,14 @@ The optimal approach uses a greedy allocation: first, assign the chosen segment 
 
 ## Algorithm Walkthrough
 
-1. Create a list of lists, one for each child, and initialize each list with the chosen segment of that child. This ensures the required segment is included for every child.
-2. Create a set of all assigned segments. Initially, this contains only the chosen segments.
-3. Iterate through all segment numbers from 1 to `n*k`. For each segment, if it is already assigned, skip it. Otherwise, find the first child whose assigned list has fewer than `n` segments and append the segment to their list.
-4. Continue until every child has exactly `n` segments. Since `n*k` total segments exist and every child needs `n`, this process will fill all slots exactly.
+1. Read the input values for `n`, `k`, and the list of chosen segments `a`.
+2. Initialize a set `used` to track segments already assigned.
+3. Initialize a list of lists `children_segments`, each with the segment the child specifically requested. Add this segment to the `used` set.
+4. Create an iterator over all possible segment numbers from `1` to `n*k`.
+5. For each child, fill their remaining `n-1` segments by iterating over all segment numbers and picking those not in `used`. After assigning a segment, add it to `used`.
+6. After all children have `n` segments, flatten the `children_segments` list and print the numbers in the required format.
 
-Why it works: each chosen segment is placed first, so the constraints about required segments are satisfied. By always skipping already assigned segments, we avoid conflicts. Since we iterate in order and always fill the first child with available space, every child eventually reaches `n` segments without overlap. The invariant is that at each step, no segment is assigned twice and no child exceeds `n` segments.
+Why it works: Every child starts with their chosen segment. The greedy assignment ensures no segment is repeated because we always check against `used`. Since the total number of segments is exactly `n*k` and each child receives exactly `n` segments, all segments are used exactly once, fulfilling all constraints.
 
 ## Python Solution
 
@@ -59,66 +61,87 @@ import sys
 input = sys.stdin.readline
 
 n, k = map(int, input().split())
-chosen = list(map(int, input().split()))
+a = list(map(int, input().split()))
 
-children = [[a] for a in chosen]  # Step 1: assign chosen segments
-assigned = set(chosen)            # Step 2: keep track of assigned segments
+used = set(a)
+children_segments = [[x] for x in a]
 
-current_child = 0
-for segment in range(1, n*k + 1):
-    if segment in assigned:
-        continue
-    while len(children[current_child]) >= n:
-        current_child += 1
-    children[current_child].append(segment)
-    assigned.add(segment)
+all_segments = iter(range(1, n*k + 1))
 
-for group in children:
-    print(' '.join(map(str, group)))
+for i in range(k):
+    while len(children_segments[i]) < n:
+        seg = next(all_segments)
+        if seg not in used:
+            children_segments[i].append(seg)
+            used.add(seg)
+
+# Output the segments child by child
+for child in children_segments:
+    print(" ".join(map(str, child)))
 ```
 
-The solution initializes each child with their chosen segment, tracks assigned segments with a set, and fills remaining slots sequentially. Using a set avoids accidental duplication. The loop increments `current_child` only when the current child is full, ensuring fair distribution. Edge cases such as the largest segment being chosen first or last are handled automatically by sequential iteration.
+The code first reads the input and initializes each child with their desired segment. A set ensures we do not assign the same segment twice. Iterating over all segments guarantees that every child eventually receives exactly `n` segments. Flattening and printing is done in child order to match the required output format.
 
 ## Worked Examples
 
-### Sample 1
+**Sample 1**
 
-Input: `2 2` and chosen `[4,1]`
+Input:
 
-| Step | Current Child | Segment | Assigned | Children State |
+```
+2 2
+4 1
+```
+
+| Step | Child 1 segments | Child 2 segments | Next available segments |
+| --- | --- | --- | --- |
+| Initial | [4] | [1] | 1,2,3,4 |
+| Fill Child 1 | [4,2] | [1] | used = {1,2,4} |
+| Fill Child 2 | [4,2] | [1,3] | used = {1,2,3,4} |
+
+Output:
+
+```
+4 2
+1 3
+```
+
+This confirms that each child receives exactly 2 segments, including their chosen one, without duplication.
+
+**Sample 2**
+
+Input:
+
+```
+3 3
+3 1 9
+```
+
+| Step | Child 1 | Child 2 | Child 3 | Next available |
 | --- | --- | --- | --- | --- |
-| Init | - | - | {4,1} | [[4],[1]] |
-| 1 | 0 | 1 | skip | [[4],[1]] |
-| 2 | 0 | 2 | {1,2,4} | [[4,2],[1]] |
-| 3 | 1 | 3 | {1,2,3,4} | [[4,2],[1,3]] |
-| 4 | 0/1 | 4 | skip | [[4,2],[1,3]] |
+| Initial | [3] | [1] | [9] | 1..9 |
+| Fill Child 1 | [3,2,4] | [1] | [9] | used={1,2,3,4,9} |
+| Fill Child 2 | [3,2,4] | [1,5,6] | [9] | used={1,2,3,4,5,6,9} |
+| Fill Child 3 | [3,2,4] | [1,5,6] | [9,7,8] | used={1..9} |
 
-Output: `4 2` and `1 3`. This fills both children correctly.
+Output:
 
-### Sample 2 (Constructed)
+```
+3 2 4
+1 5 6
+9 7 8
+```
 
-Input: `3 3` with chosen `[2,5,7]`
-
-| Step | Current Child | Segment | Assigned | Children State |
-| --- | --- | --- | --- | --- |
-| Init | - | - | {2,5,7} | [[2],[5],[7]] |
-| 1 | 0 | 1 | {1,2,5,7} | [[2,1],[5],[7]] |
-| 2 | 0 | 3 | {1,2,3,5,7} | [[2,1,3],[5],[7]] |
-| 3 | 1 | 4 | {1,2,3,4,5,7} | [[2,1,3],[5,4],[7]] |
-| 4 | 1 | 6 | {1,2,3,4,5,6,7} | [[2,1,3],[5,4,6],[7]] |
-| 5 | 2 | 8 | {1-8} | [[2,1,3],[5,4,6],[7,8]] |
-| 6 | 2 | 9 | {1-9} | [[2,1,3],[5,4,6],[7,8,9]] |
-
-Output: `2 1 3`, `5 4 6`, `7 8 9`. Each child has exactly 3 segments, chosen segments included, no duplicates.
+The trace confirms that the greedy assignment satisfies all constraints for more children and segments.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n*k) | We iterate through all segments once and assign them, linear in total segments. |
-| Space | O(n*k) | We store the assignment for each child and track assigned segments. |
+| Time | O(n*k) | Each segment is considered at most once; each child is filled exactly to `n` segments. |
+| Space | O(n*k) | Storage for assigned segments and the set of used segments. |
 
-With `n*k` at most 900, the algorithm performs well under the 2-second limit, and memory usage is trivial.
+Given `n*k ≤ 900`, the algorithm performs at most 900 iterations, well within 2 seconds, and the memory footprint is small, under 1 MB.
 
 ## Test Cases
 
@@ -127,40 +150,46 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
-    exec(open('solution.py').read())
-    return output.getvalue().strip()
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    used = set(a)
+    children_segments = [[x] for x in a]
+    all_segments = iter(range(1, n*k + 1))
+    for i in range(k):
+        while len(children_segments[i]) < n:
+            seg = next(all_segments)
+            if seg not in used:
+                children_segments[i].append(seg)
+                used.add(seg)
+    return "\n".join(" ".join(map(str, child)) for child in children_segments)
 
-# Provided sample
-assert run("2 2\n4 1\n") in ["4 2\n1 3", "2 4\n1 3", "4 2\n3 1"], "sample 1"
+# provided sample
+assert run("2 2\n4 1\n") == "4 2\n1 3" or run("2 2\n4 1\n") == "2 4\n1 3"
 
-# Minimum size input
-assert run("1 1\n1\n") == "1", "min input"
+# custom: minimum input
+assert run("1 1\n1\n") == "1"
 
-# Maximum size input
-n, k = 30, 30
-inp = f"{n} {k}\n" + " ".join(str(i) for i in range(1,k+1)) + "\n"
-res = run(inp)
-lines = res.split("\n")
-assert all(len(line.split()) == n for line in lines), "max input"
+# custom: maximum n and k
+inp = "30 30\n" + " ".join(map(str, range(1,31))) + "\n"
+out = run(inp)
+assert all(len(line.split()) == 30 for line in out.split("\n"))
 
-# Chosen segments in order
-assert run("2 3\n1 2 3\n") == run("2 3\n1 2 3\n"), "ordered chosen"
+# custom: chosen segments at edges
+assert run("3 2\n1 6\n") in ["1 2 3\n6 4 5","1 3 2\n6 4 5","1 2 3\n6 5 4"]
 
-# Chosen segments at high end
-assert run("2 3\n4 5 6\n") == run("2 3\n4 5 6\n"), "high-end chosen"
+# custom: consecutive chosen segments
+assert run("2 3\n2 3 4\n") in ["2 1\n3 5\n4 6"]
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1\n1\n` | `1` | minimum size input |
-| `30 30\n1 2 ... 30\n` | any valid distribution | maximum size input correctness |
-| `2 3\n1 2 3\n` | any valid | chosen segments at low end |
-| `2 3\n4 5 6\n` | any valid | chosen segments at high end |
+| 1 1\n1 | 1 | minimum size |
+| 30 30 + 1..30 | Each line has 30 numbers | maximum size, all children filled |
+| 3 2\n1 6 | 1 2 3\n6 4 5 | chosen segments at boundaries |
+| 2 3\n2 3 4 | 2 1\n3 5\n4 6 | consecutive chosen segments |
 
 ## Edge Cases
 
-For `n=1`, `k=1`, chosen `[1]`, the loop does nothing because the segment is already assigned. Output is `[1]`.
+For a single child and one segment `1 1\n1`, the algorithm initializes the child with the chosen segment and the while loop is skipped, producing `[1]` correctly.
 
-For `n=3`, `k=3`, chosen `[1,2,3]`, remaining segments `[4,5,6,7,8,9]
+For maximum-size input `n=k=30` with first 30 segments chosen by children, the algorithm sequentially fills the remaining 29 segments per child from unassigned numbers 31 to 900. The invariant that no segment is reused holds because each newly assigned segment is checked against the `used` set. This confirms that the algorithm scales to upper bounds without violating the problem’s constraints.
