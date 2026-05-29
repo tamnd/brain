@@ -37,11 +37,20 @@ draft: false
 | 2924 | [Find Champion II](2924.md) | 🟡 Medium | 1m 5s | This problem models a tournament as a directed acyclic graph, or DA… |
 | 2925 | [Maximum Score After Applying Operations on a Tree](2925.md) | 🟡 Medium | 1m 23s | The problem gives us an undirected tree with n nodes rooted at node… |
 | 2926 | [Maximum Balanced Subsequence Sum](2926.md) | 🔴 Hard | 46s | This problem asks us to find the maximum sum of a balanced subseque… |
+| 2927 | [Distribute Candies Among Children III](2927.md) | 🔴 Hard | 1m 18s | The problem asks us to count how many valid ways exist to distribut… |
 | 2928 | [Distribute Candies Among Children I](2928.md) | 🟢 Easy | 1m 9s | The problem asks us to count how many valid ways exist to distribut… |
+| 2929 | [Distribute Candies Among Children II](2929.md) | 🟡 Medium | 1m 11s | The problem asks us to count how many valid ways exist to distribut… |
+| 2930 | [Number of Strings Which Can Be Rearranged to Contain Substring](2930.md) | 🟡 Medium | 1m 7s | We are given an integer n, and we must count how many strings of le… |
 | 2931 | [Maximum Spending After Buying Items](2931.md) | 🔴 Hard | 1m 27s | We are given an m x n matrix called values, where each row represen… |
 | 2932 | [Maximum Strong Pair XOR I](2932.md) | 🟢 Easy | 1m 21s | The problem gives us an integer array nums, and we must choose two … |
 | 2934 | [Minimum Operations to Maximize Last Elements in Arrays](2934.md) | 🟡 Medium | 1m 15s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
 | 2937 | [Make Three Strings Equal](2937.md) | 🟢 Easy | 1m | The problem gives us three strings, s1, s2, and s3. In one operatio… |
 | 2938 | [Separate Black and White Balls](2938.md) | 🟡 Medium | 41s | The problem asks us to rearrange a binary string representing balls… |
+| 2941 | [Maximum GCD-Sum of a Subarray](2941.md) | 🔴 Hard | 45s | The problem asks us to find the maximum gcd-sum of any subarray of … |
+| 2943 | [Maximize Area of Square Hole in Grid](2943.md) | 🟡 Medium | 1m 8s | The problem describes a rectangular grid made from horizontal and v… |
+| 2944 | [Minimum Number of Coins for Fruits](2944.md) | 🟡 Medium | 1m 13s | You are given an array prices, where prices[i] represents the numbe… |
+| 2948 | [Make Lexicographically Smallest Array by Swapping Elements](2948.md) | 🟡 Medium | 36s | The problem asks us to rearrange a given array nums of positive int… |
+| 2949 | [Count Beautiful Substrings II](2949.md) | 🔴 Hard | 53s | The problem requires counting the number of non-empty beautiful sub… |
+| 2950 | [Number of Divisible Substrings](2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |

@@ -48,16 +48,18 @@ draft: false
 | 2635 | [Apply Transform Over Each Element in Array](2635.md) | 🟢 Easy | 56s | This problem asks us to implement a custom version of the array tra… |
 | 2636 | [Promise Pool](2636.md) | 🟡 Medium | 1m 7s | This problem asks us to implement a concurrency limiter for asynchr… |
 | 2637 | [Promise Time Limit](2637.md) | 🟡 Medium | 46s | This problem asks us to implement a time-limited wrapper around an … |
-| 2638 | [Count the Number of K-Free Subsets](2638.md) | 🟡 Medium | 1m 7s | The problem asks us to count how many subsets of the array nums are… |
-| 2639 | [Find the Width of Columns of a Grid](2639.md) | 🟢 Easy | 1m 6s | This problem gives us a two dimensional integer matrix called grid,… |
-| 2640 | [Find the Score of All Prefixes of an Array](2640.md) | 🟡 Medium | 1m 5s | The problem defines a special transformation called the conversion … |
-| 2642 | [Design Graph With Shortest Path Calculator](2642.md) | 🔴 Hard | 1m 21s | This problem asks us to design a mutable directed weighted graph th… |
-| 2643 | [Row With Maximum Ones](2643.md) | 🟢 Easy | 1m 4s | This problem gives us a binary matrix mat of size m x n, where ever… |
-| 2645 | [Minimum Additions to Make Valid String](2645.md) | 🟡 Medium | 48s | The problem asks us to transform a given string word into a valid s… |
-| 2646 | [Minimize the Total Price of the Trips](2646.md) | 🔴 Hard | 1m 22s | The problem gives us an undirected tree with n nodes. Every node ha… |
-| 2648 | [Generate Fibonacci Sequence](2648.md) | 🟢 Easy | 1m 3s | This problem asks us to implement a generator function that produce… |
-| 2649 | [Nested Array Generator](2649.md) | 🟡 Medium | 35s | The problem requires implementing a generator for multi-dimensional… |
-| 2650 | [Design Cancellable Function](2650.md) | 🔴 Hard | 2m 30s | This problem asks us to build a utility that can control the execut… |
+| 2638 | [Count the Number of K-Free Subsets](2638.md) | 🟡 Medium | 45s | That is a detailed, long-form solution guide request. Before I gene… |
+| 2639 | [Find the Width of Columns of a Grid](2639.md) | 🟢 Easy | 1m 14s | The problem gives us a two dimensional integer matrix called grid w… |
+| 2640 | [Find the Score of All Prefixes of an Array](2640.md) | 🟡 Medium | 40s | The problem requires calculating a score for all prefixes of an arr… |
+| 2642 | [Design Graph With Shortest Path Calculator](2642.md) | 🔴 Hard | 1m 47s | The problem asks us to design a graph data structure that supports … |
+| 2643 | [Row With Maximum Ones](2643.md) | 🟢 Easy | 56s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 2644 | [Find the Maximum Divisibility Score](2644.md) | 🟢 Easy | 59s | The problem asks us to identify, from a list of divisors, the integ… |
+| 2645 | [Minimum Additions to Make Valid String](2645.md) | 🟡 Medium | 1m 58s | This problem asks us to determine the minimum number of insertions … |
+| 2646 | [Minimize the Total Price of the Trips](2646.md) | 🔴 Hard | 1m 13s | The problem gives us an undirected tree with n nodes. Every node ha… |
+| 2647 | [Color the Triangle Red](2647.md) | 🔴 Hard | 46s | The problem asks us to determine the minimal set of initial triangl… |
+| 2648 | [Generate Fibonacci Sequence](2648.md) | 🟢 Easy | 35s | The problem asks us to implement a generator function that yields n… |
+| 2649 | [Nested Array Generator](2649.md) | 🟡 Medium | 1m 1s | This problem asks us to implement a generator that traverses a mult… |
+| 2650 | [Design Cancellable Function](2650.md) | 🔴 Hard | 43s | The problem asks us to implement a mechanism to run a generator tha… |
 | 2651 | [Calculate Delayed Arrival Time](2651.md) | 🟢 Easy | 38s | This problem asks us to compute the arrival time of a train after i… |
 | 2652 | [Sum Multiples](2652.md) | 🟢 Easy | 58s | The problem asks us to examine every integer in the inclusive range… |
 | 2653 | [Sliding Subarray Beauty](2653.md) | 🟡 Medium | 1m 7s | The problem asks us to process every contiguous subarray of length … |
