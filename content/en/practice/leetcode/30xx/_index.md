@@ -45,17 +45,19 @@ draft: false
 | 3035 | [Maximum Palindromes After Operations](3035.md) | 🟡 Medium | 1m 43s | This problem gives us an array of strings, words, and allows us to … |
 | 3036 | [Number of Subarrays That Match a Pattern II](3036.md) | 🔴 Hard | 1m 13s | This guide will be very long, likely exceeding a single message cle… |
 | 3037 | [Find Pattern in Infinite Stream II](3037.md) | 🔴 Hard | 1m 16s | The problem requires us to detect the first occurrence of a binary … |
-| 3038 | [Maximum Number of Operations With the Same Score I](3038.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and defines a very speci… |
-| 3039 | [Apply Operations to Make String Empty](3039.md) | 🟡 Medium | 1m 2s | We are given a lowercase English string s. An operation consists of… |
-| 3040 | [Maximum Number of Operations With the Same Score II](3040.md) | 🟡 Medium | 1m 12s | The problem presents an array nums of integers and defines an opera… |
-| 3041 | [Maximize Consecutive Elements in an Array After Modification](3041.md) | 🔴 Hard | 1m 21s | The problem gives us an array of positive integers. Before selectin… |
-| 3042 | [Count Prefix and Suffix Pairs I](3042.md) | 🟢 Easy | 1m 10s | The problem gives us an array of strings called words. We need to c… |
+| 3038 | [Maximum Number of Operations With the Same Score I](3038.md) | 🟢 Easy | 1m 4s | The problem asks us to repeatedly perform an operation on an intege… |
+| 3039 | [Apply Operations to Make String Empty](3039.md) | 🟡 Medium | 1m 9s | The problem gives us a lowercase string s and defines a repeated op… |
+| 3040 | [Maximum Number of Operations With the Same Score II](3040.md) | 🟡 Medium | 52s | This problem asks us to determine the maximum number of operations … |
+| 3041 | [Maximize Consecutive Elements in an Array After Modification](3041.md) | 🔴 Hard | 46s | The problem is asking us to maximize the number of consecutive inte… |
+| 3042 | [Count Prefix and Suffix Pairs I](3042.md) | 🟢 Easy | 1m 2s | The problem gives us an array of strings called words. For every pa… |
 | 3043 | [Find the Length of the Longest Common Prefix](3043.md) | 🟡 Medium | 1m 24s | We are given two arrays of positive integers, arr1 and arr2. The ta… |
+| 3044 | [Most Frequent Prime](3044.md) | 🟡 Medium | 59s | The problem asks us to traverse a m x n integer matrix and generate… |
+| 3045 | [Count Prefix and Suffix Pairs II](3045.md) | 🔴 Hard | 55s | The problem asks us to count the number of ordered pairs (i, j) in … |
 | 3046 | [Split the Array](3046.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums whose length is always e… |
 | 3047 | [Find the Largest Area of Square Inside Two Rectangles](3047.md) | 🟡 Medium | 46s | The problem is asking us to find the largest square that can fit in… |
-| 3048 | [Earliest Second to Mark Indices I](3048.md) | 🟡 Medium | 47s | This problem asks us to determine the earliest second at which all … |
-| 3049 | [Earliest Second to Mark Indices II](3049.md) | 🔴 Hard | 47s | The problem asks us to determine the earliest second at which all i… |
-| 3050 | [Pizza Toppings Cost Analysis](3050.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every valid pizza combination that… |
+| 3048 | [Earliest Second to Mark Indices I](3048.md) | 🟡 Medium | 1m 21s | We are given two 1-indexed arrays: - nums, where nums[i] represents… |
+| 3049 | [Earliest Second to Mark Indices II](3049.md) | 🔴 Hard | 1m 29s | We are given two arrays: - nums, where nums[i] represents the initi… |
+| 3050 | [Pizza Toppings Cost Analysis](3050.md) | 🟡 Medium | 42s | This problem asks us to compute the total cost of all possible thre… |
 | 3051 | [Find Candidates for Data Scientist Position](3051.md) | 🟢 Easy | 48s | You included two different LeetCode problems with conflicting templ… |
 | 3052 | [Maximize Items](3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |
 | 3053 | [Classifying Triangles by Lengths](3053.md) | 🟢 Easy | 1m 21s | The problem requires classifying triangles based on the lengths of … |

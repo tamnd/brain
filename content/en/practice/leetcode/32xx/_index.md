@@ -34,6 +34,7 @@ draft: false
 | 3222 | [Find the Winning Player in Coin Game](3222.md) | 🟢 Easy | 1m 17s | The game gives us two types of coins: - x coins worth 75 - y coins … |
 | 3223 | [Minimum Length of String After Operations](3223.md) | 🟡 Medium | 1m 11s | The problem asks us to repeatedly remove characters from a string b… |
 | 3225 | [Maximum Score From Grid Operations](3225.md) | 🔴 Hard | 1m 2s | This problem presents a 2D square matrix grid of size n x n where e… |
+| 3226 | [Number of Bit Changes to Make Two Integers Equal](3226.md) | 🟢 Easy | 1m 39s | The problem gives us two positive integers, n and k. We are allowed… |
 | 3227 | [Vowels Game in a String](3227.md) | 🟡 Medium | 1m | The problem describes a two-player game between Alice and Bob playe… |
 | 3228 | [Maximum Number of Operations to Move Ones to the End](3228.md) | 🟡 Medium | 1m 28s | The problem gives us a binary string s, consisting only of characte… |
 | 3229 | [Minimum Operations to Make Array Equal to Target](3229.md) | 🔴 Hard | 1m 43s | The problem gives us two arrays, nums and target, both of the same … |
@@ -43,14 +44,18 @@ draft: false
 | 3233 | [Find the Count of Numbers Which Are Not Special](3233.md) | 🟡 Medium | 2m 10s | The problem asks us to count how many integers in the inclusive ran… |
 | 3234 | [Count the Number of Substrings With Dominant Ones](3234.md) | 🟡 Medium | 2m 56s | We are given a binary string s, containing only '0' and '1'. We mus… |
 | 3235 | [Check if the Rectangle Corner Is Reachable](3235.md) | 🔴 Hard | 2m 28s | The problem asks whether there is a clear, unobstructed path from t… |
+| 3236 | [CEO Subordinate Hierarchy](3236.md) | 🔴 Hard | 47s | This problem requires building a hierarchical view of a company's e… |
 | 3237 | [Alt and Tab Simulation](3237.md) | 🟡 Medium | 2m 18s | The problem asks us to simulate the behavior of switching between o… |
 | 3238 | [Find the Number of Winning Players](3238.md) | 🟢 Easy | 2m 9s | The problem gives us n players and a list called pick, where each e… |
+| 3239 | [Minimum Number of Flips to Make Binary Grid Palindromic I](3239.md) | 🟡 Medium | 1m 26s | You are given a binary matrix grid with m rows and n columns. Every… |
 | 3240 | [Minimum Number of Flips to Make Binary Grid Palindromic II](3240.md) | 🟡 Medium | 1m 59s | We are given a binary matrix grid with m rows and n columns. Every … |
 | 3241 | [Time Taken to Mark All Nodes](3241.md) | 🔴 Hard | 1m 41s | We are given an undirected tree with n nodes. A tree is a connected… |
 | 3242 | [Design Neighbor Sum Service](3242.md) | 🟢 Easy | 3m 28s | The problem asks us to design a service that works on a square matr… |
+| 3243 | [Shortest Distance After Road Addition Queries I](3243.md) | 🟡 Medium | 1m 15s | We are given n cities labeled from 0 to n - 1. Initially, the graph… |
 | 3244 | [Shortest Distance After Road Addition Queries II](3244.md) | 🔴 Hard | 59s | The problem presents a sequence of n cities numbered from 0 to n - … |
 | 3245 | [Alternating Groups III](3245.md) | 🔴 Hard | 1m 45s | We are given a circular array called colors, where each element is … |
 | 3246 | [Premier League Table Ranking](3246.md) | 🟢 Easy | 1m 32s | This problem asks us to generate a league standings table from a da… |
 | 3247 | [Number of Subsequences with Odd Sum](3247.md) | 🟡 Medium | 1m 49s | The problem asks us to count how many subsequences of the given arr… |
+| 3248 | [Snake in Matrix](3248.md) | 🟢 Easy | 1m 3s | The problem describes a snake moving inside an n x n grid. Every ce… |
 | 3249 | [Count the Number of Good Nodes](3249.md) | 🟡 Medium | 2m 13s | We are given an undirected tree with n nodes labeled from 0 to n - … |
 | 3250 | [Find the Count of Monotonic Pairs I](3250.md) | 🔴 Hard | 1m 29s | The problem asks us to count the number of valid pairs of arrays (a… |
