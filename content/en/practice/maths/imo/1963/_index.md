@@ -21,8 +21,6 @@ draft: false
 | [5](5.md) | solved | 5m45s |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Find all real roots of the equation
@@ -31,13 +29,9 @@ $\sqrt{x^2-p}+2\sqrt{x^2-1}=x$,
 
 where $p$ is a real parameter.
 
----
-
 **Problem 2**
 
 Point $A$ and segment $BC$ are given. Determine the locus of points in space which are the vertices of right angles with one side passing through $A$, and the other side intersecting the segment $BC$.
-
----
 
 **Problem 3**
 
@@ -47,21 +41,15 @@ $a_1\ge a_2\ge \cdots \ge a_n$.
 
 Prove that $a_1=a_2=\cdots = a_n$.
 
----
-
 **Problem 4**
 
 Find all solutions $x_1,x_2,x_3,x_4,x_5$ of the system $$
 \begin{eqnarray*} x_5+x_2&=&yx_1\\ x_1+x_3&=&yx_2\\ x_2+x_4&=&yx_3\\ x_3+x_5&=&yx_4\\ x_4+x_1&=&yx_5,\end{eqnarray*}
 $$ where $y$ is a parameter.
 
----
-
 **Problem 5** &nbsp; *solved* · 5m45s · [Solution →](5.md)
 
 Prove that $\cos{\frac{\pi}{7}}-\cos{\frac{2\pi}{7}}+\cos{\frac{3\pi}{7}}=\frac{1}{2}$.
-
----
 
 **Problem 6**
 

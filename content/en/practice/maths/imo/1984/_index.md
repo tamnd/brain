@@ -21,39 +21,27 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Prove that $0\le yz+zx+xy-2xyz\le{7\over27}$, where $x,y$ and $z$ are non-negative real numbers satisfying $x+y+z=1$.
-
----
 
 **Problem 2**
 
 Find one pair of positive integers $a,b$ such that $ab(a+b)$ is not divisible by $7$, but $(a+b)^7-a^7-b^7$ is divisible by $7^7$.
 
----
-
 **Problem 3**
 
 Given points $O$ and $A$ in the plane. Every point in the plane is colored with one of a finite number of colors. Given a point $X$ in the plane, the circle $C(X)$ has center $O$ and radius $OX+{\angle AOX\over OX}$, where $\angle AOX$ is measured in radians in the range $\[0,2\pi)$. Prove that we can find a point $X$, not on $OA$, such that its color appears on the circumference of the circle $C(X)$.
 
----
-
 **Problem 4**
 
 Let $ABCD$ be a convex quadrilateral with the line $CD$ being tangent to the circle on diameter $AB$. Prove that the line $AB$ is tangent to the circle on diameter $CD$ if and only if the lines $BC$ and $AD$ are parallel.
-
----
 
 **Problem 5**
 
 Let $d$ be the sum of the lengths of all the diagonals of a plane convex polygon with $n$ vertices (where $n>3$). Let $p$ be its perimeter. Prove that: $$
 n-3<{2d\over p}<\Bigl\[{n\over2}\Bigr\]\cdot\Bigl\[{n+1\over 2}\Bigr\]-2,
 $$ where $\[x\]$ denotes the greatest integer not exceeding $x$.
-
----
 
 **Problem 6**
 

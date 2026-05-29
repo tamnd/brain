@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $f(x)=x^n+5x^{n-1}+3$, where $n>1$ is an integer. Prove that $f(x)$ cannot be expressed as the product of two nonconstant polynomials with integer coefficients.
-
----
 
 **Problem 2**
 
@@ -37,13 +33,9 @@ Let $D$ be a point inside acute triangle $ABC$ such that $\angle ADB=\angle ACB+
 
 (b) Prove that the tangents at $C$ to the circumcircles of $\triangle ACD$ and $\triangle BCD$ are perpendicular.
 
----
-
 **Problem 3**
 
 On an infinite chessboard, a game is played as follows. At the start, $n^2$ pieces are arranged on the chessboard in an $n$ by $n$ block of adjoining squares, one piece in each square. A move in the game is a jump in a horizontal or vertical direction over an adjacent occupied square to an unoccupied square immediately beyond. The piece which has been jumped over is removed. Find those values of $n$ for which the game can end with only one piece remaining on the board.
-
----
 
 **Problem 4**
 
@@ -53,13 +45,9 @@ Prove that for points $A,B,C,X$ in the plane, $$
 m(ABC)\le m(ABX)+m(AXC)+m(XBC).
 $$
 
----
-
 **Problem 5**
 
 Does there exist a function $f:\textbf{N}\rightarrow\textbf{N}$ such that $f(1)=2,f(f(n))=f(n)+n$ for all $n\in\textbf{N}$ and $f(n)<f(n+1)$ for all $n\in\textbf{N}$?
-
----
 
 **Problem 6**
 

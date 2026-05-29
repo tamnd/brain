@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 $\displaystyle P$ is a point inside a given triangle $\displaystyle ABC$. $\displaystyle D, E, F$ are the feet of the perpendiculars from $\displaystyle P$ to the lines $\displaystyle BC, CA, AB$, respectively. Find all $\displaystyle P$ for which
@@ -31,21 +29,15 @@ $\frac{BC}{PD} + \frac{CA}{PE} + \frac{AB}{PF}$
 
 is least.
 
----
-
 **Problem 2**
 
 Let $\displaystyle 1 \le r \le n$ and consider all subsets of $\displaystyle r$ elements of the set $\{ 1, 2, \ldots , n \}$. Each of these subsets has a smallest member. Let $\displaystyle F(n,r)$ denote the arithmetic mean of these smallest numbers; prove that
 
 $F(n,r) = \frac{n+1}{r+1}.$
 
----
-
 **Problem 3**
 
 Determine the maximum value of $\displaystyle m^2 + n^2$, where $\displaystyle m$ and $\displaystyle n$ are integers satisfying $m, n \in \{ 1,2, \ldots , 1981 \}$ and $\displaystyle ( n^2 - mn - m^2 )^2 = 1$.
-
----
 
 **Problem 4**
 
@@ -53,13 +45,9 @@ Determine the maximum value of $\displaystyle m^2 + n^2$, where $\displaystyle m
 
 (b) For which values of $\displaystyle n>2$ is there exactly one set having the stated property?
 
----
-
 **Problem 5**
 
 Three congruent circles have a common point $\displaystyle O$ and lie inside a given triangle. Each circle touches a pair of sides of the triangle. Prove that the incenter and the circumcenter of the triangle and the point $\displaystyle O$ are collinear.
-
----
 
 **Problem 6**
 

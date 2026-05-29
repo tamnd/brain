@@ -21,19 +21,13 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Determine all composite integers $n>1$ that satisfy the following property: if $d_1,d_2,\dots,d_k$ are all the positive divisors of $n$ with $1=d_1<d_2<\dots<d_k=n$, then $d_i$ divides $d_{i+1}+d_{i+2}$ for every $1\le i \le k-2$.
 
----
-
 **Problem 2**
 
 Let $ABC$ be an acute-angled triangle with $AB < AC$. Let $\Omega$ be the circumcircle of $ABC$. Let $S$ be the midpoint of the arc $CB$ of $\Omega$ containing $A$. The perpendicular from $A$ to $BC$ meets $BS$ at $D$ and meets $\Omega$ again at $E \neq A$. The line through $D$ parallel to $BC$ meets line $BE$ at $L$. Denote the circumcircle of triangle $BDL$ by $\omega$. Let $\omega$ meet $\Omega$ again at $P \neq B$. Prove that the line tangent to $\omega$ at $P$ meets line $BS$ on the internal angle bisector of $\angle BAC$.
-
----
 
 **Problem 3**
 
@@ -41,15 +35,11 @@ For each integer $k \geqslant 2$, determine all infinite sequences of positive i
 P\left(a_n\right)=a_{n+1} a_{n+2} \cdots a_{n+k}
 $$ for every integer $n \geqslant 1$.
 
----
-
 **Problem 4**
 
 Let $x_1, x_2, \cdots , x_{2023}$ be pairwise different positive real numbers such that $$
 a_n = \sqrt{(x_1+x_2+ \text{···} +x_n)(\frac1{x_1} + \frac1{x_2} + \text{···} +\frac1{x_n})}
 $$ is an integer for every $n = 1,2,\cdots,2023$. Prove that $a_{2023} \ge 3034$.
-
----
 
 **Problem 5**
 
@@ -60,8 +50,6 @@ asy\] // credit to vEnhance for the diagram (which was better than my original a
 $$
 
 In terms of $n$, find the greatest $k$ such that in each Japanese triangle there is a ninja path containing at least $k$ red circles.
-
----
 
 **Problem 6**
 

@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Triangle $BCF$ has a right angle at $B$. Let $A$ be the point on line $CF$ such that $FA=FB$ and $F$ lies between $A$ and $C$. Point $D$ is chosen so that $DA=DC$ and $AC$ is the bisector of $\angle{DAB}$. Point $E$ is chosen so that $EA=ED$ and $AD$ is the bisector of $\angle{EAC}$. Let $M$ be the midpoint of $CF$. Let $X$ be the point such that $AMXE$ is a parallelogram. Prove that $BD,FX$ and $ME$ are concurrent.
-
----
 
 **Problem 2**
 
@@ -38,19 +34,13 @@ Find all integers $n$ for which each cell of $n \times n$ table can be filled wi
 
 **Note.** The rows and columns of an $n \times n$ table are each labelled $1$ to $n$ in a natural order. Thus each cell corresponds to a pair of positive integer $(i,j)$ with $1 \le i,j \le n$. For $n>1$, the table has $4n-2$ diagonals of two types. A diagonal of first type consists all cells $(i,j)$ for which $i+j$ is a constant, and the diagonal of this second type consists all cells $(i,j)$ for which $i-j$ is constant.
 
----
-
 **Problem 3**
 
 Let $P = A_1A_2 \cdots A_k$ be a convex polygon in the plane. The vertices $A_1,A_2,\dots, A_k$ have integer coordinates and lie on a circle. Let $S$ be the area of $P$. An odd positive integer $n$ is given such that the squares of the side lengths of $P$ are integers divisible by $n$. Prove that $2S$ is an integer divisible by $n$.
 
----
-
 **Problem 4**
 
 A set of positive integers is called *fragrant* if it contains at least two elements and each of its elements has a prime factor in common with at least one of the other elements. Let $P(n)=n^2+n+1$. What is the least possible positive integer value of $b$ such that there exists a non-negative integer $a$ for which the set $\{P(a+1),P(a+2),\ldots,P(a+b)\}$ is fragrant?
-
----
 
 **Problem 5**
 
@@ -59,8 +49,6 @@ The equation
 $(x-1)(x-2)\cdots(x-2016)=(x-1)(x-2)\cdots (x-2016)$
 
 is written on the board, with $2016$ linear factors on each side. What is the least possible value of $k$ for which it is possible to erase exactly $k$ of these $4032$ linear factors so that at least one factor remains on each side and the resulting equation has no real solutions?
-
----
 
 **Problem 6**
 

@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 * * *
@@ -39,31 +37,21 @@ $$
 
 (b) Show that there are real numbers $x_1\le x_2\le x_n$ such that equality holds in (\*)
 
----
-
 **Problem 2**
 
 Consider five points $A,B,C,D$, and $E$ such that $ABCD$ is a parallelogram and $BCED$ is a cyclic quadrilateral. Let $\ell$ be a line passing through $A$. Suppose that $\ell$ intersects the interior of the segment $DC$ at $F$ and intersects line $BC$ at $G$. Suppose also that $EF=EG=EC$. Prove that $\ell$ is the bisector of $\angle DAB$.
-
----
 
 **Problem 3**
 
 In a mathematical competition some competitors are friends. Friendship is always mutual. Call a group of competitors a clique if each two of them are friends. (In particular, any group of fewer than two competitors is a clique.) The number of members of a clique is called its size. Given that, in this competition, the largest size of a clique is even, prove that the competitors can be arranged in two rooms such that the largest size of a clique contained in one room is the same as the largest size of a clique contained in the other room.
 
----
-
 **Problem 4**
 
 In $\triangle ABC$ the bisector of $\angle{BCA}$ intersects the circumcircle again at $R$, the perpendicular bisector of $BC$ at $P$, and the perpendicular bisector of $AC$ at $Q$. The midpoint of $BC$ is $K$ and the midpoint of $AC$ is $L$. Prove that the triangles $RPK$ and $RQL$ have the same area.
 
----
-
 **Problem 5**
 
 (*Kevin Buzzard and Edward Crane, United Kingdom*) Let $a$ and $b$ be positive integers. Show that if $4ab-1$ divides $(4a^2-1)^2$, then $a=b$.
-
----
 
 **Problem 6**
 

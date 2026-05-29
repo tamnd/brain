@@ -21,15 +21,11 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Prove that for any pair of positive integers $k$ and $n$, there exist $k$ positive integers $m_1,m_2,...,m_k$ (not necessarily different) such that
 
 $1+\frac{2^k-1}{n}=\left(1+\frac{1}{m_1}\right)\left(1+\frac{1}{m_2}\right)\cdots\left(1+\frac{1}{m_k}\right).$
-
----
 
 **Problem 2**
 
@@ -40,19 +36,13 @@ A configuration of $4027$ points in the plane is called *Colombian* if it consis
 
 Find the least value of $k$ such that for any Colombian configuration of $4027$ points, there is a good arrangement of $k$ lines.
 
----
-
 **Problem 3**
 
 Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.
 
----
-
 **Problem 4**
 
 Let $ABC$ be an acute triangle with orthocenter $H$, and let $W$ be a point on the side $BC$, lying strictly between $B$ and $C$. The points $M$ and $N$ are the feet of the altitudes from $B$ and $C$, respectively. Denote by $\omega_1$ is \[sic] the circumcircle of $BWN$, and let $X$ be the point on $\omega_1$ such that $WX$ is a diameter of $\omega_1$. Analogously, denote by $\omega_2$ the circumcircle of triangle $CWM$, and let $Y$ be the point such that $WY$ is a diameter of $\omega_2$. Prove that $X, Y$ and $H$ are collinear.
-
----
 
 **Problem 5**
 
@@ -61,8 +51,6 @@ Let $\mathbb Q_{>0}$ be the set of all positive rational numbers. Let $f:\mathbb
 (i) for all $x,y\in\mathbb Q_{>0}$, we have $f(x)f(y)\geq f(xy)$; (ii) for all $x,y\in\mathbb Q_{>0}$, we have $f(x+y)\geq f(x)+f(y)$; (iii) there exists a rational number $a>1$ such that $f(a)=a$.
 
 Prove that $f(x)=x$ for all $x\in\mathbb Q_{>0}$.
-
----
 
 **Problem 6**
 

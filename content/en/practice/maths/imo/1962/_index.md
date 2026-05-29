@@ -22,8 +22,6 @@ draft: false
 | 6 | — | — |
 | 7 | — | — |
 
----
-
 **Problem 1**
 
 Find the smallest natural number $n$ with the following properties:
@@ -32,39 +30,27 @@ Find the smallest natural number $n$ with the following properties:
 
 (b) If the final digit 6 is moved to the front, the resulting number is four times as large.
 
----
-
 **Problem 2**
 
 Find all real numbers $x$ satisfying
 $$\sqrt{3-x} - \sqrt{x+1} > \frac{1}{2}.$$
 
----
-
 **Problem 3** &nbsp; *✓ verified* · 2m18s · [Solution →](3.md)
 
 A cube $ABCDA'B'C'D'$ is given. Point $X$ moves at constant speed along the square $ABCD$ in the direction $A \to B$; point $Y$ moves at the same speed along the square $BCC'B'$ in the direction $B' \to C'$. Initially $X = A$ and $Y = B'$. Find the locus of all midpoints of $XY$.
-
----
 
 **Problem 4**
 
 Solve the equation $\cos^2 x + \cos^2 2x + \cos^2 3x = 1$.
 
----
-
 **Problem 5**
 
 On a circle $k$ three points $A$, $B$, $C$ are given. Construct a fourth point $D$ on $k$ such that a circle can be inscribed in quadrilateral $ABCD$.
-
----
 
 **Problem 6**
 
 Let $ABC$ be an isosceles triangle with circumradius $r$ and inradius $\rho$. Prove that the distance $d$ between the circumcenter and incenter satisfies
 $$d = \sqrt{r(r-2\rho)}.$$
-
----
 
 **Problem 7**
 

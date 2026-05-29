@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $n \geq 100$ be an integer. Ivan writes the numbers $n, n+1, \ldots, 2 n$ each on different cards. He then shuffles these $n+1$ cards, and divides them into two piles. Prove that at least one of the piles contains two cards such that the sum of their numbers is a perfect square.
-
----
 
 **Problem 2**
 
@@ -35,13 +31,9 @@ Show that the inequality $$
 \sum_{i=1}^n \sum_{j=1}^n \sqrt{|x_i-x_j|} \le \sum_{i=1}^n \sum_{j=1}^n \sqrt{|x_i+x_j|}
 $$ holds for all real numbers $x_1,x_2,\dots,x_n$.
 
----
-
 **Problem 3**
 
 Let $D$ be an interior point of the acute triangle $ABC$ with $AB > AC$ so that $\angle DAB= \angle CAD$. The point $E$ on the segment $AC$ satisfies $\angle ADE= \angle BCD$, the point $F$ on the segment $AB$ satisfies $\angle FDA= \angle DBC$, and the point $X$ on the line $AC$ satisfies $CX=BX$. Let $O_1$ and $O_2$ be the circumcenters of the triangles $ADC$ and $EXD$ respectively. Prove that the lines $BC$, $EF$, and $O_1 O_2$ are concurrent.
-
----
 
 **Problem 4**
 
@@ -49,15 +41,11 @@ Let $\Gamma$ be a circle with centre $I$, and $ABCD$ a convex quadrilateral such
 AD + DT + T X + XA = CD + DY + Y Z + ZC
 $$
 
----
-
 **Problem 5**
 
 Two squirrels, Bushy and Jumpy, have collected 2021 walnuts for the winter. Jumpy numbers the walnuts from 1 through 2021, and digs 2021 little holes in a circular pattern in the ground around their favourite tree. The next morning Jumpy notices that Bushy had placed one walnut into each hole, but had paid no attention to the numbering. Unhappy, Jumpy decides to reorder the walnuts by performing a sequence of 2021 moves. In the $k$-th move, Jumpy swaps the positions of the two walnuts adjacent to walnut $k$.
 
 Prove that there exists a value of $k$ such that, on the $k$-th move, Jumpy swaps some walnuts $a$ and $b$ such that $a < k < b$.
-
----
 
 **Problem 6**
 

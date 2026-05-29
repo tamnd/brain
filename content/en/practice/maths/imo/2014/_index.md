@@ -21,21 +21,15 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $a_0<a_1<a_2<\cdots \quad$ be an infinite sequence of positive integers, Prove that there exists a unique integer $n\ge1$ such that $$
 a_n<\frac{a_0+a_1+\cdots + a_n}{n}\le a_{n+1}.
 $$
 
----
-
 **Problem 2**
 
 Let $n\ge2$ be an integer. Consider an $n\times n$ chessboard consisting of $n^2$ unit squares. A configuration of $n$ rooks on this board is $peaceful$ if every row and every column contains exactly one rook. Find the greatest positive integer $k$ such that, for each peaceful configuration of $n$ rooks, there is a $k\times k$ square which does not contain a rook on any of its $k^2$ squares.
-
----
 
 **Problem 3**
 
@@ -45,19 +39,13 @@ $$
 
 Prove that line $BD$ is tangent to the circumcircle of $\triangle{TSH}.$
 
----
-
 **Problem 4**
 
 Points $P$ and $Q$ lie on side $BC$ of acute-angled $\triangle{ABC}$ so that $\angle{PAB}=\angle{BCA}$ and $\angle{CAQ}=\angle{ABC}$. Points $M$ and $N$ lie on lines $AP$ and $AQ$, respectively, such that $P$ is the midpoint of $AM$, and $Q$ is the midpoint of $AN$. Prove that lines $BM$ and $CN$ intersect on the circumcircle of $\triangle{ABC}$.
 
----
-
 **Problem 5**
 
 For each positive integer $n$, the Bank of Cape Town issues coins of denomination $\tfrac{1}{n}$. Given a finite collection of such coins (of not necessarily different denominations) with total value at most $99+\tfrac{1}{2}$, prove that it is possible to split this collection into $100$ or fewer groups, such that each group has total value at most $1$.
-
----
 
 **Problem 6**
 

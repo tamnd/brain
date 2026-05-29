@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Find all integers $a$, $b$, $c$ satisfying $1 < a < b < c$ such that $(a - 1)(b -1)(c - 1)$ is a divisor of $abc - 1$.
-
----
 
 **Problem 2**
 
@@ -37,19 +33,13 @@ $$
 f\left( x^{2}+f(y) \right)= y+(f(x))^{2} \hspace{0.5cm} \forall x,y \in \mathbb{R}
 $$
 
----
-
 **Problem 3**
 
 Consider nine points in space, no four of which are coplanar. Each pair of points is joined by an edge (that is, a line segment) and each edge is either colored blue or red or left uncolored. Find the smallest value of $n$ such that whenever exactly n edges are colored, the set of colored edges necessarily contains a triangle all of whose edges have the same color.
 
----
-
 **Problem 4**
 
 In the plane let $C$ be a circle, $l$ a line tangent to the circle $C$, and $M$ a point on $l$. Find the locus of all points $P$ with the following property: there exists two points $Q$, $R$ on $l$ such that $M$ is the midpoint of $QR$ and $C$ is the inscribed circle of triangle $PQR$.
-
----
 
 **Problem 5**
 
@@ -60,8 +50,6 @@ $$
 $$
 
 where $|A|$ denotes the number of elements in the finite set $|A|$.
-
----
 
 **Problem 6**
 

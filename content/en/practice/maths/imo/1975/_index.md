@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $x_i, y_i~(i = 1, 2, \ldots, n)$ be real numbers such that $$
@@ -31,33 +29,23 @@ $$ Prove that, if $z_1, z_2, \cdots, z_n$ is any permutation of $y_1, y_2, \cdot
 \sum_{i=1}^n (x_i - y_i)^2 \leq \sum_{i=1}^n (x_i - z_i)^2.
 $$
 
----
-
 **Problem 2**
 
 Let $a_1, a_2, a_3, \cdots$ be an infinite increasing sequence of positive integers. Prove that for every $p \geq 1$ there are infinitely many $a_m$ which can be written in the form $$
 a_m = xa_p + ya_q
 $$ with $x, y$ positive integers and $q > p$.
 
----
-
 **Problem 3**
 
 On the sides of an arbitrary triangle $ABC$, triangles $ABR, BCP, CAQ$ are constructed externally with $\angle CBP = \angle CAQ = 45^\circ, \angle BCP = \angle ACQ = 30^\circ, \angle ABR = \angle BAR = 15^\circ$. Prove that $\angle QRP = 90^\circ$ and $QR = RP$.
-
----
 
 **Problem 4**
 
 When $4444^{4444}$ is written in decimal notation, the sum of its digits is $A$. Let $B$ be the sum of the digits of $A$. Find the sum of the digits of $B$. ($A$ and $B$ are written in decimal notation.)
 
----
-
 **Problem 5**
 
 Determine, with proof, whether or not one can find 1975 points on the circumference of a circle with unit radius such that the distance between any two of them is a rational number.
-
----
 
 **Problem 6**
 

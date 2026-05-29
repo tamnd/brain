@@ -21,15 +21,11 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Determine all finite sets $S$ of at least three points in the plane which satisfy the following condition:
 
 For any two distinct points $A$ and $B$ in $S$, the perpendicular bisector of the line segment $AB$ is an axis of symmetry of $S$.
-
----
 
 **Problem 2**
 
@@ -43,8 +39,6 @@ $$
 
 - (b) Determine when equality occurs for this value of $C$.
 
----
-
 **Problem 3**
 
 Consider an $n \times n$ square board, where $n$ is a fixed even positive integer. The board is divided into $n^{2}$ units squares. We say that two different squares on the board are adjacent if they have a common side.
@@ -53,23 +47,17 @@ $N$ unit squares on the board are marked in such a way that every square (marked
 
 Determine the smallest possible value of $N$.
 
----
-
 **Problem 4**
 
 Determine all pairs $(n,p)$ of positive integers such that
 
 $p$ is a prime, $n$ not exceeded $2p$, and $(p-1)^{n}+1$ is divisible by $n^{p-1}$.
 
----
-
 **Problem 5**
 
 Two circles $G_{1}$ and $G_{2}$ are contained inside the circle $G$, and are tangent to $G$ at the distinct points $M$ and $N$, respectively. $G_{1}$ passes through the center of $G_{2}$. The line passing through the two points of intersection of $G_{1}$ and $G_{2}$ meets $G$ at $A$ and $B$. The lines $MA$ and $MB$ meet $G_{1}$ at $C$ and $D$, respectively.
 
 Prove that $CD$ is tangent to $G_{2}$.
-
----
 
 **Problem 6**
 

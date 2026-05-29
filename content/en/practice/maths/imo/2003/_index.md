@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 $S$ is the set $\{1, 2, 3, \dots ,1000000\}$. Show that for any subset $A$ of $S$ with $101$ elements we can find $100$ distinct elements $x_i$ of $S$, such that the sets $\{a + x_i \mid a \in A\}$ are all pairwise disjoint.
-
----
 
 **Problem 2**
 
@@ -35,19 +31,13 @@ Determine all pairs of positive integers $(a,b)$ such that $$
 \frac{a^2}{2ab^2-b^3+1}
 $$ is a positive integer.
 
----
-
 **Problem 3**
 
 Each pair of opposite sides of convex hexagon has the property that the distance between their midpoints is $\frac{\sqrt{3}}{2}$ times the sum of their lengths. Prove that the hexagon is equiangular.
 
----
-
 **Problem 4**
 
 Let $ABCD$ be a cyclic quadrilateral. Let $P$, $Q$, and $R$ be the feet of perpendiculars from $D$ to lines $\overline{BC}$, $\overline{CA}$, and $\overline{AB}$, respectively. Show that $PQ=QR$ if and only if the bisectors of angles $ABC$ and $ADC$ meet on segment $\overline{AC}$.
-
----
 
 **Problem 5**
 
@@ -58,8 +48,6 @@ $$
 $$
 
 with equality if and only if $x_1, x_2, ..., x_n$ form an arithmetic sequence.
-
----
 
 **Problem 6**
 

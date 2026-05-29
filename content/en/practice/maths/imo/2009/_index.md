@@ -21,23 +21,17 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $n$ be a positive integer and let $a_1,\ldots,a_k (k\ge2)$ be distinct integers in the set $\{1,\ldots,n\}$ such that $n$ divides $a_i(a_{i+1}-1)$ for $i=1,\ldots,k-1$. Prove that $n$ doesn't divide $a_k(a_1-1)$.
 
 *Author: Ross Atkins, Australia*
 
----
-
 **Problem 2**
 
 Let $ABC$ be a triangle with circumcentre $O$. The points $P$ and $Q$ are interior points of the sides $CA$ and $AB$ respectively. Let $K,L$ and $M$ be the midpoints of the segments $BP,CQ$ and $PQ$, respectively, and let $\Gamma$ be the circle passing through $K,L$ and $M$. Suppose that the line $PQ$ is tangent to the circle $\Gamma$. Prove that $OP=OQ$.
 
 *Author: Sergei Berlov, Russia*
-
----
 
 **Problem 3**
 
@@ -49,15 +43,11 @@ are both arithmetic progressions. Prove that the sequence $s_1,s_2,s_3,\ldots$ i
 
 *Author: Gabriel Carroll, USA*
 
----
-
 **Problem 4**
 
 Let $ABC$ be a triangle with $AB=AC$. The angle bisectors of $\angle CAB$ and $\angle ABC$ meet the sides $BC$ and $CA$ at $D$ and $E$, respectively. Let $K$ be the incentre of triangle $ADC$. Suppose that $\angle BEK=45^\circ$. Find all possible values of $\angle CAB$.
 
 *Authors: Jan Vonk and Peter Vandendriessche, Belgium, and Hojoo Lee, South Korea*
-
----
 
 **Problem 5**
 
@@ -68,8 +58,6 @@ $a,f(b)$ and $f(b+f(a)-1)$.
 (A triangle is *non-degenerate* if its vertices are not collinear.)
 
 *Author: Bruno Le Floch, France*
-
----
 
 **Problem 6**
 

@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 In a mathematical contest, three problems, $A,B,C$ were posed. Among the participants there were 25 students who solved at least one problem each. Of all the contestants who did not solve problem $A$, the number who solved $B$ was twice the number who solved $C$. The number of students who solved only problem $A$ was one more than the number of students who solved $A$ and at least one other problem. Of all students who solved just one problem, half did not solve problem $A$. How many students solved only problem $B$?
-
----
 
 **Problem 2**
 
@@ -35,21 +31,15 @@ Let $a,b,c$ be the lengths of the sides of a triangle, and $\alpha, \beta, \gamm
 a+b=\tan{\frac{\gamma}{2}}(a\tan{\alpha}+b\tan{\beta})
 $$ the triangle is isosceles.
 
----
-
 **Problem 3**
 
 Prove that the sum of the distances of the vertices of a regular tetrahedron from the center of its circumscribed sphere is less than the sum of the distances of these vertices from any other point in space.
-
----
 
 **Problem 4**
 
 Prove that for every natural number $n$, and for every real number $x \neq \frac{k\pi}{2^t}$ ($t=0,1, \dots, n$; $k$ any integer) $$
 \frac{1}{\sin{2x}}+\frac{1}{\sin{4x}}+\dots+\frac{1}{\sin{2^nx}}=\cot{x}-\cot{2^nx}
 $$
-
----
 
 **Problem 5**
 
@@ -62,8 +52,6 @@ $$ $$
 $$ $$
 |a_4-a_1|x_1+|a_4-a_2|x_2+|a_4-a_3|x_3=1
 $$ where $a_1, a_2, a_3, a_4$ are four different real numbers.
-
----
 
 **Problem 6**
 

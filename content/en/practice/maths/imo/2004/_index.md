@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $ABC$ be an acute-angled triangle with $AB\neq AC$. The circle with diameter $BC$ intersects the sides $AB$ and $AC$ at $M$ and $N$ respectively. Denote by $O$ the midpoint of the side $BC$. The bisectors of the angles $\angle BAC$ and $\angle MON$ intersect at $R$. Prove that the circumcircles of the triangles $BMR$ and $CNR$ have a common point lying on the side $BC$.
-
----
 
 **Problem 2**
 
@@ -36,8 +32,6 @@ Find all polynomials $f$ with real coefficients such that for all reals $a,b,c$ 
 $$
 f(a - b) + f(b - c) + f(c - a) = 2f(a + b + c).
 $$
-
----
 
 **Problem 3**
 
@@ -49,8 +43,6 @@ $$
 
 Determine all $m \times n$ rectangles that can be covered without gaps and without overlaps with hooks such that; (a) the rectangle is covered without gaps and without overlaps, (b) no part of a hook covers area outside the rectangle.
 
----
-
 **Problem 4**
 
 Let $n \geq 3$ be an integer. Let $t_1, t_2, \dots ,t_n$ be positive real numbers such that
@@ -59,15 +51,11 @@ $$
 n^2 + 1 > \left( t_1 + t_2 + ... + t_n \right) \left( \frac {1}{t_1} + \frac {1}{t_2} + ... + \frac {1}{t_n} \right).
 $$ Show that $t_i$, $t_j$, $t_k$ are side lengths of a triangle for all $i$, $j$, $k$ with $1 \leq i < j < k \leq n$.
 
----
-
 **Problem 5**
 
 In a convex quadrilateral $ABCD$, the diagonal $BD$ bisects neither the angle $ABC$ nor the angle $CDA$. The point $P$ lies inside $ABCD$ and satisfies$$
 \angle PBC = \angle DBA \text{ and } \angle PDC = \angle BDA.
 $$ Prove that $ABCD$ is a cyclic quadrilateral if and only if $AP = CP.$
-
----
 
 **Problem 6**
 

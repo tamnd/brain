@@ -21,23 +21,17 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 For each integer $a_0 > 1$, define the sequence $a_0, a_1, a_2, \ldots$ for $n \geq 0$ as $$
 a_{n+1} =  \begin{cases} \sqrt{a_n} & \text{if } \sqrt{a_n} \text{ is an integer,} \\ a_n + 3 & \text{otherwise.} \end{cases}
 $$Determine all values of $a_0$ such that there exists a number $A$ such that $a_n = A$ for infinitely many values of $n$.
 
----
-
 **Problem 2**
 
 Let $\mathbb{R}$ be the set of real numbers , determine all functions $f:\mathbb{R}\rightarrow\mathbb{R}$ such that for any real numbers $x$ and $y$ $$
 {f(f(x)f(y)) + f(x+y)} =f(xy)
 $$
-
----
 
 **Problem 3**
 
@@ -51,13 +45,9 @@ A hunter and an invisible rabbit play a game in the Euclidean plane. The rabbit'
 
 Is it always possible, no matter how the rabbit moves, and no matter what points are reported by the tracking device, for the hunter to choose her moves so that after $10^9$ rounds she can ensure that the distance between her and the rabbit is at most 100?
 
----
-
 **Problem 4**
 
 Let $R$ and $S$ be different points on a circle $\Omega$ such that $RS$ is not a diameter. Let $\ell$ be the tangent line to $\Omega$ at $R$. Point $T$ is such that $S$ is the midpoint of the line segment $RT$. Point $J$ is chosen on the shorter arc $RS$ of $\Omega$ so that the circumcircle $\Gamma$ of triangle $JST$ intersects $\ell$ at two distinct points. Let $A$ be the common point of $\Gamma$ and $\ell$ that is closer to $R$. Line $AJ$ meets $\Omega$ again at $K$. Prove that the line $KT$ is tangent to $\Gamma$.
-
----
 
 **Problem 5**
 
@@ -72,8 +62,6 @@ $\;\;\vdots$
 ($N$) no one stands between the two shortest players.
 
 Show that this is always possible.
-
----
 
 **Problem 6**
 

@@ -21,15 +21,11 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Given $\triangle ABC$ the point $J$ is the centre of the excircle opposite the vertex $A$. This excircle is tangent to the side $BC$ at $M$, and to the lines $AB$ and $AC$ at $K$ and $L$, respectively. The lines $LM$ and $BJ$ meet at $F$, and the lines $KM$ and $CJ$ meet at $G$. Let $S$ be the point of intersection of the lines $AF$ and $BC$, and let $T$ be the point of intersection of the lines $AG$ and $BC$. Prove that $M$ is the midpoint of $ST$. (The excircle of $ABC$ opposite the vertex $A$ is the circle that is tangent to the line segment $BC$, to the ray $AB$ beyond $B$, and to the ray $AC$ beyond $C$.)
 
 *Author: Evangelos Psychas, Greece*
-
----
 
 **Problem 2**
 
@@ -38,8 +34,6 @@ Let ${{a}_{2}}, {{a}_{3}},  \cdots, {{a}_{n}}$ be positive real numbers that sat
 $$
 
 *Author: Angelo di Pasquale, Australia*
-
----
 
 **Problem 3**
 
@@ -50,8 +44,6 @@ The *liar’s guessing game* is a game played between two players $A$ and $B$. T
 
 *Author: David Arthur, Canada*
 
----
-
 **Problem 4**
 
 Find all functions $f:\mathbb{Z}\to \mathbb{Z}$ such that, for all integers $a$, $b$, $c$ that satisfy $a+b+c = 0$, the following equality holds: $$
@@ -60,15 +52,11 @@ $$ (Here $\mathbb{Z}$ denotes the set of integers.)
 
 *Author: Liam Baker, South Africa*
 
----
-
 **Problem 5**
 
 Let $ABC$ be a triangle with $\angle BCA=90{}^\circ$, and let $D$ be the foot of the altitude from $C$. Let $X$ be a point in the interior of the segment $CD$. Let K be the point on the segment $AX$ such that $BK = BC$. Similarly, let $L$ be the point on the segment $BX$ such that $AL = AC$. Let $M$ be the point of intersection of $AL$ and $BK$. Show that $MK = ML$.
 
 *Author: Josef Tkadlec, Czech Republic*
-
----
 
 **Problem 6**
 

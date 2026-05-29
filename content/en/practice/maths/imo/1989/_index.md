@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Prove that in the set $\{1,2, \ldots, 1989\}$ can be expressed as the disjoint union of subsets $A_i, \{i = 1,2, \ldots, 117\}$ such that
@@ -31,13 +29,9 @@ i.) each $A_i$ contains 17 elements
 
 ii.) the sum of all the elements in each $A_i$ is the same.
 
----
-
 **Problem 2**
 
 $ABC$ is a triangle, the bisector of angle $A$ meets the circumcircle of triangle $ABC$ in $A_1$, points $B_1$ and $C_1$ are defined similarly. Let $AA_1$ meet the lines that bisect the two external angles at $B$ and $C$ in $A_0$. Define $B_0$ and $C_0$ similarly. Prove that the area of triangle $A_0B_0C_0 = 2 \cdot$ area of hexagon $AC_1BA_1CB_1 \geq 4 \cdot$ area of triangle $ABC$.
-
----
 
 **Problem 3**
 
@@ -51,21 +45,15 @@ Prove that: $$
 k < \frac {1}{2} + \sqrt {2 \cdot n}
 $$
 
----
-
 **Problem 4**
 
 Let $ABCD$ be a convex quadrilateral such that the sides $AB, AD, BC$ satisfy $AB = AD + BC.$ There exists a point $P$ inside the quadrilateral at a distance $h$ from the line $CD$ such that $AP = h + AD$ and $BP = h + BC.$ Show that: $$
 \frac {1}{\sqrt {h}} \geq \frac {1}{\sqrt {AD}} + \frac {1}{\sqrt {BC}}
 $$
 
----
-
 **Problem 5**
 
 Prove that for each positive integer $n$ there exist $n$ consecutive positive integers none of which is an integral power of a prime number.
-
----
 
 **Problem 6**
 

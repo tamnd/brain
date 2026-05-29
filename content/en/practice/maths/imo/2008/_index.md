@@ -21,15 +21,11 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $H$ be the orthocenter of an acute-angled triangle $ABC$. The circle $\Gamma_{A}$ centered at the midpoint of $BC$ and passing through $H$ intersects line $BC$ at points $A_{1}$ and $A_{2}$. Similarly, define the points $B_{1}$, $B_{2}$, $C_{1}$ and $C_{2}$.
 
 Prove that six points $A_{1}$ , $A_{2}$, $B_{1}$, $B_{2}$, $C_{1}$ and $C_{2}$ are concyclic.
-
----
 
 **Problem 2**
 
@@ -39,13 +35,9 @@ Let $x, y, z\neq 1$ be three real numbers, such that $xyz = 1$
 
 **(ii)** Prove that $\frac {x^{2}}{\left(x - 1\right)^{2}} + \frac {y^{2}}{\left(y - 1\right)^{2}} + \frac {z^{2}}{\left(z - 1\right)^{2}} = 1$ for infinitely many triples of rational numbers $x$, $y$ and $z$.
 
----
-
 **Problem 3**
 
 Prove that there are infinitely many positive integers $n$ such that $n^{2} + 1$ has a prime divisor greater than $2n + \sqrt {2n}$.
-
----
 
 **Problem 4**
 
@@ -54,8 +46,6 @@ Find all functions $f: (0, \infty) \mapsto (0, \infty)$ (so $f$ is a function fr
 $\frac {\left( f(w) \right)^2 + \left( f(x) \right)^2}{f(y^2) + f(z^2) } = \frac {w^2 + x^2}{y^2 + z^2}$
 
 for all positive real numbes $w,x,y,z,$ satisfying $wx = yz.$
-
----
 
 **Problem 5**
 
@@ -66,8 +56,6 @@ Let $N$ be the number of such sequences consisting of $k$ steps and resulting in
 Let $M$ be number of such sequences consisting of $k$ steps, resulting in the state where lamps $1$ through $n$ are all on, and lamps $n + 1$ through $2n$ are all off, but where none of the lamps $n + 1$ through $2n$ is ever switched on.
 
 Determine $\frac {N}{M}$.
-
----
 
 **Problem 6**
 

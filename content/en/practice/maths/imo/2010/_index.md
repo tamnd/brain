@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Find all functions $f:\mathbb{R}\rightarrow\mathbb{R}$ such that for all $x,y\in\mathbb{R}$ the following equality holds
@@ -35,15 +33,11 @@ where $\left\lfloor a\right\rfloor$ is greatest integer not greater than $a.$
 
 *Author: Pierre Bornsztein, France*
 
----
-
 **Problem 2**
 
 Given a triangle $ABC$, with $I$ as its incenter and $\Gamma$ as its circumcircle, $AI$ intersects $\Gamma$ again at $D$. Let $E$ be a point on arc $BDC$, and $F$ a point on the segment $BC$, such that $\angle BAF=\angle CAE< \frac12\angle BAC$. If $G$ is the midpoint of $IF$, prove that the intersection of lines $EI$ and $DG$ lies on $\Gamma$.
 
 *Authors: Tai Wai Ming and Wang Chongli, Hong Kong*
-
----
 
 **Problem 3**
 
@@ -51,15 +45,11 @@ Find all functions $g:\mathbb{N}\rightarrow\mathbb{N}$ such that $\left(g(m)+n\r
 
 *Author: Gabriel Carroll, USA*
 
----
-
 **Problem 4**
 
 Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$). The lines $AP$, $BP$ and $CP$ meet again its circumcircle $\Gamma$ at $K$, $L$, respectively $M$. The tangent line at $C$ to $\Gamma$ meets the line $AB$ at $S$. Show that from $SC = SP$ follows $MK = ML$.
 
 *Author: Unknown currently*
-
----
 
 **Problem 5**
 
@@ -72,8 +62,6 @@ Type 2) Choose a non-empty box $B_k$, $1\leq k \leq 4$, remove one coin from $B_
 Determine if there exists a finite sequence of operations of the allowed types, such that the five boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$ become empty, while box $B_6$ contains exactly $2010^{2010^{2010}}$ coins.
 
 *Author: Hans Zantema, Netherlands*
-
----
 
 **Problem 6**
 

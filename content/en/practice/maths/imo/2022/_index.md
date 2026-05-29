@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 The Bank of Oslo issues two types of coin: aluminium (denoted A) and bronze (denoted B). Marianne has $n$ aluminium coins and $n$ bronze coins, arranged in a row in some arbitrary initial order. A chain is any subsequence of consecutive coins of the same type. Given a fixed positive integer $k\le 2n$, Marianne repeatedly performs the following operation: she identifies the longest chain containing the $k^{th}$ coin from the left, and moves all coins in that chain to the left end of the row. For example, if $n = 4$ and $k = 4$, the process starting from the ordering AABBBABA would be
@@ -30,8 +28,6 @@ The Bank of Oslo issues two types of coin: aluminium (denoted A) and bronze (den
 AABBBABA → BBBAAABA → AAABBBBA → BBBBAAAA → BBBBAAAA → ...
 
 Find all pairs $(n, k)$ with $1 \le k \le 2n$ such that for every initial ordering, at some moment during the process, the leftmost $n$ coins will all be of the same type.
-
----
 
 **Problem 2**
 
@@ -41,27 +37,19 @@ $$
 xf (y) + yf (x) \le 2
 $$.
 
----
-
 **Problem 3**
 
 Let $k$ be a positive integer and let $S$ be a finite set of odd prime numbers. Prove that there is at most one way (up to rotation and reflection) to place the elements of $S$ around a circle such that the product of any two neighbours is of the form $x^2 + x + k$ for some positive integer $x$.
 
----
-
 **Problem 4**
 
 Let $ABCDE$ be a convex pentagon such that $BC = DE$. Assume that there is a point $T$ inside $ABCDE$ with $TB = TD$, $TC = TE$ and $\angle ABT = \angle TEA$. Let line $AB$ intersect lines $CD$ and $CT$ at points $P$ and $Q$, respectively. Assume that the points $P, B, A, Q$ occur on their line in that order. Let line $AE$ intersect lines $CD$ and $DT$ at points $R$ and $S$, respectively. Assume that the points $R, E, A, S$ occur on their line in that order. Prove that the points $P, S, Q, R$ lie on a circle.
-
----
 
 **Problem 5**
 
 Find all triples $(a,b,p)$ of positive integers with $p$ prime and $$
 a^p = b! + p
 $$
-
----
 
 **Problem 6**
 

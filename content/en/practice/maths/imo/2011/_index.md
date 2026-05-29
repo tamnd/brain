@@ -21,15 +21,11 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Given any set $A = \{a_1, a_2, a_3, a_4\}$ of four distinct positive integers, let $s(A)=a_1+a_2+a_3+a_4$ be the sum of the positive integers in $A$. Let $n(A)$ denote the number of pairs $(i,j)$ with $1 \le i < j \le 4$ for which $a_i+a_j$ divides $s(A)$. Find all sets $A$ of four distinct positive integers which achieve the largest possible value of $n(A)$.
 
 *Author: Fernando Campos, Mexico*
-
----
 
 **Problem 2**
 
@@ -37,15 +33,11 @@ Let $S$ be a finite set of at least two points in the plane. Assume that no thre
 
 *Author: Geoffrey Smith, United Kingdom*
 
----
-
 **Problem 3**
 
 Let $f : \mathbb{R} \rightarrow \mathbb{R}$ be a real-valued function defined on the set of real numbers that satisfies $f(x + y) \le yf(x) + f(f(x))$ for all real numbers $x$ and $y$. Prove that $f(x)=0$ for all $x \le 0$.
 
 *Author: Igor Voronovich, Belarus*
-
----
 
 **Problem 4**
 
@@ -53,15 +45,11 @@ Let $n > 0$ be an integer. We are given a balance and $n$ weights of weight $2^0
 
 *Author: Morteza Saghafian, Iran*
 
----
-
 **Problem 5**
 
 Let $f$ be a function from the set of integers to the set of positive integers. Suppose that, for any two integers $m$ and $n$, the difference $f(m) - f(n)$ is divisible by $f(m - n)$. Prove that, for all integers $m$ and $n$ with $f(m) \le f(n)$, the number $f(n)$ is divisible by $f(m)$.
 
 *Author: Mahyar Sefidgaran, Iran*
-
----
 
 **Problem 6**
 

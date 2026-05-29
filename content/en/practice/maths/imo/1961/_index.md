@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | [6](6.md) | ✓ verified | 3m04s |
 
----
-
 **Problem 1**
 
 (*Hungary*) Solve the system of equations:
@@ -30,8 +28,6 @@ draft: false
 $\begin{matrix} \quad x + y + z \!\!\! &= a \; \, \\ x^2 +y^2+z^2 \!\!\! &=b^2 \\ \qquad \qquad xy \!\!\!  &= z^2 \end{matrix}$
 
 where $a$ and $b$ are constants. Give the conditions that $a$ and $b$ must satisfy so that $x, y, z$ (the solutions of the system) are distinct positive numbers.
-
----
 
 **Problem 2**
 
@@ -41,8 +37,6 @@ $a^2 + b^2 + c^2 \ge 4S\sqrt{3}$
 
 In what case does equality hold?
 
----
-
 **Problem 3** &nbsp; *solved* · 11m26s · [Solution →](3.md)
 
 Solve the equation
@@ -51,13 +45,9 @@ $\cos^n{x} - \sin^n{x} = 1$
 
 where *n* is a given positive integer.
 
----
-
 **Problem 4**
 
 In the interior of [triangle](/wiki/index.php?title=Triangle "Triangle") $P_1 P_2 P_3$ a [point](/wiki/index.php?title=Point "Point") *P* is given. Let $Q_1,Q_2,Q_3$ be the [intersections](/wiki/index.php?title=Intersection "Intersection") of $PP_1, PP_2,PP_3$ with the opposing [edges](/wiki/index.php?title=Edge "Edge") of triangle $ABC$. Prove that among the [ratios](/wiki/index.php?title=Ratio "Ratio") $\frac{PP_1}{PQ_1},\frac{PP_2}{PQ_2},\frac{PP_3}{PQ_3}$ there exists one not larger than 2 and one not smaller than 2.
-
----
 
 **Problem 5**
 
@@ -66,8 +56,6 @@ Construct a triangle *ABC* if the following elements are given: $AC = b, AB = c$
 $b \tan{\frac{\omega}{2}} \le c < b$
 
 In what case does equality hold?
-
----
 
 **Problem 6** &nbsp; *✓ verified* · 3m04s · [Solution →](6.md)
 

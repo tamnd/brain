@@ -21,23 +21,17 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Consider the convex quadrilateral $ABCD$. The point $P$ is in the interior of $ABCD$. The following ratio equalities hold: $$
 \angle PAD : \angle PBA : \angle DPA = 1 : 2 : 3 = \angle CBP : \angle BAP : \angle BPC.
 $$ Prove that the following three lines meet in a point: the internal bisectors of angles $\angle ADP$ and $\angle PCB$ and the perpendicular bisector of segment $\overline{AB}$.
 
----
-
 **Problem 2**
 
 The real numbers $a$, $b$, $c$, $d$ are such that $a \geq b \geq c \geq d > 0$ and $a + b + c + d = 1$. Prove that$$
 (a + 2b + 3c + 4d) a^a b^b c^c d^d < 1.
 $$
-
----
 
 **Problem 3**
 
@@ -46,23 +40,17 @@ There are $4n$ pebbles of weights $1, 2, 3, . . . , 4n$. Each pebble is colored 
 - The total weights of both piles are the same.
 - Each pile contains two pebbles of each color.
 
----
-
 **Problem 4**
 
 There is an integer $n > 1$. There are $n^2$ stations on a slope of a mountain, all at different altitudes. Each of two cable car companies, $A$ and $B$, operates $k$ cable cars; each cable car provides a transfer from one of the stations to a higher one (with no intermediate stops). The $k$ cable cars of $A$ have $k$ different starting points and $k$ different finishing points, and a cable car that starts higher also finishes higher. The same conditions hold for $B$. We say that two stations are linked by a company if one can start from the lower station and reach the higher one by using one or more cars of that company (no other movements between stations are allowed).
 
 Determine the smallest positive integer $k$ for which one can guarantee that there are two stations that are linked by both companies.
 
----
-
 **Problem 5**
 
 A deck of $n > 1$ cards is given. A positive integer is written on each card. The deck has the property that the arithmetic mean of the numbers on each pair of cards is also the geometric mean of the numbers on some collection of one or more cards.
 
 For which $n$ does it follow that the numbers on the cards are all equal?
-
----
 
 **Problem 6**
 

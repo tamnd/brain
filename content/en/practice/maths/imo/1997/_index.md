@@ -21,8 +21,6 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 In the plane the points with integer coordinates are the vertices of unit squares. The squares are colored alternatively black and white (as on a chessboard).
@@ -39,13 +37,9 @@ Let $f(m,n)=|S_{1}-S_{2}|$
 
 (c) Show that there is no constant $C$ such that $f(m,n)<C$ for all $m$ and $n$.
 
----
-
 **Problem 2**
 
 The angle at $A$ is the smallest angle of triangle $ABC$. The points $B$ and $C$ divide the circumcircle of the triangle into two arcs. Let $U$ be an interior point of the arc between $B$ and $C$ which does not contain $A$. The perpendicular bisectors of $AB$ and $AC$ meet the line $AU$ and $V$ and $W$, respectively. The lines $BV$ and $CW$ meet at $T$. Show that.
-
----
 
 **Problem 3**
 
@@ -61,8 +55,6 @@ Show that there exists a permutation $y_{1}$, $y_{2}$,...,$y_{n}$ of $x_{1}$, $x
 
 $|y_{1}+2y_{2}+...+ny_{n}|\le \frac{n+1}{2}$
 
----
-
 **Problem 4**
 
 An $n \times n$ matrix whose entries come from the set $S={1,2,...,2n-1}$ is called a $\textit{silver}$ matrix if, for each $i=1,2,...,n$, the $i$th row and the $i$th column together contain all elements of $S$. Show that
@@ -71,15 +63,11 @@ An $n \times n$ matrix whose entries come from the set $S={1,2,...,2n-1}$ is cal
 
 (b) $\textit{silver}$ matrices exist for infinitely many values of $n$.
 
----
-
 **Problem 5**
 
 Find all pairs $(a,b)$ of integers $a,b \ge 1$ that satisfy the equation
 
 $a^{b^{2}}=b^{a}$
-
----
 
 **Problem 6**
 

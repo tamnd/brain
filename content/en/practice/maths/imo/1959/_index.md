@@ -21,13 +21,9 @@ draft: false
 | [5](5.md) | solved | 3m42s |
 | [6](6.md) | solved | 5m47s |
 
----
-
 **Problem 1** &nbsp; *✓ verified* · 2m27s · [Solution →](1.md)
 
 Prove that $\frac{21n+4}{14n+3}$ is irreducible for every natural number $n$.
-
----
 
 **Problem 2** &nbsp; *✓ verified* · 10m11s · [Solution →](2.md)
 
@@ -37,8 +33,6 @@ $\sqrt{x+\sqrt{2x-1}}+\sqrt{x-\sqrt{2x-1}}=A,$
 
 given (a) $A = \sqrt{2}$, (b) $A=1$, (c) $A=2$, where only non-negative real numbers are admitted for square roots?
 
----
-
 **Problem 3** &nbsp; *✓ verified* · 3m29s · [Solution →](3.md)
 
 Let $a,b,c$ be real numbers. Consider the quadratic equation in $\cos{x}$ :
@@ -47,13 +41,9 @@ $a\cos ^{2}x + b\cos{x} + c = 0.$
 
 Using the numbers $a,b,c$, form a quadratic equation in $\cos{2x}$, whose roots are the same as those of the original equation. Compare the equations in $\cos{x}$ and $\cos{2x}$ for $a=4, b=2, c=-1$.
 
----
-
 **Problem 4** &nbsp; *✓ verified* · 13m46s · [Solution →](4.md)
 
 Construct a right triangle with a given hypotenuse $c$ such that the median drawn to the hypotenuse is the [geometric mean](/wiki/index.php?title=Geometric_mean "Geometric mean") of the two legs of the triangle.
-
----
 
 **Problem 5** &nbsp; *solved* · 3m42s · [Solution →](5.md)
 
@@ -64,8 +54,6 @@ An arbitrary point $M$ is selected in the interior of the segment $AB$. The squa
 (b) Prove that the straight lines $MN$ pass through a fixed point $S$ independent of the choice of $M$.
 
 (c) Find the locus of the midpoints of the segments $PQ$ as $M$ varies between $A$ and $B$.
-
----
 
 **Problem 6** &nbsp; *solved* · 5m47s · [Solution →](6.md)
 

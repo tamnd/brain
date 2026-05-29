@@ -21,19 +21,13 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 $S$ is the set of all $(h,k)$ with $h,k$ non-negative integers such that $h + k < n$. Each element of $S$ is colored red or blue, so that if $(h,k)$ is red and $h' \le h,k' \le k$, then $(h',k')$ is also red. A type $1$ subset of $S$ has $n$ blue elements with different first member and a type $2$ subset of $S$ has $n$ blue elements with different second member. Show that there are the same number of type $1$ and type $2$ subsets.
 
----
-
 **Problem 2**
 
 $BC$ is a diameter of a circle center $O$. $A$ is any point on the circle with $\angle AOC \not\le 60^\circ$. $EF$ is the chord which is the perpendicular bisector of $AO$. $D$ is the midpoint of the minor arc $AB$. The line through $O$ parallel to $AD$ meets $AC$ at $J$. Show that $J$ is the incenter of triangle $CEF$.
-
----
 
 **Problem 3**
 
@@ -45,15 +39,11 @@ $$
 
 is itself an integer.
 
----
-
 **Problem 4**
 
 Let $n>1$ be an integer and let $1=d_{1}<d_{2}<d_{3} \cdots <d_{r}=n$ be all of its positive divisors in increasing order. Show that $$
 d=d_1d_2+d_2d_3+ \cdots +d_{r-1}d_r <n^2.
 $$
-
----
 
 **Problem 5**
 
@@ -64,8 +54,6 @@ $$
 $$
 
 for all real numbers $x,y,z,t$.
-
----
 
 **Problem 6**
 

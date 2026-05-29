@@ -21,15 +21,11 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 (a) Find all positive integers $n$ for which $2^n-1$ is divisible by $7$.
 
 (b) Prove that there is no positive integer $n$ for which $2^n+1$ is divisible by $7$.
-
----
 
 **Problem 2**
 
@@ -39,25 +35,17 @@ $$
 a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\le{3abc}.
 $$
 
----
-
 **Problem 3** &nbsp; *✓ verified* · 3m04s · [Solution →](3.md)
 
 A circle is inscribed in a triangle $ABC$ with sides $a,b,c$. Tangents to the circle parallel to the sides of the triangle are contructed. Each of these tangents cuts off a triangle from $\triangle ABC$. In each of these triangles, a circle is inscribed. Find the sum of the areas of all four inscribed circles (in terms of $a,b,c$).
-
----
 
 **Problem 4**
 
 Seventeen people correspond by mail with one another - each one with all the rest. In their letters only three different topics are discussed. Each pair of correspondents deals with only one of these topics. Prove that there are at least three people who write to each other about the same topic.
 
----
-
 **Problem 5**
 
 Suppose five points in a plane are situated so that no two of the straight lines joining them are parallel, perpendicular, or coincident. From each point perpendiculars are drawn to all the lines joining the other four points. Determine the maximum number of intersections that these perpendiculars can have.
-
----
 
 **Problem 6**
 

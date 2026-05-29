@@ -21,13 +21,9 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Two circles $G_1$ and $G_2$ intersect at two points $M$ and $N$. Let $AB$ be the line tangent to these circles at $A$ and $B$, respectively, so that $M$ lies closer to $AB$ than $N$. Let $CD$ be the line parallel to $AB$ and passing through the point $M$, with $C$ on $G_1$ and $D$ on $G_2$. Lines $AC$ and $BD$ meet at $E$; lines $AN$ and $CD$ meet at $P$; lines $BN$ and $CD$ meet at $Q$. Show that $EP=EQ$.
-
----
 
 **Problem 2**
 
@@ -37,15 +33,11 @@ $$
 \left( a-1+\frac{1}{b} \right)\left( b-1+\frac{1}{c} \right)\left( c-1+\frac{1}{a} \right) \le 1
 $$
 
----
-
 **Problem 3**
 
 Let $n \ge 2$ be a positive integer and $\lambda$ a positive real number. Initially there are $n$ fleas on a horizontal line, not all at the same point. We define a move as choosing two fleas at some points $A$ and $B$ to the left of $B$, and letting the flea from $A$ jump over the flea from $B$ to the point $C$ so that $\frac{BC}{AB}=\lambda$.
 
 Determine all values of $\lambda$ such that, for any point $M$ on the line and for any initial position of the $n$ fleas, there exists a sequence of moves that will take them all to the position right of $M$.
-
----
 
 **Problem 4**
 
@@ -55,13 +47,9 @@ A member of the audience selects two of the three boxes, chooses one card from e
 
 How many ways are there to put all the cards into the boxes so that this trick always works? (Two ways are considered different if at least one card is put into a different box.)
 
----
-
 **Problem 5**
 
 Does there exist a positive integer $n$ such that $n$ has exactly 2000 prime divisors and $n$ divides $2^n+1$?
-
----
 
 **Problem 6**
 

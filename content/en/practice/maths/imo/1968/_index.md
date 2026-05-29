@@ -21,19 +21,13 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Prove that there is one and only one triangle whose side lengths are consecutive integers, and one of whose angles is twice as large as another.
 
----
-
 **Problem 2**
 
 Find all natural numbers $x$ such that the product of their digits (in decimal notation) is equal to $x^2 - 10x - 22$.
-
----
 
 **Problem 3**
 
@@ -55,13 +49,9 @@ $$ with unknowns $x_1, x_2, \cdots, x_n$ where $a, b, c$ are real and $a \neq 0$
 
 (c) if $\Delta > 0$, there is more than one solution.
 
----
-
 **Problem 4** &nbsp; *solved* · 4m50s · [Solution →](4.md)
 
 Prove that in every tetrahedron there is a vertex such that the three edges meeting there have lengths which are the sides of a triangle.
-
----
 
 **Problem 5**
 
@@ -72,8 +62,6 @@ $$ holds for all $x$.
 (a) Prove that the function $f$ is periodic (i.e., there exists a positive number $b$ such that $f(x + b) = f(x)$ for all $x$).
 
 (b) For $a = 1$, give an example of a non-constant function with the required properties.
-
----
 
 **Problem 6**
 

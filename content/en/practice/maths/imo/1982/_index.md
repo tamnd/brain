@@ -21,21 +21,15 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$ $$
 f(m+n)-f(m)-f(n)=0 \text{ or } 1.
 $$ Determine $f(1982)$.
 
----
-
 **Problem 2**
 
 A non-isosceles triangle $A_{1}A_{2}A_{3}$ has sides $a_{1}$, $a_{2}$, $a_{3}$ with the side $a_{i}$ lying opposite to the vertex $A_{i}$. Let $M_{i}$ be the midpoint of the side $a_{i}$, and let $T_{i}$ be the point where the inscribed circle of triangle $A_{1}A_{2}A_{3}$ touches the side $a_{i}$. Denote by $S_{i}$ the reflection of the point $T_{i}$ in the interior angle bisector of the angle $A_{i}$. Prove that the lines $M_{1}S_{1}$, $M_{2}S_{2}$ and $M_{3}S_{3}$ are concurrent.
-
----
 
 **Problem 3**
 
@@ -49,23 +43,17 @@ b) Find such a sequence such that for all $n$: $$
 {x_0^2\over x_1}+{x_1^2\over x_2}+\ldots+{x_{n-1}^2\over x_n}<4.
 $$
 
----
-
 **Problem 4**
 
 Prove that if $n$ is a positive integer such that the equation $$
 x^3-3xy^2+y^3=n
 $$ has a solution in integers $x,y$, then it has at least three such solutions. Show that the equation has no solutions in integers for $n=2891$.
 
----
-
 **Problem 5**
 
 The diagonals $AC$ and $CE$ of the regular hexagon $ABCDEF$ are divided by inner points $M$ and $N$ respectively, so that $$
 {AM\over AC}={CN\over CE}=r.
 $$ Determine $r$ if $B,M$ and $N$ are collinear.
-
----
 
 **Problem 6**
 

@@ -21,21 +21,15 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Let $\Gamma$ be the circumcircle of acute triangle $ABC$. Points $D$ and $E$ are on segments $AB$ and $AC$ respectively such that $AD = AE$. The perpendicular bisectors of $BD$ and $CE$ intersect minor arcs $AB$ and $AC$ of $\Gamma$ at points $F$ and $G$ respectively. Prove that lines $DE$ and $FG$ are either parallel or they are the same line.
-
----
 
 **Problem 2**
 
 Find all numbers $n \ge 3$ for which there exists real numbers $a_1, a_2, ..., a_{n+2}$ satisfying $a_{n+1} = a_1, a_{n+2} = a_2$ and $$
 a_{i}a_{i+1} + 1 = a_{i+2}
 $$ for $i = 1, 2, ..., n.$
-
----
 
 **Problem 3**
 
@@ -53,19 +47,13 @@ $$
 
 Does there exist an anti-Pascal triangle with $2018$ rows which contains every integer from $1$ to $1 + 2 + 3 + \dots + 2018$?
 
----
-
 **Problem 4**
 
 A site is any point $(x, y)$ in the plane such that $x$ and $y$ are both positive integers less than or equal to 20. Initially, each of the 400 sites is unoccupied. Amy and Ben take turns placing stones with Amy going first. On her turn, Amy places a new red stone on an unoccupied site such that the distance between any two sites occupied by red stones is not equal to $\sqrt{5}$. On his turn, Ben places a new blue stone on any unoccupied site. (A site occupied by a blue stone is allowed to be at any distance from any other occupied site.) They stop as soon as a player cannot place a stone. Find the greatest $K$ such that Amy can ensure that she places at least $K$ red stones, no matter how Ben places his blue stones.
 
----
-
 **Problem 5**
 
 Let $a_1, a_2, \dots$ be an infinite sequence of positive integers. Suppose that there is an integer$N > 1$ such that, for each $n \geq N$, the number $\frac{a_1}{a_2}+\frac{a_2}{a_3}+\dots +\frac{a_{n-1}}{a_n}+\frac{a_n}{a_1}$ is an integer. Prove that there is a positive integer $M$ such that $a_m = a_{m+1}$ for all $m \geq M.$
-
----
 
 **Problem 6**
 

@@ -21,21 +21,15 @@ draft: false
 | 5 | — | — |
 | 6 | — | — |
 
----
-
 **Problem 1**
 
 Chords $AB$ and $CD$ of a circle intersect at a point $E$ inside the circle. Let $M$ be an interior point of the segment $EB$. The tangent line at $E$ to the circle through $D$, $E$, and $M$ intersects the lines $BC$ and $AC$ at $F$ and $G$, respectively. If $$
 \frac {AM}{AB} = t,
 $$ find $\frac {EG}{EF}$ in terms of $t$.
 
----
-
 **Problem 2**
 
 Let $n \geq 3$ and consider a set $E$ of $2n - 1$ distinct points on a circle. Suppose that exactly $k$ of these points are to be colored black. Such a coloring is good if there is at least one pair of black points such that the interior of one of the arcs between them contains exactly $n$ points from $E$. Find the smallest value of $k$ so that every such coloring of $k$ points of $E$ is good.
-
----
 
 **Problem 3**
 
@@ -43,15 +37,11 @@ Determine all integers $n > 1$ such that $$
 \frac {2^n + 1}{n^2}
 $$ is an integer.
 
----
-
 **Problem 4**
 
 Let ${\mathbb Q}^ +$ be the set of positive rational numbers. Construct a function $f : {\mathbb Q}^ + \rightarrow {\mathbb Q}^ +$ such that $$
 f(xf(y)) = \frac {f(x)}{y}
 $$ for all $x$, $y$ in ${\mathbb Q}^ +$.
-
----
 
 **Problem 5**
 
@@ -68,8 +58,6 @@ $$ is a prime raised to a positive integer power.
 Player ${\mathcal A}$ wins the game by choosing the number 1990; player ${\mathcal B}$ wins by choosing the number 1. For which $n_0$ does :
 
 a.) ${\mathcal A}$ have a winning strategy? b.) ${\mathcal B}$ have a winning strategy? c.) Neither player have a winning strategy?
-
----
 
 **Problem 6**
 
