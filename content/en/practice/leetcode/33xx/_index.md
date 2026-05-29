@@ -69,7 +69,9 @@ draft: false
 | 3361 | [Shift Distance Between Two Strings](3361.md) | 🟡 Medium | 1m 19s | The problem gives us two strings, s and t, of equal length. We want… |
 | 3362 | [Zero Array Transformation III](3362.md) | 🟡 Medium | 1m 39s | We are given an integer array nums and a list of interval queries. … |
 | 3363 | [Find the Maximum Number of Fruits Collected](3363.md) | 🔴 Hard | 45s | This problem asks us to maximize the total number of fruits collect… |
+| 3364 | [Minimum Positive Sum Subarray ](3364.md) | 🟢 Easy | 1m 20s | The problem asks us to find the smallest positive sum among all sub… |
 | 3365 | [Rearrange K Substrings to Form Target String](3365.md) | 🟡 Medium | 2m 5s | This problem asks whether it is possible to rearrange k contiguous … |
+| 3366 | [Minimum Array Sum](3366.md) | 🟡 Medium | 1m 30s | We are given an array nums and two different operations that can re… |
 | 3367 | [Maximize Sum of Weights after Edge Removals](3367.md) | 🔴 Hard | 1m 46s | We are given an undirected weighted tree with n nodes and n - 1 edg… |
 | 3368 | [First Letter Capitalization](3368.md) | 🔴 Hard | 4m 28s | This problem provides a database table named usercontent with two c… |
 | 3369 | [Design an Array Statistics Tracker ](3369.md) | 🔴 Hard | 1m 47s | The problem asks us to design a data structure that supports a stre… |

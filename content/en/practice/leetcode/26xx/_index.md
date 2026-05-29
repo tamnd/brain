@@ -81,18 +81,18 @@ draft: false
 | 2668 | [Find Latest Salaries](2668.md) | 🟢 Easy | 1m 14s | This problem gives us a database table named Salary that stores emp… |
 | 2669 | [Count Artist Occurrences On Spotify Ranking List](2669.md) | 🟢 Easy | 1m 26s | This problem provides a database table named Spotify that contains … |
 | 2670 | [Find the Distinct Difference Array](2670.md) | 🟢 Easy | 1m 1s | The problem asks us to compute the distinct difference array for a … |
-| 2671 | [Frequency Tracker](2671.md) | 🟡 Medium | 1m 19s | The problem asks us to design a data structure that supports three … |
-| 2672 | [Number of Adjacent Elements With the Same Color](2672.md) | 🟡 Medium | 39s | The problem is asking us to maintain an array of length n where ini… |
+| 2671 | [Frequency Tracker](2671.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure, FrequencyTracker, t… |
+| 2672 | [Number of Adjacent Elements With the Same Color](2672.md) | 🟡 Medium | 1m 30s | The problem gives us an array called colors of length n. Initially,… |
 | 2673 | [Make Costs of Paths Equal in a Binary Tree](2673.md) | 🟡 Medium | 1m 13s | Edit This problem gives us a perfect binary tree with n nodes, wher… |
 | 2674 | [Split a Circular Linked List](2674.md) | 🟡 Medium | 47s | The problem asks us to take a circular linked list of positive inte… |
 | 2675 | [Array of Objects to Matrix](2675.md) | 🔴 Hard | 38s | The problem is asking us to transform a JSON-like array of objects … |
 | 2676 | [Throttle](2676.md) | 🟡 Medium | 1m 11s | This problem asks us to implement a throttling mechanism for a func… |
 | 2677 | [Chunk Array](2677.md) | 🟢 Easy | 1m 4s | This problem asks us to split an input array into smaller subarrays… |
 | 2678 | [Number of Senior Citizens](2678.md) | 🟢 Easy | 47s | This problem asks us to count the number of passengers in a list wh… |
-| 2679 | [Sum in a Matrix](2679.md) | 🟡 Medium | 1m 38s | The problem gives us a 2D matrix nums, where each row contains inte… |
+| 2679 | [Sum in a Matrix](2679.md) | 🟡 Medium | 1m 23s | The problem gives us a 2D integer matrix nums. Each row contains se… |
 | 2680 | [Maximum OR](2680.md) | 🟡 Medium | 1m 10s | In this problem, we are given an integer array nums and an integer … |
 | 2681 | [Power of Heroes](2681.md) | 🔴 Hard | 1m 23s | The problem asks us to compute the total "power" across every possi… |
-| 2682 | [Find the Losers of the Circular Game](2682.md) | 🟢 Easy | 46s | The problem describes a game played by n friends sitting in a circl… |
+| 2682 | [Find the Losers of the Circular Game](2682.md) | 🟢 Easy | 1m 30s | This problem describes a circular passing game among n friends numb… |
 | 2683 | [Neighboring Bitwise XOR](2683.md) | 🟡 Medium | 40s | The problem presents us with a binary array called derived of lengt… |
 | 2684 | [Maximum Number of Moves in a Grid](2684.md) | 🟡 Medium | 1m 14s | This problem gives us a 2D grid of positive integers. We may start … |
 | 2685 | [Count the Number of Complete Components](2685.md) | 🟡 Medium | 1m 13s | This problem asks us to count how many connected components in an u… |
