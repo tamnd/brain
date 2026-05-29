@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974"
-description: "IMO 1974 — 5/6 solved, 3 verified."
+description: "IMO 1974 — 5/6 solved, 4 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1974
@@ -10,13 +10,13 @@ draft: false
 
 # IMO 1974
 
-[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 5/6 solved, 3 verified.
+[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 5/6 solved, 4 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m39s |
 | [2](2.md) | solved | 32m46s |
-| [3](3.md) | solved | 6m53s |
+| [3](3.md) | ✓ verified | 5m13s |
 | [4](4.md) | ✓ verified | 10m53s |
 | 5 | — | — |
 | [6](6.md) | ✓ verified | 7m06s |
@@ -33,7 +33,7 @@ In the triangle $ABC$, prove that there is a point $D$ on side $AB$ such that $C
 \sin{A} \sin{B} \leq \sin^2 \frac{C}{2}.
 $$
 
-**Problem 3** &nbsp; *solved* · 6m53s · [Solution →](3.md)
+**Problem 3** &nbsp; *✓ verified* · 5m13s · [Solution →](3.md)
 
 Prove that the number $\textstyle \sum_{k = 0}^n \tbinom{2n+1}{2k+1} 2^{3k}$ is not divisible by 5 for any integer $n \geq 0$.
 

@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "brain-translate"
+version = "0.1.0"
+description = "Incremental machine-translation pipeline for tamnd/brain"
+requires-python = ">=3.13"
+dependencies = [
+    "openai>=1.82.0",
+    "deepl>=1.20.0",
+    "pydantic>=2.11.0",
+    "rich>=14.0.0",
+    "typer>=0.15.3",
+    "python-frontmatter>=1.1.0",
+    "tenacity>=9.1.2",
+]
+
+[project.scripts]
+brain-translate = "brain_translate.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/brain_translate"]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.11.0",
+    "pytest>=8.4.0",
+    "mypy>=1.15.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+ignore_missing_imports = true

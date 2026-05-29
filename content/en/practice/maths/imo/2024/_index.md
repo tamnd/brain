@@ -15,7 +15,7 @@ draft: false
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 5m00s |
-| [2](2.md) | solved | 8m52s |
+| [2](2.md) | solved | 33m38s |
 | [3](3.md) | solved | 8m59s |
 | [4](4.md) | solved | 1h06m |
 | [5](5.md) | solved | 11m42s |
@@ -31,7 +31,7 @@ $$
 
 is a multiple of $n$. (Note that $\lfloor z \rfloor$ denotes the greatest integer less than or equal to $z$. For example, $\lfloor -\pi \rfloor = -4$ and $\lfloor 2 \rfloor = \lfloor 2.9 \rfloor = 2$.)
 
-**Problem 2** &nbsp; *solved* · 8m52s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 33m38s · [Solution →](2.md)
 
 Find all positive integer pairs $(a,b),$ such that there exists positive integers $g,N,$ such that $$
 \gcd (a^n+b,b^n+a)=g
