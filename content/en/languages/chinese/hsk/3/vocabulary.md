@@ -580,3 +580,20 @@ HSK 3 introduces 499 new words on top of the HSK 1 and HSK 2 base, bringing the 
 | 建立 | jiànlì | to establish; to build; to set up | verb | 建立良好的习惯。Establish good habits. |
 | 自己 | zìjǐ | oneself; self | pron | 你要相信自己。You should believe in yourself. |
 | 经常 | jīngcháng | often; frequently; regularly | adv | 他经常锻炼。He exercises regularly. |
+| 成为 | chéngwéi | to become; to turn into | verb | 他想成为医生。He wants to become a doctor. |
+| 字 | zì | character; word; handwriting | noun | 这个字怎么写？How do you write this character? |
+| 不必 | bùbì | no need to; need not | adv | 你不必担心。You don't need to worry. |
+| 确实 | quèshí | indeed; really; truly | adv | 这确实是个好主意。This is indeed a good idea. |
+| 逐渐 | zhújiàn | gradually; little by little | adv | 天气逐渐变暖了。The weather is gradually getting warmer. |
+| 尽管 | jǐnguǎn | although; despite; even though | conj | 尽管很累，他还是坚持了。Although tired, he persisted. |
+| 任何 | rènhé | any; whatever; whichever | pron/adj | 任何人都可以参加。Anyone can participate. |
+| 十分 | shífēn | very; extremely; fully | adv | 他十分高兴。He is extremely happy. |
+| 格外 | géwài | especially; particularly; unusually | adv | 今天格外冷。Today is especially cold. |
+| 不得不 | bùdébù | have no choice but to; must | adv/expr | 我不得不离开了。I have no choice but to leave. |
+| 从此 | cóngcǐ | from this time on; henceforth | adv | 从此他再也没来。He never came again after that. |
+| 更加 | gèngjiā | even more; all the more | adv | 他更加努力了。He worked even harder. |
+| 反而 | fǎn'ér | on the contrary; instead; unexpectedly | adv | 他没生气，反而笑了。He wasn't angry; on the contrary, he laughed. |
+| 大约 | dàyuē | approximately; about; roughly | adv | 大约需要一个小时。It takes about an hour. |
+| 尤其 | yóuqí | especially; particularly; in particular | adv | 他尤其喜欢数学。He especially likes math. |
+| 互相 | hùxiāng | mutually; each other; one another | adv | 我们互相帮助。We help each other. |
+| 除非 | chúfēi | unless; only if; except when | conj | 除非你道歉，否则我不原谅你。Unless you apologize, I won't forgive you. |

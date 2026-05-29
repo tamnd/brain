@@ -214,3 +214,118 @@ HSK 4 (B1) introduces approximately 1,000 new words, bringing the cumulative tot
 | 当时 | dāngshí | at that time, then | adv | 当时的情况 (the situation at that time) |
 | 从来 | cónglái | always, at all times (with negation: never) | adv | 从来不迟到 (never late), 从来没有 (have never) |
 | 总共 | zǒnggòng | in total, altogether | adv | 总共三十人 (thirty people in total) |
+
+## Verbs: Professional and Academic (职业学术动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 申请 | shēnqǐng | to apply (for); application | v | 申请工作 (apply for a job), 申请签证 (apply for a visa) |
+| 面试 | miànshì | interview; to interview | n/v | 参加面试 (attend an interview), 面试通过 (pass the interview) |
+| 毕业 | bìyè | to graduate; graduation | v | 大学毕业 (graduate from university), 毕业典礼 (graduation ceremony) |
+| 演讲 | yǎnjiǎng | speech; to give a speech | n/v | 发表演讲 (give a speech), 演讲比赛 (speech competition) |
+| 报告 | bàogào | report; to report | n/v | 工作报告 (work report), 提交报告 (submit a report) |
+| 授权 | shòuquán | to authorize; authorization | v | 被授权 (be authorized), 授权代表 (authorized representative) |
+| 承担 | chéngdān | to bear; to undertake; to shoulder | v | 承担责任 (bear responsibility), 承担风险 (take on risks) |
+| 挑战 | tiǎozhàn | to challenge; challenge | v/n | 面对挑战 (face challenges), 接受挑战 (accept a challenge) |
+| 克服 | kèfú | to overcome; to surmount | v | 克服困难 (overcome difficulties), 克服障碍 (overcome obstacles) |
+| 实现 | shíxiàn | to realize; to achieve | v | 实现目标 (achieve a goal), 实现梦想 (realize a dream) |
+| 开展 | kāizhǎn | to carry out; to launch; to develop | v | 开展活动 (carry out activities), 开展合作 (develop cooperation) |
+| 展示 | zhǎnshì | to display; to show; to demonstrate | v | 展示才能 (display talent), 展示结果 (show results) |
+| 记录 | jìlù | to record; record; to document | v/n | 做记录 (keep records), 历史记录 (historical record) |
+| 总结 | zǒngjié | to summarize; summary | v/n | 工作总结 (work summary), 进行总结 (carry out a summary) |
+| 修改 | xiūgǎi | to revise; to modify; to amend | v | 修改方案 (revise a plan), 修改错误 (correct an error) |
+| 维护 | wéihù | to maintain; to uphold; to defend | v | 维护权益 (defend rights), 维护秩序 (maintain order) |
+| 利用 | lìyòng | to use; to make use of; to utilize | v | 充分利用 (make full use of), 利用资源 (utilize resources) |
+| 节省 | jiéshěng | to save; to economize | v | 节省时间 (save time), 节省费用 (save costs) |
+| 解决 | jiějué | to solve; to resolve; to settle | v | 解决问题 (solve a problem), 彻底解决 (resolve thoroughly) |
+| 举例 | jǔlì | to give an example; to cite | v | 举例说明 (illustrate with examples) |
+
+## Verbs: Learning and Cognition (学习与认知动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 理解 | lǐjiě | to understand; to comprehend | v | 深刻理解 (deeply understand), 难以理解 (hard to understand) |
+| 学习 | xuéxí | to study; to learn | v | 认真学习 (study diligently), 学习经验 (learn from experience) |
+| 记忆 | jìyì | to memorize; memory | v/n | 增强记忆 (enhance memory), 记忆力强 (strong memory) |
+| 注意 | zhùyì | to pay attention; attention | v/n | 注意安全 (pay attention to safety), 引起注意 (attract attention) |
+| 理论 | lǐlùn | theory; in theory | n | 理论研究 (theoretical research), 理论与实践 (theory and practice) |
+| 创新 | chuàngxīn | to innovate; innovation | v/n | 鼓励创新 (encourage innovation), 技术创新 (technological innovation) |
+| 掌握 | zhǎngwò | to master; to grasp; to command | v | 掌握技能 (master a skill), 充分掌握 (fully grasp) |
+| 积累 | jīlěi | to accumulate; to build up | v | 积累经验 (accumulate experience), 积累知识 (accumulate knowledge) |
+| 培养 | péiyǎng | to cultivate; to train; to develop | v | 培养能力 (develop ability), 培养习惯 (cultivate habits) |
+| 探索 | tànsuǒ | to explore; to probe | v | 探索未知 (explore the unknown), 勇于探索 (be bold in exploring) |
+
+## Nouns: Work and Business (工作与商业名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 会议 | huìyì | meeting; conference; session | n | 召开会议 (hold a meeting), 参加会议 (attend a meeting) |
+| 合同 | hétong | contract; agreement | n | 签合同 (sign a contract), 违反合同 (violate a contract) |
+| 项目 | xiàngmù | project; item; program | n | 负责项目 (be in charge of a project), 项目管理 (project management) |
+| 市场 | shìchǎng | market; marketplace | n | 国际市场 (international market), 市场竞争 (market competition) |
+| 资金 | zījīn | funds; capital; funding | n | 筹集资金 (raise funds), 资金不足 (insufficient funds) |
+| 数据 | shùjù | data; figures; statistics | n | 分析数据 (analyze data), 数据显示 (data shows) |
+| 资料 | zīliào | material; data; reference | n | 查阅资料 (consult materials), 收集资料 (collect materials) |
+| 文件 | wénjiàn | document; file; official paper | n | 处理文件 (handle documents), 签署文件 (sign documents) |
+| 网站 | wǎngzhàn | website; web page | n | 官方网站 (official website), 建立网站 (build a website) |
+| 模式 | móshì | model; pattern; mode | n | 发展模式 (development model), 商业模式 (business model) |
+| 策略 | cèlüè | strategy; tactic; approach | n | 制定策略 (formulate a strategy), 竞争策略 (competitive strategy) |
+| 效率 | xiàolǜ | efficiency; effectiveness | n | 提高效率 (improve efficiency), 工作效率 (work efficiency) |
+| 收入 | shōurù | income; revenue; earnings | n | 增加收入 (increase income), 月收入 (monthly income) |
+| 支出 | zhīchū | expenditure; spending; outlay | n | 减少支出 (reduce expenditure), 日常支出 (daily expenses) |
+| 预算 | yùsuàn | budget; to budget | n/v | 制定预算 (set a budget), 超出预算 (exceed budget) |
+| 费用 | fèiyòng | fee; cost; expense | n | 生活费用 (living expenses), 降低费用 (reduce costs) |
+| 证书 | zhèngshū | certificate; credential | n | 获得证书 (obtain a certificate), 专业证书 (professional certificate) |
+| 成果 | chéngguǒ | achievement; result; fruit (of effort) | n | 研究成果 (research achievement), 取得成果 (achieve results) |
+| 优势 | yōushì | advantage; strength; edge | n | 发挥优势 (leverage advantages), 竞争优势 (competitive advantage) |
+| 挑战 | tiǎozhàn | challenge | n | 面临挑战 (face challenges), 克服挑战 (overcome challenges) |
+
+## Nouns: Society and Culture (社会文化名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 政策 | zhèngcè | policy; government policy | n | 政府政策 (government policy), 制定政策 (formulate policies) |
+| 制度 | zhìdù | system; institution; regime | n | 建立制度 (establish a system), 完善制度 (improve the system) |
+| 观念 | guānniàn | concept; idea; notion | n | 更新观念 (update concepts), 传统观念 (traditional ideas) |
+| 文明 | wénmíng | civilization; civilized; cultured | n/adj | 人类文明 (human civilization), 文明行为 (civilized behavior) |
+| 历史 | lìshǐ | history; historical | n | 了解历史 (understand history), 历史事件 (historical event) |
+| 科技 | kējì | technology; science and technology | n | 科技发展 (development of technology), 高科技 (high technology) |
+| 互联网 | hùliánwǎng | internet; web | n | 互联网时代 (internet age), 利用互联网 (use the internet) |
+| 媒体 | méitǐ | media; medium | n | 社交媒体 (social media), 新闻媒体 (news media) |
+| 调查 | diàochá | investigation; survey | n | 开展调查 (conduct a survey), 市场调查 (market survey) |
+| 研究 | yánjiū | research; study | n | 科学研究 (scientific research), 深入研究 (in-depth research) |
+| 活动 | huódòng | activity; event; campaign | n | 举办活动 (hold an event), 公益活动 (public welfare activity) |
+| 环境 | huánjìng | environment; surroundings; setting | n | 保护环境 (protect the environment), 工作环境 (work environment) |
+| 发展 | fāzhǎn | development; to develop | n/v | 经济发展 (economic development), 可持续发展 (sustainable development) |
+| 影响 | yǐngxiǎng | influence; impact | n | 产生影响 (have an impact), 深远影响 (far-reaching influence) |
+| 问题 | wèntí | problem; issue; question | n | 面临问题 (face problems), 讨论问题 (discuss issues) |
+| 主题 | zhǔtí | theme; topic; subject | n | 会议主题 (conference theme), 主题活动 (themed activity) |
+| 标准 | biāozhǔn | standard; criterion | n | 制定标准 (set standards), 达到标准 (meet standards) |
+| 形式 | xíngshì | form; format; formality | n | 各种形式 (various forms), 形式多样 (diverse formats) |
+| 方法 | fāngfǎ | method; way; approach | n | 学习方法 (learning method), 有效方法 (effective method) |
+| 原则 | yuánzé | principle; rule; tenet | n | 坚持原则 (uphold principles), 基本原则 (basic principles) |
+
+## Adjectives: Advanced Descriptions (高级描述形容词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 积极 | jījí | positive; proactive; enthusiastic | adj | 积极态度 (positive attitude), 积极参与 (actively participate) |
+| 消极 | xiāojí | negative; passive; pessimistic | adj | 消极影响 (negative influence), 消极态度 (passive attitude) |
+| 理性 | lǐxìng | rational; reasonable | adj | 理性思考 (rational thinking), 理性判断 (rational judgment) |
+| 客观 | kèguān | objective; impartial | adj | 客观评价 (objective evaluation), 保持客观 (remain objective) |
+| 主观 | zhǔguān | subjective; personal | adj | 主观看法 (subjective view), 不要太主观 (don't be too subjective) |
+| 直接 | zhíjiē | direct; straightforward | adj/adv | 直接回答 (answer directly), 直接方式 (direct approach) |
+| 间接 | jiànjiē | indirect; roundabout | adj/adv | 间接影响 (indirect influence), 间接方式 (indirect approach) |
+| 正式 | zhèngshì | formal; official; proper | adj | 正式场合 (formal occasion), 正式文件 (official document) |
+| 非正式 | fēizhèngshì | informal; unofficial | adj | 非正式会议 (informal meeting), 非正式交流 (informal exchange) |
+| 主动 | zhǔdòng | active; proactive; initiative | adj | 主动学习 (proactively learn), 主动帮忙 (take the initiative to help) |
+| 被动 | bèidòng | passive; reactive | adj | 被动局面 (passive situation), 被动应对 (react passively) |
+| 系统 | xìtǒng | systematic; comprehensive | adj | 系统学习 (systematic learning), 系统分析 (systematic analysis) |
+| 科学 | kēxué | scientific; systematic | adj | 科学方法 (scientific method), 科学管理 (scientific management) |
+| 专业 | zhuānyè | professional; specialized | adj | 专业人员 (professional staff), 专业知识 (specialized knowledge) |
+| 创新 | chuàngxīn | innovative; creative | adj | 创新思维 (innovative thinking), 创新能力 (creative ability) |
+| 传统 | chuántǒng | traditional; conventional | adj | 传统方式 (traditional approach), 传统文化 (traditional culture) |
+| 现代 | xiàndài | modern; contemporary | adj | 现代技术 (modern technology), 现代社会 (modern society) |
+| 复杂 | fùzá | complex; complicated | adj | 复杂情况 (complex situation), 关系复杂 (complex relationships) |
+| 简洁 | jiǎnjié | concise; brief; succinct | adj | 语言简洁 (concise language), 简洁明了 (clear and concise) |
+| 深入 | shēnrù | in-depth; thorough; penetrating | adj/adv | 深入研究 (in-depth research), 深入了解 (thoroughly understand) |
