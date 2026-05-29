@@ -12,7 +12,18 @@ draft: false
 
 [Official IMO 1997 problems](https://www.imo-official.org/year_info.aspx?year=1997) &nbsp;·&nbsp; 0/6 solved.
 
-## Problem 1
+| # | Status | Time |
+|---|--------|------|
+| 1 | — | — |
+| 2 | — | — |
+| 3 | — | — |
+| 4 | — | — |
+| 5 | — | — |
+| 6 | — | — |
+
+---
+
+**Problem 1**
 
 In the plane the points with integer coordinates are the vertices of unit squares. The squares are colored alternatively black and white (as on a chessboard).
 
@@ -30,13 +41,13 @@ Let $f(m,n)=|S_{1}-S_{2}|$
 
 ---
 
-## Problem 2
+**Problem 2**
 
 The angle at $A$ is the smallest angle of triangle $ABC$. The points $B$ and $C$ divide the circumcircle of the triangle into two arcs. Let $U$ be an interior point of the arc between $B$ and $C$ which does not contain $A$. The perpendicular bisectors of $AB$ and $AC$ meet the line $AU$ and $V$ and $W$, respectively. The lines $BV$ and $CW$ meet at $T$. Show that.
 
 ---
 
-## Problem 3
+**Problem 3**
 
 Let $x_{1}$, $x_{2}$,...,$x_{n}$ be real numbers satisfying the conditions
 
@@ -52,7 +63,7 @@ $|y_{1}+2y_{2}+...+ny_{n}|\le \frac{n+1}{2}$
 
 ---
 
-## Problem 4
+**Problem 4**
 
 An $n \times n$ matrix whose entries come from the set $S={1,2,...,2n-1}$ is called a $\textit{silver}$ matrix if, for each $i=1,2,...,n$, the $i$th row and the $i$th column together contain all elements of $S$. Show that
 
@@ -62,7 +73,7 @@ An $n \times n$ matrix whose entries come from the set $S={1,2,...,2n-1}$ is cal
 
 ---
 
-## Problem 5
+**Problem 5**
 
 Find all pairs $(a,b)$ of integers $a,b \ge 1$ that satisfy the equation
 
@@ -70,7 +81,7 @@ $a^{b^{2}}=b^{a}$
 
 ---
 
-## Problem 6
+**Problem 6**
 
 For each positive integer $n$, let $f(n)$ denote the number of ways of representing $n$ as a sum of powers of $2$ with nonnegative integer exponents. Representations which differ only in the ordering of their summands are considered to be the same. For instance, $f(4)=4$, because the number 4 can be represented in the following four ways:
 
@@ -79,4 +90,3 @@ $4;2+2;2+1+1;1+1+1+1$
 Prove that, for any integer $n \ge 3$,
 
 $2^{n^{2}/4}<f(2^{n})<2^{n^{2}/2}$.
-

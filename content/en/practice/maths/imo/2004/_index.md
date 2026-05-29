@@ -12,13 +12,24 @@ draft: false
 
 [Official IMO 2004 problems](https://www.imo-official.org/year_info.aspx?year=2004) &nbsp;·&nbsp; 0/6 solved.
 
-## Problem 1
+| # | Status | Time |
+|---|--------|------|
+| 1 | — | — |
+| 2 | — | — |
+| 3 | — | — |
+| 4 | — | — |
+| 5 | — | — |
+| 6 | — | — |
+
+---
+
+**Problem 1**
 
 Let $ABC$ be an acute-angled triangle with $AB\neq AC$. The circle with diameter $BC$ intersects the sides $AB$ and $AC$ at $M$ and $N$ respectively. Denote by $O$ the midpoint of the side $BC$. The bisectors of the angles $\angle BAC$ and $\angle MON$ intersect at $R$. Prove that the circumcircles of the triangles $BMR$ and $CNR$ have a common point lying on the side $BC$.
 
 ---
 
-## Problem 2
+**Problem 2**
 
 Find all polynomials $f$ with real coefficients such that for all reals $a,b,c$ such that $ab + bc + ca = 0$ we have the following relations
 
@@ -28,7 +39,7 @@ $$
 
 ---
 
-## Problem 3
+**Problem 3**
 
 Define a "hook" to be a figure made up of six unit squares as shown below in the picture, or any of the figures obtained by applying rotations and reflections to this figure.
 
@@ -40,7 +51,7 @@ Determine all $m \times n$ rectangles that can be covered without gaps and witho
 
 ---
 
-## Problem 4
+**Problem 4**
 
 Let $n \geq 3$ be an integer. Let $t_1, t_2, \dots ,t_n$ be positive real numbers such that
 
@@ -50,7 +61,7 @@ $$ Show that $t_i$, $t_j$, $t_k$ are side lengths of a triangle for all $i$, $j$
 
 ---
 
-## Problem 5
+**Problem 5**
 
 In a convex quadrilateral $ABCD$, the diagonal $BD$ bisects neither the angle $ABC$ nor the angle $CDA$. The point $P$ lies inside $ABCD$ and satisfies$$
 \angle PBC = \angle DBA \text{ and } \angle PDC = \angle BDA.
@@ -58,9 +69,8 @@ $$ Prove that $ABCD$ is a cyclic quadrilateral if and only if $AP = CP.$
 
 ---
 
-## Problem 6
+**Problem 6**
 
 We call a positive integer alternating if every two consecutive digits in its decimal representation have a different parity.
 
 Find all positive integers $n$ such that $n$ has a multiple which is alternating.
-

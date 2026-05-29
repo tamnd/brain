@@ -12,7 +12,18 @@ draft: false
 
 [Official IMO 2009 problems](https://www.imo-official.org/year_info.aspx?year=2009) &nbsp;·&nbsp; 0/6 solved.
 
-## Problem 1
+| # | Status | Time |
+|---|--------|------|
+| 1 | — | — |
+| 2 | — | — |
+| 3 | — | — |
+| 4 | — | — |
+| 5 | — | — |
+| 6 | — | — |
+
+---
+
+**Problem 1**
 
 Let $n$ be a positive integer and let $a_1,\ldots,a_k (k\ge2)$ be distinct integers in the set $\{1,\ldots,n\}$ such that $n$ divides $a_i(a_{i+1}-1)$ for $i=1,\ldots,k-1$. Prove that $n$ doesn't divide $a_k(a_1-1)$.
 
@@ -20,7 +31,7 @@ Let $n$ be a positive integer and let $a_1,\ldots,a_k (k\ge2)$ be distinct integ
 
 ---
 
-## Problem 2
+**Problem 2**
 
 Let $ABC$ be a triangle with circumcentre $O$. The points $P$ and $Q$ are interior points of the sides $CA$ and $AB$ respectively. Let $K,L$ and $M$ be the midpoints of the segments $BP,CQ$ and $PQ$, respectively, and let $\Gamma$ be the circle passing through $K,L$ and $M$. Suppose that the line $PQ$ is tangent to the circle $\Gamma$. Prove that $OP=OQ$.
 
@@ -28,7 +39,7 @@ Let $ABC$ be a triangle with circumcentre $O$. The points $P$ and $Q$ are interi
 
 ---
 
-## Problem 3
+**Problem 3**
 
 Suppose that $s_1,s_2,s_3,\ldots$ is a strictly increasing sequence of positive integers such that the subsequences
 
@@ -40,7 +51,7 @@ are both arithmetic progressions. Prove that the sequence $s_1,s_2,s_3,\ldots$ i
 
 ---
 
-## Problem 4
+**Problem 4**
 
 Let $ABC$ be a triangle with $AB=AC$. The angle bisectors of $\angle CAB$ and $\angle ABC$ meet the sides $BC$ and $CA$ at $D$ and $E$, respectively. Let $K$ be the incentre of triangle $ADC$. Suppose that $\angle BEK=45^\circ$. Find all possible values of $\angle CAB$.
 
@@ -48,7 +59,7 @@ Let $ABC$ be a triangle with $AB=AC$. The angle bisectors of $\angle CAB$ and $\
 
 ---
 
-## Problem 5
+**Problem 5**
 
 Determine all functions $f$ from the set of positive integers to the set of positive integers such that, for all positive integers $a$ and $b$, there exists a non-degenerate triangle with sides of lengths
 
@@ -60,9 +71,8 @@ $a,f(b)$ and $f(b+f(a)-1)$.
 
 ---
 
-## Problem 6
+**Problem 6**
 
 Let $a_1,a_2,\ldots,a_n$ be distinct positive integers and let $M$ be a set of $n-1$ positive integers not containing $s=a_1+a_2+\ldots+a_n$. A grasshopper is to jump along the real axis, starting at the point $0$ and making $n$ jumps to the right with lengths $a_1,a_2,\ldots,a_n$ in some order. Prove that the order can be chosen in such a way that the grasshopper never lands on any point in $M$.
 
 *Author: Dmitry Khramtsov, Russia*
-

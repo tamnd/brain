@@ -12,7 +12,18 @@ draft: false
 
 [Official IMO 2013 problems](https://www.imo-official.org/year_info.aspx?year=2013) &nbsp;·&nbsp; 0/6 solved.
 
-## Problem 1
+| # | Status | Time |
+|---|--------|------|
+| 1 | — | — |
+| 2 | — | — |
+| 3 | — | — |
+| 4 | — | — |
+| 5 | — | — |
+| 6 | — | — |
+
+---
+
+**Problem 1**
 
 Prove that for any pair of positive integers $k$ and $n$, there exist $k$ positive integers $m_1,m_2,...,m_k$ (not necessarily different) such that
 
@@ -20,7 +31,7 @@ $1+\frac{2^k-1}{n}=\left(1+\frac{1}{m_1}\right)\left(1+\frac{1}{m_2}\right)\cdot
 
 ---
 
-## Problem 2
+**Problem 2**
 
 A configuration of $4027$ points in the plane is called *Colombian* if it consists of $2013$ red points and $2014$ blue points, and no three of the points of the configuration are collinear. By drawing some lines, the plane is divided into several regions. An arrangement of lines is *good* for a Colombian configuration if the following two conditions are satisfied:
 
@@ -31,19 +42,19 @@ Find the least value of $k$ such that for any Colombian configuration of $4027$ 
 
 ---
 
-## Problem 3
+**Problem 3**
 
 Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.
 
 ---
 
-## Problem 4
+**Problem 4**
 
 Let $ABC$ be an acute triangle with orthocenter $H$, and let $W$ be a point on the side $BC$, lying strictly between $B$ and $C$. The points $M$ and $N$ are the feet of the altitudes from $B$ and $C$, respectively. Denote by $\omega_1$ is \[sic] the circumcircle of $BWN$, and let $X$ be the point on $\omega_1$ such that $WX$ is a diameter of $\omega_1$. Analogously, denote by $\omega_2$ the circumcircle of triangle $CWM$, and let $Y$ be the point such that $WY$ is a diameter of $\omega_2$. Prove that $X, Y$ and $H$ are collinear.
 
 ---
 
-## Problem 5
+**Problem 5**
 
 Let $\mathbb Q_{>0}$ be the set of all positive rational numbers. Let $f:\mathbb Q_{>0}\to\mathbb R$ be a function satisfying the following three conditions:
 
@@ -53,11 +64,10 @@ Prove that $f(x)=x$ for all $x\in\mathbb Q_{>0}$.
 
 ---
 
-## Problem 6
+**Problem 6**
 
 Let $n \ge 3$ be an integer, and consider a circle with $n + 1$ equally spaced points marked on it. Consider all labellings of these points with the numbers $0, 1, ... , n$ such that each label is used exactly once; two such labellings are considered to be the same if one can be obtained from the other by a rotation of the circle. A labelling is called beautiful if, for any four labels $a < b < c < d$ with $a + d = b + c$, the chord joining the points labelled $a$ and $d$ does not intersect the chord joining the points labelled $b$ and $c$.
 
 Let $M$ be the number of beautiful labelings, and let N be the number of ordered pairs $(x, y)$ of positive integers such that $x + y \le n$ and $\gcd(x, y) = 1$. Prove that $$
 M = N + 1.
 $$
-

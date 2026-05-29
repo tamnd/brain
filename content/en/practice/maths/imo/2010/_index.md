@@ -12,7 +12,18 @@ draft: false
 
 [Official IMO 2010 problems](https://www.imo-official.org/year_info.aspx?year=2010) &nbsp;·&nbsp; 0/6 solved.
 
-## Problem 1
+| # | Status | Time |
+|---|--------|------|
+| 1 | — | — |
+| 2 | — | — |
+| 3 | — | — |
+| 4 | — | — |
+| 5 | — | — |
+| 6 | — | — |
+
+---
+
+**Problem 1**
 
 Find all functions $f:\mathbb{R}\rightarrow\mathbb{R}$ such that for all $x,y\in\mathbb{R}$ the following equality holds
 
@@ -26,7 +37,7 @@ where $\left\lfloor a\right\rfloor$ is greatest integer not greater than $a.$
 
 ---
 
-## Problem 2
+**Problem 2**
 
 Given a triangle $ABC$, with $I$ as its incenter and $\Gamma$ as its circumcircle, $AI$ intersects $\Gamma$ again at $D$. Let $E$ be a point on arc $BDC$, and $F$ a point on the segment $BC$, such that $\angle BAF=\angle CAE< \frac12\angle BAC$. If $G$ is the midpoint of $IF$, prove that the intersection of lines $EI$ and $DG$ lies on $\Gamma$.
 
@@ -34,7 +45,7 @@ Given a triangle $ABC$, with $I$ as its incenter and $\Gamma$ as its circumcircl
 
 ---
 
-## Problem 3
+**Problem 3**
 
 Find all functions $g:\mathbb{N}\rightarrow\mathbb{N}$ such that $\left(g(m)+n\right)\left(g(n)+m\right)$ is a perfect square for all $m,n\in\mathbb{N}.$
 
@@ -42,7 +53,7 @@ Find all functions $g:\mathbb{N}\rightarrow\mathbb{N}$ such that $\left(g(m)+n\r
 
 ---
 
-## Problem 4
+**Problem 4**
 
 Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$). The lines $AP$, $BP$ and $CP$ meet again its circumcircle $\Gamma$ at $K$, $L$, respectively $M$. The tangent line at $C$ to $\Gamma$ meets the line $AB$ at $S$. Show that from $SC = SP$ follows $MK = ML$.
 
@@ -50,7 +61,7 @@ Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$). The lines $AP
 
 ---
 
-## Problem 5
+**Problem 5**
 
 Each of the six boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$, $B_6$ initially contains one coin. The following operations are allowed
 
@@ -64,7 +75,7 @@ Determine if there exists a finite sequence of operations of the allowed types, 
 
 ---
 
-## Problem 6
+**Problem 6**
 
 Let $a_1, a_2, a_3, \ldots$ be a sequence of positive real numbers, and $s$ be a positive integer, such that $$
 a_n = \max \{ a_k + a_{n-k} \mid 1 \leq k \leq n-1 \} \ \textrm{ for all } \ n > s.
@@ -73,4 +84,3 @@ a_n = a_{\ell} + a_{n - \ell} \ \textrm{ for all } \ n \geq N.
 $$
 
 *Author: Morteza Saghafiyan, Iran*
-

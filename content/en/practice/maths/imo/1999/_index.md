@@ -12,7 +12,18 @@ draft: false
 
 [Official IMO 1999 problems](https://www.imo-official.org/year_info.aspx?year=1999) &nbsp;·&nbsp; 0/6 solved.
 
-## Problem 1
+| # | Status | Time |
+|---|--------|------|
+| 1 | — | — |
+| 2 | — | — |
+| 3 | — | — |
+| 4 | — | — |
+| 5 | — | — |
+| 6 | — | — |
+
+---
+
+**Problem 1**
 
 Determine all finite sets $S$ of at least three points in the plane which satisfy the following condition:
 
@@ -20,7 +31,7 @@ For any two distinct points $A$ and $B$ in $S$, the perpendicular bisector of th
 
 ---
 
-## Problem 2
+**Problem 2**
 
 Let $n \geq 2$ be a fixed integer.
 
@@ -34,7 +45,7 @@ $$
 
 ---
 
-## Problem 3
+**Problem 3**
 
 Consider an $n \times n$ square board, where $n$ is a fixed even positive integer. The board is divided into $n^{2}$ units squares. We say that two different squares on the board are adjacent if they have a common side.
 
@@ -44,7 +55,7 @@ Determine the smallest possible value of $N$.
 
 ---
 
-## Problem 4
+**Problem 4**
 
 Determine all pairs $(n,p)$ of positive integers such that
 
@@ -52,7 +63,7 @@ $p$ is a prime, $n$ not exceeded $2p$, and $(p-1)^{n}+1$ is divisible by $n^{p-1
 
 ---
 
-## Problem 5
+**Problem 5**
 
 Two circles $G_{1}$ and $G_{2}$ are contained inside the circle $G$, and are tangent to $G$ at the distinct points $M$ and $N$, respectively. $G_{1}$ passes through the center of $G_{2}$. The line passing through the two points of intersection of $G_{1}$ and $G_{2}$ meets $G$ at $A$ and $B$. The lines $MA$ and $MB$ meet $G_{1}$ at $C$ and $D$, respectively.
 
@@ -60,7 +71,7 @@ Prove that $CD$ is tangent to $G_{2}$.
 
 ---
 
-## Problem 6
+**Problem 6**
 
 Determine all functions $f:\Bbb{R}\to \Bbb{R}$ such that
 
@@ -69,4 +80,3 @@ f(x-f(y))=f(f(y))+xf(y)+f(x)-1
 $$
 
 for all real numbers $x,y$.
-
