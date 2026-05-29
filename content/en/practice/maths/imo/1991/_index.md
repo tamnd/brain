@@ -1,6 +1,6 @@
 ---
 title: "IMO 1991"
-description: "IMO 1991 — 0/6 solved."
+description: "IMO 1991 — 1/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1991
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1991
 
-[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 1/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | solved | 18m14s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 18m14s · [Solution →](1.md)
 
 Given a triangle $\,ABC,\,$ let $\,I\,$ be the center of its inscribed circle. The internal bisectors of the angles $\,A,B,C\,$ meet the opposite sides in $\,A^{\prime },B^{\prime },C^{\prime }\,$ respectively. Prove that $$
 \frac {1}{4} < \frac {AI\cdot BI\cdot CI}{AA^{\prime }\cdot BB^{\prime }\cdot CC^{\prime }} \leq \frac {8}{27}.

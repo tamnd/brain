@@ -198,7 +198,9 @@ def run(
             sm.save_queue(queue)
             err.print(f"[green]done:[/] {dp}")
         except Exception as exc:
-            err.print(f"[red]error:[/] {item.source_path}: {exc}")
+            # escape brackets so Rich doesn't strip them as markup tags
+            msg = str(exc).replace("[", "\\[")
+            err.print(f"[red]error:[/] {item.source_path}: {msg}")
             sm.mark_failed(state, item.source_path, src_hash, dp, cfg.provider)
             sm.save_state(state)
             item.retries += 1

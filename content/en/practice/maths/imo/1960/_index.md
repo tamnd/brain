@@ -14,7 +14,7 @@ draft: false
 
 | # | Status | Time |
 |---|--------|------|
-| [1](1.md) | solved | 7m41s |
+| [1](1.md) | solved | 27m41s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
@@ -22,7 +22,7 @@ draft: false
 | [6](6.md) | ✓ verified | 3m00s |
 | 7 | — | — |
 
-**Problem 1** &nbsp; *solved* · 7m41s · [Solution →](1.md)
+**Problem 1** &nbsp; *solved* · 27m41s · [Solution →](1.md)
 
 Find all three-digit numbers for which one obtains, when dividing the number by 11, the sum of the squares of the digits of the initial number.
 
