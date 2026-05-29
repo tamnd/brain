@@ -35,11 +35,11 @@ See [Pronunciation guide](pronunciation/) for full details.
 
 ## Quick Start (Week 1)
 
-1. **Choose your main textbook**: [LLPSI Familia Romana](resources/textbooks/) (reading/immersion approach) or [Wheelock's Latin](resources/textbooks/) (grammar-first approach)
+1. **Choose your main textbook**: [LLPSI Familia Romana](reference/) (reading/immersion approach) or [Wheelock's Latin](reference/) (grammar-first approach)
 2. **Install Anki** with the [DCC Latin Core Vocabulary deck](vocabulary/dcc/) — the 1,000 most frequent Latin words (covers 70-80% of any Latin text)
-3. **Bookmark** [Perseus Digital Library](resources/websites/) and [Logeion dictionary](resources/websites/) — your primary text and dictionary resources
+3. **Bookmark** [Perseus Digital Library](reference/) and [Logeion dictionary](reference/) — your primary text and dictionary resources
 4. **Decide on pronunciation**: [Classical or Ecclesiastical](pronunciation/) — Classical is recommended for academic and active Latin use
-5. **Optional**: Add [Duolingo Latin](resources/apps/) for low-stakes daily exposure, but use a real textbook as your primary course
+5. **Optional**: Add [Duolingo Latin](reference/) for low-stakes daily exposure, but use a real textbook as your primary course
 
 ## Time to Each Level
 
@@ -62,7 +62,7 @@ See [Pronunciation guide](pronunciation/) for full details.
 | [Skills](skills/) | Reading, translation, composition, speaking, listening, scansion |
 | [Pronunciation](pronunciation/) | Classical, Ecclesiastical, and Traditional English pronunciation |
 | [Texts](texts/) | Canonical texts by level: LLPSI → Caesar → Cicero → Virgil → Tacitus |
-| [Resources](resources/) | Apps, textbooks, websites, YouTube, podcasts, reference grammars |
+| [Resources](reference/) | Apps, textbooks, websites, YouTube, podcasts, reference grammars |
 | [Living Latin](living-latin/) | Active Latin movement, speaking programs, immersion courses |
 | [Methodology](methodology/) | How to learn Latin: roadmap, SRS guide, common mistakes |
 
@@ -71,11 +71,11 @@ See [Pronunciation guide](pronunciation/) for full details.
 The minimum viable toolkit for any level:
 
 - **Anki** + [DCC Core Vocabulary deck](vocabulary/dcc/) — 15 min/day SRS from week 1
-- **[Perseus Digital Library](resources/websites/)** — all Latin texts + dictionary + morphological parser
-- **[Logeion](resources/websites/)** — best modern Latin dictionary interface (Lewis & Short + OLD)
-- **[LLPSI Familia Romana](resources/textbooks/)** or **[Wheelock's Latin](resources/textbooks/)** — structured course
-- **[Allen & Greenough's Grammar](resources/reference/)** — the standard reference grammar, free online
-- **[Whitaker's Words](resources/websites/)** — parse any Latin word form instantly
+- **[Perseus Digital Library](reference/)** — all Latin texts + dictionary + morphological parser
+- **[Logeion](reference/)** — best modern Latin dictionary interface (Lewis & Short + OLD)
+- **[LLPSI Familia Romana](reference/)** or **[Wheelock's Latin](reference/)** — structured course
+- **[Allen & Greenough's Grammar](reference/)** — the standard reference grammar, free online
+- **[Whitaker's Words](reference/)** — parse any Latin word form instantly
 
 ## The Latin Canon at a Glance
 
