@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974"
-description: "IMO 1974 — 0/6 solved."
+description: "IMO 1974 — 1/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1974
@@ -10,22 +10,26 @@ draft: false
 
 # IMO 1974
 
-[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 1/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | ✓ verified | 10m39s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1**
+---
+
+**Problem 1** &nbsp; *✓ verified* · 10m39s · [Solution →](1.md)
 
 Three players $A, B$ and $C$ play the following game: On each of three cards an integer is written. These three numbers $p, q, r$ satisfy $0 < p < q < r$. The three cards are shuffled and one is dealt to each player. Each then receives the number of counters indicated by the card he holds. Then the cards are shuffled again; the counters remain with the players.
 
 This process (shuffling, dealing, giving out counters) takes place for at least two rounds. After the last round, $A$ has 20 counters in all, $B$ has 10 and $C$ has 9. At the last round $B$ received $r$ counters. Who received $q$ counters on the first round?
+
+---
 
 **Problem 2**
 
@@ -33,9 +37,13 @@ In the triangle $ABC$, prove that there is a point $D$ on side $AB$ such that $C
 \sin{A} \sin{B} \leq \sin^2 \frac{C}{2}.
 $$
 
+---
+
 **Problem 3**
 
 Prove that the number $\textstyle \sum_{k = 0}^n \tbinom{2n+1}{2k+1} 2^{3k}$ is not divisible by 5 for any integer $n \geq 0$.
+
+---
 
 **Problem 4**
 
@@ -47,11 +55,15 @@ Consider decompositions of an $8 \times 8$ chessboard into p non-overlapping rec
 
 Find the maximum value of $p$ for which such a decomposition is possible. For this value of $p$, determine all possible sequences $a_1, a_2, \cdots, a_p$.
 
+---
+
 **Problem 5**
 
 Determine all possible values of $$
 S = \frac{a}{a+b+d} + \frac{b}{a+b+c} + \frac{c}{b+c+d} + \frac{d}{a+c+d}
 $$ where $a, b, c, d$ are arbitrary positive numbers.
+
+---
 
 **Problem 6**
 

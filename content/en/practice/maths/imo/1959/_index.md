@@ -14,14 +14,14 @@ draft: false
 
 | # | Status | Time |
 |---|--------|------|
-| [1](1.md) | ✓ verified | 2m27s |
+| [1](1.md) | ✓ verified | 8m04s |
 | [2](2.md) | ✓ verified | 10m11s |
 | [3](3.md) | ✓ verified | 3m29s |
 | [4](4.md) | ✓ verified | 13m46s |
 | [5](5.md) | solved | 3m42s |
 | [6](6.md) | solved | 5m47s |
 
-**Problem 1** &nbsp; *✓ verified* · 2m27s · [Solution →](1.md)
+**Problem 1** &nbsp; *✓ verified* · 8m04s · [Solution →](1.md)
 
 Prove that $\frac{21n+4}{14n+3}$ is irreducible for every natural number $n$.
 
