@@ -18,18 +18,18 @@ draft: false
 | 2805 | [Custom Interval](2805.md) | 🟡 Medium | 1m 12s | This problem asks us to implement a custom version of setInterval, … |
 | 2806 | [Account Balance After Rounded Purchase](2806.md) | 🟢 Easy | 1m 6s | The problem is asking us to simulate a simple bank account deductio… |
 | 2807 | [Insert Greatest Common Divisors in Linked List](2807.md) | 🟡 Medium | 1m 15s | This problem gives us the head of a singly linked list where every … |
-| 2808 | [Minimum Seconds to Equalize a Circular Array](2808.md) | 🟡 Medium | 2m 8s | The problem gives us a circular array nums, meaning the first and l… |
-| 2809 | [Minimum Time to Make Array Sum At Most x](2809.md) | 🔴 Hard | 51s | The problem asks us to determine the minimum number of seconds requ… |
+| 2808 | [Minimum Seconds to Equalize a Circular Array](2808.md) | 🟡 Medium | 1m 11s | The problem gives a circular array nums of length n. At each second… |
+| 2809 | [Minimum Time to Make Array Sum At Most x](2809.md) | 🔴 Hard | 56s | The problem provides two integer arrays nums1 and nums2 of equal le… |
 | 2810 | [Faulty Keyboard](2810.md) | 🟢 Easy | 1m 10s | In this problem, we are given a string s that represents characters… |
-| 2811 | [Check if it is Possible to Split Array](2811.md) | 🟡 Medium | 29s | In this problem, we are given an integer array nums and another int… |
-| 2812 | [Find the Safest Path in a Grid](2812.md) | 🟡 Medium | 1m 19s | The problem gives us an n x n grid where each cell is either empty … |
-| 2813 | [Maximum Elegance of a K-Length Subsequence](2813.md) | 🔴 Hard | 1m 27s | We are given an array called items, where every element contains tw… |
-| 2814 | [Minimum Time Takes to Reach Destination Without Drowning](2814.md) | 🔴 Hard | 47s | The problem asks us to determine the minimum time it takes for a pe… |
-| 2815 | [Max Pair Sum in an Array](2815.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums, and we need to find two… |
-| 2816 | [Double a Number Represented as a Linked List](2816.md) | 🟡 Medium | 5m 9s | The problem asks us to take a singly linked list representing a non… |
-| 2817 | [Minimum Absolute Difference Between Elements With Constraint](2817.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array nums and an integer x. We nee… |
+| 2811 | [Check if it is Possible to Split Array](2811.md) | 🟡 Medium | 44s | The problem asks whether it is possible to split an input array num… |
+| 2812 | [Find the Safest Path in a Grid](2812.md) | 🟡 Medium | 1m 27s | This problem asks us to find a path from the top-left corner (0,0) … |
+| 2813 | [Maximum Elegance of a K-Length Subsequence](2813.md) | 🔴 Hard | 57s | The problem presents a 0-indexed 2D array items of length n, where … |
+| 2814 | [Minimum Time Takes to Reach Destination Without Drowning](2814.md) | 🔴 Hard | 1m 33s | This problem takes place on a two-dimensional grid where each cell … |
+| 2815 | [Max Pair Sum in an Array](2815.md) | 🟢 Easy | 1m 10s | The problem gives us an array of integers nums. For every number, w… |
+| 2816 | [Double a Number Represented as a Linked List](2816.md) | 🟡 Medium | 56s | This problem asks us to double a number represented as a singly lin… |
+| 2817 | [Minimum Absolute Difference Between Elements With Constraint](2817.md) | 🟡 Medium | 1m 32s | We are given an integer array nums and an integer x. We need to fin… |
 | 2818 | [Apply Operations to Maximize Score](2818.md) | 🔴 Hard | 1m 38s | The problem gives us an array nums and an integer k. We begin with … |
-| 2819 | [Minimum Relative Loss After Buying Chocolates](2819.md) | 🔴 Hard | 1m 27s | We are given an array prices, where each element represents the pri… |
+| 2819 | [Minimum Relative Loss After Buying Chocolates](2819.md) | 🔴 Hard | 1m 50s | We are given an array prices, where each value represents the price… |
 | 2820 | [Election Results](2820.md) | 🟡 Medium | 55s | The problem is asking us to calculate the winner of an election giv… |
 | 2821 | [Delay the Resolution of Each Promise](2821.md) | 🟡 Medium | 1m 43s | The problem requires creating a wrapper around an array of asynchro… |
 | 2822 | [Inversion of Object](2822.md) | 🟢 Easy | 3m 7s | The problem asks us to "invert" an object or array. In practical te… |
