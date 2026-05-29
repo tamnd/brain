@@ -1,6 +1,6 @@
 ---
 title: "IMO 1986"
-description: "IMO 1986 — 0/6 solved."
+description: "IMO 1986 — 1/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1986
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1986
 
-[Official IMO 1986 problems](https://www.imo-official.org/year_info.aspx?year=1986) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1986 problems](https://www.imo-official.org/year_info.aspx?year=1986) &nbsp;·&nbsp; 1/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | solved | 10m25s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 10m25s · [Solution →](1.md)
 
 Let $d$ be any positive integer not equal to $2, 5$ or $13$. Show that one can find distinct $a,b$ in the set $\{2,5,13,d\}$ such that $ab-1$ is not a perfect square.
 
