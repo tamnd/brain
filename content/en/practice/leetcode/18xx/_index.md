@@ -54,6 +54,7 @@ draft: false
 | 1841 | [League Statistics](1841.md) | 🟡 Medium | 3m 27s | This problem asks us to compute a complete league table from two da… |
 | 1842 | [Next Palindrome Using Same Digits](1842.md) | 🔴 Hard | 1m 39s | The input is a numeric string num that is guaranteed to already be … |
 | 1843 | [Suspicious Bank Accounts](1843.md) | 🟡 Medium | 1m 35s | This problem asks us to identify bank accounts whose monthly income… |
+| 1844 | [Replace All Digits with Characters](1844.md) | 🟢 Easy | 1m 4s | In this problem, we are given a string s where characters at even i… |
 | 1845 | [Seat Reservation Manager](1845.md) | 🟡 Medium | 54s | The problem requires designing a system to manage seat reservations… |
 | 1846 | [Maximum Element After Decreasing and Rearranging](1846.md) | 🟡 Medium | 1m 3s | The problem provides an array of positive integers and asks us to p… |
 | 1848 | [Minimum Distance to the Target Element](1848.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums, a value called target, … |
