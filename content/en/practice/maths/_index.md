@@ -26,6 +26,6 @@ The [International Mathematical Olympiad](https://imo-official.org) has been hel
 
 ## Longlist
 
-0 problems · — · Problems proposed by participant countries
+1045 problems · 1966–1992 · Problems proposed by participant countries
 
 → [Browse longlist](longlist/)
