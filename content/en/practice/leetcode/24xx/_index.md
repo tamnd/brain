@@ -15,26 +15,30 @@ draft: false
 | 2402 | [Meeting Rooms III](2402.md) | 🔴 Hard | 51s | The problem is about scheduling meetings into a fixed number of roo… |
 | 2403 | [Minimum Time to Kill All Monsters](2403.md) | 🔴 Hard | 54s | The problem is asking us to compute the minimum number of days requ… |
 | 2404 | [Most Frequent Even Element](2404.md) | 🟢 Easy | 36s | The problem asks us to identify the most frequent even number in an… |
-| 2406 | [Divide Intervals Into Minimum Number of Groups](2406.md) | 🟡 Medium | 1m 20s | The problem gives us a list of inclusive intervals, where each inte… |
-| 2407 | [Longest Increasing Subsequence II](2407.md) | 🔴 Hard | 47s | The problem asks us to find the longest strictly increasing subsequ… |
-| 2408 | [Design SQL](2408.md) | 🟡 Medium | 1m 23s | The problem asks us to design a very small in-memory SQL-like datab… |
-| 2409 | [Count Days Spent Together](2409.md) | 🟢 Easy | 2m 15s | The problem asks us to determine the total number of days that Alic… |
-| 2410 | [Maximum Matching of Players With Trainers](2410.md) | 🟡 Medium | 2m 54s | The problem gives us two arrays: - players, where each value repres… |
-| 2411 | [Smallest Subarrays With Maximum Bitwise OR](2411.md) | 🟡 Medium | 1m 50s | The problem gives us an array nums, where each element is a non-neg… |
-| 2413 | [Smallest Even Multiple](2413.md) | 🟢 Easy | 1m | The problem gives us a positive integer n and asks for the smallest… |
-| 2414 | [Length of the Longest Alphabetical Continuous Substring](2414.md) | 🟡 Medium | 1m 10s | The problem asks us to find the length of the longest substring in … |
-| 2415 | [Reverse Odd Levels of Binary Tree](2415.md) | 🟡 Medium | 1m 41s | The problem gives us the root of a perfect binary tree and asks us … |
-| 2416 | [Sum of Prefix Scores of Strings](2416.md) | 🔴 Hard | 44s | Here’s a detailed, comprehensive technical solution guide for LeetC… |
-| 2417 | [Closest Fair Integer](2417.md) | 🟡 Medium | 41s | The problem asks us to find the smallest fair integer that is great… |
-| 2419 | [Longest Subarray With Maximum Bitwise AND](2419.md) | 🟡 Medium | 58s | The problem asks us to find the longest contiguous subarray whose b… |
-| 2420 | [Find All Good Indices](2420.md) | 🟡 Medium | 1m 30s | The problem gives us an integer array nums and an integer k. We nee… |
-| 2421 | [Number of Good Paths](2421.md) | 🔴 Hard | 49s | The problem presents a tree with n nodes numbered from 0 to n - 1 a… |
-| 2422 | [Merge Operations to Turn Array Into a Palindrome](2422.md) | 🟡 Medium | 1m 16s | The problem gives us an array of positive integers and allows us to… |
-| 2423 | [Remove Letter To Equalize Frequency](2423.md) | 🟢 Easy | 1m 17s | The problem gives us a lowercase English string called word. We mus… |
-| 2424 | [Longest Uploaded Prefix](2424.md) | 🟡 Medium | 3m 6s | The problem asks us to design a data structure that tracks uploaded… |
-| 2425 | [Bitwise XOR of All Pairings](2425.md) | 🟡 Medium | 47s | The problem asks us to compute the bitwise XOR of all pairings betw… |
+| 2405 | [Optimal Partition of String](2405.md) | 🟡 Medium | 59s | The problem asks us to divide a given string s into the minimum num… |
+| 2406 | [Divide Intervals Into Minimum Number of Groups](2406.md) | 🟡 Medium | 1m 8s | The problem gives us a list of inclusive intervals, where each inte… |
+| 2407 | [Longest Increasing Subsequence II](2407.md) | 🔴 Hard | 43s | The problem asks us to find the length of the longest subsequence i… |
+| 2408 | [Design SQL](2408.md) | 🟡 Medium | 1m 12s | This problem asks us to design a lightweight in memory database sys… |
+| 2409 | [Count Days Spent Together](2409.md) | 🟢 Easy | 39s | The problem asks us to calculate the number of days Alice and Bob s… |
+| 2410 | [Maximum Matching of Players With Trainers](2410.md) | 🟡 Medium | 43s | This problem requires us to maximize the number of matchings betwee… |
+| 2411 | [Smallest Subarrays With Maximum Bitwise OR](2411.md) | 🟡 Medium | 47s | The problem asks us to find, for each index in a given array nums, … |
+| 2412 | [Minimum Money Required Before Transactions](2412.md) | 🔴 Hard | 39s | The problem asks us to determine the minimum initial money required… |
+| 2413 | [Smallest Even Multiple](2413.md) | 🟢 Easy | 39s | The problem asks us to find the smallest positive integer that is a… |
+| 2414 | [Length of the Longest Alphabetical Continuous Substring](2414.md) | 🟡 Medium | 53s | The problem asks us to find the length of the longest substring in … |
+| 2415 | [Reverse Odd Levels of Binary Tree](2415.md) | 🟡 Medium | 48s | The problem asks us to reverse the values of nodes at odd levels of… |
+| 2416 | [Sum of Prefix Scores of Strings](2416.md) | 🔴 Hard | 46s | The problem is asking us to compute a special score for each string… |
+| 2417 | [Closest Fair Integer](2417.md) | 🟡 Medium | 1m 7s | In this problem, we are given a positive integer n, and we must fin… |
+| 2418 | [Sort the People](2418.md) | 🟢 Easy | 1m 2s | This problem gives us two arrays of equal length: - names[i] repres… |
+| 2419 | [Longest Subarray With Maximum Bitwise AND](2419.md) | 🟡 Medium | 43s | The problem asks us to find the length of the longest subarray with… |
+| 2420 | [Find All Good Indices](2420.md) | 🟡 Medium | 43s | The problem asks us to identify all good indices in an array nums b… |
+| 2421 | [Number of Good Paths](2421.md) | 🔴 Hard | 44s | The problem is asking us to count the number of good paths in a tre… |
+| 2422 | [Merge Operations to Turn Array Into a Palindrome](2422.md) | 🟡 Medium | 48s | The problem asks us to transform a given array of positive integers… |
+| 2423 | [Remove Letter To Equalize Frequency](2423.md) | 🟢 Easy | 39s | The problem asks us to determine if we can remove exactly one chara… |
+| 2424 | [Longest Uploaded Prefix](2424.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure that tracks uploaded… |
+| 2425 | [Bitwise XOR of All Pairings](2425.md) | 🟡 Medium | 1m 12s | The problem gives us two arrays, nums1 and nums2, and asks us to co… |
 | 2426 | [Number of Pairs Satisfying Inequality](2426.md) | 🔴 Hard | 1m | The problem asks us to find the number of pairs (i, j) in two integ… |
 | 2427 | [Number of Common Factors](2427.md) | 🟢 Easy | 1m 5s | The problem gives us two positive integers, a and b, and asks us to… |
+| 2428 | [Maximum Sum of an Hourglass](2428.md) | 🟡 Medium | 57s | The problem provides an m x n integer matrix grid and asks for the … |
 | 2429 | [Minimize XOR](2429.md) | 🟡 Medium | 2m 19s | The problem asks us to find a positive integer x such that it has t… |
 | 2430 | [Maximum Deletions on a String](2430.md) | 🔴 Hard | 3m 44s | The problem gives us a string s containing lowercase English letter… |
 | 2431 | [Maximize Total Tastiness of Purchased Fruits](2431.md) | 🟡 Medium | 48s | The problem asks us to maximize the total tastiness of fruits we ca… |

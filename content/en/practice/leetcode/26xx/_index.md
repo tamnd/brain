@@ -67,3 +67,11 @@ draft: false
 | 2670 | [Find the Distinct Difference Array](2670.md) | 🟢 Easy | 1m 14s | The problem gives us a 0-indexed integer array nums and asks us to … |
 | 2671 | [Frequency Tracker](2671.md) | 🟡 Medium | 1m 19s | The problem asks us to design a data structure that supports three … |
 | 2672 | [Number of Adjacent Elements With the Same Color](2672.md) | 🟡 Medium | 39s | The problem is asking us to maintain an array of length n where ini… |
+| 2676 | [Throttle](2676.md) | 🟡 Medium | 1m 8s | This problem asks us to implement a throttling mechanism for a func… |
+| 2677 | [Chunk Array](2677.md) | 🟢 Easy | 50s | The problem is asking to split a given array arr into smaller subar… |
+| 2678 | [Number of Senior Citizens](2678.md) | 🟢 Easy | 1m | This problem gives us an array of strings named details. Each strin… |
+| 2680 | [Maximum OR](2680.md) | 🟡 Medium | 1m 2s | The problem gives us an integer array nums and an integer k. In one… |
+| 2681 | [Power of Heroes](2681.md) | 🔴 Hard | 1m 12s | The problem gives us an integer array nums, where each element repr… |
+| 2684 | [Maximum Number of Moves in a Grid](2684.md) | 🟡 Medium | 1m 14s | This problem gives us a 2D grid of positive integers. We may start … |
+| 2685 | [Count the Number of Complete Components](2685.md) | 🟡 Medium | 1m 9s | This problem gives us an undirected graph with n vertices labeled f… |
+| 2687 | [Bikes Last Time Used ](2687.md) | 🟢 Easy | 42s | The problem requires us to identify the last time each bike was use… |
