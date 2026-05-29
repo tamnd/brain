@@ -278,7 +278,7 @@ def compare(
     out_base = out_dir or Path("/tmp")
     out_base.mkdir(parents=True, exist_ok=True)
 
-    providers = ["chatgpt", "openai", "deepl"]
+    providers = ["chatgpt", "google", "bing", "google_dt"]
     for prov in providers:
         try:
             pcfg = cfg.model_copy(update={"provider": prov})
@@ -298,4 +298,4 @@ def compare(
             err.print(f"[red]{prov} error:[/] {exc}")
 
     err.print(f"\nCompare outputs in: {out_base}")
-    err.print(f"  diff: diff {out_base}/{stem}.{lang}.chatgpt.md {out_base}/{stem}.{lang}.openai.md")
+    err.print(f"  diff: diff {out_base}/{stem}.{lang}.chatgpt.md {out_base}/{stem}.{lang}.google_dt.md")

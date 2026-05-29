@@ -1,6 +1,6 @@
 ---
 title: "IMO 1960"
-description: "IMO 1960 — 3/7 solved, 2 verified."
+description: "IMO 1960 — 4/7 solved, 3 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1960
@@ -10,12 +10,12 @@ draft: false
 
 # IMO 1960
 
-[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 3/7 solved, 2 verified.
+[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 4/7 solved, 3 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 27m41s |
-| 2 | — | — |
+| [2](2.md) | ✓ verified | 7m41s |
 | 3 | — | — |
 | 4 | — | — |
 | [5](5.md) | ✓ verified | 4m30s |
@@ -26,7 +26,7 @@ draft: false
 
 Find all three-digit numbers for which one obtains, when dividing the number by 11, the sum of the squares of the digits of the initial number.
 
-**Problem 2**
+**Problem 2** &nbsp; *✓ verified* · 7m41s · [Solution →](2.md)
 
 For which real numbers $x$ does the following inequality hold:
 $$\\frac{4x^2}{\\left(1 - \\sqrt{1+2x}\\right)^2} < 2x + 9\\,?$$
