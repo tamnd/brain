@@ -382,3 +382,201 @@ HSK 3 introduces 499 new words on top of the HSK 1 and HSK 2 base, bringing the 
 | 动词+不/得+结果 | V bu/de result | potential complement | 看得懂。Can understand by reading. |
 | 只要…就… | zhǐyào...jiù... | as long as...then... | 只要努力，就会成功。Work hard and you'll succeed. |
 | 不但…而且… | búdàn...érqiě... | not only...but also... | 不但好看而且好吃。Not only good-looking but also delicious. |
+
+## Additional HSK 3 Vocabulary
+
+| Chinese | Pinyin | English | POS | Example |
+|---------|--------|---------|-----|---------|
+| 爱好 | àihào | hobby; interest | noun/verb | 你有什么爱好？What are your hobbies? |
+| 安排 | ānpái | to arrange; arrangement | verb/noun | 他安排了一次会议。He arranged a meeting. |
+| 安静 | ānjìng | quiet; peaceful | adj | 图书馆很安静。The library is very quiet. |
+| 办公室 | bàngōngshì | office | noun | 他在办公室工作。He works in an office. |
+| 表达 | biǎodá | to express | verb | 她很善于表达自己。She is good at expressing herself. |
+| 表现 | biǎoxiàn | to show; performance | verb/noun | 他今天表现很好。He performed very well today. |
+| 变化 | biànhuà | change; to change | noun/verb | 天气变化很快。The weather changes quickly. |
+| 材料 | cáiliào | material; data | noun | 准备好材料了吗？Have you prepared the materials? |
+| 参考 | cānkǎo | to refer to; reference | verb/noun | 请参考这本书。Please refer to this book. |
+| 乘 | chéng | to ride; to take (transport) | verb | 我乘地铁上班。I take the subway to work. |
+| 承认 | chéngrèn | to admit; to acknowledge | verb | 他承认了自己的错误。He admitted his mistake. |
+| 程度 | chéngdù | degree; level; extent | noun | 你的汉语水平达到什么程度？What level is your Chinese? |
+| 城市 | chéngshì | city | noun | 这是一个大城市。This is a big city. |
+| 差不多 | chàbuduō | almost; about the same | adj/adv | 差不多好了。It's almost done. |
+| 担心 | dānxīn | to worry; worried | verb/adj | 妈妈很担心我。Mom worries about me a lot. |
+| 单位 | dānwèi | work unit; organization | noun | 你在哪个单位工作？Which organization do you work at? |
+| 地方 | dìfang | place; region | noun | 这是个好地方。This is a good place. |
+| 地图 | dìtú | map | noun | 我需要一张地图。I need a map. |
+| 丢 | diū | to lose; to misplace | verb | 我把钥匙丢了。I lost my key. |
+| 动作 | dòngzuò | action; movement | noun | 他的动作很优美。His movements are very graceful. |
+| 锻炼 | duànliàn | to exercise; to train | verb | 每天锻炼身体。Exercise every day. |
+| 方向 | fāngxiàng | direction | noun | 你知道哪个方向吗？Do you know which direction? |
+| 方面 | fāngmiàn | aspect; side | noun | 从各个方面考虑。Consider from all aspects. |
+| 放弃 | fàngqì | to give up | verb | 不要放弃你的梦想。Don't give up on your dream. |
+| 翻 | fān | to turn over; to flip through | verb | 翻一翻这本书。Flip through this book. |
+| 复杂 | fùzá | complicated; complex | adj | 这个问题很复杂。This problem is complicated. |
+| 感动 | gǎndòng | to move (emotionally); touched | verb/adj | 这个故事让我很感动。This story moved me deeply. |
+| 感激 | gǎnjī | to be grateful | verb | 我非常感激你的帮助。I am very grateful for your help. |
+| 感觉 | gǎnjué | to feel; feeling | verb/noun | 我感觉不太舒服。I don't feel very well. |
+| 感情 | gǎnqíng | emotion; feeling | noun | 他们之间有深厚的感情。They have a deep bond. |
+| 赶 | gǎn | to rush; to catch (transport) | verb | 快点，要赶不上了。Hurry, we'll miss it. |
+| 干净 | gānjìng | clean; neat | adj | 房间打扫得很干净。The room was cleaned well. |
+| 故事 | gùshi | story | noun | 给我讲个故事吧。Tell me a story. |
+| 工具 | gōngjù | tool; instrument | noun | 这是一个很有用的工具。This is a very useful tool. |
+| 挂 | guà | to hang; to put on | verb | 把画挂在墙上。Hang the picture on the wall. |
+| 规律 | guīlǜ | rule; pattern; regularity | noun | 生活要有规律。Life needs regularity. |
+| 获得 | huòdé | to obtain; to gain | verb | 他获得了第一名。He obtained first place. |
+| 号码 | hàomǎ | number (phone/room) | noun | 你的手机号码是多少？What is your mobile number? |
+| 回忆 | huíyì | to recall; memory | verb/noun | 美好的回忆不会忘记。Happy memories are never forgotten. |
+| 活动 | huódòng | activity; event | noun/verb | 学校有很多活动。The school has many activities. |
+| 集中 | jízhōng | to concentrate; focused | verb/adj | 请集中注意力。Please concentrate. |
+| 继续 | jìxù | to continue | verb | 请继续。Please continue. |
+| 计划 | jìhuà | plan; to plan | noun/verb | 你有什么计划？What are your plans? |
+| 教育 | jiàoyù | education | noun | 教育很重要。Education is very important. |
+| 经历 | jīnglì | experience; to experience | noun/verb | 这是一次难忘的经历。This is an unforgettable experience. |
+| 进行 | jìnxíng | to carry out; to conduct | verb | 会议正在进行中。The meeting is in progress. |
+| 觉得 | juéde | to feel; to think | verb | 我觉得这个主意不错。I think this idea is good. |
+| 口语 | kǒuyǔ | spoken language | noun | 他的口语很流利。His spoken language is very fluent. |
+| 可惜 | kěxī | it's a pity; unfortunately | adj/adv | 真可惜，他没来。What a pity, he didn't come. |
+| 可爱 | kě'ài | cute; lovely | adj | 这只猫真可爱。This cat is so cute. |
+| 累 | lèi | tired; exhausted | adj | 我今天很累。I am very tired today. |
+| 楼 | lóu | building; floor (storey) | noun | 他住在三楼。He lives on the third floor. |
+| 礼貌 | lǐmào | polite; politeness | adj/noun | 他很有礼貌。He is very polite. |
+| 礼物 | lǐwù | gift; present | noun | 谢谢你的礼物。Thank you for your gift. |
+| 旅游 | lǚyóu | to travel; tourism | verb/noun | 我喜欢旅游。I love to travel. |
+| 满意 | mǎnyì | satisfied; pleased | adj | 你对结果满意吗？Are you satisfied with the result? |
+| 名字 | míngzi | name | noun | 你叫什么名字？What is your name? |
+| 目标 | mùbiāo | goal; target | noun | 我的目标是学好汉语。My goal is to learn Chinese well. |
+| 年轻 | niánqīng | young | adj | 她看起来很年轻。She looks very young. |
+| 气氛 | qìfēn | atmosphere; ambiance | noun | 这里的气氛很好。The atmosphere here is great. |
+| 情况 | qíngkuàng | situation; circumstances | noun | 请告诉我现在的情况。Please tell me the current situation. |
+| 请求 | qǐngqiú | to request; request | verb/noun | 我有一个请求。I have a request. |
+| 认为 | rènwéi | to think; to believe | verb | 我认为这是对的。I think this is correct. |
+| 热爱 | rè'ài | to love deeply | verb | 他热爱音乐。He has a deep love for music. |
+| 任务 | rènwu | task; mission | noun | 完成任务。Complete the task. |
+| 声音 | shēngyīn | sound; voice | noun | 他的声音很好听。His voice is very pleasant. |
+| 时代 | shídài | era; age; times | noun | 我们生活在信息时代。We live in the information age. |
+| 实现 | shíxiàn | to realize; to achieve | verb | 他实现了自己的梦想。He achieved his dream. |
+| 输 | shū | to lose (a competition) | verb | 我们队输了。Our team lost. |
+| 数字 | shùzì | number; digit | noun | 请记住这个数字。Please remember this number. |
+| 态度 | tàidu | attitude | noun | 他的态度很好。His attitude is very good. |
+| 提 | tí | to mention; to raise | verb | 你提到了一个好问题。You raised a good question. |
+| 特点 | tèdiǎn | characteristic; feature | noun | 汉语有哪些特点？What are the characteristics of Chinese? |
+| 跳 | tiào | to jump; to leap | verb | 他跳得很高。He jumps very high. |
+| 文章 | wénzhāng | article; essay | noun | 她写了一篇文章。She wrote an article. |
+| 消息 | xiāoxi | news; information | noun | 有什么消息？Is there any news? |
+| 形象 | xíngxiàng | image; figure | noun | 他的形象很好。He has a good image. |
+| 习惯 | xíguàn | habit; to be used to | noun/verb | 养成好习惯。Develop good habits. |
+| 兴趣 | xìngqù | interest | noun | 你对什么有兴趣？What are you interested in? |
+| 选择 | xuǎnzé | to choose; choice | verb/noun | 这是你的选择。This is your choice. |
+| 学期 | xuéqī | school term; semester | noun | 这学期很忙。This semester is very busy. |
+| 研究 | yánjiū | to research; research | verb/noun | 他在研究这个问题。He is researching this issue. |
+| 以为 | yǐwéi | to think (incorrectly) | verb | 我以为你不来了。I thought you weren't coming. |
+| 意思 | yìsi | meaning; idea | noun | 这个词是什么意思？What is the meaning of this word? |
+| 意义 | yìyì | meaning; significance | noun | 这件事有重要意义。This matter has important significance. |
+| 影响 | yǐngxiǎng | to influence; influence | verb/noun | 这对我有很大影响。This has a great influence on me. |
+| 应该 | yīnggāi | should; ought to | modal verb | 你应该早点睡觉。You should go to bed earlier. |
+| 原来 | yuánlái | originally; as it turns out | adv | 原来是你啊！Oh, it's you! |
+| 原则 | yuánzé | principle | noun | 他坚持自己的原则。He sticks to his principles. |
+| 运气 | yùnqi | luck | noun | 你真有运气！You are so lucky! |
+| 语法 | yǔfǎ | grammar | noun | 这条语法规则很重要。This grammar rule is important. |
+| 语言 | yǔyán | language | noun | 你会几种语言？How many languages do you speak? |
+| 知识 | zhīshi | knowledge | noun | 学习新知识。Learn new knowledge. |
+| 中间 | zhōngjiān | middle; between | noun/prep | 他坐在中间。He sits in the middle. |
+| 专业 | zhuānyè | major; specialty; professional | noun/adj | 你的专业是什么？What is your major? |
+| 主动 | zhǔdòng | active; take initiative | adj/adv | 他很主动帮助别人。He actively helps others. |
+| 追 | zhuī | to chase; to pursue | verb | 他追上了公共汽车。He caught up with the bus. |
+| 作用 | zuòyòng | function; role; effect | noun | 这种药有什么作用？What is the function of this medicine? |
+
+## More HSK 3 Vocabulary
+
+| Chinese | Pinyin | English | POS | Example |
+|---------|--------|---------|-----|---------|
+| 不好意思 | bù hǎo yìsi | embarrassed; sorry to trouble you | adj/expr | 不好意思，我来晚了。Sorry, I'm late. |
+| 不管 | bùguǎn | no matter; regardless of | conj | 不管怎样，我都支持你。No matter what, I support you. |
+| 才 | cái | only then; not until | adv | 他十点才到。He didn't arrive until ten. |
+| 此外 | cǐwài | besides; furthermore; in addition | conj | 此外，还有一个问题。Besides, there is another issue. |
+| 从不 | cóng bù | never; not ever | adv | 他从不迟到。He never arrives late. |
+| 倒 | dào | on the contrary; but actually | adv | 我以为他会生气，他倒笑了。I thought he'd be angry, but he laughed instead. |
+| 得到 | dédào | to get; to obtain; to receive | verb | 他得到了一个好机会。He got a good opportunity. |
+| 果然 | guǒrán | as expected; sure enough | adv | 果然，他来了。Sure enough, he came. |
+| 好不容易 | hǎo bù róngyì | finally; with great difficulty | adv | 好不容易才买到票。Finally got the ticket with great difficulty. |
+| 即使 | jíshǐ | even if; even though | conj | 即使很难，也要坚持。Even if it's hard, keep going. |
+| 既然 | jìrán | since; now that; given that | conj | 既然你来了，就一起吃饭吧。Since you're here, let's eat together. |
+| 几乎 | jīhū | almost; nearly | adv | 他几乎每天都来。He comes almost every day. |
+| 将来 | jiānglái | future; in the future | noun/adv | 你将来想做什么？What do you want to do in the future? |
+| 毕竟 | bìjìng | after all; when all is said and done | adv | 毕竟他是你的朋友。After all, he is your friend. |
+| 其中 | qízhōng | among; therein; of which | adv | 其中有三个是我的。Three of them are mine. |
+| 其实 | qíshí | actually; in fact | adv | 其实我不太喜欢。Actually, I don't really like it. |
+| 随着 | suízhe | along with; following; as | prep | 随着时间的变化，他改变了。As time passed, he changed. |
+| 通常 | tōngcháng | usually; normally; generally | adv | 他通常七点起床。He usually gets up at seven. |
+| 往往 | wǎngwǎng | often; frequently; as a rule | adv | 问题往往比较复杂。Problems are often quite complex. |
+| 相反 | xiāngfǎn | opposite; contrary; on the contrary | adj/adv | 结果正好相反。The result was the exact opposite. |
+| 由于 | yóuyú | due to; because of; owing to | prep/conj | 由于天气原因，航班延误了。The flight was delayed due to weather. |
+| 之后 | zhīhòu | after; afterwards | adv | 吃饭之后我去散步。After eating I go for a walk. |
+| 之前 | zhīqián | before; prior to | adv | 出门之前检查一下。Check before going out. |
+| 至少 | zhìshǎo | at least; no less than | adv | 至少需要三天。It takes at least three days. |
+| 在乎 | zàihu | to care about; to mind | verb | 我不在乎别人怎么说。I don't care what others say. |
+| 才能 | cáinéng | talent; ability; capability | noun | 他有音乐才能。He has musical talent. |
+| 词语 | cíyǔ | word; phrase; expression | noun | 学习新词语。Learn new vocabulary. |
+| 道理 | dàolǐ | reason; logic; truth | noun | 你说的有道理。What you say makes sense. |
+| 丰富 | fēngfù | rich; abundant; to enrich | adj/verb | 内容很丰富。The content is very rich. |
+| 各种 | gèzhǒng | all kinds of; various | adj | 各种各样的食物。All kinds of food. |
+| 共同 | gòngtóng | common; shared; jointly | adj/adv | 我们有共同的爱好。We share the same hobby. |
+| 关键 | guānjiàn | key; crucial; pivotal | adj/noun | 这是关键时刻。This is a crucial moment. |
+| 广告 | guǎnggào | advertisement; ad; commercial | noun | 电视上有很多广告。There are many advertisements on TV. |
+| 互联网 | hùliánwǎng | internet; the web | noun | 互联网改变了生活。The internet has changed life. |
+| 机场 | jīchǎng | airport | noun | 请送我去机场。Please take me to the airport. |
+| 加班 | jiābān | to work overtime | verb/noun | 他经常加班。He often works overtime. |
+| 交通 | jiāotōng | traffic; transportation | noun | 北京交通很堵。Beijing traffic is very congested. |
+| 结婚 | jiéhūn | to marry; to get married | verb | 他们去年结婚了。They got married last year. |
+| 经济 | jīngjì | economy; economics | noun/adj | 这个城市经济发展很快。This city's economy is growing fast. |
+| 来自 | láizì | to come from; to be from | verb | 我来自中国。I come from China. |
+| 理解 | lǐjiě | to understand; to comprehend | verb/noun | 我完全理解你的意思。I fully understand your meaning. |
+| 旅行 | lǚxíng | to travel; trip; journey | verb/noun | 我喜欢旅行。I love to travel. |
+| 明显 | míngxiǎn | obvious; evident; clear | adj | 进步很明显。The progress is very obvious. |
+| 水平 | shuǐpíng | level; standard; proficiency | noun | 你的汉语水平很高。Your Chinese proficiency is very high. |
+| 外国 | wàiguó | foreign country | noun | 他在外国工作。He works in a foreign country. |
+| 完全 | wánquán | completely; entirely; totally | adv/adj | 我完全同意。I completely agree. |
+| 网络 | wǎngluò | network; internet | noun | 网络速度很慢。The internet speed is very slow. |
+| 增长 | zēngzhǎng | to grow; to increase; growth | verb/noun | 收入增长了。Income has grown. |
+| 本来 | běnlái | originally; in the first place | adv | 本来我不想去的。Originally I didn't want to go. |
+| 问候 | wènhòu | to greet; to send regards | verb/noun | 请向你家人问候。Please give my regards to your family. |
+| 放心 | fàngxīn | to rest assured; to stop worrying | verb | 放心，我会帮你的。Don't worry, I'll help you. |
+| 开心 | kāixīn | happy; delighted | adj | 今天很开心。Today was very happy. |
+| 伤心 | shāngxīn | sad; heartbroken | adj/verb | 他很伤心。He is very sad. |
+| 失望 | shīwàng | disappointed; to lose hope | adj/verb | 我很失望。I am very disappointed. |
+| 后悔 | hòuhuǐ | to regret; to feel sorry | verb | 我后悔了。I regret it. |
+| 有名 | yǒumíng | famous; well-known | adj | 这家餐厅很有名。This restaurant is very famous. |
+| 流行 | liúxíng | popular; fashionable | adj/verb | 这首歌很流行。This song is very popular. |
+| 突然 | tūrán | suddenly; all of a sudden | adv/adj | 他突然生病了。He suddenly got sick. |
+| 自然 | zìrán | nature; natural | noun/adj | 大自然很美丽。Nature is very beautiful. |
+| 现代 | xiàndài | modern; contemporary | adj/noun | 现代生活很方便。Modern life is very convenient. |
+| 传统 | chuántǒng | tradition; traditional | noun/adj | 中国有很多传统文化。China has many traditional cultures. |
+| 体验 | tǐyàn | to experience; hands-on experience | verb/noun | 这是一次难忘的体验。This is an unforgettable experience. |
+| 观点 | guāndiǎn | viewpoint; perspective | noun | 你的观点很有意思。Your perspective is very interesting. |
+| 鼓励 | gǔlì | to encourage; encouragement | verb/noun | 老师鼓励我们努力学习。The teacher encourages us to study hard. |
+| 节约 | jiéyuē | to save; to economize | verb/adj | 节约用水。Save water. |
+| 浪费 | làngfèi | to waste; wasteful | verb/adj | 不要浪费食物。Don't waste food. |
+| 进步 | jìnbù | to make progress; improvement | verb/noun | 你的汉语进步很快。Your Chinese is improving fast. |
+| 困 | kùn | sleepy; drowsy | adj | 我很困。I am very sleepy. |
+| 期待 | qīdài | to look forward to; to expect | verb/noun | 我很期待这次旅行。I look forward to this trip. |
+| 平均 | píngjūn | average; equal | adj/noun | 平均成绩是80分。The average score is 80. |
+| 仔细 | zǐxì | careful; meticulous | adj/adv | 仔细看一看。Look carefully. |
+| 准时 | zhǔnshí | on time; punctual | adj/adv | 请准时到达。Please arrive on time. |
+| 及时 | jíshí | timely; promptly; in time | adj/adv | 要及时完成任务。Complete tasks on time. |
+| 高兴 | gāoxìng | happy; glad; pleased | adj | 见到你很高兴。I'm happy to meet you. |
+| 难过 | nánguò | sad; unhappy | adj | 他听到坏消息很难过。He was sad to hear the bad news. |
+| 害羞 | hàixiū | shy; bashful | adj | 她有点害羞。She is a bit shy. |
+| 大方 | dàfang | generous; natural and graceful | adj | 他很大方。He is very generous. |
+| 热情 | rèqíng | warm; enthusiastic; passion | adj/noun | 他对工作很热情。He is very passionate about his work. |
+| 冷静 | lěngjìng | calm; cool-headed; composed | adj | 遇到问题要冷静。Stay calm when facing problems. |
+| 成熟 | chéngshú | mature; ripe | adj/verb | 他很成熟。He is very mature. |
+| 聪明 | cōngmíng | intelligent; clever; smart | adj | 这个孩子很聪明。This child is very clever. |
+| 笨 | bèn | clumsy; stupid; awkward | adj | 我学得慢，感觉自己很笨。I learn slowly and feel clumsy. |
+| 懒 | lǎn | lazy; idle | adj | 别那么懒，快起床！Don't be so lazy, get up! |
+| 勤奋 | qínfèn | diligent; hardworking; industrious | adj | 他学习很勤奋。He studies very diligently. |
+| 幸福 | xìngfú | happiness; happy; blessed | noun/adj | 家庭幸福最重要。Family happiness is most important. |
+| 自信 | zìxìn | confident; self-confidence | adj/noun | 要对自己有自信。You should be confident in yourself. |
+| 耐心 | nàixīn | patient; patience | adj/noun | 教孩子要有耐心。Teaching children requires patience. |
+| 建立 | jiànlì | to establish; to build; to set up | verb | 建立良好的习惯。Establish good habits. |
+| 自己 | zìjǐ | oneself; self | pron | 你要相信自己。You should believe in yourself. |
+| 经常 | jīngcháng | often; frequently; regularly | adv | 他经常锻炼。He exercises regularly. |
