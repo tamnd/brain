@@ -1,6 +1,6 @@
 ---
 title: "IMO 1960"
-description: "IMO 1960 — 4/7 solved, 3 verified."
+description: "IMO 1960 — 5/7 solved, 4 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1960
@@ -10,13 +10,13 @@ draft: false
 
 # IMO 1960
 
-[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 4/7 solved, 3 verified.
+[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 5/7 solved, 4 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 27m41s |
 | [2](2.md) | ✓ verified | 7m41s |
-| 3 | — | — |
+| [3](3.md) | ✓ verified | 17m36s |
 | 4 | — | — |
 | [5](5.md) | ✓ verified | 4m30s |
 | [6](6.md) | ✓ verified | 3m00s |
@@ -31,7 +31,7 @@ Find all three-digit numbers for which one obtains, when dividing the number by 
 For which real numbers $x$ does the following inequality hold:
 $$\\frac{4x^2}{\\left(1 - \\sqrt{1+2x}\\right)^2} < 2x + 9\\,?$$
 
-**Problem 3**
+**Problem 3** &nbsp; *✓ verified* · 17m36s · [Solution →](3.md)
 
 A right-angled triangle $ABC$ is given for which the hypotenuse $BC$ has length $a$ and is divided into $n$ equal segments ($n$ odd). Let $\\alpha$ be the angle subtended at $A$ by the segment containing the midpoint of $BC$. If $h$ denotes the altitude from $A$, prove that
 $$\\tan\\alpha = \\frac{4nh}{(n^2-1)a}.$$

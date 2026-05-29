@@ -1,6 +1,6 @@
 ---
 title: "IMO 1991"
-description: "IMO 1991 — 1/6 solved."
+description: "IMO 1991 — 2/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1991
@@ -10,13 +10,13 @@ draft: false
 
 # IMO 1991
 
-[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 1/6 solved.
+[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 2/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 18m14s |
 | 2 | — | — |
-| 3 | — | — |
+| [3](3.md) | solved | 31m33s |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
@@ -33,7 +33,7 @@ Let $\,n > 6\,$ be an integer and $\,a_{1},a_{2},\cdots ,a_{k}\,$ be all the nat
 a_{2} - a_{1} = a_{3} - a_{2} = \cdots = a_{k} - a_{k - 1} > 0,
 $$ prove that $\,n\,$ must be either a prime number or a power of $\,2$.
 
-**Problem 3**
+**Problem 3** &nbsp; *solved* · 31m33s · [Solution →](3.md)
 
 Let $S = \{1,2,3,\cdots ,280\}$. Find the smallest integer $n$ such that each $n$-element subset of $S$ contains five numbers which are pairwise relatively prime.
 
