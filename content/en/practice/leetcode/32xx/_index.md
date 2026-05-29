@@ -59,3 +59,12 @@ draft: false
 | 3248 | [Snake in Matrix](3248.md) | 🟢 Easy | 1m 3s | The problem describes a snake moving inside an n x n grid. Every ce… |
 | 3249 | [Count the Number of Good Nodes](3249.md) | 🟡 Medium | 2m 13s | We are given an undirected tree with n nodes labeled from 0 to n - … |
 | 3250 | [Find the Count of Monotonic Pairs I](3250.md) | 🔴 Hard | 1m 29s | The problem asks us to count the number of valid pairs of arrays (a… |
+| 3252 | [Premier League Table Ranking II](3252.md) | 🟡 Medium | 53s | The problem asks us to compute a Premier League-style ranking table… |
+| 3254 | [Find the Power of K-Size Subarrays I](3254.md) | 🟡 Medium | 1m 14s | The problem asks us to examine every contiguous subarray of length … |
+| 3255 | [Find the Power of K-Size Subarrays II](3255.md) | 🟡 Medium | 1m 10s | The problem asks us to evaluate every contiguous subarray of length… |
+| 3256 | [Maximum Value Sum by Placing Three Rooks I](3256.md) | 🔴 Hard | 1m 24s | We are given an m x n matrix called board, where each cell contains… |
+| 3257 | [Maximum Value Sum by Placing Three Rooks II](3257.md) | 🔴 Hard | 1m 18s | We are given an m x n matrix called board, where each cell contains… |
+| 3258 | [Count Substrings That Satisfy K-Constraint I](3258.md) | 🟢 Easy | 1m 9s | The problem gives us a binary string s, meaning the string contains… |
+| 3261 | [Count Substrings That Satisfy K-Constraint II](3261.md) | 🔴 Hard | 1m 34s | We are given a binary string s, an integer k, and many range querie… |
+| 3262 | [Find Overlapping Shifts](3262.md) | 🟡 Medium | 1m 43s | The problem requires counting overlapping shifts for each employee … |
+| 3263 | [Convert Doubly Linked List to Array I](3263.md) | 🟢 Easy | 51s | The problem asks us to convert a doubly linked list into a standard… |

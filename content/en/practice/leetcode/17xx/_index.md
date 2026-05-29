@@ -71,6 +71,7 @@ draft: false
 | 1758 | [Minimum Changes To Make Alternating Binary String](1758.md) | 🟢 Easy | 1m 25s | The problem gives us a binary string s, which means the string cont… |
 | 1759 | [Count Number of Homogenous Substrings](1759.md) | 🟡 Medium | 1m 34s | The problem asks us to count all substrings in a string where every… |
 | 1760 | [Minimum Limit of Balls in a Bag](1760.md) | 🟡 Medium | 1m 32s | You are given several bags of balls, where nums[i] represents how m… |
+| 1761 | [Minimum Degree of a Connected Trio in a Graph](1761.md) | 🔴 Hard | 2m 30s | This problem gives us an undirected graph with n nodes and a list o… |
 | 1762 | [Buildings With an Ocean View](1762.md) | 🟡 Medium | 1m 19s | This problem gives us an array called heights, where each element r… |
 | 1763 | [Longest Nice Substring](1763.md) | 🟢 Easy | 1m 58s | The problem asks us to find the longest "nice" substring within a g… |
 | 1764 | [Form Array by Concatenating Subarrays of Another Array](1764.md) | 🟡 Medium | 1m 11s | The problem asks us to determine whether we can select disjoint sub… |
