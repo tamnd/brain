@@ -105,6 +105,6 @@ draft: false
 | 2594 | [Minimum Time to Repair Cars](2594.md) | 🟡 Medium | 1m 8s | The problem gives us a list of mechanics, where each mechanic has a… |
 | 2595 | [Number of Even and Odd Bits](2595.md) | 🟢 Easy | 1m 40s | The problem asks us to analyze the binary representation of a posit… |
 | 2596 | [Check Knight Tour Configuration](2596.md) | 🟡 Medium | 1m 14s | The problem gives us an n x n matrix called grid, where every numbe… |
-| 2597 | [The Number of Beautiful Subsets](2597.md) | 🟡 Medium | 47s | The problem asks us to count the number of non-empty subsets of a g… |
-| 2598 | [Smallest Missing Non-negative Integer After Operations](2598.md) | 🟡 Medium | 1m 14s | This problem asks us to maximize the MEX, the minimum excluded non-… |
-| 2599 | [Make the Prefix Sum Non-negative](2599.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums, and we are allowed to r… |
+| 2597 | [The Number of Beautiful Subsets](2597.md) | 🟡 Medium | 1m 13s | The problem asks us to count how many non-empty subsets of the arra… |
+| 2598 | [Smallest Missing Non-negative Integer After Operations](2598.md) | 🟡 Medium | 1m 11s | That is a long, structured technical guide with multiple required s… |
+| 2599 | [Make the Prefix Sum Non-negative](2599.md) | 🟡 Medium | 48s | The problem asks us to manipulate an array of integers, nums, so th… |

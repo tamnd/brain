@@ -10,25 +10,28 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 2600 | [K Items With the Maximum Sum](2600.md) | 🟢 Easy | 40s | The problem presents a simple scenario: a bag contains a known numb… |
-| 2601 | [Prime Subtraction Operation](2601.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array nums, and we want to determin… |
-| 2602 | [Minimum Operations to Make All Array Elements Equal](2602.md) | 🟡 Medium | 42s | The problem asks us to compute the minimum number of operations nee… |
-| 2603 | [Collect Coins in a Tree](2603.md) | 🔴 Hard | 1m 21s | We are given an undirected tree with n nodes. A tree is a connected… |
-| 2604 | [Minimum Time to Eat All Grains](2604.md) | 🔴 Hard | 1m 14s | In this problem, we are given two sets of positions on a one dimens… |
-| 2605 | [Form Smallest Number From Two Digit Arrays](2605.md) | 🟢 Easy | 38s | The problem asks us to construct the smallest number possible that … |
-| 2606 | [Find the Substring With Maximum Cost](2606.md) | 🟡 Medium | 1m 16s | The problem gives us a string s and a custom character value mappin… |
-| 2607 | [Make K-Subarray Sums Equal](2607.md) | 🟡 Medium | 1m 9s | You are given a circular array arr and an integer k. Because the ar… |
-| 2608 | [Shortest Cycle in a Graph](2608.md) | 🔴 Hard | 1m 10s | The problem gives us an undirected graph with n vertices labeled fr… |
-| 2609 | [Find the Longest Balanced Substring of a Binary String](2609.md) | 🟢 Easy | 1m 15s | We are given a binary string s that contains only the characters '0… |
-| 2610 | [Convert an Array Into a 2D Array With Conditions](2610.md) | 🟡 Medium | 41s | This is a Type B - "Prove that" problem. The statement asks to comp… |
-| 2611 | [Mice and Cheese](2611.md) | 🟡 Medium | 1m 8s | The problem describes a scenario with two mice and several differen… |
-| 2614 | [Prime In Diagonal](2614.md) | 🟢 Easy | 1m 7s | This problem gives us a square matrix named nums, where the number … |
-| 2615 | [Sum of Distances](2615.md) | 🟡 Medium | 1m 7s | The problem gives us a 0-indexed integer array nums. For every posi… |
-| 2616 | [Minimize the Maximum Difference of Pairs](2616.md) | 🟡 Medium | 1m 13s | The problem asks us to select exactly p disjoint pairs from the arr… |
-| 2617 | [Minimum Number of Visited Cells in a Grid](2617.md) | 🔴 Hard | 1m 23s | The problem gives us a 2D grid where each cell contains a non-negat… |
-| 2619 | [Array Prototype Last](2619.md) | 🟢 Easy | 2m 33s | This problem asks us to extend the built in JavaScript Array object… |
-| 2620 | [Counter](2620.md) | 🟢 Easy | 36s | The problem is asking us to implement a counter generator that star… |
-| 2621 | [Sleep](2621.md) | 🟢 Easy | 2m 16s | The problem is asking us to implement an asynchronous function slee… |
+| 2600 | [K Items With the Maximum Sum](2600.md) | 🟢 Easy | 48s | The problem asks us to determine the maximum possible sum when pick… |
+| 2601 | [Prime Subtraction Operation](2601.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums and asks whether it is p… |
+| 2602 | [Minimum Operations to Make All Array Elements Equal](2602.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums and another array querie… |
+| 2603 | [Collect Coins in a Tree](2603.md) | 🔴 Hard | 45s | The problem is about collecting coins located on the nodes of a tre… |
+| 2604 | [Minimum Time to Eat All Grains](2604.md) | 🔴 Hard | 51s | The problem asks us to determine the minimum time needed for all he… |
+| 2605 | [Form Smallest Number From Two Digit Arrays](2605.md) | 🟢 Easy | 1m 18s | The problem gives us two arrays, nums1 and nums2, where each array … |
+| 2606 | [Find the Substring With Maximum Cost](2606.md) | 🟡 Medium | 51s | The problem asks us to find the substring of a given string s that … |
+| 2607 | [Make K-Subarray Sums Equal](2607.md) | 🟡 Medium | 47s | The problem asks us to transform a circular integer array so that e… |
+| 2608 | [Shortest Cycle in a Graph](2608.md) | 🔴 Hard | 1m 16s | The problem gives us an undirected graph with n vertices labeled fr… |
+| 2609 | [Find the Longest Balanced Substring of a Binary String](2609.md) | 🟢 Easy | 1m 11s | The problem gives us a binary string s, which means the string cont… |
+| 2610 | [Convert an Array Into a 2D Array With Conditions](2610.md) | 🟡 Medium | 50s | The problem asks us to transform a one-dimensional integer array nu… |
+| 2611 | [Mice and Cheese](2611.md) | 🟡 Medium | 1m 1s | The problem gives us two arrays, reward1 and reward2, where each in… |
+| 2612 | [Minimum Reverse Operations](2612.md) | 🔴 Hard | 48s | This will be a very large, multi-thousand-word technical guide beca… |
+| 2613 | [Beautiful Pairs](2613.md) | 🔴 Hard | 45s | The problem asks us to find a beautiful pair of indices (i, j) in t… |
+| 2614 | [Prime In Diagonal](2614.md) | 🟢 Easy | 1m 16s | The problem gives us a square matrix nums of size n x n. We need to… |
+| 2615 | [Sum of Distances](2615.md) | 🟡 Medium | 1m 28s | The problem asks us to compute, for every index i in the array nums… |
+| 2616 | [Minimize the Maximum Difference of Pairs](2616.md) | 🟡 Medium | 1m 5s | The problem asks us to select exactly p disjoint pairs from the arr… |
+| 2617 | [Minimum Number of Visited Cells in a Grid](2617.md) | 🔴 Hard | 50s | The problem asks us to determine the minimum number of cells we nee… |
+| 2618 | [Check if Object Instance of Class](2618.md) | 🟡 Medium | 50s | The problem asks us to implement a function that checks whether a g… |
+| 2619 | [Array Prototype Last](2619.md) | 🟢 Easy | 40s | The problem asks us to enhance all JavaScript arrays so that they h… |
+| 2620 | [Counter](2620.md) | 🟢 Easy | 46s | The problem is asking us to implement a simple counter function wit… |
+| 2621 | [Sleep](2621.md) | 🟢 Easy | 37s | The problem asks us to implement an asynchronous function sleep tha… |
 | 2622 | [Cache With Time Limit](2622.md) | 🟡 Medium | 1m 9s | This problem asks us to design a cache system where each key-value … |
 | 2623 | [Memoize](2623.md) | 🟡 Medium | 53s | This problem asks us to create a memoized version of a function. Me… |
 | 2624 | [Snail Traversal](2624.md) | 🟡 Medium | 43s | The problem is asking us to take a one-dimensional array of numbers… |
