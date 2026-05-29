@@ -1,6 +1,6 @@
 ---
 title: "IMO 1961"
-description: "IMO 1961 — 3/6 solved, 2 verified."
+description: "IMO 1961 — 4/6 solved, 3 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1961
@@ -10,12 +10,12 @@ draft: false
 
 # IMO 1961
 
-[Official IMO 1961 problems](https://www.imo-official.org/year_info.aspx?year=1961) &nbsp;·&nbsp; 3/6 solved, 2 verified.
+[Official IMO 1961 problems](https://www.imo-official.org/year_info.aspx?year=1961) &nbsp;·&nbsp; 4/6 solved, 3 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 4m48s |
-| 2 | — | — |
+| [2](2.md) | ✓ verified | 11m24s |
 | [3](3.md) | solved | 39m28s |
 | 4 | — | — |
 | 5 | — | — |
@@ -29,7 +29,7 @@ $\begin{matrix} \quad x + y + z \!\!\! &= a \; \, \\ x^2 +y^2+z^2 \!\!\! &=b^2 \
 
 where $a$ and $b$ are constants. Give the conditions that $a$ and $b$ must satisfy so that $x, y, z$ (the solutions of the system) are distinct positive numbers.
 
-**Problem 2**
+**Problem 2** &nbsp; *✓ verified* · 11m24s · [Solution →](2.md)
 
 Let *a*,*b*, and *c* be the lengths of a triangle whose area is *S*. Prove that
 
