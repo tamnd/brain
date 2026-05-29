@@ -86,8 +86,8 @@ draft: false
 | 2473 | [Minimum Cost to Buy Apples](2473.md) | 🟡 Medium | 41s | The problem asks us to determine the minimum cost to buy exactly on… |
 | 2474 | [Customers With Strictly Increasing Purchases](2474.md) | 🔴 Hard | 1m 28s | The problem gives us an Orders table where each row represents a pu… |
 | 2475 | [Number of Unequal Triplets in Array](2475.md) | 🟢 Easy | 1m 15s | The problem gives us a 0-indexed integer array nums, and we must co… |
-| 2476 | [Closest Nodes Queries in a Binary Search Tree](2476.md) | 🟡 Medium | 2m 2s | This problem asks us to find, for a given list of queries, the clos… |
-| 2477 | [Minimum Fuel Cost to Report to the Capital](2477.md) | 🟡 Medium | 1m 19s | This problem describes a country road network that forms a tree. A … |
+| 2476 | [Closest Nodes Queries in a Binary Search Tree](2476.md) | 🟡 Medium | 1m 23s | The problem gives us the root of a binary search tree, abbreviated … |
+| 2477 | [Minimum Fuel Cost to Report to the Capital](2477.md) | 🟡 Medium | 1m 24s | The problem gives us a country road network that forms a tree. A tr… |
 | 2478 | [Number of Beautiful Partitions](2478.md) | 🔴 Hard | 2m 20s | The problem gives us a string s containing only digits from '1' to … |
 | 2479 | [Maximum XOR of Two Non-Overlapping Subtrees](2479.md) | 🔴 Hard | 1m 53s | We are given a rooted tree with n nodes. The tree is rooted at node… |
 | 2480 | [Form a Chemical Bond](2480.md) | 🟢 Easy | 1m 5s | The problem gives us a database table named Elements, where each ro… |
