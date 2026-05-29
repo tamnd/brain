@@ -19,7 +19,7 @@ draft: false
 | [3](3.md) | solved | 7m11s |
 | [4](4.md) | solved | 6m59s |
 | [5](5.md) | ✓ verified | 8m24s |
-| [6](6.md) | solved | 58m50s |
+| [6](6.md) | solved | 7m52s |
 
 **Problem 1** &nbsp; *✓ verified* · 20m29s · [Solution →](1.md)
 
@@ -47,6 +47,6 @@ Let $f$ and $g$ be real-valued functions defined for all real values of $x$ and 
 f(x + y) + f(x - y) = 2f(x)g(y)
 $$ for all $x, y$. Prove that if $f(x)$ is not identically zero, and if $|f(x)| \leq 1$ for all $x$, then $|g(y)| \leq 1$ for all $y$.
 
-**Problem 6** &nbsp; *solved* · 58m50s · [Solution →](6.md)
+**Problem 6** &nbsp; *solved* · 7m52s · [Solution →](6.md)
 
 Given four distinct parallel planes, prove that there exists a regular tetrahedron with a vertex on each plane.
