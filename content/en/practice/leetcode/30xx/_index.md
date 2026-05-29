@@ -43,6 +43,7 @@ draft: false
 | 3048 | [Earliest Second to Mark Indices I](3048.md) | 🟡 Medium | 47s | This problem asks us to determine the earliest second at which all … |
 | 3049 | [Earliest Second to Mark Indices II](3049.md) | 🔴 Hard | 47s | The problem asks us to determine the earliest second at which all i… |
 | 3050 | [Pizza Toppings Cost Analysis](3050.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every valid pizza combination that… |
+| 3051 | [Find Candidates for Data Scientist Position](3051.md) | 🟢 Easy | 48s | You included two different LeetCode problems with conflicting templ… |
 | 3052 | [Maximize Items](3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |
 | 3053 | [Classifying Triangles by Lengths](3053.md) | 🟢 Easy | 1m 21s | The problem requires classifying triangles based on the lengths of … |
 | 3054 | [Binary Tree Nodes](3054.md) | 🟡 Medium | 1m 2s | This problem asks us to classify nodes in a binary tree based on th… |
@@ -56,6 +57,8 @@ draft: false
 | 3062 | [Winner of the Linked List Game](3062.md) | 🟢 Easy | 1m 6s | The problem gives us the head of a singly linked list whose length … |
 | 3063 | [Linked List Frequency](3063.md) | 🟢 Easy | 1m | This problem asks us to analyze a singly-linked list of integers an… |
 | 3064 | [Guess the Number Using Bitwise Questions I](3064.md) | 🟡 Medium | 48s | The problem presents an interactive scenario where there is a hidde… |
+| 3065 | [Minimum Operations to Exceed Threshold Value I](3065.md) | 🟢 Easy | 41s | The problem asks us to find the minimum number of operations needed… |
+| 3066 | [Minimum Operations to Exceed Threshold Value II](3066.md) | 🟡 Medium | 42s | This problem asks us to repeatedly combine the two smallest element… |
 | 3067 | [Count Pairs of Connectable Servers in a Weighted Tree Network](3067.md) | 🟡 Medium | 1m 6s | The problem gives us a weighted tree representing servers connected… |
 | 3068 | [Find the Maximum Sum of Node Values](3068.md) | 🔴 Hard | 1m 10s | You are given a tree with n nodes. Every node has a value stored in… |
 | 3069 | [Distribute Elements Into Two Arrays I](3069.md) | 🟢 Easy | 52s | The problem is asking us to simulate a process where we distribute … |
@@ -68,6 +71,7 @@ draft: false
 | 3077 | [Maximum Strength of K Disjoint Subarrays](3077.md) | 🔴 Hard | 1m 10s | The problem is asking us to select exactly k disjoint subarrays fro… |
 | 3078 | [Match Alphanumerical Pattern in Matrix I](3078.md) | 🟡 Medium | 1m 35s | This problem asks us to search for a rectangular submatrix inside a… |
 | 3079 | [Find the Sum of Encrypted Integers](3079.md) | 🟢 Easy | 49s | The problem provides an array of positive integers nums and asks us… |
+| 3080 | [Mark Elements on Array by Performing Queries](3080.md) | 🟡 Medium | 38s | Here’s a fully detailed technical solution guide for LeetCode 3080 … |
 | 3081 | [Replace Question Marks in String to Minimize Its Value](3081.md) | 🟡 Medium | 1m 11s | The problem gives us a string s containing lowercase English letter… |
 | 3082 | [Find the Sum of the Power of All Subsequences](3082.md) | 🔴 Hard | 1m 15s | You are given an array nums and an integer k. For every subsequence… |
 | 3083 | [Existence of a Substring in a String and Its Reverse](3083.md) | 🟢 Easy | 57s | This is a Type B, “Prove that” problem. The statement to prove is: … |
@@ -76,10 +80,14 @@ draft: false
 | 3086 | [Minimum Moves to Pick K Ones](3086.md) | 🔴 Hard | 1m 3s | The reviewer identified a sign error in the swap argument, so the f… |
 | 3087 | [Find Trending Hashtags](3087.md) | 🟡 Medium | 1m 10s | The problem asks us to find the top 3 trending hashtags from a tabl… |
 | 3088 | [Make String Anti-palindrome](3088.md) | 🔴 Hard | 1m 25s | We are given a string s of even length, and we may swap any two cha… |
+| 3089 | [Find Bursty Behavior](3089.md) | 🟡 Medium | 53s | The problem asks us to identify users who demonstrate "bursty behav… |
 | 3090 | [Maximum Length Substring With Two Occurrences](3090.md) | 🟢 Easy | 58s | The problem is asking for the maximum length of a substring in a gi… |
 | 3091 | [Apply Operations to Make Sum of Array Greater Than or Equal to k](3091.md) | 🟡 Medium | 1m 15s | The problem gives us a single positive integer k. We start with an … |
 | 3092 | [Most Frequent IDs](3092.md) | 🟡 Medium | 50s | The problem asks us to maintain a collection of IDs that is updated… |
+| 3093 | [Longest Common Suffix Queries](3093.md) | 🔴 Hard | 1m 22s | The problem asks us to process a set of suffix matching queries eff… |
+| 3094 | [Guess the Number Using Bitwise Questions II](3094.md) | 🟡 Medium | 2m 24s | Before I write the full guide, I want to confirm one detail: for Le… |
 | 3095 | [Shortest Subarray With OR at Least K I](3095.md) | 🟢 Easy | 1m 7s | The problem asks us to find the shortest subarray within a given ar… |
 | 3096 | [Minimum Levels to Gain More Points](3096.md) | 🟡 Medium | 1m 1s | This problem is asking us to determine the minimum number of levels… |
 | 3097 | [Shortest Subarray With OR at Least K II](3097.md) | 🟡 Medium | 1m 28s | This problem asks us to find the smallest non-empty contiguous suba… |
 | 3098 | [Find the Sum of Subsequence Powers](3098.md) | 🔴 Hard | 54s | The problem asks us to compute the sum of powers of all subsequence… |
+| 3099 | [Harshad Number](3099.md) | 🟢 Easy | 56s | The problem asks us to determine whether a given integer is a Harsh… |
