@@ -2502,35 +2502,39 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2513 | [Minimize the Maximum of Two Arrays](25xx/2513.md) | 🟡 Medium | 1m 17s | The problem gives us two empty arrays, arr1 and arr2, and asks us t… |
 | 2514 | [Count Anagrams](25xx/2514.md) | 🔴 Hard | 1m 28s | The problem asks us to count how many distinct sentence anagrams ca… |
 | 2515 | [Shortest Distance to Target String in a Circular Array](25xx/2515.md) | 🟢 Easy | 45s | The problem asks us to find the shortest distance from a given star… |
-| 2516 | [Take K of Each Character From Left and Right](25xx/2516.md) | 🟡 Medium | 1m 7s | The problem gives us a string s containing only the characters 'a',… |
+| 2516 | [Take K of Each Character From Left and Right](25xx/2516.md) | 🟡 Medium | 51s | The problem asks us to determine the minimum number of characters t… |
 | 2517 | [Maximum Tastiness of Candy Basket](25xx/2517.md) | 🟡 Medium | 1m 15s | The problem gives us an array price where each element represents t… |
-| 2519 | [Count the Number of K-Big Indices](25xx/2519.md) | 🔴 Hard | 5m 31s | The problem asks us to find the number of k-big indices in a given … |
-| 2520 | [Count the Digits That Divide a Number](25xx/2520.md) | 🟢 Easy | 40s | The problem asks us to count how many digits in a given integer num… |
+| 2518 | [Number of Great Partitions](25xx/2518.md) | 🔴 Hard | 1m | The problem requires us to partition an array of positive integers … |
+| 2519 | [Count the Number of K-Big Indices](25xx/2519.md) | 🔴 Hard | 1m 19s | This problem asks us to determine how many indices in an array sati… |
+| 2520 | [Count the Digits That Divide a Number](25xx/2520.md) | 🟢 Easy | 55s | The problem asks us to determine, given a positive integer num, how… |
 | 2521 | [Distinct Prime Factors of Product of Array](25xx/2521.md) | 🟡 Medium | 1m 27s | The problem asks us to determine how many unique prime numbers appe… |
-| 2522 | [Partition String Into Substrings With Values at Most K](25xx/2522.md) | 🟡 Medium | 57s | The problem gives us a numeric string s and an integer k. We must s… |
-| 2524 | [Maximum Frequency Score of a Subarray](25xx/2524.md) | 🔴 Hard | 1m 29s | The problem gives us an integer array nums and a fixed window size … |
+| 2522 | [Partition String Into Substrings With Values at Most K](25xx/2522.md) | 🟡 Medium | 1m 10s | The problem gives us a numeric string s, where every character is a… |
+| 2523 | [Closest Prime Numbers in Range](25xx/2523.md) | 🟡 Medium | 1m 15s | The problem asks us to find two prime numbers inside a given inclus… |
+| 2524 | [Maximum Frequency Score of a Subarray](25xx/2524.md) | 🔴 Hard | 48s | The problem asks us to compute the maximum frequency score among al… |
 | 2525 | [Categorize Box According to Criteria](25xx/2525.md) | 🟢 Easy | 1m 5s | This problem asks us to classify a box into one of four categories … |
-| 2526 | [Find Consecutive Integers from a Data Stream](25xx/2526.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure that processes a str… |
-| 2528 | [Maximize the Minimum Powered City](25xx/2528.md) | 🔴 Hard | 44s | The problem gives an array stations of length n where each element … |
-| 2529 | [Maximum Count of Positive Integer and Negative Integer](25xx/2529.md) | 🟢 Easy | 41s | The problem asks us to determine whether, in a given sorted integer… |
-| 2531 | [Make Number of Distinct Characters Equal](25xx/2531.md) | 🟡 Medium | 1m 5s | The problem gives us two lowercase English strings, word1 and word2… |
-| 2532 | [Time to Cross a Bridge](25xx/2532.md) | 🔴 Hard | 43s | The problem asks us to simulate the process of transporting n boxes… |
-| 2533 | [Number of Good Binary Strings](25xx/2533.md) | 🟡 Medium | 1m 14s | The problem asks us to count how many binary strings satisfy a very… |
-| 2534 | [Time Taken to Cross the Door](25xx/2534.md) | 🔴 Hard | 1m 20s | This problem asks us to simulate how people pass through a single d… |
-| 2535 | [Difference Between Element Sum and Digit Sum of an Array](25xx/2535.md) | 🟢 Easy | 1m 3s | The problem gives us an array of positive integers called nums. We … |
-| 2536 | [Increment Submatrices by One](25xx/2536.md) | 🟡 Medium | 1m 17s | The problem gives us an n x n matrix that initially contains only z… |
-| 2537 | [Count the Number of Good Subarrays](25xx/2537.md) | 🟡 Medium | 1m 10s | The problem asks us to count how many contiguous subarrays contain … |
-| 2538 | [Difference Between Maximum and Minimum Price Sum](25xx/2538.md) | 🔴 Hard | 47s | This problem involves analyzing a tree, an undirected, connected ac… |
-| 2539 | [Count the Number of Good Subsequences](25xx/2539.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many subsequences of a given strin… |
-| 2540 | [Minimum Common Value](25xx/2540.md) | 🟢 Easy | 1m 7s | The problem gives us two integer arrays, nums1 and nums2, and both … |
+| 2526 | [Find Consecutive Integers from a Data Stream](25xx/2526.md) | 🟡 Medium | 57s | The problem asks us to design a data structure that continuously pr… |
+| 2528 | [Maximize the Minimum Powered City](25xx/2528.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum possible minimum power… |
+| 2529 | [Maximum Count of Positive Integer and Negative Integer](25xx/2529.md) | 🟢 Easy | 8m 19s | The problem gives us a sorted integer array nums in non-decreasing … |
+| 2531 | [Make Number of Distinct Characters Equal](25xx/2531.md) | 🟡 Medium | 1m 21s | The problem is a pure inequality with a geometric constraint. The c… |
+| 2532 | [Time to Cross a Bridge](25xx/2532.md) | 🔴 Hard | 57s | The problem asks us to simulate a scenario in which k workers trans… |
+| 2533 | [Number of Good Binary Strings](25xx/2533.md) | 🟡 Medium | 45s | The problem asks us to count how many binary strings satisfy a very… |
+| 2534 | [Time Taken to Cross the Door](25xx/2534.md) | 🔴 Hard | 1m 26s | This problem asks us to simulate how people pass through a single d… |
+| 2535 | [Difference Between Element Sum and Digit Sum of an Array](25xx/2535.md) | 🟢 Easy | 2m 53s | The problem gives us an array of positive integers called nums. We … |
+| 2536 | [Increment Submatrices by One](25xx/2536.md) | 🟡 Medium | 20m 33s | LeetCode 2536: Increment Submatrices by One (Medium) |
+| 2537 | [Count the Number of Good Subarrays](25xx/2537.md) | 🟡 Medium | 20m 26s | LeetCode 2537: Count the Number of Good Subarrays (Medium) |
+| 2538 | [Difference Between Maximum and Minimum Price Sum](25xx/2538.md) | 🔴 Hard | 3m 2s | We are given an undirected tree with n nodes. Every node has a pric… |
+| 2539 | [Count the Number of Good Subsequences](25xx/2539.md) | 🟡 Medium | 20m 37s | LeetCode 2539: Count the Number of Good Subsequences (Medium) |
+| 2540 | [Minimum Common Value](25xx/2540.md) | 🟢 Easy | 1m 32s | The problem gives us two integer arrays, nums1 and nums2, and both … |
 | 2541 | [Minimum Operations to Make Array Equal II](25xx/2541.md) | 🟡 Medium | 1m 12s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
-| 2542 | [Maximum Subsequence Score](25xx/2542.md) | 🟡 Medium | 1m 18s | This problem asks us to select exactly k indices from two arrays, n… |
-| 2544 | [Alternating Digit Sum](25xx/2544.md) | 🟢 Easy | 44s | The problem asks us to calculate an alternating sum of the digits o… |
-| 2546 | [Apply Bitwise Operations to Make Strings Equal](25xx/2546.md) | 🟡 Medium | 1m 3s | This problem gives us two binary strings, s and target, both of the… |
-| 2547 | [Minimum Cost to Split an Array](25xx/2547.md) | 🔴 Hard | 45s | The problem presents a large, theoretically infinite grid where you… |
-| 2548 | [Maximum Price to Fill a Bag](25xx/2548.md) | 🟡 Medium | 1m 2s | This problem describes a variation of the classic fractional knapsa… |
-| 2549 | [Count Distinct Numbers on Board](25xx/2549.md) | 🟢 Easy | 51s | The problem gives us a starting integer n that is initially written… |
-| 2550 | [Count Collisions of Monkeys on a Polygon](25xx/2550.md) | 🟡 Medium | 1m | The problem describes a regular convex polygon with n vertices. Eac… |
+| 2542 | [Maximum Subsequence Score](25xx/2542.md) | 🟡 Medium | 1m 29s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2543 | [Check if Point Is Reachable](25xx/2543.md) | 🔴 Hard | 1m 9s | The problem gives us an infinite two dimensional grid and asks whet… |
+| 2544 | [Alternating Digit Sum](25xx/2544.md) | 🟢 Easy | 57s | The problem asks us to compute an alternating sum of the digits of … |
+| 2545 | [Sort the Students by Their Kth Score](25xx/2545.md) | 🟡 Medium | 2m 19s | In this problem, we are given a matrix named score with dimensions … |
+| 2546 | [Apply Bitwise Operations to Make Strings Equal](25xx/2546.md) | 🟡 Medium | 2m 19s | The problem provides two binary strings, s and target, of equal len… |
+| 2547 | [Minimum Cost to Split an Array](25xx/2547.md) | 🔴 Hard | 1m 32s | The problem asks us to split the array nums into one or more contig… |
+| 2548 | [Maximum Price to Fill a Bag](25xx/2548.md) | 🟡 Medium | 1m | The problem is asking us to maximize the total price of items place… |
+| 2549 | [Count Distinct Numbers on Board](25xx/2549.md) | 🟢 Easy | 1m | The problem starts with a single integer n written on a board. Ever… |
+| 2550 | [Count Collisions of Monkeys on a Polygon](25xx/2550.md) | 🟡 Medium | 1m 5s | In this problem, we have a regular polygon with n vertices, and eac… |
 | 2551 | [Put Marbles in Bags](25xx/2551.md) | 🔴 Hard | 1m 12s | The problem gives us an array weights, where each value represents … |
 | 2552 | [Count Increasing Quadruplets](25xx/2552.md) | 🔴 Hard | 34s | The problem asks us to count the number of increasing quadruplets i… |
 | 2553 | [Separate the Digits in an Array](25xx/2553.md) | 🟢 Easy | 38s | The problem asks us to take an input array of positive integers and… |
@@ -2755,6 +2759,56 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2798 | [Number of Employees Who Met the Target](27xx/2798.md) | 🟢 Easy | 51s | The problem asks us to determine how many employees meet or exceed … |
 | 2799 | [Count Complete Subarrays in an Array](27xx/2799.md) | 🟡 Medium | 1m 8s | This problem asks us to count how many contiguous subarrays are com… |
 | 2800 | [Shortest String That Contains Three Strings](28xx/2800.md) | 🟡 Medium | 1m 11s | The problem gives us three strings, a, b, and c, and asks us to con… |
+| 2801 | [Count Stepping Numbers in Range](28xx/2801.md) | 🔴 Hard | 3m 17s | This problem asks us to count how many integers within the inclusiv… |
+| 2802 | [Find The K-th Lucky Number](28xx/2802.md) | 🟡 Medium | 42s | This problem asks us to find the k-th lucky number, where a lucky n… |
+| 2803 | [Factorial Generator](28xx/2803.md) | 🟢 Easy | 1m 1s | This problem asks us to implement a generator function that produce… |
+| 2804 | [Array Prototype ForEach](28xx/2804.md) | 🟢 Easy | 3m 9s | The problem asks us to implement our own version of JavaScript's Ar… |
+| 2805 | [Custom Interval](28xx/2805.md) | 🟡 Medium | 4m 45s | LeetCode 2805: Custom Interval (Medium) |
+| 2806 | [Account Balance After Rounded Purchase](28xx/2806.md) | 🟢 Easy | 45s | This problem asks us to simulate a simple purchase with rounding an… |
+| 2807 | [Insert Greatest Common Divisors in Linked List](28xx/2807.md) | 🟡 Medium | 1m 43s | The problem gives us the head of a singly linked list where each no… |
+| 2808 | [Minimum Seconds to Equalize a Circular Array](28xx/2808.md) | 🟡 Medium | 2m 8s | The problem gives us a circular array nums, meaning the first and l… |
+| 2809 | [Minimum Time to Make Array Sum At Most x](28xx/2809.md) | 🔴 Hard | 51s | The problem asks us to determine the minimum number of seconds requ… |
+| 2810 | [Faulty Keyboard](28xx/2810.md) | 🟢 Easy | 1m 10s | In this problem, we are given a string s that represents characters… |
+| 2811 | [Check if it is Possible to Split Array](28xx/2811.md) | 🟡 Medium | 29s | In this problem, we are given an integer array nums and another int… |
+| 2812 | [Find the Safest Path in a Grid](28xx/2812.md) | 🟡 Medium | 1m 19s | The problem gives us an n x n grid where each cell is either empty … |
+| 2813 | [Maximum Elegance of a K-Length Subsequence](28xx/2813.md) | 🔴 Hard | 1m 27s | We are given an array called items, where every element contains tw… |
+| 2814 | [Minimum Time Takes to Reach Destination Without Drowning](28xx/2814.md) | 🔴 Hard | 47s | The problem asks us to determine the minimum time it takes for a pe… |
+| 2815 | [Max Pair Sum in an Array](28xx/2815.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums, and we need to find two… |
+| 2816 | [Double a Number Represented as a Linked List](28xx/2816.md) | 🟡 Medium | 5m 9s | The problem asks us to take a singly linked list representing a non… |
+| 2817 | [Minimum Absolute Difference Between Elements With Constraint](28xx/2817.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array nums and an integer x. We nee… |
+| 2818 | [Apply Operations to Maximize Score](28xx/2818.md) | 🔴 Hard | 1m 38s | The problem gives us an array nums and an integer k. We begin with … |
+| 2819 | [Minimum Relative Loss After Buying Chocolates](28xx/2819.md) | 🔴 Hard | 1m 27s | We are given an array prices, where each element represents the pri… |
+| 2820 | [Election Results](28xx/2820.md) | 🟡 Medium | 55s | The problem is asking us to calculate the winner of an election giv… |
+| 2821 | [Delay the Resolution of Each Promise](28xx/2821.md) | 🟡 Medium | 1m 43s | The problem requires creating a wrapper around an array of asynchro… |
+| 2822 | [Inversion of Object](28xx/2822.md) | 🟢 Easy | 3m 7s | The problem asks us to "invert" an object or array. In practical te… |
+| 2823 | [Deep Object Filter](28xx/2823.md) | 🟡 Medium | 5m 34s | The problem is asking us to implement a function deepFilter that re… |
+| 2824 | [Count Pairs Whose Sum is Less than Target](28xx/2824.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and an integer target. W… |
+| 2825 | [Make String a Subsequence Using Cyclic Increments](28xx/2825.md) | 🟡 Medium | 1m 13s | This problem asks whether we can transform str1 in such a way that … |
+| 2826 | [Sorting Three Groups](28xx/2826.md) | 🟡 Medium | 1m 4s | We are given an array nums where every element is either 1, 2, or 3… |
+| 2827 | [Number of Beautiful Integers in the Range](28xx/2827.md) | 🔴 Hard | 1m 21s | The problem asks us to count how many integers in the inclusive ran… |
+| 2828 | [Check if a String Is an Acronym of Words](28xx/2828.md) | 🟢 Easy | 1m 59s | The problem gives us two inputs: - An array of strings called words… |
+| 2829 | [Determine the Minimum Sum of a k-avoiding Array](28xx/2829.md) | 🟡 Medium | 4m 5s | The problem asks us to construct an array of n distinct positive in… |
+| 2830 | [Maximize the Profit as the Salesman](28xx/2830.md) | 🟡 Medium | 2m 48s | The problem gives us n houses arranged on a number line, numbered f… |
+| 2831 | [Find the Longest Equal Subarray](28xx/2831.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and an integer k. We are… |
+| 2832 | [Maximal Range That Each Element Is Maximum in It](28xx/2832.md) | 🟡 Medium | 1m 20s | The problem gives us an array nums containing distinct integers. Fo… |
+| 2833 | [Furthest Point From Origin](28xx/2833.md) | 🟢 Easy | 1m 3s | The problem gives us a string called moves, where each character re… |
+| 2834 | [Find the Minimum Possible Sum of a Beautiful Array](28xx/2834.md) | 🟡 Medium | 1m 14s | The problem asks us to construct an array of length n using distinc… |
+| 2835 | [Minimum Operations to Form Subsequence With Target Sum](28xx/2835.md) | 🔴 Hard | 1m 40s | The problem gives us an array nums where every element is a power o… |
+| 2836 | [Maximize Value of Function in a Ball Passing Game](28xx/2836.md) | 🔴 Hard | 1m 32s | This problem describes a deterministic ball-passing game between n … |
+| 2837 | [Total Traveled Distance](28xx/2837.md) | 🟢 Easy | 1m 47s | This problem asks us to compute the total distance traveled by ever… |
+| 2838 | [Maximum Coins Heroes Can Collect](28xx/2838.md) | 🟡 Medium | 2m 30s | The problem gives us three arrays: - heroes[i] represents the power… |
+| 2839 | [Check if Strings Can be Made Equal With Operations I](28xx/2839.md) | 🟢 Easy | 2m 24s | The problem gives us two strings, s1 and s2, each containing exactl… |
+| 2840 | [Check if Strings Can be Made Equal With Operations II](28xx/2840.md) | 🟡 Medium | 4m 23s | LeetCode 2840: Check if Strings Can be Made Equal With Operations I… |
+| 2841 | [Maximum Sum of Almost Unique Subarray](28xx/2841.md) | 🟡 Medium | 4m 28s | LeetCode 2841: Maximum Sum of Almost Unique Subarray (Medium) |
+| 2842 | [Count K-Subsequences of a String With Maximum Beauty](28xx/2842.md) | 🔴 Hard | 4m 23s | LeetCode 2842: Count K-Subsequences of a String With Maximum Beauty… |
+| 2843 | [  Count Symmetric Integers](28xx/2843.md) | 🟢 Easy | 6m 1s | LeetCode 2843:   Count Symmetric Integers (Easy) |
+| 2844 | [Minimum Operations to Make a Special Number](28xx/2844.md) | 🟡 Medium | 49s | The problem asks us to transform a given string num, representing a… |
+| 2845 | [Count of Interesting Subarrays](28xx/2845.md) | 🟡 Medium | 2m 3s | The problem asks us to count how many contiguous subarrays satisfy … |
+| 2846 | [Minimum Edge Weight Equilibrium Queries in a Tree](28xx/2846.md) | 🔴 Hard | 1m 50s | This problem gives us a weighted undirected tree with n nodes. Sinc… |
+| 2847 | [Smallest Number With Given Digit Product](28xx/2847.md) | 🟡 Medium | 4m 57s | LeetCode 2847: Smallest Number With Given Digit Product (Medium) |
+| 2848 | [Points That Intersect With Cars](28xx/2848.md) | 🟢 Easy | 2m 18s | The problem gives us a list of cars parked on a number line. Each c… |
+| 2849 | [Determine if a Cell Is Reachable at a Given Time](28xx/2849.md) | 🟡 Medium | 5m 3s | LeetCode 2849: Determine if a Cell Is Reachable at a Given Time (Me… |
+| 2850 | [Minimum Moves to Spread Stones Over Grid](28xx/2850.md) | 🟡 Medium | 2m 13s | The problem gives us a 3 x 3 grid where each cell contains some num… |
 | 2907 | [Maximum Profitable Triplets With Increasing Prices I](29xx/2907.md) | 🟡 Medium | 1m 49s | This problem asks us to select exactly three items from a store whi… |
 | 2921 | [Maximum Profitable Triplets With Increasing Prices II](29xx/2921.md) | 🔴 Hard | 1m 29s | The problem asks us to select three items from a store such that th… |
 | 2963 | [Count the Number of Good Partitions](29xx/2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |

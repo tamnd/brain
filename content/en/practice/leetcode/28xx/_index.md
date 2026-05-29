@@ -25,12 +25,17 @@ draft: false
 | 2812 | [Find the Safest Path in a Grid](2812.md) | 🟡 Medium | 1m 19s | The problem gives us an n x n grid where each cell is either empty … |
 | 2813 | [Maximum Elegance of a K-Length Subsequence](2813.md) | 🔴 Hard | 1m 27s | We are given an array called items, where every element contains tw… |
 | 2814 | [Minimum Time Takes to Reach Destination Without Drowning](2814.md) | 🔴 Hard | 47s | The problem asks us to determine the minimum time it takes for a pe… |
+| 2815 | [Max Pair Sum in an Array](2815.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums, and we need to find two… |
+| 2816 | [Double a Number Represented as a Linked List](2816.md) | 🟡 Medium | 5m 9s | The problem asks us to take a singly linked list representing a non… |
+| 2817 | [Minimum Absolute Difference Between Elements With Constraint](2817.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array nums and an integer x. We nee… |
+| 2818 | [Apply Operations to Maximize Score](2818.md) | 🔴 Hard | 1m 38s | The problem gives us an array nums and an integer k. We begin with … |
 | 2819 | [Minimum Relative Loss After Buying Chocolates](2819.md) | 🔴 Hard | 1m 27s | We are given an array prices, where each element represents the pri… |
 | 2820 | [Election Results](2820.md) | 🟡 Medium | 55s | The problem is asking us to calculate the winner of an election giv… |
 | 2821 | [Delay the Resolution of Each Promise](2821.md) | 🟡 Medium | 1m 43s | The problem requires creating a wrapper around an array of asynchro… |
 | 2822 | [Inversion of Object](2822.md) | 🟢 Easy | 3m 7s | The problem asks us to "invert" an object or array. In practical te… |
 | 2823 | [Deep Object Filter](2823.md) | 🟡 Medium | 5m 34s | The problem is asking us to implement a function deepFilter that re… |
 | 2824 | [Count Pairs Whose Sum is Less than Target](2824.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and an integer target. W… |
+| 2825 | [Make String a Subsequence Using Cyclic Increments](2825.md) | 🟡 Medium | 1m 13s | This problem asks whether we can transform str1 in such a way that … |
 | 2826 | [Sorting Three Groups](2826.md) | 🟡 Medium | 1m 4s | We are given an array nums where every element is either 1, 2, or 3… |
 | 2827 | [Number of Beautiful Integers in the Range](2827.md) | 🔴 Hard | 1m 21s | The problem asks us to count how many integers in the inclusive ran… |
 | 2828 | [Check if a String Is an Acronym of Words](2828.md) | 🟢 Easy | 1m 59s | The problem gives us two inputs: - An array of strings called words… |
@@ -39,6 +44,7 @@ draft: false
 | 2831 | [Find the Longest Equal Subarray](2831.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and an integer k. We are… |
 | 2832 | [Maximal Range That Each Element Is Maximum in It](2832.md) | 🟡 Medium | 1m 20s | The problem gives us an array nums containing distinct integers. Fo… |
 | 2833 | [Furthest Point From Origin](2833.md) | 🟢 Easy | 1m 3s | The problem gives us a string called moves, where each character re… |
+| 2834 | [Find the Minimum Possible Sum of a Beautiful Array](2834.md) | 🟡 Medium | 1m 14s | The problem asks us to construct an array of length n using distinc… |
 | 2835 | [Minimum Operations to Form Subsequence With Target Sum](2835.md) | 🔴 Hard | 1m 40s | The problem gives us an array nums where every element is a power o… |
 | 2836 | [Maximize Value of Function in a Ball Passing Game](2836.md) | 🔴 Hard | 1m 32s | This problem describes a deterministic ball-passing game between n … |
 | 2837 | [Total Traveled Distance](2837.md) | 🟢 Easy | 1m 47s | This problem asks us to compute the total distance traveled by ever… |
@@ -48,6 +54,7 @@ draft: false
 | 2841 | [Maximum Sum of Almost Unique Subarray](2841.md) | 🟡 Medium | 4m 28s | LeetCode 2841: Maximum Sum of Almost Unique Subarray (Medium) |
 | 2842 | [Count K-Subsequences of a String With Maximum Beauty](2842.md) | 🔴 Hard | 4m 23s | LeetCode 2842: Count K-Subsequences of a String With Maximum Beauty… |
 | 2843 | [  Count Symmetric Integers](2843.md) | 🟢 Easy | 6m 1s | LeetCode 2843:   Count Symmetric Integers (Easy) |
+| 2844 | [Minimum Operations to Make a Special Number](2844.md) | 🟡 Medium | 49s | The problem asks us to transform a given string num, representing a… |
 | 2845 | [Count of Interesting Subarrays](2845.md) | 🟡 Medium | 2m 3s | The problem asks us to count how many contiguous subarrays satisfy … |
 | 2846 | [Minimum Edge Weight Equilibrium Queries in a Tree](2846.md) | 🔴 Hard | 1m 50s | This problem gives us a weighted undirected tree with n nodes. Sinc… |
 | 2847 | [Smallest Number With Given Digit Product](2847.md) | 🟡 Medium | 4m 57s | LeetCode 2847: Smallest Number With Given Digit Product (Medium) |
