@@ -59,8 +59,10 @@ draft: false
 | 3350 | [Adjacent Increasing Subarrays Detection II](3350.md) | 🟡 Medium | 1m 15s | The problem asks us to find the largest possible length k such that… |
 | 3351 | [Sum of Good Subsequences](3351.md) | 🔴 Hard | 53s | This problem asks us to compute the sum of all good subsequences in… |
 | 3352 | [Count K-Reducible Numbers Less Than N](3352.md) | 🔴 Hard | 1m 2s | The problem asks us to count the number of positive integers less t… |
+| 3353 | [Minimum Total Operations](3353.md) | 🟢 Easy | 50s | The problem is asking us to determine the minimum number of operati… |
 | 3354 | [Make Array Elements Equal to Zero](3354.md) | 🟢 Easy | 1m 30s | The problem gives us an integer array nums, where some elements may… |
 | 3355 | [Zero Array Transformation I](3355.md) | 🟡 Medium | 54s | The problem asks whether it is possible to transform a given intege… |
+| 3356 | [Zero Array Transformation II](3356.md) | 🟡 Medium | 1m 1s | The problem asks us to determine the minimum number of sequential q… |
 | 3357 | [Minimize the Maximum Adjacent Element Difference](3357.md) | 🔴 Hard | 2m 3s | The problem gives us an integer array nums, where some positions co… |
 | 3358 | [Books with NULL Ratings](3358.md) | 🟢 Easy | 1m 33s | This problem provides a database table named books. Each row in the… |
 | 3359 | [Find Sorted Submatrices With Maximum Element at Most K](3359.md) | 🔴 Hard | 1m 34s | We are given a matrix grid with m rows and n columns, along with an… |
@@ -88,3 +90,7 @@ draft: false
 | 3391 | [Design a 3D Binary Matrix with Efficient Layer Tracking](3391.md) | 🟡 Medium | 1m 30s | The problem asks us to design a data structure that manages a 3D bi… |
 | 3392 | [Count Subarrays of Length Three With a Condition](3392.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to count how… |
 | 3393 | [Count Paths With the Given XOR Value](3393.md) | 🟡 Medium | 1m 56s | The problem gives us an m x n grid where each cell contains a small… |
+| 3395 | [Subsequences with a Unique Middle Mode I](3395.md) | 🔴 Hard | 1m 45s | We are given an integer array nums, and we must count how many subs… |
+| 3396 | [Minimum Number of Operations to Make Elements in Array Distinct](3396.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, and our goal is to make… |
+| 3397 | [Maximum Number of Distinct Elements After Operations](3397.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of distinct elements in … |
+| 3398 | [Smallest Substring With Identical Characters I](3398.md) | 🔴 Hard | 55s | The problem gives us a binary string s consisting of only '0' and '… |

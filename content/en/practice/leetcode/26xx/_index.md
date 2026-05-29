@@ -51,6 +51,7 @@ draft: false
 | 2638 | [Count the Number of K-Free Subsets](2638.md) | 🟡 Medium | 45s | That is a detailed, long-form solution guide request. Before I gene… |
 | 2639 | [Find the Width of Columns of a Grid](2639.md) | 🟢 Easy | 1m 14s | The problem gives us a two dimensional integer matrix called grid w… |
 | 2640 | [Find the Score of All Prefixes of an Array](2640.md) | 🟡 Medium | 40s | The problem requires calculating a score for all prefixes of an arr… |
+| 2641 | [Cousins in Binary Tree II](2641.md) | 🟡 Medium | 1m 17s | The problem gives us the root of a binary tree and asks us to repla… |
 | 2642 | [Design Graph With Shortest Path Calculator](2642.md) | 🔴 Hard | 1m 47s | The problem asks us to design a graph data structure that supports … |
 | 2643 | [Row With Maximum Ones](2643.md) | 🟢 Easy | 56s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 2644 | [Find the Maximum Divisibility Score](2644.md) | 🟢 Easy | 59s | The problem asks us to identify, from a list of divisors, the integ… |
@@ -63,8 +64,8 @@ draft: false
 | 2651 | [Calculate Delayed Arrival Time](2651.md) | 🟢 Easy | 35s | The problem asks us to calculate the arrival time of a train given … |
 | 2652 | [Sum Multiples](2652.md) | 🟢 Easy | 41s | The problem requires calculating the sum of all integers from 1 up … |
 | 2653 | [Sliding Subarray Beauty](2653.md) | 🟡 Medium | 37s | The problem asks us to compute the beauty of every contiguous subar… |
-| 2654 | [Minimum Number of Operations to Make All Array Elements Equal to 1](2654.md) | 🟡 Medium | 45s | This problem asks us to transform a given array of positive integer… |
-| 2655 | [Find Maximal Uncovered Ranges](2655.md) | 🟡 Medium | 1m 14s | The problem gives us an array of length n, indexed from 0 to n - 1.… |
+| 2654 | [Minimum Number of Operations to Make All Array Elements Equal to 1](2654.md) | 🟡 Medium | 1m 31s | The problem gives us an array of positive integers, nums. In one op… |
+| 2655 | [Find Maximal Uncovered Ranges](2655.md) | 🟡 Medium | 1m 26s | The problem gives us an integer n, representing a conceptual array … |
 | 2656 | [Maximum Sum With Exactly K Elements ](2656.md) | 🟢 Easy | 1m 7s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2657 | [Find the Prefix Common Array of Two Arrays](2657.md) | 🟡 Medium | 48s | The problem provides two arrays, A and B, each a permutation of int… |
 | 2658 | [Maximum Number of Fish in a Grid](2658.md) | 🟡 Medium | 50s | The problem provides a 2D grid representing a map of land and water… |

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979"
-description: "IMO 1979 — 0/6 solved."
+description: "IMO 1979 — 1/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1979
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1979
 
-[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 1/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | ✓ verified | 10m50s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *✓ verified* · 10m50s · [Solution →](1.md)
 
 If $p$ and $q$ are natural numbers so that$$
 \frac{p}{q}=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+ \ldots -\frac{1}{1318}+\frac{1}{1319},
