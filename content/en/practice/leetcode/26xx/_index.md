@@ -59,3 +59,11 @@ draft: false
 | 2656 | [Maximum Sum With Exactly K Elements ](2656.md) | 🟢 Easy | 48s | This problem asks us to maximize a score by repeatedly selecting el… |
 | 2657 | [Find the Prefix Common Array of Two Arrays](2657.md) | 🟡 Medium | 45s | The problem asks us to compute a prefix common array C from two int… |
 | 2660 | [Determine the Winner of a Bowling Game](2660.md) | 🟢 Easy | 39s | The problem presents a variation of scoring in a bowling game. You … |
+| 2662 | [Minimum Cost of a Path With Special Roads](2662.md) | 🟡 Medium | 38s | The problem asks us to find the minimum cost to move from a startin… |
+| 2663 | [Lexicographically Smallest Beautiful String](2663.md) | 🔴 Hard | 38s | The problem asks us to generate the lexicographically smallest beau… |
+| 2664 | [The Knight\u2019s Tour](2664.md) | 🟡 Medium | 1m 22s | This problem asks us to construct a complete knight's tour on an m … |
+| 2665 | [Counter II](2665.md) | 🟢 Easy | 1m 10s | The problem concerns a fixed acute triangle . For a variable point … |
+| 2666 | [Allow One Function Call](2666.md) | 🟢 Easy | 1m 3s | The problem asks us to create a higher-order function. A higher-ord… |
+| 2670 | [Find the Distinct Difference Array](2670.md) | 🟢 Easy | 1m 14s | The problem gives us a 0-indexed integer array nums and asks us to … |
+| 2671 | [Frequency Tracker](2671.md) | 🟡 Medium | 1m 19s | The problem asks us to design a data structure that supports three … |
+| 2672 | [Number of Adjacent Elements With the Same Color](2672.md) | 🟡 Medium | 39s | The problem is asking us to maintain an array of length n where ini… |

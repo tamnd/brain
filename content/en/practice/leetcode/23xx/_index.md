@@ -99,11 +99,13 @@ draft: false
 | 2386 | [Find the K-Sum of an Array](2386.md) | 🔴 Hard | 27s | That is a long, structured reference document with multiple section… |
 | 2388 | [Change Null Values in a Table to the Previous Value](2388.md) | 🟡 Medium | 41s | The problem asks us to process a database table, CoffeeShop, which … |
 | 2389 | [Longest Subsequence With Limited Sum](2389.md) | 🟢 Easy | 42s | This problem asks us to determine, for each query, the maximum numb… |
-| 2391 | [Minimum Amount of Time to Collect Garbage](2391.md) | 🟡 Medium | 1m 22s | This problem models a city garbage collection system with three sep… |
-| 2392 | [Build a Matrix With Conditions](2392.md) | 🔴 Hard | 1m 1s | The problem asks us to construct a k x k matrix containing integers… |
-| 2393 | [Count Strictly Increasing Subarrays](2393.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums and asks us to count how… |
-| 2394 | [Employees With Deductions](2394.md) | 🟡 Medium | 2m 20s | In this problem, we are given two database tables, Employees and Lo… |
-| 2395 | [Find Subarrays With Equal Sum](2395.md) | 🟢 Easy | 1m 21s | The problem gives us a 0-indexed integer array nums and asks whethe… |
-| 2396 | [Strictly Palindromic Number](2396.md) | 🟡 Medium | 1m 31s | The problem asks us to determine whether a given integer n is stric… |
-| 2397 | [Maximum Rows Covered by Columns](2397.md) | 🟡 Medium | 1m 14s | This problem asks us to choose exactly numSelect columns from a bin… |
-| 2398 | [Maximum Number of Robots Within Budget](2398.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum number of consecutive … |
+| 2390 | [Removing Stars From a String](2390.md) | 🟡 Medium | 53s | This problem asks us to repeatedly process a string that contains l… |
+| 2391 | [Minimum Amount of Time to Collect Garbage](2391.md) | 🟡 Medium | 1m 20s | This problem models a garbage collection system with three separate… |
+| 2392 | [Build a Matrix With Conditions](2392.md) | 🔴 Hard | 43s | This guide is long enough that a complete, high quality response wi… |
+| 2393 | [Count Strictly Increasing Subarrays](2393.md) | 🟡 Medium | 46s | The problem asks us to count all strictly increasing subarrays in a… |
+| 2394 | [Employees With Deductions](2394.md) | 🟡 Medium | 56s | This problem asks us to identify employees whose monthly working ti… |
+| 2395 | [Find Subarrays With Equal Sum](2395.md) | 🟢 Easy | 33s | The problem asks us to determine whether there exist two contiguous… |
+| 2396 | [Strictly Palindromic Number](2396.md) | 🟡 Medium | 33s | The problem asks whether a given integer n is strictly palindromic.… |
+| 2397 | [Maximum Rows Covered by Columns](2397.md) | 🟡 Medium | 40s | This problem asks us to maximize the number of rows covered in a bi… |
+| 2398 | [Maximum Number of Robots Within Budget](2398.md) | 🔴 Hard | 44s | This problem asks us to determine the maximum number of consecutive… |
+| 2399 | [Check Distances Between Same Letters](2399.md) | 🟢 Easy | 1m 5s | This problem asks us to verify whether a string follows a very spec… |

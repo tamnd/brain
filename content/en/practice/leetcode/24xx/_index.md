@@ -10,11 +10,11 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 2400 | [Number of Ways to Reach a Position After Exactly k Steps](2400.md) | 🟡 Medium | 52s | The problem asks for the number of ways to move from a starting pos… |
-| 2401 | [Longest Nice Subarray](2401.md) | 🟡 Medium | 51s | This problem asks us to find the longest contiguous subarray of pos… |
-| 2402 | [Meeting Rooms III](2402.md) | 🔴 Hard | 1m 41s | In this problem, we manage a set of meeting rooms and simulate how … |
-| 2403 | [Minimum Time to Kill All Monsters](2403.md) | 🔴 Hard | 1m 26s | This problem asks us to determine the minimum number of days requir… |
-| 2404 | [Most Frequent Even Element](2404.md) | 🟢 Easy | 46s | This problem asks us to find the even number that appears most freq… |
+| 2400 | [Number of Ways to Reach a Position After Exactly k Steps](2400.md) | 🟡 Medium | 1m 18s | This problem asks us to count the number of distinct ways to move f… |
+| 2401 | [Longest Nice Subarray](2401.md) | 🟡 Medium | 1m 47s | The problem gives an array of positive integers and asks for the le… |
+| 2402 | [Meeting Rooms III](2402.md) | 🔴 Hard | 51s | The problem is about scheduling meetings into a fixed number of roo… |
+| 2403 | [Minimum Time to Kill All Monsters](2403.md) | 🔴 Hard | 54s | The problem is asking us to compute the minimum number of days requ… |
+| 2404 | [Most Frequent Even Element](2404.md) | 🟢 Easy | 36s | The problem asks us to identify the most frequent even number in an… |
 | 2406 | [Divide Intervals Into Minimum Number of Groups](2406.md) | 🟡 Medium | 1m 20s | The problem gives us a list of inclusive intervals, where each inte… |
 | 2407 | [Longest Increasing Subsequence II](2407.md) | 🔴 Hard | 47s | The problem asks us to find the longest strictly increasing subsequ… |
 | 2408 | [Design SQL](2408.md) | 🟡 Medium | 1m 23s | The problem asks us to design a very small in-memory SQL-like datab… |
