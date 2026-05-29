@@ -104,8 +104,9 @@ draft: false
 | 2491 | [Divide Players Into Teams of Equal Skill](2491.md) | 🟡 Medium | 1m 1s | This problem asks us to divide a given list of player skill levels … |
 | 2492 | [Minimum Score of a Path Between Two Cities](2492.md) | 🟡 Medium | 1m 19s | The problem asks us to find the minimum possible score of a path be… |
 | 2493 | [Divide Nodes Into the Maximum Number of Groups](2493.md) | 🔴 Hard | 6m 43s | We are given an undirected graph with n nodes and a list of edges. … |
-| 2494 | [Merge Overlapping Events in the Same Hall](2494.md) | 🔴 Hard | 1m 6s | This problem gives us a database table named HallEvents. Each row r… |
-| 2496 | [Maximum Value of a String in an Array](2496.md) | 🟢 Easy | 1m 1s | The problem gives us an array of alphanumeric strings called strs. … |
-| 2497 | [Maximum Star Sum of a Graph](2497.md) | 🟡 Medium | 1m 21s | The problem gives us an undirected graph with n nodes. Each node ha… |
-| 2498 | [Frog Jump II](2498.md) | 🟡 Medium | 50s | The problem presents a sequence of stones in a river represented by… |
+| 2494 | [Merge Overlapping Events in the Same Hall](2494.md) | 🔴 Hard | 2m 19s | The problem requires us to merge overlapping events in the same hal… |
+| 2495 | [Number of Subarrays Having Even Product](2495.md) | 🟡 Medium | 1m 7s | The problem gives us an integer array nums and asks us to count how… |
+| 2496 | [Maximum Value of a String in an Array](2496.md) | 🟢 Easy | 46s | This problem asks us to compute the maximum value of strings in an … |
+| 2497 | [Maximum Star Sum of a Graph](2497.md) | 🟡 Medium | 1m 43s | The problem gives us an undirected graph where each node has an ass… |
+| 2498 | [Frog Jump II](2498.md) | 🟡 Medium | 1m 23s | The problem gives us a sorted array stones, where each value repres… |
 | 2499 | [Minimum Total Cost to Make Arrays Unequal](2499.md) | 🔴 Hard | 6m 16s | We are given two arrays, nums1 and nums2, both of length n. We may … |

@@ -63,3 +63,11 @@ draft: false
 | 2762 | [Continuous Subarrays](2762.md) | 🟡 Medium | 1m 8s | The problem asks us to count how many contiguous subarrays satisfy … |
 | 2764 | [Is Array a Preorder of Some \u200cBinary Tree](2764.md) | 🟡 Medium | 1m 6s | This problem gives us a 2D array nodes, where each entry has the fo… |
 | 2765 | [Longest Alternating Subarray](2765.md) | 🟢 Easy | 1m 18s | The problem gives us a 0-indexed integer array nums, and asks us to… |
+| 2766 | [Relocate Marbles](2766.md) | 🟡 Medium | 52s | This problem involves simulating the relocation of marbles across i… |
+| 2767 | [Partition String Into Minimum Beautiful Substrings](2767.md) | 🟡 Medium | 2m 20s | The problem gives us a binary string s, and we must split it into o… |
+| 2768 | [Number of Black Blocks](2768.md) | 🟡 Medium | 43s | The problem asks us to analyze an m x n grid where some cells are c… |
+| 2771 | [Longest Non-decreasing Subarray From Two Arrays](2771.md) | 🟡 Medium | 2m 20s | The problem asks us to construct a new array nums3 by choosing, at … |
+| 2772 | [Apply Operations to Make All Array Elements Equal to Zero](2772.md) | 🟡 Medium | 1m 13s | We are given an array nums and an integer k. The only operation all… |
+| 2773 | [Height of Special Binary Tree](2773.md) | 🟡 Medium | 1m 17s | The problem gives us the root of a binary tree with a very unusual … |
+| 2775 | [Undefined to Null](2775.md) | 🟡 Medium | 44s | The problem requires transforming a nested JavaScript-style object … |
+| 2778 | [Sum of Squares of Special Elements ](2778.md) | 🟢 Easy | 38s | The problem provides a 1-indexed array nums of integers with length… |
