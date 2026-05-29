@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.1 — Algorithms"
-description: "Section 1.1 exercises — 6/9 solved."
+description: "Section 1.1 exercises — 7/9 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.1. Algorithms
 
-Exercises from [TAOCP Volume 1](../) Section 1.1: 6/9 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.1: 7/9 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -25,5 +25,5 @@ Exercises from [TAOCP Volume 1](../) Section 1.1: 6/9 solved.
 | [5](05.md) | &#9654; [*12*] | simple | solved | 42s |
 | 6 |  [*20*] | medium | - | - |
 | [7](07.md) | &#9654; [*M21*] | math-medium | solved | 43s |
-| 8 |  [*M25*] | math-medium | - | - |
+| [8](08.md) |  [*M25*] | math-medium | solved | 48s |
 | 9 | &#9654; [*M30*] | math-hard | - | - |
