@@ -27,3 +27,12 @@ draft: false
 | 2720 | [Popularity Percentage](2720.md) | 🔴 Hard | 1m 27s | The Friends table stores friendship relationships between users on … |
 | 2721 | [Execute Asynchronous Functions in Parallel](2721.md) | 🟡 Medium | 36s | The problem requires creating a utility function that executes mult… |
 | 2724 | [Sort By](2724.md) | 🟢 Easy | 1m 7s | The problem gives us two inputs: an array arr and a function fn. Ou… |
+| 2726 | [Calculator with Method Chaining](2726.md) | 🟢 Easy | 1m 7s | This problem asks us to design a class named Calculator that suppor… |
+| 2727 | [Is Object Empty](2727.md) | 🟢 Easy | 1m 2s | The problem asks us to determine whether a given JSON object or JSO… |
+| 2730 | [Find the Longest Semi-Repetitive Substring](2730.md) | 🟡 Medium | 1m 6s | The problem gives us a string s consisting only of digits ('0' thro… |
+| 2732 | [Find a Good Subset of the Matrix](2732.md) | 🔴 Hard | 46s | The problem asks us to find a good subset of rows from a binary mat… |
+| 2733 | [Neither Minimum nor Maximum](2733.md) | 🟢 Easy | 59s | The problem gives us an array of distinct positive integers and ask… |
+| 2734 | [Lexicographically Smallest String After Substring Operation](2734.md) | 🟡 Medium | 1m 25s | We are given a string s consisting only of lowercase English letter… |
+| 2735 | [Collecting Chocolates](2735.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums, where nums[i] represents the co… |
+| 2736 | [Maximum Sum Queries](2736.md) | 🔴 Hard | 1m 15s | We are given two arrays, nums1 and nums2, both of length n. Each in… |
+| 2737 | [Find the Closest Marked Node](2737.md) | 🟡 Medium | 34s | This problem asks us to compute the shortest distance from a given … |

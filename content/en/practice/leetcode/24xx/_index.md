@@ -72,18 +72,20 @@ draft: false
 | 2459 | [Sort Array by Moving Items to Empty Space](2459.md) | 🔴 Hard | 1m 29s | We are given a permutation of the integers from 0 to n - 1. Every n… |
 | 2460 | [Apply Operations to an Array](2460.md) | 🟢 Easy | 1m 13s | The problem gives us a 0-indexed integer array nums containing non-… |
 | 2461 | [Maximum Sum of Distinct Subarrays With Length K](2461.md) | 🟡 Medium | 1m 14s | That prompt contains two different LeetCode problems merged togethe… |
-| 2462 | [Total Cost to Hire K Workers](2462.md) | 🟡 Medium | 44s | We are asked to simulate a hiring process for k workers from an arr… |
-| 2463 | [Minimum Total Distance Traveled](2463.md) | 🔴 Hard | 1m 48s | This problem asks us to assign robots to factories in a way that mi… |
-| 2464 | [Minimum Subarrays in a Valid Split](2464.md) | 🟡 Medium | 1m 19s | The problem asks us to split the array into the minimum possible nu… |
-| 2465 | [Number of Distinct Averages](2465.md) | 🟢 Easy | 1m 18s | The problem asks us to repeatedly remove the smallest and largest e… |
+| 2462 | [Total Cost to Hire K Workers](2462.md) | 🟡 Medium | 1m 12s | The problem asks us to simulate a process of hiring k workers from … |
+| 2463 | [Minimum Total Distance Traveled](2463.md) | 🔴 Hard | 57s | Here is a comprehensive, reference-quality solution guide for LeetC… |
+| 2464 | [Minimum Subarrays in a Valid Split](2464.md) | 🟡 Medium | 50s | The problem asks us to split an array of integers nums into contigu… |
+| 2465 | [Number of Distinct Averages](2465.md) | 🟢 Easy | 41s | The problem requires calculating the number of distinct averages ge… |
 | 2466 | [Count Ways To Build Good Strings](2466.md) | 🟡 Medium | 2m 23s | The problem asks us to count the number of "good" strings that can … |
-| 2467 | [Most Profitable Path in a Tree](2467.md) | 🟡 Medium | 1m 24s | The problem gives us an undirected tree with n nodes rooted at node… |
-| 2468 | [Split Message Based on Limit](2468.md) | 🔴 Hard | 51s | This problem requires splitting a given string message into multipl… |
-| 2469 | [Convert the Temperature](2469.md) | 🟢 Easy | 2m 19s | The problem gives us a single floating point number, celsius, repre… |
-| 2471 | [Minimum Number of Operations to Sort a Binary Tree by Level](2471.md) | 🟡 Medium | 2m 22s | The problem requires us to sort each level of a binary tree in stri… |
-| 2472 | [Maximum Number of Non-overlapping Palindrome Substrings](2472.md) | 🔴 Hard | 3m 16s | The problem asks us to find the maximum number of non-overlapping p… |
-| 2473 | [Minimum Cost to Buy Apples](2473.md) | 🟡 Medium | 42s | This problem involves a weighted undirected graph where nodes repre… |
-| 2474 | [Customers With Strictly Increasing Purchases](2474.md) | 🔴 Hard | 51s | This problem requires identifying customers whose total annual purc… |
+| 2467 | [Most Profitable Path in a Tree](2467.md) | 🟡 Medium | 37s | The problem presents a rooted tree with n nodes numbered from 0 to … |
+| 2468 | [Split Message Based on Limit](2468.md) | 🔴 Hard | 1m 18s | This problem asks us to divide a message into multiple parts while … |
+| 2469 | [Convert the Temperature](2469.md) | 🟢 Easy | 55s | The problem gives us a single floating point value named celsius, r… |
+| 2470 | [Number of Subarrays With LCM Equal to K](2470.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2471 | [Minimum Number of Operations to Sort a Binary Tree by Level](2471.md) | 🟡 Medium | 46s | The problem asks us to determine the minimum number of swap operati… |
+| 2472 | [Maximum Number of Non-overlapping Palindrome Substrings](2472.md) | 🔴 Hard | 48s | The problem asks us to find the maximum number of non-overlapping p… |
+| 2473 | [Minimum Cost to Buy Apples](2473.md) | 🟡 Medium | 41s | The problem asks us to determine the minimum cost to buy exactly on… |
+| 2474 | [Customers With Strictly Increasing Purchases](2474.md) | 🔴 Hard | 1m 28s | The problem gives us an Orders table where each row represents a pu… |
+| 2475 | [Number of Unequal Triplets in Array](2475.md) | 🟢 Easy | 1m 15s | The problem gives us a 0-indexed integer array nums, and we must co… |
 | 2476 | [Closest Nodes Queries in a Binary Search Tree](2476.md) | 🟡 Medium | 2m 2s | This problem asks us to find, for a given list of queries, the clos… |
 | 2477 | [Minimum Fuel Cost to Report to the Capital](2477.md) | 🟡 Medium | 1m 19s | This problem describes a country road network that forms a tree. A … |
 | 2478 | [Number of Beautiful Partitions](2478.md) | 🔴 Hard | 2m 20s | The problem gives us a string s containing only digits from '1' to … |
