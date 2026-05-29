@@ -60,14 +60,14 @@ draft: false
 | 2648 | [Generate Fibonacci Sequence](2648.md) | 🟢 Easy | 35s | The problem asks us to implement a generator function that yields n… |
 | 2649 | [Nested Array Generator](2649.md) | 🟡 Medium | 1m 1s | This problem asks us to implement a generator that traverses a mult… |
 | 2650 | [Design Cancellable Function](2650.md) | 🔴 Hard | 43s | The problem asks us to implement a mechanism to run a generator tha… |
-| 2651 | [Calculate Delayed Arrival Time](2651.md) | 🟢 Easy | 38s | This problem asks us to compute the arrival time of a train after i… |
-| 2652 | [Sum Multiples](2652.md) | 🟢 Easy | 58s | The problem asks us to examine every integer in the inclusive range… |
-| 2653 | [Sliding Subarray Beauty](2653.md) | 🟡 Medium | 1m 7s | The problem asks us to process every contiguous subarray of length … |
+| 2651 | [Calculate Delayed Arrival Time](2651.md) | 🟢 Easy | 35s | The problem asks us to calculate the arrival time of a train given … |
+| 2652 | [Sum Multiples](2652.md) | 🟢 Easy | 41s | The problem requires calculating the sum of all integers from 1 up … |
+| 2653 | [Sliding Subarray Beauty](2653.md) | 🟡 Medium | 37s | The problem asks us to compute the beauty of every contiguous subar… |
 | 2654 | [Minimum Number of Operations to Make All Array Elements Equal to 1](2654.md) | 🟡 Medium | 45s | This problem asks us to transform a given array of positive integer… |
 | 2655 | [Find Maximal Uncovered Ranges](2655.md) | 🟡 Medium | 1m 14s | The problem gives us an array of length n, indexed from 0 to n - 1.… |
-| 2656 | [Maximum Sum With Exactly K Elements ](2656.md) | 🟢 Easy | 48s | This problem asks us to maximize a score by repeatedly selecting el… |
-| 2657 | [Find the Prefix Common Array of Two Arrays](2657.md) | 🟡 Medium | 45s | The problem asks us to compute a prefix common array C from two int… |
-| 2658 | [Maximum Number of Fish in a Grid](2658.md) | 🟡 Medium | 1m 15s | The problem gives us a 2D grid where each cell represents either la… |
+| 2656 | [Maximum Sum With Exactly K Elements ](2656.md) | 🟢 Easy | 1m 7s | The problem gives us an integer array nums and an integer k. We mus… |
+| 2657 | [Find the Prefix Common Array of Two Arrays](2657.md) | 🟡 Medium | 48s | The problem provides two arrays, A and B, each a permutation of int… |
+| 2658 | [Maximum Number of Fish in a Grid](2658.md) | 🟡 Medium | 50s | The problem provides a 2D grid representing a map of land and water… |
 | 2659 | [Make Array Empty](2659.md) | 🔴 Hard | 44s | The problem asks us to count the number of operations required to e… |
 | 2660 | [Determine the Winner of a Bowling Game](2660.md) | 🟢 Easy | 39s | The problem presents a variation of scoring in a bowling game. You … |
 | 2661 | [First Completely Painted Row or Column](2661.md) | 🟡 Medium | 1m 11s | The problem gives us two inputs: 1. An array arr of length m n 2. A… |

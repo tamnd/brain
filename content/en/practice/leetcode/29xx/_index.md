@@ -57,5 +57,7 @@ draft: false
 | 2948 | [Make Lexicographically Smallest Array by Swapping Elements](2948.md) | 🟡 Medium | 36s | The problem asks us to rearrange a given array nums of positive int… |
 | 2949 | [Count Beautiful Substrings II](2949.md) | 🔴 Hard | 53s | The problem requires counting the number of non-empty beautiful sub… |
 | 2950 | [Number of Divisible Substrings](2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
+| 2951 | [Find the Peaks](2951.md) | 🟢 Easy | 40s | The problem is asking us to identify all the peaks in a given array… |
+| 2953 | [Count Complete Substrings](2953.md) | 🔴 Hard | 50s | Here’s a full, detailed technical solution guide for LeetCode 2953 … |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |
