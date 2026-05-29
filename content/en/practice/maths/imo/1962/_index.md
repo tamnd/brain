@@ -1,6 +1,6 @@
 ---
 title: "IMO 1962"
-description: "IMO 1962 — 3/7 solved, 3 verified."
+description: "IMO 1962 — 4/7 solved, 4 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1962
@@ -10,14 +10,14 @@ draft: false
 
 # IMO 1962
 
-[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 3/7 solved, 3 verified.
+[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 4/7 solved, 4 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 7m17s |
 | [2](2.md) | ✓ verified | 25m30s |
 | [3](3.md) | ✓ verified | 2m18s |
-| 4 | — | — |
+| [4](4.md) | ✓ verified | 21m14s |
 | 5 | — | — |
 | 6 | — | — |
 | 7 | — | — |
@@ -39,7 +39,7 @@ $$\sqrt{3-x} - \sqrt{x+1} > \frac{1}{2}.$$
 
 A cube $ABCDA'B'C'D'$ is given. Point $X$ moves at constant speed along the square $ABCD$ in the direction $A \to B$; point $Y$ moves at the same speed along the square $BCC'B'$ in the direction $B' \to C'$. Initially $X = A$ and $Y = B'$. Find the locus of all midpoints of $XY$.
 
-**Problem 4**
+**Problem 4** &nbsp; *✓ verified* · 21m14s · [Solution →](4.md)
 
 Solve the equation $\cos^2 x + \cos^2 2x + \cos^2 3x = 1$.
 
