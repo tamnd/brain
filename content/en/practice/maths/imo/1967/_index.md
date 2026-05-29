@@ -12,7 +12,18 @@ draft: false
 
 [Official IMO 1967 problems](https://www.imo-official.org/year_info.aspx?year=1967) &nbsp;·&nbsp; 0/6 solved.
 
-## Problem 1
+| # | Status | Time |
+|---|--------|------|
+| 1 | — | — |
+| 2 | — | — |
+| 3 | — | — |
+| 4 | — | — |
+| 5 | — | — |
+| 6 | — | — |
+
+---
+
+**Problem 1**
 
 Let $ABCD$ be a parallelogram with side lengths $AB = a$, $AD = 1$, and with $\angle BAD = \alpha$. If $\triangle ABD$ is acute, prove that the four circles of radius $1$ with centers $A$, $B$, $C$, $D$ cover the parallelogram if and only if $$
 a\leq \cos \alpha + \sqrt{3} \sin \alpha .
@@ -20,13 +31,13 @@ $$
 
 ---
 
-## Problem 2
+**Problem 2**
 
 Prove that if one and only one edge of a tetrahedron is greater than $1$, then its volume is $\leq 1/8$.
 
 ---
 
-## Problem 3
+**Problem 3**
 
 Let $k$, $m$, $n$ be natural numbers such that $m + k + 1$ is a prime greater than $n + 1$. Let $c_s = s(s + 1)$. Prove that the product $$
 (c_{m+1} - c_k)(c_{m+2}- c_k)\cdots (c_{m+n}- c_k)
@@ -34,13 +45,13 @@ $$ is divisible by the product $c_1 c_2\cdots c_n$.
 
 ---
 
-## Problem 4
+**Problem 4**
 
 Let $A_0 B_0 C_0$ and $A_1 B_1 C_1$ be any two acute-angled triangles. Consider all triangles $ABC$ that are similar to $\triangle A_1 B_1 C_1$ (so that vertices $A_1$, $B_1$, $C_1$ correspond to vertices $A$, $B$, $C$, respectively) and circumscribed about triangle $A_0 B_0 C_0$ (where $A_0$ lies on $BC$, $B_0$ on $CA$, and $C_0$ on $AB$). Of all such possible triangles, determine the one with maximum area, and construct it.
 
 ---
 
-## Problem 5
+**Problem 5**
 
 Consider the sequence $\{ c_n \}$, where $$
 c_1 = a_1 + a_2 + \cdots + a_8
@@ -56,7 +67,6 @@ $$ in which $a_1$, $a_2$, $\cdots$, $a_8$ are real numbers not all equal to zero
 
 ---
 
-## Problem 6
+**Problem 6**
 
 In a sports contest, there were $m$ medals awarded on $n$ successive days ($n>1$). On the first day, one medal and $1/7$ of the remaining $m - 1$ medals were awarded. On the second day, two medals and $1/7$ of the now remaining medals were awarded; and so on. On the $n$-th and last day, the remaining $n$ medals were awarded. How many days did the contest last, and how many medals were awarded altogether?
-

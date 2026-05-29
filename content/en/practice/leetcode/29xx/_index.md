@@ -65,13 +65,17 @@ draft: false
 | 2957 | [Remove Adjacent Almost-Equal Characters](2957.md) | 🟡 Medium | 1m 7s | The problem asks us to transform a string so that no two adjacent c… |
 | 2958 | [Length of Longest Subarray With at Most K Frequency](2958.md) | 🟡 Medium | 48s | The problem asks us to find the length of the longest contiguous su… |
 | 2959 | [Number of Possible Sets of Closing Branches](2959.md) | 🔴 Hard | 1m 20s | This problem asks us to count how many different subsets of branche… |
+| 2961 | [Double Modular Exponentiation](2961.md) | 🟡 Medium | 1m 18s | The problem gives us a list called variables, where each element co… |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
 | 2964 | [Number of Divisible Triplet Sums](2964.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums and another integer d. W… |
 | 2965 | [Find Missing and Repeated Values](2965.md) | 🟢 Easy | 1m 3s | The problem gives us an n x n matrix called grid. Every value in th… |
+| 2967 | [Minimum Cost to Make Array Equalindromic](2967.md) | 🟡 Medium | 3m 29s | The problem gives us an integer array nums, and we want to transfor… |
 | 2968 | [Apply Operations to Maximize Frequency Score](2968.md) | 🔴 Hard | 1m 16s | The problem gives us an integer array nums and a budget k. Each ope… |
+| 2970 | [Count the Number of Incremovable Subarrays I](2970.md) | 🟢 Easy | 53s | The problem asks us to count all incremovable subarrays of a given … |
 | 2971 | [Find Polygon With the Largest Perimeter](2971.md) | 🟡 Medium | 1m 16s | The problem gives us an array nums, where each value represents a p… |
 | 2973 | [Find Number of Coins to Place in Tree Nodes](2973.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes, rooted at node 0. Eve… |
 | 2974 | [Minimum Number Game](2974.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums with an even number of e… |
+| 2975 | [Maximum Square Area by Removing Fences From a Field](2975.md) | 🟡 Medium | 1m 21s | The field is represented as a large rectangle whose outer boundarie… |
 | 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 1m 37s | This problem asks us to transform one string into another while min… |
 | 2978 | [Symmetric Coordinates](2978.md) | 🟡 Medium | 51s | The problem asks us to identify symmetric coordinates from a table … |
 | 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 45s | This problem is asking us to determine the largest price of an item… |

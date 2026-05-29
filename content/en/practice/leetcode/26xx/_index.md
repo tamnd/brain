@@ -94,12 +94,14 @@ draft: false
 | 2682 | [Find the Losers of the Circular Game](2682.md) | 🟢 Easy | 46s | The problem describes a game played by n friends sitting in a circl… |
 | 2683 | [Neighboring Bitwise XOR](2683.md) | 🟡 Medium | 40s | The problem presents us with a binary array called derived of lengt… |
 | 2684 | [Maximum Number of Moves in a Grid](2684.md) | 🟡 Medium | 1m 14s | This problem gives us a 2D grid of positive integers. We may start … |
-| 2685 | [Count the Number of Complete Components](2685.md) | 🟡 Medium | 1m 9s | This problem gives us an undirected graph with n vertices labeled f… |
+| 2685 | [Count the Number of Complete Components](2685.md) | 🟡 Medium | 1m 13s | This problem asks us to count how many connected components in an u… |
+| 2686 | [Immediate Food Delivery III](2686.md) | 🟡 Medium | 1m 7s | This problem asks us to calculate the percentage of immediate food … |
 | 2687 | [Bikes Last Time Used ](2687.md) | 🟢 Easy | 42s | The problem requires us to identify the last time each bike was use… |
-| 2689 | [Extract Kth Character From The Rope Tree](2689.md) | 🟢 Easy | 1m 39s | The problem gives us a special binary tree called a Rope Tree. Inst… |
-| 2690 | [Infinite Method Object](2690.md) | 🟢 Easy | 39s | This problem asks us to create an infinite-method object, meaning a… |
+| 2689 | [Extract Kth Character From The Rope Tree](2689.md) | 🟢 Easy | 1m 31s | Edit This problem asks us to retrieve the k-th character from a str… |
+| 2690 | [Infinite Method Object](2690.md) | 🟢 Easy | 51s | This problem asks us to implement a function that returns an infini… |
+| 2691 | [Immutability Helper](2691.md) | 🔴 Hard | 48s | This problem is asking us to implement an immutability helper for J… |
 | 2692 | [Make Object Immutable](2692.md) | 🟡 Medium | 43s | The problem asks us to take an input object, which can either be a … |
-| 2693 | [Call Function with Custom Context](2693.md) | 🟡 Medium | 1m 2s | This problem asks us to implement a custom version of JavaScript's … |
+| 2693 | [Call Function with Custom Context](2693.md) | 🟡 Medium | 53s | This problem asks us to implement a custom version of JavaScript’s … |
 | 2694 | [Event Emitter](2694.md) | 🟡 Medium | 1m 25s | This problem asks us to design a lightweight event system, similar … |
 | 2695 | [Array Wrapper](2695.md) | 🟢 Easy | 46s | This problem requires us to create a class ArrayWrapper that wraps … |
 | 2696 | [Minimum String Length After Removing Substrings](2696.md) | 🟢 Easy | 1m 11s | The problem gives us a string s that contains only uppercase Englis… |
