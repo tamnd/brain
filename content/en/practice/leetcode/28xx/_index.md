@@ -30,17 +30,17 @@ draft: false
 | 2817 | [Minimum Absolute Difference Between Elements With Constraint](2817.md) | 🟡 Medium | 1m 32s | We are given an integer array nums and an integer x. We need to fin… |
 | 2818 | [Apply Operations to Maximize Score](2818.md) | 🔴 Hard | 1m 38s | The problem gives us an array nums and an integer k. We begin with … |
 | 2819 | [Minimum Relative Loss After Buying Chocolates](2819.md) | 🔴 Hard | 1m 50s | We are given an array prices, where each value represents the price… |
-| 2820 | [Election Results](2820.md) | 🟡 Medium | 55s | The problem is asking us to calculate the winner of an election giv… |
-| 2821 | [Delay the Resolution of Each Promise](2821.md) | 🟡 Medium | 1m 43s | The problem requires creating a wrapper around an array of asynchro… |
-| 2822 | [Inversion of Object](2822.md) | 🟢 Easy | 3m 7s | The problem asks us to "invert" an object or array. In practical te… |
-| 2823 | [Deep Object Filter](2823.md) | 🟡 Medium | 5m 34s | The problem is asking us to implement a function deepFilter that re… |
-| 2824 | [Count Pairs Whose Sum is Less than Target](2824.md) | 🟢 Easy | 1m 18s | The problem gives us an integer array nums and an integer target. W… |
-| 2825 | [Make String a Subsequence Using Cyclic Increments](2825.md) | 🟡 Medium | 1m 13s | This problem asks whether we can transform str1 in such a way that … |
-| 2826 | [Sorting Three Groups](2826.md) | 🟡 Medium | 1m 4s | We are given an array nums where every element is either 1, 2, or 3… |
-| 2827 | [Number of Beautiful Integers in the Range](2827.md) | 🔴 Hard | 1m 21s | The problem asks us to count how many integers in the inclusive ran… |
-| 2828 | [Check if a String Is an Acronym of Words](2828.md) | 🟢 Easy | 1m 59s | The problem gives us two inputs: - An array of strings called words… |
+| 2820 | [Election Results](2820.md) | 🟡 Medium | 1m 52s | The Votes table records every voter-candidate selection. A voter ma… |
+| 2821 | [Delay the Resolution of Each Promise](2821.md) | 🟡 Medium | 1m 17s | The problem asks us to take an array of functions, each returning a… |
+| 2822 | [Inversion of Object](2822.md) | 🟢 Easy | 1m 23s | This problem asks us to invert the relationship between keys and va… |
+| 2823 | [Deep Object Filter](2823.md) | 🟡 Medium | 1m 31s | This problem asks us to recursively filter a JSON-like structure th… |
+| 2824 | [Count Pairs Whose Sum is Less than Target](2824.md) | 🟢 Easy | 1m 7s | This problem asks us to count the number of unique pairs of indices… |
+| 2825 | [Make String a Subsequence Using Cyclic Increments](2825.md) | 🟡 Medium | 1m 20s | The problem gives us two lowercase strings, str1 and str2. We are a… |
+| 2826 | [Sorting Three Groups](2826.md) | 🟡 Medium | 1m 11s | We are given an array nums where every element is either 1, 2, or 3… |
+| 2827 | [Number of Beautiful Integers in the Range](2827.md) | 🔴 Hard | 1m 29s | The problem asks us to count how many integers within the inclusive… |
+| 2828 | [Check if a String Is an Acronym of Words](2828.md) | 🟢 Easy | 1m 26s | This problem asks us to determine whether a given string s is exact… |
 | 2829 | [Determine the Minimum Sum of a k-avoiding Array](2829.md) | 🟡 Medium | 4m 5s | The problem asks us to construct an array of n distinct positive in… |
-| 2830 | [Maximize the Profit as the Salesman](2830.md) | 🟡 Medium | 2m 48s | The problem gives us n houses arranged on a number line, numbered f… |
+| 2830 | [Maximize the Profit as the Salesman](2830.md) | 🟡 Medium | 1m 38s | This problem gives us n houses arranged on a number line and a coll… |
 | 2831 | [Find the Longest Equal Subarray](2831.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and an integer k. We are… |
 | 2832 | [Maximal Range That Each Element Is Maximum in It](2832.md) | 🟡 Medium | 1m 20s | The problem gives us an array nums containing distinct integers. Fo… |
 | 2833 | [Furthest Point From Origin](2833.md) | 🟢 Easy | 1m 3s | The problem gives us a string called moves, where each character re… |
