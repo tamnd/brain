@@ -4,6 +4,7 @@ description: "Codeforces problem solutions with full editorial. 291 contests, 12
 description: "Codeforces problem solutions with full editorial. 304 contests, 1282 problems, 1029 verified."
 description: "Codeforces problem solutions with full editorial. 305 contests, 1283 problems, 1029 verified."
 description: "Codeforces problem solutions with full editorial. 306 contests, 1287 problems, 1030 verified."
+description: "Codeforces problem solutions with full editorial. 307 contests, 1292 problems, 1034 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -18,6 +19,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **304 contests, 1282 problems, 1029 verified.**
 **305 contests, 1283 problems, 1029 verified.**
 **306 contests, 1287 problems, 1030 verified.**
+**307 contests, 1292 problems, 1034 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -356,4 +358,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [409](409/) | [April Fools Day Contest 2014](https://codeforces.com/contest/409) | April Fools | 1500-2200 | 0/6 | 15m 44s |
 | [411](411/) | [Coder-Strike 2014 - Qualification Round](https://codeforces.com/contest/411) | Special | 1700-1700 | 0/1 | 11m 4s |
 | [412](412/) | [Coder-Strike 2014 - Round 1](https://codeforces.com/contest/412) | Special | 900-2000 | 1/4 | 8m 35s |
+| [413](413/) | [Coder-Strike 2014 - Round 2](https://codeforces.com/contest/413) | Special | 1200-2200 | 4/5 | 9m 37s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
