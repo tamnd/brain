@@ -88,9 +88,9 @@ draft: false
 | 2475 | [Number of Unequal Triplets in Array](2475.md) | 🟢 Easy | 1m 15s | The problem gives us a 0-indexed integer array nums, and we must co… |
 | 2476 | [Closest Nodes Queries in a Binary Search Tree](2476.md) | 🟡 Medium | 1m 23s | The problem gives us the root of a binary search tree, abbreviated … |
 | 2477 | [Minimum Fuel Cost to Report to the Capital](2477.md) | 🟡 Medium | 1m 24s | The problem gives us a country road network that forms a tree. A tr… |
-| 2478 | [Number of Beautiful Partitions](2478.md) | 🔴 Hard | 2m 20s | The problem gives us a string s containing only digits from '1' to … |
-| 2479 | [Maximum XOR of Two Non-Overlapping Subtrees](2479.md) | 🔴 Hard | 1m 53s | We are given a rooted tree with n nodes. The tree is rooted at node… |
-| 2480 | [Form a Chemical Bond](2480.md) | 🟢 Easy | 1m 5s | The problem gives us a database table named Elements, where each ro… |
+| 2478 | [Number of Beautiful Partitions](2478.md) | 🔴 Hard | 3m 32s | The problem asks us to count the number of ways to split a given st… |
+| 2479 | [Maximum XOR of Two Non-Overlapping Subtrees](2479.md) | 🔴 Hard | 4m 15s | This problem gives us a rooted tree with n nodes, rooted at node 0.… |
+| 2480 | [Form a Chemical Bond](2480.md) | 🟢 Easy | 49s | The problem asks us to identify all valid chemical bonds that can f… |
 | 2481 | [Minimum Cuts to Divide a Circle](2481.md) | 🟢 Easy | 43s | The problem asks for the minimum number of straight cuts required t… |
 | 2482 | [Difference Between Ones and Zeros in Row and Column](2482.md) | 🟡 Medium | 1m 18s | The problem gives us a binary matrix grid with m rows and n columns… |
 | 2483 | [Minimum Penalty for a Shop](2483.md) | 🟡 Medium | 46s | The problem asks us to determine the optimal hour to close a shop t… |
@@ -99,7 +99,7 @@ draft: false
 | 2486 | [Append Characters to String to Make Subsequence](2486.md) | 🟡 Medium | 51s | The problem asks us to determine the minimum number of characters t… |
 | 2487 | [Remove Nodes From Linked List](2487.md) | 🟡 Medium | 1m 27s | The problem gives us the head of a singly linked list and asks us t… |
 | 2488 | [Count Subarrays With Median K](2488.md) | 🔴 Hard | 1m 45s | This problem asks us to count how many contiguous subarrays have a … |
-| 2489 | [Number of Substrings With Fixed Ratio](2489.md) | 🟡 Medium | 1m 16s | We are given a binary string s consisting only of '0' and '1', alon… |
+| 2489 | [Number of Substrings With Fixed Ratio](2489.md) | 🟡 Medium | 1m 17s | The problem gives us a binary string s, along with two coprime inte… |
 | 2490 | [Circular Sentence](2490.md) | 🟢 Easy | 40s | The problem asks us to determine whether a given sentence is circul… |
 | 2491 | [Divide Players Into Teams of Equal Skill](2491.md) | 🟡 Medium | 1m 1s | This problem asks us to divide a given list of player skill levels … |
 | 2492 | [Minimum Score of a Path Between Two Cities](2492.md) | 🟡 Medium | 1m 19s | The problem asks us to find the minimum possible score of a path be… |

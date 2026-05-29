@@ -69,3 +69,9 @@ draft: false
 | 3363 | [Find the Maximum Number of Fruits Collected](3363.md) | 🔴 Hard | 45s | This problem asks us to maximize the total number of fruits collect… |
 | 3365 | [Rearrange K Substrings to Form Target String](3365.md) | 🟡 Medium | 2m 5s | This problem asks whether it is possible to rearrange k contiguous … |
 | 3367 | [Maximize Sum of Weights after Edge Removals](3367.md) | 🔴 Hard | 1m 46s | We are given an undirected weighted tree with n nodes and n - 1 edg… |
+| 3368 | [First Letter Capitalization](3368.md) | 🔴 Hard | 4m 28s | This problem provides a database table named usercontent with two c… |
+| 3369 | [Design an Array Statistics Tracker ](3369.md) | 🔴 Hard | 1m 47s | The problem asks us to design a data structure that supports a stre… |
+| 3370 | [Smallest Number With All Set Bits](3370.md) | 🟢 Easy | 1m 1s | The problem asks us to find the smallest integer x such that: 1. x … |
+| 3371 | [Identify the Largest Outlier in an Array](3371.md) | 🟡 Medium | 1m 23s | The problem gives us an integer array nums containing exactly three… |
+| 3373 | [Maximize the Number of Target Nodes After Connecting Trees II](3373.md) | 🔴 Hard | 1m 43s | The problem gives us two separate undirected trees. The first tree … |
+| 3374 | [First Letter Capitalization II](3374.md) | 🔴 Hard | 1m 18s | This problem asks us to transform text stored in a database table w… |
