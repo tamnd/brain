@@ -1,6 +1,6 @@
 ---
 title: "IMO 1961"
-description: "IMO 1961 — 4/6 solved, 3 verified."
+description: "IMO 1961 — 5/6 solved, 4 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1961
@@ -10,14 +10,14 @@ draft: false
 
 # IMO 1961
 
-[Official IMO 1961 problems](https://www.imo-official.org/year_info.aspx?year=1961) &nbsp;·&nbsp; 4/6 solved, 3 verified.
+[Official IMO 1961 problems](https://www.imo-official.org/year_info.aspx?year=1961) &nbsp;·&nbsp; 5/6 solved, 4 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 4m48s |
 | [2](2.md) | ✓ verified | 11m24s |
 | [3](3.md) | solved | 39m28s |
-| 4 | — | — |
+| [4](4.md) | ✓ verified | 19m03s |
 | 5 | — | — |
 | [6](6.md) | ✓ verified | 3m04s |
 
@@ -45,7 +45,7 @@ $\cos^n{x} - \sin^n{x} = 1$
 
 where *n* is a given positive integer.
 
-**Problem 4**
+**Problem 4** &nbsp; *✓ verified* · 19m03s · [Solution →](4.md)
 
 In the interior of [triangle](/wiki/index.php?title=Triangle "Triangle") $P_1 P_2 P_3$ a [point](/wiki/index.php?title=Point "Point") *P* is given. Let $Q_1,Q_2,Q_3$ be the [intersections](/wiki/index.php?title=Intersection "Intersection") of $PP_1, PP_2,PP_3$ with the opposing [edges](/wiki/index.php?title=Edge "Edge") of triangle $ABC$. Prove that among the [ratios](/wiki/index.php?title=Ratio "Ratio") $\frac{PP_1}{PQ_1},\frac{PP_2}{PQ_2},\frac{PP_3}{PQ_3}$ there exists one not larger than 2 and one not smaller than 2.
 
