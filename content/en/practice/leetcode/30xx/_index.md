@@ -14,6 +14,7 @@ draft: false
 | 3001 | [Minimum Moves to Capture The Queen](3001.md) | 🟡 Medium | 1m 11s | This problem gives us the positions of three chess pieces on a stan… |
 | 3002 | [Maximum Size of a Set After Removals](3002.md) | 🟡 Medium | 57s | The problem is asking us to maximize the number of unique elements … |
 | 3003 | [Maximize the Number of Partitions After Operations](3003.md) | 🔴 Hard | 1m 9s | The problem asks us to take a string s and an integer k and compute… |
+| 3004 | [Maximum Subtree of the Same Color](3004.md) | 🟡 Medium | 1m 26s | We are given a tree with n nodes labeled from 0 to n - 1. The tree … |
 | 3005 | [Count Elements With Maximum Frequency](3005.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, where every value is po… |
 | 3006 | [Find Beautiful Indices in the Given Array I](3006.md) | 🟡 Medium | 1m 16s | The problem gives us a string s and two smaller strings, a and b. W… |
 | 3007 | [Maximum Number That Sum of the Prices Is Less Than or Equal to K](3007.md) | 🟡 Medium | 56s | The problem asks us to find the largest integer num such that the a… |
