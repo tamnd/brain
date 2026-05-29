@@ -90,3 +90,5 @@ draft: false
 | 3193 | [Count the Number of Inversions](3193.md) | 🔴 Hard | 1m 33s | The problem asks us to count how many permutations of the numbers [… |
 | 3194 | [Minimum Average of Smallest and Largest Elements](3194.md) | 🟢 Easy | 1m 3s | The problem gives us an even-length integer array nums. We repeated… |
 | 3195 | [Find the Minimum Area to Cover All Ones I](3195.md) | 🟡 Medium | 58s | The problem asks us to find the smallest rectangle that covers all … |
+| 3196 | [Maximize Total Cost of Alternating Subarrays](3196.md) | 🟡 Medium | 3m 29s | The problem gives us an integer array nums, and we must divide the … |
+| 3198 | [Find Cities in Each State](3198.md) | 🟢 Easy | 1m 31s | This problem provides a database table named cities, where each row… |

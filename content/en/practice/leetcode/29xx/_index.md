@@ -70,12 +70,14 @@ draft: false
 | 2958 | [Length of Longest Subarray With at Most K Frequency](2958.md) | 🟡 Medium | 48s | The problem asks us to find the length of the longest contiguous su… |
 | 2959 | [Number of Possible Sets of Closing Branches](2959.md) | 🔴 Hard | 59s | This problem asks us to determine the number of possible sets of br… |
 | 2960 | [Count Tested Devices After Test Operations](2960.md) | 🟢 Easy | 52s | This problem asks us to simulate a sequence of device tests based o… |
-| 2961 | [Double Modular Exponentiation](2961.md) | 🟡 Medium | 1m 18s | The problem gives us a list called variables, where each element co… |
+| 2961 | [Double Modular Exponentiation](2961.md) | 🟡 Medium | 1m 7s | The problem gives us a 0-indexed 2D array called variables, where e… |
+| 2962 | [Count Subarrays Where Max Element Appears at Least K Times](2962.md) | 🟡 Medium | 57s | The problem asks us to count subarrays in an integer array nums whe… |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
-| 2964 | [Number of Divisible Triplet Sums](2964.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums and another integer d. W… |
+| 2964 | [Number of Divisible Triplet Sums](2964.md) | 🟡 Medium | 1m 17s | The problem gives us an integer array nums and an integer d. We mus… |
 | 2965 | [Find Missing and Repeated Values](2965.md) | 🟢 Easy | 1m 3s | The problem gives us an n x n matrix called grid. Every value in th… |
-| 2967 | [Minimum Cost to Make Array Equalindromic](2967.md) | 🟡 Medium | 3m 29s | The problem gives us an integer array nums, and we want to transfor… |
-| 2968 | [Apply Operations to Maximize Frequency Score](2968.md) | 🔴 Hard | 1m 16s | The problem gives us an integer array nums and a budget k. Each ope… |
+| 2966 | [Divide Array Into Arrays With Max Difference](2966.md) | 🟡 Medium | 55s | The problem asks us to divide an integer array nums of size n (wher… |
+| 2967 | [Minimum Cost to Make Array Equalindromic](2967.md) | 🟡 Medium | 1m 45s | We are given an integer array nums. We may repeatedly choose any el… |
+| 2968 | [Apply Operations to Maximize Frequency Score](2968.md) | 🔴 Hard | 1m 19s | This problem asks us to maximize the frequency of the most common v… |
 | 2970 | [Count the Number of Incremovable Subarrays I](2970.md) | 🟢 Easy | 53s | The problem asks us to count all incremovable subarrays of a given … |
 | 2971 | [Find Polygon With the Largest Perimeter](2971.md) | 🟡 Medium | 1m 16s | The problem gives us an array nums, where each value represents a p… |
 | 2973 | [Find Number of Coins to Place in Tree Nodes](2973.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes, rooted at node 0. Eve… |
