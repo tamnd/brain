@@ -32,3 +32,9 @@ draft: false
 | 2831 | [Find the Longest Equal Subarray](2831.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and an integer k. We are… |
 | 2832 | [Maximal Range That Each Element Is Maximum in It](2832.md) | 🟡 Medium | 1m 20s | The problem gives us an array nums containing distinct integers. Fo… |
 | 2833 | [Furthest Point From Origin](2833.md) | 🟢 Easy | 1m 3s | The problem gives us a string called moves, where each character re… |
+| 2835 | [Minimum Operations to Form Subsequence With Target Sum](2835.md) | 🔴 Hard | 1m 40s | The problem gives us an array nums where every element is a power o… |
+| 2836 | [Maximize Value of Function in a Ball Passing Game](2836.md) | 🔴 Hard | 1m 32s | This problem describes a deterministic ball-passing game between n … |
+| 2837 | [Total Traveled Distance](2837.md) | 🟢 Easy | 1m 47s | This problem asks us to compute the total distance traveled by ever… |
+| 2838 | [Maximum Coins Heroes Can Collect](2838.md) | 🟡 Medium | 2m 30s | The problem gives us three arrays: - heroes[i] represents the power… |
+| 2839 | [Check if Strings Can be Made Equal With Operations I](2839.md) | 🟢 Easy | 2m 24s | The problem gives us two strings, s1 and s2, each containing exactl… |
+| 2840 | [Check if Strings Can be Made Equal With Operations II](2840.md) | 🟡 Medium | 4m 23s | LeetCode 2840: Check if Strings Can be Made Equal With Operations I… |

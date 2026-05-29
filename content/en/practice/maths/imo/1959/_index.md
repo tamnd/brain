@@ -19,4 +19,4 @@ draft: false
 | 3 | [Problem 3](3.md) | ✓ verified | 3m29s | Let $a,b,c$ be real numbers. Consider the quadratic equation in $\cos{x}$ : |
 | 4 | [Problem 4](4.md) | ✓ verified | 13m46s | Construct a right triangle with a given hypotenuse $c$ such that the median drawn to the hypotenuse… |
 | 5 | [Problem 5](5.md) | solved | 3m42s | An arbitrary point $M$ is selected in the interior of the segment $AB$. The squares $AMCD$ and $MBE… |
-| 6 | [Problem 6](6.md) | solved | 18m54s | Two planes, $P$ and $Q$, intersect along the line $p$. The point $A$ is in the plane $P$, and the p… |
+| 6 | [Problem 6](6.md) | solved | 5m47s | Two planes, $P$ and $Q$, intersect along the line $p$. The point $A$ is in the plane $P$, and the p… |
