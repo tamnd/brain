@@ -52,20 +52,21 @@ draft: false
 | 2739 | [Total Distance Traveled](2739.md) | 🟢 Easy | 59s | This problem asks us to compute the maximum total distance a truck … |
 | 2741 | [Special Permutations](2741.md) | 🟡 Medium | 50s | The problem asks us to count the number of special permutations of … |
 | 2742 | [Painting the Walls](2742.md) | 🔴 Hard | 54s | The problem is asking us to determine the minimum total cost to pai… |
-| 2743 | [Count Substrings Without Repeating Character](2743.md) | 🟡 Medium | 50s | The problem asks us to count the number of substrings in a given st… |
-| 2744 | [Find Maximum Number of String Pairs](2744.md) | 🟢 Easy | 1m | The problem gives us an array of distinct strings called words. Eve… |
-| 2746 | [Decremental String Concatenation](2746.md) | 🟡 Medium | 1m 23s | The problem gives us an array of strings called words. We begin wit… |
-| 2747 | [Count Zero Request Servers](2747.md) | 🟡 Medium | 38s | This problem is asking us to determine, for each query time, how ma… |
-| 2748 | [Number of Beautiful Pairs](2748.md) | 🟢 Easy | 1m 31s | The problem gives us an integer array nums, and we must count how m… |
-| 2749 | [Minimum Operations to Make the Integer Zero](2749.md) | 🟡 Medium | 1m 17s | The problem gives us two integers, num1 and num2. In one operation,… |
-| 2750 | [Ways to Split Array Into Good Subarrays](2750.md) | 🟡 Medium | 1m 7s | This problem gives us a binary array nums, meaning every element is… |
-| 2751 | [Robot Collisions](2751.md) | 🔴 Hard | 1m 12s | The problem asks us to simulate collisions between robots moving on… |
-| 2752 | [Customers with Maximum Number of Transactions on Consecutive Days](2752.md) | 🔴 Hard | 1m 19s | The problem gives us a Transactions table where each row represents… |
-| 2753 | [Count Houses in a Circular Street II](2753.md) | 🔴 Hard | 1m 36s | This problem gives us access to a hidden circular street through a … |
-| 2754 | [Bind Function to Context](2754.md) | 🟡 Medium | 48s | The problem requires implementing a polyfill for JavaScript's Funct… |
-| 2755 | [Deep Merge of Two Objects](2755.md) | 🟡 Medium | 37s | This problem requires implementing a deep merge function that takes… |
-| 2756 | [Query Batching](2756.md) | 🔴 Hard | 1m 3s | The problem asks us to implement a throttled batching system for as… |
-| 2757 | [Generate Circular Array Values](2757.md) | 🟡 Medium | 1m 6s | This problem asks us to implement a generator that traverses a circ… |
+| 2743 | [Count Substrings Without Repeating Character](2743.md) | 🟡 Medium | 1m 7s | The problem asks us to count how many substrings of a given string … |
+| 2744 | [Find Maximum Number of String Pairs](2744.md) | 🟢 Easy | 56s | This problem gives us an array words containing distinct strings. E… |
+| 2745 | [Construct the Longest New String](2745.md) | 🟡 Medium | 1m 9s | The problem gives us three types of fixed two-character strings: - … |
+| 2746 | [Decremental String Concatenation](2746.md) | 🟡 Medium | 1m 23s | The problem gives us an array of strings words. We start with words… |
+| 2747 | [Count Zero Request Servers](2747.md) | 🟡 Medium | 1m 2s | This problem asks us to count servers that did not receive any requ… |
+| 2748 | [Number of Beautiful Pairs](2748.md) | 🟢 Easy | 59s | The problem gives us a 0-indexed integer array nums. We must count … |
+| 2749 | [Minimum Operations to Make the Integer Zero](2749.md) | 🟡 Medium | 1m 22s | The problem gives us two integers, num1 and num2. In one operation,… |
+| 2750 | [Ways to Split Array Into Good Subarrays](2750.md) | 🟡 Medium | 1m | The problem asks us to count the number of ways we can split a give… |
+| 2751 | [Robot Collisions](2751.md) | 🔴 Hard | 56s | This problem describes a simulation of robots moving on a one-dimen… |
+| 2752 | [Customers with Maximum Number of Transactions on Consecutive Days](2752.md) | 🔴 Hard | 1m 20s | The problem gives us a database table named Transactions. Each row … |
+| 2753 | [Count Houses in a Circular Street II](2753.md) | 🔴 Hard | 49s | The problem presents a circular street where each house has a door … |
+| 2754 | [Bind Function to Context](2754.md) | 🟡 Medium | 55s | The problem is asking us to implement a polyfill for JavaScript's b… |
+| 2755 | [Deep Merge of Two Objects](2755.md) | 🟡 Medium | 1m 30s | Here is the complete technical solution guide for LeetCode 2755 fol… |
+| 2756 | [Query Batching](2756.md) | 🔴 Hard | 1m 19s | The problem asks us to design a throttled batching system for async… |
+| 2757 | [Generate Circular Array Values](2757.md) | 🟡 Medium | 49s | The problem asks us to create a generator for a circular array, arr… |
 | 2758 | [Next Day](2758.md) | 🟢 Easy | 1m 5s | This problem asks us to extend date handling functionality so that … |
 | 2759 | [Convert JSON String to Object](2759.md) | 🔴 Hard | 1m 25s | This problem asks us to implement our own JSON parser without using… |
 | 2760 | [Longest Even Odd Subarray With Threshold](2760.md) | 🟢 Easy | 30s | This problem asks us to find the longest contiguous subarray in a g… |

@@ -48,3 +48,14 @@ draft: false
 | 3054 | [Binary Tree Nodes](3054.md) | 🟡 Medium | 1m 2s | This problem asks us to classify nodes in a binary tree based on th… |
 | 3055 | [Top Percentile Fraud](3055.md) | 🟡 Medium | 47s | This problem asks us to identify the top 5 percentile of insurance … |
 | 3056 | [Snaps Analysis](3056.md) | 🟡 Medium | 51s | The problem requires calculating the percentage of time each age gr… |
+| 3057 | [Employees Project Allocation](3057.md) | 🔴 Hard | 1m 24s | This problem asks us to identify employees whose assigned project w… |
+| 3058 | [Friends With No Mutual Friends](3058.md) | 🟡 Medium | 1m 19s | The Friends table represents an undirected friendship graph. Each r… |
+| 3059 | [Find All Unique Email Domains](3059.md) | 🟢 Easy | 1m 15s | This problem asks us to analyze email addresses stored in a databas… |
+| 3060 | [User Activities within Time Bounds](3060.md) | 🔴 Hard | 1m 25s | The Sessions table stores information about user activity sessions … |
+| 3061 | [Calculate Trapping Rain Water](3061.md) | 🔴 Hard | 1m 26s | This problem asks us to compute how much rainwater can be trapped b… |
+| 3062 | [Winner of the Linked List Game](3062.md) | 🟢 Easy | 1m 6s | The problem gives us the head of a singly linked list whose length … |
+| 3063 | [Linked List Frequency](3063.md) | 🟢 Easy | 1m | This problem asks us to analyze a singly-linked list of integers an… |
+| 3064 | [Guess the Number Using Bitwise Questions I](3064.md) | 🟡 Medium | 48s | The problem presents an interactive scenario where there is a hidde… |
+| 3067 | [Count Pairs of Connectable Servers in a Weighted Tree Network](3067.md) | 🟡 Medium | 1m 6s | The problem gives us a weighted tree representing servers connected… |
+| 3068 | [Find the Maximum Sum of Node Values](3068.md) | 🔴 Hard | 1m 10s | You are given a tree with n nodes. Every node has a value stored in… |
+| 3069 | [Distribute Elements Into Two Arrays I](3069.md) | 🟢 Easy | 52s | The problem is asking us to simulate a process where we distribute … |
