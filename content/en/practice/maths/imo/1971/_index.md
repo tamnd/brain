@@ -1,6 +1,6 @@
 ---
 title: "IMO 1971"
-description: "IMO 1971 — 6/6 solved, 1 verified."
+description: "IMO 1971 — 6/6 solved, 2 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1971
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1971
 
-[Official IMO 1971 problems](https://www.imo-official.org/year_info.aspx?year=1971) &nbsp;·&nbsp; 6/6 solved, 1 verified.
+[Official IMO 1971 problems](https://www.imo-official.org/year_info.aspx?year=1971) &nbsp;·&nbsp; 6/6 solved, 2 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -19,7 +19,7 @@ draft: false
 | [3](3.md) | ✓ verified | 3m43s |
 | [4](4.md) | solved | 12m37s |
 | [5](5.md) | solved | 7m23s |
-| [6](6.md) | solved | 6m25s |
+| [6](6.md) | ✓ verified | 24m01s |
 
 **Problem 1** &nbsp; *solved* · 43m36s · [Solution →](1.md)
 
@@ -49,6 +49,6 @@ All the faces of tetrahedron $ABCD$ are acute-angled triangles. We consider all 
 
 Prove that for every natural number $m$, there exists a finite set $S$ of points in a plane with the following property: For every point $A$ in $S$, there are exactly $m$ points in $S$ which are at unit distance from $A$.
 
-**Problem 6** &nbsp; *solved* · 6m25s · [Solution →](6.md)
+**Problem 6** &nbsp; *✓ verified* · 24m01s · [Solution →](6.md)
 
 Let $A = (a_{ij})(i, j = 1, 2, \cdots, n)$ be a square matrix whose elements are non-negative integers. Suppose that whenever an element $a_{ij} = 0$, the sum of the elements in the $i$th row and the $j$th column is $\geq n$. Prove that the sum of all the elements of the matrix is $\geq n^2 / 2$.
