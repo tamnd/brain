@@ -329,3 +329,138 @@ HSK 4 (B1) introduces approximately 1,000 new words, bringing the cumulative tot
 | 复杂 | fùzá | complex; complicated | adj | 复杂情况 (complex situation), 关系复杂 (complex relationships) |
 | 简洁 | jiǎnjié | concise; brief; succinct | adj | 语言简洁 (concise language), 简洁明了 (clear and concise) |
 | 深入 | shēnrù | in-depth; thorough; penetrating | adj/adv | 深入研究 (in-depth research), 深入了解 (thoroughly understand) |
+
+## Verbs: Communication and Expression (沟通表达动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 提出 | tíchū | to propose; to put forward; to raise | v | 提出问题 (raise a question), 提出建议 (put forward a suggestion) |
+| 提到 | tídào | to mention; to bring up | v | 提到过 (have mentioned), 没有提到 (didn't mention) |
+| 描述 | miáoshù | to describe; to depict | v | 描述情况 (describe the situation), 准确描述 (accurately describe) |
+| 解说 | jiěshuō | to explain; to comment; to narrate | v | 解说比赛 (commentate a match) |
+| 通报 | tōngbào | to notify; to brief; to inform | v | 通报情况 (brief on the situation) |
+| 表明 | biǎomíng | to indicate; to make clear; to show | v | 表明立场 (state one's position), 表明决心 (show determination) |
+| 声明 | shēngmíng | to declare; to state; declaration | v/n | 发表声明 (issue a statement), 正式声明 (formal declaration) |
+| 否认 | fǒurèn | to deny; to negate | v | 否认事实 (deny the facts), 坚决否认 (firmly deny) |
+| 强调 | qiángdiào | to emphasize; to stress; to highlight | v | 反复强调 (repeatedly emphasize) |
+| 补充 | bǔchōng | to supplement; to add; to complement | v | 补充说明 (add an explanation), 互相补充 (complement each other) |
+
+## Verbs: Thinking and Decision (思考与决策动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 考虑 | kǎolǜ | to consider; to think over | v | 认真考虑 (carefully consider), 考虑清楚 (think it through) |
+| 认为 | rènwéi | to think; to believe; to consider | v | 普遍认为 (generally considered), 我认为 (I think) |
+| 判断 | pànduàn | to judge; to determine | v | 做出判断 (make a judgment), 正确判断 (correct judgment) |
+| 预计 | yùjì | to expect; to estimate; to anticipate | v | 预计完成 (expected to complete), 据预计 (as estimated) |
+| 预测 | yùcè | to predict; to forecast | v | 预测结果 (predict results), 难以预测 (hard to predict) |
+| 决定 | juédìng | to decide; to determine; decision | v/n | 做出决定 (make a decision), 共同决定 (decide together) |
+| 选择 | xuǎnzé | to choose; to select; choice | v/n | 自由选择 (free choice), 做出选择 (make a choice) |
+| 放弃 | fàngqì | to give up; to abandon | v | 不能放弃 (cannot give up), 主动放弃 (voluntarily give up) |
+| 坚持 | jiānchí | to insist; to persist; to stick to | v | 坚持原则 (uphold principles), 坚持到底 (persist to the end) |
+| 接受 | jiēshòu | to accept; to receive; to take | v | 接受意见 (accept opinions), 无法接受 (cannot accept) |
+
+## Verbs: Movement and Change (运动变化动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 移动 | yídòng | to move; to shift; mobile | v | 移动设备 (mobile device), 向前移动 (move forward) |
+| 转变 | zhuǎnbiàn | to transform; to change; transition | v/n | 角色转变 (role transformation), 思想转变 (change in thinking) |
+| 扩大 | kuòdà | to expand; to enlarge; to extend | v | 扩大规模 (expand scale), 扩大影响 (expand influence) |
+| 缩小 | suōxiǎo | to narrow; to reduce; to shrink | v | 缩小差距 (narrow the gap), 缩小范围 (narrow the scope) |
+| 提升 | tíshēng | to improve; to upgrade; to promote | v | 提升能力 (improve ability), 提升质量 (upgrade quality) |
+| 下降 | xiàjiàng | to decline; to fall; to drop | v | 销售下降 (sales decline), 温度下降 (temperature drop) |
+| 上升 | shàngshēng | to rise; to go up; to ascend | v | 物价上升 (prices rise), 迅速上升 (rise rapidly) |
+| 出现 | chūxiàn | to appear; to emerge; to occur | v | 突然出现 (suddenly appear), 出现问题 (problems arise) |
+| 消失 | xiāoshī | to disappear; to vanish | v | 逐渐消失 (gradually disappear), 彻底消失 (completely disappear) |
+| 形成 | xíngchéng | to form; to develop; to take shape | v | 形成习惯 (form a habit), 形成共识 (develop a consensus) |
+
+## Nouns: People and Roles (人物与角色名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 领导 | lǐngdǎo | leader; leadership; to lead | n/v | 公司领导 (company leadership), 领导能力 (leadership ability) |
+| 员工 | yuángōng | employee; staff; worker | n | 公司员工 (company employees), 对待员工 (treat employees) |
+| 志愿者 | zhìyuànzhě | volunteer | n | 招募志愿者 (recruit volunteers), 志愿者活动 (volunteer activity) |
+| 专家 | zhuānjiā | expert; specialist | n | 行业专家 (industry expert), 邀请专家 (invite an expert) |
+| 观众 | guānzhòng | audience; spectators | n | 吸引观众 (attract an audience), 广大观众 (a wide audience) |
+| 消费者 | xiāofèizhě | consumer | n | 保护消费者 (protect consumers), 消费者需求 (consumer needs) |
+| 顾客 | gùkè | customer; client | n | 吸引顾客 (attract customers), 服务顾客 (serve customers) |
+| 竞争对手 | jìngzhēng duìshǒu | competitor; rival | n | 了解竞争对手 (understand competitors) |
+| 合伙人 | héhuǒrén | partner; business partner | n | 寻找合伙人 (look for a partner) |
+| 管理者 | guǎnlǐzhě | manager; administrator | n | 优秀管理者 (outstanding manager) |
+
+## Nouns: Time and Process (时间过程名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 阶段 | jiēduàn | stage; phase; period | n | 不同阶段 (different stages), 发展阶段 (development stage) |
+| 过程 | guòchéng | process; course; procedure | n | 学习过程 (learning process), 整个过程 (the whole process) |
+| 期间 | qījiān | period; duration; during | n | 活动期间 (during the event), 假期期间 (during the holiday) |
+| 期限 | qīxiàn | deadline; time limit | n | 在期限内 (within the deadline), 超过期限 (exceed the deadline) |
+| 进程 | jìnchéng | progress; process; course | n | 推进进程 (advance the process) |
+| 历程 | lìchéng | course; journey; process | n | 发展历程 (course of development), 奋斗历程 (course of struggle) |
+| 周期 | zhōuqī | cycle; period | n | 产品周期 (product cycle), 一个周期 (one cycle) |
+| 规律 | guīlǜ | rule; regularity; pattern | n | 遵循规律 (follow the pattern), 掌握规律 (grasp the pattern) |
+| 趋势 | qūshì | trend; tendency | n | 发展趋势 (development trend), 总体趋势 (overall trend) |
+| 背景 | bèijǐng | background; context; backdrop | n | 历史背景 (historical background), 了解背景 (understand the context) |
+
+## Nouns: Places and Facilities (地点设施名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 机构 | jīgòu | institution; organization; agency | n | 政府机构 (government institution), 相关机构 (relevant agencies) |
+| 设施 | shèshī | facility; installation; infrastructure | n | 基础设施 (infrastructure), 公共设施 (public facilities) |
+| 场所 | chǎngsuǒ | place; venue; premises | n | 公共场所 (public places), 活动场所 (activity venue) |
+| 地区 | dìqū | region; area; district | n | 不同地区 (different regions), 所在地区 (the area where it is located) |
+| 位置 | wèizhì | position; location; place | n | 重要位置 (important position), 确定位置 (determine the location) |
+| 范围 | fànwéi | range; scope; extent | n | 在范围内 (within the scope), 扩大范围 (expand the scope) |
+| 空间 | kōngjiān | space; room; area | n | 个人空间 (personal space), 发展空间 (room for development) |
+| 领域 | lǐngyù | field; domain; realm | n | 专业领域 (professional field), 各个领域 (all fields) |
+| 区域 | qūyù | area; zone; region | n | 特定区域 (specific area), 区域发展 (regional development) |
+| 现场 | xiànchǎng | site; scene; on the spot | n | 到达现场 (arrive at the scene), 现场报道 (on-the-spot report) |
+
+## Nouns: Abstract Concepts II (抽象概念名词II)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 机制 | jīzhì | mechanism; system | n | 运行机制 (operating mechanism), 建立机制 (establish a mechanism) |
+| 模型 | móxíng | model; template | n | 建立模型 (build a model), 数学模型 (mathematical model) |
+| 特征 | tèzhēng | characteristic; feature; trait | n | 主要特征 (main characteristic), 基本特征 (basic feature) |
+| 本质 | běnzhì | essence; nature; intrinsic | n/adj | 问题的本质 (the essence of the problem), 本质区别 (essential difference) |
+| 目的 | mùdì | purpose; objective; aim | n | 达到目的 (achieve the purpose), 明确目的 (clarify the objective) |
+| 动机 | dòngī | motive; motivation | n | 了解动机 (understand motivation), 工作动机 (work motivation) |
+| 关系 | guānxi | relationship; connection | n | 建立关系 (establish a relationship), 改善关系 (improve relations) |
+| 影响力 | yǐngxiǎnglì | influence; clout | n | 提升影响力 (increase influence), 广泛影响力 (wide influence) |
+| 竞争力 | jìngzhēnglì | competitiveness | n | 提高竞争力 (enhance competitiveness), 核心竞争力 (core competitiveness) |
+| 创造力 | chuàngzàolì | creativity; creative power | n | 激发创造力 (inspire creativity), 培养创造力 (cultivate creativity) |
+
+## Adjectives: Quality and State III (品质状态形容词III)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 合适 | héshì | suitable; appropriate; fitting | adj | 合适的人 (suitable person), 时机合适 (timing is appropriate) |
+| 必要 | bìyào | necessary; essential; indispensable | adj | 必要的准备 (necessary preparation), 采取必要措施 (take necessary measures) |
+| 可能 | kěnéng | possible; maybe; likely | adj/adv | 可能性大 (high possibility), 尽可能 (as much as possible) |
+| 困难 | kùnnán | difficult; trouble; hardship | adj/n | 克服困难 (overcome difficulties), 面临困难 (face difficulties) |
+| 顺利 | shùnlì | smooth; successful | adj | 进展顺利 (progress smoothly), 顺利完成 (complete successfully) |
+| 稳定 | wěndìng | stable; steady; to stabilize | adj/v | 经济稳定 (economic stability), 保持稳定 (maintain stability) |
+| 平衡 | pínghéng | balanced; to balance | adj/v/n | 保持平衡 (maintain balance), 工作与生活的平衡 (work-life balance) |
+| 活跃 | huóyuè | active; lively; dynamic | adj | 思维活跃 (active thinking), 市场活跃 (active market) |
+| 成熟 | chéngshú | mature; ripe; well-developed | adj | 技术成熟 (mature technology), 想法成熟 (mature idea) |
+| 先进 | xiānjìn | advanced; cutting-edge | adj | 先进技术 (advanced technology), 学习先进经验 (learn from advanced experience) |
+
+## Adverbs and Connectors II (副词与连接词II)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 因此 | yīncǐ | therefore; thus; as a result | conj | 因此决定 (therefore decided), 因此需要 (thus it is necessary) |
+| 然而 | rán'ér | however; but; nevertheless | conj | 然而问题在于 (however the issue is), 然而不同 (but different) |
+| 同时 | tóngshí | at the same time; simultaneously | adv | 同时进行 (proceed simultaneously), 同时考虑 (consider at the same time) |
+| 另外 | lìngwài | in addition; besides; additionally | adv | 另外需要注意 (additionally, note that...) |
+| 总体 | zǒngtǐ | overall; in general; on the whole | adj/adv | 总体来说 (overall speaking), 总体效果 (overall effect) |
+| 相对 | xiāngduì | relatively; comparatively | adj/adv | 相对容易 (relatively easy), 相对而言 (relatively speaking) |
+| 绝对 | juéduì | absolutely; absolutely; definite | adj/adv | 绝对不行 (absolutely not), 绝对正确 (absolutely correct) |
+| 基本上 | jīběnshàng | basically; fundamentally; essentially | adv | 基本上完成 (basically complete), 基本上同意 (basically agree) |
+| 主要 | zhǔyào | mainly; primarily; chiefly | adv | 主要是因为 (mainly because), 主要表现在 (mainly reflected in) |
+| 分别 | fēnbié | separately; respectively; apart | adv | 分别讨论 (discuss separately), 分别介绍 (introduce respectively) |
