@@ -31,6 +31,9 @@ draft: false
 | 3041 | [Maximize Consecutive Elements in an Array After Modification](3041.md) | 🔴 Hard | 1m 21s | The problem gives us an array of positive integers. Before selectin… |
 | 3042 | [Count Prefix and Suffix Pairs I](3042.md) | 🟢 Easy | 1m 10s | The problem gives us an array of strings called words. We need to c… |
 | 3043 | [Find the Length of the Longest Common Prefix](3043.md) | 🟡 Medium | 1m 24s | We are given two arrays of positive integers, arr1 and arr2. The ta… |
+| 3046 | [Split the Array](3046.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums whose length is always e… |
+| 3047 | [Find the Largest Area of Square Inside Two Rectangles](3047.md) | 🟡 Medium | 46s | The problem is asking us to find the largest square that can fit in… |
+| 3050 | [Pizza Toppings Cost Analysis](3050.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every valid pizza combination that… |
 | 3052 | [Maximize Items](3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |
 | 3053 | [Classifying Triangles by Lengths](3053.md) | 🟢 Easy | 1m 21s | The problem requires classifying triangles based on the lengths of … |
 | 3054 | [Binary Tree Nodes](3054.md) | 🟡 Medium | 1m 2s | This problem asks us to classify nodes in a binary tree based on th… |

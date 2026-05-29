@@ -32,15 +32,17 @@ draft: false
 | 2719 | [Count of Integers](2719.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many integers lie between two give… |
 | 2720 | [Popularity Percentage](2720.md) | 🔴 Hard | 1m 27s | The Friends table stores friendship relationships between users on … |
 | 2721 | [Execute Asynchronous Functions in Parallel](2721.md) | 🟡 Medium | 1m 10s | This problem asks us to implement a custom version of Promise.all, … |
-| 2722 | [Join Two Arrays by ID](2722.md) | 🟡 Medium | 45s | The problem asks us to merge two arrays of objects, arr1 and arr2, … |
-| 2724 | [Sort By](2724.md) | 🟢 Easy | 1m 7s | The problem gives us two inputs: an array arr and a function fn. Ou… |
-| 2725 | [Interval Cancellation](2725.md) | 🟢 Easy | 37s | The problem is asking us to implement a cancellable interval functi… |
-| 2726 | [Calculator with Method Chaining](2726.md) | 🟢 Easy | 1m 7s | This problem asks us to design a class named Calculator that suppor… |
-| 2727 | [Is Object Empty](2727.md) | 🟢 Easy | 1m 2s | The problem asks us to determine whether a given JSON object or JSO… |
+| 2722 | [Join Two Arrays by ID](2722.md) | 🟡 Medium | 1m 11s | This problem asks us to merge two arrays of JSON objects based on a… |
+| 2723 | [Add Two Promises](2723.md) | 🟢 Easy | 50s | This problem asks us to work with JavaScript promises and asynchron… |
+| 2724 | [Sort By](2724.md) | 🟢 Easy | 1m 4s | This problem asks us to sort an array using a custom sorting rule. … |
+| 2725 | [Interval Cancellation](2725.md) | 🟢 Easy | 52s | This problem asks us to implement a function cancellable that repea… |
+| 2726 | [Calculator with Method Chaining](2726.md) | 🟢 Easy | 1m 3s | This problem asks us to design a class named Calculator that suppor… |
+| 2727 | [Is Object Empty](2727.md) | 🟢 Easy | 50s | This problem asks us to determine if a given object or array is emp… |
+| 2728 | [Count Houses in a Circular Street](2728.md) | 🟢 Easy | 45s | The problem asks us to determine the number of houses on a circular… |
 | 2729 | [Check if The Number is Fascinating](2729.md) | 🟢 Easy | 1m 4s | The problem gives us a three digit integer n. We must determine whe… |
-| 2730 | [Find the Longest Semi-Repetitive Substring](2730.md) | 🟡 Medium | 1m 6s | The problem gives us a string s consisting only of digits ('0' thro… |
+| 2730 | [Find the Longest Semi-Repetitive Substring](2730.md) | 🟡 Medium | 1m 16s | The problem gives us a string s consisting only of digits from 0 to… |
 | 2731 | [Movement of Robots](2731.md) | 🟡 Medium | 50s | The problem is asking us to calculate the sum of distances between … |
-| 2732 | [Find a Good Subset of the Matrix](2732.md) | 🔴 Hard | 46s | The problem asks us to find a good subset of rows from a binary mat… |
+| 2732 | [Find a Good Subset of the Matrix](2732.md) | 🔴 Hard | 54s | The problem asks us to find a subset of rows in a binary matrix whe… |
 | 2733 | [Neither Minimum nor Maximum](2733.md) | 🟢 Easy | 59s | The problem gives us an array of distinct positive integers and ask… |
 | 2734 | [Lexicographically Smallest String After Substring Operation](2734.md) | 🟡 Medium | 1m 25s | We are given a string s consisting only of lowercase English letter… |
 | 2735 | [Collecting Chocolates](2735.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums, where nums[i] represents the co… |

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974"
-description: "IMO 1974 — 2/6 solved, 1 verified."
+description: "IMO 1974 — 3/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1974
@@ -10,13 +10,13 @@ draft: false
 
 # IMO 1974
 
-[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 2/6 solved, 1 verified.
+[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 3/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m39s |
 | [2](2.md) | solved | 17m14s |
-| 3 | — | — |
+| [3](3.md) | solved | 6m53s |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
@@ -39,7 +39,7 @@ $$
 
 ---
 
-**Problem 3**
+**Problem 3** &nbsp; *solved* · 6m53s · [Solution →](3.md)
 
 Prove that the number $\textstyle \sum_{k = 0}^n \tbinom{2n+1}{2k+1} 2^{3k}$ is not divisible by 5 for any integer $n \geq 0$.
 

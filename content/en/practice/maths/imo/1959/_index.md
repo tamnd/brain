@@ -16,7 +16,7 @@ draft: false
 |---|--------|------|
 | [1](1.md) | ✓ verified | 8m04s |
 | [2](2.md) | solved | 15m36s |
-| [3](3.md) | ✓ verified | 3m29s |
+| [3](3.md) | ✓ verified | 12m31s |
 | [4](4.md) | ✓ verified | 13m46s |
 | [5](5.md) | solved | 3m42s |
 | [6](6.md) | solved | 5m47s |
@@ -33,7 +33,7 @@ $\sqrt{x+\sqrt{2x-1}}+\sqrt{x-\sqrt{2x-1}}=A,$
 
 given (a) $A = \sqrt{2}$, (b) $A=1$, (c) $A=2$, where only non-negative real numbers are admitted for square roots?
 
-**Problem 3** &nbsp; *✓ verified* · 3m29s · [Solution →](3.md)
+**Problem 3** &nbsp; *✓ verified* · 12m31s · [Solution →](3.md)
 
 Let $a,b,c$ be real numbers. Consider the quadratic equation in $\cos{x}$ :
 
