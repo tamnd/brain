@@ -66,4 +66,9 @@ draft: false
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
 | 2964 | [Number of Divisible Triplet Sums](2964.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums and another integer d. W… |
 | 2965 | [Find Missing and Repeated Values](2965.md) | 🟢 Easy | 1m 3s | The problem gives us an n x n matrix called grid. Every value in th… |
+| 2968 | [Apply Operations to Maximize Frequency Score](2968.md) | 🔴 Hard | 1m 16s | The problem gives us an integer array nums and a budget k. Each ope… |
+| 2971 | [Find Polygon With the Largest Perimeter](2971.md) | 🟡 Medium | 1m 16s | The problem gives us an array nums, where each value represents a p… |
+| 2973 | [Find Number of Coins to Place in Tree Nodes](2973.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes, rooted at node 0. Eve… |
+| 2974 | [Minimum Number Game](2974.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums with an even number of e… |
+| 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 1m 37s | This problem asks us to transform one string into another while min… |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |

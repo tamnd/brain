@@ -75,11 +75,11 @@ draft: false
 | 2663 | [Lexicographically Smallest Beautiful String](2663.md) | 🔴 Hard | 51s | The problem requires generating the lexicographically smallest beau… |
 | 2664 | [The Knight\u2019s Tour](2664.md) | 🟡 Medium | 1m 21s | This problem asks us to construct a complete knight’s tour on an m … |
 | 2665 | [Counter II](2665.md) | 🟢 Easy | 39s | The problem asks us to implement a counter object that maintains a … |
-| 2666 | [Allow One Function Call](2666.md) | 🟢 Easy | 1m 3s | The problem asks us to create a higher-order function. A higher-ord… |
-| 2667 | [Create Hello World Function](2667.md) | 🟢 Easy | 1m 6s | The problem asks us to implement a function named createHelloWorld … |
+| 2666 | [Allow One Function Call](2666.md) | 🟢 Easy | 1m 7s | This problem asks us to create a wrapper around an existing functio… |
+| 2667 | [Create Hello World Function](2667.md) | 🟢 Easy | 1m 1s | The problem asks us to implement a function named createHelloWorld … |
 | 2668 | [Find Latest Salaries](2668.md) | 🟢 Easy | 1m 14s | This problem gives us a database table named Salary that stores emp… |
-| 2669 | [Count Artist Occurrences On Spotify Ranking List](2669.md) | 🟢 Easy | 43s | The problem asks us to analyze the Spotify table and determine how … |
-| 2670 | [Find the Distinct Difference Array](2670.md) | 🟢 Easy | 1m 14s | The problem gives us a 0-indexed integer array nums and asks us to … |
+| 2669 | [Count Artist Occurrences On Spotify Ranking List](2669.md) | 🟢 Easy | 1m 26s | This problem provides a database table named Spotify that contains … |
+| 2670 | [Find the Distinct Difference Array](2670.md) | 🟢 Easy | 1m 1s | The problem asks us to compute the distinct difference array for a … |
 | 2671 | [Frequency Tracker](2671.md) | 🟡 Medium | 1m 19s | The problem asks us to design a data structure that supports three … |
 | 2672 | [Number of Adjacent Elements With the Same Color](2672.md) | 🟡 Medium | 39s | The problem is asking us to maintain an array of length n where ini… |
 | 2673 | [Make Costs of Paths Equal in a Binary Tree](2673.md) | 🟡 Medium | 48s | The problem presents a perfect binary tree with n nodes, numbered f… |
