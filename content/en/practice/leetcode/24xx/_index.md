@@ -51,7 +51,7 @@ draft: false
 | 2438 | [Range Product Queries of Powers](2438.md) | 🟡 Medium | 1m 25s | The problem defines a special array called powers. This array is bu… |
 | 2439 | [Minimize Maximum of Array](2439.md) | 🟡 Medium | 36s | That is a long, structured reference document with multiple require… |
 | 2440 | [Create Components With Same Value](2440.md) | 🔴 Hard | 42s | This problem is asking us to take an undirected tree where each nod… |
-| 2441 | [Largest Positive Integer That Exists With Its Negative](2441.md) | 🟢 Easy | 57s | The problem requires finding the largest positive integer k in an a… |
+| 2441 | [Largest Positive Integer That Exists With Its Negative](2441.md) | 🟢 Easy | 39s | The problem asks us to find the largest positive integer k in a giv… |
 | 2442 | [Count Number of Distinct Integers After Reverse Operations](2442.md) | 🟡 Medium | 1m 15s | The problem gives us an array of positive integers called nums. For… |
 | 2443 | [Sum of Number and Its Reverse](2443.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given non-negative integ… |
 | 2444 | [Count Subarrays With Fixed Bounds](2444.md) | 🔴 Hard | 5m 36s | The problem asks us to count how many contiguous subarrays satisfy … |
