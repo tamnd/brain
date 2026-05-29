@@ -54,5 +54,6 @@ draft: false
 | 3345 | [Smallest Divisible Digit Product I](3345.md) | 🟢 Easy | 1m 43s | The problem gives us two integers, n and t. We must find the smalle… |
 | 3346 | [Maximum Frequency of an Element After Performing Operations I](3346.md) | 🟡 Medium | 2m 29s | The problem gives us an integer array nums, along with two integers… |
 | 3347 | [Maximum Frequency of an Element After Performing Operations II](3347.md) | 🔴 Hard | 1m 58s | The problem gives us an integer array nums, along with two integers… |
+| 3348 | [Smallest Divisible Digit Product II](3348.md) | 🔴 Hard | 5m 52s | The problem asks us to find the smallest number that satisfies seve… |
 | 3349 | [Adjacent Increasing Subarrays Detection I](3349.md) | 🟢 Easy | 1m 47s | The problem gives us an integer array nums and an integer k. We nee… |
 | 3350 | [Adjacent Increasing Subarrays Detection II](3350.md) | 🟡 Medium | 1m 15s | The problem asks us to find the largest possible length k such that… |
