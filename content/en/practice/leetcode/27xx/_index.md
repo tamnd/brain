@@ -71,3 +71,11 @@ draft: false
 | 2773 | [Height of Special Binary Tree](2773.md) | 🟡 Medium | 1m 17s | The problem gives us the root of a binary tree with a very unusual … |
 | 2775 | [Undefined to Null](2775.md) | 🟡 Medium | 44s | The problem requires transforming a nested JavaScript-style object … |
 | 2778 | [Sum of Squares of Special Elements ](2778.md) | 🟢 Easy | 38s | The problem provides a 1-indexed array nums of integers with length… |
+| 2780 | [Minimum Index of a Valid Split](2780.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array nums that is guaranteed to co… |
+| 2781 | [Length of the Longest Valid Substring](2781.md) | 🔴 Hard | 1m 8s | The problem gives us a string word and a list of forbidden strings … |
+| 2782 | [Number of Unique Categories](2782.md) | 🟡 Medium | 1m 18s | This problem is an interactive-style Union-Find problem where we ar… |
+| 2784 | [Check if Array is Good](2784.md) | 🟢 Easy | 1m 4s | This problem asks us to determine whether a given array nums is a p… |
+| 2787 | [Ways to Express an Integer as Sum of Powers](2787.md) | 🟡 Medium | 1m 11s | The problem gives us two positive integers, n and x. We must determ… |
+| 2788 | [Split Strings by Separator](2788.md) | 🟢 Easy | 2m 38s | This problem asks us to process a list of strings and split each st… |
+| 2789 | [Largest Element in an Array after Merge Operations](2789.md) | 🟡 Medium | 53s | The problem asks us to repeatedly merge elements in an array accord… |
+| 2790 | [Maximum Number of Groups With Increasing Length](2790.md) | 🔴 Hard | 55s | We are given an array usageLimits, where usageLimits[i] tells us ho… |

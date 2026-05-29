@@ -109,4 +109,4 @@ draft: false
 | 2496 | [Maximum Value of a String in an Array](2496.md) | 🟢 Easy | 46s | This problem asks us to compute the maximum value of strings in an … |
 | 2497 | [Maximum Star Sum of a Graph](2497.md) | 🟡 Medium | 1m 43s | The problem gives us an undirected graph where each node has an ass… |
 | 2498 | [Frog Jump II](2498.md) | 🟡 Medium | 1m 23s | The problem gives us a sorted array stones, where each value repres… |
-| 2499 | [Minimum Total Cost to Make Arrays Unequal](2499.md) | 🔴 Hard | 6m 16s | We are given two arrays, nums1 and nums2, both of length n. We may … |
+| 2499 | [Minimum Total Cost to Make Arrays Unequal](2499.md) | 🔴 Hard | 1m 14s | You are given two arrays, nums1 and nums2, both of length n. You ar… |
