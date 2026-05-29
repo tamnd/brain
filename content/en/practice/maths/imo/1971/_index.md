@@ -14,14 +14,14 @@ draft: false
 
 | # | Status | Time |
 |---|--------|------|
-| [1](1.md) | solved | 14m33s |
+| [1](1.md) | solved | 43m36s |
 | [2](2.md) | solved | 18m01s |
 | [3](3.md) | solved | 11m41s |
 | [4](4.md) | solved | 7m34s |
 | [5](5.md) | solved | 5m40s |
 | [6](6.md) | solved | 6m25s |
 
-**Problem 1** &nbsp; *solved* · 14m33s · [Solution →](1.md)
+**Problem 1** &nbsp; *solved* · 43m36s · [Solution →](1.md)
 
 Prove that the following assertion is true for $n = 3$ and $n = 5$, and that it is false for every other natural number $n > 2$:
 

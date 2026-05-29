@@ -68,18 +68,18 @@ draft: false
 | 2855 | [Minimum Right Shifts to Sort the Array](2855.md) | 🟢 Easy | 54s | The problem gives us a 0-indexed array nums of length n containing … |
 | 2856 | [Minimum Array Length After Pair Removals](2856.md) | 🟡 Medium | 1m 8s | This problem gives us a sorted integer array nums in non-decreasing… |
 | 2857 | [Count Pairs of Points With Distance k](2857.md) | 🟡 Medium | 1m 15s | We are given a list of 2D points, where each point is represented a… |
-| 2858 | [Minimum Edge Reversals So Every Node Is Reachable](2858.md) | 🔴 Hard | 1m 25s | This problem gives us a directed graph with n nodes and exactly n -… |
+| 2858 | [Minimum Edge Reversals So Every Node Is Reachable](2858.md) | 🔴 Hard | 1m 34s | This problem gives us a directed graph with n nodes and exactly n -… |
 | 2859 | [Sum of Values at Indices With K Set Bits](2859.md) | 🟢 Easy | 58s | The problem asks us to compute the sum of elements in an array, but… |
-| 2860 | [Happy Students](2860.md) | 🟡 Medium | 1m 11s | The problem gives us an array nums where nums[i] represents a condi… |
-| 2861 | [Maximum Number of Alloys](2861.md) | 🟡 Medium | 50s | The problem is about maximizing the number of alloys a company can … |
-| 2862 | [Maximum Element-Sum of a Complete Subset of Indices](2862.md) | 🔴 Hard | 5m 50s | The problem asks us to select a subset of elements from a 1-indexed… |
+| 2860 | [Happy Students](2860.md) | 🟡 Medium | 59s | The problem asks us to determine the number of ways to select a sub… |
+| 2861 | [Maximum Number of Alloys](2861.md) | 🟡 Medium | 2m 27s | This guide will be quite long because you requested a comprehensive… |
+| 2862 | [Maximum Element-Sum of a Complete Subset of Indices](2862.md) | 🔴 Hard | 1m 15s | The array nums is 1-indexed, meaning the first element corresponds … |
 | 2863 | [Maximum Length of Semi-Decreasing Subarrays](2863.md) | 🟡 Medium | 2m 20s | The problem gives us an integer array nums and asks for the length … |
-| 2864 | [Maximum Odd Binary Number](2864.md) | 🟢 Easy | 59s | The problem asks us to take a binary string s (consisting only of '… |
-| 2865 | [Beautiful Towers I](2865.md) | 🟡 Medium | 1m 16s | The problem gives us an array heights, where heights[i] represents … |
-| 2866 | [Beautiful Towers II](2866.md) | 🟡 Medium | 1m 16s | The problem gives us an array maxHeights, where maxHeights[i] repre… |
-| 2867 | [Count Valid Paths in a Tree](2867.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes labeled from 1 to n. A… |
-| 2868 | [The Wording Game](2868.md) | 🔴 Hard | 2m 22s | The problem presents a two-player game between Alice and Bob, each … |
-| 2869 | [Minimum Operations to Collect Elements](2869.md) | 🟢 Easy | 1m 6s | The problem gives us an array nums and an integer k. We repeatedly … |
+| 2864 | [Maximum Odd Binary Number](2864.md) | 🟢 Easy | 1m 7s | The problem gives us a binary string s, containing only '0' and '1'… |
+| 2865 | [Beautiful Towers I](2865.md) | 🟡 Medium | 1m 2s | The problem asks us to transform an array of tower heights into a m… |
+| 2866 | [Beautiful Towers II](2866.md) | 🟡 Medium | 1m 4s | The problem asks us to build a series of towers along a coordinate … |
+| 2867 | [Count Valid Paths in a Tree](2867.md) | 🔴 Hard | 2m 26s | That is a long, structured reference document with multiple require… |
+| 2868 | [The Wording Game](2868.md) | 🔴 Hard | 57s | The problem describes a turn-based game between Alice and Bob, wher… |
+| 2869 | [Minimum Operations to Collect Elements](2869.md) | 🟢 Easy | 1m 5s | This problem gives us an array nums and an integer k. We repeatedly… |
 | 2870 | [Minimum Number of Operations to Make Array Empty](2870.md) | 🟡 Medium | 47s | The problem requires us to determine the minimum number of operatio… |
 | 2871 | [Split Array Into Maximum Number of Subarrays](2871.md) | 🟡 Medium | 49s | The problem is asking us to split a given array of non-negative int… |
 | 2872 | [Maximum Number of K-Divisible Components](2872.md) | 🔴 Hard | 53s | This problem is asking us to split a given undirected tree into as … |

@@ -28,3 +28,4 @@ draft: false
 | 3126 | [Server Utilization Time](3126.md) | 🟡 Medium | 1m 27s | This problem provides a table named Servers that records status cha… |
 | 3127 | [Make a Square with the Same Color](3127.md) | 🟢 Easy | 1m 13s | This problem gives us a fixed 3 x 3 grid containing only two possib… |
 | 3128 | [Right Triangles](3128.md) | 🟡 Medium | 1m 21s | The problem gives us a binary matrix grid, where each cell contains… |
+| 3129 | [Find All Possible Stable Binary Arrays I](3129.md) | 🟡 Medium | 1m 26s | In this problem, we need to count how many binary arrays can be for… |
