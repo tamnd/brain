@@ -15,7 +15,7 @@ draft: false
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 8m53s |
-| [2](2.md) | solved | 4m36s |
+| [2](2.md) | solved | 31m22s |
 | [3](3.md) | solved | 6m58s |
 | [4](4.md) | solved | 14m45s |
 | [5](5.md) | solved | 9m42s |
@@ -27,7 +27,7 @@ Point $O$ lies on line $g$; $\overrightarrow{OP_1}, \overrightarrow{OP_2}, \ldot
 \left\vert \overrightarrow{OP_1} + \overrightarrow{OP_2} + \ldots + \overrightarrow{OP_n} \right\vert \geq 1
 $$ Here $\left\vert \overrightarrow{OM} \right\vert$ denotes the length of vector $\overrightarrow{OM}$.
 
-**Problem 2** &nbsp; *solved* · 4m36s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 31m22s · [Solution →](2.md)
 
 Determine whether or not there exists a finite set $M$ of points in space not lying in the same plane such that, for any two points $A$ and $B$ of $M$, one can select two other points $C$ and $D$ of $M$ so that lines $AB$ and $CD$ are parallel and not coincident.
 

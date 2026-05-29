@@ -13,9 +13,12 @@ draft: false
 | 1800 | [Maximum Ascending Subarray Sum](1800.md) | 🟢 Easy | 1m 19s | The problem gives an array of positive integers called nums. We mus… |
 | 1801 | [Number of Orders in the Backlog](1801.md) | 🟡 Medium | 1m 45s | This problem simulates a simplified stock exchange order book. Each… |
 | 1802 | [Maximum Value at a Given Index in a Bounded Array](1802.md) | 🟡 Medium | 1m 26s | This problem asks us to construct an array of length n where every … |
+| 1803 | [Count Pairs With XOR in a Range](1803.md) | 🔴 Hard | 1m 56s | The problem gives us an integer array nums and two integers, low an… |
+| 1804 | [Implement Trie II (Prefix Tree)](1804.md) | 🟡 Medium | 57s | This problem asks us to implement a Trie data structure, also known… |
 | 1805 | [Number of Different Integers in a String](1805.md) | 🟢 Easy | 1m | The problem requires us to process a string word that contains both… |
 | 1806 | [Minimum Number of Operations to Reinitialize a Permutation](1806.md) | 🟡 Medium | 1m 10s | The problem gives us an even integer n and defines an initial permu… |
 | 1807 | [Evaluate the Bracket Pairs of a String](1807.md) | 🟡 Medium | 2m 34s | The problem asks us to process a string s that contains bracketed k… |
+| 1808 | [Maximize Number of Nice Divisors](1808.md) | 🔴 Hard | 1m 21s | The problem gives us an integer primeFactors, representing the maxi… |
 | 1809 | [Ad-Free Sessions](1809.md) | 🟢 Easy | 50s | The problem is asking us to identify all playback sessions during w… |
 | 1810 | [Minimum Path Cost in a Hidden Grid](1810.md) | 🟡 Medium | 1m 56s | This problem is an interactive shortest path problem on a hidden we… |
 | 1811 | [Find Interview Candidates](1811.md) | 🟡 Medium | 1m 2s | The problem is asking us to identify users who qualify as interview… |
@@ -35,10 +38,13 @@ draft: false
 | 1825 | [Finding MK Average](1825.md) | 🔴 Hard | 2m 4s | The problem asks us to design a data structure that continuously re… |
 | 1826 | [Faulty Sensor](1826.md) | 🟢 Easy | 1m 37s | The problem gives us two arrays, sensor1 and sensor2, representing … |
 | 1827 | [Minimum Operations to Make the Array Increasing](1827.md) | 🟢 Easy | 59s | The problem asks us to transform a given integer array nums into a … |
+| 1828 | [Queries on Number of Points Inside a Circle](1828.md) | 🟡 Medium | 1m 20s | This problem gives us two collections of geometric objects on a 2D … |
 | 1829 | [Maximum XOR for Each Query](1829.md) | 🟡 Medium | 1m 26s | The problem gives us a sorted array nums and an integer maximumBit.… |
 | 1830 | [Minimum Number of Operations to Make String Sorted](1830.md) | 🔴 Hard | 1m 27s | The operation described in the problem is exactly the process of ge… |
 | 1831 | [Maximum Transaction Each Day](1831.md) | 🟡 Medium | 3m 51s | The problem gives us a table named Transactions where each row repr… |
+| 1832 | [Check if the Sentence Is Pangram](1832.md) | 🟢 Easy | 1m 6s | This problem asks us to determine whether a given string is a pangr… |
 | 1833 | [Maximum Ice Cream Bars](1833.md) | 🟡 Medium | 1m 1s | This problem asks us to determine the maximum number of ice cream b… |
+| 1834 | [Single-Threaded CPU](1834.md) | 🟡 Medium | 55s | The problem asks us to simulate the execution of tasks on a single-… |
 | 1835 | [Find XOR Sum of All Pairs Bitwise AND](1835.md) | 🔴 Hard | 1m 17s | This problem asks us to compute the XOR sum of every possible pairw… |
 | 1836 | [Remove Duplicates From an Unsorted Linked List](1836.md) | 🟡 Medium | 1m 26s | This problem gives us the head of a singly linked list whose values… |
 | 1837 | [Sum of Digits in Base K](1837.md) | 🟢 Easy | 42s | The problem is asking us to convert a given integer n from base 10 … |

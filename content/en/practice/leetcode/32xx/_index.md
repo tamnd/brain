@@ -68,3 +68,9 @@ draft: false
 | 3261 | [Count Substrings That Satisfy K-Constraint II](3261.md) | 🔴 Hard | 1m 34s | We are given a binary string s, an integer k, and many range querie… |
 | 3262 | [Find Overlapping Shifts](3262.md) | 🟡 Medium | 1m 43s | The problem requires counting overlapping shifts for each employee … |
 | 3263 | [Convert Doubly Linked List to Array I](3263.md) | 🟢 Easy | 51s | The problem asks us to convert a doubly linked list into a standard… |
+| 3264 | [Final Array State After K Multiplication Operations I](3264.md) | 🟢 Easy | 1m 14s | This problem asks us to repeatedly modify an array according to a v… |
+| 3266 | [Final Array State After K Multiplication Operations II](3266.md) | 🔴 Hard | 1m 35s | The problem gives us an integer array nums, an integer k, and an in… |
+| 3267 | [Count Almost Equal Pairs II](3267.md) | 🔴 Hard | 1m 23s | We are given an array nums containing positive integers. We need to… |
+| 3268 | [Find Overlapping Shifts II](3268.md) | 🔴 Hard | 49s | The problem asks us to analyze shift overlaps for employees. We are… |
+| 3271 | [Hash Divided String](3271.md) | 🟡 Medium | 52s | The problem asks us to compute a hashed string from an input string… |
+| 3272 | [Find the Count of Good Integers](3272.md) | 🔴 Hard | 1m 15s | The problem asks us to count n-digit integers that are "good" with … |
