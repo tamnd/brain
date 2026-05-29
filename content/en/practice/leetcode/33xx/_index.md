@@ -20,6 +20,7 @@ draft: false
 | 3307 | [Find the K-th Character in String Game II](3307.md) | 🔴 Hard | 1m 15s | The problem describes a string manipulation game between Alice and … |
 | 3308 | [Find Top Performing Driver](3308.md) | 🟡 Medium | 1m 14s | The problem asks us to identify the top-performing driver for each … |
 | 3309 | [Maximum Possible Number by Binary Concatenation](3309.md) | 🟡 Medium | 1m 4s | The problem is asking for the maximum integer value that can be cre… |
+| 3310 | [Remove Methods From Project](3310.md) | 🟡 Medium | 1m 13s | The problem models a project as a directed graph of method calls. E… |
 | 3311 | [Construct 2D Grid Matching Graph Layout](3311.md) | 🔴 Hard | 1m 55s | The problem gives us an undirected graph with n nodes labeled from … |
 | 3312 | [Sorted GCD Pair Queries](3312.md) | 🔴 Hard | 40s | === 1996-G1 === Origin: GBR Let triangle have orthocenter , and let… |
 | 3314 | [Construct the Minimum Bitwise Array I](3314.md) | 🟢 Easy | 52s | The problem asks us to construct an array ans from a given array nu… |
@@ -41,7 +42,9 @@ draft: false
 | 3330 | [Find the Original Typed String I](3330.md) | 🟢 Easy | 55s | This problem asks us to determine the number of possible original s… |
 | 3331 | [Find Subtree Sizes After Changes](3331.md) | 🟡 Medium | 1m 44s | We are given a rooted tree with n nodes numbered from 0 to n - 1. T… |
 | 3332 | [Maximum Points Tourist Can Earn](3332.md) | 🟡 Medium | 52s | The problem asks us to maximize the points a tourist can earn over … |
+| 3333 | [Find the Original Typed String II](3333.md) | 🔴 Hard | 32s | The problem asks us to determine the number of possible original st… |
 | 3334 | [Find the Maximum Factor Score of Array](3334.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum factor score of an array… |
+| 3335 | [Total Characters in String After Transformations I](3335.md) | 🟡 Medium | 1m 7s | The problem gives us a string s and an integer t. We repeatedly app… |
 | 3336 | [Find the Number of Subsequences With Equal GCD](3336.md) | 🔴 Hard | 1m 6s | The problem asks us to count the number of pairs of non-empty disjo… |
 | 3337 | [Total Characters in String After Transformations II](3337.md) | 🔴 Hard | 1m 55s | The problem defines a repeated string transformation process over l… |
 | 3338 | [Second Highest Salary II](3338.md) | 🟡 Medium | 52s | This problem asks us to analyze employee salary data within departm… |
@@ -66,6 +69,7 @@ draft: false
 | 3357 | [Minimize the Maximum Adjacent Element Difference](3357.md) | 🔴 Hard | 2m 3s | The problem gives us an integer array nums, where some positions co… |
 | 3358 | [Books with NULL Ratings](3358.md) | 🟢 Easy | 1m 33s | This problem provides a database table named books. Each row in the… |
 | 3359 | [Find Sorted Submatrices With Maximum Element at Most K](3359.md) | 🔴 Hard | 1m 34s | We are given a matrix grid with m rows and n columns, along with an… |
+| 3360 | [Stone Removal Game](3360.md) | 🟢 Easy | 1m 6s | In this game, Alice and Bob take turns removing stones from a pile.… |
 | 3361 | [Shift Distance Between Two Strings](3361.md) | 🟡 Medium | 1m 19s | The problem gives us two strings, s and t, of equal length. We want… |
 | 3362 | [Zero Array Transformation III](3362.md) | 🟡 Medium | 1m 39s | We are given an integer array nums and a list of interval queries. … |
 | 3363 | [Find the Maximum Number of Fruits Collected](3363.md) | 🔴 Hard | 45s | This problem asks us to maximize the total number of fruits collect… |
@@ -77,6 +81,7 @@ draft: false
 | 3369 | [Design an Array Statistics Tracker ](3369.md) | 🔴 Hard | 1m 47s | The problem asks us to design a data structure that supports a stre… |
 | 3370 | [Smallest Number With All Set Bits](3370.md) | 🟢 Easy | 1m 1s | The problem asks us to find the smallest integer x such that: 1. x … |
 | 3371 | [Identify the Largest Outlier in an Array](3371.md) | 🟡 Medium | 1m 23s | The problem gives us an integer array nums containing exactly three… |
+| 3372 | [Maximize the Number of Target Nodes After Connecting Trees I](3372.md) | 🟡 Medium | 1m 30s | We are given two separate undirected trees. The first tree contains… |
 | 3373 | [Maximize the Number of Target Nodes After Connecting Trees II](3373.md) | 🔴 Hard | 1m 43s | The problem gives us two separate undirected trees. The first tree … |
 | 3374 | [First Letter Capitalization II](3374.md) | 🔴 Hard | 1m 18s | This problem asks us to transform text stored in a database table w… |
 | 3377 | [Digit Operations to Make Two Integers Equal](3377.md) | 🟡 Medium | 1m 7s | The problem asks us to transform one integer n into another integer… |

@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.1 — Mathematical Induction"
-description: "Section 1.2.1 exercises — 13/15 solved."
+description: "Section 1.2.1 exercises — 14/15 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.1. Mathematical Induction
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.1: 13/15 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.1: 14/15 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,7 +26,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.1: 13/15 solved.
 | [6](06.md) |  [*20*] | medium | solved | 42s |
 | 7 |  [*23*] | medium | - | - |
 | [8](08.md) | &#9654; [*25*] | medium | solved | 35s |
-| 9 |  [*20*] | medium | - | - |
+| [9](09.md) |  [*20*] | medium | solved | 30m25s |
 | [10](10.md) |  [*M22*] | math-medium | solved | 46s |
 | [11](11.md) |  [*M30*] | math-hard | solved | 1m11s |
 | [12](12.md) |  [*M25*] | math-medium | solved | 47s |

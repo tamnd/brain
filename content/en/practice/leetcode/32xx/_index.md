@@ -70,6 +70,7 @@ draft: false
 | 3257 | [Maximum Value Sum by Placing Three Rooks II](3257.md) | 🔴 Hard | 1m 18s | We are given an m x n matrix called board, where each cell contains… |
 | 3258 | [Count Substrings That Satisfy K-Constraint I](3258.md) | 🟢 Easy | 1m 9s | The problem gives us a binary string s, meaning the string contains… |
 | 3259 | [Maximum Energy Boost From Two Drinks](3259.md) | 🟡 Medium | 54s | This problem is asking you to plan the consumption of two energy dr… |
+| 3260 | [Find the Largest Palindrome Divisible by K](3260.md) | 🔴 Hard | 1m 27s | The problem asks us to construct the largest possible palindrome wi… |
 | 3261 | [Count Substrings That Satisfy K-Constraint II](3261.md) | 🔴 Hard | 1m 34s | We are given a binary string s, an integer k, and many range querie… |
 | 3262 | [Find Overlapping Shifts](3262.md) | 🟡 Medium | 1m 43s | The problem requires counting overlapping shifts for each employee … |
 | 3263 | [Convert Doubly Linked List to Array I](3263.md) | 🟢 Easy | 51s | The problem asks us to convert a doubly linked list into a standard… |
@@ -79,6 +80,7 @@ draft: false
 | 3267 | [Count Almost Equal Pairs II](3267.md) | 🔴 Hard | 1m 23s | We are given an array nums containing positive integers. We need to… |
 | 3268 | [Find Overlapping Shifts II](3268.md) | 🔴 Hard | 49s | The problem asks us to analyze shift overlaps for employees. We are… |
 | 3269 | [Constructing Two Increasing Arrays](3269.md) | 🔴 Hard | 1m 29s | We are given two binary arrays, nums1 and nums2. Each element is ei… |
+| 3270 | [Find the Key of the Numbers](3270.md) | 🟢 Easy | 1m 6s | The problem gives us three positive integers, num1, num2, and num3.… |
 | 3271 | [Hash Divided String](3271.md) | 🟡 Medium | 52s | The problem asks us to compute a hashed string from an input string… |
 | 3272 | [Find the Count of Good Integers](3272.md) | 🔴 Hard | 1m 15s | The problem asks us to count n-digit integers that are "good" with … |
 | 3273 | [Minimum Amount of Damage Dealt to Bob](3273.md) | 🔴 Hard | 1m 33s | This problem asks us to determine the minimum total damage Bob will… |

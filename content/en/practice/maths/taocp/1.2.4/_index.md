@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.4 — Integer Functions and Elementary Number Theory"
-description: "Section 1.2.4 exercises — 12/46 solved."
+description: "Section 1.2.4 exercises — 42/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.4. Integer Functions and Elementary Number Theory
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.4: 12/46 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.4: 42/46 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -30,37 +30,37 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.4: 12/46 solved.
 | [10](10.md) | &#9654; [*10*] | simple | solved | 32s |
 | [11](11.md) |  [*00*] | immediate | solved | 31s |
 | [12](12.md) |  [*00*] | immediate | solved | 30s |
-| 13 |  [*M00*] | math-immediate | - | - |
-| 14 | &#9654; [*12*] | simple | - | - |
-| 15 |  [*10*] | simple | - | - |
-| 16 |  [*M10*] | math-simple | - | - |
-| 17 |  [*M15*] | math-simple | - | - |
-| 18 |  [*M15*] | math-simple | - | - |
-| 19 | &#9654; [*M10*] | math-simple | - | - |
-| 20 |  [*M15*] | math-simple | - | - |
-| 21 |  [*M22*] | math-medium | - | - |
-| 22 | &#9654; [*M10*] | math-simple | - | - |
-| 23 |  [*M10*] | math-simple | - | - |
-| 24 | &#9654; [*M20*] | math-medium | - | - |
-| 25 |  [*M02*] | math-simple | - | - |
-| 26 |  [*M15*] | math-simple | - | - |
-| 27 |  [*M15*] | math-simple | - | - |
-| 28 | &#9654; [*M25*] | math-medium | - | - |
-| 29 |  [*M22*] | math-medium | - | - |
-| 30 |  [*M30*] | math-hard | - | - |
-| 31 |  [*M22*] | math-medium | - | - |
-| 32 |  [*M18*] | math-medium | - | - |
-| 33 |  [*M18*] | math-medium | - | - |
-| 34 | &#9654; [*M21*] | math-medium | - | - |
+| [13](13.md) |  [*M00*] | math-immediate | solved | 28s |
+| [14](14.md) | &#9654; [*12*] | simple | solved | 30s |
+| [15](15.md) |  [*10*] | simple | solved | 28s |
+| [16](16.md) |  [*M10*] | math-simple | solved | 42s |
+| [17](17.md) |  [*M15*] | math-simple | solved | 28s |
+| [18](18.md) |  [*M15*] | math-simple | solved | 32s |
+| [19](19.md) | &#9654; [*M10*] | math-simple | solved | 32s |
+| [20](20.md) |  [*M15*] | math-simple | solved | 28s |
+| [21](21.md) |  [*M22*] | math-medium | solved | 39s |
+| [22](22.md) | &#9654; [*M10*] | math-simple | solved | 32s |
+| [23](23.md) |  [*M10*] | math-simple | solved | 33s |
+| [24](24.md) | &#9654; [*M20*] | math-medium | solved | 41s |
+| [25](25.md) |  [*M02*] | math-simple | solved | 37s |
+| [26](26.md) |  [*M15*] | math-simple | solved | 39s |
+| [27](27.md) |  [*M15*] | math-simple | solved | 33s |
+| [28](28.md) | &#9654; [*M25*] | math-medium | solved | 36s |
+| [29](29.md) |  [*M22*] | math-medium | solved | 34s |
+| [30](30.md) |  [*M30*] | math-hard | solved | 39s |
+| [31](31.md) |  [*M22*] | math-medium | solved | 24s |
+| [32](32.md) |  [*M18*] | math-medium | solved | 33s |
+| [33](33.md) |  [*M18*] | math-medium | solved | 32s |
+| [34](34.md) | &#9654; [*M21*] | math-medium | solved | 43s |
 | 35 | &#9654; [*M20*] | math-medium | - | - |
-| 36 |  [*M23*] | math-medium | - | - |
-| 37 | &#9654; [*M30*] | math-hard | - | - |
-| 38 |  [*M26*] | math-hard | - | - |
+| [36](36.md) |  [*M23*] | math-medium | solved | 39s |
+| [37](37.md) | &#9654; [*M30*] | math-hard | solved | 57s |
+| [38](38.md) |  [*M26*] | math-hard | solved | 48s |
 | 39 |  [*HM35*] | hm-hard | - | - |
-| 40 |  [*HM46*] | hm-research | - | - |
-| 41 |  [*M23*] | math-medium | - | - |
-| 42 |  [*M24*] | math-medium | - | - |
-| 43 |  [*M23*] | math-medium | - | - |
+| [40](40.md) |  [*HM46*] | hm-research | solved | 53s |
+| [41](41.md) |  [*M23*] | math-medium | solved | 28s |
+| [42](42.md) |  [*M24*] | math-medium | solved | 32s |
+| [43](43.md) |  [*M23*] | math-medium | solved | 39s |
 | 44 |  [*M24*] | math-medium | - | - |
-| 45 | &#9654; [*M28*] | math-hard | - | - |
+| [45](45.md) | &#9654; [*M28*] | math-hard | solved | 40s |
 | 46 |  [*M29*] | math-hard | - | - |
