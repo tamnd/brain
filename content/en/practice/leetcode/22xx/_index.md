@@ -27,7 +27,7 @@ draft: false
 | 2214 | [Minimum Health to Beat Game](2214.md) | 🟡 Medium | 50s | The problem presents a sequential game consisting of n levels, wher… |
 | 2215 | [Find the Difference of Two Arrays](2215.md) | 🟢 Easy | 1m 10s | This problem asks us to compare two integer arrays and identify the… |
 | 2216 | [Minimum Deletions to Make Array Beautiful](2216.md) | 🟡 Medium | 39s | The problem asks us to transform a given integer array nums into a … |
-| 2217 | [Find Palindrome With Fixed Length](2217.md) | 🟡 Medium | 4m 50s | The problem asks us to find specific positive palindromic numbers o… |
+| 2217 | [Find Palindrome With Fixed Length](2217.md) | 🟡 Medium | 6m 49s | The problem asks us to find the k-th smallest positive palindrome o… |
 | 2218 | [Maximum Value of K Coins From Piles](2218.md) | 🔴 Hard | 3m 40s | This problem asks us to maximize the total value of coins collected… |
 | 2219 | [Maximum Sum Score of Array](2219.md) | 🟡 Medium | 1m 18s | The problem gives us a 0-indexed integer array nums of length n and… |
 | 2220 | [Minimum Bit Flips to Convert Number](2220.md) | 🟢 Easy | 42s | The problem asks us to determine the minimum number of bit flips re… |
@@ -97,7 +97,7 @@ draft: false
 | 2284 | [Sender With Largest Word Count](2284.md) | 🟡 Medium | 57s | The problem asks us to analyze a chat log containing n messages and… |
 | 2285 | [Maximum Total Importance of Roads](2285.md) | 🟡 Medium | 55s | Here is the complete technical solution guide for LeetCode 2285 fol… |
 | 2286 | [Booking Concert Tickets in Groups](2286.md) | 🔴 Hard | 1m 42s | The problem asks us to design a ticket reservation system for a con… |
-| 2287 | [Rearrange Characters to Make Target String](2287.md) | 🟢 Easy | 1m | This problem asks us to determine how many copies of a target strin… |
+| 2287 | [Rearrange Characters to Make Target String](2287.md) | 🟢 Easy | 1m 22s | The problem gives us two strings, s and target. We are allowed to t… |
 | 2288 | [Apply Discount to Prices](2288.md) | 🟡 Medium | 44s | The problem asks us to process a string representing a sentence con… |
 | 2289 | [Steps to Make Array Non-decreasing](2289.md) | 🟡 Medium | 47s | The problem asks us to determine how many steps it takes to make a … |
 | 2290 | [Minimum Obstacle Removal to Reach Corner](2290.md) | 🔴 Hard | 1m 20s | This problem gives us a 2D grid where every cell is either empty or… |

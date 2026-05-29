@@ -17,25 +17,25 @@ draft: false
 | 2304 | [Minimum Path Cost in a Grid](2304.md) | 🟡 Medium | 1m 13s | The problem gives us a matrix called grid with m rows and n columns… |
 | 2305 | [Fair Distribution of Cookies](2305.md) | 🟡 Medium | 37s | The problem asks us to distribute a set of cookie bags among k chil… |
 | 2306 | [Naming a Company](2306.md) | 🔴 Hard | 1m 22s | The problem gives us a list of unique strings called ideas. We must… |
-| 2307 | [Check for Contradictions in Equations](2307.md) | 🔴 Hard | 57s | The problem presents a system of multiplicative equations expressed… |
+| 2307 | [Check for Contradictions in Equations](2307.md) | 🔴 Hard | 1m 35s | This problem gives us a collection of equations of the form: Each v… |
 | 2308 | [Arrange Table by Gender](2308.md) | 🟡 Medium | 1m 33s | The problem asks us to rearrange the rows of a Genders table in a s… |
 | 2309 | [Greatest English Letter in Upper and Lower Case](2309.md) | 🟢 Easy | 58s | The problem gives us a string s containing only uppercase and lower… |
 | 2310 | [Sum of Numbers With Units Digit K](2310.md) | 🟡 Medium | 1m 2s | This problem asks us to construct a set of positive integers such t… |
 | 2311 | [Longest Binary Subsequence Less Than or Equal to K](2311.md) | 🟡 Medium | 47s | The problem asks us to find the length of the longest subsequence o… |
 | 2312 | [Selling Pieces of Wood](2312.md) | 🔴 Hard | 57s | The problem presents a rectangular piece of wood of size m x n and … |
 | 2313 | [Minimum Flips in Binary Tree to Get Result](2313.md) | 🔴 Hard | 35s | The problem presents a binary tree where leaf nodes represent boole… |
-| 2314 | [The First Day of the Maximum Recorded Degree in Each City](2314.md) | 🟡 Medium | 1m 29s | The problem provides a database table named Weather that stores tem… |
+| 2314 | [The First Day of the Maximum Recorded Degree in Each City](2314.md) | 🟡 Medium | 1m 34s | The problem gives us a database table named Weather that stores tem… |
 | 2315 | [Count Asterisks](2315.md) | 🟢 Easy | 1m 2s | The problem gives us a string s containing lowercase English letter… |
-| 2316 | [Count Unreachable Pairs of Nodes in an Undirected Graph](2316.md) | 🟡 Medium | 46s | This problem asks us to determine how many pairs of nodes in an und… |
+| 2316 | [Count Unreachable Pairs of Nodes in an Undirected Graph](2316.md) | 🟡 Medium | 54s | The problem asks us to find the number of pairs of nodes in an undi… |
 | 2317 | [Maximum XOR After Operations ](2317.md) | 🟡 Medium | 1m 5s | The problem gives us an integer array nums, and we may perform a sp… |
 | 2318 | [Number of Distinct Roll Sequences](2318.md) | 🔴 Hard | 39s | The problem is asking us to compute the total number of distinct se… |
-| 2319 | [Check if Matrix Is X-Matrix](2319.md) | 🟢 Easy | 1m 19s | The problem gives us a square matrix grid of size n x n. We must de… |
+| 2319 | [Check if Matrix Is X-Matrix](2319.md) | 🟢 Easy | 1m 25s | The problem gives us a square matrix grid of size n x n. We must de… |
 | 2320 | [Count Number of Ways to Place Houses](2320.md) | 🟡 Medium | 46s | The problem presents a street with n plots on each side, for a tota… |
 | 2321 | [Maximum Score Of Spliced Array](2321.md) | 🔴 Hard | 48s | The problem presents two integer arrays, nums1 and nums2, of equal … |
 | 2322 | [Minimum Score After Removals on a Tree](2322.md) | 🔴 Hard | 43s | That is a long, multi-section technical guide with code, worked exa… |
 | 2323 | [Find Minimum Time to Finish All Jobs II](2323.md) | 🟡 Medium | 1m 1s | This problem asks us to assign jobs to workers in a way that minimi… |
-| 2324 | [Product Sales Analysis IV](2324.md) | 🟡 Medium | 1m 29s | This problem gives us two database tables, Sales and Product. The S… |
-| 2325 | [Decode the Message](2325.md) | 🟢 Easy | 49s | This problem is asking us to decode a message using a substitution … |
+| 2324 | [Product Sales Analysis IV](2324.md) | 🟡 Medium | 54s | This problem asks us to analyze sales data to determine which produ… |
+| 2325 | [Decode the Message](2325.md) | 🟢 Easy | 57s | This problem is asking us to decode a secret message using a substi… |
 | 2326 | [Spiral Matrix IV](2326.md) | 🟡 Medium | 1m 12s | The problem gives us a linked list and asks us to place its values … |
 | 2327 | [Number of People Aware of a Secret](2327.md) | 🟡 Medium | 1m | The problem describes how a secret spreads over time. On day 1, exa… |
 | 2328 | [Number of Increasing Paths in a Grid](2328.md) | 🔴 Hard | 1m 10s | In this problem, we are given a two dimensional matrix called grid.… |

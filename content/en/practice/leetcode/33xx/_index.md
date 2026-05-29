@@ -22,6 +22,7 @@ draft: false
 | 3309 | [Maximum Possible Number by Binary Concatenation](3309.md) | 🟡 Medium | 1m 4s | The problem is asking for the maximum integer value that can be cre… |
 | 3311 | [Construct 2D Grid Matching Graph Layout](3311.md) | 🔴 Hard | 1m 55s | The problem gives us an undirected graph with n nodes labeled from … |
 | 3312 | [Sorted GCD Pair Queries](3312.md) | 🔴 Hard | 40s | === 1996-G1 === Origin: GBR Let triangle have orthocenter , and let… |
+| 3314 | [Construct the Minimum Bitwise Array I](3314.md) | 🟢 Easy | 52s | The problem asks us to construct an array ans from a given array nu… |
 | 3315 | [Construct the Minimum Bitwise Array II](3315.md) | 🟡 Medium | 1m 28s | We are given an array nums where every element is a prime number. F… |
 | 3316 | [Find Maximum Removals From Source String](3316.md) | 🟡 Medium | 1m 30s | We are given three inputs: - source, the original string of length … |
 | 3317 | [Find the Number of Possible Ways for an Event](3317.md) | 🔴 Hard | 1m 38s | The problem describes an event with n performers and x available st… |
@@ -35,6 +36,7 @@ draft: false
 | 3325 | [Count Substrings With K-Frequency Characters I](3325.md) | 🟡 Medium | 1m 9s | The problem asks us to count all substrings of a given string s suc… |
 | 3326 | [Minimum Division Operations to Make Array Non Decreasing](3326.md) | 🟡 Medium | 1m 22s | The problem asks us to make a given integer array nums non-decreasi… |
 | 3327 | [Check if DFS Strings Are Palindromes](3327.md) | 🔴 Hard | 1m 43s | We are given a rooted tree with n nodes. Node 0 is the root, and th… |
+| 3328 | [Find Cities in Each State II](3328.md) | 🟡 Medium | 1m 36s | The problem gives us a database table named cities, where each row … |
 | 3329 | [Count Substrings With K-Frequency Characters II](3329.md) | 🔴 Hard | 1m 41s | The problem asks us to count how many substrings of a given string … |
 | 3330 | [Find the Original Typed String I](3330.md) | 🟢 Easy | 55s | This problem asks us to determine the number of possible original s… |
 | 3331 | [Find Subtree Sizes After Changes](3331.md) | 🟡 Medium | 1m 44s | We are given a rooted tree with n nodes numbered from 0 to n - 1. T… |
@@ -47,6 +49,9 @@ draft: false
 | 3341 | [Find Minimum Time to Reach Last Room I](3341.md) | 🟡 Medium | 1m 20s | The problem is asking for the minimum time required to reach the bo… |
 | 3342 | [Find Minimum Time to Reach Last Room II](3342.md) | 🟡 Medium | 1m 26s | This problem describes a dungeon represented as an n x m grid of ro… |
 | 3343 | [Count Number of Balanced Permutations](3343.md) | 🔴 Hard | 2m 11s | We are given a string num consisting only of digits. We may rearran… |
+| 3344 | [Maximum Sized Array](3344.md) | 🟡 Medium | 6m 44s | We are given a non-negative integer s and need to determine the lar… |
 | 3345 | [Smallest Divisible Digit Product I](3345.md) | 🟢 Easy | 1m 43s | The problem gives us two integers, n and t. We must find the smalle… |
 | 3346 | [Maximum Frequency of an Element After Performing Operations I](3346.md) | 🟡 Medium | 2m 29s | The problem gives us an integer array nums, along with two integers… |
 | 3347 | [Maximum Frequency of an Element After Performing Operations II](3347.md) | 🔴 Hard | 1m 58s | The problem gives us an integer array nums, along with two integers… |
+| 3349 | [Adjacent Increasing Subarrays Detection I](3349.md) | 🟢 Easy | 1m 47s | The problem gives us an integer array nums and an integer k. We nee… |
+| 3350 | [Adjacent Increasing Subarrays Detection II](3350.md) | 🟡 Medium | 1m 15s | The problem asks us to find the largest possible length k such that… |
