@@ -22,3 +22,10 @@ draft: false
 | 3309 | [Maximum Possible Number by Binary Concatenation](3309.md) | 🟡 Medium | 1m 4s | The problem is asking for the maximum integer value that can be cre… |
 | 3311 | [Construct 2D Grid Matching Graph Layout](3311.md) | 🔴 Hard | 1m 55s | The problem gives us an undirected graph with n nodes labeled from … |
 | 3312 | [Sorted GCD Pair Queries](3312.md) | 🔴 Hard | 40s | === 1996-G1 === Origin: GBR Let triangle have orthocenter , and let… |
+| 3315 | [Construct the Minimum Bitwise Array II](3315.md) | 🟡 Medium | 1m 28s | We are given an array nums where every element is a prime number. F… |
+| 3316 | [Find Maximum Removals From Source String](3316.md) | 🟡 Medium | 1m 30s | We are given three inputs: - source, the original string of length … |
+| 3317 | [Find the Number of Possible Ways for an Event](3317.md) | 🔴 Hard | 1m 38s | The problem describes an event with n performers and x available st… |
+| 3318 | [Find X-Sum of All K-Long Subarrays I](3318.md) | 🟢 Easy | 2m | The problem asks us to compute a special value called the x-sum for… |
+| 3319 | [K-th Largest Perfect Subtree Size in Binary Tree](3319.md) | 🟡 Medium | 1m 36s | We are given the root of a binary tree and an integer k. Our goal i… |
+| 3320 | [Count The Number of Winning Sequences](3320.md) | 🔴 Hard | 1m 35s | We are given a string s representing Alice’s moves across n rounds … |
+| 3321 | [Find X-Sum of All K-Long Subarrays II](3321.md) | 🔴 Hard | 1m 14s | The problem asks us to compute a specialized sum, called the x-sum,… |
