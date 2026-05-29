@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 263 contests, 1162 problems, 957 verified."
+description: "Codeforces problem solutions with full editorial. 264 contests, 1164 problems, 959 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**263 contests, 1162 problems, 957 verified.**
+**264 contests, 1164 problems, 959 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -276,5 +276,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [267](267/) | [Codeforces Testing Round 5](https://codeforces.com/contest/267) | Special | 900-2000 | 2/2 | 4m 20s |
 | [268](268/) | [Codeforces Round 164 (Div. 2)](https://codeforces.com/contest/268) | Div. 2 | 800-2300 | 3/4 | 7m 8s |
 | [269](269/) | [Codeforces Round 165 (Div. 1)](https://codeforces.com/contest/269) | Div. 1 | 1700-3100 | 2/4 | 7m 2s |
+| [270](270/) | [Codeforces Round 165 (Div. 2)](https://codeforces.com/contest/270) | Div. 2 | 1100-1400 | 2/2 | 3m 31s |
 | [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 3m 30s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
