@@ -11,13 +11,18 @@ draft: false
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
 | 3200 | [Maximum Height of a Triangle](3200.md) | 🟢 Easy | 1m 13s | The problem gives us two integers, red and blue, representing the n… |
+| 3201 | [Find the Maximum Length of Valid Subsequence I](3201.md) | 🟡 Medium | 1m 41s | The problem asks us to find the longest subsequence in an integer a… |
 | 3202 | [Find the Maximum Length of Valid Subsequence II](3202.md) | 🟡 Medium | 54s | This problem asks us to find the length of the longest subsequence … |
+| 3203 | [Find Minimum Diameter After Merging Two Trees](3203.md) | 🔴 Hard | 2m 13s | We are given two separate undirected trees. The first tree contains… |
 | 3204 | [Bitwise User Permissions Analysis](3204.md) | 🟡 Medium | 55s | The problem is asking us to analyze a table of user permissions whe… |
+| 3205 | [Maximum Array Hopping Score I](3205.md) | 🟡 Medium | 1m 32s | The problem asks us to calculate the maximum score achievable by ho… |
 | 3207 | [Maximum Points After Enemy Battles](3207.md) | 🟡 Medium | 1m 8s | The problem gives us a list of enemies, where each enemy has an ass… |
 | 3208 | [Alternating Groups II](3208.md) | 🟡 Medium | 1m 12s | The problem gives us a circular array called colors, where each val… |
 | 3209 | [Number of Subarrays With AND Value of K](3209.md) | 🔴 Hard | 1m 17s | The problem asks us to count how many contiguous subarrays of nums … |
 | 3210 | [Find the Encrypted String](3210.md) | 🟢 Easy | 51s | The problem asks us to implement a custom string encryption algorit… |
+| 3211 | [Generate Binary Strings Without Adjacent Zeros](3211.md) | 🟡 Medium | 1m 10s | The problem asks us to generate every binary string of length n suc… |
 | 3212 | [Count Submatrices With Equal Frequency of X and Y](3212.md) | 🟡 Medium | 50s | The problem asks us to count submatrices within a given 2D characte… |
+| 3213 | [Construct String with Minimum Cost](3213.md) | 🔴 Hard | 56s | The problem asks us to construct a target string target by repeated… |
 | 3214 | [Year on Year Growth Rate](3214.md) | 🔴 Hard | 1m 22s | This problem asks us to compute the year-on-year, often abbreviated… |
 | 3215 | [Count Triplets with Even XOR Set Bits II](3215.md) | 🟡 Medium | 54s | The problem asks us to count the number of triplets (a[i], b[j], c[… |
 | 3216 | [Lexicographically Smallest String After a Swap](3216.md) | 🟢 Easy | 51s | The problem requires transforming a string of digits into its lexic… |
@@ -45,3 +50,7 @@ draft: false
 | 3242 | [Design Neighbor Sum Service](3242.md) | 🟢 Easy | 3m 28s | The problem asks us to design a service that works on a square matr… |
 | 3244 | [Shortest Distance After Road Addition Queries II](3244.md) | 🔴 Hard | 59s | The problem presents a sequence of n cities numbered from 0 to n - … |
 | 3245 | [Alternating Groups III](3245.md) | 🔴 Hard | 1m 45s | We are given a circular array called colors, where each element is … |
+| 3246 | [Premier League Table Ranking](3246.md) | 🟢 Easy | 1m 32s | This problem asks us to generate a league standings table from a da… |
+| 3247 | [Number of Subsequences with Odd Sum](3247.md) | 🟡 Medium | 1m 49s | The problem asks us to count how many subsequences of the given arr… |
+| 3249 | [Count the Number of Good Nodes](3249.md) | 🟡 Medium | 2m 13s | We are given an undirected tree with n nodes labeled from 0 to n - … |
+| 3250 | [Find the Count of Monotonic Pairs I](3250.md) | 🔴 Hard | 1m 29s | The problem asks us to count the number of valid pairs of arrays (a… |

@@ -38,11 +38,13 @@ draft: false
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
 | 3029 | [Minimum Time to Revert Word to Initial State I](3029.md) | 🟡 Medium | 1m 29s | The problem gives us a string word and an integer k. Every second, … |
 | 3030 | [Find the Grid of Region Average](3030.md) | 🟡 Medium | 1m 19s | We are given an m × n grayscale image where each cell contains an i… |
-| 3031 | [Minimum Time to Revert Word to Initial State II](3031.md) | 🔴 Hard | 55s | This problem requires determining the minimum number of operations … |
-| 3032 | [Count Numbers With Unique Digits II](3032.md) | 🟢 Easy | 1m 2s | This problem asks us to count how many integers in the inclusive ra… |
-| 3034 | [Number of Subarrays That Match a Pattern I](3034.md) | 🟡 Medium | 1m 19s | The problem gives us two arrays: - nums, an integer array of length… |
-| 3036 | [Number of Subarrays That Match a Pattern II](3036.md) | 🔴 Hard | 1m 39s | The problem gives us two arrays: - nums, an integer array of length… |
-| 3037 | [Find Pattern in Infinite Stream II](3037.md) | 🔴 Hard | 1m 11s | This problem gives us a binary pattern and access to an infinite bi… |
+| 3031 | [Minimum Time to Revert Word to Initial State II](3031.md) | 🔴 Hard | 1m 27s | The problem requires simulating a repetitive transformation on a st… |
+| 3032 | [Count Numbers With Unique Digits II](3032.md) | 🟢 Easy | 1m 29s | The problem asks us to count how many integers in the inclusive ran… |
+| 3033 | [Modify the Matrix](3033.md) | 🟢 Easy | 1m 22s | The problem is asking us to take a given m x n matrix, potentially … |
+| 3034 | [Number of Subarrays That Match a Pattern I](3034.md) | 🟡 Medium | 1m 36s | The problem asks us to count how many contiguous subarrays of nums … |
+| 3035 | [Maximum Palindromes After Operations](3035.md) | 🟡 Medium | 1m 43s | This problem gives us an array of strings, words, and allows us to … |
+| 3036 | [Number of Subarrays That Match a Pattern II](3036.md) | 🔴 Hard | 1m 13s | This guide will be very long, likely exceeding a single message cle… |
+| 3037 | [Find Pattern in Infinite Stream II](3037.md) | 🔴 Hard | 1m 16s | The problem requires us to detect the first occurrence of a binary … |
 | 3038 | [Maximum Number of Operations With the Same Score I](3038.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and defines a very speci… |
 | 3039 | [Apply Operations to Make String Empty](3039.md) | 🟡 Medium | 1m 2s | We are given a lowercase English string s. An operation consists of… |
 | 3040 | [Maximum Number of Operations With the Same Score II](3040.md) | 🟡 Medium | 1m 12s | The problem presents an array nums of integers and defines an opera… |
