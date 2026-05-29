@@ -15,7 +15,7 @@ draft: false
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m39s |
-| [2](2.md) | solved | 30m50s |
+| [2](2.md) | solved | 32m46s |
 | [3](3.md) | solved | 6m53s |
 | [4](4.md) | ✓ verified | 10m53s |
 | 5 | — | — |
@@ -27,7 +27,7 @@ Three players $A, B$ and $C$ play the following game: On each of three cards an 
 
 This process (shuffling, dealing, giving out counters) takes place for at least two rounds. After the last round, $A$ has 20 counters in all, $B$ has 10 and $C$ has 9. At the last round $B$ received $r$ counters. Who received $q$ counters on the first round?
 
-**Problem 2** &nbsp; *solved* · 30m50s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 32m46s · [Solution →](2.md)
 
 In the triangle $ABC$, prove that there is a point $D$ on side $AB$ such that $CD$ is the geometric mean of $AD$ and $DB$ if and only if $$
 \sin{A} \sin{B} \leq \sin^2 \frac{C}{2}.
