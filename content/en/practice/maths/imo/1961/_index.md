@@ -1,6 +1,6 @@
 ---
 title: "IMO 1961"
-description: "IMO 1961 — 2/6 solved, 1 verified."
+description: "IMO 1961 — 3/6 solved, 2 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1961
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1961
 
-[Official IMO 1961 problems](https://www.imo-official.org/year_info.aspx?year=1961) &nbsp;·&nbsp; 2/6 solved, 1 verified.
+[Official IMO 1961 problems](https://www.imo-official.org/year_info.aspx?year=1961) &nbsp;·&nbsp; 3/6 solved, 2 verified.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | ✓ verified | 4m48s |
 | 2 | — | — |
 | [3](3.md) | solved | 39m28s |
 | 4 | — | — |
 | 5 | — | — |
 | [6](6.md) | ✓ verified | 3m04s |
 
-**Problem 1**
+**Problem 1** &nbsp; *✓ verified* · 4m48s · [Solution →](1.md)
 
 (*Hungary*) Solve the system of equations:
 
