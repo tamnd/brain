@@ -22,7 +22,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.1: 9/9 solved.
 | [2](02.md) |  [*15*] | simple | verified | 1m05s |
 | [3](03.md) |  [*20*] | medium | solved | 7m20s |
 | [4](04.md) |  [*16*] | medium | verified | 1m11s |
-| [5](05.md) | &#9654; [*12*] | simple | solved | 42s |
+| [5](05.md) | &#9654; [*12*] | simple | solved | 6m18s |
 | [6](06.md) |  [*20*] | medium | solved | 49s |
 | [7](07.md) | &#9654; [*M21*] | math-medium | solved | 43s |
 | [8](08.md) |  [*M25*] | math-medium | solved | 48s |
