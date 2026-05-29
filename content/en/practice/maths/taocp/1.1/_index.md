@@ -26,4 +26,4 @@ Exercises from [TAOCP Volume 1](../) Section 1.1: 9/9 solved.
 | [6](06.md) |  [*20*] | medium | verified | 47s |
 | [7](07.md) | &#9654; [*M21*] | math-medium | verified | 48s |
 | [8](08.md) |  [*M25*] | math-medium | verified | 4m45s |
-| [9](09.md) | &#9654; [*M30*] | math-hard | solved | 1m08s |
+| [9](09.md) | &#9654; [*M30*] | math-hard | solved | 4m24s |
