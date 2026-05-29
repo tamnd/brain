@@ -1,6 +1,6 @@
 ---
 title: "IMO 1971"
-description: "IMO 1971 — 6/6 solved."
+description: "IMO 1971 — 6/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1971
@@ -10,13 +10,13 @@ draft: false
 
 # IMO 1971
 
-[Official IMO 1971 problems](https://www.imo-official.org/year_info.aspx?year=1971) &nbsp;·&nbsp; 6/6 solved.
+[Official IMO 1971 problems](https://www.imo-official.org/year_info.aspx?year=1971) &nbsp;·&nbsp; 6/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 43m36s |
-| [2](2.md) | solved | 18m01s |
-| [3](3.md) | solved | 11m41s |
+| [2](2.md) | solved | 9m05s |
+| [3](3.md) | ✓ verified | 3m43s |
 | [4](4.md) | solved | 7m34s |
 | [5](5.md) | solved | 5m40s |
 | [6](6.md) | solved | 6m25s |
@@ -29,11 +29,11 @@ If $a_1, a_2, \cdots, a_n$ are arbitrary real numbers, then $$
 (a_1 - a_2)(a_1 - a_3) \cdots (a_1 - a_n) + (a_2 - a_1)(a_2 - a_3) \cdots (a_2 - a_n) \\ + \cdots + (a_n - a_1)(a_n - a_2) \cdots (a_n - a_{n - 1}) \geq 0
 $$
 
-**Problem 2** &nbsp; *solved* · 18m01s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 9m05s · [Solution →](2.md)
 
 Consider a convex polyhedron $P_1$ with nine vertices $A_1, A_2, \cdots, A_9$; let $P_i$ be the polyhedron obtained from $P_1$ by a translation that moves vertex $A_1$ to $A_i (i = 2, 3, \cdots, 9)$. Prove that at least two of the polyhedra $P_1, P_2, \cdots, P_9$ have an interior point in common.
 
-**Problem 3** &nbsp; *solved* · 11m41s · [Solution →](3.md)
+**Problem 3** &nbsp; *✓ verified* · 3m43s · [Solution →](3.md)
 
 Prove that the set of integers of the form $2^k - 3 (k = 2, 3, \cdots)$ contains an infinite subset in which every two members are relatively prime.
 

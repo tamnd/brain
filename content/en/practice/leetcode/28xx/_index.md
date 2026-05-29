@@ -87,13 +87,13 @@ draft: false
 | 2874 | [Maximum Value of an Ordered Triplet II](2874.md) | 🟡 Medium | 1m 21s | The problem gives us a 0-indexed integer array nums and asks us to … |
 | 2875 | [Minimum Size Subarray in Infinite Array](2875.md) | 🟡 Medium | 1m 17s | This problem gives us a finite array nums, but asks us to imagine a… |
 | 2876 | [Count Visited Nodes in a Directed Graph](2876.md) | 🔴 Hard | 47s | The problem presents a directed graph with n nodes, where each node… |
-| 2877 | [Create a DataFrame from List](2877.md) | 🟢 Easy | 1m | The problem asks us to create a Pandas DataFrame from a given two d… |
-| 2878 | [Get the Size of a DataFrame](2878.md) | 🟢 Easy | 49s | This problem asks us to determine the size of a pandas DataFrame na… |
-| 2879 | [Display the First Three Rows](2879.md) | 🟢 Easy | 52s | This problem provides a Pandas DataFrame named employees with four … |
+| 2877 | [Create a DataFrame from List](2877.md) | 🟢 Easy | 1m | This problem asks us to create a Pandas DataFrame from a given two … |
+| 2878 | [Get the Size of a DataFrame](2878.md) | 🟢 Easy | 55s | The problem asks us to determine the size of a DataFrame named play… |
+| 2879 | [Display the First Three Rows](2879.md) | 🟢 Easy | 50s | The problem requires displaying the first three rows of a given Dat… |
 | 2880 | [Select Data](2880.md) | 🟢 Easy | 1m 4s | This problem provides a pandas DataFrame named students with three … |
-| 2881 | [Create a New Column](2881.md) | 🟢 Easy | 44s | This problem is asking us to augment an existing DataFrame of emplo… |
-| 2882 | [Drop Duplicate Rows](2882.md) | 🟢 Easy | 45s | The problem is asking us to remove duplicate rows in a DataFrame ba… |
-| 2883 | [Drop Missing Data](2883.md) | 🟢 Easy | 55s | This problem gives us a Pandas DataFrame named students with three … |
+| 2881 | [Create a New Column](2881.md) | 🟢 Easy | 45s | The problem is asking us to modify a given DataFrame named employee… |
+| 2882 | [Drop Duplicate Rows](2882.md) | 🟢 Easy | 54s | The problem asks us to process a DataFrame representing customers a… |
+| 2883 | [Drop Missing Data](2883.md) | 🟢 Easy | 1m | This problem provides a pandas DataFrame named students with three … |
 | 2884 | [Modify Columns](2884.md) | 🟢 Easy | 55s | The problem provides a Pandas DataFrame named employees with two co… |
 | 2885 | [Rename Columns](2885.md) | 🟢 Easy | 45s | This problem is asking us to rename the columns of a given table or… |
 | 2886 | [Change Data Type](2886.md) | 🟢 Easy | 1m 5s | This problem provides a Pandas DataFrame named students with four c… |

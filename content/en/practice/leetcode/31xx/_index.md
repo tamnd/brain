@@ -31,3 +31,10 @@ draft: false
 | 3129 | [Find All Possible Stable Binary Arrays I](3129.md) | 🟡 Medium | 1m 26s | In this problem, we need to count how many binary arrays can be for… |
 | 3133 | [Minimum Array End](3133.md) | 🟡 Medium | 1m 11s | The problem asks us to construct a strictly increasing array nums o… |
 | 3134 | [Find the Median of the Uniqueness Array](3134.md) | 🔴 Hard | 1m 20s | The problem defines a special array called the uniqueness array. Fo… |
+| 3136 | [Valid Word](3136.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given string qualifies a… |
+| 3137 | [Minimum Number of Operations to Make Word K-Periodic](3137.md) | 🟡 Medium | 1m | The problem asks us to transform a given string word of length n in… |
+| 3138 | [Minimum Length of Anagram Concatenation](3138.md) | 🟡 Medium | 1m 15s | The problem gives us a string s that was formed by concatenating se… |
+| 3140 | [Consecutive Available Seats II](3140.md) | 🟡 Medium | 1m 43s | This problem asks us to analyze a cinema seating table and identify… |
+| 3141 | [Maximum Hamming Distances](3141.md) | 🔴 Hard | 54s | The problem asks us to compute the maximum Hamming distance for eac… |
+| 3142 | [Check if Grid Satisfies Conditions](3142.md) | 🟢 Easy | 1m 9s | The problem gives us a two dimensional matrix called grid with m ro… |
+| 3143 | [Maximum Points Inside the Square](3143.md) | 🟡 Medium | 1m 10s | The problem asks us to find the maximum number of points that can b… |
