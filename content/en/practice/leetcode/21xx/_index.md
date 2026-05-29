@@ -14,7 +14,7 @@ draft: false
 | 2101 | [Detonate the Maximum Bombs](2101.md) | 🟡 Medium | 1m 18s | In this problem, each bomb is represented by three integers: its x-… |
 | 2102 | [Sequentially Ordinal Rank Tracker](2102.md) | 🔴 Hard | 1m 27s | The problem asks us to design a data structure that continuously tr… |
 | 2103 | [Rings and Rods](2103.md) | 🟢 Easy | 52s | The problem is asking us to determine how many rods, labeled from 0… |
-| 2104 | [Sum of Subarray Ranges](2104.md) | 🟡 Medium | 1m 11s | The problem asks us to calculate the sum of ranges of all subarrays… |
+| 2104 | [Sum of Subarray Ranges](2104.md) | 🟡 Medium | 1m 45s | The problem gives us an integer array nums, and asks us to compute … |
 | 2105 | [Watering Plants II](2105.md) | 🟡 Medium | 56s | The problem asks us to simulate two gardeners, Alice and Bob, water… |
 | 2106 | [Maximum Fruits Harvested After at Most K Steps](2106.md) | 🔴 Hard | 1m 32s | In this problem, we are given several fruit piles placed on an infi… |
 | 2107 | [Number of Unique Flavors After Sharing K Candies](2107.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array candies, where each value rep… |

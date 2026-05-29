@@ -91,12 +91,14 @@ draft: false
 | 1981 | [Minimize the Difference Between Target and Chosen Elements](1981.md) | 🟡 Medium | 54s | This problem asks us to select exactly one element from each row of… |
 | 1982 | [Find Array Given Subset Sums](1982.md) | 🔴 Hard | 35s | The problem gives us an integer n and an array sums of length 2^n, … |
 | 1983 | [Widest Pair of Indices With Equal Range Sum](1983.md) | 🟡 Medium | 52s | The problem asks us to find the widest subarray (continuous segment… |
+| 1984 | [Minimum Difference Between Highest and Lowest of K Scores](1984.md) | 🟢 Easy | 53s | The problem asks us to find the minimum possible difference between… |
 | 1985 | [Find the Kth Largest Integer in the Array](1985.md) | 🟡 Medium | 43s | This problem asks us to find the kth largest value among a list of … |
 | 1986 | [Minimum Number of Work Sessions to Finish the Tasks](1986.md) | 🟡 Medium | 1m 55s | This problem asks us to schedule a collection of tasks into the min… |
 | 1987 | [Number of Unique Good Subsequences](1987.md) | 🔴 Hard | 44s | The problem asks us to count how many distinct subsequences of a bi… |
 | 1988 | [Find Cutoff Score for Each School](1988.md) | 🟡 Medium | 40s | This problem asks us to compute a minimum score requirement (cutoff… |
 | 1989 | [Maximum Number of People That Can Be Caught in Tag](1989.md) | 🟡 Medium | 37s | The problem describes a line of people represented by a binary arra… |
 | 1990 | [Count the Number of Experiments](1990.md) | 🟡 Medium | 1m 9s | This problem gives us a database table named Experiments. Each row … |
+| 1991 | [Find the Middle Index in Array](1991.md) | 🟢 Easy | 1m 32s | The problem gives us a 0-indexed integer array called nums. We need… |
 | 1993 | [Operations on Tree](1993.md) | 🟡 Medium | 1m 32s | The problem asks us to design a mutable tree-based data structure t… |
 | 1994 | [The Number of Good Subsets](1994.md) | 🔴 Hard | 1m 32s | This problem asks us to count how many subsets of the input array h… |
 | 1995 | [Count Special Quadruplets](1995.md) | 🟢 Easy | 42s | The problem asks us to count the number of distinct quadruplets (a,… |

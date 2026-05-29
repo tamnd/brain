@@ -94,7 +94,7 @@ draft: false
 | 2081 | [Sum of k-Mirror Numbers](2081.md) | 🔴 Hard | 46s | The problem asks us to find the sum of the n smallest k-mirror numb… |
 | 2082 | [The Number of Rich Customers](2082.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Store. Each row in the … |
 | 2083 | [Substrings That Begin and End With the Same Letter](2083.md) | 🟡 Medium | 42s | The problem asks us to count all substrings in a given string s tha… |
-| 2084 | [Drop Type 1 Orders for Customers With Type 0 Orders](2084.md) | 🟡 Medium | 53s | This problem involves filtering orders from a database table accord… |
+| 2084 | [Drop Type 1 Orders for Customers With Type 0 Orders](2084.md) | 🟡 Medium | 1m 39s | In this problem, we are given a database table named Orders. Each r… |
 | 2085 | [Count Common Words With One Occurrence](2085.md) | 🟢 Easy | 1m 18s | This problem gives us two arrays of strings, words1 and words2. Our… |
 | 2086 | [Minimum Number of Food Buckets to Feed the Hamsters](2086.md) | 🟡 Medium | 52s | The problem is asking us to place the minimum number of food bucket… |
 | 2087 | [Minimum Cost Homecoming of a Robot in a Grid](2087.md) | 🟡 Medium | 1m 23s | The problem gives us a robot located on a two dimensional grid. The… |
