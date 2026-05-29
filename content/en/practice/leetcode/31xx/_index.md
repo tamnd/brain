@@ -66,3 +66,9 @@ draft: false
 | 3160 | [Find the Number of Distinct Colors Among the Balls](3160.md) | 🟡 Medium | 1m 23s | The problem gives us limit + 1 balls labeled from 0 to limit. Initi… |
 | 3161 | [Block Placement Queries](3161.md) | 🔴 Hard | 1m 11s | The problem involves simulating operations on an infinite number li… |
 | 3162 | [Find the Number of Good Pairs I](3162.md) | 🟢 Easy | 1m 19s | The problem gives us two integer arrays, nums1 and nums2, along wit… |
+| 3163 | [String Compression III](3163.md) | 🟡 Medium | 1m 11s | The problem asks us to implement a specialized string compression a… |
+| 3165 | [Maximum Sum of Subsequence With Non-adjacent Elements](3165.md) | 🔴 Hard | 1m 31s | This problem asks us to process a sequence of update queries on an … |
+| 3166 | [Calculate Parking Fees and Duration](3166.md) | 🟡 Medium | 1m 18s | This problem asks us to analyze parking transaction records and com… |
+| 3167 | [Better Compression of String](3167.md) | 🟡 Medium | 1m 19s | The problem gives us a compressed string where every character is i… |
+| 3168 | [Minimum Number of Chairs in a Waiting Room](3168.md) | 🟢 Easy | 1m 13s | The problem gives us a string s that represents events happening in… |
+| 3171 | [Find Subarray With Bitwise OR Closest to K](3171.md) | 🔴 Hard | 58s | The problem asks us to find a subarray within a given array nums su… |

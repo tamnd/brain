@@ -41,7 +41,7 @@ draft: false
 | 2928 | [Distribute Candies Among Children I](2928.md) | 🟢 Easy | 51s | The problem asks us to calculate the number of ways to distribute n… |
 | 2929 | [Distribute Candies Among Children II](2929.md) | 🟡 Medium | 56s | The problem asks us to calculate the total number of ways to distri… |
 | 2930 | [Number of Strings Which Can Be Rearranged to Contain Substring](2930.md) | 🟡 Medium | 54s | The problem asks us to count how many strings of length n made of l… |
-| 2931 | [Maximum Spending After Buying Items](2931.md) | 🔴 Hard | 1m 27s | We are given an m x n matrix called values, where each row represen… |
+| 2931 | [Maximum Spending After Buying Items](2931.md) | 🔴 Hard | 1m 27s | We are given an m × n matrix values where each row represents a sho… |
 | 2932 | [Maximum Strong Pair XOR I](2932.md) | 🟢 Easy | 1m 21s | The problem gives us an integer array nums, and we must choose two … |
 | 2934 | [Minimum Operations to Maximize Last Elements in Arrays](2934.md) | 🟡 Medium | 1m 15s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
 | 2935 | [Maximum Strong Pair XOR II](2935.md) | 🔴 Hard | 45s | The problem is asking us to find the maximum XOR value among all st… |
