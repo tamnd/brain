@@ -78,3 +78,4 @@ draft: false
 | 2689 | [Extract Kth Character From The Rope Tree](2689.md) | 🟢 Easy | 1m 39s | The problem gives us a special binary tree called a Rope Tree. Inst… |
 | 2690 | [Infinite Method Object](2690.md) | 🟢 Easy | 39s | This problem asks us to create an infinite-method object, meaning a… |
 | 2695 | [Array Wrapper](2695.md) | 🟢 Easy | 46s | This problem requires us to create a class ArrayWrapper that wraps … |
+| 2696 | [Minimum String Length After Removing Substrings](2696.md) | 🟢 Easy | 1m 11s | The problem gives us a string s that contains only uppercase Englis… |
