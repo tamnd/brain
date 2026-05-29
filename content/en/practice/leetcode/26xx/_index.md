@@ -80,3 +80,5 @@ draft: false
 | 2694 | [Event Emitter](2694.md) | 🟡 Medium | 1m 25s | This problem asks us to design a lightweight event system, similar … |
 | 2695 | [Array Wrapper](2695.md) | 🟢 Easy | 46s | This problem requires us to create a class ArrayWrapper that wraps … |
 | 2696 | [Minimum String Length After Removing Substrings](2696.md) | 🟢 Easy | 1m 11s | The problem gives us a string s that contains only uppercase Englis… |
+| 2698 | [Find the Punishment Number of an Integer](2698.md) | 🟡 Medium | 1m 10s | The problem asks us to compute a special value called the punishmen… |
+| 2699 | [Modify Graph Edge Weights](2699.md) | 🔴 Hard | 1m 25s | This problem gives us an undirected, connected, weighted graph with… |

@@ -48,9 +48,9 @@ draft: false
 | 2435 | [Paths in Matrix Whose Sum Is Divisible by K](2435.md) | 🔴 Hard | 49s | This problem asks us to count the number of paths in a 2D integer m… |
 | 2436 | [Minimum Split Into Subarrays With GCD Greater Than One](2436.md) | 🟡 Medium | 1m 18s | This problem asks us to divide an array into the smallest possible … |
 | 2437 | [Number of Valid Clock Times](2437.md) | 🟢 Easy | 43s | The problem asks us to determine the number of valid times that can… |
-| 2438 | [Range Product Queries of Powers](2438.md) | 🟡 Medium | 47s | The problem asks us to compute the product of certain ranges of pow… |
+| 2438 | [Range Product Queries of Powers](2438.md) | 🟡 Medium | 1m 25s | The problem defines a special array called powers. This array is bu… |
 | 2439 | [Minimize Maximum of Array](2439.md) | 🟡 Medium | 36s | That is a long, structured reference document with multiple require… |
-| 2440 | [Create Components With Same Value](2440.md) | 🔴 Hard | 2m 19s | A complete guide with all requested sections, detailed walkthroughs… |
+| 2440 | [Create Components With Same Value](2440.md) | 🔴 Hard | 42s | This problem is asking us to take an undirected tree where each nod… |
 | 2441 | [Largest Positive Integer That Exists With Its Negative](2441.md) | 🟢 Easy | 57s | The problem requires finding the largest positive integer k in an a… |
 | 2442 | [Count Number of Distinct Integers After Reverse Operations](2442.md) | 🟡 Medium | 1m 15s | The problem gives us an array of positive integers called nums. For… |
 | 2443 | [Sum of Number and Its Reverse](2443.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given non-negative integ… |
