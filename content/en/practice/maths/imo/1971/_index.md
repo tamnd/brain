@@ -17,7 +17,7 @@ draft: false
 | [1](1.md) | solved | 43m36s |
 | [2](2.md) | solved | 9m05s |
 | [3](3.md) | ✓ verified | 3m43s |
-| [4](4.md) | solved | 7m34s |
+| [4](4.md) | solved | 12m37s |
 | [5](5.md) | solved | 5m40s |
 | [6](6.md) | solved | 6m25s |
 
@@ -37,7 +37,7 @@ Consider a convex polyhedron $P_1$ with nine vertices $A_1, A_2, \cdots, A_9$; l
 
 Prove that the set of integers of the form $2^k - 3 (k = 2, 3, \cdots)$ contains an infinite subset in which every two members are relatively prime.
 
-**Problem 4** &nbsp; *solved* · 7m34s · [Solution →](4.md)
+**Problem 4** &nbsp; *solved* · 12m37s · [Solution →](4.md)
 
 All the faces of tetrahedron $ABCD$ are acute-angled triangles. We consider all closed polygonal paths of the form $XYZTX$ defined as follows: $X$ is a point on edge $AB$ distinct from $A$ and $B$; similarly, $Y, Z, T$ are interior points of edges $BC, CD, DA$, respectively. Prove:
 

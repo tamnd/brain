@@ -103,10 +103,10 @@ draft: false
 | 2890 | [Reshape Data: Melt](2890.md) | 🟢 Easy | 49s | This problem asks us to reshape a dataset from a wide format to a l… |
 | 2891 | [Method Chaining](2891.md) | 🟢 Easy | 1m 1s | This problem provides a Pandas DataFrame named animals with four co… |
 | 2892 | [Minimizing Array After Replacing Pairs With Their Product](2892.md) | 🟡 Medium | 1m 6s | The problem gives us an integer array nums and a value k. We are al… |
-| 2893 | [Calculate Orders Within Each Interval](2893.md) | 🟡 Medium | 1m 11s | The problem provides a database table named Orders, where each row … |
-| 2894 | [Divisible and Non-divisible Sums Difference](2894.md) | 🟢 Easy | 1m 3s | The problem gives us two positive integers, n and m. We must examin… |
-| 2895 | [Minimum Processing Time](2895.md) | 🟡 Medium | 1m | In this problem, we are given two arrays: - processorTime, where ea… |
-| 2896 | [Apply Operations to Make Two Strings Equal](2896.md) | 🟡 Medium | 1m 6s | The problem gives us two binary strings, s1 and s2, both of the sam… |
+| 2893 | [Calculate Orders Within Each Interval](2893.md) | 🟡 Medium | 47s | The problem asks us to process an Orders table where each row conta… |
+| 2894 | [Divisible and Non-divisible Sums Difference](2894.md) | 🟢 Easy | 1m 2s | This problem gives us two positive integers, n and m. We need to ex… |
+| 2895 | [Minimum Processing Time](2895.md) | 🟡 Medium | 1m 11s | This problem gives us two arrays: - processorTime, where each value… |
+| 2896 | [Apply Operations to Make Two Strings Equal](2896.md) | 🟡 Medium | 1m 15s | We are given two binary strings, s1 and s2, of the same length n, a… |
 | 2897 | [Apply Operations on Array to Maximize Sum of Squares](2897.md) | 🔴 Hard | 1m 1s | The problem gives us an integer array nums and an integer k. We are… |
 | 2898 | [Maximum Linear Stock Score](2898.md) | 🟡 Medium | 46s | The problem asks us to find a subsequence of a given 1-indexed inte… |
 | 2899 | [Last Visited Integers](2899.md) | 🟢 Easy | 1m 4s | The problem gives us an integer array nums that contains either pos… |
