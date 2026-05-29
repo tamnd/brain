@@ -19,9 +19,9 @@ draft: false
 | 2706 | [Buy Two Chocolates](2706.md) | 🟢 Easy | 48s | The problem is asking us to purchase exactly two chocolates from a … |
 | 2707 | [Extra Characters in a String](2707.md) | 🟡 Medium | 44s | The problem requires breaking a given string s into substrings such… |
 | 2708 | [Maximum Strength of a Group](2708.md) | 🟡 Medium | 50s | The problem is asking to select a non-empty subset of numbers from … |
-| 2709 | [Greatest Common Divisor Traversal](2709.md) | 🔴 Hard | 1m 18s | The problem gives us an array nums, where each position in the arra… |
-| 2710 | [Remove Trailing Zeros From a String](2710.md) | 🟢 Easy | 50s | The problem asks us to remove all trailing zeros from a string that… |
-| 2711 | [Difference of Number of Distinct Values on Diagonals](2711.md) | 🟡 Medium | 1m 17s | The input is an m × n matrix called grid. For every cell (r, c), we… |
+| 2709 | [Greatest Common Divisor Traversal](2709.md) | 🔴 Hard | 1m 1s | Understood. I will provide the complete, detailed reference guide f… |
+| 2710 | [Remove Trailing Zeros From a String](2710.md) | 🟢 Easy | 38s | The problem asks us to remove all trailing zeros from a string repr… |
+| 2711 | [Difference of Number of Distinct Values on Diagonals](2711.md) | 🟡 Medium | 51s | The problem is asking us to compute a new matrix answer based on a … |
 | 2712 | [Minimum Cost to Make All Characters Equal](2712.md) | 🟡 Medium | 1m 2s | We are given a binary string s consisting only of '0' and '1'. The … |
 | 2713 | [Maximum Strictly Increasing Cells in a Matrix](2713.md) | 🔴 Hard | 1m 18s | The problem gives us an m x n matrix where each cell contains an in… |
 | 2714 | [Find Shortest Path with K Hops](2714.md) | 🔴 Hard | 33s | The problem asks us to find the shortest path between two nodes s a… |

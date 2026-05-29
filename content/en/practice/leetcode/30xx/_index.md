@@ -20,7 +20,10 @@ draft: false
 | 3016 | [Minimum Number of Pushes to Type Word II](3016.md) | 🟡 Medium | 52s | The problem asks us to minimize the total number of key presses req… |
 | 3019 | [Number of Changing Keys](3019.md) | 🟢 Easy | 1m 10s | The problem gives us a string s representing keys typed by a user. … |
 | 3021 | [Alice and Bob Playing Flower Game](3021.md) | 🟡 Medium | 1m 20s | The problem describes a turn-based game involving two lanes of flow… |
+| 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums of length 3, where each … |
+| 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 52s | The problem asks us to count the number of valid pairs of points wh… |
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
+| 3031 | [Minimum Time to Revert Word to Initial State II](3031.md) | 🔴 Hard | 55s | This problem requires determining the minimum number of operations … |
 | 3043 | [Find the Length of the Longest Common Prefix](3043.md) | 🟡 Medium | 1m 24s | We are given two arrays of positive integers, arr1 and arr2. The ta… |
 | 3052 | [Maximize Items](3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |
 | 3053 | [Classifying Triangles by Lengths](3053.md) | 🟢 Easy | 1m 21s | The problem requires classifying triangles based on the lengths of … |
