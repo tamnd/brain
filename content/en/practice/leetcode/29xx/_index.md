@@ -78,14 +78,16 @@ draft: false
 | 2966 | [Divide Array Into Arrays With Max Difference](2966.md) | 🟡 Medium | 55s | The problem asks us to divide an integer array nums of size n (wher… |
 | 2967 | [Minimum Cost to Make Array Equalindromic](2967.md) | 🟡 Medium | 1m 45s | We are given an integer array nums. We may repeatedly choose any el… |
 | 2968 | [Apply Operations to Maximize Frequency Score](2968.md) | 🔴 Hard | 1m 19s | This problem asks us to maximize the frequency of the most common v… |
-| 2970 | [Count the Number of Incremovable Subarrays I](2970.md) | 🟢 Easy | 53s | The problem asks us to count all incremovable subarrays of a given … |
-| 2971 | [Find Polygon With the Largest Perimeter](2971.md) | 🟡 Medium | 1m 16s | The problem gives us an array nums, where each value represents a p… |
-| 2973 | [Find Number of Coins to Place in Tree Nodes](2973.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes, rooted at node 0. Eve… |
-| 2974 | [Minimum Number Game](2974.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums with an even number of e… |
+| 2969 | [Minimum Number of Coins for Fruits II](2969.md) | 🔴 Hard | 2m 32s | The problem asks us to determine the minimum number of coins requir… |
+| 2970 | [Count the Number of Incremovable Subarrays I](2970.md) | 🟢 Easy | 49s | The problem asks us to count all subarrays of a given array nums su… |
+| 2971 | [Find Polygon With the Largest Perimeter](2971.md) | 🟡 Medium | 1m 9s | The problem gives us an array nums containing positive integers. Ea… |
+| 2972 | [Count the Number of Incremovable Subarrays II](2972.md) | 🔴 Hard | 1m 21s | The problem gives us an array nums of positive integers and asks us… |
+| 2973 | [Find Number of Coins to Place in Tree Nodes](2973.md) | 🔴 Hard | 52s | The problem gives us a tree with n nodes labeled from 0 to n - 1. T… |
+| 2974 | [Minimum Number Game](2974.md) | 🟢 Easy | 1m 6s | The problem gives us an integer array nums with an even number of e… |
 | 2975 | [Maximum Square Area by Removing Fences From a Field](2975.md) | 🟡 Medium | 1m 21s | The field is represented as a large rectangle whose outer boundarie… |
-| 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 1m 37s | This problem asks us to transform one string into another while min… |
-| 2978 | [Symmetric Coordinates](2978.md) | 🟡 Medium | 51s | The problem asks us to identify symmetric coordinates from a table … |
-| 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 45s | This problem is asking us to determine the largest price of an item… |
+| 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 31s | That is a very large, comprehensive request for a Hard problem, wit… |
+| 2978 | [Symmetric Coordinates](2978.md) | 🟡 Medium | 1m 8s | This problem asks us to identify symmetric coordinate pairs from a … |
+| 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 51s | This problem asks us to determine the largest price that cannot be … |
 | 2980 | [Check if Bitwise OR Has Trailing Zeros](2980.md) | 🟢 Easy | 52s | The problem asks us to determine whether we can select two or more … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |
 | 2982 | [Find Longest Special Substring That Occurs Thrice II](2982.md) | 🟡 Medium | 57s | The problem asks us to find the longest special substring of a stri… |

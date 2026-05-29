@@ -59,23 +59,29 @@ draft: false
 | 3149 | [Find the Minimum Cost Array Permutation](3149.md) | 🔴 Hard | 51s | The problem presents an array nums of length n that is a permutatio… |
 | 3150 | [Invalid Tweets II](3150.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Tweets with two columns… |
 | 3152 | [Special Array II](3152.md) | 🟡 Medium | 1m 22s | We are given an integer array nums and several queries. Each query … |
+| 3153 | [Sum of Digit Differences of All Pairs](3153.md) | 🟡 Medium | 1m 18s | The problem asks us to compute the total digit difference across ev… |
 | 3154 | [Find Number of Ways to Reach the K-th Stair](3154.md) | 🔴 Hard | 1m 8s | Let's dive into a comprehensive solution guide for LeetCode 3154 - … |
 | 3155 | [Maximum Number of Upgradable Servers](3155.md) | 🟡 Medium | 1m 23s | The problem requires calculating the maximum number of servers that… |
 | 3156 | [Employee Task Duration and Concurrent Tasks](3156.md) | 🔴 Hard | 1m 38s | The problem gives us a table named Tasks, where each row represents… |
 | 3157 | [Find the Level of Tree with Minimum Sum](3157.md) | 🟡 Medium | 1m 31s | The problem gives us the root of a binary tree, where every node co… |
+| 3159 | [Find Occurrences of an Element in an Array](3159.md) | 🟡 Medium | 1m 11s | The problem gives us three inputs: - An integer array nums - An int… |
 | 3160 | [Find the Number of Distinct Colors Among the Balls](3160.md) | 🟡 Medium | 1m 23s | The problem gives us limit + 1 balls labeled from 0 to limit. Initi… |
 | 3161 | [Block Placement Queries](3161.md) | 🔴 Hard | 1m 11s | The problem involves simulating operations on an infinite number li… |
 | 3162 | [Find the Number of Good Pairs I](3162.md) | 🟢 Easy | 1m 19s | The problem gives us two integer arrays, nums1 and nums2, along wit… |
 | 3163 | [String Compression III](3163.md) | 🟡 Medium | 1m 11s | The problem asks us to implement a specialized string compression a… |
+| 3164 | [Find the Number of Good Pairs II](3164.md) | 🟡 Medium | 1m 18s | We are given two integer arrays, nums1 and nums2, along with a posi… |
 | 3165 | [Maximum Sum of Subsequence With Non-adjacent Elements](3165.md) | 🔴 Hard | 1m 31s | This problem asks us to process a sequence of update queries on an … |
 | 3166 | [Calculate Parking Fees and Duration](3166.md) | 🟡 Medium | 1m 18s | This problem asks us to analyze parking transaction records and com… |
 | 3167 | [Better Compression of String](3167.md) | 🟡 Medium | 1m 19s | The problem gives us a compressed string where every character is i… |
 | 3168 | [Minimum Number of Chairs in a Waiting Room](3168.md) | 🟢 Easy | 1m 13s | The problem gives us a string s that represents events happening in… |
+| 3169 | [Count Days Without Meetings](3169.md) | 🟡 Medium | 1m 22s | The problem gives us a total number of working days, numbered from … |
+| 3170 | [Lexicographically Minimum String After Removing Stars](3170.md) | 🟡 Medium | 48s | The problem asks us to transform a string s that may contain the ''… |
 | 3171 | [Find Subarray With Bitwise OR Closest to K](3171.md) | 🔴 Hard | 58s | The problem asks us to find a subarray within a given array nums su… |
 | 3172 | [Second Day Verification](3172.md) | 🟢 Easy | 52s | The problem requires identifying users who verified their signup ex… |
 | 3173 | [Bitwise OR of Adjacent Elements](3173.md) | 🟢 Easy | 1m 6s | The problem gives us an integer array nums of length n. We must cre… |
 | 3174 | [Clear Digits](3174.md) | 🟢 Easy | 1m 1s | In this problem, we are given a string s that contains lowercase En… |
 | 3175 | [Find The First Player to win K Games in a Row](3175.md) | 🟡 Medium | 1m 6s | The problem describes a competition where players stand in a queue … |
+| 3177 | [Find the Maximum Length of a Good Subsequence II](3177.md) | 🔴 Hard | 1m 23s | We are given an integer array nums and a non-negative integer k. We… |
 | 3178 | [Find the Child Who Has the Ball After K Seconds](3178.md) | 🟢 Easy | 52s | The problem asks us to simulate a game in which n children, numbere… |
 | 3179 | [Find the N-th Value After K Seconds](3179.md) | 🟡 Medium | 1m 1s | The problem requires computing the value of the last element in an … |
 | 3180 | [Maximum Total Reward Using Operations I](3180.md) | 🟡 Medium | 1m 2s | The problem asks us to maximize a running total reward by selecting… |
