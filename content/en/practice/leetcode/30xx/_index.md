@@ -12,9 +12,15 @@ draft: false
 |---|---|---|---|---|
 | 3000 | [Maximum Area of Longest Diagonal Rectangle](3000.md) | 🟢 Easy | 57s | The input consists of a 2D array dimensions, where each element rep… |
 | 3001 | [Minimum Moves to Capture The Queen](3001.md) | 🟡 Medium | 1m 11s | This problem gives us the positions of three chess pieces on a stan… |
-| 3003 | [Maximize the Number of Partitions After Operations](3003.md) | 🔴 Hard | 1m 21s | The problem gives us a string s and an integer k. We repeatedly par… |
-| 3007 | [Maximum Number That Sum of the Prices Is Less Than or Equal to K](3007.md) | 🟡 Medium | 1m 15s | This problem defines a special "price" for every integer based on i… |
+| 3002 | [Maximum Size of a Set After Removals](3002.md) | 🟡 Medium | 57s | The problem is asking us to maximize the number of unique elements … |
+| 3003 | [Maximize the Number of Partitions After Operations](3003.md) | 🔴 Hard | 1m 9s | The problem asks us to take a string s and an integer k and compute… |
+| 3005 | [Count Elements With Maximum Frequency](3005.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, where every value is po… |
+| 3006 | [Find Beautiful Indices in the Given Array I](3006.md) | 🟡 Medium | 1m 16s | The problem gives us a string s and two smaller strings, a and b. W… |
+| 3007 | [Maximum Number That Sum of the Prices Is Less Than or Equal to K](3007.md) | 🟡 Medium | 56s | The problem asks us to find the largest integer num such that the a… |
 | 3008 | [Find Beautiful Indices in the Given Array II](3008.md) | 🔴 Hard | 1m 24s | The problem gives us a string s and two pattern strings, a and b. W… |
+| 3009 | [Maximum Number of Intersections on the Chart](3009.md) | 🔴 Hard | 1m 15s | I can provide the full guide, but I want to avoid giving you a tech… |
+| 3010 | [Divide an Array Into Subarrays With Minimum Cost I](3010.md) | 🟢 Easy | 1m 18s | The problem asks us to split a given array nums into exactly three … |
+| 3011 | [Find if Array Can Be Sorted](3011.md) | 🟡 Medium | 1m 29s | Here’s the complete, detailed technical solution guide for LeetCode… |
 | 3012 | [Minimize Length of Array Using Operations](3012.md) | 🟡 Medium | 1m 14s | The problem gives us an array of positive integers and allows us to… |
 | 3013 | [Divide an Array Into Subarrays With Minimum Cost II](3013.md) | 🔴 Hard | 1m 33s | We are given an array nums, along with two integers k and dist. We … |
 | 3016 | [Minimum Number of Pushes to Type Word II](3016.md) | 🟡 Medium | 52s | The problem asks us to minimize the total number of key presses req… |
