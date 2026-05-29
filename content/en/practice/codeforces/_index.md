@@ -1,26 +1,6 @@
 ---
 title: "Codeforces Solutions"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-description: "Codeforces problem solutions with full editorial. 264 contests, 1154 problems, 953 verified."
-=======
 description: "Codeforces problem solutions with full editorial. 291 contests, 1237 problems, 1001 verified."
->>>>>>> f3f3a8e6 (codeforces: add contest 407 solutions)
-=======
-description: "Codeforces problem solutions with full editorial. 285 contests, 1218 problems, 1002 verified."
->>>>>>> 6d12e9b8 (codeforces: add contest 295 solutions)
-=======
-description: "Codeforces problem solutions with full editorial. 286 contests, 1219 problems, 1003 verified."
->>>>>>> c3ee5c59 (codeforces: add contest 296 solutions)
-=======
-description: "Codeforces problem solutions with full editorial. 287 contests, 1222 problems, 1005 verified."
->>>>>>> 0fef06c1 (codeforces: add contest 297 solutions)
-=======
-description: "Codeforces problem solutions with full editorial. 288 contests, 1225 problems, 1007 verified."
->>>>>>> 59cfcb8f (codeforces: add contest 300 solutions)
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -31,27 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-**264 contests, 1154 problems, 953 verified.**
-=======
 **291 contests, 1237 problems, 1001 verified.**
->>>>>>> f3f3a8e6 (codeforces: add contest 407 solutions)
-=======
-**285 contests, 1218 problems, 1002 verified.**
->>>>>>> 6d12e9b8 (codeforces: add contest 295 solutions)
-=======
-**286 contests, 1219 problems, 1003 verified.**
->>>>>>> c3ee5c59 (codeforces: add contest 296 solutions)
-=======
-**287 contests, 1222 problems, 1005 verified.**
->>>>>>> 0fef06c1 (codeforces: add contest 297 solutions)
-=======
-**288 contests, 1225 problems, 1007 verified.**
->>>>>>> 59cfcb8f (codeforces: add contest 300 solutions)
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -281,45 +241,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [231](231/) | [Codeforces Round 143 (Div. 2)](https://codeforces.com/contest/231) | Div. 2 | 800-1600 | 3/3 | 5m 32s |
 | [232](232/) | [Codeforces Round 144 (Div. 1)](https://codeforces.com/contest/232) | Div. 1 | 1600-2900 | 2/4 | 17m 15s |
 | [233](233/) | [Codeforces Round 144 (Div. 2)](https://codeforces.com/contest/233) | Div. 2 | 800-1400 | 1/2 | 2m 15s |
-<<<<<<< HEAD
-| [234](234/) | [Codeforces Round 145 (Div. 2, ACM-ICPC Rules)](https://codeforces.com/contest/234) | Div. 2 | 1000-1800 | 2/3 | 3m 51s |
-| [235](235/) | [Codeforces Round 146 (Div. 1)](https://codeforces.com/contest/235) | Div. 1 | 1600-3000 | 3/4 | 11m 16s |
-| [236](236/) | [Codeforces Round 146 (Div. 2)](https://codeforces.com/contest/236) | Div. 2 | 800-1300 | 2/2 | 5m 12s |
-| [237](237/) | [Codeforces Round 147 (Div. 2)](https://codeforces.com/contest/237) | Div. 2 | 1000-2000 | 3/3 | 9m 35s |
-| [238](238/) | [Codeforces Round 148 (Div. 1)](https://codeforces.com/contest/238) | Div. 1 | 1300-2900 | 4/5 | 16m 8s |
-| [239](239/) | [Codeforces Round 148 (Div. 2)](https://codeforces.com/contest/239) | Div. 2 | 1200-1500 | 1/2 | 4m 55s |
-| [240](240/) | [Codeforces Round 145 (Div. 1, ACM-ICPC Rules)](https://codeforces.com/contest/240) | Div. 1 | 2600-2800 | 2/2 | 3m 3s |
-| [241](241/) | [Bayan 2012-2013 Elimination Round (ACM ICPC Rules, English statements)](https://codeforces.com/contest/241) | ICPC/IOI | 1900-2900 | 3/4 | 7m 47s |
-| [242](242/) | [Codeforces Round 149 (Div. 2)](https://codeforces.com/contest/242) | Div. 2 | 1100-2100 | 3/5 | 12m 58s |
-| [243](243/) | [Codeforces Round 150 (Div. 1)](https://codeforces.com/contest/243) | Div. 1 | 1600-3000 | 2/5 | 11m 4s |
-| [244](244/) | [Codeforces Round 150 (Div. 2)](https://codeforces.com/contest/244) | Div. 2 | 900-1600 | 1/2 | 4m 21s |
-| [245](245/) | [CROC-MBTU 2012, Elimination Round (ACM-ICPC)](https://codeforces.com/contest/245) | ICPC/IOI | 800-2200 | 8/8 | 18m 42s |
-| [246](246/) | [Codeforces Round 151 (Div. 2)](https://codeforces.com/contest/246) | Div. 2 | 900-1600 | 3/3 | 4m 21s |
-| [248](248/) | [Codeforces Round 152 (Div. 2)](https://codeforces.com/contest/248) | Div. 2 | 800-2600 | 3/5 | 11m 52s |
-| [249](249/) | [Codeforces Round 152 (Div. 1)](https://codeforces.com/contest/249) | Div. 1 | 2600-2700 | 0/2 | 5m 24s |
-| [250](250/) | [CROC-MBTU 2012, Final Round (Online version, Div. 2)](https://codeforces.com/contest/250) | Div. 2 | 1000-2000 | 2/5 | 11m 54s |
-| [251](251/) | [Codeforces Round 153 (Div. 1)](https://codeforces.com/contest/251) | Div. 1 | 1300-3000 | 2/5 | 26m 57s |
-| [252](252/) | [Codeforces Round 153 (Div. 2)](https://codeforces.com/contest/252) | Div. 2 | 1100-1800 | 1/2 | 3m 28s |
-| [258](258/) | [Codeforces Round 157 (Div. 1)](https://codeforces.com/contest/258) | Div. 1 | 2000-2600 | 1/2 | 6m 43s |
-| [259](259/) | [Codeforces Round 157 (Div. 2)](https://codeforces.com/contest/259) | Div. 2 | 1000-1000 | 1/1 | 1m 8s |
-| [260](260/) | [Codeforces Round 158 (Div. 2)](https://codeforces.com/contest/260) | Div. 2 | 1400-2100 | 0/3 | 5m 48s |
-| [261](261/) | [Codeforces Round 160 (Div. 1)](https://codeforces.com/contest/261) | Div. 1 | 1400-2800 | 3/3 | 6m 1s |
-| [262](262/) | [Codeforces Round 160 (Div. 2)](https://codeforces.com/contest/262) | Div. 2 | 800-800 | 0/1 | 3m 6s |
-| [263](263/) | [Codeforces Round 161 (Div. 2)](https://codeforces.com/contest/263) | Div. 2 | 800-2000 | 1/3 | 5m 38s |
-| [264](264/) | [Codeforces Round 162 (Div. 1)](https://codeforces.com/contest/264) | Div. 1 | 1200-1200 | 1/1 | 1m 5s |
-| [301](301/) | [Codeforces Round 182 (Div. 1)](https://codeforces.com/contest/301) | Div. 1 | 1800-2800 | 5/5 | 17m 11s |
-| [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 4m 57s |
-| [303](303/) | [Codeforces Round 183 (Div. 1)](https://codeforces.com/contest/303) | Div. 1 | 1300-3000 | 3/5 | 15m 59s |
-| [304](304/) | [Codeforces Round 183 (Div. 2)](https://codeforces.com/contest/304) | Div. 2 | 1200-1300 | 2/2 | 5m 19s |
-| [305](305/) | [Codeforces Round 184 (Div. 2)](https://codeforces.com/contest/305) | Div. 2 | 1600-2300 | 5/5 | 7m 58s |
-| [306](306/) | [Testing Round 6](https://codeforces.com/contest/306) | Special | 800-2300 | 1/4 | 10m 15s |
-| [309](309/) | [Croc Champ 2013 - Finals (online version, Div. 1)](https://codeforces.com/contest/309) | Div. 1 | 1900-2900 | 4/4 | 12m 12s |
-| [311](311/) | [Codeforces Round 185 (Div. 1)](https://codeforces.com/contest/311) | Div. 1 | 1300-2500 | 3/4 | 7m 26s |
-| [312](312/) | [Codeforces Round 185 (Div. 2)](https://codeforces.com/contest/312) | Div. 2 | 1100-1100 | 0/1 | 3m 13s |
-| [313](313/) | [Codeforces Round 186 (Div. 2)](https://codeforces.com/contest/313) | Div. 2 | 900-2300 | 1/3 | 5m 39s |
-| [314](314/) | [Codeforces Round 187 (Div. 1)](https://codeforces.com/contest/314) | Div. 1 | 2000-2900 | 2/3 | 6m 22s |
-| [315](315/) | [Codeforces Round 187 (Div. 2)](https://codeforces.com/contest/315) | Div. 2 | 1400-1400 | 1/1 | 1m 25s |
-=======
 | [234](234/) | [Codeforces Round 145 (Div. 2, ACM-ICPC Rules)](https://codeforces.com/contest/234) | Div. 2 | 1000-2000 | 2/5 | 9m 42s |
 | [235](235/) | [Codeforces Round 146 (Div. 1)](https://codeforces.com/contest/235) | Div. 1 | 1600-3000 | 3/4 | 9m 14s |
 | [236](236/) | [Codeforces Round 146 (Div. 2)](https://codeforces.com/contest/236) | Div. 2 | 800-1300 | 2/2 | 4m 32s |
@@ -380,7 +301,18 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [296](296/) | [Codeforces Round 179 (Div. 2)](https://codeforces.com/contest/296) | Div. 2 | 1100-1100 | 1/1 | 57s |
 | [297](297/) | [Codeforces Round 180 (Div. 1)](https://codeforces.com/contest/297) | Div. 1 | 1600-3000 | 2/3 | 4m 3s |
 | [300](300/) | [Codeforces Round 181 (Div. 2)](https://codeforces.com/contest/300) | Div. 2 | 1500-2300 | 2/3 | 5m 24s |
+| [301](301/) | [Codeforces Round 182 (Div. 1)](https://codeforces.com/contest/301) | Div. 1 | 1800-2800 | 5/5 | 17m 11s |
 | [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 3m 30s |
+| [303](303/) | [Codeforces Round 183 (Div. 1)](https://codeforces.com/contest/303) | Div. 1 | 1300-3000 | 3/5 | 15m 59s |
+| [304](304/) | [Codeforces Round 183 (Div. 2)](https://codeforces.com/contest/304) | Div. 2 | 1200-1300 | 2/2 | 5m 19s |
+| [305](305/) | [Codeforces Round 184 (Div. 2)](https://codeforces.com/contest/305) | Div. 2 | 1600-2300 | 5/5 | 7m 58s |
+| [306](306/) | [Testing Round 6](https://codeforces.com/contest/306) | Special | 800-2300 | 1/4 | 10m 15s |
+| [309](309/) | [Croc Champ 2013 - Finals (online version, Div. 1)](https://codeforces.com/contest/309) | Div. 1 | 1900-2900 | 4/4 | 12m 12s |
+| [311](311/) | [Codeforces Round 185 (Div. 1)](https://codeforces.com/contest/311) | Div. 1 | 1300-2500 | 3/4 | 7m 26s |
+| [312](312/) | [Codeforces Round 185 (Div. 2)](https://codeforces.com/contest/312) | Div. 2 | 1100-1100 | 0/1 | 3m 13s |
+| [313](313/) | [Codeforces Round 186 (Div. 2)](https://codeforces.com/contest/313) | Div. 2 | 900-2300 | 1/3 | 5m 39s |
+| [314](314/) | [Codeforces Round 187 (Div. 1)](https://codeforces.com/contest/314) | Div. 1 | 2000-2900 | 2/3 | 6m 22s |
+| [315](315/) | [Codeforces Round 187 (Div. 2)](https://codeforces.com/contest/315) | Div. 2 | 1400-1400 | 1/1 | 1m 25s |
 | [401](401/) | [Codeforces Round 235 (Div. 2)](https://codeforces.com/contest/401) | Div. 2 | 800-2000 | 2/3 | 6m 53s |
 | [402](402/) | [Codeforces Round 236 (Div. 2)](https://codeforces.com/contest/402) | Div. 2 | 1100-2200 | 1/4 | 11m 10s |
 | [403](403/) | [Codeforces Round 236 (Div. 1)](https://codeforces.com/contest/403) | Div. 1 | 2300-2900 | 0/2 | 1m 57s |
@@ -388,5 +320,4 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [405](405/) | [Codeforces Round 238 (Div. 2)](https://codeforces.com/contest/405) | Div. 2 | 900-2300 | 0/4 | 15m 46s |
 | [406](406/) | [Codeforces Round 238 (Div. 1)](https://codeforces.com/contest/406) | Div. 1 | 2200-2800 | 0/2 | 6m 36s |
 | [407](407/) | [Codeforces Round 239 (Div. 1)](https://codeforces.com/contest/407) | Div. 1 | 1600-3100 | 0/4 | 10m 34s |
->>>>>>> f3f3a8e6 (codeforces: add contest 407 solutions)
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
