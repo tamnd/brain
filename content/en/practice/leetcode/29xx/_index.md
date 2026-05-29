@@ -71,4 +71,13 @@ draft: false
 | 2973 | [Find Number of Coins to Place in Tree Nodes](2973.md) | 🔴 Hard | 1m 23s | We are given an undirected tree with n nodes, rooted at node 0. Eve… |
 | 2974 | [Minimum Number Game](2974.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums with an even number of e… |
 | 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 1m 37s | This problem asks us to transform one string into another while min… |
+| 2978 | [Symmetric Coordinates](2978.md) | 🟡 Medium | 51s | The problem asks us to identify symmetric coordinates from a table … |
+| 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 45s | This problem is asking us to determine the largest price of an item… |
+| 2980 | [Check if Bitwise OR Has Trailing Zeros](2980.md) | 🟢 Easy | 52s | The problem asks us to determine whether we can select two or more … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |
+| 2982 | [Find Longest Special Substring That Occurs Thrice II](2982.md) | 🟡 Medium | 57s | The problem asks us to find the longest special substring of a stri… |
+| 2986 | [Find Third Transaction](2986.md) | 🟡 Medium | 1m 3s | The problem provides a database table named Transactions that store… |
+| 2987 | [Find Expensive Cities](2987.md) | 🟢 Easy | 2m 52s | This problem asks us to identify which cities have an average home … |
+| 2988 | [Manager of the Largest Department](2988.md) | 🟡 Medium | 2m 55s | The problem provides an Employees table containing information abou… |
+| 2989 | [Class Performance](2989.md) | 🟡 Medium | 45s | The problem asks us to calculate the difference between the highest… |
+| 2991 | [Top Three Wineries ](2991.md) | 🔴 Hard | 48s | The problem asks us to generate a leaderboard of wineries grouped b… |

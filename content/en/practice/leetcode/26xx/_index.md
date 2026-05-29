@@ -82,12 +82,12 @@ draft: false
 | 2670 | [Find the Distinct Difference Array](2670.md) | 🟢 Easy | 1m 1s | The problem asks us to compute the distinct difference array for a … |
 | 2671 | [Frequency Tracker](2671.md) | 🟡 Medium | 1m 19s | The problem asks us to design a data structure that supports three … |
 | 2672 | [Number of Adjacent Elements With the Same Color](2672.md) | 🟡 Medium | 39s | The problem is asking us to maintain an array of length n where ini… |
-| 2673 | [Make Costs of Paths Equal in a Binary Tree](2673.md) | 🟡 Medium | 48s | The problem presents a perfect binary tree with n nodes, numbered f… |
-| 2674 | [Split a Circular Linked List](2674.md) | 🟡 Medium | 42s | The problem asks us to take a circular linked list of positive inte… |
-| 2675 | [Array of Objects to Matrix](2675.md) | 🔴 Hard | 44s | The problem asks us to transform a potentially complex and nested a… |
-| 2676 | [Throttle](2676.md) | 🟡 Medium | 1m 8s | This problem asks us to implement a throttling mechanism for a func… |
-| 2677 | [Chunk Array](2677.md) | 🟢 Easy | 50s | The problem is asking to split a given array arr into smaller subar… |
-| 2678 | [Number of Senior Citizens](2678.md) | 🟢 Easy | 1m | This problem gives us an array of strings named details. Each strin… |
+| 2673 | [Make Costs of Paths Equal in a Binary Tree](2673.md) | 🟡 Medium | 1m 13s | Edit This problem gives us a perfect binary tree with n nodes, wher… |
+| 2674 | [Split a Circular Linked List](2674.md) | 🟡 Medium | 47s | The problem asks us to take a circular linked list of positive inte… |
+| 2675 | [Array of Objects to Matrix](2675.md) | 🔴 Hard | 38s | The problem is asking us to transform a JSON-like array of objects … |
+| 2676 | [Throttle](2676.md) | 🟡 Medium | 1m 11s | This problem asks us to implement a throttling mechanism for a func… |
+| 2677 | [Chunk Array](2677.md) | 🟢 Easy | 1m 4s | This problem asks us to split an input array into smaller subarrays… |
+| 2678 | [Number of Senior Citizens](2678.md) | 🟢 Easy | 47s | This problem asks us to count the number of passengers in a list wh… |
 | 2679 | [Sum in a Matrix](2679.md) | 🟡 Medium | 1m 38s | The problem gives us a 2D matrix nums, where each row contains inte… |
 | 2680 | [Maximum OR](2680.md) | 🟡 Medium | 1m 2s | The problem gives us an integer array nums and an integer k. In one… |
 | 2681 | [Power of Heroes](2681.md) | 🔴 Hard | 1m 12s | The problem gives us an integer array nums, where each element repr… |

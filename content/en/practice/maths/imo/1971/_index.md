@@ -20,6 +20,9 @@ Prove that the following assertion is true for $n = 3$ and $n = 5$, and that it 
 
 If $a_1, a_2, \cdots, a_n$ are arbitrary real numbers, then $$
 (a_1 - a_2)(a_1 - a_3) \cdots (a_1 - a_n) + (a_2 - a_1)(a_2 - a_3) \cdots (a_2 - a_n) \\ + \cdots + (a_n - a_1)(a_n - a_2) \cdots (a_n - a_{n - 1}) \geq 0
+```
+
+```
 $$
 
 ---
@@ -51,9 +54,6 @@ All the faces of tetrahedron $ABCD$ are acute-angled triangles. We consider all 
 (b) If $\angle DAB + \angle BCD = \angle CDA + \angle ABC$, then there are infinitely many shortest polygonal paths, their common length being $2AC \sin(\alpha / 2)$, where $\alpha = \angle BAC + \angle CAD + \angle DAB$.
 
 ---
-```
-
-```
 
 ---
 
