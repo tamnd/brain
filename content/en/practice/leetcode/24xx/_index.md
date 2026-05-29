@@ -53,20 +53,20 @@ draft: false
 | 2440 | [Create Components With Same Value](2440.md) | 🔴 Hard | 42s | This problem is asking us to take an undirected tree where each nod… |
 | 2441 | [Largest Positive Integer That Exists With Its Negative](2441.md) | 🟢 Easy | 39s | The problem asks us to find the largest positive integer k in a giv… |
 | 2442 | [Count Number of Distinct Integers After Reverse Operations](2442.md) | 🟡 Medium | 1m 15s | The problem gives us an array of positive integers called nums. For… |
-| 2443 | [Sum of Number and Its Reverse](2443.md) | 🟡 Medium | 1m 4s | The problem asks us to determine whether a given non-negative integ… |
-| 2444 | [Count Subarrays With Fixed Bounds](2444.md) | 🔴 Hard | 5m 36s | The problem asks us to count how many contiguous subarrays satisfy … |
-| 2445 | [Number of Nodes With Value One](2445.md) | 🟡 Medium | 1m 11s | Here is a comprehensive technical solution guide for LeetCode 2445,… |
-| 2446 | [Determine if Two Events Have Conflict](2446.md) | 🟢 Easy | 6m 29s | This problem is asking us to determine whether two events on the sa… |
-| 2447 | [Number of Subarrays With GCD Equal to K](2447.md) | 🟡 Medium | 53s | The problem requires counting the number of contiguous subarrays in… |
-| 2448 | [Minimum Cost to Make Array Equal](2448.md) | 🔴 Hard | 1m 7s | The problem gives us two arrays, nums and cost, both of length n. E… |
-| 2449 | [Minimum Number of Operations to Make Arrays Similar](2449.md) | 🔴 Hard | 1m | The problem asks us to transform one array nums into another array … |
+| 2443 | [Sum of Number and Its Reverse](2443.md) | 🟡 Medium | 54s | Here’s a complete, detailed solution guide for LeetCode 2443 - Sum … |
+| 2444 | [Count Subarrays With Fixed Bounds](2444.md) | 🔴 Hard | 1m 5s | This problem asks us to count how many contiguous subarrays satisfy… |
+| 2445 | [Number of Nodes With Value One](2445.md) | 🟡 Medium | 1m 11s | The tree in this problem is not given explicitly through an edge li… |
+| 2446 | [Determine if Two Events Have Conflict](2446.md) | 🟢 Easy | 42s | The problem asks us to determine if two events on the same day over… |
+| 2447 | [Number of Subarrays With GCD Equal to K](2447.md) | 🟡 Medium | 1m 9s | The problem gives us an integer array nums and an integer k. We nee… |
+| 2448 | [Minimum Cost to Make Array Equal](2448.md) | 🔴 Hard | 1m 11s | This guide will use the weighted median optimization approach, whic… |
+| 2449 | [Minimum Number of Operations to Make Arrays Similar](2449.md) | 🔴 Hard | 1m 16s | We are given two arrays, nums and target, of equal length. In a sin… |
 | 2450 | [Number of Distinct Binary Strings After Applying Operations](2450.md) | 🟡 Medium | 1m 23s | The problem asks us to determine how many distinct binary strings c… |
-| 2451 | [Odd String Difference](2451.md) | 🟢 Easy | 3m 10s | In this problem, every string in the input array can be transformed… |
-| 2452 | [Words Within Two Edits of Dictionary](2452.md) | 🟡 Medium | 1m 54s | The problem gives us two arrays of strings, queries and dictionary.… |
-| 2453 | [Destroy Sequential Targets](2453.md) | 🟡 Medium | 3m 50s | This problem asks us to maximize the number of targets that can be … |
-| 2454 | [Next Greater Element IV](2454.md) | 🔴 Hard | 1m 22s | The problem asks us to compute, for every element in the array, the… |
-| 2455 | [Average Value of Even Numbers That Are Divisible by Three](2455.md) | 🟢 Easy | 50s | The problem asks us to compute the average of all integers in an in… |
-| 2456 | [Most Popular Video Creator](2456.md) | 🟡 Medium | 47s | The problem asks us to identify the most popular video creators bas… |
+| 2451 | [Odd String Difference](2451.md) | 🟢 Easy | 1m 10s | The problem gives us an array of strings where every string has the… |
+| 2452 | [Words Within Two Edits of Dictionary](2452.md) | 🟡 Medium | 48s | The problem asks us to identify words in the queries list that can … |
+| 2453 | [Destroy Sequential Targets](2453.md) | 🟡 Medium | 46s | The problem presents a scenario where we have a list of positive in… |
+| 2454 | [Next Greater Element IV](2454.md) | 🔴 Hard | 1m 23s | The problem asks us to compute, for every element in the array, its… |
+| 2455 | [Average Value of Even Numbers That Are Divisible by Three](2455.md) | 🟢 Easy | 45s | The problem asks us to calculate the average of all integers in an … |
+| 2456 | [Most Popular Video Creator](2456.md) | 🟡 Medium | 1m 10s | The problem gives us three parallel arrays: - creators[i] represent… |
 | 2457 | [Minimum Addition to Make Integer Beautiful](2457.md) | 🟡 Medium | 1m 13s | The problem gives us two positive integers, n and target. An intege… |
 | 2458 | [Height of Binary Tree After Subtree Removal Queries](2458.md) | 🔴 Hard | 1m 29s | This problem asks us to process multiple independent subtree remova… |
 | 2459 | [Sort Array by Moving Items to Empty Space](2459.md) | 🔴 Hard | 1m 29s | We are given a permutation of the integers from 0 to n - 1. Every n… |
