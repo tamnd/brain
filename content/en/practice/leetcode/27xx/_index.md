@@ -24,13 +24,14 @@ draft: false
 | 2711 | [Difference of Number of Distinct Values on Diagonals](2711.md) | 🟡 Medium | 51s | The problem is asking us to compute a new matrix answer based on a … |
 | 2712 | [Minimum Cost to Make All Characters Equal](2712.md) | 🟡 Medium | 1m 2s | We are given a binary string s consisting only of '0' and '1'. The … |
 | 2713 | [Maximum Strictly Increasing Cells in a Matrix](2713.md) | 🔴 Hard | 1m 18s | The problem gives us an m x n matrix where each cell contains an in… |
-| 2714 | [Find Shortest Path with K Hops](2714.md) | 🔴 Hard | 33s | The problem asks us to find the shortest path between two nodes s a… |
+| 2714 | [Find Shortest Path with K Hops](2714.md) | 🔴 Hard | 1m 25s | This problem gives us an undirected weighted graph with n nodes and… |
 | 2715 | [Timeout Cancellation](2715.md) | 🟢 Easy | 48s | This problem asks us to implement a cancellable delayed function ex… |
-| 2716 | [Minimize String Length](2716.md) | 🟢 Easy | 52s | The problem gives us a string s consisting of lowercase English let… |
-| 2718 | [Sum of Matrix After Queries](2718.md) | 🟡 Medium | 38s | The problem asks us to calculate the sum of all elements in an n x … |
-| 2719 | [Count of Integers](2719.md) | 🔴 Hard | 52s | The problem asks us to count the number of integers in a given rang… |
+| 2716 | [Minimize String Length](2716.md) | 🟢 Easy | 56s | The problem asks us to minimize the length of a given string s by r… |
+| 2717 | [Semi-Ordered Permutation](2717.md) | 🟢 Easy | 1m 32s | The problem gives us a permutation nums of length n. A permutation … |
+| 2718 | [Sum of Matrix After Queries](2718.md) | 🟡 Medium | 1m 10s | The problem gives us an integer n representing the size of an n x n… |
+| 2719 | [Count of Integers](2719.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many integers lie between two give… |
 | 2720 | [Popularity Percentage](2720.md) | 🔴 Hard | 1m 27s | The Friends table stores friendship relationships between users on … |
-| 2721 | [Execute Asynchronous Functions in Parallel](2721.md) | 🟡 Medium | 36s | The problem requires creating a utility function that executes mult… |
+| 2721 | [Execute Asynchronous Functions in Parallel](2721.md) | 🟡 Medium | 1m 10s | This problem asks us to implement a custom version of Promise.all, … |
 | 2722 | [Join Two Arrays by ID](2722.md) | 🟡 Medium | 45s | The problem asks us to merge two arrays of objects, arr1 and arr2, … |
 | 2724 | [Sort By](2724.md) | 🟢 Easy | 1m 7s | The problem gives us two inputs: an array arr and a function fn. Ou… |
 | 2725 | [Interval Cancellation](2725.md) | 🟢 Easy | 37s | The problem is asking us to implement a cancellable interval functi… |

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974"
-description: "IMO 1974 — 1/6 solved, 1 verified."
+description: "IMO 1974 — 2/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1974
@@ -10,12 +10,12 @@ draft: false
 
 # IMO 1974
 
-[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 1/6 solved, 1 verified.
+[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 2/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m39s |
-| 2 | — | — |
+| [2](2.md) | solved | 17m14s |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
@@ -31,7 +31,7 @@ This process (shuffling, dealing, giving out counters) takes place for at least 
 
 ---
 
-**Problem 2**
+**Problem 2** &nbsp; *solved* · 17m14s · [Solution →](2.md)
 
 In the triangle $ABC$, prove that there is a point $D$ on side $AB$ such that $CD$ is the geometric mean of $AD$ and $DB$ if and only if $$
 \sin{A} \sin{B} \leq \sin^2 \frac{C}{2}.

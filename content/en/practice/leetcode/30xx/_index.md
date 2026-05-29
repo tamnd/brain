@@ -24,6 +24,12 @@ draft: false
 | 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 52s | The problem asks us to count the number of valid pairs of points wh… |
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
 | 3031 | [Minimum Time to Revert Word to Initial State II](3031.md) | 🔴 Hard | 55s | This problem requires determining the minimum number of operations … |
+| 3034 | [Number of Subarrays That Match a Pattern I](3034.md) | 🟡 Medium | 1m 19s | The problem gives us two arrays: - nums, an integer array of length… |
+| 3036 | [Number of Subarrays That Match a Pattern II](3036.md) | 🔴 Hard | 1m 39s | The problem gives us two arrays: - nums, an integer array of length… |
+| 3038 | [Maximum Number of Operations With the Same Score I](3038.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and defines a very speci… |
+| 3040 | [Maximum Number of Operations With the Same Score II](3040.md) | 🟡 Medium | 1m 12s | The problem presents an array nums of integers and defines an opera… |
+| 3041 | [Maximize Consecutive Elements in an Array After Modification](3041.md) | 🔴 Hard | 1m 21s | The problem gives us an array of positive integers. Before selectin… |
+| 3042 | [Count Prefix and Suffix Pairs I](3042.md) | 🟢 Easy | 1m 10s | The problem gives us an array of strings called words. We need to c… |
 | 3043 | [Find the Length of the Longest Common Prefix](3043.md) | 🟡 Medium | 1m 24s | We are given two arrays of positive integers, arr1 and arr2. The ta… |
 | 3052 | [Maximize Items](3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |
 | 3053 | [Classifying Triangles by Lengths](3053.md) | 🟢 Easy | 1m 21s | The problem requires classifying triangles based on the lengths of … |

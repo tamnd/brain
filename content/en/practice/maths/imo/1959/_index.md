@@ -1,6 +1,6 @@
 ---
 title: "IMO 1959"
-description: "IMO 1959 — 6/6 solved, 4 verified."
+description: "IMO 1959 — 6/6 solved, 3 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1959
@@ -10,12 +10,12 @@ draft: false
 
 # IMO 1959
 
-[Official IMO 1959 problems](https://www.imo-official.org/year_info.aspx?year=1959) &nbsp;·&nbsp; 6/6 solved, 4 verified.
+[Official IMO 1959 problems](https://www.imo-official.org/year_info.aspx?year=1959) &nbsp;·&nbsp; 6/6 solved, 3 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 8m04s |
-| [2](2.md) | ✓ verified | 10m11s |
+| [2](2.md) | solved | 15m36s |
 | [3](3.md) | ✓ verified | 3m29s |
 | [4](4.md) | ✓ verified | 13m46s |
 | [5](5.md) | solved | 3m42s |
@@ -25,7 +25,7 @@ draft: false
 
 Prove that $\frac{21n+4}{14n+3}$ is irreducible for every natural number $n$.
 
-**Problem 2** &nbsp; *✓ verified* · 10m11s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 15m36s · [Solution →](2.md)
 
 For what real values of $x$ is
 
