@@ -36,11 +36,11 @@ draft: false
 | 2523 | [Closest Prime Numbers in Range](2523.md) | 🟡 Medium | 1m 15s | The problem asks us to find two prime numbers inside a given inclus… |
 | 2524 | [Maximum Frequency Score of a Subarray](2524.md) | 🔴 Hard | 48s | The problem asks us to compute the maximum frequency score among al… |
 | 2525 | [Categorize Box According to Criteria](2525.md) | 🟢 Easy | 1m 5s | This problem asks us to classify a box into one of four categories … |
-| 2526 | [Find Consecutive Integers from a Data Stream](2526.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure that processes a str… |
-| 2528 | [Maximize the Minimum Powered City](2528.md) | 🔴 Hard | 44s | The problem gives an array stations of length n where each element … |
+| 2526 | [Find Consecutive Integers from a Data Stream](2526.md) | 🟡 Medium | 57s | The problem asks us to design a data structure that continuously pr… |
+| 2528 | [Maximize the Minimum Powered City](2528.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum possible minimum power… |
 | 2529 | [Maximum Count of Positive Integer and Negative Integer](2529.md) | 🟢 Easy | 41s | The problem asks us to determine whether, in a given sorted integer… |
-| 2531 | [Make Number of Distinct Characters Equal](2531.md) | 🟡 Medium | 1m 5s | The problem gives us two lowercase English strings, word1 and word2… |
-| 2532 | [Time to Cross a Bridge](2532.md) | 🔴 Hard | 43s | The problem asks us to simulate the process of transporting n boxes… |
+| 2531 | [Make Number of Distinct Characters Equal](2531.md) | 🟡 Medium | 1m 21s | The problem is a pure inequality with a geometric constraint. The c… |
+| 2532 | [Time to Cross a Bridge](2532.md) | 🔴 Hard | 57s | The problem asks us to simulate a scenario in which k workers trans… |
 | 2533 | [Number of Good Binary Strings](2533.md) | 🟡 Medium | 1m 14s | The problem asks us to count how many binary strings satisfy a very… |
 | 2534 | [Time Taken to Cross the Door](2534.md) | 🔴 Hard | 1m 20s | This problem asks us to simulate how people pass through a single d… |
 | 2535 | [Difference Between Element Sum and Digit Sum of an Array](2535.md) | 🟢 Easy | 1m 3s | The problem gives us an array of positive integers called nums. We … |
