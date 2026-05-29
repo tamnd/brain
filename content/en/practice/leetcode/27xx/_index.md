@@ -12,13 +12,13 @@ draft: false
 |---|---|---|---|---|
 | 2700 | [Differences Between Two Objects](2700.md) | 🟡 Medium | 50s | That is a long-form reference document with multiple substantial se… |
 | 2701 | [Consecutive Transactions with Increasing Amounts](2701.md) | 🔴 Hard | 1m 5s | Before I generate it, there is one important issue to resolve: Leet… |
-| 2702 | [Minimum Operations to Make Numbers Non-positive](2702.md) | 🔴 Hard | 56s | The problem presents a 0-indexed integer array nums and two positiv… |
+| 2702 | [Minimum Operations to Make Numbers Non-positive](2702.md) | 🔴 Hard | 1m 46s | In this problem, we are given an array nums and two integers x and … |
 | 2703 | [Return Length of Arguments Passed](2703.md) | 🟢 Easy | 42s | The problem asks for a function that returns the number of argument… |
 | 2704 | [To Be Or Not To Be](2704.md) | 🟢 Easy | 1m 3s | This problem asks us to implement a very small testing utility that… |
 | 2705 | [Compact Object](2705.md) | 🟡 Medium | 59s | The problem asks us to compact a JSON-like object or array by remov… |
 | 2706 | [Buy Two Chocolates](2706.md) | 🟢 Easy | 48s | The problem is asking us to purchase exactly two chocolates from a … |
-| 2707 | [Extra Characters in a String](2707.md) | 🟡 Medium | 44s | The problem requires breaking a given string s into substrings such… |
-| 2708 | [Maximum Strength of a Group](2708.md) | 🟡 Medium | 50s | The problem is asking to select a non-empty subset of numbers from … |
+| 2707 | [Extra Characters in a String](2707.md) | 🟡 Medium | 47s | The problem asks us to break a string s into non-overlapping substr… |
+| 2708 | [Maximum Strength of a Group](2708.md) | 🟡 Medium | 50s | The problem asks us to select a non-empty subset of integers from a… |
 | 2709 | [Greatest Common Divisor Traversal](2709.md) | 🔴 Hard | 1m 1s | Understood. I will provide the complete, detailed reference guide f… |
 | 2710 | [Remove Trailing Zeros From a String](2710.md) | 🟢 Easy | 38s | The problem asks us to remove all trailing zeros from a string repr… |
 | 2711 | [Difference of Number of Distinct Values on Diagonals](2711.md) | 🟡 Medium | 51s | The problem is asking us to compute a new matrix answer based on a … |

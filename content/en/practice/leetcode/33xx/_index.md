@@ -84,8 +84,10 @@ draft: false
 | 3379 | [Transformed Array](3379.md) | 🟢 Easy | 40s | The problem asks us to transform a given integer array nums into a … |
 | 3380 | [Maximum Area Rectangle With Point Constraints I](3380.md) | 🟡 Medium | 1m 35s | The problem gives us a set of unique points on a 2D plane. We need … |
 | 3382 | [Maximum Area Rectangle With Point Constraints II](3382.md) | 🔴 Hard | 49s | The problem asks us to find the maximum area rectangle that can be … |
+| 3383 | [Minimum Runes to Add to Cast Spell](3383.md) | 🔴 Hard | 1m 56s | We are given a directed graph with n focus points, numbered from 0 … |
 | 3384 | [Team Dominance by Pass Success](3384.md) | 🔴 Hard | 1m 45s | This problem asks us to compute a dominance score for each football… |
 | 3385 | [Minimum Time to Break Locks II](3385.md) | 🔴 Hard | 1m 14s | In this problem, Bob must break a collection of locks, where each l… |
+| 3386 | [Button with Longest Push Time](3386.md) | 🟢 Easy | 1m 17s | The problem gives us a sequence of keyboard button press events. Ea… |
 | 3387 | [Maximize Amount After Two Days of Conversions](3387.md) | 🟡 Medium | 1m 27s | This problem models currency conversions as graph traversal across … |
 | 3388 | [Count Beautiful Splits in an Array](3388.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we want to count how many w… |
 | 3389 | [Minimum Operations to Make Character Frequencies Equal](3389.md) | 🔴 Hard | 43s | The problem requires transforming a given string s into a good stri… |

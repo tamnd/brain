@@ -94,18 +94,19 @@ draft: false
 | 2681 | [Power of Heroes](2681.md) | 🔴 Hard | 1m 23s | The problem asks us to compute the total "power" across every possi… |
 | 2682 | [Find the Losers of the Circular Game](2682.md) | 🟢 Easy | 1m 30s | This problem describes a circular passing game among n friends numb… |
 | 2683 | [Neighboring Bitwise XOR](2683.md) | 🟡 Medium | 40s | The problem presents us with a binary array called derived of lengt… |
-| 2684 | [Maximum Number of Moves in a Grid](2684.md) | 🟡 Medium | 1m 14s | This problem gives us a 2D grid of positive integers. We may start … |
+| 2684 | [Maximum Number of Moves in a Grid](2684.md) | 🟡 Medium | 1m 37s | The problem gives us an m x n matrix called grid, where every cell … |
 | 2685 | [Count the Number of Complete Components](2685.md) | 🟡 Medium | 1m 13s | This problem asks us to count how many connected components in an u… |
 | 2686 | [Immediate Food Delivery III](2686.md) | 🟡 Medium | 1m 7s | This problem asks us to calculate the percentage of immediate food … |
 | 2687 | [Bikes Last Time Used ](2687.md) | 🟢 Easy | 42s | The problem requires us to identify the last time each bike was use… |
+| 2688 | [Find Active Users](2688.md) | 🟡 Medium | 1m 27s | The problem gives us a database table named Users. Each row represe… |
 | 2689 | [Extract Kth Character From The Rope Tree](2689.md) | 🟢 Easy | 1m 31s | Edit This problem asks us to retrieve the k-th character from a str… |
 | 2690 | [Infinite Method Object](2690.md) | 🟢 Easy | 51s | This problem asks us to implement a function that returns an infini… |
 | 2691 | [Immutability Helper](2691.md) | 🔴 Hard | 48s | This problem is asking us to implement an immutability helper for J… |
-| 2692 | [Make Object Immutable](2692.md) | 🟡 Medium | 43s | The problem asks us to take an input object, which can either be a … |
+| 2692 | [Make Object Immutable](2692.md) | 🟡 Medium | 1m 31s | This problem asks us to create an immutable wrapper around a JSON o… |
 | 2693 | [Call Function with Custom Context](2693.md) | 🟡 Medium | 53s | This problem asks us to implement a custom version of JavaScript’s … |
 | 2694 | [Event Emitter](2694.md) | 🟡 Medium | 1m 22s | This problem asks us to design a simplified event system similar to… |
 | 2695 | [Array Wrapper](2695.md) | 🟢 Easy | 52s | This problem asks us to implement a class ArrayWrapper that encapsu… |
 | 2696 | [Minimum String Length After Removing Substrings](2696.md) | 🟢 Easy | 57s | The problem asks us to determine the minimum possible length of a s… |
 | 2697 | [Lexicographically Smallest Palindrome](2697.md) | 🟢 Easy | 1m 5s | The problem gives us a string s consisting only of lowercase Englis… |
-| 2698 | [Find the Punishment Number of an Integer](2698.md) | 🟡 Medium | 1m 10s | The problem asks us to compute a special value called the punishmen… |
+| 2698 | [Find the Punishment Number of an Integer](2698.md) | 🟡 Medium | 1m 17s | The problem asks us to compute a special value called the punishmen… |
 | 2699 | [Modify Graph Edge Weights](2699.md) | 🔴 Hard | 42s | You asked for a complete guide, but the previous message included t… |
