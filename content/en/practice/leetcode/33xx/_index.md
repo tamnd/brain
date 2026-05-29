@@ -41,3 +41,12 @@ draft: false
 | 3332 | [Maximum Points Tourist Can Earn](3332.md) | 🟡 Medium | 52s | The problem asks us to maximize the points a tourist can earn over … |
 | 3334 | [Find the Maximum Factor Score of Array](3334.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum factor score of an array… |
 | 3336 | [Find the Number of Subsequences With Equal GCD](3336.md) | 🔴 Hard | 1m 6s | The problem asks us to count the number of pairs of non-empty disjo… |
+| 3337 | [Total Characters in String After Transformations II](3337.md) | 🔴 Hard | 1m 55s | The problem defines a repeated string transformation process over l… |
+| 3338 | [Second Highest Salary II](3338.md) | 🟡 Medium | 52s | This problem asks us to analyze employee salary data within departm… |
+| 3339 | [Find the Number of K-Even Arrays](3339.md) | 🟡 Medium | 1m 34s | We are given three integers: - n, the length of the array. - m, the… |
+| 3341 | [Find Minimum Time to Reach Last Room I](3341.md) | 🟡 Medium | 1m 20s | The problem is asking for the minimum time required to reach the bo… |
+| 3342 | [Find Minimum Time to Reach Last Room II](3342.md) | 🟡 Medium | 1m 26s | This problem describes a dungeon represented as an n x m grid of ro… |
+| 3343 | [Count Number of Balanced Permutations](3343.md) | 🔴 Hard | 2m 11s | We are given a string num consisting only of digits. We may rearran… |
+| 3345 | [Smallest Divisible Digit Product I](3345.md) | 🟢 Easy | 1m 43s | The problem gives us two integers, n and t. We must find the smalle… |
+| 3346 | [Maximum Frequency of an Element After Performing Operations I](3346.md) | 🟡 Medium | 2m 29s | The problem gives us an integer array nums, along with two integers… |
+| 3347 | [Maximum Frequency of an Element After Performing Operations II](3347.md) | 🔴 Hard | 1m 58s | The problem gives us an integer array nums, along with two integers… |

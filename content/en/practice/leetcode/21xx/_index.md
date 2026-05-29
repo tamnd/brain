@@ -66,10 +66,10 @@ draft: false
 | 2153 | [The Number of Passengers in Each Bus II](2153.md) | 🔴 Hard | 46s | The problem describes a simulation of passengers arriving at a bus … |
 | 2154 | [Keep Multiplying Found Values by Two](2154.md) | 🟢 Easy | 1m 7s | This problem asks us to repeatedly search for a value inside an int… |
 | 2155 | [All Divisions With the Highest Score of a Binary Array](2155.md) | 🟡 Medium | 1m 13s | The problem gives us a binary array nums, meaning every element is … |
-| 2156 | [Find Substring With Given Hash Value](2156.md) | 🔴 Hard | 1m 20s | We are given a string s and a polynomial rolling hash function. For… |
+| 2156 | [Find Substring With Given Hash Value](2156.md) | 🔴 Hard | 1m 33s | This problem asks us to find the earliest substring of length k who… |
 | 2157 | [Groups of Strings](2157.md) | 🔴 Hard | 56s | The problem asks us to group a list of unique lowercase strings bas… |
 | 2158 | [Amount of New Area Painted Each Day](2158.md) | 🔴 Hard | 43s | This problem describes a painting scenario represented as a one-dim… |
-| 2159 | [Order Two Columns Independently](2159.md) | 🟡 Medium | 1m 14s | This problem provides a database table named Data with two integer … |
+| 2159 | [Order Two Columns Independently](2159.md) | 🟡 Medium | 54s | The problem provides a database table named Data with two integer c… |
 | 2160 | [Minimum Sum of Four Digit Number After Splitting Digits](2160.md) | 🟢 Easy | 45s | The problem asks us to take a four-digit integer num and split its … |
 | 2161 | [Partition Array According to Given Pivot](2161.md) | 🟡 Medium | 1m 17s | This problem asks us to rearrange an array around a given pivot val… |
 | 2162 | [Minimum Cost to Set Cooking Time](2162.md) | 🟡 Medium | 1m 18s | This problem asks us to simulate the process of entering a cooking … |
@@ -82,8 +82,8 @@ draft: false
 | 2169 | [Count Operations to Obtain Zero](2169.md) | 🟢 Easy | 44s | The problem asks us to count the number of operations required to r… |
 | 2170 | [Minimum Operations to Make the Array Alternating](2170.md) | 🟡 Medium | 49s | The problem requires transforming a given integer array nums into a… |
 | 2171 | [Removing Minimum Number of Magic Beans](2171.md) | 🟡 Medium | 53s | The problem asks us to remove beans from bags in such a way that al… |
-| 2172 | [Maximum AND Sum of Array](2172.md) | 🔴 Hard | 1m 20s | This problem asks us to distribute numbers into slots in a way that… |
-| 2173 | [Longest Winning Streak](2173.md) | 🔴 Hard | 53s | The problem asks us to compute the longest winning streak for each … |
+| 2172 | [Maximum AND Sum of Array](2172.md) | 🔴 Hard | 1m 34s | This problem asks us to distribute a set of integers into numbered … |
+| 2173 | [Longest Winning Streak](2173.md) | 🔴 Hard | 1m 1s | This problem is asking us to determine the longest sequence of cons… |
 | 2174 | [Remove All Ones With Row and Column Flips II](2174.md) | 🟡 Medium | 4m 20s | The problem gives us an m x n binary matrix where every cell contai… |
 | 2175 | [The Change in Global Rankings](2175.md) | 🟡 Medium | 2m 1s | This problem asks us to determine how the global rankings of nation… |
 | 2176 | [Count Equal and Divisible Pairs in an Array](2176.md) | 🟢 Easy | 56s | The problem gives us a 0-indexed integer array nums and an integer … |
@@ -97,9 +97,9 @@ draft: false
 | 2184 | [Number of Ways to Build Sturdy Brick Wall](2184.md) | 🟡 Medium | 43s | The problem asks us to compute the number of ways to build a wall o… |
 | 2185 | [Counting Words With a Given Prefix](2185.md) | 🟢 Easy | 1m 16s | The problem gives us two inputs: - An array of strings called words… |
 | 2186 | [Minimum Number of Steps to Make Two Strings Anagram II](2186.md) | 🟡 Medium | 49s | The problem asks us to find the minimum number of steps required to… |
-| 2187 | [Minimum Time to Complete Trips](2187.md) | 🟡 Medium | 1m 10s | The problem gives us an array called time, where each element repre… |
+| 2187 | [Minimum Time to Complete Trips](2187.md) | 🟡 Medium | 54s | The problem asks us to determine the minimum time required for a fl… |
 | 2188 | [Minimum Time to Finish the Race](2188.md) | 🔴 Hard | 5m 35s | The problem asks us to find the minimum total time to complete a ra… |
-| 2189 | [Number of Ways to Build House of Cards](2189.md) | 🟡 Medium | 1m | The problem asks us to count how many distinct houses of cards can … |
+| 2189 | [Number of Ways to Build House of Cards](2189.md) | 🟡 Medium | 1m 1s | The problem is asking us to count the number of distinct ways to bu… |
 | 2190 | [Most Frequent Number Following Key In an Array](2190.md) | 🟢 Easy | 2m 20s | The problem asks us to find the integer that appears most frequentl… |
 | 2191 | [Sort the Jumbled Numbers](2191.md) | 🟡 Medium | 37s | The problem asks us to sort an array of integers based on a custom … |
 | 2192 | [All Ancestors of a Node in a Directed Acyclic Graph](2192.md) | 🟡 Medium | 1m 49s | This problem gives us a Directed Acyclic Graph (DAG) with n nodes l… |

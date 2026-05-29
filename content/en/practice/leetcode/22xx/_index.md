@@ -13,9 +13,9 @@ draft: false
 | 2200 | [Find All K-Distant Indices in an Array](2200.md) | 🟢 Easy | 47s | The problem requires identifying all indices in an array nums that … |
 | 2201 | [Count Artifacts That Can Be Extracted](2201.md) | 🟡 Medium | 1m 30s | This problem models an excavation process on a square n x n grid. S… |
 | 2202 | [Maximize the Topmost Element After K Moves](2202.md) | 🟡 Medium | 1m 19s | In this problem, we are given a pile of integers represented as an … |
-| 2203 | [Minimum Weighted Subgraph With the Required Paths](2203.md) | 🔴 Hard | 51s | The problem asks us to find the minimum-weight subgraph of a weight… |
+| 2203 | [Minimum Weighted Subgraph With the Required Paths](2203.md) | 🔴 Hard | 2m 43s | This problem gives us a weighted directed graph with n nodes and a … |
 | 2204 | [Distance to a Cycle in Undirected Graph](2204.md) | 🔴 Hard | 1m 27s | This problem gives us a connected undirected graph with n nodes and… |
-| 2205 | [The Number of Users That Are Eligible for Discount](2205.md) | 🟢 Easy | 48s | The problem asks us to determine how many users are eligible for a … |
+| 2205 | [The Number of Users That Are Eligible for Discount](2205.md) | 🟢 Easy | 1m 51s | The problem gives us a table named Purchases, where each row repres… |
 | 2206 | [Divide Array Into Equal Pairs](2206.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums containing exactly 2 n e… |
 | 2207 | [Maximize Number of Subsequences in a String](2207.md) | 🟡 Medium | 2m 1s | This problem asks us to maximize the number of times a two-characte… |
 | 2208 | [Minimum Operations to Halve Array Sum](2208.md) | 🟡 Medium | 7m 36s | This problem asks us to repeatedly reduce numbers in an array until… |
@@ -23,7 +23,7 @@ draft: false
 | 2210 | [Count Hills and Valleys in an Array](2210.md) | 🟢 Easy | 40s | The problem asks us to identify hills and valleys in an integer arr… |
 | 2211 | [Count Collisions on a Road](2211.md) | 🟡 Medium | 1m 13s | The problem describes a one dimensional road containing cars positi… |
 | 2212 | [Maximum Points in an Archery Competition](2212.md) | 🟡 Medium | 46s | The problem is asking us to determine the optimal way for Bob to di… |
-| 2213 | [Longest Substring of One Repeating Character](2213.md) | 🔴 Hard | 1m 35s | The problem gives us a string s and a sequence of update queries. E… |
+| 2213 | [Longest Substring of One Repeating Character](2213.md) | 🔴 Hard | 3m 11s | The problem gives us an initial string s and a sequence of update o… |
 | 2214 | [Minimum Health to Beat Game](2214.md) | 🟡 Medium | 50s | The problem presents a sequential game consisting of n levels, wher… |
 | 2215 | [Find the Difference of Two Arrays](2215.md) | 🟢 Easy | 1m 10s | This problem asks us to compare two integer arrays and identify the… |
 | 2216 | [Minimum Deletions to Make Array Beautiful](2216.md) | 🟡 Medium | 39s | The problem asks us to transform a given integer array nums into a … |
@@ -51,7 +51,7 @@ draft: false
 | 2238 | [Number of Times a Driver Was a Passenger](2238.md) | 🟡 Medium | 39s | The problem provides a table Rides that records rides between drive… |
 | 2239 | [Find Closest Number to Zero](2239.md) | 🟢 Easy | 57s | The problem gives us an integer array nums, and we need to return t… |
 | 2240 | [Number of Ways to Buy Pens and Pencils](2240.md) | 🟡 Medium | 54s | The problem asks us to determine the number of distinct ways to spe… |
-| 2241 | [Design an ATM Machine](2241.md) | 🟡 Medium | 1m 19s | The problem asks us to design an ATM machine that supports two oper… |
+| 2241 | [Design an ATM Machine](2241.md) | 🟡 Medium | 1m 9s | The problem asks us to design a simulation of an ATM machine that c… |
 | 2242 | [Maximum Score of a Node Sequence](2242.md) | 🔴 Hard | 1m 21s | The problem gives us an undirected graph with n nodes. Each node ha… |
 | 2243 | [Calculate Digit Sum of a String](2243.md) | 🟢 Easy | 55s | This problem asks us to repeatedly transform a numeric string until… |
 | 2244 | [Minimum Rounds to Complete All Tasks](2244.md) | 🟡 Medium | 2m 19s | Here is a complete, detailed technical solution guide for LeetCode … |
@@ -72,7 +72,7 @@ draft: false
 | 2259 | [Remove Digit From Number to Maximize Result](2259.md) | 🟢 Easy | 1m 15s | The problem gives us a string called number, which represents a pos… |
 | 2260 | [Minimum Consecutive Cards to Pick Up](2260.md) | 🟡 Medium | 1m 9s | The problem gives an integer array cards, where each number represe… |
 | 2261 | [K Divisible Elements Subarrays](2261.md) | 🟡 Medium | 44s | This problem requires counting the number of distinct subarrays of … |
-| 2262 | [Total Appeal of A String](2262.md) | 🔴 Hard | 39s | The problem asks us to calculate the total appeal of all substrings… |
+| 2262 | [Total Appeal of A String](2262.md) | 🔴 Hard | 1m 28s | The problem asks us to calculate the total appeal of all substrings… |
 | 2263 | [Make Array Non-decreasing or Non-increasing](2263.md) | 🔴 Hard | 48s | The problem asks us to transform a given integer array nums into ei… |
 | 2264 | [Largest 3-Same-Digit Number in String](2264.md) | 🟢 Easy | 6m 20s | The problem requires identifying the largest "good" integer from a … |
 | 2265 | [Count Nodes Equal to Average of Subtree](2265.md) | 🟡 Medium | 6m 13s | This problem asks us to count how many nodes in a binary tree satis… |
