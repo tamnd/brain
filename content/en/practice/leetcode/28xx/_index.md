@@ -10,14 +10,14 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 2800 | [Shortest String That Contains Three Strings](2800.md) | 🟡 Medium | 1m 11s | The problem gives us three strings, a, b, and c, and asks us to con… |
-| 2801 | [Count Stepping Numbers in Range](2801.md) | 🔴 Hard | 3m 17s | This problem asks us to count how many integers within the inclusiv… |
+| 2800 | [Shortest String That Contains Three Strings](2800.md) | 🟡 Medium | 58s | The problem asks us to construct a string that contains three given… |
+| 2801 | [Count Stepping Numbers in Range](2801.md) | 🔴 Hard | 1m 39s | The problem asks us to count how many integers in the inclusive ran… |
 | 2802 | [Find The K-th Lucky Number](2802.md) | 🟡 Medium | 42s | This problem asks us to find the k-th lucky number, where a lucky n… |
-| 2803 | [Factorial Generator](2803.md) | 🟢 Easy | 1m 1s | This problem asks us to implement a generator function that produce… |
-| 2804 | [Array Prototype ForEach](2804.md) | 🟢 Easy | 3m 9s | The problem asks us to implement our own version of JavaScript's Ar… |
-| 2805 | [Custom Interval](2805.md) | 🟡 Medium | 4m 45s | LeetCode 2805: Custom Interval (Medium) |
-| 2806 | [Account Balance After Rounded Purchase](2806.md) | 🟢 Easy | 45s | This problem asks us to simulate a simple purchase with rounding an… |
-| 2807 | [Insert Greatest Common Divisors in Linked List](2807.md) | 🟡 Medium | 1m 43s | The problem gives us the head of a singly linked list where each no… |
+| 2803 | [Factorial Generator](2803.md) | 🟢 Easy | 1m 4s | This problem asks us to implement a generator that produces the fac… |
+| 2804 | [Array Prototype ForEach](2804.md) | 🟢 Easy | 58s | This problem asks us to implement a custom version of the forEach m… |
+| 2805 | [Custom Interval](2805.md) | 🟡 Medium | 1m 12s | This problem asks us to implement a custom version of setInterval, … |
+| 2806 | [Account Balance After Rounded Purchase](2806.md) | 🟢 Easy | 1m 6s | The problem is asking us to simulate a simple bank account deductio… |
+| 2807 | [Insert Greatest Common Divisors in Linked List](2807.md) | 🟡 Medium | 1m 15s | This problem gives us the head of a singly linked list where every … |
 | 2808 | [Minimum Seconds to Equalize a Circular Array](2808.md) | 🟡 Medium | 2m 8s | The problem gives us a circular array nums, meaning the first and l… |
 | 2809 | [Minimum Time to Make Array Sum At Most x](2809.md) | 🔴 Hard | 51s | The problem asks us to determine the minimum number of seconds requ… |
 | 2810 | [Faulty Keyboard](2810.md) | 🟢 Easy | 1m 10s | In this problem, we are given a string s that represents characters… |

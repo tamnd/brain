@@ -99,13 +99,13 @@ draft: false
 | 2787 | [Ways to Express an Integer as Sum of Powers](2787.md) | 🟡 Medium | 1m 18s | This problem asks us to count how many different ways we can repres… |
 | 2788 | [Split Strings by Separator](2788.md) | 🟢 Easy | 1m 6s | This problem asks us to process an array of strings and split each … |
 | 2789 | [Largest Element in an Array after Merge Operations](2789.md) | 🟡 Medium | 1m 9s | The problem gives us an array of positive integers and allows a spe… |
-| 2790 | [Maximum Number of Groups With Increasing Length](2790.md) | 🔴 Hard | 55s | We are given an array usageLimits, where usageLimits[i] tells us ho… |
+| 2790 | [Maximum Number of Groups With Increasing Length](2790.md) | 🔴 Hard | 1m 18s | We are given an array usageLimits where usageLimits[i] tells us how… |
 | 2791 | [Count Paths That Can Form a Palindrome in a Tree](2791.md) | 🔴 Hard | 51s | I can do that, but the guide will be very long for a single chat re… |
-| 2792 | [Count Nodes That Are Great Enough](2792.md) | 🔴 Hard | 35s | The problem gives a binary tree where each node has an integer valu… |
-| 2793 | [Status of Flight Tickets](2793.md) | 🔴 Hard | 1m 49s | The problem is asking us to determine the status of flight tickets … |
-| 2794 | [Create Object from Two Arrays](2794.md) | 🟢 Easy | 1m 40s | The problem gives us two arrays, keysArr and valuesArr, both of the… |
-| 2795 | [Parallel Execution of Promises for Individual Results Retrieval](2795.md) | 🟡 Medium | 3m 4s | This problem asks us to implement behavior similar to JavaScript's … |
-| 2796 | [Repeat String](2796.md) | 🟢 Easy | 3m 8s | This problem asks us to enhance strings with a custom replicate(x) … |
-| 2797 | [Partial Function with Placeholders](2797.md) | 🟢 Easy | 1m 28s | This problem asks us to implement a custom version of partial funct… |
-| 2798 | [Number of Employees Who Met the Target](2798.md) | 🟢 Easy | 51s | The problem asks us to determine how many employees meet or exceed … |
-| 2799 | [Count Complete Subarrays in an Array](2799.md) | 🟡 Medium | 1m 8s | This problem asks us to count how many contiguous subarrays are com… |
+| 2792 | [Count Nodes That Are Great Enough](2792.md) | 🔴 Hard | 1m 24s | The problem gives us the root of a binary tree and an integer k. We… |
+| 2793 | [Status of Flight Tickets](2793.md) | 🔴 Hard | 1m 20s | This problem asks us to determine whether each passenger's ticket i… |
+| 2794 | [Create Object from Two Arrays](2794.md) | 🟢 Easy | 1m 11s | The problem provides two arrays, keysArr and valuesArr, which alway… |
+| 2795 | [Parallel Execution of Promises for Individual Results Retrieval](2795.md) | 🟡 Medium | 59s | This problem asks us to implement a function similar to JavaScript'… |
+| 2796 | [Repeat String](2796.md) | 🟢 Easy | 1m 16s | This problem asks us to extend the behavior of strings so that ever… |
+| 2797 | [Partial Function with Placeholders](2797.md) | 🟢 Easy | 1m 2s | The problem is asking us to implement a function partial that takes… |
+| 2798 | [Number of Employees Who Met the Target](2798.md) | 🟢 Easy | 46s | The problem asks us to determine how many employees in a company ha… |
+| 2799 | [Count Complete Subarrays in an Array](2799.md) | 🟡 Medium | 53s | The problem asks us to count the number of complete subarrays in a … |

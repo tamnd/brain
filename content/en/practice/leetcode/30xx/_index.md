@@ -79,3 +79,7 @@ draft: false
 | 3090 | [Maximum Length Substring With Two Occurrences](3090.md) | 🟢 Easy | 58s | The problem is asking for the maximum length of a substring in a gi… |
 | 3091 | [Apply Operations to Make Sum of Array Greater Than or Equal to k](3091.md) | 🟡 Medium | 1m 15s | The problem gives us a single positive integer k. We start with an … |
 | 3092 | [Most Frequent IDs](3092.md) | 🟡 Medium | 50s | The problem asks us to maintain a collection of IDs that is updated… |
+| 3095 | [Shortest Subarray With OR at Least K I](3095.md) | 🟢 Easy | 1m 7s | The problem asks us to find the shortest subarray within a given ar… |
+| 3096 | [Minimum Levels to Gain More Points](3096.md) | 🟡 Medium | 1m 1s | This problem is asking us to determine the minimum number of levels… |
+| 3097 | [Shortest Subarray With OR at Least K II](3097.md) | 🟡 Medium | 1m 28s | This problem asks us to find the smallest non-empty contiguous suba… |
+| 3098 | [Find the Sum of Subsequence Powers](3098.md) | 🔴 Hard | 54s | The problem asks us to compute the sum of powers of all subsequence… |
