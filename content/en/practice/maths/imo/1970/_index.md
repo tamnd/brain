@@ -19,7 +19,7 @@ draft: false
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
-| [6](6.md) | solved | 6m30s |
+| [6](6.md) | solved | 19m45s |
 
 **Problem 1**
 
@@ -67,6 +67,6 @@ $( AB+BC+CA )^2 \leq 6( AD^2 + BD^2 + CD^2 )$.
 
 For what tetrahedra does equality hold?
 
-**Problem 6** &nbsp; *solved* · 6m30s · [Solution →](6.md)
+**Problem 6** &nbsp; *solved* · 19m45s · [Solution →](6.md)
 
 In a plane there are $100$ points, no three of which are collinear. Consider all possible triangles having these point as vertices. Prove that no more than $70 \%$ of these triangles are acute-angled.
