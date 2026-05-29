@@ -20,3 +20,8 @@ draft: false
 | 3111 | [Minimum Rectangles to Cover Points](3111.md) | 🟡 Medium | 1m 13s | The problem gives us a collection of 2D points, where each point is… |
 | 3112 | [Minimum Time to Visit Disappearing Nodes](3112.md) | 🟡 Medium | 1m 1s | The problem describes an undirected weighted graph with n vertices,… |
 | 3114 | [Latest Time You Can Obtain After Replacing Characters](3114.md) | 🟢 Easy | 1m 13s | The problem gives us a string representing a time in 12-hour format… |
+| 3117 | [Minimum Sum of Values by Dividing Array](3117.md) | 🔴 Hard | 1m 4s | This problem asks us to partition an array nums into exactly m cont… |
+| 3118 | [Friday Purchase III ](3118.md) | 🟡 Medium | 54s | This problem asks us to calculate the total amount of money spent b… |
+| 3120 | [Count the Number of Special Characters I](3120.md) | 🟢 Easy | 46s | The problem asks us to count the number of special characters in a … |
+| 3121 | [Count the Number of Special Characters II](3121.md) | 🟡 Medium | 1m 12s | The problem gives us a string word containing uppercase and lowerca… |
+| 3122 | [Minimum Number of Operations to Satisfy Conditions](3122.md) | 🟡 Medium | 1m 1s | The problem presents a two-dimensional matrix grid of size m x n wi… |

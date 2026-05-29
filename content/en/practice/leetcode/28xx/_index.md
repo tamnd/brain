@@ -51,13 +51,13 @@ draft: false
 | 2838 | [Maximum Coins Heroes Can Collect](2838.md) | 🟡 Medium | 1m 18s | This problem gives us three arrays: - heroes, where heroes[i] repre… |
 | 2839 | [Check if Strings Can be Made Equal With Operations I](2839.md) | 🟢 Easy | 2m 24s | The problem gives us two strings, s1 and s2, each containing exactl… |
 | 2840 | [Check if Strings Can be Made Equal With Operations II](2840.md) | 🟡 Medium | 1m 2s | The problem asks us to determine whether two strings s1 and s2 of e… |
-| 2841 | [Maximum Sum of Almost Unique Subarray](2841.md) | 🟡 Medium | 4m 28s | LeetCode 2841: Maximum Sum of Almost Unique Subarray (Medium) |
-| 2842 | [Count K-Subsequences of a String With Maximum Beauty](2842.md) | 🔴 Hard | 4m 23s | LeetCode 2842: Count K-Subsequences of a String With Maximum Beauty… |
-| 2843 | [  Count Symmetric Integers](2843.md) | 🟢 Easy | 6m 1s | LeetCode 2843:   Count Symmetric Integers (Easy) |
-| 2844 | [Minimum Operations to Make a Special Number](2844.md) | 🟡 Medium | 49s | The problem asks us to transform a given string num, representing a… |
-| 2845 | [Count of Interesting Subarrays](2845.md) | 🟡 Medium | 2m 3s | The problem asks us to count how many contiguous subarrays satisfy … |
-| 2846 | [Minimum Edge Weight Equilibrium Queries in a Tree](2846.md) | 🔴 Hard | 1m 50s | This problem gives us a weighted undirected tree with n nodes. Sinc… |
-| 2847 | [Smallest Number With Given Digit Product](2847.md) | 🟡 Medium | 4m 57s | LeetCode 2847: Smallest Number With Given Digit Product (Medium) |
+| 2841 | [Maximum Sum of Almost Unique Subarray](2841.md) | 🟡 Medium | 1m 17s | The problem gives us an integer array nums and two integers, m and … |
+| 2842 | [Count K-Subsequences of a String With Maximum Beauty](2842.md) | 🔴 Hard | 1m 2s | The problem requires us to count k-subsequences of a string s that … |
+| 2843 | [  Count Symmetric Integers](2843.md) | 🟢 Easy | 48s | The problem asks us to count symmetric integers within a given rang… |
+| 2844 | [Minimum Operations to Make a Special Number](2844.md) | 🟡 Medium | 1m 7s | The problem asks us to transform a string num representing a non-ne… |
+| 2845 | [Count of Interesting Subarrays](2845.md) | 🟡 Medium | 1m 3s | The problem is asking us to count the number of interesting subarra… |
+| 2846 | [Minimum Edge Weight Equilibrium Queries in a Tree](2846.md) | 🔴 Hard | 1m 36s | You are given an undirected weighted tree with n nodes. Since the g… |
+| 2847 | [Smallest Number With Given Digit Product](2847.md) | 🟡 Medium | 1m 18s | The problem gives us a positive integer n and asks us to construct … |
 | 2848 | [Points That Intersect With Cars](2848.md) | 🟢 Easy | 2m 18s | The problem gives us a list of cars parked on a number line. Each c… |
 | 2849 | [Determine if a Cell Is Reachable at a Given Time](2849.md) | 🟡 Medium | 5m 3s | LeetCode 2849: Determine if a Cell Is Reachable at a Given Time (Me… |
 | 2850 | [Minimum Moves to Spread Stones Over Grid](2850.md) | 🟡 Medium | 2m 13s | The problem gives us a 3 x 3 grid where each cell contains some num… |
