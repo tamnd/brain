@@ -89,20 +89,22 @@ draft: false
 | 2578 | [Split With Minimum Sum](2578.md) | 🟢 Easy | 52s | The problem asks us to take a positive integer num and split its di… |
 | 2579 | [Count Total Number of Colored Cells](2579.md) | 🟡 Medium | 56s | The problem describes a process of coloring cells on an infinite tw… |
 | 2580 | [Count Ways to Group Overlapping Ranges](2580.md) | 🟡 Medium | 1m 10s | The problem gives us a list of integer ranges, where each range rep… |
-| 2582 | [Pass the Pillow](2582.md) | 🟢 Easy | 31s | The problem describes a simulation of passing a pillow along a line… |
-| 2583 | [Kth Largest Sum in a Binary Tree](2583.md) | 🟡 Medium | 2m 7s | Perfect! I just need a quick clarification before I craft the full … |
-| 2584 | [Split the Array to Make Coprime Products](2584.md) | 🔴 Hard | 43s | The problem asks us to split an array nums at some index i such tha… |
-| 2585 | [Number of Ways to Earn Points](2585.md) | 🔴 Hard | 3m 9s | The problem gives us a target score and several question types. Eac… |
-| 2586 | [Count the Number of Vowel Strings in Range](2586.md) | 🟢 Easy | 1m 6s | The problem gives us a 0-indexed array of strings called words, alo… |
-| 2587 | [Rearrange Array to Maximize Prefix Score](2587.md) | 🟡 Medium | 36s | The problem presents a 0-indexed integer array nums and allows you … |
-| 2588 | [Count the Number of Beautiful Subarrays](2588.md) | 🟡 Medium | 1m 19s | The problem gives us an array nums, and defines a special operation… |
-| 2590 | [Design a Todo List](2590.md) | 🟡 Medium | 1m 17s | This problem asks us to design a small task management system that … |
-| 2591 | [Distribute Money to Maximum Children](2591.md) | 🟢 Easy | 1m 8s | This problem asks us to distribute a fixed amount of money among a … |
-| 2592 | [Maximize Greatness of an Array](2592.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums, and we are allowed to r… |
-| 2593 | [Find Score of an Array After Marking All Elements](2593.md) | 🟡 Medium | 1m 17s | In this problem, we are given an integer array nums, where every va… |
-| 2594 | [Minimum Time to Repair Cars](2594.md) | 🟡 Medium | 1m 21s | This problem gives us a list of mechanics, where each mechanic has … |
-| 2595 | [Number of Even and Odd Bits](2595.md) | 🟢 Easy | 53s | The problem gives us a positive integer n and asks us to analyze it… |
-| 2596 | [Check Knight Tour Configuration](2596.md) | 🟡 Medium | 1m 16s | This problem asks us to verify whether a given matrix represents a … |
+| 2581 | [Count Number of Possible Root Nodes](2581.md) | 🔴 Hard | 1m 23s | This problem gives us an undirected tree with n nodes and a list of… |
+| 2582 | [Pass the Pillow](2582.md) | 🟢 Easy | 1m | The problem describes a line of n people, numbered sequentially fro… |
+| 2583 | [Kth Largest Sum in a Binary Tree](2583.md) | 🟡 Medium | 1m 13s | The problem gives us the root of a binary tree and an integer k. Fo… |
+| 2584 | [Split the Array to Make Coprime Products](2584.md) | 🔴 Hard | 44s | The problem is asking us to find a valid split point in an array nu… |
+| 2585 | [Number of Ways to Earn Points](2585.md) | 🔴 Hard | 55s | This problem is essentially asking how many distinct ways we can se… |
+| 2586 | [Count the Number of Vowel Strings in Range](2586.md) | 🟢 Easy | 1m 1s | The problem gives us an array of lowercase strings called words and… |
+| 2587 | [Rearrange Array to Maximize Prefix Score](2587.md) | 🟡 Medium | 1m 4s | The problem gives us a 0-indexed array of integers, nums, which can… |
+| 2588 | [Count the Number of Beautiful Subarrays](2588.md) | 🟡 Medium | 6m 11s | The problem gives us an array nums, and we are allowed to repeatedl… |
+| 2589 | [Minimum Time to Complete All Tasks](2589.md) | 🔴 Hard | 58s | This problem is asking us to determine the minimum amount of time t… |
+| 2590 | [Design a Todo List](2590.md) | 🟡 Medium | 1m 19s | This problem asks us to design a small task management system, simi… |
+| 2591 | [Distribute Money to Maximum Children](2591.md) | 🟢 Easy | 1m 57s | Problem Understanding |
+| 2592 | [Maximize Greatness of an Array](2592.md) | 🟡 Medium | 1m 3s | Here is the complete, detailed technical solution guide for LeetCod… |
+| 2593 | [Find Score of an Array After Marking All Elements](2593.md) | 🟡 Medium | 1m | Here is a comprehensive, detailed technical solution guide for Leet… |
+| 2594 | [Minimum Time to Repair Cars](2594.md) | 🟡 Medium | 1m 8s | The problem gives us a list of mechanics, where each mechanic has a… |
+| 2595 | [Number of Even and Odd Bits](2595.md) | 🟢 Easy | 1m 40s | The problem asks us to analyze the binary representation of a posit… |
+| 2596 | [Check Knight Tour Configuration](2596.md) | 🟡 Medium | 1m 14s | The problem gives us an n x n matrix called grid, where every numbe… |
 | 2597 | [The Number of Beautiful Subsets](2597.md) | 🟡 Medium | 47s | The problem asks us to count the number of non-empty subsets of a g… |
 | 2598 | [Smallest Missing Non-negative Integer After Operations](2598.md) | 🟡 Medium | 1m 14s | This problem asks us to maximize the MEX, the minimum excluded non-… |
 | 2599 | [Make the Prefix Sum Non-negative](2599.md) | 🟡 Medium | 1m 20s | The problem gives us an integer array nums, and we are allowed to r… |
