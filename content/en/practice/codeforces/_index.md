@@ -11,6 +11,7 @@ description: "Codeforces problem solutions with full editorial. 310 contests, 13
 description: "Codeforces problem solutions with full editorial. 311 contests, 1309 problems, 1046 verified."
 description: "Codeforces problem solutions with full editorial. 312 contests, 1311 problems, 1047 verified."
 description: "Codeforces problem solutions with full editorial. 313 contests, 1316 problems, 1051 verified."
+description: "Codeforces problem solutions with full editorial. 314 contests, 1318 problems, 1053 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -32,6 +33,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **311 contests, 1309 problems, 1046 verified.**
 **312 contests, 1311 problems, 1047 verified.**
 **313 contests, 1316 problems, 1051 verified.**
+**314 contests, 1318 problems, 1053 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -377,4 +379,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [417](417/) | [RCC 2014 Warmup (Div. 2)](https://codeforces.com/contest/417) | Div. 2 | 1400-2400 | 4/5 | 7m 19s |
 | [418](418/) | [RCC 2014 Warmup (Div. 1)](https://codeforces.com/contest/418) | Div. 1 | 2800-3100 | 1/2 | 3m 33s |
 | [420](420/) | [Coder-Strike 2014 - Finals (online edition, Div. 1)](https://codeforces.com/contest/420) | Div. 1 | 1000-2600 | 4/5 | 8m 34s |
+| [421](421/) | [Coder-Strike 2014 - Finals (online edition, Div. 2)](https://codeforces.com/contest/421) | Div. 2 | 800-1900 | 2/2 | 2m 37s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
