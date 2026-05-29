@@ -90,8 +90,8 @@ draft: false
 | 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 51s | This problem asks us to determine the largest price that cannot be … |
 | 2980 | [Check if Bitwise OR Has Trailing Zeros](2980.md) | 🟢 Easy | 52s | The problem asks us to determine whether we can select two or more … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |
-| 2982 | [Find Longest Special Substring That Occurs Thrice II](2982.md) | 🟡 Medium | 57s | The problem asks us to find the longest special substring of a stri… |
-| 2984 | [Find Peak Calling Hours for Each City](2984.md) | 🟡 Medium | 1m 36s | This problem asks us to analyze phone call activity grouped by city… |
+| 2982 | [Find Longest Special Substring That Occurs Thrice II](2982.md) | 🟡 Medium | 1m 4s | The problem asks us to find the maximum length of a special substri… |
+| 2984 | [Find Peak Calling Hours for Each City](2984.md) | 🟡 Medium | 51s | The problem is asking us to analyze call records from a Calls table… |
 | 2986 | [Find Third Transaction](2986.md) | 🟡 Medium | 1m 3s | The problem provides a database table named Transactions that store… |
 | 2987 | [Find Expensive Cities](2987.md) | 🟢 Easy | 2m 52s | This problem asks us to identify which cities have an average home … |
 | 2988 | [Manager of the Largest Department](2988.md) | 🟡 Medium | 2m 55s | The problem provides an Employees table containing information abou… |

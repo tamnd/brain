@@ -15,17 +15,17 @@ draft: false
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 20m29s |
-| [2](2.md) | solved | 7m10s |
+| [2](2.md) | solved | 21m31s |
 | [3](3.md) | solved | 5m55s |
 | [4](4.md) | solved | 4m51s |
 | [5](5.md) | solved | 3m55s |
-| [6](6.md) | solved | 4m56s |
+| [6](6.md) | solved | 58m50s |
 
 **Problem 1** &nbsp; *✓ verified* · 20m29s · [Solution →](1.md)
 
 Prove that from a set of ten distinct two-digit numbers (in the decimal system), it is possible to select two disjoint subsets whose members have the same sum.
 
-**Problem 2** &nbsp; *solved* · 7m10s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 21m31s · [Solution →](2.md)
 
 Prove that if $n \geq 4$, every quadrilateral that can be inscribed in a circle can be dissected into $n$ quadrilaterals each of which is inscribable in a circle.
 
@@ -47,15 +47,6 @@ Let $f$ and $g$ be real-valued functions defined for all real values of $x$ and 
 f(x + y) + f(x - y) = 2f(x)g(y)
 $$ for all $x, y$. Prove that if $f(x)$ is not identically zero, and if $|f(x)| \leq 1$ for all $x$, then $|g(y)| \leq 1$ for all $y$.
 
-**Problem 6** &nbsp; *solved* · 4m56s · [Solution →](6.md)
+**Problem 6** &nbsp; *solved* · 58m50s · [Solution →](6.md)
 
 Given four distinct parallel planes, prove that there exists a regular tetrahedron with a vertex on each plane.
-
-- [1962 IMO](/wiki/index.php?title=1962_IMO "1962 IMO")
-- [IMO 1962 Problems on the Resources page](http://www.artofproblemsolving.com/Forum/resources.php?c=1&cid=16&year=1962)
-- [IMO Problems and Solutions, with authors](/wiki/index.php?title=IMO_Problems_and_Solutions%2C_with_authors "IMO Problems and Solutions, with authors")
-- [Mathematics competition resources](/wiki/index.php?title=Mathematics_competition_resources "Mathematics competition resources")
-
-[**1972 IMO**](/wiki/index.php?title=1972_IMO "1972 IMO") ([**Problems**]()) • [Resources](https://artofproblemsolving.com/community/c3222) Preceded by  
-[**1971 IMO**](/wiki/index.php?title=1971_IMO "1971 IMO") [1](/wiki/index.php?title=1972_IMO_Problems%2FProblem_1 "1972 IMO Problems/Problem 1") **•** [2](/wiki/index.php?title=1972_IMO_Problems%2FProblem_2 "1972 IMO Problems/Problem 2") **•** [3](/wiki/index.php?title=1972_IMO_Problems%2FProblem_3 "1972 IMO Problems/Problem 3") **•** [4](/wiki/index.php?title=1972_IMO_Problems%2FProblem_4 "1972 IMO Problems/Problem 4") **•** [5](/wiki/index.php?title=1972_IMO_Problems%2FProblem_5 "1972 IMO Problems/Problem 5") **•** [6](/wiki/index.php?title=1972_IMO_Problems%2FProblem_6 "1972 IMO Problems/Problem 6") Followed by  
-[**1973 IMO**](/wiki/index.php?title=1973_IMO "1973 IMO") [**All IMO Problems and Solutions**](/wiki/index.php?title=IMO_Problems_and_Solutions "IMO Problems and Solutions")

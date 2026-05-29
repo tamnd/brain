@@ -88,6 +88,7 @@ draft: false
 | 3181 | [Maximum Total Reward Using Operations II](3181.md) | 🔴 Hard | 1m 29s | The problem gives us an array rewardValues, where each element repr… |
 | 3182 | [Find Top Scoring Students](3182.md) | 🟡 Medium | 1m 30s | The problem gives us three relational database tables: - students, … |
 | 3184 | [Count Pairs That Form a Complete Day I](3184.md) | 🟢 Easy | 56s | The problem asks us to find all pairs of indices (i, j) in an array… |
+| 3185 | [Count Pairs That Form a Complete Day II](3185.md) | 🟡 Medium | 46s | The problem asks us to count pairs of elements in an integer array … |
 | 3186 | [Maximum Total Damage With Spell Casting](3186.md) | 🟡 Medium | 1m 22s | The problem gives us an array power, where each element represents … |
 | 3187 | [Peaks in Array](3187.md) | 🔴 Hard | 1m 29s | The problem asks us to process two kinds of operations on an intege… |
 | 3189 | [Minimum Moves to Get a Peaceful Board](3189.md) | 🟡 Medium | 1m 7s | In this problem, we are given the positions of n rooks placed on an… |
@@ -97,4 +98,6 @@ draft: false
 | 3194 | [Minimum Average of Smallest and Largest Elements](3194.md) | 🟢 Easy | 1m 3s | The problem gives us an even-length integer array nums. We repeated… |
 | 3195 | [Find the Minimum Area to Cover All Ones I](3195.md) | 🟡 Medium | 58s | The problem asks us to find the smallest rectangle that covers all … |
 | 3196 | [Maximize Total Cost of Alternating Subarrays](3196.md) | 🟡 Medium | 3m 29s | The problem gives us an integer array nums, and we must divide the … |
+| 3197 | [Find the Minimum Area to Cover All Ones II](3197.md) | 🔴 Hard | 1m 31s | The problem gives us a binary matrix grid, where each cell contains… |
 | 3198 | [Find Cities in Each State](3198.md) | 🟢 Easy | 1m 31s | This problem provides a database table named cities, where each row… |
+| 3199 | [Count Triplets with Even XOR Set Bits I](3199.md) | 🟢 Easy | 1m 18s | The problem gives us three integer arrays, a, b, and c. We must cou… |
