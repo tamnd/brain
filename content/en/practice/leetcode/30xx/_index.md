@@ -10,6 +10,7 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
+| 3000 | [Maximum Area of Longest Diagonal Rectangle](3000.md) | 🟢 Easy | 41s | The problem asks us to find the area of a rectangle with the longes… |
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
 | 3043 | [Find the Length of the Longest Common Prefix](3043.md) | 🟡 Medium | 1m 24s | We are given two arrays of positive integers, arr1 and arr2. The ta… |
 | 3052 | [Maximize Items](3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |

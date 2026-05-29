@@ -89,10 +89,10 @@ draft: false
 | 2677 | [Chunk Array](2677.md) | 🟢 Easy | 1m 4s | This problem asks us to split an input array into smaller subarrays… |
 | 2678 | [Number of Senior Citizens](2678.md) | 🟢 Easy | 47s | This problem asks us to count the number of passengers in a list wh… |
 | 2679 | [Sum in a Matrix](2679.md) | 🟡 Medium | 1m 38s | The problem gives us a 2D matrix nums, where each row contains inte… |
-| 2680 | [Maximum OR](2680.md) | 🟡 Medium | 1m 2s | The problem gives us an integer array nums and an integer k. In one… |
-| 2681 | [Power of Heroes](2681.md) | 🔴 Hard | 1m 12s | The problem gives us an integer array nums, where each element repr… |
+| 2680 | [Maximum OR](2680.md) | 🟡 Medium | 1m 10s | In this problem, we are given an integer array nums and an integer … |
+| 2681 | [Power of Heroes](2681.md) | 🔴 Hard | 1m 23s | The problem asks us to compute the total "power" across every possi… |
 | 2682 | [Find the Losers of the Circular Game](2682.md) | 🟢 Easy | 46s | The problem describes a game played by n friends sitting in a circl… |
-| 2683 | [Neighboring Bitwise XOR](2683.md) | 🟡 Medium | 1m 3s | The problem gives us a binary array called derived, where each elem… |
+| 2683 | [Neighboring Bitwise XOR](2683.md) | 🟡 Medium | 40s | The problem presents us with a binary array called derived of lengt… |
 | 2684 | [Maximum Number of Moves in a Grid](2684.md) | 🟡 Medium | 1m 14s | This problem gives us a 2D grid of positive integers. We may start … |
 | 2685 | [Count the Number of Complete Components](2685.md) | 🟡 Medium | 1m 9s | This problem gives us an undirected graph with n vertices labeled f… |
 | 2687 | [Bikes Last Time Used ](2687.md) | 🟢 Easy | 42s | The problem requires us to identify the last time each bike was use… |

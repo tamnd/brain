@@ -59,8 +59,10 @@ draft: false
 | 2950 | [Number of Divisible Substrings](2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
 | 2951 | [Find the Peaks](2951.md) | 🟢 Easy | 40s | The problem is asking us to identify all the peaks in a given array… |
 | 2953 | [Count Complete Substrings](2953.md) | 🔴 Hard | 50s | Here’s a full, detailed technical solution guide for LeetCode 2953 … |
+| 2954 | [Count the Number of Infection Sequences](2954.md) | 🔴 Hard | 1m 49s | The problem describes a line of n people indexed from 0 to n - 1. S… |
 | 2955 | [Number of Same-End Substrings](2955.md) | 🟡 Medium | 1m 26s | We are given a string s and multiple queries. Each query specifies … |
 | 2956 | [Find Common Elements Between Two Arrays](2956.md) | 🟢 Easy | 1m 3s | The problem gives us two integer arrays, nums1 and nums2. We must d… |
+| 2957 | [Remove Adjacent Almost-Equal Characters](2957.md) | 🟡 Medium | 1m 7s | The problem asks us to transform a string so that no two adjacent c… |
 | 2958 | [Length of Longest Subarray With at Most K Frequency](2958.md) | 🟡 Medium | 48s | The problem asks us to find the length of the longest contiguous su… |
 | 2959 | [Number of Possible Sets of Closing Branches](2959.md) | 🔴 Hard | 1m 20s | This problem asks us to count how many different subsets of branche… |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
@@ -81,3 +83,7 @@ draft: false
 | 2988 | [Manager of the Largest Department](2988.md) | 🟡 Medium | 2m 55s | The problem provides an Employees table containing information abou… |
 | 2989 | [Class Performance](2989.md) | 🟡 Medium | 45s | The problem asks us to calculate the difference between the highest… |
 | 2991 | [Top Three Wineries ](2991.md) | 🔴 Hard | 48s | The problem asks us to generate a leaderboard of wineries grouped b… |
+| 2992 | [Number of Self-Divisible Permutations](2992.md) | 🟡 Medium | 1m 28s | We are given an integer n, and we must count how many permutations … |
+| 2994 | [Friday Purchases II ](2994.md) | 🔴 Hard | 49s | The problem requires calculating the total spending by users on eac… |
+| 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](2997.md) | 🟡 Medium | 47s | This problem asks us to determine the minimum number of bit flips r… |
+| 2998 | [Minimum Number of Operations to Make X and Y Equal](2998.md) | 🟡 Medium | 1m 32s | This problem gives us two positive integers, x and y, and asks for … |
