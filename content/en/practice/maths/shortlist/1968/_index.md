@@ -39,6 +39,6 @@ draft: false
 | [21](21.md) | CZS | Let a0, a1, . . . , ak (k \geq1) be positive integers. Find all positive |
 | [22](22.md) | CZS | Find all positive integers … for which …, |
 | [23](23.md) | CZS | Find all complex numbers m such that polynomial |
-| [24](24.md) | MON | Find the number of all n-digit numbers for which some ﬁxed |
+| [24](24.md) | MON | Find the number of all …-digit numbers for which some fixed digit stands only… |
 | [25](25.md) | MON | Given k parallel lines and a few points on each of them, ﬁnd |
 | [26](26.md) | GDR | Let a > 0 be a real number and f(x) a real function deﬁned |

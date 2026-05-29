@@ -47,7 +47,7 @@ draft: false
 | [G3](G3.md) | GBR | Let ABC be an acute-angled triangle with BC > CA. Let |
 | [G4](G4.md) | USA | Let … be an equilateral triangle and let … be a point in its interior. Let the… |
 | [G5](G5.md) | ARM | Let ABCDEF be a convex hexagon such that AB |
-| [G6](G6.md) | ARM | Let the sides of two rectangles be … and … with |
+| [G6](G6.md) | ARM | Let the sides of two rectangles be … and … with … and …. Prove that the first… |
 | [G7](G7.md) | GBR | Let … be an acute-angled triangle with circumcenter … and circumradius …. Let …… |
 | [G8](G8.md) | RUS | Let ABCD be a convex quadrilateral, and let RA, RB, RC, |
 | [G9](G9.md) | UKR | In the plane are given a point … and a polygon … (not necessarily convex). Let… |
