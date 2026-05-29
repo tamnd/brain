@@ -67,23 +67,24 @@ draft: false
 | 2755 | [Deep Merge of Two Objects](2755.md) | 🟡 Medium | 1m 30s | Here is the complete technical solution guide for LeetCode 2755 fol… |
 | 2756 | [Query Batching](2756.md) | 🔴 Hard | 1m 19s | The problem asks us to design a throttled batching system for async… |
 | 2757 | [Generate Circular Array Values](2757.md) | 🟡 Medium | 49s | The problem asks us to create a generator for a circular array, arr… |
-| 2758 | [Next Day](2758.md) | 🟢 Easy | 1m 5s | This problem asks us to extend date handling functionality so that … |
-| 2759 | [Convert JSON String to Object](2759.md) | 🔴 Hard | 1m 25s | This problem asks us to implement our own JSON parser without using… |
-| 2760 | [Longest Even Odd Subarray With Threshold](2760.md) | 🟢 Easy | 30s | This problem asks us to find the longest contiguous subarray in a g… |
-| 2762 | [Continuous Subarrays](2762.md) | 🟡 Medium | 1m 8s | The problem asks us to count how many contiguous subarrays satisfy … |
-| 2763 | [Sum of Imbalance Numbers of All Subarrays](2763.md) | 🔴 Hard | 55s | The problem defines the imbalance number of an array based on the g… |
-| 2764 | [Is Array a Preorder of Some \u200cBinary Tree](2764.md) | 🟡 Medium | 1m 6s | This problem gives us a 2D array nodes, where each entry has the fo… |
-| 2765 | [Longest Alternating Subarray](2765.md) | 🟢 Easy | 1m 18s | The problem gives us a 0-indexed integer array nums, and asks us to… |
-| 2766 | [Relocate Marbles](2766.md) | 🟡 Medium | 52s | This problem involves simulating the relocation of marbles across i… |
-| 2767 | [Partition String Into Minimum Beautiful Substrings](2767.md) | 🟡 Medium | 2m 20s | The problem gives us a binary string s, and we must split it into o… |
-| 2768 | [Number of Black Blocks](2768.md) | 🟡 Medium | 43s | The problem asks us to analyze an m x n grid where some cells are c… |
-| 2769 | [Find the Maximum Achievable Number](2769.md) | 🟢 Easy | 43s | The problem is asking us to determine the maximum number x that can… |
+| 2758 | [Next Day](2758.md) | 🟢 Easy | 1m 29s | This problem asks us to extend JavaScript's built in Date object by… |
+| 2759 | [Convert JSON String to Object](2759.md) | 🔴 Hard | 59s | The problem asks us to take a JSON-formatted string str and convert… |
+| 2760 | [Longest Even Odd Subarray With Threshold](2760.md) | 🟢 Easy | 47s | The problem asks us to find the length of the longest contiguous su… |
+| 2761 | [Prime Pairs With Target Sum](2761.md) | 🟡 Medium | 1m 1s | The problem asks us to find all pairs of prime numbers (x, y) such … |
+| 2762 | [Continuous Subarrays](2762.md) | 🟡 Medium | 2m 21s | That is a long, structured technical guide. To make sure I target t… |
+| 2763 | [Sum of Imbalance Numbers of All Subarrays](2763.md) | 🔴 Hard | 1m 12s | For any array, its imbalance number is determined after sorting the… |
+| 2764 | [Is Array a Preorder of Some \u200cBinary Tree](2764.md) | 🟡 Medium | 51s | The problem asks us to determine whether a given list of nodes repr… |
+| 2765 | [Longest Alternating Subarray](2765.md) | 🟢 Easy | 1m 20s | This problem asks us to find the longest contiguous subarray that f… |
+| 2766 | [Relocate Marbles](2766.md) | 🟡 Medium | 1m 22s | The problem gives us an array nums representing the positions of ma… |
+| 2767 | [Partition String Into Minimum Beautiful Substrings](2767.md) | 🟡 Medium | 59s | The problem asks us to partition a given binary string s into the m… |
+| 2768 | [Number of Black Blocks](2768.md) | 🟡 Medium | 55s | This problem asks us to count the number of 2 x 2 blocks in a grid … |
+| 2769 | [Find the Maximum Achievable Number](2769.md) | 🟢 Easy | 1m 3s | The problem gives us two integers, num and t. We are allowed to per… |
 | 2770 | [Maximum Number of Jumps to Reach the Last Index](2770.md) | 🟡 Medium | 35s | The problem asks us to determine the maximum number of jumps one ca… |
-| 2771 | [Longest Non-decreasing Subarray From Two Arrays](2771.md) | 🟡 Medium | 2m 20s | The problem asks us to construct a new array nums3 by choosing, at … |
-| 2772 | [Apply Operations to Make All Array Elements Equal to Zero](2772.md) | 🟡 Medium | 1m 13s | We are given an array nums and an integer k. The only operation all… |
-| 2773 | [Height of Special Binary Tree](2773.md) | 🟡 Medium | 1m 17s | The problem gives us the root of a binary tree with a very unusual … |
-| 2774 | [Array Upper Bound](2774.md) | 🟢 Easy | 1m | The problem asks us to extend arrays with a method called upperBoun… |
-| 2775 | [Undefined to Null](2775.md) | 🟡 Medium | 44s | The problem requires transforming a nested JavaScript-style object … |
+| 2771 | [Longest Non-decreasing Subarray From Two Arrays](2771.md) | 🟡 Medium | 53s | The problem is asking us to construct an array nums3 of length n fr… |
+| 2772 | [Apply Operations to Make All Array Elements Equal to Zero](2772.md) | 🟡 Medium | 1m 31s | The problem gives us an integer array nums and an integer k. We are… |
+| 2773 | [Height of Special Binary Tree](2773.md) | 🟡 Medium | 1m 13s | This problem gives us the root of a special binary tree. At first g… |
+| 2774 | [Array Upper Bound](2774.md) | 🟢 Easy | 1m 8s | The problem asks us to enhance JavaScript arrays with a method call… |
+| 2775 | [Undefined to Null](2775.md) | 🟡 Medium | 47s | The problem requires us to recursively traverse a nested object or … |
 | 2776 | [Convert Callback Based Function to Promise Based Function](2776.md) | 🟡 Medium | 47s | The problem asks us to create a function, promisify, which converts… |
 | 2777 | [Date Range Generator](2777.md) | 🟡 Medium | 33s | The problem asks us to construct a generator that produces a sequen… |
 | 2778 | [Sum of Squares of Special Elements ](2778.md) | 🟢 Easy | 38s | The problem provides a 1-indexed array nums of integers with length… |

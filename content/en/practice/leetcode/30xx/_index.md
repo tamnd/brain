@@ -59,3 +59,13 @@ draft: false
 | 3067 | [Count Pairs of Connectable Servers in a Weighted Tree Network](3067.md) | 🟡 Medium | 1m 6s | The problem gives us a weighted tree representing servers connected… |
 | 3068 | [Find the Maximum Sum of Node Values](3068.md) | 🔴 Hard | 1m 10s | You are given a tree with n nodes. Every node has a value stored in… |
 | 3069 | [Distribute Elements Into Two Arrays I](3069.md) | 🟢 Easy | 52s | The problem is asking us to simulate a process where we distribute … |
+| 3070 | [Count Submatrices with Top-Left Element and Sum Less Than k](3070.md) | 🟡 Medium | 1m 15s | The problem gives us a 2D integer matrix called grid and an integer… |
+| 3071 | [Minimum Operations to Write the Letter Y on a Grid](3071.md) | 🟡 Medium | 1m 4s | The problem asks us to determine the minimum number of operations t… |
+| 3072 | [Distribute Elements Into Two Arrays II](3072.md) | 🔴 Hard | 55s | This problem requires simulating the distribution of elements from … |
+| 3073 | [Maximum Increasing Triplet Value](3073.md) | 🟡 Medium | 1m 17s | We are given an integer array nums, and we must find three indices … |
+| 3075 | [Maximize Happiness of Selected Children](3075.md) | 🟡 Medium | 51s | The problem gives us an array happiness representing the happiness … |
+| 3076 | [Shortest Uncommon Substring in an Array](3076.md) | 🟡 Medium | 53s | The problem asks us to find, for each string in a given array, the … |
+| 3077 | [Maximum Strength of K Disjoint Subarrays](3077.md) | 🔴 Hard | 1m 10s | The problem is asking us to select exactly k disjoint subarrays fro… |
+| 3078 | [Match Alphanumerical Pattern in Matrix I](3078.md) | 🟡 Medium | 1m 35s | This problem asks us to search for a rectangular submatrix inside a… |
+| 3079 | [Find the Sum of Encrypted Integers](3079.md) | 🟢 Easy | 49s | The problem provides an array of positive integers nums and asks us… |
+| 3081 | [Replace Question Marks in String to Minimize Its Value](3081.md) | 🟡 Medium | 1m 11s | The problem gives us a string s containing lowercase English letter… |
