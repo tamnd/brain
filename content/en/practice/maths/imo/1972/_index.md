@@ -1,6 +1,6 @@
 ---
 title: "IMO 1972"
-description: "IMO 1972 — 6/6 solved."
+description: "IMO 1972 — 6/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1972
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1972
 
-[Official IMO 1972 problems](https://www.imo-official.org/year_info.aspx?year=1972) &nbsp;·&nbsp; 6/6 solved.
+[Official IMO 1972 problems](https://www.imo-official.org/year_info.aspx?year=1972) &nbsp;·&nbsp; 6/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
-| [1](1.md) | solved | 6m10s |
+| [1](1.md) | ✓ verified | 20m29s |
 | [2](2.md) | solved | 7m10s |
 | [3](3.md) | solved | 5m55s |
 | [4](4.md) | solved | 4m51s |
 | [5](5.md) | solved | 3m55s |
 | [6](6.md) | solved | 4m56s |
 
-**Problem 1** &nbsp; *solved* · 6m10s · [Solution →](1.md)
+**Problem 1** &nbsp; *✓ verified* · 20m29s · [Solution →](1.md)
 
 Prove that from a set of ten distinct two-digit numbers (in the decimal system), it is possible to select two disjoint subsets whose members have the same sum.
 

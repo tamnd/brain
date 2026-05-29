@@ -62,13 +62,14 @@ draft: false
 | 2950 | [Number of Divisible Substrings](2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
 | 2951 | [Find the Peaks](2951.md) | 🟢 Easy | 40s | The problem is asking us to identify all the peaks in a given array… |
 | 2952 | [Minimum Number of Coins to be Added](2952.md) | 🟡 Medium | 1m 1s | The problem asks us to determine the minimum number of coins we nee… |
-| 2953 | [Count Complete Substrings](2953.md) | 🔴 Hard | 50s | Here’s a full, detailed technical solution guide for LeetCode 2953 … |
-| 2954 | [Count the Number of Infection Sequences](2954.md) | 🔴 Hard | 1m 49s | The problem describes a line of n people indexed from 0 to n - 1. S… |
-| 2955 | [Number of Same-End Substrings](2955.md) | 🟡 Medium | 1m 26s | We are given a string s and multiple queries. Each query specifies … |
-| 2956 | [Find Common Elements Between Two Arrays](2956.md) | 🟢 Easy | 1m 3s | The problem gives us two integer arrays, nums1 and nums2. We must d… |
-| 2957 | [Remove Adjacent Almost-Equal Characters](2957.md) | 🟡 Medium | 1m 7s | The problem asks us to transform a string so that no two adjacent c… |
+| 2953 | [Count Complete Substrings](2953.md) | 🔴 Hard | 1m 54s | The problem asks us to count how many substrings of a given string … |
+| 2954 | [Count the Number of Infection Sequences](2954.md) | 🔴 Hard | 1m 12s | This problem asks us to compute the number of valid infection seque… |
+| 2955 | [Number of Same-End Substrings](2955.md) | 🟡 Medium | 1m 48s | The problem asks us to compute the number of same-end substrings wi… |
+| 2956 | [Find Common Elements Between Two Arrays](2956.md) | 🟢 Easy | 1m 4s | This problem asks us to compare two integer arrays and count how ma… |
+| 2957 | [Remove Adjacent Almost-Equal Characters](2957.md) | 🟡 Medium | 2m 43s | We are given a string word consisting of lowercase English letters.… |
 | 2958 | [Length of Longest Subarray With at Most K Frequency](2958.md) | 🟡 Medium | 48s | The problem asks us to find the length of the longest contiguous su… |
-| 2959 | [Number of Possible Sets of Closing Branches](2959.md) | 🔴 Hard | 1m 20s | This problem asks us to count how many different subsets of branche… |
+| 2959 | [Number of Possible Sets of Closing Branches](2959.md) | 🔴 Hard | 59s | This problem asks us to determine the number of possible sets of br… |
+| 2960 | [Count Tested Devices After Test Operations](2960.md) | 🟢 Easy | 52s | This problem asks us to simulate a sequence of device tests based o… |
 | 2961 | [Double Modular Exponentiation](2961.md) | 🟡 Medium | 1m 18s | The problem gives us a list called variables, where each element co… |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
 | 2964 | [Number of Divisible Triplet Sums](2964.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums and another integer d. W… |
