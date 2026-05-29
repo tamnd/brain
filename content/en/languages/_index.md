@@ -13,3 +13,4 @@ Language learning resources organized by language. Each section covers vocabular
 | Language | Status | Levels |
 |----------|--------|--------|
 | [Chinese (Mandarin)](chinese/) | Active | HSK 1–9 |
+| [Sindarin (Elvish)](sindarin/) | Active | Beginner / Intermediate / Advanced |
