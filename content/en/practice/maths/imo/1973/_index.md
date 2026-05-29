@@ -14,25 +14,28 @@ draft: false
 
 | # | Status | Time |
 |---|--------|------|
-| [1](1.md) | solved | 11m14s |
+| [1](1.md) | solved | 6m51s |
 | [2](2.md) | solved | 4m36s |
 | [3](3.md) | solved | 6m58s |
 | [4](4.md) | solved | 14m45s |
 | [5](5.md) | solved | 9m42s |
 | [6](6.md) | solved | 5m08s |
 
-**Problem 1** &nbsp; *solved* · 11m14s · [Solution →](1.md)
+---
+
+**Problem 1** &nbsp; *solved* · 6m51s · [Solution →](1.md)
 
 Point $O$ lies on line $g$; $\overrightarrow{OP_1}, \overrightarrow{OP_2}, \ldots, \overrightarrow{OP_n}$ are unit vectors such that points $P_1, P_2, \ldots, P_n$ all lie in a plane containing $g$ and on one side of $g$. Prove that if $n$ is odd, $$
 \left\vert \overrightarrow{OP_1} + \overrightarrow{OP_2} + \ldots + \overrightarrow{OP_n} \right\vert \geq 1
 $$ Here $\left\vert \overrightarrow{OM} \right\vert$ denotes the length of vector $\overrightarrow{OM}$.
 
 ---
-Something went wrong. If this issue persists please contact us through our help center at help.openai.com.
 
 **Problem 2** &nbsp; *solved* · 4m36s · [Solution →](2.md)
 
 Determine whether or not there exists a finite set $M$ of points in space not lying in the same plane such that, for any two points $A$ and $B$ of $M$, one can select two other points $C$ and $D$ of $M$ so that lines $AB$ and $CD$ are parallel and not coincident.
+
+---
 
 **Problem 3** &nbsp; *solved* · 6m58s · [Solution →](3.md)
 
@@ -40,9 +43,13 @@ Let $a$ and $b$ be real numbers for which the equation $$
 x^4 + ax^3 + bx^2 + ax + 1 = 0
 $$ has at least one real solution. For all such pairs $(a, b)$, find the minimum value of $a^2 + b^2$.
 
+---
+
 **Problem 4** &nbsp; *solved* · 14m45s · [Solution →](4.md)
 
 A soldier needs to check on the presence of mines in a region having the shape of an equilateral triangle. The radius of action of his detector is equal to half the altitude of the triangle. The soldier leaves from one vertex of the triangle. What path should he follow in order to travel the least possible distance and still accomplish his mission?
+
+---
 
 **Problem 5** &nbsp; *solved* · 9m42s · [Solution →](5.md)
 
@@ -57,6 +64,8 @@ $$ and $G$ has the following properties:
 (c) For every $f$ in $G$, there exists a real number $x_f$ such that $f(x_f) = x_f$.
 
 Prove that there exists a real number $k$ such that $f(k) = k$ for all $f$ in $G$.
+
+---
 
 **Problem 6** &nbsp; *solved* · 5m08s · [Solution →](6.md)
 

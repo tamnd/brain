@@ -107,4 +107,4 @@ draft: false
 | 2696 | [Minimum String Length After Removing Substrings](2696.md) | 🟢 Easy | 57s | The problem asks us to determine the minimum possible length of a s… |
 | 2697 | [Lexicographically Smallest Palindrome](2697.md) | 🟢 Easy | 1m 5s | The problem gives us a string s consisting only of lowercase Englis… |
 | 2698 | [Find the Punishment Number of an Integer](2698.md) | 🟡 Medium | 1m 10s | The problem asks us to compute a special value called the punishmen… |
-| 2699 | [Modify Graph Edge Weights](2699.md) | 🔴 Hard | 1m 25s | This problem gives us an undirected, connected, weighted graph with… |
+| 2699 | [Modify Graph Edge Weights](2699.md) | 🔴 Hard | 42s | You asked for a complete guide, but the previous message included t… |

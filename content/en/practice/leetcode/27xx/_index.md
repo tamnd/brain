@@ -10,7 +10,8 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 2701 | [Consecutive Transactions with Increasing Amounts](2701.md) | 🔴 Hard | 2m 14s | The problem gives us a table named Transactions, where each row rep… |
+| 2700 | [Differences Between Two Objects](2700.md) | 🟡 Medium | 50s | That is a long-form reference document with multiple substantial se… |
+| 2701 | [Consecutive Transactions with Increasing Amounts](2701.md) | 🔴 Hard | 1m 5s | Before I generate it, there is one important issue to resolve: Leet… |
 | 2702 | [Minimum Operations to Make Numbers Non-positive](2702.md) | 🔴 Hard | 56s | The problem presents a 0-indexed integer array nums and two positiv… |
 | 2703 | [Return Length of Arguments Passed](2703.md) | 🟢 Easy | 1m 12s | This problem asks us to implement a function named argumentsLength … |
 | 2704 | [To Be Or Not To Be](2704.md) | 🟢 Easy | 1m 5s | This problem asks us to implement a small testing utility similar t… |
