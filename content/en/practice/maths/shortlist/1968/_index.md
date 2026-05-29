@@ -18,13 +18,13 @@ draft: false
 |---|--------|---------|
 | [1](1.md) | SWE | Two ships sail on the sea with constant speeds and fixed directions. It is… |
 | [2](2.md) | ROM | Prove that there exists a unique triangle whose side |
-| [3](3.md) | POL | Prove that in any tetrahedron there is a vertex such that |
-| [4](4.md) | BUL | Let a, b, c be real numbers. Prove that the system of equa- |
-| [5](5.md) | BUL | Let hn be the apothem (distance from the center to one of the |
-| [6](6.md) | HUN | If ai (i = 1, 2, . . ., n) are distinct non-zero real numbers, prove |
-| [7](7.md) | HUN | Prove that the product of the radii of three circles exscribed to |
-| [8](8.md) | ROM | Given an oriented line ∆and a ﬁxed point A on it, consider |
-| [9](9.md) | ROM | Let ABC be an arbitrary triangle and M a point inside it. Let |
+| [3](3.md) | POL | Prove that in any tetrahedron there is a vertex such that the lengths of its… |
+| [4](4.md) | BUL | Let …, …, … be real numbers. Prove that the system of equations |
+| [5](5.md) | BUL | Let … be the apothem (distance from the center to one of the sides) of a… |
+| [6](6.md) | HUN | If … … are distinct non-zero real numbers, prove that the equation |
+| [7](7.md) | HUN | Prove that the product of the radii of three circles exscribed to a given… |
+| [8](8.md) | ROM | Given an oriented line … and a fixed point … on it, consider all trapezoids …… |
+| [9](9.md) | ROM | Let … be an arbitrary triangle and … a point inside it. Let … be the distances… |
 | [10](10.md) | ROM | Consider two segments of length … (…) and a segment of length …. |
 | [11](11.md) | ROM | Find all solutions … of the equation |
 | [12](12.md) | POL | If … and … are arbitrary positive real numbers and … an integer, prove that |
@@ -41,4 +41,4 @@ draft: false
 | [23](23.md) | CZS | Find all complex numbers m such that polynomial |
 | [24](24.md) | MON | Find the number of all …-digit numbers for which some fixed digit stands only… |
 | [25](25.md) | MON | Given k parallel lines and a few points on each of them, ﬁnd |
-| [26](26.md) | GDR | Let a > 0 be a real number and f(x) a real function deﬁned |
+| [26](26.md) | GDR | Let … be a real number and … a real function defined on all of …, satisfying… |
