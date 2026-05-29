@@ -57,6 +57,7 @@ draft: false
 | 1844 | [Replace All Digits with Characters](1844.md) | 🟢 Easy | 1m 4s | In this problem, we are given a string s where characters at even i… |
 | 1845 | [Seat Reservation Manager](1845.md) | 🟡 Medium | 54s | The problem requires designing a system to manage seat reservations… |
 | 1846 | [Maximum Element After Decreasing and Rearranging](1846.md) | 🟡 Medium | 1m 3s | The problem provides an array of positive integers and asks us to p… |
+| 1847 | [Closest Room](1847.md) | 🔴 Hard | 1m 24s | We are given a list of hotel rooms, where each room has: - A unique… |
 | 1848 | [Minimum Distance to the Target Element](1848.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums, a value called target, … |
 | 1849 | [Splitting a String Into Descending Consecutive Values](1849.md) | 🟡 Medium | 1m 52s | The problem gives us a numeric string s and asks whether it can be … |
 | 1850 | [Minimum Adjacent Swaps to Reach the Kth Smallest Number](1850.md) | 🟡 Medium | 48s | The problem asks us to compute the minimum number of adjacent swaps… |

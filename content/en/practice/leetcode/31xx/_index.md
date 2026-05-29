@@ -92,6 +92,7 @@ draft: false
 | 3180 | [Maximum Total Reward Using Operations I](3180.md) | 🟡 Medium | 1m 2s | The problem asks us to maximize a running total reward by selecting… |
 | 3181 | [Maximum Total Reward Using Operations II](3181.md) | 🔴 Hard | 1m 29s | The problem gives us an array rewardValues, where each element repr… |
 | 3182 | [Find Top Scoring Students](3182.md) | 🟡 Medium | 1m 30s | The problem gives us three relational database tables: - students, … |
+| 3183 | [The Number of Ways to Make the Sum](3183.md) | 🟡 Medium | 1m 5s | The problem asks us to determine the number of distinct ways to sum… |
 | 3184 | [Count Pairs That Form a Complete Day I](3184.md) | 🟢 Easy | 56s | The problem asks us to find all pairs of indices (i, j) in an array… |
 | 3185 | [Count Pairs That Form a Complete Day II](3185.md) | 🟡 Medium | 46s | The problem asks us to count pairs of elements in an integer array … |
 | 3186 | [Maximum Total Damage With Spell Casting](3186.md) | 🟡 Medium | 1m 22s | The problem gives us an array power, where each element represents … |

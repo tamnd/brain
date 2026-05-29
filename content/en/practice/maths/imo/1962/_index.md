@@ -1,6 +1,6 @@
 ---
 title: "IMO 1962"
-description: "IMO 1962 — 5/7 solved, 4 verified."
+description: "IMO 1962 — 6/7 solved, 4 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1962
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1962
 
-[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 5/7 solved, 4 verified.
+[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 6/7 solved, 4 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -20,7 +20,7 @@ draft: false
 | [4](4.md) | ✓ verified | 21m14s |
 | [5](5.md) | solved | 12m07s |
 | 6 | — | — |
-| 7 | — | — |
+| [7](7.md) | solved | 15m54s |
 
 **Problem 1** &nbsp; *✓ verified* · 7m17s · [Solution →](1.md)
 
@@ -52,6 +52,6 @@ On a circle $k$ three points $A$, $B$, $C$ are given. Construct a fourth point $
 Let $ABC$ be an isosceles triangle with circumradius $r$ and inradius $\rho$. Prove that the distance $d$ between the circumcenter and incenter satisfies
 $$d = \sqrt{r(r-2\rho)}.$$
 
-**Problem 7**
+**Problem 7** &nbsp; *solved* · 15m54s · [Solution →](7.md)
 
 Prove that a tetrahedron $SABC$ has five spheres each tangent to all six lines determined by its edges if and only if it is regular.
