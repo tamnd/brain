@@ -10,13 +10,51 @@ draft: false
 
 # IMO 1988
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/1988_IMO_Problems) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1988 problems](https://www.imo-official.org/year_info.aspx?year=1988) &nbsp;·&nbsp; 0/6 solved.
 
-| # | Problem | Status | Time | Topic |
-|---|---------|--------|------|-------|
-| 1 | Problem 1 | - | - | Consider 2 concentric circle radii $R$ and $r$ ($R > r$) with centre $O.$ Fix $P$ on the small circ… |
-| 2 | Problem 2 | - | - | Let $n$ be an even positive integer. Let $A_1, A_2, \ldots, A_{n + 1}$ be sets having $n$ elements… |
-| 3 | Problem 3 | - | - | A function $f$ defined on the positive integers (and taking positive integers values) is given by: |
-| 4 | Problem 4 | - | - | Show that the solution set of the inequality |
-| 5 | Problem 5 | - | - | In a right-angled triangle $ABC$ let $AD$ be the altitude drawn to the hypotenuse and let the strai… |
-| 6 | Problem 6 | - | - | Let $a$ and $b$ be two positive integers such that $a \cdot b + 1$ divides $a^{2} + b^{2}$. Show th… |
+## Problem 1
+
+Consider 2 concentric circle radii $R$ and $r$ ($R > r$) with centre $O.$ Fix $P$ on the small circle and consider the variable chord $PA$ of the small circle. Points $B$ and $C$ lie on the large circle; $B,P,C$ are collinear and $BC$ is perpendicular to $AP.$
+
+i.) For which values of $\angle OPA$ is the sum $BC^2 + CA^2 + AB^2$ extremal?
+
+ii.) What are the possible positions of the midpoints $U$ of $BA$ and $V$ of $AC$ as $\angle OPA$ varies?
+
+---
+
+## Problem 2
+
+Let $n$ be an even positive integer. Let $A_1, A_2, \ldots, A_{n + 1}$ be sets having $n$ elements each such that any two of them have exactly one element in common while every element of their union belongs to at least two of the given sets. For which $n$ can one assign to every element of the union one of the numbers 0 and 1 in such a manner that each of the sets has exactly $\frac {n}{2}$ zeros?
+
+---
+
+## Problem 3
+
+A function $f$ defined on the positive integers (and taking positive integers values) is given by:
+
+$\begin{matrix} f(1) = 1, f(3) = 3 \\ f(2 \cdot n) = f(n) \\ f(4 \cdot n + 1) = 2 \cdot f(2 \cdot n + 1) - f(n) \\ f(4 \cdot n + 3) = 3 \cdot f(2 \cdot n + 1) - 2 \cdot f(n), \end{matrix}$
+
+for all positive integers $n.$ Determine with proof the number of positive integers $\leq 1988$ for which $f(n) = n.$
+
+---
+
+## Problem 4
+
+Show that the solution set of the inequality $$
+\sum^{70}_{k = 1} \frac {k}{x - k} \geq \frac {5}{4}
+$$ is a union of disjoint intervals, the sum of whose length is 1988.
+
+---
+
+## Problem 5
+
+In a right-angled triangle $ABC$ let $AD$ be the altitude drawn to the hypotenuse and let the straight line joining the incentres of the triangles $ABD, ACD$ intersect the sides $AB, AC$ at the points $K,L$ respectively. If $E$ and $E_1$ denote the areas of triangles $ABC$ and $AKL$ respectively, show that $$
+\frac {E}{E_1} \geq 2.
+$$
+
+---
+
+## Problem 6
+
+Let $a$ and $b$ be two positive integers such that $a \cdot b + 1$ divides $a^{2} + b^{2}$. Show that $\frac {a^{2} + b^{2}}{a \cdot b + 1}$ is a perfect square.
+

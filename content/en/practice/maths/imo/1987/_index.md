@@ -10,13 +10,45 @@ draft: false
 
 # IMO 1987
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/1987_IMO_Problems) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1987 problems](https://www.imo-official.org/year_info.aspx?year=1987) &nbsp;·&nbsp; 0/6 solved.
 
-| # | Problem | Status | Time | Topic |
-|---|---------|--------|------|-------|
-| 1 | Problem 1 | - | - | Let $p_n (k)$ be the number of permutations of the set $\{ 1, \ldots , n \} , \; n \ge 1$, which ha… |
-| 2 | Problem 2 | - | - | In an acute-angled triangle $ABC$ the interior bisector of the angle $A$ intersects $BC$ at $L$ and… |
-| 3 | Problem 3 | - | - | Let $x_1 , x_2 , \ldots , x_n$ be real numbers satisfying $x_1^2 + x_2^2 + \cdots + x_n^2 = 1$. Pro… |
-| 4 | Problem 4 | - | - | Prove that there is no function $f$ from the set of non-negative integers into itself such that $f(… |
-| 5 | Problem 5 | - | - | Let $n$ be an integer greater than or equal to 3. Prove that there is a set of $n$ points in the pl… |
-| 6 | Problem 6 | - | - | Let $n$ be an integer greater than or equal to 2. Prove that if $k^2 + k + n$ is prime for all inte… |
+## Problem 1
+
+Let $p_n (k)$ be the number of permutations of the set $\{ 1, \ldots , n \} , \; n \ge 1$, which have exactly $k$ fixed points. Prove that
+
+$\sum_{k=0}^{n} k \cdot p_n (k) = n!$.
+
+(Remark: A permutation $f$ of a set $S$ is a one-to-one mapping of $S$ onto itself. An element $i$ in $S$ is called a fixed point of the permutation $f$ if $f(i) = i$.)
+
+---
+
+## Problem 2
+
+In an acute-angled triangle $ABC$ the interior bisector of the angle $A$ intersects $BC$ at $L$ and intersects the [circumcircle](/wiki/index.php?title=Circumcircle "Circumcircle") of $ABC$ again at $N$. From point $L$ perpendiculars are drawn to $AB$ and $AC$, the feet of these perpendiculars being $K$ and $M$ respectively. Prove that the quadrilateral $AKNM$ and the triangle $ABC$ have equal areas.
+
+---
+
+## Problem 3
+
+Let $x_1 , x_2 , \ldots , x_n$ be real numbers satisfying $x_1^2 + x_2^2 + \cdots + x_n^2 = 1$. Prove that for every integer $k \ge 2$ there are integers $a_1, a_2, \ldots a_n$, not all 0, such that $| a_i | \le k-1$ for all $i$ and
+
+$|a_1x_1 + a_2x_2 + \cdots + a_nx_n| \le \frac{ (k-1) \sqrt{n} }{ k^n - 1 }$.
+
+---
+
+## Problem 4
+
+Prove that there is no function $f$ from the set of non-negative integers into itself such that $f(f(n)) = n + 1987$ for every $n$.
+
+---
+
+## Problem 5
+
+Let $n$ be an integer greater than or equal to 3. Prove that there is a set of $n$ points in the plane such that the distance between any two points is irrational and each set of three points determines a non-degenerate triangle with rational area.
+
+---
+
+## Problem 6
+
+Let $n$ be an integer greater than or equal to 2. Prove that if $k^2 + k + n$ is prime for all integers $k$ such that $0 \leq k \leq \sqrt{n/3}$, then $k^2 + k + n$ is prime for all integers $k$ such that $0 \leq k \leq n - 2$.
+

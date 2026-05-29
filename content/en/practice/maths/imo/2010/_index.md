@@ -10,13 +10,67 @@ draft: false
 
 # IMO 2010
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/2010_IMO_Problems) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 2010 problems](https://www.imo-official.org/year_info.aspx?year=2010) &nbsp;·&nbsp; 0/6 solved.
 
-| # | Problem | Status | Time | Topic |
-|---|---------|--------|------|-------|
-| 1 | Problem 1 | - | - | Find all functions $f:\mathbb{R}\rightarrow\mathbb{R}$ such that for all $x,y\in\mathbb{R}$ the fol… |
-| 2 | Problem 2 | - | - | Given a triangle $ABC$, with $I$ as its incenter and $\Gamma$ as its circumcircle, $AI$ intersects… |
-| 3 | Problem 3 | - | - | Find all functions $g:\mathbb{N}\rightarrow\mathbb{N}$ such that $\left(g(m)+n\right)\left(g(n)+m\r… |
-| 4 | Problem 4 | - | - | Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$). The lines $AP$, $BP$ and $CP$ me… |
-| 5 | Problem 5 | - | - | Each of the six boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$, $B_6$ initially contains one coin. The fol… |
-| 6 | Problem 6 | - | - | Let $a_1, a_2, a_3, \ldots$ be a sequence of positive real numbers, and $s$ be a positive integer,… |
+## Problem 1
+
+Find all functions $f:\mathbb{R}\rightarrow\mathbb{R}$ such that for all $x,y\in\mathbb{R}$ the following equality holds
+
+$$
+f(\left\lfloor x\right\rfloor y)=f(x)\left\lfloor f(y)\right\rfloor
+$$
+
+where $\left\lfloor a\right\rfloor$ is greatest integer not greater than $a.$
+
+*Author: Pierre Bornsztein, France*
+
+---
+
+## Problem 2
+
+Given a triangle $ABC$, with $I$ as its incenter and $\Gamma$ as its circumcircle, $AI$ intersects $\Gamma$ again at $D$. Let $E$ be a point on arc $BDC$, and $F$ a point on the segment $BC$, such that $\angle BAF=\angle CAE< \frac12\angle BAC$. If $G$ is the midpoint of $IF$, prove that the intersection of lines $EI$ and $DG$ lies on $\Gamma$.
+
+*Authors: Tai Wai Ming and Wang Chongli, Hong Kong*
+
+---
+
+## Problem 3
+
+Find all functions $g:\mathbb{N}\rightarrow\mathbb{N}$ such that $\left(g(m)+n\right)\left(g(n)+m\right)$ is a perfect square for all $m,n\in\mathbb{N}.$
+
+*Author: Gabriel Carroll, USA*
+
+---
+
+## Problem 4
+
+Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$). The lines $AP$, $BP$ and $CP$ meet again its circumcircle $\Gamma$ at $K$, $L$, respectively $M$. The tangent line at $C$ to $\Gamma$ meets the line $AB$ at $S$. Show that from $SC = SP$ follows $MK = ML$.
+
+*Author: Unknown currently*
+
+---
+
+## Problem 5
+
+Each of the six boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$, $B_6$ initially contains one coin. The following operations are allowed
+
+Type 1) Choose a non-empty box $B_j$, $1\leq j \leq 5$, remove one coin from $B_j$ and add two coins to $B_{j+1}$;
+
+Type 2) Choose a non-empty box $B_k$, $1\leq k \leq 4$, remove one coin from $B_k$ and swap the contents (maybe empty) of the boxes $B_{k+1}$ and $B_{k+2}$.
+
+Determine if there exists a finite sequence of operations of the allowed types, such that the five boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$ become empty, while box $B_6$ contains exactly $2010^{2010^{2010}}$ coins.
+
+*Author: Hans Zantema, Netherlands*
+
+---
+
+## Problem 6
+
+Let $a_1, a_2, a_3, \ldots$ be a sequence of positive real numbers, and $s$ be a positive integer, such that $$
+a_n = \max \{ a_k + a_{n-k} \mid 1 \leq k \leq n-1 \} \ \textrm{ for all } \ n > s.
+$$ Prove there exist positive integers $\ell \leq s$ and $N$, such that $$
+a_n = a_{\ell} + a_{n - \ell} \ \textrm{ for all } \ n \geq N.
+$$
+
+*Author: Morteza Saghafiyan, Iran*
+

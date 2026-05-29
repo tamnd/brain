@@ -10,13 +10,63 @@ draft: false
 
 # IMO 1999
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/1999_IMO_Problems) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1999 problems](https://www.imo-official.org/year_info.aspx?year=1999) &nbsp;·&nbsp; 0/6 solved.
 
-| # | Problem | Status | Time | Topic |
-|---|---------|--------|------|-------|
-| 1 | Problem 1 | - | - | Determine all finite sets $S$ of at least three points in the plane which satisfy the following con… |
-| 2 | Problem 2 | - | - | Let $n \geq 2$ be a fixed integer. |
-| 3 | Problem 3 | - | - | Consider an $n \times n$ square board, where $n$ is a fixed even positive integer. The board is div… |
-| 4 | Problem 4 | - | - | Determine all pairs $(n,p)$ of positive integers such that |
-| 5 | Problem 5 | - | - | Two circles $G_{1}$ and $G_{2}$ are contained inside the circle $G$, and are tangent to $G$ at the… |
-| 6 | Problem 6 | - | - | Determine all functions $f:\Bbb{R}\to \Bbb{R}$ such that |
+## Problem 1
+
+Determine all finite sets $S$ of at least three points in the plane which satisfy the following condition:
+
+For any two distinct points $A$ and $B$ in $S$, the perpendicular bisector of the line segment $AB$ is an axis of symmetry of $S$.
+
+---
+
+## Problem 2
+
+Let $n \geq 2$ be a fixed integer.
+
+- (a) Find the least constant $C$ such that for all nonnegative real numbers $x_1, \dots, x_n$,
+
+$$
+\sum_{1\leq i<j \leq n} x_ix_j (x_i^2 + x_j^2) \leq C \left( \sum_{i=1}^n x_i \right)^4.
+$$
+
+- (b) Determine when equality occurs for this value of $C$.
+
+---
+
+## Problem 3
+
+Consider an $n \times n$ square board, where $n$ is a fixed even positive integer. The board is divided into $n^{2}$ units squares. We say that two different squares on the board are adjacent if they have a common side.
+
+$N$ unit squares on the board are marked in such a way that every square (marked or unmarked) on the board is adjacent to at least one marked square.
+
+Determine the smallest possible value of $N$.
+
+---
+
+## Problem 4
+
+Determine all pairs $(n,p)$ of positive integers such that
+
+$p$ is a prime, $n$ not exceeded $2p$, and $(p-1)^{n}+1$ is divisible by $n^{p-1}$.
+
+---
+
+## Problem 5
+
+Two circles $G_{1}$ and $G_{2}$ are contained inside the circle $G$, and are tangent to $G$ at the distinct points $M$ and $N$, respectively. $G_{1}$ passes through the center of $G_{2}$. The line passing through the two points of intersection of $G_{1}$ and $G_{2}$ meets $G$ at $A$ and $B$. The lines $MA$ and $MB$ meet $G_{1}$ at $C$ and $D$, respectively.
+
+Prove that $CD$ is tangent to $G_{2}$.
+
+---
+
+## Problem 6
+
+Determine all functions $f:\Bbb{R}\to \Bbb{R}$ such that
+
+$$
+f(x-f(y))=f(f(y))+xf(y)+f(x)-1
+$$
+
+for all real numbers $x,y$.
+

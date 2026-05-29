@@ -10,13 +10,73 @@ draft: false
 
 # IMO 1997
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/1997_IMO_Problems) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1997 problems](https://www.imo-official.org/year_info.aspx?year=1997) &nbsp;·&nbsp; 0/6 solved.
 
-| # | Problem | Status | Time | Topic |
-|---|---------|--------|------|-------|
-| 1 | Problem 1 | - | - | In the plane the points with integer coordinates are the vertices of unit squares. The squares are… |
-| 2 | Problem 2 | - | - | The angle at $A$ is the smallest angle of triangle $ABC$. The points $B$ and $C$ divide the circumc… |
-| 3 | Problem 3 | - | - | Let $x_{1}$, $x_{2}$,...,$x_{n}$ be real numbers satisfying the conditions |
-| 4 | Problem 4 | - | - | An $n \times n$ matrix whose entries come from the set $S={1,2,...,2n-1}$ is called a $\textit{silv… |
-| 5 | Problem 5 | - | - | Find all pairs $(a,b)$ of integers $a,b \ge 1$ that satisfy the equation |
-| 6 | Problem 6 | - | - | For each positive integer $n$, let $f(n)$ denote the number of ways of representing $n$ as a sum of… |
+## Problem 1
+
+In the plane the points with integer coordinates are the vertices of unit squares. The squares are colored alternatively black and white (as on a chessboard).
+
+For any pair of positive integers $m$ and $n$, consider a right-angled triangle whose vertices have integer coordinates and whose legs, of lengths $m$ and $n$, lie along edges of the squares.
+
+Let $S_{1}$ be the total area of the black part of the triangle and $S_{2}$ be the total area of the white part.
+
+Let $f(m,n)=|S_{1}-S_{2}|$
+
+(a) Calculate $f(m,n)$ for all positive integers $m$ and $n$ which are either both even or both odd.
+
+(b) Prove that $f(m,n) \le \frac{1}{2} max\left\{ m,n \right\}$ for all $m$ and $n$.
+
+(c) Show that there is no constant $C$ such that $f(m,n)<C$ for all $m$ and $n$.
+
+---
+
+## Problem 2
+
+The angle at $A$ is the smallest angle of triangle $ABC$. The points $B$ and $C$ divide the circumcircle of the triangle into two arcs. Let $U$ be an interior point of the arc between $B$ and $C$ which does not contain $A$. The perpendicular bisectors of $AB$ and $AC$ meet the line $AU$ and $V$ and $W$, respectively. The lines $BV$ and $CW$ meet at $T$. Show that.
+
+---
+
+## Problem 3
+
+Let $x_{1}$, $x_{2}$,...,$x_{n}$ be real numbers satisfying the conditions
+
+$|x_{1}+x_{2}+...+x_{n}|=1$
+
+and
+
+$|x_{i}| \le \frac{n+1}{2}$, for $i=1,2,...,n$
+
+Show that there exists a permutation $y_{1}$, $y_{2}$,...,$y_{n}$ of $x_{1}$, $x_{2}$,...,$x_{n}$ such that
+
+$|y_{1}+2y_{2}+...+ny_{n}|\le \frac{n+1}{2}$
+
+---
+
+## Problem 4
+
+An $n \times n$ matrix whose entries come from the set $S={1,2,...,2n-1}$ is called a $\textit{silver}$ matrix if, for each $i=1,2,...,n$, the $i$th row and the $i$th column together contain all elements of $S$. Show that
+
+(a) there is no $\textit{silver}$ matrix for $n=1997$;
+
+(b) $\textit{silver}$ matrices exist for infinitely many values of $n$.
+
+---
+
+## Problem 5
+
+Find all pairs $(a,b)$ of integers $a,b \ge 1$ that satisfy the equation
+
+$a^{b^{2}}=b^{a}$
+
+---
+
+## Problem 6
+
+For each positive integer $n$, let $f(n)$ denote the number of ways of representing $n$ as a sum of powers of $2$ with nonnegative integer exponents. Representations which differ only in the ordering of their summands are considered to be the same. For instance, $f(4)=4$, because the number 4 can be represented in the following four ways:
+
+$4;2+2;2+1+1;1+1+1+1$
+
+Prove that, for any integer $n \ge 3$,
+
+$2^{n^{2}/4}<f(2^{n})<2^{n^{2}/2}$.
+

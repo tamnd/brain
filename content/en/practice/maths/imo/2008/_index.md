@@ -10,13 +10,57 @@ draft: false
 
 # IMO 2008
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/2008_IMO_Problems) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 2008 problems](https://www.imo-official.org/year_info.aspx?year=2008) &nbsp;·&nbsp; 0/6 solved.
 
-| # | Problem | Status | Time | Topic |
-|---|---------|--------|------|-------|
-| 1 | Problem 1 | - | - | Let $H$ be the orthocenter of an acute-angled triangle $ABC$. The circle $\Gamma_{A}$ centered at t… |
-| 2 | Problem 2 | - | - | Let $x, y, z\neq 1$ be three real numbers, such that $xyz = 1 |
-| 3 | Problem 3 | - | - | Prove that there are infinitely many positive integers $n$ such that $n^{2} + 1$ has a prime diviso… |
-| 4 | Problem 4 | - | - | Find all functions $f: (0, \infty) \mapsto (0, \infty)$ (so $f$ is a function from the positive rea… |
-| 5 | Problem 5 | - | - | Let $n$ and $k$ be positive integers with $k \geq n$ and $k - n$ an even number. Let $2n$ lamps lab… |
-| 6 | Problem 6 | - | - | Let $ABCD$ be a convex quadrilateral with $BA$ different from $BC$. Denote the incircles of triangl… |
+## Problem 1
+
+Let $H$ be the orthocenter of an acute-angled triangle $ABC$. The circle $\Gamma_{A}$ centered at the midpoint of $BC$ and passing through $H$ intersects line $BC$ at points $A_{1}$ and $A_{2}$. Similarly, define the points $B_{1}$, $B_{2}$, $C_{1}$ and $C_{2}$.
+
+Prove that six points $A_{1}$ , $A_{2}$, $B_{1}$, $B_{2}$, $C_{1}$ and $C_{2}$ are concyclic.
+
+---
+
+## Problem 2
+
+Let $x, y, z\neq 1$ be three real numbers, such that $xyz = 1$
+
+**(i)** Prove that; $\frac {x^{2}}{\left(x - 1\right)^{2}} + \frac {y^{2}}{\left(y - 1\right)^{2}} + \frac {z^{2}}{\left(z - 1\right)^{2}} \geq 1$.
+
+**(ii)** Prove that $\frac {x^{2}}{\left(x - 1\right)^{2}} + \frac {y^{2}}{\left(y - 1\right)^{2}} + \frac {z^{2}}{\left(z - 1\right)^{2}} = 1$ for infinitely many triples of rational numbers $x$, $y$ and $z$.
+
+---
+
+## Problem 3
+
+Prove that there are infinitely many positive integers $n$ such that $n^{2} + 1$ has a prime divisor greater than $2n + \sqrt {2n}$.
+
+---
+
+## Problem 4
+
+Find all functions $f: (0, \infty) \mapsto (0, \infty)$ (so $f$ is a function from the positive real numbers) such that
+
+$\frac {\left( f(w) \right)^2 + \left( f(x) \right)^2}{f(y^2) + f(z^2) } = \frac {w^2 + x^2}{y^2 + z^2}$
+
+for all positive real numbes $w,x,y,z,$ satisfying $wx = yz.$
+
+---
+
+## Problem 5
+
+Let $n$ and $k$ be positive integers with $k \geq n$ and $k - n$ an even number. Let $2n$ lamps labelled $1, 2, \dots, 2n$ be given, each of which can be either *on* or *off*. Initially all the lamps are off. We consider sequences of steps: at each step one of the lamps is switched (from on to off or from off to on).
+
+Let $N$ be the number of such sequences consisting of $k$ steps and resulting in the state where lamps $1$ through $n$ are all on, and lamps $n + 1$ through $2n$ are all off.
+
+Let $M$ be number of such sequences consisting of $k$ steps, resulting in the state where lamps $1$ through $n$ are all on, and lamps $n + 1$ through $2n$ are all off, but where none of the lamps $n + 1$ through $2n$ is ever switched on.
+
+Determine $\frac {N}{M}$.
+
+---
+
+## Problem 6
+
+Let $ABCD$ be a convex quadrilateral with $BA$ different from $BC$. Denote the incircles of triangles $ABC$ and $ADC$ by $k_{1}$ and $k_{2}$ respectively. Suppose that there exists a circle $k$ tangent to ray $BA$ beyond $A$ and to the ray $BC$ beyond $C$, which is also tangent to the lines $AD$ and $CD$.
+
+Prove that the common external tangents to $k_{1}$ and $k_{2}$ intersect on $k$.
+
