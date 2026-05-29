@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.6 — Binomial Coefficients"
-description: "Section 1.2.6 exercises — 53/68 solved."
+description: "Section 1.2.6 exercises — 66/68 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.6"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.6. Binomial Coefficients
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.6: 53/68 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.6: 66/68 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -73,16 +73,16 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.6: 53/68 solved.
 | 53 |  [*M25*] | math-medium | - | - |
 | [54](54.md) |  [*M21*] | math-medium | solved | 36s |
 | 55 |  [*M21*] | math-medium | - | - |
-| 56 |  [*20*] | medium | - | - |
-| 57 |  [*M22*] | math-medium | - | - |
-| 58 |  [*M23*] | math-medium | - | - |
-| 59 |  [*M25*] | math-medium | - | - |
-| 60 |  [*M23*] | math-medium | - | - |
-| 61 |  [*M25*] | math-medium | - | - |
-| 62 |  [*M23*] | math-medium | - | - |
-| 63 |  [*M30*] | math-hard | - | - |
-| 64 |  [*M20*] | math-medium | - | - |
-| 65 |  [*HM35*] | hm-hard | - | - |
-| 66 |  [*HM30*] | hm-hard | - | - |
-| 67 |  [*M20*] | math-medium | - | - |
-| 68 |  [*M25*] | math-medium | - | - |
+| [56](56.md) |  [*20*] | medium | solved | 52s |
+| [57](57.md) |  [*M22*] | math-medium | solved | 48s |
+| [58](58.md) |  [*M23*] | math-medium | solved | 31s |
+| [59](59.md) |  [*M25*] | math-medium | solved | 59s |
+| [60](60.md) |  [*M23*] | math-medium | solved | 59s |
+| [61](61.md) |  [*M25*] | math-medium | solved | 1m11s |
+| [62](62.md) |  [*M23*] | math-medium | solved | 58s |
+| [63](63.md) |  [*M30*] | math-hard | solved | 49s |
+| [64](64.md) |  [*M20*] | math-medium | solved | 41s |
+| [65](65.md) |  [*HM35*] | hm-hard | solved | 31s |
+| [66](66.md) |  [*HM30*] | hm-hard | solved | 48s |
+| [67](67.md) |  [*M20*] | math-medium | solved | 36s |
+| [68](68.md) |  [*M25*] | math-medium | solved | 49s |
