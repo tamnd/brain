@@ -1,6 +1,6 @@
 ---
 title: "IMO 1990"
-description: "IMO 1990 — 0/6 solved."
+description: "IMO 1990 — 1/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1990
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1990
 
-[Official IMO 1990 problems](https://www.imo-official.org/year_info.aspx?year=1990) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1990 problems](https://www.imo-official.org/year_info.aspx?year=1990) &nbsp;·&nbsp; 1/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | solved | 1m49s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 1m49s · [Solution →](1.md)
 
 Chords $AB$ and $CD$ of a circle intersect at a point $E$ inside the circle. Let $M$ be an interior point of the segment $EB$. The tangent line at $E$ to the circle through $D$, $E$, and $M$ intersects the lines $BC$ and $AC$ at $F$ and $G$, respectively. If $$
 \frac {AM}{AB} = t,

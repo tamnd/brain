@@ -1,6 +1,6 @@
 ---
 title: "IMO 1960"
-description: "IMO 1960 — 2/7 solved, 2 verified."
+description: "IMO 1960 — 3/7 solved, 2 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1960
@@ -10,11 +10,11 @@ draft: false
 
 # IMO 1960
 
-[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 2/7 solved, 2 verified.
+[Official IMO 1960 problems](https://www.imo-official.org/year_info.aspx?year=1960) &nbsp;·&nbsp; 3/7 solved, 2 verified.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | solved | 7m41s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
@@ -22,7 +22,7 @@ draft: false
 | [6](6.md) | ✓ verified | 3m00s |
 | 7 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 7m41s · [Solution →](1.md)
 
 Find all three-digit numbers for which one obtains, when dividing the number by 11, the sum of the squares of the digits of the initial number.
 
