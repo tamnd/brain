@@ -26,12 +26,13 @@ draft: false
 | 2513 | [Minimize the Maximum of Two Arrays](2513.md) | 🟡 Medium | 1m 17s | The problem gives us two empty arrays, arr1 and arr2, and asks us t… |
 | 2514 | [Count Anagrams](2514.md) | 🔴 Hard | 1m 28s | The problem asks us to count how many distinct sentence anagrams ca… |
 | 2515 | [Shortest Distance to Target String in a Circular Array](2515.md) | 🟢 Easy | 45s | The problem asks us to find the shortest distance from a given star… |
-| 2516 | [Take K of Each Character From Left and Right](2516.md) | 🟡 Medium | 1m 7s | The problem gives us a string s containing only the characters 'a',… |
+| 2516 | [Take K of Each Character From Left and Right](2516.md) | 🟡 Medium | 51s | The problem asks us to determine the minimum number of characters t… |
 | 2517 | [Maximum Tastiness of Candy Basket](2517.md) | 🟡 Medium | 1m 15s | The problem gives us an array price where each element represents t… |
-| 2519 | [Count the Number of K-Big Indices](2519.md) | 🔴 Hard | 5m 31s | The problem asks us to find the number of k-big indices in a given … |
-| 2520 | [Count the Digits That Divide a Number](2520.md) | 🟢 Easy | 40s | The problem asks us to count how many digits in a given integer num… |
+| 2518 | [Number of Great Partitions](2518.md) | 🔴 Hard | 1m | The problem requires us to partition an array of positive integers … |
+| 2519 | [Count the Number of K-Big Indices](2519.md) | 🔴 Hard | 1m 19s | This problem asks us to determine how many indices in an array sati… |
+| 2520 | [Count the Digits That Divide a Number](2520.md) | 🟢 Easy | 55s | The problem asks us to determine, given a positive integer num, how… |
 | 2521 | [Distinct Prime Factors of Product of Array](2521.md) | 🟡 Medium | 1m 27s | The problem asks us to determine how many unique prime numbers appe… |
-| 2522 | [Partition String Into Substrings With Values at Most K](2522.md) | 🟡 Medium | 57s | The problem gives us a numeric string s and an integer k. We must s… |
+| 2522 | [Partition String Into Substrings With Values at Most K](2522.md) | 🟡 Medium | 1m 10s | The problem gives us a numeric string s, where every character is a… |
 | 2524 | [Maximum Frequency Score of a Subarray](2524.md) | 🔴 Hard | 1m 29s | The problem gives us an integer array nums and a fixed window size … |
 | 2525 | [Categorize Box According to Criteria](2525.md) | 🟢 Easy | 1m 5s | This problem asks us to classify a box into one of four categories … |
 | 2526 | [Find Consecutive Integers from a Data Stream](2526.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure that processes a str… |
