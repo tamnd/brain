@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 240 exercises solved, 9 verified.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 247 exercises solved, 9 verified.
 
 | Section | Title | Solved | Verified |
 |---------|-------|--------|----------|
@@ -21,4 +21,4 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [1.2.5](1.2.5/) | Permutations and Factorials | 13 | 0 |
 | [1.2.6](1.2.6/) | Binomial Coefficients | 66 | 0 |
 | [1.2.7](1.2.7/) | Harmonic Numbers | 22 | 0 |
-| [1.2.8](1.2.8/) | Fibonacci Numbers | 4 | 0 |
+| [1.2.8](1.2.8/) | Fibonacci Numbers | 11 | 0 |

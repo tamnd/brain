@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.8 — Fibonacci Numbers"
-description: "Section 1.2.8 exercises — 4/42 solved."
+description: "Section 1.2.8 exercises — 11/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.8"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.8. Fibonacci Numbers
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.8: 4/42 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.8: 11/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -24,15 +24,15 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.8: 4/42 solved.
 | 4 |  [*14*] | simple | - | - |
 | [5](05.md) |  [*20*] | medium | solved | 36s |
 | 6 |  [*HM10*] | hm-simple | - | - |
-| 7 |  [*15*] | simple | - | - |
-| 8 |  [*15*] | simple | - | - |
-| 9 |  [*M20*] | math-medium | - | - |
-| 10 |  [*15*] | simple | - | - |
+| [7](07.md) |  [*15*] | simple | solved | 33s |
+| [8](08.md) |  [*15*] | simple | solved | 22s |
+| [9](09.md) |  [*M20*] | math-medium | solved | 49s |
+| [10](10.md) |  [*15*] | simple | solved | 29s |
 | 11 |  [*M20*] | math-medium | - | - |
-| 12 |  [*M26*] | math-hard | - | - |
-| 13 |  [*M22*] | math-medium | - | - |
+| [12](12.md) |  [*M26*] | math-hard | solved | 45s |
+| [13](13.md) |  [*M22*] | math-medium | solved | 42s |
 | 14 |  [*M28*] | math-hard | - | - |
-| 15 |  [*M22*] | math-medium | - | - |
+| [15](15.md) |  [*M22*] | math-medium | solved | 34s |
 | 16 |  [*M20*] | math-medium | - | - |
 | 17 |  [*M24*] | math-medium | - | - |
 | 18 |  [*20*] | medium | - | - |
