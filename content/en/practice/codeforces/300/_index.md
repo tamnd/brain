@@ -1,0 +1,24 @@
+---
+title: "Codeforces Round 181 (Div. 2)"
+description: "Solutions for Codeforces Round 181 (Div. 2) (contest 300). 1/2 problems verified against sample I/O. Difficulty range: 1500-2300."
+tags: ["codeforces", "competitive-programming", "brute-force", "dfs-and-similar", "graphs", "dp", "fft"]
+categories: ["algorithms"]
+contest_id: 300
+contest_type: "Div. 2"
+rating_range: "1500-2300"
+n_problems: 2
+n_verified: 1
+total_solve_s: 247
+date: "2026-05-29T00:00:00+07:00"
+weight: 300
+draft: false
+---
+
+# [Codeforces Round 181 (Div. 2)](https://codeforces.com/contest/300)
+
+**Type:** Div. 2 | **Problems:** 2 | **Verified:** 1/2 | **Rating range:** 1500-2300 | **Time:** 4m 7s
+
+| Problem | Name | Rating | Tags | Solve Time | Verified |
+|---|---|---|---|---|---|
+| [B](B/) | [Coach](https://codeforces.com/problemset/problem/300/B) | 1500 | brute-force, dfs-and-similar, graphs | 2m 18s | ✓ |
+| [D](D/) | [Painting Square](https://codeforces.com/problemset/problem/300/D) | 2300 | dp, fft | 1m 49s | ✗ |

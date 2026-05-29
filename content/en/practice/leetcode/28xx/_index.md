@@ -80,13 +80,13 @@ draft: false
 | 2867 | [Count Valid Paths in a Tree](2867.md) | 🔴 Hard | 2m 26s | That is a long, structured reference document with multiple require… |
 | 2868 | [The Wording Game](2868.md) | 🔴 Hard | 57s | The problem describes a turn-based game between Alice and Bob, wher… |
 | 2869 | [Minimum Operations to Collect Elements](2869.md) | 🟢 Easy | 1m 5s | This problem gives us an array nums and an integer k. We repeatedly… |
-| 2870 | [Minimum Number of Operations to Make Array Empty](2870.md) | 🟡 Medium | 47s | The problem requires us to determine the minimum number of operatio… |
-| 2871 | [Split Array Into Maximum Number of Subarrays](2871.md) | 🟡 Medium | 49s | The problem is asking us to split a given array of non-negative int… |
+| 2870 | [Minimum Number of Operations to Make Array Empty](2870.md) | 🟡 Medium | 1m 5s | The problem gives us an array nums containing positive integers. In… |
+| 2871 | [Split Array Into Maximum Number of Subarrays](2871.md) | 🟡 Medium | 57s | The problem is asking us to split a given array of non-negative int… |
 | 2872 | [Maximum Number of K-Divisible Components](2872.md) | 🔴 Hard | 53s | This problem is asking us to split a given undirected tree into as … |
-| 2873 | [Maximum Value of an Ordered Triplet I](2873.md) | 🟢 Easy | 55s | The problem asks us to find the maximum value of a triplet of indic… |
-| 2874 | [Maximum Value of an Ordered Triplet II](2874.md) | 🟡 Medium | 1m 7s | The problem asks us to find the maximum possible value of: subject … |
-| 2875 | [Minimum Size Subarray in Infinite Array](2875.md) | 🟡 Medium | 54s | The problem asks us to find the shortest subarray within an infinit… |
-| 2876 | [Count Visited Nodes in a Directed Graph](2876.md) | 🔴 Hard | 55s | The problem presents a directed graph with n nodes and n edges, for… |
+| 2873 | [Maximum Value of an Ordered Triplet I](2873.md) | 🟢 Easy | 1m 41s | You are given an integer array nums and must choose three indices (… |
+| 2874 | [Maximum Value of an Ordered Triplet II](2874.md) | 🟡 Medium | 1m 21s | The problem gives us a 0-indexed integer array nums and asks us to … |
+| 2875 | [Minimum Size Subarray in Infinite Array](2875.md) | 🟡 Medium | 1m 17s | This problem gives us a finite array nums, but asks us to imagine a… |
+| 2876 | [Count Visited Nodes in a Directed Graph](2876.md) | 🔴 Hard | 47s | The problem presents a directed graph with n nodes, where each node… |
 | 2877 | [Create a DataFrame from List](2877.md) | 🟢 Easy | 1m | The problem asks us to create a Pandas DataFrame from a given two d… |
 | 2878 | [Get the Size of a DataFrame](2878.md) | 🟢 Easy | 49s | This problem asks us to determine the size of a pandas DataFrame na… |
 | 2879 | [Display the First Three Rows](2879.md) | 🟢 Easy | 52s | This problem provides a Pandas DataFrame named employees with four … |

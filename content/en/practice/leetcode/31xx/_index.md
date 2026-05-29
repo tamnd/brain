@@ -29,3 +29,5 @@ draft: false
 | 3127 | [Make a Square with the Same Color](3127.md) | 🟢 Easy | 1m 13s | This problem gives us a fixed 3 x 3 grid containing only two possib… |
 | 3128 | [Right Triangles](3128.md) | 🟡 Medium | 1m 21s | The problem gives us a binary matrix grid, where each cell contains… |
 | 3129 | [Find All Possible Stable Binary Arrays I](3129.md) | 🟡 Medium | 1m 26s | In this problem, we need to count how many binary arrays can be for… |
+| 3133 | [Minimum Array End](3133.md) | 🟡 Medium | 1m 11s | The problem asks us to construct a strictly increasing array nums o… |
+| 3134 | [Find the Median of the Uniqueness Array](3134.md) | 🔴 Hard | 1m 20s | The problem defines a special array called the uniqueness array. Fo… |
