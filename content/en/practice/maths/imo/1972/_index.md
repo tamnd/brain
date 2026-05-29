@@ -17,7 +17,7 @@ draft: false
 | [1](1.md) | ✓ verified | 20m29s |
 | [2](2.md) | solved | 21m31s |
 | [3](3.md) | solved | 7m11s |
-| [4](4.md) | solved | 4m51s |
+| [4](4.md) | solved | 6m59s |
 | [5](5.md) | solved | 3m55s |
 | [6](6.md) | solved | 58m50s |
 
@@ -35,7 +35,7 @@ Let $m$ and $n$ be arbitrary non-negative integers. Prove that $$
 \frac{(2m)!(2n)!}{m!n!(m+n)!}
 $$ is an integer. ($0! = 1$.)
 
-**Problem 4** &nbsp; *solved* · 4m51s · [Solution →](4.md)
+**Problem 4** &nbsp; *solved* · 6m59s · [Solution →](4.md)
 
 Find all solutions $(x_1, x_2, x_3, x_4, x_5)$ of the system of inequalities $$
 (x_1^2 - x_3x_5)(x_2^2 - x_3x_5) \leq 0 \\ ,(x_2^2 - x_4x_1)(x_3^2 - x_4x_1) \leq 0 \\ ,(x_3^2 - x_5x_2)(x_4^2 - x_5x_2) \leq 0 \\ ,(x_4^2 - x_1x_3)(x_5^2 - x_1x_3) \leq 0 \\ ,(x_5^2 - x_2x_4)(x_1^2 - x_2x_4) \leq 0

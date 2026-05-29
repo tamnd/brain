@@ -10,8 +10,8 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 3000 | [Maximum Area of Longest Diagonal Rectangle](3000.md) | 🟢 Easy | 41s | The problem asks us to find the area of a rectangle with the longes… |
-| 3001 | [Minimum Moves to Capture The Queen](3001.md) | 🟡 Medium | 1m 11s | The previous construction failed because adding a small geometric p… |
+| 3000 | [Maximum Area of Longest Diagonal Rectangle](3000.md) | 🟢 Easy | 57s | The input consists of a 2D array dimensions, where each element rep… |
+| 3001 | [Minimum Moves to Capture The Queen](3001.md) | 🟡 Medium | 1m 11s | This problem gives us the positions of three chess pieces on a stan… |
 | 3003 | [Maximize the Number of Partitions After Operations](3003.md) | 🔴 Hard | 1m 21s | The problem gives us a string s and an integer k. We repeatedly par… |
 | 3007 | [Maximum Number That Sum of the Prices Is Less Than or Equal to K](3007.md) | 🟡 Medium | 1m 15s | This problem defines a special "price" for every integer based on i… |
 | 3008 | [Find Beautiful Indices in the Given Array II](3008.md) | 🔴 Hard | 1m 24s | The problem gives us a string s and two pattern strings, a and b. W… |

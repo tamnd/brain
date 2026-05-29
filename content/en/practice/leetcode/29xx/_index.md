@@ -104,5 +104,6 @@ draft: false
 | 2993 | [Friday Purchases I](2993.md) | 🟡 Medium | 56s | The problem asks us to compute the total amount spent on Fridays in… |
 | 2994 | [Friday Purchases II ](2994.md) | 🔴 Hard | 49s | The problem requires calculating the total spending by users on eac… |
 | 2995 | [Viewers Turned Streamers](2995.md) | 🔴 Hard | 2m 52s | We are given a database table called Sessions, where each row repre… |
-| 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](2997.md) | 🟡 Medium | 47s | This problem asks us to determine the minimum number of bit flips r… |
-| 2998 | [Minimum Number of Operations to Make X and Y Equal](2998.md) | 🟡 Medium | 1m 32s | This problem gives us two positive integers, x and y, and asks for … |
+| 2996 | [Smallest Missing Integer Greater Than Sequential Prefix Sum](2996.md) | 🟢 Easy | 1m 5s | The problem asks us to find the smallest missing integer in the arr… |
+| 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](2997.md) | 🟡 Medium | 59s | This problem asks us to transform an array so that the bitwise XOR … |
+| 2998 | [Minimum Number of Operations to Make X and Y Equal](2998.md) | 🟡 Medium | 1m 3s | The problem asks us to transform an integer x into another integer … |
