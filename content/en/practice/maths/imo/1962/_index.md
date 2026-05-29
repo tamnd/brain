@@ -1,6 +1,6 @@
 ---
 title: "IMO 1962"
-description: "IMO 1962 — 1/7 solved, 1 verified."
+description: "IMO 1962 — 2/7 solved, 2 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1962
@@ -10,11 +10,11 @@ draft: false
 
 # IMO 1962
 
-[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 1/7 solved, 1 verified.
+[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 2/7 solved, 2 verified.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | ✓ verified | 7m17s |
 | 2 | — | — |
 | [3](3.md) | ✓ verified | 2m18s |
 | 4 | — | — |
@@ -22,7 +22,7 @@ draft: false
 | 6 | — | — |
 | 7 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *✓ verified* · 7m17s · [Solution →](1.md)
 
 Find the smallest natural number $n$ with the following properties:
 
