@@ -1,6 +1,6 @@
 ---
 title: "IMO 1959"
-description: "IMO 1959 — 5/6 solved, 4 verified."
+description: "IMO 1959 — 6/6 solved, 4 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1959
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1959
 
-[Official problems](https://artofproblemsolving.com/wiki/index.php/1959_IMO_Problems) &nbsp;·&nbsp; 5/6 solved, 4 verified.
+[Official problems](https://artofproblemsolving.com/wiki/index.php/1959_IMO_Problems) &nbsp;·&nbsp; 6/6 solved, 4 verified.
 
 | # | Problem | Status | Time | Topic |
 |---|---------|--------|------|-------|
@@ -19,4 +19,4 @@ draft: false
 | 3 | [Problem 3](3.md) | ✓ verified | 3m29s | Let $a,b,c$ be real numbers. Consider the quadratic equation in $\cos{x}$ : |
 | 4 | [Problem 4](4.md) | ✓ verified | 13m46s | Construct a right triangle with a given hypotenuse $c$ such that the median drawn to the hypotenuse… |
 | 5 | [Problem 5](5.md) | solved | 6m06s | An arbitrary point $M$ is selected in the interior of the segment $AB$. The squares $AMCD$ and $MBE… |
-| 6 | Problem 6 | - | - | Two planes, $P$ and $Q$, intersect along the line $p$. The point $A$ is in the plane $P$, and the p… |
+| 6 | [Problem 6](6.md) | solved | 18m54s | Two planes, $P$ and $Q$, intersect along the line $p$. The point $A$ is in the plane $P$, and the p… |

@@ -15,12 +15,12 @@ draft: false
 | 2502 | [Design Memory Allocator](2502.md) | 🟡 Medium | 46s | The problem requires designing a memory allocator that manages a fi… |
 | 2503 | [Maximum Number of Points From Grid Queries](2503.md) | 🔴 Hard | 2m 19s | This problem gives us a two dimensional grid of positive integers a… |
 | 2504 | [Concatenate the Name and the Profession](2504.md) | 🟢 Easy | 3m 20s | The problem asks us to manipulate data from a SQL table named Perso… |
-| 2505 | [Bitwise OR of All Subsequence Sums](2505.md) | 🟡 Medium | 5m 35s | The problem asks us to compute the bitwise OR of the sums of all po… |
-| 2506 | [Count Pairs Of Similar Strings](2506.md) | 🟢 Easy | 4m 5s | The problem gives us an array of strings called words. We need to c… |
-| 2507 | [Smallest Value After Replacing With Sum of Prime Factors](2507.md) | 🟡 Medium | 1m 6s | The problem gives us a positive integer n and asks us to repeatedly… |
-| 2508 | [Add Edges to Make Degrees of All Nodes Even](2508.md) | 🔴 Hard | 1m 31s | The problem gives us an undirected graph with n nodes and a list of… |
-| 2509 | [Cycle Length Queries in a Tree](2509.md) | 🔴 Hard | 51s | The problem asks us to analyze queries on a complete binary tree of… |
-| 2510 | [Check if There is a Path With Equal Number of 0's And 1's](2510.md) | 🟡 Medium | 41s | This problem asks us to determine whether there exists a path from … |
+| 2505 | [Bitwise OR of All Subsequence Sums](2505.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the bitwise OR of every possible su… |
+| 2506 | [Count Pairs Of Similar Strings](2506.md) | 🟢 Easy | 1m 7s | The problem gives us an array of strings called words. We must coun… |
+| 2507 | [Smallest Value After Replacing With Sum of Prime Factors](2507.md) | 🟡 Medium | 49s | The problem asks us to repeatedly replace a number n with the sum o… |
+| 2508 | [Add Edges to Make Degrees of All Nodes Even](2508.md) | 🔴 Hard | 1m 33s | The problem gives us an undirected graph with n nodes and a list of… |
+| 2509 | [Cycle Length Queries in a Tree](2509.md) | 🔴 Hard | 1m 20s | The problem gives us a complete binary tree where nodes are labeled… |
+| 2510 | [Check if There is a Path With Equal Number of 0's And 1's](2510.md) | 🟡 Medium | 45s | This problem asks us to determine if there exists a path in a binar… |
 | 2511 | [Maximum Enemy Forts That Can Be Captured](2511.md) | 🟢 Easy | 2m 38s | The problem gives us an array called forts, where each position rep… |
 | 2512 | [Reward Top K Students](2512.md) | 🟡 Medium | 1m 19s | This problem asks us to rank students based on the sentiment of wor… |
 | 2513 | [Minimize the Maximum of Two Arrays](2513.md) | 🟡 Medium | 3m 26s | This problem asks us to construct two arrays of positive integers, … |

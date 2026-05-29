@@ -79,3 +79,8 @@ draft: false
 | 2788 | [Split Strings by Separator](2788.md) | 🟢 Easy | 2m 38s | This problem asks us to process a list of strings and split each st… |
 | 2789 | [Largest Element in an Array after Merge Operations](2789.md) | 🟡 Medium | 53s | The problem asks us to repeatedly merge elements in an array accord… |
 | 2790 | [Maximum Number of Groups With Increasing Length](2790.md) | 🔴 Hard | 55s | We are given an array usageLimits, where usageLimits[i] tells us ho… |
+| 2793 | [Status of Flight Tickets](2793.md) | 🔴 Hard | 1m 49s | The problem is asking us to determine the status of flight tickets … |
+| 2794 | [Create Object from Two Arrays](2794.md) | 🟢 Easy | 1m 40s | The problem gives us two arrays, keysArr and valuesArr, both of the… |
+| 2795 | [Parallel Execution of Promises for Individual Results Retrieval](2795.md) | 🟡 Medium | 3m 4s | This problem asks us to implement behavior similar to JavaScript's … |
+| 2796 | [Repeat String](2796.md) | 🟢 Easy | 3m 8s | This problem asks us to enhance strings with a custom replicate(x) … |
+| 2799 | [Count Complete Subarrays in an Array](2799.md) | 🟡 Medium | 1m 8s | This problem asks us to count how many contiguous subarrays are com… |
