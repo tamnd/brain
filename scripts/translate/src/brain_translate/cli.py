@@ -135,7 +135,8 @@ def run(
     lang: Annotated[str, typer.Argument(help="Language code")],
     limit: int = typer.Option(20, "--limit", "-n", help="Max files to translate per run"),
     provider: Optional[str] = typer.Option(
-        None, "--provider", "-p", help="deepl | openai | chatgpt (overrides env)"
+        None, "--provider", "-p",
+        help="chatgpt | google | bing | yandex | baidu | google_dt (overrides env)",
     ),
     push: bool = typer.Option(False, "--push", help="Commit + push after translating"),
     file: Optional[str] = typer.Option(None, "--file", "-f", help="Translate one specific file"),
