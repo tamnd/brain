@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974"
-description: "IMO 1974 — 4/6 solved, 2 verified."
+description: "IMO 1974 — 5/6 solved, 3 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1974
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1974
 
-[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 4/6 solved, 2 verified.
+[Official IMO 1974 problems](https://www.imo-official.org/year_info.aspx?year=1974) &nbsp;·&nbsp; 5/6 solved, 3 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -19,7 +19,7 @@ draft: false
 | [3](3.md) | solved | 6m53s |
 | [4](4.md) | ✓ verified | 10m53s |
 | 5 | — | — |
-| 6 | — | — |
+| [6](6.md) | ✓ verified | 7m06s |
 
 ---
 
@@ -65,6 +65,6 @@ $$ where $a, b, c, d$ are arbitrary positive numbers.
 
 ---
 
-**Problem 6**
+**Problem 6** &nbsp; *✓ verified* · 7m06s · [Solution →](6.md)
 
 Let $P$ be a non-constant polynomial with integer coefficients. If $n(P)$ is the number of distinct integers $k$ such that $(P(k))^2 = 1$, prove that $n(P) - \deg(P) \leq 2$, where $\deg(P)$ denotes the degree of the polynomial $P$.
