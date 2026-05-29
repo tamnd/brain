@@ -1,6 +1,6 @@
 ---
 title: "IMO 1962"
-description: "IMO 1962 — 2/7 solved, 2 verified."
+description: "IMO 1962 — 3/7 solved, 3 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1962
@@ -10,12 +10,12 @@ draft: false
 
 # IMO 1962
 
-[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 2/7 solved, 2 verified.
+[Official IMO 1962 problems](https://www.imo-official.org/year_info.aspx?year=1962) &nbsp;·&nbsp; 3/7 solved, 3 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 7m17s |
-| 2 | — | — |
+| [2](2.md) | ✓ verified | 25m30s |
 | [3](3.md) | ✓ verified | 2m18s |
 | 4 | — | — |
 | 5 | — | — |
@@ -30,7 +30,7 @@ Find the smallest natural number $n$ with the following properties:
 
 (b) If the final digit 6 is moved to the front, the resulting number is four times as large.
 
-**Problem 2**
+**Problem 2** &nbsp; *✓ verified* · 25m30s · [Solution →](2.md)
 
 Find all real numbers $x$ satisfying
 $$\sqrt{3-x} - \sqrt{x+1} > \frac{1}{2}.$$
