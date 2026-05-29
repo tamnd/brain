@@ -40,4 +40,9 @@ draft: false
 | 2840 | [Check if Strings Can be Made Equal With Operations II](2840.md) | 🟡 Medium | 4m 23s | LeetCode 2840: Check if Strings Can be Made Equal With Operations I… |
 | 2841 | [Maximum Sum of Almost Unique Subarray](2841.md) | 🟡 Medium | 4m 28s | LeetCode 2841: Maximum Sum of Almost Unique Subarray (Medium) |
 | 2842 | [Count K-Subsequences of a String With Maximum Beauty](2842.md) | 🔴 Hard | 4m 23s | LeetCode 2842: Count K-Subsequences of a String With Maximum Beauty… |
+| 2843 | [  Count Symmetric Integers](2843.md) | 🟢 Easy | 6m 1s | LeetCode 2843:   Count Symmetric Integers (Easy) |
 | 2845 | [Count of Interesting Subarrays](2845.md) | 🟡 Medium | 2m 3s | The problem asks us to count how many contiguous subarrays satisfy … |
+| 2846 | [Minimum Edge Weight Equilibrium Queries in a Tree](2846.md) | 🔴 Hard | 1m 50s | This problem gives us a weighted undirected tree with n nodes. Sinc… |
+| 2847 | [Smallest Number With Given Digit Product](2847.md) | 🟡 Medium | 4m 57s | LeetCode 2847: Smallest Number With Given Digit Product (Medium) |
+| 2848 | [Points That Intersect With Cars](2848.md) | 🟢 Easy | 2m 18s | The problem gives us a list of cars parked on a number line. Each c… |
+| 2850 | [Minimum Moves to Spread Stones Over Grid](2850.md) | 🟡 Medium | 2m 13s | The problem gives us a 3 x 3 grid where each cell contains some num… |
