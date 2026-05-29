@@ -2,6 +2,7 @@
 title: "Codeforces Solutions"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 description: "Codeforces problem solutions with full editorial. 264 contests, 1154 problems, 953 verified."
 =======
 description: "Codeforces problem solutions with full editorial. 291 contests, 1237 problems, 1001 verified."
@@ -9,6 +10,9 @@ description: "Codeforces problem solutions with full editorial. 291 contests, 12
 =======
 description: "Codeforces problem solutions with full editorial. 285 contests, 1218 problems, 1002 verified."
 >>>>>>> 6d12e9b8 (codeforces: add contest 295 solutions)
+=======
+description: "Codeforces problem solutions with full editorial. 286 contests, 1219 problems, 1003 verified."
+>>>>>>> c3ee5c59 (codeforces: add contest 296 solutions)
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -21,6 +25,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 **264 contests, 1154 problems, 953 verified.**
 =======
 **291 contests, 1237 problems, 1001 verified.**
@@ -28,6 +33,9 @@ Each problem comes with a full written editorial: problem analysis, approach com
 =======
 **285 contests, 1218 problems, 1002 verified.**
 >>>>>>> 6d12e9b8 (codeforces: add contest 295 solutions)
+=======
+**286 contests, 1219 problems, 1003 verified.**
+>>>>>>> c3ee5c59 (codeforces: add contest 296 solutions)
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -353,6 +361,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [293](293/) | [Croc Champ 2013 - Round 2](https://codeforces.com/contest/293) | Special | 1500-2700 | 4/4 | 8m 33s |
 | [294](294/) | [Codeforces Round 178 (Div. 2)](https://codeforces.com/contest/294) | Div. 2 | 800-2500 | 3/4 | 6m 7s |
 | [295](295/) | [Codeforces Round 179 (Div. 1)](https://codeforces.com/contest/295) | Div. 1 | 1700-2500 | 4/4 | 11m 55s |
+| [296](296/) | [Codeforces Round 179 (Div. 2)](https://codeforces.com/contest/296) | Div. 2 | 1100-1100 | 1/1 | 57s |
 | [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 3m 30s |
 | [401](401/) | [Codeforces Round 235 (Div. 2)](https://codeforces.com/contest/401) | Div. 2 | 800-2000 | 2/3 | 6m 53s |
 | [402](402/) | [Codeforces Round 236 (Div. 2)](https://codeforces.com/contest/402) | Div. 2 | 1100-2200 | 1/4 | 11m 10s |
