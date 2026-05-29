@@ -46,7 +46,7 @@ draft: false
 | 2535 | [Difference Between Element Sum and Digit Sum of an Array](2535.md) | 🟢 Easy | 2m 53s | The problem gives us an array of positive integers called nums. We … |
 | 2536 | [Increment Submatrices by One](2536.md) | 🟡 Medium | 1m 17s | The problem gives us an n x n matrix that initially contains only z… |
 | 2537 | [Count the Number of Good Subarrays](2537.md) | 🟡 Medium | 1m 10s | The problem asks us to count how many contiguous subarrays contain … |
-| 2538 | [Difference Between Maximum and Minimum Price Sum](2538.md) | 🔴 Hard | 47s | This problem involves analyzing a tree, an undirected, connected ac… |
+| 2538 | [Difference Between Maximum and Minimum Price Sum](2538.md) | 🔴 Hard | 3m 2s | We are given an undirected tree with n nodes. Every node has a pric… |
 | 2539 | [Count the Number of Good Subsequences](2539.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many subsequences of a given strin… |
 | 2540 | [Minimum Common Value](2540.md) | 🟢 Easy | 1m 7s | The problem gives us two integer arrays, nums1 and nums2, and both … |
 | 2541 | [Minimum Operations to Make Array Equal II](2541.md) | 🟡 Medium | 1m 12s | The problem gives us two integer arrays, nums1 and nums2, both of t… |

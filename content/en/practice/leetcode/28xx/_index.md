@@ -38,3 +38,6 @@ draft: false
 | 2838 | [Maximum Coins Heroes Can Collect](2838.md) | 🟡 Medium | 2m 30s | The problem gives us three arrays: - heroes[i] represents the power… |
 | 2839 | [Check if Strings Can be Made Equal With Operations I](2839.md) | 🟢 Easy | 2m 24s | The problem gives us two strings, s1 and s2, each containing exactl… |
 | 2840 | [Check if Strings Can be Made Equal With Operations II](2840.md) | 🟡 Medium | 4m 23s | LeetCode 2840: Check if Strings Can be Made Equal With Operations I… |
+| 2841 | [Maximum Sum of Almost Unique Subarray](2841.md) | 🟡 Medium | 4m 28s | LeetCode 2841: Maximum Sum of Almost Unique Subarray (Medium) |
+| 2842 | [Count K-Subsequences of a String With Maximum Beauty](2842.md) | 🔴 Hard | 4m 23s | LeetCode 2842: Count K-Subsequences of a String With Maximum Beauty… |
+| 2845 | [Count of Interesting Subarrays](2845.md) | 🟡 Medium | 2m 3s | The problem asks us to count how many contiguous subarrays satisfy … |
