@@ -57,30 +57,46 @@ draft: false
 | 2751 | [Robot Collisions](2751.md) | 🔴 Hard | 1m 12s | The problem asks us to simulate collisions between robots moving on… |
 | 2752 | [Customers with Maximum Number of Transactions on Consecutive Days](2752.md) | 🔴 Hard | 1m 19s | The problem gives us a Transactions table where each row represents… |
 | 2753 | [Count Houses in a Circular Street II](2753.md) | 🔴 Hard | 1m 36s | This problem gives us access to a hidden circular street through a … |
+| 2754 | [Bind Function to Context](2754.md) | 🟡 Medium | 48s | The problem requires implementing a polyfill for JavaScript's Funct… |
+| 2755 | [Deep Merge of Two Objects](2755.md) | 🟡 Medium | 37s | This problem requires implementing a deep merge function that takes… |
+| 2756 | [Query Batching](2756.md) | 🔴 Hard | 1m 3s | The problem asks us to implement a throttled batching system for as… |
 | 2757 | [Generate Circular Array Values](2757.md) | 🟡 Medium | 1m 6s | This problem asks us to implement a generator that traverses a circ… |
 | 2758 | [Next Day](2758.md) | 🟢 Easy | 1m 5s | This problem asks us to extend date handling functionality so that … |
 | 2759 | [Convert JSON String to Object](2759.md) | 🔴 Hard | 1m 25s | This problem asks us to implement our own JSON parser without using… |
+| 2760 | [Longest Even Odd Subarray With Threshold](2760.md) | 🟢 Easy | 30s | This problem asks us to find the longest contiguous subarray in a g… |
 | 2762 | [Continuous Subarrays](2762.md) | 🟡 Medium | 1m 8s | The problem asks us to count how many contiguous subarrays satisfy … |
+| 2763 | [Sum of Imbalance Numbers of All Subarrays](2763.md) | 🔴 Hard | 55s | The problem defines the imbalance number of an array based on the g… |
 | 2764 | [Is Array a Preorder of Some \u200cBinary Tree](2764.md) | 🟡 Medium | 1m 6s | This problem gives us a 2D array nodes, where each entry has the fo… |
 | 2765 | [Longest Alternating Subarray](2765.md) | 🟢 Easy | 1m 18s | The problem gives us a 0-indexed integer array nums, and asks us to… |
 | 2766 | [Relocate Marbles](2766.md) | 🟡 Medium | 52s | This problem involves simulating the relocation of marbles across i… |
 | 2767 | [Partition String Into Minimum Beautiful Substrings](2767.md) | 🟡 Medium | 2m 20s | The problem gives us a binary string s, and we must split it into o… |
 | 2768 | [Number of Black Blocks](2768.md) | 🟡 Medium | 43s | The problem asks us to analyze an m x n grid where some cells are c… |
+| 2769 | [Find the Maximum Achievable Number](2769.md) | 🟢 Easy | 43s | The problem is asking us to determine the maximum number x that can… |
+| 2770 | [Maximum Number of Jumps to Reach the Last Index](2770.md) | 🟡 Medium | 35s | The problem asks us to determine the maximum number of jumps one ca… |
 | 2771 | [Longest Non-decreasing Subarray From Two Arrays](2771.md) | 🟡 Medium | 2m 20s | The problem asks us to construct a new array nums3 by choosing, at … |
 | 2772 | [Apply Operations to Make All Array Elements Equal to Zero](2772.md) | 🟡 Medium | 1m 13s | We are given an array nums and an integer k. The only operation all… |
 | 2773 | [Height of Special Binary Tree](2773.md) | 🟡 Medium | 1m 17s | The problem gives us the root of a binary tree with a very unusual … |
+| 2774 | [Array Upper Bound](2774.md) | 🟢 Easy | 1m | The problem asks us to extend arrays with a method called upperBoun… |
 | 2775 | [Undefined to Null](2775.md) | 🟡 Medium | 44s | The problem requires transforming a nested JavaScript-style object … |
+| 2776 | [Convert Callback Based Function to Promise Based Function](2776.md) | 🟡 Medium | 47s | The problem asks us to create a function, promisify, which converts… |
+| 2777 | [Date Range Generator](2777.md) | 🟡 Medium | 33s | The problem asks us to construct a generator that produces a sequen… |
 | 2778 | [Sum of Squares of Special Elements ](2778.md) | 🟢 Easy | 38s | The problem provides a 1-indexed array nums of integers with length… |
 | 2780 | [Minimum Index of a Valid Split](2780.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array nums that is guaranteed to co… |
 | 2781 | [Length of the Longest Valid Substring](2781.md) | 🔴 Hard | 1m 8s | The problem gives us a string word and a list of forbidden strings … |
 | 2782 | [Number of Unique Categories](2782.md) | 🟡 Medium | 1m 18s | This problem is an interactive-style Union-Find problem where we ar… |
+| 2783 | [Flight Occupancy and Waitlist Analysis](2783.md) | 🟡 Medium | 1m 25s | This problem asks us to analyze flight bookings and determine two v… |
 | 2784 | [Check if Array is Good](2784.md) | 🟢 Easy | 1m 4s | This problem asks us to determine whether a given array nums is a p… |
+| 2785 | [Sort Vowels in a String](2785.md) | 🟡 Medium | 1m 25s | The problem asks us to rearrange only the vowels in a given string … |
 | 2787 | [Ways to Express an Integer as Sum of Powers](2787.md) | 🟡 Medium | 1m 11s | The problem gives us two positive integers, n and x. We must determ… |
 | 2788 | [Split Strings by Separator](2788.md) | 🟢 Easy | 2m 38s | This problem asks us to process a list of strings and split each st… |
 | 2789 | [Largest Element in an Array after Merge Operations](2789.md) | 🟡 Medium | 53s | The problem asks us to repeatedly merge elements in an array accord… |
 | 2790 | [Maximum Number of Groups With Increasing Length](2790.md) | 🔴 Hard | 55s | We are given an array usageLimits, where usageLimits[i] tells us ho… |
+| 2791 | [Count Paths That Can Form a Palindrome in a Tree](2791.md) | 🔴 Hard | 38s | The problem requires counting the number of node pairs (u, v) in a … |
+| 2792 | [Count Nodes That Are Great Enough](2792.md) | 🔴 Hard | 35s | The problem gives a binary tree where each node has an integer valu… |
 | 2793 | [Status of Flight Tickets](2793.md) | 🔴 Hard | 1m 49s | The problem is asking us to determine the status of flight tickets … |
 | 2794 | [Create Object from Two Arrays](2794.md) | 🟢 Easy | 1m 40s | The problem gives us two arrays, keysArr and valuesArr, both of the… |
 | 2795 | [Parallel Execution of Promises for Individual Results Retrieval](2795.md) | 🟡 Medium | 3m 4s | This problem asks us to implement behavior similar to JavaScript's … |
 | 2796 | [Repeat String](2796.md) | 🟢 Easy | 3m 8s | This problem asks us to enhance strings with a custom replicate(x) … |
+| 2797 | [Partial Function with Placeholders](2797.md) | 🟢 Easy | 1m 28s | This problem asks us to implement a custom version of partial funct… |
+| 2798 | [Number of Employees Who Met the Target](2798.md) | 🟢 Easy | 51s | The problem asks us to determine how many employees meet or exceed … |
 | 2799 | [Count Complete Subarrays in an Array](2799.md) | 🟡 Medium | 1m 8s | This problem asks us to count how many contiguous subarrays are com… |
