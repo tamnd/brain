@@ -18,7 +18,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.1: 9/9 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*10*] | simple | solved | 6m34s |
+| [1](01.md) |  [*10*] | simple | verified | 2m24s |
 | [2](02.md) |  [*15*] | simple | solved | 33s |
 | [3](03.md) |  [*20*] | medium | solved | 37s |
 | [4](04.md) |  [*16*] | medium | solved | 32s |
