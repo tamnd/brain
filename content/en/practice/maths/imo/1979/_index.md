@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979"
-description: "IMO 1979 — 2/6 solved, 1 verified."
+description: "IMO 1979 — 3/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1979
@@ -10,13 +10,13 @@ draft: false
 
 # IMO 1979
 
-[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 2/6 solved, 1 verified.
+[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 3/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m50s |
 | [2](2.md) | solved | 43m03s |
-| 3 | — | — |
+| [3](3.md) | solved | 14m28s |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
@@ -31,7 +31,7 @@ $$prove that $p$ is divisible by $1979$.
 
 We consider a prism which has the upper and inferior basis the pentagons: $A_{1}A_{2}A_{3}A_{4}A_{5}$ and $B_{1}B_{2}B_{3}B_{4}B_{5}$. Each of the sides of the two pentagons and the segments $A_{i}B_{j}$ with $i,j=1,\ldots$,5 is colored in red or blue. In every triangle which has all sides colored there exists one red side and one blue side. Prove that all the 10 sides of the two basis are colored in the same color.
 
-**Problem 3**
+**Problem 3** &nbsp; *solved* · 14m28s · [Solution →](3.md)
 
 Two circles in a plane intersect. $A$ is one of the points of intersection. Starting simultaneously from $A$ two points move with constant speed, each travelling along its own circle in the same sense. The two points return to $A$ simultaneously after one revolution. Prove that there is a fixed point $P$ in the plane such that the two points are always equidistant from $P.$
 
