@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979"
-description: "IMO 1979 — 3/6 solved, 1 verified."
+description: "IMO 1979 — 4/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1979
@@ -10,14 +10,14 @@ draft: false
 
 # IMO 1979
 
-[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 3/6 solved, 1 verified.
+[Official IMO 1979 problems](https://www.imo-official.org/year_info.aspx?year=1979) &nbsp;·&nbsp; 4/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m50s |
 | [2](2.md) | solved | 43m03s |
 | [3](3.md) | solved | 14m28s |
-| 4 | — | — |
+| [4](4.md) | solved | 16m50s |
 | 5 | — | — |
 | 6 | — | — |
 
@@ -35,7 +35,7 @@ We consider a prism which has the upper and inferior basis the pentagons: $A_{1}
 
 Two circles in a plane intersect. $A$ is one of the points of intersection. Starting simultaneously from $A$ two points move with constant speed, each travelling along its own circle in the same sense. The two points return to $A$ simultaneously after one revolution. Prove that there is a fixed point $P$ in the plane such that the two points are always equidistant from $P.$
 
-**Problem 4**
+**Problem 4** &nbsp; *solved* · 16m50s · [Solution →](4.md)
 
 We consider a point $P$ in a plane $p$ and a point $Q \not\in p$. Determine all the points $R$ from $p$ for which$$
 \frac{QP+PR}{QR}
