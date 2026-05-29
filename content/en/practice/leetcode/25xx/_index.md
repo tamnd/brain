@@ -49,7 +49,7 @@ draft: false
 | 2538 | [Difference Between Maximum and Minimum Price Sum](2538.md) | 🔴 Hard | 3m 2s | We are given an undirected tree with n nodes. Every node has a pric… |
 | 2539 | [Count the Number of Good Subsequences](2539.md) | 🟡 Medium | 20m 37s | LeetCode 2539: Count the Number of Good Subsequences (Medium) |
 | 2540 | [Minimum Common Value](2540.md) | 🟢 Easy | 1m 32s | The problem gives us two integer arrays, nums1 and nums2, and both … |
-| 2541 | [Minimum Operations to Make Array Equal II](2541.md) | 🟡 Medium | 1m 12s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2541 | [Minimum Operations to Make Array Equal II](2541.md) | 🟡 Medium | 20m 25s | LeetCode 2541: Minimum Operations to Make Array Equal II (Medium) |
 | 2542 | [Maximum Subsequence Score](2542.md) | 🟡 Medium | 1m 29s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
 | 2543 | [Check if Point Is Reachable](2543.md) | 🔴 Hard | 1m 9s | The problem gives us an infinite two dimensional grid and asks whet… |
 | 2544 | [Alternating Digit Sum](2544.md) | 🟢 Easy | 57s | The problem asks us to compute an alternating sum of the digits of … |
@@ -64,14 +64,14 @@ draft: false
 | 2553 | [Separate the Digits in an Array](2553.md) | 🟢 Easy | 44s | This problem asks us to take an array of positive integers, nums, a… |
 | 2554 | [Maximum Number of Integers to Choose From a Range I](2554.md) | 🟡 Medium | 1m 16s | The problem gives us three inputs: - banned, an array of integers t… |
 | 2555 | [Maximize Win From Two Segments](2555.md) | 🟡 Medium | 1m 20s | The problem gives us a sorted array prizePositions, where each valu… |
-| 2556 | [Disconnect Path in a Binary Matrix by at Most One Flip](2556.md) | 🟡 Medium | 48s | The problem gives an m x n binary grid where movement is only allow… |
-| 2557 | [Maximum Number of Integers to Choose From a Range II](2557.md) | 🟡 Medium | 43s | The problem asks us to determine the maximum number of integers we … |
-| 2558 | [Take Gifts From the Richest Pile](2558.md) | 🟢 Easy | 52s | This problem is asking us to simulate a repeated operation on a col… |
-| 2559 | [Count Vowel Strings in Ranges](2559.md) | 🟡 Medium | 28s | This problem asks us to process multiple range queries over an arra… |
-| 2560 | [House Robber IV](2560.md) | 🟡 Medium | 44s | This problem is a variation of the classic House Robber problem, wi… |
-| 2561 | [Rearranging Fruits](2561.md) | 🔴 Hard | 52s | The problem presents two baskets of fruits, each containing n fruit… |
+| 2556 | [Disconnect Path in a Binary Matrix by at Most One Flip](2556.md) | 🟡 Medium | 51s | The problem is asking whether it is possible to disconnect a path f… |
+| 2557 | [Maximum Number of Integers to Choose From a Range II](2557.md) | 🟡 Medium | 54s | The problem is asking to select the maximum number of integers from… |
+| 2558 | [Take Gifts From the Richest Pile](2558.md) | 🟢 Easy | 3m 31s | The problem presents a scenario where we have multiple piles of gif… |
+| 2559 | [Count Vowel Strings in Ranges](2559.md) | 🟡 Medium | 1m 22s | The problem gives us an array of strings called words and a list of… |
+| 2560 | [House Robber IV](2560.md) | 🟡 Medium | 55s | The problem describes a scenario where a robber wants to steal from… |
+| 2561 | [Rearranging Fruits](2561.md) | 🔴 Hard | 1m 13s | This problem gives us two arrays, basket1 and basket2, where each e… |
 | 2562 | [Find the Array Concatenation Value](2562.md) | 🟢 Easy | 52s | The problem asks us to compute the concatenation value of an intege… |
-| 2563 | [Count the Number of Fair Pairs](2563.md) | 🟡 Medium | 41s | The problem is asking us to count the number of pairs of indices (i… |
+| 2563 | [Count the Number of Fair Pairs](2563.md) | 🟡 Medium | 2m 20s | The problem asks us to count how many pairs of indices (i, j) satis… |
 | 2564 | [Substring XOR Queries](2564.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s and a list of queries. Each … |
 | 2565 | [Subsequence With the Minimum Score](2565.md) | 🔴 Hard | 7m 7s | The problem gives us two strings, s and t. We are allowed to delete… |
 | 2566 | [Maximum Difference by Remapping a Digit](2566.md) | 🟢 Easy | 1m 19s | We start with two numbers on a blackboard, 0 on top and 1 on bottom… |

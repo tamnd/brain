@@ -61,5 +61,17 @@ draft: false
 | 2848 | [Points That Intersect With Cars](2848.md) | 🟢 Easy | 2m 18s | The problem gives us a list of cars parked on a number line. Each c… |
 | 2849 | [Determine if a Cell Is Reachable at a Given Time](2849.md) | 🟡 Medium | 5m 3s | LeetCode 2849: Determine if a Cell Is Reachable at a Given Time (Me… |
 | 2850 | [Minimum Moves to Spread Stones Over Grid](2850.md) | 🟡 Medium | 2m 13s | The problem gives us a 3 x 3 grid where each cell contains some num… |
+| 2851 | [String Transformation](2851.md) | 🔴 Hard | 7m 56s | The operation described in the problem is a cyclic rotation of the … |
+| 2852 | [Sum of Remoteness of All Cells](2852.md) | 🟡 Medium | 4m 30s | The problem asks us to calculate the "sum of remoteness" for all ce… |
 | 2853 | [Highest Salaries Difference](2853.md) | 🟢 Easy | 1m 57s | The problem requires calculating the absolute difference between th… |
 | 2854 | [Rolling Average Steps](2854.md) | 🟡 Medium | 1m 39s | The problem gives us a database table named Steps. Each row represe… |
+| 2855 | [Minimum Right Shifts to Sort the Array](2855.md) | 🟢 Easy | 1m 18s | The problem gives us a circular operation called a right shift on a… |
+| 2856 | [Minimum Array Length After Pair Removals](2856.md) | 🟡 Medium | 1m 20s | The problem gives us a sorted integer array nums in non-decreasing … |
+| 2857 | [Count Pairs of Points With Distance k](2857.md) | 🟡 Medium | 1m 21s | In this problem, we are given a list of 2D points, where each point… |
+| 2858 | [Minimum Edge Reversals So Every Node Is Reachable](2858.md) | 🔴 Hard | 1m 25s | This problem gives us a directed graph with n nodes and exactly n -… |
+| 2859 | [Sum of Values at Indices With K Set Bits](2859.md) | 🟢 Easy | 1m 6s | The problem gives us a 0-indexed integer array nums and an integer … |
+| 2860 | [Happy Students](2860.md) | 🟡 Medium | 1m 11s | The problem gives us an array nums where nums[i] represents a condi… |
+| 2861 | [Maximum Number of Alloys](2861.md) | 🟡 Medium | 50s | The problem is about maximizing the number of alloys a company can … |
+| 2863 | [Maximum Length of Semi-Decreasing Subarrays](2863.md) | 🟡 Medium | 2m 20s | The problem gives us an integer array nums and asks for the length … |
+| 2864 | [Maximum Odd Binary Number](2864.md) | 🟢 Easy | 59s | The problem asks us to take a binary string s (consisting only of '… |
+| 2865 | [Beautiful Towers I](2865.md) | 🟡 Medium | 1m 16s | The problem gives us an array heights, where heights[i] represents … |
