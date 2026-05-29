@@ -15,13 +15,11 @@ draft: false
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | ✓ verified | 10m39s |
-| [2](2.md) | solved | 17m14s |
+| [2](2.md) | solved | 30m50s |
 | [3](3.md) | solved | 6m53s |
 | [4](4.md) | ✓ verified | 10m53s |
 | 5 | — | — |
 | [6](6.md) | ✓ verified | 7m06s |
-
----
 
 **Problem 1** &nbsp; *✓ verified* · 10m39s · [Solution →](1.md)
 
@@ -29,21 +27,15 @@ Three players $A, B$ and $C$ play the following game: On each of three cards an 
 
 This process (shuffling, dealing, giving out counters) takes place for at least two rounds. After the last round, $A$ has 20 counters in all, $B$ has 10 and $C$ has 9. At the last round $B$ received $r$ counters. Who received $q$ counters on the first round?
 
----
-
-**Problem 2** &nbsp; *solved* · 17m14s · [Solution →](2.md)
+**Problem 2** &nbsp; *solved* · 30m50s · [Solution →](2.md)
 
 In the triangle $ABC$, prove that there is a point $D$ on side $AB$ such that $CD$ is the geometric mean of $AD$ and $DB$ if and only if $$
 \sin{A} \sin{B} \leq \sin^2 \frac{C}{2}.
 $$
 
----
-
 **Problem 3** &nbsp; *solved* · 6m53s · [Solution →](3.md)
 
 Prove that the number $\textstyle \sum_{k = 0}^n \tbinom{2n+1}{2k+1} 2^{3k}$ is not divisible by 5 for any integer $n \geq 0$.
-
----
 
 **Problem 4** &nbsp; *✓ verified* · 10m53s · [Solution →](4.md)
 
@@ -55,15 +47,11 @@ Consider decompositions of an $8 \times 8$ chessboard into p non-overlapping rec
 
 Find the maximum value of $p$ for which such a decomposition is possible. For this value of $p$, determine all possible sequences $a_1, a_2, \cdots, a_p$.
 
----
-
 **Problem 5**
 
 Determine all possible values of $$
 S = \frac{a}{a+b+d} + \frac{b}{a+b+c} + \frac{c}{b+c+d} + \frac{d}{a+c+d}
 $$ where $a, b, c, d$ are arbitrary positive numbers.
-
----
 
 **Problem 6** &nbsp; *✓ verified* · 7m06s · [Solution →](6.md)
 
