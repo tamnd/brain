@@ -98,8 +98,10 @@ draft: false
 | 2485 | [Find the Pivot Integer](2485.md) | 🟢 Easy | 1m 10s | The problem gives us a positive integer n and asks us to find a spe… |
 | 2486 | [Append Characters to String to Make Subsequence](2486.md) | 🟡 Medium | 51s | The problem asks us to determine the minimum number of characters t… |
 | 2487 | [Remove Nodes From Linked List](2487.md) | 🟡 Medium | 1m 27s | The problem gives us the head of a singly linked list and asks us t… |
+| 2488 | [Count Subarrays With Median K](2488.md) | 🔴 Hard | 1m 45s | This problem asks us to count how many contiguous subarrays have a … |
 | 2489 | [Number of Substrings With Fixed Ratio](2489.md) | 🟡 Medium | 1m 16s | We are given a binary string s consisting only of '0' and '1', alon… |
 | 2490 | [Circular Sentence](2490.md) | 🟢 Easy | 40s | The problem asks us to determine whether a given sentence is circul… |
+| 2491 | [Divide Players Into Teams of Equal Skill](2491.md) | 🟡 Medium | 1m 1s | This problem asks us to divide a given list of player skill levels … |
 | 2492 | [Minimum Score of a Path Between Two Cities](2492.md) | 🟡 Medium | 1m 19s | The problem asks us to find the minimum possible score of a path be… |
 | 2493 | [Divide Nodes Into the Maximum Number of Groups](2493.md) | 🔴 Hard | 6m 43s | We are given an undirected graph with n nodes and a list of edges. … |
 | 2494 | [Merge Overlapping Events in the Same Hall](2494.md) | 🔴 Hard | 1m 6s | This problem gives us a database table named HallEvents. Each row r… |

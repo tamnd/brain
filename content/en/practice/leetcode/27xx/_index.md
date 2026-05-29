@@ -54,3 +54,12 @@ draft: false
 | 2748 | [Number of Beautiful Pairs](2748.md) | 🟢 Easy | 1m 31s | The problem gives us an integer array nums, and we must count how m… |
 | 2749 | [Minimum Operations to Make the Integer Zero](2749.md) | 🟡 Medium | 1m 17s | The problem gives us two integers, num1 and num2. In one operation,… |
 | 2750 | [Ways to Split Array Into Good Subarrays](2750.md) | 🟡 Medium | 1m 7s | This problem gives us a binary array nums, meaning every element is… |
+| 2751 | [Robot Collisions](2751.md) | 🔴 Hard | 1m 12s | The problem asks us to simulate collisions between robots moving on… |
+| 2752 | [Customers with Maximum Number of Transactions on Consecutive Days](2752.md) | 🔴 Hard | 1m 19s | The problem gives us a Transactions table where each row represents… |
+| 2753 | [Count Houses in a Circular Street II](2753.md) | 🔴 Hard | 1m 36s | This problem gives us access to a hidden circular street through a … |
+| 2757 | [Generate Circular Array Values](2757.md) | 🟡 Medium | 1m 6s | This problem asks us to implement a generator that traverses a circ… |
+| 2758 | [Next Day](2758.md) | 🟢 Easy | 1m 5s | This problem asks us to extend date handling functionality so that … |
+| 2759 | [Convert JSON String to Object](2759.md) | 🔴 Hard | 1m 25s | This problem asks us to implement our own JSON parser without using… |
+| 2762 | [Continuous Subarrays](2762.md) | 🟡 Medium | 1m 8s | The problem asks us to count how many contiguous subarrays satisfy … |
+| 2764 | [Is Array a Preorder of Some \u200cBinary Tree](2764.md) | 🟡 Medium | 1m 6s | This problem gives us a 2D array nodes, where each entry has the fo… |
+| 2765 | [Longest Alternating Subarray](2765.md) | 🟢 Easy | 1m 18s | The problem gives us a 0-indexed integer array nums, and asks us to… |
