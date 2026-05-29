@@ -2681,42 +2681,47 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2696 | [Minimum String Length After Removing Substrings](26xx/2696.md) | 🟢 Easy | 57s | The problem asks us to determine the minimum possible length of a s… |
 | 2697 | [Lexicographically Smallest Palindrome](26xx/2697.md) | 🟢 Easy | 1m 5s | The problem gives us a string s consisting only of lowercase Englis… |
 | 2698 | [Find the Punishment Number of an Integer](26xx/2698.md) | 🟡 Medium | 1m 10s | The problem asks us to compute a special value called the punishmen… |
-| 2699 | [Modify Graph Edge Weights](26xx/2699.md) | 🔴 Hard | 1m 25s | This problem gives us an undirected, connected, weighted graph with… |
-| 2701 | [Consecutive Transactions with Increasing Amounts](27xx/2701.md) | 🔴 Hard | 2m 14s | The problem gives us a table named Transactions, where each row rep… |
+| 2699 | [Modify Graph Edge Weights](26xx/2699.md) | 🔴 Hard | 42s | You asked for a complete guide, but the previous message included t… |
+| 2700 | [Differences Between Two Objects](27xx/2700.md) | 🟡 Medium | 50s | That is a long-form reference document with multiple substantial se… |
+| 2701 | [Consecutive Transactions with Increasing Amounts](27xx/2701.md) | 🔴 Hard | 1m 5s | Before I generate it, there is one important issue to resolve: Leet… |
 | 2702 | [Minimum Operations to Make Numbers Non-positive](27xx/2702.md) | 🔴 Hard | 56s | The problem presents a 0-indexed integer array nums and two positiv… |
-| 2703 | [Return Length of Arguments Passed](27xx/2703.md) | 🟢 Easy | 1m 12s | This problem asks us to implement a function named argumentsLength … |
-| 2704 | [To Be Or Not To Be](27xx/2704.md) | 🟢 Easy | 1m 5s | This problem asks us to implement a small testing utility similar t… |
-| 2705 | [Compact Object](27xx/2705.md) | 🟡 Medium | 43s | This problem requires creating a compact version of a given JSON ob… |
-| 2706 | [Buy Two Chocolates](27xx/2706.md) | 🟢 Easy | 1m 3s | This problem gives us an array prices, where each element represent… |
+| 2703 | [Return Length of Arguments Passed](27xx/2703.md) | 🟢 Easy | 42s | The problem asks for a function that returns the number of argument… |
+| 2704 | [To Be Or Not To Be](27xx/2704.md) | 🟢 Easy | 1m 3s | This problem asks us to implement a very small testing utility that… |
+| 2705 | [Compact Object](27xx/2705.md) | 🟡 Medium | 59s | The problem asks us to compact a JSON-like object or array by remov… |
+| 2706 | [Buy Two Chocolates](27xx/2706.md) | 🟢 Easy | 48s | The problem is asking us to purchase exactly two chocolates from a … |
 | 2707 | [Extra Characters in a String](27xx/2707.md) | 🟡 Medium | 44s | The problem requires breaking a given string s into substrings such… |
 | 2708 | [Maximum Strength of a Group](27xx/2708.md) | 🟡 Medium | 50s | The problem is asking to select a non-empty subset of numbers from … |
-| 2709 | [Greatest Common Divisor Traversal](27xx/2709.md) | 🔴 Hard | 1m 18s | The problem gives us an array nums, where each position in the arra… |
-| 2710 | [Remove Trailing Zeros From a String](27xx/2710.md) | 🟢 Easy | 50s | The problem asks us to remove all trailing zeros from a string that… |
-| 2711 | [Difference of Number of Distinct Values on Diagonals](27xx/2711.md) | 🟡 Medium | 1m 17s | The input is an m × n matrix called grid. For every cell (r, c), we… |
+| 2709 | [Greatest Common Divisor Traversal](27xx/2709.md) | 🔴 Hard | 1m 1s | Understood. I will provide the complete, detailed reference guide f… |
+| 2710 | [Remove Trailing Zeros From a String](27xx/2710.md) | 🟢 Easy | 38s | The problem asks us to remove all trailing zeros from a string repr… |
+| 2711 | [Difference of Number of Distinct Values on Diagonals](27xx/2711.md) | 🟡 Medium | 51s | The problem is asking us to compute a new matrix answer based on a … |
 | 2712 | [Minimum Cost to Make All Characters Equal](27xx/2712.md) | 🟡 Medium | 1m 2s | We are given a binary string s consisting only of '0' and '1'. The … |
 | 2713 | [Maximum Strictly Increasing Cells in a Matrix](27xx/2713.md) | 🔴 Hard | 1m 18s | The problem gives us an m x n matrix where each cell contains an in… |
-| 2714 | [Find Shortest Path with K Hops](27xx/2714.md) | 🔴 Hard | 33s | The problem asks us to find the shortest path between two nodes s a… |
+| 2714 | [Find Shortest Path with K Hops](27xx/2714.md) | 🔴 Hard | 1m 25s | This problem gives us an undirected weighted graph with n nodes and… |
 | 2715 | [Timeout Cancellation](27xx/2715.md) | 🟢 Easy | 48s | This problem asks us to implement a cancellable delayed function ex… |
-| 2716 | [Minimize String Length](27xx/2716.md) | 🟢 Easy | 52s | The problem gives us a string s consisting of lowercase English let… |
-| 2718 | [Sum of Matrix After Queries](27xx/2718.md) | 🟡 Medium | 38s | The problem asks us to calculate the sum of all elements in an n x … |
-| 2719 | [Count of Integers](27xx/2719.md) | 🔴 Hard | 52s | The problem asks us to count the number of integers in a given rang… |
+| 2716 | [Minimize String Length](27xx/2716.md) | 🟢 Easy | 56s | The problem asks us to minimize the length of a given string s by r… |
+| 2717 | [Semi-Ordered Permutation](27xx/2717.md) | 🟢 Easy | 1m 32s | The problem gives us a permutation nums of length n. A permutation … |
+| 2718 | [Sum of Matrix After Queries](27xx/2718.md) | 🟡 Medium | 1m 10s | The problem gives us an integer n representing the size of an n x n… |
+| 2719 | [Count of Integers](27xx/2719.md) | 🔴 Hard | 1m 2s | The problem asks us to count how many integers lie between two give… |
 | 2720 | [Popularity Percentage](27xx/2720.md) | 🔴 Hard | 1m 27s | The Friends table stores friendship relationships between users on … |
-| 2721 | [Execute Asynchronous Functions in Parallel](27xx/2721.md) | 🟡 Medium | 36s | The problem requires creating a utility function that executes mult… |
-| 2722 | [Join Two Arrays by ID](27xx/2722.md) | 🟡 Medium | 45s | The problem asks us to merge two arrays of objects, arr1 and arr2, … |
-| 2724 | [Sort By](27xx/2724.md) | 🟢 Easy | 1m 7s | The problem gives us two inputs: an array arr and a function fn. Ou… |
-| 2725 | [Interval Cancellation](27xx/2725.md) | 🟢 Easy | 37s | The problem is asking us to implement a cancellable interval functi… |
-| 2726 | [Calculator with Method Chaining](27xx/2726.md) | 🟢 Easy | 1m 7s | This problem asks us to design a class named Calculator that suppor… |
-| 2727 | [Is Object Empty](27xx/2727.md) | 🟢 Easy | 1m 2s | The problem asks us to determine whether a given JSON object or JSO… |
+| 2721 | [Execute Asynchronous Functions in Parallel](27xx/2721.md) | 🟡 Medium | 1m 10s | This problem asks us to implement a custom version of Promise.all, … |
+| 2722 | [Join Two Arrays by ID](27xx/2722.md) | 🟡 Medium | 1m 11s | This problem asks us to merge two arrays of JSON objects based on a… |
+| 2723 | [Add Two Promises](27xx/2723.md) | 🟢 Easy | 50s | This problem asks us to work with JavaScript promises and asynchron… |
+| 2724 | [Sort By](27xx/2724.md) | 🟢 Easy | 1m 4s | This problem asks us to sort an array using a custom sorting rule. … |
+| 2725 | [Interval Cancellation](27xx/2725.md) | 🟢 Easy | 52s | This problem asks us to implement a function cancellable that repea… |
+| 2726 | [Calculator with Method Chaining](27xx/2726.md) | 🟢 Easy | 1m 3s | This problem asks us to design a class named Calculator that suppor… |
+| 2727 | [Is Object Empty](27xx/2727.md) | 🟢 Easy | 50s | This problem asks us to determine if a given object or array is emp… |
+| 2728 | [Count Houses in a Circular Street](27xx/2728.md) | 🟢 Easy | 45s | The problem asks us to determine the number of houses on a circular… |
 | 2729 | [Check if The Number is Fascinating](27xx/2729.md) | 🟢 Easy | 1m 4s | The problem gives us a three digit integer n. We must determine whe… |
-| 2730 | [Find the Longest Semi-Repetitive Substring](27xx/2730.md) | 🟡 Medium | 1m 6s | The problem gives us a string s consisting only of digits ('0' thro… |
-| 2731 | [Movement of Robots](27xx/2731.md) | 🟡 Medium | 50s | The problem is asking us to calculate the sum of distances between … |
-| 2732 | [Find a Good Subset of the Matrix](27xx/2732.md) | 🔴 Hard | 46s | The problem asks us to find a good subset of rows from a binary mat… |
-| 2733 | [Neither Minimum nor Maximum](27xx/2733.md) | 🟢 Easy | 59s | The problem gives us an array of distinct positive integers and ask… |
-| 2734 | [Lexicographically Smallest String After Substring Operation](27xx/2734.md) | 🟡 Medium | 1m 25s | We are given a string s consisting only of lowercase English letter… |
+| 2730 | [Find the Longest Semi-Repetitive Substring](27xx/2730.md) | 🟡 Medium | 1m 16s | The problem gives us a string s consisting only of digits from 0 to… |
+| 2731 | [Movement of Robots](27xx/2731.md) | 🟡 Medium | 5m 48s | The problem gives us a list of robots positioned on an infinite num… |
+| 2732 | [Find a Good Subset of the Matrix](27xx/2732.md) | 🔴 Hard | 54s | The problem asks us to find a subset of rows in a binary matrix whe… |
+| 2733 | [Neither Minimum nor Maximum](27xx/2733.md) | 🟢 Easy | 56s | The problem asks us to select a number from an array of distinct po… |
+| 2734 | [Lexicographically Smallest String After Substring Operation](27xx/2734.md) | 🟡 Medium | 1m 12s | The problem gives us a lowercase English string s. We must perform … |
 | 2735 | [Collecting Chocolates](27xx/2735.md) | 🟡 Medium | 1m 23s | The problem gives us an array nums, where nums[i] represents the co… |
 | 2736 | [Maximum Sum Queries](27xx/2736.md) | 🔴 Hard | 1m 15s | We are given two arrays, nums1 and nums2, both of length n. Each in… |
-| 2737 | [Find the Closest Marked Node](27xx/2737.md) | 🟡 Medium | 34s | This problem asks us to compute the shortest distance from a given … |
-| 2739 | [Total Distance Traveled](27xx/2739.md) | 🟢 Easy | 1m | This problem models a truck with two fuel tanks: - mainTank contain… |
+| 2737 | [Find the Closest Marked Node](27xx/2737.md) | 🟡 Medium | 32s | That is a very large, detailed reference document with multiple lon… |
+| 2738 | [Count Occurrences in Text](27xx/2738.md) | 🟡 Medium | 1m | The problem asks us to analyze a database table named Files that co… |
+| 2739 | [Total Distance Traveled](27xx/2739.md) | 🟢 Easy | 59s | This problem asks us to compute the maximum total distance a truck … |
 | 2741 | [Special Permutations](27xx/2741.md) | 🟡 Medium | 1m 9s | The problem gives us an array nums containing distinct positive int… |
 | 2742 | [Painting the Walls](27xx/2742.md) | 🔴 Hard | 1m 18s | The problem gives us two arrays, cost and time, where each index re… |
 | 2743 | [Count Substrings Without Repeating Character](27xx/2743.md) | 🟡 Medium | 50s | The problem asks us to count the number of substrings in a given st… |
@@ -2958,8 +2963,38 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](29xx/2997.md) | 🟡 Medium | 47s | This problem asks us to determine the minimum number of bit flips r… |
 | 2998 | [Minimum Number of Operations to Make X and Y Equal](29xx/2998.md) | 🟡 Medium | 1m 32s | This problem gives us two positive integers, x and y, and asks for … |
 | 3000 | [Maximum Area of Longest Diagonal Rectangle](30xx/3000.md) | 🟢 Easy | 41s | The problem asks us to find the area of a rectangle with the longes… |
+| 3001 | [Minimum Moves to Capture The Queen](30xx/3001.md) | 🟡 Medium | 1m 11s | The previous construction failed because adding a small geometric p… |
+| 3003 | [Maximize the Number of Partitions After Operations](30xx/3003.md) | 🔴 Hard | 1m 21s | The problem gives us a string s and an integer k. We repeatedly par… |
+| 3007 | [Maximum Number That Sum of the Prices Is Less Than or Equal to K](30xx/3007.md) | 🟡 Medium | 1m 15s | This problem defines a special "price" for every integer based on i… |
+| 3008 | [Find Beautiful Indices in the Given Array II](30xx/3008.md) | 🔴 Hard | 1m 24s | The problem gives us a string s and two pattern strings, a and b. W… |
+| 3012 | [Minimize Length of Array Using Operations](30xx/3012.md) | 🟡 Medium | 1m 14s | The problem gives us an array of positive integers and allows us to… |
+| 3013 | [Divide an Array Into Subarrays With Minimum Cost II](30xx/3013.md) | 🔴 Hard | 1m 33s | We are given an array nums, along with two integers k and dist. We … |
+| 3016 | [Minimum Number of Pushes to Type Word II](30xx/3016.md) | 🟡 Medium | 52s | The problem asks us to minimize the total number of key presses req… |
+| 3017 | [Count the Number of Houses at a Certain Distance II](30xx/3017.md) | 🔴 Hard | 48s | We are asked to count pairs of houses in a city where the distance … |
+| 3018 | [Maximum Number of Removal Queries That Can Be Processed I](30xx/3018.md) | 🔴 Hard | 1m 16s | The problem asks us to simulate a sequence of removal operations on… |
+| 3019 | [Number of Changing Keys](30xx/3019.md) | 🟢 Easy | 1m 10s | The problem gives us a string s representing keys typed by a user. … |
+| 3021 | [Alice and Bob Playing Flower Game](30xx/3021.md) | 🟡 Medium | 1m 20s | The problem describes a turn-based game involving two lanes of flow… |
+| 3024 | [Type of Triangle](30xx/3024.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums of length 3, where each … |
+| 3026 | [Maximum Good Subarray Sum](30xx/3026.md) | 🟡 Medium | 1m 18s | We are given an integer array nums and a positive integer k. A suba… |
+| 3027 | [Find the Number of Ways to Place People II](30xx/3027.md) | 🔴 Hard | 52s | The problem asks us to count the number of valid pairs of points wh… |
 | 3028 | [Ant on the Boundary](30xx/3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
+| 3030 | [Find the Grid of Region Average](30xx/3030.md) | 🟡 Medium | 1m 19s | We are given an m × n grayscale image where each cell contains an i… |
+| 3031 | [Minimum Time to Revert Word to Initial State II](30xx/3031.md) | 🔴 Hard | 55s | This problem requires determining the minimum number of operations … |
+| 3032 | [Count Numbers With Unique Digits II](30xx/3032.md) | 🟢 Easy | 1m 2s | This problem asks us to count how many integers in the inclusive ra… |
+| 3034 | [Number of Subarrays That Match a Pattern I](30xx/3034.md) | 🟡 Medium | 1m 19s | The problem gives us two arrays: - nums, an integer array of length… |
+| 3036 | [Number of Subarrays That Match a Pattern II](30xx/3036.md) | 🔴 Hard | 1m 39s | The problem gives us two arrays: - nums, an integer array of length… |
+| 3037 | [Find Pattern in Infinite Stream II](30xx/3037.md) | 🔴 Hard | 1m 11s | This problem gives us a binary pattern and access to an infinite bi… |
+| 3038 | [Maximum Number of Operations With the Same Score I](30xx/3038.md) | 🟢 Easy | 1m 3s | The problem gives us an integer array nums and defines a very speci… |
+| 3039 | [Apply Operations to Make String Empty](30xx/3039.md) | 🟡 Medium | 1m 2s | We are given a lowercase English string s. An operation consists of… |
+| 3040 | [Maximum Number of Operations With the Same Score II](30xx/3040.md) | 🟡 Medium | 1m 12s | The problem presents an array nums of integers and defines an opera… |
+| 3041 | [Maximize Consecutive Elements in an Array After Modification](30xx/3041.md) | 🔴 Hard | 1m 21s | The problem gives us an array of positive integers. Before selectin… |
+| 3042 | [Count Prefix and Suffix Pairs I](30xx/3042.md) | 🟢 Easy | 1m 10s | The problem gives us an array of strings called words. We need to c… |
 | 3043 | [Find the Length of the Longest Common Prefix](30xx/3043.md) | 🟡 Medium | 1m 24s | We are given two arrays of positive integers, arr1 and arr2. The ta… |
+| 3046 | [Split the Array](30xx/3046.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums whose length is always e… |
+| 3047 | [Find the Largest Area of Square Inside Two Rectangles](30xx/3047.md) | 🟡 Medium | 46s | The problem is asking us to find the largest square that can fit in… |
+| 3048 | [Earliest Second to Mark Indices I](30xx/3048.md) | 🟡 Medium | 47s | This problem asks us to determine the earliest second at which all … |
+| 3049 | [Earliest Second to Mark Indices II](30xx/3049.md) | 🔴 Hard | 47s | The problem asks us to determine the earliest second at which all i… |
+| 3050 | [Pizza Toppings Cost Analysis](30xx/3050.md) | 🟡 Medium | 1m 3s | This problem asks us to generate every valid pizza combination that… |
 | 3052 | [Maximize Items](30xx/3052.md) | 🔴 Hard | 1m 49s | The problem requires determining how many items can be stored in a … |
 | 3053 | [Classifying Triangles by Lengths](30xx/3053.md) | 🟢 Easy | 1m 21s | The problem requires classifying triangles based on the lengths of … |
 | 3054 | [Binary Tree Nodes](30xx/3054.md) | 🟡 Medium | 1m 2s | This problem asks us to classify nodes in a binary tree based on th… |
