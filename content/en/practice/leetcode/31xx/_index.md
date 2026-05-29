@@ -13,6 +13,7 @@ draft: false
 | 3100 | [Water Bottles II](3100.md) | 🟡 Medium | 1m 20s | This problem models a bottle exchange process where the exchange ra… |
 | 3101 | [Count Alternating Subarrays](3101.md) | 🟡 Medium | 1m 51s | The problem gives us a binary array nums, meaning every element is … |
 | 3102 | [Minimize Manhattan Distances](3102.md) | 🔴 Hard | 1m 41s | The problem asks us to minimize the maximum Manhattan distance betw… |
+| 3103 | [Find Trending Hashtags II ](3103.md) | 🔴 Hard | 1m 38s | The problem gives us a database table named Tweets, where each row … |
 | 3104 | [Find Longest Self-Contained Substring](3104.md) | 🔴 Hard | 1m 50s | The problem asks us to find the longest self-contained substring in… |
 | 3105 | [Longest Strictly Increasing or Strictly Decreasing Subarray](3105.md) | 🟢 Easy | 1m 59s | The problem gives us an integer array nums and asks us to find the … |
 | 3106 | [Lexicographically Smallest String After Operations With Constraint](3106.md) | 🟡 Medium | 1m 25s | This problem asks us to transform a given string s into another str… |
