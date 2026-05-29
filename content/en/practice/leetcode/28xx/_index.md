@@ -41,16 +41,16 @@ draft: false
 | 2828 | [Check if a String Is an Acronym of Words](2828.md) | 🟢 Easy | 1m 26s | This problem asks us to determine whether a given string s is exact… |
 | 2829 | [Determine the Minimum Sum of a k-avoiding Array](2829.md) | 🟡 Medium | 4m 5s | The problem asks us to construct an array of n distinct positive in… |
 | 2830 | [Maximize the Profit as the Salesman](2830.md) | 🟡 Medium | 1m 38s | This problem gives us n houses arranged on a number line and a coll… |
-| 2831 | [Find the Longest Equal Subarray](2831.md) | 🟡 Medium | 1m 19s | The problem gives us an integer array nums and an integer k. We are… |
-| 2832 | [Maximal Range That Each Element Is Maximum in It](2832.md) | 🟡 Medium | 1m 20s | The problem gives us an array nums containing distinct integers. Fo… |
-| 2833 | [Furthest Point From Origin](2833.md) | 🟢 Easy | 1m 3s | The problem gives us a string called moves, where each character re… |
-| 2834 | [Find the Minimum Possible Sum of a Beautiful Array](2834.md) | 🟡 Medium | 1m 14s | The problem asks us to construct an array of length n using distinc… |
-| 2835 | [Minimum Operations to Form Subsequence With Target Sum](2835.md) | 🔴 Hard | 1m 40s | The problem gives us an array nums where every element is a power o… |
-| 2836 | [Maximize Value of Function in a Ball Passing Game](2836.md) | 🔴 Hard | 1m 32s | This problem describes a deterministic ball-passing game between n … |
-| 2837 | [Total Traveled Distance](2837.md) | 🟢 Easy | 1m 47s | This problem asks us to compute the total distance traveled by ever… |
-| 2838 | [Maximum Coins Heroes Can Collect](2838.md) | 🟡 Medium | 2m 30s | The problem gives us three arrays: - heroes[i] represents the power… |
+| 2831 | [Find the Longest Equal Subarray](2831.md) | 🟡 Medium | 1m 5s | The problem asks us to find the longest contiguous subarray where a… |
+| 2832 | [Maximal Range That Each Element Is Maximum in It](2832.md) | 🟡 Medium | 1m 11s | We are given an array nums consisting of distinct integers. For eve… |
+| 2833 | [Furthest Point From Origin](2833.md) | 🟢 Easy | 1m | This problem asks us to determine the maximum possible distance fro… |
+| 2834 | [Find the Minimum Possible Sum of a Beautiful Array](2834.md) | 🟡 Medium | 1m 12s | We are given two positive integers, n and target. We need to constr… |
+| 2835 | [Minimum Operations to Form Subsequence With Target Sum](2835.md) | 🔴 Hard | 1m 8s | The problem presents a 0-indexed array nums of non-negative powers … |
+| 2836 | [Maximize Value of Function in a Ball Passing Game](2836.md) | 🔴 Hard | 55s | This problem presents a ball-passing game among n players, represen… |
+| 2837 | [Total Traveled Distance](2837.md) | 🟢 Easy | 50s | The problem requires calculating the total distance traveled by eac… |
+| 2838 | [Maximum Coins Heroes Can Collect](2838.md) | 🟡 Medium | 1m 18s | This problem gives us three arrays: - heroes, where heroes[i] repre… |
 | 2839 | [Check if Strings Can be Made Equal With Operations I](2839.md) | 🟢 Easy | 2m 24s | The problem gives us two strings, s1 and s2, each containing exactl… |
-| 2840 | [Check if Strings Can be Made Equal With Operations II](2840.md) | 🟡 Medium | 4m 23s | LeetCode 2840: Check if Strings Can be Made Equal With Operations I… |
+| 2840 | [Check if Strings Can be Made Equal With Operations II](2840.md) | 🟡 Medium | 1m 2s | The problem asks us to determine whether two strings s1 and s2 of e… |
 | 2841 | [Maximum Sum of Almost Unique Subarray](2841.md) | 🟡 Medium | 4m 28s | LeetCode 2841: Maximum Sum of Almost Unique Subarray (Medium) |
 | 2842 | [Count K-Subsequences of a String With Maximum Beauty](2842.md) | 🔴 Hard | 4m 23s | LeetCode 2842: Count K-Subsequences of a String With Maximum Beauty… |
 | 2843 | [  Count Symmetric Integers](2843.md) | 🟢 Easy | 6m 1s | LeetCode 2843:   Count Symmetric Integers (Easy) |

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1975"
-description: "IMO 1975 — 1/6 solved."
+description: "IMO 1975 — 2/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1975
@@ -10,12 +10,12 @@ draft: false
 
 # IMO 1975
 
-[Official IMO 1975 problems](https://www.imo-official.org/year_info.aspx?year=1975) &nbsp;·&nbsp; 1/6 solved.
+[Official IMO 1975 problems](https://www.imo-official.org/year_info.aspx?year=1975) &nbsp;·&nbsp; 2/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
 | [1](1.md) | solved | 15m43s |
-| 2 | — | — |
+| [2](2.md) | solved | 35m15s |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
@@ -29,7 +29,7 @@ $$ Prove that, if $z_1, z_2, \cdots, z_n$ is any permutation of $y_1, y_2, \cdot
 \sum_{i=1}^n (x_i - y_i)^2 \leq \sum_{i=1}^n (x_i - z_i)^2.
 $$
 
-**Problem 2**
+**Problem 2** &nbsp; *solved* · 35m15s · [Solution →](2.md)
 
 Let $a_1, a_2, a_3, \cdots$ be an infinite increasing sequence of positive integers. Prove that for every $p \geq 1$ there are infinitely many $a_m$ which can be written in the form $$
 a_m = xa_p + ya_q
