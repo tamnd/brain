@@ -85,6 +85,7 @@ draft: false
 | 3373 | [Maximize the Number of Target Nodes After Connecting Trees II](3373.md) | 🔴 Hard | 1m 43s | The problem gives us two separate undirected trees. The first tree … |
 | 3374 | [First Letter Capitalization II](3374.md) | 🔴 Hard | 1m 18s | This problem asks us to transform text stored in a database table w… |
 | 3375 | [Minimum Operations to Make Array Values Equal to K](3375.md) | 🟢 Easy | 1m 19s | The problem gives us an integer array nums and a target value k. Ou… |
+| 3376 | [Minimum Time to Break Locks I](3376.md) | 🟡 Medium | 1m 18s | The problem describes a sequence of locks that must all be broken. … |
 | 3377 | [Digit Operations to Make Two Integers Equal](3377.md) | 🟡 Medium | 1m 7s | The problem asks us to transform one integer n into another integer… |
 | 3378 | [Count Connected Components in LCM Graph](3378.md) | 🔴 Hard | 1m 34s | We are given an array nums, where each element represents the value… |
 | 3379 | [Transformed Array](3379.md) | 🟢 Easy | 40s | The problem asks us to transform a given integer array nums into a … |

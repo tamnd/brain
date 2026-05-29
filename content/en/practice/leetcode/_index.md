@@ -1796,6 +1796,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1779 | [Find Nearest Point That Has the Same X or Y Coordinate](17xx/1779.md) | 🟢 Easy | 1m 22s | The problem gives your current position on a 2D Cartesian grid as (… |
 | 1780 | [Check if Number is a Sum of Powers of Three](17xx/1780.md) | 🟡 Medium | 1m 17s | The problem asks whether a given integer n can be expressed as the … |
 | 1781 | [Sum of Beauty of All Substrings](17xx/1781.md) | 🟡 Medium | 50s | The problem asks us to calculate the sum of beauty for all substrin… |
+| 1782 | [Count Pairs Of Nodes](17xx/1782.md) | 🔴 Hard | 1m 23s | We are given an undirected graph with n nodes and a list of edges. … |
 | 1783 | [Grand Slam Titles](17xx/1783.md) | 🟡 Medium | 1m 38s | This problem asks us to compute how many Grand Slam tennis titles e… |
 | 1784 | [Check if Binary String Has at Most One Segment of Ones](17xx/1784.md) | 🟢 Easy | 1m 5s | In this problem, we are given a binary string s that contains only … |
 | 1785 | [Minimum Elements to Add to Form a Given Sum](17xx/1785.md) | 🟡 Medium | 1m 24s | The problem gives us an integer array nums, a maximum allowed absol… |
@@ -1856,11 +1857,14 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1841 | [League Statistics](18xx/1841.md) | 🟡 Medium | 3m 27s | This problem asks us to compute a complete league table from two da… |
 | 1842 | [Next Palindrome Using Same Digits](18xx/1842.md) | 🔴 Hard | 1m 39s | The input is a numeric string num that is guaranteed to already be … |
 | 1843 | [Suspicious Bank Accounts](18xx/1843.md) | 🟡 Medium | 1m 35s | This problem asks us to identify bank accounts whose monthly income… |
+| 1844 | [Replace All Digits with Characters](18xx/1844.md) | 🟢 Easy | 1m 4s | In this problem, we are given a string s where characters at even i… |
 | 1845 | [Seat Reservation Manager](18xx/1845.md) | 🟡 Medium | 54s | The problem requires designing a system to manage seat reservations… |
 | 1846 | [Maximum Element After Decreasing and Rearranging](18xx/1846.md) | 🟡 Medium | 1m 3s | The problem provides an array of positive integers and asks us to p… |
+| 1847 | [Closest Room](18xx/1847.md) | 🔴 Hard | 1m 24s | We are given a list of hotel rooms, where each room has: - A unique… |
 | 1848 | [Minimum Distance to the Target Element](18xx/1848.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums, a value called target, … |
 | 1849 | [Splitting a String Into Descending Consecutive Values](18xx/1849.md) | 🟡 Medium | 1m 52s | The problem gives us a numeric string s and asks whether it can be … |
 | 1850 | [Minimum Adjacent Swaps to Reach the Kth Smallest Number](18xx/1850.md) | 🟡 Medium | 48s | The problem asks us to compute the minimum number of adjacent swaps… |
+| 1851 | [Minimum Interval to Include Each Query](18xx/1851.md) | 🔴 Hard | 1m 28s | The problem gives us a collection of inclusive integer intervals an… |
 | 1852 | [Distinct Numbers in Each Subarray](18xx/1852.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and an integer k. For ev… |
 | 1853 | [Convert Date Format](18xx/1853.md) | 🟢 Easy | 1m 24s | The problem provides a database table named Days with a single colu… |
 | 1854 | [Maximum Population Year](18xx/1854.md) | 🟢 Easy | 46s | The problem asks us to determine the year with the highest populati… |
@@ -1876,6 +1880,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1864 | [Minimum Number of Swaps to Make the Binary String Alternating](18xx/1864.md) | 🟡 Medium | 1m 18s | The problem gives us a binary string s that contains only '0' and '… |
 | 1865 | [Finding Pairs With a Certain Sum](18xx/1865.md) | 🟡 Medium | 1m 9s | This problem asks us to design a mutable data structure that suppor… |
 | 1866 | [Number of Ways to Rearrange Sticks With K Sticks Visible](18xx/1866.md) | 🔴 Hard | 1m 17s | The problem gives us n sticks with unique lengths from 1 to n. We m… |
+| 1867 | [Orders With Maximum Quantity Above Average](18xx/1867.md) | 🟡 Medium | 45s | The problem asks us to identify "imbalanced orders" from an OrdersD… |
 | 1868 | [Product of Two Run-Length Encoded Arrays](18xx/1868.md) | 🟡 Medium | 1m 28s | This problem asks us to multiply two arrays that are already stored… |
 | 1869 | [Longer Contiguous Segments of Ones than Zeros](18xx/1869.md) | 🟢 Easy | 1m 17s | The problem gives us a binary string s, which means the string cont… |
 | 1870 | [Minimum Speed to Arrive on Time](18xx/1870.md) | 🟡 Medium | 2m 22s | The problem asks us to find the minimum constant speed (in kilomete… |
@@ -1888,6 +1893,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1877 | [Minimize Maximum Pair Sum in Array](18xx/1877.md) | 🟡 Medium | 53s | The problem asks us to pair elements in an array of even length suc… |
 | 1878 | [Get Biggest Three Rhombus Sums in a Grid](18xx/1878.md) | 🟡 Medium | 45s | The problem asks us to compute the largest three distinct rhombus s… |
 | 1879 | [Minimum XOR Sum of Two Arrays](18xx/1879.md) | 🔴 Hard | 57s | The problem asks us to take two integer arrays of equal length, num… |
+| 1880 | [Check if Word Equals Summation of Two Words](18xx/1880.md) | 🟢 Easy | 1m 6s | The problem asks us to determine if the sum of the numerical values… |
 | 1881 | [Maximum Value after Insertion](18xx/1881.md) | 🟡 Medium | 1m 7s | This problem asks us to insert a single digit x into a very large i… |
 | 1882 | [Process Tasks Using Servers](18xx/1882.md) | 🟡 Medium | 1m 38s | This problem asks us to simulate a task scheduling system with two … |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](18xx/1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |
@@ -1920,6 +1926,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1910 | [Remove All Occurrences of a Substring](19xx/1910.md) | 🟡 Medium | 1m 13s | The problem asks us to repeatedly remove occurrences of a substring… |
 | 1911 | [Maximum Alternating Subsequence Sum](19xx/1911.md) | 🟡 Medium | 1m 35s | The problem asks us to compute the maximum possible alternating sum… |
 | 1912 | [Design Movie Rental System](19xx/1912.md) | 🔴 Hard | 58s | The problem requires designing a movie rental system for multiple s… |
+| 1913 | [Maximum Product Difference Between Two Pairs](19xx/1913.md) | 🟢 Easy | 42s | This problem asks us to find the maximum product difference between… |
 | 1914 | [Cyclically Rotating a Grid](19xx/1914.md) | 🟡 Medium | 1m 39s | The problem gives us an m x n matrix called grid, along with an int… |
 | 1915 | [Number of Wonderful Substrings](19xx/1915.md) | 🟡 Medium | 1m 36s | The problem asks us to count how many non-empty substrings of a giv… |
 | 1916 | [Count Ways to Build Rooms in an Ant Colony](19xx/1916.md) | 🔴 Hard | 47s | The problem asks us to count the number of valid ways to sequential… |
@@ -1966,8 +1973,10 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1957 | [Delete Characters to Make Fancy String](19xx/1957.md) | 🟢 Easy | 1m 14s | The problem asks us to transform a given string into a "fancy strin… |
 | 1958 | [Check if Move is Legal](19xx/1958.md) | 🟡 Medium | 55s | This problem asks us to determine whether a move in a board game is… |
 | 1959 | [Minimum Total Space Wasted With K Resizing Operations](19xx/1959.md) | 🟡 Medium | 35s | Let's go through a full, detailed technical solution guide for Leet… |
+| 1960 | [Maximum Product of the Length of Two Palindromic Substrings](19xx/1960.md) | 🔴 Hard | 1m 40s | The problem asks us to find two non-overlapping odd-length palindro… |
 | 1961 | [Check If String Is a Prefix of Array](19xx/1961.md) | 🟢 Easy | 4m 3s | The problem is asking us to determine whether a given string s can … |
 | 1962 | [Remove Stones to Minimize the Total](19xx/1962.md) | 🟡 Medium | 2m 4s | The problem gives us an array called piles, where each element repr… |
+| 1963 | [Minimum Number of Swaps to Make the String Balanced](19xx/1963.md) | 🟡 Medium | 42s | The problem asks us to transform a given string of brackets into a … |
 | 1964 | [Find the Longest Valid Obstacle Course at Each Position](19xx/1964.md) | 🔴 Hard | 1m 13s | The problem gives an array obstacles, where each value represents t… |
 | 1965 | [Employees With Missing Information](19xx/1965.md) | 🟢 Easy | 35s | The problem provides two relational tables, one named Employees and… |
 | 1966 | [Binary Searchable Numbers in an Unsorted Array](19xx/1966.md) | 🟡 Medium | 1m 19s | This problem asks us to identify how many numbers in an unsorted ar… |
@@ -1996,6 +2005,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 1989 | [Maximum Number of People That Can Be Caught in Tag](19xx/1989.md) | 🟡 Medium | 37s | The problem describes a line of people represented by a binary arra… |
 | 1990 | [Count the Number of Experiments](19xx/1990.md) | 🟡 Medium | 1m 9s | This problem gives us a database table named Experiments. Each row … |
 | 1991 | [Find the Middle Index in Array](19xx/1991.md) | 🟢 Easy | 1m 32s | The problem gives us a 0-indexed integer array called nums. We need… |
+| 1992 | [Find All Groups of Farmland](19xx/1992.md) | 🟡 Medium | 1m 26s | In this problem, we are given a binary matrix called land. Each cel… |
 | 1993 | [Operations on Tree](19xx/1993.md) | 🟡 Medium | 1m 32s | The problem asks us to design a mutable tree-based data structure t… |
 | 1994 | [The Number of Good Subsets](19xx/1994.md) | 🔴 Hard | 1m 32s | This problem asks us to count how many subsets of the input array h… |
 | 1995 | [Count Special Quadruplets](19xx/1995.md) | 🟢 Easy | 42s | The problem asks us to count the number of distinct quadruplets (a,… |
@@ -2390,6 +2400,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2384 | [Largest Palindromic Number](23xx/2384.md) | 🟡 Medium | 40s | The problem asks us to form the largest palindromic integer using t… |
 | 2385 | [Amount of Time for Binary Tree to Be Infected](23xx/2385.md) | 🟡 Medium | 41s | This problem asks us to model the spread of an infection across a b… |
 | 2386 | [Find the K-Sum of an Array](23xx/2386.md) | 🔴 Hard | 27s | That is a long, structured reference document with multiple section… |
+| 2387 | [Median of a Row Wise Sorted Matrix](23xx/2387.md) | 🟡 Medium | 1m 25s | We are given an m × n matrix grid where every row is already sorted… |
 | 2388 | [Change Null Values in a Table to the Previous Value](23xx/2388.md) | 🟡 Medium | 41s | The problem asks us to process a database table, CoffeeShop, which … |
 | 2389 | [Longest Subsequence With Limited Sum](23xx/2389.md) | 🟢 Easy | 42s | This problem asks us to determine, for each query, the maximum numb… |
 | 2390 | [Removing Stars From a String](23xx/2390.md) | 🟡 Medium | 53s | This problem asks us to repeatedly process a string that contains l… |
@@ -2529,6 +2540,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2524 | [Maximum Frequency Score of a Subarray](25xx/2524.md) | 🔴 Hard | 48s | The problem asks us to compute the maximum frequency score among al… |
 | 2525 | [Categorize Box According to Criteria](25xx/2525.md) | 🟢 Easy | 53s | The problem requires categorizing a box based on its dimensions and… |
 | 2526 | [Find Consecutive Integers from a Data Stream](25xx/2526.md) | 🟡 Medium | 57s | The problem asks us to design a data structure that continuously pr… |
+| 2527 | [Find Xor-Beauty of Array](25xx/2527.md) | 🟡 Medium | 59s | The problem defines a special value called the "effective value" fo… |
 | 2528 | [Maximize the Minimum Powered City](25xx/2528.md) | 🔴 Hard | 51s | The problem asks us to determine the maximum possible minimum power… |
 | 2529 | [Maximum Count of Positive Integer and Negative Integer](25xx/2529.md) | 🟢 Easy | 8m 19s | The problem gives us a sorted integer array nums in non-decreasing … |
 | 2530 | [Maximal Score After Applying K Operations](25xx/2530.md) | 🟡 Medium | 52s | The problem asks us to maximize a score after performing exactly k … |
@@ -2741,6 +2753,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2737 | [Find the Closest Marked Node](27xx/2737.md) | 🟡 Medium | 32s | That is a very large, detailed reference document with multiple lon… |
 | 2738 | [Count Occurrences in Text](27xx/2738.md) | 🟡 Medium | 1m | The problem asks us to analyze a database table named Files that co… |
 | 2739 | [Total Distance Traveled](27xx/2739.md) | 🟢 Easy | 59s | This problem asks us to compute the maximum total distance a truck … |
+| 2740 | [Find the Value of the Partition](27xx/2740.md) | 🟡 Medium | 1m 9s | We are given an array nums containing positive integers. Our task i… |
 | 2741 | [Special Permutations](27xx/2741.md) | 🟡 Medium | 50s | The problem asks us to count the number of special permutations of … |
 | 2742 | [Painting the Walls](27xx/2742.md) | 🔴 Hard | 54s | The problem is asking us to determine the minimum total cost to pai… |
 | 2743 | [Count Substrings Without Repeating Character](27xx/2743.md) | 🟡 Medium | 1m 7s | The problem asks us to count how many substrings of a given string … |
@@ -2975,6 +2988,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2973 | [Find Number of Coins to Place in Tree Nodes](29xx/2973.md) | 🔴 Hard | 52s | The problem gives us a tree with n nodes labeled from 0 to n - 1. T… |
 | 2974 | [Minimum Number Game](29xx/2974.md) | 🟢 Easy | 1m 6s | The problem gives us an integer array nums with an even number of e… |
 | 2975 | [Maximum Square Area by Removing Fences From a Field](29xx/2975.md) | 🟡 Medium | 1m 21s | The field is represented as a large rectangle whose outer boundarie… |
+| 2976 | [Minimum Cost to Convert String I](29xx/2976.md) | 🟡 Medium | 1m 29s | This problem asks us to transform one string into another while min… |
 | 2977 | [Minimum Cost to Convert String II](29xx/2977.md) | 🔴 Hard | 31s | That is a very large, comprehensive request for a Hard problem, wit… |
 | 2978 | [Symmetric Coordinates](29xx/2978.md) | 🟡 Medium | 1m 8s | This problem asks us to identify symmetric coordinate pairs from a … |
 | 2979 | [Most Expensive Item That Can Not Be Bought](29xx/2979.md) | 🟡 Medium | 51s | This problem asks us to determine the largest price that cannot be … |
@@ -2997,6 +3011,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 2996 | [Smallest Missing Integer Greater Than Sequential Prefix Sum](29xx/2996.md) | 🟢 Easy | 1m 5s | The problem asks us to find the smallest missing integer in the arr… |
 | 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](29xx/2997.md) | 🟡 Medium | 59s | This problem asks us to transform an array so that the bitwise XOR … |
 | 2998 | [Minimum Number of Operations to Make X and Y Equal](29xx/2998.md) | 🟡 Medium | 1m 3s | The problem asks us to transform an integer x into another integer … |
+| 2999 | [Count the Number of Powerful Integers](29xx/2999.md) | 🔴 Hard | 43s | The problem asks us to count all integers within a given range [sta… |
 | 3000 | [Maximum Area of Longest Diagonal Rectangle](30xx/3000.md) | 🟢 Easy | 57s | The input consists of a 2D array dimensions, where each element rep… |
 | 3001 | [Minimum Moves to Capture The Queen](30xx/3001.md) | 🟡 Medium | 1m 11s | This problem gives us the positions of three chess pieces on a stan… |
 | 3002 | [Maximum Size of a Set After Removals](30xx/3002.md) | 🟡 Medium | 57s | The problem is asking us to maximize the number of unique elements … |
@@ -3070,6 +3085,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3071 | [Minimum Operations to Write the Letter Y on a Grid](30xx/3071.md) | 🟡 Medium | 1m 4s | The problem asks us to determine the minimum number of operations t… |
 | 3072 | [Distribute Elements Into Two Arrays II](30xx/3072.md) | 🔴 Hard | 55s | This problem requires simulating the distribution of elements from … |
 | 3073 | [Maximum Increasing Triplet Value](30xx/3073.md) | 🟡 Medium | 1m 17s | We are given an integer array nums, and we must find three indices … |
+| 3074 | [Apple Redistribution into Boxes](30xx/3074.md) | 🟢 Easy | 42s | The problem asks us to redistribute a collection of apple packs int… |
 | 3075 | [Maximize Happiness of Selected Children](30xx/3075.md) | 🟡 Medium | 51s | The problem gives us an array happiness representing the happiness … |
 | 3076 | [Shortest Uncommon Substring in an Array](30xx/3076.md) | 🟡 Medium | 53s | The problem asks us to find, for each string in a given array, the … |
 | 3077 | [Maximum Strength of K Disjoint Subarrays](30xx/3077.md) | 🔴 Hard | 1m 10s | The problem is asking us to select exactly k disjoint subarrays fro… |
@@ -3103,6 +3119,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3105 | [Longest Strictly Increasing or Strictly Decreasing Subarray](31xx/3105.md) | 🟢 Easy | 1m 59s | The problem gives us an integer array nums and asks us to find the … |
 | 3106 | [Lexicographically Smallest String After Operations With Constraint](31xx/3106.md) | 🟡 Medium | 1m 25s | This problem asks us to transform a given string s into another str… |
 | 3107 | [Minimum Operations to Make Median of Array Equal to K](31xx/3107.md) | 🟡 Medium | 1m 34s | The problem asks us to transform an integer array so that its media… |
+| 3108 | [Minimum Cost Walk in Weighted Graph](31xx/3108.md) | 🔴 Hard | 1m 19s | This problem gives us an undirected weighted graph with n vertices … |
 | 3109 | [Find the Index of Permutation](31xx/3109.md) | 🟡 Medium | 1m 20s | The problem gives us a permutation perm of the integers [1, 2, ...,… |
 | 3110 | [Score of a String](31xx/3110.md) | 🟢 Easy | 59s | This problem asks us to compute the score of a string, where the sc… |
 | 3111 | [Minimum Rectangles to Cover Points](31xx/3111.md) | 🟡 Medium | 1m 13s | The problem gives us a collection of 2D points, where each point is… |
@@ -3113,6 +3130,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3116 | [Kth Smallest Amount With Single Denomination Combination](31xx/3116.md) | 🔴 Hard | 1m 2s | The problem asks us to determine the kth smallest amount that can b… |
 | 3117 | [Minimum Sum of Values by Dividing Array](31xx/3117.md) | 🔴 Hard | 1m 4s | This problem asks us to partition an array nums into exactly m cont… |
 | 3118 | [Friday Purchase III ](31xx/3118.md) | 🟡 Medium | 54s | This problem asks us to calculate the total amount of money spent b… |
+| 3119 | [Maximum Number of Potholes That Can Be Fixed](31xx/3119.md) | 🟡 Medium | 1m 13s | We are given a road represented as a string containing only two cha… |
 | 3120 | [Count the Number of Special Characters I](31xx/3120.md) | 🟢 Easy | 46s | The problem asks us to count the number of special characters in a … |
 | 3121 | [Count the Number of Special Characters II](31xx/3121.md) | 🟡 Medium | 1m 12s | The problem gives us a string word containing uppercase and lowerca… |
 | 3122 | [Minimum Number of Operations to Satisfy Conditions](31xx/3122.md) | 🟡 Medium | 1m 1s | The problem presents a two-dimensional matrix grid of size m x n wi… |
@@ -3128,6 +3146,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3132 | [Find the Integer Added to Array II](31xx/3132.md) | 🟡 Medium | 1m 16s | We are given two integer arrays, nums1 and nums2. The array nums2 w… |
 | 3133 | [Minimum Array End](31xx/3133.md) | 🟡 Medium | 1m 11s | The problem asks us to construct a strictly increasing array nums o… |
 | 3134 | [Find the Median of the Uniqueness Array](31xx/3134.md) | 🔴 Hard | 1m 20s | The problem defines a special array called the uniqueness array. Fo… |
+| 3135 | [Equalize Strings by Adding or Removing Characters at Ends](31xx/3135.md) | 🟡 Medium | 1m 20s | The problem gives us two strings, initial and target. We want to tr… |
 | 3136 | [Valid Word](31xx/3136.md) | 🟢 Easy | 1m 13s | The problem asks us to determine whether a given string qualifies a… |
 | 3137 | [Minimum Number of Operations to Make Word K-Periodic](31xx/3137.md) | 🟡 Medium | 1m | The problem asks us to transform a given string word of length n in… |
 | 3138 | [Minimum Length of Anagram Concatenation](31xx/3138.md) | 🟡 Medium | 1m 15s | The problem gives us a string s that was formed by concatenating se… |
@@ -3143,12 +3162,14 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3148 | [Maximum Difference Score in a Grid](31xx/3148.md) | 🟡 Medium | 1m 42s | The problem gives us an m x n matrix called grid, where every cell … |
 | 3149 | [Find the Minimum Cost Array Permutation](31xx/3149.md) | 🔴 Hard | 51s | The problem presents an array nums of length n that is a permutatio… |
 | 3150 | [Invalid Tweets II](31xx/3150.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Tweets with two columns… |
+| 3151 | [Special Array I](31xx/3151.md) | 🟢 Easy | 1m 2s | The problem asks us to determine whether a given integer array is "… |
 | 3152 | [Special Array II](31xx/3152.md) | 🟡 Medium | 1m 22s | We are given an integer array nums and several queries. Each query … |
 | 3153 | [Sum of Digit Differences of All Pairs](31xx/3153.md) | 🟡 Medium | 1m 18s | The problem asks us to compute the total digit difference across ev… |
 | 3154 | [Find Number of Ways to Reach the K-th Stair](31xx/3154.md) | 🔴 Hard | 1m 8s | Let's dive into a comprehensive solution guide for LeetCode 3154 - … |
 | 3155 | [Maximum Number of Upgradable Servers](31xx/3155.md) | 🟡 Medium | 1m 23s | The problem requires calculating the maximum number of servers that… |
 | 3156 | [Employee Task Duration and Concurrent Tasks](31xx/3156.md) | 🔴 Hard | 1m 38s | The problem gives us a table named Tasks, where each row represents… |
 | 3157 | [Find the Level of Tree with Minimum Sum](31xx/3157.md) | 🟡 Medium | 1m 31s | The problem gives us the root of a binary tree, where every node co… |
+| 3158 | [Find the XOR of Numbers Which Appear Twice](31xx/3158.md) | 🟢 Easy | 47s | The problem asks us to find the XOR of all numbers in an array nums… |
 | 3159 | [Find Occurrences of an Element in an Array](31xx/3159.md) | 🟡 Medium | 1m 11s | The problem gives us three inputs: - An integer array nums - An int… |
 | 3160 | [Find the Number of Distinct Colors Among the Balls](31xx/3160.md) | 🟡 Medium | 1m 23s | The problem gives us limit + 1 balls labeled from 0 to limit. Initi… |
 | 3161 | [Block Placement Queries](31xx/3161.md) | 🔴 Hard | 1m 11s | The problem involves simulating operations on an infinite number li… |
@@ -3166,16 +3187,19 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3173 | [Bitwise OR of Adjacent Elements](31xx/3173.md) | 🟢 Easy | 1m 6s | The problem gives us an integer array nums of length n. We must cre… |
 | 3174 | [Clear Digits](31xx/3174.md) | 🟢 Easy | 1m 1s | In this problem, we are given a string s that contains lowercase En… |
 | 3175 | [Find The First Player to win K Games in a Row](31xx/3175.md) | 🟡 Medium | 1m 6s | The problem describes a competition where players stand in a queue … |
+| 3176 | [Find the Maximum Length of a Good Subsequence I](31xx/3176.md) | 🟡 Medium | 1m 24s | We are given an integer array nums and a non-negative integer k. We… |
 | 3177 | [Find the Maximum Length of a Good Subsequence II](31xx/3177.md) | 🔴 Hard | 1m 23s | We are given an integer array nums and a non-negative integer k. We… |
 | 3178 | [Find the Child Who Has the Ball After K Seconds](31xx/3178.md) | 🟢 Easy | 52s | The problem asks us to simulate a game in which n children, numbere… |
 | 3179 | [Find the N-th Value After K Seconds](31xx/3179.md) | 🟡 Medium | 1m 1s | The problem requires computing the value of the last element in an … |
 | 3180 | [Maximum Total Reward Using Operations I](31xx/3180.md) | 🟡 Medium | 1m 2s | The problem asks us to maximize a running total reward by selecting… |
 | 3181 | [Maximum Total Reward Using Operations II](31xx/3181.md) | 🔴 Hard | 1m 29s | The problem gives us an array rewardValues, where each element repr… |
 | 3182 | [Find Top Scoring Students](31xx/3182.md) | 🟡 Medium | 1m 30s | The problem gives us three relational database tables: - students, … |
+| 3183 | [The Number of Ways to Make the Sum](31xx/3183.md) | 🟡 Medium | 1m 5s | The problem asks us to determine the number of distinct ways to sum… |
 | 3184 | [Count Pairs That Form a Complete Day I](31xx/3184.md) | 🟢 Easy | 56s | The problem asks us to find all pairs of indices (i, j) in an array… |
 | 3185 | [Count Pairs That Form a Complete Day II](31xx/3185.md) | 🟡 Medium | 46s | The problem asks us to count pairs of elements in an integer array … |
 | 3186 | [Maximum Total Damage With Spell Casting](31xx/3186.md) | 🟡 Medium | 1m 22s | The problem gives us an array power, where each element represents … |
 | 3187 | [Peaks in Array](31xx/3187.md) | 🔴 Hard | 1m 29s | The problem asks us to process two kinds of operations on an intege… |
+| 3188 | [Find Top Scoring Students II](31xx/3188.md) | 🔴 Hard | 1m 18s | This problem asks us to identify students who satisfy a combination… |
 | 3189 | [Minimum Moves to Get a Peaceful Board](31xx/3189.md) | 🟡 Medium | 1m 7s | In this problem, we are given the positions of n rooks placed on an… |
 | 3190 | [Find Minimum Operations to Make All Elements Divisible by Three](31xx/3190.md) | 🟢 Easy | 1m 12s | The problem gives us an integer array nums. In one operation, we ar… |
 | 3192 | [Minimum Operations to Make Binary Array Elements Equal to One II](31xx/3192.md) | 🟡 Medium | 51s | This problem asks us to take a binary array nums, which contains on… |
@@ -3192,6 +3216,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3203 | [Find Minimum Diameter After Merging Two Trees](32xx/3203.md) | 🔴 Hard | 2m 13s | We are given two separate undirected trees. The first tree contains… |
 | 3204 | [Bitwise User Permissions Analysis](32xx/3204.md) | 🟡 Medium | 55s | The problem is asking us to analyze a table of user permissions whe… |
 | 3205 | [Maximum Array Hopping Score I](32xx/3205.md) | 🟡 Medium | 1m 32s | The problem asks us to calculate the maximum score achievable by ho… |
+| 3206 | [Alternating Groups I](32xx/3206.md) | 🟢 Easy | 1m 9s | The problem gives us a circular array called colors, where each ele… |
 | 3207 | [Maximum Points After Enemy Battles](32xx/3207.md) | 🟡 Medium | 1m 8s | The problem gives us a list of enemies, where each enemy has an ass… |
 | 3208 | [Alternating Groups II](32xx/3208.md) | 🟡 Medium | 1m 12s | The problem gives us a circular array called colors, where each val… |
 | 3209 | [Number of Subarrays With AND Value of K](32xx/3209.md) | 🔴 Hard | 1m 17s | The problem asks us to count how many contiguous subarrays of nums … |
@@ -3209,6 +3234,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3221 | [Maximum Array Hopping Score II](32xx/3221.md) | 🟡 Medium | 1m 30s | The problem gives us an integer array nums, where each position rep… |
 | 3222 | [Find the Winning Player in Coin Game](32xx/3222.md) | 🟢 Easy | 1m 17s | The game gives us two types of coins: - x coins worth 75 - y coins … |
 | 3223 | [Minimum Length of String After Operations](32xx/3223.md) | 🟡 Medium | 1m 11s | The problem asks us to repeatedly remove characters from a string b… |
+| 3224 | [Minimum Array Changes to Make Differences Equal](32xx/3224.md) | 🟡 Medium | 45s | The problem gives us an integer array nums of even length n and an … |
 | 3225 | [Maximum Score From Grid Operations](32xx/3225.md) | 🔴 Hard | 1m 2s | This problem presents a 2D square matrix grid of size n x n where e… |
 | 3226 | [Number of Bit Changes to Make Two Integers Equal](32xx/3226.md) | 🟢 Easy | 1m 39s | The problem gives us two positive integers, n and k. We are allowed… |
 | 3227 | [Vowels Game in a String](32xx/3227.md) | 🟡 Medium | 1m | The problem describes a two-player game between Alice and Bob playe… |
@@ -3244,6 +3270,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3257 | [Maximum Value Sum by Placing Three Rooks II](32xx/3257.md) | 🔴 Hard | 1m 18s | We are given an m x n matrix called board, where each cell contains… |
 | 3258 | [Count Substrings That Satisfy K-Constraint I](32xx/3258.md) | 🟢 Easy | 1m 9s | The problem gives us a binary string s, meaning the string contains… |
 | 3259 | [Maximum Energy Boost From Two Drinks](32xx/3259.md) | 🟡 Medium | 54s | This problem is asking you to plan the consumption of two energy dr… |
+| 3260 | [Find the Largest Palindrome Divisible by K](32xx/3260.md) | 🔴 Hard | 1m 27s | The problem asks us to construct the largest possible palindrome wi… |
 | 3261 | [Count Substrings That Satisfy K-Constraint II](32xx/3261.md) | 🔴 Hard | 1m 34s | We are given a binary string s, an integer k, and many range querie… |
 | 3262 | [Find Overlapping Shifts](32xx/3262.md) | 🟡 Medium | 1m 43s | The problem requires counting overlapping shifts for each employee … |
 | 3263 | [Convert Doubly Linked List to Array I](32xx/3263.md) | 🟢 Easy | 51s | The problem asks us to convert a doubly linked list into a standard… |
@@ -3253,6 +3280,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3267 | [Count Almost Equal Pairs II](32xx/3267.md) | 🔴 Hard | 1m 23s | We are given an array nums containing positive integers. We need to… |
 | 3268 | [Find Overlapping Shifts II](32xx/3268.md) | 🔴 Hard | 49s | The problem asks us to analyze shift overlaps for employees. We are… |
 | 3269 | [Constructing Two Increasing Arrays](32xx/3269.md) | 🔴 Hard | 1m 29s | We are given two binary arrays, nums1 and nums2. Each element is ei… |
+| 3270 | [Find the Key of the Numbers](32xx/3270.md) | 🟢 Easy | 1m 6s | The problem gives us three positive integers, num1, num2, and num3.… |
 | 3271 | [Hash Divided String](32xx/3271.md) | 🟡 Medium | 52s | The problem asks us to compute a hashed string from an input string… |
 | 3272 | [Find the Count of Good Integers](32xx/3272.md) | 🔴 Hard | 1m 15s | The problem asks us to count n-digit integers that are "good" with … |
 | 3273 | [Minimum Amount of Damage Dealt to Bob](32xx/3273.md) | 🔴 Hard | 1m 33s | This problem asks us to determine the minimum total damage Bob will… |
@@ -3292,6 +3320,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3307 | [Find the K-th Character in String Game II](33xx/3307.md) | 🔴 Hard | 1m 15s | The problem describes a string manipulation game between Alice and … |
 | 3308 | [Find Top Performing Driver](33xx/3308.md) | 🟡 Medium | 1m 14s | The problem asks us to identify the top-performing driver for each … |
 | 3309 | [Maximum Possible Number by Binary Concatenation](33xx/3309.md) | 🟡 Medium | 1m 4s | The problem is asking for the maximum integer value that can be cre… |
+| 3310 | [Remove Methods From Project](33xx/3310.md) | 🟡 Medium | 1m 13s | The problem models a project as a directed graph of method calls. E… |
 | 3311 | [Construct 2D Grid Matching Graph Layout](33xx/3311.md) | 🔴 Hard | 1m 55s | The problem gives us an undirected graph with n nodes labeled from … |
 | 3312 | [Sorted GCD Pair Queries](33xx/3312.md) | 🔴 Hard | 40s | === 1996-G1 === Origin: GBR Let triangle have orthocenter , and let… |
 | 3314 | [Construct the Minimum Bitwise Array I](33xx/3314.md) | 🟢 Easy | 52s | The problem asks us to construct an array ans from a given array nu… |
@@ -3313,7 +3342,9 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3330 | [Find the Original Typed String I](33xx/3330.md) | 🟢 Easy | 55s | This problem asks us to determine the number of possible original s… |
 | 3331 | [Find Subtree Sizes After Changes](33xx/3331.md) | 🟡 Medium | 1m 44s | We are given a rooted tree with n nodes numbered from 0 to n - 1. T… |
 | 3332 | [Maximum Points Tourist Can Earn](33xx/3332.md) | 🟡 Medium | 52s | The problem asks us to maximize the points a tourist can earn over … |
+| 3333 | [Find the Original Typed String II](33xx/3333.md) | 🔴 Hard | 32s | The problem asks us to determine the number of possible original st… |
 | 3334 | [Find the Maximum Factor Score of Array](33xx/3334.md) | 🟡 Medium | 1m 8s | The problem asks us to compute the maximum factor score of an array… |
+| 3335 | [Total Characters in String After Transformations I](33xx/3335.md) | 🟡 Medium | 1m 7s | The problem gives us a string s and an integer t. We repeatedly app… |
 | 3336 | [Find the Number of Subsequences With Equal GCD](33xx/3336.md) | 🔴 Hard | 1m 6s | The problem asks us to count the number of pairs of non-empty disjo… |
 | 3337 | [Total Characters in String After Transformations II](33xx/3337.md) | 🔴 Hard | 1m 55s | The problem defines a repeated string transformation process over l… |
 | 3338 | [Second Highest Salary II](33xx/3338.md) | 🟡 Medium | 52s | This problem asks us to analyze employee salary data within departm… |
@@ -3338,6 +3369,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3357 | [Minimize the Maximum Adjacent Element Difference](33xx/3357.md) | 🔴 Hard | 2m 3s | The problem gives us an integer array nums, where some positions co… |
 | 3358 | [Books with NULL Ratings](33xx/3358.md) | 🟢 Easy | 1m 33s | This problem provides a database table named books. Each row in the… |
 | 3359 | [Find Sorted Submatrices With Maximum Element at Most K](33xx/3359.md) | 🔴 Hard | 1m 34s | We are given a matrix grid with m rows and n columns, along with an… |
+| 3360 | [Stone Removal Game](33xx/3360.md) | 🟢 Easy | 1m 6s | In this game, Alice and Bob take turns removing stones from a pile.… |
 | 3361 | [Shift Distance Between Two Strings](33xx/3361.md) | 🟡 Medium | 1m 19s | The problem gives us two strings, s and t, of equal length. We want… |
 | 3362 | [Zero Array Transformation III](33xx/3362.md) | 🟡 Medium | 1m 39s | We are given an integer array nums and a list of interval queries. … |
 | 3363 | [Find the Maximum Number of Fruits Collected](33xx/3363.md) | 🔴 Hard | 45s | This problem asks us to maximize the total number of fruits collect… |
@@ -3349,8 +3381,11 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3369 | [Design an Array Statistics Tracker ](33xx/3369.md) | 🔴 Hard | 1m 47s | The problem asks us to design a data structure that supports a stre… |
 | 3370 | [Smallest Number With All Set Bits](33xx/3370.md) | 🟢 Easy | 1m 1s | The problem asks us to find the smallest integer x such that: 1. x … |
 | 3371 | [Identify the Largest Outlier in an Array](33xx/3371.md) | 🟡 Medium | 1m 23s | The problem gives us an integer array nums containing exactly three… |
+| 3372 | [Maximize the Number of Target Nodes After Connecting Trees I](33xx/3372.md) | 🟡 Medium | 1m 30s | We are given two separate undirected trees. The first tree contains… |
 | 3373 | [Maximize the Number of Target Nodes After Connecting Trees II](33xx/3373.md) | 🔴 Hard | 1m 43s | The problem gives us two separate undirected trees. The first tree … |
 | 3374 | [First Letter Capitalization II](33xx/3374.md) | 🔴 Hard | 1m 18s | This problem asks us to transform text stored in a database table w… |
+| 3375 | [Minimum Operations to Make Array Values Equal to K](33xx/3375.md) | 🟢 Easy | 1m 19s | The problem gives us an integer array nums and a target value k. Ou… |
+| 3376 | [Minimum Time to Break Locks I](33xx/3376.md) | 🟡 Medium | 1m 18s | The problem describes a sequence of locks that must all be broken. … |
 | 3377 | [Digit Operations to Make Two Integers Equal](33xx/3377.md) | 🟡 Medium | 1m 7s | The problem asks us to transform one integer n into another integer… |
 | 3378 | [Count Connected Components in LCM Graph](33xx/3378.md) | 🔴 Hard | 1m 34s | We are given an array nums, where each element represents the value… |
 | 3379 | [Transformed Array](33xx/3379.md) | 🟢 Easy | 40s | The problem asks us to transform a given integer array nums into a … |
@@ -3363,11 +3398,14 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3387 | [Maximize Amount After Two Days of Conversions](33xx/3387.md) | 🟡 Medium | 1m 27s | This problem models currency conversions as graph traversal across … |
 | 3388 | [Count Beautiful Splits in an Array](33xx/3388.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we want to count how many w… |
 | 3389 | [Minimum Operations to Make Character Frequencies Equal](33xx/3389.md) | 🔴 Hard | 43s | The problem requires transforming a given string s into a good stri… |
+| 3390 | [Longest Team Pass Streak](33xx/3390.md) | 🔴 Hard | 1m 39s | This problem asks us to analyze a football match pass sequence and … |
 | 3391 | [Design a 3D Binary Matrix with Efficient Layer Tracking](33xx/3391.md) | 🟡 Medium | 1m 30s | The problem asks us to design a data structure that manages a 3D bi… |
 | 3392 | [Count Subarrays of Length Three With a Condition](33xx/3392.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to count how… |
 | 3393 | [Count Paths With the Given XOR Value](33xx/3393.md) | 🟡 Medium | 1m 56s | The problem gives us an m x n grid where each cell contains a small… |
+| 3394 | [Check if Grid can be Cut into Sections](33xx/3394.md) | 🟡 Medium | 1m 27s | We are given an n x n grid and a list of non-overlapping rectangles… |
 | 3395 | [Subsequences with a Unique Middle Mode I](33xx/3395.md) | 🔴 Hard | 1m 45s | We are given an integer array nums, and we must count how many subs… |
 | 3396 | [Minimum Number of Operations to Make Elements in Array Distinct](33xx/3396.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, and our goal is to make… |
 | 3397 | [Maximum Number of Distinct Elements After Operations](33xx/3397.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of distinct elements in … |
 | 3398 | [Smallest Substring With Identical Characters I](33xx/3398.md) | 🔴 Hard | 55s | The problem gives us a binary string s consisting of only '0' and '… |
+| 3399 | [Smallest Substring With Identical Characters II](33xx/3399.md) | 🔴 Hard | 1m 15s | We are given a binary string s consisting only of '0' and '1', alon… |
 | 3400 | [Maximum Number of Matching Indices After Right Shifts](34xx/3400.md) | 🟡 Medium | 1m 13s | The problem gives us two arrays, nums1 and nums2, both of the same … |
