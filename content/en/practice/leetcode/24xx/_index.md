@@ -45,7 +45,7 @@ draft: false
 | 2432 | [The Employee That Worked on the Longest Task](2432.md) | 🟢 Easy | 42s | The problem asks us to identify which employee worked the task with… |
 | 2433 | [Find The Original Array of Prefix Xor](2433.md) | 🟡 Medium | 1m 55s | The problem is asking us to reverse-engineer an array arr from its … |
 | 2434 | [Using a Robot to Print the Lexicographically Smallest String](2434.md) | 🟡 Medium | 2m 49s | The problem requires simulating a robot that constructs a final str… |
-| 2435 | [Paths in Matrix Whose Sum Is Divisible by K](2435.md) | 🔴 Hard | 1m 21s | The problem gives us a matrix grid of size m x n and an integer k. … |
+| 2435 | [Paths in Matrix Whose Sum Is Divisible by K](2435.md) | 🔴 Hard | 49s | This problem asks us to count the number of paths in a 2D integer m… |
 | 2436 | [Minimum Split Into Subarrays With GCD Greater Than One](2436.md) | 🟡 Medium | 1m 18s | This problem asks us to divide an array into the smallest possible … |
 | 2437 | [Number of Valid Clock Times](2437.md) | 🟢 Easy | 43s | The problem asks us to determine the number of valid times that can… |
 | 2438 | [Range Product Queries of Powers](2438.md) | 🟡 Medium | 47s | The problem asks us to compute the product of certain ranges of pow… |
