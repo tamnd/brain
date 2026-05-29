@@ -59,5 +59,11 @@ draft: false
 | 2950 | [Number of Divisible Substrings](2950.md) | 🟡 Medium | 50s | The problem asks us to analyze a given string word where each lower… |
 | 2951 | [Find the Peaks](2951.md) | 🟢 Easy | 40s | The problem is asking us to identify all the peaks in a given array… |
 | 2953 | [Count Complete Substrings](2953.md) | 🔴 Hard | 50s | Here’s a full, detailed technical solution guide for LeetCode 2953 … |
+| 2955 | [Number of Same-End Substrings](2955.md) | 🟡 Medium | 1m 26s | We are given a string s and multiple queries. Each query specifies … |
+| 2956 | [Find Common Elements Between Two Arrays](2956.md) | 🟢 Easy | 1m 3s | The problem gives us two integer arrays, nums1 and nums2. We must d… |
+| 2958 | [Length of Longest Subarray With at Most K Frequency](2958.md) | 🟡 Medium | 48s | The problem asks us to find the length of the longest contiguous su… |
+| 2959 | [Number of Possible Sets of Closing Branches](2959.md) | 🔴 Hard | 1m 20s | This problem asks us to count how many different subsets of branche… |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
+| 2964 | [Number of Divisible Triplet Sums](2964.md) | 🟡 Medium | 1m 10s | The problem gives us an integer array nums and another integer d. W… |
+| 2965 | [Find Missing and Repeated Values](2965.md) | 🟢 Easy | 1m 3s | The problem gives us an n x n matrix called grid. Every value in th… |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |

@@ -68,13 +68,13 @@ draft: false
 | 2656 | [Maximum Sum With Exactly K Elements ](2656.md) | 🟢 Easy | 1m 7s | The problem gives us an integer array nums and an integer k. We mus… |
 | 2657 | [Find the Prefix Common Array of Two Arrays](2657.md) | 🟡 Medium | 48s | The problem provides two arrays, A and B, each a permutation of int… |
 | 2658 | [Maximum Number of Fish in a Grid](2658.md) | 🟡 Medium | 50s | The problem provides a 2D grid representing a map of land and water… |
-| 2659 | [Make Array Empty](2659.md) | 🔴 Hard | 44s | The problem asks us to count the number of operations required to e… |
-| 2660 | [Determine the Winner of a Bowling Game](2660.md) | 🟢 Easy | 39s | The problem presents a variation of scoring in a bowling game. You … |
-| 2661 | [First Completely Painted Row or Column](2661.md) | 🟡 Medium | 1m 11s | The problem gives us two inputs: 1. An array arr of length m n 2. A… |
+| 2659 | [Make Array Empty](2659.md) | 🔴 Hard | 1m 23s | The problem gives us an array of distinct integers and defines two … |
+| 2660 | [Determine the Winner of a Bowling Game](2660.md) | 🟢 Easy | 41s | The problem describes a simplified scoring system for a bowling gam… |
+| 2661 | [First Completely Painted Row or Column](2661.md) | 🟡 Medium | 48s | The problem is asking us to simulate a painting process on a 2D mat… |
 | 2662 | [Minimum Cost of a Path With Special Roads](2662.md) | 🟡 Medium | 38s | The problem asks us to find the minimum cost to move from a startin… |
-| 2663 | [Lexicographically Smallest Beautiful String](2663.md) | 🔴 Hard | 38s | The problem asks us to generate the lexicographically smallest beau… |
-| 2664 | [The Knight\u2019s Tour](2664.md) | 🟡 Medium | 1m 22s | This problem asks us to construct a complete knight's tour on an m … |
-| 2665 | [Counter II](2665.md) | 🟢 Easy | 1m 10s | The problem concerns a fixed acute triangle . For a variable point … |
+| 2663 | [Lexicographically Smallest Beautiful String](2663.md) | 🔴 Hard | 51s | The problem requires generating the lexicographically smallest beau… |
+| 2664 | [The Knight\u2019s Tour](2664.md) | 🟡 Medium | 1m 21s | This problem asks us to construct a complete knight’s tour on an m … |
+| 2665 | [Counter II](2665.md) | 🟢 Easy | 39s | The problem asks us to implement a counter object that maintains a … |
 | 2666 | [Allow One Function Call](2666.md) | 🟢 Easy | 1m 3s | The problem asks us to create a higher-order function. A higher-ord… |
 | 2667 | [Create Hello World Function](2667.md) | 🟢 Easy | 1m 6s | The problem asks us to implement a function named createHelloWorld … |
 | 2668 | [Find Latest Salaries](2668.md) | 🟢 Easy | 1m 14s | This problem gives us a database table named Salary that stores emp… |
