@@ -85,20 +85,22 @@ draft: false
 | 2773 | [Height of Special Binary Tree](2773.md) | 🟡 Medium | 1m 13s | This problem gives us the root of a special binary tree. At first g… |
 | 2774 | [Array Upper Bound](2774.md) | 🟢 Easy | 1m 8s | The problem asks us to enhance JavaScript arrays with a method call… |
 | 2775 | [Undefined to Null](2775.md) | 🟡 Medium | 47s | The problem requires us to recursively traverse a nested object or … |
-| 2776 | [Convert Callback Based Function to Promise Based Function](2776.md) | 🟡 Medium | 47s | The problem asks us to create a function, promisify, which converts… |
-| 2777 | [Date Range Generator](2777.md) | 🟡 Medium | 33s | The problem asks us to construct a generator that produces a sequen… |
-| 2778 | [Sum of Squares of Special Elements ](2778.md) | 🟢 Easy | 38s | The problem provides a 1-indexed array nums of integers with length… |
-| 2780 | [Minimum Index of a Valid Split](2780.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array nums that is guaranteed to co… |
-| 2781 | [Length of the Longest Valid Substring](2781.md) | 🔴 Hard | 1m 8s | The problem gives us a string word and a list of forbidden strings … |
-| 2782 | [Number of Unique Categories](2782.md) | 🟡 Medium | 1m 18s | This problem is an interactive-style Union-Find problem where we ar… |
-| 2783 | [Flight Occupancy and Waitlist Analysis](2783.md) | 🟡 Medium | 1m 25s | This problem asks us to analyze flight bookings and determine two v… |
-| 2784 | [Check if Array is Good](2784.md) | 🟢 Easy | 1m 4s | This problem asks us to determine whether a given array nums is a p… |
-| 2785 | [Sort Vowels in a String](2785.md) | 🟡 Medium | 1m 25s | The problem asks us to rearrange only the vowels in a given string … |
-| 2787 | [Ways to Express an Integer as Sum of Powers](2787.md) | 🟡 Medium | 1m 11s | The problem gives us two positive integers, n and x. We must determ… |
-| 2788 | [Split Strings by Separator](2788.md) | 🟢 Easy | 2m 38s | This problem asks us to process a list of strings and split each st… |
-| 2789 | [Largest Element in an Array after Merge Operations](2789.md) | 🟡 Medium | 53s | The problem asks us to repeatedly merge elements in an array accord… |
+| 2776 | [Convert Callback Based Function to Promise Based Function](2776.md) | 🟡 Medium | 1m 4s | This problem asks us to implement a utility function called promisi… |
+| 2777 | [Date Range Generator](2777.md) | 🟡 Medium | 55s | The problem asks us to generate a sequence of dates starting from a… |
+| 2778 | [Sum of Squares of Special Elements ](2778.md) | 🟢 Easy | 53s | This problem asks us to compute the sum of squares of certain eleme… |
+| 2779 | [Maximum Beauty of an Array After Applying Operation](2779.md) | 🟡 Medium | 49s | This problem asks us to determine the maximum "beauty" of an array … |
+| 2780 | [Minimum Index of a Valid Split](2780.md) | 🟡 Medium | 1m | The problem asks us to find a minimum index at which a given intege… |
+| 2781 | [Length of the Longest Valid Substring](2781.md) | 🔴 Hard | 1m 15s | The problem gives us a string word and a list of forbidden strings … |
+| 2782 | [Number of Unique Categories](2782.md) | 🟡 Medium | 1m 14s | This problem asks us to determine how many distinct categories exis… |
+| 2783 | [Flight Occupancy and Waitlist Analysis](2783.md) | 🟡 Medium | 1m 7s | This problem models airline flight bookings with limited seating ca… |
+| 2784 | [Check if Array is Good](2784.md) | 🟢 Easy | 1m 13s | The problem defines a special type of array called a "good" array. … |
+| 2785 | [Sort Vowels in a String](2785.md) | 🟡 Medium | 1m | This problem requires us to reorder the vowels in a string while ke… |
+| 2786 | [Visit Array Positions to Maximize Score](2786.md) | 🟡 Medium | 47s | The problem presents a 0-indexed array nums of integers and a posit… |
+| 2787 | [Ways to Express an Integer as Sum of Powers](2787.md) | 🟡 Medium | 1m 18s | This problem asks us to count how many different ways we can repres… |
+| 2788 | [Split Strings by Separator](2788.md) | 🟢 Easy | 1m 6s | This problem asks us to process an array of strings and split each … |
+| 2789 | [Largest Element in an Array after Merge Operations](2789.md) | 🟡 Medium | 1m 9s | The problem gives us an array of positive integers and allows a spe… |
 | 2790 | [Maximum Number of Groups With Increasing Length](2790.md) | 🔴 Hard | 55s | We are given an array usageLimits, where usageLimits[i] tells us ho… |
-| 2791 | [Count Paths That Can Form a Palindrome in a Tree](2791.md) | 🔴 Hard | 38s | The problem requires counting the number of node pairs (u, v) in a … |
+| 2791 | [Count Paths That Can Form a Palindrome in a Tree](2791.md) | 🔴 Hard | 51s | I can do that, but the guide will be very long for a single chat re… |
 | 2792 | [Count Nodes That Are Great Enough](2792.md) | 🔴 Hard | 35s | The problem gives a binary tree where each node has an integer valu… |
 | 2793 | [Status of Flight Tickets](2793.md) | 🔴 Hard | 1m 49s | The problem is asking us to determine the status of flight tickets … |
 | 2794 | [Create Object from Two Arrays](2794.md) | 🟢 Easy | 1m 40s | The problem gives us two arrays, keysArr and valuesArr, both of the… |

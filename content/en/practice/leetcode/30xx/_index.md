@@ -69,3 +69,13 @@ draft: false
 | 3078 | [Match Alphanumerical Pattern in Matrix I](3078.md) | 🟡 Medium | 1m 35s | This problem asks us to search for a rectangular submatrix inside a… |
 | 3079 | [Find the Sum of Encrypted Integers](3079.md) | 🟢 Easy | 49s | The problem provides an array of positive integers nums and asks us… |
 | 3081 | [Replace Question Marks in String to Minimize Its Value](3081.md) | 🟡 Medium | 1m 11s | The problem gives us a string s containing lowercase English letter… |
+| 3082 | [Find the Sum of the Power of All Subsequences](3082.md) | 🔴 Hard | 1m 15s | You are given an array nums and an integer k. For every subsequence… |
+| 3083 | [Existence of a Substring in a String and Its Reverse](3083.md) | 🟢 Easy | 57s | This is a Type B, “Prove that” problem. The statement to prove is: … |
+| 3084 | [Count Substrings Starting and Ending with Given Character](3084.md) | 🟡 Medium | 1m 10s | The problem gives us a string s and a character c. We must count ho… |
+| 3085 | [Minimum Deletions to Make String K-Special](3085.md) | 🟡 Medium | 57s | The problem asks us to transform a given string word into a k-speci… |
+| 3086 | [Minimum Moves to Pick K Ones](3086.md) | 🔴 Hard | 1m 3s | The reviewer identified a sign error in the swap argument, so the f… |
+| 3087 | [Find Trending Hashtags](3087.md) | 🟡 Medium | 1m 10s | The problem asks us to find the top 3 trending hashtags from a tabl… |
+| 3088 | [Make String Anti-palindrome](3088.md) | 🔴 Hard | 1m 25s | We are given a string s of even length, and we may swap any two cha… |
+| 3090 | [Maximum Length Substring With Two Occurrences](3090.md) | 🟢 Easy | 58s | The problem is asking for the maximum length of a substring in a gi… |
+| 3091 | [Apply Operations to Make Sum of Array Greater Than or Equal to k](3091.md) | 🟡 Medium | 1m 15s | The problem gives us a single positive integer k. We start with an … |
+| 3092 | [Most Frequent IDs](3092.md) | 🟡 Medium | 50s | The problem asks us to maintain a collection of IDs that is updated… |

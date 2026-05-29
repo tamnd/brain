@@ -1,6 +1,6 @@
 ---
 title: "IMO 1975"
-description: "IMO 1975 — 0/6 solved."
+description: "IMO 1975 — 1/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1975
@@ -10,18 +10,18 @@ draft: false
 
 # IMO 1975
 
-[Official IMO 1975 problems](https://www.imo-official.org/year_info.aspx?year=1975) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1975 problems](https://www.imo-official.org/year_info.aspx?year=1975) &nbsp;·&nbsp; 1/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
-| 1 | — | — |
+| [1](1.md) | solved | 15m43s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1**
+**Problem 1** &nbsp; *solved* · 15m43s · [Solution →](1.md)
 
 Let $x_i, y_i~(i = 1, 2, \ldots, n)$ be real numbers such that $$
 x_1 \geq x_2 \geq \cdots \geq x_n \text{ and } y_1 \geq y_2 \geq \cdots \geq y_n.
