@@ -25,3 +25,6 @@ draft: false
 | 3120 | [Count the Number of Special Characters I](3120.md) | 🟢 Easy | 46s | The problem asks us to count the number of special characters in a … |
 | 3121 | [Count the Number of Special Characters II](3121.md) | 🟡 Medium | 1m 12s | The problem gives us a string word containing uppercase and lowerca… |
 | 3122 | [Minimum Number of Operations to Satisfy Conditions](3122.md) | 🟡 Medium | 1m 1s | The problem presents a two-dimensional matrix grid of size m x n wi… |
+| 3126 | [Server Utilization Time](3126.md) | 🟡 Medium | 1m 27s | This problem provides a table named Servers that records status cha… |
+| 3127 | [Make a Square with the Same Color](3127.md) | 🟢 Easy | 1m 13s | This problem gives us a fixed 3 x 3 grid containing only two possib… |
+| 3128 | [Right Triangles](3128.md) | 🟡 Medium | 1m 21s | The problem gives us a binary matrix grid, where each cell contains… |
