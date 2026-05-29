@@ -21,9 +21,9 @@ draft: false
 | 2508 | [Add Edges to Make Degrees of All Nodes Even](2508.md) | 🔴 Hard | 1m 33s | The problem gives us an undirected graph with n nodes and a list of… |
 | 2509 | [Cycle Length Queries in a Tree](2509.md) | 🔴 Hard | 1m 20s | The problem gives us a complete binary tree where nodes are labeled… |
 | 2510 | [Check if There is a Path With Equal Number of 0's And 1's](2510.md) | 🟡 Medium | 45s | This problem asks us to determine if there exists a path in a binar… |
-| 2511 | [Maximum Enemy Forts That Can Be Captured](2511.md) | 🟢 Easy | 2m 38s | The problem gives us an array called forts, where each position rep… |
+| 2511 | [Maximum Enemy Forts That Can Be Captured](2511.md) | 🟢 Easy | 1m 12s | In this problem, we are given an array called forts, where each pos… |
 | 2512 | [Reward Top K Students](2512.md) | 🟡 Medium | 1m 19s | This problem asks us to rank students based on the sentiment of wor… |
-| 2513 | [Minimize the Maximum of Two Arrays](2513.md) | 🟡 Medium | 3m 26s | This problem asks us to construct two arrays of positive integers, … |
+| 2513 | [Minimize the Maximum of Two Arrays](2513.md) | 🟡 Medium | 1m 17s | The problem gives us two empty arrays, arr1 and arr2, and asks us t… |
 | 2514 | [Count Anagrams](2514.md) | 🔴 Hard | 1m 28s | The problem asks us to count how many distinct sentence anagrams ca… |
 | 2515 | [Shortest Distance to Target String in a Circular Array](2515.md) | 🟢 Easy | 45s | The problem asks us to find the shortest distance from a given star… |
 | 2516 | [Take K of Each Character From Left and Right](2516.md) | 🟡 Medium | 1m 7s | The problem gives us a string s containing only the characters 'a',… |
