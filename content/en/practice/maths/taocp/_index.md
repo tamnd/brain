@@ -9,8 +9,8 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 9 exercises solved, 5 verified.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 9 exercises solved, 6 verified.
 
 | Section | Title | Solved | Verified |
 |---------|-------|--------|----------|
-| [1.1](1.1/) | Algorithms | 9 | 5 |
+| [1.1](1.1/) | Algorithms | 9 | 6 |
