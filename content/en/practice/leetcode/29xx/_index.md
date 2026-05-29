@@ -38,5 +38,10 @@ draft: false
 | 2925 | [Maximum Score After Applying Operations on a Tree](2925.md) | 🟡 Medium | 1m 23s | The problem gives us an undirected tree with n nodes rooted at node… |
 | 2926 | [Maximum Balanced Subsequence Sum](2926.md) | 🔴 Hard | 46s | This problem asks us to find the maximum sum of a balanced subseque… |
 | 2928 | [Distribute Candies Among Children I](2928.md) | 🟢 Easy | 1m 9s | The problem asks us to count how many valid ways exist to distribut… |
+| 2931 | [Maximum Spending After Buying Items](2931.md) | 🔴 Hard | 1m 27s | We are given an m x n matrix called values, where each row represen… |
+| 2932 | [Maximum Strong Pair XOR I](2932.md) | 🟢 Easy | 1m 21s | The problem gives us an integer array nums, and we must choose two … |
+| 2934 | [Minimum Operations to Maximize Last Elements in Arrays](2934.md) | 🟡 Medium | 1m 15s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2937 | [Make Three Strings Equal](2937.md) | 🟢 Easy | 1m | The problem gives us three strings, s1, s2, and s3. In one operatio… |
+| 2938 | [Separate Black and White Balls](2938.md) | 🟡 Medium | 41s | The problem asks us to rearrange a binary string representing balls… |
 | 2963 | [Count the Number of Good Partitions](2963.md) | 🔴 Hard | 1m 36s | The problem asks us to count the number of ways we can partition a … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |

@@ -32,19 +32,22 @@ draft: false
 | 2619 | [Array Prototype Last](2619.md) | 🟢 Easy | 40s | The problem asks us to enhance all JavaScript arrays so that they h… |
 | 2620 | [Counter](2620.md) | 🟢 Easy | 46s | The problem is asking us to implement a simple counter function wit… |
 | 2621 | [Sleep](2621.md) | 🟢 Easy | 37s | The problem asks us to implement an asynchronous function sleep tha… |
-| 2622 | [Cache With Time Limit](2622.md) | 🟡 Medium | 1m 9s | This problem asks us to design a cache system where each key-value … |
+| 2622 | [Cache With Time Limit](2622.md) | 🟡 Medium | 1m 3s | This problem asks us to implement a cache that stores key-value pai… |
 | 2623 | [Memoize](2623.md) | 🟡 Medium | 53s | This problem asks us to create a memoized version of a function. Me… |
-| 2624 | [Snail Traversal](2624.md) | 🟡 Medium | 43s | The problem is asking us to take a one-dimensional array of numbers… |
-| 2625 | [Flatten Deeply Nested Array](2625.md) | 🟡 Medium | 1m 8s | We are given a multi-dimensional array arr and a non-negative integ… |
-| 2626 | [Array Reduce Transformation](2626.md) | 🟢 Easy | 40s | The problem is asking us to simulate the behavior of a "reduce" fun… |
-| 2628 | [JSON Deep Equal](2628.md) | 🟡 Medium | 42s | The problem is asking us to determine whether two JSON-parsed value… |
-| 2629 | [Function Composition](2629.md) | 🟢 Easy | 1m 21s | The problem is asking us to implement a function composition operat… |
-| 2630 | [Memoize II](2630.md) | 🔴 Hard | 42s | The problem asks us to implement a memoized version of a function f… |
-| 2631 | [Group By](2631.md) | 🟡 Medium | 1m 27s | This problem asks us to extend JavaScript arrays with a custom meth… |
-| 2633 | [Convert Object to JSON String](2633.md) | 🟡 Medium | 44s | This problem asks us to convert a given JavaScript-like object into… |
-| 2634 | [Filter Elements from Array](2634.md) | 🟢 Easy | 1m 8s | The problem asks us to implement our own version of array filtering… |
-| 2636 | [Promise Pool](2636.md) | 🟡 Medium | 1m | This problem asks us to implement a concurrency-controlled executor… |
-| 2637 | [Promise Time Limit](2637.md) | 🟡 Medium | 1m | This problem asks us to build a higher order asynchronous function.… |
+| 2624 | [Snail Traversal](2624.md) | 🟡 Medium | 50s | The problem asks us to take a 1D array of integers and convert it i… |
+| 2625 | [Flatten Deeply Nested Array](2625.md) | 🟡 Medium | 1m 12s | This problem is implemented in JavaScript on LeetCode, but you requ… |
+| 2626 | [Array Reduce Transformation](2626.md) | 🟢 Easy | 40s | The problem is asking us to simulate a "reduce" operation on an arr… |
+| 2627 | [Debounce](2627.md) | 🟡 Medium | 1m 3s | This problem asks us to implement a utility function called debounc… |
+| 2628 | [JSON Deep Equal](2628.md) | 🟡 Medium | 40s | The problem asks us to determine whether two JSON values, o1 and o2… |
+| 2629 | [Function Composition](2629.md) | 🟢 Easy | 1m 7s | This problem asks us to implement function composition. We are give… |
+| 2630 | [Memoize II](2630.md) | 🔴 Hard | 47s | The problem asks us to implement a memoized version of a given func… |
+| 2631 | [Group By](2631.md) | 🟡 Medium | 37s | The problem asks us to enhance arrays such that any array can call … |
+| 2632 | [Curry](2632.md) | 🟡 Medium | 47s | The problem is asking us to implement currying for a given function… |
+| 2633 | [Convert Object to JSON String](2633.md) | 🟡 Medium | 1m 38s | The problem asks us to manually implement the behavior of JavaScrip… |
+| 2634 | [Filter Elements from Array](2634.md) | 🟢 Easy | 44s | The problem asks us to implement a function that filters an array b… |
+| 2635 | [Apply Transform Over Each Element in Array](2635.md) | 🟢 Easy | 56s | This problem asks us to implement a custom version of the array tra… |
+| 2636 | [Promise Pool](2636.md) | 🟡 Medium | 1m 7s | This problem asks us to implement a concurrency limiter for asynchr… |
+| 2637 | [Promise Time Limit](2637.md) | 🟡 Medium | 46s | This problem asks us to implement a time-limited wrapper around an … |
 | 2638 | [Count the Number of K-Free Subsets](2638.md) | 🟡 Medium | 1m 7s | The problem asks us to count how many subsets of the array nums are… |
 | 2639 | [Find the Width of Columns of a Grid](2639.md) | 🟢 Easy | 1m 6s | This problem gives us a two dimensional integer matrix called grid,… |
 | 2640 | [Find the Score of All Prefixes of an Array](2640.md) | 🟡 Medium | 1m 5s | The problem defines a special transformation called the conversion … |
