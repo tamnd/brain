@@ -18,12 +18,12 @@ draft: false
 | 2905 | [Find Indices With Index and Value Difference II](2905.md) | 🟡 Medium | 54s | The problem asks us to find two indices i and j in an integer array… |
 | 2906 | [Construct Product Matrix](2906.md) | 🟡 Medium | 1m 12s | The problem asks us to construct a new matrix p from a given matrix… |
 | 2907 | [Maximum Profitable Triplets With Increasing Prices I](2907.md) | 🟡 Medium | 1m 49s | This problem asks us to select exactly three items from a store whi… |
-| 2908 | [Minimum Sum of Mountain Triplets I](2908.md) | 🟢 Easy | 48s | The problem asks us to find the minimum sum of a mountain triplet i… |
-| 2909 | [Minimum Sum of Mountain Triplets II](2909.md) | 🟡 Medium | 1m 8s | The problem asks us to find a special triplet of indices (i, j, k) … |
-| 2910 | [Minimum Number of Groups to Create a Valid Assignment](2910.md) | 🟡 Medium | 48s | The problem requires us to determine the minimum number of boxes ne… |
-| 2911 | [Minimum Changes to Make K Semi-palindromes](2911.md) | 🔴 Hard | 1m 13s | We are given a string s and an integer k. The goal is to split the … |
-| 2912 | [Number of Ways to Reach Destination in the Grid](2912.md) | 🔴 Hard | 1m 24s | The problem gives us an n x m grid where every cell is identified u… |
-| 2913 | [Subarrays Distinct Element Sum of Squares I](2913.md) | 🟢 Easy | 1m 7s | The problem asks us to examine every possible non-empty subarray of… |
+| 2908 | [Minimum Sum of Mountain Triplets I](2908.md) | 🟢 Easy | 1m 1s | The problem asks us to find the minimum possible sum of a "mountain… |
+| 2909 | [Minimum Sum of Mountain Triplets II](2909.md) | 🟡 Medium | 1m 21s | The problem asks us to find three indices (i, j, k) such that the m… |
+| 2910 | [Minimum Number of Groups to Create a Valid Assignment](2910.md) | 🟡 Medium | 1m 19s | This problem gives us an array of integers representing balls. Ball… |
+| 2911 | [Minimum Changes to Make K Semi-palindromes](2911.md) | 🔴 Hard | 1m 10s | The problem asks us to partition a given string s into k contiguous… |
+| 2912 | [Number of Ways to Reach Destination in the Grid](2912.md) | 🔴 Hard | 1m 32s | We are given an n × m grid and two cells: - source = [sx, sy] - des… |
+| 2913 | [Subarrays Distinct Element Sum of Squares I](2913.md) | 🟢 Easy | 1m 20s | The problem asks us to examine every possible non-empty subarray of… |
 | 2914 | [Minimum Number of Changes to Make Binary String Beautiful](2914.md) | 🟡 Medium | 58s | The problem gives us a binary string s consisting only of the chara… |
 | 2915 | [Length of the Longest Subsequence That Sums to Target](2915.md) | 🟡 Medium | 1m 13s | The problem gives us an array nums and an integer target. We must f… |
 | 2916 | [Subarrays Distinct Element Sum of Squares II](2916.md) | 🔴 Hard | 1m 28s | The problem asks us to compute, across every possible non-empty sub… |

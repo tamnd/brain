@@ -18,7 +18,7 @@ draft: false
 | [2](2.md) | solved | 9m05s |
 | [3](3.md) | ✓ verified | 3m43s |
 | [4](4.md) | solved | 12m37s |
-| [5](5.md) | solved | 5m40s |
+| [5](5.md) | solved | 7m23s |
 | [6](6.md) | solved | 6m25s |
 
 **Problem 1** &nbsp; *solved* · 43m36s · [Solution →](1.md)
@@ -45,7 +45,7 @@ All the faces of tetrahedron $ABCD$ are acute-angled triangles. We consider all 
 
 (b) If $\angle DAB + \angle BCD = \angle CDA + \angle ABC$, then there are infinitely many shortest polygonal paths, their common length being $2AC \sin(\alpha / 2)$, where $\alpha = \angle BAC + \angle CAD + \angle DAB$.
 
-**Problem 5** &nbsp; *solved* · 5m40s · [Solution →](5.md)
+**Problem 5** &nbsp; *solved* · 7m23s · [Solution →](5.md)
 
 Prove that for every natural number $m$, there exists a finite set $S$ of points in a plane with the following property: For every point $A$ in $S$, there are exactly $m$ points in $S$ which are at unit distance from $A$.
 

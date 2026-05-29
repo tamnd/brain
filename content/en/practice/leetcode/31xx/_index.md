@@ -58,3 +58,5 @@ draft: false
 | 3148 | [Maximum Difference Score in a Grid](3148.md) | 🟡 Medium | 1m 42s | The problem gives us an m x n matrix called grid, where every cell … |
 | 3149 | [Find the Minimum Cost Array Permutation](3149.md) | 🔴 Hard | 51s | The problem presents an array nums of length n that is a permutatio… |
 | 3150 | [Invalid Tweets II](3150.md) | 🟢 Easy | 1m 10s | The problem gives us a database table named Tweets with two columns… |
+| 3152 | [Special Array II](3152.md) | 🟡 Medium | 1m 22s | We are given an integer array nums and several queries. Each query … |
+| 3154 | [Find Number of Ways to Reach the K-th Stair](3154.md) | 🔴 Hard | 1m 8s | Let's dive into a comprehensive solution guide for LeetCode 3154 - … |
