@@ -18,7 +18,7 @@ draft: false
 | [2](2.md) | ✓ verified | 11m24s |
 | [3](3.md) | solved | 39m28s |
 | [4](4.md) | ✓ verified | 19m03s |
-| [5](5.md) | solved | 9m39s |
+| [5](5.md) | solved | 4m00s |
 | [6](6.md) | ✓ verified | 3m04s |
 
 **Problem 1** &nbsp; *✓ verified* · 4m48s · [Solution →](1.md)
@@ -49,7 +49,7 @@ where *n* is a given positive integer.
 
 In the interior of [triangle](/wiki/index.php?title=Triangle "Triangle") $P_1 P_2 P_3$ a [point](/wiki/index.php?title=Point "Point") *P* is given. Let $Q_1,Q_2,Q_3$ be the [intersections](/wiki/index.php?title=Intersection "Intersection") of $PP_1, PP_2,PP_3$ with the opposing [edges](/wiki/index.php?title=Edge "Edge") of triangle $ABC$. Prove that among the [ratios](/wiki/index.php?title=Ratio "Ratio") $\frac{PP_1}{PQ_1},\frac{PP_2}{PQ_2},\frac{PP_3}{PQ_3}$ there exists one not larger than 2 and one not smaller than 2.
 
-**Problem 5** &nbsp; *solved* · 9m39s · [Solution →](5.md)
+**Problem 5** &nbsp; *solved* · 4m00s · [Solution →](5.md)
 
 Construct a triangle *ABC* if the following elements are given: $AC = b, AB = c$, and $\angle AMB = \omega \left(\omega < 90^{\circ}\right)$ where *M* is the midpoint of *BC*. Prove that the construction has a solution if and only if
 
