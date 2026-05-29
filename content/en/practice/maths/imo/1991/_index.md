@@ -1,6 +1,6 @@
 ---
 title: "IMO 1991"
-description: "IMO 1991 — 3/6 solved."
+description: "IMO 1991 — 4/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1991
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1991
 
-[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 3/6 solved.
+[Official IMO 1991 problems](https://www.imo-official.org/year_info.aspx?year=1991) &nbsp;·&nbsp; 4/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
@@ -18,7 +18,7 @@ draft: false
 | 2 | — | — |
 | [3](3.md) | solved | 31m33s |
 | [4](4.md) | solved | 31m43s |
-| 5 | — | — |
+| [5](5.md) | solved | 11m04s |
 | 6 | — | — |
 
 **Problem 1** &nbsp; *solved* · 18m14s · [Solution →](1.md)
@@ -41,7 +41,7 @@ Let $S = \{1,2,3,\cdots ,280\}$. Find the smallest integer $n$ such that each $n
 
 Suppose $\,G\,$ is a connected graph with $\,k\,$ edges. Prove that it is possible to label the edges $1,2,\ldots ,k\,$ in such a way that at each vertex which belongs to two or more edges, the greatest common divisor of the integers labeling those edges is equal to 1.
 
-**Problem 5**
+**Problem 5** &nbsp; *solved* · 11m04s · [Solution →](5.md)
 
 Let $\,ABC\,$ be a triangle and $\,P\,$ an interior point of $\,ABC\,$. Show that at least one of the angles $\,\angle PAB,\;\angle PBC,\;\angle PCA\,$ is less than or equal to $30^{\circ }$.
 
