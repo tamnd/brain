@@ -52,3 +52,10 @@ draft: false
 | 2648 | [Generate Fibonacci Sequence](2648.md) | 🟢 Easy | 1m 3s | This problem asks us to implement a generator function that produce… |
 | 2649 | [Nested Array Generator](2649.md) | 🟡 Medium | 35s | The problem requires implementing a generator for multi-dimensional… |
 | 2650 | [Design Cancellable Function](2650.md) | 🔴 Hard | 2m 30s | This problem asks us to build a utility that can control the execut… |
+| 2651 | [Calculate Delayed Arrival Time](2651.md) | 🟢 Easy | 38s | This problem asks us to compute the arrival time of a train after i… |
+| 2652 | [Sum Multiples](2652.md) | 🟢 Easy | 58s | The problem asks us to examine every integer in the inclusive range… |
+| 2653 | [Sliding Subarray Beauty](2653.md) | 🟡 Medium | 1m 7s | The problem asks us to process every contiguous subarray of length … |
+| 2655 | [Find Maximal Uncovered Ranges](2655.md) | 🟡 Medium | 1m 14s | The problem gives us an array of length n, indexed from 0 to n - 1.… |
+| 2656 | [Maximum Sum With Exactly K Elements ](2656.md) | 🟢 Easy | 48s | This problem asks us to maximize a score by repeatedly selecting el… |
+| 2657 | [Find the Prefix Common Array of Two Arrays](2657.md) | 🟡 Medium | 45s | The problem asks us to compute a prefix common array C from two int… |
+| 2660 | [Determine the Winner of a Bowling Game](2660.md) | 🟢 Easy | 39s | The problem presents a variation of scoring in a bowling game. You … |

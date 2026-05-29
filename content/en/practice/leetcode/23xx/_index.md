@@ -78,25 +78,27 @@ draft: false
 | 2365 | [Task Scheduler II](2365.md) | 🟡 Medium | 1m 8s | The problem gives us an array tasks, where each value represents a … |
 | 2366 | [Minimum Replacements to Sort the Array](2366.md) | 🔴 Hard | 2m 19s | The problem asks us to transform a given integer array nums into a … |
 | 2367 | [Number of Arithmetic Triplets](2367.md) | 🟢 Easy | 2m 19s | The problem requires us to find the number of arithmetic triplets i… |
-| 2368 | [Reachable Nodes With Restrictions](2368.md) | 🟡 Medium | 1m 28s | The problem is asking us to determine how many nodes in a tree are … |
+| 2368 | [Reachable Nodes With Restrictions](2368.md) | 🟡 Medium | 2m 15s | That is a large, highly structured guide. To make sure I target the… |
 | 2369 | [Check if There is a Valid Partition For The Array](2369.md) | 🟡 Medium | 1m 15s | The problem gives us an integer array nums, and we must determine w… |
-| 2370 | [Longest Ideal Subsequence](2370.md) | 🟡 Medium | 1m 13s | The problem asks us to find the length of the longest subsequence o… |
-| 2372 | [Calculate the Influence of Each Salesperson](2372.md) | 🟡 Medium | 1m 13s | This problem gives us an undirected tree with n nodes numbered from… |
-| 2373 | [Largest Local Values in a Matrix](2373.md) | 🟢 Easy | 54s | The problem asks us to process an n x n matrix grid and generate a … |
-| 2374 | [Node With Highest Edge Score](2374.md) | 🟡 Medium | 2m 51s | This problem gives a directed graph with n nodes, where each node h… |
-| 2375 | [Construct Smallest Number From DI String](2375.md) | 🟡 Medium | 1m 8s | The problem gives us a string called pattern consisting only of the… |
-| 2376 | [Count Special Integers](2376.md) | 🔴 Hard | 3m 4s | The problem asks us to count how many integers in the range [1, n] … |
-| 2377 | [Sort the Olympic Table](2377.md) | 🟢 Easy | 1m 3s | The problem gives us a database table named Olympic that stores med… |
-| 2378 | [Choose Edges to Maximize Score in a Tree](2378.md) | 🟡 Medium | 1m 35s | This problem gives us a rooted weighted tree with n nodes labeled f… |
-| 2379 | [Minimum Recolors to Get K Consecutive Black Blocks](2379.md) | 🟢 Easy | 1m 18s | The problem gives us a string called blocks, where each character r… |
-| 2380 | [Time Needed to Rearrange a Binary String](2380.md) | 🟡 Medium | 1m 4s | The problem is asking us to simulate a process on a binary string s… |
-| 2381 | [Shifting Letters II](2381.md) | 🟡 Medium | 1m 20s | The problem gives us a lowercase English string s and a list of shi… |
-| 2383 | [Minimum Hours of Training to Win a Competition](2383.md) | 🟢 Easy | 1m 17s | The problem gives us two initial values, initialEnergy and initialE… |
-| 2384 | [Largest Palindromic Number](2384.md) | 🟡 Medium | 3m 8s | The problem gives us a string num that contains only digits from 0 … |
-| 2385 | [Amount of Time for Binary Tree to Be Infected](2385.md) | 🟡 Medium | 1m 31s | This problem models the spread of an infection through a binary tre… |
-| 2386 | [Find the K-Sum of an Array](2386.md) | 🔴 Hard | 1m 19s | The problem asks us to find the kth largest subsequence sum that ca… |
-| 2388 | [Change Null Values in a Table to the Previous Value](2388.md) | 🟡 Medium | 41s | The problem asks us to process a table called CoffeeShop that conta… |
-| 2389 | [Longest Subsequence With Limited Sum](2389.md) | 🟢 Easy | 1m 4s | The problem gives us two arrays: - nums, which contains positive in… |
+| 2370 | [Longest Ideal Subsequence](2370.md) | 🟡 Medium | 1m 1s | In this problem, we are given a string s containing only lowercase … |
+| 2371 | [Minimize Maximum Value in a Grid](2371.md) | 🔴 Hard | 42s | The problem presents a matrix grid of size m x n with distinct posi… |
+| 2372 | [Calculate the Influence of Each Salesperson](2372.md) | 🟡 Medium | 1m 17s | This problem asks us to calculate the total sales value generated b… |
+| 2373 | [Largest Local Values in a Matrix](2373.md) | 🟢 Easy | 2m 19s | The problem gives us an n x n square matrix called grid, where each… |
+| 2374 | [Node With Highest Edge Score](2374.md) | 🟡 Medium | 46s | The problem asks us to analyze a directed graph where each node has… |
+| 2375 | [Construct Smallest Number From DI String](2375.md) | 🟡 Medium | 44s | The problem asks us to construct the lexicographically smallest num… |
+| 2376 | [Count Special Integers](2376.md) | 🔴 Hard | 1m 36s | The problem asks us to count how many integers in the range [1, n] … |
+| 2377 | [Sort the Olympic Table](2377.md) | 🟢 Easy | 1m 11s | This problem asks us to return the rows of the Olympic table in a v… |
+| 2378 | [Choose Edges to Maximize Score in a Tree](2378.md) | 🟡 Medium | 40s | This will be very large if done comprehensively and correctly under… |
+| 2379 | [Minimum Recolors to Get K Consecutive Black Blocks](2379.md) | 🟢 Easy | 1m 19s | The problem gives us a string called blocks, where each character r… |
+| 2380 | [Time Needed to Rearrange a Binary String](2380.md) | 🟡 Medium | 54s | This problem asks us to repeatedly transform a binary string accord… |
+| 2381 | [Shifting Letters II](2381.md) | 🟡 Medium | 1m 22s | This problem gives us a lowercase English string s and a list of sh… |
+| 2382 | [Maximum Segment Sum After Removals](2382.md) | 🔴 Hard | 1m 16s | The problem gives us two arrays, nums and removeQueries, both of le… |
+| 2383 | [Minimum Hours of Training to Win a Competition](2383.md) | 🟢 Easy | 1m 2s | The problem gives us two starting values, initialEnergy and initial… |
+| 2384 | [Largest Palindromic Number](2384.md) | 🟡 Medium | 40s | The problem asks us to form the largest palindromic integer using t… |
+| 2385 | [Amount of Time for Binary Tree to Be Infected](2385.md) | 🟡 Medium | 41s | This problem asks us to model the spread of an infection across a b… |
+| 2386 | [Find the K-Sum of an Array](2386.md) | 🔴 Hard | 27s | That is a long, structured reference document with multiple section… |
+| 2388 | [Change Null Values in a Table to the Previous Value](2388.md) | 🟡 Medium | 41s | The problem asks us to process a database table, CoffeeShop, which … |
+| 2389 | [Longest Subsequence With Limited Sum](2389.md) | 🟢 Easy | 42s | This problem asks us to determine, for each query, the maximum numb… |
 | 2391 | [Minimum Amount of Time to Collect Garbage](2391.md) | 🟡 Medium | 1m 22s | This problem models a city garbage collection system with three sep… |
 | 2392 | [Build a Matrix With Conditions](2392.md) | 🔴 Hard | 1m 1s | The problem asks us to construct a k x k matrix containing integers… |
 | 2393 | [Count Strictly Increasing Subarrays](2393.md) | 🟡 Medium | 1m 11s | The problem gives us an integer array nums and asks us to count how… |
