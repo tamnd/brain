@@ -19,7 +19,7 @@ draft: false
 | [3](3.md) | ✓ verified | 12m31s |
 | [4](4.md) | ✓ verified | 8m05s |
 | [5](5.md) | solved | 6m39s |
-| [6](6.md) | solved | 5m47s |
+| [6](6.md) | solved | 6m48s |
 
 **Problem 1** &nbsp; *✓ verified* · 8m04s · [Solution →](1.md)
 
@@ -55,6 +55,6 @@ An arbitrary point $M$ is selected in the interior of the segment $AB$. The squa
 
 (c) Find the locus of the midpoints of the segments $PQ$ as $M$ varies between $A$ and $B$.
 
-**Problem 6** &nbsp; *solved* · 5m47s · [Solution →](6.md)
+**Problem 6** &nbsp; *solved* · 6m48s · [Solution →](6.md)
 
 Two planes, $P$ and $Q$, intersect along the line $p$. The point $A$ is in the plane $P$, and the point ${C}$ is in the plane $Q$; neither of these points lies on the straight line $p$. Construct an isosceles trapezoid $ABCD$ (with $AB$ parallel to $DC$) in which a circle can be constructed, and with vertices $B$ and $D$ lying in the planes $P$ and $Q$, respectively.
