@@ -75,3 +75,10 @@ draft: false
 | 3371 | [Identify the Largest Outlier in an Array](3371.md) | 🟡 Medium | 1m 23s | The problem gives us an integer array nums containing exactly three… |
 | 3373 | [Maximize the Number of Target Nodes After Connecting Trees II](3373.md) | 🔴 Hard | 1m 43s | The problem gives us two separate undirected trees. The first tree … |
 | 3374 | [First Letter Capitalization II](3374.md) | 🔴 Hard | 1m 18s | This problem asks us to transform text stored in a database table w… |
+| 3377 | [Digit Operations to Make Two Integers Equal](3377.md) | 🟡 Medium | 1m 7s | The problem asks us to transform one integer n into another integer… |
+| 3378 | [Count Connected Components in LCM Graph](3378.md) | 🔴 Hard | 1m 34s | We are given an array nums, where each element represents the value… |
+| 3379 | [Transformed Array](3379.md) | 🟢 Easy | 40s | The problem asks us to transform a given integer array nums into a … |
+| 3380 | [Maximum Area Rectangle With Point Constraints I](3380.md) | 🟡 Medium | 1m 35s | The problem gives us a set of unique points on a 2D plane. We need … |
+| 3382 | [Maximum Area Rectangle With Point Constraints II](3382.md) | 🔴 Hard | 49s | The problem asks us to find the maximum area rectangle that can be … |
+| 3384 | [Team Dominance by Pass Success](3384.md) | 🔴 Hard | 1m 45s | This problem asks us to compute a dominance score for each football… |
+| 3385 | [Minimum Time to Break Locks II](3385.md) | 🔴 Hard | 1m 14s | In this problem, Bob must break a collection of locks, where each l… |

@@ -11,10 +11,10 @@ draft: false
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
 | 2500 | [Delete Greatest Value in Each Row](2500.md) | 🟢 Easy | 44s | The problem presents an m x n matrix grid of positive integers and … |
-| 2501 | [Longest Square Streak in an Array](2501.md) | 🟡 Medium | 2m 20s | The problem gives us an integer array nums, and we need to find the… |
+| 2501 | [Longest Square Streak in an Array](2501.md) | 🟡 Medium | 52s | The problem asks us to identify the longest square streak in an arr… |
 | 2502 | [Design Memory Allocator](2502.md) | 🟡 Medium | 46s | The problem requires designing a memory allocator that manages a fi… |
-| 2503 | [Maximum Number of Points From Grid Queries](2503.md) | 🔴 Hard | 2m 19s | This problem gives us a two dimensional grid of positive integers a… |
-| 2504 | [Concatenate the Name and the Profession](2504.md) | 🟢 Easy | 3m 20s | The problem asks us to manipulate data from a SQL table named Perso… |
+| 2503 | [Maximum Number of Points From Grid Queries](2503.md) | 🔴 Hard | 45s | The problem asks us to calculate the maximum number of points that … |
+| 2504 | [Concatenate the Name and the Profession](2504.md) | 🟢 Easy | 48s | The problem asks us to transform data in a SQL table named Person. … |
 | 2505 | [Bitwise OR of All Subsequence Sums](2505.md) | 🟡 Medium | 1m 2s | This problem asks us to compute the bitwise OR of every possible su… |
 | 2506 | [Count Pairs Of Similar Strings](2506.md) | 🟢 Easy | 1m 7s | The problem gives us an array of strings called words. We must coun… |
 | 2507 | [Smallest Value After Replacing With Sum of Prime Factors](2507.md) | 🟡 Medium | 49s | The problem asks us to repeatedly replace a number n with the sum o… |
