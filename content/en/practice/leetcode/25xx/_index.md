@@ -44,14 +44,15 @@ draft: false
 | 2533 | [Number of Good Binary Strings](2533.md) | 🟡 Medium | 45s | The problem asks us to count how many binary strings satisfy a very… |
 | 2534 | [Time Taken to Cross the Door](2534.md) | 🔴 Hard | 1m 26s | This problem asks us to simulate how people pass through a single d… |
 | 2535 | [Difference Between Element Sum and Digit Sum of an Array](2535.md) | 🟢 Easy | 2m 53s | The problem gives us an array of positive integers called nums. We … |
-| 2536 | [Increment Submatrices by One](2536.md) | 🟡 Medium | 1m 17s | The problem gives us an n x n matrix that initially contains only z… |
-| 2537 | [Count the Number of Good Subarrays](2537.md) | 🟡 Medium | 1m 10s | The problem asks us to count how many contiguous subarrays contain … |
+| 2536 | [Increment Submatrices by One](2536.md) | 🟡 Medium | 20m 33s | LeetCode 2536: Increment Submatrices by One (Medium) |
+| 2537 | [Count the Number of Good Subarrays](2537.md) | 🟡 Medium | 20m 26s | LeetCode 2537: Count the Number of Good Subarrays (Medium) |
 | 2538 | [Difference Between Maximum and Minimum Price Sum](2538.md) | 🔴 Hard | 3m 2s | We are given an undirected tree with n nodes. Every node has a pric… |
-| 2539 | [Count the Number of Good Subsequences](2539.md) | 🟡 Medium | 1m 22s | The problem asks us to count how many subsequences of a given strin… |
-| 2540 | [Minimum Common Value](2540.md) | 🟢 Easy | 1m 7s | The problem gives us two integer arrays, nums1 and nums2, and both … |
+| 2539 | [Count the Number of Good Subsequences](2539.md) | 🟡 Medium | 20m 37s | LeetCode 2539: Count the Number of Good Subsequences (Medium) |
+| 2540 | [Minimum Common Value](2540.md) | 🟢 Easy | 1m 32s | The problem gives us two integer arrays, nums1 and nums2, and both … |
 | 2541 | [Minimum Operations to Make Array Equal II](2541.md) | 🟡 Medium | 1m 12s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
-| 2542 | [Maximum Subsequence Score](2542.md) | 🟡 Medium | 1m 18s | This problem asks us to select exactly k indices from two arrays, n… |
-| 2544 | [Alternating Digit Sum](2544.md) | 🟢 Easy | 44s | The problem asks us to calculate an alternating sum of the digits o… |
+| 2542 | [Maximum Subsequence Score](2542.md) | 🟡 Medium | 1m 29s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2543 | [Check if Point Is Reachable](2543.md) | 🔴 Hard | 1m 9s | The problem gives us an infinite two dimensional grid and asks whet… |
+| 2544 | [Alternating Digit Sum](2544.md) | 🟢 Easy | 57s | The problem asks us to compute an alternating sum of the digits of … |
 | 2546 | [Apply Bitwise Operations to Make Strings Equal](2546.md) | 🟡 Medium | 1m 3s | This problem gives us two binary strings, s and target, both of the… |
 | 2547 | [Minimum Cost to Split an Array](2547.md) | 🔴 Hard | 45s | The problem presents a large, theoretically infinite grid where you… |
 | 2548 | [Maximum Price to Fill a Bag](2548.md) | 🟡 Medium | 1m 2s | This problem describes a variation of the classic fractional knapsa… |
