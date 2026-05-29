@@ -18,7 +18,7 @@ draft: false
 | 3005 | [Count Elements With Maximum Frequency](3005.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, where every value is po… |
 | 3006 | [Find Beautiful Indices in the Given Array I](3006.md) | 🟡 Medium | 1m 16s | The problem gives us a string s and two smaller strings, a and b. W… |
 | 3007 | [Maximum Number That Sum of the Prices Is Less Than or Equal to K](3007.md) | 🟡 Medium | 56s | The problem asks us to find the largest integer num such that the a… |
-| 3008 | [Find Beautiful Indices in the Given Array II](3008.md) | 🔴 Hard | 1m 24s | The problem gives us a string s and two pattern strings, a and b. W… |
+| 3008 | [Find Beautiful Indices in the Given Array II](3008.md) | 🔴 Hard | 1m 31s | This problem asks us to find every starting index where the substri… |
 | 3009 | [Maximum Number of Intersections on the Chart](3009.md) | 🔴 Hard | 1m 15s | I can provide the full guide, but I want to avoid giving you a tech… |
 | 3010 | [Divide an Array Into Subarrays With Minimum Cost I](3010.md) | 🟢 Easy | 1m 18s | The problem asks us to split a given array nums into exactly three … |
 | 3011 | [Find if Array Can Be Sorted](3011.md) | 🟡 Medium | 1m 29s | Here’s the complete, detailed technical solution guide for LeetCode… |
@@ -32,13 +32,14 @@ draft: false
 | 3019 | [Number of Changing Keys](3019.md) | 🟢 Easy | 1m 6s | The problem asks us to determine how many times a user changes keys… |
 | 3020 | [Find the Maximum Number of Elements in Subset](3020.md) | 🟡 Medium | 2m 11s | The problem gives us an array of positive integers and asks us to c… |
 | 3021 | [Alice and Bob Playing Flower Game](3021.md) | 🟡 Medium | 1m 5s | The game consists of two flower lanes containing x and y flowers re… |
+| 3022 | [Minimize OR of Remaining Elements Using Operations](3022.md) | 🔴 Hard | 56s | The problem presents an array nums of non-negative integers and an … |
 | 3023 | [Find Pattern in Infinite Stream I](3023.md) | 🟡 Medium | 1m | The problem asks us to detect the first occurrence of a given binar… |
 | 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 8s | The problem gives an integer array nums of length 3, where each val… |
 | 3026 | [Maximum Good Subarray Sum](3026.md) | 🟡 Medium | 1m 21s | The problem asks us to find the maximum possible sum of a contiguou… |
 | 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 1m | The problem asks us to determine how many valid placements of Alice… |
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
 | 3029 | [Minimum Time to Revert Word to Initial State I](3029.md) | 🟡 Medium | 1m 29s | The problem gives us a string word and an integer k. Every second, … |
-| 3030 | [Find the Grid of Region Average](3030.md) | 🟡 Medium | 1m 19s | We are given an m × n grayscale image where each cell contains an i… |
+| 3030 | [Find the Grid of Region Average](3030.md) | 🟡 Medium | 1m 44s | The problem gives us a grayscale image represented as an m x n matr… |
 | 3031 | [Minimum Time to Revert Word to Initial State II](3031.md) | 🔴 Hard | 1m 27s | The problem requires simulating a repetitive transformation on a st… |
 | 3032 | [Count Numbers With Unique Digits II](3032.md) | 🟢 Easy | 1m 29s | The problem asks us to count how many integers in the inclusive ran… |
 | 3033 | [Modify the Matrix](3033.md) | 🟢 Easy | 1m 22s | The problem is asking us to take a given m x n matrix, potentially … |
@@ -54,8 +55,8 @@ draft: false
 | 3043 | [Find the Length of the Longest Common Prefix](3043.md) | 🟡 Medium | 1m 24s | We are given two arrays of positive integers, arr1 and arr2. The ta… |
 | 3044 | [Most Frequent Prime](3044.md) | 🟡 Medium | 59s | The problem asks us to traverse a m x n integer matrix and generate… |
 | 3045 | [Count Prefix and Suffix Pairs II](3045.md) | 🔴 Hard | 55s | The problem asks us to count the number of ordered pairs (i, j) in … |
-| 3046 | [Split the Array](3046.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums whose length is always e… |
-| 3047 | [Find the Largest Area of Square Inside Two Rectangles](3047.md) | 🟡 Medium | 46s | The problem is asking us to find the largest square that can fit in… |
+| 3046 | [Split the Array](3046.md) | 🟢 Easy | 1m 6s | The problem asks us to determine if an even-length array can be spl… |
+| 3047 | [Find the Largest Area of Square Inside Two Rectangles](3047.md) | 🟡 Medium | 1m 3s | The problem asks us to find the largest square that can fit inside … |
 | 3048 | [Earliest Second to Mark Indices I](3048.md) | 🟡 Medium | 1m 21s | We are given two 1-indexed arrays: - nums, where nums[i] represents… |
 | 3049 | [Earliest Second to Mark Indices II](3049.md) | 🔴 Hard | 1m 29s | We are given two arrays: - nums, where nums[i] represents the initi… |
 | 3050 | [Pizza Toppings Cost Analysis](3050.md) | 🟡 Medium | 42s | This problem asks us to compute the total cost of all possible thre… |
