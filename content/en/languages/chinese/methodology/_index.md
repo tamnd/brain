@@ -146,3 +146,6 @@ Aim for 90–95% retention rate. If lower, reduce new card rate. If reviewing 20
 - [Skills overview](../skills/) — Tones, Pinyin, Hanzi, Grammar, Listening, Speaking
 - [Resources](../resources/) — Best apps, textbooks, and YouTube channels
 - [HSK Levels](../hsk/) — What to study at each level
+- [Roadmap](roadmap/) — Detailed phase-by-phase learning plan
+- [SRS Guide](srs/) — Anki setup and spaced repetition strategy
+- [Common Mistakes](common-mistakes/) — 15 errors to avoid from day 1

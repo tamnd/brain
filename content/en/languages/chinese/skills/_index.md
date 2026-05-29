@@ -18,8 +18,8 @@ Mandarin Chinese has six core skill areas. Unlike European languages, three of t
 | [Pinyin](pinyin/) | The official romanization system for Mandarin. A to pronounce correctly. | Medium | [pinyin/](pinyin/) |
 | [Hanzi](hanzi/) | Chinese characters — ~2,000–3,000 needed for functional literacy. | Very High | [hanzi/](hanzi/) |
 | [Grammar](grammar/) | No verb conjugation, no articles, no plural marking. Different logic, lower overhead. | Medium | [grammar/](grammar/) |
-| [Listening](listening/) | Fast native speech, tonal distinctions, and connected speech rules. | High | — |
-| [Speaking](speaking/) | Tones + fluency + oral grammar. Pronunciation precision matters more than in English. | High | — |
+| [Listening](listening/) | Fast native speech, tonal distinctions, and connected speech rules. | High | [listening/](listening/) |
+| [Speaking](speaking/) | Tones + fluency + oral grammar. Pronunciation precision matters more than in English. | High | [speaking/](speaking/) |
 
 ---
 
