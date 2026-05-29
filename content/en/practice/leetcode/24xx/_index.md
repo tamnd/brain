@@ -36,7 +36,7 @@ draft: false
 | 2423 | [Remove Letter To Equalize Frequency](2423.md) | 🟢 Easy | 39s | The problem asks us to determine if we can remove exactly one chara… |
 | 2424 | [Longest Uploaded Prefix](2424.md) | 🟡 Medium | 1m 6s | The problem asks us to design a data structure that tracks uploaded… |
 | 2425 | [Bitwise XOR of All Pairings](2425.md) | 🟡 Medium | 1m 12s | The problem gives us two arrays, nums1 and nums2, and asks us to co… |
-| 2426 | [Number of Pairs Satisfying Inequality](2426.md) | 🔴 Hard | 1m | The problem asks us to find the number of pairs (i, j) in two integ… |
+| 2426 | [Number of Pairs Satisfying Inequality](2426.md) | 🔴 Hard | 1m 26s | We are given two integer arrays, nums1 and nums2, of the same lengt… |
 | 2427 | [Number of Common Factors](2427.md) | 🟢 Easy | 1m 21s | The problem gives us two positive integers, a and b, and asks us to… |
 | 2428 | [Maximum Sum of an Hourglass](2428.md) | 🟡 Medium | 57s | The problem provides an m x n integer matrix grid and asks for the … |
 | 2429 | [Minimize XOR](2429.md) | 🟡 Medium | 45s | The problem is asking us to construct an integer x that satisfies t… |

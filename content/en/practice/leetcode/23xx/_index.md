@@ -72,7 +72,7 @@ draft: false
 | 2359 | [Find Closest Node to Given Two Nodes](2359.md) | 🟡 Medium | 39s | The problem asks us to find a node in a directed graph with a very … |
 | 2360 | [Longest Cycle in a Graph](2360.md) | 🔴 Hard | 1m 14s | This problem gives us a directed graph represented by an array call… |
 | 2361 | [Minimum Costs Using the Train Line](2361.md) | 🔴 Hard | 37s | This problem models a scenario where you are traversing a train lin… |
-| 2362 | [Generate the Invoice](2362.md) | 🔴 Hard | 1m 36s | This problem asks us to identify the invoice with the highest total… |
+| 2362 | [Generate the Invoice](2362.md) | 🔴 Hard | 1m 7s | This is a SQL database problem involving two tables: | productid | … |
 | 2363 | [Merge Similar Items](2363.md) | 🟢 Easy | 1m 7s | The problem gives us two collections of items, items1 and items2, w… |
 | 2364 | [Count Number of Bad Pairs](2364.md) | 🟡 Medium | 1m 17s | The problem asks us to count the number of bad pairs in an array. W… |
 | 2365 | [Task Scheduler II](2365.md) | 🟡 Medium | 1m 8s | The problem gives us an array tasks, where each value represents a … |

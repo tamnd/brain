@@ -57,3 +57,9 @@ draft: false
 | 3348 | [Smallest Divisible Digit Product II](3348.md) | 🔴 Hard | 5m 52s | The problem asks us to find the smallest number that satisfies seve… |
 | 3349 | [Adjacent Increasing Subarrays Detection I](3349.md) | 🟢 Easy | 1m 47s | The problem gives us an integer array nums and an integer k. We nee… |
 | 3350 | [Adjacent Increasing Subarrays Detection II](3350.md) | 🟡 Medium | 1m 15s | The problem asks us to find the largest possible length k such that… |
+| 3351 | [Sum of Good Subsequences](3351.md) | 🔴 Hard | 53s | This problem asks us to compute the sum of all good subsequences in… |
+| 3352 | [Count K-Reducible Numbers Less Than N](3352.md) | 🔴 Hard | 1m 2s | The problem asks us to count the number of positive integers less t… |
+| 3354 | [Make Array Elements Equal to Zero](3354.md) | 🟢 Easy | 1m 30s | The problem gives us an integer array nums, where some elements may… |
+| 3355 | [Zero Array Transformation I](3355.md) | 🟡 Medium | 54s | The problem asks whether it is possible to transform a given intege… |
+| 3357 | [Minimize the Maximum Adjacent Element Difference](3357.md) | 🔴 Hard | 2m 3s | The problem gives us an integer array nums, where some positions co… |
+| 3358 | [Books with NULL Ratings](3358.md) | 🟢 Easy | 1m 33s | This problem provides a database table named books. Each row in the… |
