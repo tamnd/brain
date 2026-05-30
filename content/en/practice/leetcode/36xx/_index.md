@@ -40,4 +40,7 @@ draft: false
 | 3646 | [Next Special Palindrome Number](3646.md) | 🔴 Hard | 54s | This problem asks us to construct a number system under two simulta… |
 | 3647 | [Maximum Weight in Two Bags](3647.md) | 🟡 Medium | 1m 2s | This problem asks us to distribute a set of items, each with a give… |
 | 3648 | [Minimum Sensors to Cover Grid](3648.md) | 🟡 Medium | 44s | The problem gives an n × m grid where each cell is identified by co… |
+| 3651 | [Minimum Cost Path with Teleportations](3651.md) | 🔴 Hard | 1m 7s | The problem asks us to find the minimum cost to travel from the top… |
 | 3652 | [Best Time to Buy and Sell Stock using Strategy](3652.md) | 🟡 Medium | 39s | This problem asks us to calculate the maximum possible profit from … |
+| 3653 | [XOR After Range Multiplication Queries I](3653.md) | 🟡 Medium | 2m 56s | We are given an integer array nums and a list of queries. Each quer… |
+| 3655 | [XOR After Range Multiplication Queries II](3655.md) | 🔴 Hard | 1m 20s | We are given an array nums and a list of queries. Each query has th… |
