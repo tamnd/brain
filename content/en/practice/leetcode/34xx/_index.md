@@ -47,6 +47,7 @@ draft: false
 | 3441 | [Minimum Cost Good Caption](3441.md) | 🔴 Hard | 1m 23s | We are given a lowercase string caption. We may repeatedly change a… |
 | 3442 | [Maximum Difference Between Even and Odd Frequency I](3442.md) | 🟢 Easy | 56s | This problem requires analyzing the frequency of characters in a gi… |
 | 3444 | [Minimum Increments for Target Multiples in an Array](3444.md) | 🔴 Hard | 1m 36s | We are given two arrays: - nums, the array whose elements we are al… |
+| 3445 | [Maximum Difference Between Even and Odd Frequency II](3445.md) | 🔴 Hard | 1m 54s | We are given a string s consisting only of digits '0' through '4', … |
 | 3446 | [Sort Matrix by Diagonals](3446.md) | 🟡 Medium | 54s | We are given an n x n square matrix grid. Every cell belongs to exa… |
 | 3447 | [Assign Elements to Groups with Constraints](3447.md) | 🟡 Medium | 50s | The problem requires assigning elements from one array, elements, t… |
 | 3448 | [Count Substrings Divisible By Last Digit](3448.md) | 🔴 Hard | 1m 26s | We are given a string s consisting only of decimal digits. Every su… |
@@ -54,6 +55,7 @@ draft: false
 | 3450 | [Maximum Students on a Single Bench](3450.md) | 🟢 Easy | 46s | The problem provides a list of student-seat assignments, where each… |
 | 3451 | [Find Invalid IP Addresses](3451.md) | 🔴 Hard | 1m 5s | This is a SQL database problem where we must identify all invalid I… |
 | 3452 | [Sum of Good Numbers](3452.md) | 🟢 Easy | 1m 15s | This problem gives us an integer array nums and an integer k. For e… |
+| 3453 | [Separate Squares I](3453.md) | 🟡 Medium | 2m 1s | We are given a collection of axis-aligned squares. Each square is r… |
 | 3454 | [Separate Squares II](3454.md) | 🔴 Hard | 1m 53s | This problem asks us to find the smallest horizontal line y = H tha… |
 | 3456 | [Find Special Substring of Length K](3456.md) | 🟢 Easy | 1m 14s | The problem gives us a string s and an integer k. We need to determ… |
 | 3457 | [Eat Pizzas!](3457.md) | 🟡 Medium | 42s | The problem presents an array pizzas of size n where each element r… |
