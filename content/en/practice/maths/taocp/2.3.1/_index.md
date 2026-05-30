@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.1 — Traversing Binary Trees"
-description: "Section 2.3.1 exercises — 4/37 solved."
+description: "Section 2.3.1 exercises — 5/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.1. Traversing Binary Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.1: 4/37 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.1: 5/37 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -36,7 +36,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.1: 4/37 solved.
 | 16 |  [*22*] | medium | - | - |
 | 17 |  [*22*] | medium | - | - |
 | 18 |  [*24*] | medium | - | - |
-| 19 |  [*27*] | hard | - | - |
+| [19](19.md) |  [*27*] | hard | verified | 1m41s |
 | 20 |  [*23*] | medium | - | - |
 | 21 |  [*33*] | hard | - | - |
 | 22 |  [*25*] | medium | - | - |
