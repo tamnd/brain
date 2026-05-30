@@ -39,6 +39,7 @@ draft: false
 | 3530 | [Maximum Profit from Valid Topological Order in DAG](3530.md) | 🔴 Hard | 47s | The problem requires computing the maximum possible profit achievab… |
 | 3532 | [Path Existence Queries in a Graph I](3532.md) | 🟡 Medium | 1m 23s | This problem defines an undirected graph implicitly through a sorte… |
 | 3533 | [Concatenated Divisibility](3533.md) | 🔴 Hard | 1m 40s | We are given an array nums containing up to 13 positive integers an… |
+| 3534 | [Path Existence Queries in a Graph II](3534.md) | 🔴 Hard | 47s | This problem asks us to compute the shortest path between nodes in … |
 | 3535 | [Unit Conversion II](3535.md) | 🟡 Medium | 1m 8s | The input describes a collection of unit conversion relationships. … |
 | 3536 | [Maximum Product of Two Digits](3536.md) | 🟢 Easy | 1m 5s | The problem gives us a positive integer n and asks us to find the m… |
 | 3538 | [Merge Operations for Minimum Travel Time](3538.md) | 🔴 Hard | 46s | This problem presents a road of length l kilometers, segmented by n… |
@@ -54,6 +55,7 @@ draft: false
 | 3552 | [Grid Teleportation Traversal](3552.md) | 🟡 Medium | 1m 4s | This problem presents a 2D grid traversal scenario with obstacles a… |
 | 3553 | [Minimum Weighted Subgraph With the Required Paths II](3553.md) | 🔴 Hard | 1m 37s | We are given a weighted, undirected tree with n nodes. Because the … |
 | 3554 | [Find Category Recommendation Pairs](3554.md) | 🔴 Hard | 1m 5s | This is a SQL database problem involving customer purchasing behavi… |
+| 3556 | [Sum of Largest Prime Substrings](3556.md) | 🟡 Medium | 52s | The problem requires identifying prime numbers from all possible su… |
 | 3559 | [Number of Ways to Assign Edge Weights II](3559.md) | 🔴 Hard | 1m 15s | We are given an undirected tree with n nodes, rooted at node 1. Eve… |
 | 3560 | [Find Minimum Log Transportation Cost](3560.md) | 🟢 Easy | 32s | The problem asks us to transport two logs of lengths n and m using … |
 | 3561 | [Resulting String After Adjacent Removals](3561.md) | 🟡 Medium | 50s | The problem asks us to repeatedly remove pairs of adjacent characte… |
