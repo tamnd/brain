@@ -18,3 +18,4 @@ draft: false
 | 3723 | [Maximize Sum of Squares of Digits](3723.md) | 🟡 Medium | 58s | The problem asks us to construct a positive integer n of exactly nu… |
 | 3726 | [Remove Zeros in Decimal Representation](3726.md) | 🟢 Easy | 1m 5s | The problem gives us a positive integer n and asks us to remove eve… |
 | 3727 | [Maximum Alternating Sum of Squares](3727.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we are allowed to rearrange… |
+| 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
