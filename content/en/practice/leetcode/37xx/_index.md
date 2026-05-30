@@ -15,6 +15,9 @@ draft: false
 | 3706 | [Maximum Distance Between Unequal Words in Array II](3706.md) | 🟡 Medium | 1m 30s | We are given an array of strings called words. Our goal is to find … |
 | 3707 | [Equal Score Substrings](3707.md) | 🟢 Easy | 53s | The problem asks us to determine if a given string s can be split i… |
 | 3708 | [Longest Fibonacci Subarray](3708.md) | 🟡 Medium | 1m 22s | The problem gives us an array nums consisting of positive integers … |
+| 3710 | [Maximum Partition Factor](3710.md) | 🔴 Hard | 2m 7s | We are given n points on a 2D plane. The distance between any two p… |
+| 3712 | [Sum of Elements With Frequency Divisible by K](3712.md) | 🟢 Easy | 1m 21s | This problem gives us an integer array nums and an integer k. Our t… |
+| 3714 | [Longest Balanced Substring II](3714.md) | 🟡 Medium | 1m 52s | We are given a string s consisting only of the characters 'a', 'b',… |
 | 3715 | [Sum of Perfect Square Ancestors](3715.md) | 🔴 Hard | 45s | This problem asks us to compute a sum across all non-root nodes in … |
 | 3716 | [Find Churn Risk Customers](3716.md) | 🟡 Medium | 1m 15s | This problem asks us to identify subscribers who appear likely to c… |
 | 3723 | [Maximize Sum of Squares of Digits](3723.md) | 🟡 Medium | 58s | The problem asks us to construct a positive integer n of exactly nu… |
