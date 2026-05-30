@@ -46,3 +46,5 @@ draft: false
 | 3765 | [Complete Prime Number](3765.md) | 🟡 Medium | 1m 19s | The problem gives us a positive integer num and asks whether it is … |
 | 3768 | [Minimum Inversion Count in Subarrays of Fixed Length](3768.md) | 🔴 Hard | 1m 36s | We are given an array nums of length n and an integer k. For every … |
 | 3770 | [Largest Prime from Consecutive Prime Sum](3770.md) | 🟡 Medium | 1m 26s | The problem gives us an integer n and asks us to find the largest p… |
+| 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 1m 13s | We are given an integer array nums and an integer k. The task is to… |
+| 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 1m 23s | The problem gives us a string s containing lowercase English words … |
