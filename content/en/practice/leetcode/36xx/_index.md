@@ -15,10 +15,13 @@ draft: false
 | 3605 | [Minimum Stability Factor of Array](3605.md) | 🔴 Hard | 1m 53s | We are given an array nums and an integer maxC. A subarray is calle… |
 | 3606 | [Coupon Code Validator](3606.md) | 🟢 Easy | 51s | The problem is asking us to validate a set of coupons based on thre… |
 | 3607 | [Power Grid Maintenance](3607.md) | 🟡 Medium | 1m 26s | The problem gives an undirected graph of c power stations labeled f… |
+| 3609 | [Minimum Moves to Reach Target in Grid](3609.md) | 🔴 Hard | 40s | The problem asks us to determine the minimum number of moves to rea… |
 | 3610 | [Minimum Number of Primes to Sum to Target](3610.md) | 🟡 Medium | 1m 5s | We are given two integers, n and m. The first task is to generate t… |
+| 3611 | [Find Overbooked Employees](3611.md) | 🟡 Medium | 1m 24s | This problem asks us to identify employees who spend an excessive a… |
 | 3612 | [Process String with Special Operations I](3612.md) | 🟡 Medium | 2m 2s | The problem asks us to simulate the construction of a string called… |
 | 3614 | [Process String with Special Operations II](3614.md) | 🔴 Hard | 1m 41s | The problem defines a transformation process over a string s that c… |
 | 3615 | [Longest Palindromic Path in Graph](3615.md) | 🔴 Hard | 2m 15s | We are given an undirected graph with n nodes. Each node has a lowe… |
+| 3616 | [Number of Student Replacements](3616.md) | 🟡 Medium | 1m 14s | The problem gives us an array ranks where students arrive one by on… |
 | 3617 | [Find Students with Study Spiral Pattern](3617.md) | 🔴 Hard | 1m 7s | The task asks us to identify students who exhibit a very specific b… |
 | 3618 | [Split Array by Prime Indices](3618.md) | 🟡 Medium | 1m 16s | The problem gives us an integer array nums and asks us to divide it… |
 | 3619 | [Count Islands With Total Value Divisible by K](3619.md) | 🟡 Medium | 50s | The problem is asking us to count islands in a 2D grid where the su… |
