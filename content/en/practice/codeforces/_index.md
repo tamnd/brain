@@ -85,6 +85,7 @@ description: "Codeforces problem solutions with full editorial. 385 contests, 15
 description: "Codeforces problem solutions with full editorial. 386 contests, 1586 problems, 1207 verified."
 description: "Codeforces problem solutions with full editorial. 387 contests, 1592 problems, 1209 verified."
 description: "Codeforces problem solutions with full editorial. 388 contests, 1603 problems, 1214 verified."
+description: "Codeforces problem solutions with full editorial. 389 contests, 1610 problems, 1220 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -180,6 +181,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **386 contests, 1586 problems, 1207 verified.**
 **387 contests, 1592 problems, 1209 verified.**
 **388 contests, 1603 problems, 1214 verified.**
+**389 contests, 1610 problems, 1220 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -601,3 +603,4 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1946](1946/) | [Codeforces Round 936 (Div. 2)](https://codeforces.com/contest/1946) | Div. 2 | 800-2500 | 1/5 | 10m 41s |
 | [1948](1948/) | [Educational Codeforces Round 163 (Rated for Div. 2)](https://codeforces.com/contest/1948) | Div. 2 | 800-3100 | 2/6 | 11m 57s |
 | [1949](1949/) | [European Championship 2024 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1949) | ICPC/IOI | 1500-3300 | 5/11 | 28m 1s |
+| [1950](1950/) | [Codeforces Round 937 (Div. 4)](https://codeforces.com/contest/1950) | Div. 4 | 800-1900 | 6/7 | 7m 41s |
