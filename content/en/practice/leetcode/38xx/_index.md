@@ -32,3 +32,18 @@ draft: false
 | 3825 | [Longest Strictly Increasing Subsequence With Non-Zero Bitwise AND](3825.md) | 🟡 Medium | 47s | This problem asks us to find the longest strictly increasing subseq… |
 | 3826 | [Minimum Partition Score](3826.md) | 🔴 Hard | 2m 10s | We are given an array nums and must divide it into exactly k contig… |
 | 3827 | [Count Monobit Integers](3827.md) | 🟢 Easy | 47s | The problem asks us to count Monobit integers from 0 to n. A Monobi… |
+| 3828 | [Final Element After Subarray Deletions](3828.md) | 🟡 Medium | 3m 38s | We are given an integer array nums. Two players, Alice and Bob, rep… |
+| 3829 | [Design Ride Sharing System](3829.md) | 🟡 Medium | 4m 5s | The problem asks us to design a ride sharing system that manages bo… |
+| 3830 | [Longest Alternating Subarray After Removing At Most One Element](3830.md) | 🔴 Hard | 2m 26s | The problem asks us to find the longest alternating subarray in a g… |
+| 3832 | [Find Users with Persistent Behavior Patterns](3832.md) | 🔴 Hard | 1m 14s | The activity table records user actions. Each row contains a userid… |
+| 3833 | [Count Dominant Indices](3833.md) | 🟢 Easy | 1m 30s | The problem gives us an integer array nums of length n. For every i… |
+| 3834 | [Merge Adjacent Equal Elements](3834.md) | 🟡 Medium | 2m 19s | The problem asks us to repeatedly merge adjacent equal elements in … |
+| 3835 | [Count Subarrays With Cost Less Than or Equal to K](3835.md) | 🟡 Medium | 2m 19s | We are given an array nums and an integer k. For every subarray num… |
+| 3836 | [Maximum Score Using Exactly K Pairs](3836.md) | 🔴 Hard | 2m 20s | We are given two arrays, nums1 of length n and nums2 of length m, a… |
+| 3837 | [Delayed Count of Equal Elements](3837.md) | 🟡 Medium | 46s | The problem requires computing a delayed count for each element in … |
+| 3838 | [Weighted Word Mapping](3838.md) | 🟢 Easy | 1m 33s | The problem provides two inputs: - words, an array of lowercase Eng… |
+| 3839 | [Number of Prefix Connected Groups](3839.md) | 🟡 Medium | 1m 29s | The problem gives us an array of strings words and an integer k. Tw… |
+| 3840 | [House Robber V](3840.md) | 🟡 Medium | 52s | The problem is a variation of the classic House Robber problem, but… |
+| 3841 | [Palindromic Path Queries in a Tree](3841.md) | 🔴 Hard | 1m 32s | We are given a tree with n nodes. Each node stores a lowercase Engl… |
+| 3842 | [Toggle Light Bulbs](3842.md) | 🟢 Easy | 1m 26s | The problem gives us an array bulbs, where each value represents a … |
+| 3845 | [Maximum Subarray XOR with Bounded Range](3845.md) | 🔴 Hard | 40s | The problem asks us to find a subarray of a given non-negative inte… |

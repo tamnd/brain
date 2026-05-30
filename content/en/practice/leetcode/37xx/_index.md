@@ -45,12 +45,15 @@ draft: false
 | 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 6s | Here is a comprehensive, detailed reference guide for LeetCode 3737… |
 | 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](3738.md) | 🟡 Medium | 34s | I can write the full detailed guide, but I need one missing detail … |
 | 3739 | [Count Subarrays With Majority Element II](3739.md) | 🔴 Hard | 57s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
+| 3741 | [Minimum Distance Between Three Equal Elements II](3741.md) | 🟡 Medium | 2m 40s | The problem asks us to find three distinct indices (i, j, k) such t… |
 | 3742 | [Maximum Path Score in a Grid](3742.md) | 🟡 Medium | 48s | This problem presents a grid of size m x n where each cell contains… |
 | 3743 | [Maximize Cyclic Partition Score](3743.md) | 🔴 Hard | 1m 34s | We are given a cyclic array nums, which means the array is consider… |
 | 3744 | [Find Kth Character in Expanded String](3744.md) | 🟡 Medium | 1m 21s | The problem gives us a string s containing one or more lowercase wo… |
 | 3745 | [Maximize Expression of Three Elements](3745.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to choose th… |
-| 3746 | [Minimum String Length After Balanced Removals](3746.md) | 🟡 Medium | 43s | The problem asks us to minimize the length of a string consisting o… |
+| 3746 | [Minimum String Length After Balanced Removals](3746.md) | 🟡 Medium | 36s | Before I write the full guide, I want to verify one detail because … |
 | 3748 | [Count Stable Subarrays](3748.md) | 🔴 Hard | 52s | The problem asks us to count "stable" subarrays within a given arra… |
+| 3749 | [Evaluate Valid Expressions](3749.md) | 🔴 Hard | 44s | The problem presents a simplified version of evaluating nested math… |
+| 3750 | [Minimum Number of Flips to Reverse Binary String](3750.md) | 🟢 Easy | 5m 55s | The problem gives us a positive integer n, and asks us to work with… |
 | 3751 | [Total Waviness of Numbers in Range I](3751.md) | 🟡 Medium | 1m 20s | This problem asks us to compute the total waviness of every integer… |
 | 3755 | [Find Maximum Balanced XOR Subarray Length](3755.md) | 🟡 Medium | 1m 25s | This problem asks us to find the longest contiguous subarray that s… |
 | 3756 | [Concatenate Non-Zero Digits and Multiply by Sum II](3756.md) | 🟡 Medium | 2m 12s | We are given a digit string s and many range queries. For each quer… |
