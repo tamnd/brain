@@ -10,12 +10,16 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
+| 3700 | [Number of ZigZag Arrays II](3700.md) | 🔴 Hard | 46s | The problem asks us to count the number of arrays of length n where… |
+| 3702 | [Longest Subsequence With Non-Zero Bitwise XOR](3702.md) | 🟡 Medium | 1m 18s | We are given an integer array nums, and we must determine the maxim… |
 | 3703 | [Remove K-Balanced Substrings](3703.md) | 🟡 Medium | 1m 24s | We are given a string s consisting only of '(' and ')', along with … |
+| 3704 | [Count No-Zero Pairs That Sum to N](3704.md) | 🔴 Hard | 41s | The problem asks us to count all pairs of positive integers (a, b) … |
 | 3705 | [Find Golden Hour Customers](3705.md) | 🟡 Medium | 1m 14s | This problem asks us to identify "golden hour customers" from a res… |
 | 3706 | [Maximum Distance Between Unequal Words in Array II](3706.md) | 🟡 Medium | 1m 30s | We are given an array of strings called words. Our goal is to find … |
 | 3707 | [Equal Score Substrings](3707.md) | 🟢 Easy | 53s | The problem asks us to determine if a given string s can be split i… |
 | 3708 | [Longest Fibonacci Subarray](3708.md) | 🟡 Medium | 1m 22s | The problem gives us an array nums consisting of positive integers … |
-| 3710 | [Maximum Partition Factor](3710.md) | 🔴 Hard | 2m 7s | We are given n points on a 2D plane. The distance between any two p… |
+| 3709 | [Design Exam Scores Tracker](3709.md) | 🟡 Medium | 49s | This problem asks us to design a system that tracks Alice's exam sc… |
+| 3710 | [Maximum Partition Factor](3710.md) | 🔴 Hard | 45s | The problem asks us to split a set of n points in a 2D Cartesian pl… |
 | 3712 | [Sum of Elements With Frequency Divisible by K](3712.md) | 🟢 Easy | 1m 21s | This problem gives us an integer array nums and an integer k. Our t… |
 | 3714 | [Longest Balanced Substring II](3714.md) | 🟡 Medium | 1m 52s | We are given a string s consisting only of the characters 'a', 'b',… |
 | 3715 | [Sum of Perfect Square Ancestors](3715.md) | 🔴 Hard | 45s | This problem asks us to compute a sum across all non-root nodes in … |
@@ -55,3 +59,4 @@ draft: false
 | 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 1m 45s | The problem asks us to count how many integers in the inclusive ran… |
 | 3794 | [Reverse String Prefix](3794.md) | 🟢 Easy | 1m 7s | This problem gives us a string s and an integer k. Our task is to r… |
 | 3795 | [Minimum Subarray Length With Distinct Sum At Least K](3795.md) | 🟡 Medium | 7m 19s | This problem asks us to find the shortest contiguous subarray whose… |
+| 3799 | [Word Squares II](3799.md) | 🟡 Medium | 5m 13s | We are given an array of distinct 4-letter words. Our goal is to co… |

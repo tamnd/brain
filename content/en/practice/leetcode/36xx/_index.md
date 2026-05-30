@@ -81,5 +81,7 @@ draft: false
 | 3693 | [Climbing Stairs II](3693.md) | 🟡 Medium | 47s | This problem is an extension of the classic "climbing stairs" dynam… |
 | 3694 | [Distinct Points Reachable After Substring Removal](3694.md) | 🟡 Medium | 1m 29s | We are given a movement string s consisting of the four directions:… |
 | 3695 | [Maximize Alternating Sum Using Swaps](3695.md) | 🔴 Hard | 1m 31s | We are given an array nums and a list of allowed swap operations. T… |
-| 3696 | [Maximum Distance Between Unequal Words in Array I](3696.md) | 🟢 Easy | 1m 14s | We are given an array of strings called words. Our task is to find … |
+| 3696 | [Maximum Distance Between Unequal Words in Array I](3696.md) | 🟢 Easy | 1m 12s | The problem gives us an array of strings, words, and asks us to fin… |
 | 3697 | [Compute Decimal Representation](3697.md) | 🟢 Easy | 31s | This problem asks us to decompose a positive integer n into the few… |
+| 3698 | [Split Array With Minimum Difference](3698.md) | 🟡 Medium | 42s | I can write the full detailed guide, but I need to flag one issue f… |
+| 3699 | [Number of ZigZag Arrays I](3699.md) | 🔴 Hard | 1m 48s | Here is the complete technical solution guide for LeetCode 3699 - N… |
