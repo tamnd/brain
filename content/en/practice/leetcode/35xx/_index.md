@@ -67,6 +67,7 @@ draft: false
 | 3567 | [Minimum Absolute Difference in Sliding Submatrix](3567.md) | 🟡 Medium | 32s | The problem requires computing a specific statistic for every conti… |
 | 3570 | [Find Books with No Available Copies](3570.md) | 🟢 Easy | 46s | This problem asks us to identify books in a library system that are… |
 | 3571 | [Find the Shortest Superstring II](3571.md) | 🟢 Easy | 46s | This problem asks us to construct the shortest string that contains… |
+| 3572 | [Maximize Y\u2011Sum by Picking a Triplet of Distinct X\u2011Values](3572.md) | 🟡 Medium | 1m 23s | The problem gives us two arrays, x and y, both of length n. Each po… |
 | 3573 | [Best Time to Buy and Sell Stock V](3573.md) | 🟡 Medium | 1m 44s | This problem extends the classic stock trading dynamic programming … |
 | 3574 | [Maximize Subarray GCD Score](3574.md) | 🔴 Hard | 44s | The problem asks us to choose a contiguous subarray from an array o… |
 | 3577 | [Count the Number of Computer Unlocking Permutations](3577.md) | 🟡 Medium | 1m 10s | The problem presents a set of n computers, each with a unique passw… |
@@ -78,6 +79,7 @@ draft: false
 | 3586 | [Find COVID Recovery Patients](3586.md) | 🟡 Medium | 54s | The task is to identify patients who have recovered from COVID base… |
 | 3588 | [Find Maximum Area of a Triangle](3588.md) | 🟡 Medium | 1m 41s | We are given n distinct points on a 2D Cartesian plane. Each point … |
 | 3589 | [Count Prime-Gap Balanced Subarrays](3589.md) | 🟡 Medium | 1m 56s | We are given an integer array nums and an integer k. We must count … |
+| 3590 | [Kth Smallest Path XOR Sum](3590.md) | 🔴 Hard | 47s | The problem asks us to work with an undirected tree rooted at node … |
 | 3591 | [Check if Any Element Has Prime Frequency](3591.md) | 🟢 Easy | 49s | This problem asks us to determine whether any number in an array ap… |
 | 3592 | [Inverse Coin Change](3592.md) | 🟡 Medium | 2m 45s | The problem gives us a 1-indexed array numWays, where numWays[i] in… |
 | 3594 | [Minimum Time to Transport All Individuals](3594.md) | 🔴 Hard | 1m 40s | This problem is a shortest-path optimization over a highly constrai… |
