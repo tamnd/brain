@@ -55,3 +55,10 @@ draft: false
 | 3565 | [Sequential Grid Path Cover](3565.md) | 🟡 Medium | 54s | The problem asks us to find a path that visits every cell of a give… |
 | 3567 | [Minimum Absolute Difference in Sliding Submatrix](3567.md) | 🟡 Medium | 32s | The problem requires computing a specific statistic for every conti… |
 | 3570 | [Find Books with No Available Copies](3570.md) | 🟢 Easy | 46s | This problem asks us to identify books in a library system that are… |
+| 3571 | [Find the Shortest Superstring II](3571.md) | 🟢 Easy | 46s | This problem asks us to construct the shortest string that contains… |
+| 3573 | [Best Time to Buy and Sell Stock V](3573.md) | 🟡 Medium | 1m 44s | This problem extends the classic stock trading dynamic programming … |
+| 3574 | [Maximize Subarray GCD Score](3574.md) | 🔴 Hard | 44s | The problem asks us to choose a contiguous subarray from an array o… |
+| 3577 | [Count the Number of Computer Unlocking Permutations](3577.md) | 🟡 Medium | 1m 10s | The problem presents a set of n computers, each with a unique passw… |
+| 3578 | [Count Partitions With Max-Min Difference at Most K](3578.md) | 🟡 Medium | 1m 34s | We are given an array nums and an integer k. We want to split the a… |
+| 3579 | [Minimum Steps to Convert String with Operations](3579.md) | 🔴 Hard | 50s | The problem asks us to transform one string, word1, into another st… |
+| 3580 | [Find Consistently Improving Employees](3580.md) | 🟡 Medium | 32s | The task asks us to identify employees whose performance has consis… |
