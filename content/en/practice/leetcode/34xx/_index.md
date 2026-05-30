@@ -65,8 +65,10 @@ draft: false
 | 3461 | [Check If Digits Are Equal in String After Operations I](3461.md) | 🟢 Easy | 52s | This problem asks us to repeatedly transform a string of digits by … |
 | 3462 | [Maximum Sum With at Most K Elements](3462.md) | 🟡 Medium | 49s | We are given a matrix grid, where each row contains a collection of… |
 | 3463 | [Check If Digits Are Equal in String After Operations II](3463.md) | 🔴 Hard | 44s | The problem asks us to repeatedly transform a string of digits unti… |
+| 3464 | [Maximize the Distance Between Points on a Square](3464.md) | 🔴 Hard | 1m 56s | We are given a square of side length side. Every point in the input… |
 | 3465 | [Find Products with Valid Serial Numbers](3465.md) | 🟢 Easy | 40s | The problem asks us to query a database table called products to id… |
 | 3467 | [Transform Array by Parity](3467.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums and asks us to transform… |
+| 3468 | [Find the Number of Copy Arrays](3468.md) | 🟡 Medium | 1m 7s | We are given an array original and a range constraint for every pos… |
 | 3469 | [Find Minimum Cost to Remove Array Elements](3469.md) | 🟡 Medium | 42s | The problem is asking for the minimum total cost required to remove… |
 | 3470 | [Permutations IV](3470.md) | 🔴 Hard | 1m 54s | We are given two integers, n and k. We must consider all permutatio… |
 | 3471 | [Find the Largest Almost Missing Integer](3471.md) | 🟢 Easy | 1m 16s | The problem gives us an integer array nums and an integer k. We con… |
@@ -79,6 +81,7 @@ draft: false
 | 3479 | [Fruits Into Baskets III](3479.md) | 🟡 Medium | 1m 34s | This problem gives us two arrays of equal length: - fruits[i] repre… |
 | 3480 | [Maximize Subarrays After Removing One Conflicting Pair](3480.md) | 🔴 Hard | 52s | Here’s a detailed technical solution guide following your requested… |
 | 3481 | [Apply Substitutions](3481.md) | 🟡 Medium | 1m 35s | This problem gives us a collection of replacement rules and a text … |
+| 3482 | [Analyze Organization Hierarchy](3482.md) | 🔴 Hard | 2m 2s | This problem is a hierarchical organization analysis task over an e… |
 | 3484 | [Design Spreadsheet](3484.md) | 🟡 Medium | 1m 19s | This problem asks us to design a very small spreadsheet system that… |
 | 3486 | [Longest Special Path II](3486.md) | 🔴 Hard | 1m 49s | We are given a rooted tree with n nodes. The tree is rooted at node… |
 | 3488 | [Closest Equal Element Queries](3488.md) | 🟡 Medium | 50s | The problem asks us to process a series of queries on a circular ar… |
