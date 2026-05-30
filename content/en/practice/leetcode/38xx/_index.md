@@ -12,6 +12,7 @@ draft: false
 |---|---|---|---|---|
 | 3801 | [Minimum Cost to Merge Sorted Lists](3801.md) | 🔴 Hard | 1m 34s | We are given between 2 and 12 sorted lists. At any moment we may ch… |
 | 3802 | [Number of Ways to Paint Sheets](3802.md) | 🔴 Hard | 43s | The problem asks us to compute the number of ways to paint n sheets… |
+| 3803 | [Count Residue Prefixes](3803.md) | 🟢 Easy | 19m 49s | The problem asks us to analyze prefixes of a string s and count how… |
 | 3804 | [Number of Centered Subarrays](3804.md) | 🟡 Medium | 50s | The problem asks us to count the number of centered subarrays in a … |
 | 3805 | [Count Caesar Cipher Pairs](3805.md) | 🟡 Medium | 1m 39s | We are given an array words containing n lowercase strings. Every s… |
 | 3806 | [Maximum Bitwise AND After Increment Operations](3806.md) | 🔴 Hard | 1m 14s | The problem asks us to find the maximum possible bitwise AND of any… |
@@ -25,3 +26,9 @@ draft: false
 | 3817 | [Good Indices in a Digit String](3817.md) | 🟡 Medium | 1m 37s | We are given a string s consisting only of decimal digits. The stri… |
 | 3818 | [Minimum Prefix Removal to Make Array Strictly Increasing](3818.md) | 🟡 Medium | 46s | The problem asks us to process an integer array nums and determine … |
 | 3819 | [Rotate Non Negative Elements](3819.md) | 🟡 Medium | 47s | The problem asks us to rotate only the non-negative elements of an … |
+| 3821 | [Find Nth Smallest Integer With K One Bits](3821.md) | 🔴 Hard | 37s | This problem asks us to find the nth smallest positive integer whos… |
+| 3822 | [Design Order Management System](3822.md) | 🟡 Medium | 1m 42s | This problem asks us to implement a small in-memory order managemen… |
+| 3823 | [Reverse Letters Then Special Characters in a String](3823.md) | 🟢 Easy | 1m 32s | This problem gives us a string s that contains two types of charact… |
+| 3825 | [Longest Strictly Increasing Subsequence With Non-Zero Bitwise AND](3825.md) | 🟡 Medium | 47s | This problem asks us to find the longest strictly increasing subseq… |
+| 3826 | [Minimum Partition Score](3826.md) | 🔴 Hard | 2m 10s | We are given an array nums and must divide it into exactly k contig… |
+| 3827 | [Count Monobit Integers](3827.md) | 🟢 Easy | 47s | The problem asks us to count Monobit integers from 0 to n. A Monobi… |

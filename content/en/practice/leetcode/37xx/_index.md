@@ -37,10 +37,14 @@ draft: false
 | 3727 | [Maximum Alternating Sum of Squares](3727.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we are allowed to rearrange… |
 | 3728 | [Stable Subarrays With Equal Boundary and Interior Sum](3728.md) | 🟡 Medium | 44s | The problem asks us to count stable subarrays in an integer array c… |
 | 3729 | [Count Distinct Subarrays Divisible by K in Sorted Array](3729.md) | 🔴 Hard | 47s | The problem asks us to find the number of distinct subarrays in a s… |
+| 3730 | [Maximum Calories Burnt from Jumps](3730.md) | 🟡 Medium | 1m 7s | The problem asks us to determine the maximum total calories that ca… |
+| 3731 | [Find Missing Elements](3731.md) | 🟢 Easy | 1m 5s | This problem asks us to reconstruct a missing sequence of integers … |
+| 3733 | [Minimum Time to Complete All Deliveries](3733.md) | 🟡 Medium | 35s | This is a long, structured reference document. To make sure I targe… |
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
-| 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 44s | The problem asks us to calculate the maximum total calories burned … |
-| 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 27s | We are given an integer array nums and a value target. We must coun… |
-| 3739 | [Count Subarrays With Majority Element II](3739.md) | 🔴 Hard | 1m 38s | We are given an array nums and a value target. We must count how ma… |
+| 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 1m 1s | The problem asks us to determine the minimum number of moves requir… |
+| 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 6s | Here is a comprehensive, detailed reference guide for LeetCode 3737… |
+| 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](3738.md) | 🟡 Medium | 34s | I can write the full detailed guide, but I need one missing detail … |
+| 3739 | [Count Subarrays With Majority Element II](3739.md) | 🔴 Hard | 57s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
 | 3742 | [Maximum Path Score in a Grid](3742.md) | 🟡 Medium | 48s | This problem presents a grid of size m x n where each cell contains… |
 | 3743 | [Maximize Cyclic Partition Score](3743.md) | 🔴 Hard | 1m 34s | We are given a cyclic array nums, which means the array is consider… |
 | 3744 | [Find Kth Character in Expanded String](3744.md) | 🟡 Medium | 1m 21s | The problem gives us a string s containing one or more lowercase wo… |
