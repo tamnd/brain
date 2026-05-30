@@ -27,3 +27,12 @@ draft: false
 | 3518 | [Smallest Palindromic Rearrangement II](3518.md) | 🔴 Hard | 1m 42s | We are given a string s that is guaranteed to already be a palindro… |
 | 3523 | [Make Array Non-decreasing](3523.md) | 🟡 Medium | 49s | The problem asks us to transform an integer array nums into a non-d… |
 | 3524 | [Find X Value of Array I](3524.md) | 🟡 Medium | 1m 45s | The operation described in the problem may initially look unusual, … |
+| 3525 | [Find X Value of Array II](3525.md) | 🔴 Hard | 1m 25s | For each query, two things happen in order. First, we permanently u… |
+| 3527 | [Find the Most Common Response](3527.md) | 🟡 Medium | 1m 33s | This problem gives us a two dimensional array of strings called res… |
+| 3529 | [Count Cells in Overlapping Horizontal and Vertical Substrings](3529.md) | 🟡 Medium | 1m 22s | We are given a character matrix and a pattern string. The key obser… |
+| 3530 | [Maximum Profit from Valid Topological Order in DAG](3530.md) | 🔴 Hard | 47s | The problem requires computing the maximum possible profit achievab… |
+| 3532 | [Path Existence Queries in a Graph I](3532.md) | 🟡 Medium | 1m 23s | This problem defines an undirected graph implicitly through a sorte… |
+| 3533 | [Concatenated Divisibility](3533.md) | 🔴 Hard | 1m 40s | We are given an array nums containing up to 13 positive integers an… |
+| 3535 | [Unit Conversion II](3535.md) | 🟡 Medium | 1m 8s | The input describes a collection of unit conversion relationships. … |
+| 3536 | [Maximum Product of Two Digits](3536.md) | 🟢 Easy | 1m 5s | The problem gives us a positive integer n and asks us to find the m… |
+| 3538 | [Merge Operations for Minimum Travel Time](3538.md) | 🔴 Hard | 46s | This problem presents a road of length l kilometers, segmented by n… |
