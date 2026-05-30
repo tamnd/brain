@@ -370,6 +370,21 @@ The most famous of Pliny's letters describe the eruption of Vesuvius in 79 CE, t
 
 ---
 
+## Seneca the Younger (4 BCE – 65 CE)
+
+**Moral Letters** (*Epistulae Morales ad Lucilium*): 124 letters to his friend Lucilius on Stoic philosophy, the art of dying, friendship, slavery, time, and the nature of the good. Written in the last years of Seneca's life (63–65 CE), knowing that Nero's displeasure might at any moment require his death (as it eventually did — he was ordered to commit suicide in 65 CE after the Pisonian conspiracy).
+
+The *Moral Letters* are the most accessible advanced Latin prose — direct, conversational, aphoristic. Many individual letters are only 2–3 pages. They are ideal for advanced learners who want to read real literary Latin without the syntactic terror of Tacitus or Cicero's speeches.
+
+**Famous single-letter starting points**:
+- **Letter 1** (*Ita fac, mi Lucili*): "Do this, my Lucilius: claim time for yourself." On reclaiming time; the most famous opening in Seneca.
+- **Letter 47**: On the treatment of slaves — Seneca argues that slaves are human beings deserving of dignity. Radical for his time; fascinating culturally.
+- **Letter 77**: On old age and death; Seneca confronting his own mortality with Stoic equanimity.
+
+**Tragedies** (9 verse plays): *Medea*, *Thyestes*, *Phaedra*, *Troades*, *Hercules Furens*, *Oedipus*, *Agamemnon*, *Hercules Oetaeus*, *Phoenissae*. Composed for reading (not stage performance, most scholars believe); in iambic trimeter and lyric meters. Far harder than the prose works. *Medea* and *Thyestes* are the most read. The tragedies were enormously influential on Elizabethan drama (Shakespeare's *Titus Andronicus* draws directly on Senecan tragedy).
+
+---
+
 ## Reference
 
 - Austin, R. G. (1955–1977). *P. Vergili Maronis Aeneidos* (Books 1, 2, 4, 6). Oxford: Clarendon Press.
@@ -380,3 +395,6 @@ The most famous of Pliny's letters describe the eruption of Vesuvius in 79 CE, t
 - Parry, A. (1963). The two voices of Virgil's *Aeneid*. *Arion* 2.4: 66–80.
 - West, D. (1995–2002). *Horace Odes I–III* (3 vols.). Oxford: Clarendon Press.
 - Woodman, A. J. (various dates). *Tacitus: Annals* (Cambridge). Cambridge University Press.
+- Ramsey, J. T. (2007). *Sallust's Bellum Catilinae*, 2nd ed. Oxford University Press.
+- Reynolds, L. D., ed. (1983). *Texts and Transmission: A Survey of the Latin Classics*. Oxford: Clarendon Press.
+- Ogilvie, R. M. (1965). *A Commentary on Livy Books 1–5*. Oxford: Clarendon Press.
