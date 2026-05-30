@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.2 — Binary Tree Representation of Trees"
-description: "Section 2.3.2 exercises — 11/22 solved."
+description: "Section 2.3.2 exercises — 16/22 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.2. Binary Tree Representation of Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.2: 11/22 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.2: 16/22 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -30,13 +30,13 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.2: 11/22 solved.
 | [10](10.md) |  [*M23*] | math-medium | verified | 1m05s |
 | [11](11.md) |  [*15*] | simple | verified | 2m12s |
 | [12](12.md) |  [*M21*] | math-medium | verified | 4m07s |
-| 13 |  [*26*] | hard | - | - |
+| [13](13.md) |  [*26*] | hard | solved | 8m28s |
 | [14](14.md) |  [*M21*] | math-medium | verified | 1m15s |
 | [15](15.md) |  [*23*] | medium | verified | 1m21s |
-| 16 |  [*24*] | medium | - | - |
-| 17 |  [*M40*] | math-project | - | - |
+| [16](16.md) |  [*24*] | medium | verified | 1m26s |
+| [17](17.md) |  [*M40*] | math-project | solved | 2m16s |
 | 18 |  [*25*] | medium | - | - |
-| 19 |  [*M35*] | math-hard | - | - |
+| [19](19.md) |  [*M35*] | math-hard | verified | 1m33s |
 | 20 |  [*M22*] | math-medium | - | - |
-| 21 |  [*25*] | medium | - | - |
+| [21](21.md) |  [*25*] | medium | verified | 1m20s |
 | 22 |  [*M26*] | math-hard | - | - |
