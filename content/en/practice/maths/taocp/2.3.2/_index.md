@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.2 — Binary Tree Representation of Trees"
-description: "Section 2.3.2 exercises — 17/22 solved."
+description: "Section 2.3.2 exercises — 18/22 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.2. Binary Tree Representation of Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.2: 17/22 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.2: 18/22 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -35,7 +35,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.2: 17/22 solved.
 | [15](15.md) |  [*23*] | medium | verified | 1m21s |
 | [16](16.md) |  [*24*] | medium | verified | 1m26s |
 | [17](17.md) |  [*M40*] | math-project | solved | 2m16s |
-| 18 |  [*25*] | medium | - | - |
+| [18](18.md) |  [*25*] | medium | verified | 57s |
 | [19](19.md) |  [*M35*] | math-hard | verified | 1m33s |
 | 20 |  [*M22*] | math-medium | - | - |
 | [21](21.md) |  [*25*] | medium | verified | 1m20s |
