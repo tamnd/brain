@@ -50,4 +50,9 @@ draft: false
 | 3663 | [Find The Least Frequent Digit](3663.md) | 🟢 Easy | 40s | The problem asks us to find the least frequent digit in the decimal… |
 | 3664 | [Two-Letter Card Game](3664.md) | 🟡 Medium | 5m 11s | Each card consists of exactly two lowercase letters. A card is only… |
 | 3665 | [Twisted Mirror Path Count](3665.md) | 🟡 Medium | 1m 10s | This problem asks us to count all unique paths from the top-left co… |
+| 3667 | [Sort Array By Absolute Value](3667.md) | 🟢 Easy | 2m 12s | The problem asks us to reorder an integer array such that the eleme… |
 | 3668 | [Restore Finishing Order](3668.md) | 🟢 Easy | 1m 32s | This problem gives us two arrays: - order, which represents the fin… |
+| 3671 | [Sum of Beautiful Subsequences](3671.md) | 🔴 Hard | 1m 40s | The problem asks us to calculate the sum of "beauty" values for all… |
+| 3674 | [Minimum Operations to Equalize Array](3674.md) | 🟢 Easy | 51s | Let's go step by step and produce a fully detailed, reference-style… |
+| 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 54s | The problem gives a string s consisting of lowercase English letter… |
+| 3676 | [Count Bowl Subarrays](3676.md) | 🟡 Medium | 54s | The problem asks us to count how many subarrays in an array of dist… |
