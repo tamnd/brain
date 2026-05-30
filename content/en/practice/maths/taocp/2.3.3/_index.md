@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.3 — Other Representations of Trees"
-description: "Section 2.3.3 exercises — 10/19 solved."
+description: "Section 2.3.3 exercises — 16/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.3. Other Representations of Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.3: 10/19 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.3: 16/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,11 +29,11 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.3: 10/19 solved.
 | [9](09.md) |  [*20*] | medium | verified | 1m15s |
 | [10](10.md) |  [*28*] | hard | verified | 1m24s |
 | [11](11.md) |  [*24*] | medium | verified | 1m49s |
-| 12 |  [*21*] | medium | - | - |
-| 13 |  [*M29*] | math-hard | - | - |
-| 14 |  [*40*] | project | - | - |
-| 15 |  [*40*] | project | - | - |
-| 16 |  [*M24*] | math-medium | - | - |
+| [12](12.md) |  [*21*] | medium | solved | 3m57s |
+| [13](13.md) |  [*M29*] | math-hard | verified | 1m23s |
+| [14](14.md) |  [*40*] | project | verified | 3m14s |
+| [15](15.md) |  [*40*] | project | verified | 2m39s |
+| [16](16.md) |  [*M24*] | math-medium | verified | 1m36s |
 | 17 |  [*25*] | medium | - | - |
-| 18 |  [*28*] | hard | - | - |
+| [18](18.md) |  [*28*] | hard | verified | 2m53s |
 | 19 |  [*M27*] | math-hard | - | - |
