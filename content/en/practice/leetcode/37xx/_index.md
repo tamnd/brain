@@ -20,15 +20,22 @@ draft: false
 | 3708 | [Longest Fibonacci Subarray](3708.md) | 🟡 Medium | 1m 22s | The problem gives us an array nums consisting of positive integers … |
 | 3709 | [Design Exam Scores Tracker](3709.md) | 🟡 Medium | 49s | This problem asks us to design a system that tracks Alice's exam sc… |
 | 3710 | [Maximum Partition Factor](3710.md) | 🔴 Hard | 45s | The problem asks us to split a set of n points in a 2D Cartesian pl… |
-| 3712 | [Sum of Elements With Frequency Divisible by K](3712.md) | 🟢 Easy | 1m 21s | This problem gives us an integer array nums and an integer k. Our t… |
-| 3714 | [Longest Balanced Substring II](3714.md) | 🟡 Medium | 1m 52s | We are given a string s consisting only of the characters 'a', 'b',… |
+| 3711 | [Maximum Transactions Without Negative Balance](3711.md) | 🟡 Medium | 1m 1s | Here is a complete, detailed technical solution guide for LeetCode … |
+| 3712 | [Sum of Elements With Frequency Divisible by K](3712.md) | 🟢 Easy | 1m 6s | The problem asks us to compute the sum of all elements in the array… |
+| 3714 | [Longest Balanced Substring II](3714.md) | 🟡 Medium | 1m 8s | The problem gives us a string s that contains only three possible c… |
 | 3715 | [Sum of Perfect Square Ancestors](3715.md) | 🔴 Hard | 45s | This problem asks us to compute a sum across all non-root nodes in … |
 | 3716 | [Find Churn Risk Customers](3716.md) | 🟡 Medium | 1m 15s | This problem asks us to identify subscribers who appear likely to c… |
+| 3717 | [Minimum Operations to Make the Array Beautiful](3717.md) | 🟡 Medium | 54s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 3718 | [Smallest Missing Multiple of K](3718.md) | 🟢 Easy | 44s | The problem asks us to find the smallest positive multiple of k tha… |
+| 3720 | [Lexicographically Smallest Permutation Greater Than Target](3720.md) | 🟡 Medium | 36s | Before I write the full guide, I want to verify one important detai… |
+| 3721 | [Longest Balanced Subarray II](3721.md) | 🔴 Hard | 50s | The problem requires us to find the length of the longest subarray … |
+| 3722 | [Lexicographically Smallest String After Reverse](3722.md) | 🟡 Medium | 40s | The problem asks us to find the lexicographically smallest string a… |
 | 3723 | [Maximize Sum of Squares of Digits](3723.md) | 🟡 Medium | 58s | The problem asks us to construct a positive integer n of exactly nu… |
-| 3725 | [Count Ways to Choose Coprime Integers from Rows](3725.md) | 🔴 Hard | 1m 30s | We are given an m × n matrix where every entry is a positive intege… |
+| 3724 | [Minimum Operations to Transform Array](3724.md) | 🟡 Medium | 46s | This problem asks us to transform an array nums1 of length n into a… |
+| 3725 | [Count Ways to Choose Coprime Integers from Rows](3725.md) | 🔴 Hard | 42s | The problem asks us to determine how many ways we can choose exactl… |
 | 3726 | [Remove Zeros in Decimal Representation](3726.md) | 🟢 Easy | 1m 5s | The problem gives us a positive integer n and asks us to remove eve… |
 | 3727 | [Maximum Alternating Sum of Squares](3727.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we are allowed to rearrange… |
+| 3728 | [Stable Subarrays With Equal Boundary and Interior Sum](3728.md) | 🟡 Medium | 44s | The problem asks us to count stable subarrays in an integer array c… |
 | 3729 | [Count Distinct Subarrays Divisible by K in Sorted Array](3729.md) | 🔴 Hard | 47s | The problem asks us to find the number of distinct subarrays in a s… |
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
 | 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 44s | The problem asks us to calculate the maximum total calories burned … |

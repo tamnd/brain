@@ -17,3 +17,11 @@ draft: false
 | 3806 | [Maximum Bitwise AND After Increment Operations](3806.md) | 🔴 Hard | 1m 14s | The problem asks us to find the maximum possible bitwise AND of any… |
 | 3807 | [Minimum Cost to Repair Edges to Traverse a Graph](3807.md) | 🟡 Medium | 54s | The problem presents an undirected graph with n nodes labeled from … |
 | 3808 | [Find Emotionally Consistent Users](3808.md) | 🟡 Medium | 1m 30s | This problem asks us to analyze user reactions and determine which … |
+| 3811 | [Number of Alternating XOR Partitions](3811.md) | 🟡 Medium | 2m 6s | We are given an array nums and two distinct target XOR values, targ… |
+| 3812 | [Minimum Edge Toggles on a Tree](3812.md) | 🔴 Hard | 1m 58s | We are given a tree with n nodes and n - 1 edges. Every node has a … |
+| 3813 | [Vowel-Consonant Score](3813.md) | 🟢 Easy | 1m 34s | The problem asks us to compute a score for a given string s. The st… |
+| 3815 | [Design Auction System](3815.md) | 🟡 Medium | 1m 47s | This problem asks us to design a real time auction system that supp… |
+| 3816 | [Lexicographically Smallest String After Deleting Duplicate Characters](3816.md) | 🔴 Hard | 1m 31s | We are given a string s consisting only of lowercase English letter… |
+| 3817 | [Good Indices in a Digit String](3817.md) | 🟡 Medium | 1m 37s | We are given a string s consisting only of decimal digits. The stri… |
+| 3818 | [Minimum Prefix Removal to Make Array Strictly Increasing](3818.md) | 🟡 Medium | 46s | The problem asks us to process an integer array nums and determine … |
+| 3819 | [Rotate Non Negative Elements](3819.md) | 🟡 Medium | 47s | The problem asks us to rotate only the non-negative elements of an … |
