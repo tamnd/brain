@@ -27,3 +27,5 @@ draft: false
 | 3760 | [Maximum Substrings With Distinct Start](3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
 | 3762 | [Minimum Operations to Equalize Subarrays](3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
 | 3764 | [Most Common Course Pairs](3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |
+| 3768 | [Minimum Inversion Count in Subarrays of Fixed Length](3768.md) | 🔴 Hard | 1m 36s | We are given an array nums of length n and an integer k. For every … |
+| 3770 | [Largest Prime from Consecutive Prime Sum](3770.md) | 🟡 Medium | 1m 26s | The problem gives us an integer n and asks us to find the largest p… |
