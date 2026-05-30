@@ -50,3 +50,4 @@ draft: false
 | 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 1m 23s | The problem gives us a string s containing lowercase English words … |
 | 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 29s | We are given an integer array nums, and we must select exactly thre… |
 | 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 47s | The problem asks us to simulate an alternating deletion process on … |
+| 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 1m 18s | We are given a string s and an array cost of the same length. The c… |
