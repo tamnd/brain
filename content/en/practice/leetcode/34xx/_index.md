@@ -76,4 +76,10 @@ draft: false
 | 3489 | [Zero Array Transformation IV](3489.md) | 🟡 Medium | 43s | The problem asks us to determine the minimum number of sequential q… |
 | 3490 | [Count Beautiful Numbers](3490.md) | 🔴 Hard | 38s | This problem asks us to count the number of positive integers betwe… |
 | 3491 | [Phone Number Prefix](3491.md) | 🟢 Easy | 27s | The problem is asking us to determine whether any phone number in a… |
+| 3492 | [Maximum Containers on a Ship](3492.md) | 🟢 Easy | 56s | This problem describes a cargo ship with an n × n deck. Since each … |
+| 3493 | [Properties Graph](3493.md) | 🟡 Medium | 51s | The problem asks us to model a 2D array of integers, called propert… |
 | 3494 | [Find the Minimum Amount of Time to Brew Potions](3494.md) | 🟡 Medium | 45s | The problem asks us to simulate a sequential brewing process for po… |
+| 3496 | [Maximize Score After Pair Deletions](3496.md) | 🟡 Medium | 1m 32s | We are given an integer array nums. While the array contains more t… |
+| 3497 | [Analyze Subscription Conversion ](3497.md) | 🟡 Medium | 57s | This is a SQL aggregation problem where we need to analyze user sub… |
+| 3498 | [Reverse Degree of a String](3498.md) | 🟢 Easy | 1m 2s | The problem asks us to compute a special value called the reverse d… |
+| 3499 | [Maximize Active Section with Trade I](3499.md) | 🟡 Medium | 45s | The problem gives a binary string s representing sections of a syst… |
