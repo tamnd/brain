@@ -81,6 +81,7 @@ description: "Codeforces problem solutions with full editorial. 380 contests, 15
 description: "Codeforces problem solutions with full editorial. 382 contests, 1563 problems, 1199 verified."
 description: "Codeforces problem solutions with full editorial. 383 contests, 1571 problems, 1200 verified."
 description: "Codeforces problem solutions with full editorial. 384 contests, 1573 problems, 1201 verified."
+description: "Codeforces problem solutions with full editorial. 385 contests, 1581 problems, 1206 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -172,6 +173,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **382 contests, 1563 problems, 1199 verified.**
 **383 contests, 1571 problems, 1200 verified.**
 **384 contests, 1573 problems, 1201 verified.**
+**385 contests, 1581 problems, 1206 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -589,3 +591,4 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1942](1942/) | [CodeTON Round 8 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1942) | Div. 1+2 | 800-3500 | 4/9 | 16m 46s |
 | [1943](1943/) | [Codeforces Round 934 (Div. 1)](https://codeforces.com/contest/1943) | Div. 1 | 1300-3500 | 1/8 | 10m 17s |
 | [1944](1944/) | [Codeforces Round 934 (Div. 2)](https://codeforces.com/contest/1944) | Div. 2 | 800-1100 | 1/2 | 2m 14s |
+| [1945](1945/) | [Codeforces Round 935 (Div. 3)](https://codeforces.com/contest/1945) | Div. 3 | 800-2600 | 5/8 | 9m 25s |
