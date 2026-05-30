@@ -34,7 +34,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.2: 19/22 solved.
 | [14](14.md) |  [*M21*] | math-medium | verified | 1m15s |
 | [15](15.md) |  [*23*] | medium | verified | 1m21s |
 | [16](16.md) |  [*24*] | medium | verified | 1m26s |
-| [17](17.md) |  [*M40*] | math-project | solved | 2m16s |
+| [17](17.md) |  [*M40*] | math-project | verified | 1m37s |
 | [18](18.md) |  [*25*] | medium | verified | 57s |
 | [19](19.md) |  [*M35*] | math-hard | verified | 1m33s |
 | [20](20.md) |  [*M22*] | math-medium | verified | 1m22s |
