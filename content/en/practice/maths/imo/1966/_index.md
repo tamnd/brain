@@ -1,6 +1,6 @@
 ---
 title: "IMO 1966"
-description: "IMO 1966 — 0/6 solved."
+description: "IMO 1966 — 1/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1966
@@ -10,13 +10,13 @@ draft: false
 
 # IMO 1966
 
-[Official IMO 1966 problems](https://www.imo-official.org/year_info.aspx?year=1966) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1966 problems](https://www.imo-official.org/year_info.aspx?year=1966) &nbsp;·&nbsp; 1/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
 | 1 | — | — |
 | 2 | — | — |
-| 3 | — | — |
+| [3](3.md) | solved | 11m33s |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
@@ -31,7 +31,7 @@ Let $a,b,c$ be the lengths of the sides of a triangle, and $\alpha, \beta, \gamm
 a+b=\tan{\frac{\gamma}{2}}(a\tan{\alpha}+b\tan{\beta})
 $$ the triangle is isosceles.
 
-**Problem 3**
+**Problem 3** &nbsp; *solved* · 11m33s · [Solution →](3.md)
 
 Prove that the sum of the distances of the vertices of a regular tetrahedron from the center of its circumscribed sphere is less than the sum of the distances of these vertices from any other point in space.
 
