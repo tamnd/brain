@@ -34,11 +34,13 @@ draft: false
 | 3632 | [Subarrays with XOR at Least K](3632.md) | 🔴 Hard | 1m 41s | This problem asks us to count the number of contiguous subarrays of… |
 | 3633 | [Earliest Finish Time for Land and Water Rides I](3633.md) | 🟢 Easy | 1m 20s | The problem gives us two groups of rides: - Land rides, where each … |
 | 3634 | [Minimum Removals to Balance Array](3634.md) | 🟡 Medium | 1m 31s | We are given an array nums and an integer k. We may remove any numb… |
+| 3635 | [Earliest Finish Time for Land and Water Rides II](3635.md) | 🟡 Medium | 56s | Great! We will cover LeetCode 3627 - Maximum Median Sum of Subseque… |
 | 3636 | [Threshold Majority Queries](3636.md) | 🔴 Hard | 2m 12s | The problem asks us to process multiple queries on a given array nu… |
 | 3638 | [Maximum Balanced Shipments](3638.md) | 🟡 Medium | 47s | We are given an array weight representing parcels arranged in a lin… |
 | 3639 | [Minimum Time to Activate String](3639.md) | 🟡 Medium | 44s | The problem requires determining the earliest moment at which a str… |
 | 3640 | [Trionic Array II](3640.md) | 🔴 Hard | 2m 53s | We are given an integer array nums, and we must find the maximum po… |
 | 3641 | [Longest Semi-Repeating Subarray](3641.md) | 🟡 Medium | 1m 32s | We are given an integer array nums and an integer k. A subarray is … |
+| 3642 | [Find Books with Polarized Opinions](3642.md) | 🟡 Medium | 44s | The problem asks us to identify books that exhibit polarized opinio… |
 | 3643 | [Flip Square Submatrix Vertically](3643.md) | 🟢 Easy | 1m 19s | This problem gives us an m x n matrix called grid and three integer… |
 | 3646 | [Next Special Palindrome Number](3646.md) | 🔴 Hard | 54s | This problem asks us to construct a number system under two simulta… |
 | 3647 | [Maximum Weight in Two Bags](3647.md) | 🟡 Medium | 1m 2s | This problem asks us to distribute a set of items, each with a give… |
