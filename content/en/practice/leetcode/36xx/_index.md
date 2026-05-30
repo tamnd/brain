@@ -22,4 +22,9 @@ draft: false
 | 3617 | [Find Students with Study Spiral Pattern](3617.md) | 🔴 Hard | 1m 7s | The task asks us to identify students who exhibit a very specific b… |
 | 3618 | [Split Array by Prime Indices](3618.md) | 🟡 Medium | 1m 16s | The problem gives us an integer array nums and asks us to divide it… |
 | 3619 | [Count Islands With Total Value Divisible by K](3619.md) | 🟡 Medium | 50s | The problem is asking us to count islands in a 2D grid where the su… |
+| 3620 | [Network Recovery Pathways](3620.md) | 🔴 Hard | 2m | We are given a directed acyclic graph (DAG) with n nodes numbered f… |
+| 3621 | [Number of Integers With Popcount-Depth Equal to K I](3621.md) | 🔴 Hard | 1m 39s | The problem asks us to count integers in the range [1, n] whose pop… |
 | 3622 | [Check Divisibility by Digit Sum and Product](3622.md) | 🟢 Easy | 38s | The problem asks us to determine if a given positive integer n is d… |
+| 3625 | [Count Number of Trapezoids II](3625.md) | 🔴 Hard | 47s | The problem asks us to count the number of unique trapezoids that c… |
+| 3626 | [Find Stores with Inventory Imbalance](3626.md) | 🟡 Medium | 1m 23s | This problem asks us to identify stores with an inventory imbalance… |
+| 3630 | [Partition Array for Maximum XOR and AND](3630.md) | 🔴 Hard | 50s | The problem asks us to partition an integer array nums into three s… |
