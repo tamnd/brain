@@ -72,10 +72,15 @@ draft: false
 | 3769 | [Sort Integers by Binary Reflection](3769.md) | 🟢 Easy | 41s | This problem asks us to sort an array of positive integers based on… |
 | 3770 | [Largest Prime from Consecutive Prime Sum](3770.md) | 🟡 Medium | 1m 26s | The problem gives us an integer n and asks us to find the largest p… |
 | 3771 | [Total Score of Dungeon Runs](3771.md) | 🟡 Medium | 55s | The problem describes a dungeon with n rooms, where entering room i… |
+| 3772 | [Maximum Subgraph Score in a Tree](3772.md) | 🔴 Hard | 52s | The problem asks us to compute, for each node in a tree, the maximu… |
+| 3773 | [Maximum Number of Equal Length Runs](3773.md) | 🟡 Medium | 59s | The problem asks us to analyze a string s consisting of lowercase E… |
 | 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 1m 13s | We are given an integer array nums and an integer k. The task is to… |
-| 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 1m 23s | The problem gives us a string s containing lowercase English words … |
-| 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 29s | We are given an integer array nums, and we must select exactly thre… |
-| 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 47s | The problem asks us to simulate an alternating deletion process on … |
+| 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 48s | The problem requires processing a string s consisting of lowercase … |
+| 3778 | [Minimum Distance Excluding One Maximum Weighted Edge](3778.md) | 🟡 Medium | 1m 56s | We are given a connected, weighted, undirected graph with n nodes n… |
+| 3779 | [Minimum Number of Operations to Have Distinct Elements](3779.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and defines a very speci… |
+| 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 2s | Here is a comprehensive, detailed solution guide for LeetCode 3780 … |
+| 3781 | [Maximum Score After Binary Swaps](3781.md) | 🟡 Medium | 33s | Before I write the full guide, I need one clarification: can you co… |
+| 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 29s | Before I write the full guide, I want to confirm one critical detai… |
 | 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 1m 18s | We are given a string s and an array cost of the same length. The c… |
 | 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 2m 19s | The problem is asking for the minimum cost to satisfy a requirement… |
 | 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 1m 45s | The problem asks us to count how many integers in the inclusive ran… |

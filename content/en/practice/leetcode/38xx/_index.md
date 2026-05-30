@@ -61,3 +61,17 @@ draft: false
 | 3857 | [Minimum Cost to Split into Ones](3857.md) | 🟡 Medium | 1m 14s | We are given a single integer n. Starting with this integer, we rep… |
 | 3858 | [Minimum Bitwise OR From Grid](3858.md) | 🟡 Medium | 1m 52s | We are given an m x n grid of positive integers. From each row, we … |
 | 3860 | [Unique Email Groups](3860.md) | 🟡 Medium | 1m 17s | This problem asks us to determine how many distinct email groups ex… |
+| 3862 | [Find the Smallest Balanced Index](3862.md) | 🟡 Medium | 1m 33s | We are given an integer array nums, and we need to find the smalles… |
+| 3863 | [Minimum Operations to Sort a String](3863.md) | 🟡 Medium | 57s | This problem is asking us to determine the minimum number of substr… |
+| 3864 | [Minimum Cost to Partition a Binary String](3864.md) | 🔴 Hard | 1m 26s | We are given a binary string s, where each character represents whe… |
+| 3865 | [Reverse K Subarrays](3865.md) | 🟡 Medium | 57s | The problem asks us to take an integer array nums of length n and d… |
+| 3866 | [First Unique Even Element](3866.md) | 🟢 Easy | 56s | The problem asks us to find the first even integer in an array that… |
+| 3867 | [Sum of GCD of Formed Pairs](3867.md) | 🟡 Medium | 1m 28s | We are given an integer array nums of length n. For every index i, … |
+| 3868 | [Minimum Cost to Equalize Arrays Using Swaps](3868.md) | 🟡 Medium | 55s | The problem requires us to make two integer arrays nums1 and nums2 … |
+| 3869 | [Count Fancy Numbers in a Range](3869.md) | 🔴 Hard | 2m 40s | We are given two integers l and r, and we must count how many integ… |
+| 3870 | [Count Commas in Range](3870.md) | 🟢 Easy | 1m 15s | The problem asks us to count how many commas appear when writing ev… |
+| 3871 | [Count Commas in Range II](3871.md) | 🟡 Medium | 1m 3s | The problem asks us to count the total number of commas that appear… |
+| 3872 | [Longest Arithmetic Sequence After Changing At Most One Element](3872.md) | 🟡 Medium | 43s | The problem requires us to find the longest arithmetic subarray fro… |
+| 3873 | [Maximum Points Activated with One Addition](3873.md) | 🔴 Hard | 44s | The problem is asking us to simulate a chain reaction of activation… |
+| 3876 | [Construct Uniform Parity Array II](3876.md) | 🟡 Medium | 51s | The problem asks us to determine whether we can construct a new arr… |
+| 3877 | [Minimum Removals to Achieve Target XOR](3877.md) | 🟡 Medium | 2m 3s | We are given an array nums and a target value target. We may remove… |
