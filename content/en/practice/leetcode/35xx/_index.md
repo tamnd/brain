@@ -72,3 +72,4 @@ draft: false
 | 3594 | [Minimum Time to Transport All Individuals](3594.md) | 🔴 Hard | 1m 40s | This problem is a shortest-path optimization over a highly constrai… |
 | 3596 | [Minimum Cost Path with Alternating Directions I](3596.md) | 🟡 Medium | 52s | This problem requires computing the minimum total cost to traverse … |
 | 3597 | [Partition String ](3597.md) | 🟡 Medium | 1m 21s | We are given a string s and must partition it into segments accordi… |
+| 3599 | [Partition Array to Minimize XOR](3599.md) | 🟡 Medium | 1m 56s | This problem asks us to partition an array of integers, nums, into … |
