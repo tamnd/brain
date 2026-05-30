@@ -1,6 +1,6 @@
 ---
-title: "〜に基づいて / 〜に基づく — JLPT N2 Grammar"
-description: "Learn how to use 〜に基づいて and 〜に基づく to express that something is based on objective evidence, data, law, or established fact in formal Japanese."
+title: "〜に基づいて — JLPT N2 Grammar"
+description: "Learn how to use 〜に基づいて (ni motozuite) to express 'based on' when grounding decisions, arguments, or actions in formal sources. Includes structure, nuance, examples, and comparisons."
 tags: ["japanese", "grammar", "n2", "jlpt"]
 cascade:
   type: docs
@@ -9,53 +9,91 @@ date: 2026-05-30T00:00:00+07:00
 
 ## Pattern
 
-**〜に基づいて / 〜に基づく**
-(ni motozuite / ni mototsuku)
+**Noun + に基づいて** (predicate position: used before a verb)
+**Noun + に基づく + Noun** (attributive: modifies the following noun)
+**Noun + に基づいた + Noun** (attributive, past-tense form; slightly more natural in running text)
+**Noun + に基づき** (formal/written abbreviation)
 
-## Structure
+The noun before に基づいて is the foundation, standard, evidence, or authority on which the following action or judgment rests.
 
-- **Noun + に基づいて** (followed by verb or clause)
-- **Noun + に基づく + Noun** (modifying a noun)
-- **Noun + に基づいた + Noun** (past attributive form)
+---
 
-## Formality Level
+## Formality
 
-**High formal** — used in academic writing, legal documents, official policy, business reports. Not used in casual conversation.
+**Formal**. に基づいて is the formal register word for "based on." It appears in legal texts, academic papers, business reports, official announcements, and policy documents. For semi-formal writing, 〜をもとに is common. For casual speech, 〜から判断して or simply 〜によると may be used.
+
+---
 
 ## Meaning
 
-"Based on X," "on the grounds of X," "founded on X." Expresses that an action, judgment, argument, or product is derived from or founded upon an objective, concrete basis such as evidence, data, law, rules, or established facts.
+**Based on ~; on the basis of ~; grounded in ~; in accordance with ~**
 
-The key nuance is **objective, concrete foundation** — the basis is something verifiable, authoritative, or systematic. This distinguishes it from 〜をもとに (which emphasizes using something as raw material/inspiration) and 〜に従って (which emphasizes compliance with rules/instructions).
+〜に基づいて indicates that an action, decision, argument, or conclusion has a formal foundation or authoritative basis in the preceding noun. The noun before に基づいて serves as the standard or source that justifies what follows.
 
-## Examples
+---
 
-| Japanese | Reading | Romaji | English |
-|----------|---------|--------|---------|
-| この決定は調査結果に基づいて行われました。 | このけっていはちょうさけっかにもとづいておこなわれました。 | kono kettei wa chōsa kekka ni motozuite okonawaremashita. | This decision was made based on the survey results. |
-| 法律に基づいた対応が求められる。 | ほうりつにもとづいたたいおうがもとめられる。 | hōritsu ni motozuita taiō ga motomerareru. | A response based on the law is required. |
-| 科学的根拠に基づく政策を推進すべきだ。 | かがくてきこんきょにもとづくせいさくをすいしんすべきだ。 | kagakuteki konkyo ni mototsuku seisaku o suishin subeki da. | We should promote policies based on scientific evidence. |
-| その理論は長年の研究に基づくものです。 | そのりろんはながねんのけんきゅうにもとづくものです。 | sono riron wa naganen no kenkyū ni mototsuku mono desu. | That theory is based on many years of research. |
-| 規則に基づいて、適切な措置を講じた。 | きそくにもとづいて、てきせつなそちをこうじた。 | kisoku ni motozuite, tekisetsu na sochi o kōjita. | Appropriate measures were taken based on the regulations. |
+## Explanation
 
-## Comparison with Similar Patterns
+に基づいて is built from に + 基づく (もとづく, "to be based on; to originate from; to be grounded in") in its te-form. The verb 基づく contains the kanji 基 (もと, "foundation; base; origin"), which clearly signals the "foundational" meaning.
 
-| Pattern | Focus | Basis Type | Typical Context |
-|---------|-------|-----------|-----------------|
-| 〜に基づいて | Derived from an objective foundation | Evidence, law, data, established fact | Academic, legal, official |
-| 〜をもとに | Using as raw material/inspiration | Ideas, stories, data as source material | Creative, analytical |
-| 〜に従って | Complying with/following | Rules, instructions, authority | Procedural, directive |
-| 〜に沿って | Following a course/plan | Plans, guidelines, paths | Planning, implementation |
+The key nuance of に基づいて is formality and authority. The foundation cited before the pattern must be something substantial — data, research, laws, rules, evidence, historical facts, or official policies. You would not use に基づいて for vague or personal impressions. この法律に基づいて (based on this law) or 科学的証拠に基づいて (based on scientific evidence) are natural; 気分に基づいて (based on my mood) would sound odd in this formal construction.
 
-**Key distinction from 〜をもとに:** 
-- に基づいて = the basis is pre-existing and authoritative (law, evidence, fact)
-- をもとに = the basis is used as raw material to create something new (a novel based on real events)
+The attributive form に基づく directly modifies a noun: データに基づく分析 (analysis based on data), 法律に基づく処分 (disposition based on the law). The past-tense attributive に基づいた is more common in everyday formal writing: データに基づいた結論 (a conclusion based on data).
 
-**Test yourself:** 
-- ❌ この小説は歴史的事実に基づいて書かれた → ✓ (acceptable — the facts are authoritative)
-- ✓ この小説は実際の出来事をもとに書かれた → (more natural — using events as creative source)
+に基づき (dropping いて) is the formal written abbreviation and is common in legal and official documents, particularly at the beginning of clauses: 本規定に基づき、以下の通り処分する。(Based on these regulations, the following disposition will be made.)
+
+---
+
+## Example Sentences
+
+1. **科学的根拠に基づいて、この薬が承認された。**
+   *Kagaku-teki konkyo ni motozuite, kono kusuri ga shounin sareta.*
+   Based on scientific evidence, this medication was approved.
+
+2. **法律に基づいて、適切な処分が下された。**
+   *Houritsu ni motozuite, tekisetsu na shobun ga kudasa reta.*
+   A proper disposition was handed down based on the law.
+
+3. **データに基づく分析の結果、新たな問題が浮かび上がった。**
+   *Dēta ni motozuku bunseki no kekka, arata na mondai ga ukabiagatta.*
+   As a result of the analysis based on data, new problems emerged.
+
+4. **調査結果に基づき、改善策を策定する予定です。**
+   *Chousa-kekka ni motozuki, kaizen-saku wo sakutei suru yotei desu.*
+   Based on the survey results, we plan to formulate improvement measures.
+
+5. **事実に基づいた報告をお願いします。**
+   *Jijitsu ni motozuita houkoku wo onegai shimasu.*
+   Please provide a report based on the facts.
+
+6. **国際条約に基づいて、両国は協力体制を整えた。**
+   *Kokusai-jouyaku ni motozuite, ryoukoku wa kyouryoku-taisei wo totonoeta.*
+   Based on the international treaty, the two countries established a framework for cooperation.
+
+---
 
 ## Common Mistakes
 
-- ❌ 彼の意見に基づいて決めた → Use 〜に基づいて only for objective/authoritative bases, not personal opinions. For opinions: 〜を参考にして or 〜を踏まえて.
-- ❌ データに基づいて書いた小説 → More naturally: データをもとに書いた小説 (using data as creative material)
+**Mistake 1: Using に基づいて with vague or personal sources.**
+に基づいて requires a formal, authoritative, or verifiable foundation. Personal feelings, hunches, or vague impressions do not work as the basis noun.
+
+- Unnatural: 直感に基づいて、彼を信じることにした。
+- More natural: 直感から、彼を信じることにした。(From intuition, I decided to trust him.)
+- Natural with に基づいて: 長年の経験に基づいて判断した。(Judged based on years of experience — here "years of experience" is a legitimate formal basis.)
+
+**Mistake 2: Confusing に基づく with をもとに for creative works.**
+For fictional or creative works derived from real events, をもとに is more natural: 実話をもとにした映画 (a film based on a true story). に基づいて sounds overly formal for creative contexts and implies the source is an authoritative document.
+
+---
+
+## Compare With
+
+| Pattern | Meaning | Key Difference |
+|---------|---------|----------------|
+| 〜に基づいて | based on (formal foundation) | Used for formal, authoritative, or verifiable sources: laws, data, research. Formal register. |
+| 〜をもとに | based on, using ~ as a starting point | Semi-formal. More flexible — can be used for source material, inspiration, or creative foundations: 実話をもとに (based on a true story). |
+| 〜に従って | in accordance with, following | Emphasizes compliance with rules or authority — "following" a rule or instruction. Can overlap with に基づいて for rule-based actions. |
+| 〜によると | according to | Reports information sourced from a specific place or person — for quoting sources, not for grounding actions. |
+| 〜を踏まえて | taking ~ into account | More dynamic — means "having considered X, now doing Y." The speaker actively incorporates the information, not just cites it as a basis. More common in spoken formal Japanese. |
+
+**Practical summary**: に基づいて cites a formal foundation as a basis for an action or decision. をもとに is broader and more flexible, covering inspiration and source material as well. を踏まえて implies active consideration of facts before acting — it is more dialogic and deliberative.
