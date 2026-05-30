@@ -13,6 +13,9 @@ draft: false
 | 3500 | [Minimum Cost to Divide Array Into Subarrays](3500.md) | 🔴 Hard | 46s | This problem asks us to partition an array nums into contiguous sub… |
 | 3501 | [Maximize Active Section with Trade II](3501.md) | 🔴 Hard | 47s | The problem presents a binary string s where each character represe… |
 | 3503 | [Longest Palindrome After Substring Concatenation I](3503.md) | 🟡 Medium | 1m 42s | We are given two strings, s and t, and we are allowed to choose: 1.… |
+| 3504 | [Longest Palindrome After Substring Concatenation II](3504.md) | 🔴 Hard | 36s | We are given two strings, s and t. We may choose any substring from… |
+| 3505 | [Minimum Operations to Make Elements Within K Subarrays Equal](3505.md) | 🔴 Hard | 1m 24s | You are given an integer array nums, and you want to create at leas… |
+| 3506 | [Find Time Required to Eliminate Bacterial Strains](3506.md) | 🔴 Hard | 39s | This problem asks us to find the minimum time required to eliminate… |
 | 3507 | [Minimum Pair Removal to Sort Array I](3507.md) | 🟢 Easy | 1m 16s | We are given an array nums. At any step, we are not free to choose … |
 | 3508 | [Implement Router](3508.md) | 🟡 Medium | 45s | The problem is asking us to design a Router data structure to manag… |
 | 3509 | [Maximum Product of Subsequences With an Alternating Sum Equal to K](3509.md) | 🔴 Hard | 48s | The problem asks us to find a subsequence of a given integer array … |
