@@ -10,18 +10,18 @@ weight: 4
 
 ## Overview
 
-In Japanese, the demonstrative system—often called the "Ko-So-A-Do" system—is the foundation for describing the world around you. Whether you are identifying an object in your hand, asking where a building is, or choosing between items in a store, these words are essential for basic communication. Mastering these will allow you to move beyond simple "A is B" sentences and start interacting with your environment.
+In Japanese, the demonstrative system—often called the "Ko-So-A-Do" system—is the backbone of spatial and object reference. Mastering these words is essential for N5 learners because they allow you to navigate your environment, ask for items in shops, and inquire about locations. Without these, you cannot effectively interact with your surroundings.
 
-This lesson builds upon your knowledge of basic sentence structures (Lesson 1-3) by introducing spatial relationships. You will learn how to distinguish between items near the speaker, near the listener, and far from both. This is a critical building block for future lessons on shopping, giving directions, and describing complex scenes.
+This lesson builds upon your knowledge of basic sentence structures (AはBです) by introducing specific identifiers for things, places, and directions. By the end of this lesson, you will be able to distinguish between items near you, near the listener, and far from both, providing a foundation for more complex descriptive sentences in future lessons.
 
 ## Learning Objectives
 
 By the end of this lesson you can:
-- Correctly use *kore, sore, are* to identify objects based on proximity.
-- Use *kono, sono, ano* to modify nouns (e.g., "this book").
-- Ask for locations using *koko, soko, asoko* and *doko*.
-- Use polite forms (*kochira, sochira, achira*) to indicate directions.
-- Ask "which one" or "which way" using *dore, dono, dochira*.
+- Correctly use これ, それ, and あれ to identify objects.
+- Use この, その, and あの to modify nouns.
+- Ask for and provide locations using ここ, そこ, あそこ, and どこ.
+- Use polite forms (こちら, そちら, あちら) to indicate directions or people.
+- Ask "which one" or "which way" using どれ, どの, and どの方向.
 
 ## New Vocabulary
 
@@ -29,137 +29,131 @@ By the end of this lesson you can:
 |----------|---------|--------|---------|----------------|
 | これ | これ | kore | this (thing) | Pronoun |
 | それ | それ | sore | that (thing) | Pronoun |
-| あれ | あれ | are | that (thing) over there | Pronoun |
+| あれ | あれ | are | that (thing over there) | Pronoun |
 | どれ | どれ | dore | which (thing) | Pronoun |
 | この | この | kono | this (noun) | Determiner |
 | その | その | sono | that (noun) | Determiner |
-| あの | あの | ano | that (noun) over there | Determiner |
+| あの | あの | ano | that (noun over there) | Determiner |
 | どの | どの | dono | which (noun) | Determiner |
 | ここ | ここ | koko | here | Noun |
 | そこ | そこ | soko | there | Noun |
 | あそこ | あそこ | asoko | over there | Noun |
 | どこ | どこ | doko | where | Noun |
-| こちら | こちら | kochira | this way / this person | Noun |
+| こちら | こちら | kochira | this way/this person (polite) | Noun |
 | 近い | ちかい | chikai | near | Adjective |
 | 遠い | とおい | tooi | far | Adjective |
 
 ## Grammar Points
 
 ### 1. The Ko-So-A-Do System (Things)
+**Structure:** [これ/それ/あれ] は [Noun] です。
 
-**Structure:** [Kore/Sore/Are] は [Noun] です。
-
-The Japanese demonstrative system is based on distance. **Kore** (this) is for things near the speaker. **Sore** (that) is for things near the listener. **Are** (that over there) is for things far from both. **Dore** is used when asking "which one" among three or more items.
-
-| Japanese | Reading | Romaji | English |
-|----------|---------|--------|---------|
-| これは本です。 | これはほん | Kore wa hon desu. | This is a book. |
-| それはペンです。 | それはぺん | Sore wa pen desu. | That is a pen. |
-| あれは時計です。 | あれはとけい | Are wa tokei desu. | That over there is a clock. |
-| どれが辞書ですか。 | どれがじしょ | Dore ga jisho desu ka. | Which one is the dictionary? |
-
-**Common mistake:** ❌ これ本です → ✓ これは本です — Always use the particle は (wa) after the demonstrative.
-
----
-
-### 2. Demonstrative Adjectives (Kono, Sono, Ano)
-
-**Structure:** [Kono/Sono/Ano] + [Noun] は [Noun] です。
-
-Unlike *kore/sore/are*, which act as nouns, *kono/sono/ano* must be attached to a noun. You cannot say "Kono desu" (This is). You must say "Kono hon desu" (This book is...).
+The Ko-So-A-Do system is based on distance. **Ko** (これ) is for things near the speaker. **So** (それ) is for things near the listener. **A** (あれ) is for things far from both. **Do** (どれ) is the question word used when choosing from a group.
 
 | Japanese | Reading | Romaji | English |
 |----------|---------|--------|---------|
-| この傘は私のです。 | このかさはわたし | Kono kasa wa watashi no desu. | This umbrella is mine. |
-| その人は誰ですか。 | そのひとはだれ | Sono hito wa dare desu ka. | Who is that person? |
-| あの建物は学校です。 | あのたてものはがっこう | Ano tatemono wa gakkou desu. | That building over there is a school. |
-| どのペンが新しいですか。 | どのぺんがあたらしい | Dono pen ga atarashii desu ka. | Which pen is new? |
+| これは本です。 | これはほんです。 | Kore wa hon desu. | This is a book. |
+| それはペンです。 | それはぺんです。 | Sore wa pen desu. | That is a pen. |
+| あれは時計です。 | あれはとけいです。 | Are wa tokei desu. | That (over there) is a clock. |
+| どれが辞書ですか。 | どれがじしょですか。 | Dore ga jisho desu ka? | Which one is the dictionary? |
 
-**Common mistake:** ❌ このは本です → ✓ この本です — *Kono* is an adjective; it cannot stand alone as the subject.
+**Common mistake:** ❌ これ本です → ✓ これは本です — Always use the particle は after the demonstrative pronoun.
 
----
+### 2. Demonstrative Adjectives (Noun Modifiers)
+**Structure:** [この/その/あの] + [Noun]
 
-### 3. Locations (Koko, Soko, Asoko, Doko)
-
-**Structure:** [Place] は [Koko/Soko/Asoko] です。 / [Place] は どこですか。
-
-Use these to describe locations. *Koko* is where you are, *soko* is where the listener is, and *asoko* is a place distant from both. To ask for a location, use *doko*.
+Unlike the pronouns above, these words *must* be followed by a noun. You cannot say "このです" (This is...). You must say "この本です" (This book).
 
 | Japanese | Reading | Romaji | English |
 |----------|---------|--------|---------|
-| ここは食堂です。 | ここはしょくどう | Koko wa shokudou desu. | This place is the cafeteria. |
-| トイレはどこですか。 | といれはどこ | Toire wa doko desu ka. | Where is the restroom? |
-| 駅はあそこです。 | えきはあそこ | Eki wa asoko desu. | The station is over there. |
+| この傘は私のです。 | このかさはわたしのです。 | Kono kasa wa watashi no desu. | This umbrella is mine. |
+| その車は新しいです。 | そのくるまはあたらしいです。 | Sono kuruma wa atarashii desu. | That car is new. |
+| あの建物は学校です。 | あのたてものはがっこうです。 | Ano tatemono wa gakkou desu. | That building over there is a school. |
+| どのペンがあなたの？ | どのぺんがあなたの？ | Dono pen ga anata no? | Which pen is yours? |
+
+**Common mistake:** ❌ これ本は高いです → ✓ この本は高いです — Use the adjective form (この) when directly modifying a noun.
 
 ## Dialogues
 
-### Dialogue 1: At a Stationery Store
-**Setting:** A customer is asking about pens.
+### Dialogue 1: At a Stationery Shop
+*A customer is asking about items on a shelf.*
 
 **Customer:** すみません、これは何ですか。
-(Sumimasen, kore wa nan desu ka / Excuse me, what is this?)
+(Sumimasen, kore wa nan desu ka?) / Excuse me, what is this?
+
 **Clerk:** それは万年筆です。
-(Sore wa mannenhitsu desu / That is a fountain pen.)
+(Sore wa mannenhitsu desu.) / That is a fountain pen.
+
 **Customer:** あのペンはいくらですか。
-(Ano pen wa ikura desu ka / How much is that pen over there?)
-**Clerk:** このペンですか。百円です。
-(Kono pen desu ka. Hyaku-en desu / This pen? It is 100 yen.)
-**Customer:** じゃあ、これをお願いします。
-(Jaa, kore o onegaishimasu / Then, I will take this one.)
+(Ano pen wa ikura desu ka?) / How much is that pen over there?
 
-### Dialogue 2: Finding the Library
-**Setting:** A student asking a teacher for directions.
+**Clerk:** あれは千円です。
+(Are wa sen-en desu.) / That one over there is 1,000 yen.
 
-**Student:** 先生、図書館はどこですか。
-(Sensei, toshokan wa doko desu ka / Teacher, where is the library?)
-**Teacher:** 図書館はあそこです。
-(Toshokan wa asoko desu / The library is over there.)
-**Student:** ここから近いですか。
-(Koko kara chikai desu ka / Is it near from here?)
-**Teacher:** はい、近いです。
-(Hai, chikai desu / Yes, it is near.)
-**Student:** ありがとうございます。
-(Arigatou gozaimasu / Thank you very much.)
+**Customer:** ありがとうございます。
+(Arigatou gozaimasu.) / Thank you very much.
+
+### Dialogue 2: Finding the Station
+*A tourist asks a local for directions.*
+
+**Tourist:** すみません、駅はどこですか。
+(Sumimasen, eki wa doko desu ka?) / Excuse me, where is the station?
+
+**Local:** 駅はあそこです。
+(Eki wa asoko desu.) / The station is over there.
+
+**Tourist:** ここから近いですか。
+(Koko kara chikai desu ka?) / Is it near from here?
+
+**Local:** はい、とても近いです。
+(Hai, totemo chikai desu.) / Yes, it is very near.
+
+**Tourist:** ありがとうございます。
+(Arigatou gozaimasu.) / Thank you.
 
 ## Grammar Drills
 
 **Exercise 1: Fill in the blank**
-1. (Near me) ____ は私のペンです。(kore/sore/are)
-2. (Near you) ____ 本は誰のですか。(kono/sono/ano)
-3. (Far away) ____ は郵便局です。(koko/soko/asoko)
-4. トイレは ____ ですか。(doko/dore/dono)
-5. ____ 傘は新しいです。(kono/kore)
 
-**Answer Key:** 1. これ, 2. その, 3. あそこ, 4. どこ, 5. この
+1. (Holding a pen) ____はペンです。(kore/sore)
+2. (Pointing to a car far away) ____は私の車です。(kono/ano)
+3. (Asking about a location) トイレは____ですか。(doko/dore)
+4. ____本は面白いです。(sono/sore)
+5. (Choosing between two items) ____が一番いいですか。(dore/dono)
+
+**Answer Key:**
+1. これ 2. あの 3. どこ 4. その 5. どれ
 
 ## Translation Practice
 
 **English → Japanese**
-1. What is this?
-2. That building is a bank.
-3. Where is the station?
-4. Which book is yours?
-5. That (over there) is my house.
+1. This is a bag.
+2. That (near you) is a notebook.
+3. Where is the library?
+4. That building (over there) is the hospital.
+5. Which one is your umbrella?
 
 **Japanese → English**
-6. ここは私の教室です。
-7. その人は誰ですか。
-8. 銀行はどこですか。
-9. あれは学校です。
-10. どのペンですか。
+6. ここは私の家です。
+7. そのペンは誰のですか。
+8. あそこは郵便局です。
+9. どの辞書が新しいですか。
+10. 駅はここから遠いです。
 
-**Answer Key:** 1. これはなんですか, 2. あの建物は銀行です, 3. 駅はどこですか, 4. どの本があなたのですか, 5. あれは私の家です, 6. This is my classroom, 7. Who is that person?, 8. Where is the bank?, 9. That over there is a school, 10. Which pen?
+**Answer Key:**
+1. これは鞄です。 2. それはノートです。 3. 図書館はどこですか。 4. あの建物は病院です。 5. どれがあなたの傘ですか。
+6. This is my house. 7. Whose pen is that? 8. That place over there is the post office. 9. Which dictionary is new? 10. The station is far from here.
 
 ## Cultural Note
 
-In Japanese, the "Ko-So-A-Do" system is deeply tied to the concept of *uchi* (inside/self) and *soto* (outside/others). When you use *koko* (here), you are defining your immediate space. When you use *asoko* (over there), you are acknowledging a space that is clearly separated from your current interaction. This reflects the Japanese cultural emphasis on context and spatial awareness.
+The Japanese demonstrative system reflects a high level of situational awareness. Unlike English, where "that" can be used somewhat loosely, Japanese speakers are constantly evaluating the distance between themselves, the listener, and the object. This reflects the Japanese cultural emphasis on context and the relationship between the speaker and the listener.
 
-Additionally, when pointing to things or people, it is considered impolite to point with one finger. In formal or polite situations, Japanese speakers will gesture with an open hand, palm facing up, toward the object or person. This "soft" pointing is a sign of respect and avoids the perceived aggression of a direct finger-point.
+Furthermore, the use of "polite" directions like こちら (kochira) instead of ここ (koko) is common in customer service. If you enter a shop, a clerk might say "こちらへどうぞ" (Please come this way). Using the polite form shows respect and is a hallmark of professional communication in Japan.
 
 ## Self-Check
 
-1. What is the difference between *kore* and *kono*?
-2. If an object is near the person you are talking to, which demonstrative do you use?
-3. How do you ask "where" in Japanese?
-4. Translate: "This bag is mine."
-5. Why is it important to learn the distance-based demonstratives?
+1. What is the difference between これ and この?
+2. When would you use あそこ instead of そこ?
+3. Why can't you say "どれ本ですか"?
+4. Translate: "That (near you) is a dictionary."
+5. How does the Ko-So-A-Do system help you in a real-life shopping scenario?
