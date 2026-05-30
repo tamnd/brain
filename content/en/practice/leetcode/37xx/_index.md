@@ -19,3 +19,7 @@ draft: false
 | 3726 | [Remove Zeros in Decimal Representation](3726.md) | 🟢 Easy | 1m 5s | The problem gives us a positive integer n and asks us to remove eve… |
 | 3727 | [Maximum Alternating Sum of Squares](3727.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we are allowed to rearrange… |
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
+| 3743 | [Maximize Cyclic Partition Score](3743.md) | 🔴 Hard | 1m 34s | We are given a cyclic array nums, which means the array is consider… |
+| 3744 | [Find Kth Character in Expanded String](3744.md) | 🟡 Medium | 1m 21s | The problem gives us a string s containing one or more lowercase wo… |
+| 3745 | [Maximize Expression of Three Elements](3745.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to choose th… |
+| 3748 | [Count Stable Subarrays](3748.md) | 🔴 Hard | 52s | The problem asks us to count "stable" subarrays within a given arra… |
