@@ -41,6 +41,8 @@ draft: false
 | 3756 | [Concatenate Non-Zero Digits and Multiply by Sum II](3756.md) | 🟡 Medium | 2m 12s | We are given a digit string s and many range queries. For each quer… |
 | 3760 | [Maximum Substrings With Distinct Start](3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
 | 3762 | [Minimum Operations to Equalize Subarrays](3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
+| 3763 | [Maximum Total Sum with Threshold Constraints](3763.md) | 🟡 Medium | 47s | The problem asks us to count the number of effective subsequences i… |
 | 3764 | [Most Common Course Pairs](3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |
+| 3765 | [Complete Prime Number](3765.md) | 🟡 Medium | 1m 19s | The problem gives us a positive integer num and asks whether it is … |
 | 3768 | [Minimum Inversion Count in Subarrays of Fixed Length](3768.md) | 🔴 Hard | 1m 36s | We are given an array nums of length n and an integer k. For every … |
 | 3770 | [Largest Prime from Consecutive Prime Sum](3770.md) | 🟡 Medium | 1m 26s | The problem gives us an integer n and asks us to find the largest p… |
