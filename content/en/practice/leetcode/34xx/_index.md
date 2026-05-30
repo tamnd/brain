@@ -17,6 +17,7 @@ draft: false
 | 3409 | [Longest Subsequence With Decreasing Adjacent Difference](3409.md) | 🟡 Medium | 2m 41s | We are given an array nums, and we want to choose a subsequence fro… |
 | 3411 | [Maximum Subarray With Equal Products](3411.md) | 🟢 Easy | 2m 4s | We are given an array nums consisting of positive integers. For any… |
 | 3413 | [Maximum Coins From K Consecutive Bags](3413.md) | 🟡 Medium | 2m 15s | We are given several non-overlapping segments on a number line. Eac… |
+| 3415 | [Find Products with Three Consecutive Digits ](3415.md) | 🟢 Easy | 1m | This is a SQL database problem involving pattern matching on string… |
 | 3416 | [Subsequences with a Unique Middle Mode II](3416.md) | 🔴 Hard | 1m 33s | We are given an array nums, and we must count how many subsequences… |
 | 3417 | [Zigzag Grid Traversal With Skip](3417.md) | 🟢 Easy | 1m 23s | This problem asks us to traverse a two-dimensional grid in a zigzag… |
 | 3418 | [Maximum Amount of Money Robot Can Earn](3418.md) | 🟡 Medium | 1m 15s | We are given an m x n grid where each cell contains either a positi… |

@@ -67,3 +67,8 @@ draft: false
 | 3586 | [Find COVID Recovery Patients](3586.md) | 🟡 Medium | 54s | The task is to identify patients who have recovered from COVID base… |
 | 3588 | [Find Maximum Area of a Triangle](3588.md) | 🟡 Medium | 1m 41s | We are given n distinct points on a 2D Cartesian plane. Each point … |
 | 3589 | [Count Prime-Gap Balanced Subarrays](3589.md) | 🟡 Medium | 1m 56s | We are given an integer array nums and an integer k. We must count … |
+| 3591 | [Check if Any Element Has Prime Frequency](3591.md) | 🟢 Easy | 49s | This problem asks us to determine whether any number in an array ap… |
+| 3592 | [Inverse Coin Change](3592.md) | 🟡 Medium | 2m 45s | The problem gives us a 1-indexed array numWays, where numWays[i] in… |
+| 3594 | [Minimum Time to Transport All Individuals](3594.md) | 🔴 Hard | 1m 40s | This problem is a shortest-path optimization over a highly constrai… |
+| 3596 | [Minimum Cost Path with Alternating Directions I](3596.md) | 🟡 Medium | 52s | This problem requires computing the minimum total cost to traverse … |
+| 3597 | [Partition String ](3597.md) | 🟡 Medium | 1m 21s | We are given a string s and must partition it into segments accordi… |
