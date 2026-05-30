@@ -27,6 +27,10 @@ draft: false
 | 3727 | [Maximum Alternating Sum of Squares](3727.md) | 🟡 Medium | 1m 27s | We are given an integer array nums, and we are allowed to rearrange… |
 | 3729 | [Count Distinct Subarrays Divisible by K in Sorted Array](3729.md) | 🔴 Hard | 47s | The problem asks us to find the number of distinct subarrays in a s… |
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
+| 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 44s | The problem asks us to calculate the maximum total calories burned … |
+| 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 27s | We are given an integer array nums and a value target. We must coun… |
+| 3739 | [Count Subarrays With Majority Element II](3739.md) | 🔴 Hard | 1m 38s | We are given an array nums and a value target. We must count how ma… |
+| 3742 | [Maximum Path Score in a Grid](3742.md) | 🟡 Medium | 48s | This problem presents a grid of size m x n where each cell contains… |
 | 3743 | [Maximize Cyclic Partition Score](3743.md) | 🔴 Hard | 1m 34s | We are given a cyclic array nums, which means the array is consider… |
 | 3744 | [Find Kth Character in Expanded String](3744.md) | 🟡 Medium | 1m 21s | The problem gives us a string s containing one or more lowercase wo… |
 | 3745 | [Maximize Expression of Three Elements](3745.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to choose th… |
