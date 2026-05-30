@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 283 exercises solved, 41 verified.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 285 exercises solved, 42 verified.
 
 | Section | Title | Solved | Verified |
 |---------|-------|--------|----------|
@@ -24,4 +24,4 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [1.2.8](1.2.8/) | Fibonacci Numbers | 11 | 0 |
 | [2.3.1](2.3.1/) | Traversing Binary Trees | 3 | 3 |
 | [2.3.2](2.3.2/) | Binary Tree Representation of Trees | 17 | 15 |
-| [2.3.3](2.3.3/) | Other Representations of Trees | 16 | 14 |
+| [2.3.3](2.3.3/) | Other Representations of Trees | 18 | 15 |
