@@ -28,10 +28,13 @@ draft: false
 | 3516 | [Find Closest Person](3516.md) | 🟢 Easy | 1m 8s | This problem gives us three integers, x, y, and z, representing the… |
 | 3517 | [Smallest Palindromic Rearrangement I](3517.md) | 🟡 Medium | 40s | The problem asks us to take a palindromic string s and return its l… |
 | 3518 | [Smallest Palindromic Rearrangement II](3518.md) | 🔴 Hard | 1m 42s | We are given a string s that is guaranteed to already be a palindro… |
+| 3519 | [Count Numbers with Non-Decreasing Digits ](3519.md) | 🔴 Hard | 1m 45s | We are given two very large integers l and r as decimal strings and… |
+| 3521 | [Find Product Recommendation Pairs](3521.md) | 🟡 Medium | 1m 16s | This problem asks us to identify product pairs that are frequently … |
 | 3523 | [Make Array Non-decreasing](3523.md) | 🟡 Medium | 49s | The problem asks us to transform an integer array nums into a non-d… |
 | 3524 | [Find X Value of Array I](3524.md) | 🟡 Medium | 1m 45s | The operation described in the problem may initially look unusual, … |
 | 3525 | [Find X Value of Array II](3525.md) | 🔴 Hard | 1m 25s | For each query, two things happen in order. First, we permanently u… |
 | 3527 | [Find the Most Common Response](3527.md) | 🟡 Medium | 1m 33s | This problem gives us a two dimensional array of strings called res… |
+| 3528 | [Unit Conversion I](3528.md) | 🟡 Medium | 42s | The problem is asking us to compute, for each unit type from 0 to n… |
 | 3529 | [Count Cells in Overlapping Horizontal and Vertical Substrings](3529.md) | 🟡 Medium | 1m 22s | We are given a character matrix and a pattern string. The key obser… |
 | 3530 | [Maximum Profit from Valid Topological Order in DAG](3530.md) | 🔴 Hard | 47s | The problem requires computing the maximum possible profit achievab… |
 | 3532 | [Path Existence Queries in a Graph I](3532.md) | 🟡 Medium | 1m 23s | This problem defines an undirected graph implicitly through a sorte… |
