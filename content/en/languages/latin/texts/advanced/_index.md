@@ -295,6 +295,81 @@ A commentary is not a crutch — it is the primary tool of advanced classical sc
 
 ---
 
+## Sallust (86–35 BCE)
+
+Sallust wrote two historical monographs: *Bellum Catilinae* (the Catilinarian conspiracy) and *Bellum Jugurthinum* (the war against Jugurtha of Numidia). Both are relatively short — about 50–70 pages each — but dense with archaic vocabulary and compressed syntax that Tacitus later studied and imitated.
+
+### The Sallustian Style
+
+Sallust consciously imitated Thucydides' compressed Greek prose. His Latin features:
+- Archaic forms (*lubido* for *libido*; *mancupium* for *mancipium*; *vorsus* for *versus*)
+- Short sentences after long complex ones — a staccato effect
+- Moralizing commentary woven into narrative
+- Character portraits (*characterismi*) that freeze action to analyze a person's inner qualities
+- Historic infinitive used freely (infinitive replacing imperfect indicative)
+
+### *Bellum Catilinae* as Entry Point
+
+The *Bellum Catilinae* (written ~42 BCE) covers events of 63 BCE — the Catilinarian conspiracy that Cicero suppressed. Reading it directly after Cicero's *Catilinarians* creates a fascinating comparison: Cicero the participant-orator vs. Sallust the historian writing 20 years later. The same events look very different from each author's perspective, with different emphases on causation, character, and guilt.
+
+**Famous passage**: Sallust's portraits of Catiline (chapter 5) and Sempronia (chapter 25 — an unusually full portrait of a woman in Roman historiography) are the most anthologized sections.
+
+### *Bellum Jugurthinum* for the Historian
+
+The *Jugurtha* covers Rome's difficult war against Jugurtha (112–105 BCE) and uses it to analyze aristocratic corruption in the late Republic. It contains Sallust's famous characterization of senatorial venality and his portrait of Marius — the "new man" who defeated the aristocracy through merit. Essential reading for understanding the social tensions that produced Caesar and the civil wars.
+
+---
+
+## Livy, *Ab Urbe Condita* (27 BCE – 17 CE)
+
+Livy's history of Rome from its legendary foundation to 9 BCE occupied 142 books, of which 35 survive (Books 1–10 and 21–45). It is the most extensive historical prose corpus in classical Latin.
+
+### Livy's Prose Style
+
+Livy's style is **periodic but not Ciceronian** — his sentences are complex and subordinated, but the architecture is gentler and the vocabulary less specialized than Cicero's speeches. For readers who have mastered Caesar and want to build toward Cicero, Livy is an excellent bridge.
+
+Characteristics:
+- Long narrative periods with embedded indirect statement and participial phrases
+- *oratio obliqua* (indirect speech) used extensively for speeches reported in third person
+- Vivid descriptive passages (battle scenes, storm scenes) alternate with more analytical political narrative
+- *pathos* — Livy is not afraid of emotional rhetoric; his account of the Gallic sack of Rome (Book 5) is genuinely moving
+
+### Best Entry Points
+
+**Book 1** (founding myths): Romulus and Remus; the rape of the Sabine Women; Lucretia and the expulsion of the Tarquins. Mythological-legendary; accessible prose; complete narrative.
+
+**Books 21–22** (Second Punic War): Hannibal crosses the Alps; the disaster at Lake Trasimene; the catastrophe at Cannae. The most dramatic books; most widely taught in universities. Book 21's Alps crossing is perhaps the most exciting sustained narrative in Latin prose.
+
+**Book 39** (Bacchanalia scandal, 186 BCE): Rome's crackdown on Bacchic cult associations; fascinating for Roman religion and social history.
+
+### What Livy Is Not
+
+Livy is not a critical historian in the modern sense. He accepts legendary accounts and does not rigorously evaluate sources. He is primarily a moralist and narrator — history as a storehouse of moral exempla (*exempla maiorum*). Read him for the story, the Latin style, and the Roman moral framework, not for documentary accuracy.
+
+### Commentary for Livy
+
+**Ogilvie, R. M., *A Commentary on Livy Books 1–5*** (Oxford: Clarendon Press, 1965) — the standard scholarly commentary; detailed and rigorous.
+
+**Walsh, P. G., *Livy* (Cambridge: Cambridge University Press, 1961)** — an introduction to Livy's literary art and historical method; excellent orientation before reading.
+
+For classroom use, the **Bryn Mawr Latin Commentaries** cover Books 21 (the Alps crossing) with full notes appropriate for advanced students.
+
+---
+
+## Pliny the Younger, *Epistles* (97–109 CE)
+
+Pliny's letters are the most readable advanced Latin prose. Written with care and artistry but in a conversational register, they cover an enormous range of topics: country-house architecture, literary criticism, ghost stories, the eruption of Vesuvius (two famous letters to Tacitus), Roman legal practice, and the treatment of Christians in Bithynia (the famous exchange with the emperor Trajan).
+
+### The Vesuvius Letters (6.16 and 6.20)
+
+The most famous of Pliny's letters describe the eruption of Vesuvius in 79 CE, the death of his uncle Pliny the Elder, and his own escape. These are the only contemporary eyewitness accounts of the eruption. They are also among the most gripping narratives in Latin prose — the darkness at noon, the sea retreating, the shore covered in pumice.
+
+**Difficulty**: Moderate. Sentence structure is complex but clear; vocabulary is manageable.
+
+**As a starting point**: Letter 1.1 (program of the collection) and 6.16 (Vesuvius) are the natural starting points.
+
+---
+
 ## Reference
 
 - Austin, R. G. (1955–1977). *P. Vergili Maronis Aeneidos* (Books 1, 2, 4, 6). Oxford: Clarendon Press.

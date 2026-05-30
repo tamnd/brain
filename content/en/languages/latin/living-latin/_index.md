@@ -370,6 +370,60 @@ The most important rule: **choose one and be consistent**. Mixing pronunciations
 
 ---
 
+## The Classical vs. Ecclesiastical Pronunciation Debate in Active Latin Communities
+
+Within spoken Latin circles, the pronunciation question is not merely academic — it affects which communities you join, which audio resources you use, and what you sound like when you attend an event.
+
+### Classical Pronunciation in Active Latin Programs
+
+Almost all Active Latin programs — SALVI, Vivarium Novum, the Conventiculum Latinum — use Classical (restored) pronunciation. The reasons are largely scholarly: Classical pronunciation is what Cicero and Virgil heard; it is essential for meter (dactylic hexameter only makes sense with vowel length distinctions); and it avoids the confusion of regional Italian-influenced vowel patterns that entered medieval Latin.
+
+### Ecclesiastical Pronunciation in Practice
+
+Ecclesiastical pronunciation is alive and dominant in:
+- Catholic liturgy and Gregorian chant
+- Seminaries and pontifical institutes
+- Some traditionally-oriented Catholic schools
+- Church choirs worldwide
+
+Learners in these contexts should use Ecclesiastical pronunciation. It is also the pronunciation used in much older recorded Latin content (pre-1960s recordings of classical texts sometimes used Ecclesiastical conventions).
+
+### A Note on the "Italian" Problem
+
+Some learners, encountering Latin for the first time in Italy or through Italian-medium channels, encounter a third variant: Italian-influenced pronunciation in which vowel length is not distinguished and *v* = [v], but which also reflects modern Italian phonology in other respects. This is neither Classical nor Ecclesiastical in the strict sense. It is not recommended as a primary model.
+
+---
+
+## Spoken Latin: A Realistic Assessment
+
+### What Spoken Latin Can and Cannot Do
+
+**What it can do**:
+- Dramatically increase the quantity of Latin input per unit time
+- Build an intuitive grammatical feel that explicit study cannot fully develop
+- Make Latin emotionally and culturally vivid — it stops being a puzzle and starts being a language
+- Provide community and motivation that solo study cannot
+- Accelerate reading fluency, especially for texts at the learner's current level
+
+**What it cannot do**:
+- Replace knowledge of grammar — you still need to understand declension, conjugation, and syntax
+- Substitute for extensive reading — speaking does not replace reading volume
+- Make Tacitus or Horace easy — advanced texts require advanced reading skill regardless of spoken exposure
+- Guarantee communication with other speakers (the Latin-speaking community is small and geographically dispersed)
+
+### Realistic Expectations for a First-Year Spoken Latin Learner
+
+By the end of year 1, with regular spoken Latin practice:
+- You can produce simple sentences in response to simple questions
+- You can understand slow, clear spoken Latin on familiar topics
+- You can participate in text-based Latin conversations in Discord
+- You can read aloud Latin text with reasonable fluency
+- You cannot understand rapid, colloquial Latin speech without preparation
+
+This is normal. The spoken Latin community has no native speakers and no real everyday-use context — it is a scholarly-recreational practice. Progress is measured differently than in a modern language with immersion opportunities.
+
+---
+
 ## Reference
 
 - Krashen, S. (1982). *Principles and Practice in Second Language Acquisition*. Pergamon Press.
