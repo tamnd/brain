@@ -36,3 +36,12 @@ draft: false
 | 3535 | [Unit Conversion II](3535.md) | 🟡 Medium | 1m 8s | The input describes a collection of unit conversion relationships. … |
 | 3536 | [Maximum Product of Two Digits](3536.md) | 🟢 Easy | 1m 5s | The problem gives us a positive integer n and asks us to find the m… |
 | 3538 | [Merge Operations for Minimum Travel Time](3538.md) | 🔴 Hard | 46s | This problem presents a road of length l kilometers, segmented by n… |
+| 3540 | [Minimum Time to Visit All Houses](3540.md) | 🟡 Medium | 1m 19s | This problem describes a set of n houses arranged in a circle. Betw… |
+| 3541 | [Find Most Frequent Vowel and Consonant](3541.md) | 🟢 Easy | 53s | The problem requires analyzing a string s composed of lowercase Eng… |
+| 3542 | [Minimum Operations to Convert All Elements to Zero](3542.md) | 🟡 Medium | 57s | The problem requires us to reduce all elements of a given non-negat… |
+| 3543 | [Maximum Weighted K-Edge Path](3543.md) | 🟡 Medium | 1m 21s | We are given a directed acyclic graph (DAG) with n nodes and weight… |
+| 3544 | [Subtree Inversion Sum](3544.md) | 🔴 Hard | 48s | This problem asks us to select a subset of nodes in a rooted tree s… |
+| 3545 | [Minimum Deletions for At Most K Distinct Characters](3545.md) | 🟢 Easy | 1m 19s | The problem gives us a string s containing lowercase English letter… |
+| 3546 | [Equal Sum Grid Partition I](3546.md) | 🟡 Medium | 1m 6s | This problem asks us to determine whether a rectangular grid of pos… |
+| 3547 | [Maximum Sum of Edge Values in a Graph](3547.md) | 🔴 Hard | 2m 30s | The graph is undirected, connected, and every node has degree at mo… |
+| 3552 | [Grid Teleportation Traversal](3552.md) | 🟡 Medium | 1m 4s | This problem presents a 2D grid traversal scenario with obstacles a… |
