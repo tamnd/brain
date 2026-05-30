@@ -43,4 +43,16 @@ draft: false
 | 3446 | [Sort Matrix by Diagonals](3446.md) | 🟡 Medium | 54s | We are given an n x n square matrix grid. Every cell belongs to exa… |
 | 3447 | [Assign Elements to Groups with Constraints](3447.md) | 🟡 Medium | 50s | The problem requires assigning elements from one array, elements, t… |
 | 3448 | [Count Substrings Divisible By Last Digit](3448.md) | 🔴 Hard | 1m 26s | We are given a string s consisting only of decimal digits. Every su… |
+| 3449 | [Maximize the Minimum Game Score](3449.md) | 🔴 Hard | 1m 26s | You are given an array points, where points[i] is the amount added … |
+| 3450 | [Maximum Students on a Single Bench](3450.md) | 🟢 Easy | 46s | The problem provides a list of student-seat assignments, where each… |
 | 3451 | [Find Invalid IP Addresses](3451.md) | 🔴 Hard | 1m 5s | This is a SQL database problem where we must identify all invalid I… |
+| 3452 | [Sum of Good Numbers](3452.md) | 🟢 Easy | 1m 15s | This problem gives us an integer array nums and an integer k. For e… |
+| 3454 | [Separate Squares II](3454.md) | 🔴 Hard | 1m 53s | This problem asks us to find the smallest horizontal line y = H tha… |
+| 3456 | [Find Special Substring of Length K](3456.md) | 🟢 Easy | 1m 14s | The problem gives us a string s and an integer k. We need to determ… |
+| 3457 | [Eat Pizzas!](3457.md) | 🟡 Medium | 42s | The problem presents an array pizzas of size n where each element r… |
+| 3458 | [Select K Disjoint Special Substrings](3458.md) | 🟡 Medium | 46s | The problem asks us to determine whether we can select k disjoint s… |
+| 3459 | [Length of Longest V-Shaped Diagonal Segment](3459.md) | 🔴 Hard | 2m 2s | We are given an n x m matrix whose entries are only 0, 1, or 2. A v… |
+| 3460 | [Longest Common Prefix After at Most One Removal](3460.md) | 🟡 Medium | 1m 25s | We are given two lowercase strings, s and t. We may remove at most … |
+| 3462 | [Maximum Sum With at Most K Elements](3462.md) | 🟡 Medium | 49s | We are given a matrix grid, where each row contains a collection of… |
+| 3463 | [Check If Digits Are Equal in String After Operations II](3463.md) | 🔴 Hard | 44s | The problem asks us to repeatedly transform a string of digits unti… |
+| 3465 | [Find Products with Valid Serial Numbers](3465.md) | 🟢 Easy | 40s | The problem asks us to query a database table called products to id… |
