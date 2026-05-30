@@ -33,3 +33,14 @@ draft: false
 | 3433 | [Count Mentions Per User](3433.md) | 🟡 Medium | 1m 28s | This problem asks us to simulate a sequence of user activity events… |
 | 3435 | [Frequencies of Shortest Supersequences](3435.md) | 🔴 Hard | 46s | The problem asks us to find all shortest common supersequences (SCS… |
 | 3436 | [Find Valid Emails](3436.md) | 🟢 Easy | 42s | The problem requires us to identify valid email addresses from a Us… |
+| 3437 | [Permutations III](3437.md) | 🟡 Medium | 1m 13s | We are given a single integer n, and we need to generate all permut… |
+| 3438 | [Find Valid Pair of Adjacent Digits in String](3438.md) | 🟢 Easy | 49s | The problem requires us to find a valid pair of adjacent digits in … |
+| 3439 | [Reschedule Meetings for Maximum Free Time I](3439.md) | 🟡 Medium | 55s | We are given an event that runs from time 0 to eventTime. Inside th… |
+| 3440 | [Reschedule Meetings for Maximum Free Time II](3440.md) | 🟡 Medium | 1m 41s | We are given an event that lasts from time 0 to eventTime. Inside t… |
+| 3441 | [Minimum Cost Good Caption](3441.md) | 🔴 Hard | 1m 23s | We are given a lowercase string caption. We may repeatedly change a… |
+| 3442 | [Maximum Difference Between Even and Odd Frequency I](3442.md) | 🟢 Easy | 56s | This problem requires analyzing the frequency of characters in a gi… |
+| 3444 | [Minimum Increments for Target Multiples in an Array](3444.md) | 🔴 Hard | 1m 36s | We are given two arrays: - nums, the array whose elements we are al… |
+| 3446 | [Sort Matrix by Diagonals](3446.md) | 🟡 Medium | 54s | We are given an n x n square matrix grid. Every cell belongs to exa… |
+| 3447 | [Assign Elements to Groups with Constraints](3447.md) | 🟡 Medium | 50s | The problem requires assigning elements from one array, elements, t… |
+| 3448 | [Count Substrings Divisible By Last Digit](3448.md) | 🔴 Hard | 1m 26s | We are given a string s consisting only of decimal digits. Every su… |
+| 3451 | [Find Invalid IP Addresses](3451.md) | 🔴 Hard | 1m 5s | This is a SQL database problem where we must identify all invalid I… |
