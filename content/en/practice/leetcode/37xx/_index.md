@@ -48,3 +48,5 @@ draft: false
 | 3770 | [Largest Prime from Consecutive Prime Sum](3770.md) | 🟡 Medium | 1m 26s | The problem gives us an integer n and asks us to find the largest p… |
 | 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 1m 13s | We are given an integer array nums and an integer k. The task is to… |
 | 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 1m 23s | The problem gives us a string s containing lowercase English words … |
+| 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 29s | We are given an integer array nums, and we must select exactly thre… |
+| 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 47s | The problem asks us to simulate an alternating deletion process on … |
