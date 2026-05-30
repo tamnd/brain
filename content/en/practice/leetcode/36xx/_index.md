@@ -67,13 +67,17 @@ draft: false
 | 3677 | [Count Binary Palindromic Numbers](3677.md) | 🔴 Hard | 1m 9s | We are given a non-negative integer n and asked to count how many i… |
 | 3679 | [ Minimum Discards to Balance Inventory](3679.md) | 🟡 Medium | 1m 20s | This problem models a stream of arriving items. On each day, exactl… |
 | 3680 | [Generate Schedule](3680.md) | 🟡 Medium | 1m 14s | The problem is asking us to generate a round-robin style schedule f… |
+| 3681 | [Maximum XOR of Subsequences](3681.md) | 🔴 Hard | 1m 26s | The problem gives us an array nums of non-negative integers. We mus… |
 | 3682 | [Minimum Index Sum of Common Elements](3682.md) | 🟡 Medium | 48s | This problem is asking us to identify the smallest sum of indices f… |
 | 3683 | [Earliest Time to Finish One Task](3683.md) | 🟢 Easy | 1m 12s | The problem gives us a list of tasks, where each task is represente… |
 | 3684 | [Maximize Sum of At Most K Distinct Elements](3684.md) | 🟢 Easy | 32s | This problem requires selecting at most k distinct elements from a … |
 | 3686 | [Number of Stable Subsequences](3686.md) | 🔴 Hard | 36s | The problem asks us to count how many subsequences of a given integ… |
 | 3688 | [Bitwise OR of Even Numbers in an Array](3688.md) | 🟢 Easy | 1m 32s | This problem asks us to compute the bitwise OR of all even numbers … |
 | 3689 | [Maximum Total Subarray Value I](3689.md) | 🟡 Medium | 56s | The problem asks us to select exactly k non-empty subarrays from a … |
+| 3690 | [Split and Merge Array Transformation](3690.md) | 🟡 Medium | 1m 33s | The problem gives us two arrays, nums1 and nums2, of equal length n… |
+| 3691 | [Maximum Total Subarray Value II](3691.md) | 🔴 Hard | 38s | The problem is asking us to select exactly k distinct subarrays fro… |
 | 3693 | [Climbing Stairs II](3693.md) | 🟡 Medium | 47s | This problem is an extension of the classic "climbing stairs" dynam… |
 | 3694 | [Distinct Points Reachable After Substring Removal](3694.md) | 🟡 Medium | 1m 29s | We are given a movement string s consisting of the four directions:… |
 | 3695 | [Maximize Alternating Sum Using Swaps](3695.md) | 🔴 Hard | 1m 31s | We are given an array nums and a list of allowed swap operations. T… |
+| 3696 | [Maximum Distance Between Unequal Words in Array I](3696.md) | 🟢 Easy | 1m 14s | We are given an array of strings called words. Our task is to find … |
 | 3697 | [Compute Decimal Representation](3697.md) | 🟢 Easy | 31s | This problem asks us to decompose a positive integer n into the few… |
