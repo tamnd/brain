@@ -51,3 +51,6 @@ draft: false
 | 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 29s | We are given an integer array nums, and we must select exactly thre… |
 | 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 47s | The problem asks us to simulate an alternating deletion process on … |
 | 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 1m 18s | We are given a string s and an array cost of the same length. The c… |
+| 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 2m 19s | The problem is asking for the minimum cost to satisfy a requirement… |
+| 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 1m 45s | The problem asks us to count how many integers in the inclusive ran… |
+| 3794 | [Reverse String Prefix](3794.md) | 🟢 Easy | 1m 7s | This problem gives us a string s and an integer k. Our task is to r… |
