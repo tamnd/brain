@@ -28,3 +28,9 @@ draft: false
 | 3625 | [Count Number of Trapezoids II](3625.md) | 🔴 Hard | 47s | The problem asks us to count the number of unique trapezoids that c… |
 | 3626 | [Find Stores with Inventory Imbalance](3626.md) | 🟡 Medium | 1m 23s | This problem asks us to identify stores with an inventory imbalance… |
 | 3630 | [Partition Array for Maximum XOR and AND](3630.md) | 🔴 Hard | 50s | The problem asks us to partition an integer array nums into three s… |
+| 3632 | [Subarrays with XOR at Least K](3632.md) | 🔴 Hard | 1m 41s | This problem asks us to count the number of contiguous subarrays of… |
+| 3633 | [Earliest Finish Time for Land and Water Rides I](3633.md) | 🟢 Easy | 1m 20s | The problem gives us two groups of rides: - Land rides, where each … |
+| 3634 | [Minimum Removals to Balance Array](3634.md) | 🟡 Medium | 1m 31s | We are given an array nums and an integer k. We may remove any numb… |
+| 3636 | [Threshold Majority Queries](3636.md) | 🔴 Hard | 2m 12s | The problem asks us to process multiple queries on a given array nu… |
+| 3638 | [Maximum Balanced Shipments](3638.md) | 🟡 Medium | 47s | We are given an array weight representing parcels arranged in a lin… |
+| 3641 | [Longest Semi-Repeating Subarray](3641.md) | 🟡 Medium | 1m 32s | We are given an integer array nums and an integer k. A subarray is … |
