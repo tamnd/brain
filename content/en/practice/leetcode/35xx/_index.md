@@ -49,5 +49,9 @@ draft: false
 | 3553 | [Minimum Weighted Subgraph With the Required Paths II](3553.md) | 🔴 Hard | 1m 37s | We are given a weighted, undirected tree with n nodes. Because the … |
 | 3554 | [Find Category Recommendation Pairs](3554.md) | 🔴 Hard | 1m 5s | This is a SQL database problem involving customer purchasing behavi… |
 | 3559 | [Number of Ways to Assign Edge Weights II](3559.md) | 🔴 Hard | 1m 15s | We are given an undirected tree with n nodes, rooted at node 1. Eve… |
+| 3560 | [Find Minimum Log Transportation Cost](3560.md) | 🟢 Easy | 32s | The problem asks us to transport two logs of lengths n and m using … |
 | 3561 | [Resulting String After Adjacent Removals](3561.md) | 🟡 Medium | 50s | The problem asks us to repeatedly remove pairs of adjacent characte… |
 | 3563 | [Lexicographically Smallest String After Adjacent Removals](3563.md) | 🔴 Hard | 40s | The problem asks us to find the lexicographically smallest string t… |
+| 3565 | [Sequential Grid Path Cover](3565.md) | 🟡 Medium | 54s | The problem asks us to find a path that visits every cell of a give… |
+| 3567 | [Minimum Absolute Difference in Sliding Submatrix](3567.md) | 🟡 Medium | 32s | The problem requires computing a specific statistic for every conti… |
+| 3570 | [Find Books with No Available Copies](3570.md) | 🟢 Easy | 46s | This problem asks us to identify books in a library system that are… |
