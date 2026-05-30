@@ -30,7 +30,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.2: 18/22 solved.
 | [10](10.md) |  [*M23*] | math-medium | verified | 1m05s |
 | [11](11.md) |  [*15*] | simple | verified | 2m12s |
 | [12](12.md) |  [*M21*] | math-medium | verified | 4m07s |
-| [13](13.md) |  [*26*] | hard | solved | 8m28s |
+| [13](13.md) |  [*26*] | hard | verified | 1m40s |
 | [14](14.md) |  [*M21*] | math-medium | verified | 1m15s |
 | [15](15.md) |  [*23*] | medium | verified | 1m21s |
 | [16](16.md) |  [*24*] | medium | verified | 1m26s |
