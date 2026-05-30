@@ -23,3 +23,4 @@ draft: false
 | 3744 | [Find Kth Character in Expanded String](3744.md) | 🟡 Medium | 1m 21s | The problem gives us a string s containing one or more lowercase wo… |
 | 3745 | [Maximize Expression of Three Elements](3745.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to choose th… |
 | 3748 | [Count Stable Subarrays](3748.md) | 🔴 Hard | 52s | The problem asks us to count "stable" subarrays within a given arra… |
+| 3751 | [Total Waviness of Numbers in Range I](3751.md) | 🟡 Medium | 1m 20s | This problem asks us to compute the total waviness of every integer… |
