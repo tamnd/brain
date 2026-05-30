@@ -87,6 +87,7 @@ description: "Codeforces problem solutions with full editorial. 387 contests, 15
 description: "Codeforces problem solutions with full editorial. 388 contests, 1603 problems, 1214 verified."
 description: "Codeforces problem solutions with full editorial. 389 contests, 1610 problems, 1220 verified."
 description: "Codeforces problem solutions with full editorial. 390 contests, 1619 problems, 1221 verified."
+description: "Codeforces problem solutions with full editorial. 391 contests, 1627 problems, 1226 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -184,6 +185,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **388 contests, 1603 problems, 1214 verified.**
 **389 contests, 1610 problems, 1220 verified.**
 **390 contests, 1619 problems, 1221 verified.**
+**391 contests, 1627 problems, 1226 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -607,3 +609,4 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1949](1949/) | [European Championship 2024 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1949) | ICPC/IOI | 1500-3300 | 5/11 | 28m 1s |
 | [1950](1950/) | [Codeforces Round 937 (Div. 4)](https://codeforces.com/contest/1950) | Div. 4 | 800-1900 | 6/7 | 7m 41s |
 | [1951](1951/) | [Codeforces Global Round 25](https://codeforces.com/contest/1951) | Global | 900-3200 | 1/9 | 11m 49s |
+| [1952](1952/) | [April Fools Day Contest 2024](https://codeforces.com/contest/1952) | April Fools | - | 5/8 | 7m 9s |
