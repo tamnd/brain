@@ -19,11 +19,14 @@ draft: false
 | 3408 | [Design Task Manager](3408.md) | 🟡 Medium | 2m 21s | This problem asks us to design a data structure that maintains a co… |
 | 3409 | [Longest Subsequence With Decreasing Adjacent Difference](3409.md) | 🟡 Medium | 2m 41s | We are given an array nums, and we want to choose a subsequence fro… |
 | 3411 | [Maximum Subarray With Equal Products](3411.md) | 🟢 Easy | 2m 4s | We are given an array nums consisting of positive integers. For any… |
+| 3412 | [Find Mirror Score of a String](3412.md) | 🟡 Medium | 1m 21s | We are given a lowercase English string s. Every letter has a uniqu… |
 | 3413 | [Maximum Coins From K Consecutive Bags](3413.md) | 🟡 Medium | 2m 15s | We are given several non-overlapping segments on a number line. Eac… |
+| 3414 | [Maximum Score of Non-overlapping Intervals](3414.md) | 🔴 Hard | 1m 6s | This problem combines weighted interval scheduling with an addition… |
 | 3415 | [Find Products with Three Consecutive Digits ](3415.md) | 🟢 Easy | 1m | This is a SQL database problem involving pattern matching on string… |
 | 3416 | [Subsequences with a Unique Middle Mode II](3416.md) | 🔴 Hard | 1m 33s | We are given an array nums, and we must count how many subsequences… |
 | 3417 | [Zigzag Grid Traversal With Skip](3417.md) | 🟢 Easy | 1m 23s | This problem asks us to traverse a two-dimensional grid in a zigzag… |
 | 3418 | [Maximum Amount of Money Robot Can Earn](3418.md) | 🟡 Medium | 1m 15s | We are given an m x n grid where each cell contains either a positi… |
+| 3419 | [Minimize the Maximum Edge Weight of Graph](3419.md) | 🟡 Medium | 49s | The problem is asking us to manipulate a directed weighted graph in… |
 | 3420 | [Count Non-Decreasing Subarrays After K Operations](3420.md) | 🔴 Hard | 1m 24s | You are given an array nums and a budget of at most k increment ope… |
 | 3421 | [Find Students Who Improved](3421.md) | 🟡 Medium | 1m 3s | This is a SQL database problem that asks us to identify student-sub… |
 | 3422 | [Minimum Operations to Make Subarray Elements Equal](3422.md) | 🟡 Medium | 2m 11s | We are given an array nums and an integer k. In a single operation,… |
