@@ -44,3 +44,10 @@ draft: false
 | 3652 | [Best Time to Buy and Sell Stock using Strategy](3652.md) | 🟡 Medium | 39s | This problem asks us to calculate the maximum possible profit from … |
 | 3653 | [XOR After Range Multiplication Queries I](3653.md) | 🟡 Medium | 2m 56s | We are given an integer array nums and a list of queries. Each quer… |
 | 3655 | [XOR After Range Multiplication Queries II](3655.md) | 🔴 Hard | 1m 20s | We are given an array nums and a list of queries. Each query has th… |
+| 3657 | [Find Loyal Customers](3657.md) | 🟡 Medium | 1m 1s | This problem is a SQL aggregation and filtering task. We are given … |
+| 3658 | [GCD of Odd and Even Sums](3658.md) | 🟢 Easy | 1m 12s | The problem asks us to calculate the greatest common divisor (GCD) … |
+| 3662 | [Filter Characters by Frequency](3662.md) | 🟢 Easy | 1m 21s | This problem asks us to filter a string based on character frequenc… |
+| 3663 | [Find The Least Frequent Digit](3663.md) | 🟢 Easy | 40s | The problem asks us to find the least frequent digit in the decimal… |
+| 3664 | [Two-Letter Card Game](3664.md) | 🟡 Medium | 5m 11s | Each card consists of exactly two lowercase letters. A card is only… |
+| 3665 | [Twisted Mirror Path Count](3665.md) | 🟡 Medium | 1m 10s | This problem asks us to count all unique paths from the top-left co… |
+| 3668 | [Restore Finishing Order](3668.md) | 🟢 Easy | 1m 32s | This problem gives us two arrays: - order, which represents the fin… |
