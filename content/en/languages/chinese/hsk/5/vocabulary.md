@@ -635,4 +635,237 @@ HSK 5 (B2) introduces approximately 1,600 new words, bringing the cumulative tot
 
 ---
 
-> This page covers approximately 600 words from the HSK 5 vocabulary list. Individual word pages with detailed examples, grammar notes, and example sentences are in the [vocabulary/](vocabulary/) subdirectory. Additional semantic categories — including psychology and emotion, arts and culture, law and governance, science and medicine, and more — will be added in follow-up sessions to reach the full 1,600-word target.
+## Nouns: Arts, Literature and Culture (艺术文学文化名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 文学流派 | wénxué liúpài | literary movement, school | n | 现代文学流派 (modern literary movement), 浪漫主义流派 (Romantic movement) |
+| 文体 | wéntǐ | literary genre, style | n | 文体特征 (genre features), 多种文体 (multiple genres) |
+| 叙事 | xùshì | narrative; to narrate | n/v | 叙事结构 (narrative structure), 第一人称叙事 (first-person narrative) |
+| 视角 | shìjiǎo | perspective, point of view | n | 叙事视角 (narrative perspective), 多元视角 (multiple perspectives) |
+| 象征 | xiàngzhēng | symbolism; to symbolize | n/v | 具有象征意义 (have symbolic meaning), 象征手法 (symbolic technique) |
+| 比喻 | bǐyù | metaphor; to use a metaphor | n/v | 生动比喻 (vivid metaphor), 运用比喻 (employ metaphor) |
+| 修辞 | xiūcí | rhetoric, rhetorical device | n | 修辞手法 (rhetorical device), 修辞分析 (rhetorical analysis) |
+| 散文 | sǎnwén | prose | n | 散文创作 (prose writing), 优美散文 (beautiful prose) |
+| 诗歌 | shīgē | poetry | n | 古典诗歌 (classical poetry), 现代诗歌 (modern poetry) |
+| 诗句 | shījù | verse, line of poetry | n | 引用诗句 (quote a verse), 经典诗句 (classic verse) |
+| 剧本 | jùběn | screenplay, script | n | 创作剧本 (write a screenplay), 改编剧本 (adapt a script) |
+| 情节 | qíngjié | plot, storyline | n | 情节发展 (plot development), 跌宕情节 (twisting plot) |
+| 人物 | rénwù | character, figure | n | 主要人物 (main character), 人物刻画 (character portrayal) |
+| 主题 | zhǔtí | theme, subject | n | 深刻主题 (profound theme), 主题思想 (thematic idea) |
+| 母题 | mǔtí | motif | n | 文学母题 (literary motif), 反复出现的母题 (recurring motif) |
+| 悲剧 | bēijù | tragedy | n | 悲剧色彩 (tragic element), 希腊悲剧 (Greek tragedy) |
+| 喜剧 | xǐjù | comedy | n | 喜剧效果 (comic effect), 古典喜剧 (classical comedy) |
+| 讽刺 | fěngcì | satire; to satirize | n/v | 辛辣讽刺 (biting satire), 讽刺手法 (satirical technique) |
+| 批评 | pīpíng | critique; to critique | n/v | 文学批评 (literary criticism), 提出批评 (raise a critique) |
+| 审美 | shěnměi | aesthetic; aesthetics | adj/n | 审美观念 (aesthetic concept), 审美价值 (aesthetic value) |
+| 文化遗产 | wénhuà yíchǎn | cultural heritage | n | 保护文化遗产 (protect cultural heritage), 世界文化遗产 (world cultural heritage) |
+| 文物 | wénwù | artifact, cultural relic | n | 珍贵文物 (precious artifact), 保存文物 (preserve artifacts) |
+| 传统 | chuántǒng | tradition; traditional | n/adj | 文化传统 (cultural tradition), 传承传统 (pass on tradition) |
+| 手稿 | shǒugǎo | manuscript | n | 珍贵手稿 (precious manuscript), 整理手稿 (sort manuscripts) |
+| 出版物 | chūbǎnwù | publication | n | 学术出版物 (academic publication), 发行出版物 (distribute publications) |
+| 文集 | wénjí | anthology, collected works | n | 编辑文集 (compile an anthology), 作品文集 (collected works) |
+| 诠释 | quánshì | interpretation; to interpret | n/v | 多元诠释 (multiple interpretations), 深入诠释 (in-depth interpretation) |
+| 经典 | jīngdiǎn | canon, classic; canonical | n/adj | 文学经典 (literary canon), 经典作品 (classic works) |
+
+## Verbs: Economic and Financial Actions (经济金融动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 投资 | tóuzī | to invest; investment | v/n | 投资回报 (return on investment), 吸引投资 (attract investment) |
+| 融资 | róngzī | to raise funds, to finance | v | 融资渠道 (financing channel), 股权融资 (equity financing) |
+| 预算 | yùsuàn | to budget; budget | v/n | 制定预算 (set a budget), 超出预算 (exceed the budget) |
+| 预测 | yùcè | to forecast, to predict | v | 经济预测 (economic forecast), 市场预测 (market prediction) |
+| 审计 | shěnjì | to audit; audit | v/n | 财务审计 (financial audit), 独立审计 (independent audit) |
+| 贬值 | biǎnzhí | to depreciate, to devalue | v | 货币贬值 (currency depreciation), 资产贬值 (asset depreciation) |
+| 通货膨胀 | tōnghuò péngzhàng | inflation; to inflate | n/v | 控制通货膨胀 (control inflation), 通货膨胀率 (inflation rate) |
+| 私有化 | sīyǒuhuà | to privatize | v | 国企私有化 (privatize state enterprises), 推进私有化 (advance privatization) |
+| 补贴 | bǔtiē | to subsidize; subsidy | v/n | 政府补贴 (government subsidy), 提供补贴 (provide subsidies) |
+| 放开管制 | fàngkāi guǎnzhì | to deregulate | v | 放开管制市场 (deregulate the market), 逐步放开管制 (gradually deregulate) |
+| 多元化 | duōyuánhuà | to diversify | v | 投资多元化 (diversify investments), 业务多元化 (diversify business) |
+| 杠杆 | gǎnggǎn | to leverage; leverage | v/n | 使用杠杆 (use leverage), 财务杠杆 (financial leverage) |
+| 对冲 | duìchōng | to hedge; hedging | v/n | 风险对冲 (risk hedging), 对冲基金 (hedge fund) |
+| 清算 | qīngsuàn | to liquidate, to settle | v | 清算资产 (liquidate assets), 债务清算 (debt liquidation) |
+| 积累 | jīlěi | to accumulate | v | 积累资本 (accumulate capital), 积累经验 (accumulate experience) |
+| 分配 | fēnpèi | to distribute, to allocate | v | 分配利润 (distribute profits), 合理分配 (allocate reasonably) |
+| 配置 | pèizhì | to allocate, to configure | v | 资源配置 (resource allocation), 优化配置 (optimize allocation) |
+| 整合 | zhěnghé | to integrate, to consolidate | v | 产业整合 (industry integration), 整合市场 (consolidate the market) |
+| 兼并 | jiānbìng | to merge, to consolidate | v | 企业兼并 (corporate merger), 兼并收购 (mergers and acquisitions) |
+| 垄断 | lǒngduàn | to monopolize; monopoly | v/n | 市场垄断 (market monopoly), 打破垄断 (break a monopoly) |
+| 竞争 | jìngzhēng | to compete; competition | v/n | 市场竞争 (market competition), 激烈竞争 (fierce competition) |
+| 出口 | chūkǒu | to export; export | v/n | 扩大出口 (expand exports), 出口贸易 (export trade) |
+| 进口 | jìnkǒu | to import; import | v/n | 减少进口 (reduce imports), 进口商品 (imported goods) |
+| 流通 | liútōng | to circulate; circulation | v/n | 资金流通 (circulation of funds), 促进流通 (promote circulation) |
+| 估值 | gūzhí | to value, to appraise; valuation | v/n | 企业估值 (enterprise valuation), 市场估值 (market valuation) |
+
+## Nouns: Psychology and Cognition (心理认知名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 意识 | yìshí | consciousness, awareness | n | 自我意识 (self-awareness), 增强意识 (raise awareness) |
+| 潜意识 | qiányìshí | subconscious, unconscious | n | 潜意识影响 (subconscious influence), 潜意识动机 (subconscious motivation) |
+| 动机 | dòngjī | motivation, motive | n | 内在动机 (intrinsic motivation), 行为动机 (behavioral motive) |
+| 本能 | běnnéng | instinct; instinctive | n/adj | 生存本能 (survival instinct), 本能反应 (instinctive reaction) |
+| 感知 | gǎnzhī | perception; to perceive | n/v | 感知能力 (perceptual ability), 感知环境 (perceive the environment) |
+| 认知 | rènzhī | cognition; cognitive | n/adj | 认知能力 (cognitive ability), 认知发展 (cognitive development) |
+| 记忆 | jìyì | memory; to memorize | n/v | 长期记忆 (long-term memory), 加深记忆 (deepen memory) |
+| 情绪 | qíngxù | emotion, mood | n | 情绪管理 (emotion management), 负面情绪 (negative emotions) |
+| 焦虑 | jiāolǜ | anxiety; anxious | n/adj | 缓解焦虑 (relieve anxiety), 社交焦虑 (social anxiety) |
+| 抑郁 | yìyù | depression; depressed | n/adj | 抑郁症状 (depressive symptoms), 克服抑郁 (overcome depression) |
+| 性格 | xìnggé | personality, character | n | 性格特征 (personality trait), 开朗性格 (cheerful personality) |
+| 行为 | xíngwéi | behavior, conduct | n | 行为模式 (behavior pattern), 规范行为 (regulate behavior) |
+| 态度 | tàidu | attitude | n | 积极态度 (positive attitude), 改变态度 (change one's attitude) |
+| 信念 | xìnniàn | belief, conviction | n | 坚定信念 (firm belief), 核心信念 (core belief) |
+| 价值观 | jiàzhíguān | values, value system | n | 核心价值观 (core values), 价值观冲突 (conflict of values) |
+| 身份认同 | shēnfèn rèntóng | identity | n | 文化身份认同 (cultural identity), 身份认同危机 (identity crisis) |
+| 自尊 | zìzūn | self-esteem | n | 自尊心强 (strong sense of self-esteem), 维护自尊 (protect self-esteem) |
+| 社会影响 | shèhuì yǐngxiǎng | social influence | n | 社会影响力 (social influence), 受到社会影响 (be subject to social influence) |
+| 从众 | cóngzhòng | conformity; to conform | n/v | 从众心理 (conformist mentality), 避免从众 (avoid conformity) |
+| 偏见 | piānjiàn | prejudice, bias | n | 消除偏见 (eliminate prejudice), 存在偏见 (harbor prejudice) |
+| 刻板印象 | kèbǎn yìnxiàng | stereotyping, stereotype | n | 打破刻板印象 (break stereotypes), 形成刻板印象 (form a stereotype) |
+| 压力 | yālì | stress, pressure | n | 减轻压力 (reduce stress), 承受压力 (bear stress) |
+| 应对 | yìngduì | coping; to cope with | n/v | 应对策略 (coping strategy), 有效应对 (cope effectively) |
+| 韧性 | rènxìng | resilience | n | 心理韧性 (psychological resilience), 增强韧性 (build resilience) |
+| 创伤 | chuāngshāng | trauma, wound | n | 心理创伤 (psychological trauma), 创伤经历 (traumatic experience) |
+| 治疗 | zhìliáo | therapy, treatment; to treat | n/v | 心理治疗 (psychotherapy), 接受治疗 (receive treatment) |
+| 心态 | xīntài | mindset, mental state | n | 积极心态 (positive mindset), 调整心态 (adjust one's mindset) |
+
+## Verbs: Scientific and Research Methods (科学研究动词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 观察 | guānchá | to observe; observation | v/n | 仔细观察 (carefully observe), 实地观察 (field observation) |
+| 测量 | cèliáng | to measure; measurement | v/n | 精确测量 (precisely measure), 测量误差 (measurement error) |
+| 量化 | liànghuà | to quantify | v | 量化指标 (quantify indicators), 量化分析 (quantitative analysis) |
+| 分类 | fēnlèi | to classify; classification | v/n | 科学分类 (scientific classification), 按类分类 (classify by category) |
+| 取样 | qǔyàng | to sample; sampling | v/n | 随机取样 (random sampling), 取样方法 (sampling method) |
+| 控制变量 | kòngzhì biànliàng | to control variables | v | 控制实验变量 (control experimental variables), 严格控制变量 (strictly control variables) |
+| 重复验证 | chóngfù yànzhèng | to replicate | v | 实验重复验证 (replicate experiments), 独立重复验证 (independently replicate) |
+| 模拟 | mónǐ | to simulate; simulation | v/n | 计算机模拟 (computer simulation), 模拟实验 (simulation experiment) |
+| 建模 | jiànmó | to model, to build a model | v | 数学建模 (mathematical modeling), 建模分析 (model-based analysis) |
+| 校准 | jiàozhǔn | to calibrate | v | 仪器校准 (instrument calibration), 校准数据 (calibrate data) |
+| 系统化 | xìtǒnghuà | to systematize | v | 系统化方法 (systematize the approach), 系统化研究 (systematize research) |
+| 检验 | jiǎnyàn | to test, to verify | v | 检验假设 (test a hypothesis), 实验检验 (experimental testing) |
+| 评估 | pínggū | to evaluate; evaluation | v/n | 综合评估 (comprehensive evaluation), 评估结果 (evaluate results) |
+| 比较 | bǐjiào | to compare; comparison | v/n | 横向比较 (horizontal comparison), 对比比较 (comparative analysis) |
+| 对比 | duìbǐ | to contrast; contrast | v/n | 鲜明对比 (striking contrast), 对比分析 (contrastive analysis) |
+| 相关 | xiāngguan | to correlate; correlation | v/n | 统计相关 (statistical correlation), 相关性分析 (correlation analysis) |
+| 假设 | jiǎshè | to hypothesize; hypothesis | v/n | 提出假设 (put forward a hypothesis), 验证假设 (verify a hypothesis) |
+| 推断 | tuīduàn | to deduce, to infer | v | 逻辑推断 (logical deduction), 合理推断 (reasonable inference) |
+| 证实 | zhèngshí | to verify, to confirm | v | 实验证实 (experimentally verify), 证实结论 (confirm the conclusion) |
+| 证伪 | zhèngwěi | to falsify | v | 可证伪性 (falsifiability), 证伪假设 (falsify a hypothesis) |
+| 记录 | jìlù | to document, to record | v | 详细记录 (record in detail), 记录数据 (record data) |
+| 存档 | cúndàng | to archive, to file | v | 妥善存档 (archive properly), 存档资料 (archive materials) |
+| 发表 | fābiǎo | to publish, to present | v | 发表论文 (publish a paper), 发表成果 (present findings) |
+| 引用 | yǐnyòng | to cite; citation | v/n | 准确引用 (cite accurately), 文献引用 (literature citation) |
+| 同行评审 | tóngháng píngshěn | peer review | n/v | 经过同行评审 (undergo peer review), 同行评审制度 (peer review system) |
+
+## Nouns: Philosophy and Ethics (哲学伦理名词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 伦理 | lúnlǐ | ethics | n | 职业伦理 (professional ethics), 伦理问题 (ethical issue) |
+| 道德 | dàodé | morality; moral | n/adj | 道德标准 (moral standard), 道德责任 (moral responsibility) |
+| 原则 | yuánzé | principle | n | 基本原则 (fundamental principle), 坚守原则 (adhere to principles) |
+| 哲学 | zhéxué | philosophy | n | 西方哲学 (Western philosophy), 哲学思想 (philosophical thought) |
+| 本体论 | běntǐlùn | ontology | n | 本体论问题 (ontological question), 存在本体论 (ontology of existence) |
+| 认识论 | rènshílùn | epistemology | n | 认识论框架 (epistemological framework), 知识认识论 (epistemology of knowledge) |
+| 形而上学 | xíng ér shàngxué | metaphysics | n | 形而上学问题 (metaphysical question), 传统形而上学 (traditional metaphysics) |
+| 人文主义 | rénwén zhǔyì | humanism | n | 文艺复兴人文主义 (Renaissance humanism), 人文主义价值观 (humanist values) |
+| 理性主义 | lǐxìng zhǔyì | rationalism | n | 笛卡尔理性主义 (Cartesian rationalism), 理性主义思维 (rationalist thinking) |
+| 经验主义 | jīngyàn zhǔyì | empiricism | n | 英国经验主义 (British empiricism), 经验主义方法 (empiricist approach) |
+| 功利主义 | gōnglì zhǔyì | utilitarianism | n | 功利主义伦理 (utilitarian ethics), 功利主义计算 (utilitarian calculation) |
+| 公正 | gōngzhèng | justice, fairness | n | 社会公正 (social justice), 追求公正 (pursue justice) |
+| 自由 | zìyóu | freedom, liberty; free | n/adj | 言论自由 (freedom of speech), 个人自由 (personal freedom) |
+| 自主 | zìzhǔ | autonomy; autonomous | n/adj | 个人自主 (individual autonomy), 自主决定 (autonomous decision) |
+| 责任 | zérèn | responsibility, duty | n | 道德责任 (moral responsibility), 承担责任 (take responsibility) |
+| 义务 | yìwù | duty, obligation | n | 公民义务 (civic duty), 履行义务 (fulfill obligations) |
+| 权利 | quánlì | rights | n | 基本权利 (fundamental rights), 维护权利 (defend rights) |
+| 义 | yì | righteousness, moral duty | n | 仁义道德 (benevolence and righteousness), 大义凛然 (full of righteousness) |
+| 美德 | měidé | virtue | n | 传统美德 (traditional virtues), 培养美德 (cultivate virtue) |
+| 诚实 | chéngshí | integrity, honesty; honest | n/adj | 诚实守信 (honest and trustworthy), 为人诚实 (be an honest person) |
+| 真理 | zhēnlǐ | truth | n | 探求真理 (seek truth), 坚持真理 (uphold truth) |
+| 相对主义 | xiāngduì zhǔyì | relativism | n | 道德相对主义 (moral relativism), 文化相对主义 (cultural relativism) |
+| 绝对主义 | juéduì zhǔyì | absolutism | n | 道德绝对主义 (moral absolutism), 绝对主义立场 (absolutist position) |
+| 悖论 | bèilùn | paradox | n | 逻辑悖论 (logical paradox), 存在悖论 (existential paradox) |
+| 困境 | kùnjìng | dilemma, predicament | n | 伦理困境 (ethical dilemma), 面临困境 (face a dilemma) |
+
+## Adjectives: Social and Political (社会政治形容词)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 威权的 | wēiquán de | authoritarian | adj | 威权的政治体制 (authoritarian political system), 威权的管理方式 (authoritarian management) |
+| 民主的 | mínzhǔ de | democratic | adj | 民主的选举程序 (democratic electoral process), 民主的决策机制 (democratic decision-making) |
+| 透明的 | tòumíng de | transparent | adj | 透明的运营机制 (transparent operating mechanism), 透明的政府 (transparent government) |
+| 负责任的 | fùzérèn de | accountable | adj | 负责任的态度 (accountable attitude), 负责任的机构 (accountable institution) |
+| 公平的 | gōngpíng de | equitable | adj | 公平的分配制度 (equitable distribution system), 公平的竞争环境 (equitable competition) |
+| 包容的 | bāoróng de | inclusive | adj | 包容的社会氛围 (inclusive social atmosphere), 包容的政策 (inclusive policy) |
+| 边缘化的 | biānyuánhuà de | marginalized | adj | 边缘化的群体 (marginalized group), 被边缘化的声音 (marginalized voices) |
+| 压迫性的 | yāpò xìng de | oppressive | adj | 压迫性的制度 (oppressive system), 压迫性的权力结构 (oppressive power structure) |
+| 进步的 | jìnbù de | progressive | adj | 进步的社会政策 (progressive social policy), 进步的思想 (progressive ideas) |
+| 保守的 | bǎoshǒu de | conservative | adj | 保守的政治立场 (conservative political stance), 保守的价值观 (conservative values) |
+| 激进的 | jījìn de | radical | adj | 激进的改革主张 (radical reform proposal), 激进的政治运动 (radical political movement) |
+| 温和的 | wēnhé de | moderate | adj | 温和的政策立场 (moderate policy stance), 温和的改革路线 (moderate reform path) |
+| 民族主义的 | mínzú zhǔyì de | nationalist | adj | 民族主义的情绪 (nationalist sentiment), 民族主义的诉求 (nationalist demand) |
+| 全球化的 | quánqiúhuà de | globalist | adj | 全球化的经济体系 (globalized economic system), 全球化的视野 (globalist vision) |
+| 保护主义的 | bǎohù zhǔyì de | protectionist | adj | 保护主义的贸易政策 (protectionist trade policy), 保护主义的倾向 (protectionist tendency) |
+| 新自由主义的 | xīn zìyóu zhǔyì de | neoliberal | adj | 新自由主义的经济政策 (neoliberal economic policy), 新自由主义的改革 (neoliberal reform) |
+| 多元的 | duōyuán de | pluralistic | adj | 多元的文化格局 (pluralistic cultural landscape), 多元的政治生态 (pluralistic political ecology) |
+| 两极化的 | liǎngjíhuà de | polarized | adj | 两极化的政治格局 (polarized political landscape), 两极化的社会 (polarized society) |
+| 两党合作的 | liǎngdǎng hézuò de | bipartisan | adj | 两党合作的立法 (bipartisan legislation), 两党合作的共识 (bipartisan consensus) |
+| 基层的 | jīcéng de | grassroots | adj | 基层的民主运动 (grassroots democratic movement), 基层的社会力量 (grassroots social force) |
+| 官僚的 | guānliáo de | bureaucratic | adj | 官僚的管理体制 (bureaucratic management system), 官僚的决策程序 (bureaucratic decision process) |
+| 等级制的 | děngjí zhì de | hierarchical | adj | 等级制的组织结构 (hierarchical organizational structure), 等级制的权力体系 (hierarchical power system) |
+| 中央集权的 | zhōngyāng jíquán de | centralized | adj | 中央集权的行政体制 (centralized administrative system), 中央集权的管理 (centralized management) |
+| 分权的 | fēnquán de | decentralized | adj | 分权的治理模式 (decentralized governance model), 分权的决策机制 (decentralized decision-making) |
+| 自治的 | zìzhì de | autonomous | adj | 自治的行政区域 (autonomous administrative region), 自治的管理权限 (autonomous management authority) |
+
+## Nouns: Science and Technology (科技名词II)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 算法 | suànfǎ | algorithm | n | 排序算法 (sorting algorithm), 优化算法 (optimization algorithm) |
+| 人工智能 | réngōng zhìnéng | artificial intelligence | n | 人工智能技术 (AI technology), 人工智能应用 (AI application) |
+| 机器学习 | jīqì xuéxí | machine learning | n | 机器学习模型 (machine learning model), 监督式机器学习 (supervised machine learning) |
+| 神经网络 | shénjīng wǎngluò | neural network | n | 深度神经网络 (deep neural network), 神经网络训练 (neural network training) |
+| 大数据 | dà shùjù | big data | n | 大数据分析 (big data analysis), 大数据平台 (big data platform) |
+| 区块链 | qūkuàiliàn | blockchain | n | 区块链技术 (blockchain technology), 区块链应用 (blockchain application) |
+| 量子计算 | liàngzǐ jìsuàn | quantum computing | n | 量子计算机 (quantum computer), 量子计算研究 (quantum computing research) |
+| 生物技术 | shēngwù jìshù | biotechnology | n | 现代生物技术 (modern biotechnology), 生物技术产业 (biotechnology industry) |
+| 纳米技术 | nàmǐ jìshù | nanotechnology | n | 纳米技术应用 (nanotechnology application), 纳米材料 (nanomaterials) |
+| 可再生能源 | kě zàishēng néngyuán | renewable energy | n | 开发可再生能源 (develop renewable energy), 可再生能源比例 (proportion of renewable energy) |
+| 核能 | hénéng | nuclear energy | n | 和平利用核能 (peaceful use of nuclear energy), 核能发电 (nuclear power generation) |
+| 基因组 | jīyīnzǔ | genome | n | 人类基因组 (human genome), 基因组测序 (genome sequencing) |
+| 基因编辑 | jīyīn biānjí | genome editing | n | 基因编辑技术 (genome editing technology), CRISPR基因编辑 (CRISPR genome editing) |
+| 神经科学 | shénjīng kēxué | neuroscience | n | 认知神经科学 (cognitive neuroscience), 神经科学研究 (neuroscience research) |
+| 生态系统服务 | shēngtài xìtǒng fúwù | ecosystem service | n | 生态系统服务功能 (ecosystem service function), 保护生态系统服务 (protect ecosystem services) |
+| 机器人学 | jīqìrén xué | robotics | n | 机器人学研究 (robotics research), 工业机器人学 (industrial robotics) |
+| 自动化 | zìdònghuà | automation | n | 工业自动化 (industrial automation), 自动化程度 (degree of automation) |
+| 卫星 | wèixīng | satellite | n | 人造卫星 (artificial satellite), 卫星通信 (satellite communication) |
+| 全球定位系统 | quánqiú dìngwèi xìtǒng | GPS, global positioning system | n | 全球定位系统导航 (GPS navigation), 使用全球定位系统 (use GPS) |
+| 网络安全 | wǎngluò ānquán | cybersecurity | n | 网络安全防护 (cybersecurity protection), 网络安全威胁 (cybersecurity threat) |
+
+## Patterns and Academic Discourse Phrases (学术语篇句型)
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 考虑到 | kǎolǜ dào | taking into account, given | phrase | 考虑到实际情况 (taking the actual situation into account), 考虑到各方利益 (taking all parties' interests into account) |
+| 在这一背景下 | zài zhè yī bèijǐng xià | in this context | phrase | 在这一背景下分析 (analyze in this context), 在这一背景下探讨 (explore in this context) |
+| 在一定程度上 | zài yīdìng chéngdù shàng | to a certain extent | phrase | 在一定程度上影响 (influence to a certain extent), 在一定程度上反映 (reflect to a certain extent) |
+| 由于 | yóuyú | as a result of, due to | phrase | 由于政策调整 (due to policy adjustment), 由于市场变化 (as a result of market changes) |
+| 从长远来看 | cóng chángyuǎn lái kàn | in the long run | phrase | 从长远来看有利 (beneficial in the long run), 从长远来看影响深远 (far-reaching impact in the long run) |
+| 发挥作用 | fāhuī zuòyòng | to play a role | phrase | 在其中发挥作用 (play a role in it), 积极发挥作用 (actively play a role) |
+| 引发 | yǐnfā | to give rise to, to trigger | v | 引发广泛讨论 (give rise to wide discussion), 引发深刻变化 (give rise to profound changes) |
+| 导致 | dǎozhì | to result in, to lead to | v | 导致严重后果 (result in serious consequences), 导致问题加剧 (lead to worsening problems) |
+| 占 | zhàn | to account for | v | 占很大比例 (account for a large proportion), 占主导地位 (account for the dominant position) |
+| 以...为特征 | yǐ...wéi tèzhēng | to be characterized by | phrase | 以创新为特征 (characterized by innovation), 以多样性为特征 (characterized by diversity) |
+| 与...相比 | yǔ...xiāng bǐ | in contrast to, compared with | phrase | 与传统方法相比 (in contrast to traditional methods), 与去年相比 (compared with last year) |
+| 不管 | bùguǎn | regardless of | conj | 不管困难多大 (regardless of how great the difficulties), 不管结果如何 (regardless of the outcome) |
+| 鉴于 | jiànyú | in light of, given | prep | 鉴于现状 (in light of the current situation), 鉴于以上分析 (in light of the above analysis) |
+| 基于 | jīyú | on the basis of, based on | prep | 基于事实 (on the basis of facts), 基于数据分析 (based on data analysis) |
+| 值得注意的是 | zhídé zhùyì de shì | it is worth noting | phrase | 值得注意的是这一趋势 (it is worth noting this trend), 值得注意的是数据显示 (it is worth noting the data shows) |
+| 尽管如此 | jǐnguǎn rúcǐ | despite this, nevertheless | phrase | 尽管如此仍需努力 (despite this, effort is still needed), 尽管如此情况改善 (despite this, the situation improved) |
+
+---
+
+> This page covers approximately 900+ words from the HSK 5 vocabulary list. Individual word pages are in the [vocabulary/](vocabulary/) subdirectory. Additional semantic categories will be added to reach the full 1,600-word target.

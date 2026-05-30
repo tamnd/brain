@@ -634,4 +634,260 @@ HSK 4 (B1) introduces approximately 1,000 new words, bringing the cumulative tot
 
 ---
 
-*Total vocabulary: approximately 600 words across all sections (317 original + ~283 new entries).*
+## Technology and Digital Life: 科技数字生活
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 智能手机 | zhìnéng shǒujī | smartphone | n | 使用智能手机 (use a smartphone), 智能手机应用 (smartphone app) |
+| 应用程序 | yìngyòng chéngxù | application, app | n | 下载应用程序 (download an app), 手机应用程序 (mobile app) |
+| 互联网 | hùliánwǎng | internet | n | 连接互联网 (connect to the internet), 互联网时代 (internet age) |
+| 社交媒体 | shèjiāo méitǐ | social media | n | 使用社交媒体 (use social media), 社交媒体平台 (social media platform) |
+| 软件 | ruǎnjiàn | software | n | 安装软件 (install software), 软件更新 (software update) |
+| 硬件 | yìngjiàn | hardware | n | 硬件设备 (hardware device), 升级硬件 (upgrade hardware) |
+| 下载 | xiàzài | to download | v | 下载文件 (download a file), 下载速度 (download speed) |
+| 上传 | shàngchuán | to upload | v | 上传照片 (upload a photo), 上传数据 (upload data) |
+| 视频通话 | shìpín tōnghuà | video call | n | 进行视频通话 (make a video call), 视频通话软件 (video call software) |
+| 网上支付 | wǎngshàng zhīfù | online payment | n | 使用网上支付 (use online payment), 网上支付平台 (online payment platform) |
+| 数据库 | shùjùkù | database | n | 建立数据库 (build a database), 数据库管理 (database management) |
+| 程序 | chéngxù | program, procedure | n | 编写程序 (write a program), 运行程序 (run a program) |
+| 密码 | mìmǎ | password, code | n | 设置密码 (set a password), 忘记密码 (forget a password) |
+| 数据 | shùjù | data | n | 分析数据 (analyze data), 收集数据 (collect data) |
+| 屏幕 | píngmù | screen | n | 触摸屏幕 (touch the screen), 屏幕亮度 (screen brightness) |
+| 搜索引擎 | sōusuǒ yǐnqíng | search engine | n | 使用搜索引擎 (use a search engine), 搜索引擎优化 (search engine optimization) |
+| 网站 | wǎngzhàn | website | n | 访问网站 (visit a website), 建立网站 (build a website) |
+| 流媒体 | liú méitǐ | streaming | n | 流媒体服务 (streaming service), 流媒体平台 (streaming platform) |
+| 通知 | tōngzhī | notification; to notify | n/v | 接收通知 (receive a notification), 发送通知 (send a notification) |
+| 人工智能 | réngōng zhìnéng | artificial intelligence, AI | n | 人工智能技术 (AI technology), 人工智能发展 (AI development) |
+| 机器人 | jīqìrén | robot | n | 工业机器人 (industrial robot), 机器人技术 (robot technology) |
+| 传感器 | chuángǎnqì | sensor | n | 安装传感器 (install a sensor), 传感器数据 (sensor data) |
+| 电池 | diànchí | battery | n | 充电电池 (rechargeable battery), 电池电量 (battery level) |
+| 无线 | wúxiàn | wireless | adj | 无线网络 (wireless network), 无线连接 (wireless connection) |
+| 云计算 | yún jìsuàn | cloud computing | n | 云计算服务 (cloud computing service), 使用云计算 (use cloud computing) |
+| 数字 | shùzì | digital; number | adj/n | 数字技术 (digital technology), 数字转型 (digital transformation) |
+| 虚拟 | xūnǐ | virtual | adj | 虚拟现实 (virtual reality), 虚拟空间 (virtual space) |
+| 扫描 | sǎomiáo | to scan | v | 扫描文件 (scan a document), 扫描二维码 (scan a QR code) |
+
+## Environment and Nature: 环境与自然
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 污染 | wūrǎn | pollution; to pollute | n/v | 空气污染 (air pollution), 污染环境 (pollute the environment) |
+| 气候 | qìhòu | climate | n | 气候变化 (climate change), 气候条件 (climate conditions) |
+| 碳排放 | tàn páifàng | carbon emissions | n | 减少碳排放 (reduce carbon emissions), 碳排放量 (carbon emission volume) |
+| 回收 | huíshōu | to recycle, to collect | v | 回收废品 (recycle waste), 垃圾回收 (garbage recycling) |
+| 能源 | néngyuán | energy, energy source | n | 可再生能源 (renewable energy), 节约能源 (save energy) |
+| 森林 | sēnlín | forest | n | 保护森林 (protect the forest), 热带雨林 (tropical rainforest) |
+| 海洋 | hǎiyáng | ocean, sea | n | 海洋污染 (ocean pollution), 海洋生物 (marine life) |
+| 干旱 | gānhàn | drought | n | 严重干旱 (severe drought), 干旱地区 (drought area) |
+| 洪水 | hóngshuǐ | flood | n | 发生洪水 (a flood occurs), 洪水灾害 (flood disaster) |
+| 地震 | dìzhèn | earthquake | n | 发生地震 (an earthquake occurs), 地震预警 (earthquake warning) |
+| 野生动物 | yěshēng dòngwù | wildlife | n | 保护野生动物 (protect wildlife), 野生动物园 (wildlife park) |
+| 物种 | wùzhǒng | species | n | 濒危物种 (endangered species), 保护物种 (protect species) |
+| 生态系统 | shēngtài xìtǒng | ecosystem | n | 破坏生态系统 (damage the ecosystem), 维护生态系统 (maintain the ecosystem) |
+| 温室气体 | wēnshì qìtǐ | greenhouse gas | n | 减少温室气体 (reduce greenhouse gases), 温室气体排放 (greenhouse gas emissions) |
+| 可再生 | kě zàishēng | renewable | adj | 可再生能源 (renewable energy), 可再生资源 (renewable resources) |
+| 可持续 | kě chíxù | sustainable | adj | 可持续发展 (sustainable development), 可持续经济 (sustainable economy) |
+| 天气 | tiānqì | weather | n | 天气预报 (weather forecast), 天气变化 (weather change) |
+| 暴风雨 | bàofēngyǔ | storm, rainstorm | n | 遭遇暴风雨 (encounter a storm), 暴风雨来袭 (storm hits) |
+| 温度 | wēndù | temperature | n | 室内温度 (indoor temperature), 温度上升 (temperature rise) |
+| 空气质量 | kōngqì zhìliàng | air quality | n | 改善空气质量 (improve air quality), 监测空气质量 (monitor air quality) |
+| 土壤 | tǔrǎng | soil | n | 土壤污染 (soil pollution), 保护土壤 (protect soil) |
+| 冰川 | bīngchuān | glacier | n | 冰川融化 (glacier melting), 冰川消退 (glacier retreat) |
+| 生物多样性 | shēngwù duōyàngxìng | biodiversity | n | 保护生物多样性 (protect biodiversity), 生物多样性减少 (biodiversity reduction) |
+| 废物 | fèiwù | waste, garbage | n | 处理废物 (handle waste), 减少废物 (reduce waste) |
+| 保护 | bǎohù | to protect, protection | v/n | 保护环境 (protect the environment), 自然保护 (nature protection) |
+| 资源 | zīyuán | resource | n | 自然资源 (natural resources), 节约资源 (conserve resources) |
+| 生态 | shēngtài | ecology, ecological | n/adj | 生态环境 (ecological environment), 生态平衡 (ecological balance) |
+| 环境 | huánjìng | environment | n | 保护环境 (protect the environment), 自然环境 (natural environment) |
+
+## Health and Medicine: 健康与医学
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 诊断 | zhěnduàn | to diagnose, diagnosis | v/n | 医生诊断 (doctor's diagnosis), 诊断结果 (diagnosis result) |
+| 症状 | zhèngzhuàng | symptom | n | 出现症状 (symptoms appear), 描述症状 (describe symptoms) |
+| 治疗 | zhìliáo | treatment; to treat | n/v | 接受治疗 (receive treatment), 治疗方法 (treatment method) |
+| 治愈 | zhìyù | to cure, to heal | v | 治愈疾病 (cure a disease), 完全治愈 (fully cured) |
+| 药物 | yàowù | medicine, drug | n | 服用药物 (take medicine), 药物副作用 (drug side effects) |
+| 医院 | yīyuàn | hospital | n | 去医院 (go to the hospital), 住院治疗 (hospitalize for treatment) |
+| 医生 | yīshēng | doctor, physician | n | 看医生 (see a doctor), 主治医生 (attending doctor) |
+| 护士 | hùshi | nurse | n | 护士照顾 (nurse care), 注册护士 (registered nurse) |
+| 疫苗 | yìmiáo | vaccine | n | 接种疫苗 (vaccinate), 疫苗接种率 (vaccination rate) |
+| 感染 | gǎnrǎn | infection; to infect | n/v | 病毒感染 (viral infection), 预防感染 (prevent infection) |
+| 手术 | shǒushù | surgery, operation | n | 做手术 (perform surgery), 手术成功 (surgery successful) |
+| 处方 | chǔfāng | prescription | n | 开处方 (write a prescription), 按处方用药 (take medicine as prescribed) |
+| 病人 | bìngrén | patient, sick person | n | 照顾病人 (take care of a patient), 病人恢复 (patient recovery) |
+| 营养 | yíngyǎng | nutrition, nourishment | n | 营养均衡 (balanced nutrition), 营养价值 (nutritional value) |
+| 锻炼 | duànliàn | to exercise; exercise | v/n | 坚持锻炼 (persist in exercising), 体育锻炼 (physical exercise) |
+| 饮食 | yǐnshí | diet, eating habits | n | 健康饮食 (healthy diet), 调整饮食 (adjust diet) |
+| 维生素 | wéishēngsù | vitamin | n | 补充维生素 (supplement vitamins), 维生素C (vitamin C) |
+| 血压 | xuèyā | blood pressure | n | 测量血压 (measure blood pressure), 高血压 (high blood pressure) |
+| 癌症 | áizhèng | cancer | n | 预防癌症 (prevent cancer), 癌症治疗 (cancer treatment) |
+| 过敏 | guòmǐn | allergy; to be allergic | n/v | 食物过敏 (food allergy), 对花粉过敏 (be allergic to pollen) |
+| 心理健康 | xīnlǐ jiànkāng | mental health | n | 关注心理健康 (pay attention to mental health), 心理健康问题 (mental health issue) |
+| 治疗师 | zhìliáoshī | therapist | n | 心理治疗师 (psychotherapist), 物理治疗师 (physical therapist) |
+| 预防 | yùfáng | prevention; to prevent | n/v | 预防疾病 (prevent disease), 预防措施 (preventive measures) |
+| 流行病 | liúxíngbìng | epidemic, pandemic | n | 控制流行病 (control an epidemic), 流行病爆发 (epidemic outbreak) |
+| 药店 | yàodiàn | pharmacy, drugstore | n | 去药店 (go to the pharmacy), 药店购药 (buy medicine at the pharmacy) |
+| 健康 | jiànkāng | healthy; health | adj/n | 保持健康 (stay healthy), 身体健康 (physical health) |
+| 疾病 | jíbìng | disease, illness | n | 预防疾病 (prevent disease), 慢性疾病 (chronic disease) |
+| 康复 | kāngfù | recovery; to recover | n/v | 身体康复 (physical recovery), 康复训练 (rehabilitation training) |
+
+## Arts, Media and Entertainment: 艺术媒体娱乐
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 电影 | diànyǐng | film, movie | n | 看电影 (watch a movie), 电影院 (movie theater) |
+| 音乐 | yīnyuè | music | n | 欣赏音乐 (appreciate music), 音乐会 (music concert) |
+| 音乐会 | yīnyuèhuì | concert | n | 参加音乐会 (attend a concert), 举办音乐会 (hold a concert) |
+| 画廊 | huàláng | gallery, art gallery | n | 参观画廊 (visit a gallery), 画廊展览 (gallery exhibition) |
+| 展览 | zhǎnlǎn | exhibition, display | n | 举办展览 (hold an exhibition), 参观展览 (visit an exhibition) |
+| 小说 | xiǎoshuō | novel | n | 阅读小说 (read a novel), 写小说 (write a novel) |
+| 诗人 | shīrén | poet | n | 著名诗人 (famous poet), 诗人作品 (poet's works) |
+| 演员 | yǎnyuán | actor, performer | n | 著名演员 (famous actor), 演员表演 (actor's performance) |
+| 导演 | dǎoyǎn | director | n | 电影导演 (film director), 导演作品 (director's work) |
+| 广播 | guǎngbō | broadcast; to broadcast | n/v | 电视广播 (TV broadcast), 广播节目 (broadcast program) |
+| 新闻 | xīnwén | news, journalism | n | 新闻报道 (news report), 看新闻 (watch the news) |
+| 纪录片 | jìlùpiàn | documentary | n | 拍摄纪录片 (shoot a documentary), 观看纪录片 (watch a documentary) |
+| 广告 | guǎnggào | advertisement | n | 发布广告 (publish an advertisement), 广告效果 (advertising effect) |
+| 出版 | chūbǎn | to publish, publication | v/n | 出版书籍 (publish a book), 出版社 (publishing house) |
+| 编辑 | biānjí | editor; to edit | n/v | 责任编辑 (responsible editor), 编辑文章 (edit an article) |
+| 观众 | guānzhòng | audience, spectators | n | 吸引观众 (attract audience), 观众反应 (audience reaction) |
+| 表演 | biǎoyǎn | to perform, performance | v/n | 精彩表演 (wonderful performance), 表演艺术 (performing arts) |
+| 排练 | páiliàn | to rehearse, rehearsal | v/n | 认真排练 (rehearse seriously), 排练节目 (rehearse a program) |
+| 作曲 | zuòqǔ | to compose music | v | 作曲家 (composer), 为电影作曲 (compose music for a film) |
+| 摄影 | shèyǐng | photography; to photograph | n/v | 风景摄影 (landscape photography), 摄影作品 (photographic work) |
+| 设计 | shèjì | design; to design | n/v | 平面设计 (graphic design), 设计方案 (design plan) |
+| 雕塑 | diāosù | sculpture | n | 制作雕塑 (create a sculpture), 雕塑艺术 (sculpture art) |
+| 剧场 | jùchǎng | theater, playhouse | n | 去剧场 (go to the theater), 剧场演出 (theater performance) |
+| 文学 | wénxué | literature | n | 中国文学 (Chinese literature), 文学作品 (literary work) |
+| 电视 | diànshì | television, TV | n | 看电视 (watch TV), 电视节目 (TV program) |
+| 采访 | cǎifǎng | to interview, interview | v/n | 记者采访 (journalist interview), 接受采访 (accept an interview) |
+| 记者 | jìzhě | journalist, reporter | n | 新闻记者 (news reporter), 记者报道 (reporter's coverage) |
+| 媒体 | méitǐ | media | n | 大众媒体 (mass media), 媒体报道 (media coverage) |
+
+## Sports and Recreation: 体育与休闲
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 比赛 | bǐsài | competition, match; to compete | n/v | 参加比赛 (participate in a competition), 赢得比赛 (win the match) |
+| 冠军 | guànjūn | champion, championship | n | 获得冠军 (win the championship), 世界冠军 (world champion) |
+| 运动员 | yùndòng yuán | athlete, sportsperson | n | 职业运动员 (professional athlete), 运动员训练 (athlete training) |
+| 训练 | xùnliàn | to train, training | v/n | 刻苦训练 (train hard), 训练计划 (training plan) |
+| 教练 | jiàoliàn | coach, trainer | n | 体育教练 (sports coach), 教练指导 (coach's guidance) |
+| 得分 | défēn | score; to score | n/v | 获得得分 (score points), 最终得分 (final score) |
+| 队伍 | duìwu | team, group | n | 组建队伍 (form a team), 队伍合作 (team cooperation) |
+| 锦标赛 | jǐnbiāosài | tournament, championship | n | 参加锦标赛 (participate in a tournament), 锦标赛决赛 (tournament final) |
+| 游泳 | yóuyǒng | swimming; to swim | n/v | 游泳比赛 (swimming competition), 练习游泳 (practice swimming) |
+| 跑步 | pǎobù | running; to run | n/v | 坚持跑步 (persist in running), 长跑比赛 (long-distance running race) |
+| 体育场 | tǐyùchǎng | stadium, sports ground | n | 在体育场比赛 (compete in the stadium), 大型体育场 (large stadium) |
+| 健身房 | jiànshēnfáng | gym, fitness center | n | 去健身房 (go to the gym), 健身房锻炼 (gym exercise) |
+| 奖牌 | jiǎngpái | medal | n | 获得奖牌 (win a medal), 金牌银牌 (gold and silver medals) |
+| 裁判 | cáipàn | referee, judge | n | 裁判判决 (referee's ruling), 公正裁判 (fair referee) |
+| 对手 | duìshǒu | opponent, rival | n | 强劲对手 (tough opponent), 对手实力 (opponent's strength) |
+| 策略 | cèlüè | strategy, tactic | n | 制定策略 (formulate a strategy), 比赛策略 (match strategy) |
+| 奥运会 | Àoyùnhuì | Olympics, Olympic Games | n | 参加奥运会 (participate in the Olympics), 奥运会冠军 (Olympic champion) |
+| 篮球 | lánqiú | basketball | n | 打篮球 (play basketball), 篮球比赛 (basketball game) |
+| 足球 | zúqiú | football, soccer | n | 踢足球 (play football), 足球运动员 (football player) |
+| 排球 | páiqiú | volleyball | n | 打排球 (play volleyball), 排球比赛 (volleyball match) |
+| 失败 | shībài | defeat, failure; to fail | n/v | 承认失败 (admit defeat), 不怕失败 (not afraid of failure) |
+| 胜利 | shènglì | victory, win; to win | n/v | 取得胜利 (achieve victory), 胜利的喜悦 (joy of victory) |
+| 体育 | tǐyù | sports, physical education | n | 体育运动 (sports activities), 体育精神 (sportsmanship) |
+| 休闲 | xiūxián | leisure, recreation | n/adj | 休闲活动 (leisure activities), 休闲时间 (leisure time) |
+| 娱乐 | yúlè | entertainment, recreation | n | 娱乐活动 (entertainment activities), 娱乐产业 (entertainment industry) |
+
+## Government and Society: 政府与社会
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 政府 | zhèngfǔ | government | n | 中央政府 (central government), 地方政府 (local government) |
+| 政策 | zhèngcè | policy | n | 制定政策 (formulate a policy), 经济政策 (economic policy) |
+| 法律 | fǎlǜ | law, legislation | n | 遵守法律 (obey the law), 法律条文 (legal provisions) |
+| 选举 | xuǎnjǔ | election; to elect | n/v | 参加选举 (participate in an election), 选举结果 (election result) |
+| 民主 | mínzhǔ | democracy, democratic | n/adj | 民主制度 (democratic system), 民主选举 (democratic election) |
+| 权利 | quánlì | right, entitlement | n | 公民权利 (civil rights), 维护权利 (protect rights) |
+| 公民 | gōngmín | citizen | n | 普通公民 (ordinary citizen), 公民责任 (citizen's responsibility) |
+| 税收 | shuìshōu | tax revenue, taxation | n | 缴纳税收 (pay taxes), 税收政策 (tax policy) |
+| 预算 | yùsuàn | budget | n | 政府预算 (government budget), 制定预算 (make a budget) |
+| 改革 | gǎigé | reform; to reform | n/v | 经济改革 (economic reform), 推行改革 (carry out reform) |
+| 法规 | fǎguī | regulation, rule | n | 制定法规 (formulate regulations), 遵守法规 (comply with regulations) |
+| 权威 | quánwēi | authority; authoritative | n/adj | 政府权威 (government authority), 权威机构 (authoritative institution) |
+| 议会 | yìhuì | parliament, congress | n | 议会决议 (parliamentary resolution), 进入议会 (enter parliament) |
+| 宪法 | xiànfǎ | constitution | n | 遵守宪法 (abide by the constitution), 宪法保障 (constitutional guarantee) |
+| 司法 | sīfǎ | judicial, justice | adj/n | 司法制度 (judicial system), 司法公正 (judicial justice) |
+| 行政 | xíngzhèng | administration, administrative | n/adj | 行政管理 (administrative management), 行政机构 (administrative institution) |
+| 投票 | tóupiào | to vote, voting | v/n | 参加投票 (participate in voting), 投票结果 (voting result) |
+| 官员 | guānyuán | official, government officer | n | 政府官员 (government official), 官员职责 (official's duty) |
+| 委员会 | wěiyuánhuì | committee | n | 成立委员会 (establish a committee), 委员会决议 (committee resolution) |
+| 省份 | shěngfèn | province | n | 各个省份 (each province), 省份经济 (provincial economy) |
+| 首都 | shǒudū | capital city | n | 国家首都 (national capital), 首都北京 (capital city Beijing) |
+| 市政 | shìzhèng | municipal administration | adj/n | 市政建设 (municipal construction), 市政管理 (municipal management) |
+| 福利 | fúlì | welfare, benefit | n | 社会福利 (social welfare), 员工福利 (employee benefits) |
+| 养老金 | yǎnglǎojīn | pension | n | 领取养老金 (receive a pension), 养老金制度 (pension system) |
+| 失业 | shīyè | unemployment; to be unemployed | n/v | 降低失业率 (reduce unemployment rate), 失业保险 (unemployment insurance) |
+| 社会 | shèhuì | society, social | n | 和谐社会 (harmonious society), 社会问题 (social issue) |
+| 制度 | zhìdù | system, institution | n | 政治制度 (political system), 建立制度 (establish a system) |
+
+## Science and Education: 科学与教育
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 研究 | yánjiū | research; to research | n/v | 科学研究 (scientific research), 研究成果 (research findings) |
+| 实验 | shíyàn | experiment; to experiment | n/v | 做实验 (do an experiment), 实验结果 (experiment result) |
+| 假设 | jiǎshè | hypothesis; to assume | n/v | 提出假设 (put forward a hypothesis), 验证假设 (verify a hypothesis) |
+| 理论 | lǐlùn | theory | n | 科学理论 (scientific theory), 理论基础 (theoretical basis) |
+| 证明 | zhèngmíng | to prove, proof | v/n | 证明理论 (prove a theory), 数学证明 (mathematical proof) |
+| 化学 | huàxué | chemistry | n | 有机化学 (organic chemistry), 化学反应 (chemical reaction) |
+| 物理 | wùlǐ | physics | n | 物理定律 (physical law), 物理实验 (physics experiment) |
+| 生物 | shēngwù | biology; living organism | n | 生物科学 (biological science), 海洋生物 (marine biology) |
+| 数学 | shùxué | mathematics | n | 数学公式 (mathematical formula), 学习数学 (study mathematics) |
+| 地理 | dìlǐ | geography | n | 人文地理 (human geography), 地理位置 (geographic location) |
+| 历史 | lìshǐ | history, historical | n | 中国历史 (Chinese history), 历史事件 (historical event) |
+| 哲学 | zhéxué | philosophy | n | 西方哲学 (Western philosophy), 哲学思想 (philosophical thought) |
+| 心理学 | xīnlǐxué | psychology | n | 社会心理学 (social psychology), 心理学研究 (psychology research) |
+| 社会学 | shèhuìxué | sociology | n | 社会学理论 (sociological theory), 社会学研究 (sociology research) |
+| 经济学 | jīngjìxué | economics | n | 宏观经济学 (macroeconomics), 经济学理论 (economic theory) |
+| 实验室 | shíyànshì | laboratory | n | 在实验室工作 (work in the laboratory), 实验室设备 (laboratory equipment) |
+| 显微镜 | xiǎnwēijìng | microscope | n | 用显微镜观察 (observe with a microscope), 电子显微镜 (electron microscope) |
+| 公式 | gōngshì | formula | n | 数学公式 (mathematical formula), 应用公式 (apply a formula) |
+| 元素 | yuánsù | element | n | 化学元素 (chemical element), 基本元素 (basic element) |
+| 分子 | fēnzǐ | molecule | n | 水分子 (water molecule), 分子结构 (molecular structure) |
+| 能量 | néngliàng | energy | n | 太阳能量 (solar energy), 能量转化 (energy conversion) |
+| 重力 | zhònglì | gravity | n | 地球重力 (Earth's gravity), 重力作用 (effect of gravity) |
+| 进化 | jìnhuà | evolution; to evolve | n/v | 生物进化 (biological evolution), 进化论 (theory of evolution) |
+| 创新 | chuàngxīn | innovation; to innovate | n/v | 科技创新 (technological innovation), 鼓励创新 (encourage innovation) |
+| 发现 | fāxiàn | discovery; to discover | n/v | 重大发现 (major discovery), 发现新物种 (discover a new species) |
+
+## Food, Daily Life and Shopping: 饮食日常购物
+
+| Chinese | Pinyin | English | POS | Usage Note |
+|---------|--------|---------|-----|------------|
+| 食材 | shícái | ingredient, foodstuff | n | 新鲜食材 (fresh ingredients), 选购食材 (select ingredients) |
+| 食谱 | shípǔ | recipe | n | 学习食谱 (learn a recipe), 家传食谱 (family recipe) |
+| 烹饪 | pēngrèn | to cook, cooking | v/n | 学习烹饪 (learn cooking), 烹饪技巧 (cooking skills) |
+| 菜单 | càidān | menu | n | 看菜单 (look at the menu), 点菜单上的菜 (order from the menu) |
+| 餐厅 | cāntīng | restaurant, dining room | n | 去餐厅吃饭 (eat at a restaurant), 餐厅服务 (restaurant service) |
+| 味道 | wèidào | flavor, taste | n | 好味道 (good taste), 味道独特 (unique flavor) |
+| 辛辣 | xīnlà | spicy, pungent | adj | 辛辣食物 (spicy food), 辛辣味道 (spicy flavor) |
+| 甜 | tián | sweet | adj | 甜甜的味道 (sweet taste), 甜食 (sweet food) |
+| 咸 | xián | salty | adj | 太咸了 (too salty), 咸淡适中 (moderate saltiness) |
+| 苦 | kǔ | bitter | adj | 苦味 (bitter taste), 良药苦口 (good medicine tastes bitter) |
+| 新鲜 | xīnxiān | fresh | adj | 新鲜蔬菜 (fresh vegetables), 新鲜食材 (fresh ingredients) |
+| 有机 | yǒujī | organic | adj | 有机食品 (organic food), 有机蔬菜 (organic vegetables) |
+| 蔬菜 | shūcài | vegetable | n | 新鲜蔬菜 (fresh vegetables), 绿色蔬菜 (green vegetables) |
+| 水果 | shuǐguǒ | fruit | n | 新鲜水果 (fresh fruit), 热带水果 (tropical fruit) |
+| 饮料 | yǐnliào | beverage, drink | n | 冷饮料 (cold beverage), 选择饮料 (choose a drink) |
+| 面包店 | miànbāodiàn | bakery | n | 去面包店 (go to the bakery), 面包店的糕点 (bakery pastries) |
+| 市场 | shìchǎng | market | n | 农贸市场 (farmers' market), 市场购物 (market shopping) |
+| 折扣 | zhékòu | discount | n | 享受折扣 (enjoy a discount), 打折扣 (give a discount) |
+| 收据 | shōujù | receipt | n | 索取收据 (ask for a receipt), 保留收据 (keep the receipt) |
+| 质量 | zhìliàng | quality | n | 产品质量 (product quality), 质量检查 (quality inspection) |
+| 品牌 | pǐnpái | brand | n | 知名品牌 (well-known brand), 品牌价值 (brand value) |
+| 保修 | bǎoxiū | warranty, guarantee | n | 保修期限 (warranty period), 享受保修 (enjoy warranty) |
+| 尺寸 | chǐcùn | size, dimension | n | 选择尺寸 (choose a size), 合适尺寸 (appropriate size) |
+| 换货 | huànhuò | exchange (goods) | v/n | 申请换货 (apply for an exchange), 换货政策 (exchange policy) |
+| 退款 | tuìkuǎn | refund; to refund | n/v | 申请退款 (apply for a refund), 退款政策 (refund policy) |
+
+---
+
+*Total vocabulary: approximately 900+ words across all sections.*
