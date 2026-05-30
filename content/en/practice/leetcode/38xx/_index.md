@@ -46,4 +46,18 @@ draft: false
 | 3840 | [House Robber V](3840.md) | 🟡 Medium | 52s | The problem is a variation of the classic House Robber problem, but… |
 | 3841 | [Palindromic Path Queries in a Tree](3841.md) | 🔴 Hard | 1m 32s | We are given a tree with n nodes. Each node stores a lowercase Engl… |
 | 3842 | [Toggle Light Bulbs](3842.md) | 🟢 Easy | 1m 26s | The problem gives us an array bulbs, where each value represents a … |
+| 3844 | [Longest Almost-Palindromic Substring](3844.md) | 🟡 Medium | 2m 6s | We are given a string s consisting of lowercase English letters. We… |
 | 3845 | [Maximum Subarray XOR with Bounded Range](3845.md) | 🔴 Hard | 40s | The problem asks us to find a subarray of a given non-negative inte… |
+| 3846 | [Total Distance to Type a String Using One Finger](3846.md) | 🟡 Medium | 1m 27s | This problem asks us to calculate the total finger movement require… |
+| 3847 | [Find the Score Difference in a Game](3847.md) | 🟡 Medium | 1m 4s | This problem describes a game played over a sequence of rounds. The… |
+| 3848 | [Check Digitorial Permutation](3848.md) | 🟡 Medium | 43s | The problem asks us to determine whether any permutation of the dig… |
+| 3850 | [Count Sequences to K](3850.md) | 🔴 Hard | 2m | We start with a value val = 1 and process the array from left to ri… |
+| 3851 | [Maximum Requests Without Violating the Limit](3851.md) | 🟡 Medium | 1m 25s | We are given a list of requests, where each request consists of a u… |
+| 3852 | [Smallest Pair With Different Frequencies](3852.md) | 🟢 Easy | 1m 29s | This problem gives us an integer array nums and asks us to find a p… |
+| 3853 | [Merge Close Characters](3853.md) | 🟡 Medium | 55s | The problem asks us to repeatedly merge close, equal characters in … |
+| 3854 | [Minimum Operations to Make Array Parity Alternating](3854.md) | 🟡 Medium | 2m 18s | We are given an integer array nums. An array is called parity alter… |
+| 3855 | [Sum of K-Digit Numbers in a Range](3855.md) | 🔴 Hard | 1m 12s | We are given three integers l, r, and k. For every digit position, … |
+| 3856 | [Trim Trailing Vowels](3856.md) | 🟢 Easy | 1m 24s | This problem asks us to remove all vowels that appear at the end of… |
+| 3857 | [Minimum Cost to Split into Ones](3857.md) | 🟡 Medium | 1m 14s | We are given a single integer n. Starting with this integer, we rep… |
+| 3858 | [Minimum Bitwise OR From Grid](3858.md) | 🟡 Medium | 1m 52s | We are given an m x n grid of positive integers. From each row, we … |
+| 3860 | [Unique Email Groups](3860.md) | 🟡 Medium | 1m 17s | This problem asks us to determine how many distinct email groups ex… |

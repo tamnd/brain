@@ -55,15 +55,23 @@ draft: false
 | 3749 | [Evaluate Valid Expressions](3749.md) | 🔴 Hard | 44s | The problem presents a simplified version of evaluating nested math… |
 | 3750 | [Minimum Number of Flips to Reverse Binary String](3750.md) | 🟢 Easy | 5m 55s | The problem gives us a positive integer n, and asks us to work with… |
 | 3751 | [Total Waviness of Numbers in Range I](3751.md) | 🟡 Medium | 1m 20s | This problem asks us to compute the total waviness of every integer… |
+| 3754 | [Concatenate Non-Zero Digits and Multiply by Sum I](3754.md) | 🟢 Easy | 1m 2s | The problem asks us to process an integer n and construct a new num… |
 | 3755 | [Find Maximum Balanced XOR Subarray Length](3755.md) | 🟡 Medium | 1m 25s | This problem asks us to find the longest contiguous subarray that s… |
-| 3756 | [Concatenate Non-Zero Digits and Multiply by Sum II](3756.md) | 🟡 Medium | 2m 12s | We are given a digit string s and many range queries. For each quer… |
+| 3756 | [Concatenate Non-Zero Digits and Multiply by Sum II](3756.md) | 🟡 Medium | 21s | Please provide the official LeetCode problem statement or confirm t… |
+| 3757 | [Number of Effective Subsequences](3757.md) | 🔴 Hard | 1m 7s | Here’s a complete, detailed technical guide for LeetCode 3757 - Num… |
+| 3758 | [Convert Number Words to Digits](3758.md) | 🟡 Medium | 56s | The problem asks us to parse a string s that contains lowercase Eng… |
+| 3759 | [Count Elements With at Least K Greater Values](3759.md) | 🟡 Medium | 1m 15s | The problem asks us to count how many elements in an array have at … |
 | 3760 | [Maximum Substrings With Distinct Start](3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
 | 3762 | [Minimum Operations to Equalize Subarrays](3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
-| 3763 | [Maximum Total Sum with Threshold Constraints](3763.md) | 🟡 Medium | 47s | The problem asks us to count the number of effective subsequences i… |
+| 3763 | [Maximum Total Sum with Threshold Constraints](3763.md) | 🟡 Medium | 52s | The problem gives you two integer arrays, nums and threshold, each … |
 | 3764 | [Most Common Course Pairs](3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |
 | 3765 | [Complete Prime Number](3765.md) | 🟡 Medium | 1m 19s | The problem gives us a positive integer num and asks whether it is … |
+| 3766 | [Minimum Operations to Make Binary Palindrome](3766.md) | 🟡 Medium | 43s | This problem asks us to find the minimum number of increment or dec… |
+| 3767 | [Maximize Points After Choosing K Tasks](3767.md) | 🟡 Medium | 1m 3s | The problem gives two integer arrays, technique1 and technique2, ea… |
 | 3768 | [Minimum Inversion Count in Subarrays of Fixed Length](3768.md) | 🔴 Hard | 1m 36s | We are given an array nums of length n and an integer k. For every … |
+| 3769 | [Sort Integers by Binary Reflection](3769.md) | 🟢 Easy | 41s | This problem asks us to sort an array of positive integers based on… |
 | 3770 | [Largest Prime from Consecutive Prime Sum](3770.md) | 🟡 Medium | 1m 26s | The problem gives us an integer n and asks us to find the largest p… |
+| 3771 | [Total Score of Dungeon Runs](3771.md) | 🟡 Medium | 55s | The problem describes a dungeon with n rooms, where entering room i… |
 | 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 1m 13s | We are given an integer array nums and an integer k. The task is to… |
 | 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 1m 23s | The problem gives us a string s containing lowercase English words … |
 | 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 29s | We are given an integer array nums, and we must select exactly thre… |
