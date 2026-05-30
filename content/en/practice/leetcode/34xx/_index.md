@@ -11,7 +11,10 @@ draft: false
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
 | 3400 | [Maximum Number of Matching Indices After Right Shifts](3400.md) | 🟡 Medium | 1m 13s | The problem gives us two arrays, nums1 and nums2, both of the same … |
+| 3401 | [Find Circular Gift Exchange Chains](3401.md) | 🔴 Hard | 35s | Here’s a full technical solution guide following your requested for… |
+| 3402 | [Minimum Operations to Make Columns Strictly Increasing](3402.md) | 🟢 Easy | 46s | The problem gives us a matrix grid of size m x n containing non-neg… |
 | 3403 | [Find the Lexicographically Largest String From the Box I](3403.md) | 🟡 Medium | 2m 34s | We are given a string word of length n and an integer numFriends. I… |
+| 3406 | [Find the Lexicographically Largest String From the Box II](3406.md) | 🔴 Hard | 2m 10s | We are given a string word of length n and an integer numFriends. I… |
 | 3407 | [Substring Matching Pattern](3407.md) | 🟢 Easy | 2m 39s | The problem gives us two strings: - s, the source string. - p, a pa… |
 | 3408 | [Design Task Manager](3408.md) | 🟡 Medium | 2m 21s | This problem asks us to design a data structure that maintains a co… |
 | 3409 | [Longest Subsequence With Decreasing Adjacent Difference](3409.md) | 🟡 Medium | 2m 41s | We are given an array nums, and we want to choose a subsequence fro… |
