@@ -53,6 +53,7 @@ draft: false
 | 3657 | [Find Loyal Customers](3657.md) | 🟡 Medium | 1m 1s | This problem is a SQL aggregation and filtering task. We are given … |
 | 3658 | [GCD of Odd and Even Sums](3658.md) | 🟢 Easy | 1m 12s | The problem asks us to calculate the greatest common divisor (GCD) … |
 | 3660 | [Jump Game IX](3660.md) | 🟡 Medium | 45s | The problem presents an array of integers nums and asks us to compu… |
+| 3661 | [Maximum Walls Destroyed by Robots](3661.md) | 🔴 Hard | 1m 12s | This problem takes place on a one dimensional number line. We are g… |
 | 3662 | [Filter Characters by Frequency](3662.md) | 🟢 Easy | 1m 21s | This problem asks us to filter a string based on character frequenc… |
 | 3663 | [Find The Least Frequent Digit](3663.md) | 🟢 Easy | 40s | The problem asks us to find the least frequent digit in the decimal… |
 | 3664 | [Two-Letter Card Game](3664.md) | 🟡 Medium | 5m 11s | Each card consists of exactly two lowercase letters. A card is only… |
@@ -64,6 +65,7 @@ draft: false
 | 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 54s | The problem gives a string s consisting of lowercase English letter… |
 | 3676 | [Count Bowl Subarrays](3676.md) | 🟡 Medium | 54s | The problem asks us to count how many subarrays in an array of dist… |
 | 3677 | [Count Binary Palindromic Numbers](3677.md) | 🔴 Hard | 1m 9s | We are given a non-negative integer n and asked to count how many i… |
+| 3679 | [ Minimum Discards to Balance Inventory](3679.md) | 🟡 Medium | 1m 20s | This problem models a stream of arriving items. On each day, exactl… |
 | 3680 | [Generate Schedule](3680.md) | 🟡 Medium | 1m 14s | The problem is asking us to generate a round-robin style schedule f… |
 | 3682 | [Minimum Index Sum of Common Elements](3682.md) | 🟡 Medium | 48s | This problem is asking us to identify the smallest sum of indices f… |
 | 3683 | [Earliest Time to Finish One Task](3683.md) | 🟢 Easy | 1m 12s | The problem gives us a list of tasks, where each task is represente… |
