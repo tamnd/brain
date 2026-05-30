@@ -18,7 +18,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.3: 18/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*20*] | medium | solved | 4m18s |
+| [1](01.md) |  [*20*] | medium | solved | 4m54s |
 | 2 |  [*22*] | medium | - | - |
 | [3](03.md) |  [*24*] | medium | verified | 1m26s |
 | [4](04.md) |  [*18*] | medium | verified | 1m20s |
