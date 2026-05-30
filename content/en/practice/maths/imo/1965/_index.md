@@ -1,6 +1,6 @@
 ---
 title: "IMO 1965"
-description: "IMO 1965 — 0/6 solved."
+description: "IMO 1965 — 1/6 solved."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1965
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1965
 
-[Official IMO 1965 problems](https://www.imo-official.org/year_info.aspx?year=1965) &nbsp;·&nbsp; 0/6 solved.
+[Official IMO 1965 problems](https://www.imo-official.org/year_info.aspx?year=1965) &nbsp;·&nbsp; 1/6 solved.
 
 | # | Status | Time |
 |---|--------|------|
@@ -18,7 +18,7 @@ draft: false
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
-| 5 | — | — |
+| [5](5.md) | solved | 14m52s |
 | 6 | — | — |
 
 **Problem 1**
@@ -53,7 +53,7 @@ Given the tetrahedron $ABCD$ whose edges $AB$ and $CD$ have lengths $a$ and $b$ 
 
 Find all sets of four real numbers $x_1$, $x_2$, $x_3$, $x_4$ such that the sum of any one and the product of the other three is equal to $2$.
 
-**Problem 5**
+**Problem 5** &nbsp; *solved* · 14m52s · [Solution →](5.md)
 
 Consider $\triangle OAB$ with acute angle $AOB$. Through a point $M \neq O$ perpendiculars are drawn to $OA$ and $OB$, the feet of which are $P$ and $Q$ respectively. The point of intersection of the altitudes of $\triangle OPQ$ is $H$. What is the locus of $H$ if $M$ is permitted to range over (a) the side $AB$, (b) the interior of $\triangle OAB$?
 
