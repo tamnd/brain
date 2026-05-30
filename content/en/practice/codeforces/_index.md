@@ -44,6 +44,7 @@ description: "Codeforces problem solutions with full editorial. 343 contests, 14
 description: "Codeforces problem solutions with full editorial. 344 contests, 1404 problems, 1115 verified."
 description: "Codeforces problem solutions with full editorial. 345 contests, 1410 problems, 1119 verified."
 description: "Codeforces problem solutions with full editorial. 346 contests, 1415 problems, 1123 verified."
+description: "Codeforces problem solutions with full editorial. 347 contests, 1420 problems, 1127 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -98,6 +99,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **344 contests, 1404 problems, 1115 verified.**
 **345 contests, 1410 problems, 1119 verified.**
 **346 contests, 1415 problems, 1123 verified.**
+**347 contests, 1420 problems, 1127 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -476,4 +478,5 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [456](456/) | [Codeforces Round 260 (Div. 2)](https://codeforces.com/contest/456) | Div. 2 | 1100-1200 | 2/2 | 2m 34s |
 | [457](457/) | [MemSQL Start[c]UP 2.0 - Round 2](https://codeforces.com/contest/457) | Special | 1700-3200 | 4/6 | 11m 5s |
 | [459](459/) | [Codeforces Round 261 (Div. 2)](https://codeforces.com/contest/459) | Div. 2 | 1200-1900 | 4/5 | 8m 37s |
+| [460](460/) | [Codeforces Round 262 (Div. 2)](https://codeforces.com/contest/460) | Div. 2 | 900-2700 | 4/5 | 6m 14s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
