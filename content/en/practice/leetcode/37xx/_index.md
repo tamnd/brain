@@ -24,3 +24,6 @@ draft: false
 | 3745 | [Maximize Expression of Three Elements](3745.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to choose th… |
 | 3748 | [Count Stable Subarrays](3748.md) | 🔴 Hard | 52s | The problem asks us to count "stable" subarrays within a given arra… |
 | 3751 | [Total Waviness of Numbers in Range I](3751.md) | 🟡 Medium | 1m 20s | This problem asks us to compute the total waviness of every integer… |
+| 3760 | [Maximum Substrings With Distinct Start](3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
+| 3762 | [Minimum Operations to Equalize Subarrays](3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
+| 3764 | [Most Common Course Pairs](3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |
