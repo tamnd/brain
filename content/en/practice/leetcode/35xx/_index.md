@@ -62,3 +62,8 @@ draft: false
 | 3578 | [Count Partitions With Max-Min Difference at Most K](3578.md) | 🟡 Medium | 1m 34s | We are given an array nums and an integer k. We want to split the a… |
 | 3579 | [Minimum Steps to Convert String with Operations](3579.md) | 🔴 Hard | 50s | The problem asks us to transform one string, word1, into another st… |
 | 3580 | [Find Consistently Improving Employees](3580.md) | 🟡 Medium | 32s | The task asks us to identify employees whose performance has consis… |
+| 3582 | [Generate Tag for Video Caption](3582.md) | 🟢 Easy | 1m 20s | The problem asks us to transform a given caption string into a vali… |
+| 3585 | [Find Weighted Median Node in Tree](3585.md) | 🔴 Hard | 1m 37s | We are given a weighted tree with n nodes. A tree is an undirected … |
+| 3586 | [Find COVID Recovery Patients](3586.md) | 🟡 Medium | 54s | The task is to identify patients who have recovered from COVID base… |
+| 3588 | [Find Maximum Area of a Triangle](3588.md) | 🟡 Medium | 1m 41s | We are given n distinct points on a 2D Cartesian plane. Each point … |
+| 3589 | [Count Prime-Gap Balanced Subarrays](3589.md) | 🟡 Medium | 1m 56s | We are given an integer array nums and an integer k. We must count … |
