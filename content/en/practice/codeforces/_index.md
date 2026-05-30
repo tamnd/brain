@@ -91,6 +91,7 @@ description: "Codeforces problem solutions with full editorial. 391 contests, 16
 description: "Codeforces problem solutions with full editorial. 392 contests, 1628 problems, 1227 verified."
 description: "Codeforces problem solutions with full editorial. 393 contests, 1634 problems, 1229 verified."
 description: "Codeforces problem solutions with full editorial. 394 contests, 1642 problems, 1234 verified."
+description: "Codeforces problem solutions with full editorial. 395 contests, 1649 problems, 1237 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -192,6 +193,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **392 contests, 1628 problems, 1227 verified.**
 **393 contests, 1634 problems, 1229 verified.**
 **394 contests, 1642 problems, 1234 verified.**
+**395 contests, 1649 problems, 1237 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -619,3 +621,4 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1953](1953/) | [2023 Post World Finals Online ICPC Challenge powered by Huawei](https://codeforces.com/contest/1953) | ICPC/IOI | - | 1/1 | 52s |
 | [1954](1954/) | [Educational Codeforces Round 164 (Rated for Div. 2)](https://codeforces.com/contest/1954) | Div. 2 | 900-3100 | 2/6 | 7m 33s |
 | [1955](1955/) | [Codeforces Round 938 (Div. 3)](https://codeforces.com/contest/1955) | Div. 3 | 800-2300 | 5/8 | 7m 51s |
+| [1956](1956/) | [Codeforces Round 939 (Div. 2)](https://codeforces.com/contest/1956) | Div. 2 | 800-3000 | 3/7 | 7m 40s |
