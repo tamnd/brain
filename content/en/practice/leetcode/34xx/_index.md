@@ -62,7 +62,18 @@ draft: false
 | 3470 | [Permutations IV](3470.md) | 🔴 Hard | 1m 54s | We are given two integers, n and k. We must consider all permutatio… |
 | 3471 | [Find the Largest Almost Missing Integer](3471.md) | 🟢 Easy | 1m 16s | The problem gives us an integer array nums and an integer k. We con… |
 | 3472 | [Longest Palindromic Subsequence After at Most K Operations](3472.md) | 🟡 Medium | 32s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
+| 3474 | [Lexicographically Smallest Generated String](3474.md) | 🔴 Hard | 1m 27s | We are given two strings: - str1 of length n, containing only 'T' a… |
 | 3475 | [DNA Pattern Recognition ](3475.md) | 🟡 Medium | 1m 19s | This problem provides a database table named Samples that contains … |
+| 3476 | [Maximize Profit from Task Assignment](3476.md) | 🟡 Medium | 49s | This problem asks us to assign tasks to workers in order to maximiz… |
 | 3477 | [Fruits Into Baskets II](3477.md) | 🟢 Easy | 46s | This problem asks us to simulate the placement of fruits into baske… |
 | 3478 | [Choose K Elements With Maximum Sum](3478.md) | 🟡 Medium | 43s | This problem asks us to compute a "maximum sum" for each index in a… |
 | 3479 | [Fruits Into Baskets III](3479.md) | 🟡 Medium | 1m 34s | This problem gives us two arrays of equal length: - fruits[i] repre… |
+| 3480 | [Maximize Subarrays After Removing One Conflicting Pair](3480.md) | 🔴 Hard | 52s | Here’s a detailed technical solution guide following your requested… |
+| 3481 | [Apply Substitutions](3481.md) | 🟡 Medium | 1m 35s | This problem gives us a collection of replacement rules and a text … |
+| 3484 | [Design Spreadsheet](3484.md) | 🟡 Medium | 1m 19s | This problem asks us to design a very small spreadsheet system that… |
+| 3486 | [Longest Special Path II](3486.md) | 🔴 Hard | 1m 49s | We are given a rooted tree with n nodes. The tree is rooted at node… |
+| 3488 | [Closest Equal Element Queries](3488.md) | 🟡 Medium | 50s | The problem asks us to process a series of queries on a circular ar… |
+| 3489 | [Zero Array Transformation IV](3489.md) | 🟡 Medium | 43s | The problem asks us to determine the minimum number of sequential q… |
+| 3490 | [Count Beautiful Numbers](3490.md) | 🔴 Hard | 38s | This problem asks us to count the number of positive integers betwe… |
+| 3491 | [Phone Number Prefix](3491.md) | 🟢 Easy | 27s | The problem is asking us to determine whether any phone number in a… |
+| 3494 | [Find the Minimum Amount of Time to Brew Potions](3494.md) | 🟡 Medium | 45s | The problem asks us to simulate a sequential brewing process for po… |
