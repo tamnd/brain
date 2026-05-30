@@ -1,6 +1,6 @@
 ---
 title: "〜わけにはいかない — JLPT N2 Grammar"
-description: "Learn 〜わけにはいかない to express social, moral, or situational prohibition — you cannot do something because of social norms or obligations."
+description: "Learn how to use 〜わけにはいかない (wake ni wa ikanai) to express social or moral impossibility — 'can't do; must not do; it wouldn't be right to.' Includes structure, nuance, examples, and comparisons."
 tags: ["japanese", "grammar", "n2", "jlpt"]
 cascade:
   type: docs
