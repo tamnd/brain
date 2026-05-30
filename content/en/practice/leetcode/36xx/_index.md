@@ -71,11 +71,13 @@ draft: false
 | 3682 | [Minimum Index Sum of Common Elements](3682.md) | 🟡 Medium | 48s | This problem is asking us to identify the smallest sum of indices f… |
 | 3683 | [Earliest Time to Finish One Task](3683.md) | 🟢 Easy | 1m 12s | The problem gives us a list of tasks, where each task is represente… |
 | 3684 | [Maximize Sum of At Most K Distinct Elements](3684.md) | 🟢 Easy | 32s | This problem requires selecting at most k distinct elements from a … |
+| 3685 | [Subsequence Sum After Capping Elements](3685.md) | 🟡 Medium | 1m 2s | Here is a complete, rigorous study companion-style solution guide f… |
 | 3686 | [Number of Stable Subsequences](3686.md) | 🔴 Hard | 36s | The problem asks us to count how many subsequences of a given integ… |
 | 3688 | [Bitwise OR of Even Numbers in an Array](3688.md) | 🟢 Easy | 1m 32s | This problem asks us to compute the bitwise OR of all even numbers … |
 | 3689 | [Maximum Total Subarray Value I](3689.md) | 🟡 Medium | 56s | The problem asks us to select exactly k non-empty subarrays from a … |
 | 3690 | [Split and Merge Array Transformation](3690.md) | 🟡 Medium | 1m 33s | The problem gives us two arrays, nums1 and nums2, of equal length n… |
 | 3691 | [Maximum Total Subarray Value II](3691.md) | 🔴 Hard | 38s | The problem is asking us to select exactly k distinct subarrays fro… |
+| 3692 | [Majority Frequency Characters](3692.md) | 🟢 Easy | 1m 3s | The problem asks us to analyze the frequency distribution of charac… |
 | 3693 | [Climbing Stairs II](3693.md) | 🟡 Medium | 47s | This problem is an extension of the classic "climbing stairs" dynam… |
 | 3694 | [Distinct Points Reachable After Substring Removal](3694.md) | 🟡 Medium | 1m 29s | We are given a movement string s consisting of the four directions:… |
 | 3695 | [Maximize Alternating Sum Using Swaps](3695.md) | 🔴 Hard | 1m 31s | We are given an array nums and a list of allowed swap operations. T… |

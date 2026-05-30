@@ -54,3 +54,4 @@ draft: false
 | 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 2m 19s | The problem is asking for the minimum cost to satisfy a requirement… |
 | 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 1m 45s | The problem asks us to count how many integers in the inclusive ran… |
 | 3794 | [Reverse String Prefix](3794.md) | 🟢 Easy | 1m 7s | This problem gives us a string s and an integer k. Our task is to r… |
+| 3795 | [Minimum Subarray Length With Distinct Sum At Least K](3795.md) | 🟡 Medium | 7m 19s | This problem asks us to find the shortest contiguous subarray whose… |
