@@ -53,6 +53,16 @@ draft: false
 | 3458 | [Select K Disjoint Special Substrings](3458.md) | 🟡 Medium | 46s | The problem asks us to determine whether we can select k disjoint s… |
 | 3459 | [Length of Longest V-Shaped Diagonal Segment](3459.md) | 🔴 Hard | 2m 2s | We are given an n x m matrix whose entries are only 0, 1, or 2. A v… |
 | 3460 | [Longest Common Prefix After at Most One Removal](3460.md) | 🟡 Medium | 1m 25s | We are given two lowercase strings, s and t. We may remove at most … |
+| 3461 | [Check If Digits Are Equal in String After Operations I](3461.md) | 🟢 Easy | 52s | This problem asks us to repeatedly transform a string of digits by … |
 | 3462 | [Maximum Sum With at Most K Elements](3462.md) | 🟡 Medium | 49s | We are given a matrix grid, where each row contains a collection of… |
 | 3463 | [Check If Digits Are Equal in String After Operations II](3463.md) | 🔴 Hard | 44s | The problem asks us to repeatedly transform a string of digits unti… |
 | 3465 | [Find Products with Valid Serial Numbers](3465.md) | 🟢 Easy | 40s | The problem asks us to query a database table called products to id… |
+| 3467 | [Transform Array by Parity](3467.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums and asks us to transform… |
+| 3469 | [Find Minimum Cost to Remove Array Elements](3469.md) | 🟡 Medium | 42s | The problem is asking for the minimum total cost required to remove… |
+| 3470 | [Permutations IV](3470.md) | 🔴 Hard | 1m 54s | We are given two integers, n and k. We must consider all permutatio… |
+| 3471 | [Find the Largest Almost Missing Integer](3471.md) | 🟢 Easy | 1m 16s | The problem gives us an integer array nums and an integer k. We con… |
+| 3472 | [Longest Palindromic Subsequence After at Most K Operations](3472.md) | 🟡 Medium | 32s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
+| 3475 | [DNA Pattern Recognition ](3475.md) | 🟡 Medium | 1m 19s | This problem provides a database table named Samples that contains … |
+| 3477 | [Fruits Into Baskets II](3477.md) | 🟢 Easy | 46s | This problem asks us to simulate the placement of fruits into baske… |
+| 3478 | [Choose K Elements With Maximum Sum](3478.md) | 🟡 Medium | 43s | This problem asks us to compute a "maximum sum" for each index in a… |
+| 3479 | [Fruits Into Baskets III](3479.md) | 🟡 Medium | 1m 34s | This problem gives us two arrays of equal length: - fruits[i] repre… |
