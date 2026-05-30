@@ -81,9 +81,13 @@ draft: false
 | 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 2s | Here is a comprehensive, detailed solution guide for LeetCode 3780 … |
 | 3781 | [Maximum Score After Binary Swaps](3781.md) | 🟡 Medium | 33s | Before I write the full guide, I need one clarification: can you co… |
 | 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 29s | Before I write the full guide, I want to confirm one critical detai… |
-| 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 1m 18s | We are given a string s and an array cost of the same length. The c… |
-| 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 2m 19s | The problem is asking for the minimum cost to satisfy a requirement… |
-| 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 1m 45s | The problem asks us to count how many integers in the inclusive ran… |
+| 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 47s | The problem asks us to minimize the total cost of deleting characte… |
+| 3786 | [Total Sum of Interaction Cost in Tree Groups](3786.md) | 🔴 Hard | 34s | I can do this, but I need the actual problem details for LeetCode 3… |
+| 3788 | [Maximum Score of a Split](3788.md) | 🟡 Medium | 57s | The problem asks us to maximize a "score" obtained by splitting an … |
+| 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum cost required to acqu… |
+| 3790 | [Smallest All-Ones Multiple](3790.md) | 🟡 Medium | 1m 10s | This problem asks us to find the smallest positive integer composed… |
+| 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 55s | Here is the full, detailed technical solution guide for LeetCode 37… |
+| 3792 | [Sum of Increasing Product Blocks](3792.md) | 🟡 Medium | 1m 6s | The problem defines a sequence of blocks, where each block contains… |
 | 3794 | [Reverse String Prefix](3794.md) | 🟢 Easy | 1m 7s | This problem gives us a string s and an integer k. Our task is to r… |
 | 3795 | [Minimum Subarray Length With Distinct Sum At Least K](3795.md) | 🟡 Medium | 7m 19s | This problem asks us to find the shortest contiguous subarray whose… |
 | 3799 | [Word Squares II](3799.md) | 🟡 Medium | 5m 13s | We are given an array of distinct 4-letter words. Our goal is to co… |

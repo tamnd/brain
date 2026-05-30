@@ -73,5 +73,16 @@ draft: false
 | 3871 | [Count Commas in Range II](3871.md) | 🟡 Medium | 1m 3s | The problem asks us to count the total number of commas that appear… |
 | 3872 | [Longest Arithmetic Sequence After Changing At Most One Element](3872.md) | 🟡 Medium | 43s | The problem requires us to find the longest arithmetic subarray fro… |
 | 3873 | [Maximum Points Activated with One Addition](3873.md) | 🔴 Hard | 44s | The problem is asking us to simulate a chain reaction of activation… |
+| 3875 | [Construct Uniform Parity Array I](3875.md) | 🟢 Easy | 39s | The problem asks us to determine if it is possible to construct a n… |
 | 3876 | [Construct Uniform Parity Array II](3876.md) | 🟡 Medium | 51s | The problem asks us to determine whether we can construct a new arr… |
 | 3877 | [Minimum Removals to Achieve Target XOR](3877.md) | 🟡 Medium | 2m 3s | We are given an array nums and a target value target. We may remove… |
+| 3878 | [Count Good Subarrays](3878.md) | 🔴 Hard | 2m 39s | We are given an integer array nums, and we must count how many suba… |
+| 3879 | [Maximum Distinct Path Sum in a Binary Tree](3879.md) | 🟡 Medium | 47s | The problem asks us to find the maximum sum of node values along a … |
+| 3880 | [Minimum Absolute Difference Between Two Values](3880.md) | 🟢 Easy | 1m 37s | The problem gives us an integer array nums where every element is g… |
+| 3881 | [Direction Assignments with Exactly K Visible People](3881.md) | 🟡 Medium | 1m 11s | We are given n people standing in a line, indexed from 0 to n - 1. … |
+| 3882 | [Minimum XOR Path in a Grid](3882.md) | 🟡 Medium | 1m 33s | We are given an m × n grid of integers. Starting from the top-left … |
+| 3883 | [Count Non Decreasing Arrays With Given Digit Sums](3883.md) | 🔴 Hard | 39s | The problem asks us to compute the number of non-decreasing arrays … |
+| 3884 | [First Matching Character From Both Ends](3884.md) | 🟢 Easy | 1m 23s | This problem gives us a string s of length n consisting of lowercas… |
+| 3885 | [Design Event Manager](3885.md) | 🟡 Medium | 1m 10s | The problem asks us to design an EventManager class that manages a … |
+| 3889 | [Mirror Frequency Distance](3889.md) | 🟡 Medium | 1m 12s | We are given a string s containing only lowercase English letters (… |
+| 3890 | [Integers With Multiple Sum of Two Cubes](3890.md) | 🟡 Medium | 55s | The problem asks us to find all integers x less than or equal to a … |
