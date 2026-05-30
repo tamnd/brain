@@ -44,4 +44,10 @@ draft: false
 | 3545 | [Minimum Deletions for At Most K Distinct Characters](3545.md) | 🟢 Easy | 1m 19s | The problem gives us a string s containing lowercase English letter… |
 | 3546 | [Equal Sum Grid Partition I](3546.md) | 🟡 Medium | 1m 6s | This problem asks us to determine whether a rectangular grid of pos… |
 | 3547 | [Maximum Sum of Edge Values in a Graph](3547.md) | 🔴 Hard | 2m 30s | The graph is undirected, connected, and every node has degree at mo… |
+| 3549 | [Multiply Two Polynomials](3549.md) | 🔴 Hard | 1m 9s | The input arrays represent polynomials in coefficient form. If: the… |
 | 3552 | [Grid Teleportation Traversal](3552.md) | 🟡 Medium | 1m 4s | This problem presents a 2D grid traversal scenario with obstacles a… |
+| 3553 | [Minimum Weighted Subgraph With the Required Paths II](3553.md) | 🔴 Hard | 1m 37s | We are given a weighted, undirected tree with n nodes. Because the … |
+| 3554 | [Find Category Recommendation Pairs](3554.md) | 🔴 Hard | 1m 5s | This is a SQL database problem involving customer purchasing behavi… |
+| 3559 | [Number of Ways to Assign Edge Weights II](3559.md) | 🔴 Hard | 1m 15s | We are given an undirected tree with n nodes, rooted at node 1. Eve… |
+| 3561 | [Resulting String After Adjacent Removals](3561.md) | 🟡 Medium | 50s | The problem asks us to repeatedly remove pairs of adjacent characte… |
+| 3563 | [Lexicographically Smallest String After Adjacent Removals](3563.md) | 🔴 Hard | 40s | The problem asks us to find the lexicographically smallest string t… |
