@@ -56,3 +56,9 @@ draft: false
 | 3674 | [Minimum Operations to Equalize Array](3674.md) | 🟢 Easy | 51s | Let's go step by step and produce a fully detailed, reference-style… |
 | 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 54s | The problem gives a string s consisting of lowercase English letter… |
 | 3676 | [Count Bowl Subarrays](3676.md) | 🟡 Medium | 54s | The problem asks us to count how many subarrays in an array of dist… |
+| 3677 | [Count Binary Palindromic Numbers](3677.md) | 🔴 Hard | 1m 9s | We are given a non-negative integer n and asked to count how many i… |
+| 3680 | [Generate Schedule](3680.md) | 🟡 Medium | 1m 14s | The problem is asking us to generate a round-robin style schedule f… |
+| 3682 | [Minimum Index Sum of Common Elements](3682.md) | 🟡 Medium | 48s | This problem is asking us to identify the smallest sum of indices f… |
+| 3683 | [Earliest Time to Finish One Task](3683.md) | 🟢 Easy | 1m 12s | The problem gives us a list of tasks, where each task is represente… |
+| 3684 | [Maximize Sum of At Most K Distinct Elements](3684.md) | 🟢 Easy | 32s | This problem requires selecting at most k distinct elements from a … |
+| 3688 | [Bitwise OR of Even Numbers in an Array](3688.md) | 🟢 Easy | 1m 32s | This problem asks us to compute the bitwise OR of all even numbers … |
