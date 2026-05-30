@@ -1,7 +1,7 @@
 ---
-title: "JLPT N4 Lesson 5: Reported Speech"
-description: "Master the art of reporting information, expressing personal opinions, and citing sources in Japanese."
-tags: ["japanese", "n4", "lesson", "jlpt"]
+title: "JLPT N4 Lesson 5: Reported Speech and Quoting"
+description: "Master Japanese reported speech patterns — 〜と言う, 〜と思う, 〜と聞く, 〜によると, 〜そうだ — and learn to convert direct speech to indirect speech with correct plain-form usage before と."
+tags: ["japanese", "n4", "jlpt", "lesson", "language-learning"]
 cascade:
   type: docs
 date: 2026-05-30T00:00:00+07:00
@@ -10,127 +10,254 @@ weight: 5
 
 ## Overview
 
-In this lesson, we move beyond simple statements to discuss what others have said, thought, or heard. Reported speech is a fundamental skill for N4 learners, as it allows you to relay information, share news, and express your own perspective on events. You will learn how to connect clauses using the particle 「と」(to) to link your thoughts to verbs of communication and cognition.
+Reported speech is one of the core communicative skills at N4 level and beyond. In real life, you constantly need to relay what someone said, share what you think, report what you heard, or cite a source. Japanese uses the **quotation particle と** to link reported content to verbs like 言う, 思う, 聞く, 考える, and 感じる. The critical rule that unites all these patterns is that the content before と must always be in **plain form**, regardless of how polite the rest of the sentence is.
 
-By mastering these structures, you will transition from basic sentence construction to more complex, paragraph-level communication. This lesson builds upon your knowledge of plain form verbs and adjectives, which are essential for creating natural-sounding reported speech. These patterns are vital for everyday conversation, whether you are discussing the weather, relaying a message from a friend, or sharing your opinion on a movie.
+This lesson also addresses a common source of confusion: the overlap between 〜と言う (direct/indirect reported speech), 〜によると〜そうだ (citing a source), and 〜らしい (apparent hearsay). You will practice converting direct speech to indirect speech, learn how tense works in reported clauses, and develop the ability to attribute information correctly to its source. The drills in this lesson focus specifically on the error of using ます-form inside と-quote clauses — one of the most common N4 mistakes.
 
 ## Learning Objectives
 
 By the end of this lesson you can:
-- Use 「〜と言う」 to report what someone else has said.
-- Use 「〜と思う」 to express your personal thoughts or opinions.
-- Use 「〜と聞く」 to relay information you have heard from others.
-- Use 「〜によると〜そうです」 to cite sources like news or rumors.
-- Correctly apply plain form verbs and adjectives before the particle 「と」.
+- Use 〜と言う/言った to report both direct and indirect speech with correct plain-form embedding.
+- Use 〜と思う/思った to express your own opinions and inferences.
+- Use 〜と聞く/聞いた and 〜によると〜そうだ to cite sources and relay hearsay information.
+- Convert direct speech sentences (with 「 」quotes) into natural indirect speech using plain form + と.
 
 ## New Vocabulary
 
 | Japanese | Reading | Romaji | English | Part of Speech |
 |----------|---------|--------|---------|----------------|
-| 伝える | つたえる | tsutaeru | to convey/tell | Verb |
-| 意見 | いけん | iken | opinion | Noun |
-| 噂 | うわさ | uwasa | rumor | Noun |
-| 天気予報 | てんきよほう | tenkiyohou | weather forecast | Noun |
-| 記事 | きじ | kiji | article | Noun |
-| 確か | たしか | tashika | if I remember correctly | Adverb |
-| らしい | らしい | rashii | it seems/I heard | Auxiliary |
-| 発表する | はっぴょうする | happyousuru | to announce | Verb |
-| 複雑な | ふくざつな | fukuzatsuna | complicated | Na-Adj |
-| 厳しい | きびしい | kibishii | strict/severe | I-Adj |
-| 予定 | よてい | yotei | plan/schedule | Noun |
-| 驚く | おどろく | odoroku | to be surprised | Verb |
-| 認める | みとめる | mitomeru | to admit/recognize | Verb |
-| 連絡 | れんらく | renraku | contact/communication | Noun |
-| 理由 | りゆう | riyuu | reason | Noun |
+| 伝える | つたえる | tsutaeru | to convey, to pass on a message | Verb (ru) |
+| 報告する | ほうこくする | hōkoku suru | to report | Verb (suru) |
+| 発表する | はっぴょうする | happyō suru | to announce | Verb (suru) |
+| 噂 | うわさ | uwasa | rumor, gossip | Noun |
+| 記事 | きじ | kiji | article (news/magazine) | Noun |
+| ニュース | にゅーす | nyūsu | news | Noun |
+| によると | によると | ni yoru to | according to | Expression |
+| 引用 | いんよう | in'yō | quotation, citation | Noun |
+| 間接話法 | かんせつわほう | kansetsu wahō | indirect speech | Noun |
+| 直接話法 | ちょくせつわほう | chokusetsu wahō | direct speech | Noun |
+| 確か | たしか | tashika | if I recall correctly | Adverb |
+| 驚く | おどろく | odoroku | to be surprised | Verb (u) |
+| 感じる | かんじる | kanjiru | to feel, to sense | Verb (ru) |
+| 考える | かんがえる | kangaeru | to think, to consider | Verb (ru) |
+| 述べる | のべる | noberu | to state, to describe | Verb (ru) |
+
+---
 
 ## Grammar Points
 
-### 1. Reported Speech: 〜と言う / 〜と思う / 〜と聞く
+### 1. 〜と言う / 〜と言った (Reported Speech — Direct and Indirect)
 
-**Structure:** [Plain Form Sentence] + と + 言う / 思う / 聞く
+**Structure:** [Plain form clause] + と言う / と言った / と言っている / と言っていた
 
-In Japanese, when you want to report speech, thoughts, or hearsay, you place the entire content of the quote before the particle 「と」. The verb that follows indicates *how* that information was processed (said, thought, or heard). Note that the preceding clause must be in the **plain form** (dictionary form, past tense, or negative form).
+**Explanation:**
+
+The particle と here is the **quotation marker**, not the conjunctive "and." Everything before と is the *content* of what was said, and this content must be in plain form. The verb that follows と indicates the relationship to the speech act:
+
+- と言う = "say that" (current/habitual)
+- と言った = "said that" (reported past)
+- と言っている = "is saying that / has been saying that"
+- と言っていた = "was saying that"
+
+When converting direct speech to indirect speech, all ます and です forms inside the quote become their plain-form equivalents. The tense of the reported content reflects *when the action occurred*, not when it was reported.
+
+**Direct → Indirect speech conversion examples:**
+
+| Direct Speech | Indirect Speech |
+|---------------|----------------|
+| 「明日行きます」と言った。 | 明日行くと言った。 |
+| 「美味しくないです」と言った。 | 美味しくないと言った。 |
+| 「学生でした」と言った。 | 学生だったと言った。 |
+| 「雨が降りますか」と聞いた。 | 雨が降るかと聞いた。 |
+
+**More examples:**
 
 | Japanese | Reading | Romaji | English |
 |----------|---------|--------|---------|
-| 田中さんは来ると言いました。 | たなかさんはくるといいました。 | Tanaka-san wa kuru to iimashita. | Mr. Tanaka said he would come. |
-| 明日は雨だと思う。 | あしたはあめだとおもう。 | Ashita wa ame da to omou. | I think it will rain tomorrow. |
-| 彼は忙しいと聞きました。 | かれはいそがしいとききました。 | Kare wa isogashii to kikimashita. | I heard that he is busy. |
-| 先生はテストがあると言った。 | せんせいはテストがあるといった。 | Sensei wa tesuto ga aru to itta. | The teacher said there is a test. |
+| 田中さんは来週来ると言った。 | たなかさんはらいしゅうくると言った。 | Tanaka-san wa raishū kuru to itta. | Tanaka said he would come next week. |
+| 先生は試験は難しくないと言っていました。 | せんせいはしけんはむずかしくないといっていました。 | Sensei wa shiken wa muzukashikunai to itte imashita. | The teacher was saying the exam isn't difficult. |
+| 彼女は「疲れた」と言った。 | かのじょは「つかれた」と言った。 | Kanojo wa "tsukareta" to itta. | She said, "I'm tired." |
+| 母は早く帰ってくると言っていた。 | はははやくかえってくるといっていた。 | Haha wa hayaku kaette kuru to itte ita. | My mother was saying she'd come back early. |
+| 彼はもう帰ったと言いました。 | かれはもうかえったといいました。 | Kare wa mō kaetta to iimashita. | He said he had already gone home. |
+| 山田さんが結婚すると言っている。 | やまださんがけっこんするといっている。 | Yamada-san ga kekkon suru to itte iru. | Yamada is saying he's going to get married. |
 
-**Common mistake:** ❌ 田中さんは来ますと言いました。 → ✓ 田中さんは来ると言いました。 — When using 「と」, you must use the plain form (来る) rather than the polite form (来ます).
+**Common mistake:**
+❌ 彼は来ますと言った → ✓ 彼は来ると言った
+(Never ます before と in reported speech)
 
-### 2. Citing Sources: 〜によると〜そうです
+---
 
-**Structure:** [Source] + によると + [Sentence] + そうです
+### 2. 〜と思う / 〜と思った (Think That — Opinion and Inference)
 
-This pattern is used to report information obtained from a specific source (news, weather forecast, a book, etc.). The 「そうです」 at the end indicates that the information is hearsay—you are not stating it as your own direct observation, but rather relaying what you read or heard elsewhere.
+**Structure:** [Plain form] + と思う (present thought) / と思った (past thought)
+
+**Explanation:**
+
+と思う is used to:
+1. Express the **speaker's current opinion**: 私はこれは正しいと思う (I think this is correct)
+2. Express a **tentative conclusion** from evidence: 明日は雨だと思う (I think it will rain tomorrow)
+3. In third person, report what someone thinks: 彼はいいと思っている (He thinks it's good)
+
+Important: when と思った is used with first-person, it can mean "I thought" (a past belief that may have changed), or it can express the moment you formed an opinion.
+
+**Examples:**
 
 | Japanese | Reading | Romaji | English |
 |----------|---------|--------|---------|
-| 天気予報によると、明日は晴れるそうです。 | てんきよほうによると、あしたははれるそうです。 | Tenkiyohou ni yoru to, ashita wa hareru sou desu. | According to the forecast, it will be sunny tomorrow. |
-| ニュースによると、事故があったそうです。 | ニュースによると、じこがあったそうです。 | Nyuusu ni yoru to, jiko ga atta sou desu. | According to the news, there was an accident. |
-| 友達によると、この店はおいしいそうです。 | ともだちによると、このみせはおいしいそうです。 | Tomodachi ni yoru to, kono mise wa oishii sou desu. | According to my friend, this shop is delicious. |
+| 私はこの映画は面白いと思います。 | わたしはこのえいがはおもしろいとおもいます。 | Watashi wa kono eiga wa omoshiroi to omoimasu. | I think this movie is interesting. |
+| 明日は雨が降ると思う。 | あしたはあめがふるとおもう。 | Ashita wa ame ga furu to omou. | I think it will rain tomorrow. |
+| 彼は来ないと思った。 | かれはこないとおもった。 | Kare wa konai to omotta. | I thought he wouldn't come. |
+| 彼女はもう家に着いたと思います。 | かのじょはもういえについたとおもいます。 | Kanojo wa mō ie ni tsuita to omoimasu. | I think she has already arrived home. |
+| 先生はそれは正しいと思っている。 | せんせいはそれはただしいとおもっている。 | Sensei wa sore wa tadashii to omotte iru. | The teacher thinks that is correct. |
 
-**Common mistake:** ❌ 天気予報によると、明日は晴れると言いました。 → ✓ 天気予報によると、明日は晴れるそうです。 — Use 「そうです」 for hearsay from media/external sources, not 「言いました」.
+**Common mistake:**
+❌ 私は明日は雨が降りますと思います → ✓ 私は明日は雨が降ると思います
+(Plain form before と思う, always)
+
+---
+
+### 3. 〜と聞く / 〜と聞いた / 〜によると〜そうだ (Heard That / According To)
+
+**Structure:**
+- [Plain form] + と聞く/聞いた = "I hear/heard that"
+- [Source] + によると + [plain form] + そうです/そうだ = "According to [source], ..."
+
+**Explanation:**
+
+と聞く/聞いた reports information you heard from someone, with the speaker taking some personal responsibility for having heard it. It's personal hearsay: someone told you directly. によると〜そうだ is for citing an external, often formal source (news, a book, a weather forecast, a third party) — the information feels more at arm's length. Both require plain form before と.
+
+**Examples:**
+
+| Japanese | Reading | Romaji | English |
+|----------|---------|--------|---------|
+| 田中さんが転職すると聞いた。 | たなかさんがてんしょくするときいた。 | Tanaka-san ga tenshoku suru to kiita. | I heard that Tanaka is changing jobs. |
+| 先生から、試験が来週あると聞きました。 | せんせいから、しけんがらいしゅうあるときいた。 | Sensei kara, shiken ga raishū aru to kikimashita. | I heard from the teacher that there's an exam next week. |
+| 天気予報によると、明日は雪が降るそうです。 | てんきよほうによると、あしたはゆきがふるそうです。 | Tenkiyohō ni yoru to, ashita wa yuki ga furu sō desu. | According to the weather forecast, it will snow tomorrow. |
+| ニュースによると、地震があったそうだ。 | にゅーすによると、じしんがあったそうだ。 | Nyūsu ni yoru to, jishin ga atta sō da. | According to the news, there was an earthquake. |
+| 友達によると、あの店は高いそうですよ。 | ともだちによると、あのみせはたかいそうですよ。 | Tomodachi ni yoru to, ano mise wa takai sō desu yo. | According to my friend, that shop is apparently expensive. |
+
+**Common mistake:**
+❌ 天気予報によると、明日は雪が降ると言いました → ✓ 天気予報によると、明日は雪が降るそうです
+(Use そうだ for external sources with によると; 言いました implies a specific person speaking)
+
+---
 
 ## Dialogues
 
-### Dialogue 1: Discussing Plans
-**Setting:** Two friends, Ken and Yumi, are talking about a concert.
+### Dialogue 1: Relaying News About a Friend
 
-**Ken:** 来週のコンサート、行く？ (らいしゅうのコンサート、いく？ / Raishuu no konsaato, iku?) / Are you going to the concert next week?
-**Yumi:** 行きたいけど、忙しいと思う。(いきたいけど、いそがしいとおもう。 / Ikitai kedo, isogashii to omou.) / I want to go, but I think I'll be busy.
-**Ken:** え、どうして？ (え、どうして？ / E, doushite?) / Oh, why?
-**Yumi:** 先生が、来週は試験が多いと言ったから。(せんせいが、らいしゅうはしけんがおおいといったから。 / Sensei ga, raishuu wa shiken ga ooi to itta kara.) / Because the teacher said there are many exams next week.
-**Ken:** それは大変だね。(それはたいへんだね。 / Sore wa taihen da ne.) / That's tough.
+> Saki (S) and Tomoko (T) are catching up at a cafe.
 
-### Dialogue 2: The Weather Forecast
-**Setting:** A colleague mentions the weather to a coworker.
+| # | Japanese | Romaji | English |
+|---|----------|--------|---------|
+| 1 | S: トモコ、聞いた？ケンが結婚するらしいよ。 | Tomoko, kiita? Ken ga kekkon suru rashii yo. | Tomoko, did you hear? Apparently Ken is getting married. |
+| 2 | T: 本当に？！どこで聞いたの？ | Hontō ni?! Doko de kiita no? | Really?! Where did you hear that? |
+| 3 | S: ユキが教えてくれたんだけど、ケンが直接言ったって。 | Yuki ga oshiete kureta n da kedo, Ken ga chokusetsu itta tte. | Yuki told me, but apparently Ken said it directly. |
+| 4 | T: そっか。ケンは「来年結婚する」と言ったの？ | Sokka. Ken wa "rainen kekkon suru" to itta no? | I see. Did Ken say "I'll get married next year"? |
+| 5 | S: うん、「来年春に結婚する予定だ」と言っていたらしいよ。 | Un, "rainen haru ni kekkon suru yotei da" to itte ita rashii yo. | Yeah, apparently he was saying, "I'm planning to get married next spring." |
+| 6 | T: 誰と結婚するかは聞いた？ | Dare to kekkon suru ka wa kiita? | Did you hear who he's marrying? |
+| 7 | S: それは聞いてないけど、会社の同僚だと思う。 | Sore wa kiite nai kedo, kaisha no dōryō da to omou. | I didn't hear that, but I think it's a coworker. |
+| 8 | T: へー、そうなんだ。ユキも驚いたと言っていた？ | Hē, sō na n da. Yuki mo odoroita to itte ita? | Wow, is that right. Did Yuki say she was also surprised? |
+| 9 | S: うん、「全然知らなかった」って言ってたよ。 | Un, "zenzen shiranakatta" tte itteta yo. | Yeah, she was saying, "I had no idea at all." |
+| 10 | T: ケンにお祝いを伝えたいね。 | Ken ni oiwai o tsutaetai ne. | I want to pass on our congratulations to Ken. |
+| 11 | S: そうだね。連絡してみよう。 | Sō da ne. Renraku shite miyō. | Right. Let's try contacting him. |
 
-**Sato:** 今日の天気予報、見た？ (きょうのてんきよほう、みた？ / Kyou no tenkiyohou, mita?) / Did you see today's weather forecast?
-**Tanaka:** まだ見ていないよ。どうだった？ (まだみていないよ。どうだった？ / Mada mite inai yo. Dou datta?) / I haven't seen it yet. How was it?
-**Sato:** 天気予報によると、午後は雨が降るそうです。(てんきよほうによると、ごごはあめがふるそうです。 / Tenkiyohou ni yoru to, gogo wa ame ga furu sou desu.) / According to the forecast, it will rain in the afternoon.
-**Tanaka:** 本当？傘を持っていくよ。(ほんとう？かさをもっていくよ。 / Hontou? Kasa o motte iku yo.) / Really? I'll take an umbrella.
+---
+
+### Dialogue 2: News Report Discussion
+
+> Two coworkers, Hiroshi (H) and Akemi (A), discuss news during their break.
+
+| # | Japanese | Romaji | English |
+|---|----------|--------|---------|
+| 1 | H: 今日のニュース見た？大きな台風が来るそうだよ。 | Kyō no nyūsu mita? Ōkina taifū ga kuru sō da yo. | Did you see today's news? Apparently a big typhoon is coming. |
+| 2 | A: えっ、本当に？いつ来るの？ | Ē, hontō ni? Itsu kuru no? | What? Really? When is it coming? |
+| 3 | H: 天気予報によると、明後日の夜に来るそうです。 | Tenkiyohō ni yoru to, asatte no yoru ni kuru sō desu. | According to the weather forecast, it will come the night after tomorrow. |
+| 4 | A: それは大変。ニュースでは雨が強くなると言っていましたか。 | Sore wa taihen. Nyūsu de wa ame ga tsuyoku naru to itte imashita ka. | That's serious. Did the news say the rain would get strong? |
+| 5 | H: うん。「非常に強い風が吹く」と言っていた。 | Un. "Hijō ni tsuyoi kaze ga fuku" to itte ita. | Yeah. They were saying, "Very strong winds will blow." |
+| 6 | A: 会社の人たちは知っているかな。 | Kaisha no hitotachi wa shitte iru kana. | I wonder if people at the company know. |
+| 7 | H: 部長はもう知っていると思うよ。朝に会議があったから。 | Buchō wa mō shitte iru to omou yo. Asa ni kaigi ga atta kara. | I think the manager already knows. There was a morning meeting. |
+| 8 | A: そっか。家に早く帰ったほうがいいと思うね。 | Sokka. Ie ni hayaku kaetta hō ga ii to omou ne. | I see. I think it's better to go home early. |
+| 9 | H: 私もそう思う。準備しておくから。 | Watashi mo sō omou. Junbi shite oku kara. | I think so too. I'll prepare in advance. |
+| 10 | A: 気をつけてね。 | Ki o tsukete ne. | Take care. |
+
+---
 
 ## Grammar Drills
 
-**Exercise 1: Fill in the blank**
-1. 私は明日、図書館へ行く（　　）思っています。 (と)
-2. ニュース（　　）よると、新しい駅ができるそうです。 (に)
-3. 彼は「明日、休みだ」と（　　）いました。 (言)
-4. 友達から、この映画は面白いと（　　）ました。 (聞)
-5. 先生は、宿題は明日までだと言いました。 (Plain form: 宿題は明日までだ)
+Convert the bracketed direct speech to indirect speech, or fill in the missing particle/form. Answers below.
+
+1. 田中さんは「明日来ます」と言った。→ 田中さんは明日_____と言った。
+2. 先生から、宿題が多い___聞きました。
+3. ニュース___よると、明日は晴れる___です。
+4. 彼女は「映画が好きです」と言っていた。→ 彼女は映画が_____と言っていた。
+5. 私はこの本はつまらない___思います。
+6. 母は「早く起きなさい」と言った。→ 母は早く起きる___に言った。(use よう)
+7. 友達が教えてくれた。その店は安い___。（そうだ）→ ___
+8. 「電車が遅れています」と駅員が言った。→ 電車が遅れている___駅員が言った。
+9. 先生は試験は来週___言っている。（ある）
+10. 田中さんが転勤する___聞きましたが、本当ですか。
 
 **Answer Key:**
-1. と 2. に 3. 言 4. 聞 5. (Correct as is)
+1. 来ると（plain form: くる）
+2. とを（と）
+3. によると / そうです
+4. 好きだ（plain form）
+5. と（と思います）
+6. ように（よう + に）
+7. 友達が教えてくれたが、その店は安いそうだ。
+8. と（電車が遅れていると）
+9. あると（あると言っている）
+10. と（転勤すると）
+
+---
 
 ## Translation Practice
 
-**English → Japanese**
-1. I think that Japanese is interesting. (私は日本語は面白いと思います。)
-2. According to the news, it will be cold tomorrow. (ニュースによると、明日は寒いそうです。)
-3. My mother said she would come to Tokyo. (母は東京に来ると言いました。)
-4. I heard that the test is difficult. (テストは難しいと聞きました。)
-5. I think he is a kind person. (彼は親切な人だと思います。)
+### English → Japanese
 
-**Japanese → English**
-6. 彼は明日来ると言いました。 (He said he would come tomorrow.)
-7. 天気予報によると、明日は雨だそうです。 (According to the forecast, it will rain tomorrow.)
-8. 私はこの本はいいと思います。 (I think this book is good.)
-9. 友達から、その店は高いと聞きました。 (I heard from a friend that the shop is expensive.)
-10. 先生は、来週は休みだと言いました。 (The teacher said that next week is a holiday.)
+1. Tanaka said he wouldn't come to the party.
+2. I think it will be cold tomorrow.
+3. According to the news, the store closed yesterday.
+4. I heard that the exam was very difficult.
+5. She was saying, "I've never been to Japan."
+
+**Answers:**
+1. 田中さんはパーティーに来ないと言った。
+2. 明日は寒いと思います。
+3. ニュースによると、その店は昨日閉まったそうだ。
+4. 試験はとても難しかったと聞きました。
+5. 彼女は「日本に行ったことがない」と言っていた。
+
+### Japanese → English
+
+1. 先生は「来週は休みだ」と言いました。
+2. 友達から、あの映画は面白くないと聞いた。
+3. 天気予報によると、今夜は雪が降るそうです。
+4. 私は彼女はもう大学を卒業したと思っていた。
+5. 彼は「分からない」とだけ言った。
+
+**Answers:**
+1. The teacher said, "Next week is a holiday."
+2. I heard from a friend that that movie isn't interesting.
+3. According to the weather forecast, it will apparently snow tonight.
+4. I thought she had already graduated from university.
+5. He only said, "I don't understand."
+
+---
 
 ## Cultural Note
 
-In Japanese culture, the use of 「〜と思う」(I think) is often used to soften a statement. Because direct disagreement is often avoided to maintain *wa* (harmony), Japanese speakers frequently add 「〜と思います」 to the end of their opinions to make them sound less like an absolute, aggressive fact and more like a personal perspective.
+Japanese reported speech reflects a profound cultural sensitivity to the **source and reliability of information**. By grammatically distinguishing between what you personally observed, what you logically concluded, what you heard from a friend, and what an authoritative source reported, Japanese encodes **epistemic responsibility** — who is accountable for the information — in every sentence. This is why you cannot simply say そうだ for everything: Japanese grammar requires you to be explicit about where you got your information.
 
-Additionally, when reporting what someone else has said, Japanese speakers are very careful about the "in-group" vs. "out-group" dynamic. If you are reporting what your own family member said to an outsider, you might use more humble language. However, for N4 level, focusing on the correct use of the plain form before 「と」 is the most important step in mastering these social nuances.
+This also explains why と思います is so ubiquitous in Japanese conversation. By framing a statement as "I think," speakers show intellectual humility and openness to being wrong. This is not weak communication — in Japanese culture, it is **considerate communication** that signals you respect the listener's right to hold a different view. Overconfident absolute statements can seem aggressive, while a well-placed と思います keeps the social harmony intact.
+
+---
 
 ## Self-Check
 
-1. What form must a verb be in before adding 「と」?
-2. How does 「〜そうです」 change the meaning of a sentence compared to 「〜です」?
-3. What is the difference between 「〜と言う」 and 「〜と聞く」?
-4. Translate: "According to my friend, the party is fun."
-5. Why do we use 「〜と思う」 instead of just stating an opinion directly?
+1. Why must plain form always precede と in reported speech, even in an otherwise polite sentence?
+2. What is the difference between 田中さんが来ると聞いた and 田中さんが来るそうだ?
+3. Convert: 「もう食べました」と言った → indirect speech.
+4. When do you use によると〜そうだ rather than と聞いた?
+5. How does と思った differ from と思っている? Provide an example for each.

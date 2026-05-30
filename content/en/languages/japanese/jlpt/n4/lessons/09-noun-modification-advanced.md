@@ -1,7 +1,7 @@
 ---
-title: "JLPT N4 Lesson 9: Noun Modification Advanced"
-description: "By the end of this lesson, you will be able to construct complex sentences by modifying nouns using various plain forms, nominalizers, and embedded questions, significantly expanding your expressive capabilities in Japanese."
-tags: ["japanese", "n4", "lesson", "jlpt"]
+title: "JLPT N4 Lesson 9: Noun Modification and Nominalizers"
+description: "Master Japanese noun modification through relative clauses (plain form + noun), 〜という + noun, and the critical nominalizers 〜の and 〜こと. Learn 〜ところ, ことがある (experience/possibility), ことにする, and ことになる."
+tags: ["japanese", "n4", "jlpt", "lesson", "language-learning"]
 cascade:
   type: docs
 date: 2026-05-30T00:00:00+07:00
@@ -10,361 +10,299 @@ weight: 9
 
 ## Overview
 
-In previous lessons, you learned basic ways to describe nouns using adjectives and simple phrases. This lesson takes your ability to modify nouns to the next level, introducing advanced structures that allow you to create more detailed and nuanced descriptions. Mastering these patterns is crucial for moving beyond simple sentences and expressing complex ideas, making your Japanese sound much more natural and sophisticated.
+Noun modification is the ability to take a full sentence or clause and use it to describe a noun — the same way English uses relative clauses like "the book that I bought" or "the person who called." In Japanese, all modification goes **before** the noun it modifies, and the modifying clause must be in **plain form**. This pre-nominal modification system is one of the most important structural differences between English and Japanese, and mastering it at N4 dramatically increases both reading comprehension and expressive range.
 
-This lesson will equip you with the tools to build relative clauses, define terms, nominalize entire phrases, and embed questions within sentences. These skills are fundamental for understanding and producing paragraph-level Japanese, directly supporting the JLPT N4 requirement of comprehending everyday situations and familiar topics. By the end, you'll be able to describe people, places, and things with greater precision, laying a strong foundation for the even more complex sentence structures you'll encounter at the N3 level and beyond.
+This lesson covers three interconnected topics. First, **relative clause modification**: placing a plain-form clause directly before a noun to restrict or describe it. Second, **〜という + noun**: a crucial pattern meaning "called/named/known as" used to introduce new or explained concepts. Third, **nominalizers**: the patterns 〜の and 〜こと that convert verb phrases into noun phrases, making it possible to talk about actions as things. Additional patterns include 〜ところ (stage/point), ことがある (experience and occasional occurrence), ことにする (decide to), and ことになる (it has been decided / it turns out).
 
 ## Learning Objectives
 
 By the end of this lesson you can:
-- Construct relative clauses to describe nouns using plain forms of verbs, adjectives, and nouns.
-- Use 〜という to name or define nouns and concepts.
-- Transform verbs and adjectives into noun phrases using 〜の and 〜こと nominalizers.
-- Embed questions within larger sentences to ask about unknown information.
+- Construct natural relative clauses by placing plain-form verb phrases before nouns.
+- Use 〜という + noun to introduce and explain named concepts, quotes, and definitions.
+- Distinguish between the nominalizers の and こと and choose the correct one by context.
+- Use ことがある, ことにする, and ことになる in natural conversational and formal contexts.
 
 ## New Vocabulary
 
 | Japanese | Reading | Romaji | English | Part of Speech |
-|:---------|:---------|:-------|:--------|:---------------|
-| 趣味 | しゅみ | shumi | hobby | noun |
-| 夢 | ゆめ | yume | dream | noun |
-| 経験 | けいけん | keiken | experience | noun |
-| 理由 | りゆう | riyū | reason | noun |
-| 方法 | ほうほう | hōhō | hōhō | method, way | noun |
-| 場所 | ばしょ | basho | place | noun |
-| 人 | ひと | hito | person | noun |
-| 物 | もの | mono | thing | noun |
-| こと | こと | koto | thing, matter, fact | noun |
-| 難しい | むずかしい | muzukashii | difficult | い-adjective |
-| 簡単な | かんたんな | kantan na | easy, simple | な-adjective |
-| 有名な | ゆうめいな | yūmei na | famous | な-adjective |
-| 習う | ならう | narau | to learn | verb |
-| 忘れる | わすれる | wasureru | to forget | verb |
-| 決める | きめる | kimeru | to decide | verb |
-| 教える | おしえる | oshieru | to teach, to tell | verb |
-| 知る | しる | shiru | to know | verb |
-| 考える | かんがえる | kangaeru | to think | verb |
+|----------|---------|--------|---------|----------------|
+| 修飾 | しゅうしょく | shūshoku | modification (grammar) | Noun |
+| 名詞化 | めいしか | meishika | nominalization | Noun |
+| 節 | せつ | setsu | clause (grammar) | Noun |
+| 経験 | けいけん | keiken | experience | Noun |
+| 機会 | きかい | kikai | opportunity, chance | Noun |
+| 決める | きめる | kimeru | to decide | Verb (ru) |
+| 決まる | きまる | kimaru | to be decided, to be settled | Verb (u) |
+| 場所 | ばしょ | basho | place, location | Noun |
+| 途中 | とちゅう | tochū | midway, in the middle of | Noun |
+| 段階 | だんかい | dankai | stage, phase | Noun |
+| 結局 | けっきょく | kekkyoku | in the end | Adverb |
+| 規則 | きそく | kisoku | rule, regulation | Noun |
+| 定義 | ていぎ | teigi | definition | Noun |
+| 概念 | がいねん | gainen | concept, notion | Noun |
+| 表現 | ひょうげん | hyōgen | expression, phrasing | Noun |
+
+---
 
 ## Grammar Points
 
-### Plain Form + Noun (Relative Clause)
+### 1. Plain Form + Noun (Relative Clause Modification)
+
+**Structure:** [Sentence in plain form] + Noun
+
+**Explanation:**
+
+In Japanese, to modify a noun with a clause (relative clause), you simply place the entire clause — in **plain form** — directly before the noun. There is no relative pronoun (no "that," "which," or "who"). The modified noun is called the **head noun** (主名詞, shu-meishi). The clause can describe the noun in any way: time, content, identity, description, purpose, or any other relationship.
+
+Key rules:
+- The clause must be in **plain form** (present/past, affirmative/negative)
+- The modifying clause directly precedes the noun — no particle between them
+- The same pattern works for all verb types and adjectives
+- When the head noun is the *subject* of the embedded clause, use が (not は) in the clause
+
+**Diagram:** [私が昨日食べた] + ケーキ = "the cake that I ate yesterday"
+
+| Japanese | Reading | Romaji | English |
+|----------|---------|--------|---------|
+| 私が昨日読んだ本はとても面白かった。 | わたしがきのうよんだほんはとてもおもしろかった。 | Watashi ga kinō yonda hon wa totemo omoshirokatta. | The book I read yesterday was very interesting. |
+| 田中さんが作った料理はおいしい。 | たなかさんがつくったりょうりはおいしい。 | Tanaka-san ga tsukutta ryōri wa oishii. | The food Tanaka made is delicious. |
+| 東京に住んでいる友達に会った。 | とうきょうにすんでいるともだちにあった。 | Tōkyō ni sunde iru tomodachi ni atta. | I met a friend who lives in Tokyo. |
+| 私が行きたいレストランはここです。 | わたしがいきたいれすとらんはここです。 | Watashi ga ikitai resutoran wa koko desu. | The restaurant I want to go to is here. |
+| 彼が言ったことは本当だと思う。 | かれがいったことはほんとうだとおもう。 | Kare ga itta koto wa hontō da to omou. | I think what he said is true. |
+| 試験に合格した学生はクラスの半分だった。 | しけんにごうかくしたがくせいはくらすのはんぶんだった。 | Shiken ni gōkaku shita gakusei wa kurasu no hanbun datta. | The students who passed the exam were half the class. |
+
+**Common mistake:**
+❌ 私が昨日読みましたの本 → ✓ 私が昨日読んだ本
+(Never use ます-form before a noun in a relative clause; always plain form + drop any copula)
+
+---
+
+### 2. 〜という + Noun ("Called / Known As / That...")
+
+**Structure:** [Word/Name/Concept] + という + Noun
+
+**Explanation:**
+
+という literally means "that is called / named / which says." It connects a name, quote, concept, or piece of information to a noun that categorizes or labels it. It has three main uses:
+
+1. **Naming**: 「テトリス」というゲームを知っていますか ("Do you know a game called Tetris?")
+2. **Quoting/reporting**: 「早く来い」という声が聞こえた ("I heard a voice saying 'Come quickly'")
+3. **Conceptual definition**: 夢という言葉の意味 ("The meaning of the word 'dream'")
+
+という is also used to introduce unfamiliar or defined concepts, making it essential for explanations and academic language.
+
+| Japanese | Reading | Romaji | English |
+|----------|---------|--------|---------|
+| 「ゆっくり」という言葉の意味は何ですか。 | 「ゆっくり」というこどばのいみはなんですか。 | "Yukkuri" to iu kotoba no imi wa nan desu ka. | What is the meaning of the word "yukkuri"? |
+| タナカという人から電話がありました。 | たなかというひとからでんわがありました。 | Tanaka to iu hito kara denwa ga arimashita. | There was a call from a person called Tanaka. |
+| 明日試験があるという話を聞いた。 | あしたしけんがあるというはなしをきいた。 | Ashita shiken ga aru to iu hanashi o kiita. | I heard a story that there would be an exam tomorrow. |
+| 「頑張れ」というメッセージをもらった。 | 「がんばれ」というめっせーじをもらった。 | "Ganbare" to iu messēji o moratta. | I received a message saying "Do your best." |
+
+**Common mistake:**
+❌ タナカというの人 → ✓ タナカという人
+(という directly precedes the noun without の)
+
+---
+
+### 3. Nominalizers: 〜の vs. 〜こと (Turning Verbs into Nouns)
 
 **Structure:**
-- Verb (plain form) + Noun
-- い-Adjective (plain form) + Noun
-- な-Adjective (plain form) + な + Noun
-- Noun (plain form) + の + Noun
+- [Plain form] + の + particle (の is casual, used with sensory/experiential verbs)
+- [Plain form] + こと + particle (こと is formal, used with abstract concepts and formal expressions)
 
-This grammar pattern is fundamental for creating relative clauses in Japanese, allowing you to describe a noun using a full clause (a sentence fragment with a verb or adjective). Unlike English, where relative clauses often use "who," "which," or "that," Japanese simply places the modifying clause directly before the noun it describes, always in its plain form. This structure is incredibly versatile and essential for building more complex and descriptive sentences.
+**Explanation:**
 
-The plain form of verbs (dictionary form, た-form, ない-form) directly precedes the noun. For い-adjectives, their plain form (e.g., 楽しい, 楽しくない) is used. For な-adjectives, you must add な (e.g., 好きな, 好きじゃない) before the noun. When a noun modifies another noun, you use の (e.g., 学生の田中さん). This pattern allows you to pack a lot of information into a single noun phrase, making your descriptions much richer.
+Both の and こと can turn a verb phrase into a noun phrase. They are often interchangeable, but each has specific preferred contexts:
 
-| Japanese | Reading | Romaji | English |
-|:---------|:---------|:-------|:--------|
-| これは**私が昨日食べた**ケーキです。 | これは**わたしがきのうちべた**ケーキです。 | Kore wa **watashi ga kinō tabeta** kēki desu. | This is the cake **I ate yesterday**. |
-| **日本語を話す**人は多いです。 | **にほんごをはなす**ひとはおおいですね。 | **Nihongo o hanasu** hito wa ooi desu. | There are many people **who speak Japanese**. |
-| **有名な**レストランに行きました。 | **ゆうめいな**レストランにいきました。 | **Yūmei na** resutoran ni ikimashita. | I went to a **famous** restaurant. |
-| **私の友達の**田中さんは医者です。 | **わたしのともだちの**たなかさんはいしゃです。 | **Watashi no tomodachi no** Tanaka-san wa isha desu. | Tanaka-san, **who is my friend**, is a doctor. |
-| **新しい**パソコンが欲しいです。 | **あたらしい**パソコンがほしいです。 | **Atarashii** pasokon ga hoshii desu. | I want a **new** computer. |
-| **彼が住んでいる**家はとても大きいです。 | **かれがすんでいる**いえはとてもおおきいです。 | **Kare ga sunde iru** ie wa totemo ookii desu. | The house **he lives in** is very big. |
-
-**Common mistake:** ❌ 私は昨日食べたケーキです。 → ✓ これは**私が昨日食べた**ケーキです。 — Always include the subject of the modifying clause if it's different from the main sentence's subject, or if it clarifies the action.
-
-### 〜という + Noun (called/named)
-
-**Structure:** [Noun/Phrase] + という + Noun
-
-The pattern 〜という + Noun is used to introduce or specify a name, a term, or a concept. It literally means "called [Noun/Phrase]" or "named [Noun/Phrase]". It's very useful when you want to explain what something is, or to refer to something by its specific designation. You can use it for people's names, place names, book titles, or even to explain a concept or a phrase.
-
-This structure is also commonly used when quoting someone's words or thoughts, where the quoted phrase acts as the "Noun/Phrase" before という. It helps clarify that the preceding information is a specific label or a direct statement, making it an indispensable tool for clear communication.
+| Feature | 〜の | 〜こと |
+|---------|------|--------|
+| Register | Casual, spoken | Formal, written |
+| Sensory verbs (see, hear, feel) | ✓ PREFERRED | ✗ Less natural |
+| Abstract concepts, rules, decisions | ✗ Less natural | ✓ PREFERRED |
+| After emotion verbs (嬉しい, 好き) | Both OK | Both OK |
+| Fixed expressions (ことがある, ことにする) | ✗ | ✓ Must use こと |
+| Subject in formal writing | ✗ | ✓ |
 
 | Japanese | Reading | Romaji | English |
-|:---------|:---------|:-------|:--------|
-| **「ありがとう」という**言葉は大切です。 | **「ありがとう」ということば**はたいせつです。 | **"Arigatō" to iu** kotoba wa taisetsu desu. | The word **"thank you"** is important. |
-| 私は**田中という**人に会いました。 | わたしは**たなかという**ひとにあいました。 | Watashi wa **Tanaka to iu** hito ni aimashita. | I met a person **named Tanaka**. |
-| これは**「鬼滅の刃」という**漫画です。 | これは**「きめつのやいば」という**まんです。 | Kore wa **"Kimetsu no Yaiba" to iu** manga desu. | This is a manga **called "Demon Slayer"**. |
-| **「JLPT」というのは**日本語能力試験のことです。 | **「JLPT」というのは**にほんごのうりょくしけんのことです。 | **"JLPT" to iu no wa** Nihongo Nōryoku Shiken no koto desu. | **"JLPT" refers to** the Japanese Language Proficiency Test. |
-| 彼は**「行かない」という**意見でした。 | かれは**「いかない」という**いけんでした。 | Kare wa **"ikanai" to iu** iken deshita. | His opinion **was that he wouldn't go**. |
-| **「お疲れ様」という**表現は、日本の会社でよく使われます。 | **「おつかれさま」という**ひょうげんは、にほんのかいしゃでよくつかわれます。 | **"Otsukaresama" to iu** hyōgen wa, Nihon no kaisha de yoku tsukawaremasu. | The expression **"Otsukaresama"** is often used in Japanese companies. |
+|----------|---------|--------|---------|
+| 彼が泳ぐのを見た。 | かれがおよぐのをみた。 | Kare ga oyogu no o mita. | I saw him swimming. (sensory → の) |
+| 日本語を勉強することは楽しい。 | にほんごをべんきょうすることはたのしい。 | Nihongo o benkyō suru koto wa tanoshii. | Studying Japanese is fun. (formal/general → こと) |
+| 泳ぐのが好きです。 | およぐのがすきです。 | Oyogu no ga suki desu. | I like swimming. (sensory/personal preference → の) |
+| 毎日運動することが大切です。 | まいにちうんどうすることがたいせつです。 | Mainichi undō suru koto ga taisetsu desu. | It is important to exercise every day. (rule/principle → こと) |
 
-**Common mistake:** ❌ 私は田中人というに会いました。 → ✓ 私は**田中という**人に会いました。 — The という directly modifies the noun it's defining, not the person.
+**Common mistake:**
+❌ 見るこが好き → ✓ 見るのが好き (sensory preference)
+❌ ここでタバコを吸うのは禁止です → ✓ ここでタバコを吸うことは禁止です (formal rule/prohibition → こと)
 
-### 〜の nominalizer
+---
 
-**Structure:** [Verb/い-Adjective/な-Adjective + な/Noun + の] + の
+### 4. ことがある (Experience / Occasional Occurrence)
 
-The particle の can act as a nominalizer, turning a verb, adjective, or even a noun phrase into a noun equivalent. This is particularly common when talking about preferences, skills, or general facts. For example, when you say 「日本語を話すのが好きです」, the entire phrase 「日本語を話す」 (to speak Japanese) is treated as a noun by adding の, allowing it to be the subject of 好きです (like).
+**Structure:**
+- [Plain past] + ことがある = "have (ever) had the experience of doing" (experiential)
+- [Plain non-past] + ことがある = "sometimes/occasionally do" (habitual occasional)
 
-This nominalizer is frequently used with verbs like 好きです (suki desu - like), 嫌いです (kirai desu - dislike), 上手です (jōzu desu - skilled at), 下手です (heta desu - unskilled at), and できます (dekimasu - can do). It allows you to express your feelings or abilities regarding actions or states, making your sentences more concise and natural.
-
-| Japanese | Reading | Romaji | English |
-|:---------|:---------|:-------|:--------|
-| 私は**本を読むのが**好きです。 | わたしは**ほんをよむのが**すきです。 | Watashi wa **hon o yomu no ga** suki desu. | I like **reading books**. |
-| **絵を描くのが**得意です。 | **えをかくのが**とくいです。 | **E o kaku no ga** tokui desu. | I am good at **drawing pictures**. |
-| **早く起きるのが**苦手です。 | **はやくおきるのが**にがてです。 | **Hayaku okiru no ga** nigate desu. | I am not good at **waking up early**. |
-| **辛いものを食べるのが**好きじゃないです。 | **からいものをたべるのが**すきじゃないです。 | **Karai mono o taberu no ga** suki janai desu. | I don't like **eating spicy food**. |
-| **彼が日本語を話すの**を聞いたことがあります。 | **かれがにほんごをはなすの**をきいたことがあります。 | **Kare ga Nihongo o hanasu no** o kiita koto ga arimasu. | I have heard **him speak Japanese**. |
-| **彼女が歌うの**は本当に素晴らしいです。 | **かのじょがうたうの**はほんとうにすばらしいです。 | **Kanojo ga utau no** wa hontō ni subarashii desu. | **Her singing** is truly wonderful. |
-
-**Common mistake:** ❌ 私は本を読む好きです。 → ✓ 私は**本を読むのが**好きです。 — You must use の to nominalize the verb phrase before 好きです.
-
-### 〜こと nominalizer
-
-**Structure:** [Verb/い-Adjective/な-Adjective + な/Noun + の] + こと
-
-Similar to 〜の, 〜こと also functions as a nominalizer, turning a clause into a noun. However, 〜こと often refers to a more abstract "matter," "fact," or "experience," while 〜の tends to refer to the action itself or the specific instance. A key use of 〜こと is with potential verbs, forming 〜ことができる (can do), which expresses ability.
-
-〜こと is also frequently used to state general facts, rules, or to talk about experiences with 〜たことがあります (have done something before). It's also common in phrases like 〜ことにする (decide to do) or 〜ことになる (it has been decided that). Choosing between 〜の and 〜こと can sometimes be subtle, but generally, 〜こと is preferred for general statements, abilities, and experiences.
+**Examples:**
 
 | Japanese | Reading | Romaji | English |
-|:---------|:---------|:-------|:--------|
-| 私は**泳ぐことが**できます。 | わたしは**およぐことが**できます。 | Watashi wa **oyogu koto ga** dekimasu. | I **can swim**. |
-| **日本に行ったことが**ありますか。 | **にほんにいったことが**ありますか。 | **Nihon ni itta koto ga** arimasu ka. | Have you **ever been to Japan**? |
-| **健康に良いこと**はたくさんあります。 | **けんこうによいこと**はたくさんあります。 | **Kenkō ni yoi koto** wa takusan arimasu. | There are many **things that are good for health**. |
-| **毎日日本語を勉強すること**が大切です。 | **まいにちにほんごをべんきょうすること**がたいせつです。 | **Mainichi Nihongo o benkyō suru koto** ga taisetsu desu. | **Studying Japanese every day** is important. |
-| 彼は**来週引っ越すこと**になりました。 | かれは**らいしゅうひっこすこと**になりました。 | Kare wa **raishū hikkosu koto** ni narimashita. | It has been decided **that he will move next week**. |
-| **休日に家でゆっくりすること**が私の楽しみです。 | **きゅうじつにうちでゆっくりすること**がわたしのたのしみです。 | **Kyūjitsu ni uchi de yukkuri suru koto** ga watashi no tanoshimi desu. | **Relaxing at home on holidays** is my pleasure. |
+|----------|---------|--------|---------|
+| 日本に行ったことがあります。 | にほんにいったことがあります。 | Nihon ni itta koto ga arimasu. | I have (ever) been to Japan. |
+| 寿司を食べたことがない。 | すしをたべたことがない。 | Sushi o tabeta koto ga nai. | I have never eaten sushi. |
+| 時々授業を休むことがある。 | ときどきじゅぎょうをやすむことがある。 | Tokidoki jugyō o yasumu koto ga aru. | I sometimes skip class. (occasional) |
+| 彼に会ったことがありますか。 | かれにあったことがありますか。 | Kare ni atta koto ga arimasu ka. | Have you ever met him? |
 
-**Common mistake:** ❌ 私は泳ぐできます。 → ✓ 私は**泳ぐことが**できます。 — The potential form requires 〜こと or 〜の to nominalize the verb.
+---
 
-### 〜もの general thing
+### 5. ことにする / ことになる (Decide / Be Decided)
 
-**Structure:** [Verb/い-Adjective/な-Adjective + な/Noun + の] + もの
+**Structure:**
+- [Plain non-past] + ことにする = "decide to do" (speaker's decision)
+- [Plain non-past] + ことになる = "it has been decided that / it turns out that" (external decision or natural result)
+- [Plain non-past] + ことにしている = "make it a habit / rule to do" (ongoing self-decision)
 
-The word もの (mono) literally means "thing" or "object," but it can also be used in a more abstract sense to refer to a general "thing," "matter," or "concept." When used after a plain form clause, it functions similarly to a nominalizer, but often carries a nuance of a general truth, a common practice, or a specific kind of thing. It can also be used to emphasize a reason or a feeling.
+**Explanation:**
 
-This pattern is often seen in set phrases like 〜ものだ (it's natural that..., it's common to...) or 〜ものですから (because...). It can also refer to an abstract "thing" that is described by the preceding clause. For example, 「私が欲しいもの」 (the thing I want). It's more concrete than こと, often implying something tangible or a specific instance, even if the "thing" itself is abstract.
-
-| Japanese | Reading | Romaji | English |
-|:---------|:---------|:-------|:--------|
-| **私が一番好きな**食べ物は寿司です。 | **わたしがいちばんすきな**たべものはすしです。 | **Watashi ga ichiban suki na** tabemono wa sushi desu. | The **thing I like the most** to eat is sushi. |
-| **これは日本でしか買えない**ものです。 | **これはにほんでしかかえない**ものです。 | **Kore wa Nihon de shika kaenai** mono desu. | This is **something you can only buy in Japan**. |
-| **子供が泣く**のは当たり前のことです。 | **こどもがなく**のはあたりまえのことです。 | **Kodomo ga naku no wa** atarimae no koto desu. | **It's natural for children to cry**. (Here, こと is used for a general truth, but もの could also be used for a general "thing" or "fact" in other contexts.) |
-| **大切なもの**をなくしてしまいました。 | **たいせつなもの**をなくしてしまいました。 | **Taisetsu na mono** o nakushite shimaimashita. | I lost **something important**. |
-| **彼が言った**ことは本当です。 | **かれがいった**ことはほんとうです。 | **Kare ga itta** koto wa hontō desu. | **What he said** is true. (Here, こと is used for a statement/fact, but もの could be used for a specific "item" of information.) |
-| **これは私が作った**ものです。 | **これはわたしがつくった**ものです。 | **Kore wa watashi ga tsukutta** mono desu. | This is **something I made**. |
-
-**Common mistake:** ❌ 私は欲しいです。 → ✓ **私が欲しいもの**は新しい車です。 — You need to specify *what* you want by using もの after the modifying clause.
-
-### Embedded Questions
-
-**Structure:** [Interrogative + Plain Form + か] + [Verb/Noun]
-**Structure:** [Plain Form + かどうか] + [Verb/Noun]
-
-Embedded questions allow you to incorporate a question into a larger sentence without directly asking it. Instead of "What is his name? I don't know," you can say "I don't know what his name is." In Japanese, this is achieved by taking a question (in its plain form) and adding か (ka) or かどうか (ka dō ka) before a verb like 知っています (shitte imasu - know), わかりません (wakarimasen - don't understand), 教えてください (oshiete kudasai - please tell me), etc.
-
-Use か when the embedded question contains an interrogative word (who, what, where, when, why, how). Use かどうか when the embedded question is a yes/no question (whether or not). The entire embedded question clause acts as a noun, often followed by a particle like を or が, depending on the main verb.
+ことにする expresses a **personal, deliberate decision**. ことになる expresses an **externally determined or naturally arising outcome** — the speaker is not the decision-maker. This distinction is social significant: ことになりました is often used when announcing decisions in company/group settings because it sounds less like personal choice (more modest/deflected).
 
 | Japanese | Reading | Romaji | English |
-|:---------|:---------|:-------|:--------|
-| 彼の**名前が何か**知っていますか。 | かれの**なまえがなにか**しっていますか。 | Kare no **namae ga nani ka** shitte imasu ka. | Do you know **what his name is**? |
-| **どこへ行くか**まだ決めていません。 | **どこへいくか**まだきめていません。 | **Doko e iku ka** mada kimete imasen. | I haven't decided **where to go** yet. |
-| **彼が来るかどうか**分かりません。 | **かれがくるかどうか**わかりません。 | **Kare ga kuru ka dō ka** wakarimasen. | I don't know **whether he will come or not**. |
-| **この本が面白いかどうか**読んでみてください。 | **このほんがおもしろいかどうか**よんでみてください。 | **Kono hon ga omoshiroi ka dō ka** yonde mite kudasai. | Please try reading this book to see **if it's interesting**. |
-| **いつ出発するか**教えてください。 | **いつしゅっぱつするか**おしえてください。 | **Itsu shuppatsu suru ka** oshiete kudasai. | Please tell me **when we depart**. |
-| **誰が犯人か**警察が調べています。 | **だれがはんにんか**けいさつがしらべています。 | **Dare ga hannin ka** keisatsu ga shirabete imasu. | The police are investigating **who the culprit is**. |
+|----------|---------|--------|---------|
+| 毎日日本語を勉強することにした。 | まいにちにほんごをべんきょうすることにした。 | Mainichi Nihongo o benkyō suru koto ni shita. | I decided to study Japanese every day. |
+| 転職することにしました。 | てんしょくすることにしました。 | Tenshoku suru koto ni shimashita. | I decided to change jobs. |
+| 来年、東京に転勤することになりました。 | らいねん、とうきょうにてんきんすることになりました。 | Rainen, Tōkyō ni tenkin suru koto ni narimashita. | It has been decided that I will be transferred to Tokyo next year. |
+| 毎朝、30分走ることにしている。 | まいあさ、30ぷんはしることにしている。 | Maiasa, sanjuppun hashiru koto ni shite iru. | I make it a rule to run for 30 minutes every morning. |
 
-**Common mistake:** ❌ 彼の名前は何ですか知っていますか。 → ✓ 彼の**名前が何か**知っていますか。 — The embedded question must be in plain form and end with か, not ですか.
+---
+
+### 6. 〜ところ (Stage / Point in an Action)
+
+**Structure:**
+- [Dict. form] + ところ = "just about to" (pre-action)
+- [〜ている] + ところ = "in the middle of" (ongoing)
+- [Plain past] + ところ = "just finished" (post-action)
+
+| Japanese | Reading | Romaji | English |
+|----------|---------|--------|---------|
+| 今から出かけるところです。 | いまからでかけるところです。 | Ima kara dekakeru tokoro desu. | I am just about to go out. |
+| 今、勉強しているところです。 | いま、べんきょうしているところです。 | Ima, benkyō shite iru tokoro desu. | I am in the middle of studying right now. |
+| ちょうど食べたところです。 | ちょうどたべたところです。 | Chōdo tabeta tokoro desu. | I just finished eating. |
+
+---
 
 ## Dialogues
 
-### Dialogue 1: Planning a Weekend Trip
+### Dialogue 1: Talking About Experiences and Decisions
 
-Aiko and Ken are discussing their weekend plans, trying to decide where to go.
+> Hana (H) and Ken (K) catch up over coffee.
 
-{{< speech-bubble speaker="Aiko" >}}
-週末、どこか行きたいね。
-<br>
-しゅうまつ、どこかいきたいね。
-<br>
-Shūmatsu, dokoka ikitai ne.
-<br>
-I want to go somewhere this weekend, don't you?
-{{< /speech-bubble >}}
+| # | Japanese | Romaji | English |
+|---|----------|--------|---------|
+| 1 | K: ハナ、最近どうですか。 | Hana, saikin dō desu ka. | Hana, how have you been lately? |
+| 2 | H: 実は、来月から留学することになりました！ | Jitsu wa, raigetsu kara ryūgaku suru koto ni narimashita! | Actually, it's been decided that I'll study abroad starting next month! |
+| 3 | K: えっ、すごい！どこへ行くんですか。 | E, sugoi! Doko e iku n desu ka. | What? Amazing! Where are you going? |
+| 4 | H: カナダという国の、バンクーバーという都市です。 | Kanada to iu kuni no, Bankūbā to iu toshi desu. | A city called Vancouver, in a country called Canada. |
+| 5 | K: バンクーバーに行ったことがありますか。 | Bankūbā ni itta koto ga arimasu ka. | Have you ever been to Vancouver? |
+| 6 | H: いいえ、一度もないんです。でも英語を話せるようになることにしたので、頑張ります。 | Ie, ichido mo nai n desu. Demo eigo o hanaseru yō ni naru koto ni shita node, ganbarimasu. | No, not once. But I've decided to become able to speak English, so I'll do my best. |
+| 7 | K: 英語を勉強することは楽しいですよ。最初は難しいかもしれないけど。 | Eigo o benkyō suru koto wa tanoshii desu yo. Saisho wa muzukashii kamoshirenai kedo. | Studying English is fun. It might be difficult at first, though. |
+| 8 | H: 行く前に、英語を少し勉強しておくことにしています。 | Iku mae ni, eigo o sukoshi benkyō shite oku koto ni shite imasu. | I'm making it a rule to study some English before I go. |
+| 9 | K: 頑張ってください！帰ってきたら、話を聞かせてください。 | Ganbatte kudasai! Kaette kitara, hanashi o kikasete kudasai. | Do your best! When you come back, please tell me about it. |
+| 10 | H: もちろんです！今はまだ準備しているところですが、楽しみです。 | Mochiron desu! Ima wa mada junbi shite iru tokoro desu ga, tanoshimi desu. | Of course! Right now I'm still in the middle of preparing, but I'm looking forward to it. |
 
-{{< speech-bubble speaker="Ken" >}}
-うん、そうだね。**どこへ行くか**まだ決めてないんだ。
-<br>
-うん、そうだね。**どこへいくか**まだきめてないんだ。
-<br>
-Un, sō da ne. **Doko e iku ka** mada kimetet nai n da.
-<br>
-Yeah, you're right. I haven't decided **where to go** yet.
-{{< /speech-bubble >}}
+---
 
-{{< speech-bubble speaker="Aiko" >}}
-**有名な**温泉がある場所はどう？
-<br>
-**ゆうめいな**おんせんがあるばしょはどう？
-<br>
-**Yūmei na** onsen ga aru basho wa dō?
-<br>
-How about a place **that has famous hot springs**?
-{{< /speech-bubble >}}
+### Dialogue 2: Explaining a News Story
 
-{{< speech-bubble speaker="Ken" >}}
-いいね！**温泉に入るの**は好きだよ。
-<br>
-いいね！**おんせんにいるの**はすきだよ。
-<br>
-Ii ne! **Onsen ni hairu no** wa suki da yo.
-<br>
-Sounds good! I like **going into hot springs**.
-{{< /speech-bubble >}}
+> Reporter Yuki (Y) explains a story to colleague Daisuke (D).
 
-{{< speech-bubble speaker="Aiko" >}}
-前にテレビで**「箱根」という**温泉地を見たよ。
-<br>
-まえにテレビで**「はこね」という**おんせんちをみたよ。
-<br>
-Mae ni terebi de **"Hakone" to iu** onsenchi o mita yo.
-<br>
-I saw a hot spring resort **called "Hakone"** on TV before.
-{{< /speech-bubble >}}
+| # | Japanese | Romaji | English |
+|---|----------|--------|---------|
+| 1 | D: 今朝のニュース、見た？ | Kesa no nyūsu, mita? | Did you see the morning news? |
+| 2 | Y: うん。「歴史的発見」という記事だよね。 | Un. "Rekishiteki hakken" to iu kiji da yo ne. | Yeah. It's the article called "Historical Discovery," right? |
+| 3 | D: そう。1000年前に作られた陶器が見つかったって。 | Sō. Sen-nen mae ni tsukurareta tōki ga mitsukatta tte. | Right. Apparently pottery made 1000 years ago was found. |
+| 4 | Y: すごい発見だね。どこで見つかったの？ | Sugoi hakken da ne. Doko de mitsukatta no? | What an amazing discovery. Where was it found? |
+| 5 | D: 工事をしていたところで見つかったらしいよ。 | Kōji o shite ita tokoro de mitsukatta rashii yo. | Apparently it was found at a place where construction was being done. |
+| 6 | Y: 工事中に見つかることがあるんだね。 | Kōji-chū ni mitsukaru koto ga aru n da ne. | It happens sometimes that things are found during construction. |
+| 7 | D: うん。政府は工事を止めることにしたらしい。 | Un. Seifu wa kōji o tomeru koto ni shita rashii. | Yeah. The government apparently decided to stop the construction. |
+| 8 | Y: それは正しい判断だと思う。歴史的な場所を守ることが大切だから。 | Sore wa tadashii handan da to omou. Rekishiteki na basho o mamoru koto ga taisetsu da kara. | I think that's the right decision. Because protecting historical places is important. |
+| 9 | D: 今後どうなるかはまだ決まっていないことになってる。 | Kongo dō naru ka wa mada kimatte inai koto ni natteru. | What happens next apparently hasn't been decided yet. |
+| 10 | Y: ニュースを注意して見ていくことにしよう。 | Nyūsu o chūi shite mite iku koto ni shiyō. | Let's make it a point to watch the news carefully. |
 
-{{< speech-bubble speaker="Ken" >}}
-箱根か。**そこに行ったことがある**友達がいるから、**詳しいこと**を聞いてみようか。
-<br>
-はこねか。**そこにいったことがある**ともだちがいるから、**くわしいこと**をきいてみようか。
-<br>
-Hakone, huh? I have a friend **who has been there**, so maybe I'll ask them for **details**.
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Aiko" >}}
-それがいい！**どんな場所か**知りたいね。
-<br>
-それがいい！**どんなばしょか**しりたいね。
-<br>
-Sore ga ii! **Donna basho ka** shiritai ne.
-<br>
-That's a good idea! I want to know **what kind of place it is**.
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Ken" >}}
-うん。**電車で行けるかどうか**も確認しないと。
-<br>
-うん。**でんしゃでいけるかどうか**もかくにんしないと。
-<br>
-Un. **Densha de ikeru ka dō ka** mo kakunin shinai to.
-<br>
-Yeah. I also need to check **whether we can go by train or not**.
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Aiko" >}}
-そうだね。**旅行の計画を立てるの**は楽しいね。
-<br>
-そうだね。**りょこうのけいかくをたてるの**はたのしいね。
-<br>
-Sō da ne. **Ryokō no keikaku o tateru no** wa tanoshii ne.
-<br>
-Right. **Planning a trip** is fun.
-{{< /speech-bubble >}}
-
-### Dialogue 2: Discussing Hobbies
-
-Maria and Takeshi are talking about their hobbies and skills.
-
-{{< speech-bubble speaker="Maria" >}}
-たけしさんの**趣味は何ですか**。
-<br>
-たけしさんの**しゅみはなんですか**。
-<br>
-Takeshi-san no **shumi wa nan desu ka**.
-<br>
-Takeshi, **what is your hobby**?
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Takeshi" >}}
-私の趣味は**写真を撮ること**です。マリアさんは？
-<br>
-わたしのしゅみは**しゃしんをとること**です。マリアさんは？
-<br>
-Watashi no shumi wa **shashin o toru koto** desu. Maria-san wa?
-<br>
-My hobby is **taking photos**. How about you, Maria?
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Maria" >}}
-私は**絵を描くの**が好きです。特に**風景を描くの**が得意です。
-<br>
-わたしは**えをかくの**がすきです。とくに**ふうけいをかくの**がとくいです。
-<br>
-Watashi wa **e o kaku no** ga suki desu. Toku ni **fūkei o kaku no** ga tokui desu.
-<br>
-I like **drawing pictures**. I'm especially good at **drawing landscapes**.
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Takeshi" >}}
-すごいですね！**絵を描くことが**できるなんて。
-<br>
-すごいですね！**えをかくことが**できるなんて。
-<br>
-Sugoi desu ne! **E o kaku koto ga** dekiru nante.
-<br>
-That's amazing! **That you can draw pictures**.
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Maria" >}}
-ありがとうございます。たけしさんは**どんな写真を撮るの**が好きですか。
-<br>
-ありがとうございます。たけしさんは**どんなしゃしんをとるの**がすきですか。
-<br>
-Arigatō gozaimasu. Takeshi-san wa **donna shashin o toru no** ga suki desu ka.
-<br>
-Thank you. Takeshi, **what kind of photos** do you like **to take**?
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Takeshi" >}}
-私は**動物の写真を撮るの**が好きです。特に猫が好きで、**近所にいる**猫をよく撮ります。
-<br>
-わたしは**どうぶつのしゃしんをとるの**がすきです。とくにねこがすきで、**きんじょにいる**ねこをよくとります。
-<br>
-Watashi wa **dōbutsu no shashin o toru no** ga suki desu. Toku ni neko ga suki de, **kinjo ni iru** neko o yoku torimasu.
-<br>
-I like **taking photos of animals**. I especially like cats, and I often photograph the cats **that are in my neighborhood**.
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Maria" >}}
-可愛いですね！**猫の写真を撮るの**は難しくないですか。
-<br>
-かわいいですね！**ねこのしゃしんをとるの**はむずかしくないですか。
-<br>
-Kawaii desu ne! **Neko no shashin o toru no** wa muzukashiku nai desu ka.
-<br>
-That's cute! Isn't **taking photos of cats** difficult?
-{{< /speech-bubble >}}
-
-{{< speech-bubble speaker="Takeshi" >}}
-動くから少し難しい**もの**もありますが、それがまた楽しいんです。
-<br>
-うごくからすこしむずかしい**もの**もありますが、それがまたたのしいんです。
-<br>
-Ugoku kara sukoshi muzukashii **mono** mo arimasu ga, sore ga mata tanoshii n desu.
-<br>
-Some **of them** are a bit difficult because they move, but that's also what makes it fun.
-{{< /speech-bubble >}}
+---
 
 ## Grammar Drills
 
-**Exercise 1: Fill in the blank** (use the grammar patterns from this lesson)
+Fill in the blank with の, こと, という, ことにした, ことになった, ところ, or ことがある. Answers below.
 
-1.  これは私が昨日（　　　　）本です。(hint: 読む)
-    <br>
-    これはわたしがきのうち（　　　　）ほんです。
-    <br>
-    Kore wa watashi ga kinō (　　　　) hon desu.
-2.  彼は「ジョン」という（　　　　）です。
-    <br>
-    かれは「ジョン」という（　　　　）です。
-    <br>
-    Kare wa "Jon" to iu (　　　　) desu.
-3.  私は日本語を（　　　　）が好きです。(hint: 勉強する)
-    <br>
-    わたしはにほんごを（　　　　）がすきです。
-    <br>
-    Watashi wa Nihongo o (　　　　) ga suki desu.
-4.  私は漢字を（　　　　）ことができます。(hint: 書く)
-    <br>
-    わたしはかんじを（　　　　）ことができます。
-    <br>
-    Watashi wa kanji o (　　　　) koto ga dekimasu
+1. 田中___人が来ました。（introducing a person by name）
+2. 彼が話している___を聞いた。（sensory — heard him talking）
+3. 毎日運動する___は健康にいいです。（formal principle）
+4. 日本に行った___がありますか。（experience）
+5. 来年、会社を辞める___。（personal decision）
+6. 時々夜中に起きる___ある。（occasional habit）
+7. 今、ご飯を食べている___です。（in the middle of）
+8. 東京に転勤する___なりました。（external decision）
+9. 先生が黒板に書いた___をノートに写した。（what was written — の or こと）
+10. 「努力は裏切らない」___言葉が好きだ。（a quote/saying called...）
+
+**Answer Key:**
+1. という（田中という人）
+2. の（話しているのを聞いた）
+3. こと（運動することは）
+4. こと（行ったことが）
+5. ことにした（辞めることにした）
+6. ことが（起きることがある）
+7. ところ（食べているところ）
+8. ことに（転勤することになった）
+9. こと（書いたことをノートに — slightly formal/abstract)
+10. という（「努力は裏切らない」という言葉）
+
+---
+
+## Translation Practice
+
+### English → Japanese
+
+1. The book that my teacher recommended was very interesting.
+2. I have never eaten horse meat.
+3. I decided to wake up at 6 every morning.
+4. A city called Nara is famous for deer.
+5. I am just about to leave now.
+
+**Answers:**
+1. 先生が勧めた本はとても面白かった。
+2. 馬刺しを食べたことがない。
+3. 毎朝6時に起きることにした。
+4. 奈良という都市は鹿で有名です。
+5. 今から出かけるところです。
+
+### Japanese → English
+
+1. 昨日田中さんが言ったことを覚えていますか。
+2. 外国に住んだことがありますか。
+3. 来月から禁煙することにしました。
+4. 今年から部長が変わることになりました。
+5. 走るのが得意ですか？
+
+**Answers:**
+1. Do you remember what Tanaka said yesterday?
+2. Have you ever lived in a foreign country?
+3. I decided to quit smoking starting next month.
+4. It has been decided that the manager will change starting this year.
+5. Are you good at running?
+
+---
+
+## Cultural Note
+
+Japanese relative clauses — placing entire sentences before a noun — reflect a **head-final sentence structure** that is fundamentally different from head-first languages like English. In English, "the book I read" has the head noun first and the modifier after. In Japanese, 私が読んだ本 places the entire modifier (私が読んだ = "that I read") before the head noun (本 = "book"). This structural difference means Japanese speakers must plan their sentences from the end backward, holding the key noun in mind while building up descriptive context.
+
+The distinction between ことにする (personal decision) and ことになる (external/natural outcome) has a significant cultural dimension. In Japanese workplace and social contexts, it is often considered more modest to express a decision using ことになりました (it has been decided, with the decider unspecified) rather than ことにしました (I decided), because it deflects personal agency. A manager announcing a new policy might say 〜ということになりました (it has been decided that...) rather than 〜ということにしました (I have decided...) to frame the decision as a collective or natural outcome, reducing potential resistance and maintaining group harmony. This grammatical choice embodies the Japanese value of **collective decision-making (nemawashi)** over individual authority.
+
+---
+
+## Self-Check
+
+1. What is the grammatical rule for modifying a noun with a clause in Japanese? Give an example.
+2. Explain the three uses of 〜という + noun with an example of each.
+3. When do you use の vs. こと as a nominalizer? Give a case where only one is acceptable.
+4. What is the difference between 日本に行ったことがある (past + ことがある) and 時々遅刻することがある (non-past + ことがある)?
+5. Your company has decided to move to a new building next year. You're telling a colleague. Would you use ことにしました or ことになりました? Why?

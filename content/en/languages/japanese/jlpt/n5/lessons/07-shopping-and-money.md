@@ -1,7 +1,7 @@
 ---
 title: "JLPT N5 Lesson 7: Shopping and Money"
-description: "Learn to shop in Japanese — ask prices, use counter words, request items, and handle transactions with essential shopping vocabulary."
-tags: ["japanese", "n5", "jlpt", "lesson", "language-learning"]
+description: "Master the essential language for shopping, asking prices, and using Japanese counters to navigate stores and markets with confidence."
+tags: ["japanese", "n5", "lesson", "jlpt"]
 cascade:
   type: docs
 date: 2026-05-30T00:00:00+07:00
@@ -10,192 +10,136 @@ weight: 7
 
 ## Overview
 
-Shopping is one of the first real-world situations in which Japanese learners find themselves immediately after arrival in Japan. Whether you are buying a convenience store onigiri, picking out a souvenir at a department store, or ordering at a café, you need to express prices, ask what something costs, specify quantities, and use the right counter word. Japanese has a rich system of **counter words (助数詞, josushi)** — special suffixes that are used with numbers when counting specific categories of objects, and learning the most common ones is a key N5 milestone.
+Shopping is one of the most practical and frequent activities you will engage in while visiting or living in Japan. Whether you are at a convenience store (*konbini*), a supermarket, or a department store, being able to inquire about prices and request items is essential for daily survival. This lesson builds upon your knowledge of basic sentence structures and introduces the vocabulary of commerce and the logic of Japanese counters.
 
-In this lesson you will master the essential shopping phrases: いくらですか (how much?), 〜をください (please give me), and 〜をひとつください (please give me one). You will learn the native Japanese counting system from ひとつ to とお (1–10) for general objects, and the most useful counters: 〜個 (small objects), 〜本 (long thin objects), 〜枚 (flat things), 〜冊 (bound books), and 〜杯 (cups/glasses). You will also learn key shopping vocabulary including price adjectives, payment terms, and store types.
+In this lesson, you will learn how to ask "How much is this?", how to request items politely, and how to use specific counters for different types of objects. These skills bridge the gap between simple self-introductions and functional, real-world communication. Mastering these patterns will prepare you for more complex interactions in future lessons, such as ordering at restaurants or asking for directions.
 
 ## Learning Objectives
 
 By the end of this lesson you can:
-
-- Ask and answer questions about prices using いくらですか and 〜円です.
-- Request items using 〜をください and specify quantities with native and Sino-Japanese counters.
-- Use at least five counter words (〜つ, 〜個, 〜本, 〜枚, 〜冊) with the correct numbers.
-- Conduct a complete shopping transaction from browsing to payment in Japanese.
+- Ask for the price of an item using "いくらですか".
+- Request items politely using "〜をください".
+- Correctly use counters for small objects (個), long objects (本), and flat objects (枚).
+- Inquire about the existence of products in a store using "〜はありますか".
+- Understand basic transaction vocabulary like "receipt" and "change."
 
 ## New Vocabulary
 
-| Japanese | Reading | Romaji | English | POS |
-|----------|---------|--------|---------|-----|
-| 円 | えん | en | yen (Japanese currency) | noun |
-| いくら | いくら | ikura | how much? | question word |
-| 高い | たかい | takai | expensive / tall | い-adj |
-| 安い | やすい | yasui | cheap / inexpensive | い-adj |
-| 買う | かう | kau | to buy | u-verb |
-| 売る | うる | uru | to sell | u-verb |
-| お金 | おかね | okane | money | noun |
-| 財布 | さいふ | saifu | wallet / purse | noun |
-| レジ | レジ | reji | cash register / checkout | noun |
-| 店 | みせ | mise | shop / store | noun |
-| スーパー | スーパー | suupaa | supermarket | noun |
-| コンビニ | コンビニ | konbini | convenience store | noun |
-| 値段 | ねだん | nedan | price | noun |
-| セール | セール | seeru | sale | noun |
-| 割引 | わりびき | waribiki | discount | noun |
-| おつり | おつり | otsuri | change (money returned) | noun |
-| レシート | レシート | reshiito | receipt | noun |
-| 袋 | ふくろ | fukuro | bag (shopping bag) | noun |
+| Japanese | Reading | Romaji | English | Part of Speech |
+|----------|---------|--------|---------|----------------|
+| いくら | いくら | ikura | how much | noun |
+| 高い | たかい | takai | expensive/high | i-adjective |
+| 安い | やすい | yasui | cheap/inexpensive | i-adjective |
 | ください | ください | kudasai | please give me | expression |
-| 〜円です | 〜えんです | ~en desu | it is ~ yen | expression |
+| 円 | えん | en | yen | noun |
+| 個 | こ | ko | counter for small items | counter |
+| 本 | ほん | hon | counter for long items | counter |
+| 枚 | まい | mai | counter for flat items | counter |
+| おつり | おつり | otsuri | change (money) | noun |
+| レシート | レシート | reshīto | receipt | noun |
+| レジ | レジ | reji | cash register | noun |
+| デパート | デパート | depāto | department store | noun |
+| スーパー | スーパー | sūpā | supermarket | noun |
+| コンビニ | コンビニ | konbini | convenience store | noun |
+| 買い物 | かいもの | kaimono | shopping | noun |
 
 ## Grammar Points
 
-### Grammar Point 1: Asking and Stating Prices — いくらですか / 〜円です
+### 1. Asking for Price: [Noun] は いくらですか
 
-**Structure:** [Item] は + いくらですか  
-**Answer:** [Item] は + [Number] + 円です
+**Structure:** [Noun] + は + いくら + ですか
 
-いくら (ikura) is the Japanese question word meaning "how much" — used exclusively for prices and amounts of money. It is placed where the price information goes in the sentence: この本はいくらですか (How much is this book?). The answer replaces いくら with the actual price followed by 円 (en, yen): この本は千二百円です (This book is 1,200 yen).
-
-Large prices use the place-value words from Lesson 3: 千 (1,000), 二千 (2,000), 一万 (10,000), 三万五千円 (35,000 yen). In real Japanese shops, prices including tax end in the 8% or 10% consumption tax (消費税, shouhizei). You may see the label 税込 (zeikomi, tax included) or 税別 (zeibetsu, tax excluded) on price tags.
-
-The adjectives 高い (takai, expensive) and 安い (yasui, cheap) are extremely common in shopping contexts. They can describe price or physical height (高い = tall or expensive; both use the same word). Context makes the meaning clear: このホテルは高いです (This hotel is expensive) vs. この山は高いです (This mountain is tall).
+To ask the price of an item, place the item at the beginning of the sentence followed by the topic marker "は" (wa) and the question word "いくら" (ikura), which means "how much."
 
 | Japanese | Reading | Romaji | English |
 |----------|---------|--------|---------|
-| このリンゴはいくらですか。 | このリンゴはいくらですか。 | Kono ringo wa ikura desu ka. | How much is this apple? |
-| 一個百円です。 | いっこひゃくえんです。 | Ikko hyaku-en desu. | One is 100 yen. |
-| 少し高いですね。 | すこしたかいですね。 | Sukoshi takai desu ne. | It's a little expensive, isn't it. |
-| もっと安いのはありますか。 | もっとやすいのはありますか。 | Motto yasui no wa arimasu ka. | Is there a cheaper one? |
-| 合計でいくらですか。 | ごうけいでいくらですか。 | Goukei de ikura desu ka. | How much is the total? |
-| 千五百円になります。 | せんごひゃくえんになります。 | Sengohyaku-en ni narimasu. | It comes to 1,500 yen. |
+| これはいくらですか。 | これはいくらですか。 | Kore wa ikura desu ka. | How much is this? |
+| その本はいくらですか。 | そのほんはいくらですか。 | Sono hon wa ikura desu ka. | How much is that book? |
+| このりんごはいくらですか。 | このりんごはいくらですか。 | Kono ringo wa ikura desu ka. | How much is this apple? |
+| ケーキはいくらですか。 | ケーキはいくらですか。 | Kēki wa ikura desu ka. | How much is the cake? |
 
-**Common Mistake:**
-❌ これは何円ですか — 何円 is grammatically possible but less natural for prices  
-✓ これはいくらですか — いくら is the standard, natural way to ask prices
+**Common mistake:** ❌ これのいくらですか → ✓ これはいくらですか — "No" (の) indicates possession; use "wa" (は) to mark the topic you are asking about.
 
----
+### 2. Requesting Items: [Noun] を ください
 
-### Grammar Point 2: Counter Words and Making Requests
+**Structure:** [Noun] + を + ください
 
-**Structure (request):** [Item] を + [Number + Counter] + ください  
-**Native counters (ひとつ〜とお):** used for general items without a specific counter
-
-Japanese uses **counter words** that attach to numbers to count specific types of objects. The native Japanese counting system (ひとつ, ふたつ, みっつ… とお) is a safe default for most objects, especially when you do not know the specific counter. Beyond 10, Sino-Japanese numbers (十一 juuichi, etc.) are used with specific counters.
-
-Key counters for N5:
-- **〜つ** (native): general objects up to 10 — ひとつ, ふたつ, みっつ, よっつ, いつつ, むっつ, ななつ, やっつ, ここのつ, とお
-- **〜個 (こ)**: small, round, or countable objects (apples, eggs, balls)
-- **〜本 (ほん/ぽん/ぼん)**: long thin objects (pens, bottles, trees, bananas)
-- **〜枚 (まい)**: flat, thin objects (paper, shirts, plates, slices)
-- **〜冊 (さつ)**: bound books, notebooks
-- **〜杯 (はい/ぱい/ばい)**: cups, glasses, bowls of liquid
-
-| Counter | Pronunciation of 1, 2, 3, 6, 8, 10 | Used for |
-|---------|-------------------------------------|---------|
-| 〜個 | いっこ, にこ, さんこ, ろっこ, はっこ, じゅっこ | small objects |
-| 〜本 | いっぽん, にほん, さんぼん, ろっぽん, はっぽん, じゅっぽん | long thin objects |
-| 〜枚 | いちまい, にまい, さんまい, ろくまい, はちまい, じゅうまい | flat objects |
-| 〜冊 | いっさつ, にさつ, さんさつ, ろくさつ, はっさつ, じゅっさつ | books |
-| 〜杯 | いっぱい, にはい, さんばい, ろっぱい, はっぱい, じゅっぱい | drinks/bowls |
+When you want to buy something, use the object particle "を" (o) followed by "ください" (kudasai), which means "please give me." If you are specifying a quantity, place the counter after the noun.
 
 | Japanese | Reading | Romaji | English |
 |----------|---------|--------|---------|
-| このペンを二本ください。 | このペンをにほんください。 | Kono pen wo nihon kudasai. | Please give me two of these pens. |
-| コーヒーをふたつください。 | コーヒーをふたつください。 | Koohii wo futatsu kudasai. | Two coffees please. |
-| その本を三冊ください。 | そのほんをさんさつください。 | Sono hon wo sansatsu kudasai. | Please give me three of those books. |
-| Tシャツを一枚買いました。 | Tシャツをいちまいかいました。 | T-shatsu wo ichimai kaimashita. | I bought one T-shirt. |
-| 卵を六個ください。 | たまごをろっこください。 | Tamago wo rokko kudasai. | Please give me six eggs. |
+| 水をください。 | みずをください。 | Mizu o kudasai. | Water, please. |
+| これを二つください。 | これをふたつください。 | Kore o futatsu kudasai. | Please give me two of these. |
+| パンを三つください。 | ぱんをみっつください。 | Pan o mittsu kudasai. | Three breads, please. |
+| そのペンを一本ください。 | そのぺんをいっぽんください。 | Sono pen o ippon kudasai. | One of those pens, please. |
 
-**Common Mistake:**
-❌ ペンを二つください — technically understood but unnatural; pens use 〜本  
-✓ ペンを二本ください — use the correct counter for the object type
-
----
+**Common mistake:** ❌ 水ください → ✓ 水をください — While casual speech sometimes drops particles, in a polite shopping context, always include "o" (を).
 
 ## Dialogues
 
 ### Dialogue 1: At a Convenience Store
+*A customer is buying a drink and a sandwich.*
 
-| | Japanese | Romaji | English |
-|-|----------|--------|---------|
-| Staff | いらっしゃいませ。 | Irasshaimase. | Welcome! |
-| A | このサンドイッチはいくらですか。 | Kono sandoitchi wa ikura desu ka. | How much is this sandwich? |
-| Staff | 四百五十円です。 | Yonhyakugojuu-en desu. | It is 450 yen. |
-| A | じゃ、これをひとつとコーヒーをひとつください。 | Ja, kore wo hitotsu to koohii wo hitotsu kudasai. | Then, one of this and one coffee please. |
-| Staff | 合計六百円です。 | Goukei roppyaku-en desu. | The total is 600 yen. |
-| A | 千円でお願いします。 | Sen-en de onegaishimasu. | Here is 1,000 yen. |
-| Staff | 四百円のおつりです。どうぞ。 | Yonhyaku-en no otsuri desu. Douzo. | Here is 400 yen change. |
-| A | ありがとうございます。袋はいりません。 | Arigatou gozaimasu. Fukuro wa irimasen. | Thank you. I don't need a bag. |
+**Clerk:** いらっしゃいませ。 (Irasshaimase / Welcome.)
+**Customer:** こんにちは。このおにぎりはいくらですか。 (Konnichiwa. Kono onigiri wa ikura desu ka. / Hello. How much is this rice ball?)
+**Clerk:** それは150円です。 (Sore wa hyaku-gojū-en desu. / That is 150 yen.)
+**Customer:** じゃあ、これを二つください。 (Jā, kore o futatsu kudasai. / Then, please give me two of these.)
+**Clerk:** はい、300円です。 (Hai, sanbyaku-en desu. / Yes, that is 300 yen.)
+**Customer:** これもください。 (Kore mo kudasai. / Please give me this too.)
+**Clerk:** はい、レシートです。 (Hai, reshīto desu. / Here is your receipt.)
+**Customer:** ありがとう。 (Arigatō. / Thank you.)
 
----
+### Dialogue 2: At a Stationery Store
+*A customer is looking for pens.*
 
-### Dialogue 2: At a Souvenir Shop
-
-| | Japanese | Romaji | English |
-|-|----------|--------|---------|
-| A | すみません、このお菓子はいくらですか。 | Sumimasen, kono okashi wa ikura desu ka. | Excuse me, how much are these sweets? |
-| B | 一箱千二百円です。 | Hitohako sennihyaku-en desu. | One box is 1,200 yen. |
-| A | 少し高いですね。セールはありますか。 | Sukoshi takai desu ne. Seeru wa arimasu ka. | A little expensive. Is there a sale? |
-| B | 今日は二十パーセント割引です。 | Kyou wa nijuu-paasento waribiki desu. | Today is 20% off. |
-| A | いいですね！三箱ください。 | Ii desu ne! Mihako kudasai. | Great! Three boxes please. |
-| B | かしこまりました。合計で二千八百八十円になります。 | Kashikomarimashita. Goukei de nisen happyaku hachijuu-en ni narimasu. | Certainly. The total will be 2,880 yen. |
-| A | カードで払えますか。 | Kaado de haraemasu ka. | Can I pay by card? |
-| B | はい、使えます。こちらへどうぞ。 | Hai, tsukaemasu. Kochira e douzo. | Yes, you can. This way please. |
-| A | ありがとうございました。 | Arigatou gozaimashita. | Thank you very much. |
-| B | またお越しください。 | Mata okoshi kudasai. | Please come again. |
-
----
+**Customer:** すみません、ペンはありますか。 (Sumimasen, pen wa arimasu ka. / Excuse me, do you have pens?)
+**Clerk:** はい、あります。こちらです。 (Hai, arimasu. Kochira desu. / Yes, we do. They are over here.)
+**Customer:** このペンはいくらですか。 (Kono pen wa ikura desu ka. / How much is this pen?)
+**Clerk:** それは200円です。 (Sore wa nihyaku-en desu. / That is 200 yen.)
+**Customer:** 安いですね。これを三本ください。 (Yasui desu ne. Kore o sanbon kudasai. / It's cheap, isn't it? Please give me three of these.)
+**Clerk:** はい、600円です。 (Hai, roppyaku-en desu. / Yes, that is 600 yen.)
 
 ## Grammar Drills
 
-Fill in the blank with the correct counter or expression.
+**Exercise 1: Fill in the blank**
+1. このケーキは＿＿＿ですか。(How much is this cake?)
+2. 水を＿＿＿ください。(Please give me one water - use counter)
+3. ＿＿＿はありますか。(Do you have a receipt?)
+4. その本を＿＿＿ください。(Please give me two of those books - use counter)
+5. このペンは＿＿＿です。(This pen is 100 yen.)
 
-1. "One apple please." → リンゴを___ください。 *(answer: ひとつ/一個)*
-2. "How much is this?" → これは___ですか。 *(answer: いくら)*
-3. "Three books please." → 本を___ください。 *(answer: 三冊)*
-4. "Two bottles of water." → 水を___ください。 *(answer: 二本)*
-5. "One cup of coffee." → コーヒーを___ください。 *(answer: 一杯/ひとつ)*
-6. "This is expensive." → これは___です。 *(answer: 高い)*
-7. "Here is 500 yen." → 五百___です。 *(answer: 円)*
-8. "Five flat papers please." → 紙を___ください。 *(answer: 五枚)*
-9. "Do you have anything cheaper?" → もっと___のはありますか。 *(answer: 安い)*
-10. "The total is 1,000 yen." → 合計で千___になります。 *(answer: 円)*
-
----
+**Answer Key:**
+1. いくら 2. 一つ (hitotsu) 3. レシート 4. 二つ (futatsu) 5. 百円 (hyaku-en)
 
 ## Translation Practice
 
-### English → Japanese
+**English → Japanese**
+1. How much is this?
+2. Please give me three apples.
+3. Do you have a pen?
+4. That is 500 yen.
+5. Please give me one of these (long objects).
 
-1. "How much is this bag?" → このかばんはいくらですか。
-2. "Please give me two of those notebooks." → その本を二冊ください。
-3. "Here is 2,000 yen." → 二千円でお願いします。
-4. "Do you have anything cheaper?" → もっと安いのはありますか。
-5. "I bought three T-shirts yesterday." → 昨日、Tシャツを三枚買いました。
+**Japanese → English**
+6. このりんごはいくらですか。
+7. これを二枚ください。
+8. レシートをください。
+9. その本は高いです。
+10. コンビニはありますか。
 
-### Japanese → English
-
-1. このりんごは一個百二十円です。→ "These apples are 120 yen each."
-2. コーヒーをみっつください。→ "Three coffees please."
-3. 合計で二千五百円です。→ "The total is 2,500 yen."
-4. もっと安いものはありますか。→ "Is there anything cheaper?"
-5. おつりは五百円です。→ "The change is 500 yen."
-
----
+**Answer Key:**
+1. これはいくらですか。 2. りんごを三つください。 3. ペンはありますか。 4. それは五百円です。 5. これを一本ください。 6. How much is this apple? 7. Please give me two of these (flat items). 8. Please give me the receipt. 9. That book is expensive. 10. Is there a convenience store?
 
 ## Cultural Note
 
-Japan is famous for its convenience store (コンビニ, konbini) culture. Chains such as 7-Eleven, FamilyMart, and Lawson operate 24 hours a day and sell an astonishing variety of products: fresh food, hot meals, coffee, ATMs, utility bill payment, event tickets, and even government services. It is perfectly normal — and expected — to simply say the name of an item and add ください to make a purchase. You do not need to say please, sorry, or use full sentences; the minimal shopping script you learned in this lesson is entirely appropriate and natural.
+In Japan, the interaction at a *reji* (cash register) is highly ritualized. You will often hear the clerk say "Irasshaimase" (Welcome) as you enter. When you hand over money, it is standard practice to place it on the small plastic tray provided on the counter rather than handing it directly to the clerk. This is considered more hygienic and polite.
 
-Tipping is **not practiced** in Japan. Leaving money on a table or pressing extra cash into a server's hand will likely cause confusion and mild embarrassment. Instead, the excellent service you receive is considered part of the culture of **omotenashi (おもてなし)** — wholehearted hospitality — which is provided without expectation of financial reward. When you receive change, it will be placed carefully on a small tray (お盆, obon) rather than handed directly to you; it is polite to take the coins from the tray rather than from the cashier's hand.
-
----
+Additionally, Japanese stores are famous for their efficiency. You will almost always be asked if you want a receipt (*reshīto*), and in many places, they will ask if you need a bag (*fukuro*). Learning to respond with "Hai, onegaishimasu" (Yes, please) or "Iie, kekkou desu" (No, thank you) will make your shopping experience much smoother.
 
 ## Self-Check
 
-1. How do you ask "How much is this?" in Japanese?
-2. What counter do you use for long thin objects like pens and bottles?
-3. What is the native Japanese word for "eight (objects)"?
-4. If the total is 3,000 yen and you pay with 5,000 yen, how do you say the change amount?
-5. What is the difference between 高い meaning "expensive" and 高い meaning "tall"? How does context clarify?
+1. What is the difference between "kore" and "sore" when asking for a price?
+2. Why do we use different counters like "ko," "hon," and "mai"?
+3. How do you politely ask for something you see in a store?
+4. Translate: "This bag is 1000 yen."
+5. Reflect: Why is it important to know the word for "receipt" in Japan?
