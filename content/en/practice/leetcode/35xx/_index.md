@@ -82,7 +82,9 @@ draft: false
 | 3590 | [Kth Smallest Path XOR Sum](3590.md) | 🔴 Hard | 47s | The problem asks us to work with an undirected tree rooted at node … |
 | 3591 | [Check if Any Element Has Prime Frequency](3591.md) | 🟢 Easy | 49s | This problem asks us to determine whether any number in an array ap… |
 | 3592 | [Inverse Coin Change](3592.md) | 🟡 Medium | 2m 45s | The problem gives us a 1-indexed array numWays, where numWays[i] in… |
+| 3593 | [Minimum Increments to Equalize Leaf Paths](3593.md) | 🟡 Medium | 1m 32s | We are given a rooted tree with root node 0. Every node has a cost,… |
 | 3594 | [Minimum Time to Transport All Individuals](3594.md) | 🔴 Hard | 1m 40s | This problem is a shortest-path optimization over a highly constrai… |
+| 3595 | [Once Twice](3595.md) | 🟡 Medium | 43s | The problem provides an integer array nums where every element appe… |
 | 3596 | [Minimum Cost Path with Alternating Directions I](3596.md) | 🟡 Medium | 52s | This problem requires computing the minimum total cost to traverse … |
 | 3597 | [Partition String ](3597.md) | 🟡 Medium | 1m 21s | We are given a string s and must partition it into segments accordi… |
 | 3599 | [Partition Array to Minimize XOR](3599.md) | 🟡 Medium | 1m 56s | This problem asks us to partition an array of integers, nums, into … |
