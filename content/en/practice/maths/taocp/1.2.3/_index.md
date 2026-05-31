@@ -63,4 +63,4 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.3: 46/46 solved.
 | [43](43.md) |  [*M24*] | math-medium | verified | 39s |
 | [44](44.md) | &#9654; [*M26*] | math-hard | verified | 3m29s |
 | [45](45.md) | &#9654; [*M25*] | math-medium | solved | 4m35s |
-| [46](46.md) | &#9654; [*M30*] | math-hard | solved | 2m26s |
+| [46](46.md) | &#9654; [*M30*] | math-hard | solved | 11m02s |

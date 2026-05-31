@@ -20,12 +20,12 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.4: 46/46 solved.
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*00*] | immediate | verified | 36s |
 | [2](02.md) | &#9654; [*01*] | simple | verified | 27s |
-| [3](03.md) |  [*M10*] | math-simple | solved | 27s |
-| [4](04.md) | &#9654; [*M10*] | math-simple | solved | 39s |
+| [3](03.md) |  [*M10*] | math-simple | solved | 5m11s |
+| [4](04.md) | &#9654; [*M10*] | math-simple | verified | 3m10s |
 | [5](05.md) |  [*16*] | medium | solved | 39s |
 | [6](06.md) | &#9654; [*20*] | medium | solved | 34s |
 | [7](07.md) |  [*M15*] | math-simple | solved | 35s |
-| [8](08.md) |  [*00*] | immediate | solved | 31s |
+| [8](08.md) |  [*00*] | immediate | verified | 35s |
 | [9](09.md) |  [*05*] | simple | solved | 31s |
 | [10](10.md) | &#9654; [*10*] | simple | solved | 32s |
 | [11](11.md) |  [*00*] | immediate | solved | 31s |
