@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.3 — Sums and Products"
-description: "Section 1.2.3 exercises — 40/46 solved."
+description: "Section 1.2.3 exercises — 41/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.3"
@@ -14,12 +14,12 @@ draft: false
 
 # Section 1.2.3. Sums and Products
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.3: 40/46 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.3: 41/46 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) | &#9654; [*10*] | simple | solved | 51s |
-| 2 |  [*01*] | simple | - | - |
+| [2](02.md) |  [*01*] | simple | verified | 1m01s |
 | [3](03.md) | &#9654; [*13*] | simple | solved | 32s |
 | [4](04.md) |  [*10*] | simple | solved | 35s |
 | [5](05.md) | &#9654; [*HM20*] | hm-medium | solved | 40s |

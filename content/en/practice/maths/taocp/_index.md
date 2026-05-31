@@ -9,14 +9,14 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 290 exercises solved, 49 verified.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 291 exercises solved, 50 verified.
 
 | Section | Title | Solved | Verified |
 |---------|-------|--------|----------|
 | [1.1](1.1/) | Algorithms | 9 | 9 |
 | [1.2.1](1.2.1/) | Mathematical Induction | 14 | 0 |
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 0 |
-| [1.2.3](1.2.3/) | Sums and Products | 40 | 0 |
+| [1.2.3](1.2.3/) | Sums and Products | 41 | 1 |
 | [1.2.4](1.2.4/) | Integer Functions and Elementary Number Theory | 42 | 0 |
 | [1.2.5](1.2.5/) | Permutations and Factorials | 13 | 0 |
 | [1.2.6](1.2.6/) | Binomial Coefficients | 66 | 0 |
