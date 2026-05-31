@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.6 — Binomial Coefficients"
-description: "Section 1.2.6 exercises — 66/68 solved."
+description: "Section 1.2.6 exercises — 67/68 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.6"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.6. Binomial Coefficients
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.6: 66/68 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.6: 67/68 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -70,7 +70,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.6: 66/68 solved.
 | [50](50.md) |  [*M20*] | math-medium | solved | 1m07s |
 | [51](51.md) |  [*M21*] | math-medium | solved | 46s |
 | [52](52.md) |  [*HM11*] | hm-simple | solved | 43s |
-| 53 |  [*M25*] | math-medium | - | - |
+| [53](53.md) |  [*M25*] | math-medium | verified | 2m03s |
 | [54](54.md) |  [*M21*] | math-medium | solved | 36s |
 | 55 |  [*M21*] | math-medium | - | - |
 | [56](56.md) |  [*20*] | medium | solved | 52s |

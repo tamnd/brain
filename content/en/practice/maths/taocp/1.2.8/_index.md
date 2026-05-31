@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.8 — Fibonacci Numbers"
-description: "Section 1.2.8 exercises — 11/42 solved."
+description: "Section 1.2.8 exercises — 12/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.8"
@@ -14,14 +14,14 @@ draft: false
 
 # Section 1.2.8. Fibonacci Numbers
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.8: 11/42 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.8: 12/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*10*] | simple | solved | 33s |
 | [2](02.md) |  [*20*] | medium | solved | 34s |
 | [3](03.md) |  [*25*] | medium | solved | 41s |
-| 4 |  [*14*] | simple | - | - |
+| [4](04.md) |  [*14*] | simple | verified | 38s |
 | [5](05.md) |  [*20*] | medium | solved | 36s |
 | 6 |  [*HM10*] | hm-simple | - | - |
 | [7](07.md) |  [*15*] | simple | solved | 33s |
