@@ -15,3 +15,6 @@ Thematic vocabulary lists make it easier to learn related words together. All wo
 | [Time](time/) | Days, months, years, seasons, Elvish calendar |
 | [Actions](actions/) | Core verbs with all tenses and conjugation notes |
 | [Greetings & Phrases](greetings/) | Phrases from Tolkien's texts, common expressions, *A Elbereth* |
+| [Food & Drink](food/) | *Lembas*, food words, drink verbs, miruvor, dining phrases |
+| [Colors](colors/) | Green, white, grey, black, red, blue, gold, silver — with place name examples |
+| [Numbers](numbers/) | Cardinals 1–1000, ordinals, *meneg* (thousand), *er* vs. *min*, duodecimal theory |

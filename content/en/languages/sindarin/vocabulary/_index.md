@@ -51,6 +51,9 @@ Always label which period a word comes from in your notes. In compositions, indi
 | [Time](thematic/time/) | Days, seasons, years, Elvish calendar |
 | [Actions](thematic/actions/) | Core verb list with conjugation patterns |
 | [Greetings & Phrases](thematic/greetings/) | Common phrases, *A Elbereth*, famous quotes |
+| [Food & Drink](thematic/food/) | *Lembas*, food words, key verbs *mat-* and *sog-*, miruvor |
+| [Colors](thematic/colors/) | All color words with place name examples and mutation rules |
+| [Numbers](thematic/numbers/) | Full number system: cardinals, ordinals, *meneg* (1000), duodecimal theory |
 
 ## Word Formation
 
