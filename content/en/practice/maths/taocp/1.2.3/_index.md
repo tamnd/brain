@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.3 — Sums and Products"
-description: "Section 1.2.3 exercises — 42/46 solved."
+description: "Section 1.2.3 exercises — 44/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.3. Sums and Products
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.3: 42/46 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.3: 44/46 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,7 +26,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.3: 42/46 solved.
 | [6](06.md) |  [*HM20*] | hm-medium | solved | 33s |
 | [7](07.md) |  [*HM23*] | hm-medium | solved | 28s |
 | [8](08.md) |  [*HM25*] | hm-medium | solved | 44s |
-| 9 | &#9654; [*05*] | simple | - | - |
+| [9](09.md) | &#9654; [*05*] | simple | verified | 1m04s |
 | [10](10.md) |  [*05*] | simple | solved | 40s |
 | [11](11.md) |  [*03*] | simple | solved | 35s |
 | [12](12.md) |  [*10*] | simple | solved | 26s |
@@ -48,7 +48,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.3: 42/46 solved.
 | [28](28.md) |  [*M22*] | math-medium | solved | 33s |
 | [29](29.md) | &#9654; [*M30*] | math-hard | solved | 53s |
 | [30](30.md) | &#9654; [*M23*] | math-medium | solved | 47s |
-| 31 |  [*M20*] | math-medium | - | - |
+| [31](31.md) |  [*M20*] | math-medium | verified | 1m06s |
 | [32](32.md) |  [*M20*] | math-medium | solved | 31s |
 | [33](33.md) | &#9654; [*M30*] | math-hard | solved | 1m01s |
 | [34](34.md) |  [*M25*] | math-medium | solved | 35s |
