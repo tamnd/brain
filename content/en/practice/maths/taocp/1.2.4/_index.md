@@ -28,27 +28,27 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.4: 46/46 solved.
 | [8](08.md) |  [*00*] | immediate | verified | 35s |
 | [9](09.md) |  [*05*] | simple | verified | 2m13s |
 | [10](10.md) | &#9654; [*10*] | simple | verified | 1m10s |
-| [11](11.md) |  [*00*] | immediate | solved | 31s |
+| [11](11.md) |  [*00*] | immediate | solved | 7m04s |
 | [12](12.md) |  [*00*] | immediate | verified | 2m56s |
 | [13](13.md) |  [*M00*] | math-immediate | verified | 2m22s |
 | [14](14.md) | &#9654; [*12*] | simple | verified | 34s |
 | [15](15.md) |  [*10*] | simple | verified | 1m03s |
 | [16](16.md) |  [*M10*] | math-simple | verified | 43s |
 | [17](17.md) |  [*M15*] | math-simple | verified | 30s |
-| [18](18.md) |  [*M15*] | math-simple | solved | 32s |
+| [18](18.md) |  [*M15*] | math-simple | verified | 5m27s |
 | [19](19.md) | &#9654; [*M10*] | math-simple | verified | 30s |
-| [20](20.md) |  [*M15*] | math-simple | solved | 28s |
+| [20](20.md) |  [*M15*] | math-simple | verified | 2m23s |
 | [21](21.md) |  [*M22*] | math-medium | solved | 39s |
-| [22](22.md) | &#9654; [*M10*] | math-simple | solved | 32s |
+| [22](22.md) | &#9654; [*M10*] | math-simple | verified | 3m11s |
 | [23](23.md) |  [*M10*] | math-simple | solved | 33s |
 | [24](24.md) | &#9654; [*M20*] | math-medium | solved | 41s |
-| [25](25.md) |  [*M02*] | math-simple | solved | 37s |
-| [26](26.md) |  [*M15*] | math-simple | solved | 39s |
-| [27](27.md) |  [*M15*] | math-simple | solved | 33s |
-| [28](28.md) | &#9654; [*M25*] | math-medium | solved | 36s |
-| [29](29.md) |  [*M22*] | math-medium | solved | 34s |
-| [30](30.md) |  [*M30*] | math-hard | solved | 39s |
-| [31](31.md) |  [*M22*] | math-medium | solved | 24s |
+| [25](25.md) |  [*M02*] | math-simple | verified | 1m18s |
+| [26](26.md) |  [*M15*] | math-simple | verified | 1m03s |
+| [27](27.md) |  [*M15*] | math-simple | verified | 34s |
+| [28](28.md) | &#9654; [*M25*] | math-medium | verified | 39s |
+| [29](29.md) |  [*M22*] | math-medium | verified | 48s |
+| [30](30.md) |  [*M30*] | math-hard | verified | 36s |
+| [31](31.md) |  [*M22*] | math-medium | verified | 33s |
 | [32](32.md) |  [*M18*] | math-medium | solved | 33s |
 | [33](33.md) |  [*M18*] | math-medium | solved | 32s |
 | [34](34.md) | &#9654; [*M21*] | math-medium | solved | 43s |
