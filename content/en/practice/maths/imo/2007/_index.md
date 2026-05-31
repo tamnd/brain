@@ -23,8 +23,6 @@ draft: false
 
 **Problem 1**
 
-* * *
-
 Real numbers $a_1, a_2, \dots , a_n$ are given. For each $i$ ($1\le i\le n$) define $$
 d_i=\max\{a_j:1\le j\le i\}-\min\{a_j:i\le j\le n\}
 $$ and let $$

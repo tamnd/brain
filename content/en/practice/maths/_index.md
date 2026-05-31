@@ -9,12 +9,10 @@ draft: false
 
 # Mathematics
 
-Solutions to mathematical problem sets. Each collection has its own index with full per-year (or per-section) detail.
+Worked solutions to several mathematical problem collections. Each collection has its own index with the full list of problems.
 
-| Collection | Period | Total | Solved | Verified |
-|------------|--------|------:|-------:|---------:|
-| [IMO](imo/) | 1959–2024 | 390 | 74 | 35 |
-| [TAOCP Vol. 1](taocp/) | Vol. 1 | — | 710 | 345 |
-| [IMO Shortlist](shortlist/) | 1968–2004 | 802 | — | — |
-| [IMO Longlist](longlist/) | 1966–1992 | 1045 | — | — |
-| [Kvant](kvant/) | magazine | — | 1 | 0 |
+The [International Mathematical Olympiad](imo/) sets the hardest problems given to high-school students anywhere, six a year since 1959. Around the contest sit its two feeder collections: the [IMO Shortlist](shortlist/), the pool from which each year's jury picks the final six, and the [IMO Longlist](longlist/), the wider set of problems that participating countries propose before shortlisting.
+
+[The Art of Computer Programming](taocp/) collects solutions to the exercises in Donald Knuth's volumes, ranging from short warm-ups to research-grade questions.
+
+[Kvant](kvant/) draws on the long-running Russian magazine of mathematics and physics for school students, with each problem translated and solved.
