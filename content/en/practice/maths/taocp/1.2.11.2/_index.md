@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.11.2 — Euler's Summation Formula"
-description: "Section 1.2.11.2 exercises — 5/13 solved."
+description: "Section 1.2.11.2 exercises — 13/13 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.11.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.11.2. Euler's Summation Formula
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.11.2: 5/13 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.11.2: 13/13 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -23,11 +23,11 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.11.2: 5/13 solved.
 | [3](03.md) |  [*HM20*] | hm-medium | verified | 1m50s |
 | [4](04.md) |  [*HM20*] | hm-medium | verified | 43s |
 | [5](05.md) |  [*HM30*] | hm-hard | verified | 59s |
-| 6 |  [*HM30*] | hm-hard | - | - |
-| 7 |  [*HM32*] | hm-hard | - | - |
-| 8 |  [*M23*] | math-medium | - | - |
-| 9 |  [*M25*] | math-medium | - | - |
-| 10 |  [*HM22*] | hm-medium | - | - |
-| 11 |  [*M11*] | math-simple | - | - |
-| 12 |  [*HM25*] | hm-medium | - | - |
-| 13 |  [*M10*] | math-simple | - | - |
+| [6](06.md) |  [*HM30*] | hm-hard | verified | 4m03s |
+| [7](07.md) |  [*HM32*] | hm-hard | verified | 44s |
+| [8](08.md) |  [*M23*] | math-medium | verified | 45s |
+| [9](09.md) |  [*M25*] | math-medium | solved | 3m08s |
+| [10](10.md) |  [*HM22*] | hm-medium | verified | 45s |
+| [11](11.md) |  [*M11*] | math-simple | verified | 44s |
+| [12](12.md) |  [*HM25*] | hm-medium | solved | 3m10s |
+| [13](13.md) |  [*M10*] | math-simple | verified | 1m31s |
