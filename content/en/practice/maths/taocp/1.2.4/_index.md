@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.4 — Integer Functions and Elementary Number Theory"
-description: "Section 1.2.4 exercises — 44/46 solved."
+description: "Section 1.2.4 exercises — 46/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.4. Integer Functions and Elementary Number Theory
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.4: 44/46 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.4: 46/46 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -56,11 +56,11 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.4: 44/46 solved.
 | [36](36.md) |  [*M23*] | math-medium | solved | 39s |
 | [37](37.md) | &#9654; [*M30*] | math-hard | solved | 57s |
 | [38](38.md) |  [*M26*] | math-hard | solved | 48s |
-| 39 |  [*HM35*] | hm-hard | - | - |
+| [39](39.md) |  [*HM35*] | hm-hard | solved | 5m26s |
 | [40](40.md) |  [*HM46*] | hm-research | solved | 53s |
 | [41](41.md) |  [*M23*] | math-medium | solved | 28s |
 | [42](42.md) |  [*M24*] | math-medium | solved | 32s |
 | [43](43.md) |  [*M23*] | math-medium | solved | 39s |
-| 44 |  [*M24*] | math-medium | - | - |
+| [44](44.md) |  [*M24*] | math-medium | verified | 1m33s |
 | [45](45.md) | &#9654; [*M28*] | math-hard | solved | 40s |
 | [46](46.md) |  [*M29*] | math-hard | verified | 1m10s |
