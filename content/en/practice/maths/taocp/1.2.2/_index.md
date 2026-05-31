@@ -24,19 +24,19 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.2: 30/30 solved.
 | [4](04.md) | &#9654; [*05*] | simple | verified | 49s |
 | [5](05.md) |  [*05*] | simple | verified | 38s |
 | [6](06.md) |  [*10*] | simple | verified | 1m58s |
-| [7](07.md) |  [*M23*] | math-medium | solved | 35s |
-| [8](08.md) |  [*25*] | medium | solved | 38s |
-| [9](09.md) |  [*M23*] | math-medium | solved | 40s |
-| [10](10.md) |  [*18*] | medium | solved | 34s |
-| [11](11.md) | &#9654; [*10*] | simple | solved | 35s |
-| [12](12.md) |  [*02*] | simple | solved | 30s |
-| [13](13.md) | &#9654; [*M23*] | math-medium | solved | 37s |
-| [14](14.md) |  [*15*] | simple | solved | 33s |
-| [15](15.md) |  [*10*] | simple | solved | 31s |
-| [16](16.md) |  [*00*] | immediate | solved | 34s |
-| [17](17.md) | &#9654; [*05*] | simple | solved | 35s |
-| [18](18.md) |  [*10*] | simple | solved | 34s |
-| [19](19.md) | &#9654; [*20*] | medium | solved | 25s |
+| [7](07.md) |  [*M23*] | math-medium | verified | 11m16s |
+| [8](08.md) |  [*25*] | medium | verified | 8m26s |
+| [9](09.md) |  [*M23*] | math-medium | verified | 2m06s |
+| [10](10.md) |  [*18*] | medium | verified | 38s |
+| [11](11.md) | &#9654; [*10*] | simple | verified | 3m59s |
+| [12](12.md) |  [*02*] | simple | verified | 36s |
+| [13](13.md) | &#9654; [*M23*] | math-medium | verified | 36s |
+| [14](14.md) |  [*15*] | simple | verified | 44s |
+| [15](15.md) |  [*10*] | simple | verified | 29s |
+| [16](16.md) |  [*00*] | immediate | verified | 30s |
+| [17](17.md) | &#9654; [*05*] | simple | verified | 33s |
+| [18](18.md) |  [*10*] | simple | verified | 26s |
+| [19](19.md) | &#9654; [*20*] | medium | verified | 32s |
 | [20](20.md) |  [*10*] | simple | solved | 24s |
 | [21](21.md) |  [*15*] | simple | solved | 31s |
 | [22](22.md) | &#9654; [*20*] | medium | solved | 41s |
