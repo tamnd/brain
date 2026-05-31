@@ -1,135 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 291 contests, 1237 problems, 1001 verified."
-description: "Codeforces problem solutions with full editorial. 304 contests, 1282 problems, 1029 verified."
-description: "Codeforces problem solutions with full editorial. 305 contests, 1283 problems, 1029 verified."
-description: "Codeforces problem solutions with full editorial. 306 contests, 1287 problems, 1030 verified."
-description: "Codeforces problem solutions with full editorial. 307 contests, 1292 problems, 1034 verified."
-description: "Codeforces problem solutions with full editorial. 308 contests, 1297 problems, 1036 verified."
-description: "Codeforces problem solutions with full editorial. 309 contests, 1299 problems, 1038 verified."
-description: "Codeforces problem solutions with full editorial. 310 contests, 1304 problems, 1042 verified."
-description: "Codeforces problem solutions with full editorial. 311 contests, 1309 problems, 1046 verified."
-description: "Codeforces problem solutions with full editorial. 312 contests, 1311 problems, 1047 verified."
-description: "Codeforces problem solutions with full editorial. 313 contests, 1316 problems, 1051 verified."
-description: "Codeforces problem solutions with full editorial. 314 contests, 1318 problems, 1053 verified."
-description: "Codeforces problem solutions with full editorial. 315 contests, 1323 problems, 1053 verified."
-description: "Codeforces problem solutions with full editorial. 316 contests, 1326 problems, 1054 verified."
-description: "Codeforces problem solutions with full editorial. 317 contests, 1328 problems, 1056 verified."
-description: "Codeforces problem solutions with full editorial. 318 contests, 1333 problems, 1061 verified."
-description: "Codeforces problem solutions with full editorial. 319 contests, 1338 problems, 1066 verified."
-description: "Codeforces problem solutions with full editorial. 320 contests, 1340 problems, 1067 verified."
-description: "Codeforces problem solutions with full editorial. 321 contests, 1345 problems, 1072 verified."
-description: "Codeforces problem solutions with full editorial. 322 contests, 1347 problems, 1074 verified."
-description: "Codeforces problem solutions with full editorial. 323 contests, 1348 problems, 1074 verified."
-description: "Codeforces problem solutions with full editorial. 324 contests, 1349 problems, 1075 verified."
-description: "Codeforces problem solutions with full editorial. 325 contests, 1352 problems, 1075 verified."
-description: "Codeforces problem solutions with full editorial. 326 contests, 1353 problems, 1076 verified."
-description: "Codeforces problem solutions with full editorial. 327 contests, 1355 problems, 1078 verified."
-description: "Codeforces problem solutions with full editorial. 328 contests, 1356 problems, 1079 verified."
-description: "Codeforces problem solutions with full editorial. 329 contests, 1359 problems, 1080 verified."
-description: "Codeforces problem solutions with full editorial. 330 contests, 1361 problems, 1081 verified."
-description: "Codeforces problem solutions with full editorial. 331 contests, 1362 problems, 1082 verified."
-description: "Codeforces problem solutions with full editorial. 332 contests, 1365 problems, 1084 verified."
-description: "Codeforces problem solutions with full editorial. 333 contests, 1366 problems, 1085 verified."
-description: "Codeforces problem solutions with full editorial. 334 contests, 1369 problems, 1085 verified."
-description: "Codeforces problem solutions with full editorial. 335 contests, 1370 problems, 1086 verified."
-description: "Codeforces problem solutions with full editorial. 336 contests, 1373 problems, 1088 verified."
-description: "Codeforces problem solutions with full editorial. 337 contests, 1378 problems, 1091 verified."
-description: "Codeforces problem solutions with full editorial. 338 contests, 1380 problems, 1093 verified."
-description: "Codeforces problem solutions with full editorial. 339 contests, 1385 problems, 1098 verified."
-description: "Codeforces problem solutions with full editorial. 340 contests, 1390 problems, 1102 verified."
-description: "Codeforces problem solutions with full editorial. 341 contests, 1395 problems, 1106 verified."
-description: "Codeforces problem solutions with full editorial. 342 contests, 1397 problems, 1108 verified."
-description: "Codeforces problem solutions with full editorial. 343 contests, 1402 problems, 1113 verified."
-description: "Codeforces problem solutions with full editorial. 344 contests, 1404 problems, 1115 verified."
-description: "Codeforces problem solutions with full editorial. 345 contests, 1410 problems, 1119 verified."
-description: "Codeforces problem solutions with full editorial. 346 contests, 1415 problems, 1123 verified."
-description: "Codeforces problem solutions with full editorial. 347 contests, 1420 problems, 1127 verified."
-description: "Codeforces problem solutions with full editorial. 348 contests, 1425 problems, 1130 verified."
-description: "Codeforces problem solutions with full editorial. 349 contests, 1427 problems, 1132 verified."
-description: "Codeforces problem solutions with full editorial. 350 contests, 1432 problems, 1137 verified."
-description: "Codeforces problem solutions with full editorial. 351 contests, 1435 problems, 1137 verified."
-description: "Codeforces problem solutions with full editorial. 352 contests, 1437 problems, 1137 verified."
-description: "Codeforces problem solutions with full editorial. 353 contests, 1442 problems, 1140 verified."
-description: "Codeforces problem solutions with full editorial. 354 contests, 1447 problems, 1143 verified."
-description: "Codeforces problem solutions with full editorial. 355 contests, 1452 problems, 1146 verified."
-description: "Codeforces problem solutions with full editorial. 356 contests, 1454 problems, 1148 verified."
-description: "Codeforces problem solutions with full editorial. 357 contests, 1462 problems, 1156 verified."
-description: "Codeforces problem solutions with full editorial. 358 contests, 1467 problems, 1159 verified."
-description: "Codeforces problem solutions with full editorial. 359 contests, 1474 problems, 1164 verified."
-description: "Codeforces problem solutions with full editorial. 360 contests, 1480 problems, 1170 verified."
-description: "Codeforces problem solutions with full editorial. 361 contests, 1486 problems, 1174 verified."
-description: "Codeforces problem solutions with full editorial. 362 contests, 1491 problems, 1179 verified."
-description: "Codeforces problem solutions with full editorial. 363 contests, 1493 problems, 1179 verified."
-description: "Codeforces problem solutions with full editorial. 364 contests, 1498 problems, 1183 verified."
-description: "Codeforces problem solutions with full editorial. 365 contests, 1503 problems, 1186 verified."
-description: "Codeforces problem solutions with full editorial. 366 contests, 1505 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 367 contests, 1509 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 368 contests, 1511 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 369 contests, 1515 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 370 contests, 1517 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 371 contests, 1521 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 372 contests, 1525 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 373 contests, 1527 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 374 contests, 1531 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 375 contests, 1536 problems, 1187 verified."
-description: "Codeforces problem solutions with full editorial. 376 contests, 1539 problems, 1188 verified."
-description: "Codeforces problem solutions with full editorial. 377 contests, 1542 problems, 1189 verified."
-description: "Codeforces problem solutions with full editorial. 378 contests, 1547 problems, 1192 verified."
-description: "Codeforces problem solutions with full editorial. 379 contests, 1551 problems, 1193 verified."
-description: "Codeforces problem solutions with full editorial. 380 contests, 1553 problems, 1194 verified."
-description: "Codeforces problem solutions with full editorial. 382 contests, 1563 problems, 1199 verified."
-description: "Codeforces problem solutions with full editorial. 383 contests, 1571 problems, 1200 verified."
-description: "Codeforces problem solutions with full editorial. 384 contests, 1573 problems, 1201 verified."
-description: "Codeforces problem solutions with full editorial. 385 contests, 1581 problems, 1206 verified."
-description: "Codeforces problem solutions with full editorial. 386 contests, 1586 problems, 1207 verified."
-description: "Codeforces problem solutions with full editorial. 387 contests, 1592 problems, 1209 verified."
-description: "Codeforces problem solutions with full editorial. 388 contests, 1603 problems, 1214 verified."
-description: "Codeforces problem solutions with full editorial. 389 contests, 1610 problems, 1220 verified."
-description: "Codeforces problem solutions with full editorial. 390 contests, 1619 problems, 1221 verified."
-description: "Codeforces problem solutions with full editorial. 391 contests, 1627 problems, 1226 verified."
-description: "Codeforces problem solutions with full editorial. 392 contests, 1628 problems, 1227 verified."
-description: "Codeforces problem solutions with full editorial. 393 contests, 1634 problems, 1229 verified."
-description: "Codeforces problem solutions with full editorial. 394 contests, 1642 problems, 1234 verified."
-description: "Codeforces problem solutions with full editorial. 395 contests, 1649 problems, 1237 verified."
-description: "Codeforces problem solutions with full editorial. 396 contests, 1651 problems, 1238 verified."
-description: "Codeforces problem solutions with full editorial. 397 contests, 1661 problems, 1245 verified."
-description: "Codeforces problem solutions with full editorial. 398 contests, 1667 problems, 1245 verified."
-description: "Codeforces problem solutions with full editorial. 399 contests, 1669 problems, 1245 verified."
-description: "Codeforces problem solutions with full editorial. 400 contests, 1677 problems, 1246 verified."
-description: "Codeforces problem solutions with full editorial. 401 contests, 1679 problems, 1247 verified."
-description: "Codeforces problem solutions with full editorial. 303 contests, 1279 problems, 1033 verified."
-description: "Codeforces problem solutions with full editorial. 304 contests, 1281 problems, 1034 verified."
-description: "Codeforces problem solutions with full editorial. 305 contests, 1282 problems, 1034 verified."
-description: "Codeforces problem solutions with full editorial. 306 contests, 1284 problems, 1036 verified."
-description: "Codeforces problem solutions with full editorial. 307 contests, 1285 problems, 1037 verified."
-description: "Codeforces problem solutions with full editorial. 308 contests, 1286 problems, 1038 verified."
-description: "Codeforces problem solutions with full editorial. 309 contests, 1288 problems, 1040 verified."
-description: "Codeforces problem solutions with full editorial. 310 contests, 1291 problems, 1042 verified."
-description: "Codeforces problem solutions with full editorial. 311 contests, 1293 problems, 1042 verified."
-description: "Codeforces problem solutions with full editorial. 312 contests, 1296 problems, 1043 verified."
-description: "Codeforces problem solutions with full editorial. 313 contests, 1297 problems, 1043 verified."
-description: "Codeforces problem solutions with full editorial. 315 contests, 1302 problems, 1046 verified."
-description: "Codeforces problem solutions with full editorial. 316 contests, 1306 problems, 1047 verified."
-description: "Codeforces problem solutions with full editorial. 317 contests, 1310 problems, 1048 verified."
-description: "Codeforces problem solutions with full editorial. 317 contests, 1311 problems, 1048 verified."
-description: "Codeforces problem solutions with full editorial. 318 contests, 1313 problems, 1050 verified."
-description: "Codeforces problem solutions with full editorial. 319 contests, 1314 problems, 1051 verified."
-description: "Codeforces problem solutions with full editorial. 320 contests, 1315 problems, 1052 verified."
-description: "Codeforces problem solutions with full editorial. 321 contests, 1316 problems, 1053 verified."
-description: "Codeforces problem solutions with full editorial. 322 contests, 1317 problems, 1053 verified."
-description: "Codeforces problem solutions with full editorial. 323 contests, 1320 problems, 1055 verified."
-description: "Codeforces problem solutions with full editorial. 324 contests, 1321 problems, 1055 verified."
-description: "Codeforces problem solutions with full editorial. 325 contests, 1324 problems, 1057 verified."
-description: "Codeforces problem solutions with full editorial. 326 contests, 1325 problems, 1058 verified."
-description: "Codeforces problem solutions with full editorial. 327 contests, 1326 problems, 1059 verified."
-description: "Codeforces problem solutions with full editorial. 328 contests, 1329 problems, 1060 verified."
-description: "Codeforces problem solutions with full editorial. 329 contests, 1330 problems, 1061 verified."
-description: "Codeforces problem solutions with full editorial. 330 contests, 1334 problems, 1062 verified."
-description: "Codeforces problem solutions with full editorial. 331 contests, 1336 problems, 1063 verified."
-description: "Codeforces problem solutions with full editorial. 332 contests, 1338 problems, 1065 verified."
-description: "Codeforces problem solutions with full editorial. 333 contests, 1340 problems, 1067 verified."
-description: "Codeforces problem solutions with full editorial. 334 contests, 1345 problems, 1069 verified."
+description: "Codeforces problem solutions with full editorial. 438 contests, 1764 problems, 1296 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -140,136 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**291 contests, 1237 problems, 1001 verified.**
-**304 contests, 1282 problems, 1029 verified.**
-**305 contests, 1283 problems, 1029 verified.**
-**306 contests, 1287 problems, 1030 verified.**
-**307 contests, 1292 problems, 1034 verified.**
-**308 contests, 1297 problems, 1036 verified.**
-**309 contests, 1299 problems, 1038 verified.**
-**310 contests, 1304 problems, 1042 verified.**
-**311 contests, 1309 problems, 1046 verified.**
-**312 contests, 1311 problems, 1047 verified.**
-**313 contests, 1316 problems, 1051 verified.**
-**314 contests, 1318 problems, 1053 verified.**
-**315 contests, 1323 problems, 1053 verified.**
-**316 contests, 1326 problems, 1054 verified.**
-**317 contests, 1328 problems, 1056 verified.**
-**318 contests, 1333 problems, 1061 verified.**
-**319 contests, 1338 problems, 1066 verified.**
-**320 contests, 1340 problems, 1067 verified.**
-**321 contests, 1345 problems, 1072 verified.**
-**322 contests, 1347 problems, 1074 verified.**
-**323 contests, 1348 problems, 1074 verified.**
-**324 contests, 1349 problems, 1075 verified.**
-**325 contests, 1352 problems, 1075 verified.**
-**326 contests, 1353 problems, 1076 verified.**
-**327 contests, 1355 problems, 1078 verified.**
-**328 contests, 1356 problems, 1079 verified.**
-**329 contests, 1359 problems, 1080 verified.**
-**330 contests, 1361 problems, 1081 verified.**
-**331 contests, 1362 problems, 1082 verified.**
-**332 contests, 1365 problems, 1084 verified.**
-**333 contests, 1366 problems, 1085 verified.**
-**334 contests, 1369 problems, 1085 verified.**
-**335 contests, 1370 problems, 1086 verified.**
-**336 contests, 1373 problems, 1088 verified.**
-**337 contests, 1378 problems, 1091 verified.**
-**338 contests, 1380 problems, 1093 verified.**
-**339 contests, 1385 problems, 1098 verified.**
-**340 contests, 1390 problems, 1102 verified.**
-**341 contests, 1395 problems, 1106 verified.**
-**342 contests, 1397 problems, 1108 verified.**
-**343 contests, 1402 problems, 1113 verified.**
-**344 contests, 1404 problems, 1115 verified.**
-**345 contests, 1410 problems, 1119 verified.**
-**346 contests, 1415 problems, 1123 verified.**
-**347 contests, 1420 problems, 1127 verified.**
-**348 contests, 1425 problems, 1130 verified.**
-**349 contests, 1427 problems, 1132 verified.**
-**350 contests, 1432 problems, 1137 verified.**
-**351 contests, 1435 problems, 1137 verified.**
-**352 contests, 1437 problems, 1137 verified.**
-**353 contests, 1442 problems, 1140 verified.**
-**354 contests, 1447 problems, 1143 verified.**
-**355 contests, 1452 problems, 1146 verified.**
-**356 contests, 1454 problems, 1148 verified.**
-**357 contests, 1462 problems, 1156 verified.**
-**358 contests, 1467 problems, 1159 verified.**
-**359 contests, 1474 problems, 1164 verified.**
-**360 contests, 1480 problems, 1170 verified.**
-**361 contests, 1486 problems, 1174 verified.**
-**362 contests, 1491 problems, 1179 verified.**
-**363 contests, 1493 problems, 1179 verified.**
-**364 contests, 1498 problems, 1183 verified.**
-**365 contests, 1503 problems, 1186 verified.**
-**366 contests, 1505 problems, 1187 verified.**
-**367 contests, 1509 problems, 1187 verified.**
-**368 contests, 1511 problems, 1187 verified.**
-**369 contests, 1515 problems, 1187 verified.**
-**370 contests, 1517 problems, 1187 verified.**
-**371 contests, 1521 problems, 1187 verified.**
-**372 contests, 1525 problems, 1187 verified.**
-**373 contests, 1527 problems, 1187 verified.**
-**374 contests, 1531 problems, 1187 verified.**
-**375 contests, 1536 problems, 1187 verified.**
-**376 contests, 1539 problems, 1188 verified.**
-**377 contests, 1542 problems, 1189 verified.**
-**378 contests, 1547 problems, 1192 verified.**
-**379 contests, 1551 problems, 1193 verified.**
-**380 contests, 1553 problems, 1194 verified.**
-**382 contests, 1563 problems, 1199 verified.**
-**383 contests, 1571 problems, 1200 verified.**
-**384 contests, 1573 problems, 1201 verified.**
-**385 contests, 1581 problems, 1206 verified.**
-**386 contests, 1586 problems, 1207 verified.**
-**387 contests, 1592 problems, 1209 verified.**
-**388 contests, 1603 problems, 1214 verified.**
-**389 contests, 1610 problems, 1220 verified.**
-**390 contests, 1619 problems, 1221 verified.**
-**391 contests, 1627 problems, 1226 verified.**
-**392 contests, 1628 problems, 1227 verified.**
-**393 contests, 1634 problems, 1229 verified.**
-**394 contests, 1642 problems, 1234 verified.**
-**395 contests, 1649 problems, 1237 verified.**
-**396 contests, 1651 problems, 1238 verified.**
-**397 contests, 1661 problems, 1245 verified.**
-**398 contests, 1667 problems, 1245 verified.**
-**399 contests, 1669 problems, 1245 verified.**
-**400 contests, 1677 problems, 1246 verified.**
-**401 contests, 1679 problems, 1247 verified.**
-**303 contests, 1279 problems, 1033 verified.**
-**304 contests, 1281 problems, 1034 verified.**
-**305 contests, 1282 problems, 1034 verified.**
-**306 contests, 1284 problems, 1036 verified.**
-**307 contests, 1285 problems, 1037 verified.**
-**308 contests, 1286 problems, 1038 verified.**
-**309 contests, 1288 problems, 1040 verified.**
-**310 contests, 1291 problems, 1042 verified.**
-**311 contests, 1293 problems, 1042 verified.**
-**312 contests, 1296 problems, 1043 verified.**
-**313 contests, 1297 problems, 1043 verified.**
-**315 contests, 1302 problems, 1046 verified.**
-**316 contests, 1306 problems, 1047 verified.**
-**317 contests, 1310 problems, 1048 verified.**
-**317 contests, 1311 problems, 1048 verified.**
-**318 contests, 1313 problems, 1050 verified.**
-**319 contests, 1314 problems, 1051 verified.**
-**320 contests, 1315 problems, 1052 verified.**
-**321 contests, 1316 problems, 1053 verified.**
-**322 contests, 1317 problems, 1053 verified.**
-**323 contests, 1320 problems, 1055 verified.**
-**324 contests, 1321 problems, 1055 verified.**
-**325 contests, 1324 problems, 1057 verified.**
-**326 contests, 1325 problems, 1058 verified.**
-**327 contests, 1326 problems, 1059 verified.**
-**328 contests, 1329 problems, 1060 verified.**
-**329 contests, 1330 problems, 1061 verified.**
-**330 contests, 1334 problems, 1062 verified.**
-**331 contests, 1336 problems, 1063 verified.**
-**332 contests, 1338 problems, 1065 verified.**
-**333 contests, 1340 problems, 1067 verified.**
-**334 contests, 1345 problems, 1069 verified.**
+**438 contests, 1764 problems, 1296 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -500,23 +242,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [232](232/) | [Codeforces Round 144 (Div. 1)](https://codeforces.com/contest/232) | Div. 1 | 1600-2900 | 2/4 | 17m 15s |
 | [233](233/) | [Codeforces Round 144 (Div. 2)](https://codeforces.com/contest/233) | Div. 2 | 800-1400 | 1/2 | 2m 15s |
 | [234](234/) | [Codeforces Round 145 (Div. 2, ACM-ICPC Rules)](https://codeforces.com/contest/234) | Div. 2 | 1000-2000 | 2/5 | 9m 42s |
-| [235](235/) | [Codeforces Round 146 (Div. 1)](https://codeforces.com/contest/235) | Div. 1 | 1600-3000 | 3/4 | 9m 14s |
-| [236](236/) | [Codeforces Round 146 (Div. 2)](https://codeforces.com/contest/236) | Div. 2 | 800-1300 | 2/2 | 4m 32s |
-| [237](237/) | [Codeforces Round 147 (Div. 2)](https://codeforces.com/contest/237) | Div. 2 | 1500-1600 | 1/2 | 3m 37s |
-| [238](238/) | [Codeforces Round 148 (Div. 1)](https://codeforces.com/contest/238) | Div. 1 | 1300-2900 | 2/5 | 10m 55s |
-| [239](239/) | [Codeforces Round 148 (Div. 2)](https://codeforces.com/contest/239) | Div. 2 | 1200-1500 | 2/2 | 3m 5s |
-| [240](240/) | [Codeforces Round 145 (Div. 1, ACM-ICPC Rules)](https://codeforces.com/contest/240) | Div. 1 | 2800-2800 | 1/1 | 3m 55s |
-| [241](241/) | [Bayan 2012-2013 Elimination Round (ACM ICPC Rules, English statements)](https://codeforces.com/contest/241) | ICPC/IOI | 1300-2900 | 3/7 | 11m 27s |
-| [242](242/) | [Codeforces Round 149 (Div. 2)](https://codeforces.com/contest/242) | Div. 2 | 1100-2100 | 3/5 | 17m 17s |
-| [243](243/) | [Codeforces Round 150 (Div. 1)](https://codeforces.com/contest/243) | Div. 1 | 1600-3000 | 2/5 | 11m 55s |
-| [244](244/) | [Codeforces Round 150 (Div. 2)](https://codeforces.com/contest/244) | Div. 2 | 900-1600 | 1/2 | 2m 36s |
-| [245](245/) | [CROC-MBTU 2012, Elimination Round (ACM-ICPC)](https://codeforces.com/contest/245) | ICPC/IOI | 800-2200 | 7/7 | 15m 21s |
-| [246](246/) | [Codeforces Round 151 (Div. 2)](https://codeforces.com/contest/246) | Div. 2 | 900-2400 | 4/5 | 6m 41s |
-| [248](248/) | [Codeforces Round 152 (Div. 2)](https://codeforces.com/contest/248) | Div. 2 | 800-2600 | 3/5 | 8m 37s |
-| [249](249/) | [Codeforces Round 152 (Div. 1)](https://codeforces.com/contest/249) | Div. 1 | 2600-2700 | 1/2 | 2m 54s |
-| [250](250/) | [CROC-MBTU 2012, Final Round (Online version, Div. 2)](https://codeforces.com/contest/250) | Div. 2 | 1500-2000 | 4/4 | 6m 32s |
-| [251](251/) | [Codeforces Round 153 (Div. 1)](https://codeforces.com/contest/251) | Div. 1 | 1300-3000 | 4/5 | 6m 32s |
-| [252](252/) | [Codeforces Round 153 (Div. 2)](https://codeforces.com/contest/252) | Div. 2 | 1100-1100 | 1/1 | 52s |
 | [235](235/) | [Codeforces Round 146 (Div. 1)](https://codeforces.com/contest/235) | Div. 1 | 1600-3000 | 3/4 | 11m 16s |
 | [236](236/) | [Codeforces Round 146 (Div. 2)](https://codeforces.com/contest/236) | Div. 2 | 800-1300 | 2/2 | 5m 12s |
 | [237](237/) | [Codeforces Round 147 (Div. 2)](https://codeforces.com/contest/237) | Div. 2 | 1000-2000 | 3/3 | 9m 35s |
@@ -539,13 +264,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [255](255/) | [Codeforces Round 156 (Div. 2)](https://codeforces.com/contest/255) | Div. 2 | 800-2200 | 5/5 | 10m 7s |
 | [256](256/) | [Codeforces Round 156 (Div. 1)](https://codeforces.com/contest/256) | Div. 1 | 2400-2700 | 1/2 | 5m |
 | [257](257/) | [Codeforces Round 159 (Div. 2)](https://codeforces.com/contest/257) | Div. 2 | 1100-1900 | 4/4 | 6m 19s |
-| [258](258/) | [Codeforces Round 157 (Div. 1)](https://codeforces.com/contest/258) | Div. 1 | 1900-2400 | 1/2 | 6m 6s |
-| [259](259/) | [Codeforces Round 157 (Div. 2)](https://codeforces.com/contest/259) | Div. 2 | 1000-1000 | 1/1 | 1m 24s |
-| [260](260/) | [Codeforces Round 158 (Div. 2)](https://codeforces.com/contest/260) | Div. 2 | 1600-2100 | 2/2 | 5m 17s |
-| [261](261/) | [Codeforces Round 160 (Div. 1)](https://codeforces.com/contest/261) | Div. 1 | 1400-2800 | 1/5 | 11m 55s |
-| [262](262/) | [Codeforces Round 160 (Div. 2)](https://codeforces.com/contest/262) | Div. 2 | 800-1200 | 1/2 | 9m 50s |
-| [263](263/) | [Codeforces Round 161 (Div. 2)](https://codeforces.com/contest/263) | Div. 2 | 800-2500 | 1/5 | 16m 6s |
-| [264](264/) | [Codeforces Round 162 (Div. 1)](https://codeforces.com/contest/264) | Div. 1 | 1500-2500 | 3/3 | 5m 27s |
 | [258](258/) | [Codeforces Round 157 (Div. 1)](https://codeforces.com/contest/258) | Div. 1 | 2000-2600 | 1/2 | 6m 43s |
 | [259](259/) | [Codeforces Round 157 (Div. 2)](https://codeforces.com/contest/259) | Div. 2 | 1000-1000 | 1/1 | 1m 8s |
 | [260](260/) | [Codeforces Round 158 (Div. 2)](https://codeforces.com/contest/260) | Div. 2 | 1400-2100 | 0/3 | 5m 48s |
@@ -584,8 +302,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [297](297/) | [Codeforces Round 180 (Div. 1)](https://codeforces.com/contest/297) | Div. 1 | 1600-3000 | 2/3 | 4m 3s |
 | [300](300/) | [Codeforces Round 181 (Div. 2)](https://codeforces.com/contest/300) | Div. 2 | 1500-2300 | 2/3 | 5m 24s |
 | [301](301/) | [Codeforces Round 182 (Div. 1)](https://codeforces.com/contest/301) | Div. 1 | 1800-2800 | 5/5 | 17m 11s |
-| [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 3m 30s |
-| [301](301/) | [Codeforces Round 182 (Div. 1)](https://codeforces.com/contest/301) | Div. 1 | 1800-2800 | 5/5 | 17m 11s |
 | [302](302/) | [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302) | Div. 2 | 800-1200 | 2/2 | 4m 57s |
 | [303](303/) | [Codeforces Round 183 (Div. 1)](https://codeforces.com/contest/303) | Div. 1 | 1300-3000 | 3/5 | 15m 59s |
 | [304](304/) | [Codeforces Round 183 (Div. 2)](https://codeforces.com/contest/304) | Div. 2 | 1200-1300 | 2/2 | 5m 19s |
@@ -597,7 +313,6 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [313](313/) | [Codeforces Round 186 (Div. 2)](https://codeforces.com/contest/313) | Div. 2 | 900-2300 | 1/3 | 5m 39s |
 | [314](314/) | [Codeforces Round 187 (Div. 1)](https://codeforces.com/contest/314) | Div. 1 | 2000-2900 | 2/3 | 6m 22s |
 | [315](315/) | [Codeforces Round 187 (Div. 2)](https://codeforces.com/contest/315) | Div. 2 | 1400-1400 | 1/1 | 1m 25s |
-| [316](316/) | [ABBYY Cup 3.0](https://codeforces.com/contest/316) | Special | 1100-2400 | 5/8 | 23m 17s |
 | [316](316/) | [ABBYY Cup 3.0](https://codeforces.com/contest/316) | Special | 1100-2400 | 6/12 | 30m 35s |
 | [317](317/) | [Codeforces Round 188 (Div. 1)](https://codeforces.com/contest/317) | Div. 1 | 2300-3100 | 3/3 | 5m 58s |
 | [319](319/) | [Codeforces Round 189 (Div. 1)](https://codeforces.com/contest/319) | Div. 1 | 2100-3000 | 1/2 | 4m 42s |
@@ -737,3 +452,4 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1966](1966/) | [Codeforces Round 941 (Div. 2)](https://codeforces.com/contest/1966) | Div. 2 | 800-1100 | 0/2 | 2m 20s |
 | [1967](1967/) | [Codeforces Round 942 (Div. 1)](https://codeforces.com/contest/1967) | Div. 1 | 1400-3500 | 1/8 | 10m 27s |
 | [1968](1968/) | [Codeforces Round 943 (Div. 3)](https://codeforces.com/contest/1968) | Div. 3 | 800-800 | 1/2 | 2m 13s |
+| [1972](1972/) | [Codeforces Round 942 (Div. 2)](https://codeforces.com/contest/1972) | Div. 2 | 900-900 | 0/1 | 5m 40s |
