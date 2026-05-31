@@ -10,41 +10,51 @@ draft: false
 
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
-| 3600 | [Maximize Spanning Tree Stability with Upgrades](3600.md) | 🔴 Hard | 46s | The problem asks us to construct a spanning tree from a weighted un… |
+| 3600 | [Maximize Spanning Tree Stability with Upgrades](3600.md) | 🔴 Hard | 5m 50s | This problem asks us to determine the maximum possible stability of… |
+| 3601 | [Find Drivers with Improved Fuel Efficiency](3601.md) | 🟡 Medium | 3m 7s | This problem asks final stage, preserving accuracy during computati… |
+| 3602 | [Hexadecimal and Hexatrigesimal Conversion](3602.md) | 🟢 Easy | 3m 37s | The numbers that still fit in standard integer types; the algorithm… |
 | 3604 | [Minimum Time to Reach Destination in Directed Graph](3604.md) | 🟡 Medium | 53s | This problem asks us to compute the minimum time required to reach … |
 | 3605 | [Minimum Stability Factor of Array](3605.md) | 🔴 Hard | 1m 53s | We are given an array nums and an integer maxC. A subarray is calle… |
 | 3606 | [Coupon Code Validator](3606.md) | 🟢 Easy | 51s | The problem is asking us to validate a set of coupons based on thre… |
 | 3607 | [Power Grid Maintenance](3607.md) | 🟡 Medium | 1m 26s | The problem gives an undirected graph of c power stations labeled f… |
+| 3608 | [Minimum Time for K Connected Components](3608.md) | 🟡 Medium | 1m 47s | We are given an undirected graph with n vertices and a list of edge… |
 | 3609 | [Minimum Moves to Reach Target in Grid](3609.md) | 🔴 Hard | 40s | The problem asks us to determine the minimum number of moves to rea… |
-| 3610 | [Minimum Number of Primes to Sum to Target](3610.md) | 🟡 Medium | 1m 5s | We are given two integers, n and m. The first task is to generate t… |
+| 3610 | [Minimum Number of Primes to Sum to Target](3610.md) | 🟡 Medium | 1m 25s | The problem requires us to determine the minimum number of prime nu… |
 | 3611 | [Find Overbooked Employees](3611.md) | 🟡 Medium | 1m 24s | This problem asks us to identify employees who spend an excessive a… |
 | 3612 | [Process String with Special Operations I](3612.md) | 🟡 Medium | 2m 2s | The problem asks us to simulate the construction of a string called… |
+| 3613 | [Minimize Maximum Component Cost](3613.md) | 🟡 Medium | 2m 49s | Let's dive into a full technical guide for LeetCode 3613 following … |
 | 3614 | [Process String with Special Operations II](3614.md) | 🔴 Hard | 1m 41s | The problem defines a transformation process over a string s that c… |
-| 3615 | [Longest Palindromic Path in Graph](3615.md) | 🔴 Hard | 2m 15s | We are given an undirected graph with n nodes. Each node has a lowe… |
-| 3616 | [Number of Student Replacements](3616.md) | 🟡 Medium | 1m 14s | The problem gives us an array ranks where students arrive one by on… |
+| 3615 | [Longest Palindromic Path in Graph](3615.md) | 🔴 Hard | 1m 52s | We are given an undirected graph with n ≤ 14 vertices. Each vertex … |
+| 3616 | [Number of Student Replacements](3616.md) | 🟡 Medium | 1m 50s | The problem models a simple selection process among students arrivi… |
 | 3617 | [Find Students with Study Spiral Pattern](3617.md) | 🔴 Hard | 1m 7s | The task asks us to identify students who exhibit a very specific b… |
 | 3618 | [Split Array by Prime Indices](3618.md) | 🟡 Medium | 1m 16s | The problem gives us an integer array nums and asks us to divide it… |
 | 3619 | [Count Islands With Total Value Divisible by K](3619.md) | 🟡 Medium | 50s | The problem is asking us to count islands in a 2D grid where the su… |
 | 3620 | [Network Recovery Pathways](3620.md) | 🔴 Hard | 2m | We are given a directed acyclic graph (DAG) with n nodes numbered f… |
-| 3621 | [Number of Integers With Popcount-Depth Equal to K I](3621.md) | 🔴 Hard | 1m 39s | The problem asks us to count integers in the range [1, n] whose pop… |
+| 3621 | [Number of Integers With Popcount-Depth Equal to K I](3621.md) | 🔴 Hard | 1m 33s | This problem asks us to count integers x in the range [1, n] such t… |
 | 3622 | [Check Divisibility by Digit Sum and Product](3622.md) | 🟢 Easy | 38s | The problem asks us to determine if a given positive integer n is d… |
 | 3625 | [Count Number of Trapezoids II](3625.md) | 🔴 Hard | 47s | The problem asks us to count the number of unique trapezoids that c… |
 | 3626 | [Find Stores with Inventory Imbalance](3626.md) | 🟡 Medium | 1m 23s | This problem asks us to identify stores with an inventory imbalance… |
+| 3628 | [Maximum Number of Subsequences After One Inserting](3628.md) | 🟡 Medium | 1m 59s | We are given a string consisting of uppercase English letters. From… |
+| 3629 | [Minimum Jumps to Reach End via Prime Teleportation](3629.md) | 🟡 Medium | 1m 48s | The problem gives an integer array nums of length n, where each ind… |
 | 3630 | [Partition Array for Maximum XOR and AND](3630.md) | 🔴 Hard | 50s | The problem asks us to partition an integer array nums into three s… |
+| 3631 | [Sort Threats by Severity and Exploitability](3631.md) | 🟡 Medium | 1m 27s | We are asked to sort a list of threats according to a computed scor… |
 | 3632 | [Subarrays with XOR at Least K](3632.md) | 🔴 Hard | 1m 41s | This problem asks us to count the number of contiguous subarrays of… |
-| 3633 | [Earliest Finish Time for Land and Water Rides I](3633.md) | 🟢 Easy | 1m 20s | The problem gives us two groups of rides: - Land rides, where each … |
-| 3634 | [Minimum Removals to Balance Array](3634.md) | 🟡 Medium | 1m 31s | We are given an array nums and an integer k. We may remove any numb… |
+| 3633 | [Earliest Finish Time for Land and Water Rides I](3633.md) | 🟢 Easy | 1m 44s | The problem asks us to determine the earliest possible time a touri… |
+| 3634 | [Minimum Removals to Balance Array](3634.md) | 🟡 Medium | 1m 36s | The problem asks us to transform a given integer array nums into a … |
 | 3635 | [Earliest Finish Time for Land and Water Rides II](3635.md) | 🟡 Medium | 56s | Great! We will cover LeetCode 3627 - Maximum Median Sum of Subseque… |
 | 3636 | [Threshold Majority Queries](3636.md) | 🔴 Hard | 2m 12s | The problem asks us to process multiple queries on a given array nu… |
+| 3637 | [Trionic Array I](3637.md) | 🟢 Easy | 2m 50s | We are given an integer array nums and need to determine whether it… |
 | 3638 | [Maximum Balanced Shipments](3638.md) | 🟡 Medium | 47s | We are given an array weight representing parcels arranged in a lin… |
-| 3639 | [Minimum Time to Activate String](3639.md) | 🟡 Medium | 44s | The problem requires determining the earliest moment at which a str… |
+| 3639 | [Minimum Time to Activate String](3639.md) | 🟡 Medium | 2m 11s | We are given a string s of length n and a permutation array order. … |
 | 3640 | [Trionic Array II](3640.md) | 🔴 Hard | 2m 53s | We are given an integer array nums, and we must find the maximum po… |
 | 3641 | [Longest Semi-Repeating Subarray](3641.md) | 🟡 Medium | 1m 32s | We are given an integer array nums and an integer k. A subarray is … |
 | 3642 | [Find Books with Polarized Opinions](3642.md) | 🟡 Medium | 44s | The problem asks us to identify books that exhibit polarized opinio… |
 | 3643 | [Flip Square Submatrix Vertically](3643.md) | 🟢 Easy | 1m 19s | This problem gives us an m x n matrix called grid and three integer… |
+| 3644 | [Maximum K to Sort a Permutation](3644.md) | 🟡 Medium | 11m 43s | LeetCode 3644: Maximum K to Sort a Permutation (Medium) |
 | 3646 | [Next Special Palindrome Number](3646.md) | 🔴 Hard | 54s | This problem asks us to construct a number system under two simulta… |
 | 3647 | [Maximum Weight in Two Bags](3647.md) | 🟡 Medium | 1m 2s | This problem asks us to distribute a set of items, each with a give… |
 | 3648 | [Minimum Sensors to Cover Grid](3648.md) | 🟡 Medium | 44s | The problem gives an n × m grid where each cell is identified by co… |
+| 3649 | [Number of Perfect Pairs](3649.md) | 🟡 Medium | 2m 53s | We are given an integer array nums and must count how many index pa… |
 | 3651 | [Minimum Cost Path with Teleportations](3651.md) | 🔴 Hard | 1m 7s | The problem asks us to find the minimum cost to travel from the top… |
 | 3652 | [Best Time to Buy and Sell Stock using Strategy](3652.md) | 🟡 Medium | 39s | This problem asks us to calculate the maximum possible profit from … |
 | 3653 | [XOR After Range Multiplication Queries I](3653.md) | 🟡 Medium | 2m 56s | We are given an integer array nums and a list of queries. Each quer… |
@@ -73,6 +83,7 @@ draft: false
 | 3684 | [Maximize Sum of At Most K Distinct Elements](3684.md) | 🟢 Easy | 32s | This problem requires selecting at most k distinct elements from a … |
 | 3685 | [Subsequence Sum After Capping Elements](3685.md) | 🟡 Medium | 1m 2s | Here is a complete, rigorous study companion-style solution guide f… |
 | 3686 | [Number of Stable Subsequences](3686.md) | 🔴 Hard | 36s | The problem asks us to count how many subsequences of a given integ… |
+| 3687 | [Library Late Fee Calculator](3687.md) | 🟢 Easy | 3m 49s | Below is,000. This value is well within the limits of standard inte… |
 | 3688 | [Bitwise OR of Even Numbers in an Array](3688.md) | 🟢 Easy | 1m 32s | This problem asks us to compute the bitwise OR of all even numbers … |
 | 3689 | [Maximum Total Subarray Value I](3689.md) | 🟡 Medium | 56s | The problem asks us to select exactly k non-empty subarrays from a … |
 | 3690 | [Split and Merge Array Transformation](3690.md) | 🟡 Medium | 1m 33s | The problem gives us two arrays, nums1 and nums2, of equal length n… |
@@ -85,22 +96,3 @@ draft: false
 | 3697 | [Compute Decimal Representation](3697.md) | 🟢 Easy | 31s | This problem asks us to decompose a positive integer n into the few… |
 | 3698 | [Split Array With Minimum Difference](3698.md) | 🟡 Medium | 42s | I can write the full detailed guide, but I need to flag one issue f… |
 | 3699 | [Number of ZigZag Arrays I](3699.md) | 🔴 Hard | 1m 48s | Here is the complete technical solution guide for LeetCode 3699 - N… |
-| 3601 | [Find Drivers with Improved Fuel Efficiency](3601.md) | 🟡 Medium | 3m 7s | This problem asks final stage, preserving accuracy during computati… |
-| 3602 | [Hexadecimal and Hexatrigesimal Conversion](3602.md) | 🟢 Easy | 3m 37s | The numbers that still fit in standard integer types; the algorithm… |
-| 3606 | [Coupon Code Validator](3606.md) | 🟢 Easy | 1m 56s | The problem asks us to filter and sort a list of coupons based on m… |
-| 3609 | [Minimum Moves to Reach Target in Grid](3609.md) | 🔴 Hard | 2m 19s | This problem describes an infinite 2D grid where you start from a p… |
-| 3614 | [Process String with Special Operations II](3614.md) | 🔴 Hard | 1m 43s | The problem asks us to simulate the transformation of a string s co… |
-| 3617 | [Find Students with Study Spiral Pattern](3617.md) | 🔴 Hard | 1m 48s | The problem asks us to identify students whose study behavior forms… |
-| 3622 | [Check Divisibility by Digit Sum and Product](3622.md) | 🟢 Easy | 1m 42s | This problem asks us to determine whether a given positive integer … |
-| 3628 | [Maximum Number of Subsequences After One Inserting](3628.md) | 🟡 Medium | 1m 59s | We are given a string consisting of uppercase English letters. From… |
-| 3629 | [Minimum Jumps to Reach End via Prime Teleportation](3629.md) | 🟡 Medium | 1m 48s | The problem gives an integer array nums of length n, where each ind… |
-| 3630 | [Partition Array for Maximum XOR and AND](3630.md) | 🔴 Hard | 3m 36s | You are given an array nums, no overflow when combining XOR and AND… |
-| 3637 | [Trionic Array I](3637.md) | 🟢 Easy | 2m 50s | We are given an integer array nums and need to determine whether it… |
-| 3638 | [Maximum Balanced Shipments](3638.md) | 🟡 Medium | 2m 5s | We are given an array weight, where weight[i] is the weight of the … |
-| 3643 | [Flip Square Submatrix Vertically](3643.md) | 🟢 Easy | 2m 6s | We are given an m × n matrix grid and three integers x, y, and k. T… |
-| 3644 | [Maximum K to Sort a Permutation](3644.md) | 🟡 Medium | 11m 43s | LeetCode 3644: Maximum K to Sort a Permutation (Medium) |
-| 3646 | [Next Special Palindrome Number](3646.md) | 🔴 Hard | 1m 57s | The problem asks us to find a special number strictly greater than … |
-| 3648 | [Minimum Sensors to Cover Grid](3648.md) | 🟡 Medium | 1m 45s | The problem requires finding the minimum number of sensors needed t… |
-| 3649 | [Number of Perfect Pairs](3649.md) | 🟡 Medium | 2m 53s | We are given an integer array nums and must count how many index pa… |
-| 3653 | [XOR After Range Multiplication Queries I](3653.md) | 🟡 Medium | 1m 53s | We are given an array nums and a list of queries. Each query has th… |
-| 3687 | [Library Late Fee Calculator](3687.md) | 🟢 Easy | 3m 49s | Below is,000. This value is well within the limits of standard inte… |
