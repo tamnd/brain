@@ -55,12 +55,12 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.3: 46/46 solved.
 | [35](35.md) |  [*HM20*] | hm-medium | verified | 45s |
 | [36](36.md) |  [*M23*] | math-medium | verified | 45s |
 | [37](37.md) | &#9654; [*M24*] | math-medium | verified | 33s |
-| [38](38.md) | &#9654; [*M25*] | math-medium | solved | 46s |
+| [38](38.md) | &#9654; [*M25*] | math-medium | verified | 5m11s |
 | [39](39.md) |  [*M23*] | math-medium | verified | 2m20s |
-| [40](40.md) |  [*M24*] | math-medium | solved | 42s |
-| [41](41.md) |  [*M26*] | math-hard | solved | 47s |
-| [42](42.md) |  [*M18*] | math-medium | solved | 23s |
-| [43](43.md) |  [*M24*] | math-medium | solved | 43s |
-| [44](44.md) | &#9654; [*M26*] | math-hard | solved | 49s |
-| [45](45.md) | &#9654; [*M25*] | math-medium | solved | 53s |
+| [40](40.md) |  [*M24*] | math-medium | verified | 5m58s |
+| [41](41.md) |  [*M26*] | math-hard | verified | 3m24s |
+| [42](42.md) |  [*M18*] | math-medium | verified | 35s |
+| [43](43.md) |  [*M24*] | math-medium | verified | 39s |
+| [44](44.md) | &#9654; [*M26*] | math-hard | verified | 3m29s |
+| [45](45.md) | &#9654; [*M25*] | math-medium | solved | 4m35s |
 | [46](46.md) | &#9654; [*M30*] | math-hard | solved | 2m26s |

@@ -18,8 +18,8 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.4: 46/46 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*00*] | immediate | solved | 29s |
-| [2](02.md) | &#9654; [*01*] | simple | solved | 31s |
+| [1](01.md) |  [*00*] | immediate | verified | 36s |
+| [2](02.md) | &#9654; [*01*] | simple | verified | 27s |
 | [3](03.md) |  [*M10*] | math-simple | solved | 27s |
 | [4](04.md) | &#9654; [*M10*] | math-simple | solved | 39s |
 | [5](05.md) |  [*16*] | medium | solved | 39s |
