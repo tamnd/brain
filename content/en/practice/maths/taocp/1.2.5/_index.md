@@ -26,12 +26,12 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.5: 17/18 solved.
 | [8](08.md) |  [**] |  | verified | 1m12s |
 | [9](09.md) |  [**] |  | verified | 3m35s |
 | 11 |  [**] |  | - | - |
-| [13](13.md) |  [**] |  | solved | 32s |
-| [15](15.md) |  [**] |  | solved | 55s |
-| [16](16.md) |  [**] |  | solved | 34s |
-| [17](17.md) |  [**] |  | solved | 40s |
+| [13](13.md) |  [**] |  | verified | 8m39s |
+| [15](15.md) |  [**] |  | verified | 2m56s |
+| [16](16.md) |  [**] |  | verified | 31s |
+| [17](17.md) |  [**] |  | verified | 2m36s |
 | [18](18.md) |  [**] |  | solved | 38s |
-| [19](19.md) |  [**] |  | solved | 41s |
+| [19](19.md) |  [**] |  | verified | 36s |
 | [20](20.md) |  [**] |  | solved | 29s |
 | [21](21.md) |  [**] |  | solved | 26s |
 | [23](23.md) |  [**] |  | solved | 39s |
