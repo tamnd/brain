@@ -49,6 +49,13 @@ draft: false
 | 2937 | [Make Three Strings Equal](2937.md) | 🟢 Easy | 1m 6s | The problem asks us to make three strings s1, s2, and s3 identical … |
 | 2938 | [Separate Black and White Balls](2938.md) | 🟡 Medium | 55s | The problem asks us to determine the minimum number of adjacent swa… |
 | 2939 | [Maximum Xor Product](2939.md) | 🟡 Medium | 59s | That will be quite long and detailed given your required structure … |
+| 2933 | [High-Access Employees](2933.md) | 🟡 Medium | 2m 22s | The problem gives us a list of employee access records. Each record… |
+| 2934 | [Minimum Operations to Maximize Last Elements in Arrays](2934.md) | 🟡 Medium | 1m 15s | The problem gives us two integer arrays, nums1 and nums2, both of t… |
+| 2935 | [Maximum Strong Pair XOR II](2935.md) | 🔴 Hard | 45s | The problem is asking us to find the maximum XOR value among all st… |
+| 2936 | [Number of Equal Numbers Blocks](2936.md) | 🟡 Medium | 45s | This problem asks us to count the number of contiguous blocks of eq… |
+| 2937 | [Make Three Strings Equal](2937.md) | 🟢 Easy | 1m | The problem gives us three strings, s1, s2, and s3. In one operatio… |
+| 2938 | [Separate Black and White Balls](2938.md) | 🟡 Medium | 41s | The problem asks us to rearrange a binary string representing balls… |
+| 2939 | [Maximum Xor Product](2939.md) | 🟡 Medium | 1m 14s | We are given three integers, a, b, and n. We must choose an integer… |
 | 2940 | [Find Building Where Alice and Bob Can Meet](2940.md) | 🔴 Hard | 1m 22s | You are given an array heights, where each index represents a build… |
 | 2941 | [Maximum GCD-Sum of a Subarray](2941.md) | 🔴 Hard | 1m 1s | The problem asks us to find the maximum gcd-sum of a subarray of a … |
 | 2942 | [Find Words Containing Character](2942.md) | 🟢 Easy | 57s | The problem asks us to process an array of lowercase strings words … |
@@ -89,6 +96,10 @@ draft: false
 | 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 31s | That is a very large, comprehensive request for a Hard problem, wit… |
 | 2978 | [Symmetric Coordinates](2978.md) | 🟡 Medium | 1m 8s | This problem asks us to identify symmetric coordinate pairs from a … |
 | 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 51s | This problem asks us to determine the largest price that cannot be … |
+| 2976 | [Minimum Cost to Convert String I](2976.md) | 🟡 Medium | 4m 51s | This problem asks us to transform one string into another while min… |
+| 2977 | [Minimum Cost to Convert String II](2977.md) | 🔴 Hard | 1m 37s | This problem asks us to transform one string into another while min… |
+| 2978 | [Symmetric Coordinates](2978.md) | 🟡 Medium | 51s | The problem asks us to identify symmetric coordinates from a table … |
+| 2979 | [Most Expensive Item That Can Not Be Bought](2979.md) | 🟡 Medium | 45s | This problem is asking us to determine the largest price of an item… |
 | 2980 | [Check if Bitwise OR Has Trailing Zeros](2980.md) | 🟢 Easy | 52s | The problem asks us to determine whether we can select two or more … |
 | 2981 | [Find Longest Special Substring That Occurs Thrice I](2981.md) | 🟡 Medium | 1m 21s | The problem asks us to find the longest special substring that appe… |
 | 2982 | [Find Longest Special Substring That Occurs Thrice II](2982.md) | 🟡 Medium | 1m 4s | The problem asks us to find the maximum length of a special substri… |
@@ -109,3 +120,7 @@ draft: false
 | 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](2997.md) | 🟡 Medium | 59s | This problem asks us to transform an array so that the bitwise XOR … |
 | 2998 | [Minimum Number of Operations to Make X and Y Equal](2998.md) | 🟡 Medium | 1m 3s | The problem asks us to transform an integer x into another integer … |
 | 2999 | [Count the Number of Powerful Integers](2999.md) | 🔴 Hard | 43s | The problem asks us to count all integers within a given range [sta… |
+| 2995 | [Viewers Turned Streamers](2995.md) | 🔴 Hard | 46s | This problem involves analyzing a database table Sessions that reco… |
+| 2997 | [Minimum Number of Operations to Make Array XOR Equal to K](2997.md) | 🟡 Medium | 47s | This problem asks us to determine the minimum number of bit flips r… |
+| 2998 | [Minimum Number of Operations to Make X and Y Equal](2998.md) | 🟡 Medium | 1m 32s | This problem gives us two positive integers, x and y, and asks for … |
+| 2999 | [Count the Number of Powerful Integers](2999.md) | 🔴 Hard | 1m 5s | The problem asks us to count all integers in a given range [start, … |

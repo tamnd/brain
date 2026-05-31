@@ -109,3 +109,11 @@ draft: false
 | 3197 | [Find the Minimum Area to Cover All Ones II](3197.md) | 🔴 Hard | 1m 31s | The problem gives us a binary matrix grid, where each cell contains… |
 | 3198 | [Find Cities in Each State](3198.md) | 🟢 Easy | 1m 31s | This problem provides a database table named cities, where each row… |
 | 3199 | [Count Triplets with Even XOR Set Bits I](3199.md) | 🟢 Easy | 1m 18s | The problem gives us three integer arrays, a, b, and c. We must cou… |
+| 3108 | [Minimum Cost Walk in Weighted Graph](3108.md) | 🔴 Hard | 1m 48s | The problem gives us an undirected weighted graph with n nodes and … |
+| 3119 | [Maximum Number of Potholes That Can Be Fixed](3119.md) | 🟡 Medium | 1m 30s | The problem gives a binary string road consisting of characters 'x'… |
+| 3135 | [Equalize Strings by Adding or Removing Characters at Ends](3135.md) | 🟡 Medium | 7m 1s | The problem asks us to transform one string, initial, into another … |
+| 3151 | [Special Array I](3151.md) | 🟢 Easy | 3m 55s | The problem asks us to determine whether an array of integers is sp… |
+| 3176 | [Find the Maximum Length of a Good Subsequence I](3176.md) | 🟡 Medium | 1m 11s | Let's carefully build a complete technical solution guide for LeetC… |
+| 3183 | [The Number of Ways to Make the Sum](3183.md) | 🟡 Medium | 1m 44s | The problem asks us to count how many distinct combinations of coin… |
+| 3188 | [Find Top Scoring Students II](3188.md) | 🔴 Hard | 4m 20s | This problem asks us to identify students who satisfy a fairly stri… |
+| 3191 | [Minimum Operations to Make Binary Array Elements Equal to One I](3191.md) | 🟡 Medium | 1m 33s | We are given a binary array nums consisting only of 0s and 1s. We a… |

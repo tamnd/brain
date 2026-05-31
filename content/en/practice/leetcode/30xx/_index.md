@@ -37,6 +37,22 @@ draft: false
 | 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 8s | The problem gives an integer array nums of length 3, where each val… |
 | 3026 | [Maximum Good Subarray Sum](3026.md) | 🟡 Medium | 1m 21s | The problem asks us to find the maximum possible sum of a contiguou… |
 | 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 1m | The problem asks us to determine how many valid placements of Alice… |
+| 3000 | [Maximum Area of Longest Diagonal Rectangle](3000.md) | 🟢 Easy | 41s | The problem asks us to find the area of a rectangle with the longes… |
+| 3001 | [Minimum Moves to Capture The Queen](3001.md) | 🟡 Medium | 1m 11s | The previous construction failed because adding a small geometric p… |
+| 3003 | [Maximize the Number of Partitions After Operations](3003.md) | 🔴 Hard | 1m 21s | The problem gives us a string s and an integer k. We repeatedly par… |
+| 3007 | [Maximum Number That Sum of the Prices Is Less Than or Equal to K](3007.md) | 🟡 Medium | 1m 15s | This problem defines a special "price" for every integer based on i… |
+| 3008 | [Find Beautiful Indices in the Given Array II](3008.md) | 🔴 Hard | 1m 24s | The problem gives us a string s and two pattern strings, a and b. W… |
+| 3012 | [Minimize Length of Array Using Operations](3012.md) | 🟡 Medium | 1m 14s | The problem gives us an array of positive integers and allows us to… |
+| 3013 | [Divide an Array Into Subarrays With Minimum Cost II](3013.md) | 🔴 Hard | 1m 33s | We are given an array nums, along with two integers k and dist. We … |
+| 3016 | [Minimum Number of Pushes to Type Word II](3016.md) | 🟡 Medium | 52s | The problem asks us to minimize the total number of key presses req… |
+| 3017 | [Count the Number of Houses at a Certain Distance II](3017.md) | 🔴 Hard | 48s | We are asked to count pairs of houses in a city where the distance … |
+| 3018 | [Maximum Number of Removal Queries That Can Be Processed I](3018.md) | 🔴 Hard | 1m 16s | The problem asks us to simulate a sequence of removal operations on… |
+| 3019 | [Number of Changing Keys](3019.md) | 🟢 Easy | 1m 10s | The problem gives us a string s representing keys typed by a user. … |
+| 3021 | [Alice and Bob Playing Flower Game](3021.md) | 🟡 Medium | 1m 20s | The problem describes a turn-based game involving two lanes of flow… |
+| 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums of length 3, where each … |
+| 3025 | [Find the Number of Ways to Place People I](3025.md) | 🟡 Medium | 1m 50s | The problem gives us a list of distinct points on a 2D plane. Each … |
+| 3026 | [Maximum Good Subarray Sum](3026.md) | 🟡 Medium | 1m 18s | We are given an integer array nums and a positive integer k. A suba… |
+| 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 52s | The problem asks us to count the number of valid pairs of points wh… |
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
 | 3029 | [Minimum Time to Revert Word to Initial State I](3029.md) | 🟡 Medium | 1m 29s | The problem gives us a string word and an integer k. Every second, … |
 | 3030 | [Find the Grid of Region Average](3030.md) | 🟡 Medium | 1m 44s | The problem gives us a grayscale image represented as an m x n matr… |
@@ -84,6 +100,7 @@ draft: false
 | 3072 | [Distribute Elements Into Two Arrays II](3072.md) | 🔴 Hard | 55s | This problem requires simulating the distribution of elements from … |
 | 3073 | [Maximum Increasing Triplet Value](3073.md) | 🟡 Medium | 1m 17s | We are given an integer array nums, and we must find three indices … |
 | 3074 | [Apple Redistribution into Boxes](3074.md) | 🟢 Easy | 42s | The problem asks us to redistribute a collection of apple packs int… |
+| 3074 | [Apple Redistribution into Boxes](3074.md) | 🟢 Easy | 1m 4s | The problem asks us to redistribute a set of apple packs into boxes… |
 | 3075 | [Maximize Happiness of Selected Children](3075.md) | 🟡 Medium | 51s | The problem gives us an array happiness representing the happiness … |
 | 3076 | [Shortest Uncommon Substring in an Array](3076.md) | 🟡 Medium | 53s | The problem asks us to find, for each string in a given array, the … |
 | 3077 | [Maximum Strength of K Disjoint Subarrays](3077.md) | 🔴 Hard | 1m 10s | The problem is asking us to select exactly k disjoint subarrays fro… |

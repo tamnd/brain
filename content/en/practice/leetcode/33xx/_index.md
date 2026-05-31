@@ -108,3 +108,10 @@ draft: false
 | 3397 | [Maximum Number of Distinct Elements After Operations](3397.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of distinct elements in … |
 | 3398 | [Smallest Substring With Identical Characters I](3398.md) | 🔴 Hard | 55s | The problem gives us a binary string s consisting of only '0' and '… |
 | 3399 | [Smallest Substring With Identical Characters II](3399.md) | 🔴 Hard | 1m 15s | We are given a binary string s consisting only of '0' and '1', alon… |
+| 3313 | [Find the Last Marked Nodes in Tree](3313.md) | 🔴 Hard | 1m 33s | We are given an undirected tree with n nodes labeled from 0 to n - … |
+| 3333 | [Find the Original Typed String II](3333.md) | 🔴 Hard | 4m 4s | The problem describes a typing mistake where Alice may accidentally… |
+| 3335 | [Total Characters in String After Transformations I](3335.md) | 🟡 Medium | 1m 20s | The problem asks us to simulate repeated string transformations, bu… |
+| 3360 | [Stone Removal Game](3360.md) | 🟢 Easy | 1m 56s | This problem describes a two-player deterministic game between Alic… |
+| 3372 | [Maximize the Number of Target Nodes After Connecting Trees I](3372.md) | 🟡 Medium | 4m 17s | This problem gives us two separate undirected trees. The first tree… |
+| 3375 | [Minimum Operations to Make Array Values Equal to K](3375.md) | 🟢 Easy | 1m 15s | We are given an array nums and a target value k. An operation works… |
+| 3399 | [Smallest Substring With Identical Characters II](3399.md) | 🔴 Hard | 2m 48s | We are given a binary string s and an integer numOps. Each operatio… |

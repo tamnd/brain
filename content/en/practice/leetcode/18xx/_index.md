@@ -62,6 +62,11 @@ draft: false
 | 1849 | [Splitting a String Into Descending Consecutive Values](1849.md) | 🟡 Medium | 1m 52s | The problem gives us a numeric string s and asks whether it can be … |
 | 1850 | [Minimum Adjacent Swaps to Reach the Kth Smallest Number](1850.md) | 🟡 Medium | 48s | The problem asks us to compute the minimum number of adjacent swaps… |
 | 1851 | [Minimum Interval to Include Each Query](1851.md) | 🔴 Hard | 1m 28s | The problem gives us a collection of inclusive integer intervals an… |
+| 1847 | [Closest Room](1847.md) | 🔴 Hard | 2m 10s | The problem gives us a collection of hotel rooms, where each room h… |
+| 1848 | [Minimum Distance to the Target Element](1848.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums, a value called target, … |
+| 1849 | [Splitting a String Into Descending Consecutive Values](1849.md) | 🟡 Medium | 1m 52s | The problem gives us a numeric string s and asks whether it can be … |
+| 1850 | [Minimum Adjacent Swaps to Reach the Kth Smallest Number](1850.md) | 🟡 Medium | 48s | The problem asks us to compute the minimum number of adjacent swaps… |
+| 1851 | [Minimum Interval to Include Each Query](1851.md) | 🔴 Hard | 1m 18s | This problem asks us to answer multiple range queries efficiently o… |
 | 1852 | [Distinct Numbers in Each Subarray](1852.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and an integer k. For ev… |
 | 1853 | [Convert Date Format](1853.md) | 🟢 Easy | 1m 24s | The problem provides a database table named Days with a single colu… |
 | 1854 | [Maximum Population Year](1854.md) | 🟢 Easy | 46s | The problem asks us to determine the year with the highest populati… |
@@ -78,6 +83,7 @@ draft: false
 | 1865 | [Finding Pairs With a Certain Sum](1865.md) | 🟡 Medium | 1m 9s | This problem asks us to design a mutable data structure that suppor… |
 | 1866 | [Number of Ways to Rearrange Sticks With K Sticks Visible](1866.md) | 🔴 Hard | 1m 17s | The problem gives us n sticks with unique lengths from 1 to n. We m… |
 | 1867 | [Orders With Maximum Quantity Above Average](1867.md) | 🟡 Medium | 45s | The problem asks us to identify "imbalanced orders" from an OrdersD… |
+| 1867 | [Orders With Maximum Quantity Above Average](1867.md) | 🟡 Medium | 1m 11s | The problem provides a relational table OrdersDetails where each ro… |
 | 1868 | [Product of Two Run-Length Encoded Arrays](1868.md) | 🟡 Medium | 1m 28s | This problem asks us to multiply two arrays that are already stored… |
 | 1869 | [Longer Contiguous Segments of Ones than Zeros](1869.md) | 🟢 Easy | 1m 17s | The problem gives us a binary string s, which means the string cont… |
 | 1870 | [Minimum Speed to Arrive on Time](1870.md) | 🟡 Medium | 2m 22s | The problem asks us to find the minimum constant speed (in kilomete… |
@@ -91,6 +97,7 @@ draft: false
 | 1878 | [Get Biggest Three Rhombus Sums in a Grid](1878.md) | 🟡 Medium | 45s | The problem asks us to compute the largest three distinct rhombus s… |
 | 1879 | [Minimum XOR Sum of Two Arrays](1879.md) | 🔴 Hard | 57s | The problem asks us to take two integer arrays of equal length, num… |
 | 1880 | [Check if Word Equals Summation of Two Words](1880.md) | 🟢 Easy | 1m 6s | The problem asks us to determine if the sum of the numerical values… |
+| 1880 | [Check if Word Equals Summation of Two Words](1880.md) | 🟢 Easy | 2m 13s | The problem defines a custom way to convert a word into a number. E… |
 | 1881 | [Maximum Value after Insertion](1881.md) | 🟡 Medium | 1m 7s | This problem asks us to insert a single digit x into a very large i… |
 | 1882 | [Process Tasks Using Servers](1882.md) | 🟡 Medium | 1m 38s | This problem asks us to simulate a task scheduling system with two … |
 | 1883 | [Minimum Skips to Arrive at Meeting On Time](1883.md) | 🔴 Hard | 2m 22s | You are given a sequence of roads that must be traveled in order. E… |

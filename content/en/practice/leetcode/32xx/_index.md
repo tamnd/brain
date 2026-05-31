@@ -110,3 +110,7 @@ draft: false
 | 3297 | [Count Substrings That Can Be Rearranged to Contain a String I](3297.md) | 🟡 Medium | 1m 47s | We are given two lowercase strings, word1 and word2. A substring of… |
 | 3298 | [Count Substrings That Can Be Rearranged to Contain a String II](3298.md) | 🔴 Hard | 1m 32s | We are given two strings, word1 and word2. We need to count how man… |
 | 3299 | [Sum of Consecutive Subsequences](3299.md) | 🔴 Hard | 1m 44s | We are given an array nums, and we must consider all non-empty subs… |
+| 3206 | [Alternating Groups I](3206.md) | 🟢 Easy | 1m 13s | The problem describes a circular arrangement of tiles, where each t… |
+| 3224 | [Minimum Array Changes to Make Differences Equal](3224.md) | 🟡 Medium | 1m 18s | The problem gives an even-length integer array nums and an integer … |
+| 3260 | [Find the Largest Palindrome Divisible by K](3260.md) | 🔴 Hard | 1m 42s | The problem asks us to find the largest n-digit integer that is a p… |
+| 3270 | [Find the Key of the Numbers](3270.md) | 🟢 Easy | 2m 7s | The problem is asking us to find a “key” for three positive integer… |

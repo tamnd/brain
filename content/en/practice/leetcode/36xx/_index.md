@@ -85,3 +85,22 @@ draft: false
 | 3697 | [Compute Decimal Representation](3697.md) | 🟢 Easy | 31s | This problem asks us to decompose a positive integer n into the few… |
 | 3698 | [Split Array With Minimum Difference](3698.md) | 🟡 Medium | 42s | I can write the full detailed guide, but I need to flag one issue f… |
 | 3699 | [Number of ZigZag Arrays I](3699.md) | 🔴 Hard | 1m 48s | Here is the complete technical solution guide for LeetCode 3699 - N… |
+| 3601 | [Find Drivers with Improved Fuel Efficiency](3601.md) | 🟡 Medium | 3m 7s | This problem asks final stage, preserving accuracy during computati… |
+| 3602 | [Hexadecimal and Hexatrigesimal Conversion](3602.md) | 🟢 Easy | 3m 37s | The numbers that still fit in standard integer types; the algorithm… |
+| 3606 | [Coupon Code Validator](3606.md) | 🟢 Easy | 1m 56s | The problem asks us to filter and sort a list of coupons based on m… |
+| 3609 | [Minimum Moves to Reach Target in Grid](3609.md) | 🔴 Hard | 2m 19s | This problem describes an infinite 2D grid where you start from a p… |
+| 3614 | [Process String with Special Operations II](3614.md) | 🔴 Hard | 1m 43s | The problem asks us to simulate the transformation of a string s co… |
+| 3617 | [Find Students with Study Spiral Pattern](3617.md) | 🔴 Hard | 1m 48s | The problem asks us to identify students whose study behavior forms… |
+| 3622 | [Check Divisibility by Digit Sum and Product](3622.md) | 🟢 Easy | 1m 42s | This problem asks us to determine whether a given positive integer … |
+| 3628 | [Maximum Number of Subsequences After One Inserting](3628.md) | 🟡 Medium | 1m 59s | We are given a string consisting of uppercase English letters. From… |
+| 3629 | [Minimum Jumps to Reach End via Prime Teleportation](3629.md) | 🟡 Medium | 1m 48s | The problem gives an integer array nums of length n, where each ind… |
+| 3630 | [Partition Array for Maximum XOR and AND](3630.md) | 🔴 Hard | 3m 36s | You are given an array nums, no overflow when combining XOR and AND… |
+| 3637 | [Trionic Array I](3637.md) | 🟢 Easy | 2m 50s | We are given an integer array nums and need to determine whether it… |
+| 3638 | [Maximum Balanced Shipments](3638.md) | 🟡 Medium | 2m 5s | We are given an array weight, where weight[i] is the weight of the … |
+| 3643 | [Flip Square Submatrix Vertically](3643.md) | 🟢 Easy | 2m 6s | We are given an m × n matrix grid and three integers x, y, and k. T… |
+| 3644 | [Maximum K to Sort a Permutation](3644.md) | 🟡 Medium | 11m 43s | LeetCode 3644: Maximum K to Sort a Permutation (Medium) |
+| 3646 | [Next Special Palindrome Number](3646.md) | 🔴 Hard | 1m 57s | The problem asks us to find a special number strictly greater than … |
+| 3648 | [Minimum Sensors to Cover Grid](3648.md) | 🟡 Medium | 1m 45s | The problem requires finding the minimum number of sensors needed t… |
+| 3649 | [Number of Perfect Pairs](3649.md) | 🟡 Medium | 2m 53s | We are given an integer array nums and must count how many index pa… |
+| 3653 | [XOR After Range Multiplication Queries I](3653.md) | 🟡 Medium | 1m 53s | We are given an array nums and a list of queries. Each query has th… |
+| 3687 | [Library Late Fee Calculator](3687.md) | 🟢 Easy | 3m 49s | Below is,000. This value is well within the limits of standard inte… |

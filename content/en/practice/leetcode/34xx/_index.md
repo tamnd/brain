@@ -95,3 +95,43 @@ draft: false
 | 3497 | [Analyze Subscription Conversion ](3497.md) | 🟡 Medium | 57s | This is a SQL aggregation problem where we need to analyze user sub… |
 | 3498 | [Reverse Degree of a String](3498.md) | 🟢 Easy | 1m 2s | The problem asks us to compute a special value called the reverse d… |
 | 3499 | [Maximize Active Section with Trade I](3499.md) | 🟡 Medium | 45s | The problem gives a binary string s representing sections of a syst… |
+| 3401 | [Find Circular Gift Exchange Chains](3401.md) | 🔴 Hard | 1m 31s | This is a SQL graph problem. Each row in SecretSanta represents a d… |
+| 3402 | [Minimum Operations to Make Columns Strictly Increasing](3402.md) | 🟢 Easy | 3m 6s | Problem Understanding the current value is greater than the one abo… |
+| 3403 | [Find the Lexicographically Largest String From the Box I](3403.md) | 🟡 Medium | 6m 23s | This problem asks us to simulate a game where a string word is spli… |
+| 3404 | [Count Special Subsequences](3404.md) | 🟡 Medium | 1m 31s | This problem asks us to count the number of special subsequences of… |
+| 3405 | [Count the Number of Arrays with K Matching Adjacent Elements](3405.md) | 🔴 Hard | 3m 16s | This problem asks us to count how many arrays of length n can be fo… |
+| 3406 | [Find the Lexicographically Largest String From the Box II](3406.md) | 🔴 Hard | 1m 59s | This problem is asking us to determine the lexicographically larges… |
+| 3407 | [Substring Matching Pattern](3407.md) | 🟢 Easy | 3m 27s | The problem is asking whether a given pattern string p, which conta… |
+| 3408 | [Design Task Manager](3408.md) | 🟡 Medium | 12m 17s | LeetCode 3408: Design Task Manager (Medium) |
+| 3410 | [Maximize Subarray Sum After Removing All Occurrences of One Element](3410.md) | 🔴 Hard | 1m 33s | We are given an integer array nums. We may perform at most one oper… |
+| 3414 | [Maximum Score of Non-overlapping Intervals](3414.md) | 🔴 Hard | 1m 40s | Let's carefully go step by step and create a full technical solutio… |
+| 3415 | [Find Products with Three Consecutive Digits ](3415.md) | 🟢 Easy | 2m 6s | The problem asks us to query a database table of products and find … |
+| 3418 | [Maximum Amount of Money Robot Can Earn](3418.md) | 🟡 Medium | 1m 52s | We are given an m x n grid coins, where each cell contributes eithe… |
+| 3422 | [Minimum Operations to Make Subarray Elements Equal](3422.md) | 🟡 Medium | 1m 39s | The problem asks us to determine the minimum number of operations r… |
+| 3423 | [Maximum Difference Between Adjacent Elements in a Circular Array](3423.md) | 🟢 Easy | 3m 29s | The problem gives us a circular integer array nums and asks us to c… |
+| 3425 | [Longest Special Path](3425.md) | 🔴 Hard | 3m 24s | The problem asks us to find a longest special path in an undirected… |
+| 3428 | [Maximum and Minimum Sums of at Most Size K Subsequences](3428.md) | 🟡 Medium | 1m 59s | We are given an array nums and an integer k. A subsequence is obtai… |
+| 3432 | [Count Partitions with Even Sum Difference](3432.md) | 🟢 Easy | 2m 43s | The problem gives us an integer array nums and asks us to count how… |
+| 3433 | [Count Mentions Per User](3433.md) | 🟡 Medium | 1m 44s | The problem asks us to track how many times each user is mentioned … |
+| 3435 | [Frequencies of Shortest Supersequences](3435.md) | 🔴 Hard | 3m 32s | Each input string has length exactly two. Therefore every word impo… |
+| 3436 | [Find Valid Emails](3436.md) | 🟢 Easy | 2m 8s | This is a SQL database problem. We are given a table Users containi… |
+| 3439 | [Reschedule Meetings for Maximum Free Time I](3439.md) | 🟡 Medium | 1m 25s | The problem asks us to find the maximum continuous free time during… |
+| 3444 | [Minimum Increments for Target Multiples in an Array](3444.md) | 🔴 Hard | 1m 19s | The problem asks us to determine the minimum number of increment op… |
+| 3454 | [Separate Squares II](3454.md) | 🔴 Hard | 1m 31s | Here’s a fully detailed technical solution guide for LeetCode 3454 … |
+| 3455 | [Shortest Matching Substring](3455.md) | 🔴 Hard | 1m 4s | This problem asks us to find the length of the shortest substring i… |
+| 3458 | [Select K Disjoint Special Substrings](3458.md) | 🟡 Medium | 2m 22s | We arek = 3 Intervals: Greedy selection gives maximum count = 2 < k… |
+| 3466 | [Maximum Coin Collection ](3466.md) | 🟡 Medium | 2m 9s | We are given two arrays, lane1 and lane2, of equal length. Each ind… |
+| 3469 | [Find Minimum Cost to Remove Array Elements](3469.md) | 🟡 Medium | 2m 10s | You are given an array nums, and you must remove all of its element… |
+| 3472 | [Longest Palindromic Subsequence After at Most K Operations](3472.md) | 🟡 Medium | 2m 16s | We are given a lowercase string s and an integer k. A single operat… |
+| 3480 | [Maximize Subarrays After Removing One Conflicting Pair](3480.md) | 🔴 Hard | 1m 55s | We are given an array: and a list of conflicting pairs. A conflicti… |
+| 3482 | [Analyze Organization Hierarchy](3482.md) | 🔴 Hard | 2m 31s | This is a database problem that requires analyzing a hierarchical e… |
+| 3490 | [Count Beautiful Numbers](3490.md) | 🔴 Hard | 2m 40s | We are given two integers l and r, and we must count how many integ… |
+| 3491 | [Phone Number Prefix](3491.md) | 🟢 Easy | 2m 43s | The problem provides numbers are completely unrelated. |
+| 3492 | [Maximum Containers on a Ship](3492.md) | 🟢 Easy | 1m 18s | This problem asks us to determine the maximum number of containers … |
+| 3493 | [Properties Graph](3493.md) | 🟡 Medium | 2m 53s | We are given the algorithm naturally returns 1 when n = 1. |
+| 3494 | [Find the Minimum Amount of Time to Brew Potions](3494.md) | 🟡 Medium | 1m 37s | We are given two arrays: - skill[i] represents the skill level of t… |
+| 3495 | [Minimum Operations to Make Array Elements Zero](3495.md) | 🔴 Hard | 1m 20s | The problem presents a sequence of queries, each defining a contigu… |
+| 3496 | [Maximize Score After Pair Deletions](3496.md) | 🟡 Medium | 1m 14s | The problem presents an array of integers nums and asks us to perfo… |
+| 3497 | [Analyze Subscription Conversion ](3497.md) | 🟡 Medium | 1m 41s | This is a SQL database problem where we need to analyze user subscr… |
+| 3498 | [Reverse Degree of a String](3498.md) | 🟢 Easy | 1m 5s | The problem asks us to compute the reverse degree of a string s. In… |
+| 3499 | [Maximize Active Section with Trade I](3499.md) | 🟡 Medium | 1m 4s | The problem asks us to maximize the number of active sections in a … |

@@ -98,6 +98,7 @@ draft: false
 | 2385 | [Amount of Time for Binary Tree to Be Infected](2385.md) | 🟡 Medium | 41s | This problem asks us to model the spread of an infection across a b… |
 | 2386 | [Find the K-Sum of an Array](2386.md) | 🔴 Hard | 27s | That is a long, structured reference document with multiple section… |
 | 2387 | [Median of a Row Wise Sorted Matrix](2387.md) | 🟡 Medium | 1m 25s | We are given an m × n matrix grid where every row is already sorted… |
+| 2387 | [Median of a Row Wise Sorted Matrix](2387.md) | 🟡 Medium | 1m 55s | The problem gives us an m x n matrix where every individual row is … |
 | 2388 | [Change Null Values in a Table to the Previous Value](2388.md) | 🟡 Medium | 41s | The problem asks us to process a database table, CoffeeShop, which … |
 | 2389 | [Longest Subsequence With Limited Sum](2389.md) | 🟢 Easy | 42s | This problem asks us to determine, for each query, the maximum numb… |
 | 2390 | [Removing Stars From a String](2390.md) | 🟡 Medium | 53s | This problem asks us to repeatedly process a string that contains l… |
