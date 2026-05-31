@@ -18,14 +18,14 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.6: 68/68 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*00*] | immediate | solved | 36s |
-| [2](02.md) |  [*00*] | immediate | solved | 26s |
-| [3](03.md) |  [*00*] | immediate | solved | 37s |
+| [1](01.md) |  [*00*] | immediate | verified | 38s |
+| [2](02.md) |  [*00*] | immediate | verified | 1m58s |
+| [3](03.md) |  [*00*] | immediate | solved | 1m25s |
 | [4](04.md) |  [*10*] | simple | solved | 29s |
-| [5](05.md) |  [*05*] | simple | solved | 44s |
-| [6](06.md) |  [*10*] | simple | solved | 38s |
-| [7](07.md) |  [*12*] | simple | solved | 33s |
-| [8](08.md) |  [*00*] | immediate | solved | 34s |
+| [5](05.md) |  [*05*] | simple | verified | 41s |
+| [6](06.md) |  [*10*] | simple | verified | 41s |
+| [7](07.md) |  [*12*] | simple | verified | 37s |
+| [8](08.md) |  [*00*] | immediate | verified | 35s |
 | [9](09.md) |  [*01*] | simple | solved | 34s |
 | [10](10.md) |  [*M25*] | math-medium | solved | 54s |
 | [11](11.md) |  [*M20*] | math-medium | solved | 33s |

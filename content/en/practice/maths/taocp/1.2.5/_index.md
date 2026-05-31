@@ -30,9 +30,9 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.5: 17/18 solved.
 | [15](15.md) |  [**] |  | verified | 2m56s |
 | [16](16.md) |  [**] |  | verified | 31s |
 | [17](17.md) |  [**] |  | verified | 2m36s |
-| [18](18.md) |  [**] |  | solved | 38s |
+| [18](18.md) |  [**] |  | solved | 7m04s |
 | [19](19.md) |  [**] |  | verified | 36s |
-| [20](20.md) |  [**] |  | solved | 29s |
-| [21](21.md) |  [**] |  | solved | 26s |
-| [23](23.md) |  [**] |  | solved | 39s |
-| [25](25.md) |  [**] |  | solved | 26s |
+| [20](20.md) |  [**] |  | verified | 2m30s |
+| [21](21.md) |  [**] |  | verified | 2m26s |
+| [23](23.md) |  [**] |  | verified | 36s |
+| [25](25.md) |  [**] |  | verified | 39s |
