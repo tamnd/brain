@@ -54,7 +54,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.4: 46/46 solved.
 | [34](34.md) | &#9654; [*M21*] | math-medium | solved | 4m59s |
 | [35](35.md) | &#9654; [*M20*] | math-medium | verified | 1m18s |
 | [36](36.md) |  [*M23*] | math-medium | verified | 45s |
-| [37](37.md) | &#9654; [*M30*] | math-hard | solved | 57s |
+| [37](37.md) | &#9654; [*M30*] | math-hard | verified | 11m54s |
 | [38](38.md) |  [*M26*] | math-hard | solved | 48s |
 | [39](39.md) |  [*HM35*] | hm-hard | solved | 5m26s |
 | [40](40.md) |  [*HM46*] | hm-research | solved | 53s |
