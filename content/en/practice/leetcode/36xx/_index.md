@@ -70,9 +70,10 @@ draft: false
 | 3665 | [Twisted Mirror Path Count](3665.md) | 🟡 Medium | 1m 10s | This problem asks us to count all unique paths from the top-left co… |
 | 3667 | [Sort Array By Absolute Value](3667.md) | 🟢 Easy | 2m 12s | The problem asks us to reorder an integer array such that the eleme… |
 | 3668 | [Restore Finishing Order](3668.md) | 🟢 Easy | 1m 32s | This problem gives us two arrays: - order, which represents the fin… |
-| 3671 | [Sum of Beautiful Subsequences](3671.md) | 🔴 Hard | 1m 40s | The problem asks us to calculate the sum of "beauty" values for all… |
+| 3669 | [Balanced K-Factor Decomposition](3669.md) | 🟡 Medium | 3m 9s | We are given two integers, n and k. Our goal is to split n into exa… |
+| 3671 | [Sum of Beautiful Subsequences](3671.md) | 🔴 Hard | 3m 48s | Let a subsequence of nums be any sequence multiples. citeturn0searc… |
 | 3674 | [Minimum Operations to Equalize Array](3674.md) | 🟢 Easy | 51s | Let's go step by step and produce a fully detailed, reference-style… |
-| 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 54s | The problem gives a string s consisting of lowercase English letter… |
+| 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 2m 25s | We are given a string s consisting of lowercase English letters. An… |
 | 3676 | [Count Bowl Subarrays](3676.md) | 🟡 Medium | 54s | The problem asks us to count how many subarrays in an array of dist… |
 | 3677 | [Count Binary Palindromic Numbers](3677.md) | 🔴 Hard | 1m 9s | We are given a non-negative integer n and asked to count how many i… |
 | 3679 | [ Minimum Discards to Balance Inventory](3679.md) | 🟡 Medium | 1m 20s | This problem models a stream of arriving items. On each day, exactl… |
