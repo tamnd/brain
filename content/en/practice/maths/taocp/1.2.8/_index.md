@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.8 — Fibonacci Numbers"
-description: "Section 1.2.8 exercises — 12/42 solved."
+description: "Section 1.2.8 exercises — 19/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.8"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.8. Fibonacci Numbers
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.8: 12/42 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.8: 19/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -23,24 +23,24 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.8: 12/42 solved.
 | [3](03.md) |  [*25*] | medium | solved | 41s |
 | [4](04.md) |  [*14*] | simple | verified | 38s |
 | [5](05.md) |  [*20*] | medium | solved | 36s |
-| 6 |  [*HM10*] | hm-simple | - | - |
+| [6](06.md) |  [*HM10*] | hm-simple | verified | 36s |
 | [7](07.md) |  [*15*] | simple | solved | 33s |
 | [8](08.md) |  [*15*] | simple | solved | 22s |
 | [9](09.md) |  [*M20*] | math-medium | solved | 49s |
 | [10](10.md) |  [*15*] | simple | solved | 29s |
-| 11 |  [*M20*] | math-medium | - | - |
+| [11](11.md) |  [*M20*] | math-medium | verified | 42s |
 | [12](12.md) |  [*M26*] | math-hard | solved | 45s |
 | [13](13.md) |  [*M22*] | math-medium | solved | 42s |
-| 14 |  [*M28*] | math-hard | - | - |
+| [14](14.md) |  [*M28*] | math-hard | verified | 54s |
 | [15](15.md) |  [*M22*] | math-medium | solved | 34s |
-| 16 |  [*M20*] | math-medium | - | - |
-| 17 |  [*M24*] | math-medium | - | - |
+| [16](16.md) |  [*M20*] | math-medium | verified | 43s |
+| [17](17.md) |  [*M24*] | math-medium | verified | 44s |
 | 18 |  [*20*] | medium | - | - |
-| 19 |  [*M27*] | math-hard | - | - |
+| [19](19.md) |  [*M27*] | math-hard | verified | 44s |
 | 20 |  [*M16*] | math-medium | - | - |
 | 21 |  [*M25*] | math-medium | - | - |
 | 22 |  [*M20*] | math-medium | - | - |
-| 23 |  [*M23*] | math-medium | - | - |
+| [23](23.md) |  [*M23*] | math-medium | verified | 2m21s |
 | 24 |  [*HM20*] | hm-medium | - | - |
 | 25 |  [*M21*] | math-medium | - | - |
 | 26 |  [*M20*] | math-medium | - | - |

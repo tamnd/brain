@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.7 — Harmonic Numbers"
-description: "Section 1.2.7 exercises — 22/25 solved."
+description: "Section 1.2.7 exercises — 23/25 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.7"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.7. Harmonic Numbers
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.7: 22/25 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.7: 23/25 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,7 +37,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.7: 22/25 solved.
 | [17](17.md) |  [*M24*] | math-medium | solved | 34s |
 | [18](18.md) |  [*M33*] | math-hard | solved | 56s |
 | [19](19.md) |  [*M30*] | math-hard | solved | 47s |
-| 20 |  [*HM22*] | hm-medium | - | - |
+| [20](20.md) |  [*HM22*] | hm-medium | solved | 4m12s |
 | [21](21.md) |  [*M24*] | math-medium | solved | 39s |
 | [22](22.md) |  [*M28*] | math-hard | solved | 45s |
 | [23](23.md) |  [*HM20*] | hm-medium | solved | 32s |
