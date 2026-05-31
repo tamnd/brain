@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.11.3 — Some Asymptotic Calculations"
-description: "Section 1.2.11.3 exercises — 14/14 solved."
+title: "TAOCP 1.2.11.3: Some Asymptotic Calculations"
+description: "Section 1.2.11.3 exercises: 14/14 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.11.3"

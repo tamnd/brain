@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 2.2.3 — Linked Allocation"
-description: "Section 2.2.3 exercises — 28/28 solved."
+title: "TAOCP 2.2.3: Linked Allocation"
+description: "Section 2.2.3 exercises: 28/28 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.2.3"

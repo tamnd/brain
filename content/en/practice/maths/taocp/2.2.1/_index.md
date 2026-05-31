@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 2.2.1 — Stacks, Queues, and Deques"
-description: "Section 2.2.1 exercises — 14/14 solved."
+title: "TAOCP 2.2.1: Stacks, Queues, and Deques"
+description: "Section 2.2.1 exercises: 14/14 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.2.1"

@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.4 — Integer Functions and Elementary Number Theory"
-description: "Section 1.2.4 exercises — 46/46 solved."
+title: "TAOCP 1.2.4: Integer Functions and Elementary Number Theory"
+description: "Section 1.2.4 exercises: 46/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.4"

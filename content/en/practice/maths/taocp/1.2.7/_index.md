@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.7 — Harmonic Numbers"
-description: "Section 1.2.7 exercises — 25/25 solved."
+title: "TAOCP 1.2.7: Harmonic Numbers"
+description: "Section 1.2.7 exercises: 25/25 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.7"

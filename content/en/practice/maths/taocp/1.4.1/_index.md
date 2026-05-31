@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.4.1 — Subroutines"
-description: "Section 1.4.1 exercises — 7/7 solved."
+title: "TAOCP 1.4.1: Subroutines"
+description: "Section 1.4.1 exercises: 7/7 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.4.1"

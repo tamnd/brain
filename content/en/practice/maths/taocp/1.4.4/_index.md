@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.4.4 — Input and Output"
-description: "Section 1.4.4 exercises — 18/19 solved."
+title: "TAOCP 1.4.4: Input and Output"
+description: "Section 1.4.4 exercises: 18/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.4.4"

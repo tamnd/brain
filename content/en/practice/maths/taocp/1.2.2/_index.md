@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.2 — Numbers, Powers, and Logarithms"
-description: "Section 1.2.2 exercises — 30/30 solved."
+title: "TAOCP 1.2.2: Numbers, Powers, and Logarithms"
+description: "Section 1.2.2 exercises: 30/30 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.2"

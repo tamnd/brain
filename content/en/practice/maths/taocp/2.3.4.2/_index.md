@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 2.3.4.2 — Oriented Trees"
-description: "Section 2.3.4.2 exercises — 8/28 solved."
+title: "TAOCP 2.3.4.2: Oriented Trees"
+description: "Section 2.3.4.2 exercises: 8/28 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.2"

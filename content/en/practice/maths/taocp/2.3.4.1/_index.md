@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 2.3.4.1 — Free Trees"
-description: "Section 2.3.4.1 exercises — 7/13 solved."
+title: "TAOCP 2.3.4.1: Free Trees"
+description: "Section 2.3.4.1 exercises: 7/13 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.1"

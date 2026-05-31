@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.3.1 — Description of MIX"
-description: "Section 1.3.1 exercises — 25/26 solved."
+title: "TAOCP 1.3.1: Description of MIX"
+description: "Section 1.3.1 exercises: 25/26 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.1"

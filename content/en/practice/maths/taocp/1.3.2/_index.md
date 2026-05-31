@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.3.2 — The MIX Assembly Language"
-description: "Section 1.3.2 exercises — 9/9 solved."
+title: "TAOCP 1.3.2: The MIX Assembly Language"
+description: "Section 1.3.2 exercises: 9/9 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.2"

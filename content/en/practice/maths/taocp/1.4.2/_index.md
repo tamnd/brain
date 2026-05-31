@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.4.2 — Coroutines"
-description: "Section 1.4.2 exercises — 5/7 solved."
+title: "TAOCP 1.4.2: Coroutines"
+description: "Section 1.4.2 exercises: 5/7 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.4.2"

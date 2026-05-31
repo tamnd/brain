@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.3.3 — Applications to Permutations"
-description: "Section 1.3.3 exercises — 23/37 solved."
+title: "TAOCP 1.3.3: Applications to Permutations"
+description: "Section 1.3.3 exercises: 23/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.3"

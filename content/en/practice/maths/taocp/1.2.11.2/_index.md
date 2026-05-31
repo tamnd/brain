@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.11.2 — Euler's Summation Formula"
-description: "Section 1.2.11.2 exercises — 13/13 solved."
+title: "TAOCP 1.2.11.2: Euler's Summation Formula"
+description: "Section 1.2.11.2 exercises: 13/13 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.11.2"

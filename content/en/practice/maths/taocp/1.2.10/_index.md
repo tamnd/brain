@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.10 — Analysis of an Algorithm"
-description: "Section 1.2.10 exercises — 20/22 solved."
+title: "TAOCP 1.2.10: Analysis of an Algorithm"
+description: "Section 1.2.10 exercises: 20/22 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.10"

@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.3 — Sums and Products"
-description: "Section 1.2.3 exercises — 44/46 solved."
+title: "TAOCP 1.2.3: Sums and Products"
+description: "Section 1.2.3 exercises: 44/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.3"

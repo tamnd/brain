@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 2.2.2 — Sequential Allocation"
-description: "Section 2.2.2 exercises — 19/19 solved."
+title: "TAOCP 2.2.2: Sequential Allocation"
+description: "Section 2.2.2 exercises: 19/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.2.2"

@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.1 — Algorithms"
-description: "Section 1.1 exercises — 9/9 solved."
+title: "TAOCP 1.1: Algorithms"
+description: "Section 1.1 exercises: 9/9 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.1"

@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 2.2.5 — Doubly Linked Lists"
-description: "Section 2.2.5 exercises — 12/12 solved."
+title: "TAOCP 2.2.5: Doubly Linked Lists"
+description: "Section 2.2.5 exercises: 12/12 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.2.5"

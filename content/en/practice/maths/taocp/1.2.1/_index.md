@@ -1,6 +1,6 @@
 ---
-title: "TAOCP 1.2.1 — Mathematical Induction"
-description: "Section 1.2.1 exercises — 15/15 solved."
+title: "TAOCP 1.2.1: Mathematical Induction"
+description: "Section 1.2.1 exercises: 15/15 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.1"

@@ -1,6 +1,6 @@
 ---
 title: "TAOCP"
-description: "The Art of Computer Programming — exercise solutions."
+description: "The Art of Computer Programming: exercise solutions."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 5
