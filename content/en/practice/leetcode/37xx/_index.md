@@ -43,7 +43,7 @@ draft: false
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
 | 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 1m 1s | The problem asks us to determine the minimum number of moves requir… |
 | 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 6s | Here is a comprehensive, detailed reference guide for LeetCode 3737… |
-| 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](3738.md) | 🟡 Medium | 34s | I can write the full detailed guide, but I need one missing detail … |
+| 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](3738.md) | 🟡 Medium | 4m 7s | assert Solution(). |
 | 3739 | [Count Subarrays With Majority Element II](3739.md) | 🔴 Hard | 57s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
 | 3741 | [Minimum Distance Between Three Equal Elements II](3741.md) | 🟡 Medium | 2m 40s | The problem asks us to find three distinct indices (i, j, k) such t… |
 | 3742 | [Maximum Path Score in a Grid](3742.md) | 🟡 Medium | 48s | This problem presents a grid of size m x n where each cell contains… |
@@ -62,6 +62,7 @@ draft: false
 | 3758 | [Convert Number Words to Digits](3758.md) | 🟡 Medium | 56s | The problem asks us to parse a string s that contains lowercase Eng… |
 | 3759 | [Count Elements With at Least K Greater Values](3759.md) | 🟡 Medium | 1m 15s | The problem asks us to count how many elements in an array have at … |
 | 3760 | [Maximum Substrings With Distinct Start](3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
+| 3761 | [Minimum Absolute Distance Between Mirror Pairs](3761.md) | 🟡 Medium | 2m 49s | We are given an integer array nums. A pair of indices (i, j) is cal… |
 | 3762 | [Minimum Operations to Equalize Subarrays](3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
 | 3763 | [Maximum Total Sum with Threshold Constraints](3763.md) | 🟡 Medium | 52s | The problem gives you two integer arrays, nums and threshold, each … |
 | 3764 | [Most Common Course Pairs](3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |
@@ -74,7 +75,7 @@ draft: false
 | 3771 | [Total Score of Dungeon Runs](3771.md) | 🟡 Medium | 55s | The problem describes a dungeon with n rooms, where entering room i… |
 | 3772 | [Maximum Subgraph Score in a Tree](3772.md) | 🔴 Hard | 52s | The problem asks us to compute, for each node in a tree, the maximu… |
 | 3773 | [Maximum Number of Equal Length Runs](3773.md) | 🟡 Medium | 59s | The problem asks us to analyze a string s consisting of lowercase E… |
-| 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 1m 13s | We are given an integer array nums and an integer k. The task is to… |
+| 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 3m 7s | The problem asks us to calculate the absolute difference between th… |
 | 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 48s | The problem requires processing a string s consisting of lowercase … |
 | 3778 | [Minimum Distance Excluding One Maximum Weighted Edge](3778.md) | 🟡 Medium | 1m 56s | We are given a connected, weighted, undirected graph with n nodes n… |
 | 3779 | [Minimum Number of Operations to Have Distinct Elements](3779.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and defines a very speci… |

@@ -3407,7 +3407,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3391 | [Design a 3D Binary Matrix with Efficient Layer Tracking](33xx/3391.md) | 🟡 Medium | 1m 30s | The problem asks us to design a data structure that manages a 3D bi… |
 | 3392 | [Count Subarrays of Length Three With a Condition](33xx/3392.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to count how… |
 | 3393 | [Count Paths With the Given XOR Value](33xx/3393.md) | 🟡 Medium | 1m 56s | The problem gives us an m x n grid where each cell contains a small… |
-| 3394 | [Check if Grid can be Cut into Sections](33xx/3394.md) | 🟡 Medium | 1m 27s | We are given an n x n grid and a list of non-overlapping rectangles… |
+| 3394 | [Check if Grid can be Cut into Sections](33xx/3394.md) | 🟡 Medium | 13m 5s | LeetCode 3394: Check if Grid can be Cut into Sections (Medium) |
 | 3395 | [Subsequences with a Unique Middle Mode I](33xx/3395.md) | 🔴 Hard | 1m 45s | We are given an integer array nums, and we must count how many subs… |
 | 3396 | [Minimum Number of Operations to Make Elements in Array Distinct](33xx/3396.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, and our goal is to make… |
 | 3397 | [Maximum Number of Distinct Elements After Operations](33xx/3397.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of distinct elements in … |
@@ -3434,7 +3434,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3418 | [Maximum Amount of Money Robot Can Earn](34xx/3418.md) | 🟡 Medium | 1m 15s | We are given an m x n grid where each cell contains either a positi… |
 | 3419 | [Minimize the Maximum Edge Weight of Graph](34xx/3419.md) | 🟡 Medium | 49s | The problem is asking us to manipulate a directed weighted graph in… |
 | 3420 | [Count Non-Decreasing Subarrays After K Operations](34xx/3420.md) | 🔴 Hard | 1m 24s | You are given an array nums and a budget of at most k increment ope… |
-| 3421 | [Find Students Who Improved](34xx/3421.md) | 🟡 Medium | 1m 3s | This is a SQL database problem that asks us to identify student-sub… |
+| 3421 | [Find Students Who Improved](34xx/3421.md) | 🟡 Medium | 3m 35s | This This ensures that performance in one subject never affects ano… |
 | 3422 | [Minimum Operations to Make Subarray Elements Equal](34xx/3422.md) | 🟡 Medium | 2m 11s | We are given an array nums and an integer k. In a single operation,… |
 | 3423 | [Maximum Difference Between Adjacent Elements in a Circular Array](34xx/3423.md) | 🟢 Easy | 1m 30s | This problem gives us an integer array nums and asks us to find the… |
 | 3424 | [Minimum Cost to Make Arrays Identical](34xx/3424.md) | 🟡 Medium | 49s | The problem asks us to transform one integer array arr into another… |
@@ -3442,13 +3442,14 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3427 | [Sum of Variable Length Subarrays](34xx/3427.md) | 🟢 Easy | 40s | The problem provides an integer array nums of length n. For each in… |
 | 3428 | [Maximum and Minimum Sums of at Most Size K Subsequences](34xx/3428.md) | 🟡 Medium | 1m 11s | We are given an array nums and an integer k. For every subsequence … |
 | 3429 | [Paint House IV](34xx/3429.md) | 🟡 Medium | 46s | This problem is asking us to paint n houses arranged in a line with… |
-| 3430 | [Maximum and Minimum Sums of at Most Size K Subarrays](34xx/3430.md) | 🔴 Hard | 1m 41s | We are given an integer array nums and an integer k. For every cont… |
+| 3430 | [Maximum and Minimum Sums of at Most Size K Subarrays](34xx/3430.md) | 🔴 Hard | 4m 29s | We are remains efficient even at the maximum constraint limit. |
+| 3431 | [Minimum Unlocked Indices to Sort Nums](34xx/3431.md) | 🟡 Medium | 3m 37s | We are given two arrays of equal both required ranges are empty and… |
 | 3432 | [Count Partitions with Even Sum Difference](34xx/3432.md) | 🟢 Easy | 2m 43s | The problem gives us an integer array nums and asks us to count how… |
 | 3433 | [Count Mentions Per User](34xx/3433.md) | 🟡 Medium | 1m 28s | This problem asks us to simulate a sequence of user activity events… |
 | 3435 | [Frequencies of Shortest Supersequences](34xx/3435.md) | 🔴 Hard | 46s | The problem asks us to find all shortest common supersequences (SCS… |
 | 3436 | [Find Valid Emails](34xx/3436.md) | 🟢 Easy | 42s | The problem requires us to identify valid email addresses from a Us… |
 | 3437 | [Permutations III](34xx/3437.md) | 🟡 Medium | 1m 13s | We are given a single integer n, and we need to generate all permut… |
-| 3438 | [Find Valid Pair of Adjacent Digits in String](34xx/3438.md) | 🟢 Easy | 49s | The problem requires us to find a valid pair of adjacent digits in … |
+| 3438 | [Find Valid Pair of Adjacent Digits in String](34xx/3438.md) | 🟢 Easy | 3m 23s | The problem gives us a string s containing only digits from '1' to … |
 | 3439 | [Reschedule Meetings for Maximum Free Time I](34xx/3439.md) | 🟡 Medium | 55s | We are given an event that runs from time 0 to eventTime. Inside th… |
 | 3440 | [Reschedule Meetings for Maximum Free Time II](34xx/3440.md) | 🟡 Medium | 1m 41s | We are given an event that lasts from time 0 to eventTime. Inside t… |
 | 3441 | [Minimum Cost Good Caption](34xx/3441.md) | 🔴 Hard | 1m 23s | We are given a lowercase string caption. We may repeatedly change a… |
@@ -3654,7 +3655,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3655 | [XOR After Range Multiplication Queries II](36xx/3655.md) | 🔴 Hard | 1m 20s | We are given an array nums and a list of queries. Each query has th… |
 | 3657 | [Find Loyal Customers](36xx/3657.md) | 🟡 Medium | 1m 1s | This problem is a SQL aggregation and filtering task. We are given … |
 | 3658 | [GCD of Odd and Even Sums](36xx/3658.md) | 🟢 Easy | 1m 12s | The problem asks us to calculate the greatest common divisor (GCD) … |
-| 3660 | [Jump Game IX](36xx/3660.md) | 🟡 Medium | 45s | The problem presents an array of integers nums and asks us to compu… |
+| 3660 | [Jump Game IX](36xx/3660.md) | 🟡 Medium | 1m 51s | The problem asks us to determine, for each position in an array num… |
 | 3661 | [Maximum Walls Destroyed by Robots](36xx/3661.md) | 🔴 Hard | 1m 12s | This problem takes place on a one dimensional number line. We are g… |
 | 3662 | [Filter Characters by Frequency](36xx/3662.md) | 🟢 Easy | 1m 21s | This problem asks us to filter a string based on character frequenc… |
 | 3663 | [Find The Least Frequent Digit](36xx/3663.md) | 🟢 Easy | 40s | The problem asks us to find the least frequent digit in the decimal… |
@@ -3663,6 +3664,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3667 | [Sort Array By Absolute Value](36xx/3667.md) | 🟢 Easy | 2m 12s | The problem asks us to reorder an integer array such that the eleme… |
 | 3668 | [Restore Finishing Order](36xx/3668.md) | 🟢 Easy | 1m 32s | This problem gives us two arrays: - order, which represents the fin… |
 | 3669 | [Balanced K-Factor Decomposition](36xx/3669.md) | 🟡 Medium | 3m 9s | We are given two integers, n and k. Our goal is to split n into exa… |
+| 3670 | [Maximum Product of Two Integers With No Common Bits](36xx/3670.md) | 🟡 Medium | 3m 15s | We the objective is to maximize the product rather than count pairs. |
 | 3671 | [Sum of Beautiful Subsequences](36xx/3671.md) | 🔴 Hard | 3m 48s | Let a subsequence of nums be any sequence multiples. citeturn0searc… |
 | 3674 | [Minimum Operations to Equalize Array](36xx/3674.md) | 🟢 Easy | 51s | Let's go step by step and produce a fully detailed, reference-style… |
 | 3675 | [Minimum Operations to Transform String](36xx/3675.md) | 🟡 Medium | 2m 25s | We are given a string s consisting of lowercase English letters. An… |
@@ -3722,7 +3724,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](37xx/3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
 | 3736 | [Minimum Moves to Equal Array Elements III](37xx/3736.md) | 🟢 Easy | 1m 1s | The problem asks us to determine the minimum number of moves requir… |
 | 3737 | [Count Subarrays With Majority Element I](37xx/3737.md) | 🟡 Medium | 1m 6s | Here is a comprehensive, detailed reference guide for LeetCode 3737… |
-| 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](37xx/3738.md) | 🟡 Medium | 34s | I can write the full detailed guide, but I need one missing detail … |
+| 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](37xx/3738.md) | 🟡 Medium | 4m 7s | assert Solution(). |
 | 3739 | [Count Subarrays With Majority Element II](37xx/3739.md) | 🔴 Hard | 57s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
 | 3741 | [Minimum Distance Between Three Equal Elements II](37xx/3741.md) | 🟡 Medium | 2m 40s | The problem asks us to find three distinct indices (i, j, k) such t… |
 | 3742 | [Maximum Path Score in a Grid](37xx/3742.md) | 🟡 Medium | 48s | This problem presents a grid of size m x n where each cell contains… |
@@ -3741,6 +3743,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3758 | [Convert Number Words to Digits](37xx/3758.md) | 🟡 Medium | 56s | The problem asks us to parse a string s that contains lowercase Eng… |
 | 3759 | [Count Elements With at Least K Greater Values](37xx/3759.md) | 🟡 Medium | 1m 15s | The problem asks us to count how many elements in an array have at … |
 | 3760 | [Maximum Substrings With Distinct Start](37xx/3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
+| 3761 | [Minimum Absolute Distance Between Mirror Pairs](37xx/3761.md) | 🟡 Medium | 2m 49s | We are given an integer array nums. A pair of indices (i, j) is cal… |
 | 3762 | [Minimum Operations to Equalize Subarrays](37xx/3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
 | 3763 | [Maximum Total Sum with Threshold Constraints](37xx/3763.md) | 🟡 Medium | 52s | The problem gives you two integer arrays, nums and threshold, each … |
 | 3764 | [Most Common Course Pairs](37xx/3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |
@@ -3753,7 +3756,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3771 | [Total Score of Dungeon Runs](37xx/3771.md) | 🟡 Medium | 55s | The problem describes a dungeon with n rooms, where entering room i… |
 | 3772 | [Maximum Subgraph Score in a Tree](37xx/3772.md) | 🔴 Hard | 52s | The problem asks us to compute, for each node in a tree, the maximu… |
 | 3773 | [Maximum Number of Equal Length Runs](37xx/3773.md) | 🟡 Medium | 59s | The problem asks us to analyze a string s consisting of lowercase E… |
-| 3774 | [Absolute Difference Between Maximum and Minimum K Elements](37xx/3774.md) | 🟢 Easy | 1m 13s | We are given an integer array nums and an integer k. The task is to… |
+| 3774 | [Absolute Difference Between Maximum and Minimum K Elements](37xx/3774.md) | 🟢 Easy | 3m 7s | The problem asks us to calculate the absolute difference between th… |
 | 3775 | [Reverse Words With Same Vowel Count](37xx/3775.md) | 🟡 Medium | 48s | The problem requires processing a string s consisting of lowercase … |
 | 3778 | [Minimum Distance Excluding One Maximum Weighted Edge](37xx/3778.md) | 🟡 Medium | 1m 56s | We are given a connected, weighted, undirected graph with n nodes n… |
 | 3779 | [Minimum Number of Operations to Have Distinct Elements](37xx/3779.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and defines a very speci… |

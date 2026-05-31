@@ -62,7 +62,7 @@ draft: false
 | 3655 | [XOR After Range Multiplication Queries II](3655.md) | 🔴 Hard | 1m 20s | We are given an array nums and a list of queries. Each query has th… |
 | 3657 | [Find Loyal Customers](3657.md) | 🟡 Medium | 1m 1s | This problem is a SQL aggregation and filtering task. We are given … |
 | 3658 | [GCD of Odd and Even Sums](3658.md) | 🟢 Easy | 1m 12s | The problem asks us to calculate the greatest common divisor (GCD) … |
-| 3660 | [Jump Game IX](3660.md) | 🟡 Medium | 45s | The problem presents an array of integers nums and asks us to compu… |
+| 3660 | [Jump Game IX](3660.md) | 🟡 Medium | 1m 51s | The problem asks us to determine, for each position in an array num… |
 | 3661 | [Maximum Walls Destroyed by Robots](3661.md) | 🔴 Hard | 1m 12s | This problem takes place on a one dimensional number line. We are g… |
 | 3662 | [Filter Characters by Frequency](3662.md) | 🟢 Easy | 1m 21s | This problem asks us to filter a string based on character frequenc… |
 | 3663 | [Find The Least Frequent Digit](3663.md) | 🟢 Easy | 40s | The problem asks us to find the least frequent digit in the decimal… |
@@ -71,6 +71,7 @@ draft: false
 | 3667 | [Sort Array By Absolute Value](3667.md) | 🟢 Easy | 2m 12s | The problem asks us to reorder an integer array such that the eleme… |
 | 3668 | [Restore Finishing Order](3668.md) | 🟢 Easy | 1m 32s | This problem gives us two arrays: - order, which represents the fin… |
 | 3669 | [Balanced K-Factor Decomposition](3669.md) | 🟡 Medium | 3m 9s | We are given two integers, n and k. Our goal is to split n into exa… |
+| 3670 | [Maximum Product of Two Integers With No Common Bits](3670.md) | 🟡 Medium | 3m 15s | We the objective is to maximize the product rather than count pairs. |
 | 3671 | [Sum of Beautiful Subsequences](3671.md) | 🔴 Hard | 3m 48s | Let a subsequence of nums be any sequence multiples. citeturn0searc… |
 | 3674 | [Minimum Operations to Equalize Array](3674.md) | 🟢 Easy | 51s | Let's go step by step and produce a fully detailed, reference-style… |
 | 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 2m 25s | We are given a string s consisting of lowercase English letters. An… |

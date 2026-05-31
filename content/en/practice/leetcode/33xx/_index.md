@@ -23,6 +23,7 @@ draft: false
 | 3310 | [Remove Methods From Project](3310.md) | 🟡 Medium | 1m 13s | The problem models a project as a directed graph of method calls. E… |
 | 3311 | [Construct 2D Grid Matching Graph Layout](3311.md) | 🔴 Hard | 1m 55s | The problem gives us an undirected graph with n nodes labeled from … |
 | 3312 | [Sorted GCD Pair Queries](3312.md) | 🔴 Hard | 40s | === 1996-G1 === Origin: GBR Let triangle have orthocenter , and let… |
+| 3313 | [Find the Last Marked Nodes in Tree](3313.md) | 🔴 Hard | 1m 33s | We are given an undirected tree with n nodes labeled from 0 to n - … |
 | 3314 | [Construct the Minimum Bitwise Array I](3314.md) | 🟢 Easy | 52s | The problem asks us to construct an array ans from a given array nu… |
 | 3315 | [Construct the Minimum Bitwise Array II](3315.md) | 🟡 Medium | 1m 28s | We are given an array nums where every element is a prime number. F… |
 | 3316 | [Find Maximum Removals From Source String](3316.md) | 🟡 Medium | 1m 30s | We are given three inputs: - source, the original string of length … |
@@ -102,16 +103,9 @@ draft: false
 | 3391 | [Design a 3D Binary Matrix with Efficient Layer Tracking](3391.md) | 🟡 Medium | 1m 30s | The problem asks us to design a data structure that manages a 3D bi… |
 | 3392 | [Count Subarrays of Length Three With a Condition](3392.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to count how… |
 | 3393 | [Count Paths With the Given XOR Value](3393.md) | 🟡 Medium | 1m 56s | The problem gives us an m x n grid where each cell contains a small… |
-| 3394 | [Check if Grid can be Cut into Sections](3394.md) | 🟡 Medium | 1m 27s | We are given an n x n grid and a list of non-overlapping rectangles… |
+| 3394 | [Check if Grid can be Cut into Sections](3394.md) | 🟡 Medium | 13m 5s | LeetCode 3394: Check if Grid can be Cut into Sections (Medium) |
 | 3395 | [Subsequences with a Unique Middle Mode I](3395.md) | 🔴 Hard | 1m 45s | We are given an integer array nums, and we must count how many subs… |
 | 3396 | [Minimum Number of Operations to Make Elements in Array Distinct](3396.md) | 🟢 Easy | 1m 9s | The problem gives us an integer array nums, and our goal is to make… |
 | 3397 | [Maximum Number of Distinct Elements After Operations](3397.md) | 🟡 Medium | 44s | The problem asks us to maximize the number of distinct elements in … |
 | 3398 | [Smallest Substring With Identical Characters I](3398.md) | 🔴 Hard | 55s | The problem gives us a binary string s consisting of only '0' and '… |
 | 3399 | [Smallest Substring With Identical Characters II](3399.md) | 🔴 Hard | 1m 15s | We are given a binary string s consisting only of '0' and '1', alon… |
-| 3313 | [Find the Last Marked Nodes in Tree](3313.md) | 🔴 Hard | 1m 33s | We are given an undirected tree with n nodes labeled from 0 to n - … |
-| 3333 | [Find the Original Typed String II](3333.md) | 🔴 Hard | 4m 4s | The problem describes a typing mistake where Alice may accidentally… |
-| 3335 | [Total Characters in String After Transformations I](3335.md) | 🟡 Medium | 1m 20s | The problem asks us to simulate repeated string transformations, bu… |
-| 3360 | [Stone Removal Game](3360.md) | 🟢 Easy | 1m 56s | This problem describes a two-player deterministic game between Alic… |
-| 3372 | [Maximize the Number of Target Nodes After Connecting Trees I](3372.md) | 🟡 Medium | 4m 17s | This problem gives us two separate undirected trees. The first tree… |
-| 3375 | [Minimum Operations to Make Array Values Equal to K](3375.md) | 🟢 Easy | 1m 15s | We are given an array nums and a target value k. An operation works… |
-| 3399 | [Smallest Substring With Identical Characters II](3399.md) | 🔴 Hard | 2m 48s | We are given a binary string s and an integer numOps. Each operatio… |
