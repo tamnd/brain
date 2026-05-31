@@ -18,12 +18,12 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.2: 30/30 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*00*] | immediate | solved | 30s |
-| [2](02.md) |  [*00*] | immediate | solved | 36s |
-| [3](03.md) |  [*02*] | simple | solved | 29s |
-| [4](04.md) | &#9654; [*05*] | simple | solved | 27s |
-| [5](05.md) |  [*05*] | simple | solved | 28s |
-| [6](06.md) |  [*10*] | simple | solved | 30s |
+| [1](01.md) |  [*00*] | immediate | verified | 32s |
+| [2](02.md) |  [*00*] | immediate | verified | 2m19s |
+| [3](03.md) |  [*02*] | simple | verified | 31s |
+| [4](04.md) | &#9654; [*05*] | simple | verified | 49s |
+| [5](05.md) |  [*05*] | simple | verified | 38s |
+| [6](06.md) |  [*10*] | simple | verified | 1m58s |
 | [7](07.md) |  [*M23*] | math-medium | solved | 35s |
 | [8](08.md) |  [*25*] | medium | solved | 38s |
 | [9](09.md) |  [*M23*] | math-medium | solved | 40s |

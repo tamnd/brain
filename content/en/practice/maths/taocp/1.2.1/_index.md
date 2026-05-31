@@ -28,8 +28,8 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.1: 15/15 solved.
 | [8](08.md) | &#9654; [*25*] | medium | verified | 1m58s |
 | [9](09.md) |  [*20*] | medium | verified | 1m28s |
 | [10](10.md) |  [*M22*] | math-medium | verified | 37s |
-| [11](11.md) |  [*M30*] | math-hard | solved | 1m11s |
-| [12](12.md) |  [*M25*] | math-medium | solved | 47s |
-| [13](13.md) | &#9654; [*M23*] | math-medium | solved | 36s |
-| [14](14.md) |  [*50*] | research | solved | 53s |
-| [15](15.md) | &#9654; [*HM28*] | hm-hard | solved | 1m |
+| [11](11.md) |  [*M30*] | math-hard | solved | 4m32s |
+| [12](12.md) |  [*M25*] | math-medium | verified | 1m43s |
+| [13](13.md) | &#9654; [*M23*] | math-medium | solved | 4m20s |
+| [14](14.md) |  [*50*] | research | verified | 37s |
+| [15](15.md) | &#9654; [*HM28*] | hm-hard | verified | 2m18s |
