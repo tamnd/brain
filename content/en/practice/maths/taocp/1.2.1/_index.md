@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.1 — Mathematical Induction"
-description: "Section 1.2.1 exercises — 14/15 solved."
+description: "Section 1.2.1 exercises — 15/15 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.1"
@@ -14,17 +14,17 @@ draft: false
 
 # Section 1.2.1. Mathematical Induction
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.1: 14/15 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.1: 15/15 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*05*] | simple | solved | 33s |
+| [1](01.md) |  [*05*] | simple | solved | - |
 | [2](02.md) | &#9654; [*15*] | simple | solved | 32s |
 | [3](03.md) |  [*18*] | medium | solved | 40s |
-| [4](04.md) |  [*20*] | medium | solved | 34s |
-| [5](05.md) |  [*21*] | medium | solved | 36s |
-| [6](06.md) |  [*20*] | medium | solved | 42s |
-| 7 |  [*23*] | medium | - | - |
+| [4](04.md) |  [*20*] | medium | solved | - |
+| [5](05.md) |  [*21*] | medium | solved | - |
+| [6](06.md) |  [*20*] | medium | solved | - |
+| [7](07.md) |  [*23*] | medium | solved | - |
 | [8](08.md) | &#9654; [*25*] | medium | solved | 35s |
 | [9](09.md) |  [*20*] | medium | solved | 30m25s |
 | [10](10.md) |  [*M22*] | math-medium | solved | 46s |

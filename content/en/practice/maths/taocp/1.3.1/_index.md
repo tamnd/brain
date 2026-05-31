@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.3.1 — Description of MIX"
-description: "Section 1.3.1 exercises — 11/26 solved."
+description: "Section 1.3.1 exercises — 25/26 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.3.1. Description of MIX
 
-Exercises from [TAOCP Volume 1](../) Section 1.3.1: 11/26 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.3.1: 25/26 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -23,24 +23,24 @@ Exercises from [TAOCP Volume 1](../) Section 1.3.1: 11/26 solved.
 | [3](03.md) |  [*02*] | simple | verified | 44s |
 | [4](04.md) |  [*00*] | immediate | verified | 51s |
 | [5](05.md) |  [*10*] | simple | verified | 3m09s |
-| 6 |  [*10*] | simple | - | - |
+| [6](06.md) |  [*10*] | simple | verified | 2m53s |
 | [7](07.md) |  [*M15*] | math-simple | verified | 9m36s |
 | [8](08.md) |  [*15*] | simple | verified | 5m21s |
-| 9 |  [*15*] | simple | - | - |
+| [9](09.md) |  [*15*] | simple | solved | 4m04s |
 | [10](10.md) |  [*15*] | simple | verified | 51s |
-| 11 |  [*15*] | simple | - | - |
+| [11](11.md) |  [*15*] | simple | verified | 3m05s |
 | [12](12.md) |  [*10*] | simple | verified | 5m27s |
-| 13 |  [*10*] | simple | - | - |
-| 14 |  [*20*] | medium | - | - |
+| [13](13.md) |  [*10*] | simple | solved | 10m12s |
+| [14](14.md) |  [*20*] | medium | solved | 5m10s |
 | [15](15.md) |  [*10*] | simple | verified | 36s |
 | [16](16.md) |  [*20*] | medium | verified | 3m35s |
-| 17 |  [*26*] | hard | - | - |
+| [17](17.md) |  [*26*] | hard | verified | 1m55s |
 | 18 |  [*22*] | medium | - | - |
-| 19 |  [*14*] | simple | - | - |
-| 20 |  [*20*] | medium | - | - |
-| 21 |  [*24*] | medium | - | - |
-| 22 |  [*28*] | hard | - | - |
-| 23 |  [*27*] | hard | - | - |
-| 24 |  [*21*] | medium | - | - |
-| 25 |  [*30*] | hard | - | - |
-| 26 |  [*32*] | hard | - | - |
+| [19](19.md) |  [*14*] | simple | verified | 1m05s |
+| [20](20.md) |  [*20*] | medium | verified | 1m39s |
+| [21](21.md) |  [*24*] | medium | solved | 8m43s |
+| [22](22.md) |  [*28*] | hard | solved | 2m49s |
+| [23](23.md) |  [*27*] | hard | verified | 5m07s |
+| [24](24.md) |  [*21*] | medium | verified | 1m22s |
+| [25](25.md) |  [*30*] | hard | verified | 1m30s |
+| [26](26.md) |  [*32*] | hard | solved | 2m21s |

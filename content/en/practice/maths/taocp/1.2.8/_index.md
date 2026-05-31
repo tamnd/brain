@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.8 — Fibonacci Numbers"
-description: "Section 1.2.8 exercises — 22/42 solved."
+description: "Section 1.2.8 exercises — 42/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.8"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.8. Fibonacci Numbers
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.8: 22/42 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.8: 42/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -35,28 +35,28 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.8: 22/42 solved.
 | [15](15.md) |  [*M22*] | math-medium | solved | 34s |
 | [16](16.md) |  [*M20*] | math-medium | verified | 43s |
 | [17](17.md) |  [*M24*] | math-medium | verified | 44s |
-| 18 |  [*20*] | medium | - | - |
+| [18](18.md) |  [*20*] | medium | solved | 49s |
 | [19](19.md) |  [*M27*] | math-hard | verified | 44s |
-| 20 |  [*M16*] | math-medium | - | - |
-| 21 |  [*M25*] | math-medium | - | - |
-| 22 |  [*M20*] | math-medium | - | - |
+| [20](20.md) |  [*M16*] | math-medium | solved | 45s |
+| [21](21.md) |  [*M25*] | math-medium | solved | 30s |
+| [22](22.md) |  [*M20*] | math-medium | solved | 34s |
 | [23](23.md) |  [*M23*] | math-medium | verified | 2m21s |
-| 24 |  [*HM20*] | hm-medium | - | - |
-| 25 |  [*M21*] | math-medium | - | - |
-| 26 |  [*M20*] | math-medium | - | - |
-| 27 |  [*M20*] | math-medium | - | - |
-| 28 |  [*M21*] | math-medium | - | - |
+| [24](24.md) |  [*HM20*] | hm-medium | solved | 29s |
+| [25](25.md) |  [*M21*] | math-medium | solved | 26s |
+| [26](26.md) |  [*M20*] | math-medium | solved | 23s |
+| [27](27.md) |  [*M20*] | math-medium | solved | 25s |
+| [28](28.md) |  [*M21*] | math-medium | solved | 35s |
 | [29](29.md) |  [*M23*] | math-medium | verified | 9m17s |
-| 30 |  [*M38*] | math-project | - | - |
-| 31 |  [*M20*] | math-medium | - | - |
-| 32 |  [*M24*] | math-medium | - | - |
-| 33 |  [*HM24*] | hm-medium | - | - |
-| 34 |  [*M24*] | math-medium | - | - |
-| 35 |  [*M24*] | math-medium | - | - |
+| [30](30.md) |  [*M38*] | math-project | solved | 41s |
+| [31](31.md) |  [*M20*] | math-medium | solved | 39s |
+| [32](32.md) |  [*M24*] | math-medium | solved | 48s |
+| [33](33.md) |  [*HM24*] | hm-medium | solved | 1m06s |
+| [34](34.md) |  [*M24*] | math-medium | solved | 1m06s |
+| [35](35.md) |  [*M24*] | math-medium | solved | 39s |
 | [36](36.md) |  [*M32*] | math-hard | verified | 8m27s |
-| 37 |  [*M35*] | math-hard | - | - |
-| 38 |  [*35*] | hard | - | - |
-| 39 |  [*M24*] | math-medium | - | - |
-| 40 |  [*M25*] | math-medium | - | - |
+| [37](37.md) |  [*M35*] | math-hard | solved | 57s |
+| [38](38.md) |  [*35*] | hard | solved | 51s |
+| [39](39.md) |  [*M24*] | math-medium | solved | 27s |
+| [40](40.md) |  [*M25*] | math-medium | solved | 45s |
 | [41](41.md) |  [*M25*] | math-medium | verified | 10m24s |
-| 42 |  [*M26*] | math-hard | - | - |
+| [42](42.md) |  [*M26*] | math-hard | solved | 51s |

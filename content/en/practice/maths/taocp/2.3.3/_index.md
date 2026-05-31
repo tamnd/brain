@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.3 — Other Representations of Trees"
-description: "Section 2.3.3 exercises — 18/19 solved."
+description: "Section 2.3.3 exercises — 19/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.3"
@@ -14,12 +14,12 @@ draft: false
 
 # Section 2.3.3. Other Representations of Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.3: 18/19 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.3: 19/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*20*] | medium | solved | 4m54s |
-| 2 |  [*22*] | medium | - | - |
+| [2](02.md) |  [*22*] | medium | solved | 38s |
 | [3](03.md) |  [*24*] | medium | verified | 1m26s |
 | [4](04.md) |  [*18*] | medium | verified | 1m20s |
 | [5](05.md) |  [*16*] | medium | verified | 1m05s |
