@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.10 — Analysis of an Algorithm"
-description: "Section 1.2.10 exercises — 5/22 solved."
+description: "Section 1.2.10 exercises — 12/22 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.10"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.10. Analysis of an Algorithm
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.10: 5/22 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.10: 12/22 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -24,16 +24,16 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.10: 5/22 solved.
 | 4 |  [*M10*] | math-simple | - | - |
 | [5](05.md) |  [*M13*] | math-simple | verified | 35s |
 | [6](06.md) |  [*HM27*] | hm-hard | verified | 2m03s |
-| 7 |  [*M27*] | math-hard | - | - |
-| 8 |  [*M20*] | math-medium | - | - |
+| [7](07.md) |  [*M27*] | math-hard | verified | 4m19s |
+| [8](08.md) |  [*M20*] | math-medium | verified | 4m36s |
 | [9](09.md) |  [*M25*] | math-medium | verified | 1m30s |
-| 10 |  [*M20*] | math-medium | - | - |
-| 11 |  [*M15*] | math-simple | - | - |
+| [10](10.md) |  [*M20*] | math-medium | verified | 4m16s |
+| [11](11.md) |  [*M15*] | math-simple | verified | 4m02s |
 | 12 |  [*HM21*] | hm-medium | - | - |
 | 13 |  [*HM38*] | hm-project | - | - |
-| 14 |  [*HM30*] | hm-hard | - | - |
-| 15 |  [*HM23*] | hm-medium | - | - |
-| 16 |  [*M25*] | math-medium | - | - |
+| [14](14.md) |  [*HM30*] | hm-hard | verified | 47s |
+| [15](15.md) |  [*HM23*] | hm-medium | verified | 1m38s |
+| [16](16.md) |  [*M25*] | math-medium | verified | 41s |
 | 17 |  [*M27*] | math-hard | - | - |
 | 18 |  [*M28*] | math-hard | - | - |
 | 19 |  [*M21*] | math-medium | - | - |
