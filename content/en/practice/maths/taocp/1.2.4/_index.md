@@ -23,20 +23,20 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.4: 46/46 solved.
 | [3](03.md) |  [*M10*] | math-simple | solved | 5m11s |
 | [4](04.md) | &#9654; [*M10*] | math-simple | verified | 3m10s |
 | [5](05.md) |  [*16*] | medium | solved | 39s |
-| [6](06.md) | &#9654; [*20*] | medium | solved | 34s |
-| [7](07.md) |  [*M15*] | math-simple | solved | 35s |
+| [6](06.md) | &#9654; [*20*] | medium | verified | 7m16s |
+| [7](07.md) |  [*M15*] | math-simple | solved | 5m31s |
 | [8](08.md) |  [*00*] | immediate | verified | 35s |
-| [9](09.md) |  [*05*] | simple | solved | 31s |
-| [10](10.md) | &#9654; [*10*] | simple | solved | 32s |
+| [9](09.md) |  [*05*] | simple | verified | 2m13s |
+| [10](10.md) | &#9654; [*10*] | simple | verified | 1m10s |
 | [11](11.md) |  [*00*] | immediate | solved | 31s |
-| [12](12.md) |  [*00*] | immediate | solved | 30s |
-| [13](13.md) |  [*M00*] | math-immediate | solved | 28s |
-| [14](14.md) | &#9654; [*12*] | simple | solved | 30s |
-| [15](15.md) |  [*10*] | simple | solved | 28s |
-| [16](16.md) |  [*M10*] | math-simple | solved | 42s |
-| [17](17.md) |  [*M15*] | math-simple | solved | 28s |
+| [12](12.md) |  [*00*] | immediate | verified | 2m56s |
+| [13](13.md) |  [*M00*] | math-immediate | verified | 2m22s |
+| [14](14.md) | &#9654; [*12*] | simple | verified | 34s |
+| [15](15.md) |  [*10*] | simple | verified | 1m03s |
+| [16](16.md) |  [*M10*] | math-simple | verified | 43s |
+| [17](17.md) |  [*M15*] | math-simple | verified | 30s |
 | [18](18.md) |  [*M15*] | math-simple | solved | 32s |
-| [19](19.md) | &#9654; [*M10*] | math-simple | solved | 32s |
+| [19](19.md) | &#9654; [*M10*] | math-simple | verified | 30s |
 | [20](20.md) |  [*M15*] | math-simple | solved | 28s |
 | [21](21.md) |  [*M22*] | math-medium | solved | 39s |
 | [22](22.md) | &#9654; [*M10*] | math-simple | solved | 32s |
