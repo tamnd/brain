@@ -96,6 +96,7 @@ description: "Codeforces problem solutions with full editorial. 396 contests, 16
 description: "Codeforces problem solutions with full editorial. 397 contests, 1661 problems, 1245 verified."
 description: "Codeforces problem solutions with full editorial. 398 contests, 1667 problems, 1245 verified."
 description: "Codeforces problem solutions with full editorial. 399 contests, 1669 problems, 1245 verified."
+description: "Codeforces problem solutions with full editorial. 400 contests, 1677 problems, 1246 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -202,6 +203,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 **397 contests, 1661 problems, 1245 verified.**
 **398 contests, 1667 problems, 1245 verified.**
 **399 contests, 1669 problems, 1245 verified.**
+**400 contests, 1677 problems, 1246 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -634,3 +636,4 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1958](1958/) | [Kotlin Heroes: Episode 10](https://codeforces.com/contest/1958) | Kotlin | 1100-3200 | 7/10 | 11m 13s |
 | [1965](1965/) | [Codeforces Round 941 (Div. 1)](https://codeforces.com/contest/1965) | Div. 1 | 1400-3300 | 0/6 | 7m 12s |
 | [1966](1966/) | [Codeforces Round 941 (Div. 2)](https://codeforces.com/contest/1966) | Div. 2 | 800-1100 | 0/2 | 2m 20s |
+| [1967](1967/) | [Codeforces Round 942 (Div. 1)](https://codeforces.com/contest/1967) | Div. 1 | 1400-3500 | 1/8 | 10m 27s |
