@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.3.1 — Description of MIX"
-description: "Section 1.3.1 exercises — 8/26 solved."
+description: "Section 1.3.1 exercises — 10/26 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.3.1. Description of MIX
 
-Exercises from [TAOCP Volume 1](../) Section 1.3.1: 8/26 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.3.1: 10/26 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,10 +29,10 @@ Exercises from [TAOCP Volume 1](../) Section 1.3.1: 8/26 solved.
 | 9 |  [*15*] | simple | - | - |
 | [10](10.md) |  [*15*] | simple | verified | 51s |
 | 11 |  [*15*] | simple | - | - |
-| 12 |  [*10*] | simple | - | - |
+| [12](12.md) |  [*10*] | simple | verified | 5m27s |
 | 13 |  [*10*] | simple | - | - |
 | 14 |  [*20*] | medium | - | - |
-| 15 |  [*10*] | simple | - | - |
+| [15](15.md) |  [*10*] | simple | verified | 36s |
 | 16 |  [*20*] | medium | - | - |
 | 17 |  [*26*] | hard | - | - |
 | 18 |  [*22*] | medium | - | - |
