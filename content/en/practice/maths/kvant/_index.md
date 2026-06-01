@@ -1,6 +1,6 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (100 solved, 0 verified)."
+description: "Kvant mathematics problem solutions (101 solved, 0 verified)."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (100 solved, 0 verified).
+Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (101 solved, 0 verified).
 
 | # | Status | Time |
 |---|--------|------|
@@ -29,20 +29,20 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [15](15.md) | solved | 2m51s |
 | [16](16.md) | solved | 1m14s |
 | [17](17.md) | solved | 1m43s |
-| [18](18.md) | solved | 7m33s |
-| [19](19.md) | solved | 1m24s |
-| [20](20.md) | solved | 3m55s |
-| [21](21.md) | solved | 4m34s |
-| [22](22.md) | solved | 5m51s |
-| [23](23.md) | solved | 4m06s |
-| [24](24.md) | solved | 3m58s |
-| [25](25.md) | solved | 3m50s |
-| [26](26.md) | solved | 9m09s |
+| [18](18.md) | solved | 1m36s |
+| [19](19.md) | solved | 1m20s |
+| [20](20.md) | solved | 9m17s |
+| [21](21.md) | solved | 1m29s |
+| [22](22.md) | solved | 1m21s |
+| [23](23.md) | solved | 1m34s |
+| [24](24.md) | solved | 1m42s |
+| [25](25.md) | solved | 2m10s |
+| [26](26.md) | solved | 1m24s |
 | [27](27.md) | solved | 9m56s |
-| [28](28.md) | solved | 8m38s |
-| [29](29.md) | solved | 4m05s |
-| [30](30.md) | solved | 3m45s |
-| [31](31.md) | solved | 4m22s |
+| [28](28.md) | solved | 2m24s |
+| [29](29.md) | solved | 2m03s |
+| [30](30.md) | solved | 1m54s |
+| [31](31.md) | solved | 1m15s |
 | [32](32.md) | solved | 3m52s |
 | [33](33.md) | solved | 5m |
 | [34](34.md) | solved | 8m22s |
@@ -113,3 +113,4 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [653](653.md) | solved | 5m06s |
 | [657](657.md) | solved | 5m26s |
 | [664](664.md) | solved | 4m04s |
+| [670](670.md) | solved | 10m14s |
