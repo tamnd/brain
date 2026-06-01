@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 720 exercises solved, 353 verified.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 729 exercises solved, 358 verified.
 
 | Section | Title | Solved | Verified |
 |---------|-------|--------|----------|
@@ -25,12 +25,12 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [1.2.7](1.2.7/) | Harmonic Numbers | 25 | 3 |
 | [1.2.8](1.2.8/) | Fibonacci Numbers | 42 | 11 |
 | [1.2.9](1.2.9/) | Generating Functions | 26 | 19 |
-| [1.2.10](1.2.10/) | Analysis of an Algorithm | 21 | 21 |
+| [1.2.10](1.2.10/) | Analysis of an Algorithm | 22 | 22 |
 | [1.3.1](1.3.1/) | Description of MIX | 26 | 20 |
 | [1.3.2](1.3.2/) | The MIX Assembly Language | 9 | 8 |
-| [1.3.3](1.3.3/) | Applications to Permutations | 31 | 26 |
+| [1.3.3](1.3.3/) | Applications to Permutations | 36 | 29 |
 | [1.4.1](1.4.1/) | Subroutines | 7 | 6 |
-| [1.4.2](1.4.2/) | Coroutines | 5 | 4 |
+| [1.4.2](1.4.2/) | Coroutines | 7 | 5 |
 | [1.4.4](1.4.4/) | Input and Output | 18 | 5 |
 | [2.2.1](2.2.1/) | Stacks, Queues, and Deques | 14 | 1 |
 | [2.2.2](2.2.2/) | Sequential Allocation | 19 | 1 |
@@ -43,7 +43,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.3](2.3.3/) | Other Representations of Trees | 19 | 15 |
 | [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 11 |
 | [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 9 |
-| [1.4.3.1](1.4.3.1/) | A MIX Simulator | 6 | 3 |
+| [1.4.3.1](1.4.3.1/) | A MIX Simulator | 7 | 3 |
 | [1.4.3.2](1.4.3.2/) | Trace Routines | 7 | 1 |
 | [2.3.4.1](2.3.4.1/) | Free Trees | 7 | 5 |
 | [2.3.4.2](2.3.4.2/) | Oriented Trees | 8 | 6 |
