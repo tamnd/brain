@@ -3,7 +3,7 @@ set -euo pipefail
 
 REPO_DIR="$HOME/github/tamnd/brain"
 BRANCH="main"
-INTERVAL=300
+INTERVAL=${BRAIN_INTERVAL:-300}
 BASE_URL="https://brain.tamnd.com/"
 
 # colors
