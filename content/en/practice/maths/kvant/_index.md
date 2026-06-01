@@ -1,6 +1,6 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (17 solved, 0 verified)."
+description: "Kvant mathematics problem solutions (68 solved, 0 verified)."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 weight: 20
@@ -9,16 +9,66 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (17 solved, 0 verified).
+Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (68 solved, 0 verified).
 
 | # | Status | Time |
 |---|--------|------|
+| [1](1.md) | solved | 3m46s |
 | [2](2.md) | solved | 2m19s |
 | [3](3.md) | solved | 4m10s |
 | [4](4.md) | solved | 3m05s |
 | [5](5.md) | solved | 3m02s |
 | [6](6.md) | solved | 3m07s |
 | [7](7.md) | solved | 5m50s |
+| [8](8.md) | solved | 3m33s |
+| [9](9.md) | solved | 3m50s |
+| [10](10.md) | solved | 4m14s |
+| [11](11.md) | solved | 4m23s |
+| [14](14.md) | solved | 3m28s |
+| [15](15.md) | solved | 2m50s |
+| [16](16.md) | solved | 4m11s |
+| [18](18.md) | solved | 7m33s |
+| [19](19.md) | solved | 7m38s |
+| [20](20.md) | solved | 3m55s |
+| [21](21.md) | solved | 4m34s |
+| [22](22.md) | solved | 5m51s |
+| [23](23.md) | solved | 4m06s |
+| [24](24.md) | solved | 3m58s |
+| [25](25.md) | solved | 3m50s |
+| [26](26.md) | solved | 9m09s |
+| [27](27.md) | solved | 9m56s |
+| [28](28.md) | solved | 8m38s |
+| [29](29.md) | solved | 4m05s |
+| [30](30.md) | solved | 3m45s |
+| [31](31.md) | solved | 4m22s |
+| [32](32.md) | solved | 3m52s |
+| [33](33.md) | solved | 5m |
+| [34](34.md) | solved | 8m22s |
+| [35](35.md) | solved | 4m07s |
+| [36](36.md) | solved | 3m03s |
+| [37](37.md) | solved | 3m40s |
+| [38](38.md) | solved | 4m32s |
+| [39](39.md) | solved | 3m32s |
+| [40](40.md) | solved | 2m56s |
+| [41](41.md) | solved | 3m47s |
+| [42](42.md) | solved | 3m17s |
+| [43](43.md) | solved | 4m04s |
+| [44](44.md) | solved | 2m54s |
+| [45](45.md) | solved | 4m05s |
+| [46](46.md) | solved | 4m |
+| [47](47.md) | solved | 4m18s |
+| [48](48.md) | solved | 3m30s |
+| [49](49.md) | solved | 3m13s |
+| [50](50.md) | solved | 3m51s |
+| [51](51.md) | solved | 3m36s |
+| [52](52.md) | solved | 10m42s |
+| [53](53.md) | solved | 4m12s |
+| [54](54.md) | solved | 3m20s |
+| [55](55.md) | solved | 3m43s |
+| [56](56.md) | solved | 3m55s |
+| [57](57.md) | solved | 3m22s |
+| [58](58.md) | solved | 5m59s |
+| [59](59.md) | solved | 6m40s |
 | [241](241.md) | solved | 1m57s |
 | [600](600.md) | solved | 2m02s |
 | [601](601.md) | solved | 1m22s |
@@ -30,3 +80,4 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [607](607.md) | solved | 2m03s |
 | [608](608.md) | solved | 1m46s |
 | [609](609.md) | solved | 2m05s |
+| [610](610.md) | solved | 2m04s |

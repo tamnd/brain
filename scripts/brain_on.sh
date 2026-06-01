@@ -150,6 +150,12 @@ while true; do
   # Pull remote changes (smart: stash/rebase/pop, auto-resolve conflicts).
   smart_sync
 
+  # Rebuild Kvant _index.md from all present .md files — must run AFTER smart_sync
+  # so it sees files from all servers before regenerating the index.
+  if KVANT_OUT="$(python3 "$REPO_DIR/scripts/fix_kvant_index.py" 2>&1)" && [ -n "$KVANT_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}kvant-idx: ${line}${RST}"; done <<< "$KVANT_OUT"
+  fi
+
   # Commit any local changes (always safe to commit locally).
   if [ -n "$(git status --porcelain)" ]; then
     git add -A
