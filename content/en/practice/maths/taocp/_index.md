@@ -9,13 +9,14 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 729 exercises solved, 358 verified.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 736 exercises solved, 361 verified.
 
 | Section | Title | Solved | Verified |
 |---------|-------|--------|----------|
 | [1.1](1.1/) | Algorithms | 9 | 9 |
 | [2.1](2.1/) | Introduction | 9 | 0 |
 | [2.3](2.3/) | Trees | 22 | 1 |
+| [2.5](2.5/) | Dynamic Storage Allocation | 7 | 3 |
 | [1.2.1](1.2.1/) | Mathematical Induction | 15 | 12 |
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 24 |
 | [1.2.3](1.2.3/) | Sums and Products | 46 | 43 |
