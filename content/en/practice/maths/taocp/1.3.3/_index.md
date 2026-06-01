@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.3.3: Applications to Permutations"
-description: "Section 1.3.3 exercises: 23/37 solved."
+description: "Section 1.3.3 exercises: 31/37 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.3.3"
@@ -14,30 +14,30 @@ draft: false
 
 # Section 1.3.3. Applications to Permutations
 
-Exercises from [TAOCP Volume 1](../) Section 1.3.3: 23/37 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.3.3: 31/37 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*02*] | simple | verified | 1m07s |
 | [2](02.md) |  [*10*] | simple | verified | 1m22s |
 | [3](03.md) |  [*03*] | simple | verified | 1m19s |
-| 4 |  [*10*] | simple | - | - |
+| [4](04.md) |  [*10*] | simple | verified | 2m50s |
 | [5](05.md) |  [*M10*] | math-simple | verified | 1m14s |
 | [6](06.md) |  [*M28*] | math-hard | verified | 1m21s |
 | 7 |  [*10*] | simple | - | - |
-| 8 |  [*23*] | medium | - | - |
-| 9 |  [*10*] | simple | - | - |
+| [8](08.md) |  [*23*] | medium | verified | 1m31s |
+| [9](09.md) |  [*10*] | simple | verified | 1m04s |
 | [10](10.md) |  [*M28*] | math-hard | verified | 1m32s |
 | [11](11.md) |  [*15*] | simple | verified | 1m28s |
-| 12 |  [*M27*] | math-hard | - | - |
+| [12](12.md) |  [*M27*] | math-hard | solved | 1m15s |
 | [13](13.md) |  [*M24*] | math-medium | verified | 9m43s |
 | [14](14.md) |  [*M34*] | math-hard | verified | 24m50s |
-| 15 |  [*M12*] | math-simple | - | - |
+| [15](15.md) |  [*M12*] | math-simple | solved | 4m07s |
 | [16](16.md) |  [*M15*] | math-simple | verified | 32m02s |
-| 17 |  [*M24*] | math-medium | - | - |
+| [17](17.md) |  [*M24*] | math-medium | verified | 1m28s |
 | [18](18.md) |  [*M27*] | math-hard | verified | 16m52s |
-| 19 |  [*HM21*] | hm-medium | - | - |
-| 20 |  [*M20*] | math-medium | - | - |
+| [19](19.md) |  [*HM21*] | hm-medium | verified | 1m18s |
+| [20](20.md) |  [*M20*] | math-medium | verified | 1m23s |
 | [21](21.md) |  [*M22*] | math-medium | verified | 42s |
 | [22](22.md) |  [*HM34*] | hm-hard | verified | 11m55s |
 | [23](23.md) |  [*HM42*] | hm-project | solved | 11m45s |
