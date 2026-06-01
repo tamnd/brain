@@ -1,6 +1,6 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (101 solved, 0 verified)."
+description: "Kvant mathematics problem solutions (102 solved, 0 verified)."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (101 solved, 0 verified).
+Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (102 solved, 0 verified).
 
 | # | Status | Time |
 |---|--------|------|
@@ -42,20 +42,20 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [28](28.md) | solved | 2m24s |
 | [29](29.md) | solved | 2m03s |
 | [30](30.md) | solved | 1m54s |
-| [31](31.md) | solved | 1m15s |
-| [32](32.md) | solved | 3m52s |
-| [33](33.md) | solved | 5m |
-| [34](34.md) | solved | 8m22s |
-| [35](35.md) | solved | 4m07s |
-| [36](36.md) | solved | 3m03s |
-| [37](37.md) | solved | 3m40s |
-| [38](38.md) | solved | 4m32s |
-| [39](39.md) | solved | 3m32s |
-| [40](40.md) | solved | 2m56s |
-| [41](41.md) | solved | 3m47s |
-| [42](42.md) | solved | 3m17s |
-| [43](43.md) | solved | 4m04s |
-| [44](44.md) | solved | 2m54s |
+| [31](31.md) | solved | 2m43s |
+| [32](32.md) | solved | 3m17s |
+| [33](33.md) | solved | 5m10s |
+| [34](34.md) | solved | 2m02s |
+| [35](35.md) | solved | 1m13s |
+| [36](36.md) | solved | 1m06s |
+| [37](37.md) | solved | 1m55s |
+| [38](38.md) | solved | 1m26s |
+| [39](39.md) | solved | 1m37s |
+| [40](40.md) | solved | 1m54s |
+| [41](41.md) | solved | 1m55s |
+| [42](42.md) | solved | 1m37s |
+| [43](43.md) | solved | 1m26s |
+| [44](44.md) | solved | 1m02s |
 | [45](45.md) | solved | 4m05s |
 | [46](46.md) | solved | 4m |
 | [47](47.md) | solved | 4m18s |
@@ -114,3 +114,4 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [657](657.md) | solved | 5m26s |
 | [664](664.md) | solved | 4m04s |
 | [670](670.md) | solved | 10m14s |
+| [689](689.md) | solved | 2m25s |
