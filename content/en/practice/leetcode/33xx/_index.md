@@ -20,7 +20,7 @@ draft: false
 | 3307 | [Find the K-th Character in String Game II](3307.md) | 🔴 Hard | 1m 15s | The problem describes a string manipulation game between Alice and … |
 | 3308 | [Find Top Performing Driver](3308.md) | 🟡 Medium | 1m 14s | The problem asks us to identify the top-performing driver for each … |
 | 3309 | [Maximum Possible Number by Binary Concatenation](3309.md) | 🟡 Medium | 1m 4s | The problem is asking for the maximum integer value that can be cre… |
-| 3310 | [Remove Methods From Project](3310.md) | 🟡 Medium | 1m 13s | The problem models a project as a directed graph of method calls. E… |
+| 3310 | [Remove Methods From Project](3310.md) | 🟡 Medium | 9m 11s | Understood. For any TAOCP Volume 1 exercise you provide, I will wri… |
 | 3311 | [Construct 2D Grid Matching Graph Layout](3311.md) | 🔴 Hard | 1m 55s | The problem gives us an undirected graph with n nodes labeled from … |
 | 3312 | [Sorted GCD Pair Queries](3312.md) | 🔴 Hard | 40s | === 1996-G1 === Origin: GBR Let triangle have orthocenter , and let… |
 | 3313 | [Find the Last Marked Nodes in Tree](3313.md) | 🔴 Hard | 1m 33s | We are given an undirected tree with n nodes labeled from 0 to n - … |

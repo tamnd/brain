@@ -68,7 +68,7 @@ draft: false
 | 3155 | [Maximum Number of Upgradable Servers](3155.md) | 🟡 Medium | 1m 23s | The problem requires calculating the maximum number of servers that… |
 | 3156 | [Employee Task Duration and Concurrent Tasks](3156.md) | 🔴 Hard | 1m 38s | The problem gives us a table named Tasks, where each row represents… |
 | 3157 | [Find the Level of Tree with Minimum Sum](3157.md) | 🟡 Medium | 1m 31s | The problem gives us the root of a binary tree, where every node co… |
-| 3158 | [Find the XOR of Numbers Which Appear Twice](3158.md) | 🟢 Easy | 47s | The problem asks us to find the XOR of all numbers in an array nums… |
+| 3158 | [Find the XOR of Numbers Which Appear Twice](3158.md) | 🟢 Easy | 6m 54s | This problem asks us to find all numbers in the array that appear e… |
 | 3159 | [Find Occurrences of an Element in an Array](3159.md) | 🟡 Medium | 1m 11s | The problem gives us three inputs: - An integer array nums - An int… |
 | 3160 | [Find the Number of Distinct Colors Among the Balls](3160.md) | 🟡 Medium | 1m 23s | The problem gives us limit + 1 balls labeled from 0 to limit. Initi… |
 | 3161 | [Block Placement Queries](3161.md) | 🔴 Hard | 1m 11s | The problem involves simulating operations on an infinite number li… |
@@ -101,6 +101,7 @@ draft: false
 | 3188 | [Find Top Scoring Students II](3188.md) | 🔴 Hard | 1m 18s | This problem asks us to identify students who satisfy a combination… |
 | 3189 | [Minimum Moves to Get a Peaceful Board](3189.md) | 🟡 Medium | 1m 7s | In this problem, we are given the positions of n rooks placed on an… |
 | 3190 | [Find Minimum Operations to Make All Elements Divisible by Three](3190.md) | 🟢 Easy | 1m 12s | The problem gives us an integer array nums. In one operation, we ar… |
+| 3191 | [Minimum Operations to Make Binary Array Elements Equal to One I](3191.md) | 🟡 Medium | 1m 33s | We are given a binary array nums consisting only of 0s and 1s. We a… |
 | 3192 | [Minimum Operations to Make Binary Array Elements Equal to One II](3192.md) | 🟡 Medium | 51s | This problem asks us to take a binary array nums, which contains on… |
 | 3193 | [Count the Number of Inversions](3193.md) | 🔴 Hard | 1m 33s | The problem asks us to count how many permutations of the numbers [… |
 | 3194 | [Minimum Average of Smallest and Largest Elements](3194.md) | 🟢 Easy | 1m 3s | The problem gives us an even-length integer array nums. We repeated… |
@@ -109,11 +110,3 @@ draft: false
 | 3197 | [Find the Minimum Area to Cover All Ones II](3197.md) | 🔴 Hard | 1m 31s | The problem gives us a binary matrix grid, where each cell contains… |
 | 3198 | [Find Cities in Each State](3198.md) | 🟢 Easy | 1m 31s | This problem provides a database table named cities, where each row… |
 | 3199 | [Count Triplets with Even XOR Set Bits I](3199.md) | 🟢 Easy | 1m 18s | The problem gives us three integer arrays, a, b, and c. We must cou… |
-| 3108 | [Minimum Cost Walk in Weighted Graph](3108.md) | 🔴 Hard | 1m 48s | The problem gives us an undirected weighted graph with n nodes and … |
-| 3119 | [Maximum Number of Potholes That Can Be Fixed](3119.md) | 🟡 Medium | 1m 30s | The problem gives a binary string road consisting of characters 'x'… |
-| 3135 | [Equalize Strings by Adding or Removing Characters at Ends](3135.md) | 🟡 Medium | 7m 1s | The problem asks us to transform one string, initial, into another … |
-| 3151 | [Special Array I](3151.md) | 🟢 Easy | 3m 55s | The problem asks us to determine whether an array of integers is sp… |
-| 3176 | [Find the Maximum Length of a Good Subsequence I](3176.md) | 🟡 Medium | 1m 11s | Let's carefully build a complete technical solution guide for LeetC… |
-| 3183 | [The Number of Ways to Make the Sum](3183.md) | 🟡 Medium | 1m 44s | The problem asks us to count how many distinct combinations of coin… |
-| 3188 | [Find Top Scoring Students II](3188.md) | 🔴 Hard | 4m 20s | This problem asks us to identify students who satisfy a fairly stri… |
-| 3191 | [Minimum Operations to Make Binary Array Elements Equal to One I](3191.md) | 🟡 Medium | 1m 33s | We are given a binary array nums consisting only of 0s and 1s. We a… |
