@@ -68,24 +68,6 @@ jobs:
           tago build --base-url "https://brain.tamnd.com/"
           cp public/.tago-cache.db .tago-cache.db 2>/dev/null || true
 
-      - name: Export source markdown for Accept:text/markdown support
-        run: |
-          cd content/en
-          find . -name "*.md" | while IFS= read -r f; do
-            rel="${f#./}"
-            dir="$(dirname "$rel")"
-            base="$(basename "$rel" .md)"
-            if [ "$base" = "_index" ]; then
-              dest="../../public/$dir/index.md"
-            else
-              dest="../../public/$dir/$base/index.md"
-            fi
-            mkdir -p "$(dirname "$dest")"
-            cp "$rel" "$dest"
-          done
-          cd ../..
-          echo "Exported $(find public -name '*.md' | wc -l) markdown files to public/"
-
       - name: Remove oversized files before deploy
         run: find public -size +24M -print -delete
 
