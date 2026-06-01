@@ -179,8 +179,7 @@ $$\sum_{i=0}^{x} (-1)^i \binom{x}{i}(t+x-i)^n$$
 
 Define:
 
-$$f_x = \frac{1}{x!}
-\sum_{i=0}^{x} (-1)^i \binom{x}{i}(t+x-i)^n$$
+$$f_x = \frac{1}{x!} \sum_{i=0}^{x} (-1)^i \binom{x}{i}(t+x-i)^n$$
 
 Then the contribution of all columns together is:
 

@@ -249,9 +249,7 @@ Another useful edge case is the maximum allowed input:
 
 The computation becomes
 
-$$2 \cdot 100^2 - 100
-= 2 \cdot 10000 - 100
-= 19900$$
+$$2 \cdot 100^2 - 100 = 2 \cdot 10000 - 100 = 19900$$
 
 The algorithm prints
 

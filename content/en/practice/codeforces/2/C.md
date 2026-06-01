@@ -87,9 +87,7 @@ We could sample a dense grid or run gradient ascent. The problem is precision. C
 
 The next improvement is to treat the equal-angle condition algebraically. Since arcsin is strictly increasing,
 
-$$2\arcsin\left(\frac{r_1}{d_1}\right)
-=
-2\arcsin\left(\frac{r_2}{d_2}\right)$$
+$$2\arcsin\left(\frac{r_1}{d_1}\right) = 2\arcsin\left(\frac{r_2}{d_2}\right)$$
 
 implies
 
@@ -159,9 +157,7 @@ Squaring removes square roots while preserving equality because all distances ar
 
 For circles $1$ and $2$:
 
-$$\frac{(x-x_1)^2+(y-y_1)^2}{r_1^2}
-=
-\frac{(x-x_2)^2+(y-y_2)^2}{r_2^2}$$
+$$\frac{(x-x_1)^2+(y-y_1)^2}{r_1^2} = \frac{(x-x_2)^2+(y-y_2)^2}{r_2^2}$$
 
 1. Rearrange the equation.
 

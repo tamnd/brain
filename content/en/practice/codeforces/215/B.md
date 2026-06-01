@@ -98,13 +98,9 @@ $$B p_1 (r_1^2 - r_2^2) = A p_2 r_2^2$$
 
 $$B p_1 r_1^2 = r_2^2 (A p_2 + B p_1)$$
 
-$$r_2^2 =
-\frac{B p_1 r_1^2}{A p_2 + B p_1}$$
+$$r_2^2 = \frac{B p_1 r_1^2}{A p_2 + B p_1}$$
 
-$$r_2 =
-r_1 \sqrt{
-\frac{B p_1}{A p_2 + B p_1}
-}$$
+$$r_2 = r_1 \sqrt{ \frac{B p_1}{A p_2 + B p_1} }$$
 
 Now the optimization becomes obvious. The expression increases when:
 
@@ -139,10 +135,7 @@ A lighter inner disk allows a larger radius before its mass becomes too large.
 4. Read constants $A$ and $B$.
 5. Compute
 
-$$r_2 =
-R \sqrt{
-\frac{B P_1}{A P_2 + B P_1}
-}$$
+$$r_2 = R \sqrt{ \frac{B P_1}{A P_2 + B P_1} }$$
 
 1. Print the result with sufficient precision.
 
@@ -150,10 +143,7 @@ R \sqrt{
 
 The derived formula expresses $r_2$ entirely in terms of independent variables:
 
-$$r_2 =
-r_1 \sqrt{
-\frac{B p_1}{A p_2 + B p_1}
-}$$
+$$r_2 = r_1 \sqrt{ \frac{B p_1}{A p_2 + B p_1} }$$
 
 The numerator grows with $r_1$ and $p_1$, while the denominator grows with $p_2$. Since all values are positive, maximizing $r_1$ and $p_1$ and minimizing $p_2$ always maximizes the entire expression. No interaction between variables creates tradeoffs, so choosing each independently optimal value produces the globally optimal answer.
 
@@ -393,13 +383,11 @@ $$r_1 = 10,\quad p_1 = 100,\quad p_2 = 1$$
 
 Then:
 
-$$r_2 = 10 \sqrt{\frac{100}{101}}
-\approx 9.95037$$
+$$r_2 = 10 \sqrt{\frac{100}{101}} \approx 9.95037$$
 
 If we mistakenly minimized $p_1$, the result would become:
 
-$$10 \sqrt{\frac{1}{2}}
-\approx 7.07$$
+$$10 \sqrt{\frac{1}{2}} \approx 7.07$$
 
 which is far from optimal.
 
@@ -414,13 +402,11 @@ Now consider the opposite direction for $p_2$:
 
 The algorithm chooses the smallest $p_2$, namely 1:
 
-$$r_2 = 10 \sqrt{\frac{10}{11}}
-\approx 9.5346$$
+$$r_2 = 10 \sqrt{\frac{10}{11}} \approx 9.5346$$
 
 Choosing $p_2 = 100$ instead gives:
 
-$$10 \sqrt{\frac{10}{110}}
-\approx 3.015$$
+$$10 \sqrt{\frac{10}{110}} \approx 3.015$$
 
 The huge drop confirms that minimizing $p_2$ is necessary.
 
@@ -435,7 +421,6 @@ Finally, consider a precision-sensitive case:
 
 The exact answer is:
 
-$$5 \sqrt{\frac35}
-\approx 3.872983346207$$
+$$5 \sqrt{\frac35} \approx 3.872983346207$$
 
 The implementation uses floating point arithmetic and prints many decimal places, so the required $10^{-6}$ precision is safely achieved.

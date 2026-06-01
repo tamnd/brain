@@ -26,9 +26,7 @@ draft: false
 
 We are given an array of non-negative integers. In one operation, we choose an index $i$ such that $2 \le i \le n-1$, and decrease three consecutive elements in the following way:
 
-$$a_{i-1} \mathrel{-}= 1,\quad
-a_i \mathrel{-}= 2,\quad
-a_{i+1} \mathrel{-}= 1$$
+$$a_{i-1} \mathrel{-}= 1,\quad a_i \mathrel{-}= 2,\quad a_{i+1} \mathrel{-}= 1$$
 
 The operation may be used any number of times on any valid index. The goal is to determine whether it is possible to reduce the entire array to all zeros.
 
@@ -135,9 +133,7 @@ $$a_{i+1} \mathrel{-}= 2x$$
 $$a_{i+2} \mathrel{-}= x$$
 5. After updating, check whether either:
 
-$$a_{i+1} < 0
-\quad \text{or} \quad
-a_{i+2} < 0$$
+$$a_{i+1} < 0 \quad \text{or} \quad a_{i+2} < 0$$
 
 If so, output "NO".
 6. Continue processing until index $n-3$.

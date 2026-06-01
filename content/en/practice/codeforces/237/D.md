@@ -265,11 +265,7 @@ $$\sum d_i = 2(n-1)$$
 
 we get:
 
-$$\sum (d_i - 1)
-=
-2(n-1) - n
-=
-n-2$$
+$$\sum (d_i - 1) = 2(n-1) - n = n-2$$
 
 Exactly the number of edges required for a tree over $n-1$ nodes.
 

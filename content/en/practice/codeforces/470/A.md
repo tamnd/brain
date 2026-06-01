@@ -227,8 +227,7 @@ Input:
 
 The algorithm computes:
 
-$$3 \cdot 0 \cdot (0+1) + 1
-= 1$$
+$$3 \cdot 0 \cdot (0+1) + 1 = 1$$
 
 Output:
 

@@ -197,15 +197,7 @@ Initially every component has value $0$.
 
 When components $A$ and $B$ merge:
 
-$$\Delta
-=
-(c_1^A+c_1^B)
-(c_2^A+c_2^B)
-(c_3^A+c_3^B)
--
-c_1^Ac_2^Ac_3^A
--
-c_1^Bc_2^Bc_3^B.$$
+$$\Delta = (c_1^A+c_1^B) (c_2^A+c_2^B) (c_3^A+c_3^B) - c_1^Ac_2^Ac_3^A - c_1^Bc_2^Bc_3^B.$$
 
 This is the number of newly created triples whose common prefix length is at least the current LCP.
 

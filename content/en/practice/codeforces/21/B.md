@@ -104,9 +104,7 @@ If `D = 0`, the lines are parallel. At that point we still need to distinguish b
 
 The key observation is that identical lines must have all coefficients proportional:
 
-$$\frac{A_1}{A_2} =
-\frac{B_1}{B_2} =
-\frac{C_1}{C_2}$$
+$$\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}$$
 
 Instead of dividing, we compare products:
 

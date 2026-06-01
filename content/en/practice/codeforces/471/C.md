@@ -38,9 +38,7 @@ $$a_1 > a_2 > \dots > a_h \ge 1$$
 
 rooms, then the total number of cards is
 
-$$\sum_{i=1}^{h}(3a_i-1)
-=
-3\sum a_i - h.$$
+$$\sum_{i=1}^{h}(3a_i-1) = 3\sum a_i - h.$$
 
 We are given exactly `n` cards and must count how many different heights `h` are possible. A height is valid if there exists a strictly decreasing positive sequence of room counts whose total card consumption is exactly `n`.
 
@@ -88,9 +86,7 @@ This is a classic number-theoretic question.
 
 The smallest possible sum of `h` distinct positive integers is obtained from
 
-$$1+2+\cdots+h
-=
-\frac{h(h+1)}2.$$
+$$1+2+\cdots+h = \frac{h(h+1)}2.$$
 
 Once we have such a set, increasing the largest element by any nonnegative amount preserves distinctness. Consequently, every integer sum at least
 

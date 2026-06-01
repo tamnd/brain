@@ -100,9 +100,7 @@ If two connected structures both end at the same cell `v`, one covering subset `
 
 That gives the transition:
 
-$$dp[A \cup B][v]
-=
-dp[A][v] + dp[B][v] - cost(v)$$
+$$dp[A \cup B][v] = dp[A][v] + dp[B][v] - cost(v)$$
 
 We subtract the cell cost once because both structures already counted it.
 
@@ -142,12 +140,7 @@ $$sub \subset mask$$
 
 update:
 
-$$dp[mask][v]
-=
-\min(
-dp[mask][v],
-dp[sub][v] + dp[mask \oplus sub][v] - cost(v)
-)$$
+$$dp[mask][v] = \min( dp[mask][v], dp[sub][v] + dp[mask \oplus sub][v] - cost(v) )$$
 
 Both connected structures meet at the same cell `v`, producing a larger connected structure.
 5. Run shortest path relaxation for every mask.

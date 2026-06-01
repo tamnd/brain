@@ -32,10 +32,7 @@ All friends start from their hotels and travel to the same restaurant. For a cho
 
 For every restaurant we must compute
 
-$$\max_{\text{hotel } h}
-\left(
-|x_h-x_r|+|y_h-y_r|
-\right)$$
+$$\max_{\text{hotel } h} \left( |x_h-x_r|+|y_h-y_r| \right)$$
 
 and choose a restaurant that minimizes this value. We must output both the optimal maximum distance and the index of any restaurant achieving it.
 
@@ -107,37 +104,15 @@ $$|a-x|+|b-y|.$$
 
 A standard identity for Manhattan geometry is
 
-$$|u|+|v|
-=
-\max
-\{
-(u+v),
-(u-v),
-(-u+v),
-(-u-v)
-\}.$$
+$$|u|+|v| = \max \{ (u+v), (u-v), (-u+v), (-u-v) \}.$$
 
 Substituting $u=a-x$ and $v=b-y$,
 
-$$|a-x|+|b-y|
-=
-\max
-\{
-(a+b)-(x+y),
-(a-b)-(x-y),
-(-a+b)-(-x+y),
-(-a-b)-(-x-y)
-\}.$$
+$$|a-x|+|b-y| = \max \{ (a+b)-(x+y), (a-b)-(x-y), (-a+b)-(-x+y), (-a-b)-(-x-y) \}.$$
 
 For a fixed restaurant, the maximum over all hotels becomes
 
-$$\max
-\left(
-\max(a+b)-(x+y),
-\max(a-b)-(x-y),
-\max(-a+b)-(-x+y),
-\max(-a-b)-(-x-y)
-\right).$$
+$$\max \left( \max(a+b)-(x+y), \max(a-b)-(x-y), \max(-a+b)-(-x+y), \max(-a-b)-(-x-y) \right).$$
 
 The crucial observation is that all hotel information is compressed into four global maxima.
 
@@ -177,13 +152,7 @@ These are the only hotel statistics needed later.
 3. Process restaurants one by one.
 4. For a restaurant $(x,y)$, compute
 
-$$d=
-\max(
-M_1-(x+y),
-M_2-(x-y),
-M_3-(-x+y),
-M_4-(-x-y)
-).$$
+$$d= \max( M_1-(x+y), M_2-(x-y), M_3-(-x+y), M_4-(-x-y) ).$$
 
 This value equals the maximum Manhattan distance from the restaurant to any hotel.
 5. Keep the restaurant with the smallest value of $d$.

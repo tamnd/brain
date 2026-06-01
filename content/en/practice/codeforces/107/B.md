@@ -117,8 +117,7 @@ eligible players outside his department.
 
 The probability of the bad event becomes:
 
-$$\frac{\binom{\text{outside}}{n-1}}
-{\binom{\text{total}-1}{n-1}}$$
+$$\frac{\binom{\text{outside}}{n-1}} {\binom{\text{total}-1}{n-1}}$$
 
 Then the required answer is:
 
@@ -162,8 +161,7 @@ players outside his department, so the count is:
 $$\binom{total-own}{n-1}$$
 8. The bad probability is:
 
-$$\frac{\binom{total-own}{n-1}}
-{\binom{total-1}{n-1}}$$
+$$\frac{\binom{total-own}{n-1}} {\binom{total-1}{n-1}}$$
 9. Print:
 
 $$1 - \text{bad probability}$$

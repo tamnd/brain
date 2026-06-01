@@ -116,8 +116,7 @@ Each connected component becomes one DSU set, and the root stores the diameter o
 The cities already belong to the same component.
 8. Otherwise compute:
 
-$$r_1=\left\lceil\frac{d_1}{2}\right\rceil,\quad
-r_2=\left\lceil\frac{d_2}{2}\right\rceil$$
+$$r_1=\left\lceil\frac{d_1}{2}\right\rceil,\quad r_2=\left\lceil\frac{d_2}{2}\right\rceil$$
 9. Compute the new diameter:
 
 $$d=\max(d_1,d_2,r_1+r_2+1)$$

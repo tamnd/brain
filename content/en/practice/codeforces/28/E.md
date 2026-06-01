@@ -110,9 +110,7 @@ because $z_u<0$.
 
 The final landing point is then
 
-$$L = A
-+ t_1(V_x,V_y)
-+ t_3(U_x,U_y)$$
+$$L = A + t_1(V_x,V_y) + t_3(U_x,U_y)$$
 
 The brute-force method is conceptually correct because every valid trajectory is uniquely determined by $(t_1,t_2)$. The problem is that the space of real-valued parameters is continuous. Numerical search would require either binary searching over geometry or sampling, neither of which is reliable enough for exact optimization with floating-point precision.
 
@@ -128,18 +126,11 @@ During vertical free-fall, altitude decreases from $h$ to some value $h'\ge 0$. 
 
 The resulting horizontal landing position becomes
 
-$$L =
-A
-+ t_1(V_x,V_y)
-+ \frac{h'}{-z_u}(U_x,U_y)$$
+$$L = A + t_1(V_x,V_y) + \frac{h'}{-z_u}(U_x,U_y)$$
 
 Since $0\le h'\le h$, every reachable landing point for fixed $t_1$ lies on a segment:
 
-$$L(t_1,\lambda)
-=
-A+t_1(V_x,V_y)
-+
-\lambda t_1(U_x,U_y)$$
+$$L(t_1,\lambda) = A+t_1(V_x,V_y) + \lambda t_1(U_x,U_y)$$
 
 where
 

@@ -114,8 +114,7 @@ This means we first assume it can descend completely.
 We compute the lowest height where bowl `j` does not intersect bowl `i`.
 5. Let
 
-$$k_i = \frac{R_i - r_i}{h_i}, \quad
-k_j = \frac{R_j - r_j}{h_j}$$
+$$k_i = \frac{R_i - r_i}{h_i}, \quad k_j = \frac{R_j - r_j}{h_j}$$
 
 These are the side slopes of the bowls.
 

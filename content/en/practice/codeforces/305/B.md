@@ -74,8 +74,7 @@ One more tricky scenario comes from reducing fractions too late.
 
 The continued fraction equals:
 
-$$999999999999999999 + \frac{1}{1}
-= 1000000000000000000$$
+$$999999999999999999 + \frac{1}{1} = 1000000000000000000$$
 
 Intermediate values become extremely large. Languages with 64-bit overflow would fail if the implementation multiplies before simplifying. Python avoids overflow, but the algorithm should still stay mathematically clean.
 
@@ -85,9 +84,7 @@ The brute-force idea is straightforward: explicitly evaluate the continued fract
 
 We can reconstruct the fraction from the back. Suppose we already know the value of the suffix as `x / y`. Then adding the previous term `a[i]` transforms it into:
 
-$$a_i + \frac{y}{x}
-=
-\frac{a_i x + y}{x}$$
+$$a_i + \frac{y}{x} = \frac{a_i x + y}{x}$$
 
 This works because every finite continued fraction represents a rational number.
 

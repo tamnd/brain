@@ -129,9 +129,7 @@ optimal pairs.
 
 If `mn == mx`, then all flowers have identical beauty. Every pair achieves difference `0`, so we must count all unordered pairs:
 
-$$\binom{n}{2}
-=
-\frac{n(n-1)}{2}$$
+$$\binom{n}{2} = \frac{n(n-1)}{2}$$
 
 This reduces the problem to finding the minimum value, maximum value, and their frequencies.
 

@@ -141,8 +141,7 @@ There are only two meaningful strategies.
 
 The first strategy keeps every element in the same group. Then every pair value is unchanged, so:
 
-$$\text{goodness} =
-(b_{n-1} + b_n) - (b_1 + b_2)$$
+$$\text{goodness} = (b_{n-1} + b_n) - (b_1 + b_2)$$
 
 The second strategy attempts to improve the spread by forcing the smallest pair to receive `+h` while preventing the largest pair from receiving `+h`.
 

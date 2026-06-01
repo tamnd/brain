@@ -128,8 +128,7 @@ $$P(x)=c_0+c_1x+\dots+c_dx^d$$
 
 then:
 
-$$P(x)(x+a)=
-ac_0+(c_0+ac_1)x+\dots+c_dx^{d+1}$$
+$$P(x)(x+a)= ac_0+(c_0+ac_1)x+\dots+c_dx^{d+1}$$
 
 This local transition makes dynamic polynomial construction natural.
 

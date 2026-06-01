@@ -108,10 +108,7 @@ for `0 ≤ t ≤ 5`.
 
 That changes the problem completely. Instead of dynamically evaluating arbitrary polynomial weights, we only need to maintain six kinds of weighted sums inside each segment:
 
-$$\sum a_i i^0,\;
-\sum a_i i^1,\;
-\dots,\;
-\sum a_i i^5$$
+$$\sum a_i i^0,\; \sum a_i i^1,\; \dots,\; \sum a_i i^5$$
 
 Once those are available for any interval, every query becomes a small algebraic reconstruction using binomial coefficients.
 
@@ -186,10 +183,7 @@ $$(i-l+1)^k = \sum_{t=0}^{k} \binom{k}{t} i^t (1-l)^{k-t}$$
 
 the answer becomes:
 
-$$\sum_{t=0}^{k}
-\binom{k}{t}
-(1-l)^{k-t}
-T_t$$
+$$\sum_{t=0}^{k} \binom{k}{t} (1-l)^{k-t} T_t$$
 
 Only six terms are needed because `k ≤ 5`.
 
@@ -407,11 +401,7 @@ $$5\cdot1 + 10\cdot2 = 25$$
 
 The second query evaluates:
 
-$$0\cdot1^3 + 2\cdot2^3 + 1\cdot3^3
-=
-0 + 16 + 27
-=
-43$$
+$$0\cdot1^3 + 2\cdot2^3 + 1\cdot3^3 = 0 + 16 + 27 = 43$$
 
 This trace shows why the shifted indexing matters. Inside `[2,4]`, weights start again from `1`.
 
@@ -437,11 +427,7 @@ Input:
 
 The first query computes:
 
-$$1\cdot1^2 + 2\cdot2^2 + 3\cdot3^2
-=
-1 + 8 + 27
-=
-36$$
+$$1\cdot1^2 + 2\cdot2^2 + 3\cdot3^2 = 1 + 8 + 27 = 36$$
 
 The last query demonstrates the `k = 0` case. Every weight equals `1`, so the result is simply the ordinary sum over the interval.
 

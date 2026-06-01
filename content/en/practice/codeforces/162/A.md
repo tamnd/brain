@@ -54,11 +54,7 @@ Consider the input:
 
 The correct computation is:
 
-$$\frac{3 \cdot 2^2 - 2}{2}
-=
-\frac{12 - 2}{2}
-=
-5$$
+$$\frac{3 \cdot 2^2 - 2}{2} = \frac{12 - 2}{2} = 5$$
 
 A careless implementation could produce `11` or `10` depending on the misplaced parentheses.
 
@@ -249,11 +245,7 @@ The smallest possible input is:
 
 The algorithm computes:
 
-$$\frac{3 \cdot 1^2 - 1}{2}
-=
-\frac{2}{2}
-=
-1$$
+$$\frac{3 \cdot 1^2 - 1}{2} = \frac{2}{2} = 1$$
 
 The program prints:
 
@@ -271,9 +263,7 @@ Another easy place to fail is operator precedence. Consider:
 
 The correct evaluation is:
 
-$$\frac{3 \cdot 2^2 - 2}{2}
-=
-5$$
+$$\frac{3 \cdot 2^2 - 2}{2} = 5$$
 
 The implementation explicitly uses parentheses:
 
@@ -291,10 +281,6 @@ The maximum input is:
 
 The algorithm computes:
 
-$$\frac{3 \cdot 100^2 - 100}{2}
-=
-\frac{30000 - 100}{2}
-=
-14950$$
+$$\frac{3 \cdot 100^2 - 100}{2} = \frac{30000 - 100}{2} = 14950$$
 
 Python integers easily handle this range, so there is no overflow risk.

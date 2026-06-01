@@ -115,11 +115,7 @@ $$d_{i-2}=2\cdot12^a,\quad d_{i-1}=13\cdot12^a$$
 
 Then:
 
-$$d_i
-=13(13\cdot12^a)-12(2\cdot12^a)
-=(169-24)12^a
-=145\cdot12^a
-=13\cdot12^{a+1}$$
+$$d_i =13(13\cdot12^a)-12(2\cdot12^a) =(169-24)12^a =145\cdot12^a =13\cdot12^{a+1}$$
 
 The same pair structure reproduces itself.
 
@@ -204,9 +200,7 @@ $$2\cdot12^k \rightarrow 2\cdot12^{k+1}$$
 
 and the second transforms:
 
-$$(2\cdot12^k,\ 13\cdot12^k)
-\rightarrow
-13\cdot12^{k+1}$$
+$$(2\cdot12^k,\ 13\cdot12^k) \rightarrow 13\cdot12^{k+1}$$
 
 Neither operation can create any other prime factors or coefficients. By induction, every reachable value must be exactly one of these two forms.
 

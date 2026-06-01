@@ -138,11 +138,7 @@ $$Q(x)=b_0x^m+\dots$$
 
 As $x \to \infty$:
 
-$$\frac{P(x)}{Q(x)}
-\sim
-\frac{a_0x^n}{b_0x^m}
-=
-\frac{a_0}{b_0}x^{n-m}$$
+$$\frac{P(x)}{Q(x)} \sim \frac{a_0x^n}{b_0x^m} = \frac{a_0}{b_0}x^{n-m}$$
 
 Now everything depends only on $n-m$.
 
@@ -211,9 +207,7 @@ $$\frac{P(x)}{Q(x)}$$
 
 has the same asymptotic behavior as:
 
-$$\frac{a_0x^n}{b_0x^m}
-=
-\frac{a_0}{b_0}x^{n-m}$$
+$$\frac{a_0x^n}{b_0x^m} = \frac{a_0}{b_0}x^{n-m}$$
 
 The exponent $n-m$ completely determines whether the expression grows infinitely, shrinks to zero, or stabilizes at a constant value. Since every step of the algorithm follows directly from this asymptotic form, the produced answer is mathematically exact.
 
@@ -460,9 +454,7 @@ Consider:
 
 The leading terms are:
 
-$$\frac{-x^2}{2x}
-=
--\frac{x}{2}$$
+$$\frac{-x^2}{2x} = -\frac{x}{2}$$
 
 The algorithm compares degrees and finds $2 > 1$. It then checks the sign of:
 
@@ -486,9 +478,7 @@ Now consider:
 
 The dominant behavior is:
 
-$$\frac{5x}{x^2}
-=
-\frac{5}{x}$$
+$$\frac{5x}{x^2} = \frac{5}{x}$$
 
 As $x$ grows, the value shrinks toward zero.
 
@@ -516,9 +506,7 @@ The gcd is $1$, so the unreduced fraction remains `1/-2`.
 
 The algorithm detects the negative denominator and flips both signs:
 
-$$\frac{1}{-2}
-=
-\frac{-1}{2}$$
+$$\frac{1}{-2} = \frac{-1}{2}$$
 
 It prints:
 

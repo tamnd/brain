@@ -42,9 +42,7 @@ Step 1: Rewriting the system as $AX=yX$ for a circulant operator $A$ - VALID
 
 The operator
 
-$$A(x_1,\dots,x_5)
-=
-(x_2+x_5,\ x_1+x_3,\ x_2+x_4,\ x_3+x_5,\ x_4+x_1)$$
+$$A(x_1,\dots,x_5) = (x_2+x_5,\ x_1+x_3,\ x_2+x_4,\ x_3+x_5,\ x_4+x_1)$$
 
 matches the given equations exactly. The reformulation is correct.
 
@@ -56,9 +54,7 @@ follows from the system - VALID
 
 Each original equation is precisely of this form after rearrangement. For example:
 
-$$x_1+x_3=yx_2
-\quad\Rightarrow\quad
-x_3=yx_2-x_1.$$
+$$x_1+x_3=yx_2 \quad\Rightarrow\quad x_3=yx_2-x_1.$$
 
 Checking cyclic indices explicitly:
 
@@ -102,9 +98,7 @@ Let the $j$-th coordinate of $v_k$ be $\omega^{(j-1)k}$.
 
 Then the $j$-th coordinate of $A(v_k)$ is
 
-$$\omega^{(j-2)k}+\omega^{jk}
-=
-(\omega^{-k}+\omega^k)\omega^{(j-1)k}.$$
+$$\omega^{(j-2)k}+\omega^{jk} = (\omega^{-k}+\omega^k)\omega^{(j-1)k}.$$
 
 Hence every coordinate is multiplied by the same scalar
 

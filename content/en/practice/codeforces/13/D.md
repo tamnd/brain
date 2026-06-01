@@ -94,13 +94,7 @@ Fix two red points $i$ and $j$. Consider the directed edge $i \to j$. We can pre
 
 Now consider a counterclockwise red triangle $(i,j,k)$. Every blue point inside the triangle contributes to the region left of all three directed edges. There is a clean combinational identity:
 
-$$\text{inside}(i,j,k)
-=
-left[i][j]
-+
-left[j][k]
--
-left[i][k]$$
+$$\text{inside}(i,j,k) = left[i][j] + left[j][k] - left[i][k]$$
 
 for vertices ordered counterclockwise.
 
@@ -139,12 +133,7 @@ If the orientation is negative, swap two vertices so the triangle becomes counte
 The counting identity assumes counterclockwise order.
 5. Compute the number of blue points inside the triangle using:
 
-$$inside =
-left[i][j]
-+
-left[j][k]
--
-left[i][k]$$
+$$inside = left[i][j] + left[j][k] - left[i][k]$$
 6. If `inside == 0`, increment the answer.
 
 Such triangles contain no blue points and are valid.

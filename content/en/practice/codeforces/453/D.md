@@ -101,17 +101,13 @@ $$g[x] = b[\text{popcount}(x)].$$
 
 Then
 
-$$(Af)[u]
-=
-\sum_v g[u\oplus v] f[v].$$
+$$(Af)[u] = \sum_v g[u\oplus v] f[v].$$
 
 This is exactly XOR convolution with kernel `g`.
 
 The Walsh-Hadamard transform plays the same role for XOR convolution that the FFT plays for ordinary convolution. If `H` denotes the Hadamard transform, then
 
-$$H(g *_{\text{xor}} f)
-=
-(Hg)\cdot(Hf).$$
+$$H(g *_{\text{xor}} f) = (Hg)\cdot(Hf).$$
 
 Consequently, the matrix becomes diagonal in the Hadamard basis.
 
@@ -170,9 +166,7 @@ be the Krawtchouk polynomial value corresponding to weight `k` and argument `i`.
 
 The recurrence is
 
-$$K_k(i)
-=
-K_k(i-1)-K_{k-1}(i)-K_{k-1}(i-1),$$
+$$K_k(i) = K_k(i-1)-K_{k-1}(i)-K_{k-1}(i-1),$$
 
 with
 
@@ -186,10 +180,7 @@ Compute all distinct eigenvalues.
 
 For each weight `k`:
 
-$$\lambda_k
-=
-\sum_{i=0}^{m}
-b[i]\;K_k(i).$$
+$$\lambda_k = \sum_{i=0}^{m} b[i]\;K_k(i).$$
 
 Every mask whose popcount equals `k` shares this eigenvalue.
 

@@ -85,9 +85,7 @@ Input:
 
 We rewrite numbers as $x=5t$. Then:
 
-$$t \in \left[\left\lceil \frac{15}{5} \right\rceil,\left\lfloor \frac{30}{5} \right\rfloor\right]
-=
-[3,6]$$
+$$t \in \left[\left\lceil \frac{15}{5} \right\rceil,\left\lfloor \frac{30}{5} \right\rfloor\right] = [3,6]$$
 
 Among $3,4,5,6$, only $5$ is divisible by no prime smaller than $5$. That gives $25$ as the only valid number. Forgetting the ceiling on the left boundary would incorrectly include $10$.
 
@@ -149,8 +147,7 @@ $$d = p_{i_1}p_{i_2}\cdots p_{i_s}$$
 
 Count how many numbers in $[L,R]$ are divisible by $d$:
 
-$$\left\lfloor \frac{R}{d} \right\rfloor -
-\left\lfloor \frac{L-1}{d} \right\rfloor$$
+$$\left\lfloor \frac{R}{d} \right\rfloor - \left\lfloor \frac{L-1}{d} \right\rfloor$$
 
 Add this count if the subset size is even, subtract it if the subset size is odd.
 5. The final inclusion-exclusion result is the number of valid multipliers $t$, which equals the number of valid integers $x$.

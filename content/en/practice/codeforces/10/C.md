@@ -45,11 +45,7 @@ is false.
 
 The digital root behaves exactly like modulo `9`, except that multiples of `9` map to `9` instead of `0`. More formally,
 
-$$d(x)=
-\begin{cases}
-9 & x \bmod 9 = 0 \\
-x \bmod 9 & \text{otherwise}
-\end{cases}$$
+$$d(x)= \begin{cases} 9 & x \bmod 9 = 0 \\ x \bmod 9 & \text{otherwise} \end{cases}$$
 
 So Billy's algorithm only verifies equality modulo `9`, not actual equality.
 

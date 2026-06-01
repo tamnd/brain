@@ -99,11 +99,7 @@ The key observation is that the digital root in base `k` depends only on the dig
 
 For a positive number:
 
-$$\text{digital root}(x) =
-\begin{cases}
-k - 1 & \text{if } x \equiv 0 \pmod{k-1} \\
-x \bmod (k-1) & \text{otherwise}
-\end{cases}$$
+$$\text{digital root}(x) = \begin{cases} k - 1 & \text{if } x \equiv 0 \pmod{k-1} \\ x \bmod (k-1) & \text{otherwise} \end{cases}$$
 
 A substring corresponds to a contiguous range of digits, so its digit sum can be obtained from prefix sums:
 

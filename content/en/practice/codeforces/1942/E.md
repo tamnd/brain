@@ -207,30 +207,21 @@ The $h_i$ are nonnegative and there are $n$ of them.
 
 By stars and bars,
 
-$$\#(h_1,\dots,h_n)
-=
-\binom{s+n-1}{n-1}.$$
+$$\#(h_1,\dots,h_n) = \binom{s+n-1}{n-1}.$$
 
 The $x_i$ are nonnegative and there are $n+1$ of them.
 
 Again by stars and bars,
 
-$$\#(x_0,\dots,x_n)
-=
-\binom{m-2s+n}{n}.$$
+$$\#(x_0,\dots,x_n) = \binom{m-2s+n}{n}.$$
 
 For a fixed $s$, the number of losing configurations is therefore
 
-$$\binom{s+n-1}{n-1}
-\binom{m-2s+n}{n}.$$
+$$\binom{s+n-1}{n-1} \binom{m-2s+n}{n}.$$
 
 Summing over all possible $s$,
 
-$$L
-=
-\sum_{s=0}^{\lfloor m/2\rfloor}
-\binom{s+n-1}{n-1}
-\binom{m-2s+n}{n}.$$
+$$L = \sum_{s=0}^{\lfloor m/2\rfloor} \binom{s+n-1}{n-1} \binom{m-2s+n}{n}.$$
 
 ### 5. Count all configurations
 
@@ -242,23 +233,17 @@ nonnegative variables.
 
 Stars and bars gives
 
-$$\binom{m+2n}{2n}
-=
-\binom{l}{2n}.$$
+$$\binom{m+2n}{2n} = \binom{l}{2n}.$$
 
 ### 6. Compute the answer
 
 For one order,
 
-$$\text{winning}
-=
-\binom{l}{2n}-L.$$
+$$\text{winning} = \binom{l}{2n}-L.$$
 
 There are two symmetric alternating orders, so
 
-$$\text{answer}
-=
-2\left(\binom{l}{2n}-L\right).$$
+$$\text{answer} = 2\left(\binom{l}{2n}-L\right).$$
 
 All arithmetic is performed modulo $998244353$.
 
@@ -329,9 +314,7 @@ The function `C(n, r)` evaluates combinations in constant time.
 
 For a test case, `m = l - 2n` is the number of empty cells. The loop over `s` implements the losing-position formula directly:
 
-$$\sum
-\binom{s+n-1}{n-1}
-\binom{m-2s+n}{n}.$$
+$$\sum \binom{s+n-1}{n-1} \binom{m-2s+n}{n}.$$
 
 The first combination counts distributions of the half-gaps $h_i$. The second counts distributions of the remaining empty cells $x_i$.
 
@@ -507,9 +490,7 @@ Consider:
 
 We have $m=0$. The only possible gap value is $g_1=0$, which is even. The algorithm computes:
 
-$$L=1,
-\qquad
-\binom{2}{2}=1.$$
+$$L=1, \qquad \binom{2}{2}=1.$$
 
 So the answer becomes:
 

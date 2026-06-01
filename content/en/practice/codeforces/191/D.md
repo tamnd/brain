@@ -157,12 +157,7 @@ The special case handles the situation where the entire graph is one cycle and t
 
 More concretely:
 
-$$\text{minimum} =
-\text{cycleCount}
-+
-\max\left(1, \frac{\text{odd}}{2}\right)
--
-[\text{compressed graph has edges}]$$
+$$\text{minimum} = \text{cycleCount} + \max\left(1, \frac{\text{odd}}{2}\right) - [\text{compressed graph has edges}]$$
 
 There is an even cleaner formulation used in implementations.
 

@@ -386,10 +386,7 @@ $$
 
 Factor:
 
-$$ =
-\frac{k(k+1)+2(k+1)}{2} =
-\frac{(k+1)(k+2)}{2}.
-$$
+$$= \frac{k(k+1)+2(k+1)}{2} = \frac{(k+1)(k+2)}{2}.$$
 
 Thus the formula holds for \(k+1\).
 

@@ -104,9 +104,7 @@ Every tree is bipartite.
 
 For bipartite graphs,
 
-$$\text{maximum matching}
-=
-\text{minimum vertex cover}.$$
+$$\text{maximum matching} = \text{minimum vertex cover}.$$
 
 This is Kőnig's theorem.
 
@@ -126,9 +124,7 @@ Fix some subset $S$. Assume $S$ is going to be a vertex cover of the final tree.
 
 Then every allowed tree edge must satisfy:
 
-$$u\in S
-\quad\text{or}\quad
-v\in S.$$
+$$u\in S \quad\text{or}\quad v\in S.$$
 
 In other words, edges between two vertices outside $S$ are forbidden.
 
@@ -194,9 +190,7 @@ The MST of that restricted graph has weight at most the weight of $T$, because $
 
 Hence for this particular subset $S$,
 
-$$\text{MST}(S)+|S|c
-\le
-\text{weight}(T)+kc.$$
+$$\text{MST}(S)+|S|c \le \text{weight}(T)+kc.$$
 
 Thus the optimal tree's cost is at least one value considered by our enumeration.
 

@@ -100,9 +100,7 @@ $$\left\lfloor \frac{n}{y+1} \right\rfloor.$$
 
 Since $x+y=k$, the minimum piece area becomes
 
-$$\left\lfloor \frac{m}{x+1} \right\rfloor
-\cdot
-\left\lfloor \frac{n}{k-x+1} \right\rfloor.$$
+$$\left\lfloor \frac{m}{x+1} \right\rfloor \cdot \left\lfloor \frac{n}{k-x+1} \right\rfloor.$$
 
 At first glance this still looks like a huge search space.
 
@@ -163,14 +161,10 @@ $$k-(n-1)$$
 
 cuts for the width. The smallest area becomes
 
-$$\left\lfloor
-\frac{m}{k-n+2}
-\right\rfloor.$$
+$$\left\lfloor \frac{m}{k-n+2} \right\rfloor.$$
 7. Symmetrically, when $k \ge m$, another candidate is
 
-$$\left\lfloor
-\frac{n}{k-m+2}
-\right\rfloor.$$
+$$\left\lfloor \frac{n}{k-m+2} \right\rfloor.$$
 8. Output the maximum candidate obtained.
 
 ### Why it works

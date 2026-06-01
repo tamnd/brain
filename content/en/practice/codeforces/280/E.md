@@ -117,9 +117,7 @@ So the transformed sequence is non-decreasing.
 
 Now look at the cost:
 
-$$(x_i - y_i)^2
-=
-(x_i - a(i-1) - z_i)^2$$
+$$(x_i - y_i)^2 = (x_i - a(i-1) - z_i)^2$$
 
 Define:
 

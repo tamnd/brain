@@ -90,8 +90,7 @@ The brute-force idea is straightforward. Enumerate every triple of lattice point
 
 The determinant formula gives twice the signed area:
 
-$$D =
-x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)$$
+$$D = x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)$$
 
 The triangle is nondegenerate when $D \ne 0$. Its area is an integer when $D$ is even.
 
@@ -105,9 +104,7 @@ $$(0,0), (0,1), (1,0), (1,1)$$
 
 Now examine the determinant modulo 2. Since subtraction and addition are identical modulo 2, the determinant becomes:
 
-$$D \equiv
-x_1(y_2+y_3)+x_2(y_3+y_1)+x_3(y_1+y_2)
-\pmod 2$$
+$$D \equiv x_1(y_2+y_3)+x_2(y_3+y_1)+x_3(y_1+y_2) \pmod 2$$
 
 After simplification, this equals zero exactly when the three parity vectors are linearly dependent over $GF(2)$. In fact, the determinant is odd if and only if the three points belong to all three different nonzero parity differences.
 
@@ -143,12 +140,7 @@ Every such triple automatically has half-integer area.
 
 Thus:
 
-$$\text{good unordered triangles}
-=
-\binom{N}{3}
--
-\sum_{\text{three distinct parity classes}}
-c_i c_j c_k$$
+$$\text{good unordered triangles} = \binom{N}{3} - \sum_{\text{three distinct parity classes}} c_i c_j c_k$$
 
 Then multiply by 6 for ordered triples.
 

@@ -109,9 +109,7 @@ $$pref(n)=0 \oplus 1 \oplus 2 \oplus \dots \oplus n$$
 
 Then xor over any interval becomes:
 
-$$l \oplus (l+1) \oplus \dots \oplus r
-=
-pref(r)\oplus pref(l-1)$$
+$$l \oplus (l+1) \oplus \dots \oplus r = pref(r)\oplus pref(l-1)$$
 
 because every value before `l` appears twice and cancels itself.
 
@@ -132,13 +130,7 @@ If we write out several values:
 
 a cycle of length 4 appears:
 
-$$pref(n)=
-\begin{cases}
-n & n \bmod 4 = 0 \\
-1 & n \bmod 4 = 1 \\
-n+1 & n \bmod 4 = 2 \\
-0 & n \bmod 4 = 3
-\end{cases}$$
+$$pref(n)= \begin{cases} n & n \bmod 4 = 0 \\ 1 & n \bmod 4 = 1 \\ n+1 & n \bmod 4 = 2 \\ 0 & n \bmod 4 = 3 \end{cases}$$
 
 That reduces each quarry from up to $10^{16}$ operations to constant time.
 
@@ -454,11 +446,7 @@ The heaps are:
 
 The algorithm computes:
 
-$$pref(3)\oplus pref(0)
-=
-0 \oplus 0
-=
-0$$
+$$pref(3)\oplus pref(0) = 0 \oplus 0 = 0$$
 
 So the output is `"bolik"`.
 

@@ -90,8 +90,7 @@ $$F(L)=\sum_{a=0}^{L-1} f(a,L-a).$$
 
 Then every square with bounding size $L$ contributes through the same value $F(L)$, and the answer becomes
 
-$$\sum_{L=1}^{\min(n,m)}
-(n-L+1)(m-L+1)F(L).$$
+$$\sum_{L=1}^{\min(n,m)} (n-L+1)(m-L+1)F(L).$$
 
 Now only number theory remains.
 
@@ -101,28 +100,17 @@ $$\gcd(a,L-a)=\gcd(a,L),$$
 
 we obtain
 
-$$F(L)
-=
-\frac{2L^3+L}{3}
--2L^2
-+
-2\sum_{a=0}^{L-1}\gcd(a,L).$$
+$$F(L) = \frac{2L^3+L}{3} -2L^2 + 2\sum_{a=0}^{L-1}\gcd(a,L).$$
 
 The classical identity
 
-$$\sum_{a=0}^{L-1}\gcd(a,L)
-=
-\sum_{d\mid L} d\,\varphi(L/d)$$
+$$\sum_{a=0}^{L-1}\gcd(a,L) = \sum_{d\mid L} d\,\varphi(L/d)$$
 
 allows all values of $F(L)$ up to $10^6$ to be precomputed with a divisor sieve.
 
 Finally, expand
 
-$$(n-L+1)(m-L+1)
-=
-(n+1)(m+1)
--(n+m+2)L
-+L^2.$$
+$$(n-L+1)(m-L+1) = (n+1)(m+1) -(n+m+2)L +L^2.$$
 
 If we store prefix sums of
 
@@ -152,12 +140,7 @@ The total complexity is $O(N \log N)$.
 
 1. For every $L$ from $1$ to $N$, compute
 
-$$F(L)
-=
-\frac{2L^3+L}{3}
--2L^2
-+
-2G(L).$$
+$$F(L) = \frac{2L^3+L}{3} -2L^2 + 2G(L).$$
 
 All arithmetic is taken modulo $10^9+7$.
 
@@ -173,19 +156,11 @@ $$S_2(x)=\sum_{L\le x}L^2F(L).$$
 2. Let $k=n$. Every valid square must satisfy $L \le k$.
 3. Use the expansion
 
-$$(n-L+1)(m-L+1)
-=
-(n+1)(m+1)
--(n+m+2)L
-+L^2.$$
+$$(n-L+1)(m-L+1) = (n+1)(m+1) -(n+m+2)L +L^2.$$
 
 1. Substitute the prefix sums:
 
-$$\text{ans}
-=
-(n+1)(m+1)S_0(k)
--(n+m+2)S_1(k)
-+S_2(k).$$
+$$\text{ans} = (n+1)(m+1)S_0(k) -(n+m+2)S_1(k) +S_2(k).$$
 
 1. Output the result modulo $10^9+7$.
 
@@ -282,11 +257,7 @@ The formula for $F(L)$ contains a division by three. Since the computation is do
 
 The prefix arrays are the core of the constant-time query handling. Once
 
-$$\sum F(L),
-\quad
-\sum L F(L),
-\quad
-\sum L^2F(L)$$
+$$\sum F(L), \quad \sum L F(L), \quad \sum L^2F(L)$$
 
 are available, the expanded quadratic weight can be evaluated immediately.
 

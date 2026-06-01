@@ -102,22 +102,11 @@ because $R_i$ is either $0$ or $1$.
 
 Therefore
 
-$$2^{\sum R_i + \sum C_j}
-=
-\prod_{i=1}^{n}(1+R_i)
-\prod_{j=1}^{n}(1+C_j).$$
+$$2^{\sum R_i + \sum C_j} = \prod_{i=1}^{n}(1+R_i) \prod_{j=1}^{n}(1+C_j).$$
 
 Now expand the product:
 
-$$\prod_{i}(1+R_i)\prod_{j}(1+C_j)
-=
-\sum_{A,B}
-\left(
-\prod_{i\in A} R_i
-\right)
-\left(
-\prod_{j\in B} C_j
-\right),$$
+$$\prod_{i}(1+R_i)\prod_{j}(1+C_j) = \sum_{A,B} \left( \prod_{i\in A} R_i \right) \left( \prod_{j\in B} C_j \right),$$
 
 where $A$ is a subset of rows and $B$ is a subset of columns.
 
@@ -139,18 +128,13 @@ All those $t$ cells contain distinct numbers. The event occurs exactly when all 
 
 If $t$ specific numbers must appear among the $k$ called numbers, the probability is
 
-$$\frac{\binom{m-t}{k-t}}{\binom{m}{k}}
-=
-\frac{(k)_t}{(m)_t}.$$
+$$\frac{\binom{m-t}{k-t}}{\binom{m}{k}} = \frac{(k)_t}{(m)_t}.$$
 
 Crucially, this depends only on $t$, not on the actual rows and columns chosen.
 
 So every pair $(a,b)$ contributes
 
-$$\binom{n}{a}
-\binom{n}{b}
-\cdot
-\frac{\binom{m-t}{k-t}}{\binom{m}{k}}.$$
+$$\binom{n}{a} \binom{n}{b} \cdot \frac{\binom{m-t}{k-t}}{\binom{m}{k}}.$$
 
 There are only $(n+1)^2$ possible values of $(a,b)$, which is at most $301^2$.
 
@@ -165,26 +149,16 @@ There are only $(n+1)^2$ possible values of $(a,b)$, which is at most $301^2$.
 
 Since $n \le 300$, we can build them iteratively using
 
-$$\binom{n}{i}
-=
-\binom{n}{i-1}
-\cdot
-\frac{n-i+1}{i}.$$
+$$\binom{n}{i} = \binom{n}{i-1} \cdot \frac{n-i+1}{i}.$$
 2. Precompute
 
-$$p[t]
-=
-\frac{\binom{m-t}{k-t}}{\binom{m}{k}}$$
+$$p[t] = \frac{\binom{m-t}{k-t}}{\binom{m}{k}}$$
 
 for every $0 \le t \le n^2$.
 
 Start with $p[0]=1$. For $t \ge 1$,
 
-$$p[t]
-=
-p[t-1]
-\cdot
-\frac{k-t+1}{m-t+1}.$$
+$$p[t] = p[t-1] \cdot \frac{k-t+1}{m-t+1}.$$
 
 Once $t>k$, the probability becomes zero.
 3. Iterate over every possible number of selected rows $a$ and selected columns $b$.
@@ -195,9 +169,7 @@ $$t = an + bn - ab.$$
 This is exactly the number of cells in the union of those rows and columns.
 5. Add
 
-$$\binom{n}{a}
-\binom{n}{b}
-p[t]$$
+$$\binom{n}{a} \binom{n}{b} p[t]$$
 
 to the answer.
 6. If the accumulated answer exceeds $10^{99}$, print $10^{99}$.
@@ -318,10 +290,7 @@ Input:
 
 Here
 
-$$p(0)=1,\quad
-p(1)=\frac34,\quad
-p(2)=\frac12,\quad
-p(3)=\frac14.$$
+$$p(0)=1,\quad p(1)=\frac34,\quad p(2)=\frac12,\quad p(3)=\frac14.$$
 
 Relevant states:
 
@@ -453,12 +422,7 @@ $$p(t)=1$$
 
 for every $t \le 4$. The subset expansion becomes
 
-$$\sum_{a=0}^{2}\binom{2}{a}
-\sum_{b=0}^{2}\binom{2}{b}
-=
-2^2 \cdot 2^2
-=
-16.$$
+$$\sum_{a=0}^{2}\binom{2}{a} \sum_{b=0}^{2}\binom{2}{b} = 2^2 \cdot 2^2 = 16.$$
 
 Finally, consider:
 

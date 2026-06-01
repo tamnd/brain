@@ -78,10 +78,7 @@ A brute-force mindset starts by remembering how side midpoints relate to polygon
 
 Suppose the quadrilateral vertices are $A, B, C, D$. Then the side midpoints are:
 
-$$M_1 = \frac{A+B}{2}, \quad
-M_2 = \frac{B+C}{2}, \quad
-M_3 = \frac{C+D}{2}, \quad
-M_4 = \frac{D+A}{2}$$
+$$M_1 = \frac{A+B}{2}, \quad M_2 = \frac{B+C}{2}, \quad M_3 = \frac{C+D}{2}, \quad M_4 = \frac{D+A}{2}$$
 
 We are given three of these four points.
 
@@ -130,9 +127,7 @@ The midpoint geometry of a rhombus guarantees that three consecutive side midpoi
 
 Let the vertices be $V_1,V_2,V_3,V_4$, and suppose:
 
-$$A=\frac{V_1+V_2}{2}, \quad
-B=\frac{V_2+V_3}{2}, \quad
-C=\frac{V_3+V_4}{2}$$
+$$A=\frac{V_1+V_2}{2}, \quad B=\frac{V_2+V_3}{2}, \quad C=\frac{V_3+V_4}{2}$$
 
 Choose:
 

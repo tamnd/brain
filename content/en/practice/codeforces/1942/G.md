@@ -252,9 +252,7 @@ $$\frac{7!}{1!\cdot1!\cdot5!}=42.$$
 
 Probability:
 
-$$\frac{32}{42}
-=
-\frac{16}{21}.$$
+$$\frac{32}{42} = \frac{16}{21}.$$
 
 This matches the sample.
 

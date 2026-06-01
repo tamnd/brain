@@ -64,6 +64,11 @@ while true; do
     while IFS= read -r line; do log "${YLW}katex: ${line}${RST}"; done <<< "$KATEX_OUT"
   fi
 
+  # Collapse blank lines inside $$...$$ display math (causes KaTeX split).
+  if BLANKMATH_OUT="$(python3 "$REPO_DIR/scripts/fix_math_blanklines.py" 2>&1)" && [ -n "$BLANKMATH_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}blankmath: ${line}${RST}"; done <<< "$BLANKMATH_OUT"
+  fi
+
   _did_something=false
 
   # Sync with remote before doing anything — avoids rejected pushes.

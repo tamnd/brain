@@ -26,10 +26,7 @@ draft: false
 
 We need to fill a `2 x 2` grid with four distinct digits from `1` to `9`. The grid looks like this:
 
-$$\begin{matrix}
-a & b \\
-c & d
-\end{matrix}$$
+$$\begin{matrix} a & b \\ c & d \end{matrix}$$
 
 The input gives us six sums.
 

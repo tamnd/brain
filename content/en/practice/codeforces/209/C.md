@@ -129,11 +129,7 @@ $$\max\left(C - 1, \frac{O}{2}\right)$$
 
 But there is one important correction. Components with zero odd vertices are harder to connect because attaching them creates odd vertices. Accounting for this carefully leads to the classic formula:
 
-$$\text{answer} =
-\begin{cases}
-0 & \text{if no edges exist} \\
-\frac{O}{2} + \max(0, E - 1) & \text{otherwise}
-\end{cases}$$
+$$\text{answer} = \begin{cases} 0 & \text{if no edges exist} \\ \frac{O}{2} + \max(0, E - 1) & \text{otherwise} \end{cases}$$
 
 where $E$ is the number of connected components whose every vertex has even degree.
 

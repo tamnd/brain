@@ -74,9 +74,7 @@ The key observation is that for a fixed width, the quantity describing required 
 
 The classical geometry fact behind the problem is this: when a rectangle rotates through a right-angle corner, the critical condition occurs when it simultaneously touches all four limiting walls. At angle `θ`, the required length contribution is
 
-$$\frac{a-w\cos\theta}{\sin\theta}
-+
-\frac{b-w\sin\theta}{\cos\theta}$$
+$$\frac{a-w\cos\theta}{\sin\theta} + \frac{b-w\sin\theta}{\cos\theta}$$
 
 If the minimum value of this expression over all valid angles is at least `l`, then the coffin can pass.
 
@@ -101,10 +99,7 @@ Here, `B` is the number of binary search iterations and `T` is the number of ter
 2. Define a feasibility check for a candidate width `w`.
 3. For a fixed angle `θ`, compute the maximum coffin length that can fit while the rectangle touches the critical walls:
 
-$$f(\theta)=
-\frac{a-w\cos\theta}{\sin\theta}
-+
-\frac{b-w\sin\theta}{\cos\theta}$$
+$$f(\theta)= \frac{a-w\cos\theta}{\sin\theta} + \frac{b-w\sin\theta}{\cos\theta}$$
 
 This formula comes from decomposing the rectangle into the two corridor branches.
 

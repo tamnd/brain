@@ -28,9 +28,7 @@ We are given Masha's phone number as a string of digits. From this number, she g
 
 The first digit of the new number can be any digit from `0` to `9`. After that, each next digit is determined from the previous chosen digit and the corresponding digit of Masha's number. If the previous chosen digit is `p` and the current digit of Masha's number is `a[i]`, then the next digit must equal either:
 
-$$\left\lfloor \frac{p + a[i]}{2} \right\rfloor
-\quad \text{or} \quad
-\left\lceil \frac{p + a[i]}{2} \right\rceil$$
+$$\left\lfloor \frac{p + a[i]}{2} \right\rfloor \quad \text{or} \quad \left\lceil \frac{p + a[i]}{2} \right\rceil$$
 
 When `p + a[i]` is even, both expressions are the same and the next digit is forced. When the sum is odd, there are exactly two choices.
 
@@ -137,9 +135,7 @@ $$nxt = s / 2$$
 Add all ways from `prev` into `nxt`.
 7. If `s` is odd, there are two possible rounded values:
 
-$$\lfloor s/2 \rfloor
-\quad \text{and} \quad
-\lceil s/2 \rceil$$
+$$\lfloor s/2 \rfloor \quad \text{and} \quad \lceil s/2 \rceil$$
 
 Add the current count to both next states.
 8. Replace the old DP array with the newly computed one.

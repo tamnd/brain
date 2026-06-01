@@ -93,12 +93,7 @@ The key observation is that the real line can be partitioned into segments forme
 
 For participant $k$:
 
-$$P(s_k < x)=
-\begin{cases}
-0 & x \le l_k \\
-1 & x \ge r_k \\
-\dfrac{x-l_k}{r_k-l_k} & l_k < x < r_k
-\end{cases}$$
+$$P(s_k < x)= \begin{cases} 0 & x \le l_k \\ 1 & x \ge r_k \\ \dfrac{x-l_k}{r_k-l_k} & l_k < x < r_k \end{cases}$$
 
 Inside a fixed segment, each participant falls into one of three categories.
 
@@ -175,9 +170,7 @@ $$P(x)=\sum c_d x^d$$
 
 then:
 
-$$\int_a^b P(x)\,dx
-=
-\sum c_d \frac{b^{d+1}-a^{d+1}}{d+1}$$
+$$\int_a^b P(x)\,dx = \sum c_d \frac{b^{d+1}-a^{d+1}}{d+1}$$
 10. Add the contribution into the answer matrix.
 
 ### Why it works
@@ -353,9 +346,7 @@ $$P(\text{rank }1)=1-\frac{x-4}{5}$$
 
 Integrating:
 
-$$\frac{1}{5}\int_4^6 \left(1-\frac{x-4}{5}\right)dx
-=
-0.32$$
+$$\frac{1}{5}\int_4^6 \left(1-\frac{x-4}{5}\right)dx = 0.32$$
 
 Total:
 

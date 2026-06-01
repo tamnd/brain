@@ -30,9 +30,7 @@ Our task is to assign every mark to one of the two subjects so that the sum of t
 
 The averages are:
 
-$$\frac{\text{sum of subject 1 marks}}{a}
-+
-\frac{\text{sum of subject 2 marks}}{b}$$
+$$\frac{\text{sum of subject 1 marks}}{a} + \frac{\text{sum of subject 2 marks}}{b}$$
 
 The marks themselves are tiny, only from 1 to 5, but the number of marks can reach $10^5$. That immediately rules out any exponential search over assignments. Even $O(n^2)$ would already be risky at this scale in Python. We need something close to $O(n \log n)$, which usually suggests sorting or greedy processing.
 

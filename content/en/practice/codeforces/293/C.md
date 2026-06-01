@@ -34,9 +34,7 @@ We must count how many ordered triples of positive integers satisfy this equatio
 
 The first step is to expand the cube:
 
-$$(a+b+c)^3
-= a^3+b^3+c^3
-+3(a+b)(b+c)(c+a)$$
+$$(a+b+c)^3 = a^3+b^3+c^3 +3(a+b)(b+c)(c+a)$$
 
 Subtracting the three individual cubes leaves
 
@@ -80,8 +78,7 @@ $$xyz=8$$
 
 Taking $(x,y,z)=(1,1,8)$ gives
 
-$$a=\frac{1+8-1}{2}=4,\quad
-b=\frac{1+1-8}{2}=-3$$
+$$a=\frac{1+8-1}{2}=4,\quad b=\frac{1+1-8}{2}=-3$$
 
 This is invalid even though the product matches.
 
@@ -99,9 +96,7 @@ The issue is the search space. Since cubes grow quickly, each variable can still
 
 The key observation is that the expression factorizes:
 
-$$(a+b+c)^3-a^3-b^3-c^3
-=
-3(a+b)(b+c)(c+a)$$
+$$(a+b+c)^3-a^3-b^3-c^3 = 3(a+b)(b+c)(c+a)$$
 
 Now the problem becomes multiplicative instead of cubic.
 
@@ -115,9 +110,7 @@ $$xyz = \frac n3$$
 
 and
 
-$$a=\frac{x+z-y}{2},\quad
-b=\frac{x+y-z}{2},\quad
-c=\frac{y+z-x}{2}$$
+$$a=\frac{x+z-y}{2},\quad b=\frac{x+y-z}{2},\quad c=\frac{y+z-x}{2}$$
 
 So instead of searching over all triples $(a,b,c)$, we only search over factor triples $(x,y,z)$ of $n/3$.
 
@@ -468,8 +461,6 @@ $$a=b=c=2$$
 
 which satisfies
 
-$$(2+2+2)^3 - 2^3 - 2^3 - 2^3
-=216-24
-=192$$
+$$(2+2+2)^3 - 2^3 - 2^3 - 2^3 =216-24 =192$$
 
 The algorithm counts exactly one valid ordered triple.

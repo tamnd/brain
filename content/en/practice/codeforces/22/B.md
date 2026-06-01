@@ -131,11 +131,7 @@ Let `pref[i][j]` represent the number of blocked cells inside the rectangle from
 
 The transition is:
 
-$$pref[i][j] =
-pref[i-1][j] +
-pref[i][j-1] -
-pref[i-1][j-1] +
-grid[i][j]$$
+$$pref[i][j] = pref[i-1][j] + pref[i][j-1] - pref[i-1][j-1] + grid[i][j]$$
 
 This allows any subrectangle sum query in constant time.
 3. Enumerate all possible top and bottom rows.
@@ -148,11 +144,7 @@ At this point, one exact rectangle is fixed.
 
 For rectangle `(r1,c1)` to `(r2,c2)`:
 
-$$blocked =
-pref[r2][c2]
-- pref[r1-1][c2]
-- pref[r2][c1-1]
-+ pref[r1-1][c1-1]$$
+$$blocked = pref[r2][c2] - pref[r1-1][c2] - pref[r2][c1-1] + pref[r1-1][c1-1]$$
 6. If the rectangle contains zero blocked cells, compute its perimeter.
 
 The dimensions are:

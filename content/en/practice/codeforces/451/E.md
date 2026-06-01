@@ -222,11 +222,7 @@ solve()
 
 The central routine is `comb_large_n_small_k`. The upper argument may be as large as $10^{14}$, but the lower argument is at most $19$. We compute
 
-$$\binom{N}{K}
-=
-\prod_{i=1}^{K}
-\frac{N-K+i}{i}
-\pmod{MOD}$$
+$$\binom{N}{K} = \prod_{i=1}^{K} \frac{N-K+i}{i} \pmod{MOD}$$
 
 directly.
 
@@ -249,11 +245,7 @@ Input:
 
 We need
 
-$$x_1+x_2=3,
-\quad
-0\le x_1\le1,
-\quad
-0\le x_2\le3.$$
+$$x_1+x_2=3, \quad 0\le x_1\le1, \quad 0\le x_2\le3.$$
 
 | Mask | Subset | $T$ | Contribution | Sign |
 | --- | --- | --- | --- | --- |

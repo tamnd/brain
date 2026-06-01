@@ -33,8 +33,7 @@ These conventions are not absolute, but they help communicate the role of an obj
 
 The symbol
 
-$$ =
-$$
+$$=$$
 
 means equality.
 

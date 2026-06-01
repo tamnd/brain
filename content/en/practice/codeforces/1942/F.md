@@ -26,8 +26,7 @@ draft: false
 
 We have an array $a$, and a recursively defined value:
 
-$$f(1)=\sqrt{a_1}, \qquad
-f(i)=\sqrt{f(i-1)+a_i}.$$
+$$f(1)=\sqrt{a_1}, \qquad f(i)=\sqrt{f(i-1)+a_i}.$$
 
 After every point update $a_k \leftarrow x$, we need the integer part of $f(n)$.
 
@@ -102,22 +101,15 @@ for every $i$.
 
 The reason is simple. Let
 
-$$f(i-1)=g(i-1)+\delta,
-\qquad 0\le \delta<1.$$
+$$f(i-1)=g(i-1)+\delta, \qquad 0\le \delta<1.$$
 
 Then
 
-$$g(i-1)+a_i
-\le
-f(i-1)+a_i
-<
-g(i-1)+a_i+1.$$
+$$g(i-1)+a_i \le f(i-1)+a_i < g(i-1)+a_i+1.$$
 
 Taking square roots keeps the value inside an interval of length less than $1$, so both endpoints have the same floor. Hence
 
-$$\left\lfloor \sqrt{f(i-1)+a_i}\right\rfloor
-=
-\left\lfloor \sqrt{g(i-1)+a_i}\right\rfloor.$$
+$$\left\lfloor \sqrt{f(i-1)+a_i}\right\rfloor = \left\lfloor \sqrt{g(i-1)+a_i}\right\rfloor.$$
 
 Now the whole problem becomes integer-only.
 
@@ -148,9 +140,7 @@ A segment tree stores the minimum and maximum value in every node.
 
 For a node covering values in $[mn,mx]$, if
 
-$$mx-mn
-=
-\lfloor\sqrt{mx}\rfloor-\lfloor\sqrt{mn}\rfloor,$$
+$$mx-mn = \lfloor\sqrt{mx}\rfloor-\lfloor\sqrt{mn}\rfloor,$$
 
 then every value in that segment changes by the same amount.
 
@@ -338,9 +328,7 @@ The segment tree stores only minimum, maximum, and a lazy addition tag. No sums 
 
 The subtle part is `apply_sqrt`. If the node satisfies
 
-$$mx-mn
-=
-\lfloor\sqrt{mx}\rfloor-\lfloor\sqrt{mn}\rfloor,$$
+$$mx-mn = \lfloor\sqrt{mx}\rfloor-\lfloor\sqrt{mn}\rfloor,$$
 
 then the square-root operation acts like adding a constant to every element in that node. We can update the whole segment lazily.
 

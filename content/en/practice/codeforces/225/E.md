@@ -126,8 +126,7 @@ $$x=ky,\quad y=1$$
 
 Then
 
-$$\left\lfloor \frac{x}{y} \right\rfloor = k,\qquad
-\left\lfloor \frac{y}{x} \right\rfloor = 0$$
+$$\left\lfloor \frac{x}{y} \right\rfloor = k,\qquad \left\lfloor \frac{y}{x} \right\rfloor = 0$$
 
 so the sum is exactly $k$.
 
@@ -151,8 +150,7 @@ whose floor is still $0$. Actually this gives total $1$, so we should test concr
 
 Take $x=3,y=2$:
 
-$$\left\lfloor \frac32 \right\rfloor + \left\lfloor \frac23 \right\rfloor
-=1+0=1$$
+$$\left\lfloor \frac32 \right\rfloor + \left\lfloor \frac23 \right\rfloor =1+0=1$$
 
 This means the only unsolvable value is not $1$, so we need to revisit the equation carefully.
 
@@ -368,10 +366,7 @@ $$x=y=7$$
 
 Then
 
-$$\left\lfloor \frac{x}{y} \right\rfloor
-=
-\left\lfloor \frac{y}{x} \right\rfloor
-=1$$
+$$\left\lfloor \frac{x}{y} \right\rfloor = \left\lfloor \frac{y}{x} \right\rfloor =1$$
 
 and the product is:
 
@@ -385,8 +380,7 @@ $$x=10,\ y=3$$
 
 Then
 
-$$\left\lfloor \frac{10}{3} \right\rfloor = 3,\qquad
-\left\lfloor \frac{3}{10} \right\rfloor = 0$$
+$$\left\lfloor \frac{10}{3} \right\rfloor = 3,\qquad \left\lfloor \frac{3}{10} \right\rfloor = 0$$
 
 and the product becomes:
 

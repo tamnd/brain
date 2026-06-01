@@ -149,17 +149,13 @@ This means the minimal exponents that survive in the LCM are exactly those whose
 
 A classical result follows:
 
-$$\operatorname{lcm}(k^1+1,k^2+1,\dots,k^n+1)
-=
-\prod_{d=0}^{\lfloor \log_2 n \rfloor} (k^{2^d}+1)$$
+$$\operatorname{lcm}(k^1+1,k^2+1,\dots,k^n+1) = \prod_{d=0}^{\lfloor \log_2 n \rfloor} (k^{2^d}+1)$$
 
 adapted appropriately to our interval.
 
 For the interval $[l,r]$, the only exponents contributing new factors are those where the odd part appears for the first time. After simplifying the divisor structure, the entire LCM becomes:
 
-$$\prod_{i=l}^{r}(k^{2i}+1)
-\Big/
-\prod_{i=\lfloor l/2 \rfloor}^{\lfloor r/2 \rfloor}(k^{2i}+1)$$
+$$\prod_{i=l}^{r}(k^{2i}+1) \Big/ \prod_{i=\lfloor l/2 \rfloor}^{\lfloor r/2 \rfloor}(k^{2i}+1)$$
 
 which telescopes recursively.
 
@@ -175,9 +171,7 @@ This recursion becomes manageable because the product has a closed form modulo $
 
 Using geometric progression identities:
 
-$$\prod_{i=1}^{n}(x^{2i}+1)
-=
-\frac{x^{2(n+1)}-1}{x^2-1}$$
+$$\prod_{i=1}^{n}(x^{2i}+1) = \frac{x^{2(n+1)}-1}{x^2-1}$$
 
 after transforming appropriately over parity layers.
 
@@ -212,9 +206,7 @@ The denominator removes exactly the factors already absorbed by divisibility rel
 
 1. Rewrite the finite product:
 
-$$\prod_{i=1}^{n}(k^{2i}+1)
-=
-\frac{k^{2(n+1)}-1}{k^2-1}$$
+$$\prod_{i=1}^{n}(k^{2i}+1) = \frac{k^{2(n+1)}-1}{k^2-1}$$
 
 modulo $p$.
 
@@ -513,9 +505,6 @@ Finally consider a huge interval:
 
 The recursion path becomes:
 
-$$10^{18},
-5\cdot10^{17},
-2.5\cdot10^{17},
-\dots$$
+$$10^{18}, 5\cdot10^{17}, 2.5\cdot10^{17}, \dots$$
 
 halving each step. Only about 60 recursive calls occur, confirming the algorithm remains fast even at maximum bounds.

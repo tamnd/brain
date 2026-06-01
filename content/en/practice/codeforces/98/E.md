@@ -370,18 +370,11 @@ Finally consider:
 
 The recurrence becomes:
 
-$$dp[3][0]
-=
-\max\left(
-\frac14,
-\frac34 dp[2][0] + \frac14 (1 - dp[0][2])
-\right)$$
+$$dp[3][0] = \max\left( \frac14, \frac34 dp[2][0] + \frac14 (1 - dp[0][2]) \right)$$
 
 Since `dp[0][2] = 1`, the asking branch collapses to:
 
-$$\frac34 \cdot \frac12 + \frac14 \cdot 0
-=
-\frac38$$
+$$\frac34 \cdot \frac12 + \frac14 \cdot 0 = \frac38$$
 
 But `dp[2][0]` itself optimally becomes `1/2`, leading eventually to `dp[3][0] = 1/4`.
 

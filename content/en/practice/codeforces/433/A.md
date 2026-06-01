@@ -88,8 +88,7 @@ If the total weight is odd, equal division is impossible.
 
 Otherwise, each person needs half the total. In units of 100 grams, each person needs:
 
-$$count100 + 2 \cdot count200
-\over 2$$
+$$count100 + 2 \cdot count200 \over 2$$
 
 Now parity becomes the entire problem.
 

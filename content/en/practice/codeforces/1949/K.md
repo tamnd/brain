@@ -131,9 +131,7 @@ The smallest possible additional contribution is the sum of the smallest $r-1$ n
 Since we process from largest to smallest, those future numbers are exactly the smaller values. Using the global smallest $r-1$ values gives a lower bound that is always safe.
 8. Define
 
-$$\text{best\_possible}
-=
-S + x + \text{sumSmallest}(r-1).$$
+$$\text{best\_possible} = S + x + \text{sumSmallest}(r-1).$$
 
 If
 

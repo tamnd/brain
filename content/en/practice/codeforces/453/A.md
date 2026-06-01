@@ -76,28 +76,15 @@ The key observation is that maxima are much easier to reason about through cumul
 
 Suppose we want the probability that the maximum value is at most `k`. Every roll must then be at most `k`. Since each roll independently lands in `{1,2,...,k}` with probability `k/m`, we get
 
-$$P(\max \le k)
-=
-\left(\frac{k}{m}\right)^n.$$
+$$P(\max \le k) = \left(\frac{k}{m}\right)^n.$$
 
 From this, we can obtain the probability that the maximum is exactly `k`:
 
-$$P(\max = k)
-=
-P(\max \le k)
--
-P(\max \le k-1)
-=
-\left(\frac{k}{m}\right)^n
--
-\left(\frac{k-1}{m}\right)^n.$$
+$$P(\max = k) = P(\max \le k) - P(\max \le k-1) = \left(\frac{k}{m}\right)^n - \left(\frac{k-1}{m}\right)^n.$$
 
 The expected value is then
 
-$$E[\max]
-=
-\sum_{k=1}^{m}
-k \cdot P(\max = k).$$
+$$E[\max] = \sum_{k=1}^{m} k \cdot P(\max = k).$$
 
 Substituting the formula above gives an `O(m)` solution.
 
@@ -141,9 +128,7 @@ $$\left(\frac{k}{m}\right)^n.$$
 
 The events "`maximum = k`" partition the entire sample space. Their probabilities are obtained by subtracting consecutive cumulative probabilities:
 
-$$P(\max = k)
-=
-P(\max \le k)-P(\max \le k-1).$$
+$$P(\max = k) = P(\max \le k)-P(\max \le k-1).$$
 
 The expectation formula
 
@@ -209,9 +194,7 @@ For a single roll, the maximum is simply the roll itself.
 
 Summing the contributions gives
 
-$$\frac{1+2+3+4+5+6}{6}
-=
-3.5.$$
+$$\frac{1+2+3+4+5+6}{6} = 3.5.$$
 
 This confirms that the formula reduces to the ordinary average when only one throw is made.
 
@@ -299,9 +282,7 @@ Consider the input
 
 The loop runs only for `k = 1`.
 
-$$(1/1)^{100000}=1,
-\qquad
-(0/1)^{100000}=0.$$
+$$(1/1)^{100000}=1, \qquad (0/1)^{100000}=0.$$
 
 The probability that the maximum equals `1` is `1`, so the contribution is
 
@@ -317,9 +298,7 @@ Consider the input
 
 For every `k`, the probability difference becomes
 
-$$\frac{k}{6}-\frac{k-1}{6}
-=
-\frac16.$$
+$$\frac{k}{6}-\frac{k-1}{6} = \frac16.$$
 
 Every face contributes with equal probability, producing the standard average of a fair die. The output is `3.5`.
 

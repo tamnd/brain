@@ -71,9 +71,7 @@ $$(x_i-x_j)^2 + (y_i-y_j)^2$$
 
 Summing this over all unordered pairs can be transformed into sums of coordinates and sums of squares:
 
-$$\sum_{i<j}(x_i-x_j)^2
-=
-m\sum x_i^2 - \left(\sum x_i\right)^2$$
+$$\sum_{i<j}(x_i-x_j)^2 = m\sum x_i^2 - \left(\sum x_i\right)^2$$
 
 and similarly for $y$.
 
@@ -125,8 +123,7 @@ $$x = x_1 + \frac{(x_2-x_1)(y-y_1)}{y_2-y_1}$$
 
 The valid integer coordinates are
 
-$$L = \lceil x_{\text{left}} \rceil,\qquad
-R = \lfloor x_{\text{right}} \rfloor$$
+$$L = \lceil x_{\text{left}} \rceil,\qquad R = \lfloor x_{\text{right}} \rfloor$$
 
 If $L > R$, this row contains no lattice points.
 
@@ -158,18 +155,11 @@ $$k\cdot y,\qquad k\cdot y^2$$
 
 1. After processing all rows, compute the total pairwise squared distance:
 
-$$D =
-m\left(\sum x^2 + \sum y^2\right)
--
-\left(\sum x\right)^2
--
-\left(\sum y\right)^2$$
+$$D = m\left(\sum x^2 + \sum y^2\right) - \left(\sum x\right)^2 - \left(\sum y\right)^2$$
 
 1. Divide by the number of unordered pairs and by $2$, because square area equals half of diagonal squared.
 
-$$\text{answer}
-=
-\frac{D}{m(m-1)}$$
+$$\text{answer} = \frac{D}{m(m-1)}$$
 
 Why it works:
 
@@ -306,9 +296,7 @@ The arithmetic progression formulas are the core optimization. Instead of iterat
 
 The final formula deserves attention. The identity
 
-$$\sum_{i<j}(a_i-a_j)^2
-=
-m\sum a_i^2 - (\sum a_i)^2$$
+$$\sum_{i<j}(a_i-a_j)^2 = m\sum a_i^2 - (\sum a_i)^2$$
 
 already represents unordered pairs directly, so there is no extra factor of two to divide out.
 

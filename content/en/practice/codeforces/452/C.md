@@ -76,9 +76,7 @@ $$c_1+c_2+\cdots+c_n=n.$$
 
 The spectator chooses value $i$ with probability $c_i/n$. After replacement, Alex draws value $i$ with probability $c_i/n$. For this fixed deck, the success probability is
 
-$$\sum_{i=1}^{n}\frac{c_i}{n}\cdot\frac{c_i}{n}
-=
-\frac{1}{n^2}\sum_{i=1}^{n} c_i^2.$$
+$$\sum_{i=1}^{n}\frac{c_i}{n}\cdot\frac{c_i}{n} = \frac{1}{n^2}\sum_{i=1}^{n} c_i^2.$$
 
 A brute-force solution would enumerate every possible selected deck, compute this quantity, and average over all selections. The number of selections is $\binom{mn}{n}$, which is completely infeasible.
 
@@ -90,9 +88,7 @@ All card values are symmetric. Let $X$ be the number of copies of one particular
 
 Then
 
-$$E\!\left[\sum_{i=1}^{n} c_i^2\right]
-=
-nE[X^2].$$
+$$E\!\left[\sum_{i=1}^{n} c_i^2\right] = nE[X^2].$$
 
 So the answer becomes
 
@@ -112,17 +108,11 @@ $$X \sim \text{Hypergeometric}(N=mn,\ K=m,\ n).$$
 
 For a hypergeometric random variable,
 
-$$E[X]
-=
-\frac{nK}{N},$$
+$$E[X] = \frac{nK}{N},$$
 
 and
 
-$$\mathrm{Var}(X)
-=
-n\frac{K}{N}
-\left(1-\frac{K}{N}\right)
-\frac{N-n}{N-1}.$$
+$$\mathrm{Var}(X) = n\frac{K}{N} \left(1-\frac{K}{N}\right) \frac{N-n}{N-1}.$$
 
 Substituting $N=mn$ and $K=m$,
 
@@ -130,30 +120,19 @@ $$E[X]=1,$$
 
 and
 
-$$\mathrm{Var}(X)
-=
-\frac{(n-1)(m-1)}{mn-1}.$$
+$$\mathrm{Var}(X) = \frac{(n-1)(m-1)}{mn-1}.$$
 
 Since
 
-$$E[X^2]
-=
-\mathrm{Var}(X)+E[X]^2,$$
+$$E[X^2] = \mathrm{Var}(X)+E[X]^2,$$
 
 we obtain
 
-$$E[X^2]
-=
-1+\frac{(n-1)(m-1)}{mn-1}.$$
+$$E[X^2] = 1+\frac{(n-1)(m-1)}{mn-1}.$$
 
 Hence
 
-$$P
-=
-\frac{1}{n}
-\left(
-1+\frac{(n-1)(m-1)}{mn-1}
-\right).$$
+$$P = \frac{1}{n} \left( 1+\frac{(n-1)(m-1)}{mn-1} \right).$$
 
 This is already sufficient for implementation.
 
@@ -172,17 +151,13 @@ This is already sufficient for implementation.
 In this situation there is only one card in existence, so the success probability is exactly $1$.
 3. Compute
 
-$$\mathrm{Var}(X)
-=
-\frac{(n-1)(m-1)}{mn-1}.$$
+$$\mathrm{Var}(X) = \frac{(n-1)(m-1)}{mn-1}.$$
 
 This is the variance of the number of copies of a fixed value appearing in the selected deck.
 
 1. Compute
 
-$$E[X^2]
-=
-1+\mathrm{Var}(X).$$
+$$E[X^2] = 1+\mathrm{Var}(X).$$
 
 The mean of $X$ equals $1$, so $E[X]^2=1$.
 
@@ -372,9 +347,7 @@ Consider:
 
 The working deck contains exactly one card, even though five copies of that value exist in the large pile. The algorithm computes
 
-$$\mathrm{Var}(X)=0,
-\qquad
-P=1.$$
+$$\mathrm{Var}(X)=0, \qquad P=1.$$
 
 The spectator and Alex are forced to interact with the same single card, so success is guaranteed.
 

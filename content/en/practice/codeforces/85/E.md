@@ -115,9 +115,7 @@ $$\max(|\Delta u|, |\Delta v|)$$
 
 So an edge exists iff
 
-$$|u_i-u_j| > D
-\quad \text{or} \quad
-|v_i-v_j| > D$$
+$$|u_i-u_j| > D \quad \text{or} \quad |v_i-v_j| > D$$
 
 Pairs violating the limit can be generated efficiently after sorting.
 

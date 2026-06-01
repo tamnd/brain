@@ -45,8 +45,7 @@ $$\binom{2k}{k}$$
 
 For lengths up to 10 digits:
 
-$$\binom{2}{1} + \binom{4}{2} + \binom{6}{3} + \binom{8}{4} + \binom{10}{5}
-= 2 + 6 + 20 + 70 + 252 = 350$$
+$$\binom{2}{1} + \binom{4}{2} + \binom{6}{3} + \binom{8}{4} + \binom{10}{5} = 2 + 6 + 20 + 70 + 252 = 350$$
 
 Only 350 candidates exist in total. That is small enough to generate all possibilities directly.
 

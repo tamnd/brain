@@ -34,10 +34,7 @@ A naive pitfall comes from thinking the order of the array matters. It does not.
 
 Consider a small failure case intuition: if $n=2$, $c=1$, $d=2$, the grid must be
 
-$$\begin{pmatrix}
-x & x+2 \\
-x+1 & x+3
-\end{pmatrix}$$
+$$\begin{pmatrix} x & x+2 \\ x+1 & x+3 \end{pmatrix}$$
 
 The multiset must be exactly $\{x, x+1, x+2, x+3\}$. Any attempt that checks only adjacency in sorted order could mistakenly accept incorrect multisets where spacing is right but structure cannot be formed.
 

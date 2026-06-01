@@ -96,8 +96,7 @@ The pattern above completely changes the problem.
 
 Now every white cell contributes a Grundy value which is always a power of two. The answer becomes:
 
-$$\bigoplus_{\text{white }(i,j)}
-g(i,j)$$
+$$\bigoplus_{\text{white }(i,j)} g(i,j)$$
 
 The remaining task is geometric. We need the xor of these powers of two over the union of rectangles.
 

@@ -435,11 +435,7 @@ Consider again the asymmetric chain:
 
 A naive midpoint strategy on edge `(2,3)` gives maximum distance `51`, because vertex 1 sits one unit beyond vertex 2. The algorithm correctly evaluates:
 
-$$\max(
-1+x,
-x,
-100-x
-)$$
+$$\max( 1+x, x, 100-x )$$
 
 The optimum occurs when `1 + x = 100 - x`, giving `x = 49.5`.
 
