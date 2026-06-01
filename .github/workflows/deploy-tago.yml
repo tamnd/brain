@@ -67,6 +67,8 @@ jobs:
           [ -f .tago-cache.db ] && cp .tago-cache.db public/.tago-cache.db || true
           tago build --base-url "https://brain.tamnd.com/"
           cp public/.tago-cache.db .tago-cache.db 2>/dev/null || true
+          # tago fingerprints .js files, so copy worker explicitly
+          [ -f static/_worker.js ] && cp static/_worker.js public/_worker.js || true
 
       - name: Remove oversized files before deploy
         run: find public -size +24M -print -delete
