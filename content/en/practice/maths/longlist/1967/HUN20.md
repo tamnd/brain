@@ -1,6 +1,6 @@
 ---
 title: "IMO 1967 LL HUN20"
-description: "In space, n points (n \geq3) are given. Every pair of points"
+description: 'In space, n points (n \geq3) are given. Every pair of points'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

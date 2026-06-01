@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL CZS20"
-description: "Consider a cube C and two planes \sigma, \tau, which divide Euclidean"
+description: 'Consider a cube C and two planes \sigma, \tau, which divide Euclidean'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1972 LL CZS9"
-description: "Given natural numbers k and n, k \leqn, n \geq3, ﬁnd the set"
+description: 'Given natural numbers k and n, k \leqn, n \geq3, ﬁnd the set'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

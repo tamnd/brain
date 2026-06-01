@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL VIE76"
-description: "Given two sequences of positive numbers {ak} and {bk} (k \inN)"
+description: 'Given two sequences of positive numbers {ak} and {bk} (k \inN)'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

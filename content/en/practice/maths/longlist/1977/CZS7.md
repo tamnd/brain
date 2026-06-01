@@ -1,6 +1,6 @@
 ---
 title: "IMO 1977 LL CZS7"
-description: "Prove the following assertion: If c1, c2, . . . , cn (n \geq2) are real"
+description: 'Prove the following assertion: If c1, c2, . . . , cn (n \geq2) are real'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

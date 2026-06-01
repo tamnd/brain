@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL SWE62"
-description: "A circle \gamma is drawn and let AB be a diameter. The point C"
+description: 'A circle \gamma is drawn and let AB be a diameter. The point C'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

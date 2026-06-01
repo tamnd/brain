@@ -1,6 +1,6 @@
 ---
 title: "IMO 1989 LL ROM90"
-description: "Prove that the sequence (an)n\geq0, an = [n"
+description: 'Prove that the sequence (an)n\geq0, an = [n'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

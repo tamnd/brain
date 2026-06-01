@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL FRA28"
-description: "Let (u1, . . . , un) be an ordered ntuple. For each k, 1 \leqk \leqn,"
+description: 'Let (u1, . . . , un) be an ordered ntuple. For each k, 1 \leqk \leqn,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

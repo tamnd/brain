@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL VIE56"
-description: "Let f(x) = ax2 + bx + c and g(x) = cx2 + bx + a. If |f(0)| \leq1,"
+description: 'Let f(x) = ax2 + bx + c and g(x) = cx2 + bx + a. If |f(0)| \leq1,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

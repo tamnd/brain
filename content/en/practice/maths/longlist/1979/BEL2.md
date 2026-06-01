@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL BEL2"
-description: "For a ﬁnite set E of cardinality n \geq3, let f(n) denote the"
+description: 'For a ﬁnite set E of cardinality n \geq3, let f(n) denote the'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

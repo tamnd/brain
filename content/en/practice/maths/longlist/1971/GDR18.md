@@ -1,6 +1,6 @@
 ---
 title: "IMO 1971 LL GDR18"
-description: "Let a1, a2, . . . , an be positive numbers, mg = (a1a2 \cdot \cdot \cdot an)1/n"
+description: 'Let a1, a2, . . . , an be positive numbers, mg = (a1a2 \cdot \cdot \cdot an)1/n'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

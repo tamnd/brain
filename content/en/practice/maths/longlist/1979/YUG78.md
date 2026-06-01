@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL YUG78"
-description: "By \omega(n), where n is an integer greater than 1, let us denote"
+description: 'By \omega(n), where n is an integer greater than 1, let us denote'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

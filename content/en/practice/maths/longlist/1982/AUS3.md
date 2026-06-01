@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL AUS3"
-description: "Given n points X1, X2, . . . , Xn in the interval 0 \leqXi \leq1,"
+description: 'Given n points X1, X2, . . . , Xn in the interval 0 \leqXi \leq1,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

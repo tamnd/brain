@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL USA65"
-description: "Given f(x) \leqx for all real x and"
+description: 'Given f(x) \leqx for all real x and'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1984 LL ROM46"
-description: "Let (an)n\geq1 and (bn)n\geq1 be two sequences of natural numbers"
+description: 'Let (an)n\geq1 and (bn)n\geq1 be two sequences of natural numbers'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

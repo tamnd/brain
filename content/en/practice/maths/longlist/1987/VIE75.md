@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL VIE75"
-description: "Let ak be positive numbers such that a1 \geq1 and ak+1 −ak \geq1"
+description: 'Let ak be positive numbers such that a1 \geq1 and ak+1 −ak \geq1'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

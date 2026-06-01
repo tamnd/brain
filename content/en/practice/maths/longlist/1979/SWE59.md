@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL SWE59"
-description: "Determine the maximum value of x2y2z2w when x, y, z, w \geq0"
+description: 'Determine the maximum value of x2y2z2w when x, y, z, w \geq0'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

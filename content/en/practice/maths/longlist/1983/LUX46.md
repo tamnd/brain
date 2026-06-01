@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL LUX46"
-description: "Let f be a real-valued function deﬁned on I = (0, +\infty) and"
+description: 'Let f be a real-valued function deﬁned on I = (0, +\infty) and'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

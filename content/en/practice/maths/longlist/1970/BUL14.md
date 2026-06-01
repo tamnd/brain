@@ -1,6 +1,6 @@
 ---
 title: "IMO 1970 LL BUL14"
-description: "Let \alpha + \beta + \gamma = \pi. Prove that"
+description: 'Let \alpha + \beta + \gamma = \pi. Prove that'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

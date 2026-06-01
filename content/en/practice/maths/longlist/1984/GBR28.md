@@ -1,6 +1,6 @@
 ---
 title: "IMO 1984 LL GBR28"
-description: "A “number triangle” (tnk) (0 \leqk \leqn) is deﬁned by tn,0 ="
+description: 'A “number triangle” (tnk) (0 \leqk \leqn) is deﬁned by tn,0 ='
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

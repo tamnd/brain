@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL BEL7"
-description: "Find all numbers x \inZ for which the number"
+description: 'Find all numbers x \inZ for which the number'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974 LL USA39"
-description: "Let n be a positive integer, n \geq2, and consider the polynomial"
+description: 'Let n be a positive integer, n \geq2, and consider the polynomial'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

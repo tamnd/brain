@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL TUR61"
-description: "Let PQ be a line segment of constant length \lambda taken on the"
+description: 'Let PQ be a line segment of constant length \lambda taken on the'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1984 LL SWE56"
-description: "Let a, b, c be nonnegative integers such that a \leqb \leqc, 2b ̸="
+description: 'Let a, b, c be nonnegative integers such that a \leqb \leqc, 2b ̸='
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

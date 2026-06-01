@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL POL54"
-description: "Suppose that n > m \geq1 are integers such that the string of"
+description: 'Suppose that n > m \geq1 are integers such that the string of'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

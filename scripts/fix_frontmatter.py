@@ -15,12 +15,107 @@ Repairs handled:
   add-frontmatter       File has no --- block at all but begins with a # h1
                         heading; generates title + weight (from numeric stem)
                         so Hugo renders it with correct metadata.
+  fix-yaml-escapes      Double-quoted YAML values containing LaTeX-style
+                        backslash sequences (e.g. \\geq, \\leq) that are invalid
+                        in YAML 1.1/1.2 strict mode (Hugo v0.146+). Converts
+                        affected double-quoted strings to single-quoted, which
+                        treats backslashes as literals.
+  dedup-keys            Duplicate top-level YAML keys in the front matter
+                        (Hugo v0.161 strict mode rejects them). Keeps the first
+                        occurrence of each key and drops subsequent duplicates.
 """
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "content"
+
+# Valid characters immediately following a backslash in a YAML double-quoted
+# string (YAML 1.2 spec §7.3.1).  Anything else is an invalid escape.
+_VALID_DQUOTE_NEXT: frozenset[str] = frozenset(
+    "0abtTnNvfre \t\"\\/_LPxuU"
+)
+
+
+def _has_invalid_yaml_escape(inner: str) -> bool:
+    """Return True if *inner* (the content between the double quotes) contains
+    a backslash followed by a character that is not a valid YAML escape."""
+    i = 0
+    while i < len(inner):
+        if inner[i] == "\\":
+            if i + 1 >= len(inner) or inner[i + 1] not in _VALID_DQUOTE_NEXT:
+                return True
+            i += 2
+        else:
+            i += 1
+    return False
+
+
+def _extract_fm(text: str):
+    """Return (open_fence, fm_body, close_fence, rest) or None."""
+    m = re.match(r"\A(﻿?---[ \t]*\n)(.*?\n)(---[ \t]*\n)(.*)", text, re.DOTALL)
+    if not m:
+        return None
+    return m.group(1), m.group(2), m.group(3), m.group(4)
+
+
+def _fix_yaml_escapes(fm_body: str) -> tuple[str, int]:
+    """Convert double-quoted YAML values with invalid escapes to single-quoted.
+
+    Only handles simple single-line key: "value" patterns, which cover
+    the description/title fields that are the source of LaTeX-escape issues
+    in the brain corpus.
+    """
+    # Matches: optional indent, key name, colon+space, double-quoted value
+    # The value regex captures the inner content, allowing escaped chars.
+    pattern = re.compile(
+        r'^(\s*[\w][\w .\-]*?\s*:\s*)"((?:[^"\\]|\\.)*)"([ \t]*)$',
+        re.MULTILINE,
+    )
+    count = 0
+
+    def replacer(m: re.Match) -> str:
+        nonlocal count
+        inner = m.group(2)
+        if not _has_invalid_yaml_escape(inner):
+            return m.group(0)
+        count += 1
+        # Escape existing single quotes for YAML single-quoted syntax
+        sq_inner = inner.replace("'", "''")
+        return f"{m.group(1)}'{sq_inner}'{m.group(3)}"
+
+    new_body = pattern.sub(replacer, fm_body)
+    return new_body, count
+
+
+def _dedup_yaml_keys(fm_body: str) -> tuple[str, int]:
+    """Remove duplicate top-level YAML keys, keeping the first occurrence."""
+    # A top-level key line: no leading whitespace, word chars, then colon.
+    key_re = re.compile(r"^([\w][\w .\-]*?)\s*:", )
+    lines = fm_body.splitlines(keepends=True)
+    seen: set[str] = set()
+    result: list[str] = []
+    removed = 0
+    skip_until_next_key = False
+
+    for line in lines:
+        m = key_re.match(line) if not line.startswith(" ") else None
+        if m:
+            key = m.group(1).strip()
+            if key in seen:
+                removed += 1
+                skip_until_next_key = True
+                continue
+            seen.add(key)
+            skip_until_next_key = False
+        elif skip_until_next_key and (line.startswith(" ") or line.startswith("\t")):
+            # continuation of a multi-line duplicate value — skip it too
+            removed += 1
+            continue
+        else:
+            skip_until_next_key = False
+        result.append(line)
+    return "".join(result), removed
 
 
 def repair(text: str, path: Path | None = None):
@@ -70,6 +165,25 @@ def repair(text: str, path: Path | None = None):
             fm.append("---\n")
             s = "\n".join(fm) + "\n" + s
             reasons.append("add-frontmatter")
+
+    # 5. Fix invalid YAML escape sequences in double-quoted values
+    #    (Hugo v0.146+ strict YAML rejects e.g. \geq, \leq, \cdot).
+    parts = _extract_fm(s)
+    if parts:
+        open_, body, close_, rest = parts
+        new_body, n = _fix_yaml_escapes(body)
+        if n:
+            s = open_ + new_body + close_ + rest
+            reasons.append(f"fix-yaml-escapes({n})")
+
+    # 6. Remove duplicate top-level YAML keys (Hugo v0.161 strict mode rejects them).
+    parts = _extract_fm(s)
+    if parts:
+        open_, body, close_, rest = parts
+        new_body, n = _dedup_yaml_keys(body)
+        if n:
+            s = open_ + new_body + close_ + rest
+            reasons.append(f"dedup-keys({n})")
 
     return s, reasons
 

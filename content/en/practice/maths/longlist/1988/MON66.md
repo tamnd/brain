@@ -1,6 +1,6 @@
 ---
 title: "IMO 1988 LL MON66"
-description: "Suppose \alphai > 0, \betai > 0 for 1 \leqi \leqn (n > 1) and that"
+description: 'Suppose \alphai > 0, \betai > 0 for 1 \leqi \leqn (n > 1) and that'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

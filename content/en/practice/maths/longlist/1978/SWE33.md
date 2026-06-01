@@ -1,6 +1,6 @@
 ---
 title: "IMO 1978 LL SWE33"
-description: "A sequence (an)\infty"
+description: 'A sequence (an)\infty'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

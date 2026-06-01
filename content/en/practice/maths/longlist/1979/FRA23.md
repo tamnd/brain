@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL FRA23"
-description: "Consider the set E consisting of pairs of integers (a, b), with a \geq"
+description: 'Consider the set E consisting of pairs of integers (a, b), with a \geq'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

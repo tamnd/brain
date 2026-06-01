@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL VIE82"
-description: "Let f(x) = xm + a1xm−1 + \cdot \cdot \cdot + am−1x + am and g(x) ="
+description: 'Let f(x) = xm + a1xm−1 + \cdot \cdot \cdot + am−1x + am and g(x) ='
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

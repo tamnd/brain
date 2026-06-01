@@ -1,6 +1,6 @@
 ---
 title: "IMO 1985 LL GDR37"
-description: "Prove that a triangle with angles \alpha, \beta, \gamma, circumradius R, and"
+description: 'Prove that a triangle with angles \alpha, \beta, \gamma, circumradius R, and'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

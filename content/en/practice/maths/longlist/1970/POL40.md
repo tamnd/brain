@@ -1,6 +1,6 @@
 ---
 title: "IMO 1970 LL POL40"
-description: "Let ABC be a triangle with angles \alpha, \beta, \gamma commensurable with"
+description: 'Let ABC be a triangle with angles \alpha, \beta, \gamma commensurable with'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

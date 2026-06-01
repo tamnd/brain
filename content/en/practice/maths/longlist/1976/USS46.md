@@ -1,6 +1,6 @@
 ---
 title: "IMO 1976 LL USS46"
-description: "For a \geq0, b \geq0, c \geq0, d \geq0, prove the inequality"
+description: 'For a \geq0, b \geq0, c \geq0, d \geq0, prove the inequality'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

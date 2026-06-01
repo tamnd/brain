@@ -1,6 +1,6 @@
 ---
 title: "IMO 1984 LL USA59"
-description: "Determine the smallest positive integer m such that 529n +m\cdot"
+description: 'Determine the smallest positive integer m such that 529n +m\cdot'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

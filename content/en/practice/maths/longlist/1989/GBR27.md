@@ -1,6 +1,6 @@
 ---
 title: "IMO 1989 LL GBR27"
-description: "Integers cm,n (m \geq0, n \geq0) are deﬁned by cm,0 = 1 for all"
+description: 'Integers cm,n (m \geq0, n \geq0) are deﬁned by cm,0 = 1 for all'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

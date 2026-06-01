@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL SWE61"
-description: "Let a1 \leqa2 \leq\cdot \cdot \cdot \leqan and b1 \leqb2 \leq\cdot \cdot \cdot \leqbn be two"
+description: 'Let a1 \leqa2 \leq\cdot \cdot \cdot \leqan and b1 \leqb2 \leq\cdot \cdot \cdot \leqbn be two'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

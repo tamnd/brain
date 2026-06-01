@@ -1,6 +1,6 @@
 ---
 title: "IMO 1969 LL HUN38"
-description: "Let r and m (r \leqm) be natural numbers and Ak = 2k−1"
+description: 'Let r and m (r \leqm) be natural numbers and Ak = 2k−1'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL USS67"
-description: "If a, b, c, d are real numbers such that a2 + b2 + c2 + d2 \leq1,"
+description: 'If a, b, c, d are real numbers such that a2 + b2 + c2 + d2 \leq1,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL FIN13"
-description: "A be an inﬁnite set of positive integers such that every n \inA is"
+description: 'A be an inﬁnite set of positive integers such that every n \inA is'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

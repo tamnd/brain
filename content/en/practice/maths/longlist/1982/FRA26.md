@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL FRA26"
-description: "Let (an)n\geq0 and (bn)n\geq0 be two sequences of natural numbers."
+description: 'Let (an)n\geq0 and (bn)n\geq0 be two sequences of natural numbers.'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

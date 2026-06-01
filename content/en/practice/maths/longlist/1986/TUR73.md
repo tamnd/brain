@@ -1,6 +1,6 @@
 ---
 title: "IMO 1986 LL TUR73"
-description: "Let (ai)i\inN be a strictly increasing sequence of positive real"
+description: 'Let (ai)i\inN be a strictly increasing sequence of positive real'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

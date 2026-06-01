@@ -1,6 +1,6 @@
 ---
 title: "IMO 1966 LL CZS26"
-description: "(a) Prove that (a1 +a2 +\cdot \cdot \cdot+ak)2 \leqk(a2"
+description: '(a) Prove that (a1 +a2 +\cdot \cdot \cdot+ak)2 \leqk(a2'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

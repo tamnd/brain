@@ -1,6 +1,6 @@
 ---
 title: "IMO 1970 LL CZS19"
-description: "Let n > 1 be a natural number, a \geq1 a real number, and"
+description: 'Let n > 1 be a natural number, a \geq1 a real number, and'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

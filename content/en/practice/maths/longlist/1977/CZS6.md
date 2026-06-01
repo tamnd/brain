@@ -1,6 +1,6 @@
 ---
 title: "IMO 1977 LL CZS6"
-description: "Let x1, x2, . . . , xn (n \geq1) be real numbers such that 0 \leqxj \leq\pi,"
+description: 'Let x1, x2, . . . , xn (n \geq1) be real numbers such that 0 \leqxj \leq\pi,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

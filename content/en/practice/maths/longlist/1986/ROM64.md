@@ -1,6 +1,6 @@
 ---
 title: "IMO 1986 LL ROM64"
-description: "Let (an)n\inN be the sequence of integers deﬁned recursively by"
+description: 'Let (an)n\inN be the sequence of integers deﬁned recursively by'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974 LL SWE32"
-description: "Let a1, a2, . . . , an be n real numbers such that 0 < a \leqak \leqb"
+description: 'Let a1, a2, . . . , an be n real numbers such that 0 < a \leqak \leqb'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1976 LL SWE34"
-description: "Let {an}\infty"
+description: 'Let {an}\infty'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

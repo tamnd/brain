@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL ROM53"
-description: "Let a \inR and let z1, z2, . . . , zn be complex numbers of mod-"
+description: 'Let a \inR and let z1, z2, . . . , zn be complex numbers of mod-'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

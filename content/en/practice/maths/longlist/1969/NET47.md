@@ -1,6 +1,6 @@
 ---
 title: "IMO 1969 LL NET47"
-description: "Let A and B be points on the circle \gamma. A point C, diﬀerent"
+description: 'Let A and B be points on the circle \gamma. A point C, diﬀerent'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

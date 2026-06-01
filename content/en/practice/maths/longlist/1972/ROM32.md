@@ -1,6 +1,6 @@
 ---
 title: "IMO 1972 LL ROM32"
-description: "If n1, n2, . . . , nk are natural numbers and n1+n2+\cdot \cdot \cdot+nk = n,"
+description: 'If n1, n2, . . . , nk are natural numbers and n1+n2+\cdot \cdot \cdot+nk = n,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

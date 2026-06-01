@@ -1,6 +1,6 @@
 ---
 title: "IMO 1969 LL GBR28"
-description: "Let us deﬁne u0 = 0, u1 = 1 and for n \geq0, un+2 = aun+1+bun,"
+description: 'Let us deﬁne u0 = 0, u1 = 1 and for n \geq0, un+2 = aun+1+bun,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

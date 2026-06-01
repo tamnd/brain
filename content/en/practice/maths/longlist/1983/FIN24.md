@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL FIN24"
-description: "Every x, 0 \leqx \leq1, admits a unique representation x ="
+description: 'Every x, 0 \leqx \leq1, admits a unique representation x ='
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

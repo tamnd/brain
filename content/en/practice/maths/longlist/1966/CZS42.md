@@ -1,6 +1,6 @@
 ---
 title: "IMO 1966 LL CZS42"
-description: "Let a1, a2, . . . , an (n \geq2) be a sequence of integers. Show that"
+description: 'Let a1, a2, . . . , an (n \geq2) be a sequence of integers. Show that'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

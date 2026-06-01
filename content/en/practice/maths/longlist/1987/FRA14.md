@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL FRA14"
-description: "Given n real numbers 0 < t1 \leqt2 \leq\cdot \cdot \cdot \leqtn < 1, prove that"
+description: 'Given n real numbers 0 < t1 \leqt2 \leq\cdot \cdot \cdot \leqtn < 1, prove that'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

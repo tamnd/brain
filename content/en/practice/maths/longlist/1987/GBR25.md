@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL GBR25"
-description: "Numbers d(n, m), with m, n integers, 0 \leqm \leqn, ae deﬁned"
+description: 'Numbers d(n, m), with m, n integers, 0 \leqm \leqn, ae deﬁned'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1978 LL GDR28"
-description: "Let c, s be real functions deﬁned on R\{0} that are nonconstant"
+description: 'Let c, s be real functions deﬁned on R\{0} that are nonconstant'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

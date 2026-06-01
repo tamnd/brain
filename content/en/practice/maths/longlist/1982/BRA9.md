@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL BRA9"
-description: "Let n be a natural number, n \geq2, and let \varphi be Euler’s function;"
+description: 'Let n be a natural number, n \geq2, and let \varphi be Euler’s function;'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

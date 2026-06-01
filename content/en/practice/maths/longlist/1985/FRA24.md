@@ -1,6 +1,6 @@
 ---
 title: "IMO 1985 LL FRA24"
-description: "Let d \geq1 be an integer that is not the square of an integer."
+description: 'Let d \geq1 be an integer that is not the square of an integer.'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

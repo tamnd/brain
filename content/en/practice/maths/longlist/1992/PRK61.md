@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL PRK61"
-description: "There are a board with 2n\cdot2n (= 4n2) squares and 4n2−1 cards"
+description: 'There are a board with 2n\cdot2n (= 4n2) squares and 4n2−1 cards'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1971 LL AUT3"
-description: "Let a, b, c be positive real numbers, 0 < a \leqb \leqc. Prove that"
+description: 'Let a, b, c be positive real numbers, 0 < a \leqb \leqc. Prove that'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

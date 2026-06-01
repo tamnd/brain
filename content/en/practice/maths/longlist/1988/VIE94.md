@@ -1,6 +1,6 @@
 ---
 title: "IMO 1988 LL VIE94"
-description: "Let n + 1 (n \geq1) positive integers be given such that for each"
+description: 'Let n + 1 (n \geq1) positive integers be given such that for each'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL FIN18"
-description: "Show that for no integers a \geq1, n \geq1 is the sum"
+description: 'Show that for no integers a \geq1, n \geq1 is the sum'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

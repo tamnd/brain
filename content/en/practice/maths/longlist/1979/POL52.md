@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL POL52"
-description: "Let a real number \lambda > 1 be given and a sequence (nk) of positive"
+description: 'Let a real number \lambda > 1 be given and a sequence (nk) of positive'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

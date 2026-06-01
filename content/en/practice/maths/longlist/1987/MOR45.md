@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL MOR45"
-description: "Let us consider a variable polygon with 2n sides (n \inN) in a"
+description: 'Let us consider a variable polygon with 2n sides (n \inN) in a'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

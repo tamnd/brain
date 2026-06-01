@@ -1,6 +1,6 @@
 ---
 title: "IMO 1970 LL SWE49"
-description: "For n \inN, let f(n) be the number of positive integers k \leqn"
+description: 'For n \inN, let f(n) be the number of positive integers k \leqn'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

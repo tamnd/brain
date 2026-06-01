@@ -1,6 +1,6 @@
 ---
 title: "IMO 1969 LL MON42"
-description: "Let Ak (1 \leqk \leqh) be n-element sets such that each two"
+description: 'Let Ak (1 \leqk \leqh) be n-element sets such that each two'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

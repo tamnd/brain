@@ -1,6 +1,6 @@
 ---
 title: "IMO 1989 LL ISR59"
-description: "Let v1, v2, . . . , v1989 be a set of coplanar vectors with |vr| \leq1"
+description: 'Let v1, v2, . . . , v1989 be a set of coplanar vectors with |vr| \leq1'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

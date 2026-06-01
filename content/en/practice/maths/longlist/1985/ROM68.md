@@ -1,6 +1,6 @@
 ---
 title: "IMO 1985 LL ROM68"
-description: "Show that the sequence {an}n\geq1 deﬁned by an = [n"
+description: 'Show that the sequence {an}n\geq1 deﬁned by an = [n'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

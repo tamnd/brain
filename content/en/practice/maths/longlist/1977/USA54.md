@@ -1,6 +1,6 @@
 ---
 title: "IMO 1977 LL USA54"
-description: "If 0 \leqa \leqb \leqc \leqd, prove that"
+description: 'If 0 \leqa \leqb \leqc \leqd, prove that'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

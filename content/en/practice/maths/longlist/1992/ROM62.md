@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL ROM62"
-description: "Let c1, . . . , cn (n \geq2) be real numbers such that 0 \leq ci \leqn."
+description: 'Let c1, . . . , cn (n \geq2) be real numbers such that 0 \leq ci \leqn.'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

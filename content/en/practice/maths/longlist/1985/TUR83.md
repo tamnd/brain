@@ -1,6 +1,6 @@
 ---
 title: "IMO 1985 LL TUR83"
-description: "Let \Gammai, i = 0, 1, 2, . . ., be a circle of radius ri inscribed in an"
+description: 'Let \Gammai, i = 0, 1, 2, . . ., be a circle of radius ri inscribed in an'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

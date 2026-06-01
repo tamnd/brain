@@ -1,6 +1,6 @@
 ---
 title: "IMO 1974 LL GBR19"
-description: "(Alternative to GBR 2) Prove that there exists, for n \geq4, a"
+description: '(Alternative to GBR 2) Prove that there exists, for n \geq4, a'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1986 LL IRE45"
-description: "Given n real numbers a1 \leqa2 \leq\cdot \cdot \cdot \leqan, deﬁne"
+description: 'Given n real numbers a1 \leqa2 \leq\cdot \cdot \cdot \leqan, deﬁne'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

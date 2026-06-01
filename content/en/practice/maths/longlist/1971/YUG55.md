@@ -1,6 +1,6 @@
 ---
 title: "IMO 1971 LL YUG55"
-description: "Prove that the polynomial x4 + \lambdax3 + µx2 + \nux + 1 has no"
+description: 'Prove that the polynomial x4 + \lambdax3 + µx2 + \nux + 1 has no'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

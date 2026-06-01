@@ -1,6 +1,6 @@
 ---
 title: "IMO 1967 LL SWE49"
-description: "Let n and k be positive integers such that 1 \leqn \leqN + 1,"
+description: 'Let n and k be positive integers such that 1 \leqn \leqN + 1,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

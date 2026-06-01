@@ -1,6 +1,6 @@
 ---
 title: "IMO 1989 LL MON68"
-description: "If 0 < k \leq1 and ai are positive real numbers, i = 1, 2, . . . , n,"
+description: 'If 0 < k \leq1 and ai are positive real numbers, i = 1, 2, . . . , n,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

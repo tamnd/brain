@@ -1,6 +1,6 @@
 ---
 title: "IMO 1986 LL CHN15"
-description: "Let N = B1 \cup\cdot \cdot \cdot\cupBq be a partition of the set N of all positive"
+description: 'Let N = B1 \cup\cdot \cdot \cdot\cupBq be a partition of the set N of all positive'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL USS72"
-description: "Prove that for all x1, x2, . . . , xn \inR the following inequality"
+description: 'Prove that for all x1, x2, . . . , xn \inR the following inequality'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

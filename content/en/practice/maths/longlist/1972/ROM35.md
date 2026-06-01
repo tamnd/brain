@@ -1,6 +1,6 @@
 ---
 title: "IMO 1972 LL ROM35"
-description: "(a) Prove that for a, b, c, d \inR, m \in[1, +\infty) with am + b ="
+description: '(a) Prove that for a, b, c, d \inR, m \in[1, +\infty) with am + b ='
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

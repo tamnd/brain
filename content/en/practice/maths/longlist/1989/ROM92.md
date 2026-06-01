@@ -1,6 +1,6 @@
 ---
 title: "IMO 1989 LL ROM92"
-description: "Find the set of all a \inR for which there is no inﬁnite sequence"
+description: 'Find the set of all a \inR for which there is no inﬁnite sequence'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

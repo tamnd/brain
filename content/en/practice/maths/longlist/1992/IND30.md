@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL IND30"
-description: "Let Pn = (19 + 92)(192 + 922) \cdot \cdot \cdot (19n + 92n) for each positive"
+description: 'Let Pn = (19 + 92)(192 + 922) \cdot \cdot \cdot (19n + 92n) for each positive'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1977 LL VIE60"
-description: "Suppose x0, x1, . . . , xn are integers and x0 > x1 > \cdot \cdot \cdot > xn."
+description: 'Suppose x0, x1, . . . , xn are integers and x0 > x1 > \cdot \cdot \cdot > xn.'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

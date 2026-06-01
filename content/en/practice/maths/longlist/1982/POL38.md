@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL POL38"
-description: "Numbers un,k (1 \leqk \leqn) are deﬁned as follows:"
+description: 'Numbers un,k (1 \leqk \leqn) are deﬁned as follows:'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

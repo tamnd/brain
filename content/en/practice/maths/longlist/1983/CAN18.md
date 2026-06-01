@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL CAN18"
-description: "Let b \geq2 be a positive integer."
+description: 'Let b \geq2 be a positive integer.'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

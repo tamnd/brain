@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL IND27"
-description: "Let ABC be an arbitrary scalene triangle. Deﬁne \Sigma to be the"
+description: 'Let ABC be an arbitrary scalene triangle. Deﬁne \Sigma to be the'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

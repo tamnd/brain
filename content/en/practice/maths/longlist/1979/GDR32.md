@@ -1,6 +1,6 @@
 ---
 title: "IMO 1979 LL GDR32"
-description: "Let n, k \geq1 be natural numbers. Find the number A(n, k) of"
+description: 'Let n, k \geq1 be natural numbers. Find the number A(n, k) of'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1966 LL USS56"
-description: "Let ABCD be a tetrahedron such that AB \perpCD,"
+description: 'Let ABCD be a tetrahedron such that AB \perpCD,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

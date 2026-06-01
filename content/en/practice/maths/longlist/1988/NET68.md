@@ -1,6 +1,6 @@
 ---
 title: "IMO 1988 LL NET68"
-description: "Let S be the set of all sequences {ai | 1 \leqi \leq7, ai = 0 or 1}."
+description: 'Let S be the set of all sequences {ai | 1 \leqi \leq7, ai = 0 or 1}.'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

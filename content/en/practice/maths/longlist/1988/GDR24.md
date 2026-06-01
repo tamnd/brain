@@ -1,6 +1,6 @@
 ---
 title: "IMO 1988 LL GDR24"
-description: "Let Zm,n be the set of all ordered pairs (i, j) with i \in"
+description: 'Let Zm,n be the set of all ordered pairs (i, j) with i \in'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

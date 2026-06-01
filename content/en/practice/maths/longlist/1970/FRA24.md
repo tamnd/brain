@@ -1,6 +1,6 @@
 ---
 title: "IMO 1970 LL FRA24"
-description: "Let n and p be two integers such that 2p \leqn. Prove the"
+description: 'Let n and p be two integers such that 2p \leqn. Prove the'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

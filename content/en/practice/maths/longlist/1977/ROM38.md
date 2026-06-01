@@ -1,6 +1,6 @@
 ---
 title: "IMO 1977 LL ROM38"
-description: "Let mj > 0 for j = 1, 2, . . ., n and a1 \leq\cdot \cdot \cdot \leqan < b1 \leq\cdot \cdot \cdot \leq"
+description: 'Let mj > 0 for j = 1, 2, . . ., n and a1 \leq\cdot \cdot \cdot \leqan < b1 \leq\cdot \cdot \cdot \leq'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

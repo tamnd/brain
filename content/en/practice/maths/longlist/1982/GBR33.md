@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL GBR33"
-description: "A sequence (un) of integers is deﬁned for n \geq0 by u0 = 0,"
+description: 'A sequence (un) of integers is deﬁned for n \geq0 by u0 = 0,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

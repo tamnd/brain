@@ -1,6 +1,6 @@
 ---
 title: "IMO 1985 LL ROM67"
-description: "Let k \geq2 and n1, n2, . . . , nk \geq1 natural numbers having the"
+description: 'Let k \geq2 and n1, n2, . . . , nk \geq1 natural numbers having the'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1970 LL FRA25"
-description: "Suppose that f is a real function deﬁned for 0 \leqx \leq1 having"
+description: 'Suppose that f is a real function deﬁned for 0 \leqx \leq1 having'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

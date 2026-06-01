@@ -1,6 +1,6 @@
 ---
 title: "IMO 1988 LL USA81"
-description: "There are n \geq3 job openings at a factory, ranked 1 to n in"
+description: 'There are n \geq3 job openings at a factory, ranked 1 to n in'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

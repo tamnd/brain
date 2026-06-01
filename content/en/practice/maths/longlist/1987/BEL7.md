@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL BEL7"
-description: "Let f : (0, +\infty) \toR be a function having the property"
+description: 'Let f : (0, +\infty) \toR be a function having the property'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

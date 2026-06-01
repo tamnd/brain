@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL FIN11"
-description: "Let S \subset[0, 1] be a set of 5 points with {0, 1} \subsetS. The graph"
+description: 'Let S \subset[0, 1] be a set of 5 points with {0, 1} \subsetS. The graph'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL ITA39"
-description: "Let n \geq2 be an integer. Find the minimum k for which there"
+description: 'Let n \geq2 be an integer. Find the minimum k for which there'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

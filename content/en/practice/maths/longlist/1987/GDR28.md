@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL GDR28"
-description: "In a chess tournament there are n \geq5 players, and they have"
+description: 'In a chess tournament there are n \geq5 players, and they have'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

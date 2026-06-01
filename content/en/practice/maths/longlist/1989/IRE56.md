@@ -1,6 +1,6 @@
 ---
 title: "IMO 1989 LL IRE56"
-description: "Let n = 2k −1, where k \geq6 is an integer. Let T be the set"
+description: 'Let n = 2k −1, where k \geq6 is an integer. Let T be the set'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

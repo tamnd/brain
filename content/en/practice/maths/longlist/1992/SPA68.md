@@ -1,6 +1,6 @@
 ---
 title: "IMO 1992 LL SPA68"
-description: "Show that the numbers tan(r\pi/15), where r is a positive integer"
+description: 'Show that the numbers tan(r\pi/15), where r is a positive integer'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1983 LL ROM55"
-description: "For every a \inN denote by M(a) the number of elements of"
+description: 'For every a \inN denote by M(a) the number of elements of'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

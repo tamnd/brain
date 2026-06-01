@@ -1,6 +1,6 @@
 ---
 title: "IMO 1971 LL AUT1"
-description: "The points S(i, j) with integer Cartesian coordinates 0 < i \leqn,"
+description: 'The points S(i, j) with integer Cartesian coordinates 0 < i \leqn,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

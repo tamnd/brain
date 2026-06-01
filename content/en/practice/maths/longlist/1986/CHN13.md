@@ -1,6 +1,6 @@
 ---
 title: "IMO 1986 LL CHN13"
-description: "Let N = {1, 2, . . ., n}, n \geq3. To each pair i, j of elements of N,"
+description: 'Let N = {1, 2, . . ., n}, n \geq3. To each pair i, j of elements of N,'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL YUG77"
-description: "Find the least natural number k such that for any n \in[0, 1]"
+description: 'Find the least natural number k such that for any n \in[0, 1]'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

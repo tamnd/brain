@@ -1,6 +1,6 @@
 ---
 title: "IMO 1972 LL NET25"
-description: "We consider n real variables xi (1 \leqi \leqn), where n is an"
+description: 'We consider n real variables xi (1 \leqi \leqn), where n is an'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

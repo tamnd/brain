@@ -1,6 +1,6 @@
 ---
 title: "IMO 1988 LL VIE92"
-description: "Let p \geq2 be a natural number. Prove that there exists an"
+description: 'Let p \geq2 be a natural number. Prove that there exists an'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

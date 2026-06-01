@@ -1,6 +1,6 @@
 ---
 title: "IMO 1987 LL USS71"
-description: "To every natural number k, k \geq2, there corresponds a sequence"
+description: 'To every natural number k, k \geq2, there corresponds a sequence'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

@@ -1,6 +1,6 @@
 ---
 title: "IMO 1982 LL USA47"
-description: "Evaluate sec′′ \pi"
+description: 'Evaluate sec′′ \pi'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

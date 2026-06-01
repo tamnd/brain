@@ -1,6 +1,6 @@
 ---
 title: "IMO 1989 LL IRE53"
-description: "Let f(x) = (x −a1)(x −a2) \cdot \cdot \cdot (x −an) −2, where n \geq3"
+description: 'Let f(x) = (x −a1)(x −a2) \cdot \cdot \cdot (x −an) −2, where n \geq3'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]

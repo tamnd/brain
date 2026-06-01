@@ -1,6 +1,6 @@
 ---
 title: "IMO 1976 LL NET24"
-description: "Let 0 \leqx1 \leqx2 \leq\cdot \cdot \cdot \leqxn \leq1. Prove that for all A \geq1"
+description: 'Let 0 \leqx1 \leqx2 \leq\cdot \cdot \cdot \leqxn \leq1. Prove that for all A \geq1'
 date: "2026-05-29T11:51:44+07:00"
 tags: ["imo", "longlist", "mathematics", "olympiad"]
 categories: ["mathematics"]
