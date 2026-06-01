@@ -38,6 +38,82 @@ build_commit_msg() {
   echo "note${section}: ${summary} ($(date '+%Y-%m-%d %H:%M'))"
 }
 
+# smart_sync fetches remote and rebases local commits on top.
+#
+# Problems solved vs the naive "git rebase || true" approach:
+#  1. Rebase requires a clean working tree — stash dirty changes first, pop after.
+#  2. Silent rebase failures led to conflict markers being staged and committed.
+#  3. After a rebase, ordinary push is rejected (history rewritten) — use --force-with-lease.
+#  4. True file conflicts (same note edited on two machines) are auto-resolved:
+#     take the remote version for conflicted files, then re-apply local stash on top.
+#     Local edits win at stash-pop time; if stash-pop also conflicts, local (ours) wins.
+#
+# Returns 0 on success (nothing to do, or rebased cleanly), 1 if rebase was aborted.
+smart_sync() {
+  git fetch -q origin "$BRANCH" 2>/dev/null || return 0
+
+  # Nothing to pull.
+  git log "HEAD..origin/$BRANCH" --oneline 2>/dev/null | grep -q . || return 0
+
+  # Stash any uncommitted working-tree changes — rebase requires a clean tree.
+  local stashed=false
+  if [ -n "$(git status --porcelain)" ]; then
+    if git stash push -q --include-untracked -m "brain_on autostash $(ts)" 2>/dev/null; then
+      stashed=true
+    else
+      log "${YLW}· stash failed — skipping sync this cycle${RST}"
+      return 1
+    fi
+  fi
+
+  # Try a clean rebase.
+  if ! git rebase -q "origin/$BRANCH" 2>/dev/null; then
+    local conflicted
+    conflicted=$(git diff --name-only --diff-filter=U 2>/dev/null || true)
+
+    if [ -n "$conflicted" ]; then
+      log "${YLW}· rebase conflict — auto-resolving (remote version wins):${RST}"
+      while IFS= read -r f; do
+        # Take the remote (incoming) version; our stash will re-apply on top.
+        git checkout --theirs -- "$f" 2>/dev/null && git add -- "$f"
+        log "${YLW}  → $f${RST}"
+      done <<< "$conflicted"
+      # Continue rebase without opening an editor for the commit message.
+      if ! GIT_EDITOR=true git rebase --continue 2>/dev/null; then
+        git rebase --abort 2>/dev/null || true
+        log "${YLW}✗ rebase --continue failed — aborting; will retry next cycle${RST}"
+        $stashed && git stash pop -q 2>/dev/null || true
+        return 1
+      fi
+    else
+      # Rebase failed for another reason (empty commit, etc.) — abort cleanly.
+      git rebase --abort 2>/dev/null || true
+      log "${YLW}✗ rebase failed (no conflicts found) — skipping sync${RST}"
+      $stashed && git stash pop -q 2>/dev/null || true
+      return 1
+    fi
+  fi
+
+  # Restore local working-tree edits on top of the rebased history.
+  if $stashed; then
+    if ! git stash pop -q 2>/dev/null; then
+      # Stash-pop conflict: local edits win over remote (this machine is the active one).
+      local stash_conflicts
+      stash_conflicts=$(git diff --name-only --diff-filter=U 2>/dev/null || true)
+      if [ -n "$stash_conflicts" ]; then
+        log "${YLW}· stash-pop conflict — local edits win:${RST}"
+        while IFS= read -r f; do
+          git checkout --ours -- "$f" 2>/dev/null && git add -- "$f"
+          log "${YLW}  → $f${RST}"
+        done <<< "$stash_conflicts"
+      fi
+      git stash drop -q 2>/dev/null || true
+    fi
+  fi
+
+  return 0
+}
+
 while true; do
   # Auto-repair malformed front matter before staging.
   if FIX_OUT="$(python3 "$REPO_DIR/scripts/fix_frontmatter.py" 2>&1)" && [ -n "$FIX_OUT" ]; then
@@ -71,11 +147,8 @@ while true; do
 
   _did_something=false
 
-  # Sync with remote before doing anything — avoids rejected pushes.
-  git fetch -q origin "$BRANCH" 2>/dev/null || true
-  if git log "HEAD..origin/$BRANCH" --oneline 2>/dev/null | grep -q .; then
-    git rebase -q "origin/$BRANCH" 2>/dev/null || true
-  fi
+  # Pull remote changes (smart: stash/rebase/pop, auto-resolve conflicts).
+  smart_sync
 
   # Commit any local changes (always safe to commit locally).
   if [ -n "$(git status --porcelain)" ]; then
@@ -91,11 +164,12 @@ while true; do
   fi
 
   # Push only after a tago build passes — catches render errors before CI.
+  # Use --force-with-lease because we may have rebased local commits above.
   # If tago fails the commit stays local; the next cycle retries.
   _unpushed=$(git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null || true)
   if [ -n "$_unpushed" ]; then
     if TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
-      if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
+      if PUSH_OUT="$(git push -q --force-with-lease origin "$BRANCH" 2>&1)"; then
         log "${GRN}✓ pushed${RST}"
         # Wait for GitHub Actions deploy and report result + duration.
         _deploy_start=$(date +%s)
