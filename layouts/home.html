@@ -4,6 +4,80 @@
     <p class="home-feed__tagline">What you learn is what you note.</p>
     <p class="home-feed__subtitle">{{len .Pages}} notes</p>
   </header>
+
+  <nav class="home-nav" aria-label="Sections">
+    <a href="/en/maths/" class="home-nav__card">
+      <span class="home-nav__icon">∑</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Maths</span>
+        <span class="home-nav__desc">MSC-organized mathematics notes</span>
+      </div>
+    </a>
+    <a href="/en/programming/" class="home-nav__card">
+      <span class="home-nav__icon">&lt;/&gt;</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Programming</span>
+        <span class="home-nav__desc">Algorithms, system design, formal methods</span>
+      </div>
+    </a>
+    <a href="/en/practice/" class="home-nav__card">
+      <span class="home-nav__icon">⚙</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Practice</span>
+        <span class="home-nav__desc">Algorithm problems and solutions</span>
+      </div>
+    </a>
+    <a href="/en/languages/" class="home-nav__card">
+      <span class="home-nav__icon">言</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Languages</span>
+        <span class="home-nav__desc">Foreign language learning resources</span>
+      </div>
+    </a>
+    <a href="/en/deep/" class="home-nav__card">
+      <span class="home-nav__icon">⬇</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Deep Reads</span>
+        <span class="home-nav__desc">Internals of systems and languages</span>
+      </div>
+    </a>
+    <a href="/en/research/" class="home-nav__card">
+      <span class="home-nav__icon">◎</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Research</span>
+        <span class="home-nav__desc">Design notes and enhancement proposals</span>
+      </div>
+    </a>
+    <a href="/en/wiki/" class="home-nav__card">
+      <span class="home-nav__icon">◻</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Wiki</span>
+        <span class="home-nav__desc">Reference articles by topic</span>
+      </div>
+    </a>
+    <a href="/en/docs/" class="home-nav__card">
+      <span class="home-nav__icon">≡</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Docs</span>
+        <span class="home-nav__desc">Notes organized by topic</span>
+      </div>
+    </a>
+    <a href="/en/write/" class="home-nav__card">
+      <span class="home-nav__icon">✎</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Writes</span>
+        <span class="home-nav__desc">Book notes and writings</span>
+      </div>
+    </a>
+    <a href="/en/spec/" class="home-nav__card">
+      <span class="home-nav__icon">§</span>
+      <div class="home-nav__body">
+        <span class="home-nav__title">Spec</span>
+        <span class="home-nav__desc">Technical specs and design documents</span>
+      </div>
+    </a>
+  </nav>
+
   <div class="home-feed__list">
     {{range .Pages}}
     <article class="feed-card">
