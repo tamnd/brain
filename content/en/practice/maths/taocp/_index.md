@@ -9,13 +9,14 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 751 solved, 361 verified, 841 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 756 solved, 361 verified, 856 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
 | [1.1](1.1/) | Algorithms | 9 | 9 | 9 |
 | [2.1](2.1/) | Introduction | 9 | 0 | 9 |
 | [2.3](2.3/) | Trees | 22 | 1 | 22 |
+| [2.4](2.4/) | Multilinked Structures | 3 | 0 | 15 |
 | [2.5](2.5/) | Dynamic Storage Allocation | 11 | 3 | 44 |
 | [1.2.1](1.2.1/) | Mathematical Induction | 15 | 12 | 15 |
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 24 | 30 |
@@ -49,4 +50,4 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.4.1](2.3.4.1/) | Free Trees | 9 | 5 | 13 |
 | [2.3.4.2](2.3.4.2/) | Oriented Trees | 8 | 6 | 28 |
 | [2.3.4.3](2.3.4.3/) |  | 1 | 0 | 8 |
-| [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 8 | 0 | 30 |
+| [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 10 | 0 | 30 |
