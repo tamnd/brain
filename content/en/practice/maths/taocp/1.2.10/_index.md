@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.10: Analysis of an Algorithm"
-description: "Section 1.2.10 exercises: 21/22 solved."
+description: "Section 1.2.10 exercises: 22/22 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.10"
@@ -14,13 +14,13 @@ draft: false
 
 # Section 1.2.10. Analysis of an Algorithm
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.10: 21/22 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.10: 22/22 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*10*] | simple | verified | 40s |
 | [2](02.md) |  [*HM16*] | hm-medium | verified | 47s |
-| 3 |  [*M15*] | math-simple | - | - |
+| [3](03.md) |  [*M15*] | math-simple | verified | 4m35s |
 | [4](04.md) |  [*M10*] | math-simple | verified | 1m10s |
 | [5](05.md) |  [*M13*] | math-simple | verified | 35s |
 | [6](06.md) |  [*HM27*] | hm-hard | verified | 2m03s |
