@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 740 solved, 361 verified, 803 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 751 solved, 361 verified, 841 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -46,5 +46,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 9 | 14 |
 | [1.4.3.1](1.4.3.1/) | A MIX Simulator | 7 | 3 | 8 |
 | [1.4.3.2](1.4.3.2/) | Trace Routines | 7 | 1 | 7 |
-| [2.3.4.1](2.3.4.1/) | Free Trees | 7 | 5 | 13 |
+| [2.3.4.1](2.3.4.1/) | Free Trees | 9 | 5 | 13 |
 | [2.3.4.2](2.3.4.2/) | Oriented Trees | 8 | 6 | 28 |
+| [2.3.4.3](2.3.4.3/) |  | 1 | 0 | 8 |
+| [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 8 | 0 | 30 |
