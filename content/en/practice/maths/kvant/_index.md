@@ -69,6 +69,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [57](57.md) | solved | 3m22s |
 | [58](58.md) | solved | 5m59s |
 | [59](59.md) | solved | 6m40s |
+| [60](60.md) | solved | 4m08s |
 | [241](241.md) | solved | 1m57s |
 | [600](600.md) | solved | 2m02s |
 | [601](601.md) | solved | 1m22s |
