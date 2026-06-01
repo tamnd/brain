@@ -18,6 +18,25 @@ def dest_path(source_path: str) -> str:
     return source_path
 
 
+# Sections whose leaf pages carry a date field and thus appear on home + calendar
+_DATED_SECTIONS = frozenset({"docs", "languages", "maths", "practice", "programming", "research", "write"})
+
+
+def _calc_priority(rel: str, base: int = 0) -> int:
+    parts = rel.split("/")
+    is_idx = parts[-1] == "_index.md"
+    depth = len(parts) - 1
+    if is_idx and depth <= 3:
+        return base + 100
+    if is_idx:
+        return base + 50
+    # Leaf pages from dated sections fill home/calendar — translate them before deep/spec/wiki
+    section = parts[2] if len(parts) > 2 else ""
+    if not is_idx and section in _DATED_SECTIONS:
+        return base + 20
+    return base
+
+
 def scan_source(
     source_repo: Path,
     state: TranslationState,
@@ -43,10 +62,10 @@ def scan_source(
         h = file_hash(md)
         if rel not in state.files:
             new_files.append(rel)
-            queue.pending.append(QueueItem(source_path=rel, priority=0, added_at=utcnow()))
+            queue.pending.append(QueueItem(source_path=rel, priority=_calc_priority(rel), added_at=utcnow()))
         elif state.files[rel].source_hash != h:
             changed.append(rel)
-            queue.pending.append(QueueItem(source_path=rel, priority=1, added_at=utcnow()))
+            queue.pending.append(QueueItem(source_path=rel, priority=_calc_priority(rel, base=10), added_at=utcnow()))
 
     # Higher priority first, then stable sort by path
     queue.pending.sort(key=lambda x: (-x.priority, x.source_path))
