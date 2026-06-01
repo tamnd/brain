@@ -18,7 +18,7 @@ def dest_path(source_path: str) -> str:
     return source_path
 
 
-# Sections whose leaf pages carry a date field and thus appear on home + calendar
+# Leaf pages in these sections carry a date and appear on home + calendar
 _DATED_SECTIONS = frozenset({"docs", "languages", "maths", "practice", "programming", "research", "write"})
 
 
@@ -26,14 +26,17 @@ def _calc_priority(rel: str, base: int = 0) -> int:
     parts = rel.split("/")
     is_idx = parts[-1] == "_index.md"
     depth = len(parts) - 1
+    # Top-level section _index.md (depth<=3): translate first to populate sidebar
     if is_idx and depth <= 3:
         return base + 100
-    if is_idx:
-        return base + 50
-    # Leaf pages from dated sections fill home/calendar — translate them before deep/spec/wiki
+    # Dated-section leaf pages: fill home/calendar next
     section = parts[2] if len(parts) > 2 else ""
     if not is_idx and section in _DATED_SECTIONS:
         return base + 20
+    # Deeper _index.md: useful but not urgent — after dated leaf pages
+    if is_idx:
+        return base + 15
+    # Undated leaf pages (deep/, spec/, wiki/): last
     return base
 
 
