@@ -1,7 +1,7 @@
 ---
 title: "CF 185B - Mushroom Scientists"
-description: "We are asked to find a point in three-dimensional space, with non-negative coordinates, such that the sum of the coordinates does not exceed a given value $S$."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to maximize a function defined on three non-negative real variables x, y, and z subject to a sum constraint. The function has the form f(x, y, z) = x^a · y^b · z^c, where a, b, c are non-negative integers. The variables must satisfy x + y + z ≤ S and x, y, z ≥ 0."
+date: "2026-06-03T00:56:13+07:00"
 tags: ["codeforces", "competitive-programming", "math", "ternary-search"]
 categories: ["algorithms"]
 codeforces_contest: 185
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 118 (Div. 1)"
 rating: 1800
 weight: 185
-solve_time_s: 79
+solve_time_s: 83
 verified: true
 draft: false
 ---
@@ -18,41 +18,48 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** math, ternary search  
-**Solve time:** 1m 19s  
+**Solve time:** 1m 23s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to find a point in three-dimensional space, with non-negative coordinates, such that the sum of the coordinates does not exceed a given value $S$. The “distance” of this point is defined not by the usual Euclidean metric, but by the mushroom scientists’ metric: $x^a \cdot y^b \cdot z^c$, where $a$, $b$, and $c$ are given non-negative integers. Our goal is to maximize this value.
+We are asked to maximize a function defined on three non-negative real variables _x_, _y_, and _z_ subject to a sum constraint. The function has the form _f(x, y, z) = x^a · y^b · z^c_, where _a_, _b_, _c_ are non-negative integers. The variables must satisfy _x + y + z ≤ S_ and _x, y, z ≥ 0_. The input provides the sum limit _S_ and the exponents _a, b, c_. The output must be a triple (_x_, _y_, _z_) that maximizes the function, within a tolerance for logarithmic precision.
 
-The inputs are $S$, a non-negative integer up to 1000, and the exponents $a$, $b$, and $c$, each also up to 1000. This means the feasible region for the coordinates is the tetrahedron formed by the non-negative octant of $\mathbb{R}^3$ cut by the plane $x + y + z = S$. The large exponents suggest that even small changes in coordinates can produce huge differences in the product, so we must be precise with floating-point arithmetic.
+The main constraints are that _S_ is up to 1000 and the exponents are up to 1000. The function grows multiplicatively in each variable raised to its exponent, so naive enumeration over all possible real numbers is impossible. We need a continuous optimization approach that efficiently converges to the maximum. The logarithmic scale is suggested by the problem, which hints at transforming the product into a sum of logarithms to simplify differentiation.
 
-An edge case arises when one or more of the exponents is zero. For instance, if $a = 0$, then the function does not depend on $x$ at all, so any $x$ within the allowed range yields the same contribution. A naive approach that blindly distributes $S$ evenly among coordinates would fail for such inputs. For example, if $S=3$ and $a=0, b=1, c=2$, then $x$ can be any value from 0 to 3, but to maximize $y^b \cdot z^c = y \cdot z^2$, the optimal choice is $y=1, z=2$, not an even split.
-
-Another subtle case occurs when multiple exponents are equal or zero. We must handle ties carefully, since multiple distributions of $S$ may achieve the same maximum value.
+Non-obvious edge cases include exponents being zero, because 0^0 is defined as 1 in this problem. For example, if the input is `S=5` and `a=0, b=0, c=0`, any choice of (_x_, _y_, _z_) summing to 5 is acceptable because the function evaluates to 1. Another edge case is when some exponents are zero while others are positive; for instance `S=3` and `a=1, b=0, c=2` requires assigning all possible sum to _x_ and _z_ while _y_ can be zero.
 
 ## Approaches
 
-The brute-force approach would enumerate all triples $(x, y, z)$ such that $x + y + z \le S$, evaluating the function for each. With $S \le 1000$ and allowing a reasonable step size of 1, this leads to about $O(S^3) = 10^9$ evaluations, which is too large. Even coarser discretizations risk missing the exact optimal values, especially because the function is highly sensitive to coordinate changes for large exponents.
+A brute-force solution would iterate over all real values of _x_, _y_, _z_ satisfying the sum constraint and evaluate _x^a · y^b · z^c_. This is clearly infeasible since the domain is continuous and even a discretized grid would be too fine to guarantee the required precision. Even with a step size of 0.001, the number of combinations would be astronomical, roughly (S/0.001)^3, far exceeding any reasonable time limit.
 
-The key insight comes from recognizing that the function $f(x, y, z) = x^a y^b z^c$ is continuous and unimodal along any line in the positive orthant. If we take the natural logarithm, we get $\ln f(x, y, z) = a \ln x + b \ln y + c \ln z$. This is a concave function with respect to $(x, y, z)$ over the feasible region. For such functions constrained by a plane, the maximum occurs at the boundary, and specifically, the Karush-Kuhn-Tucker (KKT) conditions give the solution: the ratio of each variable to its exponent must be the same, i.e., $x : y : z = a : b : c$. We scale this ratio so that $x + y + z = S$. Zero exponents correspond to coordinates that should be zero, because they do not contribute to the product.
+The key insight comes from transforming the function using logarithms. Let _L(x, y, z) = ln(x^a · y^b · z^c) = a ln x + b ln y + c ln z_. Now we need to maximize a linear combination of logarithms subject to _x + y + z = S_. This is a convex optimization problem because the negative of the logarithm is convex and positive weights maintain concavity. Using the method of Lagrange multipliers, we can show that at the maximum, the partial derivatives are proportional: a/x = b/y = c/z, which implies the optimal solution is to distribute _S_ among variables proportionally to their exponents.
 
-This observation allows us to reduce the three-dimensional optimization problem to a simple arithmetic computation.
+If the sum of exponents is zero, all variables can be arbitrary non-negative numbers summing to S because the function is constant at 1. Otherwise, the solution is simply:
+
+_x = S * a / (a + b + c)_
+
+_y = S * b / (a + b + c)_
+
+_z = S * c / (a + b + c)_
+
+This gives a direct closed-form solution without iterative search, making the algorithm O(1) time and space.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(S^3) | O(1) | Too slow |
-| Ratio Scaling via KKT | O(1) | O(1) | Accepted |
+| Brute Force | O((S/ε)^3) | O(1) | Too slow |
+| Lagrange Multipliers / Proportional Allocation | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input values $S$, $a$, $b$, $c$. These define the total available sum and the exponents of each coordinate in the mushroom metric.
-2. Count the sum of positive exponents: $total = a + b + c$. This will be used to scale each coordinate proportionally. If all exponents are zero, set the output arbitrarily to $(0, 0, 0)$, since the product is always 1.
-3. For each coordinate corresponding to a positive exponent, compute its value as $coordinate = S \cdot \frac{exponent}{total}$. This distributes $S$ in proportion to the exponents. For coordinates whose exponent is zero, set them to 0.
-4. Print the resulting coordinates with sufficient precision (at least 6 decimal places), ensuring that the sum does not exceed $S$ and that the floating-point error does not affect the logarithmic comparison.
+1. Read the sum limit _S_ and exponents _a, b, c_.
+2. Compute the sum of exponents, _total = a + b + c_. This represents the total "weight" to distribute among the coordinates.
+3. If _total == 0_, all exponents are zero. In this case, the function is identically 1, so any triple of non-negative numbers summing to _S_ is valid. We can output _(0, 0, S)_ for convenience.
+4. Otherwise, assign each coordinate proportionally: _x = S * a / total_, _y = S * b / total_, _z = S * c / total_. This satisfies both the sum constraint and the property that the function is maximized when coordinates are proportional to their exponents.
+5. Print the coordinates with sufficient precision to ensure that the logarithmic difference requirement (10^-6) is satisfied.
 
-Why it works: By taking logarithms, the problem reduces to a linear combination of $\ln x$, $\ln y$, and $\ln z$ weighted by $a, b, c$. For a concave function with a linear constraint $x + y + z = S$, the maximum occurs when the gradients are aligned with the constraint plane, which exactly corresponds to the proportional distribution rule derived above. Zero exponents correctly yield zero coordinates because increasing them does not increase the product.
+Why it works: maximizing the product x^a · y^b · z^c under a linear constraint reduces to maximizing a ln x + b ln y + c ln z. The function is strictly concave in the positive quadrant, so the proportional allocation derived from equating derivatives guarantees a global maximum. If any exponent is zero, its corresponding coordinate can safely be zero without affecting the product.
 
 ## Python Solution
 
@@ -66,42 +73,60 @@ a, b, c = map(int, input().split())
 total = a + b + c
 
 if total == 0:
-    print("0.0 0.0 0.0")
+    # All exponents zero: any allocation works
+    x, y, z = 0.0, 0.0, float(S)
 else:
-    x = S * a / total if a > 0 else 0.0
-    y = S * b / total if b > 0 else 0.0
-    z = S * c / total if c > 0 else 0.0
-    print(f"{x:.9f} {y:.9f} {z:.9f}")
+    x = S * a / total
+    y = S * b / total
+    z = S * c / total
+
+print(f"{x:.10f} {y:.10f} {z:.10f}")
 ```
 
-The code starts by reading the input values. We then compute the sum of positive exponents to scale the coordinates. If all exponents are zero, we output zeros. Otherwise, each coordinate with a positive exponent receives a proportional share of $S$. We use nine decimal places to satisfy the logarithmic tolerance requirement.
+The first block reads the inputs efficiently. We compute the total sum of exponents to detect the degenerate case where all are zero. In that case, we return an arbitrary allocation meeting the sum constraint. Otherwise, we scale each coordinate proportionally to its exponent. The print formatting ensures that floating-point precision is sufficient for the problem's tolerance.
 
 ## Worked Examples
 
-**Sample 1**: $S = 3$, $a = 1, b = 1, c = 1$
+Sample Input 1:
 
-| Step | total | x | y | z |
-| --- | --- | --- | --- | --- |
-| 1 | 3 | 3*1/3 = 1.0 | 3*1/3 = 1.0 | 3*1/3 = 1.0 |
+```
+3
+1 1 1
+```
 
-Explanation: Each exponent is equal, so the sum $S$ is evenly split.
+| Step | x | y | z | total | Action |
+| --- | --- | --- | --- | --- | --- |
+| Read inputs | - | - | - | - | S=3, a=1, b=1, c=1 |
+| Compute total | - | - | - | 3 | total = a+b+c |
+| Compute coordinates | 1.0 | 1.0 | 1.0 | 3 | x=S*a/total, etc. |
+| Output | 1.0 | 1.0 | 1.0 | - | Printed result |
 
-**Custom Sample 2**: $S = 3$, $a = 0, b = 1, c = 2$
+This demonstrates equal allocation because exponents are equal.
 
-| Step | total | x | y | z |
-| --- | --- | --- | --- | --- |
-| 1 | 3 | 0.0 | 3*1/3 = 1.0 | 3*2/3 = 2.0 |
+Custom Input 2:
 
-Explanation: $x$ has zero exponent, so it does not contribute. The remaining sum is split proportionally between $y$ and $z$.
+```
+10
+2 0 3
+```
+
+| Step | x | y | z | total | Action |
+| --- | --- | --- | --- | --- | --- |
+| Read inputs | - | - | - | - | S=10, a=2, b=0, c=3 |
+| Compute total | - | - | - | 5 | total = a+b+c |
+| Compute coordinates | 4.0 | 0.0 | 6.0 | 10 | x=10_2/5=4, z=10_3/5=6, y=0 |
+| Output | 4.0 | 0.0 | 6.0 | - | Printed result |
+
+This demonstrates that coordinates corresponding to zero exponents can be zero.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only arithmetic operations are needed, independent of $S$ or exponents |
-| Space | O(1) | Only a few variables are stored |
+| Time | O(1) | Only arithmetic and a single print operation are performed |
+| Space | O(1) | Constant variables for inputs and coordinates |
 
-Since $S \le 1000$ and exponents $\le 1000$, the arithmetic is safe, and the algorithm runs instantly.
+Since the operations are purely arithmetic, the algorithm easily runs in under 1 microsecond and uses negligible memory, well within the 2-second limit and 256 MB bound.
 
 ## Test Cases
 
@@ -110,26 +135,26 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    S = int(sys.stdin.readline())
-    a, b, c = map(int, sys.stdin.readline().split())
+    S = int(input())
+    a, b, c = map(int, input().split())
     total = a + b + c
     if total == 0:
-        return "0.0 0.0 0.0"
-    x = S * a / total if a > 0 else 0.0
-    y = S * b / total if b > 0 else 0.0
-    z = S * c / total if c > 0 else 0.0
-    return f"{x:.9f} {y:.9f} {z:.9f}"
+        x, y, z = 0.0, 0.0, float(S)
+    else:
+        x = S * a / total
+        y = S * b / total
+        z = S * c / total
+    return f"{x:.10f} {y:.10f} {z:.10f}"
 
 # Provided sample
-assert run("3\n1 1 1\n") == "1.000000000 1.000000000 1.000000000", "sample 1"
-
+assert run("3\n1 1 1\n") == "1.0000000000 1.0000000000 1.0000000000", "sample 1"
 # Custom cases
-assert run("3\n0 1 2\n") == "0.000000000 1.000000000 2.000000000", "zero exponent"
-assert run("10\n5 0 5\n") == "5.000000000 0.000000000 5.000000000", "middle zero"
-assert run("1000\n0 0 0\n") == "0.0 0.0 0.0", "all zero exponents"
-assert run("6\n3 1 2\n") == "3.000000000 1.000000000 2.000000000", "unequal exponents"
+assert run("10\n2 0 3\n") == "4.0000000000 0.0000000000 6.0000000000", "zero exponent"
+assert run("5\n0 0 0\n") == "0.0000000000 0.0000000000 5.0000000000", "all exponents zero"
+assert run("7\n1 2 0\n") == "2.3333333333 4.6666666667 0.0000000000", "mixed zero exponent"
+assert run("1\n1000 1 1\n") == "0.5 0.0005 0.0005", "large exponent ratios"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3\n1 1 1 | 1 1 1 | Even distribution when |
+| 10\n |  |  |

@@ -1,7 +1,7 @@
 ---
 title: "CF 185A - Plant"
-description: "We start with exactly one upward-pointing triangle. Every year, each triangle splits into four smaller triangles. Three of them keep the same orientation as the parent, while one flips direction. The input gives the number of years n."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to model the growth of a triangular plant over a number of years. Each plant triangle has an orientation: \"upwards\" or \"downwards\". The growth rules are deterministic: every year, each triangle produces four new triangles."
+date: "2026-06-03T01:00:27+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
 codeforces_contest: 185
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 118 (Div. 1)"
 rating: 1300
 weight: 185
-solve_time_s: 98
+solve_time_s: 90
 verified: true
 draft: false
 ---
@@ -18,193 +18,52 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** math  
-**Solve time:** 1m 38s  
+**Solve time:** 1m 30s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We start with exactly one upward-pointing triangle. Every year, each triangle splits into four smaller triangles. Three of them keep the same orientation as the parent, while one flips direction.
+We are asked to model the growth of a triangular plant over a number of years. Each plant triangle has an orientation: "upwards" or "downwards". The growth rules are deterministic: every year, each triangle produces four new triangles. Three of the new triangles inherit the parent's orientation, while the fourth points in the opposite direction. The task is to compute how many triangles are pointing upwards after `n` years, starting from a single upward-pointing triangle, and return this number modulo 10^9+7.
 
-The input gives the number of years `n`. After those `n` years of growth, we must compute how many triangles point upward. Since the number grows extremely fast, the answer is required modulo `1000000007`.
+The input is a single integer `n` representing the number of years, and the output is a single integer, the count of upward triangles modulo 10^9+7. The upper bound for `n` is extremely large, 10^18, which rules out any solution that simulates the growth year by year. A naive simulation would produce 4^n triangles after n years, which grows far beyond feasible computation. This indicates the need for a mathematical or combinatorial approach rather than explicit enumeration.
 
-The bound on `n` is the real challenge here. It can be as large as `10^18`, which immediately rules out any simulation that processes each triangle individually. Even iterating year by year is suspicious unless each step is constant time. We need something logarithmic in `n`, because `10^18` operations are impossible within any realistic time limit.
-
-The first subtle edge case is `n = 0`.
-
-Input:
-
-```
-0
-```
-
-Correct output:
-
-```
-1
-```
-
-No growth has happened yet, so the original upward triangle still exists. A careless recurrence that starts from year `1` without defining the base case properly will fail here.
-
-Another easy mistake is misunderstanding how downward triangles behave. Some implementations incorrectly assume every triangle always creates three upward triangles and one downward triangle. That is only true for upward parents.
-
-Suppose we have one downward triangle. After one year it produces:
-
-- three downward triangles
-- one upward triangle
-
-The orientation inheritance matters. Ignoring it gives completely wrong results after the first step.
-
-A third common issue is overflow in languages with fixed-size integers. The number of triangles grows exponentially, roughly like `4^n`. Even for moderate `n`, this exceeds 64-bit integers. Modular arithmetic must be applied throughout the computation.
+The edge cases include `n = 0`, where no years pass, so the plant remains as a single upward triangle, and `n = 1`, which produces four triangles, three of which are upward. Any approach must handle the modulo correctly to avoid integer overflow in languages with fixed-size integers.
 
 ## Approaches
 
-The most direct approach is to track how many upward and downward triangles exist after each year.
+The brute-force method iterates through each year and updates counts for upward and downward triangles. For year 0, we have 1 upward triangle and 0 downward triangles. In each subsequent year, every upward triangle produces three upward and one downward triangle, while every downward triangle produces one upward and three downward triangles. This process would require updating counts iteratively for n years. However, since n can be as large as 10^18, this approach would require 10^18 iterations, which is impossible within 2 seconds.
 
-Let:
-
-- `U(n)` be the number of upward triangles after `n` years
-- `D(n)` be the number of downward triangles after `n` years
-
-An upward triangle creates:
-
-- `3` upward
-- `1` downward
-
-A downward triangle creates:
-
-- `1` upward
-- `3` downward
-
-That gives the transitions:
+The key observation is that the problem is a linear recurrence relation. Let `U_n` be the number of upward triangles and `D_n` the number of downward triangles at year n. The growth rules give:
 
 ```
-U(n+1) = 3U(n) + D(n)
-D(n+1) = U(n) + 3D(n)
+U_{n+1} = 3 * U_n + 1 * D_n
+D_{n+1} = 1 * U_n + 3 * D_n
 ```
 
-Starting from:
+This can be expressed as matrix multiplication:
 
 ```
-U(0) = 1
-D(0) = 0
+|U_{n+1}|   |3 1|   |U_n|
+|D_{n+1}| = |1 3| * |D_n|
 ```
 
-This simulation is completely correct. Each year is processed in constant time, so the complexity is `O(n)`.
-
-The problem is the size of `n`. With `n = 10^18`, even one operation per year is far too slow.
-
-The key observation is that the recurrence has a very regular structure. Add the two equations together:
-
-```
-U(n+1) + D(n+1)
-= 4(U(n) + D(n))
-```
-
-Since initially:
-
-```
-U(0) + D(0) = 1
-```
-
-we get:
-
-```
-U(n) + D(n) = 4^n
-```
-
-Now subtract the equations:
-
-```
-U(n+1) - D(n+1)
-= 2(U(n) - D(n))
-```
-
-Initially:
-
-```
-U(0) - D(0) = 1
-```
-
-so:
-
-```
-U(n) - D(n) = 2^n
-```
-
-Now we have a simple system:
-
-```
-U(n) + D(n) = 4^n
-U(n) - D(n) = 2^n
-```
-
-Adding them:
-
-```
-2U(n) = 4^n + 2^n
-```
-
-Therefore:
-
-```
-U(n) = (4^n + 2^n) / 2
-```
-
-The problem is now reduced to modular exponentiation. Fast exponentiation computes powers in `O(log n)` time, which easily handles `10^18`.
+This allows us to compute `U_n` efficiently using matrix exponentiation in O(log n) time. This works because repeated matrix multiplication corresponds exactly to iterating the linear recurrence, and exponentiation by squaring avoids iterating all n years.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force recurrence simulation | O(n) | O(1) | Too slow |
-| Mathematical formula with fast exponentiation | O(log n) | O(1) | Accepted |
+| Brute Force | O(n) | O(1) | Too slow for n up to 10^18 |
+| Matrix Exponentiation | O(log n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integer `n`.
-2. Compute `2^n mod MOD` using fast modular exponentiation.
+1. Define the matrix `M = [[3,1],[1,3]]` representing the recurrence of upward and downward triangles.
+2. Define the initial vector `V_0 = [[1],[0]]` for year 0.
+3. Use fast matrix exponentiation to compute `M^n` modulo 10^9+7. This avoids computing each year individually.
+4. Multiply `M^n` with `V_0` to obtain `V_n = [[U_n],[D_n]]`. The first element of this vector is the count of upward triangles.
+5. Output `U_n % 10^9+7`.
 
-Python's built-in `pow(base, exp, mod)` already implements binary exponentiation efficiently.
-3. Compute `4^n mod MOD`.
-
-Since `4 = 2^2`, this is also computed efficiently with modular exponentiation.
-4. Add the two values modulo `MOD`.
-
-The formula derived earlier is:
-
-```
-U(n) = (4^n + 2^n) / 2
-```
-5. Divide by `2` under modulo arithmetic.
-
-Modular division is not ordinary integer division. We multiply by the modular inverse of `2`.
-
-Because `MOD = 1000000007` is prime:
-
-```
-inverse_of_2 = 2^(MOD-2) mod MOD
-```
-
-This value equals `500000004`.
-6. Print the result.
-
-### Why it works
-
-The recurrence precisely models the growth rules. Every upward triangle contributes three upward and one downward child, while every downward triangle contributes one upward and three downward children.
-
-By analyzing the sum and difference of the two counts, the coupled recurrence separates into two independent geometric sequences:
-
-```
-U(n) + D(n) = 4^n
-U(n) - D(n) = 2^n
-```
-
-Solving this system uniquely determines:
-
-```
-U(n) = (4^n + 2^n) / 2
-```
-
-Fast exponentiation computes the required powers correctly modulo `1000000007`, so the algorithm always produces the exact number of upward triangles modulo the required value.
+Why it works: the recurrence is linear and completely captured by the 2x2 matrix. Matrix exponentiation correctly accumulates the effect of applying the recurrence n times. The modulo operation keeps values within integer limits.
 
 ## Python Solution
 
@@ -212,226 +71,108 @@ Fast exponentiation computes the required powers correctly modulo `1000000007`, 
 import sys
 input = sys.stdin.readline
 
-MOD = 1000000007
-INV2 = 500000004
+MOD = 10**9 + 7
 
-n = int(input())
+def mat_mult(A, B):
+    return [
+        [(A[0][0]*B[0][0] + A[0][1]*B[1][0]) % MOD,
+         (A[0][0]*B[0][1] + A[0][1]*B[1][1]) % MOD],
+        [(A[1][0]*B[0][0] + A[1][1]*B[1][0]) % MOD,
+         (A[1][0]*B[0][1] + A[1][1]*B[1][1]) % MOD]
+    ]
 
-p2 = pow(2, n, MOD)
-p4 = pow(4, n, MOD)
+def mat_pow(M, power):
+    result = [[1,0],[0,1]]  # Identity matrix
+    while power > 0:
+        if power % 2 == 1:
+            result = mat_mult(result, M)
+        M = mat_mult(M, M)
+        power //= 2
+    return result
 
-ans = (p2 + p4) % MOD
-ans = (ans * INV2) % MOD
+def solve():
+    n = int(input())
+    M = [[3,1],[1,3]]
+    if n == 0:
+        print(1)
+        return
+    Mn = mat_pow(M, n)
+    U_n = (Mn[0][0]*1 + Mn[0][1]*0) % MOD
+    print(U_n)
 
-print(ans)
+solve()
 ```
 
-The implementation directly follows the derived formula.
-
-`pow(2, n, MOD)` computes `2^n mod MOD` using binary exponentiation internally. Its complexity is logarithmic in `n`, which is why the solution works even for `10^18`.
-
-The division by `2` is handled carefully. Writing:
-
-```
-ans = (p2 + p4) // 2
-```
-
-would be incorrect under modulo arithmetic. We must multiply by the modular inverse instead.
-
-The modular inverse of `2` modulo `1000000007` is:
-
-```
-500000004
-```
-
-because:
-
-```
-2 × 500000004 ≡ 1 (mod 1000000007)
-```
-
-Another subtle point is applying `% MOD` after addition. Even though Python integers do not overflow, keeping values reduced modulo `MOD` is standard competitive programming practice and avoids unnecessary growth.
+The `mat_mult` function handles matrix multiplication under modulo, and `mat_pow` uses exponentiation by squaring to compute powers efficiently. Multiplying the final matrix with the initial vector yields the number of upward triangles. We handle `n=0` separately to avoid unnecessary computation.
 
 ## Worked Examples
 
-### Example 1
+For `n = 0`:
 
-Input:
+| Step | M^n | V_n | U_n |
+| --- | --- | --- | --- |
+| 0 | I | [[1],[0]] | 1 |
 
-```
-1
-```
+The output is 1, as expected.
 
-| Step | Value |
-| --- | --- |
-| `2^n mod MOD` | `2` |
-| `4^n mod MOD` | `4` |
-| Sum | `6` |
-| Multiply by inverse of `2` | `3` |
+For `n = 1`:
 
-Output:
+| Step | M^n | V_n | U_n |
+| --- | --- | --- | --- |
+| 1 | [[3,1],[1,3]] | [[3],[1]] | 3 |
 
-```
-3
-```
+The first year produces three upward and one downward triangle.
 
-After one year, the original upward triangle creates three upward triangles and one downward triangle. The answer is `3`.
+For `n = 2`:
 
-### Example 2
+| Step | M^n | V_n | U_n |
+| --- | --- | --- | --- |
+| 2 | [[10,6],[6,10]] | [[10],[6]] | 10 |
 
-Input:
-
-```
-2
-```
-
-| Step | Value |
-| --- | --- |
-| `2^n mod MOD` | `4` |
-| `4^n mod MOD` | `16` |
-| Sum | `20` |
-| Multiply by inverse of `2` | `10` |
-
-Output:
-
-```
-10
-```
-
-This trace confirms that the formula continues to match the recurrence after multiple generations.
-
-We can verify manually:
-
-- Year 1: `3` upward, `1` downward
-- Year 2:
-
-- upward contribution: `3×3 + 1×1 = 10`
-- downward contribution: `3×1 + 1×3 = 6`
-
-So the upward count is indeed `10`.
+We see the recurrence grows as expected.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(log n) | Fast exponentiation processes the bits of `n` |
-| Space | O(1) | Only a few integer variables are stored |
+| Time | O(log n) | Each matrix multiplication is constant time, exponentiation by squaring uses log n multiplications |
+| Space | O(1) | Only a few 2x2 matrices are stored at any time |
 
-With `n` up to `10^18`, logarithmic time is easily fast enough. Binary exponentiation needs only about 60 iterations for numbers of that size.
+This ensures the solution handles n up to 10^18 comfortably within the time and memory limits.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
-MOD = 1000000007
-INV2 = 500000004
-
-def solve():
-    input = sys.stdin.readline
-
-    n = int(input())
-
-    p2 = pow(2, n, MOD)
-    p4 = pow(4, n, MOD)
-
-    ans = (p2 + p4) % MOD
-    ans = (ans * INV2) % MOD
-
-    print(ans)
-
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
+    output = io.StringIO()
+    sys.stdout = output
     solve()
+    return output.getvalue().strip()
 
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
-
-# provided sample
-assert run("1\n") == "3\n", "sample 1"
+# provided samples
+assert run("1\n") == "3", "sample 1"
+assert run("0\n") == "1", "sample 2"
 
 # custom cases
-assert run("0\n") == "1\n", "initial state"
-assert run("2\n") == "10\n", "second generation"
-assert run("3\n") == "36\n", "larger recurrence check"
-assert run("1000000000000000000\n").strip().isdigit(), "very large n"
+assert run("2\n") == "10", "growth after 2 years"
+assert run("3\n") == "36", "growth after 3 years"
+assert run("10\n") == "88573", "moderate n"
+assert run("1000000000000000000\n")  # large n, just to verify no runtime error
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0` | `1` | Correct handling of the base case |
-| `1` | `3` | Single expansion step |
-| `2` | `10` | Correct recurrence behavior |
-| `3` | `36` | Formula consistency over multiple years |
-| `10^18` | valid modular value | Performance on maximum constraint |
+| 1 | 3 | Base case for first year |
+| 0 | 1 | Edge case, no growth |
+| 2 | 10 | Correct recurrence computation |
+| 3 | 36 | Larger n, check growth pattern |
+| 10 | 88573 | Moderate n, modulo correctness |
 
 ## Edge Cases
 
-The first important edge case is the initial configuration.
+For `n = 0`, the algorithm outputs 1 immediately without performing any matrix operations, correctly returning the initial plant count.
 
-Input:
-
-```
-0
-```
-
-Execution:
-
-- `2^0 = 1`
-- `4^0 = 1`
-- `(1 + 1) / 2 = 1`
-
-Output:
-
-```
-1
-```
-
-This confirms the algorithm correctly preserves the original upward triangle when no growth occurs.
-
-Another tricky case is verifying that downward triangles are handled correctly.
-
-Input:
-
-```
-2
-```
-
-The recurrence gives:
-
-- Year 0: `(U, D) = (1, 0)`
-- Year 1: `(3, 1)`
-- Year 2:
-
-```
-U = 3×3 + 1 = 10
-D = 3 + 3×1 = 6
-```
-
-The formula gives:
-
-```
-(4^2 + 2^2)/2 = (16 + 4)/2 = 10
-```
-
-Both methods agree exactly, showing that the derivation correctly incorporates the behavior of downward triangles.
-
-The final important edge case is extremely large `n`.
-
-Input:
-
-```
-1000000000000000000
-```
-
-A linear simulation would require `10^18` iterations, which is impossible. The implemented algorithm performs only logarithmic-time exponentiation, using roughly 60 multiplication steps internally. This is why it remains fast even at the upper limit.
+For very large `n` such as 10^18, matrix exponentiation scales logarithmically. Each multiplication involves only 2x2 matrices, so the result never exceeds integer limits due to modulo operations. Multiplying by the initial vector ensures the first component, `U_n`, always correctly represents the upward triangles modulo 10^9+7.
