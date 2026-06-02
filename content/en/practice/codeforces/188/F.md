@@ -1,7 +1,7 @@
 ---
 title: "CF 188F - Binary Notation"
-description: "We are given a single positive integer and must print its representation in base 2. In other words, instead of writing the number using decimal digits from 0 to 9, we must write it using only binary digits, 0 and 1."
-date: "2026-05-29T00:00:00+07:00"
+description: "The task is to take a single positive integer and express it in base 2, meaning we rewrite it using only powers of two with coefficients 0 or 1. Instead of the usual decimal representation, we want the binary string that tells us which powers of two sum up to the number."
+date: "2026-06-03T01:07:40+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 188
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Surprise Language Round 6"
 rating: 1400
 weight: 188
-solve_time_s: 92
+solve_time_s: 60
 verified: true
 draft: false
 ---
@@ -18,128 +18,48 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** *special, implementation  
-**Solve time:** 1m 32s  
+**Solve time:** 1m  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single positive integer and must print its representation in base 2. In other words, instead of writing the number using decimal digits from 0 to 9, we must write it using only binary digits, 0 and 1.
+The task is to take a single positive integer and express it in base 2, meaning we rewrite it using only powers of two with coefficients 0 or 1. Instead of the usual decimal representation, we want the binary string that tells us which powers of two sum up to the number.
 
-For example, the decimal number 5 becomes `101` in binary because:
+For example, the number 5 corresponds to selecting 4 and 1, so its binary representation is `101`. Each position in the binary string represents whether a particular power of two is included in the sum.
 
-$$5 = 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0$$
+The constraint is very small, with n up to 1,000,000. That immediately implies we are never in danger of performance issues even with straightforward bit manipulation or repeated division. Any solution that runs in logarithmic time or even linear in the number of bits is sufficient. Since the binary length of 1,000,000 is at most 20 bits, the output itself is tiny.
 
-The input contains only one integer, and the upper bound is $10^6$. That limit is very small for modern computers. Even an algorithm that repeatedly divides the number by 2 will finish almost instantly because the number of binary digits is only about $\log_2(n)$. For $10^6$, that is roughly 20 bits.
-
-The main danger in this problem is not performance, but formatting mistakes.
-
-One common mistake is producing the bits in reverse order. If we repeatedly take `n % 2`, we obtain bits from least significant to most significant. For example:
-
-Input:
-
-```
-6
-```
-
-If we collect remainders directly, we get `011`, which is reversed. The correct output is:
-
-```
-110
-```
-
-Another easy mistake is printing leading zeros. Binary notation should start from the highest set bit. For example:
-
-Input:
-
-```
-1
-```
-
-Correct output:
-
-```
-1
-```
-
-A careless implementation that pads to a fixed length might print something like `0001`, which is invalid for this problem.
-
-The smallest possible input also matters because some implementations stop immediately when the number becomes zero and accidentally print nothing.
-
-Input:
-
-```
-1
-```
-
-Correct output:
-
-```
-1
-```
-
-If the loop condition is written incorrectly, the result may become an empty string.
+There are no hidden corner cases in terms of structure, but a few implementation pitfalls appear frequently. One is accidentally producing leading zeros, for example printing something like `000101` instead of `101`. Another is reversing the binary digits incorrectly if using division by 2 and appending bits in the wrong order. A third is mishandling the value 1, which should directly output `1` without any extra formatting.
 
 ## Approaches
 
-The most direct approach is to repeatedly test every power of two from large to small and decide whether that power contributes to the number. For each position, we can check whether the corresponding bit is set.
+The brute-force way to think about this problem is to simulate binary construction by repeatedly checking powers of two. One could start from 1, 2, 4, 8, and so on, testing whether each power fits into the remaining value, subtracting it if it does. This approach is correct because binary representation is fundamentally a greedy decomposition over powers of two. However, it is unnecessarily indirect and requires repeated exponentiation or iteration over all powers up to n, which is still small here but conceptually inefficient.
 
-For example, for `13`:
+A more direct brute approach is repeated division by 2. We divide the number by 2, record the remainder each time, and collect bits. This works because division by 2 extracts the least significant bit at each step. The issue is not correctness but output order. The remainders come out from least significant bit to most significant bit, so they must be reversed at the end.
 
-$$13 = 8 + 4 + 1$$
-
-So the bits are:
-
-```
-1101
-```
-
-This method works because every integer has a unique binary decomposition. Since the maximum value is only $10^6$, even scanning all 20 possible bit positions is trivial.
-
-Another straightforward method repeatedly divides the number by 2. Each remainder becomes the next binary digit. The remainder is either 0 or 1, exactly matching a binary bit.
-
-For `13`:
-
-| Current n | n % 2 | Next n |
-| --- | --- | --- |
-| 13 | 1 | 6 |
-| 6 | 0 | 3 |
-| 3 | 1 | 1 |
-| 1 | 1 | 0 |
-
-The remainders appear in reverse order, so we reverse them at the end and obtain `1101`.
-
-The key observation is that binary notation is literally built from repeated division by 2. Every division removes the lowest binary digit, and the remainder tells us what that digit was.
-
-Both approaches are fast enough here, but repeated division is simpler and naturally matches the mathematical definition of binary representation.
+The key observation is that binary representation is exactly the sequence of remainders under repeated division by 2. This reduces the problem to a simple loop of logarithmic length, producing at most about 20 iterations for the maximum input. We do not need any extra data structures beyond a string builder or list of characters.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over bit positions | O(log n) | O(1) | Accepted |
-| Repeated division by 2 | O(log n) | O(log n) | Accepted |
+| Brute Force (powers of two scanning) | O(log n) | O(1) | Accepted |
+| Optimal (repeated division by 2) | O(log n) | O(log n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integer `n`.
-2. Create an empty list called `bits`.
-3. While `n` is greater than 0, compute `n % 2` and append the result to `bits`.
+1. Take the input integer n as the number to convert.
+2. Repeatedly divide n by 2 while storing the remainder each time, because the remainder tells us whether the current least significant bit is 0 or 1.
+3. After each division, replace n with n // 2 so we move toward more significant bits.
+4. Store each remainder in a list because the first remainder corresponds to the least significant bit.
+5. Once n becomes 0, stop the loop since all bits have been processed.
+6. Reverse the collected remainders because they were generated from least significant to most significant bit.
+7. Join them into a single string and output it.
 
-The remainder after division by 2 is always either 0 or 1, which directly gives the current least significant binary digit.
-4. Replace `n` with `n // 2`.
-
-Integer division removes the least significant binary digit that we just processed.
-5. After the loop finishes, reverse the list of collected bits.
-
-The first remainder corresponds to the lowest bit, so the digits were collected backward.
-6. Join the reversed digits into a string and print the result.
+The reason this ordering step is necessary is that binary expansion is positional. Each division extracts information from the current least significant position, so the natural generation order is reversed relative to the final representation.
 
 ### Why it works
 
-At every iteration, the algorithm extracts the least significant binary digit using `n % 2`. Then integer division by 2 shifts the binary representation one position to the right.
-
-This process continues until the number becomes zero, meaning all binary digits have been extracted. Since the remainders are generated from least significant to most significant, reversing them restores the correct order.
-
-Because every integer has a unique binary representation, the constructed string must be correct.
+At every step, the algorithm decomposes n into n = 2q + r, where r is either 0 or 1. That remainder r is exactly the current lowest binary digit. Removing that digit by replacing n with q preserves the invariant that the remaining number still represents the higher-order bits of the original value. Repeating this until n becomes zero ensures that every power of two contribution is extracted exactly once, so the final reversed sequence is the unique binary representation.
 
 ## Python Solution
 
@@ -147,7 +67,7 @@ Because every integer has a unique binary representation, the constructed string
 import sys
 input = sys.stdin.readline
 
-n = int(input())
+n = int(input().strip())
 
 bits = []
 
@@ -155,86 +75,47 @@ while n > 0:
     bits.append(str(n % 2))
     n //= 2
 
-print("".join(reversed(bits)))
+print(''.join(reversed(bits)))
 ```
 
-The program begins by reading the integer from standard input.
+The solution reads the integer, then repeatedly extracts the least significant bit using modulo 2. Each extracted bit is stored as a string. Because these bits are collected in reverse order, we reverse the list at the end before joining.
 
-The `bits` list stores the binary digits as strings. During each iteration, `n % 2` extracts the current least significant bit. We immediately convert it to a string because the final output is textual.
-
-After extracting the bit, the code updates `n` using integer division by 2. This removes the processed bit from the number.
-
-The digits are collected in reverse order. For example, for `13`, the collected sequence becomes:
-
-```
-1, 0, 1, 1
-```
-
-Reversing it produces:
-
-```
-1, 1, 0, 1
-```
-
-Finally, `"".join(...)` concatenates the digits into one binary string.
-
-One subtle detail is the loop condition. The loop runs while `n > 0`. Since the problem guarantees `n >= 1`, the list always receives at least one digit.
+A subtle but important detail is that we stop when n becomes 0. If we continued further, we would append leading zeros, which are not part of the canonical binary representation. Another detail is converting bits to strings early, which simplifies the final join operation.
 
 ## Worked Examples
 
-### Example 1
+### Example 1: n = 5
 
-Input:
+| Step | n | n % 2 | bits |
+| --- | --- | --- | --- |
+| 1 | 5 | 1 | [1] |
+| 2 | 2 | 0 | [1, 0] |
+| 3 | 1 | 1 | [1, 0, 1] |
+| 4 | 0 | stop | [1, 0, 1] |
 
-```
-5
-```
+After reversing, we get `101`. This confirms that the algorithm correctly reconstructs the binary representation from least significant bit upward.
 
-| Current n | n % 2 | bits after append |
-| --- | --- | --- |
-| 5 | 1 | `["1"]` |
-| 2 | 0 | `["1", "0"]` |
-| 1 | 1 | `["1", "0", "1"]` |
+### Example 2: n = 6
 
-After reversing:
+| Step | n | n % 2 | bits |
+| --- | --- | --- | --- |
+| 1 | 6 | 0 | [0] |
+| 2 | 3 | 1 | [0, 1] |
+| 3 | 1 | 1 | [0, 1, 1] |
+| 4 | 0 | stop | [0, 1, 1] |
 
-```
-101
-```
+Reversing gives `110`, which matches 6 = 4 + 2.
 
-This example shows how remainders are collected from right to left. Reversing restores the proper binary order.
-
-### Example 2
-
-Input:
-
-```
-10
-```
-
-| Current n | n % 2 | bits after append |
-| --- | --- | --- |
-| 10 | 0 | `["0"]` |
-| 5 | 1 | `["0", "1"]` |
-| 2 | 0 | `["0", "1", "0"]` |
-| 1 | 1 | `["0", "1", "0", "1"]` |
-
-After reversing:
-
-```
-1010
-```
-
-This trace demonstrates alternating bits and confirms that integer division correctly removes processed digits one by one.
+This trace shows that even when the least significant bit is zero, it is still correctly captured and preserved.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(log n) | Each iteration divides the number by 2 |
-| Space | O(log n) | The binary representation contains O(log n) digits |
+| Time | O(log n) | Each iteration halves n, so we process at most the number of bits in n |
+| Space | O(log n) | We store one character per bit |
 
-For $n \le 10^6$, the binary representation has at most 20 bits. The algorithm performs only a tiny number of operations and easily fits within the time and memory limits.
+The maximum input size produces at most 20 bits, so both time and memory usage are effectively constant for this problem and well within limits.
 
 ## Test Cases
 
@@ -242,129 +123,44 @@ For $n \le 10^6$, the binary representation has at most 20 bits. The algorithm p
 # helper: run solution on input string, return output string
 import sys, io
 
-def solve():
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
     input = sys.stdin.readline
 
-    n = int(input())
+    n = int(input().strip())
 
     bits = []
-
     while n > 0:
         bits.append(str(n % 2))
         n //= 2
 
-    print("".join(reversed(bits)))
-
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    output = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return output
+    return ''.join(reversed(bits))
 
 # provided sample
-assert run("5\n") == "101\n", "sample 1"
+assert run("5\n") == "101", "sample 1"
 
-# minimum input
-assert run("1\n") == "1\n", "minimum value"
+# minimum value
+assert run("1\n") == "1", "minimum case"
 
 # power of two
-assert run("8\n") == "1000\n", "single set bit"
+assert run("8\n") == "1000", "power of two"
 
-# alternating bits
-assert run("10\n") == "1010\n", "alternating pattern"
+# all bits set
+assert run("7\n") == "111", "all ones case"
 
-# maximum constraint
-assert run("1000000\n") == bin(1000000)[2:] + "\n", "maximum constraint"
+# random mid value
+assert run("10\n") == "1010", "alternating pattern"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1` | `1` | Smallest valid input |
-| `8` | `1000` | Correct handling of powers of two |
-| `10` | `1010` | Proper bit ordering |
-| `1000000` | `11110100001001000000` | Maximum constraint handling |
+| 1 | 1 | smallest valid input |
+| 8 | 1000 | single high bit |
+| 7 | 111 | consecutive ones |
+| 10 | 1010 | alternating binary pattern |
 
 ## Edge Cases
 
-The smallest valid number is easy to mishandle if the loop logic is incorrect.
+For input `1`, the algorithm starts with n = 1, appends `1 % 2 = 1`, then reduces n to 0 and stops. The bits list becomes `[1]`, and reversing it still yields `1`. This confirms that the single-bit case is handled without producing empty output or extra padding.
 
-Input:
-
-```
-1
-```
-
-Execution trace:
-
-| Current n | n % 2 | bits |
-| --- | --- | --- |
-| 1 | 1 | `["1"]` |
-
-Then `n` becomes `0`, the loop stops, and the output is:
-
-```
-1
-```
-
-This confirms the algorithm never produces an empty string.
-
-Another important case is a power of two.
-
-Input:
-
-```
-8
-```
-
-Execution trace:
-
-| Current n | n % 2 | bits |
-| --- | --- | --- |
-| 8 | 0 | `["0"]` |
-| 4 | 0 | `["0", "0"]` |
-| 2 | 0 | `["0", "0", "0"]` |
-| 1 | 1 | `["0", "0", "0", "1"]` |
-
-After reversing:
-
-```
-1000
-```
-
-This confirms that leading zeros are not printed. The representation starts from the highest set bit and contains only meaningful digits.
-
-The reversed-order issue also deserves attention.
-
-Input:
-
-```
-6
-```
-
-Collected remainders:
-
-```
-0, 1, 1
-```
-
-If printed directly, the result would incorrectly become:
-
-```
-011
-```
-
-The algorithm reverses the digits first, producing the correct output:
-
-```
-110
-```
+For input `8`, the loop produces remainders `[0, 0, 0, 1]`. Reversing gives `1000`. This demonstrates that trailing zeros in binary form are correctly preserved and not discarded prematurely.
