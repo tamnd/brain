@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.6: Summary"
-description: "Section 3.6 exercises: 6/15 solved."
+description: "Section 3.6 exercises: 13/15 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.6"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.6. Summary
 
-Exercises from [TAOCP Volume 2](../) Section 3.6: 6/15 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.6: 13/15 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -24,12 +24,12 @@ Exercises from [TAOCP Volume 2](../) Section 3.6: 6/15 solved.
 | [4](04.md) |  [*25*] | medium | verified | 1m18s |
 | [5](05.md) |  [*28*] | hard | verified | 1m18s |
 | [6](06.md) | &#9654; [**] |  | verified | 1m13s |
-| 7 | &#9654; [**] |  | - | - |
+| [7](07.md) | &#9654; [**] |  | verified | 3m59s |
 | [8](08.md) |  [**] |  | verified | 2m17s |
-| 9 |  [**] |  | - | - |
-| 10 |  [**] |  | - | - |
-| 11 |  [**] |  | - | - |
-| 12 | &#9654; [**] |  | - | - |
-| 13 |  [**] |  | - | - |
+| [9](09.md) |  [**] |  | verified | 4m48s |
+| [10](10.md) |  [**] |  | solved | 3m49s |
+| [11](11.md) |  [**] |  | verified | 1m19s |
+| [12](12.md) | &#9654; [**] |  | verified | 1m04s |
+| [13](13.md) |  [**] |  | verified | 2m17s |
 | 14 | &#9654; [**] |  | - | - |
-| 15 |  [**] |  | - | - |
+| [15](15.md) |  [**] |  | verified | 2m28s |
