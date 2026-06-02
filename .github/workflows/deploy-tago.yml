@@ -47,35 +47,27 @@ jobs:
           cd .tago-src
           go build -o /usr/local/bin/tago ./cmd/tago/
 
-      - name: Cache tago DB
-        uses: actions/cache@v5.0.5
-        with:
-          path: .tago-cache.db
-          key: tago-db-${{ runner.os }}-${{ github.sha }}
-          restore-keys: tago-db-${{ runner.os }}-
-
-      - name: Cache tago output (incremental)
-        uses: actions/cache@v5.0.5
-        with:
-          path: public
-          key: tago-output-${{ runner.os }}-${{ hashFiles('.tago-src/go.sum') }}-${{ github.sha }}
-          restore-keys: tago-output-${{ runner.os }}-${{ hashFiles('.tago-src/go.sum') }}-
-
       - name: Build site
         run: |
-          mkdir -p public
-          [ -f .tago-cache.db ] && cp .tago-cache.db public/.tago-cache.db || true
-          tago build --base-url "https://brain.tamnd.com/"
-          cp public/.tago-cache.db .tago-cache.db 2>/dev/null || true
+          tago build --clean --base-url "https://brain.tamnd.com/"
           # tago fingerprints .js files, so copy worker explicitly
           [ -f static/_worker.js ] && cp static/_worker.js public/_worker.js || true
 
       - name: Remove oversized files before deploy
         run: find public -size +24M -print -delete
 
+      - name: Check deploy file count
+        run: |
+          count="$(find public -type f | wc -l | tr -d ' ')"
+          echo "Deploying $count files"
+          if [ "$count" -gt 20000 ]; then
+            echo "::error::Cloudflare Pages limit is 20000 files; public contains $count"
+            exit 1
+          fi
+
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4.0.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=brain --branch=main
+          command: pages deploy public --project-name=brain --branch=main --commit-dirty=true
