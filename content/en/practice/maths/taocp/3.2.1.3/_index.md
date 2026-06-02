@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.2.1.3: Potency"
-description: "Section 3.2.1.3 exercises: 2/8 solved."
+description: "Section 3.2.1.3 exercises: 7/8 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.2.1.3"
@@ -14,15 +14,15 @@ draft: false
 
 # Section 3.2.1.3. Potency
 
-Exercises from [TAOCP Volume 2](../) Section 3.2.1.3: 2/8 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.2.1.3: 7/8 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*M10*] | math-simple | verified | 1m19s |
 | [2](02.md) |  [*10*] | simple | verified | 1m08s |
-| 3 |  [*11*] | simple | - | - |
-| 4 |  [*15*] | simple | - | - |
-| 5 |  [*M20*] | math-medium | - | - |
+| [3](03.md) |  [*11*] | simple | verified | 1m28s |
+| [4](04.md) |  [*15*] | simple | verified | 4m13s |
+| [5](05.md) |  [*M20*] | math-medium | verified | 1m23s |
 | 6 | &#9654; [*20*] | medium | - | - |
-| 7 |  [**] |  | - | - |
-| 8 | &#9654; [**] |  | - | - |
+| [7](07.md) |  [**] |  | verified | 1m07s |
+| [8](08.md) | &#9654; [**] |  | solved | 5m08s |

@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 945 solved, 531 verified, 953 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 955 solved, 539 verified, 989 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -46,6 +46,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.3](2.3.3/) | Other Representations of Trees | 19 | 15 | 19 |
 | [2.3.5](2.3.5/) | Lists and Garbage Collection | 12 | 9 | 12 |
 | [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
+| [3.2.2](3.2.2/) | Other Methods | 4 | 3 | 36 |
 | [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 11 | 13 |
 | [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 9 | 14 |
 | [1.4.3.1](1.4.3.1/) | A MIX Simulator | 8 | 4 | 8 |
@@ -57,5 +58,5 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.4.5](2.3.4.5/) | Path Length | 17 | 15 | 17 |
 | [2.3.4.6](2.3.4.6/) | History and Bibliography | 4 | 2 | 4 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
-| [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 13 | 13 | 14 |
-| [3.2.1.3](3.2.1.3/) | Potency | 2 | 2 | 8 |
+| [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
+| [3.2.1.3](3.2.1.3/) | Potency | 7 | 6 | 8 |

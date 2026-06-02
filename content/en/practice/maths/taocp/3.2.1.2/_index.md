@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.2.1.2: Choice of Multiplier"
-description: "Section 3.2.1.2 exercises: 13/14 solved."
+description: "Section 3.2.1.2 exercises: 14/14 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.2.1.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.2.1.2. Choice of Multiplier
 
-Exercises from [TAOCP Volume 2](../) Section 3.2.1.2: 13/14 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.2.1.2: 14/14 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -29,6 +29,6 @@ Exercises from [TAOCP Volume 2](../) Section 3.2.1.2: 13/14 solved.
 | [9](09.md) |  [**] |  | verified | 1m49s |
 | [10](10.md) |  [**] |  | verified | 1m34s |
 | [11](11.md) | &#9654; [**] |  | verified | 3m13s |
-| 12 |  [**] |  | - | - |
+| [12](12.md) |  [**] |  | verified | 4m57s |
 | [13](13.md) |  [**] |  | verified | 2m49s |
 | [14](14.md) |  [**] |  | verified | 1m53s |
