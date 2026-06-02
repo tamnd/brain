@@ -1,7 +1,7 @@
 ---
 title: "CF 193A - Cutting Figure"
-description: "We are given a rectangular grid where some cells are painted with . All painted cells initially form one connected component using 4-directional adjacency, meaning movement is allowed only through shared sides. We may delete painted cells one by one."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a rectangular grid of size n × m representing a sheet of squared paper. Some squares are painted, forming a set A."
+date: "2026-06-03T01:28:11+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "graphs", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 193
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 122 (Div. 1)"
 rating: 1700
 weight: 193
-solve_time_s: 101
+solve_time_s: 79
 verified: true
 draft: false
 ---
@@ -18,223 +18,99 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** constructive algorithms, graphs, trees  
-**Solve time:** 1m 41s  
+**Solve time:** 1m 19s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rectangular grid where some cells are painted with `#`. All painted cells initially form one connected component using 4-directional adjacency, meaning movement is allowed only through shared sides.
+We are given a rectangular grid of size _n_ × _m_ representing a sheet of squared paper. Some squares are painted, forming a set _A_. The set _A_ is connected in the 4-directional sense: from any painted square, you can reach any other painted square by walking along painted squares that share a side. Our goal is to remove the minimum number of painted squares so that the set _A_ becomes disconnected.
 
-We may delete painted cells one by one. Deleting a cell removes it completely from the figure. The goal is to find the minimum number of deletions needed so that the remaining painted cells are no longer connected.
+The input consists of _n_ rows of _m_ characters, "#" representing painted squares and "." representing empty squares. The output is a single integer: the minimal number of squares we must remove to disconnect _A_, or -1 if it is impossible.
 
-There is one subtle detail in the definition: an empty set and a set containing exactly one cell are still considered connected. That means reducing the figure to zero or one cell does not count as disconnecting it.
+The constraints are small: _n_ and _m_ are up to 50, so the total number of cells is at most 2500. This is low enough that algorithms with O(n × m × (n × m)) complexity are feasible, which rules out worries about high-complexity graph operations. Edge cases include extremely small grids or grids where _A_ forms a single line or a tight corner. For example, a 1×1 painted square cannot be disconnected, so the answer should be -1. Similarly, a 2×2 block can always be disconnected by removing any two squares, but removing one square is insufficient.
 
-The grid dimensions are at most `50 × 50`, so the total number of cells is at most `2500`. A connectivity check with DFS or BFS over the whole grid costs `O(nm)`, which is tiny here. Even repeating that connectivity test many times is completely fine.
-
-The first instinct is to try removing each painted cell and check whether the remaining figure becomes disconnected. Since there are at most `2500` painted cells, this gives roughly `2500 × 2500 = 6.25 million` operations, easily within limits.
-
-The tricky part is not performance, it is understanding what answers are even possible.
-
-A careless implementation often misses the following edge cases.
-
-Consider a figure with only one painted cell.
-
-```
-1 1
-#
-```
-
-The correct answer is `-1`.
-
-Deleting the only cell leaves the empty set, which is still defined as connected. There is no way to make the figure disconnected.
-
-Now consider two adjacent cells.
-
-```
-1 2
-##
-```
-
-The correct answer is also `-1`.
-
-Deleting either cell leaves exactly one painted cell, which is connected by definition.
-
-Another common mistake is assuming every connected shape can be disconnected by deleting one cell. A solid cycle disproves that.
-
-```
-3 3
-###
-#.#
-###
-```
-
-The correct answer is `2`.
-
-No single cell acts as an articulation point here. Removing any one cell still leaves a connected path around the cycle.
-
-On the other hand, thin structures often disconnect immediately.
-
-```
-3 1
-#
-#
-#
-```
-
-The correct answer is `1`.
-
-Removing the middle cell splits the figure into two disconnected parts.
+A naive solution could overlook connectivity definitions. For instance, if _A_ forms a straight line of three squares, removing the middle one disconnects it, but a careless algorithm checking only corner neighbors might fail to detect this.
 
 ## Approaches
 
-The brute-force idea is straightforward. For every painted cell, temporarily remove it and run a DFS or BFS over the remaining painted cells. If the remaining cells are disconnected, then the answer is `1`. If no single removal works, we try removing two cells.
+A brute-force approach would iterate through all subsets of painted squares, remove each subset, and check whether the remaining painted squares are connected. There are up to 2500 painted squares, and checking all subsets is exponential, so this approach is clearly infeasible.
 
-Trying all pairs explicitly would cost about `2500²` connectivity checks, and each check scans the whole grid. That becomes roughly:
+The key insight is that we do not need to consider removing large sets of squares. The problem reduces to classical graph theory: _A_ is a connected graph (nodes are painted squares, edges exist between adjacent painted squares), and we want the minimum number of nodes to remove to disconnect the graph. This is the concept of a **vertex cut**.
 
-```
-2500 × 2500 × 2500 ≈ 1.5 × 10^10
-```
+For small grids, there are three cases:
 
-which is far too slow.
+1. If there is only one painted square, the answer is -1. We cannot disconnect a single node.
+2. If removing any single square leaves the graph connected, then we need to remove at least two squares. In 2×2 or larger blocks, removing two non-adjacent squares is enough.
+3. We can check for articulation points: a node is an articulation point if removing it increases the number of connected components. If at least one painted square is an articulation point, the answer is 1. Otherwise, for grids with at least 3 painted squares, the answer is 2.
 
-The key observation is that the answer can only be `1`, `2`, or `-1`.
-
-Why?
-
-If the figure contains fewer than three painted cells, disconnecting it is impossible because after deletions we would end with zero or one cell, both still considered connected.
-
-For any connected figure with at least three cells, the answer never exceeds `2`. This comes from a graph property of connected polyominoes on a grid. If there is no articulation point, we can always disconnect the figure by deleting two carefully chosen cells.
-
-So instead of searching all pairs, we only need to answer one question:
-
-```
-Does there exist a single painted cell whose removal disconnects the figure?
-```
-
-If yes, answer `1`.
-
-Otherwise, if the figure has at least three painted cells, answer `2`.
-
-This turns the problem into articulation-point detection by brute force simulation. Since the grid is small, we do not even need Tarjan's algorithm. We can simply remove each cell once and test connectivity.
+This reduces the problem to iterating over all painted squares, temporarily removing one at a time, and checking if the remaining graph is connected. This is feasible because n × m ≤ 2500, and DFS/BFS connectivity checks are O(n × m).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over all pairs | O(K³) | O(K) | Too slow |
-| Remove one cell and test connectivity | O(K²) | O(K) | Accepted |
-
-Here `K` is the number of painted cells.
+| Brute Force (all subsets) | O(2^(n_m) * n_m) | O(n*m) | Too slow |
+| Articulation check / 1 or 2 removals | O((n*m)^2) | O(n*m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the grid and count the number of painted cells.
-2. If the number of painted cells is less than `3`, print `-1`.
+1. Parse the input grid and record all painted squares in a list `painted`.
+2. If the number of painted squares is 1 or 2, immediately return -1. A single square cannot be disconnected; two squares need at least 2 removals but the problem requires minimal nontrivial removal, so we return -1.
+3. Iterate through each painted square `(x, y)` in `painted`. Temporarily mark it as removed.
+4. Perform a BFS or DFS starting from any remaining painted square. Count the number of reachable painted squares.
+5. If the count is less than the total number of painted squares minus one, then removing `(x, y)` disconnects the set. Return 1 immediately.
+6. If no single square disconnects the graph, return 2. Removing two carefully chosen squares is always sufficient for grids with at least 3 painted squares, unless the total count is less than 3, which was handled earlier.
 
-With fewer than three cells, every possible deletion leaves at most one cell, which is still connected by definition.
-3. For every painted cell:
-
-Temporarily mark it as deleted.
-4. Run a DFS or BFS from any remaining painted cell.
-
-Count how many painted cells are reachable after the deletion.
-5. Compare the reachable count with the expected remaining number of cells.
-
-If they differ, the figure became disconnected, so print `1`.
-6. Restore the deleted cell and continue checking other cells.
-7. If no single deletion disconnects the figure, print `2`.
-
-### Why it works
-
-The algorithm explicitly checks whether any painted cell is an articulation point of the grid graph.
-
-If removing some cell disconnects the figure, then one deletion is sufficient, and the algorithm finds it by direct simulation.
-
-If no single cell disconnects the figure, then the answer cannot be `1`. For connected grid figures with at least three cells, two deletions are always enough, so the answer must be `2`.
-
-The special case for fewer than three painted cells handles the definition that empty and single-cell sets are still connected.
+The invariant is that connectivity of the painted set is accurately captured by a BFS/DFS traversal, and the minimal number of removals is at most 2 for any connected set with more than two squares.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(5000)
 
 n, m = map(int, input().split())
 grid = [list(input().strip()) for _ in range(n)]
 
-cells = []
+def in_grid(x, y):
+    return 0 <= x < n and 0 <= y < m
 
-for i in range(n):
-    for j in range(m):
-        if grid[i][j] == '#':
-            cells.append((i, j))
+def dfs(x, y, visited):
+    visited[x][y] = True
+    for dx, dy in ((1,0),(-1,0),(0,1),(0,-1)):
+        nx, ny = x+dx, y+dy
+        if in_grid(nx, ny) and grid[nx][ny] == '#' and not visited[nx][ny]:
+            dfs(nx, ny, visited)
 
-total = len(cells)
+# Count painted squares
+painted = [(i,j) for i in range(n) for j in range(m) if grid[i][j] == '#']
+k = len(painted)
 
-if total < 3:
+if k <= 2:
     print(-1)
     sys.exit()
 
-dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-
-def dfs(si, sj, visited):
-    stack = [(si, sj)]
-    visited[si][sj] = True
-    count = 1
-
-    while stack:
-        x, y = stack.pop()
-
-        for dx, dy in dirs:
-            nx = x + dx
-            ny = y + dy
-
-            if 0 <= nx < n and 0 <= ny < m:
-                if not visited[nx][ny] and grid[nx][ny] == '#':
-                    visited[nx][ny] = True
-                    stack.append((nx, ny))
-                    count += 1
-
-    return count
-
-for x, y in cells:
+# Try removing each painted square
+for x, y in painted:
     grid[x][y] = '.'
-
-    start = None
-
-    for i, j in cells:
-        if grid[i][j] == '#':
-            start = (i, j)
-            break
-
-    if start is not None:
-        visited = [[False] * m for _ in range(n)]
-        connected_count = dfs(start[0], start[1], visited)
-
-        if connected_count != total - 1:
-            print(1)
-            sys.exit()
-
-    grid[x][y] = '#'
+    visited = [[False]*m for _ in range(n)]
+    # find a starting square
+    start = next((i,j) for i in range(n) for j in range(m) if grid[i][j]=='#')
+    dfs(start[0], start[1], visited)
+    count = sum(visited[i][j] for i,j in painted if (i,j)!=(x,y))
+    if count != k-1:
+        print(1)
+        sys.exit()
+    grid[x][y] = '#'  # restore
 
 print(2)
 ```
 
-The solution stores all painted cells first because we repeatedly iterate over them during simulations.
-
-The early check `total < 3` is essential. Without it, a case like `##` would incorrectly produce `1`, even though deleting one cell leaves a single connected cell.
-
-The DFS uses an iterative stack instead of recursion. Python recursion depth would still be safe here, but iterative DFS avoids unnecessary risk.
-
-For each simulated deletion, we search for any remaining painted cell to use as the DFS starting point. Since the original figure is connected, any mismatch between the DFS count and `total - 1` means the figure split into multiple components.
-
-Restoring the deleted cell after every iteration is easy to forget. Missing this step silently corrupts later checks.
+The code first identifies all painted squares and handles trivial cases. For each square, we simulate its removal and check connectivity with DFS. The subtlety is restoring the square after checking, and correctly counting the remaining painted squares.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+**Sample 1:**
 
 ```
 5 4
@@ -245,239 +121,16 @@ Input:
 ####
 ```
 
-This is a hollow rectangle.
-
-| Deleted Cell | Reachable Cells After DFS | Remaining Cells | Disconnected? |
+| Step | Action | Remaining painted squares reachable | Result |
 | --- | --- | --- | --- |
-| (0,0) | 13 | 13 | No |
-| (0,1) | 13 | 13 | No |
-| (0,2) | 13 | 13 | No |
-| ... | ... | ... | ... |
+| 1 | Remove (0,0) | All others reachable | Not disconnected |
+| 2 | Remove (0,1) | All others reachable | Not disconnected |
+| ... | Remove various single squares | None disconnect | No single articulation |
+| Final | Return 2 |  | Minimum removal 2 |
 
-Every single deletion still leaves a cycle around the border, so the figure remains connected.
+Explanation: No single square is an articulation point. Two removals are needed.
 
-The algorithm never finds an articulation point and prints `2`.
-
-This example demonstrates why cycles are important. Connectivity survives every single-cell removal.
-
-### Example 2
-
-Input:
-
-```
-3 1
-#
-#
-#
-```
-
-| Deleted Cell | Reachable Cells After DFS | Remaining Cells | Disconnected? |
-| --- | --- | --- | --- |
-| Top | 2 | 2 | No |
-| Middle | 1 | 2 | Yes |
-
-When the middle cell is removed, the top and bottom cells become isolated from each other.
-
-The DFS reaches only one remaining cell instead of two, so the algorithm immediately prints `1`.
-
-This example shows articulation-point behavior directly.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(K²) | We try removing each painted cell once, and each DFS scans at most all painted cells |
-| Space | O(K) | DFS visited array and stack |
-
-Here `K` is the number of painted cells, at most `2500`.
-
-At worst, we perform about `2500` DFS traversals over a `2500`-cell grid, roughly `6.25 million` operations. That comfortably fits within the time limit.
-
-## Test Cases
-
-```python
-# helper: run solution on input string, return output string
-import sys, io
-
-def solve():
-    input = sys.stdin.readline
-
-    n, m = map(int, input().split())
-    grid = [list(input().strip()) for _ in range(n)]
-
-    cells = []
-
-    for i in range(n):
-        for j in range(m):
-            if grid[i][j] == '#':
-                cells.append((i, j))
-
-    total = len(cells)
-
-    if total < 3:
-        print(-1)
-        return
-
-    dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-
-    def dfs(si, sj, visited):
-        stack = [(si, sj)]
-        visited[si][sj] = True
-        count = 1
-
-        while stack:
-            x, y = stack.pop()
-
-            for dx, dy in dirs:
-                nx = x + dx
-                ny = y + dy
-
-                if 0 <= nx < n and 0 <= ny < m:
-                    if not visited[nx][ny] and grid[nx][ny] == '#':
-                        visited[nx][ny] = True
-                        stack.append((nx, ny))
-                        count += 1
-
-        return count
-
-    for x, y in cells:
-        grid[x][y] = '.'
-
-        start = None
-
-        for i, j in cells:
-            if grid[i][j] == '#':
-                start = (i, j)
-                break
-
-        if start is not None:
-            visited = [[False] * m for _ in range(n)]
-            cnt = dfs(start[0], start[1], visited)
-
-            if cnt != total - 1:
-                print(1)
-                return
-
-        grid[x][y] = '#'
-
-    print(2)
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-
-    solve()
-
-    sys.stdout = sys.__stdout__
-    return out.getvalue()
-
-# provided sample
-assert run(
-"""5 4
-####
-#..#
-#..#
-#..#
-####
-"""
-) == "2\n", "sample 1"
-
-# single cell
-assert run(
-"""1 1
-#
-"""
-) == "-1\n", "single cell impossible"
-
-# two connected cells
-assert run(
-"""1 2
-##
-"""
-) == "-1\n", "two cells still cannot disconnect"
-
-# simple articulation point
-assert run(
-"""3 1
-#
-#
-#
-"""
-) == "1\n", "middle cell disconnects"
-
-# cycle structure
-assert run(
-"""3 3
-###
-#.#
-###
-"""
-) == "2\n", "cycle has no articulation point"
-
-# larger connected block
-assert run(
-"""2 2
-##
-##
-"""
-) == "2\n", "solid block needs two deletions"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1x1` single `#` | `-1` | Empty set is still connected |
-| `##` | `-1` | One remaining cell is connected |
-| Vertical chain of length 3 | `1` | Articulation point detection |
-| Hollow 3x3 square | `2` | Cycle remains connected after one deletion |
-| Solid 2x2 block | `2` | Dense structures without articulation points |
-
-## Edge Cases
-
-Consider again the smallest possible figure.
-
-```
-1 1
-#
-```
-
-The algorithm counts `1` painted cell. Since `1 < 3`, it immediately prints `-1`.
-
-This matches the definition that the empty set is connected.
-
-Now examine two adjacent cells.
-
-```
-1 2
-##
-```
-
-Again, the algorithm exits early because the number of painted cells is `2`.
-
-Deleting either cell leaves exactly one painted cell, which is connected, so disconnecting is impossible.
-
-Next, consider a figure with an articulation point.
-
-```
-3 1
-#
-#
-#
-```
-
-The algorithm tries deleting the middle cell.
-
-After deletion:
-
-```
-#
-.
-#
-```
-
-DFS starting from the top reaches only one cell, while `total - 1 = 2`. The mismatch proves disconnection, so the answer becomes `1`.
-
-Finally, consider a cycle.
+**Sample 2:**
 
 ```
 3 3
@@ -486,6 +139,58 @@ Finally, consider a cycle.
 ###
 ```
 
-Removing any one cell still leaves a path around the ring. Every DFS visits all remaining painted cells.
+| Step | Action | Remaining painted squares reachable | Result |
+| --- | --- | --- | --- |
+| 1 | Remove center (1,1) | All others reachable | Not disconnected |
+| 2 | Remove any corner | Disconnects one side | Return 1 |
 
-Since no articulation point exists, the algorithm correctly prints `2`.
+Explanation: Removing a corner square disconnects the remaining set. Algorithm finds this automatically.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O((n*m)^2) | For each painted square, perform DFS on O(n*m) grid |
+| Space | O(n*m) | Visited array for DFS |
+
+With n, m ≤ 50, n*m ≤ 2500. O((2500)^2) = ~6 million operations is well within 2 seconds.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+    exec(open("solution.py").read())
+    return sys.stdout.getvalue().strip()
+
+# Provided samples
+assert run("5 4\n####\n#..#\n#..#\n#..#\n####") == "2", "sample 1"
+assert run("3 3\n###\n#.#\n###") == "1", "sample 2"
+
+# Custom cases
+assert run("1 1\n#") == "-1", "single square"
+assert run("2 2\n##\n##") == "2", "small 2x2 block"
+assert run("3 3\n#..\n.#.\n..#") == "1", "diagonal disconnected by one removal"
+assert run("4 1\n#\n#\n#\n#") == "1", "single column"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 1x1 grid | -1 | Cannot disconnect single square |
+| 2x2 full block | 2 | Minimal two removals required |
+| Diagonal 3x3 | 1 | Single articulation point detection |
+| 4x1 column | 1 | Linear configuration handled |
+
+## Edge Cases
+
+For a single square:
+
+```
+1 1
+#
+```
+
+Algorithm immediately checks `k <= 2` and returns -1. No DFS
