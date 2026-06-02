@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 142 solved, 117 verified, 192 total."
+description: "Volume 2: Seminumerical Algorithms. 146 solved, 120 verified, 192 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 142 solved, 117 verified, 192 total.
+Exercise solutions for [TAOCP](../) Volume 2. 146 solved, 120 verified, 192 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,7 +18,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 142 solved, 117 verified, 192 tota
 | [3.2.2](3.2.2/) | Other Methods | 35 | 25 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 24 | 22 | 25 |
 | [3.3.2](3.3.2/) | Empirical Tests | 5 | 4 | 35 |
-| [3.3.4](3.3.4/) | The Spectral Test | 14 | 10 | 32 |
+| [3.3.4](3.3.4/) | The Spectral Test | 18 | 13 | 32 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
