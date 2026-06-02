@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 907 solved, 496 verified, 912 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 914 solved, 501 verified, 917 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,7 +18,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3](2.3/) | Trees | 22 | 1 | 22 |
 | [2.4](2.4/) | Multilinked Structures | 15 | 10 | 15 |
 | [2.5](2.5/) | Dynamic Storage Allocation | 44 | 25 | 44 |
-| [3.1](3.1/) | Introduction | 18 | 15 | 23 |
+| [3.1](3.1/) | Introduction | 22 | 17 | 23 |
 | [1.2.1](1.2.1/) | Mathematical Induction | 15 | 12 | 15 |
 | [1.2.2](1.2.2/) | Numbers, Powers, and Logarithms | 30 | 24 | 30 |
 | [1.2.3](1.2.3/) | Sums and Products | 46 | 43 | 46 |
@@ -45,6 +45,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.2](2.3.2/) | Binary Tree Representation of Trees | 22 | 19 | 22 |
 | [2.3.3](2.3.3/) | Other Representations of Trees | 19 | 15 | 19 |
 | [2.3.5](2.3.5/) | Lists and Garbage Collection | 12 | 9 | 12 |
+| [3.2.1](3.2.1/) | The Linear Congruential Method | 3 | 3 | 5 |
 | [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 11 | 13 |
 | [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 9 | 14 |
 | [1.4.3.1](1.4.3.1/) | A MIX Simulator | 8 | 4 | 8 |

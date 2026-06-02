@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.1: Introduction"
-description: "Section 3.1 exercises: 18/23 solved."
+description: "Section 3.1 exercises: 22/23 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.1. Introduction
 
-Exercises from [TAOCP Volume 2](../) Section 3.1: 18/23 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.1: 22/23 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,7 +37,7 @@ Exercises from [TAOCP Volume 2](../) Section 3.1: 18/23 solved.
 | [17](17.md) |  [**] |  | verified | 1m22s |
 | [18](18.md) |  [**] |  | verified | 2m03s |
 | [19](19.md) |  [**] |  | verified | 1m18s |
-| 20 |  [**] |  | - | - |
-| 21 |  [**] |  | - | - |
-| 22 |  [**] |  | - | - |
-| 23 | &#9654; [**] |  | - | - |
+| [20](20.md) |  [**] |  | solved | 9m12s |
+| [21](21.md) |  [**] |  | verified | 2m48s |
+| [22](22.md) |  [**] |  | verified | 1m24s |
+| [23](23.md) | &#9654; [**] |  | solved | 5m57s |
