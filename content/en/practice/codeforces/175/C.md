@@ -1,7 +1,7 @@
 ---
 title: "CF 175C - Geometry Horse"
-description: "We are asked to maximize Vasya's score in a game where destroying geometric figures earns points based on a per-figure cost and a global factor. Each figure type has a quantity and a point value."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have several types of geometric figures. Type i contains ki identical figures, and every figure of that type has base value ci. When a figure is destroyed, the earned score equals: base value × current factor The factor changes over time. Initially it is 1."
+date: "2026-06-02T16:56:05+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "sortings", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 175
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 115"
 rating: 1600
 weight: 175
-solve_time_s: 81
-verified: true
+solve_time_s: 61
+verified: false
 draft: false
 ---
 
@@ -18,179 +18,196 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** greedy, implementation, sortings, two pointers  
-**Solve time:** 1m 21s  
-**Verified:** yes  
+**Solve time:** 1m 1s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to maximize Vasya's score in a game where destroying geometric figures earns points based on a per-figure cost and a global factor. Each figure type has a quantity and a point value. The factor starts at 1 and increases at specific thresholds after a certain number of figures have been destroyed. The input gives the number of figure types, the quantity and cost of each type, the number of factor thresholds, and the exact thresholds. The output is the maximum possible score after destroying all figures in any chosen order.
+We have several types of geometric figures. Type `i` contains `k_i` identical figures, and every figure of that type has base value `c_i`.
 
-The constraints indicate that there are at most 100 figure types and 100 thresholds. Each figure type may have up to $10^9$ figures, and thresholds can go up to $10^{12}$. This suggests we cannot iterate through each figure individually. Instead, we must handle counts in aggregate, reasoning in blocks of figures rather than one at a time. The factor thresholds can also be sparse and very large, so indexing by destroyed figure count requires careful handling to avoid excessive memory or iterations.
+When a figure is destroyed, the earned score equals:
 
-A non-obvious edge case arises when all high-cost figures are fewer than the first factor threshold. For example, if we have one figure type with cost 100 and count 2, and the first factor threshold is 5, the algorithm must recognize that all high-cost figures are destroyed with factor 1. A careless approach that always assumes we can assign the highest factor to the highest-cost figure would overestimate the score.
+`base value × current factor`
+
+The factor changes over time. Initially it is `1`. After exactly `p1` figures have been destroyed, the factor becomes `2`. After exactly `p2` figures have been destroyed, it becomes `3`, and so on. After `pt` figures have been destroyed, the factor becomes `t + 1`.
+
+All figures must eventually be destroyed, but we are free to choose their destruction order. The task is to maximize the total score.
+
+The key observation is that the factor depends only on how many figures have already been destroyed, not on which figures they were. This means the game creates several consecutive "slots" with different multipliers. We must decide which figures occupy which slots.
+
+The constraints are unusual. There are at most 100 figure types, but each type may contain up to `10^9` figures, and the factor change positions can be as large as `10^12`. Any algorithm that tries to represent individual figures is impossible. The total number of figures may exceed `10^11`, so we must work with counts in bulk.
+
+Another important detail is that costs may be zero. Such figures should naturally be assigned to the worst multipliers whenever possible, because moving them to better multipliers wastes valuable slots.
+
+A common mistake is to think about the process chronologically and greedily choose the next figure one by one. Consider:
+
+```
+2
+1000000000 1
+1 1000
+1
+1
+```
+
+The first destroyed figure uses factor `1`, all others use factor `2`.
+
+The optimal strategy destroys the cheap figure first and saves the expensive figure for factor `2`.
+
+Score:
+
+```
+1*1 + 1000*2 = 2001
+```
+
+Destroying the expensive figure first gives:
+
+```
+1000*1 + 1*2 = 1002
+```
+
+Another subtle case occurs when a factor boundary lies beyond the total number of figures.
+
+```
+1
+5 10
+2
+100 200
+```
+
+Only five figures exist, so every figure is destroyed with factor `1`.
+
+The answer is:
+
+```
+50
+```
+
+A careless implementation that blindly processes all intervals from `p` may incorrectly assume factors `2` and `3` are ever reached.
+
+One more edge case is when multiple figure types have the same cost.
+
+```
+2
+3 5
+4 5
+1
+3
+```
+
+Since every figure has equal value, any ordering produces the same answer. The algorithm must still work correctly without relying on strict inequalities.
 
 ## Approaches
 
-A brute-force solution would enumerate every possible destruction order of figures and compute the accumulated score. This is correct in principle, because every permutation produces a valid total score. However, the number of figures may be up to $10^9$ per type, so this is infeasible. Even if we ignored the counts, permuting 100 figure types would involve $100!$ possibilities, which is astronomically large.
+A brute-force view is helpful for understanding the structure.
 
-The key insight is that the score is always maximized by assigning higher factors to figures with higher costs. Since we can destroy figures in any order, the problem reduces to sorting all figures by cost in descending order, then assigning them to factor intervals determined by the cumulative thresholds. We do not need to generate a list of individual figures; instead, we work with counts. This allows a greedy solution using a two-pointer or interval-based approach.
+Imagine expanding every figure into an individual item. We would know exactly how many slots belong to factor `1`, how many belong to factor `2`, and so on. Each slot has a multiplier attached to it.
 
-By treating the figure counts as blocks, we iterate through the factor levels and always pick the remaining highest-cost figures to assign to the current factor. This guarantees optimality because swapping a lower-cost figure into a higher factor interval would never increase the total score. The problem structure-factor intervals and independent figure types-makes the greedy approach provably optimal.
+For example:
+
+```
+Factors by destruction position:
+1 1 1 2 2 3 3 3 ...
+```
+
+Every figure contributes:
+
+```
+cost × assigned multiplier
+```
+
+If we explicitly listed all figures and all slots, the problem would become an assignment problem. The optimal solution is straightforward: sort figures by cost and assign the largest costs to the largest multipliers.
+
+This follows directly from the rearrangement inequality. Whenever a larger cost is paired with a smaller multiplier while a smaller cost is paired with a larger multiplier, swapping them increases or preserves the score.
+
+The brute-force approach fails because the number of figures can be enormous. A single type may contain `10^9` figures, so expanding all figures is impossible.
+
+The crucial observation is that there are only 100 figure types and at most 101 different multiplier levels. We never need to track individual figures.
+
+Suppose we sort figure types by cost in ascending order. Then, in the optimal assignment, low-cost figures occupy the earliest slots with small multipliers, while high-cost figures occupy the latest slots with large multipliers.
+
+Instead of assigning one figure at a time, we process multiplier intervals in increasing order and consume counts from the sorted figure types. Each interval contains some number of destruction positions having the same factor. We fill those positions using the currently cheapest remaining figures.
+
+This simulates the optimal sorted assignment without ever expanding counts.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((sum k_i)!) | O(sum k_i) | Too slow |
-| Optimal | O(n log n + t) | O(n + t) | Accepted |
+| Brute Force | O(F log F) | O(F) | Too slow |
+| Optimal | O(n log n + n + t) | O(n) | Accepted |
+
+Here `F = Σ k_i`, which may exceed `10^11`.
 
 ## Algorithm Walkthrough
 
-1. Read all figure types and store them as pairs of (cost, count). Sorting by cost ensures we can pick the highest-cost figures first.
-2. Sort the list of figure types in descending order by cost. We only need to consider the cost ordering because the quantity of each type will be consumed in sequence.
-3. Read the factor thresholds into a list. Prepend 0 to represent the starting factor 1 threshold and append the total number of figures plus one to cover the last factor interval.
-4. Compute the number of figures destroyed in each factor interval as differences between consecutive thresholds. This tells us exactly how many figures get each factor.
-5. Iterate through the factor intervals from lowest to highest factor. For each interval, take the required number of figures from the highest remaining-cost figures, decrementing their counts as they are used. Multiply the number of figures by the cost and current factor, accumulating the total score.
-6. Continue until all figures are destroyed. Because figures are assigned greedily to factors from highest cost downward, the accumulated score is maximized.
+### 1. Sort all figure types by cost in ascending order
 
-Why it works: the invariant is that at every step, the remaining highest-cost figures are always assigned to the highest remaining factor interval. Swapping any figure between intervals would never improve the total score because cost and factor are positive integers, and the product is monotone.
+Each type is represented by `(cost, count)`.
 
-## Python Solution
+The optimal arrangement places cheap figures into low-factor slots and expensive figures into high-factor slots.
 
-```python
-import sys
-input = sys.stdin.readline
+### 2. Convert factor changes into interval lengths
 
-n = int(input())
-figures = []
-total_figures = 0
-for _ in range(n):
-    k, c = map(int, input().split())
-    figures.append([c, k])
-    total_figures += k
-
-t = int(input())
-p = list(map(int, input().split()))
-
-# Sort figures by cost descending
-figures.sort(reverse=True)
-
-# Factor thresholds
-thresholds = [0] + p + [total_figures]
-
-# Calculate points
-score = 0
-idx = 0  # index of current figure type
-remaining = figures[idx][1]
-
-for i in range(1, len(thresholds)):
-    count = thresholds[i] - thresholds[i-1]
-    while count > 0:
-        take = min(count, remaining)
-        score += take * figures[idx][0] * i
-        count -= take
-        remaining -= take
-        if remaining == 0:
-            idx += 1
-            if idx < n:
-                remaining = figures[idx][1]
-
-print(score)
-```
-
-The code reads the figure types and factor thresholds, sorts figures by cost, and processes each factor interval by greedily consuming the highest-cost figures. A subtle point is prepending 0 and appending total figures to the threshold list to simplify interval calculations. Using `min(count, remaining)` ensures we do not over-consume from a figure type.
-
-## Worked Examples
-
-### Sample 1
-
-Input:
+Let:
 
 ```
-1
-5 10
-2
-3 6
+prev = 0
 ```
 
-| Step | Factor | Figures Needed | Figure Cost | Figures Taken | Score Increment | Score Total |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 3 | 10 | 3 | 3_10_1=30 | 30 |
-| 2 | 2 | 2 | 10 | 2 | 2_10_2=40 | 70 |
-
-The first 3 figures are destroyed at factor 1, then the remaining 2 at factor 2. The algorithm correctly maximizes score.
-
-### Sample 2
-
-Input:
+For each boundary `p_i`, create an interval:
 
 ```
-2
-3 8
-5 10
-1
-8
+length = p_i - prev
+factor = i
 ```
 
-| Step | Factor | Figures Needed | Figure Cost | Figures Taken | Score Increment | Score Total |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 8 | 10 | 5 | 5_10_1=50 | 50 |
-| 1 | 1 | 8 | 8 | 3 | 3_8_1=24 | 74 |
+Then update:
 
-All figures are destroyed before the factor increases, so all are scored at factor 1.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n log n + t + n) | Sorting figure types is n log n. Processing thresholds is O(t). Iterating through figures consumes each type once. |
-| Space | O(n + t) | We store figure types and thresholds. No per-figure storage is needed. |
-
-The solution fits comfortably within the limits because n and t are small, and we avoid per-figure iteration even though k_i can be up to 10^9.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    n = int(input())
-    figures = []
-    total_figures = 0
-    for _ in range(n):
-        k, c = map(int, input().split())
-        figures.append([c, k])
-        total_figures += k
-    t = int(input())
-    p = list(map(int, input().split()))
-    figures.sort(reverse=True)
-    thresholds = [0] + p + [total_figures]
-    score = 0
-    idx = 0
-    remaining = figures[idx][1]
-    for i in range(1, len(thresholds)):
-        count = thresholds[i] - thresholds[i-1]
-        while count > 0:
-            take = min(count, remaining)
-            score += take * figures[idx][0] * i
-            count -= take
-            remaining -= take
-            if remaining == 0:
-                idx += 1
-                if idx < n:
-                    remaining = figures[idx][1]
-    return str(score)
-
-# Provided samples
-assert run("1\n5 10\n2\n3 6\n") == "70", "sample 1"
-assert run("2\n3 8\n5 10\n1\n8\n") == "74", "sample 2"
-
-# Custom test cases
-assert run("1\n1 1000\n1\n1\n") == "1000", "single figure"
-assert run("2\n1000000000 1\n1000000000 2\n2\n1000000000 1500000000\n") == str(1000000000*2*1 + 1000000000*2*2), "large counts"
-assert run("3\n2 10\n2 20\n2 30\n3\n1 3 5\n") == "10*1+20*2+30*3+rest", "mixed costs"
+```
+prev = p_i
 ```
 
-| Test input | Expected output | What it validates |
+These intervals describe how many destruction positions use each factor.
 
-|---|---
+### 3. Process intervals from smallest factor to largest factor
+
+Maintain a pointer to the current cheapest figure type that still has remaining figures.
+
+For an interval of length `L` and factor `f`, repeatedly take figures from the current type until either:
+
+```
+L = 0
+```
+
+or that type is exhausted.
+
+If we take `x` figures of cost `c`, we add:
+
+```
+x * c * f
+```
+
+to the answer.
+
+Then decrease both the interval length and the remaining count of that figure type.
+
+### 4. Handle all remaining figures
+
+After processing every boundary interval, any remaining figures are destroyed with factor:
+
+```
+t + 1
+```
+
+Consume all remaining counts and add:
+
+```
+count * cost * (t + 1)
+```
+
+to the answer.
+
+### Why it works
+
+Consider any two figures with costs `a ≤ b` and two multiplier slots `x ≤ y`.
+
+If the
