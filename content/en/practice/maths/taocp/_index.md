@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 932 solved, 518 verified, 945 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 945 solved, 531 verified, 953 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -57,4 +57,5 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.4.5](2.3.4.5/) | Path Length | 17 | 15 | 17 |
 | [2.3.4.6](2.3.4.6/) | History and Bibliography | 4 | 2 | 4 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
-| [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 2 | 2 | 14 |
+| [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 13 | 13 | 14 |
+| [3.2.1.3](3.2.1.3/) | Potency | 2 | 2 | 8 |
