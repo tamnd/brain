@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 756 solved, 361 verified, 856 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 758 solved, 361 verified, 856 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -33,7 +33,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [1.3.3](1.3.3/) | Applications to Permutations | 36 | 29 | 37 |
 | [1.4.1](1.4.1/) | Subroutines | 7 | 6 | 7 |
 | [1.4.2](1.4.2/) | Coroutines | 7 | 5 | 7 |
-| [1.4.4](1.4.4/) | Input and Output | 18 | 5 | 19 |
+| [1.4.4](1.4.4/) | Input and Output | 19 | 5 | 19 |
 | [2.2.1](2.2.1/) | Stacks, Queues, and Deques | 14 | 1 | 14 |
 | [2.2.2](2.2.2/) | Sequential Allocation | 19 | 1 | 19 |
 | [2.2.3](2.2.3/) | Linked Allocation | 28 | 0 | 28 |
@@ -47,7 +47,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 9 | 14 |
 | [1.4.3.1](1.4.3.1/) | A MIX Simulator | 7 | 3 | 8 |
 | [1.4.3.2](1.4.3.2/) | Trace Routines | 7 | 1 | 7 |
-| [2.3.4.1](2.3.4.1/) | Free Trees | 9 | 5 | 13 |
+| [2.3.4.1](2.3.4.1/) | Free Trees | 10 | 5 | 13 |
 | [2.3.4.2](2.3.4.2/) | Oriented Trees | 8 | 6 | 28 |
 | [2.3.4.3](2.3.4.3/) |  | 1 | 0 | 8 |
 | [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 10 | 0 | 30 |

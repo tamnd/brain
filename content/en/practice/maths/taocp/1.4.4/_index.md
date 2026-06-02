@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.4.4: Input and Output"
-description: "Section 1.4.4 exercises: 18/19 solved."
+description: "Section 1.4.4 exercises: 19/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.4.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.4.4. Input and Output
 
-Exercises from [TAOCP Volume 1](../) Section 1.4.4: 18/19 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.4.4: 19/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -28,7 +28,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.4.4: 18/19 solved.
 | [8](08.md) |  [*11*] | simple | verified | 47s |
 | [9](09.md) |  [*21*] | medium | solved | 1m56s |
 | [10](10.md) |  [*21*] | medium | solved | 1m12s |
-| 11 |  [*21*] | medium | - | - |
+| [11](11.md) |  [*21*] | medium | solved | 46s |
 | [12](12.md) |  [*24*] | medium | solved | 1m20s |
 | [13](13.md) |  [*20*] | medium | solved | 57s |
 | [14](14.md) |  [*20*] | medium | solved | 1m03s |
