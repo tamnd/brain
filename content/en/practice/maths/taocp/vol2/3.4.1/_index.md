@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.4.1: Numerical Distributions"
-description: "Section 3.4.1 exercises: 29/33 solved."
+description: "Section 3.4.1 exercises: 31/33 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.4.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.4.1. Numerical Distributions
 
-Exercises from [TAOCP Volume 2](../) Section 3.4.1: 29/33 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.4.1: 31/33 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -48,6 +48,6 @@ Exercises from [TAOCP Volume 2](../) Section 3.4.1: 29/33 solved.
 | [28](28.md) |  [*HM35*] | hm-hard | verified | 1m43s |
 | [29](29.md) |  [*M20*] | math-medium | verified | 1m31s |
 | [30](30.md) |  [*M30*] | math-hard | solved | 2m12s |
-| 31 |  [*HM39*] | hm-project | - | - |
+| [31](31.md) |  [*HM39*] | hm-project | verified | 4m21s |
 | [32](32.md) |  [*HM30*] | hm-hard | verified | 3m17s |
-| 33 |  [**] |  | - | - |
+| [33](33.md) |  [**] |  | verified | 5m44s |
