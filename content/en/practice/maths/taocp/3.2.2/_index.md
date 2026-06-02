@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.2.2: Other Methods"
-description: "Section 3.2.2 exercises: 4/36 solved."
+description: "Section 3.2.2 exercises: 14/36 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.2.2. Other Methods
 
-Exercises from [TAOCP Volume 2](../) Section 3.2.2: 4/36 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.2.2: 14/36 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -23,16 +23,16 @@ Exercises from [TAOCP Volume 2](../) Section 3.2.2: 4/36 solved.
 | [3](03.md) |  [*23*] | medium | verified | 1m29s |
 | [4](04.md) |  [*10*] | simple | solved | 2m09s |
 | [5](05.md) | &#9654; [*20*] | medium | verified | 1m01s |
-| 6 |  [*10*] | simple | - | - |
-| 7 |  [**] |  | - | - |
-| 8 |  [**] |  | - | - |
-| 10 |  [**] |  | - | - |
-| 11 |  [**] |  | - | - |
-| 12 | &#9654; [*M28*] | math-hard | - | - |
-| 13 |  [*M20*] | math-medium | - | - |
-| 14 |  [*M24*] | math-medium | - | - |
-| 15 |  [*M27*] | math-hard | - | - |
-| 16 | &#9654; [*M28*] | math-hard | - | - |
+| [6](06.md) |  [*10*] | simple | solved | 2m11s |
+| [7](07.md) |  [**] |  | verified | 2m57s |
+| [8](08.md) |  [**] |  | solved | 4m54s |
+| [10](10.md) |  [**] |  | verified | 1m15s |
+| [11](11.md) |  [**] |  | solved | 4m15s |
+| [12](12.md) | &#9654; [*M28*] | math-hard | verified | 3m06s |
+| [13](13.md) |  [*M20*] | math-medium | solved | 4m54s |
+| [14](14.md) |  [*M24*] | math-medium | verified | 2m38s |
+| [15](15.md) |  [*M27*] | math-hard | verified | 1m39s |
+| [16](16.md) | &#9654; [*M28*] | math-hard | verified | 1m26s |
 | 17 |  [*M33*] | math-hard | - | - |
 | 18 |  [*M22*] | math-medium | - | - |
 | 19 |  [**] |  | - | - |

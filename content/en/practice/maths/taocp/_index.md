@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 955 solved, 539 verified, 989 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 965 solved, 545 verified, 989 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -46,7 +46,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.3](2.3.3/) | Other Representations of Trees | 19 | 15 | 19 |
 | [2.3.5](2.3.5/) | Lists and Garbage Collection | 12 | 9 | 12 |
 | [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
-| [3.2.2](3.2.2/) | Other Methods | 4 | 3 | 36 |
+| [3.2.2](3.2.2/) | Other Methods | 14 | 9 | 36 |
 | [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 11 | 13 |
 | [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 9 | 14 |
 | [1.4.3.1](1.4.3.1/) | A MIX Simulator | 8 | 4 | 8 |
