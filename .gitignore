@@ -1,4 +1,7 @@
 public/
+public-main/
+public-shards/
+deploy-shards-summary.json
 resources/
 .hugo_build.lock
 .claude/
