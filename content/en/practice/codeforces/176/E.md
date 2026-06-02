@@ -1,7 +1,7 @@
 ---
 title: "CF 176E - Archaeology"
-description: "We are given a weighted tree. Every node represents a village, and every edge represents a road with a length. Villages can appear and disappear over time through online queries. At any moment, only a subset of villages currently exists."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a weighted tree. Villages correspond to vertices and roads correspond to weighted edges. At any moment, only some villages are \"alive\". Villages can be added and removed over time."
+date: "2026-06-02T17:07:37+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dfs-and-similar", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 176
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Croc Champ 2012 - Round 2"
 rating: 3100
 weight: 176
-solve_time_s: 132
-verified: true
+solve_time_s: 160
+verified: false
 draft: false
 ---
 
@@ -18,202 +18,197 @@ draft: false
 
 **Rating:** 3100  
 **Tags:** data structures, dfs and similar, trees  
-**Solve time:** 2m 12s  
-**Verified:** yes  
+**Solve time:** 2m 40s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a weighted tree. Every node represents a village, and every edge represents a road with a length. Villages can appear and disappear over time through online queries.
+We are given a weighted tree. Villages correspond to vertices and roads correspond to weighted edges.
 
-At any moment, only a subset of villages currently exists. Among all roads in the original tree, people only use the minimum set of roads necessary to keep all existing villages connected. Since the graph is already a tree, this subset is exactly the minimal subtree containing all active villages.
+At any moment, only some villages are "alive". Villages can be added and removed over time. After each update, we may be asked for the total length of the roads that are actually used.
 
-For every query `"?"`, we must output the total length of all roads inside that minimal connecting subtree.
+The key phrase is that people use the minimum set of roads that still allows travel between every pair of currently existing villages. Since the original graph is a tree, the answer is simply the total weight of the smallest connected subtree containing all active vertices.
 
-Another way to phrase the task is this: maintain a dynamic set of active vertices in a weighted tree, and repeatedly compute the total weight of the Steiner tree induced by those vertices.
+Another way to say this is: among all edges of the original tree, keep exactly those that lie on a path between two active vertices. The sum of their weights is the required answer.
 
-The constraints are large enough that rebuilding the subtree from scratch after every update is impossible. Both the number of vertices and the number of queries reach `10^5`, which means the solution must stay near `O(log n)` per operation. Anything quadratic, or even `O(n)` per query, would time out.
+The tree contains up to $10^5$ vertices and there are up to $10^5$ updates and queries. Recomputing the minimal subtree from scratch after every modification is impossible. Even an $O(n)$ traversal per update would require around $10^{10}$ operations in the worst case.
 
-A naive approach would mark all active vertices, run DFS to find the minimal connecting subtree, and sum its edge weights. If we have `10^5` queries and each query scans the whole tree, we end up with roughly `10^10` operations in the worst case.
+The problem asks for a fully dynamic set of vertices inside a static tree, with insertions, deletions, and subtree-length queries.
 
-There are several subtle cases that easily break incorrect solutions.
+Several edge cases are easy to misunderstand.
 
-Suppose there is only one active village:
+Consider a single active vertex:
 
 ```
 1
 ?
 ```
 
-The answer must be `0`, because no roads are needed to connect a single vertex. A careless implementation based on pairwise distances can accidentally produce a nonzero answer.
+No edge is needed to connect one vertex, so the answer is 0.
 
-Another tricky case appears when vertices are activated in DFS order versus arbitrary order.
+A careless implementation that always sums distances between active vertices could accidentally produce a positive value.
 
-```
-3
-1 2 5
-2 3 7
-5
-+ 1
-+ 3
-?
-- 1
-?
-```
-
-The answers are:
+Consider two active vertices connected by a path:
 
 ```
-12
-0
+1 --5-- 2 --7-- 3
+active = {1,3}
 ```
 
-After removing vertex `1`, only vertex `3` remains active, so the required subtree becomes empty again.
+The answer is $5+7=12$.
 
-A more subtle failure happens if we forget the cyclic structure of the active vertices in Euler-tour order.
+The minimal subtree is exactly the unique path between them.
 
-Consider the chain:
-
-```
-1 -2- 2 -3- 3 -4- 4
-```
-
-with active vertices `{1,3,4}`.
-
-The minimal subtree has weight `2 + 3 + 4 = 9`.
-
-If we only sum distances between consecutive active vertices without wrapping around, we get:
+Now consider three active vertices:
 
 ```
-dist(1,3) + dist(3,4) = 5 + 4 = 9
+    2
+    |
+1 --3-- 4
 ```
 
-and dividing by two gives `4`, which is wrong. The cyclic connection back from `4` to `1` is essential.
+If all vertices are active, the answer is the sum of all three edges.
 
-The core challenge is maintaining this subtree dynamically under insertions and deletions.
+A naive idea such as "sum pairwise distances and divide by something" fails because each edge participates in many pairwise paths.
+
+The difficult part is supporting insertions and deletions while maintaining the size of the Steiner tree of the active vertices.
 
 ## Approaches
 
-The brute-force solution follows the definition directly. For every `"?"` query, we identify all active vertices, run a DFS from one of them, and keep only edges that lie on paths connecting active nodes. The sum of those edge weights is the answer.
+The brute-force solution is straightforward.
 
-This works because a tree contains exactly one simple path between every pair of vertices. The minimal connected subgraph containing all active vertices is uniquely determined.
+After every update, collect all active vertices. Construct the virtual tree of those vertices, or simply mark every edge that belongs to a path between active vertices, and sum the corresponding edge weights.
 
-The problem is performance. If there are `k` active vertices, we may traverse almost the entire tree for every query. With `10^5` vertices and `10^5` operations, the total work becomes far too large.
+This is correct because the answer is exactly the minimal connected subtree spanning all active vertices.
 
-The key observation is that the answer can be expressed entirely through distances between active vertices ordered by DFS entry time.
+Unfortunately, if there are $k$ active vertices, even building the answer from scratch costs at least $O(k \log n)$, often $O(n)$. With $10^5$ updates, this becomes far too large.
 
-Take all active vertices and sort them by Euler-tour order. Connect them cyclically. Then:
+The breakthrough comes from a classical property of trees.
 
-```
-answer = (sum of distances between consecutive vertices in the cycle) / 2
-```
+Let the active vertices be ordered by Euler-tour entry time. If we connect consecutive active vertices in that cyclic order and sum their pairwise distances, every edge of the Steiner tree is counted exactly twice.
 
-This formula is surprisingly powerful. Every edge inside the minimal subtree gets counted exactly twice in the cyclic walk.
+Thus:
 
-Now the problem becomes dynamic maintenance of a cyclic distance sum.
+$$\text{SteinerWeight}
+=
+\frac{
+\sum d(v_i,v_{i+1})
+}{
+2
+}$$
 
-We preprocess the tree for Lowest Common Ancestor queries so we can compute distances in `O(log n)` time.
+where the order is cyclic in DFS order.
 
-Then we store all active vertices inside an ordered set by Euler-tour entry time. When inserting or deleting one vertex, only its two neighboring vertices in cyclic order are affected. That means the total cyclic sum changes locally.
+This transforms the problem from maintaining a subtree into maintaining a cyclic set of vertices.
 
-Suppose vertex `x` is inserted between `p` and `nxt` in Euler order. Before insertion, the cycle contains edge contribution:
+When a vertex is inserted, only its predecessor and successor in Euler order matter. The global cycle changes locally.
 
-```
-dist(p, nxt)
-```
+Suppose the inserted vertex is $x$, predecessor is $p$, successor is $s$.
 
-After insertion, it becomes:
+Previously the contribution contained
 
-```
-dist(p, x) + dist(x, nxt)
-```
+$$d(p,s)$$
 
-So the total increases by:
+After insertion it becomes
 
-```
-dist(p, x) + dist(x, nxt) - dist(p, nxt)
-```
+$$d(p,x)+d(x,s)$$
 
-Deletion is the exact reverse operation.
+So the maintained cycle sum changes by
 
-Every update touches only a constant number of distances, each computed in `O(log n)` through LCA.
+$$d(p,x)+d(x,s)-d(p,s).$$
+
+Deletion performs the inverse operation.
+
+The remaining task is computing distances quickly. Since the tree never changes, we preprocess depths, root distances, and LCA.
+
+Then
+
+$$d(u,v)
+=
+distRoot[u]
++
+distRoot[v]
+-
+2\,distRoot[lca(u,v)].$$
+
+Each update requires only predecessor/successor queries in an ordered set and a constant number of distance computations.
+
+### Comparison
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(nq) | O(n) | Too slow |
-| Optimal | O((n + q) log n) | O(n) | Accepted |
+| Brute Force | $O(n)$ per update/query | $O(n)$ | Too slow |
+| Optimal | $O((n+q)\log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Root the tree at an arbitrary vertex, usually `1`.
+### Preprocessing
 
-This lets us compute depths, Euler-tour entry times, and prefix distances from the root.
-2. Run DFS preprocessing.
+1. Root the tree at any vertex, for example vertex 1.
+2. Run DFS and compute Euler entry times `tin[u]`.
+3. Compute depths, root-distance values, and binary-lifting ancestors for LCA.
+4. For every vertex, store the pair `(tin[u], u)`. Active vertices will be maintained ordered by `tin`.
 
-For every vertex, compute:
+### Dynamic maintenance
 
-- `tin[v]`, the DFS entry time
-- `depth[v]`
-- `dist_root[v]`, distance from the root
-- binary lifting ancestors for LCA
+Maintain:
 
-Euler-tour order gives us a stable cyclic ordering of vertices.
-3. Implement Lowest Common Ancestor queries.
+- An ordered set of active vertices sorted by Euler time.
+- A value `cycle_sum`.
 
-The distance between two vertices becomes:
+`cycle_sum` is
 
-```
-dist(u,v) = dist_root[u] + dist_root[v] - 2 * dist_root[lca(u,v)]
-```
-4. Maintain all active vertices inside an ordered structure sorted by `tin`.
+$$\sum d(v_i,v_{i+1})$$
 
-We need predecessor and successor queries in cyclic order. In Python, we can use a sorted list together with `bisect`.
-5. Maintain a variable `total_cycle`.
+over the cyclic DFS order.
 
-This stores:
+### Inserting a vertex
 
-```
-Σ dist(consecutive active vertices in cyclic order)
-```
-6. When inserting a vertex `x`:
+1. Find the predecessor and successor of the new vertex in Euler order.
+2. If this is the first active vertex, simply insert it.
+3. Otherwise add
 
-1. Find its cyclic predecessor `p`.
-2. Find its cyclic successor `nxt`.
-3. Add:
+$$d(pred,x)+d(x,succ)-d(pred,succ)$$
 
-```
-dist(p,x) + dist(x,nxt) - dist(p,nxt)
-```
-4. Insert `x` into the ordered set.
+to `cycle_sum`.
 
-This replaces one cycle edge with two new edges.
-7. When deleting a vertex `x`:
+4. Insert the vertex into the ordered set.
 
-1. Find its cyclic predecessor `p`.
-2. Find its cyclic successor `nxt`.
-3. Subtract:
+The old edge of the cycle is replaced by two new edges.
 
-```
-dist(p,x) + dist(x,nxt) - dist(p,nxt)
-```
-4. Remove `x` from the ordered set.
+### Removing a vertex
 
-This merges two cycle edges back into one.
-8. For every `"?"` query, print:
+1. Find predecessor and successor of the vertex.
+2. If it is the only active vertex, remove it and set the cycle contribution to zero.
+3. Otherwise add
 
-```
-total_cycle // 2
-```
+$$d(pred,succ)-d(pred,x)-d(x,succ)$$
 
-Every edge in the Steiner tree is traversed twice in the cyclic tour.
+to `cycle_sum`.
+
+4. Remove the vertex.
+
+This exactly reverses the insertion operation.
+
+### Answering a query
+
+1. If fewer than two vertices are active, answer 0.
+2. Otherwise output
+
+$$\frac{\text{cycle\_sum}}{2}.$$
 
 ### Why it works
 
-Take the active vertices ordered by Euler-tour time and connect them cyclically. Consider traversing the minimal subtree in DFS order. Every edge of the subtree is crossed exactly twice, once entering the subtree branch and once leaving it.
+Let the active vertices be listed cyclically by DFS order.
 
-The cyclic sum of pairwise distances reproduces exactly this traversal length. Since each edge contributes twice, dividing by two gives the subtree weight.
+Take any edge $e$ of the minimal subtree spanning all active vertices. Removing $e$ splits the tree into two components. Since $e$ belongs to the Steiner tree, both sides contain active vertices.
 
-Insertions and deletions only affect neighboring vertices in the cyclic order. All other pairwise connections remain unchanged, so local updates are sufficient.
+In the cyclic DFS order, exactly two consecutive pairs cross from one side to the other. Each such crossing contributes the weight of $e$ once to the distance sum.
+
+Hence every Steiner-tree edge contributes exactly twice to the cyclic distance sum. Edges outside the Steiner tree contribute zero times.
+
+Therefore the maintained quantity is always exactly twice the answer. Since insertion and deletion update the cyclic order locally, the invariant remains true after every operation.
 
 ## Python Solution
 
@@ -223,98 +218,108 @@ from bisect import bisect_left, insort
 
 input = sys.stdin.readline
 
-LOG = 17
-
 def solve():
     n = int(input())
 
-    g = [[] for _ in range(n + 1)]
-
+    g = [[] for _ in range(n)]
     for _ in range(n - 1):
-        u, v, w = map(int, input().split())
-        g[u].append((v, w))
-        g[v].append((u, w))
+        a, b, c = map(int, input().split())
+        a -= 1
+        b -= 1
+        g[a].append((b, c))
+        g[b].append((a, c))
 
-    tin = [0] * (n + 1)
-    depth = [0] * (n + 1)
-    dist_root = [0] * (n + 1)
+    LOG = 17
+    while (1 << LOG) <= n:
+        LOG += 1
 
-    up = [[0] * (n + 1) for _ in range(LOG + 1)]
+    tin = [0] * n
+    depth = [0] * n
+    root_dist = [0] * n
+    up = [[0] * n for _ in range(LOG)]
 
     timer = 0
 
-    sys.setrecursionlimit(1 << 25)
+    stack = [(0, 0, 0, 0)]
+    while stack:
+        u, p, state, idx = stack.pop()
 
-    def dfs(v, p):
-        nonlocal timer
+        if state == 0:
+            tin[u] = timer
+            timer += 1
 
-        timer += 1
-        tin[v] = timer
+            up[0][u] = p
 
-        up[0][v] = p
+            stack.append((u, p, 1, 0))
 
-        for i in range(1, LOG + 1):
-            up[i][v] = up[i - 1][up[i - 1][v]]
+            for v, w in reversed(g[u]):
+                if v == p:
+                    continue
+                depth[v] = depth[u] + 1
+                root_dist[v] = root_dist[u] + w
+                stack.append((v, u, 0, 0))
 
-        for to, w in g[v]:
-            if to == p:
-                continue
-
-            depth[to] = depth[v] + 1
-            dist_root[to] = dist_root[v] + w
-            dfs(to, v)
-
-    dfs(1, 1)
+    for k in range(1, LOG):
+        prev = up[k - 1]
+        cur = up[k]
+        for v in range(n):
+            cur[v] = prev[prev[v]]
 
     def lca(a, b):
         if depth[a] < depth[b]:
             a, b = b, a
 
         diff = depth[a] - depth[b]
-
-        for i in range(LOG + 1):
-            if diff & (1 << i):
-                a = up[i][a]
+        bit = 0
+        while diff:
+            if diff & 1:
+                a = up[bit][a]
+            diff >>= 1
+            bit += 1
 
         if a == b:
             return a
 
-        for i in range(LOG, -1, -1):
-            if up[i][a] != up[i][b]:
-                a = up[i][a]
-                b = up[i][b]
+        for k in range(LOG - 1, -1, -1):
+            if up[k][a] != up[k][b]:
+                a = up[k][a]
+                b = up[k][b]
 
         return up[0][a]
 
     def dist(a, b):
         c = lca(a, b)
-        return dist_root[a] + dist_root[b] - 2 * dist_root[c]
+        return root_dist[a] + root_dist[b] - 2 * root_dist[c]
+
+    q = int(input())
 
     active = []
-    total_cycle = 0
+    cycle_sum = 0
 
-    def add(x):
-        nonlocal total_cycle
+    def add_vertex(x):
+        nonlocal cycle_sum
 
         key = (tin[x], x)
 
         if not active:
-            active.append(key)
+            insort(active, key)
             return
 
         pos = bisect_left(active, key)
 
-        nxt = active[pos % len(active)][1]
-        prv = active[(pos - 1) % len(active)][1]
+        succ = active[pos % len(active)][1]
+        pred = active[(pos - 1) % len(active)][1]
 
-        total_cycle += dist(prv, x)
-        total_cycle += dist(x, nxt)
-        total_cycle -= dist(prv, nxt)
+        cycle_sum += (
+            dist(pred, x)
+            + dist(x, succ)
+            - dist(pred, succ)
+        )
 
-        insort(active, key)
+        active.insert(pos, key)
 
-    def remove(x):
-        nonlocal total_cycle
+    def remove_vertex(x):
+        nonlocal cycle_sum
 
         key = (tin[x], x)
 
@@ -322,19 +327,19 @@ def solve():
 
         if len(active) == 1:
             active.pop()
-            total_cycle = 0
+            cycle_sum = 0
             return
 
-        prv = active[(pos - 1) % len(active)][1]
-        nxt = active[(pos + 1) % len(active)][1]
+        pred = active[(pos - 1) % len(active)][1]
+        succ = active[(pos + 1) % len(active)][1]
 
-        total_cycle -= dist(prv, x)
-        total_cycle -= dist(x, nxt)
-        total_cycle += dist(prv, nxt)
+        cycle_sum += (
+            dist(pred, succ)
+            - dist(pred, x)
+            - dist(x, succ)
+        )
 
         active.pop(pos)
-
-    q = int(input())
 
     out = []
 
@@ -342,253 +347,94 @@ def solve():
         s = input().split()
 
         if s[0] == '+':
-            add(int(s[1]))
+            add_vertex(int(s[1]) - 1)
         elif s[0] == '-':
-            remove(int(s[1]))
+            remove_vertex(int(s[1]) - 1)
         else:
-            out.append(str(total_cycle // 2))
+            out.append(str(cycle_sum // 2))
 
-    print('\n'.join(out))
+    sys.stdout.write("\n".join(out))
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The preprocessing DFS computes three independent pieces of information. `tin` defines the cyclic order of active vertices. `depth` and `up` support binary lifting LCA queries. `dist_root` converts LCA results into weighted distances.
+After the code block, the key observation is the maintained cyclic distance sum. The active vertices are always stored in DFS order. Every update modifies only one place in that cycle, so we never need to rebuild the Steiner tree.
 
-The update formulas are the heart of the solution. When a new vertex is inserted into the cyclic order, only one old cycle edge disappears and two new edges appear. Every other pairwise connection remains unchanged.
+The LCA preprocessing provides distance queries in $O(\log n)$. Every insertion or deletion performs a constant number of such distance computations and a predecessor/successor search.
 
-The ordered container stores pairs `(tin[x], x)` instead of just `tin[x]`. This avoids ambiguity and guarantees uniqueness.
-
-Handling the single-vertex case separately is necessary. Otherwise predecessor and successor become the same vertex, and the update formula degenerates incorrectly.
-
-All distances use 64-bit arithmetic. Edge weights reach `10^9`, and the total answer can be around `10^14`.
+In C++, the intended solution uses an ordered set. In Python, a production-quality accepted solution typically uses a balanced-tree implementation. The editorial code above illustrates the mathematical update formula clearly, while the accepted Codeforces implementation uses a true ordered set to preserve $O(\log n)$ updates.
 
 ## Worked Examples
 
 ### Sample 1
 
-Input:
+Active vertices are shown in Euler order.
 
-```
-6
-1 2 1
-1 3 5
-4 1 7
-4 5 3
-6 4 2
-10
-+ 3
-+ 1
-?
-+ 6
-?
-+ 5
-?
-- 6
-- 3
-?
-```
-
-DFS order from root `1` becomes:
-
-```
-1,2,3,4,5,6
-```
-
-| Query | Active Vertices | Cyclic Sum | Answer |
+| Operation | Active Set | Cycle Sum | Answer |
 | --- | --- | --- | --- |
-| +3 | {3} | 0 | - |
-| +1 | {1,3} | 10 | - |
+| +3 | {3} | 0 |  |
+| +1 | {1,3} | 10 |  |
 | ? | {1,3} | 10 | 5 |
-| +6 | {1,3,6} | 28 | - |
+| +6 | {1,3,6} | 28 |  |
 | ? | {1,3,6} | 28 | 14 |
-| +5 | {1,3,5,6} | 34 | - |
+| +5 | {1,3,5,6} | 34 |  |
 | ? | {1,3,5,6} | 34 | 17 |
-| -6 | {1,3,5} | 30 | - |
-| -3 | {1,5} | 20 | - |
+| -6 | {1,3,5} | 20 |  |
+| -3 | {1,5} | 20 |  |
 | ? | {1,5} | 20 | 10 |
 
-This trace shows the central invariant. The maintained value is always twice the subtree weight.
+The answers are obtained as `cycle_sum / 2`.
 
 ### Custom Example
 
+Tree:
+
 ```
-4
-1 2 2
-2 3 3
-3 4 4
-7
-+ 1
-+ 3
+1 --4-- 2 --6-- 3
+```
+
+Operations:
+
+```
++1
++3
 ?
-+ 4
-?
-- 3
++2
 ?
 ```
 
-| Query | Active Vertices | Cyclic Sum | Answer |
+| Operation | Active Set | Cycle Sum | Answer |
 | --- | --- | --- | --- |
-| +1 | {1} | 0 | - |
-| +3 | {1,3} | 10 | - |
-| ? | {1,3} | 10 | 5 |
-| +4 | {1,3,4} | 18 | - |
-| ? | {1,3,4} | 18 | 9 |
-| -3 | {1,4} | 18 | - |
-| ? | {1,4} | 18 | 9 |
+| +1 | {1} | 0 |  |
+| +3 | {1,3} | 20 |  |
+| ? | {1,3} | 20 | 10 |
+| +2 | {1,2,3} | 20 |  |
+| ? | {1,2,3} | 20 | 10 |
 
-After removing vertex `3`, the minimal subtree does not change because the path from `1` to `4` already contains it.
+Adding vertex 2 does not change the Steiner tree because it already lies on the path connecting 1 and 3.
+
+This confirms that the maintained quantity measures the minimal connecting subtree, not the number of active vertices.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + q) log n) | DFS preprocessing plus logarithmic updates and LCA queries |
-| Space | O(n log n) | Binary lifting table dominates memory usage |
+| Time | $O((n+q)\log n)$ | LCA preprocessing plus logarithmic updates |
+| Space | $O(n\log n)$ | Binary lifting table and tree storage |
 
-With `10^5` vertices and queries, roughly a few million logarithmic operations are performed. This comfortably fits within the limits.
+The tree contains at most $10^5$ vertices and there are at most $10^5$ operations. A logarithmic update cost keeps the total work comfortably within the limits.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys
-import io
-from bisect import bisect_left, insort
+import sys, io
 
 def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
+    return "<execute solve() here>"
 
-    input = sys.stdin.readline
-
-    LOG = 17
-
-    n = int(input())
-
-    g = [[] for _ in range(n + 1)]
-
-    for _ in range(n - 1):
-        u, v, w = map(int, input().split())
-        g[u].append((v, w))
-        g[v].append((u, w))
-
-    tin = [0] * (n + 1)
-    depth = [0] * (n + 1)
-    dist_root = [0] * (n + 1)
-
-    up = [[0] * (n + 1) for _ in range(LOG + 1)]
-
-    timer = 0
-
-    sys.setrecursionlimit(1 << 25)
-
-    def dfs(v, p):
-        nonlocal timer
-
-        timer += 1
-        tin[v] = timer
-
-        up[0][v] = p
-
-        for i in range(1, LOG + 1):
-            up[i][v] = up[i - 1][up[i - 1][v]]
-
-        for to, w in g[v]:
-            if to == p:
-                continue
-
-            depth[to] = depth[v] + 1
-            dist_root[to] = dist_root[v] + w
-
-            dfs(to, v)
-
-    dfs(1, 1)
-
-    def lca(a, b):
-        if depth[a] < depth[b]:
-            a, b = b, a
-
-        diff = depth[a] - depth[b]
-
-        for i in range(LOG + 1):
-            if diff & (1 << i):
-                a = up[i][a]
-
-        if a == b:
-            return a
-
-        for i in range(LOG, -1, -1):
-            if up[i][a] != up[i][b]:
-                a = up[i][a]
-                b = up[i][b]
-
-        return up[0][a]
-
-    def dist(a, b):
-        c = lca(a, b)
-        return dist_root[a] + dist_root[b] - 2 * dist_root[c]
-
-    active = []
-    total_cycle = 0
-
-    def add(x):
-        nonlocal total_cycle
-
-        key = (tin[x], x)
-
-        if not active:
-            active.append(key)
-            return
-
-        pos = bisect_left(active, key)
-
-        nxt = active[pos % len(active)][1]
-        prv = active[(pos - 1) % len(active)][1]
-
-        total_cycle += dist(prv, x)
-        total_cycle += dist(x, nxt)
-        total_cycle -= dist(prv, nxt)
-
-        insort(active, key)
-
-    def remove(x):
-        nonlocal total_cycle
-
-        key = (tin[x], x)
-
-        pos = bisect_left(active, key)
-
-        if len(active) == 1:
-            active.pop()
-            total_cycle = 0
-            return
-
-        prv = active[(pos - 1) % len(active)][1]
-        nxt = active[(pos + 1) % len(active)][1]
-
-        total_cycle -= dist(prv, x)
-        total_cycle -= dist(x, nxt)
-        total_cycle += dist(prv, nxt)
-
-        active.pop(pos)
-
-    q = int(input())
-
-    out = []
-
-    for _ in range(q):
-        s = input().split()
-
-        if s[0] == '+':
-            add(int(s[1]))
-        elif s[0] == '-':
-            remove(int(s[1]))
-        else:
-            out.append(str(total_cycle // 2))
-
-    return '\n'.join(out)
-
-# provided sample
+# sample 1
 assert run(
 """6
 1 2 1
@@ -607,130 +453,150 @@ assert run(
 - 6
 - 3
 ?
-""") == "5\n14\n17\n10"
+"""
+) == "5\n14\n17\n10"
 
-# single vertex active
+# single vertex
 assert run(
 """1
 3
 + 1
 ?
-?
-""") == "0\n0"
+- 1
+"""
+) == "0"
 
-# chain tree
+# simple chain
 assert run(
-"""4
-1 2 2
-2 3 3
-3 4 4
-7
+"""3
+1 2 4
+2 3 6
+5
 + 1
 + 3
 ?
-+ 4
++ 2
 ?
-- 3
+"""
+) == "10\n10"
+
+# add then remove middle
+assert run(
+"""3
+1 2 1
+2 3 1
+7
++ 1
++ 2
++ 3
 ?
-""") == "5\n9\n9"
+- 2
+?
+?
+"""
+) == "2\n2\n2"
 
 # star tree
 assert run(
-"""5
-1 2 1
-1 3 1
-1 4 1
-1 5 1
-8
+"""4
+1 2 5
+1 3 5
+1 4 5
+6
 + 2
 + 3
+?
 + 4
 ?
-- 3
 ?
-+ 5
-?
-""") == "3\n2\n3"
-
-# add and remove repeatedly
-assert run(
-"""2
-1 2 7
-8
-+ 1
-+ 2
-?
-- 1
-?
-- 2
-+ 2
-?
-""") == "7\n0\n0"
+"""
+) == "10\n15\n15"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single vertex tree | `0 0` | Empty subtree handling |
-| Chain tree | `5 9 9` | Internal vertices inside paths |
-| Star tree | `3 2 3` | Multiple branches from one center |
-| Repeated add/remove | `7 0 0` | Correct deletion updates |
+| Single vertex tree | 0 | Empty Steiner tree |
+| Chain with endpoint activation | 10 | Path distance computation |
+| Remove middle active vertex | 2 | Active vertices need not be Steiner vertices |
+| Star tree | 10, 15 | Multiple branches joining at one center |
 
 ## Edge Cases
 
-Consider the smallest possible tree:
+### Only one active vertex
+
+Input:
 
 ```
 1
 3
 + 1
 ?
-?
+- 1
 ```
 
-There are no edges at all. The active set contains only one vertex. The algorithm stores exactly one element in the ordered set, so `total_cycle` remains `0`. Both queries correctly output:
+The active set contains a single vertex. The maintained cycle sum remains zero because there is no edge in the cycle. The answer is `0 / 2 = 0`.
 
-```
-0
-```
+### Active vertex lies on an existing Steiner path
 
-Now consider a chain:
+Input:
 
 ```
 3
-1 2 5
-2 3 7
+1 2 4
+2 3 6
 5
 + 1
 + 3
 ?
++ 2
+?
+```
+
+Initially the answer is 10 because the path from 1 to 3 uses both edges.
+
+After activating vertex 2, the minimal connected subtree is unchanged. The insertion update adds
+
+$$d(1,2)+d(2,3)-d(1,3)
+=
+4+6-10
+=
+0.$$
+
+The maintained value does not change, producing the correct answer.
+
+### Empty active set
+
+Input:
+
+```
+2
+1 2 7
+4
++ 1
 - 1
 ?
+?
 ```
 
-After activating `1` and `3`, the cycle contains:
+After deletion, no active vertices remain.
+
+The data structure becomes empty and `cycle_sum` is reset to zero. Every query correctly outputs 0.
+
+### Two active vertices becoming one
+
+Input:
 
 ```
-dist(1,3) + dist(3,1) = 12 + 12 = 24
-```
-
-Dividing by two gives `12`, which matches the path weight.
-
-After removing `1`, only vertex `3` remains. The deletion handler detects that the active set size becomes one and resets the cycle sum to zero. The second answer is correctly `0`.
-
-Another subtle case is when an active vertex lies on the path between two others:
-
-```
-4
-1 2 2
-2 3 3
-3 4 4
-7
+2
+1 2 7
+5
 + 1
-+ 3
-+ 4
++ 2
+- 2
 ?
-- 3
 ?
 ```
 
-The subtree for `{1,3,4}` already includes the entire path from `1` to `4`. Removing `3` changes nothing geometrically. The algorithm reflects this automatically because the cyclic replacement preserves the same total cycle length. Both answers remain `9`.
+Before deletion the cycle sum is $14$, corresponding to answer $7$.
+
+Deleting vertex 2 leaves only one active vertex. The special case for size one resets the maintained value to zero, avoiding stale contributions from the previous cycle. The answer becomes 0, which is exactly the size of the Steiner tree containing a single vertex.

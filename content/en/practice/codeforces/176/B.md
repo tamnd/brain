@@ -1,7 +1,7 @@
 ---
 title: "CF 176B - Word Cut"
-description: "We start with a string start and want to reach another string end after exactly k operations. One operation chooses a non-empty prefix and a non-empty suffix. If the current word is written as xy, the operation transforms it into yx."
-date: "2026-05-29T00:00:00+07:00"
+description: "Each operation chooses a non-empty prefix and a non-empty suffix of the current word and swaps their order. If the current word is written as xy, where both x and y are non-empty, the operation transforms it into yx. A useful way to view this operation is as a cyclic rotation."
+date: "2026-06-02T17:10:11+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
 codeforces_contest: 176
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Croc Champ 2012 - Round 2"
 rating: 1700
 weight: 176
-solve_time_s: 102
+solve_time_s: 128
 verified: true
 draft: false
 ---
@@ -18,212 +18,182 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** dp  
-**Solve time:** 1m 42s  
+**Solve time:** 2m 8s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We start with a string `start` and want to reach another string `end` after exactly `k` operations.
+Each operation chooses a non-empty prefix and a non-empty suffix of the current word and swaps their order. If the current word is written as `xy`, where both `x` and `y` are non-empty, the operation transforms it into `yx`.
 
-One operation chooses a non-empty prefix and a non-empty suffix. If the current word is written as `xy`, the operation transforms it into `yx`. Since both parts must be non-empty, every operation is equivalent to rotating the string by some positive amount smaller than its length.
+A useful way to view this operation is as a cyclic rotation. If the word length is `n` and we split after position `p`, the suffix of length `n-p` moves to the front. Every split corresponds to exactly one non-trivial rotation, and every non-trivial rotation corresponds to exactly one split.
 
-For example:
+The words `start` and `end` have equal length `n`, where `2 ≤ n ≤ 1000`. We must count how many sequences of exactly `k` split operations transform `start` into `end`. Different split positions produce different operations, so two sequences are considered different if they choose different split points at some step.
 
-```
-abcdef
-split after index 2
+The length of the word is at most 1000, but `k` can reach `10^5`. Any algorithm that explicitly tracks all possible operation sequences is hopeless. Even keeping a DP state for every rotation and every step would require about `1000 × 100000 = 10^8` transitions, which is too much.
 
-ab | cdef  ->  cdefab
-```
+The crucial observation is that every operation preserves the cyclic order of characters. Starting from a word, we can only reach its rotations. If `end` is not a rotation of `start`, the answer is immediately zero.
 
-The crucial observation is that every reachable string is just a cyclic rotation of the original string. No operation changes the relative order of characters, it only changes the starting position.
+Several edge cases are easy to miss.
 
-The input size changes the nature of the problem completely. The string length is at most 1000, which is small enough for quadratic preprocessing over rotations. The dangerous constraint is `k ≤ 100000`. Any solution that simulates all sequences of operations explodes immediately because each step has up to `n - 1` choices.
-
-If `n = 1000` and `k = 100000`, then a brute-force recursion would try roughly:
+Consider:
 
 ```
-999^100000
-```
-
-possible sequences, which is impossible.
-
-The actual challenge is counting operation sequences, not merely checking reachability.
-
-There are several easy-to-miss edge cases.
-
-Suppose:
-
-```
-start = "ab"
-end = "ab"
-k = 1
-```
-
-The answer is `0`.
-
-There is only one possible operation:
-
-```
-ab -> ba
-```
-
-A careless DP that allows "do nothing" transitions would incorrectly produce `1`.
-
-Another tricky case is when multiple rotations produce the same string.
-
-```
-start = "abab"
-end = "abab"
-```
-
-The string `"abab"` appears under two different rotations:
-
-```
-rotation 0 -> abab
-rotation 2 -> abab
-```
-
-These are different states because operations distinguish positions, not final text alone. Ignoring this causes undercounting.
-
-One more subtle situation appears when `start == end` and `k = 0`.
-
-```
-abc
-abc
+ab
+ab
 0
 ```
 
-The answer is `1`, because using zero operations is valid.
+The answer is `1`. We already start at the target and perform no operations. A solution that assumes at least one operation exists would incorrectly return `0`.
 
-But:
+Consider:
 
 ```
-abc
-bca
-0
+aaaa
+aaaa
+1
 ```
 
-must produce `0`.
+Every split produces the same visible string `"aaaa"`, but the operations are still different because they use different split positions. There are `3` valid one-step sequences. Treating states as strings without counting distinct splits would undercount.
 
-The DP initialization has to encode this correctly.
+Consider:
+
+```
+abcd
+bcda
+1
+```
+
+There is exactly one valid split. Rotating left by one position corresponds to splitting after the first character. A solution that counts occurrences of the target rotation rather than actual operation paths may overcount.
 
 ## Approaches
 
-The brute-force idea is straightforward. At each operation we choose one of the `n - 1` split points and generate the next rotation. After exactly `k` steps we check whether the final string equals `end`.
+The brute-force idea is straightforward. At every step, try all `n-1` possible split positions and recursively generate the resulting word. After exactly `k` operations, check whether the final word equals `end`.
 
-This is correct because it explicitly enumerates every valid sequence of operations. The problem is the branching factor. Even for `n = 1000` and a tiny `k = 20`, the search space becomes:
+This is correct because it explores every legal sequence of operations. Unfortunately, the branching factor is `n-1`, so the number of explored states is roughly `(n-1)^k`. Even for tiny values of `k`, this becomes enormous.
 
-```
-999^20
-```
+The next idea is to observe what a split operation really does. Splitting after position `p` rotates the string by `n-p` positions. Repeated splits never change the cyclic order of characters. Every reachable word is simply a rotation of `start`.
 
-which is already astronomically large.
+Suppose the length is `n`. There are at most `n` different rotation states. We could build a graph whose vertices are rotations and whose edges correspond to choosing one of the `n-1` non-trivial rotations. From any rotation, every other rotation is reachable in exactly one move, while staying in the same rotation is possible only through rotations that happen to produce the same string.
 
-We need to exploit structure.
+The key simplification comes from grouping rotations into only two categories:
 
-Every operation is a cyclic rotation. More specifically, if we index rotations by how far the string is shifted, then each operation moves from one rotation state to another rotation state.
+The first category contains rotations equal to `end`.
 
-The next observation is the key simplification:
+The second category contains rotations not equal to `end`.
 
-From any rotation, every other rotation is reachable in exactly one operation, except itself.
+Let `cnt` be the number of rotations of `start` that equal `end`.
 
-Why?
+Then every rotation belongs to one of two classes, and transitions depend only on the class, not on the specific rotation. This turns the problem into a two-state DP that can be processed for up to `10^5` steps.
 
-Assume the current rotation is shift `i`. Splitting after `t` characters rotates the string additionally by `t`. Since `t` can be any value from `1` to `n - 1`, we can move to any different rotation in one step, but never stay in place.
-
-This means the graph of states is extremely simple:
-
-```
-every node connects to all other nodes
-no self-loops
-```
-
-Now the actual string contents barely matter. We only care whether the current rotation equals the target rotation or not.
-
-Let:
-
-```
-good = number of ways to be at a target rotation
-bad  = number of ways to be at a non-target rotation
-```
-
-Transitions become simple counting formulas.
-
-If there are `cnt` rotations equal to `end`, then:
-
-From a good state:
-
-- `cnt - 1` moves stay good
-- `n - cnt` moves become bad
-
-From a bad state:
-
-- `cnt` moves become good
-- `n - cnt - 1` moves stay bad
-
-Now we only need a 2-state DP for `k` steps.
-
-The remaining task is finding how many rotations of `start` equal `end`. Since `n ≤ 1000`, checking all rotations directly is fast enough.
+To use this DP, we must know whether rotation `0` of `start` is already equal to `end`, and how many total rotations equal `end`. Both quantities can be obtained by searching for occurrences of `end` inside `(start + start)[:-1]`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O((n-1)^k) | O(k) | Too slow |
-| Optimal | O(n^2 + k) | O(1) | Accepted |
+| Optimal | O(n + k) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Generate all cyclic rotations of `start` and count how many of them equal `end`.
+### 1. Count target rotations
 
-Each rotation corresponds to one state in the implicit graph. Multiple rotations may produce the same visible string when the word is periodic.
-2. Let `cnt` be the number of rotations equal to `end`.
-
-These are the "good" states. The remaining `n - cnt` states are "bad".
-3. Initialize the DP.
-
-If the original `start` already equals `end`, then rotation `0` is good initially.
-
-Otherwise we begin in a bad state.
-4. Maintain two values:
+Let
 
 ```
-good = ways to be in a good state
-bad  = ways to be in a bad state
+T = start + start
 ```
-5. For each operation, compute the next values.
 
-From a good state:
+Every rotation of `start` corresponds to a starting position in `T`.
 
-- there are `cnt - 1` good destinations
-- there are `n - cnt` bad destinations
+Search for all occurrences of `end` in `T[:-1]`. The number of occurrences is exactly the number of rotations of `start` equal to `end`.
 
-From a bad state:
+Call this value `cnt`.
 
-- there are `cnt` good destinations
-- there are `n - cnt - 1` bad destinations
+If `cnt = 0`, then `end` is not a rotation of `start`, and the answer is `0`.
 
-So:
+### 2. Determine the initial state
+
+Let
 
 ```
-new_good = good * (cnt - 1) + bad * cnt
-new_bad  = good * (n - cnt) + bad * (n - cnt - 1)
+good0 = 1 if start == end else 0
 ```
-6. Apply modulo `1e9 + 7` after every update.
-7. After exactly `k` steps, output `good`.
+
+We define two DP states.
+
+`good[i]` is the number of ways to be at a rotation equal to `end` after `i` operations.
+
+`bad[i]` is the number of ways to be at a rotation not equal to `end` after `i` operations.
+
+Initially:
+
+```
+good = good0
+bad = 1 - good0
+```
+
+There is exactly one starting rotation.
+
+### 3. Derive transition counts
+
+Suppose we are currently in a good rotation.
+
+There are `n-1` possible split positions.
+
+Among all rotations equal to `end`, one of them is the current rotation itself. Since every operation must be non-trivial, we cannot stay where we are.
+
+So the number of transitions from a good state to another good state is:
+
+```
+cnt - 1
+```
+
+The number of transitions from a good state to a bad state is:
+
+```
+n - cnt
+```
+
+Now suppose we are in a bad rotation.
+
+Among the `cnt` good rotations, all are reachable in one move.
+
+For bad destinations, one rotation is the current state itself and cannot be chosen. Thus:
+
+```
+good transitions = cnt
+bad transitions = n - cnt - 1
+```
+
+### 4. Update the DP
+
+For each step:
+
+```
+new_good =
+    good * (cnt - 1)
+    + bad * cnt
+
+new_bad =
+    good * (n - cnt)
+    + bad * (n - cnt - 1)
+```
+
+All computations are performed modulo `10^9+7`.
+
+### 5. Repeat for k operations
+
+Apply the transition `k` times.
+
+The answer is the final value of `good`.
 
 ### Why it works
 
-The invariant is:
+Every state of the original problem is a rotation of `start`. The only information relevant to the final goal is whether that rotation equals `end`.
 
-```
-good = number of operation sequences that end in any rotation equal to end
-bad  = number of operation sequences that end in any other rotation
-```
+Let `cnt` be the number of rotations representing `end`. From any rotation, choosing a split is equivalent to choosing any other rotation index. The number of outgoing edges to good states and bad states depends only on whether the current state is good or bad. It does not depend on the specific rotation.
 
-Every operation moves from one rotation to any different rotation exactly once. Because transitions depend only on whether a state is good or bad, not on its exact index, all states inside the same category are symmetric.
-
-The recurrence counts every legal operation exactly once and never counts an illegal self-transition. Since the initialization matches the starting rotation and every step preserves the invariant, the final `good` value is exactly the number of valid operation sequences of length `k`.
+Because all states inside the same category have identical transition behavior, aggregating them into two DP states preserves the exact number of paths. The recurrence counts every valid sequence of split positions once, and only once. After processing exactly `k` operations, `good` equals the number of operation sequences ending at a rotation equal to `end`.
 
 ## Python Solution
 
@@ -231,47 +201,69 @@ The recurrence counts every legal operation exactly once and never counts an ill
 import sys
 input = sys.stdin.readline
 
-MOD = 10**9 + 7
+MOD = 1000000007
 
-start = input().strip()
-end = input().strip()
-k = int(input())
+def kmp_count(text, pattern):
+    m = len(pattern)
 
-n = len(start)
+    pi = [0] * m
+    j = 0
+    for i in range(1, m):
+        while j > 0 and pattern[i] != pattern[j]:
+            j = pi[j - 1]
+        if pattern[i] == pattern[j]:
+            j += 1
+        pi[i] = j
 
-cnt = 0
+    cnt = 0
+    j = 0
+    for ch in text:
+        while j > 0 and ch != pattern[j]:
+            j = pi[j - 1]
+        if ch == pattern[j]:
+            j += 1
+        if j == m:
+            cnt += 1
+            j = pi[j - 1]
 
-for shift in range(n):
-    rotated = start[shift:] + start[:shift]
-    if rotated == end:
-        cnt += 1
+    return cnt
 
-if start == end:
-    good = 1
-    bad = 0
-else:
-    good = 0
-    bad = 1
+def solve():
+    start = input().strip()
+    end = input().strip()
+    k = int(input())
 
-for _ in range(k):
-    new_good = (good * (cnt - 1) + bad * cnt) % MOD
-    new_bad = (good * (n - cnt) + bad * (n - cnt - 1)) % MOD
+    n = len(start)
 
-    good = new_good
-    bad = new_bad
+    cnt = kmp_count((start + start)[:-1], end)
 
-print(good % MOD)
+    if cnt == 0:
+        print(0)
+        return
+
+    good = 1 if start == end else 0
+    bad = 1 - good
+
+    for _ in range(k):
+        new_good = (good * (cnt - 1) + bad * cnt) % MOD
+        new_bad = (good * (n - cnt) + bad * (n - cnt - 1)) % MOD
+
+        good = new_good
+        bad = new_bad
+
+    print(good)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The first section counts how many rotations of `start` equal `end`. This is the only place where actual string comparisons matter.
+The first part computes `cnt`, the number of rotations of `start` equal to `end`. Using KMP keeps this step linear in the string length.
 
-The DP does not track exact rotations. It only tracks whether the current rotation belongs to the target set. This compression works because every state has identical outgoing structure.
+The expression `(start + start)[:-1]` is important. Without removing the final character, the original rotation would appear twice, causing one extra match.
 
-The initialization is subtle. If `start == end`, then we begin inside the good category. Otherwise we begin inside the bad category. This handles the `k = 0` case naturally.
+The DP stores only two values. `good` counts ways to end at a target rotation, while `bad` counts ways to end elsewhere. The transition coefficients come directly from counting how many split operations lead into each category.
 
-The recurrence carefully excludes self-loops. From a good state we can move to only `cnt - 1` other good states, not `cnt`. Forgetting this is the most common bug.
-
-All arithmetic uses modulo `10^9 + 7` because the number of sequences grows exponentially.
+A subtle point is the term `cnt - 1` in the good-to-good transition. One of the good rotations is the current rotation itself, but a split operation must be non-empty on both sides, so staying at the same rotation is not allowed as an operation. Forgetting this subtraction is the most common mistake in this problem.
 
 ## Worked Examples
 
@@ -285,18 +277,16 @@ ab
 2
 ```
 
-There are two rotations:
+Here `n = 2`.
+
+The rotations are:
 
 ```
-0 -> ab
-1 -> ba
+ab
+ba
 ```
 
-Only one rotation matches `end`, so:
-
-```
-cnt = 1
-```
+Only one rotation equals `end`, so `cnt = 1`.
 
 Initial state:
 
@@ -311,13 +301,13 @@ bad = 0
 | 1 | 0 | 1 |
 | 2 | 1 | 0 |
 
-Final answer:
+Answer:
 
 ```
 1
 ```
 
-This trace confirms that self-transitions are forbidden. After one move we are forced into `"ba"`.
+This trace shows that the only possible split alternates between the two rotations.
 
 ### Example 2
 
@@ -329,15 +319,9 @@ ababab
 1
 ```
 
-Rotations equal to `"ababab"`:
+Rotations equal to `"ababab"` occur at positions `0`, `2`, and `4`.
 
-```
-shift 0
-shift 2
-shift 4
-```
-
-So:
+Thus:
 
 ```
 cnt = 3
@@ -346,14 +330,14 @@ n = 6
 
 Initial state:
 
-```
-good = 1
-bad = 0
-```
-
 | Step | good | bad |
 | --- | --- | --- |
 | 0 | 1 | 0 |
+
+After one operation:
+
+| Step | good | bad |
+| --- | --- | --- |
 | 1 | 2 | 3 |
 
 Answer:
@@ -362,101 +346,94 @@ Answer:
 2
 ```
 
-The two valid operations are rotating by 2 and by 4.
-
-This example demonstrates why counting matching strings instead of matching rotation states is wrong. There are three distinct good rotations even though the visible text is identical.
+The two valid operations are exactly the two non-trivial rotations that still produce the same visible string.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^2 + k) | O(n^2) for checking all rotations, O(k) for DP |
-| Space | O(1) | Only a few integer variables are stored |
+| Time | O(n + k) | KMP runs in O(n), DP performs k iterations |
+| Space | O(n) | KMP prefix table stores O(n) values |
 
-With `n ≤ 1000`, the rotation check performs at most one million character operations, which is easily fast enough. The DP performs `100000` constant-time updates, also well within the limit.
+With `n ≤ 1000` and `k ≤ 100000`, roughly one hundred thousand DP updates are trivial. The algorithm comfortably fits within both the time and memory limits.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys, io
+import sys
+import io
 
-MOD = 10**9 + 7
+MOD = 1000000007
 
-def solve():
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+
     input = sys.stdin.readline
+
+    def kmp_count(text, pattern):
+        m = len(pattern)
+
+        pi = [0] * m
+        j = 0
+        for i in range(1, m):
+            while j > 0 and pattern[i] != pattern[j]:
+                j = pi[j - 1]
+            if pattern[i] == pattern[j]:
+                j += 1
+            pi[i] = j
+
+        cnt = 0
+        j = 0
+        for ch in text:
+            while j > 0 and ch != pattern[j]:
+                j = pi[j - 1]
+            if ch == pattern[j]:
+                j += 1
+            if j == m:
+                cnt += 1
+                j = pi[j - 1]
+
+        return cnt
 
     start = input().strip()
     end = input().strip()
     k = int(input())
 
     n = len(start)
+    cnt = kmp_count((start + start)[:-1], end)
 
-    cnt = 0
+    if cnt == 0:
+        return "0"
 
-    for shift in range(n):
-        rotated = start[shift:] + start[:shift]
-        if rotated == end:
-            cnt += 1
-
-    if start == end:
-        good = 1
-        bad = 0
-    else:
-        good = 0
-        bad = 1
+    good = 1 if start == end else 0
+    bad = 1 - good
 
     for _ in range(k):
-        new_good = (good * (cnt - 1) + bad * cnt) % MOD
-        new_bad = (good * (n - cnt) + bad * (n - cnt - 1)) % MOD
+        ng = (good * (cnt - 1) + bad * cnt) % MOD
+        nb = (good * (n - cnt) + bad * (n - cnt - 1)) % MOD
+        good, bad = ng, nb
 
-        good = new_good
-        bad = new_bad
-
-    print(good)
-
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out.strip()
+    return str(good)
 
 # provided sample
 assert run("ab\nab\n2\n") == "1", "sample 1"
 
-# periodic string, multiple matching rotations
-assert run("ababab\nababab\n1\n") == "2", "periodic rotations"
-
-# k = 0, already equal
-assert run("abc\nabc\n0\n") == "1", "zero operations valid"
-
-# k = 0, not equal
-assert run("abc\nbca\n0\n") == "0", "cannot transform without operations"
-
-# minimum length, impossible parity
-assert run("ab\nab\n1\n") == "0", "must move away after one operation"
-
-# unique rotation target
-assert run("abcd\nbcda\n1\n") == "1", "single valid split"
+# custom cases
+assert run("ab\nab\n0\n") == "1", "zero operations"
+assert run("ab\nba\n1\n") == "1", "single valid rotation"
+assert run("abcd\nabcd\n1\n") == "0", "cannot stay in place"
+assert run("aaaa\naaaa\n1\n") == "3", "all rotations equal"
+assert run("abcd\nacbd\n5\n") == "0", "target not a rotation"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `ababab / ababab / 1` | `2` | Multiple good rotations from periodicity |
-| `abc / abc / 0` | `1` | Correct zero-step initialization |
-| `abc / bca / 0` | `0` | No transformation without operations |
-| `ab / ab / 1` | `0` | No self-loops allowed |
-| `abcd / bcda / 1` | `1` | Single exact rotation |
+| `ab ab 0` | `1` | Base case with no operations |
+| `ab ba 1` | `1` | Single non-trivial rotation |
+| `abcd abcd 1` | `0` | Staying in the same rotation is forbidden |
+| `aaaa aaaa 1` | `3` | Multiple rotations producing identical strings |
+| `abcd acbd 5` | `0` | Target is not a rotation of start |
 
 ## Edge Cases
 
@@ -465,88 +442,51 @@ Consider:
 ```
 ab
 ab
+0
+```
+
+We have `cnt = 1`. The initial state is `good = 1`, `bad = 0`. Since `k = 0`, the DP performs no transitions. The answer remains `1`. This correctly counts the empty operation sequence.
+
+Consider:
+
+```
+aaaa
+aaaa
 1
 ```
 
-The only legal move is:
-
-```
-ab -> ba
-```
-
-The algorithm computes:
-
-```
-cnt = 1
-good = 1
-bad = 0
-```
+All four rotations are equal to `"aaaa"`, so `cnt = 4`. Initially `good = 1`.
 
 After one step:
 
 ```
-new_good = 1 * (1 - 1) + 0 * 1 = 0
+good = 1 * (4 - 1) = 3
 ```
 
-So the answer becomes `0`, correctly forbidding staying in place.
+There are exactly three legal split positions, and all of them produce the target string. The algorithm counts operations, not distinct resulting strings.
 
-Now examine a periodic string:
+Consider:
 
 ```
-abab
-abab
+abcd
+abcd
 1
 ```
 
-Matching rotations are:
+Here `cnt = 1`. The recurrence gives:
 
 ```
-shift 0
-shift 2
+good = 1 * (1 - 1) = 0
 ```
 
-So:
+The only good rotation is the current one, but a split operation cannot leave the rotation unchanged. The algorithm correctly excludes this impossible transition.
+
+Consider:
 
 ```
-cnt = 2
+abcd
+acbd
+3
 ```
 
-Initialization:
-
-```
-good = 1
-bad = 0
-```
-
-Transition:
-
-```
-new_good = 1 * (2 - 1) = 1
-```
-
-Exactly one operation keeps us in a good state:
-
-```
-abab -> abab
-```
-
-using rotation by 2.
-
-Finally, consider:
-
-```
-abc
-cab
-0
-```
-
-We begin in a bad state because the original string does not equal `end`.
-
-```
-good = 0
-bad = 1
-```
-
-Since `k = 0`, the loop never runs and the answer remains `0`.
-
-This confirms that the initialization alone correctly handles zero operations.
+`acbd` is not a rotation of `abcd`, so KMP finds `cnt = 0`. The algorithm immediately returns `0`, reflecting the fact that split operations preserve cyclic order and can never create this arrangement.

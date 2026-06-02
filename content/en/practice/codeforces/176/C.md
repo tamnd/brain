@@ -1,7 +1,7 @@
 ---
 title: "CF 176C - Playing with Superglue"
-description: "We have a rectangular grid and two chips placed on different cells. The first player moves first. On every turn, the first player chooses one chip that is still movable and shifts it by one square in one of the four cardinal directions."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have two chips on an $n times m$ grid. On each turn, the first player moves exactly one non-glued chip by one square in the four-neighbor grid. After that, the second player permanently glues one currently empty square. A chip is allowed to move onto a glued square."
+date: "2026-06-02T17:16:31+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "constructive-algorithms"]
 categories: ["algorithms"]
 codeforces_contest: 176
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Croc Champ 2012 - Round 2"
 rating: 2000
 weight: 176
-solve_time_s: 88
-verified: true
+solve_time_s: 215
+verified: false
 draft: false
 ---
 
@@ -18,81 +18,65 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** combinatorics, constructive algorithms  
-**Solve time:** 1m 28s  
-**Verified:** yes  
+**Solve time:** 3m 35s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a rectangular grid and two chips placed on different cells. The first player moves first. On every turn, the first player chooses one chip that is still movable and shifts it by one square in one of the four cardinal directions.
+We have two chips on an $n \times m$ grid. On each turn, the first player moves exactly one non-glued chip by one square in the four-neighbor grid. After that, the second player permanently glues one currently empty square.
 
-After that, the second player chooses any currently empty and glue-free square and permanently covers it with glue. If a chip ever moves onto a glued square, that chip becomes stuck forever.
+A chip is allowed to move onto a glued square. The moment it does so, that chip becomes permanently stuck. The first player wins immediately when the two chips occupy the same square. The second player wins if both chips become unable to move before they ever meet.
 
-The first player wins immediately when both chips occupy the same cell. The second player wins if both chips become immobile before they meet.
+The board dimensions can be as large as $100 \times 100$, but that turns out to be misleading. The winning condition depends only on the relative displacement of the two chips, not on the total number of cells. The state space of the full game is enormous because glue placement accumulates over time, so any attempt to model the entire game tree is hopeless.
 
-The board is at most `100 × 100`, so there are at most `10^4` cells. A naive game-state search would need to represent positions of both chips together with the set of glued cells. The number of glue configurations alone is exponential in the number of cells, so direct minimax or DP over states is completely infeasible.
+A naive implementation might try to represent all glued cells and run a minimax search. Even on a $10 \times 10$ board there are already $100$ possible glue locations on the first move, then $99$ on the next move, and so on. The branching factor explodes immediately.
 
-The key difficulty is that the second player does not need to block every possible path forever. He only needs to stop the chips from ever reaching the same square. Since glue accumulates permanently, the game slowly removes mobility from the board.
+The tricky part is that the board size itself is mostly irrelevant. Two chips very far apart give the second player enough time to build barriers and force both chips to become trapped. Two chips close together can usually meet before the glue becomes decisive.
 
-Several edge cases are easy to misunderstand.
-
-Consider a single row:
+One easy mistake is to look only at Manhattan distance. For example:
 
 ```
-1 6 1 2 1 6
+10 10 1 1 5 5
 ```
 
-The correct answer is `First`. The chips simply move toward each other. The second player can glue only one square per turn, while the first player controls which chip moves. On a line, one chip can always chase the other.
-
-Now consider a tiny board:
-
-```
-1 2 1 1 1 2
-```
-
-The correct answer is also `First`. The left chip moves directly onto the right chip in one move before any glue is placed. A careless solution that only studies parity or distances could incorrectly overcomplicate this trivial immediate win.
+Here the displacement is $(4,4)$. The Manhattan distance is only $8$, but the correct answer is `Second`. A strategy based only on distance would incorrectly predict a win for the first player.
 
 Another subtle case is:
 
 ```
-2 2 1 1 2 2
+10 10 1 1 4 5
 ```
 
-The correct answer is `Second`. The chips start on opposite corners of a 2×2 board. Any move by the first player gives the second player enough control to isolate the chips permanently. Small boards behave differently because there is not enough room to maneuver around glued cells.
+The displacement is $(3,4)$. This is also a losing configuration for the first player even though many nearby positions are winning.
 
-One more important example:
-
-```
-2 3 1 1 2 3
-```
-
-The correct answer is `First`. Even though the board is small, it contains a cycle large enough for the first player to keep flexibility. A naive “small board means second wins” heuristic fails here.
-
-The entire problem reduces to understanding which board shapes give the first player enough freedom to force a meeting despite permanent obstacles.
+A final trap is assuming that every position inside a $5 \times 5$ neighborhood is winning. The pairs $(3,4)$ and $(4,4)$ are special exceptions.
 
 ## Approaches
 
-The brute-force idea is to model the game exactly as a two-player minimax search. A state would contain the positions of both chips, the set of glued cells, and whose turn it is. From each state we try all legal moves recursively.
+The brute-force idea is straightforward. Represent the entire board, track which cells are glued, generate every legal move for the first player and every glue placement for the second player, then run minimax.
 
-This approach is theoretically correct because the game has finite length. Every second-player move permanently adds one glued square, so eventually all cells become unusable.
+This is correct because it explores the complete game tree. The problem is that the number of reachable positions grows astronomically. After only a handful of turns there are already millions of distinct glue configurations. No search-based solution can survive within the limits.
 
-The problem is the number of states. A board can contain up to `10^4` cells. Even if we ignored chip positions, the number of possible glue subsets is `2^(10000)`, which is astronomically large. No amount of pruning can rescue a direct search.
+The key observation is that optimal play depends only on the relative position of the two chips. After analyzing the game, one finds a remarkably small set of losing configurations.
 
-The breakthrough comes from analyzing the geometry of the board instead of the exact move sequence.
+Let
 
-The second player can only glue one square per turn. If the board has enough cycles and alternate routes, the first player can always avoid traps and eventually merge the chips. On the other hand, if the board is too narrow, the second player can cut off movement and force both chips to become stuck separately.
+$$dx = |x_1 - x_2|,\qquad dy = |y_1 - y_2|$$
 
-After careful case analysis, the game outcome depends only on the board dimensions.
+and reorder them so that $dx \le dy$.
 
-If either dimension equals `1`, the board is just a line. The first player always wins because the chips can only move toward or away from each other, and one glue placement per turn cannot stop convergence.
+The complete solution is:
 
-If both dimensions are at least `2`, the only losing board for the first player is `2 × 2`. Every larger board contains enough space to maintain mobility and force a meeting.
+If $dy > 4$, the second player wins.
 
-So the final rule is remarkably simple:
+If $(dx,dy) = (4,4)$, the second player wins.
 
-If the board is exactly `2 × 2`, the second player wins.
+If $(dx,dy) = (3,4)$, the second player wins.
 
-Otherwise, the first player wins.
+Every other position is winning for the first player. This characterization was the intended solution of the problem.
+
+Once this pattern is known, the game reduces to a few integer comparisons.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -101,26 +85,29 @@ Otherwise, the first player wins.
 
 ## Algorithm Walkthrough
 
-1. Read the board dimensions and chip coordinates.
-2. Check whether the board size is exactly `2 × 2`.
-3. If the board is `2 × 2`, print `"Second"`.
+1. Read the board dimensions and the coordinates of the two chips.
+2. Compute the absolute coordinate differences:
 
-On a `2 × 2` board, the second player can always use glue placements to prevent the chips from ever occupying the same square.
-4. Otherwise, print `"First"`.
+$$dx = |x_1 - x_2|$$
 
-Every other board gives the first player enough maneuvering room to eventually force the chips together.
+$$dy = |y_1 - y_2|$$
+
+Only the relative displacement matters.
+3. Reorder the values so that $dx \le dy$.
+
+This lets us treat symmetric positions identically.
+4. If $dy > 4$, output `"Second"`.
+
+Positions separated by more than four cells in one direction are losing for the first player.
+5. If $(dx,dy) = (4,4)$, output `"Second"`.
+6. If $(dx,dy) = (3,4)$, output `"Second"`.
+7. In every remaining case, output `"First"`.
 
 ### Why it works
 
-The critical property is board connectivity under incremental blocking.
+The game has a complete classification in terms of the relative displacement between the chips. After normalizing so that $dx \le dy$, every position outside the $5 \times 5$ neighborhood is losing for the first player because the second player can always create enough glued cells before the chips can meet. Inside that neighborhood, exhaustive game analysis leaves only two losing configurations, $(3,4)$ and $(4,4)$. Every other normalized displacement admits a forcing strategy for the first player.
 
-A `2 × 2` board is so constrained that every move heavily restricts future mobility. The second player can always glue strategically important cells and separate the chips forever.
-
-Every larger board contains enough alternate paths that a single glue placement per turn cannot permanently deny all approaches. The first player controls which chip moves and can continually redirect movement around newly glued cells until both chips meet.
-
-For one-dimensional boards, there is only one route between the chips, but the second player still cannot react fast enough because the first player advances immediately before glue is placed.
-
-These observations completely characterize the game.
+Because the algorithm implements exactly this characterization, its answer is correct for every legal input.
 
 ## Python Solution
 
@@ -128,21 +115,35 @@ These observations completely characterize the game.
 import sys
 input = sys.stdin.readline
 
-n, m, x1, y1, x2, y2 = map(int, input().split())
+def solve():
+    n, m, x1, y1, x2, y2 = map(int, input().split())
 
-if n == 2 and m == 2:
-    print("Second")
-else:
-    print("First")
+    dx = abs(x1 - x2)
+    dy = abs(y1 - y2)
+
+    if dx > dy:
+        dx, dy = dy, dx
+
+    if dy > 4:
+        print("Second")
+    elif (dx, dy) == (4, 4):
+        print("Second")
+    elif (dx, dy) == (3, 4):
+        print("Second")
+    else:
+        print("First")
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The implementation is intentionally tiny because the entire challenge lies in proving the characterization of winning boards.
+The first section computes the relative displacement between the chips. The actual coordinates and even the board dimensions cease to matter after this step.
 
-We read all six integers because the input format includes chip coordinates, but the final result depends only on the board dimensions. Once the board is not `2 × 2`, the first player always has a winning strategy regardless of starting positions.
+The swap guarantees that equivalent positions such as $(1,4)$ and $(4,1)$ are represented by the same pair. Forgetting this normalization would misclassify symmetric positions.
 
-The comparison must check both dimensions simultaneously. A common mistake is to treat every board with a dimension equal to `2` as losing. Boards like `2 × 3` are winning for the first player.
+The remaining logic directly implements the winning-position characterization. The order of checks is not important, but testing `dy > 4` first makes the structure slightly clearer.
 
-Another easy mistake is overthinking parity or Manhattan distance between chips. The game outcome is determined entirely by board structure, not by initial separation.
+No overflow issues exist because every value is at most $100$.
 
 ## Worked Examples
 
@@ -154,54 +155,44 @@ Input:
 1 6 1 2 1 6
 ```
 
-| Step | n | m | Condition `n == 2 and m == 2` | Result |
-| --- | --- | --- | --- | --- |
-| Initial | 1 | 6 | False | First |
+| Variable | Value |
+| --- | --- |
+| dx | 0 |
+| dy | 4 |
+| Normalized pair | (0, 4) |
+| Losing pattern? | No |
+| Answer | First |
 
-The board is a single row, not a `2 × 2` square. The algorithm immediately returns `First`.
-
-This example demonstrates that even highly constrained one-dimensional boards are winning for the first player.
+The position lies inside the winning region and is not one of the two exceptional losing states.
 
 ### Example 2
 
 Input:
 
 ```
-2 2 1 1 2 2
+10 10 1 1 10 10
 ```
 
-| Step | n | m | Condition `n == 2 and m == 2` | Result |
-| --- | --- | --- | --- | --- |
-| Initial | 2 | 2 | True | Second |
+| Variable | Value |
+| --- | --- |
+| dx | 9 |
+| dy | 9 |
+| Normalized pair | (9, 9) |
+| dy > 4 ? | Yes |
+| Answer | Second |
 
-The board is exactly `2 × 2`, so the algorithm returns `Second`.
+The chips start too far apart. The second player has enough time to control the board before a meeting becomes possible.
 
-This example exercises the only losing configuration.
-
-### Example 3
-
-Input:
-
-```
-2 3 1 1 2 3
-```
-
-| Step | n | m | Condition `n == 2 and m == 2` | Result |
-| --- | --- | --- | --- | --- |
-| Initial | 2 | 3 | False | First |
-
-Although one dimension equals `2`, the board still contains enough flexibility for the first player to force a meeting.
-
-This example confirms that the losing condition is extremely specific.
+This example demonstrates the most important invariant of the solution: once the larger coordinate difference exceeds four, the exact geometry no longer matters.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only one comparison is performed |
-| Space | O(1) | No auxiliary storage is used |
+| Time | O(1) | Only a few arithmetic operations and comparisons |
+| Space | O(1) | Constant extra memory |
 
-The constraints allow up to `10^4` cells, but the final solution ignores the actual board contents entirely. Constant-time processing is far below the limits.
+The board can contain up to $10{,}000$ cells, but the algorithm never examines individual cells. It performs a fixed amount of work regardless of board size, which easily fits within the limits.
 
 ## Test Cases
 
@@ -211,11 +202,15 @@ import sys
 import io
 
 def solve():
-    input = sys.stdin.readline
-
     n, m, x1, y1, x2, y2 = map(int, input().split())
 
-    if n == 2 and m == 2:
+    dx = abs(x1 - x2)
+    dy = abs(y1 - y2)
+
+    if dx > dy:
+        dx, dy = dy, dx
+
+    if dy > 4 or (dx, dy) == (4, 4) or (dx, dy) == (3, 4):
         print("Second")
     else:
         print("First")
@@ -227,68 +222,59 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
+    global input
+    input = sys.stdin.readline
+
     solve()
 
-    out = sys.stdout.getvalue()
+    out = sys.stdout.getvalue().strip()
 
     sys.stdin = backup_stdin
     sys.stdout = backup_stdout
 
     return out
 
-# provided sample
-assert run("1 6 1 2 1 6\n") == "First\n", "sample 1"
+# provided samples
+assert run("1 6 1 2 1 6\n") == "First", "sample 1"
+assert run("6 5 4 3 2 1\n") == "First", "sample 2"
+assert run("10 10 1 1 10 10\n") == "Second", "sample 3"
 
-# minimum board
-assert run("1 2 1 1 1 2\n") == "First\n", "minimum board"
-
-# only losing case
-assert run("2 2 1 1 2 2\n") == "Second\n", "2x2 board"
-
-# dimension 2 but still winning
-assert run("2 3 1 1 2 3\n") == "First\n", "2x3 board"
-
-# large board
-assert run("100 100 1 1 100 100\n") == "First\n", "maximum size"
-
-print("All tests passed.")
+# custom cases
+assert run("1 2 1 1 1 2\n") == "First", "minimum board"
+assert run("10 10 1 1 5 5\n") == "Second", "(4,4) losing state"
+assert run("10 10 1 1 4 5\n") == "Second", "(3,4) losing state"
+assert run("100 100 1 1 1 5\n") == "First", "boundary dy=4"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 2 1 1 1 2` | `First` | Smallest possible valid board |
-| `2 2 1 1 2 2` | `Second` | Unique losing configuration |
-| `2 3 1 1 2 3` | `First` | Boards with one dimension equal to 2 are not always losing |
-| `100 100 1 1 100 100` | `First` | Maximum-size board |
+| `1 2 1 1 1 2` | `First` | Smallest legal board |
+| `10 10 1 1 5 5` | `Second` | Special losing state (4,4) |
+| `10 10 1 1 4 5` | `Second` | Special losing state (3,4) |
+| `100 100 1 1 1 5` | `First` | Boundary case where dy equals 4 |
 
 ## Edge Cases
 
-Consider the smallest valid board:
+Consider:
 
 ```
-1 2 1 1 1 2
+10 10 1 1 5 5
 ```
 
-The algorithm checks whether the board is `2 × 2`. It is not, so the answer is `First`.
+We obtain $dx = 4$, $dy = 4$. The algorithm reaches the explicit $(4,4)$ check and outputs `Second`. A solution based only on the rule "all positions with differences at most four are winning" would fail here.
 
-This matches the real game because the left chip can move directly onto the right chip before glue appears.
-
-Now consider the unique losing case:
+Now consider:
 
 ```
-2 2 1 1 2 2
+10 10 1 1 4 5
 ```
 
-The condition `n == 2 and m == 2` becomes true, so the algorithm outputs `Second`.
+The normalized displacement is $(3,4)$. This is the other exceptional losing state. The dedicated check correctly returns `Second`.
 
-This is correct because the board has too little redundancy. Every move exposes critical cells that the second player can permanently block.
-
-Finally, consider a deceptive near-miss:
+Finally:
 
 ```
-2 3 1 1 2 3
+100 100 1 1 1 6
 ```
 
-A careless approach might classify this as losing because one dimension equals `2`. The algorithm correctly rejects that heuristic. Since the board is not exactly `2 × 2`, it outputs `First`.
-
-The additional column creates enough alternate movement options that the second player cannot completely control the board.
+The normalized displacement is $(0,5)$. Since $dy > 4$, the algorithm immediately outputs `Second`. This confirms that the large-distance rule takes precedence over all smaller local patterns. The answer is determined without considering the actual board dimensions.
