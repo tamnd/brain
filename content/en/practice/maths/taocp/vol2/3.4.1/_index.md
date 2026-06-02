@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.4.1: Numerical Distributions"
-description: "Section 3.4.1 exercises: 3/33 solved."
+description: "Section 3.4.1 exercises: 11/33 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.4.1"
@@ -14,23 +14,23 @@ draft: false
 
 # Section 3.4.1. Numerical Distributions
 
-Exercises from [TAOCP Volume 2](../) Section 3.4.1: 3/33 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.4.1: 11/33 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*10*] | simple | verified | 1m09s |
 | [2](02.md) |  [*M16*] | math-medium | verified | 1m26s |
 | [3](03.md) | &#9654; [*14*] | simple | verified | 1m34s |
-| 4 |  [*M20*] | math-medium | - | - |
-| 5 | &#9654; [*21*] | medium | - | - |
-| 6 |  [*HM21*] | hm-medium | - | - |
-| 7 | &#9654; [**] |  | - | - |
-| 8 |  [*M15*] | math-simple | - | - |
-| 9 |  [*HM10*] | hm-simple | - | - |
-| 10 | &#9654; [*HM24*] | hm-medium | - | - |
+| [4](04.md) |  [*M20*] | math-medium | solved | 3m28s |
+| [5](05.md) | &#9654; [*21*] | medium | verified | 2m54s |
+| [6](06.md) |  [*HM21*] | hm-medium | verified | 1m41s |
+| [7](07.md) | &#9654; [**] |  | solved | 5m13s |
+| [8](08.md) |  [*M15*] | math-simple | verified | 1m20s |
+| [9](09.md) |  [*HM10*] | hm-simple | solved | 2m06s |
+| [10](10.md) | &#9654; [*HM24*] | hm-medium | solved | 5m13s |
 | 11 | &#9654; [*HM29*] | hm-hard | - | - |
 | 12 |  [*HM23*] | hm-medium | - | - |
-| 13 |  [*HM25*] | hm-medium | - | - |
+| [13](13.md) |  [*HM25*] | hm-medium | verified | 1m41s |
 | 14 |  [*M21*] | math-medium | - | - |
 | 15 |  [*HM21*] | hm-medium | - | - |
 | 16 | &#9654; [*HM25*] | hm-medium | - | - |
