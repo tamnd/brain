@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.1: Positional Number Systems"
-description: "Section 4.1 exercises: 7/34 solved."
+description: "Section 4.1 exercises: 13/34 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.1. Positional Number Systems
 
-Exercises from [TAOCP Volume 2](../) Section 4.1: 7/34 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.1: 13/34 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,12 +26,12 @@ Exercises from [TAOCP Volume 2](../) Section 4.1: 7/34 solved.
 | [6](06.md) |  [**] |  | verified | 1m07s |
 | [7](07.md) |  [**] |  | verified | 2m28s |
 | [8](08.md) |  [**] |  | verified | 1m09s |
-| 9 | &#9654; [**] |  | - | - |
-| 10 |  [**] |  | - | - |
-| 11 |  [**] |  | - | - |
-| 12 |  [**] |  | - | - |
-| 13 | &#9654; [**] |  | - | - |
-| 14 |  [**] |  | - | - |
+| [9](09.md) | &#9654; [**] |  | verified | 2m21s |
+| [10](10.md) |  [**] |  | verified | 3m48s |
+| [11](11.md) |  [**] |  | verified | 1m27s |
+| [12](12.md) |  [**] |  | verified | 2m35s |
+| [13](13.md) | &#9654; [**] |  | solved | 3m58s |
+| [14](14.md) |  [**] |  | solved | 4m02s |
 | 15 |  [**] |  | - | - |
 | 16 |  [**] |  | - | - |
 | 17 |  [**] |  | - | - |
