@@ -1,0 +1,22 @@
+[main]
+project = "brain"
+domain = "brain.tamnd.com"
+base_url = "https://brain.tamnd.com"
+output = "public-main"
+file_budget = 18000
+
+[[shards]]
+name = "leetcode"
+project = "brain-leetcode"
+domain = "leetcode.tamnd.com"
+source_prefix = "/practice/leetcode/"
+output = "public-shards/leetcode"
+file_budget = 18000
+
+[[shards]]
+name = "codeforces"
+project = "brain-codeforces"
+domain = "codeforces.tamnd.com"
+source_prefix = "/practice/codeforces/"
+output = "public-shards/codeforces"
+file_budget = 18000
