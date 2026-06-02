@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 1834 problems, 1298 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 1835 problems, 1298 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 1834 problems, 1298 verified.**
+**448 contests, 1835 problems, 1298 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -181,7 +181,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [165](165/) | [Codeforces Round 112 (Div. 2)](https://codeforces.com/contest/165) | Div. 2 | 1000-2200 | 4/5 | 8m 54s |
 | [166](166/) | [Codeforces Round 113 (Div. 2)](https://codeforces.com/contest/166) | Div. 2 | 1100-2500 | 5/5 | 11m 49s |
 | [167](167/) | [Codeforces Round 114 (Div. 1)](https://codeforces.com/contest/167) | Div. 1 | 1600-3000 | 3/5 | 10m 57s |
-| [168](168/) | [Codeforces Round 114 (Div. 2)](https://codeforces.com/contest/168) | Div. 2 | 900-900 | 1/1 | 2m 1s |
+| [168](168/) | [Codeforces Round 114 (Div. 2)](https://codeforces.com/contest/168) | Div. 2 | 900-1700 | 1/2 | 2m 28s |
 | [169](169/) | [VK Cup 2012 Round 2 (Unofficial Div. 2 Edition)](https://codeforces.com/contest/169) | Div. 2 | 800-1100 | 2/2 | 2m 57s |
 | [171](171/) | [April Fools Day Contest](https://codeforces.com/contest/171) | April Fools | 1200-2000 | 8/8 | 13m 15s |
 | [172](172/) | [Croc Champ 2012 - Qualification Round](https://codeforces.com/contest/172) | Special | 800-2200 | 4/5 | 11m 42s |
