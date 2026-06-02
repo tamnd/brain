@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.3.2: Empirical Tests"
-description: "Section 3.3.2 exercises: 3/35 solved."
+description: "Section 3.3.2 exercises: 4/35 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.3.2"
@@ -14,14 +14,14 @@ draft: false
 
 # Section 3.3.2. Empirical Tests
 
-Exercises from [TAOCP Volume 2](../) Section 3.3.2: 3/35 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.3.2: 4/35 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*10*] | simple | verified | 4m05s |
 | [2](02.md) |  [*10*] | simple | verified | 1m26s |
 | [3](03.md) | &#9654; [*M20*] | math-medium | verified | 1m55s |
-| 4 |  [*M12*] | math-simple | - | - |
+| [4](04.md) |  [*M12*] | math-simple | verified | 4m39s |
 | 5 |  [*M23*] | math-medium | - | - |
 | 6 |  [*40*] | project | - | - |
 | 7 |  [*08*] | simple | - | - |
