@@ -1,7 +1,7 @@
 ---
 title: "CF 171A - Mysterious numbers - 1"
-description: "We are given two non-negative integers. The task is to construct a new number by taking the second number, reversing its decimal representation, and adding the result to the first number."
-date: "2026-05-29T00:00:00+07:00"
+description: "This problem comes from an April Fools contest where the statement intentionally hides the real task. We are given two non-negative integers. The required operation is: 1. Reverse the decimal representation of the second number. 2. Add the result to the first number. 3."
+date: "2026-06-02T08:58:00+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "constructive-algorithms"]
 categories: ["algorithms"]
 codeforces_contest: 171
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "April Fools Day Contest"
 rating: 1200
 weight: 171
-solve_time_s: 188
+solve_time_s: 103
 verified: true
 draft: false
 ---
@@ -18,97 +18,101 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** *special, constructive algorithms  
-**Solve time:** 3m 8s  
+**Solve time:** 1m 43s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given two non-negative integers. The task is to construct a new number by taking the second number, reversing its decimal representation, and adding the result to the first number.
+This problem comes from an April Fools contest where the statement intentionally hides the real task.
 
-For example, if the input is `3 14`, reversing `14` gives `41`, and `3 + 41 = 44`, which matches the sample output.
+We are given two non-negative integers. The required operation is:
 
-The constraints are very small from an algorithmic perspective. Each number is at most `10^9`, so even their decimal representation has at most 10 digits. Any solution that processes digits directly will run instantly. There is no need for advanced optimization, but careful handling of leading zeros matters because reversing a decimal string can change the value significantly.
+1. Reverse the decimal representation of the second number.
+2. Add the result to the first number.
+3. Output the sum.
 
-The main edge case comes from numbers ending with zeroes. Reversing a number is not the same as reversing its string and keeping leading zeroes.
+For example, if the input is `3 14`, the reverse of `14` is `41`, and the answer is `3 + 41 = 44`. This matches the sample output.
 
-Consider this input:
+The numbers are at most $10^9$, so each contains at most ten digits. Any operation on the digits of a number takes constant time in practice. There is no need for sophisticated algorithms, data structures, or optimization. A simple digit reversal followed by one addition easily fits within the limits.
 
-```
-10 100
-```
+The main source of mistakes is handling leading zeros after reversal.
 
-Reversing `100` should produce `1`, not `"001"` interpreted as a three-digit number. The correct answer is:
-
-```
-11
-```
-
-A careless implementation that treats the reversed value as a string without converting back to an integer could incorrectly keep the leading zeroes.
-
-Another subtle case is when the second number is already a palindrome.
+Consider the input:
 
 ```
-25 121
+100 200
 ```
 
-Reversing `121` still gives `121`, so the answer is:
+Reversing `"200"` gives `"002"`, which represents the integer `2`. The answer is:
 
 ```
-146
+100 + 2 = 102
 ```
 
-The algorithm should not assume the reversed value changes.
+A careless implementation that preserves leading zeros as digits could incorrectly treat the reversed value as `200`.
 
-The smallest possible input also deserves attention:
-
-```
-0 0
-```
-
-Reversing `0` still gives `0`, so the correct output is:
+Another edge case is when the second number is zero:
 
 ```
-0
+5 0
 ```
 
-Implementations that build the reversed number digit by digit must correctly handle zero instead of producing an empty result.
+The reverse of `0` is still `0`, so the answer is:
+
+```
+5
+```
+
+Some string-based implementations accidentally produce an empty string when stripping zeros.
+
+A third edge case is when the reversed number ends with zeros before reversal:
+
+```
+27 12
+```
+
+The reverse of `12` is `21`, giving:
+
+```
+27 + 21 = 48
+```
+
+This sample confirms that the operation is true digit reversal rather than sorting or rearranging digits.
 
 ## Approaches
 
-The brute-force interpretation is extremely straightforward. Convert the second number to a string, reverse the string, convert it back to an integer, then add it to the first number.
+A brute-force approach would examine every digit of the second number, build its reversed form, convert it back into an integer, and then add it to the first number.
 
-This already runs in constant time relative to the constraints because the input size is bounded by at most 10 digits. Even with millions of operations, this would still be trivial.
+Since the second number contains at most ten digits, this already runs in constant time. Even if we processed millions of test cases, the work per case would remain tiny.
 
-Another possible approach is to reverse the number mathematically. Repeatedly extract the last digit using modulo 10, append it to a new number, and divide the original number by 10. This avoids string manipulation entirely.
+The key observation is simply understanding the hidden operation. Once we recognize that the answer is:
 
-The brute-force string approach works because decimal reversal maps naturally onto reversing characters. The mathematical approach works because decimal digits can be reconstructed from right to left.
+$$a_1 + \text{reverse}(a_2)$$
 
-Since the constraints are tiny, both are fully acceptable. The string approach is shorter and less error-prone in Python, so it is the cleanest optimal solution here.
+the implementation becomes straightforward.
+
+There are two common ways to reverse a number. One is arithmetic, repeatedly taking the last digit and appending it to a new number. The other is converting the number to a string and reversing the characters. Because the input size is extremely small, either approach is accepted.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force with strings | O(d) | O(d) | Accepted |
-| Mathematical reversal | O(d) | O(1) | Accepted |
+| Brute Force digit reversal | O(d) | O(1) | Accepted |
+| Optimal | O(d) | O(1) | Accepted |
 
-Here, `d` is the number of digits in the second number, at most 10.
+Here $d$ is the number of digits of the second number, at most 10.
 
 ## Algorithm Walkthrough
 
-1. Read the two integers `a1` and `a2`.
-2. Convert `a2` into a string because reversing decimal digits is easiest in string form.
-3. Reverse the string using slicing with `[::-1]`.
+1. Read the integers `a1` and `a2`.
+2. Reverse the decimal digits of `a2`.
 
-This produces the digits in reverse order. For example, `"140"` becomes `"041"`.
-4. Convert the reversed string back into an integer.
-
-This step automatically removes leading zeroes. `"041"` becomes `41`.
-5. Add the reversed value to `a1`.
-6. Print the result.
+The easiest method is to repeatedly extract the last digit with `% 10` and append it to a new number.
+3. Add the reversed value to `a1`.
+4. Output the result.
 
 ### Why it works
 
-The decimal representation of a number is just an ordered sequence of digits. Reversing the number means reversing this sequence. Python string slicing produces exactly that reversed order. Converting the reversed string back into an integer restores its numeric value while discarding meaningless leading zeroes. Since the problem asks for `a1 + reverse(a2)`, the algorithm computes precisely the required quantity.
+The problem's hidden rule is exactly to add the first number to the reversed second number. The reversal procedure reconstructs the integer whose decimal representation is written in the opposite order. Every digit of `a2` appears once and in the correct reversed position, so the constructed value is precisely `reverse(a2)`. Adding this value to `a1` yields the required answer.
 
 ## Python Solution
 
@@ -118,25 +122,32 @@ input = sys.stdin.readline
 
 a1, a2 = map(int, input().split())
 
-reversed_a2 = int(str(a2)[::-1])
+rev = 0
+if a2 == 0:
+    rev = 0
+else:
+    while a2 > 0:
+        rev = rev * 10 + (a2 % 10)
+        a2 //= 10
 
-print(a1 + reversed_a2)
+print(a1 + rev)
 ```
 
-The solution starts by reading both integers from standard input.
+The first part reads the two integers.
 
-The expression `str(a2)[::-1]` creates the reversed digit sequence. Python slicing with a step of `-1` traverses the string from the end to the beginning.
-
-Converting the reversed string back with `int(...)` is an important detail. This removes any leading zeroes introduced during reversal. For example:
+The variable `rev` stores the reversed form of the second number. During each iteration, the current last digit is appended to the end of `rev`. For example, if `a2 = 123`, the sequence becomes:
 
 ```
-str(100)[::-1] -> "001"
-int("001") -> 1
+rev = 3
+rev = 32
+rev = 321
 ```
 
-Finally, the code adds the reversed value to `a1` and prints the result.
+The special case `a2 = 0` is handled explicitly. Without it, the loop would never execute and the answer would still be correct, but the intent becomes clearer.
 
-No overflow issues exist because Python integers support arbitrary precision, and the problem limits are already very small.
+Finally, the code adds `a1` and the reversed number and prints the result.
+
+Because Python integers have arbitrary precision, there is no overflow risk. Even in languages with fixed-width 64-bit integers, the largest possible answer is very small compared to the limit.
 
 ## Worked Examples
 
@@ -148,44 +159,51 @@ Input:
 3 14
 ```
 
-| Step | Value |
-| --- | --- |
-| `a1` | 3 |
-| `a2` | 14 |
-| `str(a2)` | `"14"` |
-| Reversed string | `"41"` |
-| Reversed integer | 41 |
-| Final answer | 44 |
+| Step | a2 | Extracted Digit | rev |
+| --- | --- | --- | --- |
+| Start | 14 | - | 0 |
+| 1 | 14 | 4 | 4 |
+| 2 | 1 | 1 | 41 |
 
-This example demonstrates the normal flow where reversing changes the digit order without introducing leading zeroes.
+Final computation:
+
+| a1 | reverse(a2) | Answer |
+| --- | --- | --- |
+| 3 | 41 | 44 |
+
+The trace shows how each extracted digit is appended to the new number, producing `41`.
 
 ### Example 2
 
 Input:
 
 ```
-10 100
+100 200
 ```
 
-| Step | Value |
-| --- | --- |
-| `a1` | 10 |
-| `a2` | 100 |
-| `str(a2)` | `"100"` |
-| Reversed string | `"001"` |
-| Reversed integer | 1 |
-| Final answer | 11 |
+| Step | a2 | Extracted Digit | rev |
+| --- | --- | --- | --- |
+| Start | 200 | - | 0 |
+| 1 | 200 | 0 | 0 |
+| 2 | 20 | 0 | 0 |
+| 3 | 2 | 2 | 2 |
 
-This trace demonstrates why converting back to an integer matters. The leading zeroes disappear automatically, giving the correct numeric reversal.
+Final computation:
+
+| a1 | reverse(a2) | Answer |
+| --- | --- | --- |
+| 100 | 2 | 102 |
+
+This example demonstrates that leading zeros disappear naturally when the reversed value is stored as an integer.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(d) | Reversing the digit string processes each digit once |
-| Space | O(d) | The reversed string stores up to `d` digits |
+| Time | O(d) | Process each digit of the second number once |
+| Space | O(1) | Only a few integer variables are used |
 
-Since `d ≤ 10`, the running time and memory usage are effectively constant. The solution easily fits within the limits.
+Since $d \le 10$, the running time is effectively constant. The solution is far below the time and memory limits.
 
 ## Test Cases
 
@@ -195,12 +213,17 @@ import sys
 import io
 
 def solve():
-    input = sys.stdin.readline
-
     a1, a2 = map(int, input().split())
-    reversed_a2 = int(str(a2)[::-1])
 
-    print(a1 + reversed_a2)
+    rev = 0
+    if a2 == 0:
+        rev = 0
+    else:
+        while a2 > 0:
+            rev = rev * 10 + (a2 % 10)
+            a2 //= 10
+
+    print(a1 + rev)
 
 def run(inp: str) -> str:
     backup_stdin = sys.stdin
@@ -209,66 +232,86 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
+    global input
+    input = sys.stdin.readline
+
     solve()
 
-    output = sys.stdout.getvalue()
+    out = sys.stdout.getvalue()
 
     sys.stdin = backup_stdin
     sys.stdout = backup_stdout
 
-    return output
+    return out
 
-# provided sample
+# provided samples
 assert run("3 14\n") == "44\n", "sample 1"
+assert run("27 12\n") == "48\n", "sample 2"
+assert run("100 200\n") == "102\n", "sample 3"
 
-# minimum values
+# custom cases
 assert run("0 0\n") == "0\n", "both zero"
-
-# trailing zeroes in second number
-assert run("10 100\n") == "11\n", "leading zeroes after reversal"
-
-# palindrome second number
-assert run("25 121\n") == "146\n", "palindrome reversal"
-
-# maximum boundary values
-assert run("1000000000 1000000000\n") == "1000000001\n", "large values"
+assert run("5 0\n") == "5\n", "reverse of zero"
+assert run("0 1200\n") == "21\n", "leading zeros after reversal"
+assert run("1000000000 1000000000\n") == "1000000001\n", "maximum values"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0 0` | `0` | Correct handling of zero |
-| `10 100` | `11` | Leading zero removal after reversal |
-| `25 121` | `146` | Palindrome remains unchanged |
-| `1000000000 1000000000` | `1000000001` | Large boundary values |
+| `0 0` | `0` | Minimum possible values |
+| `5 0` | `5` | Reversal of zero |
+| `0 1200` | `21` | Leading zeros disappear after reversal |
+| `1000000000 1000000000` | `1000000001` | Largest inputs |
 
 ## Edge Cases
 
 Consider the input:
 
 ```
-10 100
+100 200
 ```
 
-The algorithm converts `100` to `"100"`, reverses it into `"001"`, then converts it back into integer `1`. The final computation becomes `10 + 1 = 11`.
-
-This case confirms that leading zeroes introduced during reversal do not affect the numeric value.
-
-Now consider:
+The algorithm extracts digits `0`, `0`, and `2`. The reversed value becomes `2`, not `002` as a separate object. The final answer is:
 
 ```
-0 0
+100 + 2 = 102
 ```
 
-The reversed form of `"0"` is still `"0"`, and converting it back gives integer `0`. The algorithm outputs `0 + 0 = 0`.
+This matches the expected behavior and avoids mistakes related to leading zeros.
 
-This validates that the implementation handles zero correctly instead of producing an empty string or invalid integer conversion.
-
-Finally, consider:
+Consider:
 
 ```
-25 121
+5 0
 ```
 
-Reversing `"121"` gives `"121"` again. The algorithm computes `25 + 121 = 146`.
+The second number already equals zero. The reversed value is also zero. The algorithm prints:
 
-This confirms that the solution does not rely on the reversed number being different from the original.
+```
+5
+```
+
+No special formatting issues occur.
+
+Consider:
+
+```
+0 1200
+```
+
+The digit extraction sequence is:
+
+```
+0 -> 0
+0 -> 0
+2 -> 2
+1 -> 21
+```
+
+The reversed value is `21`, and the final answer is:
+
+```
+21
+```
+
+This confirms that trailing zeros in the original number become leading zeros after reversal and are discarded automatically when represented as an integer.
