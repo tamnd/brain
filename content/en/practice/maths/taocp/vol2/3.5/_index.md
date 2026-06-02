@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.5: What Is a Random Sequence?"
-description: "Section 3.5 exercises: 18/44 solved."
+description: "Section 3.5 exercises: 28/44 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.5. What Is a Random Sequence?
 
-Exercises from [TAOCP Volume 2](../) Section 3.5: 18/44 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.5: 28/44 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -35,17 +35,17 @@ Exercises from [TAOCP Volume 2](../) Section 3.5: 18/44 solved.
 | [15](15.md) | &#9654; [*HM30*] | hm-hard | verified | 1m33s |
 | [16](16.md) |  [*HM38*] | hm-project | verified | 1m11s |
 | [17](17.md) |  [*HM50*] | hm-research | verified | 1m13s |
-| 18 | &#9654; [*HM22*] | hm-medium | - | - |
+| [18](18.md) | &#9654; [*HM22*] | hm-medium | solved | 3m44s |
 | [19](19.md) |  [*HM35*] | hm-hard | verified | 1m27s |
-| 20 | &#9654; [**] |  | - | - |
-| 21 |  [**] |  | - | - |
-| 22 | &#9654; [**] |  | - | - |
-| 23 |  [**] |  | - | - |
-| 24 | &#9654; [**] |  | - | - |
-| 25 |  [**] |  | - | - |
-| 26 |  [**] |  | - | - |
-| 27 |  [**] |  | - | - |
-| 28 | &#9654; [**] |  | - | - |
+| [20](20.md) | &#9654; [**] |  | solved | 4m18s |
+| [21](21.md) |  [**] |  | verified | 1m15s |
+| [22](22.md) | &#9654; [**] |  | verified | 1m01s |
+| [23](23.md) |  [**] |  | verified | 3m44s |
+| [24](24.md) | &#9654; [**] |  | solved | 3m44s |
+| [25](25.md) |  [**] |  | verified | 1m02s |
+| [26](26.md) |  [**] |  | verified | 3m06s |
+| [27](27.md) |  [**] |  | solved | 3m12s |
+| [28](28.md) | &#9654; [**] |  | verified | 1m14s |
 | 29 |  [**] |  | - | - |
 | 30 | &#9654; [**] |  | - | - |
 | 31 |  [**] |  | - | - |
