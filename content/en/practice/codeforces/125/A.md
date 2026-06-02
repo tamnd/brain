@@ -1,7 +1,7 @@
 ---
 title: "CF 125A - Measuring Lengths in Baden"
-description: "In Baden, the unit conversion rules are unusual. One inch equals 3 centimeters, and one foot contains 12 inches. We are given a length in centimeters and must express it as feet and inches. The tricky part is the rounding rule."
-date: "2026-05-28T00:00:00+07:00"
+description: "In Baden, the conversion rules are different from the real world. One inch equals 3 centimeters, and one foot contains 12 inches. We are given a length measured in centimeters. The task is to express that length as a combination of feet and inches."
+date: "2026-06-02T16:28:54+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
 codeforces_contest: 125
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Testing Round 2"
 rating: 1400
 weight: 125
-solve_time_s: 78
+solve_time_s: 87
 verified: true
 draft: false
 ---
@@ -18,150 +18,123 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** math  
-**Solve time:** 1m 18s  
+**Solve time:** 1m 27s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-In Baden, the unit conversion rules are unusual. One inch equals 3 centimeters, and one foot contains 12 inches. We are given a length in centimeters and must express it as feet and inches.
+In Baden, the conversion rules are different from the real world. One inch equals 3 centimeters, and one foot contains 12 inches.
 
-The tricky part is the rounding rule. We first convert centimeters into inches, but the result must be rounded to the nearest integer number of inches. After that, we should maximize the number of feet. Since one foot is 12 inches, maximizing feet simply means using as many complete groups of 12 inches as possible.
+We are given a length measured in centimeters. The task is to express that length as a combination of feet and inches. Since the original length may not correspond to an exact integer number of inches, we first need to round it to the nearest whole inch according to the special rounding rule described in the statement. After that, among all equivalent representations, we must maximize the number of feet.
 
-For example, if the input is `42`, then:
+Since one inch is exactly 3 centimeters, converting centimeters to inches means computing the nearest integer to $n / 3$. The statement gives examples such as 1 cm becoming 0 inches and 2 cm becoming 1 inch, which confirms ordinary rounding to the nearest integer.
 
-- `42 / 3 = 14` inches exactly
-- `14 = 1 * 12 + 2`
+The constraint is very small, $1 \le n \le 10000$. Even an inefficient solution would easily fit within the limits. The challenge is not performance but correctly handling the rounding rule and then converting inches into feet and remaining inches.
 
-So the answer is `1 2`.
+The most common source of mistakes is the rounding step.
 
-The input size is tiny, at most `10000`, so performance is not a concern. Even inefficient solutions would run instantly. Still, this problem tests careful handling of integer rounding, especially because the statement defines a custom rounding behavior.
+Consider input:
 
-The dangerous part is how rounding works for small remainders. Since one inch equals 3 centimeters:
+```
+1
+```
 
-- remainder `0` means exact conversion
-- remainder `1` should round down
-- remainder `2` should round up
-
-A careless implementation using floating point arithmetic may silently produce wrong answers because of precision issues or because Python’s built-in `round()` does banker's rounding.
-
-Consider `n = 1`.
-
-- `1 / 3 = 0.333...`
-- Correct rounded inches = `0`
-
-The correct output is:
+We have $1/3 = 0.333...$, which rounds to 0 inches. The correct output is:
 
 ```
 0 0
 ```
 
-Using a naive formula like `round(n / 3)` is dangerous in many languages because rounding rules differ.
+A careless implementation that always rounds up fractional values would incorrectly produce 1 inch.
 
-Another edge case is `n = 2`.
+Consider input:
 
-- `2 / 3 = 0.666...`
-- This should round to `1`
+```
+2
+```
 
-Correct output:
+We have $2/3 = 0.666...$, which rounds to 1 inch. The correct output is:
 
 ```
 0 1
 ```
 
-If someone always truncates with integer division, they would incorrectly output `0 0`.
+A careless implementation using floor division would produce 0 inches.
 
-A final subtle case appears when rounding creates an additional foot.
+Another subtle case occurs when rounding increases the total inch count enough to create an additional foot.
 
-Take `n = 35`.
+For example:
 
-- `35 / 3 = 11.666...`
-- Rounded inches = `12`
-- `12` inches equals exactly `1` foot and `0` inches
+```
+35
+```
 
-Correct output:
+Since $35/3 = 11.666...$, the rounded value is 12 inches. Twelve inches equals one foot, so the correct output is:
 
 ```
 1 0
 ```
 
-If someone computes feet before rounding, they may incorrectly produce `0 12`, which violates the requirement to maximize feet.
+An implementation that converts centimeters directly into feet and inches before rounding would miss this transition.
 
 ## Approaches
 
-The brute-force idea is straightforward. We could try every possible number of feet from `0` upward, convert it into inches, and check whether the remaining centimeters match after rounding. Since the constraints are tiny, this would work easily.
+A brute-force solution could try every possible number of feet, convert it back into inches, and check which representation matches the rounded length. Since the input size is tiny, this would still run instantly. For a rounded length of at most about 3333 inches, we would test only a few hundred possibilities.
 
-For example, if we guess `f` feet, then those feet consume `12 * f` inches. We could test nearby inch values and see which rounded centimeter value matches the input. Even a completely naive search over all reasonable foot and inch combinations would involve only a few thousand operations.
+The real structure of the problem is much simpler. After converting the length into a rounded integer number of inches, the requirement to maximize feet has an obvious interpretation: use as many groups of 12 inches as possible.
 
-The brute-force works because the search space is extremely small, but it is unnecessarily complicated. The structure of the unit conversion gives a direct mathematical solution.
+The problem naturally splits into two independent parts.
 
-The key observation is that the entire problem reduces to computing the total number of inches first. Since `1 inch = 3 cm`, converting centimeters to inches means dividing by `3`. The rounding rule depends only on the remainder modulo `3`.
+First, compute the nearest integer number of inches. Since one inch equals three centimeters, we need the nearest integer to $n/3$. For positive integers, this can be done entirely with integer arithmetic:
 
-If:
+$$\text{inches} = \left\lfloor \frac{n+1}{3} \right\rfloor$$
 
-- `n % 3 == 0`, the inch value is exact
-- `n % 3 == 1`, round down
-- `n % 3 == 2`, round up
+This formula reproduces the required rounding behavior:
 
-That means the rounded inch count can be computed with pure integer arithmetic:
+- 1 cm → 0 inches
+- 2 cm → 1 inch
+- 4 cm → 1 inch
+- 5 cm → 2 inches
 
-```
-inches = (n + 1) // 3
-```
-
-Why does this work?
-
-- remainder `0`: `(3k + 1) // 3 = k`
-- remainder `1`: `(3k + 2) // 3 = k`
-- remainder `2`: `(3k + 3) // 3 = k + 1`
-
-After obtaining the total number of inches, maximizing feet becomes trivial. Every 12 inches form one foot:
-
-```
-feet = inches // 12
-remaining_inches = inches % 12
-```
-
-This directly gives the required representation.
+Once we know the total number of inches, maximizing feet means taking as many complete groups of 12 inches as possible. The number of feet is integer division by 12, and the remaining inches are the remainder modulo 12.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n) | O(1) | Accepted |
+| Brute Force | O(I) where I is the rounded inch count | O(1) | Accepted |
 | Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integer `n`, the length in centimeters.
-2. Convert centimeters into rounded inches using:
+1. Read the integer $n$, the length in centimeters.
+2. Convert centimeters to the nearest integer number of inches.
 
-```
-inches = (n + 1) // 3
-```
+Since one inch equals three centimeters, the exact value is $n/3$. The required rounding can be implemented as:
 
-This reproduces the required rounding rule without floating point arithmetic.
-3. Compute the maximum possible number of feet:
+$$\text{inches} = (n + 1) // 3$$
 
-```
-feet = inches // 12
-```
+This works because the fractional parts are always 0, 1/3, or 2/3.
+3. Compute the maximum number of feet.
 
-Since each foot contains exactly 12 inches, taking integer division gives the largest valid number of feet.
-4. Compute the remaining inches:
+Every foot contains 12 inches, so:
 
-```
-rem = inches % 12
-```
-5. Print `feet` and `rem`.
+$$\text{feet} = \text{inches} // 12$$
+4. Compute the remaining inches.
+
+$$\text{rem} = \text{inches} \bmod 12$$
+5. Output `feet` and `rem`.
 
 ### Why it works
 
-The algorithm first computes the unique integer number of inches obtained after rounding according to Baden’s conversion rule. Once the total number of inches is fixed, every valid representation in feet and inches must satisfy:
+After rounding, the length is represented by an exact integer number of inches. Any representation in feet and inches must satisfy:
 
-```
-total_inches = 12 * feet + inches
-```
+$$12 \cdot \text{feet} + \text{inches\_remaining}
+=
+\text{total\_inches}$$
 
-Integer division by 12 always produces the maximum possible number of complete feet, while the remainder is automatically between `0` and `11`. That guarantees the representation is valid and optimal.
+with the remaining inches between 0 and 11 inclusive.
+
+Integer division by 12 produces the largest possible number of complete groups of 12 inches. The remainder is exactly the number of inches left over after taking those groups. Since no representation can contain more complete groups than integer division provides, the resulting number of feet is maximal.
 
 ## Python Solution
 
@@ -172,20 +145,17 @@ input = sys.stdin.readline
 n = int(input())
 
 inches = (n + 1) // 3
-
 feet = inches // 12
 rem = inches % 12
 
 print(feet, rem)
 ```
 
-The first step converts centimeters into inches using integer arithmetic only. The expression `(n + 1) // 3` exactly matches the custom rounding rule from the statement.
+The first step computes the rounded number of inches. Using `(n + 1) // 3` avoids floating-point arithmetic entirely and exactly matches the rounding rule from the statement.
 
-Using floating point arithmetic would be unnecessary and less reliable. Integer formulas avoid precision issues and make the rounding behavior explicit.
+The next two lines perform a standard conversion from inches into feet and remaining inches. Integer division counts how many complete feet fit into the total inch count, while modulo gives the leftover inches.
 
-After that, the code splits the total inches into feet and leftover inches. Integer division gives the maximum number of feet automatically, and modulo extracts the remaining inches.
-
-The remainder is always between `0` and `11`, so the output is already normalized. No additional adjustments are needed.
+The order matters. We must round the centimeter value to inches first, then convert to feet. Performing the conversion before rounding would give incorrect answers for values such as 35 cm, where rounding changes 11.666... inches into 12 inches and creates an additional foot.
 
 ## Worked Examples
 
@@ -197,12 +167,9 @@ Input:
 42
 ```
 
-| Step | Value |
-| --- | --- |
-| `n` | 42 |
-| `inches = (42 + 1) // 3` | 14 |
-| `feet = 14 // 12` | 1 |
-| `rem = 14 % 12` | 2 |
+| n | Rounded inches | Feet | Remaining inches |
+| --- | --- | --- | --- |
+| 42 | (42 + 1) // 3 = 14 | 14 // 12 = 1 | 14 % 12 = 2 |
 
 Output:
 
@@ -210,7 +177,7 @@ Output:
 1 2
 ```
 
-This example shows the normal case where the inch count is larger than one foot but still leaves a remainder.
+This example shows the normal case. After rounding, we have 14 inches. One complete foot uses 12 of them, leaving 2 inches.
 
 ### Example 2
 
@@ -220,12 +187,9 @@ Input:
 35
 ```
 
-| Step | Value |
-| --- | --- |
-| `n` | 35 |
-| `inches = (35 + 1) // 3` | 12 |
-| `feet = 12 // 12` | 1 |
-| `rem = 12 % 12` | 0 |
+| n | Rounded inches | Feet | Remaining inches |
+| --- | --- | --- | --- |
+| 35 | (35 + 1) // 3 = 12 | 12 // 12 = 1 | 12 % 12 = 0 |
 
 Output:
 
@@ -233,16 +197,16 @@ Output:
 1 0
 ```
 
-This trace demonstrates the important boundary case where rounding increases the inch count enough to create an additional foot.
+This example demonstrates why rounding must happen first. The exact value is 11.666... inches, which rounds to 12 inches and becomes exactly one foot.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only a few arithmetic operations are performed |
-| Space | O(1) | No extra memory proportional to input size is used |
+| Time | O(1) | Only a fixed number of arithmetic operations are performed |
+| Space | O(1) | Only a few integer variables are stored |
 
-The constraints are extremely small, so this solution easily fits within the limits. The program performs constant-time arithmetic and uses only a few integer variables.
+The algorithm performs constant-time arithmetic regardless of the input value. With $n \le 10000$, it easily fits within both the time and memory limits.
 
 ## Test Cases
 
@@ -250,60 +214,36 @@ The constraints are extremely small, so this solution easily fits within the lim
 # helper: run solution on input string, return output string
 import sys, io
 
-def solve():
-    import sys
-    input = sys.stdin.readline
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
 
-    n = int(input())
-
+    n = int(sys.stdin.readline())
     inches = (n + 1) // 3
     feet = inches // 12
     rem = inches % 12
 
-    print(feet, rem)
-
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    output = sys.stdout.getvalue().strip()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return output
+    return f"{feet} {rem}"
 
 # provided sample
 assert run("42\n") == "1 2", "sample 1"
 
-# minimum input
+# custom cases
 assert run("1\n") == "0 0", "minimum value"
-
-# rounding up
-assert run("2\n") == "0 1", "rounding up from 2 cm"
-
-# exact foot after rounding
-assert run("35\n") == "1 0", "boundary creating new foot"
-
-# large value
+assert run("2\n") == "0 1", "round up from 2/3 inch"
+assert run("35\n") == "1 0", "rounding creates a new foot"
 assert run("10000\n") == "277 10", "maximum constraint"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1` | `0 0` | Correct rounding down |
-| `2` | `0 1` | Correct rounding up |
-| `35` | `1 0` | Carry into a new foot |
-| `10000` | `277 10` | Large input handling |
+| `1` | `0 0` | Smallest input, rounds down |
+| `2` | `0 1` | Correct handling of 2/3 rounding |
+| `35` | `1 0` | Rounding before foot conversion |
+| `10000` | `277 10` | Largest allowed input |
 
 ## Edge Cases
 
-Consider the smallest possible input:
+The first tricky case is:
 
 ```
 1
@@ -311,39 +251,43 @@ Consider the smallest possible input:
 
 The algorithm computes:
 
-- `inches = (1 + 1) // 3 = 0`
-- `feet = 0 // 12 = 0`
-- `rem = 0 % 12 = 0`
+$$(1+1)//3 = 0$$
 
-Output:
+So the total length is 0 inches. Then:
+
+$$0//12 = 0,\quad 0\%12 = 0$$
+
+The output becomes:
 
 ```
 0 0
 ```
 
-This correctly follows the rule that 1 centimeter rounds to 0 inches.
+This matches the required rounding rule.
 
-Now consider:
+The second tricky case is:
 
 ```
 2
 ```
 
-The computation becomes:
+The algorithm computes:
 
-- `inches = (2 + 1) // 3 = 1`
-- `feet = 1 // 12 = 0`
-- `rem = 1 % 12 = 1`
+$$(2+1)//3 = 1$$
 
-Output:
+So the rounded length is 1 inch. Then:
+
+$$1//12 = 0,\quad 1\%12 = 1$$
+
+The output is:
 
 ```
 0 1
 ```
 
-This confirms that remainder `2` modulo `3` rounds upward correctly.
+This confirms that 2 cm rounds upward to 1 inch.
 
-Finally, consider the carry boundary:
+The third tricky case is:
 
 ```
 35
@@ -351,14 +295,16 @@ Finally, consider the carry boundary:
 
 The algorithm computes:
 
-- `inches = (35 + 1) // 3 = 12`
-- `feet = 12 // 12 = 1`
-- `rem = 12 % 12 = 0`
+$$(35+1)//3 = 12$$
 
-Output:
+Then:
+
+$$12//12 = 1,\quad 12\%12 = 0$$
+
+The output is:
 
 ```
 1 0
 ```
 
-This case proves that rounding must happen before splitting into feet and inches. If the operations were reversed, the result would be incorrect.
+This case verifies that rounding is completed before splitting the result into feet and inches. If the order were reversed, the answer would be wrong.
