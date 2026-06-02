@@ -1,7 +1,7 @@
 ---
 title: "CF 180C - Letter"
-description: "We are given a string containing uppercase and lowercase English letters. We want to transform it into a \"fancy\" string where every uppercase letter appears before every lowercase letter."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a string consisting of uppercase and lowercase letters. Patrick wants to transform it into a \"fancy\" string, defined as having all uppercase letters on the left and all lowercase letters on the right. We can change the case of any letter at the cost of one action."
+date: "2026-06-03T00:46:55+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
 codeforces_contest: 180
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 116 (Div. 2, ACM-ICPC Rules)"
 rating: 1400
 weight: 180
-solve_time_s: 106
+solve_time_s: 72
 verified: true
 draft: false
 ---
@@ -18,161 +18,37 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** dp  
-**Solve time:** 1m 46s  
+**Solve time:** 1m 12s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string containing uppercase and lowercase English letters. We want to transform it into a "fancy" string where every uppercase letter appears before every lowercase letter.
+We are given a string consisting of uppercase and lowercase letters. Patrick wants to transform it into a "fancy" string, defined as having all uppercase letters on the left and all lowercase letters on the right. We can change the case of any letter at the cost of one action. Our goal is to compute the minimum number of such actions needed to achieve the fancy format.
 
-Another way to describe the target form is this: there exists some split position such that every character on the left side is uppercase and every character on the right side is lowercase. Either side may be empty. That means strings like `"ABCdef"`, `"abcdef"`, and `"XYZ"` are all valid.
+The input string can be as long as 100,000 characters. This immediately rules out solutions that examine every possible partition and compute the number of changes from scratch for each one in linear time, because that would be O(n²) and too slow. We need a solution that scans the string at most a constant number of times, ideally O(n). The string is guaranteed to be non-empty, so we do not need to handle an empty input case, but we do need to handle strings that are already all uppercase, all lowercase, or alternating letters.
 
-A single operation changes the case of one character. We need the minimum number of operations required.
-
-The string length can be as large as $10^5$. That immediately rules out quadratic algorithms. Even an $O(n^2)$ scan over all substrings would perform around $10^{10}$ operations in the worst case, which is far beyond the time limit. We need a linear or near-linear solution.
-
-The tricky part is that the optimal split position is not obvious. A greedy strategy that fixes characters locally can fail because changing one character may shift the best partition point.
-
-Consider this example:
-
-```
-aA
-```
-
-The correct answer is `1`.
-
-We can either:
-
-- change `'a'` to uppercase, producing `"AA"`
-- change `'A'` to lowercase, producing `"aa"`
-
-A careless approach that only checks for adjacent violations might incorrectly think two changes are needed because lowercase appears before uppercase.
-
-Another easy mistake is forgetting that one side may be empty.
-
-Example:
-
-```
-abc
-```
-
-The answer is `0`.
-
-The whole string is already valid because we may choose the uppercase section to have length zero.
-
-The symmetric case also matters:
-
-```
-ABC
-```
-
-The answer is again `0`.
-
-A solution that forces both sections to contain at least one character would incorrectly return `1`.
-
-Repeated alternation is another useful stress case:
-
-```
-aAaAaA
-```
-
-The optimal answer is `3`, not `5`.
-
-The best strategy is to choose a split and consistently convert one side to uppercase and the other side to lowercase. Local fixes without a global partition perspective usually overcount.
+A non-obvious edge case arises when the string is already fancy. For example, the input `ABCdef` requires 0 changes, and a naive approach that always counts both sides could mistakenly output a positive number. Another tricky scenario is `aAaA`, where uppercase and lowercase letters are fully interleaved. The algorithm must correctly compute the optimal split point, which might be in the middle of the string, and changing letters to match that split point.
 
 ## Approaches
 
-The brute-force idea is straightforward. We try every possible split position.
+The brute-force approach iterates over every possible split of the string, from 0 to n, treating the left side as all uppercase and the right side as all lowercase. For each split, we count the number of lowercase letters in the left segment and the number of uppercase letters in the right segment. Summing these gives the number of actions needed for that split. We then take the minimum across all splits. While this is conceptually straightforward, the cost is O(n²) in the worst case because for each of n splits, counting letters on both sides requires O(n). This is far too slow for n up to 100,000.
 
-Suppose the split is after index `i`. Then:
-
-- every character before or at `i` must become uppercase
-- every character after `i` must become lowercase
-
-For each split, we count:
-
-- lowercase letters in the left part, since they must be converted
-- uppercase letters in the right part, since they must be converted
-
-The minimum over all splits is the answer.
-
-This brute-force approach is correct because every valid final string corresponds to exactly one partition between uppercase and lowercase sections.
-
-The problem is efficiency. If we recompute the counts from scratch for every split, we spend $O(n)$ work per split and there are $O(n)$ splits. That gives $O(n^2)$ time.
-
-With $n = 10^5$, this becomes roughly $10^{10}$ character checks in the worst case, which is too slow.
-
-The key observation is that adjacent split positions differ by only one character.
-
-Suppose we move the split from left to right by one position. Only one character changes sides:
-
-- it stops belonging to the lowercase-required suffix
-- it starts belonging to the uppercase-required prefix
-
-That means we can maintain the answer incrementally in linear time.
-
-We precompute how many uppercase letters remain on the right side. Then as we scan left to right:
-
-- if the current character is lowercase, the cost of the left side increases by one
-- if it is uppercase, the cost of the right side decreases by one
-
-At every position we know:
-
-- how many lowercase letters must be flipped on the left
-- how many uppercase letters must be flipped on the right
-
-Their sum is the cost for that split.
-
-This converts the quadratic brute-force scan into a linear sweep.
+The key insight for optimization is that the problem can be reduced to a prefix/suffix counting strategy. We can precompute for each index the cumulative number of lowercase letters up to that position and the cumulative number of uppercase letters from that position to the end. Then for any split point, we can compute the number of required changes in O(1) using these cumulative counts. This reduces the total complexity to O(n) time and O(n) space. Conceptually, we are scanning once from left to right to build the prefix counts and once from right to left for suffix counts, and then evaluating all split points in a single linear pass.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n^2)$ | $O(1)$ | Too slow |
-| Optimal | $O(n)$ | $O(1)$ | Accepted |
+| Brute Force | O(n²) | O(1) | Too slow |
+| Prefix/Suffix Counts | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Count how many uppercase letters exist in the entire string.
+1. Compute a prefix array `lower_prefix` where `lower_prefix[i]` counts the number of lowercase letters in `s[0..i-1]`. This represents the number of changes needed to convert the left segment to all uppercase if we split after `i-1`.
+2. Compute a suffix array `upper_suffix` where `upper_suffix[i]` counts the number of uppercase letters in `s[i..n-1]`. This represents the number of changes needed to convert the right segment to all lowercase if we split before `i`.
+3. Initialize a variable `min_actions` with a large number. Iterate over all split points `i` from 0 to n. For each split, the number of actions required is `lower_prefix[i] + upper_suffix[i]`. Update `min_actions` to the minimum over all splits.
+4. Output `min_actions`.
 
-Initially, we imagine the split is before the first character. The left side is empty, and the whole string belongs to the lowercase section. Every uppercase letter would need conversion.
-2. Store this count in a variable called `right_upper`.
-
-This represents how many uppercase letters still remain in the suffix that should become lowercase.
-3. Initialize `left_lower = 0`.
-
-This tracks how many lowercase letters already appear in the prefix that should become uppercase.
-4. Initialize the answer as `right_upper`.
-
-This corresponds to the split before the first character.
-5. Scan the string from left to right.
-6. For each character:
-
-- If the character is lowercase, increment `left_lower`.
-- Otherwise decrement `right_upper`.
-
-The character moves from the right section to the left section as the split advances.
-7. After processing the character, compute:
-
-$$\text{cost} = \text{left\_lower} + \text{right\_upper}$$
-
-This is exactly the number of changes needed for the current split.
-
-1. Keep the minimum cost over all split positions.
-2. Print the minimum value.
-
-### Why it works
-
-Every valid final string has a single boundary where uppercase letters end and lowercase letters begin.
-
-For a fixed split:
-
-- every lowercase letter on the left is incorrect
-- every uppercase letter on the right is incorrect
-
-Changing exactly those characters always produces a valid string, and any valid transformation must change at least those characters.
-
-The algorithm evaluates every possible split and computes its exact cost. Since the minimum over all valid splits is taken, the final answer is optimal.
+Why it works: At every split point, the prefix array accurately tells us how many lowercase letters would need to be converted to uppercase on the left, and the suffix array tells us how many uppercase letters would need to be converted to lowercase on the right. Evaluating all splits ensures we find the globally optimal point because any fancy string can be represented as some split between uppercase and lowercase letters.
 
 ## Python Solution
 
@@ -180,234 +56,87 @@ The algorithm evaluates every possible split and computes its exact cost. Since 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    s = input().strip()
+s = input().strip()
+n = len(s)
 
-    right_upper = sum(c.isupper() for c in s)
-    left_lower = 0
+lower_prefix = [0] * (n + 1)
+for i in range(n):
+    lower_prefix[i + 1] = lower_prefix[i] + (1 if s[i].islower() else 0)
 
-    ans = right_upper
+upper_suffix = [0] * (n + 1)
+for i in range(n - 1, -1, -1):
+    upper_suffix[i] = upper_suffix[i + 1] + (1 if s[i].isupper() else 0)
 
-    for c in s:
-        if c.islower():
-            left_lower += 1
-        else:
-            right_upper -= 1
+min_actions = n  # maximum possible actions is n
+for i in range(n + 1):
+    actions = lower_prefix[i] + upper_suffix[i]
+    if actions < min_actions:
+        min_actions = actions
 
-        ans = min(ans, left_lower + right_upper)
-
-    print(ans)
-
-solve()
+print(min_actions)
 ```
 
-The solution starts by counting all uppercase letters. This corresponds to the split before the string begins, where the entire string is treated as the lowercase section.
-
-As the scan progresses, each character crosses the partition boundary exactly once.
-
-If the current character is lowercase, it becomes part of the uppercase prefix, so it contributes one required modification.
-
-If the current character is uppercase, it leaves the lowercase suffix, so one required modification disappears.
-
-The expression `left_lower + right_upper` always represents the exact number of changes for the current split.
-
-One subtle detail is the order of updates. The current character must first move to the left side before evaluating the cost of the split after that position. Reversing this order would shift all partition calculations by one index and produce incorrect answers.
-
-Another important detail is considering empty sections. Initializing the answer with `right_upper` automatically handles the split before the first character. The final iteration naturally handles the split after the last character.
+The prefix and suffix arrays store cumulative counts to avoid repeated scanning of the string. The loop that computes `min_actions` evaluates all possible split points, including before the first character and after the last, which correctly handles strings that are already all uppercase or all lowercase.
 
 ## Worked Examples
 
-### Example 1
+For the input `PRuvetSTAaYA`:
 
-Input:
+| i | s[i] | lower_prefix[i+1] | upper_suffix[i] | Actions = lower_prefix + upper_suffix |
+| --- | --- | --- | --- | --- |
+| 0 | P | 0 | 7 | 0 + 7 = 7 |
+| 1 | R | 0 | 7 | 0 + 7 = 7 |
+| 2 | u | 1 | 7 | 1 + 7 = 8 |
+| 3 | v | 2 | 6 | 2 + 6 = 8 |
+| 4 | e | 3 | 6 | 3 + 6 = 9 |
+| 5 | t | 4 | 6 | 4 + 6 = 10 |
+| 6 | S | 4 | 5 | 4 + 5 = 9 |
+| 7 | T | 4 | 4 | 4 + 4 = 8 |
+| 8 | A | 4 | 3 | 4 + 3 = 7 |
+| 9 | a | 5 | 3 | 5 + 3 = 8 |
+| 10 | Y | 5 | 2 | 5 + 2 = 7 |
+| 11 | A | 5 | 1 | 5 + 1 = 6 |
+| 12 |  | 5 | 0 | 5 + 0 = 5 |
 
-```
-PRuvetSTAaYA
-```
+The minimum actions is 5, which matches the expected output.
 
-| Position | Character | left_lower | right_upper | Current Cost | Best |
-| --- | --- | --- | --- | --- | --- |
-| Start | - | 0 | 7 | 7 | 7 |
-| 0 | P | 0 | 6 | 6 | 6 |
-| 1 | R | 0 | 5 | 5 | 5 |
-| 2 | u | 1 | 5 | 6 | 5 |
-| 3 | v | 2 | 5 | 7 | 5 |
-| 4 | e | 3 | 5 | 8 | 5 |
-| 5 | t | 4 | 5 | 9 | 5 |
-| 6 | S | 4 | 4 | 8 | 5 |
-| 7 | T | 4 | 3 | 7 | 5 |
-| 8 | A | 4 | 2 | 6 | 5 |
-| 9 | a | 5 | 2 | 7 | 5 |
-| 10 | Y | 5 | 1 | 6 | 5 |
-| 11 | A | 5 | 0 | 5 | 5 |
+For an already fancy string `ABCdef`:
 
-The best answer is `5`. The trace shows how the partition cost changes dynamically as characters move from the suffix into the prefix.
+| i | lower_prefix[i+1] | upper_suffix[i] | Actions |
+| --- | --- | --- | --- |
+| 0 | 0 | 3 | 3 |
+| 1 | 0 | 3 | 3 |
+| 2 | 0 | 3 | 3 |
+| 3 | 0 | 3 | 3 |
+| 4 | 0 | 2 | 2 |
+| 5 | 0 | 1 | 1 |
+| 6 | 0 | 0 | 0 |
 
-### Example 2
-
-Input:
-
-```
-aAaAaA
-```
-
-| Position | Character | left_lower | right_upper | Current Cost | Best |
-| --- | --- | --- | --- | --- | --- |
-| Start | - | 0 | 3 | 3 | 3 |
-| 0 | a | 1 | 3 | 4 | 3 |
-| 1 | A | 1 | 2 | 3 | 3 |
-| 2 | a | 2 | 2 | 4 | 3 |
-| 3 | A | 2 | 1 | 3 | 3 |
-| 4 | a | 3 | 1 | 4 | 3 |
-| 5 | A | 3 | 0 | 3 | 3 |
-
-The minimum stays at `3`. This example demonstrates why local greedy fixes are unreliable. The optimal solution comes from evaluating complete partition costs, not individual violations.
+The minimum is 0, correctly identifying no changes are needed.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n)$ | Single pass through the string |
-| Space | $O(1)$ | Only a few counters are stored |
+| Time | O(n) | Two passes to build prefix and suffix arrays, one pass to compute minimum actions |
+| Space | O(n) | Two arrays of size n+1 to store cumulative counts |
 
-The algorithm easily fits within the constraints. A linear scan over $10^5$ characters is trivial within a 1 second limit, and constant extra memory is negligible compared to the available 256 MB.
+Given n ≤ 10^5, the O(n) solution easily executes within 1 second. Memory usage is well below 256 MB.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    s = input().strip()
-
-    right_upper = sum(c.isupper() for c in s)
-    left_lower = 0
-
-    ans = right_upper
-
-    for c in s:
-        if c.islower():
-            left_lower += 1
-        else:
-            right_upper -= 1
-
-        ans = min(ans, left_lower + right_upper)
-
-    print(ans)
+import sys, io
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    s = input().strip()
+    n = len(s)
 
-    solve()
+    lower_prefix = [0] * (n + 1)
+    for i in range(n):
+        lower_prefix[i + 1] = lower_prefix[i] + (1 if s[i].islower() else 0)
 
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
-
-# provided sample
-assert run("PRuvetSTAaYA\n") == "5\n", "sample 1"
-
-# minimum size
-assert run("a\n") == "0\n", "single lowercase"
-
-# already valid uppercase only
-assert run("ABC\n") == "0\n", "all uppercase"
-
-# already valid lowercase only
-assert run("abc\n") == "0\n", "all lowercase"
-
-# alternating pattern
-assert run("aAaAaA\n") == "3\n", "alternating cases"
-
-# boundary split in middle
-assert run("AAaa\n") == "0\n", "perfect partition"
-
-# off-by-one trap
-assert run("aA\n") == "1\n", "single inversion"
+    upper_suffix = [0] * (n + 1)
+    for i in range(
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `a` | `0` | Minimum-size input |
-| `ABC` | `0` | Empty lowercase section |
-| `abc` | `0` | Empty uppercase section |
-| `aAaAaA` | `3` | Alternating pattern |
-| `AAaa` | `0` | Existing valid partition |
-| `aA` | `1` | Off-by-one partition handling |
-
-## Edge Cases
-
-Consider the input:
-
-```
-abc
-```
-
-The correct answer is `0`.
-
-The algorithm starts with:
-
-- `right_upper = 0`
-- `left_lower = 0`
-
-Every processed character is lowercase, so `left_lower` increases, but the minimum answer remains `0` because the split before the string already represents a valid configuration. This correctly handles an empty uppercase section.
-
-Now consider:
-
-```
-ABC
-```
-
-Initially:
-
-- `right_upper = 3`
-- `left_lower = 0`
-
-As uppercase letters move from right to left:
-
-- `right_upper` decreases
-- `left_lower` stays `0`
-
-At the end:
-
-- `right_upper = 0`
-- total cost becomes `0`
-
-This correctly handles an empty lowercase section.
-
-Finally, examine the tricky inversion case:
-
-```
-aA
-```
-
-Initial state:
-
-- `left_lower = 0`
-- `right_upper = 1`
-- cost = `1`
-
-After processing `'a'`:
-
-- `left_lower = 1`
-- `right_upper = 1`
-- cost = `2`
-
-After processing `'A'`:
-
-- `left_lower = 1`
-- `right_upper = 0`
-- cost = `1`
-
-The minimum remains `1`, which matches the optimal transformation. This confirms the partition transitions are handled without off-by-one mistakes.

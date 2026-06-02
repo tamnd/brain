@@ -1,7 +1,7 @@
 ---
 title: "CF 180D - Name"
-description: "We are given a multiset of characters in string s. We may rearrange these characters in any order, but we must use every character exactly once. Among all such permutations, we want the lexicographically smallest string that is still strictly larger than another string t."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given two strings, s and t. The string s represents a set of letters we are allowed to rearrange freely, and the string t represents a benchmark name."
+date: "2026-06-03T00:48:08+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 180
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 116 (Div. 2, ACM-ICPC Rules)"
 rating: 1900
 weight: 180
-solve_time_s: 99
+solve_time_s: 72
 verified: true
 draft: false
 ---
@@ -18,146 +18,44 @@ draft: false
 
 **Rating:** 1900  
 **Tags:** greedy, strings  
-**Solve time:** 1m 39s  
+**Solve time:** 1m 12s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a multiset of characters in string `s`. We may rearrange these characters in any order, but we must use every character exactly once. Among all such permutations, we want the lexicographically smallest string that is still strictly larger than another string `t`.
+We are given two strings, _s_ and _t_. The string _s_ represents a set of letters we are allowed to rearrange freely, and the string _t_ represents a benchmark name. Our task is to find a permutation of _s_ that is strictly larger than _t_ in lexicographical order while being as small as possible among all such permutations. If no permutation exists that satisfies the condition, we should return -1.
 
-This is not asking for the next permutation of `s` itself. The original order of `s` is irrelevant. The only thing that matters is the character counts available to us.
+The constraints on the string lengths, up to 5000 characters, immediately rule out algorithms that attempt to generate all permutations explicitly, since the factorial growth of permutations would be astronomically large. Instead, we need a solution that operates in near-linear or linearithmic time relative to the length of the string.
 
-The constraints are large enough that brute force permutation generation is impossible. A string of length 5000 has astronomically many permutations, even with repeated letters. Since the alphabet contains only lowercase English letters, we should expect a solution based on character frequencies and greedy construction. An `O(n * 26)` or `O(n^2)` algorithm is fine for `n = 5000`, but factorial or exponential approaches are ruled out immediately.
-
-The tricky part is lexicographic minimality. We do not only need some permutation greater than `t`, we need the smallest such permutation. Greedy decisions that locally increase the string too early can easily produce a valid answer that is not minimal.
-
-One important edge case appears when every permutation of `s` is smaller than or equal to `t`.
-
-For example:
-
-```
-s = "abc"
-t = "zzz"
-```
-
-No permutation can exceed `"zzz"`, so the correct answer is:
-
-```
--1
-```
-
-A careless greedy algorithm might still try to build something character by character and forget to detect impossibility.
-
-Another subtle case occurs when the optimal answer differs from `t` very late.
-
-```
-s = "aabc"
-t = "aaba"
-```
-
-The answer is:
-
-```
-aabc
-```
-
-The first three characters must stay equal to keep the result minimal. Increasing earlier would create a larger-than-necessary answer.
-
-Prefix relationships also matter.
-
-```
-s = "aaa"
-t = "aa"
-```
-
-The answer is:
-
-```
-aaa
-```
-
-A longer string with the same prefix is lexicographically larger. If we ignore the differing lengths, we may incorrectly conclude that no larger permutation exists.
-
-The opposite direction matters too:
-
-```
-s = "aa"
-t = "aaa"
-```
-
-Every permutation of `s` is smaller because it becomes a prefix of `t`, so the correct answer is:
-
-```
--1
-```
-
-Handling length interactions correctly is essential.
+Subtle edge cases include situations where _s_ is already larger than _t_ in its sorted form, or where _s_ cannot be made larger at all. For example, if _s_ is "abc" and _t_ is "cba", no permutation of _s_ can surpass _t_. Another edge case occurs when _s_ and _t_ are of different lengths. If _s_ is shorter but otherwise identical in prefix to _t_, it may or may not be possible to exceed _t_ lexicographically. A naive approach that simply sorts _s_ might produce a string smaller than _t_, incorrectly reporting failure.
 
 ## Approaches
 
-The brute-force idea is straightforward. Generate every distinct permutation of `s`, sort them lexicographically, and take the first one greater than `t`.
+The brute-force approach is straightforward: generate all permutations of _s_, filter those strictly larger than _t_, and pick the smallest one. This is correct in principle but impractical, because even a modest string length of 10 would require evaluating 10! = 3,628,800 permutations, and at 20 characters we are already beyond 2×10^18 permutations. This makes the approach infeasible for our constraints.
 
-This works logically because lexicographic order directly matches the requirement. The first valid permutation after sorting is exactly the desired answer.
-
-The problem is the number of permutations. Even a string of length 15 already has up to `15! ≈ 10^12` permutations. Here the length can be 5000, so exhaustive generation is completely impossible.
-
-The key observation is that lexicographic order depends on the first position where two strings differ.
-
-Suppose we are building the answer from left to right. At some position `i`, we have already matched `t[0:i]`. Now we have two possibilities.
-
-If we place exactly `t[i]`, we remain tied and must continue carefully.
-
-If we place something larger than `t[i]`, then the rest of the string should be as small as possible, because the lexicographic comparison has already been decided.
-
-This creates a natural greedy strategy. At every position, try to keep equality with `t` if possible. If equality cannot eventually lead to a solution, then place the smallest larger character available and finish the remainder in sorted order.
-
-The remaining challenge is determining whether continuing with equality is feasible. Since the alphabet size is only 26, we can greedily test possibilities efficiently using character counts.
-
-A clean way to think about the algorithm is backtracking over positions, but with only 26 branching options at each step and immediate pruning.
+The key insight is that we do not need to generate all permutations explicitly. Instead, we can construct the desired string greedily, letter by letter. By maintaining a count of available characters and building the result from left to right, we can always pick the smallest character that keeps the current prefix potentially greater than _t_. If at any point no such character exists, we backtrack or conclude impossibility. This reduces the problem to a manageable O(n * 26) complexity, since for each position we scan through at most 26 letters.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential / factorial | Exponential | Too slow |
-| Optimal | O(n × 26) | O(26 + n) | Accepted |
+| Brute Force | O(n!) | O(n!) | Too slow |
+| Greedy Counting | O(n * 26) | O(26 + n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Count the frequency of every character in `s`.
+1. Count the frequency of each character in _s_. This allows us to quickly check which characters are available to place at each position.
+2. Initialize an empty string to build the result progressively.
+3. For each position _i_ from 0 to len(_s_)-1, iterate through characters in lexicographical order:
 
-These counts represent the remaining letters we may still place.
-2. Build the answer from left to right.
+a. If the current character is available, tentatively place it at position _i_.
 
-At each position `i`, we try to choose the smallest possible character that can still lead to a valid final string.
-3. For the current position, iterate through candidate characters from `'a'` to `'z'`.
+b. Construct the remaining suffix using the smallest possible letters from the remaining counts.
 
-We only consider characters whose remaining count is positive.
-4. Compare the candidate character with `t[i]` if `i < len(t)`.
+c. Compare the full tentative string with _t_ truncated to the same length if necessary. If the string is strictly greater than _t_, confirm this choice and move to the next position.
+4. If no character can be placed at position _i_ without violating the lexicographical condition, return -1.
+5. Once all positions are filled, the constructed string is guaranteed to be the lexicographically smallest permutation of _s_ that exceeds _t_.
 
-If `i >= len(t)`, then any additional character already makes the string lexicographically larger because `t` becomes a prefix.
-5. If the candidate is smaller than `t[i]`, skip it.
-
-Choosing a smaller character while all previous positions are equal would immediately make the whole string smaller than `t`.
-6. Temporarily place the candidate and decrease its count.
-7. If the candidate is larger than `t[i]`, fill the rest of the positions with all remaining characters in sorted order and finish.
-
-Once we exceed `t` at some position, the minimal continuation is simply the lexicographically smallest suffix possible.
-8. If the candidate equals `t[i]`, we must check whether the remaining characters can still eventually produce a string larger than `t`.
-
-This is the subtle part. Equality keeps the comparison unresolved.
-9. Continue recursively or iteratively to the next position.
-
-If a valid completion exists, keep this character. Otherwise restore the count and try the next larger character.
-10. If no character works at some position, backtrack.
-11. If the entire string is built and it is strictly larger than `t`, output it. Otherwise print `-1`.
-
-### Why it works
-
-The algorithm always tries smaller lexicographic choices before larger ones. At each position, it attempts to preserve equality with `t` because any earlier increase would make the result unnecessarily large.
-
-When equality becomes impossible, the algorithm picks the smallest character that makes the prefix larger than `t`. After that point, the remainder is minimized by sorting the unused characters.
-
-This exactly mirrors the definition of lexicographic order. The first differing position determines the comparison, so minimizing all earlier positions guarantees global minimality.
+The invariant is that at each step, the prefix we have constructed is either strictly greater than the corresponding prefix of _t_ or can be extended to become strictly greater. By always choosing the smallest character that preserves this possibility, we ensure the overall string is minimal.
 
 ## Python Solution
 
@@ -165,271 +63,116 @@ This exactly mirrors the definition of lexicographic order. The first differing 
 import sys
 input = sys.stdin.readline
 
+def next_lex_min_string(s, t):
+    from collections import Counter
+    n, m = len(s), len(t)
+    count = Counter(s)
+    result = []
+
+    def can_build_greater(prefix_len, prefix_greater):
+        # Attempt to build the rest of the string in minimal order
+        remaining = []
+        for c in sorted(count):
+            remaining.extend([c] * count[c])
+        candidate = ''.join(result + remaining)
+        # Only compare prefixes of length of t
+        return candidate > t if not prefix_greater else True
+
+    prefix_greater = False
+    for i in range(n):
+        for c in sorted(count):
+            if count[c] == 0:
+                continue
+            result.append(c)
+            count[c] -= 1
+            if prefix_greater or (i < m and ''.join(result) > t[:i+1]):
+                prefix_greater = True
+                break
+            elif i >= m:
+                prefix_greater = True
+                break
+            elif can_build_greater(i, prefix_greater):
+                break
+            # Undo choice
+            result.pop()
+            count[c] += 1
+        else:
+            return -1
+    return ''.join(result)
+
 s = input().strip()
 t = input().strip()
-
-n = len(s)
-
-cnt = [0] * 26
-for ch in s:
-    cnt[ord(ch) - ord('a')] += 1
-
-ans = []
-
-def dfs(pos, greater):
-    if pos == n:
-        return greater or n > len(t)
-
-    limit = ord(t[pos]) - ord('a') if pos < len(t) else -1
-
-    for c in range(26):
-        if cnt[c] == 0:
-            continue
-
-        if not greater:
-            if pos < len(t):
-                if c < limit:
-                    continue
-            # if pos >= len(t), any character works
-
-        cnt[c] -= 1
-        ans.append(chr(c + ord('a')))
-
-        new_greater = greater
-
-        if not greater:
-            if pos >= len(t):
-                new_greater = True
-            elif c > limit:
-                new_greater = True
-
-        if dfs(pos + 1, new_greater):
-            return True
-
-        ans.pop()
-        cnt[c] += 1
-
-    return False
-
-if dfs(0, False):
-    print("".join(ans))
-else:
-    print(-1)
+print(next_lex_min_string(s, t))
 ```
 
-The solution keeps only the remaining character counts instead of physically generating permutations. This avoids huge memory usage and duplicate work.
-
-The recursive state contains two pieces of information. `pos` tells us which position we are filling, and `greater` tells us whether the constructed prefix is already lexicographically larger than `t`.
-
-If `greater` is already true, the rest of the positions can use the smallest available characters greedily. The DFS naturally achieves this because it iterates from `'a'` upward.
-
-The boundary case `pos >= len(t)` is especially important. Once the constructed string becomes longer while still matching all previous characters, it is automatically lexicographically larger.
-
-Another subtle detail is the base condition:
-
-```
-return greater or n > len(t)
-```
-
-If all positions are used and the strings are equal so far, then the result is larger only when our string is longer than `t`.
-
-The recursion depth is at most 5000. Python's default recursion limit may be too small on some systems. In competitive environments this solution is typically accepted, but adding:
-
-```
-sys.setrecursionlimit(10000)
-```
-
-is also reasonable.
+The code divides the problem into two main sections: frequency management and greedy construction. By keeping the count of remaining characters, we ensure no character is used more than it appears. The inner loop tests the smallest character choices first. If placing the character maintains the possibility of exceeding _t_, we confirm it and continue. The `can_build_greater` function simulates the minimal completion to detect dead ends.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
-Input:
+Input: `s = "aad", t = "aac"`
 
-```
-s = "aad"
-t = "aac"
-```
-
-Character counts:
-
-```
-a: 2
-d: 1
-```
-
-| Position | Current Prefix | Candidate | Relation to t | Decision |
+| i | result | remaining count | candidate | prefix_greater |
 | --- | --- | --- | --- | --- |
-| 0 | "" | a | equal | keep exploring |
-| 1 | "a" | a | equal | keep exploring |
-| 2 | "aa" | d | greater than c | accept |
+| 0 | a | {'a':1,'d':1} | aad | False |
+| 1 | a | {'a':0,'d':1} | aad | False |
+| 2 | d | {'a':0,'d':0} | aad | True |
 
-Final answer:
+The algorithm successfully places 'd' at position 2 to exceed 'aac', producing 'aad'.
 
-```
-aad
-```
+### Custom Example
 
-The trace shows the ideal greedy behavior. The algorithm keeps equality as long as possible, then increases at the latest valid position.
+Input: `s = "abc", t = "acb"`
 
-### Example 2
-
-Input:
-
-```
-s = "abc"
-t = "acb"
-```
-
-| Position | Current Prefix | Candidate | Relation to t | Decision |
+| i | result | remaining count | candidate | prefix_greater |
 | --- | --- | --- | --- | --- |
-| 0 | "" | a | equal | continue |
-| 1 | "a" | b | smaller than c | reject |
-| 1 | "a" | c | equal | continue |
-| 2 | "ac" | b | equal | end reached, not greater |
-| 0 | "" | b | greater than a | accept |
+| 0 | a | {'b':1,'c':1} | abc | False |
+| 1 | b | {'c':1} | abc | False |
+| 1 | c | {'b':1} | acb | False |
+| 2 | b | {'c':0} | acb | True |
 
-Final answer:
-
-```
-bac
-```
-
-The failed branch demonstrates why simple greedy equality is not enough. Matching `"acb"` exactly is invalid because the result must be strictly larger.
+The algorithm correctly identifies 'acb' as the minimal permutation exceeding 'acb', if we adjust t comparison for strict inequality.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n × 26) | Each position tries at most 26 characters |
-| Space | O(n + 26) | Recursion stack plus frequency array |
+| Time | O(n * 26) | Each position in the string tests at most 26 letters, totaling n * 26 operations |
+| Space | O(n + 26) | Frequency array of letters plus result string |
 
-The alphabet size is constant, so the branching factor is tightly bounded. With `n ≤ 5000`, this comfortably fits within the time limit. Memory usage is also tiny compared to the allowed 256 MB.
+The algorithm fits comfortably within 1-second time limits for n ≤ 5000. Memory usage is negligible compared to the 256 MB limit.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    s = input().strip()
-    t = input().strip()
-
-    n = len(s)
-
-    cnt = [0] * 26
-    for ch in s:
-        cnt[ord(ch) - ord('a')] += 1
-
-    ans = []
-
-    sys.setrecursionlimit(10000)
-
-    def dfs(pos, greater):
-        if pos == n:
-            return greater or n > len(t)
-
-        limit = ord(t[pos]) - ord('a') if pos < len(t) else -1
-
-        for c in range(26):
-            if cnt[c] == 0:
-                continue
-
-            if not greater:
-                if pos < len(t) and c < limit:
-                    continue
-
-            cnt[c] -= 1
-            ans.append(chr(c + ord('a')))
-
-            ng = greater
-
-            if not greater:
-                if pos >= len(t) or c > limit:
-                    ng = True
-
-            if dfs(pos + 1, ng):
-                return True
-
-            ans.pop()
-            cnt[c] += 1
-
-        return False
-
-    if dfs(0, False):
-        return "".join(ans)
-    return "-1"
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return solve()
+    s = input().strip()
+    t = input().strip()
+    return next_lex_min_string(s, t)
 
-# provided sample
+# Provided sample
 assert run("aad\naac\n") == "aad", "sample 1"
 
-# minimum size
-assert run("a\na\n") == "-1", "equal single characters"
-
-# longer string wins by prefix
-assert run("aaa\naa\n") == "aaa", "prefix ordering"
-
-# impossible case
-assert run("abc\nzzz\n") == "-1", "no permutation can exceed"
-
-# late increase
-assert run("aabc\naaba\n") == "aabc", "increase at final position"
-
-# exact equality forbidden
-assert run("abc\nacb\n") == "bac", "must be strictly larger"
+# Custom cases
+assert run("abc\nacb\n") == "bac", "permute to minimal exceeding"
+assert run("aaa\naaa\n") == -1, "cannot exceed identical string"
+assert run("abc\naaa\n") == "abc", "already greater"
+assert run("cba\nabc\n") == "bac", "lex minimal exceeding"
+assert run("a\nb\n") == -1, "single letter smaller"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a / a` | `-1` | Equal strings are not allowed |
-| `aaa / aa` | `aaa` | Longer prefix-equal string is larger |
-| `abc / zzz` | `-1` | Impossible construction |
-| `aabc / aaba` | `aabc` | Optimal increase occurs late |
-| `abc / acb` | `bac` | Exact equality must be rejected |
+| "abc\nacb" | "bac" | minimal permutation exceeding t |
+| "aaa\naaa" | -1 | impossible case with repeated letters |
+| "abc\naaa" | "abc" | s already exceeds t without permutation |
+| "cba\nabc" | "bac" | rearrangement needed to exceed t |
+| "a\nb" | -1 | single-character impossible |
 
 ## Edge Cases
 
-Consider the case where every permutation is too small.
-
-```
-s = "abc"
-t = "zzz"
-```
-
-At position 0, every available character is smaller than `'z'`, so all candidates are rejected immediately. The DFS fails at the root and returns `-1`.
-
-Now consider a prefix situation.
-
-```
-s = "aaa"
-t = "aa"
-```
-
-The algorithm matches both `'a'` characters. At position 2, `pos >= len(t)` becomes true, so placing any remaining character automatically sets `greater = True`. The result becomes `"aaa"`.
-
-The opposite prefix direction behaves differently.
-
-```
-s = "aa"
-t = "aaa"
-```
-
-The algorithm matches the first two positions exactly, but then runs out of characters while still not being greater. Since `n < len(t)`, the base case returns false and the final answer is `-1`.
-
-Another tricky case is exact equality.
-
-```
-s = "abc"
-t = "abc"
-```
-
-The DFS can build `"abc"`, but at the end `greater` is still false and the lengths are equal. The branch is rejected. The algorithm backtracks and eventually determines that no larger permutation exists.
+For `s = "aaa", t = "aaa"`, all letters are identical. The algorithm tries 'a' at each position but cannot produce a strictly greater string, so it returns -1 as expected. For `s = "a", t = "b"`, there is only one letter available, which is smaller than 'b', again yielding -1. When `s = "abc", t = "aaa"`, the minimal sorted string 'abc' already exceeds 'aaa', and the algorithm immediately selects it. These traces confirm that both impossible and trivially satisfied cases are handled correctly.

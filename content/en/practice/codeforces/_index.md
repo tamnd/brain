@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 1846 problems, 1288 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 1847 problems, 1288 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 1846 problems, 1288 verified.**
+**448 contests, 1847 problems, 1288 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -191,7 +191,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [176](176/) | [Croc Champ 2012 - Round 2](https://codeforces.com/contest/176) | Special | 1200-3100 | 1/5 | 10m 8s |
 | [177](177/) | [ABBYY Cup 2.0 - Easy](https://codeforces.com/contest/177) | Special | 800-2600 | 7/14 | 22m 32s |
 | [178](178/) | [ABBYY Cup 2.0 - Hard](https://codeforces.com/contest/178) | Special | 1000-2500 | 10/18 | 29m 40s |
-| [180](180/) | [Codeforces Round 116 (Div. 2, ACM-ICPC Rules)](https://codeforces.com/contest/180) | Div. 2 | 1200-2300 | 5/5 | 8m 3s |
+| [180](180/) | [Codeforces Round 116 (Div. 2, ACM-ICPC Rules)](https://codeforces.com/contest/180) | Div. 2 | 1200-2300 | 5/6 | 6m 58s |
 | [181](181/) | [Croc Champ 2012 - Round 2 (Unofficial Div. 2 Edition)](https://codeforces.com/contest/181) | Div. 2 | 800-1300 | 2/2 | 4m 22s |
 | [182](182/) | [Codeforces Round 117 (Div. 2)](https://codeforces.com/contest/182) | Div. 2 | 1000-2200 | 4/5 | 11m 48s |
 | [183](183/) | [Croc Champ 2012 - Final](https://codeforces.com/contest/183) | Special | 1700-2900 | 5/5 | 10m 12s |
