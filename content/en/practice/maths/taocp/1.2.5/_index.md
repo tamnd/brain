@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 1.2.5: Permutations and Factorials"
-description: "Section 1.2.5 exercises: 17/18 solved."
+description: "Section 1.2.5 exercises: 18/18 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "1.2.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 1.2.5. Permutations and Factorials
 
-Exercises from [TAOCP Volume 1](../) Section 1.2.5: 17/18 solved.
+Exercises from [TAOCP Volume 1](../) Section 1.2.5: 18/18 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -25,7 +25,7 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.5: 17/18 solved.
 | [7](07.md) |  [**] |  | verified | 45s |
 | [8](08.md) |  [**] |  | verified | 1m12s |
 | [9](09.md) |  [**] |  | verified | 3m35s |
-| 11 |  [**] |  | - | - |
+| [11](11.md) |  [**] |  | solved | 34m34s |
 | [13](13.md) |  [**] |  | verified | 8m39s |
 | [15](15.md) |  [**] |  | verified | 2m56s |
 | [16](16.md) |  [**] |  | verified | 31s |

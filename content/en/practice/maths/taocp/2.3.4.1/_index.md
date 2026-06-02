@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 2.3.4.1: Free Trees"
-description: "Section 2.3.4.1 exercises: 10/13 solved."
+description: "Section 2.3.4.1 exercises: 13/13 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "2.3.4.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 2.3.4.1. Free Trees
 
-Exercises from [TAOCP Volume 1](../) Section 2.3.4.1: 10/13 solved.
+Exercises from [TAOCP Volume 1](../) Section 2.3.4.1: 13/13 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -27,7 +27,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.4.1: 10/13 solved.
 | [7](07.md) |  [**] |  | verified | 38s |
 | [8](08.md) |  [**] |  | solved | 25s |
 | [9](09.md) |  [**] |  | solved | 3m15s |
-| 10 |  [**] |  | - | - |
-| 11 |  [**] |  | - | - |
+| [10](10.md) |  [**] |  | verified | 1m24s |
+| [11](11.md) |  [**] |  | verified | 42s |
 | [12](12.md) |  [**] |  | solved | 2m11s |
-| 13 |  [**] |  | - | - |
+| [13](13.md) |  [**] |  | verified | 41s |

@@ -18,12 +18,12 @@ Exercises from [TAOCP Volume 1](../) Section 1.2.9: 26/26 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*M12*] | math-simple | solved | 33s |
-| [2](02.md) |  [*M13*] | math-simple | solved | 32s |
+| [1](01.md) |  [*M12*] | math-simple | solved | - |
+| [2](02.md) |  [*M13*] | math-simple | solved | - |
 | [3](03.md) |  [*HM21*] | hm-medium | verified | 5m40s |
-| [4](04.md) |  [*M01*] | math-simple | solved | 37s |
-| [5](05.md) |  [*M20*] | math-medium | solved | 38s |
-| [6](06.md) |  [*HM15*] | hm-simple | solved | 39s |
+| [4](04.md) |  [*M01*] | math-simple | solved | - |
+| [5](05.md) |  [*M20*] | math-medium | solved | - |
+| [6](06.md) |  [*HM15*] | hm-simple | solved | - |
 | [7](07.md) |  [*M15*] | math-simple | verified | 4m53s |
 | [8](08.md) |  [*M23*] | math-medium | verified | 4m23s |
 | [9](09.md) |  [*M11*] | math-simple | verified | 2m41s |
