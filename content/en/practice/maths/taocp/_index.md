@@ -9,7 +9,7 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 914 solved, 501 verified, 917 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. Volume 1: Fundamental Algorithms. 924 solved, 510 verified, 931 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -45,7 +45,7 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.2](2.3.2/) | Binary Tree Representation of Trees | 22 | 19 | 22 |
 | [2.3.3](2.3.3/) | Other Representations of Trees | 19 | 15 | 19 |
 | [2.3.5](2.3.5/) | Lists and Garbage Collection | 12 | 9 | 12 |
-| [3.2.1](3.2.1/) | The Linear Congruential Method | 3 | 3 | 5 |
+| [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
 | [1.2.11.2](1.2.11.2/) | Euler's Summation Formula | 13 | 11 | 13 |
 | [1.2.11.3](1.2.11.3/) | Some Asymptotic Calculations | 14 | 9 | 14 |
 | [1.4.3.1](1.4.3.1/) | A MIX Simulator | 8 | 4 | 8 |
@@ -56,3 +56,4 @@ Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.
 | [2.3.4.4](2.3.4.4/) | Enumeration of Trees | 30 | 15 | 30 |
 | [2.3.4.5](2.3.4.5/) | Path Length | 17 | 15 | 17 |
 | [2.3.4.6](2.3.4.6/) | History and Bibliography | 4 | 2 | 4 |
+| [3.2.1.1](3.2.1.1/) | Choice of Modulus | 8 | 7 | 14 |
