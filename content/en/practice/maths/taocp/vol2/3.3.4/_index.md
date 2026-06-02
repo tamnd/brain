@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.3.4: The Spectral Test"
-description: "Section 3.3.4 exercises: 18/32 solved."
+description: "Section 3.3.4 exercises: 25/32 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.3.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.3.4. The Spectral Test
 
-Exercises from [TAOCP Volume 2](../) Section 3.3.4: 18/32 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.3.4: 25/32 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -43,10 +43,10 @@ Exercises from [TAOCP Volume 2](../) Section 3.3.4: 18/32 solved.
 | [23](23.md) |  [*M26*] | math-hard | verified | 2m08s |
 | [24](24.md) | &#9654; [*M28*] | math-hard | verified | 5m34s |
 | [25](25.md) |  [*HM24*] | hm-medium | verified | 5m55s |
-| 26 |  [*M22*] | math-medium | - | - |
-| 27 |  [*HM39*] | hm-project | - | - |
-| 28 | &#9654; [*M28*] | math-hard | - | - |
-| 29 |  [*HM22*] | hm-medium | - | - |
-| 30 |  [*M33*] | math-hard | - | - |
-| 31 |  [*M48*] | math-research | - | - |
-| 32 | &#9654; [*M21*] | math-medium | - | - |
+| [26](26.md) |  [*M22*] | math-medium | solved | 3m33s |
+| [27](27.md) |  [*HM39*] | hm-project | verified | 3m19s |
+| [28](28.md) | &#9654; [*M28*] | math-hard | verified | 1m55s |
+| [29](29.md) |  [*HM22*] | hm-medium | solved | 4m58s |
+| [30](30.md) |  [*M33*] | math-hard | solved | 3m25s |
+| [31](31.md) |  [*M48*] | math-research | verified | 4m56s |
+| [32](32.md) | &#9654; [*M21*] | math-medium | verified | 1m23s |
