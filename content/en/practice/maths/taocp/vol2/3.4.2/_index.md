@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.4.2: Random Sampling and Shuffling"
-description: "Section 3.4.2 exercises: 18/19 solved."
+description: "Section 3.4.2 exercises: 19/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.4.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.4.2. Random Sampling and Shuffling
 
-Exercises from [TAOCP Volume 2](../) Section 3.4.2: 18/19 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.4.2: 19/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,7 +26,7 @@ Exercises from [TAOCP Volume 2](../) Section 3.4.2: 18/19 solved.
 | [6](06.md) |  [*M24*] | math-medium | solved | 4m31s |
 | [7](07.md) |  [*M25*] | math-medium | solved | 4m07s |
 | [8](08.md) | &#9654; [*M20*] | math-medium | verified | 2m55s |
-| 9 |  [**] |  | - | - |
+| [9](09.md) |  [**] |  | verified | 2m36s |
 | [10](10.md) |  [**] |  | verified | 3m18s |
 | [11](11.md) | &#9654; [**] |  | verified | 2m19s |
 | [12](12.md) |  [**] |  | solved | 4m34s |

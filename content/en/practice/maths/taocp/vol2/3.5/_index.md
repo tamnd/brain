@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.5: What Is a Random Sequence?"
-description: "Section 3.5 exercises: 4/44 solved."
+description: "Section 3.5 exercises: 18/44 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.5"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.5. What Is a Random Sequence?
 
-Exercises from [TAOCP Volume 2](../) Section 3.5: 4/44 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.5: 18/44 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -22,21 +22,21 @@ Exercises from [TAOCP Volume 2](../) Section 3.5: 4/44 solved.
 | [2](02.md) |  [*10*] | simple | verified | 1m12s |
 | [3](03.md) |  [*M25*] | math-medium | verified | 1m13s |
 | [4](04.md) | &#9654; [*HM14*] | hm-simple | verified | 1m15s |
-| 5 | &#9654; [*HM22*] | hm-medium | - | - |
-| 6 |  [*HM23*] | hm-medium | - | - |
-| 7 |  [*HM27*] | hm-hard | - | - |
-| 8 |  [*M15*] | math-simple | - | - |
-| 9 |  [*HM20*] | hm-medium | - | - |
-| 10 | &#9654; [*HM22*] | hm-medium | - | - |
-| 11 |  [*M10*] | math-simple | - | - |
-| 12 |  [*HM20*] | hm-medium | - | - |
-| 13 |  [*HM27*] | hm-hard | - | - |
-| 14 |  [*HM25*] | hm-medium | - | - |
-| 15 | &#9654; [*HM30*] | hm-hard | - | - |
-| 16 |  [*HM38*] | hm-project | - | - |
-| 17 |  [*HM50*] | hm-research | - | - |
+| [5](05.md) | &#9654; [*HM22*] | hm-medium | verified | 1m11s |
+| [6](06.md) |  [*HM23*] | hm-medium | verified | 4m01s |
+| [7](07.md) |  [*HM27*] | hm-hard | verified | 1m33s |
+| [8](08.md) |  [*M15*] | math-simple | verified | 1m24s |
+| [9](09.md) |  [*HM20*] | hm-medium | verified | 1m22s |
+| [10](10.md) | &#9654; [*HM22*] | hm-medium | solved | 3m46s |
+| [11](11.md) |  [*M10*] | math-simple | solved | 3m43s |
+| [12](12.md) |  [*HM20*] | hm-medium | verified | 1m07s |
+| [13](13.md) |  [*HM27*] | hm-hard | verified | 2m44s |
+| [14](14.md) |  [*HM25*] | hm-medium | verified | 3m40s |
+| [15](15.md) | &#9654; [*HM30*] | hm-hard | verified | 1m33s |
+| [16](16.md) |  [*HM38*] | hm-project | verified | 1m11s |
+| [17](17.md) |  [*HM50*] | hm-research | verified | 1m13s |
 | 18 | &#9654; [*HM22*] | hm-medium | - | - |
-| 19 |  [*HM35*] | hm-hard | - | - |
+| [19](19.md) |  [*HM35*] | hm-hard | verified | 1m27s |
 | 20 | &#9654; [**] |  | - | - |
 | 21 |  [**] |  | - | - |
 | 22 | &#9654; [**] |  | - | - |
