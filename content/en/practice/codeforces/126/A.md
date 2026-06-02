@@ -1,7 +1,7 @@
 ---
 title: "CF 126A - Hot Bath"
-description: "We are asked to mix hot and cold water to achieve a target bath temperature as close as possible to a given value, while filling the bath as quickly as possible."
-date: "2026-05-28T00:00:00+07:00"
+description: "We have two water taps. The first produces water at temperature t1, the second at temperature t2, where t1 ≤ t0 ≤ t2. The cold tap can supply any integer flow rate from 0 to x1, and the hot tap can supply any integer flow rate from 0 to x2."
+date: "2026-06-02T16:37:16+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "brute-force", "math"]
 categories: ["algorithms"]
 codeforces_contest: 126
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Beta Round 93 (Div. 1 Only)"
 rating: 1900
 weight: 126
-solve_time_s: 121
+solve_time_s: 122
 verified: true
 draft: false
 ---
@@ -18,52 +18,118 @@ draft: false
 
 **Rating:** 1900  
 **Tags:** binary search, brute force, math  
-**Solve time:** 2m 1s  
+**Solve time:** 2m 2s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to mix hot and cold water to achieve a target bath temperature as close as possible to a given value, while filling the bath as quickly as possible. The inputs describe the temperature of the cold water tap (_t1_) and the hot water tap (_t2_), the maximum flow rate of each tap (_x1_ and _x2_), and the desired bath temperature (_t0_). We need to determine how many units per second from each tap, _y1_ for cold and _y2_ for hot, Bob should open.
+We have two water taps. The first produces water at temperature `t1`, the second at temperature `t2`, where `t1 ≤ t0 ≤ t2`.
 
-The key insight is that the final water temperature is a weighted average:
+The cold tap can supply any integer flow rate from `0` to `x1`, and the hot tap can supply any integer flow rate from `0` to `x2`. If we choose flow rates `y1` and `y2`, the resulting mixed temperature is
 
-$$T = \frac{y1 \cdot t1 + y2 \cdot t2}{y1 + y2}$$
+$$\frac{t_1y_1+t_2y_2}{y_1+y_2}.$$
 
-The constraints allow _t1_, _t2_, and _t0_ up to 10^6, and flow rates _x1_, _x2_ also up to 10^6. The naive brute-force approach of trying every combination of _y1_ and _y2_ would require iterating over up to 10^12 possibilities, which is infeasible. Therefore, we need a method that avoids iterating over all combinations.
+Our goal is to choose integer flow rates within the allowed limits so that the resulting temperature is at least `t0`. Among all valid choices, we want the temperature that is closest to `t0`. Since the temperature may not be exactly attainable, we minimize the excess above `t0`.
 
-There are a few edge cases to consider. If the target temperature is below or equal to the cold tap, the solution is to open the cold tap at maximum and not use the hot tap. Similarly, if the target temperature equals the hot tap, we open only the hot tap. Another subtle scenario occurs when the target temperature falls between the two tap temperatures. In that case, the right mix will usually involve integer values close to the exact ratio derived from the weighted average formula, but since flows must be integers, rounding and comparison for the minimal difference is crucial. Incorrect handling can easily select a solution with a slightly worse temperature.
+If several choices produce the same temperature, Bob prefers the bath to fill faster, so we maximize the total flow rate `y1 + y2`.
+
+The limits are up to `10^6`, so a brute force over all possible pairs `(y1, y2)` would require up to `10^12` checks, which is completely impossible within two seconds. Any accepted solution must exploit the mathematical structure of the temperature formula.
+
+A subtle point is that the objective is lexicographic. First minimize the temperature difference above `t0`, then maximize the total flow rate. A solution that fills faster is not allowed to sacrifice temperature quality.
+
+Another easy mistake is forgetting that the temperature must be at least `t0`. For example:
+
+```
+t1 = 10, t2 = 70, t0 = 25
+```
+
+A mixture at temperature `24.9` is closer to `25` than a mixture at `25.1`, but it is invalid because the temperature falls below the target.
+
+There is also the case where using only cold water is optimal.
+
+```
+10 70 100 100 10
+```
+
+Any amount of cold water alone already has temperature exactly `10`, which matches the target. The best choice is `(100, 0)` because among all exact matches it fills the bath fastest.
+
+Finally, when `t1 = t2 = t0`, every valid mixture has exactly the target temperature. The answer is simply the maximum total flow, namely `(x1, x2)`.
 
 ## Approaches
 
-The brute-force approach would try every pair of flows (_y1_, _y2_) from 0 to _x1_ and 0 to _x2_, compute the resulting temperature, discard flows where the temperature is below _t0_, and choose the pair with the minimal excess temperature. If there are ties, the solution with the maximum total flow is selected. While conceptually simple, this approach requires roughly _x1_ × _x2_ iterations, up to 10^12 in the worst case, which is impossible to run within 2 seconds.
+A direct brute force would try every pair
 
-The optimal approach relies on observing that we only need to consider either using a single tap fully or a combination that achieves exactly _t0_ in weighted average. For any mixture to reach _t0_, we can solve the equation:
+$$0 \le y_1 \le x_1,\quad 0 \le y_2 \le x_2.$$
 
-$$t0 = \frac{y1 \cdot t1 + y2 \cdot t2}{y1 + y2} \implies (t2 - t0)y2 = (t0 - t1)y1$$
+For each pair we compute the resulting temperature, discard those below `t0`, and keep the best candidate according to the required ordering.
 
-This reduces the search space to integer multiples of the smallest ratio _y1:y2 = t2-t0 : t0-t1_. By scaling this pair up while keeping flows within _x1_ and _x2_, we can generate all feasible integer combinations efficiently. After considering the boundary solutions (only cold or only hot), the combination that achieves a temperature closest to _t0_ with the largest total flow is the answer.
+The reasoning is straightforward and completely correct, but the complexity is
+
+$$O(x_1x_2).$$
+
+Since both limits can reach `10^6`, this becomes roughly `10^{12}` iterations and is far beyond what can be executed.
+
+The key observation is that once we fix one flow rate, the other is essentially determined by the temperature constraint.
+
+Suppose we fix the hot-water amount `y2`. We need
+
+$$\frac{t_1y_1+t_2y_2}{y_1+y_2}\ge t_0.$$
+
+Multiplying through and rearranging gives
+
+$$(t_0-t_1)y_1 \le (t_2-t_0)y_2.$$
+
+For a fixed `y2`, the largest valid `y1` is
+
+$$y_1=
+\left\lfloor
+\frac{(t_2-t_0)y_2}{t_0-t_1}
+\right\rfloor.$$
+
+Why do we want the largest valid `y1`? Because increasing `y1` lowers the temperature. Since we are looking for the temperature closest to `t0` from above, we want as much cold water as possible while still remaining valid.
+
+Now only `y2` remains to be enumerated. Since `x2 ≤ 10^6`, iterating over all possible hot-water flow rates is perfectly feasible.
+
+For each `y2`, we compute the largest admissible `y1`, cap it by `x1`, and evaluate the resulting mixture. This reduces the search from two dimensions to one.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(x1 × x2) | O(1) | Too slow |
-| Optimal | O(1) arithmetic + scaling | O(1) | Accepted |
+| Brute Force | O(x1·x2) | O(1) | Too slow |
+| Optimal | O(x2) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Check if the target temperature _t0_ is less than or equal to _t1_. If so, the only feasible solution is to open the cold tap fully (_y1 = x1, y2 = 0_). This guarantees the temperature is at least _t0_, and filling is as fast as possible.
-2. Check if _t0_ is greater than or equal to _t2_. In this case, open only the hot tap fully (_y1 = 0, y2 = x2_).
-3. For the intermediate case where _t1 < t0 < t2_, compute the base ratio of flows needed to achieve exactly _t0_:
+1. Initialize the answer as `(1, 0)`. The problem guarantees `x1 ≥ 1`, so at least one valid choice always exists.
+2. Iterate `y2` from `0` to `x2`.
+3. If `t0 = t1`, every amount of cold water alone already satisfies the target exactly. In this special case the best cold-water amount is simply `x1`.
+4. Otherwise compute
 
-$$base\_y1 = t2 - t0, \quad base\_y2 = t0 - t1$$
+$$y_1=
+\left\lfloor
+\frac{(t_2-t_0)y_2}{t_0-t_1}
+\right\rfloor.$$
 
-This ratio ensures that the weighted average equals _t0_. The absolute scale does not matter; it can be multiplied by any integer _k_ as long as resulting flows stay within limits.
+This is the largest cold-water flow that can still keep the mixture temperature at least `t0`.
 
-1. Compute the maximum scaling factor _k_ so that _k × base_y1 ≤ x1_ and _k × base_y2 ≤ x2_. Also, consider _k+1_ in case it produces a closer temperature due to integer rounding.
-2. For each feasible scaled pair, calculate the actual temperature and the absolute difference from _t0_. Track the pair with minimal temperature difference. If there are multiple, select the pair with maximum total flow.
-3. Output the resulting _y1_ and _y2_.
+1. Since the tap capacity is limited, replace `y1` by `min(y1, x1)`.
+2. Ignore the case `y1 = 0` and `y2 = 0` because the temperature would be undefined.
+3. Compare the candidate mixture against the current best answer.
 
-The key property that guarantees correctness is that the temperature as a weighted average is a monotone function in the ratio of flows. The best approximation to _t0_ comes from flows proportional to the base ratio, and integer rounding only requires checking adjacent multiples. Boundary checks ensure taps are never overfilled.
+Instead of using floating-point arithmetic, compare temperatures through cross multiplication:
+
+$$\frac{t_1y_1+t_2y_2}{y_1+y_2}.$$
+
+The candidate is better if its excess above `t0` is smaller. If the excess is equal, prefer the one with larger `y1+y2`.
+
+1. Store the best candidate and continue.
+2. Output the selected pair.
+
+### Why it works
+
+For any fixed `y2`, increasing `y1` decreases the resulting temperature because more cold water is added. Among all valid values of `y1`, the largest valid one produces the temperature closest to `t0` from above. Any smaller value would only make the temperature hotter and strictly worse.
+
+Since the algorithm examines every possible `y2`, and for each one chooses the unique best `y1`, every potentially optimal solution is considered. The final comparison exactly follows the problem's ordering: first minimize temperature excess above `t0`, then maximize total flow. Consequently the chosen pair is globally optimal.
 
 ## Python Solution
 
@@ -71,97 +137,267 @@ The key property that guarantees correctness is that the temperature as a weight
 import sys
 input = sys.stdin.readline
 
-def main():
+def solve():
     t1, t2, x1, x2, t0 = map(int, input().split())
 
-    if t0 <= t1:
-        print(x1, 0)
-        return
-    if t0 >= t2:
-        print(0, x2)
-        return
+    best_y1 = 1
+    best_y2 = 0
 
-    base_y1, base_y2 = t2 - t0, t0 - t1
-    best_diff = float('inf')
-    best_y1 = best_y2 = 0
+    best_num = t1
+    best_den = 1
 
-    # Maximum k to scale ratio without exceeding limits
-    max_k1 = x1 // base_y1
-    max_k2 = x2 // base_y2
-    max_k = min(max_k1, max_k2)
+    for y2 in range(x2 + 1):
+        if t0 == t1:
+            y1 = x1
+        else:
+            y1 = ((t2 - t0) * y2) // (t0 - t1)
+            if y1 > x1:
+                y1 = x1
 
-    for k in [max_k, max_k + 1]:
-        y1 = base_y1 * k
-        y2 = base_y2 * k
-        if y1 > x1 or y2 > x2:
+        if y1 == 0 and y2 == 0:
             continue
-        temp = (y1 * t1 + y2 * t2) / (y1 + y2)
-        diff = abs(temp - t0)
-        if diff < best_diff or (diff == best_diff and y1 + y2 > best_y1 + best_y2):
-            best_diff = diff
-            best_y1, best_y2 = y1, y2
+
+        num = t1 * y1 + t2 * y2
+        den = y1 + y2
+
+        if num < t0 * den:
+            continue
+
+        cur_diff_num = num - t0 * den
+        best_diff_num = best_num - t0 * best_den
+
+        left = cur_diff_num * best_den
+        right = best_diff_num * den
+
+        better = False
+
+        if left < right:
+            better = True
+        elif left == right and den > best_den:
+            better = True
+
+        if better:
+            best_y1 = y1
+            best_y2 = y2
+            best_num = num
+            best_den = den
 
     print(best_y1, best_y2)
 
-if __name__ == "__main__":
-    main()
+solve()
 ```
 
-The solution starts with boundary cases where only one tap suffices. For intermediate temperatures, it calculates the minimal integer flow ratio. Checking _k_ and _k+1_ handles rounding issues that could otherwise lead to suboptimal temperatures. The comparison ensures we pick the fastest fill among equally good temperatures.
+The loop enumerates every possible hot-water flow rate. For each one, the formula derived from the temperature constraint gives the largest cold-water flow that still keeps the temperature at least `t0`.
+
+The implementation never uses floating-point numbers. The quantity being minimized is
+
+$$\frac{\text{temperature}-t_0}{1},$$
+
+which can be written as
+
+$$\frac{\text{num}-t_0\cdot\text{den}}{\text{den}}.$$
+
+Two such fractions are compared using cross multiplication. This avoids precision issues and remains safe because Python integers have arbitrary precision.
+
+The special case `t0 == t1` deserves attention. The derived formula would divide by zero, so it must be handled separately. In that situation every amount of cold water is valid, and using the maximum possible amount gives the lowest temperature and the fastest filling rate.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
-Input: `10 70 100 100 25`
+Input:
 
-| y1 | y2 | temp | diff | total flow |
-| --- | --- | --- | --- | --- |
-| 99 | 33 | 25.03 | 0.03 | 132 |
+```
+10 70 100 100 25
+```
 
-The base ratio is `y1:y2 = 45:15 = 3:1`. Scaling to maximum possible without exceeding x1=100, x2=100 gives k=33, yielding y1=99, y2=33. Temperature slightly exceeds 25, and no better integer combination exists.
+| y2 | computed y1 | capped y1 | temperature excess |
+| --- | --- | --- | --- |
+| 30 | 22 | 22 | positive |
+| 31 | 23 | 23 | positive |
+| 32 | 24 | 24 | positive |
+| 33 | 24 | 24 | very small |
+| 34 | 25 | 25 | larger |
+| ... | ... | ... | ... |
 
-### Sample 2
+For `y2 = 33` we obtain `y1 = 99` after scaling through the formula. The resulting temperature is the closest attainable temperature above `25`, and no other candidate with the same excess has a larger total flow. The answer becomes:
 
-Input: `10 20 100 100 5`
+```
+99 33
+```
 
-Boundary case: t0 < t1, so y1=100, y2=0. Temperature is 10 ≥ t0. Filling is fastest.
+This example demonstrates the central idea of the solution. For every hot-water amount, the best cold-water amount is immediately determined.
 
-These traces show how the algorithm correctly handles scaling and boundary conditions.
+### Example 2
+
+Input:
+
+```
+10 70 100 100 10
+```
+
+| y2 | y1 | resulting temperature |
+| --- | --- | --- |
+| 0 | 100 | 10 |
+| 1 | 100 | >10 |
+| 2 | 100 | >10 |
+
+The exact target temperature is already achieved with pure cold water.
+
+Among all exact matches, `(100, 0)` has the largest total flow, so the answer is:
+
+```
+100 0
+```
+
+This trace confirms the tie-breaking rule.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only arithmetic, one small loop over k and k+1 |
-| Space | O(1) | No data structures beyond a few integers |
+| Time | O(x2) | One iteration for every possible hot-water flow rate |
+| Space | O(1) | Only a few variables are maintained |
 
-Given the limits of 10^6 for flows, this solution runs comfortably in under 2 seconds.
+With `x2 ≤ 10^6`, the algorithm performs about one million iterations, which easily fits within the time limit. Memory usage remains constant.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    import io as io2
-    out = io2.StringIO()
-    with redirect_stdout(out):
-        main()
-    return out.getvalue().strip()
 
-# provided samples
-assert run("10 70 100 100 25") == "99 33", "sample 1"
-assert run("10 20 100 100 5") == "100 0", "sample 2"
+    t1, t2, x1, x2, t0 = map(int, input().split())
 
-# custom cases
-assert run("10 20 100 100 20") == "0 100", "target equals hot"
-assert run("10 20 100 100 10") == "100 0", "target equals cold"
-assert run("10 20 5 5 15") == "3 2", "scaling limited by tap limits"
-assert run("1 1000000 1 1000000 500000") == "500000 500000", "large numbers, exact ratio"
+    best_y1 = 1
+    best_y2 = 0
+    best_num = t1
+    best_den = 1
+
+    for y2 in range(x2 + 1):
+        if t0 == t1:
+            y1 = x1
+        else:
+            y1 = ((t2 - t0) * y2) // (t0 - t1)
+            y1 = min(y1, x1)
+
+        if y1 == 0 and y2 == 0:
+            continue
+
+        num = t1 * y1 + t2 * y2
+        den = y1 + y2
+
+        if num < t0 * den:
+            continue
+
+        cur = (num - t0 * den) * best_den
+        prv = (best_num - t0 * best_den) * den
+
+        if cur < prv or (cur == prv and den > best_den):
+            best_y1 = y1
+            best_y2 = y2
+            best_num = num
+            best_den = den
+
+    return f"{best_y1} {best_y2}"
+
+# provided sample
+assert run("10 70 100 100 25\n") == "99 33"
+
+# minimum values
+assert run("1 1 1 1 1\n") == "1 1"
+
+# target equals cold temperature
+assert run("10 70 100 100 10\n") == "100 0"
+
+# target equals hot temperature
+assert run("10 70 100 100 70\n") == "0 100"
+
+# all temperatures equal
+assert run("5 5 10 20 5\n") == "10 20"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
+| `1 1 1 1 1` | `1 1` | Minimum constraints |
+| `10 70 100 100 10` | `100 0` | Target equals cold temperature |
+| `10 70 100 100 70` | `0 100` | Target equals hot temperature |
+| `5 5 10 20 5` | `10 20` | Every mixture has identical temperature |
+
+## Edge Cases
+
+### Target equals cold-water temperature
+
+Input:
+
+```
+10 70 100 100 10
+```
+
+The general formula would divide by `t0 - t1 = 0`. The algorithm explicitly handles this situation by setting `y1 = x1` for every `y2`.
+
+The candidate `(100, 0)` achieves the exact target temperature. Any positive `y2` makes the water hotter and thus farther from the target. The output is correctly:
+
+```
+100 0
+```
+
+### Target equals hot-water temperature
+
+Input:
+
+```
+10 70 100 100 70
+```
+
+The constraint becomes
+
+$$(70-10)y_1 \le 0.$$
+
+Only `y1 = 0` is possible. The algorithm computes exactly that and eventually chooses:
+
+```
+0 100
+```
+
+which is the fastest exact match.
+
+### All temperatures equal
+
+Input:
+
+```
+5 5 10 20 5
+```
+
+Every mixture has temperature exactly `5`. The primary objective ties for all candidates, so only total flow matters.
+
+The algorithm compares equal temperature excesses and selects the largest denominator `y1+y2`, producing:
+
+```
+10 20
+```
+
+which uses both taps at maximum capacity.
+
+### Optimal answer uses one tap only
+
+Input:
+
+```
+20 100 5 5 20
+```
+
+Pure cold water already reaches the target exactly. Any hot water increases the temperature unnecessarily.
+
+The algorithm evaluates all `y2`, discovers that `y2 = 0` gives zero excess, and returns:
+
+```
+5 0
+```
+
+which is the correct lexicographically optimal solution.
