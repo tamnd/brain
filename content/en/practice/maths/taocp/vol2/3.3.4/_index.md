@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.3.4: The Spectral Test"
-description: "Section 3.3.4 exercises: 25/32 solved."
+description: "Section 3.3.4 exercises: 26/32 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.3.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.3.4. The Spectral Test
 
-Exercises from [TAOCP Volume 2](../) Section 3.3.4: 25/32 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.3.4: 26/32 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -38,7 +38,7 @@ Exercises from [TAOCP Volume 2](../) Section 3.3.4: 25/32 solved.
 | [18](18.md) |  [**] |  | solved | 2m18s |
 | [19](19.md) |  [**] |  | verified | 1m50s |
 | [20](20.md) |  [*M23*] | math-medium | verified | 1m31s |
-| 21 |  [*M20*] | math-medium | - | - |
+| [21](21.md) |  [*M20*] | math-medium | verified | 8m24s |
 | [22](22.md) |  [*M46*] | math-research | solved | 3m27s |
 | [23](23.md) |  [*M26*] | math-hard | verified | 2m08s |
 | [24](24.md) | &#9654; [*M28*] | math-hard | verified | 5m34s |
