@@ -1,7 +1,7 @@
 ---
 title: "CF 208E - Blood Cousins"
-description: "We are given a rooted forest representing family relationships, where each node corresponds to a person, and each edge points from a child to their parent. A person may have no parent, in which case they are a root of one of the trees in the forest."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a rooted forest where each person has at most one parent. If we follow parent pointers upward, we eventually reach a root or fall off the structure. This defines a collection of trees. A “k-th ancestor” means applying the parent relation k times."
+date: "2026-06-03T17:24:34+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "dfs-and-similar", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 208
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 130 (Div. 2)"
 rating: 2100
 weight: 208
-solve_time_s: 66
-verified: true
+solve_time_s: 110
+verified: false
 draft: false
 ---
 
@@ -18,168 +18,122 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** binary search, data structures, dfs and similar, trees  
-**Solve time:** 1m 6s  
-**Verified:** yes  
+**Solve time:** 1m 50s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rooted forest representing family relationships, where each node corresponds to a person, and each edge points from a child to their parent. A person may have no parent, in which case they are a root of one of the trees in the forest. For each query, we are asked: given a person `v` and an integer `p`, how many other people share the same `p`-th ancestor as `v`? In other words, how many "p-th cousins" does `v` have?
+We are given a rooted forest where each person has at most one parent. If we follow parent pointers upward, we eventually reach a root or fall off the structure. This defines a collection of trees.
 
-The input consists of `n` people with their parent information and `m` queries. Both `n` and `m` can be as large as 100,000, meaning any solution with complexity worse than `O(n log n + m log n)` is unlikely to fit in the 2-second time limit. Brute-force approaches that walk up the tree for every query or compare all pairs of nodes are infeasible.
+A “k-th ancestor” means applying the parent relation k times. So the 1-ancestor is the parent, the 2-ancestor is the parent of the parent, and so on, provided the chain exists.
 
-Edge cases include nodes without a `p`-th ancestor. For example, if a node is at depth 2 and we ask for its 3rd ancestor, the answer must be zero because the ancestor does not exist. Another subtle case is nodes in separate trees: they will never share a common ancestor with nodes in other trees, so queries about them must account for forest structure, not just a single tree.
+For each query consisting of a person v and a distance p, we are asked to count how many other people share the same p-th ancestor as v. In other words, we look at the node u obtained by climbing p steps from v, and we count how many nodes in the entire forest also have u as their p-th ancestor. The answer excludes v itself.
+
+The constraints push us away from any per-query traversal. With up to 100000 nodes and 100000 queries, a solution that walks upward p steps per query becomes quadratic in the worst case. Even a solution that precomputes all ancestors explicitly would require too much memory.
+
+The key structure is that ancestor relationships are fixed by depth in a tree, so nodes that share the same ancestor at distance p form a contiguous grouping in a DFS ordering. This suggests preprocessing subtree structures so we can answer “how many nodes at a given depth exist in a subtree”.
+
+A subtle edge case comes from nodes whose p-th ancestor does not exist. If v is too shallow, the answer must be zero. Another case is when multiple roots exist, since the input is a forest, not a single tree. Any DFS-based solution must handle multiple roots correctly.
 
 ## Approaches
 
-A brute-force approach would traverse up the tree for each query to find the `p`-th ancestor of `v` and then check all other nodes to count which have the same ancestor. This is correct logically but takes `O(n * m)` in the worst case, which is about 10 billion operations and far too slow.
+A direct approach computes the p-th ancestor of each query node by walking up pointers, then scans the entire node set to count matches. This is correct but extremely slow. Each query can take O(n) in the worst case, leading to O(nm) operations, which is infeasible at 10^10 scale.
 
-The key observation to optimize is that for each node, the `p`-th ancestor can be computed efficiently using depth information and precomputation. We can precompute the ancestors using either binary lifting or a simple depth-indexed DFS order because the tree is static. Once we know the `p`-th ancestor of each node, the problem reduces to counting nodes at a specific depth within a subtree rooted at that ancestor. This allows us to process queries in `O(log n)` time using techniques like DFS ordering and binary search.
+A better perspective comes from reversing the problem. Instead of asking “who shares my p-th ancestor”, we can fix a node u and ask: how many nodes have u as their p-th ancestor? This depends on the structure of the subtree rooted at u and the depth distribution inside it.
 
-The optimal approach builds the tree, computes the depth and DFS in/out times of each node, and maintains depth-indexed lists of nodes. Then for each query `(v, p)`, we determine `v`'s `p`-th ancestor `u`, and count nodes at the same depth as `v` within `u`'s subtree, excluding `v` itself. Using binary search over sorted DFS-in times gives an `O(log n)` query per node.
+If we run a DFS from each root, we can record entry times and subtree ranges. We also compute depth of every node. Then for any node u, all nodes in its subtree appear in a contiguous segment in Euler tour order. Among these, the nodes at depth depth[u] + p are exactly those whose p-th ancestor is u.
+
+So we need fast queries of the form: in subtree of u, how many nodes have depth exactly d. This becomes a classic offline grouping problem. We store nodes grouped by depth, and maintain for each depth a sorted list of DFS entry times. Then each query reduces to two binary searches on that list restricted to the subtree interval.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n*m) | O(n) | Too slow |
-| Optimal | O(n + m log n) | O(n) | Accepted |
+| Brute force ancestor walking | O(nm) | O(n) | Too slow |
+| DFS + depth buckets + binary search | O((n + m) log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Parse input to build the parent array and construct the forest using adjacency lists. Each node points to its children. Identify roots where the parent is zero. This setup is necessary to traverse trees efficiently.
-2. Perform a DFS on each root to compute three things for every node: its depth, its DFS-in time, and its DFS-out time. Depth tells us how many generations below the root a node is. DFS-in/out times allow us to represent each subtree as a contiguous interval in the traversal order.
-3. For each depth level, maintain a sorted list of DFS-in times of nodes at that depth. This allows us to quickly query how many nodes exist at a particular depth inside a subtree using binary search.
-4. Precompute a `2^k`-ancestor table for each node (binary lifting) to quickly find any `p`-th ancestor in `O(log n)`. This table allows us to move up the tree in powers of two efficiently.
-5. For each query `(v, p)`, determine the `p`-th ancestor `u` of `v` using the binary lifting table. If `v` does not have a `p`-th ancestor, the answer is zero. Otherwise, retrieve the list of DFS-in times for nodes at `v`'s depth and count how many of these times fall within `u`'s DFS-in/out interval. Subtract one to exclude `v` itself.
-6. Collect the answers and output them in the order of queries.
+1. Build adjacency lists for the forest using the parent array. Each node with parent 0 is treated as a root. This ensures we can traverse every tree independently.
+2. Run a DFS from each root, assigning each node a depth and recording its entry time tin and exit time tout. The DFS order ensures that the subtree of any node forms a continuous interval in the Euler tour.
+3. For each depth value, maintain a list of entry times of nodes that appear at that depth. This groups nodes by level in a way that preserves DFS ordering.
+4. For a query (v, p), compute u = ancestor p steps above v using a precomputed binary lifting table. If u does not exist, return 0 immediately because no node can share a non-existent ancestor.
+5. Once u is found, we want to count nodes in subtree(u) whose depth equals depth[u] + p. We take the list corresponding to that target depth and count how many entry times lie inside [tin[u], tout[u]] using binary search.
+6. Return this count minus 1 if v itself is included in the range, since the problem asks for “other people”, not including v.
 
-This works because DFS-in/out times ensure that every node in a subtree of `u` has a DFS-in time between `u`'s in and out. Depth-indexed lists guarantee we only consider nodes at the same generation. Binary lifting ensures we can compute ancestors in logarithmic time per query.
+Why it works is based on two structural properties of DFS on trees. First, all nodes in a subtree correspond exactly to a contiguous segment in Euler tour order. Second, depth is constant along ancestor-to-descendant differences, so nodes whose p-th ancestor is u must lie exactly p levels below u and inside its subtree. These two constraints uniquely characterize the valid nodes, so counting them via intersection of a depth bucket and subtree interval cannot overcount or miss any valid node.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-import bisect
+sys.setrecursionlimit(200000)
 
 n = int(input())
-parents = list(map(int, input().split()))
-children = [[] for _ in range(n)]
+parent = list(map(int, input().split()))
+
+g = [[] for _ in range(n)]
 roots = []
 
-for i, p in enumerate(parents):
+for i, p in enumerate(parent):
     if p == 0:
         roots.append(i)
     else:
-        children[p-1].append(i)
+        g[p - 1].append(i)
 
-LOG = 17  # since 2^17 > 1e5
-up = [[-1]*LOG for _ in range(n)]
-depth = [0]*n
-tin = [0]*n
-tout = [0]*n
+LOG = 17
+up = [[-1] * n for _ in range(LOG)]
+depth = [0] * n
+tin = [0] * n
+tout = [0] * n
 timer = 0
-nodes_by_depth = dict()
 
-def dfs(u, d):
+depth_nodes = {}
+
+def dfs(v, p):
     global timer
-    depth[u] = d
-    tin[u] = timer
-    if d not in nodes_by_depth:
-        nodes_by_depth[d] = []
-    nodes_by_depth[d].append(timer)
+    tin[v] = timer
     timer += 1
-    for v in children[u]:
-        up[v][0] = u
-        for k in range(1, LOG):
-            if up[v][k-1] != -1:
-                up[v][k] = up[up[v][k-1]][k-1]
-        dfs(v, d+1)
-    tout[u] = timer - 1
+
+    up[0][v] = p
+    for i in range(1, LOG):
+        if up[i - 1][v] != -1:
+            up[i][v] = up[i - 1][up[i - 1][v]]
+
+    d = depth[v]
+    if d not in depth_nodes:
+        depth_nodes[d] = []
+    depth_nodes[d].append(tin[v])
+
+    for to in g[v]:
+        depth[to] = d + 1
+        dfs(to, v)
+
+    tout[v] = timer - 1
 
 for r in roots:
-    dfs(r, 0)
+    dfs(r, -1)
 
-def get_kth_ancestor(v, k):
+def lift(v, k):
     for i in range(LOG):
+        if v == -1:
+            return -1
         if k & (1 << i):
-            v = up[v][i]
-            if v == -1:
-                break
+            v = up[i][v]
     return v
 
 m = int(input())
-queries = [tuple(map(int, input().split())) for _ in range(m)]
-res = []
+out = []
 
-for v, p in queries:
+for _ in range(m):
+    v, p = map(int, input().split())
     v -= 1
-    u = get_kth_ancestor(v, p)
+    u = lift(v, p)
+
     if u == -1:
-        res.append(0)
+        out.append("0")
         continue
-    d = depth[v]
-    arr = nodes_by_depth[d]
-    left = bisect.bisect_left(arr, tin[u])
-    right = bisect.bisect_right(arr, tout[u])
-    res.append(right - left - 1)
 
-print(' '.join(map(str, res)))
-```
-
-The first section parses input and builds the adjacency list. DFS assigns depth and DFS-in/out times and fills the dictionary mapping depths to sorted lists of in-times. Binary lifting precomputes ancestors. Queries leverage these precomputations, counting nodes in a depth-sorted array via binary search to stay within logarithmic complexity. Subtracting one removes the node itself from the count.
-
-## Worked Examples
-
-### Sample 1
-
-Input:
-
-```
-6
-0 1 1 0 4 4
-7
-1 1
-1 2
-2 1
-2 2
-4 1
-5 1
-6 1
-```
-
-| Query | v | p | p-th ancestor u | Nodes at depth of v in u's subtree | Count |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 1 | -1 | - | 0 |
-| 2 | 1 | 2 | -1 | - | 0 |
-| 3 | 2 | 1 | 1 | [2,3] | 1 |
-| 4 | 2 | 2 | -1 | - | 0 |
-| 5 | 4 | 1 | -1 | - | 0 |
-| 6 | 5 | 1 | 4 | [5,6] | 1 |
-| 7 | 6 | 1 | 4 | [5,6] | 1 |
-
-This confirms the DFS and depth tracking allows counting cousins correctly and handles roots and missing ancestors.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n log n + m log n) | DFS takes O(n), binary lifting table fills in O(n log n), each query uses binary search in O(log n) |
-| Space | O(n log n) | Store tree, DFS times, binary lifting table, and depth-indexed lists |
-
-With `n` and `m` up to 10^5, operations are under 10^7, well within 2 seconds. Memory usage fits 256 MB limit.
-
-## Test Cases
-
-```python
-import sys, io
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    exec(open(__file__).read(), globals())
-    return sys.stdout.getvalue().strip()
-
-# provided sample
-assert run("6\n0 1 1 0 4 4\n7\n1 1\n1 2\n2 1\n2 2\n4 1\n5 1\n6 1\n") == "0 0 1 0 0 1 1", "sample 1"
-
-# single node
-assert run("1\n0\n1\n1 1\n") == "0",
+    target_depth = depth[u] + p
+    arr = d
 ```

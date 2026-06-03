@@ -1,7 +1,7 @@
 ---
 title: "CF 208D - Prizes, Prizes, more Prizes"
-description: "In this problem, we are asked to simulate Vasya's prize redemption strategy. Vasya collects points from chocolate bar wrappings over time. Each wrapping contributes a certain number of points, and the points accumulate sequentially."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have a sequence of chocolate bar purchases, each yielding a certain number of points. Vasya starts with zero points and after each bar may go to the prize center. The prizes have fixed point costs: a mug, a towel, a bag, a bicycle, and a car, in strictly increasing order."
+date: "2026-06-03T17:22:43+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 208
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 130 (Div. 2)"
 rating: 1200
 weight: 208
-solve_time_s: 86
-verified: true
+solve_time_s: 170
+verified: false
 draft: false
 ---
 
@@ -18,40 +18,49 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** implementation  
-**Solve time:** 1m 26s  
-**Verified:** yes  
+**Solve time:** 2m 50s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-In this problem, we are asked to simulate Vasya's prize redemption strategy. Vasya collects points from chocolate bar wrappings over time. Each wrapping contributes a certain number of points, and the points accumulate sequentially. There is a fixed set of prizes, each with a known cost in points. Vasya uses a greedy approach: whenever he has enough points to buy at least one prize, he always chooses the most expensive prize he can afford and continues redeeming until he cannot afford any prize.
+We have a sequence of chocolate bar purchases, each yielding a certain number of points. Vasya starts with zero points and after each bar may go to the prize center. The prizes have fixed point costs: a mug, a towel, a bag, a bicycle, and a car, in strictly increasing order. Vasya applies a greedy strategy: whenever he has enough points to buy any prize, he picks the most expensive one he can afford, reduces his points, and repeats until he cannot afford any prize.
 
-The input provides the number of chocolate bars, the list of points per bar in chronological order, and the costs of five prizes in increasing order. The output requires two pieces of information: the number of each type of prize Vasya ends up with and the number of points he has left after all possible redemptions.
+Our task is to reconstruct Vasya’s prize collection and determine his leftover points after processing all chocolate bars.
 
-The constraints are moderate: the number of chocolate bars, `n`, is at most 50, so iterating over them sequentially is acceptable. The points and prize costs can be as large as `10^9`, which rules out any naive brute-force search or simulation over the full point range. A key observation is that points only need to be accumulated and compared against prize costs, making an O(n) approach feasible.
+The input gives `n` (up to 50), the points for each bar (`p_i` up to 10^9), and the costs of the five prizes (strictly increasing, up to 10^9). The small `n` allows us to simulate the process directly without worrying about performance. The large point values mean we must avoid naive array-based DP or counting approaches that assume small integers.
 
-Non-obvious edge cases include the scenario where Vasya's points are exactly equal to a prize cost, where multiple prizes can be redeemed consecutively in one accumulation, or when he cannot redeem any prize at all. For instance, if Vasya has points `[1, 2]` and prize costs `[2, 3, 4, 5, 6]`, after the second bar he has 3 points and can redeem the second prize, leaving 0 points. Careless handling could miss the opportunity for multiple consecutive redemptions.
+Edge cases include situations where Vasya’s points exactly match a prize cost, or where he can afford multiple prizes at once and the greedy choice must be applied repeatedly. For instance, if Vasya earns 10 points and prizes cost `[2,4,10,15,20]`, he should choose the bag immediately rather than buying multiple smaller items, and leftover points must be calculated correctly after each purchase.
 
 ## Approaches
 
-A naive approach is to simulate every step exactly as described: for each chocolate bar, add its points to Vasya's total, and then repeatedly attempt to redeem prizes starting from the cheapest to the most expensive or in some arbitrary order. This approach is correct because it mirrors the problem statement, but it could be implemented inefficiently if the redemption logic iterates unnecessarily over prizes or loops without considering the descending cost order. Since `n` is small, this naive approach is actually feasible, but careful ordering matters to match the greedy choice rule.
+The brute-force approach is straightforward simulation. Start with zero points and for each chocolate bar add its points. Then, while the current points are at least the cheapest prize cost, repeatedly find the most expensive prize Vasya can afford, increment its count, and subtract its cost from points. Continue this for all bars.
 
-The optimal approach is to accumulate Vasya's points sequentially and, for each accumulation, repeatedly redeem prizes in descending cost order. By always checking from the most expensive prize down to the cheapest, we ensure that Vasya's greedy strategy is faithfully implemented. We increment counters for each prize and subtract the cost from Vasya's current points. This method is efficient and straightforward, leveraging the fact that there are only five prizes and `n` is small.
+This approach is correct because it directly follows Vasya’s greedy strategy. Since `n` is at most 50 and there are only 5 prizes, the inner loop of repeatedly exchanging points will run at most `n * max_points / min_cost` times. Even with large point values, the maximum number of iterations is constrained by the greedy subtraction sequence, which is at most a handful of iterations per bar in practical terms.
+
+There is no faster asymptotic solution needed because the constraints are small, but the key insight is that the greedy strategy allows us to always pick the largest affordable prize without considering sequences of smaller prizes - the problem guarantees this approach is optimal.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n * 5 * k) | O(1) | Acceptable for small `n`, but may do unnecessary loops |
-| Optimal | O(n * 5) | O(1) | Efficient, directly simulates Vasya's greedy behavior |
+| Brute Force Simulation | O(n * 5) in practice | O(5) for counters | Accepted |
+| Optimized | N/A | N/A | Not needed; brute force suffices |
 
 ## Algorithm Walkthrough
 
-1. Initialize a variable to store Vasya's accumulated points and an array of counters for the five prizes, all set to zero.
-2. Iterate through the sequence of points from each chocolate bar. For each point value, add it to Vasya's accumulated points.
-3. After adding points from a bar, attempt to redeem prizes. Check the prizes in descending order of cost. For each prize, while Vasya has enough points to redeem it, increment the corresponding counter and subtract the prize cost from the accumulated points. This loop continues until no prize can be redeemed.
-4. Repeat the process for all chocolate bars.
-5. After processing all bars, the counters hold the number of each prize Vasya has received, and the accumulated points variable holds any leftover points.
+1. Initialize a list `count` of size 5 to zero, representing the number of each prize Vasya has collected. Initialize `points` to zero.
+2. Iterate over each chocolate bar in chronological order. Add its points to `points`.
+3. While `points` is at least the cost of the cheapest prize:
 
-Why it works: The algorithm works because it directly implements Vasya's greedy strategy. At every step, it ensures the most expensive affordable prize is chosen. The invariant is that at any point after redemption, Vasya has fewer points than the cheapest unredeemed prize or zero, which matches the problem's rules.
+a. Iterate over the prizes from the most expensive to the cheapest.
+
+b. Find the most expensive prize whose cost is less than or equal to `points`.
+
+c. Increment the corresponding count.
+
+d. Subtract the prize’s cost from `points`.
+4. After processing all chocolate bars, print the counts of each prize followed by the remaining `points`.
+
+This works because the invariant is that after each inner loop, Vasya cannot afford any prize except possibly after adding more points from the next chocolate bar. At each decision point, selecting the most expensive affordable prize guarantees the greedy strategy matches the problem description.
 
 ## Python Solution
 
@@ -59,124 +68,110 @@ Why it works: The algorithm works because it directly implements Vasya's greedy 
 import sys
 input = sys.stdin.readline
 
-def main():
-    n = int(input())
-    points = list(map(int, input().split()))
-    prize_costs = list(map(int, input().split()))  # a, b, c, d, e
-    prize_counts = [0] * 5
-    total_points = 0
+n = int(input())
+points_list = list(map(int, input().split()))
+prizes = list(map(int, input().split()))  # a, b, c, d, e
+count = [0] * 5
+points = 0
 
-    for p in points:
-        total_points += p
-        for i in range(4, -1, -1):  # check from most expensive to cheapest
-            while total_points >= prize_costs[i]:
-                total_points -= prize_costs[i]
-                prize_counts[i] += 1
+for p in points_list:
+    points += p
+    while points >= prizes[0]:
+        for i in range(4, -1, -1):
+            if points >= prizes[i]:
+                count[i] += 1
+                points -= prizes[i]
+                break
 
-    print(' '.join(map(str, prize_counts)))
-    print(total_points)
-
-if __name__ == "__main__":
-    main()
+print(' '.join(map(str, count)))
+print(points)
 ```
 
-The Python implementation follows the algorithm exactly. We read input efficiently using `sys.stdin.readline`. The main loop iterates over each chocolate bar's points, adding them to `total_points`. The nested loop processes the prizes in descending order, ensuring the greedy strategy is respected. The `while` loop handles multiple redemptions consecutively if enough points are available, which could be missed in a careless implementation.
+The outer loop adds points for each bar. The inner loop repeatedly applies the greedy strategy until Vasya can no longer buy any prize. Iterating from most expensive to cheapest ensures we always pick the maximal prize first. Using `break` inside the inner loop guarantees only one prize is bought per iteration, correctly simulating Vasya’s continuous exchanges.
 
 ## Worked Examples
 
-**Example 1**
+Sample 1:
 
-Input:
+| Step | Points Added | Points Before Exchange | Prize Bought | Points After Exchange | Count |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 3 | 3 | Mug (2) | 1 | [1,0,0,0,0] |
+| 2 | 10 | 11 | Bag (10) | 1 | [1,0,1,0,0] |
+| 3 | 4 | 5 | Towel (4) | 1 | [1,1,1,0,0] |
 
-```
-3
-3 10 4
-2 4 10 15 20
-```
+This confirms the algorithm correctly chooses the most expensive prize at each step and tracks leftover points.
 
-Step-by-step:
-
-| Bar | Points Added | Total Points | Redeemed Prize(s) | Total Points After Redemption |
-| --- | --- | --- | --- | --- |
-| 3 | 3 | 3 | 1 mug (2 points) | 1 |
-| 10 | 10 | 11 | 1 bag (10 points) | 1 |
-| 4 | 4 | 5 | 1 towel (4 points) | 1 |
-
-Output:
-
-```
-1 1 1 0 0
-1
-```
-
-**Example 2**
-
-Input:
+Custom Input:
 
 ```
 5
-2 2 2 2 2
-3 4 5 6 7
+1 2 3 4 5
+2 3 5 7 11
 ```
 
-Step-by-step:
-
-| Bar | Points Added | Total Points | Redeemed Prize(s) | Total Points After Redemption |
+| Step | Points | Prize Bought | Points After | Count |
 | --- | --- | --- | --- | --- |
-| 2 | 2 | 2 | None | 2 |
-| 2 | 2 | 4 | 1 cheapest prize (3 points) | 1 |
-| 2 | 2 | 3 | 1 cheapest prize (3 points) | 0 |
-| 2 | 2 | 2 | None | 2 |
-| 2 | 2 | 4 | 1 cheapest prize (3 points) | 1 |
+| 1 | 1 | - | 1 | [0,0,0,0,0] |
+| 2 | 3 | 3 | 0 | [0,1,0,0,0] |
+| 3 | 3 | 2 | 0 | [1,1,0,0,0] |
+| 4 | 4 | 3 | 1 | [1,1,1,0,0] |
+| 5 | 6 | 5 | 1 | [1,1,2,0,0] |
 
-Output:
-
-```
-3 0 0 0 0
-1
-```
-
-This confirms the algorithm handles consecutive redemptions correctly and respects the greedy choice.
+This demonstrates repeated greedy selections with leftover points being correctly carried forward.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n * 5) | For each of the n chocolate bars, we check up to 5 prizes in descending order; the inner while loop executes at most once per prize per bar in worst case due to subtraction. |
-| Space | O(1) | Only a fixed-size array for prize counts and a variable for total points are used. |
+| Time | O(n * 5) | Outer loop runs `n` times; inner loop runs at most 5 iterations per prize exchange. |
+| Space | O(5) | Store counts of 5 prizes; input list of size n. |
 
-Given `n <= 50`, this is well within typical 2-second limits even for large integers.
+With n ≤ 50, this executes well under 2 seconds even with large point values. Memory usage is trivial, far below 256 MB.
 
 ## Test Cases
 
 ```python
-# helper to run the solution
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        main()
-    return out.getvalue().strip()
+    n = int(input())
+    points_list = list(map(int, input().split()))
+    prizes = list(map(int, input().split()))
+    count = [0]*5
+    points = 0
+    for p in points_list:
+        points += p
+        while points >= prizes[0]:
+            for i in range(4, -1, -1):
+                if points >= prizes[i]:
+                    count[i] += 1
+                    points -= prizes[i]
+                    break
+    return f"{' '.join(map(str,count))}\n{points}"
 
-# provided samples
+# Provided sample
 assert run("3\n3 10 4\n2 4 10 15 20\n") == "1 1 1 0 0\n1", "sample 1"
-# custom cases
-assert run("5\n2 2 2 2 2\n3 4 5 6 7\n") == "3 0 0 0 0\n1", "multiple redemptions"
-assert run("1\n1\n1 2 3 4 5\n") == "1 0 0 0 0\n0", "exactly enough for cheapest prize"
-assert run("2\n1000000000 1000000000\n1 2 3 4 5\n") == "400000000 200000000 133333333 100000000 80000000\n0", "large points"
-assert run("3\n1 1 1\n5 6 7 8 9\n") == "0 0 0 0 0\n3", "cannot redeem any prize"
+
+# Minimum input
+assert run("1\n1\n1 2 3 4 5\n") == "1 0 0 0 0\n0", "min input"
+
+# All points smaller than cheapest prize
+assert run("3\n1 1 1\n5 6 7 8 9\n") == "0 0 0 0 0\n3", "all points small"
+
+# Exact sums
+assert run("2\n7 4\n2 3 5 7 10\n") == "0 1 1 0 0\n3", "exact sums"
+
+# Multiple exchanges per bar
+assert run("1\n20\n2 4 10 15 20\n") == "0 0 1 0 0\n10", "single large bar"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 5 bars, repeated small points | 3 0 0 0 0\n1 | Multiple consecutive redemptions |
-| 1 bar, points equal cheapest prize | 1 0 0 0 0\n0 | Redeeming exactly at cost boundary |
-| 2 bars, very large points | 400000000 200000000 133333333 100000000 80000000\n0 | Correct handling of large numbers |
-| 3 bars, insufficient points | 0 0 0 0 0\n3 | No prizes redeemed when points are below minimum |
+| 1 1 1 / 5 6 7 8 9 | 0 0 0 0 0\n3 | Points less than any prize |
+| 2 7 4 / 2 3 5 7 10 | 0 1 1 0 0\n3 | Exact sums triggering multiple prizes |
+| 1 20 / 2 4 10 15 20 | 0 0 1 0 0\n10 | Single bar allowing multiple exchanges |
 
 ## Edge Cases
 
-The first
+If Vasya earns points that exactly match multiple prizes in a single step, the algorithm selects the most expensive prize first. For instance, points 20 with prizes `[2,4,10,15,20]` leads to one car if we processed greedily in reverse order. Leftover points are zero if

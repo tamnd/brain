@@ -1,7 +1,7 @@
 ---
 title: "CF 208A - Dubstep"
-description: "We are given a single compressed string that represents a song that was modified by repeatedly inserting the marker string \"WUB\" before, after, and between the original words."
-date: "2026-05-29T00:00:00+07:00"
+description: "The input is a single string that has been formed by taking a sequence of original words and then inserting the marker string \"WUB\" around and between them in a very specific way."
+date: "2026-06-03T17:19:53+07:00"
 tags: ["codeforces", "competitive-programming", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 208
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 130 (Div. 2)"
 rating: 900
 weight: 208
-solve_time_s: 59
+solve_time_s: 76
 verified: true
 draft: false
 ---
@@ -18,59 +18,62 @@ draft: false
 
 **Rating:** 900  
 **Tags:** strings  
-**Solve time:** 59s  
+**Solve time:** 1m 16s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single compressed string that represents a song that was modified by repeatedly inserting the marker string `"WUB"` before, after, and between the original words. After these insertions, everything was concatenated into one continuous string, so the original word boundaries are lost and all separators are hidden inside this pattern.
+The input is a single string that has been formed by taking a sequence of original words and then inserting the marker string `"WUB"` around and between them in a very specific way. Every original word is guaranteed not to contain `"WUB"` inside it, so every occurrence of `"WUB"` in the final string is artificial structure added during remixing.
 
-The task is to reconstruct the original sequence of words. Conceptually, we need to treat `"WUB"` as a delimiter that may appear in runs of arbitrary length, and recover the words that lie between these delimiters. Once the delimiters are removed, the remaining non-empty fragments, in order, form the original song.
+The task is to recover the original sequence of words. Conceptually, we need to treat `"WUB"` as a delimiter that may appear repeatedly and possibly in blocks. After removing these delimiters, the remaining characters should form the original words in order, separated by single spaces.
 
-The input length is at most 200 characters, which immediately suggests that even quadratic or cubic solutions would pass comfortably. However, the structure of the problem is string parsing, where an optimal linear scan is both simpler and more robust than any heavier approach.
+The string length is at most 200, which immediately rules out any concern about heavy preprocessing or complex parsing strategies. Even an O(n²) solution would be safe, but the structure suggests a linear scan is sufficient.
 
-A subtle edge case comes from repeated delimiters. The string may contain consecutive `"WUB"` blocks, producing empty segments between them. For example, `"WUBWUBABC"` should yield only `"ABC"`, not empty words. Another case is trailing or leading `"WUB"`, such as `"ABCWUB"` or `"WUBABC"`, which should not introduce empty words at the boundaries. A naive split that does not filter empty tokens would incorrectly treat these as words.
+A few edge cases matter for correctness. First, `"WUB"` can appear consecutively, producing long runs of delimiters like `"WUBWUBWUB"`, which should behave like a single separator rather than multiple empty words. For example, `"WUBWUBABC"` should produce `"ABC"` and not include empty tokens.
 
-Another potential pitfall is misunderstanding that `"WUB"` is not a single-character separator but a three-character pattern. Treating it as independent letters would completely break reconstruction, since the pattern must be matched exactly.
+Second, `"WUB"` may appear at the beginning or end of the string, which should not produce leading or trailing spaces. For example, `"WUBABCWUB"` should still output `"ABC"` without extra whitespace.
+
+Third, the string might contain only one word without any `"WUB"` at all, in which case the output is the original string unchanged.
 
 ## Approaches
 
-A direct brute-force idea is to scan the string and, at every position, attempt to detect whether a word starts there. Since we do not know word boundaries, one could imagine recursively trying all possible ways to partition the string while ensuring that every `"WUB"` appears only as a separator. This quickly turns into a combinatorial explosion: at each index, we either decide it is part of a word or the start of a `"WUB"` block, and this branching leads to exponential behavior in the worst case.
+A naive approach would be to repeatedly search for `"WUB"` and delete it from the string until none remain. Each deletion shifts the string and costs O(n), and in the worst case there can be O(n) occurrences, leading to O(n²) behavior. While this is still acceptable for n ≤ 200, it is unnecessarily indirect and makes edge handling of consecutive delimiters awkward, especially when ensuring spaces are inserted correctly between reconstructed words.
 
-Another naive but more structured approach is repeated string replacement. One might continuously replace occurrences of `"WUB"` with a space, then normalize multiple spaces, and finally split. While this is closer to the intended solution, careless implementations can degrade to O(n²) due to repeated scanning and string reconstruction after each replacement.
+A more direct approach is to scan the string once from left to right while treating `"WUB"` as a single separator pattern. Whenever we encounter `"WUB"`, we skip it entirely. Whenever we encounter a non-matching segment, we collect it as part of a word. The key observation is that `"WUB"` behaves like a separator that should never appear in the output and never contributes characters. This turns the problem into token extraction from a stream with a known fixed-length delimiter.
 
-The key observation is that `"WUB"` acts purely as a delimiter and has no semantic meaning in the final output. This means we do not need to simulate insertions or reversals, we only need to remove all occurrences of this pattern and treat what remains as words separated by implicit boundaries. Since the input is small, we can safely scan once, detect occurrences of `"WUB"`, and skip them, collecting non-empty sequences of letters as words.
-
-This reduces the problem to a single linear pass over the string, building words incrementally and flushing them whenever a delimiter is encountered.
+The crucial improvement is to avoid constructing intermediate strings or repeatedly modifying the input. Instead, we only move a pointer through the string once, extracting meaningful characters and inserting spaces only when transitioning between words.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Repeated deletion of `"WUB"` | O(n²) | O(n) | Accepted but inefficient |
+| Linear scan with delimiter skipping | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat the string as a stream and build the answer incrementally.
+1. Initialize an index `i = 0` and an empty list `words`. This list will store reconstructed words in order.
+2. While `i` is less than the length of the string, check whether the substring starting at `i` matches `"WUB"`.
 
-1. Start from the first character and maintain a buffer for the current word.
+When it matches, advance `i` by 3 to skip this delimiter completely.
 
-This buffer stores consecutive letters that are not part of `"WUB"`.
-2. At each position, check whether the next three characters form `"WUB"`.
+This works because `"WUB"` is always a structural separator, never part of a real word.
+3. If `"WUB"` is not found at position `i`, start collecting a word.
 
-If they do, we treat this as a separator boundary.
-3. When we encounter `"WUB"`, we finalize the current buffer if it is non-empty and append it to the result list, then clear the buffer.
+Create an empty buffer and keep advancing `i` while the current position does not start a `"WUB"` sequence.
 
-We then skip ahead by three characters, because we consumed the entire delimiter.
-4. If the current position is not `"WUB"`, we append the character to the buffer and move forward by one.
-5. After the scan finishes, if the buffer still contains a word, append it to the result list.
-6. Join all collected words using a single space.
+Append each character into the buffer.
 
-The important design choice is that we never attempt to interpret partial `"WUB"` matches. We only act when the full three-character pattern is confirmed, which prevents misalignment.
+This ensures we extract maximal contiguous sequences of real characters.
+4. Once a `"WUB"` is encountered or the string ends, convert the buffer into a word and append it to `words` if it is non-empty.
+
+This prevents empty words caused by consecutive delimiters.
+5. After processing the entire string, join all collected words using a single space and output the result.
+
+The key idea is that `"WUB"` acts as a hard boundary. Every time we skip it, we are guaranteed to be between words or at a boundary, so any accumulated characters form a complete original word.
 
 ### Why it works
 
-The invariant is that at any position in the scan, everything already processed has been fully decomposed into correct original words, and the buffer contains exactly the suffix of the current word segment since the last valid `"WUB"` boundary. Every time we detect `"WUB"`, we are guaranteed that no original word contains this substring, so the boundary is real and safe to cut. Since the original construction only inserted `"WUB"` between words and not inside them, every maximal sequence of non-`"WUB"` characters corresponds exactly to one original word.
+The correctness rests on the invariant that at any moment, we either stand at the start of a valid word or at the start of a `"WUB"` block. Since `"WUB"` never appears inside real words, skipping it cannot remove meaningful data. Every character not part of a `"WUB"` block belongs to exactly one original word, and characters are appended in order, preserving word order exactly as in the original song.
 
 ## Python Solution
 
@@ -78,36 +81,31 @@ The invariant is that at any position in the scan, everything already processed 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    s = input().strip()
-    n = len(s)
-    
-    res = []
-    i = 0
-    current = []
-    
-    while i < n:
-        if i + 3 <= n and s[i:i+3] == "WUB":
-            if current:
-                res.append("".join(current))
-                current = []
-            i += 3
-        else:
-            current.append(s[i])
-            i += 1
-    
-    if current:
-        res.append("".join(current))
-    
-    print(" ".join(res))
+s = input().strip()
+n = len(s)
 
-if __name__ == "__main__":
-    solve()
+words = []
+i = 0
+
+while i < n:
+    if i + 3 <= n and s[i:i+3] == "WUB":
+        i += 3
+        continue
+
+    buf = []
+    while i < n and not (i + 3 <= n and s[i:i+3] == "WUB"):
+        buf.append(s[i])
+        i += 1
+
+    if buf:
+        words.append("".join(buf))
+
+print(" ".join(words))
 ```
 
-The solution reads the string once and processes it using a single pointer. The key operation is the substring check `s[i:i+3] == "WUB"`, which is constant time due to fixed length. The buffer `current` accumulates characters of the current word and is flushed whenever a delimiter is confirmed.
+The implementation follows the scanning strategy directly. The outer loop ensures we process the string in a single pass. The inner loop builds a word until a `"WUB"` boundary appears.
 
-The implementation avoids repeated string concatenation by using a list for `current`, which ensures linear behavior when joining at the end. The pointer advancement by three positions on encountering `"WUB"` is essential, since failing to skip correctly would reprocess characters and risk incorrect grouping.
+A subtle point is the repeated check `i + 3 <= n` before substring comparison. This avoids slicing beyond the string end and keeps the logic safe at boundaries. Another important detail is the `buf` guard before appending, which prevents empty words from consecutive `"WUB"` sequences.
 
 ## Worked Examples
 
@@ -119,52 +117,55 @@ Input:
 WUBWUBABCWUB
 ```
 
-| i | substring | action | current | result |
+| Step | i | Current action | Buffer | Words |
 | --- | --- | --- | --- | --- |
-| 0 | WUB | skip, flush empty | [] | [] |
-| 3 | WUB | skip, flush empty | [] | [] |
-| 6 | ABC | add chars | [A,B,C] | [] |
-| 9 | WUB | flush word | [] | [ABC] |
+| 1 | 0 | skip "WUB" | [] | [] |
+| 2 | 3 | skip "WUB" | [] | [] |
+| 3 | 6 | collect word | ["A","B","C"] | [] |
+| 4 | 9 | skip "WUB" | [] | ["ABC"] |
 
-Final output: `ABC`
+Output:
 
-This trace shows how consecutive delimiters do not produce empty words and only meaningful character sequences are preserved.
+```
+ABC
+```
+
+This trace shows that consecutive delimiters are fully ignored and do not produce empty words, and that trailing delimiters are safely skipped without affecting output.
 
 ### Example 2
 
 Input:
 
 ```
-WUBWEWUBAREWUBTHEWUBCHAMPIONS
+WUBAREWUBTHEWUBWUBSONG
 ```
 
-| i | substring | action | current | result |
+| Step | i | Current action | Buffer | Words |
 | --- | --- | --- | --- | --- |
-| 0 | WUB | skip | [] | [] |
-| 3 | WE | build | [W,E] | [] |
-| 5 | WUB | flush WE | [] | [WE] |
-| 8 | ARE | build | [A,R,E] | [WE] |
-| 11 | WUB | flush ARE | [] | [WE, ARE] |
-| 14 | THE | build | [T,H,E] | [WE, ARE] |
-| 17 | WUB | flush THE | [] | [WE, ARE, THE] |
-| 20 | CHAMPIONS | build | [C,H,A,M,P,I,O,N,S] | [WE, ARE, THE] |
+| 1 | 0 | skip "WUB" | [] | [] |
+| 2 | 3 | collect "ARE" | ["A","R","E"] | [] |
+| 3 | 6 | skip "WUB" | [] | ["ARE"] |
+| 4 | 9 | collect "THE" | ["T","H","E"] | ["ARE"] |
+| 5 | 12 | skip "WUB" | [] | ["ARE","THE"] |
+| 6 | 15 | skip "WUB" | [] | ["ARE","THE"] |
+| 7 | 18 | collect "SONG" | ["S","O","N","G"] | ["ARE","THE"] |
 
-Final output:
+Output:
 
 ```
-WE ARE THE CHAMPIONS
+ARE THE SONG
 ```
 
-This example demonstrates repeated delimiters between words and confirms that word order is preserved exactly.
+This demonstrates correct handling of multiple words and multiple consecutive separators, confirming that word order is preserved exactly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each character is processed once, and each `"WUB"` match is checked in constant time |
-| Space | O(n) | Output and temporary buffer store characters of the original words |
+| Time | O(n) | Each character is visited at most once during scanning |
+| Space | O(n) | Storage for output words and temporary buffer |
 
-The input size is at most 200, so a linear scan is trivially fast. Even if implemented inefficiently, the constraints are forgiving, but the presented solution is both clean and optimal.
+The linear complexity is easily sufficient for n ≤ 200, and the constant factor is small due to direct character scanning without extra parsing structures.
 
 ## Test Cases
 
@@ -173,35 +174,53 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    import sys
+    input = sys.stdin.readline
 
-# provided samples
-assert run("WUBWUBABCWUB\n") == "ABC", "sample 1"
+    s = input().strip()
+    n = len(s)
+
+    words = []
+    i = 0
+
+    while i < n:
+        if i + 3 <= n and s[i:i+3] == "WUB":
+            i += 3
+            continue
+
+        buf = []
+        while i < n and not (i + 3 <= n and s[i:i+3] == "WUB"):
+            buf.append(s[i])
+            i += 1
+
+        if buf:
+            words.append("".join(buf))
+
+    return " ".join(words)
+
+# provided sample
+assert run("WUBWUBABCWUB\n") == "ABC"
 
 # custom cases
-assert run("ABC\n") == "ABC", "single word"
-assert run("WUBABC\n") == "ABC", "leading WUB"
-assert run("ABCWUB\n") == "ABC", "trailing WUB"
-assert run("WUBWUB\n") == "", "only separators"
-assert run("WUBWEWUBAREWUB\n") == "WE ARE", "multiple words"
+assert run("ABC\n") == "ABC", "no separators"
+assert run("WUBWUBWUB\n") == "", "only separators"
+assert run("AWWUBB\n") == "AWWUBB", "WUB inside word not present so treated normally"
+assert run("WUBA\n") == "A", "leading separator"
+assert run("AWWUB\n") == "AWWUB", "trailing partial word"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `"ABC"` | `"ABC"` | No delimiters |
-| `"WUBABC"` | `"ABC"` | Leading delimiter |
-| `"ABCWUB"` | `"ABC"` | Trailing delimiter |
-| `"WUBWUB"` | `""` | Only separators |
-| `"WUBWEWUBAREWUB"` | `"WE ARE"` | Multiple word reconstruction |
+| `"ABC"` | `"ABC"` | No `"WUB"` present |
+| `"WUBWUBWUB"` | `""` | Only delimiters |
+| `"WUBA"` | `"A"` | Leading delimiter |
+| `"AWWUBB"` | `"AWWUBB"` | `"WUB"` not artificially inserted inside word guarantees safety |
+| `"AWWUB"` | `"AWWUB"` | Trailing partial structure |
 
 ## Edge Cases
 
-A leading `"WUB"` block such as `"WUBABC"` demonstrates that the algorithm correctly ignores empty buffers at the start. The scan sees the delimiter first, finds no accumulated characters, and simply continues, so no empty word is produced.
+One important edge case is when the string starts with multiple `"WUB"` blocks, such as `"WUBWUBABC"`. The algorithm repeatedly skips `"WUB"` until it reaches `'A'`, so no empty word is created at the beginning.
 
-A trailing `"WUB"` like `"ABCWUB"` confirms that the final flush logic is correct. The word `"ABC"` is appended before the delimiter is processed, and the final empty buffer is discarded after the loop ends.
+Another case is `"ABCWUBWUBDEF"`, where multiple delimiters appear between words. The scan treats both `"WUB"` occurrences as separators without generating empty buffers, producing `"ABC DEF"`.
 
-A string composed only of `"WUB"` repeats such as `"WUBWUBWUB"` shows that repeated delimiters do not generate phantom words. Each detection triggers a flush only if the buffer contains characters, which it never does in this case, so the output is correctly empty.
+A final case is `"WUBWUBWUB"`, where the entire input consists of delimiters. The buffer is never filled, so no words are appended, and the output is correctly an empty string.
