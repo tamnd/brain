@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.3.2: Modular Arithmetic"
-description: "Section 4.3.2 exercises: 2/14 solved."
+description: "Section 4.3.2 exercises: 6/14 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.3.2"
@@ -14,17 +14,17 @@ draft: false
 
 # Section 4.3.2. Modular Arithmetic
 
-Exercises from [TAOCP Volume 2](../) Section 4.3.2: 2/14 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.3.2: 6/14 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*39*] | project | verified | 4m13s |
 | [2](02.md) | &#9654; [*M20*] | math-medium | verified | 3m43s |
-| 3 | &#9654; [*M26*] | math-hard | - | - |
-| 4 |  [*29*] | hard | - | - |
-| 5 | &#9654; [*M23*] | math-medium | - | - |
+| [3](03.md) | &#9654; [*M26*] | math-hard | verified | 9m |
+| [4](04.md) |  [*29*] | hard | verified | 4m40s |
+| [5](05.md) | &#9654; [*M23*] | math-medium | verified | 3m03s |
 | 6 |  [*M22*] | math-medium | - | - |
-| 7 | &#9654; [*M31*] | math-hard | - | - |
+| [7](07.md) | &#9654; [*M31*] | math-hard | verified | 2m32s |
 | 8 |  [*M31*] | math-hard | - | - |
 | 9 |  [*M20*] | math-medium | - | - |
 | 10 |  [*M25*] | math-medium | - | - |
