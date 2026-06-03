@@ -1,7 +1,7 @@
 ---
 title: "CF 198E - Gripping Story"
-description: "We are given a scenario where Qwerty's ship has an initial magnetic gripper and is surrounded by n scattered grippers from two crashed ships. Each gripper has a location, a mass, a power, and a radius."
-date: "2026-05-29T00:00:00+07:00"
+description: "Every gripper is located at a fixed point in space. Qwerty's ship is also fixed. A gripper can pull another gripper into the ship if two conditions hold simultaneously."
+date: "2026-06-03T09:52:49+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 198
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 125 (Div. 1)"
 rating: 2400
 weight: 198
-solve_time_s: 187
-verified: false
+solve_time_s: 86
+verified: true
 draft: false
 ---
 
@@ -18,89 +18,295 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** binary search, data structures, sortings  
-**Solve time:** 3m 7s  
-**Verified:** no  
+**Solve time:** 1m 26s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a scenario where Qwerty's ship has an initial magnetic gripper and is surrounded by `n` scattered grippers from two crashed ships. Each gripper has a location, a mass, a power, and a radius. A gripper can pick up another gripper if the target's mass is no greater than its power and if it lies within the radius. When a gripper is picked up, it can be installed and used to pick up other grippers. The goal is to determine the maximum number of grippers Qwerty can collect, excluding his initial gripper.
+Every gripper is located at a fixed point in space. Qwerty's ship is also fixed.
 
-The input gives the ship’s position `(x, y)`, its gripper’s power `p` and radius `r`, followed by `n` grippers with coordinates `(xi, yi)`, mass `mi`, power `pi`, and radius `ri`. The output is a single integer representing the maximum number of grippers that can be collected.
+A gripper can pull another gripper into the ship if two conditions hold simultaneously. The target gripper's mass must not exceed the active gripper's power, and the target gripper must lie within the active gripper's action radius from the ship.
 
-With `n` up to 250,000 and a 4-second limit, any O(n²) approach is infeasible because that could involve over 60 billion operations. A solution must be closer to O(n log n) or O(n) per iteration using efficient data structures. Edge cases include grippers that are just at the boundary of the radius or exactly at the power limit, as well as disconnected groups of grippers that cannot be reached from the initial gripper.
+The second condition is the key observation. The ship never moves, and every scattered gripper stays at its original coordinates until it is collected. When a collected gripper becomes active, it still operates from the ship. That means the only distance that ever matters is the distance from the ship to each gripper.
 
-A naive implementation that repeatedly checks all pairs of grippers will fail due to time complexity. Special attention is required for cases where multiple grippers can reach each other in different sequences, or when the initial gripper cannot reach any others directly.
+For every gripper we can precompute
+
+$$d_i = (x_i-x)^2 + (y_i-y)^2.$$
+
+A gripper with radius $r$ can reach exactly the grippers satisfying
+
+$$d_i \le r^2.$$
+
+After collecting a gripper, we gain a new pair $(p_i,r_i)$, which may allow collecting more grippers. We want the size of the entire reachable set.
+
+The constraint $n \le 250000$ rules out anything quadratic. Even $O(n\sqrt n)$ would be uncomfortable at this scale. We need something around $O(n \log n)$.
+
+A subtle point is that collecting one gripper may unlock another gripper that was previously too heavy, and that newly collected gripper may in turn unlock many more. This is a reachability problem, not a one-pass filtering problem.
+
+Consider:
+
+```
+Ship: power=1 radius=10
+
+A: mass=1 power=100 radius=10
+B: mass=100 power=1 radius=10
+```
+
+A is reachable initially. After collecting A, B becomes reachable. The correct answer is 2. Any solution that only checks reachability from the initial gripper would output 1.
+
+Another easy mistake is to think that geometry between grippers matters.
+
+```
+Ship at (0,0)
+
+A at distance 5
+B at distance 100
+```
+
+If A has radius 100 and sufficient power, A can pull B even though A and B are far apart from each other. The active gripper is mounted on the ship, so all radii are measured from the ship, not from the gripper's original location.
+
+A final pitfall is integer overflow. Coordinates and radii reach $10^9$, so squared distances reach $10^{18}$. All distance computations must use 64-bit integers.
 
 ## Approaches
 
-The brute-force approach attempts to simulate every sequence of gripper pickups. We start from Qwerty’s gripper, check all grippers that can be reached and picked up, add them to a queue, and repeat. This is effectively a breadth-first search in which the graph edges represent the ability of one gripper to pick up another. For each gripper in the queue, we must check distances to all other grippers, yielding O(n²) operations, which is too slow for n = 250,000.
+The brute-force view is straightforward. Maintain the set of collected grippers. Whenever a new gripper becomes available, scan all uncollected grippers and collect every one satisfying both the mass and distance requirements of the currently active gripper. Repeat until no more grippers can be obtained.
 
-The key insight is that the problem can be modeled as a directed graph where nodes are grippers and there is an edge from gripper `A` to gripper `B` if `A` can pick up `B`. Collecting grippers is equivalent to performing a reachability traversal (BFS or DFS) starting from the initial gripper. The distance check can be simplified using squared Euclidean distance to avoid floating-point computations. Using a spatial index such as a KD-tree or plane sweep can accelerate finding reachable grippers, but since the constraints on coordinates are wide, a simpler BFS using a set to track unvisited grippers works efficiently if we mark picked grippers and iterate only over candidates that can still be reached.
+This is correct because it explicitly simulates the reachability process. The problem is cost. In the worst case we may collect $n$ grippers, and after each collection we scan all $n$ objects again. That becomes $O(n^2)$, roughly $6 \cdot 10^{10}$ operations for $n=250000$.
 
-This transforms the O(n²) brute-force into a more efficient traversal that only evaluates reachable grippers without redundant checks, yielding an O(n log n) solution if we maintain the unpicked grippers in a set or use a sweep-line approach.
+The structure of the query is much more specific than arbitrary reachability.
+
+For a gripper with power $P$ and radius $R$, we need all uncollected grippers satisfying
+
+$$m_i \le P$$
+
+and
+
+$$d_i \le R^2.$$
+
+This is a two-dimensional dominance query over the attributes $(m_i,d_i)$.
+
+The crucial observation is that every gripper is collected at most once. We do not need to repeatedly enumerate the same candidate set. We only need a data structure that can repeatedly find some still-uncollected gripper inside the rectangle
+
+$$m_i \le P,\quad d_i \le R^2.$$
+
+If one exists, we collect it, remove it permanently, and continue.
+
+Sort all grippers by mass. Then a query becomes:
+
+"Among all grippers whose distance index lies in a prefix and which are still alive, find the minimum mass."
+
+A Fenwick tree can maintain prefix information over distance. Each Fenwick node stores grippers ordered by mass. Lazy deletion removes already collected grippers.
+
+Whenever the minimum mass inside the reachable distance prefix is at most the current power, we have found another collectible gripper.
+
+This gives an $O(n \log n)$ solution.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force BFS on all pairs | O(n²) | O(n²) | Too slow |
-| Graph BFS with reachability + distance check | O(n log n) | O(n) | Accepted |
+| Brute Force | $O(n^2)$ | $O(n)$ | Too slow |
+| Optimal | $O(n \log n)$ | $O(n \log n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Represent each gripper as a tuple containing coordinates `(xi, yi)`, mass `mi`, power `pi`, and radius `ri`. Store all grippers in a list. Maintain a set or boolean array to mark whether a gripper has been collected.
-2. Start a BFS queue initialized with the initial ship gripper, which has location `(x, y)`, power `p`, and radius `r`. The queue will store the currently active grippers that can pick up other grippers.
-3. For each gripper in the queue, iterate through all uncollected grippers and check if the distance squared between the active gripper and the candidate is less than or equal to the square of the active gripper's radius, and if the candidate’s mass is no greater than the active gripper’s power.
-4. If both conditions hold, mark the candidate as collected, increment the counter, and enqueue the candidate gripper for future exploration.
-5. Continue the BFS until no more grippers can be collected.
-6. Output the total number of collected grippers, excluding the initial ship gripper.
+### Distance Reduction
 
-Why it works: The BFS ensures that we explore all grippers that are reachable either directly from the initial gripper or via any chain of intermediate grippers. Each gripper is processed only once, and edges are only traversed if the gripper can actually pick up another, preserving correctness. The distance and power checks guarantee no invalid grippers are counted.
+For every gripper compute its squared distance from the ship:
+
+$$d_i=(x_i-x)^2+(y_i-y)^2.$$
+
+Replace every radius $r_i$ by $r_i^2$.
+
+Now geometry disappears completely. Each gripper is represented only by:
+
+$$(d_i,m_i,p_i,r_i^2).$$
+
+### Coordinate Compression
+
+Collect all values that can appear as distance thresholds:
+
+$$d_i,\quad r_i^2,\quad r^2.$$
+
+Sort and compress them.
+
+The Fenwick tree will be built over these compressed distance coordinates.
+
+### Preparing the Fenwick Tree
+
+Sort all grippers by mass.
+
+For each gripper, insert it into the Fenwick structure at the position corresponding to its distance.
+
+Each Fenwick node stores grippers in increasing mass order.
+
+A node may later contain deleted elements at its front, so we remove them lazily.
+
+### Reachability BFS
+
+Think of every collected gripper as generating a new state $(p,r^2)$.
+
+Start with the initial gripper.
+
+Maintain a queue of active states.
+
+1. Pop one state $(P,R^2)$.
+2. Find the compressed index corresponding to $R^2$.
+3. Query the Fenwick prefix up to that index.
+4. The query returns the alive gripper with minimum mass inside the reachable distance range.
+5. While such a gripper exists and its mass is at most $P$:
+
+1. Mark it collected.
+2. Remove it lazily from the structure.
+3. Push its own $(p_i,r_i^2)$ into the queue.
+4. Increase the answer.
+5. Query again.
+
+The process stops when the queue becomes empty.
+
+### Why it works
+
+For any active state $(P,R^2)$, a gripper is collectible exactly when it lies inside the rectangle
+
+$$m_i \le P,\quad d_i \le R^2.$$
+
+The Fenwick query always returns the alive gripper with minimum mass among all grippers satisfying the distance condition.
+
+If that minimum mass already exceeds $P$, then every remaining gripper in the reachable distance range also exceeds $P$, so no collectible gripper exists for this state.
+
+If the minimum mass is at most $P$, that gripper is collectible and must belong to the reachable set. Collecting it immediately is safe because collecting a gripper never makes any previously reachable gripper unreachable.
+
+Every gripper is inserted once and removed once, so the algorithm discovers exactly the closure of all reachable grippers.
 
 ## Python Solution
 
 ```python
 import sys
-import math
 from collections import deque
+from bisect import bisect_left, bisect_right
+
 input = sys.stdin.readline
 
-def main():
-    x, y, p, r, n = map(int, input().split())
-    grippers = []
-    for _ in range(n):
-        xi, yi, mi, pi, ri = map(int, input().split())
-        grippers.append((xi, yi, mi, pi, ri))
+def solve():
+    x, y, p0, r0, n = map(int, input().split())
 
-    collected = [False] * n
-    queue = deque()
-    queue.append((x, y, p, r))
-    total_collected = 0
+    items = []
+    coords = [r0 * r0]
 
-    while queue:
-        gx, gy, gp, gradius = queue.popleft()
-        gradius_sq = gradius * gradius
-        for i, (xi, yi, mi, pi, ri) in enumerate(grippers):
-            if collected[i]:
-                continue
-            dx = xi - gx
-            dy = yi - gy
-            dist_sq = dx * dx + dy * dy
-            if dist_sq <= gradius_sq and mi <= gp:
-                collected[i] = True
-                total_collected += 1
-                queue.append((xi, yi, pi, ri))
+    for idx in range(n):
+        xi, yi, m, p, r = map(int, input().split())
 
-    print(total_collected)
+        dx = xi - x
+        dy = yi - y
+
+        d = dx * dx + dy * dy
+        rr = r * r
+
+        items.append([d, m, p, rr, idx])
+
+        coords.append(d)
+        coords.append(rr)
+
+    coords = sorted(set(coords))
+    K = len(coords)
+
+    def comp(v):
+        return bisect_left(coords, v) + 1
+
+    items_sorted = sorted(items, key=lambda z: (z[1], z[0]))
+
+    bit = [[] for _ in range(K + 2)]
+
+    for pos, item in enumerate(items_sorted):
+        d, m, p, rr, original_id = item
+        idx = comp(d)
+
+        j = idx
+        while j <= K:
+            bit[j].append(pos)
+            j += j & -j
+
+    ptr = [0] * (K + 2)
+    removed = [False] * n
+
+    INF = (10**30, -1)
+
+    def clean(node):
+        arr = bit[node]
+        p = ptr[node]
+
+        while p < len(arr):
+            pos = arr[p]
+            oid = items_sorted[pos][4]
+            if not removed[oid]:
+                break
+            p += 1
+
+        ptr[node] = p
+
+    def query(idx):
+        best_mass = INF[0]
+        best_pos = -1
+
+        while idx > 0:
+            clean(idx)
+
+            p = ptr[idx]
+            arr = bit[idx]
+
+            if p < len(arr):
+                pos = arr[p]
+                mass = items_sorted[pos][1]
+
+                if mass < best_mass:
+                    best_mass = mass
+                    best_pos = pos
+
+            idx -= idx & -idx
+
+        return best_pos
+
+    ans = 0
+    q = deque()
+    q.append((p0, r0 * r0))
+
+    while q:
+        power, radius_sq = q.popleft()
+
+        limit = bisect_right(coords, radius_sq)
+
+        pos = query(limit)
+
+        while pos != -1 and items_sorted[pos][1] <= power:
+            d, m, p, rr, oid = items_sorted[pos]
+
+            removed[oid] = True
+            ans += 1
+
+            q.append((p, rr))
+
+            pos = query(limit)
+
+    print(ans)
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The code maintains a BFS queue of grippers that can actively pick others. Distance checks use squared distances to avoid floating-point inaccuracies. Each gripper is enqueued exactly once, and the `collected` array ensures we never double-count or revisit a gripper.
+The preprocessing phase converts every geometric condition into a comparison against a squared distance. That is the reason coordinates disappear from the data structure entirely.
+
+The Fenwick tree is built over compressed distance values. Each node contains grippers sorted by mass because the global list is already mass-sorted when inserted.
+
+The `ptr` array implements lazy deletion. When a gripper is collected we only mark it as removed. The next time a node is visited, its pointer advances past deleted entries. This avoids expensive removals from many Fenwick nodes.
+
+The query operation returns the alive gripper with smallest mass among all distances inside the requested prefix. If that smallest mass is already too large, every other candidate is too large as well.
+
+All distance and radius squares are computed using Python integers, which safely handle values up to $10^{18}$.
 
 ## Worked Examples
 
-Sample Input 1:
+### Sample 1
+
+Input:
 
 ```
 0 0 5 10 5
@@ -111,65 +317,211 @@ Sample Input 1:
 13 5 1 9 9
 ```
 
-| Queue State | Collected Grippers | Action |
-| --- | --- | --- |
-| (0,0,5,10) | [] | Check all grippers |
-| (0,0,5,10) | [1] | Pick (-7,1,4,7,8) |
-| (-7,1,4,7,8) | [1] | Pick (5,4,7,11,5)? No, too far |
-| Continue BFS | [1,0,3] | Pick others reachable in sequence |
+| Step | Active Power | Active Radius² | Newly Collected |
+| --- | --- | --- | --- |
+| 1 | 5 | 100 | Gripper 2 |
+| 2 | 7 | 64 | Gripper 1 |
+| 3 | 11 | 25 | Gripper 4 |
+| 4 | 3 | 16 | None |
 
-Output: 3
+Answer = 3.
 
-This demonstrates that BFS captures reachability via chains of grippers, not just immediate neighbors.
+The trace shows the chain effect. The initial gripper cannot directly collect gripper 1, but collecting gripper 2 increases available power and unlocks it.
 
-Custom Input:
+### Custom Example
 
 ```
-0 0 10 10 2
-10 0 5 5 5
-20 0 10 10 10
+0 0 1 10 2
+1 0 1 100 10
+2 0 100 1 10
 ```
 
-The initial gripper can pick the first, then the first cannot reach the second, so only 1 is collected. Output: 1
+| Step | Active Power | Active Radius² | Newly Collected |
+| --- | --- | --- | --- |
+| 1 | 1 | 100 | First gripper |
+| 2 | 100 | 100 | Second gripper |
+| 3 | 1 | 100 | None |
+
+Answer = 2.
+
+This demonstrates why a single pass is insufficient. The second gripper becomes reachable only after obtaining the first one.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) worst-case | Each gripper checks all uncollected grippers; in practice, many are filtered by distance |
-| Space | O(n) | Stores gripper data and BFS queue |
+| Time | $O(n \log n)$ | Each gripper is inserted and removed once, each operation touches Fenwick nodes |
+| Space | $O(n \log n)$ | Grippers are stored inside Fenwick node lists |
 
-With n = 250,000, in practice the BFS terminates quickly because distance constraints limit the number of reachable grippers, making this approach feasible within 4 seconds. Further optimization with spatial indexing would reduce worst-case time.
+With $n=250000$, $O(n \log n)$ is comfortably within the 4-second limit. The memory usage fits within 512 MB because the Fenwick structure stores the standard $n \log n$ distribution of references.
 
 ## Test Cases
 
 ```python
 import sys, io
+from collections import deque
+from bisect import bisect_left, bisect_right
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    main()
-    return sys.stdout.getvalue().strip()
 
-# Provided sample
-assert run("0 0 5 10 5\n5 4 7 11 5\n-7 1 4 7 8\n0 2 13 5 6\n2 -3 9 3 4\n13 5 1 9 9\n") == "3"
+    input = sys.stdin.readline
 
-# Minimum-size input
-assert run("0 0 1 1 1\n1 1 1 1 1\n") == "1"
+    x, y, p0, r0, n = map(int, input().split())
 
-# Maximum-size input, all reachable (simplified)
-n = 10
-input_str = f"0 0 100 100 {n}\n" + "\n".join(f"{i} {i} 1 100 100" for i in range(n)) + "\n"
-assert run(input_str) == "10"
+    items = []
+    coords = [r0 * r0]
 
-# Mass too high to pick
-assert run("0 0 5 5 1\n1 1 10 10 10\n") == "0"
+    for idx in range(n):
+        xi, yi, m, p, r = map(int, input().split())
 
-# Distance too far
-assert run("0 0 5 5 1\n10 10 1 1 1\n") == "0"
+        d = (xi - x) ** 2 + (yi - y) ** 2
+        rr = r * r
+
+        items.append([d, m, p, rr, idx])
+
+        coords.append(d)
+        coords.append(rr)
+
+    coords = sorted(set(coords))
+    K = len(coords)
+
+    def comp(v):
+        return bisect_left(coords, v) + 1
+
+    items_sorted = sorted(items, key=lambda z: (z[1], z[0]))
+
+    bit = [[] for _ in range(K + 2)]
+
+    for pos, item in enumerate(items_sorted):
+        idx = comp(item[0])
+
+        j = idx
+        while j <= K:
+            bit[j].append(pos)
+            j += j & -j
+
+    ptr = [0] * (K + 2)
+    removed = [False] * n
+
+    def clean(node):
+        while ptr[node] < len(bit[node]):
+            pos = bit[node][ptr[node]]
+            if not removed[items_sorted[pos][4]]:
+                break
+            ptr[node] += 1
+
+    def query(idx):
+        best = None
+
+        while idx > 0:
+            clean(idx)
+
+            if ptr[idx] < len(bit[idx]):
+                pos = bit[idx][ptr[idx]]
+
+                if best is None or items_sorted[pos][1] < items_sorted[best][1]:
+                    best = pos
+
+            idx -= idx & -idx
+
+        return best
+
+    ans = 0
+    q = deque([(p0, r0 * r0)])
+
+    while q:
+        power, rr = q.popleft()
+
+        limit = bisect_right(coords, rr)
+
+        pos = query(limit)
+
+        while pos is not None and items_sorted[pos][1] <= power:
+            removed[items_sorted[pos][4]] = True
+            ans += 1
+
+            q.append((items_sorted[pos][2], items_sorted[pos][3]))
+
+            pos = query(limit)
+
+    return str(ans)
+
+# sample
+assert run(
+"""0 0 5 10 5
+5 4 7 11 5
+-7 1 4 7 8
+0 2 13 5 6
+2 -3 9 3 4
+13 5 1 9 9
+"""
+) == "3"
+
+# minimum size
+assert run(
+"""0 0 1 1 1
+1 0 1 1 1
+"""
+) == "1"
+
+# unreachable because of mass
+assert run(
+"""0 0 1 10 1
+1 0 2 100 100
+"""
+) == "0"
+
+# chain unlocking
+assert run(
+"""0 0 1 10 2
+1 0 1 100 10
+2 0 100 1 10
+"""
+) == "2"
+
+# boundary distance exactly equal to radius
+assert run(
+"""0 0 10 5 1
+3 4 10 1 1
+"""
+) == "1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Provided sample | 3 | Correct BFS |
+| Sample 1 | 3 | Official scenario |
+| Single reachable gripper | 1 | Minimum size |
+| Heavy gripper | 0 | Mass constraint |
+| Unlock chain | 2 | Reachability propagation |
+| Distance exactly equal to radius | 1 | Inclusive boundary |
+
+## Edge Cases
+
+Consider:
+
+```
+0 0 1 10 2
+1 0 1 100 10
+2 0 100 1 10
+```
+
+The algorithm first finds the minimum-mass reachable gripper, collects it, and pushes its power-radius pair into the queue. When the new state is processed, the second gripper becomes collectible. The answer is correctly 2.
+
+Consider:
+
+```
+0 0 10 5 1
+3 4 10 1 1
+```
+
+The squared distance is $3^2+4^2=25$, exactly equal to $5^2$. The query uses a distance prefix with condition $d_i \le r^2$, so the gripper is included and the answer is 1.
+
+Consider:
+
+```
+0 0 1 1000000000 1
+1000000000 0 1 1 1
+```
+
+The squared distance equals $10^{18}$. The algorithm stores all such values as 64-bit scale integers and compares squared quantities directly. No floating-point arithmetic is used, so the answer remains correct.
