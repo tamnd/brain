@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.2.2: Accuracy of Floating Point Arithmetic"
-description: "Section 4.2.2 exercises: 6/32 solved."
+description: "Section 4.2.2 exercises: 14/32 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.2.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.2.2. Accuracy of Floating Point Arithmetic
 
-Exercises from [TAOCP Volume 2](../) Section 4.2.2: 6/32 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.2.2: 14/32 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -24,15 +24,15 @@ Exercises from [TAOCP Volume 2](../) Section 4.2.2: 6/32 solved.
 | [4](04.md) |  [*10*] | simple | verified | 7m |
 | [5](05.md) | &#9654; [*M20*] | math-medium | verified | 6m43s |
 | [6](06.md) |  [*M22*] | math-medium | verified | 3m40s |
-| 7 |  [*M21*] | math-medium | - | - |
-| 8 | &#9654; [*20*] | medium | - | - |
-| 9 |  [*M22*] | math-medium | - | - |
+| [7](07.md) |  [*M21*] | math-medium | verified | 5m07s |
+| [8](08.md) | &#9654; [*20*] | medium | verified | 3m52s |
+| [9](09.md) |  [*M22*] | math-medium | verified | 3m48s |
 | 10 | &#9654; [*M25*] | math-medium | - | - |
-| 11 |  [*M20*] | math-medium | - | - |
-| 12 |  [*M24*] | math-medium | - | - |
-| 13 | &#9654; [*M25*] | math-medium | - | - |
-| 14 |  [*M27*] | math-hard | - | - |
-| 15 | &#9654; [*M24*] | math-medium | - | - |
+| [11](11.md) |  [*M20*] | math-medium | verified | 1m53s |
+| [12](12.md) |  [*M24*] | math-medium | verified | 4m13s |
+| [13](13.md) | &#9654; [*M25*] | math-medium | solved | 6m09s |
+| [14](14.md) |  [*M27*] | math-hard | verified | 2m14s |
+| [15](15.md) | &#9654; [*M24*] | math-medium | verified | 2m26s |
 | 16 |  [*M28*] | math-hard | - | - |
 | 17 |  [*28*] | hard | - | - |
 | 18 |  [*M40*] | math-project | - | - |
