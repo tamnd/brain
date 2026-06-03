@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 374 solved, 284 verified, 457 total."
+description: "Volume 2: Seminumerical Algorithms. 385 solved, 291 verified, 457 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 374 solved, 284 verified, 457 total.
+Exercise solutions for [TAOCP](../) Volume 2. 385 solved, 291 verified, 457 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -28,7 +28,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 374 solved, 284 verified, 457 tota
 | [4.2.2](4.2.2/) | Accuracy of Floating Point Arithmetic | 32 | 24 | 32 |
 | [4.2.3](4.2.3/) | Double-Precision Calculations | 5 | 3 | 6 |
 | [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 17 | 11 | 20 |
-| [4.3.1](4.3.1/) | The Classical Algorithms | 3 | 2 | 43 |
+| [4.3.1](4.3.1/) | The Classical Algorithms | 14 | 9 | 43 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |

@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.3.1: The Classical Algorithms"
-description: "Section 4.3.1 exercises: 3/43 solved."
+description: "Section 4.3.1 exercises: 14/43 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.3.1. The Classical Algorithms
 
-Exercises from [TAOCP Volume 2](../) Section 4.3.1: 3/43 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.3.1: 14/43 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -22,20 +22,20 @@ Exercises from [TAOCP Volume 2](../) Section 4.3.1: 3/43 solved.
 | [2](02.md) |  [*15*] | simple | verified | 1m25s |
 | [3](03.md) |  [*21*] | medium | solved | 7m25s |
 | 4 |  [*M21*] | math-medium | - | - |
-| 5 |  [*21*] | medium | - | - |
-| 6 | &#9654; [*22*] | medium | - | - |
-| 7 |  [*M26*] | math-hard | - | - |
+| [5](05.md) |  [*21*] | medium | solved | 5m13s |
+| [6](06.md) | &#9654; [*22*] | medium | solved | 4m52s |
+| [7](07.md) |  [*M26*] | math-hard | verified | 1m45s |
 | 8 |  [*M26*] | math-hard | - | - |
-| 9 | &#9654; [*21*] | medium | - | - |
-| 10 |  [*18*] | medium | - | - |
-| 11 |  [*10*] | simple | - | - |
+| [9](09.md) | &#9654; [*21*] | medium | verified | 1m44s |
+| [10](10.md) |  [*18*] | medium | solved | 3m05s |
+| [11](11.md) |  [*10*] | simple | verified | 1m16s |
 | 12 |  [*16*] | medium | - | - |
-| 13 |  [*21*] | medium | - | - |
-| 14 | &#9654; [*M23*] | math-medium | - | - |
-| 15 |  [*M20*] | math-medium | - | - |
-| 16 |  [*39*] | project | - | - |
+| [13](13.md) |  [*21*] | medium | verified | 4m22s |
+| [14](14.md) | &#9654; [*M23*] | math-medium | solved | 45s |
+| [15](15.md) |  [*M20*] | math-medium | verified | 1m19s |
+| [16](16.md) |  [*39*] | project | verified | 1m29s |
 | 17 |  [*M20*] | math-medium | - | - |
-| 18 |  [*M30*] | math-hard | - | - |
+| [18](18.md) |  [*M30*] | math-hard | verified | 1m22s |
 | 19 | &#9654; [*M21*] | math-medium | - | - |
 | 20 |  [*M22*] | math-medium | - | - |
 | 21 | &#9654; [*M23*] | math-medium | - | - |
