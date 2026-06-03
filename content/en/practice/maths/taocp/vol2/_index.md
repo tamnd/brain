@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 504 solved, 376 verified, 560 total."
+description: "Volume 2: Seminumerical Algorithms. 505 solved, 377 verified, 560 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 504 solved, 376 verified, 560 total.
+Exercise solutions for [TAOCP](../) Volume 2. 505 solved, 377 verified, 560 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -33,7 +33,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 504 solved, 376 verified, 560 tota
 | [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 13 | 14 |
 | [4.3.3](4.3.3/) | How Fast Can We Multiply? | 17 | 12 | 19 |
 | [4.5.1](4.5.1/) | Fractions | 9 | 8 | 9 |
-| [4.5.2](4.5.2/) | The Greatest Common Divisor | 37 | 27 | 42 |
+| [4.5.2](4.5.2/) | The Greatest Common Divisor | 38 | 28 | 42 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
