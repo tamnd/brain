@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.3.1: The Classical Algorithms"
-description: "Section 4.3.1 exercises: 21/43 solved."
+description: "Section 4.3.1 exercises: 26/43 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.3.1. The Classical Algorithms
 
-Exercises from [TAOCP Volume 2](../) Section 4.3.1: 21/43 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.3.1: 26/43 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -43,14 +43,14 @@ Exercises from [TAOCP Volume 2](../) Section 4.3.1: 21/43 solved.
 | [23](23.md) |  [*M23*] | math-medium | solved | 3m15s |
 | 24 |  [*M20*] | math-medium | - | - |
 | [25](25.md) |  [*26*] | hard | verified | 3m12s |
-| 26 |  [*21*] | medium | - | - |
+| [26](26.md) |  [*21*] | medium | solved | 3m44s |
 | [27](27.md) |  [*M20*] | math-medium | solved | 2m17s |
 | 28 |  [*M30*] | math-hard | - | - |
 | 29 |  [**] |  | - | - |
-| 30 | &#9654; [**] |  | - | - |
-| 31 |  [**] |  | - | - |
-| 32 |  [**] |  | - | - |
-| 33 |  [**] |  | - | - |
+| [30](30.md) | &#9654; [**] |  | solved | 2m23s |
+| [31](31.md) |  [**] |  | verified | 5m23s |
+| [32](32.md) |  [**] |  | solved | 40s |
+| [33](33.md) |  [**] |  | solved | 55s |
 | 34 |  [**] |  | - | - |
 | 35 |  [**] |  | - | - |
 | 36 |  [**] |  | - | - |
