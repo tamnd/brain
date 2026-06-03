@@ -224,7 +224,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [214](214/) | [Codeforces Round 131 (Div. 2)](https://codeforces.com/contest/214) | Div. 2 | 800-1600 | 2/2 | 3m 45s |
 | [215](215/) | [Codeforces Round 132 (Div. 2)](https://codeforces.com/contest/215) | Div. 2 | 900-2100 | 4/5 | 8m 51s |
 | [216](216/) | [Codeforces Round 133 (Div. 2)](https://codeforces.com/contest/216) | Div. 2 | 1200-2000 | 3/5 | 7m 31s |
-| [217](217/) | [Codeforces Round 134 (Div. 1)](https://codeforces.com/contest/217) | Div. 1 | 1200-2900 | 3/4 | 12m 51s |
+| [217](217/) | [Codeforces Round 134 (Div. 1)](https://codeforces.com/contest/217) | Div. 1 | 1200-2900 | 3/4 | 9m 34s |
 | [218](218/) | [Codeforces Round 134 (Div. 2)](https://codeforces.com/contest/218) | Div. 2 | 1100-1100 | 0/2 | 4m 13s |
 | [219](219/) | [Codeforces Round 135 (Div. 2)](https://codeforces.com/contest/219) | Div. 2 | 1000-1600 | 3/3 | 5m 50s |
 | [220](220/) | [Codeforces Round 136 (Div. 1)](https://codeforces.com/contest/220) | Div. 1 | 1300-2500 | 3/4 | 8m 14s |
