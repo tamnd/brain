@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.6: Summary"
-description: "Section 3.6 exercises: 14/15 solved."
+description: "Section 3.6 exercises: 15/15 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.6"
@@ -14,11 +14,11 @@ draft: false
 
 # Section 3.6. Summary
 
-Exercises from [TAOCP Volume 2](../) Section 3.6: 14/15 solved.
+Exercises from [TAOCP Volume 2](../) Section 3.6: 15/15 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| 1 |  [*21*] | medium | - | - |
+| [1](01.md) |  [*21*] | medium | verified | 6m45s |
 | [2](02.md) | &#9654; [*15*] | simple | verified | 1m27s |
 | [3](03.md) |  [*14*] | simple | verified | 1m31s |
 | [4](04.md) |  [*25*] | medium | verified | 1m18s |
