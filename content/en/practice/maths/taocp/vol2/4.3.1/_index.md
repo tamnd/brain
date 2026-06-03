@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.3.1: The Classical Algorithms"
-description: "Section 4.3.1 exercises: 14/43 solved."
+description: "Section 4.3.1 exercises: 21/43 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.3.1. The Classical Algorithms
 
-Exercises from [TAOCP Volume 2](../) Section 4.3.1: 14/43 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.3.1: 21/43 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -36,15 +36,15 @@ Exercises from [TAOCP Volume 2](../) Section 4.3.1: 14/43 solved.
 | [16](16.md) |  [*39*] | project | verified | 1m29s |
 | 17 |  [*M20*] | math-medium | - | - |
 | [18](18.md) |  [*M30*] | math-hard | verified | 1m22s |
-| 19 | &#9654; [*M21*] | math-medium | - | - |
-| 20 |  [*M22*] | math-medium | - | - |
-| 21 | &#9654; [*M23*] | math-medium | - | - |
-| 22 | &#9654; [*24*] | medium | - | - |
-| 23 |  [*M23*] | math-medium | - | - |
+| [19](19.md) | &#9654; [*M21*] | math-medium | solved | 2m48s |
+| [20](20.md) |  [*M22*] | math-medium | solved | 2m25s |
+| [21](21.md) | &#9654; [*M23*] | math-medium | verified | 3m53s |
+| [22](22.md) | &#9654; [*24*] | medium | verified | 1m09s |
+| [23](23.md) |  [*M23*] | math-medium | solved | 3m15s |
 | 24 |  [*M20*] | math-medium | - | - |
-| 25 |  [*26*] | hard | - | - |
+| [25](25.md) |  [*26*] | hard | verified | 3m12s |
 | 26 |  [*21*] | medium | - | - |
-| 27 |  [*M20*] | math-medium | - | - |
+| [27](27.md) |  [*M20*] | math-medium | solved | 2m17s |
 | 28 |  [*M30*] | math-hard | - | - |
 | 29 |  [**] |  | - | - |
 | 30 | &#9654; [**] |  | - | - |
