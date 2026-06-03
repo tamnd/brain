@@ -1,7 +1,7 @@
 ---
 title: "CF 222E - Decoding Genome"
-description: "We are asked to count the number of valid sequences of nucleotides of length n for a Martian DNA strand, given a total of m nucleotides and a list of forbidden consecutive pairs. Each nucleotide is represented by a letter from 'a' to 'z' and 'A' to 'Z' depending on its index."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have an alphabet of size m, consisting of the first m symbols from the sequence a..zA..Z. Some ordered pairs of symbols are forbidden. If pair (x, y) is forbidden, then symbol y cannot appear immediately after symbol x in the DNA string."
+date: "2026-06-04T02:06:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "matrices"]
 categories: ["algorithms"]
 codeforces_contest: 222
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 137 (Div. 2)"
 rating: 1900
 weight: 222
-solve_time_s: 190
+solve_time_s: 115
 verified: true
 draft: false
 ---
@@ -18,42 +18,126 @@ draft: false
 
 **Rating:** 1900  
 **Tags:** dp, matrices  
-**Solve time:** 3m 10s  
+**Solve time:** 1m 55s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to count the number of valid sequences of nucleotides of length _n_ for a Martian DNA strand, given a total of _m_ nucleotides and a list of forbidden consecutive pairs. Each nucleotide is represented by a letter from 'a' to 'z' and 'A' to 'Z' depending on its index. A forbidden pair means that the first nucleotide in the pair cannot be immediately followed by the second nucleotide in a valid DNA sequence. The goal is to compute the number of sequences of length _n_ modulo 10^9+7.
+We have an alphabet of size `m`, consisting of the first `m` symbols from the sequence `a..zA..Z`. Some ordered pairs of symbols are forbidden. If pair `(x, y)` is forbidden, then symbol `y` cannot appear immediately after symbol `x` in the DNA string.
 
-The constraints are instructive. _n_ can be as large as 10^15, which rules out any solution that iterates over the sequence length explicitly. _m_ is at most 52, which is small enough to allow matrix-based dynamic programming or state compression techniques. The number of forbidden pairs _k_ can be up to _m_², which means in the worst case we may need to track almost every nucleotide transition.
+The task is to count how many DNA strings of length `n` satisfy all adjacency restrictions. The answer must be reported modulo `10^9 + 7`.
 
-A naive approach that tries to generate every sequence and check validity fails immediately because the number of sequences grows exponentially with _n_. Edge cases arise when all pairs are forbidden, or when only a single nucleotide is allowed repeatedly. For example, with _n=3, m=2_, and the forbidden pairs being all possible transitions except 'aa', the only valid sequence is 'aaa'. A careless approach that assumes each nucleotide can follow any other will overcount and give an incorrect answer.
+A useful way to view the problem is as a directed graph. Each nucleotide is a vertex. There is a directed edge from vertex `u` to vertex `v` if the pair `(u, v)` is allowed. A valid DNA sequence corresponds to a walk in this graph. Every adjacent pair of characters in the sequence must follow an allowed edge.
+
+The constraints completely determine the intended solution. The alphabet size is at most `52`, which is tiny. On the other hand, `n` can be as large as `10^15`, which rules out any dynamic programming that iterates over positions one by one. Even an `O(n)` algorithm is impossible. Whenever a problem combines a very small state space with an enormous length, matrix exponentiation is usually the right direction.
+
+There are several edge cases that are easy to mishandle.
+
+Consider a length-one DNA:
+
+```
+1 3 2
+ab
+ba
+```
+
+The answer is `3`, not affected by any forbidden pairs. A string of length one contains no adjacent pair at all.
+
+Another important case is when every transition is forbidden:
+
+```
+2 1 1
+aa
+```
+
+The answer is `0`. There is one symbol, but it cannot follow itself, so no length-two sequence exists.
+
+A third case is when `n` is extremely large but `m = 1`:
+
+```
+1000000000000000 1 0
+```
+
+There is exactly one valid sequence, namely `"aaaa..."`. Any solution that iterates over positions will never finish.
 
 ## Approaches
 
-A brute-force solution would enumerate all sequences of length _n_, checking each against the forbidden list. This is correct in principle because it explicitly validates each candidate, but it performs O(m^n) operations, which is entirely impractical for n up to 10^15.
+The most direct approach is dynamic programming over positions.
 
-The key insight is that the problem is equivalent to counting walks of length _n-1_ in a directed graph where vertices represent nucleotides and edges represent allowed transitions. If we define a transition matrix _T_ where T[i][j] is 1 if nucleotide i can be followed by nucleotide j and 0 otherwise, then the total number of sequences is the sum of all entries in the matrix _T^(n-1)_ multiplied by the number of possible first nucleotides. Matrix exponentiation allows us to compute _T^(n-1)_ in O(m^3 log n) operations. Since m ≤ 52, this is fast enough even when n is extremely large.
+Let `dp[i][j]` be the number of valid strings of length `i` ending with symbol `j`. To compute the next layer, we try every allowed transition:
 
-The brute-force works because it enumerates all sequences, but fails when n is large. The observation that sequence counting with pairwise constraints can be represented as a matrix of allowed transitions lets us reduce the problem to matrix exponentiation. This transforms an exponential problem into one manageable by repeated squaring.
+$$dp[i+1][v] += dp[i][u]$$
+
+This is correct because every valid string ending at `u` can be extended to `v` whenever `(u,v)` is allowed.
+
+The problem is the value of `n`. Even if we optimize the transition using the small alphabet size, the running time remains proportional to the length of the DNA. With `n` up to `10^{15}`, this is hopeless.
+
+The key observation is that the DP transition is linear. If we store the counts for all ending symbols in a vector, one DP step is simply a matrix multiplication.
+
+Let `A` be the `m × m` transition matrix:
+
+$$A[u][v] =
+\begin{cases}
+1 & \text{if transition } u \to v \text{ is allowed}\\
+0 & \text{otherwise}
+\end{cases}$$
+
+If `f_i` is the row vector of counts for length `i`, then
+
+$$f_{i+1} = f_i A$$
+
+Applying the transition repeatedly gives
+
+$$f_n = f_1 A^{n-1}$$
+
+Now the huge value of `n` becomes manageable. Since `m ≤ 52`, we can exponentiate the matrix using binary exponentiation in `O(m^3 log n)` time.
+
+The initial vector for length one contains all ones, because any symbol may be chosen as the first character.
+
+After computing `A^(n-1)`, we multiply it by the initial vector and sum all final counts.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(m^n) | O(n) | Too slow |
-| Matrix Exponentiation | O(m^3 log n) | O(m^2) | Accepted |
+| Brute Force DP over positions | O(nm²) | O(m) | Too slow |
+| Matrix Exponentiation | O(m³ log n) | O(m²) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Map each nucleotide character to a number from 0 to m-1. This simplifies indexing in the transition matrix.
-2. Initialize an m × m matrix T where each entry is 1, indicating that every nucleotide can follow every other nucleotide initially.
-3. Iterate over the list of forbidden pairs. For each pair, set the corresponding entry in T to 0. This ensures the matrix encodes exactly the allowed transitions.
-4. Implement matrix multiplication and modular arithmetic functions to handle multiplications modulo 10^9+7. This keeps numbers in the correct range and avoids overflow.
-5. Compute T^(n-1) using fast exponentiation by squaring. For each power, multiply matrices and reduce modulo 10^9+7.
-6. Sum all entries in T^(n-1). Each entry represents the number of sequences of length n starting from a nucleotide i and ending at nucleotide j. Since the first nucleotide can be any of the m nucleotides, the total number of sequences is simply the sum of all entries.
-7. Output the result modulo 10^9+7.
+1. Create an index mapping for characters. Symbols `'a'..'z'` map to `0..25`, and `'A'..'Z'` map to `26..51`.
+2. Build an `m × m` transition matrix `A`.
 
-Why it works: At each step of exponentiation, the matrix multiplication exactly counts the number of sequences of a given length ending in each nucleotide. By inductively applying the power, we correctly compute the number of sequences of length n respecting all forbidden transitions. The modulo operation does not interfere with correctness because all arithmetic is modular.
+Initially every entry is `1`, meaning every transition is allowed.
+3. Read each forbidden pair `(x, y)` and set the corresponding matrix entry to `0`.
+
+The matrix now exactly represents the graph of allowed transitions.
+4. Handle the special case `n = 1`.
+
+Every symbol alone forms a valid DNA string, so the answer is simply `m`.
+5. Compute `A^(n-1)` using binary exponentiation.
+
+Each matrix multiplication is performed modulo `10^9 + 7`.
+6. Create the initial row vector
+
+$$f_1 = [1,1,\ldots,1]$$
+
+because any symbol can be chosen as the first character.
+7. Multiply `f_1` by `A^(n-1)`.
+
+The resulting vector contains the number of valid length-`n` strings ending with each symbol.
+8. Sum all entries of the resulting vector modulo `10^9 + 7`.
+
+This gives the total number of valid DNA strings.
+
+### Why it works
+
+The transition matrix encodes exactly the same recurrence as the ordinary dynamic program. Entry `(u,v)` equals one precisely when a string ending at `u` may be extended by symbol `v`.
+
+Multiplying a count vector by `A` performs one DP transition. Multiplying by `A²` performs two transitions. By induction, multiplying by `A^k` performs `k` consecutive DP transitions. Since a length-`n` string consists of one initial symbol followed by `n-1` transitions, the count vector for length `n` is exactly
+
+$$f_1 A^{n-1}.$$
+
+Summing the final vector counts all valid strings regardless of their ending symbol.
 
 ## Python Solution
 
@@ -61,60 +145,92 @@ Why it works: At each step of exponentiation, the matrix multiplication exactly 
 import sys
 input = sys.stdin.readline
 
-MOD = 10**9 + 7
+MOD = 1000000007
 
-def char_to_index(c):
+def char_id(c):
     if 'a' <= c <= 'z':
         return ord(c) - ord('a')
     return ord(c) - ord('A') + 26
 
-def mat_mult(A, B):
-    m = len(A)
-    C = [[0]*m for _ in range(m)]
-    for i in range(m):
-        for j in range(m):
-            for k in range(m):
-                C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD
-    return C
+def mat_mul(a, b):
+    n = len(a)
+    res = [[0] * n for _ in range(n)]
 
-def mat_pow(mat, power):
-    m = len(mat)
-    result = [[1 if i==j else 0 for j in range(m)] for i in range(m)]
-    while power:
-        if power % 2 == 1:
-            result = mat_mult(result, mat)
-        mat = mat_mult(mat, mat)
-        power //= 2
-    return result
+    for i in range(n):
+        ai = a[i]
+        ri = res[i]
+
+        for k in range(n):
+            if ai[k] == 0:
+                continue
+
+            val = ai[k]
+            bk = b[k]
+
+            for j in range(n):
+                ri[j] = (ri[j] + val * bk[j]) % MOD
+
+    return res
+
+def mat_pow(mat, exp):
+    n = len(mat)
+
+    res = [[0] * n for _ in range(n)]
+    for i in range(n):
+        res[i][i] = 1
+
+    while exp:
+        if exp & 1:
+            res = mat_mul(res, mat)
+
+        mat = mat_mul(mat, mat)
+        exp >>= 1
+
+    return res
 
 def solve():
     n, m, k = map(int, input().split())
-    T = [[1]*m for _ in range(m)]
+
+    trans = [[1] * m for _ in range(m)]
+
     for _ in range(k):
-        pair = input().strip()
-        i = char_to_index(pair[0])
-        j = char_to_index(pair[1])
-        T[i][j] = 0
+        s = input().strip()
+        u = char_id(s[0])
+        v = char_id(s[1])
+        trans[u][v] = 0
 
     if n == 1:
-        print(m % MOD)
+        print(m)
         return
 
-    Tn = mat_pow(T, n-1)
-    total = 0
-    for i in range(m):
-        for j in range(m):
-            total = (total + Tn[i][j]) % MOD
-    print(total)
+    power = mat_pow(trans, n - 1)
+
+    ans = 0
+
+    for col in range(m):
+        total = 0
+        for row in range(m):
+            total += power[row][col]
+        ans = (ans + total) % MOD
+
+    print(ans)
 
 solve()
 ```
 
-The solution first converts characters to indices to simplify matrix access. It initializes the transition matrix with ones and zeroes out forbidden pairs. Matrix exponentiation uses squaring to handle extremely large n efficiently. Finally, we sum all entries to count sequences, which corresponds exactly to the sum over all possible starting and ending nucleotides.
+The transition matrix is built directly from the forbidden-pair information. Every allowed adjacency contributes a `1`, every forbidden adjacency contributes a `0`.
+
+The exponentiation routine uses the standard binary exponentiation pattern. Since `n` can be as large as `10^15`, only about fifty matrix squarings are required.
+
+The final computation deserves attention. The initial vector consists entirely of ones. Multiplying a row vector of all ones by the powered matrix is equivalent to summing each column of that matrix. The implementation exploits this fact and avoids an extra vector-matrix multiplication.
+
+All arithmetic is performed modulo `10^9 + 7`. Python integers do not overflow, but reducing modulo at each accumulation keeps the computation efficient.
 
 ## Worked Examples
 
-For input
+### Example 1
+
+Input:
 
 ```
 3 3 2
@@ -122,65 +238,217 @@ ab
 ba
 ```
 
-The nucleotide indices are: a=0, b=1, c=2. The transition matrix T is initially all ones, then T[0][1] and T[1][0] are set to 0:
+Allowed transition matrix:
 
-|  | a | b | c |
+| From \ To | a | b | c |
 | --- | --- | --- | --- |
 | a | 1 | 0 | 1 |
 | b | 0 | 1 | 1 |
 | c | 1 | 1 | 1 |
 
-Raising T to the power of n-1=2 and summing entries gives 17, matching the sample output. This confirms that forbidden pairs are correctly applied and matrix exponentiation correctly counts sequences.
+After exponentiation we need `A²`.
 
-For input
+| Step | Matrix |
+| --- | --- |
+| A | transitions above |
+| A² | counts of length-2 walks |
+
+Computing column sums of `A²` gives:
+
+| Column | Sum |
+| --- | --- |
+| a | 5 |
+| b | 5 |
+| c | 7 |
+
+Total:
+
+| Value |
+| --- |
+| 5 + 5 + 7 = 17 |
+
+Output:
+
+```
+17
+```
+
+This trace shows that matrix powers count walks of multiple steps. The final answer is the total number of length-three strings.
+
+### Example 2
+
+Input:
+
+```
+2 3 0
+```
+
+Every transition is allowed.
+
+Transition matrix:
+
+| From \ To | a | b | c |
+| --- | --- | --- | --- |
+| a | 1 | 1 | 1 |
+| b | 1 | 1 | 1 |
+| c | 1 | 1 | 1 |
+
+Since `n = 2`, we need `A¹`.
+
+| Column | Sum |
+| --- | --- |
+| a | 3 |
+| b | 3 |
+| c | 3 |
+
+Total:
+
+| Value |
+| --- |
+| 9 |
+
+Output:
+
+```
+9
+```
+
+This matches the obvious count `3²`.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(m³ log n) | Matrix exponentiation with cubic matrix multiplication |
+| Space | O(m²) | Storage of several `m × m` matrices |
+
+Since `m ≤ 52`, a matrix multiplication costs roughly `52³ ≈ 140,000` arithmetic operations. Binary exponentiation performs about `log₂(10¹⁵) ≈ 50` iterations. This comfortably fits within the limits.
+
+## Test Cases
+
+```python
+# helper: run solution on input string, return output string
+import sys
+import io
+
+MOD = 1000000007
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+
+    input = sys.stdin.readline
+
+    def char_id(c):
+        if 'a' <= c <= 'z':
+            return ord(c) - ord('a')
+        return ord(c) - ord('A') + 26
+
+    def mat_mul(a, b):
+        n = len(a)
+        res = [[0] * n for _ in range(n)]
+
+        for i in range(n):
+            for k in range(n):
+                if a[i][k] == 0:
+                    continue
+                for j in range(n):
+                    res[i][j] = (res[i][j] + a[i][k] * b[k][j]) % MOD
+
+        return res
+
+    def mat_pow(mat, exp):
+        n = len(mat)
+        res = [[0] * n for _ in range(n)]
+
+        for i in range(n):
+            res[i][i] = 1
+
+        while exp:
+            if exp & 1:
+                res = mat_mul(res, mat)
+            mat = mat_mul(mat, mat)
+            exp >>= 1
+
+        return res
+
+    n, m, k = map(int, input().split())
+
+    trans = [[1] * m for _ in range(m)]
+
+    for _ in range(k):
+        s = input().strip()
+        trans[char_id(s[0])][char_id(s[1])] = 0
+
+    if n == 1:
+        return str(m)
+
+    power = mat_pow(trans, n - 1)
+
+    ans = 0
+    for col in range(m):
+        for row in range(m):
+            ans = (ans + power[row][col]) % MOD
+
+    return str(ans)
+
+# sample
+assert run("3 3 2\nab\nba\n") == "17"
+
+# minimum size
+assert run("1 1 0\n") == "1"
+
+# single symbol, self-transition forbidden
+assert run("2 1 1\naa\n") == "0"
+
+# all transitions allowed
+assert run("2 3 0\n") == "9"
+
+# n=1 ignores restrictions
+assert run("1 2 4\naa\nab\nba\nbb\n") == "2"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `1 1 0` | `1` | Smallest possible instance |
+| `2 1 1 / aa` | `0` | Forbidden self-loop |
+| `2 3 0` | `9` | Fully connected graph |
+| `1 2 4 ...` | `2` | Length one ignores adjacency restrictions |
+
+## Edge Cases
+
+Consider:
+
+```
+1 2 4
+aa
+ab
+ba
+bb
+```
+
+Every transition is forbidden, yet the answer is `2`. The algorithm returns immediately when `n = 1`, because no adjacency exists in a one-character string. A solution that blindly exponentiates or applies transitions could incorrectly produce zero.
+
+Consider:
 
 ```
 2 1 1
 aa
 ```
 
-We have a single nucleotide 'a'. T is [[0]]. T^(2-1) is [[0]], sum is 0, which correctly reflects that no sequence of length 2 is allowed.
+The transition matrix is:
 
-## Complexity Analysis
+$$[0]$$
 
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(m^3 log n) | Matrix multiplication takes O(m^3), exponentiation applies log n squarings |
-| Space | O(m^2) | Storing the transition matrix and intermediate results |
+Since `n-1 = 1`, the powered matrix is still `[0]`. The column sum is zero, so the answer is zero. This correctly captures the fact that the only possible adjacent pair is forbidden.
 
-With m ≤ 52, m^3 is ~140k operations per multiplication. log n ≤ 50 for n up to 10^15, so total operations are feasible within 2 seconds. Space of O(m^2) is negligible compared to memory limit.
+Consider:
 
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
-
-# provided samples
-assert run("3 3 2\nab\nba\n") == "17", "sample 1"
-assert run("2 1 1\naa\n") == "0", "sample 2"
-
-# custom cases
-assert run("1 5 0\n") == "5", "single length sequences"
-assert run("3 2 0\n") == "8", "no forbidden pairs"
-assert run("4 2 4\nab\nba\naa\nbb\n") == "0", "all pairs forbidden"
-assert run("2 3 1\nac\n") == "8", "single forbidden pair"
+```
+1000000000000000 1 0
 ```
 
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 1 5 0 | 5 | single nucleotide sequences |
-| 3 2 0 | 8 | sequences without forbidden pairs |
-| 4 2 4 | 0 | no valid sequences possible |
-| 2 3 1 | 8 | one forbidden pair correctly applied |
+The matrix is:
 
-## Edge Cases
+$$[1]$$
 
-For n=1, the code correctly handles the case separately, returning m. For n=2 and all pairs forbidden, the matrix exponentiation produces zeros, resulting in output 0. For maximum n=10^15 and m=52, the matrix exponentiation remains efficient due to log
+Any power of this matrix remains `[1]`. Binary exponentiation handles the huge exponent in logarithmic time, producing answer `1`. This is exactly the scenario that eliminates any position-by-position dynamic programming approach.

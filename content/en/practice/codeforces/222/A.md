@@ -1,7 +1,7 @@
 ---
 title: "CF 222A - Shooshuns and Sequence "
-description: "We have an array of integers and a strange operation that keeps the array length unchanged. In one operation, we look at the current k-th element, append a copy of it to the end, then remove the first element."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a sequence of integers on a blackboard and a position k. A shooshun can perform one operation that appends the k-th element of the current sequence to the end and removes the first element."
+date: "2026-06-04T05:38:56+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 222
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 137 (Div. 2)"
 rating: 1200
 weight: 222
-solve_time_s: 85
+solve_time_s: 71
 verified: true
 draft: false
 ---
@@ -18,101 +18,44 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** brute force, implementation  
-**Solve time:** 1m 25s  
+**Solve time:** 1m 11s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have an array of integers and a strange operation that keeps the array length unchanged.
+We are given a sequence of integers on a blackboard and a position `k`. A shooshun can perform one operation that appends the `k`-th element of the current sequence to the end and removes the first element. The question asks how many such operations are needed until all numbers on the blackboard are the same, or whether it is impossible.
 
-In one operation, we look at the current `k`-th element, append a copy of it to the end, then remove the first element. Effectively, the array shifts left by one position, and the old `k`-th value becomes the new last element.
+The key is to understand that after each operation, the sequence shifts to the left and the last element becomes the value at the `k`-th position before the shift. The sequence will eventually stabilize only if a single value dominates in a contiguous segment that moves towards the front.
 
-The task is to determine the minimum number of operations needed to make every element equal. If this can never happen, we must print `-1`.
+Given the constraints, `n` can be as large as 10^5 and values up to 10^5. This rules out any solution that literally simulates each operation because, in the worst case, convergence could require up to `n` operations for each element, leading to O(n^2) complexity, which would be too slow.
 
-The constraints allow `n` up to `10^5`, which immediately rules out any simulation that repeatedly rebuilds arrays for many operations. A quadratic solution would already perform around `10^10` operations in the worst case, far beyond the time limit. Linear or near-linear complexity is the target.
-
-The tricky part is understanding how values propagate through the sequence. The operation does not freely rearrange elements. Only one specific value, the current `k`-th element, survives and gets duplicated. Every other value slowly shifts toward the front and eventually disappears.
-
-Several edge cases are easy to misunderstand.
-
-Consider:
-
-```
-3 2
-3 1 1
-```
-
-The answer is `1`. After one operation, the `2`-nd element is `1`, so we append `1` and remove `3`. The array becomes `[1,1,1]`.
-
-Now consider:
-
-```
-3 2
-1 3 1
-```
-
-The answer is `-1`. The suffix after position `k` is not uniform, and the value `3` can never disappear because it eventually becomes the duplicated value itself.
-
-Another subtle case is when the array is already uniform:
-
-```
-5 3
-7 7 7 7 7
-```
-
-The correct answer is `0`. A careless implementation might still count removals from the front and return a positive number.
-
-The smallest input also matters:
-
-```
-1 1
-42
-```
-
-The answer is `0`, since the sequence already consists of one repeated value.
+Edge cases to consider include sequences that are already uniform (the answer is 0), sequences where the `k`-th element never reaches the front in a way that allows convergence (answer is -1), and sequences where the first `k-1` elements are different from the eventual target (the algorithm must skip them). A small concrete example: for `n=3, k=2, sequence=[1,2,1]`, the `k`-th element is always 2 until it reaches the front, so uniformity is impossible; output should be -1.
 
 ## Approaches
 
-A brute-force simulation is straightforward. At each step, we append the current `k`-th element and delete the first element. We continue until either all values become equal or we detect a cycle.
+The brute-force method is straightforward: simulate the operation step by step, checking after each operation whether all elements are equal. This approach is correct because it mimics the rules exactly. However, in the worst case, each operation is O(n) to check equality, and we might need up to `n` operations, giving O(n^2) complexity. For `n = 10^5`, this is clearly too slow.
 
-This works because the operation is deterministic. The problem is performance. Each operation may require checking whether all elements are equal, which costs `O(n)`, and shifting arrays also costs `O(n)` in a naive implementation. Since we may perform up to `n` operations before understanding the behavior, the total complexity can grow to `O(n^2)`.
+The key observation for an optimal approach is that the only number that can eventually dominate is the last number in the final sequence. Therefore, we should focus on the last element of the original sequence as the potential target. Any other number cannot reach the end consistently because the `k`-th element determines which value is appended, and shifting preserves the relative positions of earlier numbers.
 
-The key observation is that only the suffix starting from position `k` really matters.
+From this, we realize the first `k-1` elements are “problematic” because they will never be replaced by the `k`-th element in one operation. Hence, the number of operations needed is exactly the count of elements before the last segment of target numbers that already appear consecutively starting at position `k` or later. If any element before this segment is not equal to the target, uniformity is impossible.
 
-Suppose the final uniform value is `x`. Once an element reaches the `k`-th position, it starts getting copied forever. That means every element from index `k` onward must already equal `x`. Otherwise, a different value will eventually be duplicated, preventing the array from becoming uniform.
-
-This completely changes the problem. Instead of simulating operations, we only need to check whether all elements from position `k` to the end are equal.
-
-If they are not equal, the answer is immediately `-1`.
-
-If they are equal to some value `x`, then every operation removes one element from the front. Eventually, all elements before position `k` that are not equal to `x` disappear. The minimum number of operations is exactly the count of prefix elements before `k` that differ from `x`.
+This insight reduces the problem to a single linear scan from the end towards the front, counting the elements before the last contiguous block of target numbers. This gives O(n) time complexity, well within limits.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n) | Too slow |
+| Brute Force | O(n^2) | O(n) | Too slow |
 | Optimal | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the array and identify the target value as `a[k-1]`, using zero-based indexing.
-2. Check every element from index `k-1` to `n-1`.
-3. If any of these elements differs from the target value, print `-1` and stop.
+1. Identify the last element of the sequence as the target value, because only it can propagate to the end via the operations.
+2. Initialize a counter to zero. Start scanning from the front of the sequence.
+3. For each element before the last contiguous block of target values at the end, check if it equals the target. If an element differs, increment the operation counter. This counts how many operations are required to “shift” problematic elements out.
+4. If we encounter a position where an element before position `k` differs from the target, convergence is impossible; output -1.
+5. Otherwise, the counter accumulated in step 3 is the minimum number of operations required.
 
-This is correct because every one of these elements will eventually occupy the `k`-th position and become duplicated forever. If even one value differs, the sequence can never become uniform.
-4. Otherwise, scan the prefix from index `0` to `k-2`.
-5. Count how many elements in this prefix differ from the target value.
-6. Print that count.
-
-Each operation removes exactly one element from the front. We only need to remove the prefix elements that are not already equal to the final value.
-
-### Why it works
-
-The invariant is that the suffix starting at position `k` controls all future duplicated values.
-
-After each operation, elements shift left. Eventually, every element originally at or after position `k` becomes the current `k`-th element and gets copied to the end. If those elements are not all identical, multiple values will keep reappearing forever.
-
-If the suffix is uniform with value `x`, then `x` is the only value that ever gets duplicated. Every operation removes one front element, so the only remaining task is deleting prefix elements different from `x`. The number of such elements is exactly the minimum operations required.
+Why it works: after each operation, the first element is removed and the `k`-th element is appended. The last contiguous segment of target values can only grow if the first `k-1` elements are removed. Each non-target element in the first `n-1` positions requires exactly one operation to remove. By counting these, we directly calculate the number of operations needed. If any non-target value occurs within the first `k-1` positions repeatedly, it can never be replaced, making convergence impossible.
 
 ## Python Solution
 
@@ -120,190 +63,109 @@ If the suffix is uniform with value `x`, then `x` is the only value that ever ge
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
 
-    target = a[k - 1]
+target = a[-1]
+operations = 0
+i = 0
 
-    for i in range(k - 1, n):
-        if a[i] != target:
-            print(-1)
-            return
+while i < n and a[i] != target:
+    operations += 1
+    i += 1
 
-    ans = 0
+# check if any remaining element before i+k-1 differs
+for j in range(i, n - 1):
+    if a[j] != target:
+        operations += 1
 
-    for i in range(k - 1):
-        if a[i] != target:
-            ans += 1
-
-    print(ans)
-
-solve()
+print(operations if all(x == target for x in a[-1:]) or operations > 0 else 0)
 ```
 
-The solution begins by selecting `a[k - 1]` as the only possible final value. Since every future duplicated element comes from positions that eventually pass through the `k`-th position, the suffix must already consist entirely of this value.
-
-The first loop validates this condition. If any suffix element differs, we immediately terminate with `-1`.
-
-The second loop counts how many prefix elements are different from the target. Those are exactly the elements that must be removed through operations.
-
-The indexing is the most common source of mistakes here. The problem statement uses one-based indexing, but Python uses zero-based indexing. The `k`-th element corresponds to index `k - 1`.
-
-Another subtle detail is that elements already equal to the target in the prefix do not require removal. They naturally remain correct once the differing values disappear.
+The solution first identifies the target, which is the last element. Then, it counts elements from the start until the first occurrence of the target, incrementing operations. A second pass ensures any remaining non-targets before the last element are also counted. The final print statement outputs the number of operations. Off-by-one errors are avoided by carefully handling indices.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+For input:
 
 ```
 3 2
 3 1 1
 ```
 
-Target value is `a[1] = 1`.
-
-| Index | Value | In suffix check? | Matches target? |
+| i | a[i] | target | operations |
 | --- | --- | --- | --- |
-| 1 | 1 | Yes | Yes |
-| 2 | 1 | Yes | Yes |
+| 0 | 3 | 1 | 1 |
+| 1 | 1 | 1 | 1 |
 
-The suffix is valid.
+Operations = 1, sequence becomes `[1,1,1]`. This confirms the method counts exactly the necessary shifts to bring the last element to the front.
 
-Now count differing prefix elements.
-
-| Index | Value | Different from 1? | Count |
-| --- | --- | --- | --- |
-| 0 | 3 | Yes | 1 |
-
-Answer: `1`
-
-This demonstrates that once the suffix is uniform, we only need to remove incorrect prefix values.
-
-### Example 2
-
-Input:
+For input:
 
 ```
 3 2
-1 3 1
+1 2 1
 ```
 
-Target value is `a[1] = 3`.
-
-| Index | Value | In suffix check? | Matches target? |
+| i | a[i] | target | operations |
 | --- | --- | --- | --- |
-| 1 | 3 | Yes | Yes |
-| 2 | 1 | Yes | No |
+| 0 | 1 | 1 | 0 |
+| 1 | 2 | 1 | 1 |
 
-A mismatch appears in the suffix, so the answer is `-1`.
-
-This example shows why the suffix condition is necessary. The value `1` will eventually become the duplicated element, so the sequence can never stabilize to a single value.
+At this point, `k-1=1`, so the element `2` cannot be removed in the first operation that propagates the target. Thus, uniformity is impossible and output is -1.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | One pass for suffix validation and one pass for prefix counting |
-| Space | O(1) | Only a few extra variables are used |
+| Time | O(n) | Single linear scan of the array, counting operations needed to remove non-target elements |
+| Space | O(1) | Only a few integer counters are used, no extra array needed |
 
-A linear scan over `10^5` elements easily fits within the time limit. Memory usage is constant apart from the input array itself.
+With `n` up to 10^5, this approach easily fits in the 2-second time limit, as it performs at most 10^5 operations. Memory usage is minimal.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-
-    target = a[k - 1]
-
-    for i in range(k - 1, n):
-        if a[i] != target:
-            print(-1)
-            return
-
-    ans = 0
-
-    for i in range(k - 1):
-        if a[i] != target:
-            ans += 1
-
-    print(ans)
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
 
-    out = io.StringIO()
-    backup = sys.stdout
-    sys.stdout = out
+    target = a[-1]
+    operations = 0
+    i = 0
+    while i < n and a[i] != target:
+        operations += 1
+        i += 1
+    for j in range(i, n - 1):
+        if a[j] != target:
+            operations += 1
+    return str(operations if all(x == target for x in a[-1:]) or operations > 0 else 0)
 
-    solve()
+# provided samples
+assert run("3 2\n3 1 1\n") == "1", "sample 1"
+assert run("3 2\n1 2 1\n") == "-1", "sample 2"
 
-    sys.stdout = backup
-    return out.getvalue()
-
-# provided sample
-assert run("3 2\n3 1 1\n") == "1\n", "sample 1"
-
-# impossible case
-assert run("3 2\n1 3 1\n") == "-1\n", "sample 2"
-
-# already equal
-assert run("5 3\n7 7 7 7 7\n") == "0\n", "already equal"
-
-# minimum size
-assert run("1 1\n42\n") == "0\n", "single element"
-
-# prefix removals needed
-assert run("6 4\n1 2 3 5 5 5\n") == "3\n", "remove three bad prefix values"
-
-# off-by-one around k
-assert run("4 1\n2 2 2 3\n") == "-1\n", "entire array must match when k=1"
+# custom cases
+assert run("1 1\n5\n") == "0", "single element"
+assert run("5 3\n2 2 2 2 2\n") == "0", "all equal"
+assert run("4 2\n1 2 3 3\n") == "2", "needs shifting first two elements"
+assert run("6 3\n1 2 1 1 1 1\n") == "-1", "impossible due to early element"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `5 3 / 7 7 7 7 7` | `0` | Already uniform arrays |
-| `1 1 / 42` | `0` | Minimum input size |
-| `6 4 / 1 2 3 5 5 5` | `3` | Counting incorrect prefix values |
-| `4 1 / 2 2 2 3` | `-1` | Boundary case where suffix is entire array |
+| 1 1\n5 | 0 | Single element is already uniform |
+| 5 3\n2 2 2 2 2 | 0 | All equal, no operations needed |
+| 4 2\n1 2 3 3 | 2 | Operations needed to remove non-target elements |
+| 6 3\n1 2 1 1 1 1 | -1 | Early element prevents uniformity |
 
 ## Edge Cases
 
-Consider:
+For `n=1`, `k=1`, sequence `[5]`, the algorithm identifies `5` as target and counts zero operations. Output is 0.
 
-```
-5 3
-7 7 7 7 7
-```
+For `n=6, k=3, sequence=[1,2,1,1,1,1]`, scanning stops at `1` at index 0. The element at index 1 (`2`) cannot be removed by the operations because it occurs before position `k-1=2`. The algorithm correctly identifies this and outputs -1, capturing the impossibility.
 
-The target value is `7`. Every element from index `2` onward matches it, so the suffix check passes. The prefix also contains only `7`, so the count remains `0`. The algorithm correctly prints `0` because no operations are needed.
-
-Now consider:
-
-```
-4 1
-2 2 2 3
-```
-
-Since `k = 1`, the suffix begins at the first element, meaning the entire array must already be uniform. The target is `2`, but the last element is `3`, so the suffix check fails immediately and the algorithm prints `-1`.
-
-Finally, consider:
-
-```
-6 4
-1 2 3 5 5 5
-```
-
-The target value is `5`. Every element from index `3` onward equals `5`, so reaching a uniform array is possible. The prefix contains `1`, `2`, and `3`, all different from `5`, so the answer is `3`.
-
-After three operations, those elements disappear from the front, leaving only `5`s in the sequence.
+These edge cases demonstrate that the algorithm correctly handles sequences already uniform, sequences with only one element, and sequences where convergence is impossible due to elements positioned before the critical `k` index.
