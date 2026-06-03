@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.1: Positional Number Systems"
-description: "Section 4.1 exercises: 27/34 solved."
+description: "Section 4.1 exercises: 30/34 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.1. Positional Number Systems
 
-Exercises from [TAOCP Volume 2](../) Section 4.1: 27/34 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.1: 30/34 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -44,11 +44,11 @@ Exercises from [TAOCP Volume 2](../) Section 4.1: 27/34 solved.
 | [24](24.md) |  [*M35*] | math-hard | verified | 2m14s |
 | [25](25.md) |  [*M25*] | math-medium | verified | 5m01s |
 | [26](26.md) | &#9654; [*HM30*] | hm-hard | verified | 5m21s |
-| 27 |  [**] |  | - | - |
-| 28 | &#9654; [**] |  | - | - |
+| [27](27.md) |  [**] |  | solved | 10m13s |
+| [28](28.md) | &#9654; [**] |  | verified | 9m35s |
 | [29](29.md) |  [**] |  | verified | 5m05s |
 | 30 |  [**] |  | - | - |
-| 31 | &#9654; [*M35*] | math-hard | - | - |
+| [31](31.md) | &#9654; [*M35*] | math-hard | verified | 3m49s |
 | 32 |  [*M40*] | math-project | - | - |
 | 33 |  [*M40*] | math-project | - | - |
 | 34 | &#9654; [*22*] | medium | - | - |
