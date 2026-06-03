@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.3.1: The Classical Algorithms"
-description: "Section 4.3.1 exercises: 34/43 solved."
+description: "Section 4.3.1 exercises: 35/43 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.3.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.3.1. The Classical Algorithms
 
-Exercises from [TAOCP Volume 2](../) Section 4.3.1: 34/43 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.3.1: 35/43 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -56,7 +56,7 @@ Exercises from [TAOCP Volume 2](../) Section 4.3.1: 34/43 solved.
 | [36](36.md) |  [**] |  | verified | 1m09s |
 | [37](37.md) |  [**] |  | solved | 4m01s |
 | [38](38.md) |  [**] |  | verified | 6m27s |
-| 39 |  [**] |  | - | - |
+| [39](39.md) |  [**] |  | verified | 4m58s |
 | 40 |  [*M24*] | math-medium | - | - |
 | 41 | &#9654; [*M26*] | math-hard | - | - |
 | [42](42.md) |  [*HM35*] | hm-hard | verified | 1m49s |
