@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 294 solved, 229 verified, 337 total."
+description: "Volume 2: Seminumerical Algorithms. 302 solved, 235 verified, 356 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,14 +9,14 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 294 solved, 229 verified, 337 total.
+Exercise solutions for [TAOCP](../) Volume 2. 302 solved, 235 verified, 356 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
 | [3.1](3.1/) | Introduction | 23 | 17 | 23 |
 | [3.5](3.5/) | What Is a Random Sequence? | 43 | 30 | 44 |
 | [3.6](3.6/) | Summary | 15 | 13 | 15 |
-| [4.1](4.1/) | Positional Number Systems | 30 | 18 | 34 |
+| [4.1](4.1/) | Positional Number Systems | 33 | 20 | 34 |
 | [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
 | [3.2.2](3.2.2/) | Other Methods | 35 | 25 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 24 | 22 | 25 |
@@ -24,6 +24,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 294 solved, 229 verified, 337 tota
 | [3.3.4](3.3.4/) | The Spectral Test | 26 | 18 | 32 |
 | [3.4.1](3.4.1/) | Numerical Distributions | 33 | 27 | 33 |
 | [3.4.2](3.4.2/) | Random Sampling and Shuffling | 19 | 16 | 19 |
+| [4.2.1](4.2.1/) | Single-Precision Calculations | 5 | 4 | 19 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
