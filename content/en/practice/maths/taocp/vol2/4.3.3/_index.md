@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.3.3: How Fast Can We Multiply?"
-description: "Section 4.3.3 exercises: 11/19 solved."
+description: "Section 4.3.3 exercises: 15/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.3.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.3.3. How Fast Can We Multiply?
 
-Exercises from [TAOCP Volume 2](../) Section 4.3.3: 11/19 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.3.3: 15/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -31,9 +31,9 @@ Exercises from [TAOCP Volume 2](../) Section 4.3.3: 11/19 solved.
 | [11](11.md) | &#9654; [*M26*] | math-hard | verified | 3m11s |
 | [12](12.md) | &#9654; [*M41*] | math-project | verified | 1m59s |
 | [13](13.md) |  [*M25*] | math-medium | verified | 1m16s |
-| 14 |  [*M2*] | math-simple | - | - |
-| 15 |  [*M49*] | math-research | - | - |
-| 16 | &#9654; [**] |  | - | - |
-| 17 |  [*M26*] | math-hard | - | - |
+| [14](14.md) |  [*M2*] | math-simple | solved | 8m16s |
+| [15](15.md) |  [*M49*] | math-research | verified | 5m57s |
+| [16](16.md) | &#9654; [**] |  | verified | 8m46s |
+| [17](17.md) |  [*M26*] | math-hard | solved | 8m58s |
 | 18 | &#9654; [*M30*] | math-hard | - | - |
 | 19 | &#9654; [*M23*] | math-medium | - | - |
