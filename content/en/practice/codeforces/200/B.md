@@ -1,7 +1,7 @@
 ---
 title: "CF 200B - Drinks"
-description: "We are given several drinks, and each drink already contains some percentage of orange juice. Vasya mixes the same amount from every drink into one large cocktail. The task is to compute the final percentage of orange juice in the mixture."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given several drinks, and each drink contains some percentage of orange juice. Vasya mixes equal amounts of every drink into a single cocktail. The question is simple: after mixing them, what percentage of the final cocktail is orange juice?"
+date: "2026-06-03T16:24:54+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 200
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 126 (Div. 2)"
 rating: 800
 weight: 200
-solve_time_s: 93
-verified: true
+solve_time_s: 128
+verified: false
 draft: false
 ---
 
@@ -18,72 +18,90 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation, math  
-**Solve time:** 1m 33s  
-**Verified:** yes  
+**Solve time:** 2m 8s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several drinks, and each drink already contains some percentage of orange juice. Vasya mixes the same amount from every drink into one large cocktail. The task is to compute the final percentage of orange juice in the mixture.
+We are given several drinks, and each drink contains some percentage of orange juice. Vasya mixes equal amounts of every drink into a single cocktail.
 
-If one drink is 50% orange juice and another is 100%, taking equal amounts from both means the final concentration is simply the average of their percentages. The problem asks us to print that average as a floating-point number.
+The question is simple: after mixing them, what percentage of the final cocktail is orange juice?
 
-The constraints are very small. There are at most 100 drinks, and each percentage is between 0 and 100. Even an inefficient solution would run comfortably within the time limit, since processing 100 numbers takes almost no time. The real challenge is not performance, it is handling the arithmetic correctly and printing a floating-point result instead of accidentally truncating to an integer.
+The input contains the number of drinks and the orange juice percentage of each drink. The output is the orange juice percentage in the mixture.
 
-One easy mistake is using integer division. Consider this input:
+The constraints are extremely small. There are at most 100 drinks, so any algorithm that processes each percentage once will finish instantly. Even an unnecessarily complicated simulation would still fit comfortably within the limits. This means the challenge is not algorithmic efficiency but correctly understanding how mixing equal quantities affects percentages.
+
+A common mistake is to think about actual volumes and simulate them. The problem does not tell us how many milliliters are taken from each drink. Fortunately, that value does not matter because the same amount is taken from every drink. The final percentage is simply the average of the individual percentages.
+
+Another subtle case occurs when some drinks contain no orange juice at all.
+
+Input:
 
 ```
 2
 0 100
 ```
 
-The correct answer is:
+Output:
 
 ```
 50
 ```
 
-If we divide using integer arithmetic in some languages, values like `1 / 2` may become `0`, producing the wrong result.
+A careless implementation that ignores zero values or divides by the wrong quantity could produce an incorrect result. The mixture contains equal amounts of a pure orange juice drink and a drink with none, so the average is exactly 50%.
 
-Another subtle case is when every drink has 0% juice:
+Another edge case is when every drink contains 0% orange juice.
+
+Input:
 
 ```
 3
 0 0 0
 ```
 
-The answer must still be:
+Output:
 
 ```
 0
 ```
 
-A careless implementation that divides by the wrong quantity or forgets to initialize the sum properly could fail here.
+The answer remains valid because averaging zeros still gives zero.
 
-A similar edge case happens when all drinks are pure juice:
+Similarly, if every drink contains 100% orange juice:
+
+Input:
 
 ```
 4
 100 100 100 100
 ```
 
-The result must remain exactly `100`, because averaging identical values should never change them.
+Output:
+
+```
+100
+```
+
+The mixture remains pure orange juice.
 
 ## Approaches
 
-The most direct way to think about the problem is physically simulating the cocktail. Suppose we take `x` milliliters from every drink. If a drink has `p[i]` percent orange juice, then the amount of pure orange juice contributed by that drink is:
+A direct brute-force interpretation is to assume Vasya takes some amount, say 100 milliliters, from every drink. We could compute how many milliliters of orange juice come from each drink, sum those amounts, compute the total volume of the cocktail, and finally divide.
 
-$$x \times \frac{p[i]}{100}$$
+For a drink with percentage `p`, taking 100 milliliters contributes `p` milliliters of orange juice. After processing all drinks, the orange juice percentage is
 
-We could sum the pure juice from all drinks, compute the total volume `n * x`, and divide them to get the final percentage.
+$$\frac{\text{total orange juice}}{\text{total volume}} \times 100.$$
 
-That brute-force reasoning is correct, but it introduces an unnecessary variable `x`. Since every drink contributes the same volume, the common factor cancels out. The cocktail percentage becomes simply the arithmetic mean of all percentages:
+This approach is correct because it follows the physical mixing process exactly. Its time complexity is $O(n)$, since each drink is processed once.
 
-$$\frac{p_1 + p_2 + \dots + p_n}{n}$$
+Looking closely at the formula reveals something simpler. If the same amount is taken from every drink, that amount appears in both the numerator and denominator and cancels out. What remains is just the arithmetic mean of all percentages:
 
-This observation removes all simulation details. We only need to sum the percentages and divide by the number of drinks.
+$$\frac{p_1 + p_2 + \cdots + p_n}{n}.$$
 
-Even though the constraints are tiny, this simplification matters because it turns the problem into a clean implementation exercise instead of a floating-point modeling problem.
+The problem immediately becomes an averaging task. We only need the sum of all percentages and then divide by the number of drinks.
+
+The brute-force simulation already runs fast enough for the given constraints, but the averaging observation removes unnecessary calculations and expresses the underlying mathematics directly.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -93,20 +111,38 @@ Even though the constraints are tiny, this simplification matters because it tur
 ## Algorithm Walkthrough
 
 1. Read the integer `n`, the number of drinks.
-2. Read the list of percentages.
+2. Read the `n` percentage values.
 3. Compute the sum of all percentages.
-
-This gives the total percentage contribution from every drink before averaging.
-4. Divide the sum by `n`.
-
-Since equal amounts of every drink are mixed, the final concentration is exactly the average percentage.
+4. Divide the sum by `n` to obtain the average percentage.
 5. Print the result as a floating-point number.
 
-The judge allows a small error tolerance, so standard floating-point output is sufficient.
+The only mathematical observation is that equal portions are taken from every drink. Because every drink contributes the same volume, the final concentration equals the average of the original concentrations.
 
 ### Why it works
 
-Every drink contributes the same volume to the cocktail. Because the contribution volumes are equal, each drink affects the final concentration equally. Averaging the percentages is mathematically identical to computing the ratio of total pure juice to total cocktail volume. The algorithm computes exactly that average, so the produced percentage is always correct.
+Suppose Vasya takes `x` milliliters from each drink.
+
+Drink `i` contributes
+
+$$x \cdot \frac{p_i}{100}$$
+
+milliliters of pure orange juice.
+
+The total orange juice amount is
+
+$$x \cdot \frac{p_1+p_2+\cdots+p_n}{100}.$$
+
+The total cocktail volume is
+
+$$nx.$$
+
+The final percentage is
+
+$$\frac{x \cdot \frac{p_1+p_2+\cdots+p_n}{100}}{nx}\times100
+=
+\frac{p_1+p_2+\cdots+p_n}{n}.$$
+
+The algorithm computes exactly this quantity, so it always returns the correct orange juice percentage.
 
 ## Python Solution
 
@@ -115,24 +151,19 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-percentages = list(map(int, input().split()))
+p = list(map(int, input().split()))
 
-answer = sum(percentages) / n
-
+answer = sum(p) / n
 print(answer)
 ```
 
-The program starts by reading the number of drinks and the list of juice percentages.
+The first line reads the number of drinks. The second line reads all percentages into a list.
 
-The key computation is:
+The expression `sum(p)` computes the total percentage contribution from all drinks. Dividing by `n` gives the arithmetic mean, which is exactly the concentration of orange juice in the final cocktail.
 
-```
-sum(percentages) / n
-```
+Python automatically performs floating-point division when using `/`, so the result is printed with sufficient precision for the required error tolerance.
 
-This calculates the arithmetic mean of the percentages. In Python 3, the `/` operator always performs floating-point division, so we automatically get a decimal answer when necessary.
-
-The solution uses only constant extra memory besides the input list. There are no tricky boundary conditions because the constraints guarantee `n >= 1`, so division by zero cannot occur.
+There are no tricky boundary conditions. Values may range from 0 to 100, and the maximum sum is only 10,000, which is far below any numeric limit.
 
 ## Worked Examples
 
@@ -145,12 +176,12 @@ Input:
 50 50 100
 ```
 
-| Step | Current Value | Running Sum |
+| Step | Current Percentage | Running Sum |
 | --- | --- | --- |
 | Start | - | 0 |
-| Add first drink | 50 | 50 |
-| Add second drink | 50 | 100 |
-| Add third drink | 100 | 200 |
+| Read 50 | 50 | 50 |
+| Read 50 | 50 | 100 |
+| Read 100 | 100 | 200 |
 
 Final computation:
 
@@ -162,59 +193,55 @@ Output:
 66.666666666667
 ```
 
-This trace shows that the algorithm simply accumulates all percentages and averages them. Equal mixing means every drink contributes equally to the result.
+This example shows that the final concentration is simply the average of all percentages.
 
 ### Example 2
 
 Input:
 
 ```
-4
-0 25 50 75
+2
+0 100
 ```
 
-| Step | Current Value | Running Sum |
+| Step | Current Percentage | Running Sum |
 | --- | --- | --- |
 | Start | - | 0 |
-| Add first drink | 0 | 0 |
-| Add second drink | 25 | 25 |
-| Add third drink | 50 | 75 |
-| Add fourth drink | 75 | 150 |
+| Read 0 | 0 | 0 |
+| Read 100 | 100 | 100 |
 
 Final computation:
 
-$$150 / 4 = 37.5$$
+$$100 / 2 = 50$$
 
 Output:
 
 ```
-37.5
+50
 ```
 
-This example demonstrates that drinks with 0% juice still participate in the average and reduce the final concentration correctly.
+This example demonstrates that drinks with 0% orange juice are handled naturally by the averaging formula.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We process each drink exactly once |
-| Space | O(1) | Only a few variables are used besides the input list |
+| Time | O(n) | Each percentage is processed once while computing the sum |
+| Space | O(1) | Only a few variables are needed beyond the input data |
 
-With at most 100 drinks, the program runs instantly. The memory usage is negligible and easily fits within the limit.
+With at most 100 drinks, the algorithm performs only a tiny amount of work. Both the time and memory usage are comfortably within the limits.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys, io
+import sys
+import io
 
 def solve():
-    input = sys.stdin.readline
-
     n = int(input())
-    percentages = list(map(int, input().split()))
-
-    print(sum(percentages) / n)
+    p = list(map(int, input().split()))
+    print(sum(p) / n)
 
 def run(inp: str) -> str:
     backup_stdin = sys.stdin
@@ -223,101 +250,133 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     sys.stdout = io.StringIO()
 
+    global input
+    input = sys.stdin.readline
+
     solve()
 
-    output = sys.stdout.getvalue().strip()
+    out = sys.stdout.getvalue().strip()
 
     sys.stdin = backup_stdin
     sys.stdout = backup_stdout
 
-    return output
+    return out
 
 # provided sample
-assert run("3\n50 50 100\n") == "66.66666666666667", "sample 1"
+assert abs(float(run("3\n50 50 100\n")) - 66.666666666667) < 1e-6
 
 # minimum size
-assert run("1\n0\n") == "0.0", "single zero drink"
+assert abs(float(run("1\n0\n")) - 0.0) < 1e-6
 
 # all equal values
-assert run("4\n25 25 25 25\n") == "25.0", "all equal percentages"
+assert abs(float(run("4\n25 25 25 25\n")) - 25.0) < 1e-6
 
-# boundary values
-assert run("2\n0 100\n") == "50.0", "mixed extremes"
+# all maximum values
+assert abs(float(run("5\n100 100 100 100 100\n")) - 100.0) < 1e-6
 
-# maximum percentage
-assert run("3\n100 100 100\n") == "100.0", "all pure juice"
+# mixture of extremes
+assert abs(float(run("2\n0 100\n")) - 50.0) < 1e-6
 
-# varied values
-assert run("5\n10 20 30 40 50\n") == "30.0", "general averaging case"
+# maximum n
+assert abs(float(run("100\n" + " ".join(["100"] * 100) + "\n")) - 100.0) < 1e-6
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 0` | `0.0` | Minimum input size |
-| `4 / 25 25 25 25` | `25.0` | Averaging identical values |
-| `2 / 0 100` | `50.0` | Correct floating-point averaging |
-| `3 / 100 100 100` | `100.0` | Upper boundary percentages |
-| `5 / 10 20 30 40 50` | `30.0` | General correctness |
+| `1 / 0` | `0` | Minimum input size |
+| `4 / 25 25 25 25` | `25` | All values equal |
+| `5 / 100 100 100 100 100` | `100` | Upper percentage boundary |
+| `2 / 0 100` | `50` | Mixing extremes |
+| `100` drinks all `100` | `100` | Maximum input size |
 
 ## Edge Cases
 
-Consider the case where every drink contains no orange juice:
+### Single Drink
+
+Input:
+
+```
+1
+73
+```
+
+Trace:
+
+The sum of percentages is `73`. Dividing by `1` gives `73`.
+
+Output:
+
+```
+73
+```
+
+With only one drink, the cocktail is identical to the original drink.
+
+### All Percentages Are Zero
+
+Input:
 
 ```
 3
 0 0 0
 ```
 
-The algorithm computes:
+Trace:
 
-| Drink | Percentage | Running Sum |
-| --- | --- | --- |
-| 1 | 0 | 0 |
-| 2 | 0 | 0 |
-| 3 | 0 | 0 |
-
-The final result is:
+The running sum remains `0`.
 
 $$0 / 3 = 0$$
 
-So the output is correctly:
+Output:
 
 ```
-0.0
+0
 ```
 
-Now consider the opposite extreme:
+The algorithm correctly handles the absence of orange juice.
+
+### All Percentages Are One Hundred
+
+Input:
 
 ```
 4
 100 100 100 100
 ```
 
-The running sum becomes `400`, and the algorithm computes:
+Trace:
+
+The sum is `400`.
 
 $$400 / 4 = 100$$
 
-The final cocktail is still pure orange juice, so the correct output is:
+Output:
 
 ```
-100.0
+100
 ```
 
-Finally, consider a case that exposes integer division mistakes:
+A mixture of pure orange juice drinks remains pure orange juice.
+
+### Mixture of Extreme Values
+
+Input:
 
 ```
 2
 0 100
 ```
 
-The running sum is `100`, and:
+Trace:
+
+The sum is `100`.
 
 $$100 / 2 = 50$$
 
-Python uses floating-point division for `/`, so the program prints:
+Output:
 
 ```
-50.0
+50
 ```
 
-A language or implementation using integer division carelessly could incorrectly truncate intermediate values, but this solution handles the computation safely.
+This confirms that averaging percentages correctly models mixing equal amounts of the drinks.
