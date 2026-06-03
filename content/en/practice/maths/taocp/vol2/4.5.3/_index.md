@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.5.3: Analysis of Euclid's Algorithm"
-description: "Section 4.5.3 exercises: 3/42 solved."
+description: "Section 4.5.3 exercises: 4/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.5.3"
@@ -14,14 +14,14 @@ draft: false
 
 # Section 4.5.3. Analysis of Euclid's Algorithm
 
-Exercises from [TAOCP Volume 2](../) Section 4.5.3: 3/42 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.5.3: 4/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) | &#9654; [*20*] | medium | verified | 3m18s |
 | [2](02.md) |  [*M21*] | math-medium | verified | 32m23s |
 | [3](03.md) |  [*M21*] | math-medium | verified | 1m30s |
-| 4 |  [*M20*] | math-medium | - | - |
+| [4](04.md) |  [*M20*] | math-medium | verified | 41m25s |
 | 5 |  [**] |  | - | - |
 | 6 |  [**] |  | - | - |
 | 7 |  [**] |  | - | - |
