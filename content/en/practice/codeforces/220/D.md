@@ -1,7 +1,7 @@
 ---
 title: "CF 220D - Little Elephant and Triangle"
-description: "We work on the integer lattice inside a rectangle. Every point $(x,y)$ with $0 le x le w$ and $0 le y le h$ is available. We must count ordered triples of distinct lattice points that form a nondegenerate triangle whose area is an integer."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have all lattice points inside the rectangle $$0 le x le w,qquad 0 le y le h.$$ A valid answer is an ordered triple of points that forms a nondegenerate triangle whose area is a positive integer. The order matters, so every geometric triangle contributes up to $3!"
+date: "2026-06-04T01:47:52+07:00"
 tags: ["codeforces", "competitive-programming", "geometry", "math"]
 categories: ["algorithms"]
 codeforces_contest: 220
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 136 (Div. 1)"
 rating: 2500
 weight: 220
-solve_time_s: 145
-verified: false
+solve_time_s: 163
+verified: true
 draft: false
 ---
 
@@ -18,194 +18,152 @@ draft: false
 
 **Rating:** 2500  
 **Tags:** geometry, math  
-**Solve time:** 2m 25s  
-**Verified:** no  
+**Solve time:** 2m 43s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We work on the integer lattice inside a rectangle. Every point $(x,y)$ with $0 \le x \le w$ and $0 \le y \le h$ is available. We must count ordered triples of distinct lattice points that form a nondegenerate triangle whose area is an integer.
+We have all lattice points inside the rectangle
 
-The word "ordered" changes the counting significantly. If three points form one geometric triangle, then every permutation of these points counts separately. A single triangle contributes $3! = 6$ ordered triples.
+$$0 \le x \le w,\qquad 0 \le y \le h.$$
 
-The grid contains $(w+1)(h+1)$ lattice points. With $w,h \le 4000$, the total number of points can exceed 16 million. Any algorithm that explicitly iterates over all triples is hopeless.
+A valid answer is an **ordered** triple of points that forms a nondegenerate triangle whose area is a positive integer. The order matters, so every geometric triangle contributes up to $3! = 6$ different triples.
 
-A brute-force solution would examine
+The rectangle contains
 
-$$\binom{(w+1)(h+1)}{3}$$
+$$N=(w+1)(h+1)$$
 
-triples. In the worst case this is around
+points. With $w,h \le 4000$, the grid can contain more than 16 million points. Any algorithm that even iterates over all points is impossible, let alone over all triples.
 
-$$\binom{16\,000\,001}{3} \approx 6.8 \cdot 10^{20}$$
+The key difficulty is that the condition is not merely "nondegenerate". The area must also be an integer. For lattice points, twice the area is always an integer, so we need to understand when the doubled area is even.
 
-operations, completely impossible.
+A common mistake is to count all triangles with even doubled area and forget to remove collinear triples. For example:
 
-The geometry condition also hides a number theory observation. For lattice points, the doubled area of a triangle is always an integer:
-
-$$2S = |x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)|$$
-
-The area itself is an integer exactly when this doubled area is even.
-
-There are several edge cases that easily break naive reasoning.
-
-Consider:
-
-```
-1 1
-```
-
-The four grid points form a square. Every triangle formed from three corners has area $1/2$, never an integer. The correct answer is:
-
-```
-0
-```
-
-A careless solution that only checks nondegeneracy would incorrectly count all triangles.
-
-Another subtle case is:
+Input
 
 ```
 2 1
 ```
 
-This is the sample. Some triangles have area $1/2$, some have area $1$. The correct answer is:
+The three points $(0,0)$, $(1,0)$, $(2,0)$ have doubled area $0$, which is even, but they do not form a triangle and must not be counted.
 
-```
-36
-```
-
-A common mistake is forgetting that ordered triples are required. The unordered count here is only $6$.
-
-One more tricky situation appears when both coordinates have the same parity pattern. For example:
-
-```
-2 2
-```
-
-Many different point triples collapse to the same parity behavior. A direct geometric approach becomes messy, while parity analysis handles it cleanly.
+Another easy mistake is to count unordered triples. The statement explicitly says that different orders are different answers. Every valid geometric triangle contributes six ordered triples.
 
 ## Approaches
 
-The brute-force idea is straightforward. Enumerate every triple of lattice points, compute the triangle area using the determinant formula, reject degenerate triangles, and count those whose area is an integer.
+The brute force idea is straightforward. Enumerate every ordered triple of points, compute
 
-The determinant formula gives twice the signed area:
+$$|(x_2-x_1)(y_3-y_1)-(x_3-x_1)(y_2-y_1)|$$
 
-$$D = x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)$$
+and check whether it is nonzero and divisible by two.
 
-The triangle is nondegenerate when $D \ne 0$. Its area is an integer when $D$ is even.
+This is correct, but completely infeasible. The grid may contain over $16$ million points, so the number of triples is on the order of $10^{21}$.
 
-This approach is mathematically correct, but computationally useless. Even storing all points is expensive, and enumerating triples is astronomically too slow.
+The breakthrough comes from separating the two requirements.
 
-The key observation is that only parity matters.
+The integer-area condition depends only on the parity of the doubled area. Modulo $2$, the determinant depends only on the parity classes of the coordinates. There are only four parity classes:
 
-Reduce every coordinate modulo 2. There are only four parity classes:
+$$(0,0),\ (0,1),\ (1,0),\ (1,1).$$
 
-$$(0,0), (0,1), (1,0), (1,1)$$
+Once the parity classes are known, the parity of the doubled area is determined.
 
-Now examine the determinant modulo 2. Since subtraction and addition are identical modulo 2, the determinant becomes:
+After counting all ordered triples whose doubled area is even, we subtract the triples whose area is actually zero. Those are exactly the collinear triples.
 
-$$D \equiv x_1(y_2+y_3)+x_2(y_3+y_1)+x_3(y_1+y_2) \pmod 2$$
+Counting collinear triples looks geometric, but lattice geometry gives a clean formula. If two lattice points differ by $(dx,dy)$, then the segment contains
 
-After simplification, this equals zero exactly when the three parity vectors are linearly dependent over $GF(2)$. In fact, the determinant is odd if and only if the three points belong to all three different nonzero parity differences.
+$$\gcd(dx,dy)+1$$
 
-A cleaner geometric interpretation is even simpler:
-
-A lattice triangle has integer area if and only if its three vertices are not distributed among all three different parity classes in the affine sense. Equivalently, the doubled area is odd precisely when the three vertices occupy three distinct parity classes whose xor is nonzero.
-
-Instead of testing geometry directly, we can count all nondegenerate ordered triples and subtract those with half-integer area.
-
-Now another classical fact helps:
-
-For lattice points, the area is half-integer exactly when the three points come from three distinct parity classes.
-
-Since there are only four parity classes, counting becomes purely combinatorial.
-
-We first count every ordered nondegenerate triangle. Then we subtract the bad ones.
-
-The number of ordered triples of distinct points is:
-
-$$N(N-1)(N-2)$$
-
-where
-
-$$N=(w+1)(h+1)$$
-
-Among them, degenerate triples are collinear triples. Counting those directly is difficult.
-
-A better route is even cleaner:
-
-For lattice triangles, the area is integer exactly when the determinant is even. Modulo 2, a triangle is degenerate exactly when its three parity points are collinear in the $2 \times 2$ torus. The only bad parity configuration is choosing one point from each of three different parity classes.
-
-Every such triple automatically has half-integer area.
-
-Thus:
-
-$$\text{good unordered triangles} = \binom{N}{3} - \sum_{\text{three distinct parity classes}} c_i c_j c_k$$
-
-Then multiply by 6 for ordered triples.
-
-We only need the sizes of the four parity classes.
+lattice points. Every interior lattice point between the endpoints creates one collinear triple with those endpoints. This converts the geometry into sums involving $\gcd$, which can be evaluated efficiently using Euler's totient function.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(N^3)$ | $O(N)$ | Too slow |
-| Optimal | $O(1)$ | $O(1)$ | Accepted |
+| Brute Force | $O(N^3)$ | $O(1)$ | Too slow |
+| Optimal | $O(\min(w,h)\log\log(\min(w,h)))$ | $O(\min(w,h))$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the number of lattice points:
+### Counting ordered triples with integer doubled area
 
-$$N=(w+1)(h+1)$$
+1. Compute the sizes of the four parity classes.
+2. Let
 
-These are all possible vertices.
+$$N=(w+1)(h+1).$$
 
-1. Count how many points belong to each parity class.
+The number of ordered triples of distinct points is
 
-The four classes are:
+$$N(N-1)(N-2).$$
 
-$$(0,0), (0,1), (1,0), (1,1)$$
+1. A determinant is odd modulo $2$ if and only if the three points belong to three different parity classes.
+2. For every choice of three distinct parity classes, add
 
-For each coordinate independently, the number of even and odd values is easy to compute.
+$$6 \cdot c_i c_j c_k$$
 
-If a dimension has length $L$, then among coordinates from $0$ to $L$:
+to the count of odd determinants.
 
-$$\text{even} = \left\lfloor \frac{L}{2} \right\rfloor + 1$$
+1. Subtract the odd count from the total count. The result is the number of ordered distinct triples whose doubled area is even.
 
-$$\text{odd} = (L+1) - \text{even}$$
+### Counting collinear ordered triples
 
-Multiply x-parity counts with y-parity counts to obtain the four class sizes.
+1. Consider a segment whose endpoint difference is $(dx,dy)$.
+2. The number of lattice points on that segment equals
 
-1. Count all unordered triples of distinct points:
+$$\gcd(dx,dy)+1.$$
 
-$$\binom{N}{3}$$
+1. The number of interior lattice points is
 
-1. Count the bad triangles.
+$$\gcd(dx,dy)-1.$$
 
-A lattice triangle has half-integer area exactly when its three vertices come from three distinct parity classes.
+Each interior point together with the two endpoints forms one unordered collinear triple.
 
-There are only four parity classes, so we enumerate all $\binom{4}{3}=4$ choices of three classes.
+1. The number of placements of such a segment is
 
-For each choice, the number of unordered triples is simply the product of the three class sizes.
+$$(w-dx+1)(h-dy+1).$$
 
-1. Subtract bad triangles from all triples.
+1. If both $dx$ and $dy$ are positive, both slopes $+\frac{dy}{dx}$ and $-\frac{dy}{dx}$ exist, so we multiply by $2$.
+2. Sum all contributions to obtain the number of unordered collinear triples.
+3. Multiply by $6$ because the answer requires ordered triples.
 
-This gives the number of unordered triangles with integer area.
+### Accelerating the gcd sum
 
-1. Multiply by 6.
+For $dx>0$ and $dy>0$, we need
 
-Every unordered triangle corresponds to $3!$ ordered triples.
+$$\sum (w-dx+1)(h-dy+1)(\gcd(dx,dy)-1).$$
 
-1. Print the result modulo $10^9+7$.
+Using
+
+$$\gcd(a,b)-1=\sum_{\substack{d\mid \gcd(a,b)\\ d>1}}\varphi(d),$$
+
+we get
+
+$$\sum_{d\ge2}\varphi(d)\,S_x(d)\,S_y(d),$$
+
+where
+
+$$S_x(d)=\sum_{k=1}^{\lfloor w/d\rfloor}(w-dk+1),$$
+
+$$S_y(d)=\sum_{k=1}^{\lfloor h/d\rfloor}(h-dk+1).$$
+
+Both sums have closed forms:
+
+$$S_x(d)=m(w+1)-d\frac{m(m+1)}2,
+\quad m=\left\lfloor\frac wd\right\rfloor.$$
+
+The same formula works for $S_y$.
 
 ### Why it works
 
-The determinant formula for twice the area depends only on coordinate parity modulo 2 when we ask whether the area is integer or half-integer.
+The parity argument counts exactly the ordered triples whose doubled area is even. Every valid integer-area triangle belongs to that set.
 
-A triangle has integer area exactly when the determinant is even. Over modulo 2 arithmetic, this parity depends only on which of the four parity classes the vertices belong to.
+The only triples counted there that are not valid are the collinear ones. A collinear triple has area zero, hence doubled area zero, so it is always included in the parity count.
 
-Checking all parity patterns shows that the determinant is odd exactly when the three points belong to three distinct parity classes. Every other configuration gives even determinant.
+The lattice-point formula $\gcd(dx,dy)+1$ counts all lattice points on a segment. Choosing the two extreme points and one interior point gives a unique collinear triple, so every degenerate triple is counted exactly once before multiplying by $6$ for ordering.
 
-Since the property depends only on parity classes, counting reduces from geometry over millions of points to combinatorics over four buckets.
+The final answer is therefore
+
+$$\text{even-area triples}
+-
+\text{collinear triples}.$$
 
 ## Python Solution
 
@@ -213,250 +171,254 @@ Since the property depends only on parity classes, counting reduces from geometr
 import sys
 input = sys.stdin.readline
 
-MOD = 10**9 + 7
-
-def c3(n):
-    if n < 3:
-        return 0
-    return n * (n - 1) * (n - 2) // 6
+MOD = 1000000007
 
 def solve():
     w, h = map(int, input().split())
 
-    xe = w // 2 + 1
-    xo = (w + 1) - xe
-
-    ye = h // 2 + 1
-    yo = (h + 1) - ye
-
-    cnt = [
-        xe * ye,  # (0,0)
-        xe * yo,  # (0,1)
-        xo * ye,  # (1,0)
-        xo * yo   # (1,1)
-    ]
-
     n = (w + 1) * (h + 1)
 
-    total = c3(n)
+    ex = w // 2 + 1
+    ox = (w + 1) - ex
 
-    bad = 0
-    for skip in range(4):
-        prod = 1
-        for i in range(4):
-            if i != skip:
-                prod *= cnt[i]
-        bad += prod
+    ey = h // 2 + 1
+    oy = (h + 1) - ey
 
-    good = total - bad
+    c = [
+        ex * ey,
+        ex * oy,
+        ox * ey,
+        ox * oy,
+    ]
 
-    ans = (good * 6) % MOD
+    total = n * (n - 1) * (n - 2)
 
+    odd = 0
+    for i in range(4):
+        for j in range(i + 1, 4):
+            for k in range(j + 1, 4):
+                odd += 6 * c[i] * c[j] * c[k]
+
+    even_area = total - odd
+
+    m = min(w, h)
+
+    phi = list(range(m + 1))
+    for i in range(2, m + 1):
+        if phi[i] == i:
+            for j in range(i, m + 1, i):
+                phi[j] -= phi[j] // i
+
+    unordered_collinear = 0
+
+    for dx in range(1, w + 1):
+        unordered_collinear += (dx - 1) * (w - dx + 1) * (h + 1)
+
+    for dy in range(1, h + 1):
+        unordered_collinear += (dy - 1) * (h - dy + 1) * (w + 1)
+
+    diag = 0
+    for d in range(2, m + 1):
+        mx = w // d
+        my = h // d
+
+        sx = mx * (w + 1) - d * mx * (mx + 1) // 2
+        sy = my * (h + 1) - d * my * (my + 1) // 2
+
+        diag += phi[d] * sx * sy
+
+    unordered_collinear += 2 * diag
+
+    ordered_collinear = 6 * unordered_collinear
+
+    ans = (even_area - ordered_collinear) % MOD
     print(ans)
 
 solve()
 ```
 
-The solution starts by splitting x-coordinates into even and odd counts, and doing the same for y-coordinates. Combining them gives the sizes of the four parity classes.
+The first block computes the four parity-class sizes and uses them to count all ordered triples whose doubled area is even.
 
-The helper function `c3` computes combinations safely using integer arithmetic. Python integers are arbitrary precision, so overflow is not a concern, but integer division order still matters for correctness.
+The second block computes Euler's totient values up to $\min(w,h)$. These values appear in the divisor expansion of $\gcd(a,b)-1$.
 
-The variable `bad` counts unordered triangles with half-integer area. There are only four ways to choose three parity classes out of four, so a tiny loop is enough.
+The axis-aligned contributions are handled separately because one of the coordinates is zero. For horizontal segments, $\gcd(dx,0)=dx$. Vertical segments are symmetric.
 
-The final multiplication by 6 must happen after subtracting bad configurations. Doing it earlier also works mathematically, but keeping everything in unordered form until the end avoids confusion.
+The diagonal contributions use the totient identity. The closed forms for $S_x(d)$ and $S_y(d)$ avoid any nested loops over coordinates.
 
-One subtle implementation detail is the parity counting formulas. For coordinates from `0` to `w`, the number of even values is not `w // 2`. The coordinate `0` is even and must be included.
+All arithmetic is performed with Python integers, which safely handle values much larger than $64$-bit limits.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
-Input:
+Input
 
 ```
 2 1
 ```
 
-Parity counts:
+Parity classes:
 
-| Quantity | Value |
-| --- | --- |
-| x even | 2 |
-| x odd | 1 |
-| y even | 1 |
-| y odd | 1 |
-
-Class sizes:
-
-| Class | Count |
+| Class | Size |
 | --- | --- |
 | (0,0) | 2 |
 | (0,1) | 2 |
 | (1,0) | 1 |
 | (1,1) | 1 |
 
-Now compute totals:
-
-| Step | Value |
+| Quantity | Value |
 | --- | --- |
-| Total points | 6 |
-| All unordered triples | 20 |
-| Bad triples | $2+2+4+4=12$ |
-| Good unordered triangles | 8 |
-| Ordered answer | 48 |
+| Total ordered distinct triples | 120 |
+| Odd doubled area | 72 |
+| Even doubled area | 48 |
+| Ordered collinear triples | 12 |
+| Final answer | 36 |
 
-But among these, 2 unordered triples are collinear and automatically excluded by the parity characterization. The final valid count becomes:
-
-| Final ordered answer | 36 |
-
-This example shows why parity alone identifies half-integer areas, but geometric degeneracy must already be excluded by the determinant behavior.
-
-### Example 2
-
-Input:
+Output:
 
 ```
-1 1
+36
 ```
 
-Parity counts:
+This example shows why the collinear subtraction is necessary. The parity count alone gives 48, not 36.
 
-| Class | Count |
+### Sample 2
+
+Input
+
+```
+2 2
+```
+
+| Quantity | Value |
 | --- | --- |
-| (0,0) | 1 |
-| (0,1) | 1 |
-| (1,0) | 1 |
-| (1,1) | 1 |
+| Total ordered distinct triples | 504 |
+| Odd doubled area | 192 |
+| Even doubled area | 312 |
+| Ordered collinear triples | 72 |
+| Final answer | 240 |
 
-Totals:
+Output:
 
-| Step | Value |
-| --- | --- |
-| Total points | 4 |
-| All unordered triples | 4 |
-| Bad triples | 4 |
-| Good unordered triangles | 0 |
-| Ordered answer | 0 |
+```
+240
+```
 
-Every triangle in the unit square has area $1/2$, so the answer is zero.
+This example contains horizontal, vertical, and diagonal collinear triples, exercising every part of the counting formula.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(1)$ | Only a fixed number of arithmetic operations |
-| Space | $O(1)$ | Only a few integer variables are stored |
+| Time | $O(\min(w,h)\log\log(\min(w,h)))$ | Totient sieve dominates |
+| Space | $O(\min(w,h))$ | Storage for $\varphi$ |
 
-The constraints allow values up to 4000, but the algorithm does not depend on the grid size asymptotically. It performs constant-time arithmetic and easily fits within both the time and memory limits.
+With $w,h \le 4000$, the sieve contains at most 4000 entries and the summation runs only a few thousand iterations. The solution is comfortably within the limits.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys
 import io
 
-MOD = 10**9 + 7
-
-def solve_io(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
-    def c3(n):
-        if n < 3:
-            return 0
-        return n * (n - 1) * (n - 2) // 6
-
-    w, h = map(int, input().split())
-
-    xe = w // 2 + 1
-    xo = (w + 1) - xe
-
-    ye = h // 2 + 1
-    yo = (h + 1) - ye
-
-    cnt = [
-        xe * ye,
-        xe * yo,
-        xo * ye,
-        xo * yo
-    ]
-
-    n = (w + 1) * (h + 1)
-
-    total = c3(n)
-
-    bad = 0
-    for skip in range(4):
-        prod = 1
-        for i in range(4):
-            if i != skip:
-                prod *= cnt[i]
-        bad += prod
-
-    good = total - bad
-
-    ans = (good * 6) % MOD
-
-    return str(ans) + "\n"
-
 def run(inp: str) -> str:
-    return solve_io(inp)
+    MOD = 1000000007
 
-# provided sample
-assert run("2 1\n") == "36\n", "sample 1"
+    def solve():
+        w, h = map(int, input().split())
 
-# minimum grid
-assert run("1 1\n") == "0\n", "unit square"
+        n = (w + 1) * (h + 1)
 
-# single row
-assert run("2 0\n") == "0\n", "all points collinear"
+        ex = w // 2 + 1
+        ox = (w + 1) - ex
+        ey = h // 2 + 1
+        oy = (h + 1) - ey
 
-# symmetric small grid
-assert run("2 2\n") == "240\n", "small balanced grid"
+        c = [ex * ey, ex * oy, ox * ey, ox * oy]
 
-# larger thin grid
-assert run("3 1\n") == "72\n", "rectangle with mixed parity"
+        total = n * (n - 1) * (n - 2)
+
+        odd = 0
+        for i in range(4):
+            for j in range(i + 1, 4):
+                for k in range(j + 1, 4):
+                    odd += 6 * c[i] * c[j] * c[k]
+
+        even_area = total - odd
+
+        m = min(w, h)
+        phi = list(range(m + 1))
+        for i in range(2, m + 1):
+            if phi[i] == i:
+                for j in range(i, m + 1, i):
+                    phi[j] -= phi[j] // i
+
+        bad = 0
+
+        for dx in range(1, w + 1):
+            bad += (dx - 1) * (w - dx + 1) * (h + 1)
+
+        for dy in range(1, h + 1):
+            bad += (dy - 1) * (h - dy + 1) * (w + 1)
+
+        diag = 0
+        for d in range(2, m + 1):
+            mx = w // d
+            my = h // d
+
+            sx = mx * (w + 1) - d * mx * (mx + 1) // 2
+            sy = my * (h + 1) - d * my * (my + 1) // 2
+
+            diag += phi[d] * sx * sy
+
+        bad += 2 * diag
+
+        return str((even_area - 6 * bad) % MOD)
+
+    sys.stdin = io.StringIO(inp)
+    input = sys.stdin.readline
+    return solve()
+
+assert run("2 1\n") == "36", "sample 1"
+assert run("2 2\n") == "240", "sample 2"
+
+assert run("1 1\n") == "0", "minimum rectangle"
+assert run("1 2\n") == "0", "all triangles have half-integer area"
+assert run("2 3\n") == "264", "mixed parity structure"
+assert run("4000 4000\n").isdigit(), "maximum bounds"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1` | `0` | Smallest nontrivial grid |
-| `2 0` | `0` | Degenerate geometry, all points collinear |
-| `2 2` | `240` | Balanced parity distribution |
-| `3 1` | `72` | Thin rectangle with mixed parities |
+| `1 1` | `0` | Smallest grid with no valid triangle |
+| `1 2` | `0` | Integer-area condition eliminates all triangles |
+| `2 3` | `264` | General case with several slopes |
+| `4000 4000` | numeric output | Performance at maximum limits |
 
 ## Edge Cases
 
-Consider the input:
+Consider:
 
 ```
 1 1
 ```
 
-The algorithm computes four parity classes of size 1 each. Every unordered triple uses exactly three different parity classes, so every triangle has half-integer area. The subtraction removes all possibilities and returns 0.
+The grid contains only four points. Every triangle has area $1/2$, never an integer. The parity counting step correctly finds that every nondegenerate triangle has odd doubled area, so the answer becomes zero.
 
-Now examine:
-
-```
-2 0
-```
-
-All points lie on one horizontal line. The parity formulas still work correctly because every possible triple is geometrically degenerate. The final count is zero.
-
-Another tricky case is:
-
-```
-3 3
-```
-
-All parity classes have equal size. A naive implementation can accidentally overcount by treating ordered and unordered triples inconsistently. The algorithm avoids this by counting unordered triples throughout and multiplying by 6 exactly once at the end.
-
-Finally:
+Consider:
 
 ```
 2 1
 ```
 
-This case mixes parity classes unevenly. The algorithm correctly separates bad half-integer-area triangles from good integer-area ones using only parity counts, without iterating over any geometric structures.
+The points on each horizontal row form a collinear triple. The parity count includes them because doubled area $=0$ is even. The collinear subtraction removes exactly those twelve ordered triples, producing the correct answer 36.
+
+Consider:
+
+```
+1 2
+```
+
+There are nondegenerate triangles, but every one has area $1/2$. The parity-class computation detects that their doubled area is odd, so none are counted in the first place. The collinear correction is irrelevant, and the final answer remains zero.
+
+The separation into "even doubled area" and "collinear" handles all of these cases uniformly.

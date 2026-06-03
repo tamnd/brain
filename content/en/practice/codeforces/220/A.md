@@ -1,7 +1,7 @@
 ---
 title: "CF 220A - Little Elephant and Problem"
-description: "We are given an array of integers that is supposed to be sorted in non-decreasing order. The Little Elephant suspects that at most one swap operation may have disturbed the array."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an array that was originally sorted in non-decreasing order. At some point, either nothing happened or exactly one pair of elements may have been swapped."
+date: "2026-06-04T01:54:05+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 220
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 136 (Div. 1)"
 rating: 1300
 weight: 220
-solve_time_s: 168
+solve_time_s: 93
 verified: true
 draft: false
 ---
@@ -18,41 +18,129 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** implementation, sortings  
-**Solve time:** 2m 48s  
+**Solve time:** 1m 33s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of integers that is _supposed_ to be sorted in non-decreasing order. The Little Elephant suspects that at most one swap operation may have disturbed the array. Our task is to check whether the array can be restored to sorted order with zero or one swap between any two elements.
+We are given an array that was originally sorted in non-decreasing order. At some point, either nothing happened or exactly one pair of elements may have been swapped.
 
-The input consists of the array length `n` and the array elements. The output is a simple "YES" if the array can be sorted with at most one swap, and "NO" otherwise.
+The question is whether the current array can be transformed into a fully sorted array using at most one swap of any two positions. If the answer is yes, we print `"YES"`. Otherwise we print `"NO"`.
 
-The constraints imply that `n` can be as large as 10^5, so any solution that iterates in quadratic time is impractical. An algorithm with linear or linearithmic time complexity is necessary. The key is that we are allowed only one swap to fix the array, so we need to detect the minimal set of inversions or misplaced elements.
+The array length can be as large as $10^5$. Any algorithm that tries every possible swap would need roughly $n^2$ attempts. With $n = 10^5$, that means around $10^{10}$ possibilities, which is completely infeasible within a 2-second time limit. We need something close to $O(n \log n)$ or $O(n)$.
 
-Non-obvious edge cases include arrays that are already sorted, arrays where two equal elements are swapped, or arrays where multiple swaps are required. For example, the array `[1, 3, 2, 4]` can be sorted by swapping 3 and 2, producing "YES". An array like `[3, 1, 2, 4]` cannot be fixed with one swap, so the output is "NO". Careless solutions may miss the already sorted case or mishandle arrays with repeated numbers.
+A subtle aspect of the problem is that values are not necessarily distinct. Duplicates make some intuitive approaches fail.
+
+Consider:
+
+```
+4
+1 3 2 2
+```
+
+The sorted array is:
+
+```
+1 2 2 3
+```
+
+The current array differs from the sorted one at positions 2 and 4 only, so a single swap fixes it. The correct answer is:
+
+```
+YES
+```
+
+A careless solution that only looks for inversions may incorrectly conclude that more work is needed.
+
+Another important case is when the array is already sorted:
+
+```
+5
+1 2 2 3 4
+```
+
+The answer is still:
+
+```
+YES
+```
+
+because zero swaps is allowed. The requirement is "at most one swap", not "exactly one swap".
+
+A third edge case appears when more than two positions disagree with the sorted order:
+
+```
+4
+4 3 2 1
+```
+
+The sorted version is:
+
+```
+1 2 3 4
+```
+
+All four positions differ. No single swap can fix all of them, so the answer is:
+
+```
+NO
+```
+
+A solution that only checks whether the number of inversions is small would fail here.
 
 ## Approaches
 
-A brute-force approach is to try swapping every possible pair of elements in the array and check whether the result is sorted. This would require checking O(n^2) pairs, each check taking O(n) time, leading to O(n^3) operations. This is clearly infeasible for n up to 10^5.
+A straightforward brute-force method is to try every possible swap, including the possibility of performing no swap. For each choice, we check whether the resulting array is sorted.
 
-The optimal approach uses a simple observation: if the array can be sorted with at most one swap, then there are at most two positions where the current element is out of order with respect to the sorted array. We can compare the given array to its sorted version and record all positions where elements differ. If there are zero differences, the array is already sorted. If there are exactly two differences, swapping those two elements fixes the array. If there are more than two differences, no single swap can sort the array. This method requires only a single sort (O(n log n)) and a single linear scan (O(n)), which is feasible within the constraints.
+There are $O(n^2)$ possible swaps. Checking whether an array is sorted takes $O(n)$ time. The total complexity becomes $O(n^3)$.
+
+For $n = 10^5$, this is hopelessly slow. Even $O(n^2)$ would already be too large.
+
+The key observation comes from comparing the current array with its fully sorted version.
+
+Suppose we create a sorted copy of the array. Any position where the current array and the sorted array already match does not need to change. A single swap can affect only two positions. Consequently, if more than two positions differ from the sorted array, one swap can never make the arrays identical.
+
+This turns the problem into a very simple check.
+
+Construct the sorted version of the array. Count how many indices contain different values in the original and sorted arrays.
+
+If the number of mismatched positions is:
+
+- 0, the array is already sorted.
+- 2, swapping those two positions fixes the array.
+- More than 2, one swap is insufficient.
+
+Because every swap changes exactly two positions, the answer is `"YES"` precisely when the mismatch count is at most 2.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^3) | O(n) | Too slow |
-| Compare with sorted | O(n log n) | O(n) | Accepted |
+| Brute Force | $O(n^3)$ | $O(1)$ | Too slow |
+| Optimal | $O(n \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integer `n` and the array `a`.
-2. Create a sorted copy of the array, call it `b`.
-3. Iterate over all indices `i` from 0 to n-1 and collect positions where `a[i] != b[i]`. Store these positions in a list called `diff`.
-4. Check the length of `diff`. If it is zero, print "YES" because the array is already sorted.
-5. If the length of `diff` is exactly two, let the positions be `i` and `j`. Swap `a[i]` and `a[j]` and check if the array becomes equal to `b`. If it does, print "YES"; otherwise print "NO".
-6. If the length of `diff` is greater than two, print "NO".
+1. Read the array.
+2. Create a sorted copy of the array.
 
-Why it works: the sorted array represents the correct order. Any deviation from this order indicates misplaced elements. More than two misplaced elements cannot be corrected with a single swap. Exactly two differences correspond to the two elements that need swapping, and zero differences require no action. This logic guarantees correctness for all possible input arrays.
+The sorted copy represents the target configuration we want to reach.
+3. Compare the original array and the sorted array position by position.
+
+Count how many indices contain different values.
+4. If the number of mismatches is at most 2, print `"YES"`.
+
+A single swap affects exactly two positions. Zero mismatches means the array is already sorted, while two mismatches correspond to the two positions involved in the swap.
+5. Otherwise, print `"NO"`.
+
+### Why it works
+
+Let the sorted copy be $b$.
+
+If the original array can be sorted using at most one swap, then all positions except possibly the two swapped positions must already match $b$. Thus the number of mismatches between the original array and $b$ cannot exceed 2.
+
+Conversely, if there are exactly two mismatched positions, exchanging the values at those positions makes both positions match the sorted array simultaneously. If there are zero mismatches, the array is already sorted.
+
+Hence the array is sortable in at most one swap if and only if the mismatch count is at most 2.
 
 ## Python Solution
 
@@ -60,34 +148,36 @@ Why it works: the sorted array represents the correct order. Any deviation from 
 import sys
 input = sys.stdin.readline
 
-def main():
+def solve():
     n = int(input())
     a = list(map(int, input().split()))
-    
+
     b = sorted(a)
-    diff = [i for i in range(n) if a[i] != b[i]]
-    
-    if len(diff) == 0:
-        print("YES")
-    elif len(diff) == 2:
-        i, j = diff
-        a[i], a[j] = a[j], a[i]
-        if a == b:
-            print("YES")
-        else:
-            print("NO")
-    else:
-        print("NO")
+
+    mismatches = 0
+    for x, y in zip(a, b):
+        if x != y:
+            mismatches += 1
+
+    print("YES" if mismatches <= 2 else "NO")
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The code first reads the array and creates a sorted version. The list comprehension finds all indices where the elements differ. The key implementation subtlety is handling exactly two differences correctly: swapping the elements must produce an array identical to the sorted one. Forgetting to check this after the swap can produce incorrect results if the swapped elements appear more than once in the array.
+The implementation follows the algorithm directly.
+
+The sorted copy `b` is the target arrangement. We then scan both arrays simultaneously and count positions where the values differ.
+
+The crucial observation is that we count mismatched positions rather than inversions. Duplicates can make inversion-based reasoning unreliable, while comparison against the sorted array captures exactly which positions are incorrect.
+
+No special handling is needed for already sorted arrays. In that case the mismatch count is zero, and the condition `mismatches <= 2` naturally returns `"YES"`.
+
+Python integers easily handle values up to $10^9$, so there are no overflow concerns.
 
 ## Worked Examples
 
-Sample 1:
+### Example 1
 
 Input:
 
@@ -96,87 +186,181 @@ Input:
 1 2
 ```
 
-`a = [1, 2]`, `b = [1, 2]`, `diff = []`
+Sorted copy:
 
-Output: "YES" because the array is already sorted.
+```
+1 2
+```
 
-Sample 2:
+| Position | Original | Sorted | Mismatch Count |
+| --- | --- | --- | --- |
+| 1 | 1 | 1 | 0 |
+| 2 | 2 | 2 | 0 |
+
+Final mismatch count is 0.
+
+Output:
+
+```
+YES
+```
+
+This demonstrates the case where no swap is needed.
+
+### Example 2
 
 Input:
 
 ```
-4
-1 3 2 4
+3
+3 1 2
 ```
 
-`a = [1, 3, 2, 4]`, `b = [1, 2, 3, 4]`
-
-`diff = [1, 2]`
-
-Swap positions 1 and 2: `a = [1, 2, 3, 4]`
-
-Output: "YES" because a single swap fixes the array.
-
-Sample 3:
-
-Input:
+Sorted copy:
 
 ```
-5
-5 1 3 2 4
+1 2 3
 ```
 
-`a = [5, 1, 3, 2, 4]`, `b = [1, 2, 3, 4, 5]`
+| Position | Original | Sorted | Mismatch Count |
+| --- | --- | --- | --- |
+| 1 | 3 | 1 | 1 |
+| 2 | 1 | 2 | 2 |
+| 3 | 2 | 3 | 3 |
 
-`diff = [0, 1, 3, 4]` (length > 2)
+Final mismatch count is 3.
 
-Output: "NO" because more than one swap is needed.
+Output:
+
+```
+NO
+```
+
+Three positions disagree with the sorted array. Since one swap can affect only two positions, sorting in a single swap is impossible.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting the array dominates the complexity. The linear scan to find differences is O(n). |
-| Space | O(n) | Storing the sorted copy of the array and the list of differences requires O(n) space. |
+| Time | $O(n \log n)$ | Sorting dominates the running time |
+| Space | $O(n)$ | The sorted copy of the array is stored |
 
-Given n ≤ 10^5, this algorithm executes comfortably within the 2-second time limit.
+With $n \le 10^5$, an $O(n \log n)$ solution runs comfortably within the limits. The additional array of size $n$ also fits easily within the memory limit.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    f = io.StringIO()
-    with redirect_stdout(f):
-        main()
-    return f.getvalue().strip()
 
-# Provided samples
-assert run("2\n1 2\n") == "YES", "sample 1"
-assert run("4\n1 3 2 4\n") == "YES", "sample 2"
-assert run("5\n5 1 3 2 4\n") == "NO", "sample 3"
+    n = int(input())
+    a = list(map(int, input().split()))
 
-# Custom cases
-assert run("3\n2 2 1\n") == "YES", "swap last two identical elements"
-assert run("6\n1 2 3 6 5 4\n") == "NO", "multiple swaps needed"
-assert run("4\n1 1 1 1\n") == "YES", "all elements equal"
-assert run("2\n2 1\n") == "YES", "swap first and second"
+    b = sorted(a)
+    mismatches = sum(x != y for x, y in zip(a, b))
+
+    return ("YES" if mismatches <= 2 else "NO") + "\n"
+
+# provided sample
+assert run("2\n1 2\n") == "YES\n", "sample 1"
+
+# one swap fixes array
+assert run("3\n2 1 3\n") == "YES\n", "single swap"
+
+# requires more than one swap
+assert run("4\n4 3 2 1\n") == "NO\n", "multiple swaps needed"
+
+# all equal values
+assert run("5\n7 7 7 7 7\n") == "YES\n", "all equal"
+
+# duplicates with one valid swap
+assert run("4\n1 3 2 2\n") == "YES\n", "duplicates"
+
+# minimum size, unsorted
+assert run("2\n2 1\n") == "YES\n", "minimum size"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3\n2 2 1 | YES | Swapping equal elements at the end |
-| 6\n1 2 3 6 5 4 | NO | Multiple swaps required |
-| 4\n1 1 1 1 | YES | All elements equal |
-| 2\n2 1 | YES | Minimum-size array |
+| `2 / 2 1` | YES | Smallest non-trivial array |
+| `4 / 4 3 2 1` | NO | More than two mismatches |
+| `5 / 7 7 7 7 7` | YES | All values identical |
+| `4 / 1 3 2 2` | YES | Duplicate values handled correctly |
+| `3 / 2 1 3` | YES | Exactly one swap needed |
 
 ## Edge Cases
 
-Consider an array of length 2, `[2, 1]`. The algorithm identifies the two differing positions, swaps them, and produces `[1, 2]`, confirming "YES".
+Consider an already sorted array:
 
-For an array with all identical elements `[1, 1, 1]`, the difference list is empty, leading to an immediate "YES".
+```
+5
+1 2 2 3 4
+```
 
-An array where multiple swaps are required, `[5, 1, 3, 2, 4]`, produces a difference list of length greater than two, correctly resulting in "NO". The algorithm handles all these non-obvious scenarios correctly without extra conditional logic.
+The sorted copy is identical.
+
+```
+Original: 1 2 2 3 4
+Sorted:   1 2 2 3 4
+```
+
+Mismatch count is 0, so the algorithm prints:
+
+```
+YES
+```
+
+This matches the requirement that zero swaps is allowed.
+
+Consider duplicates:
+
+```
+4
+1 3 2 2
+```
+
+The sorted copy is:
+
+```
+1 2 2 3
+```
+
+Comparing positions:
+
+```
+1 = 1
+3 ≠ 2
+2 = 2
+2 ≠ 3
+```
+
+There are exactly two mismatches. Swapping those two positions yields the sorted array, so the algorithm outputs:
+
+```
+YES
+```
+
+Consider a case needing more than one swap:
+
+```
+4
+4 3 2 1
+```
+
+Sorted copy:
+
+```
+1 2 3 4
+```
+
+Every position differs, giving four mismatches. Since one swap can repair at most two positions, the algorithm outputs:
+
+```
+NO
+```
+
+The mismatch-count criterion captures all such cases correctly.

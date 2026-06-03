@@ -1,7 +1,7 @@
 ---
 title: "CF 220B - Little Elephant and Array"
-description: "We are given an array of positive integers and multiple queries, each specifying a contiguous subarray. For each query, we are asked to count how many numbers appear in the subarray exactly as many times as their own value."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an array of positive integers and many range queries. For each query [l, r], we look only at the subarray between those positions and count how many values x satisfy a very specific condition: Inside that subarray, the value x appears exactly x times."
+date: "2026-06-04T02:00:02+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "data-structures"]
 categories: ["algorithms"]
 codeforces_contest: 220
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 136 (Div. 1)"
 rating: 1800
 weight: 220
-solve_time_s: 67
+solve_time_s: 118
 verified: true
 draft: false
 ---
@@ -18,114 +18,273 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** constructive algorithms, data structures  
-**Solve time:** 1m 7s  
+**Solve time:** 1m 58s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of positive integers and multiple queries, each specifying a contiguous subarray. For each query, we are asked to count how many numbers appear in the subarray exactly as many times as their own value. For instance, if a number 3 appears exactly 3 times in the queried segment, it contributes to the count. The output is one integer per query.
+We are given an array of positive integers and many range queries. For each query `[l, r]`, we look only at the subarray between those positions and count how many values `x` satisfy a very specific condition:
 
-The constraints are tight. Both the array size and the number of queries can reach 100,000. A naive approach that iterates over each query and counts occurrences for every number would require roughly $O(n \cdot m)$ operations in the worst case. That could reach $10^{10}$ operations, far beyond what a 4-second time limit allows. Any algorithm we use must avoid iterating over the entire subarray for every query.
+Inside that subarray, the value `x` appears exactly `x` times.
 
-An important edge case is numbers larger than the length of the queried segment. A number greater than the segment length can never appear exactly that many times. For example, in the array `[1, 5, 5, 2]` with query `[1, 3]`, the number 5 cannot contribute because it would need to appear 5 times in a subarray of length 3. Another subtle case is repeated small numbers: if 1 appears once, it counts; if 2 appears twice, it counts; if it appears more than twice, it does not. Handling these correctly is crucial.
+For example, in the subarray
+
+```
+[3, 1, 2, 2, 3, 3, 7]
+```
+
+the frequencies are:
+
+```
+1 -> 1
+2 -> 2
+3 -> 3
+7 -> 1
+```
+
+Values `1`, `2`, and `3` each appear exactly as many times as their own value, so the answer is `3`.
+
+The array length and the number of queries are both as large as `100000`. A straightforward solution that recomputes frequencies for every query is immediately ruled out. Even an `O(length of range)` solution per query would require roughly `10^10` operations in the worst case.
+
+The values themselves can be as large as `10^9`. This means we cannot build frequency structures indexed directly by value. We only care about values that actually appear in the array.
+
+A subtle observation is that any value larger than `n` can never contribute to an answer. A value must appear exactly `x` times, but no frequency inside any range can exceed `n`. If `x > n`, matching frequency `x` is impossible.
+
+Consider:
+
+```
+n = 5
+array = [100, 100, 100, 100, 100]
+```
+
+The frequency of `100` is `5`, not `100`, so it never contributes.
+
+Another easy mistake is to count occurrences instead of qualifying values. For example:
+
+```
+array = [2, 2]
+query = [1, 2]
+```
+
+Value `2` appears exactly twice, so the answer is:
+
+```
+1
+```
+
+not
+
+```
+2
+```
+
+because we count values satisfying the condition, not positions.
+
+A third pitfall appears when frequencies cross the target value while expanding or shrinking a range.
+
+Suppose the current frequency of value `3` changes:
+
+```
+2 -> 3 -> 4
+```
+
+When it reaches `3`, the answer should increase by one. When it becomes `4`, the answer should decrease by one. Forgetting one of these transitions causes incorrect results.
 
 ## Approaches
 
-The brute-force approach iterates over every query, builds a frequency dictionary of numbers in the subarray, and counts how many numbers have frequency equal to their own value. This works correctly but has worst-case complexity $O(n \cdot m)$, which is too slow.
+The brute-force solution processes each query independently. For a query `[l, r]`, we scan the entire subarray, compute frequencies with a hash map, then count how many values satisfy:
 
-The key insight for optimization is that the problem is a variant of range query problems, where we need the frequency of elements over subarrays. Traditional segment trees or binary-indexed trees can be adapted, but a more fitting approach here is **Mo's algorithm**, which processes queries in a specific order to minimize the number of array elements added or removed from the current segment when moving between queries. Mo's algorithm sorts queries by block and right endpoint, then maintains a sliding window on the array. We keep a frequency dictionary of numbers in the current window and maintain a running count of numbers whose frequency equals their value. When we add or remove an element from the window, we update the count in constant time. This reduces the complexity to $O(n \sqrt n)$ plus $O(m \sqrt n)$ for query adjustments.
+```
+frequency[value] == value
+```
 
-The optimization relies on the observation that the frequency of a number changes predictably as we expand or shrink the segment, and that we only need to check if the frequency matches the number itself. Any number greater than $n$ (the array size) can be ignored because it cannot appear enough times to satisfy the condition.
+This is correct because it directly implements the definition.
+
+Unfortunately, a query may cover almost the entire array. With `100000` queries and ranges of length `100000`, the work becomes roughly:
+
+```
+100000 × 100000 = 10^10
+```
+
+which is far beyond the time limit.
+
+The key observation is that queries ask about many overlapping ranges. Consecutive queries often differ only by a few elements. Recomputing all frequencies from scratch wastes work.
+
+This is exactly the setting where Mo's algorithm shines. We sort queries in a special order so that the current range changes gradually. While moving from one query to the next, we only add or remove a small number of elements from the current range.
+
+The challenge becomes maintaining the answer dynamically as frequencies change.
+
+Suppose value `v` currently has frequency `cnt[v]`.
+
+Before increasing its frequency, we check whether it already contributes. If:
+
+```
+cnt[v] == v
+```
+
+then removing that equality must decrease the answer.
+
+After updating the frequency, we check again. If the new frequency equals `v`, the value starts contributing and the answer increases.
+
+Each add/remove operation becomes `O(1)`, and Mo's ordering guarantees only about `O((n+m)√n)` total range adjustments.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n*m) | O(n) | Too slow |
-| Mo's Algorithm | O((n + m) * sqrt(n)) | O(n) | Accepted |
+| Brute Force | O(nm) | O(n) | Too slow |
+| Optimal (Mo's Algorithm) | O((n+m)√n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the array and queries. Keep the queries with their original indices so we can restore the output order after sorting.
-2. Determine a block size, typically $\sqrt n$, to divide the array for Mo's algorithm.
-3. Sort the queries first by block of the left endpoint, then by right endpoint. This ordering ensures that when moving from one query to the next, we minimize the number of elements added or removed from the current segment.
-4. Initialize the current segment as empty. Keep a frequency dictionary of elements in the segment, and a running variable `current_answer` for the number of elements whose frequency equals their value.
-5. For each query in sorted order, adjust the segment to match the query range:
+1. Read the array and queries.
+2. Replace every value greater than `n` with a special irrelevant value.
 
-- Expand or shrink the left and right boundaries. For each element added, increase its frequency in the dictionary. If the frequency equals the element, increment `current_answer`. If the frequency before adding was equal to the element, decrement `current_answer` (since the match is broken). Similarly, when removing an element, update the frequency and `current_answer`.
-6. Store `current_answer` in a result array at the index corresponding to the original query.
-7. Output the result array in the original query order.
+Such values can never satisfy `frequency = value`, so we do not need to track them in the answer logic.
+3. Store each query together with its original index.
+4. Choose a block size approximately equal to `√n`.
+5. Sort queries using Mo's ordering.
 
-Why it works: The invariant is that `current_answer` always reflects the count of numbers in the current segment whose frequency equals their value. Each addition or removal correctly updates this invariant in constant time, so when a query segment is reached, `current_answer` is guaranteed to be correct.
+Queries in the same left block are ordered by right endpoint. This minimizes pointer movement.
+6. Maintain a current range `[curL, curR]`.
+
+Initially the range is empty.
+7. Maintain a frequency array `cnt`.
+
+`cnt[x]` stores how many times value `x` appears in the current range.
+8. Maintain a variable `answer`.
+
+This equals the number of values whose frequency currently matches their value.
+9. When adding value `v`:
+
+First check whether `cnt[v] == v`. If true, decrement `answer` because the equality is about to break.
+
+Increase `cnt[v]`.
+
+Check again whether `cnt[v] == v`. If true, increment `answer`.
+10. When removing value `v`:
+
+First check whether `cnt[v] == v`. If true, decrement `answer`.
+
+Decrease `cnt[v]`.
+
+Check again whether `cnt[v] == v`. If true, increment `answer`.
+11. For each query in Mo order, move `curL` and `curR` until the current range matches the query range.
+12. Store the current `answer` as the result for that query.
+13. Output answers in original query order.
+
+### Why it works
+
+At every moment, `cnt[x]` equals the frequency of value `x` inside the current range maintained by Mo's algorithm.
+
+The variable `answer` counts exactly those values satisfying:
+
+```
+cnt[x] = x
+```
+
+Whenever a frequency changes, only one value is affected. The add/remove routines update `answer` precisely when that value enters or leaves the equality condition.
+
+Since Mo's algorithm eventually visits every query range exactly and the maintained frequencies are always correct for the current range, the stored answer for each query is exactly the number of values appearing a number of times equal to their value.
 
 ## Python Solution
 
 ```python
 import sys
-import math
-from collections import defaultdict
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
-a = list(map(int, input().split()))
-queries = []
+def solve():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
 
-for i in range(m):
-    l, r = map(int, input().split())
-    queries.append((l-1, r-1, i))
+    # Values > n can never satisfy freq == value
+    a = [x if x <= n else 0 for x in a]
 
-block_size = int(math.sqrt(n)) + 1
-queries.sort(key=lambda x: (x[0] // block_size, x[1]))
+    block = int(n ** 0.5) + 1
 
-freq = defaultdict(int)
-current_answer = 0
-res = [0] * m
-
-def add(x):
-    global current_answer
-    f = freq[x]
-    if f == x:
-        current_answer -= 1
-    freq[x] += 1
-    if freq[x] == x:
-        current_answer += 1
-
-def remove(x):
-    global current_answer
-    f = freq[x]
-    if f == x:
-        current_answer -= 1
-    freq[x] -= 1
-    if freq[x] == x:
-        current_answer += 1
-
-l, r = 0, -1
-for ql, qr, idx in queries:
-    while r < qr:
-        r += 1
-        if a[r] <= n:
-            add(a[r])
-    while r > qr:
-        if a[r] <= n:
-            remove(a[r])
-        r -= 1
-    while l < ql:
-        if a[l] <= n:
-            remove(a[l])
-        l += 1
-    while l > ql:
+    queries = []
+    for idx in range(m):
+        l, r = map(int, input().split())
         l -= 1
-        if a[l] <= n:
-            add(a[l])
-    res[idx] = current_answer
+        r -= 1
+        queries.append((l, r, idx))
 
-print('\n'.join(map(str, res)))
+    queries.sort(key=lambda q: (q[0] // block, q[1]))
+
+    cnt = [0] * (n + 1)
+    answers = [0] * m
+    current_answer = 0
+
+    def add(pos):
+        nonlocal current_answer
+        v = a[pos]
+
+        if v == 0:
+            return
+
+        if cnt[v] == v:
+            current_answer -= 1
+
+        cnt[v] += 1
+
+        if cnt[v] == v:
+            current_answer += 1
+
+    def remove(pos):
+        nonlocal current_answer
+        v = a[pos]
+
+        if v == 0:
+            return
+
+        if cnt[v] == v:
+            current_answer -= 1
+
+        cnt[v] -= 1
+
+        if cnt[v] == v:
+            current_answer += 1
+
+    cur_l = 0
+    cur_r = -1
+
+    for l, r, idx in queries:
+        while cur_l > l:
+            cur_l -= 1
+            add(cur_l)
+
+        while cur_r < r:
+            cur_r += 1
+            add(cur_r)
+
+        while cur_l < l:
+            remove(cur_l)
+            cur_l += 1
+
+        while cur_r > r:
+            remove(cur_r)
+            cur_r -= 1
+
+        answers[idx] = current_answer
+
+    sys.stdout.write("\n".join(map(str, answers)))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution reads input and prepares the queries with their original indices. We compute a block size based on the array length to organize the queries for Mo's algorithm. The `add` and `remove` functions carefully maintain the running count of numbers whose frequency matches their value. Numbers larger than `n` are ignored because they can never satisfy the condition. The sorted queries are processed in order, updating the segment incrementally, ensuring that each query result is correct.
+The first preprocessing step replaces all values larger than `n` with `0`. Such values can never contribute because no frequency can exceed `n`. This avoids wasting time maintaining frequencies that can never satisfy the condition.
+
+The `cnt` array stores frequencies only for values from `1` to `n`. Value `0` is ignored completely.
+
+The most delicate part is the update logic. When a frequency changes, we must remove its old contribution before modifying the count, then add its new contribution afterward. Reversing that order leads to off-by-one errors whenever a frequency crosses its target value.
+
+The range maintained by Mo's algorithm is inclusive on both ends. The implementation starts with an empty range `[0, -1]`, then expands or shrinks until it matches each query.
 
 ## Worked Examples
 
-Sample input:
+### Example 1
+
+Input:
 
 ```
 7 2
@@ -134,55 +293,250 @@ Sample input:
 3 4
 ```
 
-| Step | Segment | Frequencies | current_answer | Query index |
-| --- | --- | --- | --- | --- |
-| Start | [] | {} | 0 | - |
-| Query 1 [0,6] | [3,1,2,2,3,3,7] | {1:1,2:2,3:3,7:1} | 3 | 0 |
-| Query 2 [2,3] | [2,2] | {2:2} | 1 | 1 |
+Queries in sorted order happen to match the input order.
 
-This shows that the algorithm correctly tracks frequencies and counts numbers satisfying the condition, adjusting as the window moves between queries.
+For range `[1,7]`:
 
-Another test:
+| Value | Frequency | Contributes? |
+| --- | --- | --- |
+| 1 | 1 | Yes |
+| 2 | 2 | Yes |
+| 3 | 3 | Yes |
+| 7 | 1 | No |
+
+Answer = 3.
+
+For range `[3,4]`:
+
+```
+[2, 2]
+```
+
+| Value | Frequency | Contributes? |
+| --- | --- | --- |
+| 2 | 2 | Yes |
+
+Answer = 1.
+
+Output:
+
+```
+3
+1
+```
+
+This example demonstrates the core condition. A value contributes only when its frequency equals the value itself.
+
+### Example 2
 
 Input:
 
 ```
 5 1
-5 5 5 5 5
+1 1 1 1 1
 1 5
 ```
 
-All numbers are larger than 5, so none can match their frequency. `current_answer` remains 0, output is 0. The algorithm correctly ignores elements that can never satisfy the condition.
+Current range becomes the whole array.
+
+| Value | Frequency | Contributes? |
+| --- | --- | --- |
+| 1 | 5 | No |
+
+Answer:
+
+```
+0
+```
+
+The trace shows that matching the value exactly matters. Having frequency larger than the value does not count.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + m) * sqrt(n)) | Mo's algorithm processes each query with ~sqrt(n) adjustments per query in the worst case. |
-| Space | O(n) | Frequency dictionary can hold at most n elements; result array of size m. |
+| Time | O((n + m)√n) | Mo's algorithm performs O((n+m)√n) pointer movements, each updated in O(1) |
+| Space | O(n + m) | Frequency array, query storage, and answer storage |
 
-With $n, m \le 10^5$, $(n + m) * \sqrt n \approx 10^5 * 316 \approx 3*10^7$ operations, comfortably within 4 seconds.
+With `n,m ≤ 100000`, we have `√n ≈ 316`. The resulting number of updates is well within the limits of a 4-second Codeforces problem, and the memory usage is comfortably below 256 MB.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    exec(open("solution.py").read())
-    return sys.stdout.getvalue().strip()
 
-# provided samples
-assert run("7 2\n3 1 2 2 3 3 7\n1 7\n3 4\n") == "3\n1", "sample 1"
+    import math
 
-# custom cases
-assert run("5 1\n5 5 5 5 5\n1 5\n") == "0", "all elements too large"
-assert run("4 2\n1 1 1 1\n1 4\n2 3\n") == "1\n1", "all ones"
-assert run("6 1\n1 2 2 3 3 3\n1 6\n") == "3", "mixed small frequencies"
-assert run("1 1\n1\n1 1\n") == "1", "single element array"
+    input = sys.stdin.readline
+
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    a = [x if x <= n else 0 for x in a]
+
+    block = int(n ** 0.5) + 1
+
+    queries = []
+    for idx in range(m):
+        l, r = map(int, input().split())
+        queries.append((l - 1, r - 1, idx))
+
+    queries.sort(key=lambda q: (q[0] // block, q[1]))
+
+    cnt = [0] * (n + 1)
+    ans = [0] * m
+    cur_ans = 0
+
+    def add(pos):
+        nonlocal cur_ans
+        v = a[pos]
+        if v == 0:
+            return
+        if cnt[v] == v:
+            cur_ans -= 1
+        cnt[v] += 1
+        if cnt[v] == v:
+            cur_ans += 1
+
+    def remove(pos):
+        nonlocal cur_ans
+        v = a[pos]
+        if v == 0:
+            return
+        if cnt[v] == v:
+            cur_ans -= 1
+        cnt[v] -= 1
+        if cnt[v] == v:
+            cur_ans += 1
+
+    lcur, rcur = 0, -1
+
+    for l, r, idx in queries:
+        while lcur > l:
+            lcur -= 1
+            add(lcur)
+
+        while rcur < r:
+            rcur += 1
+            add(rcur)
+
+        while lcur < l:
+            remove(lcur)
+            lcur += 1
+
+        while rcur > r:
+            remove(rcur)
+            rcur -= 1
+
+        ans[idx] = cur_ans
+
+    return "\n".join(map(str, ans))
+
+# provided sample
+assert run(
+"""7 2
+3 1 2 2 3 3 7
+1 7
+3 4
+"""
+) == "3\n1"
+
+# minimum size
+assert run(
+"""1 1
+1
+1 1
+"""
+) == "1"
+
+# value larger than n
+assert run(
+"""3 1
+100 100 100
+1 3
+"""
+) == "0"
+
+# all equal values
+assert run(
+"""5 1
+2 2 2 2 2
+1 5
+"""
+) == "0"
+
+# exact frequency match
+assert run(
+"""4 1
+2 2 1 3
+1 2
+"""
+) == "1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 5 1\n |  |  |
+| Single element `[1]` | `1` | Minimum constraints |
+| All values `100` with `n=3` | `0` | Values larger than `n` are irrelevant |
+| `[2,2,2,2,2]` | `0` | Frequency larger than value does not count |
+| Range `[2,2]` | `1` | Exact frequency match |
+| Official sample | `3,1` | General correctness |
+
+## Edge Cases
+
+Consider:
+
+```
+3 1
+100 100 100
+1 3
+```
+
+Since `100 > n`, the value can never appear exactly `100` times. The preprocessing converts all entries to `0`, the update routines ignore them, and the maintained answer remains `0`.
+
+Consider:
+
+```
+2 1
+2 2
+1 2
+```
+
+The frequency of value `2` is exactly `2`. During insertion, the count changes:
+
+```
+0 -> 1 -> 2
+```
+
+When it reaches `2`, the answer increases by one. The final output is:
+
+```
+1
+```
+
+which is correct because only the value `2` qualifies.
+
+Consider:
+
+```
+4 1
+3 3 3 3
+1 4
+```
+
+The frequency transitions:
+
+```
+0 -> 1 -> 2 -> 3 -> 4
+```
+
+At frequency `3`, the value contributes. At frequency `4`, it stops contributing. The update logic removes the contribution before increasing the count and restores it only if equality still holds afterward. The final answer is:
+
+```
+0
+```
+
+which matches the definition exactly.
