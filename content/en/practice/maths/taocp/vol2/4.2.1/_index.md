@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.2.1: Single-Precision Calculations"
-description: "Section 4.2.1 exercises: 18/19 solved."
+description: "Section 4.2.1 exercises: 19/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.2.1. Single-Precision Calculations
 
-Exercises from [TAOCP Volume 2](../) Section 4.2.1: 18/19 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.2.1: 19/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -36,4 +36,4 @@ Exercises from [TAOCP Volume 2](../) Section 4.2.1: 18/19 solved.
 | [16](16.md) |  [*HM21*] | hm-medium | verified | 2m02s |
 | [17](17.md) |  [*40*] | project | verified | 1m41s |
 | [18](18.md) |  [*25*] | medium | verified | 2m28s |
-| 19 |  [*24*] | medium | - | - |
+| [19](19.md) |  [*24*] | medium | verified | 7m09s |
