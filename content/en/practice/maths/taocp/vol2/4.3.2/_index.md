@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.3.2: Modular Arithmetic"
-description: "Section 4.3.2 exercises: 13/14 solved."
+description: "Section 4.3.2 exercises: 14/14 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.3.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.3.2. Modular Arithmetic
 
-Exercises from [TAOCP Volume 2](../) Section 4.3.2: 13/14 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.3.2: 14/14 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -31,4 +31,4 @@ Exercises from [TAOCP Volume 2](../) Section 4.3.2: 13/14 solved.
 | [11](11.md) |  [*M23*] | math-medium | verified | 3m |
 | [12](12.md) |  [*M10*] | math-simple | verified | 1m50s |
 | [14](14.md) | &#9654; [*M50*] | math-research | verified | 1m59s |
-| 33 | &#9654; [*M25*] | math-medium | - | - |
+| [33](33.md) | &#9654; [*M25*] | math-medium | verified | 5m15s |
