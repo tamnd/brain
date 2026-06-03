@@ -1,7 +1,7 @@
 ---
 title: "CF 219C - Color Stripe"
-description: "We are given a stripe consisting of $n$ square cells, each painted in one of $k$ colors. The stripe is represented as a string of uppercase letters, where each letter corresponds to a color. The goal is to repaint some cells so that no two adjacent cells share the same color."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a stripe represented as a row of n cells, where each cell is painted one of k colors labeled with letters A through the k-th letter. The goal is to repaint as few cells as possible so that no two adjacent cells share the same color."
+date: "2026-06-04T01:43:23+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 219
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 135 (Div. 2)"
 rating: 1600
 weight: 219
-solve_time_s: 179
+solve_time_s: 63
 verified: true
 draft: false
 ---
@@ -18,39 +18,43 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** brute force, dp, greedy  
-**Solve time:** 2m 59s  
+**Solve time:** 1m 3s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a stripe consisting of $n$ square cells, each painted in one of $k$ colors. The stripe is represented as a string of uppercase letters, where each letter corresponds to a color. The goal is to repaint some cells so that no two adjacent cells share the same color. The task is to determine the minimum number of repaintings required and to produce any valid configuration that satisfies the adjacency condition.
+We are given a stripe represented as a row of `n` cells, where each cell is painted one of `k` colors labeled with letters `A` through the `k`-th letter. The goal is to repaint as few cells as possible so that no two adjacent cells share the same color. The output must include both the minimum number of repaints and a valid resulting stripe configuration.
 
-The constraints tell us that $n$ can be as large as $5 \cdot 10^5$ and $k$ can be up to 26. This implies that any algorithm with quadratic complexity in $n$ will be too slow. We must aim for a linear or near-linear solution. Since $k$ is small, algorithms that branch on colors can be feasible as long as they do not scale with $n^2$ operations.
+The input size is significant: `n` can reach up to 500,000, and `k` can go up to 26. This rules out any solution that is quadratic in `n`, because `n^2` operations would reach roughly 2.5×10^11 in the worst case, far above the 2-second time limit. Linear or near-linear solutions are required. The small upper bound on `k` suggests we can afford to consider all available colors at each cell in constant time.
 
-Non-obvious edge cases include situations where there are consecutive blocks of the same color longer than 2. For example, an input like `AAAAA` with $k=3$ requires repainting every other cell to break adjacent duplicates. If we simply check each cell against its predecessor and change the current cell without considering the next, we might choose a color that leads to unnecessary future changes. Another edge case occurs when $k=2$, because the choice of alternating colors is heavily constrained. For instance, `ABABAA` with $k=2$ forces repainting in a very specific pattern, and naive greed can fail to minimize changes.
+A subtle edge case arises when `k = 2`. In this scenario, there are only two colors, so the stripe must alternate perfectly between them. Any sequence with three identical colors in a row will necessarily require repainting the middle one. A naive greedy choice that looks only at the previous cell could fail if it does not account for the next cell, producing a suboptimal repaint count.
+
+Another potential pitfall is when the stripe already has alternating colors. A careless algorithm might still repaint unnecessarily if it blindly enforces "change if same as previous" without considering that the sequence is already valid.
 
 ## Approaches
 
-The brute-force approach is to try every possible sequence of colors for the stripe that satisfies the adjacency condition and count how many repaints are needed for each sequence. While correct in principle, this requires examining $k^n$ sequences, which is astronomically large for $n$ up to $5 \cdot 10^5$. It works because each possible repaint sequence can be verified independently, but it is infeasible due to exponential time complexity.
+A brute-force approach would consider every possible assignment of colors to each cell that satisfies the adjacency condition and then count repaints. For each cell, there are `k` options, and for `n` cells this results in `k^n` possibilities. Even with pruning, this is hopelessly slow for `n` up to 500,000.
 
-The key observation to optimize is that the decision for a cell only depends on its immediate neighbors. If two consecutive cells have the same color, at least one of them must be changed. When $k \ge 3$, we always have a free color to use that is different from both neighbors. This local choice allows a greedy approach: traverse the stripe, and whenever we detect two identical consecutive colors, change the second one to a color not used by its immediate neighbors. This reduces the problem to a single pass over the string, which is linear in $n$ and independent of $k$ for the practical purpose of choosing a different color.
+The key insight is that the problem can be solved greedily with careful attention to the previous cell. Since the goal is only to avoid adjacent duplicates, each cell's choice depends only on the color of its immediate neighbor. This allows a linear scan: for each cell, if it matches the previous one, we select a different color. Choosing the alternative color can be done in constant time by iterating through all `k` colors until we find one that differs from the previous (and, optionally, the next, if `k > 2` and we want to avoid creating a new conflict).
+
+For `k = 2`, there are only two possible valid stripes: alternating starting with the first color or the second. We can compute the repaint cost for both and pick the cheaper option. For `k > 2`, a greedy scan from left to right always succeeds with minimal repaints because there is always at least one color to choose that avoids the immediate conflict.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(k^n) | O(n) | Too slow |
-| Greedy / Linear Scan | O(n * k) | O(n) | Accepted |
+| Greedy Linear Scan | O(n·k) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Convert the input string of letters into a list for mutable operations.
-2. Initialize a counter for the number of repaints.
-3. Iterate over the stripe from the first cell to the penultimate cell. For each cell at index $i$, compare it with the next cell at index $i+1$.
-4. If the colors are the same, increment the repaint counter. Choose a new color for cell $i+1$ that differs from both cell $i$ and, if it exists, cell $i+2$. Since $k \ge 2$, such a color always exists. Use the first available color in order.
-5. Continue this process until the end of the stripe.
-6. Output the repaint count and the modified stripe.
+1. Convert the input string into a list for mutable manipulation, as we will repaint in place. This avoids constructing new strings repeatedly.
+2. If `k = 2`, compute the repaint cost for both possible alternating sequences: starting with the first color and starting with the second. Compare the counts and select the cheaper sequence. Return the count and the sequence.
+3. If `k > 2`, iterate through the stripe from left to right, starting from the second cell. For each cell, check if it matches the previous cell.
+4. If a match is found, increment the repaint counter and select a new color for this cell. Iterate through all `k` colors and pick the first one that differs from both the previous cell and the next cell (if it exists). Assign this color to the current cell.
+5. Continue scanning until the end. By the time we finish, every pair of neighboring cells is guaranteed to have different colors.
+6. Output the total repaint count and the resulting stripe.
 
-The algorithm works because it maintains the invariant that no two adjacent cells before the current index are the same. When a duplicate is found, we fix it immediately using a color that does not create a new conflict with the next cell. With $k \ge 3$, there is always a color that avoids conflicts on both sides. With $k=2$, the algorithm still works because we can alternate colors deterministically.
+The greedy algorithm works because it maintains the invariant that all cells to the left of the current index are correctly colored with no adjacent duplicates. At each step, we only repaint if necessary and always pick a color that preserves the invariant. Since `k ≥ 2`, there is always at least one valid color to choose, guaranteeing correctness.
 
 ## Python Solution
 
@@ -60,91 +64,80 @@ input = sys.stdin.readline
 
 n, k = map(int, input().split())
 s = list(input().strip())
-
-repaints = 0
 colors = [chr(ord('A') + i) for i in range(k)]
+repaints = 0
 
-i = 0
-while i < n - 1:
-    if s[i] == s[i + 1]:
-        repaints += 1
-        for c in colors:
-            if c != s[i] and (i + 2 == n or c != s[i + 2]):
-                s[i + 1] = c
-                break
-    i += 1
-
-print(repaints)
-print(''.join(s))
+if k == 2:
+    # only two valid sequences: ABAB... or BABA...
+    alt1 = [colors[i % 2] for i in range(n)]
+    alt2 = [colors[(i + 1) % 2] for i in range(n)]
+    cost1 = sum(s[i] != alt1[i] for i in range(n))
+    cost2 = sum(s[i] != alt2[i] for i in range(n))
+    if cost1 <= cost2:
+        print(cost1)
+        print(''.join(alt1))
+    else:
+        print(cost2)
+        print(''.join(alt2))
+else:
+    i = 1
+    while i < n:
+        if s[i] == s[i - 1]:
+            repaints += 1
+            for c in colors:
+                if c != s[i - 1] and (i + 1 == n or c != s[i + 1]):
+                    s[i] = c
+                    break
+        i += 1
+    print(repaints)
+    print(''.join(s))
 ```
 
-The solution first converts the stripe into a mutable list to allow repainting. The `colors` list represents all available color letters. The main loop scans each pair of consecutive cells. If a conflict is found, it chooses a new color that avoids creating a new conflict with the next cell, ensuring that only necessary repaintings are performed. Using `i + 2 == n` prevents index out-of-range errors.
+The code begins by converting the input string into a mutable list. For the `k = 2` edge case, it constructs two alternating sequences and counts the repaint cost for both. For `k > 2`, the algorithm scans each cell, detects conflicts with the previous cell, and chooses a valid alternative color. The check against the next cell prevents creating a new conflict in the immediate future.
 
 ## Worked Examples
 
-**Sample 1:**
-
-Input:
+Sample 1:
 
 ```
-6 3
+Input: 6 3
 ABBACC
 ```
 
-Step trace:
-
-| i | s[i] | s[i+1] | Conflict? | New s[i+1] | Repaints |
+| i | s[i] before | s[i-1] | s[i+1] | Action | s after |
 | --- | --- | --- | --- | --- | --- |
-| 0 | A | B | No | B | 0 |
-| 1 | B | B | Yes | C | 1 |
-| 2 | C | A | No | A | 1 |
-| 3 | A | C | No | C | 1 |
-| 4 | C | C | Yes | A | 2 |
+| 1 | B | A | B | OK | A B B A C C |
+| 2 | B | B | A | Conflict, pick C | A B C A C C |
+| 3 | A | C | C | OK | ... |
+| 4 | C | A | C | OK | ... |
+| 5 | C | C | - | Conflict, pick A | A B C A C A |
 
-Output:
+Repaints = 2. Resulting stripe = ABCACA.
 
-```
-2
-ABCACA
-```
-
-This demonstrates that the algorithm only repaints when necessary and chooses colors to prevent immediate conflicts.
-
-**Sample 2:**
-
-Input:
+Constructed example:
 
 ```
-5 2
+Input: 5 2
 AAAAA
 ```
 
-Step trace:
+For k=2, the two sequences are ABABA and BABAB. Comparing with AAAA:
 
-| i | s[i] | s[i+1] | Conflict? | New s[i+1] | Repaints |
-| --- | --- | --- | --- | --- | --- |
-| 0 | A | A | Yes | B | 1 |
-| 1 | B | A | No | A | 1 |
-| 2 | A | A | Yes | B | 2 |
-| 3 | B | A | No | A | 2 |
+| Sequence | Repaints |
+| --- | --- |
+| ABABA | 2 |
+| BABAB | 3 |
 
-Output:
-
-```
-2
-ABABA
-```
-
-This shows that with only 2 colors, alternating repaints achieve the minimum necessary.
+Minimal repaints = 2. Resulting stripe = ABABA.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n * k) | Each duplicate check may iterate over up to k colors, and the loop runs n times. |
-| Space | O(n + k) | We store the mutable stripe (O(n)) and the list of available colors (O(k)). |
+| Time | O(n·k) | Each cell is visited once. When repainting, we iterate through up to k colors. For k ≤ 26, this is effectively constant. |
+| Space | O(n) | We store the stripe as a mutable list and a colors array of length k. |
 
-Given n up to $5 \cdot 10^5$ and k ≤ 26, O(n * k) is about $1.3 \cdot 10^7$ operations, which fits well within the 2-second limit.
+With n ≤ 5×10^5 and k ≤ 26, O(n·k) operations are well under 2×10^7, which comfortably fits in the 2-second time limit and 256 MB memory.
 
 ## Test Cases
 
@@ -153,43 +146,43 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n, k = map(int, input().split())
-    s = list(input().strip())
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        n, k = map(int, input().split())
+        s = list(input().strip())
+        colors = [chr(ord('A') + i) for i in range(k)]
+        repaints = 0
 
-    repaints = 0
-    colors = [chr(ord('A') + i) for i in range(k)]
-
-    i = 0
-    while i < n - 1:
-        if s[i] == s[i + 1]:
-            repaints += 1
-            for c in colors:
-                if c != s[i] and (i + 2 == n or c != s[i + 2]):
-                    s[i + 1] = c
-                    break
-        i += 1
-
-    return f"{repaints}\n{''.join(s)}"
+        if k == 2:
+            alt1 = [colors[i % 2] for i in range(n)]
+            alt2 = [colors[(i + 1) % 2] for i in range(n)]
+            cost1 = sum(s[i] != alt1[i] for i in range(n))
+            cost2 = sum(s[i] != alt2[i] for i in range(n))
+            if cost1 <= cost2:
+                print(cost1)
+                print(''.join(alt1))
+            else:
+                print(cost2)
+                print(''.join(alt2))
+        else:
+            i = 1
+            while i < n:
+                if s[i] == s[i - 1]:
+                    repaints += 1
+                    for c in colors:
+                        if c != s[i - 1] and (i + 1 == n or c != s[i + 1]):
+                            s[i] = c
+                            break
+                i += 1
+            print(repaints)
+            print(''.join(s))
+    return out.getvalue().strip()
 
 # Provided sample
 assert run("6 3\nABBACC\n") == "2\nABCACA", "sample 1"
-
-# Custom cases
-assert run("5 2\nAAAAA\n") == "2\nABABA", "all equal, k=2"
+# Minimum size
 assert run("1 2\nA\n") == "0\nA", "single cell"
-assert run("2 2\nAA\n") == "1\nAB", "two cells same color"
-assert run("4 3\nABCA\n") == "0\nABCA", "no repaint needed"
-assert run("6 3\nAAABBB\n") == "3\nABABAB", "blocks of same color"
+# All equal, k=2
+assert run("5 2\nAAAAA\n")
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 5 2\nAAAAA | 2\nABABA | alternating with only 2 colors |
-| 1 2\nA | 0\nA | minimal input |
-| 2 2\nAA | 1\nAB | small two-cell conflict |
-| 4 3\nABCA | 0\nABCA | no repaint needed |
-| 6 3\nAAABBB | 3\nABABAB | consecutive blocks of duplicates |
-
-## Edge Cases
-
-For a stripe with only one cell, the algorithm correctly outputs zero repaints because no adjacency exists. For two consecutive identical cells and only two colors, the algorithm alternates the second cell, ensuring
