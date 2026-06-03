@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.2.1: Single-Precision Calculations"
-description: "Section 4.2.1 exercises: 5/19 solved."
+description: "Section 4.2.1 exercises: 10/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.2.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.2.1. Single-Precision Calculations
 
-Exercises from [TAOCP Volume 2](../) Section 4.2.1: 5/19 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.2.1: 10/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -22,15 +22,15 @@ Exercises from [TAOCP Volume 2](../) Section 4.2.1: 5/19 solved.
 | [2](02.md) |  [*12*] | simple | verified | 3m18s |
 | [3](03.md) |  [*11*] | simple | solved | 4m45s |
 | [4](04.md) | &#9654; [*16*] | medium | verified | 4m30s |
-| 5 |  [*24*] | medium | - | - |
+| [5](05.md) |  [*24*] | medium | verified | 5m01s |
 | [6](06.md) |  [*20*] | medium | verified | 1m41s |
 | 7 |  [*27*] | hard | - | - |
-| 8 |  [*20*] | medium | - | - |
+| [8](08.md) |  [*20*] | medium | solved | 1m39s |
 | 9 |  [*M24*] | math-medium | - | - |
-| 10 |  [*12*] | simple | - | - |
-| 11 | &#9654; [*M20*] | math-medium | - | - |
+| [10](10.md) |  [*12*] | simple | solved | 1m41s |
+| [11](11.md) | &#9654; [*M20*] | math-medium | verified | 2m26s |
 | 12 |  [*M35*] | math-hard | - | - |
-| 13 |  [*30*] | hard | - | - |
+| [13](13.md) |  [*30*] | hard | verified | 2m15s |
 | 14 |  [*25*] | medium | - | - |
 | 15 | &#9654; [*28*] | hard | - | - |
 | 16 |  [*HM21*] | hm-medium | - | - |

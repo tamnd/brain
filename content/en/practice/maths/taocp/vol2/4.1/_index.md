@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.1: Positional Number Systems"
-description: "Section 4.1 exercises: 33/34 solved."
+description: "Section 4.1 exercises: 34/34 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.1. Positional Number Systems
 
-Exercises from [TAOCP Volume 2](../) Section 4.1: 33/34 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.1: 34/34 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -47,7 +47,7 @@ Exercises from [TAOCP Volume 2](../) Section 4.1: 33/34 solved.
 | [27](27.md) |  [**] |  | solved | 10m13s |
 | [28](28.md) | &#9654; [**] |  | verified | 9m35s |
 | [29](29.md) |  [**] |  | verified | 5m05s |
-| 30 |  [**] |  | - | - |
+| [30](30.md) |  [**] |  | solved | 16m40s |
 | [31](31.md) | &#9654; [*M35*] | math-hard | verified | 3m49s |
 | [32](32.md) |  [*M40*] | math-project | verified | 5m45s |
 | [33](33.md) |  [*M40*] | math-project | solved | 7m10s |
