@@ -1,7 +1,7 @@
 ---
 title: "CF 196E - Opening Portals"
-description: "We are asked to compute the minimum time needed for a player to open all portals in a country modeled as a graph. The country consists of n cities connected by m bidirectional roads with positive travel times. Some subset of cities, k of them, have portals."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a connected network of cities, some of which contain portals. Each road between cities has a positive travel time, and Pavel starts in city 1."
+date: "2026-06-03T09:45:12+07:00"
 tags: ["codeforces", "competitive-programming", "dsu", "graphs", "shortest-paths"]
 categories: ["algorithms"]
 codeforces_contest: 196
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 124 (Div. 1)"
 rating: 2600
 weight: 196
-solve_time_s: 139
-verified: true
+solve_time_s: 120
+verified: false
 draft: false
 ---
 
@@ -18,164 +18,119 @@ draft: false
 
 **Rating:** 2600  
 **Tags:** dsu, graphs, shortest paths  
-**Solve time:** 2m 19s  
-**Verified:** yes  
+**Solve time:** 2m  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to compute the minimum time needed for a player to open all portals in a country modeled as a graph. The country consists of `n` cities connected by `m` bidirectional roads with positive travel times. Some subset of cities, `k` of them, have portals. Initially, all portals are closed, and the player starts at city 1. When the player visits a city with a portal, it opens, and thereafter any open portal can teleport the player instantly to any other open portal. The goal is to find the minimum total travel time to visit all portal cities at least once.
+We are given a connected network of cities, some of which contain portals. Each road between cities has a positive travel time, and Pavel starts in city 1. Whenever he enters a city with a portal, that portal opens, and from that moment he can instantly teleport between any open portals. The task is to compute the minimum total travel time required for Pavel to open all portals.
 
-From the input, we know `n` can be as large as 100,000 and `m` up to 100,000. This rules out any algorithm with O(n^2) complexity, since 10^10 operations would be far too slow for 2 seconds. Road weights can be large (up to 10^9), so we must be careful to use 64-bit integers in languages with fixed-width types.
+The input consists of up to 100,000 cities and 100,000 roads. Each road weight can be very large, up to $10^9$. The number of portal cities is at most $n$. These limits immediately suggest that any approach with a quadratic time complexity on the number of cities is infeasible. A naive approach that tries all possible orderings of portal visits is exponential and completely impractical. Instead, we need an algorithm that scales roughly linearly with the number of roads and logarithmically with distances.
 
-A naive approach could be to simulate all paths visiting portal cities, but this would essentially require exploring all permutations of `k` portals. With `k` potentially up to 100,000, this is completely infeasible. Another trap is assuming portals can be "skipped" via teleportation before any portal is open-doing so would underestimate travel times. A small example shows this: three cities 1-2-3, all with portals, weights 1,1,1. If the player goes 1->3 directly without first opening 2, teleportation does not apply. The correct minimal travel time is 2, not 1.
-
-Another subtlety is that the first city might itself have a portal. In that case, teleportation can start immediately. For instance, if city 1 has a portal and city 2 also has one, the player can visit city 2 directly and then return instantly to 1 if needed, but in this problem, the final position does not matter-only opening all portals does.
+An important edge case arises when the starting city itself contains a portal. In that case, Pavel can immediately teleport to any other portal city once he reaches the next portal. Another subtle situation occurs when the network has only one portal or when multiple portal cities are directly connected by very long paths. A careless implementation might attempt to traverse the entire graph multiple times or fail to leverage teleportation optimally, producing a solution that is too slow or that overestimates the required time.
 
 ## Approaches
 
-The brute-force approach is to compute all paths visiting portal cities in all possible orders. We could first precompute all shortest paths between portal cities and then try every permutation. This would be correct, but for `k` up to 10^5, it becomes O(k!)-impossible. Even for small `k`, the precomputation of all-pairs shortest paths using Floyd-Warshall is O(n^3), also too slow.
+The brute-force solution would be to simulate Pavel’s movement explicitly, considering all permutations of portal visit sequences. For each sequence, we would calculate the travel cost, adding zero for teleportation between already-open portals. While this approach correctly models the problem, its time complexity is $O(k!)$ for $k$ portals, which becomes infeasible even for $k = 10$, let alone the problem constraints where $k$ can be as large as 100,000. The key bottleneck is the factorial growth in the number of sequences.
 
-The key insight is that once a portal is opened, teleportation allows moving between any two opened portals instantly. This means that we never need to traverse more than one edge between clusters of portal cities. This reduces the problem to a minimum spanning tree (MST) over portal cities, where edges are shortest-path distances between cities.
+The observation that unlocks an efficient solution is that the portals can be treated as a virtual complete graph once opened. If we compute the shortest distances from the starting city to all portal cities, and also know the minimal distances between any pair of portals, then the minimal time to open all portals is dominated by the largest distance from the start to a portal or between portals in a minimal spanning structure connecting all portals. More formally, after computing shortest paths, the minimum time to reach all portals reduces to selecting the two portal cities that are farthest apart in the graph distance, adding the smallest distances from the start to each end. Since teleportation allows moving freely between open portals, we do not need to worry about the order of visiting intermediate portals-only the maximum distance matters.
 
-To compute these shortest-path distances efficiently, we can run Dijkstra's algorithm from all portal cities simultaneously using a multi-source priority queue. This will label each city with the shortest distance to any portal. Then, connecting portal cities via their shortest paths essentially forms a graph where the MST gives the minimal total distance needed to connect all portals, since teleportation allows "shortcutting" any previously visited portals.
-
-Finally, because the player starts at city 1, if it is not a portal city, we need the shortest path from city 1 to any portal to start the journey. Adding this as an initial edge completes the calculation.
+A convenient way to formalize this is to first compute the shortest distances from city 1 to all cities using Dijkstra’s algorithm. Next, we compute the shortest path between every pair of portal cities indirectly: since teleportation has zero cost, opening any portal allows instant travel to any other opened portal. Therefore, the actual minimal time reduces to calculating the shortest path from city 1 to the portal that is farthest in terms of distance to another portal. We can combine Dijkstra and simple array processing to efficiently identify this maximal distance.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (all portal permutations) | O(k! * (n + m)) | O(n + m) | Too slow |
-| Multi-source Dijkstra + MST over portals | O((n + m) log n) | O(n + m) | Accepted |
+| Brute Force | O(k! * n) | O(n + m) | Too slow |
+| Optimal (Dijkstra + portal max distance) | O((n + m) log n) | O(n + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Parse input and build the adjacency list of the graph with weights. Each road is bidirectional.
-2. Identify the list of portal cities. If city 1 is not a portal, treat it specially as the starting point.
-3. Run a multi-source Dijkstra algorithm starting from all portal cities. This computes the shortest distance from every city to its nearest portal. Initialize a priority queue with tuples `(distance, city)` for all portals with distance 0.
-4. For every edge in the original graph, attempt to relax distances to neighboring cities. If a shorter distance is found, update the queue. This ensures we capture minimal distances between any city and its nearest portal.
-5. Build a "compressed graph" where nodes are portal cities and edges correspond to shortest path distances obtained in step 3. Each edge weight is the shortest distance along the original graph between the two portals.
-6. Compute the MST of this compressed graph. The sum of MST edges gives the minimal time needed to travel between portals without redundant movement.
-7. If city 1 is not a portal, add the distance from city 1 to the nearest portal to the MST total. Otherwise, no addition is necessary.
-8. Output the total time as the minimum required to open all portals.
+1. Represent the city network as an adjacency list. Each city stores the neighboring city and the travel time to that neighbor. Using an adjacency list ensures that Dijkstra will run efficiently without redundant edge scans.
+2. Mark all portal cities in a boolean array for quick lookup. This allows O(1) checks during distance processing and helps isolate the relevant distances at the end.
+3. Run Dijkstra’s algorithm from city 1. Maintain a priority queue of (distance, city) pairs. For each city extracted, update its neighbors’ distances if a shorter path is found. This step produces the minimal travel time from the starting city to every other city, considering normal roads only.
+4. After Dijkstra completes, extract the distances to all portal cities. Identify the smallest distance and the largest distance among the portal cities. Let the smallest be `d_min` and the largest be `d_max`.
+5. The minimum total time needed to open all portals is given by `d_min + d_max`. This formula comes from the fact that Pavel can reach the closest portal in `d_min`, open it, and then, by teleporting, reach any other portal instantly. The furthest portal from the starting city determines the additional time needed to guarantee all portals are opened because he may have to travel along roads to reach the first portal that unlocks teleportation to others.
+6. Output this sum as the answer.
 
-Why it works: At every step, the Dijkstra distances guarantee the shortest connection between portal cities. The MST ensures that we visit all portal cities while minimizing redundant travel. Teleportation allows us to ignore the exact order of visiting once a portal is open, which is why the MST captures the correct minimal travel time.
+Why it works: The invariant is that teleportation reduces the effective distance between any pair of opened portals to zero. Therefore, the total time is determined entirely by the roads used to reach the first portal and the farthest portal along the graph, as intermediate portal visits do not increase the total travel time. Dijkstra guarantees that all distances are minimal, and the selection of extreme distances ensures that no portal is left inaccessible.
 
 ## Python Solution
 
 ```python
-import sys
-import heapq
+import sys, heapq
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
-graph = [[] for _ in range(n + 1)]
+adj = [[] for _ in range(n + 1)]
 
 for _ in range(m):
     u, v, w = map(int, input().split())
-    graph[u].append((v, w))
-    graph[v].append((u, w))
+    adj[u].append((v, w))
+    adj[v].append((u, w))
 
 k = int(input())
 portals = list(map(int, input().split()))
-portal_set = set(portals)
+is_portal = [False] * (n + 1)
+for p in portals:
+    is_portal[p] = True
 
 dist = [float('inf')] * (n + 1)
-hq = []
+dist[1] = 0
+heap = [(0, 1)]
 
-for p in portals:
-    dist[p] = 0
-    heapq.heappush(hq, (0, p))
-
-while hq:
-    d, u = heapq.heappop(hq)
+while heap:
+    d, u = heapq.heappop(heap)
     if d > dist[u]:
         continue
-    for v, w in graph[u]:
-        if dist[v] > dist[u] + w:
-            dist[v] = dist[u] + w
-            heapq.heappush(hq, (dist[v], v))
+    for v, w in adj[u]:
+        if dist[v] > d + w:
+            dist[v] = d + w
+            heapq.heappush(heap, (dist[v], v))
 
-edges = []
-for u in portals:
-    for v, w in graph[u]:
-        if v in portal_set and u < v:
-            edges.append((dist[u] + dist[v] + w, u, v))
-
-edges.sort()
-parent = list(range(n + 1))
-
-def find(u):
-    while parent[u] != u:
-        parent[u] = parent[parent[u]]
-        u = parent[u]
-    return u
-
-def union(u, v):
-    u = find(u)
-    v = find(v)
-    if u == v:
-        return False
-    parent[v] = u
-    return True
-
-res = 0
-for w, u, v in edges:
-    if union(u, v):
-        res += w
-
-if 1 not in portal_set:
-    res += min(dist[p] for p in portals)
-
-print(res)
+portal_distances = [dist[p] for p in portals]
+ans = max(portal_distances)
+print(ans)
 ```
 
-The solution first builds a standard adjacency list graph. Dijkstra computes shortest distances from all portals. A compressed graph among portals is implicitly represented via candidate edges using these distances. Kruskal's MST sums the minimal connecting distances. Finally, we add the distance from city 1 if it does not already have a portal.
-
-Boundary conditions handled include isolated city 1 (not a portal), large edge weights (we use Python integers), and duplicate edges between portal cities (only one edge considered in MST).
+The adjacency list efficiently stores edges. Dijkstra updates `dist` with the minimal time to reach each city from the start. We push updated distances into the heap to ensure priority processing. Extracting distances to portals and taking the maximum directly corresponds to the time needed to reach the furthest portal before teleportation is useful.
 
 ## Worked Examples
 
-Sample 1 input:
+Sample 1:
 
 ```
-3 3
-1 2 1
-1 3 1
-2 3 1
-3
-1 2 3
+n = 3, m = 3
+edges = [(1,2,1),(1,3,1),(2,3,1)]
+portals = [1,2,3]
 ```
 
-| Step | Dist array | MST edges | MST sum |
+| Step | Heap State | Dist Array | Explanation |
 | --- | --- | --- | --- |
-| Initial | [inf,0,0,0] | [] | 0 |
-| Dijkstra relax | [inf,0,1,1] | [] | 0 |
-| Compressed edges | (1,2),(1,3),(2,3) all weight 2 | - | - |
-| Kruskal MST | edges (1,2),(1,3) | sum=2 | 2 |
+| Initial | [(0,1)] | [0,inf,inf,inf] | Start at city 1 |
+| Pop 1 | [] | [0,1,1,inf] | Update neighbors 2 and 3 |
+| Pop 2 | [(1,2)] | no change | Neighbor 3 distance is already 1 |
+| Pop 3 | [(1,3)] | no change | No updates |
 
-The trace shows that visiting portal 1 and then two additional portals takes time 2, as expected.
+Portal distances: `[0,1,1]`. Maximum is 1. Output `1`. Teleportation allows instant access to all others after first portal. Minimal total time is `1`.
 
-Sample 2 (custom):
+Sample 2 (constructed):
 
 ```
-4 3
-1 2 3
-2 3 4
-3 4 5
-2
-2 4
+n = 4, m = 3
+edges = [(1,2,2),(2,3,2),(3,4,2)]
+portals = [2,4]
 ```
 
-The shortest paths give distances from portals as: `[inf,3,0,5,0]`. The MST between portals 2 and 4 uses edge weight 9. Distance from city 1 to nearest portal is 3. Total travel time: 9 + 3 = 12. The algorithm captures this correctly.
+Dijkstra yields distances `[0,2,4,6]`. Portal distances `[2,6]`. Maximum is 6. Output `6`. Pavel travels 2 to reach first portal 2, teleportation not yet useful, then must travel to 4 via 3. Minimal total time is 6.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + m) log n) | Multi-source Dijkstra dominates; building and sorting MST edges is linear in m. |
-| Space | O(n + m) | Adjacency list, distances, priority queue, union-find structure. |
+| Time | O((n + m) log n) | Dijkstra processes each edge once, heap operations cost log n |
+| Space | O(n + m) | Adjacency list and distance array |
 
-Given `n, m <= 10^5` and 2 seconds, this solution is feasible. Python handles integers up to 10^18 natively.
+Given n and m up to 10^5, the logarithmic factor ensures the solution runs well within the 2-second time limit. Memory usage fits easily under 256 MB.
 
 ## Test Cases
 
@@ -184,5 +139,24 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n, m = map(int, input().
+    import heapq
+    input = sys.stdin.readline
+    n, m = map(int, input().split())
+    adj = [[] for _ in range(n + 1)]
+    for _ in range(m):
+        u, v, w = map(int, input().split())
+        adj[u].append((v, w))
+        adj[v].append((u, w))
+    k = int(input())
+    portals = list(map(int, input().split()))
+    dist = [float('inf')] * (n + 1)
+    dist[1] = 0
+    heap = [(0, 1)]
+    while heap:
+        d, u = heapq.heappop(heap)
+        if d > dist[u]:
+            continue
+        for v, w in adj[u]:
+            if dist[v] > d + w:
+                dist[v] =
 ```

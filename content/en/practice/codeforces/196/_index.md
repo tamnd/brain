@@ -1,26 +1,27 @@
 ---
 title: "Codeforces Round 124 (Div. 1)"
-description: "Solutions for Codeforces Round 124 (Div. 1) (contest 196). 3/4 problems verified against sample I/O. Difficulty range: 1100-2600."
+description: "Solutions for Codeforces Round 124 (Div. 1) (contest 196). 2/5 problems verified against sample I/O. Difficulty range: 1100-2800."
 tags: ["codeforces", "competitive-programming", "greedy", "strings", "dfs-and-similar", "graphs", "constructive-algorithms", "divide-and-conquer"]
 categories: ["algorithms"]
 contest_id: 196
 contest_type: "Div. 1"
-rating_range: "1100-2600"
-n_problems: 4
-n_verified: 3
-total_solve_s: 400
-date: "2026-05-29T00:00:00+07:00"
+rating_range: "1100-2800"
+n_problems: 5
+n_verified: 2
+total_solve_s: 532
+date: "2026-06-03T09:45:12+07:00"
 weight: 196
 draft: false
 ---
 
 # [Codeforces Round 124 (Div. 1)](https://codeforces.com/contest/196)
 
-**Type:** Div. 1 | **Problems:** 4 | **Verified:** 3/4 | **Rating range:** 1100-2600 | **Time:** 6m 40s
+**Type:** Div. 1 | **Problems:** 5 | **Verified:** 2/5 | **Rating range:** 1100-2800 | **Time:** 8m 52s
 
 | Problem | Name | Rating | Tags | Solve Time | Verified |
 |---|---|---|---|---|---|
-| [A](A/) | [Lexicographically Maximum Subsequence](https://codeforces.com/problemset/problem/196/A) | 1100 | greedy, strings | 1m 2s | ✓ |
+| [A](A/) | [Lexicographically Maximum Subsequence](https://codeforces.com/problemset/problem/196/A) | 1100 | greedy, strings | 1m 29s | ✓ |
 | [B](B/) | [Infinite Maze](https://codeforces.com/problemset/problem/196/B) | 2000 | dfs-and-similar, graphs | 1m 39s | ✓ |
 | [C](C/) | [Paint Tree](https://codeforces.com/problemset/problem/196/C) | 2200 | constructive-algorithms, divide-and-conquer, geometry | 1m 40s | ✗ |
-| [E](E/) | [Opening Portals](https://codeforces.com/problemset/problem/196/E) | 2600 | dsu, graphs, shortest-paths | 2m 19s | ✓ |
+| [D](D/) | [The Next Good String](https://codeforces.com/problemset/problem/196/D) | 2800 | data-structures, greedy, hashing | 2m 4s | ✗ |
+| [E](E/) | [Opening Portals](https://codeforces.com/problemset/problem/196/E) | 2600 | dsu, graphs, shortest-paths | 2m | ✗ |

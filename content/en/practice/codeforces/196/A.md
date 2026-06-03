@@ -1,7 +1,7 @@
 ---
 title: "CF 196A - Lexicographically Maximum Subsequence"
-description: "We are given a string composed of lowercase English letters, and our goal is to select a subsequence from it that is lexicographically the largest possible. A subsequence is formed by taking zero or more characters in order without reordering them."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a lowercase string and may choose any non-empty subsequence of its characters while preserving their original order. Among all possible subsequences, we need the one that is lexicographically largest."
+date: "2026-06-03T09:41:06+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 196
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 124 (Div. 1)"
 rating: 1100
 weight: 196
-solve_time_s: 62
+solve_time_s: 89
 verified: true
 draft: false
 ---
@@ -18,39 +18,133 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** greedy, strings  
-**Solve time:** 1m 2s  
+**Solve time:** 1m 29s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string composed of lowercase English letters, and our goal is to select a subsequence from it that is lexicographically the largest possible. A subsequence is formed by taking zero or more characters in order without reordering them. Lexicographical comparison is just dictionary order, so "bca" is larger than "abc" because the first differing character 'b' is greater than 'a'.
+We are given a lowercase string and may choose any non-empty subsequence of its characters while preserving their original order.
 
-The string can be up to 100,000 characters long. This rules out any solution that explicitly generates all subsequences, because there are 2^n possible subsequences, which is astronomically large. We need an approach that inspects the string in a linear or near-linear fashion.
+Among all possible subsequences, we need the one that is lexicographically largest. Lexicographic comparison behaves exactly like dictionary order: the first position where two strings differ decides the winner, and if one string is a prefix of the other, the longer string is larger.
 
-A naive error would be to try to greedily append the largest remaining character without considering the relative positions. For instance, in the string "ababba", if we just always pick the current maximum character globally and ignore order, we might incorrectly pick the first 'b', then the first 'a', missing that a later 'b' can contribute to a larger subsequence. Correct handling must respect the original order while still selecting characters that maximize lexicographical value.
+The string length can reach $10^5$. A subsequence problem immediately suggests an exponential search space because every character can either be taken or skipped. There are $2^n-1$ non-empty subsequences, which is completely impossible to enumerate when $n=10^5$. Even algorithms that repeatedly scan large suffixes can become too slow if they perform $O(n^2)$ work. With a 2-second limit, we should target linear time or close to it.
+
+Several situations are easy to mishandle.
+
+Consider:
+
+```
+abc
+```
+
+The answer is:
+
+```
+c
+```
+
+A careless approach might try to keep many characters because longer strings are sometimes larger. Here, however, the very first character dominates lexicographic order. Any subsequence starting with `a` or `b` loses immediately to one starting with `c`.
+
+Another tricky case is:
+
+```
+zzza
+```
+
+The answer is:
+
+```
+zzza
+```
+
+Once we decide that `z` is the best possible first character, we should not take only one occurrence. Keeping all later `z` characters makes the result larger because the prefixes remain equal and the longer string wins.
+
+A third example is:
+
+```
+ababba
+```
+
+The answer is:
+
+```
+bbba
+```
+
+Choosing only the first maximum character is not enough. After taking a `b`, we must solve the same problem on the remaining suffix and continue greedily.
 
 ## Approaches
 
-The brute-force method would consider all subsequences of the string, compare them lexicographically, and choose the maximum. This is correct in principle but infeasible, because with n up to 100,000, generating 2^100000 subsequences is impossible.
+The brute-force idea is straightforward: generate every subsequence, compare them lexicographically, and keep the best one.
 
-The key insight for a faster approach comes from observing the structure of lexicographical order: the maximum subsequence must start with the largest character that appears anywhere, and the rest of the subsequence is obtained by recursively applying the same rule to the suffix that follows that character. This allows us to scan the string from left to right, always appending a character if it is at least as large as any character that occurs later. In practical terms, we can precompute the maximum character for each suffix of the string. This transforms the problem into a linear scan with a simple comparison, giving an O(n) solution.
+This works because the definition of the problem is exactly "find the maximum among all subsequences". Unfortunately, a string of length $n$ has $2^n$ subsequences. Even for $n=50$, that is already more than one quadrillion possibilities. For $n=10^5$, it is hopeless.
+
+To find something faster, we should think about what determines lexicographic order.
+
+The first character is the most important position. If a subsequence begins with `y`, it can never beat a subsequence beginning with `z`. That means the first character of the answer must be the maximum character appearing anywhere in the string.
+
+Suppose the largest character appearing in the current suffix is `c`. Any optimal answer must start with a `c`. Which occurrences of `c` should we keep?
+
+Take all of them.
+
+If two candidate answers start with the same prefix and one continues with extra copies of the same maximum character, the longer one is lexicographically larger. There is no penalty for taking a maximum character because it cannot make an earlier position worse.
+
+This observation leads to a very simple view. Process the string from right to left while maintaining the largest character seen so far. A character belongs in the answer exactly when it is equal to the suffix maximum at its position.
+
+For example:
+
+```
+ababba
+```
+
+Suffix maxima are:
+
+```
+b b b b b a
+```
+
+Any position whose character equals its suffix maximum is selected:
+
+```
+a b a b b a
+  ^   ^ ^ ^
+```
+
+The resulting subsequence is:
+
+```
+bbba
+```
+
+This requires only one linear scan.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n * n) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force | $O(2^n \cdot n)$ | $O(2^n)$ | Too slow |
+| Optimal | $O(n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input string and determine its length n. This is needed to create a suffix array of maximum characters.
-2. Initialize an array `max_suffix` of length n. This will store, for each position i, the maximum character in the suffix starting at i.
-3. Populate `max_suffix` by scanning from right to left. For the last character, `max_suffix[n-1]` is just `s[n-1]`. For each earlier character `i`, set `max_suffix[i]` to the larger of `s[i]` and `max_suffix[i+1]`.
-4. Initialize an empty list `result` to build the final subsequence.
-5. Scan the string from left to right. At each position i, if `s[i]` is equal to `max_suffix[i]`, append `s[i]` to `result`. This ensures we only include characters that can contribute to the maximum subsequence.
-6. Join the list `result` into a string and output it.
+1. Read the string.
+2. Traverse the string from right to left.
+3. Maintain `mx`, the largest character encountered so far in the suffix.
+4. When the current character is greater than `mx`, update `mx`.
+5. If the current character equals `mx`, add it to the answer.
 
-Why it works: The invariant maintained is that at every position, we only pick a character if no character to its right is greater. This guarantees that the selected subsequence is lexicographically as large as possible while maintaining order.
+The character is a suffix maximum. Any optimal lexicographically maximum subsequence must contain it.
+6. The collected characters were obtained from right to left, so reverse them.
+7. Output the resulting string.
+
+### Why it works
+
+At any position, let `M` be the largest character appearing anywhere to its right, including itself.
+
+If the current character is smaller than `M`, choosing it would force the subsequence to start with a worse character than one that begins at an occurrence of `M`. Such a choice can never belong to an optimal answer.
+
+If the current character equals `M`, skipping it is also suboptimal. Keeping this character gives an additional occurrence of the largest available letter while preserving the possibility of choosing all future optimal characters. Since lexicographic order prefers longer strings when prefixes are equal, taking every suffix-maximum character is always beneficial.
+
+Thus the optimal subsequence consists exactly of the positions whose character equals the maximum character in their suffix.
 
 ## Python Solution
 
@@ -58,101 +152,203 @@ Why it works: The invariant maintained is that at every position, we only pick a
 import sys
 input = sys.stdin.readline
 
-s = input().strip()
-n = len(s)
+def solve():
+    s = input().strip()
 
-# Step 1: Compute max_suffix
-max_suffix = [''] * n
-max_suffix[-1] = s[-1]
-for i in range(n - 2, -1, -1):
-    max_suffix[i] = max(s[i], max_suffix[i + 1])
+    mx = ''
+    ans = []
 
-# Step 2: Build result subsequence
-result = []
-for i in range(n):
-    if s[i] == max_suffix[i]:
-        result.append(s[i])
+    for ch in reversed(s):
+        if ch > mx:
+            mx = ch
+        if ch == mx:
+            ans.append(ch)
 
-print(''.join(result))
+    print(''.join(reversed(ans)))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The first loop computes the maximum character for each suffix. This allows the second loop to decide whether to include a character efficiently. Off-by-one errors are avoided by carefully indexing the suffix array from the last character backward. Using a list for `result` and joining at the end prevents inefficient string concatenations.
+The variable `mx` stores the largest character seen in the suffix processed so far. Because we scan from right to left, this is exactly the suffix maximum for the current position.
+
+Whenever the current character equals `mx`, we keep it. Characters smaller than the suffix maximum are discarded because a larger character exists later and dominates lexicographic order.
+
+The answer is collected in reverse order because the scan proceeds from the end of the string toward the beginning. Reversing once at the end restores the original left-to-right order of the subsequence.
+
+There are no integer overflow concerns because the algorithm manipulates only characters and lists. The only subtle point is using `if ch == mx` after potentially updating `mx`. This guarantees that newly discovered maximum characters are included.
 
 ## Worked Examples
 
-### Sample 1: "ababba"
+### Example 1
 
-| i | s[i] | max_suffix[i] | Append? | result |
+Input:
+
+```
+ababba
+```
+
+| Position (right to left) | Character | Current mx | Taken? | Collected |
 | --- | --- | --- | --- | --- |
-| 0 | a | b | No | "" |
-| 1 | b | b | Yes | "b" |
-| 2 | a | b | No | "b" |
-| 3 | b | b | Yes | "bb" |
-| 4 | b | b | Yes | "bbb" |
-| 5 | a | a | Yes | "bbba" |
+| 5 | a | a | Yes | a |
+| 4 | b | b | Yes | ab |
+| 3 | b | b | Yes | abb |
+| 2 | a | b | No | abb |
+| 1 | b | b | Yes | abbb |
+| 0 | a | b | No | abbb |
 
-This trace confirms that only characters that are maximal in their suffix are included.
+After reversing:
 
-### Sample 2: "abbcabc"
+```
+bbba
+```
 
-| i | s[i] | max_suffix[i] | Append? | result |
+This trace shows that every retained character is equal to the maximum character in its suffix.
+
+### Example 2
+
+Input:
+
+```
+zzza
+```
+
+| Position (right to left) | Character | Current mx | Taken? | Collected |
 | --- | --- | --- | --- | --- |
-| 0 | a | c | No | "" |
-| 1 | b | c | No | "" |
-| 2 | b | c | No | "" |
-| 3 | c | c | Yes | "c" |
-| 4 | a | c | No | "c" |
-| 5 | b | c | No | "c" |
-| 6 | c | c | Yes | "cc" |
+| 3 | a | a | Yes | a |
+| 2 | z | z | Yes | az |
+| 1 | z | z | Yes | azz |
+| 0 | z | z | Yes | azzz |
 
-The trace shows that characters earlier than a later 'c' are skipped, maintaining order and maximizing lexicographical value.
+After reversing:
+
+```
+zzza
+```
+
+This example demonstrates why all occurrences of the maximum character should be preserved. Keeping every `z` produces a lexicographically larger result than keeping only one.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Both loops traverse the string once; comparisons are O(1) |
-| Space | O(n) | `max_suffix` stores one character per position; `result` stores up to n characters |
+| Time | $O(n)$ | One pass over the string |
+| Space | $O(n)$ | The answer subsequence may contain all characters |
 
-The linear time complexity is well within the limit for n up to 100,000, and memory usage is modest compared to the 256 MB limit.
+With $n \le 10^5$, a linear scan is easily fast enough. The memory usage is also safe because storing the answer requires at most $10^5$ characters.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    s = input().strip()
-    n = len(s)
-    max_suffix = [''] * n
-    max_suffix[-1] = s[-1]
-    for i in range(n - 2, -1, -1):
-        max_suffix[i] = max(s[i], max_suffix[i + 1])
-    result = []
-    for i in range(n):
-        if s[i] == max_suffix[i]:
-            result.append(s[i])
-    return ''.join(result)
 
-# provided samples
+    s = input().strip()
+
+    mx = ''
+    ans = []
+
+    for ch in reversed(s):
+        if ch > mx:
+            mx = ch
+        if ch == mx:
+            ans.append(ch)
+
+    return ''.join(reversed(ans))
+
+# provided sample
 assert run("ababba\n") == "bbba", "sample 1"
-# custom cases
-assert run("abcde\n") == "e", "strictly increasing"
-assert run("edcba\n") == "edcba", "strictly decreasing"
-assert run("aaaaa\n") == "aaaaa", "all equal"
-assert run("bacbacbac\n") == "ccc", "repeated pattern"
-assert run("zxyxz\n") == "zz", "max at start and end"
+
+# minimum size
+assert run("a\n") == "a", "single character"
+
+# all equal characters
+assert run("aaaaaa\n") == "aaaaaa", "all equal"
+
+# strictly increasing
+assert run("abcde\n") == "e", "only largest suffix maximum survives"
+
+# strictly decreasing
+assert run("edcba\n") == "edcba", "every position is a suffix maximum"
+
+# repeated maximum letters
+assert run("zzza\n") == "zzza", "keep all maximum letters"
+
+# maximum-character block in middle
+assert run("abzczzb\n") == "zzz", "multiple suffix maxima"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| "abcde" | "e" | picks the last max in increasing order |
-| "edcba" | "edcba" | all characters are in descending order, keep all |
-| "aaaaa" | "aaaaa" | identical characters, all included |
-| "bacbacbac" | "ccc" | repeated pattern, only suffix maxima chosen |
-| "zxyxz" | "zz" | max character at multiple positions, only maxima included |
+| `a` | `a` | Minimum length |
+| `aaaaaa` | `aaaaaa` | All characters retained |
+| `abcde` | `e` | Only final maximum survives |
+| `edcba` | `edcba` | Every position is a suffix maximum |
+| `zzza` | `zzza` | Repeated largest character |
+| `abzczzb` | `zzz` | Multiple maximum occurrences across the string |
 
 ## Edge Cases
 
-In the string "abcde", scanning finds that only 'e' is the suffix maximum, so the subsequence is "e". In "edcba", each character is itself the maximum in its suffix, so the entire string is taken. For repeated characters like "aaaaa", each character is equal to the suffix maximum, so all are included. These examples demonstrate that the algorithm correctly handles increasing, decreasing, and uniform patterns. It also handles maxima occurring at multiple positions, preserving order and correctly skipping lower characters between maxima.
+Consider:
+
+```
+abc
+```
+
+Scanning from right to left gives suffix maxima:
+
+```
+c c c
+```
+
+Only the final `c` equals its suffix maximum at its own position. The algorithm outputs:
+
+```
+c
+```
+
+Any subsequence beginning with `a` or `b` loses immediately because its first character is smaller.
+
+Now consider:
+
+```
+zzza
+```
+
+The suffix maxima are:
+
+```
+z z z a
+```
+
+Every character equals its suffix maximum, so all characters are selected. The output becomes:
+
+```
+zzza
+```
+
+A common mistake is to keep only the first occurrence of the maximum character and output `z`, which is lexicographically smaller because `zzza` has the same prefix and is longer.
+
+Finally, consider:
+
+```
+ababba
+```
+
+The suffix maxima are:
+
+```
+b b b b b a
+```
+
+Selected positions are the three `b` characters and the final `a`, producing:
+
+```
+bbba
+```
+
+The algorithm correctly skips both `a` characters that have a larger character later in the string. Those positions can never belong to a lexicographically maximum subsequence.
