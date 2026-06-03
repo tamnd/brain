@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 438 solved, 328 verified, 509 total."
+description: "Volume 2: Seminumerical Algorithms. 444 solved, 333 verified, 509 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 438 solved, 328 verified, 509 total.
+Exercise solutions for [TAOCP](../) Volume 2. 444 solved, 333 verified, 509 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -17,7 +17,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 438 solved, 328 verified, 509 tota
 | [3.5](3.5/) | What Is a Random Sequence? | 43 | 30 | 44 |
 | [3.6](3.6/) | Summary | 15 | 13 | 15 |
 | [4.1](4.1/) | Positional Number Systems | 34 | 20 | 34 |
-| [4.4](4.4/) | Radix Conversion | 1 | 1 | 19 |
+| [4.4](4.4/) | Radix Conversion | 5 | 5 | 19 |
 | [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
 | [3.2.2](3.2.2/) | Other Methods | 35 | 25 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 24 | 22 | 25 |
@@ -31,7 +31,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 438 solved, 328 verified, 509 tota
 | [4.2.4](4.2.4/) | Distribution of Floating Point Numbers | 17 | 11 | 20 |
 | [4.3.1](4.3.1/) | The Classical Algorithms | 37 | 21 | 43 |
 | [4.3.2](4.3.2/) | Modular Arithmetic | 14 | 13 | 14 |
-| [4.3.3](4.3.3/) | How Fast Can We Multiply? | 15 | 11 | 19 |
+| [4.3.3](4.3.3/) | How Fast Can We Multiply? | 17 | 12 | 19 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |

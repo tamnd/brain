@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.4: Radix Conversion"
-description: "Section 4.4 exercises: 1/19 solved."
+description: "Section 4.4 exercises: 5/19 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.4"
@@ -14,16 +14,16 @@ draft: false
 
 # Section 4.4. Radix Conversion
 
-Exercises from [TAOCP Volume 2](../) Section 4.4: 1/19 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.4: 5/19 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| 1 | &#9654; [**] |  | - | - |
+| [1](01.md) | &#9654; [**] |  | verified | 2m43s |
 | [2](02.md) |  [**] |  | verified | 1m15s |
-| 3 | &#9654; [**] |  | - | - |
-| 4 |  [*M21*] | math-medium | - | - |
+| [3](03.md) | &#9654; [**] |  | verified | 3m29s |
+| [4](04.md) |  [*M21*] | math-medium | verified | 2m49s |
 | 5 |  [*M30*] | math-hard | - | - |
-| 6 |  [*30*] | hard | - | - |
+| [6](06.md) |  [*30*] | hard | verified | 5m29s |
 | 7 |  [*M18*] | math-medium | - | - |
 | 8 |  [*24*] | medium | - | - |
 | 9 | &#9654; [*M29*] | math-hard | - | - |
