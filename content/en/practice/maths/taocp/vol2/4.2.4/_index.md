@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.2.4: Distribution of Floating Point Numbers"
-description: "Section 4.2.4 exercises: 16/20 solved."
+description: "Section 4.2.4 exercises: 17/20 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.2.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.2.4. Distribution of Floating Point Numbers
 
-Exercises from [TAOCP Volume 2](../) Section 4.2.4: 16/20 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.2.4: 17/20 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,4 +37,4 @@ Exercises from [TAOCP Volume 2](../) Section 4.2.4: 16/20 solved.
 | [17](17.md) | &#9654; [*HM25*] | hm-medium | verified | 1m35s |
 | 18 |  [*HM30*] | hm-hard | - | - |
 | [19](19.md) |  [*HM25*] | hm-medium | verified | 1m28s |
-| 20 |  [*HM40*] | hm-project | - | - |
+| [20](20.md) |  [*HM40*] | hm-project | solved | 9m43s |
