@@ -1,7 +1,7 @@
 ---
 title: "CF 268A - Games"
-description: "Each football team owns two uniforms, a home uniform and a guest uniform. During a match, the host team normally wears its home uniform while the visiting team wears its guest uniform. There is one special situation."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given the uniform colors of all teams in a football championship. Each team has a home color and an away color. Every ordered pair of distinct teams plays exactly one match, with one team acting as the host and the other as the guest."
+date: "2026-06-05T01:18:47+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
 codeforces_contest: 268
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 164 (Div. 2)"
 rating: 800
 weight: 268
-solve_time_s: 89
+solve_time_s: 94
 verified: true
 draft: false
 ---
@@ -18,47 +18,31 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force  
-**Solve time:** 1m 29s  
+**Solve time:** 1m 34s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Each football team owns two uniforms, a home uniform and a guest uniform. During a match, the host team normally wears its home uniform while the visiting team wears its guest uniform.
+We are given the uniform colors of all teams in a football championship. Each team has a home color and an away color.
 
-There is one special situation. If the host team's home color is the same as the guest team's guest color, the host team changes into its guest uniform instead.
+Every ordered pair of distinct teams plays exactly one match, with one team acting as the host and the other as the guest. Normally, the host wears its home uniform and the guest wears its away uniform.
 
-We are given the home and guest colors for every team in the championship. Every pair of teams plays twice, once with each team acting as host. The task is to count how many games force the host team to switch to its guest uniform.
+The only special situation happens when the host's home color is exactly the same as the guest's away color. In that case, the host switches and wears its away uniform instead.
 
-The input is simply a list of teams and their two colors. The output is one integer, the total number of matches where the host changes uniforms.
+The task is to count how many matches during the entire championship trigger this switch.
 
-The constraints are very small. At most 30 teams participate, so there are at most $30 \cdot 29 = 870$ games in total. Even an $O(n^2)$ solution performs only a few hundred comparisons, which is trivial within the time limit. There is no need for advanced optimization.
+The input provides the home and away colors for each team. The output is a single integer, the total number of matches where the host wears its away uniform.
 
-One easy mistake is misunderstanding which colors must match. The condition is:
+The constraints are very small. There are at most 30 teams, so the total number of possible host-guest pairs is at most:
 
-Host home color = Guest guest color
+$$30 \cdot 29 = 870$$
 
-A careless implementation might compare home colors against home colors instead.
+Even a straightforward examination of every possible match is easily fast enough. There is no need for sophisticated data structures or optimization.
+
+A common mistake is to think about unordered pairs of teams. The championship contains ordered matches. If team A hosts team B and team B hosts team A, those are two different games and must be considered separately.
 
 Consider this example:
-
-```
-2
-1 2
-1 3
-```
-
-The correct output is:
-
-```
-0
-```
-
-The home colors are equal, but that does not matter. The guest uniforms are 2 and 3, so no conflict occurs.
-
-Another subtle case is counting both directions separately. Team A hosting Team B and Team B hosting Team A are different games.
-
-Example:
 
 ```
 2
@@ -66,51 +50,91 @@ Example:
 2 1
 ```
 
-The correct output is:
+There are two matches:
+
+Team 1 hosts Team 2:
+
+host home = 1, guest away = 1, switch occurs.
+
+Team 2 hosts Team 1:
+
+host home = 2, guest away = 2, switch occurs.
+
+The correct answer is:
 
 ```
 2
 ```
 
-When team 1 hosts, its home color 1 matches team 2's guest color 1.
+A solution that only checks each pair once would incorrectly return 1.
 
-When team 2 hosts, its home color 2 matches team 1's guest color 2.
+Another subtle case is when several teams share the same home color.
 
-A buggy solution that only checks unordered pairs would incorrectly return 1.
+```
+3
+1 2
+1 3
+4 1
+```
+
+Both Team 1 and Team 2 have home color 1. Team 3 has away color 1.
+
+The matches where Team 3 visits Team 1 and Team 3 visits Team 2 both contribute to the answer. We must count every valid host-guest combination independently.
+
+The correct answer is:
+
+```
+2
+```
 
 ## Approaches
 
-The most direct approach is to simulate every possible hosted game.
+The most direct approach is to simulate the condition for every possible match.
 
-For every team $i$, treat it as the host. For every other team $j$, treat it as the guest. If the host's home color equals the guest's guest color, increment the answer.
+For every team $i$ acting as host and every different team $j$ acting as guest, we check whether:
 
-This works because the problem statement defines the condition independently for each game. We do not need to track schedules, standings, or any changing state. Each match contributes either 0 or 1 to the answer.
+$$home_i = away_j$$
 
-The brute-force solution performs $n^2$ comparisons. With $n \le 30$, that means at most 900 checks, which is tiny.
+If the colors match, the host switches uniforms and we increase the answer.
 
-There is also a slightly more structured way to think about the same idea. Each team's home color can conflict with any other team's guest color. The task becomes counting equal pairs between the set of home colors and the set of guest colors, while preserving team direction.
+This approach is correct because the problem definition depends only on the host's home color and the guest's away color. Every match can be evaluated independently.
 
-This observation leads naturally to the same $O(n^2)$ solution. Since the constraints are already extremely small, there is no practical need for hashing or frequency arrays, although they would also work.
+The worst case contains 30 teams, so we perform at most:
+
+$$30 \cdot 29 = 870$$
+
+comparisons. That is tiny.
+
+There is also a counting interpretation. Every occurrence of a home color can be matched with every occurrence of the same value as an away color. One could count color frequencies and multiply them. That also works, but it is unnecessary given the small constraints.
+
+The brute-force solution is already optimal for this problem because the input size is so small.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n²) | O(1) | Accepted |
-| Optimal | O(n²) | O(1) | Accepted |
+| Frequency Counting | O(n + C) | O(C) | Accepted |
+
+Here $C$ is the number of possible colors. Since $n \le 30$, the simpler quadratic solution is the natural choice.
 
 ## Algorithm Walkthrough
 
 1. Read the number of teams.
-2. Store every team's home color and guest color in a list.
-3. Initialize the answer to 0.
-4. Iterate through every team as the host.
-5. For each host team, iterate through every team again as the guest.
-6. Compare the host's home color with the guest's guest color.
-7. If the colors match, increment the answer because the host must switch uniforms.
-8. After all pairs are checked, print the final answer.
+2. Store every team's home color and away color in a list.
+3. Initialize `answer = 0`.
+4. For every team `i`, treat it as the host.
+5. For every team `j`, treat it as the guest.
+6. Skip the case where `i == j`, since a team never plays itself.
+7. Check whether the host's home color equals the guest's away color.
+8. If they are equal, increment `answer` by one because the host must switch to its away uniform.
+9. After all pairs have been processed, print `answer`.
 
-Why it works:
+### Why it works
 
-Every championship game is uniquely identified by an ordered pair $(host, guest)$. The algorithm examines every such pair exactly once. A game contributes to the answer precisely when the host's home color equals the guest's guest color, which is exactly the rule from the statement. Since no valid game is skipped and no invalid game is counted, the final total is correct.
+The championship contains one match for every ordered pair of distinct teams. The algorithm examines exactly those pairs.
+
+For a particular match `(i, j)`, the problem states that the host changes uniforms if and only if the host's home color equals the guest's away color. The algorithm checks exactly this condition and adds one precisely when the match contributes to the answer.
+
+Since every match is checked once and only once, the final count is exactly the number of matches where the host wears its away uniform.
 
 ## Python Solution
 
@@ -119,37 +143,40 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-
-teams = []
-for _ in range(n):
-    h, a = map(int, input().split())
-    teams.append((h, a))
+teams = [tuple(map(int, input().split())) for _ in range(n)]
 
 answer = 0
 
 for i in range(n):
+    home_i = teams[i][0]
+
     for j in range(n):
-        if teams[i][0] == teams[j][1]:
+        if i == j:
+            continue
+
+        away_j = teams[j][1]
+
+        if home_i == away_j:
             answer += 1
 
 print(answer)
 ```
 
-The program first stores all home and guest colors in a list of pairs. This makes later comparisons simple and readable.
+The first part reads and stores all uniform colors. Each entry contains `(home_color, away_color)`.
 
-The nested loops enumerate every ordered pair of teams. The outer loop chooses the host team, while the inner loop chooses the guest team.
+The nested loops enumerate every ordered host-guest pair. The condition `i == j` is skipped because no team plays against itself.
 
-The comparison:
+The key comparison is:
 
 ```
-teams[i][0] == teams[j][1]
+home_i == away_j
 ```
 
-checks whether the host's home color equals the guest's guest color.
+This directly matches the rule from the statement. Whenever it is true, the current match contributes exactly one to the answer.
 
-One detail that sometimes confuses people is whether we should skip `i == j`. We do not need to. The statement guarantees that each team's home and guest colors are different, so a team can never conflict with itself. Keeping the condition simple avoids unnecessary branching.
+No special handling for duplicate colors is required. If several teams have the same color, every valid match is naturally counted by the loops.
 
-The answer easily fits inside a normal integer because the total number of games is at most 870.
+Integer overflow is impossible because the maximum answer is at most $30 \cdot 29 = 870$.
 
 ## Worked Examples
 
@@ -166,7 +193,7 @@ Input:
 
 Teams:
 
-| Team | Home | Guest |
+| Team | Home | Away |
 | --- | --- | --- |
 | 1 | 1 | 2 |
 | 2 | 2 | 4 |
@@ -174,17 +201,14 @@ Teams:
 
 Trace:
 
-| Host Team | Guest Team | Host Home | Guest Guest | Match? | Answer |
+| Host | Guest | Host Home | Guest Away | Match? | Answer |
 | --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 1 | 2 | No | 0 |
 | 1 | 2 | 1 | 4 | No | 0 |
 | 1 | 3 | 1 | 4 | No | 0 |
 | 2 | 1 | 2 | 2 | Yes | 1 |
-| 2 | 2 | 2 | 4 | No | 1 |
 | 2 | 3 | 2 | 4 | No | 1 |
 | 3 | 1 | 3 | 2 | No | 1 |
 | 3 | 2 | 3 | 4 | No | 1 |
-| 3 | 3 | 3 | 4 | No | 1 |
 
 Final answer:
 
@@ -192,7 +216,7 @@ Final answer:
 1
 ```
 
-This example shows the exact interpretation of the rule. Only one hosted game creates a color conflict.
+This demonstrates that matches are ordered. The match where Team 2 hosts Team 1 contributes, while the reverse match does not.
 
 ### Sample 2
 
@@ -206,43 +230,39 @@ Input:
 4 5
 ```
 
-Trace:
+Teams:
 
-| Host Team | Guest Team | Host Home | Guest Guest | Match? | Running Answer |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 1 | 2 | No | 0 |
-| 1 | 2 | 1 | 4 | No | 0 |
-| 1 | 3 | 1 | 4 | No | 0 |
-| 1 | 4 | 1 | 5 | No | 0 |
-| 2 | 1 | 2 | 2 | Yes | 1 |
-| 2 | 2 | 2 | 4 | No | 1 |
-| 2 | 3 | 2 | 4 | No | 1 |
-| 2 | 4 | 2 | 5 | No | 1 |
-| 3 | 1 | 3 | 2 | No | 1 |
-| 3 | 2 | 3 | 4 | No | 1 |
-| 3 | 3 | 3 | 4 | No | 1 |
-| 3 | 4 | 3 | 5 | No | 1 |
-| 4 | 1 | 4 | 2 | No | 1 |
-| 4 | 2 | 4 | 4 | Yes | 2 |
-| 4 | 3 | 4 | 4 | Yes | 3 |
-| 4 | 4 | 4 | 5 | No | 3 |
+| Team | Home | Away |
+| --- | --- | --- |
+| 1 | 1 | 2 |
+| 2 | 2 | 4 |
+| 3 | 3 | 4 |
+| 4 | 4 | 5 |
 
-Final answer:
+Trace of contributing matches:
+
+| Host | Guest | Host Home | Guest Away |
+| --- | --- | --- | --- |
+| 2 | 1 | 2 | 2 |
+| 4 | 2 | 4 | 4 |
+| 4 | 3 | 4 | 4 |
+
+Total:
 
 ```
 3
 ```
 
-This trace demonstrates that one host team can conflict with multiple visiting teams if several guest uniforms share the same color.
+This example shows that one host color can match multiple guest away colors, and every such match must be counted separately.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
 | Time | O(n²) | Every ordered pair of teams is checked once |
-| Space | O(1) | Only a few variables besides the input list are used |
+| Space | O(n) | Storage of the team color pairs |
 
-With at most 30 teams, the algorithm performs fewer than 900 comparisons. This is far below the limits, so the solution comfortably fits within both the time and memory constraints.
+With at most 30 teams, the algorithm performs fewer than 900 comparisons. This is far below the limits, so the solution runs comfortably within both the time and memory constraints.
 
 ## Test Cases
 
@@ -261,7 +281,7 @@ def solve():
 
     for i in range(n):
         for j in range(n):
-            if teams[i][0] == teams[j][1]:
+            if i != j and teams[i][0] == teams[j][1]:
                 ans += 1
 
     print(ans)
@@ -275,89 +295,41 @@ def run(inp: str) -> str:
 
     solve()
 
-    output = sys.stdout.getvalue()
+    out = sys.stdout.getvalue().strip()
 
     sys.stdin = backup_stdin
     sys.stdout = backup_stdout
 
-    return output
+    return out
 
 # provided sample
-assert run(
-"""3
-1 2
-2 4
-3 4
-"""
-) == "1\n", "sample 1"
+assert run("3\n1 2\n2 4\n3 4\n") == "1", "sample 1"
 
-# minimum size, no matches
-assert run(
-"""2
-1 2
-3 4
-"""
-) == "0\n", "minimum case"
+# minimum size, no match
+assert run("2\n1 2\n3 4\n") == "0", "minimum case"
 
-# both directions match
-assert run(
-"""2
-1 2
-2 1
-"""
-) == "2\n", "direction matters"
+# two matches because games are ordered
+assert run("2\n1 2\n2 1\n") == "2", "ordered matches"
 
-# multiple guests matching same host
-assert run(
-"""4
-1 5
-2 1
-3 1
-4 1
-"""
-) == "3\n", "one host conflicts multiple times"
+# multiple hosts matching same away color
+assert run("3\n1 2\n1 3\n4 1\n") == "2", "duplicate home colors"
 
-# maximum style repeated structure
-assert run(
-"""5
-1 2
-2 3
-3 4
-4 5
-5 1
-"""
-) == "5\n", "cyclic matching"
+# all possible ordered matches contribute
+assert run("3\n1 2\n2 1\n1 2\n") == "4", "multiple contributions"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 teams with unrelated colors | 0 | No false positives |
-| 2 teams with swapped colors | 2 | Ordered games counted separately |
-| One guest color repeated many times | 3 | Multiple conflicts for same host |
-| Cyclic color structure | 5 | Counting across many different pairs |
+| `2 / (1,2) (3,4)` | `0` | Minimum size with no matching colors |
+| `2 / (1,2) (2,1)` | `2` | Ordered matches are counted separately |
+| `3 / (1,2) (1,3) (4,1)` | `2` | Duplicate home colors |
+| `3 / (1,2) (2,1) (1,2)` | `4` | Multiple matches sharing the same color |
 
 ## Edge Cases
 
-Consider the case where home colors match each other, but guest colors do not:
+### Ordered matches matter
 
-```
-2
-1 2
-1 3
-```
-
-The algorithm checks:
-
-| Host | Guest | Compare |
-| --- | --- | --- |
-| 1 | 2 | 1 == 3 |
-| 2 | 1 | 1 == 2 |
-
-Both comparisons fail, so the answer remains 0.
-
-This confirms that only host-home versus guest-guest comparisons matter.
-
-Now consider directional counting:
+Input:
 
 ```
 2
@@ -365,32 +337,68 @@ Now consider directional counting:
 2 1
 ```
 
-The algorithm performs these checks:
+The algorithm checks:
 
-| Host | Guest | Compare | Counted |
-| --- | --- | --- | --- |
-| 1 | 2 | 1 == 1 | Yes |
-| 2 | 1 | 2 == 2 | Yes |
+| Host | Guest | Condition |
+| --- | --- | --- |
+| 1 | 2 | 1 = 1 |
+| 2 | 1 | 2 = 2 |
 
-The final answer becomes 2.
+Both matches contribute.
 
-This confirms that games are treated independently depending on who hosts.
+Output:
 
-Finally, consider self-comparisons:
+```
+2
+```
+
+A solution that only considers each pair once would incorrectly count only one match.
+
+### Multiple teams sharing a color
+
+Input:
 
 ```
 3
 1 2
-2 3
-3 1
+1 3
+4 1
 ```
 
-When `i == j`, the algorithm compares:
+The algorithm finds:
+
+| Host | Guest | Condition |
+| --- | --- | --- |
+| 1 | 3 | 1 = 1 |
+| 2 | 3 | 1 = 1 |
+
+Two different host teams match the same guest away color.
+
+Output:
 
 ```
-1 == 2
-2 == 3
-3 == 1
+2
 ```
 
-All fail because each team's home and guest colors are guaranteed distinct. Self-checks never accidentally increase the answer.
+The nested-loop approach naturally counts both occurrences.
+
+### No matching colors
+
+Input:
+
+```
+3
+1 2
+3 4
+5 6
+```
+
+Every comparison fails because no home color appears as an away color of another team.
+
+Output:
+
+```
+0
+```
+
+The algorithm simply never increments the counter, producing the correct result.
