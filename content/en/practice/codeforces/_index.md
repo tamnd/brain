@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 1889 problems, 1285 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 1891 problems, 1289 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 1889 problems, 1285 verified.**
+**448 contests, 1891 problems, 1289 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -198,7 +198,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [185](185/) | [Codeforces Round 118 (Div. 1)](https://codeforces.com/contest/185) | Div. 1 | 1300-3000 | 3/5 | 6m 18s |
 | [186](186/) | [Codeforces Round 118 (Div. 2)](https://codeforces.com/contest/186) | Div. 2 | 1100-1200 | 2/2 | 6m 28s |
 | [187](187/) | [Codeforces Round 119 (Div. 1)](https://codeforces.com/contest/187) | Div. 1 | 1500-2900 | 4/5 | 10m 3s |
-| [188](188/) | [Surprise Language Round 6](https://codeforces.com/contest/188) | Special | 1100-1800 | 4/7 | 7m 21s |
+| [188](188/) | [Surprise Language Round 6](https://codeforces.com/contest/188) | Special | 1100-1800 | 8/8 | 11m 8s |
 | [189](189/) | [Codeforces Round 119 (Div. 2)](https://codeforces.com/contest/189) | Div. 2 | 1300-1300 | 2/2 | 4m 24s |
 | [190](190/) | [Codeforces Round 120 (Div. 2)](https://codeforces.com/contest/190) | Div. 2 | 1100-2100 | 1/5 | 4m 25s |
 | [191](191/) | [Codeforces Round 121 (Div. 1)](https://codeforces.com/contest/191) | Div. 1 | 1500-2700 | 5/5 | 8m 55s |
@@ -273,7 +273,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [264](264/) | [Codeforces Round 162 (Div. 1)](https://codeforces.com/contest/264) | Div. 1 | 1200-3000 | 2/5 | 10m 5s |
 | [265](265/) | [Codeforces Round 162 (Div. 2)](https://codeforces.com/contest/265) | Div. 2 | 800-1000 | 1/2 | 2m 41s |
 | [266](266/) | [Codeforces Round 163 (Div. 2)](https://codeforces.com/contest/266) | Div. 2 | 800-2500 | 3/5 | 8m 11s |
-| [267](267/) | [Codeforces Testing Round 5](https://codeforces.com/contest/267) | Special | 900-2000 | 2/2 | 4m 20s |
+| [267](267/) | [Codeforces Testing Round 5](https://codeforces.com/contest/267) | Special | 900-2700 | 2/3 | 6m 13s |
 | [268](268/) | [Codeforces Round 164 (Div. 2)](https://codeforces.com/contest/268) | Div. 2 | 800-2300 | 3/4 | 7m 8s |
 | [269](269/) | [Codeforces Round 165 (Div. 1)](https://codeforces.com/contest/269) | Div. 1 | 1700-3100 | 2/4 | 7m 2s |
 | [270](270/) | [Codeforces Round 165 (Div. 2)](https://codeforces.com/contest/270) | Div. 2 | 1100-1400 | 2/2 | 3m 31s |
