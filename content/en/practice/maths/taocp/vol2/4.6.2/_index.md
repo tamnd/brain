@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.2: Factorization of Polynomials"
-description: "Section 4.6.2 exercises: 31/40 solved."
+description: "Section 4.6.2 exercises: 33/40 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.2. Factorization of Polynomials
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.2: 31/40 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.2: 33/40 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -56,5 +56,5 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.2: 31/40 solved.
 | [36](36.md) |  [*M22*] | math-medium | verified | 2m33s |
 | [37](37.md) |  [*HM24*] | hm-medium | verified | 2m33s |
 | [38](38.md) |  [*HM27*] | hm-hard | verified | 2m20s |
-| 39 |  [*HM42*] | hm-project | - | - |
-| 40 | &#9654; [*M20*] | math-medium | - | - |
+| [39](39.md) |  [*HM42*] | hm-project | solved | 9m40s |
+| [40](40.md) | &#9654; [*M20*] | math-medium | verified | 6m28s |
