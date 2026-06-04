@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.4: Evaluation of Polynomials"
-description: "Section 4.6.4 exercises: 35/74 solved."
+description: "Section 4.6.4 exercises: 37/74 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.4. Evaluation of Polynomials
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.4: 35/74 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.4: 37/74 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -44,7 +44,7 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.4: 35/74 solved.
 | [24](24.md) | &#9654; [**] |  | solved | 8m35s |
 | [25](25.md) |  [**] |  | verified | 8m11s |
 | [26](26.md) | &#9654; [**] |  | verified | 4m37s |
-| 27 |  [**] |  | - | - |
+| [27](27.md) |  [**] |  | verified | 8m33s |
 | [28](28.md) |  [*HM20*] | hm-medium | verified | 4m37s |
 | [29](29.md) | &#9654; [*M20*] | math-medium | solved | 10m46s |
 | [30](30.md) | &#9654; [*M28*] | math-hard | verified | 11m58s |
@@ -56,7 +56,7 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.4: 35/74 solved.
 | [36](36.md) |  [*M27*] | math-hard | verified | 5m57s |
 | [37](37.md) |  [*M21*] | math-medium | verified | 4m56s |
 | [38](38.md) | &#9654; [**] |  | verified | 6m56s |
-| 39 |  [**] |  | - | - |
+| [39](39.md) |  [**] |  | solved | 10m16s |
 | 40 |  [**] |  | - | - |
 | 41 |  [**] |  | - | - |
 | 42 |  [**] |  | - | - |
