@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.2: Factorization of Polynomials"
-description: "Section 4.6.2 exercises: 8/40 solved."
+description: "Section 4.6.2 exercises: 14/40 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.2. Factorization of Polynomials
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.2: 8/40 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.2: 14/40 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -27,16 +27,16 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.2: 8/40 solved.
 | 7 |  [*M22*] | math-medium | - | - |
 | [8](08.md) |  [*HM20*] | hm-medium | verified | 2m23s |
 | [9](09.md) |  [*20*] | medium | solved | 7m54s |
-| 10 | &#9654; [*21*] | medium | - | - |
+| [10](10.md) | &#9654; [*21*] | medium | solved | 11m22s |
 | 11 |  [*22*] | medium | - | - |
 | 12 | &#9654; [*M22*] | math-medium | - | - |
-| 13 |  [*M25*] | math-medium | - | - |
+| [13](13.md) |  [*M25*] | math-medium | solved | 10m01s |
 | 14 |  [*M35*] | math-hard | - | - |
-| 15 | &#9654; [*M27*] | math-hard | - | - |
-| 16 |  [*M30*] | math-hard | - | - |
-| 17 |  [*M23*] | math-medium | - | - |
+| [15](15.md) | &#9654; [*M27*] | math-hard | solved | 2m38s |
+| [16](16.md) |  [*M30*] | math-hard | solved | 2m45s |
+| [17](17.md) |  [*M23*] | math-medium | verified | 2m12s |
 | 18 | &#9654; [*M25*] | math-medium | - | - |
-| 19 |  [*M20*] | math-medium | - | - |
+| [19](19.md) |  [*M20*] | math-medium | verified | 1m08s |
 | 20 |  [*HM33*] | hm-hard | - | - |
 | 21 |  [*HM33*] | hm-hard | - | - |
 | 22 | &#9654; [*M24*] | math-medium | - | - |
