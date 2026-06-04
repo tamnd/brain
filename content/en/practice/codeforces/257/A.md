@@ -1,7 +1,7 @@
 ---
 title: "CF 257A - Sockets"
-description: "Vasya has a set of electrical devices and a limited number of wall sockets in his flat. Additionally, he owns multiple supply-line filters, each of which provides extra sockets but occupies one itself when plugged in."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have k wall sockets available in the apartment. There are m electrical devices that eventually need power. We also own n power strips, where the i-th strip provides a[i] sockets. A power strip is not free to use."
+date: "2026-06-04T17:05:10+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 257
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 159 (Div. 2)"
 rating: 1100
 weight: 257
-solve_time_s: 70
+solve_time_s: 130
 verified: true
 draft: false
 ---
@@ -18,50 +18,103 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** greedy, implementation, sortings  
-**Solve time:** 1m 10s  
+**Solve time:** 2m 10s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Vasya has a set of electrical devices and a limited number of wall sockets in his flat. Additionally, he owns multiple supply-line filters, each of which provides extra sockets but occupies one itself when plugged in. The task is to determine the minimum number of supply-line filters Vasya needs to plug in so that every device can be connected to electricity, either directly into the wall sockets or through one or more supply-line filters. If it is impossible to plug in all devices even after using all filters, the answer should be -1.
+We have `k` wall sockets available in the apartment. There are `m` electrical devices that eventually need power. We also own `n` power strips, where the `i`-th strip provides `a[i]` sockets.
 
-The input gives three integers: the number of supply-line filters `n`, the number of devices `m`, and the number of wall sockets `k`. Then it provides an array `a` of length `n`, where each element represents the number of sockets on a filter. Each device or filter occupies one socket, so using a filter with `x` sockets effectively adds `x - 1` extra sockets to the total.
+A power strip is not free to use. To activate it, we must plug it into some existing powered socket. That consumes one socket and creates `a[i]` new sockets. The net gain from using this strip is:
 
-Constraints are small: all values are at most 50. This means we can use algorithms with quadratic or even cubic time without performance concerns. A naive brute-force enumeration of all subsets of filters is possible because `2^50` is too large, but a greedy approach works perfectly due to the nature of the problem.
+`a[i] - 1`
 
-Edge cases arise when the number of devices is already less than or equal to the available wall sockets, in which case no filters are needed. Another tricky case is when the sum of additional sockets from all filters is still insufficient to reach the required number of devices, which should return -1.
+because one socket is spent to plug the strip itself.
 
-For example, if `n = 2`, `m = 5`, `k = 2`, and the filters have sockets `[2, 2]`, each filter gives only 1 extra socket, totaling 4 sockets (2 wall + 2 extra from filters), which is insufficient for 5 devices, so the output should be -1.
+The task is to determine the minimum number of power strips that must be used so that we end up with enough powered sockets for all `m` devices. If even using every available strip is insufficient, we must output `-1`.
+
+The constraints are very small. There are at most 50 power strips, and each strip has at most 50 sockets. Even exponential algorithms would not be catastrophic at this scale, but the problem has a much simpler greedy structure that leads to an extremely short solution.
+
+A subtle point is that a power strip with one socket does not increase capacity at all. Plugging such a strip consumes one socket and gives one back, so the net gain is zero.
+
+Another easy mistake is forgetting that the initial `k` sockets already count toward the sockets available for devices. Consider:
+
+```
+1 3 3
+10
+```
+
+The correct answer is `0` because the three existing sockets already power all three devices. A solution that always tries to use at least one strip would be wrong.
+
+A second edge case occurs when even all strips combined are insufficient:
+
+```
+2 10 1
+2 2
+```
+
+Starting with one socket, each strip contributes a net gain of only one. The maximum capacity becomes three sockets, far below ten devices. The correct answer is `-1`.
+
+A third case involves strips with only one socket:
+
+```
+3 4 1
+1 1 10
+```
+
+The first two strips contribute nothing. The only useful strip is the last one. The correct answer is `1`. Treating every strip as contributing its socket count would overestimate the available capacity.
 
 ## Approaches
 
-The brute-force approach would enumerate all possible subsets of filters and compute the total number of sockets for each subset, then select the minimal subset that allows all devices to be plugged in. While correct, this approach would require checking up to `2^n` combinations, which is feasible for `n ≤ 20` but far too slow for `n = 50`.
+A brute-force approach would try every subset of power strips. For each subset, we could check whether those strips can provide enough sockets and keep the smallest valid subset size.
 
-The key observation is that every filter adds `a[i] - 1` extra sockets after occupying one itself. To maximize the gain with minimal filters, it makes sense to use the filters with the largest number of sockets first. This turns the problem into a simple greedy algorithm: sort the filters by `a[i]` in descending order, plug in the largest filters sequentially, and track how many devices can be connected after each filter. Stop as soon as the total sockets reach or exceed the number of devices. If all filters are used and the total is still insufficient, return -1.
+This works because `n` is only 50 in the real problem statement, but the number of subsets is `2^50`, which is roughly `1.1 × 10^15`. That is completely infeasible.
 
-The greedy approach works because the problem is linear in how extra sockets accumulate. There are no dependencies or penalties for choosing one filter over another beyond its immediate socket contribution. Sorting and sequentially taking the largest yields the minimal set necessary.
+The key observation is that a power strip's only relevant property is its net contribution, `a[i] - 1`.
+
+Suppose we currently have some number of powered sockets available. If we decide to use another strip, choosing a strip with a larger net gain can never be worse than choosing one with a smaller net gain. Both consume exactly one socket to connect, but the larger strip returns more sockets afterward.
+
+This means that whenever we need additional capacity, we should always take the strip with the largest number of sockets first. After sorting the strips in descending order, we repeatedly add them until the total capacity reaches at least `m`.
+
+The greedy choice is optimal because every chosen strip costs exactly one unit in the answer. If we want to reach the target using as few strips as possible, we should maximize the capacity gained by each chosen strip.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n * n) | O(n) | Too slow for n = 50 |
-| Optimal (Greedy) | O(n log n) | O(n) | Accepted |
+| Brute Force | O(2^n · n) | O(n) | Too slow |
+| Optimal Greedy | O(n log n) | O(1) extra | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integers `n`, `m`, `k` and the array `a` of filter sockets.
-2. Check if the available wall sockets `k` are already enough to plug all devices. If `k >= m`, print 0 and return.
-3. Sort the array `a` in descending order. This ensures that the largest filters, which contribute the most additional sockets, are considered first.
-4. Initialize a variable `extra_sockets` to 0 to track the number of sockets provided by filters beyond the one they occupy.
-5. Initialize a counter `filters_used` to 0 to track the number of filters plugged in.
-6. Iterate through the sorted array `a`. For each filter:
+1. Read `n`, `m`, and `k`.
+2. If `k >= m`, output `0`.
 
-- Increment `filters_used` by 1.
-- Add `a[i] - 1` to `extra_sockets`.
-- If `extra_sockets + k` reaches or exceeds `m`, print `filters_used` and return.
-7. If the loop finishes and `extra_sockets + k` is still less than `m`, print -1.
+The existing wall sockets already power all devices, so no power strip is needed.
+3. Sort all power strips in descending order of their socket counts.
+4. Let `available = k`.
 
-Why it works: the invariant is that at every step, the number of additional devices we can plug in is maximized by always picking the filter with the largest number of sockets remaining. Because each filter’s contribution is independent, no subset of filters with smaller sockets can achieve the same or better result with fewer filters. Sorting ensures that the minimal number of filters is selected.
+This represents the total number of powered sockets currently available for devices and future strip connections.
+5. Traverse the sorted strips from largest to smallest.
+6. For each strip with `a` sockets, update:
+
+```
+available += a - 1
+```
+
+One socket is consumed to plug in the strip, and `a` new sockets appear.
+7. Count how many strips have been used.
+8. After each addition, check whether `available >= m`.
+
+As soon as this becomes true, output the number of strips used.
+9. If all strips have been processed and `available < m`, output `-1`.
+
+### Why it works
+
+Each used power strip increases capacity by exactly `a[i] - 1`. Every strip contributes to the answer with the same cost, namely one additional strip used.
+
+To minimize the number of strips, we want the largest possible capacity increase from every chosen strip. If a solution uses a strip with gain `x` while a larger unused gain `y > x` exists, replacing `x` with `y` cannot decrease the total capacity and may increase it. Repeatedly applying this exchange argument transforms any optimal solution into one that uses the largest gains first.
+
+The greedy algorithm processes strips in exactly that order, so the first time it reaches capacity `m`, it has used the minimum possible number of strips.
 
 ## Python Solution
 
@@ -69,107 +122,202 @@ Why it works: the invariant is that at every step, the number of additional devi
 import sys
 input = sys.stdin.readline
 
-n, m, k = map(int, input().split())
-a = list(map(int, input().split()))
+def solve():
+    n, m, k = map(int, input().split())
+    a = list(map(int, input().split()))
 
-if k >= m:
-    print(0)
-    sys.exit()
+    if k >= m:
+        print(0)
+        return
 
-a.sort(reverse=True)
+    a.sort(reverse=True)
 
-extra_sockets = 0
-filters_used = 0
+    available = k
 
-for sockets in a:
-    filters_used += 1
-    extra_sockets += sockets - 1
-    if extra_sockets + k >= m:
-        print(filters_used)
-        break
-else:
+    for i, sockets in enumerate(a, 1):
+        available += sockets - 1
+        if available >= m:
+            print(i)
+            return
+
     print(-1)
+
+solve()
 ```
 
-We first check if wall sockets alone suffice, which saves unnecessary computation. Sorting in reverse order ensures that we always pick the filter that contributes the most extra sockets next. The `for` loop tracks the accumulation of extra sockets and immediately returns the minimal number of filters needed once we reach the target.
+The first check handles the case where the existing wall sockets are already sufficient.
+
+The sorting step is the heart of the greedy strategy. Larger power strips provide larger net gains, so they must be considered first.
+
+The variable `available` tracks the current total powered socket capacity. When a strip with `sockets` outlets is connected, one socket is consumed and `sockets` are created, giving a net increase of `sockets - 1`.
+
+The loop uses `enumerate(..., 1)` so that the loop index directly equals the number of strips used so far. The first time the capacity reaches at least `m`, that count is the answer.
+
+A common implementation mistake is adding `sockets` instead of `sockets - 1`. Doing so forgets the socket needed to plug in the strip and produces capacities that are too large.
 
 ## Worked Examples
 
-**Sample 1**
+### Sample 1
 
-Input: `3 5 3` with filters `[3, 1, 2]`
+Input:
 
-| Step | Wall Sockets k | Extra Sockets | Filters Used | Total Available Sockets |
+```
+3 5 3
+3 1 2
+```
+
+After sorting:
+
+```
+[3, 2, 1]
+```
+
+| Step | Strip Used | Available Before | Net Gain | Available After |
 | --- | --- | --- | --- | --- |
-| Initial | 3 | 0 | 0 | 3 |
-| First filter (3) | 3 | 2 | 1 | 5 |
+| Start | None | 3 | - | 3 |
+| 1 | 3 | 3 | 2 | 5 |
 
-The total sockets reach 5, which matches the number of devices, so 1 filter is sufficient.
+At this point `available = 5`, which matches `m = 5`. The answer is `1`.
 
-**Sample 2**
+This example shows that a single large strip can be enough because its net gain is what matters, not the raw socket count.
 
-Input: `4 7 2` with filters `[3, 1, 4, 2]`
+### Sample 2
 
-Sorted filters: `[4, 3, 2, 1]`
+Consider:
 
-| Step | Wall Sockets k | Extra Sockets | Filters Used | Total Available Sockets |
+```
+4 7 1
+1 3 1 5
+```
+
+After sorting:
+
+```
+[5, 3, 1, 1]
+```
+
+| Step | Strip Used | Available Before | Net Gain | Available After |
 | --- | --- | --- | --- | --- |
-| Initial | 2 | 0 | 0 | 2 |
-| First filter (4) | 2 | 3 | 1 | 5 |
-| Second filter (3) | 2 | 5 | 2 | 7 |
+| Start | None | 1 | - | 1 |
+| 1 | 5 | 1 | 4 | 5 |
+| 2 | 3 | 5 | 2 | 7 |
 
-Total sockets reach 7, matching the number of devices, so 2 filters are needed.
+After two strips, the capacity reaches seven, so the answer is `2`.
+
+This trace illustrates why choosing the largest strips first is optimal. Using either one-socket strip earlier would waste a step without increasing capacity.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting the array dominates the computation. Iteration is O(n) but negligible for n ≤ 50. |
-| Space | O(n) | We store the array of filter sockets. Other variables are O(1). |
+| Time | O(n log n) | Dominated by sorting the power strips |
+| Space | O(1) extra | Aside from the input array and sort internals |
 
-Given the small constraints (n, m, k ≤ 50), this algorithm runs in well under 2 seconds.
+With `n ≤ 50`, the running time is tiny. Even sorting is effectively instantaneous, and the solution comfortably fits within the time and memory limits.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+
+    def input():
+        return sys.stdin.readline()
+
     n, m, k = map(int, input().split())
     a = list(map(int, input().split()))
+
     if k >= m:
         return "0"
+
     a.sort(reverse=True)
-    extra_sockets = 0
-    filters_used = 0
-    for sockets in a:
-        filters_used += 1
-        extra_sockets += sockets - 1
-        if extra_sockets + k >= m:
-            return str(filters_used)
+
+    available = k
+
+    for i, sockets in enumerate(a, 1):
+        available += sockets - 1
+        if available >= m:
+            return str(i)
+
     return "-1"
 
-# Provided samples
+# sample
 assert run("3 5 3\n3 1 2\n") == "1", "sample 1"
-assert run("4 7 2\n3 1 4 2\n") == "2", "sample 2"
 
-# Custom test cases
-assert run("2 1 1\n1 1\n") == "0", "no filters needed"
-assert run("5 10 3\n1 1 1 1 1\n") == "-1", "not enough sockets"
-assert run("3 5 1\n5 2 2\n") == "1", "largest filter first"
-assert run("4 6 2\n2 2 2 2\n") == "2", "multiple small filters needed"
-assert run("1 50 50\n50\n") == "0", "exact match with wall sockets"
+# minimum size
+assert run("1 1 1\n1\n") == "0", "already enough sockets"
+
+# impossible case
+assert run("2 10 1\n2 2\n") == "-1", "cannot reach target"
+
+# all equal values
+assert run("4 8 2\n3 3 3 3\n") == "3", "equal strips"
+
+# single useful strip
+assert run("3 4 1\n1 1 10\n") == "1", "ignore zero-gain strips"
+
+# boundary where exact capacity is reached
+assert run("2 5 2\n3 2\n") == "2", "exactly reaches target"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 1 1\n1 1 | 0 | No filters needed because wall sockets suffice |
-| 5 10 3\n1 1 1 1 1 | -1 | Even using all filters, not enough sockets |
-| 3 5 1\n5 2 2 | 1 | Largest filter provides enough extra sockets |
-| 4 6 2\n2 2 2 2 | 2 | Multiple small filters accumulate to reach target |
-| 1 50 50\n50 | 0 | Exact wall sockets match devices, no filters needed |
+| `1 1 1 / 1` | `0` | No strip needed |
+| `2 10 1 / 2 2` | `-1` | Impossible configuration |
+| `4 8 2 / 3 3 3 3` | `3` | Repeated equal gains |
+| `3 4 1 / 1 1 10` | `1` | Zero-gain strips handled correctly |
+| `2 5 2 / 3 2` | `2` | Exact boundary reach |
 
 ## Edge Cases
 
-If wall sockets alone cover all devices, the algorithm immediately returns 0. For example, `n = 3, m = 2
+Consider:
+
+```
+1 3 3
+10
+```
+
+The algorithm immediately checks `k >= m`. Since `3 >= 3`, it outputs `0`. No sorting or greedy selection is needed. This avoids incorrectly using a strip when the existing sockets are already enough.
+
+Consider:
+
+```
+2 10 1
+2 2
+```
+
+After sorting, the strips remain `[2, 2]`.
+
+The progression is:
+
+```
+available = 1
+available = 2
+available = 3
+```
+
+All strips are exhausted while capacity is still below ten. The algorithm outputs `-1`, correctly detecting impossibility.
+
+Consider:
+
+```
+3 4 1
+1 1 10
+```
+
+After sorting:
+
+```
+[10, 1, 1]
+```
+
+The first strip adds `10 - 1 = 9`, so capacity becomes:
+
+```
+1 + 9 = 10
+```
+
+The target is already reached, and the answer is `1`. The one-socket strips never need to be used. This demonstrates why the greedy order matters and why the gain must be computed as `a[i] - 1` rather than `a[i]`.

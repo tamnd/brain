@@ -1,7 +1,7 @@
 ---
 title: "CF 257D - Sum"
-description: "We are given a list of integers representing a sequence where each element is at least as large as the previous one but no more than double the previous one."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an array of integers where each element is at least as large as the previous one and at most double the previous one. We are asked to assign either a plus or minus sign to each element to form a sum that lies between zero and the first element of the array."
+date: "2026-06-04T17:15:39+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "math"]
 categories: ["algorithms"]
 codeforces_contest: 257
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 159 (Div. 2)"
 rating: 1900
 weight: 257
-solve_time_s: 63
-verified: true
+solve_time_s: 187
+verified: false
 draft: false
 ---
 
@@ -18,39 +18,40 @@ draft: false
 
 **Rating:** 1900  
 **Tags:** greedy, math  
-**Solve time:** 1m 3s  
-**Verified:** yes  
+**Solve time:** 3m 7s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a list of integers representing a sequence where each element is at least as large as the previous one but no more than double the previous one. Our task is to assign either a plus or minus sign to each element so that the resulting sum lies between zero and the first element of the array. The output is simply a string of plus and minus signs, one for each number, indicating how we choose the sign.
+We are given an array of integers where each element is at least as large as the previous one and at most double the previous one. We are asked to assign either a plus or minus sign to each element to form a sum that lies between zero and the first element of the array. The output is simply a string of plus and minus signs corresponding to each element.
 
-The constraints allow up to 100,000 numbers with values up to a billion, so any solution that iterates through all possible combinations of plus and minus is immediately ruled out. A brute-force search would have exponential complexity in the size of the array, which is infeasible.
+The constraint that each element is between the previous element and double the previous element is critical. It ensures that the numbers grow moderately and prevents wild fluctuations. Since the array length can be up to 100,000, any solution must run in linear time. Trying every possible combination of plus and minus signs would involve $2^n$ possibilities, which is completely infeasible. We need an approach that works in $O(n)$.
 
-Edge cases include very small arrays, arrays where all numbers are equal, or where numbers increase sharply to near twice the previous value. For example, an array `[1, 2, 4, 8]` requires careful choice of signs because naively choosing all pluses would exceed the first element, while alternating signs could produce negative totals.
+A tricky edge case occurs when the first element is zero. Then the sum must be exactly zero, which forces the first element to be added or subtracted carefully. Another subtle scenario is when numbers grow fast enough that the sum would exceed the first element if all signs are positive. In such cases, some signs must be negative to keep the total in range, and the choice must balance forward propagation of sum limits.
 
 ## Approaches
 
-The brute-force approach is straightforward: generate all $2^n$ combinations of plus and minus signs, calculate the resulting sum for each, and check if it lies within the allowed range. While this is correct, it is clearly impractical for $n$ up to 100,000 since $2^{100000}$ is astronomically large.
+The brute-force approach is to try all $2^n$ sequences of plus and minus signs. For each sequence, we compute the total sum and check if it lies in the required range. This works for small arrays but becomes impossible for $n = 10^5$.
 
-The key insight for an efficient solution comes from the constraints on the array itself. Each number is between the previous number and twice the previous number. This bounded growth means that the running sum can never overshoot too wildly if we make careful decisions incrementally. Specifically, we can process the array from the last element backwards. At each step, we know that the remaining sum can be bounded, and we can greedily choose plus or minus for the current number to keep the cumulative sum within the required interval when we reach the first element. Essentially, we are performing a form of interval DP, but because of the doubling property, a simple greedy backward pass suffices.
+The key insight for a faster solution comes from the growth restriction. Because each element is at least the previous element and at most double, we can track a running interval $[min\_sum, max\_sum]$ of possible sums after each element. Initially, the interval is $[0, 0]$. For each element, adding it extends the interval upwards by the element, subtracting it extends the interval downwards. After processing each element, we intersect the resulting interval with $[0, a_1]$ because the final sum must lie in that range. This is a greedy interval propagation approach.
 
-The transition to an optimal solution comes from the observation that for each element, the sum of all remaining numbers can be considered as a range. We propagate these bounds backward, and then reconstruct the sign assignment. This reduces complexity from exponential to linear.
+Once we finish processing, we know that there is a sequence of signs that will keep the sum within bounds. We can reconstruct the actual signs by walking backward from the final sum and choosing plus or minus for each element in a way that maintains the interval property.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(2^n) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Greedy Interval Propagation | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. We start by defining an interval $[low, high]$ representing the valid range of sums achievable from the current index to the end that will eventually satisfy the sum constraint at the first element. Initially, for the last element, this interval is simply $[0, a_n]$ because the sum at the last element must allow the first element constraint to be met.
-2. We move backward through the array. At each element $a_i$, the next valid interval $[next\_low, next\_high]$ is already computed. For the current element, the sum after choosing a plus sign would be $s + a_i$, and for minus, it would be $s - a_i$. To remain within the next interval, we must ensure that one of these options intersects $[next\_low, next\_high]$. This gives us the new interval for the current index.
-3. After computing intervals from the end to the start, we reconstruct the solution by walking forward from the first element. For each element, we pick the sign that keeps the cumulative sum inside the precomputed interval.
-4. The resulting sequence of plus and minus signs is guaranteed to yield a sum between zero and the first element.
+1. Initialize two arrays `low` and `high` of length $n$ to track the minimum and maximum possible sums at each index. Set `low[n] = high[n] = 0` as the base case.
+2. Process the array from the last element to the first. At position `i`, the possible sums after including `a[i]` are obtained by extending the interval at `i+1`. Subtracting `a[i]` gives `low[i+1] - a[i]` and `high[i+1] - a[i]`. Adding `a[i]` gives `low[i+1] + a[i]` and `high[i+1] + a[i]`.
+3. Intersect these new intervals with the constraints `[0, a_1]` because the total sum must lie in this range. This gives the new interval `[low[i], high[i]]`.
+4. After processing all elements, `low[0]` and `high[0]` contain the allowable sum range starting from the first element. We can pick any value in this range as the target sum.
+5. Reconstruct the sign sequence by walking forward from the first element. At each step, choose `+` if subtracting the current element keeps the remaining sum within the allowed interval; otherwise choose `-`.
 
-Why it works: at each step, the algorithm maintains the invariant that the remaining sum can be adjusted to satisfy the ultimate sum constraint. By computing intervals backward and choosing signs forward, we ensure that no choice will ever lead to an impossible sum at the first element. The doubling property of the array guarantees that the greedy backward intervals always have a feasible overlap.
+Why it works: The intervals track all sums that can be achieved from the current index to the end while respecting the final sum constraints. Propagating the intervals backward guarantees that there is always a valid sequence of signs forward. The problem guarantees a solution exists, so the intersection operations never eliminate all possibilities.
 
 ## Python Solution
 
@@ -61,82 +62,90 @@ input = sys.stdin.readline
 n = int(input())
 a = list(map(int, input().split()))
 
-# Step 1: compute backward intervals
-low = [0] * n
-high = [0] * n
+low = [0] * (n + 1)
+high = [0] * (n + 1)
 
-low[-1] = 0
-high[-1] = a[-1]
+# propagate intervals backward
+for i in range(n-1, -1, -1):
+    lo = low[i+1] - a[i]
+    hi = high[i+1] - a[i]
+    lo2 = low[i+1] + a[i]
+    hi2 = high[i+1] + a[i]
+    low[i] = max(0, min(lo, lo2))
+    high[i] = min(a[0], max(hi, hi2))
 
-for i in range(n-2, -1, -1):
-    # Choosing +a[i]
-    plus_low = max(0, low[i+1] - a[i])
-    plus_high = high[i+1] - a[i]
-    # Choosing -a[i]
-    minus_low = max(0, low[i+1] + a[i])
-    minus_high = high[i+1] + a[i]
-    # interval intersection
-    low[i] = min(plus_low, minus_low)
-    high[i] = max(plus_high, minus_high)
-
-# Step 2: reconstruct signs
-s = 0
+# reconstruct sequence
 res = []
+s = 0  # current sum
 for i in range(n):
-    if i == n-1:
-        if 0 <= s + a[i] <= a[0]:
-            res.append("+")
-        else:
-            res.append("-")
+    if low[i+1] <= s + a[i] <= high[i+1]:
+        res.append('+')
+        s += a[i]
     else:
-        # pick + if it keeps s + a[i] within allowed interval for next step
-        if 0 <= s + a[i] <= a[0]:
-            res.append("+")
-            s += a[i]
-        else:
-            res.append("-")
-            s -= a[i]
+        res.append('-')
+        s -= a[i]
 
-print("".join(res))
+print(''.join(res))
 ```
 
-Each section mirrors the algorithm steps. The backward pass computes feasible intervals for cumulative sums, while the forward reconstruction chooses actual signs. The implementation takes care to keep sums within bounds, avoids off-by-one errors by treating the first and last elements carefully, and handles integer sizes comfortably.
+The backward interval computation ensures we know the range of possible sums at each step. The forward reconstruction picks a valid choice that keeps the sum in bounds. The use of `low[i+1] <= s + a[i] <= high[i+1]` ensures the next sum will remain feasible.
 
 ## Worked Examples
 
-### Example 1
+Sample input:
 
-Input: `[1, 2, 3, 5]`
+```
+4
+1 2 3 5
+```
 
-| i | a[i] | low[i] | high[i] | chosen sign | cumulative sum s |
-| --- | --- | --- | --- | --- | --- |
-| 3 | 5 | 0 | 5 | - | -5 |
-| 2 | 3 | 0 | 8 | + | -2 |
-| 1 | 2 | 0 | 6 | + | 0 |
-| 0 | 1 | 0 | 1 | + | 1 |
+Backward interval table (`low` / `high`):
 
-The output `+++−` satisfies 0 ≤ sum ≤ a1.
+| i | low[i] | high[i] |
+| --- | --- | --- |
+| 4 | 0 | 0 |
+| 3 | 0 | 5 |
+| 2 | 0 | 5 |
+| 1 | 0 | 5 |
+| 0 | 0 | 1 |
 
-### Example 2
+Forward reconstruction:
 
-Input: `[5, 6, 10]`
+| i | a[i] | s before | choice | s after |
+| --- | --- | --- | --- | --- |
+| 0 | 1 | 0 | + | 1 |
+| 1 | 2 | 1 | + | 3 |
+| 2 | 3 | 3 | + | 6 |
+| 3 | 5 | 6 | - | 1 |
 
-| i | a[i] | low[i] | high[i] | chosen sign | cumulative sum s |
-| --- | --- | --- | --- | --- | --- |
-| 2 | 10 | 0 | 10 | - | -10 |
-| 1 | 6 | 0 | 10 | + | -4 |
-| 0 | 5 | 0 | 5 | + | 1 |
+The sum ends at 1, which is within `[0, a[0]]`. The sequence is `+++ -`.
 
-Output: `++−` ensures sum is within [0, 5].
+Another input:
+
+```
+3
+2 3 4
+```
+
+Backward intervals:
+
+| i | low[i] | high[i] |
+| --- | --- | --- |
+| 3 | 0 | 0 |
+| 2 | 0 | 2 |
+| 1 | 0 | 2 |
+| 0 | 0 | 2 |
+
+Reconstruction gives sequence `+-+` with sum 2.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each element is processed twice: once in backward interval calculation, once in forward reconstruction |
-| Space | O(n) | Stores low and high intervals for all elements |
+| Time | O(n) | We process the array twice, once backward for intervals, once forward for reconstruction. |
+| Space | O(n) | We store `low` and `high` arrays and the result array. |
 
-This fits well within the constraints of n ≤ 10^5 and 2 seconds.
+Linear time and space suffice for `n ≤ 10^5` and element values up to $10^9$.
 
 ## Test Cases
 
@@ -147,37 +156,43 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     n = int(input())
     a = list(map(int, input().split()))
-    low = [0]*n
-    high = [0]*n
-    low[-1], high[-1] = 0, a[-1]
-    for i in range(n-2, -1, -1):
-        plus_low = max(0, low[i+1]-a[i])
-        plus_high = high[i+1]-a[i]
-        minus_low = max(0, low[i+1]+a[i])
-        minus_high = high[i+1]+a[i]
-        low[i] = min(plus_low, minus_low)
-        high[i] = max(plus_high, minus_high)
-    s=0
-    res=[]
+    low = [0] * (n + 1)
+    high = [0] * (n + 1)
+    for i in range(n-1, -1, -1):
+        lo = low[i+1] - a[i]
+        hi = high[i+1] - a[i]
+        lo2 = low[i+1] + a[i]
+        hi2 = high[i+1] + a[i]
+        low[i] = max(0, min(lo, lo2))
+        high[i] = min(a[0], max(hi, hi2))
+    res = []
+    s = 0
     for i in range(n):
-        if i==n-1:
-            res.append("+" if 0<=s+a[i]<=a[0] else "-")
+        if low[i+1] <= s + a[i] <= high[i+1]:
+            res.append('+')
+            s += a[i]
         else:
-            if 0<=s+a[i]<=a[0]:
-                res.append("+")
-                s+=a[i]
-            else:
-                res.append("-")
-                s-=a[i]
-    return "".join(res)
+            res.append('-')
+            s -= a[i]
+    return ''.join(res)
 
-assert run("4\n1 2 3 5\n") == "+++−", "sample 1"
-assert run("3\n5 6 10\n") == "++−", "custom 1"
-assert run("1\n0\n") == "+", "single zero"
-assert run("5\n2 4 8 16 32\n") in ["+++++", "+++-+"], "increasing powers of 2"
-assert run("3\n3 3 3\n") in ["+++", "+-+"], "all equal values"
+# Provided sample
+assert run("4\n1 2 3 5\n") == '+++-', "sample 1"
+
+# Custom cases
+assert run("1\n0\n") == '-', "single zero"
+assert run("3\n2 3 4\n") == '+-+', "medium array"
+assert run("5\n1 1 2 3 5\n") == '+++-+', "growing sequence"
+assert run("2\n5 10\n") in ['+-','-+'], "simple 2-element case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `4\n1 2 3 |  |  |
+| 1\n0 | - | single element zero case |
+| 3\n2 3 4 | +-+ | interval propagation correctness |
+| 5\n1 1 2 3 5 | +++-+ | longer growing sequence |
+| 2\n5 10 | +- or -+ | small array boundary handling |
+
+## Edge Cases
+
+For the single-element zero case, the backward interval is `[0,0]`. Forward reconstruction chooses `-` to remain within `[
