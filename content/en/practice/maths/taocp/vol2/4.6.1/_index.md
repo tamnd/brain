@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.1: Division of Polynomials"
-description: "Section 4.6.1 exercises: 17/26 solved."
+description: "Section 4.6.1 exercises: 23/26 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.1. Division of Polynomials
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.1: 17/26 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.1: 23/26 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -35,12 +35,12 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.1: 17/26 solved.
 | [15](15.md) |  [*M26*] | math-hard | verified | 4m |
 | [16](16.md) | &#9654; [*M22*] | math-medium | verified | 3m29s |
 | [17](17.md) |  [*M32*] | math-hard | verified | 3m17s |
-| 18 | &#9654; [**] |  | - | - |
-| 19 |  [*M39*] | math-project | - | - |
-| 20 |  [*M40*] | math-project | - | - |
-| 21 |  [*M25*] | math-medium | - | - |
-| 22 |  [*M23*] | math-medium | - | - |
-| 23 |  [*M22*] | math-medium | - | - |
+| [18](18.md) | &#9654; [**] |  | verified | 6m10s |
+| [19](19.md) |  [*M39*] | math-project | verified | 8m36s |
+| [20](20.md) |  [*M40*] | math-project | solved | 3m34s |
+| [21](21.md) |  [*M25*] | math-medium | verified | 5m24s |
+| [22](22.md) |  [*M23*] | math-medium | verified | 2m05s |
+| [23](23.md) |  [*M22*] | math-medium | solved | 4m57s |
 | 24 |  [*M27*] | math-hard | - | - |
 | 25 |  [*M47*] | math-research | - | - |
 | 26 | &#9654; [*M26*] | math-hard | - | - |
