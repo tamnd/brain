@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.3: Evaluation of Powers"
-description: "Section 4.6.3 exercises: 9/35 solved."
+description: "Section 4.6.3 exercises: 13/35 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.3. Evaluation of Powers
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.3: 9/35 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.3: 13/35 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -28,10 +28,10 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.3: 9/35 solved.
 | [8](08.md) |  [*M21*] | math-medium | verified | 3m43s |
 | 9 | &#9654; [*25*] | medium | - | - |
 | [10](10.md) |  [*10*] | simple | verified | 1m35s |
-| 11 | &#9654; [*M26*] | math-hard | - | - |
-| 12 |  [*M10*] | math-simple | - | - |
-| 13 |  [*M21*] | math-medium | - | - |
-| 14 |  [*M29*] | math-hard | - | - |
+| [11](11.md) | &#9654; [*M26*] | math-hard | solved | 7m21s |
+| [12](12.md) |  [*M10*] | math-simple | verified | 1m27s |
+| [13](13.md) |  [*M21*] | math-medium | verified | 1m57s |
+| [14](14.md) |  [*M29*] | math-hard | verified | 1m52s |
 | 15 |  [*M9*] | math-simple | - | - |
 | 16 |  [*HM15*] | hm-simple | - | - |
 | 17 |  [*M25*] | math-medium | - | - |
