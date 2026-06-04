@@ -1,7 +1,7 @@
 ---
 title: "CF 232D - Fence"
-description: "We have an array of fence heights. A query gives one contiguous segment of the fence, and we must count how many other segments match it. Two segments match if they have the same length, do not overlap, and their heights differ by the same constant at every position."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have an array of plank heights. A fence piece is simply a contiguous segment. For a query segment $[l,r]$, we must count how many other segments of the same length match it. Matching has three requirements. The two segments must have equal length. They must be disjoint."
+date: "2026-06-04T09:37:03+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "string-suffix-structures"]
 categories: ["algorithms"]
 codeforces_contest: 232
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 144 (Div. 1)"
 rating: 2900
 weight: 232
-solve_time_s: 141
+solve_time_s: 410
 verified: false
 draft: false
 ---
@@ -18,554 +18,507 @@ draft: false
 
 **Rating:** 2900  
 **Tags:** binary search, data structures, string suffix structures  
-**Solve time:** 2m 21s  
+**Solve time:** 6m 50s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an array of fence heights. A query gives one contiguous segment of the fence, and we must count how many other segments match it.
+We have an array of plank heights. A fence piece is simply a contiguous segment.
 
-Two segments match if they have the same length, do not overlap, and their heights differ by the same constant at every position. For example:
+For a query segment $[l,r]$, we must count how many other segments of the same length match it. Matching has three requirements.
 
-```
-[1 2 2 1]
-[100 101 101 100]
-```
+The two segments must have equal length.
 
-These match because every corresponding difference equals `99`.
+They must be disjoint.
 
-The key observation is that matching depends only on adjacent differences. If two segments differ by a constant shift, then all consecutive differences inside them are identical.
+If we align them position by position, the sum of corresponding heights must always be the same value. For a segment $[l,r]$ and another segment $[a,b]$, this means
 
-For a segment:
+$$h_{l+i}+h_{a+i}=h_l+h_a$$
 
-```
-h[l], h[l+1], ..., h[r]
-```
+for every valid offset $i$.
 
-define its difference sequence as:
+The first reaction is to look at heights directly, but the condition becomes much cleaner after taking differences.
 
-```
-h[l+1]-h[l], h[l+2]-h[l+1], ...
-```
+Let
 
-Two segments match exactly when their difference sequences are equal.
+$$d_i=h_i-h_{i+1}$$
 
-The fence has up to `10^5` planks and there are up to `10^5` queries. Any solution comparing segments directly is impossible. Even `O(length)` per query can become quadratic in the worst case. We need something close to linear or `O(n log n)` preprocessing with fast query answers.
+for $1\le i<n$.
+
+Suppose two segments have width $k$. The matching condition implies
+
+$$(h_{l+i}-h_{l+i+1})
+=
+-(h_{a+i}-h_{a+i+1})$$
+
+for every position.
+
+In other words, if
+
+$$d'_i=-d_i,$$
+
+then matching segments correspond exactly to equal substrings between the difference array $d$ and the negated difference array $d'$. This is the key transformation used by the official solution.
+
+The constraints are what force this transformation. Both $n$ and $q$ are up to $10^5$. Any algorithm that scans a segment per query immediately becomes too slow. Even $O(n)$ per query would require around $10^{10}$ operations. We need roughly $O((n+q)\log n)$.
 
 There are several easy-to-miss edge cases.
 
-A segment of length `1` has an empty difference sequence. Every single plank matches every other single plank as long as they are distinct positions.
-
-Example:
+Consider a segment of length one.
 
 ```
-n = 3
-h = [5 100 7]
+h = [5, 8, 1]
 query = [2,2]
 ```
 
-The answer is `2`, because positions `1` and `3` are both valid matching segments.
+There are no differences inside a single plank. Every other single plank automatically satisfies the shape condition. The only restriction is disjointness. The answer is $n-1$. A solution that only works on difference arrays must treat this case carefully because the corresponding difference substring has length zero.
 
-A careless implementation may return `0` because it tries to compare nonexistent differences.
-
-Another subtle case is overlap handling.
-
-Example:
+Consider complete overlap.
 
 ```
-h = [1 2 1 2]
+h = [1,2,1]
 query = [1,2]
 ```
 
-The pattern is `[+1]`. Segment `[3,4]` matches, but `[2,3]` does not because its difference is `-1`.
+The segment itself matches its own pattern, but matching segments are required to be disjoint. Counting all occurrences of the pattern and forgetting the overlap restriction produces an answer that is too large.
 
-Even if equal patterns appear many times, overlapping occurrences must not be counted.
-
-The hardest edge case is repeated patterns with dense overlaps.
-
-Example:
+Consider repeated patterns.
 
 ```
-h = [1 2 1 2 1]
-query = [1,3]
+h = [1,2,1,2,1]
+query = [1,2]
 ```
 
-The difference pattern is:
-
-```
-[+1, -1]
-```
-
-Occurrences appear at positions `1` and `3`, but these segments overlap at plank `3`, so the correct answer is `0`.
-
-A naive substring-frequency approach would incorrectly count both.
+The same pattern appears many times. Some occurrences overlap the query segment and must be excluded, while others are valid. The counting structure must support both pattern matching and geometric position restrictions.
 
 ## Approaches
 
-The brute force approach is straightforward. For each query segment, compute its difference sequence and compare it against every other segment of the same length.
+The brute force solution is straightforward.
 
-Suppose the query length is `k`. We would compare up to `n-k+1` candidate segments, and each comparison costs `O(k)`.
+For every query segment, enumerate every segment of the same length. Check whether the two segments are disjoint. Then compare corresponding positions and verify the matching condition.
 
-In the worst case:
+A single comparison costs $O(k)$, where $k$ is the segment length. There are $O(n)$ candidate segments. In the worst case a query costs $O(n^2)$, and with $10^5$ queries this is hopeless.
 
-```
-n = q = 100000
-k ≈ 50000
-```
+The crucial observation is that the matching condition is really a condition on consecutive differences.
 
-This becomes roughly `10^10` operations, far beyond the limit.
+For matching segments,
 
-The reason brute force works conceptually is that matching segments are exactly segments with equal difference arrays. The problem is only speed.
+$$h_{l+i}+h_{a+i}=C.$$
 
-The key insight is that the entire fence can be converted into one difference array:
+Subtract the equation for offset $i+1$:
 
-```
-d[i] = h[i+1] - h[i]
-```
+$$(h_{l+i}-h_{l+i+1})
+=
+-(h_{a+i}-h_{a+i+1}).$$
 
-Now every fence segment corresponds to a subarray in `d`.
+Using
 
-If two fence segments of length `k` match, then their corresponding difference subarrays of length `k-1` are identical.
+$$d_i=h_i-h_{i+1},
+\qquad
+d'_i=-d_i,$$
 
-So the problem becomes:
+the problem becomes:
 
-```
-For each substring of the difference array,
-count equal occurrences that are far enough apart.
-```
+Find occurrences of the substring
 
-This is now a classic suffix structure problem.
+$$d[l..r-1]$$
 
-We build a suffix array over the difference array. Equal substrings become contiguous intervals in suffix-array order. Using LCP information, we can find all occurrences of a query pattern.
+inside the array $d'$.
 
-The remaining challenge is overlap filtering.
+Now the problem looks like a classical string problem on integer alphabets.
 
-Suppose the original fence segment length is `k`. Then two occurrences starting at positions `a` and `b` are valid only if:
+The official solution builds a suffix array on
 
-```
-|a - b| >= k
-```
+$$d + [\text{separator}] + d'.$$
 
-Inside the suffix-array interval of equal substrings, we need to count starts sufficiently far from the query start.
+For a query segment of width $k=r-l+1$, we need all suffixes in $d'$ whose first $k-1$ difference values equal
 
-This can be handled offline with sorted occurrence positions.
+$$d[l..r-1].$$
+
+In a suffix array, all such suffixes form one contiguous interval. We can find that interval using LCP information and binary search.
+
+The remaining task is counting which occurrences correspond to fence segments that are disjoint from the query segment.
+
+This becomes a geometric counting problem on suffix-array ranks. Each query asks:
+
+How many suffixes from a suffix-array interval have starting positions outside a forbidden range?
+
+A persistent segment tree or wavelet-tree style structure lets us answer that in $O(\log n)$ after preprocessing.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(qn^2) | O(n) | Too slow |
-| Optimal | O(n log n + q log^2 n) | O(n) | Accepted |
+| Brute Force | $O(qn^2)$ worst case | $O(1)$ | Too slow |
+| Suffix Array + LCP + Persistent Counting | $O(n\log n + q\log n)$ | $O(n\log n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build the difference array:
+1. Build the difference array
 
-```
-d[i] = h[i+1] - h[i]
-```
+$$d_i=h_i-h_{i+1}.$$
 
-A fence segment of length `k` becomes a difference subarray of length `k-1`.
-2. Build a suffix array over `d`.
+Also build
 
-Every suffix represents a starting position in the difference array. Equal prefixes correspond to equal fence patterns.
-3. Build the LCP array and a sparse table for RMQ.
+$$d'_i=-d_i.$$
+2. Concatenate
 
-This lets us compute the longest common prefix between any two suffixes in `O(1)` time after preprocessing.
-4. For every query segment `[l,r]`, compute:
+$$T=d+[SEP]+d'.$$
 
-```
-len = r - l + 1
-pat = len - 1
-```
+The separator must be a value smaller than every compressed coordinate so that no match crosses the boundary.
+3. Coordinate-compress all values and build a suffix array on $T$.
+4. Build the LCP array and an RMQ structure so that the LCP of any two suffixes can be obtained in $O(1)$.
+5. For every position in the original difference array $d$, store its suffix-array rank.
+6. For a query $[l,r]$, let
 
-If `len == 1`, the answer is simply `n-1`, because every other single plank matches.
-5. Otherwise, locate the suffix corresponding to position `l` in the difference array.
+$$len=r-l.$$
 
-We need all suffixes sharing at least `pat` common prefix elements with it.
-6. Binary search left and right in suffix-array order.
+This is the length of the difference substring.
+7. If $len=0$, the query segment contains one plank. Every disjoint single-plank segment matches. The answer is $n-1$.
+8. Otherwise locate the suffix corresponding to position $l$ in $d$.
+9. Using binary search on suffix-array positions and LCP queries, find the maximal suffix-array interval $[L,R]$ containing that suffix such that every suffix in the interval shares at least $len$ difference values with it.
 
-Using LCP queries, find the maximal interval where every suffix shares at least `pat` values with the query suffix.
+These are exactly the occurrences of the required pattern in the concatenated structure.
+10. Among those suffixes, keep only suffixes that belong to the $d'$ half.
+11. Let such a suffix start at position $p$ inside $d'$. It corresponds to a fence segment
 
-Every suffix inside this interval represents an occurrence of the same pattern.
-7. Extract the original fence starting positions from this interval.
+$$[a,b]$$
 
-If a suffix starts at difference-array index `x`, then the corresponding fence segment starts at plank `x`.
-8. Count only non-overlapping occurrences.
+with
 
-A candidate start `x` is valid iff:
+$$a=p,\qquad b=p+len.$$
+12. The segment intersects the query iff
 
-```
-|x - l| >= len
-```
+$$a\le r
+\quad\text{and}\quad
+b\ge l.$$
 
-Use binary search on sorted start positions to count valid occurrences efficiently.
+Equivalently, valid occurrences satisfy
+
+$$b<l
+\quad\text{or}\quad
+a>r.$$
+13. Use the persistent counting structure to count positions inside the suffix-array interval whose start indices satisfy the allowed ranges.
+14. Output that count.
 
 ### Why it works
 
-The invariant is:
+The transformation to difference arrays is exact. Two segments satisfy the original height-sum condition if and only if every consecutive height difference in one segment equals the negated consecutive height difference in the other. That converts the geometric fence condition into substring equality between $d$ and $d'$.
 
-```
-Two fence segments match
-iff their difference sequences are equal.
-```
+A suffix array groups equal prefixes into contiguous intervals. The LCP condition guarantees that every suffix in the located interval contains the required difference pattern, and no suffix outside the interval does.
 
-Subtracting consecutive elements removes the unknown constant shift between segments. Equal difference sequences guarantee that all pairwise offsets are identical, which is exactly the matching condition.
-
-The suffix array groups equal prefixes together lexicographically. The LCP structure guarantees that the interval we extract contains exactly all occurrences of the query pattern.
-
-Finally, the overlap condition depends only on starting indices and segment length, so filtering by distance removes precisely the forbidden overlapping segments.
+The counting structure only filters occurrences by the disjointness requirement. Since every remaining occurrence corresponds to exactly one matching fence segment, the reported count is precisely the answer.
 
 ## Python Solution
 
 ```python
 import sys
-from bisect import bisect_left, bisect_right
 input = sys.stdin.readline
 
-def build_suffix_array(arr):
-    n = len(arr)
-    if n == 0:
-        return [], []
-
-    vals = {v: i for i, v in enumerate(sorted(set(arr)))}
-    rank = [vals[x] for x in arr]
-
-    sa = list(range(n))
-    k = 1
-
-    tmp = [0] * n
-
-    while True:
-        sa.sort(key=lambda x: (rank[x], rank[x + k] if x + k < n else -1))
-
-        tmp[sa[0]] = 0
-
-        for i in range(1, n):
-            a = sa[i - 1]
-            b = sa[i]
-
-            prev = (rank[a], rank[a + k] if a + k < n else -1)
-            cur = (rank[b], rank[b + k] if b + k < n else -1)
-
-            tmp[b] = tmp[a] + (prev != cur)
-
-        rank, tmp = tmp, rank
-
-        if rank[sa[-1]] == n - 1:
-            break
-
-        k <<= 1
-
-    return sa, rank
-
-def build_lcp(arr, sa, rank):
-    n = len(arr)
-    if n == 0:
-        return []
-
-    lcp = [0] * (n - 1)
-    k = 0
-
-    for i in range(n):
-        r = rank[i]
-
-        if r == n - 1:
-            k = 0
-            continue
-
-        j = sa[r + 1]
-
-        while i + k < n and j + k < n and arr[i + k] == arr[j + k]:
-            k += 1
-
-        lcp[r] = k
-
-        if k:
-            k -= 1
-
-    return lcp
-
-class SparseTable:
-    def __init__(self, arr):
-        n = len(arr)
-
-        self.n = n
-        self.log = [0] * (n + 1)
-
-        for i in range(2, n + 1):
-            self.log[i] = self.log[i // 2] + 1
-
-        self.st = [arr[:]]
+class SuffixArray:
+    def __init__(self, s):
+        n = len(s)
+        sa = list(range(n))
+        rank = s[:]
+        tmp = [0] * n
 
         k = 1
+        while True:
+            sa.sort(key=lambda x: (
+                rank[x],
+                rank[x + k] if x + k < n else -1
+            ))
 
-        while (1 << k) <= n:
-            prev = self.st[-1]
-            size = n - (1 << k) + 1
+            tmp[sa[0]] = 0
+            for i in range(1, n):
+                a, b = sa[i - 1], sa[i]
+                tmp[b] = tmp[a] + (
+                    (rank[a], rank[a + k] if a + k < n else -1) <
+                    (rank[b], rank[b + k] if b + k < n else -1)
+                )
 
-            cur = [0] * size
+            rank, tmp = tmp, rank
 
-            half = 1 << (k - 1)
+            if rank[sa[-1]] == n - 1:
+                break
+            k <<= 1
 
-            for i in range(size):
-                cur[i] = min(prev[i], prev[i + half])
+        self.sa = sa
+        self.rank = rank
 
-            self.st.append(cur)
-            k += 1
+        lcp = [0] * (n - 1)
+        h = 0
+        for i in range(n):
+            r = rank[i]
+            if r == 0:
+                continue
+            j = sa[r - 1]
+            while i + h < n and j + h < n and s[i + h] == s[j + h]:
+                h += 1
+            lcp[r - 1] = h
+            if h:
+                h -= 1
 
-    def query(self, l, r):
-        if l > r:
-            return 10**18
+        self.lcp = lcp
 
-        k = self.log[r - l + 1]
+        m = max(1, len(lcp))
+        lg = [0] * (m + 1)
+        for i in range(2, m + 1):
+            lg[i] = lg[i >> 1] + 1
 
+        st = [lcp[:]]
+        j = 1
+        while (1 << j) <= len(lcp):
+            prev = st[j - 1]
+            cur = [
+                min(prev[i], prev[i + (1 << (j - 1))])
+                for i in range(len(lcp) - (1 << j) + 1)
+            ]
+            st.append(cur)
+            j += 1
+
+        self.lg = lg
+        self.st = st
+
+    def get_lcp(self, i, j):
+        if i == j:
+            return 10 ** 9
+        ri = self.rank[i]
+        rj = self.rank[j]
+        if ri > rj:
+            ri, rj = rj, ri
+        l = rj - ri
+        k = self.lg[l]
         return min(
-            self.st[k][l],
-            self.st[k][r - (1 << k) + 1]
+            self.st[k][ri],
+            self.st[k][rj - (1 << k)]
         )
+
+class Node:
+    __slots__ = ("l", "r", "sum")
+
+    def __init__(self, l=None, r=None, s=0):
+        self.l = l
+        self.r = r
+        self.sum = s
+
+def build(lo, hi):
+    node = Node()
+    if lo != hi:
+        mid = (lo + hi) >> 1
+        node.l = build(lo, mid)
+        node.r = build(mid + 1, hi)
+    return node
+
+def update(prev, lo, hi, pos):
+    node = Node(prev.l, prev.r, prev.sum + 1)
+    if lo != hi:
+        mid = (lo + hi) >> 1
+        if pos <= mid:
+            node.l = update(prev.l, lo, mid, pos)
+        else:
+            node.r = update(prev.r, mid + 1, hi, pos)
+    return node
+
+def query(rt_r, rt_l, lo, hi, ql, qr):
+    if ql > hi or qr < lo or ql > qr:
+        return 0
+    if ql <= lo and hi <= qr:
+        return rt_r.sum - rt_l.sum
+    mid = (lo + hi) >> 1
+    return (
+        query(rt_r.l, rt_l.l, lo, mid, ql, qr) +
+        query(rt_r.r, rt_l.r, mid + 1, hi, ql, qr)
+    )
 
 def solve():
     n = int(input())
     h = list(map(int, input().split()))
 
-    q = int(input())
-
     if n == 1:
-        for _ in range(q):
-            input()
-            print(0)
+        q = int(input())
+        print("\n".join("0" for _ in range(q)))
         return
 
-    d = [h[i + 1] - h[i] for i in range(n - 1)]
+    d = [h[i] - h[i + 1] for i in range(n - 1)]
+    nd = [-x for x in d]
 
-    sa, rank = build_suffix_array(d)
-    lcp = build_lcp(d, sa, rank)
+    vals = sorted(set(d + nd))
+    comp = {v: i + 1 for i, v in enumerate(vals)}
 
-    st = SparseTable(lcp) if lcp else None
+    sep = 0
+    T = [comp[x] for x in d] + [sep] + [comp[x] for x in nd]
 
-    pos_in_sa = rank
+    sa = SuffixArray(T)
 
-    groups = {}
+    m = n - 1
+    offset = m + 1
 
-    def get_lcp(i, j):
-        if i == j:
-            return len(d) - i
+    roots = [build(1, m)]
+    for pos in sa.sa:
+        val = 0
+        if offset <= pos < offset + m:
+            val = pos - offset + 1
 
-        ri = pos_in_sa[i]
-        rj = pos_in_sa[j]
+        if val:
+            roots.append(update(roots[-1], 1, m, val))
+        else:
+            roots.append(roots[-1])
 
-        if ri > rj:
-            ri, rj = rj, ri
-
-        return st.query(ri, rj - 1)
-
-    for idx, start in enumerate(sa):
-        groups.setdefault(start, idx)
+    q = int(input())
+    ans = []
 
     for _ in range(q):
         l, r = map(int, input().split())
-        l -= 1
-        r -= 1
 
-        length = r - l + 1
-
-        if length == 1:
-            print(n - 1)
+        if l == r:
+            ans.append(str(n - 1))
             continue
 
-        pat = length - 1
+        pat_len = r - l
+        pos = l - 1
 
-        p = pos_in_sa[l]
+        rk = sa.rank[pos]
+        N = len(T)
 
-        low = 0
-        high = p
-
-        while low < high:
-            mid = (low + high) // 2
-
-            if get_lcp(sa[mid], l) >= pat:
-                high = mid
+        lo, hi = 0, rk
+        left = rk
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            ok = True
+            if mid < rk:
+                ok = sa.get_lcp(sa.sa[mid], sa.sa[rk]) >= pat_len
+            if ok:
+                left = mid
+                hi = mid - 1
             else:
-                low = mid + 1
+                lo = mid + 1
 
-        left = low
-
-        low = p
-        high = len(sa) - 1
-
-        while low < high:
-            mid = (low + high + 1) // 2
-
-            if get_lcp(sa[mid], l) >= pat:
-                low = mid
+        lo, hi = rk, N - 1
+        right = rk
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            ok = True
+            if mid > rk:
+                ok = sa.get_lcp(sa.sa[mid], sa.sa[rk]) >= pat_len
+            if ok:
+                right = mid
+                lo = mid + 1
             else:
-                high = mid - 1
+                hi = mid - 1
 
-        right = low
+        total = 0
 
-        starts = sorted(sa[i] for i in range(left, right + 1))
+        max_left_start = l - pat_len
+        if max_left_start >= 1:
+            total += query(
+                roots[right + 1],
+                roots[left],
+                1,
+                m,
+                1,
+                max_left_start
+            )
 
-        bad_left = bisect_left(starts, l - length + 1)
-        bad_right = bisect_right(starts, l + length - 1)
+        min_right_start = r + 1
+        if min_right_start <= m:
+            total += query(
+                roots[right + 1],
+                roots[left],
+                1,
+                m,
+                min_right_start,
+                m
+            )
 
-        total = len(starts)
-        bad = bad_right - bad_left
+        ans.append(str(total))
 
-        print(total - bad)
+    print("\n".join(ans))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The first part converts the fence into consecutive differences. This transformation is the entire core of the problem. Once differences are equal, the original heights can differ only by a constant.
-
-The suffix array is built using the standard doubling algorithm. Each iteration sorts suffixes by the first `2^k` elements. The implementation compresses values first because differences may be as large as `10^9`.
-
-The LCP construction uses Kasai's algorithm. This gives the longest common prefix between neighboring suffixes in linear time.
-
-The sparse table supports range minimum queries on the LCP array. To compute the LCP between arbitrary suffixes, we query the minimum LCP value between their suffix-array positions.
-
-For a query, we binary search outward from the query suffix inside suffix-array order. Every suffix with LCP at least `pat` belongs to the same pattern interval.
-
-The final subtle part is overlap removal. Suppose the query segment length is `len`. Any segment starting inside:
-
-```
-[l-len+1, l+len-1]
-```
-
-would overlap the query segment, so those starts are excluded with binary searches on sorted positions.
+The solution follows the exact structure of the official approach. The suffix array identifies all occurrences of the required difference pattern. The persistent segment tree stores starting positions from the $d'$ half ordered by suffix-array rank, allowing interval counting in logarithmic time. The most delicate part is converting between fence positions and difference-array positions. A fence segment of width $k$ corresponds to a difference substring of length $k-1$, which is why the query length inside the suffix structure is `r - l`, not `r - l + 1`.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+### Sample 1
 
 ```
-h = [1 2 2 1 100 99 99 100 100 100]
+h = [1,2,2,1,100,99,99,100,100,100]
 query = [1,4]
 ```
 
-Difference array:
+The difference array is:
 
 ```
-d = [1 0 -1 99 -1 0 1 0 0]
+d = [-1,0,1,-99,1,0,-1,0,0]
 ```
 
-Query pattern:
+The query corresponds to:
 
 ```
-[1 0 -1]
+[-1,0,1]
 ```
+
+Searching inside $d'$:
+
+```
+[1,0,-1,99,-1,0,1,0,0]
+```
+
+gives one valid occurrence.
 
 | Step | Value |
 | --- | --- |
-| Query length | 4 |
-| Pattern length | 3 |
-| Matching starts | 1, 5 |
-| Segment at 1 | [1 2 2 1] |
-| Segment at 5 | [100 99 99 100] |
-| Distance between starts | 4 |
-| Overlap? | No |
+| Query segment | [1,4] |
+| Difference length | 3 |
+| Pattern | [-1,0,1] |
+| Matching occurrence in d' | start = 5 |
+| Disjoint | yes |
 | Answer | 1 |
 
-The trace shows why equal difference sequences are sufficient. The actual heights are completely different, but all consecutive changes match.
+This example demonstrates the core reduction from fence matching to substring matching.
 
-### Example 2
-
-Input:
+### Custom Example
 
 ```
-h = [1 2 1 2 1]
-query = [1,3]
-```
-
-Difference array:
-
-```
-[1 -1 1 -1]
-```
-
-Pattern:
-
-```
-[1 -1]
+h = [5,5,5,5]
+query = [2,2]
 ```
 
 | Step | Value |
 | --- | --- |
-| Query length | 3 |
-| Candidate starts | 1, 3 |
-| Segment at 1 | [1 2 1] |
-| Segment at 3 | [1 2 1] |
-| Distance between starts | 2 |
-| Required distance | at least 3 |
-| Overlap? | Yes |
-| Answer | 0 |
+| Segment length | 1 |
+| Difference substring length | 0 |
+| All other single planks match | yes |
+| Disjoint positions | 1,3,4 |
+| Answer | 3 |
 
-This trace demonstrates the overlap filter. Pattern equality alone is not enough.
+This exercises the special length-one case. No difference values exist, so every disjoint single plank is a match.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n + q log^2 n) | suffix array construction plus binary searches per query |
-| Space | O(n) | suffix array, LCP, sparse table |
+| Time | $O(n\log n + q\log n)$ | suffix array construction plus logarithmic query processing |
+| Space | $O(n\log n)$ | persistent segment tree and suffix-array structures |
 
-With `n,q ≤ 100000`, this easily fits the limits. The preprocessing is dominated by suffix-array construction, and each query performs only logarithmic work.
+With $n,q \le 10^5$, this complexity comfortably fits the limits. The preprocessing is performed once, and each query requires only a few binary searches and persistent-tree range counts.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
-def solve():
-    input = sys.stdin.readline
-
-    n = int(input())
-    h = list(map(int, input().split()))
-    q = int(input())
-
-    for _ in range(q):
-        l, r = map(int, input().split())
-
-        ans = 0
-
-        for s in range(n - (r - l)):
-            e = s + (r - l)
-
-            if not (e < l - 1 or s > r - 1):
-                continue
-
-            ok = True
-
-            for i in range(r - l):
-                if h[s + i + 1] - h[s + i] != h[l + i] - h[l + i - 1]:
-                    ok = False
-                    break
-
-            if ok:
-                ans += 1
-
-        print(ans)
-
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
     out = io.StringIO()
+    backup = sys.stdout
     sys.stdout = out
-
     solve()
+    sys.stdout = backup
+    return out.getvalue().strip()
 
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out.getvalue()
-
-# sample 1
 assert run(
 """10
 1 2 2 1 100 99 99 100 100 100
@@ -577,120 +530,91 @@ assert run(
 9 10
 10 10
 """
-) == """1
-2
-2
-0
-2
-9
-"""
+) == "\n".join([
+"1",
+"2",
+"2",
+"0",
+"2",
+"9"
+]), "sample 1"
 
-# minimum size
 assert run(
 """1
-5
+7
 1
 1 1
 """
-) == """0
-"""
+) == "0", "minimum size"
 
-# all equal
 assert run(
-"""5
-7 7 7 7 7
+"""4
+5 5 5 5
+2
+1 1
+2 2
+"""
+) == "\n".join([
+"3",
+"3"
+]), "all equal"
+
+assert run(
+"""3
+1 2 3
 2
 1 2
-2 4
+2 3
 """
-) == """2
-0
-"""
+) == "\n".join([
+"0",
+"0"
+]), "overlapping only"
 
-# overlap trap
 assert run(
 """5
 1 2 1 2 1
 1
-1 3
+1 2
 """
-) == """0
-"""
-
-# single plank queries
-assert run(
-"""4
-1 5 9 13
-2
-1 1
-4 4
-"""
-) == """3
-3
-"""
+) == "1", "repeated pattern"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single plank fence | 0 | No non-overlapping segment exists |
-| All equal heights | Correct overlap handling | Equal patterns appear everywhere |
-| Alternating pattern | 0 | Overlapping identical segments are excluded |
-| Length-1 queries | n-1 | Empty difference sequences handled correctly |
+| Single plank | 0 | Minimum boundary |
+| All heights equal | 3, 3 | Length-one handling |
+| Increasing heights | 0, 0 | No matching segments |
+| Alternating pattern | 1 | Multiple occurrences and overlap filtering |
 
 ## Edge Cases
 
-Consider the smallest possible fence:
+Consider a length-one query.
 
 ```
-n = 1
-h = [5]
-query = [1,1]
+n = 4
+h = [5,7,9,11]
+query = [2,2]
 ```
 
-The segment has length `1`. There are no other segments in the fence, so the answer is `0`.
+The algorithm immediately enters the special branch `l == r`. Every other plank forms a valid matching segment because there are no internal differences to compare. The answer is $3$.
 
-The algorithm immediately detects `length == 1` and returns `n-1 = 0`.
-
-Now consider repeated equal patterns with overlap:
+Consider a pattern that occurs only in overlapping positions.
 
 ```
-h = [1 2 1 2 1]
-query = [1,3]
-```
-
-The difference array is:
-
-```
-[1 -1 1 -1]
-```
-
-Occurrences of `[1,-1]` start at positions `1` and `3`.
-
-The algorithm finds both through the suffix array interval. Then it checks overlap:
-
-```
-|3 - 1| = 2 < 3
-```
-
-So the second occurrence is removed.
-
-Another tricky case is all equal heights:
-
-```
-h = [7 7 7 7 7]
+h = [1,2,1]
 query = [1,2]
 ```
 
-Every difference equals `0`, so all length-2 segments share the same pattern.
+The required difference pattern appears once, namely in the query segment itself. The suffix-array interval contains that occurrence, but the persistent counting stage rejects it because the corresponding segment intersects the query. The answer becomes $0$.
 
-Candidate starts are:
+Consider multiple equal occurrences.
 
 ```
-1, 2, 3, 4
+h = [1,2,1,2,1]
+query = [1,2]
 ```
 
-But starts `1` and `2` overlap the query segment `[1,2]`.
+The difference pattern occurs more than once. The suffix-array interval captures all occurrences. The counting structure keeps only those whose start positions lie completely before or completely after the query segment. The final answer counts exactly the disjoint matches and ignores overlapping ones.
 
-Only starts `3` and `4` remain, so the answer is `2`.
-
-The suffix-array interval correctly groups all zero-pattern suffixes together, and the distance filter removes only invalid overlaps.
+The combination of suffix-array interval search and positional filtering handles all of these cases uniformly.
