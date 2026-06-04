@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 556 solved, 416 verified, 648 total."
+description: "Volume 2: Seminumerical Algorithms. 563 solved, 421 verified, 648 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 556 solved, 416 verified, 648 total.
+Exercise solutions for [TAOCP](../) Volume 2. 563 solved, 421 verified, 648 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -35,7 +35,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 556 solved, 416 verified, 648 tota
 | [4.5.1](4.5.1/) | Fractions | 9 | 8 | 9 |
 | [4.5.2](4.5.2/) | The Greatest Common Divisor | 42 | 32 | 42 |
 | [4.5.3](4.5.3/) | Analysis of Euclid's Algorithm | 41 | 31 | 42 |
-| [4.5.4](4.5.4/) | Factoring into Primes | 6 | 4 | 46 |
+| [4.5.4](4.5.4/) | Factoring into Primes | 13 | 9 | 46 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
