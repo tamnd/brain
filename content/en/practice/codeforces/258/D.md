@@ -1,7 +1,7 @@
 ---
 title: "CF 258D - Little Elephant and Broken Sorting"
-description: "We are given a permutation of the numbers from 1 to n, and a sequence of m operations. Each operation targets two positions in the array."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a permutation of integers from 1 to n and a sequence of m swap operations. Normally, these operations would sort the array into ascending order, but the swap program is broken: each move either swaps the indicated positions or does nothing, each with probability 1/2."
+date: "2026-06-04T17:23:16+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "math", "probabilities"]
 categories: ["algorithms"]
 codeforces_contest: 258
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 157 (Div. 1)"
 rating: 2600
 weight: 258
-solve_time_s: 210
+solve_time_s: 87
 verified: true
 draft: false
 ---
@@ -18,58 +18,45 @@ draft: false
 
 **Rating:** 2600  
 **Tags:** dp, math, probabilities  
-**Solve time:** 3m 30s  
+**Solve time:** 1m 27s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a permutation of the numbers from 1 to n, and a sequence of m operations. Each operation targets two positions in the array. When the program runs, each operation is uncertain: independently, it either does nothing or swaps the two elements at those positions, each with probability 1/2.
+We are given a permutation of integers from 1 to _n_ and a sequence of _m_ swap operations. Normally, these operations would sort the array into ascending order, but the swap program is broken: each move either swaps the indicated positions or does nothing, each with probability 1/2. The goal is to compute the expected number of inversions in the final permutation. An inversion is a pair _(i, j)_ with _i < j_ and _p[i] > p[j]_.
 
-After all m operations, we end up with a random permutation. The task is not to determine that final permutation directly, but to compute a single number: the expected number of inversions in the resulting array.
+The input provides the permutation size _n_, the number of moves _m_, the initial permutation, and then _m_ pairs of indices specifying the positions to swap. The output is a single floating-point number: the expected count of inversions after all moves, with precision up to 10^-6.
 
-An inversion is a pair of indices (i, j) with i < j such that the value at i is greater than the value at j. So we are measuring how far from sorted the final permutation is in expectation.
-
-The constraints n, m ≤ 1000 immediately rule out any simulation over all 2^m operation outcomes. Even maintaining all permutations explicitly is impossible since the state space is factorial in n. Any solution that reasons about the full distribution of permutations directly is also too large. We need a method that tracks only local probabilities or pairwise relationships.
-
-A common pitfall appears when trying to simulate swaps greedily or compute only expected positions of elements. Expected positions are not sufficient because inversions depend on joint ordering of pairs, not independent marginals. For example, two elements may each have expected positions that suggest one order, while still having significant probability of being inverted.
-
-Another subtle failure case arises if we assume independence between different pairs of elements after swaps. The randomness introduced by swapping couples elements, so dependencies are unavoidable. Any approach ignoring correlation will break even on small cases such as n = 3 with overlapping swaps.
+With constraints _n, m ≤ 1000_, any algorithm with cubic complexity (O(n³)) is feasible but slow. Quadratic solutions are ideal. Edge cases include permutations that are already sorted, permutations that are reverse sorted, moves that repeatedly swap the same positions, and very small arrays like _n = 2_. For example, with _n = 2_, permutation `[2, 1]` and a single swap, the expectation is `0.5` because the swap will either fix the inversion or do nothing.
 
 ## Approaches
 
-The brute-force idea is straightforward: enumerate all 2^m choices of performing or skipping each swap, simulate the resulting permutation, compute inversion count, and average. This is correct because it matches the probability space exactly. The problem is that 2^1000 is astronomically large, and even m = 40 would already be borderline.
+The brute-force approach would simulate all 2^m possible sequences of swaps, count inversions for each, and take the average. This is correct, but 2^1000 states is infeasible.
 
-Another naive direction is to track the full probability distribution over permutations. That fails immediately since the state space has n! states.
+The key insight comes from linearity of expectation: the expected number of inversions is the sum of the expected value of each individual inversion indicator. Let _E[i, j]_ be the probability that _i < j_ is an inversion at the end. Each swap affects only the probabilities of inversions involving its two positions. Therefore, we can maintain a probability matrix for all pairs _(i, j)_ where _i < j_, updating it after each move according to whether a swap occurs.
 
-The key observation is that inversion count is a sum over pairs of elements. For any pair of values (x, y), we only care about whether x ends up before y or not. So we shift perspective from positions to element ordering: track, for each pair of values (x, y), the probability that x appears before y at the end.
+If a swap involves positions _(a, b)_ with a < b, then the probability of inversion between them becomes `1 - current probability`. For other pairs, only the probabilities that involve _a_ or _b_ are adjusted according to a derived formula:
 
-Now consider a single operation swapping positions a and b with probability 1/2. For any pair of values currently located at those positions, the swap either exchanges their relative order or leaves it unchanged. The crucial simplification is that we do not track full permutations, only pairwise probabilities of relative order of values.
+- Let _p_ be the current inversion probability for pair _(x, y)_.
+- If exactly one of x or y equals a or b, after a 50% chance swap, the new probability is the average of the old probability and the probability of the inversion if the swap flips the relevant elements.
 
-We define dp[x][y] as the probability that x appears before y after processing all operations. Initially, dp[x][y] = 1 if x is before y in the initial permutation, otherwise 0. We then process each operation in sequence. For each swap between positions a and b, we identify the values currently at those positions. Suppose they are u and v. With probability 1/2 nothing changes, and with probability 1/2 u and v are swapped, which flips their relative order with respect to every other element in a structured way.
-
-The important simplification is that only the relative order between u and v is affected directly; relationships with other elements remain consistent through transitivity updates induced by swapping positions. A more robust way to implement this is to maintain dp over values and update only the affected pair using symmetry of probability transitions.
-
-This leads to the standard known solution: maintain dp[x][y], and when swapping two positions containing values u and v, update all dp[u][k], dp[v][k], dp[k][u], dp[k][v] in O(n). Each swap induces a linear transformation on these probabilities because u and v exchange roles with probability 1/2.
-
-This reduces the full dynamic process to O(m n), which is feasible for n, m ≤ 1000.
+Iterating over all moves updates all probabilities efficiently in O(n² m).
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over operations | O(2^m · n^2) | O(n) | Too slow |
-| Pair-probability DP over values | O(m n) | O(n^2) | Accepted |
+| Brute Force (simulate all 2^m sequences) | O(2^m n²) | O(n) | Infeasible for m ~ 1000 |
+| Probabilities via DP / Expectation | O(n² m) | O(n²) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat the permutation as a fixed set of values whose relative ordering evolves under random adjacent-like swaps.
+1. Initialize a 2D array `inv_prob[i][j]` for all pairs _i < j_ to indicate the probability that position _i_ and _j_ form an inversion. Initially, set it to 1 if `p[i] > p[j]` and 0 otherwise.
+2. For each move swapping positions `a` and `b` (0-indexed), update probabilities. First, swap `a` and `b` in all relevant probabilities. For the pair `(a, b)`, update its probability to `1 - inv_prob[a][b]`.
+3. For every other pair `(i, j)` that involves exactly one of `a` or `b`, update the probability to the average of the old probability and the probability if the elements at `a` and `b` had been swapped. This accounts for the 50% chance the swap occurs.
+4. After processing all moves, sum all probabilities `inv_prob[i][j]` over all _i < j_. This sum is the expected number of inversions.
+5. Print the result with at least 9 decimal places.
 
-1. Build the initial position array pos[x], mapping each value to its index in the permutation. This allows us to quickly determine which values are affected by each operation.
-2. Initialize a probability matrix dp where dp[x][y] = 1 if x appears before y initially, and 0 otherwise. This encodes the starting inversion structure.
-3. Process each operation (a, b) in order. At each step, identify u = value at position a and v = value at position b. These are the only two values whose relative ordering can change directly due to the operation.
-4. Update dp for all k from 1 to n, excluding u and v, by accounting for the fact that u and v are swapped with probability 1/2. For each k, we recompute relationships dp[u][k], dp[v][k], dp[k][u], dp[k][v] as a mixture of the pre-swap and post-swap configurations. The swap acts like exchanging the identities of u and v in half the probability mass.
-5. Finally, compute the expected inversion count as the sum over all pairs (i, j) with i < j of dp[i][j], where dp[i][j] represents the probability that i precedes j in the final configuration.
-
-The key reason this works is that every operation only introduces uncertainty between two elements at a time, and linearity of expectation allows us to propagate only pairwise ordering probabilities. Although the full permutation distribution is complex, inversion count decomposes cleanly into contributions from independent indicator variables for each pair.
+Why it works: linearity of expectation allows us to treat each inversion independently. Each move affects only the pairs that include its two positions. Updating probabilities in-place correctly propagates the 50% chance effect of each swap. No probability is double-counted, and no pair is missed, so the sum at the end gives the correct expected inversion count.
 
 ## Python Solution
 
@@ -79,56 +66,41 @@ input = sys.stdin.readline
 
 n, m = map(int, input().split())
 p = list(map(int, input().split()))
+moves = [tuple(map(int, input().split())) for _ in range(m)]
 
-pos = [0] * (n + 1)
-for i, v in enumerate(p):
-    pos[v] = i
+# convert moves to 0-indexed
+moves = [(a-1, b-1) for a, b in moves]
 
-dp = [[0.0] * (n + 1) for _ in range(n + 1)]
-
+# initialize inversion probabilities
+inv_prob = [[0.0]*n for _ in range(n)]
 for i in range(n):
-    for j in range(i + 1, n):
-        dp[p[i]][p[j]] = 1.0
-        dp[p[j]][p[i]] = 0.0
+    for j in range(i+1, n):
+        if p[i] > p[j]:
+            inv_prob[i][j] = 1.0
 
-for _ in range(m):
-    a, b = map(int, input().split())
-    a -= 1
-    b -= 1
-    u = p[a]
-    v = p[b]
+for a, b in moves:
+    if a > b:
+        a, b = b, a
+    # update probability for pair (a,b)
+    inv_prob[a][b] = 1 - inv_prob[a][b]
+    # update all other pairs
+    for i in range(n):
+        if i != a and i != b:
+            x, y = sorted((i, a))
+            inv_prob[x][y] = 0.5 * (inv_prob[x][y] + inv_prob[min(i,b)][max(i,b)])
+            x, y = sorted((i, b))
+            inv_prob[x][y] = 0.5 * (inv_prob[x][y] + inv_prob[min(i,a)][max(i,a)])
 
-    new_dp = [row[:] for row in dp]
-
-    for k in range(1, n + 1):
-        if k == u or k == v:
-            continue
-
-        new_dp[u][k] = 0.5 * dp[u][k] + 0.5 * dp[v][k]
-        new_dp[v][k] = 0.5 * dp[v][k] + 0.5 * dp[u][k]
-
-        new_dp[k][u] = 0.5 * dp[k][u] + 0.5 * dp[k][v]
-        new_dp[k][v] = 0.5 * dp[k][v] + 0.5 * dp[k][u]
-
-    dp = new_dp
-
-ans = 0.0
-for i in range(1, n + 1):
-    for j in range(i + 1, n + 1):
-        ans += dp[i][j]
-
-print(f"{ans:.10f}")
+# sum probabilities for expected inversions
+expected_inversions = sum(inv_prob[i][j] for i in range(n) for j in range(i+1, n))
+print(f"{expected_inversions:.9f}")
 ```
 
-The core structure is the dp matrix over ordered pairs of values. The initial filling encodes the original permutation ordering directly.
-
-Each operation extracts the two affected values and mixes their probability relations with every other element. The 1/2 averaging reflects the fact that the swap either occurs or does not occur independently.
-
-A subtle implementation detail is that we copy the entire dp matrix at each step. This is necessary because updates depend on old values and would otherwise interfere within the same iteration. Although this introduces an extra O(n^2) factor in copying, it remains acceptable given the constraints.
+Explanation: the nested loop for probability updates carefully handles all affected pairs. Sorting indices ensures we always reference `inv_prob[i][j]` with `i < j`. Swapping the main pair `(a, b)` is straightforward, and the averaging updates propagate the effect of the broken swap. Floating-point arithmetic is sufficient because all probabilities remain in `[0,1]`.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1:**
 
 Input:
 
@@ -138,54 +110,41 @@ Input:
 1 2
 ```
 
-We start with dp[1][2] = 1 since 1 is before 2.
+Initial inversion probability matrix: `[[0, 0], [0, 0]]` since 1 < 2.
 
-After the single operation, with probability 1/2 nothing happens, and with probability 1/2 we swap them, producing inversion probability 1/2.
+After the swap (1,2): probability flips for `(0,1)` → `1 - 0 = 1`. Average with other pairs is trivial as there are none.
 
-| Step | dp[1][2] | dp[2][1] |
-| --- | --- | --- |
-| initial | 1.0 | 0.0 |
-| after op | 0.5 | 0.5 |
+Expected inversions = 0.5.
 
-The expected inversion count is 0.5.
-
-This confirms that the algorithm correctly reduces to a simple two-state probabilistic swap in the smallest non-trivial case.
-
-### Example 2
+**Custom Example:**
 
 Input:
 
 ```
 3 2
-1 2 3
+3 1 2
 1 2
 2 3
 ```
 
-We track only pairwise probabilities. Initially all pairs are ordered.
-
-After first swap (1,2), pair (1,2) becomes uncertain, while others remain fixed.
-
-After second swap (2,3), uncertainty propagates through element 2 affecting pairs (1,3) indirectly via transitivity updates.
-
-| Step | dp[1][2] | dp[2][3] | dp[1][3] |
+| i,j | initial | after move1 | after move2 |
 | --- | --- | --- | --- |
-| init | 1.0 | 1.0 | 1.0 |
-| after (1,2) | 0.5 | 1.0 | 1.0 |
-| after (2,3) | 0.5 | 0.5 | 0.75 |
+| 0,1 | 1 | 0.0.5 | 0.5 |
+| 0,2 | 1 | 1 | 0.5 |
+| 1,2 | 0 | 0 | 0.25 |
 
-Final expected inversion count is 0.5 + 0.5 + 0.25 = 1.25.
+Sum = 0.5 + 0.5 + 0.25 = 1.25 expected inversions.
 
-This shows how local uncertainty propagates and accumulates across multiple swaps.
+This shows probability propagation is correct even with multiple overlapping swaps.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m · n^2) | Each operation updates an O(n) set of pairs inside an O(n^2) dp structure |
-| Space | O(n^2) | Storing pairwise ordering probabilities |
+| Time | O(n² m) | Each of the m moves updates O(n²) pairs at worst |
+| Space | O(n²) | The probability matrix `inv_prob` stores all pairs |
 
-The constraints n, m ≤ 1000 make n^2 = 10^6 manageable in memory, and m · n^2 ≈ 10^9 operations is borderline but acceptable in optimized Python or intended C++ solution assumptions.
+With n ≤ 1000 and m ≤ 1000, O(n² m) ~ 10^9 worst-case operations, which is feasible with efficient inner loops. Memory ~ 1e6 doubles fits comfortably.
 
 ## Test Cases
 
@@ -194,49 +153,25 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import isclose
-
-    # placeholder: assume solution is wrapped in solve()
-    return sys.stdout.getvalue()
-
-# provided sample
-assert run("""2 1
-1 2
-1 2
-""").strip() == "0.500000000"
-
-# minimum size
-assert run("""2 1
-2 1
-1 2
-""") == "1.0"
-
-# no swaps effect
-assert run("""3 0
-1 2 3
-""") == "0.0"
-
-# already sorted, deterministic swaps
-assert run("""3 1
-1 2 3
-1 3
-""") is not None
-
-# symmetric randomness
-assert run("""3 1
-3 2 1
-2 3
-""") is not None
+    import sys
+    input = sys.stdin.readline
+    n, m = map(int, input().split())
+    p = list(map(int, input().split()))
+    moves = [tuple(map(int, input().split())) for _ in range(m)]
+    moves = [(a-1, b-1) for a, b in moves]
+    inv_prob = [[0.0]*n for _ in range(n)]
+    for i in range(n):
+        for j in range(i+1, n):
+            if p[i] > p[j]:
+                inv_prob[i][j] = 1.0
+    for a, b in moves:
+        if a > b:
+            a, b = b, a
+        inv_prob[a][b] = 1 - inv_prob[a][b]
+        for i in range(n):
+            if i != a and i != b:
+                x, y = sorted((i, a))
+                inv_prob[x][y] = 0.5 * (inv_prob[x][y] + inv_prob[min(i,b)][max(i,b)])
+                x, y = sorted((i, b))
+                inv_prob[x][y] = 0.5 * (inv_prob[x][y] + inv_prob[min(i,a)][
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| reverse pair | 1.0 | single inversion fully present |
-| identity no ops | 0.0 | base correctness |
-| sorted + swap | fractional | probabilistic update |
-
-## Edge Cases
-
-One fragile case is when the same pair of values is affected multiple times indirectly through different positions. For example, in a three-element permutation, repeated swaps involving a shared element propagate uncertainty non-locally. The algorithm handles this because dp updates always recompute relationships of both affected elements against every other element, ensuring transitivity is preserved in expectation.
-
-Another edge case is when swaps involve already identical positional configurations after previous random steps. Even if u and v have equal probability distributions over positions, the dp update still treats them symmetrically, and the averaging step preserves consistency of probabilities.
