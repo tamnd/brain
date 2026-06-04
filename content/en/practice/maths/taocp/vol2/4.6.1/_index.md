@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.1: Division of Polynomials"
-description: "Section 4.6.1 exercises: 23/26 solved."
+description: "Section 4.6.1 exercises: 26/26 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.1"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.1. Division of Polynomials
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.1: 23/26 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.1: 26/26 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -41,6 +41,6 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.1: 23/26 solved.
 | [21](21.md) |  [*M25*] | math-medium | verified | 5m24s |
 | [22](22.md) |  [*M23*] | math-medium | verified | 2m05s |
 | [23](23.md) |  [*M22*] | math-medium | solved | 4m57s |
-| 24 |  [*M27*] | math-hard | - | - |
-| 25 |  [*M47*] | math-research | - | - |
-| 26 | &#9654; [*M26*] | math-hard | - | - |
+| [24](24.md) |  [*M27*] | math-hard | verified | 9m28s |
+| [25](25.md) |  [*M47*] | math-research | verified | 4m57s |
+| [26](26.md) | &#9654; [*M26*] | math-hard | verified | 9m57s |
