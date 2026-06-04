@@ -1,7 +1,7 @@
 ---
 title: "CF 234G - Practice"
-description: "We are given a team of n football players, each with a unique number from 1 to n. The coach wants to organize practice games so that every pair of players has faced each other on opposing teams at least once."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have n football players, numbered from 1 to n. Each practice consists of splitting all players into two non-empty teams."
+date: "2026-06-04T10:00:19+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "divide-and-conquer", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 234
@@ -9,8 +9,8 @@ codeforces_index: "G"
 codeforces_contest_name: "Codeforces Round 145 (Div. 2, ACM-ICPC Rules)"
 rating: 1600
 weight: 234
-solve_time_s: 174
-verified: false
+solve_time_s: 98
+verified: true
 draft: false
 ---
 
@@ -18,37 +18,106 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** constructive algorithms, divide and conquer, implementation  
-**Solve time:** 2m 54s  
-**Verified:** no  
+**Solve time:** 1m 38s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a team of `n` football players, each with a unique number from 1 to `n`. The coach wants to organize practice games so that every pair of players has faced each other on opposing teams at least once. Each practice splits all players into two teams of arbitrary size, as long as each team has at least one player. The goal is to determine the minimum number of practices required and the composition of teams in each practice.
+We have `n` football players, numbered from `1` to `n`.
 
-The constraint `2 ≤ n ≤ 1000` is manageable for algorithms with complexity up to around O(n²), since n² is about one million, well within the typical 1-second limit for competitive programming. Brute-force checking of all pairings would involve creating all possible splits of players and verifying all pairwise cross-team interactions. The number of splits grows exponentially, so naive enumeration would be infeasible for large `n`.
+Each practice consists of splitting all players into two non-empty teams. After several practices, we want every pair of players to have been separated at least once, meaning that there exists some practice where the two players were placed on opposite teams.
 
-A subtle edge case occurs when `n` is small. For example, `n = 2` requires only one practice because there is only one pair, and `n = 3` requires a design that ensures each pair of players is in opposite teams. A careless approach might always split one player off into a singleton team, which works for small numbers but does not scale efficiently.
+The task is not only to construct such a schedule, but to use the minimum possible number of practices.
+
+The input contains only one integer `n`. The output must first print the minimum number of practices, then describe each practice by listing one of the two teams. Any optimal construction is accepted.
+
+The constraint `n ≤ 1000` is small enough that we can explicitly output all teams. The challenge is not computational complexity but discovering the minimum number of practices and constructing them.
+
+A useful way to think about the problem is to assign each player a binary code. Every practice corresponds to one bit position. During a practice, players with bit `0` go to one team and players with bit `1` go to the other team. Two players are separated whenever their codes differ in some bit.
+
+Since there are at most 1000 players, binary representations up to 10 bits are sufficient because `2^10 = 1024`.
+
+There are a few subtle edge cases.
+
+For `n = 2`, only one pair exists. A single practice placing player 1 against player 2 is enough.
+
+Input:
+
+```
+2
+```
+
+One valid output is:
+
+```
+1
+1 1
+```
+
+A careless implementation that always outputs `⌈log2 n⌉` practices without considering small values could accidentally create an empty team in some practice.
+
+Another edge case occurs when `n` is not a power of two.
+
+Input:
+
+```
+5
+```
+
+We need three practices because `2^2 = 4 < 5 ≤ 8 = 2^3`. Some bit positions may contain very uneven splits, but every practice must still have both teams non-empty. An implementation that blindly prints all bit positions without checking would be incorrect if a bit position contains only zeros among existing players.
+
+A final subtlety is that player numbering starts at 1. Using numbers `1..n` directly as binary codes can increase the required number of bits by one. The clean construction uses codes `0..n-1`.
 
 ## Approaches
 
-The brute-force approach would consider all possible divisions of players into two teams and try to cover all pairs across practices. For each practice, we would track which pairs are in different teams and continue until all pairs are covered. This method is correct but impractical: for `n = 1000`, there are 2ⁿ−2 possible splits per practice, which is astronomically large. Even simulating this would take far too long.
+A brute-force viewpoint is to think directly about pairs of players. There are `n(n-1)/2` pairs. We could repeatedly design practices and check which pairs have already been separated. Such a search quickly becomes combinatorial because every practice is a partition of the players into two non-empty groups. Even for moderate `n`, the number of possible partitions is enormous.
 
-The key observation is that we can structure practices around a "star" pattern. Choose one fixed player, say player 1, and pair them with each other player in separate practices. In each practice, player 1 goes against a subset of other players. By systematically organizing practices where player 1 is rotated against every other player, we ensure that every pair involving player 1 is covered. Then, by recursively applying the same idea to the remaining players, we cover all pairs efficiently. This uses the divide-and-conquer principle: by fixing one player and splitting the others, we reduce the number of required practices to `n - 1`, which is provably minimal.
+The real structure appears when we ask what information a practice provides. A practice only tells us on which side of the partition each player lies. If we perform `m` practices, every player receives an `m`-bit signature describing its team assignment across all practices.
+
+Two players are separated at least once exactly when their signatures are different. If two players have identical signatures, they always appear on the same side and are never separated.
+
+This transforms the problem into a coding problem. We need `n` distinct signatures. With `m` bits, there are at most `2^m` different signatures, so:
+
+$$2^m \ge n$$
+
+Hence:
+
+$$m \ge \lceil \log_2 n \rceil$$
+
+This gives a lower bound on the answer.
+
+The same observation immediately gives a construction. Assign player `i` the binary representation of `i-1`. Since the values `0,1,\dots,n-1` are distinct, all signatures are distinct. For each bit position, create one practice that separates players according to that bit.
+
+Every pair of players has different binary representations, so they differ in some bit. During the corresponding practice they are placed on opposite teams, satisfying the requirement.
+
+The lower bound and construction match, proving optimality.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n × n²) | O(n²) | Too slow |
-| Optimal (Star / Divide and Conquer) | O(n²) | O(n²) | Accepted |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal | O(n log n) | O(n log n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Fix player 1 as a reference player. In each practice, player 1 will be on one team, and a different single player will be on the opposite team. This ensures that player 1 faces all other players across `n - 1` practices.
-2. For practice `i` from 2 to `n`, form the first team with player 1 and player `i`. The second team consists of all remaining players. This guarantees that player 1 has played against player `i` and all other pairs including player `i` are either already covered in previous practices or will be covered in subsequent ones.
-3. Repeat this process for all players except the fixed reference player. Each iteration produces one practice where the fixed player is on one team and a distinct subset of remaining players is on the other team.
-4. Output the number of practices (`n - 1`) followed by the team composition for each practice. Each line first prints the size of the first team, then the list of players in that team.
+1. Compute the smallest integer `m` such that `2^m ≥ n`.
+2. Number the players from `0` to `n-1` internally. These values serve as unique binary codes.
+3. For each bit position `b` from `0` to `m-1`, create one practice.
+4. In practice `b`, place every player whose code has bit `b` equal to `1` into the first team.
+5. All remaining players automatically belong to the second team.
+6. Output the players in the first team for each practice.
 
-Why it works: Every practice guarantees that one new player faces the reference player. Because we iterate through all other players as opponents of the reference player, each pair of players is eventually placed on opposing teams either directly in a practice or indirectly through recursive coverage. This strategy covers all cross-team pairs without redundancy and uses the minimal number of practices.
+Why is it safe to output only the players with bit `1`? Since `2^m ≥ n`, the highest bit position used is necessary. For every bit position `b < m`, there exists at least one code with bit `b = 1` and at least one code with bit `b = 0` among `0..n-1`. Thus both teams are non-empty.
+
+### Why it works
+
+Each player receives the binary representation of a unique integer from `0` to `n-1`.
+
+Consider any two different players. Their assigned integers differ, so their binary representations differ in at least one bit position. During the practice corresponding to that bit, one player belongs to the first team and the other belongs to the second team. Thus every pair is separated at least once.
+
+Now consider the minimum number of practices. After `m` practices, every player can be described only by an `m`-bit signature. There are at most `2^m` distinct signatures. Since all `n` players must have different signatures, we need `2^m ≥ n`. Hence at least `⌈log₂ n⌉` practices are necessary.
+
+Our construction uses exactly `⌈log₂ n⌉` practices, so it is optimal.
 
 ## Python Solution
 
@@ -56,13 +125,35 @@ Why it works: Every practice guarantees that one new player faces the reference 
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-print(n - 1)
-for i in range(2, n + 1):
-    print(2, 1, i)
+def solve():
+    n = int(input())
+
+    m = 0
+    while (1 << m) < n:
+        m += 1
+
+    print(m)
+
+    for b in range(m):
+        team = []
+        for i in range(n):
+            if (i >> b) & 1:
+                team.append(str(i + 1))
+
+        print(len(team), *team)
+
+solve()
 ```
 
-This solution first reads `n` and prints `n - 1` as the number of required practices. Each practice contains player 1 and one other player `i` in the first team. The remaining players automatically form the second team. This structure ensures that player 1 faces every other player and that every pair of players eventually ends up on opposite teams. Edge conditions such as `n = 2` are naturally handled: the single practice consists of both players, meeting the requirement.
+The first loop computes the minimum number of bits required to represent `n` distinct codes.
+
+The player with number `i + 1` receives internal code `i`. Using `0..n-1` is important because exactly `n` distinct codes are needed and this avoids wasting one code value.
+
+For each bit position, the solution gathers all players whose code contains a `1` in that bit. Those players form the first team. Everyone else implicitly belongs to the second team.
+
+One subtle point is that the output format requires only one team to be listed. The remaining players automatically form the other team.
+
+Another subtle point is proving that the listed team is never empty. Since `m` is the smallest value with `2^m ≥ n`, every bit position below `m` appears as `1` for at least one number among `0..n-1`. Thus every printed practice contains at least one player.
 
 ## Worked Examples
 
@@ -74,75 +165,140 @@ Input:
 2
 ```
 
-| Practice | Team 1 | Team 2 |
-| --- | --- | --- |
-| 1 | 1 2 | - |
+We need the smallest `m` with `2^m ≥ 2`, so `m = 1`.
 
-Explanation: There is only one practice required. Player 1 and 2 face each other directly.
+| Bit position | Codes | Players with bit = 1 | Output line |
+| --- | --- | --- | --- |
+| 0 | 0,1 | {2} | `1 2` |
+
+Output:
+
+```
+1
+1 2
+```
+
+Player 1 and player 2 are on opposite teams in the only practice, so the unique pair is separated.
 
 ### Example 2
 
 Input:
 
 ```
-4
+5
 ```
 
-| Practice | Team 1 | Team 2 |
-| --- | --- | --- |
-| 1 | 1 2 | 3 4 |
-| 2 | 1 3 | 2 4 |
-| 3 | 1 4 | 2 3 |
+We need `m = 3` because `2^2 < 5 ≤ 2^3`.
 
-Explanation: Player 1 faces each of the other three players in separate practices. Each pair of other players eventually ends up on opposite teams across these games.
+Internal codes are:
+
+| Player | Code |
+| --- | --- |
+| 1 | 000 |
+| 2 | 001 |
+| 3 | 010 |
+| 4 | 011 |
+| 5 | 100 |
+
+Practice construction:
+
+| Bit position | Players with bit = 1 |
+| --- | --- |
+| 0 | 2, 4 |
+| 1 | 3, 4 |
+| 2 | 5 |
+
+Possible output:
+
+```
+3
+2 2 4
+2 3 4
+1 5
+```
+
+Consider players 3 and 5. Their codes are `010` and `100`. They differ in bits 1 and 2, so they are separated in multiple practices. The same argument works for every pair because all codes are distinct.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) | Each of the n-1 practices involves outputting up to n player numbers. |
-| Space | O(n²) | The total output size scales with n², as each line can have up to n numbers. |
+| Time | O(n log n) | We inspect every player for every bit position |
+| Space | O(n) | One team list is stored at a time |
 
-This complexity is well within the constraints, as n ≤ 1000 yields a maximum of about one million operations and output size, which is acceptable under the 1-second time limit.
+Since `n ≤ 1000`, we have at most `⌈log₂ 1000⌉ = 10` practices. The algorithm performs roughly `1000 × 10 = 10000` checks, which is trivial within the limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
+
     n = int(input())
-    print(n - 1)
-    for i in range(2, n + 1):
-        print(2, 1, i)
-    return output.getvalue().strip()
 
-# Provided sample
-assert run("2\n") == "1\n2 1 2", "sample 1"
+    m = 0
+    while (1 << m) < n:
+        m += 1
 
-# Minimum size case
-assert run("3\n") == "2\n2 1 2\n2 1 3", "n=3 minimal practices"
+    out = [str(m)]
 
-# Small odd number
-assert run("5\n") == "4\n2 1 2\n2 1 3\n2 1 4\n2 1 5", "n=5 odd"
+    for b in range(m):
+        team = []
+        for i in range(n):
+            if (i >> b) & 1:
+                team.append(str(i + 1))
+        out.append(f"{len(team)}" + ("" if not team else " " + " ".join(team)))
 
-# Maximum size
-assert run("1000\n").startswith("999\n2 1 2"), "n=1000 large test"
+    return "\n".join(out)
 
-# Sequential verification
-assert run("4\n") == "3\n2 1 2\n2 1 3\n2 1 4", "n=4 consecutive"
+# provided sample
+assert run("2\n") == "1\n1 2"
+
+# minimum size
+assert run("2\n").splitlines()[0] == "1"
+
+# first non-power of two
+assert run("3\n").splitlines()[0] == "2"
+
+# power of two
+assert run("8\n").splitlines()[0] == "3"
+
+# maximum size
+assert run("1000\n").splitlines()[0] == "10"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3 | 2\n2 1 2\n2 1 3 | Smallest non-trivial case |
-| 5 | 4\n2 1 2\n2 1 3\n2 1 4\n2 1 5 | Odd n, multiple practices |
-| 1000 | 999 lines starting with 2 1 2 | Maximum n handling |
-| 4 | 3\n2 1 2\n2 1 3\n2 1 4 | Sequential coverage |
+| `2` | one practice | Smallest valid instance |
+| `3` | two practices | Non-power-of-two transition |
+| `8` | three practices | Exact power of two |
+| `1000` | ten practices | Maximum constraint |
 
 ## Edge Cases
 
-For `n = 2`, the algorithm correctly schedules a single practice with both players on opposing teams. For `n = 3`, the two practices are (1,2) vs (3) and (1,3) vs (2), which covers all three pairs (1,2), (1,3), and (2,3) across the two games. The recursive pattern generalizes naturally: the reference player always ensures new pairs are covered without missing any combination. This handles the minimal team size, maximal team size, and ensures no pair is repeated unnecessarily.
+Consider:
+
+```
+2
+```
+
+The algorithm computes `m = 1`. Player 1 receives code `0`, player 2 receives code `1`. The single practice places player 2 in the listed team and player 1 in the other team. The only pair is separated immediately.
+
+Consider:
+
+```
+5
+```
+
+The algorithm computes `m = 3`. The third practice contains only player 5 because only code `100` has the highest bit set. This is still valid because both teams remain non-empty. A careless implementation might incorrectly reject such highly unbalanced partitions.
+
+Consider:
+
+```
+8
+```
+
+Here `m = 3` exactly. Every player receives a distinct 3-bit code from `000` to `111`. The construction achieves the lower bound exactly, showing that no fourth practice is needed. The pairwise separation property follows directly from the uniqueness of binary representations.
