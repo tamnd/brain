@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.5.4: Factoring into Primes"
-description: "Section 4.5.4 exercises: 1/46 solved."
+description: "Section 4.5.4 exercises: 6/46 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.5.4"
@@ -14,17 +14,17 @@ draft: false
 
 # Section 4.5.4. Factoring into Primes
 
-Exercises from [TAOCP Volume 2](../) Section 4.5.4: 1/46 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.5.4: 6/46 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
 | [1](01.md) |  [*10*] | simple | verified | 1m11s |
-| 2 |  [*15*] | simple | - | - |
-| 3 |  [*M20*] | math-medium | - | - |
+| [2](02.md) |  [*15*] | simple | verified | 2m32s |
+| [3](03.md) |  [*M20*] | math-medium | verified | 7m54s |
 | 4 |  [*M29*] | math-hard | - | - |
-| 5 |  [*21*] | medium | - | - |
-| 6 |  [*M24*] | math-medium | - | - |
-| 7 |  [*25*] | medium | - | - |
+| [5](05.md) |  [*21*] | medium | solved | 7m10s |
+| [6](06.md) |  [*M24*] | math-medium | solved | 7m20s |
+| [7](07.md) |  [*25*] | medium | verified | 1m45s |
 | 8 | &#9654; [*23*] | medium | - | - |
 | 9 |  [*M25*] | math-medium | - | - |
 | 10 | &#9654; [*M26*] | math-hard | - | - |
