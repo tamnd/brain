@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.3: Evaluation of Powers"
-description: "Section 4.6.3 exercises: 33/35 solved."
+description: "Section 4.6.3 exercises: 34/35 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.3. Evaluation of Powers
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.3: 33/35 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.3: 34/35 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -26,7 +26,7 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.3: 33/35 solved.
 | [6](06.md) |  [*M26*] | math-hard | verified | 7m20s |
 | [7](07.md) |  [*M21*] | math-medium | solved | 6m36s |
 | [8](08.md) |  [*M21*] | math-medium | verified | 3m43s |
-| 9 | &#9654; [*25*] | medium | - | - |
+| [9](09.md) | &#9654; [*25*] | medium | verified | 2m55s |
 | [10](10.md) |  [*10*] | simple | verified | 1m35s |
 | [11](11.md) | &#9654; [*M26*] | math-hard | solved | 7m21s |
 | [12](12.md) |  [*M10*] | math-simple | verified | 1m27s |
