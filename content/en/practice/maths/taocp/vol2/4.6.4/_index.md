@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.6.4: Evaluation of Polynomials"
-description: "Section 4.6.4 exercises: 63/74 solved."
+description: "Section 4.6.4 exercises: 67/74 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.6.4"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.6.4. Evaluation of Polynomials
 
-Exercises from [TAOCP Volume 2](../) Section 4.6.4: 63/74 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.6.4: 67/74 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -84,11 +84,11 @@ Exercises from [TAOCP Volume 2](../) Section 4.6.4: 63/74 solved.
 | [64](64.md) |  [**] |  | solved | 8m33s |
 | [65](65.md) | &#9654; [**] |  | verified | 3m18s |
 | [66](66.md) |  [*HM35*] | hm-hard | verified | 1m37s |
-| 67 |  [*HM40*] | hm-project | - | - |
-| 68 |  [*M45*] | math-project | - | - |
-| 69 | &#9654; [*HM27*] | hm-hard | - | - |
+| [67](67.md) |  [*HM40*] | hm-project | verified | 7m06s |
+| [68](68.md) |  [*M45*] | math-project | verified | 3m45s |
+| [69](69.md) | &#9654; [*HM27*] | hm-hard | verified | 1m23s |
 | 70 | &#9654; [*HM25*] | hm-medium | - | - |
-| 71 |  [*HM30*] | hm-hard | - | - |
+| [71](71.md) |  [*HM30*] | hm-hard | verified | 3m53s |
 | 72 |  [*M48*] | math-research | - | - |
 | 73 |  [*HM25*] | hm-medium | - | - |
 | 74 |  [*HM35*] | hm-hard | - | - |
