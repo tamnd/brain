@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 721 solved, 539 verified, 828 total."
+description: "Volume 2: Seminumerical Algorithms. 723 solved, 541 verified, 828 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 721 solved, 539 verified, 828 total.
+Exercise solutions for [TAOCP](../) Volume 2. 723 solved, 541 verified, 828 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -40,7 +40,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 721 solved, 539 verified, 828 tota
 | [4.6.1](4.6.1/) | Division of Polynomials | 26 | 19 | 26 |
 | [4.6.2](4.6.2/) | Factorization of Polynomials | 34 | 22 | 40 |
 | [4.6.3](4.6.3/) | Evaluation of Powers | 34 | 24 | 35 |
-| [4.6.4](4.6.4/) | Evaluation of Polynomials | 26 | 21 | 74 |
+| [4.6.4](4.6.4/) | Evaluation of Polynomials | 28 | 23 | 74 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
