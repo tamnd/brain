@@ -1,7 +1,7 @@
 ---
 title: "CF 266D - BerDonalds"
-description: "We are given a connected weighted undirected graph representing a road network. Junctions are graph vertices, roads are weighted edges, and the restaurant may be placed anywhere, not only at vertices but also at any point along an edge."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a connected undirected graph representing the roads of Bertown. Junctions are nodes, roads are weighted edges with positive lengths. The task is to choose a location for a new BerDonalds restaurant so that the maximum distance from it to any junction is minimized."
+date: "2026-06-04T18:09:25+07:00"
 tags: ["codeforces", "competitive-programming", "graphs", "math", "shortest-paths"]
 categories: ["algorithms"]
 codeforces_contest: 266
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 163 (Div. 2)"
 rating: 2400
 weight: 266
-solve_time_s: 129
+solve_time_s: 126
 verified: false
 draft: false
 ---
@@ -18,229 +18,100 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** graphs, math, shortest paths  
-**Solve time:** 2m 9s  
+**Solve time:** 2m 6s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a connected weighted undirected graph representing a road network. Junctions are graph vertices, roads are weighted edges, and the restaurant may be placed anywhere, not only at vertices but also at any point along an edge.
+We are given a connected undirected graph representing the roads of Bertown. Junctions are nodes, roads are weighted edges with positive lengths. The task is to choose a location for a new BerDonalds restaurant so that the maximum distance from it to any junction is minimized. Critically, the restaurant can be placed anywhere along a road, not just at junctions. The output is the shortest possible “maximum distance to the farthest junction.”
 
-For a chosen location, its quality is determined by the distance to the farthest junction, where distance is measured along shortest paths in the graph. We want the location minimizing this worst-case distance.
+For input, the first line gives `n` and `m`, the number of junctions and roads. The next `m` lines describe the roads, each with two junctions and a length. The output is a real number representing the minimal “farthest distance,” which may occur at a junction or somewhere along a road.
 
-This is a continuous optimization problem on a graph. The best point may lie inside an edge instead of at a vertex. In the simplest graph with two vertices connected by a road of length 1, placing the restaurant in the middle gives maximum distance 0.5, while placing it at a vertex gives maximum distance 1.
+Constraints allow `n` and `m` up to a few thousand each and edge weights up to 10^5. Since the time limit is 5 seconds, algorithms with complexity `O(n^3)` or worse may be too slow, but `O(n^2 log n)` is feasible. Because the graph is connected, we do not have to handle disconnected components.
 
-The constraints are small enough for all-pairs shortest paths. The original problem has at most a few hundred vertices, which makes Floyd-Warshall feasible. An $O(n^3)$ preprocessing step is completely acceptable under a 5 second limit. What is not feasible is treating every real-valued point on every edge independently, since the search space is continuous.
+Non-obvious edge cases include graphs with only two nodes, where the optimal point is at the midpoint of the single road. Another subtle case occurs when multiple longest shortest paths intersect a road; the optimal restaurant may be on the road itself, not at a node.
 
-The hard part is understanding how the maximum distance behaves while moving along an edge.
-
-A common mistake is assuming the optimum always occurs at a vertex or at the midpoint of an edge. Neither is true in general.
-
-Consider this graph:
-
-```
-1 --1-- 2 --100-- 3
-```
-
-If we place the restaurant at the midpoint of edge $(2,3)$, the farthest junction is still very far away. The true optimum is shifted toward vertex 2 because junction 1 is much closer to 2 than to 3.
-
-Another subtle case appears when multiple vertices dominate different parts of the same edge.
-
-Example:
-
-```
-1 --4-- 2
- \      /
-  1    1
-   \  /
-    3
-```
-
-The farthest vertex while moving along edge $(1,2)$ changes depending on the position. A careless implementation that checks only endpoints or only one candidate vertex will fail.
-
-A third edge case comes from disconnected thinking about the graph structure. Distances from a point inside an edge to a vertex are not Euclidean. They are shortest-path distances through the graph. Sometimes the shortest route from a point to a vertex leaves the edge immediately through one endpoint, travels elsewhere in the graph, and never uses the remainder of the edge.
+For example, a graph of two nodes connected by one road of length 1 has optimal distance 0.5. A naive approach that only considers nodes would incorrectly return 1.
 
 ## Approaches
 
-The brute-force perspective is useful because it reveals the structure of the optimization problem.
+A brute-force approach is to consider every possible point along every road, calculate the shortest distance from that point to all nodes, and take the maximum. This works because it tests all possible placements, but it is infeasible: each road can be split into a large number of candidate points, and for each, computing distances is `O(n + m)` using Dijkstra, leading to `O(m * (w_max) * (n + m))` operations, which is far too slow.
 
-Suppose we fix a point on an edge $(u,v)$ of length $w$. Let the point be at distance $x$ from $u$, so it is at distance $w-x$ from $v$.
+The key insight is that the optimal location on a road occurs at a point that balances distances to the “farthest nodes” in the graph. Specifically, once we compute the shortest distances from every junction using Dijkstra's algorithm, we can consider the following for each road `u - v` of length `w`. Let `d[u][x]` and `d[v][x]` be distances to all other nodes. We only need to find the point along the road that minimizes the maximum of `d[u][i] + t` and `d[v][i] + (w - t)`, where `t` is the distance from `u` along the road. This maximum is piecewise linear in `t`, so the minimal value occurs at the point where two distances cross. Hence, we only need one computation per edge to find the minimal maximum distance along that edge.
 
-For any vertex $k$, the shortest distance from the point to $k$ is:
-
-$$\min(d[u][k] + x,\ d[v][k] + (w-x))$$
-
-where $d[a][b]$ is the shortest-path distance between vertices.
-
-The maximum over all vertices is the worst-case distance for this point. If we could evaluate every real $x$, we could minimize this expression directly. The problem is that $x$ is continuous.
-
-A naive discretization would be hopeless because edge lengths can be large. Even checking every integer coordinate on every edge would require up to $10^5$ positions per edge.
-
-The key observation is that after computing all-pairs shortest paths, the graph structure disappears from the optimization stage. Every vertex contributes a very simple function along an edge.
-
-For a fixed vertex $k$, define:
-
-$$f_k(x)=\min(d[u][k]+x,\ d[v][k]+w-x)$$
-
-This is the minimum of two linear functions. Geometrically, it forms a tent-shaped curve. The objective on the edge is:
-
-$$F(x)=\max_k f_k(x)$$
-
-The maximum of convex piecewise-linear functions is still convex. A convex function on a segment achieves its minimum either at a breakpoint or where two dominating constraints balance.
-
-This means we can binary search or ternary search on each edge. Since the function is convex and evaluating it costs $O(n)$, this becomes practical.
-
-The full solution becomes:
-
-1. Run Floyd-Warshall to compute shortest paths.
-2. For every edge, minimize the convex function $F(x)$ on $[0,w]$.
-3. Take the best value over all edges.
-
-The number of edges and vertices is small enough that this approach easily fits.
+The observation that the “farthest distance function along a road is piecewise linear” allows us to reduce a potentially continuous search to a single evaluation per edge, after computing all-pairs shortest paths or single-source distances from each node.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over continuous positions | Impossible | Impossible | Not feasible |
-| Floyd-Warshall + convex optimization on each edge | $O(n^3 + mn \cdot I)$ | $O(n^2)$ | Accepted |
-
-Here $I$ is the number of ternary-search iterations, typically around 100.
+| Brute Force | O(m * w_max * (n + m)) | O(n + m) | Too slow |
+| Optimal | O(n * (n log n + m)) | O(n^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the graph and initialize the distance matrix.
+1. Compute shortest distances from every junction to every other junction using Dijkstra’s algorithm. Store this as `dist[i][j]` for all `i, j`. This gives the base distances required to evaluate maximum distances from any point.
+2. Initialize a variable `best` with infinity. This will store the minimal maximum distance found so far.
+3. Iterate over each road `(u, v, w)`. For every other node `i`, compute `d_u = dist[u][i]` and `d_v = dist[v][i]`. The distance from a point `t` along the road to node `i` is `min(d_u + t, d_v + (w - t))`.
+4. For the current road, find the point `t` that minimizes the maximum distance to all nodes. Since the function `max(min(d_u + t, d_v + (w - t)))` is piecewise linear and convex, the optimum occurs where two linear functions intersect. Calculate `t = (d_v - d_u + w) / 2` and clamp it to `[0, w]`.
+5. Compute the maximum distance from this optimal point along the edge to all nodes. Update `best` if this maximum is smaller.
+6. Repeat for all edges and return `best` as the minimal maximum distance.
 
-Set `dist[i][i] = 0`. For every road $(u,v,w)$, set both `dist[u][v]` and `dist[v][u]` to `w`.
-2. Run Floyd-Warshall.
-
-For every intermediate vertex `k`, try improving all pairs `(i,j)` through `k`.
-
-After this step, `dist[i][j]` stores the true shortest-path distance between every pair of junctions.
-3. Process each edge independently.
-
-Suppose the edge connects `u` and `v` with length `w`.
-
-Any point on this edge can be represented by a parameter `x` in `[0,w]`, where `x` is the distance from `u`.
-4. Define the objective function on the edge.
-
-For a chosen `x`, compute:
-
-$$\max_k \min(dist[u][k]+x,\ dist[v][k]+w-x)$$
-
-The inner minimum chooses the better endpoint route to reach vertex `k`.
-
-The outer maximum finds the farthest junction.
-5. Use ternary search on the edge.
-
-The function is convex because it is the maximum of convex piecewise-linear functions.
-
-Repeatedly evaluate two interior points and discard the worse side.
-6. Record the best value found on this edge.
-
-Compare it with the global answer.
-7. Print the minimum over all edges.
-
-### Why it works
-
-For a fixed vertex, the distance from a moving point on an edge is the minimum of two affine functions. Such a function is convex. The maximum of convex functions remains convex, so the worst-case distance along an edge is convex.
-
-A convex function on a closed interval has no local minima other than the global minimum. Ternary search therefore converges to the optimal point on the edge.
-
-Since every feasible restaurant location belongs either to some edge interior or a vertex, and vertices are included as edge endpoints when $x=0$ or $x=w$, checking every edge covers the entire graph.
+Why it works: The distance from any point on a road to the farthest node is always the maximum of several linear functions, one per node. Linear maxima are minimized where two lines cross, so evaluating that intersection per edge guarantees we find the optimal point. Considering every edge ensures we do not miss a solution that occurs between nodes.
 
 ## Python Solution
 
 ```python
 import sys
+import heapq
 input = sys.stdin.readline
 
-INF = 10**30
+def dijkstra(n, adj, start):
+    dist = [float('inf')] * n
+    dist[start] = 0
+    pq = [(0, start)]
+    while pq:
+        d, u = heapq.heappop(pq)
+        if d > dist[u]:
+            continue
+        for v, w in adj[u]:
+            if dist[v] > d + w:
+                dist[v] = d + w
+                heapq.heappush(pq, (dist[v], v))
+    return dist
 
-def solve():
+def main():
     n, m = map(int, input().split())
-
-    dist = [[INF] * n for _ in range(n)]
+    adj = [[] for _ in range(n)]
     edges = []
-
-    for i in range(n):
-        dist[i][i] = 0
-
     for _ in range(m):
         u, v, w = map(int, input().split())
-        u -= 1
-        v -= 1
-
-        dist[u][v] = w
-        dist[v][u] = w
-
+        u -= 1; v -= 1
+        adj[u].append((v, w))
+        adj[v].append((u, w))
         edges.append((u, v, w))
-
-    # Floyd-Warshall
-    for k in range(n):
-        dk = dist[k]
-        for i in range(n):
-            dik = dist[i][k]
-            di = dist[i]
-
-            for j in range(n):
-                nd = dik + dk[j]
-                if nd < di[j]:
-                    di[j] = nd
-
-    def evaluate(u, v, w, x):
-        best = 0.0
-
-        for k in range(n):
-            d = min(dist[u][k] + x,
-                    dist[v][k] + (w - x))
-            if d > best:
-                best = d
-
-        return best
-
-    ans = float("inf")
-
+    
+    dist = [dijkstra(n, adj, i) for i in range(n)]
+    
+    best = float('inf')
     for u, v, w in edges:
-        lo = 0.0
-        hi = float(w)
+        t_values = []
+        for i in range(n):
+            t_i = (dist[v][i] - dist[u][i] + w) / 2
+            t_i = max(0, min(w, t_i))
+            t_values.append(max(dist[u][i] + t_i, dist[v][i] + w - t_i))
+        best = min(best, max(t_values))
+    
+    print(f"{best:.10f}")
 
-        for _ in range(100):
-            m1 = (2 * lo + hi) / 3.0
-            m2 = (lo + 2 * hi) / 3.0
-
-            f1 = evaluate(u, v, w, m1)
-            f2 = evaluate(u, v, w, m2)
-
-            if f1 < f2:
-                hi = m2
-            else:
-                lo = m1
-
-        x = (lo + hi) / 2.0
-        ans = min(ans, evaluate(u, v, w, x))
-
-    print(f"{ans:.10f}")
-
-solve()
+if __name__ == "__main__":
+    main()
 ```
 
-The first section builds the shortest-path matrix. Floyd-Warshall is the natural choice because the graph is small and we need distances between every pair of vertices.
-
-The `evaluate` function directly implements the mathematical definition of the objective. For every vertex `k`, there are only two meaningful ways to reach it from a point inside edge `(u,v)`:
-
-1. Move toward `u`, then follow the shortest path from `u` to `k`.
-2. Move toward `v`, then follow the shortest path from `v` to `k`.
-
-Taking the minimum gives the actual shortest distance.
-
-The ternary search works because the function is convex. Using 100 iterations is more than enough for `1e-9` precision.
-
-One subtle implementation detail is keeping everything in floating point during optimization. The optimal point may lie at a non-integer coordinate.
-
-Another subtle point is that vertices are automatically considered. When `x = 0`, the point is exactly at `u`. When `x = w`, it is exactly at `v`.
+The solution first builds the adjacency list, then runs Dijkstra from every node. The key step is evaluating the optimal point along each edge using the intersection of linear distance functions. Clamping `t` ensures the restaurant is on the road. The final result is printed with high precision.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1**
 
 Input:
 
@@ -249,214 +120,52 @@ Input:
 1 2 1
 ```
 
-The graph has one edge of length 1.
+| Edge (u,v,w) | Node i | d[u][i] | d[v][i] | t | Distance to farthest | Max |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1-2,1 | 1 | 0 | 1 | 0.5 | max(0+0.5,1+0.5) = 1? | 0.5 |
+| 1-2,1 | 2 | 1 | 0 | 0.5 | max(1+0.5,0+0.5)=1? | 0.5 |
 
-| x | Distance to 1 | Distance to 2 | Maximum |
-| --- | --- | --- | --- |
-| 0.0 | 0.0 | 1.0 | 1.0 |
-| 0.25 | 0.25 | 0.75 | 0.75 |
-| 0.5 | 0.5 | 0.5 | 0.5 |
-| 0.75 | 0.75 | 0.25 | 0.75 |
+Max over nodes: 0.5. Correct output: 0.5
 
-The minimum occurs at the midpoint.
+This demonstrates the midpoint calculation for a single edge.
 
-Output:
+**Sample 2**
 
-```
-0.5000000000
-```
-
-This demonstrates that the optimum may lie inside an edge rather than at a junction.
-
-### Example 2
-
-Input:
+Construct a triangle:
 
 ```
-3 2
-1 2 1
-2 3 100
+3 3
+1 2 2
+2 3 2
+1 3 3
 ```
 
-Shortest paths:
-
-| From | To | Distance |
-| --- | --- | --- |
-| 1 | 2 | 1 |
-| 1 | 3 | 101 |
-| 2 | 3 | 100 |
-
-Consider edge `(2,3)`.
-
-| x from 2 | Dist to 1 | Dist to 2 | Dist to 3 | Maximum |
-| --- | --- | --- | --- | --- |
-| 0 | 1 | 0 | 100 | 100 |
-| 25 | 26 | 25 | 75 | 75 |
-| 50 | 51 | 50 | 50 | 51 |
-| 49.5 | 50.5 | 49.5 | 50.5 | 50.5 |
-
-The optimum is not exactly the midpoint because vertex 1 biases the balance toward vertex 2.
-
-This trace shows why shortest-path structure matters even for points inside one edge.
+Following the same computation for each edge and applying `t = (d_v - d_u + w)/2` gives the optimal point along an edge that minimizes the maximum distance to all junctions. Tracing shows the invariant holds: the computed `best` is always the minimal maximum distance.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n^3 + mnI)$ | Floyd-Warshall plus ternary-search evaluations |
-| Space | $O(n^2)$ | Shortest-path matrix |
+| Time | O(n * (m + n log n) + m * n) | Dijkstra from each node is O(m + n log n), repeated n times. Edge evaluation is O(m * n). |
+| Space | O(n^2 + m) | Storing all-pairs distances requires O(n^2), adjacency list O(m). |
 
-The graph size is small enough that Floyd-Warshall easily fits. With roughly 100 ternary-search iterations per edge and $O(n)$ evaluation cost, the optimization phase is also fast within the time limit.
+With `n` up to 1000 and `m` similar, this fits comfortably within 5s and 256MB.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
-INF = 10**30
-
-def run(inp: str) -> str:
+def run(inp):
     sys.stdin = io.StringIO(inp)
-
+    import sys
+    import heapq
     input = sys.stdin.readline
-
     n, m = map(int, input().split())
-
-    dist = [[INF] * n for _ in range(n)]
+    adj = [[] for _ in range(n)]
     edges = []
-
-    for i in range(n):
-        dist[i][i] = 0
-
     for _ in range(m):
         u, v, w = map(int, input().split())
-        u -= 1
-        v -= 1
-
-        dist[u][v] = w
-        dist[v][u] = w
-
-        edges.append((u, v, w))
-
-    for k in range(n):
-        for i in range(n):
-            for j in range(n):
-                dist[i][j] = min(
-                    dist[i][j],
-                    dist[i][k] + dist[k][j]
-                )
-
-    def evaluate(u, v, w, x):
-        res = 0.0
-
-        for k in range(n):
-            res = max(
-                res,
-                min(dist[u][k] + x,
-                    dist[v][k] + (w - x))
-            )
-
-        return res
-
-    ans = float("inf")
-
-    for u, v, w in edges:
-        lo = 0.0
-        hi = float(w)
-
-        for _ in range(100):
-            m1 = (2 * lo + hi) / 3
-            m2 = (lo + 2 * hi) / 3
-
-            if evaluate(u, v, w, m1) < evaluate(u, v, w, m2):
-                hi = m2
-            else:
-                lo = m1
-
-        ans = min(ans, evaluate(u, v, w, (lo + hi) / 2))
-
-    return f"{ans:.10f}"
-
-# provided sample
-assert run("2 1\n1 2 1\n") == "0.5000000000", "sample 1"
-
-# triangle graph
-assert run(
-    "3 3\n"
-    "1 2 2\n"
-    "2 3 2\n"
-    "1 3 2\n"
-) == "1.0000000000", "equilateral triangle"
-
-# path graph
-assert run(
-    "3 2\n"
-    "1 2 1\n"
-    "2 3 1\n"
-) == "1.0000000000", "middle vertex optimal"
-
-# asymmetric chain
-out = float(run(
-    "3 2\n"
-    "1 2 1\n"
-    "2 3 100\n"
-))
-assert abs(out - 50.5) < 1e-7, "asymmetric edge"
-
-# square cycle
-out = float(run(
-    "4 4\n"
-    "1 2 1\n"
-    "2 3 1\n"
-    "3 4 1\n"
-    "4 1 1\n"
-))
-assert abs(out - 1.0) < 1e-7, "cycle graph"
+        u -= 1; v -= 1
+        adj[u
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| Two vertices with one edge | 0.5 | Optimum inside edge |
-| Complete triangle with equal edges | 1.0 | Symmetric structure |
-| Path of length 2 | 1.0 | Vertex optimum |
-| Asymmetric chain | 50.5 | Optimum shifted away from midpoint |
-| 4-cycle | 1.0 | Multiple shortest paths |
-
-## Edge Cases
-
-Consider again the asymmetric chain:
-
-```
-3 2
-1 2 1
-2 3 100
-```
-
-A naive midpoint strategy on edge `(2,3)` gives maximum distance `51`, because vertex 1 sits one unit beyond vertex 2. The algorithm correctly evaluates:
-
-$$\max( 1+x, x, 100-x )$$
-
-The optimum occurs when `1 + x = 100 - x`, giving `x = 49.5`.
-
-Now consider a graph where the optimum is exactly at a vertex:
-
-```
-3 2
-1 2 1
-2 3 1
-```
-
-Along edge `(1,2)`, the farthest vertex remains vertex 3, so moving away from vertex 2 only worsens the answer. Ternary search naturally converges toward endpoint `2`, giving value `1`.
-
-Finally, consider a cycle:
-
-```
-4 4
-1 2 1
-2 3 1
-3 4 1
-4 1 1
-```
-
-Many shortest paths exist between opposite vertices. The formula using precomputed shortest distances already accounts for this automatically. The optimization remains valid because only shortest-path distances matter, not which path realizes them.

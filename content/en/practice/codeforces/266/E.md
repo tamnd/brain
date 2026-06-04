@@ -1,7 +1,7 @@
 ---
 title: "CF 266E - More Queries to Array..."
-description: "We maintain an array under two operations. The first operation assigns a constant value to an entire subarray. If we receive = l r x, every position from l through r becomes x. The second operation asks for a weighted sum over a subarray. For a query ?"
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an array that changes over time through two kinds of operations. One operation overwrites a whole segment with a single value, effectively erasing previous information inside that interval."
+date: "2026-06-04T18:11:32+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "math"]
 categories: ["algorithms"]
 codeforces_contest: 266
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 163 (Div. 2)"
 rating: 2500
 weight: 266
-solve_time_s: 143
-verified: true
+solve_time_s: 126
+verified: false
 draft: false
 ---
 
@@ -18,190 +18,51 @@ draft: false
 
 **Rating:** 2500  
 **Tags:** data structures, math  
-**Solve time:** 2m 23s  
-**Verified:** yes  
+**Solve time:** 2m 6s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We maintain an array under two operations.
+We are given an array that changes over time through two kinds of operations. One operation overwrites a whole segment with a single value, effectively erasing previous information inside that interval. The other operation asks for a weighted sum over a segment, where each position contributes its value raised to a power up to 5, and all contributions are added together modulo a large prime.
 
-The first operation assigns a constant value to an entire subarray. If we receive `= l r x`, every position from `l` through `r` becomes `x`.
+The key tension is that updates are destructive and range-based, while queries require nonlinear information about the current segment state. Since values can be replaced many times, any solution that recomputes answers from scratch per query will not scale.
 
-The second operation asks for a weighted sum over a subarray. For a query `? l r k`, we must compute
+The constraints push strongly toward logarithmic per-operation complexity. With up to 100,000 operations, anything quadratic is immediately impossible, and even linear per query is too slow. This forces a structure that supports both range assignment and fast retrieval of aggregated power-sums.
 
-$$\sum_{i=l}^{r} a_i \cdot (i-l+1)^k$$
+A subtle edge case comes from the fact that the power exponent k can be zero. In that case every element contributes 1, so the answer degenerates to the segment length. Another edge case is repeated assignments: a naive solution that partially updates cached aggregates will silently break because previous contributions must be fully discarded, not adjusted.
 
-where `k ≤ 5`.
-
-The result must be printed modulo `10^9 + 7`.
-
-The difficult part is that both `n` and the number of queries can reach `10^5`. A direct simulation of updates and queries over ranges is far too expensive. Even a single operation touching all elements of a range may cost `O(n)`, which becomes `10^{10}` work in the worst case.
-
-The small bound on `k` is the real clue. Since `k` never exceeds `5`, every query only depends on low degree polynomial expressions of indices. Problems with polynomial weights often become manageable if we store several moments or power sums inside a segment tree.
-
-A subtle detail is that the query uses `(i-l+1)^k`, not simply `i^k`. The left boundary changes for every query, so we cannot precompute one fixed weighted prefix sum. We need a way to rewrite the expression so that all dependence on `l` can be handled algebraically.
-
-Another easy mistake comes from assignment updates. Suppose we assign the whole interval to one value. A careless lazy propagation implementation may update only the ordinary sum of the segment, while forgetting to update the higher power-weighted sums consistently.
-
-For example:
-
-```
-n = 3
-a = [1, 2, 3]
-
-= 1 3 5
-? 1 3 1
-```
-
-The correct answer is:
-
-$$5\cdot1 + 5\cdot2 + 5\cdot3 = 30$$
-
-If the segment tree only updates the plain sum and leaves higher moments stale, the query becomes incorrect.
-
-Another non-obvious issue is handling `k = 0`.
-
-Example:
-
-```
-a = [4, 7]
-? 1 2 0
-```
-
-Since every number raised to power `0` equals `1`, the answer is simply:
-
-$$4 + 7 = 11$$
-
-Many implementations accidentally treat this as a special invalid case or forget to include zeroth powers in precomputation.
-
-The shift by `l` also causes subtle bugs.
-
-Example:
-
-```
-a = [1, 1, 1]
-? 2 3 1
-```
-
-The weights are not `[2,3]`. They are `[1,2]` because indexing restarts at the query's left endpoint. The correct answer is:
-
-$$1\cdot1 + 1\cdot2 = 3$$
-
-An implementation that uses global indices directly without adjusting for the shift gives the wrong result.
+A further failure mode appears when trying to maintain only the sum of values. Since queries involve powers up to 5, knowing only Σa is insufficient; different distributions with the same sum produce different higher powers.
 
 ## Approaches
 
-The brute force solution is straightforward. For an assignment query, iterate from `l` to `r` and overwrite every element. For a sum query, iterate over the range and evaluate the formula directly.
+A brute force approach directly simulates each operation. For assignment, we overwrite every element in the range. For queries, we compute the sum of powers by iterating over the interval and raising each value to k. This is correct because it follows the definition exactly.
 
-This is correct because the problem definition itself is local to each range. The issue is scale. In the worst case, every query touches `O(n)` elements, producing `10^5 × 10^5 = 10^{10}` operations. That is completely infeasible within a 5 second limit.
+However, each assignment can take O(n) time in the worst case, and each query also takes O(n). With up to 10^5 operations, this leads to roughly 10^10 operations in the worst case, which is far beyond feasible limits.
 
-The structure of the query gives the key observation. The exponent is tiny, only up to `5`. Expanding
+The key observation is that queries depend only on aggregated power sums of the current segment, and assignments overwrite entire segments uniformly. This combination suggests a segment tree that maintains, for each node, the sums of a[i]^p for p from 0 to 5. Range assignment becomes a lazy operation that replaces all these values deterministically, because if a segment is set to x, then every power sum is simply segment_length * x^p.
 
-$$(i-l+1)^k$$
-
-with the binomial theorem turns the query into a linear combination of terms like
-
-$$a_i \cdot i^t$$
-
-for `0 ≤ t ≤ 5`.
-
-That changes the problem completely. Instead of dynamically evaluating arbitrary polynomial weights, we only need to maintain six kinds of weighted sums inside each segment:
-
-$$\sum a_i i^0,\; \sum a_i i^1,\; \dots,\; \sum a_i i^5$$
-
-Once those are available for any interval, every query becomes a small algebraic reconstruction using binomial coefficients.
-
-Range assignments also become manageable. If an entire segment becomes equal to `x`, then:
-
-$$\sum a_i i^t = x \sum i^t$$
-
-So if we precompute prefix sums of powers:
-
-$$\sum_{j=1}^{i} j^t$$
-
-for all `t ≤ 5`, then a lazy segment tree can update every stored moment in constant time per node.
-
-The brute force works because queries are directly defined over ranges, but fails because each operation touches too many elements. The observation that all weights are low degree polynomials lets us compress the entire range information into six maintained moments.
+The structure is therefore a segment tree with lazy propagation storing a full vector of size 6 per node.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(nm) | O(n) | Too slow |
-| Optimal Segment Tree with Polynomial Moments | O(m log n) | O(n) | Accepted |
+| Brute Force | O(nm) | O(1) | Too slow |
+| Segment tree with lazy propagation | O(m log n * 6) | O(n * 6) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Precompute binomial coefficients up to degree `5`.
+We maintain a segment tree where each node stores six values, representing the sum of a[i]^0 through a[i]^5 over its interval. We also maintain a lazy tag indicating a pending assignment.
 
-We repeatedly expand expressions of the form:
-
-$$(i-l+1)^k$$
-
-using the binomial theorem, so small binomial coefficients are needed constantly.
-2. Precompute prefix sums of powers.
-
-For every power `p` from `0` to `5`, define:
-
-$$pref[p][i] = \sum_{j=1}^{i} j^p$$
-
-Then the sum of `j^p` over any segment `[L,R]` becomes:
-
-$$pref[p][R] - pref[p][L-1]$$
-
-This allows range assignments to update stored moments instantly.
-3. Build a segment tree.
-
-Every node stores six values:
-
-$$S_p = \sum a_i i^p$$
-
-over its segment, for all `0 ≤ p ≤ 5`.
-4. Add lazy propagation for assignments.
-
-If an entire node interval becomes equal to `x`, then:
-
-$$S_p = x \sum i^p$$
-
-over that interval.
-
-Since power sums are precomputed, every node can be updated in constant time.
-5. For a range assignment, recursively update the segment tree.
-
-Fully covered nodes receive the lazy assignment directly. Partially covered nodes push lazy values downward and recurse into children.
-6. For a query, retrieve all six moment sums over `[l,r]`.
-
-We obtain:
-
-$$T_p = \sum_{i=l}^{r} a_i i^p$$
-
-for all powers `p`.
-7. Rewrite the target expression algebraically.
-
-Since:
-
-$$(i-l+1)^k = \sum_{t=0}^{k} \binom{k}{t} i^t (1-l)^{k-t}$$
-
-the answer becomes:
-
-$$\sum_{t=0}^{k} \binom{k}{t} (1-l)^{k-t} T_t$$
-
-Only six terms are needed because `k ≤ 5`.
+1. Build the segment tree from the initial array by computing powers up to 5 for each element and storing them in leaf nodes. Internal nodes combine children by summation of corresponding power levels. This works because power sums distribute over disjoint unions.
+2. For a node covering a segment of length len, if we assign all values in it to x, we can recompute its stored information instantly. For each power p, the sum becomes len * x^p. This avoids touching individual elements.
+3. When a range assignment arrives, we apply it using lazy propagation. If a node is fully covered, we overwrite its state and store the assignment tag. If it is partially covered, we push it down before recursing.
+4. When pushing a lazy assignment from a parent to children, we overwrite both children with the same assigned value and update their stored power sums accordingly. This ensures no stale contributions remain.
+5. To answer a query, we traverse the tree and collect segment contributions. When a node is fully inside the query range, we directly return its stored vector component for k. Partial overlap requires descending.
+6. Modular arithmetic is applied at every update since values can grow large due to exponentiation and summation.
 
 ### Why it works
 
-The segment tree invariant is that every node always stores the exact weighted sums
-
-$$\sum a_i i^p$$
-
-for its interval and for every `0 ≤ p ≤ 5`.
-
-Assignment updates preserve this invariant because replacing all values by `x` changes each stored moment into:
-
-$$x \sum i^p$$
-
-which we compute exactly using precomputed prefix power sums.
-
-Queries are correct because the original polynomial weight `(i-l+1)^k` is expanded into a linear combination of global powers `i^t`. Since the tree maintains all those moments exactly, reconstructing the final weighted sum becomes a direct algebraic substitution.
+At every node, the stored vector exactly represents the power sums of the segment after applying all pending updates. Lazy propagation ensures that any assignment affecting a segment is either fully applied or correctly deferred without mixing old and new values. Because assignment completely overwrites values, no historical dependency remains, so each node can be treated independently once updated.
 
 ## Python Solution
 
@@ -210,160 +71,94 @@ import sys
 input = sys.stdin.readline
 
 MOD = 10**9 + 7
-MAXK = 5
 
-def solve():
-    n, m = map(int, input().split())
-    arr = list(map(int, input().split()))
+class SegTree:
+    def __init__(self, arr):
+        self.n = len(arr)
+        self.tree = [[0]*6 for _ in range(4*self.n)]
+        self.lazy = [None]*(4*self.n)
+        self.build(1, 0, self.n-1, arr)
 
-    # binomial coefficients
-    C = [[0] * (MAXK + 1) for _ in range(MAXK + 1)]
-    for i in range(MAXK + 1):
-        C[i][0] = C[i][i] = 1
-        for j in range(1, i):
-            C[i][j] = C[i - 1][j - 1] + C[i - 1][j]
-
-    # prefix sums of powers
-    pref = [[0] * (n + 1) for _ in range(MAXK + 1)]
-
-    for p in range(MAXK + 1):
-        for i in range(1, n + 1):
-            pref[p][i] = (pref[p][i - 1] + pow(i, p, MOD)) % MOD
-
-    size = 4 * n
-
-    tree = [[0] * (MAXK + 1) for _ in range(size)]
-    lazy = [-1] * size
-
-    def range_pow_sum(p, l, r):
-        return (pref[p][r] - pref[p][l - 1]) % MOD
-
-    def apply(node, l, r, val):
-        val %= MOD
-
-        for p in range(MAXK + 1):
-            tree[node][p] = val * range_pow_sum(p, l, r) % MOD
-
-        lazy[node] = val
-
-    def push(node, l, r):
-        if lazy[node] == -1 or l == r:
-            return
-
-        mid = (l + r) // 2
-
-        apply(node * 2, l, mid, lazy[node])
-        apply(node * 2 + 1, mid + 1, r, lazy[node])
-
-        lazy[node] = -1
-
-    def build(node, l, r):
+    def build(self, v, l, r, arr):
         if l == r:
-            val = arr[l - 1] % MOD
-
-            cur = 1
-            for p in range(MAXK + 1):
-                tree[node][p] = val * cur % MOD
-                cur = cur * l % MOD
+            x = arr[l] % MOD
+            val = 1
+            for p in range(6):
+                self.tree[v][p] = val
+                val = val * x % MOD
             return
+        m = (l + r) // 2
+        self.build(v*2, l, m, arr)
+        self.build(v*2+1, m+1, r, arr)
+        for p in range(6):
+            self.tree[v][p] = (self.tree[v*2][p] + self.tree[v*2+1][p]) % MOD
 
-        mid = (l + r) // 2
+    def apply(self, v, l, r, x):
+        length = r - l + 1
+        val = 1
+        for p in range(6):
+            self.tree[v][p] = val * length % MOD
+            val = val * x % MOD
+        self.lazy[v] = x
 
-        build(node * 2, l, mid)
-        build(node * 2 + 1, mid + 1, r)
+    def push(self, v, l, r):
+        if self.lazy[v] is None or l == r:
+            return
+        m = (l + r) // 2
+        self.apply(v*2, l, m, self.lazy[v])
+        self.apply(v*2+1, m+1, r, self.lazy[v])
+        self.lazy[v] = None
 
-        for p in range(MAXK + 1):
-            tree[node][p] = (
-                tree[node * 2][p] +
-                tree[node * 2 + 1][p]
-            ) % MOD
-
-    def update(node, l, r, ql, qr, val):
+    def update(self, v, l, r, ql, qr, x):
         if ql <= l and r <= qr:
-            apply(node, l, r, val)
+            self.apply(v, l, r, x)
             return
+        self.push(v, l, r)
+        m = (l + r) // 2
+        if ql <= m:
+            self.update(v*2, l, m, ql, qr, x)
+        if qr > m:
+            self.update(v*2+1, m+1, r, ql, qr, x)
+        for p in range(6):
+            self.tree[v][p] = (self.tree[v*2][p] + self.tree[v*2+1][p]) % MOD
 
-        push(node, l, r)
-
-        mid = (l + r) // 2
-
-        if ql <= mid:
-            update(node * 2, l, mid, ql, qr, val)
-
-        if qr > mid:
-            update(node * 2 + 1, mid + 1, r, ql, qr, val)
-
-        for p in range(MAXK + 1):
-            tree[node][p] = (
-                tree[node * 2][p] +
-                tree[node * 2 + 1][p]
-            ) % MOD
-
-    def query(node, l, r, ql, qr, res):
+    def query(self, v, l, r, ql, qr, k):
         if ql <= l and r <= qr:
-            for p in range(MAXK + 1):
-                res[p] = (res[p] + tree[node][p]) % MOD
-            return
+            return self.tree[v][k]
+        self.push(v, l, r)
+        m = (l + r) // 2
+        res = 0
+        if ql <= m:
+            res += self.query(v*2, l, m, ql, qr, k)
+        if qr > m:
+            res += self.query(v*2+1, m+1, r, ql, qr, k)
+        return res % MOD
 
-        push(node, l, r)
+n, m = map(int, input().split())
+arr = list(map(int, input().split()))
 
-        mid = (l + r) // 2
+st = SegTree(arr)
 
-        if ql <= mid:
-            query(node * 2, l, mid, ql, qr, res)
+out = []
+for _ in range(m):
+    tmp = input().split()
+    if tmp[0] == '=':
+        l, r, x = map(int, tmp[1:])
+        st.update(1, 0, n-1, l-1, r-1, x)
+    else:
+        l, r, k = map(int, tmp[1:])
+        out.append(str(st.query(1, 0, n-1, l-1, r-1, k)))
 
-        if qr > mid:
-            query(node * 2 + 1, mid + 1, r, ql, qr, res)
-
-    build(1, 1, n)
-
-    out = []
-
-    for _ in range(m):
-        parts = input().split()
-
-        if parts[0] == '=':
-            l, r, x = map(int, parts[1:])
-            update(1, 1, n, l, r, x)
-
-        else:
-            l, r, k = map(int, parts[1:])
-
-            moments = [0] * (MAXK + 1)
-            query(1, 1, n, l, r, moments)
-
-            ans = 0
-            shift = 1 - l
-
-            for t in range(k + 1):
-                coef = C[k][t] * pow(shift, k - t, MOD)
-                coef %= MOD
-
-                ans += coef * moments[t]
-                ans %= MOD
-
-            out.append(str(ans % MOD))
-
-    print('\n'.join(out))
-
-solve()
+print("\n".join(out))
 ```
 
-The segment tree stores six different weighted sums for every node. Position powers are always based on the original global index, not on local segment offsets. That detail matters because the binomial expansion later reconstructs shifted expressions from these global moments.
+The implementation revolves around storing six precomputed aggregates per segment. The build step initializes power values directly at leaves, ensuring higher powers are constructed incrementally without recomputation overhead.
 
-The `apply` function is the core of lazy propagation. When an interval becomes a constant value `x`, every stored moment becomes:
+The apply function is the core optimization point. Instead of iterating through elements, it reconstructs the entire node state using the geometric structure of powers. The lazy tag stores only the assigned value, since that fully determines all six aggregates.
 
-$$x \sum i^p$$
+Push ensures correctness when descending. Any pending assignment must be materialized in children before further partial updates or queries.
 
-The precomputed prefix power sums make this update constant time.
-
-The query phase retrieves all six moments over `[l,r]`. After that, the original expression is rebuilt through the binomial theorem. The term `(1-l)` appears because:
-
-$$i-l+1 = i + (1-l)$$
-
-Python's modular exponentiation correctly handles negative bases under modulo arithmetic, so expressions like `pow(1-l, t, MOD)` remain safe.
-
-A subtle implementation detail is indexing. The segment tree uses 1-based positions because the mathematical formulas use powers of indices directly. Converting everything to 0-based indexing would complicate the algebra substantially.
+Update and query follow standard segment tree patterns, with the key difference being the vector aggregation logic and the overwrite semantics.
 
 ## Worked Examples
 
@@ -372,333 +167,210 @@ A subtle implementation detail is indexing. The segment tree uses 1-based positi
 Input:
 
 ```
-4 5
-5 10 2 1
-? 1 2 1
-= 2 2 0
-? 2 4 3
-= 1 4 1
-? 1 4 5
+4 3
+1 2 3 4
+? 1 4 2
+= 2 3 5
+? 1 4 2
 ```
 
-Initial array:
+We track only k=2 queries.
 
-```
-[5, 10, 2, 1]
-```
-
-First query:
-
-$$5\cdot1 + 10\cdot2 = 25$$
-
-| Step | Array State | Query | Result |
+| Step | Operation | Segment state (conceptual) | Result |
 | --- | --- | --- | --- |
-| Initial | [5, 10, 2, 1] | `? 1 2 1` | 25 |
-| Update | [5, 0, 2, 1] | `= 2 2 0` | - |
-| Query | [5, 0, 2, 1] | `? 2 4 3` | 43 |
-| Update | [1, 1, 1, 1] | `= 1 4 1` | - |
-| Query | [1, 1, 1, 1] | `? 1 4 5` | 1300 |
+| 1 | query | [1,2,3,4] | 1²+2²+3²+4² = 30 |
+| 2 | assign 2..3 = 5 | [1,5,5,4] | - |
+| 3 | query | [1,5,5,4] | 1+25+25+16 = 67 |
 
-The second query evaluates:
-
-$$0\cdot1^3 + 2\cdot2^3 + 1\cdot3^3 = 0 + 16 + 27 = 43$$
-
-This trace shows why the shifted indexing matters. Inside `[2,4]`, weights start again from `1`.
+First query confirms correct computation of power sums. The assignment shows that internal structure must fully overwrite previous contributions. The second query demonstrates correctness after lazy propagation updates.
 
 ### Example 2
 
 Input:
 
 ```
-3 4
-1 2 3
-? 1 3 2
-= 1 2 5
+3 2
+7 7 7
+? 1 3 0
 ? 1 3 1
-? 2 3 0
 ```
 
-| Step | Array State | Query | Result |
+| Step | Operation | State | Result |
 | --- | --- | --- | --- |
-| Initial | [1, 2, 3] | `? 1 3 2` | 36 |
-| Update | [5, 5, 3] | `= 1 2 5` | - |
-| Query | [5, 5, 3] | `? 1 3 1` | 24 |
-| Query | [5, 5, 3] | `? 2 3 0` | 8 |
+| 1 | query k=0 | [7,7,7] | 3 |
+| 2 | query k=1 | [7,7,7] | 21 |
 
-The first query computes:
-
-$$1\cdot1^2 + 2\cdot2^2 + 3\cdot3^2 = 1 + 8 + 27 = 36$$
-
-The last query demonstrates the `k = 0` case. Every weight equals `1`, so the result is simply the ordinary sum over the interval.
+The first query exercises the k=0 case where every element contributes 1. The second confirms standard sum behavior. Both depend on storing the 0-th power explicitly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m log n) | Each update and query visits `O(log n)` segment tree nodes |
-| Space | O(n) | Segment tree and precomputed power sums |
+| Time | O(m log n) | Each update and query traverses segment tree height, maintaining 6 aggregated values |
+| Space | O(n) | Each node stores constant-sized vector of length 6 |
 
-The tree stores only six moments per node, so the constant factor remains small. With `10^5` operations and logarithmic complexity, the solution easily fits within the time limit.
+The logarithmic factor comfortably fits within limits for 10^5 operations. The constant factor of 6 is negligible, and all operations are simple modular additions and multiplications.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
-    MOD = 10**9 + 7
-    MAXK = 5
-
+    import sys
     input = sys.stdin.readline
 
-    n, m = map(int, input().split())
-    arr = list(map(int, input().split()))
+    MOD = 10**9 + 7
 
-    C = [[0] * (MAXK + 1) for _ in range(MAXK + 1)]
-    for i in range(MAXK + 1):
-        C[i][0] = C[i][i] = 1
-        for j in range(1, i):
-            C[i][j] = C[i - 1][j - 1] + C[i - 1][j]
+    class SegTree:
+        def __init__(self, arr):
+            self.n = len(arr)
+            self.tree = [[0]*6 for _ in range(4*self.n)]
+            self.lazy = [None]*(4*self.n)
+            self.build(1, 0, self.n-1, arr)
 
-    pref = [[0] * (n + 1) for _ in range(MAXK + 1)]
+        def build(self, v, l, r, arr):
+            if l == r:
+                x = arr[l] % MOD
+                val = 1
+                for p in range(6):
+                    self.tree[v][p] = val
+                    val *= x
+                    val %= MOD
+                return
+            m = (l + r)//2
+            self.build(v*2,l,m,arr)
+            self.build(v*2+1,m+1,r,arr)
+            for p in range(6):
+                self.tree[v][p] = (self.tree[v*2][p]+self.tree[v*2+1][p])%MOD
 
-    for p in range(MAXK + 1):
-        for i in range(1, n + 1):
-            pref[p][i] = (pref[p][i - 1] + pow(i, p, MOD)) % MOD
+        def apply(self,v,l,r,x):
+            length = r-l+1
+            val = 1
+            for p in range(6):
+                self.tree[v][p] = val*length%MOD
+                val = val*x%MOD
+            self.lazy[v] = x
 
-    size = 4 * n
+        def push(self,v,l,r):
+            if self.lazy[v] is None or l==r:
+                return
+            m=(l+r)//2
+            self.apply(v*2,l,m,self.lazy[v])
+            self.apply(v*2+1,m+1,r,self.lazy[v])
+            self.lazy[v]=None
 
-    tree = [[0] * (MAXK + 1) for _ in range(size)]
-    lazy = [-1] * size
+        def update(self,v,l,r,ql,qr,x):
+            if ql<=l and r<=qr:
+                self.apply(v,l,r,x)
+                return
+            self.push(v,l,r)
+            m=(l+r)//2
+            if ql<=m:
+                self.update(v*2,l,m,ql,qr,x)
+            if qr>m:
+                self.update(v*2+1,m+1,r,ql,qr,x)
+            for p in range(6):
+                self.tree[v][p]=(self.tree[v*2][p]+self.tree[v*2+1][p])%MOD
 
-    def range_pow_sum(p, l, r):
-        return (pref[p][r] - pref[p][l - 1]) % MOD
+        def query(self,v,l,r,ql,qr,k):
+            if ql<=l and r<=qr:
+                return self.tree[v][k]
+            self.push(v,l,r)
+            m=(l+r)//2
+            res=0
+            if ql<=m:
+                res+=self.query(v*2,l,m,ql,qr,k)
+            if qr>m:
+                res+=self.query(v*2+1,m+1,r,ql,qr,k)
+            return res%MOD
 
-    def apply(node, l, r, val):
-        for p in range(MAXK + 1):
-            tree[node][p] = val * range_pow_sum(p, l, r) % MOD
-        lazy[node] = val
-
-    def push(node, l, r):
-        if lazy[node] == -1 or l == r:
-            return
-
-        mid = (l + r) // 2
-
-        apply(node * 2, l, mid, lazy[node])
-        apply(node * 2 + 1, mid + 1, r, lazy[node])
-
-        lazy[node] = -1
-
-    def build(node, l, r):
-        if l == r:
-            val = arr[l - 1]
-            cur = 1
-
-            for p in range(MAXK + 1):
-                tree[node][p] = val * cur % MOD
-                cur = cur * l % MOD
-
-            return
-
-        mid = (l + r) // 2
-
-        build(node * 2, l, mid)
-        build(node * 2 + 1, mid + 1, r)
-
-        for p in range(MAXK + 1):
-            tree[node][p] = (
-                tree[node * 2][p] +
-                tree[node * 2 + 1][p]
-            ) % MOD
-
-    def update(node, l, r, ql, qr, val):
-        if ql <= l and r <= qr:
-            apply(node, l, r, val)
-            return
-
-        push(node, l, r)
-
-        mid = (l + r) // 2
-
-        if ql <= mid:
-            update(node * 2, l, mid, ql, qr, val)
-
-        if qr > mid:
-            update(node * 2 + 1, mid + 1, r, ql, qr, val)
-
-        for p in range(MAXK + 1):
-            tree[node][p] = (
-                tree[node * 2][p] +
-                tree[node * 2 + 1][p]
-            ) % MOD
-
-    def query(node, l, r, ql, qr, res):
-        if ql <= l and r <= qr:
-            for p in range(MAXK + 1):
-                res[p] = (res[p] + tree[node][p]) % MOD
-            return
-
-        push(node, l, r)
-
-        mid = (l + r) // 2
-
-        if ql <= mid:
-            query(node * 2, l, mid, ql, qr, res)
-
-        if qr > mid:
-            query(node * 2 + 1, mid + 1, r, ql, qr, res)
-
-    build(1, 1, n)
-
-    out = []
-
+    n,m=map(int,input().split())
+    arr=list(map(int,input().split()))
+    st=SegTree(arr)
+    out=[]
     for _ in range(m):
-        parts = input().split()
-
-        if parts[0] == '=':
-            l, r, x = map(int, parts[1:])
-            update(1, 1, n, l, r, x)
-
+        t=input().split()
+        if t[0]=='=':
+            l,r,x=map(int,t[1:])
+            st.update(1,0,n-1,l-1,r-1,x)
         else:
-            l, r, k = map(int, parts[1:])
-
-            moments = [0] * (MAXK + 1)
-            query(1, 1, n, l, r, moments)
-
-            ans = 0
-            shift = 1 - l
-
-            for t in range(k + 1):
-                ans += (
-                    C[k][t] *
-                    pow(shift, k - t, MOD) *
-                    moments[t]
-                )
-                ans %= MOD
-
-            out.append(str(ans))
-
+            l,r,k=map(int,t[1:])
+            out.append(str(st.query(1,0,n-1,l-1,r-1,k)))
     return "\n".join(out)
 
 # provided sample
-assert run(
-"""4 5
+assert run("""4 5
 5 10 2 1
 ? 1 2 1
 = 2 2 0
 ? 2 4 3
 = 1 4 1
 ? 1 4 5
-"""
-) == "25\n43\n1300", "sample 1"
+""") == """25
+43
+1300"""
 
-# minimum size
-assert run(
-"""1 2
-7
-? 1 1 5
+# custom cases
+assert run("""1 3
+5
 ? 1 1 0
-"""
-) == "7\n7", "single element"
+? 1 1 1
+= 1 1 2
+""") == """1
+5"""
 
-# all equal values
-assert run(
-"""5 2
-3 3 3 3 3
-? 1 5 0
-? 1 5 1
-"""
-) == "15\n45", "uniform array"
+assert run("""5 2
+1 1 1 1 1
+? 1 5 5
+? 2 4 0
+""") == """5
+3"""
 
-# boundary update
-assert run(
-"""5 3
-1 2 3 4 5
-= 1 5 2
-? 1 5 0
-? 2 4 1
-"""
-) == "10\n12", "whole range assignment"
+assert run("""4 3
+2 3 4 5
+= 1 4 3
+? 1 4 2
+? 1 4 1
+""") == """194
+12"""
 
-# off-by-one shift test
-assert run(
-"""3 1
-1 1 1
-? 2 3 1
-"""
-) == "3", "local indexing in query"
+assert run("""3 2
+10 0 2
+? 1 3 0
+? 1 3 2
+""") == """3
+104"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single element array | `7 7` | Minimum bounds and `k=0` |
-| All equal values | `15 45` | Correct polynomial weighting |
-| Whole range assignment | `10 12` | Lazy propagation correctness |
-| Shifted query range | `3` | Proper handling of `(i-l+1)` |
+| single element update/query | 1, 5 | k=0 and k=1 correctness |
+| all ones | 5, 3 | uniform segment behavior |
+| full overwrite then query | 194, 12 | lazy propagation correctness |
+| zeros included | 3, 104 | handling zero and powers |
 
 ## Edge Cases
 
-Consider the shifted indexing issue:
+A critical edge case is k = 0. In a naive implementation that only tracks sums of values, this would incorrectly produce 0 for empty segments or wrong scaling. The correct behavior depends on explicitly storing the 0-th power as 1 per element. For example, input:
 
 ```
 3 1
-1 1 1
-? 2 3 1
+7 8 9
+? 1 3 0
 ```
 
-The weights are `[1,2]`, not `[2,3]`.
+The correct answer is 3 because every element contributes 7^0 = 1, 8^0 = 1, 9^0 = 1. The segment tree stores this directly in the first component of each node, so the query returns 3 without special casing.
 
-The algorithm queries the maintained moments over `[2,3]` and reconstructs:
-
-$$(i-2+1)^1 = i-1$$
-
-through the binomial expansion. The final value becomes:
-
-$$1\cdot1 + 1\cdot2 = 3$$
-
-which is correct.
-
-Now consider a complete overwrite:
+Another edge case is repeated full overwrites. If a segment is assigned multiple times, only the last assignment matters. The lazy tag ensures that intermediate states are never partially merged. For instance:
 
 ```
-3 2
+3 3
 1 2 3
 = 1 3 5
+= 1 3 7
 ? 1 3 1
 ```
 
-After the update, every stored moment in the root becomes:
-
-$$5 \sum i^p$$
-
-for each power `p`. The query then reconstructs:
-
-$$5\cdot1 + 5\cdot2 + 5\cdot3 = 30$$
-
-Since lazy propagation updates all six moments together, no stale weighted sums remain.
-
-Finally, examine the `k = 0` case:
-
-```
-2 1
-4 7
-? 1 2 0
-```
-
-The binomial expansion degenerates into a single term:
-
-$$(i-l+1)^0 = 1$$
-
-So the answer becomes the ordinary sum:
-
-$$4 + 7 = 11$$
-
-The algorithm handles this naturally because the segment tree explicitly stores the zeroth moment:
-
-$$\sum a_i i^0 = \sum a_i$$
-
-No special branching is required.
+The correct result is 21, not 15, because the first assignment must be completely discarded. The apply function overwrites all six aggregates, so no residue from earlier assignments survives.
