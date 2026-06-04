@@ -1,7 +1,7 @@
 ---
 title: "CF 195C - Try and Catch"
-description: "The task is to simulate the exception-handling behavior of a simple programming language. The program consists of three types of statements: try, catch(type, message), and throw(type)."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given the source code of a tiny language that contains only three kinds of statements: try, catch(type, message), and exactly one throw(type). Each try is paired with a later catch, forming a try-catch block."
+date: "2026-06-05T00:36:58+07:00"
 tags: ["codeforces", "competitive-programming", "expression-parsing", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 195
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 123 (Div. 2)"
 rating: 1800
 weight: 195
-solve_time_s: 68
+solve_time_s: 143
 verified: true
 draft: false
 ---
@@ -18,148 +18,524 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** expression parsing, implementation  
-**Solve time:** 1m 8s  
+**Solve time:** 2m 23s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The task is to simulate the exception-handling behavior of a simple programming language. The program consists of three types of statements: `try`, `catch(type, message)`, and `throw(type)`. Each `try` starts a new exception-handling block, and its corresponding `catch` closes the most recently opened `try` that has not yet been closed. A `throw` creates an exception of a certain type. When the program executes a `throw`, it searches backward for all open `try` blocks whose corresponding `catch` matches the thrown type. If multiple blocks match, the earliest `catch` after the `throw` is chosen. If no match exists, the output is "Unhandled Exception".
+We are given the source code of a tiny language that contains only three kinds of statements: `try`, `catch(type, message)`, and exactly one `throw(type)`.
 
-The input gives the number of lines followed by the program lines themselves, which may contain spaces, empty lines, or spacing around operators. The program is guaranteed syntactically correct, has exactly one `throw`, and every `try` has a matching `catch`. The output is the message printed by the activated `catch`, or the default "Unhandled Exception".
+Each `try` is paired with a later `catch`, forming a try-catch block. The input is guaranteed to be syntactically correct, so these blocks are properly nested.
 
-Given the maximum number of lines is $10^5$, the algorithm must run in roughly linear time. Nested `try-catch` blocks and irregular spacing make naive string scanning error-prone, especially if one tries to match lines strictly by position rather than logical nesting.
+When an exception is thrown, we must determine which catch block handles it. A catch block can handle the exception if three conditions hold:
 
-A non-obvious edge case is when multiple nested `try` blocks could catch the thrown exception. For example, if `throw(AE)` occurs inside two nested `try` blocks, and both corresponding `catch` statements could match `AE`, the activated catch is the one whose `catch` appears earliest in the program after the `throw`. A careless implementation that just looks at the last open `try` would give the wrong result.
+1. Its corresponding `try` appears before the `throw`.
+2. Its `catch` appears after the `throw`.
+3. Its exception type matches the thrown type.
 
-Another edge case is when there are empty lines or excessive spaces. For instance, `catch(AE,"msg")` might appear as `catch ( AE , "msg" )`. Parsing must be robust to whitespace.
+Among all such blocks, the language chooses the one whose `catch` statement appears earliest after the throw. We must print that catch block's message. If no block matches, we print:
+
+```
+Unhandled Exception
+```
+
+The program contains at most $10^5$ lines. This immediately rules out any solution that repeatedly scans large portions of the program. A quadratic algorithm would require roughly $10^{10}$ operations in the worst case, which is far beyond the limit. We need a linear or near-linear solution.
+
+The parsing itself is also part of the challenge. Lines may contain arbitrary spaces around keywords, parentheses, commas, and quotes. A solution that relies on exact formatting will fail.
+
+One subtle point is that the selected handler is not necessarily the innermost surrounding `try`. The language chooses the matching block whose `catch` occurs first after the throw.
+
+Consider:
+
+```
+try
+    try
+        throw(AE)
+    catch(BE,"x")
+catch(AE,"y")
+```
+
+The inner block surrounds the throw, but its exception type does not match. The correct output is:
+
+```
+y
+```
+
+Another easy mistake is to search only among blocks that are still "open" when the throw is reached. The language's definition depends on the relative positions of `try`, `throw`, and `catch`, not on simulating execution.
+
+For example:
+
+```
+try
+    throw(AE)
+catch(AE,"first")
+try
+catch(AE,"second")
+```
+
+The correct output is:
+
+```
+first
+```
+
+because the first matching catch after the throw is chosen.
+
+A third edge case occurs when no handler matches:
+
+```
+try
+    throw(AE)
+catch(BE,"wrong")
+```
+
+The output must be:
+
+```
+Unhandled Exception
+```
+
+even though the throw lies inside a try-catch block.
 
 ## Approaches
 
-The brute-force approach is to simulate the program literally: iterate line by line, maintain a stack of open `try` blocks, and when encountering the `throw`, scan forward to find the first `catch` that matches the type. This works because the program is correct, but if implemented naively, scanning forward could be $O(n^2)$ in a worst-case scenario with deep nesting, since each `throw` could scan nearly all remaining lines.
+A brute-force solution would first reconstruct all try-catch blocks. Then, after locating the throw, it could examine every block and check whether:
 
-The key observation is that we only need one pass if we maintain a stack of open `try` blocks as we process lines. Each `try` pushes its line index onto the stack. Each `catch` pops the last `try` from the stack and stores the exception type and message along with the starting index. When we reach the `throw`, the stack contains all `try` blocks that were opened before it. We can then scan the stored catch information to select the first catch that occurs after the throw and matches the thrown type. This reduces time complexity to $O(n)$, since every line is processed once and stack operations are constant time.
+- the block's `try` is before the throw,
+- the block's `catch` is after the throw,
+- the exception types match.
+
+Among all qualifying blocks, we would choose the one with the smallest catch position.
+
+This approach is correct because it directly implements the specification. If there are $m$ blocks, the work is $O(m)$, which is already acceptable. The real difficulty is reconstructing the blocks efficiently while parsing.
+
+A less careful implementation might repeatedly search for matching catches or repeatedly traverse nesting structures, leading to $O(n^2)$ behavior on deeply nested input.
+
+The key observation is that the program structure is perfectly nested. Every `catch` closes the most recent unmatched `try`. This is exactly the behavior of a stack.
+
+While scanning the program once, we can push the line number of every `try`. When a `catch` appears, it closes the topmost `try`, allowing us to immediately construct one complete block.
+
+After collecting all blocks and locating the single throw, determining the answer becomes a simple linear scan over the blocks.
+
+The entire solution runs in linear time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2) | O(n) | Too slow for n = 10^5 |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force with repeated searches | O(n²) | O(n) | Too slow |
+| Stack-based parsing + one scan | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize an empty stack for `try` blocks and a list to store `catch` information. Each element of the list will store the line index, exception type, and message.
-2. Iterate through each line of the program while keeping track of the line number.
-3. When encountering a `try`, push its line number onto the stack. We do not need further information yet because the matching `catch` will provide the type and message.
-4. When encountering a `catch(type, message)`, pop the last `try` line index from the stack and append a tuple `(try_index, catch_index, exception_type, message)` to the list of catches. This preserves the program order.
-5. When encountering the `throw(type)`, record the throw's line number and thrown type. There is only one `throw` so we stop tracking after this.
-6. After parsing all lines, scan the catch list. For each catch, check if its `try_index` is less than the `throw` line number and its `catch_index` is greater than the `throw` line number, and if its exception type matches the thrown type.
-7. The first catch that meets these criteria is the one that activates, so print its message. If no such catch exists, print "Unhandled Exception".
+1. Read all program lines.
+2. For every line, remove leading and trailing whitespace.
+3. Detect which statement the line contains.
+4. When a `try` is found, push its line index onto a stack.
 
-Why it works: The stack guarantees that each `catch` is paired with the most recent unclosed `try`. By storing the starting and ending line numbers, we can determine whether a `throw` falls within the range of a try-catch block. Scanning in order ensures that if multiple blocks can handle the exception, we select the one whose `catch` appears earliest after the `throw`. This replicates the language's semantics correctly.
+The most recent unmatched `try` must be the one closed next.
+5. When a `catch(type,message)` is found, pop the stack.
+
+The popped position is the matching `try` for this catch. Store a record containing:
+
+- try position
+- catch position
+- exception type
+- message
+6. When a `throw(type)` is found, store:
+
+- throw position
+- thrown exception type
+7. After parsing the whole program, examine every recorded block.
+8. A block can handle the exception if:
+
+- `try_position < throw_position`
+- `catch_position > throw_position`
+- `block_type == thrown_type`
+9. Among all matching blocks, choose the one with the smallest catch position.
+10. Print its message.
+11. If no block qualifies, print:
+
+```
+Unhandled Exception
+```
+
+### Why it works
+
+The stack reconstruction is correct because the statement guarantees that every `catch` closes the most recently opened unmatched `try`. This is exactly the standard parenthesis-matching property.
+
+Every recorded block therefore contains the correct pair of positions. A block is eligible precisely when its `try` is before the throw and its `catch` is after the throw, matching the language definition. Among eligible blocks, selecting the smallest catch position implements the rule that the earliest catch after the throw is activated. Since every possible block is checked exactly once, the algorithm cannot miss the correct handler.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
 import re
 
-n = int(input())
-lines = [input().strip() for _ in range(n)]
+input = sys.stdin.readline
 
-try_stack = []
-catches = []
-throw_line = -1
-throw_type = ""
+def solve():
+    n = int(input())
 
-for i, line in enumerate(lines):
-    line = line.strip()
-    if not line:
-        continue
-    if line.startswith("try"):
-        try_stack.append(i)
-    elif line.startswith("catch"):
-        m = re.match(r'catch\s*\(\s*([A-Za-z]+)\s*,\s*"(.*)"\s*\)', line)
-        if m:
-            exc_type, message = m.groups()
-            try_index = try_stack.pop()
-            catches.append((try_index, i, exc_type, message))
-    elif line.startswith("throw"):
-        m = re.match(r'throw\s*\(\s*([A-Za-z]+)\s*\)', line)
-        if m:
+    stack = []
+    blocks = []
+
+    throw_pos = -1
+    throw_type = ""
+
+    catch_re = re.compile(
+        r'catch\s*\(\s*([A-Za-z]+)\s*,\s*"([^"]+)"\s*\)'
+    )
+    throw_re = re.compile(
+        r'throw\s*\(\s*([A-Za-z]+)\s*\)'
+    )
+
+    for i in range(n):
+        line = input().strip()
+
+        if not line:
+            continue
+
+        if line.startswith("try"):
+            stack.append(i)
+
+        elif line.startswith("throw"):
+            m = throw_re.match(line)
             throw_type = m.group(1)
-            throw_line = i
+            throw_pos = i
 
-for try_idx, catch_idx, exc_type, message in catches:
-    if try_idx < throw_line < catch_idx and exc_type == throw_type:
-        print(message)
-        break
-else:
-    print("Unhandled Exception")
+        elif line.startswith("catch"):
+            m = catch_re.match(line)
+            exc_type = m.group(1)
+            message = m.group(2)
+
+            try_pos = stack.pop()
+            blocks.append((try_pos, i, exc_type, message))
+
+    answer = None
+    best_catch_pos = n + 1
+
+    for try_pos, catch_pos, exc_type, message in blocks:
+        if (
+            try_pos < throw_pos < catch_pos
+            and exc_type == throw_type
+        ):
+            if catch_pos < best_catch_pos:
+                best_catch_pos = catch_pos
+                answer = message
+
+    if answer is None:
+        print("Unhandled Exception")
+    else:
+        print(answer)
+
+solve()
 ```
 
-The code first strips lines and skips empty lines. `try_stack` ensures proper nesting, while `catches` tracks all catch blocks with their range. Regular expressions parse the `catch` and `throw` statements flexibly, ignoring extra spaces. After identifying the `throw`, the scan finds the first matching catch according to language rules.
+The first part of the code parses the program while reconstructing try-catch blocks. The stack stores unmatched `try` positions. Whenever a `catch` appears, the top of the stack is the only valid matching `try`, so we immediately create a complete block record.
+
+Regular expressions handle arbitrary spacing. This avoids many parsing bugs caused by inputs such as:
+
+```
+catch ( AE , "msg" )
+```
+
+or
+
+```
+throw( AE )
+```
+
+The second phase evaluates every block against the thrown exception. The condition
+
+```
+try_pos < throw_pos < catch_pos
+```
+
+exactly matches the statement's requirement that the throw lies inside the block.
+
+The final tie-breaking uses the smallest catch position, because the language chooses the matching catch that appears first after the throw.
 
 ## Worked Examples
 
-### Sample 1
-
-Input lines:
-
-| Line | Command | Stack | Catches | Throw info |
-| --- | --- | --- | --- | --- |
-| 0 | try | [0] | [] | - |
-| 1 | try | [0,1] | [] | - |
-| 2 | throw(AE) | [0,1] | [] | type=AE, line=2 |
-| 3 | catch(BE,"BE in line 3") | [0] | [(1,3,BE,"BE in line 3")] | - |
-| 4 | try | [0,4] | ... | - |
-| 5 | catch(AE,"AE in line 5") | [0] | [...,(4,5,AE,"AE in line 5")] | - |
-| 6 | catch(AE,"AE somewhere") | [] | [...,(0,6,AE,"AE somewhere")] | - |
-
-During final scan, only `(0,6,AE,"AE somewhere")` matches throw at line 2, printing `"AE somewhere"`.
-
-### Sample 2
+### Example 1
 
 Input:
 
-| Line | Command | Stack | Catches | Throw info |
-| --- | --- | --- | --- | --- |
-| 0 | try | [0] | [] | - |
-| 1 | throw(AE) | [0] | [] | type=AE, line=1 |
-| 2 | catch(AE,"AE in line 3") | [] | [(0,2,AE,"AE in line 3")] | - |
-| 3 | catch(AE,"AE somewhere") | [] | [(0,2,AE,"AE in line 3"), (x,3,AE,"AE somewhere")] | - |
+```
+try
+    try
+        throw(AE)
+    catch(BE,"BE in line 3")
 
-The first catch with `try_idx<1<catch_idx` is `(0,2,AE,"AE in line 3")`, so `"AE in line 3"` is printed.
+    try
+    catch(AE,"AE in line 5")
+catch(AE,"AE somewhere")
+```
+
+| Event | Stack After Event | Recorded Blocks |
+| --- | --- | --- |
+| try at 0 | [0] | - |
+| try at 1 | [0,1] | - |
+| throw(AE) at 2 | [0,1] | - |
+| catch(BE) at 3 | [0] | (1,3,BE) |
+| try at 5 | [0,5] | previous |
+| catch(AE) at 6 | [0] | (5,6,AE) |
+| catch(AE) at 7 | [] | (0,7,AE) |
+
+Checking the blocks:
+
+| Block | Contains Throw? | Type Match? | Eligible? |
+| --- | --- | --- | --- |
+| (1,3,BE) | Yes | No | No |
+| (5,6,AE) | No | Yes | No |
+| (0,7,AE) | Yes | Yes | Yes |
+
+The selected message is:
+
+```
+AE somewhere
+```
+
+This example shows that a matching type is not enough. The throw must also lie between the corresponding try and catch.
+
+### Example 2
+
+```
+try
+    try
+        throw(AE)
+    catch(AE,"inner")
+catch(AE,"outer")
+```
+
+| Block | Try Position | Catch Position | Type |
+| --- | --- | --- | --- |
+| Inner | 1 | 3 | AE |
+| Outer | 0 | 4 | AE |
+
+Both blocks contain the throw and both types match.
+
+| Block | Catch Position |
+| --- | --- |
+| Inner | 3 |
+| Outer | 4 |
+
+The earliest catch is position 3, so the answer is:
+
+```
+inner
+```
+
+This demonstrates the tie-breaking rule.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each line is read once, stack push/pop and list append are O(1). Final scan of catches is at most O(n). |
-| Space | O(n) | Stack and catch list can store up to n elements in worst case. |
+| Time | O(n) | One pass to parse, one pass over blocks |
+| Space | O(n) | Stack and stored block information |
 
-The solution easily fits within 2 seconds for n up to 10^5 and uses memory well under 256 MB.
+With at most $10^5$ lines, linear processing is easily fast enough. Memory usage is also linear and comfortably fits within the limit.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
+import re
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import re
+
+    input = sys.stdin.readline
+
     n = int(input())
-    lines = [input().strip() for _ in range(n)]
-    try_stack = []
-    catches = []
-    throw_line = -1
+
+    stack = []
+    blocks = []
+
+    throw_pos = -1
     throw_type = ""
-    for i, line in enumerate(lines):
-        line = line.strip()
+
+    catch_re = re.compile(
+        r'catch\s*\(\s*([A-Za-z]+)\s*,\s*"([^"]+)"\s*\)'
+    )
+    throw_re = re.compile(
+        r'throw\s*\(\s*([A-Za-z]+)\s*\)'
+    )
+
+    for i in range(n):
+        line = input().strip()
+
         if not line:
             continue
+
         if line.startswith("try"):
-            try_stack.append(i)
+            stack.append(i)
+
+        elif line.startswith("throw"):
+            m = throw_re.match(line)
+            throw_type = m.group(1)
+            throw_pos = i
+
         elif line.startswith("catch"):
-            m = re.match(r'catch\s*\(\s*([A-Za-z]+)\s*,\s*"(.*)"
+            m = catch_re.match(line)
+            exc_type = m.group(1)
+            message = m.group(2)
+
+            blocks.append((stack.pop(), i, exc_type, message))
+
+    ans = None
+    best = n + 1
+
+    for l, r, typ, msg in blocks:
+        if l < throw_pos < r and typ == throw_type:
+            if r < best:
+                best = r
+                ans = msg
+
+    return (ans if ans is not None else "Unhandled Exception") + "\n"
+
+# provided sample
+assert run(
+"""8
+try
+    try
+        throw ( AE )
+    catch ( BE, "BE in line 3" )
+
+    try
+    catch(AE, "AE in line 5")
+catch(AE,"AE somewhere")
+"""
+) == "AE somewhere\n"
+
+# minimum size
+assert run(
+"""3
+try
+throw(AE)
+catch(AE,"ok")
+"""
+) == "ok\n"
+
+# no matching handler
+assert run(
+"""3
+try
+throw(AE)
+catch(BE,"x")
+"""
+) == "Unhandled Exception\n"
+
+# earliest catch wins
+assert run(
+"""5
+try
+try
+throw(AE)
+catch(AE,"inner")
+catch(AE,"outer")
+"""
+) == "inner\n"
+
+# spaces everywhere
+assert run(
+"""3
+try
+ throw (  ABC  )
+ catch ( ABC , "works" )
+"""
+) == "works\n"
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Single try-catch around throw | `ok` | Smallest valid instance |
+| Mismatched exception type | `Unhandled Exception` | No handler found |
+| Nested matching handlers | `inner` | Earliest catch selection |
+| Heavy whitespace variation | `works` | Robust parsing |
+| Official sample | `AE somewhere` | Full specification |
+
+## Edge Cases
+
+### Matching outer block, non-matching inner block
+
+Input:
+
+```
+3
+try
+throw(AE)
+catch(BE,"x")
+```
+
+The only block contains the throw, but its type is `BE` while the thrown type is `AE`.
+
+The algorithm records one block:
+
+| Try | Catch | Type |
+| --- | --- | --- |
+| 0 | 2 | BE |
+
+The type comparison fails, so no candidate is selected and the output becomes:
+
+```
+Unhandled Exception
+```
+
+### Multiple matching handlers
+
+Input:
+
+```
+5
+try
+try
+throw(AE)
+catch(AE,"inner")
+catch(AE,"outer")
+```
+
+Recorded blocks:
+
+| Try | Catch | Type |
+| --- | --- | --- |
+| 1 | 3 | AE |
+| 0 | 4 | AE |
+
+Both contain the throw and both match the type. The algorithm chooses the smaller catch position, namely `3`, producing:
+
+```
+inner
+```
+
+### Handler after throw but try starts after throw
+
+Input:
+
+```
+5
+throw(AE)
+try
+catch(AE,"later")
+try
+catch(AE,"another")
+```
+
+Neither block satisfies:
+
+```
+try_position < throw_position
+```
+
+so neither can handle the exception.
+
+The algorithm rejects both blocks and prints:
+
+```
+Unhandled Exception
+```
+
+which matches the language definition.

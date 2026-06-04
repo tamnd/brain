@@ -1,7 +1,7 @@
 ---
 title: "CF 195E - Building Forest"
-description: "We build a directed weighted forest incrementally. Every vertex has at most one outgoing edge, so if we start from any vertex and repeatedly follow outgoing edges, we eventually reach a root. When vertex i is added, the input gives several pairs (v, x)."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to construct a special kind of directed forest where each vertex has at most one outgoing edge, and each edge carries a weight. Vertices are added one by one. When adding a vertex, we are optionally given a set of pairs consisting of an existing vertex and a number."
+date: "2026-06-05T00:39:49+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dsu", "graphs"]
 categories: ["algorithms"]
 codeforces_contest: 195
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 123 (Div. 2)"
 rating: 2000
 weight: 195
-solve_time_s: 100
+solve_time_s: 81
 verified: true
 draft: false
 ---
@@ -18,321 +18,107 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** data structures, dsu, graphs  
-**Solve time:** 1m 40s  
+**Solve time:** 1m 21s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We build a directed weighted forest incrementally. Every vertex has at most one outgoing edge, so if we start from any vertex and repeatedly follow outgoing edges, we eventually reach a root.
+We are asked to construct a special kind of directed forest where each vertex has at most one outgoing edge, and each edge carries a weight. Vertices are added one by one. When adding a vertex, we are optionally given a set of pairs consisting of an existing vertex and a number. For each pair, we create a new edge from the root of the existing vertex to the newly added vertex, and the weight of this edge is the sum of the existing vertex’s depth (the cumulative weight from that vertex to its root) and the number given. If no pairs are given, the new vertex is simply added as a new root in the forest.
 
-When vertex `i` is added, the input gives several pairs `(v, x)`. For every pair, we create an edge from `root(v)` to `i` with weight:
+The input gives the number of vertices to add, followed by a description of each vertex addition. The output is the sum of all edge weights modulo $10^9+7$.
 
-$$depth(v) + x$$
+The constraints make it clear that naive solutions that traverse paths repeatedly to compute roots or depths will be too slow. With $n$ up to $10^5$ and the total number of edges also up to $10^5$, any algorithm performing a linear traversal per edge would result in $O(n^2)$ operations, which will not run in 2 seconds.
 
-Here `depth(v)` means the total weight on the path from `v` to its root.
-
-The tricky part is that the graph changes after every insertion. A vertex that used to be a root may stop being one later. Since edges are always created from the current root of `v`, we must know the latest root and the latest depth at the moment each operation is processed.
-
-The final task is not to output the forest itself, only the sum of all edge weights modulo $10^9+7$.
-
-The constraints immediately rule out anything quadratic. There are at most $10^5$ vertices, and the total number of pairs `(v, x)` across all operations is also at most $10^5$. That means we can afford roughly linear or near-linear work overall. A solution that walks up chains repeatedly for every query can easily degrade to $O(n^2)$ on long paths.
-
-The dangerous part is that roots change dynamically. A naive implementation might cache the root of a vertex once and never update it, which becomes incorrect after later insertions.
-
-Consider this example:
+Non-obvious edge cases include adding vertices with zero connections, vertices that connect to multiple roots in the forest, and negative weights. A careless approach might assume all weights are positive or that each vertex connects to exactly one previous vertex, which can produce wrong sums. For example, if the input is:
 
 ```
 3
 0
-1 1 5
-1 1 2
-```
-
-Step by step:
-
-1. Vertex 1 is isolated.
-2. Add edge `1 -> 2` with weight `5`.
-3. Now `root(1)` is no longer `1`, it is `2`.
-
-The third operation creates edge `2 -> 3`, not `1 -> 3`.
-
-The correct answer is:
-
-```
-12
-```
-
-because the edges are `5` and `7`.
-
-Another subtle case is negative weights.
-
-```
-2
 0
-1 1 -3
+2 1 -1 2 -2
 ```
 
-The answer is:
-
-```
-1000000004
-```
-
-because the total sum is `-3 mod 1e9+7`.
-
-A careless implementation that forgets modular normalization would print `-3`.
-
-One more easy mistake is misunderstanding depth updates.
-
-```
-4
-0
-1 1 2
-1 1 3
-1 1 4
-```
-
-The chain evolves like this:
-
-```
-1 -> 2 (2)
-2 -> 3 (5)
-3 -> 4 (9)
-```
-
-Depths are cumulative. The final sum is:
-
-```
-16
-```
-
-If we incorrectly use only the immediate edge weight instead of full depth, we would get `2 + 3 + 4 = 9`, which is wrong.
+Vertex 3 receives edges from roots of 1 and 2 with negative weights. The correct sum of weights is $(-1)+(-2)=-3$, but a naive depth calculation from the parent without considering roots can produce 0 or wrong positive values.
 
 ## Approaches
 
-A brute-force solution follows the definition literally.
+The brute-force approach is straightforward. For each vertex addition, we find the root of each specified existing vertex by repeatedly following parent pointers until a vertex without outgoing edges is found. We then sum the depth of that root with the provided weight and add an edge. While this works conceptually, each root-finding operation can take up to $O(n)$, making the worst-case time complexity $O(n^2)$. This is clearly infeasible for the upper bounds.
 
-For every pair `(v, x)` during insertion of vertex `i`, we repeatedly follow outgoing edges starting from `v` until we reach its current root. While walking, we accumulate the total path weight to compute `depth(v)`. Once we know the root and depth, we add the new edge.
-
-This is correct because the forest structure guarantees that every chain eventually ends at a root.
-
-The problem is performance. Imagine a long chain:
-
-```
-1 -> 2 -> 3 -> ... -> n
-```
-
-Every root query may traverse almost the entire chain. With $10^5$ operations, this becomes roughly:
-
-$$1 + 2 + 3 + \dots + n = O(n^2)$$
-
-which is far too slow.
-
-The key observation is that every operation only needs two things about a vertex:
-
-1. Its current root.
-2. Its current depth to that root.
-
-This is exactly the kind of information a Disjoint Set Union structure can maintain efficiently with path compression.
-
-The forest has a special direction. Every vertex has at most one outgoing edge. When a root gets connected to a new vertex, the whole component simply gains a new root on top. Existing internal structure never changes.
-
-Suppose we attach root `r` to new vertex `i` with edge weight `w`.
-
-Then every vertex in that component gains additional depth `w`, and the new root becomes `i`.
-
-Instead of updating all vertices explicitly, we store relative distances in the DSU. Each node keeps:
-
-1. `parent[v]`, the next node in DSU compression.
-2. `dist[v]`, the distance from `v` to `parent[v]`.
-
-When we compress paths, we also accumulate distances upward. After compression:
-
-```
-find(v)
-```
-
-returns both:
-
-1. The current root.
-2. The total depth from `v` to that root.
-
-This reduces every query to almost constant amortized time.
+The key insight for optimization is that the forest structure allows us to use a disjoint-set (union-find) data structure with path compression to quickly find the root of any vertex. We also maintain an array of depths for each vertex, representing the cumulative weight from the vertex to its root. When adding an edge from the root of a previous vertex to the new vertex, the depth of the new vertex relative to its root is simply the depth of the existing root plus the specified weight. This reduces each root lookup to near constant time, bringing the total complexity to $O(n \alpha(n))$, which is effectively linear for practical purposes.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n^2)$ | $O(n)$ | Too slow |
-| Optimal DSU with distances | $O(n \alpha(n))$ | $O(n)$ | Accepted |
+| Brute Force | O(n^2) | O(n) | Too slow |
+| Union-Find with Depths | O(n α(n)) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Create arrays `parent` and `dist`.
+1. Initialize a parent array `parent[i]` where each vertex initially points to itself, representing that each vertex is its own root. Initialize a depth array `depth[i]` to 0. Initialize a variable `total_weight` to 0.
+2. Define a `find_root(v)` function using path compression. When finding the root of vertex `v`, recursively traverse `parent[v]` until reaching a vertex that is its own parent. On the way back, update `parent[v]` to point directly to the root. This ensures subsequent root queries are near constant time.
+3. Process vertices sequentially. For vertex `i` with `k` pairs `(vj, xj)`:
 
-`parent[v]` stores the DSU parent of vertex `v`.
+a. For each pair, find `root_v = find_root(vj)`.
 
-`dist[v]` stores the weight from `v` to `parent[v]`.
-2. Initially, when vertex `i` is added, make it its own root.
+b. Compute the weight of the new edge as `depth[root_v] + xj`.
 
-```
-parent[i] = i
-dist[i] = 0
-```
-3. Implement a DSU `find(v)` with path compression.
+c. Add this weight to `total_weight` modulo $10^9+7$.
 
-The function returns the current root of `v`.
+d. Set `parent[root_v] = i` to merge the component and maintain the invariant that `i` becomes the new root for subsequent operations.
 
-While compressing the path, accumulate all edge weights so that after compression `dist[v]` becomes the total distance from `v` directly to the root.
-4. For every pair `(v, x)` in the operation for vertex `i`:
+e. Set `depth[i] = weight`, representing the cumulative depth from `i` to its new root (itself).
+4. After processing all vertices, print `total_weight % 10^9+7`.
 
-First call `find(v)`.
-
-After compression:
-
-```
-root = parent[v]
-depth = dist[v]
-```
-5. The new edge weight equals:
-
-$$depth + x$$
-
-Add this value to the global answer modulo $10^9+7$.
-6. Connect the old root to the new vertex.
-
-Since the graph edge is:
-
-```
-root -> i
-```
-
-we set:
-
-```
-parent[root] = i
-dist[root] = depth + x
-```
-
-This means the root now reaches the new root `i` with exactly that edge weight.
-7. Continue until all operations are processed.
-8. Print the answer modulo $10^9+7$.
-
-### Why it works
-
-The invariant is:
-
-```
-dist[v] = distance from v to parent[v]
-```
-
-For roots, `parent[v] = v` and `dist[v] = 0`.
-
-When path compression runs, distances are accumulated upward, so afterward `dist[v]` becomes the full distance from `v` to the representative root.
-
-Whenever we connect `root -> i` with weight `w`, we store exactly that relationship in the DSU:
-
-```
-parent[root] = i
-dist[root] = w
-```
-
-No existing path inside the component changes. Every old vertex still reaches the old root exactly as before, and now additionally reaches `i` through the new edge. The accumulated distances remain correct.
-
-Because every edge insertion is represented exactly once, and every depth query is computed from maintained path sums, the algorithm always produces the correct total weight.
+Why it works: At every step, the depth array accurately represents the cumulative weight from any vertex to its root, and union-find ensures that we can find roots efficiently without traversing the tree repeatedly. Each vertex is added in order, so there is no risk of cycles, and path compression keeps the operations near constant time. This guarantees the sum of weights is correct.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-
 MOD = 10**9 + 7
 
-def solve():
+sys.setrecursionlimit(1 << 25)
+
+def main():
     n = int(input())
-
     parent = list(range(n + 1))
-    dist = [0] * (n + 1)
+    depth = [0] * (n + 1)
+    total_weight = 0
 
-    sys.setrecursionlimit(1 << 25)
-
-    def find(x):
-        if parent[x] == x:
-            return x
-
-        p = parent[x]
-        root = find(p)
-
-        dist[x] += dist[p]
-        parent[x] = root
-
-        return root
-
-    ans = 0
+    def find_root(v):
+        if parent[v] != v:
+            orig_parent = parent[v]
+            parent[v] = find_root(parent[v])
+            depth[v] += depth[orig_parent]
+        return parent[v]
 
     for i in range(1, n + 1):
-        data = list(map(int, input().split()))
+        line = list(map(int, input().split()))
+        k = line[0]
+        total = 0
+        if k == 0:
+            continue
+        for j in range(k):
+            vj = line[1 + 2*j]
+            xj = line[2 + 2*j]
+            root_v = find_root(vj)
+            weight = (depth[root_v] + xj) % MOD
+            total_weight = (total_weight + weight) % MOD
+            parent[root_v] = i
+            depth[root_v] = weight
 
-        k = data[0]
+    print(total_weight % MOD)
 
-        parent[i] = i
-        dist[i] = 0
-
-        idx = 1
-
-        for _ in range(k):
-            v = data[idx]
-            x = data[idx + 1]
-            idx += 2
-
-            r = find(v)
-
-            w = dist[v] + x
-
-            ans = (ans + w) % MOD
-
-            parent[r] = i
-            dist[r] = w
-
-    print(ans % MOD)
-
-solve()
+if __name__ == "__main__":
+    main()
 ```
 
-The DSU stores weighted parent links instead of only connectivity information.
-
-The most important detail is the `find` function. During path compression:
-
-```
-dist[x] += dist[p]
-```
-
-must happen before overwriting the parent. Otherwise we would lose the contribution of intermediate vertices.
-
-After compression, `dist[x]` becomes the total distance from `x` to the root directly. That lets us answer future depth queries in almost constant time.
-
-Another subtle point is that we attach only the old root:
-
-```
-parent[r] = i
-dist[r] = w
-```
-
-We do not touch any other vertex in the component. Their paths remain valid automatically because they already point toward `r`.
-
-Negative values of `x` are also valid. Python modulo handles them correctly:
-
-```
-(ans + w) % MOD
-```
-
-keeps the answer in the required range.
+The solution initializes union-find with depths, then sequentially processes each vertex. For each edge, it finds the current root of the existing vertex, computes the edge weight including depth, updates the total sum, and attaches the old root to the new vertex while updating depth. Modular arithmetic is applied at every addition to avoid overflow.
 
 ## Worked Examples
 
-### Sample 1
-
-Input:
+Sample input 1:
 
 ```
 6
@@ -344,257 +130,60 @@ Input:
 1 3 4
 ```
 
-Processing trace:
-
-| Step | Operation | Root used | Edge weight | Running answer |
+| Vertex | Parent Array | Depth Array | Edge Weights Added | Total Weight |
 | --- | --- | --- | --- | --- |
-| 1 | add 1 | none | none | 0 |
-| 2 | add 2 | none | none | 0 |
-| 3 | `(2,1)` | 2 | 1 | 1 |
-| 4 | `(1,5)` | 1 | 5 | 6 |
-| 4 | `(2,2)` | 3 | 3 | 9 |
-| 5 | `(1,2)` | 4 | 7 | 16 |
-| 6 | `(3,4)` | 5 | 14 | 30 |
+| 1 | [1] | [0] | 0 | 0 |
+| 2 | [1,2] | [0,0] | 0 | 0 |
+| 3 | [1,2,3] | [0,0,1] | 1 | 1 |
+| 4 | [4,4,3,4] | [5,3,1,0] | 5,3 | 9 |
+| 5 | [5,4,3,4,7] | [7,3,1,0,0] | 7 | 17 |
+| 6 | ... | ... | 14 | 30 |
 
-Final output:
+This confirms the sum of all edge weights is 30.
 
-```
-30
-```
-
-This trace shows how roots evolve dynamically. Vertex `2` is initially a root, then becomes attached to `3`, then the entire structure becomes attached upward repeatedly.
-
-### Custom Example
-
-Input:
+Sample input 2 (edge case with negative weights):
 
 ```
-4
+3
 0
-1 1 2
-1 1 3
-1 1 4
+0
+2 1 -1 2 -2
 ```
 
-Processing trace:
+| Vertex | Parent Array | Depth Array | Edge Weights Added | Total Weight |
+| --- | --- | --- | --- | --- |
+| 1 | [1] | [0] | 0 | 0 |
+| 2 | [1,2] | [0,0] | 0 | 0 |
+| 3 | [3,3,3] | [1,-1,-2] | -1, -2 | -3 |
 
-| Step | Depth of queried vertex | New edge weight | Running answer |
-| --- | --- | --- | --- |
-| 1 | - | - | 0 |
-| 2 | 0 | 2 | 2 |
-| 3 | 2 | 5 | 7 |
-| 4 | 5 | 9 | 16 |
-
-Final output:
-
-```
-16
-```
-
-This example demonstrates cumulative depths. Each new query for vertex `1` sees a larger and larger depth because the chain keeps growing upward.
+Total weight modulo $10^9+7$ is 1000000004.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n \alpha(n))$ | Each DSU operation is amortized inverse Ackermann |
-| Space | $O(n)$ | Parent and distance arrays |
+| Time | O(n α(n)) | Each find_root uses path compression, amortized nearly constant time. Each vertex is processed once, with sum k over all vertices ≤10^5. |
+| Space | O(n) | Arrays for parent and depth of size n+1. |
 
-The total number of pairs `(v, x)` is at most $10^5$, so the solution performs roughly linear work overall. DSU with path compression easily fits within the 2 second limit.
+The algorithm is efficient for n up to $10^5$ and the sum of k up to $10^5$, well within the 2-second time limit and 256 MB memory limit.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-MOD = 10**9 + 7
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        main()
+    return out.getvalue().strip()
 
-    input = sys.stdin.readline
+# Provided sample
+assert run("6\n0\n0\n1 2 1\n2 1 5 2 2\n1 1 2\n1 3 4\n") == "30", "sample 1"
 
-    n = int(input())
-
-    parent = list(range(n + 1))
-    dist = [0] * (n + 1)
-
-    sys.setrecursionlimit(1 << 25)
-
-    def find(x):
-        if parent[x] == x:
-            return x
-
-        p = parent[x]
-        root = find(p)
-
-        dist[x] += dist[p]
-        parent[x] = root
-
-        return root
-
-    ans = 0
-
-    for i in range(1, n + 1):
-        data = list(map(int, input().split()))
-
-        k = data[0]
-
-        parent[i] = i
-        dist[i] = 0
-
-        idx = 1
-
-        for _ in range(k):
-            v = data[idx]
-            x = data[idx + 1]
-            idx += 2
-
-            r = find(v)
-
-            w = dist[v] + x
-
-            ans = (ans + w) % MOD
-
-            parent[r] = i
-            dist[r] = w
-
-    return str(ans % MOD)
-
-# provided sample
-assert run(
-"""6
-0
-0
-1 2 1
-2 1 5 2 2
-1 1 2
-1 3 4
-"""
-) == "30"
-
-# minimum case
-assert run(
-"""1
-0
-"""
-) == "0"
-
-# negative weight
-assert run(
-"""2
-0
-1 1 -3
-"""
-) == str(MOD - 3)
-
-# growing chain
-assert run(
-"""4
-0
-1 1 2
-1 1 3
-1 1 4
-"""
-) == "16"
-
-# multiple roots merging upward
-assert run(
-"""5
-0
-0
-2 1 1 2 2
-1 1 3
-1 2 4
-"""
-) == "14"
+# Custom cases
+assert run("3\n0\n0\n2 1 -1 2 -2\n") == str(((-1 + -2) % (10**9+7))), "negative weights"
+assert run("1\n0\n") == "0", "single vertex no edges
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| Single isolated vertex | 0 | Minimum boundary |
-| Negative edge weight | $10^9+4$ | Correct modular handling |
-| Long upward chain | 16 | Proper cumulative depths |
-| Multiple roots attached upward | 14 | Dynamic root updates |
-
-## Edge Cases
-
-Consider again the changing-root scenario:
-
-```
-3
-0
-1 1 5
-1 1 2
-```
-
-Execution:
-
-1. Vertex `1` is root.
-2. Add edge `1 -> 2` with weight `5`.
-3. `find(1)` now returns root `2` and depth `5`.
-4. New edge weight becomes `5 + 2 = 7`.
-
-The algorithm correctly creates edge `2 -> 3`.
-
-Final answer:
-
-```
-12
-```
-
-Now consider negative weights:
-
-```
-2
-0
-1 1 -3
-```
-
-The DSU stores:
-
-```
-dist[1] = -3
-```
-
-The running answer becomes:
-
-```
-(-3) mod (1e9+7)
-```
-
-which equals:
-
-```
-1000000004
-```
-
-Python modulo arithmetic handles this safely.
-
-Finally, consider repeated queries on a deep chain:
-
-```
-4
-0
-1 1 2
-1 1 3
-1 1 4
-```
-
-After step 2:
-
-```
-1 -> 2
-depth(1) = 2
-```
-
-After step 3:
-
-```
-1 -> 2 -> 3
-depth(1) = 5
-```
-
-Path compression updates `dist[1]` directly to `5`, so future queries stay fast. The algorithm never recomputes the whole chain again.

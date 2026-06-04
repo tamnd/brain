@@ -1,7 +1,7 @@
 ---
 title: "CF 195A - Let's Watch Football"
-description: "The video consumes a units of data every second while being watched. The internet connection downloads only b units per second, and a b, so if the users start immediately, the buffer will eventually run out."
-date: "2026-05-29T00:00:00+07:00"
+description: "The video lasts for c seconds. Watching one second of video consumes a units of data, while the internet connection downloads only b units per second. Since a b, starting immediately is impossible because data would be consumed faster than it arrives."
+date: "2026-06-05T00:48:30+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "brute-force", "math"]
 categories: ["algorithms"]
 codeforces_contest: 195
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 123 (Div. 2)"
 rating: 1000
 weight: 195
-solve_time_s: 84
+solve_time_s: 99
 verified: true
 draft: false
 ---
@@ -18,152 +18,131 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** binary search, brute force, math  
-**Solve time:** 1m 24s  
+**Solve time:** 1m 39s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The video consumes `a` units of data every second while being watched. The internet connection downloads only `b` units per second, and `a > b`, so if the users start immediately, the buffer will eventually run out.
+The video lasts for `c` seconds. Watching one second of video consumes `a` units of data, while the internet connection downloads only `b` units per second. Since `a > b`, starting immediately is impossible because data would be consumed faster than it arrives.
 
-They can wait for some integer number of seconds before starting playback. During this waiting period, data accumulates in the buffer. After playback begins, downloading continues in parallel with watching. We need the smallest waiting time such that the video never pauses.
+Suppose the viewers wait `t` seconds before pressing play. By that time they have already downloaded `b · t` units of data. After playback starts, downloading continues at the same rate. The goal is to find the smallest integer `t` such that at every moment during playback, the amount of downloaded data is at least as large as the amount of data already consumed by watching.
 
-Suppose they wait `t` seconds. At any real moment during playback, the total downloaded data must be at least the total consumed data.
+The constraints are very small. All three values are at most 1000. Even an algorithm that checks many candidate waiting times would run comfortably within the limits. The challenge is not performance, but expressing the condition correctly.
 
-If the video length is `c` seconds, then:
-
-- downloaded data after `t + x` seconds is `b(t + x)`
-- consumed data after watching `x` seconds is `ax`
-
-The condition becomes:
-
-$$b(t + x) \ge ax$$
-
-for every `0 ≤ x ≤ c`.
-
-The constraints are tiny, all values are at most `1000`, so even a direct simulation would fit comfortably inside the time limit. Still, the problem hides a neat mathematical simplification that turns the whole task into a one-line formula.
-
-A common mistake is checking only the final moment of the video incorrectly. Since playback consumes data continuously, the tightest condition happens at the end of the video.
-
-Consider:
+A common mistake is to check only whether the entire video can be downloaded by the end of playback. Consider:
 
 ```
-a = 2, b = 1, c = 10
+4 1 1
 ```
 
-If we wait `4` seconds, we initially buffer `4` units. During the full video we download `10` more, so total downloaded becomes `14`, but the video needs `20`. Playback must fail before the end.
+If we wait 2 seconds, then by the end of playback we have downloaded `1·(2+1)=3` units, which is still insufficient. Waiting 3 seconds gives 4 units exactly. The answer is 3.
 
-Another easy off-by-one mistake appears because the answer must be an integer.
-
-Example:
+Another subtle case is when the bottleneck occurs at the very end rather than near the start. For example:
 
 ```
-a = 4, b = 3, c = 1
+2 1 10
 ```
 
-We need:
+Waiting 4 seconds seems close, because playback can start smoothly. However, by the end of the second watched second only 18 units have been downloaded, while 20 units are required. The correct answer is 5.
 
-$$3(t+1) \ge 4$$
-
-which gives:
-
-$$t \ge \frac{1}{3}$$
-
-The minimum integer answer is `1`, not `0`.
-
-A third pitfall is forgetting that playback starts after waiting. Some incorrect solutions compare only `bt` against `ac`, as if downloading stopped during playback. That overestimates the answer.
-
-For example:
-
-```
-a = 5, b = 4, c = 10
-```
-
-Naively requiring `bt ≥ ac` gives `t ≥ 13`.
-
-But downloading continues while watching:
-
-$$4(t+10) \ge 50$$
-
-$$t \ge 2.5$$
-
-So the correct answer is `3`.
+A careless simulation that only checks the start of playback would incorrectly accept such cases.
 
 ## Approaches
 
-The brute-force approach is straightforward. We try every waiting time `t` starting from `0`, and check whether playback can finish without interruption.
+A direct brute-force strategy is to try waiting times `t = 0, 1, 2, ...` and test whether playback is possible.
 
-For a fixed `t`, we verify:
+For a fixed `t`, let `x` be the number of seconds already watched. At that point, downloaded data equals
 
-$$b(t+x) \ge ax$$
+```
+b · (t + x)
+```
 
-for all `x` from `0` to `c`.
+and consumed data equals
 
-Since the expression is linear, we could even check every second directly. With constraints up to `1000`, this would still run instantly. The worst case performs roughly one million checks, which is trivial for modern hardware.
+```
+a · x
+```
 
-The brute-force works because the state of the system is completely determined by downloaded data and consumed data at each moment. If every moment satisfies the inequality, playback succeeds.
+Playback is valid if
 
-The observation that unlocks the optimal solution is that the inequality becomes hardest to satisfy at the end of the video.
+```
+b · (t + x) ≥ a · x
+```
 
-Rewrite it:
+for every `x` from `0` to `c`.
 
-$$bt + bx \ge ax$$
+Checking all `c + 1` moments for every candidate `t` works because the limits are tiny. Even trying 1000 waiting times and checking 1000 moments each is only about one million operations.
 
-$$bt \ge (a-b)x$$
+The key observation is that the inequality can be simplified:
 
-Since `a > b`, the right side grows as `x` increases. The maximum value occurs at `x = c`.
+```
+b·t + b·x ≥ a·x
+b·t ≥ (a-b)·x
+```
 
-So instead of checking every moment, we only need:
+Since `a > b`, the right-hand side increases as `x` increases. The hardest moment to satisfy is the largest possible value of `x`, namely `x = c`.
 
-$$bt \ge (a-b)c$$
+So instead of checking every moment, it is enough to require
 
-Now we just compute the smallest integer `t` satisfying this inequality:
+```
+b·t ≥ (a-b)·c
+```
 
-$$t = \left\lceil \frac{(a-b)c}{b} \right\rceil$$
+The answer is the smallest integer `t` satisfying this inequality:
 
-That removes simulation entirely.
+```
+t = ceil((a-b)·c / b)
+```
+
+This reduces the entire problem to a single arithmetic computation.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(c × answer) | O(1) | Accepted |
+| Brute Force | O(c · answer) | O(1) | Accepted |
 | Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read integers `a`, `b`, and `c`.
-2. Compute how much extra data playback consumes compared to downloading each second.
-
-$$a - b$$
-
-This is the rate at which the buffer decreases during playback.
-
-1. Over the whole video of length `c`, the total deficit becomes:
-
-$$(a-b)c$$
-
-This is the amount of data that must already exist in the buffer before playback starts.
-
-1. Since waiting `t` seconds downloads `bt` units, we need:
-
-$$bt \ge (a-b)c$$
-
-1. Compute the smallest integer `t` satisfying the inequality using ceiling division.
-
-$$t = \left\lceil \frac{(a-b)c}{b} \right\rceil$$
-
-In integer arithmetic:
+1. Read `a`, `b`, and `c`.
+2. Rewrite the playback condition at a watched time `x`:
 
 ```
-((a - b) * c + b - 1) // b
+b·(t+x) ≥ a·x
+```
+3. Rearrange it:
+
+```
+b·t ≥ (a-b)·x
 ```
 
-1. Print the result.
+The left side is constant, while the right side grows with `x`.
+4. Since `a > b`, the largest value of the right side occurs at `x = c`.
+5. Require:
+
+```
+b·t ≥ (a-b)·c
+```
+6. Compute the smallest integer satisfying the inequality:
+
+```
+t = ceil((a-b)·c / b)
+```
+7. Output `t`.
 
 ### Why it works
 
-During playback, the buffer changes by `b - a` units every second. Since `a > b`, the buffer continuously decreases. That means the smallest buffer size occurs at the very end of the video.
+For any watched duration `x`, playback is feasible exactly when
 
-If the buffer is still non-negative after `c` seconds of watching, then it was non-negative at every earlier moment as well. So checking only the final moment is sufficient and guarantees uninterrupted playback.
+```
+b·t ≥ (a-b)·x.
+```
+
+Because `a-b` is positive, the right-hand side increases monotonically with `x`. If the inequality holds for the largest possible value `x = c`, it automatically holds for every smaller value of `x`. Thus checking the end of the video is sufficient and necessary. The smallest integer waiting time satisfying that final inequality is precisely
+
+```
+ceil((a-b)·c / b).
+```
 
 ## Python Solution
 
@@ -173,28 +152,29 @@ input = sys.stdin.readline
 
 a, b, c = map(int, input().split())
 
-ans = ((a - b) * c + b - 1) // b
+need = (a - b) * c
+answer = (need + b - 1) // b
 
-print(ans)
+print(answer)
 ```
 
-The implementation directly follows the mathematical derivation.
+The variable `need` stores the total deficit that must be covered before playback starts. During each second of watching, consumption exceeds downloading by exactly `a - b` units. Over `c` seconds, that deficit accumulates to `(a - b) · c`.
 
-The expression `(a - b) * c` computes the total amount of data missing during playback. Since the internet still downloads `b` units every second while watching, only this deficit must be buffered beforehand.
-
-The division must round upward because the answer is restricted to integers. Using ordinary integer division would truncate downward and potentially produce a waiting time that is too small.
-
-The standard ceiling division formula:
+Waiting `t` seconds downloads `b · t` units beforehand. We need:
 
 ```
-(x + y - 1) // y
+b·t ≥ need
 ```
 
-computes:
+The expression
 
-$$\left\lceil \frac{x}{y} \right\rceil$$
+```
+(need + b - 1) // b
+```
 
-without floating-point arithmetic, which avoids precision issues and keeps the solution purely integer-based.
+computes the ceiling of `need / b` using integer arithmetic. This avoids floating-point calculations and eliminates any rounding concerns.
+
+The constraints are tiny, but using integer math is both cleaner and mathematically exact.
 
 ## Worked Examples
 
@@ -206,15 +186,15 @@ Input:
 4 1 1
 ```
 
-We compute the required initial buffer.
+Compute the required values.
 
 | Variable | Value |
 | --- | --- |
-| `a` | 4 |
-| `b` | 1 |
-| `c` | 1 |
-| `(a-b)c` | 3 |
-| Required `t` | `ceil(3/1)` = 3 |
+| a | 4 |
+| b | 1 |
+| c | 1 |
+| need = (a-b)·c | 3 |
+| answer = ceil(3/1) | 3 |
 
 Output:
 
@@ -222,9 +202,7 @@ Output:
 3
 ```
 
-After waiting `3` seconds, the buffer contains `3` units. During the one second of playback, another `1` unit downloads, so total available data becomes `4`, exactly enough for the video.
-
-This trace demonstrates why downloading during playback matters.
+The viewers must accumulate 3 extra units before starting. During the one second of playback, another unit arrives, giving the required 4 units total.
 
 ### Sample 2
 
@@ -236,11 +214,11 @@ Input:
 
 | Variable | Value |
 | --- | --- |
-| `a` | 2 |
-| `b` | 1 |
-| `c` | 10 |
-| `(a-b)c` | 10 |
-| Required `t` | `ceil(10/1)` = 10 |
+| a | 2 |
+| b | 1 |
+| c | 10 |
+| need = (a-b)·c | 10 |
+| answer = ceil(10/1) | 10 |
 
 Output:
 
@@ -248,18 +226,18 @@ Output:
 10
 ```
 
-After waiting `10` seconds, the users buffer `10` units. While watching the `10`-second video, another `10` units arrive from the internet, giving `20` total units, exactly matching the video's requirement.
+Here the connection falls behind by 1 unit every second of playback. Over 10 seconds the deficit is 10 units, so exactly 10 units must be buffered before playback starts.
 
-This example shows the tight boundary where the final buffer becomes zero exactly at the end.
+This trace highlights the central invariant: the entire problem reduces to covering the cumulative deficit `(a-b)·c`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only a few arithmetic operations are performed |
-| Space | O(1) | No extra data structures are used |
+| Time | O(1) | A constant number of arithmetic operations |
+| Space | O(1) | Only a few integer variables are stored |
 
-The constraints are extremely small, so even simulation would pass comfortably. The mathematical solution is constant time and constant memory, far below the limits.
+The solution performs no loops and no auxiliary storage. It easily fits within the limits.
 
 ## Test Cases
 
@@ -267,106 +245,98 @@ The constraints are extremely small, so even simulation would pass comfortably. 
 # helper: run solution on input string, return output string
 import sys, io
 
-def solve():
-    input = sys.stdin.readline
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
 
     a, b, c = map(int, input().split())
-
-    ans = ((a - b) * c + b - 1) // b
-
-    print(ans)
-
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
+    need = (a - b) * c
+    return str((need + b - 1) // b)
 
 # provided sample
-assert run("4 1 1\n") == "3\n", "sample 1"
+assert run("4 1 1\n") == "3", "sample 1"
 
-# custom cases
-assert run("2 1 10\n") == "10\n", "long playback"
+# minimum-size values
+assert run("2 1 1\n") == "1", "minimum case"
 
-assert run("4 3 1\n") == "1\n", "ceiling division"
+# exact divisibility
+assert run("5 2 4\n") == "6", "exact division"
 
-assert run("1000 999 1000\n") == "2\n", "large values"
+# ceiling required
+assert run("5 3 2\n") == "2", "ceiling division"
 
-assert run("5 4 10\n") == "3\n", "downloading continues during watching"
+# maximum values
+assert run("1000 1 1000\n") == "999000", "maximum bounds"
 
-assert run("2 1 1\n") == "1\n", "minimum nonzero wait"
+# off-by-one boundary
+assert run("3 2 1\n") == "1", "single unit deficit"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 1 10` | `10` | Long playback duration |
-| `4 3 1` | `1` | Correct ceiling division |
-| `1000 999 1000` | `2` | Large boundary values |
-| `5 4 10` | `3` | Downloading continues during playback |
-| `2 1 1` | `1` | Smallest positive answer |
+| `2 1 1` | `1` | Smallest meaningful instance |
+| `5 2 4` | `6` | Exact division case |
+| `5 3 2` | `2` | Ceiling division correctness |
+| `1000 1 1000` | `999000` | Largest values |
+| `3 2 1` | `1` | Common off-by-one boundary |
 
 ## Edge Cases
 
 Consider:
 
 ```
-4 3 1
+3 2 1
 ```
 
-The inequality becomes:
+The deficit accumulated during playback is:
 
-$$3(t+1) \ge 4$$
-
-$$t \ge \frac{1}{3}$$
+```
+(3-2)·1 = 1
+```
 
 The algorithm computes:
 
-$$((4-3)\cdot1 + 3 - 1)//3 = 1$$
+```
+ceil(1/2) = 1
+```
 
-So it correctly rounds upward. A plain integer division would incorrectly produce `0`.
+Waiting 0 seconds would fail immediately because consumption begins faster than downloading. Waiting 1 second provides enough buffer.
 
 Now consider:
 
 ```
-5 4 10
+5 2 4
 ```
 
-A wrong approach might require buffering the entire video beforehand:
-
-$$50 / 4 = 12.5$$
-
-leading to answer `13`.
-
-The algorithm instead computes only the playback deficit:
-
-$$(a-b)c = 10$$
-
-$$\left\lceil \frac{10}{4} \right\rceil = 3$$
-
-After waiting `3` seconds, the users buffer `12` units. During playback, another `40` units download, reaching `52`, which exceeds the required `50`.
-
-Finally, consider the largest boundary case:
+The deficit is:
 
 ```
-1000 999 1000
+(5-2)·4 = 12
 ```
 
-The deficit rate is only `1` unit per second:
+Since
 
-$$(a-b)c = 1000$$
+```
+12 / 2 = 6
+```
 
-The answer becomes:
+is already an integer, the answer is exactly 6. This case verifies that the ceiling formula does not accidentally add an extra second when division is exact.
 
-$$\left\lceil \frac{1000}{999} \right\rceil = 2$$
+Finally, consider the largest possible values:
 
-The algorithm handles this directly with integer arithmetic and avoids floating-point precision problems.
+```
+1000 1 1000
+```
+
+The deficit becomes:
+
+```
+(1000-1)·1000 = 999000
+```
+
+and the answer is
+
+```
+999000
+```
+
+All arithmetic comfortably fits inside standard integer types, and the formula still works without any special handling.
