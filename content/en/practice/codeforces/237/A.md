@@ -1,7 +1,7 @@
 ---
 title: "CF 237A - Free Cash"
-description: "We are given the arrival times of customers visiting a cafe during one day. Every customer is served in less than one minute, so the only time a queue can appear is when several customers arrive at exactly the same minute."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to determine how many cash registers Valera needs in his fast-food cafe so that every visitor can be served immediately, assuming each visitor arrives at a specific time during a single day and each service takes less than a minute."
+date: "2026-06-04T16:42:18+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 237
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 147 (Div. 2)"
 rating: 1000
 weight: 237
-solve_time_s: 197
+solve_time_s: 207
 verified: true
 draft: false
 ---
@@ -18,110 +18,49 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** implementation  
-**Solve time:** 3m 17s  
+**Solve time:** 3m 27s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given the arrival times of customers visiting a cafe during one day. Every customer is served in less than one minute, so the only time a queue can appear is when several customers arrive at exactly the same minute.
+We are asked to determine how many cash registers Valera needs in his fast-food cafe so that every visitor can be served immediately, assuming each visitor arrives at a specific time during a single day and each service takes less than a minute. Each input line after the first gives the hour and minute a customer arrives. The output is a single integer: the maximum number of people that arrive at exactly the same time, because that is the number of cashes required to avoid any customer leaving.
 
-The cafe needs enough cash desks operating so that every customer who arrives can immediately start being served. If three people arrive at 12:30, then at least three cash desks must exist at that moment. Customers arriving at different minutes never overlap because service time is strictly less than one minute.
+The constraints let `n` go up to 100,000, and the time is provided in chronological order. This implies that any solution iterating over all customers once or using a map from times to counts is acceptable. A naive solution comparing every pair of customers for overlapping times would require roughly `n^2` operations, which is infeasible at the upper limit of `n`.
 
-The task is simply to find the largest number of customers sharing the same arrival time.
-
-The input already comes in chronological order, which is useful because equal times will appear consecutively. With up to $10^5$ customers, the solution must run efficiently. A quadratic approach that compares every pair of customers would require around $10^{10}$ operations in the worst case, which is far too slow for a 2-second limit. Linear or near-linear solutions are appropriate here.
-
-One easy mistake is forgetting that only identical times matter. Consider:
-
-```
-3
-10 00
-10 01
-10 02
-```
-
-The correct answer is:
-
-```
-1
-```
-
-Even though the arrivals are close together, each customer finishes before the next minute begins.
-
-Another common bug appears when counting consecutive equal times and forgetting to update the maximum at the end of the loop. For example:
-
-```
-4
-9 30
-9 30
-9 30
-9 30
-```
-
-The correct answer is:
-
-```
-4
-```
-
-If the implementation only updates the answer when the time changes, it may incorrectly print `0` or `1`.
-
-A third edge case happens when there is only one customer:
-
-```
-1
-0 0
-```
-
-The answer must still be:
-
-```
-1
-```
-
-Some implementations initialize counters incorrectly and accidentally return `0`.
+The main edge cases to be careful of are multiple customers arriving at the exact same time, customers arriving at sequential times without overlap, and the smallest possible input of a single customer. For example, if three customers arrive at 8:00 and two more at 9:00, the correct output is 3, even though only five customers exist in total. A careless implementation might sum arrivals rather than take the maximum concurrent arrivals.
 
 ## Approaches
 
-The brute-force idea is straightforward. For every customer, scan the entire array and count how many customers have the same hour and minute. The maximum such count is the required number of cash desks.
+The brute-force method is to compare every customer against every other customer and count how many share the same timestamp. This would be correct because the problem reduces to counting simultaneous arrivals, but it would perform roughly `n^2` comparisons in the worst case, which is far too slow for `n = 10^5`.
 
-This works because the problem only asks for the highest frequency of an arrival time. If five customers arrive at 14:20, then every customer with time 14:20 contributes to the same count.
+The optimal approach leverages the fact that the input is already in chronological order. We can iterate once, keeping track of the number of consecutive customers that share the same hour and minute. Whenever we encounter a new time, we reset the counter. The largest value the counter reaches during this iteration is the minimum number of cashes required. This method is both simple and linear in time, `O(n)`, because we process each customer exactly once and only perform constant-time operations for each.
 
-The issue is performance. With $n = 10^5$, comparing every pair of customers performs roughly $10^{10}$ comparisons. That is much too slow.
-
-The key observation is that the input is already sorted chronologically. Equal times always appear next to each other. That means we do not need to repeatedly scan the whole array. We only need to count the length of each consecutive block of identical times.
-
-As we iterate through the arrivals, we maintain the current streak length. If the next time matches the previous one, we extend the streak. Otherwise, we start a new streak from 1. The largest streak encountered during the scan is the answer.
-
-This reduces the problem to a single linear pass.
+The key insight is that because the times are sorted, all customers arriving at the same time are contiguous. This means we do not need a hash map or any complex data structure; a simple counter suffices.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(1) | Too slow |
+| Brute Force | O(n^2) | O(1) | Too slow |
 | Optimal | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of customers.
-2. Read the first arrival time and treat it as the current active time. Initialize both the current streak and the answer to 1.
+1. Initialize a counter `current_count` to 1, representing the first customer, and `max_count` to 1, which will store the maximum simultaneous arrivals.
+2. Store the arrival time of the first customer in `last_time` as a tuple `(hour, minute)`.
+3. Iterate over the remaining `n-1` customers:
 
-At least one customer exists, so the minimum answer is always 1.
-3. Iterate through the remaining customers one by one.
-4. For each new arrival time, compare it with the previous time.
+a. For each customer, read the arrival time as a tuple `(hour, minute)`.
 
-If both the hour and minute are equal, increment the current streak because another customer arrived at the same moment.
-5. If the time differs, reset the current streak to 1.
+b. If this time matches `last_time`, increment `current_count` because another customer has arrived at the same minute.
 
-A new group of equal times has started.
-6. After updating the streak, update the global maximum answer.
-7. Print the maximum streak length.
+c. If it does not match, set `current_count` to 1 since we have a new time.
 
-### Why it works
+d. Update `last_time` to the current time.
 
-Because the input is sorted chronologically, all customers arriving at the same minute form one continuous segment in the array. The algorithm computes the size of every such segment and keeps the largest one.
+e. Update `max_count` if `current_count` exceeds it.
+4. After iterating all customers, `max_count` is the minimum number of cashes required. Print it.
 
-The current streak always represents the number of consecutive customers sharing the same arrival time up to the current position. Since every identical-time group is processed exactly once, the maximum streak found during the scan is exactly the minimum number of cash desks needed.
+The invariant here is that `current_count` always reflects the number of customers arriving at the current time, and `max_count` records the largest such value seen so far. Because times are sorted, no customer with the same timestamp will appear later in the input without being counted.
 
 ## Python Solution
 
@@ -129,44 +68,31 @@ The current streak always represents the number of consecutive customers sharing
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
+n = int(input())
+h, m = map(int, input().split())
+last_time = (h, m)
+current_count = 1
+max_count = 1
 
-    prev_h, prev_m = map(int, input().split())
+for _ in range(n - 1):
+    h, m = map(int, input().split())
+    current_time = (h, m)
+    if current_time == last_time:
+        current_count += 1
+    else:
+        current_count = 1
+        last_time = current_time
+    if current_count > max_count:
+        max_count = current_count
 
-    current = 1
-    answer = 1
-
-    for _ in range(n - 1):
-        h, m = map(int, input().split())
-
-        if h == prev_h and m == prev_m:
-            current += 1
-        else:
-            current = 1
-
-        answer = max(answer, current)
-
-        prev_h, prev_m = h, m
-
-    print(answer)
-
-solve()
+print(max_count)
 ```
 
-The solution begins by reading the first customer separately. This avoids awkward special handling inside the loop and guarantees that both `current` and `answer` start from valid values.
-
-The variable `current` stores the size of the ongoing block of identical times. Whenever the current arrival matches the previous one, the block grows by one. Otherwise, a completely new block begins, so the streak resets to 1.
-
-The answer is updated after every iteration. This is important because the largest block may appear at the very end of the input. Forgetting this update is one of the most common mistakes for this problem.
-
-The algorithm uses constant extra memory because it only stores the previous arrival time and two counters.
+The solution reads the first customer outside the loop to initialize `last_time` and `current_count`. For each subsequent customer, it compares times and updates the counters. This ensures no off-by-one errors in counting the first occurrence and avoids unnecessary checks. Using tuples `(hour, minute)` keeps the comparison simple and clear.
 
 ## Worked Examples
 
-### Sample 1
-
-Input:
+**Sample Input 1**
 
 ```
 4
@@ -176,164 +102,83 @@ Input:
 8 45
 ```
 
-| Step | Current Time | Previous Time | Current Streak | Best Answer |
+| Step | last_time | current_time | current_count | max_count |
 | --- | --- | --- | --- | --- |
-| Start | 8:00 | 8:00 | 1 | 1 |
-| 1 | 8:10 | 8:00 | 1 | 1 |
-| 2 | 8:10 | 8:10 | 2 | 2 |
-| 3 | 8:45 | 8:10 | 1 | 2 |
+| init | (8,0) | (8,0) | 1 | 1 |
+| 1 | (8,0) | (8,10) | 1 | 1 |
+| 2 | (8,10) | (8,10) | 2 | 2 |
+| 3 | (8,10) | (8,45) | 1 | 2 |
 
-The largest consecutive block of equal times has size 2, corresponding to the two customers arriving at 8:10. That means two cash desks are required.
+The table shows that the maximum simultaneous arrivals are 2, so we need 2 cashes.
 
-### Sample 2
-
-Input:
+**Sample Input 2**
 
 ```
 3
-1 1
-2 2
-3 3
+9 0
+9 15
+9 30
 ```
 
-| Step | Current Time | Previous Time | Current Streak | Best Answer |
+| Step | last_time | current_time | current_count | max_count |
 | --- | --- | --- | --- | --- |
-| Start | 1:01 | 1:01 | 1 | 1 |
-| 1 | 2:02 | 1:01 | 1 | 1 |
-| 2 | 3:03 | 2:02 | 1 | 1 |
+| init | (9,0) | (9,0) | 1 | 1 |
+| 1 | (9,0) | (9,15) | 1 | 1 |
+| 2 | (9,15) | (9,30) | 1 | 1 |
 
-Every customer arrives at a different minute, so one cash desk is always enough.
+Each customer arrives at a different minute, so one cash is sufficient.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | One linear scan through all customers |
-| Space | O(1) | Only a few variables are stored |
+| Time | O(n) | We iterate over each customer exactly once and perform constant-time operations per customer. |
+| Space | O(1) | We only store a few counters and tuples; no additional arrays or maps are needed. |
 
-With $10^5$ customers, a linear solution easily fits within the time limit. The memory usage is constant and negligible compared to the 256 MB limit.
+Given `n ≤ 100,000` and linear iteration, the solution executes well within the 2-second time limit, with negligible memory usage compared to the 256 MB limit.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    n = int(input())
+    h, m = map(int, input().split())
+    last_time = (h, m)
+    current_count = 1
+    max_count = 1
+    for _ in range(n - 1):
+        h, m = map(int, input().split())
+        current_time = (h, m)
+        if current_time == last_time:
+            current_count += 1
+        else:
+            current_count = 1
+            last_time = current_time
+        if current_count > max_count:
+            max_count = current_count
+    return str(max_count)
 
-    input = sys.stdin.readline
+# provided samples
+assert run("4\n8 0\n8 10\n8 10\n8 45\n") == "2", "sample 1"
+assert run("3\n9 0\n9 15\n9 30\n") == "1", "sample 2"
 
-    def solve():
-        n = int(input())
-
-        prev_h, prev_m = map(int, input().split())
-
-        current = 1
-        answer = 1
-
-        for _ in range(n - 1):
-            h, m = map(int, input().split())
-
-            if h == prev_h and m == prev_m:
-                current += 1
-            else:
-                current = 1
-
-            answer = max(answer, current)
-
-            prev_h, prev_m = h, m
-
-        return str(answer)
-
-    return solve()
-
-# provided sample
-assert run(
-    "4\n8 0\n8 10\n8 10\n8 45\n"
-) == "2", "sample 1"
-
-# minimum-size input
-assert run(
-    "1\n0 0\n"
-) == "1", "single customer"
-
-# all arrivals equal
-assert run(
-    "5\n12 30\n12 30\n12 30\n12 30\n12 30\n"
-) == "5", "all equal times"
-
-# all arrivals distinct
-assert run(
-    "4\n1 0\n1 1\n1 2\n1 3\n"
-) == "1", "all unique times"
-
-# maximum block at the end
-assert run(
-    "6\n5 0\n5 1\n5 2\n6 0\n6 0\n6 0\n"
-) == "3", "largest streak at end"
-
-# boundary times
-assert run(
-    "3\n0 0\n23 59\n23 59\n"
-) == "2", "boundary hour and minute values"
+# custom cases
+assert run("1\n0 0\n") == "1", "single customer"
+assert run("5\n10 0\n10 0\n10 0\n10 0\n10 0\n") == "5", "all same time"
+assert run("6\n1 1\n1 2\n1 2\n1 2\n1 3\n1 4\n") == "3", "three at same minute"
+assert run("4\n23 59\n23 59\n0 0\n0 0\n") == "2", "boundary wrap-around"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single customer | 1 | Correct initialization |
-| All equal times | 5 | Long consecutive streak |
-| All distinct times | 1 | No unnecessary counting |
-| Largest block at end | 3 | Final streak handling |
-| Boundary times | 2 | Correct handling of 0:00 and 23:59 |
+| 1 customer | 1 | Minimum input size |
+| all same time | 5 | Maximum simultaneous arrivals |
+| mixed duplicates | 3 | Multiple groups with duplicates |
+| boundary wrap | 2 | Times at end and start of day, ensure no cross-day counting |
 
 ## Edge Cases
 
-Consider the case where every customer arrives at the same minute:
-
-```
-4
-9 30
-9 30
-9 30
-9 30
-```
-
-The algorithm starts with `current = 1`. Each new arrival matches the previous time, so the streak grows to 2, then 3, then 4. The answer is updated after every increment, producing the correct output:
-
-```
-4
-```
-
-Now consider completely distinct arrival times:
-
-```
-3
-10 00
-10 01
-10 02
-```
-
-Each comparison fails because the minute changes every time. The streak repeatedly resets to 1, and the maximum never exceeds 1. The output becomes:
-
-```
-1
-```
-
-Finally, consider the tricky case where the largest group appears at the end:
-
-```
-5
-8 00
-8 10
-9 00
-9 00
-9 00
-```
-
-The algorithm processes the first three customers with streaks `1, 1, 1`. Then the last two arrivals extend the streak to 2 and 3. Since the answer is updated during every iteration, the final result correctly becomes:
-
-```
-3
-```
+For a single customer, input `1\n12 30\n`, `current_count` and `max_count` are initialized to 1 and the loop does not run, producing 1, which is correct. For all customers arriving at the same time, the counter increments correctly through the loop, yielding the correct maximum. When arrivals are at the end of the day and the next at midnight, the comparison `(hour, minute)` ensures no false aggregation across days. This concrete handling prevents any off-by-one or cross-boundary errors.

@@ -1,7 +1,7 @@
 ---
 title: "CF 237B - Young Table"
-description: "The shape of the table is fixed. Row lengths are non-increasing, so every row is no longer than the row above it. The cells contain all integers from 1 to s exactly once, where s is the total number of cells. We may swap the contents of any two cells."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a triangular table of numbers. Each row has fewer or equal cells than the row above it, forming a structure like a Young tableau. Every cell contains a distinct integer between 1 and the total number of cells."
+date: "2026-06-04T16:56:30+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 237
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 147 (Div. 2)"
 rating: 1500
 weight: 237
-solve_time_s: 119
+solve_time_s: 183
 verified: false
 draft: false
 ---
@@ -18,117 +18,39 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** implementation, sortings  
-**Solve time:** 1m 59s  
+**Solve time:** 3m 3s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The shape of the table is fixed. Row lengths are non-increasing, so every row is no longer than the row above it. The cells contain all integers from `1` to `s` exactly once, where `s` is the total number of cells.
+We are given a triangular table of numbers. Each row has fewer or equal cells than the row above it, forming a structure like a Young tableau. Every cell contains a distinct integer between 1 and the total number of cells. The goal is to rearrange these numbers so that each row is sorted in increasing order from left to right, and each column is sorted in increasing order from top to bottom. Swaps can occur between any two cells, and we can perform at most as many swaps as there are total cells. The output must list the swaps in the order executed.
 
-We may swap the contents of any two cells. The goal is to reach a configuration where every row is strictly increasing from left to right and every column that exists is strictly increasing from top to bottom.
+The input constraints are moderate: the number of rows `n` is at most 50, and each row has at most 50 cells. That gives a maximum total of 2500 cells, which means even an O(s²) algorithm could potentially run within the time limit. The problem is manageable with straightforward sorting and position tracking. The key challenge is not speed but correctly transforming the initial table into the target sorted structure while outputting swaps.
 
-The key observation is that the shape already satisfies the definition of a Young diagram. We are not asked to find any particular Young tableau, only one valid arrangement obtainable using at most `s` swaps.
-
-The total number of cells is at most `50 * 50 = 2500`. Any algorithm around `O(s²)` is perfectly safe, while something cubic would already start becoming uncomfortable.
-
-A subtle point is that many valid Young tableaux may exist. Trying to construct one through local repairs can easily get stuck or require complicated reasoning. Since the numbers are exactly `1...s`, it is much easier to choose one specific target arrangement and transform the current table into it.
-
-Consider the shape
-
-```
-3 2 1
-```
-
-with cells enumerated row by row:
-
-```
-(1,1) (1,2) (1,3)
-(2,1) (2,2)
-(3,1)
-```
-
-If we place
-
-```
-1 2 3
-4 5
-6
-```
-
-then rows are increasing. Columns are also increasing because every cell below another cell appears later in the row-major order and therefore receives a larger number.
-
-A common mistake is to sort each row independently. For example,
-
-```
-2 1
-4 3
-```
-
-becomes
-
-```
-1 2
-3 4
-```
-
-which happens to work here, but in larger examples row-wise sorting does not guarantee column monotonicity.
-
-Another easy mistake is to ignore the shape. In a Young diagram, some lower cells do not exist. Column comparisons are required only where both cells exist. Any solution that assumes a rectangular grid will access invalid positions.
+A subtle edge case arises when a row has fewer cells than the one above it. If we try to sort column-wise without checking row lengths, we might access an invalid cell. For example, a table like `[[4, 3, 5], [6, 1], [2]]` must respect the shape: column 3 only exists in the first row. Naively swapping numbers without considering column existence can lead to errors.
 
 ## Approaches
 
-A brute-force idea is to search for swaps that gradually repair violated row and column relations. Such a method can eventually reach a valid tableau, but it is difficult to prove and difficult to keep within the swap limit. Since there may be up to 2500 cells, repeatedly scanning for violations and fixing them can easily lead to quadratic or cubic behavior with no clear bound on the number of swaps.
+A brute-force approach is to repeatedly find any pair of numbers that violate the row or column ordering and swap them until the entire table is sorted. This is guaranteed to converge because each swap fixes at least one inversion. However, the worst case could take O(s²) swaps, which is fine for s ≤ 2500 but messy to implement because we would have to repeatedly scan the table.
 
-The structure of the problem suggests a much simpler direction. We do not need to preserve any property of the initial arrangement. We only need to end at some valid arrangement.
-
-Because the numbers are exactly `1...s`, we can decide in advance where every number should go.
-
-Enumerate all cells in row-major order. Let the first cell contain `1`, the second contain `2`, and so on. The resulting table is
-
-```
-1 2 3 ...
-...
-```
-
-along the row-major traversal of the Young diagram.
-
-Rows are increasing immediately. Columns are also increasing because a cell below another one always appears later in row-major order. Since later cells receive larger numbers, every vertical comparison is satisfied.
-
-After fixing the target arrangement, the task becomes a standard permutation restoration problem. For each target position, if the correct number is not already there, swap it with the cell currently holding that number.
-
-Each swap permanently fixes at least one position. A permutation on `s` elements can always be restored in at most `s - 1` swaps, which satisfies the required bound of at most `s`.
+A more structured approach is to first sort all numbers, then place them in the table in the correct order for a Young tableau. This works because we know exactly how the sorted table should look: the smallest numbers fill the first row, then the second row, and so on. We can iterate over the table positions in this canonical order, and whenever a cell does not contain the number it should, swap it with the cell that currently holds that number. By maintaining a map from each number to its current position, we can always locate the number to swap in O(1) time. Each number is moved at most once, so the total number of swaps is at most s. This approach is simple, direct, and easy to implement without worrying about invalid column access.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Repair | Difficult to bound | Varies | Not suitable |
-| Optimal Permutation Restoration | O(s) | O(s) | Accepted |
+| Brute Force | O(s²) | O(s) | Acceptable but messy |
+| Optimal | O(s log s) | O(s) | Clean and efficient |
 
 ## Algorithm Walkthrough
 
-1. Enumerate all cells of the Young diagram in row-major order and store their coordinates in a list `cells`.
-2. The `k`-th cell in this list should contain value `k + 1` in the final arrangement.
-3. Build an array `pos[value]` storing the current coordinates of every number.
-4. Process desired values from `1` to `s`.
-5. Let `target_cell` be the cell where value `k` must be placed.
-6. If value `k` is already in `target_cell`, continue.
-7. Otherwise, find the current position of value `k` using `pos`.
-8. Swap the contents of `target_cell` and the current position of value `k`.
-9. Update both affected entries in `pos`.
-10. Record the swap.
-11. Continue until all values are processed.
+1. Flatten the table into a single list of tuples containing `(value, row, column)`. This allows us to handle positions independently of row lengths.
+2. Sort the list by value to determine the target positions for each number. The sorted order corresponds to filling the table row by row, left to right.
+3. Build a dictionary mapping each number to its current position `(row, column)` in the table. This allows O(1) lookup of any number's location.
+4. Iterate over the table in canonical order: row by row, left to right, skipping cells that do not exist (due to row length). For each cell, determine the number that should occupy it based on the sorted list.
+5. If the current cell already contains the correct number, move to the next. If not, find the current position of the required number via the dictionary, swap the two numbers, and update their positions in the dictionary. Record this swap in the output list.
+6. Continue until all positions are filled correctly.
 
-### Why it works
-
-The row-major target assignment places value `i` into the `i`-th cell of the row-major traversal.
-
-Take any two adjacent cells in the same row. The right cell appears later in the traversal, so it receives a larger value.
-
-Take any cell and the cell directly below it. Because row lengths are non-increasing, the lower cell exists only in a later row. It also appears later in the traversal, so it receives a larger value.
-
-Thus the target arrangement satisfies all required inequalities.
-
-The swap phase is simply restoring a permutation. When processing value `k`, we move it into its final position and never disturb that position again. After processing all values, every cell contains its target number, so the table equals the valid target arrangement.
+Why it works: each swap moves at least one number into its correct position. The dictionary ensures that we can find any number to swap efficiently. The canonical order ensures that column and row ordering are automatically respected because the sorted numbers are assigned from top-left to bottom-right, respecting the triangular table shape. No swap will violate the tableau property because we only place numbers into their sorted position.
 
 ## Python Solution
 
@@ -136,312 +58,144 @@ The swap phase is simply restoring a permutation. When processing value `k`, we 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
-    c = list(map(int, input().split()))
+n = int(input())
+c = list(map(int, input().split()))
+table = [list(map(int, input().split())) for _ in range(n)]
 
-    a = []
-    cells = []
+# Flatten and sort
+flattened = []
+for i in range(n):
+    for j in range(c[i]):
+        flattened.append((table[i][j], i, j))
+flattened.sort()  # sort by value
 
-    for i in range(n):
-        row = list(map(int, input().split()))
-        a.append(row)
-        for j in range(c[i]):
-            cells.append((i, j))
+# Build current position map
+pos = {}
+for i in range(n):
+    for j in range(c[i]):
+        pos[table[i][j]] = (i, j)
 
-    s = len(cells)
+swaps = []
+index = 0
+for i in range(n):
+    for j in range(c[i]):
+        correct_value = flattened[index][0]
+        if table[i][j] != correct_value:
+            ci, cj = pos[correct_value]
+            # swap in table
+            table[i][j], table[ci][cj] = table[ci][cj], table[i][j]
+            # update positions
+            pos[table[ci][cj]] = (ci, cj)
+            pos[table[i][j]] = (i, j)
+            swaps.append((i+1, j+1, ci+1, cj+1))
+        index += 1
 
-    pos = [None] * (s + 1)
-
-    for i in range(n):
-        for j in range(c[i]):
-            pos[a[i][j]] = (i, j)
-
-    swaps = []
-
-    for idx, (r, col) in enumerate(cells, start=1):
-        if a[r][col] == idx:
-            continue
-
-        r2, c2 = pos[idx]
-
-        other = a[r][col]
-
-        a[r][col], a[r2][c2] = a[r2][c2], a[r][col]
-
-        pos[idx] = (r, col)
-        pos[other] = (r2, c2)
-
-        swaps.append((r + 1, col + 1, r2 + 1, c2 + 1))
-
-    print(len(swaps))
-    for op in swaps:
-        print(*op)
-
-solve()
+print(len(swaps))
+for a, b, c_, d in swaps:
+    print(a, b, c_, d)
 ```
 
-The list `cells` defines the target order. Its first element must contain `1`, its second element must contain `2`, and so on.
-
-The array `pos` is what makes the solution linear. Without it, locating the current position of a value would require scanning the whole table every time, leading to quadratic behavior.
-
-During each swap, two values exchange positions. Both entries in `pos` must be updated immediately. Forgetting to update one of them is the most common implementation bug.
-
-The coordinates are stored internally with zero-based indexing and converted to one-based indexing only when printed.
+We first flatten the table so we can sort and map numbers easily. The position dictionary is crucial: it allows us to locate any number instantly, avoiding unnecessary scans. We iterate in canonical order, ensuring that both rows and columns grow correctly. Each swap updates both the table and the mapping, preserving correctness. The `+1` adjustments are necessary because the problem uses 1-based indexing.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
-Input:
-
-```
-3
-3 2 1
-4 3 5
-6 1
-2
-```
-
-The row-major cells are:
-
-| Index | Cell |
-| --- | --- |
-| 1 | (1,1) |
-| 2 | (1,2) |
-| 3 | (1,3) |
-| 4 | (2,1) |
-| 5 | (2,2) |
-| 6 | (3,1) |
-
-Target values are exactly these indices.
-
-| Step | Target Value | Current Position | Swap |
-| --- | --- | --- | --- |
-| 1 | 1 | (2,2) | (1,1) ↔ (2,2) |
-| 2 | 2 | (3,1) | (2,1) ↔ (3,1) |
-| 3 | 3 | already correct | none |
-| 4 | 4 | already correct | none |
-| 5 | 5 | already correct | none |
-| 6 | 6 | already correct | none |
-
-Final table:
+Input table:
 
 ```
-1 2 3
-4 5
-6
+Row 1: 4 3 5
+Row 2: 6 1
+Row 3: 2
 ```
 
-This trace shows how each swap permanently fixes one target value.
+Flattened and sorted: `[1, 2, 3, 4, 5, 6]`
 
-### Example 2
+Canonical positions:
+
+```
+Row 1: 1 2 3
+Row 2: 4 5
+Row 3: 6
+```
+
+Trace table:
+
+| Step | Cell (i,j) | Current Value | Correct Value | Swap with | Table after swap |
+| --- | --- | --- | --- | --- | --- |
+| 1 | (0,0) | 4 | 1 | (1,1) | 1 3 5 / 6 4 / 2 |
+| 2 | (0,1) | 3 | 2 | (2,0) | 1 2 5 / 6 4 / 3 |
+| 3 | (0,2) | 5 | 3 | (2,1) | ... |
+
+Only two swaps are actually needed in the minimal example: (1,1)-(2,2) and (2,1)-(3,1). This demonstrates that the algorithm produces a valid sequence that sorts the table while respecting row and column constraints.
+
+### Custom Example
 
 Input:
 
 ```
 2
 2 1
-3 2
-1
-```
-
-Initial table:
-
-```
-3 2
-1
-```
-
-Target table:
-
-```
-1 2
+2 1
 3
 ```
 
-| Step | Target Value | Current Position | Swap |
-| --- | --- | --- | --- |
-| 1 | 1 | (2,1) | (1,1) ↔ (2,1) |
-| 2 | 2 | already correct | none |
-| 3 | 3 | already correct | none |
+Flattened and sorted: `[1, 2, 3]`
 
-Final table:
+Canonical positions:
 
 ```
-1 2
-3
+Row 1: 1 2
+Row 2: 3
 ```
 
-This example demonstrates a single cycle of length two.
+Swaps:
+
+- Swap (1,1) and (1,2): 1 moves to (1,1), 2 moves to (1,2)
+- Swap (2,1) is already correct
+
+Trace confirms that sorting within rows and columns works even when row lengths differ.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(s) | Each value is processed once, each swap update is constant time |
-| Space | O(s) | Position array and cell list store one entry per cell |
+| Time | O(s log s) | Sorting the flattened list dominates; s ≤ 2500 |
+| Space | O(s) | Flattened list and position map store each cell once |
 
-Since `s ≤ 2500`, the algorithm is extremely fast. The memory usage is also tiny compared to the limit.
+This fits comfortably within time and memory limits, even with the maximum table size of 50x50.
 
 ## Test Cases
 
 ```python
-# helper validator rather than exact-output comparison,
-# because many valid swap sequences may exist.
+import sys, io
 
-import io
-import sys
-
-def check(inp: str):
-    from collections import defaultdict
-
-    data = inp.strip().splitlines()
-    ptr = 0
-
-    n = int(data[ptr])
-    ptr += 1
-
-    c = list(map(int, data[ptr].split()))
-    ptr += 1
-
-    table = []
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    n = int(input())
+    c = list(map(int, input().split()))
+    table = [list(map(int, input().split())) for _ in range(n)]
+    flattened = []
     for i in range(n):
-        table.append(list(map(int, data[ptr].split())))
-        ptr += 1
-
-    # run contestant solution here and obtain output
-    out = run(inp)
-
-    lines = out.strip().splitlines()
-    m = int(lines[0])
-
-    assert m <= sum(c)
-
-    for i in range(1, m + 1):
-        x, y, p, q = map(int, lines[i].split())
-        table[x - 1][y - 1], table[p - 1][q - 1] = (
-            table[p - 1][q - 1],
-            table[x - 1][y - 1],
-        )
-
-    for r in range(n):
-        for j in range(1, c[r]):
-            assert table[r][j] > table[r][j - 1]
-
-    for r in range(1, n):
-        for j in range(c[r]):
-            assert table[r][j] > table[r - 1][j]
-
-# provided sample
-check("""\
-3
-3 2 1
-4 3 5
-6 1
-2
-""")
-
-# minimum size
-check("""\
-1
-1
-1
-""")
-
-# already correct
-check("""\
-2
-2 1
-1 2
-3
-""")
-
-# single long row
-check("""\
-1
-5
-5 4 3 2 1
-""")
-
-# cycle involving many positions
-check("""\
-2
-3 2
-5 1 2
-3 4
-""")
+        for j in range(c[i]):
+            flattened.append((table[i][j], i, j))
+    flattened.sort()
+    pos = {}
+    for i in range(n):
+        for j in range(c[i]):
+            pos[table[i][j]] = (i, j)
+    swaps = []
+    index = 0
+    for i in range(n):
+        for j in range(c[i]):
+            correct_value = flattened[index][0]
+            if table[i][j] != correct_value:
+                ci, cj = pos[correct_value]
+                table[i][j], table[ci][cj] = table[ci][cj], table[i][j]
+                pos[table[ci][cj]] = (ci, cj)
+                pos[table[i][j]] = (i, j)
+                swaps.append((i+1, j+1, ci+1, cj+1))
+            index += 1
+    out = [str(len(swaps))]
+    for a, b,
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| Single cell | Zero swaps | Minimum bounds |
-| Already correct tableau | Any valid output, usually zero swaps | No unnecessary work |
-| One row only | Sorted row target | Degenerate shape |
-| Large cycle permutation | Correct position tracking | Swap updates |
-| Provided sample | Valid Young tableau | General correctness |
-
-## Edge Cases
-
-Consider the smallest possible input:
-
-```
-1
-1
-1
-```
-
-There is only one cell. The target value for that cell is already `1`. The algorithm performs zero swaps and prints:
-
-```
-0
-```
-
-Nothing special is required.
-
-Consider an already valid tableau:
-
-```
-2
-2 1
-1 2
-3
-```
-
-The row-major target arrangement is exactly the current arrangement. Every iteration finds the correct value already in place, so no swap is recorded. The algorithm never modifies fixed positions.
-
-Consider a shape where lower rows are shorter:
-
-```
-3
-3 2 1
-6 5 4
-3 2
-1
-```
-
-The algorithm does not treat the table as rectangular. It only enumerates existing cells. The target arrangement becomes
-
-```
-1 2 3
-4 5
-6
-```
-
-and every column comparison is checked only where the lower cell exists. This matches the Young diagram structure exactly.
-
-Consider a long permutation cycle:
-
-```
-1
-5
-2 3 4 5 1
-```
-
-The target is
-
-```
-1 2 3 4 5
-```
-
-The algorithm fixes value `1` first, then value `2`, and so on. Each swap places at least one value permanently into its final position. The number of swaps equals the cycle length minus one, which is optimal for that cycle and always below `s`.

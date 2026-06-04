@@ -1,7 +1,7 @@
 ---
 title: "CF 237C - Primes on Interval"
-description: "We are looking at every contiguous segment inside the interval $[a, b]$. For a chosen length $l$, every segment of exactly $l$ consecutive integers must contain at least $k$ prime numbers. The task is to find the smallest such $l$. If no segment length works, we print $-1$."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an interval of integers from a to b. We want to choose a length l such that every contiguous segment of length l inside this interval contains at least k prime numbers. Among all lengths that satisfy this condition, we need the smallest one."
+date: "2026-06-04T17:02:55+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "number-theory", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 237
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 147 (Div. 2)"
 rating: 1600
 weight: 237
-solve_time_s: 244
+solve_time_s: 162
 verified: true
 draft: false
 ---
@@ -18,173 +18,108 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** binary search, number theory, two pointers  
-**Solve time:** 4m 4s  
+**Solve time:** 2m 42s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are looking at every contiguous segment inside the interval $[a, b]$. For a chosen length $l$, every segment of exactly $l$ consecutive integers must contain at least $k$ prime numbers.
+We are given an interval of integers from `a` to `b`. We want to choose a length `l` such that **every** contiguous segment of length `l` inside this interval contains at least `k` prime numbers.
 
-The task is to find the smallest such $l$. If no segment length works, we print $-1$.
+Among all lengths that satisfy this condition, we need the smallest one. If no length works, we print `-1`.
 
-A useful way to think about the condition is this: we slide a window of length $l$ across the interval. Every possible window must contain enough primes. The answer is the minimum window size that satisfies this guarantee.
+Another way to view the problem is that for a candidate length `l`, we examine every window
 
-The bounds go up to $10^6$. That changes the problem completely. A direct primality test for every number inside every window would be far too slow. Even checking primality in $O(\sqrt n)$ per number would already be expensive when repeated many times.
+`[x, x+l-1]`
 
-The interval itself can also be as large as $10^6$, which means an $O(n^2)$ sliding-window simulation is impossible. Around $10^{12}$ operations would be required in the worst case.
+that fits completely inside `[a, b]`. The candidate is valid only if each of those windows contains at least `k` primes.
 
-The size limit strongly suggests two standard tools:
+The interval endpoints are at most `10^6`. This is the crucial constraint. Since primality information is needed repeatedly, precomputing all primes up to `10^6` with a sieve is very cheap. The interval itself can also contain up to `10^6` numbers, so any solution that checks every window separately for every possible length would perform roughly `10^12` operations and is completely infeasible.
 
-First, we should precompute primes with a sieve in roughly linear or $n \log \log n$ time.
+The structure of the condition suggests a monotonic property. If a certain length `l` works, then any larger length also works. A larger window can only contain at least as many primes as the smaller window it contains. This monotonicity points directly toward binary search.
 
-Second, we should avoid testing every possible length directly with brute force. The condition has monotonic behavior: if some length $l$ works, then every larger length also works. That makes binary search natural.
-
-There are several edge cases that can silently break incorrect implementations.
+There are several easy-to-miss edge cases.
 
 Consider:
-
-```
-1 2 2
-```
-
-The interval contains only one prime, namely 2. No segment can contain two primes, so the correct answer is:
-
-```
--1
-```
-
-A careless solution may binary search forever or incorrectly return the interval length.
-
-Another tricky case is:
-
-```
-2 2 1
-```
-
-There is exactly one number and it is prime. The answer is:
-
-```
-1
-```
-
-Off-by-one mistakes in the window boundaries often fail here because there is only one valid segment.
-
-This case is also important:
 
 ```
 14 16 1
 ```
 
-There are no primes at all. Every segment fails. The correct output is:
+There are no primes in the interval. Even the largest possible window contains zero primes, so the answer is `-1`. A careless binary search implementation might never explicitly verify that a solution exists.
+
+Consider:
 
 ```
--1
+2 5 2
 ```
 
-An implementation that only checks the largest window may incorrectly accept length 3 because it forgets that the segment itself still contains zero primes.
+The window `[2,3]` contains two primes, but `[3,4]` contains only one. Looking at only a few windows is not enough. Every window must satisfy the condition.
 
-Finally, consider:
-
-```
-2 10 2
-```
-
-Length 3 fails because the segment $[8,10]$ contains only one prime, namely 9 is composite and 10 is composite. Length 4 succeeds. The answer is:
+Consider:
 
 ```
-4
+2 2 1
 ```
 
-This catches implementations that only test some windows instead of all of them.
+The interval contains a single prime. The only possible length is `1`, which is valid. Boundary cases where `a = b` often reveal off-by-one errors in window handling.
+
+Consider:
+
+```
+8 12 1
+```
+
+The only prime is `11`. Length `4` works because every length-4 window contains `11`, while length `3` fails because `[8,10]` contains no prime. The minimum valid length is not necessarily related to the distance between consecutive primes alone.
 
 ## Approaches
 
-The brute-force approach is straightforward. For every possible length $l$, we examine every window of size $l$ inside $[a,b]$. For each window, we count how many primes it contains. The first valid $l$ is the answer.
+The most direct solution is to try every possible length `l`. For each length, inspect every window of that size and count how many primes it contains. If all windows contain at least `k` primes, record the answer.
 
-The brute-force idea is correct because it directly implements the definition from the problem. The problem is the amount of repeated work. If the interval length is $n$, then there are $O(n)$ candidate lengths and $O(n)$ windows for each length. Counting primes inside each window naively costs another $O(n)$. The total complexity becomes $O(n^3)$, which is completely unusable for $n = 10^6$.
-
-Even after improving prime counting with prefix sums, we still get $O(n^2)$, because we would test every possible length and every window.
+Prime counts inside a window can be computed efficiently using a prefix sum of primality values. With such a prefix sum, checking one window becomes `O(1)`. Unfortunately, there are up to `10^6` possible lengths and up to `10^6` windows per length. Even after optimizing window queries, the total work remains around `10^12`, which is far beyond the limit.
 
 The key observation is monotonicity.
 
-Suppose length $l$ works. Every window of size $l$ has at least $k$ primes. Now consider a larger length $l+1$. Every window of size $l+1$ contains some window of size $l$, so it must also contain at least $k$ primes. Larger windows can only gain numbers, never lose them.
+Suppose length `l` is valid. Every window of length `l` contains at least `k` primes. Now consider any larger length `L > l`. Every length-`L` window contains some length-`l` subwindow. Since that subwindow already contains at least `k` primes, the larger window also contains at least `k` primes.
 
-That means the predicate:
+This means:
 
-```
-"length l works"
-```
+- invalid lengths come first,
+- valid lengths come afterward.
 
-changes from false to true exactly once.
+The answer is the first valid length, which can be found with binary search.
 
-Whenever a property behaves like this, binary search becomes possible.
+To test a candidate length `l`, we slide a window through `[a,b]`. Using a prefix sum of primes, we can compute the number of primes in every window in constant time. If any window contains fewer than `k` primes, the candidate fails.
 
-To check a fixed length efficiently, we precompute prime counts with a prefix sum array. Then the number of primes inside any interval can be queried in $O(1)$.
-
-The final structure becomes:
-
-First, generate all primes up to $10^6$ with the Sieve of Eratosthenes.
-
-Second, build a prefix sum array where:
-
-$$pref[i] = \text{number of primes from } 1 \text{ to } i$$
-
-Third, binary search the minimum valid length.
-
-Each validity check scans all windows once, so it costs $O(n)$. Binary search performs $O(\log n)$ checks.
-
-The total complexity becomes $O(n \log n)$, which easily fits.
+The remaining ingredient is fast primality preprocessing. Since all numbers are at most `10^6`, a standard sieve of Eratosthenes computes primality for every relevant number in roughly `O(10^6 log log 10^6)` time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n^2)$ to $O(n^3)$ | $O(n)$ | Too slow |
-| Optimal | $O(n \log n)$ | $O(n)$ | Accepted |
+| Brute Force | O((b-a+1)²) | O(b) | Too slow |
+| Optimal | O(b log log b + (b-a+1) log(b-a+1)) | O(b) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build a sieve up to $b$ to determine which numbers are prime.
+1. Build a sieve of Eratosthenes up to `b` and determine which numbers are prime.
+2. Construct a prefix sum array `pref` where `pref[i]` equals the number of primes from `1` through `i`.
+3. Define a function `check(l)`.
+4. For every starting position `x` from `a` to `b-l+1`, compute the number of primes in window `[x, x+l-1]` using:
 
-The sieve lets us answer primality queries in constant time after preprocessing.
-2. Construct a prefix sum array over the interval of primality values.
-
-If `is_prime[x]` is 1 for primes and 0 otherwise, then:
-
-$$pref[i] = pref[i-1] + is\_prime[i]$$
-
-Using this array, the number of primes inside $[L,R]$ becomes:
-
-$$pref[R] - pref[L-1]$$
-3. Before binary search, check whether the entire interval contains at least $k$ primes.
-
-If even the whole range fails, no solution exists.
-4. Binary search on the answer $l$.
-
-The search range is from 1 to $b-a+1$.
-5. For a candidate length $mid$, slide a window of size $mid$ across the interval.
-
-For every starting position $x$, compute the number of primes inside:
-
-$$[x, x+mid-1]$$
-
-using the prefix sums.
-6. If every window contains at least $k$ primes, then this length works.
-
-Try smaller lengths by moving the binary search left boundary.
-7. Otherwise, some window failed.
-
-We need a larger window, so move the binary search right boundary.
-8. Print the smallest valid length found.
+`pref[x+l-1] - pref[x-1]`
+5. If any window contains fewer than `k` primes, return `False`.
+6. If all windows satisfy the requirement, return `True`.
+7. Before binary searching, verify that the largest possible length works. This corresponds to the entire interval `[a,b]`.
+8. If even the largest length fails, print `-1`.
+9. Otherwise binary search on lengths from `1` to `b-a+1`.
+10. When `check(mid)` succeeds, record it as a candidate answer and continue searching the left half.
+11. When `check(mid)` fails, search the right half.
+12. Print the smallest valid length found.
 
 ### Why it works
 
-The correctness depends on one monotonic property.
+The prefix sum array guarantees that every window's prime count is computed exactly. The `check(l)` function returns true precisely when every length-`l` window contains at least `k` primes.
 
-If a window length $l$ satisfies the condition, every larger length also satisfies it. Any larger window fully contains at least one valid smaller window, so it cannot have fewer than $k$ primes.
-
-Because of this monotonic transition from invalid to valid, binary search always converges to the minimum acceptable length.
-
-The prefix sums are correct because each range count is computed as the difference between cumulative counts. Every validity check examines all possible windows, so no failing segment can be missed.
+The crucial property is monotonicity. If length `l` is valid, any larger length is also valid because every larger window contains a valid length-`l` subwindow and thus already contains at least `k` primes. Consequently, the set of valid lengths forms a suffix of all possible lengths. Binary search on this monotone predicate finds the smallest valid length, which is exactly the required answer.
 
 ## Python Solution
 
@@ -195,87 +130,71 @@ input = sys.stdin.readline
 def solve():
     a, b, k = map(int, input().split())
 
-    limit = b
-
-    is_prime = [True] * (limit + 1)
-
-    if limit >= 0:
+    is_prime = [True] * (b + 1)
+    if b >= 0:
         is_prime[0] = False
-    if limit >= 1:
+    if b >= 1:
         is_prime[1] = False
 
     p = 2
-    while p * p <= limit:
+    while p * p <= b:
         if is_prime[p]:
-            for multiple in range(p * p, limit + 1, p):
-                is_prime[multiple] = False
+            start = p * p
+            for x in range(start, b + 1, p):
+                is_prime[x] = False
         p += 1
 
-    pref = [0] * (limit + 1)
-
-    for i in range(1, limit + 1):
+    pref = [0] * (b + 1)
+    for i in range(1, b + 1):
         pref[i] = pref[i - 1] + (1 if is_prime[i] else 0)
 
-    total_primes = pref[b] - pref[a - 1]
+    def count_primes(l, r):
+        return pref[r] - pref[l - 1]
 
-    if total_primes < k:
+    def check(length):
+        end_start = b - length + 1
+        for start in range(a, end_start + 1):
+            if count_primes(start, start + length - 1) < k:
+                return False
+        return True
+
+    n = b - a + 1
+
+    if not check(n):
         print(-1)
         return
 
-    def works(length):
-        end_start = b - length + 1
+    lo, hi = 1, n
+    ans = n
 
-        for left in range(a, end_start + 1):
-            right = left + length - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
 
-            prime_count = pref[right] - pref[left - 1]
-
-            if prime_count < k:
-                return False
-
-        return True
-
-    left = 1
-    right = b - a + 1
-    answer = right
-
-    while left <= right:
-        mid = (left + right) // 2
-
-        if works(mid):
-            answer = mid
-            right = mid - 1
+        if check(mid):
+            ans = mid
+            hi = mid - 1
         else:
-            left = mid + 1
+            lo = mid + 1
 
-    print(answer)
+    print(ans)
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The sieve section computes primality for every number up to $b$. Starting from $p^2$ is important because smaller multiples were already removed by earlier primes. Forgetting this does not break correctness, but it wastes time.
+The sieve computes primality for all numbers that can appear in any window. Since every query asks for prime counts on intervals, a prefix sum is built immediately afterward.
 
-The prefix sum array converts range prime counting into constant time queries. This is the main optimization that keeps the sliding-window checks efficient.
+The `check()` function is the core predicate used by binary search. It scans all windows of the candidate length and rejects the length as soon as one bad window is found. This early exit matters because many candidates fail quickly.
 
-The early impossibility check is subtle but important. If the whole interval contains fewer than $k$ primes, no window can possibly satisfy the requirement. Skipping this check still works logically, but binary search would never find a valid answer.
+The existence check before binary search is essential. If the entire interval contains fewer than `k` primes, no smaller window can possibly satisfy the requirement. Without this step, binary search would incorrectly return some length even when no solution exists.
 
-The `works(length)` function is where most off-by-one errors happen.
-
-The last valid starting position is:
+The window count uses:
 
 ```
-b - length + 1
+pref[r] - pref[l - 1]
 ```
 
-because the window is:
-
-```
-[left, left + length - 1]
-```
-
-If the loop goes too far, the right endpoint exceeds $b$.
-
-The binary search keeps the invariant that all valid answers are on the right side of the current search space. Whenever a length works, we continue searching smaller values to find the minimum one.
+which is why the prefix array is indexed from `0`. This avoids special cases when `l = 1`.
 
 ## Worked Examples
 
@@ -287,264 +206,159 @@ Input:
 2 4 2
 ```
 
-The interval is:
+Primes in the interval are `{2, 3}`.
 
-```
-2 3 4
-```
-
-Primes are:
-
-```
-2, 3
-```
-
-| Length | Window | Prime Count | Valid |
+| Length | Windows | Prime counts | Valid |
 | --- | --- | --- | --- |
-| 2 | [2,3] | 2 | Yes |
-| 2 | [3,4] | 1 | No |
+| 1 | [2], [3], [4] | 1, 1, 0 | No |
+| 2 | [2,3], [3,4] | 2, 1 | No |
 | 3 | [2,4] | 2 | Yes |
 
-Binary search eventually concludes that length 2 fails while length 3 succeeds.
+Binary search eventually reaches length `3`, which is the first valid length.
 
-The answer is:
+Output:
 
 ```
 3
 ```
 
-This example demonstrates why every window must be checked. One successful window is not enough.
+This example demonstrates that every window must satisfy the requirement. One failing window is enough to reject a candidate.
 
 ### Example 2
 
 Input:
 
 ```
-2 10 2
+8 12 1
 ```
 
-Primes are:
+Primes in the interval are `{11}`.
+
+| Length | Windows checked | Result |
+| --- | --- | --- |
+| 3 | [8,10] has 0 primes | Fail |
+| 4 | [8,11] has 1 prime, [9,12] has 1 prime | Pass |
+
+The minimum valid length is `4`.
+
+Output:
 
 ```
-2, 3, 5, 7
+4
 ```
 
-Testing length 3:
-
-| Window | Prime Count | Valid |
-| --- | --- | --- |
-| [2,4] | 2 | Yes |
-| [3,5] | 2 | Yes |
-| [4,6] | 1 | No |
-| [5,7] | 2 | Yes |
-| [6,8] | 1 | No |
-| [7,9] | 1 | No |
-| [8,10] | 1 | No |
-
-Testing length 4:
-
-| Window | Prime Count | Valid |
-| --- | --- | --- |
-| [2,5] | 3 | Yes |
-| [3,6] | 2 | Yes |
-| [4,7] | 2 | Yes |
-| [5,8] | 2 | Yes |
-| [6,9] | 1 | No |
-
-Testing length 5:
-
-| Window | Prime Count | Valid |
-| --- | --- | --- |
-| [2,6] | 3 | Yes |
-| [3,7] | 3 | Yes |
-| [4,8] | 2 | Yes |
-| [5,9] | 2 | Yes |
-| [6,10] | 1 | No |
-
-Testing length 6:
-
-| Window | Prime Count | Valid |
-| --- | --- | --- |
-| [2,7] | 4 | Yes |
-| [3,8] | 3 | Yes |
-| [4,9] | 2 | Yes |
-| [5,10] | 2 | Yes |
-
-The minimum valid length is 6.
-
-This trace shows the monotonic behavior clearly. Once a length becomes valid, all larger lengths remain valid.
+This example shows that a single prime can still make a solution possible if every window of sufficient size is forced to include it.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O((b-a+1)\log(b-a+1) + b \log \log b)$ | Sieve preprocessing plus binary search with linear checks |
-| Space | $O(b)$ | Sieve and prefix arrays |
+| Time | O(b log log b + (b-a+1) log(b-a+1)) | Sieve plus binary search, each check scans all windows |
+| Space | O(b) | Primality and prefix arrays up to `b` |
 
-The sieve easily fits within the limits for $10^6$. Binary search performs roughly 20 checks at most, and each check scans the interval once. The total runtime stays comfortably within one second in Python.
+Since `b ≤ 10^6`, the sieve is easily affordable. The binary search performs about `20` checks at most, and each check scans at most `10^6` windows. This comfortably fits within the limits.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-
 import sys
 import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
 
-    input = sys.stdin.readline
+    a, b, k = map(int, input().split())
 
-    def solve():
-        a, b, k = map(int, input().split())
+    is_prime = [True] * (b + 1)
+    if b >= 0:
+        is_prime[0] = False
+    if b >= 1:
+        is_prime[1] = False
 
-        limit = b
+    p = 2
+    while p * p <= b:
+        if is_prime[p]:
+            for x in range(p * p, b + 1, p):
+                is_prime[x] = False
+        p += 1
 
-        is_prime = [True] * (limit + 1)
+    pref = [0] * (b + 1)
+    for i in range(1, b + 1):
+        pref[i] = pref[i - 1] + is_prime[i]
 
-        if limit >= 0:
-            is_prime[0] = False
-        if limit >= 1:
-            is_prime[1] = False
+    def check(length):
+        for s in range(a, b - length + 2):
+            cnt = pref[s + length - 1] - pref[s - 1]
+            if cnt < k:
+                return False
+        return True
 
-        p = 2
-        while p * p <= limit:
-            if is_prime[p]:
-                for multiple in range(p * p, limit + 1, p):
-                    is_prime[multiple] = False
-            p += 1
+    n = b - a + 1
 
-        pref = [0] * (limit + 1)
+    if not check(n):
+        return "-1"
 
-        for i in range(1, limit + 1):
-            pref[i] = pref[i - 1] + (1 if is_prime[i] else 0)
+    lo, hi = 1, n
+    ans = n
 
-        total_primes = pref[b] - pref[a - 1]
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if check(mid):
+            ans = mid
+            hi = mid - 1
+        else:
+            lo = mid + 1
 
-        if total_primes < k:
-            return "-1"
-
-        def works(length):
-            for left in range(a, b - length + 2):
-                right = left + length - 1
-
-                prime_count = pref[right] - pref[left - 1]
-
-                if prime_count < k:
-                    return False
-
-            return True
-
-        left = 1
-        right = b - a + 1
-        answer = right
-
-        while left <= right:
-            mid = (left + right) // 2
-
-            if works(mid):
-                answer = mid
-                right = mid - 1
-            else:
-                left = mid + 1
-
-        return str(answer)
-
-    return solve()
+    return str(ans)
 
 # provided sample
 assert run("2 4 2\n") == "3", "sample 1"
 
 # custom cases
 assert run("2 2 1\n") == "1", "single prime"
-assert run("1 2 2\n") == "-1", "not enough primes"
-assert run("14 16 1\n") == "-1", "interval without primes"
-assert run("2 10 2\n") == "6", "off-by-one sliding window"
-assert run("1 10 1\n") == "4", "minimum guaranteed prime coverage"
+assert run("14 16 1\n") == "-1", "no primes in interval"
+assert run("8 12 1\n") == "4", "single prime coverage"
+assert run("2 5 1\n") == "2", "boundary windows"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
 | `2 2 1` | `1` | Single-element interval |
-| `1 2 2` | `-1` | Impossible case |
-| `14 16 1` | `-1` | No primes at all |
-| `2 10 2` | `6` | Correct window boundaries |
-| `1 10 1` | `4` | Binary search correctness |
+| `14 16 1` | `-1` | No solution exists |
+| `8 12 1` | `4` | Minimum length covering every window |
+| `2 5 1` | `2` | Off-by-one handling in window ranges |
 
 ## Edge Cases
 
 Consider:
 
 ```
-1 2 2
+14 16 1
 ```
 
-The interval contains only one prime, namely 2.
+The interval contains no primes. The largest possible window is `[14,16]`, whose prime count is zero. The preliminary `check(n)` fails immediately, so the algorithm prints `-1`. Binary search never starts, avoiding a false answer.
 
-The prefix sum check computes:
-
-```
-total_primes = 1
-```
-
-Since $1 < 2$, the algorithm immediately prints:
-
-```
--1
-```
-
-No binary search is attempted.
-
-Now examine:
+Consider:
 
 ```
 2 2 1
 ```
 
-The interval length is exactly 1.
+There is only one window, `[2]`, containing one prime. The existence check succeeds. Binary search operates on the range `[1,1]` and returns `1`. This verifies that the implementation handles intervals of length one correctly.
 
-Binary search operates on:
-
-```
-left = 1
-right = 1
-```
-
-The single window is:
+Consider:
 
 ```
-[2,2]
+2 5 2
 ```
 
-It contains one prime, so the algorithm returns:
+Length `2` fails because window `[4,5]` contains only one prime. Length `3` fails because `[3,5]` contains only one prime. Length `4` succeeds because the only window is `[2,5]`, containing three primes. The algorithm checks every window and does not incorrectly accept a length just because some windows work.
+
+Consider:
 
 ```
-1
+8 12 1
 ```
 
-This confirms the implementation handles minimum boundaries correctly.
-
-Finally, consider:
-
-```
-14 16 1
-```
-
-All numbers are composite.
-
-The sieve marks:
-
-```
-14 -> composite
-15 -> composite
-16 -> composite
-```
-
-The total prime count becomes zero, so the algorithm prints:
-
-```
--1
-```
-
-This case verifies that the solution does not accidentally accept large windows when the interval itself contains insufficient primes.
+The only prime is `11`. For length `3`, the first window `[8,10]` has zero primes, so the candidate is rejected immediately. For length `4`, every window includes `11`, so the candidate succeeds. This confirms the monotonic behavior that binary search relies upon.
