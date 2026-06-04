@@ -1,7 +1,7 @@
 ---
 title: "CF 231A - Team"
-description: "We are asked to determine how many problems a team of three friends will attempt during a programming contest. Each friend independently has confidence about each problem, represented as a binary value: 1 if the friend is confident they know the solution, 0 otherwise."
-date: "2026-05-29T00:00:00+07:00"
+description: "Three friends evaluate each contest problem independently. For every problem, we are given three values, each either 0 or 1. A value of 1 means that friend is confident they know how to solve the problem. A value of 0 means they are not confident."
+date: "2026-06-04T09:23:48+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 231
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 143 (Div. 2)"
 rating: 800
 weight: 231
-solve_time_s: 56
-verified: true
+solve_time_s: 322
+verified: false
 draft: false
 ---
 
@@ -18,58 +18,106 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force, greedy  
-**Solve time:** 56s  
-**Verified:** yes  
+**Solve time:** 5m 22s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to determine how many problems a team of three friends will attempt during a programming contest. Each friend independently has confidence about each problem, represented as a binary value: 1 if the friend is confident they know the solution, 0 otherwise. A problem will be solved only if at least two of the three friends are confident.
+Three friends evaluate each contest problem independently. For every problem, we are given three values, each either `0` or `1`.
 
-The input begins with a single integer $n$, the number of problems. Each of the next $n$ lines contains three binary integers indicating the confidence of Petya, Vasya, and Tonya for that problem. The output is a single integer representing the total number of problems the friends will solve.
+A value of `1` means that friend is confident they know how to solve the problem. A value of `0` means they are not confident.
 
-The constraints are very permissive. With $1 \le n \le 1000$, any approach that loops through the list of problems once and inspects the three confidence values per problem will execute at most 3000 operations. This is trivial for a modern processor within a 2-second time limit, so we can design a straightforward solution without worrying about optimization.
+The team has a simple rule: they will attempt a problem only if at least two of the three friends are confident. Our task is to count how many problems satisfy that rule.
 
-A non-obvious edge case is when exactly one friend is confident for every problem. For example, with input:
+The input begins with `n`, the number of problems. Then follow `n` lines, each containing three binary values describing the opinions of Petya, Vasya, and Tonya for one problem. The output is a single integer, the number of problems the team will solve.
+
+The constraints are very small. There are at most 1000 problems, and each problem contains only three numbers. Even a straightforward solution that processes every problem independently performs only a few thousand operations. Any linear-time solution is more than fast enough within the 2-second limit.
+
+A common mistake is checking whether all three friends are confident instead of at least two.
+
+For example:
 
 ```
-3
+1
+1 1 0
+```
+
+The correct output is:
+
+```
+1
+```
+
+Two friends agree, so the problem should be counted. A careless implementation using `sum == 3` would incorrectly output `0`.
+
+Another mistake is counting problems when at least one friend is confident.
+
+For example:
+
+```
+1
 1 0 0
-0 1 0
-0 0 1
 ```
 
-The output should be 0, since no problem has two or more confident friends. A naive sum of all 1s without checking the threshold would incorrectly report 3. Another edge case is when all friends are confident for all problems:
+The correct output is:
 
 ```
-2
-1 1 1
-1 1 1
+0
 ```
 
-The correct output is 2, demonstrating that the algorithm must correctly count problems with three confident friends as well.
+Only one friend is confident, which does not satisfy the team's rule.
+
+A final edge case is when exactly two friends are confident.
+
+```
+1
+0 1 1
+```
+
+The correct output is:
+
+```
+1
+```
+
+The condition is "at least two", not "more than two".
 
 ## Approaches
 
-The brute-force approach is simple: for each problem, count the number of friends confident in the solution. If the count is 2 or more, increment a counter. This works because the number of operations is bounded by $3n$, which for $n \le 1000$ is 3000 operations-well within the time limit. This approach never fails; it directly implements the rule stated in the problem.
+The most direct approach is to inspect every problem separately. For a given problem, we add the three binary values. The resulting sum tells us how many friends are confident.
 
-There is no meaningful optimization beyond this approach, because the problem is already small and the decision rule is simple. The key insight is recognizing that we only need to count 1s in each row and compare to 2. We do not need complex data structures or sorting. Using Python’s built-in `sum` function on the list of three integers provides a direct and readable way to implement this.
+If the sum is at least 2, we increment our answer.
+
+This brute-force approach is already sufficient because there are only 1000 problems. The worst case performs roughly 3000 integer reads and 1000 additions, which is trivial.
+
+The key observation is that the input values are binary. The sum of the three numbers is exactly the number of confident friends. That means we do not need any complicated logic or pairwise checks. A single addition immediately tells us whether the team will solve the problem.
+
+Since every problem is processed independently and exactly once, the optimal solution is a simple linear scan through the input.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n) | O(1) | Accepted |
 | Optimal | O(n) | O(1) | Accepted |
 
+For this problem, the brute-force and optimal approaches are effectively the same because the constraints are so small and the direct scan is already optimal.
+
 ## Algorithm Walkthrough
 
-1. Read the number of problems $n$. This tells us how many lines to process for confidence data.
-2. Initialize a counter `solved_problems` to zero. This will track the number of problems the friends will implement.
-3. Loop over each of the $n$ lines. For each line, read the three integers representing Petya, Vasya, and Tonya’s confidence.
-4. Compute the sum of the three confidence values. This sum represents the number of friends confident in the solution.
-5. If the sum is greater than or equal to 2, increment `solved_problems` by 1. This implements the rule that at least two friends must be confident.
-6. After processing all problems, print `solved_problems`.
+1. Read the integer `n`, the number of problems.
+2. Initialize `answer = 0`.
+3. For each of the `n` problems, read the three binary values.
+4. Compute their sum. The sum equals the number of friends who are confident about that problem.
+5. If the sum is at least `2`, increment `answer`.
 
-The algorithm works because each problem is independent, and counting confident friends is sufficient to decide whether the problem will be solved. By maintaining a running counter, we ensure correctness across all problems.
+This matches the team's rule that at least two friends must be sure of the solution.
+6. After processing all problems, print `answer`.
+
+### Why it works
+
+For every problem, each confident friend contributes exactly `1` to the sum. Since there are only three friends, the sum is precisely the number of confident team members.
+
+The team solves a problem if and only if at least two friends are confident. Checking whether the sum is at least `2` is therefore exactly equivalent to checking the problem's acceptance condition. Since we apply this test to every problem and count all successful ones, the final answer is correct.
 
 ## Python Solution
 
@@ -78,21 +126,29 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-solved_problems = 0
+answer = 0
 
 for _ in range(n):
-    confidence = list(map(int, input().split()))
-    if sum(confidence) >= 2:
-        solved_problems += 1
+    a, b, c = map(int, input().split())
+    if a + b + c >= 2:
+        answer += 1
 
-print(solved_problems)
+print(answer)
 ```
 
-The solution starts by reading the number of problems. For each problem, it reads the three confidence values as a list of integers. Using `sum(confidence)` gives the total number of friends who are confident. If this total is 2 or 3, the problem counts as solved. Finally, we print the total number of solved problems. There are no off-by-one issues, since Python indexing starts at 0 and we process each line exactly once.
+The program first reads the number of problems.
+
+For each problem, it reads the three binary values and computes their sum. Because the values are only `0` or `1`, the sum directly represents how many friends are confident.
+
+Whenever the sum is at least `2`, the counter increases. After all problems have been processed, the counter contains exactly the number of problems the team will attempt.
+
+There are no tricky boundary conditions. The condition must be `>= 2`, not `== 2`, because a problem with all three friends confident should also be counted.
 
 ## Worked Examples
 
-**Sample 1 Input:**
+### Sample 1
+
+Input:
 
 ```
 3
@@ -101,88 +157,142 @@ The solution starts by reading the number of problems. For each problem, it read
 1 0 0
 ```
 
-| Problem | Confidence | Sum | Solved? | Counter |
+| Problem | Values | Sum | Counted? | Answer |
 | --- | --- | --- | --- | --- |
-| 1 | [1, 1, 0] | 2 | Yes | 1 |
-| 2 | [1, 1, 1] | 3 | Yes | 2 |
-| 3 | [1, 0, 0] | 1 | No | 2 |
+| 1 | 1 1 0 | 2 | Yes | 1 |
+| 2 | 1 1 1 | 3 | Yes | 2 |
+| 3 | 1 0 0 | 1 | No | 2 |
 
-This shows that only the first two problems meet the threshold.
-
-**Sample 2 Input:**
+Final output:
 
 ```
 2
-0 1 1
-0 0 1
 ```
 
-| Problem | Confidence | Sum | Solved? | Counter |
-| --- | --- | --- | --- | --- |
-| 1 | [0, 1, 1] | 2 | Yes | 1 |
-| 2 | [0, 0, 1] | 1 | No | 1 |
+This example shows both accepted situations: exactly two confident friends and all three confident friends.
 
-The output is 1, correctly counting only the first problem.
+### Sample 2
+
+Input:
+
+```
+2
+1 0 0
+0 1 1
+```
+
+| Problem | Values | Sum | Counted? | Answer |
+| --- | --- | --- | --- | --- |
+| 1 | 1 0 0 | 1 | No | 0 |
+| 2 | 0 1 1 | 2 | Yes | 1 |
+
+Final output:
+
+```
+1
+```
+
+This example demonstrates the threshold behavior. One confident friend is insufficient, while two are enough.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each of the n problems is processed exactly once, summing three values per iteration. |
-| Space | O(1) | Only a counter and a temporary list of length 3 are used, constant with respect to n. |
+| Time | O(n) | Each problem is processed exactly once |
+| Space | O(1) | Only a few integer variables are stored |
 
-With $n \le 1000$, this solution executes comfortably within the time and memory limits.
+With at most 1000 problems, the linear scan performs a tiny number of operations and easily fits within the time and memory limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(input())
-    solved_problems = 0
-    for _ in range(n):
-        confidence = list(map(int, input().split()))
-        if sum(confidence) >= 2:
-            solved_problems += 1
-    return str(solved_problems)
 
-# provided samples
+    input = sys.stdin.readline
+
+    n = int(input())
+    answer = 0
+
+    for _ in range(n):
+        a, b, c = map(int, input().split())
+        if a + b + c >= 2:
+            answer += 1
+
+    return str(answer)
+
+# provided sample
 assert run("3\n1 1 0\n1 1 1\n1 0 0\n") == "2", "sample 1"
-assert run("2\n0 1 1\n0 0 1\n") == "1", "sample 2"
 
 # custom cases
-assert run("3\n1 0 0\n0 1 0\n0 0 1\n") == "0", "only single confident"
-assert run("2\n1 1 1\n1 1 1\n") == "2", "all confident"
-assert run("1\n0 0 0\n") == "0", "none confident"
-assert run("4\n1 1 0\n1 0 1\n0 1 1\n0 0 0\n") == "3", "mixed case"
+assert run("1\n0 0 0\n") == "0", "minimum input, nobody confident"
+
+assert run("1\n1 1 1\n") == "1", "all friends confident"
+
+assert run("1\n0 1 1\n") == "1", "exactly two friends confident"
+
+assert run("4\n1 0 0\n0 1 0\n0 0 1\n1 1 0\n") == "1", "only last problem qualifies"
+
+assert run(
+    "5\n1 1 0\n0 1 1\n1 0 1\n1 1 1\n0 0 0\n"
+) == "4", "mixed cases"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3\n1 0 0\n0 1 0\n0 0 1\n | 0 | Correctly counts problems with only one confident friend |
-| 2\n1 1 1\n1 1 1\n | 2 | Correctly counts problems where all are confident |
-| 1\n0 0 0\n | 0 | Correctly handles no confident friends |
-| 4\n1 1 0\n1 0 1\n0 1 1\n0 0 0\n | 3 | Correctly handles mixed cases |
+| `1 / 0 0 0` | `0` | Minimum-size input |
+| `1 / 1 1 1` | `1` | All three friends confident |
+| `1 / 0 1 1` | `1` | Exactly two friends confident |
+| Four mixed problems | `1` | Proper counting across multiple rows |
+| Five varied problems | `4` | General correctness on mixed inputs |
 
 ## Edge Cases
 
-When exactly one friend is confident in each problem, the algorithm correctly sums to 1, which is less than 2, so the counter does not increment. For the input:
+Consider the case where exactly two friends are confident:
 
 ```
-3
+1
+1 1 0
+```
+
+The algorithm computes:
+
+```
+sum = 1 + 1 + 0 = 2
+```
+
+Since `2 >= 2`, the answer becomes `1`. This is correct because the team's rule requires at least two confident members.
+
+Now consider a problem where only one friend is confident:
+
+```
+1
 1 0 0
-0 1 0
-0 0 1
 ```
 
-The internal sums are 1, 1, 1, so the `solved_problems` counter remains 0, producing the correct output. Similarly, when all friends are confident:
+The algorithm computes:
 
 ```
-2
+sum = 1
+```
+
+Since `1 < 2`, the answer remains `0`. The team does not have enough agreement to attempt the problem.
+
+Finally, consider all three friends being confident:
+
+```
+1
 1 1 1
-1 1 1
 ```
 
-The sums are 3, 3, exceeding the threshold of 2, so `solved_problems` increments twice, yielding 2. This confirms the algorithm correctly handles edge thresholds at both ends.
+The algorithm computes:
+
+```
+sum = 3
+```
+
+Since `3 >= 2`, the problem is counted. This confirms that the condition is "at least two" rather than "exactly two".
