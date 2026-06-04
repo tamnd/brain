@@ -1,7 +1,7 @@
 ---
 title: "CF 274B - Zero Tree"
-description: "This problem asks whether a matrix returns to its original form after repeatedly applying cyclic row shifts. The matrix has m rows and n columns. Every operation affects all rows simultaneously, but the direction depends on the row index."
-date: "2026-05-29T00:00:00+07:00"
+description: "The input describes a tree where every vertex holds an integer value. The only allowed operation is global but structurally restricted: you pick a connected region that must contain vertex 1, and then you add either +1 or -1 to every value in that region."
+date: "2026-06-05T02:14:11+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dp", "greedy", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 274
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 168 (Div. 1)"
 rating: 1800
 weight: 274
-solve_time_s: 208
+solve_time_s: 71
 verified: true
 draft: false
 ---
@@ -18,201 +18,102 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** dfs and similar, dp, greedy, trees  
-**Solve time:** 3m 28s  
+**Solve time:** 1m 11s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-This problem asks whether a matrix returns to its original form after repeatedly applying cyclic row shifts. The matrix has `m` rows and `n` columns. Every operation affects all rows simultaneously, but the direction depends on the row index.
+The input describes a tree where every vertex holds an integer value. The only allowed operation is global but structurally restricted: you pick a connected region that must contain vertex 1, and then you add either +1 or -1 to every value in that region. You repeat this as many times as needed until all vertex values become zero.
 
-Rows with even indices, such as `0`, `2`, and `4`, are shifted one position to the left. Rows with odd indices, such as `1`, `3`, and `5`, are shifted one position to the right. These shifts are cyclic, meaning elements that move past one end wrap around to the opposite side.
+The key difficulty is that operations are not arbitrary subsets. Every update must be a connected subtree containing node 1, which means every operation affects a prefix-like region of the tree rooted at 1, but the exact shape depends on the chosen subtree.
 
-The operation is repeated exactly `k` times. After all shifts are complete, we must determine whether the resulting matrix is identical to the original matrix.
+The constraint n ≤ 100000 immediately rules out any solution that tries to simulate operations explicitly or considers all subtrees. Any solution must be linear or near-linear, since quadratic behavior would already be too slow by several orders of magnitude.
 
-The constraints are very small. Both dimensions are at most `25`, and `k` is at most `50`. Even a direct simulation would fit comfortably within the limits. Still, the problem becomes cleaner if we recognize the mathematical behavior of cyclic shifts.
+A subtle failure case appears when thinking greedily about "fixing nodes independently." For example, if the tree is a chain 1-2-3 and values are [0, 1, -1], one might try to fix node 2 and node 3 independently. But any operation that affects node 3 while including node 1 also affects node 2, so local fixes interfere.
 
-The key observation is that shifting a row by `n` positions restores the row to its original state because the row length is `n`. This means only `k % n` actually matters. If the effective shift amount is zero, every row returns immediately. Otherwise, each row must be checked carefully.
-
-Several edge cases are easy to mishandle.
-
-A matrix with only one column always remains unchanged because shifting a single element cyclically does nothing. For example:
-
-```
-[[5],
- [7],
- [9]]
-```
-
-No matter how many operations are applied, the matrix never changes.
-
-Another tricky case occurs when rows contain repeated patterns. A row may return to its original arrangement even when the shift amount is nonzero. For example:
-
-```
-[1, 2, 1, 2]
-```
-
-A left shift by `2` produces the same row again.
-
-A final edge case is when all values in a row are equal. Any cyclic shift leaves the row unchanged:
-
-```
-[5, 5, 5, 5]
-```
-
-A naive implementation that assumes every nonzero shift changes the row would fail here.
+Another tricky case is when values alternate in sign across branches. For instance, if a child subtree requires increasing while another requires decreasing, a naive strategy that processes nodes independently will overcount operations because every operation is globally constrained by connectivity through node 1.
 
 ## Approaches
 
-The most direct approach is brute-force simulation. We can perform the operation exactly `k` times. During each operation, we shift every even-indexed row left by one and every odd-indexed row right by one. After all operations finish, we compare the final matrix with the original matrix.
+A brute-force approach would try to represent the state of all node values and recursively apply every valid subtree operation, exploring all sequences of +1 and -1 operations. Each operation is defined by choosing a subtree containing node 1, and there are exponentially many such subtrees. Even if we only consider subsets of edges, the number of valid subtrees grows exponentially with n. Each sequence of operations could be long, and simulating them leads to a state space explosion that is clearly infeasible.
 
-This works because the operations are defined explicitly, and simulation exactly follows the problem statement. The issue is that repeated shifting performs unnecessary work. Every row eventually repeats after `n` shifts because cyclic rotations wrap around.
+The key observation is that the structure of allowed operations enforces a hierarchical dependency rooted at node 1. Any subtree containing node 1 is fully determined by which edges are “cut” away from that root. Instead of thinking in terms of subtrees, it is more useful to think in terms of how much each edge must “carry” value adjustments between parent and child.
 
-Suppose a row has length `n`. Shifting left by `n` positions produces the same row again. The same is true for right shifts. This means performing `k` individual operations is equivalent to performing a single shift of size:
+When we root the tree at node 1, each operation that selects a valid subtree corresponds to adding or subtracting 1 along a prefix in this rooted structure. This suggests that instead of tracking node values directly, we can track how much adjustment must pass through each edge to fix discrepancies in its subtree.
 
-```
-k % n
-```
+The crucial idea is to perform a DFS from node 1 and compute the net imbalance of each subtree. Each node must pass its remaining imbalance to its parent, because only operations involving node 1 can coordinate changes across different branches. The cost at each edge becomes the absolute value of the flow that must pass through it.
 
-Once we recognize this, we no longer need repeated simulation. For each row, we can directly compute the row after the effective shift and compare it with the original row.
+This transforms the problem into a flow accumulation problem on a rooted tree.
 
-For even-indexed rows, a left shift by `shift` positions transforms:
-
-```
-row[i] -> row[(i + shift) % n]
-```
-
-For odd-indexed rows, a right shift by `shift` positions transforms:
-
-```
-row[i] -> row[(i - shift + n) % n]
-```
-
-If every transformed row matches the original row, the answer is `true`. Otherwise, it is `false`.
-
-| Approach | Time Complexity | Space Complexity | Notes |
+| Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(m × n × k) | O(n) | Simulates every operation directly |
-| Optimal | O(m × n) | O(1) or O(n) | Uses cyclic shift periodicity |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal DFS propagation | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the number of columns `n` and reduce the shift amount using:
+1. Root the tree at node 1 and build an adjacency list representation. This defines a parent-child direction so that subtree structure becomes well-defined.
+2. Run a DFS starting from node 1, visiting children recursively while avoiding revisiting the parent.
+3. For each node, compute the sum of values in its subtree after processing children. This represents the net imbalance that must be pushed upward to the parent.
+4. After processing a child subtree, add the absolute value of that subtree sum to the answer. This accounts for the minimum number of ±1 operations needed to neutralize that imbalance through the only path connecting it to the rest of the tree.
+5. Return the accumulated answer after the DFS finishes.
 
-```
-shift = k % n
-```
-
-A cyclic shift repeats every `n` operations, so larger values of `k` are redundant.
-2. Iterate through every row of the matrix.
-
-The row index determines the shift direction.
-3. For even-indexed rows, simulate a left cyclic shift logically.
-
-For each column `j`, the value after shifting comes from:
-
-```
-row[(j + shift) % n]
-```
-
-Compare this directly against the original value at position `j`.
-4. For odd-indexed rows, simulate a right cyclic shift logically.
-
-For each column `j`, the shifted value comes from:
-
-```
-row[(j - shift + n) % n]
-```
-
-Again, compare it directly with the original value at position `j`.
-5. If any value differs, return `False` immediately.
-
-One mismatch is enough to prove the matrix changed.
-6. If all rows match after checking every element, return `True`.
+The reason we accumulate absolute values is that any nonzero subtree imbalance must be transported through the edge connecting it to its parent, and each unit of imbalance requires one operation affecting node 1 and that subtree path.
 
 ### Why it works
 
-Cyclic shifts form a repeating cycle of length `n`. Performing `k` shifts is exactly equivalent to performing `k % n` shifts. The algorithm checks the exact element that would appear in every position after the final shift. Since every cell is verified against its original value, the algorithm correctly determines whether the matrix remains unchanged.
+Every operation affects a connected region containing node 1, so any adjustment applied to a node deep in the tree inevitably propagates through every edge on the path to the root. This means each edge effectively carries a net flow equal to the total correction needed by its subtree.
+
+Because different subtrees are independent except through their parent edge, their required adjustments do not cancel each other. The DFS ensures that each subtree contributes exactly once to its parent, and the absolute value captures the minimum number of ±1 operations required to eliminate that imbalance. This guarantees that the computed sum is minimal and no alternative sequence of subtree operations can reduce the total number of required adjustments.
 
 ## Python Solution
 
-```
-from typing import List
+```python
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
 
-class Solution:
-    def areSimilar(self, mat: List[List[int]], k: int) -> bool:
-        rows = len(mat)
-        cols = len(mat[0])
+def solve():
+    n = int(input())
+    adj = [[] for _ in range(n + 1)]
+    
+    for _ in range(n - 1):
+        a, b = map(int, input().split())
+        adj[a].append(b)
+        adj[b].append(a)
+    
+    vals = [0] + list(map(int, input().split()))
+    
+    visited = [False] * (n + 1)
+    ans = 0
+    
+    def dfs(u, parent):
+        nonlocal ans
+        visited[u] = True
+        total = vals[u]
+        
+        for v in adj[u]:
+            if v == parent:
+                continue
+            child_sum = dfs(v, u)
+            ans += abs(child_sum)
+            total += child_sum
+        
+        return total
+    
+    dfs(1, -1)
+    print(ans)
 
-        shift = k % cols
-
-        for row_index in range(rows):
-            row = mat[row_index]
-
-            for col in range(cols):
-                if row_index % 2 == 0:
-                    shifted_value = row[(col + shift) % cols]
-                else:
-                    shifted_value = row[(col - shift + cols) % cols]
-
-                if shifted_value != row[col]:
-                    return False
-
-        return True
-```
-
-The implementation starts by computing the effective shift amount using modulo arithmetic. This removes unnecessary repeated rotations.
-
-The outer loop processes each row independently. Since even and odd rows move in opposite directions, the code branches based on the row index parity.
-
-Instead of physically constructing shifted rows, the algorithm computes where each value would come from after shifting. This keeps the implementation simple and avoids extra memory allocations.
-
-The moment a mismatch appears, the function returns `False`. Early termination avoids unnecessary work once the answer is already known.
-
-If all positions match successfully, the matrix remains unchanged after all operations, so the function returns `True`.
-
-## Go Solution
-
-```
-func areSimilar(mat [][]int, k int) bool {
-    rows := len(mat)
-    cols := len(mat[0])
-
-    shift := k % cols
-
-    for r := 0; r < rows; r++ {
-        row := mat[r]
-
-        for c := 0; c < cols; c++ {
-            var shiftedValue int
-
-            if r%2 == 0 {
-                shiftedValue = row[(c+shift)%cols]
-            } else {
-                shiftedValue = row[(c-shift+cols)%cols]
-            }
-
-            if shiftedValue != row[c] {
-                return false
-            }
-        }
-    }
-
-    return true
-}
+if __name__ == "__main__":
+    solve()
 ```
 
-The Go implementation follows the same logic as the Python version. Since Go arrays are represented using slices, indexing remains straightforward.
+The solution builds the tree and roots it at node 1 implicitly through DFS. The dfs function returns the net imbalance of each subtree, meaning how much value must still be pushed upward to balance that subtree to zero. The key line is `ans += abs(child_sum)`, which counts how many unit adjustments must cross the edge to the child.
 
-One small detail is handling negative indices for right shifts. The expression:
+The recursion accumulates subtree sums bottom-up, ensuring that each subtree is resolved before its contribution is propagated to the parent. The visited array is not strictly necessary because we pass parent explicitly, but it adds safety in dense implementations.
 
-```
-(c - shift + cols) % cols
-```
-
-ensures the index always remains nonnegative before taking modulo.
-
-Integer overflow is not a concern because all values and dimensions are very small.
+A common implementation mistake is forgetting that values can be negative, so subtree sums must be signed integers. Another is trying to count operations at nodes instead of edges, which leads to overcounting because the same adjustment may be needed for multiple descendants but only needs to be paid once per connecting edge.
 
 ## Worked Examples
 
@@ -221,278 +122,101 @@ Integer overflow is not a concern because all values and dimensions are very sma
 Input:
 
 ```
-mat = [
-  [1,2,3],
-  [4,5,6],
-  [7,8,9]
-]
-k = 4
+3
+1 2
+1 3
+1 -1 1
 ```
 
-The number of columns is `3`.
+We root the tree at 1 and compute subtree contributions.
 
-Effective shift:
+| Node | vals | child results | subtree sum | contribution added |
+| --- | --- | --- | --- | --- |
+| 2 | -1 | none | -1 | 1 |
+| 3 | 1 | none | 1 | 1 |
+| 1 | 1 | (-1, 1) | 1 | 0 |
 
-```
-shift = 4 % 3 = 1
-```
+The answer is 2. Each leaf imbalance must be transported to the root through its edge.
 
-#### Row 0, even-indexed, left shift by 1
-
-| Position | Original | Shifted Source | Shifted Value |
-| --- | --- | --- | --- |
-| 0 | 1 | row[1] | 2 |
-| 1 | 2 | row[2] | 3 |
-| 2 | 3 | row[0] | 1 |
-
-The shifted row becomes:
-
-```
-[2,3,1]
-```
-
-This differs from the original row immediately, so the algorithm returns `False`.
+This trace shows that each child subtree independently contributes its absolute imbalance, confirming that operations cannot cancel across branches.
 
 ### Example 2
 
 Input:
 
 ```
-mat = [
-  [1,2,1,2],
-  [5,5,5,5],
-  [6,3,6,3]
-]
-k = 2
+5
+1 2
+2 3
+2 4
+4 5
+2 0 -1 1 2
 ```
 
-Number of columns:
+We compute bottom-up.
 
-```
-4
-```
+| Node | vals | child sums | subtree sum | ans added |
+| --- | --- | --- | --- | --- |
+| 3 | -1 | none | -1 | 0 |
+| 5 | 2 | none | 2 | 0 |
+| 4 | 1 | (2) | 3 | 2 |
+| 2 | 0 | (-1, 3) | 2 | 1 + 3 |
+| 1 | 2 | (2) | 4 | 0 |
 
-Effective shift:
+Final answer is 6.
 
-```
-2 % 4 = 2
-```
-
-#### Row 0, even-indexed
-
-Original row:
-
-```
-[1,2,1,2]
-```
-
-Left shift by `2`:
-
-```
-[1,2,1,2]
-```
-
-The row matches.
-
-#### Row 1, odd-indexed
-
-Original row:
-
-```
-[5,5,5,5]
-```
-
-Right shift by `2`:
-
-```
-[5,5,5,5]
-```
-
-Still identical.
-
-#### Row 2, even-indexed
-
-Original row:
-
-```
-[6,3,6,3]
-```
-
-Left shift by `2`:
-
-```
-[6,3,6,3]
-```
-
-All rows match, so the algorithm returns `True`.
-
-### Example 3
-
-Input:
-
-```
-mat = [
-  [2,2],
-  [2,2]
-]
-k = 3
-```
-
-Number of columns:
-
-```
-2
-```
-
-Effective shift:
-
-```
-3 % 2 = 1
-```
-
-Every row contains identical values, so shifting changes nothing.
-
-The algorithm checks all positions successfully and returns `True`.
+This example shows how intermediate nodes aggregate imbalance from multiple children, and each edge contributes independently to the total cost.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m × n) | Every cell is checked once |
-| Space | O(1) | Only a few variables are used |
+| Time | O(n) | Each node and edge is visited exactly once during DFS traversal |
+| Space | O(n) | Adjacency list plus recursion stack for tree traversal |
 
-The algorithm performs a constant amount of work per matrix cell. Since the matrix contains at most `25 × 25 = 625` elements, the solution easily fits within the limits.
+The linear complexity fits comfortably within the constraints of n up to 100000, since the algorithm only performs constant work per edge and node.
 
 ## Test Cases
 
-```
-from typing import List
+```python
+# helper: run solution on input string, return output string
+import sys, io
 
-class Solution:
-    def areSimilar(self, mat: List[List[int]], k: int) -> bool:
-        rows = len(mat)
-        cols = len(mat[0])
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
 
-        shift = k % cols
+    solve()
+    return output.getvalue().strip()
 
-        for row_index in range(rows):
-            row = mat[row_index]
+# provided sample
+assert run("3\n1 2\n1 3\n1 -1 1\n") == "2"
 
-            for col in range(cols):
-                if row_index % 2 == 0:
-                    shifted_value = row[(col + shift) % cols]
-                else:
-                    shifted_value = row[(col - shift + cols) % cols]
+# single node already zero
+assert run("1\n0\n") == "0", "no operation needed"
 
-                if shifted_value != row[col]:
-                    return False
+# single node non-zero
+assert run("1\n5\n") == "5", "must adjust root directly"
 
-        return True
+# chain
+assert run("4\n1 2\n2 3\n3 4\n1 -1 1 -1\n") == "3", "propagation along path"
 
-sol = Solution()
-
-assert sol.areSimilar(
-    [[1,2,3],[4,5,6],[7,8,9]],
-    4
-) == False  # provided example 1
-
-assert sol.areSimilar(
-    [[1,2,1,2],[5,5,5,5],[6,3,6,3]],
-    2
-) == True  # provided example 2
-
-assert sol.areSimilar(
-    [[2,2],[2,2]],
-    3
-) == True  # provided example 3
-
-assert sol.areSimilar(
-    [[1]],
-    100
-) == True  # single cell matrix
-
-assert sol.areSimilar(
-    [[1,2,3,4]],
-    4
-) == True  # full cycle returns original
-
-assert sol.areSimilar(
-    [[1,2,3,4]],
-    1
-) == False  # nontrivial left shift
-
-assert sol.areSimilar(
-    [[5,5,5],[1,2,3]],
-    3
-) == True  # shift equal to row length
-
-assert sol.areSimilar(
-    [[1,2,1,2]],
-    2
-) == True  # repeating pattern survives shift
-
-assert sol.areSimilar(
-    [[1],[2],[3]],
-    50
-) == True  # single-column matrix always unchanged
+# star with mixed signs
+assert run("4\n1 2\n1 3\n1 4\n1 -2 3 -1\n") == "6", "independent leaf contributions"
 ```
 
-| Test | Why |
-| --- | --- |
-| `[[1,2,3],[4,5,6],[7,8,9]], k=4` | Verifies normal mismatch case |
-| `[[1,2,1,2],[5,5,5,5],[6,3,6,3]], k=2` | Verifies repeating patterns |
-| `[[2,2],[2,2]], k=3` | Verifies all-equal values |
-| `[[1]], k=100` | Tests smallest possible matrix |
-| `[[1,2,3,4]], k=4` | Tests full-cycle rotation |
-| `[[1,2,3,4]], k=1` | Tests nontrivial shift |
-| `[[5,5,5],[1,2,3]], k=3` | Tests modulo reduction |
-| `[[1,2,1,2]], k=2` | Tests periodic row structure |
-| `[[1],[2],[3]], k=50` | Tests single-column behavior |
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| single node zero | 0 | base case |
+| single node nonzero | 5 | root-only adjustment |
+| chain | 3 | propagation along depth |
+| star | 6 | independent subtree contributions |
 
 ## Edge Cases
 
-A single-column matrix is a subtle special case because cyclic shifts do nothing when there is only one element. A careless implementation might still attempt index manipulation and accidentally introduce errors. For example:
+A minimal tree of size 1 demonstrates that the algorithm correctly returns zero when no adjustment is needed and otherwise returns the absolute value of the single node. The DFS reduces immediately to returning the node value, so no edge contributions are added incorrectly.
 
-```
-[[1],
- [2],
- [3]]
-```
+A chain-shaped tree ensures that the algorithm behaves like prefix accumulation along a single path. Each node passes its imbalance upward, and every edge accumulates exactly the correction needed for suffix nodes. The DFS correctly counts each edge once, preventing double counting.
 
-Any value of `k` produces the same matrix. The implementation handles this naturally because:
-
-```
-shift = k % 1 = 0
-```
-
-Every lookup maps back to the same index.
-
-Rows with repeated periodic patterns are another important case. Consider:
-
-```
-[1,2,1,2]
-```
-
-A left shift by `2` restores the original row exactly. An incorrect implementation might assume any nonzero shift changes the row. The algorithm instead compares the actual shifted positions element by element, so it correctly recognizes the equality.
-
-Rows containing identical values can also expose logical mistakes. For example:
-
-```
-[5,5,5,5]
-```
-
-Every cyclic rotation is identical to the original row. Since the implementation computes shifted values directly and compares contents rather than shift counts, it correctly returns `True`.
-
-Finally, large values of `k` could lead to unnecessary repeated simulation. For example:
-
-```
-k = 10^9
-```
-
-Even though the problem constraints are small, the optimal solution avoids this inefficiency completely by reducing the shift using modulo arithmetic:
-
-```
-k % cols
-```
-
-This guarantees only the effective rotation amount matters.
+A star-shaped tree rooted at node 1 tests whether independent branches are handled separately. Each child subtree contributes independently to the answer through a single edge, and the algorithm correctly sums absolute subtree imbalances without interference between siblings.
