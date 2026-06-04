@@ -1,6 +1,6 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (794 solved, 0 verified)."
+description: "Kvant mathematics problem solutions (799 solved, 0 verified)."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (794 solved, 0 verified).
+Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (799 solved, 0 verified).
 
 | # | Status | Time |
 |---|--------|------|
@@ -807,3 +807,8 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [1077](1077.md) | solved | 1m44s |
 | [1078](1078.md) | solved | 1m42s |
 | [1079](1079.md) | solved | 2m25s |
+| [1080](1080.md) | solved | 2m22s |
+| [1081](1081.md) | solved | 1m43s |
+| [1082](1082.md) | solved | 2m09s |
+| [1083](1083.md) | solved | 2m22s |
+| [1084](1084.md) | solved | 1m55s |
