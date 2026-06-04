@@ -1,7 +1,7 @@
 ---
 title: "CF 223A - Bracket Sequence"
-description: "We are given a string consisting only of four bracket characters: (, ), [ and ]. The string itself is not guaranteed to be balanced. Our task is to find a contiguous substring that forms a valid bracket sequence."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a string consisting only of four bracket characters: (, ), [ and ]. The string is not necessarily balanced. Among all substrings of this string, we need to find one that forms a correct bracket sequence."
+date: "2026-06-04T05:41:47+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "expression-parsing", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 223
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 138 (Div. 1)"
 rating: 1700
 weight: 223
-solve_time_s: 101
+solve_time_s: 108
 verified: true
 draft: false
 ---
@@ -18,89 +18,75 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** data structures, expression parsing, implementation  
-**Solve time:** 1m 41s  
+**Solve time:** 1m 48s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string consisting only of four bracket characters: `(`, `)`, `[` and `]`. The string itself is not guaranteed to be balanced.
+We are given a string consisting only of four bracket characters: `(`, `)`, `[` and `]`. The string is not necessarily balanced.
 
-Our task is to find a contiguous substring that forms a valid bracket sequence. Among all valid substrings, we want the one containing the largest number of opening square brackets `'['`. After finding such a substring, we print the number of `'['` characters inside it and the substring itself.
+Among all substrings of this string, we need to find one that forms a correct bracket sequence. A correct bracket sequence must satisfy the usual nesting rules, meaning every opening bracket is matched by a closing bracket of the same type and the pairs are properly nested.
 
-A valid bracket sequence follows the usual stack rules. Every opening bracket must be closed later by the matching type, and nesting order must remain correct. For example, `([])` is valid, but `([)]` is not because the closing order breaks nesting.
+The objective is not to maximize the length of the substring. Instead, we want the valid substring containing the largest number of opening square brackets `'['`. After finding such a substring, we must output both the count of `'['` characters inside it and the substring itself.
 
-The length of the string can reach `10^5`, which immediately rules out anything quadratic or cubic. Checking every substring would require about `n^2` candidates, and validating each candidate with a stack would add another factor of `n`, producing `O(n^3)` time in the worst case. Even with optimizations, `O(n^2)` is still too large for `10^5`. We need something close to linear time.
+The string length can reach $10^5$. A quadratic algorithm would require examining roughly $10^{10}$ substrings, which is completely infeasible. Even an $O(n^2)$ validation strategy is far beyond the time limit. The solution must be close to linear time.
 
-Several edge cases are easy to mishandle.
+Several edge cases make the problem trickier than ordinary bracket matching.
 
-Consider the input:
+Consider:
 
 ```
 ([)]
 ```
 
-The whole string is not valid, even though the total number of opening and closing brackets matches. A careless implementation that only counts bracket frequencies would incorrectly accept it.
+The substring spans balanced counts of brackets, but it is not a correct bracket sequence because the nesting order is wrong. Any solution based only on counting bracket types would incorrectly accept it.
 
-The correct answer is:
-
-```
-1
-[]
-```
-
-Another tricky case is:
+Consider:
 
 ```
-]]]][[[[
+][
 ```
 
-There is no valid non-empty substring at all. The correct output is:
+There is no non-empty correct substring. The answer must be:
 
 ```
 0
 ```
 
-The second line is empty. Some implementations accidentally print garbage values or crash because they assume at least one valid segment exists.
+with an empty second line. A careless implementation might try to output one of the characters.
 
-Nested structures also matter. For example:
-
-```
-([][])
-```
-
-The entire string is valid and contains two `'['` characters. A greedy approach that only tracks locally matched pairs could incorrectly return just `[]`.
-
-Finally, mismatched closing brackets must fully invalidate the current nesting chain. In:
+Consider:
 
 ```
-([)]
+[]()[]
 ```
 
-when we encounter `)`, it does not match `[`. Every currently open bracket before that point becomes unusable for substrings crossing this position.
+The whole string is valid and contains two `'['` characters. If we only search for the longest valid substring, we would still succeed here, but in general the optimum is determined by the number of `'['`, not by length.
+
+Consider:
+
+```
+([[]])
+```
+
+The entire string is valid and contains two opening square brackets. A solution must correctly count square brackets inside nested structures, not merely at the top level.
 
 ## Approaches
 
-The brute-force idea is straightforward. Enumerate every substring `s[l...r]`, check whether it is a correct bracket sequence using a stack, and count how many `'['` characters it contains. If the substring is valid and improves the answer, store it.
+The brute-force idea is straightforward. Enumerate every substring, check whether it is a correct bracket sequence, count how many `'['` characters it contains, and keep the best one.
 
-The validity check itself takes linear time in the substring length. Since there are `O(n^2)` substrings, the total complexity becomes `O(n^3)`. Even if we precompute prefix sums for square bracket counts, validation still dominates with `O(n^3)` time. For `n = 10^5`, this is completely infeasible.
+Correctness is immediate because every candidate substring is examined. The problem is the cost. There are $O(n^2)$ substrings. Even if validity checking took only $O(n)$, the total complexity becomes $O(n^3)$. With $n = 10^5$, this is hopeless.
 
-The key observation is that we do not actually need to validate every substring independently. While scanning the string once, we can determine which brackets successfully match using a stack, exactly like the classic longest valid parentheses problem.
+The key observation is that we do not need to validate every substring independently.
 
-Suppose position `i` contains a closing bracket. If the top of the stack contains the corresponding opening bracket type, then these two positions form a matched pair. Otherwise, the nesting breaks.
+A correct bracket sequence can be recognized using the standard stack process. While scanning the string from left to right, each closing bracket either matches the current stack top or breaks the validity of any substring crossing that position.
 
-Once all matched pairs are known, another important property appears. Any maximal continuous region where every bracket belongs to some correct matching behaves like a valid bracket structure. This lets us identify valid substrings in linear time.
+This is very similar to the classic "longest valid parentheses" problem. We can maintain a stack of opening brackets together with their positions. Whenever a matching pair is found, we obtain a valid segment ending at the current position. By tracking the nearest position that invalidates a segment, we can determine the maximal valid substring ending at every index.
 
-We still need to maximize the number of `'['` characters. Prefix sums solve that part efficiently. If `pref[i]` stores how many `'['` characters appear in the prefix ending before index `i`, then the number inside substring `[l, r]` is:
+The remaining requirement is maximizing the number of `'['` characters. This can be handled with a prefix sum array. Once we know the boundaries of a valid substring, the number of opening square brackets inside it is obtained in constant time.
 
-$$pref[r+1] - pref[l]$$
-
-So the problem reduces to:
-
-1. Find all matched bracket positions with a stack.
-2. Identify continuous valid regions.
-3. Use prefix sums to count square brackets inside each region.
-4. Keep the best one.
+The stack identifies all maximal valid segments in linear time, and the prefix sums allow efficient scoring of each candidate.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -109,47 +95,49 @@ So the problem reduces to:
 
 ## Algorithm Walkthrough
 
-1. Create a stack that stores indices of opening brackets.
+1. Build a prefix sum array where `pref[i]` stores the number of `'['` characters among the first `i` characters.
 
-We need indices instead of characters because later we must mark exact positions as matched.
-2. Scan the string from left to right.
+This allows counting opening square brackets inside any substring in constant time.
+2. Maintain a stack containing pairs `(position, bracket)` for unmatched opening brackets.
+3. Maintain an array `dp` where `dp[i]` represents the length of the longest correct bracket sequence ending exactly at position `i`.
+4. Scan the string from left to right.
+5. When an opening bracket is encountered, push its position and type onto the stack.
+6. When a closing bracket is encountered, check whether the stack top contains the matching opening bracket.
 
-If the current character is `(` or `[`, push its index onto the stack.
-3. When encountering a closing bracket, check the stack top.
+If not, clear the stack. Any future valid substring cannot cross this mismatched position.
+7. If a match exists, pop the opening bracket position `j`.
+8. The pair `(j, i)` forms a valid block. Set:
 
-If the stack is empty, this closing bracket cannot match anything.
+```
+dp[i] = i - j + 1
+```
+9. If there is a valid block ending immediately before `j`, extend through it:
 
-Otherwise, compare the bracket types:
+```
+dp[i] += dp[j - 1]
+```
 
-`(` matches `)`
+This merges adjacent valid pieces into one larger valid substring.
+10. The valid substring ending at `i` has left boundary:
 
-`[` matches `]`
-4. If the top opening bracket matches the current closing bracket, mark both positions as valid.
+```
+L = i - dp[i] + 1
+```
+11. Count opening square brackets inside this substring using the prefix sums:
 
-We maintain a boolean array `good[]` where `good[i] = True` means character `i` belongs to some matched pair.
-
-Then pop the opening bracket index from the stack.
-5. If the types do not match, clear the stack.
-
-This step is crucial. A mismatch destroys every unfinished structure before it. Any substring crossing this mismatch cannot be valid.
-6. Build a prefix sum array counting occurrences of `'['`.
-
-`pref[i+1] = pref[i] + (s[i] == '[')`
-7. Scan the `good[]` array to find maximal continuous valid segments.
-
-Whenever we see consecutive `True` values from `l` to `r`, the substring `s[l:r+1]` is a valid bracket sequence.
-8. Compute how many `'['` characters this segment contains using prefix sums.
-
-If this count exceeds the current best, store the segment boundaries.
-9. Print the maximum count and the corresponding substring.
+```
+count = pref[i + 1] - pref[L]
+```
+12. If this count is larger than the best answer found so far, store the substring boundaries.
+13. After processing all positions, output the best count and the corresponding substring.
 
 ### Why it works
 
-The stack guarantees that we only match brackets respecting proper nesting order. Whenever a mismatch occurs, no valid substring can pass through that position while preserving earlier unmatched openings, so clearing the stack is correct.
+The stack guarantees that every matched pair respects the nesting rules of a correct bracket sequence. Whenever a mismatch occurs, all partially constructed sequences crossing that position become impossible, so clearing the stack is correct.
 
-Every position marked `good = True` belongs to some correctly matched pair. Continuous runs of such positions correspond exactly to valid bracket substrings because nesting consistency was enforced during matching.
+For every closing bracket that successfully matches an opening bracket at position `j`, the segment from `j` to the current position is valid. If another valid segment ends immediately before `j`, concatenating the two segments remains valid, which is exactly what the `dp` extension step captures.
 
-The prefix sums correctly count square brackets inside any chosen segment in constant time, so selecting the segment with the maximum number of `'['` characters is optimal.
+Thus `dp[i]` always equals the length of the longest valid bracket substring ending at position `i`. Every maximal valid substring appears as one of these candidates. Since the prefix sums compute the number of `'['` characters inside each candidate exactly, the algorithm examines all relevant valid substrings and selects the one with the maximum score.
 
 ## Python Solution
 
@@ -161,8 +149,16 @@ def solve():
     s = input().strip()
     n = len(s)
 
-    good = [False] * n
+    pref = [0] * (n + 1)
+    for i, ch in enumerate(s):
+        pref[i + 1] = pref[i] + (1 if ch == '[' else 0)
+
+    dp = [0] * n
     stack = []
+
+    best_count = 0
+    best_l = 0
+    best_r = -1
 
     match = {
         ')': '(',
@@ -171,47 +167,26 @@ def solve():
 
     for i, ch in enumerate(s):
         if ch in '([':
-            stack.append(i)
+            stack.append((i, ch))
         else:
-            if stack and s[stack[-1]] == match[ch]:
-                j = stack.pop()
-                good[i] = True
-                good[j] = True
+            if stack and stack[-1][1] == match[ch]:
+                j, _ = stack.pop()
+
+                dp[i] = i - j + 1
+                if j > 0:
+                    dp[i] += dp[j - 1]
+
+                l = i - dp[i] + 1
+                cnt = pref[i + 1] - pref[l]
+
+                if cnt > best_count:
+                    best_count = cnt
+                    best_l = l
+                    best_r = i
             else:
                 stack.clear()
 
-    pref = [0] * (n + 1)
-
-    for i in range(n):
-        pref[i + 1] = pref[i] + (1 if s[i] == '[' else 0)
-
-    best_count = 0
-    best_l = 0
-    best_r = -1
-
-    i = 0
-
-    while i < n:
-        if not good[i]:
-            i += 1
-            continue
-
-        j = i
-
-        while j < n and good[j]:
-            j += 1
-
-        cnt = pref[j] - pref[i]
-
-        if cnt > best_count:
-            best_count = cnt
-            best_l = i
-            best_r = j - 1
-
-        i = j
-
     print(best_count)
-
     if best_r >= best_l:
         print(s[best_l:best_r + 1])
     else:
@@ -221,23 +196,21 @@ if __name__ == "__main__":
     solve()
 ```
 
-The first part of the solution performs bracket matching with a stack. Each opening bracket index is pushed. When a closing bracket appears, we verify whether it matches the most recent unmatched opening bracket. If yes, both positions become part of a valid structure.
+The prefix sum section allows constant-time counting of opening square brackets inside any interval. Without it, we would need to scan every candidate substring again, increasing the complexity.
 
-The `good[]` array is the core representation. Instead of explicitly building valid substrings during matching, we simply remember which positions participate in valid pairs. This keeps the implementation simple and linear.
+The stack stores both the bracket type and its position. The position is required because once a match is found, we need the exact start of the newly formed valid block.
 
-The stack reset after a mismatch is subtle but necessary. Suppose we process:
+The `dp` array is the same idea used in classic valid-parentheses problems. When a pair matches between positions `j` and `i`, the segment length is initially `i - j + 1`. If another valid sequence ends at `j - 1`, the two segments are adjacent and can be merged, so we add `dp[j - 1]`.
+
+The left boundary is reconstructed from the length:
 
 ```
-([)]
+left = i - dp[i] + 1
 ```
 
-After reading `(` and `[`, the stack contains both indices. Encountering `)` does not match `[`. Any valid substring crossing this point is impossible, so the earlier `(` cannot remain usable. Clearing the stack enforces this.
+This avoids storing boundaries explicitly for every state.
 
-The prefix sum array lets us count square brackets in constant time for every candidate segment. Without it, counting would require rescanning substrings and increase complexity.
-
-The final scan groups consecutive `good` positions into maximal valid regions. Since every position in such a region belongs to properly nested matched pairs, the whole segment forms a correct bracket sequence.
-
-The boundary handling deserves attention. If no valid substring exists, `best_r` stays `-1`, and we print an empty second line.
+A subtle point is clearing the stack on mismatches. Leaving unmatched opening brackets in the stack would allow future matches to cross an invalid position, producing substrings that are not actually correct bracket sequences.
 
 ## Worked Examples
 
@@ -249,35 +222,14 @@ Input:
 ([])
 ```
 
-### Matching phase
+| i | char | stack after step | dp[i] | valid substring | '[' count |
+| --- | --- | --- | --- | --- | --- |
+| 0 | ( | [(0,'(')] | 0 | - | - |
+| 1 | [ | [(0,'('),(1,'[')] | 0 | - | - |
+| 2 | ] | [(0,'(')] | 2 | [] | 1 |
+| 3 | ) | [] | 4 | ([]) | 1 |
 
-| Index | Character | Stack After Step | good[] Updated |
-| --- | --- | --- | --- |
-| 0 | ( | [0] | No |
-| 1 | [ | [0,1] | No |
-| 2 | ] | [0] | good[1], good[2] |
-| 3 | ) | [] | good[0], good[3] |
-
-Final `good[]`:
-
-```
-[T, T, T, T]
-```
-
-### Segment scan
-
-| Segment | Substring | Number of `[` |
-| --- | --- | --- |
-| [0,3] | ([]) | 1 |
-
-Best answer:
-
-```
-1
-([])
-```
-
-This trace shows that nested matching works naturally. The inner `[]` pair closes first, then the outer `()` pair.
+The best candidate first becomes `[]`, then expands to the whole string. The final answer is one opening square bracket and substring `([])`.
 
 ### Example 2
 
@@ -287,191 +239,136 @@ Input:
 ([)]
 ```
 
-### Matching phase
-
-| Index | Character | Stack After Step | Action |
+| i | char | stack after step | dp[i] |
 | --- | --- | --- | --- |
-| 0 | ( | [0] | Push |
-| 1 | [ | [0,1] | Push |
-| 2 | ) | [] | Mismatch, clear stack |
-| 3 | ] | [] | No match |
+| 0 | ( | [(0,'(')] | 0 |
+| 1 | [ | [(0,'('),(1,'[')] | 0 |
+| 2 | ) | [] | 0 |
+| 3 | ] | [] | 0 |
 
-Final `good[]`:
+At position 2, `)` does not match `'['`, so the stack is cleared. No valid substring survives across this position. The answer remains zero.
 
-```
-[F, F, F, F]
-```
-
-### Segment scan
-
-No valid segment exists.
-
-Output:
-
-```
-0
-```
-
-This example demonstrates why type checking matters. Even though counts balance globally, the nesting order is invalid.
+This example demonstrates why bracket counts alone are insufficient. The nesting order matters.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each character is pushed and popped from the stack at most once |
-| Space | O(n) | Stack, prefix sums, and validity array all use linear memory |
+| Time | O(n) | Each character is processed once, each stack element is pushed and popped at most once |
+| Space | O(n) | Prefix sums, DP array, and stack may all contain O(n) elements |
 
-With `n ≤ 10^5`, linear complexity easily fits within the limits. The algorithm performs only a few passes over the string and uses simple array operations.
+With $n \le 10^5$, linear time easily fits within the 2-second limit. The memory usage is also comfortably below the 256 MB limit.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
-def solve():
-    input = sys.stdin.readline
+def run(inp: str) -> str:
+    s = inp.strip()
 
-    s = input().strip()
     n = len(s)
 
-    good = [False] * n
-    stack = []
-
-    match = {
-        ')': '(',
-        ']': '['
-    }
-
-    for i, ch in enumerate(s):
-        if ch in '([':
-            stack.append(i)
-        else:
-            if stack and s[stack[-1]] == match[ch]:
-                j = stack.pop()
-                good[i] = True
-                good[j] = True
-            else:
-                stack.clear()
-
     pref = [0] * (n + 1)
+    for i, ch in enumerate(s):
+        pref[i + 1] = pref[i] + (ch == '[')
 
-    for i in range(n):
-        pref[i + 1] = pref[i] + (1 if s[i] == '[' else 0)
+    dp = [0] * n
+    stack = []
 
     best_count = 0
     best_l = 0
     best_r = -1
 
-    i = 0
+    match = {')': '(', ']': '['}
 
-    while i < n:
-        if not good[i]:
-            i += 1
-            continue
+    for i, ch in enumerate(s):
+        if ch in '([':
+            stack.append((i, ch))
+        else:
+            if stack and stack[-1][1] == match[ch]:
+                j, _ = stack.pop()
 
-        j = i
+                dp[i] = i - j + 1
+                if j > 0:
+                    dp[i] += dp[j - 1]
 
-        while j < n and good[j]:
-            j += 1
+                l = i - dp[i] + 1
+                cnt = pref[i + 1] - pref[l]
 
-        cnt = pref[j] - pref[i]
+                if cnt > best_count:
+                    best_count = cnt
+                    best_l = l
+                    best_r = i
+            else:
+                stack.clear()
 
-        if cnt > best_count:
-            best_count = cnt
-            best_l = i
-            best_r = j - 1
-
-        i = j
-
-    out = [str(best_count)]
-
+    out = str(best_count) + "\n"
     if best_r >= best_l:
-        out.append(s[best_l:best_r + 1])
+        out += s[best_l:best_r + 1] + "\n"
     else:
-        out.append("")
+        out += "\n"
 
-    print("\n".join(out))
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    return sys.stdout.getvalue()
+    return out
 
 # provided sample
 assert run("([])\n") == "1\n([])\n", "sample 1"
 
-# no valid substring
-assert run("]]]][[[[\n") == "0\n\n", "no valid substring"
+# custom cases
+assert run("][\n") == "0\n\n", "no valid substring"
 
-# mismatched nesting
-assert run("([)]\n") == "0\n\n", "crossed brackets"
+assert run("[]\n") == "1\n[]\n", "minimum non-empty valid sequence"
 
-# multiple valid regions
-assert run("[](()[])[]\n") == "3\n[](()[])[]\n", "whole string valid"
+assert run("([[]])\n") == "2\n([[]])\n", "nested square brackets"
 
-# minimum size
-assert run("[\n") == "0\n\n", "single bracket"
+assert run("()()\n") == "0\n\n", "valid sequence but no square brackets"
 
-# nested valid structure
-assert run("(([[[]]]))\n") == "3\n(([[[]]]))\n", "deep nesting"
+assert run("[]()[]\n") == "2\n[]()[]\n", "whole string optimal"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `]]]][[[[` | `0` and empty line | No valid substring exists |
-| `([)]` | `0` and empty line | Incorrect nesting must fail |
-| `[](()[])[]` | Whole string returned | Multiple nested structures |
-| `[` | `0` and empty line | Minimum-size edge case |
-| `(([[[]]]))` | Entire string with count 3 | Deep nested matching |
+| `][` | `0` and empty string | No valid substring exists |
+| `[]` | `1`, `[]` | Smallest useful valid sequence |
+| `([[]])` | `2`, `([[]])` | Nested matching brackets |
+| `()()` | `0` and empty string | Valid substring exists but contains no `[` |
+| `[]()[]` | `2`, `[]()[]` | Concatenation of valid segments |
 
 ## Edge Cases
 
-Consider the input:
+Consider:
 
 ```
 ([)]
 ```
 
-The algorithm pushes `(` and `[` onto the stack. When `)` appears, the top of the stack is `[`, which does not match. The stack is cleared immediately.
+Processing reaches `)` while the stack top is `'['`. The brackets do not match, so the stack is cleared. No future substring may extend across this position. Every `dp` value remains zero and the answer is correctly reported as zero.
 
-That prevents the earlier `(` from incorrectly matching future brackets across the mismatch. The final `good[]` array contains no valid positions, so the algorithm outputs:
+Consider:
+
+```
+][
+```
+
+The first character is a closing bracket with no matching opener. The stack is empty and remains empty. The second character is merely pushed but never matched. No valid substring is discovered, so the output is:
 
 ```
 0
 ```
 
-Now consider:
+Consider:
 
 ```
-]]]][[[[
+()()
 ```
 
-Every character is either an unmatched closing bracket or an opening bracket that never closes. No positions become marked as valid.
+The entire string is a correct bracket sequence, but it contains no opening square brackets. The best count remains zero. The official solution also outputs an empty string in this situation because no valid substring has a strictly positive score. The algorithm naturally produces that behavior.
 
-During the final scan, no valid segment exists, so the stored answer remains empty. The output becomes:
-
-```
-0
-```
-
-Finally, examine:
+Consider:
 
 ```
-([][])
+([[]])
 ```
 
-The stack operations correctly preserve nesting:
-
-1. `(` pushed
-2. `[` pushed
-3. `]` matches `[`
-4. `[` pushed
-5. `]` matches `[`
-6. `)` matches `(`
-
-All positions become marked valid. Since the entire string forms one continuous valid region, the algorithm counts two `'['` characters and returns the whole substring.
+The matches occur in the order `[ ]`, `[ ]`, then `( )`. Each successful match extends earlier valid blocks through the `dp[j - 1]` transition. The final valid substring becomes the entire string, and the prefix sum correctly counts two opening square brackets.
