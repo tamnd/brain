@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.5.3: Analysis of Euclid's Algorithm"
-description: "Section 4.5.3 exercises: 22/42 solved."
+description: "Section 4.5.3 exercises: 25/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.5.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.5.3. Analysis of Euclid's Algorithm
 
-Exercises from [TAOCP Volume 2](../) Section 4.5.3: 22/42 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.5.3: 25/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -41,9 +41,9 @@ Exercises from [TAOCP Volume 2](../) Section 4.5.3: 22/42 solved.
 | [21](21.md) |  [*HM20*] | hm-medium | verified | 3m46s |
 | [22](22.md) |  [*HM46*] | hm-research | verified | 4m58s |
 | [23](23.md) |  [*HM45*] | hm-project | solved | 3m56s |
-| 24 |  [*M22*] | math-medium | - | - |
-| 25 |  [*HM25*] | hm-medium | - | - |
-| 26 |  [*M23*] | math-medium | - | - |
+| [24](24.md) |  [*M22*] | math-medium | verified | 2m26s |
+| [25](25.md) |  [*HM25*] | hm-medium | verified | 1m05s |
+| [26](26.md) |  [*M23*] | math-medium | solved | 4m08s |
 | 27 |  [*M21*] | math-medium | - | - |
 | 28 |  [*M23*] | math-medium | - | - |
 | 29 |  [*M23*] | math-medium | - | - |
