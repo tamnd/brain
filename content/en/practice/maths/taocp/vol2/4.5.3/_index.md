@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.5.3: Analysis of Euclid's Algorithm"
-description: "Section 4.5.3 exercises: 35/42 solved."
+description: "Section 4.5.3 exercises: 40/42 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.5.3"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.5.3. Analysis of Euclid's Algorithm
 
-Exercises from [TAOCP Volume 2](../) Section 4.5.3: 35/42 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.5.3: 40/42 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -54,9 +54,9 @@ Exercises from [TAOCP Volume 2](../) Section 4.5.3: 35/42 solved.
 | [34](34.md) |  [*HM41*] | hm-project | verified | 1m59s |
 | [35](35.md) |  [*HM41*] | hm-project | verified | 17m37s |
 | [36](36.md) |  [*M25*] | math-medium | solved | 8m12s |
-| 37 |  [*M38*] | math-project | - | - |
-| 38 |  [*M35*] | math-hard | - | - |
-| 39 | &#9654; [*M25*] | math-medium | - | - |
-| 40 |  [*M28*] | math-hard | - | - |
+| [37](37.md) |  [*M38*] | math-project | verified | 3m19s |
+| [38](38.md) |  [*M35*] | math-hard | verified | 7m34s |
+| [39](39.md) | &#9654; [*M25*] | math-medium | verified | 4m37s |
+| [40](40.md) |  [*M28*] | math-hard | verified | 2m30s |
 | 41 |  [*M40*] | math-project | - | - |
-| 42 |  [*M30*] | math-hard | - | - |
+| [42](42.md) |  [*M30*] | math-hard | verified | 1m55s |
