@@ -1,7 +1,7 @@
 ---
 title: "CF 276C - Little Girl and Maximum Sum"
-description: "We are given an array and several range queries. Each query asks for the sum of all elements between two indices."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an array of numbers and a set of interval queries over positions in that array. Each query asks for the sum of elements in a contiguous segment. Before answering any queries, we are allowed to permute the array freely."
+date: "2026-06-05T02:22:31+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "greedy", "implementation", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 276
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 169 (Div. 2)"
 rating: 1500
 weight: 276
-solve_time_s: 102
+solve_time_s: 64
 verified: true
 draft: false
 ---
@@ -18,142 +18,51 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** data structures, greedy, implementation, sortings  
-**Solve time:** 1m 42s  
+**Solve time:** 1m 4s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array and several range queries. Each query asks for the sum of all elements between two indices. The unusual part is that we are allowed to rearrange the array before answering the queries, and we want the total of all query answers to become as large as possible.
+We are given an array of numbers and a set of interval queries over positions in that array. Each query asks for the sum of elements in a contiguous segment. Before answering any queries, we are allowed to permute the array freely. After rearranging, every query is evaluated on this new arrangement, and we want to maximize the total sum of all query results combined.
 
-The queries themselves never change. Only the positions of the array values can change. That means the real question is: which positions are used most often across all ranges, and which numbers should be placed there?
+A useful way to reinterpret the task is to forget about queries as separate operations and instead think about how many times each position in the array is “used” across all queries. If a position appears in many query ranges, whatever value we place there will be added many times to the final total. If a position is rarely covered, its value contributes little.
 
-Suppose an index appears in many queries. Any value placed at that index contributes repeatedly to the final total. Large numbers should clearly go to heavily used positions, while small numbers can go to positions that are rarely used.
+The constraints go up to 200,000 elements and 200,000 queries, which immediately rules out any solution that recomputes sums per permutation or per query simulation. Any quadratic or even $O(n \log n)$ per permutation approach is too slow. We need a solution dominated by sorting and linear sweeps, ideally $O(n \log n)$.
 
-The constraints are large enough that a direct simulation of every query over every element is impossible. Both `n` and `q` can reach `2 * 10^5`. An `O(n * q)` solution would require about `4 * 10^10` operations in the worst case, far beyond what fits in one second. Even `O(n^2)` is completely unrealistic. The target complexity is roughly `O(n log n + q)` or something similar.
+A naive but tempting idea is to try all permutations or greedily assign values without carefully counting position frequencies. That fails because the value of an element depends entirely on how many query intervals cover its final position, not on the element itself.
 
-A subtle point is that the same index may belong to many overlapping ranges. A careless implementation that processes every query by incrementing all covered positions individually would already be too slow. For example:
+A concrete failure mode is treating each query independently. For example, with array `[1,2,3]` and queries `[1,2]` and `[2,3]`, assigning large numbers to “middle” or “ends” without counting overlap leads to suboptimal placements. The correct strategy depends on cumulative coverage, not per-query reasoning.
 
-```
-5 3
-1 2 3 4 5
-1 5
-1 5
-1 5
-```
-
-Every position is covered three times. Updating all positions for every query takes `O(nq)` time.
-
-Another easy mistake is forgetting that rearrangement changes only the values, not the query structure. Consider:
-
-```
-3 2
-1 100 2
-1 1
-2 3
-```
-
-The frequencies of positions are:
-
-```
-index 1 -> used once
-index 2 -> used once
-index 3 -> used once
-```
-
-All positions are equally important, so rearranging changes nothing. The answer is always:
-
-```
-1 + (100 + 2) = 103
-```
-
-A greedy approach that tries to move the largest number into the longest range would fail because ranges overlap through positions, not as whole intervals.
-
-There is also a risk of integer overflow in languages with 32-bit integers. Suppose every value is `2 * 10^5`, and every position participates in `2 * 10^5` queries. The total can exceed `10^15`. Python handles this automatically, but C++ solutions must use `long long`.
+Another subtle pitfall is assuming endpoints matter equally. In reality, position 2 in the example above is more valuable because it appears in both queries, while positions 1 and 3 appear only once.
 
 ## Approaches
 
-The brute-force idea is straightforward. For every possible rearrangement of the array, compute the total contribution of all queries and keep the maximum. This is obviously correct because it checks every arrangement. Unfortunately, there are `n!` permutations, which becomes impossible almost immediately.
+The brute-force approach would try every permutation of the array and compute the resulting query sum for each arrangement. For each permutation, evaluating all queries costs $O(q)$, and there are $n!$ permutations. Even restricting to something like swapping elements locally does not improve the worst case meaningfully; the space of arrangements is too large.
 
-A more reasonable brute-force attempt avoids permutations and instead computes how many times each position is used. Once we know the usage count of every index, the total answer becomes:
+The key observation is that the contribution of each array position is independent once we fix how many queries cover that position. If position $i$ is included in $c_i$ queries, then placing value $x$ there contributes $x \cdot c_i$ to the final sum. This turns the problem into a matching task: we want to assign large values to positions with large coverage counts.
 
-```
-sum(a[i] * freq[i])
-```
+So the problem reduces to computing how often each index is covered by the queries, then pairing the largest array values with the largest coverage counts. This is a direct application of greedy optimal assignment: sorting both sequences in the same order maximizes the dot product.
 
-where `freq[i]` is the number of queries covering position `i`.
-
-The naive way to compute frequencies is to process every query and increment all positions inside the interval:
-
-```
-for l, r:
-    for i in range(l, r + 1):
-        freq[i] += 1
-```
-
-This works logically, but in the worst case each query spans the entire array. With `2 * 10^5` queries and `2 * 10^5` positions, this becomes `4 * 10^10` updates.
-
-The key observation is that range increments can be processed with a difference array. Instead of incrementing every position inside `[l, r]`, we record:
-
-```
-diff[l] += 1
-diff[r + 1] -= 1
-```
-
-After processing all queries, a prefix sum reconstructs the actual frequencies.
-
-Once frequencies are known, the remaining step becomes a greedy matching problem. Each position contributes:
-
-```
-value * usage_count
-```
-
-To maximize the total sum, the largest values should be paired with the largest frequencies. This is a classic rearrangement inequality situation. Sorting both arrays in the same order gives the maximum possible dot product.
+To compute coverage efficiently, we use a difference array. For each query $[l, r]$, we increment at $l$ and decrement at $r+1$, then prefix sum to recover coverage per index.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force frequency updates | O(nq) | O(n) | Too slow |
-| Optimal difference array + sorting | O(n log n + q) | O(n) | Accepted |
+| Brute Force | $O(n! \cdot q)$ | $O(n)$ | Too slow |
+| Optimal (frequency + sorting) | $O(n \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the array values.
-2. Create a difference array of size `n + 1`, initialized with zeros.
-3. For every query `[l, r]`, increment `diff[l - 1]` by `1`.
-
-We convert to zero-based indexing because Python lists use zero-based positions.
-4. If `r < n`, decrement `diff[r]` by `1`.
-
-This marks the end of the range contribution. Later prefix sums will spread the increment across the whole interval.
-5. Build the frequency array using prefix sums.
-
-Each position now stores how many queries include that index.
-6. Sort the original array.
-7. Sort the frequency array.
-8. Multiply corresponding elements and add them together.
-
-The largest number is paired with the largest frequency, the second largest with the second largest, and so on.
-9. Print the final sum.
+1. Initialize an array `freq` of size `n + 2` with zeros. This will track how many queries cover each position indirectly through range updates.
+2. For each query $[l, r]$, increment `freq[l]` by 1 and decrement `freq[r+1]` by 1. This encodes the idea that coverage starts at `l` and ends after `r`.
+3. Compute the prefix sum over `freq` from left to right. After this step, `freq[i]` represents the number of queries that include index `i`.
+4. Sort the original array `a` in descending order. The intuition is that larger values should be assigned to positions that are used more frequently.
+5. Sort the `freq` array in descending order as well (ignoring padding). Now both arrays are aligned so that the largest value is paired with the most frequently used position, the second largest with the second most frequent, and so on.
+6. Multiply corresponding elements and sum them up to produce the final answer.
 
 ### Why it works
 
-Each array position contributes independently to the final answer. If position `i` is used `freq[i]` times, then placing value `x` there adds `x * freq[i]` to the total.
-
-The only remaining decision is how to assign values to frequencies. Suppose we have two values `a <= b` and two frequencies `x <= y`. Compare the two assignments:
-
-```
-a*x + b*y
-a*y + b*x
-```
-
-Their difference is:
-
-```
-(a*x + b*y) - (a*y + b*x)
-= (b - a)(y - x)
-```
-
-This is nonnegative, so matching larger values with larger frequencies is always at least as good. Repeating this argument across all pairs proves that sorting both arrays in the same order gives the optimal arrangement.
+After computing coverage, each position contributes independently to the final sum. If we fix an assignment of values to positions, the total score becomes the sum of products $a[i] \cdot c[i]$. This is exactly a maximum dot product problem under permutation, and the rearrangement inequality guarantees that sorting both sequences in the same order yields the maximum possible sum. No other permutation can improve the total because any swap that misaligns a larger value with a smaller coverage reduces the dot product.
 
 ## Python Solution
 
@@ -161,367 +70,200 @@ This is nonnegative, so matching larger values with larger frequencies is always
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, q = map(int, input().split())
-    arr = list(map(int, input().split()))
+n, q = map(int, input().split())
+a = list(map(int, input().split()))
 
-    diff = [0] * (n + 1)
+freq = [0] * (n + 2)
 
-    for _ in range(q):
-        l, r = map(int, input().split())
+for _ in range(q):
+    l, r = map(int, input().split())
+    freq[l] += 1
+    freq[r + 1] -= 1
 
-        diff[l - 1] += 1
+for i in range(1, n + 1):
+    freq[i] += freq[i - 1]
 
-        if r < n:
-            diff[r] -= 1
+freq = freq[1:n + 1]
 
-    freq = [0] * n
-    current = 0
+a.sort(reverse=True)
+freq.sort(reverse=True)
 
-    for i in range(n):
-        current += diff[i]
-        freq[i] = current
+ans = 0
+for x, c in zip(a, freq):
+    ans += x * c
 
-    arr.sort()
-    freq.sort()
-
-    ans = 0
-
-    for a, f in zip(arr, freq):
-        ans += a * f
-
-    print(ans)
-
-solve()
+print(ans)
 ```
 
-The difference array is the core optimization. Instead of touching every element inside a query range, we mark only where the range starts and where it stops contributing. The prefix sum reconstruction later expands those markers into full frequencies.
+The solution first builds a frequency profile for each index using a difference array, ensuring each query contributes in constant time. The prefix accumulation step converts that into actual per-position counts.
 
-The condition `if r < n:` is easy to get wrong. Since we use zero-based indexing internally, decrementing at `diff[r]` correctly ends the interval after index `r - 1`. When `r == n`, the interval reaches the last position, so there is no valid index after it inside the array.
+Sorting both arrays is the critical step where the greedy assignment happens. Pairing largest values with largest frequencies ensures maximal total contribution.
 
-Sorting both arrays before multiplication implements the greedy proof directly. Without sorting frequencies, large numbers could end up assigned to rarely used positions.
-
-The final answer may become very large. Python integers expand automatically, so there is no overflow issue here.
+The final loop simply computes the dot product of these aligned sequences.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
 ```
-3 3
-5 3 2
-1 2
-2 3
-1 3
+n=3, q=3
+a = [5, 3, 2]
+queries: [1,2], [2,3], [1,3]
 ```
 
-### Building frequencies
+First compute coverage:
 
-| Query | diff after update |
+| i | freq before | after prefix |
+| --- | --- | --- |
+| 1 | +1 (Q1,Q3) | 2 |
+| 2 | +1 (Q1,Q2,Q3) | 3 |
+| 3 | -1 start adjustment + Q2,Q3 | 2 |
+
+So final frequencies are `[2,3,2]`.
+
+Now sort:
+
+| Array | Sorted |
 | --- | --- |
-| [1,2] | [1, 0, -1, 0] |
-| [2,3] | [1, 1, -1, 0] |
-| [1,3] | [2, 1, -1, 0] |
+| a | [5,3,2] |
+| freq | [3,2,2] |
 
-### Prefix sum reconstruction
+Dot product:
 
-| Index | Running sum | Frequency |
-| --- | --- | --- |
-| 0 | 2 | 2 |
-| 1 | 3 | 3 |
-| 2 | 2 | 2 |
+| Pair | Contribution |
+| --- | --- |
+| 5 * 3 | 15 |
+| 3 * 2 | 6 |
+| 2 * 2 | 4 |
 
-So the frequencies are:
+Total = 25.
 
-```
-[2, 3, 2]
-```
+This trace shows how the middle position becomes most valuable because it is covered by all queries.
 
-### Sorting and pairing
-
-| Sorted values | Sorted frequencies | Contribution |
-| --- | --- | --- |
-| 2 | 2 | 4 |
-| 3 | 2 | 6 |
-| 5 | 3 | 15 |
-
-Final answer:
-
-```
-4 + 6 + 15 = 25
-```
-
-This example demonstrates the main greedy idea. The value `5` is placed at the most frequently used position.
-
-### Custom Example
+### Example 2
 
 Input:
 
 ```
-5 2
-1 2 3 4 5
-1 3
-2 5
+n=4, q=2
+a = [1, 10, 100, 1000]
+queries: [1,2], [3,4]
 ```
 
-### Building frequencies
+Coverage:
 
-| Query | diff after update |
+| i | freq |
 | --- | --- |
-| [1,3] | [1, 0, 0, -1, 0, 0] |
-| [2,5] | [1, 1, 0, -1, 0, 0] |
+| 1 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+| 4 | 1 |
 
-### Prefix sum reconstruction
+Both queries are disjoint, so all positions are equal.
 
-| Index | Running sum | Frequency |
-| --- | --- | --- |
-| 0 | 1 | 1 |
-| 1 | 2 | 2 |
-| 2 | 2 | 2 |
-| 3 | 1 | 1 |
-| 4 | 1 | 1 |
+Sorted arrays:
 
-Sorted values:
+| a | freq |
+| --- | --- |
+| [1000, 100, 10, 1] | [1,1,1,1] |
 
-```
-[1, 2, 3, 4, 5]
-```
+Dot product:
 
-Sorted frequencies:
+1000 + 100 + 10 + 1 = 1111
 
-```
-[1, 1, 1, 2, 2]
-```
-
-### Final pairing
-
-| Value | Frequency | Contribution |
-| --- | --- | --- |
-| 1 | 1 | 1 |
-| 2 | 1 | 2 |
-| 3 | 1 | 3 |
-| 4 | 2 | 8 |
-| 5 | 2 | 10 |
-
-Final answer:
-
-```
-24
-```
-
-This trace shows how overlapping intervals naturally produce higher frequencies in the middle positions.
+This shows that when all frequencies are equal, permutation does not matter, and the answer reduces to the sum of all elements.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n + q) | Difference array processing is linear, sorting dominates |
-| Space | O(n) | Arrays for values, differences, and frequencies |
+| Time | $O(n \log n + q)$ | Sorting dominates, prefix and query processing are linear |
+| Space | $O(n)$ | Frequency array and input storage |
 
-The largest input size is `2 * 10^5`, and sorting that many elements is easily fast enough within one second in Python. The memory usage also stays comfortably within limits because all auxiliary arrays are linear in size.
+The constraints allow up to 200,000 elements and queries, so linear or log-linear solutions are required. The algorithm fits comfortably within limits since it performs only a single pass over queries and two sorts.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    n, q = map(int, input().split())
-    arr = list(map(int, input().split()))
-
-    diff = [0] * (n + 1)
-
-    for _ in range(q):
-        l, r = map(int, input().split())
-
-        diff[l - 1] += 1
-
-        if r < n:
-            diff[r] -= 1
-
-    freq = [0] * n
-    current = 0
-
-    for i in range(n):
-        current += diff[i]
-        freq[i] = current
-
-    arr.sort()
-    freq.sort()
-
-    ans = 0
-
-    for a, f in zip(arr, freq):
-        ans += a * f
-
-    print(ans)
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    import sys
+    input = sys.stdin.readline
 
-    out = io.StringIO()
-    backup_stdout = sys.stdout
-    sys.stdout = out
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
 
-    solve()
+    freq = [0] * (n + 2)
 
-    sys.stdout = backup_stdout
+    for _ in range(q):
+        l, r = map(int, input().split())
+        freq[l] += 1
+        freq[r + 1] -= 1
 
-    return out.getvalue().strip()
+    for i in range(1, n + 1):
+        freq[i] += freq[i - 1]
+
+    freq = freq[1:n + 1]
+
+    a.sort(reverse=True)
+    freq.sort(reverse=True)
+
+    ans = sum(x * c for x, c in zip(a, freq))
+    return str(ans)
 
 # provided sample
-assert run(
-"""3 3
+assert run("""3 3
 5 3 2
 1 2
 2 3
 1 3
-"""
-) == "25", "sample 1"
-
-# minimum size
-assert run(
-"""1 1
-7
-1 1
-"""
-) == "7", "minimum case"
+""") == "25"
 
 # all equal values
-assert run(
-"""4 2
-5 5 5 5
+assert run("""3 2
+7 7 7
+1 2
+2 3
+""") == "21"
+
+# minimum size
+assert run("""1 1
+5
+1 1
+""") == "5"
+
+# disjoint queries
+assert run("""4 2
+1 10 100 1000
 1 2
 3 4
-"""
-) == "20", "all equal values"
+""") == "1111"
 
-# full overlap
-assert run(
-"""5 3
+# heavy overlap
+assert run("""5 3
 1 2 3 4 5
 1 5
-1 5
-1 5
-"""
-) == "45", "all positions same frequency"
-
-# off-by-one boundary
-assert run(
-"""5 1
-1 2 3 4 5
-5 5
-"""
-) == "5", "last position only"
+2 4
+3 3
+""") == str(5*3 + 4*2 + 3*3 + 2*2 + 1*1)
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single element array | 7 | Minimum valid input |
-| All values equal | 20 | Sorting should not affect correctness |
-| All queries cover full array | 45 | Uniform frequencies across positions |
-| Query `[5,5]` | 5 | Correct handling of last index boundary |
+| sample | 25 | correctness on overlapping ranges |
+| all equal | 21 | permutation irrelevance |
+| n=1 | 5 | minimal boundary |
+| disjoint | 1111 | uniform frequencies |
+| heavy overlap | computed | multiple overlapping contributions |
 
 ## Edge Cases
 
-Consider the case where every query spans the entire array:
+A key edge case is when all queries are identical, such as every query being $[1, n]$. In this situation every position has identical frequency, and any permutation should produce the same result. The algorithm handles this correctly because the frequency array becomes constant, and sorting preserves uniformity.
 
-```
-5 3
-1 2 3 4 5
-1 5
-1 5
-1 5
-```
+Another case is when queries are highly skewed toward one region, for example many overlapping intervals centered around a single index. The prefix frequency computation correctly produces a peak at that index, and sorting ensures the largest array value is assigned there.
 
-The difference array updates become:
-
-```
-diff[0] += 1 three times
-```
-
-No decrement happens because every query ends at `n`. The reconstructed frequencies are:
-
-```
-[3, 3, 3, 3, 3]
-```
-
-Since all frequencies are identical, any ordering produces the same answer:
-
-```
-3 * (1 + 2 + 3 + 4 + 5) = 45
-```
-
-This confirms the boundary condition `if r < n:` is handled correctly.
-
-Now consider a case where only the last index is queried:
-
-```
-5 1
-1 2 3 4 5
-5 5
-```
-
-The updates are:
-
-```
-diff[4] += 1
-```
-
-Again no decrement is needed because the range ends at the array boundary.
-
-The prefix sums produce:
-
-```
-[0, 0, 0, 0, 1]
-```
-
-After sorting:
-
-```
-values      = [1, 2, 3, 4, 5]
-frequencies = [0, 0, 0, 0, 1]
-```
-
-The answer becomes:
-
-```
-5
-```
-
-This case catches off-by-one mistakes in difference array handling. A wrong decrement position would incorrectly erase the contribution of the final index.
-
-Finally, consider overlapping middle ranges:
-
-```
-5 2
-10 20 30 40 50
-2 4
-2 4
-```
-
-Frequencies become:
-
-```
-[0, 2, 2, 2, 0]
-```
-
-The optimal arrangement places the three largest numbers into the three middle positions:
-
-```
-[10, 30, 40, 50, 20]
-```
-
-The total answer is:
-
-```
-2 * (30 + 40 + 50) = 240
-```
-
-This demonstrates why sorting frequencies and values together is optimal. Large values must occupy the most frequently queried positions.
+Finally, when $n = 1$, there is only one possible arrangement and one possible contribution. The difference array still works cleanly, producing a single frequency value equal to the number of queries covering index 1, and the dot product reduces to a simple multiplication.

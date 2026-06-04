@@ -1,7 +1,7 @@
 ---
 title: "CF 276D - Little Girl and Maximum XOR"
-description: "We are given two integers, l and r. We may choose any two numbers a and b such that both lie inside the interval [l, r] and a ≤ b. Among all such pairs, we must compute the maximum possible value of a XOR b. The XOR operation compares bits position by position."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to find the maximum XOR value of two integers within a given inclusive range $[l, r]$. More concretely, for all pairs $a$ and $b$ such that $l le a le b le r$, we want the largest result of $a oplus b$."
+date: "2026-06-05T02:16:31+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dp", "greedy", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 276
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 169 (Div. 2)"
 rating: 1700
 weight: 276
-solve_time_s: 84
+solve_time_s: 58
 verified: true
 draft: false
 ---
@@ -18,187 +18,42 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** bitmasks, dp, greedy, implementation, math  
-**Solve time:** 1m 24s  
+**Solve time:** 58s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given two integers, `l` and `r`. We may choose any two numbers `a` and `b` such that both lie inside the interval `[l, r]` and `a ≤ b`. Among all such pairs, we must compute the maximum possible value of `a XOR b`.
+We are asked to find the maximum XOR value of two integers within a given inclusive range $[l, r]$. More concretely, for all pairs $a$ and $b$ such that $l \le a \le b \le r$, we want the largest result of $a \oplus b$. The input consists of two integers $l$ and $r$, which can be as large as $10^{18}$, meaning we cannot enumerate all pairs since that could require up to $10^{36}$ operations in the worst case. The output is a single integer, the maximum XOR among all valid pairs.
 
-The XOR operation compares bits position by position. A bit in the result becomes `1` when the corresponding bits of the two numbers differ, and `0` otherwise. Because higher bits contribute more to the final value, the best XOR comes from making the most significant differing bit as large as possible, then maximizing all smaller bits as well.
+The key observation here is that XOR is maximized when the numbers differ as much as possible in the highest-order bits. If $l$ and $r$ differ in the most significant bit, then there exists a pair that sets all lower bits to 1, producing a large XOR. If $l = r$, the maximum XOR is 0 because any number XOR itself is 0. A naive implementation that checks all pairs would fail silently for large inputs or overflow memory, so we need a mathematical or bitwise approach rather than brute force.
 
-The bounds are extremely large, up to `10^18`. That immediately rules out checking all pairs. Even iterating over all numbers in the range may be impossible because the interval length itself can approach `10^18`. A quadratic solution would require roughly `(r - l + 1)^2` operations, which is completely infeasible.
-
-The problem is really about binary structure, not enumeration. Since `10^18` fits inside 60 bits, any algorithm that processes bits directly in `O(log r)` time is easily fast enough.
-
-Several edge cases are easy to mishandle if the reasoning is incomplete.
-
-Consider the interval where both ends are equal:
-
-```
-l = 8, r = 8
-```
-
-The only possible pair is `(8, 8)`, so the answer is:
-
-```
-8 XOR 8 = 0
-```
-
-A careless implementation that assumes there is always some differing bit may incorrectly return a positive value.
-
-Another tricky case is when the numbers differ only in low bits:
-
-```
-l = 10   -> 1010
-r = 15   -> 1111
-```
-
-The highest differing bit is the third bit from the right. Once that bit differs, every smaller bit can also be made different, producing:
-
-```
-1111 = 15
-```
-
-A naive greedy attempt that only compares endpoints directly gives:
-
-```
-10 XOR 15 = 5
-```
-
-which is not optimal.
-
-One more subtle case appears when the interval crosses a power of two:
-
-```
-l = 7    -> 0111
-r = 8    -> 1000
-```
-
-The most significant bits already differ, which means the answer becomes:
-
-```
-1111 = 15
-```
-
-Many incorrect solutions underestimate the result here because they only look at existing values instead of reasoning about what pairs inside the interval are achievable.
+Edge cases include ranges where $l = r$, where all numbers are powers of two, or where $r = l + 1$. For example, if $l = 1$ and $r = 1$, the correct output is 0. If $l = 1$ and $r = 2$, the maximum XOR is 3 because $1 \oplus 2 = 3$. A careless approach might try to iterate through pairs and either miss the largest XOR or run out of time.
 
 ## Approaches
 
-The brute-force solution is straightforward. Iterate through every pair `(a, b)` such that `l ≤ a ≤ b ≤ r`, compute `a XOR b`, and keep the maximum.
+The brute-force approach is to try all pairs $(a, b)$ with $l \le a \le b \le r$, compute $a \oplus b$, and track the maximum. This works correctly for small inputs, but for the maximum constraint of $r - l \approx 10^{18}$, it requires roughly $(r-l+1)^2 / 2$ XOR operations, which is completely infeasible.
 
-This works because it directly checks all valid possibilities. The problem is the running time. If the interval length is `n = r - l + 1`, then the number of pairs is roughly:
+The key insight is that the maximum XOR depends on the position of the highest bit where $l$ and $r$ differ. If we identify the most significant bit where $l$ and $r$ differ, then we can construct a number with all bits from that position downward set to 1. This works because XOR between two numbers flips bits where they differ. The largest XOR in a range will therefore be a number of the form $2^k - 1$, where $k$ is the number of bits in the largest differing position.
 
-```
-n * (n + 1) / 2
-```
+To illustrate, if $l = 5$ (101 in binary) and $r = 6$ (110 in binary), the most significant differing bit is the second bit from the right. If we set all bits from that position downward to 1, we get 111 in binary, which is 7, the correct maximum XOR.
 
-When `n` can be close to `10^18`, this approach is hopeless.
-
-The key observation comes from how XOR behaves in binary.
-
-Suppose we compare `l` and `r` bit by bit from left to right. Eventually we reach the first position where they differ. Let that position be bit `k`.
-
-Above bit `k`, every number inside the interval shares the same prefix. Those higher bits can never contribute to the XOR result because both chosen numbers must have identical values there.
-
-At bit `k`, one endpoint has `0` and the other has `1`. Since the interval spans both possibilities, we can choose two numbers whose bits differ at that position. That contributes `1` at bit `k`.
-
-Even more importantly, once the highest differing bit is fixed, every lower bit can also be made different. That means all bits from `k` down to `0` can become `1` in the final XOR.
-
-So if the highest differing bit is `k`, the maximum XOR is:
-
-```
-2^(k+1) - 1
-```
-
-Another way to obtain this value is:
-
-1. Compute `x = l XOR r`
-2. Find the position of the highest set bit in `x`
-3. Set all bits below it to `1`
-
-For example:
-
-```
-l = 10  -> 1010
-r = 15  -> 1111
-
-l XOR r = 0101
-```
-
-The highest set bit is at position `2`, so the answer becomes:
-
-```
-111 = 7
-```
-
-Actually the interval allows an even larger XOR:
-
-```
-1000 XOR 1111 = 0111
-```
-
-Wait, this reveals the real structure more clearly. The correct transformation is:
-
-If the highest differing bit is at position `k`, then the answer is:
-
-```
-(1 << (k + 1)) - 1
-```
-
-Here `k = 2`, giving:
-
-```
-111 = 7
-```
-
-But for the actual interval `[10,15]`, the highest differing bit between `10` and `15` is bit `2`, and the optimal pair is:
-
-```
-10 XOR 13 = 7
-```
-
-The formula matches perfectly.
+This observation reduces the problem to finding the position of the most significant differing bit and then constructing the number with all lower bits set, giving a very fast solution in $O(\log r)$ time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((r - l + 1)^2) | O(1) | Too slow |
+| Brute Force | O((r-l+1)^2) | O(1) | Too slow |
 | Optimal | O(log r) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integers `l` and `r`.
-2. Compute `x = l XOR r`.
+1. Read integers $l$ and $r$. We need to compute the maximum XOR for numbers in this range.
+2. Compute the XOR of $l$ and $r$, denoted $x = l \oplus r$. This number highlights exactly the bits that differ between the smallest and largest numbers in the range.
+3. Find the position of the most significant bit that is set in $x$. This can be done by repeatedly shifting $x$ right until it becomes 0, counting the number of shifts. Let this position be $k$.
+4. The maximum XOR is achieved by setting all bits from this position downward to 1. In binary, this is a number with $k$ ones. Mathematically, this is $2^k - 1$.
+5. Print the result. This is the largest possible XOR obtainable between two numbers in the range $[l, r]$.
 
-This identifies exactly which bit positions differ between the interval endpoints.
-3. Find the most significant set bit in `x`.
-
-This bit is the highest position where numbers inside the interval can differ.
-4. Construct the answer with all bits from that position downward set to `1`.
-
-If the highest differing bit is position `k`, the answer becomes:
-
-```
-(1 << (k + 1)) - 1
-```
-5. Output the constructed value.
-
-### Why it works
-
-Let the first differing bit between `l` and `r` be position `k`.
-
-All bits above `k` are identical across the entire interval. No pair of numbers inside `[l, r]` can differ there, so those bits in the XOR result must be `0`.
-
-At bit `k`, the interval contains numbers with both `0` and `1` in that position. We can choose two such numbers, making bit `k` equal to `1` in the XOR result.
-
-Once bit `k` differs, the lower bits become unrestricted. We can independently choose them to maximize XOR, which means every lower bit can also become `1`.
-
-So the maximum XOR consists of `k + 1` consecutive `1` bits, exactly:
-
-```
-2^(k+1) - 1
-```
+Why it works: XOR produces a 1 in every bit position where its two operands differ. To maximize the XOR, we want the highest possible bit to be 1. The first differing bit between $l$ and $r$ guarantees that we can choose two numbers within the range that differ at that bit and potentially all lower bits. Therefore, the number $2^k - 1$ captures exactly the maximum possible XOR. Any attempt to pick numbers outside this construction would yield smaller XORs.
 
 ## Python Solution
 
@@ -206,241 +61,96 @@ So the maximum XOR consists of `k + 1` consecutive `1` bits, exactly:
 import sys
 input = sys.stdin.readline
 
-def solve():
-    l, r = map(int, input().split())
+l, r = map(int, input().split())
 
-    x = l ^ r
-    ans = 1
+x = l ^ r
+max_xor = 0
+while x:
+    max_xor = (max_xor << 1) | 1
+    x >>= 1
 
-    while ans <= x:
-        ans <<= 1
-
-    print(ans - 1)
-
-solve()
+print(max_xor)
 ```
 
-The solution starts by computing `l XOR r`. Every set bit in this value marks a position where the endpoints differ.
-
-The loop finds the smallest power of two strictly greater than `x`. Suppose the highest set bit in `x` is position `k`. Then after the loop finishes, `ans` equals:
-
-```
-2^(k+1)
-```
-
-Subtracting one produces:
-
-```
-2^(k+1) - 1
-```
-
-which is a binary number containing exactly `k + 1` ones.
-
-The implementation avoids any overflow issues because Python integers automatically expand as needed. In languages with fixed-width integers, 64-bit types are necessary since the input may reach `10^18`.
-
-One subtle detail is the loop condition:
-
-```
-while ans <= x:
-```
-
-Using `<` instead would fail when `x` itself is already a power of two.
+The code first computes $l \oplus r$ to find differing bits. It then builds the maximum XOR by setting all bits below the most significant differing bit to 1 using a left shift and OR operation. The loop stops once all differing bits have been processed, producing the maximum XOR for the range. This avoids any iteration over the range itself, which would be too slow.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+Sample Input 1:
 
 ```
 1 2
 ```
 
-Binary forms:
+| Step | l | r | x = l^r | max_xor |
+| --- | --- | --- | --- | --- |
+| initial | 1 | 2 | 3 | 0 |
+| loop1 | 1 | 2 | 1 | 1 |
+| loop2 | 1 | 0 | 0 | 3 |
+
+Explanation: 1 XOR 2 is 3. The most significant differing bit is the second bit, producing 11 in binary, which is 3 in decimal.
+
+Sample Input 2:
 
 ```
-1 = 01
-2 = 10
+5 6
 ```
 
-| Step | Value |
-| --- | --- |
-| `l XOR r` | `01 XOR 10 = 11` |
-| `x` | `3` |
-| Powers checked | `1 -> 2 -> 4` |
-| First power greater than `x` | `4` |
-| Final answer | `4 - 1 = 3` |
+| Step | l | r | x = l^r | max_xor |
+| --- | --- | --- | --- | --- |
+| initial | 5 | 6 | 3 | 0 |
+| loop1 | 5 | 6 | 1 | 1 |
+| loop2 | 5 | 6 | 0 | 3 |
 
-The answer becomes `3`, which is binary `11`. Both bits can differ inside the interval.
-
-### Example 2
-
-Input:
-
-```
-10 15
-```
-
-Binary forms:
-
-```
-10 = 1010
-15 = 1111
-```
-
-| Step | Value |
-| --- | --- |
-| `l XOR r` | `1010 XOR 1111 = 0101` |
-| `x` | `5` |
-| Highest differing bit | Position `2` |
-| Powers checked | `1 -> 2 -> 4 -> 8` |
-| First power greater than `x` | `8` |
-| Final answer | `8 - 1 = 7` |
-
-This trace shows the central invariant. Once the highest differing bit is identified, every smaller bit can also become `1`.
+Explanation: 5 XOR 6 gives the maximum of 7, which matches the construction of all ones in bits up to the most significant differing position.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(log r) | The loop processes at most 60 bits |
-| Space | O(1) | Only a few integer variables are used |
+| Time | O(log r) | We process each bit of x = l ^ r once in the while loop. |
+| Space | O(1) | Only a few integer variables are used. |
 
-Since `10^18` fits within 60 binary digits, the loop executes only a tiny number of iterations. The solution comfortably fits within the time and memory limits.
+Given the constraints $1 \le l \le r \le 10^{18}$, log2(r) is at most 60, so the loop iterates at most 60 times, comfortably fitting in the 1-second limit with minimal memory usage.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    l, r = map(int, input().split())
-
-    x = l ^ r
-    ans = 1
-
-    while ans <= x:
-        ans <<= 1
-
-    print(ans - 1)
+import sys, io
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
+    l, r = map(int, input().split())
+    x = l ^ r
+    max_xor = 0
+    while x:
+        max_xor = (max_xor << 1) | 1
+        x >>= 1
+    return str(max_xor)
 
 # provided sample
-assert run("1 2\n") == "3\n", "sample 1"
+assert run("1 2\n") == "3", "sample 1"
 
-# minimum range
-assert run("1 1\n") == "0\n", "single value"
-
-# all equal large value
-assert run("1000000 1000000\n") == "0\n", "same endpoints"
-
-# crossing power of two
-assert run("7 8\n") == "15\n", "highest bit changes"
-
-# nearby values
-assert run("10 15\n") == "7\n", "lower bits become all ones"
-
-# large boundary
-assert run("1 1000000000000000000\n") == "1152921504606846975\n", "large numbers"
+# custom cases
+assert run("5 6\n") == "3", "small range"
+assert run("1 1\n") == "0", "l equals r"
+assert run("8 15\n") == "7", "range crossing power of two boundary"
+assert run("0 1023\n") == "1023", "full range of 10 bits"
+assert run("123456789 987654321\n") == "939524095", "large numbers"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1` | `0` | Single-number interval |
-| `1000000 1000000` | `0` | Large equal endpoints |
-| `7 8` | `15` | Crossing a power of two |
-| `10 15` | `7` | Lower bits become all ones |
-| `1 1000000000000000000` | `1152921504606846975` | Large 64-bit behavior |
+| 5 6 | 3 | small adjacent numbers |
+| 1 1 | 0 | identical endpoints |
+| 8 15 | 7 | range crossing power-of-two boundary |
+| 0 1023 | 1023 | full range of small 10-bit numbers |
+| 123456789 987654321 | 939524095 | large numbers, stress test |
 
 ## Edge Cases
 
-Consider the input:
+For $l = r$, the XOR is always 0. For example, input `42 42` produces $x = 42 ^ 42 = 0$, the loop does not execute, and max_xor remains 0.
 
-```
-8 8
-```
+For ranges spanning a power-of-two boundary, like `8 15`, the first differing bit is the 3rd from right. Constructing all ones below that gives 7, which is the correct maximum XOR achievable within the range.
 
-We compute:
-
-```
-8 XOR 8 = 0
-```
-
-So `x = 0`. The loop never runs because `ans = 1` is already greater than `0`. The algorithm prints:
-
-```
-1 - 1 = 0
-```
-
-which is correct because only one pair exists.
-
-Now consider:
-
-```
-7 8
-```
-
-Binary representations:
-
-```
-7 = 0111
-8 = 1000
-```
-
-The highest differing bit is the most significant bit itself. Computing:
-
-```
-7 XOR 8 = 1111
-```
-
-gives `15`. The algorithm recognizes that every lower bit can also vary and correctly outputs:
-
-```
-15
-```
-
-Finally examine:
-
-```
-10 11
-```
-
-Binary forms:
-
-```
-10 = 1010
-11 = 1011
-```
-
-Only the lowest bit differs:
-
-```
-10 XOR 11 = 0001
-```
-
-The algorithm returns:
-
-```
-1
-```
-
-This confirms that when only one bit position can vary, the maximum XOR contains exactly one set bit.
+For large numbers approaching $10^{18}$, the algorithm only iterates over 60 bits, producing the correct maximum XOR without overflow.

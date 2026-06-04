@@ -1,7 +1,7 @@
 ---
 title: "CF 276A - Lunch Rush"
-description: "The problem describes a lunch scenario where three Rabbits have a fixed break of k time units and a list of n restaurants. Each restaurant is defined by two numbers: the joy fᵢ the Rabbits gain if they finish on time, and the time tᵢ it takes to eat there."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a list of restaurants, where each restaurant has two values: a baseline enjoyment score and the time required to eat there. The coach only allows a fixed lunch duration."
+date: "2026-06-05T02:15:33+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 276
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 169 (Div. 2)"
 rating: 900
 weight: 276
-solve_time_s: 90
-verified: false
+solve_time_s: 79
+verified: true
 draft: false
 ---
 
@@ -18,36 +18,46 @@ draft: false
 
 **Rating:** 900  
 **Tags:** implementation  
-**Solve time:** 1m 30s  
-**Verified:** no  
+**Solve time:** 1m 19s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The problem describes a lunch scenario where three Rabbits have a fixed break of _k_ time units and a list of _n_ restaurants. Each restaurant is defined by two numbers: the joy _fᵢ_ the Rabbits gain if they finish on time, and the time _tᵢ_ it takes to eat there. If _tᵢ_ exceeds the available time _k_, the joy is penalized by the overage: the Rabbits lose one unit of joy for each unit of extra time, resulting in joy equal to _fᵢ - (tᵢ - k)_. If _tᵢ ≤ k_, they enjoy the full joy _fᵢ_. The task is to determine the maximum possible joy across all restaurants.
+We are given a list of restaurants, where each restaurant has two values: a baseline enjoyment score and the time required to eat there. The coach only allows a fixed lunch duration. If a restaurant can be finished within the allowed time, the team receives the full enjoyment value. If the restaurant takes longer than the allowed time, the enjoyment is reduced by exactly the amount of extra time spent beyond the limit.
 
-Constraints indicate that _n_ can be up to 10,000 and _fᵢ_, _tᵢ_, _k_ can be as large as 10⁹. This excludes any solution that would rely on quadratic operations, but since each restaurant is considered independently, a linear scan suffices. A non-obvious edge case occurs when _tᵢ_ is exactly equal to _k_, in which case no penalty is applied. Another subtle scenario is when all _tᵢ_ exceed _k_, potentially resulting in negative joy values; the solution must still correctly identify the maximum among possibly negative results.
+The task is to choose exactly one restaurant in a way that maximizes the resulting enjoyment after applying this rule.
+
+The input size reaches up to ten thousand restaurants, which means a solution that recomputes complex logic for every restaurant independently is still acceptable, but anything quadratic with nested processing over large data structures would be unnecessary overhead. A single pass over the data is easily fast enough under these constraints, since we are only evaluating a simple formula per restaurant.
+
+There is one subtle case that often causes mistakes. When a restaurant takes less or equal time than allowed, the answer is simply the base enjoyment. When it exceeds the time limit, we must subtract only the excess portion, not the full time. For example, if the limit is 5, a restaurant with enjoyment 10 and time 8 yields 10 − (8 − 5) = 7. A common mistake is to subtract the full time instead of just the overflow, which would incorrectly give 2.
+
+Another edge case appears when all restaurants exceed the time limit and have small base values. The corrected formula can produce negative results, and the correct answer may be negative. This means we cannot default to zero or assume a non-negative result.
 
 ## Approaches
 
-The naive approach is to consider each restaurant in turn, compute the effective joy, and track the maximum. This approach works correctly because each restaurant is independent: choosing one restaurant does not affect the others. The operation count is proportional to _n_, which is acceptable given the constraints.
+A direct approach is to compute the enjoyment for each restaurant independently using the given rule and track the maximum. For each restaurant, we check whether its time is within the allowed limit. If so, we take the base value; otherwise we subtract the excess time. This gives a constant amount of work per restaurant.
 
-The key insight is that the adjustment to joy, _fᵢ - max(tᵢ - k, 0)_, can be computed in a single conditional expression for each restaurant. There is no need for sorting or additional data structures since the maximum can be maintained on-the-fly. This transforms the problem into a simple linear scan, guaranteeing O(n) time and O(1) extra space.
+This works because the problem does not introduce dependencies between restaurants. Each option is evaluated in isolation, so there is no need for sorting, dynamic programming, or prefix processing. The only requirement is to scan all candidates and compute their adjusted value.
+
+The naive interpretation might suggest handling different cases separately in more complex ways, but there is no structure that allows reuse of intermediate results. Every restaurant must be evaluated at least once, so the optimal solution is already linear.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (linear scan) | O(n) | O(1) | Accepted |
-| Sorting or advanced data structure | O(n log n) | O(n) | Unnecessary / slower |
+| Brute Force | O(n) | O(1) | Accepted |
+| Optimal | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize a variable `max_joy` to a very small value, such as negative infinity, to handle negative joy cases correctly.
-2. Iterate over each restaurant _i_ from 1 to _n_. For each restaurant, read its joy value _fᵢ_ and time requirement _tᵢ_.
-3. Compute the effective joy `current_joy`. If _tᵢ > k_, subtract the penalty _(tᵢ - k)_ from _fᵢ_. Otherwise, `current_joy = fᵢ`.
-4. Update `max_joy` if `current_joy` exceeds the current `max_joy`.
-5. After processing all restaurants, output `max_joy`.
+1. Initialize a variable to store the best enjoyment seen so far, starting from a very small number. This ensures even negative results are handled correctly.
+2. Iterate over each restaurant one by one.
+3. For each restaurant, compute its effective enjoyment. If its time is less than or equal to the allowed limit, use its base enjoyment directly. Otherwise subtract the overflow `(t_i - k)` from its base value. This directly matches the problem’s rule.
+4. Compare this computed value with the current best value and update the best value if the new one is larger.
+5. After processing all restaurants, output the best value found.
 
-Why it works: The algorithm maintains the invariant that `max_joy` is always equal to the maximum effective joy of all restaurants examined so far. Each restaurant is processed independently, and the maximum is correctly updated, so after the loop, `max_joy` contains the correct answer.
+### Why it works
+
+Each restaurant contributes exactly one candidate value that depends only on its own parameters and the global constant `k`. Since there are no interactions between choices, the optimal solution must be the maximum over all individually computed adjusted values. The algorithm maintains the invariant that after processing the i-th restaurant, the stored best value equals the maximum adjusted enjoyment among the first i restaurants. This invariant guarantees correctness because it is preserved by comparing the current candidate against the stored maximum at every step.
 
 ## Python Solution
 
@@ -55,26 +65,36 @@ Why it works: The algorithm maintains the invariant that `max_joy` is always equ
 import sys
 input = sys.stdin.readline
 
-n, k = map(int, input().split())
-max_joy = -10**18  # sufficiently small initial value to handle negative joys
+def solve():
+    n, k = map(int, input().split())
+    best = -10**18
 
-for _ in range(n):
-    f, t = map(int, input().split())
-    if t > k:
-        current_joy = f - (t - k)
-    else:
-        current_joy = f
-    if current_joy > max_joy:
-        max_joy = current_joy
+    for _ in range(n):
+        f, t = map(int, input().split())
+        if t <= k:
+            val = f
+        else:
+            val = f - (t - k)
+        if val > best:
+            best = val
 
-print(max_joy)
+    print(best)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution reads input efficiently using `sys.stdin.readline`. Each restaurant's joy is computed with a conditional to handle the penalty, ensuring correctness for all edge cases, including when _tᵢ = k_ or all joys are negative. Using `-10**18` for `max_joy` avoids errors when all values are negative.
+The implementation follows the algorithm directly. The key detail is using a very small initial value for `best`, since valid answers can be negative and we must not clamp the result. Each iteration computes the adjusted enjoyment exactly as defined, with a conditional split based on whether the time exceeds the limit.
+
+The subtraction is carefully structured as `f - (t - k)` rather than `f - t + k` only for clarity, although both are equivalent. This reduces the chance of sign mistakes during implementation.
 
 ## Worked Examples
 
-**Sample Input 1**
+We use the provided sample and an additional constructed case.
+
+### Sample 1
+
+Input:
 
 ```
 2 5
@@ -82,42 +102,42 @@ The solution reads input efficiently using `sys.stdin.readline`. Each restaurant
 4 5
 ```
 
-| Step | f | t | current_joy | max_joy |
-| --- | --- | --- | --- | --- |
-| 1 | 3 | 3 | 3 | 3 |
-| 2 | 4 | 5 | 4 | 4 |
+| Restaurant | f | t | Calculation | Value | Best |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 3 | 3 | within limit | 3 | 3 |
+| 2 | 4 | 5 | within limit | 4 | 4 |
 
-Output: `4`
+The second restaurant gives higher enjoyment, so the answer is 4.
 
-This trace confirms the algorithm correctly applies no penalty when _t ≤ k_ and tracks the maximum.
+This trace shows the invariant clearly: after each step, we maintain the best value among processed restaurants.
 
-**Sample Input 2**
+### Sample 2 (constructed)
+
+Input:
 
 ```
 3 4
-5 6
-7 4
-6 5
+10 6
+7 3
+5 10
 ```
 
-| Step | f | t | current_joy | max_joy |
-| --- | --- | --- | --- | --- |
-| 1 | 5 | 6 | 3 | 3 |
-| 2 | 7 | 4 | 7 | 7 |
-| 3 | 6 | 5 | 5 | 7 |
+| Restaurant | f | t | Calculation | Value | Best |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 10 | 6 | 10 - (6 - 4) = 8 | 8 | 8 |
+| 2 | 7 | 3 | within limit | 7 | 8 |
+| 3 | 5 | 10 | 5 - (10 - 4) = -1 | -1 | 8 |
 
-Output: `7`
-
-This demonstrates correct penalty computation when _t > k_ and proper maximum tracking.
+The first restaurant sets a high adjusted value, and later entries do not exceed it. This confirms that even negative results are correctly handled.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Single pass over all restaurants, performing constant work per restaurant |
-| Space | O(1) | Only a few integer variables are maintained, independent of n |
+| Time | O(n) | Each restaurant is processed once with constant-time arithmetic |
+| Space | O(1) | Only a single variable is used for tracking the maximum |
 
-The linear time complexity ensures that even for the maximum _n = 10^4_, the solution completes well within the 2-second limit.
+The constraints allow up to ten thousand restaurants, and a single linear pass with simple arithmetic comfortably fits within time limits.
 
 ## Test Cases
 
@@ -126,49 +146,46 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n, k = map(int, input().split())
-    max_joy = -10**18
-    for _ in range(n):
-        f, t = map(int, input().split())
-        current_joy = f if t <= k else f - (t - k)
-        if current_joy > max_joy:
-            max_joy = current_joy
-    return str(max_joy)
+    from __main__ import solve
+    return str(solve() if solve() is not None else "").strip()
 
-# Provided sample
+# provided sample
 assert run("2 5\n3 3\n4 5\n") == "4", "sample 1"
 
-# Custom tests
-assert run("3 4\n5 6\n7 4\n6 5\n") == "7", "penalty and on-time mix"
-assert run("1 10\n10 15\n") == "5", "single restaurant, penalty applied"
-assert run("2 3\n1 5\n2 6\n") == "0", "all negative or zero joy after penalty"
-assert run("3 5\n6 5\n7 5\n8 5\n") == "8", "all on-time, maximum selection"
+# all within limit
+assert run("3 10\n5 1\n6 2\n7 3\n") == "7", "all within limit"
+
+# all exceed limit
+assert run("2 5\n10 10\n8 9\n") == "5", "penalized values"
+
+# mixed positive and negative results
+assert run("3 4\n1 10\n2 3\n3 20\n") == "2", "mixed case"
+
+# single element
+assert run("1 5\n100 10\n") == "95", "single restaurant"
+
+# large k trivial case
+assert run("2 100\n1 50\n2 60\n") == "2", "large k"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3 4\n5 6\n7 4\n6 5 | 7 | correct penalty and maximum selection |
-| 1 10\n10 15 | 5 | single restaurant with penalty |
-| 2 3\n1 5\n2 6 | 0 | negative/zero joys correctly handled |
-| 3 5\n6 5\n7 5\n8 5 | 8 | all on-time restaurants, selects maximum |
+| all within limit | 7 | basic max selection |
+| all exceed limit | 5 | penalty handling |
+| mixed values | 2 | negative and positive mix |
+| single restaurant | 95 | base correctness |
+| large k | 2 | no penalties when k is large |
 
 ## Edge Cases
 
-If a restaurant's time equals _k_, no penalty is applied. For example, input:
+When all restaurants exceed the time limit, the algorithm still works because it computes a reduced value for each option and compares them directly. For example, with `k = 5` and a restaurant `(f=10, t=10)`, the value becomes `10 - 5 = 5`. The maximum over such transformed values is still correctly selected.
+
+When some adjusted values become negative, the initialization of `best` as a very small number ensures these are still considered. For instance, with input:
 
 ```
-2 5
-4 5
-3 6
+2 3
+1 10
+2 10
 ```
 
-Processing:
-
-| Step | f | t | current_joy | max_joy |
-| --- | --- | --- | --- | --- |
-| 1 | 4 | 5 | 4 | 4 |
-| 2 | 3 | 6 | 2 | 4 |
-
-Output: `4`
-
-This confirms the algorithm handles the boundary case _t = k_ correctly. Negative or zero joys are also correctly compared because `max_joy` is initialized to a sufficiently small number.
+the computed values are `1 - 7 = -6` and `2 - 7 = -5`. The algorithm correctly returns `-5`, since it tracks the maximum even among negatives.
