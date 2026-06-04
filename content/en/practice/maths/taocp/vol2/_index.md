@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 765 solved, 572 verified, 828 total."
+description: "Volume 2: Seminumerical Algorithms. 769 solved, 576 verified, 856 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 765 solved, 572 verified, 828 total.
+Exercise solutions for [TAOCP](../) Volume 2. 769 solved, 576 verified, 856 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -19,6 +19,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 765 solved, 572 verified, 828 tota
 | [4.1](4.1/) | Positional Number Systems | 34 | 20 | 34 |
 | [4.4](4.4/) | Radix Conversion | 19 | 13 | 19 |
 | [4.6](4.6/) | Polynomial Arithmetic | 5 | 5 | 5 |
+| [4.7](4.7/) | Manipulation of Power Series | 3 | 3 | 28 |
 | [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
 | [3.2.2](3.2.2/) | Other Methods | 35 | 25 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 24 | 22 | 25 |
@@ -40,7 +41,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 765 solved, 572 verified, 828 tota
 | [4.6.1](4.6.1/) | Division of Polynomials | 26 | 19 | 26 |
 | [4.6.2](4.6.2/) | Factorization of Polynomials | 34 | 22 | 40 |
 | [4.6.3](4.6.3/) | Evaluation of Powers | 34 | 24 | 35 |
-| [4.6.4](4.6.4/) | Evaluation of Polynomials | 70 | 54 | 74 |
+| [4.6.4](4.6.4/) | Evaluation of Polynomials | 71 | 55 | 74 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |

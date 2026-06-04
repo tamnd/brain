@@ -9,9 +9,9 @@ draft: false
 
 # The Art of Computer Programming
 
-Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. 1654 solved, 1053 verified, 1717 total.
+Exercise solutions for [The Art of Computer Programming](https://www-cs-faculty.stanford.edu/~knuth/taocp.html) by Donald E. Knuth. 1658 solved, 1057 verified, 1745 total.
 
 | Volume | Title | Solved | Verified | Total |
 |--------|-------|-------:|--------:|------:|
 | [Vol 1](vol1/) | Fundamental Algorithms | 889 | 481 | 889 |
-| [Vol 2](vol2/) | Seminumerical Algorithms | 765 | 572 | 828 |
+| [Vol 2](vol2/) | Seminumerical Algorithms | 769 | 576 | 856 |
