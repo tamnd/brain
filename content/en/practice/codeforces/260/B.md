@@ -1,7 +1,7 @@
 ---
 title: "CF 260B - Ancient Prophesy"
-description: "The input is a long string made only of digits and hyphens. Somewhere inside this string, there may be many substrings that look like dates written in the exact format dd-mm-yyyy. We must find which valid date appears most often as a substring."
-date: "2026-05-29T00:00:00+07:00"
+description: "The input is a long string consisting only of digits and the character -. Somewhere inside this string there may be many substrings that look like dates written exactly as dd-mm-yyyy. Our task is to find the valid date that appears most often as such a substring."
+date: "2026-06-04T17:41:52+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 260
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 158 (Div. 2)"
 rating: 1600
 weight: 260
-solve_time_s: 132
+solve_time_s: 130
 verified: true
 draft: false
 ---
@@ -18,115 +18,132 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** brute force, implementation, strings  
-**Solve time:** 2m 12s  
+**Solve time:** 2m 10s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The input is a long string made only of digits and hyphens. Somewhere inside this string, there may be many substrings that look like dates written in the exact format `dd-mm-yyyy`.
+The input is a long string consisting only of digits and the character `-`. Somewhere inside this string there may be many substrings that look like dates written exactly as `dd-mm-yyyy`.
 
-We must find which valid date appears most often as a substring. A valid date must satisfy three conditions. The year must be between 2013 and 2015 inclusive. The month must be between 01 and 12. The day must exist inside that month. Since none of these years are leap years, February always has 28 days.
+Our task is to find the valid date that appears most often as such a substring. A valid date must satisfy three conditions:
 
-The string length can reach `10^5`, which immediately rules out any algorithm that tries all possible substrings. A string of length `10^5` contains about `5 * 10^9` substrings, far beyond what fits into a 1 second time limit.
+First, the format must be exactly two digits for the day, two digits for the month, and four digits for the year, separated by hyphens.
 
-The key observation is that every valid date has fixed length 10 because the format is always exactly `dd-mm-yyyy`. That means we only need to inspect substrings of length 10. There are only about `10^5` of them, which is completely manageable.
+Second, the year must be one of `2013`, `2014`, or `2015`.
 
-Several edge cases are easy to mishandle.
+Third, the day must be valid for the given month. Since none of these years are leap years, February has 28 days.
 
-A common mistake is accepting malformed dates that only look close to the required format. Consider:
+The answer is guaranteed to exist and to be unique.
 
-```
-1-01-2013
-```
+The string length is at most `10^5`. A substring representing a date always has length `10`, so there are at most about `10^5` candidate positions to examine. This immediately suggests that scanning all possible length-10 substrings is feasible. Any solution that tries to compare every candidate against every other candidate would drift toward quadratic behavior and become too slow.
 
-This is not valid because the day must use two digits. The correct format requires length exactly 10.
-
-Another subtle case is invalid calendar dates:
+The subtle part is that a substring may look like a date syntactically while being invalid. For example:
 
 ```
 31-02-2013
 ```
 
-A naive check that only verifies `1 <= day <= 31` would incorrectly accept this. February 2013 only has 28 days.
+This matches the pattern `dd-mm-yyyy`, but February never has 31 days, so it must not be counted.
 
-Overlapping occurrences also matter. For example:
-
-```
-12-12-201312-12-2013
-```
-
-The valid date appears twice, and both occurrences must be counted even though the substrings overlap in the original string.
-
-A careless implementation may also forget to validate separators. This input:
+Another easy mistake is accepting dates that do not use exactly two digits for day and month. Consider:
 
 ```
-12/12/2013
+1-01-2013
 ```
 
-must not count because the required separators are hyphens.
+This is not a valid occurrence because the required format is exactly ten characters long. Only:
+
+```
+01-01-2013
+```
+
+counts.
+
+A third pitfall is month-specific day limits. For example:
+
+```
+31-04-2014
+```
+
+April has only 30 days. A solution that merely checks `1 <= day <= 31` would incorrectly count it.
+
+Finally, overlapping occurrences are allowed. In the string
+
+```
+0012-10-2012-10-2012
+```
+
+different starting positions can produce valid date substrings. We must examine every length-10 window independently.
 
 ## Approaches
 
-The brute-force idea is straightforward. Generate every substring, check whether it matches the date format, validate the date, and count occurrences. This works logically because every possible occurrence is examined.
+A brute-force idea is to generate every valid date between 2013 and 2015 and search the entire prophecy for each one.
 
-The problem is the number of substrings. A string of length `n` has `O(n^2)` substrings. With `n = 10^5`, that becomes roughly `10^10` checks in the worst case, which is impossible within the time limit.
+There are only about a thousand valid dates in that range, so correctness is straightforward. For each date, count how many times its string representation appears in the prophecy and keep the maximum.
 
-The structure of the date format changes everything. Every candidate date always has exactly 10 characters. We never need to look at any other substring length.
+The problem is the running time. The prophecy can contain `10^5` characters. Searching for roughly 1000 dates independently leads to around `10^8` character operations in the worst case, which is unnecessarily expensive.
 
-So instead of checking all substrings, we slide a window of size 10 across the string. For each position, we test whether the current substring has the form:
+The structure of the problem suggests turning the process around.
+
+Instead of asking, "How many times does each valid date occur?", we can ask, "What date does each length-10 substring represent?"
+
+Every valid occurrence must occupy exactly ten characters:
 
 ```
 dd-mm-yyyy
 ```
 
-and whether the numbers describe a real date.
+There are only `n - 9` such windows in the entire string. For each window we can check whether it forms a valid date. If it does, we increment that date's frequency.
 
-This reduces the problem to about `10^5` checks, each taking constant time. We can store counts in a hash map and keep track of the most frequent valid date.
+This transforms the problem into a single linear scan of the prophecy. Each position is processed once, validity checks take constant time, and a hash map stores frequencies.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n²) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force | O(1000·n) | O(1) | Too slow |
+| Optimal | O(n) | O(k) | Accepted |
+
+Here `k` is the number of distinct valid dates encountered, which is at most the number of valid dates between 2013 and 2015.
 
 ## Algorithm Walkthrough
 
-1. Read the input string.
-2. Prepare an array containing the number of days in each month.
-3. Create a hash map `cnt` that stores how many times each valid date appears.
-4. Iterate through every substring of length 10.
-5. For the current substring, first check the format itself.
+1. Read the prophecy string.
+2. Prepare an array containing the number of days in each month:
 
-The third and sixth characters must be `'-'`. Every other position must contain digits. Reject immediately if this fails.
-6. Extract day, month, and year as integers.
+```
+[31,28,31,30,31,30,31,31,30,31,30,31]
+```
 
-Since the format is fixed, slicing is simple:
+Since years 2013 through 2015 are not leap years, February always has 28 days.
+3. Iterate over every starting position `i` such that a length-10 substring exists.
+4. Extract the substring `s[i:i+10]`.
+5. Check whether positions 2 and 5 contain hyphens.
 
-`day = s[0:2]`
+If they do not, the substring cannot match the required format.
+6. Parse:
 
-`month = s[3:5]`
+- day from characters `[0:2]`
+- month from characters `[3:5]`
+- year from characters `[6:10]`
 
-`year = s[6:10]`
-7. Validate the year.
+If parsing fails, discard the substring.
+7. Verify the date:
 
-It must be between 2013 and 2015 inclusive.
-8. Validate the month.
-
-It must be between 1 and 12.
-9. Validate the day.
-
-The day must be at least 1 and at most the number of days in that month.
-10. If the date is valid, increment its frequency in the hash map.
-11. Track the date with maximum frequency while processing.
-12. Print the most frequent valid date.
+- year is between 2013 and 2015
+- month is between 1 and 12
+- day is at least 1
+- day does not exceed the number of days in that month
+8. If the date is valid, increment its count in a hash map using the original substring as the key.
+9. Track the date with the highest frequency seen so far.
+10. After processing all windows, output the date with the maximum count.
 
 ### Why it works
 
-Every valid occurrence in the string must occupy exactly 10 consecutive characters because the format is fixed. The algorithm checks every such substring exactly once, so no valid occurrence can be missed.
+Every valid occurrence in the prophecy occupies exactly ten consecutive characters and must be represented by some length-10 window. The algorithm examines every such window exactly once.
 
-The validation rules exactly match the definition of a correct date. Invalid formats, impossible calendar dates, and years outside the allowed range are all rejected.
+A substring contributes to the frequency map only if it passes all validity checks, so every counted occurrence corresponds to a correct date. Conversely, every correct date occurrence appears as one of the examined windows and will be counted.
 
-Since every valid occurrence increments its counter once, the stored frequencies are correct. The date with maximum frequency at the end is exactly the required answer.
+The frequency map therefore stores the exact number of occurrences of every valid date. Since the apocalypse date is defined as the unique valid date with maximum frequency, selecting the key with the largest count produces the correct answer.
 
 ## Python Solution
 
@@ -134,67 +151,59 @@ Since every valid occurrence increments its counter once, the stored frequencies
 import sys
 input = sys.stdin.readline
 
-def valid_date(t):
-    if t[2] != '-' or t[5] != '-':
-        return False
-
-    for i in range(10):
-        if i in (2, 5):
-            continue
-        if not t[i].isdigit():
-            return False
-
-    day = int(t[0:2])
-    month = int(t[3:5])
-    year = int(t[6:10])
-
-    if year < 2013 or year > 2015:
-        return False
-
-    if month < 1 or month > 12:
-        return False
-
-    days_in_month = [
-        31, 28, 31, 30, 31, 30,
-        31, 31, 30, 31, 30, 31
-    ]
-
-    if day < 1 or day > days_in_month[month - 1]:
-        return False
-
-    return True
-
 def solve():
     s = input().strip()
 
-    cnt = {}
+    days_in_month = [31, 28, 31, 30, 31, 30,
+                     31, 31, 30, 31, 30, 31]
+
+    freq = {}
     best_date = ""
-    best_freq = 0
+    best_count = 0
 
     for i in range(len(s) - 9):
         cur = s[i:i + 10]
 
-        if valid_date(cur):
-            cnt[cur] = cnt.get(cur, 0) + 1
+        if cur[2] != '-' or cur[5] != '-':
+            continue
 
-            if cnt[cur] > best_freq:
-                best_freq = cnt[cur]
-                best_date = cur
+        try:
+            day = int(cur[0:2])
+            month = int(cur[3:5])
+            year = int(cur[6:10])
+        except ValueError:
+            continue
+
+        if not (2013 <= year <= 2015):
+            continue
+
+        if not (1 <= month <= 12):
+            continue
+
+        if not (1 <= day <= days_in_month[month - 1]):
+            continue
+
+        freq[cur] = freq.get(cur, 0) + 1
+
+        if freq[cur] > best_count:
+            best_count = freq[cur]
+            best_date = cur
 
     print(best_date)
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution is built around the fixed length of the date format. The loop only examines substrings of size 10, which keeps the runtime linear.
+The scan examines every possible length-10 window because any valid date occurrence must occupy exactly ten characters.
 
-The `valid_date` function separates formatting checks from calendar checks. First it verifies that positions 2 and 5 contain hyphens. Then it confirms every remaining character is a digit. This prevents conversion errors and rejects malformed strings early.
+The hyphen check is performed before parsing integers. This quickly rejects most invalid windows and avoids unnecessary conversions.
 
-The month lengths are stored in a simple array indexed by `month - 1`. Since the problem guarantees no leap years, February always contains 28 days.
+The month validity check comes before indexing `days_in_month[month - 1]`. Reversing this order would risk accessing an invalid index when the month is outside the range `1..12`.
 
-The loop condition uses `range(len(s) - 9)` because a substring of length 10 starting at index `i` ends at `i + 9`. Using `len(s) - 10` would miss the final candidate substring.
+The original substring is used as the dictionary key. Since dates are always stored in canonical `dd-mm-yyyy` format, identical dates always produce identical keys.
 
-The frequency update happens before comparing against the current maximum. This matters because the first occurrence should count as frequency 1 immediately.
+The running maximum is updated during the scan, avoiding a second pass over the frequency map.
 
 ## Worked Examples
 
@@ -206,17 +215,30 @@ Input:
 777-444---21-12-2013-12-2013-12-2013---444-777
 ```
 
-| Position | Substring | Valid | Count After Update |
-| --- | --- | --- | --- |
-| 10 | 21-12-2013 | Yes | 1 |
-| 16 | 2013-12-2 | No | - |
-| 19 | 3-12-2013 | No | - |
-| 20 | -12-2013- | No | - |
-| 21 | 12-12-2013 | Yes | 1 |
-| 24 | 12-2013-12 | No | - |
-| 32 | 12-12-2013 | Yes | 2 |
+Relevant valid windows:
 
-The date `12-12-2013` appears twice, while every other valid date appears fewer times. The algorithm correctly tracks frequencies even when invalid substrings appear nearby.
+| Window | Valid? | Count After Update |
+| --- | --- | --- |
+| 21-12-2013 | Yes | 1 |
+| 13-12-2013 | Yes | 1 |
+| 12-20-1312 | No | - |
+| 13-12-2013 | Yes | 2 |
+| 13-12-2013 | Yes | 3 |
+
+Final frequencies:
+
+| Date | Frequency |
+| --- | --- |
+| 21-12-2013 | 1 |
+| 13-12-2013 | 3 |
+
+Output:
+
+```
+13-12-2013
+```
+
+This example shows why every length-10 window must be checked. The winning date appears multiple times due to overlapping positions inside the larger string.
 
 ### Example 2
 
@@ -226,22 +248,30 @@ Input:
 01-01-201331-02-201301-01-2013
 ```
 
-| Position | Substring | Valid | Reason |
-| --- | --- | --- | --- |
-| 0 | 01-01-2013 | Yes | Real calendar date |
-| 10 | 31-02-2013 | No | February has only 28 days |
-| 20 | 01-01-2013 | Yes | Real calendar date |
+Trace:
 
-The invalid February date is rejected even though it matches the textual format. The valid date appears twice and becomes the answer.
+| Window | Valid? | Frequency |
+| --- | --- | --- |
+| 01-01-2013 | Yes | 1 |
+| 31-02-2013 | No | - |
+| 01-01-2013 | Yes | 2 |
+
+Output:
+
+```
+01-01-2013
+```
+
+This example demonstrates the importance of validating month-specific day limits. The middle substring has the correct shape but is not a real calendar date.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each length-10 substring is checked once |
-| Space | O(n) | Hash map may store many distinct valid dates |
+| Time | O(n) | Each length-10 window is processed once |
+| Space | O(k) | Frequency map stores distinct valid dates |
 
-The algorithm performs constant work for every starting position in the string. With at most `10^5` positions, the runtime easily fits within the limit. The memory usage is also small because the number of distinct valid dates is bounded.
+The string length is at most `10^5`, so roughly `10^5` windows are examined. Each window requires only constant-time parsing and validation. The solution comfortably fits within the time limit and uses very little memory.
 
 ## Test Cases
 
@@ -250,133 +280,127 @@ The algorithm performs constant work for every starting position in the string. 
 import sys
 import io
 
-def solve():
-    s = input().strip()
+def run(inp: str) -> str:
+    old_stdin = sys.stdin
+    old_stdout = sys.stdout
 
-    def valid_date(t):
-        if t[2] != '-' or t[5] != '-':
-            return False
+    sys.stdin = io.StringIO(inp)
+    out = io.StringIO()
+    sys.stdout = out
 
-        for i in range(10):
-            if i in (2, 5):
-                continue
-            if not t[i].isdigit():
-                return False
-
-        day = int(t[0:2])
-        month = int(t[3:5])
-        year = int(t[6:10])
-
-        if year < 2013 or year > 2015:
-            return False
-
-        if month < 1 or month > 12:
-            return False
+    def solve():
+        input = sys.stdin.readline
+        s = input().strip()
 
         days = [31, 28, 31, 30, 31, 30,
                 31, 31, 30, 31, 30, 31]
 
-        return 1 <= day <= days[month - 1]
+        freq = {}
+        best_date = ""
+        best_count = 0
 
-    cnt = {}
-    ans = ""
-    best = 0
+        for i in range(len(s) - 9):
+            cur = s[i:i + 10]
 
-    for i in range(len(s) - 9):
-        cur = s[i:i + 10]
+            if cur[2] != '-' or cur[5] != '-':
+                continue
 
-        if valid_date(cur):
-            cnt[cur] = cnt.get(cur, 0) + 1
+            try:
+                d = int(cur[:2])
+                m = int(cur[3:5])
+                y = int(cur[6:])
+            except ValueError:
+                continue
 
-            if cnt[cur] > best:
-                best = cnt[cur]
-                ans = cur
+            if not (2013 <= y <= 2015):
+                continue
+            if not (1 <= m <= 12):
+                continue
+            if not (1 <= d <= days[m - 1]):
+                continue
 
-    print(ans)
+            freq[cur] = freq.get(cur, 0) + 1
 
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    global input
-    input = sys.stdin.readline
+            if freq[cur] > best_count:
+                best_count = freq[cur]
+                best_date = cur
 
-    out = io.StringIO()
-    backup = sys.stdout
-    sys.stdout = out
+        print(best_date)
 
     solve()
 
-    sys.stdout = backup
+    sys.stdin = old_stdin
+    sys.stdout = old_stdout
+
     return out.getvalue().strip()
 
 # provided sample
 assert run(
     "777-444---21-12-2013-12-2013-12-2013---444-777\n"
-) == "13-12-2013", "sample 1"
+) == "13-12-2013", "sample"
 
-# minimum valid input
-assert run(
-    "01-01-2013\n"
-) == "01-01-2013", "single valid date"
+# single valid date
+assert run("01-01-2013\n") == "01-01-2013", "minimum valid case"
 
-# invalid date mixed with valid ones
+# invalid date between two valid occurrences
 assert run(
-    "31-02-201301-03-2013\n"
-) == "01-03-2013", "reject impossible February date"
+    "01-01-201331-02-201301-01-2013\n"
+) == "01-01-2013", "reject invalid February date"
 
-# overlapping occurrences
+# month boundary
 assert run(
-    "01-01-201301-01-2013\n"
-) == "01-01-2013", "count overlapping occurrences"
+    "30-04-201431-04-201430-04-2014\n"
+) == "30-04-2014", "April has only 30 days"
 
-# boundary year checks
+# year boundary
 assert run(
-    "31-12-201231-12-201501-01-2016\n"
-) == "31-12-2015", "only years 2013-2015 allowed"
+    "31-12-201231-12-201331-12-2013\n"
+) == "31-12-2013", "reject year outside range"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `01-01-2013` | `01-01-2013` | Smallest meaningful valid case |
-| `31-02-201301-03-2013` | `01-03-2013` | Invalid calendar dates are rejected |
-| `01-01-201301-01-2013` | `01-01-2013` | Overlapping occurrences are counted |
-| `31-12-201231-12-201501-01-2016` | `31-12-2015` | Year bounds are enforced correctly |
+| `01-01-2013` | `01-01-2013` | Smallest meaningful valid input |
+| `01-01-201331-02-201301-01-2013` | `01-01-2013` | Invalid February date is ignored |
+| `30-04-201431-04-201430-04-2014` | `30-04-2014` | Month-specific day limits |
+| `31-12-201231-12-201331-12-2013` | `31-12-2013` | Year range validation |
 
 ## Edge Cases
 
-Consider the input:
-
-```
-1-01-2013
-```
-
-The algorithm never even checks this as a candidate because its length is only 9. Every examined substring must have length exactly 10. This correctly rejects dates without leading zeroes.
-
-Now consider:
+Consider:
 
 ```
 31-02-2013
 ```
 
-The substring passes the formatting test because the hyphens are in the right positions and all remaining characters are digits. Then the algorithm extracts `day = 31` and `month = 2`. Since February has 28 days, the condition:
+The substring has the correct `dd-mm-yyyy` structure. The algorithm parses day `31`, month `2`, and year `2013`. The month is valid, but February allows only `28` days. The condition
 
 ```
-day > days_in_month[month - 1]
+day <= days_in_month[month - 1]
 ```
 
-becomes true, so the substring is rejected.
+fails, so the substring is discarded and never counted.
 
-Another tricky input is:
-
-```
-01-01-201301-01-2013
-```
-
-The second occurrence starts before the first occurrence is completely separated from the string. The sliding window still visits every starting position independently, so both occurrences are counted correctly.
-
-Finally, consider:
+Consider:
 
 ```
-12/12/2013
+31-04-2014
 ```
 
-The substring fails immediately because positions 2 and 5 are not hyphens. The algorithm never attempts integer conversion on malformed formats.
+April has `30` days. The algorithm computes `days_in_month[3] = 30`, detects that `31 > 30`, and rejects the date. This prevents counting syntactically correct but impossible calendar dates.
+
+Consider:
+
+```
+1-01-2013
+```
+
+This string is only nine characters long. Since the algorithm only examines length-10 windows, it never treats this as a candidate date. The required format demands exactly two digits for both day and month.
+
+Consider:
+
+```
+13-12-2013-12-2013
+```
+
+The substring `13-12-2013` appears at the beginning, and another occurrence begins later due to overlap. Because the algorithm checks every starting position independently, both occurrences are counted correctly. Overlapping matches require no special handling.
