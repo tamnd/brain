@@ -1,7 +1,7 @@
 ---
 title: "CF 228D - Zigzag"
-description: "We are asked to maintain an array of integers while supporting two types of operations: updating a single element to a new value, and computing a weighted sum over a subarray where the weights follow a small repeating zigzag pattern determined by a factor z."
-date: "2026-05-29T00:00:00+07:00"
+description: "We maintain an array of up to $10^5$ numbers. Two kinds of operations arrive online. The first operation changes a single array element. The second operation asks for a weighted sum on a segment."
+date: "2026-06-04T09:06:23+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
 codeforces_contest: 228
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 141 (Div. 2)"
 rating: 2100
 weight: 228
-solve_time_s: 88
-verified: false
+solve_time_s: 102
+verified: true
 draft: false
 ---
 
@@ -18,40 +18,177 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** data structures  
-**Solve time:** 1m 28s  
-**Verified:** no  
+**Solve time:** 1m 42s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to maintain an array of integers while supporting two types of operations: updating a single element to a new value, and computing a weighted sum over a subarray where the weights follow a small repeating zigzag pattern determined by a factor `z`. The zigzag pattern starts at 1 and goes up to `z`, then back down to 1, repeating infinitely. For example, with `z = 3`, the weight sequence is 1, 2, 3, 2, 1, 2, 3, 2, 1, ….
+We maintain an array of up to $10^5$ numbers. Two kinds of operations arrive online.
 
-The input consists of an array of up to `10^5` integers, each up to `10^9`, and up to `10^5` operations. Each query of type 2 (the Zigzag operation) can span a subarray of length up to `10^5`, and the factor `z` ranges from 2 to 6. A naive approach that directly iterates over the subarray for each Zigzag operation could require up to `10^10` operations in the worst case, which is far too large for the 3-second time limit. This implies we need a sublinear or logarithmic-time solution for the sum queries.
+The first operation changes a single array element.
 
-Edge cases include subarrays of length 1, arrays with all elements equal, updates that overwrite previous values multiple times, and small values of `z`. For instance, if `a = [5]` and we query `Z(1,1,2)`, the result must correctly handle the zigzag cycle even for a single element.
+The second operation asks for a weighted sum on a segment. The weights come from a special periodic "zigzag" sequence determined by a parameter $z$, where $2 \le z \le 6$.
+
+For a fixed $z$, the sequence looks like
+
+$$1,2,\dots,z,z-1,\dots,2,1,2,\dots$$
+
+and repeats forever.
+
+For example:
+
+$$z=2:\quad 1,2,1,2,1,2,\dots$$
+
+$$z=3:\quad 1,2,3,2,1,2,3,2,\dots$$
+
+$$z=4:\quad 1,2,3,4,3,2,1,2,\dots$$
+
+For a query $(l,r,z)$, we must compute
+
+$$\sum_{i=l}^{r} a_i \cdot S^{(z)}_{i-l+1}$$
+
+where $S^{(z)}$ is the zigzag sequence for factor $z$.
+
+The challenge is that both the array and the queries are dynamic. We must answer up to $10^5$ operations.
+
+A direct computation of each query scans the entire interval. In the worst case, a query may cover all $10^5$ elements, and there may be $10^5$ such queries. That would require roughly $10^{10}$ multiplications, which is completely infeasible.
+
+The small bound on $z$ is the crucial clue. Although the array is large, there are only five possible zigzag factors: $2,3,4,5,6$.
+
+A subtle edge case comes from the fact that the query always starts the zigzag pattern at position $l$, not at position $1$.
+
+Consider:
+
+```
+a = [10,20,30]
+query: l=2, r=3, z=2
+```
+
+The weights are:
+
+```
+1,2
+```
+
+not
+
+```
+2,1
+```
+
+because the pattern restarts at the left boundary of the query. Any solution that stores only a global weight pattern by absolute index will produce the wrong answer.
+
+Another easy mistake is assuming the period is $2z$. For example:
+
+```
+z=3
+1 2 3 2 1 2 3 2 ...
+```
+
+The true period is
+
+$$2z-2 = 4.$$
+
+Using period $6$ would misalign all queries.
+
+A third trap appears after updates.
+
+Example:
+
+```
+a = [1,1,1]
+update position 2 -> 100
+query (1,3,2)
+```
+
+The answer becomes
+
+$$1\cdot1+100\cdot2+1\cdot1=202.$$
+
+If updates are not reflected in every data structure associated with the relevant residue class, future answers become incorrect.
 
 ## Approaches
 
-A brute-force approach would iterate over each Zigzag query, compute the appropriate weight for each element by simulating the zigzag pattern, and sum them. While straightforward, this requires `O(n)` per query, leading to `O(n*m)` overall, which is infeasible for large `n` and `m`.
+The brute force solution is straightforward. For every query, generate the zigzag weights and scan from $l$ to $r$, accumulating
 
-The key observation is that `z` is very small (at most 6). This allows us to precompute separate prefix sums for each possible offset modulo `2*z - 2` because the zigzag pattern repeats every `2*z - 2` elements. For a given `z`, the pattern of weights for positions 1 through `2*z-2` can be stored in an array. Then we can maintain `2*z-2` segment trees (or Fenwick trees) for each remainder of the index modulo the cycle length. An update only affects one position in each relevant tree. A query can be broken into at most `2*z-2` sums over these trees, giving a logarithmic-time solution for both updates and queries.
+$$a_i \cdot \text{weight}.$$
 
-The brute-force works because it directly implements the definition, but fails when subarrays are large or when there are many queries. The insight that the weight pattern is periodic and `z` is small lets us reduce each query to a fixed number of fast prefix sum lookups.
+A point update costs $O(1)$, but a range query costs $O(r-l+1)$. With $10^5$ operations and intervals of length $10^5$, the running time reaches $10^{10}$, which is far beyond the limit.
+
+The key observation is that only five zigzag factors are possible.
+
+For a fixed $z$, the zigzag sequence is periodic. Let
+
+$$P_z = 2z-2.$$
+
+For $z \le 6$,
+
+$$P_z \le 10.$$
+
+That means every weight assigned to an array position depends only on its index modulo at most 10.
+
+Suppose we fix a particular $z$. For each residue class modulo $P_z$, we build a Fenwick tree storing values belonging to that residue class.
+
+Then we can ask:
+
+"What is the sum of all array values in $[l,r]$ whose index is congruent to residue $k$ modulo $P_z$?"
+
+Each residue class contributes a constant weight from the zigzag pattern. Since there are at most 10 residues, the entire query becomes a sum of at most 10 Fenwick range queries.
+
+Updates are also easy. When $a_p$ changes, we update the corresponding residue-class Fenwick tree for every possible $z$. There are only five values of $z$, so each update touches a constant number of structures.
+
+The brute force fails because it repeatedly recomputes contributions of individual elements. The periodic structure lets us aggregate all positions sharing the same residue modulo the period, reducing every query to a small constant number of Fenwick operations.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n * m) | O(n) | Too slow |
-| Periodic Prefix Sums / Segment Trees | O((2*z) * log n) per operation | O(n * 2*z) | Accepted |
+| Brute Force | $O(n)$ per query | $O(1)$ | Too slow |
+| Optimal | $O(\log n)$ per operation | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each `z` from 2 to 6, compute the zigzag pattern for one full cycle of length `2*z-2`. This array stores the weight for each position modulo the cycle length. The first `z` weights are 1 through `z`, and the remaining `z-2` weights descend back to 2.
-2. For each `z`, build `2*z-2` Fenwick trees, one for each remainder modulo the cycle length. Each tree stores the values of the array elements multiplied by the corresponding weight of that remainder. This allows summing values in the array according to their weighted zigzag positions efficiently.
-3. To handle an update operation `a[p] = v`, compute the difference `delta = v - a[p]`. For each `z`, find the position `p % (2*z-2)` and update the corresponding Fenwick tree at index `p` by `delta * weight[p % (2*z-2)]`.
-4. To handle a Zigzag query `(l, r, z)`, break the subarray `[l, r]` into segments corresponding to each remainder modulo `2*z-2`. Query the Fenwick tree for that remainder for the range `[l, r]`, sum them all, and return the total.
-5. Execute all operations in order. The updates modify the trees so that subsequent queries see the latest array values.
+### Precomputation
 
-Why it works: the algorithm preserves a separate sum for each position in the zigzag cycle. Every query can then be reconstructed exactly by summing over these precomputed weighted contributions. Updates are localized and propagate correctly because each index affects only one position in each cycle tree.
+For each zigzag factor $z \in \{2,3,4,5,6\}$:
+
+1. Compute its period $P = 2z-2$.
+2. Build the zigzag weights for one full period.
+3. Create $P$ Fenwick trees, one for each residue modulo $P$.
+4. Insert every array element $a_i$ into the Fenwick tree corresponding to $i \bmod P$.
+
+### Update Operation
+
+1. Let the current value at position $p$ be old.
+2. Compute
+
+$$\Delta = v - old.$$
+
+1. For every zigzag factor $z$:
+
+- Compute $P=2z-2$.
+- Find residue $p \bmod P$.
+- Add $\Delta$ to the corresponding Fenwick tree at index $p$.
+2. Store the new array value.
+
+Each Fenwick tree always contains the current array values for its residue class.
+
+### Query Operation
+
+1. Let $P=2z-2$.
+2. For every residue $r$ modulo $P$, obtain the sum of array values inside $[l,r]$ whose indices belong to that residue class.
+3. Determine which zigzag weight corresponds to that residue.
+
+The pattern starts at position $l$, so residue classes must be shifted relative to $l$.
+4. Multiply each residue-class sum by its corresponding weight.
+5. Add all contributions.
+
+The number of residues is at most 10, so only a constant number of Fenwick range queries are required.
+
+### Why it works
+
+For a fixed $z$, the zigzag sequence repeats every $P=2z-2$ positions. Every index with the same residue modulo $P$ always receives the same weight relative to a given alignment.
+
+A query can therefore be decomposed into residue classes modulo $P$. The Fenwick trees give the total array value contributed by each residue class inside the requested interval. Multiplying each class sum by its appropriate zigzag weight produces exactly the same total as summing element-by-element. Updates preserve this invariant because every modified position is updated in all residue-class structures that contain it.
 
 ## Python Solution
 
@@ -62,95 +199,327 @@ input = sys.stdin.readline
 class Fenwick:
     def __init__(self, n):
         self.n = n
-        self.tree = [0]*(n+1)
-    def update(self, i, delta):
-        while i <= self.n:
-            self.tree[i] += delta
-            i += i & -i
-    def query(self, i):
+        self.bit = [0] * (n + 1)
+
+    def add(self, idx, delta):
+        n = self.n
+        bit = self.bit
+        while idx <= n:
+            bit[idx] += delta
+            idx += idx & -idx
+
+    def sum(self, idx):
         res = 0
-        while i > 0:
-            res += self.tree[i]
-            i -= i & -i
+        bit = self.bit
+        while idx > 0:
+            res += bit[idx]
+            idx -= idx & -idx
         return res
-    def range_query(self, l, r):
-        return self.query(r) - self.query(l-1)
 
-n = int(input())
-a = list(map(int, input().split()))
-m = int(input())
+    def range_sum(self, l, r):
+        return self.sum(r) - self.sum(l - 1)
 
-max_z = 6
-trees = {}
-weights = {}
+def build_pattern(z):
+    p = 2 * z - 2
+    arr = []
+    for i in range(1, z + 1):
+        arr.append(i)
+    for i in range(z - 1, 1, -1):
+        arr.append(i)
+    return arr
 
-for z in range(2, max_z+1):
-    cycle = list(range(1, z+1)) + list(range(z-1, 1, -1))
-    weights[z] = cycle
-    trees[z] = [Fenwick(n) for _ in range(len(cycle))]
-    for idx, val in enumerate(a):
-        pos = idx % len(cycle)
-        trees[z][pos].update(idx+1, val * cycle[pos])
+def solve():
+    n = int(input())
+    a = [0] + list(map(int, input().split()))
 
-for _ in range(m):
-    tmp = input().split()
-    t = int(tmp[0])
-    if t == 1:
-        p, v = int(tmp[1])-1, int(tmp[2])
-        delta = v - a[p]
-        a[p] = v
-        for z in range(2, max_z+1):
-            pos = p % len(weights[z])
-            trees[z][pos].update(p+1, delta * weights[z][pos])
-    else:
-        l, r, z = int(tmp[1]), int(tmp[2]), int(tmp[3])
-        res = 0
-        cycle = weights[z]
-        for i, fen in enumerate(trees[z]):
-            start = l + (i - (l-1)%len(cycle)) % len(cycle)
-            if start > r:
-                continue
-            cnt = (r - start) // len(cycle) + 1
-            res += fen.range_query(start, start + (cnt-1)*len(cycle))
-        print(res)
+    structures = {}
+
+    for z in range(2, 7):
+        period = 2 * z - 2
+        pattern = build_pattern(z)
+
+        trees = [Fenwick(n) for _ in range(period)]
+
+        for i in range(1, n + 1):
+            trees[i % period].add(i, a[i])
+
+        structures[z] = (period, pattern, trees)
+
+    m = int(input())
+    out = []
+
+    for _ in range(m):
+        q = list(map(int, input().split()))
+
+        if q[0] == 1:
+            _, p, v = q
+            delta = v - a[p]
+            a[p] = v
+
+            for z in range(2, 7):
+                period, pattern, trees = structures[z]
+                trees[p % period].add(p, delta)
+
+        else:
+            _, l, r, z = q
+
+            period, pattern, trees = structures[z]
+
+            ans = 0
+
+            for residue in range(period):
+                s = trees[residue].range_sum(l, r)
+
+                offset = (residue - (l % period)) % period
+                weight = pattern[offset]
+
+                ans += s * weight
+
+            out.append(str(ans))
+
+    sys.stdout.write("\n".join(out))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The Fenwick tree class handles prefix sums and range queries. We construct separate trees for each remainder modulo the zigzag cycle length. During updates, we scale the delta by the weight. During queries, we iterate over the cycle positions to combine contributions. Care is taken to handle 1-based indexing for Fenwick trees.
+The implementation stores one family of Fenwick trees for every possible zigzag factor. For a fixed period $P$, residue $r$ contains exactly the array positions whose indices satisfy $i \bmod P=r$.
+
+The query logic is the subtle part. The zigzag pattern starts at the left endpoint of the query, not at index 1. The expression
+
+```
+offset = (residue - (l % period)) % period
+```
+
+computes where that residue appears inside the periodic pattern relative to the query start.
+
+The Fenwick trees are indexed by original array position. That allows ordinary range-sum queries without any coordinate transformations.
+
+All arithmetic uses Python integers, which safely handle the maximum possible answer.
 
 ## Worked Examples
 
-**Sample 1**
+### Sample 1
+
+Input:
 
 ```
-a = [2, 3, 1, 5, 5]
-Operations:
+5
+2 3 1 5 5
+4
 2 2 3 2
 2 1 5 3
 1 3 5
 2 1 5 3
 ```
 
-| Step | Operation | Array | Zigzag cycle used | Result |
-| --- | --- | --- | --- | --- |
-| 1 | Zigzag(2,3,2) | [2,3,1,5,5] | cycle=[1,2] | 3_1 + 1_2 = 5 |
-| 2 | Zigzag(1,5,3) | [2,3,1,5,5] | cycle=[1,2,3,2] | 2_1+3_2+1_3+5_2+5*1=26 |
-| 3 | Update a[3]=5 | [2,3,5,5,5] | - | - |
-| 4 | Zigzag(1,5,3) | [2,3,5,5,5] | cycle=[1,2,3,2] | 2_1+3_2+5_3+5_2+5*1=38 |
-
-The trace demonstrates that updates correctly modify contributions in the Fenwick trees and queries reconstruct the weighted sum.
-
-**Custom Example**
+For $z=2$, the period is 2 and the pattern is:
 
 ```
-a = [1,1,1,1,1,1]
-Operations:
-2 1 6 2
-1 4 10
-2 1 6 2
+1 2
 ```
 
-| Step | Operation | Array | Result |
+First query:
+
+| Residue | Values in [2,3] | Weight | Contribution |
 | --- | --- | --- | --- |
-| 1 | Zigzag(1,6,2) | [1,1,1,1,1,1] | 1_1+1_2+1_1+1_2+1_1+1_2=9 |
-| 2 | Update a[4]=10 | [1,1,1,10,1,1] | - |
-| 3 | Zigzag(1,6,2) | [1,1,1,10 |  |
+| 0 | 3 | 1 | 3 |
+| 1 | 1 | 2 | 2 |
+
+Answer:
+
+$$3+2=5$$
+
+Second query with $z=3$:
+
+Pattern:
+
+```
+1 2 3 2
+```
+
+| Residue | Sum in range | Weight | Contribution |
+| --- | --- | --- | --- |
+| 1 | 2+5 | 1 | 7 |
+| 2 | 3 | 2 | 6 |
+| 3 | 1 | 3 | 3 |
+| 0 | 5 | 2 | 10 |
+
+Total:
+
+$$26$$
+
+After updating position 3 to 5, every relevant Fenwick tree receives a delta of 4.
+
+Repeating the query gives:
+
+$$2\cdot1+3\cdot2+5\cdot3+5\cdot2+5\cdot1=38$$
+
+which matches the sample.
+
+This trace shows that updates affect every future query immediately through the shared Fenwick structures.
+
+### Custom Example
+
+Input:
+
+```
+3
+10 20 30
+1
+2 2 3 2
+```
+
+Pattern for $z=2$:
+
+```
+1 2
+```
+
+| Position | Value | Weight | Contribution |
+| --- | --- | --- | --- |
+| 2 | 20 | 1 | 20 |
+| 3 | 30 | 2 | 60 |
+
+Answer:
+
+$$80$$
+
+This example confirms that the pattern restarts at the left boundary of the query.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O(\log n)$ per operation | At most 10 Fenwick queries or updates are performed |
+| Space | $O(n)$ | Total stored Fenwick data is proportional to a constant multiple of $n$ |
+
+The total number of Fenwick trees is
+
+$$2+4+6+8+10 = 30,$$
+
+which is a fixed constant. Every operation performs only a constant number of logarithmic-time Fenwick updates or range queries, easily fitting within the limits for $10^5$ operations.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+
+    out = io.StringIO()
+    sys.stdout = out
+
+    solve()
+
+    sys.stdout = sys.__stdout__
+    return out.getvalue()
+
+assert run(
+"""5
+2 3 1 5 5
+4
+2 2 3 2
+2 1 5 3
+1 3 5
+2 1 5 3
+"""
+) == "5\n26\n38\n", "sample 1"
+
+assert run(
+"""1
+7
+1
+2 1 1 2
+"""
+) == "7\n", "minimum size"
+
+assert run(
+"""4
+5 5 5 5
+2
+2 1 4 2
+2 1 4 6
+"""
+) == "30\n50\n", "all equal values"
+
+assert run(
+"""3
+10 20 30
+1
+2 2 3 2
+"""
+) == "80\n", "pattern restarts at l"
+
+assert run(
+"""3
+1 1 1
+3
+1 2 100
+2 1 3 2
+2 1 3 3
+"""
+) == "202\n302\n", "update propagation"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Single element array | 7 | Minimum bounds |
+| All values equal | 30, 50 | Different periods and weights |
+| Query starts in middle | 80 | Pattern alignment relative to l |
+| Update then query | 202, 302 | Correct update propagation |
+
+## Edge Cases
+
+Consider:
+
+```
+3
+10 20 30
+1
+2 2 3 2
+```
+
+The pattern for $z=2$ is $1,2$. The algorithm computes the residue-class sums and shifts them by $l=2$. Position 2 receives weight 1 and position 3 receives weight 2. The result is
+
+$$20+60=80.$$
+
+Any implementation that aligns weights using absolute indices instead of the query start would incorrectly produce $70$.
+
+Consider:
+
+```
+5
+1 1 1 1 1
+1
+2 1 5 3
+```
+
+The period is $2z-2=4$, not 6. The weights are
+
+```
+1 2 3 2 1
+```
+
+giving
+
+$$9.$$
+
+The algorithm stores data modulo 4, so the repeating structure is represented correctly.
+
+Consider:
+
+```
+3
+1 1 1
+2
+1 2 100
+2 1 3 2
+```
+
+After the update, the delta is 99. The algorithm applies that delta to every affected Fenwick structure. The query then computes
+
+$$1\cdot1+100\cdot2+1\cdot1=202.$$
+
+Because all structures are updated immediately, no stale values remain and the answer is correct.

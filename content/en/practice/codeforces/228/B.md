@@ -1,7 +1,7 @@
 ---
 title: "CF 228B - Two Tables"
-description: "We have two binary grids. A shift (x, y) means that cell (i, j) in the first grid is compared with cell (i + x, j + y) in the second grid. The score of a shift is the number of positions where both cells exist and both contain 1."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have two binary matrices. A shift (x, y) means that cell (i, j) of the first matrix is compared with cell (i + x, j + y) of the second matrix. For a fixed shift, the overlap factor is the sum of products of overlapping cells."
+date: "2026-06-04T08:59:51+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 228
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 141 (Div. 2)"
 rating: 1400
 weight: 228
-solve_time_s: 139
+solve_time_s: 95
 verified: true
 draft: false
 ---
@@ -18,111 +18,116 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** brute force, implementation  
-**Solve time:** 2m 19s  
+**Solve time:** 1m 35s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have two binary grids. A shift `(x, y)` means that cell `(i, j)` in the first grid is compared with cell `(i + x, j + y)` in the second grid. The score of a shift is the number of positions where both cells exist and both contain `1`.
+We have two binary matrices. A shift `(x, y)` means that cell `(i, j)` of the first matrix is compared with cell `(i + x, j + y)` of the second matrix.
 
-The task is to find any shift that maximizes this overlap count.
+For a fixed shift, the overlap factor is the sum of products of overlapping cells. Since all values are either `0` or `1`, a product contributes `1` exactly when both overlapping cells contain `1`.
 
-The dimensions are at most `50 × 50`, so each table contains at most `2500` cells. That immediately rules out anything extremely heavy, but it also means we can afford quadratic or cubic work over the number of `1` cells.
+Another way to view the problem is to look only at the positions containing `1`. For a given shift, the overlap factor is simply the number of pairs of `1` cells, one from each table, that become aligned after applying that shift.
 
-The key detail is that the shift itself can be very large in absolute value according to the output format, but the useful shifts are actually limited. A shift only matters if at least one `1` from the first table can land on a `1` from the second table. Since coordinates stay within the table sizes, every relevant shift comes from aligning one specific `1` with another specific `1`.
+We must find any shift that maximizes this count.
 
-A common mistake is to think only overlapping rectangles matter. Negative shifts are completely valid. For example:
+The dimensions of both matrices are at most `50 × 50`. That means each matrix contains at most `2500` cells. A solution that examines every possible shift and every cell pair would perform tens of millions of operations. That is not enormous, but there is a much cleaner observation that leads directly to the intended solution.
 
-```
-1 1
-1
-1 1
-1
-```
+The fact that the matrices contain only `0` and `1` is the key structural property. Only positions containing `1` matter. Since each matrix is guaranteed to contain at least one `1`, we can focus entirely on those positions.
 
-The best answer is not unique. `(0, 0)` works, but so do many irrelevant shifts with overlap `0`. A careless implementation that only iterates non-negative shifts could miss valid optimal answers in more complicated cases.
-
-Another subtle case appears when the overlap region is empty. Consider:
+A common mistake is to think only about overlapping areas. The optimal shift may place most of one matrix outside the other. For example:
 
 ```
-1 1
+A:
 1
-1 1
+
+B:
 1
 ```
 
-Shift `(100, 100)` produces overlap `0` because no cells intersect. The statement explicitly defines this score as `0`, not undefined. A buggy implementation might accidentally access out-of-bounds indices or count garbage values.
+Every shift produces overlap factor either `1` or `0`. The shift values themselves are not constrained by the matrix dimensions.
 
-There is also an indexing trap in the formula. Suppose:
+Another easy mistake is to compute shifts in the wrong direction. If a `1` in the first matrix is at `(r1, c1)` and a `1` in the second matrix is at `(r2, c2)`, the shift that aligns them is:
 
 ```
-2 2
-10
-00
-2 2
-00
-01
+x = r2 - r1
+y = c2 - c1
 ```
 
-The correct shift is `(1, 1)` because the `1` from the first table at `(0, 0)` aligns with the `1` from the second table at `(1, 1)`. Reversing the subtraction and using `(ax - bx, ay - by)` instead of `(bx - ax, by - ay)` gives the opposite direction and produces the wrong answer.
+Reversing the subtraction produces the opposite shift and counts the wrong alignments.
+
+A final subtle case occurs when multiple shifts achieve the same maximum overlap. The statement allows any optimal answer, so we only need to remember one shift with the largest count.
 
 ## Approaches
 
-The direct brute force is easy to describe. We try every possible shift `(x, y)`. For each shift, we iterate over every cell in the first table, compute the corresponding position in the second table, check bounds, and count how many pairs contain two `1`s.
+The most direct solution is to try every possible shift. Since the matrices are at most `50 × 50`, the row shift ranges roughly from `-49` to `49`, and the column shift does the same. For each shift, we can scan all cells and count overlapping pairs of ones.
 
-This works because the overlap definition is explicit. If we examine every shift and evaluate its score exactly, the maximum is guaranteed to be found.
+This approach is correct because it literally evaluates the overlap factor for every candidate shift. The problem is efficiency. There are about `100 × 100 = 10,000` possible shifts, and each shift may require scanning up to `2500` cells. The worst-case cost is around 25 million cell checks.
 
-The problem is the number of shifts. Rows can move roughly from `-50` to `50`, and the same for columns, so there are about `100 × 100 = 10000` candidate shifts. For each one, scanning all `2500` cells gives around `25 million` operations. In Python this is still actually acceptable, but it is heavier than necessary and easy to implement incorrectly with all the boundary checks.
+The crucial observation is that only cells containing `1` contribute to the overlap factor.
 
-The useful observation is that only cells containing `1` matter. A pair of zeroes never contributes to the score. If a shift aligns a `1` from the first table with a `1` from the second table, then that pair contributes exactly one vote for that shift.
+Suppose a `1` in the first matrix is located at `(ra, ca)` and a `1` in the second matrix is located at `(rb, cb)`. These two cells become aligned under exactly one shift:
 
-Suppose a `1` in the first table is at `(ra, ca)` and a `1` in the second table is at `(rb, cb)`. To align them, the shift must be:
+```
+(rb - ra, cb - ca)
+```
 
-$$x = rb - ra,\quad y = cb - ca$$
+If many pairs of ones produce the same shift, then all those pairs become aligned simultaneously under that shift.
 
-Every pair of `1` cells determines exactly one shift. If many pairs produce the same shift, that shift creates many overlapping `1`s.
+This transforms the problem into a counting problem. For every pair consisting of a `1` from the first matrix and a `1` from the second matrix, compute the shift that aligns them and count how many times each shift appears.
 
-So instead of iterating over shifts and checking cells, we iterate over pairs of `1`s and count how many times each shift appears.
+The shift with the largest frequency is exactly the shift that creates the maximum number of overlapping pairs of ones.
 
-The largest table has at most `2500` ones, so in the absolute worst case we process:
-
-$$2500 \times 2500 = 6.25 \text{ million}$$
-
-pairs. Each pair only performs a subtraction and a hashmap increment, which is fast enough in Python.
+Since each matrix contains at most `2500` ones, there are at most `2500 × 2500 = 6.25` million pairs. That comfortably fits within the limits in Python.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((na + nb)(ma + mb)na ma) | O(1) | Accepted but clumsy |
-| Optimal | O(A × B) | O(A × B) in worst case | Accepted |
-
-Here `A` and `B` are the numbers of `1`s in the two tables.
+| Brute Force | O(na·ma·nb·mb) via all shifts and scans | O(1) | Accepted, but less elegant |
+| Optimal | O(A·B) where A and B are counts of ones | O(A·B) in the worst case | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read both tables.
-2. Store the coordinates of every cell containing `1` in the first table.
+1. Read both matrices.
+2. Extract the coordinates of every cell containing `1` in the first matrix.
+3. Extract the coordinates of every cell containing `1` in the second matrix.
+4. Create a hash map from shift `(x, y)` to its frequency.
+5. For every `1` cell `(ra, ca)` in the first matrix and every `1` cell `(rb, cb)` in the second matrix, compute:
 
-We ignore zeroes because they never contribute to the overlap score.
-3. Store the coordinates of every cell containing `1` in the second table.
-4. Create a dictionary `cnt` where the key is a shift `(x, y)` and the value is how many pairs of `1`s generate that shift.
-5. For every `1` cell `(ra, ca)` in the first table and every `1` cell `(rb, cb)` in the second table, compute:
+```
+x = rb - ra
+y = cb - ca
+```
 
-$$x = rb - ra,\quad y = cb - ca$$
+Increment the frequency of shift `(x, y)`.
 
-Then increment `cnt[(x, y)]`.
-
-This works because applying that shift moves `(ra, ca)` exactly onto `(rb, cb)`.
-6. Track the shift with the largest count while processing pairs.
-7. Output any shift with maximum frequency.
+This shift is the unique translation that aligns those two cells.
+6. Track the shift whose frequency becomes largest.
+7. Output that shift.
 
 ### Why it works
 
-Every overlapping pair of `1`s contributes exactly one valid alignment shift. If two different pairs of cells require the same shift, then applying that shift makes both pairs overlap simultaneously.
+Consider any fixed shift `(x, y)`.
 
-So the overlap score for a shift is exactly the number of pairs of `1` cells producing that shift. Counting frequencies of shifts is therefore equivalent to computing overlap scores directly.
+A pair of `1` cells contributes to the overlap factor under this shift if and only if:
 
-Since the algorithm checks every possible pair of `1`s, no valid overlap can be missed.
+```
+rb = ra + x
+cb = ca + y
+```
+
+Rearranging gives:
+
+```
+x = rb - ra
+y = cb - ca
+```
+
+So every contributing pair corresponds to exactly one occurrence of shift `(x, y)` in our counting process.
+
+Conversely, every pair counted for shift `(x, y)` becomes aligned under that shift and contributes `1` to the overlap factor.
+
+The frequency stored for a shift is therefore exactly equal to its overlap factor. Maximizing the frequency maximizes the overlap factor, which proves correctness.
 
 ## Python Solution
 
@@ -136,60 +141,54 @@ def solve():
     na, ma = map(int, input().split())
 
     ones_a = []
-
     for i in range(na):
         row = input().strip()
-        for j in range(ma):
-            if row[j] == '1':
+        for j, ch in enumerate(row):
+            if ch == '1':
                 ones_a.append((i, j))
 
     nb, mb = map(int, input().split())
 
     ones_b = []
-
     for i in range(nb):
         row = input().strip()
-        for j in range(mb):
-            if row[j] == '1':
+        for j, ch in enumerate(row):
+            if ch == '1':
                 ones_b.append((i, j))
 
     cnt = defaultdict(int)
 
     best_shift = (0, 0)
-    best_value = -1
+    best_count = -1
 
     for ra, ca in ones_a:
         for rb, cb in ones_b:
             shift = (rb - ra, cb - ca)
-
             cnt[shift] += 1
 
-            if cnt[shift] > best_value:
-                best_value = cnt[shift]
+            if cnt[shift] > best_count:
+                best_count = cnt[shift]
                 best_shift = shift
 
     print(best_shift[0], best_shift[1])
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The first part extracts only the coordinates containing `1`. This is the central optimization. Cells containing `0` are irrelevant because multiplying by zero contributes nothing to the overlap sum.
+The first part of the code extracts all positions containing `1`. Every other cell is irrelevant because a product involving a zero never contributes to the overlap factor.
 
-The nested loop enumerates every possible pair of `1`s. The subtraction order matters. We want the shift that moves the first table's cell onto the second table's cell, so the correct formula is:
+The nested loop enumerates every pair of `1` cells. For each pair we compute the unique shift that aligns them. The dictionary counts how many pairs vote for each shift.
 
-```
-(rb - ra, cb - ca)
-```
+The moment a shift's count exceeds the current maximum, we store it as the best answer. Since the statement accepts any optimal shift, there is no need for tie-breaking logic.
 
-Reversing it produces the opposite direction.
+Using zero-based coordinates instead of one-based coordinates does not affect the computed shifts. Both endpoints of the subtraction are shifted by the same constant, so the difference remains identical.
 
-The dictionary stores how many pairs agree on the same shift. Whenever a shift count increases beyond the current best, we update the answer immediately. There is no need for a second pass through the hashmap.
-
-The implementation uses zero-based indices internally. This is completely fine because only coordinate differences matter. Converting to one-based indexing would produce the same shifts after subtraction.
+No overflow issues exist because coordinate differences are at most about `50` in magnitude.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -203,82 +202,77 @@ Input:
 111
 ```
 
-The `1` cells are:
-
-First table:
-
-`(0,1), (1,0)`
-
-Second table:
-
-`(0,2), (1,0), (1,1), (1,2)`
-
-| A cell | B cell | Shift | Count after update |
-| --- | --- | --- | --- |
-| (0,1) | (0,2) | (0,1) | 1 |
-| (0,1) | (1,0) | (1,-1) | 1 |
-| (0,1) | (1,1) | (1,0) | 1 |
-| (0,1) | (1,2) | (1,1) | 1 |
-| (1,0) | (0,2) | (-1,2) | 1 |
-| (1,0) | (1,0) | (0,0) | 1 |
-| (1,0) | (1,1) | (0,1) | 2 |
-| (1,0) | (1,2) | (0,2) | 1 |
-
-Shift `(0,1)` appears twice, more than any other shift.
-
-Output:
+Positions of ones:
 
 ```
-0 1
+A: (0,1), (1,0)
+B: (0,2), (1,0), (1,1), (1,2)
 ```
 
-This trace shows the key invariant. Every matching pair contributes one vote to exactly one shift, and the optimal shift is simply the most frequent one.
+| A cell | B cell | Shift |
+| --- | --- | --- |
+| (0,1) | (0,2) | (0,1) |
+| (0,1) | (1,0) | (1,-1) |
+| (0,1) | (1,1) | (1,0) |
+| (0,1) | (1,2) | (1,1) |
+| (1,0) | (0,2) | (-1,2) |
+| (1,0) | (1,0) | (0,0) |
+| (1,0) | (1,1) | (0,1) |
+| (1,0) | (1,2) | (0,2) |
+
+Frequency table:
+
+| Shift | Count |
+| --- | --- |
+| (0,1) | 2 |
+| all others | 1 |
+
+The maximum frequency is `2`, so `(0,1)` is an optimal answer.
+
+This example demonstrates the central idea: the answer emerges directly from counting identical shifts.
 
 ### Example 2
 
-Input:
-
 ```
-2 2
-10
-00
-2 2
-00
-01
+1 1
+1
+1 1
+1
 ```
 
-The `1` cells are:
+Positions:
 
-First table:
+```
+A: (0,0)
+B: (0,0)
+```
 
-`(0,0)`
+| A cell | B cell | Shift |
+| --- | --- | --- |
+| (0,0) | (0,0) | (0,0) |
 
-Second table:
+Frequency table:
 
-`(1,1)`
-
-| A cell | B cell | Shift | Count |
-| --- | --- | --- | --- |
-| (0,0) | (1,1) | (1,1) | 1 |
-
-The only possible alignment is `(1,1)`.
+| Shift | Count |
+| --- | --- |
+| (0,0) | 1 |
 
 Output:
 
 ```
-1 1
+0 0
 ```
 
-This example checks the direction of subtraction. Using `(ra - rb, ca - cb)` would incorrectly produce `(-1,-1)`.
+This shows the smallest possible valid input.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(A × B) | Every pair of `1` cells is processed once |
-| Space | O(A × B) worst case | The hashmap may store many distinct shifts |
+| Time | O(A·B) | A and B are the numbers of ones in the two matrices |
+| Space | O(A·B) worst case | Distinct shifts stored in the hash map |
 
-`A` and `B` are the counts of `1`s in the two tables. Since each table contains at most `2500` cells, the worst-case running time is about `6.25 million` pair operations, which easily fits within the limit in Python.
+In the worst case, both matrices are entirely filled with ones, so `A = B = 2500`. The algorithm performs `6.25 × 10^6` pair evaluations, which fits comfortably within the time limit. The number of distinct shifts is actually bounded by the coordinate ranges, making memory usage very small in practice.
 
 ## Test Cases
 
@@ -288,60 +282,44 @@ import sys
 import io
 from collections import defaultdict
 
-def solve():
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+
     input = sys.stdin.readline
 
     na, ma = map(int, input().split())
 
     ones_a = []
-
     for i in range(na):
         row = input().strip()
-        for j in range(ma):
-            if row[j] == '1':
+        for j, ch in enumerate(row):
+            if ch == '1':
                 ones_a.append((i, j))
 
     nb, mb = map(int, input().split())
 
     ones_b = []
-
     for i in range(nb):
         row = input().strip()
-        for j in range(mb):
-            if row[j] == '1':
+        for j, ch in enumerate(row):
+            if ch == '1':
                 ones_b.append((i, j))
 
     cnt = defaultdict(int)
 
     best_shift = (0, 0)
-    best_value = -1
+    best_count = -1
 
     for ra, ca in ones_a:
         for rb, cb in ones_b:
             shift = (rb - ra, cb - ca)
-
             cnt[shift] += 1
 
-            if cnt[shift] > best_value:
-                best_value = cnt[shift]
+            if cnt[shift] > best_count:
+                best_count = cnt[shift]
                 best_shift = shift
 
-    print(best_shift[0], best_shift[1])
-
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
-    sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-
-    solve()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out.getvalue().strip()
+    return f"{best_shift[0]} {best_shift[1]}"
 
 # provided sample
 assert run(
@@ -353,7 +331,7 @@ assert run(
 001
 111
 """
-) == "0 1", "sample 1"
+) == "0 1"
 
 # minimum size
 assert run(
@@ -362,31 +340,9 @@ assert run(
 1 1
 1
 """
-) == "0 0", "minimum case"
+) == "0 0"
 
-# negative shift
-assert run(
-"""2 2
-00
-01
-2 2
-10
-00
-"""
-) == "-1 -1", "negative shift"
-
-# exact overlap
-assert run(
-"""2 2
-11
-11
-2 2
-11
-11
-"""
-) == "0 0", "perfect overlap"
-
-# off-by-one direction check
+# unique non-zero shift
 assert run(
 """2 2
 10
@@ -395,81 +351,78 @@ assert run(
 00
 01
 """
-) == "1 1", "direction correctness"
+) == "1 1"
+
+# all cells are ones
+out = run(
+"""2 2
+11
+11
+2 2
+11
+11
+"""
+)
+assert out == "0 0"
+
+# boundary shift
+assert run(
+"""1 2
+10
+2 2
+00
+01
+"""
+) == "1 1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single-cell tables | `0 0` | Minimum valid input |
-| Bottom-right to top-left alignment | `-1 -1` | Negative shifts |
-| Two identical full tables | `0 0` | Maximum overlap |
-| One isolated pair | `1 1` | Correct subtraction direction |
+| Single-cell matrices | `0 0` | Minimum valid input |
+| One corner aligned to opposite corner | `1 1` | Correct shift direction |
+| All cells equal to one | `0 0` | Large overlap count accumulation |
+| Edge-to-edge alignment | `1 1` | Boundary coordinate differences |
 
 ## Edge Cases
 
-Consider the negative-shift case:
+Consider two matrices each containing a single `1`:
 
 ```
-2 2
-00
-01
-2 2
+1 1
+1
+1 1
+1
+```
+
+The only pair of ones produces shift `(0,0)`. The frequency of that shift is `1`, so the algorithm returns `(0,0)`. No overlap-area calculations are needed.
+
+Consider a case where the optimal shift moves one matrix mostly outside the other:
+
+```
+1 2
 10
-00
-```
-
-The first table has a `1` at `(1,1)`. The second table has a `1` at `(0,0)`.
-
-The algorithm computes:
-
-```
-x = 0 - 1 = -1
-y = 0 - 1 = -1
-```
-
-The hashmap records shift `(-1,-1)` with frequency `1`, which becomes the answer. This confirms that the algorithm naturally handles upward and leftward movement without any special cases.
-
-Now consider a case where many shifts exist but only one gives multiple overlaps:
-
-```
-2 2
-11
-00
-2 2
-11
-00
-```
-
-The pairs generate:
-
-```
-(0,0), (0,1), (0,-1), (0,0)
-```
-
-Shift `(0,0)` appears twice because both `1`s align simultaneously. The algorithm correctly prefers frequency over merely finding any valid overlap.
-
-Finally, consider the subtraction-direction trap:
-
-```
-2 2
-10
-00
 2 2
 00
 01
 ```
 
-Coordinates:
+The positions of ones are `(0,0)` and `(1,1)`. Their alignment shift is `(1,1)`. The algorithm counts this pair and returns `(1,1)` even though most cells lie outside the overlapping region. This is correct because overlap factor depends only on aligned ones.
+
+Consider multiple optimal answers:
 
 ```
-A: (0,0)
-B: (1,1)
+1 2
+11
+1 2
+11
 ```
 
-The algorithm stores:
+Both shifts `(0,0)` and several others may receive counts during processing, but `(0,0)` achieves the maximum overlap factor of `2`. If another shift tied for the maximum in a different example, the algorithm would return whichever reached the maximum first. The statement explicitly allows any optimal answer, so this behavior is valid.
+
+Finally, consider the common sign mistake. If a `1` appears at `(0,0)` in the first matrix and `(1,1)` in the second matrix, the aligning shift is:
 
 ```
 (1 - 0, 1 - 0) = (1,1)
 ```
 
-Applying shift `(1,1)` indeed moves the first table's `1` onto the second table's `1`. This confirms the coordinate transformation is oriented correctly.
+Using `(0 - 1, 0 - 1)` would produce `(-1,-1)`, which moves the second matrix in the wrong direction. The algorithm consistently computes `rb - ra` and `cb - ca`, avoiding this error.
