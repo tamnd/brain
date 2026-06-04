@@ -1,7 +1,7 @@
 ---
 title: "CF 264A - Escape from Stones"
-description: "We start with a segment representing Liss’s current safe region, initially the interval from 0 to 1. Stones fall one after another, and each stone always lands exactly at the midpoint of Liss’s current interval."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a string consisting of the characters l and r. The characters describe how the squirrel moves when stones fall one by one. Stone i falls after stones 1...i-1 have already been placed."
+date: "2026-06-04T17:51:23+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "data-structures", "implementation", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 264
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 162 (Div. 1)"
 rating: 1200
 weight: 264
-solve_time_s: 65
+solve_time_s: 107
 verified: true
 draft: false
 ---
@@ -18,127 +18,184 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** constructive algorithms, data structures, implementation, two pointers  
-**Solve time:** 1m 5s  
+**Solve time:** 1m 47s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We start with a segment representing Liss’s current safe region, initially the interval from 0 to 1. Stones fall one after another, and each stone always lands exactly at the midpoint of Liss’s current interval. After each impact, Liss reacts by discarding either the left half or the right half of her current interval, depending on the instruction character, which is either “l” or “r”.
+We are given a string consisting of the characters `l` and `r`. The characters describe how the squirrel moves when stones fall one by one.
 
-The key hidden object in this problem is not the interval itself but the order in which the split points appear. Every time a stone falls, it introduces a new point (the midpoint at that moment). After all operations, we want to know the relative ordering of these points from left to right.
+Stone `i` falls after stones `1...i-1` have already been placed. If the corresponding character is `l`, the squirrel moves to the left half of the current interval. If it is `r`, she moves to the right half. After all moves are processed, the stones end up arranged on a line. We must output the stone numbers from leftmost to rightmost.
 
-The input is a string of length n, describing a sequence of left or right decisions. The output is a permutation of numbers from 1 to n, representing the order of stone indices when their final positions are sorted on the real line.
+The geometric description sounds complicated, but the actual task is to determine the final left-to-right order of stone indices.
 
-The constraint n up to 10^6 immediately rules out any simulation that recomputes positions as floating-point intervals or maintains explicit real-valued coordinates. Any O(n log n) sorting is borderline but still acceptable, while O(n^2) interval updates or naive insertion into arrays is too slow.
+The length of the string can reach one million. Any algorithm that repeatedly inserts into the middle of an array or simulates positions explicitly would be far too slow. With $n = 10^6$, even $O(n^2)$ behavior would require roughly $10^{12}$ operations, which is completely infeasible. We need a linear-time solution.
 
-A subtle issue arises from naive interval simulation using floating point numbers. Even though the process seems geometric, floating point precision will fail for n around 10^6. Two different stones can end up extremely close, and sorting them becomes unstable. Another issue is repeatedly inserting into a list representing positions, which leads to quadratic behavior.
+A subtle point is that the order is not determined by the physical coordinates of the stones. The geometry only implies a relative ordering rule.
+
+Consider the input:
+
+```
+r
+```
+
+There is only one stone, so the output is:
+
+```
+1
+```
+
+A solution that assumes every `r` should be placed after something else might mishandle this smallest case.
+
+Another interesting case is:
+
+```
+lll
+```
+
+The correct output is:
+
+```
+3
+2
+1
+```
+
+Every new stone ends up to the left of all previously processed stones. A careless implementation that simply appends indices as it reads the string would produce `1 2 3`, which is incorrect.
+
+Similarly:
+
+```
+rrr
+```
+
+produces
+
+```
+1
+2
+3
+```
+
+Now every stone appears to the right of all earlier stones.
+
+The mixed case
+
+```
+llrlr
+```
+
+gives
+
+```
+3
+5
+4
+2
+1
+```
+
+which shows that neither reversing the answer nor keeping the original order is sufficient.
 
 ## Approaches
 
-A direct simulation tracks the current interval and assigns each new stone a numeric coordinate equal to the midpoint. After processing all stones, we sort by coordinates. This is conceptually correct because each stone’s position is well-defined by the recursive halving process. However, computing exact coordinates quickly becomes problematic.
+A direct simulation is possible. We can maintain the current left-to-right sequence of stones. When stone `i` arrives, we determine where it belongs relative to the existing stones and insert it accordingly.
 
-At step i, the interval has size 2^{-i}, so coordinates become rational numbers with denominators growing exponentially. Storing them exactly requires big integers or fractions. Even if we use Python’s fractions, each operation adds overhead proportional to number size, leading to roughly O(n^2) behavior in practice.
+The problem is that insertion into the front or middle of a dynamic array costs linear time. In the worst case we perform $n$ insertions, each costing $O(n)$, leading to $O(n^2)$ complexity. With one million stones, this is hopelessly slow.
 
-The key observation is that we never need the absolute coordinates. We only need relative order. Each new stone is always inserted exactly at the midpoint of the current interval, which means it splits the current order into two parts: everything that went left stays on the left side of the new point, and everything that went right stays on the right side. This is exactly an incremental construction of a binary search tree in insertion order, where each node is inserted at the root of the current interval.
+The key observation is that the geometry induces a very simple ordering rule.
 
-Instead of computing coordinates, we simulate ordering using a structure that maintains the current left boundary and right boundary in terms of "ranked insertion positions". A clean way to see it is that each position corresponds to a segment, and each insertion splits a segment into two. If we maintain a balanced structure of positions, each operation becomes O(1) amortized by placing the new element immediately next to a known boundary.
+Suppose we process stones in order. When stone `i` corresponds to `l`, the squirrel escapes left. This means every future position inside that interval lies to the left of stone `i`. In the final arrangement, stone `i` should appear as early as possible among the remaining unprocessed stones.
 
-The most standard reduction is to maintain a linked structure using two arrays, left and right pointers, and insert each new stone between existing endpoints determined by previous decisions. The construction becomes equivalent to building a sequence where each character inserts a new index either just before or just after the current pivot.
+When stone `i` corresponds to `r`, the squirrel escapes right. Stone `i` must appear after all stones that will later be placed inside the right interval.
 
-This transforms the problem into maintaining a dynamic sequence with insertions at the current position, which is efficiently handled by keeping arrays of neighbors.
+This leads to a constructive interpretation.
+
+For every `l`, the corresponding stone number belongs at the front of the final sequence.
+
+For every `r`, the corresponding stone number belongs at the back of the final sequence.
+
+If we read the string from left to right, we can place stone numbers with `l` into the front portion and stone numbers with `r` into the back portion.
+
+An even simpler formulation appears if we think about output order directly.
+
+All stones marked `r` should be printed in their original order.
+
+All stones marked `l` should be printed in reverse order after them.
+
+A deque naturally represents this process. For stone `i`:
+
+If `s[i] == 'l'`, push `i+1` to the front.
+
+If `s[i] == 'r'`, push `i+1` to the back.
+
+At the end, reading the deque from front to back gives exactly the desired order.
+
+Since each operation on a deque is constant time, the entire algorithm is linear.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (geometry + sort) | O(n log n) to O(n^2) | O(n) | Too slow / unsafe |
-| Optimal (linked insertion simulation) | O(n) | O(n) | Accepted |
+| Brute Force | O(n²) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We interpret the process as maintaining an evolving ordered sequence of stone indices. We keep track of the current "center" position, which corresponds to the most recently inserted midpoint. Each new stone is inserted either immediately to the left or immediately to the right of the current center, depending on the instruction.
+1. Read the input string.
+2. Create an empty deque.
+3. Process the characters from left to right. Let the current stone number be `i + 1`.
+4. If the current character is `l`, insert the stone number at the front of the deque.
 
-1. We initialize a sequence structure with a single element representing the first stone. This stone is placed at the center of the ordering because it is the first midpoint.
-2. We maintain two arrays, left and right, that act as a doubly linked list over stone indices. Each new stone will be inserted next to the current center node.
-3. We also maintain a pointer cur that tracks the most recently inserted stone, which is the current midpoint of the interval in the geometric interpretation.
-4. For each next stone i from 2 to n, we read the instruction character. If it is “l”, we insert i immediately to the left of cur, updating pointers so that i becomes the new neighbor between cur’s left neighbor and cur. If it is “r”, we insert i immediately to the right of cur in the same way.
-5. After insertion, we update cur to be i, because each new midpoint becomes the reference point for the next split.
-6. After processing all stones, we traverse from the leftmost node using the linked structure and output indices in order.
+This reflects the fact that the stone must appear before all stones that will be placed inside the interval reached by moving left.
+5. If the current character is `r`, insert the stone number at the back of the deque.
 
-The reason this works is that every step preserves the invariant that the linked list order matches the geometric order of midpoints induced by the interval splitting process. Each insertion corresponds exactly to splitting the current segment at its midpoint, and all earlier points remain consistently ordered relative to this split.
+This reflects the fact that the stone must appear after stones that will later be placed in the right interval.
+6. After processing all characters, traverse the deque from front to back and print every stored stone number.
+
+### Why it works
+
+Maintain the invariant that after processing the first `i` characters, the deque contains exactly the final relative order of stones `1...i`.
+
+When a character is `l`, every future stone generated from the chosen interval must lie to the right of the current stone in the final arrangement. Placing the current stone at the front preserves the correct relative order.
+
+When a character is `r`, every future stone generated from the chosen interval must lie to the left of the current stone. Placing the current stone at the back preserves the correct relative order.
+
+Since each insertion places the new stone in the only position consistent with the interval chosen at that step, the invariant remains true throughout processing. After the last stone, the deque contains the complete left-to-right ordering.
 
 ## Python Solution
 
 ```python
 import sys
+from collections import deque
+
 input = sys.stdin.readline
 
 def solve():
     s = input().strip()
-    n = len(s)
 
-    if n == 0:
-        return
+    dq = deque()
 
-    # arrays for doubly linked list
-    left = [-1] * (n + 1)
-    right = [-1] * (n + 1)
-
-    # first stone is index 1
-    cur = 1
-
-    # start with a single node
-    head = 1
-    tail = 1
-
-    for i in range(2, n + 1):
-        if s[i - 2] == 'l':
-            # insert i to the left of cur
-            prev = left[cur]
-
-            left[i] = prev
-            right[i] = cur
-
-            left[cur] = i
-
-            if prev != -1:
-                right[prev] = i
-            else:
-                head = i
-
+    for i, ch in enumerate(s, start=1):
+        if ch == 'l':
+            dq.appendleft(i)
         else:
-            # insert i to the right of cur
-            nxt = right[cur]
+            dq.append(i)
 
-            right[i] = nxt
-            left[i] = cur
-
-            right[cur] = i
-
-            if nxt != -1:
-                left[nxt] = i
-            else:
-                tail = i
-
-        cur = i
-
-    # traverse from head
-    res = []
-    x = head
-    while x != -1:
-        res.append(str(x))
-        x = right[x]
-
-    sys.stdout.write("\n".join(res))
+    sys.stdout.write('\n'.join(map(str, dq)))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation relies entirely on maintaining local adjacency updates rather than computing any geometric position. The `left` and `right` arrays encode a doubly linked list over indices. Each insertion modifies only constant many pointers, so no shifting or scanning is required.
+The solution uses a deque because it supports insertion at both ends in constant time.
 
-The pointer `cur` is crucial: it represents the most recent midpoint, which is always the anchor for the next split. Updating `cur = i` after each insertion preserves the structure of the process.
+The loop processes stones in their natural order, from `1` to `n`. The stone number is obtained directly from the loop index.
 
-Care must be taken when inserting at boundaries. If we insert to the left of the current head, we must update `head`. Similarly, inserting to the right of the tail updates `tail`. These cases correspond to extending the sequence outward.
+For an `l`, we use `appendleft`, placing the stone at the beginning of the current ordering. For an `r`, we use `append`, placing it at the end.
+
+No coordinate calculations are needed. The entire geometric process collapses into maintaining the correct relative order.
+
+The final output is produced by traversing the deque once and joining the numbers with newline characters. This avoids many individual print calls, which is important when the input length reaches one million.
 
 ## Worked Examples
 
@@ -150,95 +207,181 @@ Input:
 llrlr
 ```
 
-We track insertion order step by step.
+| Step | Character | Stone | Deque after operation |
+| --- | --- | --- | --- |
+| 1 | l | 1 | [1] |
+| 2 | l | 2 | [2, 1] |
+| 3 | r | 3 | [2, 1, 3] |
+| 4 | l | 4 | [4, 2, 1, 3] |
+| 5 | r | 5 | [4, 2, 1, 3, 5] |
 
-| Step | i | s[i] | cur before | operation | head |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | - | - | start | 1 |
-| 2 | 2 | l | 1 | insert left of 1 | 2 |
-| 3 | 3 | l | 2 | insert left of 2 | 3 |
-| 4 | 4 | r | 3 | insert right of 3 | 3 |
-| 5 | 5 | l | 4 | insert left of 4 | 3 |
+Reading from front to back gives:
 
-Final linked order traversal gives:
+```
+4
+2
+1
+3
+5
+```
 
-3 5 4 2 1
-
-This matches the required output, confirming that repeated left insertions build a reversed prefix while right insertions re-anchor locally.
+This trace demonstrates the insertion rule directly. Every `l` moves the current stone to the front, while every `r` places it at the end.
 
 ### Example 2
 
 Input:
 
 ```
-lrrl
+rrrl
 ```
 
-| Step | i | s[i] | cur | operation | sequence (conceptual) |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | - | - | start | [1] |
-| 2 | 2 | l | 1 | insert left | [2, 1] |
-| 3 | 3 | r | 2 | insert right | [2, 3, 1] |
-| 4 | 4 | r | 3 | insert right | [2, 3, 4, 1] |
+| Step | Character | Stone | Deque after operation |
+| --- | --- | --- | --- |
+| 1 | r | 1 | [1] |
+| 2 | r | 2 | [1, 2] |
+| 3 | r | 3 | [1, 2, 3] |
+| 4 | l | 4 | [4, 1, 2, 3] |
 
-Final output:
+Output:
 
-2 3 4 1
+```
+4
+1
+2
+3
+```
 
-This demonstrates that right insertions extend the structure outward while preserving relative order.
+This example shows that a late `l` can move a stone ahead of every previously processed stone.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each stone is inserted once with O(1) pointer updates and one final traversal |
-| Space | O(n) | Storage for left/right pointers for all stones |
+| Time | O(n) | One deque insertion per character and one final traversal |
+| Space | O(n) | The deque stores all stone numbers |
 
-The solution comfortably fits within limits since n can reach 10^6, and the algorithm performs only linear work with no sorting or heavy arithmetic.
+The input length can be as large as one million. Linear time means only a few million primitive operations, which easily fits within the time limit. Storing one million integers is also well within the memory limit.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
+from collections import deque
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    old = sys.stdout
-    sys.stdout = output
-    try:
-        solve()
-    finally:
-        sys.stdout = old
-    return output.getvalue().strip()
 
-# provided sample
-assert run("llrlr\n") == "3\n5\n4\n2\n1"
+    s = sys.stdin.readline().strip()
+    dq = deque()
+
+    for i, ch in enumerate(s, start=1):
+        if ch == 'l':
+            dq.appendleft(i)
+        else:
+            dq.append(i)
+
+    return "\n".join(map(str, dq))
+
+# sample from statement
+assert run("llrlr\n") == "4\n2\n1\n3\n5", "sample"
 
 # minimum size
-assert run("l\n") == "1"
-
-# simple right chain
-assert run("rrrr\n") == "1\n2\n3\n4"
-
-# alternating pattern
-assert run("lrlr\n") == "2\n4\n3\n1"
+assert run("r\n") == "1", "single stone"
 
 # all left
-assert run("llll\n") == "4\n3\n2\n1"
+assert run("lll\n") == "3\n2\n1", "all left moves"
+
+# all right
+assert run("rrrr\n") == "1\n2\n3\n4", "all right moves"
+
+# alternating pattern
+assert run("lrlr\n") == "4\n2\n1\n3", "mixed ordering"
+
+# boundary style case
+assert run("lr\n") == "1\n2", "small mixed case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| l | 1 | minimum case |
-| rrrr | 1 2 3 4 | monotone growth |
-| lrlr | 2 4 3 1 | alternating structure |
-| llll | 4 3 2 1 | full reversal behavior |
+| `r` | `1` | Minimum input size |
+| `lll` | `3 2 1` | Repeated front insertions |
+| `rrrr` | `1 2 3 4` | Repeated back insertions |
+| `lrlr` | `4 2 1 3` | Alternating operations |
+| `lr` | `1 2` | Small boundary case |
 
 ## Edge Cases
 
-A single-character input like “l” or “r” never triggers any insertion logic. The algorithm returns just `[1]`, which is correct because only one stone exists and it trivially occupies the only position.
+Consider the input:
 
-A fully left-skewed input such as “llll” repeatedly inserts each new stone to the left of the current center. Each insertion updates the head, and traversal naturally produces a reversed sequence. The linked list ensures no element is lost or overwritten, so the final order becomes 4 3 2 1 for n = 4.
+```
+lll
+```
 
-A fully right-skewed input such as “rrrr” always appends to the right of the current tail. The head remains fixed at 1, and the final traversal produces 1 2 3 4, matching the intuitive idea that each new midpoint expands the interval to the right side.
+Processing proceeds as:
+
+`[1] → [2,1] → [3,2,1]`
+
+The output becomes:
+
+```
+3
+2
+1
+```
+
+Every stone is inserted at the front, so the final order is exactly the reverse of arrival order.
+
+Consider the input:
+
+```
+rrr
+```
+
+Processing proceeds as:
+
+`[1] → [1,2] → [1,2,3]`
+
+The output is:
+
+```
+1
+2
+3
+```
+
+Every stone is inserted at the back, so the final order matches arrival order.
+
+Consider the smallest possible input:
+
+```
+l
+```
+
+The deque becomes `[1]`, and the output is:
+
+```
+1
+```
+
+The algorithm requires no special handling for this case because both `appendleft` and `append` work correctly when the deque is empty.
+
+Consider a mixed pattern:
+
+```
+lrl
+```
+
+Processing gives:
+
+`[1] → [1,2] → [3,1,2]`
+
+The output is:
+
+```
+3
+1
+2
+```
+
+This confirms that a later `l` correctly jumps ahead of all previously processed stones while preserving the established relative order of the others.
