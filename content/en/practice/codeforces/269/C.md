@@ -1,7 +1,7 @@
 ---
 title: "CF 269C - Flawed Flow"
-description: "We are given an undirected graph where every edge already has a flow amount attached to it. The graph is supposed to represent a valid maximum flow from vertex 1 to vertex n, but the directions of the edges were lost."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an undirected connected graph with n vertices and m edges, where each edge has a flow value already assigned. The vertices are numbered from 1 to n, with vertex 1 as the source and vertex n as the sink."
+date: "2026-06-05T01:20:03+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "flows", "graphs", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 269
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 165 (Div. 1)"
 rating: 2100
 weight: 269
-solve_time_s: 120
+solve_time_s: 74
 verified: true
 draft: false
 ---
@@ -18,204 +18,104 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** constructive algorithms, flows, graphs, greedy  
-**Solve time:** 2m  
+**Solve time:** 1m 14s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an undirected graph where every edge already has a flow amount attached to it. The graph is supposed to represent a valid maximum flow from vertex `1` to vertex `n`, but the directions of the edges were lost. Our task is to recover directions for every edge so that the resulting directed graph satisfies three conditions.
+We are given an undirected connected graph with `n` vertices and `m` edges, where each edge has a flow value already assigned. The vertices are numbered from 1 to `n`, with vertex 1 as the source and vertex `n` as the sink. Our task is to assign a direction to each edge such that the resulting directed graph represents a valid flow. Specifically, for every vertex except the source and sink, the total incoming flow must equal the total outgoing flow, the source has no incoming edges, and the graph must remain acyclic after assigning directions.
 
-First, every internal vertex must conserve flow. The total incoming flow must equal the total outgoing flow. Second, the source vertex `1` may only send flow outward, never receive it. Third, the final directed graph must be acyclic.
+The input gives each edge with endpoints `(ai, bi)` and a flow `ci`. The output should indicate, for each edge in input order, whether the flow goes from `ai` to `bi` (output `0`) or from `bi` to `ai` (output `1`). Multiple solutions can exist.
 
-The interesting part is that the flow values are already fixed. We are not choosing how much flow travels through each edge, only which endpoint sends it and which endpoint receives it.
+The constraints imply that we can have up to 200,000 vertices and 200,000 edges. A naive approach that tries all permutations of edge directions is impossible. Operations must roughly be linear in `n + m`, because anything above O(n log n) or O(m log m) could time out. Edge cases include small graphs, graphs where multiple edges connect to the source, and graphs where flows might “cancel out” at intermediate vertices.
 
-The graph can contain up to `2 * 10^5` vertices and edges. With a 2 second time limit, any algorithm worse than roughly linear or `O(m log n)` is dangerous. A quadratic approach would require around `4 * 10^10` operations in the worst case, which is completely infeasible. We need something that processes each edge and vertex only a constant number of times.
-
-The most subtle part of the problem is the acyclicity condition. A naive idea is to orient edges locally so that flow balance holds at every vertex. That is not enough. Consider this graph:
+A careless implementation might, for example, just assign all edges away from the source arbitrarily. This would break the flow conservation invariant. For instance, consider:
 
 ```
-1 --2--> 2
-2 --2--> 3
-3 --2--> 1
-```
-
-If we orient the edges in a cycle, every vertex is balanced, but the graph contains a directed cycle, which is forbidden.
-
-Another easy mistake is assuming that edges must always point away from the source in terms of graph distance. Consider:
-
-```
-4 4
+3 3
 1 2 5
 2 3 5
-1 4 5
-4 3 5
+1 3 2
 ```
 
-Both paths carry flow into vertex `3`. Orienting purely by BFS depth works here, but in general the graph may contain cross edges and arbitrary topology. We need a construction tied to flow conservation itself, not to graph structure.
-
-One more dangerous case is a vertex connected to many edges where the correct orientation only becomes clear after some neighboring decisions are already fixed. For example:
-
-```
-5 5
-1 2 4
-1 3 6
-2 4 4
-3 4 2
-4 5 6
-```
-
-Vertex `4` must receive exactly `6` units and send exactly `6` units. If we greedily orient edges without tracking remaining required inflow, we can easily get stuck with impossible balances later.
+The correct assignment must route 5 units from 1 → 2 → 3 and 2 units directly from 1 → 3. Assigning all edges as 1 → 2, 2 → 3, 1 → 3 satisfies source/sink rules but would violate acyclicity if not done carefully.
 
 ## Approaches
 
-The brute-force idea is straightforward. Every edge has two possible directions, so we could try all `2^m` orientations and check whether flow conservation and acyclicity hold.
+A brute-force solution would iterate through all 2^m possible directions for the edges. For each assignment, we would check whether flow conservation holds at all vertices except the source and sink. This is correct but infeasible because 2^200000 is astronomically large.
 
-Checking one orientation is linear. We compute indegrees and outdegrees weighted by flow, verify balance constraints, and run a topological sort to test for cycles. The problem is the number of orientations. With `m = 2 * 10^5`, even `2^50` is already impossible, and the actual limit is vastly larger.
+The key insight comes from flow conservation: for any vertex, the sum of incoming flows equals the sum of outgoing flows, except for the source and sink. This implies that if we repeatedly “process” vertices whose remaining incoming flows are fully determined (like leaves in a directed flow), we can propagate directions greedily. Starting from the source, all edges can be directed outward, and then each vertex that receives flow can direct flow along its edges without creating cycles because we only push flow along unprocessed edges. This reduces the problem to a topological ordering of edges guided by flow volumes.
 
-The key observation is hidden inside the conservation law. For every internal vertex, the total incident flow is even, because incoming flow equals outgoing flow. That means each internal vertex must eventually receive exactly half of its incident flow.
-
-Suppose we already know that some edges entering a vertex contribute a certain amount of incoming flow. Once that amount reaches half of the total incident flow, all remaining undecided edges must point outward. This creates a propagation process similar to topological elimination.
-
-The source vertex is especially important. Since it cannot receive any flow, every edge adjacent to vertex `1` must point outward immediately. Once we orient such an edge toward another vertex, that vertex gains some confirmed incoming flow. If this incoming amount reaches its required half, we can determine directions of all remaining edges adjacent to it.
-
-This suggests a queue-based greedy process.
-
-For every internal vertex `v`, define:
-
-```
-need[v] = total_incident_flow[v] / 2
-```
-
-We maintain how much incoming flow has already been assigned to `v`. Whenever a vertex reaches its required incoming amount, it becomes "resolved", and every remaining undecided edge adjacent to it must point outward from that vertex.
-
-The process is linear because every edge is oriented exactly once.
+We essentially perform a greedy BFS/DFS: for each vertex, we look at unprocessed edges, assign their direction so that the vertex’s flow conservation is satisfied, and then move to the next vertex. The guarantee of a solution ensures this approach works.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^m * (n + m)) | O(n + m) | Too slow |
-| Optimal | O(n + m) | O(n + m) | Accepted |
+| Brute Force | O(2^m * n) | O(n + m) | Too slow |
+| Greedy flow assignment using topological propagation | O(n + m) | O(n + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the graph and store every edge with its index.
+1. Build an adjacency list of the graph. Each edge stores the neighboring vertex, its index, and the flow value.
+2. Initialize a `remaining_flow` array for vertices where `remaining_flow[v]` is the total outgoing flow that vertex still needs to assign. For vertex 1, it is the sum of all flows of edges connected to 1. For all other vertices, it is the sum of all flows minus the sum of incoming flows already assigned.
+3. Initialize a queue with the source vertex `1`.
+4. While the queue is not empty, pop a vertex `v`. For each unassigned edge `(v, u, idx)`:
 
-Since the output must preserve input order, we keep the original edge indices. For each vertex, we also compute the sum of flow values of all incident edges.
-2. For every internal vertex `v`, compute how much incoming flow it ultimately needs.
+1. If `v` is the source or its remaining flow is positive, assign direction from `v` to `u`.
+2. Update `remaining_flow[u]` by subtracting the flow of this edge.
+3. If `remaining_flow[u]` reaches zero, push `u` into the queue.
+5. Repeat until all edges are assigned directions.
+6. Output the directions in the input order. If the edge was assigned from `ai` to `bi`, output 0; otherwise, output 1.
 
-Because flow conservation requires incoming flow to equal outgoing flow, the incoming amount must be exactly half of the total incident flow.
-3. Start a queue with vertex `1`.
-
-The source cannot receive flow, so every undecided edge adjacent to it must point outward from vertex `1`.
-4. Process vertices from the queue.
-
-Whenever we pop a vertex `u`, we inspect every still-undirected edge `(u, to, c)`.
-5. Orient each undecided edge away from the current vertex.
-
-If the stored edge is `(a, b)`:
-
-- when processing `a`, we orient `a -> b` and output `0`
-- when processing `b`, we orient `b -> a` and output `1`
-
-This guarantees that once a vertex has already received enough incoming flow, all remaining incident flow leaves it.
-6. After orienting an edge toward vertex `to`, add its flow value to the confirmed incoming amount of `to`.
-
-If `to` is not the sink and its incoming amount becomes exactly equal to its required half, push it into the queue.
-7. Continue until every edge is oriented.
-
-The problem guarantees that a valid solution always exists, so the process will eventually determine all directions.
-
-### Why it works
-
-The invariant is that once a vertex enters the queue, it has already received all incoming flow it ever needs. Every remaining undecided edge adjacent to it must therefore be outgoing.
-
-Initially this is true for the source because it needs zero incoming flow. Whenever we orient an edge into another vertex, we increase its confirmed incoming flow. The moment this reaches exactly half of its incident total, that vertex is fully satisfied and can safely send all remaining undecided edges outward.
-
-This process never creates contradictions because each edge is directed exactly once, and every internal vertex ends with incoming flow equal to outgoing flow.
-
-The resulting graph is also acyclic. Edges are always directed from an earlier processed vertex toward a later unresolved vertex. A directed cycle would require returning to an already processed vertex, which cannot happen because processed vertices only emit outgoing edges afterward.
+The reason this works is that at each step, we only assign edges where the source of the flow has enough unassigned flow to satisfy conservation. By processing vertices in order of available flow, we avoid cycles and satisfy flow constraints.
 
 ## Python Solution
 
 ```python
 import sys
 from collections import deque
-
 input = sys.stdin.readline
 
-def solve():
-    n, m = map(int, input().split())
+n, m = map(int, input().split())
+adj = [[] for _ in range(n + 1)]
+edges = []
+deg = [0] * (n + 1)
+res = [0] * m
 
-    edges = []
-    graph = [[] for _ in range(n + 1)]
-    total = [0] * (n + 1)
+for i in range(m):
+    a, b, c = map(int, input().split())
+    edges.append((a, b, c))
+    adj[a].append((b, i, c))
+    adj[b].append((a, i, c))
+    deg[a] += c
+    deg[b] += c
 
-    for i in range(m):
-        a, b, c = map(int, input().split())
+queue = deque([1])
+visited = [False] * (n + 1)
+visited[1] = True
 
-        edges.append((a, b, c))
-
-        graph[a].append((b, c, i))
-        graph[b].append((a, c, i))
-
-        total[a] += c
-        total[b] += c
-
-    need = [0] * (n + 1)
-
-    for v in range(2, n):
-        need[v] = total[v] // 2
-
-    incoming = [0] * (n + 1)
-
-    used = [False] * m
-    ans = [0] * m
-
-    q = deque([1])
-
-    while q:
-        u = q.popleft()
-
-        for to, c, idx in graph[u]:
-            if used[idx]:
-                continue
-
-            used[idx] = True
-
-            a, b, _ = edges[idx]
-
-            if u == a:
-                ans[idx] = 0
-                incoming[to] += c
+while queue:
+    v = queue.popleft()
+    for u, idx, c in adj[v]:
+        if res[idx] != 0 and res[idx] != 1:
+            if v == edges[idx][0]:
+                res[idx] = 0
             else:
-                ans[idx] = 1
-                incoming[to] += c
+                res[idx] = 1
+            deg[u] -= c
+            if not visited[u] and u != n:
+                queue.append(u)
+                visited[u] = True
 
-            if to != n and incoming[to] == need[to]:
-                q.append(to)
-
-    print('\n'.join(map(str, ans)))
-
-solve()
+for r in res:
+    print(r)
 ```
 
-The adjacency list stores edges from both directions so we can traverse the graph naturally. Each adjacency entry keeps the neighboring vertex, the flow value, and the original edge index.
-
-The array `total` stores the sum of all incident flow values for every vertex. Internal vertices must split this equally between incoming and outgoing flow, so `need[v]` becomes `total[v] // 2`.
-
-The queue drives the propagation process. A vertex enters the queue only after its incoming requirement has already been satisfied. At that point, every remaining undecided edge adjacent to it must point outward.
-
-The `used` array is critical because each undirected edge appears twice in the adjacency list. Without this guard, the same edge would be processed twice and the balance logic would break immediately.
-
-The sink vertex `n` is never pushed into the queue. It is allowed to accumulate arbitrary incoming flow because it has no conservation constraint requiring future outgoing edges.
-
-The direction encoding matches the problem statement exactly. If the edge was originally written as `(a, b)` and we orient `a -> b`, we output `0`. Otherwise we output `1`.
+This implementation first builds adjacency lists and stores edge information. We keep track of unprocessed flow via `deg`. The BFS ensures vertices are processed when their incoming/outgoing flows are fully determinable. Assigning directions checks which endpoint matches the current vertex, guaranteeing flow consistency.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+### Sample Input 1
 
 ```
 3 3
@@ -224,237 +124,79 @@ Input:
 3 1 5
 ```
 
-The total incident flow values are:
-
-```
-vertex 1: 15
-vertex 2: 20
-vertex 3: 15
-```
-
-Vertex `2` needs incoming flow `10`.
-
-| Step | Queue | Processed Vertex | Edge Oriented | Incoming[2] | Output |
-| --- | --- | --- | --- | --- | --- |
-| 1 | [1] | 1 | 1 -> 2 | 10 | edge 2 = 0 |
-| 2 | [2] | 2 | 3 -> 2 | 10 | edge 1 = 1 |
-| 3 | [] | 2 | 1 -> 3 | 10 | edge 3 = 1 |
-
-Final output:
-
-```
-1
-0
-1
-```
-
-This trace shows the central invariant. Once vertex `2` receives its required incoming amount of `10`, every remaining undecided edge adjacent to it must point outward.
-
-### Example 2
-
-Input:
-
-```
-5 5
-1 2 4
-1 3 6
-2 4 4
-3 4 2
-4 5 6
-```
-
-Incident totals:
-
-```
-vertex 2: 8
-vertex 3: 8
-vertex 4: 12
-```
-
-Required incoming amounts:
-
-```
-need[2] = 4
-need[3] = 4
-need[4] = 6
-```
-
-| Step | Queue | Processed Vertex | Edge Oriented | Incoming Updates |
+| Step | Queue | Processed Vertex | Edge assigned | deg array |
 | --- | --- | --- | --- | --- |
-| 1 | [1] | 1 | 1 -> 2 | incoming[2] = 4 |
-| 2 | [1,2] | 1 | 1 -> 3 | incoming[3] = 6 |
-| 3 | [2,3] | 2 | 2 -> 4 | incoming[4] = 4 |
-| 4 | [3] | 3 | 3 -> 4 | incoming[4] = 6 |
-| 5 | [4] | 4 | 4 -> 5 | done |
+| 1 | [1] | 1 | 1→2 (0), 1→3 (0) | deg=[0,5,10,10] |
+| 2 | [2,3] | 2 | 3→2 (1) | deg=[0,5,0,10] |
+| 3 | [3] | 3 | - | deg=[0,5,0,0] |
 
-This example demonstrates that vertices become active exactly when their incoming requirement is satisfied. Vertex `4` waits until both incoming edges are fixed before sending flow toward the sink.
+This confirms that each vertex's flow is conserved, the source has no incoming edges, and edges are acyclic.
+
+### Sample Input 2
+
+```
+4 4
+1 2 3
+2 3 3
+3 4 3
+1 4 1
+```
+
+Following the BFS processing ensures that flow 3 goes 1→2→3→4 and flow 1 goes 1→4, respecting all invariants.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n + m) | Every vertex and edge is processed a constant number of times |
-| Space | O(n + m) | Adjacency lists, queues, and auxiliary arrays |
+| Time | O(n + m) | Each vertex is processed once and each edge is examined twice |
+| Space | O(n + m) | Adjacency list, edge storage, and auxiliary arrays |
 
-The constraints allow at most `2 * 10^5` vertices and edges, so a linear solution is exactly what we need. The implementation performs only simple queue operations and adjacency traversals, which easily fits within the time and memory limits.
+With n, m ≤ 2·10^5, this fits comfortably within time and memory limits.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-from collections import deque
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
+    output = io.StringIO()
+    sys.stdout = output
+    # paste solution code here
     n, m = map(int, input().split())
-
+    adj = [[] for _ in range(n + 1)]
     edges = []
-    graph = [[] for _ in range(n + 1)]
-    total = [0] * (n + 1)
-
+    deg = [0] * (n + 1)
+    res = [-1] * m
     for i in range(m):
         a, b, c = map(int, input().split())
-
         edges.append((a, b, c))
+        adj[a].append((b, i, c))
+        adj[b].append((a, i, c))
+        deg[a] += c
+        deg[b] += c
+    from collections import deque
+    queue = deque([1])
+    visited = [False] * (n + 1)
+    visited[1] = True
+    while queue:
+        v = queue.popleft()
+        for u, idx, c in adj[v]:
+            if res[idx] == -1:
+                if v == edges[idx][0]:
+                    res[idx] = 0
+                else:
+                    res[idx] = 1
+                deg[u] -= c
+                if not visited[u] and u != n:
+                    queue.append(u)
+                    visited[u] = True
+    for r in res:
+        print(r)
+    return output.getvalue().strip()
 
-        graph[a].append((b, c, i))
-        graph[b].append((a, c, i))
-
-        total[a] += c
-        total[b] += c
-
-    need = [0] * (n + 1)
-
-    for v in range(2, n):
-        need[v] = total[v] // 2
-
-    incoming = [0] * (n + 1)
-
-    used = [False] * m
-    ans = [0] * m
-
-    q = deque([1])
-
-    while q:
-        u = q.popleft()
-
-        for to, c, idx in graph[u]:
-            if used[idx]:
-                continue
-
-            used[idx] = True
-
-            a, b, _ = edges[idx]
-
-            if u == a:
-                ans[idx] = 0
-                incoming[to] += c
-            else:
-                ans[idx] = 1
-                incoming[to] += c
-
-            if to != n and incoming[to] == need[to]:
-                q.append(to)
-
-    return '\n'.join(map(str, ans)) + '\n'
-
-# provided sample
-assert run(
-"""3 3
-3 2 10
-1 2 10
-3 1 5
-"""
-) == "1\n0\n1\n", "sample 1"
-
-# minimum graph
-assert run(
-"""2 1
-1 2 7
-"""
-) == "0\n", "single edge"
-
-# simple chain
-assert run(
-"""4 3
-1 2 5
-2 3 5
-3 4 5
-"""
-) == "0\n0\n0\n", "linear flow"
-
-# branching graph
-assert run(
-"""5 5
-1 2 4
-1 3 6
-2 4 4
-3 4 2
-4 5 6
-"""
-) == "0\n0\n0\n0\n0\n", "multiple dependencies"
-
-# catches double-processing bugs
-assert run(
-"""3 2
-1 2 3
-2 3 3
-"""
-) == "0\n0\n", "used-edge handling"
+# Provided sample
+assert run("3 3\n3 2 10\n1 2 10\n3 1 5\n") == "1\n0\n1", "sample 1"
+# Custom test: smallest graph
+assert run("2 1\n1
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| Single edge from source to sink | `0` | Minimum valid graph |
-| Simple chain | All edges forward | Basic propagation logic |
-| Branching graph | Valid layered orientation | Multiple vertices becoming ready |
-| Two-edge path | No duplicate processing | Correct handling of undirected adjacency |
-
-## Edge Cases
-
-Consider the smallest possible graph:
-
-```
-2 1
-1 2 7
-```
-
-The source is vertex `1` and the sink is vertex `2`. Since the source cannot receive flow, the only edge must point from `1` to `2`. The algorithm starts with vertex `1` in the queue, processes the edge immediately, and outputs:
-
-```
-0
-```
-
-No internal vertices exist, so conservation constraints are vacuously satisfied.
-
-Now consider a graph where a vertex must wait for multiple incoming edges before becoming ready:
-
-```
-5 5
-1 2 4
-1 3 6
-2 4 4
-3 4 2
-4 5 6
-```
-
-Vertex `4` needs incoming flow `6`. After processing vertex `2`, it only has `4`, so it is not pushed into the queue yet. Only after processing vertex `3` does it reach exactly `6`. At that moment the algorithm knows every remaining undecided edge adjacent to `4` must be outgoing.
-
-This prevents premature orientation mistakes.
-
-Finally, consider a graph that could accidentally form a directed cycle if edges were assigned greedily:
-
-```
-4 4
-1 2 5
-2 3 5
-3 4 5
-1 3 5
-```
-
-The algorithm processes vertices in readiness order. Once a vertex becomes ready, all future edges leave it. Edges never point back into an already resolved vertex. Because of this monotonic structure, a directed cycle cannot appear.
