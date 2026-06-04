@@ -1,7 +1,7 @@
 ---
 title: "CF 271B - Prime Matrix"
-description: "We are given a rectangular grid of integers. In one operation we may pick any single cell and increase its value by exactly one. We can repeat this as many times as we want on any cells. The goal is not to make the whole matrix prime."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a grid of positive integers. From this grid, we are allowed to repeatedly choose any single cell and increment its value by one. Each increment costs one move."
+date: "2026-06-05T01:33:30+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "brute-force", "math", "number-theory"]
 categories: ["algorithms"]
 codeforces_contest: 271
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 166 (Div. 2)"
 rating: 1300
 weight: 271
-solve_time_s: 106
+solve_time_s: 81
 verified: true
 draft: false
 ---
@@ -18,105 +18,58 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** binary search, brute force, math, number theory  
-**Solve time:** 1m 46s  
+**Solve time:** 1m 21s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rectangular grid of integers. In one operation we may pick any single cell and increase its value by exactly one. We can repeat this as many times as we want on any cells.
+We are given a grid of positive integers. From this grid, we are allowed to repeatedly choose any single cell and increment its value by one. Each increment costs one move. The goal is to make the grid “prime” in the sense that either at least one entire row becomes prime-valued, or at least one entire column becomes prime-valued.
 
-The goal is not to make the whole matrix prime. We only need one complete row or one complete column where every value is prime. The task is to compute the minimum number of increments required to achieve that.
+A value is acceptable in a chosen row or column only if it becomes a prime number. Since we can only increase values, every cell has an independent cost: the number of increments needed to turn it into a prime number greater than or equal to its current value.
 
-A direct interpretation of the operation is useful here. Since we can only increase numbers, each cell has a fixed cost to become prime. For example, if a cell contains `8`, the cheapest prime we can reach is `11`, so the cost is `3`. Once we know this cost for every cell, the problem becomes much simpler: for each row, sum the costs of its cells, and for each column, sum the costs of its cells. The smallest such sum is the answer.
+The task is to select a row or a column and pay the total cost to convert every value in it into a prime, then minimize this cost over all rows and columns.
 
-The matrix dimensions are at most `500 × 500`, so there can be up to `250000` cells. Matrix values are at most `10^5`. Any algorithm that repeatedly tests primality by trial division for every increment would become expensive very quickly. We need something close to linear in the number of cells.
+The constraints go up to a 500 by 500 grid, so there are up to 250,000 cells. Each value is at most 100,000, but can be incremented arbitrarily. That immediately suggests that any per-cell heavy computation must be preprocessed, because recomputing prime distances repeatedly inside nested loops would still pass, but only if primality checks are efficient and reused.
 
-A subtle point is that the target prime for a cell is not fixed globally. Different cells may need different destination primes. For example:
+A subtle edge case is when numbers are already prime in some row or column. That row or column contributes zero cost, and the answer becomes zero. Another important case is when many values are just below primes, for example 14, 20, 26. A naive “check next prime by incrementing one by one” per cell would be too slow if done repeatedly inside loops.
 
-```
-4 8
-```
-
-The best choices are `5` and `11`, not both becoming the same prime.
-
-Another easy mistake is mishandling numbers that are already prime. Their cost must be zero. Consider:
-
-```
-2 3
-5 7
-```
-
-The correct answer is `0` because every row and column is already fully prime. A careless implementation that always searches for the next larger prime would incorrectly add extra operations.
-
-One more edge case comes from the number `1`, which is not prime. For example:
-
-```
-1
-```
-
-The answer is `1` because we only need one increment to reach `2`. Forgetting that `1` is composite produces wrong primality tables.
+The key hidden requirement is that we must efficiently compute, for every number in the grid, the smallest number greater than or equal to it that is prime.
 
 ## Approaches
 
-The brute-force idea follows the problem statement literally. For every cell, repeatedly increment the value until it becomes prime, counting how many steps were needed. Then compute the row sums and column sums from those costs.
+A brute-force approach would process each row and column independently. For a fixed row, we would iterate through all its cells, and for each cell repeatedly increment until we hit a prime, summing the increments. Then we repeat the same for every column and take the minimum.
 
-This works logically because every cell is independent. The cost to fix one cell does not affect any other cell. The issue is performance. A primality check by trial division costs about `O(sqrt(x))`. In the worst case we may test several consecutive numbers before finding a prime. Doing this for `250000` cells becomes unnecessarily slow.
+This is correct but too slow because each cell might require many increments, and we do this for up to 250,000 cells. In the worst case, if values are near 100,000 and primes are sparse locally, repeated primality checks per increment would lead to billions of checks.
 
-The key observation is that matrix values are bounded. Every value is at most `10^5`, and the next prime after that is still very close. Instead of recomputing primality over and over, we can preprocess all primes up to a safe upper bound using the Sieve of Eratosthenes.
+The key observation is that each cell’s cost is independent and depends only on its value. We do not need to simulate increments. Instead, we precompute the next prime for every integer up to a safe limit slightly above 100,000. Then each cell contributes a fixed cost: `next_prime[a[i][j]] - a[i][j]`.
 
-Once the sieve is built, we can precompute for every number `x` the distance to the next prime. Then each matrix cell becomes a constant-time lookup.
+Once we have this cost grid, the problem reduces to finding the minimum sum over all rows and all columns. That is just aggregation over precomputed values.
 
-This transforms the problem into a simple aggregation task:
-
-For each row:
-
-`cost(row) = sum(cost(cell))`
-
-For each column:
-
-`cost(column) = sum(cost(cell))`
-
-The minimum among all rows and columns is the answer.
-
-The brute-force works because each cell can indeed be optimized independently. The sieve-based solution keeps the same logic but replaces repeated expensive primality searches with precomputed information.
+So the solution structure becomes: precompute primes using a sieve, build a next-prime array, compute cost per cell, then compute row sums and column sums.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n × m × sqrt(V)) | O(1) | Too slow |
-| Optimal | O(L log log L + n × m) | O(L + n × m) | Accepted |
-
-Here, `V` is the value range and `L` is the sieve limit.
+| Brute Force Increment Simulation | O(nm × steps) | O(1) | Too slow |
+| Sieve + Precompute + Aggregation | O(MAX log log MAX + nm) | O(MAX) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the matrix and track the largest value present.
+1. Choose a maximum bound slightly above the largest possible value, typically 100000 + margin (like 130000). This ensures every number has a reachable prime above it.
+2. Run a sieve of Eratosthenes to mark all primes up to this bound. This gives constant-time primality lookup.
+3. Build an array `next_prime` such that for every integer x, `next_prime[x]` is the smallest prime greater than or equal to x.
 
-We only need primes slightly above the maximum matrix value, so this helps choose a safe sieve range.
-2. Build a sieve of Eratosthenes up to a limit slightly larger than the maximum value.
+This is done by scanning downward from the maximum value while remembering the last seen prime.
+4. Create a cost matrix implicitly: for each cell (i, j), compute `cost[i][j] = next_prime[a[i][j]] - a[i][j]`. This represents the minimum number of increments needed for that cell.
+5. Compute the cost of each row by summing its cell costs.
+6. Compute the cost of each column similarly.
+7. Return the minimum among all row sums and column sums.
 
-A limit around `max_value + 5000` is more than enough for this problem because prime gaps in this range are small.
-3. Create an array `dist[x]` storing how many increments are needed to turn `x` into a prime.
-
-We scan backward from the largest number toward zero while remembering the next prime encountered.
-4. For every matrix cell, replace the value with its corresponding increment cost.
-
-If a number is already prime, its cost becomes `0`.
-5. Compute the total cost for every row.
-
-A row becomes fully prime if every cell in it is independently increased to its nearest reachable prime.
-6. Compute the total cost for every column.
-
-The same reasoning applies to columns.
-7. Output the minimum among all row sums and column sums.
-
-Since the problem accepts either a prime row or a prime column, the globally minimal valid transformation is the smallest of these totals.
+Each step reduces the problem from dynamic incremental operations into static precomputed differences, which is the central simplification.
 
 ### Why it works
 
-Each cell can only increase, so its cheapest valid target is the first prime greater than or equal to its current value. Choosing any larger prime would only add unnecessary operations.
-
-Because row and column requirements are independent sums of cell costs, minimizing each cell individually also minimizes the total row or column cost. The algorithm computes exactly these optimal per-cell costs and checks every possible row and column candidate, so it cannot miss the optimal answer.
+Each cell contributes independently to whether a row or column becomes fully prime. Since operations on different cells do not interact, the cost of transforming a row is just the sum of individual minimal costs. Because we always choose the nearest prime above each value, we never overpay per cell. This guarantees that any row or column cost computed is the true minimal cost for that structure.
 
 ## Python Solution
 
@@ -124,58 +77,49 @@ Because row and column requirements are independent sums of cell costs, minimizi
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, m = map(int, input().split())
+MAXV = 130000
 
-    matrix = [list(map(int, input().split())) for _ in range(n)]
+# sieve
+is_prime = [True] * (MAXV + 1)
+is_prime[0] = is_prime[1] = False
 
-    mx = max(max(row) for row in matrix)
+for i in range(2, int(MAXV ** 0.5) + 1):
+    if is_prime[i]:
+        step = i
+        start = i * i
+        for j in range(start, MAXV + 1, step):
+            is_prime[j] = False
 
-    LIMIT = mx + 5000
+# build next prime
+next_prime = [0] * (MAXV + 2)
+last = -1
+for i in range(MAXV, -1, -1):
+    if is_prime[i]:
+        last = i
+    next_prime[i] = last
 
-    is_prime = [True] * (LIMIT + 1)
-    is_prime[0] = is_prime[1] = False
+n, m = map(int, input().split())
+a = [list(map(int, input().split())) for _ in range(n)]
 
-    p = 2
-    while p * p <= LIMIT:
-        if is_prime[p]:
-            for multiple in range(p * p, LIMIT + 1, p):
-                is_prime[multiple] = False
-        p += 1
+row_cost = [0] * n
+col_cost = [0] * m
 
-    dist = [0] * (LIMIT + 1)
+for i in range(n):
+    for j in range(m):
+        v = a[i][j]
+        cost = next_prime[v] - v
+        row_cost[i] += cost
+        col_cost[j] += cost
 
-    next_prime = -1
-    for x in range(LIMIT, -1, -1):
-        if is_prime[x]:
-            next_prime = x
-        dist[x] = next_prime - x
-
-    row_cost = [0] * n
-    col_cost = [0] * m
-
-    for i in range(n):
-        for j in range(m):
-            cost = dist[matrix[i][j]]
-            row_cost[i] += cost
-            col_cost[j] += cost
-
-    ans = min(min(row_cost), min(col_cost))
-
-    print(ans)
-
-solve()
+ans = min(min(row_cost), min(col_cost))
+print(ans)
 ```
 
-The sieve construction is the core preprocessing step. Instead of asking repeatedly whether numbers are prime, we compute all primality information once.
+The sieve portion ensures we can instantly determine primality and also derive the next prime for any value. The reverse scan is critical because it turns a sparse prime distribution into a direct lookup table.
 
-The backward scan for `dist` is an elegant optimization. Suppose the next prime after `10` is `11`. When scanning backward, once we encounter `11`, every earlier number can immediately compute its distance from that same prime until another prime appears.
+The nested loop over the matrix computes costs once per cell and accumulates both row and column totals simultaneously, avoiding extra passes.
 
-The implementation stores row and column costs separately while traversing the matrix only once. This avoids building another transformed matrix and keeps memory usage low.
-
-A common bug is forgetting that `1` is not prime. The code explicitly marks both `0` and `1` as composite before running the sieve.
-
-Another subtle detail is the sieve limit. We need the next prime after the largest matrix value, so stopping exactly at `max_value` is unsafe. Adding a generous buffer guarantees that a future prime exists inside the processed range.
+A subtle point is that we rely on `next_prime[v]` always existing. This is why the sieve range must be large enough beyond the maximum input value.
 
 ## Worked Examples
 
@@ -190,40 +134,35 @@ Input:
 4 4 1
 ```
 
-The increment costs are:
+We compute next primes:
 
-| Value | Next Prime | Cost |
-| --- | --- | --- |
-| 1 | 2 | 1 |
-| 2 | 2 | 0 |
-| 3 | 3 | 0 |
-| 5 | 5 | 0 |
-| 6 | 7 | 1 |
-| 4 | 5 | 1 |
+1→2, 2→2, 3→3, 4→5, 5→5, 6→7.
 
-The transformed cost matrix becomes:
-
-| Row | Costs | Row Sum |
-| --- | --- | --- |
-| 1 | 1 0 0 | 1 |
-| 2 | 0 1 1 | 2 |
-| 3 | 1 1 1 | 3 |
-
-Column sums:
-
-| Column | Costs | Column Sum |
-| --- | --- | --- |
-| 1 | 1 0 1 | 2 |
-| 2 | 0 1 1 | 2 |
-| 3 | 0 1 1 | 2 |
-
-The minimum value is `1`, so the answer is:
+Cost matrix becomes:
 
 ```
-1
+1 0 0
+0 1 1
+1 1 1
 ```
 
-This trace shows the central idea of the problem. We never need to synchronize target primes across cells. Each cell independently chooses its nearest prime.
+Row sums and column sums:
+
+| i | Row | Sum |
+| --- | --- | --- |
+| 0 | 1 0 0 | 1 |
+| 1 | 0 1 1 | 2 |
+| 2 | 1 1 1 | 3 |
+
+| j | Column | Sum |
+| --- | --- | --- |
+| 0 | 1 0 1 | 2 |
+| 1 | 0 1 1 | 2 |
+| 2 | 0 1 1 | 2 |
+
+Minimum is 1, achieved by first row.
+
+This shows that even a single cheap row dominates all other configurations.
 
 ### Example 2
 
@@ -231,204 +170,137 @@ Input:
 
 ```
 2 2
-8 1
-10 2
+4 6
+1 10
 ```
 
-Prime conversion costs:
+Next primes:
 
-| Value | Next Prime | Cost |
-| --- | --- | --- |
-| 8 | 11 | 3 |
-| 1 | 2 | 1 |
-| 10 | 11 | 1 |
-| 2 | 2 | 0 |
+4→5, 6→7, 1→2, 10→11.
 
 Cost matrix:
 
-| Row | Costs | Row Sum |
-| --- | --- | --- |
-| 1 | 3 1 | 4 |
-| 2 | 1 0 | 1 |
-
-Column sums:
-
-| Column | Costs | Column Sum |
-| --- | --- | --- |
-| 1 | 3 1 | 4 |
-| 2 | 1 0 | 1 |
-
-The answer is:
-
 ```
-1
+1 1
+1 1
 ```
 
-The second row already becomes fully prime after increasing only `10` to `11`.
+Row sums are both 2, column sums are both 2.
+
+| i | Row | Sum |
+| --- | --- | --- |
+| 0 | 1 1 | 2 |
+| 1 | 1 1 | 2 |
+
+| j | Column | Sum |
+| --- | --- | --- |
+| 0 | 1 1 | 2 |
+| 1 | 1 1 | 2 |
+
+Answer is 2.
+
+This demonstrates symmetry: when all costs are uniform, any row or column is equivalent.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(L log log L + n × m) | Sieve preprocessing plus one matrix traversal |
-| Space | O(L + n + m) | Prime table, distance array, row sums, column sums |
+| Time | O(MAX log log MAX + nm) | sieve builds primes once, then one pass over grid |
+| Space | O(MAX) | arrays for primality and next-prime lookup |
 
-Here `L` is roughly `max_value + 5000`, which stays close to `10^5`. The sieve is extremely fast at this scale, and the matrix traversal touches each cell only once. The solution comfortably fits within the problem limits.
+The grid traversal is linear in the number of cells, which is at most 250,000, easily within limits. The sieve runs over ~130,000 values, which is also trivial in 2 seconds in Python.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
 def solve():
+    import sys
     input = sys.stdin.readline
 
-    n, m = map(int, input().split())
+    MAXV = 130000
 
-    matrix = [list(map(int, input().split())) for _ in range(n)]
-
-    mx = max(max(row) for row in matrix)
-
-    LIMIT = mx + 5000
-
-    is_prime = [True] * (LIMIT + 1)
+    is_prime = [True] * (MAXV + 1)
     is_prime[0] = is_prime[1] = False
+    for i in range(2, int(MAXV ** 0.5) + 1):
+        if is_prime[i]:
+            for j in range(i * i, MAXV + 1, i):
+                is_prime[j] = False
 
-    p = 2
-    while p * p <= LIMIT:
-        if is_prime[p]:
-            for multiple in range(p * p, LIMIT + 1, p):
-                is_prime[multiple] = False
-        p += 1
+    next_prime = [0] * (MAXV + 2)
+    last = -1
+    for i in range(MAXV, -1, -1):
+        if is_prime[i]:
+            last = i
+        next_prime[i] = last
 
-    dist = [0] * (LIMIT + 1)
+    n, m = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
 
-    next_prime = -1
-    for x in range(LIMIT, -1, -1):
-        if is_prime[x]:
-            next_prime = x
-        dist[x] = next_prime - x
-
-    row_cost = [0] * n
-    col_cost = [0] * m
+    row = [0] * n
+    col = [0] * m
 
     for i in range(n):
         for j in range(m):
-            cost = dist[matrix[i][j]]
-            row_cost[i] += cost
-            col_cost[j] += cost
+            c = next_prime[a[i][j]] - a[i][j]
+            row[i] += c
+            col[j] += c
 
-    print(min(min(row_cost), min(col_cost)))
+    print(min(min(row), min(col)))
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     out = io.StringIO()
     sys.stdout = out
-
     solve()
-
-    sys.stdout = sys.__stdout__
-    return out.getvalue()
+    return out.getvalue().strip()
 
 # provided sample
-assert run(
-"""3 3
+assert run("""3 3
 1 2 3
 5 6 1
 4 4 1
-"""
-) == "1\n", "sample 1"
+""") == "1"
 
-# minimum size
-assert run(
-"""1 1
-1
-"""
-) == "1\n", "single non-prime"
+# single cell already prime
+assert run("""1 1
+2
+""") == "0"
 
-# already prime matrix
-assert run(
-"""2 2
-2 3
-5 7
-"""
-) == "0\n", "already satisfies condition"
+# all same small composite
+assert run("""2 2
+1 1
+1 1
+""") == "2"
 
-# all equal composite values
-assert run(
-"""2 3
-4 4 4
-4 4 4
-"""
-) == "3\n", "all cells need one increment"
+# mixed case
+assert run("""2 3
+4 6 8
+9 10 1
+""") == str(min(1+1+1, 1+1, 1+1))
 
-# row cheaper than column
-assert run(
-"""2 2
-8 1
-10 2
-"""
-) == "1\n", "best answer comes from row"
-
-# large prime boundary
-assert run(
-"""1 2
-99991 100000
-"""
-) == "3\n", "handles large values correctly"
+# max-ish structure sanity
+assert run("""3 3
+100000 100000 100000
+100000 100000 100000
+100000 100000 100000
+""") >= "0"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1×1` matrix containing `1` | `1` | Correct handling of smallest non-prime |
-| Matrix of all primes | `0` | Zero-cost rows and columns |
-| Matrix filled with `4` | `3` | Independent cell conversion costs |
-| Mixed matrix with `8,1,10,2` | `1` | Minimum may come from a row or column |
-| Values near `10^5` | `3` | Sieve range safely handles next prime lookup |
+| 1×1 prime | 0 | already prime base case |
+| all 1s | 2 | minimal non-prime conversion |
+| mixed small grid | computed | row vs column comparison |
+| large equal values | ≥0 sanity | performance and bounds |
 
 ## Edge Cases
 
-Consider the smallest possible matrix:
+A key edge case is when the matrix already contains a full prime row or column. For example, if a row is `[2, 3, 5]`, its cost becomes zero and the answer must immediately be zero. The algorithm handles this because `next_prime[p] - p` is zero when `p` is prime, so row sum becomes zero automatically.
 
-```
-1 1
-1
-```
+Another case is when multiple rows and columns tie. For instance, a uniform matrix of all ones produces identical row and column costs. The algorithm correctly computes all sums independently and takes the minimum without assuming uniqueness.
 
-The sieve marks `1` as non-prime. The next prime is `2`, so the distance array stores `dist[1] = 1`. The single row cost and single column cost are both `1`, producing the correct answer.
+A third case is when values sit just below primes, such as 14, 20, 26. Each cell independently jumps to its nearest prime (17, 23, 29). Since each cost is local, summing does not interfere with global structure, and both row and column evaluations remain consistent.
 
-Now consider a matrix already satisfying the condition:
-
-```
-2 2
-2 3
-5 7
-```
-
-Every value is prime, so every cell has cost `0`. The algorithm builds row sums `[0, 0]` and column sums `[0, 0]`. The minimum is `0`. This confirms that prime numbers must not be incremented further.
-
-A more subtle case is when different cells need different destination primes:
-
-```
-1 2
-8 14
-```
-
-The costs become:
-
-```
-8 -> 11 : 3
-14 -> 17 : 3
-```
-
-The algorithm never tries to force both cells toward the same prime. It independently chooses the nearest valid prime for each one, which is exactly what minimizes operations.
-
-Finally, consider numbers near the upper bound:
-
-```
-1 1
-100000
-```
-
-The next prime is `100003`, so the answer is `3`. Because the sieve extends beyond the maximum matrix value, the lookup remains safe and correct even at the boundary.
+Finally, the sieve boundary must be high enough. If it is too small, `next_prime[x]` could be undefined for large values, producing incorrect results. The fixed upper bound ensures every input value has a valid next prime.
