@@ -63,6 +63,9 @@ jobs:
       - name: Prepare GitHub Pages artifact
         run: |
           find public -size +24M -print -delete
+          # TAOCP solutions (~31 MB) are excluded from GitHub Pages to stay under the 1 GB limit.
+          # They remain available on the primary Tago deployment (brain.tamnd.com).
+          rm -rf public/practice/maths/taocp public/tags/taocp
           touch public/.nojekyll
           python3 scripts/rewrite_github_pages_base.py public --base-path "${GITHUB_PAGES_BASE_PATH}"
           bytes="$(find public -type f -print0 | xargs -0 stat -c %s | awk '{s+=$1} END {print s+0}')"
