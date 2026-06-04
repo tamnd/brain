@@ -1,6 +1,6 @@
 ---
 title: "TAOCP Vol 2: Seminumerical Algorithms"
-description: "Volume 2: Seminumerical Algorithms. 587 solved, 441 verified, 648 total."
+description: "Volume 2: Seminumerical Algorithms. 596 solved, 448 verified, 653 total."
 tags: ["taocp", "mathematics", "algorithms", "knuth"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Volume 2: Seminumerical Algorithms
 
-Exercise solutions for [TAOCP](../) Volume 2. 587 solved, 441 verified, 648 total.
+Exercise solutions for [TAOCP](../) Volume 2. 596 solved, 448 verified, 653 total.
 
 | Section | Title | Solved | Verified | Total |
 |---------|-------|-------:|--------:|------:|
@@ -18,6 +18,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 587 solved, 441 verified, 648 tota
 | [3.6](3.6/) | Summary | 15 | 13 | 15 |
 | [4.1](4.1/) | Positional Number Systems | 34 | 20 | 34 |
 | [4.4](4.4/) | Radix Conversion | 19 | 13 | 19 |
+| [4.6](4.6/) | Polynomial Arithmetic | 2 | 2 | 5 |
 | [3.2.1](3.2.1/) | The Linear Congruential Method | 5 | 5 | 5 |
 | [3.2.2](3.2.2/) | Other Methods | 35 | 25 | 36 |
 | [3.3.1](3.3.1/) | General Test Procedures for Studying Random Data | 24 | 22 | 25 |
@@ -35,7 +36,7 @@ Exercise solutions for [TAOCP](../) Volume 2. 587 solved, 441 verified, 648 tota
 | [4.5.1](4.5.1/) | Fractions | 9 | 8 | 9 |
 | [4.5.2](4.5.2/) | The Greatest Common Divisor | 42 | 32 | 42 |
 | [4.5.3](4.5.3/) | Analysis of Euclid's Algorithm | 41 | 31 | 42 |
-| [4.5.4](4.5.4/) | Factoring into Primes | 37 | 29 | 46 |
+| [4.5.4](4.5.4/) | Factoring into Primes | 44 | 34 | 46 |
 | [3.2.1.1](3.2.1.1/) | Choice of Modulus | 14 | 13 | 14 |
 | [3.2.1.2](3.2.1.2/) | Choice of Multiplier | 14 | 14 | 14 |
 | [3.2.1.3](3.2.1.3/) | Potency | 8 | 7 | 8 |
