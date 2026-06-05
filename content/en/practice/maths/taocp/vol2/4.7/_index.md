@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 4.7: Manipulation of Power Series"
-description: "Section 4.7 exercises: 19/28 solved."
+description: "Section 4.7 exercises: 21/28 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "4.7"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 4.7. Manipulation of Power Series
 
-Exercises from [TAOCP Volume 2](../) Section 4.7: 19/28 solved.
+Exercises from [TAOCP Volume 2](../) Section 4.7: 21/28 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -41,8 +41,8 @@ Exercises from [TAOCP Volume 2](../) Section 4.7: 19/28 solved.
 | [21](21.md) | &#9654; [**] |  | solved | 2m17s |
 | [22](22.md) | &#9654; [**] |  | solved | 22m38s |
 | [23](23.md) |  [**] |  | verified | 13m07s |
-| 24 |  [**] |  | - | - |
-| 25 |  [**] |  | - | - |
+| [24](24.md) |  [**] |  | verified | 5m59s |
+| [25](25.md) |  [**] |  | verified | 2m57s |
 | 26 |  [**] |  | - | - |
 | 27 |  [**] |  | - | - |
 | 28 | &#9654; [**] |  | - | - |
