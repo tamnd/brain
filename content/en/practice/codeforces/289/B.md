@@ -1,7 +1,7 @@
 ---
 title: "CF 289B - Polo the Penguin and Matrix"
-description: "We are given a matrix of integers and a number d. The penguin can either add or subtract d from any matrix element in a single move. The goal is to make all elements equal using the fewest moves possible."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a rectangular grid of integers, and we are allowed to perform a very specific operation: pick a single cell and add or subtract a fixed value d to it. Each such operation costs one move."
+date: "2026-06-05T10:32:34+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "implementation", "sortings", "ternary-search"]
 categories: ["algorithms"]
 codeforces_contest: 289
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 177 (Div. 2)"
 rating: 1400
 weight: 289
-solve_time_s: 76
+solve_time_s: 65
 verified: true
 draft: false
 ---
@@ -18,41 +18,55 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** brute force, dp, implementation, sortings, ternary search  
-**Solve time:** 1m 16s  
+**Solve time:** 1m 5s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a matrix of integers and a number _d_. The penguin can either add or subtract _d_ from any matrix element in a single move. The goal is to make all elements equal using the fewest moves possible. The output is the minimum number of moves needed, or -1 if it is impossible.
+We are given a rectangular grid of integers, and we are allowed to perform a very specific operation: pick a single cell and add or subtract a fixed value `d` to it. Each such operation costs one move. The goal is to transform the entire grid so that every cell contains exactly the same number, using as few moves as possible, or determine that this is impossible.
 
-Concretely, if we flatten the matrix into a list of numbers, each element can move along the arithmetic progression defined by _d_. All elements must be congruent modulo _d_; otherwise, no sequence of additions or subtractions by _d_ can make them equal. This gives the first necessary condition: all numbers must share the same remainder when divided by _d_. If this fails, the answer is immediately -1.
+The key observation from the start is that the operation does not let us change values arbitrarily. Every cell value can only move within its arithmetic progression modulo `d`. If a value starts at `x`, then after any number of operations it can only become numbers of the form `x + k·d`. This immediately implies a structural constraint: all cells must be congruent modulo `d`, otherwise no sequence of operations can ever align them.
 
-The input sizes are modest: up to 100×100 elements and _d_ up to 10^4. This allows any algorithm up to roughly 10^6 operations comfortably. The values in the matrix are also up to 10^4, so we do not have to worry about integer overflow in Python.
+The constraints are small: at most 100 by 100 grid, so up to 10,000 values. This allows an `O(nm log(nm))` approach comfortably, since sorting or scanning all values multiple times is cheap. Anything quadratic or cubic per cell is also fine here, but we do not need anything close to that.
 
-Edge cases include situations where all numbers are already equal (zero moves), or where numbers differ but modulo _d_ they do not match, making the solution impossible. For example, a 2×2 matrix [[2,3],[4,5]] with _d_ = 2 cannot be equalized, since 2%2=0, 3%2=1, so some elements cannot reach others.
+A few edge cases are easy to miss.
+
+If all numbers are not congruent modulo `d`, the answer is immediately impossible. For example, if `d = 2` and the grid contains both `1` and `2`, then `1` can only reach odd numbers, while `2` can only reach even numbers. No common target exists.
+
+If all values are already equal, the answer is zero. This is trivial but should not be overlooked in implementation.
+
+Another subtle case is when values are different but aligned modulo `d`, for example `[1, 5, 9]` with `d = 4`. These are all equivalent modulo 4, so a solution exists even though the values are far apart. A naive “make everything equal to average” intuition would fail here because averaging is irrelevant under constrained moves.
 
 ## Approaches
 
-The brute-force approach is to consider every possible target value within the min and max of the matrix and calculate the number of moves needed to make all elements equal to that target. For each element, the moves are `(abs(element - target) // d)` if `(element - target) % d == 0`, else impossible. This is correct because it exhaustively tries every feasible final value. However, in the worst case with 100×100 elements and values up to 10^4, we might need 10^6×10^4 = 10^10 operations, which is far too slow.
+The brute-force idea is to try every possible final value and compute the cost of converting all elements to it. Since each operation changes a value by exactly `d`, any valid final value must lie in the same modulo class as all elements. So we could pick each candidate value from the grid as a potential target and compute the total number of steps required to convert every cell to that target.
 
-The key observation is that the number of moves is minimized when the target value is the median of all elements (after flattening and considering integer divisions by _d_). Sorting the elements and choosing the median guarantees minimal total absolute differences. This reduces the problem to two steps: first verify all elements are congruent modulo _d_, and then compute the total moves to reach the median. Sorting the 10^4 elements and computing distances is well within the time limit.
+For a chosen target `t`, each element `a[i][j]` contributes `|a[i][j] - t| / d` moves, assuming divisibility holds. We sum this across all cells. This gives correctness, since every conversion is independent.
+
+However, there are up to 10,000 candidates and up to 10,000 cells, so this becomes about 100 million operations, which is still borderline but unnecessary. More importantly, we are repeating essentially the same computation for many equivalent candidates.
+
+The key insight is that all values are in one arithmetic progression class modulo `d`, so we can normalize them. If we divide all values by `d` after shifting by a common remainder, the problem reduces to choosing a single integer target minimizing absolute deviation. That is a classic “minimize sum of absolute differences” problem, solved optimally by the median.
+
+So we transform each value as `b[i] = a[i] // d` (after ensuring feasibility). The optimal target is the median of `b`, because the sum of absolute deviations is minimized at the median. Once the median is chosen, the answer is simply the total distance to it.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n * m * (max-min)/d) | O(n*m) | Too slow |
-| Optimal | O(n * m log(n*m)) | O(n*m) | Accepted |
+| Brute Force over targets | O(n²m²) | O(1) | Too slow |
+| Sort + median reduction | O(nm log(nm)) | O(nm) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Flatten the matrix into a single list of numbers. This makes it easier to reason about distances and medians. Working with a flat list avoids handling rows and columns separately, which are irrelevant to the solution.
-2. Compute the remainder of the first element modulo _d_. Iterate through all elements and verify that every element has the same remainder modulo _d_. If any element fails this test, print -1. This ensures that all numbers are reachable from each other by steps of size _d_.
-3. Sort the flattened list. Sorting is necessary because the median minimizes the sum of absolute differences, which translates directly into the minimal number of moves.
-4. Select the median element as the target. If the list has even length, any element between the two central elements works, but picking the lower or upper median is sufficient since moves are integers.
-5. Initialize a move counter to zero. Iterate through each element, compute `(abs(element - median) // d)`, and add this to the counter. This counts the exact number of moves required for each element to reach the median.
-6. Print the counter. This is the minimum number of moves needed to equalize the matrix.
+1. Read the matrix and flatten all values into a single list. This simplifies reasoning because we no longer need row-column structure.
+2. Check feasibility by ensuring all values share the same remainder modulo `d`. If even one value differs, we immediately return `-1` because no sequence of ±d operations can bridge different residue classes.
+3. Normalize each value by dividing by `d`. This converts the problem into integer steps on a line, where each operation is ±1.
+4. Sort the normalized values. Sorting is necessary because the optimal meeting point depends on order statistics, not arithmetic mean.
+5. Choose the median value as the target. This works because moving all points to the median minimizes total absolute deviation in a 1D array.
+6. Compute the total cost by summing absolute differences from the median.
 
-The invariant that guarantees correctness is that the total number of moves is minimized at the median because, for a set of integers, the median minimizes the sum of absolute differences. The modulo check ensures all elements are reachable via steps of _d_, so no element is skipped or impossible to reach.
+### Why it works
+
+Each move shifts a single cell by exactly one unit in the normalized space, so every cell evolves independently along a line. The total cost is the sum of distances to a chosen point. In one dimension, the function formed by absolute deviations is convex and piecewise linear, and its minimum always lies at a median. Since we have reduced the grid to independent 1D points under a shared constraint, no interaction between cells affects optimality, and selecting the median globally minimizes total moves.
 
 ## Python Solution
 
@@ -60,33 +74,44 @@ The invariant that guarantees correctness is that the total number of moves is m
 import sys
 input = sys.stdin.readline
 
-n, m, d = map(int, input().split())
-arr = []
+def solve():
+    n, m, d = map(int, input().split())
+    vals = []
 
-for _ in range(n):
-    arr.extend(map(int, input().split()))
+    for _ in range(n):
+        row = list(map(int, input().split()))
+        vals.extend(row)
 
-mod = arr[0] % d
-for num in arr:
-    if num % d != mod:
-        print(-1)
-        sys.exit()
+    # feasibility check: all must share same mod d
+    r = vals[0] % d
+    for v in vals:
+        if v % d != r:
+            print(-1)
+            return
 
-arr.sort()
-median = arr[len(arr)//2]
+    # normalize
+    vals = [v // d for v in vals]
+    vals.sort()
 
-moves = 0
-for num in arr:
-    moves += abs(num - median) // d
+    median = vals[len(vals) // 2]
 
-print(moves)
+    ans = 0
+    for v in vals:
+        ans += abs(v - median)
+
+    print(ans)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The code first reads the input and flattens the matrix. The modulo check is crucial: without it, the solution could attempt impossible transformations. Sorting and picking the median ensures minimal total moves. The division by _d_ converts distance into move counts. Using integer division guarantees exact counts because the modulo check passed.
+The solution begins by flattening the matrix so that all reasoning can be done on a single array. The modulo check ensures we never attempt impossible transformations. The division by `d` reduces the operation space so that each move corresponds to a unit step, which is essential for the median argument to apply cleanly.
+
+Sorting is the pivot step: without ordering, we cannot identify the median efficiently. The final loop computes total distance, which directly corresponds to the number of required ±1 steps in normalized space.
 
 ## Worked Examples
 
-**Sample 1**
+### Example 1
 
 Input:
 
@@ -96,35 +121,52 @@ Input:
 6 8
 ```
 
-| Step | arr | median | moves |
+Flattened values: `[2, 4, 6, 8]`, `d = 2`
+
+Normalized: `[1, 2, 3, 4]`
+
+| Step | Array | Median | Cost |
 | --- | --- | --- | --- |
-| Flatten | [2,4,6,8] | - | 0 |
-| Modulo check | all %2 = 0 | - | 0 |
-| Sort | [2,4,6,8] | 6 | 0 |
-| Compute moves | 2→6:2, 4→6:1, 6→6:0, 8→6:1 | 6 | 4 |
+| Normalize | [1, 2, 3, 4] | - | - |
+| Sort | [1, 2, 3, 4] | - | - |
+| Choose median | - | 3 | - |
+| Compute cost | - | 3 | 2+1+0+1 = 4 |
 
-Explanation: Each element moves by multiples of 2 to reach 6. Total moves is 4.
+Output is `4`.
 
-**Sample 2 (Impossible)**
+This confirms that even distribution around the median yields minimal movement cost.
+
+### Example 2
 
 Input:
 
 ```
-2 2 3
-2 4
-6 8
+3 3 3
+3 6 9
+12 15 18
+21 24 27
 ```
 
-Flattened: [2,4,6,8]. Modulo check: 2%3=2, 4%3=1 → mismatch. Output is -1.
+Flattened: `[3,6,9,12,15,18,21,24,27]`
+
+Normalized by `d=3`: `[1,2,3,4,5,6,7,8,9]`
+
+| Step | Array | Median | Cost |
+| --- | --- | --- | --- |
+| Normalize | [1..9] | - | - |
+| Median | - | 5 | - |
+| Sum distance | - | 5 | 20 |
+
+This demonstrates symmetry: values equally spaced around the center produce minimal total movement when targeting the median.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n * m log(n*m)) | Sorting the flattened list dominates the complexity |
-| Space | O(n * m) | Flattened list stores all elements |
+| Time | O(nm log(nm)) | dominated by sorting the flattened grid |
+| Space | O(nm) | storing all values in a single array |
 
-Given n,m ≤ 100, this is acceptable. Each operation is lightweight integer arithmetic.
+The constraints allow up to 10,000 values, so sorting and linear scanning are easily within limits. The algorithm avoids any nested recomputation over candidate targets, keeping runtime stable.
 
 ## Test Cases
 
@@ -133,49 +175,58 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    output = io.StringIO()
-    sys.stdout = output
+    return sys.stdin.readline  # placeholder, replaced below
+
+def solve():
+    input = sys.stdin.readline
     n, m, d = map(int, input().split())
-    arr = []
+    vals = []
     for _ in range(n):
-        arr.extend(map(int, input().split()))
-    mod = arr[0] % d
-    for num in arr:
-        if num % d != mod:
-            print(-1)
-            return output.getvalue().strip()
-    arr.sort()
-    median = arr[len(arr)//2]
-    moves = 0
-    for num in arr:
-        moves += abs(num - median) // d
-    print(moves)
-    return output.getvalue().strip()
+        vals.extend(map(int, input().split()))
 
-# Provided sample
-assert run("2 2 2\n2 4\n6 8\n") == "4", "sample 1"
+    r = vals[0] % d
+    for v in vals:
+        if v % d != r:
+            return "-1\n"
 
-# Custom cases
-assert run("1 1 1\n5\n") == "0", "single element"
-assert run("2 2 3\n3 6\n9 12\n") == "6", "all divisible by d"
-assert run("2 2 2\n1 2\n3 4\n") == "-1", "impossible case"
-assert run("3 3 5\n5 10 15\n20 25 30\n35 40 45\n") == "36", "3x3 multiples"
-assert run("2 3 4\n4 8 12\n16 20 24\n") == "24", "non-square matrix"
+    vals = [v // d for v in vals]
+    vals.sort()
+    med = vals[len(vals)//2]
+
+    return str(sum(abs(v - med) for v in vals)) + "\n"
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    return solve()
+
+# provided sample
+assert run("2 2 2\n2 4\n6 8\n") == "4\n"
+
+# all equal
+assert run("2 2 3\n9 9\n9 9\n") == "0\n"
+
+# impossible case
+assert run("2 2 2\n1 2\n3 4\n") == "-1\n"
+
+# single element
+assert run("1 1 10\n5\n") == "0\n"
+
+# larger spread
+assert run("1 5 2\n2 4 6 8 10\n") == "6\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1x1 matrix | 0 | Zero moves needed |
-| 2x2 divisible by d | 6 | Correct counting of moves |
-| 2x2 impossible | -1 | Modulo check correctly rejects |
-| 3x3 multiples | 36 | Handles larger numbers and sums correctly |
-| 2x3 matrix | 24 | Non-square matrix handled correctly |
+| 2x2 equal mod consistent grid | 4 | basic correctness |
+| all equal grid | 0 | trivial identity case |
+| mixed parity grid | -1 | feasibility check |
+| single cell | 0 | minimal edge case |
+| evenly spaced row | 6 | median behavior |
 
 ## Edge Cases
 
-If all elements are already equal, for example `[[5,5],[5,5]]` with d=3, the modulo check passes and the median is 5. Each move calculation is zero, giving a total of 0 moves.
+A fully uniform grid such as `[[7,7],[7,7]]` demonstrates that the algorithm correctly short-circuits after normalization: all values match, median equals value, and the cost sum is zero.
 
-If the elements cannot be equalized, for example `[[1,2],[3,4]]` with d=2, the modulo check immediately detects the mismatch: 1%2=1, 2%2=0. The program prints -1 without further computation.
+A grid with incompatible residues such as `[[1,2],[3,4]]` when `d=2` triggers immediate rejection. The modulo check catches this before any sorting, avoiding unnecessary computation.
 
-This shows the algorithm handles both trivial and impossible cases correctly.
+A single-cell grid shows that the median step degenerates cleanly: the only element is already the target, and the algorithm correctly returns zero without special casing beyond standard logic.
