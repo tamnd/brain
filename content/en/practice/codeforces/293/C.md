@@ -1,7 +1,7 @@
 ---
 title: "CF 293C - Cube Problem"
-description: "We are looking for the number of positive integer triples $(a,b,c)$ such that three smaller cubes of sizes $a^3$, $b^3$, and $c^3$ together are short of exactly $n$ unit cubes when trying to build one large cube of side length $a+b+c$."
-date: "2026-05-29T00:00:00+07:00"
+description: "The three original cubes had side lengths $a$, $b$, and $c$. Their total number of unit cubes was $$a^3+b^3+c^3.$$ Vitaly wanted to build one larger cube whose side length was $a+b+c$, which would require $$(a+b+c)^3$$ unit cubes."
+date: "2026-06-05T17:22:05+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "math", "number-theory"]
 categories: ["algorithms"]
 codeforces_contest: 293
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Croc Champ 2013 - Round 2"
 rating: 2400
 weight: 293
-solve_time_s: 96
-verified: true
+solve_time_s: 157
+verified: false
 draft: false
 ---
 
@@ -18,449 +18,121 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** brute force, math, number theory  
-**Solve time:** 1m 36s  
-**Verified:** yes  
+**Solve time:** 2m 37s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are looking for the number of positive integer triples $(a,b,c)$ such that three smaller cubes of sizes $a^3$, $b^3$, and $c^3$ together are short of exactly $n$ unit cubes when trying to build one large cube of side length $a+b+c$.
+The three original cubes had side lengths $a$, $b$, and $c$. Their total number of unit cubes was
 
-The missing amount is
+$$a^3+b^3+c^3.$$
 
-$$(a+b+c)^3 - a^3 - b^3 - c^3 = n$$
+Vitaly wanted to build one larger cube whose side length was $a+b+c$, which would require
 
-We must count how many ordered triples of positive integers satisfy this equation.
+$$(a+b+c)^3$$
 
-The first step is to expand the cube:
+unit cubes.
 
-$$(a+b+c)^3 = a^3+b^3+c^3 +3(a+b)(b+c)(c+a)$$
+He was short by exactly $n$ cubes, so
 
-Subtracting the three individual cubes leaves
+$$(a+b+c)^3-(a^3+b^3+c^3)=n.$$
 
-$$n = 3(a+b)(b+c)(c+a)$$
+We are given only $n$, and we must count how many positive integer triples $(a,b,c)$ could have produced that value.
 
-So the entire problem becomes counting positive integer triples satisfying this product identity.
+The bound $n \le 10^{14}$ immediately rules out any search over possible values of $a$, $b$, or $c$. Cube roots of $10^{14}$ are around $4.6 \times 10^4$, so even a triple loop over all possible side lengths would require more than $10^{13}$ iterations.
 
-The constraint is the real challenge. The value of $n$ can reach $10^{14}$. Any approach that iterates over all possible $a,b,c$ directly is hopeless. Even trying all values up to $10^5$ in three nested loops already gives $10^{15}$ operations.
+The key observation is that the expression has a strong algebraic structure. Once it is transformed into a multiplicative equation, the problem becomes one of enumerating divisors of a number up to about $3.3 \times 10^{13}$. Numbers of that size have relatively few divisors, making divisor-based enumeration practical.
 
-The structure of the equation matters much more than brute force. The expression factors cleanly into three terms, and those terms have strong parity relationships that let us reconstruct $a,b,c$ from divisors of $n/3$.
+Several edge cases are easy to mishandle.
 
-There are a few easy mistakes here.
+For example, if
 
-One common mistake is forgetting that the triples are ordered. The triples $(1,2,3)$ and $(3,2,1)$ are different unless the values coincide.
-
-Another subtle point is positivity. Suppose we derive values mathematically but one of $a,b,c$ becomes zero or negative. Those must be discarded.
-
-For example, if $n=3$, then
-
-$$(a+b)(b+c)(c+a)=1$$
-
-The only possible factorization is $1\cdot1\cdot1$, which would imply
-
-$$a=b=c=0$$
-
-Zero is not allowed, so the correct answer is $0$.
-
-Parity is another hidden constraint. If we define
-
-$$x=a+b,\quad y=b+c,\quad z=c+a$$
+```
+n = 1
+```
 
 then
 
-$$a=\frac{x+z-y}{2}$$
+$$(a+b+c)^3-(a^3+b^3+c^3)$$
 
-and similarly for $b,c$. The numerator must always be even. A careless implementation that skips this check may count impossible factorizations.
+is always divisible by $3$, so the answer must be $0$. A solution that starts enumerating divisors without checking divisibility by $3$ wastes work and may produce incorrect results.
 
-For instance, if $n=24$, then
+Another subtle case is
 
-$$xyz=8$$
+```
+n = 24
+```
 
-Taking $(x,y,z)=(1,1,8)$ gives
+which corresponds to
 
-$$a=\frac{1+8-1}{2}=4,\quad b=\frac{1+1-8}{2}=-3$$
+$$3(a+b)(b+c)(c+a)=24.$$
 
-This is invalid even though the product matches.
+The factor triple $(1,1,8)$ satisfies the product condition, but it does not correspond to positive integer values of $a,b,c$. Recovering $a,b,c$ requires both parity and positivity constraints. Ignoring those constraints overcounts.
+
+A third common mistake is forgetting that $(a,b,c)$ is ordered. The triples $(1,2,3)$ and $(2,1,3)$ are different solutions. When we enumerate sorted factor triples, we must restore the correct multiplicity.
 
 ## Approaches
 
-The brute force interpretation is straightforward. We can try all positive integers $a,b,c$, compute
+Start from the identity
 
-$$(a+b+c)^3-a^3-b^3-c^3$$
+$$(a+b+c)^3-(a^3+b^3+c^3)
+=
+3(a+b)(b+c)(c+a).$$
 
-and count how many times it equals $n$.
+Let
 
-Why does this work? Because the formula directly models the problem. Every valid triple will eventually be checked.
+$$x=a+b,\quad y=b+c,\quad z=c+a.$$
 
-The issue is the search space. Since cubes grow quickly, each variable can still be around $10^5$ when $n\le10^{14}$. Three nested loops would require around $10^{15}$ iterations, which is completely infeasible.
+Then the problem becomes
 
-The key observation is that the expression factorizes:
+$$3xyz=n.$$
 
-$$(a+b+c)^3-a^3-b^3-c^3 = 3(a+b)(b+c)(c+a)$$
+If $n$ is not divisible by $3$, there are no solutions.
 
-Now the problem becomes multiplicative instead of cubic.
+A brute-force idea would be to enumerate all factor triples $(x,y,z)$ whose product is $n/3$, reconstruct $a,b,c$, and count the valid ones. This is already much better than enumerating $a,b,c$, because the number of divisors of a $10^{13}$-sized integer is small.
 
-Define
+The remaining challenge is counting efficiently.
 
-$$x=a+b,\quad y=b+c,\quad z=c+a$$
+Given
 
-Then
+$$m=\frac n3,$$
 
-$$xyz = \frac n3$$
+we need all positive integer triples satisfying
 
-and
+$$xyz=m.$$
 
-$$a=\frac{x+z-y}{2},\quad b=\frac{x+y-z}{2},\quad c=\frac{y+z-x}{2}$$
+From
 
-So instead of searching over all triples $(a,b,c)$, we only search over factor triples $(x,y,z)$ of $n/3$.
+$$a=\frac{x+z-y}{2},\quad
+b=\frac{x+y-z}{2},\quad
+c=\frac{y+z-x}{2},$$
 
-This is dramatically smaller because the number of divisors of numbers up to $10^{14}$ is manageable. We can enumerate divisors of $m=n/3$, try all factorizations $x\cdot y\cdot z=m$, and reconstruct $a,b,c$.
+a triple corresponds to valid positive integers exactly when
 
-The parity conditions and positivity checks guarantee correctness.
+$$x+y+z \equiv 0 \pmod 2$$
+
+and the strict triangle inequalities hold:
+
+$$x+y>z,\quad
+y+z>x,\quad
+z+x>y.$$
+
+Since we enumerate factor triples in sorted order $x \le y \le z$, only
+
+$$x+y>z$$
+
+needs to be checked.
+
+The brute-force factor enumeration is correct, but enumerating all positive triples independently would still be too large. The observation that $xyz=m$ lets us enumerate only divisors of $m$. Even for the worst possible $m$, the divisor count is only a few thousand, so checking divisor pairs is easily fast enough.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(K^3)$ | $O(1)$ | Too slow |
-| Optimal | $O(\sqrt n + d^2)$ | $O(d)$ | Accepted |
+| Brute Force over $a,b,c$ | $O((\sqrt[3]{n})^3)$ | $O(1)$ | Too slow |
+| Divisor Enumeration | $O(d(m)^2)$ | $O(d(m))$ | Accepted |
 
-Here $d$ is the number of divisors of $n/3$, which is small enough for the constraints.
+Here $d(m)$ denotes the number of divisors of $m$.
 
 ## Algorithm Walkthrough
 
 1. Read $n$.
-2. Check whether $n$ is divisible by $3$.
-
-Since
-
-$$n = 3(a+b)(b+c)(c+a)$$
-
-every valid answer must make $n$ a multiple of $3$. If not, print $0$.
-3. Let
-
-$$m = \frac n3$$
-
-We now need all positive integer triples $(x,y,z)$ such that
-
-$$xyz=m$$
-4. Enumerate all divisors of $m$.
-
-We store every divisor in a list so we can iterate through possible values of $x$ and $y$.
-5. For every pair of divisors $(x,y)$, check whether $xy$ divides $m$.
-
-If not, no integer $z$ exists.
-
-Otherwise define
-
-$$z=\frac{m}{xy}$$
-6. Reconstruct the original variables:
-
-$$a=\frac{x+z-y}{2}$$
-
-$$b=\frac{x+y-z}{2}$$
-
-$$c=\frac{y+z-x}{2}$$
-7. Check validity conditions.
-
-All three numerators must be even, otherwise $a,b,c$ are not integers.
-
-All three values must also be strictly positive.
-8. Count every valid triple.
-
-Different ordered factorizations produce different ordered triples, which matches the problem statement.
-
-### Why it works
-
-The transformation between $(a,b,c)$ and $(x,y,z)$ is reversible.
-
-Starting from any valid triple,
-
-$$x=a+b,\quad y=b+c,\quad z=c+a$$
-
-gives
-
-$$xyz=\frac n3$$
-
-Conversely, any factor triple $(x,y,z)$ satisfying the parity and positivity conditions reconstructs exactly one triple $(a,b,c)$.
-
-So the algorithm neither misses valid solutions nor counts invalid ones.
-
-## Python Solution
-
-```python
-import sys
-input = sys.stdin.readline
-
-def solve():
-    n = int(input())
-
-    if n % 3 != 0:
-        print(0)
-        return
-
-    m = n // 3
-
-    divisors = []
-    d = 1
-
-    while d * d <= m:
-        if m % d == 0:
-            divisors.append(d)
-            if d * d != m:
-                divisors.append(m // d)
-        d += 1
-
-    ans = 0
-
-    for x in divisors:
-        for y in divisors:
-            xy = x * y
-
-            if m % xy != 0:
-                continue
-
-            z = m // xy
-
-            a_num = x + z - y
-            b_num = x + y - z
-            c_num = y + z - x
-
-            if (a_num & 1) or (b_num & 1) or (c_num & 1):
-                continue
-
-            a = a_num // 2
-            b = b_num // 2
-            c = c_num // 2
-
-            if a > 0 and b > 0 and c > 0:
-                ans += 1
-
-    print(ans)
-
-solve()
-```
-
-The implementation follows the algebraic reduction directly.
-
-The divisor generation loop runs up to $\sqrt m$. Whenever we find a divisor $d$, we also add $m/d$. The square root case must be handled carefully so we do not insert the same divisor twice.
-
-The nested loops iterate over ordered pairs $(x,y)$. Once those are fixed, $z$ is determined uniquely by
-
-$$z=\frac{m}{xy}$$
-
-The parity checks happen before division by two. Using bitwise `& 1` is a compact way to test oddness.
-
-The positivity check is essential. The formulas can produce zero or negative values even when the product condition holds.
-
-Python integers automatically handle values up to $10^{14}$, so overflow is not a concern.
-
-## Worked Examples
-
-### Example 1
-
-Input:
-
-```
-24
-```
-
-We compute
-
-$$m = 24/3 = 8$$
-
-The valid factor triple is $(2,2,2)$.
-
-| x | y | z | a | b | c | Valid |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2 | 2 | 2 | 1 | 1 | 1 | Yes |
-
-The answer is $1$.
-
-This trace shows the clean symmetric case where all three cubes have equal size.
-
-### Example 2
-
-Input:
-
-```
-48
-```
-
-Now
-
-$$m = 16$$
-
-Several factor triples exist.
-
-| x | y | z | a | b | c | Valid |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2 | 2 | 4 | 2 | 0 | 2 | No |
-| 2 | 4 | 2 | 0 | 2 | 2 | No |
-| 4 | 2 | 2 | 2 | 2 | 0 | No |
-| 2 | 4 | 2 | 0 | 2 | 2 | No |
-| 4 | 4 | 1 | 0.5 | 3.5 | 0.5 | No |
-| 2 | 2 | 4 | 2 | 0 | 2 | No |
-
-No valid positive integer triple exists, so the answer is $0$.
-
-This example demonstrates why parity and positivity checks are both necessary.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | $O(\sqrt n + d^2)$ | Divisor generation plus checking divisor pairs |
-| Space | $O(d)$ | Storage for all divisors |
-
-The number of divisors of a number up to $10^{14}$ is relatively small, so iterating over divisor pairs is easily fast enough within 2 seconds.
-
-## Test Cases
-
-```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
-    def solve():
-        n = int(input())
-
-        if n % 3 != 0:
-            return "0"
-
-        m = n // 3
-
-        divisors = []
-        d = 1
-
-        while d * d <= m:
-            if m % d == 0:
-                divisors.append(d)
-                if d * d != m:
-                    divisors.append(m // d)
-            d += 1
-
-        ans = 0
-
-        for x in divisors:
-            for y in divisors:
-                xy = x * y
-
-                if m % xy != 0:
-                    continue
-
-                z = m // xy
-
-                a_num = x + z - y
-                b_num = x + y - z
-                c_num = y + z - x
-
-                if (a_num & 1) or (b_num & 1) or (c_num & 1):
-                    continue
-
-                a = a_num // 2
-                b = b_num // 2
-                c = c_num // 2
-
-                if a > 0 and b > 0 and c > 0:
-                    ans += 1
-
-        return str(ans)
-
-    return solve()
-
-# provided sample
-assert run("24\n") == "1", "sample 1"
-
-# custom cases
-assert run("1\n") == "0", "n not divisible by 3"
-assert run("3\n") == "0", "produces zero-sized cubes"
-assert run("81\n") == "3", "multiple ordered triples"
-assert run("192\n") == "1", "all equal larger cubes"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1` | `0` | Impossible because $n$ is not divisible by 3 |
-| `3` | `0` | Rejects zero-sized solutions |
-| `81` | `3` | Multiple ordered valid triples |
-| `192` | `1` | Symmetric case with larger equal cubes |
-
-## Edge Cases
-
-Consider the input:
-
-```
-1
-```
-
-Since $1$ is not divisible by $3$, the algorithm immediately returns $0$. This matches the factorization formula exactly because
-
-$$n=3(a+b)(b+c)(c+a)$$
-
-cannot produce a non-multiple of $3$.
-
-Now consider:
-
-```
-3
-```
-
-We get
-
-$$m=1$$
-
-The only factorization is
-
-$$x=y=z=1$$
-
-Then
-
-$$a=b=c=0$$
-
-The positivity check rejects this case, so the answer becomes $0$.
-
-Another subtle case is:
-
-```
-48
-```
-
-Here $m=16$. Some factor triples satisfy the product equation but fail parity conditions. For example:
-
-$$(x,y,z)=(1,1,16)$$
-
-gives
-
-$$a=\frac{1+16-1}{2}=8$$
-
-$$b=\frac{1+1-16}{2}=-7$$
-
-The algorithm rejects this because $b\le0$.
-
-Finally, consider a symmetric valid case:
-
-```
-192
-```
-
-We get
-
-$$m=64$$
-
-Choosing
-
-$$x=y=z=4$$
-
-produces
-
-$$a=b=c=2$$
-
-which satisfies
-
-$$(2+2+2)^3 - 2^3 - 2^3 - 2^3 =216-24 =192$$
-
-The algorithm counts exactly one valid ordered triple.
