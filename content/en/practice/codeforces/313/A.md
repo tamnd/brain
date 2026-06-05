@@ -1,7 +1,7 @@
 ---
 title: "CF 313A - Ilya and Bank Account"
-description: "We are given an integer that represents a bank balance. This balance can be positive or negative, and we are allowed to perform at most one modification operation that consists of removing a single digit from the number."
-date: "2026-05-29T00:00:00+07:00"
+description: "The problem centers on Ilya’s bank account balance, which is a signed integer. Positive values indicate savings, and negative values indicate debt."
+date: "2026-06-06T01:03:21+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "number-theory"]
 categories: ["algorithms"]
 codeforces_contest: 313
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 186 (Div. 2)"
 rating: 900
 weight: 313
-solve_time_s: 181
-verified: false
+solve_time_s: 56
+verified: true
 draft: false
 ---
 
@@ -18,49 +18,39 @@ draft: false
 
 **Rating:** 900  
 **Tags:** implementation, number theory  
-**Solve time:** 3m 1s  
-**Verified:** no  
+**Solve time:** 56s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an integer that represents a bank balance. This balance can be positive or negative, and we are allowed to perform at most one modification operation that consists of removing a single digit from the number. The twist is that the bank allows removing either the last digit or the second last digit, but only once in total. We may also choose to do nothing.
+The problem centers on Ilya’s bank account balance, which is a signed integer. Positive values indicate savings, and negative values indicate debt. The bank allows Ilya a one-time operation: he can remove either the last digit or the second-to-last digit from his balance to potentially improve it. The goal is to determine the maximum balance achievable using this operation, or to leave the number unchanged if that produces the best outcome.
 
-The task is to compute the maximum possible integer value we can obtain after applying this optional deletion.
+The input is a single integer `n` where `10 ≤ |n| ≤ 10^9`. The lower bound ensures the number has at least two digits, which makes the operation of removing digits meaningful. The upper bound is comfortably within 32-bit integer range, so arithmetic operations are safe without needing arbitrary-precision handling.
 
-The constraint on the magnitude of the input is small in terms of digit count. The absolute value is at most 10^9, which means the number has at most 10 digits. This immediately tells us that any solution that tries a constant number of string transformations or arithmetic manipulations per test case will easily fit within time limits. Even a naive simulation over all possible digit removals is bounded by a constant factor, since there are only two meaningful deletion choices.
-
-The key subtlety lies in negative numbers. Removing digits from a negative value can make it less negative, which is an improvement, but care is required because string-based interpretation of sign and digit removal interact in nontrivial ways.
-
-Edge cases arise when the number has exactly two digits. For example, if the input is -10, removing the last digit produces -1, while removing the second last digit produces -0, which is effectively 0. A careless implementation that treats digits uniformly without handling the sign separately could misinterpret "-0" or drop the sign incorrectly.
-
-Another edge case is when the number ends in zero or has repeated digits near the end, such as 100 or -100. Different deletions may collapse to the same numeric value, and failing to evaluate both correctly can miss the optimal choice.
+Non-obvious edge cases include negative numbers with small absolute value, such as `-10` or `-11`. Simply dropping the last digit could create `-1` or `-1` respectively, and dropping the second-to-last digit could produce `0` or `-1`. A careless implementation could ignore the second-to-last digit option or miscompute the new value, yielding suboptimal results.
 
 ## Approaches
 
-The brute-force idea is straightforward. We convert the number into a string and try all allowed possibilities: keep the number unchanged, remove the last digit, or remove the second last digit. Each candidate is converted back into an integer, and we take the maximum.
+A brute-force approach would attempt every combination of removing one digit or leaving the number as is. For positive numbers, removing digits will almost never increase the value, so the brute force reduces to checking two operations for negative numbers. The maximum number of checks is three: keep `n` as-is, remove the last digit, remove the second-to-last digit. Since this is constant work per input, the brute force is actually acceptable in practice.
 
-This works because the operation space is tiny and fixed. However, even if we attempted a more general brute-force approach that removes any digit, that would still be linear in the number of digits, which is at most 10 here, so even that would pass. The constraint structure essentially guarantees that exponential exploration is unnecessary.
-
-The key observation is that only three candidates exist, and each can be computed in constant time using string slicing. The problem reduces to evaluating these three values and choosing the maximum.
+The key observation that leads to a simple optimal solution is that for positive numbers, doing nothing is always optimal. For negative numbers, the only potential improvements come from removing either the last or second-to-last digit. Converting these modified numbers into integers and taking the maximum among the three options guarantees correctness. This observation reduces the problem to O(1) operations without any loops or recursion.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (all removals) | O(d) | O(d) | Accepted |
-| Optimal (try 3 cases) | O(d) | O(d) | Accepted |
+| Brute Force | O(1) | O(1) | Accepted |
+| Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number as a string so that digit-level manipulation becomes simple and uniform. This avoids complications with sign handling in integer arithmetic.
-2. Let the original number be one candidate answer without modification. This is necessary because the best choice might be to do nothing.
-3. Construct the second candidate by removing the last character of the string. This corresponds directly to integer truncation in base 10.
-4. Construct the third candidate by removing the second last character of the string. This is the only nontrivial operation allowed by the problem and must be carefully interpreted as a string deletion rather than arithmetic rounding.
-5. Convert all valid candidates back into integers, taking care that Python naturally handles negative signs correctly when converting strings like "-12".
-6. Return the maximum among the three candidates.
+1. Read the integer `n` from input. This represents the current bank account state.
+2. If `n` is non-negative, print `n` immediately because removing digits cannot improve a positive balance.
+3. If `n` is negative, convert `n` to a string to manipulate its digits. Let `s` be the string representation of `n`.
+4. Construct two candidate balances: remove the last digit to form `candidate1` and remove the second-to-last digit to form `candidate2`. This is done by slicing the string: `s[:-1]` for the last digit and `s[:-2] + s[-1]` for the second-to-last digit. Convert these strings back to integers.
+5. Compute the maximum among the three values: `n`, `candidate1`, and `candidate2`. This maximum is the best possible account balance.
+6. Print the result.
 
-### Why it works
-
-Every valid move corresponds to exactly one of three states: no deletion, deletion of the last digit, or deletion of the second last digit. There are no hidden or composite operations. Since each candidate is evaluated exactly, the algorithm explores the entire solution space without redundancy. The maximum over this complete set must be optimal.
+The correctness relies on the invariant that, for negative numbers, removing digits either makes the number less negative or keeps it unchanged. There are no other operations to consider, so comparing the three possibilities is exhaustive and guarantees the maximum result.
 
 ## Python Solution
 
@@ -68,60 +58,53 @@ Every valid move corresponds to exactly one of three states: no deletion, deleti
 import sys
 input = sys.stdin.readline
 
-s = input().strip()
+n = int(input())
 
-# no deletion
-best = int(s)
-
-# delete last digit
-if len(s) > 1:
-    best = max(best, int(s[:-1]))
-
-# delete second last digit
-if len(s) > 2:
-    best = max(best, int(s[:-2] + s[-1]))
-
-print(best)
+if n >= 0:
+    print(n)
+else:
+    s = str(n)
+    candidate1 = int(s[:-1])  # remove last digit
+    candidate2 = int(s[:-2] + s[-1])  # remove second-to-last digit
+    print(max(n, candidate1, candidate2))
 ```
 
-The solution relies on string slicing to simulate digit removal. The case `s[:-1]` removes the last digit directly. The expression `s[:-2] + s[-1]` removes the second last digit by skipping it and stitching the remaining prefix and suffix together.
-
-A subtle point is guarding lengths. If the string has length 1, no deletion is valid. If it has length 2, only removal of the last digit or second last digit makes sense, and both produce single-digit numbers. The code naturally handles these cases via conditional checks.
-
-Python’s `int()` conversion safely interprets negative numbers even after slicing, since the minus sign remains at the front.
+The solution begins by handling positive numbers separately to avoid unnecessary string operations. For negative numbers, string slicing ensures we correctly remove the target digits. A common mistake is misindexing when removing the second-to-last digit; `s[:-2] + s[-1]` correctly preserves the digits before the last two and appends the final digit.
 
 ## Worked Examples
 
-Consider the input `2230`.
+Sample Input 1:
 
-| Step | Operation | Result string | Value |
-| --- | --- | --- | --- |
-| 1 | Original | 2230 | 2230 |
-| 2 | Remove last digit | 223 | 223 |
-| 3 | Remove second last digit | 220 | 220 |
+```
+2230
+```
 
-The maximum is 2230, so no operation is beneficial. This demonstrates that the identity operation must always be included in the candidate set.
+| Step | n | s | candidate1 | candidate2 | max(n, c1, c2) |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 2230 | N/A | N/A | N/A | 2230 |
 
-Now consider `-123`.
+The input is positive, so no digit removal is beneficial. The algorithm returns 2230.
 
-| Step | Operation | Result string | Value |
-| --- | --- | --- | --- |
-| 1 | Original | -123 | -123 |
-| 2 | Remove last digit | -12 | -12 |
-| 3 | Remove second last digit | -13 | -13 |
+Sample Input 2:
 
-The maximum is -12, which comes from removing the last digit. This shows why the problem is not about absolute value but true maximization under signed integers.
+```
+-123
+```
 
-These traces confirm that all valid transformations are enumerated and compared consistently.
+| Step | n | s | candidate1 | candidate2 | max(n, c1, c2) |
+| --- | --- | --- | --- | --- | --- |
+| 1 | -123 | "-123" | -12 | -13 | -12 |
+
+Removing the last digit gives -12, which is better than -13 or -123. The maximum balance is -12.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only constant number of string slices and integer conversions are performed, independent of input magnitude |
-| Space | O(1) | Only a few derived strings of bounded size are created |
+| Time | O(1) | Only constant-time arithmetic and string slicing operations. |
+| Space | O(1) | Only a few integer variables and a short string are stored. |
 
-The input size is limited to at most 10 digits, so even string operations are effectively constant-time. The solution is well within limits for both time and memory.
+The algorithm comfortably fits within the 2-second time limit and 256 MB memory limit for any valid input.
 
 ## Test Cases
 
@@ -130,38 +113,37 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    s = input().strip()
-
-    best = int(s)
-    if len(s) > 1:
-        best = max(best, int(s[:-1]))
-    if len(s) > 2:
-        best = max(best, int(s[:-2] + s[-1]))
-
-    return str(best)
+    n = int(input())
+    if n >= 0:
+        return str(n)
+    else:
+        s = str(n)
+        candidate1 = int(s[:-1])
+        candidate2 = int(s[:-2] + s[-1])
+        return str(max(n, candidate1, candidate2))
 
 # provided samples
 assert run("2230\n") == "2230", "sample 1"
-assert run("-10\n") == "0", "sample 2"
+assert run("-123\n") == "-12", "sample 2"
 
 # custom cases
-assert run("10\n") == "1", "removing last digit improves"
-assert run("-123\n") == "-12", "negative best case"
-assert run("100\n") == "10", "trailing zero handling"
-assert run("5\n") == "5", "single digit no operation"
+assert run("-10\n") == "0", "negative two-digit boundary"
+assert run("-11\n") == "-1", "negative two-digit equal digits"
+assert run("10\n") == "10", "positive two-digit minimum"
+assert run("-1000000000\n") == "-100000000", "large negative number"
+assert run("999999999\n") == "999999999", "large positive number"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 10 | 1 | removing last digit benefit |
-| -123 | -12 | best improvement under negative sign |
-| 100 | 10 | trailing zero behavior |
-| 5 | 5 | single-digit edge case |
+| -10 | 0 | Removing the second-to-last digit produces 0 |
+| -11 | -1 | Removing either digit yields the best result of -1 |
+| 10 | 10 | Positive number should remain unchanged |
+| -1000000000 | -100000000 | Handles large negative number correctly |
+| 999999999 | 999999999 | Handles large positive number |
 
 ## Edge Cases
 
-For a single-digit number like `5`, the algorithm only considers the original value because both deletion options are invalid. The string length check prevents any slicing, so the output remains `5`.
+For `n = -10`, removing the last digit produces `-1` but removing the second-to-last digit yields `0`, which is the maximum. The algorithm computes `candidate1 = -1` and `candidate2 = 0`, then returns `max(-10, -1, 0) = 0`, demonstrating correct handling of small negative numbers.
 
-For a two-digit negative number like `-9`, slicing `s[:-1]` yields `'-'`, which is not a valid integer, but this case is avoided because the condition `len(s) > 1` allows it, and Python safely interprets `int("-")` as invalid if it were reached. However, in this specific problem, two-character negative numbers always have at least one digit after the sign, so `s[:-1]` produces a valid single-digit string like `"-"` is not actually formed unless malformed input exists. The guard ensures correctness.
-
-For numbers ending in zero like `100`, removing the last digit yields `10`, while removing the second last digit yields `10` as well. The algorithm correctly evaluates both and takes the maximum without needing special handling for leading or trailing zeros.
+For `n = -11`, both candidates produce `-1`. The algorithm computes `candidate1 = -1` and `candidate2 = -1`, then returns `max(-11, -1, -1) = -1`, confirming it handles repeated digits correctly.
