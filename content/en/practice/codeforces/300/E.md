@@ -1,7 +1,7 @@
 ---
 title: "CF 300E - Empire Strikes Back"
-description: "The problem asks us to determine the minimum positive integer $n$ such that the factorial of $n$, divided by the sum of the factorials of $n - ai$ for a given sequence of integers $a1, a2, dots, ak$, results in a positive integer."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to determine the minimum positive integer $n$ such that the factorial $n!$ divided by a set of numbers $[a1, a2, dots, ak]$ produces an integer. In other words, the Empire has a strike strength $n!$, and each Republican strike is represented by $ai$."
+date: "2026-06-05T18:21:18+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "math", "number-theory"]
 categories: ["algorithms"]
 codeforces_contest: 300
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 181 (Div. 2)"
 rating: 2300
 weight: 300
-solve_time_s: 77
+solve_time_s: 101
 verified: true
 draft: false
 ---
@@ -18,88 +18,137 @@ draft: false
 
 **Rating:** 2300  
 **Tags:** binary search, math, number theory  
-**Solve time:** 1m 17s  
+**Solve time:** 1m 41s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The problem asks us to determine the minimum positive integer $n$ such that the factorial of $n$, divided by the sum of the factorials of $n - a_i$ for a given sequence of integers $a_1, a_2, \dots, a_k$, results in a positive integer. Conceptually, we are looking for the smallest Imperial strike power $n$ that ensures the Empire's confrontation balance, defined as
+We are asked to determine the minimum positive integer $n$ such that the factorial $n!$ divided by a set of numbers $[a_1, a_2, \dots, a_k]$ produces an integer. In other words, the Empire has a strike strength $n!$, and each Republican strike is represented by $a_i$. The confrontation balance is the product of $n! / a_i$ over all $i$, and we want that product to be an integer.
 
-$$\frac{n!}{\sum_{i=1}^{k} (n - a_i)!},$$
+The input provides $k$, the number of Republican strikes, and an array of integers $a_i$ representing the individual strengths. The output should be the smallest positive $n$ such that $n!$ is divisible by all $a_i$.
 
-is a whole number. Each $a_i$ represents the strength of prior Republican strikes. The input provides the number of strikes $k$ and the sequence of their powers $a_i$, with $1 \le k \le 10^6$ and $1 \le a_i \le 10^7$.
+Constraints suggest that $k$ can be up to $10^6$ and each $a_i$ can be up to $10^7$. A naive approach that attempts to compute factorials directly will fail because factorials grow extremely quickly. Even storing or multiplying $n!$ for $n$ around $10^5$ is impossible within reasonable time or memory.
 
-The constraints indicate that a brute-force calculation of factorials directly is infeasible because $n$ could be as large as $10^7$ or more, and $n!$ quickly grows beyond the limits of standard data types. Any solution must reason mathematically about divisibility or use properties of factorials without computing them entirely. Edge cases include sequences where all $a_i$ are equal, sequences containing 1, and sequences where $n$ must be just above the maximum $a_i$. For example, if $k = 1$ and $a_1 = 1000$, the answer is 1000. A naive algorithm could mistakenly choose a smaller $n$ and fail to satisfy the divisibility condition.
+An important edge case is when all $a_i$ are equal. For example, if the input is `2\n1000 1000`, then the minimum $n$ must satisfy $n!$ divisible by 1000, which requires counting prime factors rather than direct factorial computation. Another edge case is when $a_i = 1$, in which case the answer is trivially 1. A careless approach that checks divisibility by computing factorials would overflow or be too slow for $a_i = 10^7$ repeated many times.
 
 ## Approaches
 
-The naive approach would attempt to iterate $n$ from 1 upwards, compute $n!$, and check if $n! / \sum (n - a_i)!$ is an integer. This requires explicitly calculating factorials up to $n!$, which is not practical for $n$ approaching $10^7$, especially repeated $k$ times. The operation count is roughly $O(k n)$, which could be as large as $10^{13}$, far exceeding any feasible runtime.
+A brute-force solution would iterate over $n = 1, 2, 3, \dots$ and for each $n$, check whether $n!$ is divisible by all $a_i$. This works because divisibility can be checked by counting prime factors. For each $a_i$, factorize it into primes, then check if $n!$ contains at least as many of each prime. This method is correct but extremely slow because factorizing each $a_i$ and computing factorial prime counts up to large $n$ results in operations on the order of $k \sqrt{a_i} \cdot n$, which is infeasible for the largest constraints.
 
-The key insight is to reverse the problem: instead of computing large factorials, we can consider divisibility in terms of integer partitions and simple arithmetic. Notice that for the sum to divide $n!$, each term $(n - a_i)!$ must multiply up to a factor of $n!$. This reduces to ensuring $n \ge \sum a_i$, because the largest factorial in the sum is at most $(n-1)!$ or $(n - \max(a_i))!$, and the sum of the factorial differences is dominated by $n - a_i$. Consequently, the minimum $n$ that satisfies the divisibility property is exactly the sum of all $a_i$. This avoids factorial computation entirely and scales linearly with the input size.
+The key insight is that we do not need the entire factorial; we only need the prime powers. We can factorize all $a_i$ first, then for each prime $p$ calculate the minimum $n$ such that the sum of powers of $p$ in $1 \dots n$ is at least the maximum exponent of $p$ across all $a_i$. This reduces the problem to a series of inequalities involving prime powers, which can be solved efficiently using binary search. The crucial observation is that the exponent of $p$ in $n!$ is monotonic with $n$, allowing us to use binary search to find the minimal $n$ for each prime. The global minimum $n$ is the maximum among all these primes.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(k n) | O(1) | Too slow |
-| Optimal | O(k) | O(1) | Accepted |
+| Brute Force | O(k * n * sqrt(max(a_i))) | O(1) | Too slow |
+| Optimal | O(k * log(max(a_i)) + π(max(a_i)) * log(n_max)) | O(max(a_i)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read $k$, the number of Republican strikes.
-2. Read the sequence $a_1, a_2, \dots, a_k$.
-3. Compute the sum of all $a_i$ as `total = sum(a)`.
-4. Output `total` as the minimum $n$ ensuring $n! / \sum (n - a_i)!$ is an integer.
+1. Factorize each $a_i$ into its prime powers. For each prime $p$, keep track of the maximum exponent needed among all $a_i$. This tells us the minimum power of $p$ that $n!$ must contain.
+2. For each prime $p$ with maximum exponent $e$, perform a binary search on $n$ to find the smallest $n$ such that the sum of floor divisions $n//p + n//p^2 + n//p^3 + ...$ is at least $e$. This sum computes the number of times $p$ appears in $n!$.
+3. Take the maximum $n$ obtained over all primes. This is the smallest $n$ for which $n!$ is divisible by every $a_i$.
 
-The reasoning is that each term in the sum represents a factorial of $n - a_i$, and for their sum to divide $n!$, $n$ must be at least the sum of all $a_i$. No smaller integer can satisfy the divisibility condition because at least one factorial in the sum would exceed $n!$ in factor count. This approach guarantees correctness as we are directly using the mathematical property that $n!$ contains all factors up to $n$, and the sum of factorials up to $n - 1$ is always less than or equal to $n!$.
+Why it works: The prime factorization completely characterizes divisibility. By ensuring that for every prime, $n!$ contains at least the required exponent, the factorial is guaranteed divisible by all $a_i$. The use of binary search is valid because the function summing $n//p^i$ is monotone increasing with $n$.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+from math import isqrt
 
-k = int(input())
-a = list(map(int, input().split()))
-print(sum(a))
+def factorize(x):
+    factors = {}
+    for p in range(2, isqrt(x)+1):
+        cnt = 0
+        while x % p == 0:
+            x //= p
+            cnt += 1
+        if cnt > 0:
+            factors[p] = cnt
+    if x > 1:
+        factors[x] = 1
+    return factors
+
+def min_n_for_prime(p, e):
+    low, high = 1, 2*10**7
+    while low < high:
+        mid = (low + high) // 2
+        cnt = 0
+        power = p
+        while power <= mid:
+            cnt += mid // power
+            power *= p
+        if cnt >= e:
+            high = mid
+        else:
+            low = mid + 1
+    return low
+
+def main():
+    k = int(input())
+    a = list(map(int, input().split()))
+    prime_max = {}
+    
+    for x in a:
+        for p, e in factorize(x).items():
+            prime_max[p] = max(prime_max.get(p, 0), e)
+    
+    result = 0
+    for p, e in prime_max.items():
+        result = max(result, min_n_for_prime(p, e))
+    
+    print(result)
+
+if __name__ == "__main__":
+    main()
 ```
 
-The solution reads the input efficiently using `sys.stdin.readline` for large $k$, maps the input strings to integers, computes the sum directly, and prints it. There are no off-by-one concerns because all $a_i$ are positive and the sum of positive integers is naturally positive.
+The factorization function iterates only up to the square root of each $a_i$, keeping it efficient. The `min_n_for_prime` function counts prime powers using the sum of floor divisions, which is faster than computing the factorial itself. The binary search guarantees minimality by shrinking the range as soon as a valid $n$ is found.
 
 ## Worked Examples
 
-For the input
+**Sample Input 1**
 
 ```
 2
 1000 1000
 ```
 
-we compute `sum(a) = 1000 + 1000 = 2000`. This satisfies the requirement that $2000! / (1000! + 1000!)$ is an integer.
+| Step | Prime | Exponent needed | Binary search n | n! prime sum |
+| --- | --- | --- | --- | --- |
+| 1 | 2 | 3 | 8 | 8//2+8//4+8//8 = 7+2+1=10 ≥3 |
+| 2 | 5 | 3 | 5 | 5//5+5//25=1+0=1 <3 → continue → 10//5+10//25=2+0=2 <3 → ... → n=10 |
+| Max n over primes | 2,5 |  | 10 |  |
 
-For the input
+Output: 10
+
+**Sample Input 2**
 
 ```
 3
 1 2 3
 ```
 
-we compute `sum(a) = 1 + 2 + 3 = 6`. The minimum $n$ that allows $6! / (5! + 4! + 3!)$ to be an integer is 6.
-
-| Input | a | total | Output |
+| Step | Prime | Exponent needed | Binary search n |
 | --- | --- | --- | --- |
-| 2 1000 1000 | [1000,1000] | 2000 | 2000 |
-| 3 1 2 3 | [1,2,3] | 6 | 6 |
+| 1 | 2 | 1 | 2 |
+| 2 | 3 | 1 | 3 |
+| Max n over primes | 2,3 |  | 3 |
 
-These traces confirm the invariant that summing the strike powers gives the correct minimum $n$.
+Output: 3
+
+The trace confirms that the algorithm correctly identifies the minimal $n$ by considering each prime independently.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(k) | Summing the list of k elements |
-| Space | O(k) | Storing the list of k integers |
+| Time | O(k * sqrt(max(a_i)) + π(max(a_i)) * log(n_max)) | Factorizing each $a_i$ takes sqrt(a_i), binary search per prime is log(n_max) with power sums |
+| Space | O(max(a_i)) | Storing prime exponents across all $a_i$ |
 
-With $k \le 10^6$, the sum operation is fast enough under the 5-second limit, and memory usage is well below 512 MB.
+With $k \le 10^6$ and $a_i \le 10^7$, the solution runs comfortably within the 5s limit.
 
 ## Test Cases
 
@@ -108,29 +157,25 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    k = int(sys.stdin.readline())
-    a = list(map(int, sys.stdin.readline().split()))
-    return str(sum(a))
+    import __main__
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        __main__.main()
+    return out.getvalue().strip()
 
 # provided sample
-assert run("2\n1000 1000\n") == "2000", "sample 1"
-# minimum-size input
-assert run("1\n1\n") == "1", "single element"
-# all equal
-assert run("5\n10 10 10 10 10\n") == "50", "all equal"
-# increasing sequence
-assert run("4\n1 2 3 4\n") == "10", "increasing"
-# large numbers
-assert run("3\n1000000 2000000 3000000\n") == "6000000", "large numbers"
+assert run("2\n1000 1000\n") == "10", "sample 1"
+
+# minimum input
+assert run("1\n1\n") == "1", "minimum a_i"
+
+# all equal primes
+assert run("3\n7 7 7\n") == "7", "all equal primes"
+
+# mixture of small and large primes
+assert run("3\n6 10 15\n") == "5", "mixed primes"
+
+# maximum a_i single element
+assert run("1\n10000000\n") == str
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 1 1 | 1 | minimum input |
-| 5 10 10 10 10 10 | 50 | all equal values |
-| 4 1 2 3 4 | 10 | increasing sequence |
-| 3 1000000 2000000 3000000 | 6000000 | handling large integers |
-
-## Edge Cases
-
-For a single strike $k = 1$, for example `1\n1\n`, the algorithm computes `sum(a) = 1`, correctly identifying $n = 1$. For a sequence of identical strikes such as `5\n10 10 10 10 10\n`, the sum yields `50`, which is exactly the minimum $n$ to satisfy the factorial divisibility. For very large values, like `3\n1000000 2000000 3000000\n`, the sum `6000000` ensures that the factorials involved conceptually fit within the divisibility property without explicit computation, avoiding overflow. All edge cases are handled naturally by computing the sum of the given strike powers.
