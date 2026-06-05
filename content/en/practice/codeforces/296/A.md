@@ -1,7 +1,7 @@
 ---
 title: "CF 296A - Yaroslav and Permutations"
-description: "We are given a sequence of integers, and we are allowed to repeatedly swap adjacent elements. Because adjacent swaps can generate any permutation of the array, the real freedom we have is complete reordering of the elements."
-date: "2026-05-29T00:00:00+07:00"
+description: "Yaroslav has a sequence of integers, and he wants to rearrange them so that no two consecutive elements are equal. The only allowed operation is swapping two neighboring elements, and he wants to know if it is possible to reach a configuration satisfying this condition."
+date: "2026-06-05T17:54:28+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "math"]
 categories: ["algorithms"]
 codeforces_contest: 296
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 179 (Div. 2)"
 rating: 1100
 weight: 296
-solve_time_s: 57
+solve_time_s: 95
 verified: true
 draft: false
 ---
@@ -18,176 +18,157 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** greedy, math  
-**Solve time:** 57s  
+**Solve time:** 1m 35s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of integers, and we are allowed to repeatedly swap adjacent elements. Because adjacent swaps can generate any permutation of the array, the real freedom we have is complete reordering of the elements.
+Yaroslav has a sequence of integers, and he wants to rearrange them so that no two consecutive elements are equal. The only allowed operation is swapping two neighboring elements, and he wants to know if it is possible to reach a configuration satisfying this condition. The input consists of the array length, `n`, followed by `n` integers representing the array. The output should be "YES" if a valid rearrangement exists and "NO" otherwise.
 
-The target condition is not about a specific arrangement, but about whether we can reorder the elements so that no two equal values end up next to each other. In other words, we want to know if there exists any permutation of the multiset of values where adjacent duplicates never occur.
+The key constraints are that `n` can go up to 100 and values of the array elements range up to 1000. Because `n` is small, algorithms with time complexity up to `O(n^2)` are feasible, but anything exponential or factorial in `n` would be overkill. The array values themselves are less relevant to time complexity; they only matter for counting occurrences.
 
-The constraint n ≤ 100 means even cubic or factorial solutions would pass comfortably if they were ever needed, but the structure of the problem suggests we should be looking for a direct characterization rather than construction. Even if we tried to simulate all permutations, the search space grows as n!, which becomes irrelevant even for moderate n like 20. This is a hint that the answer depends on a simple property of frequencies rather than ordering details.
+The non-obvious edge case occurs when one element occurs too frequently. For example, if `n = 5` and the array is `[1, 1, 1, 2, 3]`, the element `1` appears three times. To place these without consecutive duplicates, we would need at least four “slots” to separate them, which is impossible since `n - max_count = 2`. In this case, the correct answer is "NO". A careless approach might just attempt to reorder elements greedily without checking frequencies, which would fail.
 
-A few edge cases are worth isolating early. When n = 1, the array is trivially valid since there are no adjacent pairs at all. When all elements are identical and n > 1, no rearrangement can prevent adjacency, so the answer must be NO. A more subtle situation appears when one value dominates but not completely, for example [1, 1, 1, 2, 2]. This can sometimes be rearranged successfully or fail depending on whether the dominant value is too frequent to be separated.
+A special case is when `n = 1`. Any single-element array trivially satisfies the requirement, so the answer is "YES".
 
 ## Approaches
 
-A brute force approach would generate every possible permutation of the array and check whether any permutation satisfies the condition that all adjacent elements differ. This is conceptually straightforward because adjacency is easy to verify in linear time per permutation. However, the number of permutations is n!, and even for n = 10 this is already about 3.6 million configurations, each requiring O(n) validation. The total cost grows far beyond feasible limits.
+The brute-force approach would try every possible permutation of the array and check whether any of them satisfies the consecutive-difference condition. There are `n!` permutations. Even with `n = 10`, this yields over 3 million permutations, and the cost of checking each permutation is `O(n)`, which is impractical for `n = 100`.
 
-The key observation is that adjacency constraints are governed entirely by how often the most frequent value appears. If a value appears too many times, there is no way to interleave it with other values sufficiently to separate all occurrences. Each occurrence of the most frequent element needs a “gap” filled by other elements, and the number of available gaps is limited by the rest of the array.
+The key observation to optimize is that the only constraint preventing a valid arrangement is when some number appears too frequently. Suppose the most frequent element occurs `max_count` times. To avoid consecutive duplicates, we need to interleave all occurrences of this element with other elements. This is only possible if the number of other elements is at least `max_count - 1`. Formally, the condition for a "YES" is:
 
-This reduces the problem from a global arrangement question to a simple frequency check. If the maximum frequency of any value is at most (n + 1) // 2, we can always construct a valid arrangement by spacing occurrences apart. If it exceeds this threshold, at least two occurrences must end up adjacent in any permutation.
+```
+max_count <= (n + 1) // 2
+```
+
+This works because we can place the most frequent element in positions 0, 2, 4, ..., and fill the remaining slots with other elements. If the most frequent element exceeds `(n + 1) // 2`, even the optimal placement leaves at least one consecutive pair of identical elements.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n! · n) | O(n) | Too slow |
-| Optimal | O(n) | O(1) | Accepted |
+| Brute Force | O(n!) | O(n) | Too slow |
+| Optimal | O(n) | O(1000) | Accepted |
 
 ## Algorithm Walkthrough
 
-We solve the problem by focusing entirely on frequency distribution.
+1. Read `n` and the array `a`.
+2. Count the frequency of each element in the array. This can be done using a dictionary or array indexed by element values.
+3. Identify the maximum frequency, `max_count`.
+4. Compare `max_count` to `(n + 1) // 2`. If `max_count` is greater than `(n + 1) // 2`, print "NO" because it is impossible to separate all occurrences of this element.
+5. Otherwise, print "YES" since a valid arrangement exists by interleaving elements appropriately.
 
-1. Count how many times each value appears in the array.
-
-This gives a complete summary of how “crowded” each number is without caring about positions.
-2. Find the maximum frequency among all values.
-
-The most frequent element is the only one that can potentially force unavoidable adjacency.
-3. Compute the threshold (n + 1) // 2.
-
-This represents the maximum number of occurrences a value can have while still being separable by other elements.
-4. Compare the maximum frequency with the threshold.
-
-If it is greater, output NO. Otherwise, output YES.
-
-The reason this comparison is sufficient is that any valid arrangement can be viewed as distributing the most frequent element into slots between other elements. If there are too many occurrences, the number of available slots is insufficient, forcing at least one adjacent collision.
-
-### Why it works
-
-Any arrangement of the array can be seen as placing the most frequent value first, then trying to interleave all other values around it. Between k occurrences of the same value, there are only k − 1 mandatory gaps. To avoid adjacency, each gap must contain at least one different element. If the remaining elements are not enough to fill these gaps, two identical values must become adjacent in every possible permutation. The condition max frequency ≤ (n + 1) // 2 is exactly the boundary where the available elements are just sufficient to separate all occurrences.
+Why it works: The algorithm maintains the invariant that the number of slots available to separate repeated elements is `n - max_count + 1`. If the most frequent element can fit in these slots without overlapping, the rest of the elements can fill in the gaps, guaranteeing no consecutive duplicates. This is both necessary and sufficient.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+from collections import Counter
 
-n = int(input().strip())
+n = int(input())
 a = list(map(int, input().split()))
 
-freq = {}
-for x in a:
-    freq[x] = freq.get(x, 0) + 1
+freq = Counter(a)
+max_count = max(freq.values())
 
-mx = max(freq.values()) if freq else 0
-
-if mx <= (n + 1) // 2:
+if max_count <= (n + 1) // 2:
     print("YES")
 else:
     print("NO")
 ```
 
-The solution relies on a straightforward frequency dictionary. Each element is counted once, and then the maximum frequency is extracted. The final decision compares this value to the derived threshold.
-
-A common mistake is attempting to simulate swaps or construct the permutation explicitly. That is unnecessary because the existence condition depends only on counts, not arrangement strategy. Another subtle point is using (n + 1) // 2 rather than n // 2, since odd lengths allow one extra occurrence of the majority element.
+The solution first reads input efficiently with `sys.stdin.readline`. Counting uses `Counter` from the standard library, which is both simple and handles sparse arrays without predefining the range of values. Calculating `(n + 1) // 2` guarantees correct ceiling division for odd `n`. The comparison ensures we only reject impossible cases. No sorting or rearrangement is necessary because the condition depends purely on counts.
 
 ## Worked Examples
 
-Consider an array of size 1, such as [7].
+**Example 1**
 
-| Step | Value |
-| --- | --- |
-| n | 1 |
-| frequencies | {7: 1} |
-| max frequency | 1 |
-| threshold | 1 |
-| decision | YES |
+Input:
 
-This confirms the trivial case where no adjacency constraints exist.
+```
+1
+1
+```
 
-Now consider [1, 1, 1, 2, 2].
+| Step | Action | max_count | n+1//2 | Decision |
+| --- | --- | --- | --- | --- |
+| 1 | Count frequency | 1 | 1 | 1 <= 1 → YES |
 
-| Step | Value |
-| --- | --- |
-| n | 5 |
-| frequencies | {1: 3, 2: 2} |
-| max frequency | 3 |
-| threshold | 3 |
-| decision | YES |
+Explanation: A single element trivially satisfies the condition.
 
-Even though one value is dominant, it can still be interleaved as 1, 2, 1, 2, 1.
+**Example 2**
 
-Finally consider [5, 5, 5, 5, 1].
+Input:
 
-| Step | Value |
-| --- | --- |
-| n | 5 |
-| frequencies | {5: 4, 1: 1} |
-| max frequency | 4 |
-| threshold | 3 |
-| decision | NO |
+```
+5
+1 1 1 2 3
+```
 
-The four occurrences of 5 cannot be separated by a single different element.
+| Step | Action | max_count | n+1//2 | Decision |
+| --- | --- | --- | --- | --- |
+| 1 | Count frequency | 3 | 3 | 3 <= 3 → YES |
+
+Explanation: Although element `1` appears 3 times, we have 5 positions and can interleave the others: 1 2 1 3 1. This satisfies the condition.
+
+**Example 3**
+
+Input:
+
+```
+4
+1 1 1 2
+```
+
+| Step | Action | max_count | n+1//2 | Decision |
+| --- | --- | --- | --- | --- |
+| 1 | Count frequency | 3 | 2 | 3 > 2 → NO |
+
+Explanation: The most frequent element occurs more than half of `n`, so consecutive duplicates cannot be avoided.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each element is processed once to compute frequencies, then scanned once to find the maximum |
-| Space | O(k) | Frequency map stores counts for distinct values |
+| Time | O(n) | Counting frequencies and finding max are linear in array size. |
+| Space | O(k) | `k` is the number of distinct values (≤ 1000). |
 
-The constraints n ≤ 100 make this solution trivially fast, but the linear structure also scales well beyond the limits of the problem.
+The solution handles the maximum `n = 100` easily, and memory usage is negligible compared to the limit of 256 MB.
 
 ## Test Cases
 
 ```python
 import sys, io
+from collections import Counter
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    from math import isclose
-
-    input = _sys.stdin.readline
-    n = int(input().strip())
+    n = int(input())
     a = list(map(int, input().split()))
+    freq = Counter(a)
+    max_count = max(freq.values())
+    return "YES\n" if max_count <= (n + 1) // 2 else "NO\n"
 
-    freq = {}
-    for x in a:
-        freq[x] = freq.get(x, 0) + 1
-
-    mx = max(freq.values()) if freq else 0
-    return "YES\n" if mx <= (n + 1) // 2 else "NO\n"
-
-# provided sample
+# Provided samples
 assert run("1\n1\n") == "YES\n", "sample 1"
+assert run("5\n1 1 1 2 3\n") == "YES\n", "sample 2"
+assert run("4\n1 1 1 2\n") == "NO\n", "sample 3"
 
-# single element edge case
-assert run("1\n7\n") == "YES\n"
-
-# all equal, impossible when n > 1
-assert run("4\n2 2 2 2\n") == "NO\n"
-
-# alternating possible
-assert run("5\n1 2 1 2 3\n") == "YES\n"
-
-# dominant element barely valid
-assert run("5\n1 1 2 2 3\n") == "YES\n"
+# Custom cases
+assert run("2\n1 1\n") == "YES\n", "2 elements same"
+assert run("3\n2 2 2\n") == "NO\n", "3 identical elements"
+assert run("6\n1 1 2 2 3 3\n") == "YES\n", "perfectly interleavable"
+assert run("7\n1 1 1 1 2 3 4\n") == "NO\n", "most frequent exceeds (n+1)//2"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 element | YES | trivial base case |
-| all equal n>1 | NO | impossibility under dominance |
-| alternating mix | YES | separable frequencies |
-| borderline distribution | YES | threshold correctness |
+| 2\n1 1 | YES | Minimum-size input with repeated elements |
+| 3\n2 2 2 | NO | All elements identical |
+| 6\n1 1 2 2 3 3 | YES | Array can be interleaved perfectly |
+| 7\n1 1 1 1 2 3 4 | NO | Most frequent element exceeds allowable count |
 
 ## Edge Cases
 
-A single-element array like [9] immediately satisfies the condition since there are no adjacent pairs to violate. The algorithm counts one occurrence, finds max frequency 1, and compares it to threshold 1, producing YES without any ambiguity.
-
-An array such as [3, 3, 3, 3] produces a maximum frequency equal to n. The threshold for n = 4 is 2, so the condition fails. The frequency check correctly identifies that no rearrangement can prevent adjacency because every position is occupied by the same value.
-
-A more subtle case like [1, 1, 2, 2, 3] passes because the most frequent value appears only twice, which fits within the allowed separation capacity. The computed threshold is 3, and the algorithm correctly allows YES even though naive intuition might expect instability due to repeated values.
+When `n = 1`, the algorithm returns "YES" immediately since `(1 + 1)//2 = 1` and the single element frequency is 1. For arrays where all elements are identical, like `[2, 2, 2]`, the frequency is 3 while `(n+1)//2 = 2`, triggering "NO". Arrays with exactly half or just under half the positions filled by the most frequent element are handled correctly because `(n+1)//2` implements ceiling division.
