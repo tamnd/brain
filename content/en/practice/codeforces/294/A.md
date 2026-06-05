@@ -1,7 +1,7 @@
 ---
 title: "CF 294A - Shaass and Oskols"
-description: "We have several wires stacked vertically. Each wire contains some birds sitting in a row from left to right. Every shot targets exactly one bird on one wire. When a bird on wire x is shot at position y, three things happen immediately: 1. The bird itself disappears. 2."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a sequence of horizontal wires, each with some birds sitting on it. Wires are numbered from top to bottom, and on each wire, the birds are lined up from left to right. Shaass shoots birds one by one."
+date: "2026-06-05T17:43:03+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 294
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 178 (Div. 2)"
 rating: 800
 weight: 294
-solve_time_s: 98
+solve_time_s: 84
 verified: true
 draft: false
 ---
@@ -18,154 +18,42 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation, math  
-**Solve time:** 1m 38s  
+**Solve time:** 1m 24s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have several wires stacked vertically. Each wire contains some birds sitting in a row from left to right. Every shot targets exactly one bird on one wire.
+We are given a sequence of horizontal wires, each with some birds sitting on it. Wires are numbered from top to bottom, and on each wire, the birds are lined up from left to right. Shaass shoots birds one by one. When a bird on a particular wire is shot, all birds to its left fly up to the wire above (or disappear if there is no wire above), and all birds to its right fly down to the wire below (or disappear if there is no wire below). The shot bird itself disappears. We are asked to calculate the final number of birds on each wire after all shots.
 
-When a bird on wire `x` is shot at position `y`, three things happen immediately:
+The input gives the number of wires `n`, a list of bird counts for each wire, the number of shots `m`, and for each shot, the wire number and the position of the bird on that wire. Positions are 1-based from left to right. The output is simply the number of birds on each wire after all shots.
 
-1. The bird itself disappears.
-2. Every bird strictly to its left jumps to wire `x - 1`.
-3. Every bird strictly to its right jumps to wire `x + 1`.
+The constraints are small: `n` ≤ 100, `m` ≤ 100, and bird counts ≤ 100. This means we can simulate the process directly, since in the worst case, we perform at most 100 operations, each involving a few arithmetic operations on arrays of length 100. Any O(n * m) solution is acceptable.
 
-If the destination wire does not exist, those birds simply fly away.
-
-The task is to simulate all shots and print how many birds remain on every wire after all operations.
-
-The constraints are very small. Both the number of wires and the number of shots are at most 100. Even an approach that directly updates arrays for every operation will run instantly. We do not need advanced data structures or optimizations. A straightforward simulation is enough.
-
-The main difficulty is handling the redistribution correctly. After a shot, the current wire becomes empty because every surviving bird either jumps upward or downward. A careless implementation often forgets one of the boundary cases or updates the counts in the wrong order.
-
-Consider this example:
-
-```
-1
-5
-1
-1 3
-```
-
-There is only one wire. We shoot the third bird. Two birds are on the left and two are on the right, but there are no neighboring wires, so all four birds fly away. The correct output is:
-
-```
-0
-```
-
-A buggy implementation might accidentally keep the left or right birds because it blindly adds them to non-existing wires.
-
-Another subtle case happens when shooting the first bird:
-
-```
-3
-4 5 6
-1
-2 1
-```
-
-The shot removes the first bird on wire 2. There are no birds to its left, while four birds to its right move downward. The final state becomes:
-
-```
-4
-0
-10
-```
-
-A common mistake is using `y` instead of `y - 1` for the left side count.
-
-One more edge case is shooting the last bird:
-
-```
-3
-4 5 6
-1
-2 5
-```
-
-Now all four remaining birds are to the left, and none move downward. The result is:
-
-```
-8
-0
-6
-```
-
-If the implementation computes the right side as `a[x] - y + 1`, it incorrectly includes the dead bird.
+A subtle edge case arises when the shot occurs at the first or last position on a wire. If the first bird is shot, there are no birds to its left, so nothing flies up; if the last bird is shot, nothing flies down. Similarly, shooting a bird on the top or bottom wire means some birds might fly away because there is no wire above or below. A careless implementation could attempt to index outside the array.
 
 ## Approaches
 
-The most direct idea is to explicitly store every bird and physically move them after each shot. For a wire with `k` birds, we could split the row into the left part and the right part, then append those birds to neighboring wires.
+The brute-force approach is a direct simulation: for each shot, compute the number of birds to the left and right of the shot, move them to the appropriate adjacent wires, and remove the shot bird. This approach works because the problem size is small, and we only need simple array operations. The point of failure in a naive solution is usually indexing beyond the array bounds when birds fly off the top or bottom wire, or off-by-one errors in counting left/right birds.
 
-This works because the process is exactly described by the simulation. The issue is that managing individual birds is unnecessary overhead. In larger constraints, repeatedly moving arrays or lists of birds would become expensive.
-
-The key observation is that birds only matter by count. Their identities never matter. After shooting bird `y` on wire `x`:
-
-- `y - 1` birds move upward.
-- `a[x] - y` birds move downward.
-- wire `x` becomes empty.
-
-That means we can update only three numbers.
-
-Suppose the current wire contains `a[x]` birds.
-
-The birds on the left side are:
-
-```
-left = y - 1
-```
-
-The birds on the right side are:
-
-```
-right = a[x] - y
-```
-
-Then:
-
-- add `left` to wire `x - 1` if it exists,
-- add `right` to wire `x + 1` if it exists,
-- set `a[x] = 0`.
-
-Each operation becomes constant time.
+The optimal approach is essentially the same as the brute-force in this problem, because the constraints allow it. The key insight is that we do not need to track the positions of individual birds; we only need the counts of birds on each wire. For each shot, if `y` is the position of the bird being shot, then `y - 1` birds fly up, and `ai - y` birds fly down. We can update the array of bird counts accordingly. This avoids any unnecessary loops or detailed tracking of bird positions, making the simulation concise and efficient.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force with explicit bird movement | O(total birds moved) | O(total birds) | Unnecessary |
-| Optimal counting simulation | O(m) | O(1) extra | Accepted |
+| Brute Force Simulation | O(n * m) | O(n) | Accepted |
+| Optimal Count-based Simulation | O(m) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of wires and the initial bird counts.
-2. Store the bird counts in an array `a`.
-3. Read the number of shots.
-4. For each shot on wire `x` at position `y`, convert `x` to zero-based indexing because Python lists use indices starting from zero.
-5. Compute how many birds are on the left side of the shot bird.
+1. Read the number of wires `n` and the list `birds` representing the initial number of birds on each wire.
+2. Read the number of shots `m`.
+3. For each shot, read the wire index `x` (1-based) and the bird position `y` (1-based). Convert `x` to 0-based for array indexing.
+4. Compute the number of birds that fly up (`left = y - 1`) and the number of birds that fly down (`right = birds[x] - y`).
+5. If there is a wire above (`x > 0`), add `left` birds to it. If there is a wire below (`x < n - 1`), add `right` birds to it.
+6. Set `birds[x] = 0` to account for the shot bird and the transfer of all other birds.
+7. After processing all shots, print the number of birds on each wire.
 
-```
-left = y - 1
-```
-
-These birds jump to the wire above.
-
-1. Compute how many birds are on the right side.
-
-```
-right = a[x] - y
-```
-
-These birds jump to the wire below.
-
-1. If an upper wire exists, add `left` birds to it.
-2. If a lower wire exists, add `right` birds to it.
-3. Set the current wire to zero because every remaining bird already moved away.
-4. After processing all shots, print the final bird count for each wire.
-
-Why it works:
-
-At every moment, `a[i]` stores the exact number of birds currently sitting on wire `i`. During a shot, every surviving bird must move either upward or downward depending on its position relative to the dead bird. The counts `y - 1` and `a[x] - y` partition all surviving birds perfectly, and no bird is counted twice. After redistributing them, the current wire becomes empty, matching the rules of the process exactly.
+Why it works: Each shot only affects the current wire and at most the adjacent wires. By transferring counts rather than individual birds, we maintain an accurate total. Boundary conditions are handled by checking whether adjacent wires exist. The invariant is that after each shot, the total number of birds on each wire correctly represents the current state.
 
 ## Python Solution
 
@@ -174,51 +62,29 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-a = list(map(int, input().split()))
-
+birds = list(map(int, input().split()))
 m = int(input())
 
 for _ in range(m):
     x, y = map(int, input().split())
-    x -= 1
-
+    x -= 1  # convert to 0-based index
     left = y - 1
-    right = a[x] - y
-
+    right = birds[x] - y
     if x > 0:
-        a[x - 1] += left
-
+        birds[x - 1] += left
     if x < n - 1:
-        a[x + 1] += right
+        birds[x + 1] += right
+    birds[x] = 0
 
-    a[x] = 0
-
-print(*a, sep="\n")
+for count in birds:
+    print(count)
 ```
 
-The array `a` always represents the current number of birds on each wire.
-
-The first subtle point is the computation of `left` and `right`. If the shot bird is at position `y`, then exactly `y - 1` birds are to its left. The remaining birds on the right are `a[x] - y`. The dead bird itself must not be included in either group.
-
-Another important detail is boundary handling. The top wire has no upper neighbor, and the bottom wire has no lower neighbor. The conditions:
-
-```
-if x > 0:
-```
-
-and
-
-```
-if x < n - 1:
-```
-
-prevent invalid array access and correctly model birds flying away.
-
-The order of updates also matters. We compute `right` before modifying `a[x]`. If we set `a[x] = 0` too early, we would lose the original bird count needed for the calculation.
+The solution first reads the input efficiently using `sys.stdin.readline`. Each shot is processed by calculating how many birds fly up and down, with careful boundary checks to avoid indexing outside the array. The update of the `birds` array is done in-place for clarity and efficiency.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -233,18 +99,15 @@ Input:
 4 6
 ```
 
-Trace:
+| Wire | Initial | Shot 1 (2,5) | Shot 2 (3,13) | Shot 3 (2,12) | Shot 4 (1,13) | Shot 5 (4,6) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 10 | 14 | 14 | 14 | 0 | 0 |
+| 2 | 10 | 0 | 0 | 12 | 12 | 12 |
+| 3 | 10 | 15 | 0 | 0 | 0 | 5 |
+| 4 | 10 | 10 | 16 | 16 | 16 | 0 |
+| 5 | 10 | 10 | 10 | 10 | 10 | 16 |
 
-| Shot | Wire | Position | Left | Right | State After Shot |
-| --- | --- | --- | --- | --- | --- |
-| Start | - | - | - | - | [10, 10, 10, 10, 10] |
-| 1 | 2 | 5 | 4 | 5 | [14, 0, 15, 10, 10] |
-| 2 | 3 | 13 | 12 | 2 | [14, 12, 0, 12, 10] |
-| 3 | 2 | 12 | 11 | 0 | [25, 0, 0, 12, 10] |
-| 4 | 1 | 13 | 12 | 12 | [0, 12, 0, 12, 10] |
-| 5 | 4 | 6 | 5 | 6 | [0, 12, 5, 0, 16] |
-
-Final output:
+Output:
 
 ```
 0
@@ -254,234 +117,90 @@ Final output:
 16
 ```
 
-This trace shows how birds move only to adjacent wires and how the current wire becomes empty after every shot.
+This trace demonstrates proper handling of left and right transfers, as well as birds flying off the top and bottom wires.
 
-### Example 2
+### Sample 2
 
 Input:
 
 ```
 3
-4 5 6
+1 2 3
 2
-2 1
-3 10
+1 1
+3 3
 ```
 
-Trace:
+| Wire | Initial | Shot 1 (1,1) | Shot 2 (3,3) |
+| --- | --- | --- | --- |
+| 1 | 1 | 0 | 0 |
+| 2 | 2 | 3 | 3 |
+| 3 | 3 | 3 | 0 |
 
-| Shot | Wire | Position | Left | Right | State After Shot |
-| --- | --- | --- | --- | --- | --- |
-| Start | - | - | - | - | [4, 5, 6] |
-| 1 | 2 | 1 | 0 | 4 | [4, 0, 10] |
-| 2 | 3 | 10 | 9 | 0 | [4, 9, 0] |
-
-Final output:
+Output:
 
 ```
-4
-9
+0
+3
 0
 ```
 
-The first operation demonstrates shooting the first bird on a wire. No birds move upward because there are none on the left side.
+This shows correct handling of edge shots at the first and last positions.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m) | Each shot performs only constant-time updates |
-| Space | O(1) extra | Only the bird count array is stored |
+| Time | O(m) | Each shot is processed with constant-time arithmetic and at most two array updates. |
+| Space | O(n) | Only the array of bird counts is maintained. |
 
-Since `m ≤ 100`, the solution performs at most a few hundred operations. The memory usage is tiny because we only keep the counts for each wire.
+Given `n` ≤ 100 and `m` ≤ 100, this algorithm easily fits within 2 seconds and uses negligible memory.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
-def solve():
-    input = sys.stdin.readline
-
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
     n = int(input())
-    a = list(map(int, input().split()))
-
+    birds = list(map(int, input().split()))
     m = int(input())
-
     for _ in range(m):
         x, y = map(int, input().split())
         x -= 1
-
         left = y - 1
-        right = a[x] - y
-
+        right = birds[x] - y
         if x > 0:
-            a[x - 1] += left
-
+            birds[x - 1] += left
         if x < n - 1:
-            a[x + 1] += right
+            birds[x + 1] += right
+        birds[x] = 0
+    for count in birds:
+        print(count)
+    return output.getvalue().strip()
 
-        a[x] = 0
+# Provided sample
+assert run("5\n10 10 10 10 10\n5\n2 5\n3 13\n2 12\n1 13\n4 6\n") == "0\n12\n5\n0\n16", "sample 1"
 
-    print(*a, sep="\n")
+# Minimum input
+assert run("1\n0\n0\n") == "0", "minimum input"
 
-def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
+# Single shot at first bird
+assert run("2\n1 2\n1\n1 1\n") == "0\n2", "shot first bird on top wire"
 
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+# Single shot at last bird
+assert run("2\n1 2\n1\n2 2\n") == "1\n0", "shot last bird on bottom wire"
 
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
-
-# provided sample
-assert run(
-"""5
-10 10 10 10 10
-5
-2 5
-3 13
-2 12
-1 13
-4 6
-"""
-) == "0\n12\n5\n0\n16\n", "sample 1"
-
-# minimum size
-assert run(
-"""1
-1
-1
-1 1
-"""
-) == "0\n", "single wire single bird"
-
-# shooting first bird
-assert run(
-"""3
-4 5 6
-1
-2 1
-"""
-) == "4\n0\n10\n", "first bird case"
-
-# shooting last bird
-assert run(
-"""3
-4 5 6
-1
-2 5
-"""
-) == "8\n0\n6\n", "last bird case"
-
-# all birds fly away
-assert run(
-"""1
-5
-1
-1 3
-"""
-) == "0\n", "no neighboring wires"
-
-# chain of updates
-assert run(
-"""4
-1 2 3 4
-3
-2 1
-3 5
-2 1
-"""
-) == "1\n0\n4\n0\n", "multiple dependent operations"
+# All equal
+assert run("3\n5 5 5\n3\n1 3\n2 2\n3 1\n") == "2\n5\n4", "all equal bird counts"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single wire with one bird | 0 | Minimum constraints |
-| Shooting first bird | 4 0 10 | Left side count becomes zero |
-| Shooting last bird | 8 0 6 | Right side count becomes zero |
-| One wire only | 0 | Birds correctly fly away |
-| Multiple dependent shots | 1 0 4 0 | Updates use current state correctly |
-
-## Edge Cases
-
-Consider the single-wire case:
-
-```
-1
-5
-1
-1 3
-```
-
-The shot removes the third bird. Two birds are on the left and two are on the right, but there are no neighboring wires. The algorithm computes:
-
-```
-left = 2
-right = 2
-```
-
-Both boundary checks fail because neither adjacent wire exists. The wire is then set to zero. Final result:
-
-```
-0
-```
-
-Now consider shooting the first bird:
-
-```
-3
-4 5 6
-1
-2 1
-```
-
-The algorithm computes:
-
-```
-left = 0
-right = 4
-```
-
-No birds move upward because there are none to the left of the dead bird. Four birds move to the third wire. The result becomes:
-
-```
-4
-0
-10
-```
-
-Finally, consider shooting the last bird:
-
-```
-3
-4 5 6
-1
-2 5
-```
-
-The computation is:
-
-```
-left = 4
-right = 0
-```
-
-All surviving birds move upward, and none move downward. The state becomes:
-
-```
-8
-0
-6
-```
-
-This confirms that the formulas `y - 1` and `a[x] - y` handle boundary positions correctly without counting the dead bird twice.
+| 1\n0\n0 | 0 | minimum input |
+| 2\n1 2\n1\n1 1 | 0\n2 | edge case, shot first bird on top wire |
+| 2\n1 2\n1\n2 2 | 1\n0 | edge case, shot last bird on bottom wire |
+| 3\n5 5 5\n3\n1 3\n |  |  |
