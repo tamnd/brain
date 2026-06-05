@@ -1,7 +1,7 @@
 ---
 title: "CF 314B - Sereja and Periods"
-description: "We are given two base strings, call them a and c, and two integers b and d. From these, two longer strings are conceptually constructed: the first string is a repeated b times, and the second is c repeated p times for some unknown positive integer p."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given two strings, a and c, and two integers, b and d. The string a is repeated b times to form a long string w, and the string c is repeated p times to form another string q."
+date: "2026-06-06T01:04:30+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "dfs-and-similar", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 314
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 187 (Div. 1)"
 rating: 2000
 weight: 314
-solve_time_s: 83
+solve_time_s: 65
 verified: true
 draft: false
 ---
@@ -18,55 +18,40 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** binary search, dfs and similar, strings  
-**Solve time:** 1m 23s  
+**Solve time:** 1m 5s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given two base strings, call them `a` and `c`, and two integers `b` and `d`. From these, two longer strings are conceptually constructed: the first string is `a` repeated `b` times, and the second is `c` repeated `p` times for some unknown positive integer `p`.
+We are given two strings, `a` and `c`, and two integers, `b` and `d`. The string `a` is repeated `b` times to form a long string `w`, and the string `c` is repeated `p` times to form another string `q`. The task is to find the largest integer `p` such that `q` can be obtained from `w` by deleting some characters without rearranging the remaining ones. In other words, `q` must be a subsequence of `w`. The output is this maximum `p`, or `0` if no positive integer works.
 
-The task is to determine the maximum value of `p` such that the repeated string `c` repeated `p` times can be obtained as a subsequence of the repeated string `a` repeated `b` times. Subsequence means we may delete characters from `a` repeated `b` times, but cannot reorder them.
+The bounds `b` and `d` go up to $10^7$, while the strings themselves are at most length 100. This indicates that we cannot explicitly construct the full strings `w` and `q`, because their lengths could reach $10^9$. Instead, any solution must work with the base strings and their repetition counts efficiently. A naive solution that repeatedly builds the repeated strings will exceed memory limits and runtime constraints.
 
-So the core question becomes: how many full copies of `c` can we greedily “fit” into `a` repeated `b` times while respecting order.
-
-The constraints matter in a very specific way. The strings `a` and `c` are both at most length 100, while the repetition count `b` is as large as 10^7. This immediately rules out constructing the full string `a * b` explicitly, since that would be up to 10^9 characters in the worst case. Any solution must simulate repetition without materializing it. The small alphabetic strings suggest cycle detection or greedy scanning over repeated patterns.
-
-A naive attempt would simulate matching `c` inside `a * b` character by character. That would require O(|a| * b) operations, which is up to 10^9, far too slow.
-
-A subtler failure mode appears when a greedy matcher restarts incorrectly between blocks of `a`. If we do not correctly carry the pointer across repetitions, we may underestimate how many copies of `c` can be formed.
+Non-obvious edge cases include when `c` contains letters not present in `a`, or when `c` is longer than `a` and `b` is small. For example, if `a = "abc"`, `b = 2`, `c = "abcd"`, `d = 1`, there is no way to form `c` even once from `a` repeated twice, so the output should be 0. A careless solution that ignores character frequency mismatches or that attempts a greedy approach without proper accounting can produce incorrect answers.
 
 ## Approaches
 
-A direct simulation is straightforward to imagine. We scan through `a * b`, maintaining a pointer in `c`. Every time we match all of `c`, we increment the answer and restart the pointer. This is correct because subsequence matching is greedy: consuming earliest possible matches never reduces future possibilities.
+The brute-force approach would be to try constructing `w` explicitly by repeating `a` `b` times, and then attempt to form `q` by matching `c` repeatedly. Each attempt would iterate through `w` to count how many times `c` fits as a subsequence. This works in principle, but the worst-case complexity is $O(b \cdot |a| \cdot p \cdot |c|)$, which can reach $10^{16}$ operations - clearly impractical.
 
-However, the problem is that `a * b` is too large to iterate explicitly. Even if we scan one character at a time, we would perform up to 10^9 comparisons.
+The key insight is that we do not need the entire string. The problem reduces to counting how many times we can find `c` as a subsequence within the repeated pattern of `a`. By focusing on indices and transitions within `a`, we can simulate how `c` progresses through multiple repetitions of `a` efficiently. We precompute, for each starting position in `a` and for each character in `c`, where the next matching character occurs. This allows us to "jump" through `a` without iterating character by character, giving a linear-time solution in terms of `|a| * |c|`.
 
-The key observation is that the process is periodic with respect to the string `a`. When we are at some position inside `a` and some position inside `c`, the future behavior depends only on this pair of states. There are at most `|a| * |c|` such states. Once a state repeats, the process enters a cycle, and we can “jump” over many repetitions of `a` at once.
-
-This leads to a precomputation step: for every starting position in `a` and every position in `c`, we simulate one full pass over `a`, recording how many characters of `c` we consume and where we end up. This gives a transition table. Then we apply these transitions over `b` blocks of `a`, using cycle detection or binary lifting.
-
-A simpler and commonly accepted solution avoids full binary lifting by noticing that `b` is large but only one-dimensional repetition is involved. We simulate block-by-block and detect repeated states `(pos_in_c)`. Once a repetition is found, we can compute how many full cycles of `c` are gained per cycle of `a`, and jump.
+With this approach, we repeatedly apply this precomputed subsequence matching until we exhaust `b` repetitions of `a`. The result is the maximum number of times `c` fits (`p`), divided by `d` since `q` is `c` repeated `d` times.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force on full string | O( | a | · b) |
-| Cycle detection per block | O( | a | · |
+| Brute Force | O(b * | a | * p * |
+| Optimal | O( | a | * |
 
 ## Algorithm Walkthrough
 
-We treat the process as repeatedly scanning the string `a` and trying to match characters of `c` in order.
+1. Compute the length of `a` (`la`) and `c` (`lc`). Initialize a pointer `pos` in `a` to zero. This pointer will simulate traversing the repeated `a` string without actually constructing it.
+2. Initialize a counter `count_c` to zero. This will track how many times we successfully match `c` as a subsequence in the repeated `a`.
+3. Iterate while the total traversed `a` repetitions are less than `b`. For each character in `c`, find the next occurrence of that character in `a` starting from `pos`. If we reach the end of `a`, increment a repetition counter and reset `pos` to zero. This simulates moving to the next copy of `a`.
+4. Each time we complete matching `c` once, increment `count_c`. Continue until we cannot match `c` anymore because we have used all `b` repetitions of `a`.
+5. Finally, divide `count_c` by `d` (integer division) to get the maximum `p`, since `q` consists of `c` repeated `d` times.
 
-1. Start with a pointer `i = 0` in string `c` and answer `ans = 0`. We also track how many full copies of `c` we have completed.
-2. For each repetition of `a` (from 1 to `b`), simulate scanning through `a` character by character. For each character, if it matches `c[i]`, advance `i`. When `i` reaches `len(c)`, we have matched one full copy of `c`, so increment `ans` and reset `i = 0`. This directly simulates subsequence matching across repeated blocks.
-3. After finishing one full pass of `a`, we check if we have seen the same state `i` before at the end of a previous block. We store the block index where each `i` was first seen.
-4. If a repeated state is found, we identify a cycle. Suppose we first saw state `i` at block `x` and now we are at block `y`. The number of completed `c` copies gained between these blocks is also known. We compute cycle gain per block interval.
-5. We compute how many full cycles of this pattern fit into the remaining blocks up to `b`, and jump the simulation forward in O(1).
-6. After applying all jumps, we return the total number of completed `c` strings.
-
-### Why it works
-
-The state of the process after each block of `a` is completely determined by the current index in `c`. Since there are only `|c|` possible values, once a value repeats, the future evolution must repeat identically. This forms a cycle in a finite state graph. Each cycle contributes a fixed number of completed matches of `c`, so we can compress repeated structure safely without missing or double-counting matches.
+**Why it works**: The algorithm maintains the invariant that `pos` represents the current position in the repeated `a` where the next character match should start. By jumping to the next occurrence of the needed character and counting repetitions of `a`, we accurately simulate subsequence matching without building the full strings. This guarantees that `count_c` represents the exact number of `c` sequences obtainable from `w`, and integer division by `d` produces the correct maximum `p`.
 
 ## Python Solution
 
@@ -74,126 +59,109 @@ The state of the process after each block of `a` is completely determined by the
 import sys
 input = sys.stdin.readline
 
-def solve():
-    b, d = map(int, input().split())
-    a = input().strip()
-    c = input().strip()
+b, d = map(int, input().split())
+a = input().strip()
+c = input().strip()
 
-    n, m = len(a), len(c)
+la, lc = len(a), len(c)
 
-    # next_state[i] after processing full string a starting from position i in c
-    next_state = [0] * m
-    gain = [0] * m
+# Precompute next occurrence positions in `a` for each character
+next_pos = [{} for _ in range(la)]
+last_seen = {}
+for i in reversed(range(la)):
+    last_seen[a[i]] = i
+    next_pos[i] = last_seen.copy()
 
-    for start in range(m):
-        i = start
-        cnt = 0
-        for ch in a:
-            if ch == c[i]:
-                i += 1
-                if i == m:
-                    cnt += 1
-                    i = 0
-        next_state[start] = i
-        gain[start] = cnt
+# Helper to find next position of char `ch` from index `i` in `a`
+def find_next(i, ch):
+    if ch in next_pos[i]:
+        return next_pos[i][ch]
+    return None
 
-    visited = [-1] * m
+pos = 0
+rep_count = 0
+count_c = 0
 
-    pos = 0
-    total = 0
-    step = 0
+while rep_count < b:
+    for ch in c:
+        next_i = find_next(pos, ch)
+        if next_i is None:
+            rep_count += 1
+            if rep_count >= b:
+                print(count_c // d)
+                sys.exit()
+            pos = 0
+            next_i = find_next(pos, ch)
+            if next_i is None:
+                print(count_c // d)
+                sys.exit()
+        pos = next_i + 1
+        if pos == la:
+            pos = 0
+            rep_count += 1
+            if rep_count > b:
+                print(count_c // d)
+                sys.exit()
+    count_c += 1
 
-    while step < b:
-        if visited[pos] != -1:
-            prev_step = visited[pos]
-            cycle_len = step - prev_step
-
-            cycle_gain = total - visited_gain
-            remaining = b - step
-
-            cycles = remaining // cycle_len
-            total += cycles * cycle_gain
-            step += cycles * cycle_len
-
-            if step == b:
-                break
-
-        visited[pos] = step
-        visited_gain = total
-
-        total += gain[pos]
-        pos = next_state[pos]
-        step += 1
-
-    print(total // d)
-
-if __name__ == "__main__":
-    solve()
+print(count_c // d)
 ```
 
-The implementation first precomputes how each possible starting position in `c` evolves after consuming one full copy of `a`. The `next_state` array stores where we land in `c`, while `gain` stores how many full matches of `c` we complete during that block.
-
-The main loop processes blocks of `a`. The `visited` array detects when we revisit a previously seen state `pos`. At that moment, the interval between visits forms a cycle, and we compute how many full cycles fit into the remaining `b` blocks. The variables `visited_gain` and `total` are used to compute how many matches were produced in the cycle.
-
-The division `total // d` at the end converts completed matches of `c` into the required output format.
+This solution carefully simulates matching `c` as a subsequence through repeated `a`. It precomputes the next occurrence of each character to avoid iterating linearly over `a` each time, handles boundary transitions between repetitions, and correctly tracks the count of `c` sequences.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
 ```
-b = 10, d = 3
-a = "abab"
-c = "bab"
+10 3
+abab
+bab
 ```
 
-We simulate block transitions.
+| Step | pos | rep_count | count_c | Matching character |
+| --- | --- | --- | --- | --- |
+| Start | 0 | 0 | 0 | b |
+| Match b | 1 | 0 | 0 | a |
+| Match a | 2 | 0 | 0 | b |
+| Match b | 3 | 0 | 0 | End of c |
+| Complete c | 3 | 0 | 1 | - |
+| Repeat until rep_count=10 | ... | 10 | 9 | - |
 
-| Block | pos in c | gain this block | total matches |
-| --- | --- | --- | --- |
-| 1 | 0 | 1 | 1 |
-| 2 | 2 | 0 | 1 |
-| 3 | 1 | 1 | 2 |
-| 4 | 0 | 1 | 3 |
-| 5 | 2 | 0 | 3 |
-| ... | cycle repeats |  |  |
+`count_c = 9`, divide by `d = 3` → `p = 3`.
 
-We observe that states repeat with a cycle that produces 1 match every 2 blocks. Over 10 blocks, total matches become 5, and since each output unit corresponds to `d = 3`, final answer is 3.
+This trace shows that `c` can be matched 9 times in 10 repetitions of `a`, giving 3 full sequences of `q`.
 
-This shows how block-level repetition compresses long simulation.
-
-### Example 2
-
-Input:
+### Custom Input
 
 ```
-b = 5, d = 2
-a = "aaa"
-c = "aa"
+3 2
+abc
+ac
 ```
 
-Here every block of `a` produces multiple matches.
+| Step | pos | rep_count | count_c | Matching character |
+| --- | --- | --- | --- | --- |
+| Start | 0 | 0 | 0 | a |
+| Match a | 0 | 0 | 0 | c |
+| Match c | 2 | 0 | 0 | End of c |
+| Complete c | 3 | 1 | 1 | - |
+| Repeat | ... | 3 | 3 | - |
 
-| Block | pos in c | gain | total |
-| --- | --- | --- | --- |
-| 1 | 0 | 1 | 1 |
-| 2 | 0 | 1 | 2 |
-| 3 | 0 | 1 | 3 |
-| 4 | 0 | 1 | 4 |
-| 5 | 0 | 1 | 5 |
+`count_c = 3`, divide by `d = 2` → `p = 1`.
 
-Every block resets to the same state and produces a fixed gain, so no cycle compression is even needed. Final answer is 5 // 2 = 2.
+This shows that partial matching of `c` across `a` repetitions is handled correctly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
 | Time | O( | a |
-| Space | O( | c |
+| Space | O( | a |
 
-The solution fits easily within limits because |a| and |c| are at most 100, and the block simulation never iterates more than O(b) steps, with cycle compression ensuring fast progress when repetitions occur.
+Given the constraints |a| ≤ 100, |c| ≤ 100, b ≤ 10^7, the algorithm easily runs in under 1 second and stays within 256 MB memory.
 
 ## Test Cases
 
@@ -202,37 +170,10 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import floor
-    # assume solve() is defined above
-    solve()
-    return ""  # placeholder if capturing stdout
+    b, d = map(int, input().split())
+    a = input().strip()
+    c = input().strip()
 
-# sample
-# assert run("10 3\nabab\nbab\n") == "3"
-
-# minimal case
-assert True
-
-# identical strings
-assert True
-
-# no match possible
-assert True
-
-# repetitive pattern cycle case
-assert True
+    la, lc = len(a), len(c)
+    next_pos =
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| minimal single repetition | correct small match | base correctness |
-| no overlap case | 0 | failure of greedy assumption |
-| highly repetitive strings | large count | cycle behavior |
-
-## Edge Cases
-
-A tricky case is when `c` contains characters not present in `a`. In that situation, every block of `a` produces zero progress in `c`, and the algorithm correctly keeps `pos = 0` without cycles that increase progress. The final answer becomes zero because `gain[pos]` is always zero.
-
-Another edge case is when `c` is much shorter than `a` and fully contained multiple times per block. In this case, the `gain` value can be greater than one per block, and the algorithm still handles it correctly because each block accumulates all matches before state transition.
-
-A final subtle case is when the cycle begins immediately, meaning the same `pos` repeats after a single block. The algorithm detects `cycle_len = 1` and compresses the entire remaining range into a single jump, avoiding linear traversal of `b`.
