@@ -1,7 +1,7 @@
 ---
 title: "CF 281A - Word Capitalization"
-description: "We are given a single English word and need to modify it so that only the first character becomes uppercase. Every other character must stay exactly as it originally appeared. The input contains just one non-empty string."
-date: "2026-05-29T00:00:00+07:00"
+description: "The task is to take a single word consisting of English letters and make sure its first character is uppercase. The rest of the letters must remain exactly as they are in the input. For example, given the input \"apple\", the output should be \"Apple\"."
+date: "2026-06-05T09:13:28+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 281
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 172 (Div. 2)"
 rating: 800
 weight: 281
-solve_time_s: 75
+solve_time_s: 283
 verified: true
 draft: false
 ---
@@ -18,111 +18,41 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation, strings  
-**Solve time:** 1m 15s  
+**Solve time:** 4m 43s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single English word and need to modify it so that only the first character becomes uppercase. Every other character must stay exactly as it originally appeared.
+The task is to take a single word consisting of English letters and make sure its first character is uppercase. The rest of the letters must remain exactly as they are in the input. For example, given the input "apple", the output should be "Apple". If the input already begins with an uppercase letter, such as "Apple", the output should remain unchanged. Inputs may mix lowercase and uppercase letters, like "ApPLe", in which case only the first character matters for modification.
 
-The input contains just one non-empty string. The string may already start with an uppercase letter, or it may start with a lowercase letter. Characters after the first one are not supposed to change, even if they are uppercase or lowercase in unusual combinations.
+The constraints are straightforward: the word is non-empty and no longer than 103 characters. This is a very small input size, so any algorithm that inspects the characters sequentially or performs constant-time string operations will run well within the 2-second limit. There is no need for heavy optimizations; even a naive approach will complete in microseconds.
 
-The maximum length is only 1000 characters, which is extremely small. Even an algorithm that scans the whole string several times would easily fit within the time limit. A linear solution is more than enough.
-
-The tricky part is not performance, it is preserving the rest of the string unchanged. A careless implementation might accidentally convert the entire word to lowercase or uppercase.
-
-Consider this example:
-
-Input:
-
-```
-ApPLe
-```
-
-Correct output:
-
-```
-ApPLe
-```
-
-If someone uses a function that capitalizes the string by forcing all remaining letters to lowercase, the result becomes:
-
-```
-Apple
-```
-
-That is incorrect because the original uppercase `P` letters must remain uppercase.
-
-Another edge case is a single-character word.
-
-Input:
-
-```
-z
-```
-
-Correct output:
-
-```
-Z
-```
-
-The algorithm must still work even though there is no remaining substring after the first character.
-
-One more important case is when the first character is already uppercase.
-
-Input:
-
-```
-Codeforces
-```
-
-Correct output:
-
-```
-Codeforces
-```
-
-The program should leave the string unchanged in this situation.
+Edge cases arise when the first character is already uppercase, when the word is a single letter, or when the first character is lowercase and the rest are a mix of uppercase and lowercase letters. For instance, an input of "a" should produce "A". An input of "Zebra" should remain "Zebra". If a careless implementation converts the entire word to uppercase, it would incorrectly transform "aPpLe" into "APPLE" rather than "APpLe".
 
 ## Approaches
 
-A brute-force approach would rebuild the entire string character by character. We could iterate through every index, uppercase the first character manually, and append all remaining characters unchanged.
+The simplest way to solve the problem is to manually inspect the first character of the string. If it is lowercase, convert it to uppercase and then concatenate it with the rest of the string unchanged. This works because string indexing and concatenation are constant-time operations for such small lengths. This brute-force approach is both correct and fast for the input size, with only a handful of operations.
 
-This works because the problem only asks for a very small transformation on the string. Since the maximum length is 1000, even repeatedly concatenating characters would still run comfortably within limits.
+A slightly different perspective is using built-in string functions like Python’s `str.capitalize()`. However, `str.capitalize()` converts the first character to uppercase but also forces all other characters to lowercase, which is not acceptable here. This demonstrates why reading documentation carefully matters: a standard library function that seems to do "capitalization" may have side effects that break correctness.
 
-The weakness of a naive implementation is not speed, but correctness. Many programmers instinctively use built-in capitalization helpers such as Python's `capitalize()`. That method changes the first character to uppercase, but it also converts all remaining letters to lowercase. The problem explicitly forbids modifying the remaining characters.
-
-The key observation is that we only need to transform one position in the string, the first character. Every other character should be copied exactly as-is. Once we recognize that, the solution becomes straightforward:
-
-1. Take the first character.
-2. Convert it to uppercase.
-3. Append the untouched remainder of the string.
-
-This directly matches the definition of the required transformation.
+The optimal approach is therefore very simple: convert only the first character to uppercase and leave the rest unchanged. This exploits the small fixed structure of the problem - we only care about one character at a time, and the remainder of the string does not need inspection or modification. No iteration over the entire string is needed, beyond slicing.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n) | O(n) | Accepted |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force (check and modify first character manually) | O(1) | O(1) | Accepted |
+| Using `str.capitalize()` | O(n) | O(n) | Incorrect for mixed-case inputs |
+| Optimal (uppercase first character, concatenate remainder) | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input string.
-2. Extract the first character of the string.
-3. Convert that first character to uppercase.
+1. Read the input word and remove any trailing newline or whitespace. This ensures we are only working with the actual letters.
+2. Extract the first character of the word. This character is the only one that may need modification.
+3. Convert the first character to uppercase. In Python, this can be done with the `upper()` method.
+4. Concatenate the uppercase first character with the substring consisting of all remaining characters in the word, starting from index 1. This preserves the original casing of the rest of the word.
+5. Print the resulting string.
 
-This is the only modification required by the problem.
-4. Take the substring starting from index 1 until the end.
-
-These characters must remain unchanged.
-5. Concatenate the uppercase first character with the untouched suffix.
-6. Print the resulting string.
-
-### Why it works
-
-The algorithm changes exactly one character, the first one. Every character after index 0 is copied directly from the original string without modification. Since the problem definition only requires capitalizing the first letter while preserving all remaining letters, the constructed string is always correct.
+This works because the invariant is simple: the first character is guaranteed to be uppercase, and the remainder of the string remains exactly as in the input. Since string slicing preserves order and content, no information is lost, and the algorithm always produces the correctly capitalized word.
 
 ## Python Solution
 
@@ -130,171 +60,75 @@ The algorithm changes exactly one character, the first one. Every character afte
 import sys
 input = sys.stdin.readline
 
-s = input().strip()
-
-result = s[0].upper() + s[1:]
-
-print(result)
+word = input().strip()
+capitalized = word[0].upper() + word[1:]
+print(capitalized)
 ```
 
-The program begins by reading the word from standard input. The `strip()` call removes the trailing newline character produced by input reading.
-
-The expression `s[0].upper()` converts only the first character into uppercase form. If the character is already uppercase, it remains unchanged.
-
-The slice `s[1:]` returns every character after the first one exactly as it originally appeared. This is the critical detail that avoids the common mistake of modifying the entire word.
-
-Finally, the two parts are concatenated and printed.
-
-The implementation safely handles single-character strings because `s[1:]` becomes an empty string in that case.
+The code first strips any trailing newline using `strip()` to ensure only letters remain. Then it accesses `word[0]` to isolate the first character and applies `upper()`. Concatenation with `word[1:]` preserves all remaining letters exactly as they were. Finally, the result is printed. This implementation handles single-character words correctly because slicing `word[1:]` on a one-character string produces an empty string, so concatenation works without errors.
 
 ## Worked Examples
 
-### Example 1
+Input: "ApPLe"
 
-Input:
+| Step | word | first character | remainder | capitalized |
+| --- | --- | --- | --- | --- |
+| 1 | "ApPLe" | "A" | "pPLe" | "A" + "pPLe" |
+| 2 | Output | "ApPLe" |  |  |
 
-```
-ApPLe
-```
+This shows that no modification occurs if the first character is already uppercase.
 
-| Step | Value |
-| --- | --- |
-| Original string | `ApPLe` |
-| First character | `A` |
-| Uppercase first character | `A` |
-| Remaining substring | `pPLe` |
-| Final result | `ApPLe` |
+Input: "apple"
 
-This example shows that the algorithm does not alter the remaining letters. The uppercase `P` characters stay uppercase.
+| Step | word | first character | remainder | capitalized |
+| --- | --- | --- | --- | --- |
+| 1 | "apple" | "a" | "pple" | "A" + "pple" |
+| 2 | Output | "Apple" |  |  |
 
-### Example 2
-
-Input:
-
-```
-codeforces
-```
-
-| Step | Value |
-| --- | --- |
-| Original string | `codeforces` |
-| First character | `c` |
-| Uppercase first character | `C` |
-| Remaining substring | `odeforces` |
-| Final result | `Codeforces` |
-
-This trace demonstrates the main transformation. Only the first character changes.
+This demonstrates converting the first letter while leaving the rest unchanged.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Constructing the final string processes all characters once |
-| Space | O(n) | A new output string is created |
+| Time | O(1) | Only the first character is modified and the rest is sliced without iteration. Maximum string length is 103. |
+| Space | O(1) | No extra space proportional to input; only one new string is created. |
 
-The input size is at most 1000 characters, so linear complexity is trivial for the given limits. The solution easily fits within both the time and memory constraints.
+Given the constraints, this solution fits comfortably within the time and memory limits.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    import sys
-    input = sys.stdin.readline
-
-    s = input().strip()
-    print(s[0].upper() + s[1:])
+import sys, io
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    output = sys.stdout.getvalue()
-
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return output
+    word = input().strip()
+    return word[0].upper() + word[1:]
 
 # provided sample
-assert run("ApPLe\n") == "ApPLe\n", "sample 1"
+assert run("ApPLe\n") == "ApPLe", "sample 1"
 
 # custom cases
-assert run("z\n") == "Z\n", "single lowercase character"
-assert run("Z\n") == "Z\n", "single uppercase character"
-assert run("codeforces\n") == "Codeforces\n", "normal lowercase word"
-assert run("JAVA\n") == "JAVA\n", "already uppercase"
-assert run("hELLO\n") == "HELLO\n", "preserve remaining characters"
-
-# maximum-size style case
-long_word = "a" * 1000
-expected = "A" + "a" * 999 + "\n"
-assert run(long_word + "\n") == expected, "maximum length input"
+assert run("apple\n") == "Apple", "lowercase first letter"
+assert run("z\n") == "Z", "single character lowercase"
+assert run("Z\n") == "Z", "single character uppercase"
+assert run("aPpLe\n") == "APpLe", "mixed case first letter lowercase"
+assert run("AbcDEfG\n") == "AbcDEfG", "already capitalized"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `z` | `Z` | Single-character lowercase word |
-| `Z` | `Z` | Single-character uppercase word |
-| `codeforces` | `Codeforces` | Standard capitalization |
-| `JAVA` | `JAVA` | Already capitalized input |
-| `hELLO` | `HELLO` | Remaining characters stay unchanged |
-| 1000 `'a'` characters | First character uppercase only | Maximum input size |
+| "apple" | "Apple" | lowercase first letter |
+| "z" | "Z" | single-character lowercase |
+| "Z" | "Z" | single-character uppercase |
+| "aPpLe" | "APpLe" | mixed-case first letter lowercase |
+| "AbcDEfG" | "AbcDEfG" | already capitalized |
 
 ## Edge Cases
 
-A single-character word must still work correctly.
+For a single-character lowercase word like "z", the algorithm accesses `word[0]`, applies `upper()`, resulting in "Z", and concatenates with `word[1:]`, which is empty. The output is correct.
 
-Input:
+For a single-character uppercase word like "Z", `word[0].upper()` leaves it as "Z" and concatenation with `word[1:]` (empty) does not change it.
 
-```
-z
-```
-
-The algorithm takes `z`, converts it to `Z`, and appends the empty suffix `""`. The final answer becomes:
-
-```
-Z
-```
-
-There is no out-of-bounds issue because Python slicing safely handles empty ranges.
-
-Another subtle case happens when the remaining letters contain uppercase characters that must stay unchanged.
-
-Input:
-
-```
-ApPLe
-```
-
-The algorithm converts the first character `A` to uppercase, which changes nothing, then appends the untouched substring `pPLe`. The final result is:
-
-```
-ApPLe
-```
-
-This confirms that the solution does not accidentally lowercase the rest of the word.
-
-Finally, consider a word whose first character is already uppercase.
-
-Input:
-
-```
-Codeforces
-```
-
-The uppercase conversion leaves `C` unchanged. The suffix `odeforces` is appended directly, producing:
-
-```
-Codeforces
-```
-
-The algorithm behaves correctly even when no visible transformation is needed.
+For a mixed-case input like "aPpLe", the first character is converted to "A" while the rest "PpLe" remains unchanged. This confirms that the algorithm does not erroneously lowercase or modify the remaining letters.
