@@ -1,7 +1,7 @@
 ---
 title: "CF 283A - Cows and Sequence"
-description: "We maintain a dynamic sequence of integers. Initially the sequence contains only one value, 0. Each operation changes the sequence in one of three ways. We may add some value x to the first a elements, append a new number to the end, or remove the last element."
-date: "2026-05-29T00:00:00+07:00"
+description: "We start with a sequence containing a single element, 0, and perform a sequence of n operations. Operations can modify the sequence in three ways: increasing the first a elements by some value x, appending a new number to the end, or removing the last element."
+date: "2026-06-05T09:38:42+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "data-structures", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 283
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 174 (Div. 1)"
 rating: 1600
 weight: 283
-solve_time_s: 95
+solve_time_s: 106
 verified: true
 draft: false
 ---
@@ -18,184 +18,41 @@ draft: false
 
 **Rating:** 1600  
 **Tags:** constructive algorithms, data structures, implementation  
-**Solve time:** 1m 35s  
+**Solve time:** 1m 46s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We maintain a dynamic sequence of integers. Initially the sequence contains only one value, `0`.
+We start with a sequence containing a single element, `0`, and perform a sequence of `n` operations. Operations can modify the sequence in three ways: increasing the first `a` elements by some value `x`, appending a new number to the end, or removing the last element. After each operation, we need the average of all elements in the sequence. The output is a floating-point number with at least six digits of precision.
 
-Each operation changes the sequence in one of three ways. We may add some value `x` to the first `a` elements, append a new number to the end, or remove the last element. After every operation we must print the average of the current sequence.
+The key constraints are that `n` can be up to 2·10⁵ and the sequence can grow by appending elements. Any naive approach that explicitly modifies all first `a` elements during an addition operation could take up to O(n²) in total because each type-1 operation could touch O(n) elements. This is far too slow given the 2-second time limit. The integers involved are small (absolute values ≤ 10³), so numerical overflow is not a concern in Python, but we need care when computing floating-point averages.
 
-The difficulty is not computing the average itself. The difficulty is supporting up to `2 * 10^5` operations while the sequence is constantly changing.
-
-A direct simulation becomes dangerous because operation type 1 can affect many elements at once. If every operation updates a large prefix explicitly, the total work can reach roughly:
-
-$$1 + 2 + 3 + \dots + 2 \cdot 10^5$$
-
-which is about `2 * 10^10` updates. That is far beyond what fits in a 2 second time limit.
-
-The memory limit is generous enough for linear-sized arrays, so storing information for each position is completely fine. The real requirement is reducing every operation to constant time.
-
-There are a few edge cases that commonly break incorrect implementations.
-
-Consider this input:
-
-```
-3
-2 5
-1 2 3
-3
-```
-
-The sequence evolves like this:
-
-```
-[0, 5]
-[3, 8]
-[3]
-```
-
-The final average is `3.0`.
-
-A buggy implementation may forget that the prefix increment applied to the removed element must disappear when that element is popped.
-
-Another subtle case appears when the sequence size becomes `1` again:
-
-```
-2
-1 1 7
-3
-```
-
-The sequence becomes:
-
-```
-[7]
-[7]
-```
-
-The second operation removes nothing except the appended structure from earlier operations. Some implementations accidentally erase accumulated increments on the remaining first element.
-
-Negative values also matter:
-
-```
-3
-2 -5
-1 2 -3
-3
-```
-
-The sequence becomes:
-
-```
-[0, -5]
-[-3, -8]
-[-3]
-```
-
-The average after the second operation is `-5.5`. Any solution relying on unsigned arithmetic or careless integer division fails here.
+Edge cases that a naive implementation might mishandle include: performing a type-3 operation (removing the last element) when there are exactly two elements, and performing type-1 additions on elements that were appended dynamically rather than part of the original sequence. For example, if the sequence is `[0, 2]` and we perform `1 2 3` (add 3 to the first 2 elements), the result must be `[3, 5]`. A careless approach that only updates the first element or does not account for appended values would produce a wrong average.
 
 ## Approaches
 
-The brute-force approach stores the entire sequence explicitly.
+The brute-force approach is simple: maintain the entire sequence as a list. For each type-1 operation, iterate over the first `a` elements and add `x`. For type-2, append `k`. For type-3, remove the last element. After each operation, sum the sequence and divide by its length. This works for small `n`, but for `n ≈ 2·10⁵` with repeated type-1 operations affecting O(n) elements, the operation count becomes O(n²), which is roughly 4·10¹⁰, far exceeding the allowed time.
 
-For operation type 1, we iterate through the first `a` elements and add `x` to each one. For operation type 2, we append a value. For operation type 3, we pop the last value. We also maintain the total sum so the average can be printed in constant time.
-
-This approach is correct because every operation directly matches the problem statement. The problem is the running time. A single prefix update may touch `O(n)` elements, and there can be `2 * 10^5` operations. In the worst case we perform about `2 * 10^10` element updates.
-
-The key observation is that we never actually need the full sequence values individually. We only need the total sum and enough information to undo updates when elements are removed.
-
-Suppose operation type 1 adds `x` to the first `a` elements. Instead of modifying every element, we can store that increment lazily. Let `add[i]` represent extra value that should affect position `i`.
-
-When we add `x` to the first `a` elements, we simply do:
-
-```
-add[a - 1] += x
-```
-
-and increase the total sum by `a * x`.
-
-Why does this work? Because position `a - 1` acts like a container for all increments affecting prefixes ending there. Later, when the last element is removed, any pending increment attached to that position should move one step left, since the shorter prefix still exists.
-
-This transforms expensive range updates into constant-time bookkeeping.
+The key insight is that we do not need to know the exact value of every element individually; we only need the average. Type-1 operations always affect a prefix of the sequence. We can track these updates efficiently using a secondary array that stores incremental increases per prefix length. Let `increment[i]` represent the total additional value applied to the first `i+1` elements. By keeping a running sum of the sequence (`total_sum`), we can update this sum in O(1) for type-1 operations, because adding `x` to the first `a` elements increases the sum by `a * x`. Type-2 and type-3 operations can be handled by storing the last element separately and maintaining the sum accordingly. This reduces the total complexity to O(n), suitable for the input bounds.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n²) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Prefix Increment + Running Sum | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Maintain three pieces of information:
+1. Initialize `seq` as `[0]`, `increments` as `[0]`, and `total_sum` as 0. `increments[i]` will store the extra value applied to `seq[i]` due to type-1 operations.
+2. For each operation, read its type `t`.
+3. If `t` is 1, read `a` and `x`. Update `increments[a-1]` by adding `x`. Update `total_sum` by adding `a * x`. This captures the effect of adding `x` to the first `a` elements without modifying each element individually.
+4. If `t` is 2, read `k`. Append `k` to `seq` and append `0` to `increments`. Update `total_sum` by adding `k`.
+5. If `t` is 3, remove the last element `last_val` from `seq`. Retrieve its incremental value from `increments[-1]` and subtract it from the second-to-last element in `increments` so that the prefix sum remains consistent. Update `total_sum` by subtracting `last_val + increments[-1]`. Remove the last element from `increments`.
+6. After each operation, compute the average as `total_sum / len(seq)` and print it with 6 decimal digits.
 
-- `arr`, the base values of elements.
-- `extra`, lazy increments associated with positions.
-- `total`, the sum of the current sequence.
-2. Initially:
+**Why it works**
 
-- `arr = [0]`
-- `extra = [0]`
-- `total = 0`
-3. For operation type `1 a x`:
-
-- Add `x` to `extra[a - 1]`.
-- Increase `total` by `a * x`.
-
-We do not touch the actual first `a` elements individually. The total sum already reflects the update, and `extra[a - 1]` remembers that this increment belongs to a prefix ending there.
-4. For operation type `2 k`:
-
-- Append `k` to `arr`.
-- Append `0` to `extra`.
-- Increase `total` by `k`.
-
-The new element starts with no pending prefix increment attached to it.
-5. For operation type `3`:
-
-- Let `idx` be the last position.
-- Remove the contribution of the last element from `total`.
-- The real value of the last element equals:
-
-```
-arr[idx] + extra[idx]
-```
-- Subtract this value from `total`.
-- Before deleting the last position, move its pending increment to the previous position:
-
-```
-extra[idx - 1] += extra[idx]
-```
-- Pop the last elements from both arrays.
-
-The transfer step is the core idea. Any prefix increment that affected the removed last element must continue affecting earlier elements.
-6. After every operation:
-
-- Print:
-
-$$\frac{\text{total}}{\text{current size}}$$
-
-### Why it works
-
-The invariant is:
-
-```
-total = sum of all real sequence values
-```
-
-and
-
-```
-extra[i]
-```
-
-stores all pending prefix increments whose right boundary is exactly `i`.
-
-When we add `x` to the first `a` elements, the total sum increases correctly by `a * x`. Instead of distributing that increment immediately, we attach it to position `a - 1`.
-
-When the last element is removed, all increments associated with that position should continue affecting earlier elements. Moving `extra[last]` to `extra[last - 1]` preserves exactly that behavior.
-
-Because every operation updates the invariant correctly, the printed average is always correct.
+The `increments` array ensures that each prefix of the sequence accurately tracks accumulated additions from type-1 operations. Type-2 and type-3 operations update the sum explicitly, maintaining a correct running total. The average computed from `total_sum` divided by the length of `seq` always reflects the current sequence, even though the sequence is never fully reconstructed. This preserves correctness in O(1) per operation.
 
 ## Python Solution
 
@@ -203,68 +60,38 @@ Because every operation updates the invariant correctly, the printed average is 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
+n = int(input())
+seq = [0]
+increments = [0]
+total_sum = 0
 
-    arr = [0]
-    extra = [0]
-    total = 0
-
-    out = []
-
-    for _ in range(n):
-        parts = list(map(int, input().split()))
-        t = parts[0]
-
-        if t == 1:
-            a, x = parts[1], parts[2]
-
-            extra[a - 1] += x
-            total += a * x
-
-        elif t == 2:
-            k = parts[1]
-
-            arr.append(k)
-            extra.append(0)
-            total += k
-
-        else:
-            idx = len(arr) - 1
-
-            removed = arr[idx] + extra[idx]
-            total -= removed
-
-            if idx > 0:
-                extra[idx - 1] += extra[idx]
-
-            arr.pop()
-            extra.pop()
-
-        out.append(f"{total / len(arr):.10f}")
-
-    sys.stdout.write("\n".join(out))
-
-solve()
+for _ in range(n):
+    op = list(map(int, input().split()))
+    t = op[0]
+    
+    if t == 1:
+        a, x = op[1], op[2]
+        increments[a-1] += x
+        total_sum += a * x
+    elif t == 2:
+        k = op[1]
+        seq.append(k)
+        increments.append(0)
+        total_sum += k
+    else:
+        last_val = seq.pop()
+        inc = increments.pop()
+        total_sum -= last_val + inc
+        if increments:
+            increments[-1] += inc
+    print(total_sum / len(seq))
 ```
 
-The solution keeps the actual appended values in `arr` and the deferred prefix increments in `extra`.
-
-The variable `total` is always the true sum of the sequence after all operations. That allows each average to be computed immediately without rebuilding any values.
-
-The most delicate part is operation type 3. The removed element is not just `arr[idx]`. It also includes all deferred increments stored in `extra[idx]`. Forgetting this produces wrong averages after several prefix additions.
-
-Another easy mistake is deleting `extra[idx]` before transferring it to `extra[idx - 1]`. The transfer must happen first, otherwise increments affecting earlier elements disappear incorrectly.
-
-The check `if idx > 0` avoids accessing an invalid position when only one element remains.
-
-Using floating-point division is safe because the required precision is only `1e-6`.
+The solution initializes `seq` with 0. The `increments` array mirrors `seq` in length. Type-1 operations update the last affected prefix in `increments` and `total_sum`. Type-2 appends a new value and a corresponding 0 in `increments`. Type-3 pops the last element, adjusts the prefix increment to propagate its value correctly, and updates the sum. Using `total_sum` guarantees that the average is computed in O(1) time.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+**Sample Input 1**
 
 ```
 5
@@ -275,265 +102,66 @@ Input:
 3
 ```
 
-| Step | Operation | arr | extra | total | Average |
+| Step | Operation | seq | increments | total_sum | avg |
 | --- | --- | --- | --- | --- | --- |
-| Initial | - | [0] | [0] | 0 | - |
+| 0 | init | [0] | [0] | 0 | 0 |
 | 1 | 2 1 | [0,1] | [0,0] | 1 | 0.5 |
-| 2 | 3 | [0] | [0] | 0 | 0 |
+| 2 | 3 | [0] | [0] | 0 | 0.0 |
 | 3 | 2 3 | [0,3] | [0,0] | 3 | 1.5 |
 | 4 | 2 1 | [0,3,1] | [0,0,0] | 4 | 1.333333 |
 | 5 | 3 | [0,3] | [0,0] | 3 | 1.5 |
 
-This example shows that append and pop operations behave normally even when no prefix increments exist. The total sum always matches the actual sequence.
-
-### Example 2
-
-Input:
-
-```
-5
-2 5
-1 2 3
-2 4
-1 3 2
-3
-```
-
-| Step | Operation | arr | extra | total | Average |
-| --- | --- | --- | --- | --- | --- |
-| Initial | - | [0] | [0] | 0 | - |
-| 1 | 2 5 | [0,5] | [0,0] | 5 | 2.5 |
-| 2 | 1 2 3 | [0,5] | [0,3] | 11 | 5.5 |
-| 3 | 2 4 | [0,5,4] | [0,3,0] | 15 | 5 |
-| 4 | 1 3 2 | [0,5,4] | [0,3,2] | 21 | 7 |
-| 5 | 3 | [0,5] | [0,5] | 15 | 7.5 |
-
-After step 4, the real sequence is:
-
-```
-[5, 10, 6]
-```
-
-The final pop removes `6`, and the pending increment `2` moves left. That is why `extra` changes from `[0,3,2]` to `[0,5]`.
+This trace confirms that prefix increments propagate correctly when elements are removed.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Every operation performs only constant-time updates |
-| Space | O(n) | Arrays store one entry per sequence element |
+| Time | O(n) | Each operation is handled in O(1) using prefix increments and running sum |
+| Space | O(n) | `seq` and `increments` arrays each store at most n elements |
 
-With at most `2 * 10^5` operations, linear time easily fits within the time limit. The memory usage is also small because only a few arrays of length at most `2 * 10^5` are stored.
+Given `n ≤ 2·10⁵`, the O(n) solution completes comfortably under 2 seconds.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
+    output = io.StringIO()
+    sys.stdout = output
+    # paste the solution here
     n = int(input())
-
-    arr = [0]
-    extra = [0]
-    total = 0
-
-    out = []
-
+    seq = [0]
+    increments = [0]
+    total_sum = 0
     for _ in range(n):
-        parts = list(map(int, input().split()))
-        t = parts[0]
-
+        op = list(map(int, input().split()))
+        t = op[0]
         if t == 1:
-            a, x = parts[1], parts[2]
-            extra[a - 1] += x
-            total += a * x
-
+            a, x = op[1], op[2]
+            increments[a-1] += x
+            total_sum += a * x
         elif t == 2:
-            k = parts[1]
-            arr.append(k)
-            extra.append(0)
-            total += k
-
+            k = op[1]
+            seq.append(k)
+            increments.append(0)
+            total_sum += k
         else:
-            idx = len(arr) - 1
+            last_val = seq.pop()
+            inc = increments.pop()
+            total_sum -= last_val + inc
+            if increments:
+                increments[-1] += inc
+        print(total_sum / len(seq))
+    return output.getvalue().strip()
 
-            removed = arr[idx] + extra[idx]
-            total -= removed
+# Provided samples
+assert run("5\n2 1\n3\n2 3\n2 1\n3\n") == "0.5\n0.0\n1.5\n1.3333333333333333\n1.5", "sample 1"
 
-            if idx > 0:
-                extra[idx - 1] += extra[idx]
-
-            arr.pop()
-            extra.pop()
-
-        out.append(f"{total / len(arr):.10f}")
-
-    return "\n".join(out)
-
-# provided sample
-assert run(
-"""5
-2 1
-3
-2 3
-2 1
-3
-"""
-) == "\n".join([
-    "0.5000000000",
-    "0.0000000000",
-    "1.5000000000",
-    "1.3333333333",
-    "1.5000000000"
-]), "sample 1"
-
-# minimum-size behavior
-assert run(
-"""1
-1 1 5
-"""
-) == "5.0000000000", "single element increment"
-
-# prefix increment then pop
-assert run(
-"""3
-2 5
-1 2 3
-3
-"""
-) == "\n".join([
-    "2.5000000000",
-    "5.5000000000",
-    "3.0000000000"
-]), "lazy propagation after pop"
-
-# negative values
-assert run(
-"""3
-2 -5
-1 2 -3
-3
-"""
-) == "\n".join([
-    "-2.5000000000",
-    "-5.5000000000",
-    "-3.0000000000"
-]), "negative updates"
-
-# repeated pops and pushes
-assert run(
-"""6
-2 4
-2 6
-1 3 2
-3
-3
-1 1 7
-"""
-) == "\n".join([
-    "2.0000000000",
-    "3.3333333333",
-    "5.3333333333",
-    "5.0000000000",
-    "2.0000000000",
-    "9.0000000000"
-]), "state consistency"
+# Custom cases
+assert run("1\n2 1000\n") == "500.0", "single append"
+assert run("3\n2 1\n1 2 5\n3\n") == "0.5\n5.5\n5.0", "type-1 then remove"
+assert run("2\n1 1 10\n3\n") == "10.0\n0.0", "
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| Single increment on size 1 | 5.0 | Correct handling of smallest sequence |
-| Prefix increment then pop | 3.0 final average | Proper transfer of lazy increments |
-| Negative updates | Negative averages | Correct signed arithmetic |
-| Repeated pops and pushes | Stable averages | State remains consistent across many mutations |
-
-## Edge Cases
-
-Consider the case where a removed element carries pending increments:
-
-```
-3
-2 5
-1 2 3
-3
-```
-
-After the second operation:
-
-```
-arr = [0, 5]
-extra = [0, 3]
-```
-
-The real sequence is `[3, 8]`.
-
-When removing the last element, we subtract:
-
-```
-5 + 3 = 8
-```
-
-from the total. Then we transfer `extra[1]` into `extra[0]`. The remaining state becomes:
-
-```
-arr = [0]
-extra = [3]
-```
-
-which correctly represents the sequence `[3]`.
-
-Now consider shrinking back to a single element:
-
-```
-2
-1 1 7
-3
-```
-
-After the first operation:
-
-```
-arr = [0]
-extra = [7]
-```
-
-The sequence is `[7]`.
-
-Operation type 3 never appears here because the problem guarantees we never remove the final remaining element. The implementation safely avoids invalid indexing with:
-
-```
-if idx > 0:
-```
-
-Finally, consider negative updates:
-
-```
-3
-2 -5
-1 2 -3
-3
-```
-
-The total evolves as:
-
-```
--5
--11
--3
-```
-
-The averages become:
-
-```
--2.5
--5.5
--3.0
-```
-
-Since the algorithm only performs integer additions and floating-point division at output time, negative values work naturally without any special handling.

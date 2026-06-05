@@ -1,7 +1,7 @@
 ---
 title: "CF 283C - Coin Troubles"
-description: "We have n coin types, where coin type i has value a[i]. We want to count how many different multisets of coins sum to exactly t. The twist is that we are also given inequalities between coin counts."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have n coin types. Coin type i has value a[i], and we may take any nonnegative number of coins of that type. The total value of all chosen coins must be exactly t. In addition, we are given inequality constraints of the form: count[b] count[c] The constraints are special."
+date: "2026-06-05T09:31:00+07:00"
 tags: ["codeforces", "competitive-programming", "dp"]
 categories: ["algorithms"]
 codeforces_contest: 283
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 174 (Div. 1)"
 rating: 2100
 weight: 283
-solve_time_s: 142
-verified: false
+solve_time_s: 90
+verified: true
 draft: false
 ---
 
@@ -18,264 +18,237 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** dp  
-**Solve time:** 2m 22s  
-**Verified:** no  
+**Solve time:** 1m 30s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have `n` coin types, where coin type `i` has value `a[i]`. We want to count how many different multisets of coins sum to exactly `t`.
+We have `n` coin types. Coin type `i` has value `a[i]`, and we may take any nonnegative number of coins of that type.
 
-The twist is that we are also given inequalities between coin counts. A condition `(b, c)` means:
+The total value of all chosen coins must be exactly `t`.
+
+In addition, we are given inequality constraints of the form:
 
 `count[b] > count[c]`
 
-The constraints guarantee that every left endpoint appears at most once and every right endpoint appears at most once. This structure is the entire reason the problem is solvable efficiently.
+The constraints are special. Every index appears at most once on the left side of a constraint, and at most once on the right side. This structure turns out to be the key observation.
 
-A valid answer is any vector:
+We must count how many vectors
 
-`x[1], x[2], ..., x[n]`
+`(count[1], count[2], ..., count[n])`
 
-such that all values are nonnegative integers, the weighted sum equals `t`, and every inequality is satisfied.
+satisfy all inequalities and produce total value `t`. The answer is required modulo `1,000,000,007`.
 
-The target sum goes up to `10^5`, so any dynamic programming depending on `t` is already large. At the same time, `n` is only `300`, which suggests that quadratic or cubic work in `n` is acceptable, but exponential state spaces are impossible.
+The constraints are large enough that direct enumeration is impossible. The target sum reaches `10^5`, while the number of coin types reaches `300`. Any solution that tries to iterate over possible counts of coins immediately explodes. The target sum suggests a dynamic programming solution with complexity roughly proportional to `n * t`, because `300 * 100000 = 3 * 10^7` operations is still manageable in optimized code.
 
-A brute-force search over all possible coin counts immediately explodes. Even if every coin value were `1`, we would need to enumerate all integer partitions of `t`, which grows exponentially.
+The inequalities introduce several subtle situations.
 
-The real challenge is handling the inequalities without introducing a huge DP dimension.
-
-The structural constraint on the inequalities matters a lot. Since every node has at most one outgoing inequality and at most one incoming inequality, the graph formed by edges:
-
-`b -> c`
-
-is a collection of disjoint chains and cycles.
-
-Cycles are especially dangerous. Consider:
+Consider
 
 ```
-1 > 2
-2 > 1
-```
-
-No assignment can satisfy this, because strict inequalities cannot loop. A careless implementation that ignores graph structure might still count states.
-
-Another subtle case is when several coin types share the same value. The coin types are still distinct. For example:
-
-```
-2 0 2
+2 2 10
 1 1
+1 2
+2 1
 ```
 
-There are three solutions:
+The constraints require
 
 ```
-(0,2), (1,1), (2,0)
+x1 > x2
+x2 > x1
 ```
 
-Treating equal-valued coins as interchangeable would incorrectly produce only one answer.
+which is impossible. The correct answer is `0`.
 
-A more delicate edge case appears when a chain forces minimum counts. Suppose:
+A careless implementation that only processes constraints locally may fail to detect this contradiction.
+
+Another example is a longer cycle:
 
 ```
-3 2 3
+3 3 20
 1 1 1
 1 2
 2 3
+3 1
 ```
 
-The inequalities imply:
+This requires
 
 ```
-x1 > x2 > x3 >= 0
+x1 > x2 > x3 > x1
 ```
 
-The smallest valid triple is:
+which is also impossible.
+
+A different pitfall occurs when the inequalities force some minimum contribution already exceeding `t`.
+
+For example:
 
 ```
-(2,1,0)
+2 1 1
+5 5
+1 2
 ```
 
-whose sum is already `3`. Missing this implicit lower bound leads to incorrect transitions.
+Since `x1 > x2`, the smallest valid assignment is `(1,0)`, worth `5`. Reaching total value `1` is impossible, so the answer is `0`.
+
+The solution must detect all these situations automatically.
 
 ## Approaches
 
-The brute-force approach is conceptually simple. We try every possible vector of coin counts whose weighted sum does not exceed `t`, then verify all inequalities.
+A brute-force approach would try all possible counts for each coin type and check whether the total value equals `t` and all inequalities hold.
 
-For each coin type `i`, the count can range from `0` to `t / a[i]`. In the worst case, all coin values equal `1`, so each count ranges up to `10^5`. The total number of vectors becomes astronomical.
+Even if every coin value were `1`, a single variable could take up to `100000` different values. With `300` variables, the search space is astronomical.
 
-A more reasonable brute-force variant uses standard coin-change DP:
+The inequalities suggest that the counts are not independent. Because every node appears at most once as a source and at most once as a destination, the constraint graph has a very restricted shape.
 
-```
-dp[s] = number of ways to form sum s
-```
-
-but now we must also enforce inequalities between counts. The natural idea is to add the current counts into the state:
+Create a directed edge:
 
 ```
-dp[sum][x1][x2]...
+b -> c
 ```
 
-This immediately becomes infeasible because even tracking a few counts already exceeds memory limits.
-
-The key observation is that every connected component of the inequality graph is either a chain or a cycle.
-
-Cycles contribute zero immediately, because strict inequalities cannot wrap around.
-
-So every valid component is a chain:
+meaning
 
 ```
-v1 > v2 > v3 > ... > vk
+count[b] > count[c]
 ```
 
-Let the actual counts be:
+Since every vertex has indegree at most `1` and outdegree at most `1`, every connected component is either a chain or a cycle.
+
+A cycle immediately makes the system impossible:
 
 ```
-x1 > x2 > ... > xk >= 0
+x1 > x2 > ... > xk > x1
 ```
 
-Now comes the transformation that unlocks the problem.
+So only chains matter.
 
-Define new variables:
-
-```
-y1 = x1 - x2 - 1
-y2 = x2 - x3 - 1
-...
-yk-1 = xk-1 - xk - 1
-yk = xk
-```
-
-Every `yi` is now simply a nonnegative integer.
-
-We can reconstruct the original counts:
-
-```
-xk = yk
-xk-1 = yk + yk-1 + 1
-xk-2 = yk + yk-1 + yk-2 + 2
-...
-```
-
-This means the chain constraints disappear completely.
-
-More importantly, the total contribution of the chain to the sum becomes:
-
-```
-Σ coeff[i] * yi + constant
-```
-
-where each `yi` behaves like an ordinary unlimited coin.
-
-For a chain with coin values:
-
-```
-c1, c2, ..., ck
-```
-
-the transformed variable `yi` has weight:
-
-```
-c1 + c2 + ... + ci
-```
-
-and the chain contributes a fixed mandatory cost:
-
-```
-0*c1 + 1*c2 + 2*c3 + ... + (k-1)*ck
-```
-
-After transforming every chain independently, the entire problem reduces to a standard unbounded knapsack.
-
-That is the core insight. The inequalities do not need to be handled dynamically. We absorb them algebraically into new variables.
-
-| Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal | O(n * t) | O(t) | Accepted |
-
-## Algorithm Walkthrough
-
-1. Build a directed graph where an edge `b -> c` means `count[b] > count[c]`.
-2. Check for invalid structure. Since every node has indegree at most one and outdegree at most one, each component is either a chain or a cycle. Any cycle makes the answer zero immediately because strict inequalities cannot form loops.
-3. Extract every chain starting from nodes with indegree zero. Traverse forward until the chain ends.
-4. For each chain:
+Now consider one chain:
 
 ```
 v1 -> v2 -> ... -> vk
 ```
 
-define transformed variables:
+which means
 
 ```
-yi = xi - x(i+1) - 1
+x1 > x2 > ... > xk
 ```
 
-for `i < k`, and:
+Instead of storing the counts directly, define new nonnegative variables:
 
 ```
+y1 = x1 - x2 - 1
+y2 = x2 - x3 - 1
+...
+y(k-1) = x(k-1) - xk - 1
 yk = xk
 ```
 
-Every `yi` is nonnegative.
-5. Compute the mandatory contribution of the chain. Since:
+Every valid assignment corresponds to exactly one choice of nonnegative `y` values, and vice versa.
+
+After substitution, the chain contributes:
 
 ```
-xi >= k-i
+constant + Σ(weight_i * yi)
 ```
 
-the minimum sum added by the chain is:
+The constant comes from the mandatory `+1` gaps required by strict inequalities.
+
+All variables become independent nonnegative variables. After processing every chain, the entire problem becomes:
+
+Count the number of nonnegative solutions of
 
 ```
-Σ (i-1) * value[vi]
+Σ(weight_i * yi) = remaining_target
 ```
-6. Compute transformed coin weights. Each variable `yi` contributes to several original counts, so its effective value becomes a suffix sum of the chain values.
-7. Any isolated node is just a chain of length one. Its transformed weight equals its own coin value and its mandatory contribution is zero.
-8. Subtract all mandatory contributions from `t`. If the remaining target becomes negative, return zero immediately.
-9. Run standard unbounded knapsack DP on the transformed weights.
 
-Let:
+This is exactly the classical complete-knapsack counting DP.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal | O(n · t) | O(t) | Accepted |
+
+## Algorithm Walkthrough
+
+1. Build the directed graph where each constraint `b > c` becomes an edge `b -> c`.
+2. Store for every node its indegree and outgoing neighbor. Because of the input guarantees, each node has indegree at most `1` and outdegree at most `1`.
+3. Start from every node with indegree `0`. Such nodes are the heads of chains.
+4. Traverse each chain from head to tail and collect its vertices in order.
+5. For a chain with vertices
 
 ```
-dp[s] = number of ways to form sum s
+v1, v2, ..., vk
 ```
+
+compute prefix sums
+
+```
+pref[i] = a[v1] + ... + a[vi]
+```
+6. Add
+
+```
+pref[1] + pref[2] + ... + pref[k-1]
+```
+
+to a global mandatory contribution `base`.
+
+This is the minimum value forced by the strict inequalities.
+7. Create one DP weight for every transformed variable.
+
+For `i < k`, the coefficient of `yi` is `pref[i]`.
+
+For `yk`, the coefficient is `pref[k]`.
+8. Mark all vertices in the chain as visited.
+9. After processing all roots, check whether every vertex was visited.
+
+Any unvisited vertex belongs to a cycle. In that case the answer is `0`.
+10. Let
+
+```
+T = t - base
+```
+
+If `T < 0`, output `0`.
+11. Run complete-knapsack counting DP.
 
 Initialize:
 
 ```
 dp[0] = 1
 ```
-
-For every transformed weight `w`:
+12. For every generated weight `w`, perform:
 
 ```
-for s from w to target:
-    dp[s] += dp[s-w]
+for s from w to T:
+    dp[s] += dp[s - w]
 ```
-10. The answer is `dp[target]`.
+13. Output `dp[T]`.
 
 ### Why it works
 
-The transformation creates a bijection between valid original assignments and nonnegative assignments of the transformed variables.
-
-Every valid chain:
+Inside a chain, the transformation
 
 ```
-x1 > x2 > ... > xk >= 0
+yi = xi - x(i+1) - 1
 ```
 
-maps uniquely to:
+removes the strict inequalities and replaces them with simple nonnegative variables.
+
+The mapping between valid `x` assignments and nonnegative `y` assignments is bijective. No solution is lost and no invalid solution is introduced.
+
+After substitution, every chain contributes a fixed mandatory value plus a linear combination of independent nonnegative variables. Combining all chains yields a single equation
 
 ```
-yi >= 0
+Σ(weight_i * yi) = T
 ```
 
-through consecutive differences.
-
-The reverse mapping is also unique, so no solutions are lost and no invalid solutions are introduced.
-
-After transformation, every variable contributes independently to the total sum, which is exactly the condition required for standard coin-change DP.
-
-Because the transformed variables are unrestricted nonnegative integers, the DP counts every valid assignment exactly once.
+Counting nonnegative solutions of such an equation is exactly the complete-knapsack counting problem. Since cycles correspond to impossible strict inequality systems, rejecting them is correct. Thus every counted DP state corresponds to one valid coin configuration and vice versa.
 
 ## Python Solution
 
@@ -283,7 +256,7 @@ Because the transformed variables are unrestricted nonnegative integers, the DP 
 import sys
 input = sys.stdin.readline
 
-MOD = 10**9 + 7
+MOD = 1000000007
 
 def solve():
     n, q, t = map(int, input().split())
@@ -296,120 +269,69 @@ def solve():
         b, c = map(int, input().split())
         b -= 1
         c -= 1
-
         nxt[b] = c
         indeg[c] += 1
 
-    vis = [0] * n
-
-    # detect cycles
-    def dfs(u):
-        vis[u] = 1
-
-        v = nxt[u]
-        if v != -1:
-            if vis[v] == 1:
-                return True
-            if vis[v] == 0 and dfs(v):
-                return True
-
-        vis[u] = 2
-        return False
-
-    for i in range(n):
-        if vis[i] == 0:
-            if dfs(i):
-                print(0)
-                return
-
-    used = [False] * n
+    visited = [False] * n
     weights = []
-    mandatory = 0
+    base = 0
 
     for i in range(n):
         if indeg[i] == 0:
             chain = []
-
             cur = i
-            while cur != -1:
-                used[cur] = True
+
+            while cur != -1 and not visited[cur]:
+                visited[cur] = True
                 chain.append(cur)
                 cur = nxt[cur]
 
             k = len(chain)
-
-            pref = [0] * (k + 1)
-            for j in range(k):
-                pref[j + 1] = pref[j] + a[chain[j]]
+            pref = [0] * k
 
             for j in range(k):
-                mandatory += j * a[chain[j]]
+                pref[j] = a[chain[j]]
+                if j:
+                    pref[j] += pref[j - 1]
 
-            for j in range(k):
-                weights.append(pref[j + 1])
+            for j in range(k - 1):
+                base += pref[j]
+                weights.append(pref[j])
 
-    # every node should belong to some chain
-    for i in range(n):
-        if not used[i]:
-            print(0)
-            return
+            weights.append(pref[k - 1])
 
-    if mandatory > t:
+    if not all(visited):
         print(0)
         return
 
-    target = t - mandatory
+    target = t - base
+    if target < 0:
+        print(0)
+        return
 
     dp = [0] * (target + 1)
     dp[0] = 1
 
     for w in weights:
+        if w > target:
+            continue
         for s in range(w, target + 1):
             dp[s] += dp[s - w]
-            dp[s] %= MOD
+            if dp[s] >= MOD:
+                dp[s] %= MOD
 
-    print(dp[target])
+    print(dp[target] % MOD)
 
 solve()
 ```
 
-The graph construction uses the fact that every node can have at most one outgoing edge and one incoming edge. That allows us to represent the graph with a single `nxt` array instead of adjacency lists.
+The graph construction uses the special property that each node has at most one incoming and one outgoing edge. That allows every component to be represented as a simple chain or a cycle.
 
-Cycle detection is critical. Any directed cycle corresponds to an impossible chain of strict inequalities. The DFS uses the standard three-color technique:
+The `base` variable stores the minimum value forced by strict inequalities. If this minimum already exceeds `t`, no solution exists.
 
-```
-0 = unvisited
-1 = currently visiting
-2 = finished
-```
+The generated `weights` correspond exactly to the transformed nonnegative variables. Each weight can be used any number of times because the corresponding variable may take any nonnegative value. That is why the complete-knapsack transition iterates sums in increasing order.
 
-Encountering a node in state `1` means we found a back edge and therefore a cycle.
-
-After confirming the graph is acyclic, we extract chains by starting from nodes with indegree zero. Every valid component must have exactly one such starting point.
-
-The transformed weights come from prefix sums along the chain. Suppose the chain values are:
-
-```
-c1, c2, c3
-```
-
-Then the transformed variables contribute weights:
-
-```
-c1
-c1 + c2
-c1 + c2 + c3
-```
-
-A common mistake is using suffix sums instead of prefix sums because the derivation can be written in either direction depending on variable definitions. The implementation above matches the chosen transformation exactly.
-
-The DP is standard unbounded knapsack. The forward iteration order:
-
-```
-for s in range(w, target + 1):
-```
-
-is essential. Reversing the loop would turn the problem into 0/1 knapsack and produce incorrect counts.
+The cycle detection is subtle. Every chain starts from a node with indegree `0`. If some vertex remains unvisited afterward, it cannot belong to a chain and must lie inside a cycle. Such a component has no valid assignment.
 
 ## Worked Examples
 
@@ -424,146 +346,124 @@ Input:
 3 4
 ```
 
-The inequalities form:
+The graph is:
 
 ```
-3 > 4 > 2
+3 -> 4 -> 2
 ```
 
-Node `1` is isolated.
+and node `1` is isolated.
 
-Chain values:
+Chain `3 -> 4 -> 2` has values `[2,5,1]`.
 
-```
-[2, 5, 1]
-```
+| Step | Prefix sums |
+| --- | --- |
+| v3 | 2 |
+| v4 | 7 |
+| v2 | 8 |
 
-Mandatory contribution:
-
-```
-0*2 + 1*5 + 2*1 = 7
-```
-
-Transformed weights:
+Generated weights:
 
 ```
-2
-2+5 = 7
-2+5+1 = 8
+2, 7, 8
 ```
 
-Isolated node contributes weight `3`.
-
-Remaining target:
+Base contribution:
 
 ```
-17 - 7 = 10
+2 + 7 = 9
 ```
 
-DP weights become:
+Isolated node `1` contributes weight:
 
 ```
-[2, 7, 8, 3]
+3
 ```
 
-| Step | Weight | Reachable sums after processing |
-| --- | --- | --- |
-| Start | - | {0} |
-| 1 | 2 | {0,2,4,6,8,10} |
-| 2 | 7 | {0,2,4,6,7,8,9,10} |
-| 3 | 8 | unchanged |
-| 4 | 3 | all sums up to 10 except 1 |
+Final data:
 
-Final answer:
+| Quantity | Value |
+| --- | --- |
+| Base | 9 |
+| Target | 17 - 9 = 8 |
+| Weights | [2, 7, 8, 3] |
+
+The complete-knapsack DP finds exactly `3` ways to make sum `8`, producing the answer:
 
 ```
-dp[10] = 3
+3
 ```
 
-This trace shows how the inequalities disappear completely after transformation. The DP only sees ordinary coin values.
+This trace shows how strict inequalities become a fixed mandatory contribution plus independent variables.
 
-### Custom Example
+### Sample 2
 
 Input:
 
 ```
 3 2 6
-1 1 1
+3 1 1
 1 2
 2 3
 ```
 
-The chain is:
+Graph:
 
 ```
-1 > 2 > 3
+1 -> 2 -> 3
 ```
 
-Minimum valid counts:
+| Step | Prefix sums |
+| --- | --- |
+| 1 | 3 |
+| 2 | 4 |
+| 3 | 5 |
+
+Base:
 
 ```
-(2,1,0)
+3 + 4 = 7
 ```
 
-Mandatory contribution:
+| Quantity | Value |
+| --- | --- |
+| Base | 7 |
+| t | 6 |
+| Remaining target | -1 |
+
+Since the remaining target is negative, the answer is:
 
 ```
-0*1 + 1*1 + 2*1 = 3
+0
 ```
 
-Remaining target:
-
-```
-3
-```
-
-Transformed weights:
-
-```
-1,2,3
-```
-
-| Step | Weight | DP state |
-| --- | --- | --- |
-| Start | - | dp[0]=1 |
-| 1 | 1 | dp=[1,1,1,1] |
-| 2 | 2 | dp=[1,1,2,2] |
-| 3 | 3 | dp=[1,1,2,3] |
-
-Answer:
-
-```
-3
-```
-
-The trace demonstrates how strict inequalities automatically enforce hidden minimum sums.
+The trace demonstrates the case where the mandatory minimum already exceeds the desired total.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n * t) | Each transformed weight performs one knapsack pass |
-| Space | O(t) | One-dimensional DP array |
+| Time | O(n · t) | Complete-knapsack DP over at most `n` generated weights |
+| Space | O(t) | One DP array of length `t + 1` |
 
-With `n <= 300` and `t <= 10^5`, the worst-case number of DP updates is roughly `3 * 10^7`, which fits comfortably in optimized Python.
+With `n ≤ 300` and `t ≤ 100000`, the worst case is roughly thirty million DP updates, which comfortably fits within the limits in optimized Python.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
-MOD = 10**9 + 7
+MOD = 1000000007
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
     input = sys.stdin.readline
 
     n, q, t = map(int, input().split())
-    a = list(map(int, input().split()))
+    a = list(map(int, input().split())
 
+)
     nxt = [-1] * n
     indeg = [0] * n
 
@@ -571,65 +471,41 @@ def run(inp: str) -> str:
         b, c = map(int, input().split())
         b -= 1
         c -= 1
-
         nxt[b] = c
         indeg[c] += 1
 
-    vis = [0] * n
-
-    def dfs(u):
-        vis[u] = 1
-
-        v = nxt[u]
-        if v != -1:
-            if vis[v] == 1:
-                return True
-            if vis[v] == 0 and dfs(v):
-                return True
-
-        vis[u] = 2
-        return False
-
-    for i in range(n):
-        if vis[i] == 0:
-            if dfs(i):
-                return "0"
-
-    used = [False] * n
+    visited = [False] * n
     weights = []
-    mandatory = 0
+    base = 0
 
     for i in range(n):
         if indeg[i] == 0:
             chain = []
-
             cur = i
-            while cur != -1:
-                used[cur] = True
+
+            while cur != -1 and not visited[cur]:
+                visited[cur] = True
                 chain.append(cur)
                 cur = nxt[cur]
 
-            k = len(chain)
+            pref = []
+            s = 0
+            for v in chain:
+                s += a[v]
+                pref.append(s)
 
-            pref = [0] * (k + 1)
+            for j in range(len(chain) - 1):
+                base += pref[j]
+                weights.append(pref[j])
 
-            for j in range(k):
-                pref[j + 1] = pref[j] + a[chain[j]]
+            weights.append(pref[-1])
 
-            for j in range(k):
-                mandatory += j * a[chain[j]]
-
-            for j in range(k):
-                weights.append(pref[j + 1])
-
-    for i in range(n):
-        if not used[i]:
-            return "0"
-
-    if mandatory > t:
+    if not all(visited):
         return "0"
 
-    target = t - mandatory
+    target = t - base
+    if target < 0:
+        return "0"
 
     dp = [0] * (target + 1)
     dp[0] = 1
@@ -640,126 +516,58 @@ def run(inp: str) -> str:
 
     return str(dp[target])
 
-# provided sample
-assert run(
-"""4 2 17
-3 1 2 5
-4 2
-3 4
-"""
-) == "3", "sample 1"
+# provided samples
+assert run("4 2 17\n3 1 2 5\n4 2\n3 4\n") == "3", "sample 1"
+assert run("3 2 6\n3 1 1\n1 2\n2 3\n") == "0", "sample 2"
+assert run("3 2 10\n1 2 3\n1 2\n2 1\n") == "0", "sample 3"
 
-# minimum case
-assert run(
-"""1 0 5
-1
-"""
-) == "1", "single coin type"
-
-# impossible cycle
-assert run(
-"""2 2 5
-1 1
-1 2
-2 1
-"""
-) == "0", "cycle impossible"
-
-# equal coin values but distinct types
-assert run(
-"""2 0 2
-1 1
-"""
-) == "3", "distinct coin types"
-
-# mandatory contribution exceeds target
-assert run(
-"""3 2 2
-1 1 1
-1 2
-2 3
-"""
-) == "0", "minimum required sum too large"
+# custom cases
+assert run("1 0 5\n1\n") == "1", "single coin type"
+assert run("2 0 2\n1 1\n") == "3", "all equal values"
+assert run("2 1 1\n5 5\n1 2\n") == "0", "minimum exceeds target"
+assert run("2 1 2\n1 1\n1 2\n") == "1", "boundary exact minimum"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single coin type | 1 | Basic unbounded knapsack |
-| Two-node cycle | 0 | Correct cycle detection |
-| Equal-valued coins | 3 | Coin types remain distinct |
-| Mandatory sum exceeds target | 0 | Correct lower-bound handling |
+| `1 0 5 / 1` | `1` | Single variable complete-knapsack |
+| `2 0 2 / 1 1` | `3` | Equal coin values and unconstrained counting |
+| `2 1 1 / 5 5 / 1 2` | `0` | Minimum forced contribution exceeds target |
+| `2 1 2 / 1 1 / 1 2` | `1` | Exact boundary where target equals minimum |
 
 ## Edge Cases
 
-Consider the impossible cycle:
+Consider the contradictory cycle:
 
 ```
-2 2 5
-1 1
+2 2 10
+1 2
 1 2
 2 1
 ```
 
-The graph becomes:
+No node has indegree `0`, so no chain traversal starts. Both vertices remain unvisited. The algorithm detects this after the traversal phase and immediately returns `0`. This matches the fact that `x1 > x2 > x1` is impossible.
+
+Consider a longer cycle:
 
 ```
-1 -> 2 -> 1
-```
-
-DFS revisits a node currently in the recursion stack, which detects a cycle immediately. The algorithm prints `0` before running DP.
-
-Now consider equal-valued coin types:
-
-```
-2 0 2
-1 1
-```
-
-There are no inequalities, so both nodes are independent chains of length one.
-
-The transformed weights are simply:
-
-```
-[1,1]
-```
-
-The DP counts:
-
-```
-(0,2)
-(1,1)
-(2,0)
-```
-
-separately, producing answer `3`.
-
-Finally, consider hidden minimum counts:
-
-```
-3 2 2
+3 3 20
 1 1 1
 1 2
 2 3
+3 1
 ```
 
-The chain forces:
+Again every vertex has indegree `1`. No root exists. All vertices remain unvisited and the answer is `0`.
+
+Consider a target below the mandatory minimum:
 
 ```
-x1 > x2 > x3 >= 0
+2 1 1
+5 5
+1 2
 ```
 
-The smallest valid assignment is:
+The chain has prefix sums `[5,10]`. The mandatory contribution is `5`, so the remaining target becomes `-4`. The algorithm returns `0` before running DP.
 
-```
-(2,1,0)
-```
-
-whose total is already `3`.
-
-The algorithm computes:
-
-```
-mandatory = 3
-```
-
-Since `mandatory > t`, it returns `0` immediately without entering the DP phase.
+These cases are exactly where naive implementations often fail, but they are handled naturally by the chain decomposition and minimum-contribution transformation.
