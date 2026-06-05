@@ -1,7 +1,7 @@
 ---
 title: "CF 291B - Command Line Arguments"
-description: "We are given a single string representing a command line in a simplified Pindows operating system. Each \"lexeme\" in this command line is either a contiguous sequence of non-space characters or a sequence of characters enclosed in double quotes."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a single command-line string written in the fictional Pindows operating system. A command line consists of lexemes, which are the tokens passed to a program. There are two ways a lexeme can appear. A normal lexeme is a maximal sequence of non-space characters."
+date: "2026-06-05T16:51:38+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 291
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Croc Champ 2013 - Qualification Round"
 rating: 1300
 weight: 291
-solve_time_s: 86
-verified: true
+solve_time_s: 137
+verified: false
 draft: false
 ---
 
@@ -18,43 +18,146 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** *special, implementation, strings  
-**Solve time:** 1m 26s  
-**Verified:** yes  
+**Solve time:** 2m 17s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single string representing a command line in a simplified Pindows operating system. Each "lexeme" in this command line is either a contiguous sequence of non-space characters or a sequence of characters enclosed in double quotes. The first lexeme is the program name, and all subsequent lexemes are its arguments. The goal is to parse this string into individual lexemes and print them in order, surrounded by angle brackets.
+We are given a single command-line string written in the fictional Pindows operating system. A command line consists of lexemes, which are the tokens passed to a program.
 
-The input string can include uppercase and lowercase letters, digits, punctuation marks like `.`, `,`, `?`, `!`, quotes, and spaces. Quotes are used only to group lexemes that contain spaces or to represent empty strings. Every opening quote has a matching closing quote, and quotes cannot be nested. There may be spaces outside quotes that separate lexemes, but spaces inside quotes are part of the lexeme.
+There are two ways a lexeme can appear.
 
-The constraints allow strings up to length 100,000. This implies we need an algorithm that works in linear time; any solution that inspects characters multiple times or performs repeated string concatenations inefficiently would risk exceeding the time limit. A naive split-on-spaces approach fails because it cannot handle quotes and empty strings correctly. Similarly, blindly scanning for quotes without careful management of boundaries may merge lexemes incorrectly.
+A normal lexeme is a maximal sequence of non-space characters. For example, in:
 
-Non-obvious edge cases include strings with empty lexemes (`""`), lexemes that consist only of spaces (`"   "`), or strings that start or end with quotes. For example, the input `"a" "" " "` should produce `<a>`, `<>`, `< >`, not `<a> < > < >` or similar errors. A careless parser could skip empty strings or misinterpret spaces outside quotes as part of a lexeme.
+```
+run.exe one two
+```
+
+the lexemes are `run.exe`, `one`, and `two`.
+
+A quoted lexeme begins with `"` and ends with the matching `"`. Everything between those quotes belongs to one lexeme, including spaces. The contents may even be empty. For example:
+
+```
+"a b" ""
+```
+
+contains two lexemes: `a b` and the empty string.
+
+The input is guaranteed to be a valid command line. Quotes are never ambiguous, quoted blocks are properly closed, and every lexeme is separated from neighboring lexemes by spaces or by the ends of the string.
+
+Our task is simply to parse the command line and print every lexeme on its own line, surrounded by `<` and `>`.
+
+The string length is at most $10^5$. This immediately rules out any approach that repeatedly copies large substrings or rescans parts of the input. A linear scan is the natural target because we only need to identify token boundaries once.
+
+Several edge cases deserve attention.
+
+Consider an empty quoted argument:
+
+```
+""
+```
+
+The correct output is:
+
+```
+<>
+```
+
+A parser that assumes every token contains at least one character would accidentally discard this argument.
+
+Consider a quoted argument containing spaces:
+
+```
+"a b c"
+```
+
+The correct output is:
+
+```
+<a b c>
+```
+
+Splitting the input by spaces would incorrectly produce three separate pieces.
+
+Consider a quoted argument consisting of a single space:
+
+```
+" "
+```
+
+The correct output is:
+
+```
+< >
+```
+
+This is different from an empty argument, so we must preserve every character inside the quotes exactly.
+
+Finally, consider adjacent punctuation:
+
+```
+run.exe one, two!
+```
+
+The correct output is:
+
+```
+<run.exe>
+<one,>
+<two!>
+```
+
+Punctuation is part of the lexeme. Only spaces and quotes have special meaning.
 
 ## Approaches
 
-The brute-force approach would be to iterate over the string, attempting to split on spaces unless we are inside quotes. This works correctly if implemented carefully because the string is guaranteed to be valid and all quotes are balanced. Each character must be inspected to decide whether it is part of a lexeme or a separator, so the operation count is O(n). Any repeated string slicing or concatenation could push this to O(n^2) in the worst case because each concatenation copies the substring.
+The most direct idea is to process the string character by character and build the current lexeme. Whenever we encounter a space outside quotes, we finish the current lexeme. Whenever we encounter a quote, we find the matching closing quote and treat everything between them as one token.
 
-The key insight for a more efficient and robust solution is to scan the string character by character while maintaining a flag that indicates whether we are inside a quoted lexeme. When we see a quote, we toggle this flag. While inside quotes, all characters, including spaces, are added to the current lexeme. Outside quotes, spaces indicate the end of a lexeme, and non-space characters start a new lexeme. This linear scan guarantees O(n) time without extra overhead and naturally handles empty strings and spaces inside quotes.
+A brute-force implementation might repeatedly search forward for matching quotes and repeatedly create new substrings. Since each search may traverse a large part of the string, the worst-case complexity can degrade toward $O(n^2)$. With $n = 10^5$, that becomes too expensive.
+
+The structure of the input gives us a much better option. Every character belongs to exactly one of three categories:
+
+1. A separator space outside quotes.
+2. A character inside a quoted lexeme.
+3. A character of an unquoted lexeme.
+
+Once a character has been processed, we never need to look at it again. This suggests a single left-to-right scan.
+
+The key observation is that quoted lexemes always begin with `"`, and the statement guarantees the command line is valid. As soon as we see an opening quote, we can keep advancing until the corresponding closing quote. The contents between them form one complete lexeme. For unquoted lexemes, we advance until the next space.
+
+Each character is visited a constant number of times, giving a linear solution.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2) | O(n) | Risky due to string concatenation cost |
-| Linear Scan with Quote Flag | O(n) | O(n) | Accepted |
+| Brute Force | O(n²) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize an empty list to store the lexemes and an empty string to build the current lexeme. Also initialize a boolean flag `in_quotes` to `False`.
-2. Iterate through each character of the input string.
-3. If the current character is a double quote, toggle the `in_quotes` flag. If toggling `in_quotes` from `True` to `False` (i.e., closing a quote), append the current lexeme to the list and reset the current lexeme to empty.
-4. If `in_quotes` is `True` and the character is not a quote, add it to the current lexeme. This ensures that all spaces and punctuation inside quotes are preserved.
-5. If `in_quotes` is `False`, spaces indicate separation between lexemes. When a space is encountered, if the current lexeme is non-empty, append it to the list and reset the current lexeme.
-6. For any non-space character outside quotes, append it to the current lexeme. This collects normal unquoted lexemes.
-7. After finishing the iteration, if the current lexeme is non-empty, append it to the list. This handles the last lexeme if the string does not end with a space or quote.
-8. Print each lexeme surrounded by angle brackets.
+1. Read the entire input line.
+2. Maintain an index `i` pointing to the current position.
+3. If `s[i]` is a space, advance `i`.
 
-The invariant throughout the loop is that `current_lexeme` always contains the characters of the lexeme currently being read, and `in_quotes` accurately reflects whether we are inside a quoted block. This guarantees that all characters inside quotes are treated as part of a single lexeme and that spaces outside quotes split lexemes correctly.
+Spaces outside lexemes are only separators, so they do not belong to any token.
+4. If `s[i]` is a double quote, start parsing a quoted lexeme.
+
+Advance past the opening quote, remember the starting position, and continue until the matching closing quote. The substring between those quotes is one lexeme.
+5. Store that lexeme and advance past the closing quote.
+6. Otherwise, start parsing an unquoted lexeme.
+
+Continue moving forward until reaching a space or the end of the string. The characters traversed form one lexeme.
+7. Store the lexeme.
+8. Repeat until the entire string has been processed.
+9. Print each stored lexeme surrounded by `<` and `>`.
+
+### Why it works
+
+At every position, the parser is either outside a lexeme or inside exactly one lexeme. The input guarantees that quotes are properly matched and that lexemes are separated by spaces or string boundaries.
+
+When a quote is encountered, every character up to the matching quote belongs to the same lexeme by definition. When a non-quote, non-space character is encountered, the lexeme extends until the next separator space. These are exactly the rules used by the command-line specification.
+
+Since every lexeme is extracted according to its defining boundary conditions, and every character belongs to exactly one processed region, the algorithm outputs precisely the lexemes represented by the command line.
 
 ## Python Solution
 
@@ -62,99 +165,245 @@ The invariant throughout the loop is that `current_lexeme` always contains the c
 import sys
 input = sys.stdin.readline
 
-s = input().rstrip()
-lexemes = []
-current_lexeme = []
-in_quotes = False
-i = 0
-n = len(s)
+def solve():
+    s = input().rstrip('\n')
 
-while i < n:
-    c = s[i]
-    if c == '"':
-        in_quotes = not in_quotes
-        if not in_quotes:
-            lexemes.append(''.join(current_lexeme))
-            current_lexeme = []
-    elif in_quotes:
-        current_lexeme.append(c)
-    else:
-        if c == ' ':
-            if current_lexeme:
-                lexemes.append(''.join(current_lexeme))
-                current_lexeme = []
+    n = len(s)
+    i = 0
+    tokens = []
+
+    while i < n:
+        if s[i] == ' ':
+            i += 1
+            continue
+
+        if s[i] == '"':
+            i += 1
+            start = i
+
+            while i < n and s[i] != '"':
+                i += 1
+
+            tokens.append(s[start:i])
+            i += 1  # skip closing quote
         else:
-            current_lexeme.append(c)
-    i += 1
+            start = i
 
-if current_lexeme:
-    lexemes.append(''.join(current_lexeme))
+            while i < n and s[i] != ' ':
+                i += 1
 
-for lex in lexemes:
-    print(f"<{lex}>")
+            tokens.append(s[start:i])
+
+    sys.stdout.write('\n'.join(f'<{token}>' for token in tokens))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-This solution carefully toggles the `in_quotes` flag on each quote and builds lexemes character by character. It handles empty lexemes (`""`) correctly by appending an empty string when a quote closes immediately. Spaces outside quotes terminate lexemes, while spaces inside quotes are preserved. The final check ensures that a lexeme at the end of the string is not omitted.
+The implementation follows the parsing logic directly.
+
+The outer loop always points to the first unprocessed character. Spaces are skipped immediately because they never belong to a lexeme.
+
+When a quote is encountered, the code records the position immediately after the opening quote and advances until the closing quote. The slice `s[start:i]` contains exactly the quoted contents. This naturally handles empty strings because if the quotes are adjacent, `start == i` and the slice is empty.
+
+For ordinary lexemes, the parser advances until the next space. Since quotes cannot appear inside an unquoted lexeme in a valid input, no additional checks are required.
+
+A common mistake is using `split()` on the input. That destroys information about quoted sections and cannot represent empty arguments. Another subtle point is preserving spaces inside quoted lexemes. The substring extraction does this automatically because only the outer quote characters are removed.
 
 ## Worked Examples
 
 ### Example 1
 
-Input: `"RUn.exe O" "" "   2ne, " two! . " "`
+Input:
 
-| i | c | in_quotes | current_lexeme | lexemes |
-| --- | --- | --- | --- | --- |
-| 0 | " | False→True | [] | [] |
-| 1-9 | R U n . e x e   O | True | ['R','U','n','.','e','x','e',' ','O'] | [] |
-| 10 | " | True→False | [] | ['RUn.exe O'] |
-| 11 | space | False | [] | ['RUn.exe O'] |
-| 12 | " | False→True | [] | ['RUn.exe O'] |
-| 13 | " | True→False | [] | ['RUn.exe O',''] |
-| 14 | space | False | [] | ['RUn.exe O',''] |
-| 15 | " | False→True | [] | ['RUn.exe O',''] |
-| 16-22 | space 2 n e , space | True | [' ',' ',' ','2','n','e',',',' '] | ['RUn.exe O',''] |
-| 23 | " | True→False | [] | ['RUn.exe O','', '   2ne, '] |
-| 24 | space | False | [] | ['RUn.exe O','', '   2ne, '] |
-| 25-28 | t w o ! | False | ['t','w','o','!'] | ['RUn.exe O','', '   2ne, '] |
-| 29 | space | False | [] | ['RUn.exe O','', '   2ne, ','two!'] |
-| 30 | . | False | ['.'] | ['RUn.exe O','', '   2ne, ','two!'] |
-| 31 | space | False | [] | ['RUn.exe O','', '   2ne, ','two!','.'] |
-| 32 | " | False→True | [] | ['RUn.exe O','', '   2ne, ','two!','.'] |
-| 33 | space | True | [' '] | ['RUn.exe O','', '   2ne, ','two!','.'] |
-| 34 | " | True→False | [] | ['RUn.exe O','', '   2ne, ','two!','.',' '] |
+```
+"RUn.exe O" "" "   2ne, " two! . " "
+```
 
-Output matches the sample.
-
-### Example 2
-
-Input: `abc " " def`
-
-| i | c | in_quotes | current_lexeme | lexemes |
-| --- | --- | --- | --- | --- |
-| 0-2 | a b c | False | ['a','b','c'] | [] |
-| 3 | space | False | [] | ['abc'] |
-| 4 | " | False→True | [] | ['abc'] |
-| 5 | space | True | [' '] | ['abc'] |
-| 6 | " | True→False | [] | ['abc',' '] |
-| 7 | space | False | [] | ['abc',' '] |
-| 8-10 | d e f | False | ['d','e','f'] | ['abc',' '] |
-| end |  |  | [] | ['abc',' ','def'] |
+| Step | Position Type | Extracted Lexeme |
+| --- | --- | --- |
+| 1 | Quoted | `RUn.exe O` |
+| 2 | Quoted | `` |
+| 3 | Quoted | `  2ne,` |
+| 4 | Unquoted | `two!` |
+| 5 | Unquoted | `.` |
+| 6 | Quoted | ` ` |
 
 Output:
 
 ```
-<abc>
+<RUn.exe O>
+<>
+<   2ne, >
+<two!>
+<.>
 < >
-<def>
 ```
 
-This trace demonstrates correct handling of spaces inside quotes and proper lexeme separation outside quotes.
+This example demonstrates all special cases simultaneously: spaces inside quotes, an empty argument, normal arguments, and a quoted argument consisting of one space.
+
+### Example 2
+
+Input:
+
+```
+run.exe one two
+```
+
+| Step | Position Type | Extracted Lexeme |
+| --- | --- | --- |
+| 1 | Unquoted | `run.exe` |
+| 2 | Unquoted | `one` |
+| 3 | Unquoted | `two` |
+
+Output:
+
+```
+<run.exe>
+<one>
+<two>
+```
+
+This trace shows the simpler case where every lexeme is unquoted and spaces act purely as separators.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each character is processed exactly once, with appending to a list of characters being O(1) per character |
-| Space | O(n) | We store all lexemes and build each lexeme in a list of characters |
+| Time | O(n) | Each character is examined at most a constant number of times |
+| Space | O(n) | Stored lexemes together contain at most n characters |
 
-For n
+With an input length of at most $10^5$, a linear scan easily fits within the time limit. The memory usage is also linear in the input size and well within the available limit.
+
+## Test Cases
+
+```python
+# helper: run solution on input string, return output string
+import sys
+import io
+
+def run(inp: str) -> str:
+    s = inp.rstrip('\n')
+
+    n = len(s)
+    i = 0
+    tokens = []
+
+    while i < n:
+        if s[i] == ' ':
+            i += 1
+            continue
+
+        if s[i] == '"':
+            i += 1
+            start = i
+
+            while i < n and s[i] != '"':
+                i += 1
+
+            tokens.append(s[start:i])
+            i += 1
+        else:
+            start = i
+
+            while i < n and s[i] != ' ':
+                i += 1
+
+            tokens.append(s[start:i])
+
+    return '\n'.join(f'<{x}>' for x in tokens)
+
+# provided sample
+assert run('"RUn.exe O" "" "   2ne, " two! . " "') == (
+    "<RUn.exe O>\n"
+    "<>\n"
+    "<   2ne, >\n"
+    "<two!>\n"
+    "<.>\n"
+    "< >"
+), "sample 1"
+
+# custom cases
+assert run('""') == "<>", "empty quoted argument"
+
+assert run('"a b c"') == "<a b c>", "spaces inside quoted token"
+
+assert run('abc') == "<abc>", "single unquoted token"
+
+assert run('one two three') == (
+    "<one>\n<two>\n<three>"
+), "multiple ordinary tokens"
+
+assert run('" " "."') == (
+    "< >\n<.>"
+), "space token and punctuation token"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `""` | `<>` | Empty quoted lexeme |
+| `"a b c"` | `<a b c>` | Spaces preserved inside quotes |
+| `abc` | `<abc>` | Smallest ordinary command |
+| `one two three` | Three separate lexemes | Standard separator handling |
+| `" " "."` | `< >`, `<.>` | Distinguishes space from empty string |
+
+## Edge Cases
+
+Consider the input:
+
+```
+""
+```
+
+The parser sees an opening quote, advances to the next quote immediately, and extracts the substring between them. That substring has length zero, so the stored lexeme is the empty string. The output becomes:
+
+```
+<>
+```
+
+No special-case code is required.
+
+Consider:
+
+```
+" "
+```
+
+After entering quoted mode, the parser collects the single space between the quotes. The extracted substring is `" "` rather than `""`, producing:
+
+```
+< >
+```
+
+This confirms that spaces inside quotes are data, not separators.
+
+Consider:
+
+```
+"a b" c
+```
+
+The first lexeme is parsed entirely inside quotes, yielding `a b`. After the closing quote, the parser skips the separating space and parses the unquoted lexeme `c`. The output is:
+
+```
+<a b>
+<c>
+```
+
+The internal space remains part of the first argument because quoted mode ignores separator semantics until the matching closing quote is reached.
+
+Consider:
+
+```
+run.exe one, two!
+```
+
+The parser never treats punctuation specially. It only stops unquoted parsing when it reaches a space. The extracted lexemes are:
+
+```
+<run.exe>
+<one,>
+<two!>
+```
+
+This verifies that punctuation belongs to the token exactly as it appears in the input.

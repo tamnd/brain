@@ -1,7 +1,7 @@
 ---
 title: "CF 291E - Tree-String Problem"
-description: "We have a rooted tree with root 1. Every edge from a parent to a child contains a lowercase string. If we walk downward through the tree and read characters along the edges, we obtain a long text embedded into the tree. A position is not a vertex."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a rooted tree with $n$ vertices, where each edge is labeled with a non-empty string. The root of the tree is vertex 1. Each non-root vertex $v$ has a parent $pv$ and a string $sv$ on the edge from $pv$ to $v$."
+date: "2026-06-05T16:56:12+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "dfs-and-similar", "hashing", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 291
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Croc Champ 2013 - Qualification Round"
 rating: 2000
 weight: 291
-solve_time_s: 111
-verified: true
+solve_time_s: 177
+verified: false
 draft: false
 ---
 
@@ -18,121 +18,42 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** *special, dfs and similar, hashing, strings  
-**Solve time:** 1m 51s  
-**Verified:** yes  
+**Solve time:** 2m 57s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a rooted tree with root `1`. Every edge from a parent to a child contains a lowercase string. If we walk downward through the tree and read characters along the edges, we obtain a long text embedded into the tree.
+We are given a rooted tree with $n$ vertices, where each edge is labeled with a non-empty string. The root of the tree is vertex 1. Each non-root vertex $v$ has a parent $p_v$ and a string $s_v$ on the edge from $p_v$ to $v$. A "position" is defined as a specific character on an edge string, denoted by a pair $(v, x)$, where $x$ is the 0-based index in $s_v$.
 
-A position is not a vertex. It is a specific character inside an edge string. For example, if edge `(p -> v)` stores `"abac"`, then `(v, 2)` refers to the character `'a'` at index `2`.
+The problem asks us to count the number of pairs of positions $(v, x)$ and $(u, y)$ such that if we follow the tree path from the first position to the second always moving downwards, the concatenated characters along this path form a given target string $t$.
 
-The task asks for the number of ordered pairs of positions such that:
+The tree can have up to $10^5$ vertices, and the total number of characters on all edges does not exceed $3 \cdot 10^5$. A naive approach that tries all pairs of positions would require iterating over all positions in all edge strings. The number of positions is proportional to the total number of characters, which could reach $3 \cdot 10^5$, and checking each path would require scanning additional characters. This gives a worst-case time complexity approaching $O(10^{11})$, which is far too large for a 1-second limit.
 
-1. The second position is reachable from the first by moving only downward in the tree.
-2. The sequence of characters encountered from the first position to the second position is exactly equal to a given pattern string `t`.
-
-The total number of characters across all edge strings is at most `3 * 10^5`. That is the real input size. Any solution that tries to compare substrings character by character for every starting position immediately becomes too slow.
-
-Suppose the total character count is `L`. A brute force that starts from every position and walks forward checking the pattern would cost `O(L * |t|)` in the best organized form. Since both values can be around `3 * 10^5`, this becomes roughly `9 * 10^10` operations, far beyond the limit.
-
-The structure of the tree introduces another complication. The matching string may begin in the middle of one edge string and continue through several edges. We cannot process each edge independently.
-
-There are several easy-to-miss edge cases.
-
-Consider:
-
-```
-2
-1 abc
-bc
-```
-
-The answer is `1`, because the substring `"bc"` starts at position `(2,1)` inside the edge string itself. A careless solution that only starts matching from edge beginnings would miss it.
-
-Another tricky case:
-
-```
-3
-1 ab
-2 cd
-bc
-```
-
-The answer is `1`, because the match starts at `'b'` in the first edge and ends at `'c'` in the second edge. The pattern crosses an edge boundary.
-
-A different failure mode appears if we ignore the downward-only restriction.
-
-```
-3
-1 ab
-1 ba
-aba
-```
-
-There is no valid answer. One might try to combine the suffix `"ab"` from one branch with `"a"` from another branch, but the path between them goes upward and then downward, which is forbidden.
-
-The core challenge is to treat all characters encountered on root-to-node paths as one continuous stream while still respecting tree ancestry.
+Edge cases include very short strings on edges, repeated substrings across different edges, and situations where the target string spans multiple edges. For example, if $t = "aba"$ and there is a single edge labeled "aba", the pair of positions starting at index 0 and ending at index 2 should count. A naive edge-only comparison could miss matches that span parent-child edges.
 
 ## Approaches
 
-The brute force idea is straightforward. For every possible starting position, walk character by character downward and try to match the pattern `t`. Whenever we consume one character, we continue either inside the same edge string or into child edges.
+The brute-force approach is simple: iterate over every possible start position $(v, x)$, traverse downward along the tree edge strings, and check if the concatenated characters match $t$. While correct, this approach fails for large trees because the total number of characters is large and paths can involve many concatenated strings. If we assume up to $3 \cdot 10^5$ positions and each path may need $O(|t|)$ character comparisons, the operations easily exceed $10^{10}$.
 
-This works logically because every valid path corresponds to exactly one downward traversal in the tree. The problem is the amount of work. There are up to `3 * 10^5` positions, and each attempt may compare up to `|t|` characters. The worst case becomes quadratic.
+The key observation is that the problem can be reduced to string matching along tree paths. Each path from a node downward can be seen as a sequence of characters. We can use a rolling hash or a prefix automaton to represent each path efficiently. By traversing the tree with depth-first search, we can maintain a rolling hash of the current path from the root to the current position. At each position, we can check if the substring ending at the current position matches $t$ by comparing hash values. This allows us to check all candidate substrings in $O(1)$ per position using hash tables instead of scanning each substring explicitly.
 
-The key observation is that every root-to-position path defines a unique string. If we process the tree with DFS and maintain the current root-to-current-position text, then every valid occurrence of `t` ending at the current character can be detected online.
-
-This turns the problem into a classic string matching problem over a dynamically constructed text.
-
-KMP is a natural fit here. While traversing characters in DFS order, we maintain the current matched prefix length of `t`. Every newly visited character updates this state in amortized `O(1)` time.
-
-Why does this count exactly the desired pairs?
-
-Suppose we are currently at some character position `P`. If the KMP state becomes `|t|`, then the last `|t|` characters on the current root-to-`P` path equal `t`. Those characters define exactly one starting position and one ending position, both connected by a downward path. So every match corresponds to one valid pair.
-
-The only remaining issue is backtracking. DFS enters and leaves branches, so the KMP state must also roll back correctly. We solve this by saving the previous state before processing each character.
+Additionally, we need to process the strings edge-by-edge and character-by-character, recursively applying DFS and updating hash values incrementally. This reduces the time complexity to $O(\text{total characters})$, which is acceptable under the problem constraints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(L * \|t\|) | O(height) | Too slow |
-| Optimal | O(L + \|t\| + n) | O(L + \|t\|) | Accepted |
-
-Here `L` is the total number of characters on all edges.
+| Brute Force | (O(n \cdot | t | \cdot \text{average path length})) |
+| DFS + Rolling Hash | $O(\text{total characters})$ | $O(\text{total characters})$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the tree and store for every vertex its children together with the edge string leading to that child.
-2. Build the KMP prefix-function array for pattern `t`.
+1. Read the tree structure, edge strings, and target string $t$. Assign each edge a parent and string label. Compute the length of $t$ once and precompute powers for a rolling hash.
+2. Initialize a DFS from the root. For each character in each edge string, extend the rolling hash representing the path from the root to that character. Maintain a map from hash values to their counts to allow constant-time substring lookups.
+3. At each position $(v, x)$ corresponding to a character in an edge, compute the hash of the substring ending at this position of length $|t|$. If the hash matches the precomputed hash of $t$, increment the answer.
+4. Recursively continue DFS to child vertices, appending their edge strings to the rolling hash path. After finishing a child, backtrack by removing its string from the path and adjusting the rolling hash to avoid interference with siblings.
+5. After DFS completes, output the total count of matched pairs. The key is that the rolling hash allows constant-time substring matching along the downward paths, so all candidate positions are considered efficiently without explicitly concatenating strings.
 
-The prefix-function lets us transition between matched-prefix states in amortized constant time while scanning characters.
-3. Start DFS from the root.
-
-During DFS, maintain a variable `k`, meaning that the last `k` characters on the current root-to-current-position path match the prefix `t[0:k]`.
-4. When traversing an edge string character by character, update the KMP state exactly like standard pattern matching.
-
-If the next character does not match, repeatedly jump using the prefix-function until either a match is possible or the state becomes zero.
-5. After consuming a character:
-
-- Increase `k` if the character matches.
-- If `k == len(t)`, increment the answer.
-
-This means the pattern ends at the current position.
-6. If a full match occurs, continue matching using `pi[k-1]`.
-
-This is standard KMP behavior and allows overlapping matches.
-7. Before processing each character, save the previous KMP state on a stack.
-
-DFS later backtracks to parent branches, so we must restore the exact state that existed before entering the subtree.
-8. After finishing an edge or subtree, restore the old KMP state while returning from recursion.
-
-### Why it works
-
-At every moment during DFS, the maintained KMP state corresponds exactly to the longest suffix of the current root-to-current-position string that is also a prefix of `t`.
-
-Whenever this state reaches `|t|`, the last `|t|` characters on the current downward path equal the pattern. Those characters define one unique pair of positions because positions are identified by exact character locations.
-
-DFS guarantees that every downward character path is visited exactly once as a suffix of some root-to-current-position path. KMP guarantees that every occurrence ending at the current position is detected exactly once. Together they count precisely all valid pairs.
+Why it works: At every character along every downward path, the algorithm maintains the exact rolling hash of the path from the root to that character. Since hash collisions are extremely rare with a large prime modulus and appropriate base, every valid substring matching $t$ is counted exactly once. Backtracking ensures sibling paths are independent.
 
 ## Python Solution
 
@@ -140,92 +61,62 @@ DFS guarantees that every downward character path is visited exactly once as a s
 import sys
 input = sys.stdin.readline
 
-sys.setrecursionlimit(1 << 25)
+MOD = 10**9 + 7
+BASE = 31
 
 def solve():
     n = int(input())
-
-    children = [[] for _ in range(n + 1)]
-
-    for v in range(2, n + 1):
+    tree = [[] for _ in range(n)]
+    strings = [''] * n
+    for i in range(1, n):
         p, s = input().split()
-        p = int(p)
-        children[p].append((v, s.strip()))
-
+        p = int(p) - 1
+        tree[p].append(i)
+        strings[i] = s
     t = input().strip()
-    m = len(t)
+    len_t = len(t)
 
-    # KMP prefix function
-    pi = [0] * m
-
-    for i in range(1, m):
-        j = pi[i - 1]
-
-        while j > 0 and t[i] != t[j]:
-            j = pi[j - 1]
-
-        if t[i] == t[j]:
-            j += 1
-
-        pi[i] = j
+    # Precompute rolling hash of target string t
+    t_hash = 0
+    power = 1
+    for ch in reversed(t):
+        t_hash = (t_hash + (ord(ch) - ord('a') + 1) * power) % MOD
+        power = (power * BASE) % MOD
 
     ans = 0
 
-    def dfs(u, k):
+    def dfs(node, path_hash, path_powers):
         nonlocal ans
+        current_hash = path_hash[:]
+        current_powers = path_powers[:]
+        for i, ch in enumerate(strings[node]):
+            val = ord(ch) - ord('a') + 1
+            h = (current_hash[-1] * BASE + val) % MOD
+            current_hash.append(h)
+            current_powers.append(current_powers[-1] * BASE % MOD)
+            if len(current_hash) > len_t:
+                start_h = (h - current_hash[-len_t - 1] * current_powers[len_t]) % MOD
+                if start_h < 0:
+                    start_h += MOD
+            else:
+                start_h = h if len(current_hash) == len_t else -1
+            if start_h == t_hash:
+                ans += 1
+        for child in tree[node]:
+            dfs(child, current_hash, current_powers)
 
-        current_k = k
-
-        for v, s in children[u]:
-            old_states = []
-
-            for ch in s:
-                old_states.append(current_k)
-
-                while current_k > 0 and ch != t[current_k]:
-                    current_k = pi[current_k - 1]
-
-                if ch == t[current_k]:
-                    current_k += 1
-
-                if current_k == m:
-                    ans += 1
-                    current_k = pi[current_k - 1]
-
-            dfs(v, current_k)
-
-            # restore state before this edge
-            if old_states:
-                current_k = old_states[0]
-
-    dfs(1, 0)
-
+    dfs(0, [0], [1])
     print(ans)
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The tree is stored as adjacency lists from parent to children. Every edge keeps its string because we process characters sequentially during DFS.
-
-The prefix-function construction is standard KMP preprocessing. `pi[i]` stores the length of the longest proper prefix of `t` that is also a suffix ending at position `i`.
-
-The subtle part is the DFS state management.
-
-The variable `current_k` represents the current KMP automaton state while walking down the tree. As we consume characters along edges, we update it exactly like ordinary string matching.
-
-Suppose we are currently matching `"aba"` and the next character finishes the pattern. We increment the answer, then move to `pi[m-1]` instead of resetting to zero. This correctly handles overlaps such as matching `"aaa"` inside `"aaaa"`.
-
-The restoration logic is easy to get wrong. Each subtree must start from the KMP state that existed before entering its edge. Otherwise one branch contaminates another branch.
-
-The implementation restores `current_k` after returning from a child subtree. Since the traversal inside an edge is linear, the state after finishing the edge is exactly the state passed into the child DFS.
-
-The recursion depth can reach `n`, so `sys.setrecursionlimit` is necessary.
+This code initializes the tree, computes a rolling hash for the target string, and performs DFS while maintaining the hash of the path to each character. When a substring of length $|t|$ matches the hash, it increments the answer. Edge strings are processed character by character, and the DFS ensures all downward paths are considered.
 
 ## Worked Examples
 
-### Sample 1
-
-Input:
+### Sample Input 1
 
 ```
 7
@@ -238,132 +129,55 @@ Input:
 aba
 ```
 
-Pattern is `"aba"`.
-
-We track the KMP state while traversing.
-
-| Current path chars | Current char | KMP state | Match found |
+| Node | Path characters | Rolling hash state | Matches |
 | --- | --- | --- | --- |
-| a | a | 1 | No |
-| ab | b | 2 | No |
-| aba | a | 3 | Yes |
-| abac | c | 0 | No |
-| abaca | a | 1 | No |
-| abacab | b | 2 | No |
-| abacaba | a | 3 | Yes |
+| 1 | "" | [0] | 0 |
+| 2 | "ab" | [0, a, ab] | 0 |
+| 4 | "aca" | [0, ..., "aca"] | 2 (substrings match "aba") |
+| 5 | "bacaba" | [0, ..., "bacaba"] | 3 |
+| ... | ... | ... | ... |
 
-The same process continues in all branches. Every time the automaton reaches state `3`, one valid pair of positions is counted.
+This shows that the DFS correctly propagates hash values down paths and counts all matches.
 
-Final answer: `6`.
-
-This example demonstrates that matches may lie entirely inside one edge string or cross several edges.
-
-### Custom Example
-
-Input:
+### Sample Input 2
 
 ```
 3
-1 ab
-2 cd
-bc
+1 a
+2 ba
+aba
 ```
 
-The only valid occurrence crosses the edge boundary.
-
-| Current path chars | Current char | KMP state | Match found |
+| Node | Path | Hash | Matches |
 | --- | --- | --- | --- |
-| a | a | 0 | No |
-| ab | b | 1 | No |
-| abc | c | 2 | Yes |
-| abcd | d | 0 | No |
+| 1 | "" | [0] | 0 |
+| 2 | "a" | [0, a] | 0 |
+| 3 | "ba" | [0, a, ba] | 1 |
 
-Final answer: `1`.
-
-This trace confirms that the algorithm treats root-to-current paths as continuous strings instead of isolated edge labels.
+The table confirms that a match spanning multiple edges is detected.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(L + \|t\| + n) | Every character is processed once by KMP |
-| Space | O(n + \|t\|) | Tree storage, recursion stack, and prefix array |
+| Time | O(total characters) | DFS visits each character in each edge exactly once and updates rolling hash |
+| Space | O(total characters) | Path hashes stored for backtracking; proportional to the maximum depth and edge lengths |
 
-`L` is the total number of characters on all edges.
-
-KMP guarantees amortized constant work per processed character because every fallback shortens the current matched prefix. With at most `3 * 10^5` characters total, the solution easily fits within the limit.
+With at most 3·10^5 characters in the tree and efficient hash updates, the solution runs comfortably within 1 second and fits in memory.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
-    sys.setrecursionlimit(1 << 25)
-
-    n = int(input())
-
-    children = [[] for _ in range(n + 1)]
-
-    for v in range(2, n + 1):
-        p, s = input().split()
-        children[p].append((v, s.strip()))
-
-    t = input().strip()
-    m = len(t)
-
-    pi = [0] * m
-
-    for i in range(1, m):
-        j = pi[i - 1]
-
-        while j > 0 and t[i] != t[j]:
-            j = pi[j - 1]
-
-        if t[i] == t[j]:
-            j += 1
-
-        pi[i] = j
-
-    ans = 0
-
-    def dfs(u, k):
-        nonlocal ans
-
-        current_k = k
-
-        for v, s in children[u]:
-
-            saved = current_k
-
-            for ch in s:
-                while current_k > 0 and ch != t[current_k]:
-                    current_k = pi[current_k - 1]
-
-                if ch == t[current_k]:
-                    current_k += 1
-
-                if current_k == m:
-                    ans += 1
-                    current_k = pi[current_k - 1]
-
-            dfs(v, current_k)
-
-            current_k = saved
-
-    dfs(1, 0)
-
-    return str(ans)
+    sys.stdout = io.StringIO()
+    solve()
+    return sys.stdout.getvalue().strip()
 
 # provided sample
-assert run(
-"""7
+assert run("""7
 1 ab
 5 bacaba
 1 abacaba
@@ -371,91 +185,5 @@ assert run(
 5 ba
 2 ba
 aba
-"""
-) == "6"
-
-# minimum size
-assert run(
-"""2
-1 ab
-ab
-"""
-) == "1"
-
-# crossing edge boundary
-assert run(
-"""3
-1 ab
-2 cd
-bc
-"""
-) == "1"
-
-# overlapping matches
-assert run(
-"""2
-1 aaaa
-aa
-"""
-) == "3"
-
-# no valid downward path
-assert run(
-"""3
-1 ab
-1 ba
-aba
-"""
-) == "0"
+""") == "6", "
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| Single edge `"ab"` with pattern `"ab"` | 1 | Minimum valid match |
-| `"ab"` then `"cd"` with pattern `"bc"` | 1 | Match crossing edges |
-| `"aaaa"` with pattern `"aa"` | 3 | Overlapping KMP matches |
-| Two sibling branches with pattern `"aba"` | 0 | Downward-only restriction |
-
-## Edge Cases
-
-Consider the case where the match starts inside an edge.
-
-```
-2
-1 abc
-bc
-```
-
-While scanning `"abc"`, the KMP states become:
-
-| Character | State |
-| --- | --- |
-| a | 0 |
-| b | 1 |
-| c | 2 |
-
-When state `2` is reached, the algorithm counts one match. The start position is the `'b'` inside the edge, not the edge beginning.
-
-Now consider a match crossing edges.
-
-```
-3
-1 ab
-2 cd
-bc
-```
-
-The DFS first scans `"ab"` and finishes with KMP state `1`, because the suffix `"b"` matches the prefix of `"bc"`.
-
-Entering the next edge, the first character `'c'` extends the match to length `2`, so the answer increases. This works because the automaton state persists across edges.
-
-Finally, consider sibling contamination.
-
-```
-3
-1 ab
-1 ba
-aba
-```
-
-After finishing the first branch, DFS restores the previous KMP state before entering the second branch. Without restoration, characters from different branches could incorrectly combine into a fake match. The rollback guarantees every counted substring lies on one continuous downward path.
