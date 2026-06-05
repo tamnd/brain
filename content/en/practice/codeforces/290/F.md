@@ -1,7 +1,7 @@
 ---
 title: "CF 290F - Greedy Petya"
-description: "The statement is intentionally misleading. We are not asked to solve the Hamiltonian path problem ourselves. Instead, we must reproduce the output of Petya’s supposedly correct program. That changes the task completely."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an undirected graph with up to 20 vertices and up to 400 edges, and we need to decide whether there exists a simple path that visits every vertex exactly once."
+date: "2026-06-05T10:38:11+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "dfs-and-similar", "graphs", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 290
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "April Fools Day Contest 2013"
 rating: 2800
 weight: 290
-solve_time_s: 79
+solve_time_s: 68
 verified: true
 draft: false
 ---
@@ -18,109 +18,53 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** *special, dfs and similar, graphs, greedy  
-**Solve time:** 1m 19s  
+**Solve time:** 1m 8s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The statement is intentionally misleading. We are not asked to solve the Hamiltonian path problem ourselves. Instead, we must reproduce the output of Petya’s supposedly correct program.
+We are given an undirected graph with up to 20 vertices and up to 400 edges, and we need to decide whether there exists a simple path that visits every vertex exactly once. This is the Hamiltonian path problem in its decision form: we are not asked to construct the path, only to say whether at least one such ordering of vertices exists where consecutive vertices are connected by edges.
 
-That changes the task completely.
+The key detail is the scale of the graph. With at most 20 vertices, exponential methods become viable, but anything like enumerating all permutations of vertices directly would already be borderline because $20!$ is far too large. However, any solution with state compression over subsets of vertices, on the order of $2^n \cdot n^2$, is comfortably feasible.
 
-The graph is undirected and may contain repeated edges or self-loops. We receive up to 20 vertices and up to 400 edges. The required output is exactly whatever Petya’s algorithm would print.
+One subtle point is that the graph may contain self-loops or multiple edges, and these do not affect the existence of a Hamiltonian path. A self-loop never helps in a path that must move between distinct vertices, and duplicate edges are redundant for connectivity.
 
-The trick is that Petya’s “algorithm” is absurdly simple. The intended joke of the problem is that his program always prints `"Yes"` regardless of the graph. Since the statement says his code is bug-free, we must imitate its behavior exactly, not solve the real graph problem.
+A naive mistake that appears often is to interpret this as a connectivity problem. For example, checking that the graph is connected and all vertices have degree at least one is far from sufficient. A connected graph like a star with 20 vertices has a center connected to all leaves but no Hamiltonian path, since any path that enters the center can only leave it once, making it impossible to visit all leaves in a single chain.
 
-The constraints are actually irrelevant once this observation is made. Even though Hamiltonian path is NP-complete in general, here we do not need any graph processing at all. A constant-time solution is enough.
-
-There are still several edge cases that can confuse someone who overthinks the task.
-
-Consider a graph with no edges:
-
-```
-3 0
-```
-
-A real Hamiltonian path does not exist here, because no path can visit all three vertices. The correct output for this problem is still:
-
-```
-Yes
-```
-
-A contestant trying to solve the actual Hamiltonian path problem would incorrectly print `"No"`.
-
-Self-loops are another trap:
-
-```
-1 1
-1 1
-```
-
-The graph trivially has a Hamiltonian path because there is only one vertex, but this detail does not matter. Petya’s code still prints `"Yes"`.
-
-Disconnected graphs are also misleading:
-
-```
-4 1
-1 2
-```
-
-There is clearly no Hamiltonian path covering all four vertices, but the required output remains:
-
-```
-Yes
-```
-
-The whole challenge is recognizing that the correct solution is to imitate the broken algorithm rather than solve the graph problem itself.
+Another failure case comes from greedy traversal. Starting from a random node and always going to an unvisited neighbor can get stuck early even when a valid Hamiltonian path exists. The local choice does not encode global constraints.
 
 ## Approaches
 
-A natural first reaction is to solve Hamiltonian path properly. Since the graph has at most 20 vertices, the classic bitmask dynamic programming approach is feasible.
+A brute-force approach would try all permutations of the vertices and check whether consecutive vertices are connected by edges. For each permutation, we verify adjacency in $O(n)$, and there are $n!$ permutations, giving an overall complexity of $O(n! \cdot n)$. Even at $n = 20$, this is completely infeasible.
 
-The brute-force idea is to try every permutation of vertices and check whether consecutive vertices are connected. That takes $O(n! \cdot n)$, which becomes impossible very quickly. For $n = 20$, the number of permutations exceeds $2 \times 10^{18}$.
+The structure of the problem changes significantly once we observe that we only care about which subset of vertices has been visited and the last vertex in the path. Two different permutations that visit the same set of vertices and end at the same vertex are equivalent in terms of future extendability. This suggests a dynamic programming formulation over subsets.
 
-A much better genuine solution uses DP over subsets. Define:
+We define a state that captures a subset of visited vertices and the endpoint of the path. From any state, we try extending the path to an unvisited neighbor. This reduces the search space from permutations to subset transitions, turning an intractable enumeration into a manageable $2^n \cdot n$ state space.
 
-$$dp[mask][v]$$
-
-to mean whether there exists a path visiting exactly the vertices in `mask` and ending at vertex `v`.
-
-Transitions extend the path by one adjacent vertex. This reduces complexity to roughly:
-
-$$O(2^n \cdot n^2)$$
-
-which is acceptable for $n = 20$.
-
-But all of this is unnecessary.
-
-The key observation is that the problem never asks whether the graph actually contains a Hamiltonian path. It asks us to reproduce Petya’s output. Since Petya’s “bug-free” April Fools solution always prints `"Yes"`, the optimal solution ignores the graph completely.
-
-So the story is:
-
-The brute-force and DP approaches solve the real graph problem, but the actual challenge is identifying that the intended output is independent of the input.
+This is the standard Hamiltonian path DP, and here it fits perfectly because $n \le 20$, making $2^n \approx 10^6$, which is small enough.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n! \cdot n)$ | $O(n)$ | Too slow |
-| Hamiltonian DP | $O(2^n \cdot n^2)$ | $O(2^n \cdot n)$ | Accepted for real problem |
-| Actual Optimal | $O(1)$ | $O(1)$ | Accepted |
+| Brute Force (permutations) | $O(n! \cdot n)$ | $O(n)$ | Too slow |
+| Bitmask DP over paths | $O(n^2 \cdot 2^n)$ | $O(n \cdot 2^n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input.
+We build a dynamic programming table where we track whether a certain subset of vertices can form a valid path ending at a particular vertex.
 
-We still need to consume the input because competitive programming judges provide it, but we do not need to store or process any graph information.
-2. Ignore all graph data.
+1. We represent each subset of vertices using a bitmask of length $n$. A bitmask encodes exactly which vertices are already included in the partial path. This representation is natural because transitions only add one vertex at a time.
+2. We define a DP array where `dp[mask][v]` is true if there exists a path that visits exactly the vertices in `mask` and ends at vertex `v`. This state captures all information needed to extend the path further.
+3. We initialize the DP by setting `dp[1 << v][v] = True` for every vertex `v`. Each vertex alone forms a trivial path of length one.
+4. We iterate over all masks from small to large. For each mask, we try all possible endpoints `v`. If `dp[mask][v]` is true, we attempt to extend the path.
+5. To extend a state `(mask, v)`, we try all neighbors `to` of `v`. If `to` is not in `mask`, we set `dp[mask | (1 << to)][to] = True`. This step corresponds exactly to appending a new vertex to the current path.
+6. After processing all states, we check whether there exists any vertex `v` such that `dp[(1 << n) - 1][v]` is true. If so, a Hamiltonian path exists.
 
-The graph structure does not affect the output.
-3. Print `"Yes"`.
-
-This exactly matches Petya’s program behavior.
+The correctness hinges on the fact that every valid Hamiltonian path has a last vertex, and the DP will eventually construct exactly that sequence of subsets leading to it.
 
 ### Why it works
 
-The statement explicitly asks us to follow Petya’s program output format rather than determine Hamiltonian path existence ourselves. The intended joke is that Petya’s implementation always answers positively. Since our task is to imitate that behavior exactly, printing `"Yes"` for every input is correct.
+The invariant is that `dp[mask][v]` is true if and only if there exists a simple path that visits exactly the vertices in `mask` and ends at `v`. Every transition preserves simplicity because we only move to unvisited vertices, and every possible extension of a valid path is considered. Since every Hamiltonian path corresponds to some ordering of subset additions, it must appear in this state space, and no invalid state is ever introduced.
 
 ## Python Solution
 
@@ -128,210 +72,161 @@ The statement explicitly asks us to follow Petya’s program output format rathe
 import sys
 input = sys.stdin.readline
 
-# solution
-
 def solve():
-    input()  # read n and m
-    print("Yes")
+    n, m = map(int, input().split())
+    adj = [[False] * n for _ in range(n)]
+    
+    for _ in range(m):
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        adj[u][v] = True
+        adj[v][u] = True
+
+    if n == 1:
+        print("Yes")
+        return
+
+    size = 1 << n
+    dp = [[False] * n for _ in range(size)]
+
+    for i in range(n):
+        dp[1 << i][i] = True
+
+    for mask in range(size):
+        for v in range(n):
+            if not dp[mask][v]:
+                continue
+            if mask == (1 << n) - 1:
+                continue
+            for to in range(n):
+                if not adj[v][to]:
+                    continue
+                if mask & (1 << to):
+                    continue
+                dp[mask | (1 << to)][to] = True
+
+    full = (1 << n) - 1
+    for v in range(n):
+        if dp[full][v]:
+            print("Yes")
+            return
+
+    print("No")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation is intentionally tiny.
+The adjacency matrix is used so that edge checks are constant time. This is important because the DP already runs over all subsets and endpoints, and any logarithmic overhead per transition would be too expensive.
 
-The first call to `input()` consumes the line containing `n` and `m`. We do not even need to parse them because they are irrelevant to the answer.
+The DP table is indexed by bitmask first because subset iteration is the natural outer loop. Each state expands only along actual edges, and we explicitly skip transitions to already visited vertices to ensure path validity.
 
-We also do not need to read the remaining edge lines. Once the program terminates after printing `"Yes"`, the judge considers execution complete. This is safe in Python because unread input does not matter after program exit.
-
-The most common mistake is attempting to solve Hamiltonian path seriously. Such solutions will fail because the expected output is always `"Yes"`.
-
-Another subtle mistake is overengineering the parser and trying to process edges. That still works, but it wastes time and obscures the real point of the problem.
+The final scan over `dp[full]` checks whether any endpoint is reachable after visiting all vertices.
 
 ## Worked Examples
 
 ### Example 1
 
-Input:
+Input graph:
 
 ```
-2 3
+3 2
 1 2
-2 1
-1 1
+2 3
 ```
 
-| Step | Action | Output |
-| --- | --- | --- |
-| 1 | Read first line |  |
-| 2 | Ignore graph |  |
-| 3 | Print result | Yes |
+We expect a Hamiltonian path like 1 → 2 → 3.
 
-This example demonstrates that repeated edges and self-loops do not matter. The algorithm never inspects them.
+| mask | endpoint v | dp state | transition |
+| --- | --- | --- | --- |
+| 001 | 1 | true | start |
+| 010 | 2 | true | start |
+| 100 | 3 | true | start |
+| 011 | 2 | true | 1→2 |
+| 110 | 3 | true | 2→3 |
+| 111 | 3 | true | 1→2→3 |
+
+At the final mask, at least one endpoint is reachable, so the answer is “Yes”.
+
+This trace shows how partial paths merge naturally as subsets grow.
 
 ### Example 2
 
 Input:
 
 ```
-4 0
+4 2
+1 2
+3 4
 ```
 
-| Step | Action | Output |
-| --- | --- | --- |
-| 1 | Read first line |  |
-| 2 | Ignore graph |  |
-| 3 | Print result | Yes |
+The graph is disconnected, so no Hamiltonian path exists.
 
-This graph obviously has no Hamiltonian path because it contains no edges. The example confirms that the task is about reproducing Petya’s behavior rather than solving the actual graph problem.
+All DP states remain confined within their components, and no transition can move from {1,2} to {3,4}. Therefore no state reaches mask 1111.
+
+The DP never produces a full-mask state, confirming that connectivity alone inside subsets is not enough.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(1)$ | Only one input line is read and one line is printed |
-| Space | $O(1)$ | No graph storage is needed |
+| Time | $O(n^2 \cdot 2^n)$ | Each subset-state tries up to $n$ endpoints and up to $n$ neighbors |
+| Space | $O(n \cdot 2^n)$ | DP table storing states for each mask and endpoint |
 
-The limits are completely trivial for this solution. Even the largest possible input is handled instantly.
+With $n \le 20$, $2^n \approx 10^6$, and the constant factor around $n^2$, the solution comfortably fits within limits in Python with adjacency matrix optimizations.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-    input()
-    print("Yes")
+import sys, io
 
 def run(inp: str) -> str:
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    from sys import stdout
+    import sys as _sys
 
-    solve()
+    output = []
+    def fake_print(*args):
+        output.append(" ".join(map(str, args)))
 
-    out = sys.stdout.getvalue()
+    global print
+    old_print = print
+    print = fake_print
+    try:
+        solve()
+    finally:
+        print = old_print
 
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-
-    return out
+    return "\n".join(output) + ("\n" if output else "")
 
 # provided sample
-assert run(
-"""2 3
-1 2
-2 1
-1 1
-"""
-) == "Yes\n", "sample 1"
+assert run("2 3\n1 2\n2 1\n1 1\n") == "Yes\n", "sample 1"
 
-# minimum graph
-assert run(
-"""1 0
-"""
-) == "Yes\n", "single vertex"
+# simple path
+assert run("3 2\n1 2\n2 3\n") == "Yes\n"
 
 # disconnected graph
-assert run(
-"""5 1
-1 2
-"""
-) == "Yes\n", "disconnected graph"
+assert run("4 2\n1 2\n3 4\n") == "No\n"
 
-# complete graph
-assert run(
-"""4 6
-1 2
-1 3
-1 4
-2 3
-2 4
-3 4
-"""
-) == "Yes\n", "complete graph"
+# single node
+assert run("1 0\n") == "Yes\n"
 
-# self-loops and duplicate edges
-assert run(
-"""3 5
-1 1
-1 2
-1 2
-2 3
-3 3
-"""
-) == "Yes\n", "loops and duplicates"
-
-# large sparse graph
-assert run(
-"""20 0
-"""
-) == "Yes\n", "maximum n with no edges"
+# star graph (no Hamiltonian path)
+assert run("5 4\n1 2\n1 3\n1 4\n1 5\n") == "No\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 0` | `Yes` | Minimum-size input |
-| Sparse disconnected graph | `Yes` | Confirms graph structure is ignored |
-| Complete graph | `Yes` | Dense inputs behave identically |
-| Loops and duplicate edges | `Yes` | Special edge types do not matter |
-| `20 0` | `Yes` | Largest vertex count still trivial |
+| single node | Yes | trivial base case |
+| linear chain | Yes | normal DP propagation |
+| disconnected pairs | No | component isolation |
+| star graph | No | greedy pitfall case |
 
 ## Edge Cases
 
-Consider the disconnected graph:
+One edge case is the single vertex graph. The DP initializes `dp[1<<0][0] = true`, and since this already corresponds to the full mask, the algorithm immediately succeeds, correctly outputting “Yes”.
 
-```
-4 1
-1 2
-```
+Another case is graphs with isolated vertices. For example, if vertex 5 has no edges, it can only appear as a standalone path. The DP correctly handles this because states starting at 5 cannot expand, and no full-mask state becomes reachable.
 
-Execution trace:
-
-| Step | State |
-| --- | --- |
-| Read first line | `n = 4, m = 1` |
-| Ignore remaining input | unchanged |
-| Print answer | `Yes` |
-
-A genuine Hamiltonian path algorithm would reject this graph because vertices 3 and 4 are isolated. Our solution handles it correctly because the intended output is always `"Yes"`.
-
-Now consider a graph with only self-loops:
-
-```
-3 3
-1 1
-2 2
-3 3
-```
-
-Execution trace:
-
-| Step | State |
-| --- | --- |
-| Read first line | `n = 3, m = 3` |
-| Ignore edges | unchanged |
-| Print answer | `Yes` |
-
-Self-loops do not help construct a Hamiltonian path in the usual sense, but they are irrelevant here.
-
-Finally, consider the completely empty graph:
-
-```
-5 0
-```
-
-Execution trace:
-
-| Step | State |
-| --- | --- |
-| Read first line | `n = 5, m = 0` |
-| No edges to read | unchanged |
-| Print answer | `Yes` |
-
-This is the clearest demonstration that the task is not actually asking us to solve Hamiltonian path existence.
+A more subtle case is dense graphs with missing critical edges that block a full ordering. Even if most vertices are highly connected, the DP still respects exact adjacency constraints, so it never falsely combines incompatible partial paths.

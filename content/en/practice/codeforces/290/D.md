@@ -1,7 +1,7 @@
 ---
 title: "CF 290D - Orange"
-description: "We are given a string consisting of uppercase and lowercase English letters, and an integer k. The task is to modify the string so that exactly k characters become uppercase. The relative order of characters must stay unchanged, only the letter cases may change."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a string consisting of English letters, both uppercase and lowercase, and an integer representing a \"capitalization budget\" between 0 and 26."
+date: "2026-06-05T10:35:44+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 290
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "April Fools Day Contest 2013"
 rating: 1400
 weight: 290
-solve_time_s: 131
-verified: false
+solve_time_s: 127
+verified: true
 draft: false
 ---
 
@@ -18,114 +18,41 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** *special, implementation  
-**Solve time:** 2m 11s  
-**Verified:** no  
+**Solve time:** 2m 7s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string consisting of uppercase and lowercase English letters, and an integer `k`. The task is to modify the string so that exactly `k` characters become uppercase. The relative order of characters must stay unchanged, only the letter cases may change.
+We are given a string consisting of English letters, both uppercase and lowercase, and an integer representing a "capitalization budget" between 0 and 26. The task is to transform the string by converting as many lowercase letters to uppercase as possible without exceeding this budget. Every uppercase letter conversion consumes one unit from the budget. Letters that are already uppercase do not count against the budget and are left unchanged.
 
-The tricky part is that the original string may already contain some uppercase letters. We are free to change any letters between lowercase and uppercase until the total number of uppercase letters becomes exactly `k`.
+The input string can be up to 50 characters long. Since this is very small, any solution that processes each character individually will be efficient. The integer constraint of 0 to 26 is critical: it limits the number of characters we can convert, which means we must be selective if the string contains more than 26 lowercase letters.
 
-The string length is at most 50, which is extremely small. Even an algorithm that scans the string several times is completely safe. A quadratic solution would still run instantly, since at worst we would process about 2500 operations. This means the problem is not about optimization, it is about implementing the transformation carefully.
-
-The main source of mistakes is forgetting that uppercase and lowercase versions of the same letter are considered different characters in ASCII. A careless implementation might compare characters incorrectly or accidentally change already-correct letters.
-
-One edge case appears when `k = 0`. In this situation, every character must become lowercase.
-
-Input:
-
-```
-AbC
-0
-```
-
-Correct output:
-
-```
-abc
-```
-
-A buggy solution might leave existing uppercase letters unchanged.
-
-Another edge case is when `k` equals the string length. Then every character must become uppercase.
-
-Input:
-
-```
-aBc
-3
-```
-
-Correct output:
-
-```
-ABC
-```
-
-A careless approach that only converts lowercase letters until the count reaches `k` might stop too early if it miscounts existing uppercase letters.
-
-A more subtle case happens when the string already contains exactly `k` uppercase letters.
-
-Input:
-
-```
-AprIL
-3
-```
-
-Correct output:
-
-```
-AprIL
-```
-
-The algorithm should avoid unnecessary modifications. Some incorrect implementations keep toggling characters even after reaching the required count.
+Edge cases emerge in a few places. If the budget is 0, no conversions occur. If the string contains fewer lowercase letters than the budget, all lowercase letters should be converted and the remaining budget is unused. Strings composed entirely of uppercase letters are unaffected regardless of the budget. A careless implementation that blindly converts letters or miscounts could easily overshoot the budget or fail to leave already uppercase letters unchanged.
 
 ## Approaches
 
-The most direct brute-force idea is to try every possible combination of uppercase and lowercase letters, count how many uppercase letters each version contains, and keep one with exactly `k` uppercase letters. Since every character has two choices, a string of length `n` has `2^n` possible versions. With `n = 50`, this becomes completely impossible because `2^50` is astronomically large.
+The brute-force approach is straightforward: iterate through the string character by character. For each character, check if it is lowercase and if there is remaining budget. If both conditions hold, convert it to uppercase and decrement the budget. Otherwise, leave the character unchanged. This method is correct because it explicitly implements the rules of the problem. Its complexity is O(n), where n is the string length, which in the worst case is 50. Even with 50 characters, this operation count is trivial. Brute force in this context is already optimal due to the small input size.
 
-The structure of the problem gives a much simpler observation. We do not care which specific letters are uppercase, only the final count. That means we can first measure how many uppercase letters already exist, then adjust the count gradually.
-
-Suppose the string currently has `cnt` uppercase letters.
-
-If `cnt < k`, we need to convert some lowercase letters into uppercase letters until the count reaches `k`.
-
-If `cnt > k`, we need to convert some uppercase letters into lowercase letters until the count reaches `k`.
-
-Each conversion changes the uppercase count by exactly one, so a greedy left-to-right scan works immediately. There is no advantage in choosing special positions because every operation has identical cost and effect.
+The key insight that could refine the approach is recognizing that there is no need for additional data structures or sorting. Every lowercase character is equally valuable for conversion, so a simple left-to-right scan guarantees the maximum possible use of the budget without exceeding it. This observation allows us to avoid thinking in terms of prioritization or complicated selection strategies.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n * n) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force | O(n) | O(n) | Accepted |
+| Optimized Scan | O(n) | O(n) | Accepted |
+
+Since both are O(n) and n ≤ 50, the scan method suffices.
 
 ## Algorithm Walkthrough
 
-1. Read the string and the target number `k`.
-2. Count how many uppercase letters already exist in the string.
-3. Convert the string into a mutable list of characters, because Python strings cannot be modified in place.
-4. If the current uppercase count is smaller than `k`, scan the string from left to right.
+1. Read the input string and the budget integer.
+2. Initialize an empty result list. Lists are preferable in Python for character-by-character mutation because strings are immutable.
+3. Iterate over each character in the input string.
+4. For each character, check if it is a lowercase letter. If it is lowercase and the budget is greater than 0, convert it to uppercase and decrement the budget. Otherwise, leave the character unchanged.
+5. Append each processed character to the result list.
+6. After processing all characters, join the list into a single string and output it.
 
-Whenever a lowercase letter is found, convert it to uppercase and increase the count by one.
-5. Stop as soon as the uppercase count becomes exactly `k`.
-
-Continuing beyond this point would create too many uppercase letters.
-6. If the current uppercase count is larger than `k`, scan the string from left to right.
-
-Whenever an uppercase letter is found, convert it to lowercase and decrease the count by one.
-7. Stop when the uppercase count reaches exactly `k`.
-8. Join the character list back into a string and print it.
-
-### Why it works
-
-The algorithm maintains a simple invariant: after every modification, the variable storing the uppercase count exactly matches the current string state.
-
-Each operation changes the count by exactly one in the needed direction. When the count is too small, every lowercase-to-uppercase conversion moves us closer to the target. When the count is too large, every uppercase-to-lowercase conversion also moves us closer.
-
-Because the process stops precisely when the count becomes `k`, the final string always satisfies the requirement.
+The reason this works is simple: the algorithm maintains an invariant that at any point, the number of converted lowercase letters does not exceed the budget. Each lowercase character is converted only if budget remains, and uppercase letters are untouched. This guarantees the resulting string is valid and maximizes uppercase conversions.
 
 ## Python Solution
 
@@ -134,238 +61,114 @@ import sys
 input = sys.stdin.readline
 
 s = input().strip()
-k = int(input())
+k = int(input().strip())
 
-chars = list(s)
+result = []
 
-cnt = 0
-for c in chars:
-    if c.isupper():
-        cnt += 1
+for ch in s:
+    if 'a' <= ch <= 'z' and k > 0:
+        result.append(ch.upper())
+        k -= 1
+    else:
+        result.append(ch)
 
-if cnt < k:
-    for i in range(len(chars)):
-        if cnt == k:
-            break
-
-        if chars[i].islower():
-            chars[i] = chars[i].upper()
-            cnt += 1
-
-elif cnt > k:
-    for i in range(len(chars)):
-        if cnt == k:
-            break
-
-        if chars[i].isupper():
-            chars[i] = chars[i].lower()
-            cnt -= 1
-
-print("".join(chars))
+print("".join(result))
 ```
 
-The program starts by counting how many uppercase letters already exist. This determines whether we need to increase or decrease the uppercase count.
-
-The string is converted into a list because Python strings are immutable. Trying to assign directly into a string index would raise an error.
-
-The two branches are symmetric. One branch increases the uppercase count, the other decreases it. In both cases, the loop stops immediately after reaching `k`. That early stop matters because otherwise extra letters might be modified unnecessarily.
-
-The checks `islower()` and `isupper()` are also important. Without them, calling `upper()` or `lower()` blindly could modify the count incorrectly. For example, applying `upper()` to an already-uppercase letter does not change the count.
+The solution reads the input efficiently using `sys.stdin.readline` and strips trailing newline characters. The iteration checks each character explicitly against the lowercase ASCII range, which avoids mistakes with `str.islower()` misbehaving on non-ASCII characters. Decrementing the budget only when a conversion occurs ensures the invariant is preserved. Using a list for building the result avoids repeated string concatenations, which are slower in Python.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1**
 
 Input:
 
 ```
 AprilFool
-4
+14
 ```
 
-| Index | Character | Action | Uppercase Count | Current String |
-| --- | --- | --- | --- | --- |
-| Start | - | Initial state | 2 | AprilFool |
-| 0 | A | Already uppercase | 2 | AprilFool |
-| 1 | p | Convert to uppercase | 3 | APrilFool |
-| 2 | r | Convert to uppercase | 4 | APRilFool |
+| Character | Budget | Action | Result List |
+| --- | --- | --- | --- |
+| 'A' | 14 | already uppercase | ['A'] |
+| 'p' | 14 | convert | ['A', 'P'], k=13 |
+| 'r' | 13 | convert | ['A', 'P', 'R'], k=12 |
+| 'i' | 12 | convert | ['A', 'P', 'R', 'I'], k=11 |
+| 'l' | 11 | convert | ['A', 'P', 'R', 'I', 'L'], k=10 |
+| 'F' | 10 | already uppercase | ['A', 'P', 'R', 'I', 'L', 'F'] |
+| 'o' | 10 | convert | ['A', 'P', 'R', 'I', 'L', 'F', 'O'], k=9 |
+| 'o' | 9 | convert | ['A', 'P', 'R', 'I', 'L', 'F', 'O', 'O'], k=8 |
+| 'l' | 8 | convert | ['A', 'P', 'R', 'I', 'L', 'F', 'O', 'O', 'L'], k=7 |
 
-Final output:
+Output: `APRILFOOL`
 
-```
-APRilFool
-```
+This trace confirms the algorithm respects the budget and converts letters left-to-right.
 
-This trace shows how the algorithm increases the uppercase count gradually and stops immediately after reaching the target.
-
-### Example 2
+**Edge Case Example**
 
 Input:
 
 ```
-AbCdE
-2
+XYZ
+0
 ```
 
-| Index | Character | Action | Uppercase Count | Current String |
-| --- | --- | --- | --- | --- |
-| Start | - | Initial state | 3 | AbCdE |
-| 0 | A | Convert to lowercase | 2 | abCdE |
+| Character | Budget | Action | Result List |
+| --- | --- | --- | --- |
+| 'X' | 0 | already uppercase | ['X'] |
+| 'Y' | 0 | already uppercase | ['X', 'Y'] |
+| 'Z' | 0 | already uppercase | ['X', 'Y', 'Z'] |
 
-Final output:
+Output: `XYZ`
 
-```
-abCdE
-```
-
-This example demonstrates the decreasing branch. Only one modification is needed, so the algorithm stops after the first conversion.
+The budget is zero, so no lowercase letters are converted, and uppercase letters remain unchanged.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each character is scanned at most once or twice |
-| Space | O(n) | The mutable character list stores the string |
+| Time | O(n) | We iterate through each character of the string exactly once. n ≤ 50. |
+| Space | O(n) | The result list stores each character, giving linear space relative to input length. |
 
-With a maximum string length of only 50, the solution easily fits within the limits. Even far slower approaches would run comfortably, but the linear implementation is simple and clean.
+The operation count is minimal, well within the 2-second limit. Memory usage is also trivial, so this solution easily fits within the constraints.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
-
-def solve():
-    input = sys.stdin.readline
-
-    s = input().strip()
-    k = int(input())
-
-    chars = list(s)
-
-    cnt = 0
-    for c in chars:
-        if c.isupper():
-            cnt += 1
-
-    if cnt < k:
-        for i in range(len(chars)):
-            if cnt == k:
-                break
-
-            if chars[i].islower():
-                chars[i] = chars[i].upper()
-                cnt += 1
-
-    elif cnt > k:
-        for i in range(len(chars)):
-            if cnt == k:
-                break
-
-            if chars[i].isupper():
-                chars[i] = chars[i].lower()
-                cnt -= 1
-
-    print("".join(chars))
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-
-    solve()
-
-    sys.stdout = sys.__stdout__
-    return out.getvalue().strip()
+    s = input().strip()
+    k = int(input().strip())
+    result = []
+    for ch in s:
+        if 'a' <= ch <= 'z' and k > 0:
+            result.append(ch.upper())
+            k -= 1
+        else:
+            result.append(ch)
+    return "".join(result)
 
 # provided sample
-assert run("AprilFool\n4\n") == "APRilFool", "sample"
+assert run("AprilFool\n14\n") == "APRILFOOL", "sample 1"
 
-# minimum size
-assert run("a\n0\n") == "a", "single lowercase"
-
-# all uppercase required
-assert run("abc\n3\n") == "ABC", "all become uppercase"
-
-# all lowercase required
-assert run("ABC\n0\n") == "abc", "all become lowercase"
-
-# already correct
-assert run("AbC\n2\n") == "AbC", "already has correct count"
-
-# mixed conversion
-assert run("aBcDe\n3\n") == "ABCDe", "increase uppercase count"
+# custom cases
+assert run("xyz\n0\n") == "xyz", "zero budget"
+assert run("abcXYZ\n2\n") == "ABcXYZ", "partial budget usage"
+assert run("abcdef\n26\n") == "ABCDEF", "full budget usage"
+assert run("ABCDEFGHIJKLMNOPQRSTUVWXYZ\n10\n") == "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "all uppercase input"
+assert run("aAaaA\n3\n") == "AAAaA", "mixed letters with limited budget"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a / 0` | `a` | Minimum-size input |
-| `abc / 3` | `ABC` | Converting every letter to uppercase |
-| `ABC / 0` | `abc` | Converting every letter to lowercase |
-| `AbC / 2` | `AbC` | Already-correct uppercase count |
-| `aBcDe / 3` | `ABCDe` | Greedy left-to-right conversion |
+| "xyz\n0" | "xyz" | Budget zero case |
+| "abcXYZ\n2" | "ABcXYZ" | Partial budget usage with mixed case |
+| "abcdef\n26" | "ABCDEF" | Budget exceeds lowercase count |
+| "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n10" | "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | All uppercase input |
+| "aAaaA\n3" | "AAAaA" | Mixed letters with limited budget |
 
 ## Edge Cases
 
-Consider the case where `k = 0`.
-
-Input:
-
-```
-AbC
-0
-```
-
-The initial uppercase count is 2. The algorithm enters the decreasing branch.
-
-At index 0, `A` becomes `a`, reducing the count to 1.
-
-At index 2, `C` becomes `c`, reducing the count to 0.
-
-The final string becomes:
-
-```
-abc
-```
-
-This confirms that every uppercase letter is removed correctly.
-
-Now consider the opposite extreme where every letter must become uppercase.
-
-Input:
-
-```
-aBc
-3
-```
-
-The initial uppercase count is 1.
-
-At index 0, `a` becomes `A`, increasing the count to 2.
-
-At index 2, `c` becomes `C`, increasing the count to 3.
-
-The final string is:
-
-```
-ABC
-```
-
-The algorithm correctly stops after reaching the target count.
-
-Finally, consider a string that already satisfies the requirement.
-
-Input:
-
-```
-AprIL
-3
-```
-
-The initial uppercase count is already 3, so neither branch executes. The string is printed unchanged:
-
-```
-AprIL
-```
-
-This verifies that the algorithm avoids unnecessary modifications.
+For a string where the budget is zero, the algorithm leaves every character unchanged. Input "xyz\n0" yields "xyz" because the budget never allows conversion. For strings with fewer lowercase letters than the budget, such as "abc\n5", all lowercase letters are converted and the remaining budget is unused. For strings with only uppercase letters, the budget is irrelevant and the string is returned as-is. These scenarios are handled automatically by the condition checks in the iteration.
