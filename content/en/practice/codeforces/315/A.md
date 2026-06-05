@@ -1,7 +1,7 @@
 ---
 title: "CF 315A - Sereja and Bottles"
-description: "We are given a set of soda bottles, each labeled with a brand and a \"can open\" brand. Each bottle can be used to open other bottles of the brand it can open. A bottle can be used to open itself or others."
-date: "2026-05-29T00:00:00+07:00"
+description: "Each bottle has two properties. The value a[i] is the bottle's own brand. The value b[i] is the brand of bottles that this bottle can open. A bottle can be opened if there exists some other bottle whose opening capability matches its brand."
+date: "2026-06-06T01:20:04+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
 codeforces_contest: 315
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 187 (Div. 2)"
 rating: 1400
 weight: 315
-solve_time_s: 85
+solve_time_s: 114
 verified: true
 draft: false
 ---
@@ -18,40 +18,103 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** brute force  
-**Solve time:** 1m 25s  
+**Solve time:** 1m 54s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of soda bottles, each labeled with a brand and a "can open" brand. Each bottle can be used to open other bottles of the brand it can open. A bottle can be used to open itself or others. Our task is to count how many bottles are completely unopenable by any other bottle.
+Each bottle has two properties.
 
-The input consists of an integer `n` representing the number of bottles, followed by `n` lines each containing two integers: `a[i]` (the brand of the bottle) and `b[i]` (the brand it can open). The output is a single integer: the count of bottles that cannot be opened by any other bottle in the collection.
+The value `a[i]` is the bottle's own brand. The value `b[i]` is the brand of bottles that this bottle can open.
 
-The constraints are small: `n` is up to 100, and brands are integers up to 1000. This allows algorithms with time complexity up to roughly O(n²), because `100² = 10,000` operations is acceptable for a 2-second time limit.
+A bottle can be opened if there exists some other bottle whose opening capability matches its brand. Since bottles may be used whether they are already open or still closed, we only care about the static relationships between brands. There is no sequence of actions to simulate.
 
-Non-obvious edge cases include situations where all bottles can only open themselves. For example, if every bottle has `a[i] = b[i]`, no bottle can open another, so the answer should be `n`. Another edge case is when one bottle can open all others but no other bottle can open it; this should reduce the count of unopenable bottles to 0 for the bottles it can open, except for itself if nothing else opens it.
+For a bottle with brand `a[i]`, we need to check whether there exists another bottle `j` such that `b[j] = a[i]`. If such a bottle exists, bottle `i` can be opened. Otherwise, it can never be opened.
+
+The task is to count how many bottles cannot be opened by any other bottle.
+
+The constraints are very small. There are at most 100 bottles. Even an algorithm that compares every pair of bottles performs only `100 × 100 = 10,000` checks, which is trivial within the time limit. There is no need for complicated data structures or optimization.
+
+A subtle detail is that a bottle cannot open itself. When checking whether bottle `i` can be opened, we must only consider bottles with a different index.
+
+Consider this example:
+
+```
+2
+1 1
+2 2
+```
+
+Bottle 1 can open brand 1, but that capability belongs to the same bottle. Bottle 2 behaves similarly. Neither bottle can be opened by another bottle, so the answer is:
+
+```
+2
+```
+
+A careless implementation that allows self-matching would incorrectly output `0`.
+
+Another important case is when multiple bottles share the same brand.
+
+```
+3
+1 5
+1 7
+2 1
+```
+
+Bottle 3 can open brand 1, so both bottles with brand 1 are openable. Bottle 3 itself has brand 2, and no bottle can open brand 2. The correct answer is:
+
+```
+1
+```
+
+An implementation that only checks for unique brands instead of individual bottles could miscount.
+
+A third case is when several bottles can open the same brand.
+
+```
+3
+4 4
+5 4
+4 1
+```
+
+Both the first and second bottles can open brand 4. The third bottle has brand 4, and the first bottle can open it. Every bottle with brand 4 should be considered openable independently.
 
 ## Approaches
 
-The brute-force approach is straightforward: for each bottle, check if there exists any other bottle that can open it. We iterate through all `n` bottles, and for each, iterate through all other `n-1` bottles, comparing the "can open" brand to the current bottle's brand. This is correct, because it explicitly checks every possible opener. The worst-case number of operations is O(n²), which is acceptable here since `n ≤ 100`.
+The most direct approach is to examine each bottle separately. For bottle `i`, we scan all other bottles and check whether any bottle `j` has `b[j] = a[i]`. If we find such a bottle, bottle `i` is openable. Otherwise, it contributes to the answer.
 
-The optimal approach is essentially the same as brute-force for this problem because the input size is small. There is no advanced data structure or graph technique required; the problem does not demand transitive closures or reachability. The insight is simply to recognize that "any bottle can open itself or others" reduces to checking whether there exists a different bottle that can open the current one.
+This approach is correct because the definition of openability depends only on the existence of another bottle whose opening brand matches the bottle's own brand. By checking every possible bottle `j`, we test exactly the condition required by the problem.
+
+For larger constraints, comparing every pair might become expensive. With `n = 100`, however, the worst case is only 10,000 comparisons, which is tiny.
+
+One could also build a set containing all opening brands `b[i]` and check membership. The only complication is the prohibition against self-opening. Since the constraints are so small, the pairwise solution is simpler and avoids special handling.
+
+The key observation is that a bottle's status depends only on whether its brand appears among the opening capabilities of some other bottle. This naturally leads to checking all pairs of bottles.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n) | Accepted |
-| Optimal | O(n²) | O(n) | Accepted |
+| Brute Force Pair Checking | O(n²) | O(1) | Accepted |
+| Brand Tracking Structures | O(n²) or O(n) | O(n) | Accepted but unnecessary |
 
 ## Algorithm Walkthrough
 
-1. Read `n`, the number of bottles.
-2. Initialize two lists: `a` for bottle brands and `b` for the brands they can open.
-3. For each bottle `i`, check all other bottles `j ≠ i`. If there exists a `j` such that `b[j] == a[i]`, mark bottle `i` as openable by some other bottle.
-4. Count the bottles that were never marked as openable. This is the answer.
-5. Print the count.
+1. Read `n` and store all pairs `(a[i], b[i])`.
+2. Initialize `answer = 0`.
+3. For each bottle `i`, assume initially that it cannot be opened.
+4. Scan all bottles `j`.
+5. Skip the case `i == j`, because a bottle cannot be used to open itself.
+6. If `b[j] == a[i]`, then bottle `i` can be opened by bottle `j`. Mark it as openable and stop checking further bottles.
+7. After examining all possible bottles, if bottle `i` is still not openable, increment `answer`.
+8. After processing every bottle, print `answer`.
 
-Why it works: The invariant is that for each bottle, we explicitly check all other bottles to see if it is openable. Because we consider all possible "other" bottles, no bottle is mistakenly classified as unopenable. Self-opening is ignored in the check, which aligns with the problem requirement that a bottle must be opened by a different one to be considered "openable by others."
+### Why it works
+
+For a bottle `i`, the problem asks whether there exists another bottle whose opening capability equals `a[i]`. The algorithm checks every possible bottle `j ≠ i`. If such a bottle exists, it is found during the scan and bottle `i` is marked openable. If the scan finishes without finding one, then no such bottle exists anywhere in the input, so bottle `i` is impossible to open.
+
+Since this reasoning is applied independently to every bottle, the final count is exactly the number of bottles that cannot be opened.
 
 ## Python Solution
 
@@ -60,33 +123,39 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-a = []
-b = []
+bottles = [tuple(map(int, input().split())) for _ in range(n)]
 
-for _ in range(n):
-    x, y = map(int, input().split())
-    a.append(x)
-    b.append(y)
-
-unopenable_count = 0
+answer = 0
 
 for i in range(n):
-    can_be_opened = False
-    for j in range(n):
-        if i != j and b[j] == a[i]:
-            can_be_opened = True
-            break
-    if not can_be_opened:
-        unopenable_count += 1
+    brand = bottles[i][0]
+    openable = False
 
-print(unopenable_count)
+    for j in range(n):
+        if i == j:
+            continue
+
+        if bottles[j][1] == brand:
+            openable = True
+            break
+
+    if not openable:
+        answer += 1
+
+print(answer)
 ```
 
-The solution reads the bottle data, stores the brands and the brands they can open in two lists, and then iterates through each bottle checking if it is openable by any other bottle. The inner loop stops as soon as a match is found, optimizing slightly for the average case. The `i != j` condition ensures that a bottle is not considered as opened by itself.
+The program first stores all bottle descriptions. For each bottle, it extracts its brand `a[i]` and searches for another bottle whose opening brand equals that value.
+
+The `i == j` check is the most important implementation detail. Without it, a bottle whose own `b[i]` equals `a[i]` would incorrectly be considered openable by itself.
+
+The inner loop stops immediately after finding a valid opener. This does not change correctness, but avoids unnecessary comparisons.
+
+No special handling is needed for duplicate brands or duplicate opening capabilities because every bottle is checked individually.
 
 ## Worked Examples
 
-**Sample 1**:
+### Example 1
 
 Input:
 
@@ -98,18 +167,22 @@ Input:
 4 4
 ```
 
-| i | a[i] | b[j] matches a[i]? | can_be_opened | unopenable_count |
-| --- | --- | --- | --- | --- |
-| 0 | 1 | no | False | 1 |
-| 1 | 2 | no | False | 2 |
-| 2 | 3 | no | False | 3 |
-| 3 | 4 | no | False | 4 |
+| Bottle i | Brand a[i] | Matching opener found? | Unopenable count |
+| --- | --- | --- | --- |
+| 1 | 1 | No | 1 |
+| 2 | 2 | No | 2 |
+| 3 | 3 | No | 3 |
+| 4 | 4 | No | 4 |
 
-Output: `4`
+Output:
 
-All bottles can only open themselves, so none is openable by another bottle.
+```
+4
+```
 
-**Custom Example**:
+Each bottle only matches its own opening capability. Since self-opening is not allowed, none of them can be opened.
+
+### Example 2
 
 Input:
 
@@ -120,81 +193,109 @@ Input:
 3 1
 ```
 
-| i | a[i] | b[j] matches a[i]? | can_be_opened | unopenable_count |
-| --- | --- | --- | --- | --- |
-| 0 | 1 | j=2, b[2]=1 | True | 0 |
-| 1 | 2 | j=0, b[0]=2 | True | 0 |
-| 2 | 3 | j=1, b[1]=3 | True | 0 |
+| Bottle i | Brand a[i] | Bottle that opens it | Unopenable count |
+| --- | --- | --- | --- |
+| 1 | 1 | Bottle 3 | 0 |
+| 2 | 2 | Bottle 1 | 0 |
+| 3 | 3 | Bottle 2 | 0 |
 
-Output: `0`
+Output:
 
-Here, each bottle is openable by another, so the count of unopenable bottles is zero.
+```
+0
+```
+
+The bottles form a cycle. Every bottle's brand appears as another bottle's opening capability, so all bottles are openable.
+
+This example demonstrates that the bottles do not need to be opened in any particular order. The problem only asks whether an opener exists.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) | Each bottle is checked against all other bottles for a match, giving n*(n-1) comparisons. |
-| Space | O(n) | Two lists of length n store the brands and openable brands. |
+| Time | O(n²) | For each bottle, we may scan all other bottles |
+| Space | O(1) extra | Only a few variables beyond the input storage |
 
-The solution fits comfortably within the constraints, since n² ≤ 10,000 operations and the memory required for two arrays of length 100 is negligible.
+With `n ≤ 100`, the algorithm performs at most 10,000 pair comparisons. This is far below the limits, making the straightforward quadratic solution more than sufficient.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(input())
-    a = []
-    b = []
-    for _ in range(n):
-        x, y = map(int, input().split())
-        a.append(x)
-        b.append(y)
-    unopenable_count = 0
-    for i in range(n):
-        can_be_opened = False
-        for j in range(n):
-            if i != j and b[j] == a[i]:
-                can_be_opened = True
-                break
-        if not can_be_opened:
-            unopenable_count += 1
-    return str(unopenable_count)
 
-# Provided sample
+    n = int(input())
+    bottles = [tuple(map(int, input().split())) for _ in range(n)]
+
+    answer = 0
+
+    for i in range(n):
+        brand = bottles[i][0]
+        openable = False
+
+        for j in range(n):
+            if i == j:
+                continue
+
+            if bottles[j][1] == brand:
+                openable = True
+                break
+
+        if not openable:
+            answer += 1
+
+    return str(answer)
+
+# provided sample
 assert run("4\n1 1\n2 2\n3 3\n4 4\n") == "4", "sample 1"
 
-# Custom cases
-assert run("3\n1 2\n2 3\n3 1\n") == "0", "all bottles can open each other"
-assert run("1\n1 1\n") == "1", "single bottle only opens itself"
-assert run("2\n1 2\n2 1\n") == "0", "two bottles open each other"
-assert run("5\n1 2\n2 2\n3 1\n4 5\n5 4\n") == "1", "one bottle cannot be opened by any other"
+# minimum size
+assert run("1\n42 42\n") == "1", "single bottle cannot open itself"
+
+# cyclic opening
+assert run("3\n1 2\n2 3\n3 1\n") == "0", "all bottles openable"
+
+# duplicate brands
+assert run("3\n1 5\n1 7\n2 1\n") == "1", "two bottles opened by same opener"
+
+# all bottles open same brand
+assert run("4\n1 5\n2 5\n3 5\n4 5\n") == "4", "no bottle brand appears among opening capabilities"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3 bottles in cycle | 0 | All bottles can open another, no unopenable bottles |
-| Single bottle | 1 | Smallest input, self-opening does not count |
-| Two bottles open each other | 0 | Symmetric openable scenario |
-| Mix with one isolated | 1 | Correctly identifies the bottle nobody can open |
+| `1 / 42 42` | `1` | Self-opening is not allowed |
+| Cycle of three bottles | `0` | Every bottle can be opened |
+| Duplicate brand example | `1` | Multiple bottles may share a brand |
+| All opening capabilities equal 5 | `4` | No matching opener exists for any bottle |
 
 ## Edge Cases
 
-A scenario where all bottles open only themselves:
+Consider the smallest possible input:
+
+```
+1
+42 42
+```
+
+The algorithm checks the only bottle. The inner loop skips the self-comparison because `i == j`. No valid opener is found, so the answer becomes `1`. This matches the rule that a bottle cannot open itself.
+
+Consider a case with duplicate brands:
 
 ```
 3
-1 1
-2 2
-3 3
+1 5
+1 7
+2 1
 ```
 
-Each bottle is checked against the others. None of the bottles has `b[j] == a[i]` for `i != j`, so all are unopenable. The output is `3`.
+For the first bottle, the algorithm finds that bottle 3 has `b = 1`, so it is openable. The same reasoning applies to the second bottle because it has the same brand. The third bottle has brand `2`, and no bottle has opening capability `2`, so only that bottle is counted. The answer is `1`.
 
-A scenario with one bottle that can open everyone else but no one can open it:
+Consider a cycle:
 
 ```
 3
@@ -203,6 +304,4 @@ A scenario with one bottle that can open everyone else but no one can open it:
 3 1
 ```
 
-Bottle 0 is opened by bottle 2, bottle 1 by bottle 0, bottle 2 by bottle 1. The algorithm correctly identifies `can_be_opened = True` for all bottles, producing output `0`.
-
-This confirms the algorithm handles self-opening correctly and does not count it as "openable by others."
+Bottle 1 is opened by bottle 3, bottle 2 by bottle 1, and bottle 3 by bottle 2. Every search finds a matching opener, so the count remains `0`. The algorithm correctly handles chains and cycles because it only checks existence, not an opening sequence.
