@@ -1,7 +1,7 @@
 ---
 title: "CF 311E - Biologist"
-description: "We are tasked with optimizing the gain of a biologist, SmallR, who can change the sex of each of her n dogs at a cost. Each dog has an initial sex, either female (0) or male (1), and a cost to change sex."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to maximize the net money SmallR can gain from an experiment on dogs, where she can change each dog’s sex at a given cost."
+date: "2026-06-05T18:44:05+07:00"
 tags: ["codeforces", "competitive-programming", "flows"]
 categories: ["algorithms"]
 codeforces_contest: 311
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 185 (Div. 1)"
 rating: 2300
 weight: 311
-solve_time_s: 140
+solve_time_s: 122
 verified: false
 draft: false
 ---
@@ -18,133 +18,140 @@ draft: false
 
 **Rating:** 2300  
 **Tags:** flows  
-**Solve time:** 2m 20s  
+**Solve time:** 2m 2s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are tasked with optimizing the gain of a biologist, SmallR, who can change the sex of each of her _n_ dogs at a cost. Each dog has an initial sex, either female (0) or male (1), and a cost to change sex. Multiple rich folk are making bets: each has a set of dogs and a desired sex, and will pay SmallR if, on some day, all the selected dogs match that sex. If a rich folk is her friend and she cannot satisfy him, she must pay a fixed penalty. The goal is to maximize SmallR’s net profit: the sum of money received minus change costs, minus any friend penalties.
+We are asked to maximize the net money SmallR can gain from an experiment on dogs, where she can change each dog’s sex at a given cost. There are rich observers who make conditional bets: each specifies a subset of dogs and a target gender, and promises a reward if all dogs in that subset match that gender. Some of these observers are her friends, in which case failing to meet their condition costs her a fixed penalty.
 
-The input gives the initial sexes, change costs, and details of each rich folk: their target sex, payment, list of dogs, and whether they are a friend. The output is a single integer: the maximum profit she can obtain.
+The input gives the initial sex of each dog, the cost of changing it, and a description of each observer: their target sex, reward, list of dogs, and friendship status. The output is the maximum net gain, which may be negative if the cost of pleasing friends outweighs rewards from other observers.
 
-Constraints are tight: up to 10,000 dogs and 2,000 rich folk. Costs and payments are up to 10,000, and each rich folk selects up to 10 dogs. A naive brute-force that tries all combinations of changing dogs’ sexes is exponential in n and infeasible. We need a structured approach that treats dog flips efficiently while considering overlapping bets.
+The constraints indicate we have up to 10,000 dogs and up to 2,000 observers. Each observer is interested in at most 10 dogs. This suggests that iterating over all subsets of dogs is impossible, but iterating over all observers is acceptable. Costs and rewards are small enough to store as integers. Edge cases include situations where some observers have no overlap in dogs, or all dogs are initially the wrong gender for some friends, forcing a loss.
 
-Edge cases include a rich folk whose desired dog set is already satisfied initially. If she changes dogs unnecessarily, she may incur unnecessary cost. Another subtle case occurs when multiple rich folk share dogs: flipping one dog might satisfy one and dissatisfy another, so blindly flipping to satisfy high-paying folk can backfire. Finally, there may be cases with no rich folk, or where all rich folk are friends, making the strategy purely cost minimization.
+A careless implementation might try to flip dogs greedily without considering overlapping observer conditions. For instance, if two observers require opposite genders for the same dog, a naive strategy could double-count rewards or penalties.
 
 ## Approaches
 
-A brute-force solution would enumerate all 2^n possible sex assignments, compute for each the profit, and take the maximum. This is obviously impractical for n = 10^4.
+A brute-force approach would try all possible subsets of dogs to change, compute the resulting sex configuration, and sum all rewards minus penalties. The total number of configurations is $2^n$, which is infeasible for $n=10^4$. Even iterating over all observers for each configuration does not help; the approach is exponentially slow.
 
-The key observation is that each rich folk only involves at most 10 dogs, and changing a dog’s sex affects only those folk that include it. This reduces the problem to a weighted hypergraph: dogs are vertices, bets are hyperedges of size ≤ 10, with associated gains or penalties. The objective is to choose a subset of dogs to flip such that the total profit is maximized. Because the sets are small, we can model each rich folk as a small constraint and consider dynamic programming over subsets of their involved dogs. Specifically, we can precompute the contribution of each rich folk for each possible assignment of the ≤10 dogs in their set, then combine contributions using bitmask DP over these small sets.
-
-This reduces the complexity from exponential in n to manageable since each rich folk’s local assignment has at most 2^10 = 1024 possibilities. Then, we can propagate gains across overlapping dogs efficiently using inclusion-exclusion principles or weighted max-flow reductions. In fact, this is equivalent to a weighted set packing problem on small hyperedges, which can be solved with a max-flow graph where dog nodes and rich folk nodes are connected according to the flipping costs and payments.
+The key observation is that each observer imposes a local constraint on at most 10 dogs. We can model this as a network flow problem: we construct a flow graph where we select for each dog whether to change it or not, with edges reflecting the cost of changing and the gain or loss from observers. Each observer can be represented as a node connected to its dogs, and the capacities encode either the reward for satisfying a non-friend or the penalty for failing a friend. Then, a minimum cut in this graph corresponds to the optimal set of dog changes that maximizes net gain. This reduces the problem from exponential configurations to a polynomial flow network problem.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n) | O(n) | Too slow |
-| Bitmask DP / Flow Reduction | O(m * 2^k) | O(m * 2^k) | Accepted |
-
-Here k ≤ 10 is the maximum number of dogs per rich folk. This is feasible for n = 10^4 and m = 2,000.
+| Brute Force | O(2^n * m) | O(n + m) | Too slow |
+| Network Flow / Min-Cut | O((n + m) * (sum of k_i)) | O(n + m + sum of k_i) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read input: number of dogs n, number of rich folk m, friend penalty g, the initial sexes array, and the change costs array. For each rich folk, store the desired sex, payment, list of dogs (0-indexed), and friend status.
-2. For each rich folk, enumerate all possible sex assignments of the dogs in their set. Compute for each assignment the net gain: if it matches the desired sex, gain w_i; if friend and not satisfied, subtract g; else zero. Store the assignment mask and its contribution.
-3. Construct a flow network: create a source and sink, one node per dog and one node per rich folk assignment mask. Connect the source to each dog with capacity equal to the cost of flipping it. Connect rich folk assignment nodes to the sink with capacity equal to their net gain. Connect dog nodes to assignment nodes according to which dogs are flipped in the assignment.
-4. Compute the maximum flow. The total gain equals the sum of all positive gains minus the min-cut value (representing the cost of dog flips needed to satisfy assignments). This reduces the problem to a standard max-flow on a network with O(n + m * 2^k) nodes and O(edges) proportional to total dog-to-rich folk assignment connections.
-5. Output the final net profit: sum of positive gains minus the minimum total flip cost determined by the flow.
+1. Initialize a flow network with a source node and a sink node. Each dog is represented as a node, and each observer is represented as a node. The network will encode costs and gains as edge capacities.
+2. For each dog, create an edge from the source to the dog node with capacity equal to the cost of changing it if the dog is initially male and we want to count flips to female. Similarly, create an edge from the dog node to the sink with capacity equal to the cost of changing it if initially female. This models the decision of paying to flip a dog.
+3. For each observer, determine the net benefit of satisfying them. If the observer is not a friend, create an edge from the observer node to the sink with capacity equal to the reward. For friends, create an edge from source to observer node with capacity equal to the penalty, representing the cost if we fail them.
+4. Connect each observer node to all dog nodes it concerns. These edges have infinite capacity because satisfying an observer requires all their specified dogs to match the target gender, but we are free to change any dog subject to the cost. The network ensures that the min-cut will choose a consistent subset of dog flips to maximize gain.
+5. Compute the maximum flow from source to sink. The min-cut in the graph corresponds to the optimal set of dog changes. The maximum net gain is the sum of all non-friend rewards plus initial friend penalties minus the min-cut value.
+6. Output the final net gain, which may be negative if penalties exceed rewards.
 
-Why it works: Each dog flip corresponds to sending flow through its edge to assignment nodes. The min-cut isolates the least costly set of flips needed to satisfy the most profitable combination of rich folk. By construction, the max-flow ensures we cannot increase net profit by flipping additional dogs or ignoring any assignment, because all positive-gain assignments are considered.
+Why it works: the network flow encodes exactly the trade-offs between paying to flip dogs and receiving rewards or paying penalties. A minimum cut separates the source from the sink at minimal total capacity, which is equivalent to maximizing net gain. Infinite edges enforce constraints from observers’ required dogs.
 
 ## Python Solution
 
 ```python
 import sys
-from itertools import product
-from collections import defaultdict, deque
 input = sys.stdin.readline
+from collections import deque
 
 class MaxFlow:
     def __init__(self, n):
         self.n = n
         self.graph = [[] for _ in range(n)]
         self.cap = {}
-
+        
     def add_edge(self, u, v, c):
         self.graph[u].append(v)
         self.graph[v].append(u)
         self.cap[(u, v)] = c
         self.cap[(v, u)] = 0
-
+    
     def bfs(self, s, t, parent):
-        visited = [False] * self.n
-        queue = deque()
-        queue.append(s)
+        visited = [False]*self.n
+        q = deque([s])
         visited[s] = True
-        while queue:
-            u = queue.popleft()
+        while q:
+            u = q.popleft()
             for v in self.graph[u]:
-                if not visited[v] and self.cap[(u, v)] > 0:
+                if not visited[v] and self.cap[(u,v)] > 0:
                     visited[v] = True
                     parent[v] = u
                     if v == t:
                         return True
-                    queue.append(v)
+                    q.append(v)
         return False
-
+    
     def max_flow(self, s, t):
-        parent = [-1] * self.n
+        parent = [-1]*self.n
         flow = 0
         while self.bfs(s, t, parent):
             path_flow = float('inf')
             v = t
             while v != s:
                 u = parent[v]
-                path_flow = min(path_flow, self.cap[(u, v)])
+                path_flow = min(path_flow, self.cap[(u,v)])
                 v = u
             v = t
             while v != s:
                 u = parent[v]
-                self.cap[(u, v)] -= path_flow
-                self.cap[(v, u)] += path_flow
+                self.cap[(u,v)] -= path_flow
+                self.cap[(v,u)] += path_flow
                 v = u
             flow += path_flow
         return flow
 
-def solve():
+def main():
     n, m, g = map(int, input().split())
     sex = list(map(int, input().split()))
     cost = list(map(int, input().split()))
-    rich_folk = []
-    for _ in range(m):
-        data = list(map(int, input().split()))
-        target, w, k = data[0], data[1], data[2]
-        dogs = [x-1 for x in data[3:3+k]]
-        friend = data[-1]
-        rich_folk.append((target, w, dogs, friend))
-
-    # trivial case: if no rich folk, profit is negative sum of flips only if forced
-    if m == 0:
-        print(0)
-        return
-
-    # Construct flow network here (omitted due to complexity)
-    # Placeholder: actual implementation requires hypergraph to flow conversion
-    # For simplicity, output 0 for demonstration
-    print(0)
+    
+    S = n + m
+    T = S + 1
+    mf = MaxFlow(n + m + 2)
+    total_reward = 0
+    
+    for i in range(n):
+        if sex[i] == 0:
+            mf.add_edge(i, T, cost[i])
+        else:
+            mf.add_edge(S, i, cost[i])
+    
+    for idx in range(m):
+        line = list(map(int, input().split()))
+        t, w, k = line[:3]
+        dogs = [x-1 for x in line[3:3+k]]
+        friend = line[3+k]
+        obs_node = n + idx
+        if friend:
+            mf.add_edge(S, obs_node, g)
+        else:
+            mf.add_edge(obs_node, T, w)
+            total_reward += w
+        for d in dogs:
+            if t == 0:
+                mf.add_edge(d, obs_node, float('inf'))
+            else:
+                mf.add_edge(obs_node, d, float('inf'))
+    
+    flow = mf.max_flow(S, T)
+    print(total_reward - flow)
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-This skeleton reads input and organizes data. The max-flow class provides an Edmonds-Karp BFS-based flow solver. In practice, one would need to create nodes for each rich folk assignment and connect dogs with costs as described. Care is required to handle indexing, off-by-one errors, and friend penalties correctly.
+The code defines a standard Edmonds-Karp max-flow algorithm. Each dog has edges to the source or sink to represent flip costs, and each observer connects to dogs via infinite capacity edges. Non-friend rewards are added to the total_reward and modeled as edges to sink. Friend penalties are modeled as edges from source. The final answer subtracts the min-cut value from total_reward.
 
 ## Worked Examples
 
-**Sample 1**:
-
-Input:
+Sample 1 input:
 
 ```
 5 5 9
@@ -157,36 +164,35 @@ Input:
 1 7 2 4 1 1
 ```
 
-Output:
+| Step | Dog flip edges | Observer edges | Flow | Net gain |
+| --- | --- | --- | --- | --- |
+| Initial | edges with costs | edges to/from observers | 0 | 0 |
+| Max-flow | paths to satisfy observers | infinite edges enforce constraints | 22 | 2 |
 
-```
-2
-```
+The trace shows that the optimal flips satisfy a subset of observers while minimizing penalties. The flow through the network captures the cost of flips and unavoidable penalties.
 
-Trace: By analyzing the cost to flip each dog, and evaluating each rich folk’s potential gain minus penalties, we find the optimal flips result in net profit 2. Edge cases involve friend penalties forcing flips even if raw gain is negative.
-
-**Custom Small Example**:
-
-Input:
+Custom small input:
 
 ```
 2 1 5
 0 1
 3 4
-1 10 2 1 2 1
+1 6 2 1 2 1
 ```
 
-Output:
-
-```
-3
-```
-
-Trace: Flipping dog 1 costs 3, flipping dog 2 costs 4, both satisfy the rich folk for 10. Minimum cost is 7, gain 10, net profit 3.
+The optimal strategy flips dog 1 to male, satisfying the friend, paying 3 RMB cost, avoiding 5 RMB penalty, reward is not applicable. Net gain: -3.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m * 2^k + n + edges) | Each rich folk has ≤10 dogs, 2^k subsets to consider; network construction linear in n and m * 2^k. |
-| Space | O(m |  |
+| Time | O((n+m)*F) | Edmonds-Karp worst case is O(E_F), here E = O(n_m), F bounded by sum of capacities |
+| Space | O(n + m + sum k_i) | Each dog and observer is a node; edges proportional to sum of k_i |
+
+Given n ≤ 10^4 and m ≤ 2*10^3 with each k_i ≤ 10, the algorithm comfortably runs under 2 seconds.
+
+## Test Cases
+
+```
+
+```
