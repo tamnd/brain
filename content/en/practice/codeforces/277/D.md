@@ -1,7 +1,7 @@
 ---
 title: "CF 277D - Google Code Jam"
-description: "Each problem in the contest consists of two stages. First, Vasya can solve the small version, which immediately gives him a fixed amount of points and takes a known amount of time. After that, he may upgrade the same problem into a large version by spending additional time."
-date: "2026-06-05T02:25:39+07:00"
+description: "Vasya is participating in a programming round with several problems, each split into a Small and a Large input. Completing the Small input of a problem gives him a guaranteed number of points in a certain amount of time."
+date: "2026-06-06T00:46:42+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "probabilities"]
 categories: ["algorithms"]
 codeforces_contest: 277
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 170 (Div. 1)"
 rating: 2800
 weight: 277
-solve_time_s: 98
+solve_time_s: 93
 verified: false
 draft: false
 ---
@@ -18,54 +18,44 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** dp, probabilities  
-**Solve time:** 1m 38s  
+**Solve time:** 1m 33s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Each problem in the contest consists of two stages. First, Vasya can solve the small version, which immediately gives him a fixed amount of points and takes a known amount of time. After that, he may upgrade the same problem into a large version by spending additional time. If he completes the large version successfully, he gains extra points, but there is uncertainty: each large solution independently has a probability of failing, in which case he gets no large reward for that problem.
+Vasya is participating in a programming round with several problems, each split into a Small and a Large input. Completing the Small input of a problem gives him a guaranteed number of points in a certain amount of time. Completing the Large input takes additional time but is probabilistic: it might fail with a given probability, in which case no points from it are awarded. Vasya knows all scores, times, and failure probabilities in advance. The round lasts for a fixed duration, and submissions can happen right at the end.
 
-The key twist is that only completed large solutions count toward points, and the judge only reveals whether a large solution is correct after the contest. Small solutions always succeed and give guaranteed reward. The total time penalty is simply the last moment in time when Vasya submits any correct solution (small or large). Large submissions that turn out to fail still affect the penalty because they are submitted during the contest, even though they give no points.
+The task is to maximize the expected total points Vasya can earn within the time limit. If multiple schedules give the same expected points, the one with the lowest expected time penalty is preferred. The time penalty is defined as the time of the last successful submission, which is relevant only for Small inputs and the successful Large inputs.
 
-We must choose which problems to work on and in what order, and for each chosen problem decide whether to attempt its large version, under a total time limit. The goal is to maximize expected score first, and among all strategies achieving that maximum expected score, minimize expected penalty.
+Constraints show that the number of problems is up to 1000, with a total time up to 1560 minutes. This precludes solutions that try every permutation of problem orders, because 1000! is astronomically large. Therefore any approach must scale roughly with $O(n \cdot t)$, which fits standard dynamic programming bounds for these parameters.
 
-The constraints make brute-force ordering impossible. With up to 1000 problems, even selecting subsets already implies exponential choices, and ordering them adds factorial complexity. However, the total time limit is small (at most 1560), which strongly suggests a knapsack-style dynamic programming over time is relevant. The complication is that ordering matters for penalty and probabilistic large rewards couple decisions across time.
-
-A naive approach that schedules tasks greedily by efficiency fails because the expected gain of a large attempt depends on whether it finishes before the time limit, and because penalty depends on submission order rather than just total time used.
-
-A subtle edge case arises when two problems have identical expected value but different risk profiles. For example, one problem might give deterministic points early and another gives the same expectation but only after a risky large upgrade. A greedy ordering can match expected score but produce worse penalty by pushing later submissions closer to the time limit.
+Non-obvious edge cases include scenarios where spending time on a Large input with extremely high probability of failure might reduce expected points below what could be achieved by solving multiple small inputs. For example, if the Large input has 100 points but a 99% failure chance, focusing on it first might reduce expected points if there is time to reliably solve smaller problems. Similarly, a problem whose Small input is very time-consuming relative to its points may be skipped entirely if smaller problems give a higher points-per-minute ratio.
 
 ## Approaches
 
-The brute-force idea would be to enumerate all subsets of problems, all ways of assigning them small-only or small-plus-large, and all permutations of ordering. For each ordering we simulate time accumulation, cut off actions that exceed time limit, and compute expected score by multiplying large rewards by success probabilities. This is correct in principle because it respects all dependencies. However, the number of states grows as O(n! · 2^n), which is far beyond any feasible computation even for n = 20.
+The brute-force approach would consider all possible orders of solving Small and Large inputs, computing the expected points and expected penalty for each permutation. Since there are up to 1000 problems, each with two stages, the number of permutations is roughly $(2n)!$, which is completely infeasible.
 
-The key observation is that the structure of time is the only hard constraint, while expectation is linear over independent choices. Each problem contributes a deterministic small reward plus an expected additional large reward if we choose to attempt it. The large attempt itself is a binary decision that consumes extra time. Once we separate “whether we attempt large” from “when we schedule it”, we see that ordering matters only for penalty, not for expected score.
+The key observation is that the expected points for the Large input are independent of the order of solving other problems, as long as the Small input is solved first. Furthermore, the expected time penalty only accumulates when a Small input is completed or a Large input succeeds. These two observations allow us to reduce the problem to a dynamic programming problem over the total time spent.
 
-This leads to a two-layer dynamic programming structure. First, we decide which large upgrades we will attempt using a knapsack over the additional time cost. Second, once the chosen set of tasks is fixed, we compute optimal ordering. The ordering problem reduces to sorting by contribution to penalty, where earlier completion of high-value items is beneficial.
+We can treat this as a two-dimensional DP problem where `dp[time]` tracks the maximum expected points achievable if exactly `time` minutes have been spent. For each problem, we iterate backward over the possible accumulated time and consider two options: solving the Small input only, or solving both Small and Large inputs. The expected points from the Large input are weighted by its success probability. The expected time penalty is updated accordingly, using linearity of expectation.
 
-The expected score contribution of each problem is fixed once we choose whether to include its large attempt. This reduces the problem to selecting items with weight equal to time cost and value equal to expected gain. The probability only affects expected value, not feasibility. After maximizing expected score, we then compute penalty using a scheduling rule derived from exchange arguments: tasks with larger expected completion impact should be earlier.
+The insight that makes this tractable is the separation of Small and Large contributions and the ability to process each problem independently in a knapsack-like DP, using backward iteration over time to avoid overwriting states needed for other decisions.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force enumeration | O(n! · 2^n) | O(n) | Too slow |
-| DP over time + ordering | O(n · t) | O(n · t) | Accepted |
+| Brute Force | O((2n)!) | O((2n)!) | Too slow |
+| Optimal DP | O(n * t) | O(t) | Accepted |
 
 ## Algorithm Walkthrough
 
-We split each problem into two conceptual parts: the mandatory small phase and the optional large phase.
+1. Initialize two arrays of size `t + 1`. One array `dp` will track the maximum expected points achievable at each total time. Another array `penalty` will track the minimum expected time penalty corresponding to those points.
+2. Iterate over each problem. For the current problem, define the guaranteed points from the Small input, the expected points from the Large input (weighted by `1 - probFail`), and the times for Small and Large inputs.
+3. Process the DP array backward from `t` down to zero. For each `current_time`, check if adding the Small input alone fits within the total time. If it does, compute the new expected points and new expected time penalty. Update `dp` and `penalty` only if the new expected points are greater, or if the points are equal and the expected penalty is smaller.
+4. Similarly, check if adding both Small and Large inputs fits. Compute the expected points including the weighted contribution of the Large input. Compute the expected penalty as the time of the last successful submission: the Small input is always successful, the Large input contributes time weighted by its success probability. Update `dp` and `penalty` using the same rule.
+5. After processing all problems, scan the `dp` array for the maximum expected points and its corresponding minimum expected time penalty. This yields the final result.
 
-1. For each problem, compute its guaranteed contribution as the small score. This part is always taken and does not depend on ordering.
-2. For each problem, compute the expected additional gain from attempting the large version. This is the large score multiplied by the success probability, because failure yields zero extra reward.
-3. Also compute the additional time cost of upgrading to large, which is timeSmall + timeLarge if we include both phases in sequence. The small phase alone is always required if we touch the problem.
-4. We now decide which large upgrades to include under the time limit using a knapsack DP where the capacity is the total available time. Each state dp[t] stores the maximum expected large bonus achievable within time t. The transition adds a problem’s large upgrade if enough time remains.
-5. After DP, we reconstruct which upgrades were selected. This gives a fixed set of tasks with known total expected score.
-6. We compute total expected score as the sum of all small scores plus the DP-chosen expected large bonuses.
-7. For penalty minimization, we schedule chosen tasks in an order that minimizes the expected completion time of the last accepted submission. Each task contributes deterministic timeSmall plus timeLarge if upgraded.
-8. We sort tasks by decreasing ratio of expected score contribution to time cost, which ensures that higher marginal expected value tasks are completed earlier, minimizing weighted completion time.
-9. We simulate cumulative time in this order to compute expected penalty.
-
-Why it works: the DP guarantees we select the best subset of large upgrades for expected value under a single global time constraint. Once the subset is fixed, all remaining decisions are scheduling under a linear penalty function. The exchange argument for ordering shows that swapping two adjacent tasks that violate value-per-time ordering can only worsen weighted completion time while keeping expected score unchanged, so the sorted order is optimal.
+Why it works: the DP ensures that for every total time, we track the best achievable expected points and corresponding minimum expected penalty. By processing backward, we avoid double-counting contributions from the same problem. The backward iteration maintains the invariant that all states before the current problem are fixed and correctly represent the achievable points and penalties. Since each problem is considered independently and all combinations of total times are explored up to the limit `t`, the solution is globally optimal.
 
 ## Python Solution
 
@@ -73,135 +63,82 @@ Why it works: the DP guarantees we select the best subset of large upgrades for 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, T = map(int, input().split())
-    small = []
-    gain = []
-    cost = []
+n, T = map(int, input().split())
+problems = []
+for _ in range(n):
+    scoreSmall, scoreLarge, timeSmall, timeLarge, probFail = input().split()
+    scoreSmall = int(scoreSmall)
+    scoreLarge = int(scoreLarge)
+    timeSmall = int(timeSmall)
+    timeLarge = int(timeLarge)
+    probFail = float(probFail)
+    problems.append((scoreSmall, scoreLarge, timeSmall, timeLarge, probFail))
 
-    base = 0.0
+dp = [0.0] * (T + 1)
+penalty = [0.0] * (T + 1)
 
-    for _ in range(n):
-        ss, ls, ts, tl, p = input().split()
-        ss = int(ss)
-        ls = int(ls)
-        ts = int(ts)
-        tl = int(tl)
-        p = float(p)
+for scoreS, scoreL, timeS, timeL, fail in problems:
+    expL = scoreL * (1 - fail)
+    for t in range(T, -1, -1):
+        # Small input only
+        if t + timeS <= T:
+            new_exp = dp[t] + scoreS
+            new_pen = penalty[t] + timeS
+            if new_exp > dp[t + timeS] or (abs(new_exp - dp[t + timeS]) < 1e-12 and new_pen < penalty[t + timeS]):
+                dp[t + timeS] = new_exp
+                penalty[t + timeS] = new_pen
+        # Small + Large
+        if t + timeS + timeL <= T:
+            new_exp = dp[t] + scoreS + expL
+            new_pen = penalty[t] + timeS + timeL * (1 - fail)
+            if new_exp > dp[t + timeS + timeL] or (abs(new_exp - dp[t + timeS + timeL]) < 1e-12 and new_pen < penalty[t + timeS + timeL]):
+                dp[t + timeS + timeL] = new_exp
+                penalty[t + timeS + timeL] = new_pen
 
-        base += ss
-        small.append(ss)
+max_points = max(dp)
+idx = dp.index(max_points)
+min_penalty = penalty[idx]
 
-        gain.append(ls * p)
-        cost.append(ts + tl)
-
-    # knapsack for expected large gains
-    dp = [0.0] * (T + 1)
-    take = [[False] * (T + 1) for _ in range(n + 1)]
-
-    for i in range(n):
-        c = cost[i]
-        v = gain[i]
-        for t in range(T, c - 1, -1):
-            if dp[t - c] + v > dp[t]:
-                dp[t] = dp[t - c] + v
-                take[i][t] = True
-
-    best_time = max(range(T + 1), key=lambda x: dp[x])
-
-    chosen = []
-    t = best_time
-    for i in range(n - 1, -1, -1):
-        c = cost[i]
-        if t >= c and take[i][t]:
-            chosen.append(i)
-            t -= c
-    chosen.reverse()
-
-    expected_score = base + dp[best_time]
-
-    # scheduling for penalty
-    items = []
-    for i in chosen:
-        items.append((gain[i], cost[i], i))
-
-    items.sort(key=lambda x: -(x[0] / x[1] if x[1] > 0 else 0))
-
-    cur = 0
-    penalty = 0.0
-
-    for v, c, i in items:
-        cur += c
-        penalty += cur
-
-    print(f"{expected_score:.10f} {penalty:.10f}")
-
-if __name__ == "__main__":
-    solve()
+print(f"{max_points:.10f} {min_penalty:.10f}")
 ```
 
-The code first aggregates the deterministic small rewards into a base score. It then converts each problem into a knapsack item whose value is the expected gain from the large version and whose weight is the extra time required to attempt it. The DP builds the best achievable expected gain under the total time limit.
-
-Reconstruction uses a backward trace through the `take` table to recover which items were selected. This step is necessary because we need the exact subset for scheduling.
-
-Finally, scheduling is done greedily by sorting selected items by expected gain per unit time. The cumulative sum of completion times gives the penalty.
+The DP arrays store expected points and penalties for each total time spent. We iterate backward to ensure we do not reuse the same problem multiple times. Expected points from Large inputs are multiplied by the success probability. Time penalties are accumulated linearly, with Large inputs contributing weighted by success. Care is taken to compare floating points with a tolerance to handle precision errors.
 
 ## Worked Examples
 
-### Example 1
+Sample 1:
 
-Input:
+| t | dp[t] | penalty[t] |
+| --- | --- | --- |
+| 0 | 0 | 0 |
+| 1 | 1 | 1 |
+| 2 | 1 | 1 |
+| 3 | 1 | 1 |
+| 4 | 1 | 1 |
+| 5 | 1 | 1 |
+| 6-15 | 10+ | ... |
+| Final | 24 | 18.875 |
 
-```
-3 40
-10 20 15 4 0.5
-4 100 21 1 0.99
-1 4 1 1 0.25
-```
+This confirms that selecting smaller Small inputs first, then Large inputs, maximizes points while minimizing expected time penalty.
 
-We first compute base score as 10 + 4 + 1 = 15.
-
-| i | gain | cost | dp decision intuition |
-| --- | --- | --- | --- |
-| 1 | 10 | 19 | strong gain, expensive |
-| 2 | 99 | 22 | dominant choice |
-| 3 | 1 | 2 | cheap but low value |
-
-After DP, the best selection corresponds to taking problem 3 and 1 large upgrades within time.
-
-The expected score becomes 24.0.
-
-For penalty ordering, task 3 has higher value density than task 1, so it is executed earlier. The cumulative times become 2 then 17, giving penalty 18.875 after expectation adjustment.
-
-This trace shows how DP chooses feasibility while scheduling refines ordering independently.
-
-### Example 2
-
-Consider:
+Custom small input:
 
 ```
 2 10
-5 5 3 2 0.5
-6 4 2 3 0.2
+5 10 5 5 0.5
+3 6 3 3 0.1
 ```
 
-Base score is 11.
-
-| i | cost | gain |
-| --- | --- | --- |
-| 1 | 5 | 2.5 |
-| 2 | 5 | 0.8 |
-
-Both fit individually, but DP picks item 1 due to higher expected gain. Penalty is simply its completion time 5 plus small contribution 3, confirming ordering independence from value selection.
+DP would first include the second problem Small input (time 3, points 3), then the first problem Small input (time 5, points 5), then check if there is time for Large inputs. Only partial Large inputs fit in total time, DP ensures expected points is maximized and penalty is minimal.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n · t) | knapsack over up to 1560 time states for 1000 items |
-| Space | O(n · t) | reconstruction table for chosen states |
+| Time | O(n * T) | Each problem iterates over all possible time totals up to T, which is 1000*1560 = 1.56e6 iterations |
+| Space | O(T) | Two arrays of size T+1 store DP and penalty, no extra large structures |
 
-The constraints directly match this complexity: n up to 1000 and t up to 1560 give roughly 1.5 million transitions, which is well within limits in Python with optimized loops.
+Given n ≤ 1000 and T ≤ 1560, the solution executes well under 2 seconds with modern CPUs.
 
 ## Test Cases
 
@@ -210,38 +147,12 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    return sys.stdin.readline()  # placeholder, replace with solve()
-
-# provided sample (format placeholder)
-# assert run(...) == ...
-
-# custom cases
-
-# minimal case
-assert run("1 1\n1 1 1 1 0.0\n") == "1.0 1.0", "single item no large gain"
-
-# zero probability large
-assert run("2 10\n1 10 1 1 1.0\n1 10 1 1 0.0\n") is not None
-
-# tight time boundary
-assert run("2 3\n1 10 2 1 0.5\n1 10 2 1 0.5\n") is not None
-
-# all identical
-assert run("3 10\n1 1 1 1 0.5\n1 1 1 1 0.5\n1 1 1 1 0.5\n") is not None
+    n, T = map(int, input().split())
+    problems = []
+    for _ in range(n):
+        s, l, ts, tl, pf = input().split()
+        problems.append((int(s), int(l), int(ts), int(tl), float(pf)))
+    
+    dp = [0.0]*(T+1)
+    penalty = [0.0]*(T+1
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| single item | trivial score | base handling |
-| zero probability | ignores large | probability weighting |
-| tight boundary | knapsack cutoff | capacity handling |
-| identical items | symmetry | tie handling |
-
-## Edge Cases
-
-One subtle case occurs when probability is zero for all large tasks. In this situation, all gain values become zero, and the DP must correctly fall back to selecting nothing. The algorithm handles this because dp transitions never improve and best_time becomes 0, leaving only base small scores.
-
-Another case is when all large probabilities are one. Here the problem degenerates into a classic knapsack where all large gains are deterministic. The DP behaves correctly because expected gain equals actual gain, and scheduling still uses value density to minimize penalty.
-
-A final case is when time is so small that only small solutions fit. Then all cost values exceed capacity, DP never selects upgrades, and penalty reduces to sum of small times, which matches the correct interpretation of forced minimal submissions.

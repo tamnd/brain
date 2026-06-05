@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 1942 problems, 1316 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 1944 problems, 1317 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 1942 problems, 1316 verified.**
+**448 contests, 1944 problems, 1317 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -282,7 +282,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [273](273/) | [Codeforces Round 167 (Div. 1)](https://codeforces.com/contest/273) | Div. 1 | 2400-2600 | 1/2 | 3m 6s |
 | [274](274/) | [Codeforces Round 168 (Div. 1)](https://codeforces.com/contest/274) | Div. 1 | 1500-3000 | 4/5 | 6m 59s |
 | [276](276/) | [Codeforces Round 169 (Div. 2)](https://codeforces.com/contest/276) | Div. 2 | 900-2100 | 4/5 | 6m 47s |
-| [277](277/) | [Codeforces Round 170 (Div. 1)](https://codeforces.com/contest/277) | Div. 1 | 1400-2800 | 1/4 | 6m 17s |
+| [277](277/) | [Codeforces Round 170 (Div. 1)](https://codeforces.com/contest/277) | Div. 1 | 1400-2800 | 2/5 | 9m 3s |
 | [279](279/) | [Codeforces Round 171 (Div. 2)](https://codeforces.com/contest/279) | Div. 2 | 1400-2200 | 4/5 | 11m 10s |
 | [280](280/) | [Codeforces Round 172 (Div. 1)](https://codeforces.com/contest/280) | Div. 1 | 1800-3000 | 4/5 | 10m 1s |
 | [281](281/) | [Codeforces Round 172 (Div. 2)](https://codeforces.com/contest/281) | Div. 2 | 800-1700 | 2/2 | 6m 43s |
@@ -308,7 +308,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [305](305/) | [Codeforces Round 184 (Div. 2)](https://codeforces.com/contest/305) | Div. 2 | 1600-2300 | 5/5 | 7m 58s |
 | [306](306/) | [Testing Round 6](https://codeforces.com/contest/306) | Special | 800-2300 | 1/4 | 10m 15s |
 | [309](309/) | [Croc Champ 2013 - Finals (online version, Div. 1)](https://codeforces.com/contest/309) | Div. 1 | 1900-2900 | 4/5 | 7m 55s |
-| [311](311/) | [Codeforces Round 185 (Div. 1)](https://codeforces.com/contest/311) | Div. 1 | 1300-2500 | 3/4 | 7m 26s |
+| [311](311/) | [Codeforces Round 185 (Div. 1)](https://codeforces.com/contest/311) | Div. 1 | 1300-2600 | 3/5 | 7m 5s |
 | [312](312/) | [Codeforces Round 185 (Div. 2)](https://codeforces.com/contest/312) | Div. 2 | 1100-1100 | 0/1 | 3m 13s |
 | [313](313/) | [Codeforces Round 186 (Div. 2)](https://codeforces.com/contest/313) | Div. 2 | 900-2300 | 1/3 | 5m 39s |
 | [314](314/) | [Codeforces Round 187 (Div. 1)](https://codeforces.com/contest/314) | Div. 1 | 2000-2900 | 2/3 | 6m 22s |
