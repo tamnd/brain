@@ -1170,5 +1170,5 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [1443](1443.md) | solved | 6m54s |
 | [1444](1444.md) | solved | 7m19s |
 | [1445](1445.md) | solved | 7m13s |
-| [1446](1446.md) | solved | 9m52s |
+| [1446](1446.md) | solved | 3m14s |
 | [1447](1447.md) | solved | 7m11s |
