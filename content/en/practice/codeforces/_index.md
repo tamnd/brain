@@ -297,7 +297,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [292](292/) | [Croc Champ 2013 - Round 1](https://codeforces.com/contest/292) | Special | 1100-2000 | 5/5 | 9m 28s |
 | [293](293/) | [Croc Champ 2013 - Round 2](https://codeforces.com/contest/293) | Special | 1500-2700 | 1/5 | 11m 32s |
 | [294](294/) | [Codeforces Round 178 (Div. 2)](https://codeforces.com/contest/294) | Div. 2 | 800-2500 | 4/5 | 9m 23s |
-| [295](295/) | [Codeforces Round 179 (Div. 1)](https://codeforces.com/contest/295) | Div. 1 | 1700-2500 | 4/4 | 11m 55s |
+| [295](295/) | [Codeforces Round 179 (Div. 1)](https://codeforces.com/contest/295) | Div. 1 | 1700-2500 | 4/4 | 8m 44s |
 | [296](296/) | [Codeforces Round 179 (Div. 2)](https://codeforces.com/contest/296) | Div. 2 | 1100-1100 | 1/1 | 57s |
 | [297](297/) | [Codeforces Round 180 (Div. 1)](https://codeforces.com/contest/297) | Div. 1 | 1600-3000 | 2/3 | 4m 3s |
 | [300](300/) | [Codeforces Round 181 (Div. 2)](https://codeforces.com/contest/300) | Div. 2 | 1500-2300 | 2/3 | 5m 24s |

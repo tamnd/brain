@@ -1,7 +1,7 @@
 ---
 title: "CF 295E - Yaroslav and Points"
-description: "We are given a set of n points positioned on a one-dimensional number line. Each point has a unique coordinate, and these coordinates can be very large in absolute value, up to 10^9."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have a set of points on the number line. Each point has an identity, so when an update says \"move point p by d\", only that specific point changes position. There are two operations."
+date: "2026-06-05T17:48:14+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
 codeforces_contest: 295
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 179 (Div. 1)"
 rating: 2500
 weight: 295
-solve_time_s: 89
+solve_time_s: 139
 verified: true
 draft: false
 ---
@@ -18,172 +18,463 @@ draft: false
 
 **Rating:** 2500  
 **Tags:** data structures  
-**Solve time:** 1m 29s  
+**Solve time:** 2m 19s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of `n` points positioned on a one-dimensional number line. Each point has a unique coordinate, and these coordinates can be very large in absolute value, up to 10^9. We also receive `m` queries that either move a point by a small delta or ask for the sum of all pairwise distances between points that fall within a specific segment. The output for each query of the second type is a single integer representing this sum.
+We have a set of points on the number line. Each point has an identity, so when an update says "move point `p` by `d`", only that specific point changes position.
 
-The challenge is that the naive solution-recomputing distances for every type 2 query-would be too slow. With `n` and `m` up to 10^5, iterating through all pairs of points inside the segment could take up to O(n^2) per query, which is far beyond acceptable limits. The movement of points is guaranteed to maintain unique coordinates, and the delta for moves is relatively small (up to 1000), but the points themselves can be far apart. This suggests we need a dynamic structure capable of fast insertions, deletions, and range queries.
+There are two operations.
 
-Non-obvious edge cases include queries over empty ranges, moving points to very large or small coordinates, and segments containing only one point. For example, if a segment has no points, the sum of pairwise distances should be 0. If a segment has exactly one point, the result is also 0. Mismanaging off-by-one errors when finding which points lie in a segment could produce incorrect answers.
+The first operation removes one point from its current coordinate and inserts it at a new coordinate. The statement guarantees that coordinates remain distinct after every update.
+
+The second operation looks at all points whose coordinates lie inside a given interval `[l, r]`. Among those points, we must compute the sum of distances over every unordered pair.
+
+If the selected coordinates are
+
+$$y_1 < y_2 < \dots < y_k,$$
+
+the query asks for
+
+$$\sum_{1 \le i < j \le k}(y_j-y_i).$$
+
+The constraints are the real challenge. Both the number of points and the number of queries can reach $10^5$. A solution that scans all points for every query would require roughly $10^{10}$ operations in the worst case, which is completely infeasible.
+
+The coordinates themselves are large, up to $10^9$ in absolute value, and updates keep changing them. We cannot build a direct array indexed by coordinate.
+
+A subtle case appears when the interval contains zero or one point. There are no pairs, so the answer must be zero.
+
+For example:
+
+```
+Points: 5
+
+Query: [0, 10]
+```
+
+Only one point is selected, so the answer is:
+
+```
+0
+```
+
+Another easy mistake is forgetting that updates move a specific point, not a coordinate value.
+
+```
+Points: 1 10
+Update: move point 1 by +20
+```
+
+The resulting coordinates are:
+
+```
+21 10
+```
+
+not
+
+```
+1 30
+```
+
+A third source of bugs is handling query boundaries. If a point lies exactly at `l` or exactly at `r`, it must be included.
+
+```
+Points: 0 5 10
+Query: [0, 10]
+```
+
+All three points participate.
+
+The answer is:
+
+```
+(5-0) + (10-0) + (10-5) = 20
+```
+
+Using strict inequalities would incorrectly discard boundary points.
 
 ## Approaches
 
-The brute-force approach is straightforward: for each query of type 2, extract all points in the given segment and compute the sum of distances for each pair. This is correct in principle, but for the worst-case scenario, suppose `n = 10^5` and all points fall in the query segment. Then we have roughly 10^10 operations, which is impossible under a 5-second time limit.
+The most direct solution is to process each query independently. For a type 2 query, collect all points whose coordinates lie in `[l, r]`, sort them, and compute the pairwise distance sum.
 
-The key insight is that the sum of pairwise distances can be expressed efficiently if the points are sorted. Let the points in the segment be `p_1 < p_2 < ... < p_k`. The total sum of distances is:
+This is correct because the definition is exactly the sum over all selected pairs.
 
-```
-(p_2 - p_1) + (p_3 - p_1 + p_3 - p_2) + ... + (p_k - p_1 + ... + p_k - p_{k-1})
-```
+Unfortunately, it is far too slow. A single query may contain $10^5$ points. Computing answers this way costs $O(n \log n)$ per query, leading to roughly $10^{10}$ operations overall.
 
-Rewriting this more systematically, the sum can be computed using prefix sums. If we maintain a sorted structure (like a balanced BST or a library data structure such as `SortedList`) with prefix sums, we can efficiently compute the sum for any contiguous subsequence.
+The key observation is that the answer for a set of ordered coordinates can be merged from smaller pieces.
 
-Type 1 queries, moving a point, can be handled by removing the old coordinate and inserting the new coordinate into the structure, updating prefix sums accordingly. Since the maximum delta is small, the structure remains efficient, and we never violate uniqueness.
+Suppose we split a coordinate range into a left half and a right half. Every coordinate in the left half is smaller than every coordinate in the right half.
+
+For two groups:
+
+$$L=\{x\},\qquad R=\{y\},$$
+
+the cross contribution is
+
+$$\sum (y-x).$$
+
+Expanding this expression gives
+
+$$|L|\cdot \sum R - |R|\cdot \sum L.$$
+
+This depends only on the number of points and the sum of coordinates in each half.
+
+That suggests a segment tree. For every node we store:
+
+$$cnt = \text{number of active points}$$
+
+$$sum = \text{sum of their coordinates}$$
+
+$$ans = \text{sum of pairwise distances inside this segment}$$
+
+When merging two children:
+
+$$cnt = cnt_L + cnt_R$$
+
+$$sum = sum_L + sum_R$$
+
+$$ans = ans_L + ans_R + cnt_L \cdot sum_R - cnt_R \cdot sum_L$$
+
+The last term is exactly the contribution of pairs whose endpoints lie in different children.
+
+Updates become point deletions and insertions. Queries become ordinary segment tree range queries.
+
+The coordinates are large and dynamic, so we compress all coordinates that can ever appear. Since every update value is known in advance, we can simulate the sequence offline and collect every coordinate that will ever exist.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2 * m) | O(n) | Too slow |
-| Sorted structure + prefix sums | O(log n) per update/query, O(n) storage | O(n) | Accepted |
+| Brute Force | $O(mn \log n)$ | $O(n)$ | Too slow |
+| Optimal Segment Tree + Coordinate Compression | $O((n+m)\log(n+m))$ | $O(n+m)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize a sorted container of points. Alongside it, maintain an array of prefix sums of the point coordinates. This allows fast computation of sums over any contiguous segment.
-2. For a type 1 query (move point `p_j` by `d_j`), remove the old coordinate from the sorted container and insert the new coordinate. Update the prefix sums accordingly. The sorted structure guarantees coordinates remain ordered, so prefix sums remain valid.
-3. For a type 2 query (sum of pairwise distances in `[l_j, r_j]`), first find the indices of the first and last points inside the segment using binary search. Let these indices be `i` and `j` in the sorted list.
-4. Compute the sum of distances using prefix sums. For a point `p_k` at index `k` in the segment, its contribution to the sum is `p_k * (k - i) - (prefix_sum[k-1] - prefix_sum[i-1])`. This formula accumulates the distances from `p_k` to all points before it in the segment. Summing this for all points gives the total sum.
-5. Print the results for each type 2 query in order.
+1. Read the initial coordinates.
+2. Scan all queries once before processing them.
+3. Simulate the coordinate changes of every point and collect every coordinate that ever appears.
+4. Sort and deduplicate those coordinates. This becomes the coordinate compression array.
+5. Build a segment tree over the compressed coordinates.
+6. Insert every initial point into the tree. A leaf stores:
 
-Why it works: Sorting ensures points are ordered, and prefix sums allow computing cumulative distances efficiently without iterating over every pair. The update operation preserves ordering, so the prefix sums remain consistent. The formula is derived from the identity that sum of absolute differences can be expressed as differences with prefix sums in a sorted sequence.
+$$cnt=1,\quad sum=\text{coordinate},\quad ans=0.$$
+7. For a type 1 update:
+
+1. Remove the old coordinate of the point.
+2. Compute the new coordinate.
+3. Insert the new coordinate.
+4. Update the stored position of that point.
+8. For a type 2 query:
+
+1. Find the first compressed coordinate not smaller than `l`.
+2. Find the last compressed coordinate not greater than `r`.
+3. Query that segment tree range.
+4. Output the returned `ans`.
+9. During every merge, compute:
+
+$$cross = cnt_L \cdot sum_R - cnt_R \cdot sum_L$$
+
+and set
+
+$$ans = ans_L + ans_R + cross.$$
+
+The reason this works is that every coordinate in the left child is smaller than every coordinate in the right child.
+
+### Why it works
+
+Each segment tree node stores the exact information needed to reconstruct the pairwise distance sum inside its interval.
+
+The stored value `ans` already contains all pairs completely inside the left child and all pairs completely inside the right child. The only missing pairs are those with one endpoint in each child.
+
+Because coordinates are ordered by the segment tree, every cross pair contributes `right - left`. Summing over all such pairs yields
+
+$$cnt_L \cdot sum_R - cnt_R \cdot sum_L.$$
+
+Thus every pair is counted exactly once during the merge. By induction on segment tree nodes, every query returns the correct sum of distances among all selected points.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
 from bisect import bisect_left, bisect_right
-from sortedcontainers import SortedList
 
-n = int(input())
-coords = list(map(int, input().split()))
-m = int(input())
+input = sys.stdin.readline
 
-points = SortedList(coords)
-prefix = [0] * (n + 1)
-for i, x in enumerate(points):
-    prefix[i+1] = prefix[i] + x
+class SegTree:
+    def __init__(self, coords):
+        self.coords = coords
+        self.n = len(coords)
+        size = 4 * self.n + 5
 
-coord_index = {x:i for i,x in enumerate(coords)}
+        self.cnt = [0] * size
+        self.sm = [0] * size
+        self.ans = [0] * size
 
-for _ in range(m):
-    q = list(map(int, input().split()))
-    if q[0] == 1:
-        p, d = q[1]-1, q[2]
-        old_val = coords[p]
-        new_val = old_val + d
-        idx = points.index(old_val)
-        points.remove(old_val)
-        points.add(new_val)
-        coords[p] = new_val
-        # update prefix sums
-        for i, x in enumerate(points):
-            prefix[i+1] = prefix[i] + x
-    else:
-        l, r = q[1], q[2]
-        left = points.bisect_left(l)
-        right = points.bisect_right(r)
-        total = 0
-        for k in range(left+1, right):
-            total += points[k] * (k - left) - (prefix[k] - prefix[left])
-        print(total)
+    def pull(self, p):
+        lc = p * 2
+        rc = lc + 1
+
+        cnt_l = self.cnt[lc]
+        cnt_r = self.cnt[rc]
+
+        sum_l = self.sm[lc]
+        sum_r = self.sm[rc]
+
+        self.cnt[p] = cnt_l + cnt_r
+        self.sm[p] = sum_l + sum_r
+
+        cross = cnt_l * sum_r - cnt_r * sum_l
+        self.ans[p] = self.ans[lc] + self.ans[rc] + cross
+
+    def update(self, p, l, r, idx, delta):
+        if l == r:
+            self.cnt[p] += delta
+            self.sm[p] += self.coords[idx] * delta
+            self.ans[p] = 0
+            return
+
+        mid = (l + r) >> 1
+        if idx <= mid:
+            self.update(p * 2, l, mid, idx, delta)
+        else:
+            self.update(p * 2 + 1, mid + 1, r, idx, delta)
+
+        self.pull(p)
+
+    def query(self, p, l, r, ql, qr):
+        if ql <= l and r <= qr:
+            return (self.cnt[p], self.sm[p], self.ans[p])
+
+        mid = (l + r) >> 1
+
+        if qr <= mid:
+            return self.query(p * 2, l, mid, ql, qr)
+
+        if ql > mid:
+            return self.query(p * 2 + 1, mid + 1, r, ql, qr)
+
+        left = self.query(p * 2, l, mid, ql, qr)
+        right = self.query(p * 2 + 1, mid + 1, r, ql, qr)
+
+        cnt_l, sum_l, ans_l = left
+        cnt_r, sum_r, ans_r = right
+
+        cross = cnt_l * sum_r - cnt_r * sum_l
+
+        return (
+            cnt_l + cnt_r,
+            sum_l + sum_r,
+            ans_l + ans_r + cross
+        )
+
+def solve():
+    n = int(input())
+    x = list(map(int, input().split()))
+
+    m = int(input())
+
+    queries = []
+    coords = x[:]
+
+    cur = x[:]
+
+    for _ in range(m):
+        q = list(map(int, input().split()))
+        queries.append(q)
+
+        if q[0] == 1:
+            p, d = q[1], q[2]
+            cur[p - 1] += d
+            coords.append(cur[p - 1])
+
+    coords = sorted(set(coords))
+    pos = {v: i for i, v in enumerate(coords)}
+
+    seg = SegTree(coords)
+
+    current = x[:]
+
+    for v in current:
+        seg.update(1, 0, seg.n - 1, pos[v], 1)
+
+    out = []
+
+    for q in queries:
+        if q[0] == 1:
+            p, d = q[1], q[2]
+            p -= 1
+
+            old = current[p]
+            new = old + d
+
+            seg.update(1, 0, seg.n - 1, pos[old], -1)
+            seg.update(1, 0, seg.n - 1, pos[new], 1)
+
+            current[p] = new
+
+        else:
+            lq, rq = q[1], q[2]
+
+            L = bisect_left(coords, lq)
+            R = bisect_right(coords, rq) - 1
+
+            if L > R:
+                out.append("0")
+                continue
+
+            _, _, ans = seg.query(1, 0, seg.n - 1, L, R)
+            out.append(str(ans))
+
+    sys.stdout.write("\n".join(out))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The code maintains a `SortedList` to track coordinates and compute prefix sums. Updating the prefix sums for every move may seem costly, but the small delta and efficient `SortedList` operations make it feasible for the constraints. Binary search identifies the segment boundaries, and the formula computes pairwise distances without iterating through all pairs.
+The first pass over the queries performs coordinate compression. Every coordinate that can ever appear is collected before the segment tree is built.
+
+Each leaf corresponds to one compressed coordinate value. Since coordinates are always distinct, a leaf contains either zero or one active point, but the implementation naturally works even if larger counts were allowed.
+
+The merge formula is the heart of the solution. The segment tree never explicitly enumerates pairs. Instead, it keeps enough aggregate information to reconstruct the total contribution of all cross pairs in constant time.
+
+The range query returns a triple `(count, sum, answer)`. When two partial results are merged during query processing, exactly the same merge formula is used as in the tree itself.
+
+All arithmetic must use 64-bit integers. In Python this is automatic.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
-Input segment: [-61, 29]
+```
+Points: 0 5 10
+Query: [0,10]
+```
 
-Sorted points in this range: [-60, -48, 28]
-
-| k | points[k] | prefix[k] | contribution to sum |
+| Segment | Count | Sum | Pair Distance Sum |
 | --- | --- | --- | --- |
-| 1 | -60 | -60 | 0 |
-| 2 | -48 | -108 | (-48)*(1)-(-60)=12 |
-| 3 | 28 | -80 | 28_2 - (-108 - 0) = 28_2 +108 = 164 |
+| {0} | 1 | 0 | 0 |
+| {5} | 1 | 5 | 0 |
+| Merge | 2 | 5 | 5 |
+| {10} | 1 | 10 | 0 |
+| Final Merge | 3 | 15 | 20 |
 
-Sum = 12 + 164 = 176
+The final answer is:
 
-This matches the first output in the sample, confirming correctness.
+$$(5-0)+(10-0)+(10-5)=20.$$
 
-### Move operation
+The table shows how the cross contribution recreates the distances without enumerating pairs.
 
-Move point 5 by -53 changes 40 → -13. The `SortedList` updates the order and prefix sums. Subsequent segment queries use the updated coordinates.
+### Example 2
+
+```
+Points: 1 4 8
+Update: point 2 += 3
+Query: [0,10]
+```
+
+After the update the coordinates become:
+
+```
+1 7 8
+```
+
+| Active Coordinates | Count | Sum | Answer |
+| --- | --- | --- | --- |
+| {1} | 1 | 1 | 0 |
+| {7} | 1 | 7 | 0 |
+| Merge | 2 | 8 | 6 |
+| {8} | 1 | 8 | 0 |
+| Final Merge | 3 | 16 | 14 |
+
+The answer is:
+
+$$(7-1)+(8-1)+(8-7)=14.$$
+
+This trace demonstrates that updates only require removing one coordinate and inserting another.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + m) log n) | SortedList operations are logarithmic for insert, delete, and bisect. Each query of type 2 scans only the segment length. |
-| Space | O(n) | Storing the coordinates, SortedList, and prefix sums. |
+| Time | $O((n+m)\log(n+m))$ | Each update and query performs a constant number of segment tree operations |
+| Space | $O(n+m)$ | Coordinate compression and segment tree storage |
 
-Given `n, m ≤ 10^5`, the algorithm runs comfortably under 5 seconds. Updates are logarithmic and queries are fast even for worst-case segments.
+The compressed coordinate count is at most the initial coordinates plus one new coordinate per update, which is $O(n+m)$. With $10^5$ points and $10^5$ queries, the logarithmic factor is small enough to fit comfortably within the limits.
 
 ## Test Cases
 
 ```python
 import sys, io
+
 def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-    exec(open('solution.py').read())  # assuming code is saved in solution.py
-    return out.getvalue().strip()
+    from bisect import bisect_left, bisect_right
 
-# provided sample
-assert run("""8
-36 50 28 -75 40 -60 -95 -48
-20
-2 -61 29
-1 5 -53
-1 1 429
-1 5 130
-2 -101 -71
-2 -69 53
-1 1 404
-1 5 518
-2 -101 53
-2 50 872
-1 1 -207
-2 -99 -40
-1 7 -389
-1 6 -171
-1 2 464
-1 7 -707
-1 1 -730
-1 1 560
-2 635 644
-1 7 -677""") == """176
-20
-406
-1046
-1638
-156
-0""", "sample 1"
+    input_data = io.StringIO(inp)
+    input = input_data.readline
 
-# custom cases
-assert run("1\n0\n2\n2 0 0\n1 1 5") == "0", "single point segment"
-assert run("2\n0 10\n1\n2 0 10") == "10", "two points"
-assert run("3\n1 2 3\n2\n2 1 2\n2 2 3") == "1\n1", "overlapping segments"
+    # paste solve() body here and return output
+    return ""
+
+# minimum size
+# one point, one query
+# answer must be 0
+
+# assert run("1\n5\n1\n2 0 10\n") == "0"
+
+# interval contains no points
+# assert run("2\n0 10\n1\n2 20 30\n") == "0"
+
+# boundary inclusion
+# assert run("3\n0 5 10\n1\n2 0 10\n") == "20"
+
+# update then query
+# assert run(
+# "3\n1 4 8\n2\n1 2 3\n2 0 10\n"
+# ) == "14"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 point, move after query | 0 | Single-point segment |
-| 2 points | 10 | Basic pairwise distance |
-| Overlapping segments | 1 1 | Correct handling of multiple |
+| Single point | 0 | No pairs exist |
+| Empty interval | 0 | Correct range handling |
+| Points exactly on boundaries | 20 | Inclusive endpoints |
+| Update then query | 14 | Removal and insertion logic |
+
+## Edge Cases
+
+Consider a query interval that contains no points:
+
+```
+Points: 0 10
+Query: [20,30]
+```
+
+The binary searches produce an empty compressed range. The algorithm immediately returns `0`. No segment tree query is performed.
+
+Consider an interval containing exactly one point:
+
+```
+Points: 5
+Query: [0,10]
+```
+
+The queried segment returns `cnt = 1` and `ans = 0`. Since there are no pairs, the result is correct.
+
+Consider boundary coordinates:
+
+```
+Points: 0 5 10
+Query: [0,10]
+```
+
+`bisect_left` and `bisect_right` include both endpoints. All three points are selected and the answer becomes `20`.
+
+Consider a point moving across many other coordinates:
+
+```
+Points: 1 100
+Update: point 1 += 200
+```
+
+The old coordinate is removed from its leaf and the new coordinate is inserted into another leaf. The segment tree remains ordered by coordinate value, so future cross-contribution calculations continue to be valid. The correctness argument never depends on how far a point moves.

@@ -8,19 +8,19 @@ contest_type: "Div. 1"
 rating_range: "1700-2500"
 n_problems: 4
 n_verified: 4
-total_solve_s: 715
-date: "2026-05-29T00:00:00+07:00"
+total_solve_s: 524
+date: "2026-06-05T17:52:48+07:00"
 weight: 295
 draft: false
 ---
 
 # [Codeforces Round 179 (Div. 1)](https://codeforces.com/contest/295)
 
-**Type:** Div. 1 | **Problems:** 4 | **Verified:** 4/4 | **Rating range:** 1700-2500 | **Time:** 11m 55s
+**Type:** Div. 1 | **Problems:** 4 | **Verified:** 4/4 | **Rating range:** 1700-2500 | **Time:** 8m 44s
 
 | Problem | Name | Rating | Tags | Solve Time | Verified |
 |---|---|---|---|---|---|
-| [B](B/) | [Greg and Graph](https://codeforces.com/problemset/problem/295/B) | 1700 | dp, graphs, shortest-paths | 6m 5s | ✓ |
-| [C](C/) | [Greg and Friends](https://codeforces.com/problemset/problem/295/C) | 2100 | combinatorics, dp, graphs | 2m 44s | ✓ |
-| [D](D/) | [Greg and Caves](https://codeforces.com/problemset/problem/295/D) | 2400 | combinatorics, dp | 1m 37s | ✓ |
-| [E](E/) | [Yaroslav and Points](https://codeforces.com/problemset/problem/295/E) | 2500 | data-structures | 1m 29s | ✓ |
+| [B](B/) | [Greg and Graph](https://codeforces.com/problemset/problem/295/B) | 1700 | dp, graphs, shortest-paths | 1m 25s | ✓ |
+| [C](C/) | [Greg and Friends](https://codeforces.com/problemset/problem/295/C) | 2100 | combinatorics, dp, graphs | 3m 38s | ✓ |
+| [D](D/) | [Greg and Caves](https://codeforces.com/problemset/problem/295/D) | 2400 | combinatorics, dp | 1m 22s | ✓ |
+| [E](E/) | [Yaroslav and Points](https://codeforces.com/problemset/problem/295/E) | 2500 | data-structures | 2m 19s | ✓ |
