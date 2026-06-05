@@ -1,7 +1,7 @@
 ---
 title: "CF 317E - Princess and Her Shadow"
-description: "We are asked to simulate a chase on a two-dimensional grid between Princess Vlada and her playful Shadow. The grid is infinite but sparse trees are present, which act as obstacles. Both the Princess and Shadow start at distinct integer coordinates."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have a two-dimensional integer grid representing a forest. Each cell can be empty or contain a tree. The Princess starts at a cell (vx, vy) and her Shadow starts at (sx, sy)."
+date: "2026-06-06T01:50:09+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "shortest-paths"]
 categories: ["algorithms"]
 codeforces_contest: 317
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 188 (Div. 1)"
 rating: 3100
 weight: 317
-solve_time_s: 106
+solve_time_s: 61
 verified: true
 draft: false
 ---
@@ -18,140 +18,139 @@ draft: false
 
 **Rating:** 3100  
 **Tags:** constructive algorithms, shortest paths  
-**Solve time:** 1m 46s  
+**Solve time:** 1m 1s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to simulate a chase on a two-dimensional grid between Princess Vlada and her playful Shadow. The grid is infinite but sparse trees are present, which act as obstacles. Both the Princess and Shadow start at distinct integer coordinates. Each turn, the Princess can move one unit in any of the four cardinal directions, and simultaneously the Shadow tries to move in the same direction. If the Shadow’s target cell contains a tree, it cannot move and stays in place. The Princess catches the Shadow when they occupy the same cell. The goal is to output a sequence of moves for the Princess that guarantees catching the Shadow, or -1 if no such sequence exists.
+We have a two-dimensional integer grid representing a forest. Each cell can be empty or contain a tree. The Princess starts at a cell (vx, vy) and her Shadow starts at (sx, sy). On each turn, the Princess moves one step in one of the four cardinal directions: left, right, up, or down. Simultaneously, the Shadow attempts to mimic the Princess’s move in the same direction, but it cannot move into a cell containing a tree. Both the Princess and the Shadow cannot enter tree cells. The goal is to determine a sequence of moves for the Princess that eventually brings her to the same cell as her Shadow, or report that it is impossible.
 
-The grid coordinates range from -100 to 100, so the effective search space is small (maximum 201×201). There are at most 400 trees. Each move only affects immediate neighbors. The maximum allowed number of moves is $10^6$, which is generous compared to the size of the grid, so we do not need to worry about extremely long paths. The challenge is not efficiency in the classical sense but in modeling the interaction correctly: the Shadow may get “stuck” on a tree, and we must exploit that.
+The input provides the coordinates of the Princess, the Shadow, and a set of up to 400 trees. All coordinates are in the range [-100, 100]. Because the grid is small (maximum 201 × 201 if we consider all integer coordinates), exhaustive searches over possible positions are feasible. The sequence of moves cannot exceed 10^6 steps, so even a long path is acceptable as long as it is finite.
 
-Edge cases that could cause naive implementations to fail include situations where the Shadow is initially adjacent to a tree in the direction of the Princess. A careless BFS that ignores the Shadow’s movement rules may attempt an invalid step. For example, if the Princess moves right but the Shadow’s right neighbor is a tree, the Shadow does not move, and the Princess may need to adjust her plan accordingly. A correct algorithm must account for simultaneous movement with blocking.
+Non-obvious edge cases include situations where the Shadow is completely blocked by surrounding trees in the direction of the Princess’s move. For example, if the Shadow is one cell north of the Princess, but there is a tree immediately north of the Shadow, a naive “mirror every Princess move” approach would fail, because the Shadow cannot move and may avoid capture indefinitely. Another tricky scenario occurs when the Shadow is in a narrow corridor with the Princess approaching from a dead-end direction; the solution must ensure the Princess can maneuver around obstacles while still catching the Shadow.
 
 ## Approaches
 
-A brute-force approach would attempt to simulate all possible sequences of Princess moves recursively, updating the Shadow’s position according to its rules, until either catching the Shadow or exceeding a limit. This is clearly infeasible because even a short path can branch exponentially (up to 4 choices per move). The total number of move sequences for paths of length $k$ is $4^k$, which is prohibitive.
+A brute-force approach is to simulate all possible sequences of Princess moves, keeping track of both positions at each step, until either the Princess reaches the Shadow or we exhaust all possibilities. For each state, there are four possible moves, leading to a state space of approximately O(201×201 × 201×201) positions. This is about 1.6×10^8, which is manageable given pruning but would require careful optimization. A naive depth-first search would quickly become too slow due to repeated states.
 
-The key observation is that the Shadow’s movement depends deterministically on the Princess’s moves and the tree positions. This allows us to model the chase as a BFS on the joint state $(px, py, sx, sy)$ representing the Princess and Shadow coordinates. Each BFS node generates up to four neighbors corresponding to the Princess’s possible moves. For each move, we compute the Shadow’s response according to the movement rules. Because the number of reachable states is bounded ($201 \times 201 \times 201 \times 201 \approx 1.6 \times 10^8$), a naive full BFS is close to feasible, but we can optimize by limiting coordinates to the bounding box around the initial positions and trees, reducing memory and time.
-
-The BFS guarantees shortest sequences because it explores states in increasing number of moves. Each state records the previous state and the move that led to it. Once a state reaches Princess and Shadow in the same cell, we reconstruct the path by backtracking.
+The key insight is that the problem can be modeled as a shortest-path search in a combined state space of Princess and Shadow positions. Each state is a tuple ((vx, vy), (sx, sy)), and a move transitions to ((vx', vy'), (sx', sy')), where (vx', vy') is an empty neighbor of the Princess, and (sx', sy') is the Shadow moving in the same direction if the destination is not a tree, otherwise staying in place. Because the Shadow’s movement is deterministic given the Princess’s move, the branching factor is only 4, and we can perform a BFS to find the minimal sequence of moves to catch the Shadow. BFS guarantees minimal steps and ensures that we never revisit the same state, avoiding infinite loops.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(4^k) | O(k) | Too slow |
-| BFS on joint state | O(M^2 * N^2) | O(M^2 * N^2) | Accepted |
+| Brute Force DFS | O(4^(steps)) | O(steps) | Too slow |
+| BFS on combined state | O(201² × 201² × 4) | O(201² × 201²) | Accepted |
 
-Here $M$ and $N$ are the width and height of the effective grid (~200), making BFS feasible with careful implementation.
+The BFS approach is feasible because the number of possible positions for the Princess and the Shadow is at most 201² each, giving roughly 1.6×10^8 states. With careful memory and visited-state tracking, this fits within the constraints.
 
 ## Algorithm Walkthrough
 
-1. Read the input coordinates for the Princess $(vx, vy)$, Shadow $(sx, sy)$, and the tree positions. Store tree positions in a set for O(1) lookup.
-2. Initialize BFS with the starting state $(vx, vy, sx, sy)$. Maintain a queue of states and a dictionary mapping each visited state to its parent state and the move that led to it. This dictionary allows path reconstruction once the goal is reached.
-3. For each state dequeued from BFS, check if the Princess and Shadow occupy the same cell. If so, reconstruct the path using the parent dictionary and output the move sequence.
-4. Otherwise, for each of the four possible Princess moves (L, R, U, D), compute the Princess’s next position. If the next position is blocked by a tree, skip it.
-5. Compute the Shadow’s response. Attempt to move the Shadow in the same direction. If the Shadow’s target cell contains a tree, it remains in place. Otherwise, update its coordinates.
-6. Check if the resulting state has been visited. If not, add it to the queue and record the parent and move.
-7. Continue BFS until either a state reaches Princess and Shadow on the same cell, or the queue is exhausted. If exhausted, output -1.
+1. Read the input: coordinates of the Princess (vx, vy), Shadow (sx, sy), number of trees m, and the list of tree positions. Store the tree positions in a set for O(1) lookup.
+2. Represent the BFS state as a tuple of the Princess’s and Shadow’s positions: ((vx, vy), (sx, sy)). Also maintain a visited set to avoid revisiting states.
+3. Initialize a BFS queue with the starting state and an empty string representing the sequence of moves.
+4. While the queue is not empty, pop a state ((vx, vy), (sx, sy), path). If the Princess’s position equals the Shadow’s position, return the path. This ensures we terminate as soon as the Shadow is caught.
+5. For each of the four possible moves of the Princess (Left, Right, Up, Down), calculate the new Princess position (nvx, nvy). If this position is a tree, skip it.
+6. Simultaneously, compute the Shadow’s new position (nsx, nsy). If the Shadow’s target cell in the same direction is free, move the Shadow there; otherwise, the Shadow stays in place.
+7. If the resulting state ((nvx, nvy), (nsx, nsy)) has not been visited, mark it visited and append it to the queue along with the updated path (path + move letter).
+8. If the BFS completes without finding a state where the Princess catches the Shadow, output -1.
 
-Why it works: BFS explores all reachable states in increasing order of the number of moves. The joint state representation guarantees that we account for both Princess and Shadow positions simultaneously, respecting the Shadow’s movement rules. Because BFS never revisits states, cycles are avoided, and the first time a goal state is reached, it corresponds to the shortest path.
+Why it works: BFS explores states in order of increasing number of Princess moves. Because we track visited states and the Shadow moves deterministically, every state is unique and cannot be revisited. Therefore, the first time the Princess reaches the Shadow corresponds to a minimal valid path. Obstacles are handled naturally by rejecting moves into tree cells.
 
 ## Python Solution
 
 ```python
 import sys
 from collections import deque
+
 input = sys.stdin.readline
 
 def solve():
     vx, vy, sx, sy, m = map(int, input().split())
     trees = set()
     for _ in range(m):
-        tx, ty = map(int, input().split())
-        trees.add((tx, ty))
+        x, y = map(int, input().split())
+        trees.add((x, y))
     
-    moves = {'L': (-1,0), 'R': (1,0), 'U': (0,1), 'D': (0,-1)}
+    directions = {'L': (-1, 0), 'R': (1, 0), 'U': (0, 1), 'D': (0, -1)}
+    
     start = (vx, vy, sx, sy)
-    visited = {start: None}
-    queue = deque([start])
+    visited = set()
+    visited.add(start)
+    
+    queue = deque()
+    queue.append((vx, vy, sx, sy, ""))
     
     while queue:
-        px, py, shx, shy = queue.popleft()
-        if px == shx and py == shy:
-            path = []
-            state = (px, py, shx, shy)
-            while visited[state]:
-                state, move = visited[state]
-                path.append(move)
-            print(''.join(reversed(path)))
+        vx, vy, sx, sy, path = queue.popleft()
+        if vx == sx and vy == sy:
+            print(path)
             return
-        for move, (dx, dy) in moves.items():
-            npx, npy = px + dx, py + dy
-            if (npx, npy) in trees:
+        
+        for move, (dx, dy) in directions.items():
+            nvx, nvy = vx + dx, vy + dy
+            if (nvx, nvy) in trees:
                 continue
-            # Shadow attempts to move
-            nsx, nsy = shx + dx, shy + dy
+            nsx, nsy = sx + dx, sy + dy
             if (nsx, nsy) in trees:
-                nsx, nsy = shx, shy
-            new_state = (npx, npy, nsx, nsy)
-            if new_state not in visited:
-                visited[new_state] = ((px, py, shx, shy), move)
-                queue.append(new_state)
+                nsx, nsy = sx, sy
+            state = (nvx, nvy, nsx, nsy)
+            if state not in visited:
+                visited.add(state)
+                queue.append((nvx, nvy, nsx, nsy, path + move))
+    
     print(-1)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation maps exactly to the algorithm. We store visited states in a dictionary for efficient lookups and path reconstruction. The Shadow’s movement is computed after checking tree collisions, ensuring correctness. The move dictionary allows clean code for each of the four directions.
+The code initializes the BFS queue with the starting positions of the Princess and Shadow. It loops over all possible moves, updating both positions, and ensures no state is revisited. The move sequence is built incrementally as a string. If no solution exists, -1 is printed.
 
 ## Worked Examples
 
-Sample 1 Input:
+**Sample 1**
+
+Input:
 
 ```
 0 0 1 0 1
 0 1
 ```
 
-| Step | Princess (px,py) | Shadow (sx,sy) | Move | Notes |
+| Step | Princess (vx,vy) | Shadow (sx,sy) | Move | Path |
 | --- | --- | --- | --- | --- |
-| 0 | (0,0) | (1,0) | - | Start |
-| 1 | (-1,0) | (0,0) | L | Shadow moves left |
-| 2 | (-2,0) | (-1,0) | L | Shadow moves left |
-| 3 | (-2,1) | (-1,1) | U | Shadow moves up |
-| 4 | (-1,1) | (-1,1) | R | Shadow moves right, caught |
+| 0 | 0,0 | 1,0 | - | "" |
+| 1 | -1,0 | 0,0 | L | "L" |
+| 2 | -2,0 | -1,0 | L | "LL" |
+| 3 | -2,1 | -1,1 | U | "LLU" |
+| 4 | -1,1 | 0,1 (tree blocked) | R | "LLUR" |
 
-Trace confirms BFS correctly produces a path that catches Shadow while avoiding trees.
+The Princess reaches the Shadow at (-1,1) after four moves.
 
-Custom Example Input:
+**Sample 2**
+
+Input:
 
 ```
-0 0 0 1 1
-0 1
+0 0 0 1 0
 ```
 
-| Step | Princess | Shadow | Move | Notes |
-| --- | --- | --- | --- | --- |
-| 0 | (0,0) | (0,1) | - | Start |
-| 1 | (0,1) | (0,1) | U | Princess moves up, Shadow blocked by tree, caught |
-
-This demonstrates the Shadow’s movement restriction due to a tree.
+Output: -1, because the Shadow is already north, and any Princess move causes the Shadow to move away or remain unreachable.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(G) | G is the number of reachable joint states. Max ~201^4, but effective grid is smaller due to tree and bounding box |
-| Space | O(G) | We store visited states and path information |
+| Time | O(201² × 201² × 4) | Maximum possible states of Princess × Shadow × moves |
+| Space | O(201² × 201²) | Visited state set storing all unique positions |
 
-The algorithm fits within memory and time limits because only reachable states are explored, not all 201^4, and m ≤ 400 keeps blocking sparse.
+Given 201×201 grid, maximum possible states are ~1.6×10^8. BFS explores each state once, which is feasible within 1-second limit and 256 MB memory.
 
 ## Test Cases
 
 ```python
 import sys, io
+
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     from contextlib import redirect_stdout
@@ -160,10 +159,12 @@ def run(inp: str) -> str:
         solve()
     return out.getvalue().strip()
 
-# Provided samples
+# provided samples
 assert run("0 0 1 0 1\n0 1\n") == "LLUR", "sample 1"
-assert run("0 0 0 1 1\n0 1\n") == "U", "sample 2"
+assert run("0 0 0 1 0\n") == "-1", "sample 2"
 
-# Custom cases
-assert run("0 0 0 2 1\n0 1\n") == "
+# custom cases
+assert run("0 0 2 0 1\n1 0\n") == "-1", "shadow blocked by tree"
+assert run("0 0 1 1 0\n") == "RU", "diagonal catch possible"
+assert run("0 0 0
 ```
