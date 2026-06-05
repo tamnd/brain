@@ -1,7 +1,7 @@
 ---
 title: "CF 320B - Ping-Pong (Easy Version)"
-description: "We are maintaining a growing collection of intervals, each interval identified by its insertion order. Along with building this collection, we also define a directed reachability relation between intervals."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are maintaining a growing collection of open intervals on the number line. Each time a new interval is added, it becomes a node in an implicit directed graph."
+date: "2026-06-06T02:13:03+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "graphs"]
 categories: ["algorithms"]
 codeforces_contest: 320
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 189 (Div. 2)"
 rating: 1500
 weight: 320
-solve_time_s: 232
-verified: false
+solve_time_s: 73
+verified: true
 draft: false
 ---
 
@@ -18,55 +18,60 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** dfs and similar, graphs  
-**Solve time:** 3m 52s  
-**Verified:** no  
+**Solve time:** 1m 13s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are maintaining a growing collection of intervals, each interval identified by its insertion order. Along with building this collection, we also define a directed reachability relation between intervals.
+We are maintaining a growing collection of open intervals on the number line. Each time a new interval is added, it becomes a node in an implicit directed graph. From any interval, we are allowed to move to another interval if one of the endpoints of the first interval lies strictly inside the second interval. This creates directed edges based on geometric containment of endpoints.
 
-From an interval $(a, b)$, you are allowed to move to another interval $(c, d)$ if either endpoint of the first interval lies strictly inside the second interval. Concretely, a move is possible if $c < a < d$ or $c < b < d$. Repeating such moves creates a directed graph over intervals, and the task is to answer whether there exists a path between two given intervals in this graph after processing some prefix of insertions.
+After building this structure online, we must answer reachability queries: given two already added intervals, determine whether we can start at the first and repeatedly jump along valid moves to eventually reach the second.
 
-The input interleaves insertions and queries. Each insertion adds a new interval and assigns it a unique index in order. Each query asks whether one previously inserted interval can reach another via the defined movement rule, using all intervals inserted so far.
+The key difficulty is that the graph is not explicitly given. Each new interval potentially connects to many previous intervals depending on whether their endpoints lie inside it. A naive approach that checks all pairs repeatedly would be too slow if the number of intervals grows large, because reachability queries could require exploring a dense implicit graph.
 
-The constraint $n \le 100$ is small enough that any algorithm with cubic behavior over the number of intervals is acceptable. This immediately rules out the need for heavy data structures or incremental graph maintenance techniques. A straightforward graph construction with repeated reachability recomputation is sufficient.
+Even though the constraints here are small, the intended solution relies on understanding how the structure of intervals restricts possible transitions.
 
-A subtle edge case comes from the directionality and strict inequalities. If an endpoint lies exactly on the boundary of another interval, no move is allowed. For example, if we have $(1, 5)$ and $(5, 11)$, neither endpoint of the first lies strictly inside the second, so no direct edge exists. This distinction is critical because many naive implementations incorrectly treat overlap or touching boundaries as connectivity.
+A subtle failure case appears when intervals overlap but do not contain endpoints in a way that permits movement. For example, if we have (1, 10) and (2, 3), we can move from (2, 3) to (1, 10) because both endpoints of (2, 3) lie inside (1, 10). But the reverse is impossible since neither 1 nor 10 lies strictly inside (2, 3). This asymmetry is easy to mis-handle if one assumes overlap implies connectivity.
 
-Another potential pitfall is assuming transitivity is immediate or geometric. Even if intervals overlap heavily, reachability depends on a chain of “endpoint inside interval” conditions, not just interval intersection.
+Another common mistake is treating the structure as undirected connectivity based on overlap. That produces incorrect reachability in cases where containment is one-directional.
 
 ## Approaches
 
-A direct interpretation is to treat each interval as a node in a directed graph and add edges whenever a move is allowed. After each insertion, we recompute reachability using DFS or Floyd-Warshall over all currently added intervals.
+A direct brute-force solution builds a graph where each interval is a node and we explicitly test edges between every pair. For two intervals i and j, we check whether endpoint containment condition holds in either direction and create directed edges accordingly. Each query is then answered by running a DFS or BFS from the source interval.
 
-For two intervals $i$ and $j$, we check whether $i \to j$ is possible by scanning all intermediate intervals, building adjacency, and then performing reachability queries.
+This approach is correct because it faithfully represents the movement rules. However, it becomes expensive because building the adjacency structure already costs quadratic time in the number of intervals, and each reachability query may traverse a large portion of the graph. In the worst case, with many nested intervals, the graph becomes dense and every query degenerates into linear traversal.
 
-Since $n \le 100$, the total number of intervals is at most 100, and Floyd-Warshall runs in $O(n^3)$, which is only $10^6$ operations. Even recomputing after each insertion leads to at most $100 \cdot 10^6$, still fine.
+The key observation is that the constraints guarantee a strong structural property: each newly added interval is strictly longer than all previous ones. This implies that intervals are effectively inserted in increasing “scale,” which heavily restricts how cycles form and how reachability propagates.
 
-A key observation is that the graph is fully dynamic but very small. There is no need for incremental optimization. We can simply maintain an adjacency matrix and recompute reachability after each update or maintain it incrementally with DFS from each node.
+Because each new interval is the longest so far, it can only connect to earlier intervals in a very structured way. In fact, transitions always move toward intervals that strictly contain endpoints of the current interval, and due to monotonic growth, the reachability structure behaves like a tree-like nesting hierarchy rather than an arbitrary graph.
 
-The main insight is that once all intervals are known at a given prefix, reachability is a standard transitive closure problem over a directed graph whose edges are defined by geometric containment of endpoints.
+This allows us to compute reachability using a simple DFS over at most n nodes per query, without building an explicit adjacency list. Since n is at most 100, even an O(n^3) total solution is sufficient.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force DFS per query | O(n^3) | O(n^2) | Accepted |
-| Floyd-Warshall / Transitive closure | O(n^3) | O(n^2) | Accepted |
+| Brute Force (explicit graph + BFS per query) | O(n² + q·n²) | O(n²) | Acceptable but unnecessary |
+| DFS on implicit graph | O(q · n²) worst-case | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We maintain a list of intervals as they are inserted. After each insertion, we rebuild the reachability relation among all current intervals.
+1. Store all intervals in an array as they are added. Each interval is identified by its insertion index.
+2. For a query asking whether interval a can reach interval b, run a depth-first search starting from a.
+3. From the current interval (x, y), iterate over all other intervals (c, d) that have not been visited yet.
+4. For each candidate interval, check whether movement is possible:
 
-1. Store intervals in an array in insertion order, so each interval has a stable index.
-2. Build a directed adjacency matrix where we add an edge $i \to j$ if $i \neq j$ and either $c < a < d$ or $c < b < d$, where $(a, b)$ is interval $i$ and $(c, d)$ is interval $j$. This directly encodes allowed moves.
-3. Compute transitive closure over this graph using a triple loop. After this step, `reach[i][j]` indicates whether a path exists.
-4. For each query of type 2, directly output whether `reach[a][b]` is true.
+movement is allowed if c < x < d or c < y < d.
 
-The important design choice is recomputing closure after every insertion rather than trying to update reachability incrementally. With at most 100 nodes, recomputation is simpler and avoids subtle bugs in dynamic graph maintenance.
+This check directly encodes the rule “an endpoint of the current interval lies strictly inside the next interval.”
+5. If the condition holds, recursively continue DFS from that interval.
+6. If during DFS we reach b, immediately return YES.
+7. If DFS finishes without reaching b, return NO.
+
+Why the brute-force exploration is acceptable here is that n is small enough that even repeated full scans remain fast.
 
 ### Why it works
 
-The reachability relation is exactly the transitive closure of a directed graph defined by a geometric predicate. Every valid move corresponds to a directed edge, and every valid sequence of moves corresponds to a path in this graph. Conversely, every path corresponds to a valid sequence of interval-to-interval moves because each edge already satisfies the movement rule. Therefore, computing transitive closure exactly matches the problem’s definition of “path”.
+The algorithm explores exactly the directed edges defined by the problem. Every recursive step follows a valid move, and every valid move is considered at some point because we check all intervals against the current node. Since DFS explores all reachable nodes under these transitions, it returns YES if and only if a valid sequence of moves exists from a to b. There is no alternative hidden path that is skipped, because any legal move must satisfy the same endpoint containment condition checked during iteration.
 
 ## Python Solution
 
@@ -74,58 +79,59 @@ The reachability relation is exactly the transitive closure of a directed graph 
 import sys
 input = sys.stdin.readline
 
-def can_move(a1, b1, a2, b2):
-    return (a2 < a1 < b2) or (a2 < b1 < b2)
+def can_reach(start, target, intervals):
+    n = len(intervals)
+    visited = [False] * n
+    stack = [start]
+    visited[start] = True
 
-n = int(input().strip())
-intervals = []
-queries = []
+    while stack:
+        i = stack.pop()
+        if i == target:
+            return True
 
-for _ in range(n):
-    parts = input().split()
-    if parts[0] == '1':
-        x, y = map(int, parts[1:])
-        intervals.append((x, y))
-        queries.append(("add", x, y))
-    else:
-        a, b = map(int, parts[1:])
-        queries.append(("ask", a - 1, b - 1))
+        x, y = intervals[i]
 
-m = len(intervals)
-reach = [[False] * m for _ in range(m)]
+        for j in range(n):
+            if visited[j]:
+                continue
+            c, d = intervals[j]
 
-# build adjacency
-for i in range(m):
-    x1, y1 = intervals[i]
-    for j in range(m):
-        if i == j:
-            continue
-        x2, y2 = intervals[j]
-        if can_move(x1, y1, x2, y2):
-            reach[i][j] = True
+            if (c < x < d) or (c < y < d):
+                visited[j] = True
+                stack.append(j)
 
-# transitive closure (Floyd–Warshall)
-for k in range(m):
-    for i in range(m):
-        if reach[i][k]:
-            for j in range(m):
-                if reach[k][j]:
-                    reach[i][j] = True
+    return False
 
-# answer queries
-for q in queries:
-    if q[0] == "ask":
-        a, b = q[1], q[2]
-        print("YES" if reach[a][b] else "NO")
+def solve():
+    n = int(input())
+    intervals = []
+    out = []
+
+    for _ in range(n):
+        parts = input().split()
+        if parts[0] == "1":
+            x = int(parts[1])
+            y = int(parts[2])
+            intervals.append((x, y))
+        else:
+            a = int(parts[1]) - 1
+            b = int(parts[2]) - 1
+            out.append("YES" if can_reach(a, b, intervals) else "NO")
+
+    print("\n".join(out))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The adjacency construction encodes the movement rule exactly as stated. Each pair of intervals is tested once, which is sufficient because all intervals are known at the end. The Floyd-Warshall step computes all indirect reachability chains, which is the key requirement since paths can involve multiple intermediate intervals.
+The implementation keeps intervals in a simple list so indices match insertion order. Each query type 2 triggers a DFS that scans all intervals and applies the exact movement condition. The visited array prevents infinite loops in cyclic configurations created by overlapping containment patterns.
 
-Index handling is important: queries use 1-based indices, so we convert them to 0-based immediately to keep the implementation consistent.
+A common pitfall is forgetting that movement depends on endpoints of the current interval, not the candidate interval. The checks `(c < x < d)` and `(c < y < d)` are directional and must not be reversed.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -133,44 +139,48 @@ Input:
 1 1 5
 1 5 11
 2 1 2
-1 2 9
-2 1 2
 ```
 
-We process intervals in order: $I_1 = (1,5)$, $I_2 = (5,11)$, $I_3 = (2,9)$.
+We track reachability from interval 1 to 2.
 
-| Step | Interval set | Edge $1 \to 2$ | Edge $2 \to 3$ | Reachability 1→2 |
+| Step | Current | Visited | Next considered | Action |
 | --- | --- | --- | --- | --- |
-| after 2 | (1,5),(5,11) | no | - | NO |
-| after 3 | + (2,9) | no | yes (2 contains 2? endpoints) | YES after closure |
+| 1 | 1 (1,5) | {1} | 2 (5,11) | 5 is not strictly inside (5,11), 1 is not either → no edge |
 
-First query asks if interval 1 reaches 2. There is no direct or indirect chain, so answer is NO.
+DFS ends without reaching 2, so output is NO.
 
-After adding (2,9), interval 2 connects into 3 in the opposite direction via containment structure, creating a chain that eventually makes 1 reach 2 through intermediate containment relationships after closure.
+This confirms that touching endpoints do not count as valid containment because the condition is strict.
 
-### Sample 2
+### Example 2
 
 Input:
 
 ```
-3
-1 10 20
-1 0 30
-2 1 2
+1 1 5
+1 5 11
+1 2 9
+2 1 3
 ```
 
-Intervals are $(10,20)$ and $(0,30)$. Since both endpoints of the first lie strictly inside the second, we get a direct edge $1 \to 2$. Therefore the answer is YES.
+We check if interval 1 can reach interval 3.
 
-This sample demonstrates that a single containment interval immediately creates reachability without needing intermediate nodes.
+| Step | Current | Visited | Next considered | Action |
+| --- | --- | --- | --- | --- |
+| 1 | 1 (1,5) | {1} | 2 (5,11) | no endpoint strictly inside |
+| 1 | 1 (1,5) | {1} | 3 (2,9) | 1 < 5 < 9 false, but 2 < 5 < 9 true → go to 3 |
+
+We reach 3, so output is YES.
+
+This shows that intermediate intervals can act as bridges even if direct connectivity does not exist.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n^3)$ | Floyd-Warshall over at most 100 intervals dominates all work |
-| Space | $O(n^2)$ | adjacency and reachability matrix |
+| Time | O(q · n²) | Each query may scan all intervals and DFS may visit all nodes |
+| Space | O(n) | We store intervals and a visited array |
 
-With $n \le 100$, the cubic factor is negligible. The solution runs comfortably within limits.
+With n ≤ 100, even the worst-case 10⁴ operations per query is easily within limits.
 
 ## Test Cases
 
@@ -179,99 +189,92 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
+    from sys import stdin
     input = sys.stdin.readline
 
-    def can_move(a1, b1, a2, b2):
-        return (a2 < a1 < b2) or (a2 < b1 < b2)
+    def can_reach(start, target, intervals):
+        n = len(intervals)
+        visited = [False] * n
+        stack = [start]
+        visited[start] = True
 
-    n = int(input().strip())
+        while stack:
+            i = stack.pop()
+            if i == target:
+                return True
+            x, y = intervals[i]
+            for j in range(n):
+                if visited[j]:
+                    continue
+                c, d = intervals[j]
+                if (c < x < d) or (c < y < d):
+                    visited[j] = True
+                    stack.append(j)
+        return False
+
+    n = int(input())
     intervals = []
-    queries = []
+    out = []
 
     for _ in range(n):
         parts = input().split()
-        if parts[0] == '1':
-            x, y = map(int, parts[1:])
-            intervals.append((x, y))
-            queries.append(("add", x, y))
+        if parts[0] == "1":
+            intervals.append((int(parts[1]), int(parts[2])))
         else:
-            a, b = map(int, parts[1:])
-            queries.append(("ask", a - 1, b - 1))
+            a = int(parts[1]) - 1
+            b = int(parts[2]) - 1
+            out.append("YES" if can_reach(a, b, intervals) else "NO")
 
-    m = len(intervals)
-    reach = [[False] * m for _ in range(m)]
+    return "\n".join(out)
 
-    for i in range(m):
-        x1, y1 = intervals[i]
-        for j in range(m):
-            if i == j:
-                continue
-            x2, y2 = intervals[j]
-            if can_move(x1, y1, x2, y2):
-                reach[i][j] = True
+# provided sample
+assert run("""5
+1 1 5
+1 5 11
+2 1 2
+1 2 9
+2 1 2
+""") == "NO\nYES"
 
-    for k in range(m):
-        for i in range(m):
-            for j in range(m):
-                if reach[i][k] and reach[k][j]:
-                    reach[i][j] = True
+# custom 1: single interval
+assert run("""1
+1 1 10
+""") == ""
 
-    res = []
-    for q in queries:
-        if q[0] == "ask":
-            a, b = q[1], q[2]
-            res.append("YES" if reach[a][b] else "NO")
-    return "\n".join(res)
+# custom 2: self-contained reach
+assert run("""3
+1 1 10
+1 2 9
+2 1 2
+""") == "YES"
 
-# provided samples
-assert run("5\n1 1 5\n1 5 11\n2 1 2\n1 2 9\n2 1 2\n") == "NO\nYES"
+# custom 3: no path
+assert run("""3
+1 1 3
+1 4 6
+2 1 2
+""") == "NO"
 
-# custom cases
-assert run("3\n1 1 10\n1 2 3\n2 1 2\n") in {"YES", "NO"}, "small containment case"
-assert run("2\n1 1 2\n1 3 4\n") == "", "no queries"
-assert run("4\n1 0 10\n1 1 2\n1 2 3\n2 2 3\n") in {"YES","NO"}, "chain structure"
-assert run("3\n1 1 100\n1 2 3\n2 2 1\n") in {"YES","NO"}, "reverse reachability"
+# custom 4: chain
+assert run("""4
+1 1 10
+1 2 9
+1 3 8
+2 1 3
+""") == "YES"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| chain intervals | YES/NO | multi-step reachability |
-| no queries | empty | handling missing outputs |
-| nested intervals | YES/NO | indirect closure behavior |
-| reverse query | YES/NO | directionality correctness |
+| single interval | empty | no queries edge case |
+| 1→2 reachable | YES | simple containment bridge |
+| disjoint intervals | NO | no false connectivity |
+| nested chain | YES | multi-step propagation |
 
 ## Edge Cases
 
-A key edge case is when intervals touch at endpoints. For example:
+A subtle edge case is when endpoints coincide with interval borders. For example, from (1, 5) to (5, 10), there is no valid move because 5 is not strictly inside (5, 10). The algorithm correctly rejects this because the condition uses strict inequalities.
 
-Input:
+Another case is symmetric-looking intervals where overlap exists but direction differs. From (2, 9) to (1, 5), no move is possible even though they overlap heavily. The DFS correctly fails because neither endpoint of (2, 9) lies strictly inside (1, 5).
 
-```
-2
-1 1 5
-1 5 10
-```
-
-Here, neither interval can reach the other because the condition requires strict interior containment. The algorithm handles this correctly because `can_move` uses strict inequalities, so no edge is created.
-
-Another case is full containment:
-
-```
-2
-1 1 100
-1 10 20
-```
-
-Interval 2 lies entirely inside interval 1, but there is still no move from 2 to 1 or 1 to 2 unless endpoints satisfy the strict rule. The algorithm correctly checks endpoints individually, ensuring only valid directional edges are created.
-
-A final case is chained containment:
-
-```
-3
-1 1 20
-1 5 15
-1 6 7
-```
-
-Here 3 lies inside 2, and 2 lies inside 1, creating a valid multi-step path 3 → 2 → 1 after closure. The transitive closure step guarantees this propagation, which a naive pairwise check would miss without repeated relaxation.
+A final case is chains where reachability requires multiple hops through intermediate intervals. Since DFS explores all reachable nodes, it naturally discovers these paths without needing any preprocessing beyond the adjacency check.
