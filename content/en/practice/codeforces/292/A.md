@@ -1,7 +1,7 @@
 ---
 title: "CF 292A - SMSC"
-description: "We are asked to simulate the operation of a short message service center (SMSC) that receives tasks, each consisting of a timestamp and a number of messages to send. Each second, if there are messages waiting in the queue, the SMSC sends exactly one message."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a sequence of tasks that arrive at a corporation's SMS center. Each task consists of a time ti when it arrives and a number ci of text messages to send. The SMS center can send at most one message per second, and messages are queued in the order they arrive."
+date: "2026-06-05T17:17:06+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 292
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Croc Champ 2013 - Round 1"
 rating: 1100
 weight: 292
-solve_time_s: 78
+solve_time_s: 95
 verified: true
 draft: false
 ---
@@ -18,41 +18,40 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** implementation  
-**Solve time:** 1m 18s  
+**Solve time:** 1m 35s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to simulate the operation of a short message service center (SMSC) that receives tasks, each consisting of a timestamp and a number of messages to send. Each second, if there are messages waiting in the queue, the SMSC sends exactly one message. Messages arriving at that same second cannot be sent immediately-they are added to the queue after any sending decision. We need to determine two things: the time when the last message is sent, and the largest queue size observed at any second.
+We are given a sequence of tasks that arrive at a corporation's SMS center. Each task consists of a time `t_i` when it arrives and a number `c_i` of text messages to send. The SMS center can send at most one message per second, and messages are queued in the order they arrive. At any second, the center first sends one message if the queue is non-empty, then adds any new messages arriving at that second to the tail of the queue.
 
-The input gives us `n` tasks, each with a time `t_i` and a message count `c_i`. The times are strictly increasing, and `n` can go up to 1000. The message counts can be as large as one million, so we cannot naively simulate every second individually if we want to remain efficient. The output is two integers: the last second when a message is sent, and the peak queue size.
+The goal is to compute two quantities: the time when the last message is sent and the maximum number of messages in the queue at any time.
 
-A naive implementation might try to simulate every second explicitly. For example, if the first task arrives at `t=1` with 1,000,000 messages, iterating one second at a time until all messages are sent would be far too slow. Another subtle pitfall is miscounting the queue size at moments when multiple messages are queued but none are sent yet, especially across gaps between task arrival times. For instance, if a task arrives at time 1 with 2 messages, and the next task arrives at time 10 with 1 message, the maximum queue size occurs immediately after the first task arrives, not when messages start to be sent.
+The constraints are small: `n` is at most 1000 and times `t_i` and counts `c_i` are up to 10^6. Since `n` is small, we can iterate over the tasks linearly without worrying about time, but we must carefully handle the queue behavior because naive per-second simulation up to `10^6` seconds would be too slow.
+
+Non-obvious edge cases include tasks that arrive far apart in time, which creates idle periods where the queue may empty completely, and tasks that arrive with many messages at once, which can spike the maximum queue size. For example, if a task arrives at second 1 with 5 messages and the next task arrives at second 10 with 1 message, the queue empties by second 6, then at second 10 a new message arrives, so the last message is sent at second 10. A careless implementation might forget to account for these idle gaps.
 
 ## Approaches
 
-The brute-force approach iterates second by second. At each second, we remove one message from the queue if it is non-empty, then add any new messages from tasks arriving at that second. This approach is correct because it mirrors the problem description exactly. The problem with this approach is that the message counts can be up to one million, so the total number of seconds simulated could be extremely large, making it infeasible.
+A brute-force approach is to simulate the queue second by second from the first arrival to the time when all messages are sent. At each second, send a message if the queue is non-empty, then add messages arriving at that second. While correct, this would require iterating up to 10^6 seconds in the worst case, which is unnecessary and inefficient.
 
-The key observation for an optimal solution is that we do not need to simulate every second individually. Messages are sent at a constant rate of one per second. If there is a gap between two task arrival times, we can calculate how many messages are sent during the gap in a single step. Specifically, if the queue has `q` messages and `d` seconds pass until the next task arrives, the queue will decrease by `min(q, d)` in that interval. Then we add the new messages from the next task and update the maximum queue size. This reduces the algorithm to processing each task in order, performing only constant-time calculations for each, which is efficient enough for the given constraints.
+The key observation is that the SMS center always processes at most one message per second and we know the arrival times of all tasks. Therefore, we do not need to iterate every second explicitly. Instead, we can track the queue size and the current time, advancing the time intelligently to the next task if the queue is empty, or sending messages continuously until the next task arrives. This allows a linear sweep over the tasks while updating the queue and the maximum queue size without simulating idle seconds individually. The final last message time is simply the time after all messages have been sent, considering the remaining queue.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(sum of c_i) | O(1) | Too slow |
-| Optimal | O(n) | O(1) | Accepted |
+| Brute Force (per-second simulation) | O(max(t_i + sum(c_i))) | O(1) | Too slow for large gaps between tasks |
+| Optimal (task-based simulation) | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize two variables: `current_queue` to track how many messages are waiting to be sent, and `max_queue` to track the largest queue size observed. Also initialize `last_time` to zero, which will eventually hold the last message sent time.
-2. Set `previous_time` to zero. This variable will help calculate gaps between task arrivals.
-3. Iterate through the tasks in order. For each task at time `t_i` with `c_i` messages, calculate the time gap `gap = t_i - previous_time`.
-4. Determine how many messages can be sent during this gap: `sent = min(current_queue, gap)`. Reduce `current_queue` by `sent`. The last message sent during this gap occurs at `previous_time + sent`.
-5. Add the new messages from the current task to the queue: `current_queue += c_i`. Update `max_queue` if `current_queue` is larger than before.
-6. Update `previous_time = t_i`.
-7. After processing all tasks, send any remaining messages. The last message will be sent at `previous_time + current_queue`. Update `last_time` to this value.
-8. Output `last_time` and `max_queue`.
+1. Initialize `queue = 0` to represent the number of messages waiting to be sent, `max_queue = 0` to track the maximum queue size, and `current_time = 0` to represent the last second we processed.
+2. Iterate over the tasks in chronological order. For each task `(t, c)`, advance time to the arrival `t`. Compute how many seconds have passed since the last processed time: `delta = t - current_time`. During this interval, the SMS center will send `sent = min(queue, delta)` messages. Reduce `queue` by `sent` and increment `current_time` by `delta`.
+3. Add the new messages `c` to `queue` after sending messages for the elapsed interval. Update `max_queue` as `max(max_queue, queue)` to account for the new messages. Set `current_time = t` because we have processed up to the task arrival.
+4. After all tasks are processed, there may still be messages in the queue. The last message will be sent after `queue` seconds. Increment `current_time` by `queue` to get the final time when the last message is sent.
+5. Return `current_time` as the time of the last message and `max_queue` as the maximum queue size observed.
 
-Why it works: At each step, the algorithm preserves the invariant that `current_queue` correctly reflects the number of messages waiting to be sent at the end of `previous_time`. The maximum queue size is always updated when new messages arrive. The calculation of messages sent during gaps ensures we never iterate unnecessarily over each second, while still accurately tracking the last sent message time.
+The invariant maintained throughout the algorithm is that `queue` always represents the number of messages waiting to be sent immediately after processing the current time. This ensures the calculation of maximum queue size and last message time is accurate.
 
 ## Python Solution
 
@@ -63,70 +62,77 @@ input = sys.stdin.readline
 n = int(input())
 tasks = [tuple(map(int, input().split())) for _ in range(n)]
 
-current_queue = 0
+queue = 0
 max_queue = 0
-previous_time = 0
-last_time = 0
+current_time = 0
 
 for t, c in tasks:
-    gap = t - previous_time
-    sent = min(current_queue, gap)
-    current_queue -= sent
-    last_time = previous_time + sent
-    current_queue += c
-    max_queue = max(max_queue, current_queue)
-    previous_time = t
+    # Time passed since last task
+    delta = t - current_time
+    # Send as many messages as possible in that interval
+    sent = min(queue, delta)
+    queue -= sent
+    current_time += delta
+    # Add new messages
+    queue += c
+    max_queue = max(max_queue, queue)
 
-last_time += current_queue
-print(last_time, max_queue)
+# Process remaining messages
+current_time += queue
+
+print(current_time, max_queue)
 ```
 
-The code directly implements the optimal algorithm. `gap` captures how much time has passed since the previous task, and `sent` calculates how many messages leave the queue in that interval. `last_time` is updated to reflect the last message sent so far, and `max_queue` tracks the largest queue size observed. The final step handles any messages left in the queue after the last task.
+This solution first reads all tasks, then simulates the queue efficiently by handling only task arrivals and leftover messages. The `delta` computation ensures that idle seconds are implicitly considered without iterating through them. Updating `max_queue` after adding messages correctly tracks the largest queue size.
 
 ## Worked Examples
 
-Sample Input 1:
+Sample 1:
 
 ```
+Input:
 2
 1 1
 2 1
 ```
 
-| Step | previous_time | t | current_queue before | gap | sent | current_queue after | last_time | max_queue |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 |
-| 2 | 1 | 2 | 1 | 1 | 1 | 1 | 2 | 1 |
-| End | 2 | - | 1 | - | - | 0 | 3 | 1 |
+| Task | current_time | delta | queue before | sent | queue after | max_queue |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 1 | 0 | 1 | 0 | 0 | 1 | 1 |
+| 2 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| End | 2 | - | 1 | - | 0 | 1 |
 
-This trace shows the queue growing when messages arrive and shrinking between arrivals. The last message is sent at second 3, and the maximum queue size is 1.
+Final output: `3 1`
 
-Custom Input:
+Constructed case:
 
 ```
+Input:
 3
 1 2
 4 3
 6 1
 ```
 
-| Step | previous_time | t | current_queue before | gap | sent | current_queue after | last_time | max_queue |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 0 | 1 | 0 | 1 | 0 | 2 | 0 | 2 |
-| 2 | 1 | 4 | 2 | 3 | 2 | 3 | 3 | 3 |
-| 3 | 4 | 6 | 3 | 2 | 2 | 2 | 6 | 3 |
-| End | 6 | - | 2 | - | - | 0 | 8 | 3 |
+| Task | current_time | delta | queue before | sent | queue after | max_queue |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 2 | 0 | 1 | 0 | 0 | 2 | 2 |
+| 4 3 | 1 | 3 | 2 | 2 | 3 | 3 |
+| 6 1 | 4 | 2 | 3 | 2 | 2 | 3 |
+| End | 6 | - | 2 | - | 0 | 3 |
 
-This demonstrates handling of gaps larger than the current queue and shows the queue never drops below zero.
+Final output: `8 3`
+
+This trace shows how the algorithm handles idle gaps and overlapping message sending.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We process each task once, performing only constant-time calculations per task. |
-| Space | O(n) | We store the list of tasks. Otherwise, only a few integers are used. |
+| Time | O(n) | We iterate through each task once, performing only constant-time operations per task |
+| Space | O(n) | We store the list of tasks |
 
-The constraints allow `n` up to 1000, so O(n) is extremely fast. Memory usage is negligible.
+With `n ≤ 1000`, this algorithm runs efficiently well within the 2-second limit.
 
 ## Test Cases
 
@@ -135,33 +141,44 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    queue = 0
+    max_queue = 0
+    current_time = 0
     n = int(input())
     tasks = [tuple(map(int, input().split())) for _ in range(n)]
-    current_queue = 0
-    max_queue = 0
-    previous_time = 0
-    last_time = 0
     for t, c in tasks:
-        gap = t - previous_time
-        sent = min(current_queue, gap)
-        current_queue -= sent
-        last_time = previous_time + sent
-        current_queue += c
-        max_queue = max(max_queue, current_queue)
-        previous_time = t
-    last_time += current_queue
-    return f"{last_time} {max_queue}"
+        delta = t - current_time
+        sent = min(queue, delta)
+        queue -= sent
+        current_time += delta
+        queue += c
+        max_queue = max(max_queue, queue)
+    current_time += queue
+    return f"{current_time} {max_queue}"
 
-# Provided sample
+# provided samples
 assert run("2\n1 1\n2 1\n") == "3 1", "sample 1"
 
-# Custom cases
-assert run("1\n1 5\n") == "6 5", "single task, multiple messages"
-assert run("3\n1 2\n4 3\n6 1\n") == "8 3", "gaps between tasks"
-assert run("2\n1 1\n1000000 1\n") == "1000001 1", "large gap, small queue"
-assert run("3\n1 1000000\n2 1000000\n3 1000000\n") == "3000003 2000000", "large message counts, overlapping"
+# minimum input
+assert run("1\n1 1\n") == "2 1", "single task"
+
+# multiple messages arriving before queue empties
+assert run("3\n1 2\n2 2\n3 1\n") == "6 3", "messages overlap"
+
+# large gap between tasks
+assert run("2\n1 1\n10 2\n") == "12 2", "idle period"
+
+# all tasks have 1 message, consecutive seconds
+assert run("5\n1 1\n2 1\n3 1\n4 1\n5 1\n") == "6 1", "consecutive single messages"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1\n1 5 | 6 5 | Single task |
+| 1 1 | 2 1 | Single task edge case |
+| 3\n1 2\n2 2\n3 1 | 6 3 | Queue overlapping across arrivals |
+| 2\n1 1\n10 2 | 12 2 | Large idle gap handling |
+| 5\n1 1\n2 1\n3 1\n4 1\n5 1 | 6 1 | Consecutive arrivals, no queue growth |
+
+## Edge Cases
+
+If a task arrives long after the previous messages have been sent, the `delta` ensures that the queue empties completely before the new task is added. For input `2\n1 1\n10 2\n`, the queue is `1` after the first task. `delta = 10 - 0 = 10

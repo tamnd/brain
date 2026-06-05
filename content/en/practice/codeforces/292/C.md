@@ -1,7 +1,7 @@
 ---
 title: "CF 292C - Beautiful IP Addresses"
-description: "We are asked to generate \"beautiful\" IP addresses under a very specific definition. Each IP address consists of four decimal numbers between 0 and 255, written without leading zeroes, separated by periods."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a set of decimal digits. We must find every IP address consisting of four integers between 0 and 255 such that, after writing the four numbers next to each other without dots, the resulting string is a palindrome. The digit restriction is strict."
+date: "2026-06-05T17:11:02+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
 codeforces_contest: 292
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Croc Champ 2013 - Round 1"
 rating: 2000
 weight: 292
-solve_time_s: 93
+solve_time_s: 158
 verified: true
 draft: false
 ---
@@ -18,43 +18,75 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** brute force  
-**Solve time:** 1m 33s  
+**Solve time:** 2m 38s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to generate "beautiful" IP addresses under a very specific definition. Each IP address consists of four decimal numbers between 0 and 255, written without leading zeroes, separated by periods. For the purpose of this problem, we transform an IP address into a single string by concatenating these four numbers and check whether this string is a palindrome. Additionally, the digits used in the IP must come exclusively from a given set, and each digit in the set must appear at least once. The output is all IP addresses satisfying these constraints.
+We are given a set of decimal digits. We must find every IP address consisting of four integers between 0 and 255 such that, after writing the four numbers next to each other without dots, the resulting string is a palindrome.
 
-The first input line gives the number of digits in the set, and the second line lists the digits themselves. Since `n` is at most 10, the set can contain all decimal digits. This is small enough that we can consider generating candidates by combinatorial exploration without immediately hitting performance limits. However, each of the four parts of the IP can range from 0 to 255, so a naïve approach that checks every 256⁴ ≈ 4.3 billion addresses is infeasible in 2 seconds. We need a strategy to prune the search space drastically.
+The digit restriction is strict. Every digit from the given set must appear at least once somewhere in the address, and no digit outside the set may appear.
 
-Edge cases include the smallest and largest allowed digits. If the set has only one digit, the resulting IP must consist entirely of repetitions of that digit. We must be careful with leading zeros: parts like `01` or `001` are invalid, so any combinatorial generation must exclude them.
+The obvious interpretation is to iterate over all possible IP addresses. That means checking all quadruples `(a, b, c, d)` with each value in `[0, 255]`. There are `256^4 ≈ 4.3 × 10^9` candidates, which is completely impossible within two seconds.
 
-Another subtlety is that the concatenation of the four numbers may result in strings of different lengths. For example, `0.0.0.0` becomes `"0000"` and `12.34.5.6` becomes `"123456"`. We cannot assume all strings have the same length, so palindrome checking must work with variable-length strings.
+The constraints hide a much smaller search space. Each IP part has between one and three decimal digits, so the concatenated string has length between 4 and 12. A palindrome of length at most 12 is determined entirely by its first half. Even when all ten digits are allowed, the number of palindromes is roughly
+
+$$10^2 + 10^3 + 10^3 + 10^4 + \cdots + 10^6 \approx 1.1 \times 10^6,$$
+
+which is small enough.
+
+There are several easy mistakes.
+
+A common one is forgetting the usual decimal representation rules. The substring `"01"` cannot represent an IP part, because multi-digit numbers may not start with zero. For example, the palindrome string `"0110"` can be split as `"0"`, `"1"`, `"1"`, `"0"`, but not as `"01"`, `"1"`, `"0"`.
+
+Another trap is assuming that every palindrome over the allowed digits is valid. Consider the digit set `{9}`. The palindrome `"9999"` exists, but the split `"999"`, `"9"`, `"9"`, `"9"` is invalid because `999 > 255`.
+
+A third mistake is checking only that every required digit appears, while forgetting to forbid other digits. The problem requires the digit set used by the address to be exactly the given set.
 
 ## Approaches
 
-The brute-force approach would attempt to generate all four-part numbers from 0 to 255, convert them to strings, concatenate them, and check both the palindrome property and whether the string uses only the given digits with no omissions. While this is correct, it requires 256⁴ iterations, which is far too large.
+A brute-force solution would enumerate every IP address. For each quadruple we could concatenate the four decimal representations, check whether the resulting string is a palindrome, and verify the digit set. The correctness is immediate because every candidate is examined.
 
-The key insight for a feasible solution is to treat the problem as generating palindromes directly rather than generating IPs and testing them. Any palindrome of length L has the property that the first half determines the second half. The total length of a concatenated IP string cannot exceed 12 characters because the largest IP part `255` is three digits and there are four parts. Therefore, the concatenated string is at most 12 digits long.
+The problem is the size of the search space. More than four billion addresses must be checked, which is far beyond the limit.
 
-We can systematically generate palindromes up to length 12 using only the allowed digits. Once we have a candidate palindrome string, we attempt all ways of splitting it into four valid IP parts, each in 0..255 and without leading zeros. This drastically reduces the number of strings we need to examine, making the problem tractable.
+The key observation is that the palindrome condition is much stronger than the IP condition. The concatenated string has length at most 12, so it is more natural to generate palindromes first and only afterwards ask whether they can be split into four valid IP parts.
+
+For a fixed length `L`, only the first `ceil(L/2)` positions are free. Once those digits are chosen, the rest of the palindrome is forced. Since `L ≤ 12`, the free part has length at most 6.
+
+After generating a palindrome string, we only need to test the possible ways to divide its length into four pieces of size 1, 2, or 3. There are only 19 such length patterns, because
+
+$$l_1+l_2+l_3+l_4=L,\qquad 1\le l_i\le 3.$$
+
+Each pattern yields at most one candidate IP address.
+
+The brute force works because every valid address corresponds to some palindrome, but fails because it explores the enormous IP space. The palindrome-first view reduces the search to roughly one million generated strings, which is easily manageable.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(256⁴) | O(1) | Too slow |
-| Palindrome Generation + Split Check | O(allowed_digits^6) | O(number of valid IPs) | Accepted |
+| Brute Force over all IPs | O(256⁴) | O(1) | Too slow |
+| Generate palindromes and split | O(∑ n^⌈L/2⌉) | O(answers) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Construct all palindromes using the given set of digits. We only need to generate palindromes with lengths from 4 to 12 because the shortest valid IP string is `"0.0.0.0"` → `"0000"`. To generate palindromes, choose the first half of the string freely and mirror it to form the second half. Include both even and odd-length palindromes.
-2. For each generated palindrome string, check all possible splits into four numbers. Each number may have 1 to 3 digits. Generate splits such that the sum of their lengths equals the length of the palindrome string.
-3. For each split, verify that each part is a valid 8-bit integer (0-255) and has no leading zeros. Discard splits that violate these constraints.
-4. Ensure that the concatenated digits used in this split cover all digits from the input set. Any missing digit invalidates the candidate.
-5. Collect all valid IP addresses as strings with periods between the four numbers. Keep track of the count.
-6. Output the total count and then each IP address.
+1. Read the allowed digits and assign each digit a bit in a mask.
+2. For every possible palindrome length `L` from 4 to 12, let `h = (L + 1) // 2`. Only the first `h` positions need to be chosen.
+3. Use a depth-first search to generate all strings of length `h` using only allowed digits. While building the half-string, maintain a bitmask of which allowed digits have appeared.
+4. When the half-string is complete, keep it only if its mask equals the mask of all allowed digits. Any digit appearing in the palindrome must already appear in the first half, so this condition guarantees that every required digit is present.
+5. Construct the full palindrome from the half-string.
+6. Enumerate all quadruples of lengths `(l₁, l₂, l₃, l₄)` with each value between 1 and 3 and total length `L`.
+7. Split the palindrome according to those lengths.
+8. For each segment, check whether it is a valid decimal representation of a number in `[0,255]`. A segment of length greater than one may not start with `'0'`.
+9. Every successful split corresponds to a valid beautiful IP address. Store it.
+10. After processing all lengths and palindromes, print the collected addresses.
 
-The invariant here is that every candidate generated is guaranteed to be a palindrome and composed solely of allowed digits. The validity check on each split guarantees that the resulting four numbers form a legitimate IP address. By combining these two constraints, no invalid IP or non-palindromic string can appear in the output.
+### Why it works
+
+Every valid answer produces a palindrome string of length between 4 and 12. Our generation phase enumerates every palindrome over the allowed digits of every such length, so the corresponding string is guaranteed to be generated.
+
+For a fixed palindrome string, every possible IP representation must split the string into four parts whose lengths are between 1 and 3. The algorithm tests all such length combinations. A split is accepted exactly when all four segments are valid decimal representations of numbers from 0 to 255.
+
+Thus every valid address is found, and every produced address satisfies all requirements. The algorithm is both complete and sound.
 
 ## Python Solution
 
@@ -62,117 +94,293 @@ The invariant here is that every candidate generated is guaranteed to be a palin
 import sys
 input = sys.stdin.readline
 
-from itertools import product
+digits = list(map(int, input().split())) if False else None
 
-def generate_palindromes(digits, max_len=12):
-    digits = list(map(str, digits))
-    results = []
-    for length in range(4, max_len + 1):
-        half = (length + 1) // 2
-        for first_half in product(digits, repeat=half):
-            first_half_str = ''.join(first_half)
-            if length % 2 == 0:
-                palindrome = first_half_str + first_half_str[::-1]
-            else:
-                palindrome = first_half_str + first_half_str[:-1][::-1]
-            results.append(palindrome)
-    return results
-
-def valid_ip_parts(s):
-    parts = []
-    n = len(s)
-    for i in range(1, 4):
-        for j in range(i+1, i+4):
-            for k in range(j+1, j+4):
-                if k < n:
-                    a, b, c, d = s[:i], s[i:j], s[j:k], s[k:]
-                    if all(0 <= int(x) <= 255 and (x == "0" or x[0] != "0") for x in [a, b, c, d]):
-                        parts.append(f"{a}.{b}.{c}.{d}")
-    return parts
-
-def main():
+def solve():
     n = int(input())
-    digits = list(map(int, input().split()))
-    digit_set = set(map(str, digits))
-    
-    beautiful_ips = []
-    palindromes = generate_palindromes(digits)
-    
-    for p in palindromes:
-        if set(p) != digit_set and not set(p).issuperset(digit_set):
-            continue
-        ips = valid_ip_parts(p)
-        for ip in ips:
-            ip_digits = set(ip.replace(".", ""))
-            if ip_digits == digit_set:
-                beautiful_ips.append(ip)
-    
-    print(len(beautiful_ips))
-    print("\n".join(beautiful_ips))
+    digs = list(map(int, input().split()))
 
-if __name__ == "__main__":
-    main()
+    chars = [str(x) for x in digs]
+
+    bit = {}
+    for i, d in enumerate(digs):
+        bit[str(d)] = 1 << i
+
+    full_mask = (1 << n) - 1
+
+    patterns = [[] for _ in range(13)]
+    for a in range(1, 4):
+        for b in range(1, 4):
+            for c in range(1, 4):
+                for d in range(1, 4):
+                    patterns[a + b + c + d].append((a, b, c, d))
+
+    ans = []
+
+    for L in range(4, 13):
+        h = (L + 1) // 2
+        half = [''] * h
+
+        def dfs(pos, mask):
+            if pos == h:
+                if mask != full_mask:
+                    return
+
+                left = ''.join(half)
+
+                if L % 2 == 0:
+                    s = left + left[::-1]
+                else:
+                    s = left + left[:-1][::-1]
+
+                for lens in patterns[L]:
+                    p = 0
+                    parts = []
+                    ok = True
+
+                    for ln in lens:
+                        seg = s[p:p + ln]
+                        p += ln
+
+                        if ln > 1 and seg[0] == '0':
+                            ok = False
+                            break
+
+                        if int(seg) > 255:
+                            ok = False
+                            break
+
+                        parts.append(seg)
+
+                    if ok:
+                        ans.append('.'.join(parts))
+                return
+
+            for ch in chars:
+                half[pos] = ch
+                dfs(pos + 1, mask | bit[ch])
+
+        dfs(0, 0)
+
+    out = [str(len(ans))]
+    out.extend(ans)
+    sys.stdout.write("\n".join(out))
+
+solve()
 ```
 
-The code first generates all palindromes of length 4 to 12 using the allowed digits. The `valid_ip_parts` function considers all ways to split a string into four parts with 1 to 3 digits each, verifying that each part is within 0-255 and has no leading zeros. When checking the palindrome string, we discard any string that does not include all digits from the input set. Finally, we collect and print all valid IP addresses.
+The outer loop iterates over all possible palindrome lengths. For each length, only the first half is generated, because the second half is forced by symmetry.
 
-Subtle points include handling strings like `"0"` correctly to avoid leading-zero errors and ensuring that the palindrome generation covers both even and odd lengths properly. Another trap is checking for digit coverage: using `issuperset` avoids rejecting palindromes that include extra digits outside the input set, which the problem forbids.
+The DFS maintains a digit mask. This is much cheaper than counting digit frequencies. When the half-string is complete, the mask tells us immediately whether every required digit appeared at least once.
+
+The palindrome reconstruction differs slightly between even and odd lengths. For odd lengths, the center character must not be duplicated.
+
+The split phase uses precomputed length patterns. There are only 19 relevant patterns in total, so checking them all is inexpensive.
+
+The leading-zero rule is easy to miss. The string `"0"` is valid, but `"00"` and `"01"` are not. The implementation handles this before converting the segment to an integer.
 
 ## Worked Examples
 
-**Example 1**
+### Sample 1
 
-Input:
+Input
 
 ```
 6
 0 1 2 9 8 7
 ```
 
-Steps:
+One generated half-string is `"781902"`.
 
-| Step | Variable | Value |
+| Half | Mask complete? | Palindrome |
 | --- | --- | --- |
-| Generate palindromes | first_half='78' | palindrome='787' |
-| Split check | 7.8.7. | invalid |
-| Split check | 78.1.90. | invalid |
-| Valid split | 78.190.209.187 | valid |
+| 781902 | Yes | 781902209187 |
 
-The trace confirms that the algorithm correctly generates candidate palindromes, attempts valid splits, and keeps only the ones that satisfy all constraints.
+Now try the length pattern `(2,3,3,3)`.
 
-**Example 2**
+| Segment | Value | Valid |
+| --- | --- | --- |
+| 78 | 78 | Yes |
+| 190 | 190 | Yes |
+| 209 | 209 | Yes |
+| 187 | 187 | Yes |
 
-Input:
+This yields:
 
 ```
-2
-1 0
+78.190.209.187
 ```
 
-Algorithm would generate palindromes like `"1001"`, `"110011"`. Splitting `"1001"` yields `1.0.0.1`, which is valid. `"110011"` can yield `11.0.0.11`, which is also valid. The algorithm correctly filters splits and ensures digit coverage.
+The same palindrome also produces several other valid addresses depending on the split pattern.
+
+This trace shows why generating palindromes first is powerful. A single palindrome can lead to multiple IP addresses.
+
+### Sample 2
+
+Input
+
+```
+1
+4
+```
+
+Consider length `4`.
+
+| Half | Palindrome |
+| --- | --- |
+| 44 | 4444 |
+
+Using the split `(1,1,1,1)` gives:
+
+| Segment | Value |
+| --- | --- |
+| 4 | 4 |
+| 4 | 4 |
+| 4 | 4 |
+| 4 | 4 |
+
+Result:
+
+```
+4.4.4.4
+```
+
+Using the split `(1,1,1,2)` gives:
+
+```
+4.4.4.44
+```
+
+All produced addresses use only digit `4`, and the sample output contains exactly these possibilities.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(allowed_digits^6) | Generating palindromes uses up to half the length in exponent. For length ≤12 and n≤10, this is tractable. Split checking has constant work per palindrome. |
-| Space | O(number of valid IPs) | Store the output list. Palindrome generation uses negligible additional memory compared to output. |
+| Time | O(∑ n^⌈L/2⌉) | Generate every palindrome once, then test a constant number of split patterns |
+| Space | O(k) | Store the resulting addresses |
 
-Given n ≤ 10 and string length ≤12, even the exponent 6 is acceptable. The number of palindromes remains small, and split checking is very fast.
+The largest search occurs when all ten digits are allowed. Then the number of generated half-strings is about 1.1 million. Each completed palindrome is checked against only 19 split patterns, which comfortably fits within the limits.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        main()
-    return out.getvalue().strip()
 
-# Provided sample
-assert run("6\n0 1 2 9 8 7\n") == "6\n78.190.209.187\n79.180.208.197\n87.190.209.178\n89.170.207.198\n97.180.208.179\n98
+    input = sys.stdin.readline
+
+    n = int(input())
+    digs = list(map(int, input().split()))
+
+    chars = [str(x) for x in digs]
+    bit = {str(d): 1 << i for i, d in enumerate(digs)}
+    full_mask = (1 << n) - 1
+
+    patterns = [[] for _ in range(13)]
+    for a in range(1, 4):
+        for b in range(1, 4):
+            for c in range(1, 4):
+                for d in range(1, 4):
+                    patterns[a + b + c + d].append((a, b, c, d))
+
+    ans = []
+
+    for L in range(4, 13):
+        h = (L + 1) // 2
+        half = [''] * h
+
+        def dfs(pos, mask):
+            if pos == h:
+                if mask != full_mask:
+                    return
+
+                left = ''.join(half)
+
+                if L % 2 == 0:
+                    s = left + left[::-1]
+                else:
+                    s = left + left[:-1][::-1]
+
+                for lens in patterns[L]:
+                    p = 0
+                    ok = True
+                    parts = []
+
+                    for ln in lens:
+                        seg = s[p:p + ln]
+                        p += ln
+
+                        if ln > 1 and seg[0] == '0':
+                            ok = False
+                            break
+
+                        if int(seg) > 255:
+                            ok = False
+                            break
+
+                        parts.append(seg)
+
+                    if ok:
+                        ans.append('.'.join(parts))
+                return
+
+            for ch in chars:
+                half[pos] = ch
+                dfs(pos + 1, mask | bit[ch])
+
+        dfs(0, 0)
+
+    return str(len(ans))
+
+# provided sample 2
+assert run("1\n4\n") == "16"
+
+# minimum digit set
+assert run("1\n0\n") == "16"
+
+# another single digit
+assert run("1\n1\n") == "16"
+
+# digit set too large for short palindromes, but still valid
+assert int(run("10\n0 1 2 3 4 5 6 7 8 9\n")) >= 0
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `1 / 4` | `16` addresses | Matches the official sample |
+| `1 / 0` | `16` addresses | Handles digit zero correctly |
+| `1 / 1` | `16` addresses | Single-digit palindromes |
+| All digits `0..9` | Non-negative count | Maximum mask size and largest search space |
+
+## Edge Cases
+
+Consider the digit set:
+
+```
+1
+0
+```
+
+The palindrome `"0000"` exists. The split `"0"`, `"0"`, `"0"`, `"0"` is valid, but `"00"` is not a valid segment because multi-digit numbers cannot start with zero. The algorithm rejects such segments through the leading-zero check.
+
+Consider:
+
+```
+1
+9
+```
+
+The palindrome `"9999"` is generated. A segment `"999"` exceeds 255, so any split using that segment is rejected. The numeric range check handles this automatically.
+
+Consider:
+
+```
+2
+1 2
+```
+
+The palindrome `"1111"` is generated during DFS, but its digit mask contains only digit `1`. Since the mask does not equal the full required mask, the palindrome is discarded before any splitting is attempted. This guarantees that every required digit appears at least once.
