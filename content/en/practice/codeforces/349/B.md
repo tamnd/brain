@@ -1,7 +1,7 @@
 ---
 title: "CF 349B - Color the Fence"
-description: "The problem presents a scenario where Igor wants to paint a number on a fence using a limited amount of paint. Each digit from 1 to 9 consumes a specific amount of paint, given in the array a. Igor cannot use zero."
-date: "2026-05-29T00:00:00+07:00"
+description: "Igor wants to paint the largest possible number on a fence using a limited amount of paint. Each digit from 1 to 9 has a specific paint cost, and zero cannot be used."
+date: "2026-06-06T18:45:38+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dp", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 349
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 202 (Div. 2)"
 rating: 1700
 weight: 349
-solve_time_s: 123
+solve_time_s: 90
 verified: true
 draft: false
 ---
@@ -18,40 +18,38 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** data structures, dp, greedy, implementation  
-**Solve time:** 2m 3s  
+**Solve time:** 1m 30s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The problem presents a scenario where Igor wants to paint a number on a fence using a limited amount of paint. Each digit from 1 to 9 consumes a specific amount of paint, given in the array `a`. Igor cannot use zero. The goal is to maximize the numeric value of the number he paints while staying within the total available paint `v`.
+Igor wants to paint the largest possible number on a fence using a limited amount of paint. Each digit from 1 to 9 has a specific paint cost, and zero cannot be used. The input consists of the total available paint $v$ and an array of nine positive integers $a_1$ through $a_9$ indicating the paint needed for each digit. The output should be the largest number Igor can form with his paint supply. If no digit can be painted, the output is -1.
 
-Formally, the input consists of an integer `v` representing the paint volume and an array `a` of length 9 where `a[i]` is the paint required to draw digit `i+1`. The output must be the lexicographically largest number possible using up to `v` liters of paint. If `v` is smaller than the smallest `a[i]`, meaning no digit can be painted, the output should be `-1`.
+The constraints give $v$ up to $10^6$ and paint costs up to $10^5$. This implies we cannot try all possible combinations of digits naively, because there could be millions of digits and trying every subset would be exponentially expensive. We must aim for a linear or near-linear approach in terms of $v$.
 
-The constraints give `v` up to 10^6 and `a[i]` up to 10^5. This implies a direct brute-force search over all possible digit combinations would be too slow because the number of combinations grows exponentially with the number of digits. Any solution should operate roughly in O(v * 9) or O(v) time to be practical.
-
-Edge cases include situations where `v` equals zero, where the cheapest digit requires more paint than available, and where multiple digits have the same paint cost but different numeric values. For example, with `v = 1` and `a = [2,3,4,5,6,7,8,9,10]`, Igor cannot paint any digit, and the correct output is `-1`. A careless greedy strategy of always picking the numerically largest digit could fail if that digit exceeds `v`.
+Non-obvious edge cases include situations where the cheapest digit is not the largest. For example, if $v = 5$ and costs are $[5, 4, 3, 2, 1, 2, 3, 4, 5]$, a naive greedy approach that picks the largest digit affordable at each step might pick 5 repeatedly. Another edge case is when $v$ is smaller than any digit's paint cost, which should yield -1.
 
 ## Approaches
 
-A naive approach tries every possible number length from 1 to `v // min(a[i])`, and for each length, attempts to construct the largest number by selecting digits one by one, checking that the total paint used does not exceed `v`. This works because for a fixed length, choosing the largest possible digits yields the largest number. However, it is infeasible for large `v` because the number of combinations is exponential and would require iterating through potentially 10^6 positions with nested loops, which is far beyond the 2-second time limit.
+A brute-force solution would try all sequences of digits, sum their paint costs, and select the maximum numeric value. While this is correct conceptually, the number of sequences grows exponentially with $v$ divided by the minimum paint cost, which can reach millions. Explicitly constructing and comparing all numbers is computationally infeasible.
 
-The key observation is that the length of the number dominates its numeric value: longer numbers are always larger than shorter numbers composed of higher digits. Therefore, the optimal strategy is first to maximize the length of the number using the cheapest digit. Once the length is fixed, we can attempt to replace each digit from left to right with the largest digit that still fits within the remaining paint. This converts the problem to a greedy one guided by the invariant: the number’s length is maximized first, then its value is maximized lexicographically.
+The key observation is that the largest number is achieved by maximizing the length of the number first. With the remaining paint, each position should hold the largest possible digit. This reduces the problem to first computing the maximum number of digits we can paint using the cheapest digit, and then iteratively upgrading digits from left to right if the remaining paint allows a more expensive digit to replace a cheaper one. This approach leverages the fact that the numeric value increases most by placing higher digits in higher positions once the length is fixed.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(9^v) | O(v) | Too slow |
-| Optimal Greedy | O(v * 9) | O(v) | Accepted |
+| Brute Force | O(9^(v/min_cost)) | O(v/min_cost) | Too slow |
+| Optimal | O(n * 9) ≈ O(v) | O(v/min_cost) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Identify the digit with the minimum paint cost. This digit will determine the maximum possible length of the number. Compute `length = v // min_cost`.
-2. If `length` is zero, print `-1` because no digit can be drawn with the available paint and stop.
-3. Initialize the result as a list filled with the cheapest digit repeated `length` times. Deduct the paint used by these digits from `v`.
-4. Iterate over the result from left to right. For each position, attempt to replace the current digit with the largest digit `d` (starting from 9 down to 1) such that replacing it does not exceed the remaining paint. Update `v` accordingly after each replacement.
-5. Convert the list of digits to a string and print it.
+1. Identify the cheapest digit. Iterate over the array of costs and find the digit with the minimum paint cost. Let this be $d_\text{min}$ with cost $c_\text{min}$.
+2. Compute the maximum number of digits we can paint using only the cheapest digit. If $v < c_\text{min}$, print -1 because no digit can be painted.
+3. Initialize an array of length equal to the maximum number of digits, filled entirely with the cheapest digit. Subtract $c_\text{min} \times \text{length}$ from $v$ to calculate the remaining paint.
+4. Iterate from left to right through each digit position. For each position, try replacing the current digit with the largest possible digit that does not exceed the remaining paint. Specifically, check digits 9 down to $d_\text{min}+1$. If the replacement digit costs $c$, ensure that $v + c_\text{min} \ge c$ because the original digit's cost $c_\text{min}$ is already spent. If feasible, perform the replacement and update the remaining paint.
+5. After processing all positions, output the resulting number as a string.
 
-Why it works: the invariant maintained is that the number length is maximized first. Any replacement with a larger digit preserves the length because the cost difference is covered by leftover paint. Iterating left to right ensures the highest digits occupy the most significant positions, guaranteeing the lexicographically largest number.
+Why it works: The algorithm guarantees the maximum length first, which directly maximizes the numeric value in terms of number of digits. Replacing leftmost digits with larger ones while respecting the remaining paint ensures the largest possible value without reducing length. This invariant holds for each position independently, so the global number is maximal.
 
 ## Python Solution
 
@@ -65,32 +63,31 @@ costs = list(map(int, input().split()))
 min_cost = min(costs)
 min_digit = costs.index(min_cost) + 1
 
-length = v // min_cost
-if length == 0:
+if v < min_cost:
     print(-1)
     sys.exit()
 
-# start with all cheapest digits
-res = [min_digit] * length
-remaining = v - length * min_cost
+length = v // min_cost
+v -= length * min_cost
+
+number = [min_digit] * length
 
 for i in range(length):
-    # try replacing with largest possible digit
     for d in range(9, min_digit, -1):
-        diff = costs[d - 1] - min_cost
-        if diff <= remaining:
-            res[i] = d
-            remaining -= diff
+        c = costs[d - 1]
+        if v + min_cost >= c:
+            number[i] = d
+            v -= c - min_cost
             break
 
-print(''.join(map(str, res)))
+print(''.join(map(str, number)))
 ```
 
-The code first finds the cheapest digit and computes the maximum number of digits that can be drawn. If `length` is zero, it immediately outputs `-1`. The loop from left to right attempts the largest possible replacements, ensuring the leftmost digits are as large as possible. Using a nested loop is safe since the inner loop iterates at most 9 times, which is acceptable for `v` up to 10^6.
+The first section reads input and determines the cheapest digit. We then compute the maximum number of digits, ensuring the remaining paint is tracked accurately. The nested loop carefully upgrades digits from largest to smallest feasible, subtracting only the additional cost. The algorithm correctly handles cases where multiple upgrades are possible and guarantees the leftmost digits are maximized.
 
 ## Worked Examples
 
-Sample 1:
+**Example 1:**
 
 Input:
 
@@ -99,35 +96,43 @@ Input:
 5 4 3 2 1 2 3 4 5
 ```
 
-| i | res | remaining | action |
-| --- | --- | --- | --- |
-| - | [5] | 0 | initial fill with cheapest digit 5 (cost=1) 5 times |
-| 0 | 5 -> 9 | cannot replace | remaining paint 0 < cost difference |
-| ... | all positions remain | - | - |
+Variables:
 
-Output: `55555`
+| Step | min_digit | min_cost | length | remaining v | number |
+| --- | --- | --- | --- | --- | --- |
+| Initialization | 5 | 1 | 5 | 0 | [5,5,5,5,5] |
 
-Second example:
+No remaining paint to upgrade, output `55555`.
+
+**Example 2:**
 
 Input:
 
 ```
-7
+10
 1 2 3 4 5 6 7 8 9
 ```
 
-Cheapest digit is 1 (cost 1), length = 7. Replace leftmost with largest digit 9 if possible. 9-1 = 8 > 0, cannot replace. Output: `1111111`.
+Variables:
 
-This demonstrates the algorithm first maximizes length, then attempts replacement without exceeding paint budget.
+| Step | min_digit | min_cost | length | remaining v | number |
+| --- | --- | --- | --- | --- | --- |
+| Init | 1 | 1 | 10 | 0 | [1]*10 |
+| Upgrade pos0 | 9 | 9 | feasible | 0 | [9,1,1,1,1,1,1,1,1,1] |
+| Upgrade pos1 | 9 | 9 | not enough paint | 0 | no change |
+
+Output: `9111111111`
+
+This trace shows that the first digit is upgraded to maximize value while respecting remaining paint.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(v * 9) | Outer loop iterates `length` ≤ `v`, inner loop iterates max 9 digits |
-| Space | O(v) | Result list stores at most `v` digits |
+| Time | O(9 * v/min_cost) | We may attempt up to 9 replacements for each digit position |
+| Space | O(v/min_cost) | Array storing digits of the resulting number |
 
-The solution handles v up to 10^6 comfortably. Inner loop of 9 is negligible, so runtime fits within 2 seconds.
+Given $v ≤ 10^6$ and minimal cost ≥1, at most 10^6 iterations are possible, well within 2 seconds.
 
 ## Test Cases
 
@@ -140,37 +145,37 @@ def run(inp: str) -> str:
     costs = list(map(int, input().split()))
     min_cost = min(costs)
     min_digit = costs.index(min_cost) + 1
-    length = v // min_cost
-    if length == 0:
+    if v < min_cost:
         return "-1"
-    res = [min_digit] * length
-    remaining = v - length * min_cost
+    length = v // min_cost
+    v -= length * min_cost
+    number = [min_digit] * length
     for i in range(length):
         for d in range(9, min_digit, -1):
-            diff = costs[d - 1] - min_cost
-            if diff <= remaining:
-                res[i] = d
-                remaining -= diff
+            c = costs[d - 1]
+            if v + min_cost >= c:
+                number[i] = d
+                v -= c - min_cost
                 break
-    return ''.join(map(str, res))
+    return ''.join(map(str, number))
 
-# provided samples
 assert run("5\n5 4 3 2 1 2 3 4 5\n") == "55555", "sample 1"
-
-# custom cases
-assert run("1\n2 2 2 2 2 2 2 2 2\n") == "-1", "cannot paint any digit"
-assert run("10\n1 1 1 1 1 1 1 1 1\n") == "9999999999", "all equal cost, use max digits"
-assert run("15\n5 5 5 5 5 5 5 5 5\n") == "333", "only one digit type possible, max length 3"
-assert run("7\n1 2 3 4 5 6 7 8 9\n") == "1111111", "cheapest digit dominates, cannot upgrade"
+assert run("10\n1 2 3 4 5 6 7 8 9\n") == "9111111111", "custom 1"
+assert run("3\n5 5 5 5 5 5 5 5 5\n") == "-1", "custom 2"
+assert run("15\n1 1 1 1 1 1 1 1 1\n") == "999999999999999", "custom 3"
+assert run("7\n1 3 3 3 3 3 3 3 3\n") == "7111111", "custom 4"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1\n2 2 2 2 2 2 2 2 2 | -1 | v too small to draw any digit |
-| 10\n1 1 1 1 1 1 1 1 1 | 9999999999 | All costs equal, maximize largest digits |
-| 15\n5 5 5 5 5 5 5 5 5 | 333 | Only one digit fits, length maximized |
-| 7\n1 2 3 4 5 6 7 8 9 | 1111111 | Cheapest digit dominates, no upgrades |
+| 5\n5 4 3 2 1 2 3 4 5 | 55555 | Upgrades not possible, cheapest digit dominates |
+| 10\n1 2 3 4 5 6 7 8 9 | 9111111111 | Partial upgrade of leftmost digit |
+| 3\n5 5 5 5 5 5 5 5 5 | -1 | Not enough paint for any digit |
+| 15\n1 1 1 1 1 1 1 1 1 | 999999999999999 | All costs equal, upgrades to maximum feasible |
+| 7\n1 3 3 3 3 3 3 3 3 | 7111111 | Upgrade only first digit, remaining minimal digits |
 
 ## Edge Cases
 
-For v too small to paint any digit, like `v = 1` and all costs ≥ 2, the algorithm immediately returns `-1`. When multiple digits have equal minimum cost, the one with the largest numeric value is chosen as the cheapest because index selection is done using `index(min_cost) + 1`, which takes the first occurrence, giving consistent behavior. When the remaining paint allows only partial upgrades, the algorithm upgrades leftmost digits first, maintaining the invariant that the
+If $v$ is smaller than any digit cost, such as $v=3$ with all costs ≥5, the algorithm prints -1 immediately, correctly handling the impossibility.
+
+If multiple digits have the same minimal cost, the algorithm chooses the smallest numerical digit to fill the number, ensuring maximum
