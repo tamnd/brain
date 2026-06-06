@@ -1,6 +1,6 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1228 solved, 0 verified)."
+description: "Kvant mathematics problem solutions (1230 solved, 0 verified)."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (1228 solved, 0 verified).
+Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (1230 solved, 0 verified).
 
 | # | Status | Time |
 |---|--------|------|
@@ -561,6 +561,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [653](653.md) | solved | 5m06s |
 | [654](654.md) | solved | 7m45s |
 | [655](655.md) | solved | 4m59s |
+| [656](656.md) | solved | 7m02s |
 | [657](657.md) | solved | 5m26s |
 | [658](658.md) | solved | 7m26s |
 | [660](660.md) | solved | 8m22s |
@@ -569,6 +570,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [664](664.md) | solved | 4m04s |
 | [665](665.md) | solved | 3m21s |
 | [667](667.md) | solved | 7m48s |
+| [668](668.md) | solved | 4m45s |
 | [669](669.md) | solved | 4m21s |
 | [670](670.md) | solved | 10m14s |
 | [671](671.md) | solved | 6m20s |
