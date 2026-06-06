@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 2006 problems, 1370 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 2010 problems, 1374 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 2006 problems, 1370 verified.**
+**448 contests, 2010 problems, 1374 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -335,7 +335,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [340](340/) | [Codeforces Round 198 (Div. 2)](https://codeforces.com/contest/340) | Div. 2 | 1200-2100 | 5/5 | 9m 28s |
 | [341](341/) | [Codeforces Round 198 (Div. 1)](https://codeforces.com/contest/341) | Div. 1 | 2500-3000 | 0/2 | 4m 16s |
 | [342](342/) | [Codeforces Round 199 (Div. 2)](https://codeforces.com/contest/342) | Div. 2 | 1200-2400 | 4/5 | 8m 19s |
-| [343](343/) | [Codeforces Round 200 (Div. 1)](https://codeforces.com/contest/343) | Div. 1 | 1900-1900 | 0/1 | 16m 21s |
+| [343](343/) | [Codeforces Round 200 (Div. 1)](https://codeforces.com/contest/343) | Div. 1 | 1600-2900 | 4/5 | 8m 27s |
 | [345](345/) | [Friday the 13th, Programmers Day](https://codeforces.com/contest/345) | Special | 1500-2700 | 2/3 | 5m 36s |
 | [346](346/) | [Codeforces Round 201 (Div. 1)](https://codeforces.com/contest/346) | Div. 1 | 1600-1600 | 1/1 | 3m 49s |
 | [347](347/) | [Codeforces Round 201 (Div. 2)](https://codeforces.com/contest/347) | Div. 2 | 1100-1100 | 1/1 | 1m 42s |

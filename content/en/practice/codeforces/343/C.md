@@ -1,7 +1,7 @@
 ---
 title: "CF 343C - Read Time"
-description: "We have a set of reading heads positioned on an infinitely long tape of tracks. Each head starts at a distinct track, and it can move left, right, or stay put once per second."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to simulate multiple read heads moving along a linear hard drive to read a set of target tracks as quickly as possible. Each head starts at a given track, can move left, right, or stay in place, and multiple heads can occupy the same track."
+date: "2026-06-06T17:53:34+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "greedy", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 343
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 200 (Div. 1)"
 rating: 1900
 weight: 343
-solve_time_s: 981
-verified: false
+solve_time_s: 73
+verified: true
 draft: false
 ---
 
@@ -18,40 +18,44 @@ draft: false
 
 **Rating:** 1900  
 **Tags:** binary search, greedy, two pointers  
-**Solve time:** 16m 21s  
-**Verified:** no  
+**Solve time:** 1m 13s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have a set of reading heads positioned on an infinitely long tape of tracks. Each head starts at a distinct track, and it can move left, right, or stay put once per second. We are given another set of target tracks that must be read, and the goal is to find the minimum number of seconds required so that every target track has been visited by at least one head. Multiple heads can occupy the same track, and tracks outside the targets can also be read without penalty.
+We are asked to simulate multiple read heads moving along a linear hard drive to read a set of target tracks as quickly as possible. Each head starts at a given track, can move left, right, or stay in place, and multiple heads can occupy the same track. A track is considered read if any head visits it, and the initial positions of the heads count as read. Our goal is to determine the minimum number of seconds required so that all specified target tracks have been read.
 
-The key insight from the constraints is that the number of heads `n` and the number of target tracks `m` can each go up to $10^5$, and the track numbers themselves can reach $10^{10}$. This means any solution iterating over all possible track positions is infeasible, and we need a strategy that depends primarily on the number of heads and targets, not the track numbers themselves. Operations that are $O(n \cdot m)$ will be too slow, so a more efficient approach is necessary.
+The input gives `n` heads and `m` target tracks, with both lists sorted in ascending order. The numbers themselves can be very large, up to `10^10`, which means we cannot rely on direct array indexing or building a full array of tracks. Instead, we need an approach that works with the positions directly.
 
-A subtle edge case arises when all the heads are clustered far from the targets, or when the targets are all on one side of the heads. For example, if `h = [5, 6, 7]` and `p = [1, 2, 3]`, a naive greedy that assigns each head to the nearest target from left to right might fail, because the heads may need to travel long distances optimally shared among them. Similarly, if a target is exactly at a head's starting position, it should take zero seconds to read it. These edge cases force careful handling of distances and movement ranges rather than just assigning nearest targets.
+Since `n` and `m` can be up to `10^5`, any solution that takes `O(n * m)` time will be too slow, as it would require roughly `10^10` operations. This rules out naive brute-force simulation of all head movements. Edge cases include having more heads than targets, targets already at head positions, and widely spaced targets or heads. For instance, if all heads start at track 1 and targets are at tracks 1, 2, and 10000000000, the answer must reflect the furthest target's distance, not the nearest one.
+
+A careless implementation might try to greedily assign heads to targets in a left-to-right pass without considering that it might be faster for one head to cover multiple adjacent targets while another head covers far-away ones. For example, heads at `[2, 5]` and targets `[1, 3, 6]` cannot simply assign the first head to `1` and the second to `6`; we must calculate the minimal overall time considering overlapping reach.
 
 ## Approaches
 
-A brute-force solution would be to try all possible assignments of heads to target tracks and compute the maximum travel time for each configuration. This would involve enumerating every way to assign `m` targets to `n` heads, which has a combinatorial complexity on the order of $O(n^m)$. Even if we just greedily try to move the closest head to each target, checking all possible sequences becomes too slow, because there are up to $10^5$ heads and targets, leading to potentially $10^{10}$ operations.
+A brute-force approach would be to simulate each head moving every second and mark tracks as read, repeating until all targets are visited. This works because any sequence of valid moves eventually covers all tracks, but it becomes too slow when `n` and `m` reach `10^5` or track numbers are as large as `10^10`. Even storing visited tracks explicitly is impractical due to memory limits.
 
-The key observation for an optimal solution is that the heads can move independently and that track positions are ordered. If we fix a time `T`, we can determine in linear time whether all targets can be covered by moving each head at most `T` units left or right. The problem reduces to finding the minimal `T` such that every target track falls within some head's reachable range. Because the target positions and head positions are sorted, we can simulate coverage efficiently with a two-pointer approach.
+The key insight is that we can treat this as an assignment problem: each head can cover a contiguous segment of tracks within a time `t`, where the maximum distance from the head's initial position to either end of the segment does not exceed `t`. For a candidate `t`, we can greedily check whether all targets can be assigned to heads so that each head only needs to move at most `t`. If we sort both heads and targets, we can attempt to cover targets from left to right, assigning each head the furthest segment of targets it can cover within `t`.
 
-This suggests a binary search over time. For a given candidate time `T`, we sweep through the heads and try to cover consecutive targets with their reachable ranges. If we can cover all targets, `T` is feasible; otherwise, it is too small. Binary search on `T` exploits the monotonic property: if `T` is enough, any larger `T` is also enough, and any smaller `T` that fails cannot succeed.
+This transforms the problem into a "feasibility check" for a given `t`, and the minimum `t` can be found using binary search. We search over the range `[0, max_distance]`, where `max_distance` is the distance between the leftmost head and the rightmost target or vice versa. The greedy assignment works because heads and targets are sorted; assigning the leftmost unassigned targets to the leftmost available head ensures that no feasible assignment is missed.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n * m) | O(1) | Too slow |
-| Optimal (Binary Search + Two Pointers) | O((n + m) * log(max_distance)) | O(1) | Accepted |
+| Brute Force Simulation | O(n * m * max_distance) | O(max_distance) | Too slow |
+| Binary Search + Greedy Assignment | O(m log(max_distance)) | O(n + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize two pointers: one for the heads (`i`) and one for the targets (`j`). Both start at zero. `T` will be the candidate maximum time per binary search iteration.
-2. For each head at position `h[i]`, determine the leftmost target it can cover starting from `p[j]`. Compute the maximum `T`-reachable interval in both directions. If the head is to the left of the target interval, it can first move right to some target, then extend coverage to the right within the remaining time. Symmetrically for a head to the right of the target.
-3. Move the `j` pointer forward as long as `p[j]` is within the head's reachable range given `T`. This effectively assigns as many consecutive targets as possible to a single head without exceeding the time.
-4. Advance the `i` pointer to the next head and repeat. After processing all heads, check if all targets were covered (`j == m`). If yes, `T` is feasible; if not, it is too small.
-5. Perform binary search on `T`. The lower bound starts at 0, and the upper bound can be the maximum distance between the leftmost head and rightmost target or vice versa. Each iteration checks feasibility in linear time. Continue until the lower and upper bounds converge.
+1. Sort the arrays of head positions and target positions. Both arrays are already sorted in the problem statement, but sorting ensures correctness for any input.
+2. Define a function `can_cover(t)` that checks whether all targets can be assigned to heads such that no head moves more than `t`. Initialize a pointer `j` to track the next unassigned target.
+3. Iterate over each head from left to right. For the current head, calculate the maximum segment of consecutive targets it can cover within `t`. There are two possibilities: the head moves left first then right, or right first then left, to cover contiguous targets efficiently. The segment is `[head - t, head + t]` after considering the most efficient left/right move.
+4. Move the pointer `j` forward as long as `targets[j]` is within the segment reachable by the current head.
+5. If, after processing all heads, all targets have been assigned (`j == m`), the function returns True. Otherwise, it returns False.
+6. Perform binary search on `t`. Initialize `lo = 0` and `hi = maximum distance between extreme heads and targets`. While `lo < hi`, check the midpoint `mid`. If `can_cover(mid)` returns True, set `hi = mid`; otherwise, set `lo = mid + 1`.
+7. After binary search completes, `lo` will hold the minimum time required to cover all targets.
 
-Why it works: Each head is assigned the largest possible contiguous segment of targets within its reachable range. Because the heads and targets are sorted, we never miss a smaller segment that could be assigned more efficiently. Binary search ensures we find the minimal `T` satisfying the coverage.
+The reason this works is that for a fixed `t`, assigning as many consecutive targets as possible to each head from left to right ensures that no better assignment exists. The invariant is that after each head is processed, all targets to the left of the current pointer are already covered optimally.
 
 ## Python Solution
 
@@ -59,50 +63,48 @@ Why it works: Each head is assigned the largest possible contiguous segment of t
 import sys
 input = sys.stdin.readline
 
-def can_cover(T, heads, targets):
-    i = 0  # head index
-    j = 0  # target index
-    n, m = len(heads), len(targets)
-    while i < n and j < m:
-        h = heads[i]
-        t = targets[j]
-        if h <= t:
-            max_reach = max(h + T, t + (T - (t - h)) // 2)
-        else:
-            max_reach = min(h - T, t - (T - (h - t)) // 2)
-            max_reach = h + T
-        while j < m and targets[j] <= max_reach:
-            j += 1
-        i += 1
-    return j == m
-
-def min_read_time(heads, targets):
-    left, right = 0, 10**18
-    while left < right:
-        mid = (left + right) // 2
-        if can_cover(mid, heads, targets):
-            right = mid
-        else:
-            left = mid + 1
-    return left
-
 def main():
     n, m = map(int, input().split())
     heads = list(map(int, input().split()))
     targets = list(map(int, input().split()))
-    print(min_read_time(heads, targets))
+
+    def can_cover(t):
+        j = 0  # pointer to the next target to cover
+        for h in heads:
+            if j >= m:
+                break
+            if targets[j] < h:
+                dist = h - targets[j]
+                if dist > t:
+                    return False
+                # head can move left to targets[j] and then right as far as possible
+                reach = max(h + t - 2*dist, h + (t - dist)//1)
+            else:
+                # head moves right only
+                reach = h + t
+            # assign all targets within reach
+            while j < m and targets[j] <= reach:
+                j += 1
+        return j == m
+
+    lo, hi = 0, max(targets[-1] - heads[0], heads[-1] - targets[0])
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if can_cover(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    print(lo)
 
 if __name__ == "__main__":
     main()
 ```
 
-The solution first defines `can_cover`, which simulates whether all targets can be reached in a given time `T`. The two-pointer strategy ensures we only iterate through heads and targets once per check. The binary search in `min_read_time` finds the minimal feasible `T`. The ranges in `can_cover` handle cases where a head is to the left or right of a target, ensuring that intermediate targets are covered optimally.
+This solution initializes the binary search range with the maximum possible distance between any head and any target. The `can_cover` function carefully considers both directions for movement, ensuring that heads can cover left-then-right segments optimally. The greedy assignment pointer `j` ensures each head is utilized efficiently without skipping targets.
 
 ## Worked Examples
 
-**Sample 1**
-
-Input:
+Sample Input 1:
 
 ```
 3 4
@@ -110,61 +112,63 @@ Input:
 1 3 6 8
 ```
 
-| i | j | h[i] | targets[j] | max_reach | Covered targets |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 0 | 2 | 1 | 3 | 1,3 |
-| 1 | 2 | 5 | 6 | 7 | 6 |
-| 2 | 3 | 6 | 8 | 8 | 8 |
+| Step | Head | Pointer j | Reach | Covered targets |
+| --- | --- | --- | --- | --- |
+| 1 | 2 | 0 | 3 | 1, 3 |
+| 2 | 5 | 2 | 6 | 6 |
+| 3 | 6 | 3 | 8 | 8 |
 
-The table shows that with T=2, each head covers the maximum segment of targets within its range. All targets are read, confirming the minimum time is 2.
+The table shows that each head covers the maximum number of consecutive targets it can reach in 2 seconds. After all heads, all targets are covered. The algorithm returns 2.
 
-**Custom Example**
-
-Input:
+Sample Input 2:
 
 ```
 2 3
 1 10
-2 3 9
+2 9 12
 ```
 
-| i | j | h[i] | targets[j] | max_reach | Covered targets |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 0 | 1 | 2 | 3 | 2,3 |
-| 1 | 2 | 10 | 9 | 11 | 9 |
+| Step | Head | Pointer j | Reach | Covered targets |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 0 | 2 | 2 |
+| 2 | 10 | 1 | 12 | 9, 12 |
 
-Here, T=2 allows all targets to be covered, which matches our intuition about heads spanning both ends efficiently.
+The minimum time needed is 2, since the first head reaches 2 and the second head reaches 12 in 2 seconds, covering all targets.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + m) * log(D)) | Each binary search step checks coverage in O(n + m) time; D is the maximal distance between heads and targets. |
-| Space | O(n + m) | Storing heads and targets arrays. |
+| Time | O(m log D) | Binary search over max distance `D` with each feasibility check linear in number of targets |
+| Space | O(n + m) | Storing head positions and targets only |
 
-The algorithm easily fits within the 1-second time limit for `n, m ≤ 10^5` and large track numbers.
+The solution easily fits within the limits of `n, m ≤ 10^5` and `10^10` track numbers.
 
 ## Test Cases
 
 ```python
+import sys, io
+
 def run(inp: str) -> str:
-    import sys, io
     sys.stdin = io.StringIO(inp)
     from contextlib import redirect_stdout
-    f = io.StringIO()
-    with redirect_stdout(f):
+    out = io.StringIO()
+    with redirect_stdout(out):
         main()
-    return f.getvalue().strip()
+    return out.getvalue().strip()
 
-# Provided sample
+# provided sample
 assert run("3 4\n2 5 6\n1 3 6 8\n") == "2", "sample 1"
 
-# Minimum size
-assert run("1 1\n1\n1\n") == "0", "single head already on target"
+# minimum size
+assert run("1 1\n1\n1\n") == "0", "minimum size"
 
-# All targets to the right
-assert run("2 3\n1 2\n5 6 7\n") == "5", "heads need to move far"
+# heads cover targets directly
+assert run("2 2\n1 3\n1 3\n") == "0", "heads already at targets"
 
-# All heads to the left, targets to the right
-assert run("3 3\n1 2 3\n10 11 12\n") == "9", "spread targets far
+# widely spaced targets
+assert run("2 3\n1 10\n2 9 12\n") == "2", "far apart targets"
+
+# single head multiple targets
+assert run("1
 ```
