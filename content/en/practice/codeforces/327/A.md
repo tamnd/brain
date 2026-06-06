@@ -1,7 +1,7 @@
 ---
 title: "CF 327A - Flipping Game"
-description: "We are given a short binary array, where each position is either 0 or 1. We are allowed to choose exactly one contiguous segment and invert every value inside it, turning 0 into 1 and 1 into 0."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a binary array, every element is either 0 or 1. We must choose exactly one contiguous segment and flip every value inside it. A flip changes 0 to 1 and 1 to 0. After performing this single operation, we want the resulting array to contain as many ones as possible."
+date: "2026-06-06T08:55:11+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 327
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 191 (Div. 2)"
 rating: 1200
 weight: 327
-solve_time_s: 243
+solve_time_s: 83
 verified: true
 draft: false
 ---
@@ -18,50 +18,119 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** brute force, dp, implementation  
-**Solve time:** 4m 3s  
+**Solve time:** 1m 23s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a short binary array, where each position is either 0 or 1. We are allowed to choose exactly one contiguous segment and invert every value inside it, turning 0 into 1 and 1 into 0. After performing this single operation, we want the resulting array to contain as many 1s as possible.
+We are given a binary array, every element is either `0` or `1`. We must choose exactly one contiguous segment and flip every value inside it. A flip changes `0` to `1` and `1` to `0`.
 
-The key difficulty is that flipping a segment has two effects at the same time. Every 0 inside the chosen segment becomes beneficial because it turns into a 1, while every 1 inside the segment becomes a loss because it turns into 0. So the quality of a segment is determined not by its raw content, but by how many more zeros than ones it contains.
+After performing this single operation, we want the resulting array to contain as many ones as possible. The task is to compute that maximum number.
 
-The input size is very small, with at most 100 elements. This immediately allows quadratic enumeration strategies, but also leaves room for a clean reduction to a classical optimization problem.
+The array length is at most 100, which is very small. Even an $O(n^3)$ solution would perform only about one million operations, which easily fits within the time limit. This means we do not need sophisticated data structures. Still, there is a cleaner way to think about the problem that reduces it to a classic maximum-subarray computation.
 
-A subtle edge case appears when the array is all ones. Any flip will necessarily destroy some ones, so the best possible answer is not “no change”, but the result of flipping a segment that minimizes damage. For example, if the array is `[1, 1, 1]`, flipping a single element produces `[1, 0, 1]`, giving two ones, which is the maximum possible under the constraint that we must flip exactly one segment.
+The most easily missed edge case is when the array already consists entirely of ones.
 
-Another important case is when zeros are scattered. For example, `[0, 1, 0]`. A naive strategy that flips all zeros independently is impossible because we must choose a single contiguous segment, so we must reason about grouping.
+Input:
+
+```
+3
+1 1 1
+```
+
+Output:
+
+```
+2
+```
+
+We are required to perform exactly one flip. Any chosen segment contains at least one `1`, and flipping it decreases the number of ones. A careless solution that allows "do nothing" would incorrectly output `3`.
+
+Another common mistake is counting only the zeros inside the chosen segment.
+
+Input:
+
+```
+5
+1 0 1 0 1
+```
+
+If we flip positions 2 through 4, we gain two new ones from the zeros, but we also lose one existing one. The net improvement is only `+1`. Any approach that ignores the lost ones will overestimate the answer.
+
+A third edge case is a segment of length one.
+
+Input:
+
+```
+1
+0
+```
+
+Output:
+
+```
+1
+```
+
+The only valid move flips the single element. Implementations that accidentally require a segment length greater than one would fail here.
 
 ## Approaches
 
-A brute-force approach is straightforward: try every possible pair of indices `(i, j)` and simulate flipping that segment. For each choice, we compute the resulting number of ones by scanning the entire array again. There are O(n²) possible segments, and each simulation costs O(n), which leads to O(n³) total work. With n up to 100, this is borderline but still acceptable, though it is unnecessary.
+The most direct solution is brute force. We can try every possible segment `[l, r]`, simulate flipping it, count the resulting number of ones, and keep the best answer. There are $O(n^2)$ possible segments, and counting the resulting ones takes $O(n)$ time, giving $O(n^3)$ overall complexity.
 
-The key observation is that we do not actually need to simulate the final array. We only care about how the number of ones changes. Suppose the original number of ones is fixed. When we flip a segment, every 0 contributes +1 to the score, and every 1 contributes −1. This transforms the problem into finding a subarray with maximum sum, where we map 0 → +1 and 1 → −1.
+For $n \le 100$, even this approach is accepted. The interesting part of the problem is recognizing a much cleaner formulation.
 
-So instead of brute-forcing segments, we reduce the task to finding the maximum subarray sum, which can be solved in linear time using Kadane’s algorithm.
+Suppose the original array contains `base` ones.
+
+When we flip a segment:
+
+- Every `0` inside the segment becomes `1`, contributing `+1` to the total number of ones.
+- Every `1` inside the segment becomes `0`, contributing `-1`.
+
+For each position, we can assign a value:
+
+- `+1` if the element is `0`
+- `-1` if the element is `1`
+
+The net change produced by flipping a segment is exactly the sum of these values over that segment.
+
+Now the problem becomes:
+
+> Find the contiguous segment with the maximum possible sum.
+
+That is precisely the maximum subarray problem, which can be solved with Kadane's algorithm in linear time.
+
+The final answer is:
+
+$$\text{base ones} + \text{maximum subarray sum}$$
+
+The all-ones case works automatically. Every transformed value becomes `-1`, so the maximum subarray sum is `-1`, meaning we lose exactly one one by flipping a single element.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n³) | O(1) | Accepted but unnecessary |
-| Kadane Transformation | O(n) | O(1) | Accepted |
+| Brute Force | O(n³) | O(1) | Accepted |
+| Optimal | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We transform the array into gains. Each element becomes +1 if it is 0, and −1 if it is 1.
+1. Count the number of ones in the original array. Call this value `base`.
+2. Transform the array into a gain array.
 
-1. Compute the initial number of ones in the array. This is the baseline result before any flip.
-2. Convert the array into a gain array where flipping a segment corresponds to summing those gains.
-3. Run a maximum subarray sum computation over this gain array.
-4. The best gain represents the best improvement we can achieve by choosing an optimal segment.
-5. Add this gain to the initial number of ones to obtain the final answer.
+If an element is `0`, store `+1` because flipping it increases the number of ones by one.
 
-During the maximum subarray computation, we maintain a running best ending at the current position. If extending the previous segment decreases the sum below starting fresh, we reset. This ensures we always track the most beneficial contiguous segment.
+If an element is `1`, store `-1` because flipping it decreases the number of ones by one.
+3. Run Kadane's algorithm on the gain array to find the maximum subarray sum.
+
+This value represents the largest possible improvement obtainable from a single flip.
+4. Add that maximum gain to `base`.
+5. Output the result.
 
 ### Why it works
 
-Each flip affects the total number of ones in an additive way. A 0 flipped inside the segment increases the count by 1, while a 1 decreases it by 1. This makes the contribution of each index independent and additive over a segment. Any valid segment corresponds exactly to a subarray sum in this transformed representation, and maximizing ones is equivalent to maximizing that sum. Since every possible segment is representable, and every representation corresponds to a valid segment, the optimal subarray directly gives the optimal flip.
+For any chosen segment, every zero inside contributes one additional one after the flip, while every one inside contributes one fewer one after the flip. The net effect of the segment is exactly the sum of the transformed values over that segment.
+
+Every possible flip corresponds to exactly one contiguous subarray in the gain array, and every contiguous subarray corresponds to exactly one valid flip. Maximizing the final number of ones is equivalent to maximizing this gain. Kadane's algorithm finds the maximum subarray sum, so adding that gain to the original number of ones produces the optimal answer.
 
 ## Python Solution
 
@@ -69,28 +138,39 @@ Each flip affects the total number of ones in an additive way. A 0 flipped insid
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-a = list(map(int, input().split()))
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
 
-base = sum(a)
+    base = sum(a)
 
-# transform: 0 -> +1, 1 -> -1
-best = float('-inf')
-cur = 0
+    cur = -10**9
+    best = -10**9
 
-for x in a:
-    val = 1 if x == 0 else -1
-    cur = max(val, cur + val)
-    best = max(best, cur)
+    for x in a:
+        gain = 1 if x == 0 else -1
 
-print(base + best)
+        if cur < 0:
+            cur = gain
+        else:
+            cur += gain
+
+        best = max(best, cur)
+
+    print(base + best)
+
+solve()
 ```
 
-The solution first computes how many ones already exist, since that forms the baseline. It then converts each element into its contribution to improvement if included in the flipped segment. The Kadane update step either extends the current segment or restarts it at the current position, depending on which yields a better sum.
+The first step counts the original number of ones. This is the value we would have before performing any flip.
 
-The final answer is the baseline plus the best achievable improvement.
+The loop then converts each element into its gain contribution without creating a separate array. A zero contributes `+1`, while a one contributes `-1`.
 
-A common mistake is forgetting that we must perform exactly one flip. This is why we do not allow skipping the operation; even in the all-ones case, the best subarray will be negative, correctly reflecting that any flip reduces the number of ones.
+Kadane's algorithm maintains two values. `cur` stores the best subarray sum ending at the current position, and `best` stores the best subarray sum seen anywhere so far.
+
+The initialization is important. We cannot start with zero because the problem requires exactly one flip. Using a standard non-empty-subarray version of Kadane's algorithm guarantees that at least one position is chosen. This is what makes the all-ones case produce the correct answer.
+
+Finally, `base + best` gives the largest achievable number of ones.
 
 ## Worked Examples
 
@@ -103,13 +183,15 @@ Input:
 1 0 0 1 0
 ```
 
-We compute:
+Original ones count:
 
-Base ones = 2
+`base = 2`
 
-Gain array = [-1, +1, +1, -1, +1]
+Gain array:
 
-| i | a[i] | gain | cur | best |
+`[-1, +1, +1, -1, +1]`
+
+| Position | Value | Gain | Current Kadane | Best |
 | --- | --- | --- | --- | --- |
 | 1 | 1 | -1 | -1 | -1 |
 | 2 | 0 | +1 | 1 | 1 |
@@ -117,13 +199,126 @@ Gain array = [-1, +1, +1, -1, +1]
 | 4 | 1 | -1 | 1 | 2 |
 | 5 | 0 | +1 | 2 | 2 |
 
-Best gain = 2
+The maximum gain is `2`.
 
-Final answer = 2 + 2 = 4
+Final answer:
 
-This confirms that the optimal segment is `[2,5]`, producing a strong cluster of flipped zeros outweighing the loss from ones inside the interval.
+`base + best = 2 + 2 = 4`
+
+Output:
+
+```
+4
+```
+
+This trace shows that the optimal segment is the one whose gain sum equals `2`. Flipping it increases the number of ones by exactly two.
 
 ### Example 2
+
+Input:
+
+```
+4
+1 1 1 1
+```
+
+Original ones count:
+
+`base = 4`
+
+Gain array:
+
+`[-1, -1, -1, -1]`
+
+| Position | Value | Gain | Current Kadane | Best |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | -1 | -1 | -1 |
+| 2 | 1 | -1 | -1 | -1 |
+| 3 | 1 | -1 | -1 | -1 |
+| 4 | 1 | -1 | -1 | -1 |
+
+Maximum gain is `-1`.
+
+Final answer:
+
+`4 + (-1) = 3`
+
+Output:
+
+```
+3
+```
+
+This demonstrates the requirement that one flip must be performed. Every possible flip decreases the number of ones.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(n) | One pass counts ones and computes Kadane's algorithm |
+| Space | O(1) | Only a few variables are stored |
+
+With $n \le 100$, even cubic solutions would pass. The linear solution is simpler conceptually once the gain transformation is recognized, and it easily fits within all limits.
+
+## Test Cases
+
+```python
+# helper: run solution on input string, return output string
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    base = sum(a)
+
+    cur = -10**9
+    best = -10**9
+
+    for x in a:
+        gain = 1 if x == 0 else -1
+
+        if cur < 0:
+            cur = gain
+        else:
+            cur += gain
+
+        best = max(best, cur)
+
+    return str(base + best)
+
+# provided sample
+assert run("5\n1 0 0 1 0\n") == "4", "sample 1"
+
+# minimum size, single zero
+assert run("1\n0\n") == "1", "single element zero"
+
+# minimum size, single one
+assert run("1\n1\n") == "0", "single element one"
+
+# all ones
+assert run("4\n1 1 1 1\n") == "3", "must flip exactly once"
+
+# all zeros
+assert run("5\n0 0 0 0 0\n") == "5", "flip entire array"
+
+# off-by-one boundary segment
+assert run("5\n0 1 1 1 0\n") == "2", "best segment at an edge"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| `1 / 0` | `1` | Smallest possible array |
+| `1 / 1` | `0` | Exact-one-flip requirement |
+| `1 1 1 1` | `3` | All elements equal to one |
+| `0 0 0 0 0` | `5` | Entire array should be flipped |
+| `0 1 1 1 0` | `2` | Boundary segments and Kadane reset logic |
+
+## Edge Cases
+
+### All Ones
 
 Input:
 
@@ -132,82 +327,89 @@ Input:
 1 1 1
 ```
 
-Base ones = 3
+The gain array becomes:
 
-Gain array = [-1, -1, -1]
-
-| i | gain | cur | best |
-| --- | --- | --- | --- |
-| 1 | -1 | -1 | -1 |
-| 2 | -1 | -1 | -1 |
-| 3 | -1 | -1 | -1 |
-
-Best gain = -1
-
-Final answer = 3 + (-1) = 2
-
-This shows why forcing a flip matters. Even though all elements are already optimal, we must still choose a segment, and the least damaging segment is a single element.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n) | single pass Kadane computation |
-| Space | O(1) | only a few variables are maintained |
-
-The linear scan fits easily within the constraints, and the memory usage is constant, making it optimal for n up to 100.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
-
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    base = sum(a)
-    best = float('-inf')
-    cur = 0
-
-    for x in a:
-        val = 1 if x == 0 else -1
-        cur = max(val, cur + val)
-        best = max(best, cur)
-
-    return str(base + best)
-
-# provided sample
-assert run("5\n1 0 0 1 0\n") == "4"
-
-# all ones
-assert run("3\n1 1 1\n") == "2"
-
-# all zeros
-assert run("4\n0 0 0 0\n") == "4"
-
-# single element 1
-assert run("1\n1\n") == "0"
-
-# single element 0
-assert run("1\n0\n") == "1"
+```
+-1 -1 -1
 ```
 
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| all ones | 2 | mandatory flip reduces optimal segment choice |
-| all zeros | 4 | best flip is whole array |
-| single 1 | 0 | edge case minimal size |
-| single 0 | 1 | best possible gain |
+Kadane's maximum subarray sum is `-1`, obtained by selecting any single position. The original number of ones is `3`, so the answer is:
 
-## Edge Cases
+```
+3 + (-1) = 2
+```
 
-For an array like `[1, 1, 1]`, the gain array becomes `[-1, -1, -1]`. Kadane never allows an empty segment, so it selects the least negative single element, producing a best gain of −1. Adding this to the baseline correctly yields 2.
+The algorithm correctly models the fact that one flip is mandatory.
 
-For `[0]`, the gain is `[+1]`, and Kadane picks it directly, giving a gain of +1 and final answer 1, which matches flipping the only element.
+### Single Element Zero
 
-For `[1, 0]`, gains are `[-1, +1]`. Kadane resets at index 2, selecting only the +1 segment, giving correct improvement and showing why starting fresh is essential when a negative prefix dominates.
+Input:
+
+```
+1
+0
+```
+
+The gain array is:
+
+```
++1
+```
+
+Maximum gain is `1`, original ones count is `0`, so the result is:
+
+```
+1
+```
+
+A length-one segment is treated exactly like any other segment.
+
+### Mixed Values Where Gains and Losses Matter
+
+Input:
+
+```
+5
+1 0 1 0 1
+```
+
+The gain array is:
+
+```
+-1 +1 -1 +1 -1
+```
+
+The maximum subarray sum is `1`.
+
+Original ones count is `3`, giving:
+
+```
+3 + 1 = 4
+```
+
+This confirms that the algorithm correctly subtracts the ones lost inside the flipped segment rather than counting only the zeros gained.
+
+### Best Segment Touches an Edge
+
+Input:
+
+```
+5
+0 0 1 1 1
+```
+
+The gain array is:
+
+```
++1 +1 -1 -1 -1
+```
+
+The maximum subarray is the prefix with sum `2`.
+
+Original ones count is `3`, so the answer is:
+
+```
+3 + 2 = 5
+```
+
+The algorithm naturally handles segments that begin at the first position or end at the last position, avoiding off-by-one mistakes.
