@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 2036 problems, 1409 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 2038 problems, 1412 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 2036 problems, 1409 verified.**
+**448 contests, 2038 problems, 1412 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -354,7 +354,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [406](406/) | [Codeforces Round 238 (Div. 1)](https://codeforces.com/contest/406) | Div. 1 | 2200-2800 | 0/2 | 6m 36s |
 | [407](407/) | [Codeforces Round 239 (Div. 1)](https://codeforces.com/contest/407) | Div. 1 | 1600-3100 | 2/5 | 23m 2s |
 | [409](409/) | [April Fools Day Contest 2014](https://codeforces.com/contest/409) | April Fools | 1500-2400 | 6/9 | 39m 30s |
-| [411](411/) | [Coder-Strike 2014 - Qualification Round](https://codeforces.com/contest/411) | Special | 1700-1700 | 0/1 | 11m 4s |
+| [411](411/) | [Coder-Strike 2014 - Qualification Round](https://codeforces.com/contest/411) | Special | 800-1700 | 3/3 | 10m 46s |
 | [412](412/) | [Coder-Strike 2014 - Round 1](https://codeforces.com/contest/412) | Special | 900-2000 | 1/4 | 8m 35s |
 | [413](413/) | [Coder-Strike 2014 - Round 2](https://codeforces.com/contest/413) | Special | 1200-2200 | 4/5 | 9m 37s |
 | [414](414/) | [Codeforces Round 240 (Div. 1)](https://codeforces.com/contest/414) | Div. 1 | 1400-3200 | 2/5 | 8m 52s |
