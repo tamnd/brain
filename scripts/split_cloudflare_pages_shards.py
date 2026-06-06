@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 import shutil
+import subprocess
 import tomllib
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -251,52 +252,115 @@ def split_search_data(public: Path, main: Site, shards: list[Site]) -> None:
         )
 
 
-def write_urlset(path: Path, urls: list[str]) -> None:
-    today = datetime.now(UTC).date().isoformat()
+def load_git_lastmods(content_root: Path = Path("content/en")) -> dict[str, int]:
+    """Return the latest commit timestamp for each content file and parent directory."""
+    result = subprocess.run(
+        ["git", "log", "--format=@@%ct", "--name-only", "--", str(content_root)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    file_dates: dict[str, int] = {}
+    current_date: int | None = None
+    for line in result.stdout.splitlines():
+        if line.startswith("@@"):
+            current_date = int(line[2:])
+        elif line and current_date is not None and line not in file_dates:
+            file_dates[line] = current_date
+
+    dates = dict(file_dates)
+    for filename, date in file_dates.items():
+        parent = Path(filename).parent
+        while parent == content_root or content_root in parent.parents:
+            key = str(parent)
+            dates[key] = max(dates.get(key, date), date)
+            if parent == content_root:
+                break
+            parent = parent.parent
+    return dates
+
+
+def content_path_for_url(site: Site, url_path: str) -> str:
+    if site.source_prefix:
+        original_path = site.source_prefix.strip("/")
+        if url_path != "/":
+            original_path += "/" + url_path.strip("/")
+    else:
+        original_path = url_path.strip("/")
+    return str(Path("content/en") / original_path)
+
+
+def lastmod_for_url(site: Site, url_path: str, dates: dict[str, int]) -> str | None:
+    content_path = content_path_for_url(site, url_path)
+    if url_path == "/":
+        candidates = [f"{content_path}/_index.md", content_path]
+    else:
+        candidates = [f"{content_path}.md", f"{content_path}/_index.md", content_path]
+    timestamp = max((dates[path] for path in candidates if path in dates), default=None)
+    if timestamp is None:
+        return None
+    return datetime.fromtimestamp(timestamp, UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def write_urlset(path: Path, urls: list[tuple[str, str | None]]) -> str | None:
     body = ['<?xml version="1.0" encoding="UTF-8"?>']
     body.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    for url in sorted(set(urls)):
+    unique_urls = sorted(dict(urls).items())
+    for url, lastmod in unique_urls:
         body.append("  <url>")
         body.append(f"    <loc>{escape(url)}</loc>")
-        body.append(f"    <lastmod>{today}</lastmod>")
+        if lastmod:
+            body.append(f"    <lastmod>{lastmod}</lastmod>")
         body.append("  </url>")
     body.append("</urlset>")
     path.write_text("\n".join(body) + "\n", encoding="utf-8")
+    return max((lastmod for _, lastmod in unique_urls if lastmod), default=None)
 
 
-def write_sitemap_index(path: Path, urls: list[str]) -> None:
+def write_sitemap_index(path: Path, sitemaps: list[tuple[str, str | None]]) -> None:
     body = ['<?xml version="1.0" encoding="UTF-8"?>']
     body.append('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    for url in urls:
+    for url, lastmod in sitemaps:
         body.append("  <sitemap>")
         body.append(f"    <loc>{escape(url)}</loc>")
+        if lastmod:
+            body.append(f"    <lastmod>{lastmod}</lastmod>")
         body.append("  </sitemap>")
     body.append("</sitemapindex>")
     path.write_text("\n".join(body) + "\n", encoding="utf-8")
 
 
+def write_robots(site: Site) -> None:
+    body = f"User-agent: *\nAllow: /\n\nSitemap: {site.base_url}/sitemap.xml\n"
+    (site.output / "robots.txt").write_text(body, encoding="utf-8")
+
+
 def generate_sitemaps(main: Site, shards: list[Site]) -> None:
-    main_urls: list[str] = []
+    dates = load_git_lastmods()
+    shard_sitemaps: list[tuple[str, str | None]] = []
+    for shard in shards:
+        urls: list[tuple[str, str | None]] = []
+        for path in shard.output.rglob("index.html"):
+            url_path = path_to_url(path, shard.output)
+            if url_path is not None:
+                urls.append((shard.base_url + url_path, lastmod_for_url(shard, url_path, dates)))
+        lastmod = write_urlset(shard.output / "sitemap.xml", urls)
+        write_robots(shard)
+        shard_sitemaps.append((f"{shard.base_url}/sitemap.xml", lastmod))
+
+    main_urls: list[tuple[str, str | None]] = []
     for path in main.output.rglob("index.html"):
         if path.name == "404.html":
             continue
         url_path = path_to_url(path, main.output)
         if url_path is not None:
-            main_urls.append(main.base_url + url_path)
-    write_urlset(main.output / "sitemap-main.xml", main_urls)
+            main_urls.append((main.base_url + url_path, lastmod_for_url(main, url_path, dates)))
+    main_lastmod = write_urlset(main.output / "sitemap-main.xml", main_urls)
     write_sitemap_index(
         main.output / "sitemap.xml",
-        [f"{main.base_url}/sitemap-main.xml"]
-        + [f"{shard.base_url}/sitemap.xml" for shard in shards],
+        [(f"{main.base_url}/sitemap-main.xml", main_lastmod)] + shard_sitemaps,
     )
-
-    for shard in shards:
-        urls: list[str] = []
-        for path in shard.output.rglob("index.html"):
-            url_path = path_to_url(path, shard.output)
-            if url_path is not None:
-                urls.append(shard.base_url + url_path)
-        write_urlset(shard.output / "sitemap.xml", urls)
+    write_robots(main)
 
 
 def write_redirects(main: Site, shards: list[Site]) -> None:

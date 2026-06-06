@@ -22,7 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
         with:
-          fetch-depth: 1
+          # Sitemap lastmod values come from the latest content commit.
+          fetch-depth: 0
 
       - name: Checkout tago
         uses: actions/checkout@v6.0.2
