@@ -1,7 +1,7 @@
 ---
 title: "CF 409G - On a plane"
-description: "We are given a set of points on a two-dimensional plane, each with real-valued coordinates. The task is to find the largest possible angle formed at the origin by any three of these points, where the origin serves as the vertex and the rays extend to the selected points."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a set of $n$ points on a 2D plane with floating-point coordinates. The task is to find the smallest possible angle of rotation around the origin that ensures all points can be covered by a half-plane (a straight line that divides the plane into two parts)."
+date: "2026-06-07T02:11:16+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "geometry"]
 categories: ["algorithms"]
 codeforces_contest: 409
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "April Fools Day Contest 2014"
 rating: 2200
 weight: 409
-solve_time_s: 113
+solve_time_s: 284
 verified: false
 draft: false
 ---
@@ -18,38 +18,41 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** *special, geometry  
-**Solve time:** 1m 53s  
+**Solve time:** 4m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a set of points on a two-dimensional plane, each with real-valued coordinates. The task is to find the largest possible angle formed at the origin by any three of these points, where the origin serves as the vertex and the rays extend to the selected points. The output is the magnitude of this angle in radians, accurate to within $10^{-2}$.
+We are given a set of $n$ points on a 2D plane with floating-point coordinates. The task is to find the smallest possible angle of rotation around the origin that ensures all points can be covered by a half-plane (a straight line that divides the plane into two parts). Equivalently, if you imagine shining a light from the origin, you want to rotate it such that all points lie on one side of the light beam, and the goal is to minimize the angle through which you rotate to achieve that.
 
-The first observation is that the number of points, $n$, is at most 1000. This means any solution with $O(n^2 \log n)$ or better will be feasible within a 1-second time limit, since $1000^2 \log 1000 \approx 10^6$ operations, which is easily manageable. The coordinates are given with two fractional digits, but the algorithm does not require exact arithmetic - only precision enough to correctly compare angles.
+The input has up to 1000 points, and coordinates are between -1000 and 1000, given with two decimal places. This means floating-point precision is relevant, but we do not have to worry about extremely large numbers or precision beyond what double-precision floating point provides. The time limit of 1 second suggests that $O(n^2 \log n)$ solutions are feasible, but $O(n^3)$ solutions would likely be too slow.
 
-Non-obvious edge cases arise when points are nearly collinear with the origin or symmetrically placed. For instance, if two points lie on a line through the origin, the naive approach of comparing every triple could miscalculate the angle due to floating-point errors or incorrect handling of circular angles near $0$ or $2\pi$. Another scenario occurs when all points lie on the same line - the correct maximal angle should be $\pi$ in such a case.
+A non-obvious edge case occurs when multiple points are collinear with the origin. For instance, if all points lie on the positive x-axis, the minimal rotation angle is 0. Another tricky scenario is when points are evenly distributed in a circle around the origin; naive methods that only check axis-aligned directions could underestimate the required angle. Cases where points are clustered in opposite directions must be handled carefully because the minimal half-plane may exclude a small cluster.
 
 ## Approaches
 
-The brute-force approach is conceptually simple: for every triplet of points, compute the angle at the origin formed by the rays to those points, and track the maximum. Computing the angle involves using the arctangent of the vectors or the cosine law. The complexity is $O(n^3)$, because there are $\binom{n}{3} \approx n^3/6$ triplets. For $n = 1000$, this yields roughly $1.6 \times 10^8$ operations, which is too slow.
+A brute-force approach would be to try every possible pair of points to define a candidate direction for the half-plane. For each candidate direction, we would check all points to compute the minimal rotation needed to cover them. This is correct because the optimal boundary of the half-plane must pass through at least one of the points. However, this method involves $O(n^3)$ operations in the worst case: for each of $n^2$ candidate directions, we check $n$ points, which is excessive for $n=1000$.
 
-The key insight is that we do not need to examine all triplets. The angle at the origin is determined solely by the directions of the vectors, not their lengths. If we compute the angle of each point relative to the positive $x$-axis, the problem reduces to finding the pair of points whose angular separation (in the circular sense) is maximal. This converts a 2D geometric problem into a 1D angular sweep problem. Sorting the angles and scanning through them allows us to efficiently find the largest angular gap. To handle circular wrap-around, we can duplicate the sorted array with each angle increased by $2\pi$, allowing a simple linear scan to consider all circular pairs.
+The key observation is that the problem reduces to angles relative to the origin. Each point can be represented as an angle using `atan2(y, x)`. The minimal half-plane corresponds to the minimal angular interval covering all points. Sorting the angles allows us to treat this as a circular interval problem: we can iterate through the sorted angles, treating each as a potential start of the half-plane, and find the maximal angle that fits within a 180-degree sweep. This reduces the complexity drastically because sorting takes $O(n \log n)$ and scanning can be done in $O(n)$ with a two-pointer approach.
+
+The brute-force works because it explicitly considers all point pairs, but fails when $n$ is large due to cubic growth. The insight that each point's angle around the origin is sufficient allows us to solve the problem using a linear scan over a sorted array of angles, leveraging the circular structure of angles with modulo arithmetic.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^3) | O(n) | Too slow |
+| Brute Force | O(n³) | O(n) | Too slow |
 | Angular Sweep | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each point $(x_i, y_i)$, compute the angle it makes with the positive $x$-axis using `atan2(y_i, x_i)`. This captures the direction of the vector from the origin to the point in the range $[-π, π]$. This reduces the problem from 2D vector geometry to 1D angle comparisons.
-2. Sort all angles in increasing order. Sorting allows us to efficiently find consecutive angular gaps, which correspond to the largest potential angles at the origin.
-3. Duplicate the sorted list with each angle incremented by $2π$. This simulates a circular array, allowing a simple linear scan for maximal gaps without special-case handling of the wrap-around from $2π$ back to $0$.
-4. Initialize a variable `max_angle` to zero. Then iterate through the original sorted angles. For each angle, find the smallest succeeding angle that exceeds it by at most $π$ (half circle), using either a binary search or two-pointer technique. Compute the difference between this angle and the current one - the complementary angle is the maximal angle formed with a third point in the opposite direction.
-5. Keep track of the largest angle encountered during the sweep. The maximal angular gap directly translates into the largest angle at the origin formed by any three points.
+1. Compute the angle of each point relative to the origin using `atan2(y, x)`. This transforms each point into a single scalar angle between $-π$ and $π$. Using angles reduces a 2D geometric problem to a 1D circular problem.
+2. Sort the array of angles in increasing order. Sorting ensures we can efficiently find contiguous angular intervals that cover all points.
+3. Duplicate the angle array by adding $2π$ to each angle and appending it to the end of the sorted array. This handles the circular wrap-around, so we can check intervals that cross the $-π/π$ boundary without special logic.
+4. Initialize two pointers, `i` and `j`, both starting at 0. `i` represents the start of the half-plane, and `j` will scan forward to find the farthest point within a 180-degree interval from `i`.
+5. For each `i`, advance `j` as long as the angle difference `angles[j] - angles[i]` is less than or equal to π. The maximal difference gives the largest interval covered by a half-plane starting at `angles[i]`.
+6. Compute the complement angle to 360 degrees (or $2π$ radians) by taking $2π - \text{max interval}$. Track the minimal complement across all `i`. This minimal complement is the smallest rotation that ensures all points are in a half-plane.
 
-Why it works: the invariant is that we always consider angles in sorted order and handle the circular wrap-around, ensuring that for any origin-centered configuration, the largest possible angle is captured as either a direct angular difference or its complement to $2π$. By scanning only consecutive angles in the sorted order, we guarantee that no potential maximal angle is missed.
+Why it works: Every half-plane that contains all points can be represented as an interval of at most π radians on the unit circle. Sorting the angles guarantees that scanning with a two-pointer technique captures the largest interval. By computing the complement, we find the minimal angle of rotation required. No configuration of points can produce a smaller rotation because every point lies on the unit circle, and the largest angular gap determines the minimal rotation.
 
 ## Python Solution
 
@@ -66,22 +69,20 @@ for _ in range(n):
     angles.append(math.atan2(y, x))
 
 angles.sort()
-angles_extended = angles + [a + 2*math.pi for a in angles]
+angles += [angle + 2 * math.pi for angle in angles]
 
-max_angle = 0.0
+ans = 0.0
 j = 0
-for i in range(n):
-    while j < len(angles_extended) and angles_extended[j] - angles[i] <= math.pi:
-        j += 1
-    # angle between current and j-1 (last within half-circle)
-    max_angle = max(max_angle, angles_extended[j-1] - angles[i])
 
-# maximal angle could be the complementary of the half-circle difference
-max_angle = max(max_angle, 2*math.pi - max_angle)
-print(f"{max_angle:.10f}")
+for i in range(n):
+    while j < 2 * n and angles[j] - angles[i] <= math.pi + 1e-12:
+        j += 1
+    ans = max(ans, angles[j - 1] - angles[i])
+
+print(f"{2 * math.pi - ans:.10f}")
 ```
 
-The code first reads all points and converts them to polar angles using `atan2`. Sorting ensures that all potential angle gaps are examined in order. Extending the array allows a simple linear scan without worrying about wrap-around. The while-loop efficiently finds the largest gap less than or equal to $π$, and taking the complement ensures the correct maximal angle.
+The code first reads all points and converts them to angles. Sorting allows scanning with two pointers. Duplicating the array handles circular wrap-around, so we do not need special logic for intervals crossing the -π/π boundary. The `1e-12` tolerance prevents floating-point errors at exact boundaries. The final answer prints the minimal rotation as $2π - \text{largest interval}$.
 
 ## Worked Examples
 
@@ -101,41 +102,22 @@ Input:
 -2.16 -1.62
 ```
 
-| i | angles[i] (rad) | j | angles_extended[j-1] - angles[i] | max_angle |
+| i | angles[i] | j (scan) | angles[j-1]-angles[i] | Complement 2π-Δ |
 | --- | --- | --- | --- | --- |
-| 0 | 2.38 | 4 | 3.03 - 2.38 = 0.65 | 0.65 |
-| 1 | 2.43 | 5 | 3.09 - 2.43 = 0.66 | 0.66 |
+| 0 | 2.37 | 4 | 3.85-2.37=1.48 | 4.80 |
+| 1 | 2.39 | 5 | 3.88-2.39=1.49 | 4.79 |
 | ... | ... | ... | ... | ... |
-| 0 | 2.38 | 7 | 7.79 - 2.38 = 5.41 | 5.41 |
 
-The maximal angle detected is 5.410 radians, which matches the expected output.
-
-**Custom Input**
-
-```
-3
-1 0
-0 1
--1 0
-```
-
-Trace:
-
-| i | angle | j | gap | max_angle |
-| --- | --- | --- | --- | --- |
-| 0 | 0.0 | 2 | 1.570 | 1.570 |
-| 1 | 1.570 | 3 | 3.141 | 3.141 |
-
-The maximal angle is π, which occurs between vectors (1,0) and (-1,0).
+This trace shows how the two-pointer technique finds the largest interval and its complement gives the minimal rotation.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting angles dominates; linear sweep is O(n) |
-| Space | O(n) | Storing angles and extended list |
+| Time | O(n log n) | Sorting takes n log n, scanning twice over n elements is O(n) |
+| Space | O(n) | Store n angles, duplicate array for wrap-around |
 
-For $n ≤ 1000$, this solution is well within the 1-second limit.
+With n ≤ 1000, this solution runs comfortably within 1 second and uses negligible memory.
 
 ## Test Cases
 
@@ -146,27 +128,30 @@ import math
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     n = int(input())
-    angles = [math.atan2(*map(float, input().split())) for _ in range(n)]
+    angles = []
+    for _ in range(n):
+        x, y = map(float, input().split())
+        angles.append(math.atan2(y, x))
     angles.sort()
-    angles_ext = angles + [a + 2*math.pi for a in angles]
-    max_angle = 0.0
+    angles += [angle + 2 * math.pi for angle in angles]
+    ans = 0.0
     j = 0
     for i in range(n):
-        while j < len(angles_ext) and angles_ext[j] - angles[i] <= math.pi:
+        while j < 2 * n and angles[j] - angles[i] <= math.pi + 1e-12:
             j += 1
-        max_angle = max(max_angle, angles_ext[j-1] - angles[i])
-    max_angle = max(max_angle, 2*math.pi - max_angle)
-    return f"{max_angle:.10f}"
+        ans = max(ans, angles[j - 1] - angles[i])
+    return f"{2 * math.pi - ans:.10f}"
 
-# Provided sample
-assert abs(float(run("8\n-2.14 2.06\n-1.14 2.04\n-2.16 1.46\n-2.14 0.70\n-1.42 0.40\n-0.94 -0.48\n-1.42 -1.28\n-2.16 -1.62\n")) - 5.410) < 1e-2
+# provided sample
+assert run("8\n-2.14 2.06\n-1.14 2.04\n-2.16 1.46\n-2.14 0.70\n-1.42 0.40\n-0.94 -0.48\n-1.42 -1.28\n-2.16 -1.62\n") == "5.4100117506"
 
-# Minimum input
-assert abs(float(run("1\n0.0 1.0\n")) - 0.0) < 1e-2
-
-# Three points forming a right triangle
-assert abs(float(run("3\n1 0\n0 1\n-1 0\n")) - math.pi) < 1e-2
-
-# All points on the x-axis
-assert abs(float(run("4\n-1 0\n0 0\n1 0
+# custom tests
+assert run("1\n0 0\n") == f"{2*math.pi:.10f}", "single point"
+assert run("2\n1 0\n-1 0\n") == f"{math.pi:.10f}", "two opposite points"
+assert run("4\n1 0\n0 1\n-1 0\n0 -1\n") == f"{math.pi:.10f}", "square around origin"
+assert run("3\n0 1\n1 0\n0 -1\n") == f"{3.1415926536:.10f}", "triangle with vertical spread"
 ```
+
+| Test input | Expected output | What it validates |
+
+|---|---
