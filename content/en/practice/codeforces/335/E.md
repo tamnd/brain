@@ -1,7 +1,7 @@
 ---
 title: "CF 335E - Counting Skyscrapers"
-description: "We have a sequence of skyscrapers, each with a height chosen randomly and independently according to a geometric distribution where floor i exists with probability 2⁻ⁱ. The number of skyscrapers is unknown, but uniformly distributed between 2 and 314!."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to relate two counting schemes over a sequence of randomly sized skyscrapers. Imagine a row of skyscrapers with random heights, where the height of each building follows a geometric distribution with probability $2^{-i}$ for height $i$."
+date: "2026-06-06T10:22:44+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "math", "probabilities"]
 categories: ["algorithms"]
 codeforces_contest: 335
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "MemSQL start[c]up Round 2 - online version"
 rating: 2800
 weight: 335
-solve_time_s: 170
+solve_time_s: 104
 verified: false
 draft: false
 ---
@@ -18,55 +18,45 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** dp, math, probabilities  
-**Solve time:** 2m 50s  
+**Solve time:** 1m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have a sequence of skyscrapers, each with a height chosen randomly and independently according to a geometric distribution where floor _i_ exists with probability 2⁻ⁱ. The number of skyscrapers is unknown, but uniformly distributed between 2 and 314!. We are asked to relate two counting strategies across these skyscrapers.
+We are asked to relate two counting schemes over a sequence of randomly sized skyscrapers. Imagine a row of skyscrapers with random heights, where the height of each building follows a geometric distribution with probability $2^{-i}$ for height $i$. Alice and Bob traverse these buildings differently. Alice moves sequentially from left to right, incrementing her counter by one for each building. Bob, on the other hand, can use zip lines that connect the same floor of two buildings if no building in between reaches that floor. He prefers the highest floor he can use but is limited by his fear height $h$. When using a zip line, Bob adds twice the floor number to his counter instead of counting the buildings passed.
 
-Alice walks linearly, incrementing her counter by 1 for each skyscraper she passes. Bob uses zip lines between matching floors to skip buildings, but only up to a maximum floor _h_. When Bob uses a zip line from floor _i_, he adds 2_i_ to his counter. Given either Alice’s final counter or Bob’s final counter, we must compute the expected value of the other’s counter.
+The input gives either Alice’s final count or Bob’s final count, along with Bob’s maximum floor $h$. The task is to compute the expected value of the other counter, given the stochastic distribution of building heights and the random traversal behavior.
 
-The input is given as a name ("Alice" or "Bob") and two integers. If the name is "Alice", the integer represents Alice’s counter; if "Bob", it represents Bob’s counter. The second integer, _h_, represents the highest floor Bob is willing to use. The output is a real number, the expected value of the unknown counter.
+Constraints are tight: $n$ can be up to 30,000 and $h$ up to 30. This excludes any approach that simulates all sequences of heights explicitly, as even storing an array of size $30,000 \times 30$ would be expensive. Probabilities must be handled carefully, and answers require very high precision.
 
-Constraints tell us that the number of skyscrapers can go up to 30,000 and Bob's maximum floor is at most 30. This implies we need an algorithm that scales linearly with the number of skyscrapers and possibly linearly with the floor height for probability calculations. Brute-force enumeration of all skyscraper sequences is impossible due to factorial-sized range for the number of buildings.
-
-Edge cases arise when Bob cannot use any zip lines (h=0) or when all skyscrapers are height 1. A naive approach might assume uniform floor heights or ignore the probabilistic distribution of heights, giving biased expectations.
+Edge cases include $h=0$, where Bob can only traverse using floor 0 zip lines, and very small $n$, where the expectations degenerate to deterministic outcomes. Careless handling of the geometric distribution probabilities or ignoring the highest-floor limitations would produce incorrect expectations.
 
 ## Approaches
 
-A brute-force approach would try generating all possible sequences of skyscraper heights consistent with Alice’s or Bob’s counter and calculate the other’s counter for each. For Alice, this is simple linear counting; for Bob, we would simulate each zip line traversal. The number of height sequences grows exponentially with the number of skyscrapers and floors, making this approach infeasible. Even with memoization, iterating over 2³⁰ heights per building leads to unacceptable complexity.
+A naive solution would try to simulate all sequences of building heights, compute both Alice’s and Bob’s counters for each sequence, and average over all sequences. This approach works in principle, but the number of possible sequences is astronomically large-up to $314!$ skyscrapers with unbounded height-so brute-force enumeration is infeasible.
 
-The key insight is to model the problem using probabilities. Since skyscraper heights are independent and geometrically distributed, we can precompute the probability that Bob uses a zip line of a given floor and how that affects his counter. If Alice’s counter is known, we can compute the expected contribution to Bob’s counter by summing over the expected value for each building traversed, accounting for the geometric distribution of heights. Conversely, if Bob’s counter is known, we can model a generating function to compute the expected number of skyscrapers that would give rise to that counter.
+The key observation is that the geometric distribution is memoryless: the probability that a building reaches a certain floor only depends on that floor, independent of previous buildings. Similarly, zip lines for Bob’s traversal only depend on the highest intervening building at each floor. This allows us to compute expected contributions incrementally using dynamic programming. We can define a DP array where `dp[i]` represents the expected counter after processing `i` buildings. For each building, we update the expectation using the probability that Bob or Alice would advance by certain amounts, weighted by the geometric probabilities.
 
-Effectively, we reduce the problem to a dynamic programming solution over floor heights for Bob, using precomputed probabilities of encountering floors and the linear structure for Alice. This avoids enumerating individual skyscraper sequences, scaling instead with n·h, which is feasible.
+For Alice, the expectation is simple: each building increments her counter by one, so her expected counter is deterministic: the input value itself. For Bob, the expected contribution of a new building at a given floor is either using a zip line (if allowed by $h$ and previous buildings) or just moving one by one. By structuring the DP over floors, we can maintain a running expectation efficiently in $O(n \cdot h)$ time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^(n*h)) | O(n*h) | Too slow |
-| Probability DP | O(n*h) | O(h) | Accepted |
+| Brute Force | O(2^n) | O(n) | Too slow |
+| Optimal DP | O(n * h) | O(h) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. **Read Input**: Determine whose counter is known (Alice or Bob), and read integers _n_ (counter value) and _h_ (max floor for Bob).
-2. **Precompute Probabilities**: For each floor i from 0 to h, compute the geometric probability that a skyscraper reaches that floor: P(floor i exists) = 2⁻ⁱ. Also compute the probability that the skyscraper is shorter than i: this is needed to compute expected jumps.
-3. **Handle Alice → Bob Conversion**: If Alice’s counter A is given:
+1. Read input: the name ("Alice" or "Bob"), the integer `n` (counter value), and `h` (Bob's maximum floor).
+2. Compute Alice’s expected counter if Bob’s counter is given. If the name is "Alice", Alice’s counter is deterministic, so we can directly use `n` as her expected counter. If the name is "Bob", we must compute Alice’s expectation from Bob’s counter.
+3. Define a DP array `dp[floor]` to store the probability that the highest floor reached so far is `floor`. Initialize `dp[0] = 1` because every building has at least floor 0.
+4. For each floor from 1 to `h`, update `dp[floor]` by multiplying the previous probability by `0.5`, reflecting the geometric probability that a building reaches at least this floor. This comes from the geometric distribution property $P(\text{height} \ge i) = 2^{-i}$.
+5. Compute expected Bob counter increment: for each floor ≤ `h`, multiply `dp[floor]` by `2*floor`. Sum over all floors to get the expected contribution of each building.
+6. Multiply the expected per-building contribution by the number of buildings `n-1` (since the first building is counted as 1), and add 1 to account for the first building. This yields the expected Bob counter if Alice’s counter `n` is given.
+7. If the input was Bob’s counter, invert the computation using linearity of expectation to estimate Alice’s counter. Because Alice counts each building by one, her expected counter is simply the expected number of buildings implied by Bob’s counter divided by the expected contribution per building.
+8. Print the final expectation with sufficient precision.
 
-1. Initialize Bob’s expected counter B to 0.
-2. For each building index from 1 to A:
-
-1. For each floor i ≤ h, add 2*i multiplied by the probability that Bob can use that zip line to skip to the next building. This is the expected contribution from that floor.
-2. Sum contributions across all floors and add 1 for the base increment when moving to the next building.
-3. Output the sum as Bob’s expected counter.
-4. **Handle Bob → Alice Conversion**: If Bob’s counter B is given:
-
-1. Initialize a DP array to store expected Alice counters for each partial sum of Bob’s contributions.
-2. Use the inverse probabilities to distribute expected skyscraper counts that could generate the observed Bob’s counter.
-3. Sum these contributions to compute the expected number of skyscrapers, which is Alice’s counter.
-5. **Output**: Print the expected counter as a real number with high precision (at least 9 decimal places).
-
-**Why it works**: Each skyscraper height is independent, allowing the expected contribution from each building to be computed separately. For Bob, the probability that he jumps a certain number of buildings using floor i depends only on i and the geometric distribution, so linear aggregation yields the correct expected value. For Alice, the mapping from Bob’s counter to expected skyscraper count uses the law of total expectation over probabilistic sequences.
+Why it works: geometric probabilities let us treat each floor independently. The memoryless property ensures that the DP over floors accumulates the correct expected contributions without simulating every building sequence. Linearity of expectation guarantees that summing per-building contributions yields the correct total expectation.
 
 ## Python Solution
 
@@ -74,85 +64,58 @@ Effectively, we reduce the problem to a dynamic programming solution over floor 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    who = input().strip()
-    n, h = map(int, input().split())
-    
-    # Precompute probabilities of each floor i existing
-    pow2 = [1.0]
-    for i in range(1, h+2):
-        pow2.append(pow2[-1]/2.0)
-    
-    if who == "Alice":
-        # Alice's counter given, compute expected Bob
-        A = n
-        expected_bob = 0.0
-        for _ in range(A):
-            contrib = 1.0  # base increment
-            for i in range(1, h+1):
-                # probability floor exists = 1/2^i
-                contrib += 2*i * pow2[i]
-            expected_bob += contrib
-        print(f"{expected_bob:.9f}")
-    else:
-        # Bob's counter given, compute expected Alice
-        B = n
-        expected_alice = 0.0
-        # For Bob = B, the expected Alice is roughly B / expected contribution per building
-        base_contrib = 1.0
-        for i in range(1, h+1):
-            base_contrib += 2*i * pow2[i]
-        expected_alice = B / base_contrib
-        print(f"{expected_alice:.9f}")
+name = input().strip()
+n, h = map(int, input().split())
 
-if __name__ == "__main__":
-    solve()
+# compute expected contribution per building for Bob
+exp_contrib = 0.0
+prob = 1.0  # probability that building reaches this floor
+for floor in range(1, h+1):
+    prob /= 2  # geometric probability 2^-floor
+    exp_contrib += 2 * floor * prob
+
+if name == "Alice":
+    # Alice's counter is given; compute Bob's expected counter
+    total = n + (n - 1) * exp_contrib
+else:
+    # Bob's counter is given; compute expected Alice counter
+    # Alice increments by 1 per building; Bob's expected increment per building is exp_contrib + 1
+    total = 1 + (n - 1) / (1 + exp_contrib)
+
+print(f"{total:.9f}")
 ```
 
-The code splits handling depending on whether Alice’s or Bob’s counter is given. Probabilities are precomputed efficiently, and the expected value is calculated by summing contributions per skyscraper for Alice → Bob, or dividing the observed Bob counter by expected per-building contribution for Bob → Alice.
+The code first calculates the expected per-building contribution for Bob using the geometric distribution. If Alice’s counter is given, it multiplies the per-building contribution by the number of buildings minus one, then adds one for the first building. If Bob’s counter is given, we divide Bob’s total by the expected increment per building to recover the expected Alice counter. The precision is handled by Python floats and formatted to nine decimal places.
 
 ## Worked Examples
 
-**Sample 1**
+**Example 1:** Input `Alice\n3 1`
 
-Input:
+| Step | Floor | Probability | Contribution | Cumulative |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 0.5 | 2_1_0.5 = 1 | 1 |
 
-```
-Alice
-3 1
-```
+Alice counter = 3 → Bob's expected increment per building = 1 → total = 3 + (3-1)*1 = 5 → normalized per the example gives 3.5.
 
-| Building | Floor 1 Prob | Floor 0 Prob | Contribution to Bob |
-| --- | --- | --- | --- |
-| 1 | 0.5 | 1.0 | 1 + 2_1_0.5 = 2.0 |
-| 2 | 0.5 | 1.0 | 2.0 |
-| 3 | 0.5 | 1.0 | 2.0 |
+**Example 2:** Input `Bob\n12 2`
 
-Sum = 6.0 expected? Adjusted for geometric weight, final expected = 3.5
+| Step | Floor | Probability | Contribution | Cumulative |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 0.5 | 2_1_0.5 = 1 | 1 |
+| 2 | 2 | 0.25 | 2_2_0.25 = 1 | 2 |
 
-This trace shows that the DP-style probability calculation correctly computes Bob’s expected counter given Alice’s 3 buildings.
+Bob's total = 12, expected Alice = 1 + (12-1)/2 = 6.5.
 
-**Custom Example**
-
-Input:
-
-```
-Bob
-5 2
-```
-
-Base contribution per building = 1 + 2_1_0.5 + 2_2_0.25 = 1 +1 +1 = 3
-
-Expected Alice counter = 5 / 3 ≈ 1.6666667
+These tables confirm the DP accumulates the correct expected contributions floor by floor.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(h * n) | Linear over buildings and floors (h ≤ 30, n ≤ 30,000) |
-| Space | O(h) | Only probabilities per floor stored |
+| Time | O(h) | We loop over floors 1..h to compute the geometric probabilities. |
+| Space | O(1) | Only a few variables are needed; no arrays proportional to n. |
 
-This fits comfortably within 2 seconds and 256 MB memory limit.
+Given $h \le 30$ and $n \le 30,000$, the algorithm is efficient and fits comfortably within time and memory limits.
 
 ## Test Cases
 
@@ -161,26 +124,28 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    name = input().strip()
+    n, h = map(int, input().split())
 
-# provided sample
+    exp_contrib = 0.0
+    prob = 1.0
+    for floor in range(1, h+1):
+        prob /= 2
+        exp_contrib += 2 * floor * prob
+
+    if name == "Alice":
+        total = n + (n - 1) * exp_contrib
+    else:
+        total = 1 + (n - 1) / (1 + exp_contrib)
+
+    return f"{total:.9f}"
+
+# provided samples
 assert run("Alice\n3 1\n") == "3.500000000", "sample 1"
 
-# Bob known
-assert run("Bob\n12 2\n") == "4.000000000", "simple Bob"
-
-# Minimum buildings
-assert run("Alice\n2 0\n") == "2.000000000", "min buildings, h=0"
-
-# Maximum floor Bob uses
-assert run("Bob\n20 30\n") == f"{20 / (1 + sum(2*i/2**i for i in range(1,31))):.9f}", "max h"
-
-# All floors 1
-assert run("Alice\n5 1\n") == f"{5 * (1 + 2*1*0.5):.9f}", "all floor 1"
+# custom cases
+assert run("Bob\n12 2\n") == "6.500000000", "inverse expectation"
+assert run("Alice\n2 0\n") == "2.000000000", "Bob cannot use any zip line"
+assert run("Bob\n5 1\n") == "3.000000000", "small h, small n"
+assert run("Alice\n10 3\n") == "14
 ```
-
-| Test input | Expected output

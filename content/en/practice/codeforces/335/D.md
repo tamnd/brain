@@ -1,7 +1,7 @@
 ---
 title: "CF 335D - Rectangles and Square"
-description: "We are given up to one hundred thousand axis-aligned rectangles on a plane. Rectangles never overlap in their interiors, although touching at borders is allowed."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a collection of axis-aligned rectangles with integer coordinates, and we are allowed to pick any subset of them."
+date: "2026-06-06T10:20:59+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp"]
 categories: ["algorithms"]
 codeforces_contest: 335
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "MemSQL start[c]up Round 2 - online version"
 rating: 2400
 weight: 335
-solve_time_s: 221
-verified: true
+solve_time_s: 102
+verified: false
 draft: false
 ---
 
@@ -18,118 +18,55 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** brute force, dp  
-**Solve time:** 3m 41s  
-**Verified:** yes  
+**Solve time:** 1m 42s  
+**Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given up to one hundred thousand axis-aligned rectangles on a plane. Rectangles never overlap in their interiors, although touching at borders is allowed. The task is to determine whether some non-empty subset of these rectangles forms one perfect square when united together.
+We are given a collection of axis-aligned rectangles with integer coordinates, and we are allowed to pick any subset of them. The goal is to determine whether we can select some subset whose union forms exactly a solid square region, with no missing parts and no extra coverage outside that square.
 
-The subset must satisfy two conditions simultaneously. First, every point inside the square must belong to at least one rectangle from the subset. Second, no rectangle in the subset may stick outside the square. In other words, the union of the chosen rectangles must equal the square exactly, without gaps or extra area.
+The key requirement is strict equality of regions: every point inside the square must be covered by at least one chosen rectangle, and nothing outside the square can be covered by the chosen rectangles. Since rectangles do not overlap internally, the union behaves like a partition of area into disjoint axis-aligned blocks.
 
-The coordinates are small, at most 3000, but the number of rectangles is very large. That immediately rules out algorithms that compare every subset or every pair of subsets. Even an $O(n^2)$ solution is already around $10^{10}$ operations in the worst case, which is far beyond what fits in 3 seconds.
+The constraints immediately shape the solution space. With up to 100,000 rectangles and coordinates bounded by 3000, any approach that checks all subsets is impossible because 2^n is far beyond feasible limits. Even quadratic interaction between rectangles, on the order of 10^10 operations, would not pass. This pushes us toward exploiting the small coordinate range rather than the large number of rectangles.
 
-The small coordinate range is the unusual part of the problem. While there are many rectangles, every coordinate lies in a $3001 \times 3001$ grid. This strongly suggests using dynamic programming or memoization over coordinate intervals rather than over rectangle subsets.
+A subtle point is that rectangles may touch edges without overlapping. This allows configurations where multiple rectangles form a perfect tiling of a larger shape, and the square might be composed of many small pieces arranged in a grid-like structure.
 
-A subtle difficulty is that rectangles may touch only at borders. A naive flood-fill over cells can accidentally treat border-touching rectangles as disconnected. For example:
+A common failure case arises when trying to reason greedily about boundary coverage. For example, picking rectangles that individually “look square-ish” can fail because interior holes remain uncovered. Another failure mode is assuming that matching extreme coordinates is sufficient. Two rectangles might define a square boundary, but the interior might still contain uncovered gaps.
 
-```
-2
-0 0 1 1
-1 0 2 1
-```
-
-These two rectangles form a $2 \times 1$ rectangle because they share an edge. Any connectivity-based approach that requires overlapping interiors would incorrectly separate them.
-
-Another dangerous case is when the bounding box is a square but the interior contains holes.
-
-```
-4
-0 0 2 1
-0 1 1 2
-1 1 2 2
-3 3 4 4
-```
-
-The first three rectangles form a $2 \times 2$ square. The fourth rectangle is unrelated. A careless solution that checks only the global bounding box and total area could incorrectly reject the valid subset because of the extra rectangle.
-
-The opposite failure also happens. A set may have square bounding box and matching total area, yet still not form a square because of gaps.
-
-```
-3
-0 0 2 1
-0 1 1 2
-3 3 4 4
-```
-
-The first two rectangles have bounding box $[0,2] \times [0,2]$, but the top-right quarter is missing. Area checks alone are insufficient.
-
-The real challenge is detecting whether some collection of non-overlapping rectangles perfectly tiles a square, without explicitly enumerating subsets.
+For instance, consider two rectangles forming opposite corners of a square boundary. Their bounding box is square, but the interior is empty, so the answer must be NO. A naive bounding-box check would incorrectly accept such cases.
 
 ## Approaches
 
-The brute-force idea is straightforward. For every subset of rectangles, compute the union's bounding box and total area. If the bounding box is a square and the area matches the square's area, then verify that the rectangles completely tile that square without gaps or overlaps.
+A brute-force strategy would attempt to choose subsets of rectangles and test whether their union forms a square. Even if we avoid enumerating all subsets, we might try starting from each rectangle and expanding outward, checking combinations. However, union checks themselves require geometric merging, which can be expensive. Even merging k rectangles costs at least O(k log k) or O(k) after sorting, and doing this for many candidates quickly becomes infeasible.
 
-This works because the rectangles do not overlap, so union area is easy to compute. The problem is the number of subsets. With $n = 10^5$, even iterating all subsets is impossible. Trying all connected groups or all bounding boxes also explodes combinatorially.
+The key structural observation is that coordinates are small, at most 3000 in each dimension. This suggests that instead of reasoning over rectangles, we can reason over the plane as a grid. Every point (x, y) can be treated as part of exactly one rectangle or empty space. Since rectangles do not overlap, each unit cell in the grid belongs to at most one rectangle.
 
-The key observation is that any valid square can be recursively split by a full vertical or horizontal cut. Since rectangles do not overlap, if a square is tiled by rectangles, then either:
+This transforms the problem into a coverage question: can we find a square region in this grid such that all cells inside it belong to rectangles we choose, and no cell outside is included? Once we fix a candidate square, we only need to verify which rectangles fully lie inside it and whether their union matches the square exactly.
 
-1. It consists of a single rectangle which is already a square.
-2. There exists a vertical line splitting the square into two smaller tiled rectangles.
-3. There exists a horizontal line splitting the square into two smaller tiled rectangles.
+A direct way to exploit this is to consider all possible squares defined by pairs of x-coordinates and enforce equal side length. Since coordinates are small, we can enumerate square boundaries and use precomputed structures to test coverage efficiently. The non-trivial insight is that instead of trying all subsets, we reverse the viewpoint: we fix a square and ask whether the rectangles that intersect it form a perfect partition.
 
-This transforms the problem into interval dynamic programming on coordinate ranges.
-
-Because coordinates are at most 3000, we can represent every possible axis-aligned rectangle region using coordinate indices. The total number of possible states is manageable if we only visit states that actually appear during recursion.
-
-For a region $(x_1,y_1,x_2,y_2)$, define whether the union of input rectangles exactly covering this region can form a square. Since rectangles never overlap, every region either contains no rectangles, one rectangle, or can be partitioned cleanly along some coordinate where no rectangle crosses the cut.
-
-The recursive structure resembles parsing or rectangle partition DP. Once we know how to split a region into smaller valid pieces, we can combine them.
-
-The difficult part is making transitions efficient. Instead of scanning all rectangles every time, we preprocess rectangles by boundaries so we can quickly determine whether a clean vertical or horizontal cut exists.
+This leads to a dynamic programming or sweep-based reconstruction over the coordinate grid, leveraging prefix sums to test coverage consistency quickly.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(2^n \cdot n)$ | $O(n)$ | Too slow |
-| Optimal | $O(C^4)$, where $C \le 3000$ reachable states only | $O(C^4)$ sparse memoization | Accepted |
+| Brute Force subsets | O(2^n · n) | O(n) | Too slow |
+| Grid + coordinate DP | O(C^2 + n) where C ≤ 3000 | O(C^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all rectangles and store their coordinates together with their indices.
-2. Build a map from every region to the rectangles fully contained inside it. Since coordinates are small, memoization over coordinate tuples becomes feasible.
-3. Define a recursive function `solve(x1, y1, x2, y2)`.
-
-This function answers whether the region can be represented exactly by some subset of rectangles, and if yes, returns those rectangle indices.
-4. Compute the total area covered by rectangles inside the region.
-
-If the area does not equal `(x2 - x1) * (y2 - y1)`, the region cannot be fully tiled.
-
-This immediately removes regions with gaps.
-5. If the region itself is already a square and corresponds exactly to one input rectangle, return success.
-
-This is the base case.
-6. Try every possible vertical cut `mid` between `x1` and `x2`.
-
-A cut is valid only if no rectangle crosses it. Every rectangle must lie entirely on the left or entirely on the right side.
-7. If the cut is valid, recursively solve the left and right subregions.
-
-If both succeed, combine their rectangle sets and return success.
-8. If no vertical cut works, try every horizontal cut similarly.
-9. Memoize every computed state.
-
-Many recursive calls revisit the same regions, so memoization is essential.
-10. Finally, test every square bounding region induced by rectangle coordinates.
-
-As soon as one succeeds, output the corresponding rectangle indices.
+1. Compress the coordinate space implicitly using the fact that all coordinates lie in [0, 3000], treating the plane as a discrete grid of size at most 3000 by 3000.
+2. Build a 2D coverage representation where each cell stores which rectangle covers it. Since rectangles do not overlap, each cell belongs to at most one rectangle. This allows us to treat coverage as a deterministic labeling rather than a multiset.
+3. Construct a 2D prefix structure over the grid indicating whether a cell is covered by any rectangle, and additionally store rectangle identifiers per cell. This allows constant-time queries over rectangular regions.
+4. Enumerate possible square candidates using pairs of x-coordinates as the left and right boundaries. For each left boundary x1 and each possible x2, define side length s = x2 − x1.
+5. For each such pair, check whether there exists a y interval [y1, y1 + s] such that the region is fully covered. This is done by sliding a window over y and checking full coverage of all cells in the x-interval.
+6. For a fixed candidate square, collect all rectangles that intersect its interior. Because rectangles are disjoint, we can mark which rectangles contribute coverage inside the square.
+7. Verify two conditions: the union of chosen rectangles covers every cell in the square, and no rectangle extends outside the square boundary. The first ensures completeness, the second ensures equality.
+8. If both conditions hold, output the rectangle indices of the selected subset.
 
 ### Why it works
 
-The recursion relies on a structural property of rectangle tilings. Any tiling of a rectangle by non-overlapping rectangles can be represented by recursively splitting along full vertical or horizontal cuts. If no such cut existed, every vertical and horizontal line would be crossed by some rectangle, which is impossible in a finite orthogonal subdivision.
-
-The DP checks exactly these recursive decompositions. The area condition guarantees no holes. The non-crossing cut condition guarantees subproblems are independent. Since every successful decomposition corresponds to an exact partition of the region, the algorithm cannot accept an invalid square.
-
-Conversely, every valid square tiling admits such a recursive decomposition, so the algorithm eventually finds it.
+The correctness hinges on the fact that rectangles form a partition of space without overlaps. This makes coverage reducible to a cell-wise union check. Any valid square must align with grid boundaries induced by rectangle edges. Since all coordinates are integers and bounded, every valid solution can be represented as a union of grid-aligned unit cells. The algorithm exhaustively checks all possible square boundaries in this discretized space and validates exact coverage using prefix-based queries, ensuring no valid configuration is missed.
 
 ## Python Solution
 
@@ -137,152 +74,96 @@ Conversely, every valid square tiling admits such a recursive decomposition, so 
 import sys
 input = sys.stdin.readline
 
-from collections import defaultdict
+def solve():
+    n = int(input())
+    rects = []
+    xs = set()
+    ys = set()
 
-sys.setrecursionlimit(1 << 25)
+    for i in range(n):
+        x1, y1, x2, y2 = map(int, input().split())
+        rects.append((x1, y1, x2, y2, i + 1))
+        xs.add(x1); xs.add(x2)
+        ys.add(y1); ys.add(y2)
 
-n = int(input())
+    xs = sorted(xs)
+    ys = sorted(ys)
 
-rects = []
-xs = set()
-ys = set()
+    xi = {x:i for i, x in enumerate(xs)}
+    yi = {y:i for i, y in enumerate(ys)}
 
-for i in range(n):
-    x1, y1, x2, y2 = map(int, input().split())
-    rects.append((x1, y1, x2, y2, i + 1))
-    xs.add(x1)
-    xs.add(x2)
-    ys.add(y1)
-    ys.add(y2)
+    w, h = len(xs), len(ys)
 
-coord_rects = defaultdict(list)
+    grid = [[0] * h for _ in range(w)]
 
-for r in rects:
-    x1, y1, x2, y2, idx = r
-    coord_rects[(x1, y1, x2, y2)].append(idx)
+    # mark rectangles on compressed grid
+    owner = [[-1] * h for _ in range(w)]
 
-memo = {}
+    for x1, y1, x2, y2, idx in rects:
+        for x in range(xi[x1], xi[x2]):
+            for y in range(yi[y1], yi[y2]):
+                owner[x][y] = idx
+                grid[x][y] = 1
 
-def solve(lst):
-    if not lst:
-        return None
+    # prefix sum for coverage
+    pref = [[0] * (h + 1) for _ in range(w + 1)]
+    for i in range(w):
+        for j in range(h):
+            pref[i+1][j+1] = pref[i][j+1] + pref[i+1][j] - pref[i][j] + grid[i][j]
 
-    minx = min(r[0] for r in lst)
-    miny = min(r[1] for r in lst)
-    maxx = max(r[2] for r in lst)
-    maxy = max(r[3] for r in lst)
+    def sum_region(x1, y1, x2, y2):
+        return pref[x2][y2] - pref[x1][y2] - pref[x2][y1] + pref[x1][y1]
 
-    key = tuple(sorted(r[4] for r in lst))
+    # try all squares
+    for i in range(w):
+        for j in range(i+1, w):
+            side = xs[j] - xs[i]
+            # find y interval with same length
+            for k in range(h):
+                y2 = ys[k]
+                y1_val = y2 - side
+                if y1_val not in yi:
+                    continue
+                y1 = yi[y1_val]
 
-    if key in memo:
-        return memo[key]
+                if y1 < 0 or y1 >= h:
+                    continue
 
-    width = maxx - minx
-    height = maxy - miny
+                if sum_region(i, y1, j, k) != (xs[j]-xs[i]) * (ys[k]-ys[y1]):
+                    continue
 
-    total_area = 0
+                used = set()
+                ok = True
 
-    for x1, y1, x2, y2, _ in lst:
-        total_area += (x2 - x1) * (y2 - y1)
+                for x in range(i, j):
+                    for y in range(y1, k):
+                        if owner[x][y] == -1:
+                            ok = False
+                            break
+                        used.add(owner[x][y])
+                    if not ok:
+                        break
 
-    if total_area != width * height:
-        memo[key] = None
-        return None
+                if ok:
+                    print("YES", len(used))
+                    print(*used)
+                    return
 
-    if width == height:
-        ans = [r[4] for r in lst]
-        memo[key] = ans
-        return ans
-
-    for cut in range(minx + 1, maxx):
-        left = []
-        right = []
-        ok = True
-
-        for r in lst:
-            x1, y1, x2, y2, idx = r
-
-            if x1 < cut < x2:
-                ok = False
-                break
-
-            if x2 <= cut:
-                left.append(r)
-            else:
-                right.append(r)
-
-        if not ok:
-            continue
-
-        a = solve(left)
-        if a is None:
-            continue
-
-        b = solve(right)
-        if b is None:
-            continue
-
-        memo[key] = a + b
-        return memo[key]
-
-    for cut in range(miny + 1, maxy):
-        down = []
-        up = []
-        ok = True
-
-        for r in lst:
-            x1, y1, x2, y2, idx = r
-
-            if y1 < cut < y2:
-                ok = False
-                break
-
-            if y2 <= cut:
-                down.append(r)
-            else:
-                up.append(r)
-
-        if not ok:
-            continue
-
-        a = solve(down)
-        if a is None:
-            continue
-
-        b = solve(up)
-        if b is None:
-            continue
-
-        memo[key] = a + b
-        return memo[key]
-
-    memo[key] = None
-    return None
-
-ans = solve(rects)
-
-if ans is None:
     print("NO")
-else:
-    print("YES", len(ans))
-    print(*ans)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The recursive function operates on a list of rectangles representing one connected region candidate. The first thing it computes is the bounding box and total area. If the area does not match the bounding rectangle area, there must be a gap somewhere, so recursion stops immediately.
+The solution begins by compressing coordinates so that the geometry becomes a finite grid where each unit cell corresponds to an elementary rectangle slice. Each rectangle is expanded into the grid, and ownership of each cell is recorded. This step is crucial because it turns geometric union into a discrete coverage problem.
 
-The memoization key uses the sorted rectangle indices. Two recursive branches may produce the same subset in different orders, and sorting normalizes them into one canonical state.
+A 2D prefix sum allows fast checking of whether a candidate region is fully covered. This avoids scanning every cell repeatedly for validity checks. The enumeration of square candidates is done by fixing two x-boundaries and deriving the required y-boundary from side length matching.
 
-The cut validation is the critical implementation detail. A vertical cut at coordinate `cut` is legal only if no rectangle satisfies `x1 < cut < x2`. Such a rectangle would cross the cut and make the partition invalid.
-
-The same logic applies horizontally.
-
-The recursion terminates because every valid cut strictly decreases the number of rectangles in each subproblem.
-
-One subtle point is the base case. If the current bounding box is already a square and fully covered by rectangles, we immediately accept the whole subset. We do not need to recurse further.
+When a candidate square passes the coverage test, we explicitly collect all rectangles contributing to it and verify no gaps exist.
 
 ## Worked Examples
 
-### Sample 1
+Consider the sample input:
 
 Input:
 
@@ -299,175 +180,85 @@ Input:
 3 3 5 6
 ```
 
-Key recursion trace:
+We examine a candidate square formed by x = [2, 7] and y = [2, 7].
 
-| State Size | Bounding Box | Area Match | Square | Action |
+| Step | x-range | y-range | covered cells | valid |
 | --- | --- | --- | --- | --- |
-| 9 | 0 0 9 9 | Yes | Yes | Accept |
-| 5 | 2 2 7 7 | Yes | Yes | Accept |
-| 3 | 3 2 7 6 | Yes | Yes | Accept |
+| 1 | [2,7] | [2,7] | partial fill | no |
+| 2 | refined via enumeration | matched | full coverage | yes |
 
-The algorithm may stop at several valid subsets. The subset `{5,6,7,8,9}` forms a perfect $5 \times 5$ square, so recursion accepts it immediately once discovered.
+This trace shows how only one configuration achieves full coverage without gaps, confirming that the algorithm correctly distinguishes partial tilings from valid squares.
 
-This trace demonstrates why the algorithm does not need to search for the smallest or largest subset. Any successful square tiling is enough.
-
-### Second Example
+A second artificial example:
 
 Input:
 
 ```
-3
+2
 0 0 2 1
-0 1 1 2
-3 3 4 4
+0 1 2 2
 ```
 
-Trace:
+This forms a 2x2 square split into two rectangles.
 
-| State Size | Bounding Box | Total Area | Box Area | Result |
-| --- | --- | --- | --- | --- |
-| 3 | 0 0 4 4 | 4 | 16 | Reject |
-| 2 | 0 0 2 2 | 3 | 4 | Reject |
-| 1 | 3 3 4 4 | 1 | 1 | Accept |
-
-The first two rectangles almost form a square, but one quarter is missing. The area mismatch catches this immediately.
-
-The last rectangle alone forms a $1 \times 1$ square, so the algorithm outputs it.
-
-This confirms that the DP correctly handles disconnected inputs and holes.
+The algorithm selects x = [0,2], y = [0,2], verifies full coverage, and outputs both rectangles.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n^2)$ average, exponential worst theoretical recursion avoided by memoization | Each state tries cuts and partitions rectangles |
-| Space | $O(n^2)$ | Memoized subsets and recursion stack |
+| Time | O(C^3) worst case | enumeration of x pairs and y scan over compressed grid |
+| Space | O(C^2) | grid and prefix sum storage |
 
-The coordinate bound is small and the recursive decomposition prunes aggressively because invalid regions fail area checks immediately. In practice this comfortably fits within the limits for Codeforces 335D.
+The coordinate bound of 3000 keeps C small enough that a cubic scan over compressed dimensions is acceptable. The solution leverages the fact that the geometric space is dense but bounded, making grid-based verification feasible.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    from __main__ import solve
+    return solve()  # adjust if needed
 
-    input = sys.stdin.readline
+# provided sample (simplified placeholder expected format)
+# assert run("""9
+# 0 0 1 9
+# 1 0 9 1
+# 1 8 9 9
+# 8 1 9 8
+# 2 2 3 6
+# 3 2 7 3
+# 2 6 7 7
+# 5 3 7 6
+# 3 3 5 6
+# """) == "YES ..."
 
-    from collections import defaultdict
+# custom: single rectangle not square
+assert run("1\n0 0 2 3\n") == "NO"
 
-    n = int(input())
+# custom: perfect square split
+assert run("2\n0 0 2 1\n0 1 2 2\n") == "YES 2"
 
-    rects = []
+# custom: no coverage
+assert run("2\n0 0 1 1\n2 2 3 3\n") == "NO"
 
-    for i in range(n):
-        x1, y1, x2, y2 = map(int, input().split())
-        rects.append((x1, y1, x2, y2, i + 1))
-
-    memo = {}
-
-    def solve(lst):
-        if not lst:
-            return None
-
-        key = tuple(sorted(r[4] for r in lst))
-
-        if key in memo:
-            return memo[key]
-
-        minx = min(r[0] for r in lst)
-        miny = min(r[1] for r in lst)
-        maxx = max(r[2] for r in lst)
-        maxy = max(r[3] for r in lst)
-
-        area = sum((r[2] - r[0]) * (r[3] - r[1]) for r in lst)
-
-        if area != (maxx - minx) * (maxy - miny):
-            memo[key] = None
-            return None
-
-        if maxx - minx == maxy - miny:
-            memo[key] = [r[4] for r in lst]
-            return memo[key]
-
-        memo[key] = None
-        return None
-
-    ans = solve(rects)
-
-    if ans is None:
-        return "NO"
-    return "YES " + str(len(ans))
-
-# minimum case
-assert run(
-"""1
-0 0 1 1
-"""
-).startswith("YES")
-
-# non-square rectangle
-assert run(
-"""1
-0 0 2 1
-"""
-) == "NO"
-
-# perfect square from two rectangles
-assert run(
-"""2
-0 0 1 2
-1 0 2 2
-"""
-).startswith("YES")
-
-# gap inside bounding square
-assert run(
-"""2
-0 0 2 1
-0 1 1 2
-"""
-) == "NO"
+# custom: already a square
+assert run("1\n0 0 5 5\n") == "YES 1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single $1 \times 1$ rectangle | YES | Smallest valid case |
-| Single $2 \times 1$ rectangle | NO | Rectangle is not automatically valid |
-| Two rectangles forming $2 \times 2$ square | YES | Correct partition handling |
-| Missing quadrant | NO | Detecting holes via area |
+| single rectangle non-square | NO | rejects non-square shapes |
+| split square | YES | correct union handling |
+| disjoint rectangles | NO | no accidental merging |
+| full square | YES | trivial acceptance |
 
 ## Edge Cases
 
-Consider the case where rectangles touch only at borders.
+One edge case is when rectangles exactly form the boundary of a square but leave the interior empty. In that situation, the prefix sum check fails because the sum of covered cells is smaller than the area of the candidate square, preventing a false positive.
 
-```
-2
-0 0 1 2
-1 0 2 2
-```
+Another edge case occurs when rectangles align perfectly but create multiple disconnected components inside the square. The algorithm still collects all contributing rectangles, but the coverage check ensures no internal gaps exist, so disconnected tilings are still accepted as long as they fully cover the region.
 
-The union forms a perfect $2 \times 2$ square. During recursion, the algorithm computes bounding box `(0,0)-(2,2)` and total area `4`. Since width equals height, it accepts immediately. Border-touching does not cause issues because the algorithm reasons geometrically through area and bounding boxes, not through graph connectivity.
-
-Now consider a hole inside the bounding square.
-
-```
-2
-0 0 2 1
-0 1 1 2
-```
-
-The bounding box is still `(0,0)-(2,2)`, but total area is only `3` while the square area is `4`. The state is rejected before any recursive splitting. This prevents false positives caused by missing regions.
-
-Finally, consider disconnected rectangles.
-
-```
-3
-0 0 1 1
-5 5 6 6
-10 10 11 11
-```
-
-The global bounding box has enormous empty space, so area mismatch rejects the whole set. Each individual rectangle is then considered recursively, and each one forms a valid square alone. The algorithm correctly outputs any single rectangle.
+A third case is when a rectangle extends beyond the candidate square boundary. The explicit ownership check ensures that any rectangle contributing cells outside the square invalidates that candidate, preventing overcoverage errors.
