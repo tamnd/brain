@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 2044 problems, 1420 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 2048 problems, 1424 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 2044 problems, 1420 verified.**
+**448 contests, 2048 problems, 1424 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -372,7 +372,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [430](430/) | [Codeforces Round 245 (Div. 2)](https://codeforces.com/contest/430) | Div. 2 | 1400-1600 | 1/2 | 3m 20s |
 | [431](431/) | [Codeforces Round 247 (Div. 2)](https://codeforces.com/contest/431) | Div. 2 | 800-2200 | 5/5 | 8m 37s |
 | [432](432/) | [Codeforces Round 246 (Div. 2)](https://codeforces.com/contest/432) | Div. 2 | 800-2300 | 5/5 | 11m 39s |
-| [433](433/) | [Codeforces Round 248 (Div. 2)](https://codeforces.com/contest/433) | Div. 2 | 1100-1100 | 0/1 | 1m 42s |
+| [433](433/) | [Codeforces Round 248 (Div. 2)](https://codeforces.com/contest/433) | Div. 2 | 1100-2500 | 4/5 | 10m 22s |
 | [435](435/) | [Codeforces Round 249 (Div. 2)](https://codeforces.com/contest/435) | Div. 2 | 1000-1000 | 1/1 | 1m 7s |
 | [436](436/) | [Zepto Code Rush 2014](https://codeforces.com/contest/436) | Special | 1400-3000 | 0/3 | 9m 32s |
 | [437](437/) | [Codeforces Round 250 (Div. 2)](https://codeforces.com/contest/437) | Div. 2 | 2500-2500 | 1/1 | 1m 18s |
