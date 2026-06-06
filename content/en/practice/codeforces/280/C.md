@@ -92,11 +92,7 @@ $$X = \sum_v I(v).$$
 
 Using linearity of expectation,
 
-$$E[X]
-=
-\sum_v E[I(v)]
-=
-\sum_v \frac{1}{\text{depth}(v)}.$$
+$$E[X] = \sum_v E[I(v)] = \sum_v \frac{1}{\text{depth}(v)}.$$
 
 The problem has become extremely simple. We only need the depth of every vertex in the rooted tree.
 
@@ -122,11 +118,7 @@ The non-obvious part is step 4. A vertex contributes one move exactly when it is
 
 For any vertex `v`, define an indicator random variable:
 
-$$I(v)=
-\begin{cases}
-1,&\text{if }v\text{ is ever selected},\\
-0,&\text{otherwise}.
-\end{cases}$$
+$$I(v)= \begin{cases} 1,&\text{if }v\text{ is ever selected},\\ 0,&\text{otherwise}. \end{cases}$$
 
 Vertex `v` is selected if and only if no ancestor of `v` is selected before it. In a random permutation of all vertices, this happens exactly when `v` is the first vertex on the root-to-`v` path.
 
@@ -140,13 +132,7 @@ $$X=\sum_v I(v).$$
 
 Applying linearity of expectation,
 
-$$E[X]
-=
-\sum_v E[I(v)]
-=
-\sum_v P(I(v)=1)
-=
-\sum_v \frac{1}{depth(v)}.$$
+$$E[X] = \sum_v E[I(v)] = \sum_v P(I(v)=1) = \sum_v \frac{1}{depth(v)}.$$
 
 The DFS computes every depth exactly once, so the algorithm evaluates precisely this formula. Since the formula equals the expected number of moves, the algorithm is correct.
 
@@ -381,9 +367,7 @@ Depths are `1, 2, 3, 4`.
 
 The answer becomes
 
-$$1+\frac12+\frac13+\frac14
-=
-2.083333333333333.$$
+$$1+\frac12+\frac13+\frac14 = 2.083333333333333.$$
 
 A recursive DFS could overflow on a chain of length `100000`, but the iterative stack handles it safely.
 
@@ -402,9 +386,7 @@ Depths are `1, 2, 2, 2`.
 
 The answer is
 
-$$1+\frac12+\frac12+\frac12
-=
-2.5.$$
+$$1+\frac12+\frac12+\frac12 = 2.5.$$
 
 This case verifies that each leaf contributes independently through its probability `1/2`, even though selecting the root instantly removes all leaves.
 
@@ -432,10 +414,6 @@ Depths are:
 
 Answer:
 
-$$1+\frac12+\frac13+\frac12+\frac13
-=
-\frac{8}{3}
-=
-2.666666666666667.$$
+$$1+\frac12+\frac13+\frac12+\frac13 = \frac{8}{3} = 2.666666666666667.$$
 
 The algorithm depends only on root-to-vertex depths, regardless of how balanced or unbalanced the tree is. This confirms that the probability argument works for arbitrary tree shapes.

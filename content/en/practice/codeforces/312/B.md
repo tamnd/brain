@@ -94,9 +94,7 @@ $$\frac{p}{1-r}.$$
 
 Substituting back:
 
-$$\boxed{
-\frac{p}{1-(1-p)(1-q)}
-}$$
+$$\boxed{ \frac{p}{1-(1-p)(1-q)} }$$
 
 This closed-form expression gives the answer in constant time.
 
@@ -121,9 +119,7 @@ $$r=(1-p)(1-q).$$
 After such a round, the game returns to exactly the same state as at the beginning.
 5. Use the geometric-series formula:
 
-$$\text{answer}
-=
-\frac{p}{1-r}.$$
+$$\text{answer} = \frac{p}{1-r}.$$
 6. Print the result with sufficient precision.
 
 ### Why it works
@@ -142,8 +138,7 @@ Solving for $W$:
 
 $$W\bigl(1-(1-p)(1-q)\bigr)=p,$$
 
-$$W=
-\frac{p}{1-(1-p)(1-q)}.$$
+$$W= \frac{p}{1-(1-p)(1-q)}.$$
 
 The algorithm computes exactly this quantity, so it must return the correct winning probability.
 
@@ -301,10 +296,7 @@ $$r=\frac{999}{1000}\cdot\frac{999}{1000}=0.998001.$$
 
 The game often lasts many rounds, but the formula sums all possibilities at once:
 
-$$\text{answer}
-=
-\frac{0.001}{1-0.998001}
-\approx 0.500250125.$$
+$$\text{answer} = \frac{0.001}{1-0.998001} \approx 0.500250125.$$
 
 No truncation is needed, so no probability mass is lost.
 
@@ -318,8 +310,6 @@ Input:
 
 The algorithm gives
 
-$$r=0,
-\qquad
-\text{answer}=1.$$
+$$r=0, \qquad \text{answer}=1.$$
 
 A careless solution might assume symmetry and return $1/2$. The formula correctly incorporates the fact that SmallR shoots first and wins immediately.

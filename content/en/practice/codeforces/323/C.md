@@ -112,11 +112,7 @@ inside any subarray in `O(log n)` time.
 
 Then
 
-$$count([l_2,r_2])
-=
-count(\le r_2)
--
-count(\le l_2-1).$$
+$$count([l_2,r_2]) = count(\le r_2) - count(\le l_2-1).$$
 
 The structure is built once, then every query is answered online in logarithmic time.
 
@@ -151,18 +147,14 @@ except for the first query where `x = 0`.
 $$f(z)=((z-1+x)\bmod n)+1.$$
 7. Compute
 
-$$l_1=\min(f(a),f(b)),
-\quad
-r_1=\max(f(a),f(b)),$$
+$$l_1=\min(f(a),f(b)), \quad r_1=\max(f(a),f(b)),$$
 
 and similarly for the second interval.
 8. Query the Wavelet Tree for the number of values in `A[l1..r1]` that belong to `[l2,r2]`.
 
 This equals
 
-$$count_{\le r_2}
--
-count_{\le l_2-1}.$$
+$$count_{\le r_2} - count_{\le l_2-1}.$$
 9. Output the answer and store it as `last_answer`.
 
 ### Why it works

@@ -123,9 +123,7 @@ We must also include the one-element subsequence $[x]$, whose product is $x$.
 
 That gives
 
-$$\text{new}(x)
-=
-x \cdot \left(1 + \sum_{t \le x} F(t)\right).$$
+$$\text{new}(x) = x \cdot \left(1 + \sum_{t \le x} F(t)\right).$$
 
 The remaining challenge is handling distinctness.
 

@@ -133,9 +133,7 @@ ways, which is a multinomial coefficient.
 
 The entire answer becomes:
 
-$$\text{multinomial}
-\times
-\prod_{\text{internal gaps}} 2^{k-1}$$
+$$\text{multinomial} \times \prod_{\text{internal gaps}} 2^{k-1}$$
 
 This converts the problem into pure combinatorics.
 

@@ -48,9 +48,7 @@ for $1\le i<n$.
 
 Suppose two segments have width $k$. The matching condition implies
 
-$$(h_{l+i}-h_{l+i+1})
-=
--(h_{a+i}-h_{a+i+1})$$
+$$(h_{l+i}-h_{l+i+1}) = -(h_{a+i}-h_{a+i+1})$$
 
 for every position.
 
@@ -107,15 +105,11 @@ $$h_{l+i}+h_{a+i}=C.$$
 
 Subtract the equation for offset $i+1$:
 
-$$(h_{l+i}-h_{l+i+1})
-=
--(h_{a+i}-h_{a+i+1}).$$
+$$(h_{l+i}-h_{l+i+1}) = -(h_{a+i}-h_{a+i+1}).$$
 
 Using
 
-$$d_i=h_i-h_{i+1},
-\qquad
-d'_i=-d_i,$$
+$$d_i=h_i-h_{i+1}, \qquad d'_i=-d_i,$$
 
 the problem becomes:
 
@@ -187,15 +181,11 @@ with
 $$a=p,\qquad b=p+len.$$
 12. The segment intersects the query iff
 
-$$a\le r
-\quad\text{and}\quad
-b\ge l.$$
+$$a\le r \quad\text{and}\quad b\ge l.$$
 
 Equivalently, valid occurrences satisfy
 
-$$b<l
-\quad\text{or}\quad
-a>r.$$
+$$b<l \quad\text{or}\quad a>r.$$
 13. Use the persistent counting structure to count positions inside the suffix-array interval whose start indices satisfy the allowed ranges.
 14. Output that count.
 

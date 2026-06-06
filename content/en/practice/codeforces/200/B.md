@@ -138,9 +138,7 @@ $$nx.$$
 
 The final percentage is
 
-$$\frac{x \cdot \frac{p_1+p_2+\cdots+p_n}{100}}{nx}\times100
-=
-\frac{p_1+p_2+\cdots+p_n}{n}.$$
+$$\frac{x \cdot \frac{p_1+p_2+\cdots+p_n}{100}}{nx}\times100 = \frac{p_1+p_2+\cdots+p_n}{n}.$$
 
 The algorithm computes exactly this quantity, so it always returns the correct orange juice percentage.
 

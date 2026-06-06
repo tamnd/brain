@@ -76,9 +76,7 @@ A third common mistake is forgetting that $(a,b,c)$ is ordered. The triples $(1,
 
 Start from the identity
 
-$$(a+b+c)^3-(a^3+b^3+c^3)
-=
-3(a+b)(b+c)(c+a).$$
+$$(a+b+c)^3-(a^3+b^3+c^3) = 3(a+b)(b+c)(c+a).$$
 
 Let
 
@@ -104,9 +102,7 @@ $$xyz=m.$$
 
 From
 
-$$a=\frac{x+z-y}{2},\quad
-b=\frac{x+y-z}{2},\quad
-c=\frac{y+z-x}{2},$$
+$$a=\frac{x+z-y}{2},\quad b=\frac{x+y-z}{2},\quad c=\frac{y+z-x}{2},$$
 
 a triple corresponds to valid positive integers exactly when
 
@@ -114,9 +110,7 @@ $$x+y+z \equiv 0 \pmod 2$$
 
 and the strict triangle inequalities hold:
 
-$$x+y>z,\quad
-y+z>x,\quad
-z+x>y.$$
+$$x+y>z,\quad y+z>x,\quad z+x>y.$$
 
 Since we enumerate factor triples in sorted order $x \le y \le z$, only
 

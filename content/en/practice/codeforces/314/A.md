@@ -28,8 +28,7 @@ The participants are listed in final rank order. Participant `i` has rating `a[i
 
 For a table of size `m`, if a participant currently occupies position `p`, his rating change is
 
-$$d = \sum_{\text{participants before him}} a_j (pos_j-1)
-    - a_i (p-1)(m-p)$$
+$$d = \sum_{\text{participants before him}} a_j (pos_j-1)     - a_i (p-1)(m-p)$$
 
 In the original statement this formula is given directly. The complication is that the table is dynamic.
 
@@ -69,11 +68,7 @@ The key observation is that removals always happen from left to right in terms o
 
 Suppose participant `i` currently survives. If some participant after him is removed, then the number of people after `i` decreases. Looking at the formula,
 
-$$d_i
-=
-\text{constant}
--
-a_i (p_i-1)(m-p_i),$$
+$$d_i = \text{constant} - a_i (p_i-1)(m-p_i),$$
 
 the factor `(m-p_i)` becomes smaller. Since it is multiplied by a minus sign, `d_i` can only increase.
 

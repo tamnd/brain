@@ -163,9 +163,7 @@ The fraction `best_sum / best_count` represents the best prefix average found so
 
 - If
 
-$$\text{sum\_prefix} \cdot \text{best\_count}
-\ge
-\text{count} \cdot \text{best\_sum},$$
+$$\text{sum\_prefix} \cdot \text{best\_count} \ge \text{count} \cdot \text{best\_sum},$$
 
 then update:
 
@@ -224,9 +222,7 @@ prefix_sum * best_cnt >= cnt * best_sum
 
 which checks whether
 
-$$\frac{\text{prefix\_sum}}{\text{cnt}}
-\ge
-\frac{\text{best\_sum}}{\text{best\_cnt}}$$
+$$\frac{\text{prefix\_sum}}{\text{cnt}} \ge \frac{\text{best\_sum}}{\text{best\_cnt}}$$
 
 without using floating point arithmetic.
 

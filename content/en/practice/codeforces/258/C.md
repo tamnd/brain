@@ -136,11 +136,7 @@ $$[d_r,\ d_{r+1}-1],$$
 
 count how many array elements fall inside it:
 
-$$E_r
-=
-\text{pref}[d_{r+1}-1]
--
-\text{pref}[d_r-1].$$
+$$E_r = \text{pref}[d_{r+1}-1] - \text{pref}[d_r-1].$$
 
 Every such position has exactly `r` available divisors of `m`.
 7. Multiply

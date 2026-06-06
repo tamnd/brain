@@ -62,9 +62,7 @@ $$y_2-y_1 = -(x_2-x_1)$$
 
 The squared distance becomes
 
-$$(x_2-x_1)^2 + (y_2-y_1)^2
-=
-2(x_2-x_1)^2$$
+$$(x_2-x_1)^2 + (y_2-y_1)^2 = 2(x_2-x_1)^2$$
 
 For any nonzero integer $d$,
 
@@ -84,10 +82,7 @@ $$\min(n,m)+1.$$
 
 A particularly simple diagonal achieving this size is
 
-$$(0,\min(n,m)),
-(1,\min(n,m)-1),
-\dots,
-(\min(n,m),0).$$
+$$(0,\min(n,m)), (1,\min(n,m)-1), \dots, (\min(n,m),0).$$
 
 Now we need to prove optimality.
 

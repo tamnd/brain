@@ -90,13 +90,7 @@ Let the active vertices be ordered by Euler-tour entry time. If we connect conse
 
 Thus:
 
-$$\text{SteinerWeight}
-=
-\frac{
-\sum d(v_i,v_{i+1})
-}{
-2
-}$$
+$$\text{SteinerWeight} = \frac{ \sum d(v_i,v_{i+1}) }{ 2 }$$
 
 where the order is cyclic in DFS order.
 
@@ -124,13 +118,7 @@ The remaining task is computing distances quickly. Since the tree never changes,
 
 Then
 
-$$d(u,v)
-=
-distRoot[u]
-+
-distRoot[v]
--
-2\,distRoot[lca(u,v)].$$
+$$d(u,v) = distRoot[u] + distRoot[v] - 2\,distRoot[lca(u,v)].$$
 
 Each update requires only predecessor/successor queries in an ordered set and a constant number of distance computations.
 
@@ -556,11 +544,7 @@ Initially the answer is 10 because the path from 1 to 3 uses both edges.
 
 After activating vertex 2, the minimal connected subtree is unchanged. The insertion update adds
 
-$$d(1,2)+d(2,3)-d(1,3)
-=
-4+6-10
-=
-0.$$
+$$d(1,2)+d(2,3)-d(1,3) = 4+6-10 = 0.$$
 
 The maintained value does not change, producing the correct answer.
 

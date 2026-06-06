@@ -82,10 +82,7 @@ $$(t_0-t_1)y_1 \le (t_2-t_0)y_2.$$
 
 For a fixed `y2`, the largest valid `y1` is
 
-$$y_1=
-\left\lfloor
-\frac{(t_2-t_0)y_2}{t_0-t_1}
-\right\rfloor.$$
+$$y_1= \left\lfloor \frac{(t_2-t_0)y_2}{t_0-t_1} \right\rfloor.$$
 
 Why do we want the largest valid `y1`? Because increasing `y1` lowers the temperature. Since we are looking for the temperature closest to `t0` from above, we want as much cold water as possible while still remaining valid.
 
@@ -105,10 +102,7 @@ For each `y2`, we compute the largest admissible `y1`, cap it by `x1`, and evalu
 3. If `t0 = t1`, every amount of cold water alone already satisfies the target exactly. In this special case the best cold-water amount is simply `x1`.
 4. Otherwise compute
 
-$$y_1=
-\left\lfloor
-\frac{(t_2-t_0)y_2}{t_0-t_1}
-\right\rfloor.$$
+$$y_1= \left\lfloor \frac{(t_2-t_0)y_2}{t_0-t_1} \right\rfloor.$$
 
 This is the largest cold-water flow that can still keep the mixture temperature at least `t0`.
 

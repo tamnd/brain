@@ -128,9 +128,7 @@ $$\text{rem} = \text{inches} \bmod 12$$
 
 After rounding, the length is represented by an exact integer number of inches. Any representation in feet and inches must satisfy:
 
-$$12 \cdot \text{feet} + \text{inches\_remaining}
-=
-\text{total\_inches}$$
+$$12 \cdot \text{feet} + \text{inches\_remaining} = \text{total\_inches}$$
 
 with the remaining inches between 0 and 11 inclusive.
 

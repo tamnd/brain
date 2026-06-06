@@ -146,8 +146,7 @@ $$S_y(d)=\sum_{k=1}^{\lfloor h/d\rfloor}(h-dk+1).$$
 
 Both sums have closed forms:
 
-$$S_x(d)=m(w+1)-d\frac{m(m+1)}2,
-\quad m=\left\lfloor\frac wd\right\rfloor.$$
+$$S_x(d)=m(w+1)-d\frac{m(m+1)}2, \quad m=\left\lfloor\frac wd\right\rfloor.$$
 
 The same formula works for $S_y$.
 
@@ -161,9 +160,7 @@ The lattice-point formula $\gcd(dx,dy)+1$ counts all lattice points on a segment
 
 The final answer is therefore
 
-$$\text{even-area triples}
--
-\text{collinear triples}.$$
+$$\text{even-area triples} - \text{collinear triples}.$$
 
 ## Python Solution
 

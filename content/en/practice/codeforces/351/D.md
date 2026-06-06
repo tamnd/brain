@@ -1,7 +1,7 @@
 ---
 title: "CF 351D - Jeff and Removing Periods"
-description: "We are given a sequence of integers, and the task is to compute a \"beauty\" metric for any subsequence of it. The beauty is defined as the minimum number of operations needed to remove all elements, where each operation can remove a subsequence of equally spaced equal numbers."
-date: "2026-05-29T00:00:00+07:00"
+description: "For each query we look at a subarray of the given array and ask for its beauty. A single operation chooses several equal values whose positions form an arithmetic progression, removes them, and then allows us to reorder everything that remains. That last sentence is the key."
+date: "2026-06-06T22:08:08+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
 codeforces_contest: 351
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 204 (Div. 1)"
 rating: 2700
 weight: 351
-solve_time_s: 144
+solve_time_s: 159
 verified: true
 draft: false
 ---
@@ -18,110 +18,480 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** data structures  
-**Solve time:** 2m 24s  
+**Solve time:** 2m 39s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of integers, and the task is to compute a "beauty" metric for any subsequence of it. The beauty is defined as the minimum number of operations needed to remove all elements, where each operation can remove a subsequence of equally spaced equal numbers. Formally, if we have numbers at positions $v, v+t, v+2t, \dots, v+kt$ that are all equal, we can remove them in one operation, then reindex the sequence and continue.
+For each query we look at a subarray of the given array and ask for its **beauty**.
 
-The input consists of a sequence $b$ of length $m$, followed by $q$ queries. Each query specifies a contiguous subsequence of $b$ via indices $[l, r]$, and we must determine the beauty of that subsequence.
+A single operation chooses several equal values whose positions form an arithmetic progression, removes them, and then allows us to reorder everything that remains.
 
-The constraints allow $m$ and $q$ up to $10^5$, with values of $b_i$ up to $10^5$. This rules out any naive approach that enumerates all possible subsequences for removal, since the number of operations in the worst case grows combinatorially. Instead, we need a method that efficiently computes the minimum number of operations for any contiguous range.
+That last sentence is the key. After the first operation, the order of the remaining elements becomes completely controllable. If a value appears $c$ times, we can place all $c$ copies on positions forming an arithmetic progression and delete them in one operation. From that point onward, each distinct value can always be removed in exactly one operation.
 
-Edge cases arise when all elements are identical, or when the sequence has isolated values that cannot be grouped. For example, for $b = [1, 1, 1, 2, 2]$ and query $[1,5]$, the beauty is 2 (one operation for all 1s and one for all 2s). A naive approach that only considers adjacent equal numbers might miscount if it fails to exploit larger spacing patterns.
+The only difficult part is the **first** operation, because it must use the original order of the queried subarray.
+
+The array length and the number of queries are both up to $10^5$. Any solution that processes a query independently is immediately ruled out. Even $O(\sqrt n)$ work per query would already be close to the limit. We need an offline data structure solution with roughly $O((n+q)\sqrt n)$ total complexity.
+
+A subtle edge case appears when a value occurs exactly once inside the query interval.
+
+```
+[5, 7, 5]
+```
+
+For the interval $[2,2]$, the value $7$ appears once. A single position is trivially an arithmetic progression, so that value can be deleted immediately. Any solution that only checks values occurring at least twice would miss this.
+
+Another easy mistake is to think that after reordering we may somehow combine different values into one operation.
+
+```
+[1, 1, 2, 2]
+```
+
+Operations always delete equal values only. Even after reordering, the best we can do is delete all $1$'s in one operation and all $2$'s in another. The answer is $2$, not $1$.
+
+The most important corner case is when every value occurs multiple times, but none of them already forms an arithmetic progression.
+
+```
+positions of 1: 1, 3, 6
+positions of 2: 2, 5, 9
+```
+
+Neither set of positions is an arithmetic progression. The first operation cannot completely eliminate any value. That extra failed first operation increases the answer by one.
 
 ## Approaches
 
-The brute-force approach would be to simulate all possible removal operations for each query. For a sequence of length $n$, one would attempt all possible choices of starting positions $v$, spacings $t$, and lengths $k$, remove the corresponding numbers, and recursively compute the minimum number of operations for the remainder. This method is correct in principle but completely infeasible for $m = 10^5$, as each query could generate an exponential number of recursive branches. In worst-case terms, it is $O(2^n)$ per query.
+The brute force viewpoint is surprisingly useful.
 
-The key observation is that the order of the remaining elements after each operation does not matter. This reduces the problem to counting the frequency of each unique number in the subsequence and computing the minimum number of operations required to remove all occurrences of that number. Each unique number can be removed in at most ceil(count / k) operations, where k is the maximum length of an arithmetic progression of identical values. This naturally suggests a segment-tree or Mo’s algorithm approach where we can efficiently maintain frequencies and quickly determine the maximum frequency of any number in a query range. Since every operation can remove all identical numbers simultaneously in a perfect arithmetic progression, the beauty of a sequence equals the size of its largest multiset of repeated numbers (the mode frequency) minus one.
+Suppose we know all occurrences of every value inside a query interval. A value is immediately removable if all of its occurrences in the interval lie on an arithmetic progression. If we remove such a value first, then the remaining distinct values can each be deleted in one operation after reordering.
 
-This insight transforms the problem into a range mode query problem. Using Mo's algorithm with frequency tracking allows us to compute the beauty of each query in $O(m \sqrt m)$ time, which is feasible for the given constraints.
+Let $D$ be the number of distinct values in the interval.
+
+If some value is immediately removable, we spend one operation deleting it, then $D-1$ more operations for the remaining distinct values. The answer is $D$.
+
+If no value is immediately removable, the first operation can only delete part of some value. After that operation, all $D$ distinct values still exist. Reordering then needs $D$ additional operations. The answer is $D+1$.
+
+So every query reduces to two quantities:
+
+1. The number of distinct values.
+2. Whether there exists at least one value whose occurrences inside the interval form an arithmetic progression.
+
+This observation is the entire problem. It appears in many accepted solutions and is the foundation of the standard Mo's algorithm approach.
+
+A naive implementation would still be too slow. For each query we would have to gather occurrences of every value and test the arithmetic progression condition from scratch. In the worst case that becomes $O(n)$ or worse per query, which is far beyond what $10^5$ queries allow.
+
+The interval endpoints move gradually under Mo's algorithm. The number of distinct values is easy to maintain. The real challenge is maintaining the number of values whose current occurrences form an arithmetic progression.
+
+The accepted solution precomputes auxiliary arrays that tell us exactly when adding or removing one occurrence causes a value to stop being an arithmetic progression, or start being one again. Then every Mo update becomes $O(1)$.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n) | O(n) | Too slow |
-| Mo's Algorithm (range frequency) | O((m + q)√m) | O(max(b_i)) | Accepted |
+| Brute Force | $O(nq)$ or worse | $O(n)$ | Too slow |
+| Optimal (Mo + AP maintenance) | $O((n+q)\sqrt n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Parse the input sequence $b$ of length $m$ and store all queries $[l_i, r_i]$.
-2. Sort the queries according to Mo’s ordering: divide the array into blocks of size roughly $\sqrt{m}$, then sort first by block index of $l$, then by $r$ in increasing or decreasing order depending on the parity of the block. This ordering minimizes the number of insertions/removals when processing consecutive queries.
-3. Initialize a frequency array $freq$ of size $\max(b_i)+1$ and a variable $current\_max$ to store the current maximum frequency in the active range.
-4. Define functions `add(x)` and `remove(x)` to adjust $freq[x]$ and update $current\_max$ accordingly. Adding an element increases its frequency and may increase `current_max`. Removing an element decreases its frequency and may require scanning to update `current_max`.
-5. Iterate over queries in the Mo’s ordering. Expand or shrink the current active range to match $[l_i, r_i]$, calling `add` or `remove` for each element added or removed.
-6. For each query, the beauty is $r_i - l_i + 1 - current\_max$. This formula works because the largest group of identical numbers can be removed in one operation, and the remaining elements will each require at least one operation.
-7. Store the answers in the order of input queries and print them.
+### Key characterization
 
-Why it works: The invariant maintained is that `current_max` always represents the maximum frequency of any number in the current range. Because we can remove all instances of a number in one operation, the minimum number of operations for the subsequence is the total length minus the maximum number of identical elements we can remove in a single operation. Sorting queries by Mo’s algorithm guarantees we can move the active range efficiently without recomputation from scratch.
+Let $D$ be the number of distinct values in the current interval.
+
+Let $G$ be the number of values whose occurrences inside the interval form an arithmetic progression.
+
+If $G>0$, the answer is $D$.
+
+If $G=0$, the answer is $D+1$.
+
+So the entire task becomes maintaining $D$ and $G$.
+
+### Preprocessing occurrence structure
+
+For every position $i$:
+
+1. Compute `pre[i]`, the previous occurrence of the same value.
+2. Compute `bak[i]`, the next occurrence of the same value.
+
+Then build two helper arrays.
+
+`fl[i]` stores the leftmost position beyond which the chain of equal values ending at $i$ stops being an arithmetic progression.
+
+`fr[i]` stores the symmetric information when looking to the right.
+
+These arrays are computed by dynamic recurrence on consecutive occurrences of the same value.
+
+### Mo ordering
+
+1. Sort all queries using the standard Mo ordering.
+2. Maintain a current interval $[L,R]$.
+3. Move $L$ and $R$ to match each query.
+
+### Maintaining distinct values
+
+1. Keep `cnt[value]`.
+2. When a frequency changes from $0$ to $1$, increase $D$.
+3. When a frequency changes from $1$ to $0$, decrease $D$.
+
+### Maintaining arithmetic progression values
+
+1. Keep $G$, the number of values whose current occurrences form an arithmetic progression.
+2. When a boundary moves, only one occurrence is inserted or removed.
+3. Using `fl` and `fr`, determine in $O(1)$ whether that update changes the AP status of the corresponding value.
+4. Increase or decrease $G$ accordingly.
+
+The precomputed arrays tell us exactly when a newly exposed occurrence creates the first violation of equal spacing, or when removing an occurrence eliminates the last violation.
+
+### Answering a query
+
+1. After the interval is adjusted, we know $D$ and $G$.
+2. If $G>0$, output $D$.
+3. Otherwise output $D+1$.
+
+### Why it works
+
+After the first operation, arbitrary reordering is allowed. Every remaining distinct value can then be arranged so that all its copies lie on an arithmetic progression and can be deleted in one operation.
+
+A query interval needs exactly one less operation if there exists a value that can already be deleted completely before any reordering occurs. That condition is equivalent to saying that the occurrences of that value inside the interval form an arithmetic progression.
+
+Thus the answer depends only on the number of distinct values and on whether at least one value is currently "good". The Mo structure maintains exactly these two pieces of information, so every reported answer is correct.
 
 ## Python Solution
 
 ```python
 import sys
-import math
+from math import isqrt
+
 input = sys.stdin.readline
 
-m = int(input())
-b = list(map(int, input().split()))
-q = int(input())
-queries = []
-for i in range(q):
-    l, r = map(int, input().split())
-    queries.append((l-1, r-1, i))  # 0-indexed
+def solve():
+    n = int(input())
+    a = [0] + list(map(int, input().split()))
 
-block_size = int(math.sqrt(m)) + 1
-queries.sort(key=lambda x: (x[0] // block_size, x[1] if (x[0] // block_size) % 2 == 0 else -x[1]))
+    maxv = 100000
 
-freq = [0] * (max(b) + 2)
-current_max = 0
-answers = [0] * q
-cur_l, cur_r = 0, -1
+    pre = [0] * (n + 1)
+    bak = [0] * (n + 1)
+    fl = [0] * (n + 1)
+    fr = [0] * (n + 2)
 
-def add(x):
-    global current_max
-    freq[x] += 1
-    current_max = max(current_max, freq[x])
+    last = [0] * (maxv + 1)
 
-def remove(x):
-    global current_max
-    freq[x] -= 1
-    # current_max will be recomputed lazily if necessary
-    # simple way: recompute current_max when needed in answer formula
+    for i in range(1, n + 1):
+        pre[i] = last[a[i]]
+        last[a[i]] = i
 
-for l, r, idx in queries:
-    while cur_r < r:
-        cur_r += 1
-        add(b[cur_r])
-    while cur_r > r:
-        remove(b[cur_r])
-        cur_r -= 1
-    while cur_l < l:
-        remove(b[cur_l])
-        cur_l += 1
-    while cur_l > l:
-        cur_l -= 1
-        add(b[cur_l])
-    # Recompute current_max for exact answer
-    current_max = max(freq)
-    answers[idx] = (r - l + 1) - current_max
+        if pre[i] == 0 or pre[pre[i]] == 0:
+            fl[i] = 0
+        elif pre[pre[i]] - pre[i] == pre[i] - i:
+            fl[i] = fl[pre[i]]
+        else:
+            fl[i] = pre[pre[i]]
 
-for ans in answers:
-    print(ans)
+    last = [0] * (maxv + 1)
+
+    for i in range(n, 0, -1):
+        bak[i] = last[a[i]]
+        last[a[i]] = i
+
+        if bak[i] == 0 or bak[bak[i]] == 0:
+            fr[i] = n + 1
+        elif bak[bak[i]] - bak[i] == bak[i] - i:
+            fr[i] = fr[bak[i]]
+        else:
+            fr[i] = bak[bak[i]]
+
+    q = int(input())
+    block = isqrt(n) + 1
+
+    queries = []
+    for idx in range(q):
+        l, r = map(int, input().split())
+        queries.append((l, r, idx))
+
+    queries.sort(key=lambda x: (x[0] // block, x[1]))
+
+    cnt = [0] * (maxv + 1)
+    ans = [0] * q
+
+    distinct = 0
+    good = 0
+
+    def add_left(pos, cur_r):
+        nonlocal distinct, good
+        x = a[pos]
+
+        cnt[x] += 1
+        if cnt[x] == 1:
+            distinct += 1
+            good += 1
+        elif fr[pos] <= cur_r and fr[bak[pos]] > cur_r:
+            good -= 1
+
+    def remove_left(pos, cur_r):
+        nonlocal distinct, good
+        x = a[pos]
+
+        cnt[x] -= 1
+        if cnt[x] == 0:
+            distinct -= 1
+            good -= 1
+        elif fr[pos] <= cur_r and fr[bak[pos]] > cur_r:
+            good += 1
+
+    def add_right(pos, cur_l):
+        nonlocal distinct, good
+        x = a[pos]
+
+        cnt[x] += 1
+        if cnt[x] == 1:
+            distinct += 1
+            good += 1
+        elif fl[pos] >= cur_l and fl[pre[pos]] < cur_l:
+            good -= 1
+
+    def remove_right(pos, cur_l):
+        nonlocal distinct, good
+        x = a[pos]
+
+        cnt[x] -= 1
+        if cnt[x] == 0:
+            distinct -= 1
+            good -= 1
+        elif fl[pos] >= cur_l and fl[pre[pos]] < cur_l:
+            good += 1
+
+    L = 1
+    R = 0
+
+    for l, r, idx in queries:
+        while L > l:
+            L -= 1
+            add_left(L, R)
+
+        while R < r:
+            R += 1
+            add_right(R, L)
+
+        while L < l:
+            remove_left(L, R)
+            L += 1
+
+        while R > r:
+            remove_right(R, L)
+            R -= 1
+
+        ans[idx] = distinct if good > 0 else distinct + 1
+
+    sys.stdout.write("\n".join(map(str, ans)))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-Explanation: We first parse inputs and adjust queries to 0-indexed for convenience. Sorting queries by Mo’s order minimizes modifications to the active range. `add` and `remove` functions maintain the frequency array. After adjusting the range for each query, we compute `current_max` by scanning the frequency array. Finally, the beauty formula subtracts this maximum from the total length.
+The preprocessing stage builds the previous and next occurrence links for every value. Those links are then used to compute `fl` and `fr`, which encode where the arithmetic progression property first breaks.
+
+The Mo structure maintains a sliding interval. Every update changes only one position, so the status of only one value can change. The helper arrays let us detect that change in constant time.
+
+A common source of bugs is forgetting that the update functions must use the **current** interval boundaries, not the query boundaries being processed. Another frequent mistake is updating the interval endpoints before evaluating the transition conditions.
 
 ## Worked Examples
 
-**Sample 1:**
+### Sample 1
 
-Input:
+Input interval:
 
 ```
-5
+[2, 2, 1, 1, 2]
+```
+
+| Value | Positions |
+| --- | --- |
+| 1 | 3, 4 |
+| 2 | 1, 2, 5 |
+
+Distinct values:
+
+| D | Good values |
+| --- | --- |
+| 2 | Value 1 |
+
+The positions of value $1$ are $(3,4)$, which is an arithmetic progression.
+
+Since a good value exists, the answer is $D=2$.
+
+This example demonstrates the central observation: one value can be removed immediately, then the remaining value is removed after reordering.
+
+### Custom Example
+
+Array:
+
+```
+[1, 2, 1, 2, 2, 1]
+```
+
+Query:
+
+```
+[1, 6]
+```
+
+| Value | Positions |
+| --- | --- |
+| 1 | 1, 3, 6 |
+| 2 | 2, 4, 5 |
+
+Check equal spacing:
+
+| Value | Differences | AP? |
+| --- | --- | --- |
+| 1 | 2, 3 | No |
+| 2 | 2, 1 | No |
+
+Here $D=2$ and $G=0$.
+
+Answer:
+
+$$D + 1 = 3$$
+
+The first operation cannot completely eliminate any value, so an extra operation is unavoidable.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O((n+q)\sqrt n)$ | Standard Mo's algorithm with $O(1)$ updates |
+| Space | $O(n)$ | Occurrence links, helper arrays, frequencies, queries |
+
+With $n,q \le 10^5$, roughly $O((n+q)\sqrt n)$ operations comfortably fit inside the time limit, and the memory usage remains well below 256 MB.
+
+## Test Cases
+
+```python
+# helper: run solution on input string, return output string
+import sys, io
+
+def run(inp: str) -> str:
+    from math import isqrt
+
+    sys.stdin = io.StringIO(inp)
+    out = io.StringIO()
+    sys.stdout = out
+
+    input = sys.stdin.readline
+
+    n = int(input())
+    a = [0] + list(map(int, input().split()))
+
+    maxv = 100000
+
+    pre = [0] * (n + 1)
+    bak = [0] * (n + 1)
+    fl = [0] * (n + 1)
+    fr = [0] * (n + 2)
+
+    last = [0] * (maxv + 1)
+
+    for i in range(1, n + 1):
+        pre[i] = last[a[i]]
+        last[a[i]] = i
+
+        if pre[i] == 0 or pre[pre[i]] == 0:
+            fl[i] = 0
+        elif pre[pre[i]] - pre[i] == pre[i] - i:
+            fl[i] = fl[pre[i]]
+        else:
+            fl[i] = pre[pre[i]]
+
+    last = [0] * (maxv + 1)
+
+    for i in range(n, 0, -1):
+        bak[i] = last[a[i]]
+        last[a[i]] = i
+
+        if bak[i] == 0 or bak[bak[i]] == 0:
+            fr[i] = n + 1
+        elif bak[bak[i]] - bak[i] == bak[i] - i:
+            fr[i] = fr[bak[i]]
+        else:
+            fr[i] = bak[bak[i]]
+
+    q = int(input())
+    block = isqrt(n) + 1
+
+    qs = []
+    for idx in range(q):
+        l, r = map(int, input().split())
+        qs.append((l, r, idx))
+
+    qs.sort(key=lambda x: (x[0] // block, x[1]))
+
+    cnt = [0] * (maxv + 1)
+    res = [0] * q
+
+    distinct = 0
+    good = 0
+
+    def add_left(pos, cur_r):
+        nonlocal distinct, good
+        x = a[pos]
+        cnt[x] += 1
+        if cnt[x] == 1:
+            distinct += 1
+            good += 1
+        elif fr[pos] <= cur_r and fr[bak[pos]] > cur_r:
+            good -= 1
+
+    def remove_left(pos, cur_r):
+        nonlocal distinct, good
+        x = a[pos]
+        cnt[x] -= 1
+        if cnt[x] == 0:
+            distinct -= 1
+            good -= 1
+        elif fr[pos] <= cur_r and fr[bak[pos]] > cur_r:
+            good += 1
+
+    def add_right(pos, cur_l):
+        nonlocal distinct, good
+        x = a[pos]
+        cnt[x] += 1
+        if cnt[x] == 1:
+            distinct += 1
+            good += 1
+        elif fl[pos] >= cur_l and fl[pre[pos]] < cur_l:
+            good -= 1
+
+    def remove_right(pos, cur_l):
+        nonlocal distinct, good
+        x = a[pos]
+        cnt[x] -= 1
+        if cnt[x] == 0:
+            distinct -= 1
+            good -= 1
+        elif fl[pos] >= cur_l and fl[pre[pos]] < cur_l:
+            good += 1
+
+    L, R = 1, 0
+
+    for l, r, idx in qs:
+        while L > l:
+            L -= 1
+            add_left(L, R)
+        while R < r:
+            R += 1
+            add_right(R, L)
+        while L < l:
+            remove_left(L, R)
+            L += 1
+        while R > r:
+            remove_right(R, L)
+            R -= 1
+
+        res[idx] = distinct if good > 0 else distinct + 1
+
+    return "\n".join(map(str, res))
+
+# sample 1
+assert run(
+"""5
 2 2 1 1 2
 5
 1 5
@@ -129,38 +499,84 @@ Input:
 2 2
 1 3
 2 3
+"""
+) == "2\n1\n1\n2\n2"
+
+# minimum size
+assert run(
+"""1
+7
+1
+1 1
+"""
+) == "1"
+
+# all equal
+assert run(
+"""4
+5 5 5 5
+1
+1 4
+"""
+) == "1"
+
+# two distinct singletons
+assert run(
+"""2
+1 2
+1
+1 2
+"""
+) == "2"
+
+# AP positions present
+assert run(
+"""5
+1 2 1 3 1
+1
+1 5
+"""
+) == "3"
 ```
 
-| Query | Active Range | freq array snapshot | current_max | Beauty |
-| --- | --- | --- | --- | --- |
-| 1 | [0,4] | {1:2,2:3} | 3 | 5-3=2 |
-| 2 | [0,0] | {2:1} | 1 | 1-1=0 → 1 (at least 1 op) |
-| 3 | [1,1] | {2:1} | 1 | 1 |
-| 4 | [0,2] | {2:2,1:1} | 2 | 3-2=1 → 2 after ceil? |
-| 5 | [1,2] | {2:1,1:1} | 1 | 2-1=1 → 2 |
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Single element | 1 | Smallest possible interval |
+| All equal values | 1 | One value removed in one operation |
+| Two distinct singletons | 2 | Singleton values are always good |
+| Positions 1,3,5 of same value | 3 | Arithmetic progression detection |
 
-This confirms the algorithm handles singletons, duplicates, and overlapping ranges correctly.
+## Edge Cases
 
-**Additional Example:**
+Consider:
 
-Input:
+```
+1
+7
+1
+1 1
+```
+
+The interval contains one value appearing once. A single position is an arithmetic progression, so $G=1$, $D=1$, and the answer is $1$.
+
+Consider:
+
+```
+4
+5 5 5 5
+1
+1 4
+```
+
+All occurrences belong to one value. Their positions form an arithmetic progression, so the entire interval disappears in one operation. The algorithm keeps $D=1$ and $G=1$, producing answer $1$.
+
+Consider:
 
 ```
 6
-1 1 1 2 2 3
-2
+1 2 1 2 2 1
+1
 1 6
-4 6
 ```
 
-| Query | Active Range | freq | current_max | Beauty |
-| --- | --- | --- | --- | --- |
-| 1 | [0,5] | {1:3,2:2,3:1} | 3 | 6-3=3 |
-| 2 | [3,5] | {2:2,3:1} | 2 | 3-2=1 |
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O((m + q)√m) | Mo's algorithm ensures each element is added/removed O(√m) times overall |
-|  |  |  |
+Value $1$ occupies positions $1,3,6$, differences $2,3$. Value $2$ occupies positions $2,4,5$, differences $2,1$. No value is good. The algorithm ends with $D=2$ and $G=0$, returning $3$, which matches the optimal strategy.

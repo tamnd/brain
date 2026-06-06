@@ -149,9 +149,7 @@ The new length equals `f+1` in expectation-conditioned form.
 
 Therefore the expected increase contributed by this position is:
 
-$$p \cdot (2(f+1)-1)
-=
-p(2f+1)$$
+$$p \cdot (2(f+1)-1) = p(2f+1)$$
 
 So:
 
@@ -189,9 +187,7 @@ $$L_i^2-(L_i-1)^2 = 2L_i-1$$
 
 Taking expectation and using linearity of expectation gives:
 
-$$E[\Delta]
-=
-p_i(2E[L_{i-1}]+1)$$
+$$E[\Delta] = p_i(2E[L_{i-1}]+1)$$
 
 which is exactly the update added to `ans`.
 

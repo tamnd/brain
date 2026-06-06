@@ -77,11 +77,7 @@ The key observation is that the DP transition is linear. If we store the counts 
 
 Let `A` be the `m × m` transition matrix:
 
-$$A[u][v] =
-\begin{cases}
-1 & \text{if transition } u \to v \text{ is allowed}\\
-0 & \text{otherwise}
-\end{cases}$$
+$$A[u][v] = \begin{cases} 1 & \text{if transition } u \to v \text{ is allowed}\\ 0 & \text{otherwise} \end{cases}$$
 
 If `f_i` is the row vector of counts for length `i`, then
 

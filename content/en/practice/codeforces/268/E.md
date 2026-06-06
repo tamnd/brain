@@ -118,11 +118,7 @@ $$\sum l_i.$$
 
 Thus the optimization problem becomes:
 
-$$\sum l_i
-+
-\sum_{i<j}
-l_i \cdot \frac{p_i}{100}
-\left(1-\frac{p_j}{100}\right).$$
+$$\sum l_i + \sum_{i<j} l_i \cdot \frac{p_i}{100} \left(1-\frac{p_j}{100}\right).$$
 
 The constant term does not depend on the permutation. Only the pairwise term matters.
 
@@ -159,15 +155,11 @@ $$b y (1-x).$$
 
 We want `A` before `B` when
 
-$$a x (1-y)
->
-b y (1-x).$$
+$$a x (1-y) > b y (1-x).$$
 
 Multiplying by `100^2` to avoid fractions gives
 
-$$a p_A (100-p_B)
->
-b p_B (100-p_A).$$
+$$a p_A (100-p_B) > b p_B (100-p_A).$$
 
 This is a complete comparison rule between two songs.
 
@@ -176,17 +168,14 @@ This is a complete comparison rule between two songs.
 1. Read all songs.
 2. Sort songs using the comparator
 
-$$l_i p_i (100-p_j)
->
-l_j p_j (100-p_i).$$
+$$l_i p_i (100-p_j) > l_j p_j (100-p_i).$$
 
 If this inequality holds, song `i` must appear before song `j`.
 
 1. After sorting, compute the expectation.
 2. Maintain
 
-$$S=\sum_{\text{processed}}
-l_i \cdot \frac{p_i}{100}.$$
+$$S=\sum_{\text{processed}} l_i \cdot \frac{p_i}{100}.$$
 
 `S` represents the expected total length of remembered songs after all previously processed songs.
 
@@ -214,9 +203,7 @@ $$S \leftarrow S + l_i\frac{p_i}{100}.$$
 
 The pairwise objective is additive. For any two neighboring songs, the contribution difference between the two possible orders depends only on those two songs:
 
-$$a p_A (100-p_B)
--
-b p_B (100-p_A).$$
+$$a p_A (100-p_B) - b p_B (100-p_A).$$
 
 Whenever this value is positive, placing `A` before `B` increases the expectation. This defines a valid pairwise ordering relation. Sorting according to that relation guarantees that every adjacent inversion has been removed. By the standard exchange argument, no further swap can improve the arrangement, so the resulting permutation is optimal.
 
@@ -478,9 +465,7 @@ Input:
 
 The comparator prefers the first song before the second because
 
-$$100 \cdot 100 \cdot 100
->
-200 \cdot 0 \cdot 0.$$
+$$100 \cdot 100 \cdot 100 > 200 \cdot 0 \cdot 0.$$
 
 After processing the first song, `remembered = 100`.
 

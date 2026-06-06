@@ -113,24 +113,11 @@ $$2(n-1)! \sum_{i<j} |a_i-a_j|.$$
 
 Combining both parts gives
 
-$$\text{Total over all permutations}
-=
-(n-1)!
-\left(
-\sum a_i
-+
-2\sum_{i<j}|a_i-a_j|
-\right).$$
+$$\text{Total over all permutations} = (n-1)! \left( \sum a_i + 2\sum_{i<j}|a_i-a_j| \right).$$
 
 Dividing by $n!$ cancels the factorials:
 
-$$\text{Average}
-=
-\frac{
-\sum a_i
-+
-2\sum_{i<j}|a_i-a_j|
-}{n}.$$
+$$\text{Average} = \frac{ \sum a_i + 2\sum_{i<j}|a_i-a_j| }{n}.$$
 
 Now the entire problem reduces to computing
 
@@ -169,9 +156,7 @@ $$\sum_{j<i}(a_i-a_j).$$
 4. Let $D$ be the pairwise difference sum obtained in the previous step.
 5. Compute
 
-$$\text{numerator}
-=
-\sum a_i + 2D.$$
+$$\text{numerator} = \sum a_i + 2D.$$
 
 The average is numerator divided by $n$.
 6. Reduce the fraction by dividing numerator and denominator by their greatest common divisor.
@@ -234,9 +219,7 @@ which simplifies to `x * i - prefix`.
 
 The final formula comes directly from the combinatorial counting argument:
 
-$$\text{average}
-=
-\frac{\sum a_i + 2\,\text{pair\_sum}}{n}.$$
+$$\text{average} = \frac{\sum a_i + 2\,\text{pair\_sum}}{n}.$$
 
 No factorials are ever computed. This is the critical simplification that makes the problem feasible.
 
@@ -384,9 +367,7 @@ Consider:
 
 After sorting, the pairwise difference sum is $9$. The formula gives
 
-$$\frac{1+10+2\cdot 9}{2}
-=
-\frac{29}{2}.$$
+$$\frac{1+10+2\cdot 9}{2} = \frac{29}{2}.$$
 
 The algorithm correctly includes the contribution of the first visited destination. Omitting that term would incorrectly produce $9$.
 
@@ -408,11 +389,7 @@ Consider:
 
 The formula gives
 
-$$\frac{1+3+2(2)}{2}
-=
-\frac{8}{2}
-=
-4.$$
+$$\frac{1+3+2(2)}{2} = \frac{8}{2} = 4.$$
 
 The gcd step reduces the fraction to `4 1`, satisfying the requirement that the output be irreducible.
 
