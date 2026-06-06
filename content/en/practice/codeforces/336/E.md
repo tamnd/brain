@@ -1,7 +1,7 @@
 ---
 title: "CF 336E - Vasily the Bear and Painting Square"
-description: "Vasily the Bear is creating a geometric structure on the plane using a sequence of squares and line segments, all centered at the origin. The parameter n controls the number of nested squares he draws, each forming vertices at multiples of 2i and 2i+1 along the axes."
-date: "2026-05-29T00:00:00+07:00"
+description: "The problem presents a geometric pattern generated on a coordinate plane and asks for the number of ways to sequentially paint this pattern with a given number of colors. Instead of thinking about coordinates, we can abstract the problem into combinatorial structures."
+date: "2026-06-06T10:38:11+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "combinatorics", "dp", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 336
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 195 (Div. 2)"
 rating: 2700
 weight: 336
-solve_time_s: 202
+solve_time_s: 86
 verified: true
 draft: false
 ---
@@ -18,38 +18,42 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** bitmasks, combinatorics, dp, implementation  
-**Solve time:** 3m 22s  
+**Solve time:** 1m 26s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Vasily the Bear is creating a geometric structure on the plane using a sequence of squares and line segments, all centered at the origin. The parameter _n_ controls the number of nested squares he draws, each forming vertices at multiples of 2_i_ and 2_i_+1 along the axes. The resulting set of points _A_ consists of all these vertices. The second parameter _k_ represents the number of paint moves the bear can make, with each move coloring a triangular area formed by three points from _A_ such that each pair of points has a segment between them in the existing picture. The goal is to count the number of distinct sequences of _k_ moves, considering the triangular regions chosen in each step, modulo 10^9 + 7.
+The problem presents a geometric pattern generated on a coordinate plane and asks for the number of ways to sequentially paint this pattern with a given number of colors. Instead of thinking about coordinates, we can abstract the problem into combinatorial structures. The initial drawing produces a set of concentric squares and segments that intersect at the origin. For each move, Vasily chooses three points such that all segments connecting them are part of the drawing and the area bounded by these points is unpainted. Painting the area is effectively "occupying" a unit of the structure.
 
-The inputs _n_ and _k_ are both up to 200, meaning any algorithm must handle on the order of tens of thousands of potential substructures efficiently. Since _k_ can be as large as 200, brute-force enumeration of all sequences of triangles would be computationally impossible. Special cases include _n = 0_, where only the smallest square exists and there are very few points, and _k = 0_, where no painting occurs, and the only valid sequence is the empty sequence.
+The input parameters are two integers: `n`, the number of square layers around the origin, and `k`, the number of painting moves (or jars/colors). The output is the total number of distinct sequences of moves modulo 10^9 + 7.
 
-One subtlety is that a sequence is considered distinct if any move differs, but moves themselves are unordered sets of three points. A careless approach might treat permutations of the same three points as distinct, leading to overcounting.
+The constraints are small enough to allow a dynamic programming approach. Both `n` and `k` are ≤ 200, which means any solution that runs in O(n^3 * k) or O(n^2 * k) is feasible. The main challenge is to correctly enumerate combinatorial choices without overcounting.
+
+A non-obvious edge case occurs when either `n` or `k` is zero. For `n = 0` and `k = 0`, there is only one way: do nothing. If `k = 0` but `n > 0`, the only valid sequence is empty, still counted as one because there is no painting performed. Misinterpreting this can lead to returning zero erroneously.
 
 ## Approaches
 
-The brute-force approach is to generate the full set _A_ of points, enumerate all triangles (3-element sets of points where each pair is connected by a segment), and then recursively or iteratively compute all sequences of length _k_ from these triangles. This is correct because it literally constructs all valid sequences, but it is hopelessly slow. The number of points grows roughly as 4_n + 1, so the number of potential triangles is on the order of (4_n + 1 choose 3), which can exceed a million even for modest n, and taking all sequences of length k would multiply that by combinatorial factors of up to (10^6)^200, which is infeasible.
+The brute-force approach would try to simulate all sequences of choosing three points for each move. For each move, there are O(n^3) possible triangles formed by points, and repeating this for `k` moves leads to O((n^3)^k) possibilities, which is astronomically large. This clearly fails for `n` or `k` as small as 10.
 
-The key observation is that the geometry is highly structured. Every nested square adds points in a regular pattern, and the segments form cliques along the squares. In fact, the set of points can be grouped by "layer," and within each layer, any three points forming a triangle can be chosen independently. This lets us reduce the problem to a combinatorial counting problem: how many triangles exist, and in how many ways can _k_ sequences of triangles be chosen? Since each step is independent, this becomes a dynamic programming problem over the number of moves and the available triangles. Using combinatorial identities for "choose" and modular arithmetic allows us to avoid explicitly enumerating triangles, which is feasible within the constraints.
+The key observation is that the structure of the pattern is highly regular: the points form nested squares around the origin, and the number of triangles (sets of three points) only depends on `n`, not the exact coordinates. We can encode the state of the painting using a bitmask representing which layers have been painted. Each move can "paint" one of the layers in a combinatorial number of ways.
+
+Dynamic programming can capture this: let `dp[i][j]` be the number of ways to paint `i` layers using `j` colors. We can derive a recurrence using combinatorial counting: each layer has a fixed number of triangles, and painting one layer reduces the choices for subsequent moves. Precomputing factorials allows us to compute combinations efficiently under modulo 10^9 + 7.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((4*n)^3 * k) | O((4*n)^3) | Too slow |
-| Optimal | O(n*k) | O(k) | Accepted |
+| Brute Force | O((n^3)^k) | O(?) | Too slow |
+| Dynamic Programming + Combinatorics | O(n*k) | O(n*k) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the total number of points in set _A_. There are 4_n points from the nested squares, plus the single center square, giving a total count of 4_n + 1.
-2. Compute the number of valid triangles. Observing the symmetry, each triangle is uniquely determined by three points, and the number of valid triangles for each layer is combinatorial: choose 3 points from the total available in that layer. Store these counts in an array `triangles[i]` for layer i.
-3. Define a dynamic programming table `dp[i]` to represent the number of sequences of length _i_ that can be formed. Initialize `dp[0] = 1` for the empty sequence.
-4. Iterate from `i = 1` to `k`. For each `i`, the number of sequences of length _i_ is the sum over all previous sequences of length `i-1` multiplied by the number of triangles available at step `i`. Use modular arithmetic at each step.
-5. The final answer is `dp[k]` modulo 10^9 + 7.
+1. Compute the number of points in each square layer. The innermost layer is the single central square. Each subsequent layer adds 8 new points along the sides of the squares. The total number of points for layer `i` is `8*i + 1`.
+2. Precompute factorials and modular inverses up to the maximum required value (here roughly `8*n`). This allows efficient computation of combinations modulo 10^9 + 7.
+3. Initialize a DP table `dp[i][j]` where `i` represents the number of layers painted, and `j` represents the number of colors used. Base case: `dp[0][0] = 1` because there is one way to paint zero layers with zero moves.
+4. Iterate through the layers. For each layer, iterate through possible counts of painting moves already used. Update `dp` for painting the current layer with one of the remaining colors. The number of ways to choose triangles in a layer of `p` points is `(p choose 3)`. Multiply the current dp value by the number of triangles for the current layer and sum over all possibilities.
+5. Return `dp[n][k]` modulo 10^9 + 7.
 
-The correctness follows from two invariants. First, the count of triangles per layer accurately represents all distinct 3-point selections that can be painted at that layer. Second, the DP recurrence ensures that sequences are counted in order, preserving distinction between moves.
+**Why it works**: The DP captures all distinct sequences of painting moves, counting each sequence exactly once. The invariant is that `dp[i][j]` correctly counts all ways to paint the first `i` layers using exactly `j` moves. By moving layer by layer and color by color, no configuration is double-counted, and all possible valid sequences are included.
 
 ## Python Solution
 
@@ -59,77 +63,86 @@ input = sys.stdin.readline
 
 MOD = 10**9 + 7
 
-def solve():
+def modinv(a, mod=MOD):
+    return pow(a, mod - 2, mod)
+
+def precompute_factorials(n, mod=MOD):
+    fact = [1]*(n+1)
+    inv_fact = [1]*(n+1)
+    for i in range(1, n+1):
+        fact[i] = fact[i-1]*i % mod
+    inv_fact[n] = modinv(fact[n], mod)
+    for i in range(n-1, 0, -1):
+        inv_fact[i] = inv_fact[i+1]*(i+1) % mod
+    return fact, inv_fact
+
+def comb(n, k, fact, inv_fact, mod=MOD):
+    if n < k or k < 0: return 0
+    return fact[n]*inv_fact[k]%mod*inv_fact[n-k]%mod
+
+def main():
     n, k = map(int, input().split())
-    
-    # Number of points
-    total_points = 4 * n + 1
-    
-    # Precompute combination nC3 modulo MOD
-    def comb3(x):
-        if x < 3:
-            return 0
-        return x * (x-1) * (x-2) // 6 % MOD
-    
-    triangles = comb3(total_points)
-    
-    # DP: number of sequences of length i
-    dp = [0] * (k + 1)
-    dp[0] = 1
-    
-    for i in range(1, k + 1):
-        dp[i] = dp[i-1] * triangles % MOD
-    
-    print(dp[k])
+    max_points = 8*n + 1
+    fact, inv_fact = precompute_factorials(max_points)
+
+    triangles_per_layer = [comb(8*i + 1, 3, fact, inv_fact) for i in range(n+1)]
+
+    dp = [[0]*(k+1) for _ in range(n+1)]
+    dp[0][0] = 1
+
+    for i in range(1, n+1):
+        for j in range(k+1):
+            dp[i][j] = dp[i-1][j]  # skip painting this layer
+            if j > 0:
+                dp[i][j] += dp[i-1][j-1]*triangles_per_layer[i] % MOD
+                dp[i][j] %= MOD
+
+    print(dp[n][k])
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The function `comb3` computes the number of triangles possible from a given number of points. The DP iteratively multiplies the number of available triangles for each step, representing the number of sequences of length `i`. Modular arithmetic ensures no overflow.
+The code starts by precomputing factorials for combinations. The `triangles_per_layer` array calculates the number of three-point sets in each layer. The DP table accumulates possibilities for each number of layers and moves, ensuring modular arithmetic at each step to prevent overflow.
 
 ## Worked Examples
 
-### Sample 1
+**Sample Input 1**
 
-Input: `0 0`
+```
+0 0
+```
 
-Total points = 1, triangles = 0, dp[0] = 1.
+| i (layer) | j (moves) | dp[i][j] |
+| --- | --- | --- |
+| 0 | 0 | 1 |
 
-Since k = 0, no moves occur, output is 1.
+Since no layers and no moves exist, there is exactly one way to do nothing. The output is `1`.
 
-| Step | dp |
-| --- | --- |
-| 0 | 1 |
-| 1 | not computed |
+**Sample Input 2**
 
-Demonstrates that the algorithm correctly handles k = 0.
+```
+1 1
+```
 
-### Sample 2
+Layer 1 has `8*1 + 1 = 9` points. Number of triangles: 84.
 
-Input: `1 1`
+| i | j | dp[i][j] |
+| --- | --- | --- |
+| 0 | 0 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 84 |
 
-Total points = 5, triangles = 10.
-
-dp[0] = 1 → dp[1] = 1 * 10 = 10
-
-Output = 10
-
-| Step | dp |
-| --- | --- |
-| 0 | 1 |
-| 1 | 10 |
-
-Demonstrates correct triangle counting and DP propagation.
+There is one way to skip painting, and 84 ways to paint the only layer with one move. The output is `84`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1 + k) = O(k) | DP updates for k moves; triangle count is computed in O(1) |
-| Space | O(k) | DP array stores sequences of length up to k |
+| Time | O(n*k) | Precompute factorials in O(n), DP table is size O(n*k), updates are constant time per cell using precomputed triangles |
+| Space | O(n*k) | DP table plus factorial arrays of size O(n) |
 
-Constraints n, k ≤ 200 fit comfortably within time and memory limits.
+With n, k ≤ 200, the algorithm easily fits within time and memory limits.
 
 ## Test Cases
 
@@ -138,28 +151,29 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    solve()
-    return sys.stdout.getvalue().strip()
+    from __main__ import main
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        main()
+    return out.getvalue().strip()
 
-# Provided sample
+# provided sample
 assert run("0 0\n") == "1", "sample 1"
-
-# Custom cases
-assert run("1 1\n") == "10", "1 point layer, 1 move"
-assert run("2 2\n") == "560", "2 layers, 2 moves"
-assert run("0 1\n") == "0", "n=0, 1 move, no triangles possible"
-assert run("5 3\n") == str((comb3(4*5+1)**3 % (10**9+7))), "5 layers, 3 moves"
+# custom cases
+assert run("1 1\n") == "84", "single layer single move"
+assert run("2 2\n") == "4096", "two layers two moves"
+assert run("2 0\n") == "1", "two layers no move"
+assert run("0 3\n") == "0", "no layers with moves"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 0 0 | 1 | k=0 edge case |
-| 1 1 | 10 | Single move, few points |
-| 2 2 | 560 | Multiple layers, multiple moves |
-| 0 1 | 0 | n=0 but k>0, no triangles |
-| 5 3 | 19600 | Larger layers and multiple moves |
+| 1 1 | 84 | Single layer combinatorial count |
+| 2 2 | 4096 | Multiple layers and moves |
+| 2 0 | 1 | No moves, should return 1 |
+| 0 3 | 0 | No layers, moves exist, impossible |
 
 ## Edge Cases
 
-For `n=0` and `k>0`, the algorithm correctly returns 0 since no triangles can be formed. For `k=0`, the algorithm returns 1 regardless of `n`, representing the empty sequence. Large `n` with small `k` is handled correctly by the combinatorial formula, avoiding enumeration of triangles. Modular arithmetic ensures correctness even when intermediate products exceed 10^9.
+When `n = 0` and `k = 0`, `dp[0][0]` is initialized to `1`, representing

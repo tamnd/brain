@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 1990 problems, 1357 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 1993 problems, 1359 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 1990 problems, 1357 verified.**
+**448 contests, 1993 problems, 1359 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -329,7 +329,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [332](332/) | [Codeforces Round 193 (Div. 2)](https://codeforces.com/contest/332) | Div. 2 | 1300-2400 | 2/5 | 9m |
 | [333](333/) | [Codeforces Round 194 (Div. 1)](https://codeforces.com/contest/333) | Div. 1 | 1600-2700 | 4/5 | 8m 14s |
 | [335](335/) | [MemSQL start[c]up Round 2 - online version](https://codeforces.com/contest/335) | Special | 1400-3000 | 1/6 | 10m 58s |
-| [336](336/) | [Codeforces Round 195 (Div. 2)](https://codeforces.com/contest/336) | Div. 2 | 2100-2700 | 2/2 | 6m 33s |
+| [336](336/) | [Codeforces Round 195 (Div. 2)](https://codeforces.com/contest/336) | Div. 2 | 1000-2700 | 4/5 | 7m 57s |
 | [338](338/) | [Codeforces Round 196 (Div. 1)](https://codeforces.com/contest/338) | Div. 1 | 2900-2900 | 1/1 | 1m 33s |
 | [339](339/) | [Codeforces Round 197 (Div. 2)](https://codeforces.com/contest/339) | Div. 2 | 800-800 | 1/1 | 4m 3s |
 | [340](340/) | [Codeforces Round 198 (Div. 2)](https://codeforces.com/contest/340) | Div. 2 | 1600-1600 | 1/1 | 4m 39s |
