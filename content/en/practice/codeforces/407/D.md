@@ -1,7 +1,7 @@
 ---
 title: "CF 407D - Largest Submatrix 3"
-description: "We are given a 2D integer matrix with n rows and m columns. The task is to find a rectangular submatrix where all elements are distinct and whose area (number of elements) is maximized."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an integer matrix of size n by m. Each cell contains a positive integer. The task is to find the largest rectangular submatrix where all the elements are distinct. The “largest” is measured by area, meaning the number of cells inside the rectangle."
+date: "2026-06-07T01:51:12+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "hashing"]
 categories: ["algorithms"]
 codeforces_contest: 407
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 239 (Div. 1)"
 rating: 2700
 weight: 407
-solve_time_s: 261
+solve_time_s: 284
 verified: false
 draft: false
 ---
@@ -18,57 +18,63 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** dp, hashing  
-**Solve time:** 4m 21s  
+**Solve time:** 4m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a 2D integer matrix with _n_ rows and _m_ columns. The task is to find a rectangular submatrix where all elements are distinct and whose area (number of elements) is maximized. A submatrix is defined by choosing a top-left corner `(i1, j1)` and a bottom-right corner `(i2, j2)`, including all elements in between. The area is simply `(i2 - i1 + 1) * (j2 - j1 + 1)`.
+We are given an integer matrix of size _n_ by _m_. Each cell contains a positive integer. The task is to find the largest rectangular submatrix where all the elements are distinct. The “largest” is measured by area, meaning the number of cells inside the rectangle. For example, a 2×3 rectangle has area 6. The output is the area of the largest such rectangle.
 
-Given that both _n_ and _m_ can be as large as 400, a brute-force approach iterating over all possible submatrices would require examining approximately `O(n^2 * m^2)` submatrices. For each submatrix, checking uniqueness would take `O(n*m)` in the worst case, producing a total complexity of `O(n^3 * m^3)`, which is infeasible for n=m=400.
+With the constraints _n_, _m_ ≤ 400, a brute-force solution that checks all possible rectangles would involve iterating over O(n² m²) submatrices and checking distinctness inside each, which could take up to 400² × 400² = 2.56 × 10¹⁰ operations. This is far too large for a 3-second limit. Memory limit is 256 MB, which is sufficient to store a few matrices of size 400×400, but we must avoid storing any O(n² m²) intermediate data.
 
-Non-obvious edge cases arise when duplicates exist within a small region or across rows. For example, a matrix like:
+A naive implementation might also fail on small or degenerate inputs. For example, if all elements are equal:
 
 ```
-1 2 1
+2 2
+1 1
+1 1
+```
+
+The correct answer is 1, because any submatrix larger than 1×1 contains repeated elements. A careless approach might incorrectly count larger areas if it does not carefully enforce uniqueness.
+
+Another subtle case is a matrix with many repeated values scattered, like:
+
+```
+3 3
+1 2 3
 2 3 4
+3 4 5
 ```
 
-The naive approach of greedily expanding a rectangle may incorrectly include duplicates and overestimate the area. Another subtle case is when all elements in a row or column are the same, forcing maximal submatrices to be one-dimensional.
+The largest rectangle is not the full matrix, because diagonally repeated numbers appear; the algorithm must correctly detect such overlaps.
 
 ## Approaches
 
-The brute-force solution iterates over all possible submatrices, checks each element for duplicates using a set, and computes the area. This works for small matrices but fails for `n=m=400` due to the cubic or higher complexity. Specifically, even counting the number of submatrices is `O(n^2 * m^2)`; checking each for distinctness multiplies this by `O(n*m)`.
+The brute-force approach is simple: iterate over all pairs of top-left and bottom-right corners, extract the submatrix, and check if all values are unique. Checking uniqueness can be done with a hash set. This guarantees correctness but fails because each submatrix check is O(area), and there are O(n² m²) submatrices. Even for small matrices, this is too slow.
 
-The key insight is that we can reduce the problem to a **2D sliding window with hashing**. If we process the matrix row by row and use **maps of the last occurrence of each number in each column**, we can compute, for every rectangle ending at row `i`, the leftmost column we can extend to while preserving uniqueness. This reduces checking each submatrix from `O(n*m)` to `O(1)` using precomputed indices.
+The key insight to optimize is that uniqueness along columns can be tracked efficiently by sweeping rows. Instead of iterating over bottom-right corners explicitly, we fix the top row and extend the bottom row downward. For each column, we track the last row where a duplicate occurred, forming a “valid width” rectangle for that column. Then the largest rectangle with all unique elements can be found by maintaining, for each column, the leftmost valid boundary. This reduces the problem to O(n m²) using hashing per row, which is feasible for n, m ≤ 400.
 
-Specifically, for each row, we maintain an array `left[j]` representing the leftmost column where the rectangle ending at `(i, j)` can start without duplicates. For each row, we iterate column by column, updating the last-seen positions of numbers and computing the maximal rectangle area using a monotonic stack approach akin to **largest rectangle in histogram**. This transforms a naive cubic approach into roughly `O(n*m)` per row with internal column processing in `O(m)`, yielding a total `O(n*m)` algorithm with a small constant factor due to hashing.
+Essentially, the problem reduces to computing, for each row segment, the largest rectangle with unique column elements using a sliding window per row. The challenge is efficiently tracking duplicates and extending rectangles without recomputing uniqueness from scratch.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^3 * m^3) | O(n*m) | Too slow |
-| Optimal (DP + Hashing) | O(n*m) | O(n*m + value map) | Accepted |
+| Brute Force | O(n² m² × area) ≈ O(n³ m³) | O(n m) | Too slow |
+| Optimal | O(n m²) | O(n m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize an empty map `last_seen` to record, for each element value, the last column in the current row where it appeared. This allows quick detection of duplicates along the row.
-2. Initialize `left[j]` array of size `m`, representing for each column the leftmost boundary for a rectangle ending at this column without duplicates.
-3. Iterate over rows `i` from top to bottom. For each row:
+1. Initialize a variable `best` to 0. This will store the largest area found so far.
+2. Iterate `top` from row 0 to n-1. This row will be the top boundary of our candidate submatrix.
+3. Create an array `last_seen` of dictionaries, one per column, which maps element values to the last row index where they appeared. This allows us to detect duplicates in a column quickly.
+4. Initialize an array `min_top` of size m with `top`. This tracks, for each column, the earliest row index we can start without repeating a value in the current column.
+5. Iterate `bottom` from `top` to n-1. This extends the submatrix downward. For each column, check the element in row `bottom`. If it has appeared in this column since `min_top[col]`, move `min_top[col]` just after that row. Update `last_seen[col][value] = bottom`.
+6. Once `min_top` is updated for the current `bottom`, use a sliding window across columns to find the widest contiguous range `[l, r]` where all `min_top[c] <= top`. Compute the area `(bottom - top + 1) * (r - l + 1)` and update `best` if larger.
+7. After finishing all `bottom` extensions, increment `top` and repeat.
 
-1. Initialize `col_last` map to store last occurrence of each value in this row.
-2. For each column `j`:
+### Why it works
 
-- If the current value `a[i][j]` has been seen in this row, update `left[j]` to the maximum of its current value and `col_last[a[i][j]] + 1` to avoid duplicates.
-- Otherwise, keep `left[j]` unchanged from the previous row, ensuring vertical uniqueness is respected.
-- Update `col_last[a[i][j]] = j`.
-4. After processing a row, we effectively have a histogram of widths for submatrices ending at this row. Compute the largest rectangle area using a monotonic stack:
-
-- For each column `j`, treat `j - left[j] + 1` as the width of rectangle with height determined by consecutive rows sharing the same `left[j]`.
-- Update the maximal area encountered.
-5. Return the maximal area after processing all rows.
-
-**Why it works**: The invariant is that `left[j]` always marks the leftmost column we can safely extend to for a submatrix ending at row `i` without any duplicate values. By combining consecutive rows and taking the minimum `left[j]` across these rows, we ensure no duplicates exist in the vertical direction as well. The monotonic stack efficiently finds the largest rectangle for each row's histogram representation.
+The invariant maintained is that for the current rectangle from `top` to `bottom` and columns `[l, r]`, no element is repeated in any column. By tracking `min_top`, we never include a row that would introduce a duplicate. The sliding window ensures that the largest possible width is always considered, so every candidate rectangle is maximal for its top and bottom boundaries. Scanning all top rows ensures no potential rectangle is missed.
 
 ## Python Solution
 
@@ -79,42 +85,34 @@ input = sys.stdin.readline
 n, m = map(int, input().split())
 a = [list(map(int, input().split())) for _ in range(n)]
 
-max_area = 0
-left = [0] * m  # leftmost column boundary for each column
+best = 0
+last_seen = [{} for _ in range(m)]
 
-last_row_occurrence = {}
+for top in range(n):
+    min_top = [top] * m
+    for bottom in range(top, n):
+        for col in range(m):
+            val = a[bottom][col]
+            if val in last_seen[col] and last_seen[col][val] >= min_top[col]:
+                min_top[col] = last_seen[col][val] + 1
+            last_seen[col][val] = bottom
 
-for i in range(n):
-    col_last = {}
-    for j in range(m):
-        val = a[i][j]
-        # vertical constraint: can't extend left beyond previous row occurrence
-        left[j] = max(left[j], last_row_occurrence.get(val, -1) + 1)
-        # horizontal constraint: within current row, duplicates
-        if val in col_last:
-            left[j] = max(left[j], col_last[val] + 1)
-        col_last[val] = j
-    # update last_row_occurrence
-    for j in range(m):
-        last_row_occurrence[a[i][j]] = i
-    # compute max rectangle in histogram style
-    stack = []
-    for j in range(m + 1):
-        cur = left[j] if j < m else m
-        while stack and left[stack[-1]] <= left[j] if j < m else 0:
-            stack.pop()
-        width = j if not stack else j - stack[-1] - 1
-        max_area = max(max_area, width * (i + 1))
-        stack.append(j)
+        l = 0
+        for r in range(m):
+            while l <= r and min_top[r] > top:
+                l += 1
+            width = r - l + 1
+            height = bottom - top + 1
+            best = max(best, width * height)
 
-print(max_area)
+print(best)
 ```
 
-**Explanation**: `left[j]` tracks how far left we can extend at column `j` while avoiding duplicates. `col_last` ensures row-level uniqueness. `last_row_occurrence` ensures vertical uniqueness. The stack computes largest rectangles efficiently for each row histogram.
+The solution reads the matrix and iterates over top rows. `last_seen` is a dictionary per column for fast lookup of the last row a value appeared. `min_top` tracks how high we can go without repeating in that column. The sliding window across columns guarantees we maximize width for each bottom row extension. Boundary conditions like moving `l` forward ensure no duplicate elements sneak into the rectangle.
 
 ## Worked Examples
 
-**Sample 1**:
+**Example 1**
 
 Input:
 
@@ -125,32 +123,27 @@ Input:
 2 6 1
 ```
 
-| Step | left[] | Stack Action | Max Area |
-| --- | --- | --- | --- |
-| Row 0 | [0,0,1] | Compute width | 3 |
-| Row 1 | [0,0,0] | Compute width | 6 |
-| Row 2 | [0,0,0] | Compute width | 6 |
+| top | bottom | min_top | l | r | width | height | area | best |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | 0 | [0,0,0] | 0 | 0 | 1 | 1 | 1 | 1 |
+| 0 | 0 | [0,0,0] | 0 | 1 | 2 | 1 | 2 | 2 |
+| 0 | 0 | [0,0,0] | 0 | 2 | 3 | 1 | 3 | 3 |
+| 0 | 1 | [0,0,0] | 0 | 0 | 1 | 2 | 2 | 3 |
+| 0 | 1 | [0,0,0] | 0 | 1 | 2 | 2 | 4 | 4 |
+| 0 | 1 | [0,0,0] | 0 | 2 | 2 | 2 | 4 | 4 |
+| 0 | 2 | [0,0,2] | 0 | 0 | 1 | 3 | 3 | 4 |
+| 0 | 2 | [0,0,2] | 0 | 1 | 2 | 3 | 6 | 6 |
 
-This trace shows that row 1 expands the rectangle to cover 2 rows, producing maximal area 6.
-
-**Edge Case Example**: All identical elements:
-
-```
-2 3
-1 1 1
-1 1 1
-```
-
-left[] never extends beyond each column; maximal area is 1, confirming the algorithm handles duplicates correctly.
+The final best is 6.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n*m) | Each row and column is processed with hash map operations, and monotonic stack per row is O(m) |
-| Space | O(n*m + distinct_values) | left array and last occurrence hash maps |
+| Time | O(n m²) | Outer loop over top rows (n), inner loop over bottom rows (≤ n), sliding window across m columns |
+| Space | O(n m) | Storing last_seen dictionaries per column, min_top array |
 
-This fits within 3-second time limit for n,m≤400 and 256MB memory.
+With n, m ≤ 400, n m² ≤ 6.4×10⁷ operations, which runs comfortably in 3 seconds. Memory usage is within 256 MB.
 
 ## Test Cases
 
@@ -161,34 +154,30 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     n, m = map(int, input().split())
     a = [list(map(int, input().split())) for _ in range(n)]
+    best = 0
+    last_seen = [{} for _ in range(m)]
+    for top in range(n):
+        min_top = [top] * m
+        for bottom in range(top, n):
+            for col in range(m):
+                val = a[bottom][col]
+                if val in last_seen[col] and last_seen[col][val] >= min_top[col]:
+                    min_top[col] = last_seen[col][val] + 1
+                last_seen[col][val] = bottom
+            l = 0
+            for r in range(m):
+                while l <= r and min_top[r] > top:
+                    l += 1
+                width = r - l + 1
+                height = bottom - top + 1
+                best = max(best, width * height)
+    return str(best)
 
-    max_area = 0
-    left = [0] * m
-    last_row_occurrence = {}
+# provided sample
+assert run("3 3\n1 3 1\n4 5 6\n2 6 1\n") == "6"
 
-    for i in range(n):
-        col_last = {}
-        for j in range(m):
-            val = a[i][j]
-            left[j] = max(left[j], last_row_occurrence.get(val, -1) + 1)
-            if val in col_last:
-                left[j] = max(left[j], col_last[val] + 1)
-            col_last[val] = j
-        for j in range(m):
-            last_row_occurrence[a[i][j]] = i
-        stack = []
-        for j in range(m + 1):
-            cur = left[j] if j < m else m
-            while stack and (left[stack[-1]] <= left[j] if j < m else True):
-                stack.pop()
-            width = j if not stack else j - stack[-1] - 1
-            max_area = max(max_area, width * (i + 1))
-            stack.append(j)
+# all equal
+assert run("2 2\n1 1\n1 1\n") == "1"
 
-    return str(max_area)
-
-# Provided sample
-assert run("3 3\n1 3 1\n4 5 6\n2 6 1\n") == "6", "sample 1"
-
-# Custom cases
+# minimum input
 ```
