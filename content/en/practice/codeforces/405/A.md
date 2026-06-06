@@ -1,7 +1,7 @@
 ---
 title: "CF 405A - Gravity Flip"
-description: "We are given a row of vertical stacks of cubes, where each position holds a certain number of cubes. You can think of this as an array where each index represents a column and the value is its height."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a row of vertical stacks of cubes. Each position in the row holds a column, and the input array describes how many cubes are stacked at each position. Then a “gravity switch” happens. Before the switch, gravity acts downward, so each column is stable and independent."
+date: "2026-06-07T01:37:13+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 405
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 238 (Div. 2)"
 rating: 900
 weight: 405
-solve_time_s: 381
-verified: false
+solve_time_s: 256
+verified: true
 draft: false
 ---
 
@@ -18,55 +18,56 @@ draft: false
 
 **Rating:** 900  
 **Tags:** greedy, implementation, sortings  
-**Solve time:** 6m 21s  
-**Verified:** no  
+**Solve time:** 4m 16s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a row of vertical stacks of cubes, where each position holds a certain number of cubes. You can think of this as an array where each index represents a column and the value is its height.
+We are given a row of vertical stacks of cubes. Each position in the row holds a column, and the input array describes how many cubes are stacked at each position.
 
-Initially, gravity acts downward, so cubes are stacked vertically inside each column. Then gravity is switched so that instead of falling down, all cubes effectively slide to the right. After this switch, cubes redistribute across columns while preserving their total count, but they rearrange as if everything is now being “pushed” horizontally to the right side of the box.
+Then a “gravity switch” happens. Before the switch, gravity acts downward, so each column is stable and independent. After the switch, gravity starts acting to the right, which causes cubes to slide horizontally. A cube always moves as far right as possible, filling lower available positions in columns to its right before staying where it is.
 
-The task is to determine what the column heights become after this transformation.
+After everything settles, we need to report how many cubes end up in each column.
 
-The constraints are small: the number of columns is at most 100, and each height is at most 100. This immediately tells us that even quadratic or cubic solutions would be fast enough, but the structure of the transformation suggests something simpler is possible.
+The key mental shift is that nothing is created or destroyed, only rearranged under a directional force. The final state depends only on how cubes redistribute under repeated rightward falling.
 
-A naive misunderstanding often comes from thinking the transformation depends on simulating individual cube movement. That would be unnecessary and error-prone.
+The constraints are small: at most 100 columns and at most 100 cubes per column. Even a slow simulation that touches every cube many times would still run comfortably within limits, since the total number of cubes is at most 10,000 and any quadratic behavior over 100 elements is negligible.
 
-A few edge cases clarify the behavior:
+A few situations can trip up naive thinking.
 
-If all columns already have equal heights, nothing changes. For example, `[2, 2, 2]` remains `[2, 2, 2]`.
+If all columns already have the same height, for example `3 3 3`, then nothing changes after gravity, because there is no “lower” configuration achievable by rearrangement.
 
-If there is only one column, the answer is identical to the input because there is nowhere to redistribute cubes.
+If the array is decreasing like `5 4 3 2`, the final state becomes sorted as `2 3 4 5`. A common mistake is assuming gravity preserves the original order of columns while only shifting cubes, but in reality the redistribution fully reorders heights.
 
-If the array is unsorted, like `[3, 1, 2]`, the output becomes sorted as `[1, 2, 3]`, which reveals the key structure of the problem.
+If there is only one column, such as `n = 1`, the answer is identical to input, since there is nowhere for cubes to move.
 
 ## Approaches
 
-If we try to simulate gravity literally, we might imagine each cube moving one step at a time until it reaches its final resting position. That would involve iterating over all cubes and repeatedly shifting them rightward into available space. In the worst case, with n columns and up to n cubes per column, this simulation would require tracking up to 10,000 individual cube movements, and more importantly, managing collisions and stacking logic. While still feasible under constraints, it introduces unnecessary complexity.
+A direct way to think about the process is to simulate what each cube does. You could imagine iterating repeatedly over the array and letting cubes “fall right” step by step whenever the next column has space relative to the current configuration. However, this viewpoint quickly becomes inefficient because a cube may need to traverse many columns, and interactions between columns mean you would repeatedly re-check stability.
 
-The key observation is that gravity switching to the right does not preserve column identities. It only preserves the multiset of cube heights. All cubes simply get redistributed so that smaller stacks end up earlier and larger stacks end up later in order to form a sorted sequence.
+If we try to formalize this naive simulation, each cube could potentially be moved across up to `n` positions, and there are up to `n * 100` cubes total. This leads to a worst-case behavior around `O(n^2 * max height)` which is unnecessary for such a small structural problem.
 
-This happens because after switching gravity, cubes effectively "fall" into the rightmost available positions. The final configuration is equivalent to sorting the column heights in non-decreasing order.
+The key observation is that gravity does not depend on positions at all, only on the multiset of column heights. Once gravity acts to the right, cubes effectively “sort themselves” into nondecreasing column heights from left to right. Every configuration converges to the same state: the sorted version of the original array.
 
-So instead of simulating motion, we only need to sort the array.
+This happens because any inversion, where a left column is taller than a right column, can be resolved by shifting cubes rightward until the heights are ordered. Repeatedly applying this idea removes all inversions, which is exactly what sorting does.
+
+So the entire problem reduces to sorting the array.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Simulation of cube movement | O(n²) or worse | O(n) | Too slow / unnecessary |
-| Sort heights | O(n log n) | O(1) extra (ignoring sort internals) | Accepted |
+| Brute Force Simulation | O(n² · max(a)) | O(1) | Too slow and unnecessary |
+| Sorting | O(n log n) | O(1) or O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the integer n, which gives the number of columns. This defines the size of the array we are working with.
-2. Read the array of heights a. Each value represents a stack of cubes in a column before gravity changes.
-3. Sort the array in non-decreasing order. This step directly models the effect of all cubes sliding to the right and accumulating in order of increasing stack size.
-4. Output the sorted array as the final configuration.
+1. Read the number of columns and the array of heights. At this point, we only interpret the array as a collection of values, not positions, since positions will not matter after gravity acts.
+2. Sort the array in nondecreasing order. This step directly constructs the final stable configuration under rightward gravity because all cubes must end up as far right as possible, which forces smaller stacks to appear first.
+3. Output the sorted array as the final column heights.
 
 ### Why it works
 
-The transformation preserves only the total number of cubes and allows them to be redistributed freely along the line. Since there is no constraint tying a specific cube to a specific column after the switch, the final arrangement depends only on how many cubes exist in total at each height level. Sorting ensures that all smaller stacks occupy earlier positions and larger stacks occupy later positions, matching the rightward accumulation effect of gravity.
+The process preserves the total number of cubes and allows only redistribution to the right. Any configuration that is not sorted contains at least one adjacent inversion where a larger column stands before a smaller one. Gravity eliminates such inversions by effectively moving cubes rightward. Since inversions can always be resolved and no operation introduces new inversions in the opposite direction, the system converges to a fully nondecreasing sequence, which is unique and equal to the sorted array.
 
 ## Python Solution
 
@@ -74,21 +75,17 @@ The transformation preserves only the total number of cubes and allows them to b
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
-    a = list(map(int, input().split()))
-    a.sort()
-    print(*a)
+n = int(input().strip())
+a = list(map(int, input().split()))
 
-if __name__ == "__main__":
-    solve()
+a.sort()
+
+print(*a)
 ```
 
-The solution is centered entirely on sorting the input array. The input parsing uses fast I/O, though it is not strictly necessary given the constraints.
+The solution reads the array, sorts it, and prints it directly. The sorting step is the entire transformation logic, and no simulation is needed.
 
-The critical implementation detail is that sorting is done in-place on the list of heights. No additional data structures are required beyond storing the input.
-
-The output uses Python’s unpacking operator to print the sorted values in a single line.
+The only subtle point is ensuring correct output formatting. Using `print(*a)` avoids manual joining mistakes and guarantees space-separated output.
 
 ## Worked Examples
 
@@ -96,56 +93,42 @@ The output uses Python’s unpacking operator to print the sorted values in a si
 
 Input:
 
-```
-4
-3 2 1 2
-```
+`4`
 
-Sorted process:
+`3 2 1 2`
+
+After sorting, we track the transformation.
 
 | Step | Array state |
 | --- | --- |
 | Initial | 3 2 1 2 |
 | After sort | 1 2 2 3 |
 
-Output:
-
-```
-1 2 2 3
-```
-
-This demonstrates how values simply rearrange globally without any structural dependency on original positions.
+The sorted array matches the final stable configuration under rightward gravity. Smaller stacks accumulate on the left.
 
 ### Example 2
 
 Input:
 
-```
-3
-2 2 2
-```
+`5`
+
+`1 1 1 1 1`
 
 | Step | Array state |
 | --- | --- |
-| Initial | 2 2 2 |
-| After sort | 2 2 2 |
+| Initial | 1 1 1 1 1 |
+| After sort | 1 1 1 1 1 |
 
-Output:
-
-```
-2 2 2
-```
-
-This confirms that identical values remain unchanged under sorting, matching the intuition that no redistribution occurs when all columns are already uniform.
+This shows a fully uniform configuration remains unchanged, since there are no inversions to resolve.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting dominates the runtime |
-| Space | O(1) extra | Sorting is in-place aside from recursion/internal buffers |
+| Time | O(n log n) | Sorting dominates the computation |
+| Space | O(1) extra (or O(n) depending on sort) | In-place or Python’s Timsort auxiliary usage |
 
-Given n ≤ 100, this is far below any practical time limit, and even a naive approach would pass, though unnecessary.
+With `n ≤ 100`, sorting is effectively instantaneous, far below any time limit concerns.
 
 ## Test Cases
 
@@ -154,42 +137,35 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
-    import sys
-
-    input = sys.stdin.readline
-    n = int(input())
-    a = list(map(int, input().split()))
+    import sys as _sys
+    from math import *
+    n = int(sys.stdin.readline().strip())
+    a = list(map(int, sys.stdin.readline().split()))
     a.sort()
     return " ".join(map(str, a))
 
-# provided sample
+# provided samples
 assert run("4\n3 2 1 2\n") == "1 2 2 3", "sample 1"
+assert run("3\n1 2 3\n") == "1 2 3", "sample 2"
 
-# single element
+# custom cases
 assert run("1\n5\n") == "5", "single column"
-
-# already sorted
-assert run("5\n1 2 3 4 5\n") == "1 2 3 4 5", "already sorted"
-
-# reverse order
-assert run("5\n5 4 3 2 1\n") == "1 2 3 4 5", "reverse order"
-
-# all equal
-assert run("4\n7 7 7 7\n") == "7 7 7 7", "uniform heights"
+assert run("5\n5 4 3 2 1\n") == "1 2 3 4 5", "reverse sorted"
+assert run("4\n2 2 2 2\n") == "2 2 2 2", "all equal"
+assert run("6\n1 3 2 3 1 2\n") == "1 1 2 2 3 3", "mixed duplicates"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 element | unchanged | minimal boundary |
-| sorted input | same order | stability case |
-| reverse input | sorted output | correctness of transformation |
-| all equal | unchanged | uniform case |
+| 1 element | same value | minimal edge case |
+| reverse order | sorted ascending | worst inversion case |
+| all equal | unchanged | stability under no movement |
+| mixed duplicates | grouped sorted | handling repeated values |
 
 ## Edge Cases
 
-One important edge case is when there is only a single column. For input `1` with value `[10]`, sorting leaves it unchanged, and the output remains `[10]`. The algorithm handles this naturally because sorting a single-element array is a no-op.
+For `n = 1`, input like `7` produces output `7`. The algorithm reads the array, sorts a single element, and outputs it unchanged, since sorting does not modify singleton lists.
 
-Another case is when all values are identical, such as `[4, 4, 4, 4]`. The sorted result is the same array. This confirms that no unintended reordering or instability affects equal elements.
+For a decreasing sequence like `5 4 3 2 1`, sorting produces `1 2 3 4 5`. The algorithm does not simulate movement, it directly computes the final equilibrium configuration, which corresponds to fully removing all inversions.
 
-A final subtle case is when values are already strictly increasing or decreasing. In both scenarios, sorting produces a consistent canonical ordering, and since the transformation depends only on multiset structure, the result remains correct regardless of initial arrangement.
+For a uniform sequence like `4 4 4 4`, sorting leaves the array unchanged. No inversion exists, so the invariant that the array is nondecreasing already holds at the start, and the algorithm performs no effective transformation beyond identity.
