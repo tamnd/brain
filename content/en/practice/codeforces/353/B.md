@@ -116,9 +116,7 @@ The first singleton goes to heap 1, the second to heap 2, the third to heap 1, a
 Alternation keeps the numbers of distinct values as balanced as possible, which maximizes their product.
 4. Compute
 
-$$x = d + \left\lceil \frac{s}{2} \right\rceil,
-\qquad
-y = d + \left\lfloor \frac{s}{2} \right\rfloor$$
+$$x = d + \left\lceil \frac{s}{2} \right\rceil, \qquad y = d + \left\lfloor \frac{s}{2} \right\rfloor$$
 
 and output `x · y`.
 5. Some cubes are still unassigned. These are extra copies of values that appeared at least twice.
