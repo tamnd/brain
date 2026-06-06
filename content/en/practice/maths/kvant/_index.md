@@ -1,6 +1,6 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1169 solved, 0 verified)."
+description: "Kvant mathematics problem solutions (1176 solved, 0 verified)."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (1169 solved, 0 verified).
+Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (1176 solved, 0 verified).
 
 | # | Status | Time |
 |---|--------|------|
@@ -220,9 +220,12 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [211](211.md) | solved | 3m33s |
 | [212](212.md) | solved | 5m03s |
 | [213](213.md) | solved | 6m31s |
+| [214](214.md) | solved | 1m04s |
 | [215](215.md) | solved | 6m16s |
+| [216](216.md) | solved | 1m27s |
 | [217](217.md) | solved | 5m54s |
 | [218](218.md) | solved | 4m56s |
+| [219](219.md) | solved | 1m22s |
 | [220](220.md) | solved | 4m04s |
 | [221](221.md) | solved | 8m51s |
 | [222](222.md) | solved | 6m59s |
@@ -230,10 +233,12 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [224](224.md) | solved | 1m41s |
 | [225](225.md) | solved | 6m12s |
 | [226](226.md) | solved | 6m11s |
+| [227](227.md) | solved | 1m16s |
 | [228](228.md) | solved | 4m35s |
 | [229](229.md) | solved | 7m04s |
 | [230](230.md) | solved | 6m41s |
 | [231](231.md) | solved | 7m59s |
+| [232](232.md) | solved | 1m27s |
 | [233](233.md) | solved | 4m45s |
 | [235](235.md) | solved | 6m02s |
 | [236](236.md) | solved | 7m |
@@ -244,10 +249,12 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [242](242.md) | solved | 4m55s |
 | [244](244.md) | solved | 6m36s |
 | [245](245.md) | solved | 6m13s |
+| [246](246.md) | solved | 1m17s |
 | [247](247.md) | solved | 6m15s |
 | [248](248.md) | solved | 7m54s |
 | [249](249.md) | solved | 6m06s |
 | [250](250.md) | solved | 7m48s |
+| [251](251.md) | solved | 1m16s |
 | [252](252.md) | solved | 7m14s |
 | [254](254.md) | solved | 7m16s |
 | [256](256.md) | solved | 6m13s |
