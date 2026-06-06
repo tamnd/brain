@@ -28,3 +28,11 @@ domain = "kvant.tamnd.com"
 source_prefix = "/practice/maths/kvant/"
 output = "public-shards/kvant"
 file_budget = 18000
+
+[[shards]]
+name = "taocp"
+project = "brain-taocp"
+domain = "taocp.tamnd.com"
+source_prefix = "/practice/maths/taocp/"
+output = "public-shards/taocp"
+file_budget = 18000
