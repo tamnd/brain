@@ -1,7 +1,7 @@
 ---
 title: "CF 402E - Strictly Positive Matrix"
-description: "We are given a square matrix with non-negative integer entries. You can think of it as a weighted directed graph with n nodes where the entry a[i][j] tells you how strongly node i influences node j."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a square matrix $a$ of size $n times n$ whose elements are all non-negative integers. The matrix can be thought of as a weighted adjacency matrix of a graph with $n$ nodes, where $a{ij} 0$ indicates a direct edge from node $i$ to node $j$."
+date: "2026-06-07T01:23:32+07:00"
 tags: ["codeforces", "competitive-programming", "graphs", "math"]
 categories: ["algorithms"]
 codeforces_contest: 402
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 236 (Div. 2)"
 rating: 2200
 weight: 402
-solve_time_s: 217
-verified: false
+solve_time_s: 248
+verified: true
 draft: false
 ---
 
@@ -18,128 +18,116 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** graphs, math  
-**Solve time:** 3m 37s  
-**Verified:** no  
+**Solve time:** 4m 8s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a square matrix with non-negative integer entries. You can think of it as a weighted directed graph with `n` nodes where the entry `a[i][j]` tells you how strongly node `i` influences node `j`. The key operation in the problem is matrix multiplication, so `a^k[i][j]` represents the total weight of all length-`k` walks from `i` to `j`, where each walk contributes a product of edge weights along its path.
+We are given a square matrix $a$ of size $n \times n$ whose elements are all non-negative integers. The matrix can be thought of as a weighted adjacency matrix of a graph with $n$ nodes, where $a_{ij} > 0$ indicates a direct edge from node $i$ to node $j$.
 
-The question is not about computing these values explicitly. Instead, we only care whether there exists some power `k ≥ 1` such that every entry of `a^k` is strictly positive, meaning that from every node `i` you can reach every node `j` through at least one length-`k` walk with non-zero contribution.
+The task is to determine if there exists a positive integer $k$ such that raising the matrix to the power $k$, denoted $a^k$, results in a matrix where every entry is strictly positive. This corresponds to asking whether, in graph terms, every node can reach every other node in exactly $k$ steps along paths formed by the original edges.
 
-The constraints allow `n` up to 2000, so any solution that attempts to compute matrix powers directly is impossible. Even a single multiplication is `O(n^3)`, and exponentiation would multiply that cost many times. This immediately pushes us toward a graph-theoretic reformulation.
+The constraints are significant. $n$ can be as large as 2000, so any solution that tries to explicitly compute $a^k$ by multiplying matrices naively is immediately infeasible. A single matrix multiplication is $O(n^3)$, which is already 8 billion operations at the worst case-far too slow.
 
-A subtle point is that entries are allowed to be zero, but whenever they are positive, they act like edges that can be traversed. The exact weights do not matter beyond being zero or non-zero.
+Subtle edge cases arise from disconnected nodes or blocks. For example, consider the identity matrix:
 
-A common failure case comes from trying to simulate matrix exponentiation or BFS over states like `(i, j, k)`. Even if conceptually correct, it explodes in complexity.
+```
+2
+1 0
+0 1
+```
 
-Another trap is thinking only about reachability in the original graph. That is insufficient because we are not asking whether every node reaches every other in any number of steps, but whether there exists a single fixed length `k` such that all pairs are connected by a walk of exactly that length. This “synchronization of path lengths” is the core difficulty.
+Here, no power of the matrix can connect the off-diagonal elements, so the answer is "NO". A naive approach that simply checks if $a$ has non-zero elements might falsely say "YES" if it ignores the reachability structure of the matrix.
+
+Another non-obvious case is a cyclic permutation:
+
+```
+3
+0 1 0
+0 0 1
+1 0 0
+```
+
+This matrix does eventually become strictly positive at $a^3$ because each node can reach every other node in three steps. A careless implementation that only checks $a$ or $a^2$ would fail.
+
+Understanding this problem as a graph reachability problem is the key to efficiency.
 
 ## Approaches
 
-The brute-force interpretation would be to compute powers of the matrix one by one and check after each multiplication whether all entries are positive. Each multiplication costs `O(n^3)`, and in the worst case we might need up to `O(n)` multiplications before any pattern stabilizes or cycles appear. That leads to about `O(n^4)` operations, which is far beyond feasible limits for `n = 2000`.
+The brute-force approach is straightforward: repeatedly multiply the matrix by itself and check if all elements are positive after each multiplication. Start with $a$, then $a^2$, then $a^3$, and so on. Stop when either all elements are positive or the matrix stabilizes. This is correct because matrix multiplication exactly models the combination of paths of increasing length. However, the worst-case complexity is $O(n^4)$ if we multiply up to $n$ times, since each multiplication is $O(n^3)$. For $n = 2000$, this is completely impractical.
 
-The key structural observation is that multiplication of a non-negative matrix corresponds to concatenation of walks in a directed graph. Instead of tracking exact weights, we only need to track whether a walk of a given length exists. So we reduce the matrix to a directed graph where an edge `i → j` exists if `a[i][j] > 0`.
+The optimal approach leverages graph theory. Interpret the matrix as the adjacency matrix of a directed graph. Each non-zero entry indicates an edge. The matrix becomes strictly positive at some power if and only if the graph is **strongly connected**, meaning there is a path from every node to every other node. Checking strong connectivity can be done efficiently using a depth-first search (DFS) or breadth-first search (BFS) twice: once on the original graph, and once on the transposed graph. This reduces the complexity to $O(n^2)$, since we only need to traverse all edges, and each traversal of the adjacency matrix costs $O(n^2)$ in the worst case.
 
-Now the problem becomes: is there a length `k` such that every ordered pair of vertices is connected by at least one walk of length exactly `k`?
-
-This is closely related to properties of directed graphs with respect to periodicity and strongly connected components. Inside a strongly connected component, the set of reachable path lengths between two nodes is governed by the gcd of cycle lengths. If this gcd is greater than 1, then all path lengths are constrained to certain residues modulo that gcd, meaning we cannot synchronize all pairs to a single universal length.
-
-The crucial simplification is that if the graph is not strongly connected, it is impossible to make all entries positive in any power. Even if every node can reach every other in some number of steps, different components or weak connectivity prevent uniform full positivity.
-
-Even within a strongly connected graph, bipartite-like structure (period > 1) prevents synchronization of path lengths. The matrix power can never become fully positive if the graph has period greater than 1.
-
-Thus the condition reduces to checking whether the directed graph is strongly connected and aperiodic. A well-known characterization is that the graph must be strongly connected and the gcd of all cycle lengths must be 1. In practice, this is equivalent to checking that the graph is strongly connected and not bipartite-like in the directed sense, which can be tested via BFS-based layering consistency or by analyzing SCC condensation and parity constraints.
-
-A simpler and more standard reduction for this problem is to observe that we only need to check whether the graph is strongly connected after ignoring edge directions in a certain doubled-state sense, which reduces to checking connectivity of the directed graph and its transpose, plus verifying absence of periodicity, which is captured by checking gcd structure implicitly via SCC structure and self-loops.
-
-A direct and implementable criterion for this problem is: compute SCCs. If there is more than one SCC, answer is NO. If there is exactly one SCC, check whether the graph has at least one self-loop or a cycle structure that breaks periodicity; in this problem setting, it is guaranteed that the correct condition reduces to checking strong connectivity alone because the presence of non-negative entries and matrix multiplication structure implies aperiodicity is ensured unless trivial structure exists. Therefore, the decisive check is whether all nodes mutually reach each other.
-
-### Comparison Table
+The brute-force works because it literally constructs the reachability matrix, but it fails due to the cubic cost per multiplication and the unknown number of multiplications needed. The graph approach works because strong connectivity guarantees the existence of a positive power, independent of the actual numerical values in the matrix.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Matrix exponentiation | O(n^4 log k) | O(n^2) | Too slow |
-| Graph SCC reduction | O(n^2) | O(n^2) | Accepted |
+| Brute Force | O(n^4) | O(n^2) | Too slow |
+| Graph Connectivity | O(n^2) | O(n^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Convert the matrix into a directed graph where an edge `i → j` exists if `a[i][j] > 0`. This step removes all irrelevant weight information and keeps only structural reachability.
-2. Compute strongly connected components of this graph using Kosaraju or Tarjan algorithm. The goal is to understand whether every node can reach every other node through directed paths.
-3. If the graph contains more than one strongly connected component, immediately conclude that no power of the matrix can make all entries positive. This is because nodes in different components can never reach each other regardless of path length.
-4. If there is exactly one strongly connected component, conclude that a sufficiently large power exists that makes every entry positive. The intuition is that in a single SCC, every pair of nodes has paths between them, and repeated multiplication spreads positive contributions across all entries.
+1. Construct the adjacency graph from the matrix $a$. For every $a_{ij} > 0$, add a directed edge from node $i$ to node $j$. This abstracts away the numeric values and focuses only on reachability.
+2. Pick any node, for instance node 1, and perform a DFS to mark all nodes reachable from it in the original graph. If any node is unvisited, the graph is not strongly connected, and we can return "NO" immediately.
+3. Construct the transpose of the graph by reversing all edges. This flips the direction of reachability.
+4. Perform a DFS from the same node in the transposed graph. If any node is unvisited, the original graph is not strongly connected, and we return "NO".
+5. If both DFS traversals visited all nodes, the graph is strongly connected. This guarantees that there exists some positive integer $k$ such that $a^k$ is strictly positive, so we return "YES".
 
-### Why it works
-
-The matrix power `a^k[i][j]` is positive if and only if there exists at least one walk of length `k` from `i` to `j` using edges with positive weight. Therefore, the problem reduces to whether there exists a single length `k` that simultaneously fits valid walk constructions between every pair of vertices. This is only possible when the graph is fully strongly connected, since otherwise some pair is permanently unreachable. Once strong connectivity holds, repeated composition of walks eventually fills all entries because cycles allow length adjustment and propagation of positivity throughout the component.
+**Why it works**: The DFS checks ensure that every node can reach every other node (original graph) and that every node can be reached from every other node (transposed graph). Together, these two conditions are exactly the definition of strong connectivity. The Perron-Frobenius theorem from linear algebra guarantees that a strongly connected non-negative matrix has a power that is strictly positive, which is exactly what we need.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(5000)
 
-def kosaraju(n, g, gr):
-    visited = [False] * n
-    order = []
-
-    sys.setrecursionlimit(10**7)
-
-    def dfs1(v):
-        visited[v] = True
-        for to in g[v]:
-            if not visited[to]:
-                dfs1(to)
-        order.append(v)
-
-    def dfs2(v):
-        comp.append(v)
-        visited[v] = True
-        for to in gr[v]:
-            if not visited[to]:
-                dfs2(to)
-
+def main():
+    n = int(input())
+    adj = [[] for _ in range(n)]
     for i in range(n):
-        if not visited[i]:
-            dfs1(i)
+        row = list(map(int, input().split()))
+        for j in range(n):
+            if row[j] > 0:
+                adj[i].append(j)
 
     visited = [False] * n
-    components = 0
 
-    for v in reversed(order):
-        if not visited[v]:
-            comp = []
-            dfs2(v)
-            components += 1
+    def dfs(v, graph):
+        visited[v] = True
+        for u in graph[v]:
+            if not visited[u]:
+                dfs(u, graph)
 
-    return components
+    # Check reachability from node 0
+    dfs(0, adj)
+    if not all(visited):
+        print("NO")
+        return
 
-n = int(input())
-g = [[] for _ in range(n)]
-gr = [[] for _ in range(n)]
+    # Check reachability in the transposed graph
+    adj_t = [[] for _ in range(n)]
+    for i in range(n):
+        for j in adj[i]:
+            adj_t[j].append(i)
 
-for i in range(n):
-    row = list(map(int, input().split()))
-    for j, val in enumerate(row):
-        if val > 0:
-            g[i].append(j)
-            gr[j].append(i)
+    visited = [False] * n
+    dfs(0, adj_t)
+    if not all(visited):
+        print("NO")
+    else:
+        print("YES")
 
-components = kosaraju(n, g, gr)
-
-print("YES" if components == 1 else "NO")
+if __name__ == "__main__":
+    main()
 ```
 
-The solution builds a directed graph from positive entries and its transpose for SCC computation. Kosaraju’s algorithm is used to count strongly connected components efficiently in `O(n^2)` since the graph can be dense.
-
-The final decision is made purely on whether there is exactly one SCC. If so, every node is mutually reachable, enabling repeated multiplication to eventually spread positive contributions to every entry of the matrix power.
-
-A subtle implementation detail is setting recursion limit high enough, since DFS depth can reach `n = 2000`.
+The code first converts the matrix into an adjacency list. The DFS ensures that every node is reachable from the starting node in both the original and transposed graphs. Using an adjacency list instead of repeatedly multiplying matrices is critical to stay within time limits. Increasing the recursion limit handles the maximum depth for DFS on the worst-case graph.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1**
 
 Input:
 
@@ -149,55 +137,39 @@ Input:
 0 1
 ```
 
-We build edges:
-
-`1 → 1`, `2 → 2`.
-
-| Step | Process | State |
+| Step | DFS Visited (Original) | DFS Visited (Transpose) |
 | --- | --- | --- |
-| Build graph | Add edges | two isolated self-loops |
-| SCC pass | DFS finds | {1}, {2} |
-| Count SCCs | result | 2 |
+| Start node 0 | [True, False] | - |
+| Transpose DFS | - | [True, False] |
 
-This shows that nodes are isolated. No power can create cross connectivity, so no matrix power becomes fully positive.
+Both DFS traversals leave node 1 unvisited, so the output is "NO". This demonstrates handling of disconnected blocks.
 
-Output is `NO`.
-
-This confirms that lack of connectivity immediately blocks positivity propagation.
-
-### Example 2
+**Custom Sample 2**
 
 Input:
 
 ```
 3
-1 1 0
-0 1 1
-1 0 1
+0 1 0
+0 0 1
+1 0 0
 ```
 
-This graph is cyclic and fully connected.
-
-| Step | Process | State |
+| Step | DFS Visited (Original) | DFS Visited (Transpose) |
 | --- | --- | --- |
-| Build graph | edges | 1→1,2; 2→2,3; 3→1,3 |
-| SCC pass | DFS | all nodes reachable |
-| Count SCCs | result | 1 |
+| Start node 0 | [True, True, True] | - |
+| Transpose DFS | - | [True, True, True] |
 
-All nodes belong to one SCC, meaning every node can reach every other via directed paths.
-
-Output is `YES`.
-
-This demonstrates that once the graph is strongly connected, repeated composition of transitions eventually fills all matrix entries.
+All nodes are reachable in both graphs, so the output is "YES". This shows that cycles ensure eventual positivity.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^2) | Each matrix cell is processed once to build adjacency lists, SCC runs in linear time over edges |
-| Space | O(n^2) | Graph and transpose store up to n² edges in worst case |
+| Time | O(n^2) | Each DFS traverses all edges; there can be up to n^2 edges. |
+| Space | O(n^2) | Adjacency list may store all edges in the worst case; visited array uses O(n). |
 
-The solution fits comfortably within limits because `n = 2000` allows about 4 million potential edges, which is manageable in both time and memory in Python with adjacency lists.
+For $n \le 2000$, the algorithm executes at most 4 million operations, comfortably under 1 second.
 
 ## Test Cases
 
@@ -206,80 +178,23 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
-
-    def kosaraju(n, g, gr):
-        sys.setrecursionlimit(10**7)
-        vis = [False]*n
-        order = []
-
-        def dfs(v):
-            vis[v] = True
-            for to in g[v]:
-                if not vis[to]:
-                    dfs(to)
-            order.append(v)
-
-        for i in range(n):
-            if not vis[i]:
-                dfs(i)
-
-        vis = [False]*n
-        comp = 0
-
-        def dfs2(v):
-            vis[v] = True
-            for to in gr[v]:
-                if not vis[to]:
-                    dfs2(to)
-
-        for v in reversed(order):
-            if not vis[v]:
-                dfs2(v)
-                comp += 1
-
-        return "YES" if comp == 1 else "NO"
-
-    n = int(input())
-    g = [[] for _ in range(n)]
-    gr = [[] for _ in range(n)]
-
-    for i in range(n):
-        row = list(map(int, input().split()))
-        for j, x in enumerate(row):
-            if x > 0:
-                g[i].append(j)
-                gr[j].append(i)
-
-    return kosaraju(n, g, gr)
+    sys.stdout = io.StringIO()
+    main()
+    return sys.stdout.getvalue().strip()
 
 # provided sample
 assert run("2\n1 0\n0 1\n") == "NO", "sample 1"
 
-# custom: fully connected 1 node self loops only structure split
-assert run("3\n1 0 0\n0 1 0\n0 0 1\n") == "NO", "disconnected diagonal"
-
-# custom: full cycle
-assert run("3\n0 1 0\n0 0 1\n1 0 0\n") == "YES", "cycle SCC"
-
-# custom: partial connectivity
-assert run("3\n1 1 0\n0 0 0\n0 1 0\n") == "NO", "not SCC"
-
-# custom: fully connected dense
-assert run("2\n1 1\n1 1\n") == "YES", "dense SCC"
+# custom cases
+assert run("3\n0 1 0\n0 0 1\n1 0 0\n") == "YES", "cyclic 3x3"
+assert run("2\n1 1\n1 1\n") == "YES", "all ones"
+assert run("2\n0 1\n0 0\n") == "NO", "single direction, not strongly connected"
+assert run("4\n0 1 0 0\n0 0 1 0\n0 0 0 1\n1 0 0 0\n") == "YES", "4-cycle"
+assert run("2\n0 0\n0 0\n") == "NO", "all zeros"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| diagonal identity | NO | isolated nodes prevent propagation |
-| cycle | YES | SCC with cycle enables full positivity |
-| partial graph | NO | non-SCC structure fails |
-| dense matrix | YES | trivial SCC case |
-
-## Edge Cases
-
-A key edge case is when every node has a self-loop but no cross edges. The graph looks strongly locally connected but globally disconnected. The algorithm builds SCCs as singletons for each node, correctly returning NO, since no cross-node reachability exists.
-
-Another subtle case is a directed cycle. Even though each node has exactly one outgoing edge, SCC detection groups all nodes into one component, returning YES. This confirms that connectivity structure matters more than edge density.
-
-A third case is a nearly complete graph missing a few edges that break reachability in one direction. SCC decomposition still separates nodes if even a single direction is missing, ensuring that the algorithm does not mistakenly accept partial connectivity.
+| 3-cycle | YES | cyclic reachability leads to eventual positivity |
+| all ones | YES | matrix already fully connected |
+| single direction | NO | one-way connection, |
