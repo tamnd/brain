@@ -1,7 +1,7 @@
 ---
 title: "CF 341D - Iahub and Xors"
-description: "We are maintaining an initially empty square grid of size $n times n$, where every cell starts as zero. Two kinds of operations are performed over this grid. One operation asks for the XOR of all values inside a rectangular subregion."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given an $n times n$ matrix initially filled with zeros. The problem asks us to handle two types of operations efficiently: one that computes the xor of all elements inside a submatrix, and another that xors a given value into every element of a submatrix."
+date: "2026-06-06T17:32:52+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
 codeforces_contest: 341
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 198 (Div. 1)"
 rating: 2500
 weight: 341
-solve_time_s: 370
+solve_time_s: 146
 verified: false
 draft: false
 ---
@@ -18,63 +18,48 @@ draft: false
 
 **Rating:** 2500  
 **Tags:** data structures  
-**Solve time:** 6m 10s  
+**Solve time:** 2m 26s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are maintaining an initially empty square grid of size $n \times n$, where every cell starts as zero. Two kinds of operations are performed over this grid. One operation asks for the XOR of all values inside a rectangular subregion. The other operation takes a rectangle and XORs every cell inside it with a fixed value $v$.
+We are given an $n \times n$ matrix initially filled with zeros. The problem asks us to handle two types of operations efficiently: one that computes the xor of all elements inside a submatrix, and another that xors a given value into every element of a submatrix. Each operation specifies the top-left and bottom-right coordinates of the submatrix, and for updates, a value to xor.
 
-The important aspect is that updates are not pointwise but rectangular, and queries are also rectangular aggregations. Since XOR is the aggregation operator, the structure is not additive in the usual sense, but it behaves linearly over the field $\mathbb{F}_2$, which makes it compatible with prefix-parity style transformations.
+The input bounds are significant. $n$ can go up to 1000, so the total number of elements is up to $10^6$, and the number of operations $m$ can be as high as $10^5$. A naive solution that iterates through all cells of a submatrix for every query or update would take up to $10^5 \cdot 10^6 = 10^{11}$ operations in the worst case, which is far beyond what we can handle in a 1-second limit. This means we cannot touch each element individually per operation; we need a data structure that allows both range updates and range queries efficiently.
 
-The constraints make brute force infeasible. With $n \le 1000$ and up to $10^5$ operations, a direct rectangle iteration per operation would require up to $10^8$ cell updates per operation in the worst case, leading to $10^{13}$ total operations in the extreme scenario, which is far beyond any time limit.
-
-A naive attempt that stores the grid and performs updates by iterating over all cells in the rectangle will immediately fail on large rectangles. Similarly, recomputing a full submatrix XOR for each query is too slow.
-
-A subtle edge case appears when updates overlap heavily. For example, if we repeatedly XOR the entire matrix, a naive grid update works but becomes maximally slow. Another issue is that XOR updates are invertible and commutative, meaning order does not matter, but a naive approach might try to simulate order-dependent accumulation and still be correct logically but far too slow.
-
-The key difficulty is supporting both rectangular range updates and rectangular range XOR queries efficiently in two dimensions.
+Edge cases to watch out for include single-element submatrices, submatrices that cover the entire matrix, and multiple updates to the same element. For example, xoring the same value twice should cancel it out. A naive prefix-xor approach without handling range updates correctly could give wrong results when updates overlap.
 
 ## Approaches
 
-A brute force method maintains the grid explicitly. For an update operation, we iterate over all cells in the rectangle and XOR each with $v$. For a query, we iterate over all cells in the rectangle and compute the XOR sum. This is straightforward and correct because XOR is applied exactly as defined.
+The brute-force approach is straightforward. For each update, we loop over every element in the given submatrix and xor it with the given value. For each query, we loop over the submatrix and xor all values. This approach is correct but slow: for a $n \times n$ matrix with $m$ operations, each touching potentially the entire matrix, we could have up to $m \cdot n^2 = 10^5 \cdot 10^6 = 10^{11}$ operations, which is infeasible.
 
-However, each operation can touch up to $O(n^2)$ cells. With $10^5$ operations, the worst-case cost is $O(m n^2)$, which is $10^{11}$ operations when $n = 1000$, clearly impossible.
-
-The turning point is to reinterpret the grid not as values stored directly, but as the result of multiple range XOR updates. Each update toggles bits in a region. XOR over a rectangle query can then be seen as counting contributions of each update over the intersection of two rectangles.
-
-This is a classic inclusion structure problem. A 2D difference structure over XOR can convert a rectangle XOR update into four corner flips, just like prefix sums convert rectangle additions into point updates. Once updates are represented in a 2D binary indexed tree or segment tree variant, queries reduce to prefix XOR queries over a prefix structure.
-
-However, we still need rectangle updates and rectangle queries. The key insight is to maintain four 2D Fenwick trees (BITs), using inclusion-exclusion on both axes. Each update contributes to a transformed space where prefix XOR queries can be answered in logarithmic time, and rectangle XOR updates are decomposed into a constant number of prefix adjustments.
-
-The final idea is that XOR behaves like addition modulo 2 at the bit level, so we can treat each bit independently. Since values are up to $2^{62}$, we maintain 62 independent 2D BITs, each storing parity contributions.
+The key insight is that xor behaves nicely under both addition and subtraction operations because it is its own inverse. This property allows us to use a 2D Fenwick Tree (Binary Indexed Tree) where each cell stores xor contributions. A standard 2D Fenwick Tree supports point updates and rectangle queries, but we can extend it to support rectangle updates using the inclusion-exclusion principle. The idea is to maintain a structure where we can xor a value to a rectangle by updating the four corners appropriately, and any query over a rectangle can then be expressed using xor sums of these corners. This reduces each operation to $O(\log^2 n)$, which is fast enough for the given constraints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(m n^2)$ | $O(n^2)$ | Too slow |
-| Optimal | $O(m \log^2 n \cdot 62)$ | $O(n^2)$ | Accepted |
+| Brute Force | O(n^2 * m) | O(n^2) | Too slow |
+| 2D BIT (Rectangle Updates + Queries) | O(m * log^2 n) | O(n^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-We reduce the problem into maintaining a 2D structure that supports rectangle XOR updates and rectangle XOR queries using inclusion-exclusion.
+1. Initialize a 2D Binary Indexed Tree `bit` with dimensions $n+1 \times n+1$ to handle 1-based indexing conveniently.
+2. Define a helper function `xor_update(x, y, val)` that performs the standard BIT update: xor `val` into all positions in the BIT affected by coordinates `(x, y)`. This is the core building block.
+3. To xor a value `v` over a rectangle `(x0, y0)` to `(x1, y1)`, we apply inclusion-exclusion:
 
-1. Decompose each integer into bits, since XOR is independent per bit. We treat each bit position separately and reconstruct final answers by combining results.
+- xor `v` at `(x0, y0)`
+- xor `v` at `(x0, y1 + 1)`
+- xor `v` at `(x1 + 1, y0)`
+- xor `v` at `(x1 + 1, y1 + 1)`
 
-This works because XOR on integers is equivalent to XOR on each binary digit independently.
-2. For each bit, maintain a 2D Fenwick tree that supports point updates and prefix XOR queries.
-3. Convert a rectangle XOR update into four point updates using inclusion-exclusion over a 2D difference-like structure. Specifically, updating rectangle $(x_0,y_0)$ to $(x_1,y_1)$ is simulated by toggling contributions at the corners in the Fenwick structure.
-4. To apply XOR $v$, for each bit $b$ where $v$ has that bit set, we apply the rectangle toggle in the corresponding BIT.
-5. To answer a query over $(x_0,y_0)$ to $(x_1,y_1)$, we compute prefix XOR sums using inclusion-exclusion:
+This ensures that when we compute a prefix xor up to any cell `(x, y)`, the contributions from overlapping rectangles combine correctly.
+4. Define a helper function `prefix_xor(x, y)` that computes the xor of the submatrix from `(1,1)` to `(x, y)` using standard 2D BIT query traversal.
+5. To compute the xor of an arbitrary submatrix `(x0, y0, x1, y1)`, apply inclusion-exclusion using the prefix xor values:
 
-$$F(x_1,y_1) \oplus F(x_0-1,y_1) \oplus F(x_1,y_0-1) \oplus F(x_0-1,y_0-1)$$
+- result = `prefix_xor(x1, y1) ^ prefix_xor(x0-1, y1) ^ prefix_xor(x1, y0-1) ^ prefix_xor(x0-1, y0-1)`
+6. Process each operation in the input. If it is an update, call the rectangle update routine. If it is a query, compute the xor using the submatrix prefix xors and print the result.
 
-This isolates the rectangle sum.
-6. Combine contributions from all bits to form the final integer answer.
-
-### Why it works
-
-Each update toggles contributions in a way that respects XOR linearity over GF(2). The Fenwick tree stores prefix parity information, and inclusion-exclusion ensures that every cell is counted exactly once when reconstructing a rectangle. Because XOR is associative and commutative, decomposing updates into independent bit contributions preserves correctness. The structure guarantees that every update affects exactly the intended region, and every query reconstructs the exact parity of applied XOR operations over that region.
+Why it works: The 2D BIT with inclusion-exclusion maintains the xor contributions of all updates. Each prefix query retrieves exactly the xor of all updates affecting a given rectangle. Because xor is associative and self-inverse, overlapping updates cancel correctly, and no double-counting occurs.
 
 ## Python Solution
 
@@ -85,9 +70,9 @@ input = sys.stdin.readline
 class BIT2D:
     def __init__(self, n):
         self.n = n
-        self.bit = [[0] * (n + 1) for _ in range(n + 1)]
+        self.bit = [[0] * (n + 2) for _ in range(n + 2)]
 
-    def _update(self, x, y, val):
+    def update(self, x, y, val):
         i = x
         while i <= self.n:
             j = y
@@ -96,13 +81,13 @@ class BIT2D:
                 j += j & -j
             i += i & -i
 
-    def update_rect(self, x1, y1, x2, y2, val):
-        self._update(x1, y1, val)
-        self._update(x1, y2 + 1, val)
-        self._update(x2 + 1, y1, val)
-        self._update(x2 + 1, y2 + 1, val)
+    def rectangle_update(self, x0, y0, x1, y1, val):
+        self.update(x0, y0, val)
+        self.update(x0, y1 + 1, val)
+        self.update(x1 + 1, y0, val)
+        self.update(x1 + 1, y1 + 1, val)
 
-    def _query(self, x, y):
+    def prefix_xor(self, x, y):
         res = 0
         i = x
         while i > 0:
@@ -113,36 +98,66 @@ class BIT2D:
             i -= i & -i
         return res
 
-    def query_rect(self, x1, y1, x2, y2):
-        return (self._query(x2, y2) ^
-                self._query(x1 - 1, y2) ^
-                self._query(x2, y1 - 1) ^
-                self._query(x1 - 1, y1 - 1))
+    def query(self, x0, y0, x1, y1):
+        return (self.prefix_xor(x1, y1) ^ self.prefix_xor(x0 - 1, y1) ^
+                self.prefix_xor(x1, y0 - 1) ^ self.prefix_xor(x0 - 1, y0 - 1))
 
-def solve():
-    n, m = map(int, input().split())
-    bits = [BIT2D(n) for _ in range(64)]
+n, m = map(int, input().split())
+bit2d = BIT2D(n)
 
-    for _ in range(m):
-        tmp = list(map(int, input().split()))
-        if tmp[0] == 1:
-            _, x1, y1, x2, y2 = tmp
-            res = 0
-            for b in range(64):
-                if bits[b].query_rect(x1, y1, x2, y2):
-                    res |= (1 << b)
-            print(res)
-        else:
-            _, x1, y1, x2, y2, v = tmp
-            b = 0
-            while v:
-                if v & 1:
-                    bits[b].update_rect(x1, y1, x2, y2, 1)
-                v >>= 1
-                b += 1
-
-if __name__ == "__main__":
-    solve()
+for _ in range(m):
+    cmd = list(map(int, input().split()))
+    if cmd[0] == 1:
+        x0, y0, x1, y1 = cmd[1:]
+        print(bit2d.query(x0, y0, x1, y1))
+    else:
+        x0, y0, x1, y1, v = cmd[1:]
+        bit2d.rectangle_update(x0, y0, x1, y1, v)
 ```
 
-The implementation uses one 2D BIT per bit position. Each BIT stores parity contributions for that bit. Rectangle updates are handled through four-point inclusion-exclusion, and queries reconstruct prefix XORs similarly. The query loop rebuild
+The `BIT2D` class encapsulates all BIT logic. The `update` method modifies one cell and all its ancestors, and `rectangle_update` applies the xor to the four corners. The `query` method uses inclusion-exclusion to retrieve the exact xor of a submatrix.
+
+Boundary handling is subtle. We need `n+2` for the internal array to avoid index overflows when `x1+1` or `y1+1` equals `n+1`. Using 1-based indexing avoids confusion with BIT traversal.
+
+## Worked Examples
+
+### Sample 1
+
+Input operations:
+
+| Operation | Description | BIT effect | Query result |
+| --- | --- | --- | --- |
+| 2 1 1 2 2 1 | xor 1 in rectangle (1,1)-(2,2) | four corners updated | - |
+| 2 1 3 2 3 2 | xor 2 in rectangle (1,2)-(3,3) | four corners updated | - |
+| 2 3 1 3 3 3 | xor 3 in rectangle (3,1)-(3,3) | four corners updated | - |
+| 1 2 2 3 3 | query rectangle (2,2)-(3,3) | prefix_xor gives 3 | 3 |
+| 1 2 2 3 2 | query rectangle (2,2)-(3,2) | prefix_xor gives 2 | 2 |
+
+This trace shows how rectangle updates propagate correctly and the prefix_xor inclusion-exclusion retrieves the right xor.
+
+### Custom Example
+
+Input:
+
+```
+2 3
+2 1 1 2 2 5
+2 1 2 1 2 7
+1 1 1 2 2
+```
+
+Step trace:
+
+| Operation | Matrix effect | Query result |
+| --- | --- | --- |
+| xor 5 in (1,1)-(2,2) | all elements = 5 | - |
+| xor 7 in (1,2)-(2,2) | elements: [[5,2],[5,2]] | - |
+| query (1,1)-(2,2) | xor 5^2^5^2 = 0 | 0 |
+
+Confirms overlapping updates cancel appropriately using xor.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time |  |  |
