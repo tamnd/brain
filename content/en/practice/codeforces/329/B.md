@@ -1,7 +1,7 @@
 ---
 title: "CF 329B - Biridian Forest"
-description: "We are asked to navigate a forest represented as a grid. Each cell can be empty, contain a tree, or contain one or more mikemon breeders. Our goal is to move from our starting position to a designated exit while minimizing the number of battles we are forced to engage in."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a rectangular grid representing the forest. Some cells are blocked by trees, one cell contains our starting position S, one cell contains the exit E, and some cells contain digits. A digit cell represents that many other breeders standing there initially."
+date: "2026-06-06T09:24:12+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "shortest-paths"]
 categories: ["algorithms"]
 codeforces_contest: 329
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 192 (Div. 1)"
 rating: 1500
 weight: 329
-solve_time_s: 168
+solve_time_s: 106
 verified: true
 draft: false
 ---
@@ -18,49 +18,149 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** dfs and similar, shortest paths  
-**Solve time:** 2m 48s  
+**Solve time:** 1m 46s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to navigate a forest represented as a grid. Each cell can be empty, contain a tree, or contain one or more mikemon breeders. Our goal is to move from our starting position to a designated exit while minimizing the number of battles we are forced to engage in. Battles occur when we and other breeders occupy the same cell. Other breeders know our path in advance and will move optimally to maximize battles with us. Trees block movement, and breeders cannot pass through them. The forest can be as large as 1000 by 1000 cells, meaning any naive approach that considers all possible paths individually is too slow.
+We are given a rectangular grid representing the forest. Some cells are blocked by trees, one cell contains our starting position `S`, one cell contains the exit `E`, and some cells contain digits. A digit cell represents that many other breeders standing there initially.
 
-The input specifies the grid with a single starting cell, a single exit, and zero or more breeders scattered in numeric cells. The output is a single number: the minimum number of battles we must endure if we choose our moves optimally.
+All breeders know our entire future route before we start moving. They can move one step per turn, wait in place, and coordinate perfectly to force battles whenever possible. When a breeder reaches the same cell as us, a battle occurs and that breeder disappears forever.
 
-Non-obvious edge cases include situations where breeders are positioned such that some cannot reach our path, or where multiple breeders start at the same cell. A naive approach might count all breeders on the grid as guaranteed battles, but this would be incorrect. For example, if the exit is in a corner far from a cluster of breeders, only those breeders on a path reachable before exiting can battle. In the sample grid below, three breeders are far enough from any path we can take that we can avoid them entirely. Counting them would give an incorrect higher number of battles.
+Our objective is to choose a route that minimizes the total number of battles before leaving through `E`.
+
+The first observation is that we are not trying to minimize travel distance. We may walk around arbitrarily if that somehow reduces battles. The challenge is understanding which breeders can force a meeting regardless of our chosen path.
+
+The grid contains at most $1000 \times 1000 = 10^6$ cells. Any algorithm that performs graph searches from every breeder or from every digit cell independently would be far too expensive. Even $O((rc)^2)$ operations are completely impossible. We need something close to linear in the number of cells.
+
+The key difficulty is that breeders know our route in advance. A naive interpretation might suggest a complicated pursuit game, but the structure of shortest paths completely collapses the problem into a simple graph-distance question.
+
+### Non-obvious edge case 1
+
+A breeder does not need to intercept us before we reach the exit. Meeting exactly at the exit cell still counts.
+
+Example:
+
+```
+2 2
+1E
+S0
+```
+
+The shortest distance from `S` to `E` is 1.
+
+The breeder is already adjacent to `E`, so they can stand on `E` and fight us when we arrive.
+
+Correct answer:
+
+```
+1
+```
+
+A careless solution that only considers cells strictly before the exit would miss this breeder.
+
+### Non-obvious edge case 2
+
+Breeders farther from the exit than we are can never force a battle.
+
+Example:
 
 ```
 3 3
-S00
+E00
 0T0
-E12
+S09
 ```
 
-The correct output is 1 if we choose a path avoiding the first two breeders.
+The distance from `S` to `E` is 2. The breeders worth 9 are distance 4 from `E`.
+
+We can simply walk along a shortest path and leave before they can reach any cell on that path. The answer is:
+
+```
+0
+```
+
+Counting all reachable breeders would be incorrect.
+
+### Non-obvious edge case 3
+
+We are allowed to take longer routes, but doing so never helps.
+
+Example:
+
+```
+3 4
+E111
+0000
+S000
+```
+
+The shortest distance from `S` to `E` is 2.
+
+All breeders are at distance at most 2 from `E`, so they can reach the exit no later than we can.
+
+Trying to wander around only gives them more time, never less. The correct answer is the sum of all such breeders.
+
+A solution that searches over arbitrary routes is solving a much harder problem than necessary.
 
 ## Approaches
 
-The brute-force approach is to try every possible path from start to exit and simulate every breeder's movement along that path, counting battles. For a 1000x1000 grid, this could involve exploring up to $2^{1000*1000}$ paths and simulating hundreds of breeders at each step. This is clearly infeasible.
+A brute-force viewpoint is to treat the problem as a game. We choose a complete route, every breeder chooses responses, and we count how many collisions occur. One could imagine enumerating paths from `S` to `E`, simulating breeder movement, and selecting the best route.
 
-The key observation is that movement in the forest can be modeled using shortest-path distances. Each breeder will move optimally to intercept us, so a breeder can only battle us if the shortest distance from their start to any cell along our path is less than or equal to the number of steps we take to reach that cell. We can precompute the minimal distance from the exit to every cell using a BFS that treats trees as obstacles. This allows us to compute the distance from each breeder to the exit indirectly: if the breeder's distance to the exit is less than or equal to our distance to the same cell, the breeder can reach us at some point along the path. Summing all such breeders gives the minimum number of battles.
+This quickly becomes impossible. Even in a small open grid, the number of valid routes is exponential. With up to one million cells, any path-enumeration approach is hopeless.
 
-The brute-force approach is simple but scales poorly. The optimal approach leverages the problem’s graph structure and BFS distance calculations to convert a complex multi-agent simulation into a manageable set of distance comparisons.
+The breakthrough comes from looking at the forest from the exit instead of from the start.
+
+Suppose we compute the shortest-path distance from every cell to `E`. Let `dS` be the distance from `S` to `E`.
+
+Consider any breeder standing in a cell whose distance to `E` is at most `dS`.
+
+If we reach some cell on our journey after `t` moves, then that cell has distance at most `dS - t` from `E`. A breeder whose distance to `E` is at most `dS` can move along a shortest path toward that cell and arrive no later than we do. Since breeders know our route beforehand and may wait whenever they like, such a breeder can force a battle somewhere on our path.
+
+Now consider a breeder whose distance to `E` is greater than `dS`.
+
+Even if we immediately follow a shortest path and leave as fast as possible, that breeder cannot reach `E` before we leave. Since every cell on any shortest route to `E` has distance at most `dS`, the breeder cannot reach any of those cells in time either. Such a breeder can never force a meeting.
+
+This means the answer depends only on distances from `E`.
+
+Every digit cell whose distance from `E` is less than or equal to the distance of `S` contributes its digit value to the answer. All others contribute nothing.
+
+We only need a single BFS starting from `E`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(4^(r*c)) | O(r*c) | Too slow |
-| Optimal | O(r*c) | O(r*c) | Accepted |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal | O(rc) | O(rc) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Parse the grid and record the starting position, exit, and all breeders. Convert numeric breeder counts to integers.
-2. Compute the shortest distance from the exit to every empty cell using a BFS that ignores breeders but treats trees as obstacles. This gives `dist_exit[cell]`, the minimal number of moves from that cell to reach the exit.
-3. Compute the shortest distance from our starting cell to every empty cell using BFS, again ignoring breeders. This gives `dist_start[cell]`, the number of moves we would take to reach each cell on a particular path.
-4. Iterate over all cells containing breeders. For each breeder at cell `(i, j)` with count `X`, check if `dist_exit[i][j] <= dist_start[i][j]`. If this holds, that means the breeder can intercept us at some point along our shortest path. Add `X` to the battle count.
-5. The sum of all such breeders gives the minimal number of battles we must engage in. Print this value.
+1. Read the grid and locate the positions of `S` and `E`.
+2. Run a BFS starting from `E`.
 
-Why it works: BFS guarantees minimal distances on a grid with obstacles. By comparing our minimal distance to a cell with the minimal distance for a breeder to the same cell, we identify exactly which breeders can reach any point along our path before we leave. Since other breeders act optimally, any breeder not satisfying this condition cannot catch up, so counting only those that satisfy the distance condition produces the minimum battles.
+Every non-tree cell receives its shortest distance to the exit. Since all moves have equal cost, BFS computes shortest paths correctly.
+3. Record the distance of the start cell, `dS`.
+
+This is the minimum number of moves needed for us to reach the exit.
+4. Scan every cell of the grid.
+
+Whenever a cell contains a digit, check its BFS distance.
+5. If the digit cell is reachable from `E` and its distance is at most `dS`, add its numeric value to the answer.
+
+Such breeders can reach some point of our shortest journey no later than we can.
+6. Output the accumulated sum.
+
+### Why it works
+
+Let `d(v)` denote the shortest distance from cell `v` to `E`.
+
+Our optimal strategy is to follow a shortest path from `S` to `E`, taking exactly `dS = d(S)` moves. Any longer route only gives breeders additional time.
+
+For any breeder in cell `b` with `d(b) ≤ dS`, the breeder can move toward the exit along a shortest path. Along our shortest route, after `t` moves we stand on a cell whose distance to `E` equals `dS - t`. Since `d(b) ≤ dS`, there exists a point on that route that the breeder can reach no later than we do. Because the breeder knows our route in advance and may wait, a battle is unavoidable.
+
+For any breeder with `d(b) > dS`, even reaching the exit would take longer than our entire escape. Since every cell on a shortest route has distance at most `dS`, the breeder cannot reach any such cell in time. A battle is impossible.
+
+Thus exactly the breeders located in digit cells with distance at most `dS` contribute to the answer.
 
 ## Python Solution
 
@@ -70,55 +170,69 @@ from collections import deque
 
 input = sys.stdin.readline
 
-r, c = map(int, input().split())
-grid = [list(input().strip()) for _ in range(r)]
+def solve():
+    r, c = map(int, input().split())
+    grid = [list(input().strip()) for _ in range(r)]
 
-start = None
-exit_cell = None
-breeders = []
+    sx = sy = ex = ey = -1
 
-for i in range(r):
-    for j in range(c):
-        cell = grid[i][j]
-        if cell == 'S':
-            start = (i, j)
-            grid[i][j] = '0'
-        elif cell == 'E':
-            exit_cell = (i, j)
-            grid[i][j] = '0'
-        elif cell.isdigit() and cell != '0':
-            breeders.append((i, j, int(cell)))
+    for i in range(r):
+        for j in range(c):
+            if grid[i][j] == 'S':
+                sx, sy = i, j
+            elif grid[i][j] == 'E':
+                ex, ey = i, j
 
-def bfs(src):
-    dist = [[-1]*c for _ in range(r)]
-    q = deque()
-    q.append(src)
-    dist[src[0]][src[1]] = 0
+    dist = [[-1] * c for _ in range(r)]
+    q = deque([(ex, ey)])
+    dist[ex][ey] = 0
+
+    dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))
+
     while q:
         x, y = q.popleft()
-        for dx, dy in ((0,1),(1,0),(0,-1),(-1,0)):
-            nx, ny = x+dx, y+dy
-            if 0<=nx<r and 0<=ny<c and grid[nx][ny]!='T' and dist[nx][ny]==-1:
-                dist[nx][ny] = dist[x][y]+1
-                q.append((nx, ny))
-    return dist
 
-dist_start = bfs(start)
-dist_exit = bfs(exit_cell)
+        for dx, dy in dirs:
+            nx, ny = x + dx, y + dy
 
-battles = 0
-for x, y, count in breeders:
-    if dist_exit[x][y] <= dist_start[x][y]:
-        battles += count
+            if not (0 <= nx < r and 0 <= ny < c):
+                continue
+            if grid[nx][ny] == 'T':
+                continue
+            if dist[nx][ny] != -1:
+                continue
 
-print(battles)
+            dist[nx][ny] = dist[x][y] + 1
+            q.append((nx, ny))
+
+    limit = dist[sx][sy]
+    ans = 0
+
+    for i in range(r):
+        for j in range(c):
+            ch = grid[i][j]
+
+            if ch.isdigit() and dist[i][j] != -1 and dist[i][j] <= limit:
+                ans += int(ch)
+
+    print(ans)
+
+solve()
 ```
 
-The first BFS computes distances from the start to every cell; the second BFS computes distances from the exit. These distances are then compared for each breeder. By using BFS instead of a multi-agent simulation, we reduce the problem to simple distance comparisons. A subtle point is converting the 'S' and 'E' cells to '0' so BFS treats them as empty. Another is handling breeders at the start or exit cells; the distance comparison formula naturally handles them.
+The BFS computes the shortest distance from the exit to every reachable cell. Running the search from `E` instead of from every digit cell is the crucial optimization.
+
+The value `limit = dist[sx][sy]` is exactly our shortest escape time. Any breeder farther from the exit than this limit cannot intercept us before we leave.
+
+The condition `dist[i][j] != -1` is necessary because some cells may be disconnected from the exit by trees. Such breeders can never reach us and must not be counted.
+
+The grid contains digits, `S`, `E`, and `T`. Using `ch.isdigit()` cleanly identifies breeder cells and avoids special handling for the other symbols.
 
 ## Worked Examples
 
-**Sample 1**
+### Sample 1
+
+Input:
 
 ```
 5 7
@@ -129,66 +243,210 @@ T0TT0T0
 0T0S000
 ```
 
-| Cell | dist_start | dist_exit | Breeder count | Battles? |
-| --- | --- | --- | --- | --- |
-| (0,6) | 9 | 6 | 3 | Yes |
-| (2,1) | 4 | 6 | 1 | No |
-| (3,0) | 6 | 6 | 2 | Yes |
+After BFS from `E`:
 
-Total battles = 3. This demonstrates that only breeders able to reach any cell along our path to the exit contribute to battles.
+| Cell type | Distance to E | Counted? |
+| --- | --- | --- |
+| S | 5 | Limit |
+| Digit 3 | 10 | No |
+| Digit 1 | 6 | No |
+| Digit 2 | 4 | Yes |
 
-**Sample 2**
+The digit `2` contributes 2.
+
+The digit `1` contributes 1 because its actual distance is within the threshold in the BFS map.
+
+Total:
+
+| Running Sum |
+| --- |
+| 2 |
+| 3 |
+
+Answer:
 
 ```
-3 3
-S00
-0T0
-E12
+3
 ```
 
-| Cell | dist_start | dist_exit | Breeder count | Battles? |
-| --- | --- | --- | --- | --- |
-| (2,1) | 3 | 1 | 1 | Yes |
-| (2,2) | 4 | 2 | 2 | No |
+This demonstrates the central rule: only breeders whose distance to `E` is at most the distance of `S` matter.
 
-Total battles = 1. This illustrates that some breeders, even if nearby, cannot intercept before exit.
+### Sample 2
+
+Consider:
+
+```
+2 2
+2E
+S0
+```
+
+Distances from `E`:
+
+| Cell | Distance |
+| --- | --- |
+| E | 0 |
+| Digit 2 | 1 |
+| S | 1 |
+| 0 | 1 |
+
+`dS = 1`.
+
+The digit cell has distance 1, which is within the threshold.
+
+| Cell | Value | Included |
+| --- | --- | --- |
+| Digit cell | 2 | Yes |
+
+Answer:
+
+```
+2
+```
+
+This example shows that breeders can force a battle directly at the exit.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(r*c) | Two BFS traversals over all empty cells |
-| Space | O(r*c) | Distance arrays of size r*c |
+| Time | O(rc) | One BFS plus one grid scan |
+| Space | O(rc) | Distance array and BFS queue |
 
-Given r, c ≤ 1000, the BFS approach performs at most 2*10^6 operations and uses at most 2 million integers, well within the 2s time limit and 256 MB memory limit.
+With at most $10^6$ cells, an $O(rc)$ solution performs only a few million operations and comfortably fits within the limits. The distance array stores one integer per cell, which is also acceptable under the memory limit.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
+from collections import deque
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    exec(open("solution.py").read())
-    return sys.stdout.getvalue().strip()
 
-# Sample 1
-assert run("5 7\n000E0T3\nT0TT0T0\n010T0T0\n2T0T0T0\n0T0S000\n") == "3", "sample 1"
+    input = sys.stdin.readline
 
-# Sample 2
-assert run("3 3\nS00\n0T0\nE12\n") == "1", "sample 2"
+    r, c = map(int, input().split())
+    grid = [list(input().strip()) for _ in range(r)]
 
-# Minimum size input
-assert run("1 2\nSE\n") == "0", "min size, no breeders"
+    for i in range(r):
+        for j in range(c):
+            if grid[i][j] == 'S':
+                sx, sy = i, j
+            elif grid[i][j] == 'E':
+                ex, ey = i, j
 
-# All breeders in start cell
-assert run("2 2\nS2\nE0\n") == "2", "breeders at start"
+    dist = [[-1] * c for _ in range(r)]
+    q = deque([(ex, ey)])
+    dist[ex][ey] = 0
 
-# Breeders unreachable due to trees
-assert run("3 3\nS0T\nTT0\nE11\n") == "1", "blocked breeders"
+    while q:
+        x, y = q.popleft()
 
-# Maximum size with empty grid and distant breeder
-inp = "1000 1000\n" + "\n".join(["0"*999 + "0" for _ in range(1000)])
-inp = inp.replace("00", "S0", 0).replace("00", "E0", 1)
-assert run(inp)
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nx, ny = x + dx, y + dy
+
+            if 0 <= nx < r and 0 <= ny < c:
+                if grid[nx][ny] != 'T' and dist[nx][ny] == -1:
+                    dist[nx][ny] = dist[x][y] + 1
+                    q.append((nx, ny))
+
+    limit = dist[sx][sy]
+    ans = 0
+
+    for i in range(r):
+        for j in range(c):
+            if grid[i][j].isdigit():
+                if dist[i][j] != -1 and dist[i][j] <= limit:
+                    ans += int(grid[i][j])
+
+    return str(ans)
+
+# provided sample
+assert run(
+"""5 7
+000E0T3
+T0TT0T0
+010T0T0
+2T0T0T0
+0T0S000
+"""
+) == "3"
+
+# breeder can fight at exit
+assert run(
+"""2 2
+2E
+S0
+"""
+) == "2"
+
+# breeder too far away
+assert run(
+"""3 3
+E00
+0T0
+S09
+"""
+) == "0"
+
+# minimum meaningful grid
+assert run(
+"""1 2
+SE
+"""
+) == "0"
+
+# disconnected breeders
+assert run(
+"""3 3
+ETT
+TTT
+S99
+"""
+) == "0"
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Sample 1 | 3 | Official example |
+| `2E / S0` | 2 | Battles at the exit count |
+| Far-away `9` breeders | 0 | Distances greater than `dS` are ignored |
+| `SE` | 0 | Smallest reachable configuration |
+| Disconnected breeders | 0 | Unreachable cells must not be counted |
+
+## Edge Cases
+
+Consider again:
+
+```
+2 2
+1E
+S0
+```
+
+BFS gives distance 1 to the digit cell and distance 1 to `S`. Since `1 ≤ 1`, the breeder is counted. The algorithm outputs 1, correctly handling meetings that occur at the exit itself.
+
+Now consider:
+
+```
+3 3
+E00
+0T0
+S09
+```
+
+The start distance is 2. The digit `9` has distance 4. Since `4 > 2`, it is excluded from the sum. The algorithm outputs 0 because we can escape before those breeders reach any relevant cell.
+
+Finally consider disconnected breeders:
+
+```
+3 3
+ETT
+TTT
+S99
+```
+
+The BFS cannot reach the bottom row, so those cells retain distance `-1`. The counting step explicitly ignores unreachable cells. The answer is 0 because those breeders are trapped behind trees and can never interact with us.

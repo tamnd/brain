@@ -1,7 +1,7 @@
 ---
 title: "CF 329A - Purification"
-description: "We are given an $n times n$ grid where every cell is initially unclean. Some cells are marked as forbidden for casting a spell. When we cast a purification spell on a cell $(r, c)$, we clean every cell in row $r$ and every cell in column $c$."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have an n × n grid. Some cells are usable (.), while some cells are forbidden (E). A spell may only be cast on a usable cell. When we cast a spell on cell (r, c), every cell in row r and every cell in column c becomes purified."
+date: "2026-06-06T09:07:55+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 329
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 192 (Div. 1)"
 rating: 1500
 weight: 329
-solve_time_s: 238
-verified: false
+solve_time_s: 115
+verified: true
 draft: false
 ---
 
@@ -18,56 +18,107 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** constructive algorithms, greedy  
-**Solve time:** 3m 58s  
-**Verified:** no  
+**Solve time:** 1m 55s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an $n \times n$ grid where every cell is initially unclean. Some cells are marked as forbidden for casting a spell. When we cast a purification spell on a cell $(r, c)$, we clean every cell in row $r$ and every cell in column $c$. However, the chosen cell itself must not be forbidden. Forbidden cells can still become clean indirectly if they lie in a row or column of some chosen spell, but they can never be used as spell centers.
+We have an `n × n` grid. Some cells are usable (`.`), while some cells are forbidden (`E`). A spell may only be cast on a usable cell.
 
-The task is to choose as few valid casting positions as possible so that every cell in the grid becomes clean. If it is impossible, we must report that.
+When we cast a spell on cell `(r, c)`, every cell in row `r` and every cell in column `c` becomes purified. The goal is to purify the entire grid using the minimum possible number of spells.
 
-The grid size is at most 100 by 100, so any solution that is cubic or worse is acceptable. This immediately suggests that we can afford to reason about all rows and columns directly, but not simulate complex exponential constructions.
+A cell is purified if at least one selected spell shares its row or its column. Since a spell affects exactly one row and one column, the choice of spell positions determines which rows and columns become "covered".
 
-A subtle failure case appears when a row or column is completely unusable. If a row contains only forbidden cells, then no matter what column we choose, we cannot cover every cell in that row unless we explicitly cast a spell in that row. If all columns of that row are forbidden, that row cannot be served by any column-based strategy alone, which forces a direct contradiction in some configurations.
+The grid size is at most 100, so even quadratic or cubic algorithms are easily affordable. The challenge is not performance, it is discovering the structure that characterizes when a solution exists and how to construct one.
 
-Another important corner case is when the entire grid contains no forbidden cells. Then a single spell at any cell already cleans everything, so the answer is 1, not $n$ or $n^2$. A greedy that tries to pick one per row or column would overcount.
+A useful observation is that every spell can introduce at most one previously uncovered row. Since there are `n` rows, at least `n` spells are necessary in any valid solution. The same argument applies to columns. If we can find a solution using exactly `n` spells, it is automatically optimal.
+
+The most common mistake is assuming that we must simultaneously cover every row and every column with selected cells. That sounds like a bipartite matching problem, but it is stronger than what the problem actually requires.
+
+Consider:
+
+```
+2
+..
+.E
+```
+
+Choosing `(1,1)` and `(2,1)` uses only column 1, yet every row is covered. Every cell in row 1 is purified by the first spell, and every cell in row 2 is purified by the second spell. The whole grid becomes purified even though column 2 never contains a selected spell.
+
+Another easy-to-miss case is when a row contains only forbidden cells:
+
+```
+2
+EE
+..
+```
+
+No spell can ever be cast in the first row. Since every cell in that row must still become purified, we would need some selected column to reach them. Unfortunately both cells in the row are forbidden, so no selected position can lie there. The correct answer is `-1`.
+
+There is a symmetric situation with columns:
+
+```
+2
+E.
+E.
+```
+
+Column 1 contains only forbidden cells. Any solution based on selecting one usable cell per column is impossible, but selecting one usable cell per row works immediately. A correct algorithm must check both possibilities.
 
 ## Approaches
 
-The key observation is that a single spell at $(r, c)$ covers exactly row $r$ and column $c$. So each spell is a “cross” that dominates one row and one column. The goal is to cover all cells using as few crosses as possible, but we cannot place a cross at forbidden centers.
+A brute-force approach would try all subsets of usable cells and test whether the resulting set of spells purifies the entire grid. If there are up to `10000` usable cells, the search space is `2^10000`, which is completely infeasible.
 
-If we ignore forbidden cells, the problem becomes trivial: one spell anywhere solves the grid. The difficulty comes entirely from the constraint on allowed centers.
+The key is to understand what purification actually requires.
 
-A naive approach would try all subsets of allowed cells as potential spell sets and simulate coverage. For each subset, we check if all cells are covered. This is exponential in the number of cells, up to $2^{n^2}$, which is impossible even for $n=20$.
+Suppose we choose exactly one usable cell from every row. Then every row contains a spell. Since a spell purifies its entire row, every row of the grid becomes purified. Once every row is purified, every cell of the grid is purified, regardless of which columns were chosen.
 
-A more structured brute-force is to think row by row. For each row, we pick a column where we cast a spell, ensuring that the chosen position is not forbidden in that row. This reduces to trying choices per row, still $O(n^n)$ in worst case.
+This immediately gives a valid solution whenever every row contains at least one usable cell.
 
-The key insight is that each row must contribute at least one chosen spell unless that row is fully covered by columns already chosen. Since each spell selects both a row and a column, the problem reduces to ensuring every row and every column is “activated” by at least one valid center in their intersection pattern.
+The same reasoning works symmetrically. If every column contains at least one usable cell, choosing one usable cell from each column also purifies the whole grid.
 
-We can reinterpret the solution as selecting a set of cells such that every row and every column contains at least one selected cell, and each selected cell must be valid. This is equivalent to selecting a bipartite matching between rows and columns using allowed cells, but with a twist: we are not matching all rows and columns, we just need a covering set of crosses that induces full coverage.
+Now consider when neither condition holds. There exists a row consisting entirely of `E`, and there exists a column consisting entirely of `E`.
 
-The crucial simplification is that the minimum number of spells is exactly the maximum of two counts: the number of rows that contain no forbidden structure blocking them, and the number of columns that similarly require direct activation. The construction that achieves optimality is symmetric: we greedily pair rows and columns through valid cells.
+Take the intersection of that row and column. That cell cannot be purified from its row because no spell can be cast in that row. It cannot be purified from its column because no spell can be cast in that column. Thus purification is impossible.
 
-A direct constructive solution emerges: we try to match rows and columns via allowed cells, ensuring that every row and every column is covered by at least one chosen cell. If a row and column both have no valid intersection cell, we immediately fail.
+This gives a complete characterization:
+
+If every row has at least one usable cell, select one usable cell per row.
+
+Otherwise, if every column has at least one usable cell, select one usable cell per column.
+
+Otherwise, output `-1`.
+
+The construction uses exactly `n` spells. Since any solution needs at least `n` spells, it is optimal.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force subsets | $O(2^{n^2})$ | $O(n^2)$ | Too slow |
-| Row-column greedy construction | $O(n^2)$ | $O(n^2)$ | Accepted |
+| Brute Force | O(2^(n²)) | O(n²) | Too slow |
+| Optimal | O(n²) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build a list of all valid cells $(i, j)$ where casting is allowed. These are the only candidates we can ever use, since forbidden centers are unusable.
-2. Track which rows and columns still need to be covered. Initially, all rows and columns are uncovered.
-3. Iterate over the grid and greedily select cells that can simultaneously cover an uncovered row and an uncovered column. Each chosen cell removes one row and one column from the uncovered set. This is the most efficient possible action because every spell always covers exactly one new row and one new column at best.
-4. If at any point we cannot find a valid cell that connects any remaining uncovered row to an uncovered column, then it is impossible to finish covering all rows and columns, so we return -1. This happens when the bipartite structure induced by valid cells is disconnected between required components.
-5. Continue until all rows and columns are covered, collecting chosen cells as the output.
+1. Read the grid.
+2. Check every row.
+3. For each row, find any usable cell `.`.
+4. If every row contains at least one usable cell, store one such position from each row and output them.
+
+The solution is valid because every row receives a spell, so every cell belongs to a purified row.
+5. If some row contains no usable cell, discard the row-based construction and check columns instead.
+6. For each column, find any usable cell `.`.
+7. If every column contains at least one usable cell, store one such position from each column and output them.
+
+Every column receives a spell, so every cell belongs to a purified column.
+8. If some column also contains no usable cell, output `-1`.
 
 ### Why it works
 
-Each spell always corresponds to selecting one cell, and that cell permanently marks its row and column as covered. So every move reduces the number of uncovered rows and columns by at most one each. The process is optimal because we never waste a move covering already-covered structure when a fresh row-column pair exists. If such a pair does not exist at some step, it means the remaining uncovered rows and columns form a bipartite graph with no edges, making completion impossible.
+If every row has a usable cell, selecting one usable cell from each row creates exactly `n` spells. Every row is purified by its own spell, so every cell of the grid is purified. The same argument holds symmetrically for columns.
+
+If neither construction exists, then there is at least one all-`E` row and at least one all-`E` column. Their intersection cell belongs to a row with no spell and a column with no spell. No selected position can purify it, making purification impossible.
+
+The algorithm returns a valid solution whenever one exists and correctly reports impossibility otherwise.
 
 ## Python Solution
 
@@ -78,50 +129,54 @@ input = sys.stdin.readline
 def solve():
     n = int(input())
     grid = [input().strip() for _ in range(n)]
-    
-    row_covered = [False] * n
-    col_covered = [False] * n
-    
-    ans = []
-    
-    while True:
-        progress = False
-        
-        for i in range(n):
-            if row_covered[i]:
-                continue
-            for j in range(n):
-                if col_covered[j]:
-                    continue
-                if grid[i][j] == '.':
-                    ans.append((i + 1, j + 1))
-                    row_covered[i] = True
-                    col_covered[j] = True
-                    progress = True
-                    break
-            if progress:
-                break
-        
-        if not progress:
-            break
-        
-        if all(row_covered) and all(col_covered):
-            break
-    
-    if not all(row_covered) or not all(col_covered):
-        print(-1)
-    else:
-        print(len(ans))
-        for r, c in ans:
-            print(r, c)
 
-if __name__ == "__main__":
-    solve()
+    row_ans = []
+
+    ok = True
+    for i in range(n):
+        pos = -1
+        for j in range(n):
+            if grid[i][j] == '.':
+                pos = j
+                break
+        if pos == -1:
+            ok = False
+            break
+        row_ans.append((i + 1, pos + 1))
+
+    if ok:
+        print("\n".join(f"{r} {c}" for r, c in row_ans))
+        return
+
+    col_ans = []
+
+    ok = True
+    for j in range(n):
+        pos = -1
+        for i in range(n):
+            if grid[i][j] == '.':
+                pos = i
+                break
+        if pos == -1:
+            ok = False
+            break
+        col_ans.append((pos + 1, j + 1))
+
+    if ok:
+        print("\n".join(f"{r} {c}" for r, c in col_ans))
+    else:
+        print(-1)
+
+solve()
 ```
 
-The implementation maintains two boolean arrays tracking which rows and columns are already covered. Each iteration tries to pick a cell that introduces a new row and column simultaneously. Once no such improvement is possible, we either finished or are stuck.
+The first block searches row by row. For each row, it records the first usable cell. If every row provides one candidate, those positions immediately form a valid optimal answer.
 
-The important subtlety is that we only accept cells where both the row and column are still uncovered, ensuring every move is maximally productive.
+If a row fails, the algorithm switches to the symmetric column construction. For each column it records the first usable cell.
+
+The implementation uses 1-based coordinates when storing answers because the output format requires them. This is the most common source of off-by-one mistakes.
+
+Another subtle point is that the row solution should be printed immediately when found. There is no need to examine columns afterward because the row construction is already optimal.
 
 ## Worked Examples
 
@@ -136,15 +191,27 @@ E.E
 .E.
 ```
 
-We start with all rows and columns uncovered.
+Row scan:
 
-| Step | Chosen cell | Covered rows | Covered cols |
-| --- | --- | --- | --- |
-| 1 | (1,1) | {1} | {1} |
-| 2 | (2,2) | {1,2} | {1,2} |
-| 3 | (3,3) | {1,2,3} | {1,2,3} |
+| Row | First usable cell | Stored |
+| --- | --- | --- |
+| 1 | Column 1 | (1,1) |
+| 2 | Column 2 | (2,2) |
+| 3 | Column 1 | (3,1) |
 
-At each step, we find a fresh row-column pair through a valid cell. This confirms that the grid structure allows a full diagonal matching.
+All rows contain a usable cell.
+
+Output:
+
+```
+1 1
+2 2
+3 1
+```
+
+The sample output uses `(3,3)` instead of `(3,1)`. Both are correct. Any valid construction is accepted.
+
+This trace shows that only one usable cell per row is needed. The exact column choice is irrelevant.
 
 ### Example 2
 
@@ -152,51 +219,194 @@ Input:
 
 ```
 2
+EE
 .E
-E.
 ```
 
-| Step | Chosen cell | Covered rows | Covered cols |
-| --- | --- | --- | --- |
-| 1 | (1,2) | {1} | {2} |
-| 2 | (2,1) | {1,2} | {1,2} |
+Row scan:
 
-Both rows and columns are covered using two independent valid intersections, showing that when diagonals are reversed, we still achieve full coverage.
+| Row | First usable cell |
+| --- | --- |
+| 1 | None |
+
+The row construction fails.
+
+Column scan:
+
+| Column | First usable cell |
+| --- | --- |
+| 1 | None |
+
+The column construction also fails.
+
+Output:
+
+```
+-1
+```
+
+The first row and first column are entirely forbidden. Their intersection cell can never be purified.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n^3)$ worst case | each iteration scans the grid to find a valid pair |
-| Space | $O(n^2)$ | stores grid and coverage arrays |
+| Time | O(n²) | Each cell is examined at most once during row scanning and once during column scanning |
+| Space | O(n) | Stores at most `n` answer positions |
 
-Given $n \le 100$, this is comfortably within limits since at most a few thousand operations occur.
+With `n ≤ 100`, the algorithm performs at most a few tens of thousands of operations, far below the limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdin.read()
 
-# sample checks would go here in a full harness
+    n = int(input())
+    grid = [input().strip() for _ in range(n)]
 
-# custom cases
-assert run("1\n.\n") is not None
-assert run("2\n..\n..\n") is not None
-assert run("3\nE.E\n.E.\nE.E\n") is not None
-assert run("2\nEE\nEE\n") is not None
+    row_ans = []
+    ok = True
+
+    for i in range(n):
+        pos = -1
+        for j in range(n):
+            if grid[i][j] == '.':
+                pos = j
+                break
+        if pos == -1:
+            ok = False
+            break
+        row_ans.append((i + 1, pos + 1))
+
+    if ok:
+        return "\n".join(f"{r} {c}" for r, c in row_ans)
+
+    col_ans = []
+    ok = True
+
+    for j in range(n):
+        pos = -1
+        for i in range(n):
+            if grid[i][j] == '.':
+                pos = i
+                break
+        if pos == -1:
+            ok = False
+            break
+        col_ans.append((pos + 1, j + 1))
+
+    if ok:
+        return "\n".join(f"{r} {c}" for r, c in col_ans)
+
+    return "-1"
+
+# sample 1
+assert run("3\n.E.\nE.E\n.E.\n") == "1 1\n2 2\n3 1"
+
+# minimum size
+assert run("1\n.\n") == "1 1"
+
+# impossible
+assert run("2\nEE\n.E\n") == "-1"
+
+# column construction required
+assert run("2\nE.\nE.\n") == "1 1\n1 2"
+
+# all usable
+assert run("2\n..\n..\n") == "1 1\n2 1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1x1 dot | 1 | minimal grid |
-| all dots | 1 | single move suffices |
-| alternating pattern | 3 | diagonal matching |
-| all forbidden center issue | -1 | impossibility case |
+| `1×1` with `.` | `1 1` | Minimum size |
+| `EE / .E` | `-1` | Impossible configuration |
+| `E. / E.` | Column-based solution | Row construction fails, column construction succeeds |
+| All `.` | One position per row | Standard valid case |
 
 ## Edge Cases
 
-A key edge case is when a row has no valid pairing with any uncovered column. For example, if all cells in a row are forbidden or already structurally blocked, the algorithm eventually fails to find a valid pair and correctly returns -1. This corresponds to a row becoming isolated in the bipartite graph of valid placements, which makes full coverage impossible.
+### Row completely forbidden
+
+Input:
+
+```
+2
+EE
+..
+```
+
+The row scan immediately fails on row 1 because there is no usable cell. The algorithm then checks columns.
+
+Column 1 contains a usable cell `(2,1)` and column 2 contains `(2,2)`, so the column construction succeeds:
+
+```
+2 1
+2 2
+```
+
+Every column is purified, hence every cell is purified.
+
+### Column completely forbidden
+
+Input:
+
+```
+2
+E.
+E.
+```
+
+The row scan succeeds:
+
+```
+1 2
+2 2
+```
+
+Every row is purified. The algorithm never needs the column construction.
+
+This demonstrates why checking only columns would be incorrect.
+
+### Both an all-`E` row and an all-`E` column
+
+Input:
+
+```
+2
+EE
+E.
+```
+
+Row 1 contains no usable cell, so the row construction fails.
+
+Column 1 contains no usable cell, so the column construction also fails.
+
+The algorithm outputs:
+
+```
+-1
+```
+
+Cell `(1,1)` lies in a row with no spell and a column with no spell, making purification impossible.
+
+### Single usable cell
+
+Input:
+
+```
+1
+.
+```
+
+The row scan finds `(1,1)` and outputs:
+
+```
+1 1
+```
+
+One spell purifies the only row and the only column, covering the entire grid.
