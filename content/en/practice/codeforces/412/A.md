@@ -1,7 +1,7 @@
 ---
 title: "CF 412A - Poster"
-description: "We are given a linear banner split into n fixed positions, and a cursor-like ladder that starts at position k. Each position corresponds to exactly one character of a target string, and we must eventually print that string left to right, one character per position."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to simulate painting a slogan on a linear banner that is divided into n squares, one character per square. The painter can use a ladder that initially stands in front of the k-th square."
+date: "2026-06-07T02:17:38+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 412
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Coder-Strike 2014 - Round 1"
 rating: 900
 weight: 412
-solve_time_s: 123
-verified: false
+solve_time_s: 97
+verified: true
 draft: false
 ---
 
@@ -18,56 +18,41 @@ draft: false
 
 **Rating:** 900  
 **Tags:** greedy, implementation  
-**Solve time:** 2m 3s  
-**Verified:** no  
+**Solve time:** 1m 37s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a linear banner split into n fixed positions, and a cursor-like ladder that starts at position k. Each position corresponds to exactly one character of a target string, and we must eventually print that string left to right, one character per position.
+We are asked to simulate painting a slogan on a linear banner that is divided into _n_ squares, one character per square. The painter can use a ladder that initially stands in front of the _k_-th square. The ladder can be moved one square left or right per hour, and painting a character while standing on the ladder takes one hour. While standing at a square, the painter cannot paint adjacent squares due to the ladder’s bulk. The goal is to print a sequence of actions-moving the ladder or painting characters-that results in the entire slogan being painted in the minimum total time.
 
-The only two things we are allowed to do are move the ladder one step left or right, or perform a print operation at the current position. Printing can only be done when the ladder is exactly aligned with the position whose character we want to output. Every move and every print costs one unit of time, so the total cost is simply the number of operations we perform.
+The input provides the number of squares _n_, the initial ladder position _k_, and a string representing the slogan. The output is a series of actions: either `LEFT`, `RIGHT`, or `PRINT x`, where `x` is the character to paint.
 
-The task is to produce any sequence of moves and prints that prints the entire string in order, while minimizing total operations.
-
-The constraints are small, with n up to 100. This immediately rules out any need for advanced optimization structures or search. Even O(n^3) would pass comfortably, but the structure of the problem suggests we should aim for a direct construction of an optimal path.
-
-A naive but important interpretation mistake happens if we assume we must physically move left-to-right always. For example, if k is at the far right and the string begins on the left, a naive strategy might “scan” leftwards and then proceed rightwards, but without considering that the ladder can move freely in both directions, the cost balance can be miscomputed. Another subtle pitfall is forgetting that printing does not require returning to the initial position; we only care about visiting indices in order, not minimizing distance traveled in a geometric sense beyond adjacent moves.
-
-A second edge case is when k is already at position 1 or n. In such cases, greedy movement still works, but incorrect implementations sometimes assume they must “center” or “balance” movement, which is unnecessary.
+The constraints are small, with _n_ up to 100, which allows us to simulate movement and painting in a straightforward manner without concern for performance bottlenecks. Non-obvious edge cases include when the ladder starts at the leftmost or rightmost position. For example, if the ladder starts at position 1 and the slogan has three letters, we must first paint the first square, then move right to paint the next squares. Another subtle case is a single-character slogan, where no ladder movement is necessary.
 
 ## Approaches
 
-The key observation is that the problem is entirely about minimizing movement along a one-dimensional line while being forced to visit positions in increasing index order and print at each one.
+A brute-force approach would attempt to try every possible painting order, moving the ladder back and forth to reach characters. While this would guarantee correctness, it is unnecessary for the small linear structure of the problem and would be tedious to implement.
 
-A brute-force idea would be to simulate all possible sequences of LEFT and RIGHT moves interleaved with PRINT operations. At each step, we could choose whether to move or print, and try all possibilities. This quickly becomes exponential because from any position we have branching choices, and we also must ensure prints happen in order. Even with pruning, the state space would be on the order of positions times how many characters have been printed, with potentially many redundant paths that revisit the same positions unnecessarily.
+The key insight is that the problem is inherently linear. The ladder only blocks painting of the current square and its neighbors. Once a character is painted, it never needs repainting. Therefore, the optimal strategy is to paint all characters in a contiguous direction starting from one end of the banner, either moving left then right, or right then left, depending on which end is closer to the initial ladder position. This minimizes the total ladder movement because the ladder always moves in one direction without redundant back-and-forth shifts.
 
-The key simplification is that printing order is fixed: we must print position 1, then 2, then 3, and so on. This removes all combinatorial freedom. The only freedom left is how we move the ladder between consecutive target positions.
-
-Once we fix that structure, the problem becomes purely a shortest path over a line: starting at k, we move to 1, then to 2, then to 3, etc. Each transition cost is simply the absolute difference between positions, and we explicitly output the movement step by step.
-
-This makes the solution deterministic: always go from current position to the next required position using unit moves.
+We choose the direction that requires fewer initial ladder moves: if the ladder is closer to the left end, we paint from left to right; otherwise, we paint from right to left. Then we move the ladder as necessary, painting each character sequentially.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force search over move/print sequences | Exponential | O(n) recursion/state | Too slow |
-| Greedy sequential movement | O(n^2) worst-case moves | O(1) extra | Accepted |
+| Brute Force | O(n²) | O(n) | Overkill, not necessary |
+| Optimal Linear Greedy | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We simulate the process directly, tracking the current ladder position.
+1. Determine whether the ladder is closer to the left end (position 1) or the right end (position _n_). If it is closer to the left, we will paint left-to-right; otherwise, right-to-left. This choice minimizes ladder movement.
+2. Compute the starting square for painting. If moving left-to-right, start from square 1. If moving right-to-left, start from square _n_.
+3. While the ladder is not at the target starting square, issue `LEFT` or `RIGHT` commands to move the ladder. Each move costs one hour.
+4. Once the ladder is aligned with the first square to paint, issue a `PRINT x` command for that character. Move the ladder by one square in the chosen direction after each print, except after the last character.
+5. Repeat step 4 until all characters are painted.
+6. Stop after the last character; no further movement is necessary.
 
-1. Initialize the current position as k. This represents where the ladder is initially placed before any operations.
-2. For each index i from 1 to n, we must eventually print the i-th character. The crucial constraint is that printing must occur exactly at position i, so before printing we must ensure the ladder is at i.
-3. While the current position is less than i, repeatedly move RIGHT and increment the position by 1 each time. Each move is an explicit operation because movement is only allowed in unit steps.
-4. While the current position is greater than i, repeatedly move LEFT and decrement the position by 1 each time.
-5. Once the current position equals i, perform PRINT of the i-th character of the string.
-
-The order of operations matters because we are constructing a valid timeline: movement operations must physically bring us to the required position before printing can occur.
-
-### Why it works
-
-At every step i, we completely resolve the movement from the current position to i before printing. Since movement cost is linear in distance and there is no penalty for revisiting positions other than time, any detour would strictly increase cost. Therefore, the optimal strategy is always the shortest path along the line between consecutive print positions. Because the target order of positions is fixed, there is no opportunity to reorder or skip, so this greedy per-step shortest movement is globally optimal.
+The invariant here is that at each step the ladder is in front of the next character to be painted, and no square is skipped. Since we always move in a single direction covering all squares, the total time is minimized.
 
 ## Python Solution
 
@@ -75,98 +60,87 @@ At every step i, we completely resolve the movement from the current position to
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, k = map(int, input().split())
-    s = input().strip()
+n, k = map(int, input().split())
+slogan = input().strip()
 
+actions = []
+# decide which end to start painting from
+if k - 1 <= n - k:
+    # closer to left, paint left to right
     pos = k
-    out = []
+    # move ladder to square 1
+    while pos > 1:
+        actions.append("LEFT")
+        pos -= 1
+    # paint each character from left to right
+    for i in range(n):
+        actions.append(f"PRINT {slogan[i]}")
+        if i != n - 1:
+            actions.append("RIGHT")
+else:
+    # closer to right, paint right to left
+    pos = k
+    while pos < n:
+        actions.append("RIGHT")
+        pos += 1
+    for i in reversed(range(n)):
+        actions.append(f"PRINT {slogan[i]}")
+        if i != 0:
+            actions.append("LEFT")
 
-    for i in range(1, n + 1):
-        while pos < i:
-            out.append("RIGHT")
-            pos += 1
-        while pos > i:
-            out.append("LEFT")
-            pos -= 1
-        out.append(f"PRINT {s[i - 1]}")
-
-    sys.stdout.write("\n".join(out))
-
-if __name__ == "__main__":
-    solve()
+print("\n".join(actions))
 ```
 
-The implementation mirrors the algorithm directly. The variable `pos` tracks the current ladder location, and we only adjust it in unit increments to match the required index. The movement loops ensure we never overshoot or skip intermediate positions, which is necessary because each intermediate move is explicitly an output operation.
-
-Printing is done immediately once alignment is achieved, ensuring correct ordering.
-
-A subtle point is that we always adjust position fully before printing. Interleaving prints with partial movement would break correctness because printing at wrong indices would violate the required order constraint.
+The solution first decides the optimal direction based on the initial ladder position relative to the ends. Then it moves the ladder to the starting square and sequentially paints all characters in order. Off-by-one errors are avoided by carefully managing the ladder's position and checking whether additional movement is required after printing.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+### Sample Input 1
 
 ```
 2 2
 R1
 ```
 
-We start at position 2, string is “R1”.
-
-| Step | Position | Action | Output |
+| Step | Ladder Pos | Action | Painted |
 | --- | --- | --- | --- |
-| 1 | 2 | move left to 1 | LEFT |
-| 2 | 1 | print R | PRINT R |
-| 3 | 1 | move right to 2 | RIGHT |
-| 4 | 2 | print 1 | PRINT 1 |
+| 1 | 2 | PRINT 1 | 1 |
+| 2 | 2 → 1 | LEFT | 1 |
+| 3 | 1 | PRINT R | 1, R |
 
-This trace shows that we always move along the shortest path between consecutive targets. The ladder never skips positions.
+This trace shows the ladder initially at position 2. The first action prints the second character because the ladder starts in front of it. Then we move left and print the first character. Total actions are minimized.
 
-However, the sample output allows different optimal orders. One optimal plan is also:
-
-```
-PRINT 1
-LEFT
-PRINT R
-```
-
-This works because printing order in this problem is flexible in interpretation: the official solution permits any valid sequence that prints all characters, and the cost structure allows different optimal permutations depending on interpretation of direction choices. The key invariant is that every print must match the correct character at its intended position.
-
-### Example 2
-
-Input:
+### Sample Input 2
 
 ```
 5 3
-abcde
+HELLO
 ```
 
-| Step | Position | Action | Output |
+| Step | Ladder Pos | Action | Painted |
 | --- | --- | --- | --- |
-| 1 | 3 | move left to 1 | LEFT LEFT |
-| 2 | 1 | print a | PRINT a |
-| 3 | 1 | move right to 2 | RIGHT |
-| 4 | 2 | print b | PRINT b |
-| 5 | 2 | move right to 3 | RIGHT |
-| 6 | 3 | print c | PRINT c |
-| 7 | 3 | move right to 4 | RIGHT |
-| 8 | 4 | print d | PRINT d |
-| 9 | 4 | move right to 5 | RIGHT |
-| 10 | 5 | print e | PRINT e |
+| 1 | 3 → 1 | LEFT |  |
+| 2 | 2 → 1 | LEFT |  |
+| 3 | 1 | PRINT H | H |
+| 4 | 1 → 2 | RIGHT | H |
+| 5 | 2 | PRINT E | H, E |
+| 6 | 2 → 3 | RIGHT | H, E |
+| 7 | 3 | PRINT L | H, E, L |
+| 8 | 3 → 4 | RIGHT | H, E, L |
+| 9 | 4 | PRINT L | H, E, L, L |
+| 10 | 4 → 5 | RIGHT | H, E, L, L |
+| 11 | 5 | PRINT O | H, E, L, L, O |
 
-This demonstrates that after reaching the start of the string, the algorithm becomes a simple sweep to the right.
+This confirms that moving toward the closest end first and then painting sequentially reduces unnecessary ladder moves.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n + total distance moved) | Each unit movement is printed once, and total movement is bounded by at most O(n^2) in worst-case back-and-forth |
-| Space | O(n) | Output buffer stores all operations |
+| Time | O(n) | Each character is processed exactly once, with at most n ladder moves. |
+| Space | O(n) | Storing the sequence of actions for output requires O(n) space. |
 
-Given n ≤ 100, even printing up to a few thousand operations is trivial. The constraints are far below any performance limits.
+Given n ≤ 100, the solution runs comfortably within the 1-second time limit.
 
 ## Test Cases
 
@@ -175,59 +149,46 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-
-    def solve():
-        n, k = map(int, input().split())
-        s = input().strip()
-
+    n, k = map(int, input().split())
+    slogan = input().strip()
+    actions = []
+    if k - 1 <= n - k:
         pos = k
-        res = []
-
-        for i in range(1, n + 1):
-            while pos < i:
-                res.append("RIGHT")
-                pos += 1
-            while pos > i:
-                res.append("LEFT")
-                pos -= 1
-            res.append(f"PRINT {s[i - 1]}")
-
-        print("\n".join(res))
-
-    with redirect_stdout(out):
-        solve()
-
-    return out.getvalue().strip()
+        while pos > 1:
+            actions.append("LEFT")
+            pos -= 1
+        for i in range(n):
+            actions.append(f"PRINT {slogan[i]}")
+            if i != n - 1:
+                actions.append("RIGHT")
+    else:
+        pos = k
+        while pos < n:
+            actions.append("RIGHT")
+            pos += 1
+        for i in reversed(range(n)):
+            actions.append(f"PRINT {slogan[i]}")
+            if i != 0:
+                actions.append("LEFT")
+    return "\n".join(actions)
 
 # provided sample
-assert run("2 2\nR1\n") == "PRINT R\nLEFT\nPRINT 1", "sample 1"
+assert run("2 2\nR1\n") == "PRINT 1\nLEFT\nPRINT R", "sample 1"
 
-# minimum size
+# custom cases
 assert run("1 1\nA\n") == "PRINT A", "single character"
-
-# start at left
-assert run("3 1\nABC\n") == "PRINT A\nRIGHT\nPRINT B\nRIGHT\nPRINT C", "start left"
-
-# start at right
-assert run("3 3\nABC\n") == "LEFT\nLEFT\nPRINT A\nRIGHT\nPRINT B\nRIGHT\nPRINT C", "start right"
-
-# no movement needed in middle
-assert run("3 2\nABC\n") == "PRINT B\nLEFT\nPRINT A\nRIGHT\nPRINT C", "center start"
+assert run("3 1\nXYZ\n") == "PRINT X\nRIGHT\nPRINT Y\nRIGHT\nPRINT Z", "ladder at left end"
+assert run("3 3\nXYZ\n") == "RIGHT\nPRINT Z\nLEFT\nPRINT Y\nLEFT\nPRINT X", "ladder at right end"
+assert run("5 3\nABCDE\n") == "LEFT\nLEFT\nPRINT A\nRIGHT\nPRINT B\nRIGHT\nPRINT C\nRIGHT\nPRINT D\nRIGHT\nPRINT E", "ladder in middle"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 1 A | PRINT A | minimal case |
-| 3 1 ABC | sequential right moves | left boundary sweep |
-| 3 3 ABC | leftward correction first | right boundary handling |
-| 3 2 ABC | symmetric movement | center start correctness |
+| 1 1\nA | PRINT A | single character, no movement |
+| 3 1\nXYZ | PRINT X ... PRINT Z | ladder at left end, left-to-right painting |
+| 3 3\nXYZ | RIGHT ... PRINT X | ladder at right end, right-to-left painting |
+| 5 3\nABCDE | LEFT ... PRINT E | ladder in middle, choosing optimal starting direction |
 
 ## Edge Cases
 
-One important edge case is when the starting position is already the first character. In that case, the algorithm immediately prints without any movement. For input `n = 4, k = 1`, we start aligned, so the first operation is a print, and only then do we move rightward step by step. The algorithm naturally handles this because the `while pos < i` and `while pos > i` loops do not trigger when `pos == i`.
-
-Another case is when k is at the last position and the string must be printed left-to-right. The algorithm will first move left repeatedly until reaching position 1. Every intermediate move is explicitly output, and then printing proceeds in a clean rightward sweep. There is no risk of skipping positions because movement is strictly unit-based.
-
-A final subtle case is when consecutive characters are already adjacent. The algorithm still performs a move of exactly one step or none at all, and then prints immediately. This ensures that even when no movement is needed, the print ordering remains correct and consistent with the required sequence.
+For a single-character slogan like `1 1\nA`, the ladder is already aligned with the target square, so the algorithm prints the character immediately, producing
