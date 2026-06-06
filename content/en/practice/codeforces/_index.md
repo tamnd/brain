@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 1993 problems, 1359 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 1995 problems, 1361 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 1993 problems, 1359 verified.**
+**448 contests, 1995 problems, 1361 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -313,7 +313,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [313](313/) | [Codeforces Round 186 (Div. 2)](https://codeforces.com/contest/313) | Div. 2 | 900-2300 | 4/5 | 6m 20s |
 | [314](314/) | [Codeforces Round 187 (Div. 1)](https://codeforces.com/contest/314) | Div. 1 | 1600-2900 | 4/5 | 10m 14s |
 | [315](315/) | [Codeforces Round 187 (Div. 2)](https://codeforces.com/contest/315) | Div. 2 | 1200-1400 | 2/2 | 4m 3s |
-| [316](316/) | [ABBYY Cup 3.0](https://codeforces.com/contest/316) | Special | 1100-2400 | 11/17 | 22m 56s |
+| [316](316/) | [ABBYY Cup 3.0](https://codeforces.com/contest/316) | Special | 1100-2400 | 12/18 | 31m 4s |
 | [317](317/) | [Codeforces Round 188 (Div. 1)](https://codeforces.com/contest/317) | Div. 1 | 1600-3100 | 4/5 | 5m 50s |
 | [319](319/) | [Codeforces Round 189 (Div. 1)](https://codeforces.com/contest/319) | Div. 1 | 1600-3000 | 3/5 | 7m 5s |
 | [320](320/) | [Codeforces Round 189 (Div. 2)](https://codeforces.com/contest/320) | Div. 2 | 900-1500 | 2/2 | 2m 19s |
@@ -330,7 +330,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [333](333/) | [Codeforces Round 194 (Div. 1)](https://codeforces.com/contest/333) | Div. 1 | 1600-2700 | 4/5 | 8m 14s |
 | [335](335/) | [MemSQL start[c]up Round 2 - online version](https://codeforces.com/contest/335) | Special | 1400-3000 | 1/6 | 10m 58s |
 | [336](336/) | [Codeforces Round 195 (Div. 2)](https://codeforces.com/contest/336) | Div. 2 | 1000-2700 | 4/5 | 7m 57s |
-| [338](338/) | [Codeforces Round 196 (Div. 1)](https://codeforces.com/contest/338) | Div. 1 | 2900-2900 | 1/1 | 1m 33s |
+| [338](338/) | [Codeforces Round 196 (Div. 1)](https://codeforces.com/contest/338) | Div. 1 | 2600-2900 | 2/2 | 3m 26s |
 | [339](339/) | [Codeforces Round 197 (Div. 2)](https://codeforces.com/contest/339) | Div. 2 | 800-800 | 1/1 | 4m 3s |
 | [340](340/) | [Codeforces Round 198 (Div. 2)](https://codeforces.com/contest/340) | Div. 2 | 1600-1600 | 1/1 | 4m 39s |
 | [341](341/) | [Codeforces Round 198 (Div. 1)](https://codeforces.com/contest/341) | Div. 1 | 2500-2500 | 0/1 | 6m 10s |
