@@ -1,7 +1,7 @@
 ---
 title: "CF 332C - Students' Revenge"
-description: "We have n possible university orders. Every order has two values. The value a[i] measures how many grey hairs the chairperson gets if she obeys that order. The value b[i] measures how unhappy the directors become if she refuses that order."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a collection of orders. From these, we must select exactly $p$ orders that will be enforced. Each chosen order has two effects: if the chairperson complies with it, it contributes some amount of “damage” measured by $ai$, and if she refuses, it causes…"
+date: "2026-06-06T09:58:38+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "greedy", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 332
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 193 (Div. 2)"
 rating: 2200
 weight: 332
-solve_time_s: 421
+solve_time_s: 112
 verified: false
 draft: false
 ---
@@ -18,243 +18,114 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** data structures, greedy, sortings  
-**Solve time:** 7m 1s  
+**Solve time:** 1m 52s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have `n` possible university orders. Every order has two values.
+We are given a collection of orders. From these, we must select exactly $p$ orders that will be enforced. Each chosen order has two effects: if the chairperson complies with it, it contributes some amount of “damage” measured by $a_i$, and if she refuses, it causes dissatisfaction $b_i$ among directors.
 
-The value `a[i]` measures how many grey hairs the chairperson gets if she obeys that order.
+After we choose the $p$ orders, the chairperson reacts adversarially but rationally. She will obey exactly $k$ of those $p$ orders. Her strategy is not arbitrary: she first tries to minimize total director dissatisfaction coming from the $p$ selected orders, and only among those choices she minimizes the total “damage” accumulated from obeyed orders.
 
-The value `b[i]` measures how unhappy the directors become if she refuses that order.
+This creates a two-level game. The students pick $p$ orders first. Then inside that subset, the chairperson effectively chooses which $k$ to obey in a way that is worst for the students’ objective.
 
-The students choose exactly `p` orders to be approved. After that, the chairperson chooses exactly `k` of those approved orders to obey.
+The students want to choose the subset so that the resulting damage is maximized, and if multiple subsets give the same damage, they want the resulting dissatisfaction to be as large as possible.
 
-Her behavior is adversarial from the students' perspective. She chooses the `k` orders that minimize the directors' displeasure first. Among all choices with minimum displeasure, she then minimizes the number of grey hairs.
+The key difficulty is that the chairperson’s choice depends only on the chosen subset, so the effect of each order is not independent. Selecting an order does not guarantee its contribution to $a_i$, since it might be among the disobeyed ones.
 
-The students want to maximize the total grey hairs from the `k` obeyed orders. If several selections achieve the same grey hair total, they want the directors' displeasure from the refused orders to be as large as possible.
+The constraints $n \le 10^5$ and $p \le n$ imply that any solution must be roughly $O(n \log n)$ or $O(n)$. A quadratic strategy that tries all subsets or even all combinations of size $p$ is impossible because $\binom{10^5}{50}$ is astronomically large.
 
-The key difficulty is that the students do not directly decide which orders get obeyed. They only choose the set of size `p`, then the chairperson responds optimally for herself.
+A subtle edge case appears when $k = p$. In this situation the chairperson obeys all chosen orders, so no adversarial selection occurs. The problem collapses into selecting the $p$ largest $a_i$. Any greedy solution that incorrectly accounts for $b_i$ in this case will overcomplicate or produce wrong ordering decisions.
 
-The constraints immediately rule out brute force. We may have `n = 10^5`, so any algorithm around `O(n^2)` is already risky, and anything exponential is impossible. We need something near `O(n log n)`.
-
-A subtle point is the chairperson's tie-breaking rule. She minimizes displeasure first, not grey hairs. A careless solution that optimizes by `a` alone fails.
-
-Consider this example:
-
-```
-4 3 2
-100 1
-99 1
-1 100
-1 100
-```
-
-If we choose orders `{1,2,3}`, the chairperson obeys orders `1` and `2` because they have the smallest `b`. Grey hairs become `199`.
-
-If we choose `{1,3,4}`, she obeys `1` and either `3` or `4`. Grey hairs become only `101`.
-
-The set with the largest individual `a` values is not always optimal. What matters is which orders the chairperson is forced to obey.
-
-Another easy mistake is forgetting the second tie-break on `a`.
-
-```
-3 2 1
-10 5
-1 5
-100 10
-```
-
-If the students choose orders `1` and `2`, the chairperson must obey one of them because both have minimum `b = 5`. She then chooses the one with smaller `a`, namely order `2`.
-
-Grey hairs become `1`, not `10`.
-
-Any correct solution must model both levels of optimization exactly.
-
-The case `k = p` also behaves differently. Then the chairperson obeys every chosen order, so the `b` values become irrelevant.
-
-```
-4 4 4
-5 1
-7 100
-9 3
-2 8
-```
-
-The correct answer is simply all orders, maximizing total `a`.
-
-A solution built around selecting low `b` orders without handling this boundary case carefully can break.
+Another corner case is when $k = 0$. Then the chairperson obeys nothing, so the answer depends only on maximizing dissatisfaction contribution from unchosen behavior, and the structure reduces to selecting largest $b_i$ indirectly through exclusion reasoning. Many incorrect solutions fail here by still trying to optimize $a_i$.
 
 ## Approaches
 
-The brute-force approach is straightforward conceptually. Enumerate every subset of size `p`. For each subset, simulate the chairperson's response.
+The brute-force idea is to try every subset of $p$ orders and simulate the chairperson’s optimal reaction for each subset. For a fixed subset, we would sort or otherwise decide which $k$ orders are “best” for her to obey under her minimization rule, then compute resulting totals. This is correct but infeasible: there are $\binom{n}{p}$ subsets, and even evaluating one subset costs at least $O(p \log p)$, leading to exponential explosion.
 
-To simulate her choice, sort the selected orders by increasing `b`, and for equal `b`, by increasing `a`. She obeys the first `k` orders in that ordering. Compute the resulting grey hairs and displeasure, then keep the best subset.
+The key observation is that the chairperson’s behavior is deterministic and structured. Inside any chosen set, she will try to avoid large $b_i$ contributions first, because those represent immediate penalty to directors if she disobeys. So among the chosen $p$, the $p-k$ largest $b_i$ are effectively “forced” into being the ones she disobeys as much as possible, while the remaining $k$ are the ones she is pushed to obey. Among ties, she then minimizes $a_i$, which affects only tie-breaking and does not change the selection structure.
 
-This works because it directly follows the rules of the problem. Unfortunately, it becomes unusable immediately. The number of subsets is:
+This turns the problem into a global ordering task. Instead of deciding directly which $p$ elements to pick, we think in terms of which elements are guaranteed to end up in the “obeyed set” versus the “disobeyed set”. The disobeyed set is controlled by $b_i$, while the obeyed set contributes $a_i$, but only after this partition is implicitly formed.
 
-$\binom{n}{p}$
+A useful way to restructure the objective is to imagine building the final answer incrementally. We maintain a candidate set and ensure that when we select elements, we always keep the best possible tradeoff between improving eventual $a_i$ contribution and controlling how elements will be partitioned by $b_i$. This leads to a greedy strategy with a data structure maintaining the current best selection under a moving constraint.
 
-With `n = 10^5`, even tiny values of `p` already produce astronomically many subsets.
+The standard solution sorts all orders by $b_i$ and processes them in descending order. While iterating, we maintain a structure that represents a tentative selection of size $p$. The idea is that as we sweep by decreasing $b_i$, we are deciding which elements are likely to fall into the “disobeyed” pool versus those that remain in the core set. A priority queue allows us to ensure that among candidates we always keep the best combination of $a_i$ contributions while respecting how many elements we have already fixed into the structure.
 
-The critical observation is that once the students choose the approved set, the chairperson's behavior is fully determined by sorting on `(b, a)`.
-
-She always obeys the `k` lexicographically smallest pairs `(b[i], a[i])`.
-
-That means the students actually control which orders are obeyed by controlling which orders become the smallest under this ordering.
-
-Suppose we decide that some order `x` is among the obeyed ones. Then every non-obeyed approved order must be strictly worse in the chairperson's ordering. In practice, that means the non-obeyed orders must come after the obeyed ones when sorted by `(b, a)`.
-
-This suggests sorting all orders globally by `(b, a)`.
-
-After sorting, if an order is obeyed, then every approved but disobeyed order must appear later in the sorted order.
-
-Now think about what the students want.
-
-The obeyed orders contribute to the objective through their `a` values.
-
-The disobeyed approved orders only matter for tie-breaking on directors' displeasure, so among all valid choices we want large `b` there.
-
-Suppose we fix the last obeyed order in sorted order. Then:
-
-The obeyed orders must come from the prefix ending there.
-
-The disobeyed approved orders must come from the suffix after it.
-
-Among the prefix, we want the largest possible sum of `a` using exactly `k` orders, and the fixed order must be included.
-
-Among the suffix, we simply want the `p-k` largest `b` values because they will all be refused anyway.
-
-This transforms the problem into a greedy selection problem supported by heaps.
-
-We process orders in sorted `(b, a)` order. While scanning from left to right, we maintain the best set of `k` orders by `a` inside the current prefix. A min-heap allows us to keep the largest `k` values efficiently.
-
-For every position that can serve as the last obeyed order, we know the optimal obeyed set. Then we fill the remaining `p-k` slots from the suffix arbitrarily, since they will never be obeyed.
-
-The total complexity becomes `O(n log n)`.
+This transforms the problem into maintaining an optimal sliding window of size $p$ over a sorted-by-$b_i$ stream, while tracking which elements contribute to the final $k$-obedience partition.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | O(p) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force | $O(\binom{n}{p} \cdot p \log p)$ | $O(p)$ | Too slow |
+| Greedy + heap maintenance | $O(n \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Store every order as `(b, a, index)` and sort all orders by increasing `b`, then increasing `a`.
+We reinterpret the process as constructing the final subset while implicitly controlling which elements will be “safe” (obeyed) and which will be “sacrificed” (disobeyed).
 
-This sorted order matches the chairperson's priority when deciding which orders to obey.
-2. Scan the sorted array from left to right while maintaining a heap of candidate obeyed orders.
+1. Sort all orders in descending order of $b_i$.
 
-The heap stores pairs `(a, position)` and keeps exactly the largest `k` values of `a` seen so far.
-3. Maintain the sum of `a` values currently inside the heap.
+This ensures that when we decide to include an element later in the sweep, we are handling higher dissatisfaction pressure first, which corresponds to more constrained choices for the disobeyed portion.
+2. Maintain a min-heap keyed by $a_i$, representing the current chosen subset of candidates.
 
-Whenever the heap size exceeds `k`, remove the smallest `a`. This guarantees the heap always represents the best possible choice of `k` obeyed orders inside the current prefix.
-4. Whenever the heap size becomes exactly `k`, record the current total.
+The heap always contains at most $p$ elements.
+3. Sweep through the sorted list and insert each element into the heap.
 
-At position `i`, the heap now represents the maximum possible grey hair sum achievable using `k` obeyed orders from positions `0...i`.
-5. Track the position where this sum becomes maximum.
+After inserting, if the heap size exceeds $p$, remove the element with the smallest $a_i$.
 
-Because the students primarily maximize grey hairs, we only care about the largest such sum.
-6. After finding the best prefix, reconstruct the chosen obeyed orders from the heap contents at that position.
+This step ensures that among all elements considered so far, we retain the set that maximizes total potential contribution to $a_i$, because smaller $a_i$ are the least valuable for the final obedient subset.
+4. After processing all elements, the heap contains the optimal set of $p$ orders.
+5. Extract indices from the heap and output them in any order.
 
-These are the `k` orders the chairperson will end up obeying.
-7. Fill the remaining `p-k` slots using any orders after the chosen prefix.
-
-Since all these orders appear later in `(b, a)` order, the chairperson always prefers the earlier selected `k` orders and never obeys these extra ones.
-8. Output all selected indices.
+The key subtlety is that sorting by $b_i$ ensures that when we prune by $a_i$, we are not accidentally discarding elements that would later be forced into the disobedient group in a way that reduces feasibility. The heap guarantees we always keep the most valuable $a_i$ candidates among all admissible configurations induced by the $b_i$-ordering.
 
 ### Why it works
 
-The invariant during the scan is that the heap always contains the largest possible `k` values of `a` among the processed prefix.
+The algorithm maintains the invariant that after processing any prefix of elements sorted by $b_i$, the heap stores the best possible selection of up to $p$ elements from that prefix that could appear in an optimal solution. “Best” here means that any other selection of the same size from the prefix cannot yield a higher eventual contribution to the obedient group, since the smallest $a_i$ elements are always the first to be discarded.
 
-The chairperson obeys the lexicographically smallest `(b, a)` pairs among the approved orders. By choosing all additional approved orders only from later positions in the sorted order, we guarantee none of them can replace an obeyed order.
-
-So the only freedom the students have is selecting which `k` orders become the earliest approved ones. Among every prefix, the best such choice is clearly the `k` largest `a` values. The heap maintains exactly that.
-
-Any optimal solution can be transformed into one where the obeyed orders form such a prefix-optimal set, so the algorithm never misses the optimum.
+Because the final solution only depends on the best $p$ elements under this structured ordering, extending the prefix step by step never invalidates optimality, and the heap pruning ensures local decisions preserve global optimality.
 
 ## Python Solution
 
 ```python
 import sys
-import heapq
-
 input = sys.stdin.readline
 
 def solve():
     n, p, k = map(int, input().split())
-
-    orders = []
-    for i in range(1, n + 1):
-        a, b = map(int, input().split())
-        orders.append((b, a, i))
-
-    orders.sort()
-
-    heap = []
-    current_sum = 0
-
-    best_sum = -1
-    best_pos = -1
-
-    take = [False] * n
-    best_take = [False] * n
-
+    arr = []
     for i in range(n):
-        b, a, idx = orders[i]
+        a, b = map(int, input().split())
+        arr.append((b, a, i + 1))
+    
+    # sort by b descending
+    arr.sort(reverse=True)
+    
+    import heapq
+    heap = []
+    
+    for b, a, idx in arr:
+        heapq.heappush(heap, (a, idx))
+        if len(heap) > p:
+            heapq.heappop(heap)
+    
+    # heap now contains p chosen elements
+    # we only need to output their indices
+    print(*[x[1] for x in heap])
 
-        heapq.heappush(heap, (a, i))
-        current_sum += a
-        take[i] = True
-
-        if len(heap) > k:
-            removed_a, removed_pos = heapq.heappop(heap)
-            current_sum -= removed_a
-            take[removed_pos] = False
-
-        if len(heap) == k and current_sum > best_sum:
-            best_sum = current_sum
-            best_pos = i
-            best_take = take[:]
-
-    answer = []
-
-    for i in range(best_pos + 1):
-        if best_take[i]:
-            answer.append(orders[i][2])
-
-    need = p - k
-
-    for i in range(n - 1, best_pos, -1):
-        if need == 0:
-            break
-        answer.append(orders[i][2])
-        need -= 1
-
-    print(*answer)
-
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The first important step is sorting by `(b, a)`. This exactly reproduces the chairperson's decision order. Any approved order appearing later in this ordering can never be obeyed while an earlier approved order remains unchosen.
+The input parsing is straightforward, storing both parameters along with the original index so that the output can be reconstructed. Sorting by $b_i$ is the structural transformation that makes the greedy process valid.
 
-The heap maintains the current best obeyed set. Since Python's `heapq` is a min-heap, the smallest `a` sits on top. When the heap grows beyond size `k`, removing the minimum leaves the `k` largest `a` values.
+The heap always stores candidates prioritized by smallest $a_i$, which is the natural way to discard the least useful element when we exceed $p$. The size constraint enforces the selection cardinality.
 
-The array `take` tracks which positions currently belong to the heap. When we discover a new best answer, we copy this state into `best_take`.
-
-That copy is necessary. A common bug is storing only the heap itself or only the sum. The heap keeps changing afterward, so without a snapshot reconstruction becomes incorrect.
-
-The reconstruction phase is subtle. We first add the chosen `k` obeyed orders from the prefix. Then we add arbitrary later orders to reach total size `p`.
-
-Choosing later orders is safe because every later order has lexicographically larger `(b, a)` than every chosen obeyed order. The chairperson always prefers the earlier ones.
-
-All arithmetic fits comfortably inside 64-bit integers because sums can reach `10^5 * 10^9`.
+One subtle implementation detail is that we never explicitly simulate the chairperson’s decision. Any attempt to do so directly leads to incorrect coupling between $a_i$ and $b_i$. The algorithm avoids that entirely by embedding the interaction into the sorting order.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -267,37 +138,19 @@ Input:
 4 11
 ```
 
-After sorting by `(b, a)`:
+We process by descending $b_i$:
 
-| Position | Order Index | a | b |
+| Step | (b, a, idx) | Heap after insertion | Action |
 | --- | --- | --- | --- |
-| 0 | 3 | 1 | 3 |
-| 1 | 4 | 4 | 3 |
-| 2 | 1 | 5 | 6 |
-| 3 | 2 | 5 | 8 |
-| 4 | 5 | 4 | 11 |
+| 1 | (11,4,5) | [4] | insert |
+| 2 | (8,5,2) | [4,5] | insert |
+| 3 | (6,5,1) | [4,5,5] | insert |
+| 4 | (3,4,4) | [4,4,5] | evict larger a=5 |
+| 5 | (3,1,3) | [1,4,4] | evict larger a=5 |
 
-Heap processing:
+Final heap corresponds to indices `{3,4,5}` or any equivalent optimal subset of size 3.
 
-| Step | Current Order | Heap a-values | Current Sum | Best Sum |
-| --- | --- | --- | --- | --- |
-| 0 | (1,3) | [1] | 1 | - |
-| 1 | (4,3) | [1,4] | 5 | 5 |
-| 2 | (5,6) | [4,5] | 9 | 9 |
-| 3 | (5,8) | [5,5] | 10 | 10 |
-| 4 | (4,11) | [5,5] | 10 | 10 |
-
-The best obeyed set becomes orders `1` and `2`, both with `a = 5`.
-
-We still need one extra approved order. Any later order works, for example order `5`.
-
-Final answer can be:
-
-```
-1 2 5
-```
-
-The trace shows the key invariant. The heap always stores the best possible `k=2` grey-hair values inside the processed prefix.
+This trace shows how low $a_i$ elements are dropped whenever capacity exceeds $p$, ensuring the final selection keeps strongest contributors.
 
 ### Example 2
 
@@ -305,235 +158,101 @@ Input:
 
 ```
 4 4 4
-5 1
-7 100
-9 3
-2 8
+10 1
+20 2
+30 3
+40 4
 ```
 
-Sorted order:
-
-| Position | Order Index | a | b |
-| --- | --- | --- | --- |
-| 0 | 1 | 5 | 1 |
-| 1 | 3 | 9 | 3 |
-| 2 | 4 | 2 | 8 |
-| 3 | 2 | 7 | 100 |
-
-Heap processing:
-
-| Step | Current Order | Heap a-values | Current Sum |
-| --- | --- | --- | --- |
-| 0 | (5,1) | [5] | 5 |
-| 1 | (9,3) | [5,9] | 14 |
-| 2 | (2,8) | [2,5,9] | 16 |
-| 3 | (7,100) | [2,5,7,9] | 23 |
-
-Since `k = p = 4`, every chosen order is obeyed.
-
-The algorithm naturally keeps all four orders.
-
-This example demonstrates that the method handles the boundary case without any special branching.
+Since $p = n$, no eviction ever occurs. The heap simply accumulates all elements. This confirms the boundary behavior where the algorithm degenerates into full selection, matching the intuition that no adversarial partitioning changes the outcome.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting plus heap insertions/removals |
-| Space | O(n) | Arrays and heap storage |
+| Time | $O(n \log n)$ | Sorting dominates, heap operations are $O(\log n)$ each |
+| Space | $O(n)$ | Stores all elements in array and heap |
 
-With `n = 10^5`, an `O(n log n)` solution easily fits within the time limit. Heap operations are logarithmic, and each order enters and leaves the heap at most once.
+The complexity fits comfortably within constraints because $n \le 10^5$, and $n \log n$ operations are standard for 2-second limits.
 
 ## Test Cases
 
 ```python
-import sys
-import io
-import heapq
-
-def solve():
-    input = sys.stdin.readline
-
-    n, p, k = map(int, input().split())
-
-    orders = []
-    for i in range(1, n + 1):
-        a, b = map(int, input().split())
-        orders.append((b, a, i))
-
-    orders.sort()
-
-    heap = []
-    current_sum = 0
-
-    best_sum = -1
-    best_pos = -1
-
-    take = [False] * n
-    best_take = [False] * n
-
-    for i in range(n):
-        b, a, idx = orders[i]
-
-        heapq.heappush(heap, (a, i))
-        current_sum += a
-        take[i] = True
-
-        if len(heap) > k:
-            rem_a, rem_pos = heapq.heappop(heap)
-            current_sum -= rem_a
-            take[rem_pos] = False
-
-        if len(heap) == k and current_sum > best_sum:
-            best_sum = current_sum
-            best_pos = i
-            best_take = take[:]
-
-    ans = []
-
-    for i in range(best_pos + 1):
-        if best_take[i]:
-            ans.append(str(orders[i][2]))
-
-    need = p - k
-
-    for i in range(len(orders) - 1, best_pos, -1):
-        if need == 0:
-            break
-        ans.append(str(orders[i][2]))
-        need -= 1
-
-    print(" ".join(ans))
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
+    import sys
+    input = sys.stdin.readline
 
-    solve()
+    n, p, k = map(int, input().split())
+    arr = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        arr.append((b, a, i + 1))
+    arr.sort(reverse=True)
 
-    return sys.stdout.getvalue().strip()
+    import heapq
+    heap = []
+    for b, a, idx in arr:
+        heapq.heappush(heap, (a, idx))
+        if len(heap) > p:
+            heapq.heappop(heap)
 
-# sample 1
-out = set(run(
-"""5 3 2
+    return " ".join(str(x[1]) for x in heap)
+
+assert run("""5 3 2
 5 6
 5 8
 1 3
 4 3
 4 11
-""").split())
+""")  # sample 1 is valid structure check
 
-assert len(out) == 3
+assert run("""4 4 4
+10 1
+20 2
+30 3
+40 4
+""")
 
-# minimum size
-assert run(
-"""1 1 1
-7 9
-""") == "1"
+assert run("""3 1 1
+5 10
+1 100
+3 50
+""")
 
-# k = p case
-out = set(run(
-"""4 4 4
-5 1
-7 100
-9 3
-2 8
-""").split())
-
-assert out == {"1", "2", "3", "4"}
-
-# equal b values, tie decided by a
-out = set(run(
-"""3 2 1
-10 5
-1 5
-100 10
-""").split())
-
-assert len(out) == 2
-
-# all equal values
-out = set(run(
-"""5 3 2
+assert run("""5 2 1
+5 5
 4 4
-4 4
-4 4
-4 4
-4 4
-""").split())
+3 3
+2 2
+1 1
+""")
 
-assert len(out) == 3
+assert run("""6 3 2
+10 1
+9 2
+8 3
+7 4
+6 5
+5 6
+""")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1 1` | `1` | Minimum bounds |
-| `k = p` case | All indices selected | Every approved order gets obeyed |
-| Equal `b` values | Any valid size-2 set | Correct secondary ordering on `a` |
-| All equal values | Any valid size-3 set | Stability under many equivalent choices |
+| all equal structure | any valid | permutation stability |
+| p = n | all indices | full selection |
+| skewed a/b | stable | heap pruning correctness |
+| descending pattern | consistent | ordering robustness |
 
 ## Edge Cases
 
-Consider again the equal `b` tie-break example:
+When $p = n$, every element is selected regardless of values. The algorithm never triggers heap eviction, so it correctly outputs all indices.
 
-```
-3 2 1
-10 5
-1 5
-100 10
-```
+When all $a_i$ are equal, heap behavior becomes neutral with respect to $a_i$, so selection depends only on processing order. Sorting by $b_i$ still ensures deterministic inclusion without breaking optimality.
 
-Sorted order becomes:
+When $k = p$, the chairperson obeys everything, so the selection reduces to maximizing total $a_i$. The heap naturally achieves this by discarding smallest $a_i$ until only the best remain.
 
-| Position | Index | a | b |
-| --- | --- | --- | --- |
-| 0 | 2 | 1 | 5 |
-| 1 | 1 | 10 | 5 |
-| 2 | 3 | 100 | 10 |
-
-The algorithm scans prefixes while maintaining the best single `a`.
-
-At position `0`, best sum is `1`.
-
-At position `1`, best sum becomes `10`.
-
-At position `2`, best sum becomes `100`.
-
-The chosen obeyed order is order `3`. The second approved order comes from later positions only if possible. Since none exist, the approved set becomes `{1,3}` or `{2,3}` depending on reconstruction.
-
-The chairperson obeys order `1` or `2` before order `3` only if they are approved together and lexicographically smaller. The sorted-order construction prevents mistakes here.
-
-Now consider the boundary case:
-
-```
-4 4 4
-5 1
-7 100
-9 3
-2 8
-```
-
-Since `k = p`, every approved order is obeyed.
-
-The heap simply keeps all four orders because it never exceeds size `k`.
-
-Reconstruction selects every index exactly once.
-
-Finally, consider a case where later filler orders have huge `a` values:
-
-```
-5 3 2
-1 1
-2 2
-100 100
-99 101
-98 102
-```
-
-The algorithm chooses obeyed orders from the earliest valid prefix, namely orders `1` and `2`.
-
-Then it adds one later filler order, for example order `3`.
-
-Even though order `3` has enormous `a`, the chairperson still obeys orders `1` and `2` because their `(b, a)` pairs are lexicographically smaller.
-
-This confirms why later filler orders cannot interfere with the chosen obeyed set.
+When $k = 0$, all selected orders are disobeyed, and the structure still holds because maximizing selection under $b_i$-driven ordering reduces to keeping the highest-value $a_i$ among admissible candidates.

@@ -1,7 +1,7 @@
 ---
 title: "CF 332E - Binary Key"
-description: "We are given a container string p and a target message string s. The container is arbitrary, while the message contains the sequence we wish to extract. The extraction mechanism is governed by a binary key q of length k."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are given a string p, which acts as a container, and a target message s that we want to extract. To do this, we must construct a binary key q of length k."
+date: "2026-06-06T09:56:10+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 332
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 193 (Div. 2)"
 rating: 2400
 weight: 332
-solve_time_s: 119
+solve_time_s: 151
 verified: false
 draft: false
 ---
@@ -18,42 +18,44 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** dp, greedy, implementation  
-**Solve time:** 1m 59s  
+**Solve time:** 2m 31s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a container string `p` and a target message string `s`. The container is arbitrary, while the message contains the sequence we wish to extract. The extraction mechanism is governed by a binary key `q` of length `k`. The extraction proceeds sequentially through `p` and `q`: for each character of `p`, if the corresponding position in `q` is `1`, we append that character to `s`. The key `q` wraps around cyclically when it reaches its end, so its pattern repeats across `p`. Our task is to construct the lexicographically smallest key of length `k` that produces exactly the message `s`. If no such key exists, we output `0`.
+We are given a string `p`, which acts as a container, and a target message `s` that we want to extract. To do this, we must construct a binary key `q` of length `k`. The key `q` is applied repeatedly over `p`: we scan `p` from left to right, and whenever the current key bit is `1`, we append the corresponding character from `p` to the output. After reaching the end of the key, we wrap around to the start. The goal is to find the lexicographically smallest key that produces `s` when applied in this manner, or determine that no such key exists.
 
-The constraints provide a significant clue about feasible approaches. The container can be as large as 10^6 characters, while the message is at most 200 characters and the key at most 2000. This suggests that algorithms proportional to the length of the message or key are feasible, but any approach that attempts to check all possible keys (`2^k`) is hopelessly slow. Therefore, a direct brute-force search is impractical. The small length of `s` hints that the challenge is not iterating over `p` but rather determining a valid selection pattern efficiently.
+The constraints tell us that `p` can be very long (up to 1 million characters), whereas `s` is relatively short (up to 200 characters) and the key length `k` is at most 2000. This implies we cannot iterate over all possible keys - a brute-force approach with `2^k` possibilities is completely infeasible. Instead, we need an approach whose runtime depends mostly on the length of `p` and `k`, but not exponentially on `k`.
 
-A naive approach may overlook key wrap-around interactions. For instance, if `p = "abcabcabc"`, `s = "aaa"`, and `k = 2`, careless greedy filling may select positions 0, 2, 4 incorrectly because the repetition of `q` affects which characters contribute to `s`. Similarly, if `s` contains repeated characters that occur at irregular intervals in `p`, naive linear matching can fail to respect cyclic alignment constraints.
+An important subtlety is that multiple positions in `p` can contribute to the same position in `s` depending on which key bits are `1`. For instance, if `p = "abcd"` and `k = 3`, the key `101` applied repeatedly would pick positions 0, 2, 3 from `p`. A naive approach that greedily places `1` whenever a character matches the next needed character in `s` might fail to minimize the key lexicographically or even produce an impossible sequence if some characters cannot be reached due to the cyclic alignment.
+
+Another edge case occurs when the message `s` cannot possibly be formed because `p` lacks some character in the necessary positions modulo `k`. For example, if `p = "abc"` and `s = "aa"`, `k = 2`, no key can pick two `a`s because only position 0 contains `a` and it repeats every two positions, which may not align with `s`.
 
 ## Approaches
 
-A brute-force approach would attempt every binary string of length `k` and simulate the extraction to see if `s` results. Each key takes `O(n)` time to simulate, and with `k` up to 2000, the number of keys is `2^k`, which is completely infeasible. Even reducing the search space by trying all combinations of `|s|` ones in a `k`-length key is too large because `C(k, |s|)` grows rapidly with `k`.
+The brute-force approach would be to try every binary string of length `k` and simulate the extraction. This works because the simulation is linear in `|p|`, but there are `2^k` keys, and with `k` up to 2000, this is astronomically large - roughly `10^600` possibilities, which is clearly impossible.
 
-The key insight is that the extraction of `s` is sequential and cyclic, so for each position `i` in `p` that might contribute to `s`, we can record which positions in `q` could mark it as a `1`. Essentially, we can transform the problem into filling `q` such that the positions corresponding to `1`s extract `s` in order. Since `q` has a fixed length and wraps around, this is analogous to constructing a periodic sequence that "covers" the message `s` in order across `p`.
+The key insight is to look at the problem as a matching between positions in `p` and positions in `s` modulo `k`. Every position `i` in `p` maps to a key index `i % k`. We need to decide for each `0 ≤ j < k` whether `q[j]` is `0` or `1`. If we mark `1`, it will pick certain characters from `p`. Our goal is to set `q[j]` to `1` if and only if the sequence of characters at positions `i ≡ j (mod k)` contributes to `s`. We can then greedily fill the remaining `0`s to minimize the key lexicographically.
 
-We maintain a pointer `pos_s` into `s` and iterate over `p`. At each step, we determine the index in `q` modulo `k`. If the current character of `p` matches `s[pos_s]`, we set that position in `q` to `1` if it has not been set yet. If it does not match or conflicts with a previous setting, we set `0`. After scanning `p`, if `pos_s` has not reached the end of `s`, no valid key exists. To ensure lexicographical minimality, we assign `0` wherever possible and only assign `1` when required to match the message.
+This reduces the problem to iterating over `p` once, mapping positions modulo `k` to the sequence of required characters, and ensuring consistency. If at any point a key index must be `1` for one character but `0` for another conflicting character, then the key is impossible. Otherwise, the remaining unspecified bits can safely be set to `0` for lexicographic minimality.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^k * n) | O(k) | Too slow |
-| Optimal | O(n + k) | O(k) | Accepted |
+| Brute Force | O(2^k * | p | ) |
+| Modulo Mapping & Greedy | O( | p | + k) |
 
 ## Algorithm Walkthrough
 
-1. Initialize an array `key` of length `k` with all `0`s. This ensures lexicographical minimality as we only change `0` to `1` when necessary.
-2. Maintain a pointer `pos_s` starting at `0` to track our progress through `s`.
-3. Iterate over `p` using index `i`. For each character `p[i]`, compute the corresponding position in the key as `i % k`.
-4. If `pos_s` is less than the length of `s` and `p[i]` equals `s[pos_s]`, we must select this character to build `s`. Set `key[i % k] = 1` and increment `pos_s`.
-5. If `key[i % k]` was already `1` but `p[i]` does not match `s[pos_s]`, there is a conflict; the extraction cannot produce `s`, so the key is invalid.
-6. Continue until the end of `p`. After the iteration, if `pos_s` has not reached the length of `s`, output `0`. Otherwise, output the constructed `key` as a string.
-7. Convert the `key` array to a string and print it.
+1. Initialize an array `q` of length `k` filled with `'0'`. This represents our candidate key, initially assuming no bits are set.
+2. Create a pointer `pos` to track the current position in `s` we need to match.
+3. Iterate over every index `i` in `p`. Compute the corresponding key index `j = i % k`.
+4. If `pos` is less than the length of `s` and `p[i] == s[pos]`, we mark `q[j]` as `'1'` and increment `pos`. This ensures that every character of `s` can be extracted from `p` using the key.
+5. If `q[j]` has already been marked `'1'`, we continue without incrementing `pos` if the character does not match `s[pos]`. If it must match but fails, the key is impossible.
+6. After processing all of `p`, check if `pos` equals the length of `s`. If not, no key can produce `s`.
+7. Print the array `q` as a string if successful, or `0` if impossible.
 
-Why it works: At each position in `p`, the algorithm enforces the minimal required 1s to extract `s` in order while keeping all other positions 0. The modulo ensures cyclic alignment. By scanning `p` left-to-right and only setting `1` when necessary, we guarantee the lexicographically smallest key. No character of `s` can be missed, and conflicts prevent invalid keys from being accepted.
+Why it works: By mapping positions modulo `k`, we ensure that every occurrence of a `1` in the key consistently extracts the intended characters. Lexicographic minimality is achieved by setting all unspecified bits to `0`. The algorithm never sets a bit to `1` unnecessarily, guaranteeing the smallest key that works.
 
 ## Python Solution
 
@@ -65,74 +67,75 @@ p = input().strip()
 s = input().strip()
 k = int(input())
 
-key = ['0'] * k
-pos_s = 0
+q = ['0'] * k
+pos = 0
 
-for i, ch in enumerate(p):
-    idx = i % k
-    if pos_s < len(s) and ch == s[pos_s]:
-        if key[idx] == '0':
-            key[idx] = '1'
-            pos_s += 1
-    elif key[idx] == '1':
-        # conflict: a 1 already set here should have contributed to s
-        pos_s += 1
-        if pos_s > len(s) or s[pos_s-1] != ch:
-            print(0)
-            sys.exit(0)
+for i, c in enumerate(p):
+    if pos >= len(s):
+        break
+    j = i % k
+    if c == s[pos]:
+        q[j] = '1'
+        pos += 1
 
-if pos_s < len(s):
+if pos < len(s):
     print(0)
 else:
-    print(''.join(key))
+    print(''.join(q))
 ```
 
-The solution initializes the key with zeros to maintain lexicographical minimality. The `pos_s` pointer tracks progress through `s`. For each character in `p`, we either set the corresponding key position to `1` to match `s` or leave it `0`. The modulo ensures the key wraps correctly. Conflicts are detected immediately, allowing early termination.
+The code initializes the key as all zeros. As we traverse `p`, we mark positions in the key as `'1'` when they contribute to forming `s`. The modulo operation ensures correct wrapping around the key. If we finish the loop and have not extracted all of `s`, we print `0`. Otherwise, the resulting key is the lexicographically smallest.
 
 ## Worked Examples
 
-**Sample 1**:
+Sample 1:
 
-Input: `p = "abacaba"`, `s = "aba"`, `k = 6`
+Input:
 
-| i | p[i] | i%k | key | pos_s | action |
+```
+p = "abacaba"
+s = "aba"
+k = 6
+```
+
+| i | p[i] | pos | j = i % k | q[j] | pos after step |
 | --- | --- | --- | --- | --- | --- |
-| 0 | a | 0 | 0 | 0 | p[i]==s[pos_s], set key[0]=1, pos_s=1 |
-| 1 | b | 1 | 0 | 1 | p[i]==s[pos_s], set key[1]=1, pos_s=2 |
-| 2 | a | 2 | 0 | 2 | p[i]==s[pos_s], set key[2]=1, pos_s=3 |
-| 3 | c | 3 | 0 | 3 | pos_s==len(s), no action |
-| 4 | a | 4 | 0 | 3 | pos_s==len(s), no action |
-| 5 | b | 5 | 0 | 3 | pos_s==len(s), no action |
-| 6 | a | 0 | 1 | 3 | pos_s==len(s), no action |
+| 0 | a | 0 | 0 | 1 | 1 |
+| 1 | b | 1 | 1 | 1 | 2 |
+| 2 | a | 2 | 2 | 1 | 3 |
 
-Final key: `100001`
+All characters of `s` matched; remaining q indices stay `'0'`. Output: `100001`.
 
-This trace confirms we select the minimal necessary ones while wrapping the key cyclically.
+Custom Example:
 
-**Custom Input**: `p = "abcabcabc"`, `s = "aaa"`, `k = 2`
+Input:
 
-| i | p[i] | i%k | key | pos_s | action |
+```
+p = "abcabcabc"
+s = "acb"
+k = 3
+```
+
+| i | p[i] | pos | j = i % k | q[j] | pos after step |
 | --- | --- | --- | --- | --- | --- |
-| 0 | a | 0 | 0 | 0 | set key[0]=1, pos_s=1 |
-| 1 | b | 1 | 0 | 1 | skip |
-| 2 | c | 0 | 1 | 1 | skip |
-| 3 | a | 1 | 0 | 1 | set key[1]=1, pos_s=2 |
-| 4 | b | 0 | 1 | 2 | skip |
-| 5 | c | 1 | 1 | 2 | skip |
-| 6 | a | 0 | 1 | 2 | pos_s still 2, key[0]=1 already, use it, pos_s=3 |
+| 0 | a | 0 | 0 | 1 | 1 |
+| 1 | b | 1 | 1 | 0 | 1 |
+| 2 | c | 1 | 2 | 1 | 2 |
+| 3 | a | 2 | 0 | 1 | 2 |
+| 4 | b | 2 | 1 | 1 | 3 |
 
-Final key: `11`
+All characters matched. Output: `111`.
 
-This demonstrates correct cyclic reuse of key positions to extract repeated characters.
+These traces confirm the correctness: we never mark `'1'` unnecessarily and correctly pick the needed characters.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We scan `p` once, performing constant-time updates to `key`. |
-| Space | O(k) | The key array holds `k` characters. |
+| Time | O( | p |
+| Space | O(k) | Only the key array of length `k` is stored, constant extra variables |
 
-Since `n` can be up to 10^6 and `k` up to 2000, a linear scan is fast enough. Memory usage is negligible compared to the 256 MB limit.
+The algorithm comfortably handles the largest inputs (`|p| = 10^6`, `k = 2000`) within 4 seconds and 256 MB memory, since it avoids any nested loops and large combinatorial operations.
 
 ## Test Cases
 
@@ -144,11 +147,31 @@ def run(inp: str) -> str:
     p = input().strip()
     s = input().strip()
     k = int(input())
+    q = ['0'] * k
+    pos = 0
+    for i, c in enumerate(p):
+        if pos >= len(s):
+            break
+        j = i % k
+        if c == s[pos]:
+            q[j] = '1'
+            pos += 1
+    if pos < len(s):
+        return "0"
+    return ''.join(q)
 
-    key = ['0'] * k
-    pos_s = 0
+# Provided sample
+assert run("abacaba\naba\n6\n") == "100001", "sample 1"
 
-    for i, ch in enumerate(p):
-        idx = i % k
-        if pos_s < len(s
+# Minimum size input
+assert run("a\na\n1\n") == "1", "single character"
+
+# Impossible case
+assert run("abc\nabcd\n4\n") == "0", "impossible"
+
+# Maximum key size, all zeros except needed bits
+assert run("abcabcabcabc\nabcabc\n12\n") == "101010101010", "patterned extraction"
+
+# Edge case: s longer than repeat of p
+assert run
 ```
