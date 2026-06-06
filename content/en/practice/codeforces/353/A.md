@@ -1,7 +1,7 @@
 ---
 title: "CF 353A - Domino"
-description: "We are given a row of domino tiles. Each tile has two numbers: one on the top half and one on the bottom half. We are allowed to flip a tile, which swaps its top and bottom numbers. Each flip costs one unit of time."
-date: "2026-05-29T00:00:00+07:00"
+description: "We have a row of domino tiles. Each tile has a number on its upper half and a number on its lower half. For every tile, we may either leave it as it is or rotate it by 180 degrees. Rotating a tile simply swaps its upper and lower values. Each rotation costs one second."
+date: "2026-06-07T01:10:36+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 353
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 205 (Div. 2)"
 rating: 1200
 weight: 353
-solve_time_s: 235
+solve_time_s: 259
 verified: true
 draft: false
 ---
@@ -18,90 +18,128 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** implementation, math  
-**Solve time:** 3m 55s  
+**Solve time:** 4m 19s  
 **Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a row of domino tiles. Each tile has two numbers: one on the top half and one on the bottom half. We are allowed to flip a tile, which swaps its top and bottom numbers. Each flip costs one unit of time.
+We have a row of domino tiles. Each tile has a number on its upper half and a number on its lower half.
 
-The goal is to make both the sum of all top numbers and the sum of all bottom numbers even at the same time, using the minimum number of flips, or determine that it is impossible.
+For every tile, we may either leave it as it is or rotate it by 180 degrees. Rotating a tile simply swaps its upper and lower values. Each rotation costs one second.
 
-The key observation is that flipping a domino does not change the total sum of both halves combined. It only redistributes parity between the top and bottom sums. So the task is fundamentally about controlling parity changes induced by individual tiles.
+Our goal is to make both of these sums even:
 
-The input size is small, with n up to 100. This immediately tells us that any solution up to O(n²) or even O(n³) would pass comfortably, but the structure suggests a linear scan should suffice.
+1. The sum of all numbers currently on the upper halves.
+2. The sum of all numbers currently on the lower halves.
 
-A subtle point is that flipping a domino affects both sums simultaneously in a coupled way. A naive approach that tries all subsets of flips would be O(2ⁿ), which is unnecessary and risky even for n = 100.
+We must find the minimum number of rotations needed. If no sequence of rotations can make both sums even, we output `-1`.
 
-Edge cases that matter:
+The number of tiles is at most 100, which is very small. Even an $O(n^2)$ solution would be trivial here. The challenge is not performance but discovering the parity observation that makes the answer immediate.
 
-If all dominoes are fixed in a way that no flip changes parity of only one sum, we might be stuck.
+The key detail is that only parity matters. Whether a number is 2 or 6 is irrelevant, since both are even. Likewise, 1, 3, and 5 all behave identically because they are odd.
 
-Example:
+Several edge cases are easy to mishandle if we focus on actual values instead of parity.
 
-Input:
+Consider:
 
 ```
 1
-3 5
+1 2
 ```
 
-Output:
+The upper sum is odd and the lower sum is even. Rotating gives upper = 2 and lower = 1, so the parities simply swap. One sum remains odd forever. The correct answer is `-1`.
 
-```
--1
-```
+A careless solution might think that because one tile contains both an odd and an even number, a rotation can always fix things.
 
-Here both sums are initially odd and flipping just swaps the values but preserves the parity of each sum contribution structure in a way that cannot fix both simultaneously.
-
-Another example:
+Another important case is:
 
 ```
 2
 1 2
-1 2
+2 1
 ```
 
-Even though individual tiles are flexible, the combined parity constraint may force at least one flip, or even make it impossible depending on configuration.
+Initially, both sums are odd:
 
-The central difficulty is understanding when parity constraints can be corrected with 0, 1, or multiple flips.
+Upper = 3, Lower = 3.
+
+Rotating either tile changes both sums by an odd amount, making both sums even. The correct answer is `1`.
+
+A solution that only checks whether the current sums are even would incorrectly return `-1`.
+
+One more subtle case:
+
+```
+2
+1 1
+3 3
+```
+
+Upper and lower sums are both even:
+
+Upper = 4, Lower = 4.
+
+The answer is `0` even though every tile consists of two odd numbers. We do not need to rotate anything once the target parity is already achieved.
 
 ## Approaches
 
-The brute-force idea is straightforward. For every subset of dominoes, we simulate flipping exactly those dominoes, recompute the top and bottom sums, and check whether both are even. If yes, we update the minimum number of flips.
+A brute-force solution would try every subset of dominoes to rotate. For each subset, we would compute the resulting upper and lower sums and check whether both are even. Since every domino has two states, there are $2^n$ possible configurations.
 
-For n dominoes, this requires checking 2ⁿ subsets, and each check takes O(n) to recompute sums. This leads to O(n·2ⁿ), which becomes infeasible very quickly even though n is only 100 in constraints, because 2¹⁰⁰ is astronomically large.
+This works conceptually because every valid arrangement corresponds to one subset of rotated tiles. Unfortunately, even for $n = 100$, $2^{100}$ configurations are astronomically large and completely impossible to enumerate.
 
-The key insight is that we do not actually care about exact sums, only their parity. Each domino contributes to the parity of both sums, and flipping changes how that contribution is distributed.
+The reason we can do much better is that parity is the only thing that matters.
 
-A domino is useful only if flipping it changes the parity of exactly one of the two sums. If flipping changes neither or both, it has no effect on the parity condition. Therefore, the problem reduces to classifying dominoes into types based on parity of (xi, yi).
+Suppose a domino contains values $(x, y)$. Rotating it changes the upper sum by $y - x$ and the lower sum by $x - y$.
 
-We compute initial parity of top and bottom sums. If both are already even, answer is zero.
+If $x$ and $y$ have the same parity, then $y - x$ is even. Rotating that domino does not change the parity of either total sum.
 
-Otherwise, we need to see if flipping a single domino can fix exactly one parity mismatch. If flipping changes parity of both sums simultaneously, it is useless for fixing a single parity issue.
+If $x$ and $y$ have different parity, then $y - x$ is odd. Rotating that domino flips the parity of both total sums simultaneously.
 
-We then check whether there exists at least one domino that can fix the mismatch by flipping. If yes, answer is 1. Otherwise, impossible.
+This observation completely characterizes the problem.
+
+Let:
+
+- $S_u$ be the current upper sum.
+- $S_d$ be the current lower sum.
+
+If both sums are already even, the answer is `0`.
+
+If one sum is even and the other is odd, the answer is immediately `-1`. Every useful rotation flips both parities together, so they always remain equal. We can never turn `(even, odd)` into `(even, even)`.
+
+If both sums are odd, we need exactly one parity-flipping domino, meaning a domino whose two numbers have different parity. Rotating that single domino makes both totals even. If no such domino exists, the answer is `-1`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n·2ⁿ) | O(n) | Too slow |
-| Optimal | O(n) | O(1) | Accepted |
+| Brute Force | $O(2^n \cdot n)$ | $O(1)$ | Too slow |
+| Optimal | $O(n)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We solve the problem by tracking parity instead of actual sums.
+1. Read all dominoes and compute the total upper sum and total lower sum.
+2. While reading, check whether there exists a domino whose two values have different parity.
 
-1. Compute the sum of all top values and all bottom values. We only care whether each sum is even or odd, so we reduce both to parity using modulo 2.
-2. Check if both top parity and bottom parity are already zero. If yes, no operations are needed, so the answer is 0. This works because flipping is not required when constraints are already satisfied.
-3. If not satisfied, we test whether a single flip can fix the parity mismatch. For each domino, we simulate flipping it by considering how it changes the parity of both sums.
-4. A flip is useful only if after applying it, both parities become zero. We check this condition explicitly for each domino.
-5. If at least one domino satisfies this condition, we can fix everything in one move, so we output 1.
-6. If no such domino exists, then no sequence of flips can correct both parities simultaneously, so we output -1.
+Such a domino is special because rotating it flips the parity of both total sums.
+3. If both sums are even, output `0`.
+
+No rotations are required because the goal is already satisfied.
+4. If both sums are odd, check whether a parity-flipping domino exists.
+
+If it exists, output `1` because rotating exactly one such domino makes both sums even.
+5. If both sums are odd but no parity-flipping domino exists, output `-1`.
+
+Every rotation preserves parity, so the odd totals can never become even.
+6. If one sum is even and the other is odd, output `-1`.
+
+Any rotation changes both parities together, so the mismatch can never disappear.
 
 ### Why it works
 
-The key invariant is that each domino contributes independently to parity adjustments. Since flips are independent operations that only affect one tile at a time, the parity state space is small: only four possible states (even-even, even-odd, odd-even, odd-odd). We either start already valid, or we are one valid flip away, or we are stuck. No sequence of multiple flips can create a new parity combination that a single flip cannot, because flipping twice cancels its effect.
+The crucial invariant is that rotating a domino with equal-parity ends changes nothing about the parity of either total sum, while rotating a domino with different-parity ends flips the parity of both totals simultaneously.
+
+Because both totals always change together, it is impossible to move from `(even, odd)` or `(odd, even)` to `(even, even)`. Those states are unreachable.
+
+When both sums are odd, a single parity-flipping domino immediately converts `(odd, odd)` into `(even, even)`, and one rotation is obviously minimal because at least one change is required. This exhausts all possible parity states, so the algorithm is correct.
 
 ## Python Solution
 
@@ -109,44 +147,39 @@ The key invariant is that each domino contributes independently to parity adjust
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n = int(input())
-    top_sum = 0
-    bottom_sum = 0
-    dominos = []
-    
-    for _ in range(n):
-        x, y = map(int, input().split())
-        top_sum += x
-        bottom_sum += y
-        dominos.append((x, y))
-    
-    if top_sum % 2 == 0 and bottom_sum % 2 == 0:
-        print(0)
-        return
-    
-    for x, y in dominos:
-        new_top = top_sum - x + y
-        new_bottom = bottom_sum - y + x
-        if new_top % 2 == 0 and new_bottom % 2 == 0:
-            print(1)
-            return
-    
-    print(-1)
+n = int(input())
 
-if __name__ == "__main__":
-    solve()
+upper_sum = 0
+lower_sum = 0
+has_mixed_parity = False
+
+for _ in range(n):
+    x, y = map(int, input().split())
+    upper_sum += x
+    lower_sum += y
+
+    if (x % 2) != (y % 2):
+        has_mixed_parity = True
+
+if upper_sum % 2 == 0 and lower_sum % 2 == 0:
+    print(0)
+elif upper_sum % 2 == 1 and lower_sum % 2 == 1:
+    print(1 if has_mixed_parity else -1)
+else:
+    print(-1)
 ```
 
-The solution first computes the total sums of top and bottom halves. This is necessary to determine the initial parity state. Then it checks whether the current configuration already satisfies the requirement.
+The first part accumulates the two total sums. At the same time, it records whether any domino has different parity on its two halves.
 
-The second loop tries each domino as a candidate flip. The formula `top_sum - x + y` and `bottom_sum - y + x` simulates swapping the two halves. The modulo check ensures we only care about parity after the operation.
+After all input is processed, the solution only needs to examine the parity of the two totals.
 
-We return immediately when we find a valid single flip because we are minimizing the number of operations.
+The order of the checks matters slightly for clarity. The already-valid case is handled first because it immediately gives answer `0`. The `(odd, odd)` case comes next because it is the only situation where a single rotation may help. Everything else falls into the impossible category.
+
+No overflow concerns exist because the maximum possible sum is only $100 \times 6 = 600$.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -156,101 +189,223 @@ Input:
 6 4
 ```
 
-| Step | Top Sum | Bottom Sum | Top Parity | Bottom Parity | Action |
-| --- | --- | --- | --- | --- | --- |
-| Initial | 10 | 6 | 0 | 0 | already valid |
+| Tile | Upper Sum | Lower Sum | Mixed-Parity Domino Exists |
+| --- | --- | --- | --- |
+| Start | 0 | 0 | No |
+| (4,2) | 4 | 2 | No |
+| (6,4) | 10 | 6 | No |
 
-Both sums are even from the start, so no flips are needed. The algorithm detects this immediately and returns 0.
+Final parities:
 
-This confirms the invariant that we correctly identify already-satisfied states without unnecessary checks.
+| Upper Sum | Lower Sum |
+| --- | --- |
+| Even | Even |
 
-### Example 2
+Answer: `0`
+
+Both totals are already even, so no rotation is necessary.
+
+### Sample 2
 
 Input:
 
 ```
 1
-3 5
+1 2
 ```
 
-| Step | Top Sum | Bottom Sum | Top Parity | Bottom Parity | Action |
-| --- | --- | --- | --- | --- | --- |
-| Initial | 3 | 5 | 1 | 1 | not valid |
-| Flip domino | 5 | 3 | 1 | 1 | still invalid |
+| Tile | Upper Sum | Lower Sum | Mixed-Parity Domino Exists |
+| --- | --- | --- | --- |
+| Start | 0 | 0 | No |
+| (1,2) | 1 | 2 | Yes |
 
-No flip improves the parity condition. The single domino always keeps both sums odd regardless of orientation, so the algorithm correctly outputs -1.
+Final parities:
 
-This demonstrates that the method correctly detects impossibility when no valid parity correction exists.
+| Upper Sum | Lower Sum |
+| --- | --- |
+| Odd | Even |
+
+Answer: `-1`
+
+The totals have different parity. Any useful rotation flips both parities together, so one total will always remain odd.
+
+### Additional Example
+
+Input:
+
+```
+2
+1 2
+2 1
+```
+
+| Tile | Upper Sum | Lower Sum | Mixed-Parity Domino Exists |
+| --- | --- | --- | --- |
+| Start | 0 | 0 | No |
+| (1,2) | 1 | 2 | Yes |
+| (2,1) | 3 | 3 | Yes |
+
+Final parities:
+
+| Upper Sum | Lower Sum |
+| --- | --- |
+| Odd | Odd |
+
+Answer: `1`
+
+Rotating either domino flips both sums from odd to even.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | We compute sums once and test each domino once |
-| Space | O(1) | Only a few integer accumulators are used |
+| Time | $O(n)$ | One pass through all dominoes |
+| Space | $O(1)$ | Only a few variables are stored |
 
-The constraints allow up to 100 dominoes, so a linear scan is trivial in performance. The solution runs comfortably within limits since it performs only a small constant amount of arithmetic per element.
+With at most 100 dominoes, the linear scan is far below the time limit. Memory usage is constant and negligible compared to the available 256 MB.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
+def solve():
+    input = sys.stdin.readline
+
+    n = int(input())
+
+    upper_sum = 0
+    lower_sum = 0
+    has_mixed = False
+
+    for _ in range(n):
+        x, y = map(int, input().split())
+        upper_sum += x
+        lower_sum += y
+
+        if (x & 1) != (y & 1):
+            has_mixed = True
+
+    if upper_sum % 2 == 0 and lower_sum % 2 == 0:
+        print(0)
+    elif upper_sum % 2 == 1 and lower_sum % 2 == 1:
+        print(1 if has_mixed else -1)
+    else:
+        print(-1)
+
 def run(inp: str) -> str:
+    backup_stdin = sys.stdin
+    backup_stdout = sys.stdout
+
     sys.stdin = io.StringIO(inp)
-    
-    def solve():
-        n = int(input())
-        top_sum = 0
-        bottom_sum = 0
-        dominos = []
-        
-        for _ in range(n):
-            x, y = map(int, input().split())
-            top_sum += x
-            bottom_sum += y
-            dominos.append((x, y))
-        
-        if top_sum % 2 == 0 and bottom_sum % 2 == 0:
-            return "0"
-        
-        for x, y in dominos:
-            new_top = top_sum - x + y
-            new_bottom = bottom_sum - y + x
-            if new_top % 2 == 0 and new_bottom % 2 == 0:
-                return "1"
-        
-        return "-1"
-    
-    return solve()
+    sys.stdout = io.StringIO()
+
+    solve()
+
+    out = sys.stdout.getvalue()
+
+    sys.stdin = backup_stdin
+    sys.stdout = backup_stdout
+
+    return out.strip()
 
 # provided sample
-assert run("2\n4 2\n6 4\n") == "0"
+assert run("2\n4 2\n6 4\n") == "0", "sample"
 
-# already impossible single domino
-assert run("1\n3 5\n") == "-1"
+# minimum size, impossible
+assert run("1\n1 2\n") == "-1", "single tile"
 
-# one flip fixes
-assert run("1\n2 3\n") == "1"
+# one rotation solves it
+assert run("2\n1 2\n2 1\n") == "1", "odd odd with mixed parity tile"
 
-# already valid mixed
-assert run("3\n2 2\n4 4\n6 6\n") == "0"
+# odd odd but no mixed parity domino
+assert run("2\n1 1\n3 3\n") == "-1", "cannot change parity"
 
-# needs flip but possible
-assert run("2\n1 2\n3 4\n") in {"0", "1", "-1"}  # sanity flexible case
+# larger all-equal case
+assert run("5\n2 2\n2 2\n2 2\n2 2\n2 2\n") == "0", "already valid"
+
+# maximum-style repeated pattern
+inp = "100\n" + "\n".join(["1 2"] * 100) + "\n"
+assert run(inp) == "0", "large input"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 4 2 6 4 | 0 | already valid state |
-| 1 3 5 | -1 | impossible configuration |
-| 1 2 3 | 1 | single flip fixes parity |
-| 3 2 2 4 4 6 6 | 0 | all even stability |
+| `1 / 1 2` | `-1` | Minimum-size impossible case |
+| `2 / 1 2 / 2 1` | `1` | Single rotation fixes both sums |
+| `2 / 1 1 / 3 3` | `-1` | No parity-changing domino exists |
+| Five copies of `(2,2)` | `0` | Already-valid configuration |
+| 100 copies of `(1,2)` | `0` | Large input handling |
 
 ## Edge Cases
 
-One edge case is when the input already satisfies both parity conditions. The algorithm handles this before any flip simulation, so it returns immediately with 0. For example, in the input `2 / 4 2 / 6 4`, both sums are even and no domino is checked unnecessarily.
+Consider:
 
-Another edge case is when there is only one domino. The algorithm still correctly evaluates both possibilities: no flip or one flip. If neither orientation yields both sums even, it correctly outputs -1. For example, `1 / 3 5` remains invalid in both orientations, so the result is -1.
+```
+1
+1 2
+```
 
-A third edge case is when multiple dominoes exist but only one specific domino can fix parity. The loop ensures each candidate is tested independently, so the first valid flip is accepted and returned as 1, guaranteeing minimality.
+The algorithm computes:
+
+- Upper sum = 1 (odd)
+- Lower sum = 2 (even)
+- Mixed-parity domino exists
+
+The sums have different parity, so the algorithm immediately returns `-1`.
+
+Rotating the tile changes the state from `(odd, even)` to `(even, odd)`. The mismatch remains. The output is correct.
+
+Consider:
+
+```
+2
+1 2
+2 1
+```
+
+The algorithm computes:
+
+- Upper sum = 3 (odd)
+- Lower sum = 3 (odd)
+- Mixed-parity domino exists
+
+Since both totals are odd and a parity-changing domino exists, the algorithm returns `1`.
+
+Rotating either tile flips both totals to even. One move is sufficient and minimal.
+
+Consider:
+
+```
+2
+1 1
+3 3
+```
+
+The algorithm computes:
+
+- Upper sum = 4 (even)
+- Lower sum = 4 (even)
+- No mixed-parity domino exists
+
+The first condition triggers and returns `0`.
+
+Although every domino has odd values, the target is already satisfied. The algorithm correctly avoids unnecessary rotations.
+
+Consider:
+
+```
+2
+1 1
+1 1
+```
+
+The algorithm computes:
+
+- Upper sum = 2 (even)
+- Lower sum = 2 (even)
+
+The answer is `0`.
+
+Rotations do nothing because every tile has identical values on both halves. The parity-based reasoning still handles this case correctly.
