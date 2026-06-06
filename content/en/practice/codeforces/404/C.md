@@ -1,7 +1,7 @@
 ---
 title: "CF 404C - Restore Graph"
-description: "We are given a sequence of distances from a single unknown root vertex in an unknown undirected simple graph. Each vertex has a known shortest-path distance to that root, and we are also told that in the original graph every vertex had degree at most k."
-date: "2026-05-29T00:00:00+07:00"
+description: "We are asked to reconstruct an undirected connected graph from a list of shortest distances from one vertex, under the constraint that each vertex can have at most k edges."
+date: "2026-06-07T01:29:51+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "graphs", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 404
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 237 (Div. 2)"
 rating: 1800
 weight: 404
-solve_time_s: 211
+solve_time_s: 373
 verified: false
 draft: false
 ---
@@ -18,50 +18,41 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** dfs and similar, graphs, sortings  
-**Solve time:** 3m 31s  
+**Solve time:** 6m 13s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of distances from a single unknown root vertex in an unknown undirected simple graph. Each vertex has a known shortest-path distance to that root, and we are also told that in the original graph every vertex had degree at most k. The task is to reconstruct any graph on n labeled vertices that is consistent with these distances, or determine that no such graph can exist.
+We are asked to reconstruct an undirected connected graph from a list of shortest distances from one vertex, under the constraint that each vertex can have at most _k_ edges. The input gives the number of vertices `n`, the maximum degree `k`, and an array `d` of length `n` where `d[i]` represents the distance from the chosen starting vertex to vertex `i`. The graph may have any structure as long as it is consistent with the distances and degree limits, and does not contain self-loops or multiple edges.
 
-What we are really reconstructing is a layered structure induced by shortest-path distances. All vertices with distance 0, 1, 2, and so on must form layers, and every edge must connect either vertices within the same layer or adjacent layers in a way that preserves shortest paths from the root.
+The key constraints are: `n` can be up to 10^5 and each vertex has degree at most `k`. This means any solution must be roughly linear or O(n log n). Algorithms that attempt to check all possible edge combinations would require O(n^2) operations, which is too slow. Memory is sufficient for storing adjacency lists or similar structures, as 10^5 vertices with up to 10^5 edges is acceptable under the 256 MB limit.
 
-The constraint that each vertex has degree at most k is the main structural restriction. Since n can be up to 100000, any solution that considers all pairs of vertices is immediately infeasible. Even O(n^2) constructions are impossible, so the solution must rely on sorting and local connectivity between carefully chosen candidates.
-
-A key feasibility condition appears immediately: there must be exactly one vertex with distance 0. If there are multiple, no valid rooted shortest-path structure exists, since the root is unique. Another subtle condition is that if a vertex has distance d, it must connect to at least one vertex with distance d-1, otherwise its shortest path cannot be realized.
-
-A naive mistake is to try to connect each vertex to all previous layers or even all vertices in the previous layer. This quickly violates the degree bound k or creates too many edges. Another failure mode is ignoring the degree constraint when assigning parents in the BFS-like structure, which produces a valid distance tree but invalidates the “at most k edges per vertex” requirement.
+Non-obvious edge cases include: a graph where all vertices have distance 0 except the start, which is trivial; a graph where some distance values are missing, which would make construction impossible; and cases where `k` is too small to connect vertices at the same distance, leading to a disconnected graph. For example, if `n = 3, k = 1` and `d = [0, 1, 2]`, we cannot build a valid graph because the vertex at distance 2 cannot connect to more than one vertex, and it has no other option to reach distance 1 without exceeding degree.
 
 ## Approaches
 
-A brute-force attempt would be to construct a BFS tree from the root: connect every vertex at distance d to some vertex at distance d-1. This guarantees correct shortest distances. However, if we assign parents arbitrarily, a vertex in layer d-1 may end up with arbitrarily many children, exceeding k. To fix this, we would need to carefully distribute children across available parents in the previous layer.
+A brute-force approach would attempt to connect vertices greedily based on distance: for each vertex, try to connect it to any vertex with distance one less until all distances are satisfied. This is correct in principle but slow: for each vertex, we could iterate over up to `n` candidates, giving O(n^2) complexity, which is infeasible for n = 10^5.
 
-The key observation is that vertices are already partitioned by distance, so the structure is layered. Each vertex in layer d must choose its parent in layer d-1, and the only constraint is that no vertex can be chosen as a parent more than k times (since each edge increases its degree). This transforms the problem into a capacity-constrained assignment between consecutive layers.
+The key insight is to leverage the distance levels. Vertices can be grouped by distance from the start. All vertices at distance `d` must be connected to some vertex at distance `d-1`. Within a level, vertices do not connect to each other (since that would create a shortcut, violating the distance). This lets us build a BFS-like tree structure level by level. The degree constraint `k` is handled by keeping track of how many edges each vertex has already used and ensuring that no vertex exceeds `k`.
 
-We process layers in increasing order of distance. For each layer, we maintain a pool of available parents from the previous layer, each with remaining capacity k minus already used degree. We assign each vertex in the current layer to some available parent, always ensuring we do not exceed capacity. If at any point we run out of available capacity, construction is impossible.
-
-This works because shortest-path correctness forces every vertex to connect to the previous layer, and the only flexibility we have is how to distribute these connections while respecting degree limits.
+The brute-force works because it considers every possible connection, but fails when n is large. The level-based BFS approach works because distances impose a strict hierarchy: a vertex at distance `d` can only be connected to vertices at distance `d-1` (or `d+1` if looking backward), and this prevents cycles that would contradict distances.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Naive BFS tree construction | O(n) | O(n) | Might violate degree constraint |
-| Capacity-aware layered assignment | O(n) | O(n) | Accepted |
+| Brute Force | O(n^2) | O(n^2) | Too slow |
+| Level BFS / Distance Grouping | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We first group vertices by their distance values, forming buckets for each layer.
+1. Identify the vertex with distance 0. This is the starting vertex, the root of our BFS tree. If there is no vertex with distance 0 or multiple, output -1 because the input is inconsistent.
+2. Group all vertices by their distance from the start. Use a dictionary or list of lists where `level[d]` contains all vertices at distance `d`. If any level is empty between 0 and the maximum distance, output -1 because a gap means some distances cannot be reached.
+3. Initialize a degree counter for each vertex, starting at 0. This will track how many edges each vertex already has.
+4. Connect vertices level by level. For distance `d = 1` to max_distance, for each vertex `v` in level `d`, choose a parent vertex `u` from level `d-1` that has remaining degree capacity. If no such parent exists, the graph cannot be formed, output -1.
+5. For each connection, increment the degree counter for both vertices. Stop assigning children to a parent if it reaches `k`.
+6. Collect all edges and print the total count followed by each edge. Multiple solutions are acceptable because any valid parent assignment works.
 
-1. Check that there is exactly one vertex with distance 0. If not, no valid graph exists. This is necessary because all distances are defined relative to a single root.
-2. Sort vertices by their distance values. This ensures we process layers in increasing order, which is essential for preserving shortest-path structure.
-3. For each vertex, we will assign a parent from the previous layer. We maintain a list of candidates from the previous layer that still have remaining capacity.
-4. Initially, the root (distance 0) is the only candidate with remaining capacity k.
-5. Process vertices in increasing distance order. When we move to a new layer d, we rebuild the candidate pool using all vertices from layer d-1 that still have available capacity. This ensures we only connect valid edges between consecutive layers.
-6. For each vertex in layer d, assign it to any available candidate from layer d-1. Decrease the candidate’s remaining capacity. If no candidate exists, construction fails.
-7. Each assignment creates an edge. We store all such edges and continue.
-
-Why it works is tied to two invariants. First, every vertex in layer d is connected to a vertex in layer d-1, guaranteeing its shortest path is exactly d. Second, no vertex ever exceeds k edges because we explicitly track and enforce remaining degree capacity. Since we only connect adjacent layers, no shorter alternative path can appear, preserving correctness of the distance array.
+Why it works: Every vertex at distance `d` is guaranteed to connect to a vertex at distance `d-1`. No vertex exceeds the degree limit because we check capacity before connecting. Distances are preserved because edges are only formed between consecutive levels. Connectivity is guaranteed because the BFS tree spans all vertices.
 
 ## Python Solution
 
@@ -69,84 +60,66 @@ Why it works is tied to two invariants. First, every vertex in layer d is connec
 import sys
 input = sys.stdin.readline
 
-def solve():
-    n, k = map(int, input().split())
-    d = list(map(int, input().split()))
-    
-    nodes = list(range(n))
-    nodes.sort(key=lambda x: d[x])
-    
-    if d[nodes[0]] != 0:
-        print(-1)
-        return
-    
-    # group by distance
-    from collections import defaultdict, deque
-    
-    layers = defaultdict(list)
-    for i in range(n):
-        layers[d[i]].append(i)
-    
-    if len(layers[0]) != 1:
-        print(-1)
-        return
-    
-    edges = []
-    
-    prev_layer = [layers[0][0]]
-    cap = {layers[0][0]: k}
-    
-    max_dist = max(layers.keys())
-    
-    for dist in range(1, max_dist + 1):
-        if dist not in layers:
-            continue
-        
-        cur = layers[dist]
-        
-        new_prev = []
-        new_cap = {}
-        
-        # prepare candidates from previous layer
-        for v in prev_layer:
-            if cap[v] > 0:
-                new_prev.append(v)
-                new_cap[v] = cap[v]
-        
-        if not new_prev:
-            print(-1)
-            return
-        
-        idx = 0
-        
-        for v in cur:
-            if idx >= len(new_prev):
-                print(-1)
-                return
-            p = new_prev[idx]
-            edges.append((p, v))
-            new_cap[p] -= 1
-            if new_cap[p] == 0:
-                idx += 1
-        
-        prev_layer = new_prev
-        cap = new_cap
-    
-    print(len(edges))
-    for a, b in edges:
-        print(a + 1, b + 1)
+n, k = map(int, input().split())
+d = list(map(int, input().split()))
 
-if __name__ == "__main__":
-    solve()
+from collections import defaultdict, deque
+
+# Step 1: check for valid root
+roots = [i for i, dist in enumerate(d) if dist == 0]
+if len(roots) != 1:
+    print(-1)
+    sys.exit()
+
+root = roots[0]
+
+# Step 2: group by distance
+levels = defaultdict(list)
+max_dist = 0
+for i, dist in enumerate(d):
+    levels[dist].append(i)
+    max_dist = max(max_dist, dist)
+
+# Step 3: check for missing levels
+for dist in range(max_dist + 1):
+    if not levels[dist]:
+        print(-1)
+        sys.exit()
+
+# Step 4: assign edges
+edges = []
+degree = [0] * n
+
+for dist in range(1, max_dist + 1):
+    parents = deque(levels[dist - 1])
+    if not parents:
+        print(-1)
+        sys.exit()
+    for v in levels[dist]:
+        # find parent with free degree
+        while parents and degree[parents[0]] >= k:
+            parents.popleft()
+        if not parents:
+            print(-1)
+            sys.exit()
+        u = parents[0]
+        edges.append((u + 1, v + 1))
+        degree[u] += 1
+        degree[v] += 1
+        # keep parent in deque if it can take more
+        if degree[u] >= k:
+            parents.popleft()
+
+print(len(edges))
+for u, v in edges:
+    print(u, v)
 ```
 
-The implementation relies on sorting vertices into distance layers, then iterating layer by layer. The key detail is maintaining a dynamic list of usable parents with remaining capacity. As soon as a parent’s capacity is exhausted, we move to the next candidate. This greedy distribution is safe because within a layer, all vertices are equivalent in terms of distance structure.
-
-A common pitfall is forgetting to rebuild the candidate set per layer; using a global pool would incorrectly allow edges that violate shortest-path layering. Another subtle issue is failing to enforce that layer 0 must be unique.
+This solution first finds the root, groups vertices by distance, then assigns edges level by level. The `degree` array ensures we never exceed `k` connections per vertex. Using `deque` allows efficiently popping parents when they reach their capacity.
 
 ## Worked Examples
 
-### Example 1
+**Sample 1**
 
 Input:
 
@@ -155,47 +128,63 @@ Input:
 0 1 1
 ```
 
-Layering:
+| dist | levels | degree | edges |
+| --- | --- | --- | --- |
+| 0 | [0] | [0,0,0] | [] |
+| 1 | [1,2] | [0,0,0] | [] |
 
-| Step | Prev Layer | Current Layer | Edge Added | Capacities |
-| --- | --- | --- | --- | --- |
-| init | [1] | - | - | 1:2 |
-| d=1 | [1] | [2,3] | (1,2) | 1:1 |
-| d=1 | [1] | [2,3] | (1,3) | 1:0 |
+- connect 1 → 0 | - | [1,1,0] | [(1,2)] |
+- connect 2 → 0 | - | [2,1,1] | [(1,2),(1,3)] |
 
-Output edges form a valid triangle structure.
+Output:
 
-This demonstrates that a single parent can support multiple children up to capacity k, and distribution across nodes still preserves correctness.
+```
+2
+1 2
+1 3
+```
 
-### Example 2
+This demonstrates that vertices at distance 1 connect to root. Degree limits are respected.
+
+**Custom Example**
 
 Input:
 
 ```
-5 2
-0 1 1 2 2
+4 2
+0 1 2 2
 ```
 
-Layering:
+| dist | levels | degree | edges |
+| --- | --- | --- | --- |
+| 0 | [0] | [0,0,0,0] | [] |
+| 1 | [1] | [0,0,0,0] | [] |
 
-| Step | Prev Layer | Current Layer | Edge Added | Capacities |
-| --- | --- | --- | --- | --- |
-| init | [1] | - | - | 1:2 |
-| d=1 | [1] | [2,3] | (1,2) | 1:1 |
-| d=1 | [1] | [2,3] | (1,3) | 1:0 |
-| d=2 | [2,3] | [4,5] | (2,4) | 2:1 |
-| d=2 | [2,3] | [4,5] | (2,5) | 2:0 |
+- connect 1 → 0 | - | [1,1,0,0] | [(1,2)] |
 
-This shows how capacity naturally shifts to deeper layers, with new parents becoming available while old ones deplete.
+| 2 | [2,3] | [1,1,0,0] | [] |
+- connect 2 → 1 | - | [1,2,1,0] | [(1,2),(2,3)] |
+- connect 3 → 1 | - | [1,2,1,1] | [(1,2),(2,3),(2,4)] |
+
+Output:
+
+```
+3
+1 2
+2 3
+2 4
+```
+
+Shows that vertices at distance 2 connect to any available parent at distance 1.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each vertex is processed once, each edge is created once |
-| Space | O(n) | Storage for adjacency edges and layer grouping |
+| Time | O(n) | Each vertex is processed once and edges are formed in O(1) using deque. |
+| Space | O(n) | Storing levels, degrees, and edges requires linear memory. |
 
-The algorithm is linear in the number of vertices, which fits comfortably within the constraints of up to 100000 nodes. Memory usage is also linear and only stores necessary graph structure.
+This fits well within the constraints `n <= 10^5` and `m <= 10^6`.
 
 ## Test Cases
 
@@ -204,76 +193,16 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import defaultdict
-    
-    def solve():
-        n, k = map(int, input().split())
-        d = list(map(int, input().split()))
-        
-        if d.count(0) != 1:
-            print(-1)
-            return
-        
-        layers = defaultdict(list)
-        for i in range(n):
-            layers[d[i]].append(i)
-        
-        edges = []
-        prev = layers[0][0:1]
-        cap = {prev[0]: k}
-        
-        for dist in range(1, max(layers.keys()) + 1):
-            if dist not in layers:
-                continue
-            cur = layers[dist]
-            new_prev = []
-            new_cap = {}
-            for v in prev:
-                if cap[v] > 0:
-                    new_prev.append(v)
-                    new_cap[v] = cap[v]
-            if not new_prev:
-                print(-1)
-                return
-            idx = 0
-            for v in cur:
-                if idx >= len(new_prev):
-                    print(-1)
-                    return
-                p = new_prev[idx]
-                edges.append((p, v))
-                new_cap[p] -= 1
-                if new_cap[p] == 0:
-                    idx += 1
-            prev = new_prev
-            cap = new_cap
-        
-        print(len(edges))
-        for a, b in edges:
-            print(a + 1, b + 1)
-    
-    solve()
-    return ""
+    out = io.StringIO()
+    sys.stdout = out
+    exec(open("solution.py").read())
+    return out.getvalue().strip()
 
 # provided sample
-assert run("3 2\n0 1 1\n") == "", "sample 1"
+assert run("3 2\n0 1 1\n") == "2\n1 2\n1 3"
 
 # custom cases
-assert run("1 5\n0\n") == "", "single node"
-assert run("4 1\n0 1 1 2\n") == "", "chain-like"
-assert run("4 1\n0 2 1 2\n") == "", "impossible structure check"
+assert run("4 2\n0 1 2 2\n") == "3\n1 2\n2 3\n2 4", "level 2 vertices connect correctly"
+assert run("3 1\n0 1 2\n") == "-1", "degree too small to connect vertex at distance 2"
+assert run("1 1\n0\n") == "0
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 1 5 / 0 | valid empty graph | minimum case |
-| 4 1 / 0 1 1 2 | chain feasibility | strict k constraint |
-| 4 1 / 0 2 1 2 | -1 | invalid layering detection |
-
-## Edge Cases
-
-A critical edge case is when there are multiple vertices with distance 0. For example, input `n=3, d=[0,0,1]` is invalid because there is no unique source of distances. The algorithm catches this early by enforcing a single root, and immediately returns -1 before attempting construction.
-
-Another edge case occurs when a layer has no available parents with remaining capacity. For instance, `n=4, k=1, d=[0,1,1,2]` eventually forces two children to connect through a single parent with capacity exhausted. The algorithm detects this when `new_prev` becomes empty or when we cannot assign all vertices in a layer.
-
-A third subtle case is irregular layering gaps, such as missing intermediate distances. The algorithm handles this naturally because skipping a missing layer does not change connectivity, but if a vertex appears at distance d without any node in d-1, it immediately triggers failure due to lack of parents.

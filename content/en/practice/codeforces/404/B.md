@@ -1,7 +1,7 @@
 ---
 title: "CF 404B - Marathon"
-description: "We are tracking a runner moving along the perimeter of a square of side length a, starting from the bottom-left corner (0, 0) and moving counter-clockwise. After every fixed distance d, we want to know the runner’s exact coordinates on the square boundary."
-date: "2026-05-29T00:00:00+07:00"
+description: "Valera runs around the perimeter of a square stadium. The square has side length a, and the route follows the boundary in counterclockwise order. The starting point is the bottom-left corner (0, 0)."
+date: "2026-06-07T01:27:58+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 404
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 237 (Div. 2)"
 rating: 1500
 weight: 404
-solve_time_s: 160
-verified: false
+solve_time_s: 260
+verified: true
 draft: false
 ---
 
@@ -18,57 +18,128 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** implementation, math  
-**Solve time:** 2m 40s  
-**Verified:** no  
+**Solve time:** 4m 20s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are tracking a runner moving along the perimeter of a square of side length `a`, starting from the bottom-left corner `(0, 0)` and moving counter-clockwise. After every fixed distance `d`, we want to know the runner’s exact coordinates on the square boundary.
+Valera runs around the perimeter of a square stadium. The square has side length `a`, and the route follows the boundary in counterclockwise order.
 
-The motion is continuous along the border. The path consists of four straight segments: from `(0,0)` to `(a,0)`, then to `(a,a)`, then to `(0,a)`, then back to `(0,0)`, and then repeats. Instead of thinking in terms of geometry, it is more useful to treat the perimeter as a 1D cycle of length `4a`.
+The starting point is the bottom-left corner `(0, 0)`. After running `a` meters he reaches `(a, 0)`, after another `a` meters he reaches `(a, a)`, and so on. The total perimeter is `4a`, so after every full lap he returns to `(0, 0)` and continues repeating the same path.
 
-Each query asks: if the runner has traveled a total distance of `i * d`, where does this position land when projected onto the square boundary.
+The coach gives Valera a drink every `d` meters. We must output Valera's coordinates after he has run `d`, `2d`, `3d`, ..., `nd` meters.
 
-The constraints allow up to `10^5` queries and large values of `a` and `d`. This rules out any simulation that advances point-by-point along the perimeter. A naive step-by-step walk would potentially require up to `O(nd)` operations, which is far beyond the limit.
+The key observation is that only the position along the current lap matters. If Valera has run a total distance `s`, then his location is determined by `s mod (4a)`, because every complete perimeter returns him to exactly the same place.
 
-A subtle issue arises from floating-point precision. Since `a` and `d` are given with up to 4 decimal places and errors up to `1e-4` are allowed, direct floating arithmetic is acceptable, but cumulative error must be avoided. This strongly suggests computing each position independently rather than accumulating distance incrementally.
+The constraints are large enough that we must generate up to `10^5` answers. Any solution that simulates movement meter by meter is impossible. Even if distances are represented as real numbers, a tiny-step simulation would require billions of operations in the worst case. We need a direct formula that computes each answer in constant time.
 
-Edge cases that typically break naive approaches include:
+Several edge cases can easily cause wrong answers.
 
-A direct simulation that repeatedly moves along edges will fail when `d` is large, for example `a = 10^5` and `d = 10^5`, because each step would require scanning potentially large segments.
+Consider:
 
-Another failure case appears when the runner lands exactly on a corner. For example, if the accumulated distance equals exactly `a`, `2a`, `3a`, or `4a`, the position must be placed exactly at a vertex. Floating error can incorrectly place the runner slightly past the corner, leading to wrong edge selection.
+```
+a = 2
+d = 2
+n = 1
+```
+
+After running exactly `2` meters, Valera is at `(2, 0)`, the first corner. A careless implementation using strict inequalities may place him on the next edge instead.
+
+Another example:
+
+```
+a = 3
+d = 12
+n = 1
+```
+
+Since `12 = 4a`, he completes exactly one lap and returns to `(0, 0)`. If we forget to take modulo `4a`, we may incorrectly try to locate him beyond the perimeter.
+
+A more subtle case is:
+
+```
+a = 2
+d = 5
+n = 1
+```
+
+The perimeter is `8`, so `5 mod 8 = 5`. Distance `5` lies on the top edge. The correct position is `(1, 2)`. A solution that assumes only one lap or computes edge transitions incorrectly will fail here.
 
 ## Approaches
 
-The brute-force idea is straightforward: simulate the runner moving along the square edge, subtracting small increments until we consume `d`, then repeat for each query. This is correct conceptually because it directly follows the motion. However, its cost is proportional to the total traveled distance across all queries. Since the total distance can be on the order of `n * d`, and each movement along an edge might require repeated updates, this becomes infeasible.
+The most direct idea is to simulate the run. For every drink event we could start at `(0,0)` and repeatedly move along edges until covering the required distance. This is correct because it follows the path exactly.
 
-The key observation is that the path is a closed polygon, so we can "unwrap" it into a cycle of length `4a`. Instead of simulating geometry, we convert each distance `i * d` into a single scalar value, then take it modulo `4a` to locate the position on the perimeter. Once we know where we are on the cycle, determining coordinates reduces to checking which of the four sides the position lies on.
+The problem is scale. Distances can be as large as `10^5`, and there are up to `10^5` queries. Simulating movement incrementally would require far too many operations. Even processing each query by repeatedly subtracting side lengths is unnecessary work.
 
-This reduces the problem from continuous motion simulation to simple arithmetic and case classification.
+The structure of the path gives a much simpler solution. The stadium boundary is a cycle of length `4a`. After every full lap the runner returns to the same position. For the `i`-th drink, the total distance traveled is
+
+$$s=i\cdot d$$
+
+Only
+
+$$r=s\bmod (4a)$$
+
+matters.
+
+Now the perimeter is divided into four segments of length `a`.
+
+If `r` belongs to the first segment, Valera is on the bottom edge.
+
+If `r` belongs to the second segment, he is on the right edge.
+
+If `r` belongs to the third segment, he is on the top edge.
+
+If `r` belongs to the fourth segment, he is on the left edge.
+
+Each case gives coordinates through a simple formula. Since every query is handled independently in constant time, the whole solution runs in `O(n)`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n * d / step) | O(1) | Too slow |
+| Brute Force | O(n · distance) | O(1) | Too slow |
 | Optimal | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the total perimeter of the square cycle as `P = 4a`. This represents one full lap around the boundary.
-2. For each query index `i`, compute the traveled distance `dist = i * d`. This gives the absolute position along the unrolled boundary.
-3. Reduce the distance using modulo: `pos = dist % P`. This maps the position back into the range `[0, 4a)`, ensuring we only consider a single lap. This is valid because every lap repeats the same geometry.
-4. Determine which side of the square the position lies on by comparing `pos` with segment boundaries:
+1. Compute the perimeter length `p = 4 * a`.
+2. Maintain the total traveled distance after each drink. Instead of recomputing `i * d`, we can keep a running value:
 
-- If `0 ≤ pos < a`, we are on the bottom edge moving right: `(x, y) = (pos, 0)`
-- If `a ≤ pos < 2a`, we are on the right edge moving up: `(x, y) = (a, pos - a)`
-- If `2a ≤ pos < 3a`, we are on the top edge moving left: `(x, y) = (a - (pos - 2a), a)`
-- If `3a ≤ pos < 4a`, we are on the left edge moving down: `(x, y) = (0, a - (pos - 3a))`
-5. Output the coordinates for each query independently without accumulating state.
+`cur = (cur + d) mod p`.
+
+After the `i`-th iteration, `cur` equals `(i*d) mod p`.
+3. Determine on which side of the square `cur` lies.
+
+If `0 <= cur <= a`, the runner is on the bottom edge.
+
+If `a < cur <= 2a`, the runner is on the right edge.
+
+If `2a < cur <= 3a`, the runner is on the top edge.
+
+Otherwise he is on the left edge.
+4. Convert the distance along that edge into coordinates.
+
+For the bottom edge:
+
+$$(x,y)=(cur,0)$$
+
+For the right edge:
+
+$$(x,y)=(a,cur-a)$$
+
+For the top edge:
+
+$$(x,y)=(a-(cur-2a),a)$$
+
+For the left edge:
+
+$$(x,y)=(0,a-(cur-3a))$$
+5. Output the coordinates.
 
 ### Why it works
 
-The square boundary forms a closed loop with constant total length `4a`. Any continuous movement along it can be represented as a linear traversal on a circle of circumference `4a`. Taking modulo preserves the exact position on this cycle. Each interval of length `a` corresponds exactly to one side of the square, so mapping the reduced position into one of four intervals produces a unique and correct geometric location.
+At any moment, the runner's location depends only on how far he has progressed through the current lap. Taking modulo `4a` removes all completed laps while preserving the exact position on the perimeter.
+
+The interval decomposition of `[0,4a)` matches the four sides of the square. Within each interval, movement occurs along a single straight edge at unit speed, so the coordinate formulas describe the unique point whose distance from the start along the perimeter equals `cur`. Since every possible value of `cur` belongs to exactly one edge, the algorithm always produces the correct position.
 
 ## Python Solution
 
@@ -79,31 +150,47 @@ input = sys.stdin.readline
 a, d = map(float, input().split())
 n = int(input())
 
-P = 4.0 * a
+perimeter = 4.0 * a
+cur = 0.0
 
-out_lines = []
+out = []
 
-for i in range(1, n + 1):
-    dist = i * d
-    pos = dist % P
+for _ in range(n):
+    cur = (cur + d) % perimeter
 
-    if pos < a:
-        x, y = pos, 0.0
-    elif pos < 2 * a:
-        x, y = a, pos - a
-    elif pos < 3 * a:
-        x, y = a - (pos - 2 * a), a
+    if cur <= a:
+        x = cur
+        y = 0.0
+    elif cur <= 2.0 * a:
+        x = a
+        y = cur - a
+    elif cur <= 3.0 * a:
+        x = 3.0 * a - cur
+        y = a
     else:
-        x, y = 0.0, a - (pos - 3 * a)
+        x = 0.0
+        y = 4.0 * a - cur
 
-    out_lines.append(f"{x:.10f} {y:.10f}")
+    out.append(f"{x:.10f} {y:.10f}")
 
-sys.stdout.write("\n".join(out_lines))
+sys.stdout.write("\n".join(out))
 ```
 
-The solution computes each position independently using modular reduction. The key implementation detail is avoiding incremental updates, since floating accumulation would introduce drift over up to `10^5` steps.
+The first part reads the square side length and drink interval. The perimeter is computed once because it is reused for every query.
 
-The boundary checks are written in increasing order so each position falls into exactly one segment. Care is taken to subtract offsets like `pos - a` so that each edge is treated as a local coordinate system.
+The variable `cur` stores the current distance along the perimeter after removing completed laps. Updating it with
+
+```
+cur = (cur + d) % perimeter
+```
+
+avoids repeatedly computing `i * d` and keeps values numerically small.
+
+The four conditional branches correspond directly to the four sides of the square. The formulas are derived from how far the runner has progressed along the current edge.
+
+One subtle point is handling corner positions. Using `<=` keeps distances exactly equal to `a`, `2a`, or `3a` on a single well-defined side. The coordinates are identical regardless of which adjacent side is chosen, so this avoids ambiguity.
+
+The output volume is large, up to `10^5` lines. Collecting answers in a list and printing once is much faster than writing line by line.
 
 ## Worked Examples
 
@@ -112,101 +199,227 @@ The boundary checks are written in increasing order so each position falls into 
 Input:
 
 ```
-a = 2, d = 5, n = 2
+2 5
+2
 ```
 
-We compute perimeter `P = 8`.
+Perimeter = 8.
 
-| i | dist = i·d | pos = dist % 8 | segment | coordinates |
-| --- | --- | --- | --- | --- |
-| 1 | 5 | 5 | top edge | (2, 3) |
-| 2 | 10 | 2 | right edge | (2, 0) |
+| Drink # | cur = distance mod 8 | Side | Coordinates |
+| --- | --- | --- | --- |
+| 1 | 5 | Top | (1, 2) |
+| 2 | 2 | Bottom | (2, 0) |
 
-For `i = 1`, position 5 lies in `[4,6)` so it is on the top edge, shifted left by 1 from `(2,2)`, giving `(1,2)` if computed carefully; the sample uses a consistent floating interpretation of edge traversal. For `i = 2`, we land exactly at a corner after wrapping.
+Output:
 
-This shows how modulo correctly handles wrapping beyond one full perimeter.
+```
+1.0000000000 2.0000000000
+2.0000000000 0.0000000000
+```
+
+The first drink occurs after crossing two corners and reaching the top edge. The second drink happens after one complete lap plus two additional meters, placing Valera at `(2,0)`.
 
 ### Example 2
 
 Input:
 
 ```
-a = 3, d = 4, n = 3
+3 4
+4
 ```
 
-Perimeter `P = 12`.
+Perimeter = 12.
 
-| i | dist | pos | segment | coordinates |
-| --- | --- | --- | --- | --- |
-| 1 | 4 | 4 | top edge | (3, 1) |
-| 2 | 8 | 8 | left edge | (1, 3) |
-| 3 | 12 | 0 | start | (0, 0) |
+| Drink # | cur | Side | Coordinates |
+| --- | --- | --- | --- |
+| 1 | 4 | Right | (3, 1) |
+| 2 | 8 | Top | (1, 3) |
+| 3 | 0 | Bottom corner | (0, 0) |
+| 4 | 4 | Right | (3, 1) |
 
-This trace shows clean periodicity: after one full loop we return exactly to the start.
+This trace demonstrates the cyclic nature of the route. After exactly one perimeter length, `cur` becomes zero and the runner returns to the start.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each query computes one modulo and constant-time branching |
-| Space | O(1) | Only stores a few floating variables |
+| Time | O(n) | Constant work for each of the `n` drink positions |
+| Space | O(1) auxiliary, O(n) output storage | Only a few variables are used besides the output buffer |
 
-The constraints allow up to `10^5` queries, and each operation is constant time, so the solution comfortably fits within limits.
+With at most `10^5` queries, an `O(n)` solution performs comfortably within the limits. The memory usage is also small, even when storing all output lines before printing.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import math
+
+    input = sys.stdin.readline
 
     a, d = map(float, input().split())
     n = int(input())
 
-    P = 4.0 * a
-    res = []
+    perimeter = 4.0 * a
+    cur = 0.0
 
-    for i in range(1, n + 1):
-        pos = (i * d) % P
+    out = []
 
-        if pos < a:
-            x, y = pos, 0.0
-        elif pos < 2 * a:
-            x, y = a, pos - a
-        elif pos < 3 * a:
-            x, y = a - (pos - 2 * a), a
+    for _ in range(n):
+        cur = (cur + d) % perimeter
+
+        if cur <= a:
+            x, y = cur, 0.0
+        elif cur <= 2.0 * a:
+            x, y = a, cur - a
+        elif cur <= 3.0 * a:
+            x, y = 3.0 * a - cur, a
         else:
-            x, y = 0.0, a - (pos - 3 * a)
+            x, y = 0.0, 4.0 * a - cur
 
-        res.append(f"{x:.10f} {y:.10f}")
+        out.append(f"{x:.10f} {y:.10f}")
 
-    return "\n".join(res) + "\n"
+    return "\n".join(out)
 
 # provided sample
-assert run("2 5\n2\n") == "1.0000000000 2.0000000000\n2.0000000000 0.0000000000\n"
+assert run("2 5\n2\n") == (
+    "1.0000000000 2.0000000000\n"
+    "2.0000000000 0.0000000000"
+)
 
-# minimum case
-assert run("1 1\n1\n") == "1.0000000000 0.0000000000\n"
+# minimum-size input
+assert run("1 1\n1\n") == "1.0000000000 0.0000000000"
 
-# full perimeter wrap
-assert run("3 12\n1\n") == "0.0000000000 0.0000000000\n"
+# exactly one full lap
+assert run("3 12\n1\n") == "0.0000000000 0.0000000000"
 
-# multiple laps behavior
-assert run("2 3\n4\n") is not None
+# corner transitions
+assert run("2 2\n4\n") == (
+    "2.0000000000 0.0000000000\n"
+    "2.0000000000 2.0000000000\n"
+    "0.0000000000 2.0000000000\n"
+    "0.0000000000 0.0000000000"
+)
+
+# repeated cycling
+assert run("3 4\n4\n") == (
+    "3.0000000000 1.0000000000\n"
+    "1.0000000000 3.0000000000\n"
+    "0.0000000000 0.0000000000\n"
+    "3.0000000000 1.0000000000"
+)
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 1, n=1` | `(1,0)` | single edge movement |
-| `3 12, n=1` | `(0,0)` | exact full cycle wrap |
-| `2 3, n=4` | periodic path | repeated looping correctness |
+| `1 1 / 1` | `(1,0)` | Minimum valid instance |
+| `3 12 / 1` | `(0,0)` | Exact perimeter multiple |
+| `2 2 / 4` | Four corners in order | Boundary handling |
+| `3 4 / 4` | Position repeats after one lap | Correct modulo logic |
 
 ## Edge Cases
 
-One critical case is when the position lands exactly at a corner. For example, with `a = 2` and `d = 4`, the first step gives `dist = 4`, so `pos = 4 % 8 = 4`, which is exactly `2a`. The algorithm places this at the start of the top edge, which corresponds to `(2,2)`, the correct vertex. The strict inequality boundaries ensure no ambiguity between edges.
+### Landing exactly on a corner
 
-Another case is full-cycle alignment. With `a = 3` and `d = 12`, we get `pos = 0`, which directly maps to `(0,0)`. This confirms that modulo handles exact multiples of perimeter cleanly without floating drift.
+Input:
 
-A final subtle case is large `n` where repeated multiplication could accumulate floating error. Since each `dist = i * d` is computed independently, there is no propagation of rounding error from previous steps, keeping each position stable within the allowed precision.
+```
+2 2
+1
+```
+
+The perimeter position is `2`, which equals the side length. The algorithm enters the first branch (`cur <= a`) and outputs:
+
+```
+2.0000000000 0.0000000000
+```
+
+This is the correct corner. Any neighboring-edge interpretation would produce the same coordinates, so the result is unambiguous.
+
+### Distance equal to a full perimeter
+
+Input:
+
+```
+3 12
+1
+```
+
+The perimeter is `12`.
+
+The algorithm computes:
+
+```
+cur = 12 mod 12 = 0
+```
+
+Since `cur = 0`, the coordinates become:
+
+```
+0.0000000000 0.0000000000
+```
+
+The runner has completed one entire lap and returned to the start.
+
+### Large distances spanning many laps
+
+Input:
+
+```
+2 21
+1
+```
+
+The perimeter is `8`.
+
+The algorithm computes:
+
+```
+cur = 21 mod 8 = 5
+```
+
+Since `5` lies between `4` and `6`, the runner is on the top edge.
+
+Coordinates:
+
+```
+x = 6 - 5 = 1
+y = 2
+```
+
+Output:
+
+```
+1.0000000000 2.0000000000
+```
+
+Only the remainder matters. The twenty meters from completed laps have no effect on the final location.
+
+### Repeated wrap-around
+
+Input:
+
+```
+2 7
+3
+```
+
+Perimeter = 8.
+
+The sequence of remainders is:
+
+```
+7, 6, 5
+```
+
+producing:
+
+```
+0 1
+0 2
+1 2
+```
+
+The algorithm never tracks complete laps explicitly. The modulo operation keeps every query mapped into the current perimeter cycle, which is exactly the information needed to determine the position.
