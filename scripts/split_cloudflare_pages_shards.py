@@ -367,14 +367,16 @@ def write_redirects(main: Site, shards: list[Site]) -> None:
     lines: list[str] = []
     for shard in shards:
         assert shard.source_prefix is not None
-        lines.append(f"{shard.source_prefix} {shard.base_url}/ 302")
+        lines.append(f"{shard.source_prefix} {shard.base_url}/ 301")
         lines.append(f"{shard.source_prefix}* {shard.base_url}/:splat 301")
     (main.output / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     for shard in shards:
         assert shard.source_prefix is not None
         aliases = [
+            f"{shard.source_prefix} / 301",
             f"{shard.source_prefix}* /:splat 301",
+            f"/{shard.name}/ / 301",
             f"/{shard.name}/* /:splat 301",
         ]
         (shard.output / "_redirects").write_text("\n".join(aliases) + "\n", encoding="utf-8")
