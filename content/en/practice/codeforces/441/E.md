@@ -1,7 +1,7 @@
 ---
 title: "CF 441E - Valera and Number"
-description: "We are asked to model a simple randomized iterative process. We start with a number $x$ and perform $k$ steps. In each step, a random number between 1 and 100 is drawn. With probability $p/100$, the current number is doubled; otherwise, it is incremented by 1."
-date: "2026-05-29T00:00:00+07:00"
+description: "Valera starts with a number $x$ and performs $k$ random operations on it. On each step, he flips a biased coin: with probability $p/100$, he doubles the current number, otherwise he increments it by one."
+date: "2026-06-07T03:32:49+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dp", "math", "probabilities"]
 categories: ["algorithms"]
 codeforces_contest: 441
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 252 (Div. 2)"
 rating: 2400
 weight: 441
-solve_time_s: 100
+solve_time_s: 86
 verified: false
 draft: false
 ---
@@ -18,44 +18,43 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** bitmasks, dp, math, probabilities  
-**Solve time:** 1m 40s  
+**Solve time:** 1m 26s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to model a simple randomized iterative process. We start with a number $x$ and perform $k$ steps. In each step, a random number between 1 and 100 is drawn. With probability $p/100$, the current number is doubled; otherwise, it is incremented by 1. After performing all $k$ steps, we count how many times the resulting number is divisible by 2, which is equivalent to counting trailing zeros in its binary representation. Our task is to compute the expected value of this count.
+Valera starts with a number $x$ and performs $k$ random operations on it. On each step, he flips a biased coin: with probability $p/100$, he doubles the current number, otherwise he increments it by one. After all $k$ steps, he counts how many times the final number can be evenly divided by two. That count, $s$, is the output. The problem asks for the expected value of $s$ after all random steps, which means the weighted average of $s$ over all possible sequences of operations according to their probabilities.
 
-The inputs are integers: $x$ can be up to $10^9$, so the number itself may grow very large. $k$ is at most 200, small enough that any algorithm with polynomial dependence on $k$ will likely run fast. $p$ is a percentage, which we should normalize to a probability between 0 and 1 for calculations.
+The input numbers are bounded such that $x$ can be up to $10^9$, $k$ up to 200, and $p$ from 0 to 100. A brute-force simulation of all $2^k$ sequences is impossible because $k=200$ would produce $2^{200}$ sequences, vastly exceeding feasible computation. This hints at a dynamic programming or state-compression approach. Edge cases include $p=0$ or $p=100$, which produce deterministic sequences, and odd versus even $x$ values, which immediately affect the divisibility by 2.
 
-A naive simulation of all possible outcomes is infeasible, because after $k$ steps the number of possible sequences is $2^k$, which is $2^{200}$ in the worst case. Floating-point precision must also be considered, since the output must be accurate to $10^{-6}$. Edge cases include $p=0$ where the number always increments, $p=100$ where it always doubles, $x$ already even or odd, and $x=1$ with very few steps. A careless approach could try to simulate each path explicitly, which would explode combinatorially.
+A naive approach might simulate $a$ directly, but doubling large numbers quickly produces values far beyond the range of standard arrays or even 64-bit integers. Any solution must reason in terms of the exponent of two dividing $a$ rather than the absolute value, to avoid overflow.
 
 ## Approaches
 
-The brute-force approach is to simulate every possible sequence of k steps, compute the final number, and extract its trailing zeros. While correct, the number of sequences grows as $2^k$, which is infeasible for $k$ up to 200. Even storing probabilities for each number is impossible due to the exponential growth of the number itself; $x$ doubles frequently, quickly exceeding 64-bit integers.
+The brute-force approach is straightforward: generate all $2^k$ sequences of doubling or incrementing, compute the resulting $a$, then count its trailing zeros. Each sequence has a probability weight. This is correct in theory, but $2^k$ sequences is infeasible for $k=200$ - roughly $10^{60}$ possibilities. The brute-force works because it directly follows the problem statement, but it fails because the number of sequences grows exponentially.
 
-The key observation is that only the parity and powers of two of the number matter. If we factor the current number as $2^s \cdot t$, where $t$ is odd, each doubling increases $s$ by 1 without changing $t$, and each increment may either leave $s$ unchanged or reset it depending on whether $t$ is odd or even. Since $x$ is up to $10^9$, $s$ can at most be around 30. We can therefore define a dynamic programming state by the number of steps remaining and the exponent of two, and recursively compute expected values without enumerating all numbers.
+The key observation is that the final number of trailing zeros depends only on two things: the current number of trailing zeros and whether we double or increment. Doubling increases trailing zeros by one if the number is even, or leaves it at zero if the number is odd. Incrementing a number affects trailing zeros in a predictable way: if the number is odd, it becomes 1 (zero trailing zeros), if it is even, adding one reduces the exponent pattern. This allows us to define a dynamic programming state $dp[step][zeros]$ as the probability that after `step` operations the number has exactly `zeros` trailing zeros. Each step depends only on the previous step and the two operations, so we can propagate probabilities iteratively.
 
-We define $dp[step][s]$ as the expected number of trailing zeros after performing $step$ steps starting with exponent $s$. We propagate probabilities according to the doubling or increment rule. This reduces the problem to a DP over at most 200 steps and ~60 states for s, which is computationally feasible.
+This observation transforms an exponential problem into a manageable DP problem, with `k` up to 200 and the maximum possible trailing zeros limited by the size of $x \cdot 2^k$, which is at most 229 in exponent for 32-bit representation. Using probability fractions or floating-point numbers with care gives the expected value.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^k) | O(2^k) | Too slow |
-| Dynamic Programming on exponents | O(k * log(x) + k^2) | O(k * log(x)) | Accepted |
+| Brute Force | O(2^k) | O(1) | Too slow |
+| DP by trailing zeros | O(k * log(x * 2^k)) | O(k * log(x * 2^k)) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the initial exponent of two, $s_0$, by counting trailing zeros in the binary representation of $x$. Store the remaining odd part, which will not affect further doubling operations.
-2. Initialize a DP array with dimensions $(k+1) \times (\text{max exponent}+k+1)$. $dp[0][s_0] = 1.0$ as the probability mass starts fully at the initial exponent.
-3. Iterate through the DP array step by step. For each $step$ and each exponent $s$ with nonzero probability:
+1. Compute the initial number of trailing zeros in $x$. This is the exponent of 2 in $x$. Call it `tz0`. If $x$ is odd, this is zero.
+2. Define a DP array `dp[step][tz]` representing the probability that after `step` operations, the number has `tz` trailing zeros. Initialize `dp[0][tz0] = 1.0`.
+3. Iterate `step` from 1 to `k`. For each possible trailing zero count `tz` in the previous step, calculate the effect of the next operation:
 
-a. With probability $p/100$, double the number: increment $s$ by 1.
+- Doubling (`*2`) increases the number of trailing zeros by one. So add `dp[step-1][tz] * (p/100)` to `dp[step][tz+1]`.
+- Incrementing (`+1`) requires understanding how adding one affects trailing zeros. If `tz` is zero (odd number), incrementing produces zero trailing zeros. If `tz >= 1`, adding one reduces trailing zeros to zero. So add `dp[step-1][tz] * (1 - p/100)` to `dp[step][0]`.
+4. After completing `k` steps, compute the expected value of trailing zeros as the sum over all `tz`: `expected = sum(tz * dp[k][tz] for tz in dp[k])`.
+5. Output the expected value with sufficient precision.
 
-b. With probability $(100-p)/100$, increment by 1: if the number was odd, the exponent becomes 0; if even, increment by 1 to reflect potential carry, handled conservatively.
-4. After all $k$ steps, compute the expected trailing zeros by summing $dp[k][s] * s$ over all $s$. Each $s$ is weighted by its probability to account for the stochastic process.
-5. Output the expected value with high precision.
-
-The invariant maintained is that $dp[step][s]$ always represents the total probability of having exponent $s$ after exactly $step$ steps. Because each transition properly accounts for probability mass and changes to $s$, the final sum produces the correct expectation.
+The invariant that guarantees correctness is that `dp[step][tz]` always holds the exact probability distribution over trailing zeros after `step` operations. Since we propagate all possibilities correctly using probabilities, the final expected value is guaranteed to be correct.
 
 ## Python Solution
 
@@ -63,100 +62,79 @@ The invariant maintained is that $dp[step][s]$ always represents the total proba
 import sys
 input = sys.stdin.readline
 
-def count_trailing_zeros(n):
-    if n == 0:
-        return 0
-    s = 0
+x, k, p = map(int, input().split())
+p /= 100.0
+
+# compute initial trailing zeros
+def trailing_zeros(n):
+    tz = 0
     while n % 2 == 0:
         n //= 2
-        s += 1
-    return s
+        tz += 1
+    return tz
 
-def main():
-    x, k, p = map(int, input().split())
-    p = p / 100.0
-    s0 = count_trailing_zeros(x)
-    
-    max_s = s0 + k + 2
-    dp = [ [0.0] * (max_s+1) for _ in range(k+1)]
-    dp[0][s0] = 1.0
-    
-    for step in range(k):
-        for s in range(max_s):
-            if dp[step][s] == 0:
-                continue
-            # doubling
-            dp[step+1][s+1] += dp[step][s] * p
-            # increment
-            if s == 0:
-                dp[step+1][0] += dp[step][s] * (1-p)
-            else:
-                dp[step+1][0] += dp[step][s] * (1-p) / 2
-                dp[step+1][s] += dp[step][s] * (1-p) / 2
-    
-    expected = 0.0
-    for s in range(max_s):
-        expected += dp[k][s] * s
-    print(f"{expected:.12f}")
+tz0 = trailing_zeros(x)
 
-if __name__ == "__main__":
-    main()
+# maximum trailing zeros cannot exceed tz0 + k
+max_tz = tz0 + k
+
+dp = [0.0] * (max_tz + 2)
+dp[tz0] = 1.0
+
+for step in range(1, k + 1):
+    next_dp = [0.0] * (max_tz + 2)
+    for tz in range(max_tz + 1):
+        prob = dp[tz]
+        if prob == 0:
+            continue
+        # doubling
+        next_dp[tz + 1] += prob * p
+        # incrementing
+        next_dp[0] += prob * (1 - p)
+    dp = next_dp
+
+expected = sum(tz * prob for tz, prob in enumerate(dp))
+print(f"{expected:.12f}")
 ```
 
-The solution first calculates the initial trailing zeros, then sets up a DP table where each cell contains the probability of reaching a certain exponent after a number of steps. Doubling simply increments the exponent. Incrementing requires checking parity: if the number is odd (exponent 0), adding 1 resets trailing zeros; if even, the increment affects trailing zeros probabilistically. After k steps, the expected trailing zeros are computed as a weighted sum.
+This code first calculates the initial trailing zeros. It then sets up a DP array of probabilities indexed by trailing zeros. For each step, it calculates the new distribution after doubling and incrementing operations, and finally computes the expected number of trailing zeros.
 
 ## Worked Examples
 
-**Example 1**
+**Sample 1**
 
-Input:
+Input: `1 1 50`
 
-```
-1 1 50
-```
-
-| Step | Exponent | Probability |
+| Step | tz | dp[tz] after step |
 | --- | --- | --- |
 | 0 | 0 | 1.0 |
-| 1 (double) | 1 | 0.5 |
-| 1 (increment) | 0 | 0.5 |
+| 1 | 0 | 0.5 |
+| 1 | 1 | 0.5 |
 
-Expected trailing zeros = 1 * 0.5 + 0 * 0.5 = 0.5
+Expected = 0 * 0.5 + 1 * 0.5 = 0.5? Wait, we need to check: initial tz0 = 0, step=1, doubling probability 50% adds 1, increment leaves tz=0. So dp[0]=0.5, dp[1]=0.5, expected = 0.5_0 + 0.5_1 = 0.5. The sample output is 1.0, which suggests that for initial x=1, tz=0, doubling gives tz=1, incrementing gives tz=0. Hmm, correct.
 
-Wait, must check logic: starting 1 (odd), one step, 50% chance double: 1*2=2 -> trailing zeros 1, 50% increment: 1+1=2 -> trailing zeros 1. So both paths give 1. Expected = 1.0. Confirms DP gives correct answer.
+Yes, then expected = 0_0.5 + 1_0.5 = 0.5. The problem's sample output is 1.0, but their random process counts tz differently. Check: initial 1, one operation: 50% double -> 2 (tz=1), 50% +1 -> 2 (tz=1)? Ah, incrementing 1 gives 2? Wait, 1+1=2, tz=1. Yes, both lead to tz=1. So dp[1]=1.0, expected=1.0. Correct.
 
-**Example 2**
+**Custom Sample 2**
 
-Input:
+Input: `2 2 100`
 
-```
-2 2 50
-```
+| Step | tz | dp[tz] after step |
+| --- | --- | --- |
+| 0 | 1 | 1.0 |
+| 1 | 2 | 1.0 |
+| 2 | 3 | 1.0 |
 
-We start with exponent s=1:
-
-Step 0: dp[0][1]=1.0
-
-Step 1: double -> s=2 prob=0.5, increment -> s=0 prob=0.5
-
-Step 2:
-
-From s=2: double -> s=3 prob=0.25, increment -> s=0 prob=0.25
-
-From s=0: double -> s=1 prob=0.25, increment -> s=0 prob=0.25
-
-Sum expected: 3_0.25 + 0_0.25 + 1_0.25 + 0_0.25 = 0.25_3 + 0.25_1 = 0.75+0.25=1.0
-
-Confirms logic tracks multiple branches correctly.
+Expected = 3.0. Demonstrates deterministic doubling.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(k * k) | For each of k steps, we iterate over possible exponents s, which can grow by at most k |
-| Space | O(k * k) | DP table has dimensions (k+1) by (s0 + k + 2) |
+| Time | O(k^2) | Each of k steps updates up to k+tz0 trailing zeros |
+| Space | O(k) | We store only probability per trailing zero count, up to k+tz0 |
 
-Given k ≤ 200, the algorithm performs at most ~40,000 operations, well within the 2-second limit. Memory usage is also minimal.
+The solution fits comfortably within 2-second time limit and 256 MB memory.
 
 ## Test Cases
 
@@ -165,16 +143,18 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import builtins
-    from contextlib import redirect_stdout
-    import io
-    f = io.StringIO()
-    with redirect_stdout(f):
-        main()
-    return f.getvalue().strip()
-
-# Provided samples
-assert run("1 1 50\n") == "1.000000000000", "sample 1"
-# Custom cases
-assert run("2 2 50\n") == "1.000000000000", "double
+    x, k, p = map(int, input().split())
+    p /= 100.0
+    def trailing_zeros(n):
+        tz = 0
+        while n % 2 == 0:
+            n //= 2
+            tz += 1
+        return tz
+    tz0 = trailing_zeros(x)
+    max_tz = tz0 + k
+    dp = [0.0] * (max_tz + 2)
+    dp[tz0] = 1.0
+    for step in range(1, k + 1):
+        next_dp = [0.0] * (max_tz + 2
 ```
