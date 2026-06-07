@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1345 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1346 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1345
+kvant_total: 1346
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1345 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1346 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -2806,7 +2806,7 @@ draft: false
 
 ## 1994
 
-39 problems across Issues 1–6.
+40 problems across Issues 1–6.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1994_1/)
 
@@ -2875,6 +2875,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1467](1467.md) *International Mathematical Olympiad for School Students (XXXV)*. Let |  | 9m49s |
 | [1470](1470.md) *International Mathematical Olympiad for School Students (XXXV)*. We need a set $A$ of positive integers such that every infinite set $S$ of primes contains, among the squarefree numbers formed from distinct primes of $S$, two numbers with the same number $k\\ge2$ of… |  | 9m45s |
 
 ## 1995
