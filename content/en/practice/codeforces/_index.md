@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 454 contests, 2161 problems, 1500 verified."
+description: "Codeforces problem solutions with full editorial. 455 contests, 2167 problems, 1501 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**454 contests, 2161 problems, 1500 verified.**
+**455 contests, 2167 problems, 1501 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -456,6 +456,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
+| [2209](2209/) | [Codeforces Round 1087 (Div. 2)](https://codeforces.com/contest/2209) | Div. 2 | 800-2700 | 1/6 | 11m 5s |
 | [2210](2210/) | [Codeforces Round 1089 (Div. 2)](https://codeforces.com/contest/2210) | Div. 2 | 800-2700 | 2/7 | 17m 52s |
 | [2211](2211/) | [Nebius Round 2 (Codeforces Round 1088, Div. 1 + Div. 2)](https://codeforces.com/contest/2211) | Div. 1+2 | 800-3500 | 2/9 | 17m 58s |
 | [2214](2214/) | [April Fools Day Contest 2026](https://codeforces.com/contest/2214) | April Fools | - | 5/10 | 18m 14s |
