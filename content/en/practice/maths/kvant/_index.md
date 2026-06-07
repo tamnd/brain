@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1346 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1347 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1346
+kvant_total: 1347
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1346 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1347 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -2880,12 +2880,13 @@ draft: false
 
 ## 1995
 
-4 problems across Issues 2–6.
+5 problems across Issues 2–6.
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1483](1483.md) *B. D. Ginzburg*. Each vector lies in the first quadrant and has length $1$. |  | 10m28s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1995_5/)
