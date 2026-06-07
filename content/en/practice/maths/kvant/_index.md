@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1354 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1355 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1354
+kvant_total: 1355
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1354 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1355 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -2963,7 +2963,7 @@ draft: false
 
 ## 2025
 
-3 problems across Issues 2–11.
+4 problems across Issues 2–11.
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_2025_2/)
 
@@ -2976,6 +2976,12 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2854](2854.md) Let $n=\\prod p_i^{\\alpha_i}$ with all $p_i<100$. |  | 11m39s |
+
+### [Issue 10](https://www.kvant.digital/view/kvant_2025_10/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2863](2863.md) The configuration is a complete quadrilateral formed by the four lines $AB, BC, CD, DA$. |  | 10m17s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_2025_11/)
 
