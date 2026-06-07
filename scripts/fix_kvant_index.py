@@ -43,15 +43,55 @@ def _list_solutions(subject_dir: Path) -> list[dict]:
         vm = re.search(r'^verified:\s*(true|false)', text, re.MULTILINE)
         tm = re.search(r'^solve_time_s:\s*(\d+)', text, re.MULTILINE)
         um = re.search(r'kvant_(\d{4})_(\d+)', text)
+        dm = re.search(r'^description:\s*"(.+?)"', text, re.MULTILINE)
         out.append({
             "num": num,
             "verified": bool(vm and vm.group(1) == "true"),
-            "time_str": _fmt_time(int(tm.group(1))) if tm else "—",
+            "time_str": _fmt_time(int(tm.group(1))) if tm else "",
             "year": int(um.group(1)) if um else 0,
             "issue": int(um.group(2)) if um else 0,
+            "desc": dm.group(1) if dm else "",
+            "source": _extract_problem_source(text),
         })
     out.sort(key=lambda d: d["num"])
     return out
+
+
+_SOURCE_SKIP_RE = re.compile(
+    r'^(\d+\.|[$(]|Let |Prove|Find|Show|Given|For |A |An |The |\$|\\)',
+    re.IGNORECASE,
+)
+
+
+def _extract_problem_source(text: str) -> str:
+    m = re.search(r'## Problem\n+(.*?)(?=\n##|\Z)', text, re.DOTALL)
+    if not m:
+        return ""
+    lines = [l.strip() for l in m.group(1).split("\n") if l.strip()]
+    if not lines:
+        return ""
+    last = lines[-1]
+    if len(last) > 120 or _SOURCE_SKIP_RE.match(last):
+        return ""
+    return last
+
+
+def _fmt_problem_row(s: dict) -> str:
+    detail_parts = []
+    if s.get("source"):
+        detail_parts.append(f"*{s['source']}*")
+    if s.get("desc"):
+        detail_parts.append(s["desc"])
+    detail = ". ".join(detail_parts) if detail_parts else ""
+    detail = detail.replace("|", "/").replace("\n", " ")
+    problem_cell = f"[{s['num']}]({s['num']}.md)"
+    if detail:
+        problem_cell += f" {detail}"
+    return (
+        f"| {problem_cell} "
+        f"| {'✓' if s['verified'] else ''} "
+        f"| {s['time_str']} |"
+    )
 
 
 def _build_index(subject_dir: Path, subject: str) -> str:
@@ -117,26 +157,16 @@ def _build_index(subject_dir: Path, subject: str) -> str:
         for issue_num in issue_nums:
             issue_sols = issues[issue_num]
             issue_url = f"https://www.kvant.digital/view/kvant_{year}_{issue_num}/"
-            rows = [
-                f"| [{s['num']}]({s['num']}.md) "
-                f"| {'✓' if s['verified'] else '·'} "
-                f"| {s['time_str']} |"
-                for s in issue_sols
-            ]
-            table = "| # | ✓ | Time |\n|---|---|------|\n" + "\n".join(rows)
+            rows = [_fmt_problem_row(s) for s in issue_sols]
+            table = "| # | Problem | ✓ | Time |\n|---|---------|---|------|\n" + "\n".join(rows)
             body_parts.append(
                 f'### [Issue {issue_num}]({issue_url})\n\n'
                 f'{table}\n\n'
             )
 
     if no_meta:
-        rows = [
-            f"| [{s['num']}]({s['num']}.md) "
-            f"| {'✓' if s['verified'] else '·'} "
-            f"| {s['time_str']} |"
-            for s in no_meta
-        ]
-        table = "| # | ✓ | Time |\n|---|---|------|\n" + "\n".join(rows)
+        rows = [_fmt_problem_row(s) for s in no_meta]
+        table = "| # | Problem | ✓ | Time |\n|---|---------|---|------|\n" + "\n".join(rows)
         body_parts.append(f'## Unknown Issue\n\n{table}\n\n')
 
     return fm + intro + "".join(body_parts)
