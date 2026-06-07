@@ -1,7 +1,7 @@
 ---
 title: "CF 482C - Game with Strings"
-description: "We are given a collection of distinct strings of the same length. One string is secretly chosen uniformly at random. Our goal is to determine the expected number of questions needed to identify the chosen string."
-date: "2026-05-31T00:00:00+07:00"
+description: "We know all candidate strings in advance. One of them is chosen uniformly at random. We reveal information by asking about character positions. The order of questions is not chosen strategically. At every step we pick uniformly among positions that have not been asked yet."
+date: "2026-06-07T17:20:13+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "dp", "probabilities"]
 categories: ["algorithms"]
 codeforces_contest: 482
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 275 (Div. 1)"
 rating: 2600
 weight: 482
-solve_time_s: 104
-verified: false
+solve_time_s: 222
+verified: true
 draft: false
 ---
 
@@ -18,93 +18,34 @@ draft: false
 
 **Rating:** 2600  
 **Tags:** bitmasks, dp, probabilities  
-**Solve time:** 1m 44s  
-**Verified:** no  
+**Solve time:** 3m 42s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a collection of distinct strings of the same length. One string is secretly chosen uniformly at random. Our goal is to determine the expected number of questions needed to identify the chosen string. Each question asks for the character at a position that has not been asked yet, and we pick positions randomly. The game ends when the information obtained uniquely identifies the string.
+We know all candidate strings in advance. One of them is chosen uniformly at random. We reveal information by asking about character positions.
 
-The input gives the number of strings, followed by the strings themselves. The output is the expected number of questions we need to ask under a random querying strategy. Each string has a length between 1 and 20, and there are at most 50 strings, which is small enough to allow some combinatorial approaches. The main challenge is that a naive approach of simulating all question orders would be factorial in the string length, which grows too quickly. Additionally, because positions are chosen randomly, we must consider probabilities over all possible question sequences.
+The order of questions is not chosen strategically. At every step we pick uniformly among positions that have not been asked yet.
 
-Edge cases include situations where all strings are identical except for one position. In such a case, if that differing position is asked first, we immediately identify the string. If any other position is asked first, it does not provide any information. Another edge case is when all strings differ at every position. In that case, the first question already gives some information, but not necessarily identifies the string. A naive implementation might simply count positions with differences rather than reasoning about subsets of strings, producing the wrong expected value.
+After some positions have been revealed, several strings may still be compatible with all answers seen so far. The game stops as soon as only one string remains possible. We must compute the expected number of questions asked.
 
-## Approaches
+The key parameters are small in a very specific way. There are at most 50 strings, but the string length is at most 20. A length of 20 immediately suggests that subsets of positions are manageable because $2^{20} = 1{,}048{,}576$. That is large, but still within reach for a carefully designed bitmask DP. On the other hand, any state involving arbitrary subsets of strings would be impossible because there can be 50 strings.
 
-The brute-force approach enumerates all permutations of positions and computes the expected number of questions for each permutation. For each sequence, we simulate asking positions in order and stop when the remaining candidate strings collapse to one. The number of permutations of positions is factorial in string length, which can be up to 20! This is approximately $2.43 \times 10^{18}$, which is completely infeasible.
+A subtle point is that the random process depends only on which positions have already been asked, not on the order in which they were asked. Once a set of positions is known, the remaining candidate strings are completely determined.
 
-The key insight comes from noticing that the expected number of questions depends only on which strings are indistinguishable given the positions asked so far. We can model the problem as a dynamic programming problem over subsets of strings. Let each subset represent the remaining candidates. The DP value for a subset is the expected number of additional questions to uniquely identify the string in that subset. Each position we ask splits the subset into smaller subsets, each containing strings sharing the same character at that position. The expected number of questions then becomes the average over all positions not yet asked of the expected number for the resulting subsets plus one for the current question.
+Several edge cases are easy to mishandle.
 
-This DP is feasible because there are at most $2^n$ subsets of strings, and n is at most 50. In practice, we only need to store DP values for subsets actually reachable by distinguishing strings with questions. We can encode subsets as bitmasks and memoize results. The problem's small input size makes a bitmask DP tractable.
+Consider a single string:
 
-| Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
-| Brute Force | O(m!) | O(1) | Too slow |
-| Optimal | O(n * 2^n * m) | O(2^n) | Accepted |
-
-## Algorithm Walkthrough
-
-1. Encode each string as an integer index. Use bitmasks to represent subsets of strings that are still possible candidates.
-2. Define a DP function `expected(mask)` where `mask` is a bitmask representing which strings are still possible. If `mask` has only one bit set, return 0 because the string is uniquely identified.
-3. For each position not yet asked, simulate asking that position. Group the remaining strings in `mask` by their character at that position. Each group forms a smaller subset of candidates.
-4. Compute the expected number of questions for this position as 1 plus the weighted average of the expected questions for each resulting group. The weight is proportional to the size of the group divided by the size of the current subset.
-5. The value of `expected(mask)` is the average over all positions not yet asked of the expected number of questions calculated in step 4.
-6. Memoize the result for each `mask` to avoid recomputation. Return the value for the full set of strings as the final expected number of questions.
-
-Why it works: Each DP state correctly represents the expected number of remaining questions for a given subset of candidates. Asking a position splits the candidates according to their characters at that position. The expected value formula correctly averages over all equally likely questions and recursively combines the expected values of smaller subsets. Memoization ensures each subset is computed only once. The process continues until only one string remains in a subset, guaranteeing correctness.
-
-## Python Solution
-
-```python
-import sys
-input = sys.stdin.readline
-from functools import lru_cache
-
-n = int(input())
-strings = [input().strip() for _ in range(n)]
-m = len(strings[0])
-
-# Precompute character masks for each position
-pos_char_masks = [[0]*26 for _ in range(m)]
-for i, s in enumerate(strings):
-    for j, c in enumerate(s):
-        pos_char_masks[j][ord(c)-ord('A')] |= 1 << i
-        if 'a' <= c <= 'z':
-            pos_char_masks[j][ord(c)-ord('a')+26] |= 1 << i
-
-@lru_cache(None)
-def expected(mask):
-    if mask & (mask - 1) == 0:
-        return 0.0
-    res = 0.0
-    count_positions = 0
-    for j in range(m):
-        # split mask into groups by character at position j
-        groups = {}
-        for i in range(n):
-            if mask & (1 << i):
-                c = strings[i][j]
-                groups.setdefault(c, 0)
-                groups[c] |= 1 << i
-        if len(groups) == 1:
-            continue
-        count_positions += 1
-        sub_exp = 0.0
-        for group_mask in groups.values():
-            sub_exp += (bin(group_mask).count('1') / bin(mask).count('1')) * expected(group_mask)
-        res += 1 + sub_exp
-    return res / count_positions
-
-full_mask = (1 << n) - 1
-print(f"{expected(full_mask):.12f}")
+```
+1
+abc
 ```
 
-The solution precomputes bitmasks for each character at each position. The `expected` function recursively calculates the expected number of questions for a subset of strings represented by a mask. The base case handles subsets with one string. For each position, it groups strings by character and computes a weighted expected value. Averaging over positions not yet distinguishing the strings ensures we model random question selection correctly. Using `lru_cache` memoizes intermediate results to avoid recomputation.
+The correct answer is 0. The chosen string is already known before asking anything. A solution that blindly assumes at least one question is required would fail.
 
-## Worked Examples
-
-**Sample 1 Input**
+Consider two strings differing in only one position:
 
 ```
 2
@@ -112,74 +53,321 @@ aab
 aac
 ```
 
-| mask | strings remaining | group sizes at first question | expected(mask) |
-| --- | --- | --- | --- |
-| 11 | aab, aac | {'a':1, 'c/b':1} at pos2 | 2.0 |
+The game may require 1, 2, or 3 questions depending on when the distinguishing position is asked. A solution that only counts distinguishing positions and ignores the random ordering would produce the wrong expectation.
 
-Explanation: Asking the first two positions does not distinguish strings. Only the third position splits them, giving expected 2 questions.
-
-**Sample 2 Input**
+Consider strings that become distinguishable only after combining information from multiple positions:
 
 ```
 3
-abc
-adc
-aec
+ab
+ac
+cb
 ```
 
-| mask | strings remaining | group sizes at first question | expected(mask) |
-| --- | --- | --- | --- |
-| 111 | abc, adc, aec | pos1 splits into {'b':1,'d':1,'e':1} | 2.0-3.0 depending on avg |
+No single position uniquely identifies every string. The DP must track the entire set of revealed positions, not just how many positions have been revealed.
 
-Each position contributes to distinguishing. Recursive averaging over positions produces the expected value.
+## Approaches
+
+A brute force view is straightforward. Let the state be:
+
+- the chosen string,
+- the set of positions already asked.
+
+From such a state we can determine whether the string is already uniquely identified. If not, we randomly choose an unasked position and continue recursively.
+
+This gives a correct recurrence, but the state space contains
+
+$$n \cdot 2^m$$
+
+states. With $n=50$ and $m=20$, that is more than fifty million states. Even storing them is impractical.
+
+The observation that unlocks the problem is that we never actually need separate DP values for different chosen strings.
+
+Fix a set of already asked positions $M$.
+
+For a particular string $i$, define it as unresolved if at least one other string is still consistent with all answers on positions in $M$.
+
+Suppose $F(M)$ is the sum of expected remaining questions over all possible chosen strings.
+
+For every unresolved string we must spend one more question before moving to a child state. For every resolved string the expectation is already zero.
+
+This allows us to write a recurrence involving only the position mask $M$. The chosen string disappears from the DP state entirely.
+
+The remaining challenge is computing, for every mask $M$, how many strings are unresolved. This is where the small string length becomes useful.
+
+For two strings $i$ and $j$, let `diff(i,j)` be the set of positions where they differ.
+
+They are still indistinguishable after asking positions $M$ exactly when none of those differing positions has been revealed:
+
+$$M \cap diff(i,j)=\varnothing$$
+
+Equivalently,
+
+$$M \subseteq (\text{all positions}) \setminus diff(i,j)$$
+
+This becomes a classic subset-SOS propagation problem over $2^m$ masks.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force over (string, mask) states | $O(n2^m m)$ states and transitions | $O(n2^m)$ | Too slow |
+| Bitmask DP + SOS propagation | $O(m2^m)$ | $O(2^m)$ | Accepted |
+
+## Algorithm Walkthrough
+
+1. Number the positions from 0 to $m-1$.
+2. For every ordered pair of distinct strings $(i,j)$, build a mask `sameMask` containing positions where the two strings are equal.
+
+If the currently revealed positions are a subset of `sameMask`, then strings $i$ and $j$ are still indistinguishable.
+3. Create an array `alive[mask]` of 64-bit bitsets.
+
+For every ordered pair $(i,j)$, set bit `i` inside `alive[sameMask]`.
+
+This records that string `i` is unresolved whenever the revealed-position mask is a subset of `sameMask`.
+4. Run SOS propagation from supersets to subsets.
+
+After propagation, `alive[M]` contains exactly the set of strings that are still unresolved after revealing positions `M`.
+
+The propagation works because every subset of `sameMask` inherits the indistinguishability relation.
+5. Define
+
+$$K(M)=\text{number of set bits in } alive[M]$$
+
+This is the number of strings that are not uniquely identified yet.
+6. Let `dp[M]` be the sum of expected remaining questions over all possible chosen strings when positions `M` have already been revealed.
+7. Process masks in decreasing order.
+
+If `rem` positions remain unasked, then
+
+$$dp[M]
+=
+K(M)
++
+\frac{1}{rem}
+\sum_{p \notin M}
+dp[M \cup \{p\}]$$
+
+The first term contributes one question for every unresolved string. The second term averages over the random choice of the next position.
+8. The full-mask state has no children. Its value is simply `K(fullMask)`, which is zero.
+9. The required answer is
+
+$$\frac{dp[0]}{n}$$
+
+because `dp[0]` is the sum of expectations over all equally likely chosen strings.
+
+### Why it works
+
+For a fixed revealed-position mask $M$, every chosen string falls into one of two categories.
+
+If it is already uniquely identified, its remaining expectation is zero.
+
+If it is not uniquely identified, exactly one more question is asked before moving to a child mask chosen uniformly among the remaining positions.
+
+Summing these equations over all strings produces the recurrence for `dp[M]`. No information about the individual chosen string is needed anymore; only the count of unresolved strings matters.
+
+The SOS phase correctly computes unresolved strings because two strings remain indistinguishable precisely when all revealed positions belong to their equality mask. Propagating information from a mask to all of its subsets enumerates exactly those revealed-position sets.
+
+Together, these two facts completely characterize the random process, so the DP computes the exact expectation.
+
+## Python Solution
+
+```python
+import sys
+from array import array
+
+input = sys.stdin.readline
+
+def solve():
+    n = int(input())
+    s = [input().strip() for _ in range(n)]
+
+    m = len(s[0])
+    N = 1 << m
+    full = N - 1
+
+    alive = array('Q', [0]) * N
+
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+
+            same_mask = 0
+            si = s[i]
+            sj = s[j]
+
+            for k in range(m):
+                if si[k] == sj[k]:
+                    same_mask |= 1 << k
+
+            alive[same_mask] |= (1 << i)
+
+    for b in range(m):
+        bit = 1 << b
+        for mask in range(N):
+            if (mask & bit) == 0:
+                alive[mask] |= alive[mask | bit]
+
+    pc = bytearray(N)
+    for mask in range(1, N):
+        pc[mask] = pc[mask >> 1] + (mask & 1)
+
+    dp = array('d', [0.0]) * N
+
+    for mask in range(full, -1, -1):
+        unresolved = alive[mask].bit_count()
+
+        rem = m - pc[mask]
+        if rem == 0:
+            dp[mask] = float(unresolved)
+            continue
+
+        total = 0.0
+        free = full ^ mask
+
+        while free:
+            bit = free & -free
+            total += dp[mask | bit]
+            free ^= bit
+
+        dp[mask] = unresolved + total / rem
+
+    print("{:.15f}".format(dp[0] / n))
+
+solve()
+```
+
+The `alive` array is the heart of the preprocessing. Each entry stores a 64-bit bitset because $n \le 50$, so every string fits into one machine word.
+
+The SOS propagation moves information from a mask to all of its subsets. After it finishes, `alive[M]` already contains the exact set of unresolved strings for that revealed-position mask.
+
+The DP runs in reverse mask order. Every transition goes to a strict superset, so all child states are already computed.
+
+One implementation detail that is easy to get wrong is the interpretation of `K(M)`. It is not the number of candidate strings remaining. It is the number of chosen strings that are still unresolved. Those are different quantities.
+
+Another subtle point is the use of ordered pairs. If string `i` can still be confused with string `j`, then string `i` must be marked unresolved. The reverse direction must also be recorded separately.
+
+## Worked Examples
+
+### Sample 1
+
+Input:
+
+```
+2
+aab
+aac
+```
+
+The strings differ only at position 2.
+
+| Mask | Revealed positions | Unresolved strings K(mask) |
+| --- | --- | --- |
+| 000 | none | 2 |
+| 001 | pos 0 | 2 |
+| 010 | pos 1 | 2 |
+| 100 | pos 2 | 0 |
+| 111 | all | 0 |
+
+DP values:
+
+| Mask | rem | dp |
+| --- | --- | --- |
+| 111 | 0 | 0 |
+| 110 | 1 | 0 |
+| 101 | 1 | 0 |
+| 011 | 1 | 2 |
+| 100 | 2 | 0 |
+| 010 | 2 | 3 |
+| 001 | 2 | 3 |
+| 000 | 3 | 4 |
+
+The answer is:
+
+$$dp[0]/2 = 2$$
+
+which matches the sample.
+
+This trace shows that the DP is summing expectations over both possible chosen strings simultaneously.
+
+### Example 2
+
+Input:
+
+```
+3
+ab
+ac
+cb
+```
+
+| Mask | Revealed positions | K(mask) |
+| --- | --- | --- |
+| 00 | none | 3 |
+| 01 | first position | 2 |
+| 10 | second position | 2 |
+| 11 | both positions | 0 |
+
+DP computation:
+
+| Mask | rem | dp |
+| --- | --- | --- |
+| 11 | 0 | 0 |
+| 10 | 1 | 2 |
+| 01 | 1 | 2 |
+| 00 | 2 | 5 |
+
+Final answer:
+
+$$5/3$$
+
+This example demonstrates that one revealed position is not always enough even when it eliminates some candidates.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m * n * 2^n) | Each DP state considers m positions, and groups up to n strings. There are up to 2^n masks. |
-| Space | O(2^n) | Memoization stores a float per reachable subset of strings. |
+| Time | $O(m2^m)$ | SOS propagation and DP each process every mask for every position |
+| Space | $O(2^m)$ | Bitset array, popcount array, and DP array |
 
-Given n ≤ 50 and m ≤ 20, 2^50 is large, but only reachable masks where strings are not yet uniquely identified are explored. This is feasible because the actual branching is limited by string similarities. The time and memory limits of 1s and 256MB are sufficient for this problem.
+With $m \le 20$, we have at most $2^{20} = 1{,}048{,}576$ masks. Both the memory usage and the number of operations fit comfortably within the limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
+from array import array
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+
+    input = sys.stdin.readline
+
     n = int(input())
-    strings = [input().strip() for _ in range(n)]
-    m = len(strings[0])
-    from functools import lru_cache
+    s = [input().strip() for _ in range(n)]
 
-    @lru_cache(None)
-    def expected(mask):
-        if mask & (mask - 1) == 0:
-            return 0.0
-        res = 0.0
-        count_positions = 0
-        for j in range(m):
-            groups = {}
-            for i in range(n):
-                if mask & (1 << i):
-                    c = strings[i][j]
-                    groups.setdefault(c, 0)
-                    groups[c] |= 1 << i
-            if len(groups) == 1:
+    m = len(s[0])
+    N = 1 << m
+    full = N - 1
+
+    alive = array('Q', [0]) * N
+
+    for i in range(n):
+        for j in range(n):
+            if i == j:
                 continue
-            count_positions += 1
-            sub_exp = 0.0
-            for group_mask in groups.values():
-                sub_exp += (bin(group_mask).count('1') / bin(mask).count('1')) * expected(group_mask)
-            res += 1 + sub_exp
-        return res / count_positions
 
-    full_mask = (1 << n) - 1
-    return f"{expected(full_mask):.12f}"
+            same_mask = 0
+            for k in range(m):
+                if s[i][k] == s[j][k]:
+                    same_mask |= 1 << k
 
-# Provided samples
-assert run("2\naab\naac\n") == "2.000000000000", "sample 1"
-assert run("3\nabc\nadc\na
+            alive[same_mask] |= (1 << i)
+
+    for b in range(m):
+        bit = 1 << b
+        for mask in range(N):
+            if (mask & bit) == 0:
+                alive[mask] |= al
 ```
