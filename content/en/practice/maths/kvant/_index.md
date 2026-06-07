@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1349 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1350 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1349
+kvant_total: 1350
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1349 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1350 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -2910,7 +2910,7 @@ draft: false
 
 ## 1996
 
-2 problems across Issues 1–5.
+3 problems across Issues 1–5.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
@@ -2922,6 +2922,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1561](1561.md) *All-Russian Mathematical Olympiad for School Students (1996)*. Let the convex polygon be $A_1A_2\\ldots A_n$, indexed cyclically. |  | 9m22s |
 | [1566](1566.md) *All-Russian Mathematical Olympiad for School Students (1996)*. Each committee has $80$ members, and there are $16000$ committees. |  | 8m01s |
 
 ## 1997
