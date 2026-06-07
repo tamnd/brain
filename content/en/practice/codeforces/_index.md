@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 573 contests, 2968 problems, 1739 verified."
+description: "Codeforces problem solutions with full editorial. 574 contests, 2976 problems, 1741 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**573 contests, 2968 problems, 1739 verified.**
+**574 contests, 2976 problems, 1741 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -456,6 +456,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
+| [2081](2081/) | [Codeforces Round 1010 (Div. 1, Unrated)](https://codeforces.com/contest/2081) | Div. 1 | 1800-3400 | 2/8 | 11m 13s |
 | [2082](2082/) | [Codeforces Round 1010 (Div. 2, Unrated)](https://codeforces.com/contest/2082) | Div. 2 | 800-1600 | 1/2 | 3m |
 | [2084](2084/) | [Teza Round 1 (Codeforces Round 1015, Div. 1 + Div. 2)](https://codeforces.com/contest/2084) | Div. 1+2 | 800-3500 | 2/9 | 22m 42s |
 | [2085](2085/) | [Codeforces Round 1011 (Div. 2)](https://codeforces.com/contest/2085) | Div. 2 | 900-2900 | 0/7 | 12m 17s |
