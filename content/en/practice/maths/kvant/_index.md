@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1340 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1341 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1340
+kvant_total: 1341
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1340 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1341 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -1439,7 +1439,7 @@ draft: false
 
 ## 1982
 
-49 problems across Issues 1–12.
+50 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
@@ -1471,6 +1471,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [736](736.md) The statement involves a median and an angle bisector meeting at a point. |  | 9m36s |
 | [737](737.md) *A. V. Zelevinsky*. Let the houses have populations $h_1,h_2,\\ldots,h_n$, arranged in nonincreasing order. |  | 6m25s |
 | [738](738.md) *V. V. Prasolov*. Consider a polygon in the plane, labeled $A_1 A_2 \\dots A_n$. |  | 5m03s |
 | [740](740.md) Consider a right circular cylindrical pot with radius $R$ and height $H$. |  | 6m53s |
