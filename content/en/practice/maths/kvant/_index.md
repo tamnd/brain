@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1342 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1343 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1342
+kvant_total: 1343
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1342 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1343 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -1666,7 +1666,7 @@ draft: false
 
 ## 1984
 
-49 problems across Issues 1–12.
+50 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1700,6 +1700,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [856](856.md) ``` |  | 3m01s |
+| [857](857.md) A number is marked if it can be written as a sum of exactly five powers of two, repetitions allowed. |  | 9m36s |
 | [858](858.md) *P. B. Gusyatnikov*. Let |  | 2m09s |
 | [859](859.md) *V. P. Pikulin*. Let |  | 55s |
 | [860](860.md) Consider the triangle $ABC$ with circumcircle $(O)$ and incircle $(Z)$. |  | 1m40s |
