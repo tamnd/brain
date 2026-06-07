@@ -13,11 +13,11 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine — a Soviet and Russian popular science journal published since 1970. **1334 problems solved** (0 verified, 0%), spanning 1970–2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1334 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
-60 problems · Issues 1–12 · 0 verified
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1970_1/)
 
@@ -141,7 +141,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1971
 
-60 problems · Issues 1–12 · 0 verified
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1971_1/)
 
@@ -265,7 +265,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1972
 
-60 problems · Issues 1–12 · 0 verified
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -389,7 +389,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1973
 
-57 problems · Issues 1–12 · 0 verified
+57 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1973_1/)
 
@@ -510,7 +510,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1974
 
-59 problems · Issues 1–12 · 0 verified
+59 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1974_1/)
 
@@ -633,7 +633,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1975
 
-55 problems · Issues 1–12 · 0 verified
+55 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1975_1/)
 
@@ -752,7 +752,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1976
 
-42 problems · Issues 1–12 · 0 verified
+42 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -858,7 +858,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1977
 
-46 problems · Issues 1–12 · 0 verified
+46 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -968,7 +968,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1978
 
-54 problems · Issues 1–12 · 0 verified
+54 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1978_1/)
 
@@ -1086,7 +1086,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1979
 
-46 problems · Issues 1–12 · 0 verified
+46 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1196,7 +1196,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1980
 
-57 problems · Issues 1–12 · 0 verified
+57 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1980_1/)
 
@@ -1317,7 +1317,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1981
 
-52 problems · Issues 1–12 · 0 verified
+52 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1433,7 +1433,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1982
 
-49 problems · Issues 1–12 · 0 verified
+49 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
@@ -1546,7 +1546,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1983
 
-48 problems · Issues 1–12 · 0 verified
+48 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1658,7 +1658,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1984
 
-49 problems · Issues 1–12 · 0 verified
+49 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1771,7 +1771,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1985
 
-49 problems · Issues 1–12 · 0 verified
+49 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1884,7 +1884,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1986
 
-57 problems · Issues 1–12 · 0 verified
+57 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1986_1/)
 
@@ -2005,7 +2005,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1987
 
-60 problems · Issues 1–12 · 0 verified
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1987_1/)
 
@@ -2129,7 +2129,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1988
 
-59 problems · Issues 1–11 · 0 verified
+59 problems across Issues 1–11.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1988_1/)
 
@@ -2247,7 +2247,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1989
 
-60 problems · Issues 1–12 · 0 verified
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1989_1/)
 
@@ -2371,7 +2371,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1990
 
-60 problems · Issues 1–12 · 0 verified
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1990_1/)
 
@@ -2495,7 +2495,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1991
 
-60 problems · Issues 1–12 · 0 verified
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1991_1/)
 
@@ -2619,7 +2619,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1992
 
-58 problems · Issues 1–12 · 0 verified
+58 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1992_1/)
 
@@ -2741,7 +2741,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1993
 
-30 problems · Issues 1–11 · 0 verified
+30 problems across Issues 1–11.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1993_1/)
 
@@ -2795,7 +2795,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1994
 
-39 problems · Issues 1–6 · 0 verified
+39 problems across Issues 1–6.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1994_1/)
 
@@ -2868,7 +2868,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1995
 
-4 problems · Issues 2–6 · 0 verified
+4 problems across Issues 2–6.
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
@@ -2891,7 +2891,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1996
 
-1 problems · Issue 5 · 0 verified
+1 problems across Issue 5.
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1996_5/)
 
@@ -2901,7 +2901,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 1997
 
-1 problems · Issue 3 · 0 verified
+1 problems across Issue 3.
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1997_3/)
 
@@ -2911,7 +2911,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 2023
 
-1 problems · Issue 3 · 0 verified
+1 problems across Issue 3.
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_2023_3/)
 
@@ -2921,7 +2921,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine �
 
 ## 2025
 
-1 problems · Issue 11 · 0 verified
+1 problems across Issue 11.
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_2025_11/)
 

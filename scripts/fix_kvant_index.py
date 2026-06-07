@@ -80,13 +80,15 @@ def _build_index(subject_dir: Path, subject: str) -> str:
         f'---\n\n'
     )
 
-    verified_pct = round(100 * verified / solved) if solved else 0
+    subj_word = "mathematics" if subject == "math" else "physics"
     intro = (
         f'# Kvant {title}\n\n'
-        f'Solutions to {title.lower()} problems from [Kvant](https://kvant.digital) magazine — '
-        f'a Soviet and Russian popular science journal published since 1970. '
-        f'**{solved} problems solved** ({verified} verified, {verified_pct}%), '
-        f'spanning {year_start}–{year_end}.\n\n'
+        f'[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics '
+        f'and physics, published in the Soviet Union and Russia since 1970. '
+        f'This page collects solutions to **{solved} {subj_word} problems** '
+        f'from the magazine\'s problem section, covering the years {year_start} to {year_end}.'
+        + (f' {verified} solutions have been independently verified.' if verified else '')
+        + '\n\n'
     )
 
     grouped: dict[int, dict[int, list[dict]]] = {}
@@ -107,9 +109,10 @@ def _build_index(subject_dir: Path, subject: str) -> str:
             else f"Issues {issue_nums[0]}–{issue_nums[-1]}"
         )
         year_verified = sum(1 for iss in issues.values() for s in iss if s["verified"])
+        verified_note = f", {year_verified} verified" if year_verified else ""
         body_parts.append(
             f'## {year}\n\n'
-            f'{year_count} problems · {issue_range} · {year_verified} verified\n\n'
+            f'{year_count} problems across {issue_range}{verified_note}.\n\n'
         )
         for issue_num in issue_nums:
             issue_sols = issues[issue_num]
