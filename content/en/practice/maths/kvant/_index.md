@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1337 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1338 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1337
+kvant_total: 1338
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1337 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1338 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -1089,7 +1089,7 @@ draft: false
 
 ## 1979
 
-46 problems across Issues 1–12.
+47 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1141,6 +1141,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [566](566.md) *All-Union 13th Olympiad of School Students, grades 8–9*. Let the fixed isosceles right triangle be placed as a unit right isosceles triangle with vertices $A(0,0)$, $B(1,0)$, $C(0,1)$. |  | 2m46s |
+| [567](567.md) *13th All-Union School Students' Olympiad, Grade 9*. Take a small example, say $p=2$, $q=3$. |  | 9m47s |
 | [568](568.md) *13th All-Union School Olympiad, Grade 10*. Let |  | 3m34s |
 | [569](569.md) *13th All-Union School Students' Olympiad, Grades 9 and 10*. Starting from $0$ and $1$, the first new number that can be obtained is $\\frac12$, since the mean of $0$ and $1$ is $\\frac12$. |  | 7m25s |
 | [570](570.md) *All-Union 13th School Olympiad, Grade 8*. Let the squares have side lengths $a_1, a_2, \\dots, a_n$, so that |  | 2m18s |
