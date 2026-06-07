@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1336 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1337 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1336
+kvant_total: 1337
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1336 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1337 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -970,7 +970,7 @@ draft: false
 
 ## 1978
 
-54 problems across Issues 1–12.
+55 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1978_1/)
 
@@ -988,6 +988,7 @@ draft: false
 | [487](487.md) Let $O_1$ and $O_2$ be the centers of circles $\\gamma_1$ and $\\gamma_2$, with radii $R_1$ and $R_2$. |  | 1m58s |
 | [488](488.md) The recurrence |  | 6m |
 | [489](489.md) The transformation replaces each term by the average of the other two. |  | 1m39s |
+| [490](490.md) *S. V. Fomin*. Let the given integers be $a_1,\\dots,a_{p-1}$, none divisible by $p$. |  | 9m24s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1978_3/)
 
