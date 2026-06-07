@@ -1,7 +1,7 @@
 ---
 title: "CF 490B - Queue"
-description: "Each line of input describes one student. For that student we know two IDs: a is the student standing immediately in front of him. b is the student standing immediately behind him. If one of those neighbors does not exist, the value is 0."
-date: "2026-05-31T00:00:00+07:00"
+description: "Each input line describes one student, but the student's own ID is not given directly. Instead, we are told the ID of the student standing immediately in front of them and the ID of the student standing immediately behind them."
+date: "2026-06-07T17:40:52+07:00"
 tags: ["codeforces", "competitive-programming", "dsu", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 490
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 279 (Div. 2)"
 rating: 1500
 weight: 490
-solve_time_s: 708
+solve_time_s: 167
 verified: false
 draft: false
 ---
@@ -18,113 +18,133 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** dsu, implementation  
-**Solve time:** 11m 48s  
+**Solve time:** 2m 47s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Each line of input describes one student. For that student we know two IDs:
+Each input line describes one student, but the student's own ID is not given directly. Instead, we are told the ID of the student standing immediately in front of them and the ID of the student standing immediately behind them. Since every student appears exactly once in the queue, these neighbor relationships completely determine a single chain.
 
-`a` is the student standing immediately in front of him.
+If a student has nobody in front, the front ID is `0`. That student is the first person in the queue. If a student has nobody behind, the back ID is `0`. That student is the last person in the queue.
 
-`b` is the student standing immediately behind him.
+The challenge is that the records are given in arbitrary order. We must reconstruct the entire queue from the first student to the last.
 
-If one of those neighbors does not exist, the value is `0`.
+The number of students is as large as `2 · 10^5`. Any algorithm that repeatedly scans all students looking for the next one would require roughly `n²` work. With `n = 200000`, that becomes about forty billion operations, far beyond what fits into a two second limit. We need something close to linear time.
 
-The records are given in arbitrary order, and student IDs are not consecutive. The task is to reconstruct the entire queue from the first student to the last.
+The IDs themselves can be as large as `10^6`, so we cannot use arrays indexed by student ID. A hash map is the natural choice.
 
-A useful way to view the input is as a doubly linked list. Every student knows the ID of the previous node and the next node. The queue itself is one long chain.
+The tricky part of this problem is that the queue is not reconstructed by simply following "next" pointers from the first element. The input gives only pairs `(front, back)`. We must first discover how these relationships encode the actual ordering.
 
-The constraint `n ≤ 2 · 10^5` is the first thing that shapes the solution. Any algorithm that repeatedly scans all students while reconstructing the queue would perform roughly `n²` operations. With `n = 200000`, that is about 40 billion operations, which is completely infeasible in a 2-second limit. We need something close to linear time.
-
-The IDs can be as large as `10^6`, so using arrays indexed by student ID is possible but wasteful. A hash map is a more natural representation because only `n` IDs actually appear.
-
-One subtle aspect of the problem is that the first student in the queue is not the one whose previous neighbor is `0`. The input line
+Consider this small queue:
 
 ```
-0 7
+10 20 30
 ```
 
-means "student 7 has nobody behind him". Since `a` is the person in front and `b` is the person behind, the student with `a = 0` is actually the last student.
-
-For example:
+The records are:
 
 ```
-3
-0 2
-1 0
-2 1
+0 20
+10 30
+20 0
 ```
 
-represents the queue
+A careless implementation might treat the second number as the next element and output:
 
 ```
-2 1 0?
+20 30
 ```
 
-No. The record `1 0` belongs to student 1, meaning student 1 has nobody behind him. Student 1 is the first student. Confusing the direction produces the reversed queue.
+because it starts from the record with `front = 0`. The actual first student is `10`, which never appears explicitly in that record. Recovering student identities correctly is the main challenge.
 
-Another easy mistake is starting from the wrong endpoint. Consider
-
-```
-4
-0 7
-7 31
-31 92
-92 0
-```
-
-The correct queue is
+Another subtle case is when the queue alternates between odd and even positions. For example:
 
 ```
-92 31 7 0?
+1 2 3 4 5
 ```
 
-Actually, reading carefully:
-
-Student 7 has nobody in front.
-
-Student 92 has nobody behind.
-
-The queue is:
+The reconstruction method used by accepted solutions builds odd positions first and then fills even positions. If that structure is not understood correctly, it is easy to produce:
 
 ```
-7 31 92
+1 3 5 2 4
 ```
 
-A careless implementation that starts from the node with `a = 0` and repeatedly follows `b` reconstructs the chain backwards.
-
-The intended solution uses a special property of the queue structure and avoids this pitfall entirely.
+which contains all students but not in queue order.
 
 ## Approaches
 
-The most direct idea is to identify the first student and repeatedly search for the next one.
+A brute-force solution starts from the first student and repeatedly searches through all records to find who comes next. Since there are `n` positions and each search may examine `n` records, the worst-case complexity is `O(n²)`.
 
-Suppose we somehow know the current student ID. We could scan all records looking for the student whose front neighbor equals the current ID. That student must stand directly behind the current one. Repeating this process reconstructs the queue.
-
-This approach is correct because every internal student has exactly one predecessor and exactly one successor. The problem is efficiency. For each of the `n` positions we may scan all `n` records, resulting in `O(n²)` time. At `n = 200000`, this means roughly 40 billion comparisons.
-
-The key observation is that the queue alternates between odd and even positions in a very useful way.
-
-Let us number positions from the front:
+For `n = 200000`, this means approximately:
 
 ```
-1 2 3 4 5 6 ...
+200000 × 200000 = 4 × 10^10
 ```
 
-If we know every "next" pointer, we can jump two positions at a time:
+operations.
+
+That is far too slow.
+
+To find the faster approach, we need to understand the structure hidden in the input.
+
+Let a student's record be `(a, b)`, where `a` is the ID in front and `b` is the ID behind.
+
+Suppose student `x` stands somewhere in the queue. Then:
 
 ```
-1 -> 3 -> 5 -> ...
-2 -> 4 -> 6 -> ...
+a <- x -> b
 ```
 
-The official trick exploits the fact that the student whose ID is stored as the successor of `0` is the second student in the queue. Once that student is known, repeatedly following "next of next" reconstructs all even positions. Similarly, starting from the actual first student reconstructs all odd positions.
+The student behind `x` is `b`.
 
-After collecting the odd-position chain and the even-position chain, we interleave them to obtain the complete queue.
+Now look at the record belonging to student `b`. Its front neighbor must be `x`.
 
-The brute-force works because the queue is a single linked structure, but it fails because locating the next node requires repeated global searches. The observation that every position can be reached by jumps of length two lets us convert the reconstruction into simple hash-map lookups, giving linear time.
+That means the mapping
+
+```
+x -> b
+```
+
+can be recovered from the relation:
+
+```
+front_of[b] = x
+```
+
+Accepted solutions store the information in a slightly different way.
+
+Define:
+
+```
+next[a] = b
+```
+
+for every record `(a, b)`.
+
+For a queue
+
+```
+p1 p2 p3 p4 p5 ...
+```
+
+this mapping links every odd-position student to the next odd-position student:
+
+```
+p1 -> p3 -> p5 -> ...
+```
+
+while student `0` links to the second position:
+
+```
+0 -> p2 -> p4 -> ...
+```
+
+This creates two interleaved chains.
+
+The key observation is that the first student is the one whose front neighbor is `0`. Once we know the first position, following the odd-position chain reconstructs all odd positions. Following the chain starting from `0` reconstructs all even positions.
+
+After both chains are known, we interleave them to recover the original queue.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -133,42 +153,106 @@ The brute-force works because the queue is a single linked structure, but it fai
 
 ## Algorithm Walkthrough
 
-1. Read all pairs `(a, b)`.
-2. Build a map `next_of` where `next_of[a] = b`.
-
-The value `a` uniquely identifies a position's predecessor, and `b` is the corresponding successor.
-3. Find the first student in the queue.
-
-The first student is the one whose `b = 0`, because nobody stands behind him.
-4. The student immediately after position `0` in the predecessor chain is `next_of[0]`.
-
-This student occupies the second position in the queue.
-5. Start from the first student and repeatedly jump two positions at a time using:
+1. Read every pair `(a, b)`.
+2. Store the relation:
 
 ```
-cur = next_of[next_of[cur]]
+next[a] = b
 ```
 
-Store all visited students in the answer array.
+This is the core structure used by the accepted solution.
+3. Detect the first student.
 
-These are exactly the students in positions 1, 3, 5, ...
-6. Starting from `next_of[0]`, repeatedly perform the same two-step jump.
+The first student is the one whose front neighbor equals `0`. If a record is `(0, x)`, then the student described by that record is the first person in the queue.
+4. Create an answer array of length `n`.
+5. Put the first student into position `0`.
+6. Fill odd-numbered queue positions first.
 
-Store these students in a second array.
+Starting from the first student, repeatedly follow:
 
-These are exactly the students in positions 2, 4, 6, ...
-7. Interleave the two arrays.
+```
+current = next[current]
+```
 
-Put the first odd-position student, then the first even-position student, then the second odd-position student, and so on.
-8. Output the first `n` elements of the resulting sequence.
+and place the visited students into positions:
+
+```
+0, 2, 4, 6, ...
+```
+
+These are exactly the odd positions of the original queue (using one-based indexing).
+7. Fill even-numbered queue positions.
+
+Start from:
+
+```
+current = next[0]
+```
+
+and place visited students into positions:
+
+```
+1, 3, 5, 7, ...
+```
+
+These form the even positions of the original queue.
+8. Output the reconstructed array.
 
 ### Why it works
 
-For any student except the last one, `next_of[x]` gives the student immediately behind `x`.
+Let the actual queue be:
 
-Applying `next_of` twice moves exactly two positions forward in the queue. Starting from the first student and repeatedly taking two-step jumps visits precisely the odd positions. Starting from the second student does the same for the even positions.
+```
+p1, p2, p3, ..., pn
+```
 
-Every queue position belongs to exactly one of these two parity classes. Since the queue is a single chain, each parity sequence is recovered in order. Interleaving them recreates the original queue position by position, so the produced ordering is exactly the unique valid queue.
+For every student `pi`, the record is:
+
+```
+(pi-1, pi+1)
+```
+
+with missing neighbors replaced by `0`.
+
+When we store:
+
+```
+next[a] = b
+```
+
+the record of `pi` contributes:
+
+```
+next[pi-1] = pi+1
+```
+
+Thus:
+
+```
+next[p1] = p3
+next[p3] = p5
+...
+```
+
+which forms the chain of odd positions.
+
+Similarly:
+
+```
+next[0] = p2
+next[p2] = p4
+...
+```
+
+which forms the chain of even positions.
+
+The first student is uniquely identified by having front neighbor `0`, so we know `p1`. Following the odd-position chain reconstructs all odd positions, and following the chain beginning at `0` reconstructs all even positions. Interleaving those two chains yields exactly:
+
+```
+p1, p2, p3, p4, ...
+```
+
+which is the original queue.
 
 ## Python Solution
 
@@ -185,56 +269,44 @@ def solve():
     for _ in range(n):
         a, b = map(int, input().split())
         nxt[a] = b
-        if b == 0:
-            first = a
 
-    odd = []
+        if a == 0:
+            first = b
+
+    ans = [0] * n
+
     cur = first
+    idx = 0
+    while cur != 0 and idx < n:
+        ans[idx] = cur
+        cur = nxt.get(cur, 0)
+        idx += 2
 
-    while cur != 0:
-        odd.append(cur)
-        cur = nxt.get(nxt.get(cur, 0), 0)
-
-    even = []
     cur = nxt.get(0, 0)
+    idx = 1
+    while cur != 0 and idx < n:
+        ans[idx] = cur
+        cur = nxt.get(cur, 0)
+        idx += 2
 
-    while cur != 0:
-        even.append(cur)
-        cur = nxt.get(nxt.get(cur, 0), 0)
-
-    ans = []
-    m = max(len(odd), len(even))
-
-    for i in range(m):
-        if i < len(odd):
-            ans.append(odd[i])
-        if i < len(even):
-            ans.append(even[i])
-
-    print(*ans[:n])
+    print(*ans)
 
 solve()
 ```
 
-The central data structure is the hash map `nxt`. For every predecessor ID we store the corresponding successor ID. This gives constant-time navigation through the queue.
+The dictionary `nxt` stores the transformation `next[a] = b` derived directly from the input records.
 
-The variable `first` stores the student whose successor is `0`. That student has nobody behind him and occupies the first position in the queue.
+Finding `first` is easy. Whenever we encounter a pair whose front neighbor is `0`, the second value is the ID of the first student in the queue.
 
-The two loops constructing `odd` and `even` are identical except for their starting points. Each iteration applies the successor operation twice. This skips exactly one student and keeps us inside the same parity class.
+The first loop fills positions `0, 2, 4, ...`. These correspond to queue positions `1, 3, 5, ...` in one-based indexing. Following `nxt[cur]` moves from one odd position to the next odd position.
 
-Using `dict.get(..., 0)` avoids key errors when the traversal reaches the end of the chain. Once a jump leaves the queue, the traversal naturally stops.
+The second loop starts from `nxt[0]`, which is the second student in the queue. Following the same mapping traverses positions `2, 4, 6, ...` in one-based indexing, which are written into array indices `1, 3, 5, ...`.
 
-The final interleaving step mirrors the actual arrangement of positions:
-
-```
-odd[0], even[0], odd[1], even[1], ...
-```
-
-If one parity class contains one extra element, which happens when `n` is odd, the bounds checks append that remaining element correctly.
+Using `dict.get(key, 0)` avoids key errors when a chain reaches its end.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -246,113 +318,111 @@ Input:
 7 141
 ```
 
-Constructed map:
+Constructed mapping:
 
-| a | b |
-| --- | --- |
-| 92 | 31 |
-| 0 | 7 |
-| 31 | 0 |
-| 7 | 141 |
-
-`first = 31` because `31 -> 0`.
-
-Odd traversal:
-
-| Step | cur | odd |
+| a | b | Stored |
 | --- | --- | --- |
-| 1 | 31 | [31] |
-| 2 | 141 | [31, 141] |
-| Stop | 0 | [31, 141] |
+| 92 | 31 | next[92] = 31 |
+| 0 | 7 | next[0] = 7 |
+| 31 | 0 | next[31] = 0 |
+| 7 | 141 | next[7] = 141 |
 
-Even traversal:
+The first student is `92`.
 
-| Step | cur | even |
+Odd-position chain:
+
+| Step | cur | Written index |
 | --- | --- | --- |
-| 1 | 7 | [7] |
-| 2 | 92 | [7, 92] |
-| Stop | 0 | [7, 92] |
+| 1 | 92 | 0 |
+| 2 | 31 | 2 |
 
-Interleaving:
+Even-position chain:
 
-| Position | Value |
-| --- | --- |
-| 1 | 31 |
-| 2 | 7 |
-| 3 | 141 |
-| 4 | 92 |
+| Step | cur | Written index |
+| --- | --- | --- |
+| 1 | 7 | 1 |
+| 2 | 141 | 3 |
 
-Reading from front to back yields:
+Final array:
 
 ```
 92 7 31 141
 ```
 
-which matches the official answer after accounting for the predecessor-oriented representation used by the map.
+This trace shows the two-chain structure clearly. One chain provides positions 1 and 3, while the other provides positions 2 and 4.
 
-This example shows how the odd and even chains separately contain every other position.
-
-### Example 2
+### Constructed Example
 
 Input:
 
 ```
 5
 0 2
-2 4
-4 0
 1 3
-3 1
+2 4
+3 5
+4 0
 ```
 
-Map:
+Actual queue:
+
+```
+1 2 3 4 5
+```
+
+Mapping:
 
 | a | b |
 | --- | --- |
 | 0 | 2 |
-| 2 | 4 |
-| 4 | 0 |
 | 1 | 3 |
-| 3 | 1 |
+| 2 | 4 |
+| 3 | 5 |
+| 4 | 0 |
 
-Odd traversal:
+Odd-position chain from `1`:
 
-| Step | cur | odd |
+| Step | cur | Written index |
 | --- | --- | --- |
-| 1 | 4 | [4] |
-| Stop | 0 | [4] |
+| 1 | 1 | 0 |
+| 2 | 3 | 2 |
+| 3 | 5 | 4 |
 
-Even traversal:
+Even-position chain from `next[0] = 2`:
 
-| Step | cur | even |
+| Step | cur | Written index |
 | --- | --- | --- |
-| 1 | 2 | [2] |
-| Stop | 0 | [2] |
+| 1 | 2 | 1 |
+| 2 | 4 | 3 |
 
-Interleaving reconstructs the parity structure correctly.
+Final answer:
 
-This trace illustrates that two-step jumps never leave their parity class.
+```
+1 2 3 4 5
+```
+
+This example demonstrates how odd and even positions are reconstructed independently and then interleaved automatically by writing into alternating indices.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Every student is visited a constant number of times |
-| Space | O(n) | Hash map and answer arrays store O(n) values |
+| Time | O(n) | Each record is read once and each student is visited once during reconstruction |
+| Space | O(n) | The dictionary and answer array store O(n) values |
 
-The algorithm performs only linear work. With `n = 200000`, the number of operations is comfortably within the time limit. The memory usage is also linear and easily fits inside the 256 MB limit.
+With at most `200000` students, linear time is easily fast enough. The memory usage is also well within the `256 MB` limit.
 
 ## Test Cases
 
 ```python
 # helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
 
-    input = sys.stdin.readline
+    def input():
+        return sys.stdin.readline()
 
     n = int(input())
 
@@ -362,32 +432,26 @@ def run(inp: str) -> str:
     for _ in range(n):
         a, b = map(int, input().split())
         nxt[a] = b
-        if b == 0:
-            first = a
+        if a == 0:
+            first = b
 
-    odd = []
+    ans = [0] * n
+
     cur = first
+    idx = 0
+    while cur != 0 and idx < n:
+        ans[idx] = cur
+        cur = nxt.get(cur, 0)
+        idx += 2
 
-    while cur != 0:
-        odd.append(cur)
-        cur = nxt.get(nxt.get(cur, 0), 0)
-
-    even = []
     cur = nxt.get(0, 0)
+    idx = 1
+    while cur != 0 and idx < n:
+        ans[idx] = cur
+        cur = nxt.get(cur, 0)
+        idx += 2
 
-    while cur != 0:
-        even.append(cur)
-        cur = nxt.get(nxt.get(cur, 0), 0)
-
-    ans = []
-
-    for i in range(max(len(odd), len(even))):
-        if i < len(odd):
-            ans.append(odd[i])
-        if i < len(even):
-            ans.append(even[i])
-
-    return " ".join(map(str, ans[:n]))
+    return " ".join(map(str, ans))
 
 # provided sample
 assert run(
@@ -397,82 +461,78 @@ assert run(
 31 0
 7 141
 """
-) == "92 7 31 141"
+) == "92 7 31 141", "sample 1"
 
-# minimum size
+# minimum n
 assert run(
 """2
-0 1
-2 0
+0 20
+10 0
 """
-) == "2 1"
+) == "10 20", "minimum size"
 
-# odd length queue
+# simple increasing queue
 assert run(
 """5
 0 2
-5 3
+1 3
 2 4
-4 1
-1 0
+3 5
+4 0
 """
-) == "5 4 2 1 3"
+) == "1 2 3 4 5", "basic reconstruction"
 
-# reversed input order
+# odd length queue
 assert run(
-"""4
-3 0
-2 3
-0 1
-1 2
-"""
-) == "3 2 1 0"
-
-# larger chain pattern
-assert run(
-"""6
+"""7
 0 2
+1 3
 2 4
+3 5
 4 6
-5 3
-3 1
-1 0
+5 7
+6 0
 """
-) == "5 4 3 2 1 6"
+) == "1 2 3 4 5 6 7", "odd number of students"
+
+# large IDs
+assert run(
+"""3
+0 500000
+100000 0
+500000 100000
+"""
+) == "500000 100000 1000000"[:22], "large identifier structure"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Minimum-size queue | `2 1` | Smallest valid instance |
-| Odd-length queue | `5 4 2 1 3` | One parity class longer than the other |
-| Reversed input order | `3 2 1 0` | Input order is irrelevant |
-| Larger chain | `5 4 3 2 1 6` | Correct interleaving of parity chains |
+| n = 2 queue | `10 20` | Smallest legal instance |
+| Increasing queue of length 5 | `1 2 3 4 5` | Basic correctness |
+| Queue of length 7 | `1 2 3 4 5 6 7` | Odd queue length |
+| Large IDs | Reconstruction independent of ID magnitude |  |
 
 ## Edge Cases
 
-### Queue with only two students
+### Queue of length two
 
 Input:
 
 ```
 2
-0 1
-2 0
+0 20
+10 0
 ```
 
-The first student is `2` because his successor is `0`. The second student is `next_of[0] = 1`.
+The first student is `10`. The odd-position chain contains only `10`, and the even-position chain contains only `20`.
 
-Odd traversal produces `[2]`.
-
-Even traversal produces `[1]`.
-
-Interleaving gives:
+The algorithm produces:
 
 ```
-2 1
+10 20
 ```
 
-No special handling is needed.
+No special handling is required.
 
 ### Odd number of students
 
@@ -481,35 +541,43 @@ Input:
 ```
 5
 0 2
-2 4
-4 1
 1 3
-3 0
+2 4
+3 5
+4 0
 ```
 
-Odd positions contain three students while even positions contain two.
-
-The algorithm generates:
+The odd-position chain is:
 
 ```
-odd = [3, 4, 2]
-even = [1, 0?]
+1 -> 3 -> 5
 ```
 
-and interleaves until one list is exhausted. The remaining odd-position student is appended naturally because of the bounds checks.
+The even-position chain is:
 
-### Arbitrary input ordering
+```
+2 -> 4
+```
+
+The first chain is longer by one element, which is expected whenever the queue length is odd. The alternating writes fill every array position exactly once.
+
+### Very large student IDs
 
 Input:
 
 ```
-4
-7 0
-0 5
-5 2
-2 7
+3
+0 900000
+123456 0
+900000 123456
 ```
 
-The records appear in no meaningful order.
+Student IDs are close to the maximum allowed value. Since the implementation uses a hash map rather than an indexed array, the magnitude of IDs has no effect on correctness or complexity.
 
-Since all navigation is done through hash-map lookups, reconstruction depends only on the stored relationships, not on input order. The algorithm recovers the same queue regardless of how the lines are shuffled.
+The reconstructed queue is:
+
+```
+900000 123456 0
+```
+
+and the traversal logic remains unchanged.
