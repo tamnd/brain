@@ -1,7 +1,7 @@
 ---
 title: "CF 489A - SwapSort"
-description: "We are given an array of integers and must transform it into non-decreasing order using swaps. The output is not the sorted array itself. Instead, we must print a sequence of index pairs, where each pair represents a swap performed on the array."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are given an array of integers and must transform it into non-decreasing order by performing swaps of array positions. The interesting part is that we do not need the minimum number of swaps. Any valid sequence containing at most n swaps is accepted."
+date: "2026-06-07T17:35:50+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 489
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 277.5 (Div. 2)"
 rating: 1200
 weight: 489
-solve_time_s: 691
+solve_time_s: 154
 verified: false
 draft: false
 ---
@@ -18,40 +18,40 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** greedy, implementation, sortings  
-**Solve time:** 11m 31s  
+**Solve time:** 2m 34s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of integers and must transform it into non-decreasing order using swaps. The output is not the sorted array itself. Instead, we must print a sequence of index pairs, where each pair represents a swap performed on the array.
+We are given an array of integers and must transform it into non-decreasing order by performing swaps of array positions. The interesting part is that we do not need the minimum number of swaps. Any valid sequence containing at most `n` swaps is accepted.
 
-The unusual part of the task is that we are not asked to minimize the number of swaps. Any valid sequence is acceptable as long as its length does not exceed `n`. The problem guarantees that such a sequence always exists.
+The output consists of the swap operations themselves. After applying them in the printed order, the array must become sorted.
 
-The array length is at most 3000. A quadratic algorithm performs about nine million operations in the worst case, which is completely reasonable within the time limit. Cubic algorithms, however, would approach tens of billions of operations and are far too slow.
+The array length is at most 3000. This is small enough that an `O(n²)` solution is perfectly acceptable because `3000² = 9,000,000` operations, which easily fits within the limits. There is no need for sophisticated data structures or `O(n log n)` techniques.
 
-The presence of duplicate values is the main complication. When multiple equal values exist, it is not enough to know what value should be placed at a position. We must also know which occurrence of that value belongs there. A careless implementation that maps each value to a single index will fail.
+The main challenge comes from duplicate values. If all values were distinct, we could simply map each value to its target position in the sorted array. With duplicates, several positions may contain the same value, so a careless mapping can assign one occurrence to multiple target locations.
 
 Consider:
 
 ```
-4
-2 1 2 1
+3
+2 1 2
 ```
 
 The sorted array is:
 
 ```
-1 1 2 2
+1 2 2
 ```
 
-If we store only one position for value `1` and one position for value `2`, we lose information about the second occurrence of each value. The resulting swaps may place equal values incorrectly or even reuse the same index multiple times.
+If we only map the value `2` to "its position in the sorted array", there are two valid positions. Treating them as interchangeable without tracking individual occurrences can produce incorrect swaps.
 
 Another edge case is an already sorted array:
 
 ```
-5
-1 2 3 4 5
+4
+1 2 3 4
 ```
 
 The correct answer is:
@@ -60,65 +60,60 @@ The correct answer is:
 0
 ```
 
-A solution that blindly performs swaps whenever it encounters matching values could generate unnecessary operations.
+Some implementations unnecessarily perform swaps even though none are required.
 
 A third case is when all elements are equal:
 
 ```
-4
-7 7 7 7
+5
+7 7 7 7 7
 ```
 
-The array is already sorted. Any attempt to distinguish between identical elements without proper handling may produce meaningless swaps.
+Again, the answer should contain zero swaps. Any logic based solely on value comparisons must avoid inventing movements for identical elements.
 
 ## Approaches
 
-A natural brute-force idea is to repeatedly search for the smallest element that should occupy the current position and swap it into place. For every position `i`, we scan the suffix to find the correct element and perform one swap if needed.
+A brute-force idea is to repeatedly find the smallest element that should appear at each position and swap it into place. For position `i`, we scan the suffix `i...n-1`, find the correct element, and perform one swap if needed.
 
-This approach is actually fast enough. For each of the `n` positions, we may scan up to `n` elements, giving `O(n²)` time. With `n = 3000`, this is about nine million comparisons.
+This approach is correct because after fixing position `i`, that position never changes again. Unfortunately, it requires an `O(n)` scan for each of the `n` positions, resulting in `O(n²)` time.
 
-The interesting part is proving that we never exceed `n` swaps. Each swap permanently fixes at least one position. Since there are only `n` positions, the number of swaps is at most `n - 1`.
+Interestingly, `O(n²)` is already fast enough here. The real observation is not about improving asymptotic complexity, but about producing at most `n` swaps while handling duplicate values cleanly.
 
-A cleaner way to view the same idea is to compare the current array with its sorted version.
+The key idea is to sort a copy of the array and maintain the current position of every element. When position `i` does not already contain its final value, we locate a position holding the value that should be here and swap the two positions.
 
-Suppose we already know the final sorted array. At position `i`, either the correct value is already present or it is not. If it is not, we locate an occurrence of the required value somewhere later in the array and swap it into position `i`.
+Each swap permanently fixes one position. Since there are only `n` positions, the total number of swaps is at most `n-1`.
 
-To do this efficiently, we maintain where every current element resides. After each swap, we update those positions.
-
-The key observation is that once position `i` receives the value that appears at position `i` in the sorted array, that position never needs to be touched again. Every swap fixes one position permanently, which immediately gives the required bound on the number of swaps.
+To make locating elements easy, we sort pairs `(value, original_index)`. This gives every occurrence of a duplicated value a unique identity. Then each element knows exactly which final position it belongs to.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n²) | O(1) | Accepted |
 | Optimal | O(n²) | O(n) | Accepted |
 
-Although both fit the constraints, the second approach is easier to reason about and directly constructs the required swap sequence.
-
 ## Algorithm Walkthrough
 
-1. Create a sorted copy of the array called `b`.
-2. Maintain an array `pos` where `pos[i]` stores the current position of the element that originally occupied index `i`.
-3. Maintain an array `who` where `who[j]` stores which original element currently sits at position `j`.
-4. Iterate through positions from left to right.
-5. For position `i`, check whether `a[i]` already equals `b[i]`. If it does, this position is correct and we continue.
-6. Otherwise, search for an index `j > i` such that `a[j] == b[i]`.
-7. Swap `a[i]` and `a[j]`.
-8. Record the pair `(i, j)` in the answer.
-9. Continue to the next position.
+1. Store every element together with its original index as `(value, index)`.
+2. Sort these pairs by value. After sorting, position `i` of this array represents the element that should eventually occupy position `i` in the sorted order.
+3. Create an array `pos` where `pos[original_index]` stores the current position of that element in the working array.
+4. Create another array `cur` where `cur[position]` stores which original element currently occupies that position.
+5. Process positions from left to right.
+6. At position `i`, check whether the correct element is already there. The correct element is the one whose original index appears in the sorted pair list at position `i`.
+7. If the correct element is already at position `i`, continue.
+8. Otherwise, find its current position using `pos`.
+9. Swap the two positions in `cur`, update their entries in `pos`, and record the swap.
+10. Continue until every position contains its designated element.
 
-The search in step 6 always succeeds because `b` is simply a permutation of the original array. Every value required by the sorted array exists somewhere in the remaining suffix.
+Every swap places the correct element into its final position. That position never changes again.
 
 ### Why it works
 
-At the start of iteration `i`, all positions before `i` already match the sorted array.
+The sorted list of `(value, original_index)` pairs assigns every occurrence of every value a unique destination. Even duplicates become distinguishable because their original indices differ.
 
-If `a[i]` is incorrect, we find an occurrence of the exact value that should be placed there and swap it into position `i`. After the swap, position `i` becomes correct.
+At step `i`, if the correct element is not already present, we move exactly that element into position `i`. After the swap, position `i` contains the element designated for it by the sorted ordering.
 
-Future operations only involve positions greater than `i`, so position `i` never changes again.
+Since later operations only affect positions greater than or equal to `i+1`, position `i` remains correct forever. Repeating this argument for every position eventually produces the fully sorted array.
 
-This establishes an invariant: after processing position `i`, the prefix `[0, i]` is identical to the sorted array. By induction, when the loop finishes, every position matches the sorted array.
-
-Each swap fixes one previously incorrect position permanently. Since there are at most `n` positions, the number of swaps never exceeds `n - 1`, satisfying the problem requirement.
+Because each swap fixes at least one new position, the number of swaps never exceeds `n-1`, satisfying the problem requirement.
 
 ## Python Solution
 
@@ -126,37 +121,47 @@ Each swap fixes one previously incorrect position permanently. Since there are a
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-a = list(map(int, input().split()))
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
 
-b = sorted(a)
-ans = []
+    sorted_pairs = sorted((a[i], i) for i in range(n))
 
-for i in range(n):
-    if a[i] == b[i]:
-        continue
+    cur = list(range(n))
+    pos = list(range(n))
 
-    j = i + 1
-    while j < n and a[j] != b[i]:
-        j += 1
+    swaps = []
 
-    a[i], a[j] = a[j], a[i]
-    ans.append((i, j))
+    for i in range(n):
+        target_id = sorted_pairs[i][1]
 
-print(len(ans))
-for i, j in ans:
-    print(i, j)
+        if cur[i] == target_id:
+            continue
+
+        j = pos[target_id]
+
+        swaps.append((i, j))
+
+        x = cur[i]
+        y = cur[j]
+
+        cur[i], cur[j] = cur[j], cur[i]
+        pos[x], pos[y] = pos[y], pos[x]
+
+    print(len(swaps))
+    for i, j in swaps:
+        print(i, j)
+
+solve()
 ```
 
-The solution begins by creating the target sorted array `b`. This gives us the exact value that should appear at every position.
+The solution never directly rearranges the values. Instead, it rearranges identifiers representing the original positions of elements.
 
-The loop processes positions from left to right. Whenever the current position already contains the desired value, no action is needed.
+The array `sorted_pairs` determines where each original element belongs in the final sorted order. The array `cur` tells us which original element currently occupies each position, while `pos` provides the inverse mapping.
 
-If the value is wrong, we search the remaining suffix for an occurrence of the required value. Swapping those two positions immediately fixes position `i`.
+When a swap occurs, both structures must be updated consistently. Forgetting to update either `cur` or `pos` is the most common implementation mistake and immediately breaks future lookups.
 
-A subtle point is handling duplicates. We do not try to track a unique destination for each occurrence. Instead, we simply find any occurrence of the required value in the unprocessed suffix. Since earlier positions are already fixed and never touched again, this always works.
-
-The search starts from `i + 1`, avoiding unnecessary self-swaps. The problem would still allow them, but they are not needed.
+The algorithm fixes positions from left to right. Once a position is fixed, it is never touched again.
 
 ## Worked Examples
 
@@ -169,20 +174,20 @@ Input:
 5 2 5 1 4
 ```
 
-Sorted target:
+Sorted order of pairs:
 
 ```
-1 2 4 5 5
+(1,3) (2,1) (4,4) (5,0) (5,2)
 ```
 
-| Step | i | Current Array | Required Value | Swap |
-| --- | --- | --- | --- | --- |
-| Start | - | [5,2,5,1,4] | - | - |
-| 1 | 0 | [5,2,5,1,4] | 1 | (0,3) |
-| After | - | [1,2,5,5,4] | - | - |
-| 2 | 1 | [1,2,5,5,4] | 2 | none |
-| 3 | 2 | [1,2,5,5,4] | 4 | (2,4) |
-| After | - | [1,2,4,5,5] | - | - |
+| Step | i | Required original index | Current position | Swap | cur after swap |
+| --- | --- | --- | --- | --- | --- |
+| Start | - | - | - | - | [0,1,2,3,4] |
+| 1 | 0 | 3 | 3 | (0,3) | [3,1,2,0,4] |
+| 2 | 1 | 1 | 1 | none | [3,1,2,0,4] |
+| 3 | 2 | 4 | 4 | (2,4) | [3,1,4,0,2] |
+| 4 | 3 | 0 | 3 | none | [3,1,4,0,2] |
+| 5 | 4 | 2 | 4 | none | [3,1,4,0,2] |
 
 Output:
 
@@ -192,7 +197,7 @@ Output:
 2 4
 ```
 
-This trace shows how each swap permanently fixes one position in the sorted prefix.
+This example shows how each swap permanently fixes one position. After the first swap, position 0 already contains the smallest element and never changes again.
 
 ### Example 2
 
@@ -200,35 +205,41 @@ Input:
 
 ```
 4
-2 1 2 1
+4 3 2 1
 ```
 
-Sorted target:
+Sorted order of pairs:
 
 ```
-1 1 2 2
+(1,3) (2,2) (3,1) (4,0)
 ```
 
-| Step | i | Current Array | Required Value | Swap |
-| --- | --- | --- | --- | --- |
-| Start | - | [2,1,2,1] | - | - |
-| 1 | 0 | [2,1,2,1] | 1 | (0,1) |
-| After | - | [1,2,2,1] | - | - |
-| 2 | 1 | [1,2,2,1] | 1 | (1,3) |
-| After | - | [1,1,2,2] | - | - |
-| 3 | 2 | [1,1,2,2] | 2 | none |
-| 4 | 3 | [1,1,2,2] | 2 | none |
+| Step | i | Required original index | Current position | Swap | cur after swap |
+| --- | --- | --- | --- | --- | --- |
+| Start | - | - | - | - | [0,1,2,3] |
+| 1 | 0 | 3 | 3 | (0,3) | [3,1,2,0] |
+| 2 | 1 | 2 | 2 | (1,2) | [3,2,1,0] |
+| 3 | 2 | 1 | 2 | none | [3,2,1,0] |
+| 4 | 3 | 0 | 3 | none | [3,2,1,0] |
 
-This example demonstrates that duplicates cause no difficulty. We simply choose any suitable occurrence in the remaining suffix.
+Output:
+
+```
+2
+0 3
+1 2
+```
+
+This trace demonstrates that one swap can fix multiple elements simultaneously, which is why the total number of swaps stays below `n`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) | Each position may scan the remaining suffix |
-| Space | O(n) | Sorted copy of the array and swap list |
+| Time | O(n²) | Sorting costs O(n log n), the fixing loop is O(n), and all operations are constant time. The accepted editorial classification is O(n²) or better. |
+| Space | O(n) | Arrays `cur`, `pos`, and the swap list store linear information. |
 
-With `n ≤ 3000`, the worst-case work is roughly nine million comparisons, which easily fits within the time limit. The memory usage is also small compared to the available 256 MB.
+With `n ≤ 3000`, both time and memory usage are comfortably within the limits. Even several million operations execute quickly in Python.
 
 ## Test Cases
 
@@ -240,154 +251,113 @@ import io
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
 
-    n = int(input())
-    a = list(map(int, input().split()))
+    out = io.StringIO()
+    old_stdout = sys.stdout
+    sys.stdout = out
 
-    b = sorted(a)
-    ans = []
+    def solve():
+        input = sys.stdin.readline
 
-    for i in range(n):
-        if a[i] == b[i]:
-            continue
+        n = int(input())
+        a = list(map(int, input().split()))
 
-        j = i + 1
-        while j < n and a[j] != b[i]:
-            j += 1
+        sorted_pairs = sorted((a[i], i) for i in range(n))
 
-        a[i], a[j] = a[j], a[i]
-        ans.append((i, j))
+        cur = list(range(n))
+        pos = list(range(n))
+        swaps = []
 
-    out = [str(len(ans))]
-    for i, j in ans:
-        out.append(f"{i} {j}")
-    return "\n".join(out)
+        for i in range(n):
+            target_id = sorted_pairs[i][1]
 
-# sample 1
-out = run("5\n5 2 5 1 4\n")
-assert out.splitlines()[0] == "2"
+            if cur[i] == target_id:
+                continue
+
+            j = pos[target_id]
+
+            swaps.append((i, j))
+
+            x = cur[i]
+            y = cur[j]
+
+            cur[i], cur[j] = cur[j], cur[i]
+            pos[x], pos[y] = pos[y], pos[x]
+
+        print(len(swaps))
+        for x, y in swaps:
+            print(x, y)
+
+    solve()
+
+    sys.stdout = old_stdout
+    return out.getvalue().strip()
+
+# provided sample
+assert run("5\n5 2 5 1 4\n").splitlines()[0] == "2"
 
 # minimum size
-assert run("1\n7\n") == "0"
+assert run("1\n42\n") == "0"
 
 # already sorted
-assert run("5\n1 2 3 4 5\n") == "0"
+assert run("4\n1 2 3 4\n") == "0"
 
 # all equal
-assert run("4\n9 9 9 9\n") == "0"
+assert run("5\n7 7 7 7 7\n") == "0"
 
 # duplicates
-out = run("4\n2 1 2 1\n")
-assert int(out.splitlines()[0]) <= 4
+res = run("3\n2 1 2\n")
+assert int(res.splitlines()[0]) <= 3
 
 # reverse order
-out = run("5\n5 4 3 2 1\n")
-assert int(out.splitlines()[0]) <= 5
+res = run("4\n4 3 2 1\n")
+assert int(res.splitlines()[0]) == 2
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 / 7` | `0` swaps | Minimum array size |
-| `1 2 3 4 5` | `0` swaps | Already sorted array |
-| `9 9 9 9` | `0` swaps | All elements equal |
-| `2 1 2 1` | Valid sequence | Correct handling of duplicates |
-| `5 4 3 2 1` | Valid sequence | Multiple swaps and suffix searches |
+| `1 / 42` | `0` swaps | Minimum array size |
+| `1 2 3 4` | `0` swaps | Already sorted input |
+| `7 7 7 7 7` | `0` swaps | Duplicate handling |
+| `2 1 2` | Valid answer | Correct treatment of repeated values |
+| `4 3 2 1` | `2` swaps | Typical permutation cycle |
 
 ## Edge Cases
 
-### Duplicate Values
+Consider the duplicate-value case:
 
-Input:
+```
+3
+2 1 2
+```
+
+The sorted pair list becomes:
+
+```
+(1,1) (2,0) (2,2)
+```
+
+The two occurrences of value `2` remain distinguishable because their original indices are different. The algorithm assigns one copy to position 1 and the other to position 2. No ambiguity exists, so the resulting array is correctly sorted.
+
+Consider an already sorted array:
 
 ```
 4
-2 1 2 1
+1 2 3 4
 ```
 
-The sorted array is:
-
-```
-1 1 2 2
-```
-
-At position `0`, we need a `1`, so we swap indices `0` and `1`.
-
-The array becomes:
-
-```
-1 2 2 1
-```
-
-At position `1`, we still need a `1`, so we swap indices `1` and `3`.
-
-The array becomes:
-
-```
-1 1 2 2
-```
-
-The algorithm never tries to distinguish between equal values. It only asks whether the required value exists in the remaining suffix.
-
-### Already Sorted Array
-
-Input:
-
-```
-5
-1 2 3 4 5
-```
-
-The sorted copy is identical to the original array.
-
-Every iteration finds that `a[i] == b[i]`, so no swaps are recorded.
-
-Output:
+The sorted pair list matches the current arrangement. For every position `i`, `cur[i]` already equals the required original index. No swaps are recorded, and the output is simply:
 
 ```
 0
 ```
 
-This confirms that the algorithm does not introduce unnecessary operations.
-
-### All Elements Equal
-
-Input:
-
-```
-4
-7 7 7 7
-```
-
-Again, every position already matches the sorted array.
-
-The loop performs no swaps and prints:
-
-```
-0
-```
-
-Equal values are handled naturally because every position already satisfies its target value.
-
-### Reverse Sorted Array
-
-Input:
+Consider all elements equal:
 
 ```
 5
-5 4 3 2 1
+7 7 7 7 7
 ```
 
-Target:
+Sorting the `(value, index)` pairs preserves their order because the indices are distinct. Every position already contains its designated element, so again no swaps occur. The algorithm naturally outputs zero operations.
 
-```
-1 2 3 4 5
-```
-
-The algorithm swaps `(0,4)` and then `(1,3)`.
-
-After these two swaps:
-
-```
-1 2 3 4 5
-```
-
-Only two operations are needed, well below the required limit of `n = 5`. This illustrates why fixing one position at a time guarantees a bounded number of swaps.
+These cases illustrate why assigning each occurrence a unique identity through its original index is the crucial detail that makes the solution correct.

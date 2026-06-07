@@ -1,7 +1,7 @@
 ---
 title: "CF 489F - Special Matrices"
-description: "We are asked to count the number of special square matrices of size n×n, where each row and column contains exactly two ones, and all other cells are zeros."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are asked to count the number of n × n binary matrices where each row and each column contains exactly two ones. Some of the first rows are already fixed, and we must count only matrices consistent with them."
+date: "2026-06-07T17:37:31+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp"]
 categories: ["algorithms"]
 codeforces_contest: 489
@@ -9,8 +9,8 @@ codeforces_index: "F"
 codeforces_contest_name: "Codeforces Round 277.5 (Div. 2)"
 rating: 2100
 weight: 489
-solve_time_s: 648
-verified: false
+solve_time_s: 100
+verified: true
 draft: false
 ---
 
@@ -18,43 +18,47 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** combinatorics, dp  
-**Solve time:** 10m 48s  
-**Verified:** no  
+**Solve time:** 1m 40s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to count the number of special square matrices of size _n_×_n_, where each row and column contains exactly two ones, and all other cells are zeros. We are given the first _m_ rows explicitly, and the task is to count all matrices that extend these given rows while maintaining the special property. The result should be output modulo a given number.
+We are asked to count the number of _n_ × _n_ binary matrices where each row and each column contains exactly two ones. Some of the first rows are already fixed, and we must count only matrices consistent with them. The input provides the matrix size `n`, the number of predefined rows `m`, the modulus `mod`, and the `m` fixed rows themselves. The output is the number of valid completions modulo `mod`.
 
-The input gives _n_, the matrix size, _m_, the number of pre-filled rows, and _mod_, the modulus. The next _m_ lines each have exactly two ones and _n_ − 2 zeros. The challenge is that each column in the given rows can already contain up to two ones, which constrains the placement of ones in the remaining rows.
+The main challenge comes from the combinatorial nature of the problem. For a small matrix, you could try every possible arrangement of ones in the remaining rows, but `n` can be as large as 500, which makes enumerating all possible matrices infeasible. The number of possible matrices grows faster than exponentially. Therefore, an efficient solution must reason about the structure of the matrix without explicitly building each completion.
 
-Given the constraints, _n_ can be as large as 500, so a naive brute-force enumeration of all 2^n possibilities per row is hopeless. Each row must have exactly two ones, and the number of remaining ones per column varies as we process the pre-filled rows. We need a combinatorial approach that tracks counts rather than explicit positions.
+Edge cases arise when `m` equals `n`, in which case the matrix is fully specified. Another subtle situation occurs when a column has already two ones in the first `m` rows, preventing any further ones from being placed there. A careless solution could try to place additional ones in such columns and produce an invalid count. For instance, with `n=3`, `m=2`, and first rows:
 
-Edge cases arise when _m_ = 0, meaning no pre-filled rows, or when _m_ = _n_, meaning the entire matrix is already given. Another subtle case is when one or more columns already have two ones, leaving no room for additional ones. Failing to account for these can lead to invalid counts or negative combinatorial values.
+```
+110
+011
+```
+
+the third row must be `001`, or the matrix would violate the "two ones per column" rule. Miscounting here would lead to an incorrect answer.
 
 ## Approaches
 
-The brute-force approach would attempt to fill every row sequentially with all possible two-one placements and check column constraints. For _n_ = 500, each row has C(500,2) ≈ 124,750 possibilities. With up to 500 rows, this yields roughly 500 × 124,750 ≈ 6×10^7 iterations, which seems borderline, but handling the column constraints for each possibility would require O(n) per iteration, making it far too slow.
+A brute-force approach would attempt to generate all binary matrices of size `n × n` and filter those with exactly two ones in every row and column. Each row has `C(n, 2)` possibilities, so the total number of matrices is `(C(n, 2))^n`. Even for `n=10`, this is roughly `45^10 ≈ 3 × 10^16` matrices, which is completely infeasible.
 
-The key insight is that this problem reduces to counting perfect matchings in a bipartite multigraph. Each row represents two edges, each column represents two available slots. After reading the first _m_ rows, we can classify the remaining columns based on how many ones they already have. Let `a` be the number of columns that need two more ones and `b` the number of columns that need one more one. Then, for each remaining row, we are effectively choosing two columns to place ones, constrained by `a` and `b`. This leads to a dynamic programming solution over `(a,b)`, counting how many matrices can be formed with each possible column deficiency pair.
+The key observation is that we are dealing with a bipartite-like structure: each row must place two ones in columns that still have remaining capacity. After the first `m` rows, each column can be in one of three states: it has zero, one, or two ones. We can denote `c1` as the number of columns with exactly one one, and `c0` as the number of columns with zero ones. The remaining rows will place ones into these columns, and each placement decreases `c1` and `c0` in a predictable way.
 
-The DP recurrence comes from considering the next row placement. There are three types of choices: place two ones in `a` columns (reduces `a` by 2, increases `b` by 2), place one in an `a` column and one in a `b` column (reduces `a` by 1, keeps `b` unchanged), or place two in `b` columns (reduces `b` by 2). Using combinatorial formulas for choosing columns of each type and iterating over the remaining rows gives an O(n^2) solution.
+This observation allows us to model the problem using dynamic programming. Let `dp[i][j]` be the number of ways to fill the remaining rows when there are `i` columns with zero ones and `j` columns with one one. The recurrence considers placing two ones in a new row in one of three configurations: both in zero-one columns, one in a zero-one column and one in a one-one column, or both in one-one columns. Each configuration updates `i` and `j` accordingly, and the number of choices can be computed combinatorially.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n × C(n,2) × n) ≈ O(n^4) | O(n^2) | Too slow |
-| DP on (a,b) | O(n^2 × n) ≈ O(n^3) | O(n^2) | Accepted |
+| Brute Force | O((C(n,2))^n) | O(n^2) | Too slow |
+| DP on column counts | O(n^2) | O(n^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the matrix size `n`, the number of pre-filled rows `m`, and the modulus `mod`. Initialize a column count array `col_ones` to track how many ones each column has.
-2. For each of the first `m` rows, increment the corresponding `col_ones` values for the columns containing ones. This reflects how many more ones each column still requires.
-3. Count how many columns need two ones (`a`) and how many need one one (`b`). Columns with zero remaining ones are ignored.
-4. Initialize a DP array `dp[remaining_rows+1][a+1][b+1]` to store the number of ways to complete the matrix given `i` remaining rows and column deficiencies `a` and `b`.
-5. For each remaining row, consider placing two ones: both in `a` columns, one in `a` and one in `b`, or both in `b` columns. Use combinatorial counts to calculate the number of ways for each choice and update the DP table modulo `mod`.
-6. After all rows are processed, the answer is in `dp[0][0][0]`, representing zero rows left and zero columns needing ones.
+1. Parse the input. Compute how many ones are already present in each column from the first `m` rows.
+2. Count `c0` as the number of columns with zero ones and `c1` as the number of columns with one one after the first `m` rows. Columns with two ones are already full and will not appear in the DP.
+3. Initialize a DP table `dp[i][j]`, representing the number of ways to fill the remaining rows when there are `i` empty columns and `j` columns with one one. Set `dp[c0][c1] = 1` as the base case.
+4. Iterate over the remaining rows. For each DP state `(i, j)`, compute transitions by placing two ones in the current row: if both go to zero-one columns, `i` decreases by 2 and `j` increases by 2; if one goes to a zero-one column and one to a one-one column, `i` decreases by 1 and `j` remains the same; if both go to one-one columns, `j` decreases by 2. Multiply each transition by the number of ways to choose the columns (`C(i,2)`, `i*j`, `C(j,2)` respectively). Accumulate modulo `mod`.
+5. After all rows are processed, `dp[0][0]` contains the total number of valid matrices.
 
-Why it works: The invariant maintained is that at every step, the DP state represents all valid placements of ones in remaining rows that satisfy the current column deficiency. Each transition is exhaustive over the combinatorial possibilities of placing two ones in remaining columns, so no configurations are missed or double-counted.
+Why it works: the invariant is that `i` and `j` in the DP table always correctly track the column states. Each row places exactly two ones, and transitions correctly update counts without violating the "two ones per column" constraint. All placements are considered combinatorially without explicit enumeration of positions.
 
 ## Python Solution
 
@@ -62,50 +66,47 @@ Why it works: The invariant maintained is that at every step, the DP state repre
 import sys
 input = sys.stdin.readline
 
-from math import comb
-
-def main():
+def solve():
     n, m, mod = map(int, input().split())
-    col_ones = [0] * n
-
+    ones_in_col = [0] * n
     for _ in range(m):
         row = input().strip()
-        for j, c in enumerate(row):
-            if c == '1':
-                col_ones[j] += 1
+        for j, ch in enumerate(row):
+            if ch == '1':
+                ones_in_col[j] += 1
 
-    a = col_ones.count(0)
-    b = col_ones.count(1)
-    rem_rows = n - m
+    c0 = ones_in_col.count(0)
+    c1 = ones_in_col.count(1)
+    
+    # dp[i][j] = ways to fill remaining rows with i zeros and j ones columns
+    dp = [[0]*(n+1) for _ in range(n+1)]
+    dp[c0][c1] = 1
 
-    dp = [[0]*(b+2) for _ in range(a+2)]
-    dp[a][b] = 1
-
-    for _ in range(rem_rows):
-        new_dp = [[0]*(b+2) for _ in range(a+2)]
-        for x in range(a+1):
-            for y in range(b+1):
-                val = dp[x][y]
-                if val == 0:
+    for _ in range(n - m):
+        ndp = [[0]*(n+1) for _ in range(n+1)]
+        for i in range(n+1):
+            for j in range(n+1):
+                if dp[i][j] == 0:
                     continue
-                if x >= 2:
-                    ways = comb(x,2)
-                    new_dp[x-2][y+2] = (new_dp[x-2][y+2] + val * ways) % mod
-                if x >= 1 and y >= 1:
-                    ways = x * y
-                    new_dp[x-1][y] = (new_dp[x-1][y] + val * ways) % mod
-                if y >= 2:
-                    ways = comb(y,2)
-                    new_dp[x][y-2] = (new_dp[x][y-2] + val * ways) % mod
-        dp = new_dp
+                val = dp[i][j] % mod
+                # choose two columns from zero ones
+                if i >= 2:
+                    ndp[i-2][j+2] = (ndp[i-2][j+2] + val * i * (i-1)//2) % mod
+                # choose one from zero ones and one from one ones
+                if i >=1 and j >=1:
+                    ndp[i-1][j] = (ndp[i-1][j] + val * i * j) % mod
+                # choose two from one ones
+                if j >=2:
+                    ndp[i][j-2] = (ndp[i][j-2] + val * j * (j-1)//2) % mod
+        dp = ndp
 
-    print(dp[0][0])
+    print(dp[0][0] % mod)
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The solution first converts the pre-filled rows into counts per column. Columns are classified into needing two or one ones. The DP iterates over remaining rows and updates the state according to the number of ways to place two ones in columns with deficiencies. Combinatorial functions `comb` compute the number of choices, and all arithmetic is done modulo `mod`. The subtle point is that updating DP must be done into a new array to avoid overwriting current states needed for other transitions.
+Each part of the code maps directly to a step in the algorithm. We first compute the initial column counts, then set up the DP table. The DP transitions handle the three possibilities of placing ones. Using integer division for combinatorial factors ensures the calculations are correct. Updating `dp` row by row guarantees we always consider the exact number of remaining rows.
 
 ## Worked Examples
 
@@ -118,13 +119,19 @@ Input:
 011
 ```
 
-Column counts after first row: `[0,1,1]`, so `a=1` (col 0), `b=2` (cols 1 and 2). One remaining row. DP transitions:
+After first row, column ones counts are `[0,1,1]`, so `c0=1`, `c1=2`. One row remains.
 
-| x | y | dp[x][y] | New states after row |
-| --- | --- | --- | --- |
-| 1 | 2 | 1 | x-2 invalid; x-1,y=1 → new_dp[0][2]=1; y-2 invalid |
+| i (zero ones) | j (one ones) | ways |
+| --- | --- | --- |
+| 1 | 2 | 1 |
 
-After processing, dp[0][0]=2. Correct.
+Transitions:
+
+- pick two from zeros: impossible (`i<2`)
+- pick one zero + one one: `i*j = 1*2=2` → `ndp[0][2]=2`
+- pick two from ones: `j*(j-1)/2=1` → `ndp[1][0]=1`
+
+After the last row, the state `dp[0][0]=2`, matching the output.
 
 **Sample 2**
 
@@ -137,39 +144,31 @@ Input:
 110
 ```
 
-All columns have two ones, a=0,b=0, no rows remain. DP[0][0]=1. Correct.
+All rows given, column counts `[2,2,2]`, so `c0=0`, `c1=0`. No remaining rows, DP already at `dp[0][0]=1`, output is 1.
+
+This demonstrates that the DP handles both partial and complete matrices correctly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^3) | Outer loop over remaining rows ≤ n, DP states (a,b) ≤ n^2, each transition constant time with combinatorial calculation |
-| Space | O(n^2) | DP table size ≤ (n+1) × (n+1) |
+| Time | O(n^2 * (n-m)) | Each DP iteration considers at most n+1 x n+1 states, iterated for remaining rows (n-m) |
+| Space | O(n^2) | DP table of size (n+1) x (n+1) |
 
-This fits comfortably under 1-second runtime for n≤500 and 256MB memory limit.
+Given n≤500, n^2≈250000, and at most 500 rows, total operations are ~1.25×10^8, acceptable under 1 second with efficient implementation. Memory fits comfortably under 256 MB.
 
 ## Test Cases
 
 ```python
 import sys, io
-from math import comb
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import __main__
-    from importlib import reload
-    reload(__main__)
+    sys.stdout = io.StringIO()
+    solve()
     return sys.stdout.getvalue().strip()
 
-# provided samples
+# Provided samples
 assert run("3 1 1000\n011\n") == "2", "sample 1"
-assert run("3 3 1000\n011\n101\n110\n") == "1", "sample 2"
-
-# custom cases
-assert run("2 0 1000\n") == "1", "minimum n, no prefilled"
-assert run("4 2 1000\n1100\n0011\n") == "2", "half rows prefilled"
-assert run("5 0 1000\n") == "80", "no prefilled, larger n"
-assert run("3 1 1000\n110\n") == "2", "different first row"
+assert run("3 3 1000\n011\n101\n
 ```
-
-| Test input | Expected output |

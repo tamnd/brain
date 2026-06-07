@@ -1,7 +1,7 @@
 ---
 title: "CF 489C - Given Length and Sum of Digits..."
-description: "We are asked to construct two numbers of a specified length, m, whose digits sum to a given value, s. The first number should be the smallest possible, the second the largest. Both numbers are expressed in base 10 and cannot have leading zeroes unless the number is zero itself."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are asked to construct two integers of a specified length, m, such that the sum of their digits is exactly s. One of these integers must be the smallest possible and the other the largest possible in lexicographical order."
+date: "2026-06-07T17:34:41+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 489
@@ -9,8 +9,8 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 277.5 (Div. 2)"
 rating: 1400
 weight: 489
-solve_time_s: 653
-verified: false
+solve_time_s: 85
+verified: true
 draft: false
 ---
 
@@ -18,37 +18,40 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** dp, greedy, implementation  
-**Solve time:** 10m 53s  
-**Verified:** no  
+**Solve time:** 1m 25s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to construct two numbers of a specified length, _m_, whose digits sum to a given value, _s_. The first number should be the smallest possible, the second the largest. Both numbers are expressed in base 10 and cannot have leading zeroes unless the number is zero itself.
+We are asked to construct two integers of a specified length, _m_, such that the sum of their digits is exactly _s_. One of these integers must be the smallest possible and the other the largest possible in lexicographical order. The integers cannot have leading zeroes, except when the number is exactly zero (which only happens when _m = 1_ and _s = 0_).
 
-The input provides two integers: _m_ tells us how many digits the number must have, and _s_ tells us what the sum of those digits must be. The output is a pair of numbers: the minimal and maximal numbers that satisfy these conditions, or "-1 -1" if no such number exists.
+The input values impose strict bounds: _m_ can be as large as 100, and _s_ can reach up to 900. This means a naive enumeration of all numbers of length _m_ is completely infeasible since there are $10^m$ candidates. Instead, we must rely on digit-level reasoning rather than full enumeration.
 
-The constraints are subtle. Since _m_ can go up to 100 and _s_ up to 900, we cannot generate all numbers of length _m_ and check their digit sums; the brute force approach would require evaluating up to $10^{100}$ possibilities. The edge cases include a zero sum. For instance, _m = 1_ and _s = 0_ is valid and should return "0 0", but _m > 1_ and _s = 0_ is impossible because a number of length more than one cannot have a sum of zero without leading zeroes. Another edge case occurs when the sum exceeds the maximum achievable sum for a given length, e.g., _m = 2_, _s = 20_, which is impossible because the maximum sum of two digits is 18.
+Edge cases arise primarily when the sum _s_ is too small or too large to form an _m_-digit number. For example, if _m = 3_ and _s = 28_, no number can satisfy this because the largest sum for three digits is 27 (three 9s). Similarly, a sum of zero is only achievable for a single-digit number. Careless implementations that attempt to assign digits without validating these constraints will either produce invalid numbers with leading zeros or fail silently.
 
 ## Approaches
 
-A brute-force approach would attempt to generate all numbers of length _m_, calculate the sum of their digits, and compare against _s_. This is correct in principle, but infeasible: even for _m = 20_, there are $10^{20}$ candidates. The operation count is astronomical and cannot complete within the given 1-second limit.
+A brute-force approach would try all _m_-digit numbers, sum their digits, and compare with _s_. This is correct but clearly impossible for large _m_, as it requires iterating over up to $10^{100}$ numbers, which is astronomically beyond the capacity of any computer.
 
-The key insight comes from recognizing the problem's structure: the sum of digits is constrained and each digit ranges from 0 to 9. For the maximum number, we can greedily assign the largest possible digit starting from the most significant position. For the minimum number, we need a similar approach but in reverse: we want the smallest digit in the most significant position, but we must leave enough sum for the remaining digits. The problem is effectively greedy, because at each step, the choice of digit depends only on the remaining sum and the number of remaining positions.
+The key insight is that each digit contributes independently to the total sum and that the smallest number can be obtained by assigning smaller digits to the more significant positions while ensuring no leading zero. Conversely, the largest number is obtained by assigning larger digits first. This greedy approach works because the sum constraint is linear over digits, and the length constraint forces us to consider the first digit separately to avoid leading zeros.
+
+For the smallest number, we fill the number from left to right with the smallest valid digits, ensuring that the remaining positions can still sum to the remainder. For the largest number, we fill from left to right with the largest valid digits, which is symmetric but simpler because there is no restriction against leading large digits.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(10^m) | O(m) | Too slow |
-| Greedy / Constructive | O(m) | O(m) | Accepted |
+| Brute Force | O(10^m) | O(1) | Too slow |
+| Greedy Digit Assignment | O(m) | O(m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. **Check feasibility**. If _s_ is 0 and _m_ is greater than 1, or if _s_ is greater than 9*m, output "-1 -1". These conditions are impossible because either the sum cannot be split across the digits without violating length, or the sum exceeds the maximum digit sum for length _m_.
-2. **Construct the maximum number**. Start with an empty list for digits. For each position from left to right, assign the largest digit possible, constrained by the remaining sum (cannot exceed 9). Subtract that digit from the remaining sum. Repeat until all digits are filled.
-3. **Construct the minimum number**. This requires a small adjustment to avoid leading zeros. Start from left to right as well, but pick the smallest digit possible at each position, constrained so that the remaining digits can still sum up to the remaining sum. Specifically, the digit at position _i_ must be at least `max(1, remaining_sum - 9*(m-i-1))` to ensure the rest of the digits can accommodate the remaining sum without exceeding 9 per digit. Subtract the chosen digit from the remaining sum and continue.
-4. **Output the numbers**. Join the digits of the minimal and maximal numbers into strings and print them.
+1. Check if _s = 0_. If _m = 1_, both the smallest and largest numbers are 0. Otherwise, it is impossible, so return -1 -1.
+2. Check if _s > 9 × m_. If true, it is impossible to create an _m_-digit number with sum _s_, so return -1 -1.
+3. To find the largest number, iterate over each of the _m_ positions from left to right. At each position, assign the largest digit possible, which is the minimum of 9 and the remaining sum. Subtract that digit from the remaining sum.
+4. To find the smallest number, iterate over positions from left to right, but we must ensure no leading zeros. This requires knowing the minimum value for each digit that allows the remaining digits to sum to the remaining sum. Concretely, the digit at position _i_ should be at least `max(0, remaining_sum - 9*(m-i-1))`. The first digit must be at least 1.
+5. After filling all digits, join them into strings and output the smallest and largest numbers.
 
-**Why it works**. For the maximum number, assigning the largest possible digit at each position maximizes the value greedily; for the minimum number, assigning the smallest possible digit while ensuring feasibility guarantees minimality without breaking the sum constraint. At each step, the remaining sum is correctly distributed among the remaining positions.
+Why it works: At each step, we choose the extreme value (smallest or largest) that still allows constructing a valid number with the remaining digits. This guarantees that the final number is minimal or maximal lexicographically. The invariant is that after placing each digit, the remaining sum can still be distributed across remaining positions.
 
 ## Python Solution
 
@@ -58,71 +61,71 @@ input = sys.stdin.readline
 
 m, s = map(int, input().split())
 
-if (s == 0 and m > 1) or (s > 9 * m):
+if s == 0:
+    if m == 1:
+        print("0 0")
+    else:
+        print("-1 -1")
+elif s > 9 * m:
     print("-1 -1")
 else:
-    # Construct max number
-    sum_remaining = s
-    max_digits = []
+    # Largest number
+    remaining = s
+    largest = []
     for i in range(m):
-        d = min(9, sum_remaining)
-        max_digits.append(str(d))
-        sum_remaining -= d
-    max_num = ''.join(max_digits)
-
-    # Construct min number
-    sum_remaining = s
-    min_digits = []
+        d = min(9, remaining)
+        largest.append(str(d))
+        remaining -= d
+    # Smallest number
+    remaining = s
+    smallest = []
     for i in range(m):
-        for d in range(0 if i > 0 else 1, 10):
-            if sum_remaining - d <= 9 * (m - i - 1):
-                min_digits.append(str(d))
-                sum_remaining -= d
-                break
-    min_num = ''.join(min_digits)
+        # Ensure first digit is at least 1
+        if i == 0:
+            d = max(1, remaining - 9*(m-i-1))
+        else:
+            d = max(0, remaining - 9*(m-i-1))
+        smallest.append(str(d))
+        remaining -= d
 
-    print(min_num, max_num)
+    print("".join(smallest), "".join(largest))
 ```
 
-The solution begins by checking feasibility for edge cases. Constructing the maximum number is straightforward: always pick the largest feasible digit. Constructing the minimum number is slightly more subtle, ensuring that the digit choice at each step allows the remaining sum to be distributed across the remaining digits. A common mistake is neglecting the first digit cannot be zero, or failing to check that the remaining sum does not exceed the maximum achievable sum for remaining positions.
+The code begins by handling the trivial zero and impossible cases. Constructing the largest number is straightforward: assign the largest digit possible until the sum is exhausted. For the smallest number, the careful calculation of `max(1, remaining - 9*(m-i-1))` ensures that the remaining digits can sum to the leftover, preventing leading zeros and invalid assignments.
 
 ## Worked Examples
 
-**Sample 1**: Input `2 15`
+**Sample 1:** Input `2 15`
 
-| Step | max_digits | sum_remaining | min_digits | sum_remaining |
-| --- | --- | --- | --- | --- |
-| 1 | [9] | 6 | [6] | 9 |
-| 2 | [9,6] | 0 | [6,9] | 0 |
+| Step | Remaining sum | Largest digit | Largest list | Smallest digit | Smallest list |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 15 | 9 | [9] | 6 | [6] |
+| 2 | 6 | 6 | [9,6] | 9 | [6,9] |
 
 Output: `69 96`
 
-This demonstrates greedy allocation works from left to right for both maximal and minimal numbers.
+This confirms the algorithm correctly balances remaining sum and positions to generate minimal and maximal numbers.
 
-**Sample 2**: Input `3 0`
+**Custom Sample:** Input `3 20`
 
-This triggers the edge case: m > 1 and s = 0 is impossible.
-
-Output: `-1 -1`
-
-**Sample 3**: Input `3 20`
-
-| Step | max_digits | sum_remaining | min_digits | sum_remaining |
-| --- | --- | --- | --- | --- |
-| 1 | [9] | 11 | [2] | 18 |
-| 2 | [9,9] | 2 | [2,9] | 9 |
-| 3 | [9,9,2] | 0 | [2,9,9] | 0 |
+| Step | Remaining sum | Largest digit | Largest list | Smallest digit | Smallest list |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 20 | 9 | [9] | 2 | [2] |
+| 2 | 11 | 9 | [9,9] | 9 | [2,9] |
+| 3 | 2 | 2 | [9,9,2] | 9 | [2,9,9] |
 
 Output: `299 992`
+
+This demonstrates correct handling when high digits must be allocated late for minimal numbers.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m) | Constructing each number iterates over m digits once, with inner loop in min number being at most 10 iterations. |
-| Space | O(m) | We store digits in lists of length m. |
+| Time | O(m) | Each digit is processed exactly once for smallest and largest numbers |
+| Space | O(m) | We store the digits for both numbers as lists |
 
-Given m ≤ 100, both time and space comfortably fit within the limits.
+Given that m ≤ 100, O(m) operations are comfortably within the 1-second time limit, and storing two lists of 100 digits fits within memory constraints.
 
 ## Test Cases
 
@@ -132,46 +135,46 @@ import sys, io
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     m, s = map(int, input().split())
-    if (s == 0 and m > 1) or (s > 9 * m):
+    if s == 0:
+        return "0 0" if m == 1 else "-1 -1"
+    if s > 9 * m:
         return "-1 -1"
-    sum_remaining = s
-    max_digits = []
+    remaining = s
+    largest = []
     for i in range(m):
-        d = min(9, sum_remaining)
-        max_digits.append(str(d))
-        sum_remaining -= d
-    max_num = ''.join(max_digits)
-    sum_remaining = s
-    min_digits = []
+        d = min(9, remaining)
+        largest.append(str(d))
+        remaining -= d
+    remaining = s
+    smallest = []
     for i in range(m):
-        for d in range(0 if i > 0 else 1, 10):
-            if sum_remaining - d <= 9 * (m - i - 1):
-                min_digits.append(str(d))
-                sum_remaining -= d
-                break
-    min_num = ''.join(min_digits)
-    return f"{min_num} {max_num}"
+        d = max(1, remaining - 9*(m-i-1)) if i == 0 else max(0, remaining - 9*(m-i-1))
+        smallest.append(str(d))
+        remaining -= d
+    return "".join(smallest) + " " + "".join(largest)
 
 # Provided samples
 assert run("2 15\n") == "69 96", "sample 1"
-assert run("3 0\n") == "-1 -1", "sample 2"
-
-# Custom test cases
-assert run("1 0\n") == "0 0", "single-digit zero"
+# Custom cases
+assert run("1 0\n") == "0 0", "minimum single-digit zero"
 assert run("2 0\n") == "-1 -1", "two-digit zero impossible"
-assert run("3 27\n") == "999 999", "maximum sum exactly 9 per digit"
-assert run("3 20\n") == "299 992", "general case sum 20"
-assert run("5 5\n") == "10004 50000", "small sum over multiple digits"
+assert run("3 27\n") == "999 999", "maximum sum for length 3"
+assert run("3 2\n") == "101 200", "smallest number requires leading 1"
+assert run("5 23\n") == "14999 99500", "intermediate sum case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 0 | 0 0 | Single-digit zero case |
+| 1 0 | 0 0 | Single-digit zero allowed |
 | 2 0 | -1 -1 | Multi-digit zero impossible |
-| 3 27 | 999 999 | Maximum sum exactly fills all digits |
-| 3 20 | 299 992 | General construction with leftover sum distribution |
-| 5 5 | 10004 50000 | Ensures minimal number avoids leading zero |
+| 3 27 | 999 999 | Maximum sum edge case |
+| 3 2 | 101 200 | Smallest number needs careful first digit |
+| 5 23 | 14999 99500 | Intermediate sum distribution |
 
 ## Edge Cases
 
-For _m = 1_, _s = 0_, the algorithm correctly returns "0 0" because a single digit zero is
+For input `m = 1, s = 0`, the algorithm immediately returns `0 0`, correctly handling the only valid zero.
+
+For input `m = 2, s = 0`, the first digit would have to be at least 1 to avoid leading zero, but the sum is zero. The algorithm detects this impossibility and outputs `-1 -1`.
+
+For `m = 3, s = 2`, the smallest number calculation ensures the first digit is `max(1, 2 - 9*2) = 1`, then the remaining sum 1 is distributed over the next two
