@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1344 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1345 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1344
+kvant_total: 1345
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1344 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1345 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -1780,7 +1780,7 @@ draft: false
 
 ## 1985
 
-50 problems across Issues 1–12.
+51 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1889,6 +1889,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [956](956.md) Let the four circles have the same radius $r$. |  | 6m47s |
+| [957](957.md) *International Mathematical Olympiad (XXVI) for School Students*. Each allowed integer has the form |  | 9m14s |
 | [958](958.md) *International Mathematical Olympiad (XXVI)*. Let |  | 3m21s |
 | [959](959.md) *A. A. Razborov*. Consider first small examples. |  | 7m47s |
 
