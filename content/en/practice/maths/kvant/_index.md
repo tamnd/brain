@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1341 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1342 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1341
+kvant_total: 1342
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1341 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1342 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -1553,7 +1553,7 @@ draft: false
 
 ## 1983
 
-48 problems across Issues 1–12.
+49 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1606,6 +1606,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [806](806.md) Let |  | 13m10s |
 | [808](808.md) *D. G. Azov*. Begin by examining small values of $k$. |  | 4m14s |
 | [809](809.md) *V. V. Proizvolov*. Compute the first few terms of the series to detect a pattern. |  | 10m33s |
 | [810](810.md) *F. V. Vainshtein*. Let $M$ be a convex polygon with area $S$. |  | 6m59s |
