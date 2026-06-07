@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 2124 problems, 1491 verified."
+description: "Codeforces problem solutions with full editorial. 449 contests, 2126 problems, 1491 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 2124 problems, 1491 verified.**
+**449 contests, 2126 problems, 1491 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -459,6 +459,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2217](2217/) | [Codeforces Round 1091 (Div. 2) and CodeCraft 26](https://codeforces.com/contest/2217) | Div. 2 | 800-2800 | 0/8 | 14m 29s |
 | [2218](2218/) | [Codeforces Round 1090 (Div. 4)](https://codeforces.com/contest/2218) | Div. 4 | 800-1800 | 1/7 | 13m 16s |
 | [2219](2219/) | [Codeforces Round 1093 (Div. 1)](https://codeforces.com/contest/2219) | Div. 1 | - | 1/6 | 15m 59s |
+| [2220](2220/) | [Codeforces Round 1093 (Div. 2)](https://codeforces.com/contest/2220) | Div. 2 | - | 0/2 | 3m 29s |
 | [2222](2222/) | [Spectral::Cup 2026 Round 1 (Codeforces Round 1094, Div. 1 + Div. 2)](https://codeforces.com/contest/2222) | Div. 1+2 | - | 0/8 | 16m 52s |
 | [2225](2225/) | [Educational Codeforces Round 189 (Rated for Div. 2)](https://codeforces.com/contest/2225) | Div. 2 | - | 0/7 | 11m 44s |
 | [2226](2226/) | [Codeforces Round 1095 (Div. 2)](https://codeforces.com/contest/2226) | Div. 2 | - | 0/7 | 23m 23s |
