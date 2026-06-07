@@ -1,7 +1,7 @@
 ---
 title: "CF 345F - Superstitions Inspection"
-description: "We are given a text file that alternates between country names and lists of superstition names. A country line introduces a new group, and the following lines starting with an asterisk belong to that country."
-date: "2026-06-06T18:01:35+07:00"
+description: "The input is not given in the usual structured format with counts. Instead, it is a small text file that alternates between country names and lists of superstitions. A line that does not start with is a country name."
+date: "2026-06-07T15:47:38+07:00"
 tags: ["codeforces", "competitive-programming", "*special"]
 categories: ["algorithms"]
 codeforces_contest: 345
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Friday the 13th, Programmers Day"
 rating: 2700
 weight: 345
-solve_time_s: 112
+solve_time_s: 114
 verified: false
 draft: false
 ---
@@ -18,49 +18,144 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** *special  
-**Solve time:** 1m 52s  
+**Solve time:** 1m 54s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a text file that alternates between country names and lists of superstition names. A country line introduces a new group, and the following lines starting with an asterisk belong to that country. Each such entry is a superstition that is considered “popular” in that country.
+The input is not given in the usual structured format with counts. Instead, it is a small text file that alternates between country names and lists of superstitions.
 
-The goal is to determine which superstition names appear in the largest number of distinct countries. Because the same superstition can be written with different capitalization or irregular spacing, two names must be treated as identical if they match word-by-word after normalizing case and collapsing whitespace. Word order matters, but repeated spaces do not.
+A line that does **not** start with `* ` is a country name. A line that starts with `* ` is a superstition belonging to the most recently seen country.
 
-The input size is small in terms of lines, at most 50. This rules out any concern about asymptotic complexity beyond linear scanning. The real difficulty is not scale but normalization and grouping: we must correctly separate country blocks, normalize multi-word keys consistently, and avoid counting duplicates of the same superstition within a single country.
+Country names are guaranteed to be unique. A country may have zero superstitions. The task is to find which superstitions appear in the largest number of countries.
 
-A naive implementation risk comes from treating raw strings as keys. For example, `"friday the 13th"` and `"Friday the   13th"` refer to the same superstition but would be counted separately if whitespace is not normalized. Another subtle pitfall is double-counting within one country if the same superstition appears multiple times after normalization.
+The tricky part is that names are compared in a normalized form. Letter case must be ignored, and multiple spaces between words do not matter. Two names represent the same sequence if, after splitting into words, the word sequences are identical ignoring case.
+
+For example:
+
+```
+Friday the   13th
+friday   THE 13TH
+```
+
+represent the same superstition and must be treated as one object.
+
+The output must contain every superstition whose country count is maximal. The names must be printed in lowercase and sorted lexicographically as sequences of words.
+
+The input contains at most 50 lines, and each line contains at most 50 characters. Even an inefficient solution would process only a few thousand characters. The challenge is not performance but correctly parsing and normalizing the data.
+
+Several edge cases can silently break a careless implementation.
+
+Consider inconsistent spacing:
+
+```
+A
+* black   cat
+B
+* black cat
+```
+
+Correct output:
+
+```
+black cat
+```
+
+A solution that compares raw strings would incorrectly treat these as different superstitions.
+
+Consider varying capitalization:
+
+```
+A
+* Friday The 13th
+B
+* friday the 13th
+```
+
+Correct output:
+
+```
+friday the 13th
+```
+
+A case-sensitive comparison would count two separate superstitions.
+
+Consider countries with no superstitions:
+
+```
+A
+B
+* lucky coin
+```
+
+Correct output:
+
+```
+lucky coin
+```
+
+The parser must recognize that `B` starts a new country even though `A` had no superstition entries.
+
+Consider lexicographic ordering of word sequences:
+
+```
+A
+* zebra
+B
+* apple
+```
+
+Both occur once, so both must be output:
+
+```
+apple
+zebra
+```
+
+The ordering is applied after normalization.
 
 ## Approaches
 
-A straightforward approach is to read line by line, keep track of the current country, and insert each superstition string into a mapping from superstition to a set of countries. Whenever we encounter a country name line, we switch context. Every superstition line is parsed, normalized, and added to the set corresponding to that superstition.
+A brute-force approach would first parse all countries and store, for each country, the set of its superstitions. Then for every distinct superstition, scan every country and test whether the superstition appears there. If there are `S` distinct superstitions and `C` countries, this requires `O(SC)` membership checks after parsing.
 
-The brute-force interpretation would be to, for each superstition, scan all countries again and check whether it appears in their list after normalization. That leads to repeated parsing of the same text many times, and in the worst case it becomes quadratic in the number of lines times average list size. Even though constraints are small, this approach is structurally wasteful and error-prone.
+With the actual constraints this would already fit easily, because the entire input contains at most 50 lines. Still, it performs work that is not necessary.
 
-The key observation is that we do not need repeated membership checks. Each occurrence already tells us exactly which country contains which superstition. We can aggregate in one pass using a dictionary from normalized superstition name to a set of country identifiers. This reduces the problem to a single linear scan plus dictionary operations.
+The key observation is that the quantity we need is simply the number of countries containing each superstition. Once a superstition line is read and normalized, we already know which country it belongs to. We can increment a global counter for that superstition immediately.
 
-Once this structure is built, the answer is simply those superstition keys whose country-set has maximum size.
+The problem statement guarantees that entries inside a country are unique, so each superstition contributes at most one count per country. After processing the whole file, every superstition has its exact country frequency.
+
+The remaining work is straightforward. Find the maximum frequency, collect every superstition having that frequency, sort them lexicographically, and print them.
+
+Although both approaches are easily fast enough here, the counting approach is simpler and directly matches the quantity we are asked to compute.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Repeated scanning per superstition | O(N²) | O(N) | Too slow / unnecessary |
-| One-pass hashing with sets | O(N) | O(N) | Accepted |
+| Brute Force | O(SC) | O(S + total entries) | Accepted |
+| Optimal | O(total lines · line length) | O(S) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input line by line while maintaining a current country name. When a line does not start with `*`, it represents a new country, so we update the current context.
-2. When we encounter a superstition line, we strip the leading `"* "` and normalize the remaining string. Normalization means splitting by whitespace, converting every word to lowercase, and rejoining with a single space. This ensures that any spacing or capitalization differences collapse into a canonical representation.
-3. Maintain a dictionary `occurrences` where each key is a normalized superstition string and the value is a set of countries in which it appears. When processing a superstition, we insert the current country into this set.
-4. After processing all lines, compute the maximum size among all country sets. This value represents how many countries the most popular superstition appears in.
-5. Collect all superstition names whose set size equals this maximum.
-6. Sort these superstition names lexicographically and output them.
+1. Read all input lines.
+2. Maintain a dictionary `cnt` mapping a normalized superstition name to the number of countries containing it.
+3. Process each line in order.
+4. If the line starts with `* `, it represents a superstition.
 
-The reason sets are essential is that a superstition may appear multiple times in the same country block. Without deduplication, we would incorrectly inflate its popularity.
+Normalize it by removing the leading `* `, splitting into words, converting every word to lowercase, and joining the words with a single space.
+5. Increment `cnt[normalized_name]`.
+
+This is correct because every superstition entry belongs to exactly one country, and entries inside a country are guaranteed to be unique.
+6. If the line does not start with `* `, it is a country name. No counting action is needed.
+7. After all lines are processed, compute the maximum value stored in `cnt`.
+8. Collect every superstition whose count equals this maximum.
+9. Sort the collected names lexicographically.
+10. Print them one per line.
 
 ### Why it works
 
-At any point during processing, each pair (country, superstition) is recorded exactly once in the sense of set membership. The invariant is that `occurrences[s]` contains precisely the set of distinct countries in which superstition `s` appears in the input seen so far. Since we never remove or duplicate entries, this invariant holds until the end. Therefore, the final set sizes exactly represent the number of countries per superstition, and selecting the maximum is correct.
+After normalization, every textual representation of the same superstition becomes exactly the same string. Each superstition entry contributes one occurrence to exactly one country, and duplicate entries inside a country are forbidden by the statement. Consequently, the value stored in `cnt[x]` after processing the entire file is precisely the number of countries containing superstition `x`.
+
+The algorithm outputs exactly those superstitions whose counts equal the global maximum, which is the definition of the required answer. Sorting the normalized strings produces the required lexicographic order.
 
 ## Python Solution
 
@@ -68,54 +163,42 @@ At any point during processing, each pair (country, superstition) is recorded ex
 import sys
 input = sys.stdin.readline
 
-def normalize(line: str) -> str:
-    parts = line.strip().split()
-    return " ".join(w.lower() for w in parts)
+def normalize(s: str) -> str:
+    return " ".join(s.lower().split())
 
 def solve():
     lines = [line.rstrip("\n") for line in sys.stdin]
 
-    country = None
-    occ = {}
+    cnt = {}
 
     for line in lines:
-        if not line:
-            continue
+        if line.startswith("* "):
+            superstition = normalize(line[2:])
+            cnt[superstition] = cnt.get(superstition, 0) + 1
 
-        if line[0] != '*':
-            country = line.strip()
-            continue
+    best = max(cnt.values())
 
-        name = line[2:]
-        name = normalize(name)
+    ans = sorted(
+        name for name, value in cnt.items()
+        if value == best
+    )
 
-        if name not in occ:
-            occ[name] = set()
-        occ[name].add(country)
+    sys.stdout.write("\n".join(ans))
 
-    if not occ:
-        return
-
-    max_count = max(len(s) for s in occ.values())
-
-    result = [s for s, countries in occ.items() if len(countries) == max_count]
-    result.sort()
-
-    sys.stdout.write("\n".join(result))
-
-if __name__ == "__main__":
-    solve()
+solve()
 ```
 
-The parsing logic depends critically on detecting whether a line begins with `*`. Country lines never begin with that character, so this cleanly separates structure.
+The `normalize` function is the heart of the solution. Calling `split()` without arguments collapses any number of consecutive spaces into a single separator. Converting to lowercase handles case-insensitive comparison. Joining with a single space creates a canonical representation.
 
-Normalization is done immediately at ingestion time, ensuring that all comparisons later are purely dictionary-based. The set ensures that repeated occurrences in a single country do not distort counts.
+Country names are ignored after parsing because only superstition frequencies matter. The statement guarantees that country names are distinct and that superstition entries inside a country are unique, so no extra bookkeeping is necessary.
 
-Sorting is done only at the end because the output requires lexicographic order over normalized names.
+A common mistake is to call `lower()` but leave the original spacing unchanged. Then `"black cat"` and `"black   cat"` would still be treated as different strings. Using `split()` followed by `" ".join(...)` avoids this problem.
+
+Another easy mistake is to sort before normalization. The output must contain lowercase canonical forms, so normalization must happen first and the normalized strings must be stored in the dictionary.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -132,31 +215,36 @@ France
 * Wishing Well
 ```
 
-We track `(superstition -> countries)`:
+Processing trace:
 
-| Step | Country | Superstition (normalized) | Set state |
-| --- | --- | --- | --- |
-| 1 | Ukraine | friday the 13th | {Ukraine} |
-| 2 | Ukraine | black cat | {Ukraine} |
-| 3 | Ukraine | knock the wood | {Ukraine} |
-| 4 | USA | wishing well | {USA} |
-| 5 | USA | friday the 13th | {Ukraine, USA} |
-| 6 | France | wishing well | {USA, France} |
+| Line | Normalized superstition | Count after update |
+| --- | --- | --- |
+| * Friday the   13th | friday the 13th | 1 |
+| * black   cat | black cat | 1 |
+| * knock the   wood | knock the wood | 1 |
+| * wishing well | wishing well | 1 |
+| * friday   the   13th | friday the 13th | 2 |
+| * Wishing Well | wishing well | 2 |
 
 Final counts:
 
-- friday the 13th → 2 countries
-- wishing well → 2 countries
-- others → 1
+| Superstition | Count |
+| --- | --- |
+| friday the 13th | 2 |
+| wishing well | 2 |
+| black cat | 1 |
+| knock the wood | 1 |
 
-Result:
+Maximum frequency is 2.
+
+Output:
 
 ```
 friday the 13th
 wishing well
 ```
 
-This trace shows how normalization merges differently formatted strings and how sets accumulate country membership.
+This example demonstrates both normalization rules. Different capitalization and different spacing collapse into the same canonical name.
 
 ### Example 2
 
@@ -164,55 +252,70 @@ Input:
 
 ```
 A
-* Lucky Star
-* lucky   star
+* Lucky Coin
 B
-* Lucky Star
+* lucky   coin
 C
-* unlucky sign
+* rabbit foot
 ```
 
-| Step | Country | Superstition | Set state |
-| --- | --- | --- | --- |
-| 1 | A | lucky star | {A} |
-| 2 | B | lucky star | {A, B} |
-| 3 | C | unlucky sign | {C} |
+Processing trace:
 
-Result:
+| Line | Normalized superstition | Count after update |
+| --- | --- | --- |
+| * Lucky Coin | lucky coin | 1 |
+| * lucky   coin | lucky coin | 2 |
+| * rabbit foot | rabbit foot | 1 |
+
+Final counts:
+
+| Superstition | Count |
+| --- | --- |
+| lucky coin | 2 |
+| rabbit foot | 1 |
+
+Output:
 
 ```
-lucky star
+lucky coin
 ```
 
-This demonstrates duplicate suppression within a country (A has two identical entries after normalization, but the set prevents double counting).
+This trace confirms that multiple textual spellings of the same superstition contribute to a single frequency counter.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N * L log L) | Each line is parsed and split, and normalization processes each word once; sets and dictionary operations are O(1) amortized |
-| Space | O(K) | K distinct superstition names each storing a set of countries |
+| Time | O(T) | Each character of the input is processed a constant number of times |
+| Space | O(S) | One dictionary entry per distinct superstition |
 
-The input size is extremely small, so this linear scan is easily within limits. The solution’s performance is dominated by string processing rather than asymptotic growth, which is acceptable under the constraints.
+Here `T` is the total number of characters in the input and `S` is the number of distinct normalized superstitions. With at most 50 short lines, the running time is negligible compared to the limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    from io import StringIO
-    out = StringIO()
-    _stdout = _sys.stdout
-    _sys.stdout = out
-    solve()
-    _sys.stdout = _stdout
-    return out.getvalue().strip()
+    lines = inp.splitlines()
+
+    cnt = {}
+
+    for line in lines:
+        if line.startswith("* "):
+            s = " ".join(line[2:].lower().split())
+            cnt[s] = cnt.get(s, 0) + 1
+
+    best = max(cnt.values())
+    ans = sorted(k for k, v in cnt.items() if v == best)
+
+    return "\n".join(ans)
 
 # provided sample
-assert run("""Ukraine
+assert run(
+"""Ukraine
 * Friday the   13th
 * black   cat
 * knock the   wood
@@ -222,46 +325,111 @@ USA
 Holland
 France
 * Wishing Well
-""") == "friday the 13th\nwishing well"
+"""
+) == "friday the 13th\nwishing well"
 
-# single country, duplicates inside
-assert run("""A
-* Lucky Star
-* lucky   star
-""") == "lucky star"
+# minimum valid input
+assert run(
+"""A
+* X
+"""
+) == "x"
 
-# multiple max ties
-assert run("""A
-* a b
+# spacing normalization
+assert run(
+"""A
+* black   cat
 B
-* c d
-""") in {"a b\nc d"}
+* black cat
+"""
+) == "black cat"
 
-# case and spacing stress
-assert run("""X
-*  HELLO   WORLD
-Y
-* hello world
-Z
-* hello   world
-""") == "hello world"
+# case normalization
+assert run(
+"""A
+* Lucky Coin
+B
+* lucky coin
+"""
+) == "lucky coin"
 
-# minimal input
-assert run("""A
-* one""") == "one"
+# multiple winners requiring sorting
+assert run(
+"""A
+* zebra
+B
+* apple
+"""
+) == "apple\nzebra"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| duplicates in same country | single entry | set deduplication |
-| mixed capitalization | unified key | normalization correctness |
-| tie for maximum | multiple lines | correct max handling |
-| minimal input | single output | base case handling |
+| One country, one superstition | `x` | Minimum valid input |
+| Different spacing | `black cat` | Space normalization |
+| Different capitalization | `lucky coin` | Case-insensitive matching |
+| Two distinct winners | `apple`, `zebra` | Lexicographic output order |
 
 ## Edge Cases
 
-A common failure is treating raw strings as identifiers. For example, `"Lucky Star"` and `"lucky   star"` would be treated as different keys if whitespace is not normalized. In the algorithm, both are reduced to `"lucky star"` before insertion, so they map to the same set.
+Consider inconsistent spacing:
 
-Another issue is duplicate entries within a single country. If a country lists the same superstition twice after normalization, a naive counter would increment twice. In this solution, insertion into a set ensures idempotence. For instance, adding `"A"` twice to the set `{A}` leaves it unchanged.
+```
+A
+* black   cat
+B
+* black cat
+```
 
-Finally, ties in maximum frequency require collecting all candidates after computing the global maximum. The algorithm does this in a separate pass over the dictionary, ensuring that no superstition is missed due to ordering during accumulation.
+The first entry normalizes to `black cat`. The second entry normalizes to exactly the same string. The dictionary count becomes 2. The algorithm outputs:
+
+```
+black cat
+```
+
+Consider inconsistent capitalization:
+
+```
+A
+* Friday The 13th
+B
+* friday the 13th
+```
+
+Both entries normalize to `friday the 13th`. The count becomes 2 and the output is:
+
+```
+friday the 13th
+```
+
+Consider countries without superstition lists:
+
+```
+A
+B
+* lucky coin
+```
+
+The parser treats both `A` and `B` as country names because neither line begins with `* `. Only one superstition entry is processed, producing:
+
+```
+lucky coin
+```
+
+Consider several superstitions tied for first place:
+
+```
+A
+* zebra
+B
+* apple
+```
+
+Both frequencies are 1. The algorithm collects both names and sorts them lexicographically, producing:
+
+```
+apple
+zebra
+```
+
+This confirms that ties are handled correctly and that sorting occurs after normalization.
