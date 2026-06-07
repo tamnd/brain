@@ -1,6 +1,6 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1315 solved, 0 verified)."
+description: "Kvant mathematics problem solutions (1320 solved, 0 verified)."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 weight: 20
@@ -9,7 +9,7 @@ draft: false
 
 # Kvant Mathematics
 
-Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (1315 solved, 0 verified).
+Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (1320 solved, 0 verified).
 
 | # | Status | Time |
 |---|--------|------|
@@ -366,6 +366,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [358](358.md) | solved | 6m09s |
 | [361](361.md) | solved | 4m29s |
 | [362](362.md) | solved | 3m39s |
+| [364](364.md) | solved | 1m45s |
 | [365](365.md) | solved | 6m31s |
 | [366](366.md) | solved | 8m46s |
 | [367](367.md) | solved | 2m14s |
@@ -384,6 +385,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [391](391.md) | solved | 5m45s |
 | [392](392.md) | solved | 6m44s |
 | [393](393.md) | solved | 6m39s |
+| [395](395.md) | solved | 2m05s |
 | [396](396.md) | solved | 6m44s |
 | [398](398.md) | solved | 3m24s |
 | [399](399.md) | solved | 2m07s |
@@ -416,6 +418,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [432](432.md) | solved | 7m31s |
 | [433](433.md) | solved | 7m01s |
 | [434](434.md) | solved | 4m58s |
+| [435](435.md) | solved | 1m53s |
 | [436](436.md) | solved | 4m49s |
 | [438](438.md) | solved | 1m58s |
 | [439](439.md) | solved | 7m08s |
@@ -434,6 +437,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [458](458.md) | solved | 7m07s |
 | [460](460.md) | solved | 7m13s |
 | [461](461.md) | solved | 6m02s |
+| [462](462.md) | solved | 1m46s |
 | [463](463.md) | solved | 6m14s |
 | [465](465.md) | solved | 4m28s |
 | [466](466.md) | solved | 6m04s |
@@ -454,6 +458,7 @@ Solutions to mathematics problems from [Kvant](https://kvant.digital) magazine (
 | [485](485.md) | solved | 8m14s |
 | [487](487.md) | solved | 1m58s |
 | [488](488.md) | solved | 6m |
+| [489](489.md) | solved | 1m39s |
 | [491](491.md) | solved | 3m43s |
 | [492](492.md) | solved | 6m22s |
 | [493](493.md) | solved | 2m49s |
