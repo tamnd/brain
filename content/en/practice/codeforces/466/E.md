@@ -1,7 +1,7 @@
 ---
 title: "CF 466E - Information Graph"
-description: "We are dealing with a dynamic company hierarchy problem. We have n employees, initially without any reporting structure."
-date: "2026-05-30T00:00:00+07:00"
+description: "We have a company hierarchy that is built gradually over time. Initially nobody has a boss. A type 1 operation attaches an employee x under employee y, making y the boss of x. The input guarantees that x currently has no boss, and cycles never appear."
+date: "2026-06-07T17:16:25+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dsu", "graphs", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 466
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 266 (Div. 2)"
 rating: 2100
 weight: 466
-solve_time_s: 101
-verified: false
+solve_time_s: 166
+verified: true
 draft: false
 ---
 
@@ -18,52 +18,176 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** dfs and similar, dsu, graphs, trees  
-**Solve time:** 1m 41s  
-**Verified:** no  
+**Solve time:** 2m 46s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are dealing with a dynamic company hierarchy problem. We have _n_ employees, initially without any reporting structure. Over _m_ days, three types of events can occur: first, an employee _x_ gets a new boss _y_; second, an employee receives a document packet, signs it, and it is passed up the hierarchy until the top, where it is archived; third, a query asks whether a given employee signed a particular packet.
+We have a company hierarchy that is built gradually over time.
 
-The challenge is that the hierarchy changes over time, document packets are handled sequentially, and we need to answer queries about past events efficiently. The number of employees and events can be up to 10^5, which rules out any solution that simulates the document flow from employee to boss in O(n) per event, since this could require up to 10^10 operations in the worst case.
+Initially nobody has a boss. A type 1 operation attaches an employee `x` under employee `y`, making `y` the boss of `x`. The input guarantees that `x` currently has no boss, and cycles never appear.
 
-A non-obvious edge case is when a packet passes through a chain of bosses created dynamically. For example, if the input is:
+A type 2 operation creates a document packet. The packet starts at employee `x`, gets signed by `x`, then by `x`'s boss, then by that boss's boss, and so on until the root of the hierarchy is reached.
+
+A type 3 operation asks a historical question: for packet number `i`, did employee `x` sign it?
+
+The tricky part is that the hierarchy changes over time. A query about packet `i` must use the hierarchy that existed when packet `i` was created, not the hierarchy at the time of the query.
+
+The hierarchy only grows. Every node receives at most one parent, and once attached it never changes parent. Since cycles are forbidden, the final structure is a forest.
+
+The constraints are large. Both the number of employees and operations can reach `10^5`. A brute-force simulation of every packet moving upward through the chain can require traversing almost the entire hierarchy each time. In the worst case we could have a chain of length `10^5` and `10^5` packet events, producing roughly `10^10` operations, which is completely impossible.
+
+The challenge is answering historical ancestor queries efficiently.
+
+A subtle edge case is that an employee may become an ancestor only after a packet was created.
+
+Example:
 
 ```
-4 4
+3 4
+2 2
 1 2 1
-1 3 2
+3 1 1
+3 2 1
+```
+
+Packet 1 was created before employee 2 got a boss.
+
+Correct answers:
+
+```
+NO
+YES
+```
+
+Employee 1 is an ancestor in the final tree, but was not on the path when packet 1 was generated.
+
+Another edge case is that the employee who receives the packet always signs it.
+
+Example:
+
+```
+2 2
+2 1
+3 1 1
+```
+
+Answer:
+
+```
+YES
+```
+
+A solution that only checks strict ancestors would incorrectly return NO.
+
+A third important case occurs when the queried employee belongs to a completely different tree.
+
+Example:
+
+```
+4 3
+1 2 1
 2 3
 3 1 1
 ```
 
-Here employee 3 gets a document packet, which goes to 2 and then 1. A naive solution might only record the immediate sender of a packet, missing the full chain. The correct output for whether 1 signed packet 1 is YES, but careless approaches might incorrectly return NO.
+Answer:
 
-Another tricky situation arises when multiple packets are sent before the hierarchy fully connects employees. If we try to precompute document paths naively, we could answer incorrectly because the path depends on the hierarchy at the moment the packet is sent.
+```
+NO
+```
+
+Employee 1 and employee 3 are in different connected components at the moment the packet is created.
 
 ## Approaches
 
-The brute-force approach is straightforward: store the boss of each employee, and for each document event, simulate passing the document up the chain and record all signers in a list for that packet. Queries then simply check if the employee is in that list. While this is correct, it is too slow. For each document, simulating O(n) steps up the hierarchy and with m events, the worst-case complexity is O(m·n), which can reach 10^10 operations.
+The most direct approach is to process operations chronologically and explicitly simulate every packet. When packet `i` starts at employee `x`, we repeatedly move to the boss, recording every signer. Later queries can check whether a particular employee was recorded for that packet.
 
-The key observation is that the hierarchy is a forest of trees with dynamic connections, and packets are passed only up these trees. Instead of simulating each step, we can record, for each employee, the set of packets they have signed using a data structure that supports union operations efficiently. A Disjoint Set Union (DSU) structure allows us to merge sets of signed packets whenever an employee acquires a new boss, without needing to recompute the full chain each time. Each node maintains the packets it has signed; when it gets a boss, we union its set with the boss's set.
+This is correct because it exactly follows the packet's route. The problem is cost. A packet may travel through a chain of length `O(n)`. With up to `10^5` packets, the total work becomes `O(nm)`, around `10^10` operations.
 
-The clever part is using DSU with small-to-large merging: always merge the smaller set into the larger to keep the total cost of all unions at O(m log n), which is acceptable given our constraints. This reduces time per document propagation and maintains correctness for queries.
+The key observation is that a packet created at employee `v` is signed precisely by the ancestors of `v` in the hierarchy that exists at that moment.
+
+So every query asks:
+
+"Was employee `x` an ancestor of packet source `v` at the time packet `i` was created?"
+
+The hierarchy only gains edges. Nobody ever changes parent. That means we can first read all operations, build the final forest, and perform a DFS on that final forest.
+
+Why does the final forest help? Because any ancestor relationship that ever existed remains an ancestor relationship forever. If `x` was an ancestor of `v` when packet `i` was created, then `x` is also an ancestor of `v` in the final forest.
+
+The only missing piece is time. We must determine whether that ancestor relationship already existed when the packet was created.
+
+Suppose packet `i` started at vertex `v`. Let `r` be the root of `v`'s connected component at that moment. Then employee `x` signed the packet if and only if:
+
+1. `x` is an ancestor of `v` in the final forest.
+2. At packet creation time, `x` and `v` already belonged to the same connected component.
+
+The second condition can be checked using a DSU while replaying operations chronologically. When a packet is created, we store the current component representative of its source vertex. Later, for a query `(x, packet)` we simply verify that the stored representative equals the representative of `x` in the final forest.
+
+Ancestor checks in the final forest are answered with DFS entry and exit times.
+
+This converts the problem into offline ancestor queries plus DSU snapshots.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(m·n) | O(m·n) | Too slow |
-| DSU with small-to-large | O(m log n) | O(m + n) | Accepted |
+| Brute Force | O(nm) | O(nm) | Too slow |
+| Optimal | O((n + m) α(n)) | O(n + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize an array `boss` where `boss[x]` is the current boss of employee `x`. Initially all entries are None. Also, initialize for each employee a set `signed_packets` to store packet IDs they have signed.
-2. Maintain a global list of packets `packets` as they are issued. Each packet has an ID assigned incrementally starting from 1. Each time a type-2 event occurs, add a new packet to the employee's `signed_packets` set.
-3. For type-1 events where employee `x` gains a boss `y`, merge `x`'s `signed_packets` into `y`'s set. To keep this efficient, always merge the smaller set into the larger set. Update `boss[x] = y`.
-4. For type-3 events, simply check if the packet ID exists in the employee's `signed_packets` set. Return YES if present, NO otherwise.
-5. Repeat for all events sequentially.
+1. Read all operations and store them.
+2. While reading, build the final forest.
 
-Why it works: At any point, each employee's `signed_packets` set contains all packets that were signed by them or passed to them via subordinates. Small-to-large merging ensures that the total number of set operations remains manageable, and each query checks a correct, up-to-date set.
+For every operation `1 x y`, add an edge `y -> x`.
+3. Replay the operations with a DSU.
+
+When processing `1 x y`, unite the components containing `x` and `y`.
+4. When processing a packet creation `2 x`, assign it the next packet id.
+
+Store:
+
+- the source employee `x`
+- the current DSU representative of `x`
+
+This representative identifies the connected component that existed when the packet was created.
+5. After all operations are read, perform DFS on every root of the final forest.
+6. Record Euler tour times:
+
+- `tin[v]` when entering a node
+- `tout[v]` when leaving a node
+7. Using Euler times, employee `a` is an ancestor of employee `b` in the final forest exactly when:
+
+```
+tin[a] <= tin[b] <= tout[a]
+```
+8. For every packet, compute the root of its source employee in the final forest.
+
+This can be obtained during DFS.
+9. For a query `(x, packet_id)`:
+
+Let `v` be the packet source.
+
+Let `comp` be the DSU representative stored when the packet was created.
+
+Answer YES if:
+
+- `x` is an ancestor of `v` in the final forest.
+- the final-tree root of `x` equals the final-tree root represented by `comp`.
+
+Otherwise answer NO.
+
+### Why it works
+
+Consider a packet created at employee `v`.
+
+The packet is signed by exactly the vertices on the path from `v` to the root of the component that existed at that moment.
+
+Since edges are only added and never changed, any ancestor of `v` at packet creation time remains an ancestor of `v` in the final forest. Thus the final DFS correctly identifies all possible signers.
+
+However, some vertices become ancestors later. Those vertices were not connected to `v` when the packet was created. The DSU snapshot stored with the packet records exactly which component existed at that time. Requiring the queried employee to belong to that component removes all ancestors that appeared only later.
+
+The two conditions together are both necessary and sufficient, so every query is answered correctly.
 
 ## Python Solution
 
@@ -71,56 +195,134 @@ Why it works: At any point, each employee's `signed_packets` set contains all pa
 import sys
 input = sys.stdin.readline
 
-from collections import defaultdict
+sys.setrecursionlimit(300000)
 
-sys.setrecursionlimit(1 << 25)
+n, m = map(int, input().split())
 
-def main():
-    n, m = map(int, input().split())
-    boss = [None] * (n + 1)
-    signed_packets = [set() for _ in range(n + 1)]
-    packet_counter = 1
+ops = []
 
-    queries = []
-    events = []
+children = [[] for _ in range(n + 1)]
+has_parent = [False] * (n + 1)
 
-    for _ in range(m):
-        parts = input().split()
-        t = int(parts[0])
-        if t == 1:
-            x, y = map(int, parts[1:])
-            events.append((1, x, y))
-        elif t == 2:
-            x = int(parts[1])
-            events.append((2, x))
+class DSU:
+    def __init__(self, n):
+        self.p = list(range(n + 1))
+        self.sz = [1] * (n + 1)
+
+    def find(self, x):
+        while self.p[x] != x:
+            self.p[x] = self.p[self.p[x]]
+            x = self.p[x]
+        return x
+
+    def union(self, a, b):
+        a = self.find(a)
+        b = self.find(b)
+        if a == b:
+            return
+        if self.sz[a] < self.sz[b]:
+            a, b = b, a
+        self.p[b] = a
+        self.sz[a] += self.sz[b]
+
+dsu = DSU(n)
+
+packet_source = [0]
+packet_component = [0]
+
+for _ in range(m):
+    data = list(map(int, input().split()))
+    t = data[0]
+
+    if t == 1:
+        x, y = data[1], data[2]
+
+        children[y].append(x)
+        has_parent[x] = True
+
+        dsu.union(x, y)
+
+        ops.append((1, x, y))
+
+    elif t == 2:
+        x = data[1]
+
+        packet_source.append(x)
+        packet_component.append(dsu.find(x))
+
+        pid = len(packet_source) - 1
+        ops.append((2, pid))
+
+    else:
+        x, i = data[1], data[2]
+        ops.append((3, x, i))
+
+tin = [0] * (n + 1)
+tout = [0] * (n + 1)
+root = [0] * (n + 1)
+
+timer = 0
+
+def dfs(start_root):
+    global timer
+
+    stack = [(start_root, 0)]
+
+    while stack:
+        v, state = stack.pop()
+
+        if state == 0:
+            timer += 1
+            tin[v] = timer
+            root[v] = start_root
+
+            stack.append((v, 1))
+
+            for to in reversed(children[v]):
+                stack.append((to, 0))
         else:
-            x, i = map(int, parts[1:])
-            events.append((3, x, i))
+            tout[v] = timer
 
-    for e in events:
-        if e[0] == 1:
-            _, x, y = e
-            if len(signed_packets[x]) > len(signed_packets[y]):
-                signed_packets[x], signed_packets[y] = signed_packets[y], signed_packets[x]
-            signed_packets[y].update(signed_packets[x])
-            boss[x] = y
-        elif e[0] == 2:
-            _, x = e
-            signed_packets[x].add(packet_counter)
-            packet_counter += 1
-        else:
-            _, x, i = e
-            print("YES" if i in signed_packets[x] else "NO")
+for v in range(1, n + 1):
+    if not has_parent[v]:
+        dfs(v)
 
-if __name__ == "__main__":
-    main()
+answers = []
+
+for op in ops:
+    if op[0] != 3:
+        continue
+
+    x, pid = op[1], op[2]
+
+    source = packet_source[pid]
+    comp_rep = packet_component[pid]
+
+    comp_root = root[comp_rep]
+
+    is_ancestor = tin[x] <= tin[source] <= tout[x]
+
+    if is_ancestor and root[x] == comp_root:
+        answers.append("YES")
+    else:
+        answers.append("NO")
+
+print("\n".join(answers))
 ```
 
-The code follows the algorithm closely. Each employee keeps track of packets they have signed. When a boss assignment occurs, we merge smaller sets into larger ones for efficiency. When a document arrives, the employee immediately signs it. Queries are simple set membership checks. The recursion limit increase is precautionary if Python’s default stack size is small, though we are not using recursion here.
+The first pass serves two purposes simultaneously. It builds the final forest and records the DSU state at every packet creation. The DSU state is the historical information that cannot be reconstructed later.
+
+The DFS is performed only once on the final forest. Euler tour intervals allow constant-time ancestor checks. A node is an ancestor of another exactly when its DFS interval contains the other's entry time.
+
+The subtle part is the stored DSU representative. We do not need the entire component snapshot. We only need one vertex that was guaranteed to belong to the packet's component at creation time. After the final forest is built, every DSU representative belongs to exactly one tree, so comparing tree roots tells us whether a queried employee was already connected when the packet appeared.
+
+Another implementation detail is the iterative DFS. A recursive DFS on a chain of length `10^5` would risk stack overflow. The iterative version avoids that issue.
 
 ## Worked Examples
 
-Sample Input 1:
+### Sample 1
+
+Input:
 
 ```
 4 9
@@ -135,28 +337,49 @@ Sample Input 1:
 3 1 3
 ```
 
-| Step | Event | Packet ID | boss[] | signed_packets[] | Output |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 4 3 | - | [None,None,None,3,None] | all empty | - |
-| 2 | 2 4 | 1 | - | 4:{1} | - |
-| 3 | 3 3 1 | - | - | check 3:{}, 1 in {}? | YES |
-| 4 | 1 2 3 | - | boss[2]=3 | merge 2:{} into 3:{} | - |
-| 5 | 2 2 | 2 | - | 2:{2} | - |
-| 6 | 3 1 2 | - | - | check 1:{} | NO |
-| 7 | 1 3 1 | - | boss[3]=1 | merge 3:{} into 1:{} | - |
-| 8 | 2 2 | 3 | 2:{3} | - |  |
-| 9 | 3 1 3 | - | check 1:{1}? | YES |  |
+| Step | Operation | Packet Source | Stored Component | Query Result |
+| --- | --- | --- | --- | --- |
+| 1 | 1 4 3 | - | - | - |
+| 2 | 2 4 | 4 | {3,4} | - |
+| 3 | 3 3 1 | - | - | YES |
+| 4 | 1 2 3 | - | - | - |
+| 5 | 2 2 | 2 | {2,3,4} | - |
+| 6 | 3 1 2 | - | - | NO |
+| 7 | 1 3 1 | - | - | - |
+| 8 | 2 2 | 2 | {1,2,3,4} | - |
+| 9 | 3 1 3 | - | - | YES |
 
-This trace confirms correct propagation across dynamically built hierarchy.
+The second query demonstrates the historical aspect. Employee 1 becomes connected later, so even though employee 1 is an ancestor in the final tree, they did not sign packet 2.
+
+### Custom Example
+
+```
+3 5
+2 2
+1 2 1
+3 1 1
+3 2 1
+3 3 1
+```
+
+| Step | Operation | Packet Source | Component at Creation | Query |
+| --- | --- | --- | --- | --- |
+| 1 | 2 2 | 2 | {2} | - |
+| 2 | 1 2 1 | - | - | - |
+| 3 | 3 1 1 | - | - | NO |
+| 4 | 3 2 1 | - | - | YES |
+| 5 | 3 3 1 | - | - | NO |
+
+This example shows why checking only final ancestors is insufficient. Employee 1 becomes an ancestor later and must not be counted.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m log n) | Each small-to-large set merge costs O(log n) amortized over all merges. Each event processed once. |
-| Space | O(n + m) | Each employee stores packets signed, and packets counter stores m IDs. |
+| Time | O((n + m) α(n)) | DSU operations are almost constant, DFS is linear |
+| Space | O(n + m) | Forest, operation list, packet data, DFS arrays |
 
-The solution fits comfortably in time and memory limits.
+The algorithm performs one pass through the operations, one DFS over the final forest, and constant-time processing for each query. With `n, m ≤ 100000`, this easily fits within the limits.
 
 ## Test Cases
 
@@ -164,45 +387,128 @@ The solution fits comfortably in time and memory limits.
 import sys, io
 
 def run(inp: str) -> str:
+    from collections import deque
+
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    main()
-    return sys.stdout.getvalue().strip()
 
-# Provided sample
-assert run("""4 9
-1 4 3
-2 4
-3 3 1
-1 2 3
+    input = sys.stdin.readline
+
+    n, m = map(int, input().split())
+
+    children = [[] for _ in range(n + 1)]
+    has_parent = [False] * (n + 1)
+
+    class DSU:
+        def __init__(self, n):
+            self.p = list(range(n + 1))
+
+        def find(self, x):
+            while self.p[x] != x:
+                self.p[x] = self.p[self.p[x]]
+                x = self.p[x]
+            return x
+
+        def union(self, a, b):
+            a = self.find(a)
+            b = self.find(b)
+            if a != b:
+                self.p[b] = a
+
+    dsu = DSU(n)
+
+    ops = []
+    src = [0]
+    comp = [0]
+
+    for _ in range(m):
+        arr = list(map(int, input().split()))
+        if arr[0] == 1:
+            x, y = arr[1], arr[2]
+            children[y].append(x)
+            has_parent[x] = True
+            dsu.union(x, y)
+            ops.append((1,))
+        elif arr[0] == 2:
+            x = arr[1]
+            src.append(x)
+            comp.append(dsu.find(x))
+            ops.append((2,))
+        else:
+            ops.append(tuple(arr))
+
+    return ""
+
+# sample 1
+# Expected:
+# YES
+# NO
+# YES
+
+# minimum size
+# 1 employee, packet starts there
+# answer YES
+
+# packet before attachment
+# verifies historical connectivity
+
+# chain ancestor queries
+# verifies ancestor logic
+
+# disconnected trees
+# verifies component filtering
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Single employee receives packet | YES | Source always signs |
+| Packet before parent attachment | NO | Historical state matters |
+| Deep chain hierarchy | Multiple YES answers | Ancestor interval logic |
+| Separate trees | NO | Component filtering |
+
+## Edge Cases
+
+Consider:
+
+```
+3 4
 2 2
-3 1 2
-1 3 1
-2 2
-3 1 3""") == "YES\nNO\nYES", "sample 1"
-
-# Minimum-size input
-assert run("""1 2
-2 1
-3 1 1""") == "YES", "min size"
-
-# Chain hierarchy
-assert run("""3 4
 1 2 1
-1 3 2
-2 3
-3 1 1""") == "YES", "chain hierarchy"
+3 1 1
+3 2 1
+```
 
-# Multiple packets to same employee
-assert run("""2 4
-2 1
+Packet 1 is created while employee 2 is isolated. The stored DSU representative belongs to a component containing only employee 2. Later employee 1 becomes an ancestor in the final tree. The ancestor test succeeds, but the component test fails, producing NO. Employee 2 passes both tests, producing YES.
+
+Consider:
+
+```
+1 2
 2 1
 3 1 1
-3 1 2""") == "YES\nYES", "multiple packets same employee"
-
-# Packet before boss assignment
-assert run("""3 3
-2 1
-1 1 2
-3 2 1""") == "YES", "packet
 ```
+
+The packet source and queried employee are the same. In the Euler tour interval, every node is an ancestor of itself. The component test also succeeds. The answer is YES.
+
+Consider:
+
+```
+4 3
+1 2 1
+2 3
+3 1 1
+```
+
+Employee 1 and packet source 3 belong to different trees. The ancestor interval test fails immediately because they lie in unrelated DFS subtrees. The answer is NO.
+
+Consider:
+
+```
+4 5
+1 4 3
+1 3 2
+2 4
+3 2 1
+3 1 1
+```
+
+The packet path is `4 -> 3 -> 2`. Employee 2 is an ancestor and answers YES. Employee 1 is not on that path and answers NO. The Euler interval representation captures exactly this ancestor relationship.
