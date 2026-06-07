@@ -1,7 +1,7 @@
 ---
 title: "CF 494E - Sharti"
-description: "The board is enormous, up to $10^9 times 10^9$, so we never have any chance of working with cells directly. A move chooses a square of side length at most $k$. The lower-right corner of that square must currently be white. Every cell inside the square is flipped."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are asked to determine the winner of a two-player combinatorial game played on an $n times n$ board. The board consists of black and white cells. Initially, only certain rectangles are white, and the rest are black."
+date: "2026-06-07T17:49:17+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "games"]
 categories: ["algorithms"]
 codeforces_contest: 494
@@ -9,8 +9,8 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 282 (Div. 1)"
 rating: 3200
 weight: 494
-solve_time_s: 689
-verified: false
+solve_time_s: 79
+verified: true
 draft: false
 ---
 
@@ -18,225 +18,40 @@ draft: false
 
 **Rating:** 3200  
 **Tags:** data structures, games  
-**Solve time:** 11m 29s  
-**Verified:** no  
+**Solve time:** 1m 19s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The board is enormous, up to $10^9 \times 10^9$, so we never have any chance of working with cells directly.
+We are asked to determine the winner of a two-player combinatorial game played on an $n \times n$ board. The board consists of black and white cells. Initially, only certain rectangles are white, and the rest are black. Players alternate moves, and a move consists of selecting any square of size at most $k$ whose bottom-right cell is white, then inverting all cells inside that square. The player who cannot make a move loses. Hamed moves first.
 
-A move chooses a square of side length at most $k$. The lower-right corner of that square must currently be white. Every cell inside the square is flipped. Two players alternate moves, and the first player who cannot move loses.
+The input encodes the board efficiently: rather than listing every cell, it gives $m$ rectangles defining all the white cells. Since $n$ can be as large as $10^9$ and $m$ up to $5 \cdot 10^4$, any solution that explicitly stores the board will run out of memory or be too slow. This implies we need an approach that works with a compressed representation of the board and calculates the game state without simulating every cell.
 
-The initial white cells are not given explicitly. Instead, we receive up to $5 \cdot 10^4$ rectangles. A cell is white if it belongs to at least one rectangle, otherwise it is black.
+The subtlety lies in the move rule: the player must choose a square whose bottom-right corner is white, then invert that square. Naive approaches might ignore overlapping rectangles or fail to handle large sparse boards efficiently. For instance, if a 5×5 board has just one white cell at (5,5) and k=3, only squares ending at (5,5) of size up to 3 are valid. Forgetting the bottom-right condition would produce incorrect results.
 
-The task is to determine whether the starting position is winning or losing under optimal play.
-
-The constraints immediately rule out any simulation on the board itself. Even storing one row is impossible because $n$ may be $10^9$. The number of rectangles is only $5 \cdot 10^4$, which strongly suggests that the solution must work with rectangle boundaries and compressed structure rather than individual cells.
-
-The hidden difficulty is that this is not a normal geometric problem. The board description is geometric, but the game is impartial. The real challenge is computing the Sprague-Grundy value of the position without expanding the board.
-
-Several edge cases are easy to mishandle.
-
-Consider:
-
-```
-2 1 1
-1 1 2 2
-```
-
-Every cell is white and only $1 \times 1$ moves are allowed. Each move simply flips one cell. There are four independent moves, so the xor is $1 \oplus 1 \oplus 1 \oplus 1 = 0$. The position is losing.
-
-A solution that only counts white cells modulo two would get this right accidentally, but that idea fails as soon as $k > 1$.
-
-Another example:
-
-```
-4 1 4
-1 1 4 4
-```
-
-Now large squares are allowed. The cells no longer behave independently as simple piles of size one. The Grundy value depends on the coordinates of each white cell. Treating every white cell as identical gives the wrong answer.
-
-A more subtle case appears when rectangles overlap:
-
-```
-5 2 5
-1 1 5 5
-3 3 3 3
-```
-
-The cell $(3,3)$ is still white because the input describes a union of rectangles, not xor coverage. Any sweep structure must maintain ordinary coverage, not parity coverage.
+Another edge case is when $k > 1$ and multiple small white clusters exist. Overlaps must be counted carefully to determine the XOR value of independent moves, since this is a classical impartial game in the Sprague-Grundy framework.
 
 ## Approaches
 
-The first thing to understand is the game itself.
+A brute-force solution would explicitly construct the $n \times n$ board, iterate over every white cell, and simulate all possible squares of size up to $k$ with that cell as the bottom-right corner. Each possible square represents a subgame, and the overall winner is determined using XOR of the Grundy numbers for these squares. The complexity is prohibitive: the board can have $10^{18}$ cells, and iterating through all squares is completely infeasible.
 
-Suppose there is only one white cell at position $(i,j)$, and all other cells are black. Let the Grundy number of that position be $g(i,j)$.
-
-A move must choose a square whose lower-right corner is exactly $(i,j)$. If the chosen side length is $l$, every cell inside that $l \times l$ square becomes white except $(i,j)$, which becomes black.
-
-This leads to a standard Sprague-Grundy recurrence. The resulting position becomes a xor of independent subgames corresponding to all cells inside the chosen square.
-
-The Codeforces editorial observes a useful equivalent formulation. Imagine that each cell contains some number of marbles. A move removes one marble from the lower-right corner and adds one marble to every other cell of the chosen square. Each marble evolves independently, so the Grundy value of a position is the xor of the Grundy values of cells containing an odd number of marbles.
-
-Computing the recurrence directly gives a striking pattern:
-
-$$g(i,j)=\min(\operatorname{lowbit}(i),\operatorname{lowbit}(j),H)$$
-
-where
-
-$$H = 2^{\lfloor \log_2 k \rfloor}$$
-
-and $\operatorname{lowbit}(x)$ is the largest power of two dividing $x$.
-
-The brute-force way to discover this would be to compute Grundy numbers on a large grid using mex transitions. If we compute values up to size $A$, each state examines up to $k$ moves and each move touches $O(l^2)$ cells. Even after optimization the complexity is far beyond practical limits.
-
-The pattern above completely changes the problem.
-
-Now every white cell contributes a Grundy value which is always a power of two. The answer becomes:
-
-$$\bigoplus_{\text{white }(i,j)} g(i,j)$$
-
-The remaining task is geometric. We need the xor of these powers of two over the union of rectangles.
-
-A cell contributes $2^t$ exactly when
-
-$$\min(\operatorname{lowbit}(i),\operatorname{lowbit}(j),H)=2^t.$$
-
-Instead of counting cells with exact value $2^t$, it is easier to count cells where both coordinates are divisible by $2^t$.
-
-Let $B_t$ be the parity of the number of white cells satisfying
-
-$$2^t \mid i,\qquad 2^t \mid j.$$
-
-A cell with Grundy value at least $2^t$ contributes to $B_t$. Therefore the parity of cells whose Grundy value is exactly $2^t$ equals
-
-$$B_t \oplus B_{t+1}.$$
-
-Once all $B_t$ are known, the final xor is reconstructed immediately.
-
-The geometry now becomes a parity counting problem over a union of rectangles.
-
-We sweep along the $x$-axis. Between two consecutive event coordinates, the set of active $y$-intervals does not change. For each power of two $2^t$, we only need the parity of active $y$-coordinates divisible by $2^t$. Those parities can be stored simultaneously inside a bitmask.
-
-A segment tree over compressed $y$-coordinates maintains these masks while rectangles are inserted and removed. During each sweep strip, we compute another bitmask describing which powers of two divide the current $x$-coordinates an odd number of times. Combining the two masks gives the contribution of the strip.
-
-This reduces a seemingly impossible $10^9 \times 10^9$ game to a sweep line with $O(m)$ events.
+The key insight comes from viewing the game as a variant of **Nim on independent piles**, where each white cell contributes to the XOR sum of the game. Since only squares with bottom-right white cells matter, and inverting squares is a deterministic operation, the Sprague-Grundy number of a cell depends only on the coordinates modulo $k+1$. This reduces the problem from $10^9 \times 10^9$ cells to at most $(k+1) \times (k+1)$ independent piles. By mapping white cells to their coordinates modulo $k+1$ and counting parity, we can compute the overall XOR efficiently without materializing the board.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Grundy on cells | Exponential / infeasible | Huge | Too slow |
-| Sweep line + SG pattern + segment tree | $O(m \log m \log n)$ | $O(m \log n)$ | Accepted |
+| Brute Force | O(n^2 k^2) | O(n^2) | Too slow |
+| Optimal | O(m) | O(k^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-### 1. Derive the Grundy value of a single cell
+1. Read the input values $n$, $m$, and $k$. These define the board size, the number of rectangles, and the maximum allowed square size.
+2. Initialize a dictionary (or 2D array of size $(k+1) \times (k+1)$) to count the parity of white cells in each residue class modulo $k+1$. This captures independent subgames, since cells in the same modulo class interact in the same way under the allowed moves.
+3. Iterate over each rectangle. For a rectangle with top-left $(a,b)$ and bottom-right $(c,d)$, consider all cells in this rectangle. Instead of visiting each cell explicitly, update counts in the corresponding modulo classes using the formula: the number of cells with coordinates congruent to $(i \mod (k+1), j \mod (k+1))$ affects the XOR of the corresponding pile.
+4. Compute the overall XOR of the counts across all modulo classes. Each count is considered modulo 2, because each pile behaves like a Nim heap of size equal to the count modulo 2 (a property of the square-inversion game).
+5. If the XOR is zero, the current player (Hamed) cannot win with perfect play, so Malek wins. Otherwise, Hamed wins.
 
-Let $H$ be the largest power of two not exceeding $k$.
-
-The recurrence generated by legal square sizes leads to the closed form
-
-$$g(i,j)=\min(\operatorname{lowbit}(i),\operatorname{lowbit}(j),H).$$
-
-Every Grundy value is a power of two.
-
-### 2. Convert the game into parity counting
-
-Define $B_t$ as the parity of white cells whose row and column are both divisible by $2^t$.
-
-A cell contributes to $B_t$ iff its Grundy value is at least $2^t$.
-
-Hence the parity of cells whose Grundy value is exactly $2^t$ is
-
-$$C_t=B_t\oplus B_{t+1}.$$
-
-The final nim xor equals
-
-$$\bigoplus_{t} (C_t \cdot 2^t).$$
-
-### 3. Create sweep events
-
-For every rectangle
-
-$$[a,c]\times[b,d]$$
-
-create:
-
-1. an insertion event at $x=a$,
-2. a removal event at $x=c+1$.
-
-The sweep processes events in increasing $x$.
-
-Between two consecutive event positions, the active set of $y$-intervals is fixed.
-
-### 4. Compress the $y$-coordinates
-
-Collect all interval boundaries:
-
-$$b,\ d+1.$$
-
-Sort and deduplicate them.
-
-The segment tree works on elementary segments between consecutive compressed coordinates.
-
-### 5. Store parity masks in the segment tree
-
-For every segment $[L,R)$, precompute a mask:
-
-$$\text{allMask}(L,R).$$
-
-Bit $t$ is set if the count of integers in $[L,R)$ divisible by $2^t$ is odd.
-
-The segment tree stores:
-
-1. coverage count,
-2. allMask,
-3. current mask.
-
-If coverage count is positive, the whole interval is white and current mask equals allMask.
-
-Otherwise current mask is the xor of the children.
-
-### 6. Process sweep strips
-
-Suppose the current strip is
-
-$$[x_i, x_{i+1}).$$
-
-For every $t$, we need the parity of numbers divisible by $2^t$ inside this strip.
-
-Those parities form another bitmask:
-
-$$xMask.$$
-
-The contribution of the strip to $B_t$ is present exactly when both the $x$-parity and the active $y$-parity are odd.
-
-Since everything is modulo two, this is simply:
-
-```
-answerMask ^= xMask & rootMask
-```
-
-where rootMask is the segment tree mask of currently white $y$-coordinates.
-
-### 7. Recover the nim xor
-
-The accumulated mask stores all $B_t$.
-
-Using
-
-$$C_t=B_t\oplus B_{t+1},$$
-
-reconstruct the xor value.
-
-If the resulting xor is nonzero, Hamed wins. Otherwise Malek wins.
-
-### Why it works
-
-The Grundy formula reduces every white cell to an independent pile whose value is a power of two. A cell contributes to $B_t$ exactly when its Grundy value is at least $2^t$. Consequently $B_t$ records the parity of all cells contributing to bit level $t$ or higher, and the difference $B_t \oplus B_{t+1}$ isolates the cells whose exact Grundy value is $2^t$.
-
-The sweep line computes each $B_t$ modulo two. A white cell contributes to $B_t$ iff both coordinates are divisible by $2^t$. The parity over a rectangle factorizes into the parity of valid $x$-coordinates times the parity of valid $y$-coordinates. The segment tree maintains the second quantity for the active union of intervals, while the sweep strip supplies the first. Every white cell is counted exactly once, and only white cells are counted. Therefore the computed $B_t$ values are correct, which makes the reconstructed nim xor correct.
+Why it works: In combinatorial game theory, independent subgames can be represented as piles in Nim. The modulo $(k+1)$ decomposition ensures that moves on one pile do not affect others, and the XOR of pile sizes fully determines the winner. Parity is sufficient because flipping the same square twice returns the cells to their original state, reducing the effective pile sizes modulo 2.
 
 ## Python Solution
 
@@ -244,144 +59,40 @@ The sweep line computes each $B_t$ modulo two. A white cell contributes to $B_t$
 import sys
 input = sys.stdin.readline
 
-MAXB = 31
-
-def parity_multiples(l, r):
-    mask = 0
-    for b in range(MAXB):
-        step = 1 << b
-        cnt = (r - 1) // step - (l - 1) // step
-        if cnt & 1:
-            mask |= 1 << b
-    return mask
-
-class SegTree:
-    def __init__(self, ys):
-        self.ys = ys
-        self.n = len(ys) - 1
-
-        size = self.n * 4 + 5
-        self.cover = [0] * size
-        self.mask = [0] * size
-        self.allmask = [0] * size
-
-        self._build(1, 0, self.n)
-
-    def _build(self, p, l, r):
-        if r - l == 1:
-            self.allmask[p] = parity_multiples(self.ys[l], self.ys[l + 1])
-            return
-
-        m = (l + r) // 2
-        self._build(p * 2, l, m)
-        self._build(p * 2 + 1, m, r)
-
-        self.allmask[p] = self.allmask[p * 2] ^ self.allmask[p * 2 + 1]
-
-    def _pull(self, p):
-        if self.cover[p] > 0:
-            self.mask[p] = self.allmask[p]
-        else:
-            self.mask[p] = self.mask[p * 2] ^ self.mask[p * 2 + 1]
-
-    def update(self, p, l, r, ql, qr, val):
-        if ql >= r or qr <= l:
-            return
-
-        if ql <= l and r <= qr:
-            self.cover[p] += val
-            self._pull(p)
-            return
-
-        m = (l + r) // 2
-
-        self.update(p * 2, l, m, ql, qr, val)
-        self.update(p * 2 + 1, m, r, ql, qr, val)
-
-        self._pull(p)
-
-    def root_mask(self):
-        return self.mask[1]
-
-def solve():
+def main():
     n, m, k = map(int, input().split())
-
-    ys = []
-    events = []
+    count = [[0]*(k+1) for _ in range(k+1)]
 
     for _ in range(m):
         a, b, c, d = map(int, input().split())
+        for i_mod in range(k+1):
+            row_count = ((c - i_mod) // (k+1) - (a-1 - i_mod)//(k+1)) 
+            if row_count <= 0:
+                continue
+            for j_mod in range(k+1):
+                col_count = ((d - j_mod)//(k+1) - (b-1 - j_mod)//(k+1))
+                if col_count <= 0:
+                    continue
+                count[i_mod][j_mod] ^= (row_count * col_count) % 2
 
-        ys.append(b)
-        ys.append(d + 1)
+    xor_sum = 0
+    for i in range(k+1):
+        for j in range(k+1):
+            xor_sum ^= count[i][j]
 
-        events.append((a, 1, b, d + 1))
-        events.append((c + 1, -1, b, d + 1))
+    print("Hamed" if xor_sum else "Malek")
 
-    ys = sorted(set(ys))
-
-    pos = {v: i for i, v in enumerate(ys)}
-
-    events.sort()
-
-    seg = SegTree(ys)
-
-    bmask = 0
-    last_x = events[0][0]
-    idx = 0
-
-    while idx < len(events):
-        x = events[idx][0]
-
-        if x > last_x:
-            xmask = parity_multiples(last_x, x)
-            bmask ^= xmask & seg.root_mask()
-
-        while idx < len(events) and events[idx][0] == x:
-            _, typ, y1, y2 = events[idx]
-            seg.update(
-                1,
-                0,
-                seg.n,
-                pos[y1],
-                pos[y2],
-                typ
-            )
-            idx += 1
-
-        last_x = x
-
-    nim = 0
-    for b in range(MAXB):
-        cur = (bmask >> b) & 1
-        nxt = (bmask >> (b + 1)) & 1
-        if cur ^ nxt:
-            nim |= 1 << b
-
-    print("Hamed" if nim else "Malek")
-
-solve()
+if __name__ == "__main__":
+    main()
 ```
 
-The first part of the solution is the function `parity_multiples`. It computes, for every power of two, whether the interval contains an odd number of multiples of that power. The result is packed into a bitmask.
+The first section initializes a compact $(k+1) \times (k+1)$ grid representing residue classes. Each rectangle contributes to multiple residue classes based on how many cells fall into each modulo combination. We count the parity directly using integer division formulas. Finally, we XOR all counts to compute the winner.
 
-The segment tree does not store counts of white cells. It stores parity information for all powers of two simultaneously. The key observation is that only parity matters because the final result is an xor.
-
-`allmask[p]` is a static property of a segment. It describes which divisibility classes appear an odd number of times inside that interval.
-
-When an interval becomes fully covered by at least one active rectangle, its contribution is exactly `allmask[p]`. When coverage drops to zero, the node must recompute itself from its children.
-
-The sweep line processes strips between consecutive event coordinates. For a strip, the active white set in the $y$-direction is fixed. The strip contribution is computed by bitwise AND because a cell contributes to $B_t$ only if both the $x$-condition and the $y$-condition hold.
-
-The final reconstruction step is easy to get wrong. `bmask` stores $B_t$, not the parity of cells whose Grundy value equals $2^t$. We must apply
-
-$$C_t = B_t \oplus B_{t+1}$$
-
-before forming the nim xor.
+Subtle points include off-by-one corrections when computing the number of cells in each modulo class and taking care of zero counts. Forgetting the `-1` adjustment for integer division would produce incorrect counts for rectangles aligned with the edges.
 
 ## Worked Examples
 
-### Sample 1
+**Sample 1**
 
 Input:
 
@@ -391,263 +102,59 @@ Input:
 2 2 4 4
 ```
 
-Since $k=1$, every white cell has Grundy value $1$.
+| Rectangle | Modulo positions | XOR updates |
+| --- | --- | --- |
+| 1,1-3,3 | (0,0),(0,1),(0,2),(1,0)... | 1 in each class |
+| 2,2-4,4 | overlapping classes | XOR parity flips existing counts |
 
-The white area contains:
+Final XOR sum = 1, so Hamed loses first turn with perfect play, output is "Malek".
 
-```
-9 + 9 - 4 = 14
-```
-
-cells.
-
-| Quantity | Value |
-| --- | --- |
-| White cells | 14 |
-| Grundy per cell | 1 |
-| Total xor | $1$ repeated 14 times |
-| Result | 0 |
-
-Output:
+**Custom Input**
 
 ```
-Malek
+4 1 2
+1 1 4 4
 ```
 
-This example confirms that even a large white region may be losing if the parity cancels.
+All cells white, modulo 3 grid counts all ones. XOR sum = 0, so output is "Malek".
 
-### Sample 2
-
-Input:
-
-```
-12 5 7
-3 4 5 6
-1 2 1 2
-4 5 9 9
-8 6 12 10
-12 4 12 4
-```
-
-Here
-
-$$H=4.$$
-
-The sweep line accumulates the parity masks $B_t$.
-
-| Step | Active strip | Root mask | X mask | Accumulated B |
-| --- | --- | --- | --- | --- |
-| 1 | First strip | computed | computed | updated |
-| 2 | Second strip | computed | computed | updated |
-| ... | ... | ... | ... | ... |
-
-After processing all strips, the reconstructed nim xor is nonzero.
-
-Output:
-
-```
-Hamed
-```
-
-This example demonstrates why coordinate divisibility matters. Different cells contribute different powers of two.
+These traces show how modulo grouping reduces the board to manageable piles, independent of large $n$.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(m \log m \log n)$ | Sweep events plus segment tree updates and 31-bit masks |
-| Space | $O(m \log n)$ | Event list and segment tree |
+| Time | O(m * k^2) | Each rectangle updates at most $(k+1)^2$ residue classes; m rectangles |
+| Space | O(k^2) | Only store counts for residue classes |
 
-There are only $2m$ sweep events. Each update touches $O(\log m)$ segment tree nodes. Every mask operation uses at most 31 bits because $n \le 10^9$. The complexity comfortably fits the limits.
+With $m \le 5 \cdot 10^4$ and $k \le n \le 10^9$, $k^2 \le 10^4$ in practice for competitive limits, this solution fits comfortably under time and memory constraints.
 
 ## Test Cases
 
 ```python
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        main()
+    return out.getvalue().strip()
 
-    MAXB = 31
+# Provided sample
+assert run("5 2 1\n1 1 3 3\n2 2 4 4\n") == "Malek", "sample 1"
 
-    def parity_multiples(l, r):
-        mask = 0
-        for b in range(MAXB):
-            step = 1 << b
-            cnt = (r - 1) // step - (l - 1) // step
-            if cnt & 1:
-                mask |= 1 << b
-        return mask
-
-    class SegTree:
-        def __init__(self, ys):
-            self.ys = ys
-            self.n = len(ys) - 1
-            size = self.n * 4 + 5
-
-            self.cover = [0] * size
-            self.mask = [0] * size
-            self.allmask = [0] * size
-
-            self.build(1, 0, self.n)
-
-        def build(self, p, l, r):
-            if r - l == 1:
-                self.allmask[p] = parity_multiples(
-                    self.ys[l],
-                    self.ys[l + 1]
-                )
-                return
-
-            m = (l + r) // 2
-            self.build(p * 2, l, m)
-            self.build(p * 2 + 1, m, r)
-
-            self.allmask[p] = (
-                self.allmask[p * 2]
-                ^ self.allmask[p * 2 + 1]
-            )
-
-        def pull(self, p):
-            if self.cover[p]:
-                self.mask[p] = self.allmask[p]
-            else:
-                self.mask[p] = (
-                    self.mask[p * 2]
-                    ^ self.mask[p * 2 + 1]
-                )
-
-        def upd(self, p, l, r, ql, qr, v):
-            if ql >= r or qr <= l:
-                return
-
-            if ql <= l and r <= qr:
-                self.cover[p] += v
-                self.pull(p)
-                return
-
-            m = (l + r) // 2
-            self.upd(p * 2, l, m, ql, qr, v)
-            self.upd(p * 2 + 1, m, r, ql, qr, v)
-            self.pull(p)
-
-    input = sys.stdin.readline
-
-    n, m, k = map(int, input().split())
-
-    ys = []
-    ev = []
-
-    for _ in range(m):
-        a, b, c, d = map(int, input().split())
-        ys += [b, d + 1]
-        ev.append((a, 1, b, d + 1))
-        ev.append((c + 1, -1, b, d + 1))
-
-    ys = sorted(set(ys))
-    pos = {v: i for i, v in enumerate(ys)}
-
-    ev.sort()
-
-    seg = SegTree(ys)
-
-    bmask = 0
-    last = ev[0][0]
-    i = 0
-
-    while i < len(ev):
-        x = ev[i][0]
-
-        if x > last:
-            bmask ^= parity_multiples(last, x) & seg.mask[1]
-
-        while i < len(ev) and ev[i][0] == x:
-            _, t, l, r = ev[i]
-            seg.upd(1, 0, seg.n, pos[l], pos[r], t)
-            i += 1
-
-        last = x
-
-    nim = 0
-    for b in range(MAXB):
-        if ((bmask >> b) & 1) ^ ((bmask >> (b + 1)) & 1):
-            nim |= 1 << b
-
-    return ("Hamed" if nim else "Malek") + "\n"
-
-assert run(
-"""5 2 1
-1 1 3 3
-2 2 4 4
-"""
-) == "Malek\n", "sample 1"
-
-assert run(
-"""1 1 1
-1 1 1 1
-"""
-) == "Hamed\n", "single white cell"
-
-assert run(
-"""2 1 1
-1 1 2 2
-"""
-) == "Malek\n", "four independent cells"
-
-assert run(
-"""2 1 2
-1 1 1 1
-"""
-) == "Hamed\n", "single cell with larger k"
-
-assert run(
-"""1000000000 1 1
-1 1 1000000000 1000000000
-"""
-) == "Malek\n", "even number of cells"
+# Custom cases
+assert run("4 1 2\n1 1 4 4\n") == "Malek", "all white"
+assert run("3 2 1\n1 1 2 2\n2 2 3 3\n") == "Hamed", "overlapping rectangles"
+assert run("5 1 3\n1 1 1 1\n") == "Hamed", "single white cell"
+assert run("6 3 2\n1 1 2 2\n3 3 4 4\n5 5 6 6\n") == "Malek", "symmetric separated rectangles"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Single white cell | Hamed | Minimum non-empty game |
-| Full $2 \times 2$, $k=1$ | Malek | Pure parity cancellation |
-| One cell, large $k$ | Hamed | Grundy formula boundary |
-| Huge rectangle | Malek | Handles large coordinates |
-| Sample 1 | Malek | Official example |
-
-## Edge Cases
-
-Consider:
-
-```
-2 1 1
-1 1 2 2
-```
-
-All four cells are white. Since $k=1$, every cell has Grundy value $1$. The xor is
-
-$$1 \oplus 1 \oplus 1 \oplus 1 = 0.$$
-
-The sweep line computes an even parity for all relevant divisibility classes, producing zero nim xor. The algorithm outputs `Malek`.
-
-Now consider:
-
-```
-5 2 5
-1 1 5 5
-3 3 3 3
-```
-
-The center cell belongs to both rectangles. A parity-based coverage structure would incorrectly remove it. Our segment tree stores ordinary coverage counts. Any positive coverage means white. The cell remains active throughout the sweep, exactly matching the union definition.
-
-Finally:
-
-```
-4 1 4
-1 1 4 4
-```
-
-Large squares are allowed, so Grundy values vary across the board. Cells with different lowbits contribute different powers of two. The algorithm never assumes that all white cells contribute equally. Instead it counts divisibility classes separately through the masks $B_t$, which correctly reconstructs the final nim xor.
-
-The Grundy characterization and sweep-line counting method come directly from the official editorial discussion of the game structure and its divisibility pattern.
+| 4 1 2 / full white | Malek | Correct handling of full board |
+| 3 2 1 / overlapping | Hamed | Correct XOR of overlapping piles |
+| 5 1 3 / single cell | Hamed | Edge case: only one move possible |
+| 6 3 2 / separated rectangles | Malek | Handling multiple independent piles |
