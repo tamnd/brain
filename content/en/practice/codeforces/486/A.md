@@ -1,7 +1,7 @@
 ---
 title: "CF 486A - Calculating Function"
-description: "We are given a single positive integer and asked to evaluate a function built by alternating addition and subtraction of consecutive integers starting from 1. The sequence begins by subtracting 1, then adding 2, subtracting 3, adding 4, and so on until we reach n."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are given a single integer n and asked to evaluate the alternating sum $$-1 + 2 - 3 + 4 - 5 + dots + (-1)^n n.$$ The sign of each term depends on its position. Odd numbers are subtracted and even numbers are added. The output is the final value of this sum."
+date: "2026-06-07T17:26:54+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 486
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 277 (Div. 2)"
 rating: 800
 weight: 486
-solve_time_s: 649
-verified: false
+solve_time_s: 94
+verified: true
 draft: false
 ---
 
@@ -18,45 +18,137 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation, math  
-**Solve time:** 10m 49s  
-**Verified:** no  
+**Solve time:** 1m 34s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single positive integer and asked to evaluate a function built by alternating addition and subtraction of consecutive integers starting from 1. The sequence begins by subtracting 1, then adding 2, subtracting 3, adding 4, and so on until we reach n. The sign of each term depends entirely on its position in the sequence: odd-positioned terms contribute negatively and even-positioned terms contribute positively.
+We are given a single integer `n` and asked to evaluate the alternating sum
 
-The input is just one integer, so the task reduces to computing a deterministic arithmetic expression in an efficient way. The output is a single integer value representing the final result of this alternating sum.
+$$-1 + 2 - 3 + 4 - 5 + \dots + (-1)^n n.$$
 
-The constraint is extremely large, up to 10^15. This immediately rules out any approach that iterates from 1 to n. Even a linear scan would require 10^15 operations, which is far beyond any feasible time limit. The solution must therefore run in constant time or logarithmic time at worst, though the structure strongly suggests a closed-form expression.
+The sign of each term depends on its position. Odd numbers are subtracted and even numbers are added. The output is the final value of this sum.
 
-A subtle edge case appears when n is small or when parity changes behavior. For example, if n = 1, the result is simply -1. If n = 2, we get -1 + 2 = 1. If n = 3, we get -1 + 2 - 3 = -2. A naive implementation that assumes the sum is always non-negative or ignores alternating signs will fail immediately on these small cases.
+The constraint is the key part of the problem. The value of `n` can be as large as $10^{15}$. A direct simulation that iterates from `1` to `n` would require up to one quadrillion iterations, which is completely impossible within a one second time limit. Even $10^8$ operations would already be too much, so we need a mathematical formula that computes the answer in constant time.
 
-Another common pitfall is mishandling integer division when deriving a formula. Since the pattern depends on pairs of terms, incorrect grouping can produce off-by-one errors when n is odd.
+A common mistake is mishandling the parity of `n`.
+
+Consider:
+
+Input:
+
+```
+1
+```
+
+The sum is simply `-1`, so the correct output is:
+
+```
+-1
+```
+
+A careless implementation that assumes every pair contributes `1` and returns `n/2` would incorrectly produce `0`.
+
+Another edge case appears when `n` is odd.
+
+Input:
+
+```
+5
+```
+
+The sum is:
+
+$$-1 + 2 - 3 + 4 - 5 = -3.$$
+
+The correct output is:
+
+```
+-3
+```
+
+If we use the formula for even `n` without treating odd values separately, we would incorrectly return `2`.
+
+The largest allowed value also deserves attention.
+
+Input:
+
+```
+1000000000000000
+```
+
+The answer is:
+
+```
+500000000000000
+```
+
+Languages with fixed-size integer types could overflow in some problems of this scale. Python integers automatically expand, so no special handling is required.
 
 ## Approaches
 
-A direct brute-force approach evaluates the expression term by term. We maintain a running sum and alternate the sign as we iterate from 1 to n. This is straightforward and correct because it directly follows the definition of the function. However, its runtime grows linearly with n, requiring up to 10^15 additions in the worst case, which is computationally impossible.
+The most direct solution is to compute the sum exactly as written. We start from zero, iterate through every integer from `1` to `n`, subtract odd values, add even values, and print the result.
 
-The key observation is that the expression naturally groups into pairs: (-1 + 2), (-3 + 4), (-5 + 6), and so on. Each full pair contributes exactly +1. This transforms a long alternating sequence into a simple count of how many complete pairs exist, plus possibly one leftover term if n is odd.
+This approach is correct because it follows the definition term by term. The problem is its running time. When `n = 10^{15}`, the algorithm would perform roughly one quadrillion iterations. Such a program would never finish within the time limit.
 
-If n is even, every number is part of a complete pair, and the result is simply n/2. If n is odd, we have one extra negative term at the end, reducing the total by (n + 1)/2 compared to the even case, which simplifies to a clean formula as well. This pairing structure eliminates the need for iteration entirely.
+The structure of the expression gives us a much better idea. Look at consecutive pairs:
+
+$$(-1 + 2) = 1$$
+
+$$(-3 + 4) = 1$$
+
+$$(-5 + 6) = 1$$
+
+Every complete odd-even pair contributes exactly `1`.
+
+When `n` is even, all numbers are grouped into pairs. There are `n/2` pairs, so the answer is simply:
+
+$$\frac{n}{2}.$$
+
+When `n` is odd, the first `n-1` numbers form `(n-1)/2` complete pairs, contributing:
+
+$$\frac{n-1}{2}.$$
+
+The last remaining term is `-n`, so:
+
+$$\frac{n-1}{2} - n
+=
+-\frac{n+1}{2}.$$
+
+This gives a constant-time solution.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n) | O(1) | Too slow |
-| Pairing Formula | O(1) | O(1) | Accepted |
+| Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We compute the result based on whether n is even or odd.
+1. Read the integer `n`.
+2. Check whether `n` is even.
+3. If `n` is even, output `n // 2`.
 
-1. Read the integer n from input. This value determines how many alternating terms are included in the sum.
-2. Check whether n is divisible by 2. This determines whether the sequence ends on a positive or negative term.
-3. If n is even, compute n // 2. This works because every pair (-1 + 2), (-3 + 4), and so on sums to +1, and there are exactly n/2 such pairs.
-4. If n is odd, compute -(n // 2 + 1). The first n//2 pairs contribute +1 each, but the final unpaired term is -(n), which shifts the sum downward to this compact expression.
+Every odd-even pair contributes exactly `1`, and there are `n/2` such pairs.
+4. Otherwise, output `-(n + 1) // 2`.
 
-Why it works: the sequence partitions cleanly into disjoint adjacent pairs of the form (2k-1, 2k), each contributing +1. When n is even, there are no leftover elements, so the sum is exactly the number of pairs. When n is odd, one extra negative term remains, and subtracting its contribution from the paired total produces the final closed form. The structure guarantees that no term overlaps or is double-counted, so the decomposition is exact.
+The first `n-1` numbers form complete pairs, and the final unpaired term is `-n`.
+
+### Why it works
+
+For every odd integer `k`, the consecutive terms `-k` and `k+1` contribute:
+
+$$-k + (k+1) = 1.$$
+
+When `n` is even, the entire sequence consists of exactly `n/2` such pairs, giving a total of `n/2`.
+
+When `n` is odd, the first `n-1` terms form `(n-1)/2` pairs whose contribution is `(n-1)/2`. The remaining term is `-n`, producing
+
+$$\frac{n-1}{2} - n
+=
+-\frac{n+1}{2}.$$
+
+These formulas match the original sum exactly, so the algorithm is correct.
 
 ## Python Solution
 
@@ -64,93 +156,158 @@ Why it works: the sequence partitions cleanly into disjoint adjacent pairs of th
 import sys
 input = sys.stdin.readline
 
-n = int(input().strip())
+n = int(input())
 
 if n % 2 == 0:
     print(n // 2)
 else:
-    print(-(n // 2 + 1))
+    print(-(n + 1) // 2)
 ```
 
-The code directly implements the parity-based formula. The key implementation detail is integer division using `//`, which ensures correct floor behavior in Python for both even and odd cases. The branch structure avoids constructing or iterating over the sequence entirely, which is essential given the input size.
+The program begins by reading `n`.
 
-The even case returns the number of full contributing pairs. The odd case correctly accounts for the final negative term by shifting the result downward by one additional unit beyond the number of complete pairs.
+The parity of `n` completely determines the answer. For even values, every number belongs to a complete pair and each pair contributes `1`, so we print `n // 2`.
+
+For odd values, one negative term remains unpaired at the end. The closed-form result is `-(n + 1) // 2`.
+
+The implementation uses integer arithmetic only. Python's arbitrary-precision integers safely handle values up to and beyond $10^{15}$.
 
 ## Worked Examples
 
-### Example 1: n = 4
+### Example 1
 
-| Step | n | Parity | Computation | Result |
-| --- | --- | --- | --- | --- |
-| 1 | 4 | even | 4 // 2 | 2 |
+Input:
 
-The sequence is -1 + 2 - 3 + 4, which groups as (-1 + 2) + (-3 + 4). Each pair contributes +1, giving a total of 2, matching the formula.
+```
+4
+```
 
-### Example 2: n = 5
+| Step | n | Condition | Result |
+| --- | --- | --- | --- |
+| Read input | 4 | Even | - |
+| Apply formula | 4 | Even | 4 // 2 = 2 |
 
-| Step | n | Parity | Computation | Result |
-| --- | --- | --- | --- | --- |
-| 1 | 5 | odd | -(5 // 2 + 1) | -3 |
+Output:
 
-The sequence is -1 + 2 - 3 + 4 - 5. The first two pairs contribute +2, and the final -5 reduces the total to -3. The formula captures this directly.
+```
+2
+```
 
-These examples confirm that pairing fully accounts for the structure and that the odd case correctly handles the trailing negative term.
+This example shows the even case. The terms form two pairs:
+
+$$(-1+2) + (-3+4) = 1+1 = 2.$$
+
+### Example 2
+
+Input:
+
+```
+5
+```
+
+| Step | n | Condition | Result |
+| --- | --- | --- | --- |
+| Read input | 5 | Odd | - |
+| Apply formula | 5 | Odd | -(5 + 1) // 2 = -3 |
+
+Output:
+
+```
+-3
+```
+
+This example shows the odd case. The first four numbers contribute `2`, and the final term `-5` changes the result to `-3`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only arithmetic and a parity check are performed |
+| Time | O(1) | Only a few arithmetic operations are performed |
 | Space | O(1) | No additional data structures are used |
 
-The solution is constant time and constant memory, which easily satisfies the constraint up to 10^15.
+The algorithm performs a constant amount of work regardless of the size of `n`. Even when `n = 10^{15}`, the running time is effectively instantaneous and easily fits within the limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
-def solve(inp: str) -> str:
+def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(sys.stdin.readline().strip())
+    n = int(sys.stdin.readline())
+
     if n % 2 == 0:
         return str(n // 2)
     else:
-        return str(-(n // 2 + 1))
+        return str(-(n + 1) // 2)
 
-def run(inp: str) -> str:
-    return solve(inp)
-
-# provided samples
+# provided sample
 assert run("4\n") == "2", "sample 1"
-assert run("5\n") == "-3", "sample 2"
 
-# minimum input
-assert run("1\n") == "-1", "n = 1"
-
-# small even
-assert run("2\n") == "1", "n = 2"
-
-# larger odd
-assert run("9\n") == "-5", "odd case check"
-
-# large even sanity
-assert run("1000000000000000\n") == str(1000000000000000 // 2), "large even"
+# custom cases
+assert run("1\n") == "-1", "minimum input"
+assert run("2\n") == "1", "small even case"
+assert run("5\n") == "-3", "small odd case"
+assert run("1000000000000000\n") == "500000000000000", "maximum even value"
+assert run("999999999999999\n") == "-500000000000000", "maximum odd value"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 | -1 | minimum boundary |
-| 2 | 1 | smallest even case |
-| 9 | -5 | odd structure correctness |
-| 10^15 | 5e14 | large constraint handling |
+| `1` | `-1` | Minimum allowed input |
+| `2` | `1` | Smallest even case |
+| `5` | `-3` | Odd-number formula |
+| `1000000000000000` | `500000000000000` | Largest even value |
+| `999999999999999` | `-500000000000000` | Largest odd value |
 
 ## Edge Cases
 
-For n = 1, the computation has only a single term. The algorithm classifies it as odd, so it computes -(1 // 2 + 1) = -1. The sequence definition also gives -1, confirming correctness.
+Consider the smallest possible input:
 
-For n = 2, the sequence is -1 + 2. The algorithm uses the even branch, producing 2 // 2 = 1, which matches the direct evaluation.
+```
+1
+```
 
-For n = 3, we have -1 + 2 - 3 = -2. The algorithm computes -(3 // 2 + 1) = -(1 + 1) = -2, correctly accounting for the leftover negative term after one complete pair.
+The algorithm detects that `n` is odd and computes:
 
-These traces show that both parity branches align exactly with the structure of the sequence and handle incomplete pairing without error.
+$$-\frac{1+1}{2} = -1.$$
+
+The output is:
+
+```
+-1
+```
+
+This matches the original sum, which contains only one term.
+
+Now consider an odd value where one term remains unpaired:
+
+```
+5
+```
+
+The algorithm computes:
+
+$$-\frac{5+1}{2} = -3.$$
+
+The actual sum is:
+
+$$-1+2-3+4-5=-3.$$
+
+The result matches exactly.
+
+Finally, consider the largest odd input:
+
+```
+999999999999999
+```
+
+The algorithm computes:
+
+$$-\frac{999999999999999+1}{2}
+=
+-500000000000000.$$
+
+No iteration is performed, so the running time remains constant. Python's integer arithmetic handles the value safely, producing the correct answer immediately.
