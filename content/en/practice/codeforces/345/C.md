@@ -105,16 +105,7 @@ For January and February, treat them as months 13 and 14 of the previous year. T
 5. Let $K$ be the year within the century and $J$ be the zero-based century.
 6. Evaluate Zeller's formula:
 
-$$h =
-\left(
-q +
-\left\lfloor \frac{13(m+1)}{5} \right\rfloor +
-K +
-\left\lfloor \frac{K}{4} \right\rfloor +
-\left\lfloor \frac{J}{4} \right\rfloor +
-5J
-\right)
-\bmod 7$$
+$$h = \left( q + \left\lfloor \frac{13(m+1)}{5} \right\rfloor + K + \left\lfloor \frac{K}{4} \right\rfloor + \left\lfloor \frac{J}{4} \right\rfloor + 5J \right) \bmod 7$$
 
 where $q$ is the day of the month.
 7. In Zeller's numbering, Friday corresponds to $h = 6$.
