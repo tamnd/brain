@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1343 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1344 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1343
+kvant_total: 1344
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1343 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1344 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -1780,13 +1780,14 @@ draft: false
 
 ## 1985
 
-49 problems across Issues 1–12.
+50 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [901](901.md) Consider triangle $ABC$ with bisectors $AK$ and $BM$ intersecting at $O$. |  | 2m59s |
+| [902](902.md) *A. V. Kelarev*. Suppose the partition consists of finitely many arithmetic progressions |  | 9m23s |
 | [903](903.md) *A. A. Dorogovtsev*. A plane section of a convex polyhedron changes combinatorially only when the plane passes through a vertex. |  | 2m56s |
 | [904](904.md) I cannot write a solution because the actual problem statement is missing. |  | 1m16s |
 | [905](905.md) Consider the equation |  | 10m22s |
