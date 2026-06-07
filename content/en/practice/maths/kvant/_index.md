@@ -1,19 +1,19 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1355 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1356 solved, 0 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1355
+kvant_total: 1356
 kvant_verified: 0
 kvant_year_start: 1970
-kvant_year_end: 2025
+kvant_year_end: 2026
 weight: 20
 draft: false
 ---
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1355 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1356 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026.
 
 ## 1970
 
@@ -2988,4 +2988,14 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2867](2867.md) *Tournament of the Towns (XLVII)*. Label the people around the circle as a cyclic sequence of 60 vertices, each colored either $B$ (boy) or $G$ (girl), with exactly 30 of each color. |  | 7m56s |
+
+## 2026
+
+1 problems across Issue 1.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_2026_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2876](2876.md) *Southern Mathematical Tournament (XX)*. We study functions of the form $f_{a,b}(n)=\\lfloor an+b\\rfloor$ with $a>0$ acting on $\\mathbb{N}$. |  | 10m12s |
 
