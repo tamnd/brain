@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1350 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1351 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1350
+kvant_total: 1351
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1350 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1351 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -2927,7 +2927,13 @@ draft: false
 
 ## 1997
 
-1 problems across Issue 3.
+2 problems across Issues 1–3.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_1997_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [1580](1580.md) *Tournament of Towns (Autumn 1996)*. The problem asks whether a circle can be dissected into finitely many pieces whose boundaries consist of line segments and circular arcs, and then reassembled into a square of the same area. |  | 12m23s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1997_3/)
 
