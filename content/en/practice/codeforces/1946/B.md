@@ -1,7 +1,7 @@
 ---
 title: "CF 1946B - Maximum Sum"
-description: "We are given an array of integers and we are allowed to perform exactly k operations. Each operation lets us pick any contiguous segment of the current array, compute its sum, and insert that sum back into the array at any position."
-date: "2026-05-31T00:00:00+07:00"
+description: "We start with an integer array. Each operation allows us to choose any contiguous subarray, including the empty subarray, compute its sum, and insert that sum as a new element anywhere in the array. The key observation is that inserting a value changes the total sum of the array."
+date: "2026-06-07T17:50:36+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1946
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 936 (Div. 2)"
 rating: 1100
 weight: 1946
-solve_time_s: 165
-verified: false
+solve_time_s: 74
+verified: true
 draft: false
 ---
 
@@ -18,59 +18,136 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** dp, greedy, math  
-**Solve time:** 2m 45s  
-**Verified:** no  
+**Solve time:** 1m 14s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of integers and we are allowed to perform exactly `k` operations. Each operation lets us pick any contiguous segment of the current array, compute its sum, and insert that sum back into the array at any position.
+We start with an integer array. Each operation allows us to choose any contiguous subarray, including the empty subarray, compute its sum, and insert that sum as a new element anywhere in the array.
 
-The key effect of an operation is that it increases the total sum of the array by the sum of the chosen subarray. Inserting the value does not remove elements, so the structure grows, but the only quantity that matters for the final answer is the total sum of all elements.
+The key observation is that inserting a value changes the total sum of the array. If the chosen subarray has sum `x`, then after inserting `x`, the array sum increases by exactly `x`.
 
-So the real question is not about the array structure at all. It is about how much extra sum we can generate by repeatedly selecting subarrays.
+The task is to perform exactly `k` operations and maximize the final array sum. Since the answer can become enormous, we output it modulo `10^9 + 7`.
 
-The input gives multiple test cases, each with an array and a number of operations. For each test case, we need the maximum achievable total sum after exactly `k` operations, modulo $10^9 + 7$.
+The constraints are large enough that we need a nearly linear solution. Across all test cases, the total value of `n + k` is at most `2·10^5`, which rules out any approach that simulates subarrays repeatedly or explores operation sequences. We need something around `O(n)` or `O(n log n)` per test case.
 
-The constraints are large: total `n` and total `k` across tests are up to $2 \cdot 10^5$. This immediately rules out any solution that tries to simulate operations or recompute subarray sums per operation. Any valid solution must reduce each test case to linear or near-linear preprocessing and then constant-time reasoning per test.
+Several edge cases are easy to mishandle.
 
-A subtle point is that empty subarrays are allowed. Their sum is zero, meaning we can always “waste” an operation. This becomes important when all subarray sums are negative or when no positive gain is possible.
+Consider an array whose every subarray has non-positive sum:
 
-Another hidden pitfall is assuming we must pick non-empty segments. The ability to choose an empty segment is what makes the baseline behavior stable when all values are negative.
+```
+n = 2, k = 2
+a = [-4, -7]
+```
 
-A naive misunderstanding would be to simulate each operation greedily and update the array. That fails because each insertion changes future choices, and the number of states grows rapidly.
+The best choice is the empty subarray, whose sum is `0`. Any non-empty subarray would decrease the final answer. The correct result is `-11`, which becomes `999999996` modulo `10^9+7`.
+
+Consider an array with a positive maximum subarray:
+
+```
+n = 3, k = 2
+a = [2, 2, 8]
+```
+
+The maximum subarray sum is `12`. After inserting `12`, that new element can become part of an even larger subarray. A solution that adds `12` twice would obtain `36`, but the optimal process produces `12 + 24`, giving a final sum of `48`.
+
+Another subtle case is when the total array sum is negative but a positive subarray exists:
+
+```
+n = 3, k = 1
+a = [100, -200, 150]
+```
+
+The total sum is `50`, but the best operation inserts the maximum subarray sum `150`, yielding `200`. Looking only at the total sum misses the real source of gain.
 
 ## Approaches
 
-A brute-force strategy would explicitly simulate each operation. For each of the `k` steps, we would consider all subarrays of the current array, compute their sums, pick the best one, and insert it. Even if we maintain prefix sums to compute subarray sums quickly, each step still requires $O(n^2)$ choices in the worst case.
+A brute-force viewpoint is to treat each operation as a choice among all subarrays. There are `O(n²)` subarrays at every step, and the array length grows after each insertion. Even for one operation this is expensive, and for up to `2·10^5` operations it becomes completely infeasible.
 
-Since `k` itself can be large, the array size also increases with every insertion, making the brute-force explode far beyond feasible limits. The growth is multiplicative: after each operation, the array becomes larger, so later operations are even more expensive than earlier ones.
+The brute-force idea is correct because every operation contributes exactly the chosen subarray sum to the global total. The difficulty is determining which sequence of choices maximizes the accumulated gain.
 
-The key observation is that the only thing that matters is whether we can obtain a positive contribution from a subarray. Once we pick a subarray with sum `S`, we are effectively adding `S` to the total sum. The structure of the array after insertion is irrelevant for the final sum, because future operations only depend on sums we can extract, not positions.
+The breakthrough comes from understanding what happens after we insert a positive sum.
 
-This reduces the problem to understanding the best subarray sum we can repeatedly exploit. The optimal strategy is to repeatedly add the maximum possible subarray sum if it is positive. If all subarrays have non-positive sum, we instead use empty subarrays.
+Suppose the maximum subarray sum of the original array is `M`.
 
-So the core transition becomes: compute the maximum subarray sum `mx` once, then each operation contributes `max(0, mx)` to the total answer. The base is the sum of the original array.
+If `M ≤ 0`, no non-empty subarray is worth taking. Since the empty subarray is allowed, every operation can contribute `0`. The answer is simply the original array sum.
 
-We also implicitly allow choosing the best subarray every time independently, since inserting the sum does not reduce the ability to pick the same optimal segment again.
+Now assume `M > 0`.
+
+During the first operation we insert a value equal to `M`. Since that value is now present in the array, we can choose a subarray containing both the original maximum-sum segment and the newly inserted `M`. Its sum becomes `2M`.
+
+After inserting `2M`, we can repeat the same idea and obtain `4M`, then `8M`, and so on.
+
+The sequence of gains is
+
+```
+M, 2M, 4M, ..., 2^(k-1)M
+```
+
+whose total contribution is
+
+```
+M(2^k - 1)
+```
+
+No strategy can do better, because every inserted value ultimately originates from the maximum subarray sum available so far, and this doubling strategy always realizes the largest possible growth.
+
+Thus the problem reduces to two quantities:
+
+```
+S = sum of all array elements
+M = maximum subarray sum, but at least 0
+```
+
+The final answer is
+
+```
+S + M(2^k - 1)
+```
+
+computed modulo `10^9 + 7`.
+
+The maximum subarray sum is obtained with Kadane's algorithm in linear time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | $O(k \cdot n^2)$ | $O(n)$ | Too slow |
-| Kadane + Greedy Accumulation | $O(n)$ | $O(1)$ | Accepted |
+| Brute Force | Exponential / worse than O(k·n²) | O(n) | Too slow |
+| Optimal | O(n) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We reduce the problem to two quantities: the total sum of the array and the maximum subarray sum.
+1. Compute the total array sum `S`.
+2. Run Kadane's algorithm to find the maximum subarray sum.
+3. Replace that value by `max(0, maximum_subarray_sum)`.
 
-1. Compute the total sum of the array. This is the base contribution before any operations. The reason this works is that operations only add values, they never remove or replace existing sum contribution.
-2. Compute the maximum subarray sum using a linear scan (Kadane’s algorithm). This identifies the best possible gain from a single operation.
-3. If the maximum subarray sum is negative, treat it as zero. This corresponds to choosing an empty subarray, which guarantees no decrease in total sum.
-4. Each operation contributes independently the best possible gain. Therefore, the total added contribution is `k * max(0, mx_subarray_sum)`.
-5. Add this contribution to the original sum.
-6. Take the result modulo $10^9 + 7$, ensuring non-negative output even if intermediate values were negative.
+If every subarray is negative, we can always choose the empty subarray and gain `0`.
+4. Compute `pow2 = 2^k mod MOD`.
+5. Compute the extra contribution:
 
-Why it works: every operation is independent in terms of contribution to total sum. The structure changes do not restrict future ability to obtain the same maximum gain because we can always select subarrays from the original content effectively, and inserted elements do not create better-than-optimal subarray sums beyond `mx`. The process stabilizes into repeatedly harvesting the same best gain.
+```
+M(2^k - 1)
+```
+
+modulo `MOD`.
+6. Convert the original sum `S` into modulo form.
+
+Since `S` may be negative, use Python's modulo operation.
+7. Add the two parts modulo `MOD` and output the result.
+
+### Why it works
+
+Let `M` be the maximum non-negative subarray sum currently achievable.
+
+After inserting a value equal to `M`, that inserted value can be placed adjacent to the segment producing `M`. The next maximum achievable subarray sum becomes `2M`. Repeating this argument shows that the optimal gains form the sequence
+
+```
+M, 2M, 4M, ..., 2^(k-1)M.
+```
+
+Their sum is exactly `M(2^k-1)`.
+
+Any inserted value originates from some subarray sum. No subarray can exceed the current maximum achievable subarray sum, so no operation can gain more than the doubling strategy gains at that step. Since the strategy achieves the maximum possible gain every time, it is optimal.
 
 ## Python Solution
 
@@ -78,158 +155,106 @@ Why it works: every operation is independent in terms of contribution to total s
 import sys
 input = sys.stdin.readline
 
-MOD = 10**9 + 7
+MOD = 1000000007
 
 def solve():
     t = int(input())
+
     for _ in range(t):
         n, k = map(int, input().split())
         a = list(map(int, input().split()))
-        
+
         total = sum(a)
-        
-        best = float('-inf')
+
+        best = 0
         cur = 0
-        
+
         for x in a:
-            cur = max(x, cur + x)
+            cur = max(0, cur + x)
             best = max(best, cur)
-        
-        if best < 0:
-            best = 0
-        
-        ans = (total + best * k) % MOD
+
+        extra = best * ((pow(2, k, MOD) - 1) % MOD)
+        ans = (total % MOD + extra) % MOD
+
         print(ans)
 
-if __name__ == "__main__":
-    solve()
+solve()
 ```
 
-The solution separates global accumulation from local optimization cleanly. The `total` variable tracks the invariant base sum. The Kadane loop maintains a running best segment ending at each position, ensuring we capture the optimal subarray in linear time. The clamp to zero enforces the empty-subarray option.
+The variable `total` stores the original array sum.
 
-The final multiplication by `k` reflects the independence of operations, which is the central structural simplification of the problem.
+Kadane's algorithm is implemented using `cur` and `best`. The expression
+
+```
+cur = max(0, cur + x)
+```
+
+maintains the maximum subarray sum ending at the current position, while allowing the empty subarray. As a result, `best` automatically becomes `max(0, maximum_subarray_sum)`.
+
+The value `2^k` can be enormous, so modular exponentiation is required. Python's built-in `pow(2, k, MOD)` computes it in `O(log k)` time.
+
+A common mistake is forgetting that `total` may be negative. Using
+
+```
+total % MOD
+```
+
+converts it into the correct modular representation before adding the extra contribution.
 
 ## Worked Examples
 
-We trace a simplified version of two test cases to observe how the algorithm behaves.
-
 ### Example 1
 
-Input: `a = [2, 2, 8], k = 3`
+Input:
 
-| Step | cur | best | total |
-| --- | --- | --- | --- |
-| 1 (2) | 2 | 2 | 12 |
-| 2 (2) | 4 | 4 | 12 |
-| 3 (8) | 12 | 12 | 12 |
+```
+n = 3, k = 3
+a = [2, 2, 8]
+```
 
-After scan, `best = 12`.
+Kadane's trace:
 
-Each operation adds 12, so total becomes:
+| Element | cur | best |
+| --- | --- | --- |
+| 2 | 2 | 2 |
+| 2 | 4 | 4 |
+| 8 | 12 | 12 |
 
-`12 + 3 * 12 = 48`.
+Now:
 
-This matches the idea that the entire array is always the optimal segment.
+| Variable | Value |
+| --- | --- |
+| S | 12 |
+| M | 12 |
+| 2^k - 1 | 7 |
+| Extra | 84 |
+| Answer | 96 |
+
+The gains are `12`, `24`, and `48`, whose sum is `84`.
 
 ### Example 2
 
-Input: `a = [-4, -7], k = 2`
+Input:
 
-| Step | cur | best | total |
-| --- | --- | --- | --- |
-| 1 (-4) | -4 | -4 | -11 |
-| 2 (-7) | -7 | -4 | -11 |
-
-Here all subarrays are negative, so `best = 0`.
-
-Total remains:
-
-`-11 + 2 * 0 = -11`, which modulo becomes `999999996`.
-
-This demonstrates the role of empty subarrays, preventing any forced degradation or improvement.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | $O(n)$ per test | Single pass Kadane plus sum computation |
-| Space | $O(1)$ | Only a few running variables are used |
-
-The total complexity across all test cases is linear in the input size, which fits comfortably under the constraint that the sum of `n` is $2 \cdot 10^5$. Memory usage is constant beyond the input storage.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    from sys import stdout
-    output = []
-
-    MOD = 10**9 + 7
-
-    t = int(sys.stdin.readline())
-    for _ in range(t):
-        n, k = map(int, sys.stdin.readline().split())
-        a = list(map(int, sys.stdin.readline().split()))
-        
-        total = sum(a)
-        
-        best = float('-inf')
-        cur = 0
-        for x in a:
-            cur = max(x, cur + x)
-            best = max(best, cur)
-        
-        best = max(0, best)
-        output.append(str((total + best * k) % MOD))
-    
-    return "\n".join(output)
-
-# provided samples (partial check due to length)
-assert run("""1
-2 2
--4 -7
-""") == "999999996"
-
-assert run("""1
-3 3
-2 2 8
-""") == "96"
-
-# custom cases
-assert run("""1
-1 5
-5
-""") == "30", "single positive element"
-assert run("""1
-1 5
--5
-""") == "999999982", "single negative element"
-assert run("""1
-5 3
-0 0 0 0 0
-""") == "0", "all zeros"
-assert run("""1
-4 2
--1 2 -1 2
-""") == "10", "alternating positives"
+```
+n = 2, k = 2
+a = [-4, -7]
 ```
 
-| Test input | Expected output | What it validates |
+Kadane's trace:
+
+| Element | cur | best |
 | --- | --- | --- |
-| single positive | 30 | repeated gains accumulate correctly |
-| single negative | mod result | empty subarray behavior |
-| all zeros | 0 | neutral stability |
-| alternating positives | 10 | Kadane correctly finds best segment |
+| -4 | 0 | 0 |
+| -7 | 0 | 0 |
 
-## Edge Cases
+Now:
 
-For arrays with all negative values, the algorithm sets `best` to zero, ensuring that every operation effectively becomes a no-op. For example, `[-1, -2, -3]` produces total `-6`, and since no positive subarray exists, the answer remains `-6 mod M`. This prevents incorrect attempts to “improve” the array using negative segments.
+| Variable | Value |
+| --- | --- |
+| S | -11 |
+| M | 0 |
+| Extra | 0 |
+| Answer | 999999996 |
 
-For arrays with a single element, Kadane’s algorithm correctly identifies that element as the only subarray candidate. If it is positive, it is multiplied by `k`; if negative, it is ignored via the zero clamp. This avoids double-counting or missing the empty subarray option.
-
-For arrays of all zeros, both total and best remain zero, and repeated operations do not change anything. This confirms stability under neutral inputs.
-
-For mixed-sign arrays where positive segments are isolated, Kadane ensures only contiguous positive contributions are selected, and repeated operations scale only the best contiguous gain rather than summing multiple disjoint segments incorrectly.
+This demonstrates why allowing the empty subarray is essential. Every non-empty choice wou
