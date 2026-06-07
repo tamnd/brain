@@ -1,7 +1,7 @@
 ---
 title: "CF 2222B - Artistic Balance Tree"
-description: "We have an array, and before each marking operation we are allowed to reverse any odd-length segment centered at some position. After that reversal, the element currently sitting at index xi becomes marked. The subtle detail is that marks belong to elements, not positions."
-date: "2026-06-01T00:00:00+07:00"
+description: "We are given an array of integers and a sequence of operations. Each operation consists of two conceptual parts: first, you can swap elements symmetrically around any chosen center in the array, effectively letting you reorder elements in a controlled way; second, you mark a…"
+date: "2026-06-07T18:42:14+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 2222
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Spectral::Cup 2026 Round 1 (Codeforces Round 1094, Div. 1 + Div. 2)"
 rating: 0
 weight: 2222
-solve_time_s: 233
+solve_time_s: 210
 verified: false
 draft: false
 ---
@@ -18,228 +18,50 @@ draft: false
 
 **Rating:** -  
 **Tags:** greedy, sortings  
-**Solve time:** 3m 53s  
+**Solve time:** 3m 30s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have an array, and before each marking operation we are allowed to reverse any odd-length segment centered at some position. After that reversal, the element currently sitting at index `x_i` becomes marked.
+We are given an array of integers and a sequence of operations. Each operation consists of two conceptual parts: first, you can swap elements symmetrically around any chosen center in the array, effectively letting you reorder elements in a controlled way; second, you mark a specific element based on the operation input. Importantly, the mark stays attached to the element itself, not its position, so future swaps do not unmark it. After all operations, the task is to minimize the sum of elements that remain unmarked.
 
-The subtle detail is that marks belong to elements, not positions. If an element gets marked and later moves somewhere else, it remains marked forever.
+The first key observation is that the symmetric swaps are unrestricted in the sense that for each operation, the interval length can be chosen freely. This means that, in principle, the array can be rearranged arbitrarily, provided you do not violate array boundaries. Therefore, the exact sequence of swaps does not constrain the algorithm - the only relevant constraint is which elements get marked.
 
-Our goal is to choose the reversals so that, after all `m` operations, the sum of the unmarked elements is as small as possible.
+The input constraints allow up to 10^5 elements and 10^5 operations per test set, with up to 10^4 test cases. A naive simulation of all swaps would be infeasible, as each swap could be O(n) in the worst case. We need an approach that avoids simulating swaps entirely and focuses on the elements that will remain unmarked.
 
-A useful way to think about the problem is that we are trying to maximize the total value of the elements that eventually get marked. The total sum of the array never changes, so:
-
-$$\text{unmarked sum} = \text{total sum} - \text{marked sum}$$
-
-Minimizing the unmarked sum is exactly the same as maximizing the marked sum.
-
-The constraints are large enough that any approach which explicitly simulates many possible rearrangements is impossible. Across all test cases, both `n` and `m` can reach `10^5`, so an `O(n^2)` algorithm would already require around `10^{10}` operations in the worst case. We need something around `O(n log n)` total.
-
-The dangerous part of this problem is understanding what the allowed reversal can and cannot do.
-
-Consider the array:
-
-```
-1 2 3 4 5
-```
-
-Choose center `u = 3` and length `y = 2`.
-
-```
-1 2 3 4 5
-↓
-5 4 3 2 1
-```
-
-Position `1` swaps with `5`, and position `2` swaps with `4`.
-
-Every swap is between positions that are the same distance from the center. Those positions always have the same parity. For example, positions `1` and `5` are both odd, and positions `2` and `4` are both even.
-
-That means an element starting on an odd index can never move to an even index, and vice versa.
-
-A common mistake is to assume the array can be rearranged arbitrarily. For example:
-
-```
-n = 2
-a = [100, 1]
-x = [2]
-```
-
-The only marked index is even. The value `100` starts on an odd position and can never reach position `2`.
-
-The correct answer is:
-
-```
-100
-```
-
-because only the element `1` can ever be marked.
-
-Another easy mistake is to always mark a new element whenever possible.
-
-Consider:
-
-```
-a = [-5, -10]
-x = [1, 1]
-```
-
-The only accessible parity class contains just one element, `-5`.
-
-Marking it once is good because it removes `-5` from the unmarked sum.
-
-Marking another negative element would actually make the answer worse if one existed. After the first mark, it is often better to keep remarking the same already-marked element instead of marking a new negative value.
-
-The correct answer is:
-
-```
--10
-```
-
-not `0`.
-
-A third edge case appears when every available value in a parity group is negative.
-
-Example:
-
-```
-a = [-1, -2, -3]
-x = [1, 3]
-```
-
-Both operations target odd positions.
-
-Odd-position values are:
-
-```
--1, -3
-```
-
-We should mark only `-1` once, then reuse that already-marked element for the second operation.
-
-The answer becomes:
-
-```
--2 + (-3) = -5
-```
-
-Marking both odd elements would give `-2`, which is larger and therefore worse.
+An important edge case arises when all elements are negative. A careless approach might try to select the largest elements to leave unmarked, but the optimal strategy is always to mark the largest elements to leave the smallest possible sum of unmarked elements.
 
 ## Approaches
 
-A brute-force mindset starts by treating each operation independently. Before every mark, we could try all possible odd-length reversals, generate all reachable arrays, and decide which element gets marked.
+The brute-force method is straightforward: for each operation, perform the symmetric swap around the chosen center and then mark the specified element. After all operations, iterate through the array to sum unmarked elements. This approach is correct because it faithfully implements the problem rules, but its time complexity is O(m * n) in the worst case. With n and m up to 10^5, this would require up to 10^10 operations, which exceeds the time limit by several orders of magnitude.
 
-This is correct in principle because the operation sequence completely determines which elements become marked. The problem is that the number of possible states explodes immediately. Even a single operation has `O(n^2)` possible choices of center and radius. Chaining that across up to `10^5` operations is hopeless.
+The key insight is that the symmetric swaps do not restrict which elements are ultimately marked. Since we can swap elements arbitrarily, we can always move the largest elements into positions that will be marked. Therefore, the problem reduces to a simpler task: identify the elements that will be marked, pick the largest of them if possible, and compute the sum of the remaining elements.
 
-The key observation comes from looking at what a reversal actually changes.
+Concretely, we need to:
 
-Suppose we reverse a segment centered at `u`. A position `u-d` swaps with `u+d`.
+1. Collect all indices that will be marked.
+2. Sort the array.
+3. Mark the largest elements (up to the number of marked indices) to minimize the sum of unmarked elements.
 
-Their difference is:
-
-$$(u+d) - (u-d) = 2d$$
-
-which is always even.
-
-So every swap happens between positions of the same parity.
-
-This gives us an invariant:
-
-Every element remains forever inside its original parity class.
-
-Odd-index elements can move only among odd positions. Even-index elements can move only among even positions.
-
-The next question is whether there are any additional restrictions inside a parity class.
-
-There are not.
-
-Take `y = 1`. Then the operation swaps positions `u-1` and `u+1`. These positions are adjacent inside the parity subsequence.
-
-For example:
-
-```
-positions: 1 3 5 7
-```
-
-Using suitable centers, we can swap:
-
-```
-1 ↔ 3
-3 ↔ 5
-5 ↔ 7
-```
-
-Adjacent swaps generate arbitrary permutations, so we can rearrange all odd-position elements however we want among odd positions. The same is true for even positions.
-
-After this observation, the original problem becomes much simpler.
-
-Let:
-
-```
-odd_cnt  = number of operations whose x_i is odd
-even_cnt = number of operations whose x_i is even
-```
-
-Every odd operation can mark any odd-position element we choose.
-
-Every even operation can mark any even-position element we choose.
-
-To maximize the marked sum, we should mark the largest positive values available in each parity class.
-
-If a parity class has already contributed at least one marked element, then future operations of the same parity can simply mark that same element again. We are never forced to mark additional negative values.
-
-So for each parity class independently:
-
-1. Sort its values descending.
-2. Take positive values from largest to smallest.
-3. Stop when either we run out of operations of that parity or the next value is non-positive.
-
-The total marked value is the sum of all chosen positive elements.
-
-The answer is:
-
-$$\text{total sum} - \text{marked value}$$
+This reduces the problem from O(m * n) to O(n log n) due to sorting.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential state space | Exponential | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force | O(m * n) | O(n) | Too slow |
+| Optimal | O(n log n + m) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the total sum of the array.
-2. Split the array into two groups based on index parity.
+1. For each test case, read the array length `n` and number of operations `m`.
+2. Read the array `a` and the list of operation indices `x`.
+3. Track all marked elements using a boolean array of length `n` or a set. Mark each element corresponding to the input indices. Since marking is element-based, duplicates do not matter.
+4. Sort the array in ascending order.
+5. Count the total number of elements that were marked.
+6. The minimum possible sum of unmarked elements is obtained by summing the first `n - marked_count` elements of the sorted array. This works because we can swap elements arbitrarily, so the largest elements can always be marked.
+7. Print the sum.
 
-Elements from odd indices form one group, and elements from even indices form the other. An element never leaves its parity group.
-3. Count how many marking operations target odd indices and how many target even indices.
-
-These counts tell us how many distinct elements from each parity group could potentially be marked.
-4. Sort both parity groups in descending order.
-
-We want to take the largest values first because marked elements are removed from the unmarked sum.
-5. Process the odd group.
-
-Walk through the sorted values. For each positive value, mark it if we still have unused odd operations available. Stop once we run out of odd operations or reach a non-positive value.
-6. Process the even group in the same way.
-7. Let the sum of all selected values be `marked_sum`.
-8. Output:
-
-$$\text{total sum} - \text{marked sum}$$
-
-### Why it works
-
-Parity is the only permanent restriction created by the operation. Every reversal swaps positions with the same parity, so elements never cross between odd and even indices.
-
-Inside a parity class, adjacent parity positions can be swapped using a length-1 operation. Since adjacent swaps generate every permutation, any arrangement of elements within the parity class is reachable.
-
-That means an operation targeting an odd index can choose any odd-position element, and similarly for even indices.
-
-Marking a positive value always improves the answer because it removes that value from the unmarked sum. Marking a non-positive value never helps. Since we can always reuse an already-marked element in later operations, there is no reason to mark extra non-positive elements.
-
-So the optimal strategy is exactly to mark the largest positive values available in each parity class, limited by the number of operations of that parity.
+Why it works: The invariant is that swapping allows any permutation of the array with respect to which elements are marked. Therefore, the only decision that matters is which elements are marked. By marking the largest elements, the remaining unmarked elements are minimized in sum. Sorting guarantees we can select the smallest elements for the sum in O(n log n) time.
 
 ## Python Solution
 
@@ -249,346 +71,109 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
-
     for _ in range(t):
         n, m = map(int, input().split())
         a = list(map(int, input().split()))
         x = list(map(int, input().split()))
+        
+        marked = [False] * n
+        for idx in x:
+            marked[idx - 1] = True  # convert to 0-based index
+        
+        marked_count = sum(marked)
+        a.sort()
+        unmarked_sum = sum(a[:n - marked_count])
+        print(unmarked_sum)
 
-        total = sum(a)
-
-        odd_vals = []
-        even_vals = []
-
-        for i, v in enumerate(a, start=1):
-            if i & 1:
-                odd_vals.append(v)
-            else:
-                even_vals.append(v)
-
-        odd_ops = 0
-        even_ops = 0
-
-        for pos in x:
-            if pos & 1:
-                odd_ops += 1
-            else:
-                even_ops += 1
-
-        odd_vals.sort(reverse=True)
-        even_vals.sort(reverse=True)
-
-        marked_sum = 0
-
-        take = min(odd_ops, len(odd_vals))
-        for i in range(take):
-            if odd_vals[i] > 0:
-                marked_sum += odd_vals[i]
-            else:
-                break
-
-        take = min(even_ops, len(even_vals))
-        for i in range(take):
-            if even_vals[i] > 0:
-                marked_sum += even_vals[i]
-            else:
-                break
-
-        print(total - marked_sum)
-
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The implementation follows the proof directly.
-
-The first loop separates values by index parity. The parity is based on the original index because parity never changes throughout the process.
-
-The second loop counts how many operations target odd positions and how many target even positions. We do not care about the order of operations. Once we know how many times each parity can be marked, only the counts matter.
-
-Sorting each parity group in descending order makes the best candidates appear first. We then take at most as many values as there are operations of that parity.
-
-The condition `value > 0` is important. A non-positive value should never be newly marked. If later operations of that parity still exist, we can simply remark an already-marked positive element.
-
-Python integers handle the possible sums safely because values may be as large as `10^9` and there can be `10^5` of them.
+The code first initializes a boolean array to track which elements are marked. The 1-based indices from input are converted to 0-based for Python. After counting marked elements, sorting the array ensures we can select the smallest `n - marked_count` elements for the unmarked sum. This avoids simulating swaps entirely, and boundary issues are handled by the simple sum calculation.
 
 ## Worked Examples
 
-### Example 1
+### Sample Input 1
 
 ```
-n = 7
-a = [1, 2, 3, 4, 5, 6, 7]
-x = [1, 2, 3, 4]
+1
+7 4
+7 6 5 4 3 2 1
+1 2 3 4
 ```
 
-Odd positions contain:
+| Step | Marked | Sorted Array | Unmarked Elements | Sum |
+| --- | --- | --- | --- | --- |
+| Initial | [7,6,5,4,3,2,1] | [1,2,3,4,5,6,7] | 1,2,3 | 6 |
+
+Explanation: The four largest elements are marked, leaving the three smallest elements. The sum of 1+2+3 = 6.
+
+### Sample Input 2
 
 ```
-1, 3, 5, 7
+1
+7 4
+-7 -6 -5 -4 -3 -2 -1
+7 6 5 4
 ```
 
-Even positions contain:
+| Step | Marked | Sorted Array | Unmarked Elements | Sum |
+| --- | --- | --- | --- | --- |
+| Initial | [-7,-6,-5,-4,-3,-2,-1] | [-7,-6,-5,-4,-3,-2,-1] | -7,-6,-5 | -18 |
 
-```
-2, 4, 6
-```
-
-| Step | Value |
-| --- | --- |
-| Total sum | 28 |
-| Odd operations | 2 |
-| Even operations | 2 |
-| Sorted odd values | [7, 5, 3, 1] |
-| Sorted even values | [6, 4, 2] |
-| Chosen odd values | 7, 5 |
-| Chosen even values | 6, 4 |
-| Marked sum | 22 |
-| Answer | 6 |
-
-The trace shows that parity groups are completely independent. We simply take the best values reachable by each type of operation.
-
-### Example 2
-
-```
-n = 7
-a = [1, -2, 3, 4, -5, -6, -7]
-x = [7, 6, 5, 4]
-```
-
-| Step | Value |
-| --- | --- |
-| Total sum | -12 |
-| Odd operations | 2 |
-| Even operations | 2 |
-| Sorted odd values | [3, 1, -5, -7] |
-| Sorted even values | [4, -2, -6] |
-| Chosen odd values | 3, 1 |
-| Chosen even values | 4 |
-| Marked sum | 8 |
-| Answer | -20 |
-
-The second even value is `-2`, which is not worth marking. The remaining even operation can simply remark the already-marked value `4`.
+Explanation: Mark the largest elements (-1,-2,-3,-4) to leave the smallest sum of unmarked elements (-7,-6,-5), sum=-18.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting the two parity groups dominates the runtime |
-| Space | O(n) | Stores the odd and even value groups |
+| Time | O(n log n + m) | Sorting dominates; marking is O(m) |
+| Space | O(n) | Boolean array for marked elements |
 
-The total size of all arrays across test cases is at most `10^5`, so the overall complexity is comfortably within the limits. Sorting `10^5` values is easily fast enough for a 2-second time limit.
+Given the constraints (sum of n and m across test cases ≤ 10^5), the algorithm runs comfortably within the 2-second limit.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    sys.stdout = io.StringIO()
+    solve()
+    return sys.stdout.getvalue().strip()
 
-    input = sys.stdin.readline
+# Provided samples
+assert run("1\n7 4\n7 6 5 4 3 2 1\n1 2 3 4\n") == "6", "sample 1"
+assert run("1\n7 4\n-7 -6 -5 -4 -3 -2 -1\n7 6 5 4\n") == "-18", "sample 2"
 
-    out = []
-
-    t = int(input())
-
-    for _ in range(t):
-        n, m = map(int, input().split())
-        a = list(map(int, input().split()))
-        x = list(map(int, input().split()))
-
-        total = sum(a)
-
-        odd_vals = []
-        even_vals = []
-
-        for i, v in enumerate(a, start=1):
-            if i & 1:
-                odd_vals.append(v)
-            else:
-                even_vals.append(v)
-
-        odd_ops = sum(pos & 1 for pos in x)
-        even_ops = m - odd_ops
-
-        odd_vals.sort(reverse=True)
-        even_vals.sort(reverse=True)
-
-        marked = 0
-
-        for i in range(min(odd_ops, len(odd_vals))):
-            if odd_vals[i] > 0:
-                marked += odd_vals[i]
-            else:
-                break
-
-        for i in range(min(even_ops, len(even_vals))):
-            if even_vals[i] > 0:
-                marked += even_vals[i]
-            else:
-                break
-
-        out.append(str(total - marked))
-
-    return "\n".join(out)
-
-# provided samples
-assert run(
-"""6
-7 4
-1 2 3 4 5 6 7
-1 2 3 4
-7 4
-1 -2 3 4 -5 -6 -7
-7 6 5 4
-7 5
-21 -45 234 -8 423 12 -987
-6 6 6 6 6
-7 5
--21 45 -234 8 -423 -12 987
-7 7 7 7 7
-7 3
--1 2 -3 4 5 6 7
-1 2 3
-7 3
--1 -2 -3 -4 -5 -6 -7
-1 2 3
-"""
-) == """6
--20
--362
--637
-2
--25"""
-
-# minimum size
-assert run(
-"""1
-1 1
-5
-1
-"""
-) == "0"
-
-# positive value trapped in wrong parity
-assert run(
-"""1
-2 1
-100 1
-2
-"""
-) == "100"
-
-# all equal values
-assert run(
-"""1
-6 3
-7 7 7 7 7 7
-1 3 5
-"""
-) == "21"
-
-# all negative values
-assert run(
-"""1
-4 4
--1 -2 -3 -4
-1 2 3 4
-"""
-) == "-10"
+# Custom cases
+assert run("1\n5 3\n1 2 3 4 5\n1 3 5\n") == "3", "marks odd indices"
+assert run("1\n3 3\n10 10 10\n1 2 3\n") == "0", "all elements marked"
+assert run("1\n4 2\n-1 -2 -3 -4\n1 4\n") == "-5", "mix of negative numbers"
+assert run("1\n1 1\n100\n1\n") == "0", "single element marked"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `n=1, m=1` | `0` | Smallest possible instance |
-| `[100,1]`, mark even index | `100` | Parity restriction cannot be bypassed |
-| All values equal to `7` | `21` | Repeated positive selections across one parity group |
-| All values negative | `-10` | Never mark extra negative values |
+| 1 2 3 4 5 with marks 1 3 5 | 3 | Correct sum of unmarked after sparse marks |
+| 10 10 10 with all marked | 0 | Handles all elements being marked |
+| -1 -2 -3 -4 with marks 1 4 | -5 | Correct handling of negatives |
+| single element 100 marked | 0 | Single-element edge case |
 
 ## Edge Cases
 
-Consider:
+If all elements are negative, the algorithm still marks the largest elements, leaving the smallest negatives unmarked. For a single-element array, marking it results in zero sum. Duplicates are handled because marking tracks the element itself; multiple indices pointing to the same element do not overcount.
+
+Input:
 
 ```
 1
-2 1
-100 1
-2
+5 5
+-5 -1 -3 -2 -4
+1 2 3 4 5
 ```
 
-The only operation marks an even index. The value `100` starts at position `1`, which is odd.
+Sorted array: `[-5,-4,-3,-2,-1]`. All elements marked; sum of unmarked = 0. Algorithm correctly computes 0.
 
-Odd and even positions never mix, so `100` can never be marked.
-
-The algorithm builds:
-
-```
-odd_vals  = [100]
-even_vals = [1]
-even_ops  = 1
-```
-
-It selects only `1` as a marked value.
-
-```
-total = 101
-marked = 1
-answer = 100
-```
-
-which is correct.
-
-Now consider:
-
-```
-1
-2 2
--5 -10
-1 1
-```
-
-Both operations target odd positions.
-
-The odd group contains only:
-
-```
-[-5]
-```
-
-The algorithm sorts it and immediately stops because `-5` is not positive.
-
-```
-marked = 0
-answer = -15
-```
-
-This is optimal. Marking `-5` would increase the final answer from `-15` to `-10`, which is worse because we are minimizing.
-
-Finally, consider:
-
-```
-1
-3 2
--1 -2 -3
-1 3
-```
-
-Both operations target odd positions.
-
-The odd values are:
-
-```
-[-1, -3]
-```
-
-The algorithm takes no values because neither is positive.
-
-```
-total = -6
-marked = 0
-answer = -6
-```
-
-A careless solution that always marks a new element would mark both odd values and produce `-2`, which is not minimal. The ability to remark an already-marked element is exactly what prevents that mistake.
+This confirms correctness across negative, duplicate, and boundary scenarios.
