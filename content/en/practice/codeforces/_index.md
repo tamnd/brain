@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 2108 problems, 1490 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 2111 problems, 1490 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 2108 problems, 1490 verified.**
+**448 contests, 2111 problems, 1490 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -402,7 +402,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [463](463/) | [Codeforces Round 264 (Div. 2)](https://codeforces.com/contest/463) | Div. 2 | 1100-2100 | 5/5 | 4m 50s |
 | [464](464/) | [Codeforces Round 265 (Div. 1)](https://codeforces.com/contest/464) | Div. 1 | 1700-3000 | 3/5 | 8m 25s |
 | [465](465/) | [Codeforces Round 265 (Div. 2)](https://codeforces.com/contest/465) | Div. 2 | 900-1000 | 0/2 | 10m 43s |
-| [466](466/) | [Codeforces Round 266 (Div. 2)](https://codeforces.com/contest/466) | Div. 2 | 1200-2100 | 3/4 | 6m 44s |
+| [466](466/) | [Codeforces Round 266 (Div. 2)](https://codeforces.com/contest/466) | Div. 2 | 1200-2100 | 3/4 | 6m 59s |
 | [467](467/) | [Codeforces Round 267 (Div. 2)](https://codeforces.com/contest/467) | Div. 2 | 800-2400 | 3/5 | 6m 31s |
 | [468](468/) | [Codeforces Round 268 (Div. 1)](https://codeforces.com/contest/468) | Div. 1 | 1500-3100 | 3/5 | 8m 30s |
 | [469](469/) | [Codeforces Round 268 (Div. 2)](https://codeforces.com/contest/469) | Div. 2 | 800-1300 | 2/2 | 2m 52s |
@@ -456,7 +456,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
-| [2217](2217/) | [Codeforces Round 1091 (Div. 2) and CodeCraft 26](https://codeforces.com/contest/2217) | Div. 2 | 1000-2600 | 0/4 | 7m 34s |
+| [2217](2217/) | [Codeforces Round 1091 (Div. 2) and CodeCraft 26](https://codeforces.com/contest/2217) | Div. 2 | 800-2600 | 0/7 | 12m 8s |
 | [2218](2218/) | [Codeforces Round 1090 (Div. 4)](https://codeforces.com/contest/2218) | Div. 4 | 800-1800 | 1/4 | 10m 7s |
 | [2219](2219/) | [Codeforces Round 1093 (Div. 1)](https://codeforces.com/contest/2219) | Div. 1 | - | 0/1 | 3m 30s |
 | [2222](2222/) | [Spectral::Cup 2026 Round 1 (Codeforces Round 1094, Div. 1 + Div. 2)](https://codeforces.com/contest/2222) | Div. 1+2 | - | 0/6 | 23m 39s |
