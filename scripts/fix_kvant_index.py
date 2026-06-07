@@ -42,10 +42,13 @@ def _list_solutions(subject_dir: Path) -> list[dict]:
         text = f.read_text(encoding="utf-8")
         vm = re.search(r'^verified:\s*(true|false)', text, re.MULTILINE)
         tm = re.search(r'^solve_time_s:\s*(\d+)', text, re.MULTILINE)
+        um = re.search(r'kvant_(\d{4})_(\d+)', text)
         out.append({
             "num": num,
             "verified": bool(vm and vm.group(1) == "true"),
             "time_str": _fmt_time(int(tm.group(1))) if tm else "—",
+            "year": int(um.group(1)) if um else 0,
+            "issue": int(um.group(2)) if um else 0,
         })
     out.sort(key=lambda d: d["num"])
     return out
@@ -56,27 +59,84 @@ def _build_index(subject_dir: Path, subject: str) -> str:
     solved = len(sols)
     verified = sum(1 for s in sols if s["verified"])
     title = "Mathematics" if subject == "math" else "Physics"
-    rows = [
-        f"| [{s['num']}]({s['num']}.md) | {'✓ verified' if s['verified'] else 'solved'} | {s['time_str']} |"
-        for s in sols
-    ]
-    table = "| # | Status | Time |\n|---|--------|------|\n" + (
-        "\n".join(rows) if rows else "| — | — | — |"
-    )
-    return (
+
+    years_with_data = [s["year"] for s in sols if s["year"]]
+    year_start = min(years_with_data) if years_with_data else 0
+    year_end = max(years_with_data) if years_with_data else 0
+
+    fm = (
         f'---\n'
         f'title: "Kvant {title}"\n'
-        f'description: "Kvant {title.lower()} problem solutions ({solved} solved, {verified} verified)."\n'
+        f'description: "Kvant {title.lower()} problem solutions ({solved} solved, {verified} verified), '
+        f'{year_start}–{year_end}."\n'
         f'tags: {json.dumps(TAGS[subject])}\n'
         f'categories: {json.dumps(CATEGORIES[subject])}\n'
+        f'kvant_total: {solved}\n'
+        f'kvant_verified: {verified}\n'
+        f'kvant_year_start: {year_start}\n'
+        f'kvant_year_end: {year_end}\n'
         f'weight: 20\n'
         f'draft: false\n'
         f'---\n\n'
-        f'# Kvant {title}\n\n'
-        f'Solutions to {title.lower()} problems from [Kvant](https://kvant.digital) magazine '
-        f'({solved} solved, {verified} verified).\n\n'
-        f'{table}\n'
     )
+
+    verified_pct = round(100 * verified / solved) if solved else 0
+    intro = (
+        f'# Kvant {title}\n\n'
+        f'Solutions to {title.lower()} problems from [Kvant](https://kvant.digital) magazine — '
+        f'a Soviet and Russian popular science journal published since 1970. '
+        f'**{solved} problems solved** ({verified} verified, {verified_pct}%), '
+        f'spanning {year_start}–{year_end}.\n\n'
+    )
+
+    grouped: dict[int, dict[int, list[dict]]] = {}
+    no_meta: list[dict] = []
+    for s in sols:
+        if s["year"] == 0:
+            no_meta.append(s)
+        else:
+            grouped.setdefault(s["year"], {}).setdefault(s["issue"], []).append(s)
+
+    body_parts = []
+    for year in sorted(grouped):
+        issues = grouped[year]
+        year_count = sum(len(v) for v in issues.values())
+        issue_nums = sorted(issues)
+        issue_range = (
+            f"Issue {issue_nums[0]}" if len(issue_nums) == 1
+            else f"Issues {issue_nums[0]}–{issue_nums[-1]}"
+        )
+        year_verified = sum(1 for iss in issues.values() for s in iss if s["verified"])
+        body_parts.append(
+            f'## {year}\n\n'
+            f'{year_count} problems · {issue_range} · {year_verified} verified\n\n'
+        )
+        for issue_num in issue_nums:
+            issue_sols = issues[issue_num]
+            issue_url = f"https://www.kvant.digital/view/kvant_{year}_{issue_num}/"
+            rows = [
+                f"| [{s['num']}]({s['num']}.md) "
+                f"| {'✓' if s['verified'] else '·'} "
+                f"| {s['time_str']} |"
+                for s in issue_sols
+            ]
+            table = "| # | ✓ | Time |\n|---|---|------|\n" + "\n".join(rows)
+            body_parts.append(
+                f'### [Issue {issue_num}]({issue_url})\n\n'
+                f'{table}\n\n'
+            )
+
+    if no_meta:
+        rows = [
+            f"| [{s['num']}]({s['num']}.md) "
+            f"| {'✓' if s['verified'] else '·'} "
+            f"| {s['time_str']} |"
+            for s in no_meta
+        ]
+        table = "| # | ✓ | Time |\n|---|---|------|\n" + "\n".join(rows)
+        body_parts.append(f'## Unknown Issue\n\n{table}\n\n')
+
+    return fm + intro + "".join(body_parts)
 
 
 def main() -> None:
