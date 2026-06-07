@@ -34,10 +34,6 @@ where $ch_v$ is the number of ordered pairs $(a,b)$ whose LCA is exactly $v$.
 
 For a rooted tree,
 
-$$ch_v
-=
-sz_v^2
--
-\sum_{u \in children(v)} sz_u^2,$$
+$$ch_v = sz_v^2 - \sum_{u \in children(v)} sz_u^2,$$
 
 because $sz_v^2$ counts all ordered pairs inside the subtree of $v$, and subtracting the pairs completely contained in a single child sub_

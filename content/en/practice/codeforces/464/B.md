@@ -100,9 +100,7 @@ This reduces the search dramatically and easily fits within the limits.
 3. For each of the remaining seven rows, choose one permutation.
 4. Among the seven chosen points, search for three points `A`, `B`, and `C` such that vectors
 
-$$\overrightarrow{PA},
-\overrightarrow{PB},
-\overrightarrow{PC}$$
+$$\overrightarrow{PA}, \overrightarrow{PB}, \overrightarrow{PC}$$
 
 all have the same positive squared length.
 5. Verify that these three vectors are pairwise perpendicular.
@@ -110,14 +108,7 @@ all have the same positive squared length.
 Equal length alone is not enough. The three vectors must correspond to the three edges leaving a cube corner.
 6. Once such vectors are found, construct the full expected cube:
 
-$$P,
-P+a,
-P+b,
-P+c,
-P+a+b,
-P+a+c,
-P+b+c,
-P+a+b+c$$
+$$P, P+a, P+b, P+c, P+a+b, P+a+c, P+b+c, P+a+b+c$$
 7. Compare this set against the eight reconstructed points.
 
 Every required vertex must appear exactly once.

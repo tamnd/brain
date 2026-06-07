@@ -112,9 +112,7 @@ $$\frac{n-1}{2}.$$
 
 The last remaining term is `-n`, so:
 
-$$\frac{n-1}{2} - n
-=
--\frac{n+1}{2}.$$
+$$\frac{n-1}{2} - n = -\frac{n+1}{2}.$$
 
 This gives a constant-time solution.
 
@@ -144,9 +142,7 @@ When `n` is even, the entire sequence consists of exactly `n/2` such pairs, givi
 
 When `n` is odd, the first `n-1` terms form `(n-1)/2` pairs whose contribution is `(n-1)/2`. The remaining term is `-n`, producing
 
-$$\frac{n-1}{2} - n
-=
--\frac{n+1}{2}.$$
+$$\frac{n-1}{2} - n = -\frac{n+1}{2}.$$
 
 These formulas match the original sum exactly, so the algorithm is correct.
 
@@ -306,8 +302,6 @@ Finally, consider the largest odd input:
 
 The algorithm computes:
 
-$$-\frac{999999999999999+1}{2}
-=
--500000000000000.$$
+$$-\frac{999999999999999+1}{2} = -500000000000000.$$
 
 No iteration is performed, so the running time remains constant. Python's integer arithmetic handles the value safely, producing the correct answer immediately.

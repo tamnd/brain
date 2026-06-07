@@ -34,8 +34,7 @@ Among all valid placements inside `[l,r]`, we want the largest such value.
 
 Equivalently, each query asks:
 
-$$\max_{x \in [l,r-w+1]}
-\min(h_x,\ldots,h_{x+w-1}).$$
+$$\max_{x \in [l,r-w+1]} \min(h_x,\ldots,h_{x+w-1}).$$
 
 The fence contains up to $10^5$ panels and there are up to $10^5$ queries. Any algorithm that scans the query interval directly is hopeless. Even an $O((r-l+1)\log n)$ solution per query could require around $10^{10}$ operations in the worst case.
 
@@ -168,11 +167,7 @@ An active panel stores:
 
 When combining two children:
 
-$$prefix =
-\begin{cases}
-left.length + right.prefix & \text{if left is completely active}\\
-left.prefix & \text{otherwise}
-\end{cases}$$
+$$prefix = \begin{cases} left.length + right.prefix & \text{if left is completely active}\\ left.prefix & \text{otherwise} \end{cases}$$
 
 The suffix is computed symmetrically.
 

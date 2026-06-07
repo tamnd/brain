@@ -138,13 +138,7 @@ This is the number of strings that are not uniquely identified yet.
 
 If `rem` positions remain unasked, then
 
-$$dp[M]
-=
-K(M)
-+
-\frac{1}{rem}
-\sum_{p \notin M}
-dp[M \cup \{p\}]$$
+$$dp[M] = K(M) + \frac{1}{rem} \sum_{p \notin M} dp[M \cup \{p\}]$$
 
 The first term contributes one question for every unresolved string. The second term averages over the random choice of the next position.
 8. The full-mask state has no children. Its value is simply `K(fullMask)`, which is zero.

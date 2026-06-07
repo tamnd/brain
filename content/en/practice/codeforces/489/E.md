@@ -112,16 +112,7 @@ Let `dp[i]` be the minimum transformed cost of a route ending at point `i`.
 
 Then
 
-$$dp[i]
-=
--C b_i
-+
-\min_j
-\left(
-dp[j]
-+
-(x_i-x_j-l)^2
-\right),$$
+$$dp[i] = -C b_i + \min_j \left( dp[j] + (x_i-x_j-l)^2 \right),$$
 
 where `j < i`.
 

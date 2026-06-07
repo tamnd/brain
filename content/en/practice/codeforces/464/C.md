@@ -144,17 +144,9 @@ After all rules have been processed, we know the final expansion of every digit 
 Initially both are zero.
 9. For each digit `x` in `t`, concatenate the already-computed expansion of `x`:
 
-$$cur\_val
-=
-cur\_val \cdot 10^{len[x]}
-+
-val[x]
-\pmod{MOD}$$
+$$cur\_val = cur\_val \cdot 10^{len[x]} + val[x] \pmod{MOD}$$
 
-$$cur\_len
-=
-cur\_len + len[x]
-\pmod{MOD-1}$$
+$$cur\_len = cur\_len + len[x] \pmod{MOD-1}$$
 
 1. After the entire right-hand side has been processed, assign:
 
@@ -168,9 +160,7 @@ $$len[d] = cur\_len$$
 
 The reason lengths are stored modulo `MOD-1` is that powers of ten are always taken modulo `MOD`, which is prime. By Fermat's theorem:
 
-$$10^k \bmod MOD
-=
-10^{k \bmod (MOD-1)} \bmod MOD$$
+$$10^k \bmod MOD = 10^{k \bmod (MOD-1)} \bmod MOD$$
 
 because `10` and `MOD` are coprime.
 

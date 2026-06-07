@@ -143,11 +143,7 @@ $$HP_{required} = turns \times dmg_M + 1$$
 If Yang already has at least this much HP, no HP purchase is needed. Otherwise buy the difference.
 8. Compute the total cost of all upgrades:
 
-$$(\text{extra HP}) \cdot h
-+
-(\text{extra ATK}) \cdot a
-+
-(\text{extra DEF}) \cdot d$$
+$$(\text{extra HP}) \cdot h + (\text{extra ATK}) \cdot a + (\text{extra DEF}) \cdot d$$
 9. Keep the minimum cost among all valid configurations.
 10. Output the minimum cost found.
 

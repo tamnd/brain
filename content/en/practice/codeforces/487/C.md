@@ -147,11 +147,7 @@ $$p_1=a_1=1.$$
 
 Assume $p_{i-1}=i-1$. Then
 
-$$p_i
-\equiv p_{i-1}a_i
-\equiv (i-1)\cdot i\cdot (i-1)^{-1}
-\equiv i
-\pmod n.$$
+$$p_i \equiv p_{i-1}a_i \equiv (i-1)\cdot i\cdot (i-1)^{-1} \equiv i \pmod n.$$
 
 Thus every prefix product before the last one equals its index.
 
