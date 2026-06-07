@@ -104,9 +104,7 @@ where $k_i$ is the size of the $i$-th connected component.
 
 Since the component sizes add up to $n$,
 
-$$\sum (k_i - 1)
-=
-n - c$$
+$$\sum (k_i - 1) = n - c$$
 
 where $c$ is the number of connected components.
 
