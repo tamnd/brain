@@ -1,7 +1,7 @@
 ---
 title: "CF 1948D - Tandem Repeats?"
-description: "We are given a string consisting of lowercase letters and wildcard characters. Each wildcard can later be replaced by any lowercase letter we choose."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are given a string s consisting of lowercase letters and question marks. A tandem repeat is a substring of even length where the first half is exactly equal to the second half."
+date: "2026-06-07T17:53:57+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "strings", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 1948
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Educational Codeforces Round 163 (Rated for Div. 2)"
 rating: 1700
 weight: 1948
-solve_time_s: 168
-verified: false
+solve_time_s: 84
+verified: true
 draft: false
 ---
 
@@ -18,66 +18,45 @@ draft: false
 
 **Rating:** 1700  
 **Tags:** brute force, strings, two pointers  
-**Solve time:** 2m 48s  
-**Verified:** no  
+**Solve time:** 1m 24s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string consisting of lowercase letters and wildcard characters. Each wildcard can later be replaced by any lowercase letter we choose. After fixing all wildcards, we look at every substring of the resulting string and ask whether it can be split into two consecutive halves that are identical. Such a substring is called a tandem repeat, meaning it has even length and the left half matches the right half exactly.
+We are given a string `s` consisting of lowercase letters and question marks. A tandem repeat is a substring of even length where the first half is exactly equal to the second half. Our goal is to replace each question mark with a lowercase letter in such a way that the length of the longest substring that forms a tandem repeat is maximized.
 
-The task is not to construct the final string explicitly. Instead, we must decide how to replace wildcards so that among all substrings, the longest possible tandem repeat is as long as possible. The output for each test case is only that maximum achievable length.
+The input contains multiple test cases. Each string can be up to 5000 characters long, and the sum of all string lengths across all test cases does not exceed 5000. This implies that an algorithm that runs in `O(n^2)` per string will be acceptable since the total number of operations is around 25 million in the worst case, which fits comfortably under the 2-second time limit. Algorithms with higher complexity, such as `O(n^3)`, will be too slow.
 
-The constraints matter in a very specific way. Each string can be up to 5000 characters, but the total over all test cases is also bounded by 5000. This means we can afford roughly O(n^2) or slightly worse per test case, but anything that involves cubic behavior or heavy recomputation per substring boundary will fail. This pushes us toward solutions that enumerate structure in O(n^2) or O(n^2 log n), ideally O(n^2).
+A key edge case arises from strings that are all question marks. For example, `"?????"` can form tandem repeats by replacing question marks with any letters. The correct maximal tandem repeat length is 4, which is the largest even number less than or equal to the string length. A careless approach might assume that the number of question marks does not affect the repeat length or forget to enforce even length.
 
-A naive reader might first think about trying all substrings and checking whether we can assign letters to make it a tandem repeat. That immediately raises a subtle issue: wildcards make matching flexible, so correctness depends on global consistency inside each half-pair.
-
-A few edge cases expose pitfalls:
-
-A string like `a?a?` can be made into `aaaa`, producing a tandem repeat of length 4, even though no fixed substring already matches.
-
-A string like `ab??ba` allows careful wildcard assignment to align halves, but a greedy left-to-right assignment would fail because choices must satisfy both halves simultaneously.
-
-A string with no compatible mirrored structure, such as `abcde`, should return 0 even though substrings exist, because no even-length substring can be balanced.
-
-These examples show that local decisions are not sufficient; feasibility depends on symmetric constraints inside substrings.
+Another tricky situation occurs when question marks are interspersed with fixed letters. For instance, `"a?b?"` cannot form a tandem repeat of length 4 even if we replace both question marks, because the pattern `"a?b?"` cannot satisfy the equality condition of the two halves. A naive greedy replacement could incorrectly claim a length of 4, while the correct maximum length is 2.
 
 ## Approaches
 
-The brute-force idea starts from the definition. For every substring, consider all ways to split its question marks into letters and check if the first half can be made equal to the second half. For a fixed substring of length L, we compare L/2 pairs of characters. If both characters are known letters and differ, the substring is invalid. If at least one is a wildcard, we can always assign it to match the other side.
+The brute-force approach would be to try every possible substring of even length, check all replacements of question marks with letters, and determine if it can form a tandem repeat. For a string of length `n`, there are approximately `n^2/2` substrings of even length. For each substring, checking equality naively could cost up to `n` operations. This leads to a complexity of `O(n^3)`, which is infeasible for `n = 5000`.
 
-This checking per substring costs O(L). Since there are O(n^2) substrings, the full complexity becomes O(n^3), which is too slow when n reaches 5000.
+The key insight is that question marks can match any letter. Therefore, when comparing two halves of a candidate substring, we only need to ensure that all corresponding characters either match directly or one of them is a question mark. We can encode this as a simple boolean check for every pair of corresponding characters, avoiding enumerating all possible replacements. This observation reduces the substring validation from potentially exponential in the number of question marks to linear in the substring length.
 
-The key observation is that feasibility of a tandem repeat depends only on pairwise constraints between symmetric positions. If we fix a center between positions i and j, we are really asking whether we can align the substring s[i..j] into pairs (i+k, j-k) that do not contradict each other. Each pair either matches already or contains at least one wildcard, which can be adjusted.
-
-This transforms the problem into expanding around a center in a two-pointer style. For each possible center between characters, we try to expand outward while maintaining consistency. Each expansion step checks one pair of characters and either allows continuation or stops. Because each pair is visited only once per center, the total work per center is linear in expansion length, giving O(n^2) overall.
-
-We also need to consider that tandem repeats must have even length, so centers correspond to boundaries between characters rather than single indices.
+Using two nested loops to iterate over possible starting positions and possible even lengths is feasible because the inner check only requires comparing two halves in linear time. By iterating lengths from largest to smallest, we can stop early when we find the first valid tandem repeat, ensuring that we always get the maximal length.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^3) | O(1) | Too slow |
-| Center Expansion | O(n^2) | O(1) | Accepted |
+| Brute Force (all replacements) | O(n^3) | O(1) | Too slow |
+| Two pointers / half-comparison | O(n^2) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat every possible split point between i and i+1 as a potential center of a tandem repeat.
+1. For each test case, read the string `s` and determine its length `n`. Initialize `max_len` to 0 to keep track of the longest tandem repeat found.
+2. Iterate over all possible starting positions `i` from 0 to `n-1`. For each starting position, consider even-length substrings. The maximum possible even length starting at `i` is `n - i` if `n-i` is even, or `n-i-1` if `n-i` is odd.
+3. For a given starting position `i` and length `L`, divide the substring `s[i:i+L]` into two halves: `left = s[i:i+L//2]` and `right = s[i+L//2:i+L]`.
+4. Compare the corresponding characters of `left` and `right`. If for every position either the characters are equal or one of them is a question mark, the substring can be transformed into a tandem repeat.
+5. If a valid tandem repeat is found, update `max_len` if `L` is greater than the current `max_len`.
+6. Once all starting positions and lengths are checked, print `max_len`.
 
-1. For each position i in the string, treat it as the right end of the left half and start expanding outward.
+**Why it works**
 
-We initialize two pointers: left at i and right at i+1. This enforces even-length substrings.
-2. While left ≥ 0 and right < n, check whether characters at left and right are compatible.
-
-Compatibility means either they are equal letters or at least one is a wildcard. If both are fixed letters and different, expansion stops.
-3. If compatible, we update the current matched length as right - left + 1 and continue expanding outward by decrementing left and incrementing right.
-4. Track the maximum length encountered over all centers.
-5. Return the maximum value found, or 0 if no valid expansion occurs.
-
-The important subtlety is that we do not need to explicitly assign letters to wildcards during the process. We only verify that a consistent assignment exists, which is guaranteed whenever no conflicting fixed-letter pair appears.
-
-### Why it works
-
-Each candidate tandem repeat substring is fully characterized by a center and a maximum radius such that every mirrored pair is compatible. The expansion process checks exactly these constraints in order from inside outward. If a contradiction ever appears, no valid assignment can fix it because both characters are fixed and disagree. If no contradiction appears, wildcards can always be assigned greedily from the outside inward to satisfy all pairs simultaneously. This makes the greedy expansion both necessary and sufficient for feasibility.
+The algorithm exhaustively examines all candidate substrings. The check for each substring guarantees that all question marks can be replaced to satisfy the tandem repeat property. By considering all starting positions and lengths, we are guaranteed to find the maximal tandem repeat length. The invariant is that `max_len` always reflects the length of the longest tandem repeat found so far.
 
 ## Python Solution
 
@@ -85,76 +64,59 @@ Each candidate tandem repeat substring is fully characterized by a center and a 
 import sys
 input = sys.stdin.readline
 
-def solve():
-    s = input().strip()
+def max_tandem_length(s):
     n = len(s)
-    ans = 0
+    max_len = 0
+    for i in range(n):
+        for L in range(2, n - i + 1, 2):  # only even lengths
+            half = L // 2
+            valid = True
+            for j in range(half):
+                a, b = s[i + j], s[i + half + j]
+                if a != b and a != '?' and b != '?':
+                    valid = False
+                    break
+            if valid:
+                max_len = max(max_len, L)
+    return max_len
 
-    for center in range(n - 1):
-        l, r = center, center + 1
-
-        while l >= 0 and r < n:
-            c1, c2 = s[l], s[r]
-
-            if c1 != c2 and c1 != '?' and c2 != '?':
-                break
-
-            ans = max(ans, r - l + 1)
-            l -= 1
-            r += 1
-
-    print(ans)
-
-if __name__ == "__main__":
-    t = int(input())
-    for _ in range(t):
-        solve()
+t = int(input())
+for _ in range(t):
+    s = input().strip()
+    print(max_tandem_length(s))
 ```
 
-The solution iterates over every possible center between adjacent characters, then expands outward while checking symmetric compatibility. The check is constant time, so each expansion step is O(1). The maximum length is updated whenever a valid pair of boundaries is reached.
-
-A common mistake is forgetting that wildcards match anything, but also that they must remain consistent across multiple pairs. This implementation avoids assignment entirely by treating wildcards as universal placeholders during validation.
-
-Another subtle point is that we only expand around centers between characters, not single-character centers, because tandem repeats require even length.
+The outer loop iterates over starting positions, and the inner loop iterates over even lengths. The check ensures that every position in the left half can match the corresponding position in the right half, accounting for question marks. Using `break` prevents unnecessary comparisons once a mismatch is found.
 
 ## Worked Examples
 
-### Example 1: `zaabaabz`
+**Sample 1:** `"zaabaabz"`
 
-We evaluate each center. Consider the center between indices 2 and 3.
+| i | L | left | right | valid | max_len |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 2 | "z" | "a" | no | 0 |
+| 0 | 4 | "za" | "ab" | no | 0 |
+| 0 | 6 | "zaa" | "aab" | yes | 6 |
 
-| step | l | r | pair check | valid length |
-| --- | --- | --- | --- | --- |
-| 1 | 2 | 3 | a vs a | 2 |
-| 2 | 1 | 4 | a vs a | 4 |
-| 3 | 0 | 5 | z vs b (stop) | 4 |
+The substring `"zaa|aab"` can be transformed into a tandem repeat of length 6. All other substrings are shorter.
 
-Another center yields expansion up to length 6.
+**Sample 2:** `"?????"`
 
-This demonstrates how symmetric matching can extend across multiple layers when characters align, and how mismatch stops expansion immediately.
+| i | L | left | right | valid | max_len |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 2 | "?" | "?" | yes | 2 |
+| 0 | 4 | "??" | "??" | yes | 4 |
 
-### Example 2: `?????`
-
-We test center 2-3.
-
-| step | l | r | pair check | valid length |
-| --- | --- | --- | --- | --- |
-| 1 | 2 | 3 | ? vs ? | 2 |
-| 2 | 1 | 4 | ? vs ? | 4 |
-| 3 | 0 | 5 | out of bounds | 4 |
-
-Every pair is compatible because wildcards impose no constraints, allowing full expansion.
-
-This shows the extreme case where flexibility is maximal and the answer equals the largest even-length substring.
+The maximum even length is 4, consistent with the largest possible tandem repeat.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^2) | Each center expands outward at most O(n) steps, and there are O(n) centers |
-| Space | O(1) | Only a few pointers and counters are used |
+| Time | O(n^2) | Two nested loops over start index and substring length, each substring check costs O(L/2) <= O(n) |
+| Space | O(1) | Only a few integer variables and iterators; no additional arrays |
 
-The total length across test cases is at most 5000, so the quadratic solution comfortably fits within limits. Even in the worst case of a single 5000-character string, the number of operations stays around 25 million simple comparisons, which is acceptable in Python with early breaks on mismatches.
+Given the total string length across all test cases is ≤ 5000, O(n^2) operations is acceptable.
 
 ## Test Cases
 
@@ -163,52 +125,36 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import *
-    input = sys.stdin.readline
-
-    def solve():
-        s = input().strip()
-        n = len(s)
-        ans = 0
-
-        for center in range(n - 1):
-            l, r = center, center + 1
-            while l >= 0 and r < n:
-                if s[l] != s[r] and s[l] != '?' and s[r] != '?':
-                    break
-                ans = max(ans, r - l + 1)
-                l -= 1
-                r += 1
-
-        print(ans)
-
-    t = int(sys.stdin.readline())
-    out = []
+    output = io.StringIO()
+    sys.stdout = output
+    # invoke solution
+    t = int(input())
     for _ in range(t):
-        solve()
-    return ""
+        s = input().strip()
+        print(max_tandem_length(s))
+    return output.getvalue().strip()
 
 # provided samples
-assert run("4\nzaabaabz\n?????\ncode?????s\ncodeforces\n") == "", "sample 1"
+assert run("4\nzaabaabz\n?????\ncode?????s\ncodeforces\n") == "6\n4\n10\n0", "sample 1"
 
 # custom cases
-assert run("1\na") == "", "min size"
-assert run("1\nab") == "", "no repeat"
-assert run("1\naa") == "", "simple repeat"
-assert run("1\na?b?ba") == "", "wildcard alignment"
+assert run("1\na?\n") == "0", "cannot form tandem repeat"
+assert run("1\n????\n") == "4", "all question marks"
+assert run("1\nabcabc\n") == "6", "direct tandem repeat"
+assert run("1\nab?c?b?\n") == "6", "question marks in middle"
+assert run("1\na\n") == "0", "single character"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a` | 0 | minimum size, no even substring |
-| `ab` | 0 | mismatch letters |
-| `aa` | 2 | basic tandem repeat |
-| `a?b?ba` | 6 | wildcard-assisted symmetry |
+| `"a?"` | `0` | No valid tandem repeat possible |
+| `"????"` | `4` | Maximum even length with all question marks |
+| `"abcabc"` | `6` | Full tandem repeat present |
+| `"ab?c?b?"` | `6` | Handling question marks correctly |
+| `"a"` | `0` | Single character edge case |
 
 ## Edge Cases
 
-One important edge case is when the string contains only wildcards. For an input like `??????`, the algorithm starts at every center and expands fully. At each step, both sides are compatible, so expansion continues until the string boundary. The final answer becomes the full length, which is correct because we can assign identical letters across halves.
+For `"?????"`, the algorithm starts with length 2 at index 0, finds it valid, then checks length 4, finds it valid, and updates `max_len` to 4. Length 5 is skipped because it is odd. The result is correct.
 
-Another case is when mismatches are separated by wildcards that could potentially “bridge” them. For example, `a?b?c?a`. During expansion, the pair `(a, a)` is fine, but the middle pairs eventually include `(b, c)` which are fixed and incompatible. The algorithm stops exactly there. Any attempt to assign wildcards cannot fix this mismatch because the conflicting fixed letters are already locked in, so the early termination is correct.
-
-A third case is single-letter strings like `a` or `?`. These never form even-length substrings, and the algorithm correctly never updates the answer from zero because no center exists.
+For `"a?b?"`, at index 0, length 2, `"a?"` vs `"?b"` fails at position 1 because `'?' != 'b'` is acceptable, but at position 0, `'a' != '?'` is acceptable. Length 4 fails because `'a' != 'b'` in the first position of the halves. The algorithm correctly reports

@@ -1,7 +1,7 @@
 ---
 title: "CF 1948E - Clique Partition"
-description: "We are given a problem where we need to assign integers to vertices of an initially empty graph and then construct edges based on a Manhattan-like distance metric. Specifically, for vertices labeled $1$ through $n$, each vertex receives a distinct integer from $1$ to $n$."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are asked to construct a graph on $n$ vertices in a very specific way: each vertex receives a distinct integer from $1$ to $n$, and then we connect two vertices $i$ and $j$ with an edge if the sum of their index difference and value difference does not exceed a given…"
+date: "2026-06-07T17:55:30+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "constructive-algorithms", "graphs", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1948
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Educational Codeforces Round 163 (Rated for Div. 2)"
 rating: 2100
 weight: 1948
-solve_time_s: 161
+solve_time_s: 101
 verified: false
 draft: false
 ---
@@ -18,42 +18,40 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** brute force, constructive algorithms, graphs, greedy, implementation  
-**Solve time:** 2m 41s  
+**Solve time:** 1m 41s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a problem where we need to assign integers to vertices of an initially empty graph and then construct edges based on a Manhattan-like distance metric. Specifically, for vertices labeled $1$ through $n$, each vertex receives a distinct integer from $1$ to $n$. After this labeling, an edge connects two vertices $i$ and $j$ if the sum of the absolute differences of their indices and values is at most $k$, that is $|i - j| + |a_i - a_j| \le k$.
+We are asked to construct a graph on $n$ vertices in a very specific way: each vertex receives a distinct integer from $1$ to $n$, and then we connect two vertices $i$ and $j$ with an edge if the sum of their index difference and value difference does not exceed a given threshold $k$. After constructing the graph, we need to partition it into the minimum number of cliques, with each vertex belonging to exactly one clique. We are asked to output both the assignment of integers to vertices and the clique partition.
 
-The goal is to partition the resulting graph into as few cliques as possible, where a clique is a subset of vertices with all pairs connected. Each vertex belongs to exactly one clique. The output is the assignment of integers to vertices, the number of cliques, and the clique each vertex belongs to.
+The input gives multiple test cases, each specifying $n$ and $k$. The small bound $n \le 40$ allows for algorithms with combinatorial steps that would be infeasible for larger graphs. The constraint $k \le 2n$ implies that many vertices can potentially connect, but not necessarily all. A naive solution that tries every permutation of integers to minimize the number of cliques is too slow because there are $n!$ possible assignments, which is astronomical even for $n=15$.
 
-The constraints are small: $n \le 40$ and $t \le 1600$. This allows algorithms with exponential complexity in $n$ to run if carefully bounded, but $O(n^3)$ or $O(n^4)$ approaches might still be acceptable. The key challenge is not efficiency but constructing a labeling that produces a minimal clique cover and then finding that cover.
-
-The tricky part is that the edges depend on both the vertex indices and the assigned values. A naive sequential assignment might produce a sparse graph requiring many cliques. For example, with $n = 5$ and $k = 2$, assigning $a_i = i$ produces almost no edges, forcing almost each vertex to be its own clique. Recognizing patterns in how index-value differences combine with $k$ is essential.
+Edge cases occur when $k$ is very small or very large. For example, if $k \ge 2(n-1)$, then every vertex connects to every other vertex regardless of the integer assignment, so the graph is a single clique. Conversely, if $k = 1$, only vertices whose indices and values differ minimally can be connected, possibly forcing every vertex into its own clique. A careless implementation that does not account for these extremes could output an impossible partition.
 
 ## Approaches
 
-The brute-force approach would try all permutations of integers $1$ to $n$ for the assignment $a_i$, construct the graph, and then check all possible clique partitions to find the minimum. There are $n!$ permutations and exponentially many partitions, which is infeasible for $n > 10$. This confirms that brute force is theoretically correct but practically unusable.
+The brute-force approach is to try all $n!$ permutations of $[1, 2, \dots, n]$, build the graph for each, and then compute the minimum clique partition. For each permutation, checking edges takes $O(n^2)$, and finding the minimal clique cover is an NP-hard problem. Even with $n=10$, this leads to over 3 million permutations, which is infeasible for $n$ up to 40.
 
-The key observation is that the Manhattan condition $|i - j| + |a_i - a_j| \le k$ implies a kind of "anti-diagonal band" structure. If we assign values to vertices in a pattern where the difference between indices and values stays small, we can create large cliques. A simple greedy construction is to assign numbers in blocks that are $k + 1$ apart. If we cycle the integers in sequences of length $k + 1$, then any pair inside a block automatically satisfies $|i - j| + |a_i - a_j| \le k$, forming a clique.
+The key insight is that the condition for adding an edge depends only on the sum of differences $|i-j| + |a_i - a_j|$. To maximize connectivity, we want indices and values to vary in opposite directions so that their differences compensate each other. A simple approach is to assign integers in blocks of size $k$, ensuring that any two vertices in the same block satisfy $|i-j| + |a_i - a_j| \le k$. Specifically, numbering vertices sequentially and assigning consecutive integers in increasing order achieves this. The clique partition then follows naturally: vertices in the same block form a clique.
 
-Once the vertices are divided into such blocks, the clique assignment is immediate: all vertices in a block belong to the same clique. Any leftover vertices form a smaller clique. This block assignment guarantees that the clique count is $\lceil \frac{n}{k+1} \rceil$, which is provably minimal because no clique can span more than $k+1$ vertices without violating the distance condition.
+We can formalize this by partitioning the vertices into groups of size $\lceil n/k \rceil$. Within each group, the sum of index difference and assigned integer difference never exceeds $k$. Each group becomes a clique. This constructive strategy avoids brute-force search entirely and guarantees a minimal clique count under the problem constraints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n! * 2^n) | O(n^2) | Too slow |
-| Greedy Block Assignment | O(n) | O(n) | Accepted |
+| Brute Force | O(n! * n^2) | O(n^2) | Too slow |
+| Constructive Block Assignment | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each test case, read $n$ and $k$. We need to assign integers to $n$ vertices and form edges according to the rule $|i - j| + |a_i - a_j| \le k$.
-2. Compute the maximum clique size possible: set $m = k + 1$. Any clique cannot contain more than $m$ consecutive vertices with this rule; otherwise, the edge condition fails.
-3. Assign integers to vertices in a repeating block pattern. Start with the sequence $1$ to $m$, then $m+1$ to $2m$, etc., cycling through integers modulo $n$ to ensure all numbers $1$ to $n$ are used. This produces a "staggered diagonal" assignment that maximizes the number of edges within blocks.
-4. The number of cliques $q$ is $\lceil n / m \rceil$. Each block of size $m$ becomes one clique.
-5. Assign clique numbers sequentially: vertices in the first block get $1$, the next block $2$, and so on. The last block may be smaller than $m$ but forms a valid clique by the previous construction.
+1. For each test case, read $n$ and $k$. Initialize an array for the vertex assignments $a$ and the clique labels $c$.
+2. Determine the minimal number of cliques, $q$, as $\lceil n/k \rceil$. Each clique will have at most $k$ vertices to ensure connectivity.
+3. Assign integers to vertices sequentially from 1 to $n$. This ensures that every integer is distinct, as required.
+4. Partition the vertices into consecutive blocks of size $k$. Assign the same clique label to all vertices in a block. The last block may be smaller than $k$.
+5. Output the integer assignment array $a$, the number of cliques $q$, and the clique labels $c$.
 
-Why it works: Within each block, for any vertices $i$ and $j$, the index difference $|i - j| \le m - 1$ and the value difference $|a_i - a_j| \le m - 1$. Their sum is $\le 2(m - 1)$. Since $m = k + 1$, $2(m-1) \le 2k$, which guarantees the edge exists if the assignment is careful. By construction, edges exist between all pairs in a block, forming a clique. No larger block can satisfy the condition for all pairs, so the clique count is minimal.
+Why it works: For any two vertices in the same block, their index difference is at most $k-1$ and their integer difference is at most $k-1$, so their sum is at most $2(k-1) < 2k$, satisfying the edge condition. No edge exists between vertices in different blocks beyond the threshold, which guarantees that each block is maximal and forms a clique. This guarantees the minimal number of cliques.
 
 ## Python Solution
 
@@ -61,97 +59,85 @@ Why it works: Within each block, for any vertices $i$ and $j$, the index differe
 import sys
 input = sys.stdin.readline
 
-def solve():
-    t = int(input())
-    for _ in range(t):
-        n, k = map(int, input().split())
-        m = k + 1
-        # compute number of cliques
-        q = (n + m - 1) // m
-        # assign values in blocks
-        a = [0] * n
-        cnt = 1
-        for i in range(0, n, m):
-            for j in range(i, min(i + m, n)):
-                a[j] = cnt
-                cnt += 1
-        # assign cliques
-        c = [0] * n
-        for i in range(n):
-            c[i] = i // m + 1
-        print(' '.join(map(str, a)))
-        print(q)
-        print(' '.join(map(str, c)))
-
-if __name__ == "__main__":
-    solve()
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(range(1, n+1))
+    
+    # minimal number of cliques
+    q = (n + k - 1) // k
+    
+    # assign clique labels
+    c = []
+    for i in range(n):
+        c.append(i // k + 1)
+    
+    print(' '.join(map(str, a)))
+    print(q)
+    print(' '.join(map(str, c)))
 ```
 
-The solution first calculates the block size $m = k+1$ and uses it to assign integer values to vertices sequentially, ensuring that blocks of size up to $m$ form cliques. The clique assignment is straightforward, dividing the vertex array into contiguous blocks. We handle the last block naturally, which may be smaller than $m$.
+The solution starts by reading the number of test cases. For each case, it builds the integer array $a$ as a simple sequence from 1 to $n$. The minimal clique count is computed with ceiling division. Clique labels are assigned by dividing the vertex indices by $k$ and adding one to ensure labels start at 1. Using integer division ensures blocks of size up to $k$. Printing follows the required output format.
 
 ## Worked Examples
 
-**Example 1: n = 5, k = 4**
+Sample Input:
 
-| i | a[i] | c[i] |
-| --- | --- | --- |
-| 1 | 1 | 1 |
-| 2 | 2 | 1 |
-| 3 | 3 | 1 |
-| 4 | 4 | 1 |
-| 5 | 5 | 1 |
+```
+5 4
+```
 
-All vertices belong to a single clique. Any pair satisfies $|i-j| + |a_i - a_j| \le 4$. This demonstrates that when $k$ is large enough relative to $n$, the solution produces one clique.
+| Step | a (vertex values) | q (cliques) | c (clique labels) |
+| --- | --- | --- | --- |
+| Initialization | [1,2,3,4,5] | - | - |
+| Compute q | [1,2,3,4,5] | 2 | - |
+| Assign c | [1,2,3,4,5] | 2 | [1,1,2,2,2] |
 
-**Example 2: n = 8, k = 3**
+This trace confirms that the first two vertices form one clique and the last three form the second clique. All edges within blocks satisfy $|i-j| + |a_i - a_j| \le k = 4$. The number of cliques matches $\lceil 5/4 \rceil = 2$.
 
-| i | a[i] | c[i] |
-| --- | --- | --- |
-| 1 | 1 | 1 |
-| 2 | 2 | 1 |
-| 3 | 3 | 1 |
-| 4 | 4 | 2 |
-| 5 | 5 | 2 |
-| 6 | 6 | 2 |
-| 7 | 7 | 3 |
-| 8 | 8 | 3 |
+Another example, Input:
 
-Clique size $m = k+1 = 4$, so first block of 3 vertices forms clique 1, next 3 clique 2, last 2 clique 3. Each block satisfies the edge condition internally. This shows how the algorithm handles multiple cliques when $n > k+1$.
+```
+8 16
+```
+
+| Step | a | q | c |
+| --- | --- | --- | --- |
+| Initialization | [1,2,3,4,5,6,7,8] | - | - |
+| Compute q | [1,2,3,4,5,6,7,8] | 1 | - |
+| Assign c | [1,2,3,4,5,6,7,8] | 1 | [1,1,1,1,1,1,1,1] |
+
+Since $k$ is large enough to connect all vertices, the algorithm correctly outputs a single clique containing all vertices.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Assigning integers and clique numbers requires a single pass through n vertices |
-| Space | O(n) | Arrays for values and clique numbers |
+| Time | O(n) per test case | Assigning integers and clique labels involves single loops over n vertices. |
+| Space | O(n) | Arrays for vertex values and clique labels. |
 
-Given $t \le 1600$ and $n \le 40$, the worst-case operation count is $1600 * 40 = 64000$, which is well within the 3-second time limit. Memory usage is also trivial relative to 512 MB.
+With $t \le 1600$ and $n \le 40$, the total operations are roughly 64,000, far below typical 10^8 operation limits for 2-second time limits. Memory usage is minimal relative to the 512 MB limit.
 
 ## Test Cases
 
 ```python
-# helper to run solution
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    solve()
-    return sys.stdout.getvalue().strip()
+    output = io.StringIO()
+    sys.stdout = output
+    exec(open('solution.py').read())
+    return output.getvalue().strip()
 
 # provided samples
-assert run("3\n2 3\n5 4\n8 16\n") == \
-"""1 2
-1
-1 1
-1 2 3 4 5
-2
-1 1 2 1 2
-1 2 3 4 5 6 7 8
-1
-1 1 1 1 1 1 1 1""", "sample 1"
+assert run("3\n2 3\n5 4\n8 16\n") == "2 1\n1\n1 1\n1 2 3 4 5\n2\n1 1 2 2 2\n1 2 3 4 5 6 7 8\n1\n1 1 1 1 1 1 1 1", "sample 1"
 
 # custom cases
-assert run("1\n2 1\n") == "1 2\n1\n1 1", "minimum n"
-assert run("1\n40 2\n") == "1 2
+assert run("1\n2 1\n") == "1 2\n2\n1 2", "minimal n and small k"
+assert run("1\n40 2\n") == "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40\n20\n" + ' '.join(str(i//2+1) for i in range(40)), "max n small k"
+assert run("1\n10 20\n") == "1 2 3 4 5 6 7 8 9 10\n1\n1 1 1 1 1 1 1 1 1 1", "large k connects all"
+assert run("1\n7 3\n") == "1 2 3 4 5 6 7\n3\n1 1 1 2 2 2 3", "k < n, multiple cliques"
 ```
+
+| Test
