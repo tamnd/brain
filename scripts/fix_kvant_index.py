@@ -57,8 +57,11 @@ def _list_solutions(subject_dir: Path) -> list[dict]:
     return out
 
 
-_SOURCE_SKIP_RE = re.compile(
-    r'^(\d+\.|[$(]|Let |Prove|Find|Show|Given|For |A |An |The |\$|\\)',
+_ATTRIBUTION_RE = re.compile(
+    r'([A-Z]\.\s+[A-Z]\.)'
+    r'|(\bOlympiad\b|\bCompetition\b|\bContest\b'
+    r'|\bChampionship\b|\bSchool\b|\bTournament\b'
+    r'|\bBourbaki\b|Archimedes|Leonhard|Euler)',
     re.IGNORECASE,
 )
 
@@ -71,7 +74,9 @@ def _extract_problem_source(text: str) -> str:
     if not lines:
         return ""
     last = lines[-1]
-    if len(last) > 120 or _SOURCE_SKIP_RE.match(last):
+    if len(last) > 120:
+        return ""
+    if not _ATTRIBUTION_RE.search(last):
         return ""
     return last
 

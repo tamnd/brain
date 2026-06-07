@@ -36,7 +36,7 @@ draft: false
 | [6](6.md) Consider a standard 12-hour analog clock with an hour hand and a minute hand. |  | 3m07s |
 | [7](7.md) *S. T. Berkolayko*. Let |  | 5m50s |
 | [8](8.md) Consider the original game with 25 matches, where each player may take 1, 2, or 3 matches per turn, and the winner is the player whose total number of matches at the end is even. |  | 3m33s |
-| [9](9.md) *Try to find other properties of a tetrahedron that are equivalent to them.*. Consider a tetrahedron with vertices $A$, $B$, $C$, and $D$. |  | 3m50s |
+| [9](9.md) Consider a tetrahedron with vertices $A$, $B$, $C$, and $D$. |  | 3m50s |
 | [10](10.md) *G. A. Galperin*. Let the centers of the circles be the vertices $A,B,C,D$ of a convex quadrilateral, listed in cyclic order. |  | 4m14s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1970_3/)
@@ -44,9 +44,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [11](11.md) *Evening Mathematical School at Moscow State University*. Label the trees by the residues modulo $n$, arranged around the circle. |  | 4m23s |
-| [12](12.md) *Which quadrilaterals can be cut by a straight line into two quadrilaterals that are similar to each other?*. A straight line intersects a convex quadrilateral in two points. |  | 2m14s |
+| [12](12.md) A straight line intersects a convex quadrilateral in two points. |  | 2m14s |
 | [13](13.md) Consider first small values of $n$ to understand the structure of the sum of pairwise differences. |  | 1m21s |
-| [14](14.md) *then it is impossible to inscribe a sphere in this polyhedron.*. The condition that no two black faces share an edge means that every edge of the polyhedron is incident with at most one black face. |  | 3m28s |
+| [14](14.md) The condition that no two black faces share an edge means that every edge of the polyhedron is incident with at most one black face. |  | 3m28s |
 | [15](15.md) Consider small instances to develop intuition. |  | 2m51s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1970_4/)
@@ -73,7 +73,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [26](26.md) *Solve the equation $f(x,y)=y$.*. The numbering pattern is linear. |  | 1m24s |
+| [26](26.md) The numbering pattern is linear. |  | 1m24s |
 | [27](27.md) Let |  | 9m56s |
 | [28](28.md) *Moscow Mathematical Olympiad (XXX)*. For the first part, the information-theoretic count is encouraging. |  | 2m24s |
 | [29](29.md) Let the radius of each coin in the chain be $r$. |  | 2m03s |
@@ -133,11 +133,11 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [56](56.md) *Mathematical Problems. 3rd ed. – Moscow: Nauka, 1971.*. Consider the initial configuration of four ones and five zeros written around a circle. |  | 4m37s |
-| [57](57.md) *Mathematical Problems. 3rd ed. – Moscow: Nauka, 1971.*. Let |  | 1m37s |
-| [58](58.md) *Mathematical Problems. 3rd ed. – Moscow: Nauka, 1971.*. The three given lines are the three internal angle bisectors of a triangle. |  | 6m24s |
-| [59](59.md) *Mathematical Problems. 3rd ed. — Moscow: Nauka, 1971.*. Let |  | 1m49s |
-| [60](60.md) *Mathematical Problems. 3rd ed. – Moscow: Nauka, 1971.*. The numbers under consideration are exactly the positive integers whose decimal expansion consists only of zeros and ones. |  | 5m16s |
+| [56](56.md) Consider the initial configuration of four ones and five zeros written around a circle. |  | 4m37s |
+| [57](57.md) Let |  | 1m37s |
+| [58](58.md) The three given lines are the three internal angle bisectors of a triangle. |  | 6m24s |
+| [59](59.md) Let |  | 1m49s |
+| [60](60.md) The numbers under consideration are exactly the positive integers whose decimal expansion consists only of zeros and ones. |  | 5m16s |
 
 ## 1971
 
@@ -158,7 +158,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [66](66.md) *A. I. Milovanov*. Consider the examples given: $3^2 + 4^2 = 5^2$, $36^2 + 37^2 + 38^2 + 39^2 + 40^2 = 41^2 + 42^2 + 43^2 + 44^2$, and $55^2 + 56^2 + 57^2 + 58^2 + 59^2 + 60^2 = 61^2 + 62^2 + 63^2 + 64^2 + 65^2$. |  | 4m57s |
-| [67](67.md) *Insert illustration*. The ring is the solid obtained from a sphere by drilling a cylindrical hole through its center. |  | 1m34s |
+| [67](67.md) The ring is the solid obtained from a sphere by drilling a cylindrical hole through its center. |  | 1m34s |
 | [68](68.md) *A. N. Vilenkin*. Consider the pattern formed by concentric circles of radii $1,2,3,\\dots$ and a fixed line $l$ through the center $O$, along with all tangents to the circles parallel to $l$. |  | 1m27s |
 | [69](69.md) The problem concerns numbers whose squares end with the same digits as the number itself, sometimes called automorphic numbers. |  | 7m39s |
 | [70](70.md) *N. B. Vasiliev*. For each line $l_i$, let $P_i$ denote the orthogonal projection of the plane onto $l_i$. |  | 8m41s |
@@ -190,7 +190,7 @@ draft: false
 | [81](81.md) *A. N. Vilenkin*. Consider the square $A_1 A_2 A_3 A_4$ with an arbitrary point $P$ inside it. |  | 5m03s |
 | [82](82.md) Let the cars be arranged around the circle in their order along the road. |  | 7m51s |
 | [83](83.md) For small values of $n$, the statement is easy to check directly. |  | 4m27s |
-| [84](84.md) *Insert illustration*. The statement as written contains a typographical error. |  | 5m29s |
+| [84](84.md) The statement as written contains a typographical error. |  | 5m29s |
 | [85](85.md) *L. N. Vasershtein*. Consider first small examples. |  | 4m59s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1971_6/)
@@ -198,7 +198,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [86](86.md) *L. G. Limanov*. Consider small rectangular boxes that can be tiled with $2 \\times 2$ and $1 \\times 4$ tiles. |  | 4m49s |
-| [87](87.md) *Insert illustration*. Let the three circles have common radius $r$, and let their common point be $P$. |  | 6m04s |
+| [87](87.md) Let the three circles have common radius $r$, and let their common point be $P$. |  | 6m04s |
 | [88](88.md) *M. F. Bezborodnikov*. Consider a cubic polynomial $x^3+ax^2+bx+c=0$ and suppose its roots form an arithmetic progression. |  | 3m07s |
 | [89](89.md) *I. M. Yaglom*. For a triangle the statement is trivial, since the three sides themselves already form a triangle containing the polygon. |  | 3m39s |
 | [90](90.md) *G. I. Natanson*. Let |  | 6m53s |
@@ -211,7 +211,7 @@ draft: false
 | [92](92.md) The schedule repeats with period $\\operatorname{lcm}(2,3,5)=30$. |  | 7m12s |
 | [93](93.md) *A. M. Leontovich*. Consider small sequences of $+1$ and $-1$ and compute the sum $x_1x_2 + x_2x_3 + \\dots + x_{n-1}x_n + x_nx_1$. |  | 7m57s |
 | [94](94.md) *L. G. Limanov*. Let $V$, $E$, and $F$ denote the numbers of vertices, edges, and faces of the polyhedron. |  | 7m06s |
-| [95](95.md) *Insert illustration here.*. Let the trapezoid have bases $AB$ and $CD$, with $AB>CD$, and let $E$ and $F$ be the midpoints of the legs. |  | 5m20s |
+| [95](95.md) Let the trapezoid have bases $AB$ and $CD$, with $AB>CD$, and let $E$ and $F$ be the midpoints of the legs. |  | 5m20s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1971_8/)
 
@@ -228,7 +228,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [101](101.md) *R. M. Kovtun*. Consider small initial colony sizes to understand the dynamics. |  | 6m01s |
-| [102](102.md) *V. Gurari*. A triangle already satisfies the condition for each of its three sides, since the third vertex completes an equilateral triangle. |  | 6m26s |
+| [102](102.md) A triangle already satisfies the condition for each of its three sides, since the third vertex completes an equilateral triangle. |  | 6m26s |
 | [103](103.md) *E. A. Yasinovy̆ĭ*. The system is |  | 6m50s |
 | [104](104.md) *V. N. Berezin*. The problem involves two points $P$ and $Q$ inside triangle $ABC$ such that at vertices $A$ and $B$, the lines connecting the vertex to the points form equal angles with the corresponding angle bisect… |  | 7m05s |
 | [105](105.md) *I. N. Bernstein*. The basic fact about digit sums is that replacing a number by the sum of its digits does not change its residue modulo $9$. |  | 9m12s |
@@ -274,7 +274,7 @@ draft: false
 | [121](121.md) Let |  | 7m39s |
 | [122](122.md) Let the consecutive arcs of the circumcircle be |  | 7m05s |
 | [123](123.md) *V. P. Beshkarev*. Let |  | 5m34s |
-| [124](124.md) *G. Noten, 10th-grade student*. Let |  | 3m39s |
+| [124](124.md) Let |  | 3m39s |
 | [125](125.md) *Yu. I. Ionin*. Let the set be $A={a_1,a_2,\\dots}$, with no divisibility relations between distinct elements. |  | 6m26s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1972_2/)
@@ -293,9 +293,9 @@ draft: false
 |---|---------|---|------|
 | [131](131.md) *Murat Urtembaev, 10th-grade student (Alma-Ata, School No. 56)*. Consider a cyclic quadrilateral $ABCD$ and extend opposite sides $AB$ and $CD$, $BC$ and $DA$. |  | 6m04s |
 | [132](132.md) Consider small values of $n$ and attempt to construct sequences of $+1$ and $-1$ satisfying the condition that for each $k=1,2,\\ldots,n-1$, the sum of the $n$ pairwise products of numbers separated by… |  | 6m16s |
-| [133](133.md) *V. Maresin*. Model the cellular shell as a polyhedral decomposition of a sphere. |  | 14m13s |
+| [133](133.md) Model the cellular shell as a polyhedral decomposition of a sphere. |  | 14m13s |
 | [134](134.md) *L. G. Makarov*. Let the variable triangle have vertices $P\\in AB$, $Q\\in BC$, $R\\in AC$. |  | 7m01s |
-| [135](135.md) *V. Maresin*. Consider small values of $n$ to understand the pattern of the product. |  | 6m18s |
+| [135](135.md) Consider small values of $n$ to understand the pattern of the product. |  | 6m18s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1972_4/)
 
@@ -313,7 +313,7 @@ draft: false
 |---|---------|---|------|
 | [141](141.md) *E. V. Sallinen*. Let the altitude $BH$ be the $y$ axis, and let $H=(0,0)$. |  | 5m26s |
 | [142](142.md) *N. N. Konstantinov, N. B. Vasiliev*. Consider a cube with its twelve edges labeled by distinct numbers $1$ through $12$. |  | 8m12s |
-| [143](143.md) *if $n$ is divisible by $p-1$ and $p$ is prime, then $n$ is divisible by $p$.*. Consider small positive integers $n$ and examine the condition that if $n$ is divisible by $p-1$ for some prime $p$, then $n$ must also be divisible by $p$. |  | 6m |
+| [143](143.md) Consider small positive integers $n$ and examine the condition that if $n$ is divisible by $p-1$ for some prime $p$, then $n$ must also be divisible by $p$. |  | 6m |
 | [144](144.md) *A. T. Kolotov*. Consider small rectangles with integer sides. |  | 4m55s |
 | [145](145.md) *A. K. Tolpygo*. Consider the first several terms of the sequence defined by taking the integer closest to the cumulative target $n\\sqrt{2}$. |  | 6m08s |
 
@@ -321,7 +321,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [146](146.md) *A. Romanov*. Label the vertices of a regular $n$-gon by the residues modulo $n$. |  | 6m57s |
+| [146](146.md) Label the vertices of a regular $n$-gon by the residues modulo $n$. |  | 6m57s |
 | [147](147.md) *I. F. Sharygin*. Let $P$ be the intersection of the tangents at $A$ and $C$. |  | 6m38s |
 | [148](148.md) *A. L. Lopshits*. Let |  | 6m54s |
 | [149](149.md) *N. B. Vasiliev*. Consider the first condition: the perimeters of the four triangles formed by three consecutive vertices of a quadrilateral are equal. |  | 3m18s |
@@ -362,10 +362,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [166](166.md) Let $A_1$ and $A_2$ be the sets of participants of the two trips, and let $B_i \\subset A_i$ be the boys in the $i$-th trip. |  | 1m18s |
-| [167](167.md) *G. Pólya*. Consider an arithmetic progression $a$, $a+d$, $a+2d$, $\\dots$, where $a$ and $d$ are natural numbers. |  | 1m16s |
-| [168](168.md) *G. Noten*. The statement concerns a regular frustum of a pyramid. |  | 6m32s |
+| [167](167.md) Consider an arithmetic progression $a$, $a+d$, $a+2d$, $\\dots$, where $a$ and $d$ are natural numbers. |  | 1m16s |
+| [168](168.md) The statement concerns a regular frustum of a pyramid. |  | 6m32s |
 | [169](169.md) *N. B. Vasiliev*. Each row contains $n$ numbers arranged increasingly, so the $k$-th column consists of the $k$-th smallest element in each row. |  | 1m08s |
-| [170](170.md) *Figure number 2*. Part 1 is a special case of Part 2. |  | 8m06s |
+| [170](170.md) Part 1 is a special case of Part 2. |  | 8m06s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1972_11/)
 
@@ -381,8 +381,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [176](176.md) *L. Schneider, 9th-grade student*. Let $H$ be the orthocenter of triangle $ABC$. |  | 5m39s |
-| [177](177.md) *T. Temirov*. Consider the equation |  | 7m44s |
+| [176](176.md) Let $H$ be the orthocenter of triangle $ABC$. |  | 5m39s |
+| [177](177.md) Consider the equation |  | 7m44s |
 | [178](178.md) Let $A$ be the vertex of the angle whose bisector contains $P$. |  | 1m20s |
 | [179](179.md) *N. B. Vasiliev*. Let the angles of $T$ be $A,B,C$. |  | 8m24s |
 | [180](180.md) *Ya. M. Bardzin'*. A strategy can be represented by a decision tree. |  | 4m38s |
@@ -405,17 +405,17 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [186](186.md) *V. Slepchenko, 10th-grade student*. We seek all integer triples $(x,y,z)$, none equal to $1$, satisfying |  | 6m20s |
+| [186](186.md) We seek all integer triples $(x,y,z)$, none equal to $1$, satisfying |  | 6m20s |
 | [187](187.md) Before I begin the full solution, I need to clarify: should I solve **all five subproblems (1–5) for point $C$**, or just a specific one from the list? Each has its own locus. |  | 5m35s |
 | [188](188.md) *A. K. Kelmans*. Represent the airline network by a simple graph $G$ on $2n$ vertices. |  | 5m32s |
-| [189](189.md) *D. Yu. Grigoriev*. Consider three segments $AB$, $CD$, and $EF$ intersecting at a single point $O$, with $E$ on $AC$ and $F$ on $BD$. |  | 6m |
-| [190](190.md) *Figure number 2*. The motion is completely determined by the two lines and the current point. |  | 7m |
+| [189](189.md) Consider three segments $AB$, $CD$, and $EF$ intersecting at a single point $O$, with $E$ on $AC$ and $F$ on $BD$. |  | 6m |
+| [190](190.md) The motion is completely determined by the two lines and the current point. |  | 7m |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1973_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [191](191.md) *P. Paramonov, 9th grade student*. Let $A$ and $B$ be fixed, and let $l$ be a fixed line through $A$ not containing $B$. |  | 1m14s |
+| [191](191.md) Let $A$ and $B$ be fixed, and let $l$ be a fixed line through $A$ not containing $B$. |  | 1m14s |
 | [192](192.md) Consider small analogues first. |  | 7m55s |
 | [193](193.md) *N. B. Vasiliev*. Consider a convex pentagon $ABCDE$ with vertices labeled consecutively. |  | 7m17s |
 | [194](194.md) *A. A. Kirillov*. Take a small example, say $a=3$, $b=7$. |  | 10m04s |
@@ -426,7 +426,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [196](196.md) *A. T. Kolotov*. Work in the unit circle centered at $O$. |  | 2m06s |
-| [197](197.md) *Fig. 1*. Consider first the smallest nontrivial case, a $2\\times 2$ table with entries $a,b$ in the first row and $c,d$ in the second row. |  | 6m07s |
+| [197](197.md) Consider first the smallest nontrivial case, a $2\\times 2$ table with entries $a,b$ in the first row and $c,d$ in the second row. |  | 6m07s |
 | [198](198.md) *V. L. Gutenmacher*. The conditions place $H$ on the line $AB$ and $K$ on the line $BC$. |  | 7m51s |
 | [199](199.md) *D. A. Fridkin*. We begin by examining the first sum for small values of $n$. |  | 6m06s |
 | [200](200.md) *A. N. Kolmogorov*. For part (a), the six points are the intersection points of four lines in general position. |  | 5m24s |
@@ -435,9 +435,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [201](201.md) *Nguyen Cong Quy (Hanoi)*. Let triangle $ABC$ have sides $a=BC$, $b=CA$, $c=AB$. |  | 2m02s |
+| [201](201.md) Let triangle $ABC$ have sides $a=BC$, $b=CA$, $c=AB$. |  | 2m02s |
 | [202](202.md) *N. B. Vasilyev*. Let the arithmetic progression be |  | 7m17s |
-| [203](203.md) *b) State and prove the converse theorem.*. Let $ABCD$ be a cyclic quadrilateral with diagonals $AC$ and $BD$ intersecting at $P$. |  | 1m13s |
+| [203](203.md) Let $ABCD$ be a cyclic quadrilateral with diagonals $AC$ and $BD$ intersecting at $P$. |  | 1m13s |
 | [204](204.md) *G. A. Gurevich*. Consider the total number of $n$-digit numbers, which is $9 \\cdot 10^{n-1}$. |  | 3m23s |
 | [205](205.md) Consider the matrix of size $24 \\times 25$ with entries $0$ and $1$, where $1$ indicates that a student solved a problem. |  | 8m34s |
 
@@ -475,9 +475,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [221](221.md) *A. Bloch, 8th-grade student*. Consider an arbitrary compact planar blot. |  | 8m51s |
-| [222](222.md) *A. Grüntal*. Consider small convex polyhedra such as the tetrahedron, cube, and octahedron. |  | 6m59s |
-| [223](223.md) *A. Makarichev, 9th-grade student*. Perfect numbers are rare and highly structured. |  | 4m03s |
+| [221](221.md) Consider an arbitrary compact planar blot. |  | 8m51s |
+| [222](222.md) Consider small convex polyhedra such as the tetrahedron, cube, and octahedron. |  | 6m59s |
+| [223](223.md) Perfect numbers are rare and highly structured. |  | 4m03s |
 | [224](224.md) *E. G. Gotman*. Consider a trihedral angle, that is, three planes meeting at a common vertex, forming three plane angles $\\alpha$, $\\beta$, and $\\gamma$ at the vertex. |  | 1m41s |
 | [225](225.md) *G. A. Galperin*. Consider a die with faces numbered so that opposite faces sum to $7$. |  | 6m12s |
 
@@ -487,15 +487,15 @@ draft: false
 |---|---------|---|------|
 | [226](226.md) *Yu. I. Ionin*. Place the square in the coordinate plane with vertices |  | 6m11s |
 | [227](227.md) *E. V. Sallinen*. Let the parallelogram be mapped by an affine transformation to the unit square, since affine maps preserve parallelism, ratios of areas, and the condition of a point lying on a segment. |  | 1m16s |
-| [228](228.md) *D. Logachyov*. Consider small values of $n$ first. |  | 4m35s |
-| [229](229.md) *A. Belkin*. Let the square have side length $a$. |  | 7m04s |
+| [228](228.md) Consider small values of $n$ first. |  | 4m35s |
+| [229](229.md) Let the square have side length $a$. |  | 7m04s |
 | [230](230.md) *S. V. Konyagin*. Let the side length of the equilateral pentagon be $1$, and let its consecutive vertices be $A_1,A_2,A_3,A_4,A_5$. |  | 6m41s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1973_11/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [231](231.md) *R. Egoryan, 9th-grade student*. Consider the equation $n^x + n^y = n^z$ in natural numbers. |  | 7m59s |
+| [231](231.md) Consider the equation $n^x + n^y = n^z$ in natural numbers. |  | 7m59s |
 | [232](232.md) *P. S. Pankov*. For a triple of points $A,B,C$, the condition that the triangle is obtuse means that one of the three angles exceeds $90^\\circ$, equivalently one of the three opposite-side inequalities of the form |  | 1m27s |
 | [233](233.md) *G. A. Halperin*. Consider a small case to understand the process. |  | 4m45s |
 | [235](235.md) *I. N. Bernstein*. Consider a lion moving along a polygonal path inside a circular arena of radius $R = 10$ meters. |  | 6m02s |
@@ -507,7 +507,7 @@ draft: false
 | [236](236.md) *A. Yu. Soifer, S. G. Slobodnik*. For the first part, the numbers involved are all two-digit numbers, so each number can be represented as an ordered pair $(a,b)$ with $a,b \\in {1,2,\\dots,9,0}$, $a\\neq 0$. |  | 7m |
 | [237](237.md) *B. D. Ginzburg*. Consider an acute-angled triangle with vertices $A$, $B$, and $C$ and corresponding angles $\\alpha$, $\\beta$, and $\\gamma$, and sides $a = BC$, $b = AC$, $c = AB$. |  | 5m06s |
 | [238](238.md) *F. G. Shleifer*. Let |  | 4m39s |
-| [239](239.md) *N. Chernov, 10th grade student (Kryvyi Rih)*. Let points $A$ and $B$ be fixed on the plane, and let $C$ lie on the perpendicular bisector of segment $AB$, since it must satisfy $/AC/ = /BC/$. |  | 6m12s |
+| [239](239.md) Let points $A$ and $B$ be fixed on the plane, and let $C$ lie on the perpendicular bisector of segment $AB$, since it must satisfy $/AC/ = /BC/$. |  | 6m12s |
 
 ## 1974
 
@@ -518,9 +518,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [241](241.md) *S. I. Meyzus*. The exponent $1974$ is large, so direct computation is impossible. |  | 1m57s |
-| [242](242.md) *S. Salnikov, 10th-grade student (Mary)*. Denote the sides opposite $A_1,A_2,A_3$ by |  | 4m55s |
+| [242](242.md) Denote the sides opposite $A_1,A_2,A_3$ by |  | 4m55s |
 | [243](243.md) *A. M. Lopshits*. Let the two given lines be denoted $l_1$ and $l_2$. |  | 2m21s |
-| [244](244.md) *A. Grigoryan, 10th-grade student (Baku)*. The desired inequality can be rewritten as |  | 6m36s |
+| [244](244.md) The desired inequality can be rewritten as |  | 6m36s |
 | [245](245.md) *M. L. Gerver*. Consider the task of placing $N$ points in the plane such that the distance between any two points $M_i$ and $M_j$ is a given number $r_{ij}$. |  | 6m13s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1974_2/)
@@ -528,7 +528,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [246](246.md) *Yu. A. Gryaznov*. Let the triangle be $ABC$ with circumcenter $O$. |  | 1m17s |
-| [247](247.md) *E. Turkevich*. A $6 \\times 6$ square contains $36$ unit squares. |  | 6m15s |
+| [247](247.md) A $6 \\times 6$ square contains $36$ unit squares. |  | 6m15s |
 | [248](248.md) *I. A. Kushnir*. Let $S$ denote the area of the polygon $A_1A_2\\cdots A_n$. |  | 7m54s |
 | [249](249.md) *I. F. Sharygin*. Consider a cube $ABCDA'B'C'D'$ with an inscribed sphere, whose center coincides with the cube's center and whose radius is half the cube's edge length. |  | 6m06s |
 | [250](250.md) *V. N. Vaguten*. Represent friendship by a graph $G$ whose vertices are the knights, with an edge joining two friends. |  | 7m48s |
@@ -548,9 +548,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [256](256.md) *A. N. Chernyshyov*. Consider first a simple case: a triangle circumscribed around a circle, with the incircle touching the sides at points $A'$, $B'$, and $C'$, forming the inscribed triangle. |  | 6m13s |
-| [257](257.md) *Nguyen Cong Quy (Hanoi)*. The inequality can be written as |  | 4m06s |
+| [257](257.md) The inequality can be written as |  | 4m06s |
 | [258](258.md) *A. P. Savin*. Consider a convex quadrilateral with vertices $A$, $B$, $C$, $D$ in order, and let $K$, $L$, $N$ be the midpoints of three of its sides. |  | 5m42s |
-| [259](259.md) *A. Grigoryan, 10th-grade student*. Consider a simple case of a triangle circumscribed around a circle, where the inscribed circle is tangent to its sides at points $A', B', C'$. |  | 3m28s |
+| [259](259.md) Consider a simple case of a triangle circumscribed around a circle, where the inscribed circle is tangent to its sides at points $A', B', C'$. |  | 3m28s |
 | [260](260.md) *G. A. Gurevich*. Label the $n$ equal elementary arcs by the colors of the segments |  | 6m30s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1974_5/)
@@ -558,9 +558,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [261](261.md) *S. G. Gindikin*. Consider a hoop of radius $R$ placed over a fixed circle of radius $r < R$. |  | 1m48s |
-| [262](262.md) *V. Rabinovich, L. Rabinovich*. The problem asks for the maximal number of rooks or queens on an $8 \\times 8$ chessboard such that each piece is attacked by at most one other piece. |  | 8m52s |
+| [262](262.md) The problem asks for the maximal number of rooks or queens on an $8 \\times 8$ chessboard such that each piece is attacked by at most one other piece. |  | 8m52s |
 | [263](263.md) *E. G. Gotman*. Let the rectangle have coordinates |  | 6m48s |
-| [264](264.md) *B. Rosenstein, 9th-grade student*. The graph described by Fig. |  | 3m40s |
+| [264](264.md) The graph described by Fig. |  | 3m40s |
 | [265](265.md) *M. L. Gerver*. Consider a rectangular parallelepiped with edges of length $a$, $b$, and $c$. |  | 6m15s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1974_6/)
@@ -569,7 +569,7 @@ draft: false
 |---|---------|---|------|
 | [266](266.md) *A. V. Karzanov*. Consider the circle through three consecutive vertices $A_{i-1},A_i,A_{i+1}$. |  | 1m35s |
 | [267](267.md) *F. A. Bartenev*. Let the $n$th triple be $(a_n,b_n,c_n)$, with |  | 6m37s |
-| [268](268.md) *P. Katsylo, 10th grade student (Moscow)*. The game is played on the graph of an $n\\times n$ chessboard, where vertices are squares and edges correspond to standard knight moves $(\\pm2,\\pm1)$ and $(\\pm1,\\pm2)$. |  | 1m16s |
+| [268](268.md) The game is played on the graph of an $n\\times n$ chessboard, where vertices are squares and edges correspond to standard knight moves $(\\pm2,\\pm1)$ and $(\\pm1,\\pm2)$. |  | 1m16s |
 | [269](269.md) *E. A. Yasinovyi*. The quantity $T_k(n)$ is the $k$-th elementary symmetric polynomial in the numbers $1,2,\\dots,n$: |  | 5m15s |
 | [270](270.md) *I. F. Sharygin, A. I. Yanovsky*. The conditions mean that $KA \\perp AB$, $KC \\perp CD$, $HB \\perp AB$, and $HD \\perp CD$. |  | 7m37s |
 
@@ -606,8 +606,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [286](286.md) *A. Pechkovsky*. Let $m(N)$ denote the minimum possible number of distinct marked points. |  | 5m42s |
-| [287](287.md) *A. Lifshitz*. Consider a sequence of natural numbers $a_1 < a_2 < a_3 < \\dots$ such that every natural number $n$ can be represented uniquely as $a_j - a_i$ with $j > i$. |  | 7m10s |
+| [286](286.md) Let $m(N)$ denote the minimum possible number of distinct marked points. |  | 5m42s |
+| [287](287.md) Consider a sequence of natural numbers $a_1 < a_2 < a_3 < \\dots$ such that every natural number $n$ can be represented uniquely as $a_j - a_i$ with $j > i$. |  | 7m10s |
 | [288](288.md) *S. V. Konyagin*. Model the congress by a simple graph. |  | 7m36s |
 | [289](289.md) *S. V. Konyagin*. Let the total weight be $S$, and suppose the $N$ weights are partitioned into $K$ piles each of sum $T$, so $S = KT$. |  | 1m19s |
 | [290](290.md) *S. V. Konyagin*. Let the closed non-self-intersecting broken line have vertices |  | 8m41s |
@@ -618,7 +618,7 @@ draft: false
 |---|---------|---|------|
 | [291](291.md) *V. M. Fishman*. Let the triangle have vertices $A_1,A_2,A_3$. |  | 1m18s |
 | [292](292.md) *F. G. Shleifer*. Consider a small example with numbers $1, 2, 3$. |  | 8m18s |
-| [293](293.md) *A. Bernard, 10th-grade student, M. Felshtyn, 10th-grade student, I. Tkachev, 10th-grade student*. Let $\\gamma_n = \\angle C_{n+1} C_n O$. |  | 1m30s |
+| [293](293.md) Let $\\gamma_n = \\angle C_{n+1} C_n O$. |  | 1m30s |
 | [294](294.md) *V. P. Fedotov*. The inequality is homogeneous and symmetric in a suggestive way. |  | 7m45s |
 | [295](295.md) *N. B. Vasiliev*. The problem involves a convex polyhedron intersected by three parallel planes $p_0$, $p_1$, $p_2$, with $p_1$ equidistant between the outer planes. |  | 5m06s |
 
@@ -626,7 +626,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [296](296.md) *A. Tupanov*. Let the rows be numbered from top to bottom by $1,\\dots,n$, and let $a_{ij}$ be the entry in row $i$, column $j$. |  | 4m57s |
+| [296](296.md) Let the rows be numbered from top to bottom by $1,\\dots,n$, and let $a_{ij}$ be the entry in row $i$, column $j$. |  | 4m57s |
 | [297](297.md) *L. P. Kuptsov*. The problem involves four squares arranged on a plane with shared vertices, forming a chain: the second vertex of the first square coincides with a vertex of the second square, and so on, closing back… |  | 6m12s |
 | [298](298.md) *N. B. Vasilyev*. For $m=5$ the consecutive fractions |  | 6m30s |
 | [299](299.md) *N. B. Vasilyev*. Consider a ruled sheet of paper with parallel lines spaced a fixed distance apart, and suppose a regular $n$-gon is drawn so that all vertices lie on these lines. |  | 6m16s |
@@ -640,8 +640,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [301](301.md) *S. Okhitin, 10th-grade student (Orenburg)*. For $n=1$ the statement is immediate. |  | 7m43s |
-| [302](302.md) *A. Buyanovsky, grade 10 student (Gomel)*. Let $O = AC \\cap BD$ in the trapezoid $ABCD$ with $AB \\parallel CD$. |  | 1m14s |
+| [301](301.md) For $n=1$ the statement is immediate. |  | 7m43s |
+| [302](302.md) Let $O = AC \\cap BD$ in the trapezoid $ABCD$ with $AB \\parallel CD$. |  | 1m14s |
 | [303](303.md) *A. V. Sherstyuk*. Consider placing a small number of identical weights on the vertices of a $1 \\times 1$ grid. |  | 6m10s |
 | [304](304.md) *A. A. Grigoryan*. The axioms resemble the algebraic properties of the bitwise exclusive-or operation. |  | 7m53s |
 | [305](305.md) *A. I. Shirshov*. The concurrency of $AA'$, $BB'$, $CC'$ at $P$ together with products $/AP/\\cdot/A'P/=t$ suggests a fixed-power relation, which is characteristic of inversion centered at $P$. |  | 2m08s |
@@ -660,7 +660,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [311](311.md) *D. Yu. Grigoriev*. Consider the growth process for small numbers. |  | 6m06s |
+| [311](311.md) Consider the growth process for small numbers. |  | 6m06s |
 | [312](312.md) *A. A. Grigoryan*. The outer parallelogram $P_1$ admits an affine normalization to a unit square without changing incidence relations such as “lying on a side” and “being parallel to fixed directions. |  | 1m13s |
 | [313](313.md) *I. N. Bronshtein*. Consider an angle with vertex $O$ and denote its sides by rays $OA$ and $OB$. |  | 6m10s |
 | [314](314.md) *A. G. Leiderman*. Consider the difference between a number and the product of its digits, denoted $N - P(N)$, where $N$ is a 9-digit number with digits $d_1, d_2, \\dots, d_9$ in ${1,2,\\dots,9}$ and $P(N) = d_1 d_2 \\dot… |  | 8m35s |
@@ -673,8 +673,8 @@ draft: false
 | [316](316.md) *E. G. Gotman*. Consider the sum of squares of $k$ consecutive natural numbers beginning at $n$, expressed as |  | 3m37s |
 | [317](317.md) *G. V. Egorov*. Consider a small graph representing countries, where vertices are countries and edges connect neighboring countries. |  | 4m08s |
 | [318](318.md) *A. P. Savin*. Let |  | 6m36s |
-| [319](319.md) *with full rigorous reasoning and the appropriate ending for the problem type.*. I cannot write a solution to Kvant problem M319 because the actual problem statement is not present in your message. |  | 5m08s |
-| [320](320.md) *A. Pechkowski*. The statement asks for a classification. |  | 7m16s |
+| [319](319.md) I cannot write a solution to Kvant problem M319 because the actual problem statement is not present in your message. |  | 5m08s |
+| [320](320.md) The statement asks for a classification. |  | 7m16s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1975_5/)
 
@@ -690,9 +690,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [326](326.md) *E. G. Gotman*. Let the circle have radius $R$ and let a chord $AB$ be at a distance $h$ from the center $O$. |  | 6m28s |
-| [327](327.md) *A. Kolodin, 10th-grade student (Kolomyia)*. Consider small groups to understand how the structure of \ |  | 5m58s |
-| [328](328.md) *O. Efremov, 9th-grade student (Angarsk)*. Let the tetrahedron have edge length $1$. |  | 7m46s |
-| [329](329.md) *G. Shmelev, 10th-grade student (Yaroslavl)*. Let the vertices of the convex $n$-gon be $P_1,P_2,\\dots,P_n$ in cyclic order. |  | 6m36s |
+| [327](327.md) Consider small groups to understand how the structure of \ |  | 5m58s |
+| [328](328.md) Let the tetrahedron have edge length $1$. |  | 7m46s |
+| [329](329.md) Let the vertices of the convex $n$-gon be $P_1,P_2,\\dots,P_n$ in cyclic order. |  | 6m36s |
 | [330](330.md) *N. B. Vasiliev*. Let $M_0$ and $M_1$ be convex polygons. |  | 4m41s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1975_7/)
@@ -742,7 +742,7 @@ draft: false
 | [351](351.md) *M. M. Imerishvili, 9th-grade student (Tbilisi)*. Let the unknown triangle be $ABC$, and suppose that $H$ is the foot of the altitude from $A$ onto $BC$. |  | 10m16s |
 | [352](352.md) *D. K. Faddeev*. Write |  | 6m05s |
 | [353](353.md) Before proceeding, I need the precise textual statement of Kvant problem M353. |  | 5m51s |
-| [355](355.md) *Once the statement is available, I can produce the six requested sections:*. I cannot write a solution to Kvant problem M355 because the actual problem statement is not present in your message. |  | 2m48s |
+| [355](355.md) I cannot write a solution to Kvant problem M355 because the actual problem statement is not present in your message. |  | 2m48s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1975_12/)
 
@@ -760,7 +760,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [361](361.md) Please provide the full text of Kvant problem M361 so I can write the complete, rigorous solution in the requested six-section format. |  | 4m29s |
-| [362](362.md) *A. Lopshits*. The statement is affine in nature. |  | 3m39s |
+| [362](362.md) The statement is affine in nature. |  | 3m39s |
 | [364](364.md) The requirement that every training session consists of 4 disjoint crews of 4 cosmonauts means that each session partitions the 16 cosmonauts into 4-element subsets. |  | 1m45s |
 | [365](365.md) Consider first a simple case of two numbers summing to $1$. |  | 6m31s |
 
@@ -769,15 +769,15 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [366](366.md) *V. E. Kolosov*. Assume such a configuration exists and consider the finite set of triangles. |  | 8m46s |
-| [367](367.md) *D. Fleishman, 10th grade student*. For three consecutive natural numbers $n, n+1, n+2$, the key structural feature is that any two of them are coprime. |  | 2m14s |
+| [367](367.md) For three consecutive natural numbers $n, n+1, n+2$, the key structural feature is that any two of them are coprime. |  | 2m14s |
 | [368](368.md) *S. V. Fomin*. Choose coordinates so that the three cylinder axes are parallel to the coordinate axes. |  | 6m32s |
-| [369](369.md) *D. Isaak*. The circle $\\gamma$ is centered at the orthocenter $H$ and lies inside the acute triangle $ABC$. |  | 7m04s |
+| [369](369.md) The circle $\\gamma$ is centered at the orthocenter $H$ and lies inside the acute triangle $ABC$. |  | 7m04s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1976_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [372](372.md) *P. Khaidukov*. Consider the triangle $ABC$ and the inequality $/AP/ + /BP/ + /CP/ \\ge /AC/ + /BC/$ for an arbitrary point $P$ in the plane. |  | 7m43s |
+| [372](372.md) Consider the triangle $ABC$ and the inequality $/AP/ + /BP/ + /CP/ \\ge /AC/ + /BC/$ for an arbitrary point $P$ in the plane. |  | 7m43s |
 | [373](373.md) An infinite decimal expansion determines an infinite sequence of digits, hence an infinite word over the alphabet ${0,1,\\dots,9}$. |  | 7m06s |
 | [375](375.md) I cannot write a solution to Kvant problem M375 from the information provided, because the actual problem statement is missing. |  | 5m09s |
 
@@ -785,7 +785,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [376](376.md) *A. Talalay*. Let the black piece start at cell $1$ and the white piece at cell $N$. |  | 6m47s |
+| [376](376.md) Let the black piece start at cell $1$ and the white piece at cell $N$. |  | 6m47s |
 | [379](379.md) I can proceed with this framework, but I need the text of Kvant problem M379 in order to produce a rigorous solution. |  | 4m28s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1976_5/)
@@ -807,9 +807,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [391](391.md) *with full rigor and the required formatting.*. I cannot write a solution to Kvant problem M391 from the information provided, because the actual problem statement is missing. |  | 5m45s |
+| [391](391.md) I cannot write a solution to Kvant problem M391 from the information provided, because the actual problem statement is missing. |  | 5m45s |
 | [392](392.md) *All-Union Mathematical Olympiad of School Students (1976, 10th grade)*. Let the positions of the three pedestrians at time $t$ be represented by vectors $A(t), B(t), C(t)$ in the plane. |  | 6m44s |
-| [393](393.md) *M. Levin*. Let |  | 6m39s |
+| [393](393.md) Let |  | 6m39s |
 | [395](395.md) *All-Union Mathematical Olympiad for School Students (1976, Grade 10)*. Label the vertices of a regular $n$-gon by $0,1,\\dots,n-1$ in cyclic order. |  | 2m05s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1976_8/)
@@ -817,7 +817,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [396](396.md) *All-Union Mathematical Olympiad for School Students (1976, grades 8 and 9)*. The side length of the equilateral triangle is much larger than the lower bound $1$ imposed on the sides of the desired triangles. |  | 6m44s |
-| [398](398.md) *with full Kvant-style rigor.*. I cannot write a rigorous solution to Kvant problem M398 from the information provided, because the problem statement itself is missing. |  | 3m24s |
+| [398](398.md) I cannot write a rigorous solution to Kvant problem M398 from the information provided, because the problem statement itself is missing. |  | 3m24s |
 | [399](399.md) *A. P. Savin*. For a set of points on a segment, the condition “there exist two points at distance $m$” is equivalent to requiring that the difference set of all chosen coordinates contains every integer $1,2,\\dots,… |  | 2m07s |
 | [400](400.md) *All-Union Mathematical Olympiad for School Students (1976, Grade 9)*. Consider small values of $N$ to understand the structure of universal sequences. |  | 7m15s |
 
@@ -825,7 +825,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [401](401.md) *A. Yagub'yants*. Let $A,B,C$ be the angles of $\\triangle ABC$. |  | 7m13s |
+| [401](401.md) Let $A,B,C$ be the angles of $\\triangle ABC$. |  | 7m13s |
 | [402](402.md) *Yu. I. Ionin*. From the condition with $n=m=1$ we obtain |  | 2m37s |
 | [403](403.md) A convex polyhedron has the property that every vertex has even degree. |  | 8m44s |
 | [404](404.md) *A. P. Savin*. Start with small $n$. |  | 2m |
@@ -835,24 +835,24 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [406](406.md) *Yu. Babenko*. Let the circle have center $O$ and radius $R$. |  | 2m58s |
+| [406](406.md) Let the circle have center $O$ and radius $R$. |  | 2m58s |
 | [407](407.md) *S. V. Konyagin*. Consider small examples to understand the structure of the problem. |  | 3m58s |
-| [409](409.md) *M. Serov*. The transformation replaces each entry in a row by the frequency of that value in the same row. |  | 9m54s |
-| [410](410.md) *A. Lodkin*. Consider the sphere of radius $1$ centered at the origin in $\\mathbb{R}^3$, and let the equatorial plane be the $xy$-plane. |  | 4m02s |
+| [409](409.md) The transformation replaces each entry in a row by the frequency of that value in the same row. |  | 9m54s |
+| [410](410.md) Consider the sphere of radius $1$ centered at the origin in $\\mathbb{R}^3$, and let the equatorial plane be the $xy$-plane. |  | 4m02s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1976_11/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [411](411.md) *A. Yagubyants*. Consider a triangle with sides $a$, $b$, $c$, and a point inside it through which three segments pass, each parallel to a side and all of equal length $x$. |  | 2m09s |
+| [411](411.md) Consider a triangle with sides $a$, $b$, $c$, and a point inside it through which three segments pass, each parallel to a side and all of equal length $x$. |  | 2m09s |
 | [413](413.md) *I. M. Yaglom*. Consider the equation $f(x+a)-f(x)=0$ for a function $f$ continuous on $[0,1]$ with $f(0)=f(1)=0$. |  | 9m58s |
-| [415](415.md) *A. Futer*. The problem asks for the maximum number of mutually non-attacking kings on an $n\\times n$ toroidal board. |  | 2m23s |
+| [415](415.md) The problem asks for the maximum number of mutually non-attacking kings on an $n\\times n$ toroidal board. |  | 2m23s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1976_12/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [416](416.md) *A. Grigoryan, M. Primak, S. Fishbein*. Interpret the drawn segments as the edges of a graph whose vertices are the given points. |  | 6m34s |
+| [416](416.md) Interpret the drawn segments as the edges of a graph whose vertices are the given points. |  | 6m34s |
 | [417](417.md) *V. V. Proizvolov*. The object is a closed polygonal line drawn on the surface of a unit cube, with the condition that every face of the cube contains at least one entire segment of the polygonal line. |  | 7m06s |
 | [418](418.md) For small values of $n$, |  | 6m34s |
 | [420](420.md) *G. A. Gurevich, B. Makarevich*. The allowed operations on a fraction $\\frac{a}{b}$ replace the integer pair $(a,b)$ by one of $(a-b,b)$, $(a+b,b)$, or $(b,a)$. |  | 2m11s |
@@ -865,27 +865,27 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [421](421.md) *S. Okhitin, 10th-grade student*. Let the cells of the infinite graph paper be indexed by integer coordinates $(x,y)$, where each cell corresponds to one pair of integers. |  | 6m42s |
-| [423](423.md) *R. Sheintsvit*. The left-hand side contains the three quantities |  | 3m37s |
-| [424](424.md) *A. Yagubyants*. Let $ABCD$ be a tetrahedron. |  | 6m51s |
+| [421](421.md) Let the cells of the infinite graph paper be indexed by integer coordinates $(x,y)$, where each cell corresponds to one pair of integers. |  | 6m42s |
+| [423](423.md) The left-hand side contains the three quantities |  | 3m37s |
+| [424](424.md) Let $ABCD$ be a tetrahedron. |  | 6m51s |
 | [425](425.md) Suppose such an $N$ exists. |  | 6m34s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1977_2/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [426](426.md) *A. Nenashev*. The figure describes a standard cyclic filling of an $n\\times n$ table with the numbers $1,2,\\dots,n$ in such a way that each row is a cyclic shift of the previous one. |  | 7m12s |
-| [427](427.md) *S. Lavrenchenko, Grade 9*. Let |  | 7m23s |
-| [428](428.md) *E. Turkevich*. The problem is naturally translated into graph theory. |  | 1m43s |
-| [429](429.md) *Zh. Satarov*. Write $x=n+t$ with $n=[x]\\in\\mathbb{Z}$ and $t={x}\\in[0,1)$. |  | 6m48s |
-| [430](430.md) *Fig. 2*. For the planar statement, the number $2$ strongly suggests a relation between the area of a convex figure and the area of a rectangle determined by two orthogonal widths. |  | 3m53s |
+| [426](426.md) The figure describes a standard cyclic filling of an $n\\times n$ table with the numbers $1,2,\\dots,n$ in such a way that each row is a cyclic shift of the previous one. |  | 7m12s |
+| [427](427.md) Let |  | 7m23s |
+| [428](428.md) The problem is naturally translated into graph theory. |  | 1m43s |
+| [429](429.md) Write $x=n+t$ with $n=[x]\\in\\mathbb{Z}$ and $t={x}\\in[0,1)$. |  | 6m48s |
+| [430](430.md) For the planar statement, the number $2$ strongly suggests a relation between the area of a convex figure and the area of a rectangle determined by two orthogonal widths. |  | 3m53s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1977_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [432](432.md) *A. Grishkov*. Consider the sum of the digits of perfect squares. |  | 7m31s |
-| [433](433.md) *E. Turkevich*. The configuration imposes five independent parallelism relations between each side of a convex pentagon and a diagonal. |  | 7m01s |
+| [432](432.md) Consider the sum of the digits of perfect squares. |  | 7m31s |
+| [433](433.md) The configuration imposes five independent parallelism relations between each side of a convex pentagon and a diagonal. |  | 7m01s |
 | [434](434.md) *D. K. Faddeev*. Consider the sum |  | 4m58s |
 | [435](435.md) *S. V. Konyagin*. Let $A=(a_{ij})$ be an $m\\times n$ matrix. |  | 1m53s |
 
@@ -894,7 +894,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [436](436.md) *S. T. Berkolayko*. We are asked to partition all pairwise sums of two sets of ten numbers each into ten groups of ten, each with the same total. |  | 4m49s |
-| [438](438.md) *Z. Skopets*. The configuration is a fixed circular segment determined by a chord $AB$ of a circle with center $O$. |  | 1m58s |
+| [438](438.md) The configuration is a fixed circular segment determined by a chord $AB$ of a circle with center $O$. |  | 1m58s |
 | [439](439.md) *A. G. Kushnirenko*. For part 1, write |  | 7m08s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1977_5/)
@@ -902,7 +902,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [441](441.md) *G. A. Gurevich*. Let the vertices of the convex $2n$-gon be $A_1,A_2,\\dots,A_{2n}$ in cyclic order. |  | 3m50s |
-| [442](442.md) *S. Okhitin*. For small primes the structure is very rigid. |  | 7m02s |
+| [442](442.md) For small primes the structure is very rigid. |  | 7m02s |
 | [443](443.md) Before I begin writing the complete solution, I need the **full textual statement of Kvant problem M443**. |  | 5m56s |
 | [445](445.md) I cannot write a solution to Kvant problem M445 from the information provided, because the actual problem statement is missing. |  | 5m40s |
 
@@ -910,8 +910,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [447](447.md) *Once I have the statement, I can produce the solution in exactly the six sections you specified:*. I cannot write a solution to Kvant problem M447 because the actual problem statement is not present in your message. |  | 4m39s |
-| [448](448.md) *Isaac Newton*. Let the quadrilateral have diagonals intersecting at a point $O$. |  | 2m10s |
+| [447](447.md) I cannot write a solution to Kvant problem M447 because the actual problem statement is not present in your message. |  | 4m39s |
+| [448](448.md) Let the quadrilateral have diagonals intersecting at a point $O$. |  | 2m10s |
 | [449](449.md) I cannot write a rigorous solution to Kvant problem M449 without the actual problem statement or the diagram. |  | 5m39s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1977_7/)
@@ -936,7 +936,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [461](461.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, 9th grade)*. Consider a small number of weights, for instance $n=2$ or $n=3$, each with distinct masses $w_1<w_2<w_3$. |  | 6m02s |
-| [462](462.md) *K. Shvartsman*. Let the apex of the regular square pyramid be $S$, and let the base square be $ABCD$ with center $O$. |  | 1m46s |
+| [462](462.md) Let the apex of the regular square pyramid be $S$, and let the base square be $ABCD$ with center $O$. |  | 1m46s |
 | [463](463.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 9)*. Consider small examples to understand the problem concretely. |  | 6m14s |
 | [465](465.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, grades 8 and 10)*. A ticket is a length-$k$ word over the alphabet ${0,1,\\dots,9}$. |  | 4m28s |
 
@@ -945,7 +945,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [466](466.md) *S. V. Fomin*. Consider first a smaller version of the problem. |  | 6m04s |
-| [467](467.md) *A. Krasnodemskaya*. The triangle is equilateral, so placing it in a coordinate system with one side horizontal allows algebraic control over all distances and angles. |  | 2m06s |
+| [467](467.md) The triangle is equilateral, so placing it in a coordinate system with one side horizontal allows algebraic control over all distances and angles. |  | 2m06s |
 | [468](468.md) *Yu. I. Ionin*. Consider four points $A$, $B$, $C$, $D$ in the plane, and the scalar products $\\overrightarrow{MA} \\cdot \\overrightarrow{MB}$ and $\\overrightarrow{MC} \\cdot \\overrightarrow{MD}$ for a variable point $… |  | 4m06s |
 | [469](469.md) *V. V. Vavilov*. Let $P(x)=x^4+ax^3+bx+c$ have four distinct real roots $r_1<r_2<r_3<r_4$. |  | 2m04s |
 | [470](470.md) *L. D. Kurlandchik, A. D. Lisitsky*. We begin by examining the two sums for small values of $n$ to detect patterns. |  | 5m13s |
@@ -956,13 +956,13 @@ draft: false
 |---|---------|---|------|
 | [471](471.md) *S. V. Fomin*. Two intersecting circles partition the plane into exactly three bounded regions: the common lens $R_0$, the two asymmetric caps $R_1$ and $R_2$ lying respectively in the first and second circle but ou… |  | 7m20s |
 | [472](472.md) *V. V. Prasolov*. Consider a cube of side length $1$ for simplicity. |  | 4m36s |
-| [474](474.md) *K. Satarkulov, S. Yugai*. We begin by examining the properties of perfect numbers modulo small integers. |  | 6m15s |
+| [474](474.md) We begin by examining the properties of perfect numbers modulo small integers. |  | 6m15s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1977_12/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [476](476.md) *S. Mironov*. For the planar statement, the condition that no lattice points lie on the boundary except the vertices means that every side joins two lattice points with relatively prime coordinate differences. |  | 7m08s |
+| [476](476.md) For the planar statement, the condition that no lattice points lie on the boundary except the vertices means that every side joins two lattice points with relatively prime coordinate differences. |  | 7m08s |
 | [477](477.md) *S. V. Konyagin*. The sequence is defined by iteration of an integer polynomial $P$ satisfying $P(x)>x$ for all natural $x$. |  | 10m04s |
 | [479](479.md) *Moscow Mathematical Olympiad (XL, 1977, grades 9 and 11)*. Consider a set of distinct natural numbers ${a_1, a_2, \\dots, a_n}$ with the property that for any two elements $a_i$ and $a_j$, the sum $a_i + a_j$ is divisible by their difference $a_i - a_j$. |  | 5m05s |
 | [480](480.md) The recurrence is |  | 2m04s |
@@ -975,8 +975,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [481](481.md) *V. Panfilov*. Let |  | 6m26s |
-| [483](483.md) *I. Temraliev*. Consider a right triangle with legs $a$ and $b$ and hypotenuse $c$, where $c^2 = a^2 + b^2$. |  | 6m19s |
+| [481](481.md) Let |  | 6m26s |
+| [483](483.md) Consider a right triangle with legs $a$ and $b$ and hypotenuse $c$, where $c^2 = a^2 + b^2$. |  | 6m19s |
 | [484](484.md) *S. N. Mironov*. A dissection of a convex polygon into regular polygons means that every piece is an equilateral triangle, a square, or a regular polygon of higher order, all glued edge-to-edge without overlap. |  | 7m06s |
 | [485](485.md) *T. Martynenko, R. P. Ushakov*. The interval is |  | 8m14s |
 
@@ -984,18 +984,18 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [487](487.md) *A. Ishmaev*. Let $O_1$ and $O_2$ be the centers of circles $\\gamma_1$ and $\\gamma_2$, with radii $R_1$ and $R_2$. |  | 1m58s |
-| [488](488.md) *A. Zelevinsky*. The recurrence |  | 6m |
-| [489](489.md) *I. Burmistrovich*. The transformation replaces each term by the average of the other two. |  | 1m39s |
+| [487](487.md) Let $O_1$ and $O_2$ be the centers of circles $\\gamma_1$ and $\\gamma_2$, with radii $R_1$ and $R_2$. |  | 1m58s |
+| [488](488.md) The recurrence |  | 6m |
+| [489](489.md) The transformation replaces each term by the average of the other two. |  | 1m39s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1978_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [491](491.md) *F. Kadirov, A. Agayev*. Let three consecutive terms be $a,ar,ar^2$, where all terms are integers. |  | 3m43s |
-| [492](492.md) *V. Korzhov*. Consider triangle $ABC$ and points $A_1$, $B_1$, $C_1$ on sides $BC$, $CA$, and $AB$, respectively, with cevians $AA_1$, $BB_1$, and $CC_1$ concurrent at $P$. |  | 6m22s |
-| [493](493.md) *A. Sivatsky, 8th grade student*. The expression |  | 2m49s |
-| [494](494.md) *A. Tartakovsky, 10th grade student*. Let the square be partitioned into a regular grid of $n \\times n$ congruent squares, each of side length $1/n$. |  | 9m50s |
+| [491](491.md) Let three consecutive terms be $a,ar,ar^2$, where all terms are integers. |  | 3m43s |
+| [492](492.md) Consider triangle $ABC$ and points $A_1$, $B_1$, $C_1$ on sides $BC$, $CA$, and $AB$, respectively, with cevians $AA_1$, $BB_1$, and $CC_1$ concurrent at $P$. |  | 6m22s |
+| [493](493.md) The expression |  | 2m49s |
+| [494](494.md) Let the square be partitioned into a regular grid of $n \\times n$ congruent squares, each of side length $1/n$. |  | 9m50s |
 | [495](495.md) *G. A. Halperin*. Each satellite moves along a circular orbit centered at $O$ with constant angular velocity. |  | 6m11s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1978_4/)
@@ -1010,20 +1010,20 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [501](501.md) *E. Turkevich*. A power $3^k$ begins with the digit $9$ precisely when there exists an integer $m$ such that |  | 3m48s |
-| [502](502.md) *Z. Skopets*. The three segments $AA_1$, $BB_1$, $CC_1$ are parallel and not coplanar. |  | 8m45s |
-| [503](503.md) *V. Lipkin*. The condition |  | 3m46s |
-| [504](504.md) *V. Grossman*. Let $F$ be the set of free squares. |  | 6m54s |
+| [501](501.md) A power $3^k$ begins with the digit $9$ precisely when there exists an integer $m$ such that |  | 3m48s |
+| [502](502.md) The three segments $AA_1$, $BB_1$, $CC_1$ are parallel and not coplanar. |  | 8m45s |
+| [503](503.md) The condition |  | 3m46s |
+| [504](504.md) Let $F$ be the set of free squares. |  | 6m54s |
 | [505](505.md) *P. Blecher, G. A. Halperin, M. Kelbert*. For the one-dimensional problem, the state of the process is not the point $O_k$ itself but the set of material points lying in the interval of length $2r$ centered at $O_k$. |  | 9m24s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1978_6/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [506](506.md) *E. Turkevich*. Let $x=a^2,\\; y=b^2,\\; z=c^2,\\; w=d^2$. |  | 7m09s |
+| [506](506.md) Let $x=a^2,\\; y=b^2,\\; z=c^2,\\; w=d^2$. |  | 7m09s |
 | [507](507.md) We are asked to consider sequences of $n$ distinct natural numbers $a_1 < a_2 < \\dots < a_n < 2n$ with $n \\ge 6$, and to find bounds for the minimum of their least common multiples and the maximum of… |  | 6m36s |
 | [508](508.md) *I. F. Sharygin*. The three semicircles with diameters $AB$, $BC$, $AC$ lie on the same line $AB$, with centers at the midpoints of $AB$, $BC$, and $AC$. |  | 2m |
-| [509](509.md) *D. Fleishman*. Equation (1), $2^x + 1 = 3^y$, suggests searching for powers of 2 that are one less than a power of 3. |  | 3m09s |
+| [509](509.md) Equation (1), $2^x + 1 = 3^y$, suggests searching for powers of 2 that are one less than a power of 3. |  | 3m09s |
 | [510](510.md) *I. Birger, R. P. Ushakov*. Let |  | 6m43s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1978_7/)
@@ -1059,11 +1059,11 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [526](526.md) *U. Alla*. Label the convex quadrilateral $ABCD$ with consecutive sides $AB = a$, $BC = b$, $CD = c$, and $DA = d$. |  | 1m32s |
-| [527](527.md) *V. Batyrev, 10th-grade student*. Denote |  | 5m33s |
-| [528](528.md) *M. Bershadsky*. Consider the $8 \\times 8$ chessboard with one chip on each square. |  | 4m41s |
-| [529](529.md) *N. Yu. Netsvetaev*. A homothety with ratio $k<0$ reverses directions through its center. |  | 2m17s |
-| [530](530.md) *R. Izmailov, 10th-grade student*. Let each cell be represented by a variable in $\\mathbb F_2$, where $1$ means black and $0$ means white. |  | 6m59s |
+| [526](526.md) Label the convex quadrilateral $ABCD$ with consecutive sides $AB = a$, $BC = b$, $CD = c$, and $DA = d$. |  | 1m32s |
+| [527](527.md) Denote |  | 5m33s |
+| [528](528.md) Consider the $8 \\times 8$ chessboard with one chip on each square. |  | 4m41s |
+| [529](529.md) A homothety with ratio $k<0$ reverses directions through its center. |  | 2m17s |
+| [530](530.md) Let each cell be represented by a variable in $\\mathbb F_2$, where $1$ means black and $0$ means white. |  | 6m59s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1978_11/)
 
@@ -1072,8 +1072,8 @@ draft: false
 | [531](531.md) *N. B. Vasiliev*. Consider two points $A$ and $B$ on a line and a motorist starting from $A$ and a cyclist starting from $B$, both moving toward each other at constant speeds $v_m$ and $v_c$. |  | 4m39s |
 | [532](532.md) For small values, |  | 3m44s |
 | [533](533.md) *V. G. Boltyanskii*. A heptagon has $7$ vertices and $14$ diagonals. |  | 3m |
-| [534](534.md) *V. Kosyanchuk*. Consider triangle $ABC$ with a point $P$ inside it, through which three lines are drawn, each parallel to one side of the triangle. |  | 7m18s |
-| [535](535.md) *V. Batyrev*. The defining condition of a trigram is |  | 7m |
+| [534](534.md) Consider triangle $ABC$ with a point $P$ inside it, through which three lines are drawn, each parallel to one side of the triangle. |  | 7m18s |
+| [535](535.md) The defining condition of a trigram is |  | 7m |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1978_12/)
 
@@ -1093,9 +1093,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [541](541.md) *D. Bernstein*. Consider a small social network where each person has exactly three friends. |  | 7m08s |
-| [542](542.md) *P. Emelyanov*. Let us denote the initial right triangle as $A_0A_1A_2$, with right angle at $A_2$, and legs $/A_0A_2/=a$ and $/A_1A_2/=b$. |  | 7m06s |
-| [543](543.md) *Andrzej Paszkiewicz (Warsaw)*. The expression |  | 8m21s |
+| [541](541.md) Consider a small social network where each person has exactly three friends. |  | 7m08s |
+| [542](542.md) Let us denote the initial right triangle as $A_0A_1A_2$, with right angle at $A_2$, and legs $/A_0A_2/=a$ and $/A_1A_2/=b$. |  | 7m06s |
+| [543](543.md) The expression |  | 8m21s |
 | [544](544.md) *S. N. Bychkov*. Consider first the case $n=4$. |  | 3m11s |
 | [545](545.md) *V. M. Galperin, G. A. Galperin*. Consider three points on the plane. |  | 11m13s |
 
@@ -1103,9 +1103,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [546](546.md) *Vage Shafaryan, 10th-grade student (Yerevan)*. Let the rectangle be centered at the origin, with sides parallel to the coordinate axes. |  | 4m53s |
-| [547](547.md) *A. Danielyan*. The equation is |  | 10m01s |
-| [548](548.md) *A. Lopshits*. For four points on a circle, label them by position vectors $a,b,c,d$ on a circle with center $O$, taken as the origin. |  | 4m47s |
+| [546](546.md) Let the rectangle be centered at the origin, with sides parallel to the coordinate axes. |  | 4m53s |
+| [547](547.md) The equation is |  | 10m01s |
+| [548](548.md) For four points on a circle, label them by position vectors $a,b,c,d$ on a circle with center $O$, taken as the origin. |  | 4m47s |
 | [550](550.md) *S. S. Krotov*. Let the optimal finishing time be $T$. |  | 9m40s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1979_3/)
@@ -1113,10 +1113,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [551](551.md) *Moscow Mathematical Olympiad*. Consider the case of a triangle first. |  | 6m05s |
-| [552](552.md) *E. Turkevich*. Let the roots of |  | 4m35s |
-| [553](553.md) *S. Meidman*. Consider a triangle $ABC$ with sides $BC < AC < AB$. |  | 3m37s |
+| [552](552.md) Let the roots of |  | 4m35s |
+| [553](553.md) Consider a triangle $ABC$ with sides $BC < AC < AB$. |  | 3m37s |
 | [554](554.md) *USA Mathematical Olympiad (1978)*. Consider small examples of natural numbers and attempt to write them as sums of numbers whose reciprocals add to one. |  | 6m02s |
-| [555](555.md) *S. Pukhov*. Consider first the intersection of two cylinders of equal radius $r$ with axes perpendicular. |  | 3m01s |
+| [555](555.md) Consider first the intersection of two cylinders of equal radius $r$ with axes perpendicular. |  | 3m01s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1979_4/)
 
@@ -1124,15 +1124,15 @@ draft: false
 |---|---------|---|------|
 | [557](557.md) *A. T. Kolotov*. Suppose, contrary to the statement, that none of the given numbers is prime. |  | 3m02s |
 | [558](558.md) *V. V. Proizvolov*. Let the black sectors have angular lengths $\\alpha_1,\\dots,\\alpha_k$, where each |  | 2m40s |
-| [559](559.md) *A. Yermilov*. Let |  | 2m11s |
-| [560](560.md) *V. Batyrev*. For a fixed position of the cover, let $C$ be the convex cover and let $H$ be the hole. |  | 7m15s |
+| [559](559.md) Let |  | 2m11s |
+| [560](560.md) For a fixed position of the cover, let $C$ be the convex cover and let $H$ be the hole. |  | 7m15s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1979_5/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [564](564.md) *E. Turkevich*. Let $BC=a$, and place the triangle in coordinates |  | 7m57s |
-| [565](565.md) *M. Rosenberg*. For each $k$, the quantity $b_k$ is the average of all products of $k$ distinct elements from $a_1,\\ldots,a_n$. |  | 2m06s |
+| [564](564.md) Let $BC=a$, and place the triangle in coordinates |  | 7m57s |
+| [565](565.md) For each $k$, the quantity $b_k$ is the average of all products of $k$ distinct elements from $a_1,\\ldots,a_n$. |  | 2m06s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1979_6/)
 
@@ -1162,7 +1162,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [581](581.md) *A. Brotsky*. The first question asks for a three-digit integer $x$ such that $x^3$ ends in $777$, equivalently |  | 2m02s |
+| [581](581.md) The first question asks for a three-digit integer $x$ such that $x^3$ ends in $777$, equivalently |  | 2m02s |
 | [582](582.md) *A. V. Kelarev*. Let the cyclic quadrilateral be $ABCD$, and let its diagonals $AC$ and $BD$ intersect at $P$. |  | 7m06s |
 | [584](584.md) *F. V. Vainshtein*. Suppose such a family of lines exists. |  | 7m29s |
 | [585](585.md) *S. V. Konyagin, P. Blecher*. The majority are chemists, and chemists are perfectly reliable. |  | 6m59s |
@@ -1181,7 +1181,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [591](591.md) *International Mathematical Olympiad for School Students (XXI, 1979)*. Let |  | 1m40s |
-| [592](592.md) *S. Ovchinnikov*. Consider a triangle $ABC$ with circumcircle $\\Gamma$. |  | 5m06s |
+| [592](592.md) Consider a triangle $ABC$ with circumcircle $\\Gamma$. |  | 5m06s |
 | [593](593.md) *F. Kabdykarov, V. V. Proizvolov*. Consider first the simplest case, $n=2$, with two circles inside a larger circle $\\mathit\\Gamma$. |  | 6m58s |
 | [594](594.md) *International Mathematical Olympiad (XXI, 1979)*. Let |  | 5m38s |
 | [595](595.md) *International Mathematical Olympiad for School Students (XXI, 1979)*. Label the vertices of the regular octagon cyclically by |  | 3m55s |
@@ -1190,9 +1190,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [597](597.md) *V. Yasinsky*. The sequence $x_n=1+\\frac12+\\dots+\\frac1n$ is the $n$-th harmonic number. |  | 3m24s |
-| [598](598.md) *I can proceed, but I need the text of problem M598 first. Could you provide the full statement of the problem?*. I can proceed, but I need the text of problem M598 first. |  | 5m37s |
-| [599](599.md) *P. Gusyatnikov*. Let $A=4^{5^6}+6^{5^4}$. |  | 2m09s |
+| [597](597.md) The sequence $x_n=1+\\frac12+\\dots+\\frac1n$ is the $n$-th harmonic number. |  | 3m24s |
+| [598](598.md) I can proceed, but I need the text of problem M598 first. |  | 5m37s |
+| [599](599.md) Let $A=4^{5^6}+6^{5^4}$. |  | 2m09s |
 | [600](600.md) *N. B. Vasiliev, I. F. Sharygin*. Let the circles intersect at points $A$ and $B$. |  | 2m02s |
 
 ## 1980
@@ -1203,30 +1203,30 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [601](601.md) *G. Groshev, 10th-grade student*. Let $H$ be the orthocenter of triangle $ABC$, let $M$ be the midpoint of $BC$, and let $D$ be the point on the circumcircle diametrically opposite $A$. |  | 1m22s |
-| [602](602.md) *A. Avramov*. Let the three consecutive entries in row $n$ be |  | 1m50s |
+| [601](601.md) Let $H$ be the orthocenter of triangle $ABC$, let $M$ be the midpoint of $BC$, and let $D$ be the point on the circumcircle diametrically opposite $A$. |  | 1m22s |
+| [602](602.md) Let the three consecutive entries in row $n$ be |  | 1m50s |
 | [603](603.md) *L. P. Kuptsov*. The denominators suggest introducing |  | 1m39s |
-| [604](604.md) *with all arguments fully justified and formatted according to your instructions.*. I cannot write a solution to Kvant problem M604 from the information provided, because the actual problem statement is missing. |  | 58s |
-| [605](605.md) *A. Talalay*. A reflection with respect to a point $A$ is the central symmetry $x\\mapsto 2A-x$. |  | 2m23s |
+| [604](604.md) I cannot write a solution to Kvant problem M604 from the information provided, because the actual problem statement is missing. |  | 58s |
+| [605](605.md) A reflection with respect to a point $A$ is the central symmetry $x\\mapsto 2A-x$. |  | 2m23s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1980_2/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [606](606.md) *E. Turkevich*. The recurrence |  | 1m48s |
+| [606](606.md) The recurrence |  | 1m48s |
 | [607](607.md) *V. F. Lev*. An isosceles trapezoid includes rectangles as a special case, since a rectangle has a pair of parallel sides and equal legs. |  | 2m03s |
 | [608](608.md) *M. L. Kontsevich, 10th-grade student*. The polygon is rectilinear: every side lies on a grid line, hence every side is horizontal or vertical. |  | 1m46s |
-| [609](609.md) *Yu. Smirnov*. For the planar statement, choose coordinates so that the two given perpendicular directions are the coordinate axes. |  | 2m05s |
+| [609](609.md) For the planar statement, choose coordinates so that the two given perpendicular directions are the coordinate axes. |  | 2m05s |
 | [610](610.md) *A. K. Tolpygo*. For part 1 it is natural to reinterpret a nondecreasing tuple |  | 2m04s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1980_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [611](611.md) *S. Kolpakov, 10th-grade student*. The statement involves two circles. |  | 1m36s |
-| [612](612.md) *A. Karagulyan*. Assume that the infinite digit string obtained by concatenating |  | 1m39s |
+| [611](611.md) The statement involves two circles. |  | 1m36s |
+| [612](612.md) Assume that the infinite digit string obtained by concatenating |  | 1m39s |
 | [613](613.md) *L. P. Kuptsov*. The data of the problem are naturally encoded by a similarity. |  | 1m59s |
-| [614](614.md) *Andrzej Paszewicz (Poland)*. Let $s(n)$ denote the sum of the digits of the single number $n$. |  | 2m04s |
+| [614](614.md) Let $s(n)$ denote the sum of the digits of the single number $n$. |  | 2m04s |
 | [615](615.md) *V. A. Senderov*. A triangular pyramid is a tetrahedron. |  | 2m11s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1980_4/)
@@ -1234,20 +1234,20 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [616](616.md) *S. T. Berkolayko*. For the numbers $1,2,\\dots,30$, the total sum is |  | 1m44s |
-| [617](617.md) *V. Yagubyants*. Let the triangle be $ABC$. |  | 1m49s |
-| [618](618.md) *A. Sivatsky, 10th grade student*. Testing small values of $n$ shows that the divisibility condition $n^2+1 \\mid n!$ is rarely satisfied for small integers, as $n^2+1$ grows faster than $n$. |  | 3m22s |
+| [617](617.md) Let the triangle be $ABC$. |  | 1m49s |
+| [618](618.md) Testing small values of $n$ shows that the divisibility condition $n^2+1 \\mid n!$ is rarely satisfied for small integers, as $n^2+1$ grows faster than $n$. |  | 3m22s |
 | [619](619.md) *I. F. Sharygin*. Let the bisectors of $\\angle A$ and $\\angle B$ meet at a point $P$. |  | 6m58s |
-| [620](620.md) *I. Kasakovskikh*. Consider small values of $n$ first. |  | 9m40s |
+| [620](620.md) Consider small values of $n$ first. |  | 9m40s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1980_5/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [621](621.md) *U. Alla*. Let the circle have center $O$ and radius $r$. |  | 5m31s |
-| [622](622.md) *V. Vavilov*. Consider the two Diophantine equations |  | 1m15s |
+| [621](621.md) Let the circle have center $O$ and radius $r$. |  | 5m31s |
+| [622](622.md) Consider the two Diophantine equations |  | 1m15s |
 | [623](623.md) *V. A. Senderov*. A cube is highly symmetric, so the number of axes of symmetry should be larger than in simpler polyhedra. |  | 1m11s |
-| [624](624.md) *V. Abramovich*. Compute the first few terms of the sequence $(a_n)$ directly from the recursive formula. |  | 1m25s |
-| [625](625.md) *Yu. Mikheev*. The operations are purely projective. |  | 1m43s |
+| [624](624.md) Compute the first few terms of the sequence $(a_n)$ directly from the recursive formula. |  | 1m25s |
+| [625](625.md) The operations are purely projective. |  | 1m43s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1980_6/)
 
@@ -1255,8 +1255,8 @@ draft: false
 |---|---------|---|------|
 | [626](626.md) *V. V. Proizvolov*. The quadrilateral is cut by two families of lines. |  | 1m47s |
 | [627](627.md) *A. K. Tolpygo*. For part 1, suppose every natural number appears exactly once. |  | 6m57s |
-| [628](628.md) *A. Yagubyants*. Consider a spherical triangle with one side of length $120^\\circ$. |  | 3m21s |
-| [629](629.md) *T. Malikov*. For the first statement, computing small cases is instructive. |  | 1m31s |
+| [628](628.md) Consider a spherical triangle with one side of length $120^\\circ$. |  | 3m21s |
+| [629](629.md) For the first statement, computing small cases is instructive. |  | 1m31s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1980_7/)
 
@@ -1283,14 +1283,14 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [642](642.md) *I. K. Zhuk*. The coefficients are restricted to the set ${-1,0,1}$, and two neighboring coefficients cannot both be nonzero. |  | 5m12s |
-| [643](643.md) *V. Turchaninov*. A shuffle takes an initial segment of the deck and inserts it somewhere later, preserving the internal order of the removed block and of the remaining cards. |  | 5m44s |
+| [643](643.md) A shuffle takes an initial segment of the deck and inserts it somewhere later, preserving the internal order of the removed block and of the remaining cards. |  | 5m44s |
 | [644](644.md) *G. A. Gurevich*. A convex equiangular $n$-gon has exterior angle $2\\pi/n$ at every vertex. |  | 7m12s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1980_10/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [646](646.md) *E. Shustin*. Consider the problem for small values of $n$ to understand the geometric constraints. |  | 7m13s |
+| [646](646.md) Consider the problem for small values of $n$ to understand the geometric constraints. |  | 7m13s |
 | [647](647.md) *S. V. Fomin*. The inequality is symmetric in $a$ and $b$. |  | 5m42s |
 | [648](648.md) *I. F. Sharygin*. Let $ABCD$ be a cyclic quadrilateral whose diagonals $AC$ and $BD$ intersect at $P$ and satisfy $AC \\perp BD$. |  | 7m48s |
 | [649](649.md) *S. L. Manukyan*. Let |  | 7m02s |
@@ -1300,11 +1300,11 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [651](651.md) *Correspondence Mathematical Olympiads*. Let the sofa, suitcase, valise, picture, basket, cardboard box, and dog have weights $S, U, V, P, B, C, D$ respectively. |  | 1m56s |
-| [652](652.md) *Correspondence Mathematical Olympiads*. Consider the set of faces of a convex polyhedron. |  | 3m57s |
-| [653](653.md) *Correspondence Mathematical Olympiads*. The ruler has two fixed marks. |  | 5m06s |
-| [654](654.md) *Correspondence Mathematical Olympiads*. Consider small examples of six natural numbers and examine the divisibility patterns. |  | 7m45s |
-| [655](655.md) *Correspondence Mathematical Olympiads*. Consider small cases by simulating the procedure described. |  | 4m59s |
+| [651](651.md) Let the sofa, suitcase, valise, picture, basket, cardboard box, and dog have weights $S, U, V, P, B, C, D$ respectively. |  | 1m56s |
+| [652](652.md) Consider the set of faces of a convex polyhedron. |  | 3m57s |
+| [653](653.md) The ruler has two fixed marks. |  | 5m06s |
+| [654](654.md) Consider small examples of six natural numbers and examine the divisibility patterns. |  | 7m45s |
+| [655](655.md) Consider small cases by simulating the procedure described. |  | 4m59s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1980_12/)
 
@@ -1314,7 +1314,7 @@ draft: false
 | [657](657.md) *A. V. Anzhan*. Let the rows be $R_1,\\dots,R_n$, each a vector of length $n$. |  | 5m26s |
 | [658](658.md) *A. V. Andzhan*. Consider a square of side length $1$ with a collection of horizontal and vertical segments inside it. |  | 7m26s |
 | [659](659.md) *A. Odessky, 10th-grade student, D. B. Fuchs*. For the Fibonacci sequence $f_1=1$, $f_2=2$, $f_{k+1}=f_k+f_{k-1}$, the first terms are |  | 2m07s |
-| [660](660.md) *K. Kazarnovsky*. Consider the dynamics of the allowed operations on the circle. |  | 8m22s |
+| [660](660.md) Consider the dynamics of the allowed operations on the circle. |  | 8m22s |
 
 ## 1981
 
@@ -1326,8 +1326,8 @@ draft: false
 |---|---------|---|------|
 | [661](661.md) *N. B. Vasilyev*. Let the speeds of the motorboat and rowboat be constant, equal to $v_M$ and $v_R$. |  | 5m40s |
 | [662](662.md) *A. G. Kushnirenko*. The statement concerns a piggy bank containing coins whose total value is $4$ rubles. |  | 2m01s |
-| [663](663.md) *S. Maizus*. Consider small prime numbers to understand the behavior of the expression $2^p + p^2$. |  | 3m24s |
-| [664](664.md) *V. Batyrev, V. Trofimov*. Consider a convex quadrilateral $ABCD$ with area $S$. |  | 4m04s |
+| [663](663.md) Consider small prime numbers to understand the behavior of the expression $2^p + p^2$. |  | 3m24s |
+| [664](664.md) Consider a convex quadrilateral $ABCD$ with area $S$. |  | 4m04s |
 | [665](665.md) I cannot write a rigorous solution to Kvant problem M665 because the actual problem statement is missing. |  | 3m21s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1981_2/)
@@ -1335,24 +1335,24 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [667](667.md) *N. B. Vasilyev*. Consider a triangle $ABC$ with the smallest angle $\\widehat A$ and suppose the differences $d = /AB/ - /BC/$ and $e = /AC/ - /BC/$ are given. |  | 7m48s |
-| [668](668.md) *G. Kozlov*. Computing the first few terms of the sequence $(x_i)$ modulo small integers may reveal patterns. |  | 4m45s |
-| [669](669.md) *I. German, K. Malhasyan*. Consider a cyclic quadrilateral $ABCD$ with circumcircle $\\Gamma$. |  | 4m21s |
-| [670](670.md) *O. Kozlov*. Let each vertex be a point, and let its color at time $t$ be represented by a sign $s_v(t)\\in{+1,-1}$. |  | 10m14s |
+| [668](668.md) Computing the first few terms of the sequence $(x_i)$ modulo small integers may reveal patterns. |  | 4m45s |
+| [669](669.md) Consider a cyclic quadrilateral $ABCD$ with circumcircle $\\Gamma$. |  | 4m21s |
+| [670](670.md) Let each vertex be a point, and let its color at time $t$ be represented by a sign $s_v(t)\\in{+1,-1}$. |  | 10m14s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1981_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [671](671.md) *R. Mazov*. Let the cyclic quadrilateral be $ABCD$ with diagonals $AC$ and $BD$. |  | 6m20s |
+| [671](671.md) Let the cyclic quadrilateral be $ABCD$ with diagonals $AC$ and $BD$. |  | 6m20s |
 | [673](673.md) *A. A. Razborov*. Label the pucks $A$, $B$, and $C$, and denote their initial positions by the points $A_0$, $B_0$, and $C_0$ of a triangle in the plane. |  | 5m30s |
-| [674](674.md) *D. Isaac*. Consider an acute triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $AC$, and $C_1$ on $AB$. |  | 7m17s |
+| [674](674.md) Consider an acute triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $AC$, and $C_1$ on $AB$. |  | 7m17s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1981_4/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [676](676.md) *A. V. Savkin, 9th-grade student*. We begin by computing small powers of $1981$ and observing the sums of their digits. |  | 8m16s |
-| [677](677.md) *E. Turkevich*. Consider a triangle $ABC$ and a point $M$ which is simultaneously the centroid, incenter, and orthocenter. |  | 6m51s |
+| [677](677.md) Consider a triangle $ABC$ and a point $M$ which is simultaneously the centroid, incenter, and orthocenter. |  | 6m51s |
 | [678](678.md) *A. F. Sidorenko*. Consider small examples first. |  | 6m23s |
 | [680](680.md) *A. A. Razborov*. The game is equivalent to building a connected graph on $n$ vertices by adding edges one at a time. |  | 7m10s |
 
@@ -1360,20 +1360,20 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [681](681.md) *G. Grigoriev*. Let |  | 7m41s |
-| [682](682.md) *A. Yagubyants*. Consider an arbitrary acute-angled triangle $\\triangle ABC$. |  | 6m59s |
-| [683](683.md) *G. Ringel*. Represent each circle by a vertex, and join two vertices when the corresponding circles touch. |  | 5m11s |
-| [684](684.md) *E. Gik*. Each ship occupies an entire row or an entire column of an $n\\times n$ board, and different ships are disjoint, so all ships are either rows or columns exclusively. |  | 2m13s |
-| [685](685.md) *A. Fyodorov*. Let the partition be |  | 4m56s |
+| [681](681.md) Let |  | 7m41s |
+| [682](682.md) Consider an arbitrary acute-angled triangle $\\triangle ABC$. |  | 6m59s |
+| [683](683.md) Represent each circle by a vertex, and join two vertices when the corresponding circles touch. |  | 5m11s |
+| [684](684.md) Each ship occupies an entire row or an entire column of an $n\\times n$ board, and different ships are disjoint, so all ships are either rows or columns exclusively. |  | 2m13s |
+| [685](685.md) Let the partition be |  | 4m56s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1981_6/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [686](686.md) *V. V. Prasolov*. Let |  | 3m17s |
-| [687](687.md) *N. NENOV (Bulgaria)*. We model the configuration as follows. |  | 2m18s |
-| [688](688.md) *S. Nenashev*. Let |  | 3m16s |
-| [689](689.md) *S. Rukshin*. Each tile is an isosceles trapezoid with bases $3$ and $1$ and height $1$. |  | 2m25s |
+| [687](687.md) We model the configuration as follows. |  | 2m18s |
+| [688](688.md) Let |  | 3m16s |
+| [689](689.md) Each tile is an isosceles trapezoid with bases $3$ and $1$ and height $1$. |  | 2m25s |
 | [690](690.md) *A. V. Kelarev*. For a convex polygon, the quantity $\\dfrac{2S}{P}$ has a geometric meaning. |  | 5m51s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1981_7/)
@@ -1390,16 +1390,16 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [696](696.md) *A. Balinsky*. Consider the problem for small $k \\times k$ squares. |  | 2m58s |
-| [698](698.md) *O. Penkin*. Let the cyclic quadrilateral be $ABCD$, with side lengths |  | 7m57s |
-| [700](700.md) *A. Leiderman*. Consider the set of all terminating decimal fractions. |  | 7m34s |
+| [696](696.md) Consider the problem for small $k \\times k$ squares. |  | 2m58s |
+| [698](698.md) Let the cyclic quadrilateral be $ABCD$, with side lengths |  | 7m57s |
+| [700](700.md) Consider the set of all terminating decimal fractions. |  | 7m34s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1981_9/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [701](701.md) *A. Kaplan*. Let the sides of the acute triangle $LMN$ be |  | 8m41s |
-| [703](703.md) *A. Fyodorov*. The first equation links three expressions of the form $t + \\frac{1}{t}$ multiplied by constants 3, 4, and 5. |  | 5m04s |
+| [701](701.md) Let the sides of the acute triangle $LMN$ be |  | 8m41s |
+| [703](703.md) The first equation links three expressions of the form $t + \\frac{1}{t}$ multiplied by constants 3, 4, and 5. |  | 5m04s |
 | [704](704.md) *N. B. Vasiliev*. Consider a square $ABCD$ and a parallelogram $PQRS$ that circumscribes it, with each vertex of the square touching a different side of the parallelogram. |  | 3m07s |
 | [705](705.md) *G. A. Galperin, V. V. Proizvolov*. Represent each cell of the sheet by a vertex. |  | 4m45s |
 
@@ -1409,15 +1409,15 @@ draft: false
 |---|---------|---|------|
 | [706](706.md) *A. P. Savin*. Consider two circles with centers $O_1$ and $O_2$ and radii $R_1$ and $R_2$. |  | 4m32s |
 | [707](707.md) *A. F. Sidorenko*. Let the clubs be represented by sets of students. |  | 8m20s |
-| [708](708.md) *P. Gusyatnikov*. Consider a convex quadrilateral $ABCD$ and construct squares externally on its sides $AB$, $BC$, $CD$, and $DA$, with centers $P$, $Q$, $R$, $T$ respectively. |  | 10m06s |
-| [709](709.md) *A. Smirnov*. The rhombus tiles are the unit lozenges of the triangular lattice. |  | 6m51s |
+| [708](708.md) Consider a convex quadrilateral $ABCD$ and construct squares externally on its sides $AB$, $BC$, $CD$, and $DA$, with centers $P$, $Q$, $R$, $T$ respectively. |  | 10m06s |
+| [709](709.md) The rhombus tiles are the unit lozenges of the triangular lattice. |  | 6m51s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1981_11/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [711](711.md) *V. Varvarkin*. Consider a convex quadrilateral $ABCD$ inscribed in a circle with diagonals $AC$ and $BD$ perpendicular at some point $P$. |  | 6m28s |
-| [712](712.md) *E. Turkevich*. We seek to represent an arbitrary positive real number as a sum of nine numbers whose decimal expansions use only digits $0$ and $7$. |  | 2m05s |
+| [711](711.md) Consider a convex quadrilateral $ABCD$ inscribed in a circle with diagonals $AC$ and $BD$ perpendicular at some point $P$. |  | 6m28s |
+| [712](712.md) We seek to represent an arbitrary positive real number as a sum of nine numbers whose decimal expansions use only digits $0$ and $7$. |  | 2m05s |
 | [713](713.md) *V. V. Prasolov*. Let the finite set be $M$. |  | 3m49s |
 | [714](714.md) *A. V. Anzhan*. Consider small values of $N$ to build intuition. |  | 5m55s |
 | [715](715.md) *M. L. Kontsevich*. The rule replaces one chip by two chips placed one step north and one step east, provided those target cells are empty. |  | 6m50s |
@@ -1441,7 +1441,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [722](722.md) *A. A. Razborov*. Consider the simplest nontrivial cases first. |  | 6m09s |
-| [723](723.md) *L. Hurwitz*. We seek an infinite set $S \\subset \\mathbb{N}$ such that no element of $S$ and no finite sum of distinct elements of $S$ is a perfect power $a^k$ with $k \\ge 2$. |  | 2m05s |
+| [723](723.md) We seek an infinite set $S \\subset \\mathbb{N}$ such that no element of $S$ and no finite sum of distinct elements of $S$ is a perfect power $a^k$ with $k \\ge 2$. |  | 2m05s |
 | [724](724.md) *V. V. Prasolov*. Consider two turtles moving at the same speed but in different directions. |  | 3m04s |
 | [725](725.md) *N. B. Vasilyev*. The sequence $r_n$ sums the $n$-th powers of the cosines of the angles $\\pi/7$, $3\\pi/7$, and $5\\pi/7$. |  | 6m17s |
 
@@ -1449,7 +1449,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [727](727.md) *I. Zharov*. Since the perimeter is $2$, we have |  | 6m08s |
+| [727](727.md) Since the perimeter is $2$, we have |  | 6m08s |
 | [728](728.md) *I. F. Sharygin*. Consider a parallelepiped with vertex $P$ at the origin, edges along vectors $\\vec{a}$, $\\vec{b}$, $\\vec{c}$ leading to adjacent vertices $A = P + \\vec{a}$, $B = P + \\vec{b}$, $C = P + \\vec{c}$. |  | 7m13s |
 | [729](729.md) *N. B. Vasiliev*. The statement asks for a natural number with a specified property, not for all such numbers. |  | 5m39s |
 | [730](730.md) *V. S. Shevelev*. The sequence $(a_n)$ is defined recursively by $a_1=0$ and $a_{2n}=a_{2n+1}=n-a_n$. |  | 6m11s |
@@ -1458,9 +1458,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [732](732.md) *Once I have the actual statement, I will produce the solution in exactly the six sections you specified:*. I cannot write a rigorous solution to Kvant problem M732 because the problem statement itself is not present in your message. |  | 5m55s |
+| [732](732.md) I cannot write a rigorous solution to Kvant problem M732 because the problem statement itself is not present in your message. |  | 5m55s |
 | [733](733.md) *V. V. Prasolov*. We begin by examining small powers of $31$ modulo powers of $2$ to understand the first part of the problem. |  | 4m43s |
-| [735](735.md) *Figure 1.*. Consider first the case of covering a circle of diameter $1$ with strips of paper. |  | 6m15s |
+| [735](735.md) Consider first the case of covering a circle of diameter $1$ with strips of paper. |  | 6m15s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1982_4/)
 
@@ -1468,24 +1468,24 @@ draft: false
 |---|---------|---|------|
 | [737](737.md) *A. V. Zelevinsky*. Let the houses have populations $h_1,h_2,\\ldots,h_n$, arranged in nonincreasing order. |  | 6m25s |
 | [738](738.md) *V. V. Prasolov*. Consider a polygon in the plane, labeled $A_1 A_2 \\dots A_n$. |  | 5m03s |
-| [740](740.md) *V. Semyonova*. Consider a right circular cylindrical pot with radius $R$ and height $H$. |  | 6m53s |
+| [740](740.md) Consider a right circular cylindrical pot with radius $R$ and height $H$. |  | 6m53s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1982_5/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [741](741.md) *M. Lövin*. Let |  | 9m44s |
+| [741](741.md) Let |  | 9m44s |
 | [742](742.md) *A. Mikhailovsky, V. V. Prasolov*. Let the points be represented by vectors $x_1,\\dots,x_n$ from the center of the circle or sphere. |  | 6m31s |
 | [743](743.md) *L. D. Kurlyandchik, S. Okhitin*. Part (1) is the classical two-color complete graph statement. |  | 7m41s |
-| [744](744.md) *D. Izaak*. The configuration consists of two similar triangles $ABC$ and $A_1B_1C_1$, with $A_1 \\in BC$, $B_1 \\in CA$, $C_1 \\in AB$. |  | 2m09s |
-| [745](745.md) *N. Kh. Rozov*. For the first problem, let |  | 5m41s |
+| [744](744.md) The configuration consists of two similar triangles $ABC$ and $A_1B_1C_1$, with $A_1 \\in BC$, $B_1 \\in CA$, $C_1 \\in AB$. |  | 2m09s |
+| [745](745.md) For the first problem, let |  | 5m41s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1982_6/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [747](747.md) *V. V. Prasolov*. For the first part, write the numbers as $x_1,\\dots,x_n$, let $M=\\max x_i$ and $m=\\min x_i$. |  | 5m39s |
-| [748](748.md) *O. Kuzminykh*. Consider first the planar problem with parabolas. |  | 6m09s |
+| [748](748.md) Consider first the planar problem with parabolas. |  | 6m09s |
 | [750](750.md) *S. N. Bespamyatnykh*. The first statement is a classical rectangle theorem. |  | 3m46s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1982_7/)
@@ -1565,7 +1565,7 @@ draft: false
 | [786](786.md) *A. N. Kozachenko*. Consider small values of $n$ and $k$ to identify a pattern. |  | 7m18s |
 | [787](787.md) *B. S. Pitskel*. Let the right triangle have legs of lengths $a$ and $b$, with hypotenuse $c = \\sqrt{a^2 + b^2}$. |  | 4m08s |
 | [789](789.md) *V. V. Proizvolov*. Consider first a small number of points on a circle, for example, four points dividing the circle into four equal arcs. |  | 7m02s |
-| [790](790.md) *A. Tyshka*. The hypothesis is that a map $F:\\mathbb{R}^2\\to\\mathbb{R}^2$ preserves unit distance, meaning every pair of points at distance $1$ is mapped to a pair of points at distance $1$. |  | 2m14s |
+| [790](790.md) The hypothesis is that a map $F:\\mathbb{R}^2\\to\\mathbb{R}^2$ preserves unit distance, meaning every pair of points at distance $1$ is mapped to a pair of points at distance $1$. |  | 2m14s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1983_3/)
 
@@ -1677,33 +1677,33 @@ draft: false
 | [846](846.md) *V. F. Lev*. Let the regular polygon have $n$ sides and circumradius $R$. |  | 1m57s |
 | [847](847.md) *I. V. Vetrov, A. G. Kogan*. The game is played on the edge set of the $n\\times n$ square grid graph. |  | 2m14s |
 | [848](848.md) *P. G. Satyanov*. The function $f_0(x) = //x-1/-2//x/-3//$ involves nested absolute values. |  | 1m46s |
-| [849](849.md) *```*. ``` |  | 15m44s |
+| [849](849.md) ``` |  | 15m44s |
 | [850](850.md) *V. N. Dubrovsky*. Let $A,B,C$ be a nondegenerate triangle with side lengths $BC=a$, $CA=b$, $AB=c$. |  | 10m08s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1984_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [852](852.md) *```*. ``` |  | 9m12s |
+| [852](852.md) ``` |  | 9m12s |
 | [854](854.md) Before I begin, could you provide the full text of Kvant problem M854? I need the problem statement in order to construct the rigorous solution according to your specifications. |  | 3m10s |
-| [855](855.md) *```*. ``` |  | 3m03s |
+| [855](855.md) ``` |  | 3m03s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1984_4/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [856](856.md) *```*. ``` |  | 3m01s |
+| [856](856.md) ``` |  | 3m01s |
 | [858](858.md) *P. B. Gusyatnikov*. Let |  | 2m09s |
 | [859](859.md) *V. P. Pikulin*. Let |  | 55s |
-| [860](860.md) *Chan Quang*. Consider the triangle $ABC$ with circumcircle $(O)$ and incircle $(Z)$. |  | 1m40s |
+| [860](860.md) Consider the triangle $ABC$ with circumcircle $(O)$ and incircle $(Z)$. |  | 1m40s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1984_5/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [861](861.md) *S. Yu. Orevkov*. Consider small values of $n$ to understand the behavior of the sums modulo $1$. |  | 58s |
+| [861](861.md) Consider small values of $n$ to understand the behavior of the sums modulo $1$. |  | 58s |
 | [862](862.md) *E. A. Yasinovy̆ĭ*. Consider first the equilateral triangle case. |  | 4m09s |
-| [863](863.md) *S. Stefanov*. Consider a small board, $n=3$. |  | 1m32s |
+| [863](863.md) Consider a small board, $n=3$. |  | 1m32s |
 | [864](864.md) *A. V. Savkin*. Consider first a right triangle. |  | 7m10s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1984_6/)
@@ -1740,7 +1740,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [882](882.md) *Leningrad City Mathematical Olympiad (50th, 1984)*. Consider small integer triples $(a,b,c)$ satisfying $a+b+c=0$. |  | 4m53s |
-| [883](883.md) *Working*. Working |  | 14m25s |
+| [883](883.md) Working |  | 14m25s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1984_10/)
 
@@ -1781,7 +1781,7 @@ draft: false
 | [901](901.md) Consider triangle $ABC$ with bisectors $AK$ and $BM$ intersecting at $O$. |  | 2m59s |
 | [903](903.md) *A. A. Dorogovtsev*. A plane section of a convex polyhedron changes combinatorially only when the plane passes through a vertex. |  | 2m56s |
 | [904](904.md) I cannot write a solution because the actual problem statement is missing. |  | 1m16s |
-| [905](905.md) *M. Garaev, 10th-grade student*. Consider the equation |  | 10m22s |
+| [905](905.md) Consider the equation |  | 10m22s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1985_2/)
 
@@ -1790,7 +1790,7 @@ draft: false
 | [907](907.md) *T. A. Dzhortmenadze*. Let $A=\\widehat A$, $B=\\widehat B$, $C=\\widehat C$. |  | 6m49s |
 | [908](908.md) Before I begin writing the full Kvant-style solution, I need the text of problem M908. |  | 2m49s |
 | [909](909.md) *R. N. Azizyan, V. Tolstykh, A. V. Alyaev*. We seek an arithmetic progression |  | 10m21s |
-| [910](910.md) *S. Yu. Orevkov*. Let the regular hexagon be $P_1P_2P_3P_4P_5P_6$, and let the points of the problem be chosen on its sides so that $A_i\\in P_iP_{i+1}$, indices modulo $6$. |  | 1m36s |
+| [910](910.md) Let the regular hexagon be $P_1P_2P_3P_4P_5P_6$, and let the points of the problem be chosen on its sides so that $A_i\\in P_iP_{i+1}$, indices modulo $6$. |  | 1m36s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1985_3/)
 
@@ -1798,7 +1798,7 @@ draft: false
 |---|---------|---|------|
 | [911](911.md) *M. V. Stark*. Place quadrilateral $ABCD$ in the plane and select points $E$ on $AB$ and $F$ on $CD$. |  | 3m06s |
 | [912](912.md) *V. P. Pikulin*. For a polynomial to be monotonically increasing on the whole real line, it is enough that its derivative be nonnegative everywhere. |  | 6m29s |
-| [913](913.md) *S. Litovchenko, 10th-grade student*. Consider triangle $ABC$ with circumcircle $\\Gamma$. |  | 6m05s |
+| [913](913.md) Consider triangle $ABC$ with circumcircle $\\Gamma$. |  | 6m05s |
 | [915](915.md) *L. D. Kurlandchik*. The inequality is cyclic rather than symmetric: |  | 7m26s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1985_4/)
@@ -1806,7 +1806,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [916](916.md) *A. A. Azamov*. Let the acute triangle be $ABC$. |  | 8m |
-| [917](917.md) *S. Yu. Orevkov*. Consider six-digit numbers from $000000$ to $999999$. |  | 8m32s |
+| [917](917.md) Consider six-digit numbers from $000000$ to $999999$. |  | 8m32s |
 | [919](919.md) *Yu. I. Ionin*. For the first integral equality, the two integrals involve complementary functions: the tangent function on $[0,\\pi/4]$ and the arctangent function on $[0,1]$. |  | 6m07s |
 | [920](920.md) *R. A. Mazov*. The equation is |  | 5m39s |
 
@@ -1814,7 +1814,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [921](921.md) *Entrance exam for the Faculty of Economics, Moscow State University, 1984*. The problem involves a convex quadrilateral $ABCD$ with two given angles, $\\angle A = \\alpha$ and $\\angle B = \\beta$, and a special relation between its sides and area: the doubled area satisfies $2S… |  | 9m17s |
+| [921](921.md) The problem involves a convex quadrilateral $ABCD$ with two given angles, $\\angle A = \\alpha$ and $\\angle B = \\beta$, and a special relation between its sides and area: the doubled area satisfies $2S… |  | 9m17s |
 | [922](922.md) *A. M. Sedletskii*. Let |  | 3m30s |
 | [923](923.md) Consider a unit cube in three-dimensional space with edges parallel to the axes. |  | 4m54s |
 | [925](925.md) *A. L. Toom*. Consider a small blue region, for example, a disk of radius $r<1$. |  | 3m40s |
@@ -1870,8 +1870,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [951](951.md) *E. Horváth (Hungary)*. Let the hexagon be $ABCDEF$ in convex order with $AB=BC=CD=DE=EF=FA=1$. |  | 2m25s |
-| [952](952.md) *I. Varga (Romania)*. Write |  | 1m28s |
+| [951](951.md) Let the hexagon be $ABCDEF$ in convex order with $AB=BC=CD=DE=EF=FA=1$. |  | 2m25s |
+| [952](952.md) Write |  | 1m28s |
 | [954](954.md) *V. N. Dubrovsky*. Consider first the case of a rectangle inscribed in a triangle. |  | 8m23s |
 | [955](955.md) *V. B. Alekseev*. Consider first small numbers of participants. |  | 4m55s |
 
@@ -1879,7 +1879,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [956](956.md) *V. Kapovich, 10th-grade student, I. Kapovich, 10th-grade student*. Let the four circles have the same radius $r$. |  | 6m47s |
+| [956](956.md) Let the four circles have the same radius $r$. |  | 6m47s |
 | [958](958.md) *International Mathematical Olympiad (XXVI)*. Let |  | 3m21s |
 | [959](959.md) *A. A. Razborov*. Consider first small examples. |  | 7m47s |
 
@@ -1892,8 +1892,8 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [961](961.md) *A. P. Savin, N. A. Paravyan*. Let the side length of the square be $6$. |  | 7m12s |
-| [962](962.md) *Dumitru Radu (Romania)*. Let $P(x)\\in\\mathbb{Z}[x]$ and suppose there exist distinct integers $x_1,\\dots,x_n$ with $n\\ge 3$ such that |  | 2m05s |
-| [963](963.md) *T. Gazaryan, 10th-grade student*. Let the hexagon be $A B C D E F$ in cyclic order. |  | 3m50s |
+| [962](962.md) Let $P(x)\\in\\mathbb{Z}[x]$ and suppose there exist distinct integers $x_1,\\dots,x_n$ with $n\\ge 3$ such that |  | 2m05s |
+| [963](963.md) Let the hexagon be $A B C D E F$ in cyclic order. |  | 3m50s |
 | [964](964.md) *A. A. Stolin*. The sequence $(a_n)$ consists of distinct positive integers with the growth constraint $a_n < 100n$. |  | 7m44s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1986_2/)
@@ -1902,7 +1902,7 @@ draft: false
 |---|---------|---|------|
 | [966](966.md) *L. D. Kurlandchik*. The statement asks for a dissection of an arbitrary triangle into four pieces such that the pieces can be rearranged into two triangles, each similar to the original triangle. |  | 7m38s |
 | [967](967.md) *V. F. Lev*. For small values, |  | 3m20s |
-| [969](969.md) *Unusual activity has been detected from your device. Try again later. (4c4b92dd-6375-491f-8f46-c6ee9436d916)*. Unusual activity has been detected from your device. |  | 7m01s |
+| [969](969.md) Unusual activity has been detected from your device. |  | 7m01s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1986_3/)
 
@@ -1919,9 +1919,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [976](976.md) *E. G. Gotman*. Place the square in coordinates: |  | 1m22s |
-| [977](977.md) *S. Kublanovsky*. The problem asks whether $x$ can be expressed using only addition, subtraction, and multiplication from given polynomials. |  | 1m35s |
-| [978](978.md) *E. Karlov, I. Dmitriev (Bulgaria)*. The threshold $\\sqrt{2/3}$ is suggestive because an equilateral triangle of side $a$ has altitude $\\frac{\\sqrt3}{2}a$, and when $a=\\sqrt{2/3}$ the altitude equals $\\frac1{\\sqrt2}$. |  | 1m22s |
-| [979](979.md) *E. Gorin*. Consider the definition of an exceptional set of $k$ numbers $a_1, a_2, \\dots, a_k$, all strictly between 0 and 1. |  | 1m32s |
+| [977](977.md) The problem asks whether $x$ can be expressed using only addition, subtraction, and multiplication from given polynomials. |  | 1m35s |
+| [978](978.md) The threshold $\\sqrt{2/3}$ is suggestive because an equilateral triangle of side $a$ has altitude $\\frac{\\sqrt3}{2}a$, and when $a=\\sqrt{2/3}$ the altitude equals $\\frac1{\\sqrt2}$. |  | 1m22s |
+| [979](979.md) Consider the definition of an exceptional set of $k$ numbers $a_1, a_2, \\dots, a_k$, all strictly between 0 and 1. |  | 1m32s |
 | [980](980.md) *V. G. Boltyanskyi*. Consider first a convex polygon in the plane with vertices $A_1, A_2, \\dots, A_n$ and a point $O$ inside it. |  | 1m17s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1986_5/)
@@ -1929,7 +1929,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [981](981.md) *L. D. Kurlandchik*. Consider small repunit numbers of the form $R_n = 11\\ldots1$ with $n$ ones. |  | 1m37s |
-| [982](982.md) *N. Azamov, 8th grade student*. Construct triangle $ABC$ on paper and build the external squares $ABB_1A_2$, $BCB_1C_2$, $CAA_1C_2$. |  | 1m14s |
+| [982](982.md) Construct triangle $ABC$ on paper and build the external squares $ABB_1A_2$, $BCB_1C_2$, $CAA_1C_2$. |  | 1m14s |
 | [983](983.md) *K. P. Kokhasy̆a*. The tournament is a complete directed graph on $16$ vertices. |  | 2m08s |
 | [984](984.md) *V. N. Dubrovsky*. Consider a square $ABCD$ and an arbitrary point $K$ inside it. |  | 1m28s |
 | [985](985.md) *A. B. Goncharov*. We are asked to count configurations of three lines through a point in space with prescribed pairwise angles, up to congruence. |  | 3m01s |
@@ -1940,19 +1940,19 @@ draft: false
 |---|---------|---|------|
 | [986](986.md) The inequality is |  | 1m42s |
 | [987](987.md) *M. Bona, high school student (Hungary)*. Consider small instances to gain intuition. |  | 1m39s |
-| [988](988.md) *P. Kalugin*. Consider small values of $n$ and $k$ to build intuition. |  | 1m25s |
-| [989](989.md) *V. Batyrev*. I begin by examining small natural numbers $a$ to see which of them satisfy the given conditions. |  | 1m51s |
+| [988](988.md) Consider small values of $n$ and $k$ to build intuition. |  | 1m25s |
+| [989](989.md) I begin by examining small natural numbers $a$ to see which of them satisfy the given conditions. |  | 1m51s |
 | [990](990.md) *V. N. Dubrovsky*. Consider three lines in space, each pair of which is skew, and they are not all parallel to the same plane. |  | 1m22s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1986_7/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [991](991.md) *_Mathematics_ magazine (Bulgaria)*. Consider triangle $ABC$ with an altitude $CH$ and median $CK$. |  | 1m21s |
-| [992](992.md) *_Mathematics_ Magazine (Bulgaria)*. Consider small examples of social networks where each person has at least 10 friends. |  | 1m14s |
-| [993](993.md) *Mathematics Journal (Bulgaria)*. Let $x$ be the smallest of $n$ consecutive natural numbers. |  | 1m13s |
-| [994](994.md) *Mathematics Magazine (Bulgaria)*. Let |  | 1m39s |
-| [995](995.md) *Journal _Mathematics_ (Bulgaria)*. Let |  | 1m52s |
+| [991](991.md) Consider triangle $ABC$ with an altitude $CH$ and median $CK$. |  | 1m21s |
+| [992](992.md) Consider small examples of social networks where each person has at least 10 friends. |  | 1m14s |
+| [993](993.md) Let $x$ be the smallest of $n$ consecutive natural numbers. |  | 1m13s |
+| [994](994.md) Let |  | 1m39s |
+| [995](995.md) Let |  | 1m52s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1986_8/)
 
@@ -2065,7 +2065,7 @@ draft: false
 | [1046](1046.md) *City Tournament (Spring, 1987)*. Consider an acute-angled triangle $ABC$ with $\\angle A = 60^\\circ$. |  | 2m37s |
 | [1047](1047.md) *City Tournament (Spring, 1987)*. Consider a small round-robin tournament with $n$ players. |  | 1m32s |
 | [1048](1048.md) *Tournament of Towns (Spring 1987)*. Consider the simplest nontrivial cases of the knight’s tour game. |  | 1m49s |
-| [1049](1049.md) *V. Stolin, 11th-grade student (Vilnius)*. Consider a cylinder $\\text{Ц}_1$ with radius $R_1$ and height $H_1$, and define its diameter-to-height ratio $k = \\frac{2R_1}{H_1}$. |  | 1m33s |
+| [1049](1049.md) Consider a cylinder $\\text{Ц}_1$ with radius $R_1$ and height $H_1$, and define its diameter-to-height ratio $k = \\frac{2R_1}{H_1}$. |  | 1m33s |
 | [1050](1050.md) *L. D. Kurlandchik*. Let the chosen points be |  | 2m50s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1987_7/)
@@ -2139,7 +2139,7 @@ draft: false
 | [1081](1081.md) *V. I. Plachko*. Compute a few values: |  | 1m43s |
 | [1082](1082.md) *A. P. Savin*. The given equality resembles the identity for the sum of squares of the sides of a quadrilateral. |  | 2m09s |
 | [1083](1083.md) *L. G. Khanin*. Consider small values of $n$ to understand the inequality. |  | 2m22s |
-| [1084](1084.md) *V. Yu. Protasov, 10th-grade student (Moscow)*. Let the two given circles be $\\omega_1$ and $\\omega_2$, intersecting at $A$ and $B$. |  | 1m55s |
+| [1084](1084.md) Let the two given circles be $\\omega_1$ and $\\omega_2$, intersecting at $A$ and $B$. |  | 1m55s |
 | [1085](1085.md) *S. L. Tabachnikov*. Consider the problem geometrically. |  | 2m05s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1988_2/)
@@ -2147,8 +2147,8 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1086](1086.md) *M. V. Sapir*. Consider the problem of reaching a target number from $0$ using only two operations: doubling the current number or adding $1$. |  | 1m51s |
-| [1087](1087.md) *A. Kh. Jafarov*. Let $h_a,h_b,h_c$ be the altitudes of triangle $ABC$. |  | 1m50s |
-| [1088](1088.md) *István Varga (Romania)*. The condition is |  | 1m41s |
+| [1087](1087.md) Let $h_a,h_b,h_c$ be the altitudes of triangle $ABC$. |  | 1m50s |
+| [1088](1088.md) The condition is |  | 1m41s |
 | [1089](1089.md) *D. Yu. Burago, F. L. Nazarov*. Let the inradius of triangle $AOB$ be $r_1$, of $BOC$ be $r_2$, of $COD$ be $r_3$, and of $DOA$ be $r_4$. |  | 2m01s |
 | [1090](1090.md) *Yu. V. Deikalo*. Testing small values helps build intuition about the inequality. |  | 1m43s |
 
@@ -2157,7 +2157,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1092](1092.md) *S. V. Kazakov*. Consider a single fold of a convex polygon and a subsequent straight cut. |  | 7m15s |
-| [1093](1093.md) *N. Alexandru (Romania)*. Represent the configuration by numbers $a_1,\\dots,a_n\\in{0,1,2}$ arranged cyclically. |  | 8m08s |
+| [1093](1093.md) Represent the configuration by numbers $a_1,\\dots,a_n\\in{0,1,2}$ arranged cyclically. |  | 8m08s |
 | [1094](1094.md) *V. A. Senderov*. The two inequalities are |  | 7m30s |
 | [1095](1095.md) *R. O. Burdin*. The problem involves constructing a chord $MN$ of a circle with center $O$ seen from $A$ under a given angle $\\alpha$, with additional geometric constraints. |  | 1m15s |
 
@@ -2165,7 +2165,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1096](1096.md) *R. Kharitonov, A. Chagirov, 10th-grade students*. Let the circle have radius $R=\\dfrac d2$. |  | 1m21s |
+| [1096](1096.md) Let the circle have radius $R=\\dfrac d2$. |  | 1m21s |
 | [1097](1097.md) *V. V. Proizvolov*. Consider small examples of isosceles triangles whose vertices have integer coordinates. |  | 1m28s |
 | [1098](1098.md) *V. G. Chvanov*. Consider the game for small values of $n$. |  | 5m16s |
 | [1099](1099.md) *N. N. Silkin, M. V. Volkov*. Consider small examples to gain intuition. |  | 1m09s |
@@ -2175,9 +2175,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1101](1101.md) *V. Kiriak (Romania)*. Let $\\angle A=\\alpha$. |  | 7m27s |
+| [1101](1101.md) Let $\\angle A=\\alpha$. |  | 7m27s |
 | [1102](1102.md) *L. D. Kurlyandchik*. For $n=3$ it is natural to search among classical identities involving sums of three cubes. |  | 3m56s |
-| [1103](1103.md) *M. Khovanov, 10th-grade student*. Begin with the first part of the problem, which concerns tiling an infinite plane with $1\\times 2$ dominoes after some non-overlapping dominoes are already placed. |  | 10m39s |
+| [1103](1103.md) Begin with the first part of the problem, which concerns tiling an infinite plane with $1\\times 2$ dominoes after some non-overlapping dominoes are already placed. |  | 10m39s |
 | [1104](1104.md) *V. N. Dubrovsky*. Let |  | 1m14s |
 | [1105](1105.md) *N. P. Dolbilin, M. I. Shtogrin*. The problem concerns unfolding a convex polyhedron along straight-line cuts so that its surface lies flat as a single polygon, with specified identifications of points on the boundary. |  | 1m20s |
 
@@ -2187,7 +2187,7 @@ draft: false
 |---|---------|---|------|
 | [1106](1106.md) *V. V. Proizvolov*. Consider a convex hexagon $ABCDEF$. |  | 7m29s |
 | [1107](1107.md) *L. D. Kurlandchik*. The inequality is homogeneous in the ratios of the sides. |  | 1m37s |
-| [1108](1108.md) *M. Khovanov, 10th-grade student (Moscow)*. Consider small cases first. |  | 1m56s |
+| [1108](1108.md) Consider small cases first. |  | 1m56s |
 | [1109](1109.md) *V. S. Shevelyov*. Let the vertices of an inscribed equilateral triangle be |  | 17m21s |
 | [1110](1110.md) *V. F. Lev*. Consider the first few natural numbers and compute the greatest common divisors of all distinct pairs. |  | 2m21s |
 
@@ -2208,7 +2208,7 @@ draft: false
 | [1116](1116.md) Consider a rectangle drawn on a square grid where the unit squares are the cells. |  | 9m26s |
 | [1117](1117.md) *A. A. Gorbachev*. Let the sides of the given triangle $ABC$ be |  | 10m40s |
 | [1118](1118.md) *S. G. Mamikonyan*. Expanding the left-hand side gives |  | 8m06s |
-| [1119](1119.md) *M. Khovanov, 10th-grade student (Moscow)*. Consider first small values of $k$. |  | 8m52s |
+| [1119](1119.md) Consider first small values of $k$. |  | 8m52s |
 | [1120](1120.md) *V. F. Lev*. Consider the sequence defined by $a_0 = 0$ and $a_n = P(a_{n-1})$ for $n \\ge 1$, where $P(x)$ is a polynomial with integer coefficients and $P(x) > 0$ for $x \\ge 0$. |  | 3m13s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1988_9/)
@@ -2219,7 +2219,7 @@ draft: false
 | [1122](1122.md) *City Tournament (Spring, 1988)*. Let |  | 9m02s |
 | [1123](1123.md) *Tournament of Towns (Spring 1988)*. Label the cells by coordinates $(i,j)$, where $i,j\\in\\mathbb N$ and $i,j\\ge 1$. |  | 10m09s |
 | [1124](1124.md) *City Tournament (Spring, 1988)*. Consider a trapezoid $ABCD$ with bases $AB$ and $CD$, where $AB$ is the shorter base. |  | 8m33s |
-| [1125](1125.md) *with a fully rigorous proof matched to the problem type.*. I cannot write a solution to Kvant problem M1125 from the information provided, because the actual problem statement is missing. |  | 2m53s |
+| [1125](1125.md) I cannot write a solution to Kvant problem M1125 from the information provided, because the actual problem statement is missing. |  | 2m53s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1988_10/)
 
@@ -2258,7 +2258,7 @@ draft: false
 | [1142](1142.md) Consider small tables first. |  | 4m02s |
 | [1143](1143.md) *V. V. Proizvolov*. Consider first small circular arrangements of weights with integer masses and total mass divisible into parts. |  | 3m39s |
 | [1144](1144.md) *A. I. Shekhorsky*. Let |  | 7m12s |
-| [1145](1145.md) *V. Yu. Protasov*. Consider a circle with a point $P$ outside it and two tangents $PB$ and $PC$, forming an angle $\\angle BPC > 90^\\circ$. |  | 2m51s |
+| [1145](1145.md) Consider a circle with a point $P$ outside it and two tangents $PB$ and $PC$, forming an angle $\\angle BPC > 90^\\circ$. |  | 2m51s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1989_2/)
 
@@ -2274,7 +2274,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1151](1151.md) *with complete rigor and the exact style you specified.*. I cannot write a solution to Kvant problem M1151 from the information provided, because the actual problem statement is missing. |  | 5m34s |
+| [1151](1151.md) I cannot write a solution to Kvant problem M1151 from the information provided, because the actual problem statement is missing. |  | 5m34s |
 | [1152](1152.md) I do not have the statement of Kvant problem M1152, and the prompt says that only the graphical version is currently available. |  | 9m36s |
 | [1153](1153.md) I can do that. |  | 3m45s |
 | [1154](1154.md) I cannot write a solution to Kvant problem M1154 because the actual problem statement is not present in your message. |  | 6m43s |
@@ -2284,9 +2284,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1156](1156.md) *Sanzhar Khadzhiev, 10th-grade student*. There are eight teams, each playing once against every other team, so each team plays $7$ games. |  | 7m23s |
-| [1157](1157.md) *Imre Bárány (Hungary)*. Let the three triangles be $T_W,T_R,T_G$, and let $M$ be a point lying in the interior of each of them. |  | 9m57s |
-| [1158](1158.md) *Oleg Khristenko, 10th grade student*. We are asked to minimize $(x+y)(x+z)$ under the constraint $xyz(x+y+z)=1$, with $x$, $y$, $z$ positive. |  | 7m27s |
+| [1156](1156.md) There are eight teams, each playing once against every other team, so each team plays $7$ games. |  | 7m23s |
+| [1157](1157.md) Let the three triangles be $T_W,T_R,T_G$, and let $M$ be a point lying in the interior of each of them. |  | 9m57s |
+| [1158](1158.md) We are asked to minimize $(x+y)(x+z)$ under the constraint $xyz(x+y+z)=1$, with $x$, $y$, $z$ positive. |  | 7m27s |
 | [1159](1159.md) Before I can write the full six-section solution you requested, I need the **textual statement of Kvant problem M1159**, since I do not have the content of the problem from memory. |  | 6m52s |
 | [1160](1160.md) *S. L. Eliseev*. Consider the situation with only two kangaroos first. |  | 7m10s |
 
@@ -2296,7 +2296,7 @@ draft: false
 |---|---------|---|------|
 | [1161](1161.md) *N. P. Dolbilin*. Consider first the configuration of ten identical billiard balls arranged snugly in a triangular container. |  | 7m09s |
 | [1162](1162.md) *D. V. Fomin*. Consider the Diophantine equation |  | 4m11s |
-| [1163](1163.md) *A. Kh. Shen*. Let the position of the first turtle at time $t$ be $P(t)$ and the position of the second turtle be $Q(t)$. |  | 7m06s |
+| [1163](1163.md) Let the position of the first turtle at time $t$ be $P(t)$ and the position of the second turtle be $Q(t)$. |  | 7m06s |
 | [1164](1164.md) *V. V. Shabunin*. Let $\\sigma(n)$ denote the sum of all positive divisors of $n$. |  | 4m11s |
 | [1165](1165.md) *D. J. Newman, B. D. Kotlyar*. Consider a square of side length $n$ on a standard graph paper with $1\\times1$ cells. |  | 3m06s |
 
@@ -2317,7 +2317,7 @@ draft: false
 | [1171](1171.md) *L. D. Kurlandchik*. Let |  | 1m31s |
 | [1172](1172.md) *S. N. Bychkov*. Let |  | 6m17s |
 | [1173](1173.md) *G. N. Zaitsev*. Let the three lines through the interior point $P$ meet the sides of triangle $ABC$ in such a way that they cut off three corner triangles of areas $S_1,S_2,S_3$. |  | 6m14s |
-| [1174](1174.md) *R. Kozarev (Bulgaria), S. Doichev (Bulgaria)*. Compute the first few values of the sequence to look for patterns. |  | 7m37s |
+| [1174](1174.md) Compute the first few values of the sequence to look for patterns. |  | 7m37s |
 | [1175](1175.md) *D. A. Tereshin*. Consider the problem for small values of $n$ first. |  | 7m25s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1989_8/)
@@ -2336,7 +2336,7 @@ draft: false
 |---|---------|---|------|
 | [1181](1181.md) *All-Union Mathematical Olympiad (XXIII, 1989)*. Consider small instances of the chessboard and examine the parity of black squares occupied by pieces when each row and each column contains exactly one piece. |  | 7m55s |
 | [1182](1182.md) Before I begin, could you provide the exact text of Kvant problem M1182? I need the precise statement to produce a complete, rigorous solution in the requested format. |  | 8m26s |
-| [1183](1183.md) *- Alternative Approaches*. I cannot write a solution to Kvant problem M1183 because the actual problem statement is not present in your message. |  | 5m49s |
+| [1183](1183.md) I cannot write a solution to Kvant problem M1183 because the actual problem statement is not present in your message. |  | 5m49s |
 | [1184](1184.md) I do not have access to the published graphical version of Kvant M1184, and you mentioned the textual version is being prepared. |  | 10m11s |
 | [1185](1185.md) I do not yet have the full text of Kvant problem M1185. |  | 5m49s |
 
@@ -2356,7 +2356,7 @@ draft: false
 |---|---------|---|------|
 | [1191](1191.md) *I. F. Akulich*. Let $S_A$ denote the central symmetry with center $A$. |  | 8m15s |
 | [1192](1192.md) *V. A. Senderov*. The polyhedron has all edges of equal length and every edge is tangent to a sphere. |  | 8m |
-| [1193](1193.md) *V. Kyrtojа (Romania)*. Let |  | 7m10s |
+| [1193](1193.md) Let |  | 7m10s |
 | [1194](1194.md) *A. A. Azamov*. Let the rectangle have vertices |  | 7m39s |
 | [1195](1195.md) *O. T. Izhboldin*. Consider the given inequality |  | 4m05s |
 
@@ -2379,10 +2379,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1201](1201.md) *N. B. Vasiliev*. Let the numbers of voters for parties $A,B,C$ in a district be $a,b,c$, expressed as fractions of the district electorate. |  | 7m17s |
-| [1202](1202.md) *D. Nyamsuren (Mongolia)*. Let the two rays from $A$ be $r_1$ and $r_2$. |  | 7m18s |
+| [1202](1202.md) Let the two rays from $A$ be $r_1$ and $r_2$. |  | 7m18s |
 | [1203](1203.md) *S. L. Eliseev*. Let the side of the large square be $1000$ m. |  | 4m23s |
-| [1204](1204.md) *M. Khovanov*. Consider three circles centered at points $A$, $B$, and $C$, each expanding at the same constant rate. |  | 1m22s |
-| [1205](1205.md) *with complete mathematical rigor.*. I cannot write a solution to Kvant problem M1205 because the actual problem statement is not present in the conversation. |  | 1m01s |
+| [1204](1204.md) Consider three circles centered at points $A$, $B$, and $C$, each expanding at the same constant rate. |  | 1m22s |
+| [1205](1205.md) I cannot write a solution to Kvant problem M1205 because the actual problem statement is not present in the conversation. |  | 1m01s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1990_2/)
 
@@ -2408,10 +2408,10 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1216](1216.md) *K. Nistorescu (Romania)*. Consider an acute-angled triangle $ABC$ with angle bisector $AD$ from vertex $A$. |  | 1m32s |
+| [1216](1216.md) Consider an acute-angled triangle $ABC$ with angle bisector $AD$ from vertex $A$. |  | 1m32s |
 | [1217](1217.md) *Yu. M. Burman*. Compute the sum for small values of $n$ to gain intuition. |  | 3m20s |
-| [1218](1218.md) *B. Mikhailov*. The three arcs are parts of three circles. |  | 2m49s |
-| [1219](1219.md) *A. Mikhailov*. Begin by testing the inequality for small values of $n$ to develop intuition. |  | 2m13s |
+| [1218](1218.md) The three arcs are parts of three circles. |  | 2m49s |
+| [1219](1219.md) Begin by testing the inequality for small values of $n$ to develop intuition. |  | 2m13s |
 | [1220](1220.md) *D. V. Fomin*. The recurrence is |  | 3m22s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1990_5/)
@@ -2422,24 +2422,24 @@ draft: false
 | [1222](1222.md) *V. F. Lev*. Let the given integers be considered modulo $m$. |  | 4m46s |
 | [1223](1223.md) *A. A. Razborov*. Consider small cases first. |  | 3m10s |
 | [1224](1224.md) *V. A. Senderov*. Consider a triangle $ABC$ with incenter $I$ and an arbitrary point $D$ on side $BC$. |  | 3m07s |
-| [1225](1225.md) *S. Mamikonyan, G. Oganesyan*. Let |  | 2m30s |
+| [1225](1225.md) Let |  | 2m30s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1990_6/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1226](1226.md) *A. P. Savin*. Let the convex quadrilateral be $ABCD$. |  | 3m12s |
-| [1227](1227.md) *A. Zelevinsky, S. Orevkov*. Consider small tournaments first. |  | 5m06s |
+| [1227](1227.md) Consider small tournaments first. |  | 5m06s |
 | [1228](1228.md) *D. V. Fomin*. The expression is |  | 2m53s |
-| [1229](1229.md) *R. Khairullaev*. For the first expression, compute a few values: |  | 3m57s |
+| [1229](1229.md) For the first expression, compute a few values: |  | 3m57s |
 | [1230](1230.md) Please provide the full textual statement of Kvant problem M1230. |  | 5m05s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1990_7/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1231](1231.md) *Could you provide the text of the problem or the precise statement?*. I notice the problem statement itself is not yet included. |  | 4m34s |
-| [1232](1232.md) *Once the statement is available, I can produce the full six-section solution in the exact format you requested.*. I cannot write a solution to Kvant problem M1232 from the information provided, because the actual problem statement is missing. |  | 2m53s |
+| [1231](1231.md) I notice the problem statement itself is not yet included. |  | 4m34s |
+| [1232](1232.md) I cannot write a solution to Kvant problem M1232 from the information provided, because the actual problem statement is missing. |  | 2m53s |
 | [1233](1233.md) I can do that. |  | 6m52s |
 | [1234](1234.md) I can start preparing the full Kvant-style solution, but I need the actual problem statement for M1234 to proceed. |  | 3m34s |
 | [1235](1235.md) I cannot write a solution to Kvant problem M1235 because the actual problem statement is not included in your message. |  | 5m20s |
@@ -2449,9 +2449,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1236](1236.md) I see the framework and instructions, but I do not yet have the actual text of Kvant problem M1236. |  | 5m44s |
-| [1237](1237.md) *Without the statement, any solution would be a fabrication rather than a mathematical derivation.*. I cannot write a solution to Kvant problem M1237 because the actual problem statement is not included in your message, and I do not have access to the graphical version from the published issue. |  | 12m04s |
+| [1237](1237.md) I cannot write a solution to Kvant problem M1237 because the actual problem statement is not included in your message, and I do not have access to the graphical version from the published issue. |  | 12m04s |
 | [1238](1238.md) I can follow your requested six-section format and rigorous style. |  | 1m42s |
-| [1239](1239.md) *with full mathematical rigor and the required formatting.*. The problem statement is not actually present in your message. |  | 6m20s |
+| [1239](1239.md) The problem statement is not actually present in your message. |  | 6m20s |
 | [1240](1240.md) *D. V. Fomin*. A broken line from $A$ to $C$ of length $2n$ along the grid lines must consist of exactly $n$ horizontal and $n$ vertical unit steps. |  | 6m43s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1990_9/)
@@ -2479,10 +2479,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1251](1251.md) I notice that the problem statement for Kvant M1251 is not fully given in text form. |  | 4m50s |
-| [1252](1252.md) *and I will then produce the requested six-section solution in the exact format specified.*. I cannot write a solution to Kvant problem M1252 because the actual problem statement is not present. |  | 6m20s |
+| [1252](1252.md) I cannot write a solution to Kvant problem M1252 because the actual problem statement is not present. |  | 6m20s |
 | [1253](1253.md) A complete solution cannot be written because the problem statement is not available. |  | 4m50s |
 | [1254](1254.md) Before I write the full solution, I need the precise text of Kvant problem M1254. |  | 8m01s |
-| [1255](1255.md) *Once the statement is available, I can produce the solution in the exact six-section format you specified.*. I cannot write a rigorous solution to Kvant problem M1255 because the actual problem statement is not present in your message. |  | 7m38s |
+| [1255](1255.md) I cannot write a rigorous solution to Kvant problem M1255 because the actual problem statement is not present in your message. |  | 7m38s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1990_12/)
 
@@ -2502,11 +2502,11 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1261](1261.md) *S. Genkin*. Consider small examples with three colors and a uniform degree graph. |  | 6m07s |
+| [1261](1261.md) Consider small examples with three colors and a uniform degree graph. |  | 6m07s |
 | [1262](1262.md) *L. D. Kurlandchik*. Let the side lengths be $a,b,c$. |  | 5m22s |
-| [1263](1263.md) *A. Veselov*. Let the outer circle have center $O$ and radius $R$. |  | 7m54s |
-| [1264](1264.md) *I. Kan*. Consider a small portion of the infinite grid and attempt to construct a $2\\times 2$ black square using only $3\\times 3$ and $4\\times 4$ flip operations. |  | 6m03s |
-| [1265](1265.md) *Working*. Working |  | 7m40s |
+| [1263](1263.md) Let the outer circle have center $O$ and radius $R$. |  | 7m54s |
+| [1264](1264.md) Consider a small portion of the infinite grid and attempt to construct a $2\\times 2$ black square using only $3\\times 3$ and $4\\times 4$ flip operations. |  | 6m03s |
+| [1265](1265.md) Working |  | 7m40s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1991_2/)
 
@@ -2514,9 +2514,9 @@ draft: false
 |---|---------|---|------|
 | [1266](1266.md) *K. P. Kokhas*. Consider small cases with integer points in a bounded region. |  | 4m24s |
 | [1267](1267.md) *L. D. Kurlandchik*. Consider small values of $n$ to understand the behavior of the remainders $r_k$. |  | 6m07s |
-| [1268](1268.md) *A. Girich*. Consider triangle $ABC$ with an interior point $X$, and let $AX$, $BX$, $CX$ intersect the opposite sides at $A_1$, $B_1$, $C_1$ respectively. |  | 7m06s |
-| [1269](1269.md) *Ya. Koval'*. Let $a=AB$ and $c=AC$. |  | 6m28s |
-| [1270](1270.md) *```*. ``` |  | 8m39s |
+| [1268](1268.md) Consider triangle $ABC$ with an interior point $X$, and let $AX$, $BX$, $CX$ intersect the opposite sides at $A_1$, $B_1$, $C_1$ respectively. |  | 7m06s |
+| [1269](1269.md) Let $a=AB$ and $c=AC$. |  | 6m28s |
+| [1270](1270.md) ``` |  | 8m39s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1991_3/)
 
@@ -2526,17 +2526,17 @@ draft: false
 | [1272](1272.md) *L. D. Kurylandchik*. Begin with small values of $n$ to gain intuition. |  | 3m20s |
 | [1273](1273.md) Before I can write the full solution, I need the full text of Kvant problem M1273 in order to proceed. |  | 6m09s |
 | [1274](1274.md) *G. A. Halperin*. Denote |  | 7m15s |
-| [1275](1275.md) *S. Genkin*. Let |  | 7m47s |
+| [1275](1275.md) Let |  | 7m47s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1991_4/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1276](1276.md) *E. Kulanin*. Consider a fixed chord $MN$ of a circle and a variable diameter $AB$ that does not intersect $MN$. |  | 6m09s |
+| [1276](1276.md) Consider a fixed chord $MN$ of a circle and a variable diameter $AB$ that does not intersect $MN$. |  | 6m09s |
 | [1277](1277.md) *L. D. Kurylandchik*. Begin by testing small values of $n$. |  | 6m03s |
-| [1278](1278.md) *E. Stolov*. For $n=2$, the conditions give $x_2=-x_1$ and $2x_1^2=1$, hence $x_1x_2=-\\frac12\\le-\\frac12=-\\frac1n$. |  | 6m53s |
+| [1278](1278.md) For $n=2$, the conditions give $x_2=-x_1$ and $2x_1^2=1$, hence $x_1x_2=-\\frac12\\le-\\frac12=-\\frac1n$. |  | 6m53s |
 | [1279](1279.md) *A. V. Anzhans*. Associate to each unit square its projection on the $x$ axis and on the $y$ axis. |  | 6m55s |
-| [1280](1280.md) *A. Korobov*. The decimal expansion of $\\dfrac1{3^{100}}$ is purely periodic after a finite preperiod, because $3^{100}$ is coprime to $10$. |  | 6m42s |
+| [1280](1280.md) The decimal expansion of $\\dfrac1{3^{100}}$ is purely periodic after a finite preperiod, because $3^{100}$ is coprime to $10$. |  | 6m42s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1991_5/)
 
@@ -2552,11 +2552,11 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1286](1286.md) *Leningrad, 1968–1971.*. Consider a small case to understand the structure. |  | 7m51s |
-| [1287](1287.md) *Leningrad, 1968–1971.*. Consider a parallelogram $ABCD$ with $AC > BD$ and a point $M$ on $AC$ such that $BCDM$ is cyclic. |  | 6m07s |
-| [1288](1288.md) *Leningrad, 1968–1971.*. The number is |  | 5m17s |
-| [1289](1289.md) *Leningrad, 1968–1971*. Let |  | 8m30s |
-| [1290](1290.md) *M. Gusarov*. The folding is performed only along the grid lines. |  | 8m51s |
+| [1286](1286.md) Consider a small case to understand the structure. |  | 7m51s |
+| [1287](1287.md) Consider a parallelogram $ABCD$ with $AC > BD$ and a point $M$ on $AC$ such that $BCDM$ is cyclic. |  | 6m07s |
+| [1288](1288.md) The number is |  | 5m17s |
+| [1289](1289.md) Let |  | 8m30s |
+| [1290](1290.md) The folding is performed only along the grid lines. |  | 8m51s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1991_7/)
 
@@ -2566,7 +2566,7 @@ draft: false
 | [1292](1292.md) *I. N. Sergeev*. Begin by considering the simplest nontrivial cases. |  | 2m45s |
 | [1293](1293.md) *I. F. Sharygin*. Consider an angle with vertex $A$ and two rays forming the sides. |  | 2m49s |
 | [1294](1294.md) *A. V. Spivak*. Consider a smaller cube, for instance $2\\times2\\times2$ or $4\\times4\\times4$, with a checkerboard coloring. |  | 11m15s |
-| [1295](1295.md) *A. Chasovskikh*. Consider small examples of the problem to understand the dynamics. |  | 4m33s |
+| [1295](1295.md) Consider small examples of the problem to understand the dynamics. |  | 4m33s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1991_8/)
 
@@ -2574,7 +2574,7 @@ draft: false
 |---|---------|---|------|
 | [1296](1296.md) *All-Union Mathematical Olympiad (25th, 1991)*. Consider the operation described in the problem: a polygon is cut along a line segment into two pieces, one piece is flipped, and the pieces are reattached along the cut line. |  | 3m12s |
 | [1297](1297.md) *All-Union Mathematical Olympiad (XXV, 1991)*. The equations for $\\alpha$ and $\\beta$ are cubic but not immediately factorable in integer roots. |  | 7m21s |
-| [1298](1298.md) *I can prepare the solution, but I need the text of the Kvant M1298 problem to proceed. Could you provide it?*. I can prepare the solution, but I need the text of the Kvant M1298 problem to proceed. |  | 3m21s |
+| [1298](1298.md) I can prepare the solution, but I need the text of the Kvant M1298 problem to proceed. |  | 3m21s |
 | [1299](1299.md) *All-Union Mathematical Olympiad (XXV, 1991)*. Consider small values of $n$ to gain insight. |  | 6m34s |
 | [1300](1300.md) I do not yet have the full textual statement of Kvant problem M1300. |  | 1m43s |
 
@@ -2582,8 +2582,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1301](1301.md) *Without the statement, any attempted solution would be speculation rather than mathematics.*. I cannot write a solution to Kvant problem M1301 from the information provided, because the problem statement itself is missing. |  | 15m37s |
-| [1302](1302.md) *Once I have the actual statement, I can produce the complete six-section solution in the exact format you specified.*. I cannot write a solution to Kvant problem M1302 because the actual problem statement is not available in your message. |  | 1m33s |
+| [1301](1301.md) I cannot write a solution to Kvant problem M1301 from the information provided, because the problem statement itself is missing. |  | 15m37s |
+| [1302](1302.md) I cannot write a solution to Kvant problem M1302 because the actual problem statement is not available in your message. |  | 1m33s |
 | [1303](1303.md) I can begin writing a full solution, but I need the **text of problem M1303** from Kvant before proceeding. |  | 1m29s |
 | [1304](1304.md) I cannot write a solution to Kvant problem M1304 from the information currently available. |  | 1m32s |
 | [1305](1305.md) I do not have the statement of Kvant problem M1305, and the prompt indicates that the textual version is not available here. |  | 1m31s |
@@ -2605,7 +2605,7 @@ draft: false
 | [1311](1311.md) *Leningrad City Mathematical Olympiad (1991)*. Consider a triangle with integer side lengths $x$, $y$, $z$ and let the altitudes corresponding to these sides be $h_x$, $h_y$, $h_z$, where $h_x$ is the altitude to side $x$, $h_y$ to $y$, and $h_z$… |  | 1m44s |
 | [1312](1312.md) I cannot write a rigorous solution to problem M1312 from the information provided, because the problem statement itself is missing. |  | 1m31s |
 | [1313](1313.md) I can do that. |  | 1m32s |
-| [1314](1314.md) *I need the full text of Kvant problem M1314 in order to write the solution. Could you provide the problem statement?*. I need the full text of Kvant problem M1314 in order to write the solution. |  | 1m33s |
+| [1314](1314.md) I need the full text of Kvant problem M1314 in order to write the solution. |  | 1m33s |
 | [1315](1315.md) I can do that. |  | 1m33s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1991_12/)
@@ -2626,8 +2626,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1321](1321.md) *Yu. Khodzinsky, 10th-grade student*. For small boards the bound looks plausible. |  | 1m34s |
-| [1322](1322.md) *- Alternative Approaches*. I cannot write a solution to Kvant problem M1322 without the actual problem statement or a description of the diagram. |  | 1m33s |
+| [1321](1321.md) For small boards the bound looks plausible. |  | 1m34s |
+| [1322](1322.md) I cannot write a solution to Kvant problem M1322 without the actual problem statement or a description of the diagram. |  | 1m33s |
 | [1323](1323.md) I need the full text of Kvant problem M1323 in order to produce a complete, rigorous solution. |  | 1m30s |
 | [1324](1324.md) Before I start the solution, I need the full text of Kvant problem M1324. |  | 1m29s |
 | [1325](1325.md) I cannot write a rigorous solution to Kvant problem M1325 because the actual problem statement is missing. |  | 1m30s |
@@ -2646,8 +2646,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1331](1331.md) *S. Sefibekov*. Consider a unit square $ABCD$ with points $K$, $M$, $N$, $L$ on sides $BC$, $CD$, $DA$, $AB$ respectively, such that lines $AK$, $BM$, $CN$, $DL$ create four corner triangles of areas $S_1$, $S_2$, $S… |  | 7m43s |
-| [1332](1332.md) *B. Begun*. A regular tetrahedron has four triangular faces and six edges. |  | 12m23s |
+| [1331](1331.md) Consider a unit square $ABCD$ with points $K$, $M$, $N$, $L$ on sides $BC$, $CD$, $DA$, $AB$ respectively, such that lines $AK$, $BM$, $CN$, $DL$ create four corner triangles of areas $S_1$, $S_2$, $S… |  | 7m43s |
+| [1332](1332.md) A regular tetrahedron has four triangular faces and six edges. |  | 12m23s |
 | [1333](1333.md) Before I begin, I need the text of Kvant problem M1333. |  | 4m16s |
 | [1334](1334.md) I cannot write a rigorous solution to Kvant M1334 without the actual problem statement. |  | 7m20s |
 | [1335](1335.md) Solution to Kvant math problem 1335. |  | 11m39s |
@@ -2659,7 +2659,7 @@ draft: false
 | [1336](1336.md) I cannot write a solution to Kvant problem M1336 because the actual problem statement is not present in your message. |  | 7m24s |
 | [1337](1337.md) I can do that. |  | 4m20s |
 | [1338](1338.md) I notice that the statement of Kvant problem M1338 has not been provided. |  | 7m15s |
-| [1339](1339.md) *Without the statement, any mathematical solution would be pure guesswork.*. I cannot write a solution to Kvant problem M1339 from the information provided, because the actual problem statement is missing. |  | 7m19s |
+| [1339](1339.md) I cannot write a solution to Kvant problem M1339 from the information provided, because the actual problem statement is missing. |  | 7m19s |
 | [1340](1340.md) I can start preparing the complete Kvant M1340 solution in your requested format. |  | 10m18s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1992_5/)
@@ -2676,7 +2676,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1346](1346.md) *with a complete Kvant-style proof.*. I cannot write a rigorous solution to problem M1346 without the actual problem statement or diagram. |  | 6m48s |
+| [1346](1346.md) I cannot write a rigorous solution to problem M1346 without the actual problem statement or diagram. |  | 6m48s |
 | [1347](1347.md) *Tournament of Towns*. Consider a smaller version of the problem to gain insight. |  | 7m07s |
 | [1348](1348.md) I can provide a full solution in the structure you specified, but I need the **exact problem statement for Kvant M1348**. |  | 7m25s |
 | [1349](1349.md) *Tournament of Towns*. Let $a_i$ be the number of counters in sector $i$, with indices taken modulo $n$. |  | 10m23s |
@@ -2705,7 +2705,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1361](1361.md) I can proceed, but I need the **text of problem M1361** from Kvant. |  | 8m44s |
-| [1362](1362.md) *with full rigor and all geometric or algebraic details justified.*. The problem statement for Kvant M1362 is not included in your message, and the web-accessible archive currently only indicates that the textual version is still being prepared rather than providing th… |  | 7m24s |
+| [1362](1362.md) The problem statement for Kvant M1362 is not included in your message, and the web-accessible archive currently only indicates that the textual version is still being prepared rather than providing th… |  | 7m24s |
 | [1363](1363.md) I do not have the statement of Kvant problem M1363, and the prompt indicates that only the graphical version is available. |  | 11m44s |
 | [1364](1364.md) I do not have the textual version of Kvant problem M1364. |  | 7m26s |
 | [1365](1365.md) I cannot write a solution to Kvant problem M1365 because the actual problem statement is not present in your message. |  | 7m10s |
@@ -2714,11 +2714,11 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1366](1366.md) *with full rigor and all details.*. I cannot write a solution to Kvant problem M1366 because the actual problem statement is not present in your message. |  | 7m16s |
+| [1366](1366.md) I cannot write a solution to Kvant problem M1366 because the actual problem statement is not present in your message. |  | 7m16s |
 | [1367](1367.md) I see that the problem statement for Kvant M1367 has not been provided in text. |  | 7m23s |
 | [1368](1368.md) I can prepare the full solution in the requested format. |  | 4m27s |
 | [1369](1369.md) I do not have the textual version of Kvant Problem M1369. |  | 10m19s |
-| [1370](1370.md) *with a fully rigorous Kvant-style solution.*. I do not have the statement of Kvant problem M1370. |  | 4m19s |
+| [1370](1370.md) I do not have the statement of Kvant problem M1370. |  | 4m19s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1992_11/)
 
@@ -2734,7 +2734,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1376](1376.md) *with complete, publication-quality rigor.*. I cannot write a valid solution to Kvant problem M1376 from the information provided, because the actual problem statement is missing. |  | 12m01s |
+| [1376](1376.md) I cannot write a valid solution to Kvant problem M1376 from the information provided, because the actual problem statement is missing. |  | 12m01s |
 | [1377](1377.md) I can produce a full solution in your requested format, but I need the **text of Kvant problem M1377**. |  | 1m30s |
 | [1378](1378.md) I cannot write a rigorous solution to Kvant problem M1378 because the actual problem statement is not present in the conversation. |  | 7m22s |
 | [1379](1379.md) I do not have access to the graphical version of Kvant problem M1379, and the textual statement is not included in your message. |  | 8m36s |
@@ -2750,16 +2750,16 @@ draft: false
 |---|---------|---|------|
 | [1381](1381.md) I cannot write a solution to Kvant problem M1381 without the actual problem statement or the diagram. |  | 6m50s |
 | [1382](1382.md) Before I begin the full solution, I need the text of Kvant problem M1382. |  | 7m14s |
-| [1383](1383.md) *with the level of rigor and formatting you specified.*. I cannot write a solution to Kvant problem M1383 because the problem statement itself is not present in your message. |  | 7m09s |
+| [1383](1383.md) I cannot write a solution to Kvant problem M1383 because the problem statement itself is not present in your message. |  | 7m09s |
 | [1384](1384.md) I can follow your requested format precisely, but I need the full text of Kvant problem M1384 to produce the complete solution. |  | 5m49s |
-| [1385](1385.md) *I can do that. Before starting, I need the text of Kvant problem M1385. Could you provide it?*. I can do that. |  | 6m50s |
+| [1385](1385.md) I can do that. |  | 6m50s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1993_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1386](1386.md) I do not have access to the graphical version of Kvant problem M1386, and the text of the problem is not included in your message. |  | 6m38s |
-| [1387](1387.md) *Once I have the statement, I can work through the problem completely.*. I cannot write a solution to Kvant M1387 because the problem statement itself is not included in your message. |  | 6m37s |
+| [1387](1387.md) I cannot write a solution to Kvant M1387 because the problem statement itself is not included in your message. |  | 6m37s |
 | [1388](1388.md) *St. Petersburg City Mathematical Olympiad*. Let $f(x)=x^2+bx+c$ and $g(x)=x^2+px+q$, since both quadratics have leading coefficient $1$. |  | 9m06s |
 | [1389](1389.md) I cannot write a rigorous solution to Kvant problem M1389 because the actual problem statement is not present in your message. |  | 6m44s |
 | [1390](1390.md) I can follow your requested format rigorously, but I need the **text of Kvant problem M1390** to proceed. |  | 52s |
@@ -2774,7 +2774,7 @@ draft: false
 | [1394](1394.md) I see that you have provided the full template and instructions for solving Kvant problem M1394, but the actual problem statement has not been included yet. |  | 8m35s |
 | [1395](1395.md) *F. L. Nazarov*. Consider a small social network where each person has a certain number of acquaintances. |  | 7m |
 | [1396](1396.md) I do not have the full text of Kvant problem M1396, so I cannot write a complete, rigorous solution yet. |  | 2m47s |
-| [1397](1397.md) *A. Klyachko*. Consider first a simple convex polyhedron, such as a tetrahedron. |  | 7m14s |
+| [1397](1397.md) Consider first a simple convex polyhedron, such as a tetrahedron. |  | 7m14s |
 | [1398](1398.md) The statement of Kvant problem M1398 is not included in your message. |  | 6m57s |
 | [1399](1399.md) I cannot write a rigorous solution to Kvant problem M1399 because the actual problem statement is not present in your message. |  | 9m41s |
 | [1400](1400.md) *I. F. Sharygin*. A shortest closed route that visits all four faces can be replaced by a polygonal route whose vertices lie on the faces. |  | 8m52s |
@@ -2783,16 +2783,16 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1401](1401.md) *V. Akopyan*. Consider triangle $ABC$ with circumcircle $\\Gamma$ and a point $K$ chosen on the arc $BC$ that does not contain $A$. |  | 4m20s |
+| [1401](1401.md) Consider triangle $ABC$ with circumcircle $\\Gamma$ and a point $K$ chosen on the arc $BC$ that does not contain $A$. |  | 4m20s |
 | [1402](1402.md) *L. D. Kurlyandchik, A. Meltzer*. Consider the inequality for small values of $n$ to understand its behavior. |  | 7m09s |
 | [1403](1403.md) *E. A. Yasinovy̆*. Consider a convex $n$-gon $A_1A_2\\ldots A_n$ and construct points $B_k$ on each side $A_kA_{k+1}$ such that $A_{k+1}B_k = A_kA_{k+1}$. |  | 9m13s |
-| [1404](1404.md) *S. Doichev, R. Kozarev*. We are asked to maximize the expression |  | 11m55s |
+| [1404](1404.md) We are asked to maximize the expression |  | 11m55s |
 | [1405](1405.md) *V. A. Senderov*. Consider a small example, such as a pyramid with a square base. |  | 4m28s |
 | [1406](1406.md) *I. S. Rubanov*. Consider small examples. |  | 7m35s |
 | [1407](1407.md) *S. V. Konyagin*. Consider a small example with two central men. |  | 8m52s |
-| [1408](1408.md) *O. Lyashko*. Consider small circles of people and the statements they can make. |  | 7m17s |
-| [1409](1409.md) *S. Augustinovich, D. Fon-der-Flaass*. Consider the equilateral triangle of side $n$ subdivided into $n^2$ unit equilateral triangles. |  | 6m22s |
-| [1410](1410.md) *D. Tereshin*. Consider first the two-dimensional question. |  | 7m20s |
+| [1408](1408.md) Consider small circles of people and the statements they can make. |  | 7m17s |
+| [1409](1409.md) Consider the equilateral triangle of side $n$ subdivided into $n^2$ unit equilateral triangles. |  | 6m22s |
+| [1410](1410.md) Consider first the two-dimensional question. |  | 7m20s |
 
 ## 1994
 
@@ -2803,23 +2803,23 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1411](1411.md) I can follow your requested format, but I need the full textual statement of Kvant problem M1411 to produce the solution. |  | 3m01s |
-| [1412](1412.md) *with full rigor and in the format you specified.*. I cannot write a rigorous solution to Kvant problem M1412 because the actual problem statement is missing. |  | 6m53s |
-| [1413](1413.md) *S. Berlov*. Let $N$ be the number of inhabitants, $T$ the number of truth-tellers, and $L=N-T$ the number of liars. |  | 6m05s |
+| [1412](1412.md) I cannot write a rigorous solution to Kvant problem M1412 because the actual problem statement is missing. |  | 6m53s |
+| [1413](1413.md) Let $N$ be the number of inhabitants, $T$ the number of truth-tellers, and $L=N-T$ the number of liars. |  | 6m05s |
 | [1414](1414.md) I do not yet have the full text of Kvant problem M1414. |  | 8m26s |
-| [1415](1415.md) *S. Berlov*. Consider two regular decagons, each with 10 vertices, and numbers $a_1,\\dots,a_{10}$ on the first decagon and $b_1,\\dots,b_{10}$ on the second, all natural numbers, summing to 99 on each decagon. |  | 4m47s |
+| [1415](1415.md) Consider two regular decagons, each with 10 vertices, and numbers $a_1,\\dots,a_{10}$ on the first decagon and $b_1,\\dots,b_{10}$ on the second, all natural numbers, summing to 99 on each decagon. |  | 4m47s |
 | [1416](1416.md) *V. A. Ufnarovsky*. Consider a small finite set of gangsters. |  | 8m59s |
 | [1417](1417.md) I see that the problem statement for Kvant M1417 is not yet fully provided in text form. |  | 9m54s |
-| [1418](1418.md) *with complete rigorous reasoning and the required formatting.*. I cannot write a solution to Kvant problem M1418 because the problem statement itself is not present in the conversation. |  | 4m06s |
-| [1419](1419.md) *and will follow all of your formatting and rigor requirements.*. I cannot write a solution to Kvant problem M1419 because the actual problem statement is not present in your message. |  | 6m48s |
+| [1418](1418.md) I cannot write a solution to Kvant problem M1418 because the problem statement itself is not present in the conversation. |  | 4m06s |
+| [1419](1419.md) I cannot write a solution to Kvant problem M1419 because the actual problem statement is not present in your message. |  | 6m48s |
 | [1420](1420.md) Before I begin writing the solution, I need the text of Kvant problem M1420. |  | 7m19s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1994_2/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1421](1421.md) *and match the rigor to the actual difficulty of the problem.*. I cannot write a solution to Kvant M1421 because the problem statement itself is not present in your message. |  | 7m19s |
+| [1421](1421.md) I cannot write a solution to Kvant M1421 because the problem statement itself is not present in your message. |  | 7m19s |
 | [1422](1422.md) Before proceeding, I need the full textual statement of Kvant M1422. |  | 7m23s |
-| [1423](1423.md) *A. Rubin*. Consider three players $A$, $B$, and $C$, each playing the same number of games against one another. |  | 7m21s |
+| [1423](1423.md) Consider three players $A$, $B$, and $C$, each playing the same number of games against one another. |  | 7m21s |
 | [1424](1424.md) *S. I. Tokarev*. For a sequence $a_1,\\dots,a_n$, the transformation replaces each entry by the number of strictly larger elements to its right. |  | 12m07s |
 | [1425](1425.md) *V. V. Proizvolov*. Consider a quadrilateral with three interior angles of $45^\\circ$. |  | 7m31s |
 | [1426](1426.md) *M. L. Gerver*. Consider the function $f(n) = n + S(n)$, where $S(n)$ is the sum of the digits of $n$. |  | 3m43s |
@@ -2834,8 +2834,8 @@ draft: false
 |---|---------|---|------|
 | [1431](1431.md) *B. D. Ginzburg*. Let the operation be $f(10k+d)=k+4d$ with $0\\le d\\le 9$. |  | 4m53s |
 | [1432](1432.md) *L. D. Kurylandchik*. Consider a sequence of positive numbers $a_1, a_2, \\dots$. |  | 7m27s |
-| [1433](1433.md) *I can do this, but I need the **textual statement of Kvant problem M1433** to proceed. Could you provide it?*. I can do this, but I need the **textual statement of Kvant problem M1433** to proceed. |  | 7m24s |
-| [1434](1434.md) *N. Kozerenko, R. Fyodorov*. Consider a simple convex polyhedron, such as a cube or a tetrahedron, and imagine casting a shadow onto a plane with a point light source. |  | 10m12s |
+| [1433](1433.md) I can do this, but I need the **textual statement of Kvant problem M1433** to proceed. |  | 7m24s |
+| [1434](1434.md) Consider a simple convex polyhedron, such as a cube or a tetrahedron, and imagine casting a shadow onto a plane with a point light source. |  | 10m12s |
 | [1435](1435.md) Before writing the full solution, I need the exact textual statement of Kvant Problem M1435. |  | 4m23s |
 | [1436](1436.md) The statement of Kvant problem M1436 is not included, and the note indicates only a graphical version exists in the issue. |  | 7m24s |
 | [1437](1437.md) The problem statement is not provided in textual or graphical form. |  | 10m17s |
