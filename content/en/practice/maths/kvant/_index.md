@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1348 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1349 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1348
+kvant_total: 1349
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1348 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1349 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -2910,7 +2910,13 @@ draft: false
 
 ## 1996
 
-1 problems across Issue 5.
+2 problems across Issues 1–5.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [1531](1531.md) Each question consists of choosing a line and learning in which of the three sets determined by that line the point $P$ lies: one open half-plane, the other open half-plane, or the line itself. |  | 10m23s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1996_5/)
 
