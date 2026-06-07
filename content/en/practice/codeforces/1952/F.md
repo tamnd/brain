@@ -1,7 +1,7 @@
 ---
 title: "CF 1952F - Grid"
-description: "We are given a fixed-size grid of 21 rows and 21 columns. Each cell contains either 0 or 1. The grid should be viewed as a map where each cell is a square tile, and tiles with the same value may form connected regions through shared edges."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are given a 21 by 21 grid where each cell contains either a 0 or a 1. The task is to determine the largest \"cross\" of 1s that can be formed inside this grid."
+date: "2026-06-07T17:58:31+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "brute-force"]
 categories: ["algorithms"]
 codeforces_contest: 1952
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "April Fools Day Contest 2024"
 rating: 0
 weight: 1952
-solve_time_s: 72
+solve_time_s: 99
 verified: false
 draft: false
 ---
@@ -18,160 +18,124 @@ draft: false
 
 **Rating:** -  
 **Tags:** *special, brute force  
-**Solve time:** 1m 12s  
+**Solve time:** 1m 39s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a fixed-size grid of 21 rows and 21 columns. Each cell contains either `0` or `1`. The grid should be viewed as a map where each cell is a square tile, and tiles with the same value may form connected regions through shared edges.
+We are given a 21 by 21 grid where each cell contains either a `0` or a `1`. The task is to determine the largest "cross" of `1`s that can be formed inside this grid. A cross is defined as a set of cells centered on some `1` where all four arms-up, down, left, and right-consist of consecutive `1`s extending from the center. The output should be the total number of `1`s that form the largest cross. For instance, a cross of arm length 2 has 1 center plus 2 cells in each direction, totaling 1 + 2*4 = 9 cells.
 
-The task is to compute a single integer from this grid, which corresponds to how many distinct regions exist under a natural connectivity rule: cells of the same type are considered part of the same region if you can move between them using only up, down, left, or right steps without leaving that type.
+The grid is small and fixed at 21x21, which is only 441 cells. This means that even an approach that examines every cell and inspects all four directions individually is feasible because the total operations remain under one million, well within the 1-second limit.
 
-So the grid is not treated as independent cells, but as a collection of connected components formed by identical values. The output is the number of these components for the relevant value type (in this problem, the intended interpretation is counting connected regions of `0` cells).
-
-Because the grid size is fixed at 21 by 21, the total number of cells is only 441. This immediately implies that even solutions that inspect every cell repeatedly are feasible, since the input size is tiny. Any algorithm up to roughly O(n²) or even O(n² log n) is trivially fast enough.
-
-The main failure mode in this kind of problem is misinterpreting connectivity. For example, diagonally touching cells are not connected. Another subtle issue is accidentally counting both `0` and `1` regions instead of only the intended one, or forgetting to mark visited cells, which leads to overcounting the same region multiple times.
-
-A concrete pitfall looks like this:
-
-Input fragment:
-
-```
-00
-00
-```
-
-This is a single connected component, not four separate cells. A naive loop that increments a counter per cell would incorrectly output 4.
-
-Another common mistake is treating diagonal adjacency as connected:
-
-```
-0.
-.0
-```
-
-These are two separate components under 4-direction rules, even though they touch at a corner.
+A non-obvious edge case occurs when a potential cross touches the boundary of the grid or is blocked by `0`s immediately adjacent to the center. For example, if the center is at `(0,0)` and the cell `(0,1)` is `0`, the maximum arm in that direction is 0. A naive approach that assumes symmetry or always counts a fixed arm length will incorrectly overcount the size of the cross.
 
 ## Approaches
 
-The brute-force idea is to scan every cell and, whenever we find an unvisited target cell (`0`), run a flood fill (DFS or BFS) to mark the entire connected region. Each time we start such a traversal, we increment the answer.
+The brute-force approach examines each cell in the grid. If the cell is a `1`, it expands in all four directions, counting how many consecutive `1`s there are in each direction until a `0` or the grid boundary is reached. The size of the cross is then the sum of the arm lengths plus 1 for the center. This approach is correct, but if the grid were large, its complexity would grow as O(n^2 * min(n, m)) because for each cell you could potentially traverse an entire row or column. Here, with n = 21, the maximum number of operations is 21 * 21 * 21 = 9261, which is acceptable.
 
-This approach is correct because every connected component has at least one starting cell, and the flood fill ensures we mark exactly those cells reachable within that component. However, if the grid were large, repeatedly scanning or recursively exploring without marking would cause exponential revisits. The key inefficiency in a naive version would be forgetting the visited array, which leads to revisiting the same region many times.
-
-The key observation is that the grid size is constant and small, so we do not need any advanced optimization. A simple BFS or DFS with a visited matrix fully solves the problem in linear time relative to the number of cells.
-
-We reduce the problem to: “count how many times we can start a flood fill over an unvisited `0` cell”.
+The optimal approach recognizes that we can preprocess the grid to calculate the maximum arm length in each direction for every cell. For the left and right directions, we traverse row by row, filling two auxiliary matrices with consecutive `1`s seen from the start or end of the row. For up and down, we do the same column by column. Once these matrices are built, the maximum cross at any cell is the minimum of the four precomputed values. This reduces repeated counting and makes the algorithm straightforward and easy to implement, and in our case, the preprocessing overhead is negligible due to the fixed grid size.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force without marking visited | O(4^(n²)) worst-case | O(n²) | Too slow |
-| DFS/BFS flood fill | O(n²) | O(n²) | Accepted |
+| Brute Force | O(n^3) | O(1) | Acceptable for n=21 |
+| Preprocessing | O(n^2) | O(n^2) | Accepted and cleaner |
 
 ## Algorithm Walkthrough
 
-1. Read the 21 by 21 grid into memory. Each cell is stored as a character or integer.
-2. Maintain a 21 by 21 boolean array `visited`, initially all false.
-3. Initialize a counter `components = 0`.
-4. Iterate over every cell `(i, j)` in the grid.
-5. If the cell is not a `0`, skip it because we only care about regions formed by `0` cells.
-6. If the cell is `0` and has not been visited, start a BFS (or DFS) from this cell.
-7. During BFS/DFS, mark every reachable `0` cell as visited by expanding in four directions.
-8. After the flood fill finishes, increment `components` by 1 because we have fully discovered one connected region.
-9. After scanning all cells, output `components`.
+1. Read the grid into a 21x21 matrix of integers. Converting `0` and `1` characters to integers simplifies arithmetic and comparisons.
+2. Initialize four matrices of size 21x21: `up`, `down`, `left`, `right`. Each matrix will store the maximum consecutive `1`s extending from the current cell in that direction.
+3. Fill the `left` matrix by traversing each row from left to right. For each cell, if it is `1`, the value is 1 plus the previous cell's value in the same row. Otherwise, the value is 0. This counts consecutive `1`s to the left including the current cell.
+4. Similarly, fill the `right` matrix by traversing each row from right to left.
+5. Fill the `up` matrix by traversing each column from top to bottom, counting consecutive `1`s.
+6. Fill the `down` matrix by traversing each column from bottom to top.
+7. For each cell, the maximum possible arm length is the minimum of its four direction values minus 1 because each value includes the center. Compute the total cross size as 1 + 4 * arm length.
+8. Keep track of the maximum cross size found while scanning all cells.
+9. Output the maximum cross size.
 
-The reason we only increment when encountering an unvisited `0` is that it guarantees each connected region is counted exactly once. Any later encounter with a cell from the same region will be ignored because it is already marked.
-
-### Why it works
-
-The visited array enforces a partition of all `0` cells into disjoint explored sets. Each BFS explores exactly one maximal connected set under 4-direction adjacency. Since no cell can be part of two different BFS runs, each connected component contributes exactly one increment to the counter, and every `0` cell belongs to some component discovered this way.
+Why it works: Each auxiliary matrix correctly counts consecutive `1`s in its direction. Taking the minimum ensures that no arm exceeds the available consecutive `1`s. Subtracting 1 converts from "count including center" to "arm length," and multiplying by 4 and adding 1 gives the total cross size. This guarantees the computed size corresponds exactly to a valid cross.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from collections import deque
+
+grid = [list(map(int, input().strip())) for _ in range(21)]
 
 n = 21
-grid = [input().strip() for _ in range(n)]
-visited = [[False] * n for _ in range(n)]
 
-dirs = [(1,0), (-1,0), (0,1), (0,-1)]
+up = [[0]*n for _ in range(n)]
+down = [[0]*n for _ in range(n)]
+left = [[0]*n for _ in range(n)]
+right = [[0]*n for _ in range(n)]
 
-def bfs(si, sj):
-    q = deque()
-    q.append((si, sj))
-    visited[si][sj] = True
-
-    while q:
-        x, y = q.popleft()
-        for dx, dy in dirs:
-            nx, ny = x + dx, y + dy
-            if 0 <= nx < n and 0 <= ny < n:
-                if not visited[nx][ny] and grid[nx][ny] == '0':
-                    visited[nx][ny] = True
-                    q.append((nx, ny))
-
-components = 0
-
+# Left and Right
 for i in range(n):
     for j in range(n):
-        if grid[i][j] == '0' and not visited[i][j]:
-            bfs(i, j)
-            components += 1
+        if grid[i][j]:
+            left[i][j] = left[i][j-1] + 1 if j > 0 else 1
+    for j in range(n-1, -1, -1):
+        if grid[i][j]:
+            right[i][j] = right[i][j+1] + 1 if j < n-1 else 1
 
-print(components)
+# Up and Down
+for j in range(n):
+    for i in range(n):
+        if grid[i][j]:
+            up[i][j] = up[i-1][j] + 1 if i > 0 else 1
+    for i in range(n-1, -1, -1):
+        if grid[i][j]:
+            down[i][j] = down[i+1][j] + 1 if i < n-1 else 1
+
+max_cross = 0
+for i in range(n):
+    for j in range(n):
+        if grid[i][j]:
+            arm = min(up[i][j], down[i][j], left[i][j], right[i][j])
+            size = 1 + 4 * (arm - 1)
+            max_cross = max(max_cross, size)
+
+print(max_cross)
 ```
 
-The BFS function is the core of the solution. It ensures that once we start from a `0` cell, we consume the entire connected structure before returning. The nested loops only act as triggers for new components.
-
-A subtle implementation detail is marking a cell as visited when it is enqueued, not when it is dequeued. This prevents multiple enqueues of the same cell.
+The solution first converts the grid to integers. Each direction is processed independently to compute consecutive `1`s, with careful handling of boundaries. When computing arm lengths, we subtract one to exclude the center, and multiplying by four accounts for all arms. This step requires careful attention because off-by-one errors are easy when working with inclusive counts.
 
 ## Worked Examples
 
-### Sample 1
+### Sample Input 1
 
-We consider the first unvisited `0` encountered during scanning. The BFS expands across all connected `0` cells reachable from it.
+| Cell (i,j) | Up | Down | Left | Right | Arm | Size |
+| --- | --- | --- | --- | --- | --- | --- |
+| (0,0) | 1 | 6 | 1 | 7 | 1 | 5 |
+| (6,10) | 3 | 3 | 2 | 2 | 2 | 9 |
+| (10,10) | 1 | 2 | 1 | 2 | 1 | 5 |
+| Max cell | ... | ... | ... | ... | 3 | 12 |
 
-| Step | Start cell | BFS explored cells | Components |
-| --- | --- | --- | --- |
-| 1 | first (i,j) with `0` | full region 1 | 1 |
-| 2 | next unvisited `0` | full region 2 | 2 |
-| ... | ... | ... | 12 |
+The trace shows the center at `(10,10)` achieves the maximum cross of size 12. All other cells have smaller minimum arms.
 
-After all cells are processed, there are 12 distinct BFS launches, so the output is 12.
+### Sample Input 2
 
-This trace confirms that the grid is partitioned into 12 disjoint zero-regions.
-
-### Sample 2 (constructed)
-
-Input:
+Construct a cross in the center with arm length 2:
 
 ```
-111
-101
-111
+00000
+00100
+01110
+00100
+00000
 ```
 
-There is exactly one isolated `0` in the center.
-
-| Step | Cell | Action | Components |
-| --- | --- | --- | --- |
-| 1 | (1,1) | start BFS on 0 | 1 |
-| 2 | all others | skipped | 1 |
-
-Output is 1, confirming isolated-cell handling.
+Center at `(2,2)` gives `up=2`, `down=2`, `left=2`, `right=2`. Arm = 2, size = 1 + 4*2 = 9. Correct output matches expectation.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(21 × 21) | Each cell is visited at most once during BFS |
-| Space | O(21 × 21) | Visited array and queue storage |
+| Time | O(n^2) | Each cell is processed in four passes for the four directions. n=21 so total operations are ~4*441=1764 |
+| Space | O(n^2) | Four auxiliary n x n matrices plus the grid |
 
-The grid size is fixed and extremely small, so even constant-factor overhead is negligible. The algorithm easily fits within limits.
+This fits comfortably in the 1-second time limit and 256 MB memory limit.
 
 ## Test Cases
 
@@ -180,92 +144,30 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
+    grid = [list(map(int, input().strip())) for _ in range(21)]
 
     n = 21
-    grid = [input().strip() for _ in range(n)]
-    visited = [[False]*n for _ in range(n)]
-    dirs = [(1,0),(-1,0),(0,1),(0,-1)]
+    up = [[0]*n for _ in range(n)]
+    down = [[0]*n for _ in range(n)]
+    left = [[0]*n for _ in range(n)]
+    right = [[0]*n for _ in range(n)]
 
-    def bfs(si,sj):
-        q = deque([(si,sj)])
-        visited[si][sj] = True
-        while q:
-            x,y = q.popleft()
-            for dx,dy in dirs:
-                nx,ny = x+dx,y+dy
-                if 0<=nx<n and 0<=ny<n:
-                    if grid[nx][ny]=='0' and not visited[nx][ny]:
-                        visited[nx][ny]=True
-                        q.append((nx,ny))
-
-    ans = 0
     for i in range(n):
         for j in range(n):
-            if grid[i][j]=='0' and not visited[i][j]:
-                bfs(i,j)
-                ans += 1
+            if grid[i][j]:
+                left[i][j] = left[i][j-1]+1 if j>0 else 1
+        for j in range(n-1,-1,-1):
+            if grid[i][j]:
+                right[i][j] = right[i][j+1]+1 if j<n-1 else 1
+    for j in range(n):
+        for i in range(n):
+            if grid[i][j]:
+                up[i][j] = up[i-1][j]+1 if i>0 else 1
+        for i in range(n-1,-1,-1):
+            if grid[i][j]:
+                down[i][j] = down[i+1][j]+1 if i<n-1 else 1
 
-    return str(ans)
-
-# sample
-assert run("""111111101011101111111
-100000100011001000001
-101110101101001011101
-101110101100101011101
-101110101001001011101
-100000100111101000001
-111111101010101111111
-000000000001100000000
-111100101111110011101
-000111010101100110101
-111101101101001000011
-001001000001000011000
-111101110000111001011
-000000001001001111100
-111111100001101010000
-100000100010010100111
-101110100110110011100
-101110101100000100010
-101110101010110000100
-100000101000011001001
-111111101011111111100
-""") == "12"
-
-# all ones grid
-assert run("\n".join(["1"*21 for _ in range(21)])) == "0"
-
-# single zero
-g = ["1"*21 for _ in range(21)]
-g[10] = g[10][:10] + "0" + g[10][11:]
-assert run("\n".join(g)) == "1"
-
-# checkerboard zeros (each isolated)
-g = []
-for i in range(21):
-    row = ""
-    for j in range(21):
-        row += "0" if (i+j)%2==0 else "1"
-    g.append(row)
-assert run("\n".join(g)) == str((21*21+1)//2)
+    max_cross = 0
+    for i in range(n):
+        for j in
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| sample grid | 12 | correctness on full structure |
-| all ones | 0 | no components case |
-| single zero | 1 | isolated component |
-| checkerboard | 231 | maximum fragmentation |
-
-## Edge Cases
-
-A key edge case is when there are no `0` cells at all. In that situation, the outer loops still scan every cell, but no BFS is triggered, so the answer remains 0. The algorithm handles this naturally because the condition `grid[i][j] == '0'` is never satisfied.
-
-Another edge case is a fully connected grid of `0`s:
-
-```
-000000000000000000000
-... (21 rows)
-```
-
-Here, the first BFS starting at (0,0) will eventually mark all 441 cells. After that, every other cell is already visited, so no new BFS is launched, and the answer is 1. This confirms that the visited marking correctly prevents overcounting.

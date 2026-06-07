@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 448 contests, 2094 problems, 1487 verified."
+description: "Codeforces problem solutions with full editorial. 448 contests, 2096 problems, 1487 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**448 contests, 2094 problems, 1487 verified.**
+**448 contests, 2096 problems, 1487 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -440,7 +440,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1949](1949/) | [European Championship 2024 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1949) | ICPC/IOI | 1500-3300 | 5/11 | 28m 1s |
 | [1950](1950/) | [Codeforces Round 937 (Div. 4)](https://codeforces.com/contest/1950) | Div. 4 | 800-1900 | 6/7 | 7m 41s |
 | [1951](1951/) | [Codeforces Global Round 25](https://codeforces.com/contest/1951) | Global | 900-3200 | 1/9 | 11m 49s |
-| [1952](1952/) | [April Fools Day Contest 2024](https://codeforces.com/contest/1952) | April Fools | - | 5/8 | 7m 9s |
+| [1952](1952/) | [April Fools Day Contest 2024](https://codeforces.com/contest/1952) | April Fools | - | 5/10 | 10m 54s |
 | [1953](1953/) | [2023 Post World Finals Online ICPC Challenge powered by Huawei](https://codeforces.com/contest/1953) | ICPC/IOI | - | 1/1 | 52s |
 | [1954](1954/) | [Educational Codeforces Round 164 (Rated for Div. 2)](https://codeforces.com/contest/1954) | Div. 2 | 900-3100 | 2/6 | 7m 33s |
 | [1955](1955/) | [Codeforces Round 938 (Div. 3)](https://codeforces.com/contest/1955) | Div. 3 | 800-2300 | 5/8 | 7m 51s |
