@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1335 solved, 0 verified), 1970–2025."
+description: "Kvant mathematics problem solutions (1336 solved, 0 verified), 1970–2025."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1335
+kvant_total: 1336
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2025
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1335 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1336 mathematics problems** from the magazine's problem section, covering the years 1970 to 2025.
 
 ## 1970
 
@@ -859,7 +859,7 @@ draft: false
 
 ## 1977
 
-46 problems across Issues 1–12.
+47 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -894,6 +894,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [436](436.md) *S. T. Berkolayko*. We are asked to partition all pairwise sums of two sets of ten numbers each into ten groups of ten, each with the same total. |  | 4m49s |
+| [437](437.md) Let the odd number be |  | 9m38s |
 | [438](438.md) The configuration is a fixed circular segment determined by a chord $AB$ of a circle with center $O$. |  | 1m58s |
 | [439](439.md) *A. G. Kushnirenko*. For part 1, write |  | 7m08s |
 
