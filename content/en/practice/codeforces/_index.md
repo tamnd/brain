@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 608 contests, 3226 problems, 1821 verified."
+description: "Codeforces problem solutions with full editorial. 609 contests, 3233 problems, 1824 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**608 contests, 3226 problems, 1821 verified.**
+**609 contests, 3233 problems, 1824 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -456,6 +456,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
+| [2043](2043/) | [Educational Codeforces Round 173 (Rated for Div. 2)](https://codeforces.com/contest/2043) | Div. 2 | 800-3000 | 3/7 | 15m 21s |
 | [2044](2044/) | [Codeforces Round 993 (Div. 4)](https://codeforces.com/contest/2044) | Div. 4 | 800-2100 | 7/9 | 18m 25s |
 | [2045](2045/) | [2024-2025 ICPC Asia Jakarta Regional Contest (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2045) | ICPC/IOI | 1400-3500 | 4/13 | 26m 38s |
 | [2046](2046/) | [Codeforces Round 990 (Div. 1)](https://codeforces.com/contest/2046) | Div. 1 | 1200-3500 | 0/8 | 16m 20s |
