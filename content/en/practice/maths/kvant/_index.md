@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1444 solved, 17 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1445 solved, 17 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1444
+kvant_total: 1445
 kvant_verified: 17
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1444 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 17 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1445 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 17 solutions have been independently verified.
 
 ## 1970
 
@@ -1114,7 +1114,7 @@ draft: false
 
 ## 1979
 
-59 problems across Issues 1–12, 6 verified.
+60 problems across Issues 1–12, 6 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1202,6 +1202,7 @@ draft: false
 |---|---------|---|------|
 | [581](581.md) The first question asks for a three-digit integer $x$ such that $x^3$ ends in $777$, equivalently |  | 2m02s |
 | [582](582.md) *A. V. Kelarev*. Let the cyclic quadrilateral be $ABCD$, and let its diagonals $AC$ and $BD$ intersect at $P$. |  | 7m06s |
+| [583](583.md) Let the stone masses be $x_1,\\dots,x_n$ with $0<x_i\\le 2$ and $\\sum_{i=1}^n x_i=50$. |  | 27m17s |
 | [584](584.md) *F. V. Vainshtein*. Suppose such a family of lines exists. |  | 7m29s |
 | [585](585.md) *S. V. Konyagin, P. Blecher*. The majority are chemists, and chemists are perfectly reliable. |  | 6m59s |
 
