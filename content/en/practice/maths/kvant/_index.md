@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1377 solved, 5 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1380 solved, 6 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1377
-kvant_verified: 5
+kvant_total: 1380
+kvant_verified: 6
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1377 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 5 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1380 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
 
 ## 1970
 
@@ -866,7 +866,7 @@ draft: false
 
 ## 1977
 
-50 problems across Issues 1–12, 1 verified.
+51 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -975,6 +975,7 @@ draft: false
 |---|---------|---|------|
 | [476](476.md) For the planar statement, the condition that no lattice points lie on the boundary except the vertices means that every side joins two lattice points with relatively prime coordinate differences. |  | 7m08s |
 | [477](477.md) *S. V. Konyagin*. The sequence is defined by iteration of an integer polynomial $P$ satisfying $P(x)>x$ for all natural $x$. |  | 10m04s |
+| [478](478.md) *Moscow Mathematical Olympiad (XL, 1977, grades 8–10)*. Represent the tournament by a directed complete graph. |  | 16m46s |
 | [479](479.md) *Moscow Mathematical Olympiad (XL, 1977, grades 9 and 11)*. Consider a set of distinct natural numbers ${a_1, a_2, \\dots, a_n}$ with the property that for any two elements $a_i$ and $a_j$, the sum $a_i + a_j$ is divisible by their difference $a_i - a_j$. |  | 5m05s |
 | [480](480.md) The recurrence is |  | 2m04s |
 
@@ -1100,7 +1101,7 @@ draft: false
 
 ## 1979
 
-49 problems across Issues 1–12.
+50 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1144,6 +1145,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [563](563.md) *S. V. Fomin*. Assume, seeking a contradiction, that | ✓ | 8m47s |
 | [564](564.md) Let $BC=a$, and place the triangle in coordinates |  | 7m57s |
 | [565](565.md) For each $k$, the quantity $b_k$ is the average of all products of $k$ distinct elements from $a_1,\\ldots,a_n$. |  | 2m06s |
 
@@ -2898,7 +2900,7 @@ draft: false
 
 ## 1995
 
-8 problems across Issues 2–6, 1 verified.
+9 problems across Issues 2–6, 1 verified.
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
@@ -2920,6 +2922,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1515](1515.md) *Russian Mathematical Olympiad*. Let |  | 3m42s |
+| [1520](1520.md) *Russian Mathematical Olympiad*. Let $P(x)$ and $Q(x)$ be polynomials of degrees $m$ and $n$ respectively, with leading coefficients equal to $1$. |  | 14m15s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1995_6/)
 
