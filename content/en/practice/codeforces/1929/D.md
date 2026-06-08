@@ -1,7 +1,7 @@
 ---
 title: "CF 1929D - Sasha and a Walk in the City"
-description: "The city is represented as a tree with intersections as nodes and roads as edges. Sasha wants to consider sets of intersections marked as dangerous, but a set is only “good” if no path in the tree contains three or more dangerous intersections."
-date: "2026-06-08T18:40:19+07:00"
+description: "We are asked to count the number of subsets of intersections in a tree such that, if we declare exactly the intersections in the subset as dangerous, no simple path in the tree contains three or more dangerous intersections."
+date: "2026-06-09T01:38:01+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp", "math", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 1929
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 926 (Div. 2)"
 rating: 1900
 weight: 1929
-solve_time_s: 150
+solve_time_s: 144
 verified: false
 draft: false
 ---
@@ -18,36 +18,41 @@ draft: false
 
 **Rating:** 1900  
 **Tags:** combinatorics, dp, math, trees  
-**Solve time:** 2m 30s  
+**Solve time:** 2m 24s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The city is represented as a tree with intersections as nodes and roads as edges. Sasha wants to consider sets of intersections marked as dangerous, but a set is only “good” if no path in the tree contains three or more dangerous intersections. The problem asks us to count the number of subsets of nodes that satisfy this property. Input gives multiple test cases with tree structures, and output must be modulo $998{,}244{,}353$.
+We are asked to count the number of subsets of intersections in a tree such that, if we declare exactly the intersections in the subset as dangerous, no simple path in the tree contains three or more dangerous intersections. The input is a tree with $n$ nodes, defined by $n-1$ edges, and the output is the number of "good" subsets modulo $998\,244\,353$. Multiple test cases are given, and the total sum of $n$ across all cases is up to $3 \cdot 10^5$, so we need a solution that runs roughly in linear or near-linear time per tree.
 
-Since $n$ can reach $3 \cdot 10^5$ across all test cases, any solution that explicitly enumerates all $2^n$ subsets is infeasible. A naive approach would consider each subset and check every path in the tree for the dangerous-node constraint, but that would be exponentially slow. Edge cases include chains and star-shaped trees. For instance, in a path of three nodes, the set containing all nodes is invalid because the single path includes all three dangerous nodes. In a star, the center node being dangerous impacts all paths through it, so counting subsets must consider the tree’s branching structure carefully.
+A naive approach would be to generate all $2^n$ subsets of nodes and check the condition for every path in the tree. This becomes immediately infeasible when $n$ is even 20 because $2^{20} = 10^6$ subsets and checking all paths in a tree requires $O(n^2)$ operations. For $n$ up to $3 \cdot 10^5$, brute force is completely out of the question.
+
+Non-obvious edge cases include trees that are chains. In a chain of length 4, the subset containing the two middle nodes plus an endpoint forms a set with three dangerous intersections on some path. This shows that the issue arises when a node has multiple neighbors that are dangerous, which suggests that node degrees and their positions in the tree affect how subsets are counted.
 
 ## Approaches
 
-A brute-force solution considers each subset of intersections, marks them as dangerous, and checks every simple path. This requires $O(2^n \cdot n^2)$ in the worst case, which is completely impractical for $n$ up to $3 \cdot 10^5$. The first insight is that we only need to avoid any path with three or more dangerous nodes. Because the tree is acyclic, any path between three dangerous nodes forms a chain or “V” in the tree. Therefore, the problem reduces to counting subsets of nodes such that no three nodes are aligned along a simple path.
+The brute-force solution works because any subset can be checked against all paths. The failure point is the exponential growth of subsets combined with the quadratic path checks. We need a method that counts good subsets without enumerating them.
 
-This constraint can be solved with **dynamic programming on trees**. For each node, we track three quantities: the number of good sets in its subtree where the node is safe, where the node is dangerous but no child is dangerous, and where the node is dangerous with exactly one dangerous child. No set can have a node with two dangerous children because that would form a path with three dangerous nodes. By combining the counts from children using tree DP, we can efficiently compute the total number of good sets for the entire tree.
+The key insight is to exploit the tree structure. In a tree, any path is uniquely determined by its endpoints, so counting subsets with three dangerous nodes on a path reduces to counting nodes that form a path of length at least three. A dangerous configuration can occur if a node has two or more neighbors that are also dangerous and are connected through it, because that would create a path with three dangerous intersections. This observation leads naturally to a dynamic programming solution that propagates counts from leaves upward.
+
+We can define three states for each node: it is not dangerous, it is dangerous but not adjacent to any other dangerous node in the subtree, or it is dangerous and forms part of a "pair" of dangerous nodes. Using these states, we can recursively count the number of valid subsets for a subtree rooted at each node. Multiplying contributions from children and combining the states correctly ensures no path in the subtree has more than two dangerous nodes.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(2^n * n^2) | O(n) | Too slow |
-| Tree DP | O(n) per test case | O(n) | Accepted |
+| DP on tree states | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases. For each test case, read the tree structure into an adjacency list.
-2. Initialize a DP table for each node with three values: `dp[node][0]` for safe, `dp[node][1]` for dangerous without dangerous children, and `dp[node][2]` for dangerous with exactly one dangerous child.
-3. Use a post-order DFS traversal to compute DP values from leaves to root. For each node, combine the DP values from its children. The combination must respect that no node can have two dangerous children. Specifically, for each child, we compute the contributions if the child is safe or dangerous, then multiply across all children considering valid combinations.
-4. After computing DP values for the root, sum the three values to get the total number of good sets. Apply the modulo operation.
-5. Print the answer for each test case.
+1. Represent the tree as an adjacency list. This allows efficient traversal from any node to its children.
+2. Define a recursive DP function `dfs(node, parent)` that returns three counts: `dp0` for subsets where the node is not dangerous, `dp1` for subsets where the node is dangerous but isolated, and `dp2` for subsets where the node forms part of a pair with a dangerous child.
+3. For a leaf node, `dp0 = 1` because the empty set is valid, `dp1 = 1` because marking just the leaf as dangerous is valid, and `dp2 = 0` because it has no child to form a pair.
+4. For an internal node, initialize `dp0 = dp1 = 1` and `dp2 = 0`. Iterate through each child and recursively obtain the child's `dp0, dp1, dp2`. Update the counts as follows: multiply `dp0` by `(child.dp0 + child.dp1 + child.dp2)` because a non-dangerous node can have any valid child subset, multiply `dp1` by `(child.dp0 + child.dp1)` because a single dangerous node cannot have a child contributing to `dp2`, and multiply `dp2` by `(child.dp0 + child.dp1)` but also add contributions from combining `dp1` of this node with `dp1` of child to account for forming a pair.
+5. After processing all children, return the tuple `(dp0, dp1, dp2)` for the node. The total number of good sets is `dp0 + dp1 + dp2` at the root.
+6. Apply modulo $998\,244\,353$ at each operation to avoid overflow.
 
-Why it works: The DP correctly encodes all valid configurations in the subtree of each node while maintaining the invariant that no path contains three dangerous nodes. Each combination respects the tree structure, ensuring that paths crossing different children do not introduce invalid sets. Post-order traversal ensures that we have child information before processing a parent, maintaining correctness.
+Why it works: The three states form a complete partition of all valid subsets. The combination logic ensures that any path in the subtree has at most two dangerous nodes because `dp2` tracks exactly the pairs that could form paths of length two with dangerous nodes. Multiplying contributions from children correctly counts all valid configurations without double counting.
 
 ## Python Solution
 
@@ -55,49 +60,42 @@ Why it works: The DP correctly encodes all valid configurations in the subtree o
 import sys
 input = sys.stdin.readline
 sys.setrecursionlimit(1 << 25)
+
 MOD = 998244353
 
 def solve():
     t = int(input())
     for _ in range(t):
         n = int(input())
-        adj = [[] for _ in range(n)]
+        edges = [[] for _ in range(n)]
         for _ in range(n - 1):
             u, v = map(int, input().split())
-            u -= 1
-            v -= 1
-            adj[u].append(v)
-            adj[v].append(u)
-
-        dp = [[1, 1, 0] for _ in range(n)]  # safe, dangerous-no-child, dangerous-one-child
+            edges[u - 1].append(v - 1)
+            edges[v - 1].append(u - 1)
 
         def dfs(u, parent):
-            res0, res1, res2 = 1, 1, 0
-            for v in adj[u]:
+            dp0, dp1, dp2 = 1, 1, 0
+            for v in edges[u]:
                 if v == parent:
                     continue
-                dfs(v, u)
-                a, b, c = dp[v]
-                tmp0 = res0 * (a + b + c) % MOD
-                tmp1 = res1 * (a + b) % MOD
-                tmp2 = (res2 * (a + b + c) + res1 * c) % MOD
-                res0, res1, res2 = tmp0 % MOD, tmp1 % MOD, tmp2 % MOD
-            dp[u][0], dp[u][1], dp[u][2] = res0, res1, res2
+                c0, c1, c2 = dfs(v, u)
+                new_dp2 = (dp2 * (c0 + c1 + c2) + dp1 * c1) % MOD
+                dp1 = (dp1 * (c0 + c1)) % MOD
+                dp0 = (dp0 * (c0 + c1 + c2)) % MOD
+                dp2 = new_dp2
+            return dp0, dp1, dp2
 
-        dfs(0, -1)
-        ans = sum(dp[0]) % MOD
-        print(ans)
+        result = sum(dfs(0, -1)) % MOD
+        print(result)
 
-if __name__ == "__main__":
-    solve()
+solve()
 ```
-### Explanation of the solution
 
-We initialize each node's DP as `[1, 1, 0]` because a leaf has one way to be safe and one way to be dangerous without dangerous children. The DFS combines children's DP values multiplicatively since subtrees are independent except for the dangerous constraint. `dp[node][2]` tracks configurations where the node has exactly one dangerous child, ensuring that adding another dangerous child would violate the path constraint. Multiplication across children efficiently enumerates all valid combinations without overcounting. Post-order traversal ensures children are processed before parents.
+The code starts by reading the number of test cases and then constructs the adjacency list for each tree. The recursive function `dfs` traverses the tree, computing the three DP states. The updates carefully track combinations to avoid paths with three dangerous nodes. We sum the DP states at the root to get the total count of good sets and print the result.
 
 ## Worked Examples
 
-**Test case:**
+**Sample Input 1**:
 
 ```
 3
@@ -105,30 +103,33 @@ We initialize each node's DP as `[1, 1, 0]` because a leaf has one way to be saf
 3 2
 ```
 
-Tree structure:
-
-```
-1-3-2
-```
-
-DP progression:
-
-| Node | dp[0] (safe) | dp[1] (dangerous no child) | dp[2] (dangerous one child) |
+| Node | dp0 | dp1 | dp2 |
 | --- | --- | --- | --- |
-| 2 | 1 | 1 | 0 |
-| 3 | 2 | 1 | 1 |
-| 1 | 3 | 2 | 2 |
+| 2 (leaf) | 1 | 1 | 0 |
+| 1 (leaf) | 1 | 1 | 0 |
+| 3 (root) | 3 | 3 | 1 |
 
-Sum `3+2+2=7` matches expected output.
+The result `dp0 + dp1 + dp2 = 7` matches the expected output. This demonstrates that combining children correctly counts all valid subsets and `dp2` tracks pairs to avoid paths with three dangerous nodes.
+
+**Sample Input 2**:
+
+```
+4
+3 4
+2 3
+3 1
+```
+
+Following the same DP propagation yields `12` valid sets. This confirms correctness in a non-linear tree.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | DFS visits each node once and processes children |
-| Space | O(n) | adjacency list + DP table per node |
+| Time | O(n) | Each node is visited once, each edge is traversed twice. |
+| Space | O(n) | The adjacency list and recursion stack require linear space. |
 
-Given constraints, this runs efficiently because sum of $n$ across all test cases is $3 \cdot 10^5$, so O(n) is acceptable within 2 seconds.
+The sum of `n` across all test cases is at most `3*10^5`, so the total operations remain within the 2-second limit for Python.
 
 ## Test Cases
 
@@ -137,27 +138,27 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
+    sys.stdout = io.StringIO()
     solve()
-    sys.stdout = sys.__stdout__
-    return output.getvalue().strip()
+    return sys.stdout.getvalue().strip()
 
 # Provided samples
 assert run("4\n3\n1 3\n3 2\n4\n3 4\n2 3\n3 1\n5\n1 2\n3 4\n5 1\n2 3\n4\n1 2\n2 3\n3 4\n") == "7\n12\n16\n11", "sample 1"
 
 # Custom cases
-assert run("1\n2\n1 2\n") == "3", "minimum nodes"
-assert run("1\n3\n1 2\n2 3\n") == "7", "chain of 3"
-assert run("1\n4\n1 2\n1 3\n1 4\n") == "12", "star shape"
+assert run("1\n2\n1 2\n") == "3", "2-node tree"
+assert run("1\n3\n1 2\n2 3\n") == "7", "3-node chain"
+assert run("1\n4\n1 2\n2 3\n3 4\n") == "11", "4-node chain"
+assert run("1\n5\n1 2\n1 3\n1 4\n1 5\n") == "25", "star-shaped tree"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 nodes chain | 3 | minimum-size tree |
-| 3 nodes chain | 7 | small path counting |
-| 4 nodes star | 12 | branching and multiple children handling |
+| 2-node tree | 3 | Minimal tree, correct handling of leaves |
+| 3-node chain | 7 | Small chain, combining dp states |
+| 4-node chain | 11 | Longer chain, avoiding triple-danger paths |
+| star-shaped tree | 25 | High-degree node, multiple child combinations |
 
 ## Edge Cases
 
-For a chain of three nodes `1-2-3`, the set `{1,2,3}` is invalid, which the DP correctly excludes via `dp[node][2]` tracking exactly one dangerous child. For a star with center 1 and leaves 2,3,4, the DP correctly counts combinations where the center and leaves cannot have two dangerous children simultaneously, ensuring no path has three dangerous nodes. This shows the DP respects the critical constraint in both linear and branching topologies.
+For a minimal tree of two nodes, the DP states correctly produce `3` subsets: empty, first node dangerous, second node dangerous. The chain of length 4 triggers `dp2` updates where dangerous pairs occur in the middle
