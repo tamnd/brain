@@ -43,10 +43,11 @@ build_commit_msg() {
 # Problems solved vs the naive "git rebase || true" approach:
 #  1. Rebase requires a clean working tree — stash dirty changes first, pop after.
 #  2. Silent rebase failures led to conflict markers being staged and committed.
-#  3. After a rebase, ordinary push is rejected (history rewritten) — use --force-with-lease.
-#  4. True file conflicts (same note edited on two machines) are auto-resolved:
+#  3. True file conflicts (same note edited on two machines) are auto-resolved:
 #     take the remote version for conflicted files, then re-apply local stash on top.
 #     Local edits win at stash-pop time; if stash-pop also conflicts, local (ours) wins.
+#  4. Pushes to main are normal fast-forward pushes only. If another machine moves
+#     main during build, keep the commit locally and retry after the next sync.
 #
 # Returns 0 on success (nothing to do, or rebased cleanly), 1 if rebase was aborted.
 smart_sync() {
@@ -170,12 +171,15 @@ while true; do
   fi
 
   # Push only after a tago build passes — catches render errors before CI.
-  # Use --force-with-lease because we may have rebased local commits above.
-  # If tago fails the commit stays local; the next cycle retries.
+  # Sync once more before build so a successful build matches the latest main.
+  # Pushes are normal fast-forward pushes only; never force-push shared main.
+  # If tago or push fails the commit stays local; the next cycle retries.
   _unpushed=$(git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null || true)
   if [ -n "$_unpushed" ]; then
-    if TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
-      if PUSH_OUT="$(git push -q --force-with-lease origin "$BRANCH" 2>&1)"; then
+    if ! smart_sync; then
+      log "${YLW}✗ sync failed before build — commit held locally, retry next cycle${RST}"
+    elif TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
+      if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
         log "${GRN}✓ pushed${RST}"
         # Wait for GitHub Actions deploy and report result + duration.
         _deploy_start=$(date +%s)
@@ -229,7 +233,7 @@ while true; do
         fi
         # Retry tago.
         if TAGO_OUT2="$(tago build --base-url "$BASE_URL" 2>&1)"; then
-          if PUSH_OUT2="$(git push -q --force-with-lease origin "$BRANCH" 2>&1)"; then
+          if PUSH_OUT2="$(git push -q origin "$BRANCH" 2>&1)"; then
             log "${GRN}✓ pushed after auto-fix${RST}"
           else
             log "${YLW}✗ push failed after auto-fix: ${PUSH_OUT2}${RST}"
