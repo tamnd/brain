@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1374 solved, 3 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1377 solved, 5 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1374
-kvant_verified: 3
+kvant_total: 1377
+kvant_verified: 5
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1374 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 3 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1377 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 5 solutions have been independently verified.
 
 ## 1970
 
@@ -866,7 +866,7 @@ draft: false
 
 ## 1977
 
-48 problems across Issues 1–12.
+50 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -891,6 +891,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [431](431.md) The trees are vertical cylinders. | ✓ | 6m37s |
 | [432](432.md) Consider the sum of the digits of perfect squares. |  | 7m31s |
 | [433](433.md) The configuration imposes five independent parallelism relations between each side of a convex pentagon and a diagonal. |  | 7m01s |
 | [434](434.md) *D. K. Faddeev*. Consider the sum |  | 4m58s |
@@ -921,6 +922,7 @@ draft: false
 | [447](447.md) I cannot write a solution to Kvant problem M447 because the actual problem statement is not present in your message. |  | 4m39s |
 | [448](448.md) Let the quadrilateral have diagonals intersecting at a point $O$. |  | 2m10s |
 | [449](449.md) I cannot write a rigorous solution to Kvant problem M449 without the actual problem statement or the diagram. |  | 5m39s |
+| [450](450.md) Normalize the width of the bottom rectangle to $1$, and let the common height of all rectangles be fixed. |  | 12m12s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1977_7/)
 
@@ -2896,7 +2898,7 @@ draft: false
 
 ## 1995
 
-7 problems across Issues 2–6.
+8 problems across Issues 2–6, 1 verified.
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
@@ -2905,6 +2907,7 @@ draft: false
 | [1481](1481.md) Let $a=BC$, $b=CA$, $c=AB$. |  | 6m30s |
 | [1483](1483.md) *B. D. Ginzburg*. Each vector lies in the first quadrant and has length $1$. |  | 10m28s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
+| [1489](1489.md) *A. I. Galochkin*. Work over the vector space $\\mathbb F_2^{mn}$ of all $0$-$1$ configurations on the $m\\times n$ rectangle. | ✓ | 14m54s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1995_4/)
 
