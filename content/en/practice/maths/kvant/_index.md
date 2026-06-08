@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1455 solved, 22 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1457 solved, 23 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1455
-kvant_verified: 22
+kvant_total: 1457
+kvant_verified: 23
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1455 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 22 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1457 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 23 solutions have been independently verified.
 
 ## 1970
 
@@ -1486,7 +1486,7 @@ draft: false
 
 ## 1982
 
-56 problems across Issues 1–12, 2 verified.
+58 problems across Issues 1–12, 3 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
@@ -1544,6 +1544,7 @@ draft: false
 | [746](746.md) Let the square have side length $2$ and center $O$. | ✓ | 30m44s |
 | [747](747.md) *V. V. Prasolov*. For the first part, write the numbers as $x_1,\\dots,x_n$, let $M=\\max x_i$ and $m=\\min x_i$. |  | 5m39s |
 | [748](748.md) Consider first the planar problem with parabolas. |  | 6m09s |
+| [749](749.md) Part (1) concerns the cyclic expression |  | 23m09s |
 | [750](750.md) *S. N. Bespamyatnykh*. The first statement is a classical rectangle theorem. |  | 3m46s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1982_7/)
@@ -1572,6 +1573,7 @@ draft: false
 |---|---------|---|------|
 | [761](761.md) *E. G. Gotman*. The statement is affine in nature. |  | 7m13s |
 | [762](762.md) The two inequalities are |  | 6m21s |
+| [763](763.md) *V. N. Dubrovsky*. Let | ✓ | 15m51s |
 | [764](764.md) *O. V. Mazurov*. The task is purely existential. |  | 6m28s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1982_10/)
