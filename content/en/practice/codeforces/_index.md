@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4368 problems, 2232 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4374 problems, 2232 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4368 problems, 2232 verified.**
+**750 contests, 4374 problems, 2232 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -744,7 +744,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2199](2199/) | [Kotlin Heroes: Episode 14](https://codeforces.com/contest/2199) | Kotlin | 1000-3000 | 3/9 | 18m 48s |
 | [2200](2200/) | [Codeforces Round 1084 (Div. 3)](https://codeforces.com/contest/2200) | Div. 3 | 800-2600 | 2/8 | 14m 57s |
 | [2201](2201/) | [Codeforces Round 1082 (Div. 1)](https://codeforces.com/contest/2201) | Div. 1 | 1300-3500 | 1/9 | 21m |
-| [2202](2202/) | [Codeforces Round 1082 (Div. 2)](https://codeforces.com/contest/2202) | Div. 2 | 800-2500 | 1/3 | 5m 44s |
+| [2202](2202/) | [Codeforces Round 1082 (Div. 2)](https://codeforces.com/contest/2202) | Div. 2 | 800-2800 | 1/9 | 14m 8s |
 | [2203](2203/) | [Educational Codeforces Round 187 (Rated for Div. 2)](https://codeforces.com/contest/2203) | Div. 2 | 800-2600 | 2/6 | 11m 26s |
 | [2204](2204/) | [Educational Codeforces Round 188 (Rated for Div. 2)](https://codeforces.com/contest/2204) | Div. 2 | 800-2700 | 2/7 | 13m 51s |
 | [2205](2205/) | [Codeforces Round 1083 (Div. 2)](https://codeforces.com/contest/2205) | Div. 2 | 800-3000 | 1/7 | 15m 10s |
