@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1439 solved, 14 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1443 solved, 16 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1439
-kvant_verified: 14
+kvant_total: 1443
+kvant_verified: 16
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1439 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 14 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1443 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 16 solutions have been independently verified.
 
 ## 1970
 
@@ -991,7 +991,7 @@ draft: false
 
 ## 1978
 
-58 problems across Issues 1–12, 1 verified.
+59 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1978_1/)
 
@@ -1067,6 +1067,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [516](516.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, grades 8–10)*. The three machines modify cards in distinct ways. |  | 2m36s |
+| [517](517.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, Grades 8–9)*. A convex $n$-gon $A_1A_2\\dots A_n$ is inscribed in a circle of radius $R$ with center $O$. |  | 42m23s |
 | [518](518.md) *All-Union School Mathematics Olympiad (XII, 1978, 9th grade)*. Consider the inequality |  | 4m19s |
 | [519](519.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, Grade 9)*. Let $W$ denote a winning position for the player to move and $L$ a losing position. |  | 6m20s |
 | [520](520.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, Grade 10)*. Consider the sequence $x_n=(1+\\sqrt{2}+\\sqrt{3})^n$. |  | 5m27s |
@@ -1113,7 +1114,7 @@ draft: false
 
 ## 1979
 
-55 problems across Issues 1–12, 3 verified.
+58 problems across Issues 1–12, 5 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1149,6 +1150,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [556](556.md) *A. A. Egorov*. The answer is **yes**. |  | 31m46s |
 | [557](557.md) *A. T. Kolotov*. Suppose, contrary to the statement, that none of the given numbers is prime. |  | 3m02s |
 | [558](558.md) *V. V. Proizvolov*. Let the black sectors have angular lengths $\\alpha_1,\\dots,\\alpha_k$, where each |  | 2m40s |
 | [559](559.md) Let |  | 2m11s |
@@ -1181,6 +1183,7 @@ draft: false
 | [571](571.md) *All-Union Mathematical Olympiad of School Students (1979, 10th grade)*. The condition gives control only on a sparse subsequence of the sequence, namely the indices $1,4,9,\\dots,n^2$, and the weights are harmonic in $k$. |  | 9m59s |
 | [572](572.md) *All-Union Mathematical Olympiad for School Students (1979, 8th grade)*. The kangaroo moves in the integer lattice of the first quadrant with vectors $v_1=(1,-1)$ and $v_2=(-5,7)$, always staying in $x\\ge 0$, $y\\ge 0$. |  | 2m26s |
 | [573](573.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. Let the lines through $O$ be $l_1,\\dots,l_{1979}$. |  | 7m24s |
+| [574](574.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. Let | ✓ | 13m05s |
 | [575](575.md) *All-Union Mathematical Olympiad of School Students (1979, 10th grade)*. Let $A_0A_1,\\dots,A_{n-1}A_n$ be consecutive segments on a line with each length at most $1$. |  | 9m49s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1979_8/)
@@ -1207,6 +1210,7 @@ draft: false
 |---|---------|---|------|
 | [586](586.md) *All-Russian Mathematical Olympiad for School Students (1979, 8th grade)*. Let $B=60^\\circ$ and let $O$ be the incenter of triangle $ABC$. |  | 2m15s |
 | [587](587.md) *All-Russian School Mathematics Olympiad (1979, 9th grade)*. The operation replaces two numbers $x,y$ by |  | 3m28s |
+| [588](588.md) *All-Russian Mathematical Olympiad for School Students (1979, Grade 9)*. For the planar analogue, take a triangle $ABC$ and a point $P$ inside it. | ✓ | 8m21s |
 | [589](589.md) *All-Russian School Mathematics Olympiad (1979, 9th grade)*. Let the given vectors be $v_1,\\dots,v_n$. |  | 6m10s |
 | [590](590.md) *All-Russian Mathematical Olympiad for School Students (1979, Grade 10)*. Consider first the expression $/\\cos x/ + /\\cos 2x/$. |  | 6m31s |
 
