@@ -18,20 +18,20 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.4.5: 17/17 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 1m22s |
-| [2](02.md) |  [**] |  | verified | 2m42s |
-| [3](03.md) |  [**] |  | verified | 2m |
-| [4](04.md) |  [**] |  | solved | 4m46s |
-| [5](05.md) |  [**] |  | verified | 2m33s |
-| [6](06.md) |  [**] |  | verified | 1m11s |
-| [7](07.md) |  [**] |  | verified | 4m09s |
-| [8](08.md) |  [**] |  | verified | 1m56s |
-| [9](09.md) |  [**] |  | verified | 57s |
-| [10](10.md) |  [**] |  | verified | 1m46s |
-| [11](11.md) |  [**] |  | verified | 46s |
-| [12](12.md) |  [**] |  | verified | 45s |
-| [13](13.md) |  [**] |  | verified | 3m39s |
-| [14](14.md) |  [**] |  | verified | 2m13s |
-| [15](15.md) |  [**] |  | verified | 1m54s |
-| [16](16.md) |  [**] |  | verified | 3m11s |
-| [17](17.md) |  [**] |  | solved | 3m30s |
+| [1](01.md) |  [**] |  | solved | 5m09s |
+| [2](02.md) |  [**] |  | solved | 4m39s |
+| [3](03.md) |  [**] |  | solved | 5m47s |
+| [4](04.md) |  [**] |  | solved | 10m40s |
+| [5](05.md) |  [**] |  | solved | 4m59s |
+| [6](06.md) |  [**] |  | solved | 10m42s |
+| [7](07.md) |  [**] |  | solved | 4m37s |
+| [8](08.md) |  [**] |  | solved | 5m33s |
+| [9](09.md) |  [**] |  | solved | 5m44s |
+| [10](10.md) |  [**] |  | solved | 2m52s |
+| [11](11.md) |  [**] |  | solved | 3m47s |
+| [12](12.md) |  [**] |  | solved | 7m59s |
+| [13](13.md) |  [**] |  | solved | 9m28s |
+| [14](14.md) |  [**] |  | solved | 4m29s |
+| [15](15.md) |  [**] |  | solved | 3m18s |
+| [16](16.md) |  [**] |  | solved | 13m21s |
+| [17](17.md) |  [**] |  | solved | 15m24s |

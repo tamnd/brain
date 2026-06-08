@@ -18,18 +18,18 @@ Exercises from [TAOCP Volume 1](../) Section 2.4: 15/15 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 44s |
-| [2](02.md) |  [**] |  | verified | 2m15s |
-| [3](03.md) |  [**] |  | verified | 1m13s |
-| [4](04.md) |  [**] |  | verified | 2m27s |
-| [5](05.md) |  [**] |  | solved | 1m37s |
-| [6](06.md) |  [**] |  | verified | 44s |
-| [7](07.md) |  [**] |  | verified | 47s |
+| [1](01.md) |  [**] |  | solved | 5m46s |
+| [2](02.md) |  [**] |  | solved | 6m02s |
+| [3](03.md) |  [**] |  | solved | 4m19s |
+| [4](04.md) |  [**] |  | solved | 4m35s |
+| [5](05.md) |  [**] |  | solved | 10m19s |
+| [6](06.md) |  [**] |  | solved | 4m |
+| [7](07.md) |  [**] |  | solved | 5m57s |
 | [8](08.md) |  [**] |  | solved | 31s |
 | [9](09.md) |  [**] |  | solved | 1m14s |
-| [10](10.md) |  [**] |  | verified | 2m56s |
-| [11](11.md) |  [**] |  | verified | 1m18s |
-| [12](12.md) |  [**] |  | verified | 1m32s |
-| [13](13.md) |  [**] |  | verified | 9m26s |
-| [14](14.md) |  [**] |  | solved | 2m51s |
-| [15](15.md) |  [**] |  | solved | 1m06s |
+| [10](10.md) |  [**] |  | solved | 3m29s |
+| [11](11.md) |  [**] |  | solved | 3m53s |
+| [12](12.md) |  [**] |  | solved | 4m06s |
+| [13](13.md) |  [**] |  | solved | 4m |
+| [14](14.md) |  [**] |  | solved | 4m40s |
+| [15](15.md) |  [**] |  | solved | 5m35s |

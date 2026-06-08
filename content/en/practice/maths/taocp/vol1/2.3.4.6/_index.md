@@ -18,7 +18,7 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.4.6: 4/4 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 2m39s |
-| [2](02.md) |  [**] |  | solved | 2m53s |
-| [3](03.md) |  [**] |  | solved | 4m01s |
-| [4](04.md) |  [**] |  | verified | 1m21s |
+| [1](01.md) |  [**] |  | solved | 6m13s |
+| [2](02.md) |  [**] |  | solved | 5m30s |
+| [3](03.md) |  [**] |  | solved | 4m48s |
+| [4](04.md) |  [**] |  | solved | 3m53s |
