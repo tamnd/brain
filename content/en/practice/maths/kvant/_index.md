@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1476 solved, 32 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1477 solved, 33 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1476
-kvant_verified: 32
+kvant_total: 1477
+kvant_verified: 33
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1476 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 32 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1477 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 33 solutions have been independently verified.
 
 ## 1970
 
@@ -2895,7 +2895,7 @@ draft: false
 
 ## 1994
 
-42 problems across Issues 1–6.
+43 problems across Issues 1–6, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1994_1/)
 
@@ -2960,6 +2960,7 @@ draft: false
 |---|---------|---|------|
 | [1451](1451.md) *Russian Mathematical Olympiad (XX)*. Let $d=\\gcd(a,b)$ and write $a=dx$, $b=dy$ with $\\gcd(x,y)=1$. |  | 9m15s |
 | [1453](1453.md) *Russian Mathematical Olympiad (XX)*. Let $n_k$ be the repunit of length $k$, so |  | 7m51s |
+| [1460](1460.md) *Russian Mathematical Olympiad (XX)*. Let $A$ and $B$ be the two figures. | ✓ | 15m |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1994_6/)
 
