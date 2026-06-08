@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4273 problems, 2210 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4277 problems, 2210 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4273 problems, 2210 verified.**
+**750 contests, 4277 problems, 2210 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -573,7 +573,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2013](2013/) | [Codeforces Round 973 (Div. 2)](https://codeforces.com/contest/2013) | Div. 2 | 800-2700 | 2/6 | 16m |
 | [2014](2014/) | [Codeforces Round 974 (Div. 3)](https://codeforces.com/contest/2014) | Div. 3 | 800-2200 | 5/8 | 13m 2s |
 | [2018](2018/) | [Codeforces Round 975 (Div. 1)](https://codeforces.com/contest/2018) | Div. 1 | 1600-3400 | 1/9 | 15m 37s |
-| [2019](2019/) | [Codeforces Round 975 (Div. 2)](https://codeforces.com/contest/2019) | Div. 2 | 800-1200 | 1/2 | 3m 10s |
+| [2019](2019/) | [Codeforces Round 975 (Div. 2)](https://codeforces.com/contest/2019) | Div. 2 | 800-2200 | 1/6 | 18m 26s |
 | [2020](2020/) | [Codeforces Round 976 (Div. 2) and Divide By Zero 9.0](https://codeforces.com/contest/2020) | Div. 2 | 800-2900 | 3/6 | 9m 28s |
 | [2021](2021/) | [Codeforces Round 977 (Div. 2, based on COMPFEST 16 - Final Round)](https://codeforces.com/contest/2021) | Div. 2 | 800-2800 | 2/8 | 12m 10s |
 | [2022](2022/) | [Codeforces Round 978 (Div. 2)](https://codeforces.com/contest/2022) | Div. 2 | 800-2700 | 3/7 | 14m 17s |
