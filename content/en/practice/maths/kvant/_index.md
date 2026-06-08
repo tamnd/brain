@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1483 solved, 36 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1485 solved, 36 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1483
+kvant_total: 1485
 kvant_verified: 36
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1483 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 36 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1485 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 36 solutions have been independently verified.
 
 ## 1970
 
@@ -2896,7 +2896,7 @@ draft: false
 
 ## 1994
 
-45 problems across Issues 1–6, 2 verified.
+46 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1994_1/)
 
@@ -2970,18 +2970,20 @@ draft: false
 | [1461](1461.md) Represent the $n$ definitions by vertices $1,\\dots,n$. | ✓ | 20m43s |
 | [1466](1466.md) *V. K. Kovaldzhi*. Two artists play a sequential map-coloring game. |  | 30m17s |
 | [1467](1467.md) *International Mathematical Olympiad for School Students (XXXV)*. Let |  | 9m49s |
+| [1468](1468.md) *International Mathematical Olympiad for School Students (XXXV)*. Place the isosceles triangle in coordinates as |  | 38m52s |
 | [1469](1469.md) *International Mathematical Olympiad for School Students (XXXV)*. Each integer $n$ with exactly three ones in binary has the form |  | 9m52s |
 | [1470](1470.md) *International Mathematical Olympiad for School Students (XXXV)*. We need a set $A$ of positive integers such that every infinite set $S$ of primes contains, among the squarefree numbers formed from distinct primes of $S$, two numbers with the same number $k\\ge2$ of… |  | 9m45s |
 
 ## 1995
 
-20 problems across Issues 1–6, 4 verified.
+21 problems across Issues 1–6, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1471](1471.md) *M. L. Gerver*. The problem asks whether a skier who has passed through each of $n$ villages twice and returned to the starting point can traverse his ski track in such a way as to visit each village exactly once. |  | 34m39s |
+| [1472](1472.md) *A. P. Savin*. Consider the $n\\times n$ table with entries |  | 38m15s |
 | [1474](1474.md) *B. D. Ginzburg*. Let the direction of the line used in the $i$-th projection be denoted by $\\alpha_i$. | ✓ | 22m16s |
 | [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
 | [1479](1479.md) *L. D. Kurlyandchik*. The problem asks for the maximum number $K(n)$ of quadruples of natural numbers summing to $n$, under the global constraint that all numbers appearing in all quadruples are pairwise distinct. |  | 9m15s |
