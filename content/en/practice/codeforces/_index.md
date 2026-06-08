@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4224 problems, 2189 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4228 problems, 2190 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4224 problems, 2189 verified.**
+**750 contests, 4228 problems, 2190 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -446,7 +446,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1872](1872/) | [Codeforces Round 895 (Div. 3)](https://codeforces.com/contest/1872) | Div. 3 | 800-2000 | 2/7 | 13m 29s |
 | [1873](1873/) | [Codeforces Round 898 (Div. 4)](https://codeforces.com/contest/1873) | Div. 4 | 800-1700 | 6/8 | 12m 40s |
 | [1874](1874/) | [Codeforces Round 901 (Div. 1)](https://codeforces.com/contest/1874) | Div. 1 | 1200-3500 | 3/7 | 15m 25s |
-| [1875](1875/) | [Codeforces Round 901 (Div. 2)](https://codeforces.com/contest/1875) | Div. 2 | 900-1600 | 0/3 | 7m 39s |
+| [1875](1875/) | [Codeforces Round 901 (Div. 2)](https://codeforces.com/contest/1875) | Div. 2 | 900-2800 | 1/7 | 10m 36s |
 | [1876](1876/) | [Codeforces Round 902 (Div. 1, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1876) | Div. 1 | 1000-3500 | 2/7 | 17m 32s |
 | [1877](1877/) | [Codeforces Round 902 (Div. 2, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1877) | Div. 2 | 800-1200 | 1/2 | 3m 38s |
 | [1878](1878/) | [Codeforces Round 900 (Div. 3)](https://codeforces.com/contest/1878) | Div. 3 | 800-2300 | 4/7 | 12m 56s |
