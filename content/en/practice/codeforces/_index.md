@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4268 problems, 2209 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4269 problems, 2209 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4268 problems, 2209 verified.**
+**750 contests, 4269 problems, 2209 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -552,7 +552,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1991](1991/) | [Pinely Round 4 (Div. 1 + Div. 2)](https://codeforces.com/contest/1991) | Div. 1+2 | 800-3500 | 1/9 | 24m 17s |
 | [1992](1992/) | [Codeforces Round 957 (Div. 3)](https://codeforces.com/contest/1992) | Div. 3 | 800-2000 | 2/7 | 20m 49s |
 | [1993](1993/) | [Codeforces Round 963 (Div. 2)](https://codeforces.com/contest/1993) | Div. 2 | 800-2800 | 2/7 | 18m 21s |
-| [1994](1994/) | [Codeforces Round 959 sponsored by NEAR (Div. 1 + Div. 2)](https://codeforces.com/contest/1994) | Div. 1+2 | 800-3500 | 0/7 | 22m 20s |
+| [1994](1994/) | [Codeforces Round 959 sponsored by NEAR (Div. 1 + Div. 2)](https://codeforces.com/contest/1994) | Div. 1+2 | 800-3500 | 0/8 | 26m 13s |
 | [1995](1995/) | [Codeforces Round 961 (Div. 2)](https://codeforces.com/contest/1995) | Div. 2 | 800-2900 | 3/7 | 18m 8s |
 | [1996](1996/) | [Codeforces Round 962 (Div. 3)](https://codeforces.com/contest/1996) | Div. 3 | 800-2200 | 6/7 | 18m 25s |
 | [1997](1997/) | [Educational Codeforces Round 168 (Rated for Div. 2)](https://codeforces.com/contest/1997) | Div. 2 | 800-2700 | 3/6 | 16m 22s |
