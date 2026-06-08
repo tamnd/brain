@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1395 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1397 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1395
+kvant_total: 1397
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1395 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1397 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2910,7 +2910,7 @@ draft: false
 
 ## 1995
 
-11 problems across Issues 1–6, 2 verified.
+12 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -2945,12 +2945,13 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1522](1522.md) Our systems have detected unusual activity coming from your system. |  | 21m51s |
 | [1528](1528.md) *International Mathematical Olympiad for School Students (XXXVI)*. The relation |  | 10m47s |
 | [1529](1529.md) *International Mathematical Olympiad for School Students (XXXVI)*. The equalities |  | 8m28s |
 
 ## 1996
 
-5 problems across Issues 1–5.
+6 problems across Issues 1–5.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
@@ -2964,6 +2965,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1556](1556.md) Working |  | 31m40s |
+| [1558](1558.md) Consider the game on small chessboards to observe patterns. |  | 8m44s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1996_5/)
 
