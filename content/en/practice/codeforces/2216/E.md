@@ -1,24 +1,24 @@
 ---
-title: "CF 2216B - THU Packing Puzzle"
+title: "CF 2216E - Oriented Journey"
 description: "The value $V = 7frac{1}{16}$ corresponds to the chi-square statistic computed from $k = 11$ categories, as in Eq. (5). The number of degrees of freedom is therefore $nu = k - 1 = 10$."
-date: "2026-06-09T04:52:32+07:00"
-tags: ["codeforces", "competitive-programming", "greedy"]
+date: "2026-06-09T04:55:34+07:00"
+tags: ["codeforces", "competitive-programming", "communication", "constructive-algorithms", "interactive"]
 categories: ["algorithms"]
 codeforces_contest: 2216
-codeforces_index: "B"
+codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 \u2014 Finals)"
-rating: 1300
+rating: 2200
 weight: 2216
-solve_time_s: 40
+solve_time_s: 121
 verified: false
 draft: false
 ---
 
-[CF 2216B - THU Packing Puzzle](https://codeforces.com/problemset/problem/2216/B)
+[CF 2216E - Oriented Journey](https://codeforces.com/problemset/problem/2216/E)
 
-**Rating:** 1300  
-**Tags:** greedy  
-**Solve time:** 40s  
+**Rating:** 2200  
+**Tags:** communication, constructive algorithms, interactive  
+**Solve time:** 2m 1s  
 **Verified:** no  
 
 ## Solution

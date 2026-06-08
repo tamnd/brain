@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4374 problems, 2232 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4378 problems, 2232 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4374 problems, 2232 verified.**
+**750 contests, 4378 problems, 2232 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -756,7 +756,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2211](2211/) | [Nebius Round 2 (Codeforces Round 1088, Div. 1 + Div. 2)](https://codeforces.com/contest/2211) | Div. 1+2 | 800-3500 | 2/9 | 17m 58s |
 | [2214](2214/) | [April Fools Day Contest 2026](https://codeforces.com/contest/2214) | April Fools | - | 5/10 | 18m 14s |
 | [2215](2215/) | [Codeforces Round 1092 (Unrated, Div. 1, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2215) | Div. 1 | 1700-3500 | 0/7 | 12m 54s |
-| [2216](2216/) | [Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2216) | Div. 2 | 900-1300 | 0/2 | 3m 33s |
+| [2216](2216/) | [Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2216) | Div. 2 | 900-2700 | 0/6 | 10m |
 | [2217](2217/) | [Codeforces Round 1091 (Div. 2) and CodeCraft 26](https://codeforces.com/contest/2217) | Div. 2 | 800-2800 | 0/8 | 14m 29s |
 | [2218](2218/) | [Codeforces Round 1090 (Div. 4)](https://codeforces.com/contest/2218) | Div. 4 | 800-1800 | 1/7 | 13m 16s |
 | [2219](2219/) | [Codeforces Round 1093 (Div. 1)](https://codeforces.com/contest/2219) | Div. 1 | - | 1/6 | 15m 59s |
