@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1485 solved, 36 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1486 solved, 37 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1485
-kvant_verified: 36
+kvant_total: 1486
+kvant_verified: 37
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1485 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 36 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1486 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 37 solutions have been independently verified.
 
 ## 1970
 
@@ -2976,7 +2976,7 @@ draft: false
 
 ## 1995
 
-21 problems across Issues 1–6, 4 verified.
+22 problems across Issues 1–6, 5 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -2998,6 +2998,7 @@ draft: false
 | [1484](1484.md) *N. B. Vasilyev*. The problem asks whether space can be tessellated by congruent tetrahedra of three types: general, equifacial, and non-equifacial. |  | 31m11s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
 | [1489](1489.md) *A. I. Galochkin*. Work over the vector space $\\mathbb F_2^{mn}$ of all $0$-$1$ configurations on the $m\\times n$ rectangle. | ✓ | 14m54s |
+| [1490](1490.md) *V. A. Ufnarovsky*. The statement as written can only be meaningful if the second triangle has side lengths $\\sin x$, $\\sin y$, $\\sin z$. | ✓ | 26m37s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1995_4/)
 
