@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1393 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1394 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1393
+kvant_total: 1394
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1393 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1394 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2658,7 +2658,7 @@ draft: false
 
 ## 1992
 
-58 problems across Issues 1–12.
+59 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1992_1/)
 
@@ -2733,6 +2733,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1356](1356.md) We are given a triangle with sides $a$, $b$, $c$ and the relation |  | 35m03s |
 | [1357](1357.md) I can follow that framework precisely. |  | 8m49s |
 | [1358](1358.md) I can write the complete solution in the format you specify, but I need the text of Kvant problem M1358. |  | 6m42s |
 | [1359](1359.md) I can proceed with that, but I need the **text of Kvant problem M1359** to write a complete solution. |  | 7m02s |
