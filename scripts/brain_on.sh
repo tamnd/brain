@@ -4,6 +4,7 @@ set -euo pipefail
 REPO_DIR="$HOME/github/tamnd/brain"
 BRANCH="main"
 INTERVAL=${BRAIN_INTERVAL:-300}
+MAX_REBASE_AHEAD=${BRAIN_MAX_REBASE_AHEAD:-20}
 BASE_URL="https://brain.tamnd.com/"
 
 # colors
@@ -53,8 +54,19 @@ build_commit_msg() {
 smart_sync() {
   git fetch -q origin "$BRANCH" 2>/dev/null || return 0
 
+  local remote_only local_only
+  read -r remote_only local_only < <(git rev-list --left-right --count "origin/$BRANCH...HEAD" 2>/dev/null || echo "0 0")
+
+  # A very large local queue after remote moved usually means another machine
+  # rewrote/pushed main while this one kept generating commits. Do not replay
+  # that automatically; it needs a deliberate manual merge/cherry-pick.
+  if [ "$remote_only" -gt 0 ] && [ "$local_only" -gt "$MAX_REBASE_AHEAD" ]; then
+    log "${YLW}✗ large divergence: ${local_only} local commit(s), ${remote_only} remote commit(s); manual sync required${RST}"
+    return 1
+  fi
+
   # Nothing to pull.
-  git log "HEAD..origin/$BRANCH" --oneline 2>/dev/null | grep -q . || return 0
+  [ "$remote_only" -gt 0 ] || return 0
 
   # Stash any uncommitted working-tree changes — rebase requires a clean tree.
   local stashed=false
