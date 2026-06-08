@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1426 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1427 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1426
+kvant_total: 1427
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1426 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1427 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -3083,13 +3083,14 @@ draft: false
 
 ## 2026
 
-4 problems across Issues 1–3.
+5 problems across Issues 1–3.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2026_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2874](2874.md) Let $M$ be the midpoint of $AC$. |  | 2m07s |
+| [2875](2875.md) Working |  | 13m42s |
 | [2876](2876.md) *Southern Mathematical Tournament (XX)*. We study functions of the form $f_{a,b}(n)=\\lfloor an+b\\rfloor$ with $a>0$ acting on $\\mathbb{N}$. |  | 10m12s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_2026_2/)
