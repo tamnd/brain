@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1471 solved, 31 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1472 solved, 32 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1471
-kvant_verified: 31
+kvant_total: 1472
+kvant_verified: 32
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1471 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 31 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1472 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 32 solutions have been independently verified.
 
 ## 1970
 
@@ -1977,7 +1977,7 @@ draft: false
 
 ## 1986
 
-58 problems across Issues 1–12.
+59 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1986_1/)
 
@@ -1987,6 +1987,7 @@ draft: false
 | [962](962.md) Let $P(x)\\in\\mathbb{Z}[x]$ and suppose there exist distinct integers $x_1,\\dots,x_n$ with $n\\ge 3$ such that |  | 2m05s |
 | [963](963.md) Let the hexagon be $A B C D E F$ in cyclic order. |  | 3m50s |
 | [964](964.md) *A. A. Stolin*. The sequence $(a_n)$ consists of distinct positive integers with the growth constraint $a_n < 100n$. |  | 7m44s |
+| [965](965.md) *N. B. Vasiliev*. Let | ✓ | 13m19s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1986_2/)
 
