@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1403 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1404 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1403
+kvant_total: 1404
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1403 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1404 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -758,7 +758,7 @@ draft: false
 
 ## 1976
 
-44 problems across Issues 1–12.
+45 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -852,6 +852,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [411](411.md) Consider a triangle with sides $a$, $b$, $c$, and a point inside it through which three segments pass, each parallel to a side and all of equal length $x$. |  | 2m09s |
+| [412](412.md) Model the city as a finite directed graph $G=(V,E)$ in which vertices are squares and directed edges are one-way streets. |  | 9m18s |
 | [413](413.md) *I. M. Yaglom*. Consider the equation $f(x+a)-f(x)=0$ for a function $f$ continuous on $[0,1]$ with $f(0)=f(1)=0$. |  | 9m58s |
 | [415](415.md) The problem asks for the maximum number of mutually non-attacking kings on an $n\\times n$ toroidal board. |  | 2m23s |
 
