@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1387 solved, 6 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1389 solved, 7 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1387
-kvant_verified: 6
+kvant_total: 1389
+kvant_verified: 7
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1387 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1389 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 7 solutions have been independently verified.
 
 ## 1970
 
@@ -1804,7 +1804,7 @@ draft: false
 
 ## 1985
 
-52 problems across Issues 1–12.
+53 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1832,6 +1832,7 @@ draft: false
 | [911](911.md) *M. V. Stark*. Place quadrilateral $ABCD$ in the plane and select points $E$ on $AB$ and $F$ on $CD$. |  | 3m06s |
 | [912](912.md) *V. P. Pikulin*. For a polynomial to be monotonically increasing on the whole real line, it is enough that its derivative be nonnegative everywhere. |  | 6m29s |
 | [913](913.md) Consider triangle $ABC$ with circumcircle $\\Gamma$. |  | 6m05s |
+| [914](914.md) *V. G. Ilyichyov*. Let $(g,b,c)$ denote the numbers of gray, brown, and crimson chameleons. | ✓ | 12m15s |
 | [915](915.md) *L. D. Kurlandchik*. The inequality is cyclic rather than symmetric: |  | 7m26s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1985_4/)
@@ -2939,7 +2940,7 @@ draft: false
 
 ## 1996
 
-4 problems across Issues 1–5.
+5 problems across Issues 1–5.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
@@ -2947,6 +2948,12 @@ draft: false
 |---|---------|---|------|
 | [1531](1531.md) Each question consists of choosing a line and learning in which of the three sets determined by that line the point $P$ lies: one open half-plane, the other open half-plane, or the line itself. |  | 10m23s |
 | [1532](1532.md) ``` |  | 12m17s |
+
+### [Issue 4](https://www.kvant.digital/view/kvant_1996_4/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [1556](1556.md) Working |  | 31m40s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1996_5/)
 
