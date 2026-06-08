@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1408 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1409 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1408
+kvant_total: 1409
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1408 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1409 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2915,13 +2915,14 @@ draft: false
 
 ## 1995
 
-12 problems across Issues 1–6, 2 verified.
+13 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
+| [1479](1479.md) *L. D. Kurlyandchik*. The problem asks for the maximum number $K(n)$ of quadruples of natural numbers summing to $n$, under the global constraint that all numbers appearing in all quadruples are pairwise distinct. |  | 9m15s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
