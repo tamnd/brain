@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1417 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1418 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1417
+kvant_total: 1418
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1417 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1418 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -1814,7 +1814,7 @@ draft: false
 
 ## 1985
 
-54 problems across Issues 1–12, 1 verified.
+55 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1918,6 +1918,7 @@ draft: false
 |---|---------|---|------|
 | [951](951.md) Let the hexagon be $ABCDEF$ in convex order with $AB=BC=CD=DE=EF=FA=1$. |  | 2m25s |
 | [952](952.md) Write |  | 1m28s |
+| [953](953.md) *V. V. Prasolov*. Each special point is an intersection of three lines determined by pairs of the six given points. |  | 9m48s |
 | [954](954.md) *V. N. Dubrovsky*. Consider first the case of a rectangle inscribed in a triangle. |  | 8m23s |
 | [955](955.md) *V. B. Alekseev*. Consider first small numbers of participants. |  | 4m55s |
 
