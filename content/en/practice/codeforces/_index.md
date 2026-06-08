@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 678 contests, 3742 problems, 2002 verified."
+description: "Codeforces problem solutions with full editorial. 679 contests, 3748 problems, 2003 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**678 contests, 3742 problems, 2002 verified.**
+**679 contests, 3748 problems, 2003 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1936](1936/) | [Codeforces Round 930 (Div. 1)](https://codeforces.com/contest/1936) | Div. 1 | 1700-3400 | 1/6 | 15m 24s |
 | [1937](1937/) | [Codeforces Round 930 (Div. 2)](https://codeforces.com/contest/1937) | Div. 2 | 800-1300 | 1/2 | 3m 41s |
 | [1938](1938/) | [2024 ICPC Asia Pacific Championship - Online Mirror (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1938) | ICPC/IOI | 1600-3500 | 4/13 | 12m 26s |
 | [1939](1939/) | [XVIII Open Olympiad in Informatics - Final Stage, Day 1 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/1939) | ICPC/IOI | - | 2/4 | 3m 39s |
