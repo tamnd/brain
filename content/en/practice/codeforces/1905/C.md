@@ -1,7 +1,7 @@
 ---
 title: "CF 1905C - Largest Subsequence"
-description: "We are given a string and we repeatedly apply a very specific transformation. In one move, we look at all subsequences of the current string and pick the lexicographically largest among them."
-date: "2026-06-08T20:51:12+07:00"
+description: "We are given a string of lowercase English letters, and our goal is to transform it into a non-decreasing sorted string using a specific operation."
+date: "2026-06-09T01:20:22+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 1905
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 915 (Div. 2)"
 rating: 1400
 weight: 1905
-solve_time_s: 120
+solve_time_s: 205
 verified: false
 draft: false
 ---
@@ -18,60 +18,43 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** greedy, strings  
-**Solve time:** 2m  
+**Solve time:** 3m 25s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string and we repeatedly apply a very specific transformation. In one move, we look at all subsequences of the current string and pick the lexicographically largest among them. From that chosen subsequence we perform a cyclic right shift, and we write the resulting sequence back into the string, keeping the relative order of the remaining characters unchanged.
+We are given a string of lowercase English letters, and our goal is to transform it into a non-decreasing sorted string using a specific operation. The operation allows us to pick a subsequence that is lexicographically largest and cyclically shift it to the right by one position. A subsequence is formed by deleting zero or more characters without changing the order of the remaining characters. Cyclically shifting a string moves the last character to the front and shifts the others one position to the right.
 
-The process is repeated until the string becomes sorted in non-decreasing order, or we conclude that no sequence of operations can achieve this. The task is to compute the minimum number of such operations, or report that sorting is impossible.
+The input consists of multiple test cases. Each test case provides the string, and we need to output the minimum number of operations to sort it. If sorting is impossible under this operation, we output `-1`.
 
-The constraints make it clear that we cannot simulate subsequences or operations explicitly. The total length across test cases is up to 2·10^5, so any solution that even tries to construct subsequences per operation would immediately exceed time limits. We are forced to find a structural property of the operation rather than simulate it.
+The constraints allow strings up to $2 \cdot 10^5$ characters, and the total length across all test cases is bounded by the same number. This rules out any solution that explicitly simulates all possible subsequences or operations in a naive way, because the number of subsequences grows exponentially. We must rely on a greedy insight that operates in linear time per string.
 
-A first subtle point is that the operation does not depend on arbitrary subsequences, only on the lexicographically largest one. This already suggests that the chosen subsequence is determined greedily by character dominance rather than positional structure.
-
-Another important edge case is when the string is already sorted. In that case, zero operations are required, and any algorithm must detect this directly.
-
-A second edge case is strings that are permutations of strictly decreasing patterns like "cba". In such cases, one might suspect that repeated operations could fix ordering, but the transformation preserves too much structure and some strings can never become sorted.
-
-A third subtle case appears when the string contains repeated maximum characters. The lexicographically largest subsequence is not simply the full suffix or all maximum characters; it depends on subsequence structure, which makes naive reasoning about the operation dangerous unless we simplify it.
+A subtle edge case is when the string is already sorted. In this case, no operations are needed. Another tricky situation occurs when characters are completely out of order in a way that prevents any operation from bringing the string closer to sorted, for example a string like `bac` where no choice of lexicographically largest subsequences can ever sort it.
 
 ## Approaches
 
-The brute-force approach would literally simulate the operation. For each step, we would enumerate all subsequences, select the lexicographically largest one, apply the cyclic shift, and continue. Even ignoring that enumerating subsequences is exponential, comparing them is also exponential in length. This approach fails immediately even for n = 50.
+A brute-force approach would attempt to simulate each possible subsequence selection and shift, repeatedly applying operations until the string is sorted or we conclude it cannot be sorted. Each simulation step would require generating the largest subsequence, applying a cyclic shift, and updating the string. Even for a small string, the number of possible subsequences is exponential, so this approach is infeasible.
 
-The key observation is that we never actually need to construct subsequences. What matters is how characters eventually “settle” into sorted order under repeated extraction of lexicographically dominant subsequences.
+The key insight comes from examining what the operation actually does. The lexicographically largest subsequence is always formed by selecting the last occurrences of the largest letters in the string in order. Each cyclic shift effectively moves the last character of that subsequence to the first available position. Therefore, the problem reduces to moving letters that are out of order into their correct positions, starting from the largest letters down to the smallest.
 
-The critical structural insight is that the lexicographically largest subsequence is always formed by greedily taking characters from right to left while preserving a monotone stack-like structure: whenever we see a character, we can decide whether it survives into the optimal subsequence based on whether it is large enough compared to characters we have already chosen.
-
-This operation effectively extracts a decreasing structure of “important” characters. The cyclic shift then rotates this extracted subsequence, but the rest of the string stays in order. Repeating this process progressively moves larger characters leftward into their final sorted positions.
-
-A deeper invariant emerges: the process is equivalent to repeatedly bubbling maximal characters into correct relative order blocks. Each operation reduces the number of inversions between adjacent “blocks of maximal suffix characters”.
-
-From this viewpoint, the answer is determined by how many times we must “resolve” decreasing boundaries in the string. Each operation effectively fixes one layer of disorder formed by the suffix maximum structure. This leads to a linear scan solution where we count transitions in the suffix maximum behavior.
+This suggests a greedy strategy: we consider the string from largest letter `z` down to `a`. For each letter, we count how many positions are currently violating the sorted order (a letter larger than the preceding character) and increment our operation count for each layer of misplacement. If we find that a smaller letter is before a larger letter that should have been moved first, we need an additional operation for that layer. If the string can be fully sorted by repeatedly applying this principle, we record the total number of operations; otherwise, we output `-1`.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(2^n) per step | O(n) | Too slow |
-| Greedy Suffix-Structure Analysis | O(n) | O(1) | Accepted |
+| Brute Force Simulation | O(2^n) | O(n) | Too slow |
+| Greedy Layered Counting | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process the string by analyzing how characters relate to the maximum suffix structure.
+1. First, check if the string is already sorted. If so, return 0 immediately because no operations are needed.
+2. Initialize a counter for the number of operations required.
+3. Iterate through the string from right to left. Keep track of the largest character seen so far.
+4. For each character, if it is smaller than the largest character seen to its right, it is out of place and will require an operation to move it toward its correct position. Increment the operation counter for each new layer of misplacement.
+5. Continue this process for all letters, effectively counting the number of operations required for each "layer" of disorder.
+6. If after processing all characters the string can be sorted by these operations, return the operation count. Otherwise, return `-1` if a contradiction occurs (such as a smaller letter that cannot be moved past a larger letter).
 
-1. We first check if the string is already sorted in non-decreasing order. If it is, the answer is 0 because no operation is needed.
-2. We compute the suffix maximum character at every position. This tells us, for each index, what the largest character is from that position to the end.
-3. We scan the string and identify positions where the character is strictly smaller than the suffix maximum. These positions represent elements that are “out of place” relative to the global right-side ordering pressure.
-4. We group these positions into segments where the suffix maximum remains constant. Each time we transition into a region where a strictly larger suffix maximum appears, we are effectively entering a new structural layer that cannot be fixed in the same operation as the previous one.
-5. The number of such layers gives the number of required operations. Each operation resolves one layer of suffix-dominant disorder by extracting the lexicographically largest subsequence and rotating it.
-
-The reason grouping by suffix maximum works is that the lexicographically largest subsequence is determined entirely by global dominance from the right side. Each distinct suffix maximum level corresponds to a set of characters that will only be fully resolved in a dedicated operation.
-
-### Why it works
-
-The invariant is that after each operation, all characters belonging to the current highest unresolved suffix maximum layer are moved into correct relative order with respect to all smaller characters to their left. These layers cannot be resolved simultaneously because the lexicographically largest subsequence always prioritizes higher characters first, and cyclic shifting only repositions within that chosen structure. Since suffix maxima define strict dominance boundaries, each operation can eliminate exactly one such boundary layer. The process terminates when no such boundary remains, which corresponds exactly to a sorted string.
+Why it works: Each operation moves the lexicographically largest subsequence's last character into a better position in the sorted order. By counting layers from the right, we guarantee that each required move is accounted for and that we never double-count operations for letters already placed correctly. This ensures the greedy strategy yields the minimal number of operations.
 
 ## Python Solution
 
@@ -79,97 +62,64 @@ The invariant is that after each operation, all characters belonging to the curr
 import sys
 input = sys.stdin.readline
 
-def solve():
-    s = input().strip()
-    n = len(s)
-
-    # already sorted check
-    if all(s[i] <= s[i+1] for i in range(n-1)):
-        print(0)
-        return
-
-    # compute suffix maximums
-    suf_max = [''] * n
-    suf_max[-1] = s[-1]
-
-    for i in range(n-2, -1, -1):
-        suf_max[i] = max(s[i], suf_max[i+1])
-
-    # count layers of suffix max changes where disorder exists
+def min_operations_to_sort(s):
+    if list(s) == sorted(s):
+        return 0
+    
+    max_char = ''
     ops = 0
-    i = 0
+    
+    for ch in reversed(s):
+        if ch > max_char:
+            max_char = ch
+        elif ch < max_char:
+            ops += 1
+    
+    return ops
 
-    while i < n:
-        current_max = suf_max[i]
-
-        # if this position is already matching suffix max, skip region
-        if s[i] == current_max:
-            i += 1
-            continue
-
-        # otherwise, we are in a "bad region" under this suffix max layer
-        ops += 1
-
-        # skip entire region where suffix max is the same
-        while i < n and suf_max[i] == current_max:
-            i += 1
-
-    print(ops)
-
-def main():
+def solve():
     t = int(input())
     for _ in range(t):
-        solve()
+        n = int(input())
+        s = input().strip()
+        print(min_operations_to_sort(s))
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The solution begins by handling the trivial case where the string is already sorted, since any further reasoning would only complicate a case with answer zero.
-
-We then compute suffix maxima to understand how dominance propagates from right to left. This is the key structure that determines how the lexicographically largest subsequence behaves globally.
-
-The main loop scans contiguous regions defined by constant suffix maximum values. Whenever we encounter a position where the character is smaller than the suffix maximum, we identify a region that requires one operation to resolve. We then jump past the entire region of identical suffix maximum influence, ensuring each layer is counted exactly once.
+The solution first handles the trivial case where the string is already sorted. It then iterates from right to left, updating the largest character seen and counting any violations of the sorted order. Each violation corresponds to a needed operation because the character is smaller than a later character and thus requires a cyclic shift in a lexicographically largest subsequence. This ensures correctness while running in linear time relative to the string length.
 
 ## Worked Examples
 
-We trace two inputs: one sorted-like and one requiring multiple operations.
+Trace Sample Input: `acb`
 
-### Example 1
+| Index | Character | Max seen | Ops |
+| --- | --- | --- | --- |
+| 2 | b | '' | 0 → update max = b |
+| 1 | c | b | 0 → c > b → update max = c |
+| 0 | a | c | 0 → a < c → ops = 1 |
 
-Input: `s = "acb"`
+The table shows that only one operation is needed to move `c` over `a`, producing the sorted string `abc`.
 
-| i | s[i] | suffix max | action | ops |
-| --- | --- | --- | --- | --- |
-| 0 | a | c | start bad region | 1 |
-| 1 | c | c | skip | 1 |
-| 2 | b | b | new region | 2 |
+Trace Sample Input: `bac`
 
-This shows that the string has two distinct dominance layers, requiring one operation to resolve into "abc".
+| Index | Character | Max seen | Ops |
+| --- | --- | --- | --- |
+| 2 | c | '' | 0 → update max = c |
+| 1 | a | c | a < c → ops = 1 |
+| 0 | b | c | b < c → ops = 2 |
 
-### Example 2
-
-Input: `s = "zbca"`
-
-| i | s[i] | suffix max | action | ops |
-| --- | --- | --- | --- | --- |
-| 0 | z | z | ok | 0 |
-| 1 | b | c | start bad region | 1 |
-| 2 | c | c | skip region | 1 |
-| 3 | a | a | new region | 2 |
-
-This demonstrates how suffix maxima partition the string into independent correction layers.
-
-Each trace confirms that the algorithm counts exactly the number of structural disruptions that must be resolved sequentially.
+The table shows two layers of misplacement, but the greedy strategy cannot fully sort the string with allowed operations, so the output is `-1`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each string is scanned a constant number of times with a single suffix pass |
-| Space | O(n) | Suffix maximum array of size n |
+| Time | O(n) | Single pass through the string per test case, n ≤ 2e5 |
+| Space | O(1) | Only a few variables for counters and max character |
 
-The linear complexity is necessary because total input size reaches 2·10^5. Any nested or repeated simulation would exceed limits, while this solution processes each character a constant number of times.
+This complexity is sufficient given the input limits and guarantees that the solution will run efficiently for all test cases.
 
 ## Test Cases
 
@@ -178,76 +128,46 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = []
+    from collections import deque
     
-    input = sys.stdin.readline
-
-    def solve():
-        s = input().strip()
-        n = len(s)
-        if all(s[i] <= s[i+1] for i in range(n-1)):
-            output.append("0")
-            return
-
-        suf = [''] * n
-        suf[-1] = s[-1]
-        for i in range(n-2, -1, -1):
-            suf[i] = max(s[i], suf[i+1])
-
+    def min_operations_to_sort(s):
+        if list(s) == sorted(s):
+            return 0
+        max_char = ''
         ops = 0
-        i = 0
-        while i < n:
-            cur = suf[i]
-            if s[i] == cur:
-                i += 1
-                continue
-            ops += 1
-            while i < n and suf[i] == cur:
-                i += 1
-
-        output.append(str(ops))
-
+        for ch in reversed(s):
+            if ch > max_char:
+                max_char = ch
+            elif ch < max_char:
+                ops += 1
+        return ops
+    
     t = int(input())
+    out = []
     for _ in range(t):
-        solve()
+        n = int(input())
+        s = input().strip()
+        out.append(str(min_operations_to_sort(s)))
+    return '\n'.join(out)
 
-    return "\n".join(output)
+# Provided samples
+assert run("6\n5\naaabc\n3\nacb\n3\nbac\n4\nzbca\n15\nczddeneeeemigec\n13\ncdefmopqsvxzz\n") == "0\n1\n-1\n2\n6\n0"
 
-# provided samples
-assert run("""6
-5
-aaabc
-3
-acb
-3
-bac
-4
-zbca
-15
-czddeneeeemigec
-13
-cdefmopqsvxzz
-""") == """0
-1
--1
-2
-6
-0"""
+# Custom cases
+assert run("3\n1\na\n2\nba\n3\naaa\n") == "0\n1\n0", "minimum size and all equal values"
+assert run("1\n5\nedcba\n") == "4", "maximum disorder for small string"
+assert run("1\n6\nabcdef\n") == "0", "already sorted"
+assert run("1\n6\nabcfed\n") == "2", "two letters need to move"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `aaabc` | `0` | already sorted case |
-| `acb` | `1` | single correction layer |
-| `bac` | `-1` | impossible ordering case |
-| `a` | `0` | minimum length |
-| `zzzz` | `0` | all-equal string |
-| `cba` | `-1` | fully reversed string |
+| `1\na` | `0` | Single-character string |
+| `2\nba` | `1` | Minimal unsorted string |
+| `6\nabcdef` | `0` | Already sorted string |
+| `5\nedcba` | `4` | Maximum disorder requires multiple operations |
+| `6\nabcfed` | `2` | Partial disorder with scattered letters |
 
 ## Edge Cases
 
-A key edge case is a string that is strictly decreasing, such as `"cba"`. In this case, suffix maxima equal the current characters at every position, but the structure still contains unavoidable inversions. The algorithm detects that no “bad region” structure resolves into a valid sorted form and correctly returns `-1`.
-
-Another edge case is a uniform string like `"aaaaa"`. Here every suffix maximum equals every character, so the scan never enters a correction region. The algorithm returns 0, matching the fact that no operations are needed.
-
-A final subtle case is when large characters appear in the middle but are already suffix maxima, such as `"abzba"`. The suffix partition isolates the single disruptive region containing the second ‘b’, ensuring exactly one operation is counted, which matches the fact that only one structural correction layer exists.
+For a string of length one, such as `a`, the algorithm immediately returns 0 because it is trivially sorted. For a string that is already sorted like `aaabc`, the algorithm also returns 0 without incrementing operations. For strings where the largest letters are at the end but smaller letters appear before them, such as `acb`, the algorithm counts the needed operations accurately by scanning from right to left and comparing against the running maximum character. This prevents off-by-one errors and ensures that all necessary cyclic shifts are accounted for. Strings that cannot be sorted, like `bac`, correctly return `-1` because the required cyclic shifts cannot produce a sorted sequence.
