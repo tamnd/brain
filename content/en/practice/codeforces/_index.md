@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 588 contests, 3066 problems, 1774 verified."
+description: "Codeforces problem solutions with full editorial. 589 contests, 3075 problems, 1779 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**588 contests, 3066 problems, 1774 verified.**
+**589 contests, 3075 problems, 1779 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -456,6 +456,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
+| [2065](2065/) | [Codeforces Round 1003 (Div. 4)](https://codeforces.com/contest/2065) | Div. 4 | 800-2200 | 5/9 | 16m 33s |
 | [2066](2066/) | [Codeforces Round 1004 (Div. 1)](https://codeforces.com/contest/2066) | Div. 1 | 1400-3300 | 0/6 | 10m 28s |
 | [2067](2067/) | [Codeforces Round 1004 (Div. 2)](https://codeforces.com/contest/2067) | Div. 2 | 800-1500 | 2/3 | 5m 2s |
 | [2068](2068/) | [European Championship 2025 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2068) | ICPC/IOI | 1900-3500 | 4/11 | 17m 46s |
