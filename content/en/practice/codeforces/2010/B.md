@@ -66,9 +66,7 @@ The formula follows correctly.
 
 ### Step 2: Summation formula
 
-$$\sum \overrightarrow{MK_i}
-=
-r\sum u_i-\sum (u_i\cdot M)u_i$$
+$$\sum \overrightarrow{MK_i} = r\sum u_i-\sum (u_i\cdot M)u_i$$
 
 - VALID
 
@@ -134,11 +132,7 @@ A rigorous argument would either compute the commutant of the rotation matrix ex
 
 ### Step 7: Trace computation
 
-$$\operatorname{tr}(T)
-=
-\sum_i \operatorname{tr}(u_i u_i^T)
-=
-n$$
+$$\operatorname{tr}(T) = \sum_i \operatorname{tr}(u_i u_i^T) = n$$
 
 and hence
 
@@ -164,9 +158,7 @@ $$\text{“Consequently }\su”$$
 
 The argument never actually derives
 
-$$\sum_i \overrightarrow{MK_i}
-=
-\frac n2\,\overrightarrow{MO},$$
+$$\sum_i \overrightarrow{MK_i} = \frac n2\,\overrightarrow{MO},$$
 
 nor does it explicitly derive the triangle case from $n=3$.
 
@@ -192,10 +184,7 @@ The tetrahedron argument never appears in the Solution section because the proof
 
 The required identity
 
-$$\overrightarrow{MK_1}+\overrightarrow{MK_2}
-+\overrightarrow{MK_3}+\overrightarrow{MK_4}
-=
-\frac43\,\overrightarrow{MO}$$
+$$\overrightarrow{MK_1}+\overrightarrow{MK_2} +\overrightarrow{MK_3}+\overrightarrow{MK_4} = \frac43\,\overrightarrow{MO}$$
 
 is never established.
 

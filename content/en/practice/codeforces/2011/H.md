@@ -66,11 +66,7 @@ The computation is correct for both the polygon and tetrahedron settings.
 
 Summing the previous identity yields
 
-$$\sum_i \overrightarrow{MK_i}
-=
-r\sum_i u_i
--
-\sum_i (u_i\cdot M)u_i.$$
+$$\sum_i \overrightarrow{MK_i} = r\sum_i u_i - \sum_i (u_i\cdot M)u_i.$$
 
 **Status:** VALID.
 
@@ -94,9 +90,7 @@ $$T(x)=\sum_i (u_i\cdot x)u_i$$
 
 and rewrites the desired sum as
 
-$$\sum_i \overrightarrow{MK_i}
-=
--T(M).$$
+$$\sum_i \overrightarrow{MK_i} = -T(M).$$
 
 **Status:** VALID.
 
@@ -114,10 +108,7 @@ $$TR=RT.$$
 
 The solution states that a real $2\times2$ matrix commuting with a rotation through an angle different from $0$ and $\pi$ must have the form
 
-$$\begin{pmatrix}
-a&-b\\
-b&a
-\end{pmatrix}.$$
+$$\begin{pmatrix} a&-b\\ b&a \end{pmatrix}.$$
 
 Since $T$ is symmetric, it follows that $b=0$, so
 
@@ -131,13 +122,7 @@ For regular polygons, $n\ge3$, hence $2\pi/n\neq0,\pi$.
 
 The solution computes
 
-$$\operatorname{tr}(T)
-=
-\sum_i \operatorname{tr}(u_i u_i^T)
-=
-\sum_i |u_i|^2
-=
-n.$$
+$$\operatorname{tr}(T) = \sum_i \operatorname{tr}(u_i u_i^T) = \sum_i |u_i|^2 = n.$$
 
 Since $T=\lambda I$ on a two-dimensional space,
 
@@ -153,9 +138,7 @@ $$T=\frac n2 I.$$
 
 Substituting $T=(n/2)I$ gives
 
-$$\sum_i \overrightarrow{MK_i}
-=
--\frac n2 M.$$
+$$\sum_i \overrightarrow{MK_i} = -\frac n2 M.$$
 
 Because the origin is placed at $O$,
 
@@ -163,9 +146,7 @@ $$\overrightarrow{MO}=-M.$$
 
 Hence
 
-$$\sum_i \overrightarrow{MK_i}
-=
-\frac n2\,\overrightarrow{MO}.$$
+$$\sum_i \overrightarrow{MK_i} = \frac n2\,\overrightarrow{MO}.$$
 
 **Status:** VALID.
 
@@ -173,9 +154,7 @@ $$\sum_i \overrightarrow{MK_i}
 
 Setting $n=3$ gives
 
-$$\sum_{i=1}^3 \overrightarrow{MK_i}
-=
-\frac32\,\overrightarrow{MO}.$$
+$$\sum_{i=1}^3 \overrightarrow{MK_i} = \frac32\,\overrightarrow{MO}.$$
 
 **Status:** VALID.
 
@@ -197,9 +176,7 @@ $$T(x)=\sum_{i=1}^4 (u_i\cdot x)u_i$$
 
 and obtains
 
-$$\sum_{i=1}^4 \overrightarrow{MK_i}
-=
--T(M).$$
+$$\sum_{i=1}^4 \overrightarrow{MK_i} = -T(M).$$
 
 **Status:** VALID.
 
@@ -237,13 +214,7 @@ The conclusion is correct, but the prerequisite needed to apply Schur's lemma wa
 
 Assuming $T=\lambda I$,
 
-$$\operatorname{tr}(T)
-=
-4,
-\qquad
-3\lambda=4,
-\qquad
-\lambda=\frac43.$$
+$$\operatorname{tr}(T) = 4, \qquad 3\lambda=4, \qquad \lambda=\frac43.$$
 
 **Status:** VALID.
 
@@ -255,9 +226,7 @@ $$T=\frac43 I,$$
 
 the solution obtains
 
-$$\sum_{i=1}^4 \overrightarrow{MK_i}
-=
-\frac43\,\overrightarrow{MO}.$$
+$$\sum_{i=1}^4 \overrightarrow{MK_i} = \frac43\,\overrightarrow{MO}.$$
 
 **Status:** VALID provided Steps 12 and 13 are justified.
 

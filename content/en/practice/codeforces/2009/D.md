@@ -146,13 +146,7 @@ $$$$
 
 Consequently,
 
-$$PA+PB+PC-PD
-\ge
-AB-(PD-PC)
-\ge
-AB-CD
->
-0.$$
+$$PA+PB+PC-PD \ge AB-(PD-PC) \ge AB-CD > 0.$$
 
 Thus
 
@@ -172,11 +166,7 @@ $$$$
 
 Hence
 
-$$PB+PC+PD-PA
-=
-(PC+PD)-(PA-PB)
-\ge
-CD-AB.$$
+$$PB+PC+PD-PA = (PC+PD)-(PA-PB) \ge CD-AB.$$
 
 This lower bound is not sufficient by itself. Instead, use the leg. The reverse triangle inequality applied to points $A,D,P$ gives
 
@@ -184,11 +174,7 @@ $$$$
 
 Therefore
 
-$$PB+PC+PD-PA
-=
-(PB+PC)-(PA-PD)
-\ge
-AB-AD,$$
+$$PB+PC+PD-PA = (PB+PC)-(PA-PD) \ge AB-AD,$$
 
 because
 
@@ -196,13 +182,7 @@ $$$$
 
 Combining these estimates more directly,
 
-$$PB+PC+PD-PA
-\ge
-BC+(PD-PA)
-\ge
-BC-AD
-=
-0.$$
+$$PB+PC+PD-PA \ge BC+(PD-PA) \ge BC-AD = 0.$$
 
 To obtain strict positivity, observe that equality in both inequalities would require simultaneously that $P$ lie on segment $BC$ and on the ray determined by $A,D$. Since these sets intersect in at most one point and the trapezoid is nondegenerate, equality cannot occur in both steps at once. Hence
 
