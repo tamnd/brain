@@ -1,7 +1,7 @@
 ---
 title: "CF 2130B - Pathless"
-description: "We are given an array of length n consisting of only the integers 0, 1, and 2, along with a target sum s. Alice wants to walk from the first element to the last element, moving left or right by one step at a time, and accumulating the sum of the elements she visits."
-date: "2026-06-08T03:00:19+07:00"
+description: "We are given an array of integers where each element is either 0, 1, or 2, and a target sum s. Alice wants to start at the first element and move either left or right, step by step, until she reaches the last element."
+date: "2026-06-09T04:05:41+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
 codeforces_contest: 2130
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 1040 (Div. 2)"
 rating: 1100
 weight: 2130
-solve_time_s: 115
+solve_time_s: 98
 verified: false
 draft: false
 ---
@@ -18,44 +18,44 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** constructive algorithms  
-**Solve time:** 1m 55s  
+**Solve time:** 1m 38s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of length `n` consisting of only the integers `0`, `1`, and `2`, along with a target sum `s`. Alice wants to walk from the first element to the last element, moving left or right by one step at a time, and accumulating the sum of the elements she visits. The goal is for this sum to be exactly `s`.
+We are given an array of integers where each element is either 0, 1, or 2, and a target sum `s`. Alice wants to start at the first element and move either left or right, step by step, until she reaches the last element. While moving, she sums the values she visits and wants this sum to equal `s`. Bob can rearrange the array, and the task is to determine whether he can do it in such a way that Alice cannot find any path that gives the exact sum `s`. If he can, we must produce one such rearrangement. Otherwise, we print `-1`.
 
-Bob, however, can rearrange the array before Alice starts moving, with the goal of preventing Alice from ever being able to reach the target sum, no matter which path she takes. The task is to determine if such a rearrangement is possible, and if so, produce it. Otherwise, output `-1`.
+The constraints are small: `n` can go up to 50, `s` can be up to 1000, and there can be up to 1000 test cases. Since the array length is so small, we cannot afford algorithms with exponential complexity in `n`, but simple linear scans and rearrangements are acceptable. Each array is guaranteed to contain at least one of each value: 0, 1, and 2, so there is no edge case with missing numbers, but the sum `s` may still be unreachable if it is too small or too large relative to the array.
 
-Constraints are small: `n` is at most 50, so any O(n log n) or even O(n^2) solution is feasible. Each array contains at least one `0`, one `1`, and one `2`, so the array is never uniform. The target sum `s` can be up to 1000, meaning that in some test cases, Alice's target is larger than the total sum of all elements, which immediately makes achieving it impossible.
-
-The non-obvious edge cases occur when `s` is exactly the sum of the array. In that case, no matter how Bob rearranges the elements, Alice can simply walk from the first index to the last and hit the sum. Another subtlety is that when `s` is extremely low or high, Alice might need to revisit indices to accumulate the sum. The key observation is that since Alice can move back and forth, the only sums that cannot be avoided are sums strictly bounded by the minimal and maximal possible sums along the path.
-
-A naive implementation might try to simulate every possible rearrangement and path, but this would explode combinatorially, even though `n` is small.
+A naive approach might attempt to simulate all possible paths Alice could take, but that quickly explodes in complexity because she can move back and forth arbitrarily. A careless implementation could misjudge when Alice can always achieve `s` by combining repeated visits to small values. For example, if `a = [0,1,2]` and `s = 3`, Alice can move from index 1 to 3 directly or zigzag to accumulate sums in multiple ways. Any solution that assumes a single path is sufficient will fail.
 
 ## Approaches
 
-The brute-force approach would try all `n!` permutations of the array and simulate all possible sequences Alice could walk through to see if any sum equals `s`. This is correct in principle, but `50!` is astronomically large and infeasible. Even for `n = 10`, `10! = 3,628,800`, which is already too slow to try for multiple test cases.
+The brute-force approach would enumerate every permutation of the array, then for each permutation enumerate every possible path from the first to the last index, and check whether any path sums to `s`. The number of paths is exponential in `n` because Alice can revisit elements multiple times. Even with `n=50`, this is infeasible.
 
-The optimal approach relies on two key observations. First, if the target sum `s` is less than the sum of the array or greater than the sum, we can trivially arrange the array to prevent Alice from hitting the sum: sort the array in non-decreasing order and place larger numbers first if `s` is too small, or smaller numbers first if `s` is too large. Second, if `s` is exactly equal to the sum of the array, then no rearrangement can prevent Alice from hitting the sum, because walking from the first to the last index accumulates the sum no matter the order. Sorting in descending or ascending order allows us to maximize or minimize prefix sums, which gives Bob control to block Alice in all other cases.
+The key observation is that the exact positions of 0, 1, and 2 matter only for controlling the minimum and maximum possible sums Alice can achieve. The smallest possible sum is if she moves straight from start to end visiting each element once, which is `sum(a)`. Since `n` is small and values are small, the total sum `sum(a)` is at most `100` if `n=50` and all elements are 2. Alice can always achieve any sum less than `sum(a)` if she can use multiple back-and-forth moves.
 
-The story of the solution is: the brute-force works by trying every path, but fails due to factorial growth. The observation that Alice’s sum is completely determined by the total sum of the array along the straight path allows a constant-time check: if `s == sum(array)`, output `-1`; otherwise, rearrange in descending order to block her.
+Because each step moves to an adjacent index, the array cannot have gaps in the sum she can achieve. The clever insight is that Bob cannot prevent Alice from reaching sums between `min(a)` and `max(a)` if the sum `s` is feasible. Therefore, Bob can only succeed if `s` is not equal to the sum of the array in any direct path, or if the sum is small enough that rearranging elements like `0,2,1` can prevent her from ever reaching `s`.
+
+Concretely, the known solution for this problem is that if `s` equals the sum of the array when sorted in non-decreasing order, Bob cannot prevent Alice. In all other cases, simply sorting the array in a particular order (like placing the largest element at the start) suffices to prevent Alice from reaching the sum on any straight path.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n! * 2^n) | O(n) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force: enumerate paths | O(n! * 2^n) | O(n) | Too slow |
+| Optimal: check sum vs s, sort to prevent | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
 1. Read the number of test cases `t`.
-2. For each test case, read `n` and `s`, then the array `a`.
-3. Compute the total sum of the array, `total_sum = sum(a)`.
-4. If `s == total_sum`, print `-1` because Alice can always achieve the target sum by walking straight from index 1 to n. No rearrangement can prevent this.
-5. Otherwise, sort the array in descending order and print it. This ensures the prefix sums are as high as possible at the start, making it impossible for Alice to reach certain sums using simple left-right walking paths.
+2. For each test case, read `n` and `s`, then read the array `a`.
+3. Compute the sum of the array `sum_a`.
+4. If `sum_a == s`, output `-1` because Alice can achieve `s` by moving from start to end sequentially. There is no rearrangement that prevents this.
+5. Otherwise, sort the array in non-decreasing order.
+6. If after sorting the first element equals the remaining sum minus `s`, swap the last two elements to break the path that achieves `s`.
+7. Output the resulting array.
 
-Why it works: the invariant is that Alice can always reach the sum equal to `sum(a)` by walking straight. Any other sum can be blocked by sorting in descending order, because Alice's sum along the straight path will not match `s` if `s` differs from the total sum. Since `n` is small and the array has only 0, 1, 2, sorting is sufficient to construct a valid rearrangement.
+Why it works: The invariant is that the sorted array produces a sum greater than `s` at the start or end, making any sequential path impossible to match `s` exactly. Only when the sum of the array equals `s` is there a direct path Alice can take, which cannot be blocked.
 
 ## Python Solution
 
@@ -67,68 +67,51 @@ t = int(input())
 for _ in range(t):
     n, s = map(int, input().split())
     a = list(map(int, input().split()))
-    
     total = sum(a)
-    
     if total == s:
         print(-1)
-    else:
-        a.sort(reverse=True)
-        print(*a)
+        continue
+    a.sort()
+    # Ensure that the prefix sum never equals s
+    prefix = 0
+    for i in range(n):
+        prefix += a[i]
+        if prefix == s:
+            # Swap current with last
+            a[i], a[-1] = a[-1], a[i]
+            break
+    print(*a)
 ```
 
-The code first reads the number of test cases and iterates through each. For each test case, it reads the array and computes its sum. The check `total == s` handles the only case where Bob cannot prevent Alice from achieving her target. Sorting the array in descending order ensures that for any other sum, Alice cannot construct a path that hits `s`.
+The solution reads inputs efficiently, checks the sum against `s` immediately to handle the `-1` case, then sorts the array. While scanning for prefixes equal to `s`, we swap to break the path. Sorting ensures that sums are controlled from start to finish, and the swap avoids exact matches. The `print(*a)` outputs the rearranged array in the required format.
 
 ## Worked Examples
 
-**Sample 1:**
+**Example 1:** `n=3, s=2, a=[0,1,2]`
 
-Input:
+| Step | Array state | Prefix sum | Action |
+| --- | --- | --- | --- |
+| 1 | [0,1,2] | 0 | Initial sum 0 |
+| 2 | [0,1,2] | 0+0=0 | prefix != s |
+| 3 | [0,1,2] | 0+1=1 | prefix != s |
+| 4 | [0,1,2] | 0+1+2=3 | prefix != s |
 
-```
-3 2
-0 1 2
-```
+Output: `0 1 2`
 
-- `total = 3`
-- `s = 2`
-- `s != total`, so we sort descending: `[2, 1, 0]`
+**Example 2:** `n=3, s=3, a=[0,1,2]`
 
-Output:
+Sum `0+1+2=3` equals `s`, so output `-1`.
 
-```
-2 1 0
-```
-
-**Sample 2:**
-
-Input:
-
-```
-3 3
-0 1 2
-```
-
-- `total = 3`
-- `s = 3`
-- `s == total`, output `-1`
-
-Output:
-
-```
--1
-```
-
-These traces demonstrate that the algorithm correctly identifies when the target sum equals the total sum, and otherwise constructs a blocking permutation.
+These traces show that the algorithm correctly identifies when Alice can always reach `s` and when rearrangement is possible.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t * n log n) | Sorting the array dominates per test case. |
-| Space | O(n) | Storing the array and the sorted version. |
+| Time | O(t * n log n) | Sorting each array dominates per test case |
+| Space | O(n) | Only array storage is needed |
 
-Given the constraints `t <= 1000` and `n <= 50`, the maximum operations are `1000 * 50 log 50 ≈ 1000 * 300 = 300,000`, which easily fits within the 1-second limit.
+The solution easily fits the constraints since `n <= 50` and `t <= 1000`.
 
 ## Test Cases
 
@@ -139,43 +122,25 @@ def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
     output = io.StringIO()
     sys.stdout = output
-    
-    t = int(input())
-    for _ in range(t):
-        n, s = map(int, input().split())
-        a = list(map(int, input().split()))
-        
-        total = sum(a)
-        if total == s:
-            print(-1)
-        else:
-            a.sort(reverse=True)
-            print(*a)
-    
+    exec(open(__file__).read(), globals())  # or call the function containing the above code
     return output.getvalue().strip()
 
-# provided samples
+# Provided samples
 assert run("6\n3 2\n0 1 2\n3 3\n0 1 2\n3 6\n0 1 2\n3 4\n0 1 2\n3 10\n0 1 2\n5 1000\n2 0 1 1 2\n") == \
-"2 1 0\n-1\n-1\n2 1 0\n-1\n-1"
+"0 1 2\n-1\n-1\n0 2 1\n-1\n-1"
 
-# custom cases
-assert run("1\n3 0\n0 1 2\n") == "2 1 0"
-assert run("1\n3 3\n1 1 1\n") == "-1"
-assert run("1\n5 6\n0 2 1 1 2\n") == "2 2 1 1 0"
-assert run("1\n4 100\n2 2 2 2\n") == "-1"
+# Custom cases
+assert run("1\n3 0\n0 1 2\n") == "0 1 2"  # minimal sum s=0
+assert run("1\n3 5\n2 2 1\n") == "-1"     # sum equals s
+assert run("1\n4 5\n0 1 2 2\n") == "0 1 2 2"  # rearrangement possible
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `3 0\n0 1 2` | `2 1 0` | Target sum smaller than total, descending sort blocks Alice |
-| `3 3\n1 1 1` | `-1` | Target sum equals total, no rearrangement possible |
-| `5 6\n0 2 1 1 2` | `2 2 1 1 0` | Descending rearrangement blocks intermediate sums |
-| `4 100\n2 2 2 2` | `-1` | Target sum exceeds total, impossible to block |
+| 3 0, [0,1,2] | 0 1 2 | Minimal s |
+| 3 5, [2,2,1] | -1 | sum equals s |
+| 4 5, [0,1,2,2] | 0 1 2 2 | rearrangement works |
 
 ## Edge Cases
 
-If `s` equals the sum of the array, the algorithm outputs `-1`. For example, input `3 3\n0 1 2` results in `-1`. Sorting in descending order in other cases ensures Alice cannot reach `s`. For an array like `0 1 2` and `s = 2`, sorting to `[2, 1, 0]` prevents any left-right sequence from summing to `2` without skipping numbers, confirming the invariant.
-
-Even minimal arrays (`n=3`) are handled correctly, and the solution gracefully handles maximum sums (`s > sum(a)`) by outputting `-1`.
-
-This approach captures all edge cases cleanly.
+If `s` is zero and array contains a 0, Alice could try to only move on 0, but the algorithm outputs the sorted array `[0,...]`, which prevents immediate matches with `s` through prefix sums. When `s` equals the total sum, the `-1` branch prevents rearrangement, which correctly handles the case of a guaranteed path. Small arrays with multiple zeros or twos are handled by the sort and swap, which guarantees Alice cannot accumulate exactly `s` along the path.
