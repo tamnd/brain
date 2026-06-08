@@ -1,7 +1,7 @@
 ---
 title: "CF 2025B - Binomial Coefficients, Kind Of"
-description: "We are given a triangular table similar to Pascal’s triangle, but it is generated using a slightly incorrect recurrence. For every pair $(n, k)$, the value $C[n][k]$ is built in a dynamic-programming style over all previous rows."
-date: "2026-06-08T12:23:32+07:00"
+description: "The code in the statement tries to build a Pascal triangle, but the recurrence is wrong. Instead of $$C[n][k] = C[n-1][k] + C[n-1][k-1]$$ it computes $$C[n][k] = C[n][k-1] + C[n-1][k-1].$$ The boundary values are still initialized as $$C[n][0] = 1,qquad C[n][n] = 1."
+date: "2026-06-09T03:20:23+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp", "math"]
 categories: ["algorithms"]
 codeforces_contest: 2025
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Educational Codeforces Round 170 (Rated for Div. 2)"
 rating: 1100
 weight: 2025
-solve_time_s: 113
+solve_time_s: 437
 verified: false
 draft: false
 ---
@@ -18,62 +18,166 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** combinatorics, dp, math  
-**Solve time:** 1m 53s  
+**Solve time:** 7m 17s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a triangular table similar to Pascal’s triangle, but it is generated using a slightly incorrect recurrence. For every pair $(n, k)$, the value $C[n][k]$ is built in a dynamic-programming style over all previous rows.
+The code in the statement tries to build a Pascal triangle, but the recurrence is wrong.
 
-Instead of the standard binomial recurrence, the table is filled row by row using the rule that each interior entry depends on its left neighbor in the same row and the upper-left diagonal entry from the previous row. The boundaries of each row are fixed to 1. After the table is conceptually constructed up to large indices, we are asked to answer many independent queries asking for specific entries of this table modulo $10^9 + 7$.
+Instead of
 
-Each query is a coordinate in this triangle, and we must return the value that would appear at that position if the entire construction process were executed exactly as described.
+$$C[n][k] = C[n-1][k] + C[n-1][k-1]$$
 
-The constraints are the main difficulty. There can be up to $10^5$ queries, and indices go up to $10^5$. A direct construction of the full triangle would require summing over roughly $O(n^2)$ states, which is on the order of $10^{10}$ operations in the worst case. This is far beyond feasible limits in 2 seconds. Even building only up to the maximum $n$ is too large if done naively.
+it computes
 
-A subtle issue is that the recurrence is not the usual binomial one, so standard combinatorial shortcuts do not immediately apply. A naive coder might still try to interpret it as binomial coefficients and use precomputed factorials and modular inverses, which would silently give incorrect answers.
+$$C[n][k] = C[n][k-1] + C[n-1][k-1].$$
 
-A second pitfall is assuming the table is symmetric or follows simple monotonic growth properties like Pascal’s triangle. In reality, the left-to-right dependency breaks that symmetry, so values depend on order of computation, not just the set of indices.
+The boundary values are still initialized as
+
+$$C[n][0] = 1,\qquad C[n][n] = 1.$$
+
+For many queries $(n,k)$, we must determine the value produced by this incorrect recurrence and print it modulo $10^9+7$.
+
+The first input line gives the number of queries. The second line contains all $n_i$ values and the third line contains the corresponding $k_i$ values. For every pair $(n_i,k_i)$, we must output the entry that appears in the wrongly generated triangle.
+
+The largest $n$ is $10^5$, and there can also be $10^5$ queries. Any algorithm that explicitly constructs a triangle of size $10^5$ is impossible. A triangle with $10^5$ rows contains roughly $5 \cdot 10^9$ cells, far beyond both the time and memory limits.
+
+The constraints strongly suggest that there is a simple closed-form expression for the values. Once that expression is found, preprocessing up to $10^5$ and answering each query in $O(1)$ time becomes feasible.
+
+A subtle trap is assuming that the wrong recurrence still produces ordinary binomial coefficients. For example:
+
+Input:
+
+```
+1
+5
+2
+```
+
+The correct binomial coefficient would be
+
+$$\binom{5}{2}=10,$$
+
+but the wrong triangle gives 4, so directly using combinations produces the wrong answer.
+
+Another easy mistake is to derive a formula involving powers of two but forget the modulo operation. For large $k$, values grow exponentially. For example, $k=99999$ requires modular exponentiation. Ordinary integer powers would be far too large.
+
+A third trap is trying to build rows up to the queried $n$. The answer actually turns out to depend only on $k$, so any solution that processes all rows up to $10^5$ for every query will time out.
 
 ## Approaches
 
-A brute-force approach would explicitly construct the table row by row. For each row $n$, we would set $C[n][0] = C[n][n] = 1$, and then for each $k$ from $1$ to $n-1$, compute $C[n][k]$ using previously computed values. This is correct by definition, since it follows the recurrence exactly.
+The most direct approach is to simulate exactly what the buggy code does.
 
-The problem is the number of operations. Row $n$ requires $O(n)$ work, and summing over all rows up to $N$ gives $O(N^2)$. With $N = 10^5$, this is about five billion operations, which is too slow even in optimized C++ and completely infeasible in Python.
+We initialize $C[n][0]=1$ and $C[n][n]=1$, then fill every interior position using the given recurrence. This reproduces the intended triangle exactly, so it is obviously correct.
 
-The key observation is to reinterpret the recurrence. The value at $(n, k)$ accumulates contributions from two sources: it inherits 1 from the left boundary via repeated additions along the row, and it also carries contributions from the previous row’s diagonal structure. If we unroll the recurrence carefully, we discover that each entry counts weighted paths in a grid where moves either come from the left or from the upper-left diagonal.
+The problem is scale. To answer queries up to $n=10^5$, we would need to construct all rows up to $10^5$. The number of entries is
 
-This structure corresponds exactly to counting paths where each step either moves right within the same row or moves down-right from the previous row. Such paths are combinatorial in nature, and each $C[n][k]$ becomes a binomial coefficient in disguise: specifically, the number of ways to choose when the diagonal moves occur among all moves.
+$$1+2+\cdots+100000 \approx 5 \times 10^9,$$
 
-This reduces the problem to computing standard binomial coefficients $\binom{n+k-1}{k}$ modulo $10^9+7$. Once this identity is recognized, each query becomes an independent binomial coefficient computation, which can be answered in $O(1)$ after factorial precomputation.
+which is completely infeasible.
+
+To get further, we need to understand the structure of the recurrence.
+
+Let us write out the first few rows:
+
+| n | Row values |
+| --- | --- |
+| 0 | 1 |
+| 1 | 1 1 |
+| 2 | 1 2 1 |
+| 3 | 1 2 4 1 |
+| 4 | 1 2 4 8 1 |
+| 5 | 1 2 4 8 16 1 |
+
+A pattern appears immediately. Every interior value seems to be a power of two.
+
+Suppose every row above satisfies
+
+$$C[n-1][k]=2^k$$
+
+for interior positions.
+
+Then
+
+$$C[n][k]
+=
+C[n][k-1]+C[n-1][k-1].$$
+
+If $C[n][k-1]=2^{k-1}$ and $C[n-1][k-1]=2^{k-1}$, then
+
+$$C[n][k]
+=
+2^{k-1}+2^{k-1}
+=
+2^k.$$
+
+This proves by induction that every interior entry equals $2^k$.
+
+The row index $n$ disappears entirely. As long as $1 \le k < n$,
+
+$$C[n][k] = 2^k.$$
+
+The whole problem reduces to answering powers of two modulo $10^9+7$.
+
+Since $k\le 99999$, we can precompute
+
+$$pow2[i]=2^i \bmod (10^9+7)$$
+
+for all needed exponents and answer every query in constant time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force DP table | $O(n^2)$ | $O(n^2)$ | Too slow |
-| Factorials + inverse factorials | $O(N + t)$ | $O(N)$ | Accepted |
+| Brute Force triangle construction | $O(N^2)$ | $O(N^2)$ | Too slow |
+| Power-of-two observation + preprocessing | $O(K_{\max}+t)$ | $O(K_{\max})$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Precompute factorials up to $2 \cdot 10^5$.
+1. Read all query pairs.
+2. Find the largest queried value of $k$. This determines how many powers of two we must precompute.
+3. Build an array `pow2` where `pow2[i] = 2^i mod M`.
+4. Initialize `pow2[0] = 1`.
+5. For each `i` from 1 to `max_k`, compute
 
-This range is needed because the largest value we compute is of the form $\binom{n+k-1}{k}$, where the top can reach about $2 \cdot 10^5$.
-2. Precompute modular inverses of factorials using Fermat’s little theorem.
+$$pow2[i] = 2 \cdot pow2[i-1] \pmod M.$$
 
-Since the modulus is prime, we can compute inverse factorials efficiently after computing the factorial array.
-3. For each query $(n, k)$, compute the transformed index $n + k - 1$.
+This gives every required power of two in linear time.
+6. For each query $(n,k)$, output `pow2[k]`.
 
-This comes from interpreting the DP as counting sequences of moves where total steps combine row and column progression.
-4. Evaluate the binomial coefficient using the standard formula
-
-$$\binom{n+k-1}{k} = \frac{(n+k-1)!}{k!(n-1)!}$$
-
-modulo $10^9+7$.
-5. Output the result for each query.
+The derived formula shows that every interior entry of the buggy triangle equals $2^k$, independent of $n$.
 
 ### Why it works
 
-The recurrence defines a path-counting process on a lattice where each state accumulates contributions from exactly two predecessors: one horizontal and one diagonal. Unrolling this recurrence shows that reaching $(n, k)$ corresponds to arranging a sequence of $k$ diagonal moves among $n+k-1$ total transitions. Each arrangement uniquely maps to one valid construction path, so the count is exactly a binomial coefficient. Since all transitions preserve modular addition, the combinatorial interpretation matches the DP exactly.
+We prove that every interior entry satisfies
+
+$$C[n][k]=2^k$$
+
+for $1\le k<n$.
+
+The base case is $k=1$:
+
+$$C[n][1]
+=
+C[n][0]+C[n-1][0]
+=
+1+1
+=
+2
+=
+2^1.$$
+
+Assume for some $k>1$ that all interior entries with column $k-1$ equal $2^{k-1}$. Then
+
+$$C[n][k]
+=
+C[n][k-1]+C[n-1][k-1]
+=
+2^{k-1}+2^{k-1}
+=
+2^k.$$
+
+Thus every interior column $k$ equals $2^k$. Since the formula depends only on $k$, every query answer is simply $2^k$ modulo $10^9+7$.
 
 ## Python Solution
 
@@ -81,166 +185,228 @@ The recurrence defines a path-counting process on a lattice where each state acc
 import sys
 input = sys.stdin.readline
 
-MOD = 10**9 + 7
-MAXN = 200000 + 5
-
-fact = [1] * MAXN
-invfact = [1] * MAXN
-
-for i in range(1, MAXN):
-    fact[i] = fact[i - 1] * i % MOD
-
-invfact[MAXN - 1] = pow(fact[MAXN - 1], MOD - 2, MOD)
-for i in range(MAXN - 2, -1, -1):
-    invfact[i] = invfact[i + 1] * (i + 1) % MOD
-
-def ncr(n, r):
-    if r < 0 or r > n:
-        return 0
-    return fact[n] * invfact[r] % MOD * invfact[n - r] % MOD
+MOD = 1000000007
 
 t = int(input())
-n_list = list(map(int, input().split()))
-k_list = list(map(int, input().split()))
+n = list(map(int, input().split()))
+k = list(map(int, input().split()))
 
-out = []
-for n, k in zip(n_list, k_list):
-    out.append(str(ncr(n + k - 1, k)))
+max_k = max(k)
 
-print("\n".join(out))
+pow2 = [0] * (max_k + 1)
+pow2[0] = 1
+
+for i in range(1, max_k + 1):
+    pow2[i] = (pow2[i - 1] * 2) % MOD
+
+print(*[pow2[x] for x in k])
 ```
 
-The solution relies entirely on turning the recurrence into a combinatorial identity. The factorial precomputation is done once up to twice the maximum index since the binomial arguments can reach that size. Each query then becomes a constant-time lookup with two multiplications and modular inverses via precomputed arrays.
+The solution never uses the queried values of $n$. The proof shows that every valid interior position depends only on the column index $k$.
 
-A common implementation mistake is underestimating the maximum factorial range. Since $n + k - 1$ can reach nearly $2 \cdot 10^5$, anything smaller risks out-of-bounds errors or incorrect results. Another subtle point is the order of multiplication in modular arithmetic, which must always avoid intermediate overflow, though Python handles large integers safely.
+The preprocessing array stores all powers of two that may be needed. Since the maximum possible $k$ is less than $10^5$, this requires only about one hundred thousand entries.
+
+An easy implementation mistake is to compute powers separately for each query using repeated multiplication. That would still pass, but preprocessing is simpler and avoids redundant work. Another common mistake is forgetting the modulo at every multiplication step, which causes numbers to become enormous.
 
 ## Worked Examples
 
-We illustrate the computation using representative queries.
+### Sample 1
 
-### Example 1
+Input:
 
-Input query: $n = 5, k = 3$
+```
+7
+2 5 5 100000 100000 100000 100000
+1 2 3 1 33333 66666 99999
+```
 
-We compute:
+Precomputed values:
 
-$$C[5][3] = \binom{5 + 3 - 1}{3} = \binom{7}{3}$$
+| k | 2^k mod M |
+| --- | --- |
+| 1 | 2 |
+| 2 | 4 |
+| 3 | 8 |
+| 33333 | 326186014 |
+| 66666 | 984426998 |
+| 99999 | 303861760 |
 
-| Step | n+k-1 | r | Result |
-| --- | --- | --- | --- |
-| Input | 5,3 | - | - |
-| Transform | 7 | 3 | - |
-| Compute | 7 | 3 | 35 |
+Query processing:
 
-Output is 35 modulo $10^9+7$, so 35.
+| Query | k | Answer |
+| --- | --- | --- |
+| (2,1) | 1 | 2 |
+| (5,2) | 2 | 4 |
+| (5,3) | 3 | 8 |
+| (100000,1) | 1 | 2 |
+| (100000,33333) | 33333 | 326186014 |
+| (100000,66666) | 66666 | 984426998 |
+| (100000,99999) | 99999 | 303861760 |
 
-This confirms how a DP entry becomes a standard combinatorial selection count.
+This example demonstrates the central observation: even though the row indices vary dramatically, the answer depends only on $k$.
 
-### Example 2
+### Constructed Example
 
-Input query: $n = 4, k = 1$
+Input:
 
-We compute:
+```
+3
+3 4 6
+1 2 5
+```
 
-$$C[4][1] = \binom{4}{1} = 4$$
+Preprocessing:
 
-| Step | n+k-1 | r | Result |
-| --- | --- | --- | --- |
-| Input | 4,1 | - | - |
-| Transform | 4 | 1 | - |
-| Compute | 4 | 1 | 4 |
+| k | 2^k |
+| --- | --- |
+| 1 | 2 |
+| 2 | 4 |
+| 5 | 32 |
 
-This case shows boundary behavior where $k = 1$ collapses directly to a simple linear count.
+Queries:
+
+| Query | k | Answer |
+| --- | --- | --- |
+| (3,1) | 1 | 2 |
+| (4,2) | 2 | 4 |
+| (6,5) | 5 | 32 |
+
+Output:
+
+```
+2 4 32
+```
+
+This trace shows that even positions very close to the right boundary still follow the same formula.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(N + t)$ | factorial preprocessing takes linear time, each query is constant |
-| Space | $O(N)$ | storing factorial and inverse factorial arrays |
+| Time | $O(\max k + t)$ | Precompute powers once, then answer each query in constant time |
+| Space | $O(\max k)$ | Store all powers of two up to the largest queried exponent |
 
-The preprocessing cost is small enough for $N = 10^5$, and query handling is fully independent per test case. This fits comfortably within both time and memory constraints.
+With $\max k < 10^5$ and $t \le 10^5$, both time and memory usage are tiny compared to the limits.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
-MOD = 10**9 + 7
-MAXN = 200000 + 5
-
-fact = [1] * MAXN
-invfact = [1] * MAXN
-for i in range(1, MAXN):
-    fact[i] = fact[i - 1] * i % MOD
-invfact[MAXN - 1] = pow(fact[MAXN - 1], MOD - 2, MOD)
-for i in range(MAXN - 2, -1, -1):
-    invfact[i] = invfact[i + 1] * (i + 1) % MOD
-
-def ncr(n, r):
-    if r < 0 or r > n:
-        return 0
-    return fact[n] * invfact[r] % MOD * invfact[n - r] % MOD
-
-def solve(inp: str) -> str:
+def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+
+    MOD = 1000000007
+
     t = int(input())
-    n_list = list(map(int, input().split()))
-    k_list = list(map(int, input().split()))
-    res = []
-    for n, k in zip(n_list, k_list):
-        res.append(str(ncr(n + k - 1, k)))
-    return "\n".join(res)
+    n = list(map(int, input().split()))
+    k = list(map(int, input().split()))
+
+    mx = max(k)
+
+    pow2 = [0] * (mx + 1)
+    pow2[0] = 1
+
+    for i in range(1, mx + 1):
+        pow2[i] = (pow2[i - 1] * 2) % MOD
+
+    return " ".join(str(pow2[x]) for x in k)
 
 # provided sample
-assert solve("""7
+assert run(
+"""7
 2 5 5 100000 100000 100000 100000
 1 2 3 1 33333 66666 99999
-""") == """2
-4
-8
+"""
+) == "2 4 8 2 326186014 984426998 303861760"
+
+# minimum valid input
+assert run(
+"""1
 2
-326186014
-984426998
-303861760"""
+1
+"""
+) == "2"
 
-# edge: minimum k
-assert solve("""3
-2 3 4
-1 1 1
-""") == """2
-3
-4"""
+# several rows, same k
+assert run(
+"""4
+3 4 10 100
+1 1 1 1
+"""
+) == "2 2 2 2"
 
-# edge: k = n-1
-assert solve("""3
-5 6 7
-4 5 6
-""") == """5
-6
-7"""
+# small powers
+assert run(
+"""5
+2 3 4 5 6
+1 2 3 4 5
+"""
+) == "2 4 8 16 32"
 
-# edge: small mixed
-assert solve("""4
-3 4 5 6
-1 2 3 4
-""") == """3
-6
-10
-15"""
+# boundary near right edge
+assert run(
+"""2
+5 10
+4 9
+"""
+) == "16 512"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| sample | given | correctness on mixed large values |
-| k = 1 cases | linear outputs | boundary behavior |
-| k = n-1 cases | symmetry-like edge | upper diagonal correctness |
-| small progressive | triangular growth | general recurrence consistency |
+| `n=2, k=1` | `2` | Smallest valid query |
+| Many different rows, same `k=1` | `2 2 2 2` | Independence from `n` |
+| Consecutive small powers | `2 4 8 16 32` | Correct power generation |
+| `(5,4)` and `(10,9)` | `16 512` | Values near the right boundary |
 
 ## Edge Cases
 
-A critical edge case is when $k = 1$. In that situation the formula becomes $C[n][1] = \binom{n}{1} = n$. The DP interpretation confirms this because there is exactly one diagonal move, and all remaining transitions are horizontal, so every position contributes exactly one valid configuration.
+Consider the smallest possible query:
 
-Another case is $k = n-1$, where the result becomes $\binom{2n-2}{n-1}$, a large symmetric binomial coefficient. The algorithm handles this correctly because factorials are precomputed up to twice the maximum $n$, and modular inverses ensure no precision loss.
+```
+1
+2
+1
+```
 
-Finally, when $n$ is large and $k$ is near the middle, the binomial values peak. These cases stress the correctness of modular arithmetic rather than logic. Since all operations are done modulo a prime with precomputed inverses, overflow and precision issues are avoided entirely.
+The recurrence gives
+
+$$C[2][1]=C[2][0]+C[1][0]=1+1=2.$$
+
+The algorithm returns $2^1=2$, which matches exactly.
+
+Consider a query near the right boundary:
+
+```
+1
+5
+4
+```
+
+A manual construction gives row 5 as
+
+$$[1,2,4,8,16,1].$$
+
+The answer is 16. The algorithm returns $2^4=16$, so being close to the boundary does not change the formula.
+
+Consider two queries with the same column but different rows:
+
+```
+2
+10 100000
+3 3
+```
+
+The recurrence produces 8 in column 3 regardless of the row. The algorithm outputs $2^3=8$ for both queries. This confirms that the row index plays no role once the formula has been derived.
+
+Finally, consider the largest exponent:
+
+```
+1
+100000
+99999
+```
+
+The actual value is astronomically large. The algorithm never stores that integer directly. It computes powers modulo $10^9+7$ during preprocessing, producing the required result efficiently within the limits.
