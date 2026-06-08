@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1460 solved, 26 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1462 solved, 27 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1460
-kvant_verified: 26
+kvant_total: 1462
+kvant_verified: 27
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1460 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 26 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1462 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 27 solutions have been independently verified.
 
 ## 1970
 
@@ -1608,7 +1608,7 @@ draft: false
 
 ## 1983
 
-57 problems across Issues 1–12, 4 verified.
+58 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1678,6 +1678,7 @@ draft: false
 | [812](812.md) *S. I. Maizus*. The sum is | ✓ | 13m31s |
 | [813](813.md) *V. V. Prasolov*. Consider three segments $OA$, $OB$, and $OC$ of equal length $R$, with $B$ inside the angle $AOC$. |  | 1m43s |
 | [814](814.md) *L. D. Kurlyandschik*. A natural number is representable as a sum of two squares if and only if every prime congruent to $3 \\pmod 4$ appears with even exponent in its prime factorization. |  | 9m33s |
+| [815](815.md) *A. A. Razborov*. Place the $4k$ points on a circle in their cyclic order and denote their labels by $a_1,a_2,\\ldots,a_{4k}$. |  | 32m37s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1983_8/)
 
@@ -1729,7 +1730,7 @@ draft: false
 
 ## 1984
 
-54 problems across Issues 1–12.
+55 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1737,6 +1738,7 @@ draft: false
 |---|---------|---|------|
 | [841](841.md) Consider a right triangle $ABC$ with right angle at $C$. |  | 1m17s |
 | [842](842.md) *L. D. Kurlyandchik*. Consider the first identity $\\sin\\alpha + \\sin\\beta + \\sin\\gamma$ under the constraint $\\alpha + \\beta + \\gamma = 0$. |  | 7m11s |
+| [843](843.md) *A. A. Yagubyants*. Let the plane of the triangle be $z=0$. | ✓ | 10m37s |
 | [844](844.md) *V. E. Kolosov*. For the first representation, the coefficients are constrained by $0\\le a_k\\le k$. |  | 4m37s |
 | [845](845.md) *V. G. Belov*. We consider the problem of forming a centrally symmetric polygon using two types of tiles: a “corner” formed by four $1\\times1$ squares arranged in an L-shape, and $4\\times1$ rectangles. |  | 1m39s |
 
