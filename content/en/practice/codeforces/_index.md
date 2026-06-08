@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 616 contests, 3298 problems, 1842 verified."
+description: "Codeforces problem solutions with full editorial. 616 contests, 3300 problems, 1845 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**616 contests, 3298 problems, 1842 verified.**
+**616 contests, 3300 problems, 1845 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -478,7 +478,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2056](2056/) | [Codeforces Round 997 (Div. 2)](https://codeforces.com/contest/2056) | Div. 2 | 800-3000 | 1/7 | 14m 23s |
 | [2057](2057/) | [Hello 2025](https://codeforces.com/contest/2057) | Special | 800-3500 | 1/9 | 17m 45s |
 | [2059](2059/) | [Codeforces Round 1002 (Div. 2)](https://codeforces.com/contest/2059) | Div. 2 | 800-2900 | 1/6 | 10m 41s |
-| [2060](2060/) | [Codeforces Round 998 (Div. 3)](https://codeforces.com/contest/2060) | Div. 3 | 800-2200 | 1/5 | 7m 43s |
+| [2060](2060/) | [Codeforces Round 998 (Div. 3)](https://codeforces.com/contest/2060) | Div. 3 | 800-2400 | 4/7 | 11m 10s |
 | [2061](2061/) | [IAEPC Preliminary Contest (Codeforces Round 999, Div. 1 + Div. 2)](https://codeforces.com/contest/2061) | Div. 1+2 | 800-3500 | 3/11 | 20m 29s |
 | [2062](2062/) | [Ethflow Round 1 (Codeforces Round 1001, Div. 1 + Div. 2)](https://codeforces.com/contest/2062) | Div. 1+2 | 800-3500 | 1/9 | 17m 45s |
 | [2063](2063/) | [Codeforces Round 1000 (Div. 2)](https://codeforces.com/contest/2063) | Div. 2 | 800-2700 | 2/7 | 13m 8s |
