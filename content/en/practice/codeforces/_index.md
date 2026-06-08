@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 733 contests, 4101 problems, 2149 verified."
+description: "Codeforces problem solutions with full editorial. 734 contests, 4104 problems, 2149 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**733 contests, 4101 problems, 2149 verified.**
+**734 contests, 4104 problems, 2149 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1875](1875/) | [Codeforces Round 901 (Div. 2)](https://codeforces.com/contest/1875) | Div. 2 | 900-1600 | 0/3 | 7m 39s |
 | [1876](1876/) | [Codeforces Round 902 (Div. 1, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1876) | Div. 1 | 1000-3500 | 2/7 | 17m 32s |
 | [1877](1877/) | [Codeforces Round 902 (Div. 2, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1877) | Div. 2 | 800-1200 | 1/2 | 3m 38s |
 | [1878](1878/) | [Codeforces Round 900 (Div. 3)](https://codeforces.com/contest/1878) | Div. 3 | 800-2300 | 4/7 | 12m 56s |
