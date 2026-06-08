@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4291 problems, 2213 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4295 problems, 2215 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4291 problems, 2213 verified.**
+**750 contests, 4295 problems, 2215 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -629,7 +629,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2074](2074/) | [Codeforces Round 1009 (Div. 3)](https://codeforces.com/contest/2074) | Div. 3 | 800-2100 | 4/7 | 10m 28s |
 | [2075](2075/) | [Educational Codeforces Round 176 (Rated for Div. 2)](https://codeforces.com/contest/2075) | Div. 2 | 800-3000 | 1/6 | 9m 36s |
 | [2077](2077/) | [Codeforces Round 1008 (Div. 1)](https://codeforces.com/contest/2077) | Div. 1 | 1500-3500 | 2/7 | 11m 14s |
-| [2078](2078/) | [Codeforces Round 1008 (Div. 2)](https://codeforces.com/contest/2078) | Div. 2 | 800-1800 | 1/3 | 4m 43s |
+| [2078](2078/) | [Codeforces Round 1008 (Div. 2)](https://codeforces.com/contest/2078) | Div. 2 | 800-2700 | 3/7 | 11m 26s |
 | [2079](2079/) | [XIX Open Olympiad in Informatics - Final Stage, Day 1 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2079) | ICPC/IOI | 1800-3300 | 3/4 | 3m 34s |
 | [2080](2080/) | [XIX Open Olympiad in Informatics - Final Stage, Day 2 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2080) | ICPC/IOI | 1700-3400 | 2/4 | 3m 2s |
 | [2081](2081/) | [Codeforces Round 1010 (Div. 1, Unrated)](https://codeforces.com/contest/2081) | Div. 1 | 1800-3400 | 2/8 | 11m 13s |
