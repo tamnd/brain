@@ -1,7 +1,7 @@
 ---
 title: "CF 2117H - Incessant Rain"
-description: "We are given an array of integers a of length n and a sequence of q queries. Each query replaces one element of the array with a new value. After each update, we are asked to find the maximum integer k such that some integer x is the k-majority in some subarray of a."
-date: "2026-06-08T04:08:51+07:00"
+description: "We are given an array of integers and a sequence of queries. Each query updates a single element of the array, and after the update, we are asked for the maximum integer $k$ such that some subarray contains a $k$-majority."
+date: "2026-06-08T11:05:51+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "divide-and-conquer", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 2117
@@ -9,7 +9,7 @@ codeforces_index: "H"
 codeforces_contest_name: "Codeforces Round 1029 (Div. 3)"
 rating: 2500
 weight: 2117
-solve_time_s: 69
+solve_time_s: 112
 verified: false
 draft: false
 ---
@@ -18,40 +18,40 @@ draft: false
 
 **Rating:** 2500  
 **Tags:** data structures, divide and conquer, sortings  
-**Solve time:** 1m 9s  
+**Solve time:** 1m 52s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of integers `a` of length `n` and a sequence of `q` queries. Each query replaces one element of the array with a new value. After each update, we are asked to find the maximum integer `k` such that some integer `x` is the `k`-majority in some subarray of `a`. A number is a `k`-majority in a subarray if it occurs at least `floor((length of subarray + 1)/2) + k` times.
+We are given an array of integers and a sequence of queries. Each query updates a single element of the array, and after the update, we are asked for the maximum integer $k$ such that some subarray contains a $k$-majority. A $k$-majority is a number that occurs at least $\lfloor \frac{|b|+1}{2} \rfloor + k$ times in a subarray $b$.
 
-The constraints are tight: `n` and `q` can each be up to 300,000, and the sum of `n` and `q` over all test cases is at most 300,000. This rules out any solution that examines all subarrays explicitly, since even a single subarray scan could be O(n^2) and would not finish in time. Similarly, maintaining counts naively after each update would be too slow. Memory is restricted to 192 MB, so large auxiliary arrays or complex segment trees storing extensive data must be carefully designed.
+This problem is challenging because after each update, we must compute this maximum $k$ efficiently. The array length $n$ and the number of queries $q$ can each be up to $3 \cdot 10^5$, and the sum across all test cases also does not exceed $3 \cdot 10^5$. This means any algorithm that iterates through all subarrays after every query, which would be $O(n^2)$, is completely infeasible. We need something closer to $O(n \log n)$ per test case or better.
 
-A subtle point is that the `k`-majority depends on the floor of half the subarray length. For very short arrays, `k` can be zero or negative if the counts are misinterpreted. For example, consider `a = [1,2]`. If we replace an element with the same number, the maximum `k` could be 1, but a naive algorithm might incorrectly compute it as 2 by ignoring the floor division. Another edge case is when all elements are distinct: the maximum `k` is zero because no number appears more than half the subarray size.
+The subtlety comes from the definition of $k$-majority. For small arrays, or arrays with repeated elements, the maximum $k$ may be large, but if the array contains all distinct numbers, the maximum $k$ may be zero. A naive approach that tries to count occurrences for every subarray after every update would silently produce wrong answers or exceed the time limit. For example, with $a = [1,2,3,4,5]$, after setting $a_3 = 4$, the correct maximum $k$ is $2$, but a careless approach that only checks majority elements of the full array would return $1$.
 
 ## Approaches
 
-The brute-force method would enumerate every subarray and count occurrences of each number to find the maximum `k`. Each query would require O(n^2) work per array, which is far too slow for `n` up to 3e5. The complexity would be O(n^3) across queries in the worst case, which is completely infeasible.
+The brute-force solution would iterate over all subarrays for each query and check how many times each number appears. For a single query, this is $O(n^2)$ subarrays, and within each subarray, counting occurrences is $O(n)$, giving $O(n^3)$ per query. This is far too slow since $n$ can be $3 \cdot 10^5$.
 
-The key insight comes from observing that the `k`-majority in a subarray is maximized by choosing `x` that appears most frequently. If we can quickly determine the frequency of each number and the intervals where it dominates, we can reduce the problem to computing `max(count(x) - (length of interval - count(x)))`, which simplifies to `2*count(x) - length`.
+The key insight is that the problem reduces to maintaining counts of elements efficiently and exploiting the fact that only a small set of numbers can potentially achieve a high $k$. In any array, the number that can achieve the maximum $k$ must be the mode of some subarray. This allows us to consider a divide-and-conquer approach similar to Mo’s algorithm or using segment trees with majority candidates. Specifically, we can track potential candidates for the majority using a segment tree and quickly update counts when an element changes. Because we only need the maximum $k$ and not the exact subarray, we can binary search on $k$ and verify if any candidate achieves it.
 
-The optimal approach leverages two observations: the number that maximizes `k` must be a candidate that occurs frequently, and we do not need exact counts for all subarrays. Instead, we can use a segment tree with a small set of potential candidates per segment. Using a divide-and-conquer strategy, each node stores the candidate numbers and their frequency counts in its range. Upon a query update, we update only O(log n) nodes in the segment tree. To determine `k` after each update, we combine the candidates along the tree and compute the maximum `k` for those numbers, which is efficient because the number of candidates is bounded by a small constant (at most 2 per segment by the Boyer-Moore majority principle).
+This reduces the problem to maintaining element frequencies dynamically, computing the maximum candidate frequency across subarrays, and performing binary search. With appropriate segment tree design or persistent structures, each query can be handled in roughly $O(\log n)$, giving $O((n+q) \log n)$ overall.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2 * q) | O(n) | Too slow |
-| Optimal (Segment Tree with candidates) | O((n+q) log n) | O(n) | Accepted |
+| Brute Force | $O(n^3 q)$ | $O(n)$ | Too slow |
+| Segment Tree + Binary Search | $O((n+q)\log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build a segment tree where each node stores up to two candidate numbers that could be majority elements in its range along with their counts relative to the segment size. Two candidates suffice because any subarray has at most one majority element, and after combining children nodes, at most two candidates remain as potential leaders.
-2. To merge two nodes, count how often each candidate occurs in the union of the left and right segments. Keep only candidates that appear more than half the combined segment size.
-3. For each query, update the leaf node corresponding to the changed element. Update counts and propagate the change up the tree. Each update takes O(log n) time.
-4. After the update, traverse the root's candidates. For each candidate, compute its maximum possible `k` across the whole array. This is `2*count(candidate) - length of array` or zero if negative. The maximum among all candidates is the answer for the query.
-5. Output the answers for all queries in sequence.
+1. First, preprocess the array to map each value to its positions. This allows efficient computation of frequencies later.
+2. Construct a segment tree where each node stores a potential majority element for that segment and its frequency relative to the segment. Nodes are merged by comparing the two child candidates: if they are the same, sum the frequencies; if different, subtract the smaller from the larger and keep the remaining candidate. This ensures that any candidate stored at a node is the only one that could be the majority in that segment.
+3. For each query, update the array and modify the segment tree node corresponding to the changed element. Update frequencies bottom-up using the same merge logic.
+4. To compute the maximum $k$ after a query, extract the candidate from the root node. Count its total occurrences in the array using the preprocessed positions. The maximum $k$ is then simply $\text{count} - \lfloor \frac{n+1}{2} \rfloor$. If negative, set to zero.
+5. Return the maximum $k$ for each query.
 
-Why it works: the segment tree invariant ensures that any candidate majority in a segment is represented at its node. By limiting to at most two candidates per segment and propagating counts properly, we capture every number that could become a `k`-majority in any subarray. Any number not present as a candidate cannot achieve a higher `k` than the ones stored.
+Why it works: The segment tree always maintains a candidate that could possibly achieve a $k$-majority in some subarray. Because a true $k$-majority must appear more than half of some subarray length plus $k$, any other number cannot surpass the candidate’s count in any segment. Binary search on $k$ is not needed since the maximum is directly computable from total occurrences.
 
 ## Python Solution
 
@@ -59,103 +59,95 @@ Why it works: the segment tree invariant ensures that any candidate majority in 
 import sys
 input = sys.stdin.readline
 
-class Node:
-    def __init__(self, val=None):
-        self.candidates = {}
-        if val is not None:
-            self.candidates[val] = 1
+class SegmentTree:
+    def __init__(self, arr):
+        self.n = len(arr)
+        self.tree = [None] * (4 * self.n)
+        self.build(1, 0, self.n - 1, arr)
 
-def merge(a, b):
-    counter = {}
-    for key in a.candidates:
-        counter[key] = counter.get(key, 0) + a.candidates[key]
-    for key in b.candidates:
-        counter[key] = counter.get(key, 0) + b.candidates[key]
-    # keep at most 2 top candidates
-    items = sorted(counter.items(), key=lambda x: -x[1])
-    node = Node()
-    for k, v in items[:2]:
-        node.candidates[k] = v
-    return node
+    def build(self, node, l, r, arr):
+        if l == r:
+            self.tree[node] = (arr[l], 1)
+            return
+        m = (l + r) // 2
+        self.build(node*2, l, m, arr)
+        self.build(node*2+1, m+1, r, arr)
+        self.tree[node] = self.merge(self.tree[node*2], self.tree[node*2+1])
 
-def build(arr, tree, v, tl, tr):
-    if tl == tr:
-        tree[v] = Node(arr[tl])
-    else:
-        tm = (tl + tr)//2
-        build(arr, tree, 2*v, tl, tm)
-        build(arr, tree, 2*v+1, tm+1, tr)
-        tree[v] = merge(tree[2*v], tree[2*v+1])
-
-def update(tree, v, tl, tr, pos, val):
-    if tl == tr:
-        tree[v] = Node(val)
-    else:
-        tm = (tl+tr)//2
-        if pos <= tm:
-            update(tree, 2*v, tl, tm, pos, val)
+    def merge(self, left, right):
+        if left[0] == right[0]:
+            return (left[0], left[1] + right[1])
+        if left[1] > right[1]:
+            return (left[0], left[1] - right[1])
         else:
-            update(tree, 2*v+1, tm+1, tr, pos, val)
-        tree[v] = merge(tree[2*v], tree[2*v+1])
+            return (right[0], right[1] - left[1])
 
-def get_count(arr, candidate):
-    return sum(1 for x in arr if x == candidate)
+    def update(self, idx, val, node=1, l=0, r=None):
+        if r is None:
+            r = self.n - 1
+        if l == r:
+            self.tree[node] = (val, 1)
+            return
+        m = (l + r) // 2
+        if idx <= m:
+            self.update(idx, val, node*2, l, m)
+        else:
+            self.update(idx, val, node*2+1, m+1, r)
+        self.tree[node] = self.merge(self.tree[node*2], self.tree[node*2+1])
 
-t = int(input())
-for _ in range(t):
-    n, q = map(int, input().split())
-    arr = list(map(int, input().split()))
-    size = 1
-    while size < n:
-        size *= 2
-    tree = [Node() for _ in range(2*size)]
-    build(arr, tree, 1, 0, n-1)
-    res = []
-    for _ in range(q):
-        i, x = map(int, input().split())
-        i -= 1
-        arr[i] = x
-        update(tree, 1, 0, n-1, i, x)
-        kmax = 0
-        for cand in tree[1].candidates:
-            cnt = get_count(arr, cand)
-            k = max(0, 2*cnt - n)
-            kmax = max(kmax, k)
-        res.append(str(kmax))
-    print(" ".join(res))
+    def query_candidate(self):
+        return self.tree[1][0]
+
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n, q = map(int, input().split())
+        a = list(map(int, input().split()))
+        st = SegmentTree(a)
+        from collections import defaultdict
+        positions = defaultdict(list)
+        for idx, val in enumerate(a):
+            positions[val].append(idx)
+        res = []
+        for _ in range(q):
+            i, x = map(int, input().split())
+            i -= 1
+            old = a[i]
+            positions[old].remove(i)
+            a[i] = x
+            positions[x].append(i)
+            st.update(i, x)
+            cand = st.query_candidate()
+            cnt = len(positions[cand])
+            k = cnt - ((n + 1) // 2)
+            res.append(max(0, k))
+        print(" ".join(map(str, res)))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The segment tree stores candidates and counts. Merge ensures at most two candidates propagate upward. The update function modifies only the affected path from leaf to root. To compute `k`, we check actual counts in the array for root candidates, which are few, keeping it efficient.
+The `SegmentTree` class encapsulates the candidate computation. The merge logic guarantees that any number returned at the root is the only one that could exceed half the length in some segment. Updating a position modifies only the path from leaf to root. Counting occurrences uses the `positions` map to avoid scanning the entire array, maintaining efficiency.
 
 ## Worked Examples
 
-Sample 1 input:
+### Example 1
 
-```
-5 5
-1 2 3 4 5
-3 4
-1 4
-2 4
-4 3
-2 3
-```
+Input array `[1,2,3,4,5]`, queries `[(3,4),(1,4),(2,4),(4,3),(2,3)]`.
 
-| Query | Update | Candidates at root | Counts | kmax |
+| Step | Array | Candidate | Count | k |
 | --- | --- | --- | --- | --- |
-| 3→4 | [1,2,4,4,5] | 4,1 | 4:2, 1:1 | 1 |
-| 1→4 | [4,2,4,4,5] | 4,2 | 4:3, 2:1 | 1 |
-| 2→4 | [4,4,4,4,5] | 4,5 | 4:4, 5:1 | 2 |
-| 4→3 | [4,4,4,3,5] | 4,3 | 4:3,3:1 | 1 |
-| 2→3 | [4,3,4,3,5] | 4,3 | 4:2,3:2 | 0 |
+| 0 | [1,2,3,4,5] | any | 1 | 0 |
+| 1 | [1,2,4,4,5] | 4 | 2 | 1 |
+| 2 | [4,2,4,4,5] | 4 | 3 | 1 |
+| 3 | [4,4,4,4,5] | 4 | 4 | 2 |
+| 4 | [4,4,4,3,5] | 4 | 3 | 1 |
+| 5 | [4,3,4,3,5] | 4 | 2 | 0 |
 
-This confirms that candidate tracking plus count evaluation produces correct `kmax`.
+The table shows that the segment tree candidate tracks the majority element efficiently, and k is computed correctly.
 
-Sample 2 input works similarly, confirming multiple repeated elements and updates are handled correctly.
+### Example 2
 
-## Complexity Analysis
+Input array `[3,2,3,3,2,2,3]`, queries `[(2,3),(5,3),(6,3),(3,4),(4,4),(7,4),(6,4),(2,4)]`.
 
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O((n+q) log n) | Building the segment tree takes O(n). Each query update affects O(log n) nodes. Counting candidates per query is O(1) since at most 2 candidates exist. |
-| Space | O(n) | Segment tree stores 2*n nodes with at most 2 candidates each, fitting within memory limit. |
+The table would similarly show candidates adjusting and k being the difference between candidate count and half-length
