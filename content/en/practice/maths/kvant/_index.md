@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1410 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1411 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1410
+kvant_total: 1411
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1410 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1411 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2915,7 +2915,7 @@ draft: false
 
 ## 1995
 
-14 problems across Issues 1–6, 2 verified.
+15 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -2955,6 +2955,7 @@ draft: false
 | [1522](1522.md) Our systems have detected unusual activity coming from your system. |  | 21m51s |
 | [1528](1528.md) *International Mathematical Olympiad for School Students (XXXVI)*. The relation |  | 10m47s |
 | [1529](1529.md) *International Mathematical Olympiad for School Students (XXXVI)*. The equalities |  | 8m28s |
+| [1530](1530.md) *International Mathematical Olympiad of School Students (XXXVI)*. Numbers $1,2,\\dots,2p$ split into residue classes modulo $p$ as |  | 9m31s |
 
 ## 1996
 
