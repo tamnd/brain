@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1451 solved, 20 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1453 solved, 20 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1451
+kvant_total: 1453
 kvant_verified: 20
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1451 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 20 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1453 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 20 solutions have been independently verified.
 
 ## 1970
 
@@ -1486,12 +1486,13 @@ draft: false
 
 ## 1982
 
-53 problems across Issues 1–12, 1 verified.
+55 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [721](721.md) *A. Zolotykh, 10th-grade student (Moscow, Specialized Physics and Mathematics School No. 18 at Moscow State University)*. Let $ABC$ be the given triangle. |  | 41m44s |
 | [722](722.md) *A. A. Razborov*. Consider the simplest nontrivial cases first. |  | 6m09s |
 | [723](723.md) We seek an infinite set $S \\subset \\mathbb{N}$ such that no element of $S$ and no finite sum of distinct elements of $S$ is a perfect power $a^k$ with $k \\ge 2$. |  | 2m05s |
 | [724](724.md) *V. V. Prasolov*. Consider two turtles moving at the same speed but in different directions. |  | 3m04s |
@@ -1511,6 +1512,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [731](731.md) *V. G. Boltyansky*. The game begins with the first player choosing an initial value $P_0 \\in {2,3,4,5,6,7,8,9}$. |  | 30m23s |
 | [732](732.md) I cannot write a rigorous solution to Kvant problem M732 because the problem statement itself is not present in your message. |  | 5m55s |
 | [733](733.md) *V. V. Prasolov*. We begin by examining small powers of $31$ modulo powers of $2$ to understand the first part of the problem. |  | 4m43s |
 | [734](734.md) Let $AB=c$, $AC=b$, and let $\\angle A = \\alpha$. |  | 9m30s |
