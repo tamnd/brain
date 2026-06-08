@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1415 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1416 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1415
+kvant_total: 1416
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1415 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1416 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -1579,7 +1579,7 @@ draft: false
 
 ## 1983
 
-52 problems across Issues 1–12.
+53 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1589,6 +1589,7 @@ draft: false
 | [782](782.md) *S. V. Fomin*. Let $a+b=30030$ with $a,b\\in \\mathbb{N}$. |  | 2m05s |
 | [783](783.md) Consider the first system of inequalities: $1 < x < 2$, $2 < x^2 < 3$, $3 < x^3 < 4$, and so on up to $n < x^n < n+1$. |  | 6m14s |
 | [784](784.md) *A. P. Savin*. The length of daylight at latitude $\\varphi$ depends on the declination $\\delta$ of the star. |  | 10m41s |
+| [785](785.md) *M. U. Gafurov*. The hypothesis states that for every integer $k>1$ there exists a constant $b_k$ such that |  | 9m37s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1983_2/)
 
