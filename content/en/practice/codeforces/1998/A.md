@@ -28,15 +28,11 @@ We are given a target center point $(x_c, y_c)$ and an integer $k$. The task is 
 
 The center condition means:
 
-$$\frac{\sum x_i}{k} = x_c,
-\qquad
-\frac{\sum y_i}{k} = y_c$$
+$$\frac{\sum x_i}{k} = x_c, \qquad \frac{\sum y_i}{k} = y_c$$
 
 Equivalently,
 
-$$\sum x_i = k \cdot x_c,
-\qquad
-\sum y_i = k \cdot y_c.$$
+$$\sum x_i = k \cdot x_c, \qquad \sum y_i = k \cdot y_c.$$
 
 The coordinates of every generated point must stay within $[-10^9,10^9]$, but the given center coordinates are only between $-100$ and $100$, and $k \le 1000$. This is extremely small compared to the allowed coordinate range, so we have enormous freedom when constructing points.
 

@@ -100,9 +100,7 @@ Every subsequence with `i ≥ m` contributes `1` to the answer. Every subsequenc
 
 So the answer becomes
 
-$$\sum_{i=m}^{k}
-\binom{o}{i}
-\binom{z}{k-i}.$$
+$$\sum_{i=m}^{k} \binom{o}{i} \binom{z}{k-i}.$$
 
 Now the problem is reduced to evaluating a combinatorial sum.
 
@@ -435,12 +433,6 @@ We have `ones = 3`, `zeros = 1`, and `need = 2`.
 
 The computation is
 
-$$\binom{3}{2}\binom{1}{1}
-+
-\binom{3}{3}\binom{1}{0}
-=
-3+1
-=
-4.$$
+$$\binom{3}{2}\binom{1}{1} + \binom{3}{3}\binom{1}{0} = 3+1 = 4.$$
 
 All four length-3 subsequences contribute, so the answer is `4`. This confirms that the majority threshold is implemented correctly and that every valid composition is counted exactly once.

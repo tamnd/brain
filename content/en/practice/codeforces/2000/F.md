@@ -76,9 +76,7 @@ If we completely color a column, the cost is $b$ cells and we gain one column po
 
 The crucial insight is that an optimal strategy for a single rectangle always proceeds greedily by finishing entire rows or entire columns. Let
 
-$$x = \text{number of completed columns},
-\qquad
-y = \text{number of completed rows}.$$
+$$x = \text{number of completed columns}, \qquad y = \text{number of completed rows}.$$
 
 Then we gain $x+y$ points.
 
@@ -88,17 +86,13 @@ All cells belonging to completed columns must be colored, contributing $xb$ cell
 
 Hence
 
-$$\text{cost}(x,y)
-=
-xb + y(a-x).$$
+$$\text{cost}(x,y) = xb + y(a-x).$$
 
 Symmetrically, we could start from rows first. The optimal sequence is obtained by repeatedly taking the cheaper of the two remaining directions. Since $a,b \le 100$, we can explicitly compute the minimum cost for every attainable point count $p$.
 
 Once every rectangle provides a table
 
-$$best_i[p]
-=
-\text{minimum cost to obtain } p \text{ points},$$
+$$best_i[p] = \text{minimum cost to obtain } p \text{ points},$$
 
 the global problem becomes a knapsack.
 
@@ -142,12 +136,7 @@ For each rectangle we have its local table `cost`.
 
 We create a new DP array. For every current score `j` and every attainable contribution `p` from this rectangle, we update
 
-$$ndp[\min(k, j+p)]
-=
-\min(
-ndp[\min(k,j+p)],
-dp[j] + cost[p]
-).$$
+$$ndp[\min(k, j+p)] = \min( ndp[\min(k,j+p)], dp[j] + cost[p] ).$$
 
 Scores above $k$ are capped at $k$, since only "at least $k$" matters.
 
