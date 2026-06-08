@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1474 solved, 32 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1476 solved, 32 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1474
+kvant_total: 1476
 kvant_verified: 32
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1474 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 32 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1476 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 32 solutions have been independently verified.
 
 ## 1970
 
@@ -1856,7 +1856,7 @@ draft: false
 
 ## 1985
 
-59 problems across Issues 1–12, 2 verified.
+60 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1954,6 +1954,7 @@ draft: false
 |---|---------|---|------|
 | [946](946.md) *All-Russian Mathematical Olympiad for School Students (XI)*. Position two parabolas in the plane with perpendicular axes. |  | 1m31s |
 | [947](947.md) *All-Russian School Mathematics Olympiad (XI)*. Consider first small cases. |  | 10m44s |
+| [948](948.md) *All-Russian Mathematical Olympiad for School Students (XI)*. The problem is a combinatorial-geometric proof. |  | 33m48s |
 | [949](949.md) *All-Russian Mathematical Olympiad for School Students (XI)*. Consider small cases first. |  | 5m |
 | [950](950.md) *All-Russian School Mathematics Olympiad (XI)*. The $25$ plots form the $5\\times5$ grid graph. |  | 10m39s |
 
@@ -1979,7 +1980,7 @@ draft: false
 
 ## 1986
 
-59 problems across Issues 1–12, 1 verified.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1986_1/)
 
@@ -1997,6 +1998,7 @@ draft: false
 |---|---------|---|------|
 | [966](966.md) *L. D. Kurlandchik*. The statement asks for a dissection of an arbitrary triangle into four pieces such that the pieces can be rearranged into two triangles, each similar to the original triangle. |  | 7m38s |
 | [967](967.md) *V. F. Lev*. For small values, |  | 3m20s |
+| [968](968.md) **Solution to Kvant M968** |  | 34m21s |
 | [969](969.md) Unusual activity has been detected from your device. |  | 7m01s |
 | [970](970.md) *S. L. Eliseev*. Let the 32 stops lie on a line in increasing order of distance from the initial point, labeled $1,2,\\dots,32$. |  | 10m54s |
 
