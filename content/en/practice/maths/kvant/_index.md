@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1389 solved, 7 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1391 solved, 7 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1389
+kvant_total: 1391
 kvant_verified: 7
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1389 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 7 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1391 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 7 solutions have been independently verified.
 
 ## 1970
 
@@ -1689,7 +1689,7 @@ draft: false
 
 ## 1984
 
-51 problems across Issues 1–12.
+53 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1771,6 +1771,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [881](881.md) Our systems have detected unusual activity coming from your system. |  | 26m56s |
 | [882](882.md) *Leningrad City Mathematical Olympiad (50th, 1984)*. Consider small integer triples $(a,b,c)$ satisfying $a+b+c=0$. |  | 4m53s |
 | [883](883.md) Working |  | 14m25s |
 
@@ -1788,6 +1789,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [891](891.md) *A. A. Muratov*. Let $ABC$ be a triangle with a circle tangent to two of its sides and to two of its medians. |  | 26m28s |
 | [892](892.md) *A. I. Zaichik*. Write |  | 8m30s |
 | [893](893.md) *Moscow Mathematical Olympiad (1984)*. The complete graph on $n$ vertices is $K_n$. |  | 12m10s |
 | [895](895.md) *Moscow Mathematical Olympiad (1984)*. Place the cube of side $2$ in coordinates with center at the origin, so its vertices are $(\\pm1,\\pm1,\\pm1)$ and its inscribed sphere is $x^2+y^2+z^2=1$. |  | 2m16s |
