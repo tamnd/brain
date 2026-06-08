@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1495 solved, 38 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1498 solved, 40 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1495
-kvant_verified: 38
+kvant_total: 1498
+kvant_verified: 40
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1495 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 38 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1498 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 40 solutions have been independently verified.
 
 ## 1970
 
@@ -2976,7 +2976,7 @@ draft: false
 
 ## 1995
 
-31 problems across Issues 1–6, 6 verified.
+34 problems across Issues 1–6, 8 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -3034,7 +3034,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1522](1522.md) Our systems have detected unusual activity coming from your system. |  | 21m51s |
+| [1523](1523.md) *L. D. Kurlandchik*. Let | ✓ | 29m20s |
 | [1524](1524.md) Let the incenters of the triangles $ABP$, $BCP$, $CDP$, $DAP$ be $X,Y,Z,W$ respectively. |  | 12m20s |
+| [1525](1525.md) *International Mathematical Olympiad for School Students (XXXVI)*. Place the four collinear points on the $x$ axis as | ✓ | 9m04s |
+| [1526](1526.md) *International Mathematical Olympiad for School Students (XXXVI)*. The condition $abc=1$ suggests eliminating one variable from denominators by rewriting powers of $a,b,c$ in terms of the other two variables. |  | 9m34s |
 | [1528](1528.md) *International Mathematical Olympiad for School Students (XXXVI)*. The relation |  | 10m47s |
 | [1529](1529.md) *International Mathematical Olympiad for School Students (XXXVI)*. The equalities |  | 8m28s |
 | [1530](1530.md) *International Mathematical Olympiad of School Students (XXXVI)*. Numbers $1,2,\\dots,2p$ split into residue classes modulo $p$ as |  | 9m31s |
