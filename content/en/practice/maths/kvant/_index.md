@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1457 solved, 23 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1460 solved, 26 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1457
-kvant_verified: 23
+kvant_total: 1460
+kvant_verified: 26
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1457 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 23 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1460 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 26 solutions have been independently verified.
 
 ## 1970
 
@@ -1608,7 +1608,7 @@ draft: false
 
 ## 1983
 
-54 problems across Issues 1–12, 1 verified.
+57 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1637,6 +1637,7 @@ draft: false
 | [791](791.md) *S. B. Gashkov*. Petya's calculator allows addition, subtraction, increment by one, and reciprocal operations. |  | 6m54s |
 | [792](792.md) *S. N. Bychkov, V. V. Prasolov, L. D. Kurlandchik*. For the first two equations, small natural numbers $x$ and $y$ can be tested directly. |  | 4m09s |
 | [793](793.md) *V. N. Dubrovsky*. Let |  | 8m31s |
+| [794](794.md) *Alla Ivchenko, 9th-grade student (Mohyliv-Podilskyi, School No. 1)*. Let the first circle be $\\omega_1$ and the second circle be $\\omega_2$. | ✓ | 24m15s |
 | [795](795.md) *V. F. Lev*. Consider small values of $n$ and their divisor sums $\\sigma(n)$. |  | 3m19s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1983_4/)
@@ -1674,6 +1675,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [811](811.md) *D. M. Milošević*. The quantities involving medians and altitudes suggest rewriting everything in terms of the sides. |  | 10m38s |
+| [812](812.md) *S. I. Maizus*. The sum is | ✓ | 13m31s |
 | [813](813.md) *V. V. Prasolov*. Consider three segments $OA$, $OB$, and $OC$ of equal length $R$, with $B$ inside the angle $AOC$. |  | 1m43s |
 | [814](814.md) *L. D. Kurlyandschik*. A natural number is representable as a sum of two squares if and only if every prime congruent to $3 \\pmod 4$ appears with even exponent in its prime factorization. |  | 9m33s |
 
@@ -1695,6 +1697,7 @@ draft: false
 | [822](822.md) *S. B. Shlosman*. The initial stack is the periodic sequence of length $4n$ with pattern $G,R,B,Y$ repeating every four cards, so every consecutive block of four cards contains all four colors exactly once. |  | 5m06s |
 | [823](823.md) Before I begin the full solution, I need clarification: does the photograph provide any perspective cues such as vanishing points, the relative positions of the corners, or angles of the visible wall? |  | 7m19s |
 | [824](824.md) I need the diagram from Figure 3 to solve the problem rigorously. |  | 4m20s |
+| [825](825.md) *All-Union Mathematical Olympiad for School Students (1983, Grade 10)*. Let the segments be | ✓ | 17m20s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1983_10/)
 
