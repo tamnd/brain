@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4219 problems, 2188 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4224 problems, 2189 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4219 problems, 2188 verified.**
+**750 contests, 4224 problems, 2189 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -441,7 +441,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1866](1866/) | [COMPFEST 15 - Preliminary Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1866) | ICPC/IOI | 800-3100 | 6/13 | 26m 2s |
 | [1867](1867/) | [Codeforces Round 897 (Div. 2)](https://codeforces.com/contest/1867) | Div. 2 | 800-2700 | 1/7 | 13m 50s |
 | [1868](1868/) | [Codeforces Round 896 (Div. 1)](https://codeforces.com/contest/1868) | Div. 1 | 1300-3500 | 0/7 | 15m 55s |
-| [1869](1869/) | [Codeforces Round 896 (Div. 2)](https://codeforces.com/contest/1869) | Div. 2 | 900-1100 | 1/2 | 3m 15s |
+| [1869](1869/) | [Codeforces Round 896 (Div. 2)](https://codeforces.com/contest/1869) | Div. 2 | 900-3000 | 2/7 | 12m 13s |
 | [1870](1870/) | [CodeTON Round 6 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1870) | Div. 1+2 | 800-3500 | 2/8 | 18m 56s |
 | [1872](1872/) | [Codeforces Round 895 (Div. 3)](https://codeforces.com/contest/1872) | Div. 3 | 800-2000 | 2/7 | 13m 29s |
 | [1873](1873/) | [Codeforces Round 898 (Div. 4)](https://codeforces.com/contest/1873) | Div. 4 | 800-1700 | 6/8 | 12m 40s |
