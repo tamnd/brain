@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1367 solved, 1 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1373 solved, 3 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1367
-kvant_verified: 1
+kvant_total: 1373
+kvant_verified: 3
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1367 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 1 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1373 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 3 solutions have been independently verified.
 
 ## 1970
 
@@ -389,7 +389,7 @@ draft: false
 
 ## 1973
 
-59 problems across Issues 1–12, 1 verified.
+60 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1973_1/)
 
@@ -509,6 +509,7 @@ draft: false
 | [237](237.md) *B. D. Ginzburg*. Consider an acute-angled triangle with vertices $A$, $B$, and $C$ and corresponding angles $\\alpha$, $\\beta$, and $\\gamma$, and sides $a = BC$, $b = AC$, $c = AB$. |  | 5m06s |
 | [238](238.md) *F. G. Shleifer*. Let |  | 4m39s |
 | [239](239.md) Let points $A$ and $B$ be fixed on the plane, and let $C$ lie on the perpendicular bisector of segment $AB$, since it must satisfy $/AC/ = /BC/$. |  | 6m12s |
+| [240](240.md) *E. G. Belaga*. The examples suggest that divisions should be used together with repeated squaring. | ✓ | 13m56s |
 
 ## 1974
 
@@ -636,7 +637,7 @@ draft: false
 
 ## 1975
 
-55 problems across Issues 1–12.
+57 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1975_1/)
 
@@ -686,6 +687,7 @@ draft: false
 | [322](322.md) *S. V. Fomin*. Each circle contributes boundary pieces only where it is the lowest among the $N$ radii in some direction, since the intersection of disks can be described as the set of points satisfying $d(x,O_i)\\le… |  | 1m25s |
 | [323](323.md) *V. A. Sergeev*. Consider a function $f:\\mathbb{R}\\to\\mathbb{R}$. |  | 6m29s |
 | [324](324.md) *S. V. Fomin*. Consider a single pile with a small number of stones. |  | 4m20s |
+| [325](325.md) Let $x_{n,m}$ be the entry in row $n$ and position $m$, where $0\\le m\\le n$. | ✓ | 14m26s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1975_6/)
 
@@ -752,10 +754,11 @@ draft: false
 |---|---------|---|------|
 | [357](357.md) Let |  | 2m56s |
 | [358](358.md) I can produce a complete, rigorous Kvant-style solution, but I need the text of problem M358 to proceed. |  | 6m09s |
+| [360](360.md) *V. P. Golubyatnikov*. Let |  | 7m19s |
 
 ## 1976
 
-42 problems across Issues 1–12.
+43 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -779,6 +782,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [371](371.md) *S. V. Fomin*. Consider the problem on a $2\\times 2$ chessboard first. |  | 2m45s |
 | [372](372.md) Consider the triangle $ABC$ and the inequality $/AP/ + /BP/ + /CP/ \\ge /AC/ + /BC/$ for an arbitrary point $P$ in the plane. |  | 7m43s |
 | [373](373.md) An infinite decimal expansion determines an infinite sequence of digits, hence an infinite word over the alphabet ${0,1,\\dots,9}$. |  | 7m06s |
 | [375](375.md) I cannot write a solution to Kvant problem M375 from the information provided, because the actual problem statement is missing. |  | 5m09s |
@@ -2816,7 +2820,7 @@ draft: false
 
 ## 1994
 
-40 problems across Issues 1–6.
+41 problems across Issues 1–6.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1994_1/)
 
@@ -2879,6 +2883,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1451](1451.md) *Russian Mathematical Olympiad (XX)*. Let $d=\\gcd(a,b)$ and write $a=dx$, $b=dy$ with $\\gcd(x,y)=1$. |  | 9m15s |
 | [1453](1453.md) *Russian Mathematical Olympiad (XX)*. Let $n_k$ be the repunit of length $k$, so |  | 7m51s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1994_6/)
@@ -2890,12 +2895,13 @@ draft: false
 
 ## 1995
 
-6 problems across Issues 2–6.
+7 problems across Issues 2–6.
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1481](1481.md) Let $a=BC$, $b=CA$, $c=AB$. |  | 6m30s |
 | [1483](1483.md) *B. D. Ginzburg*. Each vector lies in the first quadrant and has length $1$. |  | 10m28s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
 
