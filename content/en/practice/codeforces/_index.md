@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4267 problems, 2208 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4268 problems, 2209 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4267 problems, 2208 verified.**
+**750 contests, 4268 problems, 2209 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -545,7 +545,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1984](1984/) | [Codeforces Global Round 26](https://codeforces.com/contest/1984) | Global | 800-3300 | 3/9 | 23m 19s |
 | [1985](1985/) | [Codeforces Round 952 (Div. 4)](https://codeforces.com/contest/1985) | Div. 4 | 800-2200 | 6/9 | 20m 35s |
 | [1986](1986/) | [Codeforces Round 954 (Div. 3)](https://codeforces.com/contest/1986) | Div. 3 | 800-2500 | 3/8 | 16m 3s |
-| [1987](1987/) | [EPIC Institute of Technology Round Summer 2024 (Div. 1 + Div. 2)](https://codeforces.com/contest/1987) | Div. 1+2 | 800-3500 | 2/9 | 22m 51s |
+| [1987](1987/) | [EPIC Institute of Technology Round Summer 2024 (Div. 1 + Div. 2)](https://codeforces.com/contest/1987) | Div. 1+2 | 800-3500 | 3/10 | 29m 10s |
 | [1988](1988/) | [Codeforces Round 958 (Div. 2)](https://codeforces.com/contest/1988) | Div. 2 | 900-3000 | 3/6 | 16m 7s |
 | [1989](1989/) | [Educational Codeforces Round 167 (Rated for Div. 2)](https://codeforces.com/contest/1989) | Div. 2 | 800-3000 | 2/6 | 19m 49s |
 | [1990](1990/) | [Codeforces Round 960 (Div. 2)](https://codeforces.com/contest/1990) | Div. 2 | 900-2800 | 1/7 | 18m 31s |

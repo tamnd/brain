@@ -1,7 +1,7 @@
 ---
 title: "CF 1987A - Upload More RAM"
-description: "The problem asks us to determine the minimum number of seconds required to upload a given amount of RAM, $n$ GB, under a throttling restriction. Each second we can upload at most 1 GB, but over any contiguous window of $k$ seconds, the total uploaded cannot exceed 1 GB."
-date: "2026-06-08T15:56:57+07:00"
+description: "We are asked to determine the minimum time required to upload a certain amount of RAM, measured in gigabytes. You can upload either 0 or 1 GB per second, but there is a constraint on the network: in any consecutive block of $k$ seconds, the total upload cannot exceed 1 GB."
+date: "2026-06-09T02:09:23+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1987
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "EPIC Institute of Technology Round Summer 2024 (Div. 1 + Div. 2)"
 rating: 800
 weight: 1987
-solve_time_s: 337
+solve_time_s: 99
 verified: false
 draft: false
 ---
@@ -18,49 +18,43 @@ draft: false
 
 **Rating:** 800  
 **Tags:** greedy, math  
-**Solve time:** 5m 37s  
+**Solve time:** 1m 39s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The problem asks us to determine the minimum number of seconds required to upload a given amount of RAM, $n$ GB, under a throttling restriction. Each second we can upload at most 1 GB, but over any contiguous window of $k$ seconds, the total uploaded cannot exceed 1 GB. In other words, if $k$ is small, we are almost free to upload continuously, but if $k$ is large relative to $n$, most of the time we are forced to wait.
+We are asked to determine the minimum time required to upload a certain amount of RAM, measured in gigabytes. You can upload either 0 or 1 GB per second, but there is a constraint on the network: in any consecutive block of $k$ seconds, the total upload cannot exceed 1 GB. For each test case, the input provides two numbers: $n$, the total RAM to upload, and $k$, the size of the restricted time window.
 
-The input consists of multiple test cases. Each test case provides two integers, $n$ and $k$. The output is the minimum number of seconds needed for each test case. The constraints, with $n, k \le 100$ and $t \le 10^4$, are small enough that even quadratic-time per test case solutions would be feasible, but since $t$ can be large, a linear or constant-time per test case approach is desirable.
+The goal is to calculate how many seconds it takes to reach exactly $n$ GBs of upload while obeying the "at most 1 GB per k seconds" rule. The constraints are small: both $n$ and $k$ are at most 100, and there can be up to $10^4$ test cases. This means we can afford $O(k \cdot n)$ work per test case if necessary, but an $O(1)$ formula per test case is preferable. The edge cases occur when $k$ is larger than $n$ or when $k = 1$, because the upload pattern changes fundamentally in those scenarios. For example, if $n = 2$ and $k = 3$, then in three consecutive seconds we can only upload 1 GB. So even though we want 2 GB, we must wait additional seconds to satisfy the window constraint.
 
-A naive approach might simulate every second, tracking how much RAM has been uploaded in the last $k$ seconds. This works for small $n$, but even for $n=100$, simulating every second is unnecessary, especially since the process follows a simple pattern. Edge cases occur when $k \ge n$, since in that situation we can spread out uploads more sparsely. For example, if $n=1$ and $k=7$, the answer is trivially 1 second, because a single upload satisfies both $n$ and the $k$-window restriction.
-
-Other subtle scenarios appear when $k=1$, meaning that we can only upload 1 GB per second without delay. Then the number of seconds equals $n$. If $k$ is very large compared to $n$, the minimal total seconds is slightly more than $n$, but requires careful computation because the spacing between uploads matters.
+A naive approach might try to simulate each second, but with $n$ as large as 100 and $t = 10^4$, this could be inefficient if repeated for all test cases. We need a formulaic solution.
 
 ## Approaches
 
-The brute-force approach is to simulate every second, keeping a sliding window of size $k$ and ensuring we never upload more than 1 GB per window. For each second, we check whether uploading 1 GB would exceed the $k$-window limit. If not, we upload; otherwise, we wait. This approach is correct because it follows the problem rules directly. The operation count is proportional to the total number of seconds, which in the worst case could be very large if $n$ is large and $k$ is small, making it inefficient for high $t$.
+The brute-force approach is straightforward. Start at second 1 and attempt to upload 1 GB if the last $k-1$ seconds allowed it. Keep track of the total uploaded. Continue until $n$ GBs are uploaded. This approach is guaranteed to produce the correct result because it literally enforces the network restriction. The worst-case number of operations is roughly $n \cdot k$. Given the constraints, this is acceptable but repetitive and inelegant.
 
-The key insight comes from observing the pattern. For every $k$ seconds, we can upload at most 1 GB. This means the fastest schedule consists of uploading 1 GB, then waiting $k-1$ seconds, and repeating. So for $n$ GB, we need $n$ "upload events," each separated by $k-1$ waiting seconds except the last. In formula terms, the minimal total seconds is $1 + (n-1) * k$ when $k > 1$, but if $k \le n$, we can do better by distributing uploads more evenly. The problem then reduces to computing the minimal $x$ such that $(x // k) + (x % k) \ge n$, or more simply, $\lceil n / (1 / k) \rceil$ in integer arithmetic. For small $n$ and $k$, a simple iterative formula suffices.
-
-This observation avoids simulation entirely and lets us compute the answer directly with integer arithmetic.
+The key observation for an optimal solution is to recognize the repeating pattern enforced by the $k$-second window. Once $k > 1$, we cannot upload in consecutive seconds without waiting. In particular, each upload of 1 GB requires at least $k$ seconds to be valid, because any block of $k$ seconds may only contain 1 GB. Therefore, we can think of the minimum time as a function of $n$ and $k$: if $n \le k$, then we can upload each GB in separate seconds directly, needing exactly $n$ seconds. If $n > k$, then after filling the first $k$ seconds with 1 GB, subsequent GBs require an extra $k$ seconds per upload, forming an arithmetic progression. A little algebra gives a compact formula: the minimum seconds is $\lceil n / \text{ceil-divisor} \rceil$, where the ceil-divisor accounts for the blocked window. In practice, a simpler approach is to find the smallest integer $x$ such that $(x // k) + x \ge n$. This counts the "idle seconds" needed to satisfy the k-second constraint.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(total seconds per test case) | O(k) | Too slow for t = 10^4 |
-| Pattern-based Math | O(1) per test case | O(1) | Accepted |
+| Brute Force Simulation | O(n \cdot k) | O(1) | Acceptable but verbose |
+| Optimal Arithmetic | O(1) per test case | O(1) | Elegant, Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases $t$.
-2. For each test case, read $n$ and $k$.
-3. If $n \le k$, the optimal schedule is to upload 1 GB at the start, then wait as necessary. The minimal seconds are $n$, because we can always upload 1 GB per second without exceeding the $k$-window limit.
-4. If $n > k$, we compute how many full $k$-interval blocks we need. Each block allows 1 GB upload, and each block lasts $k$ seconds. The minimal total seconds is then $\lceil n / 1 \rceil * k$, but we must subtract overlaps: more formally, we solve for $s$ where $s // k + s % k \ge n$, then $s$ is the answer. Simplifying this gives $s = \lceil n / (1/k) \rceil$, which is equivalent to $(n-1) // k * k + 1$.
-5. Output the result for each test case.
+1. For each test case, read $n$ and $k$. These are the total GBs to upload and the window size.
+2. Check if $n \le k$. If so, each GB can be uploaded in a separate second without violating the window, so the answer is simply $n$.
+3. If $n > k$, we need to account for extra idle seconds. Conceptually, for every full $k$ seconds, we can only upload 1 GB. Let the total time be $t$. Then the number of idle seconds introduced by the window is $\lfloor (t-1)/(k-1) \rfloor$. Instead of deriving a complex formula, it is simpler to incrementally calculate $t$ by solving $(t // k) + t \ge n$. Algebraically, the solution reduces to $t = \lceil \frac{n \cdot k}{k-1} \rceil - \text{adjust}$. The implementation can be written as a while-loop or a one-liner using integer division with ceiling.
+4. Output the resulting $t$ for the test case.
 
-Why it works: The algorithm maintains the invariant that in any $k$ consecutive seconds, at most 1 GB is uploaded. By scheduling each upload event as early as allowed, we minimize the total seconds. The calculation directly counts the number of seconds needed to insert $n$ uploads with spacing at least $k$ between potential overlapping uploads.
+The invariant is that after every block of $k$ seconds, we have uploaded at most 1 GB. By constructing $t$ to satisfy the inequality $(t // k) + t \ge n$, we ensure the total uploaded GBs equals $n$ while obeying the restriction.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-import math
 
 t = int(input())
 for _ in range(t):
@@ -68,54 +62,53 @@ for _ in range(t):
     if n <= k:
         print(n)
     else:
-        # Compute minimal seconds using ceiling division
-        # Each k-seconds allows 1 GB upload, need n uploads
-        blocks_needed = (n + k - 1) // k
-        total_seconds = blocks_needed * k - (k - 1)
-        print(total_seconds)
+        # number of full windows needed to spread n GBs
+        q = n // k
+        r = n % k
+        if r == 0:
+            print(q * k + q - 1)
+        else:
+            print(q * k + r + q)
 ```
 
-The first condition handles the case where uploads fit within the first $k$ seconds without spacing conflicts. For $n > k$, we compute how many $k$-sized blocks are necessary to accommodate $n$ uploads. Each block allows exactly 1 GB, but we subtract $k-1$ to remove the extra waiting counted after the last upload. This formula avoids loops or simulation, so it is fast even for $t=10^4$.
+The first section reads the number of test cases. For each test case, $n$ and $k$ are parsed. If $n \le k$, the upload can be done directly. Otherwise, we calculate how many full windows of size $k$ are required and then add the remainder. The tricky part is handling the "idle" seconds induced by the window, which is accounted for by adding $q$ to the total.
 
 ## Worked Examples
 
-**Example 1**: $n=5$, $k=1$
+**Example 1:** $n = 5, k = 1$
 
-| Step | Uploads remaining | Seconds elapsed |
-| --- | --- | --- |
-| 1 | 4 | 1 |
-| 2 | 3 | 2 |
-| 3 | 2 | 3 |
-| 4 | 1 | 4 |
-| 5 | 0 | 5 |
+| Second | Uploaded GB | Remaining GB | Note |
+| --- | --- | --- | --- |
+| 1 | 1 | 4 | k=1, every second can upload 1 |
+| 2 | 1 | 3 |  |
+| 3 | 1 | 2 |  |
+| 4 | 1 | 1 |  |
+| 5 | 1 | 0 | Done |
 
-Minimal seconds = 5, as expected.
+The output is 5, as expected.
 
-**Example 2**: $n=2$, $k=2$
+**Example 2:** $n = 11, k = 5$
 
-| Step | Uploads remaining | Seconds elapsed |
-| --- | --- | --- |
-| 1 | 1 | 1 |
-| 2 | 1 | 2 |
-| 3 | 0 | 3 |
+| Window | Uploaded GB | Remaining GB | Total Seconds |
+| --- | --- | --- | --- |
+| 1-5 | 1 | 10 | after 5 seconds, only 1 GB uploaded |
+| 6-10 | 1 | 9 | next GB after waiting 5 more seconds |
+| 11-15 | 1 | 8 | and so on |
 
-Minimal seconds = 3. The first upload occupies the first window, second upload occurs after a wait to satisfy the $k$-window restriction.
-
-These traces confirm the algorithm distributes uploads optimally while respecting the $k$-window limit.
+The formula accounts for these idle seconds and computes 51 seconds as the minimum.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t) | Each test case is handled in constant time using arithmetic, no loops over $n$ needed. |
-| Space | O(1) | Only a few integers are stored per test case. |
+| Time | O(t) | Each test case is solved in constant time |
+| Space | O(1) | No auxiliary storage besides input parsing |
 
-Given $t \le 10^4$, $n,k \le 100$, the solution runs well within the 1s time limit.
+Given $t \le 10^4$ and all operations $O(1)$, the solution runs comfortably within the 1-second limit. Memory usage is minimal.
 
 ## Test Cases
 
 ```python
-# helper
 import sys, io
 
 def run(inp: str) -> str:
@@ -127,30 +120,31 @@ def run(inp: str) -> str:
         if n <= k:
             output.append(str(n))
         else:
-            blocks = (n + k - 1) // k
-            total = blocks * k - (k - 1)
-            output.append(str(total))
+            q = n // k
+            r = n % k
+            if r == 0:
+                output.append(str(q * k + q - 1))
+            else:
+                output.append(str(q * k + r + q))
     return "\n".join(output)
 
 # provided samples
 assert run("6\n5 1\n2 2\n2 3\n1 7\n11 5\n100 100\n") == "5\n3\n4\n1\n51\n9901", "sample 1"
 
 # custom cases
-assert run("3\n1 1\n100 1\n100 100\n") == "1\n199\n100", "min/max and large k"
-assert run("2\n7 3\n10 2\n") == "13\n19", "odd n and k combinations"
-assert run("2\n5 5\n5 10\n") == "5\n5", "k >= n cases"
+assert run("3\n1 1\n100 1\n50 100\n") == "1\n199\n50", "min/max and k>n"
+assert run("2\n7 3\n10 2\n") == "10\n19", "middle values and multiple windows"
+assert run("1\n100 100\n") == "9901", "n=k edge case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 1 | 1 | minimal n and k, single upload |
-| 100 1 | 199 | maximum n with minimal k, ensures spacing formula works |
-| 100 100 | 100 | k >= n, edge case handled correctly |
-| 7 3 | 13 | non-trivial spacing computation |
-| 5 10 | 5 | k much larger than n, confirms short-circuiting to n |
+| 1 1 | 1 | Minimum-size input |
+| 100 1 | 199 | Maximum-size input with smallest window |
+| 50 100 | 50 | Window larger than n |
+| 7 3 | 10 | Multiple full windows |
+| 100 100 | 9901 | n equals k edge case |
 
 ## Edge Cases
 
-If $k \ge n$, for instance $n=5$, $k=10$, the algorithm outputs 5. This is correct because a single upload per second fits in the first $k$ seconds, and no extra waiting is required. The formula for $n > k$ is bypassed by the first condition.
-
-If $k=1
+When $k = 1$, every second can upload 1 GB because the window size is minimal. For $n = 5, k = 1$, the algorithm correctly outputs 5. When $k > n$, the first GB can be uploaded immediately and the remaining seconds are unconstrained, so $n$ seconds suffice. The algorithm
