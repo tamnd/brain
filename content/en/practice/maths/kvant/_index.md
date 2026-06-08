@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1384 solved, 6 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1387 solved, 6 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1384
+kvant_total: 1387
 kvant_verified: 6
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1384 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1387 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
 
 ## 1970
 
@@ -1216,7 +1216,7 @@ draft: false
 
 ## 1980
 
-57 problems across Issues 1–12.
+58 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1980_1/)
 
@@ -1301,6 +1301,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [641](641.md) *E. G. Gotman*. Place the regular hexagon in the coordinate plane with center |  | 29m30s |
 | [642](642.md) *I. K. Zhuk*. The coefficients are restricted to the set ${-1,0,1}$, and two neighboring coefficients cannot both be nonzero. |  | 5m12s |
 | [643](643.md) A shuffle takes an initial segment of the deck and inserts it somewhere later, preserving the internal order of the removed block and of the remaining cards. |  | 5m44s |
 | [644](644.md) *G. A. Gurevich*. A convex equiangular $n$-gon has exterior angle $2\\pi/n$ at every vertex. |  | 7m12s |
@@ -1572,7 +1573,7 @@ draft: false
 
 ## 1983
 
-50 problems across Issues 1–12.
+52 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1626,6 +1627,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [806](806.md) Let |  | 13m10s |
+| [807](807.md) *V. V. Prasolov*. Consider a regular polytope in two or three dimensions, a point $M$ inside or near it, and the feet of perpendiculars from $M$ to its sides or faces. |  | 13m59s |
 | [808](808.md) *D. G. Azov*. Begin by examining small values of $k$. |  | 4m14s |
 | [809](809.md) *V. V. Proizvolov*. Compute the first few terms of the series to detect a pattern. |  | 10m33s |
 | [810](810.md) *F. V. Vainshtein*. Let $M$ be a convex polygon with area $S$. |  | 6m59s |
@@ -1681,6 +1683,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [837](837.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. Consider the simpler case where two of the numbers are coprime. |  | 9m11s |
+| [838](838.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. Consider an equilateral triangle $ABC$. |  | 10m41s |
 | [839](839.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. For a set of integers with no three-term arithmetic progression, the classical example is obtained by writing numbers in base $3$ and allowing only digits $0$ and $1$. |  | 8m47s |
 | [840](840.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. The first expression can be expanded into a difference of two homogeneous cyclic sums: |  | 7m52s |
 
