@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1380 solved, 6 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1382 solved, 6 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1380
+kvant_total: 1382
 kvant_verified: 6
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1380 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1382 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
 
 ## 1970
 
@@ -1101,7 +1101,7 @@ draft: false
 
 ## 1979
 
-50 problems across Issues 1–12, 1 verified.
+51 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1145,6 +1145,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [562](562.md) Our systems have detected unusual activity coming from your system. |  | 27m20s |
 | [563](563.md) *S. V. Fomin*. Assume, seeking a contradiction, that | ✓ | 8m47s |
 | [564](564.md) Let $BC=a$, and place the triangle in coordinates |  | 7m57s |
 | [565](565.md) For each $k$, the quantity $b_k$ is the average of all products of $k$ distinct elements from $a_1,\\ldots,a_n$. |  | 2m06s |
@@ -1336,7 +1337,7 @@ draft: false
 
 ## 1981
 
-54 problems across Issues 1–12.
+55 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1352,6 +1353,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [666](666.md) The problem considers a network of $n$ vertices connected by $m$ undirected edges with positive integer weights. |  | 12m58s |
 | [667](667.md) *N. B. Vasilyev*. Consider a triangle $ABC$ with the smallest angle $\\widehat A$ and suppose the differences $d = /AB/ - /BC/$ and $e = /AC/ - /BC/$ are given. |  | 7m48s |
 | [668](668.md) Computing the first few terms of the sequence $(x_i)$ modulo small integers may reveal patterns. |  | 4m45s |
 | [669](669.md) Consider a cyclic quadrilateral $ABCD$ with circumcircle $\\Gamma$. |  | 4m21s |
