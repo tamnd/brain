@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4287 problems, 2212 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4291 problems, 2213 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4287 problems, 2212 verified.**
+**750 contests, 4291 problems, 2213 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -619,7 +619,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2064](2064/) | [Codeforces Round 1005 (Div. 2)](https://codeforces.com/contest/2064) | Div. 2 | 800-2600 | 2/6 | 11m 13s |
 | [2065](2065/) | [Codeforces Round 1003 (Div. 4)](https://codeforces.com/contest/2065) | Div. 4 | 800-2200 | 5/9 | 16m 33s |
 | [2066](2066/) | [Codeforces Round 1004 (Div. 1)](https://codeforces.com/contest/2066) | Div. 1 | 1400-3300 | 1/7 | 14m 39s |
-| [2067](2067/) | [Codeforces Round 1004 (Div. 2)](https://codeforces.com/contest/2067) | Div. 2 | 800-1500 | 2/3 | 5m 2s |
+| [2067](2067/) | [Codeforces Round 1004 (Div. 2)](https://codeforces.com/contest/2067) | Div. 2 | 800-3300 | 3/7 | 13m 28s |
 | [2068](2068/) | [European Championship 2025 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2068) | ICPC/IOI | 1900-3500 | 4/11 | 17m 46s |
 | [2069](2069/) | [Educational Codeforces Round 174 (Rated for Div. 2)](https://codeforces.com/contest/2069) | Div. 2 | 800-2800 | 2/6 | 10m 15s |
 | [2070](2070/) | [Educational Codeforces Round 175 (Rated for Div. 2)](https://codeforces.com/contest/2070) | Div. 2 | 800-3000 | 5/6 | 9m 24s |
