@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1394 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1395 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1394
+kvant_total: 1395
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1394 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1395 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2910,7 +2910,7 @@ draft: false
 
 ## 1995
 
-10 problems across Issues 1–6, 2 verified.
+11 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -2924,6 +2924,7 @@ draft: false
 |---|---------|---|------|
 | [1481](1481.md) Let $a=BC$, $b=CA$, $c=AB$. |  | 6m30s |
 | [1483](1483.md) *B. D. Ginzburg*. Each vector lies in the first quadrant and has length $1$. |  | 10m28s |
+| [1484](1484.md) *N. B. Vasilyev*. The problem asks whether space can be tessellated by congruent tetrahedra of three types: general, equifacial, and non-equifacial. |  | 31m11s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
 | [1489](1489.md) *A. I. Galochkin*. Work over the vector space $\\mathbb F_2^{mn}$ of all $0$-$1$ configurations on the $m\\times n$ rectangle. | ✓ | 14m54s |
 
