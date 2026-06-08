@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1429 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1432 solved, 9 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1429
-kvant_verified: 8
+kvant_total: 1432
+kvant_verified: 9
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1429 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1432 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 9 solutions have been independently verified.
 
 ## 1970
 
@@ -758,7 +758,7 @@ draft: false
 
 ## 1976
 
-47 problems across Issues 1–12.
+49 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -856,6 +856,7 @@ draft: false
 | [411](411.md) Consider a triangle with sides $a$, $b$, $c$, and a point inside it through which three segments pass, each parallel to a side and all of equal length $x$. |  | 2m09s |
 | [412](412.md) Model the city as a finite directed graph $G=(V,E)$ in which vertices are squares and directed edges are one-way streets. |  | 9m18s |
 | [413](413.md) *I. M. Yaglom*. Consider the equation $f(x+a)-f(x)=0$ for a function $f$ continuous on $[0,1]$ with $f(0)=f(1)=0$. |  | 9m58s |
+| [414](414.md) Let the convex pentagon be $A_1A_2A_3A_4A_5$, with indices taken modulo $5$. |  | 26m19s |
 | [415](415.md) The problem asks for the maximum number of mutually non-attacking kings on an $n\\times n$ toroidal board. |  | 2m23s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1976_12/)
@@ -865,11 +866,12 @@ draft: false
 | [416](416.md) Interpret the drawn segments as the edges of a graph whose vertices are the given points. |  | 6m34s |
 | [417](417.md) *V. V. Proizvolov*. The object is a closed polygonal line drawn on the surface of a unit cube, with the condition that every face of the cube contains at least one entire segment of the polygonal line. |  | 7m06s |
 | [418](418.md) For small values of $n$, |  | 6m34s |
+| [419](419.md) Let $D_{16}$ denote the closed disk of radius $16$ centered at the origin, and suppose $650$ points $P_1, \\dots, P_{650}$ are placed in $D_{16}$. |  | 27m06s |
 | [420](420.md) *G. A. Gurevich, B. Makarevich*. The allowed operations on a fraction $\\frac{a}{b}$ replace the integer pair $(a,b)$ by one of $(a-b,b)$, $(a+b,b)$, or $(b,a)$. |  | 2m11s |
 
 ## 1977
 
-52 problems across Issues 1–12, 1 verified.
+53 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -953,6 +955,7 @@ draft: false
 | [461](461.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, 9th grade)*. Consider a small number of weights, for instance $n=2$ or $n=3$, each with distinct masses $w_1<w_2<w_3$. |  | 6m02s |
 | [462](462.md) Let the apex of the regular square pyramid be $S$, and let the base square be $ABCD$ with center $O$. |  | 1m46s |
 | [463](463.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 9)*. Consider small examples to understand the problem concretely. |  | 6m14s |
+| [464](464.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 9)*. Let each square correspond to its center. | ✓ | 9m26s |
 | [465](465.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, grades 8 and 10)*. A ticket is a length-$k$ word over the alphabet ${0,1,\\dots,9}$. |  | 4m28s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1977_10/)
