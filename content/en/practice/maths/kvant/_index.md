@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1466 solved, 28 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1467 solved, 28 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1466
+kvant_total: 1467
 kvant_verified: 28
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1466 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 28 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1467 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 28 solutions have been independently verified.
 
 ## 1970
 
@@ -1732,7 +1732,7 @@ draft: false
 
 ## 1984
 
-57 problems across Issues 1–12, 2 verified.
+58 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1821,6 +1821,7 @@ draft: false
 | [881](881.md) Our systems have detected unusual activity coming from your system. |  | 26m56s |
 | [882](882.md) *Leningrad City Mathematical Olympiad (50th, 1984)*. Consider small integer triples $(a,b,c)$ satisfying $a+b+c=0$. |  | 4m53s |
 | [883](883.md) Working |  | 14m25s |
+| [884](884.md) The reviewer correctly identified a critical error. |  | 32m13s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1984_10/)
 
