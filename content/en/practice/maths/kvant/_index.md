@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1373 solved, 3 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1374 solved, 3 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1373
+kvant_total: 1374
 kvant_verified: 3
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1373 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 3 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1374 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 3 solutions have been independently verified.
 
 ## 1970
 
@@ -758,7 +758,7 @@ draft: false
 
 ## 1976
 
-43 problems across Issues 1–12.
+44 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -792,6 +792,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [376](376.md) Let the black piece start at cell $1$ and the white piece at cell $N$. |  | 6m47s |
+| [377](377.md) The required condition is |  | 12m03s |
 | [379](379.md) I can proceed with this framework, but I need the text of Kvant problem M379 in order to produce a rigorous solution. |  | 4m28s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1976_5/)
