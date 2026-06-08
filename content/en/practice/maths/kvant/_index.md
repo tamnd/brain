@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1382 solved, 6 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1384 solved, 6 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1382
+kvant_total: 1384
 kvant_verified: 6
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1382 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1384 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 6 solutions have been independently verified.
 
 ## 1970
 
@@ -1456,7 +1456,7 @@ draft: false
 
 ## 1982
 
-51 problems across Issues 1–12.
+52 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
@@ -1530,6 +1530,7 @@ draft: false
 | [757](757.md) *G. A. Halperin*. Let an arithmetic progression of reciprocals be |  | 10m56s |
 | [758](758.md) *All-Union Mathematical Olympiad for School Students (1982, 9th grade)*. Let $R$ be the set of remaining integers, and let $A=R\\setminus{1}$. |  | 3m21s |
 | [759](759.md) *All-Union Mathematical Olympiad for School Students (1982, Grade 10)*. Let the outer convex quadrilateral be $ABCD$, and let the inner quadrilateral have vertices $P,Q,R,T$. |  | 2m23s |
+| [760](760.md) *All-Union Mathematical Olympiad for Schoolchildren (1982, Grade 9)*. Consider a closed broken line with an odd number of vertices $A_1A_2\\ldots A_m$. |  | 9m58s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1982_9/)
 
@@ -2935,13 +2936,14 @@ draft: false
 
 ## 1996
 
-3 problems across Issues 1–5.
+4 problems across Issues 1–5.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1531](1531.md) Each question consists of choosing a line and learning in which of the three sets determined by that line the point $P$ lies: one open half-plane, the other open half-plane, or the line itself. |  | 10m23s |
+| [1532](1532.md) ``` |  | 12m17s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1996_5/)
 
