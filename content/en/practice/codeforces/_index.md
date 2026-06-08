@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4262 problems, 2208 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4267 problems, 2208 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4262 problems, 2208 verified.**
+**750 contests, 4267 problems, 2208 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -530,7 +530,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1969](1969/) | [Educational Codeforces Round 165 (Rated for Div. 2)](https://codeforces.com/contest/1969) | Div. 2 | 800-3000 | 3/6 | 13m 58s |
 | [1970](1970/) | [Helvetic Coding Contest 2024 online mirror (teams allowed, unrated)](https://codeforces.com/contest/1970) | Special | 1000-3100 | 6/21 | 47m 10s |
 | [1971](1971/) | [Codeforces Round 944 (Div. 4)](https://codeforces.com/contest/1971) | Div. 4 | 800-2100 | 6/8 | 15m 17s |
-| [1972](1972/) | [Codeforces Round 942 (Div. 2)](https://codeforces.com/contest/1972) | Div. 2 | 800-900 | 1/2 | 4m 38s |
+| [1972](1972/) | [Codeforces Round 942 (Div. 2)](https://codeforces.com/contest/1972) | Div. 2 | 800-2800 | 1/7 | 18m 1s |
 | [1973](1973/) | [Codeforces Round 945 (Div. 2)](https://codeforces.com/contest/1973) | Div. 2 | 900-3100 | 0/6 | 31m 30s |
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
