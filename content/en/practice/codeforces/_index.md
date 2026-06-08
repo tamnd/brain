@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4277 problems, 2210 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4281 problems, 2210 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4277 problems, 2210 verified.**
+**750 contests, 4281 problems, 2210 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -578,7 +578,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2021](2021/) | [Codeforces Round 977 (Div. 2, based on COMPFEST 16 - Final Round)](https://codeforces.com/contest/2021) | Div. 2 | 800-2800 | 2/8 | 12m 10s |
 | [2022](2022/) | [Codeforces Round 978 (Div. 2)](https://codeforces.com/contest/2022) | Div. 2 | 800-2700 | 3/7 | 14m 17s |
 | [2023](2023/) | [Codeforces Round 980 (Div. 1)](https://codeforces.com/contest/2023) | Div. 1 | 1300-3500 | 1/6 | 11m 30s |
-| [2024](2024/) | [Codeforces Round 980 (Div. 2)](https://codeforces.com/contest/2024) | Div. 2 | 800-1100 | 1/2 | 3m 9s |
+| [2024](2024/) | [Codeforces Round 980 (Div. 2)](https://codeforces.com/contest/2024) | Div. 2 | 800-2900 | 1/6 | 26m 21s |
 | [2025](2025/) | [Educational Codeforces Round 170 (Rated for Div. 2)](https://codeforces.com/contest/2025) | Div. 2 | 800-3000 | 4/6 | 12m 27s |
 | [2026](2026/) | [Educational Codeforces Round 171 (Rated for Div. 2)](https://codeforces.com/contest/2026) | Div. 2 | 900-2700 | 1/6 | 11m 52s |
 | [2027](2027/) | [Codeforces Round 982 (Div. 2)](https://codeforces.com/contest/2027) | Div. 2 | 800-3100 | 1/6 | 11m 31s |
