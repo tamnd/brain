@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4242 problems, 2195 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4243 problems, 2198 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4242 problems, 2195 verified.**
+**750 contests, 4243 problems, 2198 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -473,7 +473,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1903](1903/) | [Codeforces Round 912 (Div. 2)](https://codeforces.com/contest/1903) | Div. 2 | 800-2500 | 2/7 | 14m 2s |
 | [1904](1904/) | [Codeforces Round 914 (Div. 2)](https://codeforces.com/contest/1904) | Div. 2 | 900-2800 | 2/7 | 15m 49s |
 | [1905](1905/) | [Codeforces Round 915 (Div. 2)](https://codeforces.com/contest/1905) | Div. 2 | 800-2600 | 5/6 | 11m 25s |
-| [1906](1906/) | [2023-2024 ICPC, Asia Jakarta Regional Contest (Online Mirror, Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1906) | ICPC/IOI | 1000-3000 | 7/12 | 22m 53s |
+| [1906](1906/) | [2023-2024 ICPC, Asia Jakarta Regional Contest (Online Mirror, Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1906) | ICPC/IOI | 1000-3000 | 10/13 | 25m 58s |
 | [1907](1907/) | [Codeforces Round 913 (Div. 3)](https://codeforces.com/contest/1907) | Div. 3 | 800-2200 | 2/7 | 14m 6s |
 | [1909](1909/) | [Pinely Round 3 (Div. 1 + Div. 2)](https://codeforces.com/contest/1909) | Div. 1+2 | 800-3500 | 4/10 | 19m 20s |
 | [1910](1910/) | [Kotlin Heroes: Episode 9 (Unrated, T-Shirts + Prizes!)](https://codeforces.com/contest/1910) | Kotlin | 1100-2900 | 1/10 | 21m 21s |

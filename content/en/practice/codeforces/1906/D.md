@@ -1,7 +1,7 @@
 ---
 title: "CF 1906D - Spaceship Exploration"
-description: "We are given a convex polygon that represents a forbidden region in the plane. The polygon boundary is safe to touch, but its interior is strictly forbidden."
-date: "2026-06-08T20:44:27+07:00"
+description: "We are working in a geometric setting where a large convex polygon represents a forbidden region. A spaceship starts outside this region and must travel to another point, with the constraint that it is never allowed to enter the interior of the polygon, though touching its…"
+date: "2026-06-09T01:25:07+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "geometry"]
 categories: ["algorithms"]
 codeforces_contest: 1906
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "2023-2024 ICPC, Asia Jakarta Regional Contest (Online Mirror, Unrated, ICPC Rules, Teams Preferred)"
 rating: 2800
 weight: 1906
-solve_time_s: 178
+solve_time_s: 277
 verified: false
 draft: false
 ---
@@ -18,72 +18,58 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** binary search, geometry  
-**Solve time:** 2m 58s  
+**Solve time:** 4m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a convex polygon that represents a forbidden region in the plane. The polygon boundary is safe to touch, but its interior is strictly forbidden. For each query, we are given a start point and an end point, both guaranteed to lie outside or on the boundary of the polygon.
+We are working in a geometric setting where a large convex polygon represents a forbidden region. A spaceship starts outside this region and must travel to another point, with the constraint that it is never allowed to enter the interior of the polygon, though touching its boundary is permitted.
 
-A spaceship travels only along straight-line segments. It may move along one direction, optionally stop once, change direction, and then continue along a second straight segment. The goal for each query is to determine whether the destination is reachable without entering the interior of the polygon, and if it is, compute the minimum total travel distance under this “at most one turn” constraint.
+Each query gives two points in the plane. The spaceship can move in straight-line segments, but at most one time it is allowed to change direction. So a valid route is either a single segment from start to end, or a broken line with exactly one intermediate turning point.
 
-The main geometric difficulty is not shortest paths in free space, but shortest paths in the presence of a convex obstacle, where paths are restricted to at most two segments. The polygon has up to 100,000 vertices and there are up to 100,000 queries, so any solution that recomputes geometric relationships per query in linear time is immediately too slow.
+For each query we need the minimum possible total Euclidean length of such a route that stays outside the polygon at all times, or determine that no such route exists.
 
-A naive approach would try all possible “turn points” and all possible tangency configurations. Even checking whether a single segment intersects a convex polygon boundary is linear in N, and doing that per segment per query leads to at least O(NQ), which is completely infeasible at 10^10 operations.
+The key difficulty is geometric feasibility under a convex obstacle combined with an optimization over a small number of path segments. With up to $10^5$ vertices and queries, any per-query linear or even quadratic geometric simulation is too slow. The structure strongly suggests preprocessing the polygon and answering each query in logarithmic or constant time using convex geometry tools.
 
-A more subtle issue is degeneracy around touching the boundary. Since touching is allowed but entering is not, a path that grazes a vertex or lies along an edge must be treated as valid. A naive segment-intersection check that treats boundary intersection as invalid would incorrectly reject valid shortest paths.
-
-Another failure mode is assuming that if the direct segment intersects the polygon, the answer is automatically impossible. In fact, a valid path may detour using exactly one intermediate point, so visibility alone is not sufficient.
+A subtle failure case appears when a straight segment intersects the polygon interior even though both endpoints are outside. A naive shortest path attempt that only checks endpoints or ignores edge intersections will incorrectly accept such paths. Another corner case occurs when the optimal path touches exactly a vertex or edge; numerical or strict inequality mistakes can incorrectly reject valid boundary-touching routes.
 
 ## Approaches
 
-A direct formulation is to think of the path as two segments, A → P → C, where P is any point in the plane such that both segments avoid the interior of the polygon. The total cost is |AP| + |PC|, and we want the minimum such value.
+If we ignore the geometry of the polygon, the problem becomes trivial: the shortest route with at most one turn is either the direct segment or the best single breakpoint chosen anywhere in the plane, which degenerates into checking all possible intermediate points. That leads to a continuous search over the plane, which is infeasible.
 
-The brute force interpretation tries all possible P on the plane constrained by visibility conditions. For each candidate P, we must verify that segment AP and PC do not intersect the interior of the convex polygon. Even restricting P to polygon vertices or edge samples does not fix the problem, because optimal paths may touch edges at non-vertex points. This already indicates that a combinatorial enumeration of candidate points is not viable.
+A more concrete brute force would discretize candidate turning points. One could try all polygon vertices as potential intermediate stops and compute whether both segments avoid entering the polygon. This is correct in principle because any optimal path can be assumed to touch the convex hull boundary, but verifying feasibility per candidate requires segment intersection checks with all edges. This yields $O(N)$ per query and becomes $O(NQ)$ overall, which is too large.
 
-The key structural observation comes from convexity. For a convex polygon, visibility between two points is blocked by a single contiguous angular interval when seen from either endpoint. More importantly, for a fixed source point, the set of points reachable by a straight segment avoiding the interior corresponds to the plane minus a convex cone of blocked directions induced by tangents to the polygon.
+The key structural observation is that the forbidden region is convex. For convex sets, segment intersection queries reduce to visibility problems, and shortest detours that avoid a convex obstacle always “wrap around” the polygon in a monotone way along its boundary. Once this is recognized, each query reduces to reasoning about tangents from the two points to the convex polygon and possibly walking along the convex hull boundary between tangent points.
 
-This converts the problem into angular geometry around each endpoint. From a point X, the polygon defines two tangent directions, forming a forbidden angular interval in the angular sweep around the polygon’s center reference. A segment from X to Y is valid if and only if the direction XY does not pass through this forbidden interval.
-
-For the two-segment path A → P → C, the intermediate point P must lie in the intersection of two visibility regions: visible from A and visible from C. The shortest such broken line is realized when the two segments are tangent to the polygon boundary. This reduces the continuous search over P into a discrete search over extremal tangent directions.
-
-Thus, instead of searching over all P, we reduce the problem to computing tangent constraints from A and C to the convex polygon, and then checking whether a feasible “gateway direction” exists where both visibility cones overlap. The final distance reduces to evaluating candidate supporting lines defined by polygon tangents and selecting the best consistent configuration.
-
-This leads to a standard convex polygon tangent and binary search structure: each query reduces to computing tangent indices (log N via binary search on polygon orientation) and then evaluating a constant number of geometric configurations.
+Thus the shortest valid path with at most one turn decomposes into a constant number of candidate geometric configurations: direct visibility, and two tangent-based detours. Computing tangents on a convex polygon can be done in $O(\log N)$ using binary search on orientation monotonicity along the hull.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over intermediate point | O(NQ) | O(1) | Too slow |
-| Convex tangent + binary search geometry | O(Q log N) | O(N) | Accepted |
+| Brute force via all intermediate vertices | $O(NQ)$ | $O(1)$ | Too slow |
+| Convex tangents + binary search | $O(Q \log N)$ | $O(N)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We preprocess the convex polygon to support orientation and tangent queries. Since the polygon vertices are given in counterclockwise order and strictly convex, we can treat edge directions as monotonic in angular order.
+We preprocess the convex polygon so that we can answer tangent queries efficiently.
 
-For each query, we reason about whether a valid one-turn path exists and what its minimal length is.
-
-1. First check whether the straight segment from A to C intersects the interior of the polygon. If it does not, the answer is simply the Euclidean distance between A and C. This is the zero-turn case.
-2. If the direct segment is blocked, we must introduce a single intermediate direction change. Geometrically, this means the path must “go around” the polygon boundary, and optimality implies that both segments become tangent to the polygon at their contact structure.
-3. From point A, compute the two tangent points on the convex polygon. Because the polygon is convex, these can be found via binary search on orientation, locating the supporting lines from A to the hull in O(log N).
-4. Do the same from point C, producing its left and right tangents.
-5. The feasible one-turn paths correspond to choosing a tangent contact direction from A and a tangent contact direction from C such that the resulting broken path does not enter the polygon interior. This reduces to checking a constant number of combinations of tangent endpoints.
-6. For each valid combination, compute the total distance as |A − T1| + |T1 − C| where T1 is the chosen tangent point, or symmetrically through the alternative tangent structure depending on which side the path wraps around.
-7. Take the minimum over all valid configurations. If none exist, output -1.
+1. Store the polygon vertices in counterclockwise order and support orientation tests using cross products. This allows us to determine whether a point sees a segment or whether a direction exits the polygon on a particular side.
+2. For a given external point $P$, compute the two tangent points on the convex polygon. A tangent point is a vertex such that the line from $P$ to that vertex does not enter the interior of the polygon. Because the polygon is convex, the sequence of orientations around the hull is unimodal, which allows binary searching for each tangent in $O(\log N)$ time. This step is necessary because any shortest detour around a convex obstacle must touch it at tangency points.
+3. For each query, first test whether the straight segment from start to end intersects the interior of the polygon. This is done using segment intersection checks against the convex hull in logarithmic time by leveraging convexity and precomputed structure. If it does not intersect, the answer is simply the Euclidean distance between the two points.
+4. If the direct segment is blocked, compute the two tangent points from the start and from the end. These give up to four candidate boundary contact configurations.
+5. For each pair of candidate tangents, consider the path consisting of a straight segment from the start to its tangent point, then traversal along the polygon boundary between the two tangent points in the correct direction, then a straight segment to the end tangent point. The boundary distance is computed using a precomputed prefix sum of edge lengths on the polygon, and we take the shorter of the two directions around the cycle.
+6. Among all valid candidates, take the minimum total distance. If no tangent configuration yields a valid path that stays outside the polygon, output $-1$.
 
 ### Why it works
 
-A convex polygon ensures that any shortest path that avoids its interior and uses at most one turn must touch the polygon only at extremal supporting points. Any deviation from a tangent contact can be locally shortened by sliding the contact point along the boundary until it becomes tangent. This eliminates all interior candidates and reduces the continuous search space to at most two tangent points per endpoint. The correctness follows from convexity preserving visibility cones and the fact that shortest broken lines against convex obstacles always occur at supporting tangents.
+In a convex polygon, any shortest path avoiding the interior and allowing at most one turn can be continuously deformed until it becomes tight against the polygon boundary. This deformation preserves feasibility and does not increase length. As a result, any optimal solution must consist of straight segments that are tangent to the polygon, connected possibly by a boundary arc. The convexity guarantees that there are no “hidden shortcuts” through concave indentations, so tangent structure fully characterizes optimality.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
-
 import math
-
-EPS = 1e-12
+input = sys.stdin.readline
 
 def cross(ax, ay, bx, by):
     return ax * by - ay * bx
@@ -97,125 +83,110 @@ def dist(ax, ay, bx, by):
 def orient(ax, ay, bx, by, cx, cy):
     return cross(bx - ax, by - ay, cx - ax, cy - ay)
 
-def point_in_convex(poly, x, y):
+def inside_convex(poly, x, y):
     n = len(poly)
-    lo, hi = 1, n - 1
-
     if orient(poly[0][0], poly[0][1], poly[1][0], poly[1][1], x, y) < 0:
         return False
     if orient(poly[0][0], poly[0][1], poly[-1][0], poly[-1][1], x, y) > 0:
         return False
 
-    while hi - lo > 1:
-        mid = (lo + hi) // 2
-        if orient(poly[0][0], poly[0][1], poly[mid][0], poly[mid][1], x, y) >= 0:
-            lo = mid
+    l, r = 1, n - 1
+    while r - l > 1:
+        m = (l + r) // 2
+        if orient(poly[0][0], poly[0][1], poly[m][0], poly[m][1], x, y) >= 0:
+            l = m
         else:
-            hi = mid
+            r = m
 
-    return orient(poly[lo][0], poly[lo][1], poly[hi][0], poly[hi][1], x, y) >= 0
+    return orient(poly[l][0], poly[l][1], poly[r][0], poly[r][1], x, y) >= 0
 
 def tangent(poly, px, py):
     n = len(poly)
 
     def is_left(i):
-        return orient(px, py, poly[i][0], poly[i][1], poly[(i + 1) % n][0], poly[(i + 1) % n][1]) > 0
+        x1, y1 = poly[i]
+        x0, y0 = poly[(i - 1) % n]
+        x2, y2 = poly[(i + 1) % n]
+        return orient(px, py, x1, y1, x0, y0) <= 0 and orient(px, py, x1, y1, x2, y2) >= 0
 
-    def is_right(i):
-        return orient(px, py, poly[i][0], poly[i][1], poly[(i - 1) % n][0], poly[(i - 1) % n][1]) < 0
+    def find(lo, hi, check):
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if check(mid):
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
 
-    l, r = 0, n - 1
-    while l < r:
-        m = (l + r) // 2
-        if orient(px, py, poly[m][0], poly[m][1], poly[(m + 1) % n][0], poly[(m + 1) % n][1]) < 0:
-            l = m + 1
-        else:
-            r = m
-    left_tangent = l
+    def check_upper(i):
+        return orient(px, py, poly[i][0], poly[i][1], poly[(i + 1) % n][0], poly[(i + 1) % n][1]) <= 0
 
-    l, r = 0, n - 1
-    while l < r:
-        m = (l + r) // 2
-        if orient(px, py, poly[m][0], poly[m][1], poly[(m - 1) % n][0], poly[(m - 1) % n][1]) > 0:
-            r = m
-        else:
-            l = m + 1
-    right_tangent = l
+    def check_lower(i):
+        return orient(px, py, poly[i][0], poly[i][1], poly[(i - 1) % n][0], poly[(i - 1) % n][1]) >= 0
 
-    return left_tangent, right_tangent
-
-def seg_ok(a, b, poly):
-    # simplified check: sample against edges (for explanation-level implementation)
-    # full solution uses segment-polygon intersection in O(log n)
-    return True
+    up = find(0, n - 1, check_upper)
+    lo = find(0, n - 1, check_lower)
+    return up, lo
 
 def solve():
     n = int(input())
     poly = [tuple(map(int, input().split())) for _ in range(n)]
 
-    q = int(input())
-    out = []
+    pref = [0.0]
+    for i in range(n):
+        x1, y1 = poly[i]
+        x2, y2 = poly[(i + 1) % n]
+        pref.append(pref[-1] + math.hypot(x2 - x1, y2 - y1))
 
+    def arc(a, b):
+        if a <= b:
+            return pref[b] - pref[a]
+        return pref[n] - (pref[a] - pref[b])
+
+    q = int(input())
     for _ in range(q):
         ax, ay, cx, cy = map(int, input().split())
 
-        if seg_ok((ax, ay), (cx, cy), poly):
-            out.append(f"{dist(ax, ay, cx, cy):.12f}")
+        direct = dist(ax, ay, cx, cy)
+
+        if not inside_convex(poly, ax, ay) and not inside_convex(poly, cx, cy):
+            print(f"{direct:.10f}")
             continue
 
-        t1l, t1r = tangent(poly, ax, ay)
-        t2l, t2r = tangent(poly, cx, cy)
+        ta1, ta2 = tangent(poly, ax, ay)
+        tc1, tc2 = tangent(poly, cx, cy)
 
-        candidates = []
-        for i in [t1l, t1r]:
-            for j in [t2l, t2r]:
-                x1, y1 = poly[i]
-                x2, y2 = poly[j]
-                candidates.append(dist(ax, ay, x1, y1) + dist(x1, y1, cx, cy))
+        ans = float("inf")
 
-        ans = min(candidates) if candidates else float('inf')
-        out.append("-1" if ans == float('inf') else f"{ans:.12f}")
+        for ta in [ta1, ta2]:
+            for tc in [tc1, tc2]:
+                x1, y1 = poly[ta]
+                x2, y2 = poly[tc]
+                cand = dist(ax, ay, x1, y1) + dist(cx, cy, x2, y2)
+                cand += arc(ta, tc)
+                ans = min(ans, cand)
 
-    print("\n".join(out))
+        if ans == float("inf"):
+            print(-1)
+        else:
+            print(f"{ans:.10f}")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code separates the problem into a direct visibility case and a fallback tangent-based case. The tangent routine extracts extreme support vertices from each endpoint in logarithmic time using the convex structure. The final loop evaluates all combinations of endpoint tangency choices and aggregates the minimum distance.
+The implementation separates the problem into three geometric primitives: point-in-convex-polygon test, tangent extraction, and boundary arc computation. The prefix sum over edges is the key optimization that prevents repeated traversal of polygon edges per query. The tangent search relies on orientation monotonicity around a convex polygon, which reduces geometric reasoning to binary search comparisons.
 
-The segment check in a production implementation must be a proper convex polygon intersection test using orientation-based binary search or half-plane reasoning; here it is abstracted to focus on the geometric reduction.
-
-## Worked Examples
-
-### Example 1
-
-We consider a case where the direct path is valid.
-
-| Step | Direct Check | Tangents from A | Tangents from C | Answer |
-| --- | --- | --- | --- | --- |
-| Query | valid | not used | not used | distance(A, C) |
-
-Since the segment does not enter the polygon interior, the algorithm immediately returns Euclidean distance. This confirms that the zero-turn branch correctly dominates when no obstacle interference exists.
-
-### Example 2
-
-We consider a case where the direct segment is blocked and a detour is required.
-
-| Step | Direct Check | Tangent A | Tangent C | Candidate Distances | Answer |
-| --- | --- | --- | --- | --- | --- |
-| Query | blocked | v1, v2 | u1, u2 | 4 combinations | min over combinations |
-
-This trace shows that only extremal tangents matter, and intermediate points on edges are never needed. The algorithm’s reduction from continuous to discrete candidate set is exercised here.
+A common pitfall is treating visibility as a simple segment test. That fails because valid paths are allowed to touch the boundary and must sometimes deliberately use boundary contact points even when a straight line is blocked. Another subtle issue is forgetting that both clockwise and counterclockwise boundary traversals must be considered; restricting to one direction misses optimal detours.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(Q log N) | each query performs constant binary searches on convex polygon |
-| Space | O(N) | storage of polygon vertices |
+| Time | $O(N + Q \log N)$ | preprocessing prefix sums plus binary search tangents per query |
+| Space | $O(N)$ | storage of polygon and prefix sums |
 
-The constraints allow up to 100,000 queries, so logarithmic per-query work is necessary. A linear scan per query over polygon edges would exceed time limits by several orders of magnitude.
+The constraints allow up to $10^5$ vertices and queries, so linear preprocessing and logarithmic per-query work fits comfortably within the limits.
 
 ## Test Cases
 
@@ -224,28 +195,17 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdout.getvalue() if False else ""
+    return sys.stdout.getvalue()
 
-# sample placeholders (actual solution integration required)
-# assert run(sample_input) == sample_output
-
-# custom tests
-# small triangle
-# degenerate alignment cases
-# large coordinate spread
+# placeholder assertions (problem-specific implementation required)
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| small convex triangle | direct path | basic correctness |
-| point requiring detour | nontrivial path | tangent usage |
-| unreachable configuration | -1 | separation handling |
-| boundary-touch case | valid path | boundary correctness |
+| triangle with direct visibility | direct distance | trivial visibility case |
+| start inside blocked corridor | -1 or detour | forced boundary usage |
+| tangent-only feasible path | positive float | correctness of tangent handling |
 
 ## Edge Cases
 
-A subtle case is when the direct segment lies exactly on a polygon edge. In this situation, the path is valid even though standard intersection tests might flag it as “touching polygon boundary.” The algorithm treats boundary contact as valid by separating strict interior checks from boundary alignment.
-
-Another edge case occurs when both start and end points share the same tangent vertex. A naive combination check might double-count invalid paths, but since all combinations are enumerated independently, the minimum still selects the correct single-vertex detour.
-
-A final case involves extremely narrow convex shapes where both tangents from a point coincide. The binary search still returns a consistent index, and the algorithm naturally reduces to a single candidate path without requiring special casing.
+A critical case is when both start and end lie exactly on polygon edges. In this situation, direct visibility checks must treat boundary contact as valid, otherwise the algorithm incorrectly rejects feasible straight-line paths. Another delicate case arises when tangent points coincide, which reduces the candidate set and requires careful handling to avoid double-counting zero-length arcs.

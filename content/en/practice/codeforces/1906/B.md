@@ -1,7 +1,7 @@
 ---
 title: "CF 1906B - Button Pressing"
-description: "We have N lamps arranged in a line and N buttons, each associated with a lamp position. The initial state of each lamp is given by a string A of 0s and 1s, where 1 represents \"on\" and 0 represents \"off\"."
-date: "2026-06-08T20:42:12+07:00"
+description: "We have a line of lamps, each either on or off, and a line of buttons, one per lamp. Each button affects only the lamps immediately adjacent to it: pressing button $i$ toggles lamps $i-1$ and $i+1$, if they exist."
+date: "2026-06-09T01:22:16+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "constructive-algorithms", "hashing"]
 categories: ["algorithms"]
 codeforces_contest: 1906
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "2023-2024 ICPC, Asia Jakarta Regional Contest (Online Mirror, Unrated, ICPC Rules, Teams Preferred)"
 rating: 2600
 weight: 1906
-solve_time_s: 123
+solve_time_s: 106
 verified: false
 draft: false
 ---
@@ -18,41 +18,43 @@ draft: false
 
 **Rating:** 2600  
 **Tags:** bitmasks, constructive algorithms, hashing  
-**Solve time:** 2m 3s  
+**Solve time:** 1m 46s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have `N` lamps arranged in a line and `N` buttons, each associated with a lamp position. The initial state of each lamp is given by a string `A` of 0s and 1s, where 1 represents "on" and 0 represents "off". Each button can toggle the lamps immediately to its left and right but never its own lamp. You can press button `i` only if lamp `i` is on. The goal is to determine if it is possible to transform the initial lamp configuration `A` into a target configuration `B` by pressing zero or more buttons under the given constraints.
+We have a line of lamps, each either on or off, and a line of buttons, one per lamp. Each button affects only the lamps immediately adjacent to it: pressing button $i$ toggles lamps $i-1$ and $i+1$, if they exist. The twist is that a button can only be pressed if its corresponding lamp is currently on. The task is to determine whether a sequence of valid button presses exists to transform the initial lamp configuration $A$ into a target configuration $B$.
 
-The constraints tell us that `N` can be up to 200,000 and the total number of lamps across all test cases does not exceed 200,000. With a 1-second time limit, any solution that iterates over all possible sequences of button presses is immediately ruled out. A brute-force recursive or combinatorial approach would easily require `O(2^N)` operations, which is far beyond feasible.
+The input gives multiple test cases, each with a number of lamps/buttons $N$ and the initial and target lamp states as strings of 0s and 1s. The output must be "YES" if transformation is possible and "NO" otherwise.
 
-A non-obvious edge case occurs when all lamps in `A` are off. Since a button can only be pressed if its own lamp is on, it becomes impossible to toggle anything. For example, if `A = "000"` and `B = "010"`, the output must be `NO`. Another subtle case is when the differences between `A` and `B` occur at the endpoints. For instance, if `A = "101"` and `B = "111"`, the first and last lamps can only be toggled indirectly via the second lamp, which requires careful reasoning.
+The bounds allow $N$ up to 200,000 with a sum across test cases also capped at 200,000. This immediately rules out any $O(N^2)$ approach because each test case could be large, and multiple nested loops would exceed time limits. A linear or near-linear solution per test case is feasible.
+
+Edge cases include when all lamps are initially off, as no button can ever be pressed, and when a lamp needs to change but no neighboring button is available or active. For example, $A = 000$, $B = 010$ is impossible because the middle lamp cannot be toggled without pressing an adjacent button, which requires that the adjacent lamp is on.
 
 ## Approaches
 
-A naive approach is to simulate every button press in every order. One could iterate from left to right and press buttons whenever allowed, updating the lamp states. This is correct in principle, but the number of possible sequences grows exponentially, making it infeasible even for `N = 20`.
+The brute-force solution simulates every possible sequence of valid button presses. For each lamp $i$, one could try pressing buttons $i-1$ and $i+1$ whenever possible to match the target. While correct in principle, the number of sequences grows exponentially with $N$, so this is impractical even for small $N$. If $N$ is 200,000, a naive simulation could require $2^{200000}$ steps.
 
-The key insight is that the problem is fully determined by the number of 1s (on lamps) encountered so far. Pressing a button toggles its neighbors and does not affect its own lamp. If we traverse from left to right, the decision to press a button depends only on whether the lamp immediately to the left needs toggling. This allows a greedy approach: for each lamp from left to right (excluding the first and last), if the current lamp in `A` differs from `B`, we check if pressing the previous button is allowed. This turns the problem into a linear scan with constant-time operations per lamp.
+The key observation is that pressing a button only affects its neighbors. Therefore, the problem reduces to a check for the existence of at least one lamp that can be pressed at the right time to flip its neighbors. More concretely, a lamp at index $i$ can only be flipped indirectly by pressing one of its neighbors, and that neighbor must itself be on. Hence, we only need to verify whether there exists at least one lamp that is initially on and at least one lamp that is initially off. This guarantees flexibility: we can toggle neighbors to reach any target state using constructive moves. Conversely, if all lamps are initially on or all are off, some target configurations may be unreachable, because there is no way to flip lamps selectively without violating the press rule.
 
-At the endpoints, the leftmost lamp cannot be toggled from the left, and the rightmost lamp cannot be toggled from the right. These are special cases: the leftmost lamp must match `B[0]` initially, and the rightmost lamp must match `B[N-1]` after all other operations. This reasoning reduces the problem from exponential complexity to `O(N)` per test case.
+This insight reduces the problem to counting the number of 1s and 0s in $A$ and checking if the target $B$ requires a change that is impossible under a uniform initial state.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^N) | O(N) | Too slow |
-| Greedy Linear Scan | O(N) | O(N) | Accepted |
+| Brute Force Simulation | O(2^N) | O(N) | Too slow |
+| Count and Existence Check | O(N) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases `T`. For each test case, read `N`, `A`, and `B`. Convert `A` and `B` to integer arrays for easier manipulation.
-2. If the first lamp `A[0]` does not match `B[0]`, the answer is immediately `NO` because there is no left neighbor button to toggle it.
-3. Traverse lamps from position 1 to N-2. For lamp `i`, if `A[i-1]` differs from `B[i-1]`, check if lamp `i` is on. If it is, press button `i`, toggling lamps `i-1` and `i+1`. If it is off, output `NO` since we cannot toggle the required neighbor.
-4. After processing all interior lamps, check the last lamp. If `A[N-1]` matches `B[N-1]`, output `YES`; otherwise, output `NO`.
+1. Read the number of test cases $T$.
+2. For each test case, read $N$, $A$, and $B$.
+3. If $A$ is equal to $B$, output "YES" immediately because no presses are needed.
+4. Check whether $A$ contains at least one 0 and at least one 1.
+5. If both exist, output "YES" because we can constructively press buttons to toggle neighbors and reach $B$.
+6. If $A$ consists of all 0s or all 1s, check whether $B$ matches $A$. If not, output "NO"; otherwise output "YES".
 
-This works because each button press resolves exactly one discrepancy in the left neighbor. By proceeding from left to right, we never undo previous fixes.
-
-The invariant is that at the start of processing lamp `i`, all lamps left of `i` already match the target. Pressing button `i` only affects `i-1` and `i+1`, so we never disturb correctness for lamps left of `i-1`. The first and last lamps are edge cases handled separately.
+Why it works: the invariant is that as long as there is a mixture of on and off lamps, any neighbor can be toggled indirectly by pressing an adjacent lamp. If all lamps are uniform, some toggles are impossible, which prevents reaching certain target states.
 
 ## Python Solution
 
@@ -64,38 +66,30 @@ def solve():
     T = int(input())
     for _ in range(T):
         N = int(input())
-        A = list(map(int, input().strip()))
-        B = list(map(int, input().strip()))
-        
-        possible = True
-        
-        if A[0] != B[0]:
-            possible = False
-        else:
-            for i in range(1, N-1):
-                if A[i-1] != B[i-1]:
-                    if A[i] == 0:
-                        possible = False
-                        break
-                    # press button i
-                    A[i-1] ^= 1
-                    A[i+1] ^= 1
-        
-            if possible and A[N-1] != B[N-1]:
-                possible = False
-        
-        print("YES" if possible else "NO")
+        A = input().strip()
+        B = input().strip()
 
-solve()
+        if A == B:
+            print("YES")
+            continue
+
+        has_zero = '0' in A
+        has_one = '1' in A
+
+        if has_zero and has_one:
+            print("YES")
+        else:
+            print("NO")
+
+if __name__ == "__main__":
+    solve()
 ```
 
-Each part of the code mirrors the algorithm steps. We convert strings to integer arrays to allow toggling using XOR. The boundary checks for the first and last lamps prevent index errors. The loop only runs to `N-2` because the last lamp cannot press a neighbor button to fix itself. Using XOR ensures correctness without extra conditional statements.
+The solution first checks for trivial equality, avoiding unnecessary computation. The `has_zero` and `has_one` flags capture the minimal property needed for constructive toggling. Boundary conditions like $N = 3$ or $N = 200,000$ are naturally handled because the check is linear in $N$.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+**Sample Input 1**
 
 ```
 4
@@ -103,20 +97,13 @@ Input:
 0100
 ```
 
-| Step | i | A[i-1] | B[i-1] | Action | A state |
+| Step | A | B | has_zero | has_one | Output |
 | --- | --- | --- | --- | --- | --- |
-| Start | - | - | - | - | 0101 |
-| 1 | 1 | 0 | 0 | no press | 0101 |
-| 2 | 2 | 1 | 0 | press | 0111 |
-| 3 | 3 | 1 | 1 | no press | 0111 |
+| Initial | 0101 | 0100 | True | True | YES |
 
-Final check: A[3]=0 matches B[3]=0 → YES.
+Here, the mixture of 0s and 1s in `A` allows button presses to reach `B`.
 
-This trace demonstrates that toggling only occurs when necessary and left-to-right scanning preserves prior fixes.
-
-### Example 2
-
-Input:
+**Sample Input 2**
 
 ```
 3
@@ -124,24 +111,20 @@ Input:
 010
 ```
 
-| Step | i | A[i-1] | B[i-1] | Action | A state |
+| Step | A | B | has_zero | has_one | Output |
 | --- | --- | --- | --- | --- | --- |
-| Start | - | - | - | - | 000 |
-| 1 | 1 | 0 | 0 | no press | 000 |
-| 2 | 2 | 0 | 1 | cannot press, A[2]=0 | impossible |
+| Initial | 000 | 010 | True | False | NO |
 
-Output: NO.
-
-Shows the edge case where no lamp is on, making any necessary toggles impossible.
+All lamps off means no button can be pressed, so `B` is unreachable.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N) per test case | We iterate through the lamp array once, performing O(1) operations per lamp |
-| Space | O(N) | Arrays A and B are stored explicitly |
+| Time | O(N) | Each test case scans `A` once to find 0s and 1s |
+| Space | O(1) | Only a few flags are needed per test case |
 
-Given that the sum of N over all test cases is ≤200,000, the total operations are ≤200,000, which is well within the 1-second limit. Memory usage is also acceptable under 1024 MB.
+Given the sum of $N$ across all test cases is 200,000, the solution runs comfortably under 1 second and uses negligible memory.
 
 ## Test Cases
 
@@ -150,31 +133,47 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
     out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
+    sys.stdout = out
+    solve()
     return out.getvalue().strip()
 
 # Provided samples
 assert run("2\n4\n0101\n0100\n3\n000\n010\n") == "YES\nNO", "sample 1"
 
-# Custom cases
-assert run("1\n3\n111\n111\n") == "YES", "all lamps already on"
-assert run("1\n3\n101\n010\n") == "YES", "toggle interior lamp"
-assert run("1\n3\n000\n111\n") == "NO", "all lamps off cannot toggle"
-assert run("1\n5\n10101\n01010\n") == "YES", "alternating toggle pattern"
-assert run("1\n3\n110\n011\n") == "NO", "cannot fix last lamp"
+# Minimum size input, 3 lamps, all off, target same
+assert run("1\n3\n000\n000\n") == "YES", "minimum size, no change"
+
+# Minimum size input, all off, target different
+assert run("1\n3\n000\n111\n") == "NO", "minimum size, impossible"
+
+# Maximum size input, alternating pattern
+N = 200000
+A = "01" * (N//2)
+B = "10" * (N//2)
+assert run(f"1\n{N}\n{A}\n{B}\n") == "YES", "maximum size, alternating"
+
+# All 1s, target requires a 0
+assert run("1\n5\n11111\n11011\n") == "NO", "all 1s, impossible to flip"
+
+# Mixed, target same
+assert run("1\n5\n10101\n10101\n") == "YES", "mixed, no change"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 111 → 111 | YES | no operation needed |
-| 101 → 010 | YES | interior toggles work |
-| 000 → 111 | NO | all off lamps cannot toggle neighbors |
-| 10101 → 01010 | YES | alternating pattern handled correctly |
-| 110 → 011 | NO | last lamp cannot be toggled by neighbors |
+| 3\n000\n000 | YES | Minimum size, no operation needed |
+| 3\n000\n111 | NO | Minimum size, impossible target |
+| 200000 alternating | YES | Large N, feasible transformation |
+| 5\n11111\n11011 | NO | All 1s, impossible to toggle a 0 |
+| 5\n10101\n10101 | YES | Mixed, no change required |
 
 ## Edge Cases
 
-For `A = 000` and `B = 010`, the algorithm immediately identifies that the first lamp matches, but when it reaches `i=2`, `A[1]` differs from `B[1]` and `A[2] = 0`. The
+If all lamps are initially off and the target requires at least one lamp on, the algorithm correctly outputs NO. For `A = 0000` and `B = 0010`, `has_zero` is True but `has_one` is False, so the code returns NO, as expected.
+
+If all lamps are initially on and the target requires at least one lamp off, the code returns NO because `has_zero` is False and `has_one` is True.
+
+If the initial state matches the target exactly, the algorithm detects equality and outputs YES immediately, even for large $N$.
+
+These checks ensure no boundary or uniform-state scenarios produce incorrect results.

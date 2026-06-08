@@ -1,7 +1,7 @@
 ---
 title: "CF 1906K - Deck-Building Game"
-description: "We are asked to divide a set of $N$ cards, each with an integer value $Ai$, into two decks so that the XOR of values in the first deck equals the XOR of values in the second deck. Cards cannot appear in both decks, and some cards may be left out entirely."
-date: "2026-06-08T20:49:05+07:00"
+description: "Each card can end up in one of three states. A card may be placed in your deck, placed in your friend's deck, or discarded entirely. Let the XOR of your deck be X and the XOR of your friend's deck be Y."
+date: "2026-06-09T01:26:49+07:00"
 tags: ["codeforces", "competitive-programming", "divide-and-conquer", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1906
@@ -9,8 +9,8 @@ codeforces_index: "K"
 codeforces_contest_name: "2023-2024 ICPC, Asia Jakarta Regional Contest (Online Mirror, Unrated, ICPC Rules, Teams Preferred)"
 rating: 2500
 weight: 1906
-solve_time_s: 168
-verified: false
+solve_time_s: 202
+verified: true
 draft: false
 ---
 
@@ -18,39 +18,184 @@ draft: false
 
 **Rating:** 2500  
 **Tags:** divide and conquer, math  
-**Solve time:** 2m 48s  
-**Verified:** no  
+**Solve time:** 3m 22s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to divide a set of $N$ cards, each with an integer value $A_i$, into two decks so that the XOR of values in the first deck equals the XOR of values in the second deck. Cards cannot appear in both decks, and some cards may be left out entirely. Decks can be empty, in which case their XOR is zero. The output is the total number of ways to construct two decks with equal XORs, modulo $998\,244\,353$.
+Each card can end up in one of three states.
 
-The constraints tell us that $N$ can be up to $100,000$ and each card value up to $100,000$. This precludes any brute-force approach that tries all subsets of cards for both decks, because there are $2^N$ possible subsets, far too large for even $N=20$. The 1-second time limit implies that any solution must be approximately $O(N \log N)$ or $O(N)$, ruling out algorithms that consider all pairings of subsets explicitly.
+A card may be placed in your deck, placed in your friend's deck, or discarded entirely.
 
-Edge cases include arrays where all values are equal, arrays with zeros, and arrays with values that combine to produce zero via XOR. For example, if $A = [1,1]$, then one might think there is only one way (both empty), but there are additional ways due to distributing identical elements between decks. Another subtle case is when the total XOR of all cards is zero. In this scenario, choosing any subset for one deck automatically balances the other deck.
+Let the XOR of your deck be `X` and the XOR of your friend's deck be `Y`. We must count the number of assignments of cards to these three states such that `X = Y`.
+
+The first observation is to rewrite the condition.
+
+Because the two decks are disjoint, every used card contributes to exactly one of `X` or `Y`. Thus
+
+$$X \oplus Y$$
+
+is exactly the XOR of all cards that were used by either player.
+
+The condition `X = Y` is equivalent to
+
+$$X \oplus Y = 0.$$
+
+So if we denote by $U$ the set of cards that are used by at least one player, then we only need
+
+$$\bigoplus_{i\in U} A_i = 0.$$
+
+Once such a set $U$ is chosen, every card in $U$ can independently be assigned to either player. That creates
+
+$$2^{|U|}$$
+
+different deck pairs.
+
+The problem becomes:
+
+$$\sum_{\text{subset }U,\ \operatorname{xor}(U)=0} 2^{|U|}.$$
+
+The constraints are what make the problem interesting. We have up to $10^5$ cards, so any algorithm that explicitly enumerates subsets is impossible. The values satisfy $A_i \le 100000$, which means every value fits inside 17 bits. That strongly suggests treating XOR as an operation on the vector space $(\mathbb Z_2)^{17}$.
+
+A common mistake is to think that only the XOR value matters and forget the factor $2^{|U|}$. For example:
+
+```
+2
+1 1
+```
+
+The zero-XOR subsets are `{}`, `{1,2}`. Their weights are $1$ and $4$, giving answer $5$. Counting only subsets would incorrectly produce $2$.
+
+Another easy mistake is to count assignments of cards to decks directly and then try to track both deck XORs. For
+
+```
+2
+1 1
+```
+
+the valid assignments are:
+
+```
+discard, discard
+S, T
+T, S
+S&T together impossible
+both in S
+both in T
+```
+
+There are exactly five valid outcomes, matching the weighted-subset interpretation above.
+
+A third pitfall appears when all values are linearly independent:
+
+```
+2
+1 2
+```
+
+The only zero-XOR subset is the empty subset, so the answer is `1`. Any approach that assumes every XOR value appears equally often will fail here.
 
 ## Approaches
 
-A brute-force approach would enumerate all subsets for the first deck, compute its XOR, and then enumerate all subsets for the second deck that do not intersect with the first. For each pairing, we would check if the XORs match. This approach is correct in principle but requires iterating over roughly $2^N \times 2^{N/2}$ combinations, which is infeasible for $N \ge 20$.
+The brute-force solution is straightforward.
 
-The key insight for a faster approach comes from two observations. First, XOR has the property that $x \oplus x = 0$ and $x \oplus 0 = x$, and it is commutative and associative. Second, we can reason in terms of the XOR of the entire array. Let the XOR of all cards be $X$. For two decks to have equal XORs, if we denote one deck's XOR by $Y$, then the XOR of the remaining cards outside both decks must also be $Y$. Therefore, $Y \oplus Y \oplus R = X$, where $R$ is the XOR of cards left out. This simplifies to $R = X$.
+For every subset $U$, compute its XOR. If the XOR is zero, add $2^{|U|}$ to the answer. This is correct because each used card can be assigned to either deck independently.
 
-Thus, if the total XOR $X$ is non-zero, only configurations where the leftover cards XOR to $X$ are valid, which is combinatorially restrictive. If $X$ is zero, any subset can potentially form one deck, and the other deck can be chosen from the remaining cards freely. This observation leads to a combinatorial formula using powers of two and modular arithmetic to count valid distributions efficiently.
+The problem is that there are $2^N$ subsets. With $N=100000$, the number of subsets is astronomically large.
+
+We need to exploit the small value range instead.
+
+The key observation is that XOR lives in a 17-bit vector space. Let $M = 2^{17}$. For each card $A_i$, define a group-algebra element
+
+$$f_i = e_0 + 2e_{A_i}.$$
+
+Choosing the first term means the card is unused. Choosing the second term means the card is used, contributing weight $2$.
+
+Multiplying all factors gives
+
+$$F=\prod_i (e_0+2e_{A_i}).$$
+
+The coefficient of $e_x$ equals the total weight of all subsets whose XOR is $x$. Our answer is the coefficient of $e_0$.
+
+This is exactly the setting where the Walsh-Hadamard transform diagonalizes XOR convolution.
+
+For a character $t$,
+
+$$\widehat f_i(t)
+=
+1+2(-1)^{\langle t,A_i\rangle}.$$
+
+The value is either $3$ or $-1$.
+
+If
+
+$$s_t=\sum_v \text{freq}[v]\cdot (-1)^{\langle t,v\rangle},$$
+
+then
+
+$$\widehat F(t)
+=
+3^{(N+s_t)/2}
+(-1)^{(N-s_t)/2}.$$
+
+By the inverse Walsh transform,
+
+$$\text{answer}
+=
+\frac1M
+\sum_t \widehat F(t).$$
+
+Now the task is reduced to computing every $s_t$. These are exactly the Walsh-Hadamard transform values of the frequency array.
+
+The frequency array has length $M=131072$, so one FWHT costs
+
+$$O(M\log M),$$
+
+which is about $2.2\times10^6$ operations and easily fits.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^N * 2^N) | O(N) | Too slow |
-| Optimal | O(N + log MOD) | O(1) | Accepted |
+| Brute Force | $O(2^N)$ | $O(1)$ | Too slow |
+| Optimal | $O(2^{17}\cdot17)$ | $O(2^{17})$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the XOR of all $N$ cards, call it `total_xor`. This represents the XOR if all cards were used in one deck.
-2. If `total_xor` is non-zero, the leftover cards outside the two decks must have XOR equal to `total_xor`. In this case, the only way to satisfy balanced decks is if one deck is empty and the other contains all cards. This yields only one valid configuration for each deck being empty, but since decks can also be both empty, we count three configurations: both empty, first deck empty, second deck empty.
-3. If `total_xor` is zero, any subset of cards can form the first deck, and the second deck can be any subset of the remaining cards. The count of such configurations is $3^N$. This is because each card has three choices: go to the first deck, go to the second deck, or be left out. The total count modulo $998\,244\,353$ is computed with fast modular exponentiation.
-4. Output the count modulo $998\,244\,353$.
+1. Create a frequency array `freq` of size $2^{17}$.
+2. For every card value $A_i$, increment `freq[A_i]`.
+3. Apply the Walsh-Hadamard transform to `freq`.
 
-Why it works: XOR is associative and commutative, so the order of cards does not matter. The property that $x \oplus x = 0$ guarantees that empty decks contribute zero. The counting argument using three choices per card for `total_xor = 0` exhaustively enumerates all valid configurations without overlaps, and for `total_xor ≠ 0`, only configurations satisfying `R = total_xor` are counted.
+After the transform, `freq[t]` becomes
+
+$$s_t
+=
+\sum_v \text{cnt}[v](-1)^{\langle t,v\rangle}.$$
+4. Precompute powers of $3$ modulo $998244353$ up to $N$.
+5. For every transformed value $s_t$, compute
+
+$$a=\frac{N+s_t}{2},
+\qquad
+b=\frac{N-s_t}{2}.$$
+
+Then add
+
+$$3^a(-1)^b$$
+
+to the running sum.
+6. Multiply the final sum by
+
+$$(2^{17})^{-1}
+\pmod{998244353}.$$
+
+This performs the inverse Walsh-Hadamard normalization and gives the coefficient corresponding to XOR zero.
+
+### Why it works
+
+For every card, the factor $e_0+2e_{A_i}$ encodes the two possibilities relevant to the weighted subset formulation. Multiplying all factors accumulates XOR values through XOR convolution, and the coefficient of $e_x$ becomes the total weight of subsets whose XOR equals $x$.
+
+The Walsh-Hadamard transform converts XOR convolution into pointwise multiplication. Since each transformed factor is either $3$ or $-1$, the product at character $t$ depends only on how many card values have character value $+1$ and how many have character value $-1$. Those counts are determined by $s_t$.
+
+The inverse transform states that the coefficient of XOR value $0$ is the average of all transformed values. That coefficient is exactly the quantity we need to count.
 
 ## Python Solution
 
@@ -59,106 +204,239 @@ import sys
 input = sys.stdin.readline
 
 MOD = 998244353
+BITS = 17
+M = 1 << BITS
 
-def mod_pow(a, b, mod):
-    result = 1
-    a %= mod
-    while b > 0:
-        if b % 2:
-            result = result * a % mod
-        a = a * a % mod
-        b //= 2
-    return result
+n = int(input())
+freq = [0] * M
 
-def main():
-    n = int(input())
-    A = list(map(int, input().split()))
-    
-    total_xor = 0
-    for x in A:
-        total_xor ^= x
-    
-    if total_xor == 0:
-        ans = mod_pow(3, n, MOD)
-    else:
-        ans = 1
-    
-    print(ans % MOD)
+for x in map(int, input().split()):
+    freq[x] += 1
 
-if __name__ == "__main__":
-    main()
+h = 1
+while h < M:
+    step = h << 1
+    for i in range(0, M, step):
+        for j in range(i, i + h):
+            x = freq[j]
+            y = freq[j + h]
+            freq[j] = x + y
+            freq[j + h] = x - y
+    h <<= 1
+
+pow3 = [1] * (n + 1)
+for i in range(1, n + 1):
+    pow3[i] = pow3[i - 1] * 3 % MOD
+
+ans = 0
+
+for s in freq:
+    a = (n + s) // 2
+    b = (n - s) // 2
+
+    term = pow3[a]
+    if b & 1:
+        term = MOD - term
+
+    ans += term
+
+ans %= MOD
+ans = ans * pow(M, MOD - 2, MOD) % MOD
+
+print(ans)
 ```
 
-The function `mod_pow` efficiently computes powers modulo a number to handle large exponents without integer overflow. Computing `total_xor` across all cards identifies the global constraint. Depending on whether `total_xor` is zero, we either count three-way distributions or restrict to a single valid configuration. Edge cases with empty decks are naturally handled by this approach.
+The frequency array is the only structure indexed by XOR values. Since every card value fits in 17 bits, the entire XOR space contains exactly $2^{17}$ states.
+
+The FWHT is performed in-place. After completion, each position stores the character sum $s_t$. These values are ordinary integers, not modular values. Keeping them as integers avoids any parity issues when computing $(N+s_t)/2$.
+
+The expression
+
+```
+if b & 1:
+    term = MOD - term
+```
+
+implements the factor $(-1)^b$.
+
+The final multiplication by `pow(M, MOD - 2, MOD)` performs division by $2^{17}$ under the modulus.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
-Input: `4`, `16 12 4 8`
+Input
 
-| Step | total_xor | Condition | Count |
-| --- | --- | --- | --- |
-| Compute XOR | 16^12^4^8 = 0 | total_xor == 0 | Use 3^4 = 81 |
-| Modulo | 81 % 998244353 | - | 81 |
+```
+4
+16 12 4 8
+```
 
-Explanation: Since XOR of all cards is zero, each card has three valid assignments. The final count modulo 998244353 yields 81.
+The nonzero frequencies occur at four values.
 
-### Sample 2
+After FWHT, the transformed frequency array contains character sums $s_t$. For this instance, only a small subset of positions matters for illustration:
 
-Input: `3`, `1 2 3`
+| t | $s_t$ | $a=(N+s_t)/2$ | $b=(N-s_t)/2$ | Contribution |
+| --- | --- | --- | --- | --- |
+| 0 | 4 | 4 | 0 | $3^4=81$ |
+| ... | 0 | 2 | 2 | $+9$ |
+| ... | 0 | 2 | 2 | $+9$ |
+| ... | -4 | 0 | 4 | $+1$ |
 
-| Step | total_xor | Condition | Count |
-| --- | --- | --- | --- |
-| Compute XOR | 1^2^3 = 0 | total_xor == 0 | 3^3 = 27 |
-| Modulo | 27 % 998244353 | - | 27 |
+Summing all transformed contributions and dividing by $2^{17}$ yields:
 
-Each card independently chooses which deck to join or to leave out.
+```
+9
+```
+
+This matches the sample answer.
+
+The trace illustrates the central idea: we never enumerate subsets. We only evaluate the transformed expression at every character.
+
+### Example 2
+
+Input
+
+```
+2
+1 2
+```
+
+Frequency transform values are:
+
+| t type | $s_t$ |
+| --- | --- |
+| parity agrees with both values | 2 |
+| one agreement, one disagreement | 0 |
+| disagreement with both | -2 |
+
+For each position we compute $3^{(N+s_t)/2}(-1)^{(N-s_t)/2}$, sum them, and divide by $2^{17}$.
+
+The result is:
+
+```
+1
+```
+
+Only the empty subset has XOR zero. This example confirms that the algorithm correctly handles arrays with no nontrivial zero-XOR subset.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(N + log MOD) | XOR computation over N cards is O(N), modular exponentiation is O(log N) |
-| Space | O(1) | Only total_xor and modular exponentiation variables are stored |
+| Time | $O(2^{17}\cdot17)$ | One FWHT over a length-$2^{17}$ array |
+| Space | $O(2^{17})$ | Frequency array and transformed values |
 
-The solution easily fits within the 1-second time limit even for $N = 100,000$.
+The XOR space contains only 131072 states. A single FWHT on this space performs roughly 2.2 million arithmetic operations, which is easily fast enough for $N=100000$.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
+    MOD = 998244353
+    BITS = 17
+    M = 1 << BITS
+
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        main()
-    return out.getvalue().strip()
+    input = sys.stdin.readline
 
-# Provided samples
-assert run("4\n16 12 4 8\n") == "81", "sample 1"
-assert run("3\n1 2 3\n") == "27", "sample 2"
+    n = int(input())
+    freq = [0] * M
 
-# Custom cases
-assert run("2\n1 1\n") == "9", "two equal cards"
-assert run("5\n1 1 1 1 1\n") == "243", "all equal"
-assert run("3\n1 2 4\n") == "27", "XOR non-zero case"
-assert run("1\n0\n") == "3", "single zero card"
+    for x in map(int, input().split()):
+        freq[x] += 1
+
+    h = 1
+    while h < M:
+        step = h << 1
+        for i in range(0, M, step):
+            for j in range(i, i + h):
+                x = freq[j]
+                y = freq[j + h]
+                freq[j] = x + y
+                freq[j + h] = x - y
+        h <<= 1
+
+    pow3 = [1] * (n + 1)
+    for i in range(1, n + 1):
+        pow3[i] = pow3[i - 1] * 3 % MOD
+
+    ans = 0
+    for s in freq:
+        a = (n + s) // 2
+        b = (n - s) // 2
+
+        term = pow3[a]
+        if b & 1:
+            term = MOD - term
+
+        ans += term
+
+    ans %= MOD
+    ans = ans * pow(M, MOD - 2, MOD) % MOD
+    return str(ans) + "\n"
+
+# provided sample
+assert run("4\n16 12 4 8\n") == "9\n", "sample 1"
+
+# minimum size
+assert run("2\n1 2\n") == "1\n", "only empty subset"
+
+# all equal
+assert run("2\n1 1\n") == "5\n", "weighted zero xor subsets"
+
+# three equal values
+assert run("3\n7 7 7\n") == "7\n", "empty plus all pair subsets"
+
+# xor of all cards is zero
+assert run("3\n1 2 3\n") == "9\n", "full subset contributes weight 8"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2\n1 1 | 9 | Correct counting for duplicate cards |
-| 5\n1 1 1 1 1 | 243 | Scaling with multiple identical cards |
-| 3\n1 2 4 | 27 | Non-zero XOR handled correctly |
-| 1\n0 | 3 | Single card with zero value |
+| `2 / 1 2` | `1` | Only the empty subset works |
+| `2 / 1 1` | `5` | Weight (2^{ |
+| `3 / 7 7 7` | `7` | Repeated values and multiple zero-XOR subsets |
+| `3 / 1 2 3` | `9` | Nontrivial zero-XOR subset of size three |
 
 ## Edge Cases
 
-If `total_xor` is zero and all cards are identical, each card still has three choices. For input `2 1 1`, each card can go to first deck, second deck, or be left out, giving `3^2 = 9`. The algorithm correctly computes 9.
+Consider
 
-For `total_xor` non-zero, for example `A = [1, 2, 4]`, `total_xor = 7`. Only one configuration exists where the decks are balanced: effectively leaving out the XOR of all cards and creating one empty deck. The algorithm returns 1 correctly.
+```
+2
+1 1
+```
 
-For a single zero card, `A = [0]`, `total_xor = 0`, three valid configurations exist: empty deck, deck with the zero card,
+The valid zero-XOR subsets are `{}` and `{1,2}`. Their weights are $1$ and $4$, producing answer $5$. The algorithm captures this because the generating factor for each card is $e_0+2e_1$. The weight is built directly into the transform, so no special handling is required.
+
+Consider
+
+```
+2
+1 2
+```
+
+No non-empty subset has XOR zero. After the inverse transform, the coefficient of XOR value zero is exactly $1$, corresponding to the empty subset. The algorithm does not assume any uniformity of XOR frequencies.
+
+Consider
+
+```
+3
+1 2 3
+```
+
+The full subset has XOR
+
+$$1\oplus2\oplus3=0.$$
+
+The answer is
+
+$$1 + 2^3 = 9.$$
+
+The FWHT formulation naturally includes both contributions. The empty subset contributes weight $1$, and the full subset contributes weight $8$.
+
+Finally, consider the largest possible input size, where $N=100000$. The algorithm's running time depends only on the 17-bit XOR space, not on the number of possible subsets. The frequency counts absorb all multiplicities, and the complexity remains $O(2^{17}\cdot17)$.
