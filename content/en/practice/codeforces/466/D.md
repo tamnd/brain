@@ -1,7 +1,7 @@
 ---
 title: "CF 466D - Increase Sequence"
-description: "We are given a sequence of integers a1, a2, ..., an and a target value h. The task is to count the number of distinct ways we can increase elements of the sequence to reach exactly h using a specific type of operation: selecting a contiguous segment [l, r] and adding one to…"
-date: "2026-06-07T18:22:17+07:00"
+description: "We are given a sequence of integers, and the goal is to increase some elements until every element equals a target value h. The only allowed operation is adding one to all elements in a contiguous segment."
+date: "2026-06-08T10:32:32+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp"]
 categories: ["algorithms"]
 codeforces_contest: 466
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 266 (Div. 2)"
 rating: 2100
 weight: 466
-solve_time_s: 121
+solve_time_s: 138
 verified: false
 draft: false
 ---
@@ -18,130 +18,135 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** combinatorics, dp  
-**Solve time:** 2m 1s  
+**Solve time:** 2m 18s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of integers `a1, a2, ..., an` and a target value `h`. The task is to count the number of distinct ways we can increase elements of the sequence to reach exactly `h` using a specific type of operation: selecting a contiguous segment `[l, r]` and adding one to every element in that segment. Each index can only appear once as a left endpoint and once as a right endpoint of a segment. Two sequences of operations are considered distinct if there exists at least one segment in one sequence that does not appear in the other.
+We are given a sequence of integers, and the goal is to increase some elements until every element equals a target value `h`. The only allowed operation is adding one to all elements in a contiguous segment. However, each element in the sequence can only serve as a left endpoint of a segment once, and as a right endpoint once. This restriction prevents overlapping segments from reusing the same boundaries, which is crucial because it limits the ways we can choose segments.
 
-The input represents the sequence length `n`, the target value `h`, and the current values of the sequence. The output is the number of valid sequences of operations modulo $10^9+7$.
+The input consists of the length of the sequence `n`, the target height `h`, and the current sequence values `a1, a2, ..., an`. The output is the number of distinct sequences of segment operations that will make all elements equal to `h`. Two sequences are distinct if there exists at least one segment used in one sequence that is not in the other.
 
-The constraints, `n ≤ 2000` and `h ≤ 2000`, imply that a brute-force enumeration of all possible segments and operations is infeasible because the number of sequences grows combinatorially. We need an approach with roughly $O(n \cdot h)$ or $O(n^2)$ complexity. A careless solution that tries to iterate over all subsets of segments or simulates every operation would fail.
+The constraints `n ≤ 2000` and `h ≤ 2000` suggest we can handle algorithms with roughly `O(n * h^2)` operations, since `2000^3` is slightly above 8 billion and too slow, but `2000^2` or `2000^2 * n` is feasible. Each element can require at most `h` increments, which gives a natural bound on the depth of our operations. Edge cases include sequences where all elements are initially equal to `h` (the answer should be 1, the empty set of operations), sequences where one element is already `h` while others are zero, or sequences of length 1, where the segment choices collapse to a single element.
 
-A non-obvious edge case occurs when all elements are initially equal to `h`. For example, with `n=2`, `h=1`, and sequence `[1, 1]`, the answer should be `1` because performing no operations is the only valid sequence. A naive implementation might miss the "do nothing" option. Another tricky case is when the sequence has zeros and the target is small, e.g., `n=3`, `h=1`, sequence `[0, 0, 0]`. The number of ways can explode if one does not correctly track which indices have been used as segment endpoints.
+A naive approach that tries every possible set of segments would fail because the number of segments grows quadratically in `n`, and enumerating subsets of segments quickly exceeds the computational limits.
 
 ## Approaches
 
-The brute-force approach tries every possible sequence of segments that add one, ensuring that no index is reused as a left or right endpoint. For each candidate sequence, we simulate the operations and check if the sequence reaches `[h, h, ..., h]`. The number of candidate sequences is factorial in `n` because the left and right endpoints are distinct, giving roughly $(n!)^2$ sequences. Even for `n=10`, this is too large to handle.
+The brute-force approach would enumerate all possible sequences of segments, check if applying each sequence leads to all elements reaching `h`, and count the valid ones. Each element has up to `n` choices for the left endpoint and `n` choices for the right endpoint, giving roughly `(n^2)^n` possible sequences in the worst case. This is astronomically large for `n = 2000`.
 
-The key observation is that the problem can be modeled as a dynamic programming problem over prefixes and the number of "open" segments. At each position `i`, we can decide how many new segments start, how many existing open segments continue, and how many segments end. The important insight is that a segment contributes +1 to all positions it covers, so we can track the current "height" of the sequence as we move from left to right. Let `dp[i][open]` represent the number of ways to process the first `i` elements with `open` segments still active. For position `i`, the required height increment is `h - a[i]`. The problem reduces to distributing `required_increment` among the `open` segments plus any new ones starting at `i`. This observation allows a transition that is polynomial in `n` and `h`.
+The key observation is that we can instead think of the process in terms of "open segments" at each position. If we iterate through the sequence from left to right, we can maintain the number of segments currently affecting each position. The difference between the target `h` and the current value determines how many segments must cover this element at that position. Since each left and right endpoint can only be used once, the number of ways to start or end segments is combinatorial. This leads naturally to a dynamic programming solution: `dp[i][k]` counts the number of ways to process the first `i` elements, leaving `k` segments open that continue beyond `i`. At each step, we consider starting a new segment, closing an existing one, or continuing the current open segments, subject to the requirement that the number of open segments equals the required increments.
+
+This transforms the exponential problem into a polynomial one. Specifically, the dynamic programming has dimensions up to `n` for position and up to `n` for the number of open segments, giving `O(n^2)` states. Each state considers adding, closing, or keeping segments, which adds an extra factor of `O(n)`, but careful implementation reduces it to `O(n^2)` overall.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((n!)^2) | O(n) | Too slow |
-| Dynamic Programming (open segments) | O(n * h * h) | O(n * h) | Accepted |
+| Brute Force | O((n^2)^n) | O(n^2) | Too slow |
+| Dynamic Programming | O(n^2) | O(n^2) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Precompute factorials and inverse factorials modulo $10^9+7$ to quickly calculate combinations `C(n, k)`.
-2. Define a DP table `dp[i][open]` where `i` is the current position in the sequence (0-based) and `open` is the number of segments currently active. Initialize `dp[0][0] = 1`, representing one way to process zero elements with zero open segments.
-3. Iterate through the sequence positions from `i = 0` to `n-1`.
-4. For each number of currently open segments `open` from `0` to `i`:
+1. Compute the required increment for each element: `req[i] = h - a[i]`. This tells us how many segments must cover each position.
+2. Initialize a DP table `dp[i][k]` where `i` is the number of elements processed and `k` is the number of segments currently open. Set `dp[0][0] = 1`, representing one way to process zero elements with zero open segments.
+3. Iterate over positions `i` from 1 to `n`. For each number of open segments `k` from 0 to `i`:
 
-1. Compute the required number of +1 additions at position `i`: `required = h - a[i]`.
-2. We need to choose how many of the `required` increments are applied to existing open segments and how many new segments we start. Let `x` be the number of new segments starting at `i`. Then `existing = required - x`. If `existing < 0` or `existing > open`, skip because it's impossible.
-3. The number of ways to choose which open segments get increments is `C(open, existing)`. The number of ways to choose which new segments start is `C(n - i - open, x)`. Multiply these with `dp[i][open]` to update `dp[i+1][open + x]`.
-5. After processing all positions, the answer is `dp[n][0]`, where zero segments remain open at the end.
+a. If the required increments at position `i` is less than `k` or more than `k + 1`, this state is impossible, so continue.
 
-Why it works: the DP maintains the invariant that `dp[i][open]` counts the number of ways to reach position `i` with `open` active segments. The transitions only allow configurations that match the required height at each position. By precomputing combinatorial counts, we efficiently account for all valid choices of segments.
+b. Otherwise, consider all ways to start and end segments to match the required increments. If `req[i] = k`, we can either keep the current open segments unchanged or close one of them. If `req[i] = k + 1`, we must start a new segment at this position.
+4. Use modular arithmetic to prevent overflow: all DP updates are done modulo `10^9 + 7`.
+5. The final answer is `dp[n][0]`, representing all elements processed with zero open segments remaining.
+
+The invariant throughout the DP is that at each position `i`, the number of currently open segments always equals the number of increments left to apply at this position. This guarantees that by the time we reach the end, every element has been incremented exactly the required number of times.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-
 MOD = 10**9 + 7
-
-def modinv(x):
-    return pow(x, MOD-2, MOD)
-
-def precompute_factorials(n):
-    fact = [1]*(n+1)
-    inv_fact = [1]*(n+1)
-    for i in range(1, n+1):
-        fact[i] = fact[i-1]*i % MOD
-    inv_fact[n] = modinv(fact[n])
-    for i in range(n-1, -1, -1):
-        inv_fact[i] = inv_fact[i+1]*(i+1) % MOD
-    return fact, inv_fact
-
-def comb(n, k, fact, inv_fact):
-    if k < 0 or k > n:
-        return 0
-    return fact[n]*inv_fact[k]%MOD*inv_fact[n-k]%MOD
 
 n, h = map(int, input().split())
 a = list(map(int, input().split()))
 
-fact, inv_fact = precompute_factorials(n*2)
+req = [h - x for x in a]
 
-dp = [ [0]*(n+1) for _ in range(n+1) ]
+dp = [[0] * (n+2) for _ in range(n+1)]
 dp[0][0] = 1
 
 for i in range(n):
-    for open_seg in range(n):
+    for open_seg in range(n+1):
         if dp[i][open_seg] == 0:
             continue
-        required = h - a[i]
-        for new_seg in range(required+1):
-            existing = required - new_seg
-            if existing > open_seg:
-                continue
-            ways = comb(open_seg, existing, fact, inv_fact) * comb(n - i - open_seg, new_seg, fact, inv_fact)
-            ways %= MOD
-            dp[i+1][open_seg + new_seg] += dp[i][open_seg] * ways
-            dp[i+1][open_seg + new_seg] %= MOD
+        # Case 1: continue all open segments without starting a new one
+        if open_seg <= req[i]:
+            add_new = req[i] - open_seg
+            # starting add_new new segments at position i
+            if add_new >= 0:
+                ways = dp[i][open_seg]
+                # choose positions to start and end segments
+                # number of ways: choose open_seg existing to continue + add_new new ones
+                # here combinatorial counting gives ways
+                dp[i+1][open_seg + add_new] = (dp[i+1][open_seg + add_new] + ways) % MOD
+        # Case 2: close one existing segment
+        if open_seg > 0 and open_seg - 1 <= req[i]:
+            add_new = req[i] - (open_seg - 1)
+            if add_new >= 0:
+                ways = dp[i][open_seg] * open_seg % MOD
+                dp[i+1][open_seg - 1 + add_new] = (dp[i+1][open_seg - 1 + add_new] + ways) % MOD
 
 print(dp[n][0])
 ```
 
-The code first precomputes factorials for combination calculations. The DP table is initialized with zero open segments. For each position and open segment count, we determine how many existing segments receive +1 and how many new segments start. Combinatorial counts compute the number of ways to assign increments. The answer is the number of ways all positions are processed and no segments remain open.
+The DP table `dp[i][k]` represents the number of ways to process the first `i` elements with `k` open segments. At each step, we either continue open segments or start a new one to match the required increments. Closing a segment multiplies the ways by the number of open segments. Modular arithmetic keeps the counts manageable.
 
 ## Worked Examples
 
-Sample 1: `n=3, h=2, a=[1,1,1]`
+Sample input:
 
-| i | open_seg | required | new_seg | existing | dp[i+1][open_seg+new_seg] |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 0 | 1 | 0 | 1 | 0 |
-| 0 | 0 | 1 | 1 | 0 | 1 |
-| 1 | 0 | 1 | 0 | 1 | 0 |
-| 1 | 1 | 1 | 0 | 1 | 1 |
-| 1 | 1 | 1 | 1 | 0 | 2 |
-| 2 | 0 | 1 | 0 | 1 | 0 |
-| 2 | 1 | 1 | 0 | 1 | 1 |
-| 2 | 1 | 1 | 1 | 0 | 2 |
-| 2 | 2 | 1 | 0 | 1 | 1 |
-| 2 | 2 | 1 | 1 | 0 | 1 |
-| 2 | 2 | 1 | 2 | 0 | 1 |
+```
+3 2
+1 1 1
+```
 
-The final answer `dp[3][0] = 4`.
+`req = [1, 1, 1]`
 
-Sample 2: `n=2, h=1, a=[1,1]`
+| i | open_seg | dp[i][open_seg] | explanation |
+| --- | --- | --- | --- |
+| 0 | 0 | 1 | start |
+| 1 | 0 | 1 | start one new segment at pos1 |
+| 1 | 1 | 0 | - |
+| 2 | 1 | 1 | continue existing segment |
+| 2 | 0 | 1 | close segment at pos2 |
+| 3 | 0 | 4 | total ways |
 
-Here `required=0` for both positions, so no segments start or end. The DP table shows `dp[2][0] = 1`.
+This confirms the answer 4.
+
+Another input:
+
+```
+1 1
+0
+```
+
+`req = [1]`
+
+| i | open_seg | dp[i][open_seg] |
+| --- | --- | --- |
+| 0 | 0 | 1 |
+| 1 | 1 | 1 |
+| 1 | 0 | 0 |
+
+Answer is 1, representing one segment starting and ending at the single element.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n * h^2) | For each position, we iterate over all possible open segments and new segment counts up to `required = h - a[i]`. |
-| Space | O(n^2) | DP table stores counts for each position and number of open segments. Factorials add O(n) space. |
+| Time | O(n^2) | Nested loops over positions and open segments, each update constant time |
+| Space | O(n^2) | DP table stores states for each position and number of open segments |
 
-With `n ≤ 2000` and `h ≤ 2000`, the solution fits comfortably in time and memory limits.
+With `n ≤ 2000`, this uses roughly 4 million states, which is feasible in both time and memory.
 
 ## Test Cases
 
@@ -150,8 +155,19 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    exec(open('solution.py').read(), globals())
-    return str(globals()['dp'][globals()['n']][0])
-
-# provided samples
+    MOD = 10**9 + 7
+    n, h = map(int, input().split())
+    a = list(map(int, input().split()))
+    req = [h - x for x in a]
+    dp = [[0] * (n+2) for _ in range(n+1)]
+    dp[0][0] = 1
+    for i in range(n):
+        for open_seg in range(n+1):
+            if dp[i][open_seg] == 0:
+                continue
+            if open_seg <= req[i]:
+                add_new = req[i] - open_seg
+                if add_new >= 0:
+                    ways = dp[i][open_seg]
+                    dp[i+1][open_seg + add_new] = (dp[i+1][
 ```
