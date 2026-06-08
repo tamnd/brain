@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1404 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1405 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1404
+kvant_total: 1405
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1404 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1405 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -1102,7 +1102,7 @@ draft: false
 
 ## 1979
 
-51 problems across Issues 1–12, 1 verified.
+52 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1121,6 +1121,7 @@ draft: false
 | [546](546.md) Let the rectangle be centered at the origin, with sides parallel to the coordinate axes. |  | 4m53s |
 | [547](547.md) The equation is |  | 10m01s |
 | [548](548.md) For four points on a circle, label them by position vectors $a,b,c,d$ on a circle with center $O$, taken as the origin. |  | 4m47s |
+| [549](549.md) *V. E. Matizen*. Let $N$ be a natural number and let its divisors be $d \\mid N$. |  | 8m56s |
 | [550](550.md) *S. S. Krotov*. Let the optimal finishing time be $T$. |  | 9m40s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1979_3/)
