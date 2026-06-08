@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1424 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1425 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1424
+kvant_total: 1425
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1424 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1425 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -3039,7 +3039,7 @@ draft: false
 
 ## 2025
 
-8 problems across Issues 1–11.
+9 problems across Issues 1–11.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3052,6 +3052,12 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2830](2830.md) Let $S$ be the set of amounts obtainable with at most $1000$ coins of denominations $a$ and $b$. |  | 9m59s |
+
+### [Issue 5](https://www.kvant.digital/view/kvant_2025_5/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2846](2846.md) *All-Russian Mathematics Olympiad for School Students (LI, Final Round)*. The word “ПЕТЯ” has five letters. |  | 10m11s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_2025_8/)
 
