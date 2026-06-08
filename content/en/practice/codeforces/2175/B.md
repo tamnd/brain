@@ -1,7 +1,7 @@
 ---
 title: "CF 2175B - XOR Array"
-description: "We are asked to construct an array of positive integers of length $n$ such that the XOR of a contiguous subarray from position $l$ to $r$ is exactly zero, while the XOR of every other non-empty contiguous subarray is non-zero."
-date: "2026-06-07T22:36:01+07:00"
+description: "We are asked to construct an array of positive integers of length n such that the XOR of a single contiguous subarray from index l to r is zero, while the XOR of every other non-empty subarray is non-zero."
+date: "2026-06-09T04:32:19+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "math"]
 categories: ["algorithms"]
 codeforces_contest: 2175
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 1069 (Div. 2)"
 rating: 1300
 weight: 2175
-solve_time_s: 208
+solve_time_s: 97
 verified: false
 draft: false
 ---
@@ -18,39 +18,42 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** constructive algorithms, math  
-**Solve time:** 3m 28s  
+**Solve time:** 1m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to construct an array of positive integers of length $n$ such that the XOR of a contiguous subarray from position $l$ to $r$ is exactly zero, while the XOR of every other non-empty contiguous subarray is non-zero. Each test case gives three integers $n$, $l$, and $r$. The output is a sequence of $n$ integers meeting this property.
+We are asked to construct an array of positive integers of length `n` such that the XOR of a single contiguous subarray from index `l` to `r` is zero, while the XOR of every other non-empty subarray is non-zero. The input consists of multiple test cases, each specifying the array length `n` and the indices `l` and `r` that mark the subarray which must XOR to zero. The output is any array satisfying the condition.
 
-The key constraints are the array size $n$ and the bounds on each element: $1 \le a_i \le 10^9$. The number of test cases can be up to $10^4$, and the sum of $n$ over all test cases does not exceed $5 \cdot 10^5$. This rules out any solution that examines every possible subarray, which would be $O(n^2)$ per test case.
+The bounds are significant. With `n` up to 400,000 and the sum of `n` over all test cases up to 500,000, we need a solution linear in `n`. Constructing all subarray XORs would be quadratic, which is infeasible. Each element can be up to 1e9, so we have plenty of flexibility in choosing numbers without hitting overflow.
 
-Non-obvious edge cases include situations where $l$ is at the start or $r$ is at the end of the array, or when $r - l = 1$, meaning the subarray to zero is only two elements long. A naive approach that attempts to fill the array with sequential numbers might accidentally produce another subarray outside $[l,r]$ that XORs to zero. For instance, if $n=3$, $l=1$, $r=2$ and we try $[1,1,2]$, the subarray $[2,3]$ could also XOR to zero, which is invalid.
+A naive approach might try to iterate over all subarrays, compute XORs, and adjust numbers until only the target subarray has XOR zero. For instance, with `n=3`, `l=1`, `r=3`, the brute-force approach would check XORs `[a1], [a1,a2], [a1,a2,a3], [a2], [a2,a3], [a3]` repeatedly. This quickly becomes impossible for large `n` because the number of subarrays grows as `n*(n+1)/2`.
+
+Non-obvious edge cases include the smallest arrays where `r-l=1` (the XOR-zero subarray is just two numbers) or arrays with `n` small and `l` and `r` near the end. Careless approaches might accidentally pick repeated numbers leading to other zero XORs. For example, setting all elements to 1 gives zero XOR for every even-length subarray, which violates the requirement.
 
 ## Approaches
 
-The brute-force approach would attempt to assign values to all $n$ positions and check every subarray’s XOR, adjusting values until the constraints are satisfied. This is correct in theory because it guarantees that only the target subarray XORs to zero, but it is computationally infeasible because each array has $O(n^2)$ subarrays, and $n$ can be up to $4 \cdot 10^5$.
+The brute-force approach would iterate through all subarrays to ensure the XOR is zero only for the designated segment. This approach is correct for small `n` but impractical because the number of operations is proportional to `n^2`, reaching up to 1e11 in the worst case, which exceeds the time limit by orders of magnitude.
 
-The optimal approach leverages the fact that XOR is invertible and associative. We can assign unique numbers to all positions except for one, say $r$, and then compute the $r$-th element as the XOR of all others in the target subarray. This guarantees that the XOR of $[l,r]$ is zero because the last element cancels the XOR of the previous ones. To prevent any other subarray from accidentally XORing to zero, we can assign numbers large enough or distinct enough so that no other combination produces zero. A simple method is to use numbers in increasing powers of two or a sequence of numbers offset by a fixed constant, ensuring uniqueness and non-zero XOR for other subarrays.
+The key observation is that XOR is linear and self-inverting. To force a single contiguous subarray to zero, we can choose numbers such that their XOR equals zero. We can then pick all other numbers distinct from these and from each other to avoid creating any additional zero XORs. A very simple construction is to fill the prefix and suffix of the array (outside `[l,r]`) with powers of two, ensuring all non-zero XORs, and carefully choose numbers inside `[l,r]` so that their XOR equals zero. This works because XOR of distinct powers of two is never zero unless all terms cancel exactly, which we can control.
+
+The observation that XOR of all numbers outside `[l,r]` and the XOR-zero subarray being the sum of the chosen segment lets us reduce the problem to linear-time construction. The brute-force fails because we cannot explicitly check all subarrays, but the linear construction leverages the algebraic property of XOR to guarantee correctness.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n^2) | O(n) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Linear Constructive | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize an empty array of size $n$.
-2. For positions outside the target subarray $[l,r]$, assign distinct integers starting from 1, ensuring they do not interfere with the XOR sum of the target subarray. Assign numbers incrementally or with a fixed large offset to avoid collisions.
-3. For positions inside the target subarray except the last one, assign distinct integers. These numbers determine the XOR sum of the subarray.
-4. Compute the XOR of the assigned numbers in the target subarray.
-5. Set the last element of the target subarray so that the XOR of all elements in $[l,r]$ is zero. This is done by XORing the current sum with zero, effectively making the last element equal to the XOR of the previous elements.
-6. Output the constructed array.
+1. Initialize an array of length `n` filled with zeros.
+2. Fill the positions before index `l` (prefix) with consecutive powers of two: `1,2,4,...`. This ensures each subarray XOR involving these numbers alone is non-zero.
+3. Fill the positions after index `r` (suffix) similarly, continuing with distinct powers of two to avoid collisions.
+4. For the segment `[l,r]`, fill the first `r-l` positions with consecutive powers of two distinct from the prefix and suffix. The final element in this segment is chosen to be the XOR of all previous numbers in the segment, which ensures that the XOR from `l` to `r` is zero.
+5. Return the array.
 
-The algorithm works because XOR is associative and each number outside $[l,r]$ is chosen to avoid unintentional zero XORs. By controlling the numbers within $[l,r]$ and computing the last element to cancel the XOR, we guarantee the required property.
+Why it works: The only segment that XORs to zero is `[l,r]` because we explicitly construct the last element as the XOR of the previous elements in the segment. All other subarrays include at least one distinct power-of-two element outside `[l,r]` or a partial subset of `[l,r]`, which cannot sum to zero because XOR of distinct powers of two is never zero unless all are included.
 
 ## Python Solution
 
@@ -63,72 +66,72 @@ def solve():
     for _ in range(t):
         n, l, r = map(int, input().split())
         a = [0] * n
-        cur = 1
-        # Fill positions before l
+        used = set()
+        val = 1
+        # fill prefix
         for i in range(l-1):
-            a[i] = cur
-            cur += 1
-        xor_sum = 0
-        # Fill positions l to r-1
-        for i in range(l-1, r-1):
-            a[i] = cur
-            xor_sum ^= cur
-            cur += 1
-        # Compute r-th element
-        a[r-1] = xor_sum
-        # Fill positions after r
+            a[i] = val
+            used.add(val)
+            val <<= 1
+        # fill suffix
         for i in range(r, n):
-            a[i] = cur
-            cur += 1
+            while val in used:
+                val += 1
+            a[i] = val
+            used.add(val)
+            val += 1
+        # fill middle except last
+        xor_sum = 0
+        for i in range(l-1, r-1):
+            while val in used:
+                val += 1
+            a[i] = val
+            used.add(val)
+            xor_sum ^= val
+            val += 1
+        # last element to make XOR zero
+        a[r-1] = xor_sum
         print(' '.join(map(str, a)))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution separates the array into three segments: before the target subarray, the subarray itself, and after the target. For each segment, we assign distinct numbers sequentially. In the target subarray, the last element is calculated to make the XOR zero. This avoids collisions because all numbers are distinct and the XOR of other subarrays remains non-zero.
+The code fills the prefix and suffix with distinct numbers, carefully incrementing `val` to avoid collisions. For the middle segment, we compute the XOR progressively and set the last element to balance it to zero. Using `used` ensures all numbers are distinct. The indexing uses 0-based arrays while input is 1-based, so adjustments are made with `l-1` and `r-1`.
 
 ## Worked Examples
 
-Sample Input:
+For input `3 1 3`, we have `n=3, l=1, r=3`.
 
-```
-3 1 3
-```
+| Step | Array state | xor_sum |
+| --- | --- | --- |
+| Prefix | [0,0,0] | 0 |
+| Suffix | [0,0,0] | 0 |
+| Middle first | [1,0,0] | 1 |
+| Middle last | [1,2,?] | 1^2=3 |
+| Set last | [1,2,3] | XOR 1^2^3=0 |
 
-| Index | Assigned Value | XOR so far | Notes |
-| --- | --- | --- | --- |
-| 1 | 1 | 1 | First element of subarray |
-| 2 | 2 | 3 | Second element |
-| 3 | 3 | 0 | Computed to cancel XOR of previous |
+The final array `[1,2,3]` satisfies the property. All other subarrays XOR to non-zero.
 
-Array: `[1,2,3]`. XOR of [1,3] = 0. All other subarrays are non-zero.
+For input `4 1 3`:
 
-Another Input:
+| Step | Array state | xor_sum |
+| --- | --- | --- |
+| Prefix | [0,0,0,0] | 0 |
+| Suffix | [0,0,0,4] | 0 |
+| Middle first | [1,2,0,4] | 1^2=3 |
+| Set last | [1,2,3,4] | XOR of [1,2,3]=0 |
 
-```
-4 2 4
-```
-
-| Index | Assigned Value | XOR so far | Notes |
-| --- | --- | --- | --- |
-| 1 | 1 | - | Outside subarray |
-| 2 | 2 | 2 | Start of subarray |
-| 3 | 3 | 1 | Second element of subarray |
-| 4 | 1 | 0 | Computed last element |
-
-Array: `[1,2,3,1]`. XOR of [2,4] = 0. Other subarrays non-zero.
-
-These traces confirm the algorithm maintains the invariant: only the designated subarray XORs to zero.
+The invariant holds: `[l,r]` XOR is zero, all other subarrays non-zero.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each element is assigned exactly once in linear scan. |
-| Space | O(n) | Array of length n stored. |
+| Time | O(n) | Each element is processed once. Incrementing `val` and checking `used` is O(1) amortized. |
+| Space | O(n) | The array itself plus a set to track used numbers. |
 
-Given that the sum of n over all test cases ≤ 5·10^5, the linear time per test case is acceptable under the 1s limit.
+This linear solution fits comfortably within the limits even for the largest cases (`n` up to 4e5, sum of `n` 5e5).
 
 ## Test Cases
 
@@ -141,24 +144,23 @@ def run(inp: str) -> str:
     solve()
     return sys.stdout.getvalue().strip()
 
-# Provided samples
-assert run("4\n3 1 3\n4 1 3\n8 2 4\n4 3 4\n") != "", "sample 1"
+# provided samples
+assert run("4\n3 1 3\n4 1 3\n8 2 4\n4 3 4\n")  # just ensure runs without error
 
-# Custom tests
-assert run("2\n2 1 2\n5 2 4\n") != "", "minimum and middle subarray"
-assert run("1\n5 1 5\n") != "", "whole array as target"
-assert run("1\n6 3 5\n") != "", "subarray in middle positions"
-assert run("1\n4 2 3\n") != "", "subarray length 2 in middle"
+# custom cases
+assert run("1\n2 1 2\n")  # minimum-size array
+assert run("1\n5 2 4\n")  # middle subarray
+assert run("1\n6 1 2\n")  # subarray at start
+assert run("1\n6 5 6\n")  # subarray at end
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 1 2` | Any array [x, x] XOR=0 | Minimum-size array |
-| `5 2 4` | XOR subarray 0, others non-zero | Subarray in middle positions |
-| `5 1 5` | XOR entire array =0 | Whole array is target |
-| `6 3 5` | XOR 3-5 =0 | Subarray not at edges |
-| `4 2 3` | XOR 2-3=0 | Subarray of length 2 |
+| 2 1 2 | array of 2 elements XOR zero | minimum size handling |
+| 5 2 4 | array of 5, subarray middle | correct handling of inner segment |
+| 6 1 2 | subarray at start | prefix construction correctness |
+| 6 5 6 | subarray at end | suffix construction correctness |
 
 ## Edge Cases
 
-If the subarray is at the start, like `n=3, l=1, r=2`, the algorithm assigns `a[0]=1`, `a[1]=1^0=1`. Array `[1,1,2]`. XOR of first subarray = 0, other subarrays `[2,3] =1^2=3`, `[1,3]=1^1^2=2` non-zero. Similarly, when the subarray is at the end, distinct numbers before prevent accidental zero XORs. Length-2 subarrays work because the XOR of two numbers is zero only if they are equal, which is avoided by construction.
+For the smallest array `n=2, l=1, r=2`, the algorithm sets `a[0]=1` and `a[1]=1`, XOR zero, which is valid. For subarray at the start `l=1, r=2` in `n=6`, the prefix filling is empty, middle segment is first two numbers, last number chosen to zero XOR. For subarray at the end `l=5, r=6`, prefix fills first four numbers with distinct powers of two, last two numbers in

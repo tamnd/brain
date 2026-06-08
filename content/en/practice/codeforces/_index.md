@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4347 problems, 2225 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4352 problems, 2226 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4347 problems, 2225 verified.**
+**750 contests, 4352 problems, 2226 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -720,7 +720,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2172](2172/) | [2025 ICPC Asia Taichung Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2172) | ICPC/IOI | 800-3300 | 5/14 | 31m 43s |
 | [2173](2173/) | [Codeforces Round 1068 (Div. 2)](https://codeforces.com/contest/2173) | Div. 2 | 800-2600 | 3/6 | 14m 56s |
 | [2174](2174/) | [Codeforces Round 1069 (Div. 1)](https://codeforces.com/contest/2174) | Div. 1 | 1200-3400 | 1/8 | 19m 52s |
-| [2175](2175/) | [Codeforces Round 1069 (Div. 2)](https://codeforces.com/contest/2175) | Div. 2 | 800-1300 | 1/2 | 4m 50s |
+| [2175](2175/) | [Codeforces Round 1069 (Div. 2)](https://codeforces.com/contest/2175) | Div. 2 | 800-3400 | 2/7 | 12m 28s |
 | [2176](2176/) | [Codeforces Round 1070 (Div. 2)](https://codeforces.com/contest/2176) | Div. 2 | 800-2400 | 2/6 | 14m 36s |
 | [2178](2178/) | [Good Bye 2025](https://codeforces.com/contest/2178) | Special | 800-3300 | 2/9 | 17m 2s |
 | [2179](2179/) | [Codeforces Round 1071 (Div. 3)](https://codeforces.com/contest/2179) | Div. 3 | 800-2200 | 1/8 | 17m 58s |
