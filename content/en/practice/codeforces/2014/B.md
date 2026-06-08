@@ -129,9 +129,7 @@ $$\left\lfloor \frac{x+1}{2} \right\rfloor.$$
 
 So the number of odd integers in $[L,R]$ is
 
-$$\left\lfloor \frac{R+1}{2} \right\rfloor
--
-\left\lfloor \frac{L}{2} \right\rfloor.$$
+$$\left\lfloor \frac{R+1}{2} \right\rfloor - \left\lfloor \frac{L}{2} \right\rfloor.$$
 
 Only the parity of this count matters.
 
