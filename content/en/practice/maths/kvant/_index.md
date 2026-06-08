@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1436 solved, 12 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1438 solved, 13 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1436
-kvant_verified: 12
+kvant_total: 1438
+kvant_verified: 13
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1436 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 12 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1438 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 13 solutions have been independently verified.
 
 ## 1970
 
@@ -991,13 +991,14 @@ draft: false
 
 ## 1978
 
-57 problems across Issues 1–12, 1 verified.
+58 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1978_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [481](481.md) Let |  | 6m26s |
+| [482](482.md) *V. V. Proizvolov, A. P. Savin*. Let the regular tetrahedron be $ABCD$, with edge length $a$. |  | 33m51s |
 | [483](483.md) Consider a right triangle with legs $a$ and $b$ and hypotenuse $c$, where $c^2 = a^2 + b^2$. |  | 6m19s |
 | [484](484.md) *S. N. Mironov*. A dissection of a convex polygon into regular polygons means that every piece is an equilateral triangle, a square, or a regular polygon of higher order, all glued edge-to-edge without overlap. |  | 7m06s |
 | [485](485.md) *T. Martynenko, R. P. Ushakov*. The interval is |  | 8m14s |
@@ -1112,7 +1113,7 @@ draft: false
 
 ## 1979
 
-53 problems across Issues 1–12, 1 verified.
+54 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1157,6 +1158,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [561](561.md) *L. P. Kuptsov*. The condition says that corresponding sides are parallel, but the directions are reversed. | ✓ | 11m32s |
 | [562](562.md) Our systems have detected unusual activity coming from your system. |  | 27m20s |
 | [563](563.md) *S. V. Fomin*. Assume, seeking a contradiction, that | ✓ | 8m47s |
 | [564](564.md) Let $BC=a$, and place the triangle in coordinates |  | 7m57s |
