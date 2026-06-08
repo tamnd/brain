@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4228 problems, 2190 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4233 problems, 2191 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4228 problems, 2190 verified.**
+**750 contests, 4233 problems, 2191 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -448,7 +448,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1874](1874/) | [Codeforces Round 901 (Div. 1)](https://codeforces.com/contest/1874) | Div. 1 | 1200-3500 | 3/7 | 15m 25s |
 | [1875](1875/) | [Codeforces Round 901 (Div. 2)](https://codeforces.com/contest/1875) | Div. 2 | 900-2800 | 1/7 | 10m 36s |
 | [1876](1876/) | [Codeforces Round 902 (Div. 1, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1876) | Div. 1 | 1000-3500 | 2/7 | 17m 32s |
-| [1877](1877/) | [Codeforces Round 902 (Div. 2, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1877) | Div. 2 | 800-1200 | 1/2 | 3m 38s |
+| [1877](1877/) | [Codeforces Round 902 (Div. 2, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1877) | Div. 2 | 800-3300 | 2/7 | 15m 13s |
 | [1878](1878/) | [Codeforces Round 900 (Div. 3)](https://codeforces.com/contest/1878) | Div. 3 | 800-2300 | 4/7 | 12m 56s |
 | [1879](1879/) | [Educational Codeforces Round 155 (Rated for Div. 2)](https://codeforces.com/contest/1879) | Div. 2 | 800-2800 | 4/6 | 15m 6s |
 | [1881](1881/) | [Codeforces Round 903 (Div. 3)](https://codeforces.com/contest/1881) | Div. 3 | 800-2000 | 5/7 | 13m |
