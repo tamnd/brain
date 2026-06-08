@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1391 solved, 7 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1393 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1391
-kvant_verified: 7
+kvant_total: 1393
+kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1391 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 7 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1393 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2909,7 +2909,13 @@ draft: false
 
 ## 1995
 
-9 problems across Issues 2–6, 1 verified.
+10 problems across Issues 1–6, 2 verified.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
@@ -3002,7 +3008,13 @@ draft: false
 
 ## 2025
 
-4 problems across Issues 2–11.
+5 problems across Issues 1–11.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2827](2827.md) Our systems have detected unusual activity coming from your system. |  | 22m35s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_2025_2/)
 
