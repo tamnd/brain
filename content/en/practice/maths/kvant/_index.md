@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1433 solved, 9 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1435 solved, 11 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1433
-kvant_verified: 9
+kvant_total: 1435
+kvant_verified: 11
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1433 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 9 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1435 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 11 solutions have been independently verified.
 
 ## 1970
 
@@ -871,7 +871,7 @@ draft: false
 
 ## 1977
 
-54 problems across Issues 1–12, 2 verified.
+55 problems across Issues 1–12, 3 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -975,6 +975,7 @@ draft: false
 |---|---------|---|------|
 | [471](471.md) *S. V. Fomin*. Two intersecting circles partition the plane into exactly three bounded regions: the common lens $R_0$, the two asymmetric caps $R_1$ and $R_2$ lying respectively in the first and second circle but ou… |  | 7m20s |
 | [472](472.md) *V. V. Prasolov*. Consider a cube of side length $1$ for simplicity. |  | 4m36s |
+| [473](473.md) Let the weights in the first group be | ✓ | 17m39s |
 | [474](474.md) We begin by examining the properties of perfect numbers modulo small integers. |  | 6m15s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1977_12/)
@@ -989,7 +990,7 @@ draft: false
 
 ## 1978
 
-56 problems across Issues 1–12.
+57 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1978_1/)
 
@@ -1023,6 +1024,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [496](496.md) *S. V. Fomin*. A six-digit number can be written as the product of two three-digit numbers if and only if it belongs to the set | ✓ | 9m01s |
 | [497](497.md) *V. L. Gutenmakher*. Consider triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $CA$, and $C_1$ on $AB$. |  | 3m44s |
 | [498](498.md) *N. B. Vasiliev, A. A. Egorov*. Consider small values of $n$. |  | 2m18s |
 | [499](499.md) *G. A. Gurevich*. Consider what it means for a number to be balanced. |  | 6m14s |
