@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1477 solved, 33 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1478 solved, 34 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1477
-kvant_verified: 33
+kvant_total: 1478
+kvant_verified: 34
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1477 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 33 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1478 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 34 solutions have been independently verified.
 
 ## 1970
 
@@ -2895,7 +2895,7 @@ draft: false
 
 ## 1994
 
-43 problems across Issues 1–6, 1 verified.
+44 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1994_1/)
 
@@ -2966,6 +2966,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1461](1461.md) Represent the $n$ definitions by vertices $1,\\dots,n$. | ✓ | 20m43s |
 | [1467](1467.md) *International Mathematical Olympiad for School Students (XXXV)*. Let |  | 9m49s |
 | [1469](1469.md) *International Mathematical Olympiad for School Students (XXXV)*. Each integer $n$ with exactly three ones in binary has the form |  | 9m52s |
 | [1470](1470.md) *International Mathematical Olympiad for School Students (XXXV)*. We need a set $A$ of positive integers such that every infinite set $S$ of primes contains, among the squarefree numbers formed from distinct primes of $S$, two numbers with the same number $k\\ge2$ of… |  | 9m45s |
