@@ -161,7 +161,12 @@ while true; do
   _did_something=false
 
   # Pull remote changes (smart: stash/rebase/pop, auto-resolve conflicts).
-  smart_sync
+  # Do not create more commits while this checkout needs manual reconciliation.
+  if ! smart_sync; then
+    log "${YLW}· sync incomplete — skipping commit/push this cycle${RST}"
+    sleep "$INTERVAL"
+    continue
+  fi
 
   # Rebuild Kvant _index.md from all present .md files — must run AFTER smart_sync
   # so it sees files from all servers before regenerating the index.
