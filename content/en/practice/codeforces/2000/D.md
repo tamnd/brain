@@ -1,7 +1,7 @@
 ---
 title: "CF 2000D - Right Left Wrong"
-description: "We are given a strip of cells, each containing a positive integer and a direction, either 'L' for left or 'R' for right."
-date: "2026-06-08T14:15:10+07:00"
+description: "We have a line of cells. Each cell contains a positive value a[i] and a character, either L or R. An operation chooses a pair of positions (l, r) with l < r, where position l currently contains L and position r currently contains R."
+date: "2026-06-09T02:33:23+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 2000
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 966 (Div. 3)"
 rating: 1200
 weight: 2000
-solve_time_s: 207
+solve_time_s: 364
 verified: false
 draft: false
 ---
@@ -18,41 +18,133 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** greedy, implementation, two pointers  
-**Solve time:** 3m 27s  
+**Solve time:** 6m 4s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a strip of cells, each containing a positive integer and a direction, either 'L' for left or 'R' for right. We can repeatedly select a segment starting at a cell marked 'L' and ending at a cell marked 'R', sum all integers in that segment, add the sum to our score, and mark all those cells as used so they cannot participate in future operations. The goal is to maximize the total score.
+We have a line of cells. Each cell contains a positive value `a[i]` and a character, either `L` or `R`.
 
-The key challenge is choosing which segments to pick. Once a cell is used, it cannot be reused, so the order of picking segments matters. For example, if we always pick the smallest segments first, we might miss a larger combination later. Conversely, picking the largest possible segments without conflict is better, but we must decide efficiently which segments to choose.
+An operation chooses a pair of positions `(l, r)` with `l < r`, where position `l` currently contains `L` and position `r` currently contains `R`. We gain the sum of all values between them, inclusive. After that, every position in the interval `[l, r]` becomes unusable.
 
-The constraints are significant. Each test case can have up to 200,000 cells, and the sum of `n` over all test cases is also bounded by 200,000. This implies that any algorithm worse than linear time per test case will likely time out. A naive approach trying all possible `l, r` pairs would require O(n²) operations per test case, which is completely infeasible. Edge cases include strips where all 'L's are before all 'R's, alternating 'L' and 'R' cells, or strips with only one valid pair. For instance, `n=2, a=[1,1], s="RL"` produces 0 score because there is no 'L' before 'R'.
+The intervals created by different operations can never overlap because once an interval is chosen, all of its positions disappear from future consideration.
+
+The goal is to maximize the total score.
+
+The constraints immediately suggest that we need something close to linear time. Across all test cases, the total number of cells is at most `2 · 10^5`, which means an `O(n)` or `O(n log n)` solution is easily fast enough. An `O(n²)` approach would require roughly `4 · 10^10` operations in the worst case, which is completely infeasible.
+
+The main difficulty is that choosing one interval removes many positions, which affects what intervals can be chosen later. A greedy strategy that always takes the largest currently available interval is not obviously correct.
+
+Several edge cases deserve attention.
+
+Consider:
+
+```
+3
+1 2 3
+LLL
+```
+
+There is no `R` at all. No valid operation exists, so the answer is `0`.
+
+A careless implementation that assumes every `L` can be matched would fail here.
+
+Consider:
+
+```
+4
+5 5 5 5
+LRLR
+```
+
+The optimal choice is the whole interval `[1,4]`, giving `20`.
+
+Choosing `[1,2]` first gives only `10`, after which `[3,4]` gives another `10`. The total is still `20`, showing that different decompositions can produce the same result.
+
+Now consider:
+
+```
+4
+1 100 100 1
+LRRL
+```
+
+The only valid pair using the last `L` is impossible because there is no `R` to its right. The best choice is `[1,3]`, worth `201`.
+
+A solution that tries to match characters locally without considering position order can incorrectly count invalid pairs.
+
+Another subtle case is:
+
+```
+5
+1 2 3 4 5
+RLLLR
+```
+
+The leftmost character is `R`, so it can never serve as a left endpoint. The only useful interval is `[2,5]`, worth `14`.
+
+The algorithm must ignore unmatched characters at the boundaries.
 
 ## Approaches
 
-A brute-force solution would enumerate all possible pairs `(l,r)` with `s[l]='L'` and `s[r]='R'`, compute the sum, mark cells as used, and repeat. Each test case could require up to O(n²) checks, and summing each segment is O(n) itself, so the total complexity could reach O(n³). This clearly does not scale to the upper limits of n=200,000.
+A brute-force viewpoint is to think recursively. At any moment we can choose any valid pair `(l,r)`, gain the corresponding interval sum, remove that interval, and continue on the remaining pieces. Exploring all possible choices eventually finds the optimum.
 
-The observation that unlocks an efficient solution is that we only ever gain points from segments starting with 'L' and ending with 'R', and once a segment is taken, the cells are removed from further consideration. Therefore, we can think greedily: we want to pair the largest 'L' values with the largest 'R' values in a way that maximizes the sum of selected segments. A useful approach is to sort all `a_i` values in decreasing order and pick them sequentially: if the largest number is an 'L', we consider it as a potential start; if it is an 'R', we consider it as a potential end. By taking numbers from the ends inward in sorted order, we ensure we maximize points per pair. The result is that we can compute the maximum score by summing the largest numbers while accounting for the constraints of 'L' and 'R'.
+This is correct because it examines every legal sequence of operations.
 
-In practice, the algorithm works as follows: sum all numbers to get the total potential score. Then, subtract the minimum values that cannot form complete pairs due to the direction constraints. The effect is equivalent to selecting as many largest values as possible while respecting the L-R ordering.
+The problem is the number of possibilities. Even deciding which valid interval to take first can involve `O(n²)` choices, and every choice branches into more possibilities. The search space grows exponentially and becomes hopeless long before `n = 2 · 10^5`.
+
+To find something faster, we need to understand what an optimal solution looks like.
+
+Suppose we pick an interval `[l,r]`. Every position inside it disappears. Since all values are positive, whenever we can enlarge an interval without violating the endpoint requirements, the gained score only increases.
+
+This observation changes the way we look at the problem. Imagine taking the leftmost available `L` and the rightmost available `R`. If the `L` lies before the `R`, then using these two endpoints captures the largest possible interval among all currently remaining positions.
+
+What happens after removing that interval? Every position inside is gone, so any future operation must occur completely outside it. Since we already used the outermost possible endpoints, the remaining problem becomes exactly the same problem on the cells that remain outside.
+
+This naturally leads to a two-pointer process.
+
+Place one pointer at the left end and another at the right end.
+
+Move the left pointer until it reaches an `L`.
+
+Move the right pointer until it reaches an `R`.
+
+If the left pointer is still before the right pointer, we should pair them. Because all numbers are positive, taking the outermost valid pair captures every value between them and cannot be worse than splitting that region into smaller intervals.
+
+The score of an interval can be obtained in `O(1)` time using prefix sums.
+
+After using the pair, move both pointers inward and repeat.
+
+The entire array is scanned only once.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n³) | O(n) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force | Exponential | O(n) | Too slow |
+| Optimal Two Pointers + Prefix Sums | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the input for the number of test cases. For each test case, read `n`, the list `a`, and the string `s`.
-2. Split the numbers into two lists based on direction: `L_list` for cells labeled 'L' and `R_list` for cells labeled 'R'.
-3. Sort both lists in descending order. The largest numbers are considered first to maximize score.
-4. If the first and last elements are both valid, we can start pairing the largest 'L' with the largest 'R'. For each pair, add both numbers to the total score.
-5. If one side has more elements than the other, the extra numbers on that side can also be added, except we may need to drop the smallest one to maintain pairing balance. Essentially, if `len(L_list) != len(R_list)`, we add all but the smallest element of the longer list.
-6. Sum the selected numbers to get the maximum score for the test case.
+1. Build a prefix sum array so that the sum of any interval `[l,r]` can be computed in constant time.
+2. Initialize two pointers, `i = 0` and `j = n - 1`.
+3. Move `i` to the right until it points to an `L` or passes `j`.
+4. Move `j` to the left until it points to an `R` or passes `i`.
+5. If `i >= j`, no valid pair remains, so stop.
+6. Add the sum of the interval `[i, j]` to the answer using the prefix sums.
+7. Increment `i` and decrement `j`.
+8. Repeat from step 3.
 
-Why it works: The greedy selection guarantees that the largest numbers are paired whenever possible. Because each operation consumes entire segments, choosing the largest elements first ensures no smaller element blocks a larger potential sum. The invariant is that at each step, no unchosen number could form a larger segment sum than the chosen ones.
+The key action is step 6. Once the leftmost remaining `L` and the rightmost remaining `R` are found, pairing them immediately captures the largest possible interval in the current remaining segment. Since every value is positive, excluding any cells from that interval can only decrease the score.
+
+### Why it works
+
+At any stage, consider the leftmost remaining `L` and the rightmost remaining `R`. Any valid operation must use a left endpoint no further left than that `L` and a right endpoint no further right than that `R`.
+
+The interval formed by these outermost valid endpoints contains every interval that could be formed using other remaining endpoints. Since all array values are positive, the sum of the larger interval is at least as large as the sum of any smaller interval inside it.
+
+After choosing this outermost interval, all positions inside it disappear. Any future operation must lie completely outside that interval. Thus the remaining subproblem is independent of the interval we just took.
+
+Repeating this argument at every step shows that the greedy choice is always safe, and the algorithm produces the maximum possible score.
 
 ## Python Solution
 
@@ -62,44 +154,59 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
+
     for _ in range(t):
         n = int(input())
         a = list(map(int, input().split()))
         s = input().strip()
-        
-        L_list, R_list = [], []
-        for ai, si in zip(a, s):
-            if si == 'L':
-                L_list.append(ai)
-            else:
-                R_list.append(ai)
-        
-        L_list.sort(reverse=True)
-        R_list.sort(reverse=True)
-        
-        pairs = min(len(L_list), len(R_list))
-        total = 0
-        
-        # Add all paired numbers
-        total += sum(L_list[:pairs])
-        total += sum(R_list[:pairs])
-        
-        # If one side has more, add the extras except the smallest unpaired
-        if len(L_list) > pairs:
-            total += sum(L_list[pairs:-1]) if len(L_list[pairs:]) > 1 else 0
-        if len(R_list) > pairs:
-            total += sum(R_list[pairs:-1]) if len(R_list[pairs:]) > 1 else 0
-        
-        print(total)
+
+        pref = [0] * (n + 1)
+        for i in range(n):
+            pref[i + 1] = pref[i] + a[i]
+
+        i = 0
+        j = n - 1
+        ans = 0
+
+        while True:
+            while i < n and s[i] != 'L':
+                i += 1
+
+            while j >= 0 and s[j] != 'R':
+                j -= 1
+
+            if i >= j:
+                break
+
+            ans += pref[j + 1] - pref[i]
+
+            i += 1
+            j -= 1
+
+        print(ans)
 
 solve()
 ```
 
-This code reads all input efficiently using `sys.stdin.readline` to handle the upper limits. Numbers are split into two lists by direction, sorted descending, and summed according to the pairing strategy. The slice notation carefully excludes the smallest element of unpaired extras to respect the operation rules. Edge cases with very small lists or unbalanced numbers are handled correctly by checking lengths before summing slices.
+The prefix sum array allows interval sums to be computed in constant time. The value of interval `[i, j]` is:
+
+```
+pref[j + 1] - pref[i]
+```
+
+The two pointers search for the next usable `L` from the left and the next usable `R` from the right.
+
+After a pair is used, both pointers move inward. This effectively removes that entire interval from future consideration, matching the greedy argument from the proof.
+
+One easy mistake is using `pref[j] - pref[i]`, which would exclude `a[j]`. Another common error is forgetting that the pointers must continue searching after being moved inward, because the next positions may not be valid endpoints.
+
+Python integers are unbounded, so there is no overflow issue. The maximum possible answer can be much larger than `32-bit` integer limits.
 
 ## Worked Examples
 
-For the first sample input:
+### Example 1
+
+Input:
 
 ```
 6
@@ -107,63 +214,244 @@ For the first sample input:
 LRLLLR
 ```
 
-After splitting, `L_list = [3,1,4,3]`, `R_list = [5,2]`. Sorting gives `L_list = [4,3,3,1]`, `R_list = [5,2]`. The minimum length is 2, so we pair top 2 elements: 4+3 with 5+2, sum = 14. Extra L numbers are 3,1, we exclude the smallest 1, adding 3 more. Total score = 14+3 = 17. Wait, the correct output is 18. We need to include the largest extra, not exclude the smallest unpaired element-this is a subtlety: if the numbers are equal, take all extras, or subtract only one if strictly necessary. Sorting and adding all elements carefully handles this.
-
-Another input:
+Prefix sums:
 
 ```
-2
-2 8
-LR
+[0, 3, 8, 9, 13, 16, 18]
 ```
 
-`L_list=[2]`, `R_list=[8]`. One pair, total = 2+8 = 10. Matches expected output.
+| Step | i | j | Interval | Gain | Total |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0 | 5 | [0,5] | 18 | 18 |
+| Stop | 1 | 4 | no valid pair | 0 | 18 |
+
+The first character is already `L` and the last character is already `R`, so the greedy choice immediately takes the entire strip. Since all values are positive, no alternative decomposition can exceed the total sum of the whole array.
+
+### Example 2
+
+Input:
+
+```
+5
+1 2 3 4 5
+LRLRR
+```
+
+Prefix sums:
+
+```
+[0,1,3,6,10,15]
+```
+
+| Step | i | j | Interval | Gain | Total |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0 | 4 | [0,4] | 15 | 15 |
+| 2 | 2 | 3 | [2,3] | 7 | 22 |
+| Stop | 3 | 2 | no valid pair | 0 | 22 |
+
+The first operation uses the outermost endpoints and gains `15`. After moving inward, another valid pair remains, producing an additional `7`. The final answer is `22`.
+
+This example demonstrates that intervals are not required to be disjoint in the original array. The greedy process is operating on the remaining unremoved endpoints, which corresponds exactly to the intended game.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting L and R lists dominates; splitting is O(n) |
-| Space | O(n) | Storing L and R lists separately |
+| Time | O(n) | Each pointer moves across the array at most once |
+| Space | O(n) | Prefix sum array stores `n + 1` values |
 
-Given the constraint `sum(n) ≤ 2·10^5`, O(n log n) is acceptable within 2 seconds. Memory usage is linear, well within 256 MB.
+The total length across all test cases is at most `2 · 10^5`. A linear scan per test case performs only a few hundred thousand operations overall, which is comfortably within the limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-    solve()
-    sys.stdout = sys.__stdout__
-    return out.getvalue().strip()
 
-# Provided samples
-assert run("4\n6\n3 5 1 4 3 2\nLRLLLR\n2\n2 8\nLR\n2\n3 9\nRL\n5\n1 2 3 4 5\nLRLRR\n") == "18\n10\n0\n22"
+    input = sys.stdin.readline
 
-# Minimum size
-assert run("1\n2\n1 1\nLR\n") == "2"
+    out = []
 
-# Maximum size single test case (small values for feasibility)
-assert run(f"1\n5\n1 2 3 4 5\nLRLLR\n") == "15"
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        s = input().strip()
 
-# All equal values
-assert run("1\n4\n5 5 5 5\nLRLR\n") == "20"
+        pref = [0] * (n + 1)
+        for i in range(n):
+            pref[i + 1] = pref[i] + a[i]
 
-# Only L or only R
-assert run("1\n3\n3 4 5\nLLL\n") == "0"
+        l, r = 0, n - 1
+        ans = 0
 
-# Edge case where last element is L
-assert run("1\n3\n1 2 3\nRRL\n") == "0"
+        while True:
+            while l < n and s[l] != 'L':
+                l += 1
+
+            while r >= 0 and s[r] != 'R':
+                r -= 1
+
+            if l >= r:
+                break
+
+            ans += pref[r + 1] - pref[l]
+
+            l += 1
+            r -= 1
+
+        out.append(str(ans))
+
+    return "\n".join(out) + "\n"
+
+# provided samples
+assert run(
+"""4
+6
+3 5 1 4 3 2
+LRLLLR
+2
+2 8
+LR
+2
+3 9
+RL
+5
+1 2 3 4 5
+LRLRR
+"""
+) == "18\n10\n0\n22\n"
+
+# minimum size, valid pair
+assert run(
+"""1
+2
+1 1
+LR
+"""
+) == "2\n"
+
+# minimum size, invalid pair
+assert run(
+"""1
+2
+1 1
+RL
+"""
+) == "0\n"
+
+# all L
+assert run(
+"""1
+5
+1 2 3 4 5
+LLLLL
+"""
+) == "0\n"
+
+# all R
+assert run(
+"""1
+5
+1 2 3 4 5
+RRRRR
+"""
+) == "0\n"
+
+# nested pair structure
+assert run(
+"""1
+4
+5 5 5 5
+LRLR
+"""
+) == "20\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2 1 1\nLR` | `2` | Minimum size input |
-| `5 1 2 3 4 5\nLRLLR` | `15` | Maximum-size-like small input correctness |
-| `4 5 5 5 5\nLRLR` | `20` | Handling all-equal numbers |
-| `3 3 4 5\nLLL` | `0` | Only L, no R |
-| `3 1 |  |  |
+| `n=2, LR` | `2` | Smallest valid instance |
+| `n=2, RL` | `0` | No valid pair exists |
+| All `L` | `0` | Missing right endpoints |
+| All `R` | `0` | Missing left endpoints |
+| `LRLR` with equal values | `20` | Multiple greedy pairings and interval sums |
+
+## Edge Cases
+
+Consider:
+
+```
+1
+2
+3 9
+RL
+```
+
+The left pointer searches for an `L` and finds position `2`. The right pointer searches for an `R` and finds position `1`. Since `i >= j`, no valid interval exists.
+
+The algorithm outputs:
+
+```
+0
+```
+
+which is correct.
+
+Consider:
+
+```
+1
+5
+1 2 3 4 5
+LLLLL
+```
+
+The right pointer never finds an `R`. It moves past the beginning of the array, causing `i >= j`. The algorithm terminates immediately and returns `0`.
+
+Consider:
+
+```
+1
+5
+1 2 3 4 5
+RLLLR
+```
+
+The left pointer skips the first character because it is `R`. It eventually stops at position `2`, while the right pointer stops at position `5`.
+
+The chosen interval is:
+
+```
+[2,5]
+```
+
+with value:
+
+```
+2 + 3 + 4 + 5 = 14
+```
+
+The algorithm outputs `14`, correctly ignoring the unmatched `R` at the beginning.
+
+Finally, consider:
+
+```
+1
+4
+5 5 5 5
+LRLR
+```
+
+The first pair uses positions `(1,4)` and gains `20`. After moving inward, the remaining endpoints cross and the process stops.
+
+The output is:
+
+```
+20
+```
+
+which matches the maximum possible score and illustrates why taking the outermost valid pair is optimal.
