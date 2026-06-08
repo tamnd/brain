@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1448 solved, 19 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1449 solved, 19 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1448
+kvant_total: 1449
 kvant_verified: 19
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1448 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 19 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1449 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 19 solutions have been independently verified.
 
 ## 1970
 
@@ -1238,7 +1238,7 @@ draft: false
 
 ## 1980
 
-59 problems across Issues 1–12, 1 verified.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1980_1/)
 
@@ -1328,6 +1328,7 @@ draft: false
 | [642](642.md) *I. K. Zhuk*. The coefficients are restricted to the set ${-1,0,1}$, and two neighboring coefficients cannot both be nonzero. |  | 5m12s |
 | [643](643.md) A shuffle takes an initial segment of the deck and inserts it somewhere later, preserving the internal order of the removed block and of the remaining cards. |  | 5m44s |
 | [644](644.md) *G. A. Gurevich*. A convex equiangular $n$-gon has exterior angle $2\\pi/n$ at every vertex. |  | 7m12s |
+| [645](645.md) Normalize the speeds so that Warnicke moves with speed $1$ and the criminal with speed $\\frac12$. |  | 39m32s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1980_10/)
 
