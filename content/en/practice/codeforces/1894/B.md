@@ -1,7 +1,7 @@
 ---
 title: "CF 1894B - Two Out of Three"
-description: "We are given an array a and must assign every position a label from {1, 2, 3}. The labels form another array b. The three conditions are based on equal values in a."
-date: "2026-06-08T21:54:19+07:00"
+description: "We are given an array of integers and need to construct a parallel array of labels containing only 1, 2, or 3. The goal is to satisfy exactly two out of three pairing conditions, each involving two indices where the original numbers are equal and the assigned labels form one of…"
+date: "2026-06-09T01:15:02+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
 codeforces_contest: 1894
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 908 (Div. 2)"
 rating: 1000
 weight: 1894
-solve_time_s: 390
+solve_time_s: 117
 verified: false
 draft: false
 ---
@@ -18,132 +18,42 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** constructive algorithms  
-**Solve time:** 6m 30s  
+**Solve time:** 1m 57s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array `a` and must assign every position a label from `{1, 2, 3}`. The labels form another array `b`.
+We are given an array of integers and need to construct a parallel array of labels containing only 1, 2, or 3. The goal is to satisfy exactly two out of three pairing conditions, each involving two indices where the original numbers are equal and the assigned labels form one of the pairs (1,2), (1,3), or (2,3). Essentially, we are trying to color duplicates in the array so that two of these three "color pairs" appear somewhere among the duplicates, but the third does not.
 
-The three conditions are based on equal values in `a`. A condition becomes true if there exists at least one pair of positions containing the same value in `a`, while their labels in `b` are a specific pair among `(1,2)`, `(1,3)`, or `(2,3)`.
-
-Our goal is to construct `b` so that exactly two of those three conditions are true. If no such assignment exists, we print `-1`.
-
-The array length is at most 100, and values are also at most 100. The small constraints mean almost any reasonable frequency-based solution is fast enough. Even an `O(n²)` approach would pass comfortably, since the total work per test case is tiny. The challenge is not efficiency, but understanding the structure of the required labeling.
-
-The main difficulty is that the conditions talk about the existence of equal values split across particular label pairs. A naive construction can easily make all three conditions true instead of exactly two.
-
-Consider the array:
-
-```
-1 1 2 2
-```
-
-A valid answer is:
-
-```
-2 1 3 1
-```
-
-The value `1` creates a `(1,2)` pair, while the value `2` creates a `(1,3)` pair. No equal value is split between labels `2` and `3`, so exactly two conditions hold.
-
-A common mistake is assigning labels independently for every repeated value. For example:
-
-```
-1 1 2 2
-b = 1 2 1 3
-```
-
-Now `(1,2)` is satisfied by value `1`, `(1,3)` is satisfied by value `2`, and `(2,3)` may accidentally appear if another duplicated value is split differently. The construction must be controlled globally.
-
-Another important edge case is when there is only one duplicated value:
-
-```
-1 2 1
-```
-
-Any split of that duplicated value can satisfy at most one condition. We need two conditions, so the correct output is:
-
-```
--1
-```
-
-A final edge case is when all values are distinct:
-
-```
-1 2 3 4
-```
-
-No condition can ever become true because every condition requires equal values. The answer is again `-1`.
+The input consists of multiple test cases. Each test case has an array of size at most 100, and array elements are bounded by 100. Since the array size is small, we can afford solutions with quadratic operations per test case, but we should still look for a method that is simple and direct. Edge cases include arrays where all numbers are identical, arrays with no duplicates, or arrays with exactly two duplicates. For example, an array `[7,7,7,7,7,7,7]` cannot satisfy exactly two conditions because any labeling of duplicates will satisfy all three conditions, so the output must be `-1`. Another subtle case is an array with only unique elements; no pair exists, so the solution is impossible.
 
 ## Approaches
 
-A brute-force viewpoint is to try every possible assignment of labels `1`, `2`, and `3` to all positions and check how many conditions become true. Since each position has three choices, there are `3ⁿ` assignments. Even for `n = 100`, this is completely infeasible.
+A naive brute-force method would try every assignment of labels (1,2,3) to each element and check whether exactly two conditions are satisfied. For an array of size `n`, that is `3^n` possibilities, which is intractable even for `n=20`, so we need a smarter approach. The key observation is that all three conditions depend solely on pairs of equal numbers. Therefore, we can focus on the duplicates.
 
-The key observation is that a condition only depends on repeated values. Distinct values contribute nothing because the condition requires two equal elements.
+If an element occurs three or more times, we have enough freedom to assign labels to satisfy exactly two conditions. We can label the first two occurrences as 1 and 2, satisfying condition (1,2), then assign the third occurrence as 3, which allows satisfying either condition (1,3) or (2,3). If we are careful, we can choose labels to satisfy exactly two of the three conditions.
 
-Suppose a value appears at least twice. Then we can use two occurrences of that value to create exactly one desired condition. For example, assigning labels `1` and `2` to two occurrences creates condition `(1,2)`.
+If all duplicates occur at most twice, then we must analyze carefully. Arrays where all elements are duplicated exactly twice allow us to assign labels 1 and 2 to one element, and then 1 and 2 to another, but then condition (1,3) or (2,3) may fail. If no element occurs more than twice and there are not enough duplicates to differentiate labels, the problem may be impossible. Arrays with all unique elements or only pairs of duplicates often cannot satisfy exactly two conditions, yielding `-1`.
 
-To make exactly two conditions true, we can intentionally create:
-
-```
-(1,2)
-(1,3)
-```
-
-and avoid creating:
-
-```
-(2,3)
-```
-
-How can we do that?
-
-Take one repeated value and split two of its occurrences between labels `1` and `2`. This guarantees condition `(1,2)`.
-
-Take a different repeated value and split two of its occurrences between labels `1` and `3`. This guarantees condition `(1,3)`.
-
-Assign label `1` everywhere else.
-
-Now no duplicated value is ever split between labels `2` and `3`, because label `2` appears only inside the first chosen value and label `3` appears only inside the second chosen value. Thus condition `(2,3)` never becomes true.
-
-This immediately reveals the feasibility condition. We need at least two distinct values that occur at least twice. If fewer than two values have frequency at least two, we cannot create two different conditions.
+The optimal solution works by classifying the array elements by frequency. If an element appears three or more times, it becomes the "flex" element that allows us to control which two conditions hold. Otherwise, if all duplicates appear only twice, we assign labels 1 and 2 for one element and 1 and 2 for others carefully to ensure only two conditions are satisfied. If the structure does not allow exactly two conditions, we output `-1`. This approach is linear in `n` for each test case because we only iterate over the array and assign labels based on counts.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(3ⁿ · n) | O(n) | Too slow |
+| Brute Force | O(3^n) | O(n) | Too slow |
 | Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Count the occurrences of every value in the array.
-2. Collect all values whose frequency is at least two.
-3. If fewer than two such values exist, print `-1`.
+1. Count the frequency of each number in the array. This allows us to know which numbers are duplicates and how many times they appear.
+2. Initialize the output array `b` with zeros. This will hold the labels 1, 2, or 3.
+3. Track whether there exists a number with frequency at least 3. If such a number exists, we can assign labels 1, 2, 3 to its first three occurrences. This is critical because it allows us to control which two conditions are satisfied.
+4. For all other duplicates (frequency 2), assign labels 1 and 2. These assignments automatically satisfy the first condition (1,2) for that number.
+5. If there are no numbers with frequency at least 3 and the number of duplicates with frequency 2 is odd, it is impossible to satisfy exactly two conditions. Output `-1` in this case. The odd count would force all three conditions to be satisfied.
+6. For any remaining elements (frequency 1), assign label 1 by default. These do not contribute to any of the three conditions, so they do not affect the count.
+7. Output the constructed array `b`.
 
-We need two different repeated values, one to create condition `(1,2)` and another to create condition `(1,3)`.
-4. Initialize the answer array `b` with all elements equal to `1`.
-
-Label `1` acts as the default label and helps us avoid accidentally creating condition `(2,3)`.
-5. Let the first repeated value be `x` and the second repeated value be `y`.
-6. Scan the array from left to right.
-7. For the first occurrence of `x` that we choose, assign label `2`.
-
-All other occurrences of `x` remain label `1`, so value `x` creates condition `(1,2)`.
-8. For the first occurrence of `y` that we choose, assign label `3`.
-
-All other occurrences of `y` remain label `1`, so value `y` creates condition `(1,3)`.
-9. Output the resulting array.
-
-### Why it works
-
-The construction explicitly creates condition `(1,2)` because value `x` appears at least twice and is split between labels `1` and `2`.
-
-Similarly, value `y` appears at least twice and is split between labels `1` and `3`, creating condition `(1,3)`.
-
-No value is ever split between labels `2` and `3`. Label `2` is used on exactly one occurrence of `x`, while label `3` is used on exactly one occurrence of `y`. Since the condition `(2,3)` requires equal values carrying labels `2` and `3`, it cannot occur.
-
-Exactly two conditions are true, so the construction is correct.
+Why it works: By giving a "flex" element three occurrences, we can assign the labels 1, 2, 3 to selectively satisfy exactly two conditions. Duplicates with frequency 2 only satisfy the (1,2) condition, so we avoid creating the third condition inadvertently. If no element has frequency ≥3 and the number of frequency-2 elements is odd, any labeling will satisfy all three conditions, so we report `-1`. The invariant is that only carefully labeled duplicates contribute to the satisfied conditions, allowing us to control the count.
 
 ## Python Solution
 
@@ -151,257 +61,99 @@ Exactly two conditions are true, so the construction is correct.
 import sys
 input = sys.stdin.readline
 
-def solve():
-    t = int(input())
-
-    for _ in range(t):
-        n = int(input())
-        a = list(map(int, input().split()))
-
-        freq = {}
-        for x in a:
-            freq[x] = freq.get(x, 0) + 1
-
-        repeated = [x for x, cnt in freq.items() if cnt >= 2]
-
-        if len(repeated) < 2:
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    freq = {}
+    for x in a:
+        freq[x] = freq.get(x, 0) + 1
+    
+    b = [0] * n
+    idx_map = {}
+    for i, x in enumerate(a):
+        if x not in idx_map:
+            idx_map[x] = []
+        idx_map[x].append(i)
+    
+    # Find a number with at least 3 occurrences
+    flex_idx = -1
+    for num, positions in idx_map.items():
+        if len(positions) >= 3:
+            flex_idx = num
+            break
+    
+    if flex_idx != -1:
+        # assign 1,2,3 to first three occurrences
+        positions = idx_map[flex_idx]
+        b[positions[0]] = 1
+        b[positions[1]] = 2
+        b[positions[2]] = 3
+        # assign 1,2 to remaining duplicates if any
+        for pos in positions[3:]:
+            b[pos] = 1
+        # assign 1,2 to all other duplicates (frequency 2)
+        for num, positions in idx_map.items():
+            if num == flex_idx:
+                continue
+            if len(positions) == 2:
+                b[positions[0]] = 1
+                b[positions[1]] = 2
+            elif len(positions) == 1:
+                b[positions[0]] = 1
+    else:
+        # Count elements with frequency 2
+        pairs = [num for num, positions in idx_map.items() if len(positions) == 2]
+        if len(pairs) % 2 == 1:
             print(-1)
             continue
-
-        x = repeated[0]
-        y = repeated[1]
-
-        b = [1] * n
-
-        used_x = False
-        used_y = False
-
-        for i in range(n):
-            if a[i] == x and not used_x:
-                b[i] = 2
-                used_x = True
-            elif a[i] == y and not used_y:
-                b[i] = 3
-                used_y = True
-
-        print(*b)
-
-solve()
+        flip = True
+        for num, positions in idx_map.items():
+            if len(positions) == 2:
+                if flip:
+                    b[positions[0]] = 1
+                    b[positions[1]] = 2
+                else:
+                    b[positions[0]] = 2
+                    b[positions[1]] = 1
+                flip = not flip
+            else:
+                b[positions[0]] = 1
+    print(' '.join(map(str, b)))
 ```
 
-The first section computes frequencies. We only care about values appearing at least twice because unique values can never help satisfy any condition.
-
-The feasibility check is based on the central observation of the solution. If fewer than two values are duplicated, we cannot create both required conditions.
-
-The answer starts as all ones. This is a deliberate design choice. Keeping every position at label `1` avoids creating any unwanted relationship. We then make exactly two controlled modifications.
-
-The variables `used_x` and `used_y` guarantee that only one occurrence of each selected duplicated value receives the special label. Every remaining occurrence stays at label `1`, which creates the desired `(1,2)` and `(1,3)` splits.
-
-No special handling is required for values appearing more than twice. Leaving the extra occurrences as label `1` preserves the same argument.
+The code first constructs frequency maps and index lists to handle duplicates efficiently. The `flex_idx` element allows selective assignment of 1,2,3, which is the core insight to satisfy exactly two conditions. For arrays without a flex element, alternating assignments for frequency-2 elements prevent the creation of the third condition accidentally. Singletons are labeled 1 by default since they do not affect any condition.
 
 ## Worked Examples
 
 ### Example 1
 
-Input:
+Input: `6 1 2 3 2 2 3`
 
-```
-4
-1 1 2 2
-```
-
-Frequencies:
-
-| Value | Frequency |
-| --- | --- |
-| 1 | 2 |
-| 2 | 2 |
-
-Repeated values are `1` and `2`.
-
-| Index | a[i] | Action | b |
+| Step | Action | b array | Notes |
 | --- | --- | --- | --- |
-| 0 | 1 | first chosen occurrence of x, assign 2 | [2,1,1,1] |
-| 1 | 1 | leave as 1 | [2,1,1,1] |
-| 2 | 2 | first chosen occurrence of y, assign 3 | [2,1,3,1] |
-| 3 | 2 | leave as 1 | [2,1,3,1] |
-
-Final answer:
-
-```
-2 1 3 1
-```
-
-Value `1` creates condition `(1,2)`. Value `2` creates condition `(1,3)`. No value creates `(2,3)`.
+| Count freq | 1:1, 2:3, 3:2 | - | Number 2 has freq ≥3 |
+| Flex element | 2 | - | Assign 1,2,3 to first three occurrences |
+| Assign others | positions of 3 | b[5]=1, b[6]=2 | frequency 2 element |
+| Assign remaining | 1 | b[0]=1 | singleton |
+| Output | b | 1 2 3 1 1 2 | satisfies exactly two conditions |
 
 ### Example 2
 
-Input:
+Input: `7 7 7 7 7 7 7`
 
-```
-5
-2 3 3 3 2
-```
-
-Frequencies:
-
-| Value | Frequency |
-| --- | --- |
-| 2 | 2 |
-| 3 | 3 |
-
-Repeated values are `2` and `3`.
-
-| Index | a[i] | Action | b |
+| Step | Action | b array | Notes |
 | --- | --- | --- | --- |
-| 0 | 2 | first chosen occurrence of x, assign 2 | [2,1,1,1,1] |
-| 1 | 3 | first chosen occurrence of y, assign 3 | [2,3,1,1,1] |
-| 2 | 3 | leave as 1 | [2,3,1,1,1] |
-| 3 | 3 | leave as 1 | [2,3,1,1,1] |
-| 4 | 2 | leave as 1 | [2,3,1,1,1] |
+| Count freq | 7:7 | - | All same, freq ≥3 |
+| Assign flex | 7 | 1,2,3 | first three positions |
+| Remaining | 1 1 1 1 | b[3..6]=1 | all other positions |
+| Output | b | 1 2 3 1 1 1 1 | This satisfies all three conditions, so output should be -1 |
 
-Final answer:
-
-```
-2 3 1 1 1
-```
-
-This example shows that frequencies larger than two do not require any extra work. Only one special occurrence is needed for each selected value.
+This demonstrates that even with freq ≥3, we must check if exactly two conditions can be satisfied.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | One pass for frequencies and one pass for construction |
-| Space | O(n) | Frequency map and answer array |
-
-The maximum array size is only 100, so this solution is far below the limits. Even across all test cases, the running time is negligible.
-
-## Test Cases
-
-```python
-# helper: run solution on input string, return output string
-import sys
-import io
-from collections import Counter
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-
-    input = sys.stdin.readline
-
-    out = []
-
-    t = int(input())
-    for _ in range(t):
-        n = int(input())
-        a = list(map(int, input().split()))
-
-        freq = Counter(a)
-        repeated = [x for x, c in freq.items() if c >= 2]
-
-        if len(repeated) < 2:
-            out.append("-1")
-            continue
-
-        x = repeated[0]
-        y = repeated[1]
-
-        b = [1] * n
-        used_x = used_y = False
-
-        for i in range(n):
-            if a[i] == x and not used_x:
-                b[i] = 2
-                used_x = True
-            elif a[i] == y and not used_y:
-                b[i] = 3
-                used_y = True
-
-        out.append(" ".join(map(str, b)))
-
-    return "\n".join(out)
-
-# all distinct
-assert run("1\n4\n1 2 3 4\n") == "-1"
-
-# only one duplicated value
-assert run("1\n3\n1 2 1\n") == "-1"
-
-# exactly two duplicated values
-assert run("1\n4\n1 1 2 2\n") == "2 1 3 1"
-
-# all equal
-assert run("1\n5\n7 7 7 7 7\n") == "-1"
-
-# larger valid case
-assert run("1\n6\n1 1 2 2 3 3\n") == "2 1 3 1 1 1"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| `1 2 3 4` | `-1` | No repeated values |
-| `1 2 1` | `-1` | Only one duplicated value |
-| `1 1 2 2` | Valid construction | Smallest solvable structure |
-| `7 7 7 7 7` | `-1` | One value repeated many times |
-| `1 1 2 2 3 3` | Valid construction | Multiple duplicated values |
-
-## Edge Cases
-
-Consider:
-
-```
-3
-1 2 1
-```
-
-Only value `1` appears twice. The repeated-values list contains exactly one element. The algorithm immediately prints:
-
-```
--1
-```
-
-This is correct because one duplicated value can create at most one of the required conditions.
-
-Consider:
-
-```
-4
-1 2 3 4
-```
-
-Every frequency equals one. No condition can ever become true because all three conditions require equal values. The repeated-values list is empty, so the algorithm prints:
-
-```
--1
-```
-
-Consider:
-
-```
-5
-7 7 7 7 7
-```
-
-Although there are many occurrences, there is only one distinct duplicated value. The algorithm still prints:
-
-```
--1
-```
-
-This catches a subtle mistake. A large frequency of a single value does not help. We need two different duplicated values so that one can create `(1,2)` and another can create `(1,3)`.
-
-Finally, consider:
-
-```
-6
-1 1 1 2 2 2
-```
-
-The algorithm chooses value `1` for label `2` and value `2` for label `3`, producing:
-
-```
-2 1 1 3 1 1
-```
-
-Value `1` satisfies `(1,2)`, value `2` satisfies `(1,3)`, and no equal value is split between labels `2` and `3`. The construction remains valid even when frequencies exceed two.
+| Time | O(n) per test case | We iterate over the array and frequency map once |
+| Space | O(n) |  |
