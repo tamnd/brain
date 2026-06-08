@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1432 solved, 9 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1433 solved, 9 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1432
+kvant_total: 1433
 kvant_verified: 9
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1432 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 9 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1433 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 9 solutions have been independently verified.
 
 ## 1970
 
@@ -871,7 +871,7 @@ draft: false
 
 ## 1977
 
-53 problems across Issues 1–12, 2 verified.
+54 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -946,6 +946,7 @@ draft: false
 | [456](456.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, 10th grade)*. At each vertex of the polyhedron, exactly three edges meet, so the vertex figure is a trihedral angle. |  | 9m15s |
 | [457](457.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 8)*. Let the vertices of the simple closed polygonal line be $A_1,A_2,\\dots,A_n$ in cyclic order, and let $e_i=A_iA_{i+1}$, with indices taken modulo $n$. |  | 3m44s |
 | [458](458.md) *All-Union School Mathematics Olympiad (XI, 1977, 10th grade)*. Consider the polynomial $x^{10}+a_9x^9+\\dots+a_1x+1$ with all coefficients initially unspecified except for the leading and constant terms, which are $1$. |  | 7m07s |
+| [459](459.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 9)*. Let the route produced by the minimum-greedy algorithm be |  | 24m48s |
 | [460](460.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, 8th and 10th grades)*. We begin with small values of $n$ to understand the structure. |  | 7m13s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1977_9/)
