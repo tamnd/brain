@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1427 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1428 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1427
+kvant_total: 1428
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1427 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1428 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -758,7 +758,7 @@ draft: false
 
 ## 1976
 
-46 problems across Issues 1–12.
+47 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -817,6 +817,7 @@ draft: false
 | [391](391.md) I cannot write a solution to Kvant problem M391 from the information provided, because the actual problem statement is missing. |  | 5m45s |
 | [392](392.md) *All-Union Mathematical Olympiad of School Students (1976, 10th grade)*. Let the positions of the three pedestrians at time $t$ be represented by vectors $A(t), B(t), C(t)$ in the plane. |  | 6m44s |
 | [393](393.md) Let |  | 6m39s |
+| [394](394.md) *All-Union Mathematical Olympiad for School Students (1976, Grades 9 and 10)*. Let |  | 15m09s |
 | [395](395.md) *All-Union Mathematical Olympiad for School Students (1976, Grade 10)*. Label the vertices of a regular $n$-gon by $0,1,\\dots,n-1$ in cyclic order. |  | 2m05s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1976_8/)
