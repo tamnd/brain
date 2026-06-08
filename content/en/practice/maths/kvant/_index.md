@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1443 solved, 16 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1444 solved, 17 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1443
-kvant_verified: 16
+kvant_total: 1444
+kvant_verified: 17
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1443 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 16 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1444 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 17 solutions have been independently verified.
 
 ## 1970
 
@@ -1114,7 +1114,7 @@ draft: false
 
 ## 1979
 
-58 problems across Issues 1–12, 5 verified.
+59 problems across Issues 1–12, 6 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1193,6 +1193,7 @@ draft: false
 | [576](576.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 8)*. Represent each chosen vector by an oriented edge of a directed graph whose vertices are the given points. | ✓ | 10m41s |
 | [577](577.md) *All-Union Mathematical Olympiad for School Students (1979, Grades 8 and 10)*. Place coordinates on the board by identifying each square with the pair $(i,j)$, where $1\\le i,j\\le n$. |  | 3m25s |
 | [578](578.md) *All-Union Mathematical Olympiad for School Students (1979, Grades 8 and 10)*. Introduce |  | 9m12s |
+| [579](579.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. For $n=1$ the inequality becomes | ✓ | 15m32s |
 | [580](580.md) *All-Union Mathematical Olympiad of School Students (1979, grades 8–10)*. Let $G$ be the graph whose vertices are parliamentarians and edges represent mutual enmity. |  | 2m10s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1979_9/)
