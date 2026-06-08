@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1425 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1426 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1425
+kvant_total: 1426
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1425 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1426 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -248,7 +248,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [111](111.md) *G. V. Rozenblyum*. The condition forbids the distance $d=0. |  | 6m44s |
-| [112](112.md) Let the entry in row $i$, column $j$ be $a_{ij}$. |  | 2m |
+| [112](112.md) Let the entry in row $i$, column $j$ be $a_{ij}$. |  | 2m00s |
 | [113](113.md) *B. M. Ivlev*. For small values of $n$ the statement is easy to check directly. |  | 7m05s |
 | [114](114.md) *V. B. Alekseev*. Let the numbers around the circle be $x_1,x_2,\\dots,x_n$, with indices taken modulo $n$. |  | 7m56s |
 | [115](115.md) *G. A. Galperin*. Let the amounts of water be $a,b,c$, all positive integers. |  | 7m54s |
@@ -313,7 +313,7 @@ draft: false
 |---|---------|---|------|
 | [141](141.md) *E. V. Sallinen*. Let the altitude $BH$ be the $y$ axis, and let $H=(0,0)$. |  | 5m26s |
 | [142](142.md) *N. N. Konstantinov, N. B. Vasiliev*. Consider a cube with its twelve edges labeled by distinct numbers $1$ through $12$. |  | 8m12s |
-| [143](143.md) Consider small positive integers $n$ and examine the condition that if $n$ is divisible by $p-1$ for some prime $p$, then $n$ must also be divisible by $p$. |  | 6m |
+| [143](143.md) Consider small positive integers $n$ and examine the condition that if $n$ is divisible by $p-1$ for some prime $p$, then $n$ must also be divisible by $p$. |  | 6m00s |
 | [144](144.md) *A. T. Kolotov*. Consider small rectangles with integer sides. |  | 4m55s |
 | [145](145.md) *A. K. Tolpygo*. Consider the first several terms of the sequence defined by taking the integer closest to the cumulative target $n\\sqrt{2}$. |  | 6m08s |
 
@@ -408,8 +408,8 @@ draft: false
 | [186](186.md) We seek all integer triples $(x,y,z)$, none equal to $1$, satisfying |  | 6m20s |
 | [187](187.md) Before I begin the full solution, I need to clarify: should I solve **all five subproblems (1–5) for point $C$**, or just a specific one from the list? Each has its own locus. |  | 5m35s |
 | [188](188.md) *A. K. Kelmans*. Represent the airline network by a simple graph $G$ on $2n$ vertices. |  | 5m32s |
-| [189](189.md) Consider three segments $AB$, $CD$, and $EF$ intersecting at a single point $O$, with $E$ on $AC$ and $F$ on $BD$. |  | 6m |
-| [190](190.md) The motion is completely determined by the two lines and the current point. |  | 7m |
+| [189](189.md) Consider three segments $AB$, $CD$, and $EF$ intersecting at a single point $O$, with $E$ on $AC$ and $F$ on $BD$. |  | 6m00s |
+| [190](190.md) The motion is completely determined by the two lines and the current point. |  | 7m00s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1973_3/)
 
@@ -505,7 +505,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [236](236.md) *A. Yu. Soifer, S. G. Slobodnik*. For the first part, the numbers involved are all two-digit numbers, so each number can be represented as an ordered pair $(a,b)$ with $a,b \\in {1,2,\\dots,9,0}$, $a\\neq 0$. |  | 7m |
+| [236](236.md) *A. Yu. Soifer, S. G. Slobodnik*. For the first part, the numbers involved are all two-digit numbers, so each number can be represented as an ordered pair $(a,b)$ with $a,b \\in {1,2,\\dots,9,0}$, $a\\neq 0$. |  | 7m00s |
 | [237](237.md) *B. D. Ginzburg*. Consider an acute-angled triangle with vertices $A$, $B$, and $C$ and corresponding angles $\\alpha$, $\\beta$, and $\\gamma$, and sides $a = BC$, $b = AC$, $c = AB$. |  | 5m06s |
 | [238](238.md) *F. G. Shleifer*. Let |  | 4m39s |
 | [239](239.md) Let points $A$ and $B$ be fixed on the plane, and let $C$ lie on the perpendicular bisector of segment $AB$, since it must satisfy $/AC/ = /BC/$. |  | 6m12s |
@@ -657,7 +657,7 @@ draft: false
 | [307](307.md) *V. P. Golubyatnikov*. Consider a single vertex where three hexagonal walls meet. |  | 7m01s |
 | [308](308.md) *Yu. I. Ionin*. Consider first the case $n=2$, where the inequality takes the form $a_1\\cos x + a_2\\cos 2x \\ge -1$ for all real $x$. |  | 3m30s |
 | [309](309.md) *V. G. Shleifer*. For the first question, divisibility by $x^2+x+1$ suggests evaluating the polynomial at the nonreal cube roots of unity. |  | 7m32s |
-| [310](310.md) *G. A. Gurevich*. An $n$-digit number is a sequence of digits $d_1d_2\\ldots d_n$ where $d_1 \\in {1,\\dots,9}$ and $d_i \\in {0,\\dots,9}$ for $i \\ge 2$. |  | 1m |
+| [310](310.md) *G. A. Gurevich*. An $n$-digit number is a sequence of digits $d_1d_2\\ldots d_n$ where $d_1 \\in {1,\\dots,9}$ and $d_i \\in {0,\\dots,9}$ for $i \\ge 2$. |  | 1m00s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1975_3/)
 
@@ -835,7 +835,7 @@ draft: false
 | [401](401.md) Let $A,B,C$ be the angles of $\\triangle ABC$. |  | 7m13s |
 | [402](402.md) *Yu. I. Ionin*. From the condition with $n=m=1$ we obtain |  | 2m37s |
 | [403](403.md) A convex polyhedron has the property that every vertex has even degree. |  | 8m44s |
-| [404](404.md) *A. P. Savin*. Start with small $n$. |  | 2m |
+| [404](404.md) *A. P. Savin*. Start with small $n$. |  | 2m00s |
 | [405](405.md) *All-Union Mathematical Olympiad for School Students (X, 8th grade)*. The condition concerns preservation of adjacency. |  | 7m21s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1976_10/)
@@ -999,7 +999,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [487](487.md) Let $O_1$ and $O_2$ be the centers of circles $\\gamma_1$ and $\\gamma_2$, with radii $R_1$ and $R_2$. |  | 1m58s |
-| [488](488.md) The recurrence |  | 6m |
+| [488](488.md) The recurrence |  | 6m00s |
 | [489](489.md) The transformation replaces each term by the average of the other two. |  | 1m39s |
 | [490](490.md) *S. V. Fomin*. Let the given integers be $a_1,\\dots,a_{p-1}$, none divisible by $p$. |  | 9m24s |
 
@@ -1038,7 +1038,7 @@ draft: false
 |---|---------|---|------|
 | [506](506.md) Let $x=a^2,\\; y=b^2,\\; z=c^2,\\; w=d^2$. |  | 7m09s |
 | [507](507.md) We are asked to consider sequences of $n$ distinct natural numbers $a_1 < a_2 < \\dots < a_n < 2n$ with $n \\ge 6$, and to find bounds for the minimum of their least common multiples and the maximum of… |  | 6m36s |
-| [508](508.md) *I. F. Sharygin*. The three semicircles with diameters $AB$, $BC$, $AC$ lie on the same line $AB$, with centers at the midpoints of $AB$, $BC$, and $AC$. |  | 2m |
+| [508](508.md) *I. F. Sharygin*. The three semicircles with diameters $AB$, $BC$, $AC$ lie on the same line $AB$, with centers at the midpoints of $AB$, $BC$, and $AC$. |  | 2m00s |
 | [509](509.md) Equation (1), $2^x + 1 = 3^y$, suggests searching for powers of 2 that are one less than a power of 3. |  | 3m09s |
 | [510](510.md) *I. Birger, R. P. Ushakov*. Let |  | 6m43s |
 
@@ -1087,9 +1087,9 @@ draft: false
 |---|---------|---|------|
 | [531](531.md) *N. B. Vasiliev*. Consider two points $A$ and $B$ on a line and a motorist starting from $A$ and a cyclist starting from $B$, both moving toward each other at constant speeds $v_m$ and $v_c$. |  | 4m39s |
 | [532](532.md) For small values, |  | 3m44s |
-| [533](533.md) *V. G. Boltyanskii*. A heptagon has $7$ vertices and $14$ diagonals. |  | 3m |
+| [533](533.md) *V. G. Boltyanskii*. A heptagon has $7$ vertices and $14$ diagonals. |  | 3m00s |
 | [534](534.md) Consider triangle $ABC$ with a point $P$ inside it, through which three lines are drawn, each parallel to one side of the triangle. |  | 7m18s |
-| [535](535.md) The defining condition of a trigram is |  | 7m |
+| [535](535.md) The defining condition of a trigram is |  | 7m00s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1978_12/)
 
@@ -1572,7 +1572,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [776](776.md) *International Mathematical Olympiad (XXIII, 1982)*. Consider a regular hexagon $ABCDEF$ with vertices labeled consecutively. |  | 7m02s |
-| [777](777.md) *International Mathematical Olympiad for School Students (XXIII, 1982)*. The given equation is cubic in two variables, $x$ and $y$: |  | 4m |
+| [777](777.md) *International Mathematical Olympiad for School Students (XXIII, 1982)*. The given equation is cubic in two variables, $x$ and $y$: |  | 4m00s |
 | [778](778.md) *International Mathematical Olympiad for School Students (XXIII, 1982)*. Let the triangle be isosceles with $A_2A_3=a_1$ as the base and $A_1A_2=A_1A_3$. |  | 8m06s |
 | [779](779.md) *International Mathematical Olympiad for School Students (XXIII, 1982)*. We are asked to study sequences of positive numbers $x_0, x_1, x_2, \\dots$ with $x_0 = 1$ and $x_0 \\ge x_1 \\ge x_2 \\ge \\dots$. |  | 9m50s |
 | [780](780.md) *International Mathematical Olympiad for School Students (XXIII, 1982)*. The condition says that every point of the boundary of the square lies within distance $\\tfrac12$ of the polygonal line $L$. |  | 12m19s |
@@ -1625,7 +1625,7 @@ draft: false
 |---|---------|---|------|
 | [801](801.md) *V. V. Kisil'*. Compute several small cases to see the pattern. |  | 4m45s |
 | [802](802.md) *L. P. Kuptsov*. The data involve two right triangles erected externally on sides $AB$ and $BC$. |  | 2m14s |
-| [803](803.md) *R. A. Mazov, A. P. Savin*. Let $x,y \\in \\mathbb{Q}\\setminus{0}$ satisfy |  | 8m |
+| [803](803.md) *R. A. Mazov, A. P. Savin*. Let $x,y \\in \\mathbb{Q}\\setminus{0}$ satisfy |  | 8m00s |
 | [804](804.md) *I. K. Zhuk*. Place a right circular cylinder vertically with axis along the $z$-axis and center at the origin, so that $O=(0,0,0)$ is the midpoint of the axis. |  | 7m34s |
 | [805](805.md) *R. P. Ushakov*. Consider the planar case first. |  | 10m42s |
 
@@ -1849,7 +1849,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [916](916.md) *A. A. Azamov*. Let the acute triangle be $ABC$. |  | 8m |
+| [916](916.md) *A. A. Azamov*. Let the acute triangle be $ABC$. |  | 8m00s |
 | [917](917.md) Consider six-digit numbers from $000000$ to $999999$. |  | 8m32s |
 | [918](918.md) *V. V. Prasolov*. Let the triangle have sides $a,b,c$ and semiperimeter $s=\\frac{a+b+c}{2}$. |  | 9m39s |
 | [919](919.md) *Yu. I. Ionin*. For the first integral equality, the two integrals involve complementary functions: the tangent function on $[0,\\pi/4]$ and the arctangent function on $[0,1]$. |  | 6m07s |
@@ -1909,7 +1909,7 @@ draft: false
 |---|---------|---|------|
 | [946](946.md) *All-Russian Mathematical Olympiad for School Students (XI)*. Position two parabolas in the plane with perpendicular axes. |  | 1m31s |
 | [947](947.md) *All-Russian School Mathematics Olympiad (XI)*. Consider first small cases. |  | 10m44s |
-| [949](949.md) *All-Russian Mathematical Olympiad for School Students (XI)*. Consider small cases first. |  | 5m |
+| [949](949.md) *All-Russian Mathematical Olympiad for School Students (XI)*. Consider small cases first. |  | 5m00s |
 | [950](950.md) *All-Russian School Mathematics Olympiad (XI)*. The $25$ plots form the $5\\times5$ grid graph. |  | 10m39s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1985_11/)
@@ -2151,7 +2151,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1066](1066.md) *S. G. Salnikov*. Consider six points in the plane with all pairwise distances at most $1$. |  | 2m |
+| [1066](1066.md) *S. G. Salnikov*. Consider six points in the plane with all pairwise distances at most $1$. |  | 2m00s |
 | [1067](1067.md) *V. E. Matizen*. Let |  | 1m36s |
 | [1068](1068.md) *R. O. Burdin*. Consider an angle $AOB$ with points $A$ on one side and $B$ on the other. |  | 1m30s |
 | [1069](1069.md) *Tournament of Towns (Spring, 1987)*. Consider a small number of families, say three or four, each in a distinct apartment. |  | 1m39s |
@@ -2404,7 +2404,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1191](1191.md) *I. F. Akulich*. Let $S_A$ denote the central symmetry with center $A$. |  | 8m15s |
-| [1192](1192.md) *V. A. Senderov*. The polyhedron has all edges of equal length and every edge is tangent to a sphere. |  | 8m |
+| [1192](1192.md) *V. A. Senderov*. The polyhedron has all edges of equal length and every edge is tangent to a sphere. |  | 8m00s |
 | [1193](1193.md) Let |  | 7m10s |
 | [1194](1194.md) *A. A. Azamov*. Let the rectangle have vertices |  | 7m39s |
 | [1195](1195.md) *O. T. Izhboldin*. Consider the given inequality |  | 4m05s |
@@ -2440,7 +2440,7 @@ draft: false
 | [1206](1206.md) I see that the problem statement for Kvant M1206 is not yet provided. |  | 1m01s |
 | [1207](1207.md) I see the problem statement itself is not fully provided yet. |  | 1m06s |
 | [1208](1208.md) I need the textual statement of Kvant problem M1208 in order to produce a rigorous solution according to your strict rules. |  | 51s |
-| [1209](1209.md) I do not yet have the full textual version of Kvant problem M1209. |  | 1m |
+| [1209](1209.md) I do not yet have the full textual version of Kvant problem M1209. |  | 1m00s |
 | [1210](1210.md) *K. P. Kokhas*. The position of the game is completely determined by the current number of matches in the pile and the set of numbers already written on the sheet. |  | 1m57s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1990_3/)
@@ -2822,7 +2822,7 @@ draft: false
 | [1392](1392.md) *M. L. Kontsevich*. The quadrilateral $ABCD$ has three consecutive sides equal, $AB = BC = CD = 1$, and points $B$ and $C$ are fixed. |  | 7m28s |
 | [1393](1393.md) I cannot write a solution to Kvant problem M1393 because the actual problem statement is not present in your message. |  | 6m42s |
 | [1394](1394.md) I see that you have provided the full template and instructions for solving Kvant problem M1394, but the actual problem statement has not been included yet. |  | 8m35s |
-| [1395](1395.md) *F. L. Nazarov*. Consider a small social network where each person has a certain number of acquaintances. |  | 7m |
+| [1395](1395.md) *F. L. Nazarov*. Consider a small social network where each person has a certain number of acquaintances. |  | 7m00s |
 | [1396](1396.md) I do not have the full text of Kvant problem M1396, so I cannot write a complete, rigorous solution yet. |  | 2m47s |
 | [1397](1397.md) Consider first a simple convex polyhedron, such as a tetrahedron. |  | 7m14s |
 | [1398](1398.md) The statement of Kvant problem M1398 is not included in your message. |  | 6m57s |
@@ -3039,7 +3039,7 @@ draft: false
 
 ## 2025
 
-9 problems across Issues 1–11.
+10 problems across Issues 1–11.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3071,6 +3071,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2863](2863.md) The configuration is a complete quadrilateral formed by the four lines $AB, BC, CD, DA$. |  | 10m17s |
+| [2864](2864.md) *Based on an Iranian Olympiad problem.*. The arrangement of the lines is a simple arrangement: every pair of lines intersects and no three are concurrent. |  | 11m44s |
 | [2865](2865.md) The operation in every part is a conditional transposition: two entries are swapped exactly when the larger stands to the left. |  | 2m20s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_2025_11/)
