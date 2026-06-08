@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1445 solved, 17 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1447 solved, 19 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1445
-kvant_verified: 17
+kvant_total: 1447
+kvant_verified: 19
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1445 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 17 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1447 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 19 solutions have been independently verified.
 
 ## 1970
 
@@ -1238,7 +1238,7 @@ draft: false
 
 ## 1980
 
-58 problems across Issues 1–12.
+59 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1980_1/)
 
@@ -1298,6 +1298,7 @@ draft: false
 | [627](627.md) *A. K. Tolpygo*. For part 1, suppose every natural number appears exactly once. |  | 6m57s |
 | [628](628.md) Consider a spherical triangle with one side of length $120^\\circ$. |  | 3m21s |
 | [629](629.md) For the first statement, computing small cases is instructive. |  | 1m31s |
+| [630](630.md) *I. F. Sharygin*. The point $M$ is defined from the circle through $P,Q,K$. | ✓ | 22m44s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1980_7/)
 
@@ -1360,7 +1361,7 @@ draft: false
 
 ## 1981
 
-57 problems across Issues 1–12.
+58 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1446,6 +1447,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [701](701.md) Let the sides of the acute triangle $LMN$ be |  | 8m41s |
+| [702](702.md) *I. K. Zhuk*. For the first values, | ✓ | 8m45s |
 | [703](703.md) The first equation links three expressions of the form $t + \\frac{1}{t}$ multiplied by constants 3, 4, and 5. |  | 5m04s |
 | [704](704.md) *N. B. Vasiliev*. Consider a square $ABCD$ and a parallelogram $PQRS$ that circumscribes it, with each vertex of the square touching a different side of the parallelogram. |  | 3m07s |
 | [705](705.md) *G. A. Galperin, V. V. Proizvolov*. Represent each cell of the sheet by a vertex. |  | 4m45s |
