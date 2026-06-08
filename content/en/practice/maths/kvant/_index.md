@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1435 solved, 11 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1436 solved, 12 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1435
-kvant_verified: 11
+kvant_total: 1436
+kvant_verified: 12
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1435 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 11 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1436 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 12 solutions have been independently verified.
 
 ## 1970
 
@@ -871,7 +871,7 @@ draft: false
 
 ## 1977
 
-55 problems across Issues 1–12, 3 verified.
+56 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -977,6 +977,7 @@ draft: false
 | [472](472.md) *V. V. Prasolov*. Consider a cube of side length $1$ for simplicity. |  | 4m36s |
 | [473](473.md) Let the weights in the first group be | ✓ | 17m39s |
 | [474](474.md) We begin by examining the properties of perfect numbers modulo small integers. |  | 6m15s |
+| [475](475.md) Assume that an equilateral triangle has all three vertices at lattice points. | ✓ | 30m48s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1977_12/)
 
