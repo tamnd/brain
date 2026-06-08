@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 616 contests, 3307 problems, 1849 verified."
+description: "Codeforces problem solutions with full editorial. 616 contests, 3309 problems, 1850 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**616 contests, 3307 problems, 1849 verified.**
+**616 contests, 3309 problems, 1850 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -539,7 +539,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2124](2124/) | [EPIC Institute of Technology Round Summer 2025 (Codeforces Round 1036, Div. 1 + Div. 2)](https://codeforces.com/contest/2124) | Div. 1+2 | 800-3500 | 0/10 | 16m 17s |
 | [2125](2125/) | [Educational Codeforces Round 181 (Rated for Div. 2)](https://codeforces.com/contest/2125) | Div. 2 | 800-3000 | 3/6 | 10m 7s |
 | [2126](2126/) | [Codeforces Round 1037 (Div. 3)](https://codeforces.com/contest/2126) | Div. 3 | 800-2400 | 6/8 | 11m 34s |
-| [2127](2127/) | [Atto Round 1 (Codeforces Round 1041, Div. 1 + Div. 2)](https://codeforces.com/contest/2127) | Div. 1+2 | 1300-3500 | 1/7 | 11m 43s |
+| [2127](2127/) | [Atto Round 1 (Codeforces Round 1041, Div. 1 + Div. 2)](https://codeforces.com/contest/2127) | Div. 1+2 | 800-3500 | 2/9 | 21m 47s |
 | [2128](2128/) | [Codeforces Round 1039 (Div. 2)](https://codeforces.com/contest/2128) | Div. 2 | 800-2600 | 2/5 | 12m 39s |
 | [2129](2129/) | [Codeforces Round 1040 (Div. 1)](https://codeforces.com/contest/2129) | Div. 1 | 1300-3500 | 2/9 | 17m 30s |
 | [2130](2130/) | [Codeforces Round 1040 (Div. 2)](https://codeforces.com/contest/2130) | Div. 2 | 800-1100 | 1/2 | 3m 11s |
