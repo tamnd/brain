@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4249 problems, 2204 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4253 problems, 2206 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4249 problems, 2204 verified.**
+**750 contests, 4253 problems, 2206 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -502,7 +502,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1934](1934/) | [Codeforces Round 931 (Div. 2)](https://codeforces.com/contest/1934) | Div. 2 | 800-3000 | 2/6 | 11m 46s |
 | [1935](1935/) | [Codeforces Round 932 (Div. 2)](https://codeforces.com/contest/1935) | Div. 2 | 800-2800 | 2/6 | 12m 8s |
 | [1936](1936/) | [Codeforces Round 930 (Div. 1)](https://codeforces.com/contest/1936) | Div. 1 | 1700-3400 | 1/6 | 15m 24s |
-| [1937](1937/) | [Codeforces Round 930 (Div. 2)](https://codeforces.com/contest/1937) | Div. 2 | 800-1300 | 1/2 | 3m 41s |
+| [1937](1937/) | [Codeforces Round 930 (Div. 2)](https://codeforces.com/contest/1937) | Div. 2 | 800-3100 | 3/6 | 13m 28s |
 | [1938](1938/) | [2024 ICPC Asia Pacific Championship - Online Mirror (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1938) | ICPC/IOI | 1600-3500 | 4/13 | 12m 26s |
 | [1939](1939/) | [XVIII Open Olympiad in Informatics - Final Stage, Day 1 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/1939) | ICPC/IOI | - | 2/4 | 3m 39s |
 | [1940](1940/) | [XVIII Open Olympiad in Informatics - Final Stage, Day 2 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/1940) | ICPC/IOI | - | 3/4 | 4m 17s |
