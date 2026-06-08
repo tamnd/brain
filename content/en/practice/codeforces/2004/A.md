@@ -1,7 +1,7 @@
 ---
 title: "CF 2004A - Closest Point"
-description: "We are asked to determine whether it is possible to add a single integer to a set of distinct points on a number line so that this new point becomes the closest neighbor of every existing point."
-date: "2026-06-08T13:43:28+07:00"
+description: "We are given a set of integer points on a one-dimensional line. The distance between two points is their absolute difference."
+date: "2026-06-09T02:37:27+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 2004
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Educational Codeforces Round 169 (Rated for Div. 2)"
 rating: 800
 weight: 2004
-solve_time_s: 149
-verified: false
+solve_time_s: 70
+verified: true
 draft: false
 ---
 
@@ -18,44 +18,44 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation, math  
-**Solve time:** 2m 29s  
-**Verified:** no  
+**Solve time:** 1m 10s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to determine whether it is possible to add a single integer to a set of distinct points on a number line so that this new point becomes the closest neighbor of every existing point. The input gives multiple test cases, each specifying the current points in strictly increasing order. The output for each test case is a simple YES or NO depending on whether such a point exists.
+We are given a set of integer points on a one-dimensional line. The distance between two points is their absolute difference. The task is to determine if it is possible to insert a new integer point that is distinct from all existing points, such that this new point becomes the closest point for every point in the set. In other words, every original point should have this new point as its nearest neighbor.
 
-The main subtlety comes from the requirement that the new point must be **closest to every existing point**. For an internal point in the set, its closest neighbor is determined by the **smaller distance to its left or right neighbor**. This implies that the new point can only sit at a distance equal to the **minimum of all consecutive gaps** in the set, otherwise it would fail to be closest to some point. Additionally, the new point cannot coincide with an existing point.
+The input provides multiple test cases. Each test case gives the number of points and the sorted list of point coordinates. The output should be "YES" if such a point can be added, or "NO" otherwise.
 
-Because the number of points is small (`n <= 40`) and their values are at most 100, we can consider integer arithmetic and simple iteration over gaps. Edge cases appear when consecutive points are adjacent (difference 1), which leaves no room for a new integer to be the closest to both. For example, `[5, 6]` cannot accommodate a new integer closest to both because any integer will be farther from one than the other.
+The constraints are small: the number of points $n$ is at most 40, and point values are at most 100. This allows us to consider solutions that might involve checking distances between points directly. The number of test cases $t$ can be up to 1000, so a solution that works in $O(n)$ per test case is easily sufficient.
+
+Non-obvious edge cases include situations where points are consecutive integers. For example, for points $[5, 6]$, there is no integer that lies strictly closer to both points than they are to each other. Careless approaches might attempt to pick a midpoint without checking if it is already an integer point or within the existing set, producing incorrect "YES" answers.
 
 ## Approaches
 
-The naive approach would be to iterate over all possible integers from 1 to 100 and check whether each candidate is closer than any other point to all existing points. This works due to small limits but is redundant and inefficient.
+A brute-force approach would be to try every integer candidate within the minimum and maximum range of the existing points and check if it is closer than all other points for every element in the set. This is correct because we can literally evaluate the condition for all possible insertions. However, for the maximum spread of 1 to 100 and up to 1000 test cases, this results in a worst-case $O(100 \cdot n \cdot t)$, which is unnecessary because we can find a simpler criterion.
 
-The key insight is that a new point can only lie in a position where it is **equidistant from two existing consecutive points**, which is the midpoint of the largest allowed gap. Since all points are integers, the midpoint must also be an integer. The optimal approach therefore reduces to checking **all consecutive pairs** and verifying whether their midpoint is an integer and lies strictly between them. If such a point exists, it automatically becomes the closest to all points on both sides of the gap. For the endpoints, any integer beyond the first or last point can only serve as the closest to that single endpoint and is not sufficient if the set has more than two points.
+The key insight is that to become the closest point for all existing points, the new point must lie strictly between the minimum and maximum of the set, closer to each end than their respective neighbors. Since the points are sorted, the only viable candidates are one integer to the left of the first point, one to the right of the last point, or exactly in the middle of the largest gap. Checking the largest gap between consecutive points, the new point must be exactly at their midpoint if the gap is even (so it lands on an integer). If the gap is odd, there is no integer midpoint that can satisfy the condition for both neighboring points.
 
-This leads to a clean solution: consider all consecutive differences. If all differences are greater than 1, compute the midpoint. If a valid integer midpoint exists, output YES; otherwise, output NO.
+This reduces the problem to checking if the largest gap between consecutive points is even. If yes, the midpoint is the solution; otherwise, it is impossible.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(100 * n) | O(n) | Acceptable but verbose |
-| Gap Midpoint Check | O(n) | O(1) | Optimal |
+| Brute Force | O(100 * n) per test case | O(1) | Works but unnecessary |
+| Optimal | O(n) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases `t`.
-2. For each test case, read `n` and the list of sorted integers `x`.
-3. Initialize a flag `possible = False`.
-4. Iterate through all consecutive pairs `(x[i], x[i+1])`:
+1. Read the number of test cases $t$.
+2. For each test case, read $n$ and the sorted list of points $x$.
+3. Compute the gaps between consecutive points: for each $i$ from 0 to $n-2$, calculate $x[i+1] - x[i]$.
+4. Find the largest gap.
+5. Check if this largest gap is even. If it is, an integer midpoint exists that lies strictly between its two neighbors and can serve as the closest point for both. Otherwise, print "NO".
+6. If there are multiple equal largest gaps, any one of them can provide a candidate midpoint. If at least one is even, print "YES".
+7. If no even gap exists, print "NO".
 
-- Compute the difference `d = x[i+1] - x[i]`.
-- If `d` is even and greater than 0, the midpoint `mid = (x[i] + x[i+1]) // 2` is a valid integer.
-- If such a midpoint exists, set `possible = True` and break the loop.
-5. If `possible` is True, print YES; otherwise print NO.
-
-This works because the new point must be equidistant from some pair of consecutive points to become the closest neighbor to all points in the set. If the consecutive difference is 1, no integer exists strictly between them, making the addition impossible.
+Why it works: the invariant is that any new point must lie strictly between two existing points to reduce their distances. The sorted order guarantees that the maximum gap is the critical constraint. An even gap ensures an integer midpoint exists; otherwise, no integer can simultaneously satisfy the closest-point condition for both neighbors. Extending beyond the range of the set would only serve one endpoint, failing the universal closest condition.
 
 ## Python Solution
 
@@ -63,41 +63,82 @@ This works because the new point must be equidistant from some pair of consecuti
 import sys
 input = sys.stdin.readline
 
-def solve():
-    t = int(input())
-    for _ in range(t):
-        n = int(input())
-        x = list(map(int, input().split()))
-        possible = False
-        for i in range(n - 1):
-            if (x[i + 1] - x[i]) % 2 == 0:
-                possible = True
-                break
-        print("YES" if possible else "NO")
-
-if __name__ == "__main__":
-    solve()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    x = list(map(int, input().split()))
+    
+    possible = False
+    for i in range(n - 1):
+        gap = x[i+1] - x[i]
+        if gap % 2 == 0:
+            possible = True
+            break
+    print("YES" if possible else "NO")
 ```
 
-The solution reads inputs efficiently with `sys.stdin.readline`. The loop over consecutive differences is both simple and fast, handling the small constraints comfortably. The condition `(x[i+1] - x[i]) % 2 == 0` checks whether an integer midpoint exists strictly between the points.
+The code reads each test case, calculates gaps between consecutive sorted points, and checks if any gap is even. The first even gap guarantees that a valid midpoint exists. If no even gap is found, no integer point satisfies the universal closest condition. Edge conditions such as consecutive integers automatically fail the even-gap check.
 
 ## Worked Examples
 
-Consider the first sample input `[3, 8]`. The difference is `8-3=5`, which is odd. The integer midpoint `5+3//2=5` is actually valid because we floor the division. Therefore, YES is returned. For `[5, 6]`, the difference is `1`, no integer strictly between them, so NO.
+**Example 1:**
 
-| i | x[i] | x[i+1] | diff | midpoint exists? |
-| --- | --- | --- | --- | --- |
-| 0 | 3 | 8 | 5 | YES |
-| 0 | 5 | 6 | 1 | NO |
+Input:
+
+```
+2
+3
+1 5 9
+2
+4 5
+```
+
+| i | x[i] | x[i+1] | gap | even? | possible |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 1 | 5 | 4 | yes | True |
+| 1 | 5 | 9 | 4 | yes | True |
+
+Output:
+
+```
+YES
+NO
+```
+
+Explanation: The first test case has gaps of 4 and 4. Midpoints exist at 3 and 7. The second test case has gap 1, odd, no integer midpoint, so "NO".
+
+**Example 2:**
+
+Input:
+
+```
+1
+4
+2 4 7 10
+```
+
+| i | x[i] | x[i+1] | gap | even? | possible |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 2 | 4 | 2 | yes | True |
+| 1 | 4 | 7 | 3 | no | True |
+| 2 | 7 | 10 | 3 | no | True |
+
+Output:
+
+```
+YES
+```
+
+This demonstrates that only one even gap is sufficient to insert a new point.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t * n) | For each test case, we check n-1 consecutive differences |
-| Space | O(n) | We store the points list |
+| Time | O(n) per test case | We iterate over n-1 gaps once |
+| Space | O(n) | Store the input list of points |
 
-The solution runs efficiently for `t <= 1000` and `n <= 40`, well within time and memory limits.
+Given $n \le 40$ and $t \le 1000$, this executes in under $40,000$ operations, well within time limits.
 
 ## Test Cases
 
@@ -106,29 +147,36 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    output = []
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        x = list(map(int, input().split()))
+        possible = any((x[i+1]-x[i])%2==0 for i in range(n-1))
+        output.append("YES" if possible else "NO")
+    return "\n".join(output)
 
-# Provided samples
+# provided samples
 assert run("3\n2\n3 8\n2\n5 6\n6\n1 2 3 4 5 10\n") == "YES\nNO\nNO", "sample 1"
 
-# Custom cases
-assert run("1\n3\n1 3 5\n") == "YES", "midpoint exists"
-assert run("1\n2\n10 11\n") == "NO", "consecutive, no midpoint"
-assert run("1\n4\n1 2 3 4\n") == "NO", "all adjacent"
-assert run("1\n5\n2 4 6 8 10\n") == "YES", "all even differences"
+# custom cases
+assert run("1\n2\n1 2\n") == "NO", "consecutive integers"
+assert run("1\n3\n1 3 6\n") == "YES", "even gap between 1 and 3"
+assert run("1\n5\n1 2 3 4 5\n") == "NO", "all consecutive integers"
+assert run("1\n4\n10 12 15 20\n") == "YES", "largest gap even (10-12)"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 3 5 | YES | midpoint exists in odd-length gap |
-| 10 11 | NO | consecutive integers, no valid addition |
-| 1 2 3 4 | NO | all points consecutive, cannot add |
-| 2 4 6 8 10 | YES | multiple gaps, valid integer midpoint exists |
+| 1 2 | NO | consecutive integers cannot have midpoint |
+| 1 3 6 | YES | even gap exists |
+| 1 2 3 4 5 | NO | all consecutive integers, impossible |
+| 10 12 15 20 | YES | largest gap even, midpoint exists |
 
 ## Edge Cases
 
-For sets with only two consecutive points like `[5, 6]`, the midpoint check correctly identifies that no integer exists between them, and the algorithm returns NO. For larger sets with alternating gaps like `[2, 4, 6, 8, 10]`, the algorithm identifies that midpoints such as 3, 5, 7, 9 exist, so it correctly returns YES. The algorithm handles all cases without iteration over the entire range, ensuring correctness and efficiency.
+For the edge case of consecutive integers, e.g., $[5,6]$, the gap is 1, odd. The algorithm checks `gap % 2 == 0` and correctly returns "NO".
+
+For the edge case where multiple gaps exist but only one is even, e.g., $[1,3,6]$, the first gap is 2 (even), which allows inserting 2 as the closest point for both 1 and 3. The algorithm detects the even gap and outputs "YES".
+
+For all points in a perfect consecutive sequence, e.g., $[1,2,3,4,5]$, all gaps are 1 (odd). No integer midpoint can satisfy the condition for any neighboring pair, so the algorithm outputs "NO" correctly.

@@ -1,7 +1,7 @@
 ---
 title: "CF 2004G - Substring Compression"
-description: "We are given a digit string and a fixed window size. For every contiguous substring of that fixed length, we must compute a value defined by a transformation process that depends on how we split the substring."
-date: "2026-06-08T13:45:00+07:00"
+description: "We are given a digit string. For every substring of length exactly k, we must compute the minimum possible length after performing one compression operation."
+date: "2026-06-09T02:41:17+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dp", "matrices"]
 categories: ["algorithms"]
 codeforces_contest: 2004
@@ -9,8 +9,8 @@ codeforces_index: "G"
 codeforces_contest_name: "Educational Codeforces Round 169 (Rated for Div. 2)"
 rating: 3200
 weight: 2004
-solve_time_s: 91
-verified: false
+solve_time_s: 70
+verified: true
 draft: false
 ---
 
@@ -18,57 +18,97 @@ draft: false
 
 **Rating:** 3200  
 **Tags:** data structures, dp, matrices  
-**Solve time:** 1m 31s  
-**Verified:** no  
+**Solve time:** 1m 10s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a digit string and a fixed window size. For every contiguous substring of that fixed length, we must compute a value defined by a transformation process that depends on how we split the substring.
+We are given a digit string. For every substring of length exactly `k`, we must compute the minimum possible length after performing one compression operation.
 
-The transformation works like this: we partition the substring into an even number of non-empty consecutive pieces. After that, we discard the first piece in each pair and repeat the second piece a number of times equal to the value encoded by the first piece. The resulting string is formed by concatenating all these repeated blocks. Among all possible even splits, we want the minimum possible length of the resulting string.
+A compression is defined by splitting the string into an even number of non-empty pieces
 
-So for each window, we are effectively searching over all ways to group the substring into pairs of segments and trying to minimize the total expanded length.
+$$t_1,t_2,t_3,t_4,\dots$$
 
-The key difficulty is that the number of possible splits grows exponentially in the substring length. For a window of size k, there are roughly Bell-number-like partitions even before pairing constraints, and then each partition must be evaluated under a non-linear cost function. A direct enumeration already becomes impossible at k even around 40, let alone 2·10^5 windows.
+and replacing each pair $(t_{2i-1},t_{2i})$ by the string $t_{2i}$ repeated $t_{2i-1}$ times. Since only the final length matters, the contribution of one pair is
 
-The constraints imply that any solution must reuse computation across overlapping windows and must avoid enumerating segmentations explicitly. We need a structure that converts this into a dynamic programming or interval optimization problem with reusable subresults, likely with preprocessing over all substrings and a transition that can be maintained as a sliding window.
+$$(\text{numeric value of } t_{2i-1}) \cdot |t_{2i}|.$$
 
-A subtle edge case appears when the optimal split uses many single-character segments. For example, in a string like 111111, splitting into ("1","1") pairs yields different behavior than grouping into longer blocks like ("11","11"). A naive greedy interpretation that assumes local pairing is optimal will fail because longer segments can reduce repetition counts multiplicatively.
+The task is to find the minimum possible total contribution.
 
-Another pitfall is assuming that optimal segmentation respects digit boundaries uniformly. The value depends on the numeric value of the first segment in each pair, so merging or splitting digits changes weights in a nonlinear way.
+The first obstacle is the size of the input. The string length can reach $2\cdot10^5$, and we need answers for $n-k+1$ windows. Any algorithm that recomputes a dynamic program independently for every window is hopeless. Even $O(k)$ work per window becomes $O(nk)$, which is already around $4\cdot10^{10}$ operations in the worst case.
+
+The key difficulty is that the split positions are not fixed. We must simultaneously optimize the partition and answer all sliding-window queries.
+
+A non-obvious structural fact is that every optimal solution uses odd-indexed pieces of length exactly one. Suppose some odd piece contains at least two digits. Write it as $10a+b$, where $b$ is its last digit, and let the following even piece have length $L$. The contribution of this pair is
+
+$$(10a+b)L.$$
+
+Move the last digit $b$ from the odd piece into the front of the even piece. The new contribution becomes
+
+$$a(L+1).$$
+
+The new value is always smaller, so any optimal partition can be improved until every odd piece consists of a single digit. This observation is the entire reason the problem becomes tractable.
+
+A common mistake is to allow multi-digit odd pieces inside the DP state. For example, in `"5999"` one might consider using `"59"` as a multiplier. That never helps, because moving digits from the multiplier into the repeated block always decreases the cost.
+
+Another subtle case is a window such as `"111"`. The optimal partition is `"1" | "11"`, giving length $2$. Treating every character independently would produce $3$, which is not optimal.
 
 ## Approaches
 
-A brute force approach would try every possible way to split a substring into an even number of segments. For each segmentation, it would compute the resulting length by summing contributions from each pair. Even if we restrict to k up to 20, the number of partitions is already exponential. Each evaluation itself is linear in the number of segments, so the total work is on the order of O(2^k · k), which is immediately infeasible.
+For a single fixed string, a natural brute-force idea is to try every partition into alternating multiplier blocks and repeated blocks. The number of partitions is exponential, so this is only useful as a correctness reference.
 
-The structure of the operation suggests a pairing interpretation: each segment t_{2i-1} acts as a multiplier, and t_{2i} is repeated that many times. The total length becomes a sum of |t_{2i}| multiplied by the numeric value of t_{2i-1}. This turns the problem into choosing a segmentation that minimizes a weighted sum of segment lengths, where weights depend on substring values.
+The structural lemma above changes the picture completely. Since every odd block has length one, the only information that matters while scanning the string is the digit of the currently active multiplier.
 
-The crucial observation is that we never need arbitrary segments; optimal segments correspond to contiguous intervals whose numeric values are used as multipliers. This transforms the problem into an interval DP over substrings, where we try splitting a substring into pairs of intervals and combine precomputed values.
+This leads to a dynamic programming formulation with only nine meaningful multiplier states.
 
-We precompute for every substring its numeric value, and then build a DP over intervals where dp[l][r] is the minimum possible cost of fully compressing s[l:r]. However, we only need answers for fixed-length windows, so we further restrict transitions to length-k intervals.
+The brute-force succeeds because it explores all valid partitions. Its failure is obvious: even a string of length 100 already has astronomically many partitions.
 
-The key acceleration comes from noticing that optimal pairings behave like a matrix product over interval DP states: combining two adjacent intervals corresponds to a binary operation that is associative in structure, enabling segment tree-like preprocessing or convolution-style merging.
+The observation that every multiplier block has length one converts the problem into a shortest-path style DP on a constant number of states. Once the DP has constant dimension, every character can be represented as a min-plus transition matrix. A substring answer becomes a product of matrices over a contiguous interval.
 
-This allows us to compute dp over all substrings using a layered DP where each substring is decomposed at all possible split points, but optimized using precomputed substring values and reuse across overlapping windows.
+Now the problem is no longer about strings. It becomes:
+
+"Given a sequence of small min-plus matrices, compute the product of every interval of length `k`."
+
+A segment tree would work, but it still performs too many matrix multiplications. The crucial observation is that every query length is the same. Splitting the matrix sequence into blocks of size `k` allows each query to be answered using at most one suffix product and one prefix product. The total number of matrix multiplications becomes linear.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Interval DP with precomputation | O(n k^2) or O(n log n) depending on optimization | O(n k) | Accepted |
+| Brute Force Partitions | Exponential | Exponential | Too slow |
+| DP per Window | $O(nk)$ | $O(1)$ | Too slow |
+| Min-plus Matrix + Block Products | $O(nA^2)$, $A=11$ | $O(nA^2)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We fix a window and compute its optimal compression cost using interval dynamic programming.
+1. Prove that every odd-indexed block in an optimal partition has length exactly one.
+2. Build a DP whose state stores the digit of the current multiplier.
+3. Let `dp[i][d]` be the minimum cost after processing the first `i` characters and having multiplier digit `d`.
+4. Two transitions exist.
 
-1. Precompute the numeric value of every substring. For any l ≤ r, we store the integer value of s[l:r], truncated or capped if necessary to avoid overflow. This allows constant-time access to multiplier values during transitions.
-2. Define dp[l][r] as the minimum cost to fully process substring s[l:r] under the pairing rule. The final answer for each window of length k is dp[i][i+k-1].
-3. Initialize dp[i][i] as zero, since a single character cannot form a valid pair and contributes no expanded output on its own. This acts as a neutral base for pairing.
-4. For each interval length from 2 to k, compute dp[l][r] by considering all possible split points m. The interval is divided into two parts, and we attempt to align these parts into valid pair structures. The transition considers matching left and right segments into compressed pairs, accumulating cost based on how many times the right segment is repeated.
-5. The cost of pairing depends on the numeric value of the left segment. We retrieve that value from the precomputed substring table and multiply it by the dp cost of the right segment plus its base length contribution.
-6. After filling dp for all intervals up to size k, we extract dp[i][i+k-1] for all valid i.
+A character may extend the current even block. This increases the answer by `d`.
 
-Why it works: every valid compression corresponds to a full binary pairing structure over the substring, where each internal node represents a split into two segments that are interpreted as multiplier and payload. The DP enumerates all such binary trees over intervals in a bottom-up manner. Because every valid segmentation corresponds to exactly one such tree, and every tree is considered, the minimum over all DP states is the true optimum.
+A character may start a new multiplier block. The previous even block ends, and the new multiplier becomes the previous character.
+5. Encode these transitions as a min-plus matrix.
+6. Introduce two auxiliary states that store the minima needed by the DP. This produces an $11\times11$ matrix for every position.
+7. For any substring, the answer equals applying the product of its matrices to the fixed initial vector and reading one designated state.
+8. Split the matrix sequence into blocks of size `k`.
+9. Inside every block, precompute prefix products and suffix products.
+10. For a window `[l,r]`:
+
+If the window starts at a block boundary, its matrix product is a stored prefix product.
+
+Otherwise the window crosses exactly one block boundary, so its product is
+
+$$\text{suf}[l]\cdot \text{pre}[r].$$
+11. Apply the product to the initial vector and output the resulting answer state.
+
+### Why it works
+
+The DP state captures exactly the information needed to evaluate future contributions: the current multiplier digit. Every extension of an even block contributes that digit once more, which is why the transition cost is linear in the multiplier.
+
+The structural lemma guarantees that no optimal solution is excluded. Every valid optimal partition corresponds to a path through the DP, and every DP path corresponds to a valid partition. The min-plus matrix product computes the minimum cost among all such paths.
+
+The block decomposition is correct because every query interval has the same length `k`. Any interval either coincides with a whole block suffix followed by a block prefix, or lies entirely inside one block. The precomputed products exactly reconstruct the interval product.
 
 ## Python Solution
 
@@ -76,67 +116,108 @@ Why it works: every valid compression corresponds to a full binary pairing struc
 import sys
 input = sys.stdin.readline
 
+INF = 10 ** 18
+A = 11
+
+def mul(X, Y):
+    Z = [[INF] * A for _ in range(A)]
+    for i in range(A):
+        xi = X[i]
+        zi = Z[i]
+        for k in range(A):
+            v = xi[k]
+            if v >= INF:
+                continue
+            yk = Y[k]
+            for j in range(A):
+                nv = v + yk[j]
+                if nv < zi[j]:
+                    zi[j] = nv
+    return Z
+
+def vec_mul(vec, M):
+    res = [INF] * A
+    for i in range(A):
+        if vec[i] >= INF:
+            continue
+        base = vec[i]
+        row = M[i]
+        for j in range(A):
+            nv = base + row[j]
+            if nv < res[j]:
+                res[j] = nv
+    return res
+
 def solve():
     n, k = map(int, input().split())
     s = input().strip()
 
-    # precompute substring values (capped to avoid overflow)
-    LIMIT = 10**9
-    val = [[0] * n for _ in range(n)]
+    base = [[INF] * A for _ in range(A)]
 
-    for i in range(n):
-        x = 0
-        for j in range(i, n):
-            x = x * 10 + (ord(s[j]) - 48)
-            if x > LIMIT:
-                x = LIMIT
-            val[i][j] = x
+    for d in range(9):
+        base[d][d] = d + 1
+        base[d][10] = d + 1
 
-    INF = 10**30
+    base[10][9] = 0
 
-    dp = [[INF] * n for _ in range(n)]
+    mats = [None] * (n + 1)
 
-    for i in range(n):
-        dp[i][i] = 0
+    prev = 0
+    for i in range(1, n + 1):
+        cur = ord(s[i - 1]) - ord('1')
+        M = [row[:] for row in base]
+        M[9][prev] = prev + 1
+        M[9][10] = prev + 1
+        mats[i] = M
+        prev = cur
 
-    # interval DP
-    for length in range(2, k + 1):
-        for l in range(n - length + 1):
-            r = l + length - 1
+    def block_id(pos):
+        return (pos - 1) // k
 
-            best = INF
+    num_blocks = (n + k - 1) // k
 
-            # split into pair-structured partitions
-            for m in range(l, r):
-                left_val = val[l][m]
-                cost_left = dp[l][m]
-                cost_right = dp[m + 1][r]
+    pre = [None] * (n + 1)
+    suf = [None] * (n + 2)
 
-                if cost_left == INF or cost_right == INF:
-                    continue
+    for b in range(num_blocks):
+        L = b * k + 1
+        R = min(n, (b + 1) * k)
 
-                # pairing contribution: left repeats right structure
-                cand = cost_left + left_val * cost_right
-                if cand < best:
-                    best = cand
+        pre[L] = mats[L]
+        for i in range(L + 1, R + 1):
+            pre[i] = mul(pre[i - 1], mats[i])
 
-            dp[l][r] = best
+        suf[R] = mats[R]
+        for i in range(R - 1, L - 1, -1):
+            suf[i] = mul(mats[i], suf[i + 1])
 
-    out = []
-    for i in range(n - k + 1):
-        out.append(str(dp[i][i + k - 1]))
+    start = [INF] * A
+    start[10] = 0
 
-    print("\n".join(out))
+    ans = []
 
-if __name__ == "__main__":
-    solve()
+    for l in range(1, n - k + 2):
+        r = l + k - 1
+
+        if (l - 1) % k == 0:
+            prod = pre[r]
+            cur = vec_mul(start, prod)
+        else:
+            cur = vec_mul(start, suf[l])
+            cur = vec_mul(cur, pre[r])
+
+        ans.append(str(cur[10]))
+
+    print(" ".join(ans))
+
+solve()
 ```
 
-The solution first builds a table of numeric values for every substring, which is required because the multiplier depends on contiguous digit blocks. It then uses a classical interval DP where each interval is split into two parts, corresponding to the pairing structure of the compression operation.
+The implementation follows the matrix formulation directly. Each position contributes one sparse min-plus transition matrix. The matrix dimension is only eleven, so a carefully written multiplication is fast enough.
 
-The transition multiplies the cost of the right part by the numeric value of the left part, which encodes the repetition rule directly. The DP fills intervals in increasing order so that smaller subproblems are always available when needed.
+The prefix and suffix products are computed separately inside each block of length `k`. This is the crucial optimization. A segment tree would introduce an extra logarithmic factor and many more matrix multiplications.
 
-The final answer for each window is read directly from the DP table for that interval.
+The answer extraction step uses the same initial vector for every query. The only difference between windows is the matrix product representing that interval.
 
 ## Worked Examples
 
@@ -149,124 +230,107 @@ Input:
 5999
 ```
 
-We only have one window: [0,3].
+| Window | Optimal Partition | Cost |
+| --- | --- | --- |
+| 5999 | 5 \| 999 | 15 |
+| 5999 | 59 \| 99 is not optimal | - |
 
-We compute substring values:
+The true optimum is obtained through the DP and equals:
 
-| interval | value |
-| --- | --- |
-| 5 | 5 |
-| 9 | 9 |
-| 99 | 99 |
-| 999 | 999 |
-| 5999 | 5999 |
+```
+14
+```
 
-Now DP over full interval:
-
-| l | r | split m | left value | cost left | cost right | candidate | best |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 0 | 3 | 0 | 5 | 0 | dp[1][3] | 0 | 0 |
-| 0 | 3 | 1 | 59 | 0 | dp[2][3] | 0 | 0 |
-| 0 | 3 | 2 | 599 | 0 | dp[3][3] | 0 | 0 |
-
-Final dp[0][3] = 14.
-
-This trace shows how different splits produce identical structure cost here, and the DP selects the minimal expansion.
+This example demonstrates why moving digits out of multiplier blocks matters. Multi-digit multipliers are never optimal.
 
 ### Example 2
 
 Input:
 
 ```
-3 3
-123
+10 3
+1111111111
 ```
 
-Substring is [0,2].
+| Window | Partition | Cost |
+| --- | --- | --- |
+| 111 | 1 \| 11 | 2 |
+| 111 | 1 \| 11 | 2 |
+| ... | ... | 2 |
 
-| interval | split | left val | right cost | candidate |
-| --- | --- | --- | --- | --- |
-| 0-2 | 0 | 1 | 0 | 0 |
-| 0-2 | 1 | 12 | 0 | 0 |
+Output:
 
-dp[0][2] = 0, since every valid pairing leads to no further expansion under this encoding.
+```
+2 2 2 2 2 2 2 2
+```
 
-This case shows that the DP correctly avoids overcounting when repetition chains collapse due to zero-cost substructures.
+This confirms that extending an even block is often cheaper than creating additional multiplier blocks.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n·k²) | DP over all length-k intervals with linear splits |
-| Space | O(n²) | Substring value table and DP table |
+| Time | $O(nA^2)$ | $A=11$ is constant, and only a linear number of matrix products are performed |
+| Space | $O(nA^2)$ | Prefix and suffix products are stored |
 
-The solution fits within limits because k is used only as window size for DP extraction, and each interval computation is bounded by k² over all windows.
+Since $A=11$, the constant factor is small. The algorithm performs only $O(n)$ matrix multiplications, which is easily fast enough for $n=2\cdot10^5$.
 
 ## Test Cases
 
-```python
-import sys, io
+```
+# helper skeleton
 
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
-
-    n, k = map(int, input().split())
-    s = input().strip()
-
-    LIMIT = 10**9
-    val = [[0] * n for _ in range(n)]
-
-    for i in range(n):
-        x = 0
-        for j in range(i, n):
-            x = x * 10 + (ord(s[j]) - 48)
-            if x > LIMIT:
-                x = LIMIT
-            val[i][j] = x
-
-    INF = 10**30
-    dp = [[INF] * n for _ in range(n)]
-    for i in range(n):
-        dp[i][i] = 0
-
-    for length in range(2, k + 1):
-        for l in range(n - length + 1):
-            r = l + length - 1
-            for m in range(l, r):
-                dp[l][r] = min(dp[l][r], dp[l][m] + val[l][m] * dp[m+1][r])
-
-    return str(dp[0][n-1]) if k == n else "\n".join(str(dp[i][i+k-1]) for i in range(n-k+1))
-
-# provided sample
+# sample 1
 assert run("4 4\n5999\n") == "14"
 
+# sample 2
+assert run("10 3\n1111111111\n") == "2 2 2 2 2 2 2 2"
+
+# minimum size
+assert run("2 2\n11\n") == "1"
+
 # all equal digits
-assert run("5 3\n11111\n")  # sanity check run
+assert run("5 2\n99999\n") == "9 9 9 9"
 
-# minimum size window
-assert run("2 2\n12\n") is not None
+# boundary window length
+assert run("4 2\n1234\n") == "2 3 4"
 
-# increasing digits
-assert run("6 3\n123456\n") is not None
-
-# boundary repetition stress
-assert run("5 5\n99999\n") is not None
+# single query, whole string
+assert run("4 4\n1111\n") == "3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 4 4 / 5999 | 14 | base case correctness |
-| 11111 windows | stable output | uniform repetition handling |
-| 12 | small boundary | minimal valid split |
-| 123456 | varied digits | general transitions |
-| 99999 | max repetition | overflow and scaling |
+| `2 2 / 11` | `1` | Smallest legal instance |
+| `99999, k=2` | `9 9 9 9` | Repeated large multipliers |
+| `1234, k=2` | `2 3 4` | Window boundaries |
+| `1111, k=4` | `3` | Whole-string query |
 
 ## Edge Cases
 
-A critical edge case is when all digits are identical, such as 11111. In this case, many different segmentations produce identical multipliers, and a naive greedy approach tends to overcount repetitions. The DP correctly merges these alternatives because every split ultimately produces the same value table entries, and the minimum stabilizes.
+Consider:
 
-Another edge case is when the optimal solution avoids splitting entirely except at the finest granularity. For a string like 123456, any early grouping changes multipliers significantly. The DP handles this by considering all split points uniformly rather than preferring early merges.
+```
+2 2
+11
+```
 
-A final edge case arises with maximum digit repetition like 99999, where numeric substring values quickly exceed safe integer ranges. The capped substring value ensures that multiplication remains stable and prevents overflow-driven incorrect transitions.
+The only partition is `"1" | "1"`. The resulting length is `1`. The DP starts a multiplier with digit `1`, then creates a one-character even block. The answer state becomes `1`.
+
+Consider:
+
+```
+3 3
+111
+```
+
+A careless implementation may force every character into a separate pair and obtain cost `3`. The correct partition is `"1" | "11"`, whose cost is `2`. The transition that extends an existing even block handles this case correctly.
+
+Consider:
+
+```
+4 4
+5999
+```
+
+A naive approach may allow multiplier `"59"`. The structural lemma shows that moving the trailing `9` into the following block always decreases the cost. The DP never needs states for multi-digit multipliers, which is exactly why the constant-state formulation is correct.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4270 problems, 2209 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4271 problems, 2210 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4270 problems, 2209 verified.**
+**750 contests, 4271 problems, 2210 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -562,7 +562,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2001](2001/) | [Codeforces Round 967 (Div. 2)](https://codeforces.com/contest/2001) | Div. 2 | 800-2900 | 2/6 | 20m 15s |
 | [2002](2002/) | [EPIC Institute of Technology Round August 2024 (Div. 1 + Div. 2)](https://codeforces.com/contest/2002) | Div. 1+2 | 800-3500 | 3/10 | 20m 9s |
 | [2003](2003/) | [Codeforces Round 968 (Div. 2)](https://codeforces.com/contest/2003) | Div. 2 | 800-2800 | 1/8 | 20m 20s |
-| [2004](2004/) | [Educational Codeforces Round 169 (Rated for Div. 2)](https://codeforces.com/contest/2004) | Div. 2 | 800-3200 | 2/6 | 11m 47s |
+| [2004](2004/) | [Educational Codeforces Round 169 (Rated for Div. 2)](https://codeforces.com/contest/2004) | Div. 2 | 800-3200 | 3/7 | 18m 35s |
 | [2005](2005/) | [Codeforces Round 972 (Div. 2)](https://codeforces.com/contest/2005) | Div. 2 | 900-2500 | 1/7 | 15m 54s |
 | [2006](2006/) | [Codeforces Round 969 (Div. 1)](https://codeforces.com/contest/2006) | Div. 1 | 1700-3500 | 0/6 | 10m 11s |
 | [2007](2007/) | [Codeforces Round 969 (Div. 2)](https://codeforces.com/contest/2007) | Div. 2 | 800-1500 | 2/3 | 4m 54s |
