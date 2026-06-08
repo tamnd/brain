@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4295 problems, 2215 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4299 problems, 2217 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4295 problems, 2215 verified.**
+**750 contests, 4299 problems, 2217 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -633,7 +633,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2079](2079/) | [XIX Open Olympiad in Informatics - Final Stage, Day 1 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2079) | ICPC/IOI | 1800-3300 | 3/4 | 3m 34s |
 | [2080](2080/) | [XIX Open Olympiad in Informatics - Final Stage, Day 2 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2080) | ICPC/IOI | 1700-3400 | 2/4 | 3m 2s |
 | [2081](2081/) | [Codeforces Round 1010 (Div. 1, Unrated)](https://codeforces.com/contest/2081) | Div. 1 | 1800-3400 | 2/8 | 11m 13s |
-| [2082](2082/) | [Codeforces Round 1010 (Div. 2, Unrated)](https://codeforces.com/contest/2082) | Div. 2 | 800-1600 | 1/2 | 3m |
+| [2082](2082/) | [Codeforces Round 1010 (Div. 2, Unrated)](https://codeforces.com/contest/2082) | Div. 2 | 800-2700 | 3/6 | 11m 9s |
 | [2084](2084/) | [Teza Round 1 (Codeforces Round 1015, Div. 1 + Div. 2)](https://codeforces.com/contest/2084) | Div. 1+2 | 800-3500 | 2/9 | 22m 42s |
 | [2085](2085/) | [Codeforces Round 1011 (Div. 2)](https://codeforces.com/contest/2085) | Div. 2 | 900-2900 | 0/7 | 12m 17s |
 | [2086](2086/) | [Educational Codeforces Round 177 (Rated for Div. 2)](https://codeforces.com/contest/2086) | Div. 2 | 800-3000 | 4/6 | 9m 38s |
