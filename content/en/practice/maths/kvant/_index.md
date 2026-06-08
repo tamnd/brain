@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1481 solved, 35 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1483 solved, 36 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1481
-kvant_verified: 35
+kvant_total: 1483
+kvant_verified: 36
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1481 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 35 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1483 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 36 solutions have been independently verified.
 
 ## 1970
 
@@ -2975,12 +2975,13 @@ draft: false
 
 ## 1995
 
-18 problems across Issues 1–6, 3 verified.
+20 problems across Issues 1–6, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1471](1471.md) *M. L. Gerver*. The problem asks whether a skier who has passed through each of $n$ villages twice and returned to the starting point can traverse his ski track in such a way as to visit each village exactly once. |  | 34m39s |
 | [1474](1474.md) *B. D. Ginzburg*. Let the direction of the line used in the $i$-th projection be denoted by $\\alpha_i$. | ✓ | 22m16s |
 | [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
 | [1479](1479.md) *L. D. Kurlyandchik*. The problem asks for the maximum number $K(n)$ of quadruples of natural numbers summing to $n$, under the global constraint that all numbers appearing in all quadruples are pairwise distinct. |  | 9m15s |
@@ -2990,6 +2991,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1481](1481.md) Let $a=BC$, $b=CA$, $c=AB$. |  | 6m30s |
+| [1482](1482.md) Let | ✓ | 7m58s |
 | [1483](1483.md) *B. D. Ginzburg*. Each vector lies in the first quadrant and has length $1$. |  | 10m28s |
 | [1484](1484.md) *N. B. Vasilyev*. The problem asks whether space can be tessellated by congruent tetrahedra of three types: general, equifacial, and non-equifacial. |  | 31m11s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
