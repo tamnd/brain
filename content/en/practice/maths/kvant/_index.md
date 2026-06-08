@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1397 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1400 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1397
+kvant_total: 1400
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1397 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1400 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2951,7 +2951,7 @@ draft: false
 
 ## 1996
 
-6 problems across Issues 1–5.
+7 problems across Issues 1–5.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
@@ -2959,6 +2959,7 @@ draft: false
 |---|---------|---|------|
 | [1531](1531.md) Each question consists of choosing a line and learning in which of the three sets determined by that line the point $P$ lies: one open half-plane, the other open half-plane, or the line itself. |  | 10m23s |
 | [1532](1532.md) ``` |  | 12m17s |
+| [1533](1533.md) *N. B. Vasilyev*. Let $\\ell$ be a line through $C$. |  | 28m24s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1996_4/)
 
@@ -3012,7 +3013,7 @@ draft: false
 
 ## 2025
 
-5 problems across Issues 1–11.
+7 problems across Issues 1–11.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3031,6 +3032,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2854](2854.md) Let $n=\\prod p_i^{\\alpha_i}$ with all $p_i<100$. |  | 11m39s |
+| [2857](2857.md) *Olympiad of the Presidential Physics and Mathematics Lyceum No. 239 of St. Petersburg*. Let the hats be $x_1,x_2,x_3,x_4$, placed on sages $1,2,3,4$ respectively, with all values distinct in ${1,\\dots,100}$. |  | 2m18s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_2025_10/)
 
@@ -3043,6 +3045,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2867](2867.md) *Tournament of the Towns (XLVII)*. Label the people around the circle as a cyclic sequence of 60 vertices, each colored either $B$ (boy) or $G$ (girl), with exactly 30 of each color. |  | 7m56s |
+| [2868](2868.md) *Tournament of Cities (XLVII)*. We are asked whether Vasya can determine the total sum of 60 real numbers written on cards if he is allowed to ask about sums of 17-card subsets. |  | 34m43s |
 
 ## 2026
 
