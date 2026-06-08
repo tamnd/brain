@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1414 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1415 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1414
+kvant_total: 1415
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1414 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1415 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -1342,7 +1342,7 @@ draft: false
 
 ## 1981
 
-56 problems across Issues 1–12.
+57 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1381,6 +1381,7 @@ draft: false
 | [676](676.md) *A. V. Savkin, 9th-grade student*. We begin by computing small powers of $1981$ and observing the sums of their digits. |  | 8m16s |
 | [677](677.md) Consider a triangle $ABC$ and a point $M$ which is simultaneously the centroid, incenter, and orthocenter. |  | 6m51s |
 | [678](678.md) *A. F. Sidorenko*. Consider small examples first. |  | 6m23s |
+| [679](679.md) *V. V. Proizvolov*. Let the circles be $\\omega_1,\\omega_2,\\omega_3,\\omega_4$ with consecutive tangency points $A,B,C,D$. |  | 9m23s |
 | [680](680.md) *A. A. Razborov*. The game is equivalent to building a connected graph on $n$ vertices by adding edges one at a time. |  | 7m10s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1981_5/)
