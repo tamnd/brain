@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 599 contests, 3151 problems, 1795 verified."
+description: "Codeforces problem solutions with full editorial. 600 contests, 3164 problems, 1801 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**599 contests, 3151 problems, 1795 verified.**
+**600 contests, 3164 problems, 1801 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -456,6 +456,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
+| [2052](2052/) | [2024-2025 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2052) | ICPC/IOI | 1600-3500 | 6/13 | 19m 51s |
 | [2053](2053/) | [Good Bye 2024: 2025 is NEAR](https://codeforces.com/contest/2053) | Special | 800-3500 | 3/10 | 21m 39s |
 | [2055](2055/) | [Codeforces Round 996 (Div. 2)](https://codeforces.com/contest/2055) | Div. 2 | 800-3200 | 1/6 | 10m 14s |
 | [2056](2056/) | [Codeforces Round 997 (Div. 2)](https://codeforces.com/contest/2056) | Div. 2 | 800-3000 | 1/7 | 14m 23s |
