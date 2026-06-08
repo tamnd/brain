@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1413 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1414 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1413
+kvant_total: 1414
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1413 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1414 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -1103,7 +1103,7 @@ draft: false
 
 ## 1979
 
-52 problems across Issues 1–12, 1 verified.
+53 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1167,6 +1167,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [571](571.md) *All-Union Mathematical Olympiad of School Students (1979, 10th grade)*. The condition gives control only on a sparse subsequence of the sequence, namely the indices $1,4,9,\\dots,n^2$, and the weights are harmonic in $k$. |  | 9m59s |
 | [572](572.md) *All-Union Mathematical Olympiad for School Students (1979, 8th grade)*. The kangaroo moves in the integer lattice of the first quadrant with vectors $v_1=(1,-1)$ and $v_2=(-5,7)$, always staying in $x\\ge 0$, $y\\ge 0$. |  | 2m26s |
 | [573](573.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. Let the lines through $O$ be $l_1,\\dots,l_{1979}$. |  | 7m24s |
 | [575](575.md) *All-Union Mathematical Olympiad of School Students (1979, 10th grade)*. Let $A_0A_1,\\dots,A_{n-1}A_n$ be consecutive segments on a line with each length at most $1$. |  | 9m49s |
