@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4332 problems, 2221 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4338 problems, 2221 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4332 problems, 2221 verified.**
+**750 contests, 4338 problems, 2221 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -696,7 +696,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2148](2148/) | [Codeforces Round 1050 (Div. 4)](https://codeforces.com/contest/2148) | Div. 4 | 800-1900 | 4/7 | 12m 21s |
 | [2149](2149/) | [Codeforces Round 1054 (Div. 3)](https://codeforces.com/contest/2149) | Div. 3 | 800-2100 | 5/7 | 10m 5s |
 | [2150](2150/) | [Codeforces Round 1053 (Div. 1)](https://codeforces.com/contest/2150) | Div. 1 | 1300-3500 | 0/8 | 15m 14s |
-| [2151](2151/) | [Codeforces Round 1053 (Div. 2)](https://codeforces.com/contest/2151) | Div. 2 | 800-1400 | 0/2 | 6m 33s |
+| [2151](2151/) | [Codeforces Round 1053 (Div. 2)](https://codeforces.com/contest/2151) | Div. 2 | 800-2800 | 0/8 | 12m 29s |
 | [2152](2152/) | [Squarepoint Challenge (Codeforces Round 1055, Div. 1 + Div. 2)](https://codeforces.com/contest/2152) | Div. 1+2 | 800-3500 | 1/9 | 25m 17s |
 | [2153](2153/) | [Codeforces Round 1057 (Div. 2)](https://codeforces.com/contest/2153) | Div. 2 | 800-2900 | 2/6 | 15m 8s |
 | [2154](2154/) | [Codeforces Round 1060 (Div. 2)](https://codeforces.com/contest/2154) | Div. 2 | 800-3300 | 2/8 | 15m 6s |
