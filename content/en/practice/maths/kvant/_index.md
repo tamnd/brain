@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1419 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1420 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1419
+kvant_total: 1420
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1419 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1420 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -2922,7 +2922,7 @@ draft: false
 
 ## 1995
 
-15 problems across Issues 1–6, 2 verified.
+16 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -2945,6 +2945,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1501](1501.md) *V. A. Senderov*. For small $x$, the functions admit linear approximations $\\sin(kx)\\sim kx$ and $\\sin x\\sim x$. |  | 9m09s |
 | [1503](1503.md) Let $B$ be the set of black numbers and $W$ the set of white numbers. |  | 9m53s |
 | [1506](1506.md) *G. V. Kondakov*. For a fixed interval $[a,b]$, the condition that the sums of integrals over white and black subintervals are equal for every polynomial in a given family can be rewritten as the vanishing of a signed… |  | 9m47s |
 
