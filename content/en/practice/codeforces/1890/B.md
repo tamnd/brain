@@ -1,7 +1,7 @@
 ---
 title: "CF 1890B - Qingshan Loves Strings"
-description: "We are given two binary strings, s and t. The goal is to transform s into a \"good\" string, where \"good\" means that no two consecutive characters are the same. Qingshan can perform an operation any number of times: inserting the string t at any position in s."
-date: "2026-06-08T22:04:07+07:00"
+description: "We are given two binary strings, s and t. Qingshan wants to transform s into a string where no two consecutive characters are the same, called a \"good\" string. She can repeatedly insert string t anywhere in s, including at the start or end, any number of times."
+date: "2026-06-09T01:09:19+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1890
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 906 (Div. 2)"
 rating: 800
 weight: 1890
-solve_time_s: 95
+solve_time_s: 112
 verified: false
 draft: false
 ---
@@ -18,41 +18,40 @@ draft: false
 
 **Rating:** 800  
 **Tags:** constructive algorithms, implementation  
-**Solve time:** 1m 35s  
+**Solve time:** 1m 52s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two binary strings, `s` and `t`. The goal is to transform `s` into a "good" string, where "good" means that no two consecutive characters are the same. Qingshan can perform an operation any number of times: inserting the string `t` at any position in `s`. We need to determine if it is possible to make `s` good after some sequence of insertions.
+We are given two binary strings, `s` and `t`. Qingshan wants to transform `s` into a string where no two consecutive characters are the same, called a "good" string. She can repeatedly insert string `t` anywhere in `s`, including at the start or end, any number of times. The goal is to determine whether it is possible to make `s` good using these insertions.
 
-The strings are short: lengths up to 50, and the number of test cases is up to 2000. This makes solutions that are quadratic or even cubic in the string lengths feasible, but we should still look for a linear or simple combinatorial solution because the operation allows unlimited insertions.
+The input has multiple test cases, with up to 2000 cases, and each string has a length up to 50. Because both `n` and `m` are small, an algorithm with complexity O(n*m) per test case is acceptable. However, a naive approach that simulates all possible insertions is exponential in `n` and `m` and would be far too slow.
 
-A naive edge case is when `s` is already good; we can immediately answer "YES". Another edge case is when `t` is uniform, like "00" or "111", and `s` contains long runs of the same character. Here, inserting `t` does not help because it can only add more consecutive duplicates, so the answer is "NO".
-
-A non-obvious scenario is when `t` itself is good. For example, if `t = "01"`, and `s` ends with "1", we can append `t` to break a run of consecutive "1"s, or prepend it before a run of "0"s. The main challenge is whether `t` contains both a `0` and a `1`-then we can always break long consecutive sequences in `s`.
+Edge cases that can trick a careless implementation include strings that are already good, strings where `s` contains repeated characters and `t` is uniform, or where `t` alternates but cannot fix the initial repetition. For example, if `s = "111"` and `t = "00"`, no matter where we insert `t`, the repetition of `1`s at the start cannot be resolved. Conversely, if `s = "1"` and `t = "010"`, the string is already good, so zero operations are enough.
 
 ## Approaches
 
-The brute-force approach would try inserting `t` at every position in `s` repeatedly until `s` becomes good. This works because the strings are short, but it becomes messy and inefficient. For example, if `s = "11111"` and `t = "01"`, we could try inserting `t` at each position and check all combinations. The number of possibilities grows exponentially with repeated insertions, so this approach is impractical.
+The brute-force method would attempt to insert `t` at every possible position in `s`, generating all possible strings and checking each for the "good" property. This is correct but infeasible because each insertion multiplies the number of strings to consider. With `n=50` and `m=50`, the number of possibilities grows exponentially, clearly exceeding the time limit.
 
-The key observation is that the only situations where we cannot make `s` good are when `t` is uniform, and `s` has a run of the same character at the end or the beginning that matches `t`’s character. If `t` contains both '0' and '1', we can always break any consecutive run by inserting `t` at the right position. Otherwise, if `t` is uniform, the only safe scenario is when `s` has no adjacent duplicates at the ends that match `t`.
+The key insight is to focus on the last character of `s` and the first character of `t`. Since a good string requires alternating characters, the only potential problem arises when consecutive characters are equal. We do not need to simulate all insertions. We need only to check whether `t` contains at least one pair of consecutive differing characters, because that can break any repetition in `s`. If `s` ends with a character `c` and `t` contains a character `d != c`, inserting `t` at the end can potentially make `s` good. The first character of `t` must differ from the last of `s` to remove a repetition at the junction. The rest of `t` only needs to be alternating to maintain goodness. If `t` is uniform and identical to a repeated character in `s`, it cannot help.
 
-We reduce the problem to examining the last character of `s` and the first character of `t`, and whether `t` contains both '0' and '1'. If `t` contains both characters, the answer is always "YES". If `t` is uniform, then `s` must already be good, and the last character of `s` cannot form a duplicate with `t`.
+We can reduce the problem to three checks: if `s` is already good, return YES. Otherwise, check if `t` is good and if the last character of `s` differs from the first of `t`. This constant-time check is O(1) per test case.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((n+m)!) | O(n+m) | Too slow |
-| Optimal | O(n + m) per test case | O(1) | Accepted |
+| Brute Force | O(2^(n*m)) | O(n_m_2^(n*m)) | Too slow |
+| Optimal | O(n+m) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. First, check if `s` is already good. Iterate through `s` from left to right and see if there are consecutive identical characters. If none exist, print "YES" immediately. This handles the simplest edge case efficiently.
-2. If `t` contains both '0' and '1', we can break any run in `s` by inserting `t`. We do not need to simulate the insertions; the mere presence of both digits ensures that `s` can be made good. In this case, print "YES".
-3. If `t` contains only one type of character, check `s` for runs that could not be broken. Specifically, look at the last `m-1` characters of `s` and the first character of `t`. If the last characters of `s` contain the same character as `t` consecutively, insertion cannot fix it. Also check the first `m-1` characters of `s` for prepending. If no such conflicts exist and `s` itself is good, print "YES". Otherwise, print "NO".
-4. Repeat the above for each test case.
+1. Iterate over each test case, reading `n`, `m`, `s`, and `t`.
+2. Check whether `s` is already good by scanning for any `s[i] == s[i+1]`. If no such pair exists, print "YES" and continue to the next test case. This handles the zero-operation scenario.
+3. Check whether `t` is good. Scan `t` for consecutive equal characters. If `t` is not good, print "NO" because repeated characters in `t` cannot fix `s`.
+4. If `t` is good, examine the last character of `s` and the first character of `t`. If they are different, inserting `t` at the end (or anywhere between repeats) can break any repetition, print "YES". If they are the same, print "NO" because insertion would not resolve the consecutive repetition.
+5. Repeat for all test cases.
 
-The key invariant is that any good insertion requires `t` to contain both characters, otherwise existing runs of identical characters in `s` cannot be broken.
+Why it works: The algorithm relies on the property that a good string is defined solely by consecutive character differences. Any repeated segment in `s` can be corrected by inserting a good `t` whose first character differs from the preceding character in `s`. Since `t` is good, it will not introduce new consecutive repetitions. Checking only the junction between `s` and `t` is sufficient because other positions in `s` are either already good or can be corrected by repeated insertions.
 
 ## Python Solution
 
@@ -60,9 +59,9 @@ The key invariant is that any good insertion requires `t` to contain both charac
 import sys
 input = sys.stdin.readline
 
-def is_good(s):
-    for i in range(len(s)-1):
-        if s[i] == s[i+1]:
+def is_good(x):
+    for i in range(len(x)-1):
+        if x[i] == x[i+1]:
             return False
     return True
 
@@ -71,53 +70,64 @@ for _ in range(T):
     n, m = map(int, input().split())
     s = input().strip()
     t = input().strip()
-
+    
     if is_good(s):
         print("YES")
         continue
-
-    if '0' in t and '1' in t:
-        print("YES")
+    
+    if not is_good(t):
+        print("NO")
         continue
-
-    # t is uniform, either all 0s or all 1s
-    print("NO")
+    
+    if s[-1] != t[0]:
+        print("YES")
+    else:
+        print("NO")
 ```
 
-The solution defines a helper `is_good` to check `s`. If `s` is already good, no operation is required. If `t` contains both characters, any bad sequence in `s` can be fixed, so we immediately answer "YES". Otherwise, `t` is uniform, which cannot break existing runs, so the answer is "NO". This handles all edge cases.
+The function `is_good` checks whether a string has any consecutive equal characters. We first handle the trivial case where `s` is already good. If not, we ensure `t` is good, because inserting a non-good `t` cannot improve `s`. Finally, we check the junction between `s` and `t` to determine if a single insertion can resolve the last repetition. We do not need to consider multiple insertions explicitly because a good `t` preserves alternation and repeated insertions are unnecessary once the junction condition is satisfied.
 
 ## Worked Examples
 
-**Example 1:**
+Sample Input 2:
 
-Input `s = "111"`, `t = "010"`.
+```
+3
+111
+010
+```
 
-| Step | s | t | Check |
-| --- | --- | --- | --- |
-| 1 | "111" | "010" | s not good |
-| 2 | - | "010" contains 0 and 1 | YES |
+| Step | s | t | s[-1] | t[0] | Output |
+| --- | --- | --- | --- | --- | --- |
+| Initial check | 111 | 010 | '1' | '0' | NO check fails |
+| t is good | 010 | 010 | '1' | '0' | YES |
+| Last char vs first char | '1' != '0' |  |  |  | YES |
 
-We do not need to simulate insertions. The presence of both 0 and 1 guarantees breaking runs.
+This demonstrates that the last character of `s` differs from the first of `t`, allowing a good string to be formed.
 
-**Example 2:**
+Sample Input 3:
 
-Input `s = "111"`, `t = "00"`.
+```
+3
+111
+00
+```
 
-| Step | s | t | Check |
-| --- | --- | --- | --- |
-| 1 | "111" | "00" | s not good |
-| 2 | - | "00" uniform | NO |
+| Step | s | t | s[-1] | t[0] | Output |
+| --- | --- | --- | --- | --- | --- |
+| Initial check | 111 | 00 | '1' | '0' |  |
+| t is good | No |  |  |  | NO |
 
-Here, `t` cannot help break the consecutive '1's in `s`.
+This shows that if `t` itself contains repetitions, it cannot help fix `s`.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(T*(n+m)) | Checking if `s` is good takes O(n) and scanning `t` for '0' and '1' takes O(m) per test case. |
-| Space | O(1) | No extra memory beyond input storage is required. |
+| Time | O(T*(n+m)) | Each string is scanned once to check for goodness, for T test cases |
+| Space | O(1) | Only a few variables are used, no extra storage proportional to input |
 
-Given the constraints (n, m ≤ 50, T ≤ 2000), this runs comfortably within the time limit.
+Given `n,m <= 50` and `T <= 2000`, the solution performs at most 2000*100 = 200,000 operations, well within the 1-second limit. Memory use is minimal.
 
 ## Test Cases
 
@@ -126,43 +136,52 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = []
+    output = io.StringIO()
+    sys.stdout = output
+    # call the solution
     T = int(input())
     for _ in range(T):
         n, m = map(int, input().split())
         s = input().strip()
         t = input().strip()
-
-        if all(s[i] != s[i+1] for i in range(len(s)-1)):
-            output.append("YES")
-        elif '0' in t and '1' in t:
-            output.append("YES")
+        
+        def is_good(x):
+            for i in range(len(x)-1):
+                if x[i] == x[i+1]:
+                    return False
+            return True
+        
+        if is_good(s):
+            print("YES")
+            continue
+        
+        if not is_good(t):
+            print("NO")
+            continue
+        
+        if s[-1] != t[0]:
+            print("YES")
         else:
-            output.append("NO")
-    return "\n".join(output)
+            print("NO")
+    return output.getvalue().strip()
 
 # Provided samples
 assert run("5\n1 1\n1\n0\n3 3\n111\n010\n3 2\n111\n00\n6 7\n101100\n1010101\n10 2\n1001001000\n10\n") == "YES\nYES\nNO\nNO\nNO"
 
-# Custom tests
-assert run("2\n1 1\n0\n0\n2 2\n01\n10\n") == "YES\nYES", "Edge cases with single characters and already good strings"
-assert run("1\n4 2\n1111\n01\n") == "YES", "s has long run, t contains both"
-assert run("1\n4 2\n1111\n11\n") == "NO", "s has long run, t uniform"
-assert run("1\n2 1\n11\n0\n") == "NO", "minimum size conflict"
+# Custom test cases
+assert run("2\n1 1\n0\n0\n2 1\n01\n1\n") == "YES\nYES"
+assert run("1\n2 2\n11\n11\n") == "NO"
+assert run("1\n2 2\n10\n01\n") == "YES"
+assert run("1\n3 3\n101\n010\n") == "YES"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 1 0 0 | YES | single character s, t uniform but no conflicts |
-| 2 2 01 10 | YES | small good s, t can break anything |
-| 4 2 1111 01 | YES | long run, t has both digits |
-| 4 2 1111 11 | NO | long run, t uniform cannot help |
-| 2 1 11 0 | NO | minimal size conflict |
+| `1 1\n0\n0` | YES | Single character string is already good |
+| `2 2\n11\n11` | NO | Both strings uniform, cannot fix repetition |
+| `2 2\n10\n01` | YES | Alternating t can fix last character if needed |
+| `3 3\n101\n010` | YES | t insertion maintains alternation, s already good |
 
 ## Edge Cases
 
-If `s` is already good, such as `s = "1010"`, the algorithm immediately returns "YES". This avoids unnecessary checks of `t`.
-
-If `t` contains both digits, like `t = "01"`, and `s` is completely uniform, like `s = "111"`, the algorithm correctly returns "YES" without simulating insertions, relying on the invariant that any run can be broken.
-
-If `t` is uniform, like `t = "11"`, and `s` ends with the same character, like `s = "111"`, the algorithm correctly returns "NO" because no insertion of
+For `s = "111"` and `t = "00"`, `s` is not good,
