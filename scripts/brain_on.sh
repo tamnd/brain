@@ -174,6 +174,11 @@ while true; do
     while IFS= read -r line; do log "${YLW}kvant-idx: ${line}${RST}"; done <<< "$KVANT_OUT"
   fi
 
+  # Rebuild Codeforces top-level _index.md grouped by year.
+  if CF_OUT="$(python3 "$REPO_DIR/scripts/fix_codeforces_index.py" 2>&1)" && [ -n "$CF_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}cf-idx: ${line}${RST}"; done <<< "$CF_OUT"
+  fi
+
   # Commit any local changes (always safe to commit locally).
   if [ -n "$(git status --porcelain)" ]; then
     git add -A

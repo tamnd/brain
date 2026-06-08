@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Round 182 (Div. 2)"
-description: "Solutions for Codeforces Round 182 (Div. 2) (contest 302). 2/2 problems verified against sample I/O. Difficulty range: 800-1200."
+description: "2 problems from Codeforces Round 182 (Div. 2) (contest 302), difficulty 800-1200. 2/2 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming", "implementation", "binary-search", "two-pointers"]
 categories: ["algorithms"]
 contest_id: 302
@@ -9,16 +9,17 @@ rating_range: "800-1200"
 n_problems: 2
 n_verified: 2
 total_solve_s: 297
-date: "2026-05-29T00:00:00+07:00"
+contest_year: 2013
+date: "2026-05-29T18:49:19+07:00"
 weight: 302
 draft: false
 ---
 
 # [Codeforces Round 182 (Div. 2)](https://codeforces.com/contest/302)
 
-**Type:** Div. 2 | **Problems:** 2 | **Verified:** 2/2 | **Rating range:** 800-1200 | **Time:** 4m 57s
+Div. 2 | 2 problems | 2/2 verified | Difficulty 800-1200 | 4m 57s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [A](A/) | [Eugeny and Array](https://codeforces.com/problemset/problem/302/A) | 800 | implementation | 1m 32s | ✓ |
-| [B](B/) | [Eugeny and Play List](https://codeforces.com/problemset/problem/302/B) | 1200 | binary-search, implementation, two-pointers | 3m 25s | ✓ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Eugeny and Array](https://codeforces.com/problemset/problem/302/A) | 800 | implementation | 9,761 | 1m 32s | ✓ |
+| [B](B/) | [Eugeny and Play List](https://codeforces.com/problemset/problem/302/B) | 1200 | binary-search, implementation, two-pointers | 9,386 | 3m 25s | ✓ |
