@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1405 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1406 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1405
+kvant_total: 1406
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1405 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1406 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -1340,7 +1340,7 @@ draft: false
 
 ## 1981
 
-55 problems across Issues 1–12.
+56 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1370,6 +1370,7 @@ draft: false
 | [672](672.md) Let $f(n)=2^n-1$. |  | 9m33s |
 | [673](673.md) *A. A. Razborov*. Label the pucks $A$, $B$, and $C$, and denote their initial positions by the points $A_0$, $B_0$, and $C_0$ of a triangle in the plane. |  | 5m30s |
 | [674](674.md) Consider an acute triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $AC$, and $C_1$ on $AB$. |  | 7m17s |
+| [675](675.md) *G. A. Gurevich, A. T. Kolotov*. The condition states that all subset sums of the chosen set are distinct. |  | 9m38s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1981_4/)
 
