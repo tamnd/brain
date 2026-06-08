@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1428 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1429 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1428
+kvant_total: 1429
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1428 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1429 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -869,13 +869,14 @@ draft: false
 
 ## 1977
 
-51 problems across Issues 1–12, 1 verified.
+52 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [421](421.md) Let the cells of the infinite graph paper be indexed by integer coordinates $(x,y)$, where each cell corresponds to one pair of integers. |  | 6m42s |
+| [422](422.md) Let $\\triangle ABC$ be arbitrary. |  | 24m02s |
 | [423](423.md) The left-hand side contains the three quantities |  | 3m37s |
 | [424](424.md) Let $ABCD$ be a tetrahedron. |  | 6m51s |
 | [425](425.md) Suppose such an $N$ exists. |  | 6m34s |
