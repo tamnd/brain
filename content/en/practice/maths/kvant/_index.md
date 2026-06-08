@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1365 solved, 0 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1367 solved, 1 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1365
-kvant_verified: 0
+kvant_total: 1367
+kvant_verified: 1
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1365 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1367 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 1 solutions have been independently verified.
 
 ## 1970
 
@@ -389,7 +389,7 @@ draft: false
 
 ## 1973
 
-58 problems across Issues 1–12.
+59 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1973_1/)
 
@@ -498,6 +498,7 @@ draft: false
 | [231](231.md) Consider the equation $n^x + n^y = n^z$ in natural numbers. |  | 7m59s |
 | [232](232.md) *P. S. Pankov*. For a triple of points $A,B,C$, the condition that the triangle is obtuse means that one of the three angles exceeds $90^\\circ$, equivalently one of the three opposite-side inequalities of the form |  | 1m27s |
 | [233](233.md) *G. A. Halperin*. Consider a small case to understand the process. |  | 4m45s |
+| [234](234.md) Alice moves on the integer lattice starting at $(0,0)$, and her motion is periodic, determined by a string of $n$ moves repeated indefinitely. | ✓ | 4m24s |
 | [235](235.md) *I. N. Bernstein*. Consider a lion moving along a polygonal path inside a circular arena of radius $R = 10$ meters. |  | 6m02s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1973_12/)
@@ -1788,7 +1789,7 @@ draft: false
 
 ## 1985
 
-51 problems across Issues 1–12.
+52 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1834,6 +1835,7 @@ draft: false
 | [921](921.md) The problem involves a convex quadrilateral $ABCD$ with two given angles, $\\angle A = \\alpha$ and $\\angle B = \\beta$, and a special relation between its sides and area: the doubled area satisfies $2S… |  | 9m17s |
 | [922](922.md) *A. M. Sedletskii*. Let |  | 3m30s |
 | [923](923.md) Consider a unit cube in three-dimensional space with edges parallel to the axes. |  | 4m54s |
+| [924](924.md) *I. I. Tsalenchuk, 10th grade student*. Each pair of points is connected by a directed edge, so the structure is a tournament. |  | 14m51s |
 | [925](925.md) *A. L. Toom*. Consider a small blue region, for example, a disk of radius $r<1$. |  | 3m40s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1985_6/)
