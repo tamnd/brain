@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4283 problems, 2210 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4287 problems, 2212 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4283 problems, 2210 verified.**
+**750 contests, 4287 problems, 2212 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -601,7 +601,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2044](2044/) | [Codeforces Round 993 (Div. 4)](https://codeforces.com/contest/2044) | Div. 4 | 800-2100 | 7/9 | 18m 25s |
 | [2045](2045/) | [2024-2025 ICPC Asia Jakarta Regional Contest (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2045) | ICPC/IOI | 1400-3500 | 4/13 | 26m 38s |
 | [2046](2046/) | [Codeforces Round 990 (Div. 1)](https://codeforces.com/contest/2046) | Div. 1 | 1200-3500 | 0/8 | 16m 20s |
-| [2047](2047/) | [Codeforces Round 990 (Div. 2)](https://codeforces.com/contest/2047) | Div. 2 | 800-900 | 0/2 | 3m 3s |
+| [2047](2047/) | [Codeforces Round 990 (Div. 2)](https://codeforces.com/contest/2047) | Div. 2 | 800-3100 | 2/6 | 10m 53s |
 | [2048](2048/) | [Codeforces Global Round 28](https://codeforces.com/contest/2048) | Global | 800-3500 | 1/10 | 23m 4s |
 | [2049](2049/) | [Codeforces Round 994 (Div. 2)](https://codeforces.com/contest/2049) | Div. 2 | 800-2700 | 0/6 | 11m 24s |
 | [2050](2050/) | [Codeforces Round 991 (Div. 3)](https://codeforces.com/contest/2050) | Div. 3 | 800-1900 | 4/7 | 14m 3s |
