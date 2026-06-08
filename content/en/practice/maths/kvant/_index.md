@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1465 solved, 28 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1466 solved, 28 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1465
+kvant_total: 1466
 kvant_verified: 28
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1465 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 28 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1466 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 28 solutions have been independently verified.
 
 ## 1970
 
@@ -1732,7 +1732,7 @@ draft: false
 
 ## 1984
 
-56 problems across Issues 1–12, 2 verified.
+57 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1802,6 +1802,7 @@ draft: false
 | [872](872.md) *All-Union School Mathematics Olympiad (1984)*. Let $O_1,O_2,O_3$ be the centers of the circles $C_1,C_2,C_3$. |  | 8m18s |
 | [873](873.md) *All-Union Mathematical Olympiad for School Students (1984)*. The process can be encoded in terms of the coefficients $a$ and $b$ of the quadratic $x^2+ax+b$, starting from $(a,b)=(10,20)$ and ending at $(20,10)$. |  | 8m18s |
 | [874](874.md) *All-Union School Mathematical Olympiad (1984)*. We begin by testing small integer values to see whether the equation $(5+3\\sqrt{2})^m = (3+5\\sqrt{2})^n$ admits any obvious solutions. |  | 11m31s |
+| [875](875.md) *All-Union Mathematical Olympiad for School Students (1984)*. Let |  | 37m39s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1984_8/)
 
