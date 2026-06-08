@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1447 solved, 19 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1448 solved, 19 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1447
+kvant_total: 1448
 kvant_verified: 19
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1447 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 19 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1448 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 19 solutions have been independently verified.
 
 ## 1970
 
@@ -1361,7 +1361,7 @@ draft: false
 
 ## 1981
 
-58 problems across Issues 1–12, 1 verified.
+59 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1440,6 +1440,7 @@ draft: false
 | [696](696.md) Consider the problem for small $k \\times k$ squares. |  | 2m58s |
 | [697](697.md) *S. V. Fomin*. Let the square have side length $1$. |  | 9m51s |
 | [698](698.md) Let the cyclic quadrilateral be $ABCD$, with side lengths |  | 7m57s |
+| [699](699.md) Working |  | 30m36s |
 | [700](700.md) Consider the set of all terminating decimal fractions. |  | 7m34s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1981_9/)
