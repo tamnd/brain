@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.3.2: Empirical Tests"
-description: "Section 3.3.2 exercises: 18/33 solved."
+description: "Section 3.3.2 exercises: 21/33 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.3.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.3.2. Empirical Tests
 
-Exercises from [TAOCP Volume 1](../) Section 3.3.2: 18/33 solved.
+Exercises from [TAOCP Volume 1](../) Section 3.3.2: 21/33 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -37,10 +37,10 @@ Exercises from [TAOCP Volume 1](../) Section 3.3.2: 18/33 solved.
 | [17](17.md) |  [*M25*] | math-medium | verified | 2m23s |
 | [18](18.md) |  [*M20*] | math-medium | verified | 2m26s |
 | [19](19.md) |  [*M30*] | math-hard | solved | 1m35s |
-| 20 |  [*HM41*] | hm-project | - | - |
-| 21 |  [*19*] | medium | - | - |
+| [20](20.md) |  [*HM41*] | hm-project | solved | 4m02s |
+| [21](21.md) |  [*19*] | medium | verified | 3m27s |
 | 22 |  [*18*] | medium | - | - |
-| 23 |  [*M22*] | math-medium | - | - |
+| [23](23.md) |  [*M22*] | math-medium | solved | 2m20s |
 | 24 |  [*HM37*] | hm-project | - | - |
 | 27 | &#9654; [*HM36*] | hm-project | - | - |
 | 28 |  [*M26*] | math-hard | - | - |
