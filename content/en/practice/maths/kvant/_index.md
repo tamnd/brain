@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1453 solved, 20 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1455 solved, 22 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1453
-kvant_verified: 20
+kvant_total: 1455
+kvant_verified: 22
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1453 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 20 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1455 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 22 solutions have been independently verified.
 
 ## 1970
 
@@ -1486,7 +1486,7 @@ draft: false
 
 ## 1982
 
-55 problems across Issues 1–12, 1 verified.
+56 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
@@ -1541,6 +1541,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [746](746.md) Let the square have side length $2$ and center $O$. | ✓ | 30m44s |
 | [747](747.md) *V. V. Prasolov*. For the first part, write the numbers as $x_1,\\dots,x_n$, let $M=\\max x_i$ and $m=\\min x_i$. |  | 5m39s |
 | [748](748.md) Consider first the planar problem with parabolas. |  | 6m09s |
 | [750](750.md) *S. N. Bespamyatnykh*. The first statement is a classical rectangle theorem. |  | 3m46s |
@@ -1605,7 +1606,7 @@ draft: false
 
 ## 1983
 
-53 problems across Issues 1–12.
+54 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1623,6 +1624,7 @@ draft: false
 |---|---------|---|------|
 | [786](786.md) *A. N. Kozachenko*. Consider small values of $n$ and $k$ to identify a pattern. |  | 7m18s |
 | [787](787.md) *B. S. Pitskel*. Let the right triangle have legs of lengths $a$ and $b$, with hypotenuse $c = \\sqrt{a^2 + b^2}$. |  | 4m08s |
+| [788](788.md) *E. D. Moskalensky, Yu. V. Chinyaev*. Let | ✓ | 9m34s |
 | [789](789.md) *V. V. Proizvolov*. Consider first a small number of points on a circle, for example, four points dividing the circle into four equal arcs. |  | 7m02s |
 | [790](790.md) The hypothesis is that a map $F:\\mathbb{R}^2\\to\\mathbb{R}^2$ preserves unit distance, meaning every pair of points at distance $1$ is mapped to a pair of points at distance $1$. |  | 2m14s |
 
