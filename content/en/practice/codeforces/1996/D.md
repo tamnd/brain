@@ -114,10 +114,7 @@ $$c \le x-a-b.$$
 
 So for a fixed pair $(a,b)$, the number of valid values of $c$ is simply
 
-$$\min\!\left(
-\left\lfloor \frac{n-ab}{a+b} \right\rfloor,
-x-a-b
-\right)$$
+$$\min\!\left( \left\lfloor \frac{n-ab}{a+b} \right\rfloor, x-a-b \right)$$
 
 provided this quantity is positive.
 
@@ -137,8 +134,7 @@ $$b \le \frac{n-a}{a+1}.$$
 
 For large $a$, this upper bound quickly becomes small. The total number of examined pairs is approximately
 
-$$\sum_{a=1}^{n} \frac{n}{a}
-= O(n\log n).$$
+$$\sum_{a=1}^{n} \frac{n}{a} = O(n\log n).$$
 
 Because the sum of all $n$ values across the input is only $10^6$, this harmonic-series complexity is easily fast enough.
 
@@ -165,10 +161,7 @@ Take the minimum of these two bounds.
 4. Iterate $b$ from $1$ to that maximum value.
 5. Compute the product-based limit on $c$:
 
-$$c_1=
-\left\lfloor
-\frac{n-ab}{a+b}
-\right\rfloor.$$
+$$c_1= \left\lfloor \frac{n-ab}{a+b} \right\rfloor.$$
 6. Compute the sum-based limit on $c$:
 
 $$c_2=x-a-b.$$
@@ -273,10 +266,7 @@ Total answer = 4.
 
 The counted triples are:
 
-$$(1,1,1),
-(1,1,2),
-(1,2,1),
-(2,1,1).$$
+$$(1,1,1), (1,1,2), (1,2,1), (2,1,1).$$
 
 This example shows how a single pair $(a,b)$ can contribute multiple values of $c$.
 

@@ -168,8 +168,7 @@ Node $v$ must generate $d$ additional units through operations at $v$.
 
 Consequently each child must provide
 
-$$need+d
-=2\cdot need-a_v$$
+$$need+d =2\cdot need-a_v$$
 
 units.
 5. Recursively verify every child with that new requirement.
