@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 616 contests, 3297 problems, 1841 verified."
+description: "Codeforces problem solutions with full editorial. 616 contests, 3298 problems, 1842 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**616 contests, 3297 problems, 1841 verified.**
+**616 contests, 3298 problems, 1842 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -458,7 +458,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
 | [2036](2036/) | [Codeforces Round 984 (Div. 3)](https://codeforces.com/contest/2036) | Div. 3 | 800-2200 | 4/7 | 12m 48s |
 | [2037](2037/) | [Codeforces Round 988 (Div. 3)](https://codeforces.com/contest/2037) | Div. 3 | 800-2100 | 2/7 | 16m 45s |
-| [2038](2038/) | [2024-2025 ICPC, NERC, Southern and Volga Russian Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2038) | ICPC/IOI | 800-3000 | 5/13 | 26m 41s |
+| [2038](2038/) | [2024-2025 ICPC, NERC, Southern and Volga Russian Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2038) | ICPC/IOI | 800-3000 | 6/14 | 27m 19s |
 | [2039](2039/) | [CodeTON Round 9 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/2039) | Div. 1+2 | 800-3500 | 0/11 | 21m 12s |
 | [2040](2040/) | [Codeforces Round 992 (Div. 2)](https://codeforces.com/contest/2040) | Div. 2 | 800-2700 | 1/6 | 13m 11s |
 | [2041](2041/) | [2024 ICPC Asia Taichung Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2041) | ICPC/IOI | 1200-3300 | 5/14 | 26m |
