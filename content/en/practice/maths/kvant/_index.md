@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1423 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1424 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1423
+kvant_total: 1424
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1423 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1424 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -3023,13 +3023,19 @@ draft: false
 
 ## 2024
 
-1 problems across Issue 3.
+2 problems across Issues 3–7.
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_2024_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2786](2786.md) *All-Russian Mathematics Olympiad (L, Regional Round)*. Let the value of a completed coloring be the number of edges of the 100-cycle whose endpoints have different colors. |  | 10m22s |
+
+### [Issue 7](https://www.kvant.digital/view/kvant_2024_7/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2802](2802.md) *Caucasian Mathematical Olympiad (IX)*. Let |  | 10m19s |
 
 ## 2025
 
