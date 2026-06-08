@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1468 solved, 29 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1471 solved, 31 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1468
-kvant_verified: 29
+kvant_total: 1471
+kvant_verified: 31
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1468 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 29 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1471 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 31 solutions have been independently verified.
 
 ## 1970
 
@@ -1732,7 +1732,7 @@ draft: false
 
 ## 1984
 
-59 problems across Issues 1–12, 3 verified.
+60 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1841,6 +1841,7 @@ draft: false
 | [891](891.md) *A. A. Muratov*. Let $ABC$ be a triangle with a circle tangent to two of its sides and to two of its medians. |  | 26m28s |
 | [892](892.md) *A. I. Zaichik*. Write |  | 8m30s |
 | [893](893.md) *Moscow Mathematical Olympiad (1984)*. The complete graph on $n$ vertices is $K_n$. |  | 12m10s |
+| [894](894.md) The previous proof contains critical errors in both parts. | ✓ | 36m39s |
 | [895](895.md) *Moscow Mathematical Olympiad (1984)*. Place the cube of side $2$ in coordinates with center at the origin, so its vertices are $(\\pm1,\\pm1,\\pm1)$ and its inscribed sphere is $x^2+y^2+z^2=1$. |  | 2m16s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1984_12/)
@@ -1855,7 +1856,7 @@ draft: false
 
 ## 1985
 
-55 problems across Issues 1–12, 1 verified.
+57 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1871,6 +1872,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [906](906.md) *M. V. Slavinskyi*. Consider the equation |  | 27m41s |
 | [907](907.md) *T. A. Dzhortmenadze*. Let $A=\\widehat A$, $B=\\widehat B$, $C=\\widehat C$. |  | 6m49s |
 | [908](908.md) Before I begin writing the full Kvant-style solution, I need the text of problem M908. |  | 2m49s |
 | [909](909.md) *R. N. Azizyan, V. Tolstykh, A. V. Alyaev*. We seek an arithmetic progression |  | 10m21s |
@@ -1942,6 +1944,7 @@ draft: false
 | [941](941.md) *All-Union Mathematical Olympiad (1985)*. Consider first the case $k=2$, which corresponds to a regular decagon. |  | 9m09s |
 | [942](942.md) *All-Union Mathematical Olympiad (1985)*. For $n=1$, the partition is ${1}$ and ${2}$, hence |  | 3m25s |
 | [943](943.md) *All-Union Mathematical Olympiad (1985)*. Let us compute the first terms. |  | 4m47s |
+| [944](944.md) *All-Union Mathematical Olympiad (1985)*. The figure is the regular hexagon of side length $2$ subdivided into $24$ congruent equilateral triangles. | ✓ | 11m35s |
 | [945](945.md) *All-Union Mathematical Olympiad (1985)*. Let |  | 3m07s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1985_10/)
