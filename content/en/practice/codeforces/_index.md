@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 750 contests, 4258 problems, 2207 verified."
+description: "Codeforces problem solutions with full editorial. 750 contests, 4262 problems, 2208 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**750 contests, 4258 problems, 2207 verified.**
+**750 contests, 4262 problems, 2208 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -524,7 +524,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1957](1957/) | [Codeforces Round 940 (Div. 2) and CodeCraft-23](https://codeforces.com/contest/1957) | Div. 2 | 800-2700 | 1/7 | 12m 56s |
 | [1958](1958/) | [Kotlin Heroes: Episode 10](https://codeforces.com/contest/1958) | Kotlin | 1100-3200 | 7/10 | 11m 13s |
 | [1965](1965/) | [Codeforces Round 941 (Div. 1)](https://codeforces.com/contest/1965) | Div. 1 | 1400-3300 | 0/6 | 7m 12s |
-| [1966](1966/) | [Codeforces Round 941 (Div. 2)](https://codeforces.com/contest/1966) | Div. 2 | 800-1100 | 0/2 | 2m 20s |
+| [1966](1966/) | [Codeforces Round 941 (Div. 2)](https://codeforces.com/contest/1966) | Div. 2 | 800-2900 | 1/6 | 16m 6s |
 | [1967](1967/) | [Codeforces Round 942 (Div. 1)](https://codeforces.com/contest/1967) | Div. 1 | 1400-3500 | 1/8 | 10m 27s |
 | [1968](1968/) | [Codeforces Round 943 (Div. 3)](https://codeforces.com/contest/1968) | Div. 3 | 800-2200 | 3/8 | 12m 57s |
 | [1969](1969/) | [Educational Codeforces Round 165 (Rated for Div. 2)](https://codeforces.com/contest/1969) | Div. 2 | 800-3000 | 3/6 | 13m 58s |

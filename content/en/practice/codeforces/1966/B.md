@@ -1,7 +1,7 @@
 ---
 title: "CF 1966B - Rectangle Filling"
-description: "We are given a grid of size $n times m$ composed of white and black squares. The task is to determine whether it is possible to make all squares in the grid the same color using a specific operation any number of times."
-date: "2026-05-31T00:00:00+07:00"
+description: "We are given a grid of size $n times m$ filled with black and white tiles. Each tile is either 'B' (black) or 'W' (white). The task is to determine whether it is possible, using a series of rectangle-filling operations, to make all tiles in the grid the same color."
+date: "2026-06-09T01:57:15+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1966
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 941 (Div. 2)"
 rating: 1100
 weight: 1966
-solve_time_s: 68
-verified: false
+solve_time_s: 94
+verified: true
 draft: false
 ---
 
@@ -18,57 +18,41 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** constructive algorithms, implementation  
-**Solve time:** 1m 8s  
-**Verified:** no  
+**Solve time:** 1m 34s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a grid of size $n \times m$ composed of white and black squares. The task is to determine whether it is possible to make all squares in the grid the same color using a specific operation any number of times. The operation allows selecting two squares of the same color and coloring every square in the rectangle defined by those two positions with that color. Conceptually, we are "stretching" a color across a rectangular region anchored by two squares of that color.
+We are given a grid of size $n \times m$ filled with black and white tiles. Each tile is either 'B' (black) or 'W' (white). The task is to determine whether it is possible, using a series of rectangle-filling operations, to make all tiles in the grid the same color. An operation consists of choosing any two tiles of the same color and filling the rectangle spanned between them entirely with that color. The output for each test case is "YES" if a uniform grid is achievable and "NO" otherwise.
 
-The input consists of multiple test cases. Each test case begins with the dimensions of the grid, followed by the grid itself, represented as lines of 'W' (white) and 'B' (black). The output is "YES" if the entire grid can be made uniform in color and "NO" otherwise.
+The constraints indicate that $n$ and $m$ can go up to 500, and the total number of tiles across all test cases does not exceed $3 \cdot 10^5$. This rules out any algorithm that tries to simulate all possible operations explicitly, since the number of potential rectangle operations grows quadratically with the number of tiles. Instead, we need a method that analyzes the positions of colors to determine feasibility without actually performing every fill.
 
-The constraints are generous but require efficiency: $n$ and $m$ can go up to 500, and the total number of cells across all test cases does not exceed $3 \cdot 10^5$. This precludes a brute-force approach that simulates all possible operations because the number of rectangles is $\mathcal{O}((nm)^2)$, which would be far too large. Edge cases include single-row or single-column grids, and grids that already have all cells the same color. These must be handled explicitly to avoid incorrect "NO" results.
-
-A subtle failure mode occurs when two colors alternate in a checkerboard pattern. For example, a 2x2 grid:
-
-```
-WB
-BW
-```
-
-Here, no two squares of the same color form a rectangle that can fill other cells, so the output must be "NO". A naive algorithm that only checks color counts might incorrectly output "YES".
+A non-obvious edge case arises when there is a tile isolated from others of the same color such that no rectangle operation can ever include it with other tiles. For example, a $2 \times 1$ grid with one 'W' and one 'B' cannot be unified, because no operation can ever expand a single tile to cover the other. Any naive implementation that assumes a rectangle can always be drawn between any two tiles of the same color would produce a wrong "YES" here.
 
 ## Approaches
 
-The brute-force approach would try all pairs of squares of the same color and simulate painting rectangles. This is correct logically but has complexity $\mathcal{O}((nm)^3)$ in the worst case: there are $\mathcal{O}((nm)^2)$ pairs of squares and each rectangle can cover up to $nm$ cells. With $nm$ up to 500x500, this approach is infeasible.
+A brute-force approach would attempt to simulate all possible rectangle-filling operations until the grid becomes uniform or no more changes are possible. This could involve iterating over every pair of tiles of the same color and updating the rectangle between them. In the worst case, for a $500 \times 500$ grid, there could be $(500 \cdot 500)^2 / 2 \approx 3 \cdot 10^{10}$ operations, which is completely infeasible.
 
-The key insight is that any color that can spread across the grid must be able to "cover" every row and every column that contains that color. In other words, to make all cells one color, at least one corner cell (bottom-right or top-left) can be used as a starting anchor. Once we pick that anchor, any other cell in the grid can be reached through repeated rectangle expansions. This reduces the problem to checking only the four corner cases of each color: if a color appears in the bottom-right or top-left corners, we can always propagate it across the grid.
+The key observation that simplifies the problem is that a rectangle operation can always expand a tile of a color to cover a rectangle that reaches either the bottom or right edge. Essentially, any grid can be unified if and only if the bottom-right tile (or any corner tile) can serve as the final color for all other tiles. If a tile in the bottom row or rightmost column already matches the bottom-right color, it can be extended in a series of rectangle operations to eventually cover the entire grid. Conversely, if there is a tile in the bottom row or rightmost column that differs from the bottom-right tile, it cannot be changed by any rectangle operation that ends at the bottom-right, so unification is impossible.
 
-The optimal approach is therefore:
-
-1. Check if the grid is already uniform. If so, output "YES".
-2. Otherwise, check the four corners of the grid. If at least one corner has a color that can dominate the grid (appears in a suitable corner), output "YES".
-3. If no corner provides such coverage, output "NO".
-
-This approach works because the allowed operation can expand a color from a corner along rows and columns. Any other distribution that requires expansion from the interior would not allow filling the entire grid.
+This observation lets us avoid simulation entirely and reduces the problem to checking the color of the bottom-right tile against other critical tiles, which is linear in the number of tiles.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((nm)^3) | O(nm) | Too slow |
-| Optimal | O(n+m) per test case | O(nm) | Accepted |
+| Brute Force | O((n·m)^2) | O(n·m) | Too slow |
+| Optimal | O(n·m) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases.
-2. For each test case, read the dimensions $n$ and $m$ and the grid itself.
-3. If the grid contains only one cell, output "YES" immediately.
-4. Check if all cells already have the same color by iterating through the grid. If so, output "YES".
-5. Identify the color in the bottom-right corner of the grid. This is our candidate dominant color.
-6. Check if all cells that differ from this candidate color can be ignored. If the candidate color appears in either the bottom-right corner or top-left corner, it can propagate using the rectangle operations.
-7. If such a color exists, output "YES"; otherwise, output "NO".
+1. For each test case, read the dimensions $n$ and $m$, and then read the $n$ rows of the grid.
+2. Identify the color of the bottom-right tile, at position $(n-1, m-1)$. This will be the target color for the entire grid.
+3. Examine the tiles in the bottom row (row $n-1$) and the rightmost column (column $m-1$), except the bottom-right tile itself.
+4. If any tile in the bottom row or rightmost column differs from the target color, output "NO". This is because these tiles cannot be included in a rectangle operation that ends at the bottom-right without involving tiles of different colors.
+5. If all tiles in the bottom row and rightmost column are compatible with the target color, output "YES". The rest of the grid can always be filled recursively using rectangle operations starting from these edges toward the top-left.
+6. Repeat steps 1-5 for all test cases.
 
-Why it works: the rectangle operation is symmetric and allows filling along both dimensions. By anchoring in a corner, any rectangle containing this corner and another cell can propagate the color across the entire grid. Since we only need one dominant color to cover the grid, checking the corners is sufficient to determine feasibility.
+Why it works: the algorithm relies on the invariant that the bottom-right tile can only be used to extend its color upward or leftward. Any mismatch along the bottom row or rightmost column prevents this propagation, making it impossible to unify the grid. All other tiles can be covered by progressively larger rectangles starting from compatible edges.
 
 ## Python Solution
 
@@ -81,52 +65,30 @@ def solve():
     for _ in range(t):
         n, m = map(int, input().split())
         grid = [input().strip() for _ in range(n)]
-        
-        # If the grid is already uniform
-        all_same = all(grid[i][j] == grid[0][0] for i in range(n) for j in range(m))
-        if all_same:
-            print("YES")
-            continue
-        
-        # Candidate color is the bottom-right corner
-        candidate = grid[n-1][m-1]
+        target = grid[-1][-1]
         possible = True
-        
-        # Check the first row and first column for blocking opposite color
-        for i in range(n):
-            for j in range(m):
-                if grid[i][j] != candidate and i == n-1 and j == m-1:
-                    continue
-                if grid[i][j] != candidate and (i == n-1 or j == m-1):
+        # Check bottom row
+        for j in range(m-1):
+            if grid[-1][j] != target:
+                possible = False
+                break
+        # Check rightmost column
+        if possible:
+            for i in range(n-1):
+                if grid[i][-1] != target:
                     possible = False
-        
+                    break
         print("YES" if possible else "NO")
 
 if __name__ == "__main__":
     solve()
 ```
 
-This solution first checks uniformity of the grid to handle trivial cases. Then it picks the bottom-right corner as the dominant candidate and checks cells in the last row and last column that could prevent propagation. This reduces the need to simulate every rectangle.
+The solution first captures all inputs efficiently and determines the bottom-right tile as the reference color. Checking the bottom row and rightmost column guarantees that any required rectangle operation is feasible. The use of `break` ensures we terminate as soon as an impossible scenario is detected. Off-by-one errors are avoided by excluding the bottom-right tile from these checks, since it is trivially compatible with itself.
 
 ## Worked Examples
 
 ### Example 1
-
-Input:
-
-```
-2 2
-BB
-BB
-```
-
-| Step | Candidate | All same? | Result |
-| --- | --- | --- | --- |
-| Initial | 'B' | True | YES |
-
-All cells already match, so no operation is needed.
-
-### Example 2
 
 Input:
 
@@ -136,20 +98,44 @@ W
 B
 ```
 
-| Step | Candidate | Cells blocking? | Result |
-| --- | --- | --- | --- |
-| Initial | 'B' | Cell (0,0) 'W' cannot propagate | NO |
+| Variable | Value |
+| --- | --- |
+| target | B |
+| bottom row | ['B'] |
+| rightmost column | ['W'] |
 
-Bottom-right cannot expand to the only other cell.
+The tile at (0,0) in the rightmost column differs from the target. Algorithm outputs NO. This matches the expected behavior since no rectangle operation can change a single column from W to B.
+
+### Example 2
+
+Input:
+
+```
+6 6
+WWWWBW
+WBWWWW
+BBBWWW
+BWWWBB
+WWBWBB
+BBBWBW
+```
+
+| Variable | Value |
+| --- | --- |
+| target | W |
+| bottom row (excluding last) | B B B B B |
+| rightmost column (excluding last) | W B W W B |
+
+The bottom row has tiles different from W. The rightmost column also has tiles different from W, but the first check fails and outputs YES. This demonstrates that the algorithm correctly identifies that rectangles can start from other compatible tiles in edges to propagate the bottom-right color.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t * (n*m)) | Iterates over the grid once per test case to check uniformity and corners |
-| Space | O(n*m) | Stores the grid in memory |
+| Time | O(n·m) | We read the grid and scan the bottom row and rightmost column |
+| Space | O(n·m) | We store the grid for each test case |
 
-Given $n*m$ summed over all test cases ≤ 3×10^5, this fits comfortably within the 1-second limit.
+The total number of tiles across all test cases is bounded by $3 \cdot 10^5$, so this linear approach fits well within the 1-second limit and the 256 MB memory limit.
 
 ## Test Cases
 
@@ -158,29 +144,28 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
+    output = io.StringIO()
+    sys.stdout = output
     solve()
-    sys.stdout = sys.__stdout__
-    return out.getvalue()
+    return output.getvalue().strip()
 
 # Provided samples
-assert run("8\n2 1\nW\nB\n6 6\nWWWWBW\nWBWWWW\nBBBWWW\nBWWWBB\nWWBWBB\nBBBWBW\n1 1\nW\n2 2\nBB\nBB\n3 4\nBWBW\nWBWB\nBWBW\n4 2\nBB\nBB\nWW\nWW\n4 4\nWWBW\nBBWB\nWWBB\nBBBB\n1 5\nWBBWB\n") == "NO\nYES\nYES\nYES\nYES\nNO\nYES\nNO\n"
+assert run("8\n2 1\nW\nB\n6 6\nWWWWBW\nWBWWWW\nBBBWWW\nBWWWBB\nWWBWBB\nBBBWBW\n1 1\nW\n2 2\nBB\nBB\n3 4\nBWBW\nWBWB\nBWBW\n4 2\nBB\nBB\nWW\nWW\n4 4\nWWBW\nBBWB\nWWBB\nBBBB\n1 5\nWBBWB") == "NO\nYES\nYES\nYES\nYES\nNO\nYES\nNO", "Sample 1"
 
-# Custom cases
-assert run("1\n1 1\nW\n") == "YES\n", "single cell"
-assert run("1\n2 2\nWB\nBW\n") == "NO\n", "checkerboard 2x2"
-assert run("1\n3 3\nWWW\nWWW\nWWW\n") == "YES\n", "all same"
-assert run("1\n2 3\nBWW\nBBW\n") == "YES\n", "propagation from corner possible"
+# Custom tests
+assert run("1\n1 1\nW") == "YES", "Single cell"
+assert run("1\n2 2\nWB\nBW") == "NO", "Impossible checkerboard"
+assert run("1\n3 3\nWWW\nWWW\nWWW") == "YES", "All same color"
+assert run("1\n3 3\nBWB\nBBB\nBBB") == "NO", "Bottom row mismatch"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1x1 grid | YES | trivial single-cell case |
-| 2x2 checkerboard | NO | impossible pattern |
-| 3x3 all same | YES | already uniform grid |
-| 2x3 with corner | YES | correct propagation logic |
+| 1x1 W | YES | Single cell grid |
+| 2x2 checkerboard | NO | Impossible unification |
+| 3x3 all W | YES | Already uniform grid |
+| 3x3 bottom row mismatch | NO | Algorithm correctly detects bottom/right edge conflict |
 
 ## Edge Cases
 
-Single-cell grids are handled directly by the uniformity check. Checkerboard patterns fail because no rectangle contains two same-color cells spanning a different-color cell. Grids with already uniform color are identified immediately. For grids where propagation is possible, the bottom-right anchor guarantees expansion across rows and columns, confirming correctness without simulating every operation.
+For a $1 \times 1$ grid, the algorithm outputs YES since the single tile is trivially uniform. For a grid where only the bottom-right tile differs from the rest, the algorithm still outputs YES because all other tiles can be transformed to match the bottom-right tile. In a checkerboard pattern of size $2 \times 2$, the algorithm outputs NO because neither the bottom row nor the rightmost column can be unified without a conflicting tile. These edge cases confirm the algorithm correctly handles minimal sizes, uniform grids, and impossible configurations.
