@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 673 contests, 3713 problems, 1989 verified."
+description: "Codeforces problem solutions with full editorial. 674 contests, 3719 problems, 1992 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**673 contests, 3713 problems, 1989 verified.**
+**674 contests, 3719 problems, 1992 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -451,6 +451,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1966](1966/) | [Codeforces Round 941 (Div. 2)](https://codeforces.com/contest/1966) | Div. 2 | 800-1100 | 0/2 | 2m 20s |
 | [1967](1967/) | [Codeforces Round 942 (Div. 1)](https://codeforces.com/contest/1967) | Div. 1 | 1400-3500 | 1/8 | 10m 27s |
 | [1968](1968/) | [Codeforces Round 943 (Div. 3)](https://codeforces.com/contest/1968) | Div. 3 | 800-2200 | 3/8 | 12m 57s |
+| [1969](1969/) | [Educational Codeforces Round 165 (Rated for Div. 2)](https://codeforces.com/contest/1969) | Div. 2 | 800-3000 | 3/6 | 13m 58s |
 | [1970](1970/) | [Helvetic Coding Contest 2024 online mirror (teams allowed, unrated)](https://codeforces.com/contest/1970) | Special | 1000-3100 | 6/21 | 47m 10s |
 | [1971](1971/) | [Codeforces Round 944 (Div. 4)](https://codeforces.com/contest/1971) | Div. 4 | 800-2100 | 6/8 | 15m 17s |
 | [1972](1972/) | [Codeforces Round 942 (Div. 2)](https://codeforces.com/contest/1972) | Div. 2 | 800-900 | 1/2 | 4m 38s |
