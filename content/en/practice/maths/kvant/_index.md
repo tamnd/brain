@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1449 solved, 19 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1450 solved, 19 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1449
+kvant_total: 1450
 kvant_verified: 19
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1449 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 19 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1450 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 19 solutions have been independently verified.
 
 ## 1970
 
@@ -1362,7 +1362,7 @@ draft: false
 
 ## 1981
 
-59 problems across Issues 1–12, 1 verified.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1462,6 +1462,7 @@ draft: false
 | [707](707.md) *A. F. Sidorenko*. Let the clubs be represented by sets of students. |  | 8m20s |
 | [708](708.md) Consider a convex quadrilateral $ABCD$ and construct squares externally on its sides $AB$, $BC$, $CD$, and $DA$, with centers $P$, $Q$, $R$, $T$ respectively. |  | 10m06s |
 | [709](709.md) The rhombus tiles are the unit lozenges of the triangular lattice. |  | 6m51s |
+| [710](710.md) *S. V. Konyagin*. The requirement that no term is equal to the sum of several others is ensured by a stronger property: for every $n$, if |  | 31m15s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1981_11/)
 
