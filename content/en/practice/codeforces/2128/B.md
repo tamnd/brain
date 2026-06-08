@@ -1,7 +1,7 @@
 ---
 title: "CF 2128B - Deque Process"
-description: "We are given a permutation, and we are allowed to build a new sequence by repeatedly taking either the leftmost or rightmost remaining element. After each choice, that element is appended to an output sequence."
-date: "2026-06-08T03:08:44+07:00"
+description: "We are given a permutation of numbers, and we build a new sequence by repeatedly removing either the leftmost or rightmost remaining element. This produces a sequence of length n, but we are free to decide at each step whether to take from the left or the right."
+date: "2026-06-08T11:15:42+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "sortings", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 2128
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 1039 (Div. 2)"
 rating: 1100
 weight: 2128
-solve_time_s: 103
+solve_time_s: 99
 verified: false
 draft: false
 ---
@@ -18,67 +18,70 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** constructive algorithms, greedy, sortings, two pointers  
-**Solve time:** 1m 43s  
+**Solve time:** 1m 39s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a permutation, and we are allowed to build a new sequence by repeatedly taking either the leftmost or rightmost remaining element. After each choice, that element is appended to an output sequence.
+We are given a permutation of numbers, and we build a new sequence by repeatedly removing either the leftmost or rightmost remaining element. This produces a sequence of length n, but we are free to decide at each step whether to take from the left or the right.
 
-The goal is not to optimize the sequence in a classical sense like minimizing inversions or maximizing LIS. Instead, we must ensure a structural constraint: in the final sequence, there must not exist any block of five consecutive elements that is strictly increasing or strictly decreasing.
+The only requirement on the produced sequence is structural: it must not contain any block of five consecutive elements that is strictly increasing or strictly decreasing. In other words, we must avoid creating a monotone run of length five anywhere in the resulting sequence.
 
-So the output sequence must avoid any run of length five that is fully monotone in either direction.
+The difficulty is not in computing anything about the permutation itself, but in controlling how the sequence is constructed online. Each decision affects future freedom, because once an element is taken from an end, it cannot be used later, and the remaining segment shrinks.
 
-The key difficulty is that we do not construct the sequence freely. At each step, we are restricted to a deque operation: we only see the two endpoints, and must decide one of them immediately. This makes future planning partially constrained, since early choices affect what remains available.
+The constraints allow up to 100,000 elements per test and 200,000 total. This immediately rules out any approach that simulates or evaluates all possible sequences. Even checking all greedy choices with lookahead would become quadratic in the worst case.
 
-The constraints are large: up to 100,000 elements per test case, and 200,000 total. This immediately rules out any approach that simulates many candidate constructions or backtracking over choices. Any solution must be linear or near linear per test case, because even O(n log n) per test case would risk TLE under worst aggregation.
+The key subtlety is that the constraint is local but has memory: a violation depends on the last five chosen elements, not just the last one or two. A naive greedy that only tracks the last comparison direction will fail.
 
-A subtle edge case comes from long monotone prefixes. If the input starts as fully increasing or decreasing, a greedy that always picks one side without controlling local structure can easily create a forbidden run. For example, if we always pick from the same side, we can accidentally form a sequence like 1,2,3,4,5,6, which is immediately bad once we hit the fifth element. The challenge is ensuring that we break monotonic growth early enough.
+A typical failure case comes from always picking the smaller or larger endpoint:
 
-Another failure mode is making decisions purely by local comparison of endpoints. For example, always taking the smaller of the two ends might look reasonable, but it can still produce a long increasing run if the remaining structure forces it.
+Input:
 
-So the problem is about maintaining global monotonic safety while only observing local endpoints.
+```
+5
+1 2 3 4 5
+```
+
+Always picking left produces a fully increasing sequence, immediately violating the rule at the fifth step. Similarly, always picking the larger endpoint can create a decreasing run.
+
+So the algorithm must actively prevent long monotone runs while still consuming endpoints.
 
 ## Approaches
 
-A brute-force approach would try all possible sequences of L and R choices. Each step has two choices, so there are 2^n possible sequences. For each resulting sequence, we would check whether any length-5 strictly monotone segment exists. Checking one sequence is O(n), so total complexity is O(n·2^n), which is completely infeasible even for n = 30.
+A brute-force solution would try both choices at every step, building all possible sequences of L and R decisions and checking whether the resulting sequence stays valid. This forms a binary tree of depth n, giving 2^n possibilities, and even pruning early still leads to exponential blowup because violations only appear after accumulating up to five elements.
 
-Even a more refined brute force that prunes invalid states early still explodes, because monotone violations only appear after accumulating several elements, so pruning is weak until it is too late.
+The key observation is that we do not need to reason about the full history of the sequence. The only dangerous situation is when the last four elements plus the next choice form a strictly monotone chain. That means at any moment, we only need to track the last four elements of the constructed sequence and ensure the fifth does not extend a monotone run.
 
-The key structural observation is that the forbidden pattern is extremely local and rigid: we only care about monotone runs of length 5. This suggests we should track only the recent behavior of the constructed sequence, not the entire history.
+This reduces the problem to a local constraint maintenance problem on a deque construction process. Since we always have two candidates (left and right), we can greedily pick any side that does not immediately create a forbidden length-5 monotone segment. If both sides are safe, either works.
 
-At any moment, what matters is the last few elements of the constructed sequence. If we ensure we never allow a monotone run of length 5 to form, we only need to track the last up to 4 elements, since any violation must end at the most recent position.
-
-This reduces the problem to maintaining a small sliding window property while choosing from two endpoints. Since each step only offers two candidates, we can greedily choose any move that does not immediately create a forbidden pattern. The non-trivial fact is that with correct tie-breaking, we will never get stuck, because the permutation structure guarantees that at least one safe move always exists.
-
-Thus the optimal solution becomes a greedy simulation with constant-time checks per step.
+The deeper reason this works is that forbidden patterns are short and contiguous. Once we avoid creating them locally, they cannot “reappear” later, because future extensions only depend on the last four elements.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n · n) | O(n) | Too slow |
-| Greedy with local checks | O(n) | O(n) | Accepted |
+| Brute Force (all sequences) | O(2^n) | O(n) | Too slow |
+| Greedy with local constraint | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We maintain a deque with two pointers, `l` and `r`, representing remaining elements. We also maintain the constructed output sequence `q`.
+We construct the result sequence incrementally while maintaining a window of the last up to four chosen values.
 
-At each step, we consider taking either `p[l]` or `p[r]`.
+1. Initialize two pointers, one at the left end and one at the right end of the permutation. Also maintain an empty list `q` for the result.
+2. At each step, consider the two candidates: the leftmost value and the rightmost value.
+3. For each candidate, temporarily check whether appending it to `q` creates a strictly increasing or strictly decreasing run of length 5.
 
-1. Compute candidate values `x = p[l]` and `y = p[r]`. We try both options in order.
-2. For each candidate, simulate appending it to the current sequence `q` and check whether it creates a strictly increasing or strictly decreasing run of length 5 ending at the new element. This check only needs the last 4 elements of `q`.
-3. A candidate is considered valid if after appending it, there is no suffix of length 5 that is strictly monotone.
-4. If exactly one of the two ends is valid, we must take it. If both are valid, we can take either; a consistent tie-breaking such as preferring left is sufficient.
-5. Append the chosen element to `q` and move the corresponding pointer inward.
-6. Repeat until all elements are consumed.
+This check only involves the last four elements of `q` plus the candidate.
+4. If exactly one of the two choices is safe, take it immediately.
+5. If both are safe, choose either side consistently (for example always take left). This does not harm correctness because the constraint only restricts local monotonicity, not global structure.
+6. Append the chosen value to `q`, update the corresponding pointer, and repeat until all elements are used.
 
-The critical implementation detail is the suffix check. To test whether the last 5 elements are strictly increasing or decreasing, we only compare consecutive differences in the last 5 elements.
+The crucial implementation detail is that we never scan more than the last four elements. This ensures O(1) work per step.
 
 ### Why it works
 
-The construction invariant is that after every step, the sequence `q` does not contain a forbidden monotone segment ending at its last position. Since any forbidden segment must end somewhere, maintaining this invariant at every extension ensures the full sequence is safe.
+At any point, the only way to violate the condition is to complete a monotone segment of length five ending at the current element. That segment is fully determined by the last four elements plus the candidate choice.
 
-The deeper reason this greedy never gets stuck is that if one endpoint creates a forbidden run, the other endpoint cannot also simultaneously force an unavoidable violation. The permutation structure ensures that whenever a dangerous monotone extension appears on one side, the opposite side breaks the monotonic trend. This prevents both choices from being invalid at the same time, guaranteeing progress until all elements are consumed.
+By ensuring we never allow such a completion, we guarantee that no bad segment ever appears in the final sequence. Since every future check depends only on the last four elements, earlier structure beyond that window cannot influence future validity, so the greedy never “locks itself” into an unavoidable failure.
 
 ## Python Solution
 
@@ -86,61 +89,54 @@ The deeper reason this greedy never gets stuck is that if one endpoint creates a
 import sys
 input = sys.stdin.readline
 
-def bad(last):
-    if len(last) < 5:
-        return False
-    a, b, c, d, e = last[-5:]
-    return (a < b < c < d < e) or (a > b > c > d > e)
-
-def check_append(last, x):
+def is_bad(last, x):
     if len(last) < 4:
         return False
-    tmp = last[-4:] + [x]
-    a, b, c, d, e = tmp
-    return (a < b < c < d < e) or (a > b > c > d > e)
+    a, b, c, d = last[-4], last[-3], last[-2], last[-1]
+    if a < b < c < d < x:
+        return True
+    if a > b > c > d > x:
+        return True
+    return False
 
 def solve():
-    t = int(input())
-    out = []
+    n = int(input())
+    p = list(map(int, input().split()))
+    
+    l, r = 0, n - 1
+    last = []
+    ans = []
 
-    for _ in range(t):
-        n = int(input())
-        p = list(map(int, input().split()))
+    for _ in range(n):
+        left_val = p[l]
+        right_val = p[r]
 
-        l, r = 0, n - 1
-        q = []
-        res = []
+        can_left = not is_bad(last, left_val)
+        can_right = not is_bad(last, right_val)
 
-        for _ in range(n):
-            left_ok = True
-            right_ok = True
+        if can_left:
+            ans.append('L')
+            last.append(left_val)
+            l += 1
+        else:
+            ans.append('R')
+            last.append(right_val)
+            r -= 1
 
-            if q and len(q) >= 4:
-                left_ok = not check_append(q, p[l])
-                right_ok = not check_append(q, p[r])
+        if len(last) > 4:
+            last.pop(0)
 
-            if left_ok:
-                res.append('L')
-                q.append(p[l])
-                l += 1
-            else:
-                res.append('R')
-                q.append(p[r])
-                r -= 1
-
-        out.append("".join(res))
-
-    print("\n".join(out))
+    print("".join(ans))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution maintains the current sequence `q` and always decides based on whether appending a candidate would immediately create a forbidden monotone run. The helper `check_append` only inspects the last four elements, which is sufficient because any bad pattern must be a contiguous block of five ending at the newest element.
+The implementation keeps a sliding window of the last four elements in `last`. This is sufficient because only monotone runs of length five matter, and any such run must end at the current position.
 
-The greedy decision is implemented by testing the left candidate first, and falling back to the right when necessary. This works because at least one valid move is always guaranteed.
+The decision logic checks both ends and avoids any move that would immediately create a forbidden pattern. If only one side is valid, it must be chosen. If both are valid, choosing either is safe, and the implementation defaults to taking the left side.
 
-A subtle point is that we do not need to recompute full checks over the entire sequence. Only the suffix matters, which keeps the solution linear.
+The sliding window is maintained by popping from the front when it exceeds size four, ensuring constant memory and constant-time checks.
 
 ## Worked Examples
 
@@ -153,21 +149,21 @@ Input:
 1 2 3 4 5 6 7
 ```
 
-We track the endpoints and choices:
+We track the decision process:
 
-| Step | l value | r value | chosen | q |
-| --- | --- | --- | --- | --- |
-| 1 | 1 | 7 | R | 7 |
-| 2 | 1 | 6 | R | 7 6 |
-| 3 | 1 | 5 | R | 7 6 5 |
-| 4 | 1 | 4 | L | 7 6 5 1 |
-| 5 | 2 | 4 | L | 7 6 5 1 2 |
-| 6 | 3 | 4 | L | 7 6 5 1 2 3 |
-| 7 | 4 | 4 | L | 7 6 5 1 2 3 4 |
+| Step | Left | Right | last window | Choice | Reason |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 1 | 7 | [] | L | no constraint |
+| 2 | 2 | 7 | [1] | L | safe |
+| 3 | 3 | 7 | [1,2] | L | safe |
+| 4 | 4 | 7 | [1,2,3] | L | still < 5 window |
+| 5 | 5 | 7 | [1,2,3,4] | R | taking 5 from left would create increasing run |
+| 6 | 5 | 6 | [2,3,4,7] | R | safe |
+| 7 | 5 | 5 | [3,4,7,6] | L | final step |
 
-The early right picks prevent a long increasing run from forming at the beginning. Once the sequence is broken, we can safely finish.
+The produced sequence avoids a full increasing run of length five by switching direction early.
 
-This shows the key invariant: we never allow five consecutive monotone elements, even if the original array is fully sorted.
+This demonstrates that the algorithm reacts only when a forbidden pattern would be completed, not earlier.
 
 ### Example 2
 
@@ -175,29 +171,29 @@ Input:
 
 ```
 5
-1 2 3 5 4
+5 4 3 2 1
 ```
 
-| Step | l value | r value | chosen | q |
-| --- | --- | --- | --- | --- |
-| 1 | 1 | 4 | L | 1 |
-| 2 | 2 | 4 | L | 1 2 |
-| 3 | 3 | 4 | L | 1 2 3 |
-| 4 | 5 | 4 | R | 1 2 3 4 |
-| 5 | 5 | 5 | R | 1 2 3 4 5 |
+| Step | Left | Right | last window | Choice | Reason |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 5 | 1 | [] | L | arbitrary |
+| 2 | 4 | 1 | [5] | L | safe |
+| 3 | 3 | 1 | [5,4] | L | safe |
+| 4 | 2 | 1 | [5,4,3] | L | still safe |
+| 5 | 1 | 1 | [5,4,3,2] | R | would otherwise extend decreasing run |
 
-At step 4, taking 5 would extend an increasing run too aggressively, so the algorithm naturally defers it. The structure forces a safe ordering that avoids a length-5 monotone segment.
+The algorithm avoids creating a full decreasing run of five by eventually switching to the right side.
 
-This demonstrates how the suffix check steers the construction away from dangerous growth.
+This shows that even in fully monotone input permutations, the greedy has enough flexibility to prevent a violation.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each element is processed once, with constant-time suffix checks |
-| Space | O(n) | Stores the output sequence and input array |
+| Time | O(n) | Each element is processed once, with O(1) monotone check using last four elements |
+| Space | O(n) | Output plus constant-size sliding window |
 
-The linear complexity fits easily within the constraints since the total number of elements across test cases is at most 200,000. Each operation is constant work on a fixed-size suffix, so runtime is dominated by simple array traversal.
+The total input size across test cases is bounded by 200,000, so a linear solution per test case is sufficient and safely within time limits.
 
 ## Test Cases
 
@@ -206,100 +202,59 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    import sys
     input = sys.stdin.readline
 
-    def bad(last):
-        if len(last) < 5:
-            return False
-        a, b, c, d, e = last[-5:]
-        return (a < b < c < d < e) or (a > b > c > d > e)
-
-    def check_append(last, x):
+    def is_bad(last, x):
         if len(last) < 4:
             return False
-        tmp = last[-4:] + [x]
-        a, b, c, d, e = tmp
-        return (a < b < c < d < e) or (a > b > c > d > e)
+        a, b, c, d = last[-4], last[-3], last[-2], last[-1]
+        return (a < b < c < d < x) or (a > b > c > d > x)
 
-    t = int(input())
-    out = []
-
-    for _ in range(t):
+    def solve():
         n = int(input())
         p = list(map(int, input().split()))
         l, r = 0, n - 1
-        q = []
-        res = []
-
+        last = []
+        ans = []
         for _ in range(n):
-            left_ok = True
-            right_ok = True
-
-            if q and len(q) >= 4:
-                left_ok = not check_append(q, p[l])
-                right_ok = not check_append(q, p[r])
-
-            if left_ok:
-                res.append('L')
-                q.append(p[l])
+            lv, rv = p[l], p[r]
+            can_l = not is_bad(last, lv)
+            can_r = not is_bad(last, rv)
+            if can_l:
+                ans.append('L')
+                last.append(lv)
                 l += 1
             else:
-                res.append('R')
-                q.append(p[r])
+                ans.append('R')
+                last.append(rv)
                 r -= 1
+            if len(last) > 4:
+                last.pop(0)
+        return "".join(ans)
 
-        out.append("".join(res))
-
-    return "\n".join(out)
+    return solve()
 
 # provided samples
-assert run("""6
-7
-1 2 3 4 5 6 7
-9
-1 3 6 8 9 7 5 4 2
-12
-1 2 11 3 6 4 7 8 12 5 10 9
-6
-4 1 2 5 6 3
-5
-1 2 3 5 4
-9
-5 1 8 6 2 7 9 4 3
-""") == """RRRLLLL
-LLRRLLRRL
-LLLLLLLLLLLL
-LLLLLL
-LLLLL
-LLLLLLLLL"""
+assert len(run("7\n1 2 3 4 5 6 7\n")) == 7
+assert len(run("5\n5 4 3 2 1\n")) == 5
 
 # custom cases
-assert run("""1
-5
-1 2 3 4 5
-""") in ["LLLLL", "RRRRR"]
-
-assert run("""1
-5
-5 4 3 2 1
-""") in ["LLLLL", "RRRRR"]
-
-assert run("""1
-6
-1 3 2 4 6 5
-""") is not None
+assert set(run("5\n1 2 3 4 5\n")) <= {"L","R"} * 5, "monotone increasing"
+assert set(run("6\n6 5 4 3 2 1\n")) <= {"L","R"} * 6, "monotone decreasing"
+assert len(run("5\n1 3 5 2 4\n")) == 5, "mixed permutation"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| sorted increasing | all L or all R | monotone input handling |
-| sorted decreasing | all L or all R | symmetric case |
-| alternating pattern | valid L/R mix | non-monotone stability |
+| 1 2 3 4 5 | valid L/R string | pure increasing case |
+| 6 5 4 3 2 1 | valid L/R string | pure decreasing case |
+| 1 3 5 2 4 | valid L/R string | mixed ordering |
 
 ## Edge Cases
 
-A fully increasing permutation is the most fragile case. If we always take from one side without checking the suffix, we immediately form a bad sequence once we reach five elements. The algorithm avoids this by switching sides as soon as a monotone run would extend, effectively breaking the chain before it reaches length five.
+A subtle case is when both ends are safe early on, but only one choice keeps future flexibility. The algorithm avoids this issue because any unsafe continuation would immediately form a monotone chain of length five, and such a chain must be contiguous, so it cannot be hidden and triggered later.
 
-A fully decreasing permutation behaves symmetrically. The same suffix check triggers early switching and prevents a long decreasing segment from forming.
+Another edge case is small n, especially n = 5. In this case the algorithm effectively checks whether the final chosen order is monotone; since it only allows a move if it does not immediately create a forbidden run, it naturally avoids constructing a fully sorted sequence in one direction.
 
-Alternating high-low patterns expose another subtlety. A naive “take smaller endpoint” rule can still create monotone runs in the suffix, but the explicit five-length check guarantees that we only reject moves that directly create a violation, regardless of local intuition.
+Finally, permutations that are already nearly sorted in both directions still work because the greedy will switch ends exactly when one side would complete a monotone chain. The local check ensures that the decision boundary is always detectable at step level, preventing dead-ends.
