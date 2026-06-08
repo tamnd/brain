@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1357 solved, 0 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1365 solved, 0 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1357
+kvant_total: 1365
 kvant_verified: 0
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1357 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1365 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026.
 
 ## 1970
 
@@ -511,7 +511,7 @@ draft: false
 
 ## 1974
 
-59 problems across Issues 1–12.
+60 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1974_1/)
 
@@ -587,6 +587,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [276](276.md) *All-Union Mathematical Olympiad for School Students (1974, 10th grade)*. A direct synthetic approach would require tracking the foot of a perpendicular from $B$ to the line $PC$, which suggests that a coordinate representation or vector projection will likely reduce the co… |  | 9m33s |
 | [277](277.md) *All-Union Mathematical Olympiad for School Students (1974, Grade 10)*. Let $E$ be the number of segments whose endpoints have different colors. |  | 7m19s |
 | [278](278.md) *All-Union Mathematical Olympiad of School Students (1974, 8th grade)*. The configuration involves a convex hexagon with side lengths bounded below or above and three “long” diagonals connecting every second vertex. |  | 1m24s |
 | [279](279.md) *All-Union Mathematical Olympiad for School Students (1974, Grade 9)*. Let the numbers on the cards be $a_1,\\dots,a_n$, where each $a_i\\in{\\pm1}$. |  | 3m59s |
@@ -859,7 +860,7 @@ draft: false
 
 ## 1977
 
-47 problems across Issues 1–12.
+48 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
@@ -928,6 +929,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [456](456.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, 10th grade)*. At each vertex of the polyhedron, exactly three edges meet, so the vertex figure is a trihedral angle. |  | 9m15s |
 | [457](457.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 8)*. Let the vertices of the simple closed polygonal line be $A_1,A_2,\\dots,A_n$ in cyclic order, and let $e_i=A_iA_{i+1}$, with indices taken modulo $n$. |  | 3m44s |
 | [458](458.md) *All-Union School Mathematics Olympiad (XI, 1977, 10th grade)*. Consider the polynomial $x^{10}+a_9x^9+\\dots+a_1x+1$ with all coefficients initially unspecified except for the leading and constant terms, which are $1$. |  | 7m07s |
 | [460](460.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, 8th and 10th grades)*. We begin with small values of $n$ to understand the structure. |  | 7m13s |
@@ -970,7 +972,7 @@ draft: false
 
 ## 1978
 
-55 problems across Issues 1–12.
+56 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1978_1/)
 
@@ -1007,6 +1009,7 @@ draft: false
 | [497](497.md) *V. L. Gutenmakher*. Consider triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $CA$, and $C_1$ on $AB$. |  | 3m44s |
 | [498](498.md) *N. B. Vasiliev, A. A. Egorov*. Consider small values of $n$. |  | 2m18s |
 | [499](499.md) *G. A. Gurevich*. Consider what it means for a number to be balanced. |  | 6m14s |
+| [500](500.md) Label the people $1,2,\\dots,N$ from left to right. |  | 9m26s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1978_5/)
 
@@ -1089,7 +1092,7 @@ draft: false
 
 ## 1979
 
-48 problems across Issues 1–12.
+49 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1152,6 +1155,7 @@ draft: false
 |---|---------|---|------|
 | [572](572.md) *All-Union Mathematical Olympiad for School Students (1979, 8th grade)*. The kangaroo moves in the integer lattice of the first quadrant with vectors $v_1=(1,-1)$ and $v_2=(-5,7)$, always staying in $x\\ge 0$, $y\\ge 0$. |  | 2m26s |
 | [573](573.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. Let the lines through $O$ be $l_1,\\dots,l_{1979}$. |  | 7m24s |
+| [575](575.md) *All-Union Mathematical Olympiad of School Students (1979, 10th grade)*. Let $A_0A_1,\\dots,A_{n-1}A_n$ be consecutive segments on a line with each length at most $1$. |  | 9m49s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1979_8/)
 
@@ -1322,7 +1326,7 @@ draft: false
 
 ## 1981
 
-53 problems across Issues 1–12.
+54 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1348,6 +1352,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [671](671.md) Let the cyclic quadrilateral be $ABCD$ with diagonals $AC$ and $BD$. |  | 6m20s |
+| [672](672.md) Let $f(n)=2^n-1$. |  | 9m33s |
 | [673](673.md) *A. A. Razborov*. Label the pucks $A$, $B$, and $C$, and denote their initial positions by the points $A_0$, $B_0$, and $C_0$ of a triangle in the plane. |  | 5m30s |
 | [674](674.md) Consider an acute triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $AC$, and $C_1$ on $AB$. |  | 7m17s |
 
@@ -1439,7 +1444,7 @@ draft: false
 
 ## 1982
 
-50 problems across Issues 1–12.
+51 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
@@ -1465,6 +1470,7 @@ draft: false
 |---|---------|---|------|
 | [732](732.md) I cannot write a rigorous solution to Kvant problem M732 because the problem statement itself is not present in your message. |  | 5m55s |
 | [733](733.md) *V. V. Prasolov*. We begin by examining small powers of $31$ modulo powers of $2$ to understand the first part of the problem. |  | 4m43s |
+| [734](734.md) Let $AB=c$, $AC=b$, and let $\\angle A = \\alpha$. |  | 9m30s |
 | [735](735.md) Consider first the case of covering a circle of diameter $1$ with strips of paper. |  | 6m15s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1982_4/)
@@ -1553,7 +1559,7 @@ draft: false
 
 ## 1983
 
-49 problems across Issues 1–12.
+50 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1646,6 +1652,7 @@ draft: false
 | [827](827.md) *All-Union Mathematical Olympiad for School Students (1983, Grade 8)*. The figure consists of a triangle subdivided into smaller regions, four of which are blue triangles of equal area. |  | 7m27s |
 | [828](828.md) *All-Union Mathematical Olympiad for School Students (1983, 8th grade)*. Consider a function $a_{i,j}$ on the integer lattice. |  | 1m58s |
 | [829](829.md) *All-Union Mathematical Olympiad for School Students (1983, Grade 9)*. Consider small values of $m$ to detect a pattern. |  | 14m07s |
+| [830](830.md) *All-Union Mathematical Olympiad for School Students (1983, 10th grade)*. Let the first quadratic be $x^2 + p_1 x + q_1 = 0$ with two distinct real roots $r_1 \\le s_1$. |  | 9m39s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1983_11/)
 
@@ -1666,7 +1673,7 @@ draft: false
 
 ## 1984
 
-50 problems across Issues 1–12.
+51 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1713,6 +1720,7 @@ draft: false
 | [862](862.md) *E. A. Yasinovy̆ĭ*. Consider first the equilateral triangle case. |  | 4m09s |
 | [863](863.md) Consider a small board, $n=3$. |  | 1m32s |
 | [864](864.md) *A. V. Savkin*. Consider first a right triangle. |  | 7m10s |
+| [865](865.md) *B. M. Ivlev*. For consecutive pairs $a_{i-1}<a_i$, the expression |  | 12m45s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1984_6/)
 

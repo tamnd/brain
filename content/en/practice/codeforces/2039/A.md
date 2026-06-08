@@ -44,9 +44,7 @@ A common mistake is to focus on the values themselves instead of the remainders.
 
 looks natural, but
 
-$$1 \bmod 1 = 0,\quad
-2 \bmod 2 = 0,\quad
-3 \bmod 3 = 0$$
+$$1 \bmod 1 = 0,\quad 2 \bmod 2 = 0,\quad 3 \bmod 3 = 0$$
 
 so all remainders are identical, which violates the condition.
 
@@ -372,9 +370,7 @@ $$a_i = 2i.$$
 
 For $n=3$, the remainders become
 
-$$2\bmod1=0,\quad
-4\bmod2=0,\quad
-6\bmod3=0.$$
+$$2\bmod1=0,\quad 4\bmod2=0,\quad 6\bmod3=0.$$
 
 All remainders collide.
 

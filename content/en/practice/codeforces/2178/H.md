@@ -96,9 +96,7 @@ This suggests tracking each contribution modulo $m$.
 
 Let
 
-$$A=a x_a \pmod m,\quad
-B=b x_b \pmod m,\quad
-C=c x_c \pmod m.$$
+$$A=a x_a \pmod m,\quad B=b x_b \pmod m,\quad C=c x_c \pmod m.$$
 
 The total residue is
 
@@ -144,8 +142,7 @@ $$r_a+r_b+r_c \equiv 0 \pmod m.$$
 
 So after computing the three shortest-path arrays, the problem becomes a min-plus convolution:
 
-$$\min_{r_a+r_b+r_c\equiv0}
-d_a[r_a]+d_b[r_b]+d_c[r_c].$$
+$$\min_{r_a+r_b+r_c\equiv0} d_a[r_a]+d_b[r_b]+d_c[r_c].$$
 
 The challenge is evaluating this efficiently for $m\le 5\cdot10^5$.
 

@@ -112,8 +112,7 @@ $$S-a_rB-b_cA+a_rb_c.$$
 
 Now factor:
 
-$$S-a_rB-b_cA+a_rb_c
-=(A-a_r)(B-b_c).$$
+$$S-a_rB-b_cA+a_rb_c =(A-a_r)(B-b_c).$$
 
 This identity completely changes the problem.
 

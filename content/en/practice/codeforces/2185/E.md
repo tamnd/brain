@@ -102,9 +102,7 @@ A robot dies if some spike position lies among all positions it has visited.
 
 Suppose we know the minimum and maximum cumulative displacement reached during the first $i$ instructions:
 
-$$L_i=\min_{1\le j\le i} p_j,
-\qquad
-R_i=\max_{1\le j\le i} p_j.$$
+$$L_i=\min_{1\le j\le i} p_j, \qquad R_i=\max_{1\le j\le i} p_j.$$
 
 Because every move changes the position by exactly one unit, the walk visits every integer point between its minimum and maximum displacement. Thus, during the first $i$ instructions, a robot starting at $a$ visits exactly the interval
 

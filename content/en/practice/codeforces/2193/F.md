@@ -92,9 +92,7 @@ units of right movement are mandatory. We can compute the minimum vertical cost 
 
 For every distinct $x$, compute:
 
-$$l_x = \min y,
-\qquad
-h_x = \max y.$$
+$$l_x = \min y, \qquad h_x = \max y.$$
 
 Sort columns by increasing $x$.
 
@@ -138,23 +136,11 @@ $$|y-h_i| + (h_i-l_i).$$
 
 Hence
 
-$$dp[i][0]
-=
-\min
-\begin{cases}
-dp[i-1][0] + |l_{i-1}-h_i| + (h_i-l_i)\\
-dp[i-1][1] + |h_{i-1}-h_i| + (h_i-l_i)
-\end{cases}$$
+$$dp[i][0] = \min \begin{cases} dp[i-1][0] + |l_{i-1}-h_i| + (h_i-l_i)\\ dp[i-1][1] + |h_{i-1}-h_i| + (h_i-l_i) \end{cases}$$
 
 Similarly, to finish at $h_i$, we first connect to $l_i$ and then sweep upward:
 
-$$dp[i][1]
-=
-\min
-\begin{cases}
-dp[i-1][0] + |l_{i-1}-l_i| + (h_i-l_i)\\
-dp[i-1][1] + |h_{i-1}-l_i| + (h_i-l_i)
-\end{cases}$$
+$$dp[i][1] = \min \begin{cases} dp[i-1][0] + |l_{i-1}-l_i| + (h_i-l_i)\\ dp[i-1][1] + |h_{i-1}-l_i| + (h_i-l_i) \end{cases}$$
 
 ### Final answer
 
@@ -255,9 +241,7 @@ Input:
 
 Columns:
 
-$$(2,[3,3]),\quad
-(4,[4,4]),\quad
-(5,[2,2])$$
+$$(2,[3,3]),\quad (4,[4,4]),\quad (5,[2,2])$$
 
 | Column | Interval | dp(lower) | dp(upper) |
 | --- | --- | --- | --- |

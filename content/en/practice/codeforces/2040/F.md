@@ -98,9 +98,7 @@ After exactly $r_a$ applications, the coordinate returns to its starting positio
 
 Similarly,
 
-$$r_b=\frac{b}{\gcd(b,y)},
-\qquad
-r_c=\frac{c}{\gcd(c,z)}.$$
+$$r_b=\frac{b}{\gcd(b,y)}, \qquad r_c=\frac{c}{\gcd(c,z)}.$$
 
 The order of the full translation is
 
@@ -136,8 +134,7 @@ Only divisors $t\mid G$ can contribute.
 
 When $t\mid G$, the number of fixed colorings is
 
-$$\frac{(N/t)!}
-{\prod_i (d_i/t)!}.$$
+$$\frac{(N/t)!} {\prod_i (d_i/t)!}.$$
 
 ### Counting translations of a given order
 
@@ -145,8 +142,7 @@ Let $F(t)$ be the number of translations whose order is exactly $t$.
 
 Instead of computing $F$ directly, define
 
-$$S(t)=
-\#\{\text{translations with order dividing }t\}.$$
+$$S(t)= \#\{\text{translations with order dividing }t\}.$$
 
 For a cyclic group of length $a$, the number of elements whose order divides $t$ equals
 
@@ -154,8 +150,7 @@ $$\gcd(a,t).$$
 
 Hence
 
-$$S(t)=
-\gcd(a,t)\gcd(b,t)\gcd(c,t).$$
+$$S(t)= \gcd(a,t)\gcd(b,t)\gcd(c,t).$$
 
 Now
 
@@ -163,10 +158,7 @@ $$S(t)=\sum_{d\mid t}F(d),$$
 
 so Möbius inversion gives
 
-$$F(t)=
-\sum_{d\mid t}
-\mu\!\left(\frac{t}{d}\right)
-S(d).$$
+$$F(t)= \sum_{d\mid t} \mu\!\left(\frac{t}{d}\right) S(d).$$
 
 This is the crucial compression step.
 
@@ -176,35 +168,22 @@ This is the crucial compression step.
 2. Precompute Möbius values $\mu(n)$ up to $3\cdot10^6$ using a linear sieve.
 3. For a test case, compute
 
-$$N=abc,
-\qquad
-G=\gcd(d_1,d_2,\dots,d_k).$$
+$$N=abc, \qquad G=\gcd(d_1,d_2,\dots,d_k).$$
 4. Enumerate all divisors of $G$.
 
 Any translation order not dividing $G$ contributes zero fixed colorings, so no other divisor is needed.
 5. For every divisor $t$ of $G$, compute
 
-$$\text{fix}(t)
-=
-\frac{(N/t)!}
-     {\prod_i (d_i/t)!}
-\pmod{998244353}.$$
+$$\text{fix}(t) = \frac{(N/t)!}      {\prod_i (d_i/t)!} \pmod{998244353}.$$
 6. For every divisor $t$, compute
 
-$$S(t)=
-\gcd(a,t)\gcd(b,t)\gcd(c,t).$$
+$$S(t)= \gcd(a,t)\gcd(b,t)\gcd(c,t).$$
 7. Apply Möbius inversion on the divisor lattice:
 
-$$F(t)=
-\sum_{d\mid t}
-\mu(t/d)\,S(d).$$
+$$F(t)= \sum_{d\mid t} \mu(t/d)\,S(d).$$
 8. Evaluate Burnside's formula:
 
-$$\text{ans}
-=
-\frac{1}{N}
-\sum_{t\mid G}
-F(t)\,\text{fix}(t).$$
+$$\text{ans} = \frac{1}{N} \sum_{t\mid G} F(t)\,\text{fix}(t).$$
 9. Output the result modulo $998244353$.
 
 ### Why it works

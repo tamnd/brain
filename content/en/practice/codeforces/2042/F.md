@@ -189,10 +189,7 @@ $$M = M_1 \otimes M_2$$
 
 where
 
-$$M[i][j]
-=
-\max_k
-(M_1[i][k]+M_2[k][j])$$
+$$M[i][j] = \max_k (M_1[i][k]+M_2[k][j])$$
 
 This works because after finishing the left segment in state `k`, we continue through the right segment from the same state.
 

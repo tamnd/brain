@@ -34,9 +34,7 @@ $$P \cap P_c.$$
 
 The resulting cost is
 
-$$\frac{1}{2}\operatorname{area}(P \triangle P_c)
-=
-\operatorname{area}(P)-\operatorname{area}(P\cap P_c).$$
+$$\frac{1}{2}\operatorname{area}(P \triangle P_c) = \operatorname{area}(P)-\operatorname{area}(P\cap P_c).$$
 
 So the whole problem reduces to
 

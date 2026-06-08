@@ -48,11 +48,7 @@ $$\sum \max(0,a_i-b_i).$$
 
 So the optimization problem is
 
-$$\min \sum \left(
-\frac{b_i(b_i+1)}2
-+
-k\max(0,a_i-b_i)
-\right).$$
+$$\min \sum \left( \frac{b_i(b_i+1)}2 + k\max(0,a_i-b_i) \right).$$
 
 The constraints are the real challenge. There are up to `10^4` test cases and the total `n` over all test cases is `2·10^5`. Individual lane sizes reach `10^6`, so the total number of cars may be as large as `2·10^{11}`. Any algorithm that reasons about cars individually is impossible. We need a solution whose complexity depends on `n`, not on the total number of cars.
 
@@ -96,19 +92,13 @@ The waiting-time term prefers balancing, but the movement penalty is enormous. T
 
 A brute-force viewpoint is to choose final lane sizes `b_i` and evaluate
 
-$$\sum \frac{b_i(b_i+1)}2
-+
-k\sum \max(0,a_i-b_i).$$
+$$\sum \frac{b_i(b_i+1)}2 + k\sum \max(0,a_i-b_i).$$
 
 The difficulty is that the number of possible vectors `(b_1,\dots,b_n)` with fixed sum `S` is astronomical. Even for modest values, the search space is far beyond reach.
 
 The key observation is that the objective is separable. Define
 
-$$g_i(b)
-=
-\frac{b(b+1)}2
-+
-k\max(0,a_i-b).$$
+$$g_i(b) = \frac{b(b+1)}2 + k\max(0,a_i-b).$$
 
 Then we want
 
@@ -126,11 +116,7 @@ $$\Delta_i(t)=g_i(t)-g_i(t-1).$$
 
 A short calculation gives
 
-$$\Delta_i(t)=
-\begin{cases}
-t-k,& t\le a_i,\\
-t,& t>a_i.
-\end{cases}$$
+$$\Delta_i(t)= \begin{cases} t-k,& t\le a_i,\\ t,& t>a_i. \end{cases}$$
 
 For each lane we obtain an increasing sequence of marginal costs:
 
@@ -154,20 +140,12 @@ Here `M` is about `10^6`.
 1. Let `S = sum(a)`.
 2. Observe that
 
-$$g_i(b)
-=
-\frac{b(b+1)}2
-+
-k\max(0,a_i-b).$$
+$$g_i(b) = \frac{b(b+1)}2 + k\max(0,a_i-b).$$
 
 The total objective is the sum of these independent lane costs.
 3. Compute the marginal sequence for each lane:
 
-$$\Delta_i(t)=
-\begin{cases}
-t-k,& t\le a_i,\\
-t,& t>a_i.
-\end{cases}$$
+$$\Delta_i(t)= \begin{cases} t-k,& t\le a_i,\\ t,& t>a_i. \end{cases}$$
 
 Choosing `b_i` means taking the first `b_i` marginal values from lane `i`.
 4. Reinterpret the problem as selecting exactly `S` marginal values from the union of all lane sequences.
@@ -209,9 +187,7 @@ $$c_2=\max(0,m-1-a_i)$$
 
 marginals, whose sum is
 
-$$\sum_{t=a_i+1}^{a_i+c_2} t
-=
-\frac{c_2(2a_i+c_2+1)}2.$$
+$$\sum_{t=a_i+1}^{a_i+c_2} t = \frac{c_2(2a_i+c_2+1)}2.$$
 8. Let `cnt_less` be the total number of marginals `< m` and `sum_less` their total sum.
 
 We still need

@@ -36,11 +36,7 @@ The constraints allow $n$ up to 3000 with total sum also 3000. This rules out an
 
 A subtle failure case arises from trying to satisfy symmetry and permutation constraints independently. For example, a naive attempt for $n=3$ might try a cyclic Latin square:
 
-$$\begin{matrix}
-0 & 1 & 2 \\
-1 & 2 & 0 \\
-2 & 0 & 1
-\end{matrix}$$
+$$\begin{matrix} 0 & 1 & 2 \\ 1 & 2 & 0 \\ 2 & 0 & 1 \end{matrix}$$
 
 This satisfies row/column permutation constraints but violates the mirror-sum condition because $a_{1,1} + a_{1,3} = 0 + 2 = 2$ is fine, yet vertical symmetry fails for other positions. Worse, even if symmetry is enforced, repeated adjacency pairs immediately appear due to cyclic repetition.
 
@@ -162,12 +158,7 @@ We compute $a_{i,j} = (i + j) \bmod 4$.
 
 Matrix:
 
-$$\begin{matrix}
-0 & 1 & 2 & 3 \\
-1 & 2 & 3 & 0 \\
-2 & 3 & 0 & 1 \\
-3 & 0 & 1 & 2
-\end{matrix}$$
+$$\begin{matrix} 0 & 1 & 2 & 3 \\ 1 & 2 & 3 & 0 \\ 2 & 3 & 0 & 1 \\ 3 & 0 & 1 & 2 \end{matrix}$$
 
 This confirms row and column permutations and shows the full cyclic structure required for adjacency uniqueness.
 

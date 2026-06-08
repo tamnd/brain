@@ -26,12 +26,7 @@ draft: false
 
 Each city is a point on the plane. We choose a dividing point $(x_0,y_0)$, which splits the plane into four regions:
 
-$$\begin{aligned}
-&x \ge x_0,\ y \ge y_0 \\
-&x < x_0,\ y \ge y_0 \\
-&x \ge x_0,\ y < y_0 \\
-&x < x_0,\ y < y_0
-\end{aligned}$$
+$$\begin{aligned} &x \ge x_0,\ y \ge y_0 \\ &x < x_0,\ y \ge y_0 \\ &x \ge x_0,\ y < y_0 \\ &x < x_0,\ y < y_0 \end{aligned}$$
 
 Every city belongs to exactly one of these regions, according to the inequalities above.
 
@@ -59,18 +54,11 @@ If we can answer this efficiently, then the final answer can be found with binar
 
 For a fixed $k$, imagine sweeping the vertical boundary from left to right. At any moment, cities are divided into two groups:
 
-$$L = \{x_i < x_0\},
-\qquad
-R = \{x_i \ge x_0\}.$$
+$$L = \{x_i < x_0\}, \qquad R = \{x_i \ge x_0\}.$$
 
 For a chosen horizontal boundary $y_0$, we need
 
-$$\begin{aligned}
-\text{left-below} &\ge k,\\
-\text{left-above} &\ge k,\\
-\text{right-below} &\ge k,\\
-\text{right-above} &\ge k.
-\end{aligned}$$
+$$\begin{aligned} \text{left-below} &\ge k,\\ \text{left-above} &\ge k,\\ \text{right-below} &\ge k,\\ \text{right-above} &\ge k. \end{aligned}$$
 
 Let $P_L(y)$ and $P_R(y)$ be the numbers of cities in $L$ and $R$ whose $y$-coordinate is strictly smaller than $y$.
 

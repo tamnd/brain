@@ -42,9 +42,7 @@ where $p$ is the highest set bit of $n\&m$.
 6. Show that an optimal $y$ always satisfies $P_y>P_x$, reducing the optimization to choosing a single parameter $c\in[0,k-2]$.
 7. Optimize
 
-$$\min(f(a,c)+f(b,c)+2,2P_x)
-+
-\min(f(a,k-2-c)+f(b,k-2-c)+2,2P_x)$$
+$$\min(f(a,c)+f(b,c)+2,2P_x) + \min(f(a,k-2-c)+f(b,k-2-c)+2,2P_x)$$
 
 using a digit DP over the binary representation of $c$.
 

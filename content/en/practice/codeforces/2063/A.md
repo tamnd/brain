@@ -215,11 +215,7 @@ Output:
 
 The minimal coprime segments are:
 
-$$[1,1],
-[2,3],
-[3,4],
-\dots,
-[9,10]$$
+$$[1,1], [2,3], [3,4], \dots, [9,10]$$
 
 There are exactly 9 of them.
 

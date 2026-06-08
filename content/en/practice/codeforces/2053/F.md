@@ -37,11 +37,7 @@ So each row is represented by a single chosen value $p_i$.
 
 The final count of value $u$ in row $i$ becomes
 
-$$c_{u,i}=cnt_i(u)+
-\begin{cases}
-z_i,&u=p_i\\
-0,&u\neq p_i
-\end{cases}$$
+$$c_{u,i}=cnt_i(u)+ \begin{cases} z_i,&u=p_i\\ 0,&u\neq p_i \end{cases}$$
 
 ## Contribution of Two Adjacent Rows
 
@@ -51,10 +47,7 @@ $$\sum_u c_{u,i-1}c_{u,i}$$
 
 expands to
 
-$$C_i
-+z_{i-1}\,cnt_i(p_{i-1})
-+z_i\,cnt_{i-1}(p_i)
-+z_{i-1}z_i[p_{i-1}=p_i]$$
+$$C_i +z_{i-1}\,cnt_i(p_{i-1}) +z_i\,cnt_{i-1}(p_i) +z_{i-1}z_i[p_{i-1}=p_i]$$
 
 where
 
@@ -70,20 +63,7 @@ as the maximum beauty considering rows $1\dots i$ when row $i$ chooses value $v$
 
 Then
 
-$$dp_i(v)
-=
-C_i
-+
-z_i\,cnt_{i-1}(v)
-+
-\max_p
-\Big(
-dp_{i-1}(p)
-+
-z_{i-1}\,cnt_i(p)
-+
-z_{i-1}z_i[p=v]
-\Big)$$
+$$dp_i(v) = C_i + z_i\,cnt_{i-1}(v) + \max_p \Big( dp_{i-1}(p) + z_{i-1}\,cnt_i(p) + z_{i-1}z_i[p=v] \Big)$$
 
 Let
 
@@ -91,17 +71,7 @@ $$A(p)=dp_{i-1}(p)+z_{i-1}cnt_i(p).$$
 
 Then
 
-$$dp_i(v)
-=
-C_i
-+
-z_i cnt_{i-1}(v)
-+
-\max
-\Big(
-\max_p A(p),
-A(v)+z_{i-1}z_i
-\Big).$$
+$$dp_i(v) = C_i + z_i cnt_{i-1}(v) + \max \Big( \max_p A(p), A(v)+z_{i-1}z_i \Big).$$
 
 This is the crucial simplification.
 
@@ -126,9 +96,7 @@ The standard accepted solution stores DP values over all $1\ldots k$ in a lazy s
 
 The transition from row $i-1$ to row $i$ can then be implemented exactly as in the accepted Codeforces solutions in
 
-$$O((\text{distinct values in row }i)+
-(\text{distinct values in row }i-1))
-\log k.$$
+$$O((\text{distinct values in row }i)+ (\text{distinct values in row }i-1)) \log k.$$
 
 Since the total number of matrix cells over all test cases is at most $6\cdot10^5$, the overall complexity is
 

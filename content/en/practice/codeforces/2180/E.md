@@ -74,9 +74,7 @@ $$H=\{x\mid S\oplus x=S\}.$$
 
 Indeed, $0\in H$, and if $a,b\in H$, then
 
-$$S\oplus(a\oplus b)
-=(S\oplus a)\oplus b
-=S.$$
+$$S\oplus(a\oplus b) =(S\oplus a)\oplus b =S.$$
 
 So the valid XOR masks form a linear space. The answer is simply $|H|-1$, because $x=0$ is forbidden.
 
@@ -86,9 +84,7 @@ Intervals have a very rigid structure. Consider the highest bit where $l$ and $r
 
 Then the interval crosses the boundary between the two halves
 
-$$[0,2^k-1]
-\quad\text{and}\quad
-[2^k,2^{k+1}-1].$$
+$$[0,2^k-1] \quad\text{and}\quad [2^k,2^{k+1}-1].$$
 
 For the interval to be invariant under some nonzero XOR mask, it must contain complete pairs $(y,y\oplus 2^k)$. That is only possible if the interval actually covers the entire block
 
@@ -351,10 +347,7 @@ Consider:
 
 The length is $4$, but $2\bmod4=2$. The algorithm rejects it. Indeed,
 
-$$2\oplus1=3,\quad
-3\oplus1=2,\quad
-4\oplus1=5,\quad
-5\oplus1=4$$
+$$2\oplus1=3,\quad 3\oplus1=2,\quad 4\oplus1=5,\quad 5\oplus1=4$$
 
 looks promising, but mask $2$ already fails:
 

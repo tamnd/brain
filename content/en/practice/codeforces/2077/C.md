@@ -28,11 +28,7 @@ Every character of the string contributes either `+1` or `-1`.
 
 If we define
 
-$$w(c)=
-\begin{cases}
-+1,&c='1'\\
--1,&c='0'
-\end{cases}$$
+$$w(c)= \begin{cases} +1,&c='1'\\ -1,&c='0' \end{cases}$$
 
 then for any segment of a binary string, the function $F$ is simply the sum of these values over that segment.
 
@@ -72,12 +68,7 @@ v = "111"
 
 we have $d=3$. The score is not $d^2/4=9/4$. The actual answer is
 
-$$\left\lfloor \frac d2\right\rfloor
-\left\lceil \frac d2\right\rceil
-=
-1\cdot2
-=
-2.$$
+$$\left\lfloor \frac d2\right\rfloor \left\lceil \frac d2\right\rceil = 1\cdot2 = 2.$$
 
 The parity correction is the key step of the whole solution.
 
@@ -101,15 +92,11 @@ $$x(d-x).$$
 
 This quadratic is maximized when the two parts are as close as possible. The maximum value becomes
 
-$$\left\lfloor \frac d2\right\rfloor
-\left\lceil \frac d2\right\rceil
-=
-\frac{d^2-(d\bmod 2)}4.$$
+$$\left\lfloor \frac d2\right\rfloor \left\lceil \frac d2\right\rceil = \frac{d^2-(d\bmod 2)}4.$$
 
 Now the problem becomes:
 
-$$\sum_{\text{subsequence}}
-\frac{d^2-(d\bmod2)}4.$$
+$$\sum_{\text{subsequence}} \frac{d^2-(d\bmod2)}4.$$
 
 The subsequence order has disappeared completely.
 
@@ -117,11 +104,7 @@ Let $R$ be the number of ones in the current string. Then every query only chang
 
 The remaining task is to compute the sum of $d^2$ over all subsequences and then subtract the parity correction. Using a probabilistic interpretation of a uniformly random subsequence, both quantities admit closed forms. After simplification the answer depends only on $n$ and $R$:
 
-$$\boxed{
-2^{\,n-4}
-\left((2R-n)^2+n-2\right)
-}
-\pmod{998244353}.$$
+$$\boxed{ 2^{\,n-4} \left((2R-n)^2+n-2\right) } \pmod{998244353}.$$
 
 Since $n$ never changes and a flip changes only $R$, each query can be answered in $O(1)$.
 
@@ -148,12 +131,7 @@ This parabola reaches its maximum when $x$ is closest to $d/2$.
 
 Hence
 
-$$\text{score}(v)
-=
-\left\lfloor\frac d2\right\rfloor
-\left\lceil\frac d2\right\rceil
-=
-\frac{d^2-(d\bmod2)}4.$$
+$$\text{score}(v) = \left\lfloor\frac d2\right\rfloor \left\lceil\frac d2\right\rceil = \frac{d^2-(d\bmod2)}4.$$
 
 ### Deriving the sum over all subsequences
 
@@ -161,12 +139,7 @@ Interpret every subsequence as independently choosing whether each position is i
 
 Define a random variable:
 
-$$X_i=
-\begin{cases}
-1,&s_i=1\text{ and chosen}\\
--1,&s_i=0\text{ and chosen}\\
-0,&\text{otherwise}
-\end{cases}$$
+$$X_i= \begin{cases} 1,&s_i=1\text{ and chosen}\\ -1,&s_i=0\text{ and chosen}\\ 0,&\text{otherwise} \end{cases}$$
 
 Then
 
@@ -176,11 +149,7 @@ Let $R$ be the number of ones and $Z=n-R$.
 
 We have
 
-$$E[d]
-=
-\frac{R-Z}{2}
-=
-\frac{2R-n}{2}.$$
+$$E[d] = \frac{R-Z}{2} = \frac{2R-n}{2}.$$
 
 Also
 
@@ -188,25 +157,15 @@ $$\operatorname{Var}(X_i)=\frac14,$$
 
 so
 
-$$\operatorname{Var}(d)
-=
-\frac n4.$$
+$$\operatorname{Var}(d) = \frac n4.$$
 
 Therefore
 
-$$E[d^2]
-=
-\operatorname{Var}(d)+E[d]^2
-=
-\frac{(2R-n)^2+n}{4}.$$
+$$E[d^2] = \operatorname{Var}(d)+E[d]^2 = \frac{(2R-n)^2+n}{4}.$$
 
 Since there are $2^n$ subsequences,
 
-$$\sum d^2
-=
-2^nE[d^2]
-=
-2^{n-2}\big((2R-n)^2+n\big).$$
+$$\sum d^2 = 2^nE[d^2] = 2^{n-2}\big((2R-n)^2+n\big).$$
 
 The score contains
 
@@ -220,29 +179,15 @@ $$2^{n-1}.$$
 
 Thus
 
-$$\sum (d\bmod2)
-=
-2^{n-1}.$$
+$$\sum (d\bmod2) = 2^{n-1}.$$
 
 Putting everything together:
 
-$$\text{Answer}
-=
-\frac14
-\left(
-2^{n-2}\big((2R-n)^2+n\big)
--
-2^{n-1}
-\right).$$
+$$\text{Answer} = \frac14 \left( 2^{n-2}\big((2R-n)^2+n\big) - 2^{n-1} \right).$$
 
 After factoring:
 
-$$\boxed{
-2^{n-4}
-\left(
-(2R-n)^2+n-2
-\right)
-}.$$
+$$\boxed{ 2^{n-4} \left( (2R-n)^2+n-2 \right) }.$$
 
 ### Processing updates
 
@@ -256,8 +201,7 @@ $$x=2R-n.$$
 
 1. Output
 
-$$2^{n-4}(x^2+n-2)
-\pmod{998244353}.$$
+$$2^{n-4}(x^2+n-2) \pmod{998244353}.$$
 
 For $n<4$, the factor $2^{n-4}$ is interpreted modulo $998244353$ using the modular inverse of $2$.
 

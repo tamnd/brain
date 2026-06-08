@@ -51,8 +51,7 @@ Since `a+b-|a-b| = 2*min(a,b)`, we get
 
 Thus the entire problem becomes
 
-$$\sum_{\text{good pairs }(u,v)}
-\bigl(2\min(a,b)-1\bigr)$$
+$$\sum_{\text{good pairs }(u,v)} \bigl(2\min(a,b)-1\bigr)$$
 
 where `a` and `b` are the distances from the two vertices to their LCA.
 
@@ -106,9 +105,7 @@ $$\min(a,b)=\sum_{k\ge1}[a\ge k][b\ge k],$$
 
 we obtain
 
-$$f(u,v)
-=
-\sum_{k\ge1}2[a\ge k][b\ge k]-1.$$
+$$f(u,v) = \sum_{k\ge1}2[a\ge k][b\ge k]-1.$$
 
 This converts the problem into counting pairs whose two depths from the LCA are both at least `k`.
 
@@ -145,8 +142,7 @@ Let `dep[v]` be the depth from the root.
 
 For a pair with LCA `w`,
 
-$$a=dep[u]-dep[w],\qquad
-b=dep[v]-dep[w].$$
+$$a=dep[u]-dep[w],\qquad b=dep[v]-dep[w].$$
 
 Its contribution is
 

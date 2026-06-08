@@ -108,9 +108,7 @@ Call this vertex $x$.
 
 Every completion tree has $P(T)=x$, so
 
-$$ans[x]
-=
-\Big(\prod s_i\Big)\, n^{k-2}.$$
+$$ans[x] = \Big(\prod s_i\Big)\, n^{k-2}.$$
 
 All other answers are zero.
 
