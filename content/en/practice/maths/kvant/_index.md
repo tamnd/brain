@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1412 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1413 solved, 8 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1412
+kvant_total: 1413
 kvant_verified: 8
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1412 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1413 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
 
 ## 1970
 
@@ -758,7 +758,7 @@ draft: false
 
 ## 1976
 
-45 problems across Issues 1–12.
+46 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -844,6 +844,7 @@ draft: false
 |---|---------|---|------|
 | [406](406.md) Let the circle have center $O$ and radius $R$. |  | 2m58s |
 | [407](407.md) *S. V. Konyagin*. Consider small examples to understand the structure of the problem. |  | 3m58s |
+| [408](408.md) Let the original rectangles have side lengths $a$ and $b$, and let their ratio be $r = \\frac{a}{b} > 0$. |  | 9m21s |
 | [409](409.md) The transformation replaces each entry in a row by the frequency of that value in the same row. |  | 9m54s |
 | [410](410.md) Consider the sphere of radius $1$ centered at the origin in $\\mathbb{R}^3$, and let the equatorial plane be the $xy$-plane. |  | 4m02s |
 
