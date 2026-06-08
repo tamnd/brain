@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 705 contests, 3934 problems, 2077 verified."
+description: "Codeforces problem solutions with full editorial. 706 contests, 3941 problems, 2079 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**705 contests, 3934 problems, 2077 verified.**
+**706 contests, 3941 problems, 2079 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1907](1907/) | [Codeforces Round 913 (Div. 3)](https://codeforces.com/contest/1907) | Div. 3 | 800-2200 | 2/7 | 14m 6s |
 | [1909](1909/) | [Pinely Round 3 (Div. 1 + Div. 2)](https://codeforces.com/contest/1909) | Div. 1+2 | 800-3500 | 4/10 | 19m 20s |
 | [1910](1910/) | [Kotlin Heroes: Episode 9 (Unrated, T-Shirts + Prizes!)](https://codeforces.com/contest/1910) | Kotlin | 1100-2900 | 1/10 | 21m 21s |
 | [1912](1912/) | [2023-2024 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1912) | ICPC/IOI | 800-3300 | 5/12 | 21m 4s |
