@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1462 solved, 27 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1463 solved, 27 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1462
+kvant_total: 1463
 kvant_verified: 27
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1462 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 27 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1463 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 27 solutions have been independently verified.
 
 ## 1970
 
@@ -1608,7 +1608,7 @@ draft: false
 
 ## 1983
 
-58 problems across Issues 1–12, 4 verified.
+59 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1717,6 +1717,7 @@ draft: false
 | [831](831.md) *V. V. Prasolov*. Introduce position vectors for the vertices $A,B,C,D$ in the plane. |  | 7m40s |
 | [832](832.md) *V. A. Li*. Consider first the case of dividing a square into smaller squares. |  | 4m08s |
 | [833](833.md) *V. E. Matizen*. Compute the first few terms to detect patterns. |  | 7m17s |
+| [834](834.md) *N. B. Vasilyev*. This is a two-part geometric covering problem. |  | 34m45s |
 | [835](835.md) *L. D. Meniches*. Represent the previous encounters by a bipartite graph. |  | 7m31s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1983_12/)
