@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 import tomllib
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -208,17 +209,22 @@ def rewrite_text(text: str, current: Site, main: Site, shards: list[Site]) -> st
     return text
 
 
+def _rewrite_file(args: tuple[Path, Site, Site, list[Site]]) -> bool:
+    path, current, main, shards = args
+    original = path.read_text(encoding="utf-8")
+    rewritten = rewrite_text(original, current, main, shards)
+    if rewritten != original:
+        path.write_text(rewritten, encoding="utf-8")
+        return True
+    return False
+
+
 def rewrite_tree(root: Path, current: Site, main: Site, shards: list[Site]) -> int:
-    changed = 0
-    for path in root.rglob("*"):
-        if not path.is_file() or path.suffix not in TEXT_SUFFIXES:
-            continue
-        original = path.read_text(encoding="utf-8")
-        rewritten = rewrite_text(original, current, main, shards)
-        if rewritten != original:
-            path.write_text(rewritten, encoding="utf-8")
-            changed += 1
-    return changed
+    files = [p for p in root.rglob("*") if p.is_file() and p.suffix in TEXT_SUFFIXES]
+    work = [(p, current, main, shards) for p in files]
+    with ThreadPoolExecutor() as pool:
+        results = list(pool.map(_rewrite_file, work))
+    return sum(results)
 
 
 def split_search_data(public: Path, main: Site, shards: list[Site]) -> None:

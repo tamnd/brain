@@ -136,6 +136,7 @@ jobs:
       - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 1
+          sparse-checkout: scripts/
 
       - name: Download shard artifact
         uses: actions/download-artifact@v8.0.1
@@ -166,6 +167,7 @@ jobs:
       - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 1
+          sparse-checkout: scripts/
 
       - name: Download main artifact
         uses: actions/download-artifact@v8.0.1
