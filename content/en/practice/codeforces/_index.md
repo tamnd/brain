@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 637 contests, 3455 problems, 1898 verified."
+description: "Codeforces problem solutions with full editorial. 638 contests, 3459 problems, 1901 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**637 contests, 3455 problems, 1898 verified.**
+**638 contests, 3459 problems, 1901 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -456,6 +456,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
+| [2010](2010/) | [Testing Round 19 (Div. 3)](https://codeforces.com/contest/2010) | Div. 3 | 800-1700 | 3/4 | 4m 56s |
 | [2011](2011/) | [Kotlin Heroes: Episode 11](https://codeforces.com/contest/2011) | Kotlin | - | 2/9 | 14m |
 | [2013](2013/) | [Codeforces Round 973 (Div. 2)](https://codeforces.com/contest/2013) | Div. 2 | 800-3500 | 3/7 | 11m 38s |
 | [2014](2014/) | [Codeforces Round 974 (Div. 3)](https://codeforces.com/contest/2014) | Div. 3 | 800-2200 | 5/8 | 13m 2s |
