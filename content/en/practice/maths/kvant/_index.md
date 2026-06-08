@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1472 solved, 32 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1474 solved, 32 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1472
+kvant_total: 1474
 kvant_verified: 32
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1472 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 32 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1474 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 32 solutions have been independently verified.
 
 ## 1970
 
@@ -1856,7 +1856,7 @@ draft: false
 
 ## 1985
 
-57 problems across Issues 1–12, 2 verified.
+59 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1926,6 +1926,7 @@ draft: false
 | [932](932.md) *Moscow Mathematical Olympiad*. The anaconda is an arbitrary polygonal line of total length $10$ contained in the unit square. |  | 3m48s |
 | [933](933.md) *Moscow Mathematical Olympiad*. Let the clans be represented by labels. |  | 5m06s |
 | [934](934.md) *Moscow Mathematical Olympiad*. Interpret the $2n$ points as vertices of a graph $G$ with $2n$ vertices and $n^2+1$ edges. |  | 5m24s |
+| [935](935.md) *Moscow Mathematical Olympiad*. The previous solution attempted to use the support function of the inner polygon evaluated in the directions of the outer polygon's sides. |  | 27m03s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1985_8/)
 
@@ -1974,6 +1975,7 @@ draft: false
 | [957](957.md) *International Mathematical Olympiad (XXVI) for School Students*. Each allowed integer has the form |  | 9m14s |
 | [958](958.md) *International Mathematical Olympiad (XXVI)*. Let |  | 3m21s |
 | [959](959.md) *A. A. Razborov*. Consider first small examples. |  | 7m47s |
+| [960](960.md) Something went wrong. |  | 29m02s |
 
 ## 1986
 
