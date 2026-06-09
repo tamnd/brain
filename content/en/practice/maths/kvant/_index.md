@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1529 solved, 50 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1532 solved, 51 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1529
-kvant_verified: 50
+kvant_total: 1532
+kvant_verified: 51
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1529 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 50 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1532 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 51 solutions have been independently verified.
 
 ## 1970
 
@@ -3229,12 +3229,13 @@ draft: false
 
 ## 2025
 
-11 problems across Issues 1–11, 1 verified.
+14 problems across Issues 1–11, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [2826](2826.md) Place the square in coordinates with $A(0,0)$, $B(1,0)$, $C(1,1)$, $D(0,1)$. | ✓ | 40m44s |
 | [2827](2827.md) Our systems have detected unusual activity coming from your system. |  | 22m35s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_2025_2/)
@@ -3253,6 +3254,8 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [2842](2842.md) *Euler Olympiad (XVII, regional stage)*. Let $a, a+1, \\dots, a+n-1$ be $n>1$ consecutive natural numbers. |  | 38m17s |
+| [2843](2843.md) Introduce Cartesian coordinates adapted to the symmetry of the equilateral triangle. |  | 20m27s |
 | [2846](2846.md) *All-Russian Mathematics Olympiad for School Students (LI, Final Round)*. The word “ПЕТЯ” has five letters. |  | 10m11s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_2025_8/)
