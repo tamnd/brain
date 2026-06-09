@@ -1,0 +1,131 @@
+---
+title: "CF 1676B - Equal Candies"
+description: "We are given a set of boxes, each containing some number of candies. There is exactly one box for each friend, and the goal is to make all boxes contain the same number of candies so that no friend feels left out. We can only eat candies from a box; we cannot add any."
+date: "2026-06-10T01:01:39+07:00"
+tags: ["codeforces", "competitive-programming", "greedy", "math", "sortings"]
+categories: ["algorithms"]
+codeforces_contest: 1676
+codeforces_index: "B"
+codeforces_contest_name: "Codeforces Round 790 (Div. 4)"
+rating: 800
+weight: 1676
+solve_time_s: 337
+verified: true
+draft: false
+---
+
+[CF 1676B - Equal Candies](https://codeforces.com/problemset/problem/1676/B)
+
+**Rating:** 800  
+**Tags:** greedy, math, sortings  
+**Solve time:** 5m 37s  
+**Verified:** yes  
+
+## Solution
+## Problem Understanding
+
+We are given a set of boxes, each containing some number of candies. There is exactly one box for each friend, and the goal is to make all boxes contain the same number of candies so that no friend feels left out. We can only eat candies from a box; we cannot add any. The input provides multiple test cases, each with the number of boxes `n` and a list of integers representing the candies in each box. The output is the minimum total number of candies we must eat to equalize all boxes for each test case. Essentially, the problem reduces to determining the maximum number of candies we can leave in all boxes, which is the minimum of the array, and calculating how many candies we must remove from each box to reach that level.
+
+The constraints are small: `n` is at most 50, and each candy count can be up to `10^7`. Because `n` is tiny, we do not need complex data structures or algorithms; even iterating over the boxes multiple times per test case is acceptable. The sum of all `t * n` across test cases is manageable within a second. Non-obvious edge cases include arrays where all boxes already have the same number of candies, arrays with a single box, or boxes where the minimum candy count is very low compared to others, which could cause large subtraction sums.
+
+## Approaches
+
+A brute-force approach would attempt all possible final candy counts from 1 to the maximum value in the array and calculate the total candies eaten for each candidate. This is correct because it considers every possible uniform target, but it is inefficient. For each test case, this approach could require iterating up to `10^7` for each box, leading to potentially hundreds of millions of operations for a single test case. Clearly, this is unnecessary because the optimal uniform number is always the minimum candy count in the array. Reducing any box below that would only increase the number of candies eaten without affecting the others, and leaving boxes above it allows us to minimize total consumption.
+
+The observation that the target number of candies is the minimum in the array lets us reduce the problem to a single linear pass per test case: find the minimum and then sum the differences between each box and this minimum. This approach has time complexity proportional to `n` per test case, which is entirely acceptable given the constraints.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force all targets | O(n * max(a_i)) | O(1) | Too slow |
+| Optimal (subtract from min) | O(n) | O(1) | Accepted |
+
+## Algorithm Walkthrough
+
+1. For each test case, read the number of boxes `n` and the list of candy counts `a`.
+2. Compute the minimum candy count `min_candies` in the list. This represents the number of candies that every box can have without exceeding the original count of any box.
+3. Initialize a counter `candies_eaten` to zero. Iterate through each box `i` in the list, calculate `a[i] - min_candies`, and add this difference to `candies_eaten`. This represents the candies we must eat from box `i` to equalize it with the minimum.
+4. Output `candies_eaten` for the current test case. Repeat for all test cases.
+
+Why it works: The invariant here is that no box can have more candies than it originally contained, so any uniform number of candies must be less than or equal to the minimum. By choosing the minimum, we guarantee that all boxes are reduced minimally to reach equality, which ensures the sum of candies eaten is minimized.
+
+## Python Solution
+
+```python
+import sys
+input = sys.stdin.readline
+
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        min_candies = min(a)
+        candies_eaten = sum(x - min_candies for x in a)
+        print(candies_eaten)
+
+solve()
+```
+
+The solution reads each test case, computes the minimum in the list, and sums the differences. Using a generator expression for the sum is both concise and efficient. Since `n` is at most 50, this linear scan is instantaneous. The only subtlety is ensuring that we handle the input and output correctly using fast I/O because the problem has multiple test cases.
+
+## Worked Examples
+
+First sample input:
+
+```
+5
+5
+1 2 3 4 5
+6
+1000 1000 5 1000 1000 1000
+```
+
+| Test Case | Boxes `a` | min_candies | Candies eaten calculation | Output |
+| --- | --- | --- | --- | --- |
+| 1 | [1, 2, 3, 4, 5] | 1 | (1-1)+(2-1)+(3-1)+(4-1)+(5-1)=10 | 10 |
+| 2 | [1000, 1000, 5, 1000, 1000, 1000] | 5 | 995+995+0+995+995+995=4975 | 4975 |
+
+These traces confirm that taking the minimum and subtracting it from each box produces the correct total candies eaten.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(t * n) | Each test case requires a linear scan to find the minimum and sum differences. |
+| Space | O(n) | We store the array of boxes per test case. |
+
+Given `t ≤ 1000` and `n ≤ 50`, the total number of operations is at most 50,000, well within the 1-second limit. Memory usage is trivial.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
+    solve()
+    return output.getvalue().strip()
+
+# Provided samples
+assert run("5\n5\n1 2 3 4 5\n6\n1000 1000 5 1000 1000 1000\n10\n1 2 3 5 1 2 7 9 13 5\n3\n8 8 8\n1\n10000000\n") == \
+"10\n4975\n38\n0\n0", "sample 1"
+
+# Custom test cases
+assert run("1\n1\n7\n") == "0", "single box"
+assert run("1\n3\n5 5 5\n") == "0", "all equal"
+assert run("1\n4\n10 20 30 40\n") == "60", "linear difference"
+assert run("1\n5\n1 1 1 1 2\n") == "1", "one box higher"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 1 box [7] | 0 | single box requires no reduction |
+| 3 boxes [5,5,5] | 0 | all equal boxes require no reduction |
+| 4 boxes [10,20,30,40] | 60 | general case linear differences |
+| 5 boxes [1,1,1,1,2] | 1 | one box above minimum |
+
+## Edge Cases
+
+Consider the edge case where there is only one box, e.g., `[7]`. The minimum is 7, and there are no other boxes to equalize. The algorithm correctly computes 0 candies eaten. Another edge case is when all boxes are equal, such as `[5,5,5]`. The algorithm still computes 0. A case where one box is higher than the others, such as `[1,1,1,2]`, results in only the excess being eaten, and the calculation correctly outputs 1. These examples confirm that the algorithm handles both trivial and slightly skewed inputs correctly.
