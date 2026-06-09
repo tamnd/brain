@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1498 solved, 40 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1500 solved, 41 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1498
-kvant_verified: 40
+kvant_total: 1500
+kvant_verified: 41
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1498 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 40 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1500 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 41 solutions have been independently verified.
 
 ## 1970
 
@@ -2976,7 +2976,7 @@ draft: false
 
 ## 1995
 
-34 problems across Issues 1–6, 8 verified.
+35 problems across Issues 1–6, 8 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -3033,6 +3033,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1521](1521.md) *N. B. Vasiliev*. The problem concerns arranging 256 deputies, each corresponding to a distinct 8-bit vector, on a $16\\times16$ square grid of chairs. |  | 42m05s |
 | [1522](1522.md) Our systems have detected unusual activity coming from your system. |  | 21m51s |
 | [1523](1523.md) *L. D. Kurlandchik*. Let | ✓ | 29m20s |
 | [1524](1524.md) Let the incenters of the triangles $ABP$, $BCP$, $CDP$, $DAP$ be $X,Y,Z,W$ respectively. |  | 12m20s |
@@ -3044,7 +3045,7 @@ draft: false
 
 ## 1996
 
-9 problems across Issues 1–5.
+10 problems across Issues 1–5, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
@@ -3058,6 +3059,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1551](1551.md) *Moscow LIX Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. A closed broken line with six segments is a hexagonal cycle whose six vertices lie on one circle. | ✓ | 9m50s |
 | [1556](1556.md) Working |  | 31m40s |
 | [1557](1557.md) *Moscow LIX Mathematical Olympiad 1996, Tournament of Towns (Spring, 1996)*. Let $O$ be the center of the given circle. |  | 9m57s |
 | [1558](1558.md) Consider the game on small chessboards to observe patterns. |  | 8m44s |
