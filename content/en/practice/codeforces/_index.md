@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 861 contests, 5137 problems, 2499 verified."
+description: "Codeforces problem solutions with full editorial. 862 contests, 5143 problems, 2501 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**861 contests, 5137 problems, 2499 verified.**
+**862 contests, 5143 problems, 2501 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1735](1735/) | [Codeforces Round 824 (Div. 2)](https://codeforces.com/contest/1735) | Div. 2 | 800-2900 | 2/6 | 25m 23s |
 | [1736](1736/) | [Codeforces Round 825 (Div. 2)](https://codeforces.com/contest/1736) | Div. 2 | 800-2600 | 3/6 | 18m 58s |
 | [1737](1737/) | [Dytechlab Cup 2022](https://codeforces.com/contest/1737) | Special | 900-3500 | 1/7 | 18m 13s |
 | [1738](1738/) | [Codeforces Global Round 22](https://codeforces.com/contest/1738) | Global | 800-3300 | 1/8 | 21m 1s |
