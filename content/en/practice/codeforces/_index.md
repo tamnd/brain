@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 796 contests, 4673 problems, 2339 verified."
+description: "Codeforces problem solutions with full editorial. 797 contests, 4680 problems, 2342 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**796 contests, 4673 problems, 2339 verified.**
+**797 contests, 4680 problems, 2342 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1809](1809/) | [Educational Codeforces Round 145 (Rated for Div. 2)](https://codeforces.com/contest/1809) | Div. 2 | 800-2800 | 3/7 | 13m 48s |
 | [1810](1810/) | [CodeTON Round 4 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1810) | Div. 1+2 | 800-3200 | 2/8 | 16m 8s |
 | [1811](1811/) | [Codeforces Round 863 (Div. 3)](https://codeforces.com/contest/1811) | Div. 3 | 800-2200 | 4/8 | 16m 1s |
 | [1812](1812/) | [April Fools Day Contest 2023](https://codeforces.com/contest/1812) | April Fools | - | 8/10 | 17m 17s |
