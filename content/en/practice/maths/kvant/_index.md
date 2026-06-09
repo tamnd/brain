@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1527 solved, 49 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1529 solved, 50 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1527
-kvant_verified: 49
+kvant_total: 1529
+kvant_verified: 50
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1527 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 49 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1529 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 50 solutions have been independently verified.
 
 ## 1970
 
@@ -3195,7 +3195,7 @@ draft: false
 
 ## 2024
 
-4 problems across Issues 3–9, 1 verified.
+5 problems across Issues 3–11, 1 verified.
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_2024_3/)
 
@@ -3221,9 +3221,15 @@ draft: false
 |---|---------|---|------|
 | [2810](2810.md) *Ural Tournament of Young Mathematicians (62nd)*. The problem requires counting the number of ways to color the cells of an $n\\times n$ square with four colors so that any two cells sharing a side or a vertex receive different colors. | ✓ | 26m12s |
 
+### [Issue 11](https://www.kvant.digital/view/kvant_2024_11/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2825](2825.md) *Sirius Mathematical Olympiad*. Let $ABC$ be an acute-angled, non-isosceles triangle with altitudes $AD$, $BE$, $CF$ meeting at the orthocenter $H$. |  | 28m55s |
+
 ## 2025
 
-10 problems across Issues 1–11.
+11 problems across Issues 1–11, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3236,6 +3242,12 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2830](2830.md) Let $S$ be the set of amounts obtainable with at most $1000$ coins of denominations $a$ and $b$. |  | 9m59s |
+
+### [Issue 3](https://www.kvant.digital/view/kvant_2025_3/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2834](2834.md) *All-Russian Olympiad in Mathematics (LI, regional stage)*. Let the original integers be $a_1, a_2, \\dots, a_n$ and let $S = a_1 + a_2 + \\cdots + a_n$. | ✓ | 19m28s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_2025_5/)
 
