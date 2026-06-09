@@ -18,11 +18,11 @@ Exercises from [TAOCP Volume 1](../) Section 2.3.4.3: 8/8 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [**] |  | verified | 3m11s |
-| [2](02.md) |  [**] |  | verified | 15m54s |
-| [3](03.md) |  [**] |  | verified | 2m43s |
-| [4](04.md) |  [**] |  | verified | 3m22s |
-| [5](05.md) |  [**] |  | verified | 4m01s |
-| [6](06.md) |  [**] |  | solved | 39s |
-| [7](07.md) |  [**] |  | verified | 5m16s |
-| [8](08.md) |  [**] |  | solved | 11m56s |
+| [1](01.md) |  [**] |  | solved | 2m38s |
+| [2](02.md) |  [**] |  | solved | 2m46s |
+| [3](03.md) |  [**] |  | solved | 3m46s |
+| [4](04.md) |  [**] |  | solved | 4m31s |
+| [5](05.md) |  [**] |  | solved | 4m36s |
+| [6](06.md) |  [**] |  | solved | 6m15s |
+| [7](07.md) |  [**] |  | solved | 5m34s |
+| [8](08.md) |  [**] |  | solved | 4m47s |

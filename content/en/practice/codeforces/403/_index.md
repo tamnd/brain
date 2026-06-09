@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Round 236 (Div. 1)"
-description: "Solutions for Codeforces Round 236 (Div. 1) (contest 403). 0/2 problems verified against sample I/O. Difficulty range: 2300-2900."
+description: "2 problems from Codeforces Round 236 (Div. 1) (contest 403), difficulty 2300-2900. 0/2 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp", "data-structures", "implementation", "trees"]
 categories: ["algorithms"]
 contest_id: 403
@@ -9,16 +9,17 @@ rating_range: "2300-2900"
 n_problems: 2
 n_verified: 0
 total_solve_s: 117
-date: "2026-05-29T00:00:00+07:00"
+contest_year: 2014
+date: "2026-05-29T18:49:20+07:00"
 weight: 403
 draft: false
 ---
 
 # [Codeforces Round 236 (Div. 1)](https://codeforces.com/contest/403)
 
-**Type:** Div. 1 | **Problems:** 2 | **Verified:** 0/2 | **Rating range:** 2300-2900 | **Time:** 1m 57s
+Div. 1 | 2 problems | 0/2 verified | Difficulty 2300-2900 | 1m 57s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [D](D/) | [Beautiful Pairs of Numbers](https://codeforces.com/problemset/problem/403/D) | 2300 | combinatorics, dp | 51s | ✗ |
-| [E](E/) | [Two Rooted Trees](https://codeforces.com/problemset/problem/403/E) | 2900 | data-structures, implementation, trees | 1m 6s | ✗ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [D](D/) | [Beautiful Pairs of Numbers](https://codeforces.com/problemset/problem/403/D) | 2300 | combinatorics, dp | 1,234 | 51s |  |
+| [E](E/) | [Two Rooted Trees](https://codeforces.com/problemset/problem/403/E) | 2900 | data-structures, implementation, trees | 242 | 1m 6s |  |

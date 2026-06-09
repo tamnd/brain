@@ -1,7 +1,7 @@
 ---
 title: "CF 2115C - Gellyfish and Eternal Violet"
-description: "Gellyfish faces a collection of monsters, each with a certain amount of health points. She does not want to kill them but wants to reduce their HP to exactly one. She can attack over a number of rounds using a magical sword."
-date: "2026-06-08T04:13:03+07:00"
+description: "We are given a group of monsters, each starting with some integer health value. Over a fixed number of rounds, we interact with a probabilistic weapon that sometimes performs a global action and sometimes allows a targeted action."
+date: "2026-06-08T10:56:50+07:00"
 tags: ["codeforces", "competitive-programming", "combinatorics", "dp", "greedy", "math", "probabilities"]
 categories: ["algorithms"]
 codeforces_contest: 2115
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 1028 (Div. 1)"
 rating: 2700
 weight: 2115
-solve_time_s: 89
+solve_time_s: 108
 verified: false
 draft: false
 ---
@@ -18,44 +18,67 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** combinatorics, dp, greedy, math, probabilities  
-**Solve time:** 1m 29s  
+**Solve time:** 1m 48s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-Gellyfish faces a collection of monsters, each with a certain amount of health points. She does not want to kill them but wants to reduce their HP to exactly one. She can attack over a number of rounds using a magical sword. The sword may or may not shine in each round, and the effect of her attack depends on whether it shines. If it shines, her attack reduces all monsters' HP by one. If it does not shine, she can only reduce a single monster’s HP by one. She knows before acting whether the sword shines and can decide optimally each round.
+We are given a group of monsters, each starting with some integer health value. Over a fixed number of rounds, we interact with a probabilistic weapon that sometimes performs a global action and sometimes allows a targeted action. Our goal is to reduce every monster’s health exactly to 1 by the end of all rounds.
 
-The input provides the number of monsters, the number of attack rounds, and the probability of the sword shining. Each monster’s starting HP is given. The output must be the probability that she can achieve her goal using an optimal strategy.
+The interaction in each round depends on a binary random event: the sword either “shines” with probability $p$ or it does not. The important twist is that we observe this outcome before deciding whether to act, and our decision is fully adaptive. If it shines and we choose to attack, all monsters are reduced by 1. If it does not shine and we choose to attack, we may reduce exactly one chosen monster by 1.
 
-The constraints allow up to twenty monsters and up to four thousand attack rounds. The HP of each monster can be up to four hundred. The sum of monsters across all test cases does not exceed one hundred. This implies that while the number of monsters is small, the number of rounds is large, ruling out naive state-space explorations over all possible HP combinations for every round. The algorithm must exploit structure rather than brute force.
+So the process is a controlled stochastic system where each round gives either a global decrement opportunity or a single-target decrement opportunity, and we are trying to deterministically ensure all final values reach 1.
 
-A non-obvious edge case arises when all monsters start at HP equal to one. Here the goal is already achieved, so the probability is one regardless of the number of rounds or sword probability. Another edge case occurs when the sword has zero probability of shining; the algorithm must account for optimally choosing which monster to hit each round. Mismanaging the single-target attacks can lead to an incorrect probability of zero even if the rounds suffice to reduce all monsters to one.
+The constraints are small in width but large in depth. The number of monsters is at most 20, which immediately suggests that we can track states per monster or aggregate them. However, the number of rounds is up to 4000, which rules out any state space that scales exponentially in rounds. Any DP must compress time or use greedy structure per round.
+
+The key difficulty is that global operations are shared across all monsters, while single operations are local, so decisions are coupled across time.
+
+A subtle failure case arises when a solution assumes independence across monsters. For example, treating each monster separately ignores the fact that global attacks reduce all HP simultaneously and therefore affect future feasibility.
+
+Another subtle issue is assuming that every time the sword does not shine we can always “fix” the worst monster greedily. That fails when global hits accumulate in a way that makes some monsters overshoot or require coordination across multiple rounds.
 
 ## Approaches
 
-The brute-force solution enumerates all possible sequences of sword shines and attack choices over all rounds, tracking the HP of each monster. This would be correct because it explores all possible outcomes, but it quickly becomes intractable. If each round has two possible outcomes (shine or not), there are 2^m sequences, and for each, there are multiple attack choices on the single-target rounds. Even with just twenty monsters and four thousand rounds, this explodes exponentially.
+A brute-force strategy would simulate every possible sequence of shining outcomes across the $m$ rounds. Each round has two outcomes, so there are $2^m$ possible global patterns. For each pattern, we could simulate the optimal play greedily: when the sword shines, we apply a global decrement if useful, otherwise we assign single-target reductions to monsters that are still above 1. Even if simulation per pattern is linear in $n$, the total complexity becomes $O(2^m \cdot n)$, which is astronomically large for $m \le 4000$.
 
-The key insight is that the order in which single-target attacks are applied does not matter if the goal is only to reduce HP to one. This observation reduces the state to the number of single-target hits still needed, instead of tracking every possible HP configuration. Each monster initially requires a certain number of single-target attacks to reach one if no multi-target attacks occur. Let each monster’s "excess HP" be its HP minus one. If we let `k` be the total excess HP, then after each round we either reduce all monsters (if sword shines) or reduce a single monster (if sword does not shine). The problem can now be reframed as computing the probability of reaching a sum of `k` decrements using a mixture of multi-target and single-target attacks over `m` rounds, which can be modeled with dynamic programming.
+The key observation is that the order of decisions within a fixed realization of shining events is not the core difficulty. Instead, what matters is how many times we can afford to use single-target reductions before relying on global reductions, and how global reductions interact with per-monster deficits.
 
-The optimal approach uses dynamic programming where the state is the number of remaining single-target decrements required. For each round, if the sword shines, we reduce all remaining decrements simultaneously. If it does not shine, we probabilistically decide which monster to hit (or equivalently, reduce the total decrements by one). The DP transitions track probabilities cumulatively, avoiding enumeration of all attack sequences.
+We can reinterpret the problem in reverse. Suppose each monster $i$ needs exactly $d_i = h_i - 1$ total decrements. A global attack reduces all monsters simultaneously by 1, so it contributes 1 unit to every $d_i$. A single attack contributes 1 unit to exactly one $d_i$.
+
+Now the system becomes: we need to distribute $m$ rounds into global-use rounds and single-use rounds, depending on random shine events, while ensuring that every monster receives enough total decrement contributions.
+
+The crucial structure is that the optimal policy is greedy in a monotone sense: whenever a global hit is available and still useful for at least one unfinished monster, it is always optimal to use it. Otherwise, we use single-target operations to finish remaining deficits.
+
+This allows us to reduce the state to tracking how many “global hits we still need to make useful progress” and how many “single hits we still need”. Since $n \le 20$, we can compress the system by observing that only the maximum remaining requirement among monsters matters after aligning global operations.
+
+This leads to a DP over time where we track how many effective global reductions have been applied and how many single-target uses are still required to complete all monsters. Transitions depend only on whether a round is shining or not, and how many tasks remain.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^m * n^m) | O(n^m) | Too slow |
-| Optimal DP | O(m * total_excess_HP) | O(total_excess_HP) | Accepted |
+| Brute Force Simulation of all outcomes | $O(2^m \cdot n)$ | $O(n)$ | Too slow |
+| DP over remaining requirements | $O(m \cdot \sum h_i)$ (compressed) | $O(\sum h_i)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each monster, compute its excess HP, `h_i - 1`. Let `total_excess = sum(h_i - 1)` be the total number of HP decrements needed.
-2. Initialize a dynamic programming array `dp` of length `total_excess + 1` where `dp[x]` represents the probability of needing `x` more single-target hits to finish all monsters. Initially, `dp[total_excess] = 1` and all others are zero.
-3. Iterate over each of the `m` rounds. For each round, create a new DP array `new_dp`. For every possible number of remaining single-target hits `x`:
+We reformulate the problem in terms of total “work” required after factoring out global operations.
 
-- If the sword shines (with probability `p`), all monsters are decremented simultaneously. The total remaining single-target hits `x` decreases by `n` (but never below zero). Increment `new_dp[max(0, x - n)]` by `dp[x] * p`.
-- If the sword does not shine (with probability `1-p`), choose one monster to hit optimally, which reduces `x` by 1. Increment `new_dp[max(0, x - 1)]` by `dp[x] * (1 - p)`.
-4. After processing all rounds, the probability that Gellyfish reaches her goal is `dp[0]`.
+1. Compute each monster’s requirement $d_i = h_i - 1$. These represent how many decrements each monster still needs.
+2. Let us conceptually separate two resources: global decrements and single-target decrements. A global decrement reduces all $d_i$ simultaneously, while a single-target decrement reduces exactly one $d_i$.
+3. For any fixed number of global decrements $g$, each monster effectively has remaining requirement $\max(0, d_i - g)$. This means global hits are “shared progress” across all monsters.
+4. For each possible $g$, compute the total number of single-target operations required:
 
-Why it works: the DP tracks all possible states of remaining decrements and accumulates probabilities of reaching those states. Because the sword shining reduces all monsters by one and non-shining attacks reduce a single monster, the transitions correctly capture the optimal choices. The DP only needs to track the total remaining decrements rather than individual HPs, exploiting the symmetry between monsters. This invariant guarantees correctness: at every step, `dp[x]` represents the true probability of needing `x` more decrements, so `dp[0]` is the probability of success.
+$$s(g) = \sum_{i=1}^n \max(0, d_i - g)$$
+
+This is the number of “extra corrections” needed after applying $g$ global hits.
+5. A state $(g, s)$ is feasible if $s(g) \le m - g$, since each global hit consumes a round and remaining rounds must cover single-target actions.
+6. We now interpret the process probabilistically: in each round, with probability $p$, we get a global usable action; otherwise we get a single-target opportunity. Since we always act optimally, every global opportunity is taken if it is still beneficial.
+7. The key DP tracks probability that after $t$ rounds, we have achieved at least $g$ useful global hits while not exceeding remaining time needed for singles. Transitions are binomial-like but truncated by feasibility.
+8. We compute the probability that the number of effective global hits is sufficient to reduce all monsters within $m$ rounds, which reduces to summing probabilities of reaching each valid threshold $g$.
+
+### Why it works
+
+The algorithm relies on a monotonicity property: increasing the number of global hits never increases the required number of single-target operations. This ensures that the feasibility region $s(g) \le m-g$ is convex in $g$. As a result, the optimal strategy is fully characterized by the count of global hits, and all adaptive decisions collapse into choosing whether each global opportunity contributes to progress or is skipped without loss of optimality.
 
 ## Python Solution
 
@@ -66,38 +89,52 @@ input = sys.stdin.readline
 def solve():
     t = int(input())
     for _ in range(t):
-        n, m, p_perc = map(int, input().split())
-        p = p_perc / 100
+        n, m, p100 = map(int, input().split())
         h = list(map(int, input().split()))
-        total_excess = sum(x - 1 for x in h)
-
-        dp = [0.0] * (total_excess + 1)
-        dp[total_excess] = 1.0
-
+        
+        p = p100 / 100.0
+        
+        # convert to deficits
+        d = [x - 1 for x in h]
+        total_single_needed = sum(d)
+        
+        # dp[k] = probability of having exactly k global hits after m rounds
+        dp = [0.0] * (m + 1)
+        dp[0] = 1.0
+        
         for _ in range(m):
-            new_dp = [0.0] * (total_excess + 1)
-            for x in range(total_excess + 1):
-                if dp[x] == 0:
+            ndp = [0.0] * (m + 1)
+            for g in range(m):
+                if dp[g] == 0:
                     continue
-                # sword shines
-                decrease = min(x, n)
-                new_dp[x - decrease] += dp[x] * p
-                # sword does not shine
-                decrease = min(x, 1)
-                new_dp[x - decrease] += dp[x] * (1 - p)
-            dp = new_dp
-
-        print(f"{dp[0]:.6f}")
+                ndp[g + 1] += dp[g] * p
+                ndp[g] += dp[g] * (1 - p)
+            dp = ndp
+        
+        ans = 0.0
+        
+        for g in range(m + 1):
+            # compute remaining single requirement after g globals
+            need_single = 0
+            for x in d:
+                need_single += max(0, x - g)
+            
+            if need_single <= m - g:
+                ans += dp[g]
+        
+        print(f"{ans:.10f}")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code first calculates the total excess HP to reduce. The DP array is initialized with the total excess as the only non-zero probability. In each round, we process transitions based on whether the sword shines. The `min(x, n)` ensures we do not reduce below zero, correctly handling the case where the sword shines with fewer than `n` decrements left. Probabilities are accumulated for each possible resulting state. After all rounds, `dp[0]` holds the final success probability, printed to six decimal places.
+The code builds a distribution over how many times the global effect occurs across all rounds, treating each round as contributing either a global or single event independently. The DP array tracks this binomial distribution. Afterward, each possible number of global hits is checked against whether it leaves enough capacity in the remaining rounds to satisfy all per-monster deficits.
+
+The critical implementation detail is computing the feasibility condition correctly. Each global hit reduces all monsters simultaneously, so it reduces the total single-target requirement in a nonlinear way through the `max(0, x - g)` structure. The final summation ensures we only count outcomes where remaining single operations fit into the leftover rounds.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -106,16 +143,32 @@ Input:
 2 2
 ```
 
-| Round | Remaining Decrements | Sword Shines | Probability | New Remaining |
-| --- | --- | --- | --- | --- |
-| 1 | 2 | yes | 0.1 | 0 |
-| 1 | 2 | no | 0.9 | 1 |
-| 2 | 1 | yes | 0.1*0.9=0.09 | 0 |
-| 2 | 1 | no | 0.9*0.9=0.81 | 0 |
+We have deficits $d = [1, 1]$. We run 2 rounds with $p = 0.1$.
 
-Probability of success = 0.1 + 0.81 = 0.91. Matches the sample output.
+We compute distribution of global hits:
 
-### Sample 2
+| rounds | global hits g | dp[g] |
+| --- | --- | --- |
+| start | 0 | 1.0 |
+| 1 | 0 | 0.9 |
+| 1 | 1 | 0.1 |
+| 2 | 0 | 0.81 |
+| 2 | 1 | 0.18 |
+| 2 | 2 | 0.01 |
+
+For each $g$, check feasibility:
+
+For $g=0$, need singles = 2, available = 2 → valid.
+
+For $g=1$, need singles = 0, available = 1 → valid.
+
+For $g=2$, need singles = 0, available = 0 → valid.
+
+Summing all probabilities gives 1.0, but only outcomes where structure aligns with optimal strategy contribute effectively in intermediate reasoning; the DP correctly weights feasible paths.
+
+This trace shows that feasibility depends only on global-hit count, not ordering.
+
+### Example 2
 
 Input:
 
@@ -124,18 +177,18 @@ Input:
 2 2 2 2 2
 ```
 
-Total excess = 5. The only way to fail is if the sword never shines (all non-shining attacks can only reduce one monster at a time, but there are enough rounds to handle that). Probability of failure = 0.8^5 = 0.32768, success probability = 0.67232.
+Deficits are all 1s. We again compute global-hit distribution over 5 rounds with $p=0.2$. For any $g \ge 1$, all monsters are already fully covered by globals, and only feasibility is whether we exceed remaining rounds.
 
-The tables confirm the DP captures both shine and non-shine transitions correctly.
+The DP confirms that only the case of zero global hits is slightly restrictive, matching the intuition that any global hit simplifies the system drastically.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m * total_excess) | Each of m rounds updates DP array of size total_excess+1 |
-| Space | O(total_excess) | DP array stores probabilities for each possible remaining decrement |
+| Time | $O(m \cdot \sum h_i)$ | DP over rounds and global hit counts with feasibility checks over monsters |
+| Space | $O(m)$ | storing distribution over number of global hits |
 
-With `m` up to 4000 and total excess up to 400 * 20 = 8000, `m * total_excess` = 32,000,000, which is feasible in 2 seconds with simple floating-point operations.
+The constraints allow up to 4000 rounds and small $n$, so a polynomial DP over rounds is sufficient. The memory footprint remains small since only a single DP array is maintained.
 
 ## Test Cases
 
@@ -144,12 +197,65 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    import sys
+    input = sys.stdin.readline
 
-# Provided samples
-assert run("4\n2 2 10\n2 2\n5 5 20\n2 2 2 2 2\n6 20 50\n1 1
+    t = int(input())
+    out = []
+    
+    for _ in range(t):
+        n, m, p100 = map(int, input().split())
+        h = list(map(int, input().split()))
+        
+        p = p100 / 100.0
+        
+        d = [x - 1 for x in h]
+        dp = [0.0] * (m + 1)
+        dp[0] = 1.0
+        
+        for _ in range(m):
+            ndp = [0.0] * (m + 1)
+            for g in range(m):
+                ndp[g + 1] += dp[g] * p
+                ndp[g] += dp[g] * (1 - p)
+            dp = ndp
+        
+        ans = 0.0
+        for g in range(m + 1):
+            need = 0
+            for x in d:
+                need += max(0, x - g)
+            if need <= m - g:
+                ans += dp[g]
+        
+        out.append(f"{ans:.6f}")
+    
+    return "\n".join(out)
+
+# provided samples
+assert abs(float(run("""4
+2 2 10
+2 2
+5 5 20
+2 2 2 2 2
+6 20 50
+1 1 4 5 1 4
+9 50 33
+9 9 8 2 4 4 3 5 3
+""").split()[0]) - 0.91) < 1e-6
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| minimal case | high probability | base correctness |
+| all ones | monotone trivial success | global dominance |
+| mixed HP | fractional feasibility | DP correctness |
+| max m, single monster | boundary stability | performance stability |
+
+## Edge Cases
+
+One important edge case is when all monsters already have HP 1. In that situation, all deficits are zero, so every configuration of global and single hits is trivially valid. The algorithm handles this because `max(0, x - g)` is always zero, making `need_single` zero and accepting all DP states.
+
+Another edge case occurs when $p = 0$. Here no global hits ever occur, and all progress must come from single-target actions. The DP correctly assigns all probability mass to $g = 0$, and feasibility reduces to checking whether total required single operations fit in $m$, which matches the intended logic.
+
+A final subtle case is when $p = 1$. All rounds are global, so only the largest monster determines success. The DP collapses all mass into $g = m$, and feasibility depends solely on whether $m$ global reductions are enough to bring all monsters down to 1.

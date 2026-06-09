@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 616 contests, 3297 problems, 1841 verified."
+description: "Codeforces problem solutions with full editorial. 852 contests, 5066 problems, 2484 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -9,11 +9,13 @@ draft: false
 
 # Codeforces Solutions
 
-Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
+Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**616 contests, 3297 problems, 1841 verified.**
+**852 contests, 5066 problems, 2484 verified.**
 
-| Contest | Name | Type | Rating Range | Verified | Time |
+## 2010 — 51 contests, 271 problems, 230 verified
+
+| # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [1](1/) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 10m 36s |
 | [2](2/) | [Codeforces Beta Round 2](https://codeforces.com/contest/2) | Beta | 1500-2600 | 2/3 | 5m 52s |
@@ -402,7 +404,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [463](463/) | [Codeforces Round 264 (Div. 2)](https://codeforces.com/contest/463) | Div. 2 | 1100-2100 | 5/5 | 4m 50s |
 | [464](464/) | [Codeforces Round 265 (Div. 1)](https://codeforces.com/contest/464) | Div. 1 | 1700-3000 | 3/5 | 8m 25s |
 | [465](465/) | [Codeforces Round 265 (Div. 2)](https://codeforces.com/contest/465) | Div. 2 | 900-1000 | 0/2 | 10m 43s |
-| [466](466/) | [Codeforces Round 266 (Div. 2)](https://codeforces.com/contest/466) | Div. 2 | 1200-2100 | 3/4 | 6m 59s |
+| [466](466/) | [Codeforces Round 266 (Div. 2)](https://codeforces.com/contest/466) | Div. 2 | 1200-2100 | 3/4 | 6m 33s |
 | [467](467/) | [Codeforces Round 267 (Div. 2)](https://codeforces.com/contest/467) | Div. 2 | 800-2400 | 3/5 | 6m 31s |
 | [468](468/) | [Codeforces Round 268 (Div. 1)](https://codeforces.com/contest/468) | Div. 1 | 1500-3100 | 3/5 | 8m 30s |
 | [469](469/) | [Codeforces Round 268 (Div. 2)](https://codeforces.com/contest/469) | Div. 2 | 800-1300 | 2/2 | 2m 52s |
@@ -430,10 +432,188 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1746](1746/) | [Codeforces Global Round 23](https://codeforces.com/contest/1746) | Global | 800-3500 | 0/8 | 20m 46s |
+| [1747](1747/) | [Codeforces Round 832 (Div. 2)](https://codeforces.com/contest/1747) | Div. 2 | 800-2900 | 2/5 | 20m 27s |
+| [1748](1748/) | [Codeforces Round 833 (Div. 2)](https://codeforces.com/contest/1748) | Div. 2 | 800-3000 | 2/6 | 13m 46s |
+| [1749](1749/) | [Educational Codeforces Round 138 (Rated for Div. 2)](https://codeforces.com/contest/1749) | Div. 2 | 800-2800 | 2/6 | 24m 42s |
+| [1750](1750/) | [CodeTON Round 3 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1750) | Div. 1+2 | 800-3500 | 4/8 | 24m 36s |
+| [1753](1753/) | [Codeforces Round 829 (Div. 1)](https://codeforces.com/contest/1753) | Div. 1 | 1300-3500 | 2/7 | 19m 17s |
+| [1754](1754/) | [Codeforces Round 829 (Div. 2)](https://codeforces.com/contest/1754) | Div. 2 | 800-800 | 0/2 | 7m 30s |
+| [1758](1758/) | [Codeforces Round 836 (Div. 2)](https://codeforces.com/contest/1758) | Div. 2 | 800-3000 | 1/6 | 31m 38s |
+| [1759](1759/) | [Codeforces Round  834 (Div. 3)](https://codeforces.com/contest/1759) | Div. 3 | 800-1900 | 5/7 | 26m 21s |
+| [1760](1760/) | [Codeforces Round 835 (Div. 4)](https://codeforces.com/contest/1760) | Div. 4 | 800-1700 | 4/7 | 19m 2s |
+| [1761](1761/) | [Pinely Round 1 (Div. 1 + Div. 2)](https://codeforces.com/contest/1761) | Div. 1+2 | 800-3500 | 2/8 | 49m 53s |
+| [1762](1762/) | [Codeforces Round 838 (Div. 2)](https://codeforces.com/contest/1762) | Div. 2 | 800-3100 | 2/7 | 32m 22s |
+| [1763](1763/) | [Codeforces Round 840 (Div. 2) and Enigma 2022 - Cybros LNMIIT](https://codeforces.com/contest/1763) | Div. 2 | 800-3000 | 1/6 | 22m 3s |
+| [1764](1764/) | [Codeforces Global Round 24](https://codeforces.com/contest/1764) | Global | 800-3400 | 2/10 | 36m 42s |
+| [1765](1765/) | [2022-2023 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/1765) | ICPC/IOI | 800-2900 | 5/14 | 45m 29s |
+| [1766](1766/) | [Educational Codeforces Round 139 (Rated for Div. 2)](https://codeforces.com/contest/1766) | Div. 2 | 800-2800 | 1/6 | 16m 15s |
+| [1767](1767/) | [Educational Codeforces Round 140 (Rated for Div. 2)](https://codeforces.com/contest/1767) | Div. 2 | 800-3100 | 1/6 | 19m 17s |
+| [1768](1768/) | [Codeforces Round 842 (Div. 2)](https://codeforces.com/contest/1768) | Div. 2 | 800-2900 | 1/6 | 17m 52s |
+| [1769](1769/) | [VK Cup 2022 - Квалификация (Engine)](https://codeforces.com/contest/1769) | Special | 800-2300 | 3/8 | 19m 16s |
+| [1770](1770/) | [Good Bye 2022: 2023 is NEAR](https://codeforces.com/contest/1770) | Special | 1000-3500 | 3/8 | 16m 49s |
+| [1771](1771/) | [Codeforces Round 837 (Div. 2)](https://codeforces.com/contest/1771) | Div. 2 | 900-2500 | 2/6 | 11m 34s |
+| [1772](1772/) | [Codeforces Round 839 (Div. 3)](https://codeforces.com/contest/1772) | Div. 3 | 800-2200 | 1/7 | 14m 59s |
+| [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | ICPC/IOI | 800-3500 | 4/11 | 25m 49s |
+| [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | Div. 1+2 | 800-3500 | 2/9 | 21m 27s |
+| [1775](1775/) | [Codeforces Round 843 (Div. 2)](https://codeforces.com/contest/1775) | Div. 2 | 800-2500 | 2/7 | 15m 23s |
+| [1776](1776/) | [SWERC 2022-2023 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1776) | ICPC/IOI | 800-3500 | 4/14 | 26m 25s |
+| [1777](1777/) | [Codeforces Round 845 (Div. 2) and ByteRace 2023](https://codeforces.com/contest/1777) | Div. 2 | 800-2400 | 5/6 | 11m 22s |
+| [1778](1778/) | [Codeforces Round 848 (Div. 2)](https://codeforces.com/contest/1778) | Div. 2 | 800-2600 | 3/6 | 10m 59s |
+| [1779](1779/) | [Hello 2023](https://codeforces.com/contest/1779) | Special | 800-3500 | 1/8 | 15m 54s |
+| [1780](1780/) | [Codeforces Round 846 (Div. 2)](https://codeforces.com/contest/1780) | Div. 2 | 800-2400 | 3/6 | 12m 59s |
+| [1781](1781/) | [VK Cup 2022 - Отборочный раунд (Engine)](https://codeforces.com/contest/1781) | Special | 800-3500 | 2/9 | 20m 58s |
+| [1783](1783/) | [Educational Codeforces Round 141 (Rated for Div. 2)](https://codeforces.com/contest/1783) | Div. 2 | 800-2800 | 0/7 | 18m 50s |
+| [1784](1784/) | [VK Cup 2022 - Финальный раунд (Engine)](https://codeforces.com/contest/1784) | Special | 1000-3400 | 4/6 | 13m 24s |
+| [1786](1786/) | [Codeforces Round 850 (Div. 2, based on VK Cup 2022 - Final Round)](https://codeforces.com/contest/1786) | Div. 2 | 800-1300 | 3/3 | 4m 42s |
+| [1787](1787/) | [TypeDB Forces 2023 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1787) | Div. 1+2 | 800-3400 | 3/9 | 20m 23s |
+| [1788](1788/) | [Codeforces Round 851 (Div. 2)](https://codeforces.com/contest/1788) | Div. 2 | 800-2500 | 4/6 | 10m 18s |
+| [1789](1789/) | [Codeforces Round 853 (Div. 2)](https://codeforces.com/contest/1789) | Div. 2 | 800-2700 | 2/6 | 13m 28s |
+| [1790](1790/) | [Codeforces Round 847 (Div. 3)](https://codeforces.com/contest/1790) | Div. 3 | 800-2300 | 2/7 | 14m 9s |
+| [1791](1791/) | [Codeforces Round 849 (Div. 4)](https://codeforces.com/contest/1791) | Div. 4 | 800-1900 | 7/8 | 17m 17s |
+| [1792](1792/) | [Educational Codeforces Round 142 (Rated for Div. 2)](https://codeforces.com/contest/1792) | Div. 2 | 800-2900 | 3/7 | 17m 54s |
+| [1793](1793/) | [Codeforces Round 852 (Div. 2)](https://codeforces.com/contest/1793) | Div. 2 | 800-2600 | 1/6 | 15m 16s |
+| [1794](1794/) | [Codeforces Round 856 (Div. 2)](https://codeforces.com/contest/1794) | Div. 2 | 800-2400 | 3/5 | 10m 23s |
+| [1795](1795/) | [Educational Codeforces Round 143 (Rated for Div. 2)](https://codeforces.com/contest/1795) | Div. 2 | 800-2700 | 2/7 | 15m 29s |
+| [1796](1796/) | [Educational Codeforces Round 144 (Rated for Div. 2)](https://codeforces.com/contest/1796) | Div. 2 | 800-2900 | 2/6 | 13m 3s |
+| [1797](1797/) | [Codeforces Round 864 (Div. 2)](https://codeforces.com/contest/1797) | Div. 2 | 800-3000 | 2/6 | 10m 17s |
+| [1798](1798/) | [Codeforces Round 860 (Div. 2)](https://codeforces.com/contest/1798) | Div. 2 | 800-2500 | 2/6 | 15m 18s |
+| [1799](1799/) | [Codeforces Round 854 by cybercats (Div. 1 + Div. 2)](https://codeforces.com/contest/1799) | Div. 1+2 | 800-3200 | 2/9 | 21m 23s |
+| [1800](1800/) | [Codeforces Round 855 (Div. 3)](https://codeforces.com/contest/1800) | Div. 3 | 800-2200 | 8/9 | 18m 24s |
+| [1801](1801/) | [Codeforces Round 857 (Div. 1)](https://codeforces.com/contest/1801) | Div. 1 | 1600-3400 | 2/7 | 16m 53s |
+| [1802](1802/) | [Codeforces Round 857 (Div. 2)](https://codeforces.com/contest/1802) | Div. 2 | 800-1000 | 0/2 | 5m 45s |
+| [1804](1804/) | [Nebius Welcome Round (Div. 1 + Div. 2)](https://codeforces.com/contest/1804) | Div. 1+2 | 800-3500 | 5/6 | 13m 54s |
+| [1805](1805/) | [Codeforces Round 862 (Div. 2)](https://codeforces.com/contest/1805) | Div. 2 | 800-3100 | 3/7 | 15m 37s |
+| [1806](1806/) | [Codeforces Round 858 (Div. 2)](https://codeforces.com/contest/1806) | Div. 2 | 800-2900 | 3/7 | 16m 33s |
+| [1807](1807/) | [Codeforces Round 859 (Div. 4)](https://codeforces.com/contest/1807) | Div. 4 | 800-1700 | 4/8 | 13m 51s |
+| [1808](1808/) | [Codeforces Round 861 (Div. 2)](https://codeforces.com/contest/1808) | Div. 2 | 900-2800 | 3/6 | 13m 55s |
+| [1809](1809/) | [Educational Codeforces Round 145 (Rated for Div. 2)](https://codeforces.com/contest/1809) | Div. 2 | 800-2800 | 3/7 | 13m 48s |
+| [1810](1810/) | [CodeTON Round 4 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1810) | Div. 1+2 | 800-3200 | 2/8 | 16m 8s |
+| [1811](1811/) | [Codeforces Round 863 (Div. 3)](https://codeforces.com/contest/1811) | Div. 3 | 800-2200 | 4/8 | 16m 1s |
+| [1812](1812/) | [April Fools Day Contest 2023](https://codeforces.com/contest/1812) | April Fools | - | 8/10 | 17m 17s |
+| [1814](1814/) | [Educational Codeforces Round 146 (Rated for Div. 2)](https://codeforces.com/contest/1814) | Div. 2 | 800-2700 | 2/6 | 13m 7s |
+| [1815](1815/) | [Codeforces Round 865 (Div. 1)](https://codeforces.com/contest/1815) | Div. 1 | 1300-3500 | 1/6 | 13m 1s |
+| [1816](1816/) | [Codeforces Round 865 (Div. 2)](https://codeforces.com/contest/1816) | Div. 2 | 800-1000 | 0/2 | 3m 17s |
+| [1817](1817/) | [Codeforces Round 869 (Div. 1)](https://codeforces.com/contest/1817) | Div. 1 | 1500-3400 | 2/5 | 9m 23s |
+| [1818](1818/) | [Codeforces Round 869 (Div. 2)](https://codeforces.com/contest/1818) | Div. 2 | 800-900 | 1/2 | 4m 14s |
+| [1819](1819/) | [Codeforces Round 866 (Div. 1)](https://codeforces.com/contest/1819) | Div. 1 | 1300-3500 | 0/6 | 12m 44s |
+| [1820](1820/) | [Codeforces Round 866 (Div. 2)](https://codeforces.com/contest/1820) | Div. 2 | 800-1100 | 0/2 | 3m 14s |
+| [1821](1821/) | [Educational Codeforces Round 147 (Rated for Div. 2)](https://codeforces.com/contest/1821) | Div. 2 | 800-2600 | 1/6 | 12m 42s |
+| [1822](1822/) | [Codeforces Round 867 (Div. 3)](https://codeforces.com/contest/1822) | Div. 3 | 800-2200 | 5/8 | 12m 49s |
+| [1823](1823/) | [Codeforces Round 868 (Div. 2)](https://codeforces.com/contest/1823) | Div. 2 | 800-2600 | 1/6 | 10m 33s |
+| [1824](1824/) | [Codeforces Round 872 (Div. 1)](https://codeforces.com/contest/1824) | Div. 1 | 1400-3500 | 3/6 | 11m 28s |
+| [1825](1825/) | [Codeforces Round 872 (Div. 2)](https://codeforces.com/contest/1825) | Div. 2 | 800-2500 | 4/6 | 8m 24s |
+| [1826](1826/) | [Codeforces Round 870 (Div. 2)](https://codeforces.com/contest/1826) | Div. 2 | 1100-2800 | 4/6 | 11m 7s |
+| [1827](1827/) | [Codeforces Round 873 (Div. 1)](https://codeforces.com/contest/1827) | Div. 1 | 1100-3500 | 1/7 | 13m 2s |
+| [1828](1828/) | [Codeforces Round 873 (Div. 2)](https://codeforces.com/contest/1828) | Div. 2 | 800-2800 | 1/7 | 11m 24s |
+| [1829](1829/) | [Codeforces Round 871 (Div. 4)](https://codeforces.com/contest/1829) | Div. 4 | 800-1700 | 6/8 | 10m 54s |
+| [1830](1830/) | [Codeforces Round 875 (Div. 1)](https://codeforces.com/contest/1830) | Div. 1 | 1400-3500 | 0/4 | 6m 15s |
+| [1831](1831/) | [Codeforces Round 875 (Div. 2)](https://codeforces.com/contest/1831) | Div. 2 | 800-2800 | 2/6 | 13m 58s |
+| [1832](1832/) | [Educational Codeforces Round 148 (Rated for Div. 2)](https://codeforces.com/contest/1832) | Div. 2 | 800-3200 | 3/7 | 13m 2s |
+| [1833](1833/) | [Codeforces Round 874 (Div. 3)](https://codeforces.com/contest/1833) | Div. 3 | 800-1800 | 2/7 | 13m 52s |
+| [1834](1834/) | [Codeforces Round 879 (Div. 2)](https://codeforces.com/contest/1834) | Div. 2 | 800-2500 | 2/6 | 9m 54s |
+| [1835](1835/) | [Codeforces Round 880 (Div. 1)](https://codeforces.com/contest/1835) | Div. 1 | 1700-3500 | 1/6 | 8m 46s |
+| [1836](1836/) | [Codeforces Round 880 (Div. 2)](https://codeforces.com/contest/1836) | Div. 2 | 800-2900 | 2/6 | 10m 11s |
+| [1837](1837/) | [Educational Codeforces Round 149 (Rated for Div. 2)](https://codeforces.com/contest/1837) | Div. 2 | 800-2400 | 1/6 | 10m 40s |
+| [1838](1838/) | [Codeforces Round 877 (Div. 2)](https://codeforces.com/contest/1838) | Div. 2 | 800-3000 | 1/6 | 11m 53s |
+| [1839](1839/) | [Codeforces Round 876 (Div. 2)](https://codeforces.com/contest/1839) | Div. 2 | 800-2400 | 0/5 | 10m 32s |
+| [1840](1840/) | [Codeforces Round 878 (Div. 3)](https://codeforces.com/contest/1840) | Div. 3 | 800-2500 | 4/8 | 13m 11s |
+| [1841](1841/) | [Educational Codeforces Round 150 (Rated for Div. 2)](https://codeforces.com/contest/1841) | Div. 2 | 800-2700 | 3/6 | 11m 57s |
+| [1842](1842/) | [CodeTON Round 5 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1842) | Div. 1+2 | 800-3500 | 3/9 | 16m 2s |
+| [1843](1843/) | [Codeforces Round 881 (Div. 3)](https://codeforces.com/contest/1843) | Div. 3 | 800-2300 | 6/7 | 15m 1s |
+| [1844](1844/) | [Codeforces Round 884 (Div. 1 + Div. 2)](https://codeforces.com/contest/1844) | Div. 1+2 | 800-3400 | 1/9 | 17m 33s |
+| [1845](1845/) | [Educational Codeforces Round 151 (Rated for Div. 2)](https://codeforces.com/contest/1845) | Div. 2 | 800-2800 | 2/6 | 12m 50s |
+| [1846](1846/) | [Codeforces Round 883 (Div. 3)](https://codeforces.com/contest/1846) | Div. 3 | 800-1900 | 4/8 | 14m 22s |
+| [1847](1847/) | [Codeforces Round 882 (Div. 2)](https://codeforces.com/contest/1847) | Div. 2 | 800-2900 | 4/6 | 13m 4s |
+| [1848](1848/) | [Codeforces Round 885 (Div. 2)](https://codeforces.com/contest/1848) | Div. 2 | 900-2600 | 2/6 | 12m 17s |
+| [1849](1849/) | [Educational Codeforces Round 152 (Rated for Div. 2)](https://codeforces.com/contest/1849) | Div. 2 | 800-2700 | 3/6 | 9m 40s |
+| [1850](1850/) | [Codeforces Round 886 (Div. 4)](https://codeforces.com/contest/1850) | Div. 4 | 800-1700 | 6/8 | 13m 14s |
+| [1851](1851/) | [Codeforces Round 888 (Div. 3)](https://codeforces.com/contest/1851) | Div. 3 | 800-2000 | 1/6 | 11m 5s |
+| [1852](1852/) | [Codeforces Round 887 (Div. 1)](https://codeforces.com/contest/1852) | Div. 1 | 1800-3500 | 0/6 | 9m 31s |
+| [1853](1853/) | [Codeforces Round 887 (Div. 2)](https://codeforces.com/contest/1853) | Div. 2 | 800-2800 | 3/5 | 10m 14s |
+| [1854](1854/) | [Codeforces Round 889 (Div. 1)](https://codeforces.com/contest/1854) | Div. 1 | 1400-3500 | 2/7 | 12m 23s |
+| [1855](1855/) | [Codeforces Round 889 (Div. 2)](https://codeforces.com/contest/1855) | Div. 2 | 800-3000 | 1/7 | 12m 17s |
+| [1856](1856/) | [Codeforces Round 890 (Div. 2) supported by Constructor Institute](https://codeforces.com/contest/1856) | Div. 2 | 800-2700 | 2/6 | 11m 29s |
+| [1857](1857/) | [Codeforces Round 891 (Div. 3)](https://codeforces.com/contest/1857) | Div. 3 | 800-2000 | 1/7 | 12m 41s |
+| [1858](1858/) | [Codeforces Round 893 (Div. 2)](https://codeforces.com/contest/1858) | Div. 2 | 800-2600 | 3/6 | 14m 40s |
+| [1859](1859/) | [Codeforces Round 892 (Div. 2)](https://codeforces.com/contest/1859) | Div. 2 | 800-3200 | 3/6 | 14m 44s |
+| [1860](1860/) | [Educational Codeforces Round 153 (Rated for Div. 2)](https://codeforces.com/contest/1860) | Div. 2 | 900-2900 | 3/6 | 11m 13s |
+| [1861](1861/) | [Educational Codeforces Round 154 (Rated for Div. 2)](https://codeforces.com/contest/1861) | Div. 2 | 800-3200 | 0/6 | 13m 36s |
+| [1862](1862/) | [Codeforces Round 894 (Div. 3)](https://codeforces.com/contest/1862) | Div. 3 | 800-2000 | 4/7 | 14m 37s |
+| [1863](1863/) | [Pinely Round 2 (Div. 1 + Div. 2)](https://codeforces.com/contest/1863) | Div. 1+2 | 800-3500 | 3/9 | 15m 58s |
+| [1864](1864/) | [Harbour.Space Scholarship Contest 2023-2024 (Div. 1 + Div. 2)](https://codeforces.com/contest/1864) | Div. 1+2 | 800-3500 | 1/9 | 17m 20s |
+| [1866](1866/) | [COMPFEST 15 - Preliminary Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1866) | ICPC/IOI | 800-3100 | 6/13 | 26m 2s |
+| [1867](1867/) | [Codeforces Round 897 (Div. 2)](https://codeforces.com/contest/1867) | Div. 2 | 800-2700 | 1/7 | 13m 50s |
+| [1868](1868/) | [Codeforces Round 896 (Div. 1)](https://codeforces.com/contest/1868) | Div. 1 | 1300-3500 | 0/7 | 15m 55s |
+| [1869](1869/) | [Codeforces Round 896 (Div. 2)](https://codeforces.com/contest/1869) | Div. 2 | 900-3000 | 2/7 | 12m 13s |
+| [1870](1870/) | [CodeTON Round 6 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1870) | Div. 1+2 | 800-3500 | 2/8 | 18m 56s |
+| [1872](1872/) | [Codeforces Round 895 (Div. 3)](https://codeforces.com/contest/1872) | Div. 3 | 800-2000 | 2/7 | 13m 29s |
+| [1873](1873/) | [Codeforces Round 898 (Div. 4)](https://codeforces.com/contest/1873) | Div. 4 | 800-1700 | 6/8 | 12m 40s |
+| [1874](1874/) | [Codeforces Round 901 (Div. 1)](https://codeforces.com/contest/1874) | Div. 1 | 1200-3500 | 3/7 | 15m 25s |
+| [1875](1875/) | [Codeforces Round 901 (Div. 2)](https://codeforces.com/contest/1875) | Div. 2 | 900-2800 | 1/7 | 10m 36s |
+| [1876](1876/) | [Codeforces Round 902 (Div. 1, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1876) | Div. 1 | 1000-3500 | 2/7 | 17m 32s |
+| [1877](1877/) | [Codeforces Round 902 (Div. 2, based on COMPFEST 15 - Final Round)](https://codeforces.com/contest/1877) | Div. 2 | 800-3300 | 2/7 | 15m 13s |
+| [1878](1878/) | [Codeforces Round 900 (Div. 3)](https://codeforces.com/contest/1878) | Div. 3 | 800-2300 | 4/7 | 12m 56s |
+| [1879](1879/) | [Educational Codeforces Round 155 (Rated for Div. 2)](https://codeforces.com/contest/1879) | Div. 2 | 800-2800 | 4/6 | 15m 6s |
+| [1881](1881/) | [Codeforces Round 903 (Div. 3)](https://codeforces.com/contest/1881) | Div. 3 | 800-2000 | 5/7 | 13m |
+| [1882](1882/) | [Codeforces Round 899 (Div. 2)](https://codeforces.com/contest/1882) | Div. 2 | 800-3100 | 1/6 | 11m 50s |
+| [1883](1883/) | [Codeforces Round 905 (Div. 3)](https://codeforces.com/contest/1883) | Div. 3 | 800-1900 | 5/8 | 20m 2s |
+| [1884](1884/) | [Codeforces Round 904 (Div. 2)](https://codeforces.com/contest/1884) | Div. 2 | 800-2800 | 1/5 | 11m 8s |
+| [1885](1885/) | [ICPC 2023 Online Challenge powered by Huawei](https://codeforces.com/contest/1885) | ICPC/IOI | - | 0/1 | 2m 16s |
+| [1886](1886/) | [Educational Codeforces Round 156 (Rated for Div. 2)](https://codeforces.com/contest/1886) | Div. 2 | 800-3300 | 4/6 | 15m 31s |
+| [1887](1887/) | [Codeforces Round 905 (Div. 1)](https://codeforces.com/contest/1887) | Div. 1 | 1900-3400 | 2/5 | 9m 52s |
+| [1889](1889/) | [Codeforces Round 906 (Div. 1)](https://codeforces.com/contest/1889) | Div. 1 | 1300-3500 | 2/7 | 12m 40s |
+| [1890](1890/) | [Codeforces Round 906 (Div. 2)](https://codeforces.com/contest/1890) | Div. 2 | 800-3000 | 2/7 | 13m 47s |
+| [1891](1891/) | [Codeforces Round 907 (Div. 2)](https://codeforces.com/contest/1891) | Div. 2 | 800-2500 | 1/6 | 9m 40s |
+| [1893](1893/) | [Codeforces Round 908 (Div. 1)](https://codeforces.com/contest/1893) | Div. 1 | 1400-3500 | 1/5 | 9m 14s |
+| [1894](1894/) | [Codeforces Round 908 (Div. 2)](https://codeforces.com/contest/1894) | Div. 2 | 800-2000 | 0/5 | 10m 22s |
+| [1895](1895/) | [Educational Codeforces Round 157 (Rated for Div. 2)](https://codeforces.com/contest/1895) | Div. 2 | 800-3100 | 4/7 | 13m 43s |
+| [1896](1896/) | [CodeTON Round 7 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1896) | Div. 1+2 | 800-3500 | 3/9 | 19m 44s |
+| [1898](1898/) | [Codeforces Round 910 (Div. 2)](https://codeforces.com/contest/1898) | Div. 2 | 800-2600 | 2/6 | 16m 56s |
+| [1899](1899/) | [Codeforces Round 909 (Div. 3)](https://codeforces.com/contest/1899) | Div. 3 | 800-1900 | 5/7 | 12m 9s |
+| [1900](1900/) | [Codeforces Round 911 (Div. 2)](https://codeforces.com/contest/1900) | Div. 2 | 800-2800 | 2/6 | 14m 15s |
+| [1901](1901/) | [Educational Codeforces Round 158 (Rated for Div. 2)](https://codeforces.com/contest/1901) | Div. 2 | 800-2900 | 2/6 | 14m 6s |
+| [1902](1902/) | [Educational Codeforces Round 159 (Rated for Div. 2)](https://codeforces.com/contest/1902) | Div. 2 | 800-2400 | 5/6 | 12m 22s |
+| [1903](1903/) | [Codeforces Round 912 (Div. 2)](https://codeforces.com/contest/1903) | Div. 2 | 800-2500 | 2/7 | 14m 2s |
+| [1904](1904/) | [Codeforces Round 914 (Div. 2)](https://codeforces.com/contest/1904) | Div. 2 | 900-2800 | 2/7 | 15m 49s |
+| [1905](1905/) | [Codeforces Round 915 (Div. 2)](https://codeforces.com/contest/1905) | Div. 2 | 800-2600 | 5/6 | 11m 25s |
+| [1906](1906/) | [2023-2024 ICPC, Asia Jakarta Regional Contest (Online Mirror, Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1906) | ICPC/IOI | 1000-3000 | 10/13 | 25m 58s |
+| [1907](1907/) | [Codeforces Round 913 (Div. 3)](https://codeforces.com/contest/1907) | Div. 3 | 800-2200 | 2/7 | 14m 6s |
+| [1909](1909/) | [Pinely Round 3 (Div. 1 + Div. 2)](https://codeforces.com/contest/1909) | Div. 1+2 | 800-3500 | 4/10 | 19m 20s |
+| [1910](1910/) | [Kotlin Heroes: Episode 9 (Unrated, T-Shirts + Prizes!)](https://codeforces.com/contest/1910) | Kotlin | 1100-2900 | 1/10 | 21m 21s |
+| [1912](1912/) | [2023-2024 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1912) | ICPC/IOI | 800-3300 | 5/12 | 21m 4s |
+| [1913](1913/) | [Educational Codeforces Round 160 (Rated for Div. 2)](https://codeforces.com/contest/1913) | Div. 2 | 800-2800 | 4/6 | 11m 18s |
+| [1914](1914/) | [Codeforces Round 916 (Div. 3)](https://codeforces.com/contest/1914) | Div. 3 | 800-2300 | 3/9 | 17m 46s |
+| [1915](1915/) | [Codeforces Round 918 (Div. 4)](https://codeforces.com/contest/1915) | Div. 4 | 800-1800 | 6/7 | 13m 49s |
+| [1916](1916/) | [Good Bye 2023](https://codeforces.com/contest/1916) | Special | 800-3500 | 5/9 | 14m 35s |
+| [1917](1917/) | [Codeforces Round 917 (Div. 2)](https://codeforces.com/contest/1917) | Div. 2 | 800-2500 | 3/6 | 13m 23s |
+| [1918](1918/) | [Codeforces Round 922 (Div. 2)](https://codeforces.com/contest/1918) | Div. 2 | 800-2700 | 2/7 | 15m 17s |
+| [1919](1919/) | [Hello 2024](https://codeforces.com/contest/1919) | Special | 800-3500 | 3/9 | 19m 25s |
+| [1920](1920/) | [Codeforces Round 919 (Div. 2)](https://codeforces.com/contest/1920) | Div. 2 | 800-3000 | 3/7 | 12m 20s |
+| [1921](1921/) | [Codeforces Round 920 (Div. 3)](https://codeforces.com/contest/1921) | Div. 3 | 800-2200 | 4/7 | 14m 56s |
+| [1922](1922/) | [Educational Codeforces Round 161 (Rated for Div. 2)](https://codeforces.com/contest/1922) | Div. 2 | 800-2500 | 2/6 | 13m 33s |
+| [1923](1923/) | [Educational Codeforces Round 162 (Rated for Div. 2)](https://codeforces.com/contest/1923) | Div. 2 | 800-2800 | 2/6 | 10m 9s |
+| [1924](1924/) | [Codeforces Round 921 (Div. 1)](https://codeforces.com/contest/1924) | Div. 1 | 1500-3500 | 0/6 | 14m 34s |
+| [1925](1925/) | [Codeforces Round 921 (Div. 2)](https://codeforces.com/contest/1925) | Div. 2 | 800-2400 | 4/6 | 12m 2s |
+| [1926](1926/) | [Codeforces Round 928 (Div. 4)](https://codeforces.com/contest/1926) | Div. 4 | 800-2200 | 5/7 | 13m 14s |
+| [1927](1927/) | [Codeforces Round 923 (Div. 3)](https://codeforces.com/contest/1927) | Div. 3 | 800-2300 | 1/7 | 15m 53s |
+| [1928](1928/) | [Codeforces Round 924 (Div. 2)](https://codeforces.com/contest/1928) | Div. 2 | 800-2900 | 2/6 | 15m 28s |
+| [1929](1929/) | [Codeforces Round 926 (Div. 2)](https://codeforces.com/contest/1929) | Div. 2 | 800-2300 | 3/6 | 11m 38s |
+| [1930](1930/) | [think-cell Round 1](https://codeforces.com/contest/1930) | Special | 800-3500 | 5/10 | 21m 36s |
+| [1931](1931/) | [Codeforces Round 925 (Div. 3)](https://codeforces.com/contest/1931) | Div. 3 | 800-2000 | 4/7 | 15m 14s |
+| [1932](1932/) | [Codeforces Round 927 (Div. 3)](https://codeforces.com/contest/1932) | Div. 3 | 800-2300 | 3/7 | 14m 21s |
+| [1933](1933/) | [Codeforces Round 929 (Div. 3)](https://codeforces.com/contest/1933) | Div. 3 | 800-2300 | 2/7 | 15m 27s |
+| [1934](1934/) | [Codeforces Round 931 (Div. 2)](https://codeforces.com/contest/1934) | Div. 2 | 800-3000 | 2/6 | 11m 46s |
+| [1935](1935/) | [Codeforces Round 932 (Div. 2)](https://codeforces.com/contest/1935) | Div. 2 | 800-2800 | 2/6 | 12m 8s |
+| [1936](1936/) | [Codeforces Round 930 (Div. 1)](https://codeforces.com/contest/1936) | Div. 1 | 1700-3400 | 1/6 | 15m 24s |
+| [1937](1937/) | [Codeforces Round 930 (Div. 2)](https://codeforces.com/contest/1937) | Div. 2 | 800-3100 | 3/6 | 13m 28s |
+| [1938](1938/) | [2024 ICPC Asia Pacific Championship - Online Mirror (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1938) | ICPC/IOI | 1600-3500 | 4/13 | 12m 26s |
+| [1939](1939/) | [XVIII Open Olympiad in Informatics - Final Stage, Day 1 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/1939) | ICPC/IOI | - | 2/4 | 3m 39s |
+| [1940](1940/) | [XVIII Open Olympiad in Informatics - Final Stage, Day 2 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/1940) | ICPC/IOI | - | 3/4 | 4m 17s |
 | [1941](1941/) | [Codeforces Round 933 (Div. 3)](https://codeforces.com/contest/1941) | Div. 3 | 800-2000 | 6/7 | 12m 58s |
 | [1942](1942/) | [CodeTON Round 8 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1942) | Div. 1+2 | 800-3500 | 4/9 | 16m 46s |
 | [1943](1943/) | [Codeforces Round 934 (Div. 1)](https://codeforces.com/contest/1943) | Div. 1 | 1300-3500 | 1/8 | 10m 17s |
-| [1944](1944/) | [Codeforces Round 934 (Div. 2)](https://codeforces.com/contest/1944) | Div. 2 | 800-1100 | 1/2 | 2m 14s |
+| [1944](1944/) | [Codeforces Round 934 (Div. 2)](https://codeforces.com/contest/1944) | Div. 2 | 800-2800 | 2/7 | 12m 51s |
 | [1945](1945/) | [Codeforces Round 935 (Div. 3)](https://codeforces.com/contest/1945) | Div. 3 | 800-2600 | 5/8 | 9m 25s |
 | [1946](1946/) | [Codeforces Round 936 (Div. 2)](https://codeforces.com/contest/1946) | Div. 2 | 800-2500 | 3/6 | 10m 45s |
 | [1948](1948/) | [Educational Codeforces Round 163 (Rated for Div. 2)](https://codeforces.com/contest/1948) | Div. 2 | 800-3100 | 5/7 | 10m 51s |
@@ -448,17 +628,75 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1957](1957/) | [Codeforces Round 940 (Div. 2) and CodeCraft-23](https://codeforces.com/contest/1957) | Div. 2 | 800-2700 | 1/7 | 12m 56s |
 | [1958](1958/) | [Kotlin Heroes: Episode 10](https://codeforces.com/contest/1958) | Kotlin | 1100-3200 | 7/10 | 11m 13s |
 | [1965](1965/) | [Codeforces Round 941 (Div. 1)](https://codeforces.com/contest/1965) | Div. 1 | 1400-3300 | 0/6 | 7m 12s |
-| [1966](1966/) | [Codeforces Round 941 (Div. 2)](https://codeforces.com/contest/1966) | Div. 2 | 800-1100 | 0/2 | 2m 20s |
+| [1966](1966/) | [Codeforces Round 941 (Div. 2)](https://codeforces.com/contest/1966) | Div. 2 | 800-2900 | 1/6 | 16m 6s |
 | [1967](1967/) | [Codeforces Round 942 (Div. 1)](https://codeforces.com/contest/1967) | Div. 1 | 1400-3500 | 1/8 | 10m 27s |
 | [1968](1968/) | [Codeforces Round 943 (Div. 3)](https://codeforces.com/contest/1968) | Div. 3 | 800-2200 | 3/8 | 12m 57s |
-| [1972](1972/) | [Codeforces Round 942 (Div. 2)](https://codeforces.com/contest/1972) | Div. 2 | 800-900 | 1/2 | 4m 38s |
+| [1969](1969/) | [Educational Codeforces Round 165 (Rated for Div. 2)](https://codeforces.com/contest/1969) | Div. 2 | 800-3000 | 3/6 | 13m 58s |
+| [1970](1970/) | [Helvetic Coding Contest 2024 online mirror (teams allowed, unrated)](https://codeforces.com/contest/1970) | Special | 1000-3100 | 6/21 | 47m 10s |
+| [1971](1971/) | [Codeforces Round 944 (Div. 4)](https://codeforces.com/contest/1971) | Div. 4 | 800-2100 | 6/8 | 15m 17s |
+| [1972](1972/) | [Codeforces Round 942 (Div. 2)](https://codeforces.com/contest/1972) | Div. 2 | 800-2800 | 1/7 | 18m 1s |
 | [1973](1973/) | [Codeforces Round 945 (Div. 2)](https://codeforces.com/contest/1973) | Div. 2 | 900-3100 | 0/6 | 31m 30s |
 | [1974](1974/) | [Codeforces Round 946 (Div. 3)](https://codeforces.com/contest/1974) | Div. 3 | 800-2000 | 0/7 | 36m 53s |
 | [1975](1975/) | [Codeforces Round 947 (Div. 1 + Div. 2)](https://codeforces.com/contest/1975) | Div. 1+2 | 800-3500 | 0/9 | 47m 41s |
 | [1976](1976/) | [Educational Codeforces Round 166 (Rated for Div. 2)](https://codeforces.com/contest/1976) | Div. 2 | 800-2800 | 0/6 | 31m 36s |
+| [1977](1977/) | [Codeforces Round 948 (Div. 2)](https://codeforces.com/contest/1977) | Div. 2 | 800-2600 | 3/5 | 10m 26s |
+| [1978](1978/) | [Codeforces Round 953 (Div. 2)](https://codeforces.com/contest/1978) | Div. 2 | 800-2400 | 1/6 | 13m 40s |
+| [1979](1979/) | [Codeforces Round 951 (Div. 2)](https://codeforces.com/contest/1979) | Div. 2 | 800-2900 | 2/6 | 18m 9s |
+| [1980](1980/) | [Codeforces Round 950 (Div. 3)](https://codeforces.com/contest/1980) | Div. 3 | 800-2400 | 4/8 | 19m 52s |
+| [1981](1981/) | [Codeforces Round 949 (Div. 2)](https://codeforces.com/contest/1981) | Div. 2 | 800-3000 | 2/6 | 14m 22s |
+| [1982](1982/) | [Codeforces Round 955 (Div. 2, with prizes from NEAR!)](https://codeforces.com/contest/1982) | Div. 2 | 800-2600 | 2/6 | 13m 34s |
+| [1983](1983/) | [Codeforces Round 956 (Div. 2) and ByteRace 2024](https://codeforces.com/contest/1983) | Div. 2 | 800-3000 | 2/7 | 19m 26s |
+| [1984](1984/) | [Codeforces Global Round 26](https://codeforces.com/contest/1984) | Global | 800-3300 | 3/9 | 23m 19s |
+| [1985](1985/) | [Codeforces Round 952 (Div. 4)](https://codeforces.com/contest/1985) | Div. 4 | 800-2200 | 6/9 | 20m 35s |
+| [1986](1986/) | [Codeforces Round 954 (Div. 3)](https://codeforces.com/contest/1986) | Div. 3 | 800-2500 | 3/8 | 16m 3s |
+| [1987](1987/) | [EPIC Institute of Technology Round Summer 2024 (Div. 1 + Div. 2)](https://codeforces.com/contest/1987) | Div. 1+2 | 800-3500 | 3/10 | 29m 10s |
+| [1988](1988/) | [Codeforces Round 958 (Div. 2)](https://codeforces.com/contest/1988) | Div. 2 | 900-3000 | 3/6 | 16m 7s |
+| [1989](1989/) | [Educational Codeforces Round 167 (Rated for Div. 2)](https://codeforces.com/contest/1989) | Div. 2 | 800-3000 | 2/6 | 19m 49s |
+| [1990](1990/) | [Codeforces Round 960 (Div. 2)](https://codeforces.com/contest/1990) | Div. 2 | 900-2800 | 1/7 | 18m 31s |
+| [1991](1991/) | [Pinely Round 4 (Div. 1 + Div. 2)](https://codeforces.com/contest/1991) | Div. 1+2 | 800-3500 | 1/9 | 24m 17s |
+| [1992](1992/) | [Codeforces Round 957 (Div. 3)](https://codeforces.com/contest/1992) | Div. 3 | 800-2000 | 2/7 | 20m 49s |
+| [1993](1993/) | [Codeforces Round 963 (Div. 2)](https://codeforces.com/contest/1993) | Div. 2 | 800-2800 | 2/7 | 18m 21s |
+| [1994](1994/) | [Codeforces Round 959 sponsored by NEAR (Div. 1 + Div. 2)](https://codeforces.com/contest/1994) | Div. 1+2 | 800-3500 | 0/8 | 26m 13s |
+| [1995](1995/) | [Codeforces Round 961 (Div. 2)](https://codeforces.com/contest/1995) | Div. 2 | 800-2900 | 3/7 | 18m 8s |
+| [1996](1996/) | [Codeforces Round 962 (Div. 3)](https://codeforces.com/contest/1996) | Div. 3 | 800-2200 | 6/7 | 18m 25s |
+| [1997](1997/) | [Educational Codeforces Round 168 (Rated for Div. 2)](https://codeforces.com/contest/1997) | Div. 2 | 800-2700 | 3/6 | 16m 22s |
+| [1998](1998/) | [Codeforces Round 965 (Div. 2)](https://codeforces.com/contest/1998) | Div. 2 | 800-2500 | 1/6 | 19m 10s |
+| [1999](1999/) | [Codeforces Round 964 (Div. 4)](https://codeforces.com/contest/1999) | Div. 4 | 800-1700 | 4/8 | 17m 35s |
+| [2000](2000/) | [Codeforces Round 966 (Div. 3)](https://codeforces.com/contest/2000) | Div. 3 | 800-2200 | 4/8 | 31m 59s |
+| [2001](2001/) | [Codeforces Round 967 (Div. 2)](https://codeforces.com/contest/2001) | Div. 2 | 800-2900 | 2/6 | 20m 15s |
+| [2002](2002/) | [EPIC Institute of Technology Round August 2024 (Div. 1 + Div. 2)](https://codeforces.com/contest/2002) | Div. 1+2 | 800-3500 | 3/10 | 20m 9s |
+| [2003](2003/) | [Codeforces Round 968 (Div. 2)](https://codeforces.com/contest/2003) | Div. 2 | 800-2800 | 1/8 | 20m 20s |
+| [2004](2004/) | [Educational Codeforces Round 169 (Rated for Div. 2)](https://codeforces.com/contest/2004) | Div. 2 | 800-3200 | 3/7 | 18m 35s |
+| [2005](2005/) | [Codeforces Round 972 (Div. 2)](https://codeforces.com/contest/2005) | Div. 2 | 900-2500 | 1/7 | 15m 54s |
+| [2006](2006/) | [Codeforces Round 969 (Div. 1)](https://codeforces.com/contest/2006) | Div. 1 | 1700-3500 | 0/6 | 10m 11s |
+| [2007](2007/) | [Codeforces Round 969 (Div. 2)](https://codeforces.com/contest/2007) | Div. 2 | 800-2300 | 3/6 | 17m 28s |
+| [2008](2008/) | [Codeforces Round 970 (Div. 3)](https://codeforces.com/contest/2008) | Div. 3 | 2100-2100 | 0/1 | 1m 48s |
+| [2009](2009/) | [Codeforces Round 971 (Div. 4)](https://codeforces.com/contest/2009) | Div. 4 | 800-2700 | 3/9 | 14m 27s |
+| [2010](2010/) | [Testing Round 19 (Div. 3)](https://codeforces.com/contest/2010) | Div. 3 | 800-1700 | 3/4 | 4m 56s |
+| [2011](2011/) | [Kotlin Heroes: Episode 11](https://codeforces.com/contest/2011) | Kotlin | - | 2/9 | 14m |
+| [2013](2013/) | [Codeforces Round 973 (Div. 2)](https://codeforces.com/contest/2013) | Div. 2 | 800-2700 | 2/6 | 16m |
+| [2014](2014/) | [Codeforces Round 974 (Div. 3)](https://codeforces.com/contest/2014) | Div. 3 | 800-2200 | 5/8 | 13m 2s |
+| [2018](2018/) | [Codeforces Round 975 (Div. 1)](https://codeforces.com/contest/2018) | Div. 1 | 1600-3400 | 1/9 | 15m 37s |
+| [2019](2019/) | [Codeforces Round 975 (Div. 2)](https://codeforces.com/contest/2019) | Div. 2 | 800-2200 | 1/6 | 18m 26s |
+| [2020](2020/) | [Codeforces Round 976 (Div. 2) and Divide By Zero 9.0](https://codeforces.com/contest/2020) | Div. 2 | 800-2900 | 3/6 | 9m 28s |
+| [2021](2021/) | [Codeforces Round 977 (Div. 2, based on COMPFEST 16 - Final Round)](https://codeforces.com/contest/2021) | Div. 2 | 800-2800 | 2/8 | 12m 10s |
+| [2022](2022/) | [Codeforces Round 978 (Div. 2)](https://codeforces.com/contest/2022) | Div. 2 | 800-2700 | 3/7 | 14m 17s |
+| [2023](2023/) | [Codeforces Round 980 (Div. 1)](https://codeforces.com/contest/2023) | Div. 1 | 1300-3500 | 1/6 | 11m 30s |
+| [2024](2024/) | [Codeforces Round 980 (Div. 2)](https://codeforces.com/contest/2024) | Div. 2 | 800-2900 | 1/6 | 26m 21s |
+| [2025](2025/) | [Educational Codeforces Round 170 (Rated for Div. 2)](https://codeforces.com/contest/2025) | Div. 2 | 800-3000 | 4/7 | 23m 14s |
+| [2026](2026/) | [Educational Codeforces Round 171 (Rated for Div. 2)](https://codeforces.com/contest/2026) | Div. 2 | 900-2700 | 1/6 | 11m 52s |
+| [2027](2027/) | [Codeforces Round 982 (Div. 2)](https://codeforces.com/contest/2027) | Div. 2 | 800-3100 | 1/7 | 27m 27s |
+| [2028](2028/) | [Codeforces Round 986 (Div. 2)](https://codeforces.com/contest/2028) | Div. 2 | 900-2700 | 2/6 | 11m 25s |
+| [2029](2029/) | [Refact.ai Match 1 (Codeforces Round 985)](https://codeforces.com/contest/2029) | Special | 800-3500 | 1/9 | 18m 21s |
+| [2030](2030/) | [Codeforces Round 979 (Div. 2)](https://codeforces.com/contest/2030) | Div. 2 | 800-3100 | 5/8 | 13m 10s |
+| [2031](2031/) | [Codeforces Round 987 (Div. 2)](https://codeforces.com/contest/2031) | Div. 2 | 800-2800 | 2/6 | 11m 44s |
+| [2032](2032/) | [Codeforces Round 983 (Div. 2)](https://codeforces.com/contest/2032) | Div. 2 | 800-2700 | 1/6 | 11m 29s |
+| [2033](2033/) | [Codeforces Round 981 (Div. 3)](https://codeforces.com/contest/2033) | Div. 3 | 800-2200 | 4/7 | 11m 39s |
+| [2034](2034/) | [Rayan Programming Contest 2024 - Selection (Codeforces Round 989, Div. 1 + Div. 2)](https://codeforces.com/contest/2034) | Div. 1+2 | 800-3500 | 3/10 | 23m 2s |
+| [2035](2035/) | [Codeforces Global Round 27](https://codeforces.com/contest/2035) | Global | 800-3500 | 2/9 | 17m 6s |
 | [2036](2036/) | [Codeforces Round 984 (Div. 3)](https://codeforces.com/contest/2036) | Div. 3 | 800-2200 | 4/7 | 12m 48s |
 | [2037](2037/) | [Codeforces Round 988 (Div. 3)](https://codeforces.com/contest/2037) | Div. 3 | 800-2100 | 2/7 | 16m 45s |
-| [2038](2038/) | [2024-2025 ICPC, NERC, Southern and Volga Russian Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2038) | ICPC/IOI | 800-3000 | 5/13 | 26m 41s |
+| [2038](2038/) | [2024-2025 ICPC, NERC, Southern and Volga Russian Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2038) | ICPC/IOI | 800-3000 | 6/14 | 27m 19s |
 | [2039](2039/) | [CodeTON Round 9 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/2039) | Div. 1+2 | 800-3500 | 0/11 | 21m 12s |
 | [2040](2040/) | [Codeforces Round 992 (Div. 2)](https://codeforces.com/contest/2040) | Div. 2 | 800-2700 | 1/6 | 13m 11s |
 | [2041](2041/) | [2024 ICPC Asia Taichung Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2041) | ICPC/IOI | 1200-3300 | 5/14 | 26m |
@@ -467,7 +705,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2044](2044/) | [Codeforces Round 993 (Div. 4)](https://codeforces.com/contest/2044) | Div. 4 | 800-2100 | 7/9 | 18m 25s |
 | [2045](2045/) | [2024-2025 ICPC Asia Jakarta Regional Contest (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2045) | ICPC/IOI | 1400-3500 | 4/13 | 26m 38s |
 | [2046](2046/) | [Codeforces Round 990 (Div. 1)](https://codeforces.com/contest/2046) | Div. 1 | 1200-3500 | 0/8 | 16m 20s |
-| [2047](2047/) | [Codeforces Round 990 (Div. 2)](https://codeforces.com/contest/2047) | Div. 2 | 800-900 | 0/2 | 3m 3s |
+| [2047](2047/) | [Codeforces Round 990 (Div. 2)](https://codeforces.com/contest/2047) | Div. 2 | 800-3100 | 2/6 | 10m 53s |
 | [2048](2048/) | [Codeforces Global Round 28](https://codeforces.com/contest/2048) | Global | 800-3500 | 1/10 | 23m 4s |
 | [2049](2049/) | [Codeforces Round 994 (Div. 2)](https://codeforces.com/contest/2049) | Div. 2 | 800-2700 | 0/6 | 11m 24s |
 | [2050](2050/) | [Codeforces Round 991 (Div. 3)](https://codeforces.com/contest/2050) | Div. 3 | 800-1900 | 4/7 | 14m 3s |
@@ -478,14 +716,14 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2056](2056/) | [Codeforces Round 997 (Div. 2)](https://codeforces.com/contest/2056) | Div. 2 | 800-3000 | 1/7 | 14m 23s |
 | [2057](2057/) | [Hello 2025](https://codeforces.com/contest/2057) | Special | 800-3500 | 1/9 | 17m 45s |
 | [2059](2059/) | [Codeforces Round 1002 (Div. 2)](https://codeforces.com/contest/2059) | Div. 2 | 800-2900 | 1/6 | 10m 41s |
-| [2060](2060/) | [Codeforces Round 998 (Div. 3)](https://codeforces.com/contest/2060) | Div. 3 | 800-2200 | 1/5 | 7m 43s |
+| [2060](2060/) | [Codeforces Round 998 (Div. 3)](https://codeforces.com/contest/2060) | Div. 3 | 800-2400 | 4/7 | 11m 10s |
 | [2061](2061/) | [IAEPC Preliminary Contest (Codeforces Round 999, Div. 1 + Div. 2)](https://codeforces.com/contest/2061) | Div. 1+2 | 800-3500 | 3/11 | 20m 29s |
 | [2062](2062/) | [Ethflow Round 1 (Codeforces Round 1001, Div. 1 + Div. 2)](https://codeforces.com/contest/2062) | Div. 1+2 | 800-3500 | 1/9 | 17m 45s |
 | [2063](2063/) | [Codeforces Round 1000 (Div. 2)](https://codeforces.com/contest/2063) | Div. 2 | 800-2700 | 2/7 | 13m 8s |
 | [2064](2064/) | [Codeforces Round 1005 (Div. 2)](https://codeforces.com/contest/2064) | Div. 2 | 800-2600 | 2/6 | 11m 13s |
 | [2065](2065/) | [Codeforces Round 1003 (Div. 4)](https://codeforces.com/contest/2065) | Div. 4 | 800-2200 | 5/9 | 16m 33s |
-| [2066](2066/) | [Codeforces Round 1004 (Div. 1)](https://codeforces.com/contest/2066) | Div. 1 | 1400-3300 | 0/6 | 10m 28s |
-| [2067](2067/) | [Codeforces Round 1004 (Div. 2)](https://codeforces.com/contest/2067) | Div. 2 | 800-1500 | 2/3 | 5m 2s |
+| [2066](2066/) | [Codeforces Round 1004 (Div. 1)](https://codeforces.com/contest/2066) | Div. 1 | 1400-3300 | 1/7 | 14m 39s |
+| [2067](2067/) | [Codeforces Round 1004 (Div. 2)](https://codeforces.com/contest/2067) | Div. 2 | 800-3300 | 3/7 | 13m 28s |
 | [2068](2068/) | [European Championship 2025 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2068) | ICPC/IOI | 1900-3500 | 4/11 | 17m 46s |
 | [2069](2069/) | [Educational Codeforces Round 174 (Rated for Div. 2)](https://codeforces.com/contest/2069) | Div. 2 | 800-2800 | 2/6 | 10m 15s |
 | [2070](2070/) | [Educational Codeforces Round 175 (Rated for Div. 2)](https://codeforces.com/contest/2070) | Div. 2 | 800-3000 | 5/6 | 9m 24s |
@@ -495,27 +733,27 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2074](2074/) | [Codeforces Round 1009 (Div. 3)](https://codeforces.com/contest/2074) | Div. 3 | 800-2100 | 4/7 | 10m 28s |
 | [2075](2075/) | [Educational Codeforces Round 176 (Rated for Div. 2)](https://codeforces.com/contest/2075) | Div. 2 | 800-3000 | 1/6 | 9m 36s |
 | [2077](2077/) | [Codeforces Round 1008 (Div. 1)](https://codeforces.com/contest/2077) | Div. 1 | 1500-3500 | 2/7 | 11m 14s |
-| [2078](2078/) | [Codeforces Round 1008 (Div. 2)](https://codeforces.com/contest/2078) | Div. 2 | 800-1800 | 1/3 | 4m 43s |
+| [2078](2078/) | [Codeforces Round 1008 (Div. 2)](https://codeforces.com/contest/2078) | Div. 2 | 800-2700 | 3/7 | 11m 26s |
 | [2079](2079/) | [XIX Open Olympiad in Informatics - Final Stage, Day 1 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2079) | ICPC/IOI | 1800-3300 | 3/4 | 3m 34s |
 | [2080](2080/) | [XIX Open Olympiad in Informatics - Final Stage, Day 2 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2080) | ICPC/IOI | 1700-3400 | 2/4 | 3m 2s |
 | [2081](2081/) | [Codeforces Round 1010 (Div. 1, Unrated)](https://codeforces.com/contest/2081) | Div. 1 | 1800-3400 | 2/8 | 11m 13s |
-| [2082](2082/) | [Codeforces Round 1010 (Div. 2, Unrated)](https://codeforces.com/contest/2082) | Div. 2 | 800-1600 | 1/2 | 3m |
+| [2082](2082/) | [Codeforces Round 1010 (Div. 2, Unrated)](https://codeforces.com/contest/2082) | Div. 2 | 800-2700 | 3/6 | 11m 9s |
 | [2084](2084/) | [Teza Round 1 (Codeforces Round 1015, Div. 1 + Div. 2)](https://codeforces.com/contest/2084) | Div. 1+2 | 800-3500 | 2/9 | 22m 42s |
 | [2085](2085/) | [Codeforces Round 1011 (Div. 2)](https://codeforces.com/contest/2085) | Div. 2 | 900-2900 | 0/7 | 12m 17s |
 | [2086](2086/) | [Educational Codeforces Round 177 (Rated for Div. 2)](https://codeforces.com/contest/2086) | Div. 2 | 800-3000 | 4/6 | 9m 38s |
 | [2087](2087/) | [Kotlin Heroes: Episode 12](https://codeforces.com/contest/2087) | Kotlin | - | 4/9 | 13m 56s |
 | [2089](2089/) | [Codeforces Round 1012 (Div. 1)](https://codeforces.com/contest/2089) | Div. 1 | 1700-3500 | 1/7 | 12m 42s |
-| [2090](2090/) | [Codeforces Round 1012 (Div. 2)](https://codeforces.com/contest/2090) | Div. 2 | 800-1700 | 1/3 | 4m 40s |
+| [2090](2090/) | [Codeforces Round 1012 (Div. 2)](https://codeforces.com/contest/2090) | Div. 2 | 800-3100 | 2/8 | 12m 30s |
 | [2091](2091/) | [Codeforces Round 1013 (Div. 3)](https://codeforces.com/contest/2091) | Div. 3 | 800-2300 | 5/7 | 10m 5s |
 | [2092](2092/) | [Codeforces Round 1014 (Div. 2)](https://codeforces.com/contest/2092) | Div. 2 | 800-2900 | 1/6 | 9m 34s |
 | [2093](2093/) | [Codeforces Round 1016 (Div. 3)](https://codeforces.com/contest/2093) | Div. 3 | 800-1900 | 5/7 | 11m 23s |
 | [2094](2094/) | [Codeforces Round 1017 (Div. 4)](https://codeforces.com/contest/2094) | Div. 4 | 800-1900 | 5/8 | 12m 23s |
 | [2095](2095/) | [April Fools Day Contest 2025](https://codeforces.com/contest/2095) | April Fools | - | 4/10 | 12m 6s |
 | [2096](2096/) | [Neowise Labs Contest 1 (Codeforces Round 1018, Div. 1 + Div. 2)](https://codeforces.com/contest/2096) | Div. 1+2 | 800-3200 | 2/8 | 13m 4s |
-| [2097](2097/) | [Codeforces Round 1021 (Div. 1)](https://codeforces.com/contest/2097) | Div. 1 | 2300-3500 | 1/5 | 11m 35s |
-| [2098](2098/) | [Codeforces Round 1021 (Div. 2)](https://codeforces.com/contest/2098) | Div. 2 | 1400-1400 | 1/1 | 1m 5s |
+| [2097](2097/) | [Codeforces Round 1021 (Div. 1)](https://codeforces.com/contest/2097) | Div. 1 | 1400-3500 | 2/6 | 9m 51s |
+| [2098](2098/) | [Codeforces Round 1021 (Div. 2)](https://codeforces.com/contest/2098) | Div. 2 | 800-2800 | 2/6 | 11m 22s |
 | [2101](2101/) | [Codeforces Round 1024 (Div. 1)](https://codeforces.com/contest/2101) | Div. 1 | 1300-3300 | 0/6 | 14m 18s |
-| [2102](2102/) | [Codeforces Round 1024 (Div. 2)](https://codeforces.com/contest/2102) | Div. 2 | 900-900 | 2/2 | 2m 45s |
+| [2102](2102/) | [Codeforces Round 1024 (Div. 2)](https://codeforces.com/contest/2102) | Div. 2 | 900-2500 | 2/6 | 9m 46s |
 | [2103](2103/) | [Codeforces Round 1019 (Div. 2)](https://codeforces.com/contest/2103) | Div. 2 | 800-2600 | 1/6 | 9m 19s |
 | [2104](2104/) | [Educational Codeforces Round 178 (Rated for Div. 2)](https://codeforces.com/contest/2104) | Div. 2 | 800-2700 | 3/7 | 11m 3s |
 | [2106](2106/) | [Codeforces Round 1020 (Div. 3)](https://codeforces.com/contest/2106) | Div. 3 | 800-2500 | 2/8 | 13m 16s |
@@ -527,9 +765,9 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2112](2112/) | [Educational Codeforces Round 180 (Rated for Div. 2)](https://codeforces.com/contest/2112) | Div. 2 | 800-2800 | 2/6 | 9m 9s |
 | [2113](2113/) | [Codeforces Round 1031 (Div. 2)](https://codeforces.com/contest/2113) | Div. 2 | 800-2800 | 3/6 | 9m 19s |
 | [2114](2114/) | [Codeforces Round 1027 (Div. 3)](https://codeforces.com/contest/2114) | Div. 3 | 800-2200 | 0/7 | 11m 35s |
-| [2115](2115/) | [Codeforces Round 1028 (Div. 1)](https://codeforces.com/contest/2115) | Div. 1 | 1500-3500 | 3/5 | 6m 14s |
-| [2116](2116/) | [Codeforces Round 1028 (Div. 2)](https://codeforces.com/contest/2116) | Div. 2 | 1300-1300 | 0/1 | 1m 16s |
-| [2117](2117/) | [Codeforces Round 1029 (Div. 3)](https://codeforces.com/contest/2117) | Div. 3 | 800-2500 | 2/7 | 10m 51s |
+| [2115](2115/) | [Codeforces Round 1028 (Div. 1)](https://codeforces.com/contest/2115) | Div. 1 | 1500-3500 | 3/7 | 12m 1s |
+| [2116](2116/) | [Codeforces Round 1028 (Div. 2)](https://codeforces.com/contest/2116) | Div. 2 | 800-2900 | 1/6 | 13m 21s |
+| [2117](2117/) | [Codeforces Round 1029 (Div. 3)](https://codeforces.com/contest/2117) | Div. 3 | 800-2500 | 3/8 | 17m 28s |
 | [2118](2118/) | [Codeforces Round 1030 (Div. 2)](https://codeforces.com/contest/2118) | Div. 2 | 800-3100 | 1/7 | 12m 28s |
 | [2119](2119/) | [Codeforces Round 1035 (Div. 2)](https://codeforces.com/contest/2119) | Div. 2 | 800-3300 | 2/6 | 9m 21s |
 | [2120](2120/) | [Codeforces Round 1033 (Div. 2) and CodeNite 2025](https://codeforces.com/contest/2120) | Div. 2 | 800-3000 | 3/7 | 13m 11s |
@@ -539,21 +777,21 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2124](2124/) | [EPIC Institute of Technology Round Summer 2025 (Codeforces Round 1036, Div. 1 + Div. 2)](https://codeforces.com/contest/2124) | Div. 1+2 | 800-3500 | 0/10 | 16m 17s |
 | [2125](2125/) | [Educational Codeforces Round 181 (Rated for Div. 2)](https://codeforces.com/contest/2125) | Div. 2 | 800-3000 | 3/6 | 10m 7s |
 | [2126](2126/) | [Codeforces Round 1037 (Div. 3)](https://codeforces.com/contest/2126) | Div. 3 | 800-2400 | 6/8 | 11m 34s |
-| [2127](2127/) | [Atto Round 1 (Codeforces Round 1041, Div. 1 + Div. 2)](https://codeforces.com/contest/2127) | Div. 1+2 | 1300-3500 | 1/7 | 11m 43s |
-| [2128](2128/) | [Codeforces Round 1039 (Div. 2)](https://codeforces.com/contest/2128) | Div. 2 | 800-2600 | 2/5 | 12m 39s |
+| [2127](2127/) | [Atto Round 1 (Codeforces Round 1041, Div. 1 + Div. 2)](https://codeforces.com/contest/2127) | Div. 1+2 | 800-3500 | 2/9 | 21m 47s |
+| [2128](2128/) | [Codeforces Round 1039 (Div. 2)](https://codeforces.com/contest/2128) | Div. 2 | 800-3200 | 2/7 | 14m 46s |
 | [2129](2129/) | [Codeforces Round 1040 (Div. 1)](https://codeforces.com/contest/2129) | Div. 1 | 1300-3500 | 2/9 | 17m 30s |
-| [2130](2130/) | [Codeforces Round 1040 (Div. 2)](https://codeforces.com/contest/2130) | Div. 2 | 800-1100 | 1/2 | 3m 11s |
+| [2130](2130/) | [Codeforces Round 1040 (Div. 2)](https://codeforces.com/contest/2130) | Div. 2 | 800-2600 | 2/8 | 12m 27s |
 | [2131](2131/) | [Codeforces Round 1042 (Div. 3)](https://codeforces.com/contest/2131) | Div. 3 | 800-2600 | 3/8 | 14m 55s |
 | [2132](2132/) | [Codeforces Round 1043 (Div. 3)](https://codeforces.com/contest/2132) | Div. 3 | 800-2600 | 5/8 | 13m 38s |
 | [2133](2133/) | [Codeforces Round 1044 (Div. 2)](https://codeforces.com/contest/2133) | Div. 2 | 800-3000 | 1/6 | 10m 23s |
 | [2134](2134/) | [Codeforces Round 1045 (Div. 2)](https://codeforces.com/contest/2134) | Div. 2 | 800-2900 | 2/6 | 8m 56s |
 | [2135](2135/) | [Codeforces Round 1046 (Div. 1)](https://codeforces.com/contest/2135) | Div. 1 | 1200-3500 | 0/8 | 14m 1s |
-| [2136](2136/) | [Codeforces Round 1046 (Div. 2)](https://codeforces.com/contest/2136) | Div. 2 | 800-900 | 1/2 | 3m |
+| [2136](2136/) | [Codeforces Round 1046 (Div. 2)](https://codeforces.com/contest/2136) | Div. 2 | 800-2500 | 2/7 | 10m 59s |
 | [2137](2137/) | [Codeforces Round 1047 (Div. 3)](https://codeforces.com/contest/2137) | Div. 3 | 800-2200 | 1/7 | 13m 16s |
 | [2138](2138/) | [Codeforces Round 1048 (Div. 1)](https://codeforces.com/contest/2138) | Div. 1 | 1100-3500 | 0/8 | 13m 56s |
-| [2139](2139/) | [Codeforces Round 1048 (Div. 2)](https://codeforces.com/contest/2139) | Div. 2 | 800-800 | 1/2 | 2m 49s |
+| [2139](2139/) | [Codeforces Round 1048 (Div. 2)](https://codeforces.com/contest/2139) | Div. 2 | 800-2600 | 1/7 | 10m 7s |
 | [2140](2140/) | [Codeforces Round 1049 (Div. 2)](https://codeforces.com/contest/2140) | Div. 2 | 800-2900 | 4/7 | 12m 22s |
-| [2141](2141/) | [Kotlin Heroes: Episode 13](https://codeforces.com/contest/2141) | Kotlin | 800-3500 | 4/8 | 14m 29s |
+| [2141](2141/) | [Kotlin Heroes: Episode 13](https://codeforces.com/contest/2141) | Kotlin | 800-3500 | 4/9 | 14m 33s |
 | [2143](2143/) | [Codeforces Round 1051 (Div. 2)](https://codeforces.com/contest/2143) | Div. 2 | 800-2700 | 1/7 | 13m 38s |
 | [2144](2144/) | [Educational Codeforces Round 182 (Rated for Div. 2)](https://codeforces.com/contest/2144) | Div. 2 | 800-2700 | 2/7 | 13m 2s |
 | [2145](2145/) | [Educational Codeforces Round 183 (Rated for Div. 2)](https://codeforces.com/contest/2145) | Div. 2 | 800-2900 | 2/7 | 12m 44s |
@@ -562,7 +800,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2148](2148/) | [Codeforces Round 1050 (Div. 4)](https://codeforces.com/contest/2148) | Div. 4 | 800-1900 | 4/7 | 12m 21s |
 | [2149](2149/) | [Codeforces Round 1054 (Div. 3)](https://codeforces.com/contest/2149) | Div. 3 | 800-2100 | 5/7 | 10m 5s |
 | [2150](2150/) | [Codeforces Round 1053 (Div. 1)](https://codeforces.com/contest/2150) | Div. 1 | 1300-3500 | 0/8 | 15m 14s |
-| [2151](2151/) | [Codeforces Round 1053 (Div. 2)](https://codeforces.com/contest/2151) | Div. 2 | 800-1400 | 0/2 | 6m 33s |
+| [2151](2151/) | [Codeforces Round 1053 (Div. 2)](https://codeforces.com/contest/2151) | Div. 2 | 800-2800 | 0/8 | 12m 29s |
 | [2152](2152/) | [Squarepoint Challenge (Codeforces Round 1055, Div. 1 + Div. 2)](https://codeforces.com/contest/2152) | Div. 1+2 | 800-3500 | 1/9 | 25m 17s |
 | [2153](2153/) | [Codeforces Round 1057 (Div. 2)](https://codeforces.com/contest/2153) | Div. 2 | 800-2900 | 2/6 | 15m 8s |
 | [2154](2154/) | [Codeforces Round 1060 (Div. 2)](https://codeforces.com/contest/2154) | Div. 2 | 800-3300 | 2/8 | 15m 6s |
@@ -571,13 +809,13 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2157](2157/) | [Codeforces Round 1066 (Div. 1 + Div. 2)](https://codeforces.com/contest/2157) | Div. 1+2 | 800-3500 | 3/9 | 21m 20s |
 | [2158](2158/) | [Codeforces Round 1067 (Div. 2)](https://codeforces.com/contest/2158) | Div. 2 | 800-3000 | 2/7 | 10m 44s |
 | [2159](2159/) | [Codeforces Round 1058 (Div. 1)](https://codeforces.com/contest/2159) | Div. 1 | 1700-3500 | 1/7 | 14m 14s |
-| [2160](2160/) | [Codeforces Round 1058 (Div. 2)](https://codeforces.com/contest/2160) | Div. 2 | 800-1300 | 1/3 | 6m 45s |
+| [2160](2160/) | [Codeforces Round 1058 (Div. 2)](https://codeforces.com/contest/2160) | Div. 2 | 800-3200 | 3/8 | 15m 24s |
 | [2161](2161/) | [Pinely Round 5 (Div. 1 + Div. 2)](https://codeforces.com/contest/2161) | Div. 1+2 | 800-3500 | 1/8 | 15m 15s |
 | [2162](2162/) | [Codeforces Round 1059 (Div. 3)](https://codeforces.com/contest/2162) | Div. 3 | 800-2900 | 2/8 | 13m 30s |
 | [2163](2163/) | [Codeforces Round 1063 (Div. 2)](https://codeforces.com/contest/2163) | Div. 2 | 800-2700 | 0/6 | 12m 58s |
 | [2164](2164/) | [Codeforces Global Round 30 (Div. 1 + Div. 2)](https://codeforces.com/contest/2164) | Div. 1+2 | 800-3400 | 2/9 | 16m 10s |
 | [2165](2165/) | [Codeforces Round 1064 (Div. 1)](https://codeforces.com/contest/2165) | Div. 1 | 1300-3500 | 1/6 | 13m 2s |
-| [2166](2166/) | [Codeforces Round 1064 (Div. 2)](https://codeforces.com/contest/2166) | Div. 2 | 800-900 | 0/2 | 2m 58s |
+| [2166](2166/) | [Codeforces Round 1064 (Div. 2)](https://codeforces.com/contest/2166) | Div. 2 | 800-2500 | 2/6 | 12m 55s |
 | [2167](2167/) | [Codeforces Round 1062 (Div. 4)](https://codeforces.com/contest/2167) | Div. 4 | 800-1600 | 3/7 | 10m 54s |
 | [2168](2168/) | [Testing Round 20 (Unrated, Communication Problems)](https://codeforces.com/contest/2168) | Special | - | 0/4 | 7m 30s |
 | [2169](2169/) | [Educational Codeforces Round 184 (Rated for Div. 2)](https://codeforces.com/contest/2169) | Div. 2 | 900-2700 | 3/7 | 13m 34s |
@@ -586,7 +824,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2172](2172/) | [2025 ICPC Asia Taichung Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)](https://codeforces.com/contest/2172) | ICPC/IOI | 800-3300 | 5/14 | 31m 43s |
 | [2173](2173/) | [Codeforces Round 1068 (Div. 2)](https://codeforces.com/contest/2173) | Div. 2 | 800-2600 | 3/6 | 14m 56s |
 | [2174](2174/) | [Codeforces Round 1069 (Div. 1)](https://codeforces.com/contest/2174) | Div. 1 | 1200-3400 | 1/8 | 19m 52s |
-| [2175](2175/) | [Codeforces Round 1069 (Div. 2)](https://codeforces.com/contest/2175) | Div. 2 | 800-1300 | 1/2 | 4m 50s |
+| [2175](2175/) | [Codeforces Round 1069 (Div. 2)](https://codeforces.com/contest/2175) | Div. 2 | 800-3400 | 2/7 | 12m 28s |
 | [2176](2176/) | [Codeforces Round 1070 (Div. 2)](https://codeforces.com/contest/2176) | Div. 2 | 800-2400 | 2/6 | 14m 36s |
 | [2178](2178/) | [Good Bye 2025](https://codeforces.com/contest/2178) | Special | 800-3300 | 2/9 | 17m 2s |
 | [2179](2179/) | [Codeforces Round 1071 (Div. 3)](https://codeforces.com/contest/2179) | Div. 3 | 800-2200 | 1/8 | 17m 58s |
@@ -597,20 +835,20 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2184](2184/) | [Codeforces Round 1072 (Div. 3)](https://codeforces.com/contest/2184) | Div. 3 | 800-1900 | 3/7 | 16m 4s |
 | [2185](2185/) | [Codeforces Round 1074 (Div. 4)](https://codeforces.com/contest/2185) | Div. 4 | 800-2500 | 4/8 | 19m 7s |
 | [2187](2187/) | [Codeforces Round 1077 (Div. 1)](https://codeforces.com/contest/2187) | Div. 1 | 1300-3500 | 1/8 | 22m |
-| [2188](2188/) | [Codeforces Round 1077 (Div. 2)](https://codeforces.com/contest/2188) | Div. 2 | 800-1000 | 1/2 | 4m 4s |
+| [2188](2188/) | [Codeforces Round 1077 (Div. 2)](https://codeforces.com/contest/2188) | Div. 2 | 800-3500 | 4/7 | 11m 9s |
 | [2189](2189/) | [Codeforces Round 1075 (Div. 2)](https://codeforces.com/contest/2189) | Div. 2 | 800-2800 | 1/8 | 21m 12s |
 | [2190](2190/) | [Codeforces Round 1073 (Div. 1)](https://codeforces.com/contest/2190) | Div. 1 | 1200-3300 | 1/8 | 16m 47s |
-| [2191](2191/) | [Codeforces Round 1073 (Div. 2)](https://codeforces.com/contest/2191) | Div. 2 | 800-1000 | 1/2 | 4m 8s |
+| [2191](2191/) | [Codeforces Round 1073 (Div. 2)](https://codeforces.com/contest/2191) | Div. 2 | 800-3200 | 2/8 | 14m 4s |
 | [2192](2192/) | [Codeforces Round 1081 (Div. 2)](https://codeforces.com/contest/2192) | Div. 2 | 800-2900 | 2/6 | 11m 57s |
 | [2193](2193/) | [Codeforces Round 1076 (Div. 3)](https://codeforces.com/contest/2193) | Div. 3 | 800-2400 | 5/8 | 18m 26s |
 | [2194](2194/) | [Codeforces Round 1078 (Div. 2)](https://codeforces.com/contest/2194) | Div. 2 | 800-3000 | 2/7 | 13m 55s |
 | [2195](2195/) | [Codeforces Round 1080 (Div. 3)](https://codeforces.com/contest/2195) | Div. 3 | 800-2400 | 3/8 | 14m 21s |
 | [2196](2196/) | [Codeforces Round 1079 (Div. 1)](https://codeforces.com/contest/2196) | Div. 1 | 1200-3300 | 2/8 | 16m 32s |
-| [2197](2197/) | [Codeforces Round 1079 (Div. 2)](https://codeforces.com/contest/2197) | Div. 2 | 800-1100 | 1/2 | 3m 6s |
+| [2197](2197/) | [Codeforces Round 1079 (Div. 2)](https://codeforces.com/contest/2197) | Div. 2 | 800-2500 | 3/7 | 11m 24s |
 | [2199](2199/) | [Kotlin Heroes: Episode 14](https://codeforces.com/contest/2199) | Kotlin | 1000-3000 | 3/9 | 18m 48s |
 | [2200](2200/) | [Codeforces Round 1084 (Div. 3)](https://codeforces.com/contest/2200) | Div. 3 | 800-2600 | 2/8 | 14m 57s |
 | [2201](2201/) | [Codeforces Round 1082 (Div. 1)](https://codeforces.com/contest/2201) | Div. 1 | 1300-3500 | 1/9 | 21m |
-| [2202](2202/) | [Codeforces Round 1082 (Div. 2)](https://codeforces.com/contest/2202) | Div. 2 | 800-2500 | 1/3 | 5m 44s |
+| [2202](2202/) | [Codeforces Round 1082 (Div. 2)](https://codeforces.com/contest/2202) | Div. 2 | 800-2800 | 1/9 | 14m 8s |
 | [2203](2203/) | [Educational Codeforces Round 187 (Rated for Div. 2)](https://codeforces.com/contest/2203) | Div. 2 | 800-2600 | 2/6 | 11m 26s |
 | [2204](2204/) | [Educational Codeforces Round 188 (Rated for Div. 2)](https://codeforces.com/contest/2204) | Div. 2 | 800-2700 | 2/7 | 13m 51s |
 | [2205](2205/) | [Codeforces Round 1083 (Div. 2)](https://codeforces.com/contest/2205) | Div. 2 | 800-3000 | 1/7 | 15m 10s |
@@ -622,11 +860,11 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [2211](2211/) | [Nebius Round 2 (Codeforces Round 1088, Div. 1 + Div. 2)](https://codeforces.com/contest/2211) | Div. 1+2 | 800-3500 | 2/9 | 17m 58s |
 | [2214](2214/) | [April Fools Day Contest 2026](https://codeforces.com/contest/2214) | April Fools | - | 5/10 | 18m 14s |
 | [2215](2215/) | [Codeforces Round 1092 (Unrated, Div. 1, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2215) | Div. 1 | 1700-3500 | 0/7 | 12m 54s |
-| [2216](2216/) | [Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2216) | Div. 2 | 900-1300 | 0/2 | 3m 33s |
+| [2216](2216/) | [Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2216) | Div. 2 | 900-2700 | 0/6 | 10m |
 | [2217](2217/) | [Codeforces Round 1091 (Div. 2) and CodeCraft 26](https://codeforces.com/contest/2217) | Div. 2 | 800-2800 | 0/8 | 14m 29s |
 | [2218](2218/) | [Codeforces Round 1090 (Div. 4)](https://codeforces.com/contest/2218) | Div. 4 | 800-1800 | 1/7 | 13m 16s |
 | [2219](2219/) | [Codeforces Round 1093 (Div. 1)](https://codeforces.com/contest/2219) | Div. 1 | - | 1/6 | 15m 59s |
-| [2220](2220/) | [Codeforces Round 1093 (Div. 2)](https://codeforces.com/contest/2220) | Div. 2 | - | 0/2 | 3m 29s |
+| [2220](2220/) | [Codeforces Round 1093 (Div. 2)](https://codeforces.com/contest/2220) | Div. 2 | 1400-2700 | 0/7 | 12m 27s |
 | [2222](2222/) | [Spectral::Cup 2026 Round 1 (Codeforces Round 1094, Div. 1 + Div. 2)](https://codeforces.com/contest/2222) | Div. 1+2 | - | 0/8 | 16m 52s |
 | [2225](2225/) | [Educational Codeforces Round 189 (Rated for Div. 2)](https://codeforces.com/contest/2225) | Div. 2 | - | 0/7 | 11m 44s |
 | [2226](2226/) | [Codeforces Round 1095 (Div. 2)](https://codeforces.com/contest/2226) | Div. 2 | - | 0/7 | 23m 23s |

@@ -1,7 +1,7 @@
 ---
 title: "CF 2038B - Make It Equal"
 description: "The failure you show is not enough to diagnose the algorithm itself. Let's trace what happened: The input contains 5 test cases: The program produced only: instead of: This means the code successfully processed the first test case and then terminated before handling the…"
-date: "2026-06-08T10:02:56+07:00"
+date: "2026-06-08T10:34:38+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "brute-force", "greedy", "math"]
 categories: ["algorithms"]
 codeforces_contest: 2038
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "2024-2025 ICPC, NERC, Southern and Volga Russian Regional Contest (Unrated, Online Mirror, ICPC Rules, Preferably Teams)"
 rating: 2100
 weight: 2038
-solve_time_s: 125
+solve_time_s: 124
 verified: false
 draft: false
 ---
@@ -18,7 +18,7 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** binary search, brute force, greedy, math  
-**Solve time:** 2m 5s  
+**Solve time:** 2m 4s  
 **Verified:** no  
 
 ## Solution

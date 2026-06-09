@@ -18,11 +18,11 @@ Exercises from [TAOCP Volume 1](../) Section 1.4.3.1: 8/8 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*14*] | simple | verified | 1m20s |
-| [2](02.md) |  [*20*] | medium | solved | 5m08s |
-| [3](03.md) |  [*22*] | medium | verified | 2m37s |
-| [4](04.md) |  [*14*] | simple | verified | 39s |
-| [5](05.md) |  [*24*] | medium | solved | - |
-| [6](06.md) |  [*28*] | hard | verified | 54s |
-| [7](07.md) |  [*32*] | hard | solved | - |
-| [8](08.md) |  [*20*] | medium | solved | 2m25s |
+| [1](01.md) |  [*14*] | simple | solved | 5m18s |
+| [2](02.md) |  [*20*] | medium | solved | 5m33s |
+| [3](03.md) |  [*22*] | medium | solved | 5m54s |
+| [4](04.md) |  [*14*] | simple | solved | 5m17s |
+| [5](05.md) |  [*24*] | medium | solved | 4m41s |
+| [6](06.md) |  [*28*] | hard | solved | 4m53s |
+| [7](07.md) |  [*32*] | hard | solved | 5m40s |
+| [8](08.md) |  [*20*] | medium | solved | 5m01s |

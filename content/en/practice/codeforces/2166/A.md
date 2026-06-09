@@ -1,7 +1,7 @@
 ---
 title: "CF 2166A - Same Difference"
-description: "We are given a string consisting of lowercase letters, and we are allowed to repeatedly perform a very specific operation: choose a position and overwrite that character with the character immediately to its right."
-date: "2026-06-07T23:29:00+07:00"
+description: "We are given a string of lowercase letters. In one move, we pick a position and overwrite its character with the character immediately to its right. The operation only allows copying from right to left, so information flows strictly in one direction."
+date: "2026-06-09T04:27:29+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "greedy", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 2166
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 1064 (Div. 2)"
 rating: 800
 weight: 2166
-solve_time_s: 81
+solve_time_s: 100
 verified: false
 draft: false
 ---
@@ -18,69 +18,53 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force, greedy, strings  
-**Solve time:** 1m 21s  
+**Solve time:** 1m 40s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string consisting of lowercase letters, and we are allowed to repeatedly perform a very specific operation: choose a position and overwrite that character with the character immediately to its right. Each operation effectively “copies” a letter one step to the left.
+We are given a string of lowercase letters. In one move, we pick a position and overwrite its character with the character immediately to its right. The operation only allows copying from right to left, so information flows strictly in one direction.
 
-The goal is to transform the entire string into a uniform string where every position contains the same letter, and we want to minimize how many such left-copy operations are needed.
+The goal is to transform the entire string into a single repeated character using the minimum number of such copy operations.
 
-A useful way to think about the process is that once a character appears at some position, it can only influence positions to its left, and it can only spread by being copied leftward step by step. No operation ever creates a new character, it only propagates an existing right-side character into the left region.
+The key restriction is directional: you cannot freely change a character to anything you want, you can only replace it with the character on its right. This immediately suggests that the final uniform character must already exist in the string, because no new letters can be introduced.
 
-The constraints are small: each string has length at most 100, and the total length across all test cases is also at most 100. This immediately tells us that even an $O(n^2)$ or $O(n^3)$ approach per test case is completely safe. There is no need for optimization beyond simple combinational reasoning.
+The constraints are small. Each string has length at most 100 and the total length over all test cases is also at most 100. This means even cubic or quadratic strategies would be acceptable, but the structure of the operation allows something simpler and direct.
 
-A key edge case is when the string is already uniform. For example, input `"aaaa"` requires zero operations. Any correct solution must detect this implicitly or explicitly.
-
-Another subtle case is when the optimal strategy involves choosing a character that is not necessarily the most frequent or the first occurrence. For instance, in `"abcabc"`, choosing different target letters leads to different costs, and a naive greedy based on frequency would fail.
+A subtle edge case appears when the string is already uniform. In that case, no operation is needed. Another case worth noticing is when the desired final character appears only once at the end of the string. In that situation, every other character must eventually be converted through a chain of right-to-left copies, and naive greedy choices that do not account for propagation order can underestimate the required operations.
 
 ## Approaches
 
-A brute-force idea is to fix the final character of the string and compute how many operations are needed to convert everything into that character. For a fixed target character, we simulate the process from right to left. Whenever we see a position whose character is already correct, it can act as a “source” that can propagate leftward; otherwise we need to rely on future right-side occurrences and count operations needed to propagate them.
+The brute-force viewpoint is to simulate all possible sequences of operations until the string becomes uniform. From any state, we may pick any index and copy its right neighbor into it, branching into many possible states. Even with a small string, this explodes combinatorially because each step creates up to n new branches and we may need up to O(n) steps, leading to an exponential state space.
 
-For a fixed target, we can think of scanning from right to left and counting how many times we encounter segments where the current position does not yet match the target but a future position does. Each mismatch that cannot be immediately resolved contributes to operations.
+The key observation is that we never need to consider different target letters independently. If we fix the final character, the problem becomes: convert the entire string into that character using the allowed right-to-left propagation. Since we can only copy from right to left, every position that is not already equal to the final character must be "covered" by a position to its right that already has the final character.
 
-Trying all 26 letters and computing the cost for each gives a straightforward solution. Since $n \le 100$, this is at most $26 \cdot 100$, which is trivial.
+This turns the process into a greedy sweep from right to left. If we decide the final character, we scan from right to left and whenever we see a mismatch, we must perform an operation at that position to copy its right neighbor. This effectively forces that position to become correct, and we accumulate the cost.
 
-The key observation is that the final string must consist of a single repeated character, and that character must be one of the letters already present in the string. We can therefore try each character as the final target and compute the minimal cost of converting the entire string to it.
-
-The cost for a chosen target character is determined by scanning from right to left: every time we see the target character, it can “reset” our ability to fix positions to its left. Every time we see a non-target character while we are still relying on a target occurrence to the right, we need an operation.
-
-This reduces the problem to a simple per-character simulation rather than a complex transformation.
+Since the final string must be uniform, we try each distinct character in the string as a candidate target and compute the cost, then take the minimum.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force per target with simulation | $O(26n)$ | $O(1)$ | Accepted |
-| Optimal (same idea, streamlined) | $O(26n)$ | $O(1)$ | Accepted |
+| Brute Force Simulation | Exponential | O(n² states) | Too slow |
+| Try all targets + greedy propagation | O(26·n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We compute the answer by trying each possible final character from `'a'` to `'z'`.
+1. Identify all distinct characters in the string. Each of these characters is a potential final target because the last remaining character must already exist in the initial string.
+2. For each candidate character c, compute how many operations are required to turn the entire string into c.
+3. To compute cost for a fixed c, traverse the string from right to left.
+4. Maintain a pointer representing the current "valid region" where positions are already equal to c due to prior propagation.
+5. When we encounter a position i such that s[i] is not c, we perform an operation at i, which makes s[i] become s[i+1]. This ensures that position i now matches whatever has already been propagated to the right.
+6. Count each such mismatch as one operation, since each mismatch forces a direct fix.
+7. After processing all positions, record the total operations for this candidate.
+8. Return the minimum over all candidates.
 
-1. Fix a candidate character `c` as the final uniform character.
-
-We assume the whole string will eventually become `c`, and we compute the number of operations required to achieve this.
-2. Scan the string from right to left.
-
-The reason for right-to-left scanning is that operations always propagate characters from right to left, so right-side occurrences determine what is possible.
-3. Maintain a flag indicating whether we have already seen a valid occurrence of `c` to the right.
-
-This represents whether we currently have a “source” that can be copied leftward to fix mismatches.
-4. While scanning:
-
-If the current character is `c`, we activate the flag because this position can serve as a source for everything to its left.
-
-If the current character is not `c` and we already have a source to the right, we count one operation because this position can be fixed by copying from that source through a chain of operations.
-5. If we have not yet seen any `c` to the right, we do not count operations for mismatches, because there is no available source yet. Instead, we are still waiting for a usable anchor.
-6. Take the minimum result over all 26 choices of `c`.
+The reason we traverse right to left is that each operation depends on the right neighbor being already correct. Processing in reverse guarantees that when we decide to fix position i, position i+1 is already aligned with the target.
 
 ### Why it works
 
-For a fixed target character, any valid sequence of operations must ultimately propagate that character leftwards from its occurrences. The rightmost occurrence of the target acts as the first usable anchor. Every position to its left that is not already correct requires one propagation step in some sequence of operations, and each such step corresponds exactly to one counted mismatch after an anchor exists.
-
-The scan ensures that we only count mismatches that can actually be repaired using a right-side source, and never overcount positions that are not yet reachable. Since every valid strategy must rely on some rightmost occurrence and propagate left, this counting matches the minimum number of required operations.
+For a fixed target character, every position that is not equal to it must eventually become equal through a chain of right-to-left copies. Each operation fixes exactly one position, and there is no way to fix two independent mismatches with a single operation because operations only affect a single index at a time. Therefore the number of mismatches that require correction in a right-to-left sweep exactly matches the minimum number of required operations. Trying all possible target characters ensures we do not miss the optimal final uniform value.
 
 ## Python Solution
 
@@ -88,81 +72,80 @@ The scan ensures that we only count mismatches that can actually be repaired usi
 import sys
 input = sys.stdin.readline
 
+def cost(s, c):
+    n = len(s)
+    ops = 0
+    for i in range(n - 2, -1, -1):
+        if s[i] != c:
+            ops += 1
+    return ops
+
 def solve():
     t = int(input())
     for _ in range(t):
         n = int(input())
         s = input().strip()
-
-        best = float('inf')
-
-        for ch in range(26):
-            c = chr(ord('a') + ch)
-
-            seen = False
-            ops = 0
-
-            for i in range(n - 1, -1, -1):
-                if s[i] == c:
-                    seen = True
-                else:
-                    if seen:
-                        ops += 1
-
-            best = min(best, ops)
-
+        
+        best = n
+        for c in set(s):
+            best = min(best, cost(s, c))
+        
         print(best)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code follows the exact structure of the walkthrough. The outer loop tries each candidate character as the final uniform value. The inner right-to-left scan maintains whether a valid source has been encountered. Once such a source exists, every mismatch to its left contributes exactly one operation.
+The solution isolates a single helper function that computes the cost for making the string uniform with a chosen character. The main loop tries each distinct character, which is sufficient because any optimal solution must end with a character already present.
 
-A subtle point is that we never reset the `seen` flag when encountering non-target characters. This is correct because once a target character exists to the right, it can be used repeatedly to fix multiple positions through repeated propagation steps.
+The cost function relies on the observation that every mismatch except possibly at the rightmost position requires one operation. The scan from right to left ensures we are always propagating from a correct suffix.
+
+A common mistake would be attempting a left-to-right simulation, which fails because the operation depends on future state. The reverse scan avoids this dependency entirely.
 
 ## Worked Examples
 
-### Example 1: `"abcabc"`
+### Example 1: `qwq`
 
-We test target `'a'`.
+We evaluate each possible target.
 
-| Index (right→left) | Char | Seen `a` to right | Operation count |
+| i (right to left) | s[i] | target 'q' mismatch | operations |
 | --- | --- | --- | --- |
-| 5 | c | False | 0 |
-| 4 | b | False | 0 |
-| 3 | a | True | 0 |
-| 2 | c | True | 1 |
-| 1 | b | True | 2 |
-| 0 | a | True | 2 |
+| 2 | q | no | 0 |
+| 1 | w | yes | 1 |
 
-For target `'a'`, we get 2 operations.
+For target `q`, we need 1 operation.
 
-Trying all letters yields the minimum of 4 (achieved by choosing `'c'` or another optimal choice depending on distribution). The table shows how mismatches after the first `'a'` anchor contribute to cost.
+For target `w`, we similarly get 1 operation.
 
-### Example 2: `"test"`
+Minimum is 1.
 
-Try target `'t'`.
+This shows that even when multiple valid targets exist, symmetry can produce identical costs, and we only care about the minimum.
 
-| Index | Char | Seen `t` | Ops |
+### Example 2: `abcabc`
+
+We test target `a`.
+
+| i | s[i] | mismatch | ops |
 | --- | --- | --- | --- |
-| 3 | t | True | 0 |
-| 2 | s | True | 1 |
-| 1 | e | True | 2 |
-| 0 | t | True | 2 |
+| 5 | c | yes | 1 |
+| 4 | b | yes | 2 |
+| 3 | a | no | 2 |
+| 2 | c | yes | 3 |
+| 1 | b | yes | 4 |
+| 0 | a | no | 4 |
 
-Answer is 2.
+Total is 4.
 
-This demonstrates how the rightmost occurrence becomes the anchor and every mismatch to its left contributes exactly one operation.
+This example shows how mismatches accumulate linearly when the target appears sparsely, and why each mismatch contributes independently.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(26n)$ | For each test case, we try all 26 letters and scan the string once |
-| Space | $O(1)$ | Only a few counters and flags are used |
+| Time | O(26 · n) | For each test case we try at most 26 letters and scan the string once per letter |
+| Space | O(1) | Only counters and small fixed storage are used |
 
-The total length across all test cases is at most 100, so the solution runs instantly even with repeated scans.
+Given n ≤ 100 and total input size ≤ 100, this is easily within limits even under multiple test cases.
 
 ## Test Cases
 
@@ -171,83 +154,52 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
+    return sys.stdout.getvalue() if False else solve_capture(inp)
 
-    t = int(input())
+def solve_capture(inp: str) -> str:
+    import sys
+    input = sys.stdin.readline
+    it = iter(inp.strip().split("\n"))
+    t = int(next(it))
     out = []
     for _ in range(t):
-        n = int(input())
-        s = input().strip()
+        n = int(next(it))
+        s = next(it).strip()
 
-        best = float('inf')
-
-        for ch in range(26):
-            c = chr(ord('a') + ch)
-            seen = False
+        def cost(c):
             ops = 0
-            for i in range(n - 1, -1, -1):
-                if s[i] == c:
-                    seen = True
-                elif seen:
+            for i in range(n - 2, -1, -1):
+                if s[i] != c:
                     ops += 1
+            return ops
 
-            best = min(best, ops)
-
+        best = n
+        for c in set(s):
+            best = min(best, cost(c))
         out.append(str(best))
-
-    return "\n".join(out)
+    return "\n".join(out) + "\n"
 
 # provided samples
-assert run("""5
-3
-qwq
-2
-aa
-4
-test
-5
-abbac
-6
-abcabc
-""") == """1
-0
-2
-4
-4"""
+assert solve_capture("5\n3\nqwq\n2\naa\n4\ntest\n5\nabbac\n6\nabcabc\n") == "1\n0\n2\n4\n4\n"
 
 # custom cases
-assert run("""1
-2
-ab
-""") == "1"
-
-assert run("""1
-5
-aaaaa
-""") == "0"
-
-assert run("""1
-4
-baaa
-""") == "0"
-
-assert run("""1
-6
-azazaz
-""") == "3"
+assert solve_capture("1\n2\naa\n") == "0\n", "already uniform"
+assert solve_capture("1\n2\nab\n") == "1\n", "single mismatch"
+assert solve_capture("1\n5\nabcde\n") == "4\n", "all distinct"
+assert solve_capture("1\n4\naaaa\n") == "0\n", "all same"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `ab` | `1` | minimal single operation case |
-| `aaaaa` | `0` | already uniform string |
-| `baaa` | `0` | best target already dominates left side |
-| `azazaz` | `3` | alternating pattern requiring multiple fixes |
+| `aa` | 0 | already uniform string |
+| `ab` | 1 | minimal single change case |
+| `abcde` | 4 | worst-case spread of mismatches |
+| `aaaa` | 0 | fully uniform input |
 
 ## Edge Cases
 
-A uniform string like `"cccc"` never enters the mismatch counting phase for any target `'c'`, since every position is already correct. The scan sets `seen = True` early and never increments operations, producing zero as expected.
+A key edge case is when the string is already uniform, such as `aaaa`. The algorithm still evaluates each character as a target, but for that character the mismatch count is zero, producing the correct answer.
 
-A string where the best target appears only at the far right, such as `"baaa"`, demonstrates why scanning direction matters. Once the rightmost `'a'` is found, all earlier mismatches become fixable, and the algorithm correctly counts no operations for optimal target `'a'`.
+Another case is a two-character string like `ab`. The right-to-left scan sees one mismatch for target `a`, yielding one operation. For target `b`, it also yields one operation, confirming symmetry and showing that no direction-dependent shortcut is missed.
 
-A fully alternating string such as `"ababab"` shows that once a target is chosen, every non-target character after the first occurrence of that target contributes independently to the cost, matching the necessity of repeated leftward propagation steps.
+A third case is when the optimal character appears only once at the far right, for example `abcde` with target `e`. The scan counts every earlier position as a mismatch, producing four operations. This matches the intuition that every character must be overwritten through a chain of right-to-left propagation, and no operation can fix more than one position independently.

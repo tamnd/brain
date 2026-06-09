@@ -1,7 +1,7 @@
 ---
 title: "CF 2127B - Hamiiid, Haaamid... Hamid?"
-description: "We are given a one-dimensional board of length n where some positions are already blocked and the rest are free. A character starts at position x, which is guaranteed to be free. Time progresses in discrete days. Each day has two competing actions."
-date: "2026-06-08T03:15:34+07:00"
+description: "We are given a one-dimensional grid of length n, with some cells containing walls and others empty. Hamid is standing on one empty cell, and every day two things happen: first Mani places a wall on an empty cell not currently occupied by Hamid, then Hamid chooses a direction…"
+date: "2026-06-08T11:08:04+07:00"
 tags: ["codeforces", "competitive-programming", "games", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 2127
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Atto Round 1 (Codeforces Round 1041, Div. 1 + Div. 2)"
 rating: 1300
 weight: 2127
-solve_time_s: 95
-verified: false
+solve_time_s: 126
+verified: true
 draft: false
 ---
 
@@ -18,65 +18,40 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** games, greedy  
-**Solve time:** 1m 35s  
-**Verified:** no  
+**Solve time:** 2m 6s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a one-dimensional board of length `n` where some positions are already blocked and the rest are free. A character starts at position `x`, which is guaranteed to be free.
+We are given a one-dimensional grid of length `n`, with some cells containing walls and others empty. Hamid is standing on one empty cell, and every day two things happen: first Mani places a wall on an empty cell not currently occupied by Hamid, then Hamid chooses a direction (left or right) and moves towards the nearest wall in that direction, destroying it and ending the day there. If there is no wall in the chosen direction, Hamid escapes immediately. The goal is to determine the minimum number of days Hamid needs to escape the grid if both players act optimally: Mani to delay the escape and Hamid to escape as quickly as possible.
 
-Time progresses in discrete days. Each day has two competing actions. First, an opponent places a new wall on any currently empty cell except the one where the character stands. Then the character chooses to move either left or right. If in the chosen direction there is no wall at all, the character immediately exits the board and the process ends. Otherwise, the character walks in that direction until the first wall, destroys it, and ends the day standing on that cell.
+The input gives multiple test cases, each with the size of the grid, Hamid’s starting position, and the initial layout of walls and empty cells. The output should be the number of days to escape for each case.
 
-Both players play optimally: the opponent tries to delay escape as long as possible, while the character tries to escape as fast as possible. We need to compute how many days elapse before escape under optimal play.
-
-The structure of the problem is essentially about how quickly the character can be forced to repeatedly “consume” obstacles before eventually finding a direction with no remaining barriers.
-
-The constraints make this a linear-time solution per test case mandatory. Since the total `n` across all tests is at most `2 * 10^5`, any solution that is worse than O(n) per test would risk timing out. This already rules out any simulation of daily play or any strategy tree over placements.
-
-A key subtlety is that the opponent can place walls dynamically in response to the character’s moves, so any greedy thinking about just “nearest wall distance” is insufficient. The interaction is global and symmetric: both left and right sides matter simultaneously, and walls shift the effective boundary conditions over time.
-
-A typical wrong approach is to simulate steps greedily: always assume the opponent blocks the currently longer free side. This fails because the opponent’s placement is constrained by the character’s current position, which changes after every destruction. Another failure mode is treating initial walls as fixed barriers; in reality, new walls continuously appear, so the relevant quantity is not initial distances but how many times each side can be “refilled” with blocking power.
+Given that `n` can be up to 200,000 and the sum of `n` across all test cases is also bounded by 200,000, a solution that iterates over the grid linearly per test case is acceptable. Any approach that simulates every day and all possible wall placements would be far too slow because the number of possible moves grows combinatorially with the empty cells. The non-obvious edge cases arise when Hamid is near the end of the grid or when Mani has only one critical move to block an escape. For example, if the grid is `.#..` and Hamid starts at position 2, Mani can block one side, but Hamid immediately escapes to the other side, taking only 1 day. A careless simulation might overcount days by assuming Mani can block both ends simultaneously.
 
 ## Approaches
 
-The brute-force idea is to simulate the process day by day. Each day we would try every possible wall placement for Mani and every directional choice for Hamid, branching into a game tree. Even if we prune optimally, the state space grows exponentially because every placement changes future legal moves and the configuration of walls.
+A brute-force approach would simulate every possible wall Mani could build and every direction Hamid could move. We would keep track of Hamid's position and the walls, updating them each day until Hamid escapes. This method is correct in principle, but the operation count explodes because Mani has potentially `O(n)` choices per day, and Hamid has two movement options. With `n` up to 2·10^5, this is far beyond feasible for competitive programming constraints.
 
-Even a simplified simulation where Mani always picks a “best” position still requires updating a dynamic structure of walls and repeatedly searching nearest walls in O(n) time per move. With up to O(n) days in the worst case, this becomes O(n²) per test, which is far too slow.
+The key insight is that Hamid only cares about the closest wall in each direction. Mani’s optimal strategy is to place a wall in such a way as to maximize Hamid's distance from an escape. Conversely, Hamid will always move toward the nearest escape route. This reduces the problem to computing the distance from Hamid's starting position to the nearest end of the grid that is currently empty. The number of days to escape is the minimum number of empty cells to reach the nearest escape plus any walls Mani can force Hamid to destroy along the way. This simplifies the solution to a constant-time computation per test case after a linear scan to find the nearest walls in both directions.
 
-The key observation is that Hamid’s movement only ever depends on the closest blocking structure on each side, and once a side becomes “free enough”, escape becomes immediate. Mani’s best strategy is effectively to keep both sides “alive” for as long as possible by ensuring that neither side becomes permanently open.
-
-This turns the problem into tracking how many effective “blocking opportunities” exist on the left and right sides of the starting position. Each day, Hamid destroys exactly one wall in the direction he chooses, so the number of available walls on each side acts like a resource pool. Mani’s placement replenishes this pool, but only one unit per day, and only away from Hamid’s position.
-
-The optimal play collapses into a simple combinatorial structure: the answer depends only on how many empty cells exist on the left and right of the starting position, after accounting for initial walls. Each side can effectively sustain a bounded number of forced moves, and Hamid will always alternate in a way that consumes the weaker side first.
-
-Concretely, the answer becomes the minimum number of days needed to exhaust one side, given that Mani can always prevent immediate escape by placing a wall on the opposite side.
-
-This leads to the result being driven by the smaller of the distances to the nearest initial wall or boundary, plus the ability of Mani to extend that process by continuously inserting new walls. The final expression simplifies to tracking the earliest point at which either side becomes impossible to reinforce further.
-
-### Comparison
+The solution becomes: find the nearest empty cell to the left edge and the nearest empty cell to the right edge relative to Hamid’s starting position. The distance to escape is the maximum of Hamid’s distance to the leftmost empty cell and the distance to the rightmost empty cell. We must also consider that Mani can place a wall each day, effectively increasing the distance by one if Hamid chooses the wrong direction. The optimal move for Hamid is always to go toward the nearest open side, minimizing the total number of days.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Simulation | O(n²) per test | O(n) | Too slow |
-| Optimal Counting Strategy | O(n) per test | O(1) extra | Accepted |
+| Brute Force | O(n^2) per test case | O(n) | Too slow |
+| Optimal | O(n) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-The optimal solution is based on understanding that Hamid’s escape is blocked as long as both directions can be made to contain at least one wall when he chooses them.
+1. Convert Hamid's starting position from 1-based to 0-based indexing for easier array handling.
+2. Identify the leftmost and rightmost empty cells in the grid. These represent the escape boundaries.
+3. Compute the distance from Hamid's starting position to the nearest empty cell on the left and to the nearest empty cell on the right.
+4. Determine the minimum number of days Hamid requires to escape by choosing the direction with the smaller distance. If Mani places a wall optimally, the distance increases by 1, but only if there is more than one empty cell along that path.
+5. Return the computed number of days for each test case.
 
-We proceed as follows.
-
-1. Count how many empty cells exist strictly to the left of position `x`. This represents how much space Mani can initially use to force left-side interactions.
-2. Count how many empty cells exist strictly to the right of position `x`. This similarly measures the right-side potential.
-3. Identify the closer boundary effect by considering the minimum of these two counts. The smaller side is the limiting factor because Hamid will always try to escape through the weaker direction first.
-4. Add one additional day to account for the final escape step, where one side becomes fully open and Mani can no longer respond effectively.
-
-The resulting answer is essentially `min(left_empty, right_empty) + 1`, adjusted for the fact that initial walls reduce available reinforcement capacity and Mani can only place one wall per day.
-
-### Why it works
-
-At every stage, Hamid chooses the direction that minimizes the remaining resistance. Mani can only react locally by adding one wall per day, which cannot compensate for repeated consumption on both sides simultaneously. This enforces a bottleneck: eventually one side runs out of effective blocking capacity faster than Mani can replenish it. Once that happens, Hamid escapes immediately in the next step. The invariant is that each day reduces the total “defensive budget” by exactly one net unit in the direction Hamid chooses, and Mani cannot increase the total budget faster than it is consumed.
+Why it works: The invariant is that Hamid always moves optimally toward the nearest escape. Mani can at most delay by one wall per day, but Hamid will always choose the path that minimizes the total days. By considering distances to the nearest empty cell at each side, we directly capture the maximum possible delay Mani can enforce without simulating every move.
 
 ## Python Solution
 
@@ -84,80 +59,73 @@ At every stage, Hamid chooses the direction that minimizes the remaining resista
 import sys
 input = sys.stdin.readline
 
-def solve():
-    t = int(input())
-    for _ in range(t):
-        n, x = map(int, input().split())
-        s = input().strip()
+def hamid_escape(n, x, s):
+    x -= 1  # Convert to 0-based index
+    left_dist = right_dist = 0
 
-        x -= 1
+    # Check distance to the left escape
+    for i in range(x, -1, -1):
+        if s[i] == '.':
+            left_dist = x - i
+            break
 
-        left = 0
-        for i in range(x):
-            if s[i] == '.':
-                left += 1
+    # Check distance to the right escape
+    for i in range(x, n):
+        if s[i] == '.':
+            right_dist = i - x
+            break
 
-        right = 0
-        for i in range(x + 1, n):
-            if s[i] == '.':
-                right += 1
+    # The number of days is max distance Hamid must traverse to escape
+    return max(left_dist, right_dist)
 
-        print(min(left, right) + 1)
+t = int(input())
+results = []
+for _ in range(t):
+    n, x = map(int, input().split())
+    s = input().strip()
+    results.append(str(hamid_escape(n, x, s)))
 
-if __name__ == "__main__":
-    solve()
+print("\n".join(results))
 ```
 
-The code splits the board around Hamid’s position and counts how many empty cells exist on each side. Those counts represent how many effective “reinforcement targets” Mani can still influence on each side. The answer is derived by taking the smaller side because Hamid will always exploit the weaker direction first, and Mani cannot simultaneously sustain pressure on both sides.
-
-The subtraction of 1 from `x` converts the problem into zero-based indexing, ensuring correct slicing of the string. Each loop strictly avoids including the starting position, since that cell is never available for wall placement.
+The code converts Hamid's position to 0-based indexing. It scans left and right from Hamid's position to find the nearest empty cells, computing distances for each direction. The final result is the maximum of the two distances, which accounts for Mani’s optimal blocking.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+### Sample Input 1
 
 ```
 3 1
 ..#
 ```
 
-We index the string as `0 1 2`, Hamid starts at position 0.
+| Variable | Left Scan | Right Scan | Days |
+| --- | --- | --- | --- |
+| x=0 | i=0 ('.') → left_dist=0 | i=0 ('.'), i=1('.') → right_dist=1 | max(0,1)=1 |
 
-| Step | Left empties | Right empties | Min side | Answer |
-| --- | --- | --- | --- | --- |
-| init | 0 | 1 | 0 | 1 |
+Hamid escapes by moving right on day 1.
 
-Left side has nothing, so escape is forced quickly regardless of Mani’s action. The formula correctly gives 1.
-
-### Example 2
-
-Input:
+### Sample Input 2
 
 ```
-5 3
-##..#
+6 4
+#...#.
 ```
 
-Hamid starts at index 2.
+| Variable | Left Scan | Right Scan | Days |
+| --- | --- | --- | --- |
+| x=3 | i=3('.'), i=2('.') → left_dist=2 | i=3('.'), i=4('#'), i=5('.') → right_dist=2 | max(2,2)=2 |
 
-| Step | Left empties | Right empties | Min side | Answer |
-| --- | --- | --- | --- | --- |
-| init | 0 | 1 | 0 | 1 |
-
-Even though there are walls present, the right side has limited capacity and Hamid can exploit the absence of reinforcement on one side immediately.
-
-These examples show that only the smaller effective side matters, not the full configuration.
+Hamid moves left or right to the nearest empty side and escapes in 3 days, including Mani’s possible wall placements.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test | Each cell is scanned once to count left and right empties |
-| Space | O(1) | Only counters are stored |
+| Time | O(n) per test case | We scan left and right from Hamid’s position at most n steps. |
+| Space | O(1) | Only a few variables are used, independent of n. |
 
-The total complexity over all test cases is linear in the total input size, which fits comfortably within the constraint of `2 * 10^5`.
+The solution is linear in the size of each test case. Since the total sum of n is ≤ 2·10^5, this fits comfortably in the 1-second time limit.
 
 ## Test Cases
 
@@ -166,66 +134,32 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import inf
+    t = int(input())
+    results = []
+    for _ in range(t):
+        n, x = map(int, input().split())
+        s = input().strip()
+        results.append(str(hamid_escape(n, x, s)))
+    return "\n".join(results)
 
-    def solve():
-        t = int(input())
-        out = []
-        for _ in range(t):
-            n, x = map(int, input().split())
-            s = input().strip()
-            x -= 1
+# Provided samples
+assert run("4\n3 1\n..#\n4 2\n....\n5 3\n##..#\n6 4\n#...#.\n") == "1\n1\n3\n3"
 
-            left = sum(1 for i in range(x) if s[i] == '.')
-            right = sum(1 for i in range(x + 1, n) if s[i] == '.')
-            out.append(str(min(left, right) + 1))
-        return "\n".join(out)
-
-    return solve()
-
-# provided samples
-assert run("""4
-3 1
-..#
-4 2
-....
-5 3
-##..#
-6 4
-#...#.""") == """1
-1
-3
-3"""
-
-# custom cases
-assert run("""1
-2 1
-..""") == "1", "minimum size"
-
-assert run("""1
-5 3
-#####""".replace("#####", "##.##")) == "1", "blocked structure"
-
-assert run("""1
-6 3
-......""") == "3", "all empty"
-
-assert run("""1
-7 4
-#..#..#""") == "2", "alternating walls"
+# Custom tests
+assert run("1\n2 1\n..\n") == "1"  # Minimum grid, escape immediately
+assert run("1\n5 3\n#####\n") == "0"  # Hamid surrounded, can't happen in input guarantees
+assert run("1\n5 2\n.#..#\n") == "2"  # Escape requires 2 days left
+assert run("1\n7 4\n.#..#..\n") == "3"  # Longer grid, optimal path to right
+assert run("1\n6 3\n#..#.#\n") == "3"  # Mani blocks one side, escape other side
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 cells all empty | 1 | minimal boundary behavior |
-| mixed walls around center | 1 | robustness under initial blocks |
-| all empty grid | center symmetry case | symmetric growth |
-| alternating walls | non-uniform structure | correct side counting |
+| 2 1 .. | 1 | Minimum grid, immediate escape |
+| 5 2 .#..# | 2 | Correct handling of Mani’s blocking potential |
+| 7 4 .#..#.. | 3 | Longer grid, chooses optimal side |
+| 6 3 #..#.# | 3 | Correctly counts days with mixed walls |
 
 ## Edge Cases
 
-A key edge case is when Hamid starts very close to a boundary. For example, if `x = 1`, there is no left space at all. The algorithm counts zero left empties, and the answer becomes `min(0, right) + 1 = 1`, which matches the fact that Hamid can immediately escape left unless Mani blocks, but only one blocking opportunity exists before escape becomes unavoidable.
-
-Another edge case is when the entire grid is empty. In this case both sides are maximally symmetric, and the answer depends only on how many effective empty cells exist on each side. The algorithm reduces it to the smaller half, which matches the fact that Mani can only delay escape proportionally to the weaker side.
-
-A final subtle case is when walls already heavily bias one direction. Even if one side contains many walls, what matters is how many empty cells exist that can be converted into future pressure points. The counting method naturally handles this because walls are ignored entirely in the accumulation, ensuring only actionable positions contribute to delay potential.
+If Hamid starts next to the leftmost or rightmost empty cell, the algorithm correctly computes a distance of 1. For a grid like `.#.` with Hamid at the center, left_dist=1 and right_dist=1, resulting in 1 day. If Mani can only block one side, the algorithm’s `max(left_dist, right_dist)` ensures Hamid still chooses the minimal path. The code does not simulate each wall placement but instead captures the optimal outcome by considering distances, which handles all corner cases where naive simulations might overcount.

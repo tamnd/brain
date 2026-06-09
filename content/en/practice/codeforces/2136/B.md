@@ -1,7 +1,7 @@
 ---
 title: "CF 2136B - Like the Bitset"
-description: "We are asked to construct a permutation of length $n$ from a given binary string $s$ and integer $k$. Each index $i$ with $si = 1$ must never be the maximum in any interval of length at least $k$ that contains $i$. Indices with $si = 0$ have no restrictions."
-date: "2026-06-08T02:35:05+07:00"
+description: "We are asked to construct a permutation of length $n$ that satisfies a positional maximum constraint determined by a binary string $s$ and an integer $k$."
+date: "2026-06-09T04:10:02+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 2136
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 1046 (Div. 2)"
 rating: 900
 weight: 2136
-solve_time_s: 92
+solve_time_s: 85
 verified: false
 draft: false
 ---
@@ -18,47 +18,42 @@ draft: false
 
 **Rating:** 900  
 **Tags:** constructive algorithms, greedy, two pointers  
-**Solve time:** 1m 32s  
+**Solve time:** 1m 25s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to construct a permutation of length $n$ from a given binary string $s$ and integer $k$. Each index $i$ with $s_i = 1$ must **never be the maximum** in any interval of length at least $k$ that contains $i$. Indices with $s_i = 0$ have no restrictions.
+We are asked to construct a permutation of length $n$ that satisfies a positional maximum constraint determined by a binary string $s$ and an integer $k$. For every position $i$ where $s_i = 1$, we must ensure that $p_i$ is never the maximum value in any contiguous subarray of length at least $k$ that contains $i$. Positions with $s_i = 0$ have no restrictions. If such a permutation cannot exist, we report "NO".
 
-In simpler terms, we are labeling positions $1$ to $n$ with numbers $1$ through $n$ without repetition, but the positions marked with 1 must not dominate large blocks around them. Positions marked 0 can safely hold the largest numbers, because no interval rules restrict them.
+The constraints allow $n$ up to $2 \cdot 10^5$ across multiple test cases. This rules out algorithms with $O(n^2)$ behavior because worst-case total operations could exceed $10^{10}$. We need an $O(n \log n)$ or better, ideally $O(n)$, solution per test case.
 
-The constraints allow $n$ up to $2 \cdot 10^5$ and multiple test cases totaling $2 \cdot 10^5$. This rules out any algorithm that explicitly checks all intervals of length at least $k$, since there could be $O(n^2)$ such intervals. We need an approach that assigns numbers greedily based on local structure rather than simulating all intervals.
-
-The tricky edge cases appear when $s$ has long contiguous stretches of 1s. If the number of 1s exceeds $k-1$ in a row, it is impossible to place the largest numbers without violating the rule. For example, for $s = "111"$ and $k = 2$, every interval of length at least 2 containing any 1 also contains another 1. If we try to assign the largest numbers to 0s and smaller numbers to 1s, there might be no legal way to place numbers. Recognizing these impossible patterns is key.
+A subtle edge case arises when there are too many consecutive 1s relative to $k$. For example, if $s = 1111$ and $k = 3$, any element in a block of four 1s will be inside some length-3 or longer interval, and if the elements assigned are consecutive, one of them will inevitably be the maximum in some interval. This can make the permutation impossible. Another edge case is when $k = 1$; every element with $s_i = 1$ is in an interval of length 1, which trivially includes itself, but the problem allows $p_i$ not to be the maximum in length-1 intervals. This is important because it changes how we assign the largest and smallest numbers.
 
 ## Approaches
 
-The brute-force approach would attempt every permutation of length $n$ and check every interval of length at least $k$ for the maximum condition. This is correct in principle, but with up to $2 \cdot 10^5$ elements and $O(n^2)$ intervals, it is clearly infeasible.
+The brute-force approach would try all permutations and check all subarrays of length at least $k$ for each 1. This is obviously infeasible: for each permutation there are $n!$ possibilities, and checking all intervals could take $O(n^2)$. So even for small $n$ this is far too slow.
 
-The key observation is that the positions with $s_i = 1$ must not receive numbers that could become the maximum in any interval of length at least $k$. The simplest way to guarantee this is to **assign the largest numbers to 0s first**. Then, we can safely assign the remaining smaller numbers to 1s without risking the maximum condition, because the largest numbers are out of reach in any interval containing 1s.
+The key observation is that the constraints only matter for 1s. For 0s, we can freely assign any numbers. To ensure a 1 is never the maximum in any interval of length $\ge k$ that contains it, we can assign all 1-positions relatively small numbers and all 0-positions relatively large numbers. Then, in any interval of length $k$ or more, there will always be at least one 0 with a number higher than the numbers at 1-positions, guaranteeing no 1 is maximal.
 
-If there is a contiguous block of 1s longer than $k-1$, the rule fails. That is because any interval of length at least $k$ covering the middle of that block will have only 1s, forcing the maximum to be one of these numbers. Assigning smaller numbers is unavoidable, but there will always be one number that becomes the maximum in that interval, so the permutation is impossible.
+However, there is a limit. If a block of consecutive 1s has length greater than $k$, then there exists a length-$k$ interval entirely inside this block. All numbers in that interval would be small, so the maximum will necessarily be one of the 1s. Therefore, we must check if the longest contiguous block of 1s is less than $k$. If it is, a valid assignment is possible. Otherwise, it is impossible.
 
-Thus, the optimal solution is to assign the largest numbers to 0s first, the smallest numbers to 1s, and immediately reject cases where a run of 1s has length at least $k$.
+This gives a constructive approach: assign the smallest numbers to 1s in order, and the largest numbers to 0s in order. We can simply iterate through the string and fill a list of numbers.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(n! * n^2) | O(n) | Too slow |
-| Optimal | O(n) per test case | O(n) | Accepted |
+| Greedy Constructive | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases. For each test case, parse $n$, $k$, and the string $s$.
-2. Scan $s$ from left to right to check for any contiguous block of 1s with length ≥ $k$. If such a block exists, print "NO" and continue to the next test case. This guarantees feasibility only if no interval rule is automatically violated.
-3. Initialize a permutation array of length $n$ and two counters: one for the largest number available, starting from $n$, and one for the smallest number available, starting from 1.
-4. Iterate over the string $s$. For each $s_i$:
+1. Iterate through the binary string $s$ and find the length of the longest contiguous segment of 1s. If this length is $\ge k$, output "NO" because there will always be a length-$k$ interval of 1s where one of them is the maximum.
+2. If the longest segment of 1s is less than $k$, output "YES". We can construct a permutation.
+3. Prepare two lists: one for numbers to assign to 1s (starting from 1 upwards) and one for numbers to assign to 0s (starting from $n$ downwards).
+4. Iterate through $s$ in order. For each position $i$, if $s_i = 1$, assign the next smallest unused number. If $s_i = 0$, assign the next largest unused number.
+5. Print the constructed permutation.
 
-- If $s_i = 0$, assign the current largest available number and decrement the largest counter.
-- If $s_i = 1$, assign the current smallest available number and increment the smallest counter.
-5. After processing all positions, print "YES" followed by the permutation array.
-
-Why it works: The largest numbers are guaranteed to go to positions with 0s. Any interval of length ≥ $k$ that includes a 1 will always contain at least one 0 if no run of 1s reaches $k$. Therefore, the maximum of the interval is always a 0, not the 1, satisfying the condition.
+Why it works: By assigning smaller numbers to 1s and larger numbers to 0s, any interval of length at least $k$ that contains at least one 0 will have a 0-number greater than the 1-numbers, ensuring no 1 is maximal. Because the longest consecutive block of 1s is smaller than $k$, any interval of length $k$ or more must include at least one 0. Therefore, the construction always satisfies the constraints.
 
 ## Python Solution
 
@@ -70,70 +65,79 @@ t = int(input())
 for _ in range(t):
     n, k = map(int, input().split())
     s = input().strip()
-
-    max_run = 0
-    run = 0
+    
+    # Step 1: check longest consecutive 1s
+    max_ones = 0
+    cur = 0
     for ch in s:
         if ch == '1':
-            run += 1
-            max_run = max(max_run, run)
+            cur += 1
+            max_ones = max(max_ones, cur)
         else:
-            run = 0
-
-    if max_run >= k:
+            cur = 0
+    
+    if max_ones >= k:
         print("NO")
         continue
-
+    
+    # Step 2: construct permutation
     perm = [0] * n
-    low, high = 1, n
-    for i in range(n):
-        if s[i] == '0':
-            perm[i] = high
-            high -= 1
-        else:
+    low = 1
+    high = n
+    for i, ch in enumerate(s):
+        if ch == '1':
             perm[i] = low
             low += 1
-
+        else:
+            perm[i] = high
+            high -= 1
     print("YES")
-    print(" ".join(map(str, perm)))
+    print(' '.join(map(str, perm)))
 ```
 
-This solution first checks feasibility by measuring runs of 1s. Then it constructs the permutation in a single pass, carefully assigning large numbers to 0s and small numbers to 1s. Edge cases, such as all zeros or a single one, are naturally handled.
+The first part iterates through the string to find the longest contiguous block of 1s. This is the only point where a permutation might be impossible. The second part is the constructive assignment: using two pointers (low and high) ensures all numbers are used exactly once and that 1s get the smallest numbers while 0s get the largest. Off-by-one errors are avoided by careful initialization of low = 1 and high = n, incrementing or decrementing immediately after assignment.
 
 ## Worked Examples
 
-Sample Input:
+### Example 1
+
+Input:
 
 ```
 4 3
 0010
 ```
 
-| i | s[i] | perm assignment | low | high |
-| --- | --- | --- | --- | --- |
-| 0 | 0 | 4 | 1 | 3 |
-| 1 | 0 | 3 | 1 | 2 |
-| 2 | 1 | 1 | 2 | 2 |
-| 3 | 0 | 2 | 2 | 1 |
+| i | s[i] | max_ones | low | high | perm[i] |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 0 | 0 | 1 | 4 | 4 |
+| 1 | 0 | 0 | 1 | 3 | 3 |
+| 2 | 1 | 1 | 1 | 3 | 1 |
+| 3 | 0 | 0 | 2 | 2 | 2 |
 
-Permutation is `[4, 3, 1, 2]`. All intervals of length ≥ 3 covering index 2 (1-based) contain at least one 0, so the maximum is never 1. The algorithm correctly outputs "YES".
+Permutation: `[4, 3, 1, 2]`. The maximum number in any interval of length >= 3 covering position 2 is 4, 3, or 2, never 1. Valid.
 
-Edge case input:
+### Example 2
+
+Input:
 
 ```
-s = 111, k = 2
+5 2
+11011
 ```
 
-The maximum run of 1s is 3 ≥ k. Algorithm prints "NO", correctly detecting impossibility.
+The longest contiguous 1s = 2, which is equal to k. According to our check, since max_ones >= k, output is "NO".
+
+These traces confirm that the algorithm correctly identifies impossible cases and constructs permutations when feasible.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Single pass to compute maximum run of 1s and single pass to assign permutation |
-| Space | O(n) | Permutation array of length n |
+| Time | O(n) per test case | Single pass to find longest block of 1s and single pass to construct permutation |
+| Space | O(n) | Storage for the permutation |
 
-Given the sum of all $n$ is ≤ 2·10^5, this runs comfortably within the 1-second time limit and 256 MB memory.
+With sum of $n$ across all test cases ≤ 2e5, the total operations are comfortably below 1e6, fitting within the time limit. Memory usage is within 256 MB.
 
 ## Test Cases
 
@@ -142,42 +146,46 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
+    # call the solution
     t = int(input())
-    res = []
     for _ in range(t):
         n, k = map(int, input().split())
         s = input().strip()
-        max_run = run_len = 0
+        max_ones = 0
+        cur = 0
         for ch in s:
             if ch == '1':
-                run_len += 1
-                max_run = max(max_run, run_len)
+                cur += 1
+                max_ones = max(max_ones, cur)
             else:
-                run_len = 0
-        if max_run >= k:
-            res.append("NO")
+                cur = 0
+        if max_ones >= k:
+            print("NO")
             continue
         perm = [0] * n
-        low, high = 1, n
-        for i in range(n):
-            if s[i] == '0':
-                perm[i] = high
-                high -= 1
-            else:
+        low = 1
+        high = n
+        for i, ch in enumerate(s):
+            if ch == '1':
                 perm[i] = low
                 low += 1
-        res.append("YES")
-        res.append(" ".join(map(str, perm)))
-    return "\n".join(res)
+            else:
+                perm[i] = high
+                high -= 1
+        print("YES")
+        print(' '.join(map(str, perm)))
+    return output.getvalue().strip()
 
-# provided samples
+# Provided samples
 assert run("6\n2 1\n00\n4 3\n0010\n5 2\n11011\n7 5\n1111110\n8 4\n00101011\n10 2\n1000000010\n") == \
-"YES\n2 1\nYES\n4 3 1 2\nNO\nNO\nYES\n8 7 1 6 5 3 2 4\nYES\n10 1 2 3 4 5 6 8 9 7", "sample 1"
-
-# custom edge cases
-assert run("1\n3 3\n111\n") == "NO", "all 1s impossible"
-assert run("1\n3 3\n000\n") == "YES\n3 2 1", "all 0s trivial"
-assert run("1\n5 2\n10101\n") == "YES\n5 1 4 2 3", "alternating 1s and 0s"
-assert run("1\n1 1\n1\n") == "YES\n1", "single 1"
-assert run("1\n1 1\n0\n") == "YES\n
+"""YES
+2 1
+YES
+4 3 1 2
+NO
+NO
+YES
+8 7 2 6 5 4
 ```

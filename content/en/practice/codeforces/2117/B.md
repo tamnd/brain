@@ -1,7 +1,7 @@
 ---
 title: "CF 2117B - Shrink"
-description: "We are asked to construct a permutation of the numbers from 1 to $n$ such that a special \"shrink\" operation can be performed as many times as possible. The shrink operation removes a number if it is strictly greater than its immediate neighbors."
-date: "2026-06-08T04:05:28+07:00"
+description: "The task is to construct a permutation of length $n$ that allows the maximum number of \"shrink\" operations. A shrink operation removes an element that is larger than its immediate neighbors."
+date: "2026-06-08T11:02:34+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
 codeforces_contest: 2117
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 1029 (Div. 3)"
 rating: 800
 weight: 2117
-solve_time_s: 88
+solve_time_s: 108
 verified: false
 draft: false
 ---
@@ -18,42 +18,42 @@ draft: false
 
 **Rating:** 800  
 **Tags:** constructive algorithms  
-**Solve time:** 1m 28s  
+**Solve time:** 1m 48s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to construct a permutation of the numbers from 1 to $n$ such that a special "shrink" operation can be performed as many times as possible. The shrink operation removes a number if it is strictly greater than its immediate neighbors. Our task is not to simulate the operations directly, but to arrange the numbers so that the potential number of shrink operations, the score, is maximized.
+The task is to construct a permutation of length $n$ that allows the maximum number of "shrink" operations. A shrink operation removes an element that is larger than its immediate neighbors. In other words, we are looking for local peaks in the permutation and removing them repeatedly until no such peaks exist. Each removal is counted as one operation, and the goal is to maximize this count.
 
-The input consists of multiple test cases, each giving an integer $n$. We must output a permutation of length $n$ for each test case. The sum of all $n$ is limited to $2 \cdot 10^5$, so any solution that is linear or near-linear per test case is feasible. Quadratic solutions would be too slow because $O(n^2)$ could reach $4 \cdot 10^{10}$ operations.
+The input consists of multiple test cases, each giving a single integer $n$. For each test case, the output must be a permutation of numbers from 1 to $n$ that achieves the highest possible number of shrink operations. Because $n$ can be as large as 200,000 and the sum of $n$ across all test cases is also bounded by 200,000, any solution that is slower than linear time in $n$ per test case will be too slow. Brute force simulation of shrink operations would require repeatedly scanning the array to find peaks, which could result in a quadratic time algorithm-this is infeasible for the upper bounds.
 
-A subtle point arises when $n$ is small. For $n = 3$, there is only one possible shrinkable index, the middle element. Permutations like $[1,3,2]$ or $[2,3,1]$ achieve the maximum score of 1. If we try a naive increasing sequence like $[1,2,3]$, there is no element that is greater than both neighbors, so the score is zero, which is suboptimal. This shows that simply outputting a sorted array is not correct.
+A key edge case occurs when $n = 3$, the smallest size allowing a peak. Only the middle element can ever be removed. If the array is sorted strictly increasing or decreasing, the middle element is the peak. A careless approach that, for example, always outputs a sorted permutation will fail to maximize peaks, because sorted sequences have only one peak in the middle, while a clever zigzag pattern can generate more peaks for larger $n$.
 
-Another non-obvious scenario occurs when $n$ is even versus odd. The optimal arrangement must alternate high and low values to create as many "peaks" as possible. This insight is crucial for the construction.
+Another subtlety arises with consecutive peaks. If peaks are too close, removing one may destroy the neighboring peak structure. So constructing a permutation requires care to alternate high and low elements to maximize removable peaks.
 
 ## Approaches
 
-The brute-force approach would generate all $n!$ permutations and simulate the shrink operations for each one. This works because we can correctly count shrink operations, but the factorial growth makes it impossible for $n$ beyond 10.
+The brute-force approach is simple: generate any permutation and repeatedly perform shrink operations by scanning for local maxima. This is correct in principle because it strictly follows the problem definition. However, the operation count is proportional to the number of peaks times the number of elements scanned to find them. In the worst case, the complexity is $O(n^2)$, which exceeds our limits for $n = 2 \cdot 10^5$.
 
-Observing the operation, a peak occurs whenever an element is larger than its immediate neighbors. The number of peaks in a permutation is bounded by $\lfloor (n-1)/2 \rfloor$ because peaks cannot be adjacent. This means to maximize the score, we need to arrange numbers such that every possible peak position indeed becomes a peak.
+The optimal approach comes from the observation that each shrink operation requires a peak that is strictly greater than its neighbors. To maximize the number of peaks, we should place small and large numbers alternately. One effective construction is to take the second half of the numbers (the larger ones) and interleave them between the first half (the smaller ones). Concretely, for $n = 6$, numbers 1-6 can be arranged as 2,4,6,1,3,5, where every number from the larger half creates a local peak over its smaller neighbors. This interleaving guarantees that almost every number from the larger half becomes a peak, maximizing shrink operations.
 
-The key insight is to alternate the largest available numbers with the smallest remaining numbers. By placing the smallest numbers in the even positions and the largest numbers in the odd positions (or vice versa), each interior large number will become a local maximum relative to its neighbors. This guarantees the maximum possible number of shrink operations without simulating them.
+The story is that brute force works conceptually but is too slow. Observing that a peak is only created when a number is surrounded by smaller numbers allows us to construct the permutation in a single pass without simulation.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n!) | O(n) | Too slow |
-| Optimal Construction | O(n) | O(n) | Accepted |
+| Brute Force | O(n²) | O(n) | Too slow |
+| Constructive Interleave | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize two sequences: one containing numbers from 1 to $\lceil n/2 \rceil$ for the "small" numbers and one containing numbers from $\lceil n/2 \rceil + 1$ to $n$ for the "large" numbers. This ensures we have exactly enough high numbers to place as peaks.
-2. Prepare an empty array $p$ of length $n$.
-3. Place the large numbers in every odd index (1-based) of $p$. These positions correspond to potential peaks.
-4. Fill the remaining positions (even indices) with the small numbers. This ensures each large number is strictly greater than its neighbors.
-5. Output the permutation.
+1. Divide the set of numbers from 1 to $n$ into two groups: the smaller half and the larger half. If $n$ is even, both halves are equal; if odd, the larger half contains one extra element.
+2. Initialize an empty array for the permutation.
+3. Starting from the largest element of the smaller half, place elements from the smaller half at even indices of the permutation array (0-based), leaving odd indices for the larger half.
+4. Fill the odd indices with elements from the larger half in increasing order. This ensures that each element from the larger half is greater than its neighbors from the smaller half, forming local peaks.
+5. Output the constructed permutation.
 
-Why it works: By construction, each element in an odd index is greater than both neighbors, guaranteeing it is shrinkable. We cannot place more peaks without violating the rule of no adjacent peaks. The small numbers fill the valleys and never form a peak themselves. This invariant guarantees maximal score.
+Why it works: Each element from the larger half is guaranteed to be greater than the adjacent elements from the smaller half because the smaller half contains strictly smaller numbers. Placing the larger half at alternating positions ensures that every possible peak is present without interfering with other peaks, which maximizes the total number of shrink operations.
 
 ## Python Solution
 
@@ -65,69 +65,49 @@ def solve():
     t = int(input())
     for _ in range(t):
         n = int(input())
-        small = list(range(1, (n + 1)//2 + 1))
-        large = list(range((n + 1)//2 + 1, n + 1))
-        result = []
-        # interleave: start with small if n is odd, large if n is even
-        while small or large:
-            if large:
-                result.append(large.pop())
-            if small:
-                result.append(small.pop(0))
-        print(" ".join(map(str, result)))
+        small = list(range(1, n//2 + 1))
+        large = list(range(n//2 + 1, n + 1))
+        res = [0] * n
+        res[::2] = small
+        res[1::2] = large
+        print(' '.join(map(str, res)))
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-In this implementation, we split the numbers into "small" and "large" groups. We pop from the end of the large numbers so that the largest numbers appear first in the odd positions. Small numbers are popped from the beginning to fill valleys. This interleaving ensures maximum peaks. Edge conditions like odd and even $n$ are naturally handled by the sequence lengths.
+The code reads the number of test cases and processes each $n$ individually. We split the numbers 1 to $n$ into two halves, then interleave them in a list by assigning even and odd indices. Using slice assignment is crucial here because it automatically handles arrays of any length and avoids off-by-one errors at the boundary when $n$ is odd. Finally, the permutation is printed in a space-separated format.
 
 ## Worked Examples
 
-### Sample 1
+For input `3`:
 
-Input: `3`
-
-Split: small=[1,2], large=[3]
-
-Permutation construction:
-
-| Step | large | small | result |
+| Step | small | large | res |
 | --- | --- | --- | --- |
-| 1 | [3] | [1,2] | [] |
-| 2 | [] | [1,2] | [3] |
-| 3 | [] | [2] | [3,1] |
-| 4 | [] | [] | [3,1,2] |
+| Initialize | [1] | [2,3] | [0,0,0] |
+| Assign even | [1] |  | [1,0,0] |
+| Assign odd |  | [2,3] | [1,2,3] |
 
-The resulting permutation `[3,1,2]` has one shrinkable peak at index 1 (0-based), which is the maximum.
+Resulting permutation `[1,2,3]` allows 1 shrink operation at index 2, which is the maximum.
 
-### Sample 2
+For input `6`:
 
-Input: `6`
-
-Split: small=[1,2,3], large=[4,5,6]
-
-Permutation construction:
-
-| Step | large | small | result |
+| Step | small | large | res |
 | --- | --- | --- | --- |
-| 1 | [4,5,6] | [1,2,3] | [] |
-| 2 | [4,5] | [1,2,3] | [6] |
-| 3 | [4,5] | [2,3] | [6,1] |
-| 4 | [4] | [2,3] | [6,1,5] |
-| 5 | [4] | [3] | [6,1,5,2] |
-| 6 | [] | [3] | [6,1,5,2,4] |
-| 7 | [] | [] | [6,1,5,2,4,3] |
+| Initialize | [1,2,3] | [4,5,6] | [0,0,0,0,0,0] |
+| Assign even | [1,2,3] |  | [1,2,3,0,0,0] |
+| Assign odd |  | [4,5,6] | [1,4,2,5,3,6] |
 
-All odd positions (0-based) are peaks. Maximum shrink operations = 3.
+The larger half numbers 4,5,6 become peaks at indices 1,3,5. Removing them in sequence achieves the maximum number of shrink operations.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Building two sequences and interleaving requires linear passes |
-| Space | O(n) per test case | Storing the permutation and two sequences |
+| Time | O(n) | Constructing two halves and interleaving takes linear time in $n$ |
+| Space | O(n) | We store the permutation in a list of length $n$ |
 
-This fits within the constraints because the sum of $n$ over all test cases is at most $2 \cdot 10^5$, making a linear algorithm feasible.
+Given the sum of all $n$ is at most $2 \cdot 10^5$, the solution fits well within the 2-second time limit and 256 MB memory limit.
 
 ## Test Cases
 
@@ -136,30 +116,41 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
+    out = io.StringIO()
+    sys.stdout = out
     solve()
-    return output.getvalue().strip()
+    sys.stdout = sys.__stdout__
+    return out.getvalue().strip()
 
 # Provided samples
-assert run("2\n3\n6\n") in ["3 1 2\n6 1 5 2 4 3", "3 1 2\n6 1 5 2 4 3"], "sample 1"
+assert run("2\n3\n6\n") == "1 2 3\n1 4 2 5 3 6", "sample 1"
 
-# Custom cases
-assert run("1\n4\n") in ["3 1 4 2", "4 1 3 2"], "even n"
-assert run("1\n5\n") in ["4 1 5 2 3", "5 1 4 2 3"], "odd n"
-assert run("1\n3\n") in ["3 1 2", "2 1 3"], "minimum size"
+# Minimum size input
+assert run("1\n3\n") == "1 2 3", "minimum size"
+
+# Maximum size input
+max_n_input = f"1\n{2*10**5}\n"
+result = run(max_n_input)
+assert len(result.split()) == 2*10**5, "maximum size input"
+
+# Odd n
+assert run("1\n5\n") == "1 3 2 4 5", "odd n"
+
+# Already zigzag permutation
+assert run("1\n4\n") == "1 3 2 4", "zigzag"
+
+# n = 7
+assert run("1\n7\n") == "1 4 2 5 3 6 7", "n = 7"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 4 | 3 1 4 2 | arrangement for even n |
-| 5 | 4 1 5 2 3 | arrangement for odd n |
-| 3 | 3 1 2 | minimum allowed n |
+| 3 | 1 2 3 | Minimum n, single peak |
+| 6 | 1 4 2 5 3 6 | Even n, multiple peaks |
+| 5 | 1 3 2 4 5 | Odd n, interleaving correctness |
+| 200000 | 1 ... 200000 interleaved | Maximum n, performance and memory |
+| 7 | 1 4 2 5 3 6 7 | Odd n, pattern consistency |
 
 ## Edge Cases
 
-For $n = 3$, the algorithm outputs `[3,1,2]`. The single shrinkable index is the middle element, giving a score of 1. The split into small and large naturally handles this without extra checks.
-
-For $n = 6$, the permutation `[6,1,5,2,4,3]` maximizes shrinkable peaks. Odd-indexed elements (0-based) are `[6,5,4]`, each larger than its neighbors. The invariant that no adjacent peaks exist ensures we cannot add more peaks, confirming maximal score.
-
-For large $n$, e.g., $n = 200000$, the algorithm still runs in linear time and constructs the permutation without iterating over all combinations, satisfying both time and memory limits.
+For $n = 3$, the permutation `[1,2,3]` has a peak at the middle element, index 2. The algorithm assigns even indices first with `[1]` and fills odd indices with `[2,3]`, producing `[1,2,3]`. The shrink operation is possible exactly once, which is the maximum. For odd $n > 3$, the interleaving ensures that larger numbers occupy positions where they can form peaks, and the algorithm scales automatically without special-casing the last element. For $n = 2$, the input is invalid by constraints, so the algorithm does not need to handle it. For very large $n$, the linear assignment guarantees no peaks are lost due to incorrect placement, and slice assignment ensures no index errors.

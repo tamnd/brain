@@ -1,7 +1,7 @@
 ---
 title: "CF 2078D - Scammy Game Ad"
-description: "Each test case describes a sequence of $n$ stages, and each stage contains two gates, one affecting the left lane and one affecting the right lane. You start with one person in each lane."
-date: "2026-06-08T06:29:18+07:00"
+description: "We have two lanes. Each lane starts with exactly one person. The level consists of n rounds. In each round there is a left gate and a right gate. A gate either adds a fixed number of people or multiplies the number of people currently in its lane."
+date: "2026-06-09T03:42:15+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 2078
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 1008 (Div. 2)"
 rating: 1800
 weight: 2078
-solve_time_s: 97
-verified: false
+solve_time_s: 153
+verified: true
 draft: false
 ---
 
@@ -18,63 +18,236 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** dp, greedy, implementation  
-**Solve time:** 1m 37s  
-**Verified:** no  
+**Solve time:** 2m 33s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Each test case describes a sequence of $n$ stages, and each stage contains two gates, one affecting the left lane and one affecting the right lane. You start with one person in each lane. At every stage, both gates generate additional people based on the current lane sizes: a `+ a` gate produces a fixed number of new people, while an `x a` gate produces extra people proportional to the current number of people in that lane.
+We have two lanes. Each lane starts with exactly one person.
 
-The key twist is that after both gates of a stage produce their new people, all newly created people from that stage can be distributed arbitrarily between the two lanes. However, existing people in each lane are locked in place and cannot be moved.
+The level consists of `n` rounds. In each round there is a left gate and a right gate. A gate either adds a fixed number of people or multiplies the number of people currently in its lane.
 
-The goal is to maximize the sum of both lanes after processing all stages.
+The crucial detail is that gates do not directly modify lane populations. Instead, each gate produces some number of _new_ people.
 
-The important structure is that each stage transforms a pair of lane values into a new pair, but the only freedom is how we split the newly generated mass. This makes the problem a controlled resource allocation over time, where earlier distribution decisions affect later multiplicative growth.
+If a gate is `+ a`, it creates exactly `a` new people.
 
-The constraints are small in depth, with $n \le 30$, but the number of test cases is large, up to $10^4$. This immediately suggests that each test case must be processed in linear or near-linear time in $n$, and any solution that tries to explore distributions explicitly or simulate branching states will fail due to exponential blowup in how newly generated people can be assigned.
+If a gate is `x a`, and the lane currently contains `k` people, it creates `(a - 1) * k` new people.
 
-A naive idea is to track all possible distributions of people between the two lanes after each stage. After each gate pair, the number of possible states would grow combinatorially because each batch of newly created people can be split in many ways. This leads to an explosion in states, making brute force infeasible even for $n = 30$.
+After both gates of the round generate their new people, all newly created people are pooled together. We may distribute those new people between the two lanes however we like. Existing people cannot be moved, only the newly generated people are assignable.
 
-Another subtle failure case comes from greedy local assignment. One might try to always send newly generated people to the currently smaller lane or the lane with a multiplication gate. This fails because early decisions influence future multipliers. For example, if a lane has a multiplier $x3$ later, it is sometimes optimal to funnel early additions into that lane even if it is already large, because future scaling dominates.
+The task is to maximize the total number of people in both lanes after all rounds.
 
-The core difficulty is that additions and multiplications interact across time, and redistribution only applies to newly generated mass, not existing state.
+The number of rounds is at most 30, which is tiny. The challenge is not the size of `n`, but the huge number of possible ways to distribute newly created people between lanes. A direct search over all allocations would explode combinatorially.
+
+A subtle point is that a multiplication gate only depends on the number of people already present in its own lane before the round begins. People generated during the same round cannot increase that multiplication effect. Any solution that processes allocations and multiplications in the wrong order will overcount.
+
+Consider:
+
+```
+1
+1
+x 3 x 3
+```
+
+Initially both lanes contain one person.
+
+The two gates generate `2 + 2 = 4` new people. We may distribute those four people however we like, but the final total is always `2 + 4 = 6`.
+
+A careless approach might think that putting generated people into a lane could immediately help the other multiplication in the same round, producing a larger value. That is not allowed.
+
+Another easy mistake is assuming that balancing the lanes is always optimal.
+
+Consider:
+
+```
+1
+2
++ 100 + 0
+x 3 + 0
+```
+
+All 100 generated people should be placed into the left lane because that lane will later be multiplied. Splitting them evenly loses value. The future rounds determine where current gains should be invested.
+
+The core difficulty is deciding where each round's newly created people should go, taking all future multiplications into account.
 
 ## Approaches
 
-A brute force approach would simulate every stage while keeping track of all possible ways to split the newly generated people. Each state is a pair $(l, r)$, and after each stage, every state branches into many possible next states depending on how we distribute the newly created sum between left and right. Even if we discretize carefully, the number of partitions grows with the amount of generated people, and after 30 steps the state space becomes astronomically large.
+A brute-force view is useful for understanding the structure.
 
-The key observation is that we do not actually care about how people are split at intermediate steps, only the best possible final total. The structure of the operations reveals that at each stage, the optimal strategy is determined solely by how valuable each lane is in terms of future growth. A lane that will be multiplied more in the future should receive a larger share of current additions.
+Suppose we know the current populations `(l, r)`. A round generates some number `g` of new people. We may choose any split:
 
-This leads to a backward valuation idea. Instead of simulating forward splits, we compute how much final contribution a single person in each lane would produce if added at a given stage. These values act like weights. Then each stage reduces to distributing a total gain between two weighted buckets, always pushing more into the more valuable lane.
+```
+x people to the left
+g - x people to the right
+```
 
-This transforms the problem into maintaining two evolving “future multipliers” that represent how much a unit of mass in each lane will contribute to the final answer.
+for every integer `0 ≤ x ≤ g`.
+
+Recursively exploring all such choices is correct because it checks every possible allocation strategy. The problem is that `g` can become enormous after several multiplications. Even if we somehow bounded the number of choices per round, the branching factor would still grow exponentially with `n`.
+
+The key observation is that the game is completely linear.
+
+Imagine we are standing before some round `i`. Suppose the maximum achievable final answer from that point onward can be written as
+
+```
+A * l + B * r + C
+```
+
+where `l` and `r` are the current lane populations.
+
+At the very end of the game, this is obviously true:
+
+```
+final = l + r
+```
+
+so initially
+
+```
+A = 1
+B = 1
+C = 0
+```
+
+Now consider one earlier round.
+
+Let `g` be the total number of newly created people in that round. If we send `x` of them to the left lane, the future value becomes
+
+```
+A(l + x) + B(r + g - x) + C
+```
+
+which simplifies to
+
+```
+Al + Br + C + Bg + (A - B)x
+```
+
+The only variable is `x`.
+
+If `A > B`, every extra person is more valuable in the left lane, so all newly generated people should go left.
+
+If `B > A`, all newly generated people should go right.
+
+If they are equal, any split is optimal.
+
+This is the breakthrough. We never need to consider partial distributions. Every round's generated people are invested entirely into whichever lane has the larger future coefficient.
+
+Once this is known, we can process rounds backwards and update the coefficients `(A, B, C)`.
+
+Because multiplication gates contribute a value proportional to the current lane population, and addition gates contribute a constant, the linear form is preserved throughout the entire backward sweep.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over distributions | Exponential | Exponential | Too slow |
-| Optimal weighted DP per stage | $O(n)$ per test case | $O(1)$ | Accepted |
+| Brute Force | Exponential | Exponential | Too slow |
+| Optimal | O(n) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We maintain two quantities, $w_L$ and $w_R$, which represent how valuable one extra person in the left or right lane is with respect to the final answer. We also maintain current lane sizes $L$ and $R$, but the key computation focuses on how gains are weighted.
+1. Define the value function for the suffix of rounds as:
 
-At the start, both lanes contribute equally to the final answer, so both weights start at 1.
+```
+F(l, r) = A * l + B * r + C
+```
 
-We process the gates from the last stage backwards, because future multipliers determine present value.
+where `(A, B, C)` describe the optimal future payoff.
+2. Start from the state after the last round.
 
-1. Initialize $w_L = 1$, $w_R = 1$. These represent the final contribution of one person in each lane at the end of the process.
-2. Traverse stages from $n$ down to 1. We reverse time so that we always know how valuable each lane is after all later operations.
-3. At each stage, compute how much the current left and right gates scale contributions. If a gate is `x a`, it increases the weight of that lane by multiplying it with $a$. If it is `+ a`, it contributes a fixed number of people whose value is determined by the current lane weight.
-4. For each stage, compute the total weighted gain:
+At that point:
 
-the left gate produces a value $v_L$, the right gate produces $v_R$, where additions contribute $a \cdot w$ and multipliers contribute $(a-1)\cdot \text{current lane size} \cdot w$ in the reversed interpretation.
-5. All generated value can be split between lanes. To maximize final result, assign all gain to the lane with larger current weight. This is optimal because each unit placed in a lane contributes linearly with its weight, so no mixing improves the total.
-6. Update the total answer by adding the weighted gain accumulated at each stage.
+```
+F(l, r) = l + r
+```
 
-The key invariant is that $w_L$ and $w_R$ always correctly represent the marginal contribution of adding one extra person to each lane at the current stage in reversed time. Since future operations are already encoded into these weights, greedy assignment of each stage’s generated mass to the higher weight lane maximizes total contribution.
+so initialize:
 
-This works because the problem is linear in the number of people: each person evolves independently under future gates, and interactions only happen through splitting newly created mass. That linearity guarantees that weighting remains sufficient to encode all future effects.
+```
+A = 1
+B = 1
+C = 0
+```
+3. Process rounds from right to left.
+4. Let:
+
+```
+m = max(A, B)
+```
+
+Any newly generated person should be assigned entirely to the lane with coefficient `m`, because that yields the largest future contribution.
+5. Express each gate as a linear contribution.
+
+For a gate `+ a`:
+
+```
+gain = a
+```
+
+which corresponds to:
+
+```
+0 * lane + a
+```
+
+For a gate `x a`:
+
+```
+gain = (a - 1) * lane
+```
+
+which corresponds to:
+
+```
+(a - 1) * lane + 0
+```
+6. Let the left gate contribute
+
+```
+cL * l + dL
+```
+
+and the right gate contribute
+
+```
+cR * r + dR
+```
+
+The total generated people are
+
+```
+g = cL * l + cR * r + dL + dR
+```
+7. Since every generated person is worth `m` in the future, add `m * g` to the current value function.
+
+This produces:
+
+```
+A' = A + m * cL
+B' = B + m * cR
+C' = C + m * (dL + dR)
+```
+8. Replace `(A, B, C)` by `(A', B', C')` and continue.
+9. After all rounds have been processed, the initial state is `(1, 1)`.
+
+The answer is:
+
+```
+A + B + C
+```
+
+### Why it works
+
+The invariant is that after processing a suffix of rounds, the optimal final answer from that point can always be represented as a linear function
+
+```
+A * l + B * r + C.
+```
+
+The base case is true because the final score is simply `l + r`.
+
+Assume the invariant holds for round `i + 1`. During round `i`, the only decision is how to distribute the newly generated people. Since the future value is linear, each extra person contributes either `A` or `B` depending on the lane that receives it. Sending a person to the lane with the larger coefficient is always at least as good as any other choice. Thus every generated person has value `max(A, B)`.
+
+Adding this value to the current linear function yields another linear function, preserving the invariant. By induction, the invariant holds for every round, including the start of the game. The resulting value at `(1, 1)` is the optimal answer.
 
 ## Python Solution
 
@@ -84,61 +257,60 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
+
     for _ in range(t):
         n = int(input())
-        left = []
-        right = []
+        gates = []
+
         for _ in range(n):
             op1, a1, op2, a2 = input().split()
-            a1 = int(a1)
-            a2 = int(a2)
-            left.append((op1, a1))
-            right.append((op2, a2))
+            gates.append((op1, int(a1), op2, int(a2)))
 
-        # wL, wR: value of 1 person in each lane at current stage (from future perspective)
-        wL = 1
-        wR = 1
+        A = 1
+        B = 1
+        C = 0
 
-        # total answer accumulates final contributions
-        ans = 0
+        for op1, a1, op2, a2 in reversed(gates):
+            m = max(A, B)
 
-        # process from last stage to first
-        for i in range(n - 1, -1, -1):
-            opL, aL = left[i]
-            opR, aR = right[i]
-
-            # compute contributions generated at this stage
-            if opL == '+':
-                gainL = aL
+            if op1 == '+':
+                cL, dL = 0, a1
             else:
-                gainL = (aL - 1) * wL
+                cL, dL = a1 - 1, 0
 
-            if opR == '+':
-                gainR = aR
+            if op2 == '+':
+                cR, dR = 0, a2
             else:
-                gainR = (aR - 1) * wR
+                cR, dR = a2 - 1, 0
 
-            # assign all gain to better lane
-            if wL >= wR:
-                ans += gainL * wL + gainR * wL
-                wL += gainL + gainR
-            else:
-                ans += gainL * wR + gainR * wR
-                wR += gainL + gainR
+            A = A + m * cL
+            B = B + m * cR
+            C = C + m * (dL + dR)
 
-        print(ans)
+        print(A + B + C)
 
-if __name__ == "__main__":
-    solve()
+solve()
 ```
 
-The implementation encodes each stage as two independent contributions and always sends them to the lane with higher marginal value. The only subtle part is that gains from multiplication gates depend on the current weights, so they must be computed before updating the weights.
+The variables `A`, `B`, and `C` store the coefficients of the optimal value function for the suffix already processed.
 
-A common mistake is updating weights before computing gains for the stage, which would incorrectly let current-stage multipliers affect their own production.
+For every round we first compute `m = max(A, B)`. This represents the future value of one newly generated person, because all generated people should be invested in the more profitable lane.
+
+Each gate is converted into the form:
+
+```
+c * lane + d
+```
+
+which makes the update algebra straightforward.
+
+The update must use the old value of `m`. Recomputing `m` after updating `A` or `B` would be incorrect because the allocation decision belongs to the current round, not a future one.
+
+Python's integers automatically grow to arbitrary size, which is necessary because repeated multiplications can make the answer much larger than 64-bit limits.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -149,68 +321,114 @@ x 3 x 3
 + 7 + 4
 ```
 
-We track $w_L, w_R$ backwards.
+Backward processing:
 
-| Stage | wL | wR | gainL | gainR | chosen lane | ans |
-| --- | --- | --- | --- | --- | --- | --- |
-| 3 | 1 | 1 | 7 | 4 | L | 11 |
-| 2 | 8 | 1 | 16 | 8 | L | 35 |
-| 1 | 24 | 1 | 4 | 1 | L | 44 |
+| Round | A before | B before | C before | m | A after | B after | C after |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| End | 1 | 1 | 0 | - | 1 | 1 | 0 |
+| +7 +4 | 1 | 1 | 0 | 1 | 1 | 1 | 11 |
+| x3 x3 | 1 | 1 | 11 | 1 | 3 | 3 | 11 |
+| +4 x2 | 3 | 3 | 11 | 3 | 3 | 6 | 23 |
 
-Final result matches optimal accumulation behavior where left dominates due to higher evolving weight.
+Final answer:
 
-This trace shows how backward weighting makes early additive gains more valuable when they contribute to lanes that later scale heavily.
+```
+A + B + C = 3 + 6 + 23 = 32
+```
 
-### Example 2
+This example shows that the value function remains linear throughout the backward sweep.
+
+### Sample 4
 
 Input:
 
 ```
-2
-+ 9 x 2
-x 2 + 1
+5
+x 3 x 3
+x 2 x 2
++ 21 + 2
+x 2 x 3
++ 41 x 3
 ```
 
-| Stage | wL | wR | gainL | gainR | chosen lane | ans |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2 | 1 | 1 | 9 | 1 | L | 10 |
-| 1 | 10 | 1 | 10 | 0 | L | 20 |
+Backward processing:
 
-This demonstrates how even small asymmetries in multipliers force all mass into a single lane over time.
+| Round | A before | B before | C before | m | A after | B after | C after |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| End | 1 | 1 | 0 | - | 1 | 1 | 0 |
+| +41 x3 | 1 | 1 | 0 | 1 | 1 | 3 | 41 |
+| x2 x3 | 1 | 3 | 41 | 3 | 4 | 9 | 41 |
+| +21 +2 | 4 | 9 | 41 | 9 | 4 | 9 | 248 |
+| x2 x2 | 4 | 9 | 248 | 9 | 13 | 18 | 248 |
+| x3 x3 | 13 | 18 | 248 | 18 | 49 | 54 | 248 |
+
+Final answer:
+
+```
+49 + 54 + 248 = 351
+```
+
+This trace highlights the role of `m = max(A, B)`. Once the right lane becomes more valuable, all newly generated people are effectively treated as future right-lane investments.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n)$ per test case | Each stage is processed once with constant-time arithmetic |
-| Space | $O(n)$ | Storage of gate descriptions |
+| Time | O(n) | One backward pass over the rounds |
+| Space | O(1) | Only a few coefficients are stored |
 
-The solution fits easily within limits since $n \le 30$ and even $10^4$ test cases results in at most a few hundred thousand operations.
+Each test case performs a constant amount of work per round. Since `n ≤ 30`, the running time is tiny. The memory usage remains constant regardless of input size, easily fitting within the limits.
 
 ## Test Cases
 
 ```python
-import sys, io
+# helper: run solution on input string, return output string
+import sys
+import io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdout.getvalue() if False else solve_and_capture(inp)
 
-def solve_and_capture(inp: str) -> str:
-    import sys
-    from io import StringIO
-    backup_stdin = sys.stdin
-    backup_stdout = sys.stdout
-    sys.stdin = StringIO(inp)
-    sys.stdout = StringIO()
-    solve()
-    out = sys.stdout.getvalue()
-    sys.stdin = backup_stdin
-    sys.stdout = backup_stdout
-    return out
+    input = sys.stdin.readline
+
+    t = int(input())
+    out = []
+
+    for _ in range(t):
+        n = int(input())
+        gates = []
+
+        for _ in range(n):
+            op1, a1, op2, a2 = input().split()
+            gates.append((op1, int(a1), op2, int(a2)))
+
+        A = B = 1
+        C = 0
+
+        for op1, a1, op2, a2 in reversed(gates):
+            m = max(A, B)
+
+            if op1 == '+':
+                cL, dL = 0, a1
+            else:
+                cL, dL = a1 - 1, 0
+
+            if op2 == '+':
+                cR, dR = 0, a2
+            else:
+                cR, dR = a2 - 1, 0
+
+            A = A + m * cL
+            B = B + m * cR
+            C = C + m * (dL + dR)
+
+        out.append(str(A + B + C))
+
+    return "\n".join(out)
 
 # provided sample
-assert solve_and_capture("""4
+assert run(
+"""4
 3
 + 4 x 2
 x 3 x 3
@@ -229,32 +447,137 @@ x 2 x 3
 x 3 x 3
 x 2 x 2
 + 21 + 2
-x 2 + 1
+x 2 x 3
 + 41 x 3
-""") == """32
+"""
+) == """32
 98
 144
-351
-"""
+351"""
 
-# custom cases
-assert solve_and_capture("1\n1\n+ 1 + 1\n") == "2\n", "min case"
-assert solve_and_capture("1\n1\nx 2 x 2\n") == "2\n", "pure multiply"
-assert solve_and_capture("1\n2\n+ 100 + 0\n+ 0 + 100\n") == "200\n", "symmetry"
-assert solve_and_capture("1\n3\n+ 1 x 2\nx 3 + 1\n+ 1 + 1\n") >= "0\n", "sanity"
+# minimum size
+assert run(
+"""1
+1
++ 1 + 1
+"""
+) == "4"
+
+# single multiplication pair
+assert run(
+"""1
+1
+x 3 x 3
+"""
+) == "6"
+
+# all additions
+assert run(
+"""1
+2
++ 5 + 5
++ 5 + 5
+"""
+) == "22"
+
+# multiplication only chain
+assert run(
+"""1
+2
+x 2 x 2
+x 2 x 2
+"""
+) == "8"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single + gates | correct sum | base additive handling |
-| double multipliers | exponential growth correctness | multiplicative accumulation |
-| symmetric additions | balanced splitting | lane symmetry handling |
-| mixed sequence | interaction correctness | ordering effects |
+| One round, `+1 +1` | 4 | Minimum input size |
+| One round, `x3 x3` | 6 | Multiplication gain formula |
+| Two rounds of additions | 22 | Constant contributions accumulate correctly |
+| Two rounds of `x2 x2` | 8 | Repeated coefficient propagation |
 
 ## Edge Cases
 
-A minimal edge case is a single stage with only additions. The algorithm assigns both gains to the same lane because weights are equal, producing the correct sum since no future multipliers differentiate lanes.
+Consider the smallest possible level:
 
-A purely multiplicative chain such as `x 2 x 2` on both sides confirms that backward weights remain equal initially, so gains are symmetric and any distribution yields the same final total, matching the expectation that all contributions scale uniformly.
+```
+1
+1
++ 1 + 1
+```
 
-A skewed case like `x 3 + 1` demonstrates the main mechanism: the multiplication first increases the value of future gains in that lane, causing earlier additions to be preferentially routed there when processed backward.
+Backward initialization gives:
+
+```
+A = 1
+B = 1
+C = 0
+```
+
+The round contributes two constant people. Since `m = 1`:
+
+```
+C = 2
+```
+
+The answer becomes:
+
+```
+1 + 1 + 2 = 4
+```
+
+which matches the direct simulation.
+
+Now consider a pure multiplication round:
+
+```
+1
+1
+x 3 x 3
+```
+
+The two gates generate:
+
+```
+2 * l + 2 * r
+```
+
+With `A = B = 1`, we have `m = 1`, so:
+
+```
+A = 3
+B = 3
+C = 0
+```
+
+The answer is:
+
+```
+3 + 3 = 6
+```
+
+This confirms that newly generated people are not allowed to influence multiplications within the same round.
+
+Finally, consider a case where one lane becomes much more valuable:
+
+```
+1
+2
++ 100 + 0
+x 3 + 0
+```
+
+Backward processing yields:
+
+```
+After second round: A = 3, B = 1
+```
+
+Since `A > B`, every person generated in the first round should be placed into the left lane. The algorithm captures this automatically through
+
+```
+m = max(A, B) = 3.
+```
+
+A strategy that always balances the lanes would miss this opportunity and produce a smaller answer. The coefficient-based decision correctly identifies where future multiplications make an investment most profitable.

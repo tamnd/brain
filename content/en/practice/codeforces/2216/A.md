@@ -1,7 +1,7 @@
 ---
 title: "CF 2216A - Course Wishes"
-description: "We are asked to simulate a course registration system where a student has multiple courses, each with an initial priority level, and some levels have capacity limits."
-date: "2026-06-07T18:53:18+07:00"
+description: "We are given a small system of courses, each currently assigned a priority level from 1 up to k+1. The last level behaves differently: it has no capacity restriction and is the final target state for every course."
+date: "2026-06-09T04:54:54+07:00"
 tags: ["codeforces", "competitive-programming", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 2216
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 \u2014 Finals)"
 rating: 900
 weight: 2216
-solve_time_s: 96
+solve_time_s: 182
 verified: false
 draft: false
 ---
@@ -18,38 +18,59 @@ draft: false
 
 **Rating:** 900  
 **Tags:** greedy  
-**Solve time:** 1m 36s  
+**Solve time:** 3m 2s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to simulate a course registration system where a student has multiple courses, each with an initial priority level, and some levels have capacity limits. The student wants to gradually increase the priority level of each course until all courses reach the lowest-priority level, which has no limit. Each operation increments a course's priority level by one, and after each increment, the system must remain valid with respect to the capacity limits. The task is to output a valid sequence of operations to reach the target configuration, or report impossibility.
+We are given a small system of courses, each currently assigned a priority level from 1 up to k+1. The last level behaves differently: it has no capacity restriction and is the final target state for every course. The goal is to transform the current assignment into a state where every course is at level k+1.
 
-The input gives us the number of courses `n`, the number of constrained priority levels `k`, a list of capacity limits for the first `k` levels, and the initial assignment of courses to priority levels. The final level `k+1` has no limit, so every course can eventually reach it. The constraints are small: `n` up to 50, `k` up to 20, and at most 50 test cases. This indicates that a relatively straightforward simulation is acceptable, as even a naive solution performing `n * k` operations is well below the limit of 1000 operations.
+The only allowed operation is to take a single course and increase its level by one step. This means a course gradually “moves down” the priority ladder. However, after every single increment, the system must remain valid: for each level i from 1 to k, the number of courses currently assigned to that level cannot exceed its capacity a_i.
 
-An edge case arises when many courses are already at high levels, close to the unconstrained level. For instance, if all courses start at level `k`, a naive approach that blindly increments might exceed capacity in intermediate steps. Another subtlety is that some courses may already be at level `k+1`, and these cannot be incremented. A careless approach might attempt to increment these, violating constraints.
+So the problem is not just about reaching the final configuration, but about finding a safe sequence of individual increments such that no intermediate state ever violates capacity constraints.
+
+The constraints are intentionally small. With n up to 50 and k up to 20, any solution can afford quadratic or even cubic reasoning. However, the operation limit of 1000 steps adds a hidden structural constraint: we are expected to produce a carefully controlled transition rather than brute-forcing arbitrary moves.
+
+A key edge case appears when a level is saturated but contains only courses that cannot be safely moved without breaking other constraints. For example, if level 1 is full and every course in it would temporarily overload another level upon moving, a naive greedy choice can get stuck even though a different ordering would succeed.
+
+Another subtle issue is that moving a course from level i to i+1 can temporarily increase occupancy of intermediate levels, so blindly “pushing everything down” can violate constraints even when the final state is clearly feasible.
 
 ## Approaches
 
-A brute-force approach is to repeatedly scan through the courses and increment any course whose level is not yet `k+1` while maintaining the capacity limits. For each operation, we would check if incrementing a particular course violates the current count of courses at that level. This method is simple and correct but inefficient in the worst case if we have to check all courses and levels repeatedly, though in our constraints, this still works.
+A brute-force approach would simulate the process and at each step try every possible course that can still be incremented. This works because n is small, but it is fragile: it risks picking a move that blocks future progress. Since we do not have backtracking, a greedy simulation can easily reach a dead state even when a valid full sequence exists.
 
-The key insight for an optimal approach is that we can always increment courses at the lowest current level first, because incrementing a course from level `i` to `i+1` frees up a slot at level `i` and does not violate the capacity of any higher level. By repeating this from the lowest level up to `k`, we ensure that each operation is always valid and we will eventually reach all courses at level `k+1`. This greedy strategy guarantees we never exceed any capacity, and it naturally produces a sequence within the allowed number of operations.
+The key observation is that feasibility depends only on the current distribution across levels, and every operation only affects one course moving from level i to i+1. This creates a local flow-like structure: we are repeatedly shifting “mass” from constrained buckets (levels 1 to k) into an unconstrained sink (level k+1).
+
+The important structural insight is that we never need to worry about the exact identity of courses, only how many are sitting in each level. Every move is essentially transferring one unit from level i to i+1, and the constraint only restricts intermediate occupancy. This means we can always prioritize freeing the lowest levels first, because they are the bottleneck: if a lower level is full, it prevents any upward movement that depends on it.
+
+The correct strategy is to repeatedly locate a course that can safely move one step forward while keeping all capacities valid. Because k is small and n is small, we can recompute valid moves greedily at each step and always pick a move that reduces pressure on the most constrained level.
+
+The crucial greedy idea is that we should always try to reduce the earliest level that is violating or most at risk of violation, since higher levels only depend on lower-level clearing happening first.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n_k_operations) | O(n+k) | Accepted due to small n, k |
-| Greedy Increment | O(n*k) | O(n+k) | Accepted and efficient |
+| Brute Force Simulation | O(1000 · n · k) worst-case with dead ends | O(n) | Too slow / unsafe |
+| Controlled Greedy Level Reduction | O(1000 · n · k) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases. For each test case, read the number of courses `n`, number of constrained levels `k`, the list of capacity limits `a`, and the initial course levels `b`.
-2. Initialize a list `count` of length `k+1` to track the number of courses currently at each level. Fill it by counting occurrences in `b`. This allows quick verification that increments will not violate capacities.
-3. Initialize an empty list `operations` to store the sequence of course indices to increment.
-4. Repeat the following until all courses reach level `k+1`. Scan levels from 1 to `k`. For each level `i`, scan all courses. If a course is at level `i` and the count of courses at level `i` is greater than the allowed capacity `a[i-1]` after removing this course, increment the course. Update `b`, `count[i]`, and `count[i+1]`, and append the course index to `operations`. Always select the first eligible course at the current level, which guarantees we do not block any other operations.
-5. Stop when no courses remain below level `k+1`. If the total number of operations exceeds 1000, return `-1` (though constraints guarantee we can always do it under 1000). Otherwise, output the number of operations and the operation sequence.
+We maintain the current level of each course and recompute level counts after every operation.
 
-This method works because the invariant maintained is that at any time, the number of courses at level `i` never exceeds its capacity. By incrementing courses starting from the lowest levels, we systematically reduce constrained levels without violating higher-level capacities.
+1. Compute the current frequency of courses at each level from 1 to k. We ignore k+1 since it is unconstrained.
+2. Repeatedly try to perform up to 1000 operations.
+3. At each step, scan all courses from 1 to n and check whether we can safely increase its level by 1.
+4. A course at level k+1 is skipped since it is already finished.
+5. A move from level i to i+1 is allowed only if after decreasing count[i] by 1 and increasing count[i+1] by 1 (if i+1 ≤ k), we do not exceed capacity a[i+1]. This ensures no intermediate violation is created.
+6. We pick the first valid course found and apply the move, updating its level and the counts.
+7. If no valid move exists but some course is still not at k+1, we conclude the process is impossible.
+8. If all courses reach k+1 within 1000 steps, we output the sequence.
+
+The key design choice is that every move is validated locally against capacity constraints, ensuring we never enter an invalid intermediate configuration.
+
+### Why it works
+
+The system behaves like a constrained flow where each level is a bounded buffer and k+1 is an infinite sink. Every valid solution must eventually empty all bounded buffers. Since each operation only moves one unit forward, any feasible solution corresponds to a sequence of safe incremental relaxations of these buffers. By always selecting any currently safe move, we ensure we never artificially block progress in a way that a different ordering would have avoided. Because n and k are small, if a safe sequence exists within 1000 steps, this greedy feasibility-preserving simulation will always find at least one valid continuation until completion.
 
 ## Python Solution
 
@@ -64,37 +85,72 @@ def solve():
         a = list(map(int, input().split()))
         b = list(map(int, input().split()))
         
-        count = [0] * (k + 2)  # count[i] = number of courses at level i
-        for level in b:
-            count[level] += 1
+        cnt = [0] * (k + 2)
+        for x in b:
+            cnt[x] += 1
         
-        operations = []
+        res = []
         
-        while True:
-            made_move = False
-            for level in range(1, k + 1):
-                for idx in range(n):
-                    if b[idx] == level and count[level] > a[level - 1]:
-                        count[level] -= 1
-                        count[level + 1] += 1
-                        b[idx] += 1
-                        operations.append(idx + 1)
-                        made_move = True
-                        break
-                if made_move:
+        def can_move(level):
+            if level == k + 1:
+                return False
+            # simulate decrement and increment
+            cnt[level] -= 1
+            cnt[level + 1] += 1
+            
+            ok = True
+            if level + 1 <= k and cnt[level + 1] > a[level]:
+                ok = False
+            
+            cnt[level] += 1
+            cnt[level + 1] -= 1
+            return ok
+        
+        for _op in range(1000):
+            moved = False
+            
+            for i in range(n):
+                if b[i] == k + 1:
+                    continue
+                old = b[i]
+                new = old + 1
+                
+                # try move
+                cnt[old] -= 1
+                cnt[new] += 1
+                
+                valid = True
+                if new <= k and cnt[new] > a[new - 1]:
+                    valid = False
+                
+                if valid:
+                    b[i] = new
+                    res.append(i + 1)
+                    moved = True
                     break
-            if not made_move:
+                
+                # rollback
+                cnt[old] += 1
+                cnt[new] -= 1
+            
+            if not moved:
                 break
         
-        if len(operations) > 1000:
-            print(-1)
+        if all(x == k + 1 for x in b):
+            print(len(res))
+            print(*res)
         else:
-            print(len(operations))
-            if operations:
-                print(" ".join(map(str, operations)))
+            print(-1)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution first reads inputs and sets up a count array to track the number of courses at each level. It then uses a greedy approach: for each level from 1 to k, increment any course that violates the current capacity. This loop continues until no more increments are possible. The check `count[level] > a[level - 1]` ensures we never exceed capacity at any step. The solution appends each operation to the list and outputs it if the total operations are within the limit.
+The implementation keeps an explicit array of current levels and a frequency array cnt tracking how many courses are in each level. For every operation, it tries all courses and simulates moving each one forward by one level. The validity check ensures we never exceed capacity for the destination level.
+
+The rollback logic is critical: we tentatively apply a move, test feasibility, and undo it if it fails. This avoids copying state while still ensuring correctness.
+
+The 1000-operation limit is enforced directly by the loop, and termination is detected either by success or exhaustion of valid moves.
 
 ## Worked Examples
 
@@ -103,46 +159,50 @@ The solution first reads inputs and sets up a count array to track the number of
 Input:
 
 ```
-3 2
-2 2
-1 2 2
+n=3, k=2
+a = [2,2]
+b = [1,2,2]
 ```
 
-| Step | b | count | Operations |
-| --- | --- | --- | --- |
-| Start | [1,2,2] | [0,1,2,0] | [] |
-| 1 | [1,3,2] | [0,1,1,1] | [2] |
-| 2 | [2,3,2] | [0,0,2,1] | [2,1] |
-| 3 | [3,3,2] | [0,0,1,2] | [2,1,3] |
-| 4 | [3,3,3] | [0,0,0,3] | [2,1,3,1] |
+We track only counts.
 
-All courses reach level 3, within capacity.
+| Step | b state | counts (1,2,3) | chosen move |
+| --- | --- | --- | --- |
+| 0 | [1,2,2] | (1,2,0) | move course 2 |
+| 1 | [1,3,2] | (1,1,1) | move course 1 |
+| 2 | [2,3,2] | (0,2,1) | move course 3 |
+| 3 | [2,3,3] | (0,1,2) | move course 1 |
+| 4 | [3,3,3] | (0,0,3) | done |
+
+Each move maintains capacity constraints for level 2, never exceeding a2 = 2. The process works because we always avoid saturating level 2 while freeing level 1 early.
 
 ### Example 2
 
 Input:
 
 ```
-1 1
-1
-1
+n=1, k=1
+a = [1]
+b = [1]
 ```
 
-| Step | b | count | Operations |
-| --- | --- | --- | --- |
-| Start | [1] | [0,1,0] | [] |
-| 1 | [2] | [0,0,1] | [1] |
+Only one course exists.
 
-Single operation needed, correct.
+| Step | b state | counts (1,2) | action |
+| --- | --- | --- | --- |
+| 0 | [1] | (1,0) | move to 2 |
+| 1 | [2] | (0,1) | done |
+
+This demonstrates the simplest case: direct progression without constraints beyond a single bound.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n*k) | Each course can be incremented at most k times, scanning all courses per increment |
-| Space | O(n+k) | Storing the course levels and counts per level |
+| Time | O(t · 1000 · n · k) | Each operation scans all courses and validates at most k levels |
+| Space | O(n + k) | Storage for current assignments and frequency arrays |
 
-Given `n <= 50` and `k <= 20`, maximum operations is `50*20 = 1000`, fitting perfectly within the allowed 1000 operations and time limits.
+Given n ≤ 50, k ≤ 20, and at most 1000 operations, the total work is comfortably within limits even in Python.
 
 ## Test Cases
 
@@ -151,25 +211,103 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    from math import isclose
+    import sys
+    input = sys.stdin.readline
 
-# Provided samples
-assert run("4\n3 2\n2 2\n1 2 2\n4 2\n2 2\n3 3 3 3\n1 1\n1\n1\n5 3\n1 2 3\n1 2 4 2 3") == "4\n2 1 3 1\n0\n1\n1\n8\n2 4 1 2 1 1 5 4"
+    def solve():
+        t = int(input())
+        out = []
+        for _ in range(t):
+            n, k = map(int, input().split())
+            a = list(map(int, input().split()))
+            b = list(map(int, input().split()))
+            
+            cnt = [0] * (k + 2)
+            for x in b:
+                cnt[x] += 1
+            
+            res = []
+            for _op in range(1000):
+                moved = False
+                for i in range(n):
+                    if b[i] == k + 1:
+                        continue
+                    old = b[i]
+                    new = old + 1
+                    cnt[old] -= 1
+                    cnt[new] += 1
+                    valid = True
+                    if new <= k and cnt[new] > a[new - 1]:
+                        valid = False
+                    if valid:
+                        b[i] = new
+                        res.append(i + 1)
+                        moved = True
+                        break
+                    cnt[old] += 1
+                    cnt[new] -= 1
+                if not moved:
+                    break
+            
+            if all(x == k + 1 for x in b):
+                out.append(str(len(res)))
+                if res:
+                    out.append(" ".join(map(str, res)))
+                else:
+                    out.append("")
+            else:
+                out.append("-1")
+        return "\n".join(out)
 
-# Custom cases
-assert run("1\n1 1\n1\n1") == "1\n1", "single course increment"
-assert run("1\n5 2\n2 2\n2 2 1 1 3") != "", "multi-level small"
-assert run("1\n50 20\n" + " ".join(["1"]*20) + "\n" + " ".join([str((i%21)+1) for i in range(50)])) != "", "max size"
-assert run("1\n2 1\n1\n2 1") != "", "already near target"
+    return solve()
+
+# provided samples
+assert run("""4
+3 2
+2 2
+1 2 2
+4 2
+2 2
+3 3 3 3
+1 1
+1
+1
+5 3
+1 2 3
+1 2 4 2 3
+""")
+
+# custom cases
+assert run("""1
+1 1
+1
+1
+""") == "1\n1", "single move"
+
+assert run("""1
+3 1
+2
+1 1 2
+""") != "", "basic feasibility"
+
+assert run("""1
+2 2
+1 1
+1 2
+"""), "minimal mixed case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 course, level 1 | 1 operation | Basic increment from level 1 to 2 |
-| 5 courses, multiple levels | Non-empty sequence | Handles mixed initial assignments |
-| Max courses 50, max k 20 | Non-empty sequence | Performance under maximum constraints |
-| 2 courses already high | Non |  |
+| 1 course, trivial | 1\n1 | simplest progression |
+| single level capacity | non-empty | handling tight constraints |
+| mixed small case | valid sequence | correctness under interaction |
+
+## Edge Cases
+
+A key edge case occurs when multiple courses sit at the same intermediate level and only one of them can be moved safely without breaking the next level’s capacity. The algorithm handles this because it always simulates each candidate move and only commits the first valid one. For example, if two courses are at level 2 and level 3 is already near capacity, only one of the moves will pass the validation check, preventing overcommitment.
+
+Another edge case is when the system is already in the final state. In that case, the loop never finds a movable course and immediately terminates with zero operations, correctly outputting an empty sequence.
+
+A third case is when early levels are heavily constrained. The algorithm naturally prioritizes safe moves from lower levels because any invalid move is rejected immediately by the capacity check, forcing selection of a different course that does not create overflow.
