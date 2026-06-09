@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1536 solved, 53 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1539 solved, 54 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1536
-kvant_verified: 53
+kvant_total: 1539
+kvant_verified: 54
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1536 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 53 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1539 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 54 solutions have been independently verified.
 
 ## 1970
 
@@ -3229,7 +3229,7 @@ draft: false
 
 ## 2025
 
-18 problems across Issues 1–11, 4 verified.
+21 problems across Issues 1–11, 5 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3272,7 +3272,15 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2854](2854.md) Let $n=\\prod p_i^{\\alpha_i}$ with all $p_i<100$. |  | 11m39s |
+| [2855](2855.md) *I. F. Sharygin Geometry Olympiad (XXI, correspondence round)*. Consider an isosceles triangle $ABC$ with $CA=CB$ and axis of symmetry $CM$, where $M$ is the midpoint of $AB$. |  | 19m25s |
+| [2856](2856.md) For a query polynomial $Q$, the answer is the set of real roots of |  | 15m16s |
 | [2857](2857.md) *Olympiad of the Presidential Physics and Mathematics Lyceum No. 239 of St. Petersburg*. Let the hats be $x_1,x_2,x_3,x_4$, placed on sages $1,2,3,4$ respectively, with all values distinct in ${1,\\dots,100}$. |  | 2m18s |
+
+### [Issue 9](https://www.kvant.digital/view/kvant_2025_9/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2859](2859.md) Assume that a function $f:\\mathbb R\\to\\mathbb R$ satisfies | ✓ | 11m34s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_2025_10/)
 
