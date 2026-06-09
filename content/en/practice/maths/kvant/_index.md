@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1551 solved, 58 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1553 solved, 58 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1551
+kvant_total: 1553
 kvant_verified: 58
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1551 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 58 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1553 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 58 solutions have been independently verified.
 
 ## 1970
 
@@ -3309,7 +3309,7 @@ draft: false
 
 ## 2026
 
-7 problems across Issues 1–3.
+9 problems across Issues 1–3.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2026_1/)
 
@@ -3324,7 +3324,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [2878](2878.md) *Southern Mathematical Tournament (XX)*. This is a **Type B (prove)** problem. |  | 36m33s |
 | [2879](2879.md) *Sirius Mathematical Olympiad*. Consider small natural numbers $n$ and compute $S(n)$, $S(7n)$, and $S(9n)$. |  | 11m32s |
+| [2880](2880.md) *Sirius Mathematical Olympiad*. This is a Type B (prove) problem. |  | 22m30s |
 | [2881](2881.md) *Southern Mathematical Tournament (XX)*. Consider first the simplest nontrivial convex polygon, a triangle $A_1A_2A_3$, with a point $O$ inside. |  | 2m40s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_2026_3/)
