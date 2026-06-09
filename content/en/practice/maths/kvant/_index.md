@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1549 solved, 58 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1551 solved, 58 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1549
+kvant_total: 1551
 kvant_verified: 58
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1549 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 58 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1551 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 58 solutions have been independently verified.
 
 ## 1970
 
@@ -3229,7 +3229,7 @@ draft: false
 
 ## 2025
 
-30 problems across Issues 1–11, 9 verified.
+31 problems across Issues 1–11, 9 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3305,10 +3305,11 @@ draft: false
 | [2870](2870.md) *City Tournament (XLVII)*. We are asked to prove that if a snail moves along a closed, non-self-intersecting polygonal line in the plane using only three directions—up, to the right, and down-left at an angle of $45^\\circ$ to t… |  | 32m17s |
 | [2871](2871.md) *Southern Mathematical Tournament (XX)*. Let $p>2$ be a prime number and $k$ an integer with $0<k<p-1$. |  | 33m36s |
 | [2872](2872.md) *South-Russian Mathematical Olympiad “Assara” (IV)*. Two distinct natural numbers $x$ and $y$ form a beautiful pair when | ✓ | 27m30s |
+| [2873](2873.md) Something went wrong. |  | 39m12s |
 
 ## 2026
 
-6 problems across Issues 1–3.
+7 problems across Issues 1–3.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2026_1/)
 
@@ -3317,6 +3318,7 @@ draft: false
 | [2874](2874.md) Let $M$ be the midpoint of $AC$. |  | 2m07s |
 | [2875](2875.md) Working |  | 13m42s |
 | [2876](2876.md) *Southern Mathematical Tournament (XX)*. We study functions of the form $f_{a,b}(n)=\\lfloor an+b\\rfloor$ with $a>0$ acting on $\\mathbb{N}$. |  | 10m12s |
+| [2877](2877.md) *Southern Mathematical Tournament (XX)*. The flaw in the previous solution is the assumption that Wolf must win on every graph, and that showing a single losing graph is sufficient to refute his strategy. |  | 29m45s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_2026_2/)
 
