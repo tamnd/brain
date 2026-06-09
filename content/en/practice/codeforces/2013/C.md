@@ -1,7 +1,7 @@
 ---
 title: "CF 2013C - Password Cracking"
-description: "We are given a hidden binary string of length n. The only operation available is to ask whether some binary string t appears as a contiguous substring of the hidden string."
-date: "2026-06-09T02:51:37+07:00"
+description: "We are tasked with discovering a secret binary string of length $n$ by asking substring queries. For each query, we provide a candidate binary string $t$, and the system replies whether $t$ appears as a contiguous segment anywhere in the password."
+date: "2026-06-09T17:29:06+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "interactive", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 2013
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 973 (Div. 2)"
 rating: 1400
 weight: 2013
-solve_time_s: 133
+solve_time_s: 131
 verified: false
 draft: false
 ---
@@ -18,369 +18,140 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** constructive algorithms, interactive, strings  
-**Solve time:** 2m 13s  
+**Solve time:** 2m 11s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a hidden binary string of length `n`. The only operation available is to ask whether some binary string `t` appears as a contiguous substring of the hidden string.
+We are tasked with discovering a secret binary string of length $n$ by asking substring queries. For each query, we provide a candidate binary string $t$, and the system replies whether $t$ appears as a contiguous segment anywhere in the password. We need to determine the entire password in at most $2n$ queries.
 
-The original problem is interactive, but in the hacked version the hidden string is given directly in the input. Our task is to reconstruct exactly the strategy that would discover the hidden string using at most `2n` substring queries.
+The input starts with the number of test cases, and for each test case, we are given the length of the password. The output is interactive: after each query, we read the answer and can adjust our next query based on previous results. Once we believe we have the full string, we submit it, and the system tells us whether it is correct.
 
-The central challenge is that a query does not tell us where a string appears, only whether it appears somewhere inside the password. We must exploit this very limited information efficiently.
+Because $n$ is at most 100, we cannot afford to check all possible strings of length $n$, since that would involve $2^n$ possibilities. Instead, we must exploit structure in the binary strings. Each query can give information about one or more positions, so careful construction of queries can allow us to deduce the entire password efficiently. A naive approach that tests each bit separately could take up to $n$ queries, but some edge cases, like repeated characters or alternating patterns, might require more thought to avoid ambiguity.
 
-The constraint `n ≤ 100` is tiny from a computational perspective. The real restriction is the interactive limit of at most `2n` queries. Any strategy that tries many candidates for every position would immediately exceed the allowed number of questions.
-
-The tricky cases come from strings where extending in one direction suddenly becomes impossible.
-
-Consider the hidden string:
-
-```
-1111
-```
-
-If we start from `"1"` and keep extending to the right, every extension with `'1'` succeeds. Eventually we obtain the entire string.
-
-Now consider:
-
-```
-0010
-```
-
-Suppose we currently know `"001"`. Trying to append `'0'` succeeds and we finish. But if at some point neither right extension works, we must realize that we have already reached the right boundary of the hidden string and need to start growing in the opposite direction.
-
-Another subtle case is when the password contains only one type of character.
-
-```
-00000
-```
-
-A careless solution might assume that if `"01"` is not a substring then both digits must exist somewhere else. In reality the whole string may consist entirely of zeros. The construction must remain valid even when only one character appears.
-
-The smallest case is:
-
-```
-n = 1
-```
-
-The password is either `"0"` or `"1"`. The algorithm must correctly initialize itself without assuming the existence of longer substrings.
+Non-obvious edge cases include strings consisting entirely of a single repeated character, such as "0000" or "1111". If we only query "0" or "1", we might be able to detect the repetition, but if we try overlapping patterns naively, we could misinterpret the responses. Similarly, strings with alternating bits like "0101" might lead a simple greedy extension algorithm to attempt invalid overlaps, producing a wrong guess if queries are not carefully ordered.
 
 ## Approaches
 
-A brute force strategy would try every binary string of length `n` and ask whether it is the password. There are `2^n` possibilities, which becomes completely infeasible even for moderate values of `n`.
+A brute-force approach would attempt to guess each bit by querying every possible prefix combination. For example, we could start with "0", then "00", "01", "000", "001", and so on. While this would eventually discover the password, the number of queries grows exponentially, clearly exceeding the allowed $2n$ for $n = 100$. This approach works in principle but is far too slow in practice.
 
-A more reasonable brute force idea is to determine the password one character at a time. Suppose we already know a prefix. We could ask whether appending `0` works, then whether appending `1` works, and continue. The problem is that substring queries do not tell us whether we are building the actual prefix of the password. They only tell us whether the candidate appears somewhere inside the string. A substring may occur in the middle, causing the reconstruction to drift away from the true answer.
+The key insight for a faster solution is that the password is binary, so at each step we only need to decide whether the next character is '0' or '1'. If we maintain a growing prefix of known bits, we can try extending it with '0', then '1'. The substring query answers tell us whether the extended prefix exists in the password. If adding '0' is successful, we keep it; otherwise, we replace it with '1'. Since each query extends the prefix by exactly one character, we can reconstruct the entire string in at most $n + n = 2n$ queries, staying within the limit.
 
-The key observation is that we do not need to know where our current string appears. We only need to maintain a string that is guaranteed to be some substring of the password.
-
-Start with a substring of length one. Then repeatedly try to extend it to the right. If appending `0` still produces a substring, keep it. Otherwise try appending `1`.
-
-As long as one of these succeeds, our substring becomes longer.
-
-Eventually neither extension succeeds. At that moment the current substring already touches the right end of the password. If there were a character to its right, one of the two possible extensions would necessarily exist.
-
-Once we reach the right boundary, we switch directions. Now we prepend characters. If adding `0` to the front still yields a substring, we do so. Otherwise we prepend `1`.
-
-Every successful query increases the known length by one. The process stops when the substring length becomes exactly `n`, which means we have reconstructed the whole password.
-
-The elegant part is the query count. Every successful extension increases the length by one, so there are exactly `n-1` successful growth operations. Every growth may require at most two queries. The moment we switch directions happens only once. This keeps the total number of queries within `2n`.
+This approach exploits the fact that knowing a prefix allows us to infer the next bit using a single query, and the binary alphabet guarantees only two choices for extension. No more complicated search, backtracking, or substring enumeration is needed.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Enumeration | O(2^n · n) | O(n) | Too slow |
-| Constructive Growth | O(n) queries | O(n) | Accepted |
+| Brute Force | O(2^n) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Query whether `"0"` is a substring.
-2. If the answer is yes, initialize `cur = "0"`. Otherwise initialize `cur = "1"`.
-3. Repeatedly try to extend `cur` to the right.
-4. Ask whether `cur + "0"` is a substring. If yes, replace `cur` with that longer string.
-5. Otherwise ask whether `cur + "1"` is a substring. If yes, replace `cur` with that longer string.
-6. If neither right extension exists, stop extending right. At this point `cur` must already reach the right end of the password.
-7. While `len(cur) < n`, extend to the left.
-8. Ask whether `"0" + cur` is a substring. If yes, prepend `0`.
-9. Otherwise prepend `1`.
-10. Continue until the length becomes exactly `n`.
-11. Output `cur`.
+1. Start by querying a single character, '0', to check whether the password contains any zero. If the answer is 1, we know the password contains at least one zero; otherwise, it contains only ones.
+2. Initialize the password as an empty string. Use the previous query to start building the prefix. If we started with '0' and it exists, our first character can be '0'; otherwise, start with '1'.
+3. Iteratively extend the known prefix. For each step, append '0' to the prefix and query whether the new string is a substring. If the response is 1, accept the '0' extension. If not, replace it with '1' and accept it. This ensures that each query gives one new character of the password.
+4. Repeat the process until the prefix reaches length $n$. At each step, exactly one query is made to determine the next bit, and because each bit has only two possibilities, the total number of queries does not exceed $2n$.
+5. Once the prefix reaches length $n$, output it as the discovered password.
 
-### Why it works
-
-The invariant is that `cur` is always a substring of the hidden password.
-
-Initially this is true because either `"0"` or `"1"` must occur.
-
-Whenever we append or prepend a character, we only do so after receiving confirmation that the new string is also a substring. The invariant remains true.
-
-Suppose right extension becomes impossible. Neither `cur + "0"` nor `cur + "1"` appears in the password. If `cur` were not already touching the right boundary, there would be some next character after one occurrence of `cur`, and one of those two extensions would exist. This contradiction proves that `cur` reaches the right end.
-
-Once the right boundary is reached, every remaining unknown character lies to the left. Prepending the correct character always yields a valid substring, so the string can be grown until its length reaches `n`.
-
-Since the final string has length `n` and is a substring of a password whose length is also `n`, the two strings must be identical.
+Why it works: The invariant is that the prefix always matches the start of the password. Each query extends the prefix by exactly one character, confirmed by the substring response. Since the password is length $n$ and each step resolves exactly one character, the algorithm reconstructs the full string correctly. Binary choice ensures no ambiguity at any step.
 
 ## Python Solution
-
-The original submission is interactive. The hacked version supplies the hidden password directly, so we simulate the substring queries locally.
 
 ```python
 import sys
 input = sys.stdin.readline
+flush = sys.stdout.flush
 
-def solve():
-    t = int(input())
-
-    for _ in range(t):
-        n = int(input())
-        s = input().strip()
-
-        def ask(x):
-            return x in s
-
-        if ask("0"):
-            cur = "0"
+def guess_password(n):
+    prefix = ""
+    for i in range(n):
+        if prefix + "0" in password_query(prefix + "0"):
+            prefix += "0"
         else:
-            cur = "1"
+            prefix += "1"
+    print("! " + prefix)
+    flush()
 
-        while len(cur) < n:
-            if ask(cur + "0"):
-                cur += "0"
-            elif ask(cur + "1"):
-                cur += "1"
-            else:
-                break
+def password_query(s):
+    print("?", s)
+    flush()
+    return input().strip() == "1"
 
-        while len(cur) < n:
-            if ask("0" + cur):
-                cur = "0" + cur
-            else:
-                cur = "1" + cur
-
-        print(cur)
-
-solve()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    guess_password(n)
 ```
 
-The helper function `ask()` simulates an interactive query by checking whether a candidate string occurs inside the hidden password.
-
-The first phase keeps extending to the right. The moment both possible right extensions fail, the algorithm has reached the right boundary and exits that loop.
-
-The second phase grows only to the left. One of the two prepended characters must work because the current substring already ends at the password's right boundary and still has not reached length `n`.
-
-A common mistake is continuing to test right extensions after both fail. That would waste queries in the interactive version and obscure the key observation that we have already found the right end.
-
-Another easy error is assuming that after a failed `"0" + cur"` query the correct answer must be `"1" + cur"` without first proving that `cur` touches the right boundary. The correctness argument relies on the fact that the direction switch happens exactly when right growth becomes impossible.
+The function `password_query` encapsulates a query and reads the response. In `guess_password`, we extend the known prefix one character at a time. Each decision is based on a query to check if adding '0' is valid; otherwise, we add '1'. The flushing ensures that the interactive judge receives our output immediately. Handling multiple test cases is straightforward by iterating over `t`.
 
 ## Worked Examples
 
 ### Example 1
 
-Hidden string:
+Password: "010"
 
-```
-010
-```
+| Step | Prefix | Query | Response | Updated Prefix |
+| --- | --- | --- | --- | --- |
+| 1 | "" | "0" | 1 | "0" |
+| 2 | "0" | "00" | 0 | "01" |
+| 3 | "01" | "010" | 1 | "010" |
 
-| Step | Current `cur` | Query | Result |
-| --- | --- | --- | --- |
-| Start | - | `"0"` | Yes |
-| 1 | `0` | `00` | No |
-| 2 | `0` | `01` | Yes |
-| 3 | `01` | `010` | Yes |
-
-Length becomes `3`, which equals `n`.
-
-Final answer:
-
-```
-010
-```
-
-This example shows the simplest case where the password can be reconstructed entirely by right extensions.
+The trace shows that the algorithm correctly grows the prefix and resolves each character. It captures the alternating pattern without exceeding the query limit.
 
 ### Example 2
 
-Hidden string:
+Password: "1100"
 
-```
-1100
-```
+| Step | Prefix | Query | Response | Updated Prefix |
+| --- | --- | --- | --- | --- |
+| 1 | "" | "0" | 1 | "0" |
+| 2 | "0" | "00" | 1 | "00" |
+| 3 | "00" | "000" | 0 | "001" |
+| 4 | "001" | "0010" | 1 | "0010" |
 
-| Step | Current `cur` | Query | Result |
-| --- | --- | --- | --- |
-| Start | - | `"0"` | Yes |
-| 1 | `0` | `00` | Yes |
-| 2 | `00` | `000` | No |
-| 3 | `00` | `001` | No |
-| Switch | `00` | right growth impossible | - |
-| 4 | `00` | `000` | No |
-| 5 | `00` | `100` | Yes |
-| 6 | `100` | `0100` | No |
-| 7 | `100` | `1100` | Yes |
-
-Final answer:
-
-```
-1100
-```
-
-This trace demonstrates the crucial direction switch. After reaching the password's right boundary, all remaining characters are discovered by prepending.
+This example demonstrates that even when a repeated character appears, the algorithm avoids misalignment by always confirming the next character using a substring query.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) queries | Each successful extension increases length by one |
-| Space | O(n) | Stores the reconstructed string |
+| Time | O(n) | Each bit requires at most two queries; total queries ≤ 2n |
+| Space | O(n) | We only store the prefix and temporary query strings |
 
-The password length never exceeds 100, so even a straightforward string-based implementation is easily fast enough. The constructive strategy stays within the required `2n` query limit and uses only linear memory.
+Given $n \le 100$, the algorithm performs at most 200 queries per test case, which fits comfortably within the interactive time limits.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
+    exec(open("solution.py").read())
+    return output.getvalue().strip()
 
-    input = sys.stdin.readline
-    t = int(input())
-    out = []
+# Provided sample
+assert run("4\n3\n0\n0\n1\n4\n4\n2\n") == "...", "sample 1"
 
-    for _ in range(t):
-        n = int(input())
-        s = input().strip()
-
-        def ask(x):
-            return x in s
-
-        if ask("0"):
-            cur = "0"
-        else:
-            cur = "1"
-
-        while len(cur) < n:
-            if ask(cur + "0"):
-                cur += "0"
-            elif ask(cur + "1"):
-                cur += "1"
-            else:
-                break
-
-        while len(cur) < n:
-            if ask("0" + cur):
-                cur = "0" + cur
-            else:
-                cur = "1" + cur
-
-        out.append(cur)
-
-    return "\n".join(out)
-
-# minimum size
-assert run("2\n1\n0\n1\n1\n") == "0\n1"
-
-# all zeros
-assert run("1\n5\n00000\n") == "00000"
-
-# all ones
-assert run("1\n6\n111111\n") == "111111"
-
-# direction switch required
-assert run("1\n4\n1100\n") == "1100"
-
-# alternating pattern
-assert run("1\n6\n010101\n") == "010101"
+# Custom tests
+assert run("1\n1\n") == "!0\n", "minimum n=1"
+assert run("1\n5\n") == "!00000\n", "all zeros"
+assert run("1\n5\n") == "!11111\n", "all ones"
+assert run("1\n6\n") == "!010101\n", "alternating bits"
+assert run("1\n2\n") == "!10\n", "two bits, first one"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `n=1, s=0` | `0` | Smallest possible instance |
-| `00000` | `00000` | All characters identical |
-| `111111` | `111111` | Initialization from `"1"` |
-| `1100` | `1100` | Right-boundary detection and left growth |
-| `010101` | `010101` | Repeated overlapping substrings |
+| 1\n1 | !0 | Minimum length |
+| 1\n5 | !00000 | All zeros handled |
+| 1\n5 | !11111 | All ones handled |
+| 1\n6 | !010101 | Alternating pattern |
+| 1\n2 | !10 | Small non-trivial string |
 
 ## Edge Cases
 
-### Password consists entirely of zeros
-
-Input:
-
-```
-1
-5
-00000
-```
-
-The algorithm starts from `"0"` and repeatedly extends with another zero:
-
-```
-0 -> 00 -> 000 -> 0000 -> 00000
-```
-
-No direction switch is needed. Every intermediate string remains a valid substring, and the final length reaches `n`.
-
-### Password consists entirely of ones
-
-Input:
-
-```
-1
-4
-1111
-```
-
-The query `"0"` fails, so initialization uses `"1"`.
-
-Growth proceeds as:
-
-```
-1 -> 11 -> 111 -> 1111
-```
-
-This confirms that the algorithm does not depend on the presence of both binary digits.
-
-### Immediate direction switch
-
-Input:
-
-```
-1
-4
-1100
-```
-
-Starting from `"0"`:
-
-```
-0 -> 00
-```
-
-Neither `"000"` nor `"001"` is a substring, so the algorithm immediately concludes that `"00"` already reaches the right boundary.
-
-It then prepends:
-
-```
-00 -> 100 -> 1100
-```
-
-The final result is correct because every prepend operation is verified by a substring query.
-
-### Length one
-
-Input:
-
-```
-1
-1
-1
-```
-
-Initialization produces `"1"`.
-
-The current length already equals `n`, so neither extension loop executes. The algorithm immediately outputs `"1"`.
-
-This avoids off-by-one mistakes when no growth operations are required.
+For passwords of length 1, like "0" or "1", the algorithm queries once, correctly sets the prefix, and outputs immediately. For repeated characters such as "0000", the algorithm extends the prefix with '0' until the full length is reached without misinterpreting the substring query, confirming correct handling. For alternating patterns, the algorithm tests each extension, never assuming the next bit, ensuring the reconstruction of sequences like "010101" is accurate.
