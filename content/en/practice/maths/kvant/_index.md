@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1553 solved, 58 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1554 solved, 58 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1553
+kvant_total: 1554
 kvant_verified: 58
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1553 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 58 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1554 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 58 solutions have been independently verified.
 
 ## 1970
 
@@ -3309,7 +3309,7 @@ draft: false
 
 ## 2026
 
-9 problems across Issues 1–3.
+10 problems across Issues 1–3.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2026_1/)
 
@@ -3333,5 +3333,6 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [2884](2884.md) *All-Russian Mathematics Olympiad (LII, Regional Round)*. The task is to determine the smallest integer $k$ such that, after adaptive subset queries with a binary oracle that may err but never on two consecutive days, the Wizard can always guarantee that at… |  | 12m31s |
 | [2885](2885.md) *All-Russian Olympiad of School Students in Mathematics (LII, regional stage)*. Each vertex is incident to exactly two red edges, so the red edges form a $2$-regular subgraph of the edge graph of the polyhedron. |  | 9m35s |
 
