@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1500 solved, 41 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1522 solved, 48 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1500
-kvant_verified: 41
+kvant_total: 1522
+kvant_verified: 48
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1500 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 41 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1522 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 48 solutions have been independently verified.
 
 ## 1970
 
@@ -2976,7 +2976,7 @@ draft: false
 
 ## 1995
 
-35 problems across Issues 1–6, 8 verified.
+36 problems across Issues 1–6, 8 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -3039,13 +3039,14 @@ draft: false
 | [1524](1524.md) Let the incenters of the triangles $ABP$, $BCP$, $CDP$, $DAP$ be $X,Y,Z,W$ respectively. |  | 12m20s |
 | [1525](1525.md) *International Mathematical Olympiad for School Students (XXXVI)*. Place the four collinear points on the $x$ axis as | ✓ | 9m04s |
 | [1526](1526.md) *International Mathematical Olympiad for School Students (XXXVI)*. The condition $abc=1$ suggests eliminating one variable from denominators by rewriting powers of $a,b,c$ in terms of the other two variables. |  | 9m34s |
+| [1527](1527.md) *International Mathematical Olympiad for School Students (XXXVI)*. We shall prove that the only integer $n>3$ for which a configuration of points $A_1,\\dots,A_n$ and real numbers $r_1,\\dots,r_n$ satisfying the problem conditions exists is |  | 27m53s |
 | [1528](1528.md) *International Mathematical Olympiad for School Students (XXXVI)*. The relation |  | 10m47s |
 | [1529](1529.md) *International Mathematical Olympiad for School Students (XXXVI)*. The equalities |  | 8m28s |
 | [1530](1530.md) *International Mathematical Olympiad of School Students (XXXVI)*. Numbers $1,2,\\dots,2p$ split into residue classes modulo $p$ as |  | 9m31s |
 
 ## 1996
 
-10 problems across Issues 1–5, 1 verified.
+23 problems across Issues 1–5, 6 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
@@ -3055,26 +3056,44 @@ draft: false
 | [1532](1532.md) ``` |  | 12m17s |
 | [1533](1533.md) *N. B. Vasilyev*. Let $\\ell$ be a line through $C$. |  | 28m24s |
 
+### [Issue 2](https://www.kvant.digital/view/kvant_1996_2/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [1536](1536.md) *V. V. Proizvolov*. This is a construction and existence problem. |  | 22m55s |
+
 ### [Issue 4](https://www.kvant.digital/view/kvant_1996_4/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1551](1551.md) *Moscow LIX Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. A closed broken line with six segments is a hexagonal cycle whose six vertices lie on one circle. | ✓ | 9m50s |
+| [1552](1552.md) *59th Moscow Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. The polynomial $P_n(x)=1+x+\\cdots+x^{n-1}$ satisfies | ✓ | 22m50s |
+| [1553](1553.md) I cannot produce a mathematical solution to Kvant M1553 because the problem statement itself is missing. | ✓ | 21m42s |
+| [1554](1554.md) *Moscow 59th Mathematical Olympiad, 1996, Tournament of the Cities (spring, 1996)*. Consider a triangle $ABC$ with outward squares $ABMN$, $BCKL$, and $ACPQ$ constructed on its sides. | ✓ | 21m |
+| [1555](1555.md) *Moscow 59th Mathematical Olympiad, Tournament of Towns (Spring 1996)*. Let the circles be $\\omega_1$ and $\\omega_2$, with tangency points from $P$ to $\\omega_1$ equal to $A,B$ and to $\\omega_2$ equal to $C,D$, so that $PA=PB$ and $PC=PD$. |  | 20m51s |
 | [1556](1556.md) Working |  | 31m40s |
 | [1557](1557.md) *Moscow LIX Mathematical Olympiad 1996, Tournament of Towns (Spring, 1996)*. Let $O$ be the center of the given circle. |  | 9m57s |
 | [1558](1558.md) Consider the game on small chessboards to observe patterns. |  | 8m44s |
 | [1559](1559.md) *59th Moscow Mathematical Olympiad (1996), Tournament of Towns (Spring 1996)*. Let the given plane be $\\Pi$. |  | 9m11s |
+| [1560](1560.md) *59th Moscow Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. Consider the population as a finite set of $N$ individuals arranged along a circle. |  | 24m56s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1996_5/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1561](1561.md) *All-Russian Mathematical Olympiad for School Students (1996)*. Let the convex polygon be $A_1A_2\\ldots A_n$, indexed cyclically. |  | 9m22s |
+| [1562](1562.md) *All-Russian Mathematical Olympiad for School Students (1996)*. We are asked whether a $5\\times7$ rectangle can be covered by L-trominoes in several layers so that each cell of the rectangle is covered by the same number of cells from the trominoes. |  | 27m44s |
+| [1563](1563.md) *All-Russian Mathematical Olympiad for School Students (1996)*. For $n=0$, the condition is | ✓ | 8m28s |
+| [1564](1564.md) *All-Russian School Mathematics Olympiad (1996)*. Let | ✓ | 15m45s |
+| [1565](1565.md) *All-Russian Mathematical Olympiad for School Students (1996)*. A query chooses 50 of the 100 elements and reveals their induced linear order, which determines all pairwise comparisons inside the chosen set. |  | 18m55s |
 | [1566](1566.md) *All-Russian Mathematical Olympiad for School Students (1996)*. Each committee has $80$ members, and there are $16000$ committees. |  | 8m01s |
+| [1568](1568.md) *All-Russian Mathematical Olympiad for School Students (1996)*. This is a Type B problem. |  | 27m35s |
+| [1569](1569.md) Working |  | 24m01s |
+| [1570](1570.md) *Soros Mathematical Olympiad*. Consider three pairs of diametrically opposite points on a sphere, denoted $A, A'$, $B, B'$, $C, C'$, where $O$ is the center of the sphere. |  | 20m58s |
 
 ## 1997
 
-3 problems across Issues 1–3.
+6 problems across Issues 1–3, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1997_1/)
 
@@ -3086,8 +3105,61 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1591](1591.md) *Tournament of the Towns (spring, 1997)*. Let $BL$ be the internal angle bisector at $B$ meeting $AC$ at $L$, and $AK$ be the internal angle bisector at $A$ meeting $BC$ at $K$. | ✓ | 17m12s |
 | [1592](1592.md) *Tournament of Cities (spring, 1997)*. Let integers $a \\le b$ be such that the required sum is |  | 3m46s |
+| [1593](1593.md) *Tournament of Towns (Spring 1997)*. Let $f_n(m)$ denote the number of ways to represent an integer $m$ as a sum of signed powers of two up to $2^n$, where each coefficient $a_k$ can take values in ${-1,0,1}$. |  | 16m22s |
 | [1594](1594.md) The functional equation is |  | 10m08s |
+| [1595](1595.md) *City Tournament (spring, 1997)*. Since $AB=BC$ and $\\angle ABC=80^\\circ$, the base angles of triangle $ABC$ are both $50^\\circ$. | ✓ | 23m46s |
+
+## 2011
+
+1 problems across Issue 3.
+
+### [Issue 3](https://www.kvant.digital/view/kvant_2011_3/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2226](2226.md) Let $A(k,n)$ denote the number of integer $k$-tuples $(x_1,\\dots,x_k)$ satisfying the inequality |  | 24m33s |
+
+## 2016
+
+1 problems across Issue 5.
+
+### [Issue 5](https://www.kvant.digital/view/kvant_2016_5/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2445](2445.md) *International Mathematical Olympiad (57th)*. Let $A_{k+1} = A_1$, and let $q = p^t$ be an arbitrary prime power dividing the odd integer $n$. |  | 33m36s |
+
+## 2018
+
+1 problems across Issue 1.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_2018_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2496](2496.md) Consider a finite set of $n$ cities in the plane, with $n$ odd, such that all pairwise distances between cities are distinct. |  | 26m37s |
+
+## 2019
+
+1 problems across Issue 9.
+
+### [Issue 9](https://www.kvant.digital/view/kvant_2019_9/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2576](2576.md) *A.P. Savin Tournament (25th)*. The problem concerns tilings of an $8\\times8$ board with dominoes of size $1\\times2$ (horizontal) or $2\\times1$ (vertical). |  | 28m32s |
+
+## 2020
+
+1 problems across Issue 11.
+
+### [Issue 11](https://www.kvant.digital/view/kvant_2020_11/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2632](2632.md) Working |  | 32m22s |
 
 ## 2023
 
