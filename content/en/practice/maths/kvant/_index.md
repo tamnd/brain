@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1541 solved, 55 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1544 solved, 57 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1541
-kvant_verified: 55
+kvant_total: 1544
+kvant_verified: 57
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1541 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 55 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1544 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 57 solutions have been independently verified.
 
 ## 1970
 
@@ -3229,7 +3229,7 @@ draft: false
 
 ## 2025
 
-23 problems across Issues 1–11, 6 verified.
+26 problems across Issues 1–11, 8 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3282,12 +3282,14 @@ draft: false
 |---|---------|---|------|
 | [2858](2858.md) Consider a tree with $n$ vertices, each initially containing a single chip. | ✓ | 20m14s |
 | [2859](2859.md) Assume that a function $f:\\mathbb R\\to\\mathbb R$ satisfies | ✓ | 11m34s |
+| [2860](2860.md) Consider the problem of determining whether both sums | ✓ | 30m15s |
 | [2861](2861.md) The configuration contains two coupled constructions on the base line $BC$ and two circumcenter loci attached to triangles $NEC$ and $MFB$. |  | 23m40s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_2025_10/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [2862](2862.md) Consider the equation |  | 28m26s |
 | [2863](2863.md) The configuration is a complete quadrilateral formed by the four lines $AB, BC, CD, DA$. |  | 10m17s |
 | [2864](2864.md) *Based on an Iranian Olympiad problem.*. The arrangement of the lines is a simple arrangement: every pair of lines intersects and no three are concurrent. |  | 11m44s |
 | [2865](2865.md) The operation in every part is a conditional transposition: two entries are swapped exactly when the larger stands to the left. |  | 2m20s |
@@ -3296,6 +3298,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [2866](2866.md) *South Russian Mathematical Olympiad “Assara” (IV)*. The problem asks whether the integers from $1$ through $127$ can be divided into two groups such that the sum of the products of the numbers in each group ends with exactly ten zeros or exactly thirty… | ✓ | 30m37s |
 | [2867](2867.md) *Tournament of the Towns (XLVII)*. Label the people around the circle as a cyclic sequence of 60 vertices, each colored either $B$ (boy) or $G$ (girl), with exactly 30 of each color. |  | 7m56s |
 | [2868](2868.md) *Tournament of Cities (XLVII)*. We are asked whether Vasya can determine the total sum of 60 real numbers written on cards if he is allowed to ask about sums of 17-card subsets. |  | 34m43s |
 
