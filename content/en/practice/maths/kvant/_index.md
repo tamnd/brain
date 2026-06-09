@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1539 solved, 54 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1540 solved, 55 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1539
-kvant_verified: 54
+kvant_total: 1540
+kvant_verified: 55
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1539 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 54 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1540 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 55 solutions have been independently verified.
 
 ## 1970
 
@@ -3229,7 +3229,7 @@ draft: false
 
 ## 2025
 
-21 problems across Issues 1–11, 5 verified.
+22 problems across Issues 1–11, 6 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3280,6 +3280,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [2858](2858.md) Consider a tree with $n$ vertices, each initially containing a single chip. | ✓ | 20m14s |
 | [2859](2859.md) Assume that a function $f:\\mathbb R\\to\\mathbb R$ satisfies | ✓ | 11m34s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_2025_10/)
