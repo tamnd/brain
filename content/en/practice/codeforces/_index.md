@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 926 contests, 5482 problems, 2640 verified."
+description: "Codeforces problem solutions with full editorial. 927 contests, 5494 problems, 2644 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**926 contests, 5482 problems, 2640 verified.**
+**927 contests, 5494 problems, 2644 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1666](1666/) | [2021-2022 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1666) | ICPC/IOI | 900-3500 | 4/12 | 30m 21s |
 | [1667](1667/) | [Codeforces Round 783 (Div. 1)](https://codeforces.com/contest/1667) | Div. 1 | 1300-3500 | 2/6 | 18m 33s |
 | [1668](1668/) | [Codeforces Round 783 (Div. 2)](https://codeforces.com/contest/1668) | Div. 2 | 800-900 | 0/2 | 4m 15s |
 | [1669](1669/) | [Codeforces Round 784 (Div. 4)](https://codeforces.com/contest/1669) | Div. 4 | 800-1300 | 7/8 | 18m 23s |
