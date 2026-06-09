@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 852 contests, 5066 problems, 2484 verified."
+description: "Codeforces problem solutions with full editorial. 853 contests, 5083 problems, 2485 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -9,13 +9,11 @@ draft: false
 
 # Codeforces Solutions
 
-Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
+Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**852 contests, 5066 problems, 2484 verified.**
+**853 contests, 5083 problems, 2485 verified.**
 
-## 2010 — 51 contests, 271 problems, 230 verified
-
-| # | Contest | Problems | Verified | Type | Difficulty |
+| Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
 | [1](1/) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 10m 36s |
 | [2](2/) | [Codeforces Beta Round 2](https://codeforces.com/contest/2) | Beta | 1500-2600 | 2/3 | 5m 52s |
@@ -92,7 +90,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [73](73/) | [Codeforces Beta Round 66](https://codeforces.com/contest/73) | Beta | 1600-2900 | 6/6 | 12m 59s |
 | [74](74/) | [Codeforces Beta Round 68](https://codeforces.com/contest/74) | Beta | 1000-2800 | 4/5 | 22m 53s |
 | [75](75/) | [Codeforces Beta Round 67 (Div. 2)](https://codeforces.com/contest/75) | Div. 2 | 1000-2400 | 4/5 | 9m 31s |
-| [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 1700-2700 | 5/6 | 12m 33s |
+| [76](76/) | [All-Ukrainian School Olympiad in Informatics](https://codeforces.com/contest/76) | Special | 1700-2700 | 4/6 | 9m 50s |
 | [77](77/) | [Codeforces Beta Round 69 (Div. 1 Only)](https://codeforces.com/contest/77) | Div. 1 | 1400-2800 | 2/5 | 11m 16s |
 | [78](78/) | [Codeforces Beta Round 70 (Div. 2)](https://codeforces.com/contest/78) | Div. 2 | 800-2300 | 4/5 | 12m 16s |
 | [79](79/) | [Codeforces Beta Round 71](https://codeforces.com/contest/79) | Beta | 1200-2900 | 5/5 | 7m 45s |
@@ -250,12 +248,12 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [238](238/) | [Codeforces Round 148 (Div. 1)](https://codeforces.com/contest/238) | Div. 1 | 1300-2900 | 4/5 | 16m 8s |
 | [239](239/) | [Codeforces Round 148 (Div. 2)](https://codeforces.com/contest/239) | Div. 2 | 1200-1500 | 1/2 | 4m 55s |
 | [240](240/) | [Codeforces Round 145 (Div. 1, ACM-ICPC Rules)](https://codeforces.com/contest/240) | Div. 1 | 2600-2800 | 2/2 | 3m 3s |
-| [241](241/) | [Bayan 2012-2013 Elimination Round (ACM ICPC Rules, English statements)](https://codeforces.com/contest/241) | ICPC/IOI | 1900-2900 | 3/4 | 7m 47s |
+| [241](241/) | [Bayan 2012-2013 Elimination Round (ACM ICPC Rules, English statements)](https://codeforces.com/contest/241) | ICPC/IOI | 1300-2900 | 4/7 | 12m 49s |
 | [242](242/) | [Codeforces Round 149 (Div. 2)](https://codeforces.com/contest/242) | Div. 2 | 1100-2100 | 3/5 | 12m 58s |
 | [243](243/) | [Codeforces Round 150 (Div. 1)](https://codeforces.com/contest/243) | Div. 1 | 1600-3000 | 2/5 | 11m 4s |
 | [244](244/) | [Codeforces Round 150 (Div. 2)](https://codeforces.com/contest/244) | Div. 2 | 900-1600 | 1/2 | 4m 21s |
 | [245](245/) | [CROC-MBTU 2012, Elimination Round (ACM-ICPC)](https://codeforces.com/contest/245) | ICPC/IOI | 800-2200 | 8/8 | 18m 42s |
-| [246](246/) | [Codeforces Round 151 (Div. 2)](https://codeforces.com/contest/246) | Div. 2 | 900-1600 | 3/3 | 4m 21s |
+| [246](246/) | [Codeforces Round 151 (Div. 2)](https://codeforces.com/contest/246) | Div. 2 | 900-2400 | 5/5 | 6m 57s |
 | [248](248/) | [Codeforces Round 152 (Div. 2)](https://codeforces.com/contest/248) | Div. 2 | 800-2600 | 3/5 | 11m 52s |
 | [249](249/) | [Codeforces Round 152 (Div. 1)](https://codeforces.com/contest/249) | Div. 1 | 2600-2700 | 0/2 | 5m 24s |
 | [250](250/) | [CROC-MBTU 2012, Final Round (Online version, Div. 2)](https://codeforces.com/contest/250) | Div. 2 | 1000-2000 | 2/5 | 11m 54s |
@@ -269,9 +267,9 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [258](258/) | [Codeforces Round 157 (Div. 1)](https://codeforces.com/contest/258) | Div. 1 | 1100-2600 | 3/5 | 8m 42s |
 | [259](259/) | [Codeforces Round 157 (Div. 2)](https://codeforces.com/contest/259) | Div. 2 | 1000-1100 | 2/2 | 4m 51s |
 | [260](260/) | [Codeforces Round 158 (Div. 2)](https://codeforces.com/contest/260) | Div. 2 | 1400-2500 | 1/5 | 10m 33s |
-| [261](261/) | [Codeforces Round 160 (Div. 1)](https://codeforces.com/contest/261) | Div. 1 | 1400-2800 | 3/3 | 6m 1s |
-| [262](262/) | [Codeforces Round 160 (Div. 2)](https://codeforces.com/contest/262) | Div. 2 | 800-800 | 0/1 | 3m 6s |
-| [263](263/) | [Codeforces Round 161 (Div. 2)](https://codeforces.com/contest/263) | Div. 2 | 800-2000 | 1/3 | 5m 38s |
+| [261](261/) | [Codeforces Round 160 (Div. 1)](https://codeforces.com/contest/261) | Div. 1 | 1400-2800 | 3/5 | 10m 32s |
+| [262](262/) | [Codeforces Round 160 (Div. 2)](https://codeforces.com/contest/262) | Div. 2 | 800-1200 | 0/2 | 10m 32s |
+| [263](263/) | [Codeforces Round 161 (Div. 2)](https://codeforces.com/contest/263) | Div. 2 | 800-2500 | 1/5 | 14m 52s |
 | [264](264/) | [Codeforces Round 162 (Div. 1)](https://codeforces.com/contest/264) | Div. 1 | 1200-3000 | 2/5 | 10m 5s |
 | [265](265/) | [Codeforces Round 162 (Div. 2)](https://codeforces.com/contest/265) | Div. 2 | 800-1000 | 1/2 | 2m 41s |
 | [266](266/) | [Codeforces Round 163 (Div. 2)](https://codeforces.com/contest/266) | Div. 2 | 800-2500 | 3/5 | 8m 11s |
@@ -325,7 +323,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [325](325/) | [MemSQL start[c]up Round 1](https://codeforces.com/contest/325) | Special | 1500-2900 | 3/5 | 11m 24s |
 | [327](327/) | [Codeforces Round 191 (Div. 2)](https://codeforces.com/contest/327) | Div. 2 | 1200-2300 | 4/5 | 8m 20s |
 | [328](328/) | [Testing Round 8](https://codeforces.com/contest/328) | Special | 1500-1800 | 0/2 | 3m 11s |
-| [329](329/) | [Codeforces Round 192 (Div. 1)](https://codeforces.com/contest/329) | Div. 1 | 1500-3100 | 3/5 | 12m 25s |
+| [329](329/) | [Codeforces Round 192 (Div. 1)](https://codeforces.com/contest/329) | Div. 1 | 1500-2500 | 3/5 | 10m 40s |
 | [330](330/) | [Codeforces Round 192 (Div. 2)](https://codeforces.com/contest/330) | Div. 2 | 800-1300 | 1/2 | 3m 29s |
 | [331](331/) | [ABBYY Cup 3.0 - Finals (online version)](https://codeforces.com/contest/331) | Special | 1100-3100 | 8/12 | 19m 20s |
 | [332](332/) | [Codeforces Round 193 (Div. 2)](https://codeforces.com/contest/332) | Div. 2 | 1300-2400 | 2/5 | 9m |
@@ -432,6 +430,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1744](1744/) | [Codeforces Round  828 (Div. 3)](https://codeforces.com/contest/1744) | Div. 3 | 800-2000 | 3/7 | 28m 8s |
 | [1746](1746/) | [Codeforces Global Round 23](https://codeforces.com/contest/1746) | Global | 800-3500 | 0/8 | 20m 46s |
 | [1747](1747/) | [Codeforces Round 832 (Div. 2)](https://codeforces.com/contest/1747) | Div. 2 | 800-2900 | 2/5 | 20m 27s |
 | [1748](1748/) | [Codeforces Round 833 (Div. 2)](https://codeforces.com/contest/1748) | Div. 2 | 800-3000 | 2/6 | 13m 46s |
@@ -617,7 +616,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1945](1945/) | [Codeforces Round 935 (Div. 3)](https://codeforces.com/contest/1945) | Div. 3 | 800-2600 | 5/8 | 9m 25s |
 | [1946](1946/) | [Codeforces Round 936 (Div. 2)](https://codeforces.com/contest/1946) | Div. 2 | 800-2500 | 3/6 | 10m 45s |
 | [1948](1948/) | [Educational Codeforces Round 163 (Rated for Div. 2)](https://codeforces.com/contest/1948) | Div. 2 | 800-3100 | 5/7 | 10m 51s |
-| [1949](1949/) | [European Championship 2024 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1949) | ICPC/IOI | 1500-3300 | 5/11 | 28m 1s |
+| [1949](1949/) | [European Championship 2024 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1949) | ICPC/IOI | 1500-3300 | 4/11 | 26m 7s |
 | [1950](1950/) | [Codeforces Round 937 (Div. 4)](https://codeforces.com/contest/1950) | Div. 4 | 800-1900 | 6/7 | 7m 41s |
 | [1951](1951/) | [Codeforces Global Round 25](https://codeforces.com/contest/1951) | Global | 900-3200 | 1/9 | 11m 49s |
 | [1952](1952/) | [April Fools Day Contest 2024](https://codeforces.com/contest/1952) | April Fools | - | 5/10 | 10m 54s |
@@ -732,7 +731,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2073](2073/) | [2025 ICPC Asia Pacific Championship - Online Mirror (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/2073) | ICPC/IOI | 1300-3500 | 3/13 | 8m 55s |
 | [2074](2074/) | [Codeforces Round 1009 (Div. 3)](https://codeforces.com/contest/2074) | Div. 3 | 800-2100 | 4/7 | 10m 28s |
 | [2075](2075/) | [Educational Codeforces Round 176 (Rated for Div. 2)](https://codeforces.com/contest/2075) | Div. 2 | 800-3000 | 1/6 | 9m 36s |
-| [2077](2077/) | [Codeforces Round 1008 (Div. 1)](https://codeforces.com/contest/2077) | Div. 1 | 1500-3500 | 2/7 | 11m 14s |
+| [2077](2077/) | [Codeforces Round 1008 (Div. 1)](https://codeforces.com/contest/2077) | Div. 1 | 1500-3500 | 2/7 | 9m 25s |
 | [2078](2078/) | [Codeforces Round 1008 (Div. 2)](https://codeforces.com/contest/2078) | Div. 2 | 800-2700 | 3/7 | 11m 26s |
 | [2079](2079/) | [XIX Open Olympiad in Informatics - Final Stage, Day 1 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2079) | ICPC/IOI | 1800-3300 | 3/4 | 3m 34s |
 | [2080](2080/) | [XIX Open Olympiad in Informatics - Final Stage, Day 2 (Unrated, Online Mirror, IOI rules)](https://codeforces.com/contest/2080) | ICPC/IOI | 1700-3400 | 2/4 | 3m 2s |
@@ -771,12 +770,12 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2118](2118/) | [Codeforces Round 1030 (Div. 2)](https://codeforces.com/contest/2118) | Div. 2 | 800-3100 | 1/7 | 12m 28s |
 | [2119](2119/) | [Codeforces Round 1035 (Div. 2)](https://codeforces.com/contest/2119) | Div. 2 | 800-3300 | 2/6 | 9m 21s |
 | [2120](2120/) | [Codeforces Round 1033 (Div. 2) and CodeNite 2025](https://codeforces.com/contest/2120) | Div. 2 | 800-3000 | 3/7 | 13m 11s |
-| [2121](2121/) | [Codeforces Round 1032 (Div. 3)](https://codeforces.com/contest/2121) | Div. 3 | 800-2300 | 4/8 | 13m 18s |
+| [2121](2121/) | [Codeforces Round 1032 (Div. 3)](https://codeforces.com/contest/2121) | Div. 3 | 800-1900 | 4/8 | 11m 48s |
 | [2122](2122/) | [Order Capital Round 1 (Codeforces Round 1038, Div. 1 + Div. 2)](https://codeforces.com/contest/2122) | Div. 1+2 | 800-3400 | 2/7 | 12m 47s |
 | [2123](2123/) | [Codeforces Round 1034 (Div. 3)](https://codeforces.com/contest/2123) | Div. 3 | 800-2100 | 2/7 | 12m 37s |
 | [2124](2124/) | [EPIC Institute of Technology Round Summer 2025 (Codeforces Round 1036, Div. 1 + Div. 2)](https://codeforces.com/contest/2124) | Div. 1+2 | 800-3500 | 0/10 | 16m 17s |
 | [2125](2125/) | [Educational Codeforces Round 181 (Rated for Div. 2)](https://codeforces.com/contest/2125) | Div. 2 | 800-3000 | 3/6 | 10m 7s |
-| [2126](2126/) | [Codeforces Round 1037 (Div. 3)](https://codeforces.com/contest/2126) | Div. 3 | 800-2400 | 6/8 | 11m 34s |
+| [2126](2126/) | [Codeforces Round 1037 (Div. 3)](https://codeforces.com/contest/2126) | Div. 3 | 800-2400 | 5/8 | 9m 25s |
 | [2127](2127/) | [Atto Round 1 (Codeforces Round 1041, Div. 1 + Div. 2)](https://codeforces.com/contest/2127) | Div. 1+2 | 800-3500 | 2/9 | 21m 47s |
 | [2128](2128/) | [Codeforces Round 1039 (Div. 2)](https://codeforces.com/contest/2128) | Div. 2 | 800-3200 | 2/7 | 14m 46s |
 | [2129](2129/) | [Codeforces Round 1040 (Div. 1)](https://codeforces.com/contest/2129) | Div. 1 | 1300-3500 | 2/9 | 17m 30s |
@@ -834,9 +833,9 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2183](2183/) | [Hello 2026](https://codeforces.com/contest/2183) | Special | 800-3500 | 0/11 | 23m 31s |
 | [2184](2184/) | [Codeforces Round 1072 (Div. 3)](https://codeforces.com/contest/2184) | Div. 3 | 800-1900 | 3/7 | 16m 4s |
 | [2185](2185/) | [Codeforces Round 1074 (Div. 4)](https://codeforces.com/contest/2185) | Div. 4 | 800-2500 | 4/8 | 19m 7s |
-| [2187](2187/) | [Codeforces Round 1077 (Div. 1)](https://codeforces.com/contest/2187) | Div. 1 | 1300-3500 | 1/8 | 22m |
+| [2187](2187/) | [Codeforces Round 1077 (Div. 1)](https://codeforces.com/contest/2187) | Div. 1 | 1300-3500 | 0/8 | 15m 1s |
 | [2188](2188/) | [Codeforces Round 1077 (Div. 2)](https://codeforces.com/contest/2188) | Div. 2 | 800-3500 | 4/7 | 11m 9s |
-| [2189](2189/) | [Codeforces Round 1075 (Div. 2)](https://codeforces.com/contest/2189) | Div. 2 | 800-2800 | 1/8 | 21m 12s |
+| [2189](2189/) | [Codeforces Round 1075 (Div. 2)](https://codeforces.com/contest/2189) | Div. 2 | 800-2800 | 0/8 | 19m 5s |
 | [2190](2190/) | [Codeforces Round 1073 (Div. 1)](https://codeforces.com/contest/2190) | Div. 1 | 1200-3300 | 1/8 | 16m 47s |
 | [2191](2191/) | [Codeforces Round 1073 (Div. 2)](https://codeforces.com/contest/2191) | Div. 2 | 800-3200 | 2/8 | 14m 4s |
 | [2192](2192/) | [Codeforces Round 1081 (Div. 2)](https://codeforces.com/contest/2192) | Div. 2 | 800-2900 | 2/6 | 11m 57s |
@@ -859,7 +858,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [2210](2210/) | [Codeforces Round 1089 (Div. 2)](https://codeforces.com/contest/2210) | Div. 2 | 800-2700 | 2/7 | 17m 52s |
 | [2211](2211/) | [Nebius Round 2 (Codeforces Round 1088, Div. 1 + Div. 2)](https://codeforces.com/contest/2211) | Div. 1+2 | 800-3500 | 2/9 | 17m 58s |
 | [2214](2214/) | [April Fools Day Contest 2026](https://codeforces.com/contest/2214) | April Fools | - | 5/10 | 18m 14s |
-| [2215](2215/) | [Codeforces Round 1092 (Unrated, Div. 1, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2215) | Div. 1 | 1700-3500 | 0/7 | 12m 54s |
+| [2215](2215/) | [Codeforces Round 1092 (Unrated, Div. 1, Based on THUPC 2026 \u2014 Finals)](https://codeforces.com/contest/2215) | Div. 1 | 1700-3500 | 0/7 | 12m 54s |
 | [2216](2216/) | [Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2216) | Div. 2 | 900-2700 | 0/6 | 10m |
 | [2217](2217/) | [Codeforces Round 1091 (Div. 2) and CodeCraft 26](https://codeforces.com/contest/2217) | Div. 2 | 800-2800 | 0/8 | 14m 29s |
 | [2218](2218/) | [Codeforces Round 1090 (Div. 4)](https://codeforces.com/contest/2218) | Div. 4 | 800-1800 | 1/7 | 13m 16s |
