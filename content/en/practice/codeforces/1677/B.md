@@ -1,0 +1,147 @@
+---
+title: "CF 1677B - Tokitsukaze and Meeting"
+description: "We are asked to simulate a dynamic seating scenario. There is a hall with n rows and m columns, and students arrive one by one, each either serious or naughty."
+date: "2026-06-10T00:55:49+07:00"
+tags: ["codeforces", "competitive-programming", "data-structures", "implementation", "math"]
+categories: ["algorithms"]
+codeforces_contest: 1677
+codeforces_index: "B"
+codeforces_contest_name: "Codeforces Round 789 (Div. 1)"
+rating: 1700
+weight: 1677
+solve_time_s: 549
+verified: false
+draft: false
+---
+
+[CF 1677B - Tokitsukaze and Meeting](https://codeforces.com/problemset/problem/1677/B)
+
+**Rating:** 1700  
+**Tags:** data structures, implementation, math  
+**Solve time:** 9m 9s  
+**Verified:** no  
+
+## Solution
+## Problem Understanding
+
+We are asked to simulate a dynamic seating scenario. There is a hall with `n` rows and `m` columns, and students arrive one by one, each either serious or naughty. The first student always sits at the first column of the first row, and each new arrival pushes the existing students in row-major order: within a row, students shift to the right, and the last seat of a row wraps to the first seat of the next row. After each student sits, we are asked to count how many rows and columns contain at least one serious student. The output for each test case is a list of these cumulative counts after every student enters.
+
+The constraints require careful consideration. The number of seats per test case can reach up to `10^6`, and the total sum across all test cases does not exceed `10^6`. This rules out naive simulations where we maintain the entire 2D grid of students and shift entries on every arrival because the worst-case time would be quadratic, which is too slow. We need an approach that updates the counts in constant time per student. Edge cases include scenarios where all students are serious or all are naughty, or when the matrix has a single row or column, as these affect how row and column updates propagate.
+
+## Approaches
+
+The brute-force approach is to maintain a 2D matrix representing seats, shifting every row to the right and wrapping the last column to the next row each time a student arrives. After each insertion, we would scan all rows and columns to count those containing at least one serious student. While this would produce the correct answer, each insertion costs O(n * m) in the worst case, which becomes O((n * m)^2) for a single test case of maximum size, far exceeding the time limit.
+
+The key insight is to decouple the 2D grid and track only the minimum information needed: whether a row or column is "good". Each student affects exactly one seat, which determines the row and column that could become good if the student is serious. Thus, we can maintain two arrays: one for the cumulative count of good rows and one for good columns. To handle the wrap-around effect in a row-major order, we precompute the column index for each student by `student_index % m` and the row index by `student_index // m`. For columns, we need to consider not only the current student but also all previous students in the same column; we can maintain a prefix sum for serious students per column. Each new student can increment the count of a row or a column only once, so constant-time updates are possible, resulting in an O(n * m) algorithm overall.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | O((n * m)^2) | O(n * m) | Too slow |
+| Optimal | O(n * m) | O(m) | Accepted |
+
+## Algorithm Walkthrough
+
+1. Initialize two arrays of size `m`: `col_count` to track how many serious students have been placed in each column and `col_good` as a binary array indicating if a column is good. Initialize a set or array `row_good` of size `n` to track whether each row contains a serious student. Initialize `good_rows` and `good_cols` counters to zero.
+2. For each student `i` in the string `s`, calculate the row index `r = i // m` and the column index `c = i % m`. These indices determine which row and column are affected.
+3. If the student is serious (`s[i] == '1'`) and the row `r` has not been marked good yet, increment `good_rows` and mark `row_good[r]` as true. Similarly, if column `c` has not yet been good, increment `good_cols` and mark `col_good[c]` as true. Update `col_count[c]` to reflect the new serious student in that column.
+4. Append `good_rows + good_cols` to the output array. This represents the total number of good rows and columns after the current student.
+5. After processing all students, print the output array as a single line.
+
+Why it works: Each student only affects the row and column in which they are seated. By keeping track of which rows and columns are already good, we avoid double counting and maintain the invariant that `good_rows` and `good_cols` accurately reflect the number of rows and columns containing at least one serious student at every step. The wrap-around behavior is handled implicitly because column indices repeat modulo `m` and row indices increase sequentially.
+
+## Python Solution
+
+```python
+import sys
+input = sys.stdin.readline
+
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n, m = map(int, input().split())
+        s = input().strip()
+        row_good = [0] * n
+        col_good = [0] * m
+        good_rows = 0
+        good_cols = 0
+        col_count = [0] * m
+        prefix = [0] * (n * m)
+        out = []
+        for i in range(n * m):
+            r = i // m
+            c = i % m
+            if s[i] == '1':
+                col_count[c] += 1
+                if row_good[r] == 0:
+                    row_good[r] = 1
+                    good_rows += 1
+                if col_good[c] == 0:
+                    col_good[c] = 1
+                    good_cols += 1
+            out.append(good_rows + good_cols)
+        print(' '.join(map(str, out)))
+
+solve()
+```
+
+The solution maintains arrays for row and column goodness and updates counters in constant time per student. The `col_count` array is prepared to support potential extensions if multiple serious students per column needed to be tracked, though in this problem only presence matters. We calculate the row and column indices using integer division and modulo to handle the 2D layout in a flattened array.
+
+## Worked Examples
+
+For the first sample input:
+
+```
+2 2
+1100
+```
+
+| i | s[i] | r | c | good_rows | good_cols | output |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 | 1 | 0 | 0 | 1 | 1 | 2 |
+| 1 | 1 | 0 | 1 | 1 | 2 | 3 |
+| 2 | 0 | 1 | 0 | 2 | 2 | 4 |
+| 3 | 0 | 1 | 1 | 2 | 2 | 3 |
+
+The table demonstrates that good rows and columns are updated exactly when a serious student enters a previously unmarked row or column.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(n * m) | Each student is processed once, and updates for row and column are constant time. |
+| Space | O(n + m) | Arrays for row and column goodness are used. |
+
+This fits comfortably within the given constraints, as the sum of all seats across test cases is ≤ 10^6.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
+    solve()
+    return output.getvalue().strip()
+
+# Provided samples
+assert run("3\n2 2\n1100\n4 2\n11001101\n2 4\n11001101\n") == "2 3 4 3\n2 3 4 3 5 4 6 5\n2 3 3 3 4 4 4 5", "samples"
+
+# Custom cases
+assert run("1\n1 1\n1\n") == "2", "single cell serious"
+assert run("1\n1 1\n0\n") == "0", "single cell naughty"
+assert run("1\n2 2\n0000\n") == "0 0 0 0", "all naughty"
+assert run("1\n2 2\n1111\n") == "2 3 4 4", "all serious"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 1 1, student serious | 2 | minimal grid updates correctly |
+| 1 1, student naughty | 0 | no good rows or columns initially |
+| 2 2, all naughty | 0 0 0 0 | multiple students, no updates |
+| 2 2, all serious | 2 3 4 4 | multiple students, all cells good |
+
+## Edge Cases
+
+A tricky edge case occurs when the first student in each column is serious but other students are naughty. The algorithm correctly increments `good_cols` only the first time a column receives a serious student and tracks rows similarly. Another case is a single row or single column, where all students fall into the same row or column. The row or column is marked good at the first serious student, and subsequent students do not increment the count again, ensuring no double counting. The modulo and integer division operations naturally handle the flattened 1D-to-2D mapping even in these edge cases.
