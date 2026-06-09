@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 929 contests, 5507 problems, 2653 verified."
+description: "Codeforces problem solutions with full editorial. 930 contests, 5522 problems, 2658 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**929 contests, 5507 problems, 2653 verified.**
+**930 contests, 5522 problems, 2658 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1662](1662/) | [SWERC 2021-2022 - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1662) | ICPC/IOI | - | 5/15 | 37m 36s |
 | [1663](1663/) | [April Fools Day Contest 2022](https://codeforces.com/contest/1663) | April Fools | - | 6/8 | 16m 3s |
 | [1665](1665/) | [Codeforces Round 781 (Div. 2)](https://codeforces.com/contest/1665) | Div. 2 | 800-2500 | 3/5 | 11m 29s |
 | [1666](1666/) | [2021-2022 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1666) | ICPC/IOI | 900-3500 | 4/12 | 30m 21s |
