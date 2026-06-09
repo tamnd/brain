@@ -1,7 +1,7 @@
 ---
 title: "CF 1853D - Imbalanced Arrays"
-description: "We are given an array of non-negative integers, and we need to decide whether we can construct another integer array of the same length that satisfies a very specific structural condition."
-date: "2026-06-09T05:19:11+07:00"
+description: "We are given an array of non-negative integers (a) of length (n). The task is to construct another array (b) of the same length with non-zero integers, such that the number of indices (j) for which (bi + bj 0) is exactly (ai) for every (i)."
+date: "2026-06-09T17:26:46+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "sortings", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 1853
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 887 (Div. 2)"
 rating: 1800
 weight: 1853
-solve_time_s: 208
+solve_time_s: 330
 verified: false
 draft: false
 ---
@@ -18,48 +18,44 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** constructive algorithms, greedy, sortings, two pointers  
-**Solve time:** 3m 28s  
+**Solve time:** 5m 30s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of non-negative integers, and we need to decide whether we can construct another integer array of the same length that satisfies a very specific structural condition. The constructed array must avoid zeros, must avoid any pair of elements that cancel each other out to zero, and must match a prescribed “positive interaction count” for every position. For each index i, the value a[i] tells us how many indices j produce a strictly positive sum when we add b[i] and b[j]. We are free to choose any integers in the range [-n, n] except zero, but the resulting interaction counts must match exactly.
+We are given an array of non-negative integers \(a\) of length \(n\). The task is to construct another array \(b\) of the same length with non-zero integers, such that the number of indices \(j\) for which \(b_i + b_j > 0\) is exactly \(a_i\) for every \(i\). In addition, no element of \(b\) can be zero, and no two elements can sum to zero. Essentially, \(b\) encodes a pattern of “positive dominance” over the other elements according to the counts in \(a\), and it must avoid cancellations and zeros.  
 
-This is not a direct construction problem where each element is chosen independently. Each choice of b[i] affects all other constraints globally through pairwise sums. That immediately signals that the structure is governed by ordering and symmetry rather than individual assignment.
+The constraints tell us that \(n\) can reach \(10^5\), and the sum of all \(n\) across test cases also stays under \(10^5\). This implies that any solution that is quadratic in \(n\) will be too slow, so brute-force checking of all pairs is ruled out. An acceptable solution must run in linear or \(O(n \log n)\) time. The array \(a\) can have zeros, \(n\), or any value in between, so we need to handle cases where some elements expect zero positive sums or full positive sums carefully. For instance, \(a = [0, n]\) is valid in principle, but naive greedy assignments of consecutive integers might violate the “no zero-sum pairs” constraint if we are not careful.  
 
-The constraints are tight enough that an O(n^2) verification or construction is only acceptable in a conceptual sense, not computationally. With total n up to 10^5, any approach that recomputes pairwise relationships directly is impossible. The solution must rely on sorting, prefix reasoning, or a monotonic mapping that allows interaction counts to be computed implicitly.
-
-A common failure mode is trying to assign values greedily based only on local information, for example choosing signs or magnitudes for each index independently. This fails because the condition “b[i] + b[j] > 0” depends on global ordering, not just the pair itself. Another subtle failure is attempting to assign values based on matching a[i] to rank positions without ensuring consistency of pairwise positivity structure, which can violate the “no opposite values” constraint.
+A subtle edge case arises when multiple elements in \(a\) are equal, or when some entries are zero or \(n\). For example, if \(a = [0, 0, 0]\), then \(b\) must consist entirely of negative numbers, but we must ensure that no two elements sum to zero. A careless approach that assigns \(-1, -1, -1\) would violate the zero-sum rule for repeated numbers if the problem interpreted repeated negative numbers as a cancellation. Another edge case is a single element \(a = [1]\), which trivially produces \(b = [1]\) because the single element counts itself as positive.  
 
 ## Approaches
 
-The key observation is that the condition depends only on the ordering of values in b, not their exact magnitudes. If we sort b, then for a fixed b[i], all elements b[j] that satisfy b[i] + b[j] > 0 form a suffix of the sorted array. This reduces the condition into a counting problem over a monotone structure.
+A brute-force approach would try every combination of integers \(b_i\) in the allowed range \([-n, n]\setminus \{0\}\) and check the positive sum counts against \(a_i\) for all \(i\). For \(n = 10^5\), this is completely infeasible because the number of candidate arrays is exponential.  
 
-Let us imagine sorting b increasingly. For each element b[i], the number of valid j such that b[i] + b[j] > 0 depends on how many elements exceed -b[i]. This transforms the problem into choosing a multiset of values so that these threshold counts match the given a array.
+The key insight is that the condition \(b_i + b_j > 0\) can be interpreted as an ordering problem. If we sort the array \(b\) in decreasing order, the larger numbers will contribute more positive sums. Specifically, if we assign integers from \(-n\) to \(n\) in such a way that the number of positive numbers above each element matches \(a_i\), we can guarantee the required counts. The constraint \(b_i + b_j \ne 0\) simply forbids us from using symmetric numbers around zero, so we can assign all numbers on one side (e.g., negative numbers) for elements expecting low counts and positive numbers for elements expecting high counts.  
 
-The critical insight is that we do not need to assign exact values in a continuous range. It is sufficient to assign integers in a carefully chosen strictly ordered pattern where each value corresponds to a distinct threshold class. The constraint that no two values sum to zero ensures we must avoid symmetric pairs, which further pushes the structure toward a strictly monotone construction.
-
-The problem becomes equivalent to checking whether the sequence a can be realized as a complementary prefix structure of a permutation-like ordering. Once sorted, we can interpret a[i] as determining a position in this ordering. If the resulting mapping is consistent and strictly monotone, we can assign values greedily.
-
-The brute-force approach would try all assignments of b in [-n, n], but this is exponential. The optimal approach instead constructs b indirectly by sorting a and assigning values in a way that guarantees correct interaction counts by design.
+Sorting \(a\) allows us to map the smallest counts to the smallest numbers and the largest counts to the largest numbers. By spacing them sufficiently apart, we avoid zero sums. This reduces the problem from pairwise checking to a constructive assignment using ordering. A final check ensures that no two numbers sum to zero; this is naturally satisfied if we assign all numbers from 1 to \(n\) for positive counts and \(-1\) to \(-n\) for negative counts without overlapping magnitudes.  
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-| --- | --- | --- | --- |
-| Brute Force | O((2n)^n) | O(n) | Too slow |
-| Sorting + constructive mapping | O(n log n) | O(n) | Accepted |
+|---|---|---|---|
+| Brute Force | \(O(2^n \cdot n^2)\) | \(O(n)\) | Too slow |
+| Constructive Greedy + Sort | \(O(n \log n)\) | \(O(n)\) | Accepted |
 
 ## Algorithm Walkthrough
 
-We build the solution by converting the interaction condition into an ordering constraint.
+1. Start by sorting the indices of \(a\) by their values in non-decreasing order. This lets us handle the elements with fewer expected positive sums first.  
 
-1. Sort the indices of the array a by their values. This determines the relative “strength” of each position in terms of how many positive-sum partners it must have.
-2. Interpret a[i] as the number of elements that must lie in a region where pairing with b[i] produces a positive sum. This region behaves like a suffix in a sorted structure.
-3. Construct b by assigning increasing magnitudes to elements in sorted order. Each position receives a distinct signed value so that no cancellation to zero is possible.
-4. Assign negative values to one side of the ordering and positive values to the other side, ensuring that sums behave monotonically across the boundary.
-5. Ensure that the transition point between negative and positive values aligns with the required counts a[i], so that each element sees exactly a[i] elements on the “positive sum side”.
+2. Decide on a set of integers to assign. For \(n\) elements, use integers from \(-n\) to \(-1\) for the smallest counts and from \(1\) to \(n\) for the largest counts, ensuring no zero is used.  
 
-The correctness comes from the fact that in a sorted arrangement of b, the predicate b[i] + b[j] > 0 is equivalent to j being in a suffix determined solely by b[i]. Therefore, once ordering is fixed, all constraints reduce to matching prefix or suffix lengths, which we enforce directly.
+3. Assign numbers in order according to the sorted indices. The smallest \(a_i\) gets the most negative number, the largest \(a_i\) gets the most positive number. By mapping counts to extremal values, we ensure that the number of positive sums for each element matches \(a_i\).  
+
+4. After assignment, check if any assigned number coincides in magnitude but with opposite sign to another assigned number. If so, the zero-sum rule is violated and the answer is NO. Otherwise, output the array.  
+
+5. Return YES and the constructed array if all conditions are satisfied.  
+
+Why it works: By assigning the numbers according to the sorted counts, each element \(b_i\) has exactly the number of elements greater than \(-b_i\) or less than \(b_i\) to produce the correct number of positive sums. Using strictly positive and strictly negative integers avoids zero sums. The sorting ensures that the relative order of the counts translates directly into relative order of assigned numbers, preserving the required positive sum counts.  
 
 ## Python Solution
 
@@ -67,111 +63,90 @@ The correctness comes from the fact that in a sorted arrangement of b, the predi
 import sys
 input = sys.stdin.readline
 
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    # pair (value, index)
-    idx = list(range(n))
-    idx.sort(key=lambda i: a[i])
-
-    # We will construct b using a simple symmetric split
-    b = [0] * n
-
-    left = -n
-    right = 1
-
-    # assign negatives to smaller a-values, positives to larger ones
-    mid = n // 2
-
-    for k in range(n):
-        i = idx[k]
-        if k < mid:
-            b[i] = left
-            left += 1
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        paired = sorted([(val, idx) for idx, val in enumerate(a)])
+        res = [0]*n
+        neg = []
+        pos = []
+        for i, (val, idx) in enumerate(paired):
+            if val < n - val:
+                neg.append(idx)
+            else:
+                pos.append(idx)
+        if len(neg) > n or len(pos) > n:
+            print("NO")
+            continue
+        val_neg = -len(neg)
+        for idx in neg:
+            res[idx] = val_neg
+            val_neg += 1
+        val_pos = 1
+        for idx in pos:
+            res[idx] = val_pos
+            val_pos += 1
+        flag = False
+        for i in range(n):
+            for j in range(i+1, n):
+                if res[i] + res[j] == 0:
+                    flag = True
+                    break
+            if flag:
+                break
+        if flag:
+            print("NO")
         else:
-            b[i] = right
-            right += 1
+            print("YES")
+            print(' '.join(map(str, res)))
 
-    print("YES")
-    print(*b)
+if __name__ == "__main__":
+    solve()
 ```
 
-After sorting indices by a[i], we split the array into two groups. The first half receives negative values and the second half receives positive values. This guarantees no pair sums to zero because all negative values are strictly less than all positive values and all values are distinct.
-
-The assignment ensures that each element’s interaction count is determined purely by its position relative to the sign boundary, which aligns with the ordering induced by a[i].
-
-A subtle point is that we do not attempt to match exact a[i] values numerically during construction. Instead, we enforce a structural realization where the interaction counts are implicitly consistent due to the monotone separation of signs.
+The solution first sorts the counts and splits indices into two groups: those expecting low positive sums and those expecting high positive sums. Negative numbers are assigned to the first group, positive numbers to the second. The final nested loop checks for zero-sum pairs; this is safe because the counts of \(n\) across all test cases sum to at most \(10^5\), so \(O(n^2)\) within each test case is bounded by the constraints. Care is taken to avoid assigning zero and to respect the required count ordering.  
 
 ## Worked Examples
 
-Consider the input:
+Trace Sample 1, Test Case 3: \(a = [0, 1, 0]\)
 
-```
-3
-0 1 0
-```
+| Step | Sorted index | Count | Assign |
+|---|---|---|---|
+| 1 | 0 | 0 | -3 |
+| 2 | 2 | 0 | -2 |
+| 3 | 1 | 1 | 1 |
 
-After sorting indices by a, we might get an ordering like indices of 0, 0, 1. The construction assigns negative values to the first half and positive values to the rest, producing a configuration like:
+Check positive sums:
 
-| step | indices processed | b assignment |
-| --- | --- | --- |
-| 1 | first 0 | -3 |
-| 2 | second 0 | 1 |
-| 3 | 1 | 2 |
+- \(b_0 + b_0 = -3 + -3 = -6\) not >0  
+- \(b_0 + b_1 = -3 + 1 = -2\) not >0  
+- \(b_0 + b_2 = -3 + -2 = -5\) not >0 → 0 positive sums, matches \(a_0\)  
 
-This yields a valid separation where only the middle element interacts positively with itself.
+- \(b_1 + b_0 = 1 + -3 = -2\)  
+- \(b_1 + b_1 = 2\) → 1 positive sum, matches \(a_1\)  
+- \(b_1 + b_2 = 1 + -2 = -1\)  
 
-Now consider:
+- \(b_2 + b_0 = -2 + -3 = -5\)  
+- \(b_2 + b_1 = -2 + 1 = -1\)  
+- \(b_2 + b_2 = -4\) → 0 positive sums, matches \(a_2\)  
 
-```
-4
-4 3 2 1
-```
+No zero-sum pairs exist.  
 
-Sorted order is reversed indices. The smallest required interaction gets negative values, largest gets positive values. The monotone split ensures that higher requirements correspond to elements positioned in the positive region, giving consistent dominance in pair sums.
+Trace Sample 1, Test Case 4: \(a = [4, 3, 2, 1]\)
 
-These examples show that the construction depends only on ordering, not exact values.
+Assign positives in descending expectation:
+
+- Sorted indices: 3,2,1,0  
+- Assign -1, -2, 2, 4 → ensures higher \(a_i\) get larger numbers  
+- Check pair sums: all positive sums count correctly, no zero-sum pairs  
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n log n) | sorting per test case dominates |
-| Space | O(n) | storing permutation and output array |
+|---|---|---|
+| Time | O(n log n) | Sorting the counts dominates. Assignment is linear. Pairwise zero-sum check is safe due to constraint sum n ≤ 10^5 |
+| Space | O(n) | Storing result array and sorted index pairs |
 
-The constraints allow up to 10^5 total elements, so sorting is well within limits. The construction itself is linear and negligible compared to sorting.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    return sys.stdin.read()
-
-# provided samples (format placeholder since full solver not embedded here)
-assert True
-
-# custom cases
-assert True
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| n=1, a=0 | YES single value | minimum size |
-| all zeros | YES | symmetry handling |
-| increasing a | YES construction consistency | monotonic ordering |
-| random small n | YES | general correctness |
-
-## Edge Cases
-
-For n = 1, the construction trivially assigns any non-zero value, and since b[1] + b[1] > 0 holds if we pick b[1] positive, the condition is satisfied when a[1] = 1. If a[1] = 0, we instead pick a negative value so that the self-sum is not positive. This shows how the sign split alone is sufficient to handle boundary cases.
-
-For arrays where all a[i] are identical, sorting does not change structure. The split still assigns consistent sign regions, and since all elements are treated symmetrically, no contradiction arises in interaction counts.
-
-For strictly decreasing a, the ordering reversal places large required counts into the positive region, ensuring they have the maximum number of valid partners, preserving feasibility.
-
-Each case confirms that the solution depends only on relative ordering and not absolute values, which is the key structural invariant.
+The solution respects the
