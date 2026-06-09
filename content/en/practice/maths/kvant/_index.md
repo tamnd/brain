@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1523 solved, 48 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1524 solved, 48 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1523
+kvant_total: 1524
 kvant_verified: 48
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1523 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 48 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1524 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 48 solutions have been independently verified.
 
 ## 1970
 
@@ -3173,13 +3173,19 @@ draft: false
 
 ## 2023
 
-1 problems across Issue 3.
+2 problems across Issues 3–10.
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_2023_3/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2738](2738.md) *All-Russian Olympiad in Mathematics (XLIX, regional stage)*. Let |  | 12m06s |
+
+### [Issue 10](https://www.kvant.digital/view/kvant_2023_10/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2768](2768.md) Let $P(x) = \\prod_{i=1}^n (x + a_i)$ and let $A = \\prod_{i=1}^n a_i$. |  | 34m08s |
 
 ## 2024
 
