@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 866 contests, 5157 problems, 2506 verified."
+description: "Codeforces problem solutions with full editorial. 867 contests, 5160 problems, 2507 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**866 contests, 5157 problems, 2506 verified.**
+**867 contests, 5160 problems, 2507 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1730](1730/) | [Codeforces Round 823 (Div. 2)](https://codeforces.com/contest/1730) | Div. 2 | 800-2700 | 1/3 | 6m 53s |
 | [1731](1731/) | [Codeforces Round 841 (Div. 2) and Divide by Zero 2022](https://codeforces.com/contest/1731) | Div. 2 | 800-2500 | 2/3 | 9m 27s |
 | [1732](1732/) | [Codeforces Round 830 (Div. 2)](https://codeforces.com/contest/1732) | Div. 2 | 1000-2400 | 1/3 | 14m 20s |
 | [1733](1733/) | [Codeforces Round 821 (Div. 2)](https://codeforces.com/contest/1733) | Div. 2 | 800-2000 | 0/3 | 7m 8s |
