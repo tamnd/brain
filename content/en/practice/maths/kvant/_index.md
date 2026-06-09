@@ -1,9 +1,9 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1522 solved, 48 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1523 solved, 48 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1522
+kvant_total: 1523
 kvant_verified: 48
 kvant_year_start: 1970
 kvant_year_end: 2026
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1522 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 48 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1523 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 48 solutions have been independently verified.
 
 ## 1970
 
@@ -3160,6 +3160,16 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2632](2632.md) Working |  | 32m22s |
+
+## 2022
+
+1 problems across Issue 7.
+
+### [Issue 7](https://www.kvant.digital/view/kvant_2022_7/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2709](2709.md) *Caucasian Mathematical Olympiad*. The problem can be formulated in graph-theoretic terms. |  | 32m35s |
 
 ## 2023
 
