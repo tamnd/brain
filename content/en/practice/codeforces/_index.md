@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 948 contests, 5631 problems, 2711 verified."
+description: "Codeforces problem solutions with full editorial. 949 contests, 5639 problems, 2715 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**948 contests, 5631 problems, 2711 verified.**
+**949 contests, 5639 problems, 2715 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1637](1637/) | [Codeforces Global Round 19](https://codeforces.com/contest/1637) | Global | 800-3500 | 4/8 | 14m 35s |
 | [1638](1638/) | [Codeforces Round 771 (Div. 2)](https://codeforces.com/contest/1638) | Div. 2 | 800-3200 | 2/6 | 10m 2s |
 | [1639](1639/) | [Pinely Treasure Hunt Contest](https://codeforces.com/contest/1639) | Special | - | 9/11 | 14m 19s |
 | [1641](1641/) | [Codeforces Round 773 (Div. 1)](https://codeforces.com/contest/1641) | Div. 1 | 1200-3500 | 2/6 | 9m 4s |
