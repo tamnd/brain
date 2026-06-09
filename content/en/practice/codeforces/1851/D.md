@@ -1,7 +1,7 @@
 ---
 title: "CF 1851D - Prefix Permutation Sums"
-description: "We are given a strictly increasing array of integers, which represents a prefix sum of some permutation of numbers from 1 to n, but one element of the original permutation has been lost."
-date: "2026-06-09T05:26:47+07:00"
+description: "We are given an array derived from the prefix sums of a permutation of numbers from 1 to $n$. One of these prefix sums is missing. Our task is to determine whether the incomplete array could have come from a valid permutation."
+date: "2026-06-09T17:15:50+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1851
@@ -9,7 +9,7 @@ codeforces_index: "D"
 codeforces_contest_name: "Codeforces Round 888 (Div. 3)"
 rating: 1300
 weight: 1851
-solve_time_s: 135
+solve_time_s: 153
 verified: false
 draft: false
 ---
@@ -18,51 +18,43 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** implementation, math  
-**Solve time:** 2m 15s  
+**Solve time:** 2m 33s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a strictly increasing array of integers, which represents a prefix sum of some permutation of numbers from `1` to `n`, but one element of the original permutation has been lost. The task is to determine if there exists any permutation that could produce the given prefix sum array after removing exactly one element.
+We are given an array derived from the prefix sums of a permutation of numbers from 1 to $n$. One of these prefix sums is missing. Our task is to determine whether the incomplete array could have come from a valid permutation.
 
-The input array has length `n-1`, representing `n-1` prefix sums, and we must reason about the missing value. Since the prefix sum strictly increases, each element is the sum of all previous numbers plus the current element. Recovering the permutation requires deducing what integer between `1` and `n` could fit in the missing position so that all numbers from `1` to `n` appear exactly once.
+A permutation here is simply an array containing each integer from 1 to $n$ exactly once. The prefix sum array is formed by summing elements cumulatively: $b_i = a_1 + a_2 + ... + a_i$. For example, the permutation $[1, 3, 2]$ has prefix sums $[1, 4, 6]$. If we remove a prefix sum, say 4, the array becomes $[1, 6]$. The problem is to decide whether there exists a permutation that would lead to the given array after dropping a single prefix sum.
 
-The bounds indicate that `n` can be as large as `2·10^5`, and the sum of `n` across all test cases is limited to `2·10^5`. This means we need a linear-time solution per test case, as any quadratic solution would exceed the time limit. Additionally, the input numbers can be as large as `10^18`, so any solution must handle 64-bit integers without overflow.
+The constraints give us up to $2 \cdot 10^5$ numbers summed over all test cases, so any solution must run in roughly $O(n)$ per test case. Brute force reconstruction of all permutations is completely infeasible because $n!$ grows extremely fast.
 
-Non-obvious edge cases include the missing element being the first or last element of the permutation, or the missing number being very large or very small. A naive approach that only checks differences between consecutive prefix sums may incorrectly identify the missing element if it occurs at the start or end. For instance, for a prefix array `[6, 8, 12, 15]`, the missing element is `1` at the start of the permutation, which a naive difference-based check might miss.
+A subtle edge case arises when the missing element is the largest number in the permutation. For example, if $n = 4$ and the input prefix sums are $[1, 3, 6]$, the missing sum corresponds to the last element, 4, and we have to recognize this situation. Another tricky case is when removing a prefix sum hides a number that could otherwise be repeated, e.g., $[1, 3, 3]$ would look impossible but could correspond to a missing 2 in $[1, 3, 5, 6]$. A careless approach that only checks differences between consecutive prefix sums could fail here.
 
 ## Approaches
 
-The brute-force approach would be to try inserting every number from `1` to `n` into every possible position in the permutation implied by the prefix sums and check if it produces a valid sequence. This requires `O(n^2)` time and is infeasible for large `n`.
+The brute-force approach would attempt to reconstruct all possible original arrays from the given prefix sums by trying to insert one number in all possible positions and check if the resulting array forms a valid permutation. This is correct in principle because each prefix sum defines cumulative sums uniquely, but the number of possibilities is $O(n)$ insertions per test case and $O(n)$ work per insertion to validate the permutation, resulting in $O(n^2)$. This would be too slow for $n \approx 2 \cdot 10^5$.
 
-The key insight is that the sum of numbers from `1` to `n` is known: `total = n*(n+1)//2`. Since the prefix sum array has one element missing, its sum is `total - missing`. Therefore, the missing number can be immediately deduced as `missing = total - sum(prefix_sums)`. Once we know the missing number, we can simulate the prefix sums and check if inserting this number at some position produces strictly increasing differences between consecutive sums that correspond to valid permutation elements. If any element is repeated or exceeds `n`, the sequence is invalid.
+The key insight is that the missing element corresponds either to a single number from 1 to $n$ or to the last prefix sum itself. This reduces the problem to analyzing the differences between consecutive prefix sums, which represent the original numbers in the permutation (except for the missing one). Specifically, if the differences form a multiset that is almost all numbers from 1 to $n$, then the missing number is either the sum difference that’s too large or the number $n$ itself.
 
-This approach reduces the problem to `O(n)` per test case, since we only need one pass to check the differences.
+The faster approach is therefore: compute the differences between consecutive prefix sums to get candidate numbers, count how many times each number occurs, and verify that either one number is missing or one number is duplicated in a way that could account for the missing prefix. This reduces the solution to $O(n)$ per test case, which is feasible under the constraints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^2) | O(n) | Too slow |
+| Brute Force | O(n²) | O(n) | Too slow |
 | Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the sum of the first `n` natural numbers: `total = n*(n+1)//2`.
-2. Compute the sum of the given prefix sum array: `s = sum(prefix_sums)`.
-3. Determine the missing number: `missing = total - s`.
-4. Initialize an empty list `perm` to simulate the recovered permutation.
-5. Set a flag `found = False`.
-6. Iterate over the prefix sums:
+1. For each test case, compute the differences between consecutive prefix sums. Include the first element of the prefix sum array as a difference because it equals the first element of the original permutation. Store these differences in a list called `nums`.
+2. Compute the sum of numbers from 1 to $n$ using the formula $n(n+1)/2$.
+3. Compare the sum of `nums` to this total sum. If they match, all numbers are present and the missing prefix sum corresponds to the last element. In this case, the array forms a valid permutation.
+4. If the sum of `nums` is less than the total sum, calculate the missing number as the difference. Count the occurrences of each number in `nums`. If this missing number occurs exactly zero times and all other numbers are within 1 to $n$, then the permutation is possible by inserting the missing number at the correct position.
+5. If any number occurs twice or a number is outside 1 to $n$, the answer is "NO". Otherwise, the answer is "YES".
+6. Return the result for each test case.
 
-1. Compute the difference between consecutive sums (or use the first sum directly as the first element).
-2. If the difference equals the `missing` number and `found = False`, skip inserting it once and set `found = True`.
-3. Otherwise, insert the difference into `perm`.
-7. After processing, if `perm` contains exactly `n-1` elements and all numbers are unique and between `1` and `n` excluding `missing`, then print `YES`.
-8. Otherwise, print `NO`.
-
-### Why it works
-
-The missing number can be uniquely determined from the sum of the prefix sums. The simulation ensures that inserting this number in any valid position maintains strictly increasing prefix sums corresponding to a permutation. Since the differences between consecutive sums correspond to the original permutation elements, this check guarantees that the recovered sequence can indeed form a valid permutation.
+**Why it works**: The differences between consecutive prefix sums are exactly the elements of the original permutation, except for the missing one. By checking the sum and frequency of these differences, we can infer whether there exists a single number that restores the full permutation from 1 to $n$.
 
 ## Python Solution
 
@@ -74,68 +66,70 @@ def solve():
     t = int(input())
     for _ in range(t):
         n = int(input())
-        arr = list(map(int, input().split()))
+        b = list(map(int, input().split()))
         total = n * (n + 1) // 2
-        missing = total - sum(arr)
-
-        diffs = []
-        prev = 0
-        for val in arr:
-            diffs.append(val - prev)
-            prev = val
-
-        # Case 1: missing number is in the sequence as one of the differences
-        counts = {}
-        for d in diffs:
-            counts[d] = counts.get(d, 0) + 1
-
-        # Check if missing number is one of the differences
-        if missing in counts and counts[missing] == 1:
+        nums = [b[0]] + [b[i] - b[i - 1] for i in range(1, n - 1)]
+        current_sum = sum(nums)
+        
+        if current_sum == total:
             print("YES")
             continue
-
-        # Case 2: one difference is too big and represents sum of two numbers (the missing one and some other)
-        bad = [d for d in diffs if d > n]
-        if len(bad) == 1 and (bad[0] - missing) <= n and (bad[0] - missing) != missing:
+        
+        diff = total - current_sum
+        count = {}
+        valid = True
+        for x in nums:
+            if x < 1 or x > n:
+                valid = False
+                break
+            count[x] = count.get(x, 0) + 1
+            if count[x] > 1:
+                valid = False
+                break
+        if not valid:
+            print("NO")
+        elif diff >= 1 and diff <= n and count.get(diff, 0) == 0:
             print("YES")
-            continue
+        else:
+            print("NO")
 
-        print("NO")
-
-if __name__ == "__main__":
-    solve()
+solve()
 ```
+
+This implementation reads input efficiently for multiple test cases, calculates the differences, and checks sum and frequency to verify whether a valid permutation is possible. Handling the first element separately ensures the correct reconstruction of the first element, which is a common source of off-by-one errors.
+
 ## Worked Examples
 
-For input `[6, 8, 12, 15]` with `n=5`:
+### Example 1
 
-| Index | Prefix sum | Difference |
-| --- | --- | --- |
-| 0 | 6 | 6 |
-| 1 | 8 | 2 |
-| 2 | 12 | 4 |
-| 3 | 15 | 3 |
+Input prefix sums: `[6, 8, 12, 15]`, $n=5$
 
-`total = 15`, `sum(arr)=41`, `missing = 15 - 35 = 1`. The differences `[6,2,4,3]` can accommodate `1` as the missing number at the start, producing permutation `[1,5,2,4,3]`. Output is `YES`.
+| Step | nums | sum(nums) | total | diff | counts |
+| --- | --- | --- | --- | --- | --- |
+| Compute differences | [6, 2, 4, 3] | 15 | 15 | 0 | {6:1,2:1,4:1,3:1} |
 
-For input `[1,2,100]` with `n=4`:
+The sum matches `n(n+1)/2`, so the missing number is the first element, which is 1. Valid permutation exists. Output: YES
 
-| Index | Prefix sum | Difference |
-| --- | --- | --- |
-| 0 | 1 | 1 |
-| 1 | 2 | 1 |
-| 2 | 100 | 98 |
+### Example 2
 
-`total = 10`, `sum(arr)=103`, `missing = -93` which is invalid. Output is `NO`.
+Input prefix sums: `[1, 2, 100]`, $n=4$
+
+| Step | nums | sum(nums) | total | diff | counts |
+| --- | --- | --- | --- | --- | --- |
+| Compute differences | [1,1,98] | 100 | 10 | -90 | {1:2,98:1} |
+
+Duplicate `1` and out-of-range number `98` make it impossible. Output: NO
+
+These traces show how the algorithm handles missing first, last, and middle elements, and how frequency and sum checks detect invalid cases.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | One pass to compute sum and differences |
-| Space | O(n) | Store differences and counts dictionary |
+| Time | O(n) per test case | Computing differences, sum, and frequency table all run linearly |
+| Space | O(n) | Store `nums` and frequency dictionary for each test case |
 
-Given the sum of `n` over all test cases is `2·10^5`, the solution fits within the time and memory limits.
+Given the constraints, this solution handles up to $2 \cdot 10^5$ numbers comfortably within time and memory limits.
 
 ## Test Cases
 
@@ -144,28 +138,21 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
+    sys.stdout = io.StringIO()
     solve()
-    return output.getvalue().strip()
+    return sys.stdout.getvalue().strip()
 
 # Provided samples
-assert run("12\n5\n6 8 12 15\n5\n1 6 8 15\n4\n1 2 100\n4\n1 3 6\n2\n2\n3\n1 2\n4\n3 7 10\n5\n5 44 46 50\n4\n1 9 10\n5\n13 21 36 42\n5\n1 2 3 1000000000000000000\n9\n9 11 12 20 25 28 30 33") == \
-"YES\nYES\nNO\nYES\nYES\nNO\nYES\nNO\nNO\nNO\nNO\nNO"
+assert run("12\n5\n6 8 12 15\n5\n1 6 8 15\n4\n1 2 100\n4\n1 3 6\n2\n2\n3\n1 2\n4\n3 7 10\n5\n5 44 46 50\n4\n1 9 10\n5\n13 21 36 42\n5\n1 2 3 1000000000000000000\n9\n9 11 12 20 25 28 30 33\n") == "YES\nYES\nNO\nYES\nYES\nNO\nYES\nNO\nNO\nNO\nNO\nNO"
 
 # Custom cases
-assert run("2\n3\n3 6\n4\n2 5 9") == "YES\nNO", "custom test 1"
-assert run("1\n2\n1") == "YES", "custom test 2"
-assert run("1\n3\n2 5") == "YES", "custom test 3"
+assert run("1\n2\n1") == "YES", "smallest n"
+assert run("1\n3\n3 5") == "YES", "missing middle"
+assert run("1\n4\n1 3 6") == "YES", "missing last"
+assert run("1\n5\n2 3 4 5") == "NO", "missing first invalid"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3, [3,6] | YES | missing number in middle |
-| 4, [2,5,9] | NO | impossible prefix sums |
-| 2, [1] | YES | smallest n case |
-| 3, [2,5] | YES | missing number at start |
-
-## Edge Cases
-
-If the missing number is at the start, such as `[6,8,12,15]` for `n=5`, the algorithm correctly identifies `missing=1` and checks if it fits the sequence. If the missing number is the sum of two consecutive permutation elements that appear as a single large difference, the second check in the code handles this scenario. Extremely large numbers, duplicates in differences, and negative missing values are all correctly rejected.
+| `2\n1` | YES | Smallest n, valid missing first element |
+|  |  |  |

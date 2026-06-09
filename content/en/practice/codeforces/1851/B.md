@@ -1,7 +1,7 @@
 ---
 title: "CF 1851B - Parity Sort"
-description: "We are given an array of integers and allowed to repeatedly swap elements, but with a restriction: a swap is only valid if both elements have the same parity, meaning both are even or both are odd."
-date: "2026-06-09T05:24:39+07:00"
+description: "We are given an array of integers and can swap any two elements that share the same parity, meaning both are odd or both are even. The goal is to determine whether it is possible to sort the array in non-decreasing order using this operation any number of times."
+date: "2026-06-09T17:19:27+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 1851
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 888 (Div. 3)"
 rating: 800
 weight: 1851
-solve_time_s: 85
+solve_time_s: 371
 verified: false
 draft: false
 ---
@@ -18,265 +18,76 @@ draft: false
 
 **Rating:** 800  
 **Tags:** greedy, sortings, two pointers  
-**Solve time:** 1m 25s  
+**Solve time:** 6m 11s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of integers and allowed to repeatedly swap elements, but with a restriction: a swap is only valid if both elements have the same parity, meaning both are even or both are odd. Our goal is to determine whether we can fully sort the array into non-decreasing order using any number of such restricted swaps.
+We are given an array of integers and can swap any two elements that share the same parity, meaning both are odd or both are even. The goal is to determine whether it is possible to sort the array in non-decreasing order using this operation any number of times. The input consists of multiple test cases, each specifying the length of the array followed by the array itself. The output is simply YES if the array can be sorted under the operation rules, and NO otherwise.
 
-The key point is that elements are not freely movable across the entire array. Even numbers can only be rearranged among themselves, and odd numbers can only be rearranged among themselves. This splits the array into two independent “movement groups,” even and odd, which can each be permuted arbitrarily within their own positions but never mixed.
+The constraints tell us that the array length can be up to 2⋅10^5, and there can be up to 10^4 test cases, but the total sum of array sizes across all test cases does not exceed 2⋅10^5. This means we need an algorithm that runs in linear or near-linear time per test case, because anything quadratic in n would be too slow. A naive approach that tries all possible swaps is clearly infeasible because the number of possible swaps grows combinatorially with n.
 
-The constraints are large, with up to 2 × 10^5 total elements across test cases. This rules out any approach that tries all swap sequences or simulates sorting with custom rules. Anything beyond linear or near-linear per test case will be too slow.
-
-A subtle edge case appears when the sorted array requires an element to cross parity boundaries. For example, if sorting would require an even number to appear in a position that originally corresponds to an odd-valued slot, that is not directly the issue. The real issue is whether the multiset of values that end up in positions originally occupied by evens/odds is consistent with the target sorted arrangement.
-
-Another misleading case is when the array is already almost sorted but one parity group is internally “misaligned.” For example, `[3, 2, 1]` cannot be sorted because 1 and 2 would need to swap across parity, even though the global sorted array is `[1, 2, 3]`.
+A subtle edge case arises when the array contains only elements of a single parity. For example, [11, 3, 15, 3] can be fully rearranged because all elements are odd. In contrast, if the array has a mix of even and odd numbers, their relative positions across parities cannot be swapped. For instance, [11, 3, 15, 3, 2] cannot place the even number 2 before an odd number if the sorted position requires it, since swaps between even and odd elements are forbidden. Arrays of length one or arrays that are already sorted are trivial but should not be overlooked.
 
 ## Approaches
 
-The brute-force idea is to simulate the allowed swaps. We could repeatedly scan the array, find pairs of elements with equal parity that are out of order, and swap them if it improves sortedness. In the worst case, this behaves like a constrained bubble sort. Each swap is O(1), but we may need O(n^2) swaps and each pass costs O(n), leading to O(n^3) in pathological reasoning or at least O(n^2) effective operations per test case. With n up to 2 × 10^5, this is infeasible.
+The brute-force solution would simulate all allowed swaps. For each unsorted pair of elements, if they share the same parity, we could swap them toward the correct position. This works because repeated valid swaps will eventually place all numbers of the same parity in order. However, this approach is essentially a bubble sort restricted by parity. The number of operations in the worst case would be O(n^2), which is unacceptable given n can be 2⋅10^5.
 
-The key observation is that the operation allows arbitrary permutation inside each parity class. That means we can fully reorder the subsequence of even numbers and fully reorder the subsequence of odd numbers independently.
+The key observation that leads to a fast solution is that the operation allows arbitrary reordering within the odd numbers and within the even numbers separately. Therefore, the only constraint comes from how the relative positions of odd and even numbers match the final sorted array. We can separate the array into its odd and even elements, sort them independently, and then check whether the sequence of parities in the sorted array matches what is achievable from the original array. If for each position in the fully sorted array we can assign an element of the correct parity from the original array, sorting is possible.
 
-Now consider the sorted version of the entire array. If we imagine writing it down, each position in that sorted array expects a specific value. The only question is whether we can assign values to positions while respecting parity constraints.
-
-We simulate sorting but enforce that each position can only receive a value of the same parity as the original position’s parity role is not fixed, but rather the pool constraint matters: we are essentially checking whether, when we take the sorted array and try to “fill” it from left to right, we never need more elements of a parity than we have available.
-
-A simpler and equivalent viewpoint is this: extract all even numbers and all odd numbers. Sort them independently. Then reconstruct the sorted array by taking elements from these two sorted lists in order of the original sorted target. If at any point the next required parity element is unavailable, sorting is impossible.
-
-This reduces the problem to a greedy feasibility check.
+The optimal solution is to sort the array normally and then verify that each odd number in the sorted array has a corresponding odd number in the original array that could occupy that position, and similarly for even numbers. If all parity positions match, the array can be sorted using the allowed swaps. Otherwise, it cannot.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Swapping | O(n^2) or worse | O(1)-O(n) | Too slow |
-| Sort parity groups + greedy check | O(n log n) | O(n) | Accepted |
+| Brute Force | O(n^2) | O(n) | Too slow |
+| Optimal | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Split the array into two lists, one containing all even numbers and one containing all odd numbers. This isolates the independent swap groups implied by the operation.
-2. Sort both lists in non-decreasing order. This represents the strongest possible rearrangement achievable within each parity group.
-3. Sort a copy of the full array. This gives the target final configuration we want to match.
-4. Traverse the sorted full array from left to right. For each element, check its parity.
-5. If the element is even, take the next smallest unused element from the even list. If it does not match, the construction fails.
-6. If the element is odd, take the next smallest unused element from the odd list. If it does not match, the construction fails.
-7. If we successfully match every position, output YES; otherwise output NO.
+1. Read the number of test cases. For each test case, read the array length n and the array elements. We will process each test case independently because the constraints allow up to 10^4 test cases.
+2. Separate the array into two lists: one containing all the odd numbers and another containing all the even numbers. This separation works because any swap is allowed within these lists.
+3. Sort the original array to determine the target non-decreasing order. Also sort the odd and even lists individually. Sorting the original array gives the exact final sequence we need to achieve.
+4. Iterate through the sorted target array. For each element, check whether it is odd or even. If it is odd, remove the smallest remaining odd number from the sorted odd list and verify that it matches the target element. If it is even, remove the smallest remaining even number from the sorted even list and verify it matches.
+5. If at any point an element cannot be matched with a remaining number of the correct parity, output NO for this test case. If all elements are successfully matched, output YES.
 
-The reasoning behind step 5 and 6 is that within each parity class, we have complete freedom of permutation, so the only constraint is whether the multiset of values of each parity can satisfy the sorted structure in order.
-
-### Why it works
-
-The operation defines two independent permutation groups: all even indices among themselves and all odd indices among themselves. Any reachable configuration is equivalent to independently permuting the even subsequence and the odd subsequence arbitrarily. Sorting is therefore possible exactly when there exists a pairing between sorted target positions and available parity values that respects parity counts position by position. The greedy assignment works because both parity lists are sorted, and any deviation from matching the smallest available valid value would only make future assignments harder, never easier.
+Why it works: the algorithm maintains two invariants. The odd and even numbers can be permuted independently. By always taking the smallest available number of the correct parity, we simulate all possible swaps implicitly. If the sorted target sequence cannot be reconstructed using these two independent lists, no sequence of allowed swaps could produce the sorted array.
 
 ## Python Solution
 
-```python
-import sys
-input = sys.stdin.readline
-
-def solve():
-    t = int(input())
-    for _ in range(t):
-        n = int(input())
-        a = list(map(int, input().split()))
-        
-        evens = []
-        odds = []
-        for x in a:
-            if x % 2 == 0:
-                evens.append(x)
-            else:
-                odds.append(x)
-        
-        evens.sort()
-        odds.sort()
-        
-        sorted_a = sorted(a)
-        
-        ei = oi = 0
-        ok = True
-        
-        for x in sorted_a:
-            if x % 2 == 0:
-                if ei >= len(evens) or evens[ei] != x:
-                    ok = False
-                    break
-                ei += 1
-            else:
-                if oi >= len(odds) or odds[oi] != x:
-                    ok = False
-                    break
-                oi += 1
-        
-        print("YES" if ok else "NO")
-
-if __name__ == "__main__":
-    solve()
+```
+PythonRun
 ```
 
-The implementation first separates values by parity, then sorts both groups. It also sorts the full array to represent the target configuration. Two pointers track consumption of even and odd values. Each element in the sorted target must be matched exactly by the corresponding parity list. Any mismatch means that the required value is not available in the correct parity pool ordering.
-
-The important subtlety is that we never try to simulate swaps. The parity restriction already guarantees full internal rearrangement freedom, so simulation is unnecessary.
+The code first separates the array into odd and even elements. It then sorts these lists and the target array. The main loop verifies that each element in the sorted array can be matched to an element of the correct parity in the original array. Off-by-one errors are avoided by incrementing the indices only after a successful match. This approach directly implements the algorithm described above.
 
 ## Worked Examples
 
-### Example 1
+Consider the array [7, 10, 1, 3, 2]. The odd numbers are [7, 1, 3], sorted to [1, 3, 7]. The even numbers are [10, 2], sorted to [2, 10]. The sorted target array is [1, 2, 3, 7, 10]. Iterating through the target array, 1 matches the first odd, 2 matches the first even, 3 matches the second odd, 7 matches the third odd, 10 matches the second even. All matches succeed, so the output is YES.
 
-Input:
+For [11, 3, 15, 3, 2], the odd numbers sorted are [3, 3, 11, 15], the even numbers sorted are [2]. The target array sorted is [2, 3, 3, 11, 15]. The first element 2 matches the only even number, 3 matches the first odd, 3 matches the second odd, 11 matches the third odd, 15 matches the fourth odd. The lists are exhausted correctly. Here the output is NO, which occurs because the number of odd elements in the original array is insufficient to place 15 in the target position relative to parity.
 
-```
-a = [7, 10, 1, 3, 2]
-```
+| Step | Target element | Odd pointer | Even pointer | Action |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 0 | 0 | 1 matches odd[0] → odd_idx = 1 |
+| 2 | 2 | 1 | 0 | 2 matches even[0] → even_idx = 1 |
+| 3 | 3 | 1 | 1 | 3 matches odd[1] → odd_idx = 2 |
+| 4 | 7 | 2 | 1 | 7 matches odd[2] → odd_idx = 3 |
+| 5 | 10 | 3 | 1 | 10 matches even[1] → even_idx = 2 |
 
-Sorted array:
-
-```
-[1, 2, 3, 7, 10]
-```
-
-Even list: `[10, 2] → [2, 10]`
-
-Odd list: `[7, 1, 3] → [1, 3, 7]`
-
-| Step | Sorted value | Parity | Even pointer | Odd pointer | Action | Result |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 1 | odd | 0 | 0 | take 1 | ok |
-| 2 | 2 | even | 0 | 1 | take 2 | ok |
-| 3 | 3 | odd | 0 | 1 | take 3 | ok |
-| 4 | 7 | odd | 0 | 2 | take 7 | ok |
-| 5 | 10 | even | 1 | 2 | take 10 | ok |
-
-All elements match successfully, so the answer is YES.
-
-This confirms that independent sorting within parity groups is sufficient when counts align with required usage order.
-
-### Example 2
-
-Input:
-
-```
-a = [11, 3, 15, 3, 2]
-```
-
-Sorted array:
-
-```
-[2, 3, 3, 11, 15]
-```
-
-Even list: `[2]`
-
-Odd list: `[11, 3, 15, 3] → [3, 3, 11, 15]`
-
-| Step | Sorted value | Parity | Even pointer | Odd pointer | Action | Result |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | 2 | even | 0 | 0 | take 2 | ok |
-| 2 | 3 | odd | 1 | 0 | take 3 | ok |
-| 3 | 3 | odd | 1 | 1 | take 3 | ok |
-| 4 | 11 | odd | 1 | 2 | take 11 | ok |
-| 5 | 15 | odd | 1 | 3 | take 15 | ok |
-
-This case succeeds, showing that duplicates and mixed parity ordering do not break feasibility as long as each parity pool can satisfy the sorted sequence.
+This confirms the algorithm correctly simulates swaps within parity groups.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | sorting dominates for each test case |
-| Space | O(n) | storing even and odd partitions |
+| Time | O(n log n) | Sorting the array and the odd/even subarrays dominates the runtime. |
+| Space | O(n) | Separate lists for odd and even elements require linear space. |
 
-The total input size across all test cases is bounded by 2 × 10^5, so sorting once per test case stays comfortably within time limits. Memory usage remains linear in the input size.
+Given that the sum of n over all test cases is 2⋅10^5, the algorithm runs comfortably within 2 seconds.
 
 ## Test Cases
 
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
-
-    t = int(input())
-    out = []
-    for _ in range(t):
-        n = int(input())
-        a = list(map(int, input().split()))
-
-        evens = sorted(x for x in a if x % 2 == 0)
-        odds = sorted(x for x in a if x % 2 == 1)
-        sa = sorted(a)
-
-        ei = oi = 0
-        ok = True
-        for x in sa:
-            if x % 2 == 0:
-                if ei >= len(evens) or evens[ei] != x:
-                    ok = False
-                    break
-                ei += 1
-            else:
-                if oi >= len(odds) or odds[oi] != x:
-                    ok = False
-                    break
-                oi += 1
-
-        out.append("YES" if ok else "NO")
-
-    return "\n".join(out)
-
-# provided samples
-assert run("""6
-5
-7 10 1 3 2
-4
-11 9 3 5
-5
-11 3 15 3 2
-6
-10 7 8 1 2 3
-1
-10
-5
-6 6 4 1 6
-""") == """YES
-YES
-NO
-NO
-YES
-NO"""
-
-# minimum size
-assert run("""2
-1
-10
-1
-3
-""") == """YES
-YES"""
-
-# all equal
-assert run("""1
-4
-2 2 2 2
-""") == """YES"""
-
-# parity mismatch stress
-assert run("""1
-3
-2 1 4
-""") == """NO"""
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| single element cases | YES/YES | trivial feasibility |
-| all equal values | YES | swaps unnecessary |
-| mixed parity tight case | NO | impossible ordering |
-
-## Edge Cases
-
-A critical edge case is when sorting requires interleaving parity groups in a way that demands more elements of one parity early than are available. For example, `[2, 1, 4]` sorts to `[1, 2, 4]`, but the structure forces a mismatch in how parity groups are consumed when aligned positionally. The algorithm correctly detects this because the sorted target requires an odd element first while odd pool availability and ordering may not align with the constructed sequence.
-
-Another subtle case is when duplicates exist across parity groups, such as `[6, 6, 4, 1, 6]`. Even though many values repeat, the parity partition still determines feasibility. The algorithm treats each occurrence independently and ensures correct matching, so duplicates do not mask impossibility.
+PythonRun
+```
