@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1533 solved, 51 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1536 solved, 53 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1533
-kvant_verified: 51
+kvant_total: 1536
+kvant_verified: 53
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1533 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 51 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1536 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 53 solutions have been independently verified.
 
 ## 1970
 
@@ -3229,7 +3229,7 @@ draft: false
 
 ## 2025
 
-15 problems across Issues 1–11, 2 verified.
+18 problems across Issues 1–11, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3257,7 +3257,15 @@ draft: false
 | [2842](2842.md) *Euler Olympiad (XVII, regional stage)*. Let $a, a+1, \\dots, a+n-1$ be $n>1$ consecutive natural numbers. |  | 38m17s |
 | [2843](2843.md) Introduce Cartesian coordinates adapted to the symmetry of the equilateral triangle. |  | 20m27s |
 | [2844](2844.md) We place square $ABCD$ in the coordinate plane with $A=(0,0)$, $B=(1,0)$, $C=(1,1)$, and $D=(0,1)$. |  | 33m26s |
+| [2845](2845.md) *Tournament of Cities (XLIV)*. A cube in three-dimensional space with vertices in $\\mathbb{Z}^3$ can be described by a vertex and three vectors $\\mathbf{u}, \\mathbf{v}, \\mathbf{w} \\in \\mathbb{Z}^3$ that are pairwise orthogonal and… | ✓ | 21m22s |
 | [2846](2846.md) *All-Russian Mathematics Olympiad for School Students (LI, Final Round)*. The word “ПЕТЯ” has five letters. |  | 10m11s |
+| [2849](2849.md) *All-Russian School Mathematics Olympiad (LI, final stage)*. This is a **C: optimization problem**. |  | 25m51s |
+
+### [Issue 7](https://www.kvant.digital/view/kvant_2025_7/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2850](2850.md) Label the marked points by the elements of $\\mathbb Z_{2n}$ in cyclic order. | ✓ | 21m45s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_2025_8/)
 
