@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 822 contests, 4845 problems, 2414 verified."
+description: "Codeforces problem solutions with full editorial. 823 contests, 4851 problems, 2417 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**822 contests, 4845 problems, 2414 verified.**
+**823 contests, 4851 problems, 2417 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1780](1780/) | [Codeforces Round 846 (Div. 2)](https://codeforces.com/contest/1780) | Div. 2 | 800-2400 | 3/6 | 12m 59s |
 | [1781](1781/) | [VK Cup 2022 - Отборочный раунд (Engine)](https://codeforces.com/contest/1781) | Special | 800-3500 | 2/9 | 20m 58s |
 | [1783](1783/) | [Educational Codeforces Round 141 (Rated for Div. 2)](https://codeforces.com/contest/1783) | Div. 2 | 800-2800 | 0/7 | 18m 50s |
 | [1784](1784/) | [VK Cup 2022 - Финальный раунд (Engine)](https://codeforces.com/contest/1784) | Special | 1000-3400 | 4/6 | 13m 24s |
