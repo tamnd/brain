@@ -38,9 +38,7 @@ If we use only `m` distinct values, every adjacent product is formed by choosing
 
 The number of different products obtainable from `m` distinct primes is exactly
 
-$$m + \binom{m}{2}
-=
-\frac{m(m+1)}2.$$
+$$m + \binom{m}{2} = \frac{m(m+1)}2.$$
 
 Since the array contains `n-1` adjacent products and all of them must be distinct, we must have
 
@@ -70,9 +68,7 @@ Now the problem becomes purely graph theoretic.
 
 Suppose we have `m` vertices. Consider the complete graph with a loop on every vertex. The number of edges is
 
-$$m + \binom{m}{2}
-=
-\frac{m(m+1)}2.$$
+$$m + \binom{m}{2} = \frac{m(m+1)}2.$$
 
 Every edge corresponds to one unique adjacent product.
 
@@ -366,8 +362,6 @@ Consider a construction using composite numbers such as `[2,6,3,4]`.
 
 Then
 
-$$2\cdot6 = 12,
-\quad
-3\cdot4 = 12.$$
+$$2\cdot6 = 12, \quad 3\cdot4 = 12.$$
 
 The uniqueness condition fails. Using distinct primes prevents this completely because prime factorization uniquely identifies every edge.

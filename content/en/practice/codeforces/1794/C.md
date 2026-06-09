@@ -112,10 +112,7 @@ Because the original array is already sorted, we only need to find the largest s
 
 For a prefix ending at position `i`, the answer becomes the largest length `len` such that among the last `len` elements,
 
-$$a_{i-len+1} \ge 1,\quad
-a_{i-len+2} \ge 2,\quad
-\dots,\quad
-a_i \ge len.$$
+$$a_{i-len+1} \ge 1,\quad a_{i-len+2} \ge 2,\quad \dots,\quad a_i \ge len.$$
 
 Since the array is sorted, this condition reduces to
 
@@ -150,10 +147,7 @@ Let `ans` denote the answer for the current prefix.
 
 The implementation can also be viewed as maintaining the longest suffix satisfying
 
-$$a_{i-len+1} \ge 1,\;
-a_{i-len+2} \ge 2,\;
-\dots,\;
-a_i \ge len.$$
+$$a_{i-len+1} \ge 1,\; a_{i-len+2} \ge 2,\; \dots,\; a_i \ge len.$$
 
 Whenever a new value arrives, only one additional position can become valid, so a single comparison is enough.
 

@@ -30,10 +30,7 @@ We may choose any subset of games. The catch is that we receive the reward only 
 
 For a chosen subset $S$,
 
-$$\text{expected value}
-=
-\left(\prod_{i\in S}\frac{p_i}{100}\right)
-\left(\sum_{i\in S}w_i\right).$$
+$$\text{expected value} = \left(\prod_{i\in S}\frac{p_i}{100}\right) \left(\sum_{i\in S}w_i\right).$$
 
 We must maximize this quantity.
 
@@ -159,9 +156,7 @@ Sort each group in descending order.
 
 For probability $p$, compute
 
-$$\text{limit}
-=
-\left\lceil \frac1{\ln(100/p)} \right\rceil.$$
+$$\text{limit} = \left\lceil \frac1{\ln(100/p)} \right\rceil.$$
 
 Only the largest `limit` rewards from that group can ever matter.
 
@@ -181,9 +176,7 @@ $$dp[0]=1.$$
 
 For every retained game $(p,w)$,
 
-$$dp[s]
-=
-\max(dp[s],\, dp[s-w]\cdot p/100).$$
+$$dp[s] = \max(dp[s],\, dp[s-w]\cdot p/100).$$
 
 This is a standard 0/1 knapsack update.
 
@@ -191,9 +184,7 @@ This is a standard 0/1 knapsack update.
 
 For every reward sum $s$,
 
-$$\text{candidate}
-=
-dp[s]\cdot (base+s).$$
+$$\text{candidate} = dp[s]\cdot (base+s).$$
 
 Take the maximum over all $s$.
 

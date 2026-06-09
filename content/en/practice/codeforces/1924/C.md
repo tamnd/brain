@@ -50,11 +50,7 @@ $$2\sqrt2\left(\frac1{\sqrt2}\right)^{i-1}.$$
 
 Multiplying by the number of layers gives the total crease length created during fold $i$:
 
-$$T_i
-=
-2^{i-1}\cdot 2\sqrt2\cdot \left(\frac1{\sqrt2}\right)^{i-1}
-=
-2(\sqrt2)^i.$$
+$$T_i = 2^{i-1}\cdot 2\sqrt2\cdot \left(\frac1{\sqrt2}\right)^{i-1} = 2(\sqrt2)^i.$$
 
 The second observation is the crucial one. Starting from the second fold, the newly created mountain length and valley length are equal. The official editorial hints at exactly this symmetry between the two sides of the paper.
 
@@ -121,16 +117,10 @@ $$D=S+2\sqrt2=a+(b+2)\sqrt2.$$
 
 Then
 
-$$\frac{S}{D}
-=
-\frac{(a+b\sqrt2)(a-(b+2)\sqrt2)}
-     {a^2-2(b+2)^2}.$$
+$$\frac{S}{D} = \frac{(a+b\sqrt2)(a-(b+2)\sqrt2)}      {a^2-2(b+2)^2}.$$
 8. The coefficient of $\sqrt2$ in this expression is
 
-$$B
-=
-\frac{-2a}
-     {a^2-2(b+2)^2}.$$
+$$B = \frac{-2a}      {a^2-2(b+2)^2}.$$
 9. Evaluate this fraction modulo $999999893$ using a modular inverse.
 
 ### Why it works

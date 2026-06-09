@@ -38,8 +38,7 @@ A brute-force approach would attempt to recursively compute all possible operati
 
 The key observation is that we can represent the expected number of operations $E(x)$ recursively using a linearity-of-expectation argument:
 
-$$E(1) = 0, \quad
-E(x) = 1 + \frac{1}{2} \big(E(\lfloor x/2 \rfloor) + E(\lceil x/2 \rceil)\big) \quad \text{for } x > 1$$
+$$E(1) = 0, \quad E(x) = 1 + \frac{1}{2} \big(E(\lfloor x/2 \rfloor) + E(\lceil x/2 \rceil)\big) \quad \text{for } x > 1$$
 
 This recursion depends only on the smaller integers. Since each number reduces roughly by half each step, the depth of recursion is $O(\log x)$. We can use dynamic programming to cache the results for numbers we encounter to avoid recomputation. To handle modulo arithmetic with fractions, we compute results as numerator/denominator pairs and multiply by modular inverses.
 

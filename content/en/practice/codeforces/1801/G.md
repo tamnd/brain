@@ -201,9 +201,7 @@ $$c[g[p]][\,p-l+1\,].$$
 
 The final answer is
 
-$$(pref[r]-pref[p])
-+
-c[g[p]][p-l+1].$$
+$$(pref[r]-pref[p]) + c[g[p]][p-l+1].$$
 
 If no suitable `p` exists, the second term is zero.
 

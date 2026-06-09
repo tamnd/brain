@@ -30,11 +30,7 @@ One operation replaces the current value with the floor of half the value. The o
 
 The first thing to notice is that both operations behave identically on even numbers:
 
-$$\left\lfloor \frac{x}{2} \right\rfloor
-=
-\left\lceil \frac{x}{2} \right\rceil
-=
-\frac{x}{2}$$
+$$\left\lfloor \frac{x}{2} \right\rfloor = \left\lceil \frac{x}{2} \right\rceil = \frac{x}{2}$$
 
 The only interesting situation occurs when `x` is odd:
 

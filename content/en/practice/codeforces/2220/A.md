@@ -26,15 +26,15 @@ draft: false
 
 We are given two nonnegative integers \(x\) and \(y\). We must construct two new nonnegative integers \(p\) and \(q\) such that no bit is set in both numbers simultaneously, that is,
 
-\[
+$$
 p \,\&\, q = 0.
-\]
+$$
 
 Among all such pairs, we want to minimize
 
-\[
+$$
 |x-p| + |y-q|.
-\]
+$$
 
 The output is not the minimum value itself. We must output one optimal pair \((p,q)\).
 
@@ -64,9 +64,9 @@ The best answer is not \((1,0)\) or \((0,1)\), both of which have cost \(1\). Th
 
 A brute force search would enumerate all pairs \((p,q)\) satisfying \(p \& q = 0\), compute
 
-\[
+$$
 |x-p| + |y-q|,
-\]
+$$
 
 and keep the best one.
 
@@ -76,17 +76,17 @@ The key observation is that both the constraint and the objective can be handled
 
 Suppose we are constructing \(p\) and \(q\) from the most significant bit downward. At any point, only three comparison states are possible for \(p\) relative to \(x\):
 
-\[
+$$
 p < x,\quad p = x,\quad p > x.
-\]
+$$
 
 The same is true for \(q\) relative to \(y\).
 
 Therefore the entire future only depends on two ternary states, giving
 
-\[
+$$
 3 \times 3 = 9
-\]
+$$
 
 possible comparison states.
 
@@ -94,9 +94,9 @@ Once the relation between \(p\) and \(x\) has already been determined, lower bit
 
 We process bits from 30 down to 0. At each bit we choose one of the three allowed assignments:
 
-\[
+$$
 (p_b,q_b)\in\{(0,0),(0,1),(1,0)\},
-\]
+$$
 
 because \((1,1)\) would violate \(p \& q = 0\).
 
@@ -115,14 +115,14 @@ The DP keeps the minimum possible cost for every comparison state and stores tra
 
    Here
 
-   \[
+   $$
    s_x =
    \begin{cases}
    -1 & p < x,\\
    0 & p = x,\\
    1 & p > x,
    \end{cases}
-   \]
+   $$
 
    considering only the already processed higher bits.
 
@@ -130,9 +130,9 @@ The DP keeps the minimum possible cost for every comparison state and stores tra
 
 3. For each state, try the three valid bit assignments
 
-   \[
+   $$
    (0,0),\ (0,1),\ (1,0).
-   \]
+   $$
 
 4. Update the comparison state for \(p\) versus \(x\).
 
@@ -144,27 +144,27 @@ The DP keeps the minimum possible cost for every comparison state and stores tra
 
    Let
 
-   \[
+   $$
    d_x = p_b - x_b.
-   \]
+   $$
 
    If \(s_x=1\), the sign of \(p-x\) is already known to be positive, so this bit contributes
 
-   \[
+   $$
    d_x \cdot 2^b.
-   \]
+   $$
 
    If \(s_x=-1\), it contributes
 
-   \[
+   $$
    -d_x \cdot 2^b.
-   \]
+   $$
 
    If \(s_x=0\), then a first difference contributes exactly
 
-   \[
+   $$
    2^b.
-   \]
+   $$
 
 6. Do the same for \(q\) versus \(y\).
 
@@ -178,9 +178,9 @@ The most significant bit where \(p\) and \(x\) differ determines whether \(p>x\)
 
 Since every valid assignment of bits corresponds to a unique path through the DP, and every path accumulates precisely the value
 
-\[
+$$
 |p-x|+|y-q|,
-\]
+$$
 
 the DP examines all feasible pairs \((p,q)\) satisfying \(p\&q=0\) and selects one with minimum cost.
 
@@ -319,9 +319,9 @@ y = 4
 
 Binary representations:
 
-\[
+$$
 x=y=100_2.
-\]
+$$
 
 At bit 2, choosing \((1,1)\) is forbidden.
 
@@ -333,15 +333,15 @@ At bit 2, choosing \((1,1)\) is forbidden.
 
 This reconstructs
 
-\[
+$$
 p=100_2=4,\qquad q=011_2=3.
-\]
+$$
 
 The cost is
 
-\[
+$$
 |4-4|+|4-3|=1.
-\]
+$$
 
 The example shows how a shared high bit is split between the two numbers.
 
@@ -356,9 +356,9 @@ y = 6
 
 Binary:
 
-\[
+$$
 x=011_2,\qquad y=110_2.
-\]
+$$
 
 One optimal reconstruction is:
 
@@ -370,15 +370,15 @@ One optimal reconstruction is:
 
 This yields
 
-\[
+$$
 p=3,\qquad q=4.
-\]
+$$
 
 The cost is
 
-\[
+$$
 |3-3|+|6-4|=2.
-\]
+$$
 
 The sample output uses \(q=8\), which has the same optimal cost.
 

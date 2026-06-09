@@ -94,9 +94,7 @@ Conversely, if the minimum is at most $x+k-1$, then some element equals the mini
 
 This transforms the answer into
 
-$$(\text{arrays with minimum } \le x+k-1)
--
-(\text{arrays entirely in } [0,x-1]).$$
+$$(\text{arrays with minimum } \le x+k-1) - (\text{arrays entirely in } [0,x-1]).$$
 
 The first quantity becomes extremely simple.
 
@@ -122,17 +120,13 @@ be the number of length-`i` arrays ending at value `j`, where all values stay in
 
 The transition is
 
-$$dp_i[j]
-=
-\sum_{|j-t|\le k} dp_{i-1}[t].$$
+$$dp_i[j] = \sum_{|j-t|\le k} dp_{i-1}[t].$$
 
 This is a linear transformation on at most 40 states, so matrix exponentiation computes the result for huge `n`.
 
 The answer is
 
-$$(x+k)(2k+1)^{n-1}
--
-\text{count\_below\_x}.$$
+$$(x+k)(2k+1)^{n-1} - \text{count\_below\_x}.$$
 
 This yields an $O(x^3\log n)$ solution.
 

@@ -48,8 +48,7 @@ Consider $n=265,m=265,k=265$. The answer is $0$. Since there are only $266$ posi
 
 A brute-force solution would try every possible value $x=a_{n+1}$ from $0$ to $m$. For each one, we would generate
 
-$$a_n=x\bmod n,\quad
-a_{n-1}=a_n\bmod(n-1),\dots$$
+$$a_n=x\bmod n,\quad a_{n-1}=a_n\bmod(n-1),\dots$$
 
 and count distinct values.
 
@@ -424,7 +423,6 @@ so the sequence contains only $x$ and $0$.
 
 The formula gives
 
-$$\min(8,3)+\left\lfloor\frac{8}{4}\right\rfloor
-=3+2=5,$$
+$$\min(8,3)+\left\lfloor\frac{8}{4}\right\rfloor =3+2=5,$$
 
 which matches the five valid choices.

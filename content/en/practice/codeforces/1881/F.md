@@ -97,9 +97,7 @@ $$d_B(v)=\operatorname{dist}(v,B).$$
 
 A crucial property of trees is that for every marked vertex $x$,
 
-$$\operatorname{dist}(v,x)
-\le
-\max(d_A(v), d_B(v)).$$
+$$\operatorname{dist}(v,x) \le \max(d_A(v), d_B(v)).$$
 
 This means the farthest marked vertex from $v$ is always one of the two diameter endpoints.
 
@@ -155,12 +153,7 @@ $$\operatorname{dist}(B,x)\le \operatorname{dist}(A,B).$$
 
 A standard tree-diameter property states that for every vertex $v$, the farthest marked vertex from $v$ must be one of the diameter endpoints. Consequently,
 
-$$\max_{x \text{ marked}} \operatorname{dist}(v,x)
-=
-\max(
-\operatorname{dist}(v,A),
-\operatorname{dist}(v,B)
-).$$
+$$\max_{x \text{ marked}} \operatorname{dist}(v,x) = \max( \operatorname{dist}(v,A), \operatorname{dist}(v,B) ).$$
 
 The algorithm computes exactly these two distances for every vertex and minimizes their maximum. Since every candidate value is computed correctly, the minimum is also correct.
 

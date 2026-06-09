@@ -84,10 +84,7 @@ $AI=\frac r{\sin(A/2)},$
 
 the equation $IX=r$ becomes
 
-$$=
-\frac{r^2}{\sin^2(A/2)}
-+x^2
--2rx.$$
+$$= \frac{r^2}{\sin^2(A/2)} +x^2 -2rx.$$
 
 After rearrangement,
 
@@ -119,8 +116,7 @@ $$$$
 
 At first sight this still depends on the vertex. The crucial step is to rewrite the discriminant:
 
-$$=
-4\bigl(r^2-(s-a)^2\bigr).$$
+$$= 4\bigl(r^2-(s-a)^2\bigr).$$
 
 Using
 
@@ -128,20 +124,15 @@ $$$$
 
 we obtain
 
-$$=
-(s-a)\left(\frac{(s-b)(s-c)}s-(s-a)\right).$$
+$$= (s-a)\left(\frac{(s-b)(s-c)}s-(s-a)\right).$$
 
 Since
 
-$$(s-b)(s-c)
-=
-s(s-a)-bc,$$
+$$(s-b)(s-c) = s(s-a)-bc,$$
 
 it follows that
 
-$$r^2-(s-a)^2
-=
--\frac{bc(s-a)}s.$$
+$$r^2-(s-a)^2 = -\frac{bc(s-a)}s.$$
 
 This expression is negative, which means that our parametrization by distance from the vertex alone has lost the orientation along the altitude. The correct quantity to use is the signed coordinate on the altitude.
 
@@ -165,15 +156,11 @@ The midpoint of these two points is the projection of $I$ onto $AH$.
 
 Let $M_A$ be this projection. Then
 
-$$=
-\frac r{\sin(A/2)}\sin\frac A2
-=
-r.$$
+$$= \frac r{\sin(A/2)}\sin\frac A2 = r.$$
 
 Thus the two intersection distances from $A$ are
 
-$$\qquad
-r+r\cos\frac A2.$$
+$$\qquad r+r\cos\frac A2.$$
 
 The same computation on the other altitudes gives
 

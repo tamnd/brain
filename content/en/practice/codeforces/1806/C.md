@@ -167,9 +167,7 @@ $$|p_i-n|-|p_i+1|$$
 
 1. The best cost for this family is
 
-$$\text{base}
-+
-\min_i \left(|p_i-n|-|p_i+1|\right)$$
+$$\text{base} + \min_i \left(|p_i-n|-|p_i+1|\right)$$
 
 1. Take the minimum among all valid candidates.
 

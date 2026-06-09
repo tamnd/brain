@@ -92,10 +92,7 @@ Even though this works for the given constraints, it relies on explicitly genera
 
 The more elegant observation is that completed layers always form squares of odd side length:
 
-$$1 \times 1,\;
-3 \times 3,\;
-5 \times 5,\;
-7 \times 7,\dots$$
+$$1 \times 1,\; 3 \times 3,\; 5 \times 5,\; 7 \times 7,\dots$$
 
 Hence the total number of pieces at a completed layer is:
 

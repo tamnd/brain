@@ -155,11 +155,7 @@ because every length is at least $1$.
 
 Hence total penalty satisfies
 
-$$\sum |s_i|\cdot \text{len}_i
-\ge
-\sum |s_i|
-\ge
-\left|\sum s_i\right|$$
+$$\sum |s_i|\cdot \text{len}_i \ge \sum |s_i| \ge \left|\sum s_i\right|$$
 
 The final quantity is exactly the absolute value of the sum of the whole array, namely $|P-M|$.
 

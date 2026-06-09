@@ -110,9 +110,7 @@ Instead of minimizing modifications directly, it is easier to maximize how many 
 
 For a chosen final matrix $x$,
 
-$$\text{changes}
-=
-nm - \text{unchanged cells}.$$
+$$\text{changes} = nm - \text{unchanged cells}.$$
 
 So we want the feasible matrix that preserves the maximum number of original values.
 
@@ -125,11 +123,7 @@ For every cell:
 
 Using costs
 
-$$\text{cost}(1)=
-\begin{cases}
-0 & a_{ij}=1\\
-1 & a_{ij}=0
-\end{cases}$$
+$$\text{cost}(1)= \begin{cases} 0 & a_{ij}=1\\ 1 & a_{ij}=0 \end{cases}$$
 
 counts the cost of creating the final matrix's ones.
 
@@ -142,19 +136,13 @@ Let every original 1 contribute a constant cost of 1 initially. Then:
 
 This leads to edge weights
 
-$$w_{ij}=
-\begin{cases}
-1 & a_{ij}=1\\
--1 & a_{ij}=0
-\end{cases}$$
+$$w_{ij}= \begin{cases} 1 & a_{ij}=1\\ -1 & a_{ij}=0 \end{cases}$$
 
 and we seek the feasible matrix maximizing total weight.
 
 After obtaining the maximum weight $W$,
 
-$$\text{answer}
-=
-(\#\text{original ones}) - W.$$
+$$\text{answer} = (\#\text{original ones}) - W.$$
 
 The resulting optimization is a maximum-cost bipartite flow, equivalently a minimum-cost flow after negating edge costs.
 
@@ -211,19 +199,11 @@ Every unit of flow corresponds to selecting exactly one matrix cell whose final 
 
 For an original 1, selecting that cell contributes weight +1. For an original 0, selecting that cell contributes weight -1. The total weight equals
 
-$$(\text{original 1s kept})
--
-(\text{original 0s turned into 1}).$$
+$$(\text{original 1s kept}) - (\text{original 0s turned into 1}).$$
 
 If the original matrix contains `ones` ones, then
 
-$$\text{changes}
-=
-(\text{original 1s removed})
-+
-(\text{original 0s added})
-=
-\text{ones}-W.$$
+$$\text{changes} = (\text{original 1s removed}) + (\text{original 0s added}) = \text{ones}-W.$$
 
 Thus maximizing weight is exactly equivalent to minimizing the number of modified cells. The min-cost flow algorithm finds the optimal feasible flow, so the resulting edit count is minimal.
 

@@ -36,16 +36,7 @@ A naive misunderstanding would be to think we need to simulate swaps or try to â
 
 Example:
 
-$$a =
-\begin{pmatrix}
-1 & 2 \\
-3 & 4
-\end{pmatrix}, \quad
-b =
-\begin{pmatrix}
-4 & 3 \\
-2 & 1
-\end{pmatrix}$$
+$$a = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, \quad b = \begin{pmatrix} 4 & 3 \\ 2 & 1 \end{pmatrix}$$
 
 A naive row-matching approach might conclude mismatch because no row matches directly, but swapping both rows and columns makes the transformation possible.
 

@@ -122,9 +122,7 @@ This is exactly the setting where the Walsh-Hadamard transform diagonalizes XOR 
 
 For a character $t$,
 
-$$\widehat f_i(t)
-=
-1+2(-1)^{\langle t,A_i\rangle}.$$
+$$\widehat f_i(t) = 1+2(-1)^{\langle t,A_i\rangle}.$$
 
 The value is either $3$ or $-1$.
 
@@ -134,17 +132,11 @@ $$s_t=\sum_v \text{freq}[v]\cdot (-1)^{\langle t,v\rangle},$$
 
 then
 
-$$\widehat F(t)
-=
-3^{(N+s_t)/2}
-(-1)^{(N-s_t)/2}.$$
+$$\widehat F(t) = 3^{(N+s_t)/2} (-1)^{(N-s_t)/2}.$$
 
 By the inverse Walsh transform,
 
-$$\text{answer}
-=
-\frac1M
-\sum_t \widehat F(t).$$
+$$\text{answer} = \frac1M \sum_t \widehat F(t).$$
 
 Now the task is reduced to computing every $s_t$. These are exactly the Walsh-Hadamard transform values of the frequency array.
 
@@ -167,15 +159,11 @@ which is about $2.2\times10^6$ operations and easily fits.
 
 After the transform, `freq[t]` becomes
 
-$$s_t
-=
-\sum_v \text{cnt}[v](-1)^{\langle t,v\rangle}.$$
+$$s_t = \sum_v \text{cnt}[v](-1)^{\langle t,v\rangle}.$$
 4. Precompute powers of $3$ modulo $998244353$ up to $N$.
 5. For every transformed value $s_t$, compute
 
-$$a=\frac{N+s_t}{2},
-\qquad
-b=\frac{N-s_t}{2}.$$
+$$a=\frac{N+s_t}{2}, \qquad b=\frac{N-s_t}{2}.$$
 
 Then add
 
@@ -184,8 +172,7 @@ $$3^a(-1)^b$$
 to the running sum.
 6. Multiply the final sum by
 
-$$(2^{17})^{-1}
-\pmod{998244353}.$$
+$$(2^{17})^{-1} \pmod{998244353}.$$
 
 This performs the inverse Walsh-Hadamard normalization and gives the coefficient corresponding to XOR zero.
 

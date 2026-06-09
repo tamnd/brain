@@ -98,9 +98,7 @@ Next, observe the valid splits.
 
 For every internal element $a_i$, define
 
-$$L_i=\min(s,\ a_i-s),
-\qquad
-R_i=a_i-L_i.$$
+$$L_i=\min(s,\ a_i-s), \qquad R_i=a_i-L_i.$$
 
 These are exactly the two values appearing in every optimal split. The only decision is which one becomes $x_i$ and which one becomes $y_i$.
 
@@ -174,9 +172,7 @@ For every internal position $i\ge 3$:
 
 1. Let
 
-$$low=b_i,
-\qquad
-high=a_i-b_i.$$
+$$low=b_i, \qquad high=a_i-b_i.$$
 
 1. The previous position may be in either state.
 2. If the previous state has $y_{i-1}$, then moving to a state whose $x_i$ equals $x$ adds

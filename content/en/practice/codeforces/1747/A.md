@@ -49,20 +49,20 @@ The brute-force solution would enumerate all \(2^n\) assignments of elements int
 The key simplification comes from rewriting the objective in terms of total sum and how we partition signs.
 
 Let the total sum be \(S = \sum a_i\). Any partition corresponds to choosing a subset \(A\) for \(s_1\), with the rest forming \(s_2\). Then
-\[
+$$
 s_1 = \sum_{i \in A} a_i, \quad s_2 = S - s_1.
-\]
+$$
 So the objective becomes
-\[
+$$
 |s_1| - |S - s_1|.
-\]
+$$
 
 Now observe that this expression depends only on how far \(s_1\) is from \(S/2\), but constrained by the fact that \(s_1\) is a subset sum of arbitrary signed values.
 
 Instead of reasoning about partitions, we separate positive and negative contributions. Let
-\[
+$$
 P = \sum_{a_i > 0} a_i, \quad N = \sum_{a_i < 0} a_i.
-\]
+$$
 
 The optimal strategy is to group all positive numbers into one set and all negative numbers into the other, because mixing signs in the same group only reduces absolute magnitude.
 
@@ -70,29 +70,29 @@ Then we compare two extreme configurations:
 putting all numbers in one group, or splitting by sign.
 
 If everything is in one group, the value is
-\[
+$$
 |S| - 0 = |P + N|.
-\]
+$$
 
 If we split positives and negatives:
-\[
+$$
 |P| - |N|.
-\]
+$$
 
 Since \(P \ge 0\) and \(N \le 0\), this becomes
-\[
+$$
 P - (-N) = P + |N|.
-\]
+$$
 
 So the answer is simply the maximum of:
-\[
+$$
 |P + N| \quad \text{and} \quad P + |N|.
-\]
+$$
 
 But \(P + |N| = \sum |a_i|\), while \(|P + N|\) is at most \(\sum |a_i|\), so the second case always dominates or matches. Hence the optimal value is:
-\[
+$$
 \sum |a_i|.
-\]
+$$
 
 This reduces the entire problem to summing absolute values.
 

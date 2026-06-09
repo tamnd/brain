@@ -131,9 +131,7 @@ The only way Monocarp can still win is when both quantities are equal. Then they
 
 So for a boss with `b < a`, Monocarp wins exactly when
 
-$$\left\lceil \frac{a}{k} \right\rceil
-=
-\left\lceil \frac{b}{k} \right\rceil.$$
+$$\left\lceil \frac{a}{k} \right\rceil = \left\lceil \frac{b}{k} \right\rceil.$$
 
 Now comes the crucial simplification.
 
@@ -141,9 +139,7 @@ For an integer `x`, the value `ceil(x/k)` changes only when `k` crosses certain 
 
 Observe that
 
-$$\left\lceil \frac{a}{k} \right\rceil
->
-\left\lceil \frac{b}{k} \right\rceil$$
+$$\left\lceil \frac{a}{k} \right\rceil > \left\lceil \frac{b}{k} \right\rceil$$
 
 exactly when there exists a multiple of `k` lying in the interval `[b, a-1]`.
 
@@ -172,9 +168,7 @@ $$[b,\;a)$$
 
 because then
 
-$$\left\lceil \frac{a}{k}\right\rceil
->
-\left\lceil \frac{b}{k}\right\rceil.$$
+$$\left\lceil \frac{a}{k}\right\rceil > \left\lceil \frac{b}{k}\right\rceil.$$
 
 So each such boss forbids all values of `k` having at least one multiple in that interval.
 

@@ -54,11 +54,7 @@ After all $2n$ diagonals from this construction are covered, every remaining unc
 
 That yields the formula
 
-$$\text{answer}=
-\begin{cases}
-\left\lceil \frac{k}{2}\right\rceil, & k\le 2n \\
-n + (k-2n), & k>2n
-\end{cases}$$
+$$\text{answer}= \begin{cases} \left\lceil \frac{k}{2}\right\rceil, & k\le 2n \\ n + (k-2n), & k>2n \end{cases}$$
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -160,11 +156,7 @@ But the sample answer is $6$. This means our reasoning must account for the fact
 
 A cell covers at most two diagonals. All diagonals can be covered with exactly $2n-1$ cells. Thus the correct accepted formula is:
 
-$$\text{answer}=
-\begin{cases}
-\left\lceil \frac{k}{2}\right\rceil, & k < 4n-2 \\
-2n-1, & k = 4n-2
-\end{cases}$$
+$$\text{answer}= \begin{cases} \left\lceil \frac{k}{2}\right\rceil, & k < 4n-2 \\ 2n-1, & k = 4n-2 \end{cases}$$
 
 Let us trace the sample correctly.
 
