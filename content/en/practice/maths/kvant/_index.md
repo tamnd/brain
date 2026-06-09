@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1546 solved, 57 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1548 solved, 58 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1546
-kvant_verified: 57
+kvant_total: 1548
+kvant_verified: 58
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1546 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 57 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1548 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 58 solutions have been independently verified.
 
 ## 1970
 
@@ -3229,7 +3229,7 @@ draft: false
 
 ## 2025
 
-28 problems across Issues 1–11, 8 verified.
+30 problems across Issues 1–11, 9 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3303,6 +3303,8 @@ draft: false
 | [2868](2868.md) *Tournament of Cities (XLVII)*. We are asked whether Vasya can determine the total sum of 60 real numbers written on cards if he is allowed to ask about sums of 17-card subsets. |  | 34m43s |
 | [2869](2869.md) *Tournament of Towns (XLVII)*. Let $ABCD$ be a convex quadrilateral with diagonals $AC$ and $BD$. |  | 26m33s |
 | [2870](2870.md) *City Tournament (XLVII)*. We are asked to prove that if a snail moves along a closed, non-self-intersecting polygonal line in the plane using only three directions—up, to the right, and down-left at an angle of $45^\\circ$ to t… |  | 32m17s |
+| [2871](2871.md) *Southern Mathematical Tournament (XX)*. Let $p>2$ be a prime number and $k$ an integer with $0<k<p-1$. |  | 33m36s |
+| [2872](2872.md) *South-Russian Mathematical Olympiad “Assara” (IV)*. Two distinct natural numbers $x$ and $y$ form a beautiful pair when | ✓ | 27m30s |
 
 ## 2026
 
