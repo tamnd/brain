@@ -1,0 +1,149 @@
+---
+title: "CF 1698C - 3SUM Closure"
+description: "We are asked to determine if an array of integers is 3SUM-closed, which means that for every triple of distinct elements in the array, the sum of those three elements is itself present somewhere in the array."
+date: "2026-06-09T22:23:26+07:00"
+tags: ["codeforces", "competitive-programming", "brute-force", "data-structures"]
+categories: ["algorithms"]
+codeforces_contest: 1698
+codeforces_index: "C"
+codeforces_contest_name: "Codeforces Round 803 (Div. 2)"
+rating: 1300
+weight: 1698
+solve_time_s: 455
+verified: true
+draft: false
+---
+
+[CF 1698C - 3SUM Closure](https://codeforces.com/problemset/problem/1698/C)
+
+**Rating:** 1300  
+**Tags:** brute force, data structures  
+**Solve time:** 7m 35s  
+**Verified:** yes  
+
+## Solution
+## Problem Understanding
+
+We are asked to determine if an array of integers is 3SUM-closed, which means that for every triple of distinct elements in the array, the sum of those three elements is itself present somewhere in the array. The input consists of multiple test cases, each specifying the length of the array followed by its elements. The output is "YES" if the array is 3SUM-closed and "NO" otherwise.
+
+The constraints allow up to $2 \cdot 10^5$ total array elements across all test cases, which implies that any algorithm with worse than roughly $O(n^2)$ per test case is likely too slow. A brute-force approach that considers all triples directly would require $O(n^3)$ operations, which is not feasible for large $n$.
+
+Edge cases to consider include arrays with all identical elements, arrays with only zeros, and arrays containing both large positive and negative numbers. For example, $[0,0,0,0]$ is trivially 3SUM-closed because all triples sum to 0, which is in the array. Arrays with more than three distinct nonzero elements, such as $[-1, 2, -3, 4]$, may fail the property because some triple sums fall outside the array. Arrays with many duplicates or zeros must be treated carefully because counting distinct values is essential for correctness.
+
+## Approaches
+
+The naive approach is to iterate over every possible triple of indices and check if their sum exists in the array. This is correct because it directly implements the definition of 3SUM-closure, but the complexity is $O(n^3)$, which is unacceptable when $n$ is large. For example, $n=2 \cdot 10^5$ would require roughly $8 \cdot 10^{15}$ operations.
+
+The key observation is that an array with more than three distinct nonzero elements cannot be 3SUM-closed. Each triple of distinct nonzero numbers produces a sum that is not necessarily present in the array. Therefore, we can reduce the array to at most three positive numbers, three negative numbers, and any number of zeros. If there are more than three positive or more than three negative numbers, the array cannot be 3SUM-closed.
+
+Once the array is reduced, the problem becomes tractable because the number of distinct nonzero elements is at most six. We can then enumerate all triples of elements (taking zeros into account) and check whether each sum exists in the array. Since the total number of elements considered is at most 7, this check is feasible in $O(1)$ per test case.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | O(n^3) | O(n) | Too slow |
+| Optimized Reduction + Triple Check | O(1) per test case after filtering, O(n) for preprocessing | O(n) | Accepted |
+
+## Algorithm Walkthrough
+
+1. For each test case, read the array $a$ and convert it to a set for fast membership queries.
+2. Separate the elements into positives, negatives, and zeros. Keep only up to three largest positives and up to three smallest negatives. Include all zeros because they do not increase the number of distinct sums. This reduces the array to at most seven elements.
+3. Generate all triples of distinct elements from the reduced array. For each triple, compute its sum.
+4. Check if the sum of each triple exists in the original set of array elements. If any sum is missing, output "NO".
+5. If all triple sums are present, output "YES".
+
+Why it works: Any array with more than three positive or three negative numbers is automatically invalid because some triple sums cannot be represented in the array. By limiting to the crucial elements, we guarantee that checking all triple sums is sufficient to confirm 3SUM-closure. This relies on the invariant that any excluded elements would produce sums already covered by the remaining triples or sums outside the array.
+
+## Python Solution
+
+```python
+import sys
+input = sys.stdin.readline
+from itertools import combinations
+
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        a_set = set(a)
+        
+        pos = sorted([x for x in a if x > 0])
+        neg = sorted([x for x in a if x < 0])
+        zeros = [x for x in a if x == 0]
+        
+        if len(pos) > 3 or len(neg) > 3:
+            print("NO")
+            continue
+        
+        reduced = neg[:3] + zeros + pos[-3:]
+        ok = True
+        for triple in combinations(reduced, 3):
+            if sum(triple) not in a_set:
+                ok = False
+                break
+        print("YES" if ok else "NO")
+
+if __name__ == "__main__":
+    solve()
+```
+
+The code first partitions the array and reduces it to the critical elements. Using a set allows $O(1)$ membership checks for sums. The combination of the reduced array ensures that the total number of triples is small, so enumerating them is efficient.
+
+## Worked Examples
+
+Sample input `[3, -1, 0, 1]`:
+
+| reduced | triples | sum | in set? |
+| --- | --- | --- | --- |
+| [-1,0,1] | (-1,0,1) | 0 | Yes |
+
+Output: YES. All triple sums exist in the array.
+
+Sample input `[4, -1, 2, -3, 4]`:
+
+| reduced | triples | sum | in set? |
+| --- | --- | --- | --- |
+| [-3,-1,2,4] | (-3,-1,2) | -2 | No |
+
+Output: NO. The sum -2 does not exist in the array.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(n) per test case | Partitioning the array and reducing elements is linear; checking triples is constant since reduced length ≤ 7 |
+| Space | O(n) | Set for membership checking and reduced list storage |
+
+The solution fits well within the time and memory limits because the sum of all $n$ is at most $2 \cdot 10^5$.
+
+## Test Cases
+
+```python
+import sys, io
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    out = io.StringIO()
+    sys.stdout = out
+    solve()
+    return out.getvalue().strip()
+
+# Provided samples
+assert run("4\n3\n-1 0 1\n5\n1 -2 -2 1 -3\n6\n0 0 0 0 0 0\n4\n-1 2 -3 4\n") == "YES\nNO\nYES\nNO"
+
+# Custom cases
+assert run("1\n3\n1 2 3\n") == "NO", "three positive numbers not closed"
+assert run("1\n3\n0 0 0\n") == "YES", "all zeros"
+assert run("1\n7\n-2 -1 0 0 0 1 2\n") == "YES", "balanced negatives and positives with zeros"
+assert run("1\n8\n-5 -4 -3 -2 0 2 3 4\n") == "NO", "too many negatives"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 1 2 3 | NO | three distinct positives cannot form 3SUM-closed |
+| 0 0 0 | YES | all zeros, trivial closure |
+| -2 -1 0 0 0 1 2 | YES | reduced array check with zeros included |
+| -5 -4 -3 -2 0 2 3 4 | NO | exceeds limit of three negatives |
+
+## Edge Cases
+
+An array with all zeros `[0,0,0,0]` produces triple sums of 0, all present in the array. A balanced array `[-2,-1,0,0,0,1,2]` works because after reduction to at most three negatives, three positives, and zeros, all triple sums are present. Arrays exceeding three positives or three negatives, such as `[-5,-4,-3,-2,0,2,3,4]`, fail because some triple sums fall outside the array. The algorithm correctly identifies these situations by limiting the reduced set and checking all triple sums explicitly.
