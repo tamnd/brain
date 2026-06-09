@@ -4,6 +4,7 @@ set -euo pipefail
 REPO_DIR="$HOME/github/tamnd/brain"
 BRANCH="main"
 INTERVAL=${BRAIN_INTERVAL:-300}
+MAX_REBASE_AHEAD=${BRAIN_MAX_REBASE_AHEAD:-20}
 BASE_URL="https://brain.tamnd.com/"
 
 # colors
@@ -43,17 +44,29 @@ build_commit_msg() {
 # Problems solved vs the naive "git rebase || true" approach:
 #  1. Rebase requires a clean working tree — stash dirty changes first, pop after.
 #  2. Silent rebase failures led to conflict markers being staged and committed.
-#  3. After a rebase, ordinary push is rejected (history rewritten) — use --force-with-lease.
-#  4. True file conflicts (same note edited on two machines) are auto-resolved:
+#  3. True file conflicts (same note edited on two machines) are auto-resolved:
 #     take the remote version for conflicted files, then re-apply local stash on top.
 #     Local edits win at stash-pop time; if stash-pop also conflicts, local (ours) wins.
+#  4. Pushes to main are normal fast-forward pushes only. If another machine moves
+#     main during build, keep the commit locally and retry after the next sync.
 #
 # Returns 0 on success (nothing to do, or rebased cleanly), 1 if rebase was aborted.
 smart_sync() {
   git fetch -q origin "$BRANCH" 2>/dev/null || return 0
 
+  local remote_only local_only
+  read -r remote_only local_only < <(git rev-list --left-right --count "origin/$BRANCH...HEAD" 2>/dev/null || echo "0 0")
+
+  # A very large local queue after remote moved usually means another machine
+  # rewrote/pushed main while this one kept generating commits. Do not replay
+  # that automatically; it needs a deliberate manual merge/cherry-pick.
+  if [ "$remote_only" -gt 0 ] && [ "$local_only" -gt "$MAX_REBASE_AHEAD" ]; then
+    log "${YLW}✗ large divergence: ${local_only} local commit(s), ${remote_only} remote commit(s); manual sync required${RST}"
+    return 1
+  fi
+
   # Nothing to pull.
-  git log "HEAD..origin/$BRANCH" --oneline 2>/dev/null | grep -q . || return 0
+  [ "$remote_only" -gt 0 ] || return 0
 
   # Stash any uncommitted working-tree changes — rebase requires a clean tree.
   local stashed=false
@@ -148,12 +161,22 @@ while true; do
   _did_something=false
 
   # Pull remote changes (smart: stash/rebase/pop, auto-resolve conflicts).
-  smart_sync
+  # Do not create more commits while this checkout needs manual reconciliation.
+  if ! smart_sync; then
+    log "${YLW}· sync incomplete — skipping commit/push this cycle${RST}"
+    sleep "$INTERVAL"
+    continue
+  fi
 
   # Rebuild Kvant _index.md from all present .md files — must run AFTER smart_sync
   # so it sees files from all servers before regenerating the index.
   if KVANT_OUT="$(python3 "$REPO_DIR/scripts/fix_kvant_index.py" 2>&1)" && [ -n "$KVANT_OUT" ]; then
     while IFS= read -r line; do log "${YLW}kvant-idx: ${line}${RST}"; done <<< "$KVANT_OUT"
+  fi
+
+  # Rebuild Codeforces top-level _index.md grouped by year.
+  if CF_OUT="$(python3 "$REPO_DIR/scripts/fix_codeforces_index.py" 2>&1)" && [ -n "$CF_OUT" ]; then
+    while IFS= read -r line; do log "${YLW}cf-idx: ${line}${RST}"; done <<< "$CF_OUT"
   fi
 
   # Commit any local changes (always safe to commit locally).
@@ -170,12 +193,15 @@ while true; do
   fi
 
   # Push only after a tago build passes — catches render errors before CI.
-  # Use --force-with-lease because we may have rebased local commits above.
-  # If tago fails the commit stays local; the next cycle retries.
+  # Sync once more before build so a successful build matches the latest main.
+  # Pushes are normal fast-forward pushes only; never force-push shared main.
+  # If tago or push fails the commit stays local; the next cycle retries.
   _unpushed=$(git log "origin/$BRANCH..HEAD" --oneline 2>/dev/null || true)
   if [ -n "$_unpushed" ]; then
-    if TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
-      if PUSH_OUT="$(git push -q --force-with-lease origin "$BRANCH" 2>&1)"; then
+    if ! smart_sync; then
+      log "${YLW}✗ sync failed before build — commit held locally, retry next cycle${RST}"
+    elif TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
+      if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
         log "${GRN}✓ pushed${RST}"
         # Wait for GitHub Actions deploy and report result + duration.
         _deploy_start=$(date +%s)
@@ -229,7 +255,7 @@ while true; do
         fi
         # Retry tago.
         if TAGO_OUT2="$(tago build --base-url "$BASE_URL" 2>&1)"; then
-          if PUSH_OUT2="$(git push -q --force-with-lease origin "$BRANCH" 2>&1)"; then
+          if PUSH_OUT2="$(git push -q origin "$BRANCH" 2>&1)"; then
             log "${GRN}✓ pushed after auto-fix${RST}"
           else
             log "${YLW}✗ push failed after auto-fix: ${PUSH_OUT2}${RST}"

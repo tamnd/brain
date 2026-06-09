@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Beta Round 22 (Div. 2 Only)"
-description: "Solutions for Codeforces Beta Round 22 (Div. 2 Only) (contest 22). 4/5 problems verified against sample I/O. Difficulty range: 800-2300."
+description: "5 problems from Codeforces Beta Round 22 (Div. 2 Only) (contest 22), difficulty 800-2300. 4/5 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "graphs", "greedy", "sortings", "dfs-and-similar"]
 categories: ["algorithms"]
 contest_id: 22
@@ -9,19 +9,20 @@ rating_range: "800-2300"
 n_problems: 5
 n_verified: 4
 total_solve_s: 459
-date: "2026-05-28T00:00:00+07:00"
+contest_year: 2010
+date: "2026-05-28T18:49:01+07:00"
 weight: 22
 draft: false
 ---
 
 # [Codeforces Beta Round 22 (Div. 2 Only)](https://codeforces.com/contest/22)
 
-**Type:** Div. 2 | **Problems:** 5 | **Verified:** 4/5 | **Rating range:** 800-2300 | **Time:** 7m 39s
+Div. 2 | 5 problems | 4/5 verified | Difficulty 800-2300 | 7m 39s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [A](A/) | [Second Order Statistics](https://codeforces.com/problemset/problem/22/A) | 800 | brute-force | 1m 21s | ✓ |
-| [B](B/) | [Bargaining Table](https://codeforces.com/problemset/problem/22/B) | 1500 | brute-force, dp | 1m 40s | ✓ |
-| [C](C/) | [System Administrator](https://codeforces.com/problemset/problem/22/C) | 1700 | graphs | 1m 25s | ✗ |
-| [D](D/) | [Segments](https://codeforces.com/problemset/problem/22/D) | 1900 | greedy, sortings | 1m 25s | ✓ |
-| [E](E/) | [Scheme](https://codeforces.com/problemset/problem/22/E) | 2300 | dfs-and-similar, graphs, trees | 1m 48s | ✓ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Second Order Statistics](https://codeforces.com/problemset/problem/22/A) | 800 | brute-force | 27,079 | 1m 21s | ✓ |
+| [B](B/) | [Bargaining Table](https://codeforces.com/problemset/problem/22/B) | 1500 | brute-force, dp | 4,782 | 1m 40s | ✓ |
+| [C](C/) | [System Administrator](https://codeforces.com/problemset/problem/22/C) | 1700 | graphs | 3,806 | 1m 25s |  |
+| [D](D/) | [Segments](https://codeforces.com/problemset/problem/22/D) | 1900 | greedy, sortings | 3,411 | 1m 25s | ✓ |
+| [E](E/) | [Scheme](https://codeforces.com/problemset/problem/22/E) | 2300 | dfs-and-similar, graphs, trees | 2,078 | 1m 48s | ✓ |

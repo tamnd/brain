@@ -9,11 +9,13 @@ draft: false
 
 # Codeforces Solutions
 
-Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
+Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
 **852 contests, 5066 problems, 2484 verified.**
 
-| Contest | Name | Type | Rating Range | Verified | Time |
+## 2010 — 51 contests, 271 problems, 230 verified
+
+| # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [1](1/) | [Codeforces Beta Round 1](https://codeforces.com/contest/1) | Beta | 1000-2100 | 3/3 | 10m 36s |
 | [2](2/) | [Codeforces Beta Round 2](https://codeforces.com/contest/2) | Beta | 1500-2600 | 2/3 | 5m 52s |

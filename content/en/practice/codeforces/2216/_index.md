@@ -14,7 +14,7 @@ weight: 2216
 draft: false
 ---
 
-# [Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 — Finals)](https://codeforces.com/contest/2216)
+# [Codeforces Round 1092 (Unrated, Div. 2, Based on THUPC 2026 \u2014 Finals)](https://codeforces.com/contest/2216)
 
 **Type:** Div. 2 | **Problems:** 6 | **Verified:** 0/6 | **Rating range:** 900-2700 | **Time:** 10m
 

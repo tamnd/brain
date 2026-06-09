@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Round 266 (Div. 2)"
-description: "Solutions for Codeforces Round 266 (Div. 2) (contest 466). 3/4 problems verified against sample I/O. Difficulty range: 1200-2100."
+description: "4 problems from Codeforces Round 266 (Div. 2) (contest 466), difficulty 1200-2100. 3/4 solutions verified against sample I/O."
 tags: ["codeforces", "competitive-programming", "implementation", "binary-search", "brute-force", "data-structures", "dp", "two-pointers"]
 categories: ["algorithms"]
 contest_id: 466

@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1403 solved, 8 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1529 solved, 50 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
-kvant_total: 1403
-kvant_verified: 8
+kvant_total: 1529
+kvant_verified: 50
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1403 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 8 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1529 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 50 solutions have been independently verified.
 
 ## 1970
 
@@ -758,7 +758,7 @@ draft: false
 
 ## 1976
 
-44 problems across Issues 1–12.
+49 problems across Issues 1–12.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1976_1/)
 
@@ -817,6 +817,7 @@ draft: false
 | [391](391.md) I cannot write a solution to Kvant problem M391 from the information provided, because the actual problem statement is missing. |  | 5m45s |
 | [392](392.md) *All-Union Mathematical Olympiad of School Students (1976, 10th grade)*. Let the positions of the three pedestrians at time $t$ be represented by vectors $A(t), B(t), C(t)$ in the plane. |  | 6m44s |
 | [393](393.md) Let |  | 6m39s |
+| [394](394.md) *All-Union Mathematical Olympiad for School Students (1976, Grades 9 and 10)*. Let |  | 15m09s |
 | [395](395.md) *All-Union Mathematical Olympiad for School Students (1976, Grade 10)*. Label the vertices of a regular $n$-gon by $0,1,\\dots,n-1$ in cyclic order. |  | 2m05s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1976_8/)
@@ -844,6 +845,7 @@ draft: false
 |---|---------|---|------|
 | [406](406.md) Let the circle have center $O$ and radius $R$. |  | 2m58s |
 | [407](407.md) *S. V. Konyagin*. Consider small examples to understand the structure of the problem. |  | 3m58s |
+| [408](408.md) Let the original rectangles have side lengths $a$ and $b$, and let their ratio be $r = \\frac{a}{b} > 0$. |  | 9m21s |
 | [409](409.md) The transformation replaces each entry in a row by the frequency of that value in the same row. |  | 9m54s |
 | [410](410.md) Consider the sphere of radius $1$ centered at the origin in $\\mathbb{R}^3$, and let the equatorial plane be the $xy$-plane. |  | 4m02s |
 
@@ -852,7 +854,9 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [411](411.md) Consider a triangle with sides $a$, $b$, $c$, and a point inside it through which three segments pass, each parallel to a side and all of equal length $x$. |  | 2m09s |
+| [412](412.md) Model the city as a finite directed graph $G=(V,E)$ in which vertices are squares and directed edges are one-way streets. |  | 9m18s |
 | [413](413.md) *I. M. Yaglom*. Consider the equation $f(x+a)-f(x)=0$ for a function $f$ continuous on $[0,1]$ with $f(0)=f(1)=0$. |  | 9m58s |
+| [414](414.md) Let the convex pentagon be $A_1A_2A_3A_4A_5$, with indices taken modulo $5$. |  | 26m19s |
 | [415](415.md) The problem asks for the maximum number of mutually non-attacking kings on an $n\\times n$ toroidal board. |  | 2m23s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1976_12/)
@@ -862,17 +866,19 @@ draft: false
 | [416](416.md) Interpret the drawn segments as the edges of a graph whose vertices are the given points. |  | 6m34s |
 | [417](417.md) *V. V. Proizvolov*. The object is a closed polygonal line drawn on the surface of a unit cube, with the condition that every face of the cube contains at least one entire segment of the polygonal line. |  | 7m06s |
 | [418](418.md) For small values of $n$, |  | 6m34s |
+| [419](419.md) Let $D_{16}$ denote the closed disk of radius $16$ centered at the origin, and suppose $650$ points $P_1, \\dots, P_{650}$ are placed in $D_{16}$. |  | 27m06s |
 | [420](420.md) *G. A. Gurevich, B. Makarevich*. The allowed operations on a fraction $\\frac{a}{b}$ replace the integer pair $(a,b)$ by one of $(a-b,b)$, $(a+b,b)$, or $(b,a)$. |  | 2m11s |
 
 ## 1977
 
-51 problems across Issues 1–12, 1 verified.
+56 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1977_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [421](421.md) Let the cells of the infinite graph paper be indexed by integer coordinates $(x,y)$, where each cell corresponds to one pair of integers. |  | 6m42s |
+| [422](422.md) Let $\\triangle ABC$ be arbitrary. |  | 24m02s |
 | [423](423.md) The left-hand side contains the three quantities |  | 3m37s |
 | [424](424.md) Let $ABCD$ be a tetrahedron. |  | 6m51s |
 | [425](425.md) Suppose such an $N$ exists. |  | 6m34s |
@@ -940,6 +946,7 @@ draft: false
 | [456](456.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, 10th grade)*. At each vertex of the polyhedron, exactly three edges meet, so the vertex figure is a trihedral angle. |  | 9m15s |
 | [457](457.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 8)*. Let the vertices of the simple closed polygonal line be $A_1,A_2,\\dots,A_n$ in cyclic order, and let $e_i=A_iA_{i+1}$, with indices taken modulo $n$. |  | 3m44s |
 | [458](458.md) *All-Union School Mathematics Olympiad (XI, 1977, 10th grade)*. Consider the polynomial $x^{10}+a_9x^9+\\dots+a_1x+1$ with all coefficients initially unspecified except for the leading and constant terms, which are $1$. |  | 7m07s |
+| [459](459.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 9)*. Let the route produced by the minimum-greedy algorithm be |  | 24m48s |
 | [460](460.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, 8th and 10th grades)*. We begin with small values of $n$ to understand the structure. |  | 7m13s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1977_9/)
@@ -949,6 +956,7 @@ draft: false
 | [461](461.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, 9th grade)*. Consider a small number of weights, for instance $n=2$ or $n=3$, each with distinct masses $w_1<w_2<w_3$. |  | 6m02s |
 | [462](462.md) Let the apex of the regular square pyramid be $S$, and let the base square be $ABCD$ with center $O$. |  | 1m46s |
 | [463](463.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 9)*. Consider small examples to understand the problem concretely. |  | 6m14s |
+| [464](464.md) *All-Union Mathematical Olympiad for School Students (XI, 1977, Grade 9)*. Let each square correspond to its center. | ✓ | 9m26s |
 | [465](465.md) *All-Union Mathematical Olympiad of School Students (XI, 1977, grades 8 and 10)*. A ticket is a length-$k$ word over the alphabet ${0,1,\\dots,9}$. |  | 4m28s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1977_10/)
@@ -967,7 +975,9 @@ draft: false
 |---|---------|---|------|
 | [471](471.md) *S. V. Fomin*. Two intersecting circles partition the plane into exactly three bounded regions: the common lens $R_0$, the two asymmetric caps $R_1$ and $R_2$ lying respectively in the first and second circle but ou… |  | 7m20s |
 | [472](472.md) *V. V. Prasolov*. Consider a cube of side length $1$ for simplicity. |  | 4m36s |
+| [473](473.md) Let the weights in the first group be | ✓ | 17m39s |
 | [474](474.md) We begin by examining the properties of perfect numbers modulo small integers. |  | 6m15s |
+| [475](475.md) Assume that an equilateral triangle has all three vertices at lattice points. | ✓ | 30m48s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1977_12/)
 
@@ -981,13 +991,14 @@ draft: false
 
 ## 1978
 
-56 problems across Issues 1–12.
+59 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1978_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [481](481.md) Let |  | 6m26s |
+| [482](482.md) *V. V. Proizvolov, A. P. Savin*. Let the regular tetrahedron be $ABCD$, with edge length $a$. |  | 33m51s |
 | [483](483.md) Consider a right triangle with legs $a$ and $b$ and hypotenuse $c$, where $c^2 = a^2 + b^2$. |  | 6m19s |
 | [484](484.md) *S. N. Mironov*. A dissection of a convex polygon into regular polygons means that every piece is an equilateral triangle, a square, or a regular polygon of higher order, all glued edge-to-edge without overlap. |  | 7m06s |
 | [485](485.md) *T. Martynenko, R. P. Ushakov*. The interval is |  | 8m14s |
@@ -1015,6 +1026,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [496](496.md) *S. V. Fomin*. A six-digit number can be written as the product of two three-digit numbers if and only if it belongs to the set | ✓ | 9m01s |
 | [497](497.md) *V. L. Gutenmakher*. Consider triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $CA$, and $C_1$ on $AB$. |  | 3m44s |
 | [498](498.md) *N. B. Vasiliev, A. A. Egorov*. Consider small values of $n$. |  | 2m18s |
 | [499](499.md) *G. A. Gurevich*. Consider what it means for a number to be balanced. |  | 6m14s |
@@ -1055,6 +1067,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [516](516.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, grades 8–10)*. The three machines modify cards in distinct ways. |  | 2m36s |
+| [517](517.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, Grades 8–9)*. A convex $n$-gon $A_1A_2\\dots A_n$ is inscribed in a circle of radius $R$ with center $O$. |  | 42m23s |
 | [518](518.md) *All-Union School Mathematics Olympiad (XII, 1978, 9th grade)*. Consider the inequality |  | 4m19s |
 | [519](519.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, Grade 9)*. Let $W$ denote a winning position for the player to move and $L$ a losing position. |  | 6m20s |
 | [520](520.md) *All-Union Mathematical Olympiad for School Students (XII, 1978, Grade 10)*. Consider the sequence $x_n=(1+\\sqrt{2}+\\sqrt{3})^n$. |  | 5m27s |
@@ -1101,7 +1114,7 @@ draft: false
 
 ## 1979
 
-51 problems across Issues 1–12, 1 verified.
+60 problems across Issues 1–12, 6 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1979_1/)
 
@@ -1120,6 +1133,7 @@ draft: false
 | [546](546.md) Let the rectangle be centered at the origin, with sides parallel to the coordinate axes. |  | 4m53s |
 | [547](547.md) The equation is |  | 10m01s |
 | [548](548.md) For four points on a circle, label them by position vectors $a,b,c,d$ on a circle with center $O$, taken as the origin. |  | 4m47s |
+| [549](549.md) *V. E. Matizen*. Let $N$ be a natural number and let its divisors be $d \\mid N$. |  | 8m56s |
 | [550](550.md) *S. S. Krotov*. Let the optimal finishing time be $T$. |  | 9m40s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1979_3/)
@@ -1136,6 +1150,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [556](556.md) *A. A. Egorov*. The answer is **yes**. |  | 31m46s |
 | [557](557.md) *A. T. Kolotov*. Suppose, contrary to the statement, that none of the given numbers is prime. |  | 3m02s |
 | [558](558.md) *V. V. Proizvolov*. Let the black sectors have angular lengths $\\alpha_1,\\dots,\\alpha_k$, where each |  | 2m40s |
 | [559](559.md) Let |  | 2m11s |
@@ -1145,6 +1160,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [561](561.md) *L. P. Kuptsov*. The condition says that corresponding sides are parallel, but the directions are reversed. | ✓ | 11m32s |
 | [562](562.md) Our systems have detected unusual activity coming from your system. |  | 27m20s |
 | [563](563.md) *S. V. Fomin*. Assume, seeking a contradiction, that | ✓ | 8m47s |
 | [564](564.md) Let $BC=a$, and place the triangle in coordinates |  | 7m57s |
@@ -1164,16 +1180,20 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [571](571.md) *All-Union Mathematical Olympiad of School Students (1979, 10th grade)*. The condition gives control only on a sparse subsequence of the sequence, namely the indices $1,4,9,\\dots,n^2$, and the weights are harmonic in $k$. |  | 9m59s |
 | [572](572.md) *All-Union Mathematical Olympiad for School Students (1979, 8th grade)*. The kangaroo moves in the integer lattice of the first quadrant with vectors $v_1=(1,-1)$ and $v_2=(-5,7)$, always staying in $x\\ge 0$, $y\\ge 0$. |  | 2m26s |
 | [573](573.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. Let the lines through $O$ be $l_1,\\dots,l_{1979}$. |  | 7m24s |
+| [574](574.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. Let | ✓ | 13m05s |
 | [575](575.md) *All-Union Mathematical Olympiad of School Students (1979, 10th grade)*. Let $A_0A_1,\\dots,A_{n-1}A_n$ be consecutive segments on a line with each length at most $1$. |  | 9m49s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1979_8/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [576](576.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 8)*. Represent each chosen vector by an oriented edge of a directed graph whose vertices are the given points. | ✓ | 10m41s |
 | [577](577.md) *All-Union Mathematical Olympiad for School Students (1979, Grades 8 and 10)*. Place coordinates on the board by identifying each square with the pair $(i,j)$, where $1\\le i,j\\le n$. |  | 3m25s |
 | [578](578.md) *All-Union Mathematical Olympiad for School Students (1979, Grades 8 and 10)*. Introduce |  | 9m12s |
+| [579](579.md) *All-Union Mathematical Olympiad for School Students (1979, Grade 9)*. For $n=1$ the inequality becomes | ✓ | 15m32s |
 | [580](580.md) *All-Union Mathematical Olympiad of School Students (1979, grades 8–10)*. Let $G$ be the graph whose vertices are parliamentarians and edges represent mutual enmity. |  | 2m10s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1979_9/)
@@ -1182,6 +1202,7 @@ draft: false
 |---|---------|---|------|
 | [581](581.md) The first question asks for a three-digit integer $x$ such that $x^3$ ends in $777$, equivalently |  | 2m02s |
 | [582](582.md) *A. V. Kelarev*. Let the cyclic quadrilateral be $ABCD$, and let its diagonals $AC$ and $BD$ intersect at $P$. |  | 7m06s |
+| [583](583.md) Let the stone masses be $x_1,\\dots,x_n$ with $0<x_i\\le 2$ and $\\sum_{i=1}^n x_i=50$. |  | 27m17s |
 | [584](584.md) *F. V. Vainshtein*. Suppose such a family of lines exists. |  | 7m29s |
 | [585](585.md) *S. V. Konyagin, P. Blecher*. The majority are chemists, and chemists are perfectly reliable. |  | 6m59s |
 
@@ -1191,6 +1212,7 @@ draft: false
 |---|---------|---|------|
 | [586](586.md) *All-Russian Mathematical Olympiad for School Students (1979, 8th grade)*. Let $B=60^\\circ$ and let $O$ be the incenter of triangle $ABC$. |  | 2m15s |
 | [587](587.md) *All-Russian School Mathematics Olympiad (1979, 9th grade)*. The operation replaces two numbers $x,y$ by |  | 3m28s |
+| [588](588.md) *All-Russian Mathematical Olympiad for School Students (1979, Grade 9)*. For the planar analogue, take a triangle $ABC$ and a point $P$ inside it. | ✓ | 8m21s |
 | [589](589.md) *All-Russian School Mathematics Olympiad (1979, 9th grade)*. Let the given vectors be $v_1,\\dots,v_n$. |  | 6m10s |
 | [590](590.md) *All-Russian Mathematical Olympiad for School Students (1979, Grade 10)*. Consider first the expression $/\\cos x/ + /\\cos 2x/$. |  | 6m31s |
 
@@ -1216,7 +1238,7 @@ draft: false
 
 ## 1980
 
-58 problems across Issues 1–12.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1980_1/)
 
@@ -1276,6 +1298,7 @@ draft: false
 | [627](627.md) *A. K. Tolpygo*. For part 1, suppose every natural number appears exactly once. |  | 6m57s |
 | [628](628.md) Consider a spherical triangle with one side of length $120^\\circ$. |  | 3m21s |
 | [629](629.md) For the first statement, computing small cases is instructive. |  | 1m31s |
+| [630](630.md) *I. F. Sharygin*. The point $M$ is defined from the circle through $P,Q,K$. | ✓ | 22m44s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1980_7/)
 
@@ -1305,6 +1328,7 @@ draft: false
 | [642](642.md) *I. K. Zhuk*. The coefficients are restricted to the set ${-1,0,1}$, and two neighboring coefficients cannot both be nonzero. |  | 5m12s |
 | [643](643.md) A shuffle takes an initial segment of the deck and inserts it somewhere later, preserving the internal order of the removed block and of the remaining cards. |  | 5m44s |
 | [644](644.md) *G. A. Gurevich*. A convex equiangular $n$-gon has exterior angle $2\\pi/n$ at every vertex. |  | 7m12s |
+| [645](645.md) Normalize the speeds so that Warnicke moves with speed $1$ and the criminal with speed $\\frac12$. |  | 39m32s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1980_10/)
 
@@ -1338,7 +1362,7 @@ draft: false
 
 ## 1981
 
-55 problems across Issues 1–12.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1981_1/)
 
@@ -1368,6 +1392,7 @@ draft: false
 | [672](672.md) Let $f(n)=2^n-1$. |  | 9m33s |
 | [673](673.md) *A. A. Razborov*. Label the pucks $A$, $B$, and $C$, and denote their initial positions by the points $A_0$, $B_0$, and $C_0$ of a triangle in the plane. |  | 5m30s |
 | [674](674.md) Consider an acute triangle $ABC$ with arbitrary points $A_1$ on $BC$, $B_1$ on $AC$, and $C_1$ on $AB$. |  | 7m17s |
+| [675](675.md) *G. A. Gurevich, A. T. Kolotov*. The condition states that all subset sums of the chosen set are distinct. |  | 9m38s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1981_4/)
 
@@ -1376,6 +1401,7 @@ draft: false
 | [676](676.md) *A. V. Savkin, 9th-grade student*. We begin by computing small powers of $1981$ and observing the sums of their digits. |  | 8m16s |
 | [677](677.md) Consider a triangle $ABC$ and a point $M$ which is simultaneously the centroid, incenter, and orthocenter. |  | 6m51s |
 | [678](678.md) *A. F. Sidorenko*. Consider small examples first. |  | 6m23s |
+| [679](679.md) *V. V. Proizvolov*. Let the circles be $\\omega_1,\\omega_2,\\omega_3,\\omega_4$ with consecutive tangency points $A,B,C,D$. |  | 9m23s |
 | [680](680.md) *A. A. Razborov*. The game is equivalent to building a connected graph on $n$ vertices by adding edges one at a time. |  | 7m10s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1981_5/)
@@ -1415,6 +1441,7 @@ draft: false
 | [696](696.md) Consider the problem for small $k \\times k$ squares. |  | 2m58s |
 | [697](697.md) *S. V. Fomin*. Let the square have side length $1$. |  | 9m51s |
 | [698](698.md) Let the cyclic quadrilateral be $ABCD$, with side lengths |  | 7m57s |
+| [699](699.md) Working |  | 30m36s |
 | [700](700.md) Consider the set of all terminating decimal fractions. |  | 7m34s |
 
 ### [Issue 9](https://www.kvant.digital/view/kvant_1981_9/)
@@ -1422,6 +1449,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [701](701.md) Let the sides of the acute triangle $LMN$ be |  | 8m41s |
+| [702](702.md) *I. K. Zhuk*. For the first values, | ✓ | 8m45s |
 | [703](703.md) The first equation links three expressions of the form $t + \\frac{1}{t}$ multiplied by constants 3, 4, and 5. |  | 5m04s |
 | [704](704.md) *N. B. Vasiliev*. Consider a square $ABCD$ and a parallelogram $PQRS$ that circumscribes it, with each vertex of the square touching a different side of the parallelogram. |  | 3m07s |
 | [705](705.md) *G. A. Galperin, V. V. Proizvolov*. Represent each cell of the sheet by a vertex. |  | 4m45s |
@@ -1434,6 +1462,7 @@ draft: false
 | [707](707.md) *A. F. Sidorenko*. Let the clubs be represented by sets of students. |  | 8m20s |
 | [708](708.md) Consider a convex quadrilateral $ABCD$ and construct squares externally on its sides $AB$, $BC$, $CD$, and $DA$, with centers $P$, $Q$, $R$, $T$ respectively. |  | 10m06s |
 | [709](709.md) The rhombus tiles are the unit lozenges of the triangular lattice. |  | 6m51s |
+| [710](710.md) *S. V. Konyagin*. The requirement that no term is equal to the sum of several others is ensured by a stronger property: for every $n$, if |  | 31m15s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1981_11/)
 
@@ -1457,12 +1486,13 @@ draft: false
 
 ## 1982
 
-52 problems across Issues 1–12.
+58 problems across Issues 1–12, 3 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1982_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [721](721.md) *A. Zolotykh, 10th-grade student (Moscow, Specialized Physics and Mathematics School No. 18 at Moscow State University)*. Let $ABC$ be the given triangle. |  | 41m44s |
 | [722](722.md) *A. A. Razborov*. Consider the simplest nontrivial cases first. |  | 6m09s |
 | [723](723.md) We seek an infinite set $S \\subset \\mathbb{N}$ such that no element of $S$ and no finite sum of distinct elements of $S$ is a perfect power $a^k$ with $k \\ge 2$. |  | 2m05s |
 | [724](724.md) *V. V. Prasolov*. Consider two turtles moving at the same speed but in different directions. |  | 3m04s |
@@ -1472,6 +1502,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [726](726.md) *V. V. Prasolov*. Let the regular $2n$-gon have vertices $A_1,A_2,\\dots,A_{2n}$ in cyclic order, and let $P$ be a point inside the polygon. | ✓ | 23m55s |
 | [727](727.md) Since the perimeter is $2$, we have |  | 6m08s |
 | [728](728.md) *I. F. Sharygin*. Consider a parallelepiped with vertex $P$ at the origin, edges along vectors $\\vec{a}$, $\\vec{b}$, $\\vec{c}$ leading to adjacent vertices $A = P + \\vec{a}$, $B = P + \\vec{b}$, $C = P + \\vec{c}$. |  | 7m13s |
 | [729](729.md) *N. B. Vasiliev*. The statement asks for a natural number with a specified property, not for all such numbers. |  | 5m39s |
@@ -1481,6 +1512,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [731](731.md) *V. G. Boltyansky*. The game begins with the first player choosing an initial value $P_0 \\in {2,3,4,5,6,7,8,9}$. |  | 30m23s |
 | [732](732.md) I cannot write a rigorous solution to Kvant problem M732 because the problem statement itself is not present in your message. |  | 5m55s |
 | [733](733.md) *V. V. Prasolov*. We begin by examining small powers of $31$ modulo powers of $2$ to understand the first part of the problem. |  | 4m43s |
 | [734](734.md) Let $AB=c$, $AC=b$, and let $\\angle A = \\alpha$. |  | 9m30s |
@@ -1509,8 +1541,10 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [746](746.md) Let the square have side length $2$ and center $O$. | ✓ | 30m44s |
 | [747](747.md) *V. V. Prasolov*. For the first part, write the numbers as $x_1,\\dots,x_n$, let $M=\\max x_i$ and $m=\\min x_i$. |  | 5m39s |
 | [748](748.md) Consider first the planar problem with parabolas. |  | 6m09s |
+| [749](749.md) Part (1) concerns the cyclic expression |  | 23m09s |
 | [750](750.md) *S. N. Bespamyatnykh*. The first statement is a classical rectangle theorem. |  | 3m46s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1982_7/)
@@ -1539,6 +1573,7 @@ draft: false
 |---|---------|---|------|
 | [761](761.md) *E. G. Gotman*. The statement is affine in nature. |  | 7m13s |
 | [762](762.md) The two inequalities are |  | 6m21s |
+| [763](763.md) *V. N. Dubrovsky*. Let | ✓ | 15m51s |
 | [764](764.md) *O. V. Mazurov*. The task is purely existential. |  | 6m28s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1982_10/)
@@ -1573,7 +1608,7 @@ draft: false
 
 ## 1983
 
-52 problems across Issues 1–12.
+60 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1983_1/)
 
@@ -1583,6 +1618,7 @@ draft: false
 | [782](782.md) *S. V. Fomin*. Let $a+b=30030$ with $a,b\\in \\mathbb{N}$. |  | 2m05s |
 | [783](783.md) Consider the first system of inequalities: $1 < x < 2$, $2 < x^2 < 3$, $3 < x^3 < 4$, and so on up to $n < x^n < n+1$. |  | 6m14s |
 | [784](784.md) *A. P. Savin*. The length of daylight at latitude $\\varphi$ depends on the declination $\\delta$ of the star. |  | 10m41s |
+| [785](785.md) *M. U. Gafurov*. The hypothesis states that for every integer $k>1$ there exists a constant $b_k$ such that |  | 9m37s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1983_2/)
 
@@ -1590,6 +1626,7 @@ draft: false
 |---|---------|---|------|
 | [786](786.md) *A. N. Kozachenko*. Consider small values of $n$ and $k$ to identify a pattern. |  | 7m18s |
 | [787](787.md) *B. S. Pitskel*. Let the right triangle have legs of lengths $a$ and $b$, with hypotenuse $c = \\sqrt{a^2 + b^2}$. |  | 4m08s |
+| [788](788.md) *E. D. Moskalensky, Yu. V. Chinyaev*. Let | ✓ | 9m34s |
 | [789](789.md) *V. V. Proizvolov*. Consider first a small number of points on a circle, for example, four points dividing the circle into four equal arcs. |  | 7m02s |
 | [790](790.md) The hypothesis is that a map $F:\\mathbb{R}^2\\to\\mathbb{R}^2$ preserves unit distance, meaning every pair of points at distance $1$ is mapped to a pair of points at distance $1$. |  | 2m14s |
 
@@ -1600,6 +1637,7 @@ draft: false
 | [791](791.md) *S. B. Gashkov*. Petya's calculator allows addition, subtraction, increment by one, and reciprocal operations. |  | 6m54s |
 | [792](792.md) *S. N. Bychkov, V. V. Prasolov, L. D. Kurlandchik*. For the first two equations, small natural numbers $x$ and $y$ can be tested directly. |  | 4m09s |
 | [793](793.md) *V. N. Dubrovsky*. Let |  | 8m31s |
+| [794](794.md) *Alla Ivchenko, 9th-grade student (Mohyliv-Podilskyi, School No. 1)*. Let the first circle be $\\omega_1$ and the second circle be $\\omega_2$. | ✓ | 24m15s |
 | [795](795.md) *V. F. Lev*. Consider small values of $n$ and their divisor sums $\\sigma(n)$. |  | 3m19s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1983_4/)
@@ -1637,8 +1675,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [811](811.md) *D. M. Milošević*. The quantities involving medians and altitudes suggest rewriting everything in terms of the sides. |  | 10m38s |
+| [812](812.md) *S. I. Maizus*. The sum is | ✓ | 13m31s |
 | [813](813.md) *V. V. Prasolov*. Consider three segments $OA$, $OB$, and $OC$ of equal length $R$, with $B$ inside the angle $AOC$. |  | 1m43s |
 | [814](814.md) *L. D. Kurlyandschik*. A natural number is representable as a sum of two squares if and only if every prime congruent to $3 \\pmod 4$ appears with even exponent in its prime factorization. |  | 9m33s |
+| [815](815.md) *A. A. Razborov*. Place the $4k$ points on a circle in their cyclic order and denote their labels by $a_1,a_2,\\ldots,a_{4k}$. |  | 32m37s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1983_8/)
 
@@ -1658,6 +1698,7 @@ draft: false
 | [822](822.md) *S. B. Shlosman*. The initial stack is the periodic sequence of length $4n$ with pattern $G,R,B,Y$ repeating every four cards, so every consecutive block of four cards contains all four colors exactly once. |  | 5m06s |
 | [823](823.md) Before I begin the full solution, I need clarification: does the photograph provide any perspective cues such as vanishing points, the relative positions of the corners, or angles of the visible wall? |  | 7m19s |
 | [824](824.md) I need the diagram from Figure 3 to solve the problem rigorously. |  | 4m20s |
+| [825](825.md) *All-Union Mathematical Olympiad for School Students (1983, Grade 10)*. Let the segments be | ✓ | 17m20s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1983_10/)
 
@@ -1676,12 +1717,14 @@ draft: false
 | [831](831.md) *V. V. Prasolov*. Introduce position vectors for the vertices $A,B,C,D$ in the plane. |  | 7m40s |
 | [832](832.md) *V. A. Li*. Consider first the case of dividing a square into smaller squares. |  | 4m08s |
 | [833](833.md) *V. E. Matizen*. Compute the first few terms to detect patterns. |  | 7m17s |
+| [834](834.md) *N. B. Vasilyev*. This is a two-part geometric covering problem. |  | 34m45s |
 | [835](835.md) *L. D. Meniches*. Represent the previous encounters by a bipartite graph. |  | 7m31s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1983_12/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [836](836.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. The coordinate setup in the proposed solution is correct and can be carried through to completion. |  | 38m54s |
 | [837](837.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. Consider the simpler case where two of the numbers are coprime. |  | 9m11s |
 | [838](838.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. Consider an equilateral triangle $ABC$. |  | 10m41s |
 | [839](839.md) *International Mathematical Olympiad for School Students (XXIV, 1983)*. For a set of integers with no three-term arithmetic progression, the classical example is obtained by writing numbers in base $3$ and allowing only digits $0$ and $1$. |  | 8m47s |
@@ -1689,7 +1732,7 @@ draft: false
 
 ## 1984
 
-53 problems across Issues 1–12.
+60 problems across Issues 1–12, 4 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1984_1/)
 
@@ -1697,6 +1740,7 @@ draft: false
 |---|---------|---|------|
 | [841](841.md) Consider a right triangle $ABC$ with right angle at $C$. |  | 1m17s |
 | [842](842.md) *L. D. Kurlyandchik*. Consider the first identity $\\sin\\alpha + \\sin\\beta + \\sin\\gamma$ under the constraint $\\alpha + \\beta + \\gamma = 0$. |  | 7m11s |
+| [843](843.md) *A. A. Yagubyants*. Let the plane of the triangle be $z=0$. | ✓ | 10m37s |
 | [844](844.md) *V. E. Kolosov*. For the first representation, the coefficients are constrained by $0\\le a_k\\le k$. |  | 4m37s |
 | [845](845.md) *V. G. Belov*. We consider the problem of forming a centrally symmetric polygon using two types of tiles: a “corner” formed by four $1\\times1$ squares arranged in an L-shape, and $4\\times1$ rectangles. |  | 1m39s |
 
@@ -1714,7 +1758,9 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [851](851.md) *A. B. Khodulyev*. Place the square in a coordinate system so that computations can be expressed in terms of two parameters. |  | 9m53s |
 | [852](852.md) ``` |  | 9m12s |
+| [853](853.md) A square $ABCD$ rotates about its fixed center $O$, while a fixed line $l$ is taken as the $x$-axis. | ✓ | 29m33s |
 | [854](854.md) Before I begin, could you provide the full text of Kvant problem M854? I need the problem statement in order to construct the rigorous solution according to your specifications. |  | 3m10s |
 | [855](855.md) ``` |  | 3m03s |
 
@@ -1756,6 +1802,7 @@ draft: false
 | [872](872.md) *All-Union School Mathematics Olympiad (1984)*. Let $O_1,O_2,O_3$ be the centers of the circles $C_1,C_2,C_3$. |  | 8m18s |
 | [873](873.md) *All-Union Mathematical Olympiad for School Students (1984)*. The process can be encoded in terms of the coefficients $a$ and $b$ of the quadratic $x^2+ax+b$, starting from $(a,b)=(10,20)$ and ending at $(20,10)$. |  | 8m18s |
 | [874](874.md) *All-Union School Mathematical Olympiad (1984)*. We begin by testing small integer values to see whether the equation $(5+3\\sqrt{2})^m = (3+5\\sqrt{2})^n$ admits any obvious solutions. |  | 11m31s |
+| [875](875.md) *All-Union Mathematical Olympiad for School Students (1984)*. Let |  | 37m39s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1984_8/)
 
@@ -1774,6 +1821,8 @@ draft: false
 | [881](881.md) Our systems have detected unusual activity coming from your system. |  | 26m56s |
 | [882](882.md) *Leningrad City Mathematical Olympiad (50th, 1984)*. Consider small integer triples $(a,b,c)$ satisfying $a+b+c=0$. |  | 4m53s |
 | [883](883.md) Working |  | 14m25s |
+| [884](884.md) The reviewer correctly identified a critical error. |  | 32m13s |
+| [885](885.md) *Tournament of Towns (Spring 1984)*. The quantity $q(n)$ equals the sum, over all partitions $\\lambda$ of $n$, of the number of distinct values appearing among the parts of $\\lambda$. | ✓ | 24m27s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1984_10/)
 
@@ -1792,6 +1841,7 @@ draft: false
 | [891](891.md) *A. A. Muratov*. Let $ABC$ be a triangle with a circle tangent to two of its sides and to two of its medians. |  | 26m28s |
 | [892](892.md) *A. I. Zaichik*. Write |  | 8m30s |
 | [893](893.md) *Moscow Mathematical Olympiad (1984)*. The complete graph on $n$ vertices is $K_n$. |  | 12m10s |
+| [894](894.md) The previous proof contains critical errors in both parts. | ✓ | 36m39s |
 | [895](895.md) *Moscow Mathematical Olympiad (1984)*. Place the cube of side $2$ in coordinates with center at the origin, so its vertices are $(\\pm1,\\pm1,\\pm1)$ and its inscribed sphere is $x^2+y^2+z^2=1$. |  | 2m16s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1984_12/)
@@ -1806,7 +1856,7 @@ draft: false
 
 ## 1985
 
-53 problems across Issues 1–12, 1 verified.
+60 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1985_1/)
 
@@ -1822,6 +1872,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [906](906.md) *M. V. Slavinskyi*. Consider the equation |  | 27m41s |
 | [907](907.md) *T. A. Dzhortmenadze*. Let $A=\\widehat A$, $B=\\widehat B$, $C=\\widehat C$. |  | 6m49s |
 | [908](908.md) Before I begin writing the full Kvant-style solution, I need the text of problem M908. |  | 2m49s |
 | [909](909.md) *R. N. Azizyan, V. Tolstykh, A. V. Alyaev*. We seek an arithmetic progression |  | 10m21s |
@@ -1843,6 +1894,7 @@ draft: false
 |---|---------|---|------|
 | [916](916.md) *A. A. Azamov*. Let the acute triangle be $ABC$. |  | 8m |
 | [917](917.md) Consider six-digit numbers from $000000$ to $999999$. |  | 8m32s |
+| [918](918.md) *V. V. Prasolov*. Let the triangle have sides $a,b,c$ and semiperimeter $s=\\frac{a+b+c}{2}$. |  | 9m39s |
 | [919](919.md) *Yu. I. Ionin*. For the first integral equality, the two integrals involve complementary functions: the tangent function on $[0,\\pi/4]$ and the arctangent function on $[0,1]$. |  | 6m07s |
 | [920](920.md) *R. A. Mazov*. The equation is |  | 5m39s |
 
@@ -1874,6 +1926,7 @@ draft: false
 | [932](932.md) *Moscow Mathematical Olympiad*. The anaconda is an arbitrary polygonal line of total length $10$ contained in the unit square. |  | 3m48s |
 | [933](933.md) *Moscow Mathematical Olympiad*. Let the clans be represented by labels. |  | 5m06s |
 | [934](934.md) *Moscow Mathematical Olympiad*. Interpret the $2n$ points as vertices of a graph $G$ with $2n$ vertices and $n^2+1$ edges. |  | 5m24s |
+| [935](935.md) *Moscow Mathematical Olympiad*. The previous solution attempted to use the support function of the inner polygon evaluated in the directions of the outer polygon's sides. |  | 27m03s |
 
 ### [Issue 8](https://www.kvant.digital/view/kvant_1985_8/)
 
@@ -1892,6 +1945,7 @@ draft: false
 | [941](941.md) *All-Union Mathematical Olympiad (1985)*. Consider first the case $k=2$, which corresponds to a regular decagon. |  | 9m09s |
 | [942](942.md) *All-Union Mathematical Olympiad (1985)*. For $n=1$, the partition is ${1}$ and ${2}$, hence |  | 3m25s |
 | [943](943.md) *All-Union Mathematical Olympiad (1985)*. Let us compute the first terms. |  | 4m47s |
+| [944](944.md) *All-Union Mathematical Olympiad (1985)*. The figure is the regular hexagon of side length $2$ subdivided into $24$ congruent equilateral triangles. | ✓ | 11m35s |
 | [945](945.md) *All-Union Mathematical Olympiad (1985)*. Let |  | 3m07s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1985_10/)
@@ -1900,6 +1954,7 @@ draft: false
 |---|---------|---|------|
 | [946](946.md) *All-Russian Mathematical Olympiad for School Students (XI)*. Position two parabolas in the plane with perpendicular axes. |  | 1m31s |
 | [947](947.md) *All-Russian School Mathematics Olympiad (XI)*. Consider first small cases. |  | 10m44s |
+| [948](948.md) *All-Russian Mathematical Olympiad for School Students (XI)*. The problem is a combinatorial-geometric proof. |  | 33m48s |
 | [949](949.md) *All-Russian Mathematical Olympiad for School Students (XI)*. Consider small cases first. |  | 5m |
 | [950](950.md) *All-Russian School Mathematics Olympiad (XI)*. The $25$ plots form the $5\\times5$ grid graph. |  | 10m39s |
 
@@ -1909,6 +1964,7 @@ draft: false
 |---|---------|---|------|
 | [951](951.md) Let the hexagon be $ABCDEF$ in convex order with $AB=BC=CD=DE=EF=FA=1$. |  | 2m25s |
 | [952](952.md) Write |  | 1m28s |
+| [953](953.md) *V. V. Prasolov*. Each special point is an intersection of three lines determined by pairs of the six given points. |  | 9m48s |
 | [954](954.md) *V. N. Dubrovsky*. Consider first the case of a rectangle inscribed in a triangle. |  | 8m23s |
 | [955](955.md) *V. B. Alekseev*. Consider first small numbers of participants. |  | 4m55s |
 
@@ -1920,10 +1976,11 @@ draft: false
 | [957](957.md) *International Mathematical Olympiad (XXVI) for School Students*. Each allowed integer has the form |  | 9m14s |
 | [958](958.md) *International Mathematical Olympiad (XXVI)*. Let |  | 3m21s |
 | [959](959.md) *A. A. Razborov*. Consider first small examples. |  | 7m47s |
+| [960](960.md) Something went wrong. |  | 29m02s |
 
 ## 1986
 
-57 problems across Issues 1–12.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1986_1/)
 
@@ -1933,6 +1990,7 @@ draft: false
 | [962](962.md) Let $P(x)\\in\\mathbb{Z}[x]$ and suppose there exist distinct integers $x_1,\\dots,x_n$ with $n\\ge 3$ such that |  | 2m05s |
 | [963](963.md) Let the hexagon be $A B C D E F$ in cyclic order. |  | 3m50s |
 | [964](964.md) *A. A. Stolin*. The sequence $(a_n)$ consists of distinct positive integers with the growth constraint $a_n < 100n$. |  | 7m44s |
+| [965](965.md) *N. B. Vasiliev*. Let | ✓ | 13m19s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1986_2/)
 
@@ -1940,7 +1998,9 @@ draft: false
 |---|---------|---|------|
 | [966](966.md) *L. D. Kurlandchik*. The statement asks for a dissection of an arbitrary triangle into four pieces such that the pieces can be rearranged into two triangles, each similar to the original triangle. |  | 7m38s |
 | [967](967.md) *V. F. Lev*. For small values, |  | 3m20s |
+| [968](968.md) **Solution to Kvant M968** |  | 34m21s |
 | [969](969.md) Unusual activity has been detected from your device. |  | 7m01s |
+| [970](970.md) *S. L. Eliseev*. Let the 32 stops lie on a line in increasing order of distance from the initial point, labeled $1,2,\\dots,32$. |  | 10m54s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1986_3/)
 
@@ -2168,7 +2228,7 @@ draft: false
 
 ## 1988
 
-59 problems across Issues 1–11.
+60 problems across Issues 1–11.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1988_1/)
 
@@ -2194,6 +2254,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1091](1091.md) *N. I. Zilberberg*. A positive integer is called lucky when its digits can be split into two disjoint groups with equal sum. |  | 37m33s |
 | [1092](1092.md) *S. V. Kazakov*. Consider a single fold of a convex polygon and a subsequent straight cut. |  | 7m15s |
 | [1093](1093.md) Represent the configuration by numbers $a_1,\\dots,a_n\\in{0,1,2}$ arranged cyclically. |  | 8m08s |
 | [1094](1094.md) *V. A. Senderov*. The two inequalities are |  | 7m30s |
@@ -2835,7 +2896,7 @@ draft: false
 
 ## 1994
 
-41 problems across Issues 1–6.
+46 problems across Issues 1–6, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1994_1/)
 
@@ -2900,58 +2961,92 @@ draft: false
 |---|---------|---|------|
 | [1451](1451.md) *Russian Mathematical Olympiad (XX)*. Let $d=\\gcd(a,b)$ and write $a=dx$, $b=dy$ with $\\gcd(x,y)=1$. |  | 9m15s |
 | [1453](1453.md) *Russian Mathematical Olympiad (XX)*. Let $n_k$ be the repunit of length $k$, so |  | 7m51s |
+| [1460](1460.md) *Russian Mathematical Olympiad (XX)*. Let $A$ and $B$ be the two figures. | ✓ | 15m |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1994_6/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1461](1461.md) Represent the $n$ definitions by vertices $1,\\dots,n$. | ✓ | 20m43s |
+| [1466](1466.md) *V. K. Kovaldzhi*. Two artists play a sequential map-coloring game. |  | 30m17s |
 | [1467](1467.md) *International Mathematical Olympiad for School Students (XXXV)*. Let |  | 9m49s |
+| [1468](1468.md) *International Mathematical Olympiad for School Students (XXXV)*. Place the isosceles triangle in coordinates as |  | 38m52s |
+| [1469](1469.md) *International Mathematical Olympiad for School Students (XXXV)*. Each integer $n$ with exactly three ones in binary has the form |  | 9m52s |
 | [1470](1470.md) *International Mathematical Olympiad for School Students (XXXV)*. We need a set $A$ of positive integers such that every infinite set $S$ of primes contains, among the squarefree numbers formed from distinct primes of $S$, two numbers with the same number $k\\ge2$ of… |  | 9m45s |
 
 ## 1995
 
-12 problems across Issues 1–6, 2 verified.
+36 problems across Issues 1–6, 8 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1471](1471.md) *M. L. Gerver*. The problem asks whether a skier who has passed through each of $n$ villages twice and returned to the starting point can traverse his ski track in such a way as to visit each village exactly once. |  | 34m39s |
+| [1472](1472.md) *A. P. Savin*. Consider the $n\\times n$ table with entries |  | 38m15s |
+| [1474](1474.md) *B. D. Ginzburg*. Let the direction of the line used in the $i$-th projection be denoted by $\\alpha_i$. | ✓ | 22m16s |
 | [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
+| [1479](1479.md) *L. D. Kurlyandchik*. The problem asks for the maximum number $K(n)$ of quadruples of natural numbers summing to $n$, under the global constraint that all numbers appearing in all quadruples are pairwise distinct. |  | 9m15s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1995_2/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1481](1481.md) Let $a=BC$, $b=CA$, $c=AB$. |  | 6m30s |
+| [1482](1482.md) Let | ✓ | 7m58s |
 | [1483](1483.md) *B. D. Ginzburg*. Each vector lies in the first quadrant and has length $1$. |  | 10m28s |
 | [1484](1484.md) *N. B. Vasilyev*. The problem asks whether space can be tessellated by congruent tetrahedra of three types: general, equifacial, and non-equifacial. |  | 31m11s |
+| [1485](1485.md) *L. D. Kurlyandchik*. Let $x_1, x_2, \\ldots, x_n$ be positive real numbers satisfying $0 < x_1 \\le x_2 \\le \\cdots \\le x_n$. |  | 40m51s |
+| [1486](1486.md) *S. I. Tokarev*. Consider sequences $(a_1, a_2, a_3, \\dots)$ satisfying the recurrence $a_k = a_{k-1} - a_{k-2}$ for $k \\ge 3$, with terms chosen from the set $1, \\frac12, \\frac13, \\dots$. |  | 32m39s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
+| [1488](1488.md) Let the squares in the sequence be |  | 38m09s |
 | [1489](1489.md) *A. I. Galochkin*. Work over the vector space $\\mathbb F_2^{mn}$ of all $0$-$1$ configurations on the $m\\times n$ rectangle. | ✓ | 14m54s |
+| [1490](1490.md) *V. A. Ufnarovsky*. The statement as written can only be meaningful if the second triangle has side lengths $\\sin x$, $\\sin y$, $\\sin z$. | ✓ | 26m37s |
+
+### [Issue 3](https://www.kvant.digital/view/kvant_1995_3/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [1500](1500.md) *City Tournament (Spring, 1995)*. Represent the group by a simple graph $G$ with $50$ vertices. | ✓ | 29m05s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1995_4/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1501](1501.md) *V. A. Senderov*. For small $x$, the functions admit linear approximations $\\sin(kx)\\sim kx$ and $\\sin x\\sim x$. |  | 9m09s |
+| [1502](1502.md) *V. V. Proizvolov*. Let the regular $2n$-gon have vertices labeled $A=A_0, A_1, \\dots, A_{2n-1}$ in cyclic order. |  | 41m25s |
 | [1503](1503.md) Let $B$ be the set of black numbers and $W$ the set of white numbers. |  | 9m53s |
+| [1505](1505.md) *V. N. Dubrovsky*. This is a Type B proof problem. |  | 42m43s |
+| [1506](1506.md) *G. V. Kondakov*. For a fixed interval $[a,b]$, the condition that the sums of integrals over white and black subintervals are equal for every polynomial in a given family can be rewritten as the vanishing of a signed… |  | 9m47s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1995_5/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1511](1511.md) *Saint Petersburg City Mathematical Olympiad (1995)*. Let two circles with centers $O_1$ and $O_2$ intersect at points $A$ and $B$, and let $A$ be a chosen intersection point. |  | 36m11s |
+| [1512](1512.md) *Saint Petersburg City Mathematical Olympiad (1995)*. Let $f(x)=a_nx^n+a_{n-1}x^{n-1}+\\cdots+a_0$ with $a_n\\ne 0$, and define for a natural number $k$ |  | 33m09s |
 | [1515](1515.md) *Russian Mathematical Olympiad*. Let |  | 3m42s |
+| [1518](1518.md) *Russian Mathematical Olympiad*. Let the common intersection point of the altitudes be $H$. |  | 23m19s |
 | [1520](1520.md) *Russian Mathematical Olympiad*. Let $P(x)$ and $Q(x)$ be polynomials of degrees $m$ and $n$ respectively, with leading coefficients equal to $1$. |  | 14m15s |
 
 ### [Issue 6](https://www.kvant.digital/view/kvant_1995_6/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1521](1521.md) *N. B. Vasiliev*. The problem concerns arranging 256 deputies, each corresponding to a distinct 8-bit vector, on a $16\\times16$ square grid of chairs. |  | 42m05s |
 | [1522](1522.md) Our systems have detected unusual activity coming from your system. |  | 21m51s |
+| [1523](1523.md) *L. D. Kurlandchik*. Let | ✓ | 29m20s |
+| [1524](1524.md) Let the incenters of the triangles $ABP$, $BCP$, $CDP$, $DAP$ be $X,Y,Z,W$ respectively. |  | 12m20s |
+| [1525](1525.md) *International Mathematical Olympiad for School Students (XXXVI)*. Place the four collinear points on the $x$ axis as | ✓ | 9m04s |
+| [1526](1526.md) *International Mathematical Olympiad for School Students (XXXVI)*. The condition $abc=1$ suggests eliminating one variable from denominators by rewriting powers of $a,b,c$ in terms of the other two variables. |  | 9m34s |
+| [1527](1527.md) *International Mathematical Olympiad for School Students (XXXVI)*. We shall prove that the only integer $n>3$ for which a configuration of points $A_1,\\dots,A_n$ and real numbers $r_1,\\dots,r_n$ satisfying the problem conditions exists is |  | 27m53s |
 | [1528](1528.md) *International Mathematical Olympiad for School Students (XXXVI)*. The relation |  | 10m47s |
 | [1529](1529.md) *International Mathematical Olympiad for School Students (XXXVI)*. The equalities |  | 8m28s |
+| [1530](1530.md) *International Mathematical Olympiad of School Students (XXXVI)*. Numbers $1,2,\\dots,2p$ split into residue classes modulo $p$ as |  | 9m31s |
 
 ## 1996
 
-7 problems across Issues 1–5.
+23 problems across Issues 1–5, 6 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1996_1/)
 
@@ -2961,23 +3056,44 @@ draft: false
 | [1532](1532.md) ``` |  | 12m17s |
 | [1533](1533.md) *N. B. Vasilyev*. Let $\\ell$ be a line through $C$. |  | 28m24s |
 
+### [Issue 2](https://www.kvant.digital/view/kvant_1996_2/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [1536](1536.md) *V. V. Proizvolov*. This is a construction and existence problem. |  | 22m55s |
+
 ### [Issue 4](https://www.kvant.digital/view/kvant_1996_4/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1551](1551.md) *Moscow LIX Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. A closed broken line with six segments is a hexagonal cycle whose six vertices lie on one circle. | ✓ | 9m50s |
+| [1552](1552.md) *59th Moscow Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. The polynomial $P_n(x)=1+x+\\cdots+x^{n-1}$ satisfies | ✓ | 22m50s |
+| [1553](1553.md) I cannot produce a mathematical solution to Kvant M1553 because the problem statement itself is missing. | ✓ | 21m42s |
+| [1554](1554.md) *Moscow 59th Mathematical Olympiad, 1996, Tournament of the Cities (spring, 1996)*. Consider a triangle $ABC$ with outward squares $ABMN$, $BCKL$, and $ACPQ$ constructed on its sides. | ✓ | 21m |
+| [1555](1555.md) *Moscow 59th Mathematical Olympiad, Tournament of Towns (Spring 1996)*. Let the circles be $\\omega_1$ and $\\omega_2$, with tangency points from $P$ to $\\omega_1$ equal to $A,B$ and to $\\omega_2$ equal to $C,D$, so that $PA=PB$ and $PC=PD$. |  | 20m51s |
 | [1556](1556.md) Working |  | 31m40s |
+| [1557](1557.md) *Moscow LIX Mathematical Olympiad 1996, Tournament of Towns (Spring, 1996)*. Let $O$ be the center of the given circle. |  | 9m57s |
 | [1558](1558.md) Consider the game on small chessboards to observe patterns. |  | 8m44s |
+| [1559](1559.md) *59th Moscow Mathematical Olympiad (1996), Tournament of Towns (Spring 1996)*. Let the given plane be $\\Pi$. |  | 9m11s |
+| [1560](1560.md) *59th Moscow Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. Consider the population as a finite set of $N$ individuals arranged along a circle. |  | 24m56s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1996_5/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1561](1561.md) *All-Russian Mathematical Olympiad for School Students (1996)*. Let the convex polygon be $A_1A_2\\ldots A_n$, indexed cyclically. |  | 9m22s |
+| [1562](1562.md) *All-Russian Mathematical Olympiad for School Students (1996)*. We are asked whether a $5\\times7$ rectangle can be covered by L-trominoes in several layers so that each cell of the rectangle is covered by the same number of cells from the trominoes. |  | 27m44s |
+| [1563](1563.md) *All-Russian Mathematical Olympiad for School Students (1996)*. For $n=0$, the condition is | ✓ | 8m28s |
+| [1564](1564.md) *All-Russian School Mathematics Olympiad (1996)*. Let | ✓ | 15m45s |
+| [1565](1565.md) *All-Russian Mathematical Olympiad for School Students (1996)*. A query chooses 50 of the 100 elements and reveals their induced linear order, which determines all pairwise comparisons inside the chosen set. |  | 18m55s |
 | [1566](1566.md) *All-Russian Mathematical Olympiad for School Students (1996)*. Each committee has $80$ members, and there are $16000$ committees. |  | 8m01s |
+| [1568](1568.md) *All-Russian Mathematical Olympiad for School Students (1996)*. This is a Type B problem. |  | 27m35s |
+| [1569](1569.md) Working |  | 24m01s |
+| [1570](1570.md) *Soros Mathematical Olympiad*. Consider three pairs of diametrically opposite points on a sphere, denoted $A, A'$, $B, B'$, $C, C'$, where $O$ is the center of the sphere. |  | 20m58s |
 
 ## 1997
 
-2 problems across Issues 1–3.
+6 problems across Issues 1–3, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1997_1/)
 
@@ -2989,11 +3105,75 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [1591](1591.md) *Tournament of the Towns (spring, 1997)*. Let $BL$ be the internal angle bisector at $B$ meeting $AC$ at $L$, and $AK$ be the internal angle bisector at $A$ meeting $BC$ at $K$. | ✓ | 17m12s |
 | [1592](1592.md) *Tournament of Cities (spring, 1997)*. Let integers $a \\le b$ be such that the required sum is |  | 3m46s |
+| [1593](1593.md) *Tournament of Towns (Spring 1997)*. Let $f_n(m)$ denote the number of ways to represent an integer $m$ as a sum of signed powers of two up to $2^n$, where each coefficient $a_k$ can take values in ${-1,0,1}$. |  | 16m22s |
+| [1594](1594.md) The functional equation is |  | 10m08s |
+| [1595](1595.md) *City Tournament (spring, 1997)*. Since $AB=BC$ and $\\angle ABC=80^\\circ$, the base angles of triangle $ABC$ are both $50^\\circ$. | ✓ | 23m46s |
+
+## 2011
+
+1 problems across Issue 3.
+
+### [Issue 3](https://www.kvant.digital/view/kvant_2011_3/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2226](2226.md) Let $A(k,n)$ denote the number of integer $k$-tuples $(x_1,\\dots,x_k)$ satisfying the inequality |  | 24m33s |
+
+## 2016
+
+1 problems across Issue 5.
+
+### [Issue 5](https://www.kvant.digital/view/kvant_2016_5/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2445](2445.md) *International Mathematical Olympiad (57th)*. Let $A_{k+1} = A_1$, and let $q = p^t$ be an arbitrary prime power dividing the odd integer $n$. |  | 33m36s |
+
+## 2018
+
+1 problems across Issue 1.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_2018_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2496](2496.md) Consider a finite set of $n$ cities in the plane, with $n$ odd, such that all pairwise distances between cities are distinct. |  | 26m37s |
+
+## 2019
+
+1 problems across Issue 9.
+
+### [Issue 9](https://www.kvant.digital/view/kvant_2019_9/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2576](2576.md) *A.P. Savin Tournament (25th)*. The problem concerns tilings of an $8\\times8$ board with dominoes of size $1\\times2$ (horizontal) or $2\\times1$ (vertical). |  | 28m32s |
+
+## 2020
+
+1 problems across Issue 11.
+
+### [Issue 11](https://www.kvant.digital/view/kvant_2020_11/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2632](2632.md) Working |  | 32m22s |
+
+## 2022
+
+1 problems across Issue 7.
+
+### [Issue 7](https://www.kvant.digital/view/kvant_2022_7/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2709](2709.md) *Caucasian Mathematical Olympiad*. The problem can be formulated in graph-theoretic terms. |  | 32m35s |
 
 ## 2023
 
-1 problems across Issue 3.
+3 problems across Issues 3–10.
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_2023_3/)
 
@@ -3001,9 +3181,21 @@ draft: false
 |---|---------|---|------|
 | [2738](2738.md) *All-Russian Olympiad in Mathematics (XLIX, regional stage)*. Let |  | 12m06s |
 
+### [Issue 7](https://www.kvant.digital/view/kvant_2023_7/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2755](2755.md) *Caucasian Mathematical Olympiad (VIII)*. Consider the $3 \\times 101$ board with rows labeled $1,2,3$ and columns labeled $1,\\dots,101$, with the central cell $(2,51)$ initially crossed out. |  | 50m26s |
+
+### [Issue 10](https://www.kvant.digital/view/kvant_2023_10/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2768](2768.md) Let $P(x) = \\prod_{i=1}^n (x + a_i)$ and let $A = \\prod_{i=1}^n a_i$. |  | 34m08s |
+
 ## 2024
 
-1 problems across Issue 3.
+5 problems across Issues 3–11, 1 verified.
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_2024_3/)
 
@@ -3011,9 +3203,33 @@ draft: false
 |---|---------|---|------|
 | [2786](2786.md) *All-Russian Mathematics Olympiad (L, Regional Round)*. Let the value of a completed coloring be the number of edges of the 100-cycle whose endpoints have different colors. |  | 10m22s |
 
+### [Issue 7](https://www.kvant.digital/view/kvant_2024_7/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2802](2802.md) *Caucasian Mathematical Olympiad (IX)*. Let |  | 10m19s |
+
+### [Issue 8](https://www.kvant.digital/view/kvant_2024_8/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2806](2806.md) We construct a closed 20-segment polygonal chain satisfying the required intersection properties explicitly. |  | 37m28s |
+
+### [Issue 9](https://www.kvant.digital/view/kvant_2024_9/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2810](2810.md) *Ural Tournament of Young Mathematicians (62nd)*. The problem requires counting the number of ways to color the cells of an $n\\times n$ square with four colors so that any two cells sharing a side or a vertex receive different colors. | ✓ | 26m12s |
+
+### [Issue 11](https://www.kvant.digital/view/kvant_2024_11/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2825](2825.md) *Sirius Mathematical Olympiad*. Let $ABC$ be an acute-angled, non-isosceles triangle with altitudes $AD$, $BE$, $CF$ meeting at the orthocenter $H$. |  | 28m55s |
+
 ## 2025
 
-8 problems across Issues 1–11.
+11 problems across Issues 1–11, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2025_1/)
 
@@ -3027,6 +3243,18 @@ draft: false
 |---|---------|---|------|
 | [2830](2830.md) Let $S$ be the set of amounts obtainable with at most $1000$ coins of denominations $a$ and $b$. |  | 9m59s |
 
+### [Issue 3](https://www.kvant.digital/view/kvant_2025_3/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2834](2834.md) *All-Russian Olympiad in Mathematics (LI, regional stage)*. Let the original integers be $a_1, a_2, \\dots, a_n$ and let $S = a_1 + a_2 + \\cdots + a_n$. | ✓ | 19m28s |
+
+### [Issue 5](https://www.kvant.digital/view/kvant_2025_5/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [2846](2846.md) *All-Russian Mathematics Olympiad for School Students (LI, Final Round)*. The word “ПЕТЯ” has five letters. |  | 10m11s |
+
 ### [Issue 8](https://www.kvant.digital/view/kvant_2025_8/)
 
 | # | Problem | ✓ | Time |
@@ -3039,6 +3267,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2863](2863.md) The configuration is a complete quadrilateral formed by the four lines $AB, BC, CD, DA$. |  | 10m17s |
+| [2864](2864.md) *Based on an Iranian Olympiad problem.*. The arrangement of the lines is a simple arrangement: every pair of lines intersects and no three are concurrent. |  | 11m44s |
 | [2865](2865.md) The operation in every part is a conditional transposition: two entries are swapped exactly when the larger stands to the left. |  | 2m20s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_2025_11/)
@@ -3050,13 +3279,14 @@ draft: false
 
 ## 2026
 
-4 problems across Issues 1–3.
+5 problems across Issues 1–3.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_2026_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [2874](2874.md) Let $M$ be the midpoint of $AC$. |  | 2m07s |
+| [2875](2875.md) Working |  | 13m42s |
 | [2876](2876.md) *Southern Mathematical Tournament (XX)*. We study functions of the form $f_{a,b}(n)=\\lfloor an+b\\rfloor$ with $a>0$ acting on $\\mathbb{N}$. |  | 10m12s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_2026_2/)
