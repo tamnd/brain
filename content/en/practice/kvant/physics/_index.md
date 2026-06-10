@@ -1,9 +1,9 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (69 solved, 58 verified), 1970–1972."
+description: "Kvant physics problem solutions (70 solved, 58 verified), 1970–1972."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 69
+kvant_total: 70
 kvant_verified: 58
 kvant_year_start: 1970
 kvant_year_end: 1972
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **69 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 58 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **70 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 58 solutions have been independently verified.
 
 ## 1970
 
@@ -167,7 +167,7 @@ draft: false
 
 ## 1972
 
-2 problems across Issues 1–2, 1 verified.
+3 problems across Issues 1–5, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -180,4 +180,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [139](1972/139.md) A football is launched from a fixed point on level ground with initial speed $v$ at an angle $\\alpha=30^\\circ$ to the horizontal. | ✓ | 3m08s |
+
+### [Issue 5](https://www.kvant.digital/view/kvant_1972_5/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [154](1972/154.md) *P. L. Kapitsa*. The physical system is a layer of fog consisting of identical spherical water droplets suspended in air. |  | 7m50s |
 
