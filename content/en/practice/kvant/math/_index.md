@@ -2274,7 +2274,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1101](1101.md) Let $\\angle A=\\alpha$. |  | 7m27s |
+| [1101](1101.md) Let $ABC$ be an isosceles triangle with $AB=AC=s$ and $BC=b$. |  | 10m37s |
 | [1102](1102.md) *L. D. Kurlyandchik*. For $n=3$ it is natural to search among classical identities involving sums of three cubes. |  | 3m56s |
 | [1103](1103.md) Begin with the first part of the problem, which concerns tiling an infinite plane with $1\\times 2$ dominoes after some non-overlapping dominoes are already placed. |  | 10m39s |
 | [1104](1104.md) *V. N. Dubrovsky*. Let |  | 1m14s |
