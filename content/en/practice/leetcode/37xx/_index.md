@@ -11,6 +11,7 @@ draft: false
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
 | 3700 | [Number of ZigZag Arrays II](3700.md) | 🔴 Hard | 46s | The problem asks us to count the number of arrays of length n where… |
+| 3701 | [Compute Alternating Sum](3701.md) | 🟢 Easy | 1m 54s | This problem asks us to compute the alternating sum of an integer a… |
 | 3702 | [Longest Subsequence With Non-Zero Bitwise XOR](3702.md) | 🟡 Medium | 1m 18s | We are given an integer array nums, and we must determine the maxim… |
 | 3703 | [Remove K-Balanced Substrings](3703.md) | 🟡 Medium | 1m 24s | We are given a string s consisting only of '(' and ')', along with … |
 | 3704 | [Count No-Zero Pairs That Sum to N](3704.md) | 🔴 Hard | 41s | The problem asks us to count all pairs of positive integers (a, b) … |
@@ -22,11 +23,13 @@ draft: false
 | 3710 | [Maximum Partition Factor](3710.md) | 🔴 Hard | 45s | The problem asks us to split a set of n points in a 2D Cartesian pl… |
 | 3711 | [Maximum Transactions Without Negative Balance](3711.md) | 🟡 Medium | 1m 1s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 3712 | [Sum of Elements With Frequency Divisible by K](3712.md) | 🟢 Easy | 1m 6s | The problem asks us to compute the sum of all elements in the array… |
+| 3713 | [Longest Balanced Substring I](3713.md) | 🟡 Medium | 57s | The problem is asking us to find the length of the longest substrin… |
 | 3714 | [Longest Balanced Substring II](3714.md) | 🟡 Medium | 1m 8s | The problem gives us a string s that contains only three possible c… |
 | 3715 | [Sum of Perfect Square Ancestors](3715.md) | 🔴 Hard | 45s | This problem asks us to compute a sum across all non-root nodes in … |
 | 3716 | [Find Churn Risk Customers](3716.md) | 🟡 Medium | 1m 15s | This problem asks us to identify subscribers who appear likely to c… |
 | 3717 | [Minimum Operations to Make the Array Beautiful](3717.md) | 🟡 Medium | 54s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 3718 | [Smallest Missing Multiple of K](3718.md) | 🟢 Easy | 44s | The problem asks us to find the smallest positive multiple of k tha… |
+| 3719 | [Longest Balanced Subarray I](3719.md) | 🟡 Medium | 56s | The problem asks us to find the longest contiguous subarray of an i… |
 | 3720 | [Lexicographically Smallest Permutation Greater Than Target](3720.md) | 🟡 Medium | 36s | Before I write the full guide, I want to verify one important detai… |
 | 3721 | [Longest Balanced Subarray II](3721.md) | 🔴 Hard | 50s | The problem requires us to find the length of the longest subarray … |
 | 3722 | [Lexicographically Smallest String After Reverse](3722.md) | 🟡 Medium | 40s | The problem asks us to find the lexicographically smallest string a… |
@@ -39,19 +42,22 @@ draft: false
 | 3729 | [Count Distinct Subarrays Divisible by K in Sorted Array](3729.md) | 🔴 Hard | 47s | The problem asks us to find the number of distinct subarrays in a s… |
 | 3730 | [Maximum Calories Burnt from Jumps](3730.md) | 🟡 Medium | 1m 7s | The problem asks us to determine the maximum total calories that ca… |
 | 3731 | [Find Missing Elements](3731.md) | 🟢 Easy | 1m 5s | This problem asks us to reconstruct a missing sequence of integers … |
+| 3732 | [Maximum Product of Three Elements After One Replacement](3732.md) | 🟡 Medium | 49s | This problem asks us to maximize the product of any three distinct … |
 | 3733 | [Minimum Time to Complete All Deliveries](3733.md) | 🟡 Medium | 35s | This is a long, structured reference document. To make sure I targe… |
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
-| 3735 | [Lexicographically Smallest String After Reverse II](3735.md) | 🔴 Hard | 42s | This problem asks us to manipulate a string in a very controlled wa… |
+| 3735 | [Lexicographically Smallest String After Reverse II](3735.md) | 🔴 Hard | 2m 19s | The problem is asking us to manipulate a string s of length n in or… |
 | 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 1m 1s | The problem asks us to determine the minimum number of moves requir… |
 | 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 6s | Here is a comprehensive, detailed reference guide for LeetCode 3737… |
 | 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](3738.md) | 🟡 Medium | 4m 7s | assert Solution(). |
 | 3739 | [Count Subarrays With Majority Element II](3739.md) | 🔴 Hard | 57s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
+| 3740 | [Minimum Distance Between Three Equal Elements I](3740.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums and asks us to find thre… |
 | 3741 | [Minimum Distance Between Three Equal Elements II](3741.md) | 🟡 Medium | 2m 40s | The problem asks us to find three distinct indices (i, j, k) such t… |
 | 3742 | [Maximum Path Score in a Grid](3742.md) | 🟡 Medium | 48s | This problem presents a grid of size m x n where each cell contains… |
 | 3743 | [Maximize Cyclic Partition Score](3743.md) | 🔴 Hard | 1m 34s | We are given a cyclic array nums, which means the array is consider… |
 | 3744 | [Find Kth Character in Expanded String](3744.md) | 🟡 Medium | 1m 21s | The problem gives us a string s containing one or more lowercase wo… |
 | 3745 | [Maximize Expression of Three Elements](3745.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to choose th… |
 | 3746 | [Minimum String Length After Balanced Removals](3746.md) | 🟡 Medium | 36s | Before I write the full guide, I want to verify one detail because … |
+| 3747 | [Count Distinct Integers After Removing Zeros](3747.md) | 🟡 Medium | 2m 19s | The problem asks us to consider all integers from 1 up to a given n… |
 | 3748 | [Count Stable Subarrays](3748.md) | 🔴 Hard | 52s | The problem asks us to count "stable" subarrays within a given arra… |
 | 3749 | [Evaluate Valid Expressions](3749.md) | 🔴 Hard | 44s | The problem presents a simplified version of evaluating nested math… |
 | 3750 | [Minimum Number of Flips to Reverse Binary String](3750.md) | 🟢 Easy | 5m 55s | The problem gives us a positive integer n, and asks us to work with… |

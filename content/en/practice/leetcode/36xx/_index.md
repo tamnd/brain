@@ -67,6 +67,7 @@ draft: false
 | 3656 | [Determine if a Simple Graph Exists](3656.md) | 🟡 Medium | 1m 42s | This problem asks whether a given degree sequence can correspond to… |
 | 3657 | [Find Loyal Customers](3657.md) | 🟡 Medium | 1m 1s | This problem is a SQL aggregation and filtering task. We are given … |
 | 3658 | [GCD of Odd and Even Sums](3658.md) | 🟢 Easy | 1m 12s | The problem asks us to calculate the greatest common divisor (GCD) … |
+| 3659 | [Partition Array Into K-Distinct Groups](3659.md) | 🟡 Medium | 1m 34s | We are given an integer array nums and an integer k. The goal is to… |
 | 3660 | [Jump Game IX](3660.md) | 🟡 Medium | 1m 51s | The problem asks us to determine, for each position in an array num… |
 | 3661 | [Maximum Walls Destroyed by Robots](3661.md) | 🔴 Hard | 1m 12s | This problem takes place on a one dimensional number line. We are g… |
 | 3662 | [Filter Characters by Frequency](3662.md) | 🟢 Easy | 1m 21s | This problem asks us to filter a string based on character frequenc… |
@@ -75,14 +76,16 @@ draft: false
 | 3665 | [Twisted Mirror Path Count](3665.md) | 🟡 Medium | 1m 10s | This problem asks us to count all unique paths from the top-left co… |
 | 3667 | [Sort Array By Absolute Value](3667.md) | 🟢 Easy | 2m 12s | The problem asks us to reorder an integer array such that the eleme… |
 | 3668 | [Restore Finishing Order](3668.md) | 🟢 Easy | 1m 32s | This problem gives us two arrays: - order, which represents the fin… |
-| 3669 | [Balanced K-Factor Decomposition](3669.md) | 🟡 Medium | 3m 9s | We are given two integers, n and k. Our goal is to split n into exa… |
-| 3670 | [Maximum Product of Two Integers With No Common Bits](3670.md) | 🟡 Medium | 3m 15s | We the objective is to maximize the product rather than count pairs. |
+| 3669 | [Balanced K-Factor Decomposition](3669.md) | 🟡 Medium | 48s | The problem asks us to split a positive integer n into exactly k po… |
+| 3670 | [Maximum Product of Two Integers With No Common Bits](3670.md) | 🟡 Medium | 1m | The problem asks us to find the maximum product of two distinct ele… |
 | 3671 | [Sum of Beautiful Subsequences](3671.md) | 🔴 Hard | 3m 48s | Let a subsequence of nums be any sequence multiples. citeturn0searc… |
 | 3672 | [Sum of Weighted Modes in Subarrays](3672.md) | 🟡 Medium | 1m 11s | The problem gives an integer array nums and a window size k. We mus… |
+| 3673 | [Find Zombie Sessions](3673.md) | 🔴 Hard | 2m 4s | Exercise 4.3.1.7 asks for the average number of times the algorithm… |
 | 3674 | [Minimum Operations to Equalize Array](3674.md) | 🟢 Easy | 51s | Let's go step by step and produce a fully detailed, reference-style… |
 | 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 2m 25s | We are given a string s consisting of lowercase English letters. An… |
 | 3676 | [Count Bowl Subarrays](3676.md) | 🟡 Medium | 54s | The problem asks us to count how many subarrays in an array of dist… |
 | 3677 | [Count Binary Palindromic Numbers](3677.md) | 🔴 Hard | 1m 9s | We are given a non-negative integer n and asked to count how many i… |
+| 3678 | [Smallest Absent Positive Greater Than Average](3678.md) | 🟢 Easy | 56s | The crash is now purely an input-format mismatch, and it already re… |
 | 3679 | [ Minimum Discards to Balance Inventory](3679.md) | 🟡 Medium | 1m 20s | This problem models a stream of arriving items. On each day, exactl… |
 | 3680 | [Generate Schedule](3680.md) | 🟡 Medium | 1m 14s | The problem is asking us to generate a round-robin style schedule f… |
 | 3681 | [Maximum XOR of Subsequences](3681.md) | 🔴 Hard | 1m 26s | The problem gives us an array nums of non-negative integers. We mus… |
