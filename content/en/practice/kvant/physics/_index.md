@@ -1,10 +1,10 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (93 solved, 76 verified), 1970–1973."
+description: "Kvant physics problem solutions (94 solved, 77 verified), 1970–1973."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 93
-kvant_verified: 76
+kvant_total: 94
+kvant_verified: 77
 kvant_year_start: 1970
 kvant_year_end: 1973
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **93 physics problems** from the magazine's problem section, covering the years 1970 to 1973. 76 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **94 physics problems** from the magazine's problem section, covering the years 1970 to 1973. 77 solutions have been independently verified.
 
 ## 1970
 
@@ -239,13 +239,14 @@ draft: false
 
 ## 1973
 
-3 problems across Issues 1–2, 2 verified.
+4 problems across Issues 1–2, 3 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1973_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [193](1973/193.md) Two infinite sequences of thin lenses are placed along a common optical axis $z$. |  | 12m24s |
+| [197](1973/197.md) *A. V. Ustinova*. A body of mass $m$ lies on a fixed horizontal rough surface. | ✓ | 14m37s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1973_2/)
 
