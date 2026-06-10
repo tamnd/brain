@@ -23,7 +23,7 @@ draft: false
 | 3310 | [Remove Methods From Project](3310.md) | 🟡 Medium | 9m 11s | Understood. For any TAOCP Volume 1 exercise you provide, I will wri… |
 | 3311 | [Construct 2D Grid Matching Graph Layout](3311.md) | 🔴 Hard | 1m 55s | The problem gives us an undirected graph with n nodes labeled from … |
 | 3312 | [Sorted GCD Pair Queries](3312.md) | 🔴 Hard | 40s | === 1996-G1 === Origin: GBR Let triangle have orthocenter , and let… |
-| 3313 | [Find the Last Marked Nodes in Tree](3313.md) | 🔴 Hard | 1m 33s | We are given an undirected tree with n nodes labeled from 0 to n - … |
+| 3313 | [Find the Last Marked Nodes in Tree](3313.md) | 🔴 Hard | 1m 7s | We are given an undirected tree with n nodes. A tree is a connected… |
 | 3314 | [Construct the Minimum Bitwise Array I](3314.md) | 🟢 Easy | 52s | The problem asks us to construct an array ans from a given array nu… |
 | 3315 | [Construct the Minimum Bitwise Array II](3315.md) | 🟡 Medium | 1m 28s | We are given an array nums where every element is a prime number. F… |
 | 3316 | [Find Maximum Removals From Source String](3316.md) | 🟡 Medium | 1m 30s | We are given three inputs: - source, the original string of length … |
@@ -91,6 +91,7 @@ draft: false
 | 3378 | [Count Connected Components in LCM Graph](3378.md) | 🔴 Hard | 1m 34s | We are given an array nums, where each element represents the value… |
 | 3379 | [Transformed Array](3379.md) | 🟢 Easy | 40s | The problem asks us to transform a given integer array nums into a … |
 | 3380 | [Maximum Area Rectangle With Point Constraints I](3380.md) | 🟡 Medium | 1m 35s | The problem gives us a set of unique points on a 2D plane. We need … |
+| 3381 | [Maximum Subarray Sum With Length Divisible by K](3381.md) | 🟡 Medium | 1m 7s | We are given an integer array nums and an integer k. We must find a… |
 | 3382 | [Maximum Area Rectangle With Point Constraints II](3382.md) | 🔴 Hard | 49s | The problem asks us to find the maximum area rectangle that can be … |
 | 3383 | [Minimum Runes to Add to Cast Spell](3383.md) | 🔴 Hard | 1m 56s | We are given a directed graph with n focus points, numbered from 0 … |
 | 3384 | [Team Dominance by Pass Success](3384.md) | 🔴 Hard | 1m 45s | This problem asks us to compute a dominance score for each football… |

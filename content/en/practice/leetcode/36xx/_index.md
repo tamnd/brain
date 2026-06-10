@@ -37,7 +37,7 @@ draft: false
 | 3628 | [Maximum Number of Subsequences After One Inserting](3628.md) | 🟡 Medium | 1m 59s | We are given a string consisting of uppercase English letters. From… |
 | 3629 | [Minimum Jumps to Reach End via Prime Teleportation](3629.md) | 🟡 Medium | 1m 48s | The problem gives an integer array nums of length n, where each ind… |
 | 3630 | [Partition Array for Maximum XOR and AND](3630.md) | 🔴 Hard | 50s | The problem asks us to partition an integer array nums into three s… |
-| 3631 | [Sort Threats by Severity and Exploitability](3631.md) | 🟡 Medium | 1m 27s | We are asked to sort a list of threats according to a computed scor… |
+| 3631 | [Sort Threats by Severity and Exploitability](3631.md) | 🟡 Medium | 1m | This problem gives us a list of threats, where each threat is repre… |
 | 3632 | [Subarrays with XOR at Least K](3632.md) | 🔴 Hard | 1m 41s | This problem asks us to count the number of contiguous subarrays of… |
 | 3633 | [Earliest Finish Time for Land and Water Rides I](3633.md) | 🟢 Easy | 1m 44s | The problem asks us to determine the earliest possible time a touri… |
 | 3634 | [Minimum Removals to Balance Array](3634.md) | 🟡 Medium | 1m 36s | The problem asks us to transform a given integer array nums into a … |
@@ -60,6 +60,7 @@ draft: false
 | 3653 | [XOR After Range Multiplication Queries I](3653.md) | 🟡 Medium | 2m 56s | We are given an integer array nums and a list of queries. Each quer… |
 | 3654 | [Minimum Sum After Divisible Sum Deletions](3654.md) | 🟡 Medium | 1m 59s | This problem gives us an array nums containing positive integers an… |
 | 3655 | [XOR After Range Multiplication Queries II](3655.md) | 🔴 Hard | 1m 20s | We are given an array nums and a list of queries. Each query has th… |
+| 3656 | [Determine if a Simple Graph Exists](3656.md) | 🟡 Medium | 1m 42s | This problem asks whether a given degree sequence can correspond to… |
 | 3657 | [Find Loyal Customers](3657.md) | 🟡 Medium | 1m 1s | This problem is a SQL aggregation and filtering task. We are given … |
 | 3658 | [GCD of Odd and Even Sums](3658.md) | 🟢 Easy | 1m 12s | The problem asks us to calculate the greatest common divisor (GCD) … |
 | 3660 | [Jump Game IX](3660.md) | 🟡 Medium | 1m 51s | The problem asks us to determine, for each position in an array num… |
@@ -73,6 +74,7 @@ draft: false
 | 3669 | [Balanced K-Factor Decomposition](3669.md) | 🟡 Medium | 3m 9s | We are given two integers, n and k. Our goal is to split n into exa… |
 | 3670 | [Maximum Product of Two Integers With No Common Bits](3670.md) | 🟡 Medium | 3m 15s | We the objective is to maximize the product rather than count pairs. |
 | 3671 | [Sum of Beautiful Subsequences](3671.md) | 🔴 Hard | 3m 48s | Let a subsequence of nums be any sequence multiples. citeturn0searc… |
+| 3672 | [Sum of Weighted Modes in Subarrays](3672.md) | 🟡 Medium | 1m 11s | The problem gives an integer array nums and a window size k. We mus… |
 | 3674 | [Minimum Operations to Equalize Array](3674.md) | 🟢 Easy | 51s | Let's go step by step and produce a fully detailed, reference-style… |
 | 3675 | [Minimum Operations to Transform String](3675.md) | 🟡 Medium | 2m 25s | We are given a string s consisting of lowercase English letters. An… |
 | 3676 | [Count Bowl Subarrays](3676.md) | 🟡 Medium | 54s | The problem asks us to count how many subarrays in an array of dist… |
@@ -85,7 +87,7 @@ draft: false
 | 3684 | [Maximize Sum of At Most K Distinct Elements](3684.md) | 🟢 Easy | 32s | This problem requires selecting at most k distinct elements from a … |
 | 3685 | [Subsequence Sum After Capping Elements](3685.md) | 🟡 Medium | 1m 2s | Here is a complete, rigorous study companion-style solution guide f… |
 | 3686 | [Number of Stable Subsequences](3686.md) | 🔴 Hard | 36s | The problem asks us to count how many subsequences of a given integ… |
-| 3687 | [Library Late Fee Calculator](3687.md) | 🟢 Easy | 3m 49s | Below is,000. This value is well within the limits of standard inte… |
+| 3687 | [Library Late Fee Calculator](3687.md) | 🟢 Easy | 1m | This problem asks us to calculate the total library late fee across… |
 | 3688 | [Bitwise OR of Even Numbers in an Array](3688.md) | 🟢 Easy | 1m 32s | This problem asks us to compute the bitwise OR of all even numbers … |
 | 3689 | [Maximum Total Subarray Value I](3689.md) | 🟡 Medium | 56s | The problem asks us to select exactly k non-empty subarrays from a … |
 | 3690 | [Split and Merge Array Transformation](3690.md) | 🟡 Medium | 1m 33s | The problem gives us two arrays, nums1 and nums2, of equal length n… |

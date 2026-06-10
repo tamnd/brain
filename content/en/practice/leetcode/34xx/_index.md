@@ -14,8 +14,8 @@ draft: false
 | 3401 | [Find Circular Gift Exchange Chains](3401.md) | 🔴 Hard | 35s | Here’s a full technical solution guide following your requested for… |
 | 3402 | [Minimum Operations to Make Columns Strictly Increasing](3402.md) | 🟢 Easy | 46s | The problem gives us a matrix grid of size m x n containing non-neg… |
 | 3403 | [Find the Lexicographically Largest String From the Box I](3403.md) | 🟡 Medium | 2m 34s | We are given a string word of length n and an integer numFriends. I… |
-| 3404 | [Count Special Subsequences](3404.md) | 🟡 Medium | 1m 31s | This problem asks us to count the number of special subsequences of… |
-| 3405 | [Count the Number of Arrays with K Matching Adjacent Elements](3405.md) | 🔴 Hard | 3m 16s | This problem asks us to count how many arrays of length n can be fo… |
+| 3404 | [Count Special Subsequences](3404.md) | 🟡 Medium | 1m 31s | We are given an array nums of positive integers and need to count h… |
+| 3405 | [Count the Number of Arrays with K Matching Adjacent Elements](3405.md) | 🔴 Hard | 53s | We are given three integers: - n, the length of the array. - m, the… |
 | 3406 | [Find the Lexicographically Largest String From the Box II](3406.md) | 🔴 Hard | 2m 10s | We are given a string word of length n and an integer numFriends. I… |
 | 3407 | [Substring Matching Pattern](3407.md) | 🟢 Easy | 2m 39s | The problem gives us two strings: - s, the source string. - p, a pa… |
 | 3408 | [Design Task Manager](3408.md) | 🟡 Medium | 2m 21s | This problem asks us to design a data structure that maintains a co… |
@@ -36,12 +36,13 @@ draft: false
 | 3423 | [Maximum Difference Between Adjacent Elements in a Circular Array](3423.md) | 🟢 Easy | 1m 30s | This problem gives us an integer array nums and asks us to find the… |
 | 3424 | [Minimum Cost to Make Arrays Identical](3424.md) | 🟡 Medium | 49s | The problem asks us to transform one integer array arr into another… |
 | 3425 | [Longest Special Path](3425.md) | 🔴 Hard | 51s | This problem provides an undirected tree rooted at node 0 with n no… |
+| 3426 | [Manhattan Distances of All Arrangements of Pieces](3426.md) | 🔴 Hard | 51s | We are given an m × n grid and must place exactly k identical piece… |
 | 3427 | [Sum of Variable Length Subarrays](3427.md) | 🟢 Easy | 40s | The problem provides an integer array nums of length n. For each in… |
 | 3428 | [Maximum and Minimum Sums of at Most Size K Subsequences](3428.md) | 🟡 Medium | 1m 11s | We are given an array nums and an integer k. For every subsequence … |
 | 3429 | [Paint House IV](3429.md) | 🟡 Medium | 46s | This problem is asking us to paint n houses arranged in a line with… |
 | 3430 | [Maximum and Minimum Sums of at Most Size K Subarrays](3430.md) | 🔴 Hard | 4m 29s | We are remains efficient even at the maximum constraint limit. |
-| 3431 | [Minimum Unlocked Indices to Sort Nums](3431.md) | 🟡 Medium | 3m 37s | We are given two arrays of equal both required ranges are empty and… |
-| 3432 | [Count Partitions with Even Sum Difference](3432.md) | 🟢 Easy | 2m 43s | The problem gives us an integer array nums and asks us to count how… |
+| 3431 | [Minimum Unlocked Indices to Sort Nums](3431.md) | 🟡 Medium | 2m 25s | This problem asks us to determine the minimum number of indices we … |
+| 3432 | [Count Partitions with Even Sum Difference](3432.md) | 🟢 Easy | 54s | The problem gives us an integer array nums of length n. We must con… |
 | 3433 | [Count Mentions Per User](3433.md) | 🟡 Medium | 1m 28s | This problem asks us to simulate a sequence of user activity events… |
 | 3435 | [Frequencies of Shortest Supersequences](3435.md) | 🔴 Hard | 46s | The problem asks us to find all shortest common supersequences (SCS… |
 | 3436 | [Find Valid Emails](3436.md) | 🟢 Easy | 42s | The problem requires us to identify valid email addresses from a Us… |
@@ -73,7 +74,7 @@ draft: false
 | 3463 | [Check If Digits Are Equal in String After Operations II](3463.md) | 🔴 Hard | 44s | The problem asks us to repeatedly transform a string of digits unti… |
 | 3464 | [Maximize the Distance Between Points on a Square](3464.md) | 🔴 Hard | 1m 56s | We are given a square of side length side. Every point in the input… |
 | 3465 | [Find Products with Valid Serial Numbers](3465.md) | 🟢 Easy | 40s | The problem asks us to query a database table called products to id… |
-| 3466 | [Maximum Coin Collection ](3466.md) | 🟡 Medium | 2m 9s | We are given two arrays, lane1 and lane2, of equal length. Each ind… |
+| 3466 | [Maximum Coin Collection ](3466.md) | 🟡 Medium | 4m 16s | This problem asks us to calculate the maximum coins Mario can colle… |
 | 3467 | [Transform Array by Parity](3467.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums and asks us to transform… |
 | 3468 | [Find the Number of Copy Arrays](3468.md) | 🟡 Medium | 1m 7s | We are given an array original and a range constraint for every pos… |
 | 3469 | [Find Minimum Cost to Remove Array Elements](3469.md) | 🟡 Medium | 42s | The problem is asking for the minimum total cost required to remove… |

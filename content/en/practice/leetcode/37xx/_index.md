@@ -41,6 +41,7 @@ draft: false
 | 3731 | [Find Missing Elements](3731.md) | 🟢 Easy | 1m 5s | This problem asks us to reconstruct a missing sequence of integers … |
 | 3733 | [Minimum Time to Complete All Deliveries](3733.md) | 🟡 Medium | 35s | This is a long, structured reference document. To make sure I targe… |
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
+| 3735 | [Lexicographically Smallest String After Reverse II](3735.md) | 🔴 Hard | 42s | This problem asks us to manipulate a string in a very controlled wa… |
 | 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 1m 1s | The problem asks us to determine the minimum number of moves requir… |
 | 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 6s | Here is a comprehensive, detailed reference guide for LeetCode 3737… |
 | 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](3738.md) | 🟡 Medium | 4m 7s | assert Solution(). |
