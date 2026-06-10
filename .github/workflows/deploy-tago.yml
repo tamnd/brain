@@ -77,6 +77,7 @@ jobs:
           path: |
             public-main
             public-shards
+            public-manifest.json
           key: tago-split-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: |
             tago-split-${{ runner.os }}-${{ github.ref_name }}-
@@ -88,14 +89,13 @@ jobs:
 
       - name: Build site
         run: |
-          echo "BUILD_START=$(date +%s)" >> $GITHUB_ENV
           tago build --base-url "https://brain.tamnd.com/"
           # tago fingerprints .js files, so copy worker explicitly
           [ -f static/_worker.js ] && cp static/_worker.js public/_worker.js || true
 
       - name: Split Cloudflare Pages outputs
         run: |
-          tago split --since=$BUILD_START
+          tago split --incremental
           cat deploy-shards-summary.json
 
       - name: Save incremental site cache
@@ -110,6 +110,7 @@ jobs:
           path: |
             public-main
             public-shards
+            public-manifest.json
           key: tago-split-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
 
       - name: Save lastmods cache
