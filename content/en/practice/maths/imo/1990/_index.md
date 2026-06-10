@@ -14,14 +14,14 @@ draft: false
 
 | # | Status | Time |
 |---|--------|------|
-| [1](1.md) | solved | 1m49s |
+| [1](1.md) | solved | 12m44s |
 | 2 | — | — |
 | 3 | — | — |
 | 4 | — | — |
 | 5 | — | — |
 | 6 | — | — |
 
-**Problem 1** &nbsp; *solved* · 1m49s · [Solution →](1.md)
+**Problem 1** &nbsp; *solved* · 12m44s · [Solution →](1.md)
 
 Chords $AB$ and $CD$ of a circle intersect at a point $E$ inside the circle. Let $M$ be an interior point of the segment $EB$. The tangent line at $E$ to the circle through $D$, $E$, and $M$ intersects the lines $BC$ and $AC$ at $F$ and $G$, respectively. If $$
 \frac {AM}{AB} = t,

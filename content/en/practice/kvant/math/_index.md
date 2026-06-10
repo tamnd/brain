@@ -2152,7 +2152,7 @@ draft: false
 |---|---------|---|------|
 | [1041](1041.md) *Moscow 50th City Mathematical Olympiad, 1987*. A regular pentagon is determined up to congruence by any three consecutive vertices. |  | 7m51s |
 | [1042](1042.md) *50th Moscow City Mathematical Olympiad, 1987*. Let the class contain $n$ students. |  | 17m08s |
-| [1043](1043.md) *50th Moscow City Mathematical Olympiad, 1987*. Let the three subsets be colored by the colors $A,B,C$. |  | 16m27s |
+| [1043](1043.md) *Moscow 50th City Mathematical Olympiad, 1987*. A partition of $\\mathbb{Z}$ into three subsets is encoded by a function $f:\\mathbb{Z}\\to\\mathbb{Z}_3$. |  | 11m58s |
 | [1044](1044.md) *50th Moscow City Mathematical Olympiad, 1987.*. Let |  | 2m48s |
 | [1045](1045.md) *Moscow 50th City Mathematical Olympiad, 1987*. Consider the geometry of the kingdom, which is a square of side $2$ km. |  | 32m23s |
 
