@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1056 contests, 6247 problems, 2916 verified."
+description: "Codeforces problem solutions with full editorial. 1057 contests, 6258 problems, 2921 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1056 contests, 6247 problems, 2916 verified.**
+**1057 contests, 6258 problems, 2921 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1510](1510/) | [2020-2021 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1510) | ICPC/IOI | 1200-3200 | 5/11 | 49m 4s |
 | [1511](1511/) | [Educational Codeforces Round 107 (Rated for Div. 2)](https://codeforces.com/contest/1511) | Div. 2 | 1100-2700 | 3/5 | 30m 4s |
 | [1512](1512/) | [Codeforces Round 713 (Div. 3)](https://codeforces.com/contest/1512) | Div. 3 | 800-1900 | 2/7 | 17m 19s |
 | [1513](1513/) | [Divide by Zero 2021 and Codeforces Round 714 (Div. 2)](https://codeforces.com/contest/1513) | Div. 2 | 800-2500 | 1/6 | 18m 59s |
