@@ -250,7 +250,7 @@ draft: false
 | [111](111.md) *G. V. Rozenblyum*. The condition forbids the distance $d=0. |  | 6m44s |
 | [112](112.md) Let the entry in row $i$, column $j$ be $a_{ij}$. |  | 2m |
 | [113](113.md) *B. M. Ivlev*. For small values of $n$ the statement is easy to check directly. |  | 7m05s |
-| [114](114.md) *V. B. Alekseev*. Let the numbers around the circle be $x_1,x_2,\\dots,x_n$, with indices taken modulo $n$. |  | 7m56s |
+| [114](114.md) *V. B. Alekseev*. The circle contains numbers $x_1,\\dots,x_n$ in cyclic order. |  | 11m42s |
 | [115](115.md) *G. A. Galperin*. Let the amounts of water be $a,b,c$, all positive integers. |  | 7m54s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1971_12/)
