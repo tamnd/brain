@@ -1,19 +1,19 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (99 solved, 79 verified), 1970–1975."
+description: "Kvant physics problem solutions (100 solved, 80 verified), 1970–1977."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 99
-kvant_verified: 79
+kvant_total: 100
+kvant_verified: 80
 kvant_year_start: 1970
-kvant_year_end: 1975
+kvant_year_end: 1977
 weight: 20
 draft: false
 ---
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **99 physics problems** from the magazine's problem section, covering the years 1970 to 1975. 79 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **100 physics problems** from the magazine's problem section, covering the years 1970 to 1977. 80 solutions have been independently verified.
 
 ## 1970
 
@@ -278,4 +278,14 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [324](1975/324.md) The optical element is a thin converging lens with focal length $f = 50\\ \\text{cm}$ and diameter $d = 5\\ \\text{cm}$. |  | 17m24s |
+
+## 1977
+
+1 problems across Issue 8, 1 verified.
+
+### [Issue 8](https://www.kvant.digital/view/kvant_1977_8/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [471](1977/471.md) The system consists of a thermally insulated cavity of negligible volume compared to the connected vessels, linked via small identical openings to two large volumes of gaseous helium. | ✓ | 5m17s |
 
