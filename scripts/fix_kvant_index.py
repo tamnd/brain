@@ -32,9 +32,16 @@ def _fmt_time(s: int) -> str:
 
 def _list_solutions(subject_dir: Path) -> list[dict]:
     out = []
-    for f in subject_dir.glob("*.md"):
-        if f.name == "_index.md":
-            continue
+    # Collect both flat .md files and files in year subdirectories.
+    candidates: list[tuple[Path, str | None]] = [
+        (f, None) for f in subject_dir.glob("*.md") if f.name != "_index.md"
+    ]
+    for year_dir in subject_dir.iterdir():
+        if year_dir.is_dir() and year_dir.name.isdigit():
+            candidates.extend(
+                (f, year_dir.name) for f in year_dir.glob("*.md") if f.name != "_index.md"
+            )
+    for f, year_dir_name in candidates:
         try:
             num = int(f.stem)
         except ValueError:
@@ -52,6 +59,7 @@ def _list_solutions(subject_dir: Path) -> list[dict]:
             "issue": int(um.group(2)) if um else 0,
             "desc": dm.group(1) if dm else "",
             "source": _extract_problem_source(text),
+            "year_dir": year_dir_name,  # None for flat files (math), dir name for physics
         })
     out.sort(key=lambda d: d["num"])
     return out
@@ -89,7 +97,10 @@ def _fmt_problem_row(s: dict) -> str:
         detail_parts.append(s["desc"])
     detail = ". ".join(detail_parts) if detail_parts else ""
     detail = detail.replace("|", "/").replace("\n", " ")
-    problem_cell = f"[{s['num']}]({s['num']}.md)"
+    if s.get("year_dir"):
+        problem_cell = f"[{s['num']}]({s['year_dir']}/{s['num']}.md)"
+    else:
+        problem_cell = f"[{s['num']}]({s['num']}.md)"
     if detail:
         problem_cell += f" {detail}"
     return (
