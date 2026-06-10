@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1000 contests, 5953 problems, 2822 verified."
+description: "Codeforces problem solutions with full editorial. 1001 contests, 5966 problems, 2827 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1000 contests, 5953 problems, 2822 verified.**
+**1001 contests, 5966 problems, 2827 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1575](1575/) | [COMPFEST 13 - Finals Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1575) | ICPC/IOI | 1100-3000 | 5/13 | 35m 28s |
 | [1576](1576/) | [2021 ICPC Communication Routing Challenge: Marathon](https://codeforces.com/contest/1576) | ICPC/IOI | - | 1/1 | 1m 41s |
 | [1578](1578/) | [ICPC WF Moscow Invitational Contest - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1578) | ICPC/IOI | 1200-3500 | 1/12 | 38m 51s |
 | [1579](1579/) | [Codeforces Round 744 (Div. 3)](https://codeforces.com/contest/1579) | Div. 3 | 800-2200 | 1/8 | 29m 40s |
