@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1556 solved, 59 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1556 solved, 60 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 kvant_total: 1556
-kvant_verified: 59
+kvant_verified: 60
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 59 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 60 solutions have been independently verified.
 
 ## 1970
 
@@ -265,7 +265,7 @@ draft: false
 
 ## 1972
 
-60 problems across Issues 1–12.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -354,7 +354,7 @@ draft: false
 | [161](161.md) *I. N. Bernstein*. Let the lake be the interior of a simple nonconvex polygon $P=A_1A_2\\cdots A_n$. |  | 6m36s |
 | [162](162.md) *Yu. G. Eroshkin, 9th-grade student*. Let $A={a_1<a_2<a_3<\\cdots}$. |  | 1m56s |
 | [163](163.md) *I. A. Kushnir*. Let the convex quadrilateral be $ABCD$, and let its diagonals $AC$ and $BD$ intersect at $P$. |  | 10m09s |
-| [164](164.md) *M. L. Gerver*. Let the white squares be indexed by coordinates. |  | 1m48s |
+| [164](164.md) *M. L. Gerver*. Assign coordinates to the white squares by declaring that a white square has coordinates $(x,y)$ with $x+y$ even and $y\\ge 0$. | ✓ | 6m13s |
 | [165](165.md) *Yu. P. Lysov*. Represent the circle by the additive group $\\mathbb R/\\mathbb Z$, so that arc lengths are measured as fractions of the circumference. |  | 8m21s |
 
 ### [Issue 10](https://www.kvant.digital/view/kvant_1972_10/)
