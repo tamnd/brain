@@ -1,9 +1,9 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (97 solved, 79 verified), 1970–1975."
+description: "Kvant physics problem solutions (98 solved, 79 verified), 1970–1975."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 97
+kvant_total: 98
 kvant_verified: 79
 kvant_year_start: 1970
 kvant_year_end: 1975
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **97 physics problems** from the magazine's problem section, covering the years 1970 to 1975. 79 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **98 physics problems** from the magazine's problem section, covering the years 1970 to 1975. 79 solutions have been independently verified.
 
 ## 1970
 
@@ -258,7 +258,7 @@ draft: false
 
 ## 1975
 
-2 problems across Issues 1–2, 2 verified.
+3 problems across Issues 1–2, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1975_1/)
 
@@ -270,5 +270,6 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [318](1975/318.md) *B. B. Bukhovtsev*. The circuit in Fig. |  | 15m31s |
 | [319](1975/319.md) *V. E. Belonuchkin*. A luminous object is placed on the optical axis of a thin converging lens $\\text{Л}_1$ with focal length $F$. | ✓ | 9m12s |
 
