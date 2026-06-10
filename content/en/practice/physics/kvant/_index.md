@@ -1,10 +1,10 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (6 solved, 6 verified), 1970–1970."
+description: "Kvant physics problem solutions (7 solved, 7 verified), 1970–1970."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 6
-kvant_verified: 6
+kvant_total: 7
+kvant_verified: 7
 kvant_year_start: 1970
 kvant_year_end: 1970
 weight: 20
@@ -13,11 +13,11 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **6 physics problems** from the magazine's problem section, covering the years 1970 to 1970. 6 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **7 physics problems** from the magazine's problem section, covering the years 1970 to 1970. 7 solutions have been independently verified.
 
 ## 1970
 
-6 problems across Issues 1–2, 6 verified.
+7 problems across Issues 1–2, 7 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1970_1/)
 
@@ -34,4 +34,5 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [7](7.md) We consider a horizontal rod of length $l$ that rotates about a vertical axis passing through the point $O_1$. | ✓ | 9m57s |
+| [8](8.md) *MIEM Physics and Mathematics Olympiad*. The system consists of a long rigid rod of length $L$ and mass $m$. | ✓ | 8m36s |
 
