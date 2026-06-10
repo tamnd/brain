@@ -1,0 +1,91 @@
+---
+title: "CF 1521A - Nastia and Nearly Good Numbers"
+description: "A radix conversion routine transforms a nonnegative integer written in one base into its representation in another base. The program under discussion is Method 1a from Section 4."
+date: "2026-06-10T17:46:57+07:00"
+tags: ["codeforces", "competitive-programming", "constructive-algorithms", "math", "number-theory"]
+categories: ["algorithms"]
+codeforces_contest: 1521
+codeforces_index: "A"
+codeforces_contest_name: "Codeforces Round 720 (Div. 2)"
+rating: 1000
+weight: 1521
+solve_time_s: 131
+verified: false
+draft: false
+---
+
+[CF 1521A - Nastia and Nearly Good Numbers](https://codeforces.com/problemset/problem/1521/A)
+
+**Rating:** 1000  
+**Tags:** constructive algorithms, math, number theory  
+**Solve time:** 2m 11s  
+**Verified:** no  
+
+## Solution
+## Setup
+
+A radix conversion routine transforms a nonnegative integer written in one base into its representation in another base. The program under discussion is Method 1a from Section 4.4, which produces the digits of an integer $u$ in radix $B$ by repeated division by $B$ in the original radix $b$. Concretely, it generates digits $U_0, U_1, U_2, \ldots$ such that
+
+$$u = (\ldots U_2 U_1 U_0)_B,$$
+
+where each digit is obtained by successive quotient and remainder operations
+
+$$U_0 = u \bmod B,\quad U_1 = \lfloor u/B \rfloor \bmod B,\quad \ldots$$
+
+until the quotient becomes zero.
+
+The exercise asks to justify that a MIX implementation of this method remains valid when the constant $10$ in the division instruction is replaced by a more general constant $c$, provided the arithmetic interpretation of the program is preserved.
+
+The essential claim is that the algorithm does not depend on the specific decimal base, but only on the correctness of the quotient-remainder decomposition
+
+$$u = qB + r,\quad 0 \le r < B.$$
+
+## Solution
+
+The program in equation (1) performs repeated division by $B = 10$, extracting the remainder each time as the next radix-$10$ digit. The key invariant maintained across iterations is that at the start of each loop, the register pair $(rA, rX)$ stores the current value $u^{(j)}$, and after executing the division step, this value is decomposed as
+
+$$u^{(j)} = 10 q^{(j)} + r^{(j)}, \quad 0 \le r^{(j)} < 10,$$
+
+so that $r^{(j)}$ is stored as the next output digit and $q^{(j)}$ becomes the next value to process.
+
+The correctness argument uses only the property that division in MIX produces quotient and remainder satisfying
+
+$$rAX = Bq + r,\quad 0 \le r < B.$$
+
+If the instruction `DIV =10=` is replaced by `DIV =c=`, the machine computes instead
+
+$$rAX = cq + r,\quad 0 \le r < c,$$
+
+so the loop now extracts digits in base $c$ rather than base $10$. Every step of the algorithm continues to maintain the same structural invariant: after $j$ iterations, the value stored in the working registers equals
+
+$$\left\lfloor \frac{u}{c^j} \right\rfloor,$$
+
+and the emitted remainders are exactly
+
+$$U_j = \left\lfloor \frac{u}{c^j} \right\rfloor \bmod c.$$
+
+Since radix representation is defined uniquely by repeated extraction of remainders in this form, the program computes the base-$c$ expansion of $u$.
+
+No other part of the program depends on the constant $10$ except as the divisor used in this quotient-remainder decomposition. Therefore substituting any fixed integer $c \ge 2$ preserves correctness, and only changes the radix of the output representation.
+
+This completes the proof. ∎
+
+## Verification
+
+The correctness depends on two independent conditions that must both hold in MIX arithmetic. First, the DIV instruction must implement exact Euclidean division, producing quotient and remainder satisfying $0 \le r < c$. This ensures that each extracted digit lies in the correct digit range for base $c$.
+
+Second, the recurrence relation induced by repeated division must reduce the magnitude of the working value at each step. Since each iteration replaces $u$ by $\lfloor u/c \rfloor$, we have
+
+$$\left\lfloor \frac{u}{c^{j+1}} \right\rfloor < \left\lfloor \frac{u}{c^j} \right\rfloor$$
+
+whenever the value is nonzero, guaranteeing termination after finitely many steps.
+
+The digit reconstruction identity
+
+$$u = \sum_{j \ge 0} U_j c^j$$
+
+follows directly by unwinding the recurrence for repeated quotient extraction, identical to the standard base-$10$ proof with the constant replaced everywhere by $c$.
+
+## Notes
+
+The constant $10$ in Method 1a plays no structural role beyond defining the radix. The same program template therefore implements conversion to any fixed radix $c$ available as a machine constant in the division instruction. The only restriction is that MIX division must behave according to Euclidean division semantics, ensuring $0 \le r < c$, which guarantees valid digit extraction.
