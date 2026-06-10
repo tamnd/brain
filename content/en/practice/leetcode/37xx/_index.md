@@ -62,6 +62,7 @@ draft: false
 | 3749 | [Evaluate Valid Expressions](3749.md) | 🔴 Hard | 44s | The problem presents a simplified version of evaluating nested math… |
 | 3750 | [Minimum Number of Flips to Reverse Binary String](3750.md) | 🟢 Easy | 5m 55s | The problem gives us a positive integer n, and asks us to work with… |
 | 3751 | [Total Waviness of Numbers in Range I](3751.md) | 🟡 Medium | 1m 20s | This problem asks us to compute the total waviness of every integer… |
+| 3752 | [Lexicographically Smallest Negated Permutation that Sums to Target](3752.md) | 🟡 Medium | 1m 18s | We are given two values: - n, which determines the numbers 1, 2, ..… |
 | 3754 | [Concatenate Non-Zero Digits and Multiply by Sum I](3754.md) | 🟢 Easy | 1m 2s | The problem asks us to process an integer n and construct a new num… |
 | 3755 | [Find Maximum Balanced XOR Subarray Length](3755.md) | 🟡 Medium | 1m 25s | This problem asks us to find the longest contiguous subarray that s… |
 | 3756 | [Concatenate Non-Zero Digits and Multiply by Sum II](3756.md) | 🟡 Medium | 21s | Please provide the official LeetCode problem statement or confirm t… |
@@ -84,19 +85,27 @@ draft: false
 | 3773 | [Maximum Number of Equal Length Runs](3773.md) | 🟡 Medium | 59s | The problem asks us to analyze a string s consisting of lowercase E… |
 | 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 3m 7s | The problem asks us to calculate the absolute difference between th… |
 | 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 48s | The problem requires processing a string s consisting of lowercase … |
+| 3776 | [Minimum Moves to Balance Circular Array](3776.md) | 🟡 Medium | 54s | Exercise 4.3.1.7 asks for the average number of times the algorithm… |
+| 3777 | [Minimum Deletions to Make Alternating Substring](3777.md) | 🔴 Hard | 2m 16s | We are given a mutable binary string consisting only of 'A' and 'B'… |
 | 3778 | [Minimum Distance Excluding One Maximum Weighted Edge](3778.md) | 🟡 Medium | 1m 56s | We are given a connected, weighted, undirected graph with n nodes n… |
 | 3779 | [Minimum Number of Operations to Have Distinct Elements](3779.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and defines a very speci… |
 | 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 2s | Here is a comprehensive, detailed solution guide for LeetCode 3780 … |
 | 3781 | [Maximum Score After Binary Swaps](3781.md) | 🟡 Medium | 33s | Before I write the full guide, I need one clarification: can you co… |
 | 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 29s | Before I write the full guide, I want to confirm one critical detai… |
+| 3783 | [Mirror Distance of an Integer](3783.md) | 🟢 Easy | 1m 4s | The problem gives us a positive integer n and asks us to compute it… |
 | 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 47s | The problem asks us to minimize the total cost of deleting characte… |
+| 3785 | [Minimum Swaps to Avoid Forbidden Values](3785.md) | 🔴 Hard | 1m 17s | This problem asks us to modify an array nums so that for every inde… |
 | 3786 | [Total Sum of Interaction Cost in Tree Groups](3786.md) | 🔴 Hard | 34s | I can do this, but I need the actual problem details for LeetCode 3… |
-| 3787 | [Find Diameter Endpoints of a Tree](3787.md) | 🟡 Medium | 1m 22s | This problem gives us an undirected tree with n nodes labeled from … |
+| 3787 | [Find Diameter Endpoints of a Tree](3787.md) | 🟡 Medium | 1m 29s | The problem asks us to identify special nodes in a tree, which are … |
 | 3788 | [Maximum Score of a Split](3788.md) | 🟡 Medium | 57s | The problem asks us to maximize a "score" obtained by splitting an … |
 | 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum cost required to acqu… |
 | 3790 | [Smallest All-Ones Multiple](3790.md) | 🟡 Medium | 1m 10s | This problem asks us to find the smallest positive integer composed… |
 | 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 55s | Here is the full, detailed technical solution guide for LeetCode 37… |
 | 3792 | [Sum of Increasing Product Blocks](3792.md) | 🟡 Medium | 1m 6s | The problem defines a sequence of blocks, where each block contains… |
+| 3793 | [Find Users with High Token Usage](3793.md) | 🟢 Easy | 2m 21s | The prompts table records every prompt submitted by a user to an AI… |
 | 3794 | [Reverse String Prefix](3794.md) | 🟢 Easy | 1m 7s | This problem gives us a string s and an integer k. Our task is to r… |
 | 3795 | [Minimum Subarray Length With Distinct Sum At Least K](3795.md) | 🟡 Medium | 7m 19s | This problem asks us to find the shortest contiguous subarray whose… |
+| 3796 | [Find Maximum Value in a Constrained Sequence](3796.md) | 🟡 Medium | 1m 57s | We are asked to design an algorithm that adds two numbers digit by … |
+| 3797 | [Count Routes to Climb a Rectangular Grid](3797.md) | 🔴 Hard | 2m 30s | We are given an n × m grid where each cell is either available ('.'… |
+| 3798 | [Largest Even Number](3798.md) | 🟢 Easy | 1m 21s | We are given a string s that contains only the characters '1' and '… |
 | 3799 | [Word Squares II](3799.md) | 🟡 Medium | 5m 13s | We are given an array of distinct 4-letter words. Our goal is to co… |
