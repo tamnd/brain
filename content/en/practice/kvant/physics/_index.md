@@ -1,9 +1,9 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (94 solved, 77 verified), 1970–1973."
+description: "Kvant physics problem solutions (95 solved, 77 verified), 1970–1973."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 94
+kvant_total: 95
 kvant_verified: 77
 kvant_year_start: 1970
 kvant_year_end: 1973
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **94 physics problems** from the magazine's problem section, covering the years 1970 to 1973. 77 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **95 physics problems** from the magazine's problem section, covering the years 1970 to 1973. 77 solutions have been independently verified.
 
 ## 1970
 
@@ -239,7 +239,7 @@ draft: false
 
 ## 1973
 
-4 problems across Issues 1–2, 3 verified.
+5 problems across Issues 1–2, 3 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1973_1/)
 
@@ -254,4 +254,5 @@ draft: false
 |---|---------|---|------|
 | [198](1973/198.md) *G. L. Kotkin*. A skater moves on horizontal ice with both skate blades in contact with the surface. | ✓ | 8m09s |
 | [199](1973/199.md) *P. L. Kapitsa*. The physical system consists of a neutron entering a layer of material. | ✓ | 2m28s |
+| [201](1973/201.md) The circuit consists of one or more batteries connected to a fixed external resistor. |  | 15m13s |
 
