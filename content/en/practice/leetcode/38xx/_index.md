@@ -53,6 +53,7 @@ draft: false
 | 3840 | [House Robber V](3840.md) | 🟡 Medium | 52s | The problem is a variation of the classic House Robber problem, but… |
 | 3841 | [Palindromic Path Queries in a Tree](3841.md) | 🔴 Hard | 1m 32s | We are given a tree with n nodes. Each node stores a lowercase Engl… |
 | 3842 | [Toggle Light Bulbs](3842.md) | 🟢 Easy | 1m 26s | The problem gives us an array bulbs, where each value represents a … |
+| 3843 | [First Element with Unique Frequency](3843.md) | 🟡 Medium | 2m | The proposed solution does not answer the question that Exercise 4.… |
 | 3844 | [Longest Almost-Palindromic Substring](3844.md) | 🟡 Medium | 2m 6s | We are given a string s consisting of lowercase English letters. We… |
 | 3845 | [Maximum Subarray XOR with Bounded Range](3845.md) | 🔴 Hard | 40s | The problem asks us to find a subarray of a given non-negative inte… |
 | 3846 | [Total Distance to Type a String Using One Finger](3846.md) | 🟡 Medium | 1m 27s | This problem asks us to calculate the total finger movement require… |
@@ -99,6 +100,7 @@ draft: false
 | 3887 | [Incremental Even-Weighted Cycle Queries](3887.md) | 🔴 Hard | 1m 29s | This problem describes a dynamic process of building an undirected … |
 | 3889 | [Mirror Frequency Distance](3889.md) | 🟡 Medium | 1m 12s | We are given a string s containing only lowercase English letters (… |
 | 3890 | [Integers With Multiple Sum of Two Cubes](3890.md) | 🟡 Medium | 55s | The problem asks us to find all integers x less than or equal to a … |
+| 3891 | [Minimum Increase to Maximize Special Indices](3891.md) | 🟡 Medium | 1m 30s | This problem asks us to modify an integer array to create as many s… |
 | 3892 | [Minimum Operations to Achieve At Least K Peaks](3892.md) | 🔴 Hard | 1m 58s | We are given a circular array nums. An index is considered a peak i… |
 | 3894 | [Traffic Signal Color](3894.md) | 🟢 Easy | 2m 19s | This problem asks us to determine the current state of a traffic si… |
 | 3895 | [Count Digit Appearances](3895.md) | 🟡 Medium | 2m 24s | The problem asks us to count how many times a specific decimal digi… |

@@ -63,6 +63,7 @@ draft: false
 | 3750 | [Minimum Number of Flips to Reverse Binary String](3750.md) | 🟢 Easy | 5m 55s | The problem gives us a positive integer n, and asks us to work with… |
 | 3751 | [Total Waviness of Numbers in Range I](3751.md) | 🟡 Medium | 1m 20s | This problem asks us to compute the total waviness of every integer… |
 | 3752 | [Lexicographically Smallest Negated Permutation that Sums to Target](3752.md) | 🟡 Medium | 1m 18s | We are given two values: - n, which determines the numbers 1, 2, ..… |
+| 3753 | [Total Waviness of Numbers in Range II](3753.md) | 🔴 Hard | 57s | The problem asks us to compute a cumulative score over all integers… |
 | 3754 | [Concatenate Non-Zero Digits and Multiply by Sum I](3754.md) | 🟢 Easy | 1m 2s | The problem asks us to process an integer n and construct a new num… |
 | 3755 | [Find Maximum Balanced XOR Subarray Length](3755.md) | 🟡 Medium | 1m 25s | This problem asks us to find the longest contiguous subarray that s… |
 | 3756 | [Concatenate Non-Zero Digits and Multiply by Sum II](3756.md) | 🟡 Medium | 21s | Please provide the official LeetCode problem statement or confirm t… |

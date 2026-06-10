@@ -31,10 +31,12 @@ draft: false
 | 3921 | [Score Validator](3921.md) | 🟢 Easy | 1m 21s | This problem asks us to simulate a simple scoring system while proc… |
 | 3923 | [Minimum Generations to Target Point](3923.md) | 🟡 Medium | 1m 30s | This problem defines a process that repeatedly creates new 3D point… |
 | 3925 | [Concatenate Array With Reverse](3925.md) | 🟢 Easy | 1m 44s | The problem asks us to construct a new array by concatenating an in… |
+| 3926 | [Count Valid Word Occurrences](3926.md) | 🟡 Medium | 1m 23s | The problem asks us to count occurrences of specific words in a str… |
 | 3927 | [Minimize Array Sum Using Divisible Replacements](3927.md) | 🟡 Medium | 42s | The problem gives an integer array nums and allows an operation tha… |
 | 3928 | [Minimum Cost to Buy Apples II](3928.md) | 🔴 Hard | 58s | The problem asks us to determine the minimum cost to purchase apple… |
 | 3931 | [Check Adjacent Digit Differences](3931.md) | 🟢 Easy | 1m 5s | The problem asks us to determine whether the absolute difference be… |
 | 3932 | [Count K-th Roots in a Range](3932.md) | 🟡 Medium | 1m 12s | This problem asks us to count how many integers in a given range [l… |
+| 3933 | [Largest Local Values in a Matrix II](3933.md) | 🟡 Medium | 1m 24s | The problem asks us to find local maximums in a 2D matrix according… |
 | 3934 | [Smallest Unique Subarray](3934.md) | 🔴 Hard | 1m 22s | The problem asks us to find the smallest possible length of a conti… |
 | 3936 | [Minimum Swaps to Move Zeros to End](3936.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums containing values betwee… |
 | 3937 | [Minimum Operations to Make Array Modulo Alternating I](3937.md) | 🟡 Medium | 3m 6s | The problem asks us to transform an array of integers, nums, into a… |
