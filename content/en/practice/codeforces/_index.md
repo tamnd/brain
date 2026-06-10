@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1020 contests, 6050 problems, 2853 verified."
+description: "Codeforces problem solutions with full editorial. 1021 contests, 6052 problems, 2854 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1020 contests, 6050 problems, 2853 verified.**
+**1021 contests, 6052 problems, 2854 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1550](1550/) | [Educational Codeforces Round 111 (Rated for Div. 2)](https://codeforces.com/contest/1550) | Div. 2 | 1000-1700 | 1/2 | 6m 25s |
 | [1551](1551/) | [Codeforces Round 734 (Div. 3)](https://codeforces.com/contest/1551) | Div. 3 | 800-2200 | 1/4 | 15m 26s |
 | [1552](1552/) | [Codeforces Global Round 15](https://codeforces.com/contest/1552) | Global | 1500-3000 | 1/4 | 9m 35s |
 | [1553](1553/) | [Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1553) | Div. 1+2 | 1200-2900 | 2/3 | 6m 55s |
