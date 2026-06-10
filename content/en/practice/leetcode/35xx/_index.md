@@ -12,7 +12,7 @@ draft: false
 |---|---|---|---|---|
 | 3500 | [Minimum Cost to Divide Array Into Subarrays](3500.md) | 🔴 Hard | 46s | This problem asks us to partition an array nums into contiguous sub… |
 | 3501 | [Maximize Active Section with Trade II](3501.md) | 🔴 Hard | 47s | The problem presents a binary string s where each character represe… |
-| 3502 | [Minimum Cost to Reach Every Position](3502.md) | 🟢 Easy | 1m 22s | We are given an array cost of length n. There are n + 1 positions i… |
+| 3502 | [Minimum Cost to Reach Every Position](3502.md) | 🟢 Easy | 3m 12s | You are given an array cost where cost[i] represents how much perso… |
 | 3503 | [Longest Palindrome After Substring Concatenation I](3503.md) | 🟡 Medium | 1m 42s | We are given two strings, s and t, and we are allowed to choose: 1.… |
 | 3504 | [Longest Palindrome After Substring Concatenation II](3504.md) | 🔴 Hard | 36s | We are given two strings, s and t. We may choose any substring from… |
 | 3505 | [Minimum Operations to Make Elements Within K Subarrays Equal](3505.md) | 🔴 Hard | 1m 24s | You are given an integer array nums, and you want to create at leas… |
@@ -30,9 +30,9 @@ draft: false
 | 3517 | [Smallest Palindromic Rearrangement I](3517.md) | 🟡 Medium | 40s | The problem asks us to take a palindromic string s and return its l… |
 | 3518 | [Smallest Palindromic Rearrangement II](3518.md) | 🔴 Hard | 1m 42s | We are given a string s that is guaranteed to already be a palindro… |
 | 3519 | [Count Numbers with Non-Decreasing Digits ](3519.md) | 🔴 Hard | 1m 45s | We are given two very large integers l and r as decimal strings and… |
-| 3520 | [Minimum Threshold for Inversion Pairs Count](3520.md) | 🟡 Medium | 1m 58s | We are given an array nums and an integer k. For a pair of indices … |
+| 3520 | [Minimum Threshold for Inversion Pairs Count](3520.md) | 🟡 Medium | 3m 44s | Program M computes a double-precision product by expanding each nor… |
 | 3521 | [Find Product Recommendation Pairs](3521.md) | 🟡 Medium | 1m 16s | This problem asks us to identify product pairs that are frequently … |
-| 3522 | [Calculate Score After Performing Instructions](3522.md) | 🟡 Medium | 1m 36s | The problem presents a simulated execution environment defined by t… |
+| 3522 | [Calculate Score After Performing Instructions](3522.md) | 🟡 Medium | 3m 13s | This problem asks you to simulate a linear sequence of instructions… |
 | 3523 | [Make Array Non-decreasing](3523.md) | 🟡 Medium | 49s | The problem asks us to transform an integer array nums into a non-d… |
 | 3524 | [Find X Value of Array I](3524.md) | 🟡 Medium | 1m 45s | The operation described in the problem may initially look unusual, … |
 | 3525 | [Find X Value of Array II](3525.md) | 🔴 Hard | 1m 25s | For each query, two things happen in order. First, we permanently u… |

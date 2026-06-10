@@ -41,9 +41,10 @@ draft: false
 | 3428 | [Maximum and Minimum Sums of at Most Size K Subsequences](3428.md) | 🟡 Medium | 1m 11s | We are given an array nums and an integer k. For every subsequence … |
 | 3429 | [Paint House IV](3429.md) | 🟡 Medium | 46s | This problem is asking us to paint n houses arranged in a line with… |
 | 3430 | [Maximum and Minimum Sums of at Most Size K Subarrays](3430.md) | 🔴 Hard | 4m 29s | We are remains efficient even at the maximum constraint limit. |
-| 3431 | [Minimum Unlocked Indices to Sort Nums](3431.md) | 🟡 Medium | 2m 25s | This problem asks us to determine the minimum number of indices we … |
+| 3431 | [Minimum Unlocked Indices to Sort Nums](3431.md) | 🟡 Medium | 4m | We are given two arrays of equal length: - nums, where every value … |
 | 3432 | [Count Partitions with Even Sum Difference](3432.md) | 🟢 Easy | 54s | The problem gives us an integer array nums of length n. We must con… |
 | 3433 | [Count Mentions Per User](3433.md) | 🟡 Medium | 1m 28s | This problem asks us to simulate a sequence of user activity events… |
+| 3434 | [Maximum Frequency After Subarray Operation](3434.md) | 🟡 Medium | 1m 26s | We are given an array nums and a target value k. We must perform ex… |
 | 3435 | [Frequencies of Shortest Supersequences](3435.md) | 🔴 Hard | 46s | The problem asks us to find all shortest common supersequences (SCS… |
 | 3436 | [Find Valid Emails](3436.md) | 🟢 Easy | 42s | The problem requires us to identify valid email addresses from a Us… |
 | 3437 | [Permutations III](3437.md) | 🟡 Medium | 1m 13s | We are given a single integer n, and we need to generate all permut… |
@@ -52,6 +53,7 @@ draft: false
 | 3440 | [Reschedule Meetings for Maximum Free Time II](3440.md) | 🟡 Medium | 1m 41s | We are given an event that lasts from time 0 to eventTime. Inside t… |
 | 3441 | [Minimum Cost Good Caption](3441.md) | 🔴 Hard | 1m 23s | We are given a lowercase string caption. We may repeatedly change a… |
 | 3442 | [Maximum Difference Between Even and Odd Frequency I](3442.md) | 🟢 Easy | 56s | This problem requires analyzing the frequency of characters in a gi… |
+| 3443 | [Maximum Manhattan Distance After K Changes](3443.md) | 🟡 Medium | 52s | The input is a string s consisting of the four cardinal directions … |
 | 3444 | [Minimum Increments for Target Multiples in an Array](3444.md) | 🔴 Hard | 1m 36s | We are given two arrays: - nums, the array whose elements we are al… |
 | 3445 | [Maximum Difference Between Even and Odd Frequency II](3445.md) | 🔴 Hard | 1m 54s | We are given a string s consisting only of digits '0' through '4', … |
 | 3446 | [Sort Matrix by Diagonals](3446.md) | 🟡 Medium | 54s | We are given an n x n square matrix grid. Every cell belongs to exa… |
@@ -74,7 +76,7 @@ draft: false
 | 3463 | [Check If Digits Are Equal in String After Operations II](3463.md) | 🔴 Hard | 44s | The problem asks us to repeatedly transform a string of digits unti… |
 | 3464 | [Maximize the Distance Between Points on a Square](3464.md) | 🔴 Hard | 1m 56s | We are given a square of side length side. Every point in the input… |
 | 3465 | [Find Products with Valid Serial Numbers](3465.md) | 🟢 Easy | 40s | The problem asks us to query a database table called products to id… |
-| 3466 | [Maximum Coin Collection ](3466.md) | 🟡 Medium | 4m 16s | This problem asks us to calculate the maximum coins Mario can colle… |
+| 3466 | [Maximum Coin Collection ](3466.md) | 🟡 Medium | 57s | The problem describes Mario driving along a two-lane freeway with c… |
 | 3467 | [Transform Array by Parity](3467.md) | 🟢 Easy | 1m 11s | The problem gives us an integer array nums and asks us to transform… |
 | 3468 | [Find the Number of Copy Arrays](3468.md) | 🟡 Medium | 1m 7s | We are given an array original and a range constraint for every pos… |
 | 3469 | [Find Minimum Cost to Remove Array Elements](3469.md) | 🟡 Medium | 42s | The problem is asking for the minimum total cost required to remove… |
@@ -90,8 +92,10 @@ draft: false
 | 3480 | [Maximize Subarrays After Removing One Conflicting Pair](3480.md) | 🔴 Hard | 52s | Here’s a detailed technical solution guide following your requested… |
 | 3481 | [Apply Substitutions](3481.md) | 🟡 Medium | 1m 35s | This problem gives us a collection of replacement rules and a text … |
 | 3482 | [Analyze Organization Hierarchy](3482.md) | 🔴 Hard | 2m 2s | This problem is a hierarchical organization analysis task over an e… |
+| 3483 | [Unique 3-Digit Even Numbers](3483.md) | 🟢 Easy | 1m | Here’s a comprehensive technical guide for LeetCode 3483 following … |
 | 3484 | [Design Spreadsheet](3484.md) | 🟡 Medium | 1m 19s | This problem asks us to design a very small spreadsheet system that… |
 | 3486 | [Longest Special Path II](3486.md) | 🔴 Hard | 1m 49s | We are given a rooted tree with n nodes. The tree is rooted at node… |
+| 3487 | [Maximum Unique Subarray Sum After Deletion](3487.md) | 🟢 Easy | 1m 13s | The problem asks us to find the maximum sum of a subarray from an i… |
 | 3488 | [Closest Equal Element Queries](3488.md) | 🟡 Medium | 50s | The problem asks us to process a series of queries on a circular ar… |
 | 3489 | [Zero Array Transformation IV](3489.md) | 🟡 Medium | 43s | The problem asks us to determine the minimum number of sequential q… |
 | 3490 | [Count Beautiful Numbers](3490.md) | 🔴 Hard | 38s | This problem asks us to count the number of positive integers betwe… |
@@ -99,7 +103,7 @@ draft: false
 | 3492 | [Maximum Containers on a Ship](3492.md) | 🟢 Easy | 56s | This problem describes a cargo ship with an n × n deck. Since each … |
 | 3493 | [Properties Graph](3493.md) | 🟡 Medium | 51s | The problem asks us to model a 2D array of integers, called propert… |
 | 3494 | [Find the Minimum Amount of Time to Brew Potions](3494.md) | 🟡 Medium | 45s | The problem asks us to simulate a sequential brewing process for po… |
-| 3495 | [Minimum Operations to Make Array Elements Zero](3495.md) | 🔴 Hard | 1m 20s | The problem presents a sequence of queries, each defining a contigu… |
+| 3495 | [Minimum Operations to Make Array Elements Zero](3495.md) | 🔴 Hard | 1m 12s | This problem asks us to determine the minimum number of operations … |
 | 3496 | [Maximize Score After Pair Deletions](3496.md) | 🟡 Medium | 1m 32s | We are given an integer array nums. While the array contains more t… |
 | 3497 | [Analyze Subscription Conversion ](3497.md) | 🟡 Medium | 57s | This is a SQL aggregation problem where we need to analyze user sub… |
 | 3498 | [Reverse Degree of a String](3498.md) | 🟢 Easy | 1m 2s | The problem asks us to compute a special value called the reverse d… |

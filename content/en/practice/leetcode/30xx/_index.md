@@ -35,7 +35,7 @@ draft: false
 | 3022 | [Minimize OR of Remaining Elements Using Operations](3022.md) | 🔴 Hard | 56s | The problem presents an array nums of non-negative integers and an … |
 | 3023 | [Find Pattern in Infinite Stream I](3023.md) | 🟡 Medium | 1m | The problem asks us to detect the first occurrence of a given binar… |
 | 3024 | [Type of Triangle](3024.md) | 🟢 Easy | 1m 8s | The problem gives an integer array nums of length 3, where each val… |
-| 3025 | [Find the Number of Ways to Place People I](3025.md) | 🟡 Medium | 1m 50s | The problem gives us a list of distinct points on a 2D plane. Each … |
+| 3025 | [Find the Number of Ways to Place People I](3025.md) | 🟡 Medium | 6m 32s | The proposed solution does not address the actual content of the TA… |
 | 3026 | [Maximum Good Subarray Sum](3026.md) | 🟡 Medium | 1m 21s | The problem asks us to find the maximum possible sum of a contiguou… |
 | 3027 | [Find the Number of Ways to Place People II](3027.md) | 🔴 Hard | 1m | The problem asks us to determine how many valid placements of Alice… |
 | 3028 | [Ant on the Boundary](3028.md) | 🟢 Easy | 3m 23s | The problem describes an ant moving along a one-dimensional infinit… |
