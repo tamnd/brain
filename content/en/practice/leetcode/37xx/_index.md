@@ -85,6 +85,7 @@ draft: false
 | 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 29s | Before I write the full guide, I want to confirm one critical detai… |
 | 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 47s | The problem asks us to minimize the total cost of deleting characte… |
 | 3786 | [Total Sum of Interaction Cost in Tree Groups](3786.md) | 🔴 Hard | 34s | I can do this, but I need the actual problem details for LeetCode 3… |
+| 3787 | [Find Diameter Endpoints of a Tree](3787.md) | 🟡 Medium | 1m 22s | This problem gives us an undirected tree with n nodes labeled from … |
 | 3788 | [Maximum Score of a Split](3788.md) | 🟡 Medium | 57s | The problem asks us to maximize a "score" obtained by splitting an … |
 | 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum cost required to acqu… |
 | 3790 | [Smallest All-Ones Multiple](3790.md) | 🟡 Medium | 1m 10s | This problem asks us to find the smallest positive integer composed… |

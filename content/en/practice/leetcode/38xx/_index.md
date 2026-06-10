@@ -35,6 +35,7 @@ draft: false
 | 3828 | [Final Element After Subarray Deletions](3828.md) | 🟡 Medium | 3m 38s | We are given an integer array nums. Two players, Alice and Bob, rep… |
 | 3829 | [Design Ride Sharing System](3829.md) | 🟡 Medium | 4m 5s | The problem asks us to design a ride sharing system that manages bo… |
 | 3830 | [Longest Alternating Subarray After Removing At Most One Element](3830.md) | 🔴 Hard | 2m 26s | The problem asks us to find the longest alternating subarray in a g… |
+| 3831 | [Median of a Binary Search Tree Level](3831.md) | 🟡 Medium | 1m 17s | The problem gives us the root of a Binary Search Tree and an intege… |
 | 3832 | [Find Users with Persistent Behavior Patterns](3832.md) | 🔴 Hard | 1m 14s | The activity table records user actions. Each row contains a userid… |
 | 3833 | [Count Dominant Indices](3833.md) | 🟢 Easy | 1m 30s | The problem gives us an integer array nums of length n. For every i… |
 | 3834 | [Merge Adjacent Equal Elements](3834.md) | 🟡 Medium | 2m 19s | The problem asks us to repeatedly merge adjacent equal elements in … |
@@ -73,6 +74,7 @@ draft: false
 | 3871 | [Count Commas in Range II](3871.md) | 🟡 Medium | 1m 3s | The problem asks us to count the total number of commas that appear… |
 | 3872 | [Longest Arithmetic Sequence After Changing At Most One Element](3872.md) | 🟡 Medium | 43s | The problem requires us to find the longest arithmetic subarray fro… |
 | 3873 | [Maximum Points Activated with One Addition](3873.md) | 🔴 Hard | 44s | The problem is asking us to simulate a chain reaction of activation… |
+| 3874 | [Valid Subarrays With Exactly One Peak](3874.md) | 🟡 Medium | 1m 17s | Let Then Hence The mathematical value of is very close to , because… |
 | 3875 | [Construct Uniform Parity Array I](3875.md) | 🟢 Easy | 39s | The problem asks us to determine if it is possible to construct a n… |
 | 3876 | [Construct Uniform Parity Array II](3876.md) | 🟡 Medium | 51s | The problem asks us to determine whether we can construct a new arr… |
 | 3877 | [Minimum Removals to Achieve Target XOR](3877.md) | 🟡 Medium | 2m 3s | We are given an array nums and a target value target. We may remove… |
