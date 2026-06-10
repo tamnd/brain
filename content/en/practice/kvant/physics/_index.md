@@ -1,10 +1,10 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (74 solved, 62 verified), 1970–1972."
+description: "Kvant physics problem solutions (80 solved, 67 verified), 1970–1972."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 74
-kvant_verified: 62
+kvant_total: 80
+kvant_verified: 67
 kvant_year_start: 1970
 kvant_year_end: 1972
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **74 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 62 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **80 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 67 solutions have been independently verified.
 
 ## 1970
 
@@ -167,7 +167,7 @@ draft: false
 
 ## 1972
 
-7 problems across Issues 1–9, 5 verified.
+13 problems across Issues 1–10, 10 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -187,6 +187,12 @@ draft: false
 |---|---------|---|------|
 | [154](1972/154.md) *P. L. Kapitsa*. The physical system is a layer of fog consisting of identical spherical water droplets suspended in air. |  | 7m50s |
 
+### [Issue 7](https://www.kvant.digital/view/kvant_1972_7/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [166](1972/166.md) *E. I. Butikov, A. A. Bykov, A. S. Kondratyev*. A horizontal cylinder contains $n=1$ mole of an ideal gas. | ✓ | 15m47s |
+
 ### [Issue 8](https://www.kvant.digital/view/kvant_1972_8/)
 
 | # | Problem | ✓ | Time |
@@ -200,4 +206,14 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [173](1972/173.md) *V. D. Krivchenkov*. A solid sphere of radius $R$ carries a uniform volume charge density $\\sigma$ with units $\\mathrm{C/m^3}$. | ✓ | 6m30s |
+| [174](1972/174.md) An ideal gas containing $n$ moles undergoes a quasistatic thermodynamic process in which the temperature $T$ is prescribed as a function of the volume $V$. |  | 11m23s |
+| [175](1972/175.md) *G. L. Kotkin*. Two identical solid elastic spheres of radius $R = 1~\\text{cm} = 1. | ✓ | 5m39s |
+| [176](1972/176.md) *A. G. Kosourov*. The system consists of a rigid tool, such as an awl, nail, or knife, interacting with a deformable material. | ✓ | 11m22s |
+| [177](1972/177.md) *I. A. Zaitsev*. A stretched string performs small transverse vibrations. | ✓ | 6m51s |
+
+### [Issue 10](https://www.kvant.digital/view/kvant_1972_10/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [179](1972/179.md) A submarine moves vertically downward with constant speed $u$ in still water where sound propagates with speed $V$. | ✓ | 4m30s |
 
