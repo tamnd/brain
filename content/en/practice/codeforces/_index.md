@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1111 contests, 6576 problems, 3044 verified."
+description: "Codeforces problem solutions with full editorial. 1112 contests, 6578 problems, 3046 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1111 contests, 6576 problems, 3044 verified.**
+**1112 contests, 6578 problems, 3046 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1445](1445/) | [Codeforces Round 680 (Div. 2, based on Moscow Team Olympiad)](https://codeforces.com/contest/1445) | Div. 2 | 800-900 | 2/2 | 2m 54s |
 | [1446](1446/) | [Codeforces Round 683 (Div. 1, by Meet IT)](https://codeforces.com/contest/1446) | Div. 1 | 1300-3500 | 3/7 | 18m 29s |
 | [1447](1447/) | [Codeforces Round 683 (Div. 2, by Meet IT)](https://codeforces.com/contest/1447) | Div. 2 | 800-1000 | 1/2 | 3m 53s |
 | [1450](1450/) | [Codeforces Global Round 12](https://codeforces.com/contest/1450) | Global | 800-3500 | 1/10 | 35m 15s |
