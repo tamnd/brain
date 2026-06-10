@@ -1,0 +1,484 @@
+---
+title: "CF 1472G - Moving to the Capital"
+description: "We are given a directed graph whose vertices are cities and whose root is city 1, the capital. For every city $v$, define $d[v]$ as the shortest path length from city 1 to $v$. These distances are fixed and known implicitly from the graph. Polycarp starts from some city $s$."
+date: "2026-06-11T00:45:16+07:00"
+tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dp", "graphs", "shortest-paths"]
+categories: ["algorithms"]
+codeforces_contest: 1472
+codeforces_index: "G"
+codeforces_contest_name: "Codeforces Round 693 (Div. 3)"
+rating: 2100
+weight: 1472
+solve_time_s: 689
+verified: false
+draft: false
+---
+
+[CF 1472G - Moving to the Capital](https://codeforces.com/problemset/problem/1472/G)
+
+**Rating:** 2100  
+**Tags:** dfs and similar, dp, graphs, shortest paths  
+**Solve time:** 11m 29s  
+**Verified:** no  
+
+## Solution
+# Problem Understanding
+
+We are given a directed graph whose vertices are cities and whose root is city 1, the capital. For every city $v$, define $d[v]$ as the shortest path length from city 1 to $v$. These distances are fixed and known implicitly from the graph.
+
+Polycarp starts from some city $s$. When standing at city $u$, he may move along any outgoing edge $(u,v)$. The restriction is that among all moves whose destination does not have a larger BFS distance, meaning $d[v] \le d[u]$, he may use at most one such move during the entire journey.
+
+Moves to a strictly larger BFS level, meaning $d[v] > d[u]$, may be used any number of times.
+
+For every starting city $i$, we must determine the minimum BFS distance value that can be reached by some valid journey starting from $i$.
+
+The graph can contain up to $2 \cdot 10^5$ vertices and edges across all test cases. Any solution that starts a separate graph search from every vertex would require roughly $O(n(n+m))$ work in the worst case, which is far beyond the limit. The total input size strongly suggests that each edge should be processed only a constant number of times.
+
+Several situations make the problem more subtle than a standard shortest path question.
+
+Consider:
+
+```
+1 -> 2 -> 3
+^         |
+|_________|
+```
+
+The BFS distances are $0,1,2$. Starting from city 3, we can use our single non-increasing move $3 \to 1$, reaching distance 0 immediately. A solution that only follows edges toward larger BFS levels would miss this.
+
+Consider:
+
+```
+1 -> 2 -> 3 -> 4
+     ^         |
+     |_________|
+```
+
+The cycle allows a later improvement through a back edge. If we process vertices in arbitrary order, dynamic programming values may be incomplete when needed.
+
+Consider:
+
+```
+1 -> 2
+1 -> 3
+2 -> 4
+3 -> 4
+4 -> 2
+```
+
+Vertex 4 has a back edge to vertex 2. Even though 4 is deeper in the BFS tree, it can still achieve distance 1. A naive DFS that only propagates information downward would compute the wrong answer.
+
+# Approaches
+
+A brute force approach would compute the answer independently for every starting city. We could model the state as $(u, used)$, where `used` indicates whether the single non-increasing move has already been spent. From each starting vertex we run a graph search over these states and record the minimum distance encountered.
+
+This works because the state graph exactly matches the problem rules. Unfortunately there are $2n$ states per search, and we would repeat the search $n$ times. The complexity becomes $O(n(n+m))$, which reaches roughly $4 \cdot 10^{10}$ operations in the worst case.
+
+The key observation comes from the BFS distances.
+
+Let $d[v]$ be the shortest distance from city 1. Any edge $(u,v)$ belongs to one of two categories.
+
+If $d[v] > d[u]$, the edge goes strictly forward in BFS levels.
+
+If $d[v] \le d[u]$, the edge is the special type that consumes the single allowed exception.
+
+Suppose we stand at vertex $u$. If we immediately use a non-increasing edge $(u,v)$, then we can instantly achieve distance $d[v]$. If we instead take a forward edge $(u,v)$, we still retain the exception for later, so the best answer reachable from $v$ is also available from $u$.
+
+This suggests a dynamic programming recurrence.
+
+Let `ans[u]` be the minimum BFS distance obtainable starting from $u$.
+
+Initially, every vertex can at least stop immediately, so `ans[u] = d[u]`.
+
+For an edge $(u,v)$:
+
+If $d[v] \le d[u]$, then using that edge as the exception immediately gives candidate value $d[v]$.
+
+If $d[v] > d[u]$, then moving to $v$ preserves all future options, giving candidate value `ans[v]`.
+
+The recurrence becomes:
+
+$$ans[u]
+=
+\min
+\left(
+d[u],
+\min_{d[v]\le d[u]} d[v],
+\min_{d[v]>d[u]} ans[v]
+\right)$$
+
+Now the graph induced by forward edges is acyclic with respect to BFS distance because every such edge strictly increases $d$. That means we can compute answers in decreasing order of BFS distance, or equivalently with a DFS memoization that processes deeper levels first.
+
+This reduces the entire computation to one BFS and one DFS-based DP over the graph.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force | $O(n(n+m))$ | $O(n+m)$ | Too slow |
+| Optimal | $O(n+m)$ | $O(n+m)$ | Accepted |
+
+# Algorithm Walkthrough
+
+1. Run BFS from city 1 and compute the shortest distance array `dist`.
+2. Create a DP array `ans` and initialize all values to `-1`.
+3. Define `dfs(u)` as the minimum BFS distance reachable from vertex `u`.
+4. Start with `best = dist[u]` because Polycarp may stop immediately.
+5. Examine every outgoing edge `(u,v)`.
+6. If `dist[v] <= dist[u]`, this edge can serve as the single special move. Update:
+
+$$best = \min(best, dist[v])$$
+
+The exception is consumed immediately, so only the destination distance matters.
+
+1. If `dist[v] > dist[u]`, the move goes forward in BFS layers. Update:
+
+$$best = \min(best, dfs(v))$$
+
+The exception remains available, so every option reachable from `v` is also reachable from `u`.
+
+1. Store the result in `ans[u]` and return it.
+2. Run `dfs(i)` for every vertex.
+3. Output all computed answers.
+
+### Why it works
+
+The BFS distance partitions every edge into either a forward edge or a non-increasing edge.
+
+A non-increasing edge is exactly the type of move that can consume the single exception. After taking such an edge, no future move can improve the answer beyond the minimum BFS distance already reached at its endpoint, so the recurrence uses `dist[v]`.
+
+A forward edge does not consume the exception. Starting from `u` and taking such an edge is equivalent to starting from `v` with all options still available. Hence `ans[v]` is a valid candidate.
+
+Because forward edges always increase BFS distance, recursive dependencies only go from smaller distances to larger distances. No cycle can exist among these dependencies, so the recurrence is well defined. Every valid journey begins either by stopping, by taking a non-increasing edge, or by taking a forward edge. The recurrence considers all three possibilities, so the minimum value produced is exactly the optimal answer.
+
+# Python Solution
+
+```python
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+sys.setrecursionlimit(1 << 20)
+
+t = int(input())
+
+for _ in range(t):
+    line = input().strip()
+    while line == "":
+        line = input().strip()
+
+    n, m = map(int, line.split())
+
+    g = [[] for _ in range(n)]
+
+    for _ in range(m):
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        g[u].append(v)
+
+    dist = [-1] * n
+    dist[0] = 0
+
+    q = deque([0])
+
+    while q:
+        u = q.popleft()
+        for v in g[u]:
+            if dist[v] == -1:
+                dist[v] = dist[u] + 1
+                q.append(v)
+
+    ans = [-1] * n
+
+    def dfs(u):
+        if ans[u] != -1:
+            return ans[u]
+
+        best = dist[u]
+
+        for v in g[u]:
+            if dist[v] <= dist[u]:
+                best = min(best, dist[v])
+            else:
+                best = min(best, dfs(v))
+
+        ans[u] = best
+        return best
+
+    for i in range(n):
+        dfs(i)
+
+    print(*ans)
+```
+
+The solution begins with a BFS from the capital. This computes the shortest path distance required by the problem and classifies every edge into one of the two categories used by the recurrence.
+
+The DFS implements the dynamic programming relation directly. The memoization array `ans` guarantees that each vertex is solved once. When an edge goes to a vertex with a larger BFS distance, recursion continues because the exception remains unused. When an edge goes to an equal or smaller distance, the exception could be spent immediately, so only `dist[v]` matters.
+
+The recursion is safe because dependencies only follow strictly increasing BFS levels. Such edges cannot form a cycle. The explicit recursion limit avoids stack overflow on long chains.
+
+# Worked Examples
+
+### Example 1
+
+Input graph:
+
+```
+1 -> 2
+1 -> 3
+2 -> 5
+2 -> 4
+5 -> 1
+3 -> 6
+6 -> 2
+```
+
+BFS distances:
+
+| Vertex | Distance |
+| --- | --- |
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 1 |
+| 4 | 2 |
+| 5 | 2 |
+| 6 | 2 |
+
+DP computation:
+
+| Vertex | Candidates | Answer |
+| --- | --- | --- |
+| 4 | stop=2 | 2 |
+| 5 | stop=2, edge to 1 gives 0 | 0 |
+| 6 | stop=2, edge to 2 gives 1 | 1 |
+| 2 | stop=1, ans[5]=0, ans[4]=2 | 0 |
+| 3 | stop=1, ans[6]=1 | 1 |
+| 1 | stop=0, ans[2]=0, ans[3]=1 | 0 |
+
+Final output:
+
+```
+0 0 1 2 0 1
+```
+
+This example shows how a deeper vertex such as 5 can immediately improve its answer through a back edge to the capital.
+
+### Example 2
+
+Input:
+
+```
+2 2
+1 2
+2 1
+```
+
+BFS distances:
+
+| Vertex | Distance |
+| --- | --- |
+| 1 | 0 |
+| 2 | 1 |
+
+DP computation:
+
+| Vertex | Candidates | Answer |
+| --- | --- | --- |
+| 2 | stop=1, edge to 1 gives 0 | 0 |
+| 1 | stop=0, ans[2]=0 | 0 |
+
+Output:
+
+```
+0 0
+```
+
+This demonstrates that a single non-increasing edge can immediately bring a vertex to the capital's distance level.
+
+# Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O(n+m)$ | BFS visits each edge once, DFS-DP processes each edge once |
+| Space | $O(n+m)$ | Graph storage, distance array, DP array, recursion stack |
+
+The total number of vertices and edges across all test cases is at most $2 \cdot 10^5$. Linear complexity comfortably fits within the limits.
+
+# Test Cases
+
+```python
+import sys
+import io
+from collections import deque
+
+def solve(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    input = sys.stdin.readline
+
+    t = int(input())
+    out = []
+
+    sys.setrecursionlimit(1 << 20)
+
+    for _ in range(t):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+
+        n, m = map(int, line.split())
+
+        g = [[] for _ in range(n)]
+
+        for _ in range(m):
+            u, v = map(int, input().split())
+            g[u - 1].append(v - 1)
+
+        dist = [-1] * n
+        dist[0] = 0
+
+        q = deque([0])
+
+        while q:
+            u = q.popleft()
+            for v in g[u]:
+                if dist[v] == -1:
+                    dist[v] = dist[u] + 1
+                    q.append(v)
+
+        ans = [-1] * n
+
+        def dfs(u):
+            if ans[u] != -1:
+                return ans[u]
+
+            best = dist[u]
+
+            for v in g[u]:
+                if dist[v] <= dist[u]:
+                    best = min(best, dist[v])
+                else:
+                    best = min(best, dfs(v))
+
+            ans[u] = best
+            return best
+
+        for i in range(n):
+            dfs(i)
+
+        out.append(" ".join(map(str, ans)))
+
+    return "\n".join(out)
+
+assert solve("""3
+
+6 7
+1 2
+1 3
+2 5
+2 4
+5 1
+3 6
+6 2
+
+2 2
+1 2
+2 1
+
+6 8
+1 2
+1 5
+2 6
+6 1
+2 3
+3 4
+4 2
+5 4
+""") == "0 0 1 2 0 1\n0 0\n0 0 2 1 1 0"
+
+assert solve("""1
+
+2 1
+1 2
+""") == "0 1"
+
+assert solve("""1
+
+3 3
+1 2
+2 3
+3 1
+""") == "0 0 0"
+
+assert solve("""1
+
+4 4
+1 2
+2 3
+3 4
+4 2
+""") == "0 1 1 1"
+
+assert solve("""1
+
+5 4
+1 2
+2 3
+3 4
+4 5
+""") == "0 1 2 3 4"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| Single edge 1→2 | 0 1 | Smallest nontrivial graph |
+| Cycle through capital | 0 0 0 | Back edge can reduce every answer to zero |
+| Deep back edge | 0 1 1 1 | Improvement propagates upward through DP |
+| Pure chain | 0 1 2 3 4 | No useful non-increasing edges exist |
+
+# Edge Cases
+
+Consider a graph consisting only of a chain:
+
+```
+1 -> 2 -> 3 -> 4
+```
+
+The BFS distances are `0 1 2 3`. Every edge goes to a larger BFS level. The DFS recurrence never finds a non-increasing edge, so each answer remains its own distance. The output is:
+
+```
+0 1 2 3
+```
+
+Consider a graph with a direct back edge:
+
+```
+1 -> 2 -> 3
+^         |
+|_________|
+```
+
+Distances are `0 1 2`. At vertex 3, the edge back to 1 satisfies `dist[1] <= dist[3]`, so the answer immediately becomes 0. That improvement propagates through the recurrence, giving:
+
+```
+0 0 0
+```
+
+Consider a graph containing an edge between vertices at the same BFS level:
+
+```
+1 -> 2
+1 -> 3
+2 -> 3
+```
+
+Distances are `0 1 1`. The edge `2 -> 3` satisfies `dist[3] <= dist[2]`, so it counts as the special move. The algorithm correctly treats equal-distance edges the same way as back edges, preventing an incorrect assumption that only strictly smaller distances matter.
+
+Consider a graph where the best improvement occurs several forward moves later:
+
+```
+1 -> 2 -> 3 -> 4
+          |
+          v
+          1
+```
+
+Vertex 2 cannot directly reach a lower BFS level. Its optimal path first follows forward edges to 3 and then uses the special move. The recurrence captures this through `ans[3]`, which propagates back to `ans[2]`. This is exactly why the DP must use `ans[v]` on forward edges rather than only local information.
