@@ -1,19 +1,19 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (89 solved, 73 verified), 1970–1972."
+description: "Kvant physics problem solutions (93 solved, 76 verified), 1970–1973."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 89
-kvant_verified: 73
+kvant_total: 93
+kvant_verified: 76
 kvant_year_start: 1970
-kvant_year_end: 1972
+kvant_year_end: 1973
 weight: 20
 draft: false
 ---
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **89 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 73 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **93 physics problems** from the magazine's problem section, covering the years 1970 to 1973. 76 solutions have been independently verified.
 
 ## 1970
 
@@ -167,7 +167,7 @@ draft: false
 
 ## 1972
 
-22 problems across Issues 1–12, 16 verified.
+23 problems across Issues 1–12, 17 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -228,6 +228,7 @@ draft: false
 | [183](1972/183.md) *G. L. Kotkin*. The problem involves a dynamometer sliding along a smooth horizontal table, pulled by a constant horizontal force $F=4~\\text{N}$, with the mass of its spring equal to the mass of its casing. |  | 16m |
 | [184](1972/184.md) The physical system is a television image transmission channel. | ✓ | 9m13s |
 | [186](1972/186.md) A passenger of mass $m$ moves along a curved path of radius $R$ with speed $v$ during a turn. | ✓ | 2m22s |
+| [187](1972/187.md) *V. D. Krivchenkov*. Consider a thin metal plate of area $s$ coated with a layer of liquid dielectric of density $\\rho$ and relative permittivity $\\varepsilon$, where the thickness of the layer is much smaller than the li… | ✓ | 13m15s |
 
 ### [Issue 12](https://www.kvant.digital/view/kvant_1972_12/)
 
@@ -235,4 +236,21 @@ draft: false
 |---|---------|---|------|
 | [188](1972/188.md) A refrigerator operates for a time interval $\\tau$ while consuming electrical power $W$. | ✓ | 2m20s |
 | [189](1972/189.md) *V. G. Svetozarov*. A point charge $q = 10^{-8},\\text{C}$ is uniformly distributed along a circular arc of radius $R = 1,\\text{cm} = 10^{-2},\\text{m}$. | ✓ | 2m32s |
+
+## 1973
+
+3 problems across Issues 1–2, 2 verified.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_1973_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [193](1973/193.md) Two infinite sequences of thin lenses are placed along a common optical axis $z$. |  | 12m24s |
+
+### [Issue 2](https://www.kvant.digital/view/kvant_1973_2/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [198](1973/198.md) *G. L. Kotkin*. A skater moves on horizontal ice with both skate blades in contact with the surface. | ✓ | 8m09s |
+| [199](1973/199.md) *P. L. Kapitsa*. The physical system consists of a neutron entering a layer of material. | ✓ | 2m28s |
 
