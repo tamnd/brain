@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 977 contests, 5820 problems, 2778 verified."
+description: "Codeforces problem solutions with full editorial. 978 contests, 5828 problems, 2779 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**977 contests, 5820 problems, 2778 verified.**
+**978 contests, 5828 problems, 2779 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1607](1607/) | [Codeforces Round 753 (Div. 3)](https://codeforces.com/contest/1607) | Div. 3 | 800-2300 | 1/8 | 19m 32s |
 | [1608](1608/) | [Codeforces Round 758 (Div.1 + Div. 2)](https://codeforces.com/contest/1608) | Div. 2 | 800-3500 | 2/7 | 16m 33s |
 | [1609](1609/) | [Deltix Round, Autumn 2021 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1609) | Div. 1+2 | 900-3500 | 2/8 | 21m 10s |
 | [1610](1610/) | [Codeforces Global Round 17](https://codeforces.com/contest/1610) | Global | 900-3300 | 2/9 | 26m 50s |
