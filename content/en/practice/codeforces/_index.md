@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1121 contests, 6620 problems, 3063 verified."
+description: "Codeforces problem solutions with full editorial. 1122 contests, 6627 problems, 3066 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1121 contests, 6620 problems, 3063 verified.**
+**1122 contests, 6627 problems, 3066 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1433](1433/) | [Codeforces Round 677 (Div. 3)](https://codeforces.com/contest/1433) | Div. 3 | 800-2100 | 3/7 | 19m 11s |
 | [1434](1434/) | [Codeforces Round 679 (Div. 1, based on Technocup 2021 Elimination Round 1)](https://codeforces.com/contest/1434) | Div. 1 | 3500-3500 | 1/1 | 1m 8s |
 | [1436](1436/) | [Codeforces Round 678 (Div. 2)](https://codeforces.com/contest/1436) | Div. 2 | 800-2800 | 3/6 | 13m 27s |
 | [1437](1437/) | [Educational Codeforces Round 97 (Rated for Div. 2)](https://codeforces.com/contest/1437) | Div. 2 | 1200-2600 | 3/6 | 10m 6s |
