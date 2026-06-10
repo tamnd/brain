@@ -2220,7 +2220,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1076](1076.md) *International Mathematical Olympiad for School Students (1987)*. Let $\\angle A=2\\alpha$. |  | 1m59s |
+| [1076](1076.md) *International Mathematical Olympiad for School Students (1987)*. Let $ABC$ be an acute triangle. |  | 11m51s |
 | [1077](1077.md) *International Mathematical Olympiad for School Students (1987)*. Let $X(\\sigma)$ denote the number of fixed points of a permutation $\\sigma$ of an $n$ element set. |  | 1m44s |
 | [1078](1078.md) *International Mathematical Olympiad for School Students (1987)*. Assume that a function $f:\\mathbb N_0\\to\\mathbb N_0$ satisfies |  | 1m42s |
 | [1079](1079.md) *International Mathematical Olympiad for School Students (1987)*. For $n=3$ the problem asks for a single triangle whose three side lengths are irrational and whose area is a nonzero rational number. |  | 2m25s |
