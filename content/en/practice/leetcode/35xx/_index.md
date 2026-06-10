@@ -36,20 +36,20 @@ draft: false
 | 3523 | [Make Array Non-decreasing](3523.md) | 🟡 Medium | 49s | The problem asks us to transform an integer array nums into a non-d… |
 | 3524 | [Find X Value of Array I](3524.md) | 🟡 Medium | 1m 45s | The operation described in the problem may initially look unusual, … |
 | 3525 | [Find X Value of Array II](3525.md) | 🔴 Hard | 1m 25s | For each query, two things happen in order. First, we permanently u… |
-| 3526 | [Range XOR Queries with Subarray Reversals](3526.md) | 🔴 Hard | 1m 13s | This problem asks us to maintain an array while processing a sequen… |
+| 3526 | [Range XOR Queries with Subarray Reversals](3526.md) | 🔴 Hard | 1m 9s | Here’s a full technical solution guide for LeetCode 3526 - Range XO… |
 | 3527 | [Find the Most Common Response](3527.md) | 🟡 Medium | 1m 33s | This problem gives us a two dimensional array of strings called res… |
 | 3528 | [Unit Conversion I](3528.md) | 🟡 Medium | 42s | The problem is asking us to compute, for each unit type from 0 to n… |
 | 3529 | [Count Cells in Overlapping Horizontal and Vertical Substrings](3529.md) | 🟡 Medium | 1m 22s | We are given a character matrix and a pattern string. The key obser… |
 | 3530 | [Maximum Profit from Valid Topological Order in DAG](3530.md) | 🔴 Hard | 47s | The problem requires computing the maximum possible profit achievab… |
-| 3531 | [Count Covered Buildings](3531.md) | 🟡 Medium | 1m 18s | The task asks us to count how many buildings in a given set are cov… |
+| 3531 | [Count Covered Buildings](3531.md) | 🟡 Medium | 2m 5s | A single-precision floating point number in MIX, as defined in Sect… |
 | 3532 | [Path Existence Queries in a Graph I](3532.md) | 🟡 Medium | 1m 23s | This problem defines an undirected graph implicitly through a sorte… |
 | 3533 | [Concatenated Divisibility](3533.md) | 🔴 Hard | 1m 40s | We are given an array nums containing up to 13 positive integers an… |
 | 3534 | [Path Existence Queries in a Graph II](3534.md) | 🔴 Hard | 47s | This problem asks us to compute the shortest path between nodes in … |
 | 3535 | [Unit Conversion II](3535.md) | 🟡 Medium | 1m 8s | The input describes a collection of unit conversion relationships. … |
 | 3536 | [Maximum Product of Two Digits](3536.md) | 🟢 Easy | 1m 5s | The problem gives us a positive integer n and asks us to find the m… |
-| 3537 | [Fill a Special Grid](3537.md) | 🟡 Medium | 1m 40s | The problem asks us to construct a structured matrix filled with al… |
+| 3537 | [Fill a Special Grid](3537.md) | 🟡 Medium | 1m 7s | The problem asks us to generate a special 2ⁿ x 2ⁿ grid filled with … |
 | 3538 | [Merge Operations for Minimum Travel Time](3538.md) | 🔴 Hard | 46s | This problem presents a road of length l kilometers, segmented by n… |
-| 3539 | [Find Sum of Array Product of Magical Sequences](3539.md) | 🔴 Hard | 1m 49s | This problem asks us to compute the sum of array products for all m… |
+| 3539 | [Find Sum of Array Product of Magical Sequences](3539.md) | 🔴 Hard | 2m 44s | The expression in the statement should be interpreted as: A sequenc… |
 | 3540 | [Minimum Time to Visit All Houses](3540.md) | 🟡 Medium | 1m 19s | This problem describes a set of n houses arranged in a circle. Betw… |
 | 3541 | [Find Most Frequent Vowel and Consonant](3541.md) | 🟢 Easy | 53s | The problem requires analyzing a string s composed of lowercase Eng… |
 | 3542 | [Minimum Operations to Convert All Elements to Zero](3542.md) | 🟡 Medium | 57s | The problem requires us to reduce all elements of a given non-negat… |
@@ -58,28 +58,28 @@ draft: false
 | 3545 | [Minimum Deletions for At Most K Distinct Characters](3545.md) | 🟢 Easy | 1m 19s | The problem gives us a string s containing lowercase English letter… |
 | 3546 | [Equal Sum Grid Partition I](3546.md) | 🟡 Medium | 1m 6s | This problem asks us to determine whether a rectangular grid of pos… |
 | 3547 | [Maximum Sum of Edge Values in a Graph](3547.md) | 🔴 Hard | 2m 30s | The graph is undirected, connected, and every node has degree at mo… |
-| 3548 | [Equal Sum Grid Partition II](3548.md) | 🔴 Hard | 1m 36s | The problem asks us to determine if we can partition a given m x n … |
+| 3548 | [Equal Sum Grid Partition II](3548.md) | 🔴 Hard | 1m 1s | The problem is asking whether a given m x n matrix of positive inte… |
 | 3549 | [Multiply Two Polynomials](3549.md) | 🔴 Hard | 1m 9s | The input arrays represent polynomials in coefficient form. If: the… |
-| 3550 | [Smallest Index With Digit Sum Equal to Index](3550.md) | 🟢 Easy | 1m 30s | The problem requires us to find the smallest index in an integer ar… |
-| 3551 | [Minimum Swaps to Sort by Digit Sum](3551.md) | 🟡 Medium | 1m 50s | We are given an array nums consisting of distinct positive integers… |
+| 3550 | [Smallest Index With Digit Sum Equal to Index](3550.md) | 🟢 Easy | 1m 18s | This problem asks us to find the smallest index i in an integer arr… |
+| 3551 | [Minimum Swaps to Sort by Digit Sum](3551.md) | 🟡 Medium | 2m 55s | The problem asks us to sort an array of distinct positive integers … |
 | 3552 | [Grid Teleportation Traversal](3552.md) | 🟡 Medium | 1m 4s | This problem presents a 2D grid traversal scenario with obstacles a… |
 | 3553 | [Minimum Weighted Subgraph With the Required Paths II](3553.md) | 🔴 Hard | 1m 37s | We are given a weighted, undirected tree with n nodes. Because the … |
 | 3554 | [Find Category Recommendation Pairs](3554.md) | 🔴 Hard | 1m 5s | This is a SQL database problem involving customer purchasing behavi… |
-| 3555 | [Smallest Subarray to Sort in Every Sliding Window](3555.md) | 🟡 Medium | 1m 4s | This problem asks us to analyze every contiguous subarray (window) … |
+| 3555 | [Smallest Subarray to Sort in Every Sliding Window](3555.md) | 🟡 Medium | 1m 1s | We are given an array nums and a window size k. For every contiguou… |
 | 3556 | [Sum of Largest Prime Substrings](3556.md) | 🟡 Medium | 52s | The problem requires identifying prime numbers from all possible su… |
 | 3557 | [Find Maximum Number of Non Intersecting Substrings](3557.md) | 🟡 Medium | 37s | This problem asks us to identify the maximum number of non-intersec… |
 | 3558 | [Number of Ways to Assign Edge Weights I](3558.md) | 🟡 Medium | 1m 26s | We are given an undirected tree rooted at node 1. Every edge initia… |
 | 3559 | [Number of Ways to Assign Edge Weights II](3559.md) | 🔴 Hard | 1m 15s | We are given an undirected tree with n nodes, rooted at node 1. Eve… |
 | 3560 | [Find Minimum Log Transportation Cost](3560.md) | 🟢 Easy | 32s | The problem asks us to transport two logs of lengths n and m using … |
 | 3561 | [Resulting String After Adjacent Removals](3561.md) | 🟡 Medium | 50s | The problem asks us to repeatedly remove pairs of adjacent characte… |
-| 3562 | [Maximum Profit from Trading Stocks with Discounts](3562.md) | 🔴 Hard | 2m 13s | We are given a rooted tree of employees, where employee 1 is the CE… |
+| 3562 | [Maximum Profit from Trading Stocks with Discounts](3562.md) | 🔴 Hard | 3m 8s | This problem asks us to maximize profit from buying and selling sto… |
 | 3563 | [Lexicographically Smallest String After Adjacent Removals](3563.md) | 🔴 Hard | 40s | The problem asks us to find the lexicographically smallest string t… |
-| 3564 | [Seasonal Sales Analysis](3564.md) | 🟡 Medium | 1m 29s | The task asks us to determine the most popular product category for… |
+| 3564 | [Seasonal Sales Analysis](3564.md) | 🟡 Medium | 1m 14s | This problem asks us to analyze sales data and determine the most p… |
 | 3565 | [Sequential Grid Path Cover](3565.md) | 🟡 Medium | 54s | The problem asks us to find a path that visits every cell of a give… |
 | 3566 | [Partition Array into Two Equal Product Subsets](3566.md) | 🟡 Medium | 48s | Here’s a detailed technical solution guide for LeetCode 3566 follow… |
 | 3567 | [Minimum Absolute Difference in Sliding Submatrix](3567.md) | 🟡 Medium | 32s | The problem requires computing a specific statistic for every conti… |
-| 3568 | [Minimum Moves to Clean the Classroom](3568.md) | 🟡 Medium | 1m 57s | The problem asks us to compute the minimum number of moves a studen… |
-| 3569 | [Maximize Count of Distinct Primes After Split](3569.md) | 🔴 Hard | 2m 32s | The task asks us to maintain an integer array that is repeatedly up… |
+| 3568 | [Minimum Moves to Clean the Classroom](3568.md) | 🟡 Medium | 1m 41s | We are given a grid representing a classroom. A student starts at t… |
+| 3569 | [Maximize Count of Distinct Primes After Split](3569.md) | 🔴 Hard | 50s | Here is a complete, detailed technical solution guide following you… |
 | 3570 | [Find Books with No Available Copies](3570.md) | 🟢 Easy | 46s | This problem asks us to identify books in a library system that are… |
 | 3571 | [Find the Shortest Superstring II](3571.md) | 🟢 Easy | 46s | This problem asks us to construct the shortest string that contains… |
 | 3572 | [Maximize Y\u2011Sum by Picking a Triplet of Distinct X\u2011Values](3572.md) | 🟡 Medium | 1m 23s | The problem gives us two arrays, x and y, both of length n. Each po… |
@@ -92,11 +92,11 @@ draft: false
 | 3580 | [Find Consistently Improving Employees](3580.md) | 🟡 Medium | 32s | The task asks us to identify employees whose performance has consis… |
 | 3581 | [Count Odd Letters from Number](3581.md) | 🟢 Easy | 1m 4s | The problem gives an integer n and asks us to transform it into a s… |
 | 3582 | [Generate Tag for Video Caption](3582.md) | 🟢 Easy | 1m 20s | The problem asks us to transform a given caption string into a vali… |
-| 3583 | [Count Special Triplets](3583.md) | 🟡 Medium | 1m 25s | We are given an integer array nums of length n. We must count the n… |
-| 3584 | [Maximum Product of First and Last Elements of a Subsequence](3584.md) | 🟡 Medium | 1m 38s | The problem asks for the maximum possible product of the first and … |
+| 3583 | [Count Special Triplets](3583.md) | 🟡 Medium | 2m 24s | This problem asks us to count the number of special triplets in an … |
+| 3584 | [Maximum Product of First and Last Elements of a Subsequence](3584.md) | 🟡 Medium | 1m 53s | Program B is designed to perform a sequence of numerical calculatio… |
 | 3585 | [Find Weighted Median Node in Tree](3585.md) | 🔴 Hard | 1m 37s | We are given a weighted tree with n nodes. A tree is an undirected … |
 | 3586 | [Find COVID Recovery Patients](3586.md) | 🟡 Medium | 54s | The task is to identify patients who have recovered from COVID base… |
-| 3587 | [Minimum Adjacent Swaps to Alternate Parity](3587.md) | 🟡 Medium | 1m 23s | The problem asks for the minimum number of adjacent swaps needed to… |
+| 3587 | [Minimum Adjacent Swaps to Alternate Parity](3587.md) | 🟡 Medium | 55s | The problem requires transforming a given array of distinct integer… |
 | 3588 | [Find Maximum Area of a Triangle](3588.md) | 🟡 Medium | 1m 41s | We are given n distinct points on a 2D Cartesian plane. Each point … |
 | 3589 | [Count Prime-Gap Balanced Subarrays](3589.md) | 🟡 Medium | 1m 56s | We are given an integer array nums and an integer k. We must count … |
 | 3590 | [Kth Smallest Path XOR Sum](3590.md) | 🔴 Hard | 47s | The problem asks us to work with an undirected tree rooted at node … |
@@ -107,4 +107,5 @@ draft: false
 | 3595 | [Once Twice](3595.md) | 🟡 Medium | 43s | The problem provides an integer array nums where every element appe… |
 | 3596 | [Minimum Cost Path with Alternating Directions I](3596.md) | 🟡 Medium | 52s | This problem requires computing the minimum total cost to traverse … |
 | 3597 | [Partition String ](3597.md) | 🟡 Medium | 1m 21s | We are given a string s and must partition it into segments accordi… |
+| 3598 | [Longest Common Prefix Between Adjacent Strings After Removals](3598.md) | 🟡 Medium | 52s | We are given a token placed at position on a vertical line of cells… |
 | 3599 | [Partition Array to Minimize XOR](3599.md) | 🟡 Medium | 1m 56s | This problem asks us to partition an array of integers, nums, into … |
