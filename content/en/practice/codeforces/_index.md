@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 995 contests, 5924 problems, 2818 verified."
+description: "Codeforces problem solutions with full editorial. 996 contests, 5926 problems, 2819 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**995 contests, 5924 problems, 2818 verified.**
+**996 contests, 5926 problems, 2819 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1581](1581/) | [Codeforces Round 745 (Div. 2)](https://codeforces.com/contest/1581) | Div. 2 | 800-1200 | 1/2 | 4m 54s |
 | [1582](1582/) | [Codeforces Round 750 (Div. 2)](https://codeforces.com/contest/1582) | Div. 2 | 800-2600 | 3/7 | 26m 2s |
 | [1583](1583/) | [Technocup 2022 - Elimination Round 1](https://codeforces.com/contest/1583) | Special | 1200-3300 | 1/7 | 25m 20s |
 | [1584](1584/) | [Technocup 2022 - Elimination Round 2](https://codeforces.com/contest/1584) | Special | 800-3200 | 3/7 | 22m 9s |
