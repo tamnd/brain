@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1114 contests, 6587 problems, 3051 verified."
+description: "Codeforces problem solutions with full editorial. 1115 contests, 6593 problems, 3051 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1114 contests, 6587 problems, 3051 verified.**
+**1115 contests, 6593 problems, 3051 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1442](1442/) | [Codeforces Round 681 (Div. 1, based on VK Cup 2019-2020 - Final)](https://codeforces.com/contest/1442) | Div. 1 | 1800-3400 | 0/6 | 14m 47s |
 | [1443](1443/) | [Codeforces Round 681 (Div. 2, based on VK Cup 2019-2020 - Final)](https://codeforces.com/contest/1443) | Div. 2 | 800-2400 | 2/4 | 10m 8s |
 | [1444](1444/) | [Codeforces Round 680 (Div. 1, based on Moscow Team Olympiad)](https://codeforces.com/contest/1444) | Div. 1 | 1500-3500 | 3/5 | 19m 26s |
 | [1445](1445/) | [Codeforces Round 680 (Div. 2, based on Moscow Team Olympiad)](https://codeforces.com/contest/1445) | Div. 2 | 800-900 | 2/2 | 2m 54s |
