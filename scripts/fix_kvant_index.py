@@ -10,8 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "content" / "en" / "practice"
 SUBJECTS = {
-    "math": ROOT / "maths" / "kvant",
-    "physics": ROOT / "physics" / "kvant",
+    "math": ROOT / "kvant" / "math",
+    "physics": ROOT / "kvant" / "physics",
 }
 TAGS = {
     "math": ["kvant", "mathematics", "olympiad"],

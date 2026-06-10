@@ -258,22 +258,18 @@ def split_search_data(public: Path, main: Site, shards: list[Site]) -> None:
         )
 
 
-def load_git_lastmods(content_root: Path = Path("content/en")) -> dict[str, int]:
-    """Return the latest commit timestamp for each content file and parent directory."""
-    result = subprocess.run(
-        ["git", "log", "--format=@@%ct", "--name-only", "--", str(content_root)],
-        check=True,
-        capture_output=True,
-        text=True,
-    )
+def _parse_git_log_output(text: str) -> dict[str, int]:
     file_dates: dict[str, int] = {}
     current_date: int | None = None
-    for line in result.stdout.splitlines():
+    for line in text.splitlines():
         if line.startswith("@@"):
             current_date = int(line[2:])
         elif line and current_date is not None and line not in file_dates:
             file_dates[line] = current_date
+    return file_dates
 
+
+def _propagate_parent_dates(file_dates: dict[str, int], content_root: Path) -> dict[str, int]:
     dates = dict(file_dates)
     for filename, date in file_dates.items():
         parent = Path(filename).parent
@@ -284,6 +280,50 @@ def load_git_lastmods(content_root: Path = Path("content/en")) -> dict[str, int]
                 break
             parent = parent.parent
     return dates
+
+
+def load_git_lastmods(
+    content_root: Path = Path("content/en"),
+    cache_path: Path = Path("content-lastmods.json"),
+) -> dict[str, int]:
+    """Return the latest commit timestamp for each content file and parent directory.
+
+    Uses content-lastmods.json as an incremental cache: on subsequent CI runs only
+    new commits (since the last cached max timestamp) are scanned, reducing the
+    git log time from ~60s to ~1s on warm runs.
+    """
+    # Load existing cache
+    cached: dict[str, int] = {}
+    since_ts: int = 0
+    if cache_path.exists():
+        try:
+            cached = json.loads(cache_path.read_text(encoding="utf-8"))
+            since_ts = cached.pop("__max_ts__", 0)
+        except Exception:
+            cached = {}
+            since_ts = 0
+
+    # Only scan commits newer than what we already have cached
+    cmd = ["git", "log", "--format=@@%ct", "--name-only", "--", str(content_root)]
+    if since_ts:
+        from datetime import UTC, datetime
+        after_str = datetime.fromtimestamp(since_ts, UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+        cmd += [f"--after={after_str}"]
+
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    new_dates = _parse_git_log_output(result.stdout)
+
+    # Merge: newer commits override cached values
+    merged = {**cached, **new_dates}
+
+    # Save updated cache with current max timestamp
+    max_ts = max(merged.values(), default=0)
+    cache_path.write_text(
+        json.dumps({**merged, "__max_ts__": max_ts}, separators=(",", ":")),
+        encoding="utf-8",
+    )
+
+    return _propagate_parent_dates(merged, content_root)
 
 
 def content_path_for_url(site: Site, url_path: str) -> str:

@@ -25,9 +25,9 @@ file_budget = 18000
 name = "kvant"
 project = "brain-kvant"
 domain = "kvant.tamnd.com"
-source_prefix = "/practice/maths/kvant/"
+source_prefix = "/practice/kvant/"
 output = "public-shards/kvant"
-file_budget = 18000
+file_budget = 22000
 
 [[shards]]
 name = "taocp"
