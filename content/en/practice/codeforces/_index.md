@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1131 contests, 6697 problems, 3100 verified."
+description: "Codeforces problem solutions with full editorial. 1132 contests, 6702 problems, 3104 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1131 contests, 6697 problems, 3100 verified.**
+**1132 contests, 6702 problems, 3104 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1421](1421/) | [Codeforces Round 676 (Div. 2)](https://codeforces.com/contest/1421) | Div. 2 | 800-2700 | 4/5 | 23m 51s |
 | [1422](1422/) | [Codeforces Round 675 (Div. 2)](https://codeforces.com/contest/1422) | Div. 2 | 800-2700 | 4/6 | 18m 10s |
 | [1423](1423/) | [Bubble Cup 13 - Finals [Online Mirror, unrated, Div. 1]](https://codeforces.com/contest/1423) | Div. 1 | 1600-3500 | 8/14 | 33m 59s |
 | [1424](1424/) | [Bubble Cup 13 - Finals [Online Mirror, unrated, Div. 2]](https://codeforces.com/contest/1424) | Div. 2 | 1300-2200 | 0/2 | 8m 22s |
