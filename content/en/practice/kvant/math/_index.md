@@ -2314,7 +2314,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1121](1121.md) The statement of the problem is incomplete: |  | 5m37s |
+| [1121](1121.md) *City Tournament (Spring, 1988)*. Let $C'$ be the reflection of $C$ across the line $AB$, and let $A'$ be the reflection of $A$ across the line $BC$. |  | 11m16s |
 | [1122](1122.md) *City Tournament (Spring, 1988)*. Let |  | 9m02s |
 | [1123](1123.md) *Tournament of Towns (Spring 1988)*. Label the cells by coordinates $(i,j)$, where $i,j\\in\\mathbb N$ and $i,j\\ge 1$. |  | 10m09s |
 | [1124](1124.md) *City Tournament (Spring, 1988)*. Consider a trapezoid $ABCD$ with bases $AB$ and $CD$, where $AB$ is the shorter base. |  | 8m33s |
