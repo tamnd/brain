@@ -1,9 +1,9 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (66 solved, 57 verified), 1970–1971."
+description: "Kvant physics problem solutions (67 solved, 57 verified), 1970–1971."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 66
+kvant_total: 67
 kvant_verified: 57
 kvant_year_start: 1970
 kvant_year_end: 1971
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **66 physics problems** from the magazine's problem section, covering the years 1970 to 1971. 57 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **67 physics problems** from the magazine's problem section, covering the years 1970 to 1971. 57 solutions have been independently verified.
 
 ## 1970
 
@@ -145,7 +145,7 @@ draft: false
 
 ## 1971
 
-2 problems across Issues 1–2, 1 verified.
+3 problems across Issues 1–3, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1971_1/)
 
@@ -158,4 +158,10 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [77](1971/77.md) A rectangular block of height $H$ and base dimensions $a \\times b$ stands on a horizontal rigid surface. | ✓ | 5m52s |
+
+### [Issue 3](https://www.kvant.digital/view/kvant_1971_3/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [85](1971/85.md) An ideal gas in equilibrium is described by states $(p,V)$ with $p>0$, $V>0$ and equation of state $pV=\\nu RT$. |  | 9m |
 
