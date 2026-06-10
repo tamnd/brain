@@ -83,7 +83,7 @@ jobs:
 
       - name: Split Cloudflare Pages outputs
         run: |
-          python3 scripts/split_cloudflare_pages_shards.py
+          tago split
           cat deploy-shards-summary.json
 
       - name: Save incremental site cache
