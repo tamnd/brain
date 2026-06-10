@@ -2123,7 +2123,7 @@ draft: false
 | [1026](1026.md) *A. V. Shvetsov*. Let the common measure of each arc be $x$. |  | 9m02s |
 | [1027](1027.md) *V. V. Proizvolov*. The number $1987$ is prime, since it is not divisible by any prime not exceeding $\\sqrt{1987}<45$. |  | 5m24s |
 | [1028](1028.md) *M. A. Volchkevich, 10th-grade student (Moscow)*. Begin by considering the configuration of two intersecting lines and points $D$ and $E$ on them. |  | 10m13s |
-| [1029](1029.md) *V. F. Lev*. Let the arithmetic progression be |  | 4m09s |
+| [1029](1029.md) *V. F. Lev*. Let the arithmetic progression be |  | 14m55s |
 | [1030](1030.md) *A. B. Goncharov*. Consider simple convex polyhedra such as nested cubes, tetrahedra, or pyramids. |  | 6m09s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1987_3/)
