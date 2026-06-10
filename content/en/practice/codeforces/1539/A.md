@@ -1,0 +1,113 @@
+---
+title: "CF 1539A - Contest Start"
+description: "Represent each integer in base $b$ as a doubly linked list of digits $$(v{n-1}, v{n-2}, dots, v0),$$ where each node contains one digit $vi in {0, dots, b-1}$, together with pointers $$text{left}(i), text{right}(i)$$ to adjacent digits."
+date: "2026-06-10T14:37:18+07:00"
+tags: ["codeforces", "competitive-programming", "combinatorics", "geometry", "greedy", "math"]
+categories: ["algorithms"]
+codeforces_contest: 1539
+codeforces_index: "A"
+codeforces_contest_name: "Codeforces Round 727 (Div. 2)"
+rating: 1000
+weight: 1539
+solve_time_s: 177
+verified: false
+draft: false
+---
+
+[CF 1539A - Contest Start](https://codeforces.com/problemset/problem/1539/A)
+
+**Rating:** 1000  
+**Tags:** combinatorics, geometry, greedy, math  
+**Solve time:** 2m 57s  
+**Verified:** no  
+
+## Solution
+## Representation of integers
+
+Represent each integer in base $b$ as a doubly linked list of digits
+
+$$(v_{n-1}, v_{n-2}, \dots, v_0),$$
+
+where each node contains one digit $v_i \in \{0, \dots, b-1\}$, together with pointers
+
+$$\text{left}(i), \text{right}(i)$$
+
+to adjacent digits. The head pointer refers to the most significant digit, the tail pointer to the least significant digit.
+
+Each integer record also stores a sign bit.
+
+Memory allocation uses a free-list of unused nodes. Allocation and deallocation are constant-time operations by taking or returning nodes to the free-list.
+
+## Addition subroutine
+
+To compute $x + y$:
+
+1. Align the least significant digits of $x$ and $y$.
+2. Traverse both lists from least significant to most significant digit.
+3. Maintain a carry $c \in \{0,1\}$.
+4. For each position, compute
+
+$$s_i = x_i + y_i + c,
+\quad z_i = s_i \bmod b,
+\quad c = \lfloor s_i / b \rfloor.$$
+5. Allocate a new node for each digit $z_i$ and link it into the result list.
+6. If a carry remains at the end, allocate a new most significant node.
+
+This runs in time proportional to the maximum length of the inputs.
+
+## Subtraction subroutine
+
+To compute $x - y$, assume first that $|x| \ge |y|$.
+
+1. Traverse from least significant digit.
+2. Maintain borrow $c \in \{0,1\}$.
+3. Compute
+
+$$d_i = x_i - y_i - c.$$
+4. If $d_i < 0$, set $d_i \leftarrow d_i + b$ and $c \leftarrow 1$, otherwise $c \leftarrow 0$.
+5. Store each $d_i$ in a newly allocated node.
+6. Remove leading zeros at the end by returning nodes to the free-list.
+
+If $|x| < |y|$, compute $y - x$ and attach a minus sign.
+
+## Multiplication subroutine
+
+To compute $x \cdot y$:
+
+1. Initialize result as zero.
+2. For each digit $y_j$, proceed from least significant to most significant:
+
+- Multiply $x$ by digit $y_j$, producing a partial product.
+- Shift the partial product by $j$ positions (implemented by offset in list structure).
+- Add the shifted partial product to the accumulated result using the addition subroutine.
+3. Each partial product digit is computed with carries exactly as in school multiplication.
+
+Each intermediate node is allocated dynamically; no preallocation is required.
+
+## Division subroutine
+
+To compute $x / y$, assume $y \ne 0$:
+
+1. Normalize by ensuring the leading digit of $y$ is nonzero.
+2. Perform long division from most significant digit of $x$.
+3. Maintain a current remainder $r$, initially zero.
+4. At each step, extend $r$ by one digit from $x$.
+5. Determine the largest digit $q_i \in \{0, \dots, b-1\}$ such that
+
+$$q_i y \le r.$$
+6. Subtract $q_i y$ from $r$ using the subtraction subroutine.
+7. Append $q_i$ to the quotient list.
+
+All comparisons and multiplications are performed using the previously defined routines.
+
+## Memory management correctness
+
+All results are constructed using newly allocated nodes from the free-list. When digits are removed (for example leading zeros), nodes are returned to the free-list immediately. No search for free memory is required.
+
+Thus the algorithm uses linked allocation efficiently and respects the constraint that memory is used only as available.
+
+## Conclusion
+
+The four subroutines for addition, subtraction, multiplication, and division operate correctly on arbitrary-length integers represented as linked digit lists, using only local digit operations, carry/borrow propagation, and dynamic memory allocation.
+
+This satisfies the requirement of implementing arbitrary-precision integer arithmetic using linked memory allocation.
