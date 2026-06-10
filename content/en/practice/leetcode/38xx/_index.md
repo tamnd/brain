@@ -95,5 +95,13 @@ draft: false
 | 3883 | [Count Non Decreasing Arrays With Given Digit Sums](3883.md) | 🔴 Hard | 39s | The problem asks us to compute the number of non-decreasing arrays … |
 | 3884 | [First Matching Character From Both Ends](3884.md) | 🟢 Easy | 1m 23s | This problem gives us a string s of length n consisting of lowercas… |
 | 3885 | [Design Event Manager](3885.md) | 🟡 Medium | 1m 10s | The problem asks us to design an EventManager class that manages a … |
+| 3886 | [Sum of Sortable Integers](3886.md) | 🔴 Hard | 59s | The problem asks us to find all integers k that divide the length o… |
+| 3887 | [Incremental Even-Weighted Cycle Queries](3887.md) | 🔴 Hard | 1m 29s | This problem describes a dynamic process of building an undirected … |
 | 3889 | [Mirror Frequency Distance](3889.md) | 🟡 Medium | 1m 12s | We are given a string s containing only lowercase English letters (… |
 | 3890 | [Integers With Multiple Sum of Two Cubes](3890.md) | 🟡 Medium | 55s | The problem asks us to find all integers x less than or equal to a … |
+| 3892 | [Minimum Operations to Achieve At Least K Peaks](3892.md) | 🔴 Hard | 1m 58s | We are given a circular array nums. An index is considered a peak i… |
+| 3894 | [Traffic Signal Color](3894.md) | 🟢 Easy | 2m 19s | This problem asks us to determine the current state of a traffic si… |
+| 3895 | [Count Digit Appearances](3895.md) | 🟡 Medium | 2m 24s | The problem asks us to count how many times a specific decimal digi… |
+| 3896 | [Minimum Operations to Transform Array into Alternating Prime](3896.md) | 🟡 Medium | 58s | The problem asks us to transform an integer array nums into an alte… |
+| 3897 | [Maximum Value of Concatenated Binary Segments](3897.md) | 🔴 Hard | 1m 18s | The problem presents two integer arrays nums1 and nums0, each of si… |
+| 3898 | [Find the Degree of Each Vertex](3898.md) | 🟢 Easy | 1m 37s | The problem asks us to calculate the degree of each vertex in an un… |
