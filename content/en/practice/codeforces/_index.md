@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1128 contests, 6675 problems, 3088 verified."
+description: "Codeforces problem solutions with full editorial. 1129 contests, 6677 problems, 3088 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1128 contests, 6675 problems, 3088 verified.**
+**1129 contests, 6677 problems, 3088 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1424](1424/) | [Bubble Cup 13 - Finals [Online Mirror, unrated, Div. 2]](https://codeforces.com/contest/1424) | Div. 2 | 1300-2200 | 0/2 | 8m 22s |
 | [1425](1425/) | [2020 ICPC, COMPFEST 12, Indonesia Multi-Provincial Contest (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1425) | ICPC/IOI | 1300-3100 | 3/8 | 22m 1s |
 | [1426](1426/) | [Codeforces Round 674 (Div. 3)](https://codeforces.com/contest/1426) | Div. 3 | 800-2000 | 5/6 | 14m 3s |
 | [1427](1427/) | [Codeforces Global Round 11](https://codeforces.com/contest/1427) | Global | 900-3500 | 3/8 | 20m 47s |
