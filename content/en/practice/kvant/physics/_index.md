@@ -1,10 +1,10 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (83 solved, 70 verified), 1970–1972."
+description: "Kvant physics problem solutions (89 solved, 73 verified), 1970–1972."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 83
-kvant_verified: 70
+kvant_total: 89
+kvant_verified: 73
 kvant_year_start: 1970
 kvant_year_end: 1972
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **83 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 70 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **89 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 73 solutions have been independently verified.
 
 ## 1970
 
@@ -167,7 +167,7 @@ draft: false
 
 ## 1972
 
-16 problems across Issues 1–11, 13 verified.
+22 problems across Issues 1–12, 16 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -215,13 +215,24 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [178](1972/178.md) *A. A. Borovoy*. A cubic vessel of edge length $a = 1~\\text{cm} = 10^{-2}~\\text{m}$ contains $n$ gas molecules at room temperature. |  | 23m14s |
 | [179](1972/179.md) A submarine moves vertically downward with constant speed $u$ in still water where sound propagates with speed $V$. | ✓ | 4m30s |
 | [180](1972/180.md) *Yu. A. Dreizin*. A perfectly conducting isolated metal sphere of radius $R$ is placed in a uniform external electric field of magnitude $E$ directed along a fixed axis. | ✓ | 5m14s |
+| [181](1972/181.md) A satellite of mass $m$ moves around the Earth of mass $M$ in a nearly circular orbit of radius $r$ with orbital speed $v$. |  | 27m40s |
 | [182](1972/182.md) A person jumps vertically upward from the surface of the Moon. | ✓ | 6m46s |
 
 ### [Issue 11](https://www.kvant.digital/view/kvant_1972_11/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
+| [183](1972/183.md) *G. L. Kotkin*. The problem involves a dynamometer sliding along a smooth horizontal table, pulled by a constant horizontal force $F=4~\\text{N}$, with the mass of its spring equal to the mass of its casing. |  | 16m |
 | [184](1972/184.md) The physical system is a television image transmission channel. | ✓ | 9m13s |
+| [186](1972/186.md) A passenger of mass $m$ moves along a curved path of radius $R$ with speed $v$ during a turn. | ✓ | 2m22s |
+
+### [Issue 12](https://www.kvant.digital/view/kvant_1972_12/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [188](1972/188.md) A refrigerator operates for a time interval $\\tau$ while consuming electrical power $W$. | ✓ | 2m20s |
+| [189](1972/189.md) *V. G. Svetozarov*. A point charge $q = 10^{-8},\\text{C}$ is uniformly distributed along a circular arc of radius $R = 1,\\text{cm} = 10^{-2},\\text{m}$. | ✓ | 2m32s |
 
