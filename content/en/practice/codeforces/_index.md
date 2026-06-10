@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1080 contests, 6396 problems, 2963 verified."
+description: "Codeforces problem solutions with full editorial. 1081 contests, 6402 problems, 2964 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1080 contests, 6396 problems, 2963 verified.**
+**1081 contests, 6402 problems, 2964 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1481](1481/) | [Codeforces Round 699 (Div. 2)](https://codeforces.com/contest/1481) | Div. 2 | 800-3100 | 1/6 | 14m 20s |
 | [1482](1482/) | [Технокубок 2021 - Финал](https://codeforces.com/contest/1482) | Special | 800-3400 | 2/8 | 28m 17s |
 | [1485](1485/) | [Codeforces Round 701 (Div. 2)](https://codeforces.com/contest/1485) | Div. 2 | 1000-2500 | 1/6 | 17m 42s |
 | [1486](1486/) | [Codeforces Round 703 (Div. 2)](https://codeforces.com/contest/1486) | Div. 2 | 900-2600 | 2/7 | 19m 2s |
