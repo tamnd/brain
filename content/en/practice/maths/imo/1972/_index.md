@@ -1,6 +1,6 @@
 ---
 title: "IMO 1972"
-description: "IMO 1972 — 6/6 solved, 2 verified."
+description: "IMO 1972 — 6/6 solved, 1 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1972
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1972
 
-[Official IMO 1972 problems](https://www.imo-official.org/year_info.aspx?year=1972) &nbsp;·&nbsp; 6/6 solved, 2 verified.
+[Official IMO 1972 problems](https://www.imo-official.org/year_info.aspx?year=1972) &nbsp;·&nbsp; 6/6 solved, 1 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -18,7 +18,7 @@ draft: false
 | [2](2.md) | solved | 21m31s |
 | [3](3.md) | solved | 7m11s |
 | [4](4.md) | solved | 6m59s |
-| [5](5.md) | ✓ verified | 8m24s |
+| [5](5.md) | solved | 14m14s |
 | [6](6.md) | solved | 7m52s |
 
 **Problem 1** &nbsp; *✓ verified* · 20m29s · [Solution →](1.md)
@@ -41,7 +41,7 @@ Find all solutions $(x_1, x_2, x_3, x_4, x_5)$ of the system of inequalities $$
 (x_1^2 - x_3x_5)(x_2^2 - x_3x_5) \leq 0 \\ ,(x_2^2 - x_4x_1)(x_3^2 - x_4x_1) \leq 0 \\ ,(x_3^2 - x_5x_2)(x_4^2 - x_5x_2) \leq 0 \\ ,(x_4^2 - x_1x_3)(x_5^2 - x_1x_3) \leq 0 \\ ,(x_5^2 - x_2x_4)(x_1^2 - x_2x_4) \leq 0
 $$ where $x_1, x_2, x_3, x_4, x_5$ are positive real numbers.
 
-**Problem 5** &nbsp; *✓ verified* · 8m24s · [Solution →](5.md)
+**Problem 5** &nbsp; *solved* · 14m14s · [Solution →](5.md)
 
 Let $f$ and $g$ be real-valued functions defined for all real values of $x$ and $y$, and satisfying the equation $$
 f(x + y) + f(x - y) = 2f(x)g(y)
