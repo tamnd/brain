@@ -70,7 +70,7 @@ draft: false
 | 3758 | [Convert Number Words to Digits](3758.md) | 🟡 Medium | 56s | The problem asks us to parse a string s that contains lowercase Eng… |
 | 3759 | [Count Elements With at Least K Greater Values](3759.md) | 🟡 Medium | 1m 15s | The problem asks us to count how many elements in an array have at … |
 | 3760 | [Maximum Substrings With Distinct Start](3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
-| 3761 | [Minimum Absolute Distance Between Mirror Pairs](3761.md) | 🟡 Medium | 2m 49s | We are given an integer array nums. A pair of indices (i, j) is cal… |
+| 3761 | [Minimum Absolute Distance Between Mirror Pairs](3761.md) | 🟡 Medium | 55s | The proposed solution does not answer the question that Exercise 4.… |
 | 3762 | [Minimum Operations to Equalize Subarrays](3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
 | 3763 | [Maximum Total Sum with Threshold Constraints](3763.md) | 🟡 Medium | 52s | The problem gives you two integer arrays, nums and threshold, each … |
 | 3764 | [Most Common Course Pairs](3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |

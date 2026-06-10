@@ -41,7 +41,7 @@ draft: false
 | 3628 | [Maximum Number of Subsequences After One Inserting](3628.md) | 🟡 Medium | 3m 24s | The solution partially addresses the exercise, but it does not full… |
 | 3629 | [Minimum Jumps to Reach End via Prime Teleportation](3629.md) | 🟡 Medium | 1m 9s | This problem is essentially about navigating an array using two typ… |
 | 3630 | [Partition Array for Maximum XOR and AND](3630.md) | 🔴 Hard | 50s | The problem asks us to partition an integer array nums into three s… |
-| 3631 | [Sort Threats by Severity and Exploitability](3631.md) | 🟡 Medium | 1m | This problem gives us a list of threats, where each threat is repre… |
+| 3631 | [Sort Threats by Severity and Exploitability](3631.md) | 🟡 Medium | 40s | The problem gives a list of threats, where each threat is represent… |
 | 3632 | [Subarrays with XOR at Least K](3632.md) | 🔴 Hard | 1m 41s | This problem asks us to count the number of contiguous subarrays of… |
 | 3633 | [Earliest Finish Time for Land and Water Rides I](3633.md) | 🟢 Easy | 1m 44s | The problem asks us to determine the earliest possible time a touri… |
 | 3634 | [Minimum Removals to Balance Array](3634.md) | 🟡 Medium | 1m 36s | The problem asks us to transform a given integer array nums into a … |
@@ -55,16 +55,18 @@ draft: false
 | 3642 | [Find Books with Polarized Opinions](3642.md) | 🟡 Medium | 44s | The problem asks us to identify books that exhibit polarized opinio… |
 | 3643 | [Flip Square Submatrix Vertically](3643.md) | 🟢 Easy | 1m 19s | This problem gives us an m x n matrix called grid and three integer… |
 | 3644 | [Maximum K to Sort a Permutation](3644.md) | 🟡 Medium | 1m | The problem provides a permutation array nums of length n, meaning … |
+| 3645 | [Maximum Total from Optimal Activation Order](3645.md) | 🟡 Medium | 56s | This problem involves determining the maximum total value achievabl… |
 | 3646 | [Next Special Palindrome Number](3646.md) | 🔴 Hard | 54s | This problem asks us to construct a number system under two simulta… |
 | 3647 | [Maximum Weight in Two Bags](3647.md) | 🟡 Medium | 1m 2s | This problem asks us to distribute a set of items, each with a give… |
 | 3648 | [Minimum Sensors to Cover Grid](3648.md) | 🟡 Medium | 44s | The problem gives an n × m grid where each cell is identified by co… |
 | 3649 | [Number of Perfect Pairs](3649.md) | 🟡 Medium | 57s | This problem asks us to count the number of perfect pairs in an int… |
+| 3650 | [Minimum Cost Path with Edge Reversals](3650.md) | 🟡 Medium | 1m 43s | We are given a directed weighted graph with n nodes and a list of d… |
 | 3651 | [Minimum Cost Path with Teleportations](3651.md) | 🔴 Hard | 1m 7s | The problem asks us to find the minimum cost to travel from the top… |
 | 3652 | [Best Time to Buy and Sell Stock using Strategy](3652.md) | 🟡 Medium | 39s | This problem asks us to calculate the maximum possible profit from … |
 | 3653 | [XOR After Range Multiplication Queries I](3653.md) | 🟡 Medium | 2m 56s | We are given an integer array nums and a list of queries. Each quer… |
 | 3654 | [Minimum Sum After Divisible Sum Deletions](3654.md) | 🟡 Medium | 1m 59s | This problem gives us an array nums containing positive integers an… |
 | 3655 | [XOR After Range Multiplication Queries II](3655.md) | 🔴 Hard | 1m 20s | We are given an array nums and a list of queries. Each query has th… |
-| 3656 | [Determine if a Simple Graph Exists](3656.md) | 🟡 Medium | 1m 42s | This problem asks whether a given degree sequence can correspond to… |
+| 3656 | [Determine if a Simple Graph Exists](3656.md) | 🟡 Medium | 2m 3s | The proposed solution explains in detail how Algorithm S computes s… |
 | 3657 | [Find Loyal Customers](3657.md) | 🟡 Medium | 1m 1s | This problem is a SQL aggregation and filtering task. We are given … |
 | 3658 | [GCD of Odd and Even Sums](3658.md) | 🟢 Easy | 1m 12s | The problem asks us to calculate the greatest common divisor (GCD) … |
 | 3659 | [Partition Array Into K-Distinct Groups](3659.md) | 🟡 Medium | 1m 34s | We are given an integer array nums and an integer k. The goal is to… |
@@ -74,6 +76,7 @@ draft: false
 | 3663 | [Find The Least Frequent Digit](3663.md) | 🟢 Easy | 40s | The problem asks us to find the least frequent digit in the decimal… |
 | 3664 | [Two-Letter Card Game](3664.md) | 🟡 Medium | 5m 11s | Each card consists of exactly two lowercase letters. A card is only… |
 | 3665 | [Twisted Mirror Path Count](3665.md) | 🟡 Medium | 1m 10s | This problem asks us to count all unique paths from the top-left co… |
+| 3666 | [Minimum Operations to Equalize Binary String](3666.md) | 🔴 Hard | 2m 11s | The problem asks us to transform a binary string s consisting of ch… |
 | 3667 | [Sort Array By Absolute Value](3667.md) | 🟢 Easy | 2m 12s | The problem asks us to reorder an integer array such that the eleme… |
 | 3668 | [Restore Finishing Order](3668.md) | 🟢 Easy | 1m 32s | This problem gives us two arrays: - order, which represents the fin… |
 | 3669 | [Balanced K-Factor Decomposition](3669.md) | 🟡 Medium | 48s | The problem asks us to split a positive integer n into exactly k po… |

@@ -37,3 +37,10 @@ draft: false
 | 3932 | [Count K-th Roots in a Range](3932.md) | 🟡 Medium | 1m 12s | This problem asks us to count how many integers in a given range [l… |
 | 3934 | [Smallest Unique Subarray](3934.md) | 🔴 Hard | 1m 22s | The problem asks us to find the smallest possible length of a conti… |
 | 3936 | [Minimum Swaps to Move Zeros to End](3936.md) | 🟢 Easy | 1m 14s | The problem gives us an integer array nums containing values betwee… |
+| 3937 | [Minimum Operations to Make Array Modulo Alternating I](3937.md) | 🟡 Medium | 3m 6s | The problem asks us to transform an array of integers, nums, into a… |
+| 3938 | [Maximum Path Intersection Sum in a Grid](3938.md) | 🟡 Medium | 2m 10s | Here’s a fully detailed technical solution guide for LeetCode 3938,… |
+| 3939 | [Count Non Adjacent Subsets in a Rooted Tree](3939.md) | 🔴 Hard | 1m 40s | We are given a rooted tree with n nodes. The tree is represented by… |
+| 3940 | [Limit Occurrences in Sorted Array](3940.md) | 🟢 Easy | 1m 32s | This problem gives us a sorted integer array nums and an integer k.… |
+| 3941 | [Password Strength](3941.md) | 🟡 Medium | 1m 9s | The problem requires calculating the strength of a password based o… |
+| 3942 | [Minimum Operations to Sort a Permutation](3942.md) | 🟡 Medium | 56s | The problem gives an array nums that is guaranteed to be a permutat… |
+| 3943 | [Number of Pairs After Increment](3943.md) | 🔴 Hard | 1m 17s | The problem gives two integer arrays nums1 and nums2 and a list of … |

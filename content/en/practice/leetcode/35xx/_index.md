@@ -85,12 +85,13 @@ draft: false
 | 3572 | [Maximize Y\u2011Sum by Picking a Triplet of Distinct X\u2011Values](3572.md) | 🟡 Medium | 1m 23s | The problem gives us two arrays, x and y, both of length n. Each po… |
 | 3573 | [Best Time to Buy and Sell Stock V](3573.md) | 🟡 Medium | 1m 44s | This problem extends the classic stock trading dynamic programming … |
 | 3574 | [Maximize Subarray GCD Score](3574.md) | 🔴 Hard | 44s | The problem asks us to choose a contiguous subarray from an array o… |
-| 3576 | [Transform Array to All Equal Elements](3576.md) | 🟡 Medium | 2m 12s | The problem is asking whether it is possible to transform an array … |
+| 3575 | [Maximum Good Subtree Score](3575.md) | 🔴 Hard | 1m 51s | We are given a rooted tree with n nodes. Node 0 is the root, and th… |
+| 3576 | [Transform Array to All Equal Elements](3576.md) | 🟡 Medium | 1m 39s | The problem asks whether it is possible to transform an array of in… |
 | 3577 | [Count the Number of Computer Unlocking Permutations](3577.md) | 🟡 Medium | 1m 10s | The problem presents a set of n computers, each with a unique passw… |
 | 3578 | [Count Partitions With Max-Min Difference at Most K](3578.md) | 🟡 Medium | 1m 34s | We are given an array nums and an integer k. We want to split the a… |
 | 3579 | [Minimum Steps to Convert String with Operations](3579.md) | 🔴 Hard | 50s | The problem asks us to transform one string, word1, into another st… |
 | 3580 | [Find Consistently Improving Employees](3580.md) | 🟡 Medium | 32s | The task asks us to identify employees whose performance has consis… |
-| 3581 | [Count Odd Letters from Number](3581.md) | 🟢 Easy | 1m 4s | The problem gives an integer n and asks us to transform it into a s… |
+| 3581 | [Count Odd Letters from Number](3581.md) | 🟢 Easy | 1m 55s | Algorithm S performs digit-by-digit subtraction in radix without re… |
 | 3582 | [Generate Tag for Video Caption](3582.md) | 🟢 Easy | 1m 20s | The problem asks us to transform a given caption string into a vali… |
 | 3583 | [Count Special Triplets](3583.md) | 🟡 Medium | 2m 24s | This problem asks us to count the number of special triplets in an … |
 | 3584 | [Maximum Product of First and Last Elements of a Subsequence](3584.md) | 🟡 Medium | 1m 53s | Program B is designed to perform a sequence of numerical calculatio… |

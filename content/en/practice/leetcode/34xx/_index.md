@@ -20,7 +20,7 @@ draft: false
 | 3407 | [Substring Matching Pattern](3407.md) | 🟢 Easy | 2m 39s | The problem gives us two strings: - s, the source string. - p, a pa… |
 | 3408 | [Design Task Manager](3408.md) | 🟡 Medium | 2m 21s | This problem asks us to design a data structure that maintains a co… |
 | 3409 | [Longest Subsequence With Decreasing Adjacent Difference](3409.md) | 🟡 Medium | 2m 41s | We are given an array nums, and we want to choose a subsequence fro… |
-| 3410 | [Maximize Subarray Sum After Removing All Occurrences of One Element](3410.md) | 🔴 Hard | 1m 33s | We are given an integer array nums. We may perform at most one oper… |
+| 3410 | [Maximize Subarray Sum After Removing All Occurrences of One Element](3410.md) | 🔴 Hard | 2m 19s | Algorithm S performs digit-by-digit subtraction in radix without re… |
 | 3411 | [Maximum Subarray With Equal Products](3411.md) | 🟢 Easy | 2m 4s | We are given an array nums consisting of positive integers. For any… |
 | 3412 | [Find Mirror Score of a String](3412.md) | 🟡 Medium | 1m 21s | We are given a lowercase English string s. Every letter has a uniqu… |
 | 3413 | [Maximum Coins From K Consecutive Bags](3413.md) | 🟡 Medium | 2m 15s | We are given several non-overlapping segments on a number line. Eac… |
@@ -65,7 +65,7 @@ draft: false
 | 3452 | [Sum of Good Numbers](3452.md) | 🟢 Easy | 1m 15s | This problem gives us an integer array nums and an integer k. For e… |
 | 3453 | [Separate Squares I](3453.md) | 🟡 Medium | 2m 1s | We are given a collection of axis-aligned squares. Each square is r… |
 | 3454 | [Separate Squares II](3454.md) | 🔴 Hard | 1m 53s | This problem asks us to find the smallest horizontal line y = H tha… |
-| 3455 | [Shortest Matching Substring](3455.md) | 🔴 Hard | 1m 4s | This problem asks us to find the length of the shortest substring i… |
+| 3455 | [Shortest Matching Substring](3455.md) | 🔴 Hard | 2m 19s | The problem asks us to find the length of the shortest substring in… |
 | 3456 | [Find Special Substring of Length K](3456.md) | 🟢 Easy | 1m 14s | The problem gives us a string s and an integer k. We need to determ… |
 | 3457 | [Eat Pizzas!](3457.md) | 🟡 Medium | 42s | The problem presents an array pizzas of size n where each element r… |
 | 3458 | [Select K Disjoint Special Substrings](3458.md) | 🟡 Medium | 46s | The problem asks us to determine whether we can select k disjoint s… |
@@ -83,6 +83,7 @@ draft: false
 | 3470 | [Permutations IV](3470.md) | 🔴 Hard | 1m 54s | We are given two integers, n and k. We must consider all permutatio… |
 | 3471 | [Find the Largest Almost Missing Integer](3471.md) | 🟢 Easy | 1m 16s | The problem gives us an integer array nums and an integer k. We con… |
 | 3472 | [Longest Palindromic Subsequence After at Most K Operations](3472.md) | 🟡 Medium | 32s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
+| 3473 | [Sum of K Subarrays With Length at Least M](3473.md) | 🟡 Medium | 3m 43s | The problem gives an integer array nums, together with two integers… |
 | 3474 | [Lexicographically Smallest Generated String](3474.md) | 🔴 Hard | 1m 27s | We are given two strings: - str1 of length n, containing only 'T' a… |
 | 3475 | [DNA Pattern Recognition ](3475.md) | 🟡 Medium | 1m 19s | This problem provides a database table named Samples that contains … |
 | 3476 | [Maximize Profit from Task Assignment](3476.md) | 🟡 Medium | 49s | This problem asks us to assign tasks to workers in order to maximiz… |
@@ -94,6 +95,7 @@ draft: false
 | 3482 | [Analyze Organization Hierarchy](3482.md) | 🔴 Hard | 2m 2s | This problem is a hierarchical organization analysis task over an e… |
 | 3483 | [Unique 3-Digit Even Numbers](3483.md) | 🟢 Easy | 1m | Here’s a comprehensive technical guide for LeetCode 3483 following … |
 | 3484 | [Design Spreadsheet](3484.md) | 🟡 Medium | 1m 19s | This problem asks us to design a very small spreadsheet system that… |
+| 3485 | [Longest Common Prefix of K Strings After Removal](3485.md) | 🔴 Hard | 2m 19s | This problem asks us to calculate the longest common prefix (LCP) a… |
 | 3486 | [Longest Special Path II](3486.md) | 🔴 Hard | 1m 49s | We are given a rooted tree with n nodes. The tree is rooted at node… |
 | 3487 | [Maximum Unique Subarray Sum After Deletion](3487.md) | 🟢 Easy | 1m 13s | The problem asks us to find the maximum sum of a subarray from an i… |
 | 3488 | [Closest Equal Element Queries](3488.md) | 🟡 Medium | 50s | The problem asks us to process a series of queries on a circular ar… |
