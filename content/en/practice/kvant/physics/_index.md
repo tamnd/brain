@@ -1,19 +1,19 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (64 solved, 56 verified), 1970–1970."
+description: "Kvant physics problem solutions (66 solved, 57 verified), 1970–1971."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 64
-kvant_verified: 56
+kvant_total: 66
+kvant_verified: 57
 kvant_year_start: 1970
-kvant_year_end: 1970
+kvant_year_end: 1971
 weight: 20
 draft: false
 ---
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **64 physics problems** from the magazine's problem section, covering the years 1970 to 1970. 56 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **66 physics problems** from the magazine's problem section, covering the years 1970 to 1971. 57 solutions have been independently verified.
 
 ## 1970
 
@@ -142,4 +142,20 @@ draft: false
 | [69](1970/69.md) The fragment “NOT_FOUN_” contains no equations, constraints, or target quantity, so the problem cannot be instantiated as a well-posed Kvant task. |  | 8m34s |
 | [70](1970/70.md) *Moscow Institute of Electronic Engineering (MIEM) Physics and Mathematics Olympiad, 1969.*. The physical system is a cyclist moving along a road. | ✓ | 8m15s |
 | [71](1970/71.md) *MIPT Physics and Mathematics Olympiad, 1970.*. Consider a straight line segment $AB$ carrying a uniform linear charge density $\\lambda$. |  | 11m50s |
+
+## 1971
+
+2 problems across Issues 1–2, 1 verified.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_1971_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [72](1971/72.md) The solution correctly identifies that each ball undergoes uniform circular motion about its respective pivot, with angular velocities $\\omega_1 = v/l$ and $\\omega_2 = 2v/(2l) = v/l$, so the angular s… |  | 15m07s |
+
+### [Issue 2](https://www.kvant.digital/view/kvant_1971_2/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [77](1971/77.md) A rectangular block of height $H$ and base dimensions $a \\times b$ stands on a horizontal rigid surface. | ✓ | 5m52s |
 
