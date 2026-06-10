@@ -71,19 +71,31 @@ jobs:
           restore-keys: |
             lastmods-${{ runner.os }}-
 
+      - name: Restore split outputs cache
+        uses: actions/cache/restore@v5.0.5
+        with:
+          path: |
+            public-main
+            public-shards
+          key: tago-split-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            tago-split-${{ runner.os }}-${{ github.ref_name }}-
+            tago-split-${{ runner.os }}-main-
+
       - name: Deepen git history (only when no cached lastmods found)
         if: hashFiles('content-lastmods.json') == ''
         run: git fetch --unshallow
 
       - name: Build site
         run: |
+          echo "BUILD_START=$(date +%s)" >> $GITHUB_ENV
           tago build --base-url "https://brain.tamnd.com/"
           # tago fingerprints .js files, so copy worker explicitly
           [ -f static/_worker.js ] && cp static/_worker.js public/_worker.js || true
 
       - name: Split Cloudflare Pages outputs
         run: |
-          tago split
+          tago split --since=$BUILD_START
           cat deploy-shards-summary.json
 
       - name: Save incremental site cache
@@ -91,6 +103,14 @@ jobs:
         with:
           path: public
           key: tago-public-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
+
+      - name: Save split outputs cache
+        uses: actions/cache/save@v5.0.5
+        with:
+          path: |
+            public-main
+            public-shards
+          key: tago-split-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
 
       - name: Save lastmods cache
         uses: actions/cache/save@v5.0.5
