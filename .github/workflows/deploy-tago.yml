@@ -71,8 +71,8 @@ jobs:
           restore-keys: |
             lastmods-${{ runner.os }}-
 
-      - name: Deepen git history (only on cold lastmods cache)
-        if: steps.lastmods-cache.outputs.cache-hit != 'true'
+      - name: Deepen git history (only when no cached lastmods found)
+        if: hashFiles('content-lastmods.json') == ''
         run: git fetch --unshallow
 
       - name: Build site
