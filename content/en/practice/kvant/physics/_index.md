@@ -1,10 +1,10 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (70 solved, 58 verified), 1970–1972."
+description: "Kvant physics problem solutions (74 solved, 62 verified), 1970–1972."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 70
-kvant_verified: 58
+kvant_total: 74
+kvant_verified: 62
 kvant_year_start: 1970
 kvant_year_end: 1972
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **70 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 58 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **74 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 62 solutions have been independently verified.
 
 ## 1970
 
@@ -167,7 +167,7 @@ draft: false
 
 ## 1972
 
-3 problems across Issues 1–5, 1 verified.
+7 problems across Issues 1–9, 5 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -186,4 +186,18 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [154](1972/154.md) *P. L. Kapitsa*. The physical system is a layer of fog consisting of identical spherical water droplets suspended in air. |  | 7m50s |
+
+### [Issue 8](https://www.kvant.digital/view/kvant_1972_8/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [170](1972/170.md) *V. G. Averin*. A homogeneous plasma initially occupies a slab of thickness $x$ and contains a uniform density $n$ of positive ions and an equal density $n$ of electrons, where $n$ is the number of particles of each… | ✓ | 2m26s |
+| [171](1972/171.md) *A. R. Zilberman*. The system consists of two identical point masses, each of mass $m$, fixed at the ends of a massless rigid rod of length $l$. | ✓ | 4m01s |
+| [172](1972/172.md) *V. V. Svetozarov*. A rigid conducting rod of length $l = 0. | ✓ | 6m20s |
+
+### [Issue 9](https://www.kvant.digital/view/kvant_1972_9/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [173](1972/173.md) *V. D. Krivchenkov*. A solid sphere of radius $R$ carries a uniform volume charge density $\\sigma$ with units $\\mathrm{C/m^3}$. | ✓ | 6m30s |
 
