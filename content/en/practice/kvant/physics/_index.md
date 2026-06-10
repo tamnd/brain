@@ -1,19 +1,19 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (67 solved, 57 verified), 1970–1971."
+description: "Kvant physics problem solutions (69 solved, 58 verified), 1970–1972."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 67
-kvant_verified: 57
+kvant_total: 69
+kvant_verified: 58
 kvant_year_start: 1970
-kvant_year_end: 1971
+kvant_year_end: 1972
 weight: 20
 draft: false
 ---
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **67 physics problems** from the magazine's problem section, covering the years 1970 to 1971. 57 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **69 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 58 solutions have been independently verified.
 
 ## 1970
 
@@ -164,4 +164,20 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [85](1971/85.md) An ideal gas in equilibrium is described by states $(p,V)$ with $p>0$, $V>0$ and equation of state $pV=\\nu RT$. |  | 9m |
+
+## 1972
+
+2 problems across Issues 1–2, 1 verified.
+
+### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [137](1972/137.md) *S. M. Kozel*. The radiation of a fixed infrared wavelength propagates through methane according to the exponential attenuation law. |  | 7m08s |
+
+### [Issue 2](https://www.kvant.digital/view/kvant_1972_2/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [139](1972/139.md) A football is launched from a fixed point on level ground with initial speed $v$ at an angle $\\alpha=30^\\circ$ to the horizontal. | ✓ | 3m08s |
 
