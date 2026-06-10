@@ -1,10 +1,10 @@
 ---
 title: "Kvant Physics"
-description: "Kvant physics problem solutions (80 solved, 67 verified), 1970–1972."
+description: "Kvant physics problem solutions (83 solved, 70 verified), 1970–1972."
 tags: ["kvant", "physics", "olympiad"]
 categories: ["physics"]
-kvant_total: 80
-kvant_verified: 67
+kvant_total: 83
+kvant_verified: 70
 kvant_year_start: 1970
 kvant_year_end: 1972
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Physics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **80 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 67 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **83 physics problems** from the magazine's problem section, covering the years 1970 to 1972. 70 solutions have been independently verified.
 
 ## 1970
 
@@ -167,7 +167,7 @@ draft: false
 
 ## 1972
 
-13 problems across Issues 1–10, 10 verified.
+16 problems across Issues 1–11, 13 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -216,4 +216,12 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [179](1972/179.md) A submarine moves vertically downward with constant speed $u$ in still water where sound propagates with speed $V$. | ✓ | 4m30s |
+| [180](1972/180.md) *Yu. A. Dreizin*. A perfectly conducting isolated metal sphere of radius $R$ is placed in a uniform external electric field of magnitude $E$ directed along a fixed axis. | ✓ | 5m14s |
+| [182](1972/182.md) A person jumps vertically upward from the surface of the Moon. | ✓ | 6m46s |
+
+### [Issue 11](https://www.kvant.digital/view/kvant_1972_11/)
+
+| # | Problem | ✓ | Time |
+|---|---------|---|------|
+| [184](1972/184.md) The physical system is a television image transmission channel. | ✓ | 9m13s |
 
