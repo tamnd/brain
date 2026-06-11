@@ -2634,7 +2634,7 @@ draft: false
 | [1276](1276.md) Consider a fixed chord $MN$ of a circle and a variable diameter $AB$ that does not intersect $MN$. |  | 6m09s |
 | [1277](1277.md) *L. D. Kurylandchik*. Begin by testing small values of $n$. |  | 6m03s |
 | [1278](1278.md) For $n=2$, the conditions give $x_2=-x_1$ and $2x_1^2=1$, hence $x_1x_2=-\\frac12\\le-\\frac12=-\\frac1n$. |  | 6m53s |
-| [1279](1279.md) *A. V. Anzhans*. Associate to each unit square its projection on the $x$ axis and on the $y$ axis. |  | 6m55s |
+| [1279](1279.md) *A. V. Andzhans*. Consider a configuration of $n$ non-overlapping unit squares on the plane with sides parallel to the axes such that any two squares can be intersected by a line parallel to the $x$-axis or the $y$-axi… |  | 13m05s |
 | [1280](1280.md) The decimal expansion of $\\dfrac1{3^{100}}$ is purely periodic after a finite preperiod, because $3^{100}$ is coprime to $10$. |  | 6m42s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1991_5/)
