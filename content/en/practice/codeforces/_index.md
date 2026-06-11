@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1296 contests, 7215 problems, 3314 verified."
+description: "Codeforces problem solutions with full editorial. 1297 contests, 7217 problems, 3314 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1296 contests, 7215 problems, 3314 verified.**
+**1297 contests, 7217 problems, 3314 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1218](1218/) | [Bubble Cup 12 - Finals [Online Mirror, unrated, Div. 1]](https://codeforces.com/contest/1218) | Div. 1 | 2900-3000 | 0/2 | 3m 54s |
 | [1220](1220/) | [Codeforces Round 586 (Div. 1 + Div. 2)](https://codeforces.com/contest/1220) | Div. 1+2 | 1300-2700 | 1/2 | 3m 32s |
 | [1221](1221/) | [Educational Codeforces Round 73 (Rated for Div. 2)](https://codeforces.com/contest/1221) | Div. 2 | 1000-2900 | 1/2 | 4m 2s |
 | [1223](1223/) | [Technocup 2020 - Elimination Round 1](https://codeforces.com/contest/1223) | Special | 1600-1600 | 1/1 | 1m 52s |
