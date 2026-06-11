@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1383 contests, 7566 problems, 3542 verified."
+description: "Codeforces problem solutions with full editorial. 1384 contests, 7573 problems, 3545 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1383 contests, 7566 problems, 3542 verified.**
+**1384 contests, 7573 problems, 3545 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1117](1117/) | [Educational Codeforces Round 60 (Rated for Div. 2)](https://codeforces.com/contest/1117) | Div. 2 | 1000-2500 | 3/7 | 14m 48s |
 | [1118](1118/) | [Codeforces Round 540 (Div. 3)](https://codeforces.com/contest/1118) | Div. 3 | 800-2700 | 4/8 | 14m 11s |
 | [1119](1119/) | [Codeforces Global Round 2](https://codeforces.com/contest/1119) | Global | 1100-3400 | 6/8 | 10m 34s |
 | [1120](1120/) | [Codeforces Round 543 (Div. 1, based on Technocup 2019 Final Round)](https://codeforces.com/contest/1120) | Div. 1 | 1900-3100 | 2/6 | 9m 18s |
