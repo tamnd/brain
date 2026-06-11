@@ -3071,7 +3071,7 @@ draft: false
 | [1553](1553.md) I cannot produce a mathematical solution to Kvant M1553 because the problem statement itself is missing. | ✓ | 21m42s |
 | [1554](1554.md) *Moscow 59th Mathematical Olympiad, 1996, Tournament of the Cities (spring, 1996)*. Consider a triangle $ABC$ with outward squares $ABMN$, $BCKL$, and $ACPQ$ constructed on its sides. | ✓ | 21m |
 | [1555](1555.md) *Moscow LIX Mathematical Olympiad 1996, City Tournament (spring, 1996)*. Consider two disjoint circles $\\Gamma_1$ and $\\Gamma_2$ with centers $O_1$ and $O_2$ and radii $r_1$ and $r_2$. |  | 47m20s |
-| [1556](1556.md) Working |  | 31m40s |
+| [1556](1556.md) *Moscow LIX Mathematical Olympiad 1996, Tournament of Cities (spring, 1996)*. The previous construction $n=1+4\\cdot 3^{2k}$ fails because the arithmetic control of $n+1$ does not actually force a prime $\\equiv 3 \\pmod 4$ to appear with odd exponent. |  | 46m15s |
 | [1557](1557.md) *Moscow LIX Mathematical Olympiad 1996, Tournament of Towns (Spring, 1996)*. Let $O$ be the center of the given circle. |  | 9m57s |
 | [1558](1558.md) Consider the game on small chessboards to observe patterns. |  | 8m44s |
 | [1559](1559.md) *59th Moscow Mathematical Olympiad (1996), Tournament of Towns (Spring 1996)*. Let the given plane be $\\Pi$. |  | 9m11s |
