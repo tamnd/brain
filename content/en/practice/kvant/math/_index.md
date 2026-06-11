@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1556 solved, 63 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1556 solved, 64 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 kvant_total: 1556
-kvant_verified: 63
+kvant_verified: 64
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 63 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 64 solutions have been independently verified.
 
 ## 1970
 
@@ -265,7 +265,7 @@ draft: false
 
 ## 1972
 
-60 problems across Issues 1–12, 1 verified.
+60 problems across Issues 1–12, 2 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1972_1/)
 
@@ -325,7 +325,7 @@ draft: false
 | [147](147.md) *I. F. Sharygin*. Let $P$ be the intersection of the tangents at $A$ and $C$. |  | 6m38s |
 | [148](148.md) *A. L. Lopshits*. Let |  | 6m54s |
 | [149](149.md) *N. B. Vasiliev*. Consider the first condition: the perimeters of the four triangles formed by three consecutive vertices of a quadrilateral are equal. |  | 3m18s |
-| [150](150.md) *V. B. Alekseev*. For $n=1$ the statement is immediate. |  | 5m57s |
+| [150](150.md) *V. B. Alekseev*. Consider first the simplest cases to gain intuition. | ✓ | 15m21s |
 
 ### [Issue 7](https://www.kvant.digital/view/kvant_1972_7/)
 
