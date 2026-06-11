@@ -3016,7 +3016,7 @@ draft: false
 | [1501](1501.md) *V. A. Senderov*. For small $x$, the functions admit linear approximations $\\sin(kx)\\sim kx$ and $\\sin x\\sim x$. |  | 9m09s |
 | [1502](1502.md) *V. V. Proizvolov*. Let the regular $2n$-gon have vertices labeled $A=A_0, A_1, \\dots, A_{2n-1}$ in cyclic order. |  | 41m25s |
 | [1503](1503.md) Let $B$ be the set of black numbers and $W$ the set of white numbers. |  | 9m53s |
-| [1505](1505.md) *V. N. Dubrovsky*. This is a Type B proof problem. |  | 42m43s |
+| [1505](1505.md) *V. N. Dubrovsky*. Consider triangle $ABC$ in the plane. |  | 44m11s |
 | [1506](1506.md) *G. V. Kondakov*. For a fixed interval $[a,b]$, the condition that the sums of integrals over white and black subintervals are equal for every polynomial in a given family can be rewritten as the vanishing of a signed… |  | 9m47s |
 
 ### [Issue 5](https://www.kvant.digital/view/kvant_1995_5/)
