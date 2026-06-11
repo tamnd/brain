@@ -3070,7 +3070,7 @@ draft: false
 | [1552](1552.md) *59th Moscow Mathematical Olympiad, 1996, Tournament of Towns (Spring 1996)*. The polynomial $P_n(x)=1+x+\\cdots+x^{n-1}$ satisfies | ✓ | 22m50s |
 | [1553](1553.md) I cannot produce a mathematical solution to Kvant M1553 because the problem statement itself is missing. | ✓ | 21m42s |
 | [1554](1554.md) *Moscow 59th Mathematical Olympiad, 1996, Tournament of the Cities (spring, 1996)*. Consider a triangle $ABC$ with outward squares $ABMN$, $BCKL$, and $ACPQ$ constructed on its sides. | ✓ | 21m |
-| [1555](1555.md) *Moscow 59th Mathematical Olympiad, Tournament of Towns (Spring 1996)*. Let the circles be $\\omega_1$ and $\\omega_2$, with tangency points from $P$ to $\\omega_1$ equal to $A,B$ and to $\\omega_2$ equal to $C,D$, so that $PA=PB$ and $PC=PD$. |  | 20m51s |
+| [1555](1555.md) *Moscow LIX Mathematical Olympiad 1996, City Tournament (spring, 1996)*. Consider two disjoint circles $\\Gamma_1$ and $\\Gamma_2$ with centers $O_1$ and $O_2$ and radii $r_1$ and $r_2$. |  | 47m20s |
 | [1556](1556.md) Working |  | 31m40s |
 | [1557](1557.md) *Moscow LIX Mathematical Olympiad 1996, Tournament of Towns (Spring, 1996)*. Let $O$ be the center of the given circle. |  | 9m57s |
 | [1558](1558.md) Consider the game on small chessboards to observe patterns. |  | 8m44s |
