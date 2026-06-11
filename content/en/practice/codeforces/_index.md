@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1268 contests, 7158 problems, 3288 verified."
+description: "Codeforces problem solutions with full editorial. 1269 contests, 7161 problems, 3289 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1268 contests, 7158 problems, 3288 verified.**
+**1269 contests, 7161 problems, 3289 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1264](1264/) | [Codeforces Round 604 (Div. 1)](https://codeforces.com/contest/1264) | Div. 1 | 1900-3500 | 1/3 | 6m 34s |
 | [1265](1265/) | [Codeforces Round 604 (Div. 2)](https://codeforces.com/contest/1265) | Div. 2 | 1000-2100 | 1/2 | 4m |
 | [1266](1266/) | [Codeforces Global Round 6](https://codeforces.com/contest/1266) | Global | 1000-3300 | 1/4 | 9m 17s |
 | [1267](1267/) | [2019-2020 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1267) | ICPC/IOI | 900-3200 | 1/5 | 10m 32s |
