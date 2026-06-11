@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1201 contests, 6975 problems, 3236 verified."
+description: "Codeforces problem solutions with full editorial. 1202 contests, 6978 problems, 3238 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1201 contests, 6975 problems, 3236 verified.**
+**1202 contests, 6978 problems, 3238 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1343](1343/) | [Codeforces Round 636 (Div. 3)](https://codeforces.com/contest/1343) | Div. 3 | 800-2100 | 2/3 | 22m 24s |
 | [1344](1344/) | [Codeforces Round 639 (Div. 1)](https://codeforces.com/contest/1344) | Div. 1 | 1600-3200 | 1/3 | 8m 35s |
 | [1345](1345/) | [Codeforces Round 639 (Div. 2)](https://codeforces.com/contest/1345) | Div. 2 | 800-800 | 1/1 | 1m 48s |
 | [1346](1346/) | [Kotlin Heroes: Episode 4](https://codeforces.com/contest/1346) | Kotlin | 1000-2900 | 1/4 | 20m 44s |
