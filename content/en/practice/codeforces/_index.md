@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1190 contests, 6947 problems, 3219 verified."
+description: "Codeforces problem solutions with full editorial. 1191 contests, 6949 problems, 3221 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1190 contests, 6947 problems, 3219 verified.**
+**1191 contests, 6949 problems, 3221 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1355](1355/) | [Codeforces Round 643 (Div. 2)](https://codeforces.com/contest/1355) | Div. 2 | 1200-1200 | 2/2 | 11m 32s |
 | [1356](1356/) | [Microsoft Q# Coding Contest - Summer 2020 - Warmup](https://codeforces.com/contest/1356) | Special | - | 4/5 | 8m 51s |
 | [1357](1357/) | [Microsoft Q# Coding Contest - Summer 2020](https://codeforces.com/contest/1357) | Special | - | 9/9 | 20m 17s |
 | [1358](1358/) | [Codeforces Round 645 (Div. 2)](https://codeforces.com/contest/1358) | Div. 2 | 1600-2400 | 1/2 | 15m 26s |
