@@ -3060,7 +3060,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1536](1536.md) *V. V. Proizvolov*. This is a construction and existence problem. |  | 22m55s |
+| [1536](1536.md) *V. V. Proizvolov*. The problem asks first for the explicit construction of two congruent simple heptagons on the same set of seven points with no shared edges and second for a rigorous proof that no three such heptagons… |  | 33m34s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1996_4/)
 
