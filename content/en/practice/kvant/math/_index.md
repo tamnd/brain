@@ -3033,7 +3033,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1521](1521.md) *N. B. Vasiliev*. The problem concerns arranging 256 deputies, each corresponding to a distinct 8-bit vector, on a $16\\times16$ square grid of chairs. |  | 42m05s |
+| [1521](1521.md) *N. B. Vasiliev*. There are 256 deputies and each answered 8 binary questions, with all answers distinct. |  | 30m05s |
 | [1522](1522.md) Our systems have detected unusual activity coming from your system. |  | 21m51s |
 | [1523](1523.md) *L. D. Kurlandchik*. Let | ✓ | 29m20s |
 | [1524](1524.md) Let the incenters of the triangles $ABP$, $BCP$, $CDP$, $DAP$ be $X,Y,Z,W$ respectively. |  | 12m20s |
