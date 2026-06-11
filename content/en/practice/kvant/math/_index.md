@@ -2605,7 +2605,7 @@ draft: false
 | [1262](1262.md) *L. D. Kurlandchik*. Let the side lengths be $a,b,c$. |  | 5m22s |
 | [1263](1263.md) Let the outer circle have center $O$ and radius $R$. |  | 7m54s |
 | [1264](1264.md) Consider a small portion of the infinite grid and attempt to construct a $2\\times 2$ black square using only $3\\times 3$ and $4\\times 4$ flip operations. |  | 6m03s |
-| [1265](1265.md) Working |  | 7m40s |
+| [1265](1265.md) *N. M. Sedrakyan*. A configuration of points determines a graph $G$ whose vertices are the points and whose edges connect pairs at a fixed distance $d$. |  | 10m49s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1991_2/)
 
