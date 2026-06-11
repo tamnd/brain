@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1556 solved, 62 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1556 solved, 63 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 kvant_total: 1556
-kvant_verified: 62
+kvant_verified: 63
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 62 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 63 solutions have been independently verified.
 
 ## 1970
 
@@ -2976,7 +2976,7 @@ draft: false
 
 ## 1995
 
-36 problems across Issues 1–6, 9 verified.
+36 problems across Issues 1–6, 10 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -2996,7 +2996,7 @@ draft: false
 | [1482](1482.md) Let | ✓ | 7m58s |
 | [1483](1483.md) *B. D. Ginzburg*. Each vector lies in the first quadrant and has length $1$. |  | 10m28s |
 | [1484](1484.md) *N. B. Vasilyev*. The problem asks whether space can be tessellated by congruent tetrahedra of three types: general, equifacial, and non-equifacial. |  | 31m11s |
-| [1485](1485.md) *L. D. Kurlyandchik*. Let $x_1, x_2, \\ldots, x_n$ be positive real numbers satisfying $0 < x_1 \\le x_2 \\le \\cdots \\le x_n$. |  | 40m51s |
+| [1485](1485.md) *L. D. Kurlyandchik*. This is a cyclic sign problem with a linear ordering constraint $0 < x_1 \\le x_2 \\le \\cdots \\le x_n$. | ✓ | 33m33s |
 | [1486](1486.md) *S. I. Tokarev*. Consider sequences $(a_1, a_2, a_3, \\dots)$ satisfying the recurrence $a_k = a_{k-1} - a_{k-2}$ for $k \\ge 3$, with terms chosen from the set $1, \\frac12, \\frac13, \\dots$. |  | 32m39s |
 | [1487](1487.md) *V. A. Senderov*. Place the circumcenter $O$ as a reference point and represent the triangle on its circumcircle. |  | 7m47s |
 | [1488](1488.md) Let the squares in the sequence be |  | 38m09s |
