@@ -2982,7 +2982,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1471](1471.md) *M. L. Gerver*. The problem asks whether a skier who has passed through each of $n$ villages twice and returned to the starting point can traverse his ski track in such a way as to visit each village exactly once. |  | 34m39s |
+| [1471](1471.md) *M. L. Gerver*. The skier’s route can be represented as a cyclic sequence of length $2n$, denoted $v_1, v_2, \\dots, v_{2n}$ with $v_{2n+1} = v_1$, in which each of the $n$ villages appears exactly twice. |  | 12m54s |
 | [1472](1472.md) *A. P. Savin*. Consider the $n\\times n$ table with entries |  | 38m15s |
 | [1474](1474.md) *B. D. Ginzburg*. Let the direction of the line used in the $i$-th projection be denoted by $\\alpha_i$. | ✓ | 22m16s |
 | [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
