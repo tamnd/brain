@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1222 contests, 7028 problems, 3247 verified."
+description: "Codeforces problem solutions with full editorial. 1223 contests, 7029 problems, 3247 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1222 contests, 7028 problems, 3247 verified.**
+**1223 contests, 7029 problems, 3247 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1321](1321/) | [Codeforces Round 625 (Div. 2, based on Technocup 2020 Final Round)](https://codeforces.com/contest/1321) | Div. 2 | 1600-1600 | 0/1 | 2m 4s |
 | [1322](1322/) | [Codeforces Round 626 (Div. 1, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1322) | Div. 1 | 1300-3500 | 0/3 | 6m 41s |
 | [1323](1323/) | [Codeforces Round 626 (Div. 2, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1323) | Div. 2 | 800-800 | 0/1 | 1m 58s |
 | [1324](1324/) | [Codeforces Round 627 (Div. 3)](https://codeforces.com/contest/1324) | Div. 3 | 900-1100 | 0/2 | 5m 42s |
