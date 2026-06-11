@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1324 contests, 7298 problems, 3370 verified."
+description: "Codeforces problem solutions with full editorial. 1325 contests, 7300 problems, 3372 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1324 contests, 7298 problems, 3370 verified.**
+**1325 contests, 7300 problems, 3372 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1189](1189/) | [Codeforces Round 572 (Div. 2)](https://codeforces.com/contest/1189) | Div. 2 | 800-1100 | 2/2 | 4m 27s |
 | [1190](1190/) | [Codeforces Round 573 (Div. 1)](https://codeforces.com/contest/1190) | Div. 1 | 1800-3400 | 2/3 | 6m 26s |
 | [1191](1191/) | [Codeforces Round 573 (Div. 2)](https://codeforces.com/contest/1191) | Div. 2 | 1200-1200 | 1/1 | 2m 42s |
 | [1192](1192/) | [CEOI 2019 day 1 online mirror (unrated, IOI format)](https://codeforces.com/contest/1192) | ICPC/IOI | - | 1/2 | 4m 52s |
