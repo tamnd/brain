@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1556 solved, 61 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1556 solved, 62 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 kvant_total: 1556
-kvant_verified: 61
+kvant_verified: 62
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 61 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 62 solutions have been independently verified.
 
 ## 1970
 
@@ -2976,14 +2976,14 @@ draft: false
 
 ## 1995
 
-36 problems across Issues 1–6, 8 verified.
+36 problems across Issues 1–6, 9 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1471](1471.md) *M. L. Gerver*. The skier’s route can be represented as a cyclic sequence of length $2n$, denoted $v_1, v_2, \\dots, v_{2n}$ with $v_{2n+1} = v_1$, in which each of the $n$ villages appears exactly twice. |  | 12m54s |
-| [1472](1472.md) *A. P. Savin*. Consider the $n\\times n$ table with entries |  | 38m15s |
+| [1472](1472.md) *A. P. Savin*. The table is a cyclic Latin square, so the entry in row $i$ and column $j$ equals $j-i+1 \\pmod n$ in the set ${1,2,\\dots,n}$. | ✓ | 17m50s |
 | [1474](1474.md) *B. D. Ginzburg*. Let the direction of the line used in the $i$-th projection be denoted by $\\alpha_i$. | ✓ | 22m16s |
 | [1475](1475.md) *A. H. Shen*. Let $a_n$ denote the number of admissible fillings. | ✓ | 17m24s |
 | [1479](1479.md) *L. D. Kurlyandchik*. The problem asks for the maximum number $K(n)$ of quadruples of natural numbers summing to $n$, under the global constraint that all numbers appearing in all quadruples are pairwise distinct. |  | 9m15s |
