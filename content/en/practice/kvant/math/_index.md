@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1556 solved, 64 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1556 solved, 65 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 kvant_total: 1556
-kvant_verified: 64
+kvant_verified: 65
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 64 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 65 solutions have been independently verified.
 
 ## 1970
 
@@ -2976,7 +2976,7 @@ draft: false
 
 ## 1995
 
-36 problems across Issues 1–6, 10 verified.
+36 problems across Issues 1–6, 11 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1995_1/)
 
@@ -3023,7 +3023,7 @@ draft: false
 
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
-| [1511](1511.md) *Saint Petersburg City Mathematical Olympiad (1995)*. Let two circles with centers $O_1$ and $O_2$ intersect at points $A$ and $B$, and let $A$ be a chosen intersection point. |  | 36m11s |
+| [1511](1511.md) *Saint Petersburg City Mathematical Olympiad (1995)*. Let the two circles be $\\Gamma_1$ and $\\Gamma_2$, with centers $O_1$ and $O_2$. | ✓ | 43m02s |
 | [1512](1512.md) *Saint Petersburg City Mathematical Olympiad (1995)*. Let $f(x)=a_nx^n+a_{n-1}x^{n-1}+\\cdots+a_0$ with $a_n\\ne 0$, and define for a natural number $k$ |  | 33m09s |
 | [1515](1515.md) *Russian Mathematical Olympiad*. Let |  | 3m42s |
 | [1518](1518.md) *Russian Mathematical Olympiad*. Let the common intersection point of the altitudes be $H$. |  | 23m19s |
