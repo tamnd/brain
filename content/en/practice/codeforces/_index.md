@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1142 contests, 6763 problems, 3138 verified."
+description: "Codeforces problem solutions with full editorial. 1143 contests, 6768 problems, 3139 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1142 contests, 6763 problems, 3138 verified.**
+**1143 contests, 6768 problems, 3139 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1407](1407/) | [Codeforces Round 669 (Div. 2)](https://codeforces.com/contest/1407) | Div. 2 | 1100-2500 | 1/5 | 10m 44s |
 | [1408](1408/) | [Grakn Forces 2020](https://codeforces.com/contest/1408) | Special | 800-3300 | 3/9 | 22m 34s |
 | [1409](1409/) | [Codeforces Round 667 (Div. 3)](https://codeforces.com/contest/1409) | Div. 3 | 800-2100 | 4/6 | 13m 57s |
 | [1411](1411/) | [Technocup 2021 - Elimination Round 3](https://codeforces.com/contest/1411) | Special | 800-3000 | 5/6 | 9m 8s |
