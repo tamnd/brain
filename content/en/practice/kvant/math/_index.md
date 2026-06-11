@@ -2509,7 +2509,7 @@ draft: false
 |---|---------|---|------|
 | [1216](1216.md) Consider an acute-angled triangle $ABC$ with angle bisector $AD$ from vertex $A$. |  | 1m32s |
 | [1217](1217.md) *Yu. M. Burman*. Compute the sum for small values of $n$ to gain intuition. |  | 3m20s |
-| [1218](1218.md) The three arcs are parts of three circles. |  | 2m49s |
+| [1218](1218.md) Let the circle through the arc $\\overset{\\frown}{AC}$ be $\\omega_1$ and the circle through the arc $\\overset{\\frown}{BC}$ be $\\omega_2$. |  | 27m13s |
 | [1219](1219.md) Begin by testing the inequality for small values of $n$ to develop intuition. |  | 2m13s |
 | [1220](1220.md) *D. V. Fomin*. The recurrence is |  | 3m22s |
 
