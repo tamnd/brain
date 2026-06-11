@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1388 contests, 7599 problems, 3568 verified."
+description: "Codeforces problem solutions with full editorial. 1389 contests, 7604 problems, 3570 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1388 contests, 7599 problems, 3568 verified.**
+**1389 contests, 7604 problems, 3570 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1111](1111/) | [CodeCraft-19 and Codeforces Round 537 (Div. 2)](https://codeforces.com/contest/1111) | Div. 2 | 1000-2600 | 2/5 | 11m 12s |
 | [1113](1113/) | [Codeforces Round 539 (Div. 2)](https://codeforces.com/contest/1113) | Div. 2 | 900-1300 | 2/2 | 2m 8s |
 | [1114](1114/) | [Codeforces Round 538 (Div. 2)](https://codeforces.com/contest/1114) | Div. 2 | 800-2400 | 3/6 | 12m 30s |
 | [1115](1115/) | [Microsoft Q# Coding Contest - Winter 2019 - Warmup](https://codeforces.com/contest/1115) | Special | 1100-1700 | 6/6 | 5m 11s |
