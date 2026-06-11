@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1362 contests, 7441 problems, 3463 verified."
+description: "Codeforces problem solutions with full editorial. 1363 contests, 7447 problems, 3465 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1362 contests, 7441 problems, 3463 verified.**
+**1363 contests, 7447 problems, 3465 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1147](1147/) | [Forethought Future Cup - Final Round (Onsite Finalists Only)](https://codeforces.com/contest/1147) | Special | 1500-3500 | 2/6 | 9m 37s |
 | [1148](1148/) | [Codeforces Global Round 3](https://codeforces.com/contest/1148) | Global | 800-3500 | 2/8 | 12m 46s |
 | [1149](1149/) | [Codeforces Round 556 (Div. 1)](https://codeforces.com/contest/1149) | Div. 1 | 1200-3200 | 3/5 | 6m 20s |
 | [1150](1150/) | [Codeforces Round 556 (Div. 2)](https://codeforces.com/contest/1150) | Div. 2 | 800-900 | 2/2 | 2m 47s |
