@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1321 contests, 7292 problems, 3366 verified."
+description: "Codeforces problem solutions with full editorial. 1322 contests, 7294 problems, 3367 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1321 contests, 7292 problems, 3366 verified.**
+**1322 contests, 7294 problems, 3367 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1192](1192/) | [CEOI 2019 day 1 online mirror (unrated, IOI format)](https://codeforces.com/contest/1192) | ICPC/IOI | - | 1/2 | 4m 52s |
 | [1193](1193/) | [CEOI 2019 day 2 online mirror (unrated, IOI format)](https://codeforces.com/contest/1193) | ICPC/IOI | - | 0/2 | 5m 59s |
 | [1194](1194/) | [Educational Codeforces Round 68 (Rated for Div. 2)](https://codeforces.com/contest/1194) | Div. 2 | 1300-2400 | 2/3 | 7m 10s |
 | [1195](1195/) | [Codeforces Round 574 (Div. 2)](https://codeforces.com/contest/1195) | Div. 2 | 1000-1800 | 2/3 | 5m 14s |
