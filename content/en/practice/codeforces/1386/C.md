@@ -1,0 +1,93 @@
+---
+title: "CF 1386C - Joker"
+description: "Let $N = pq$ where $p equiv 3 pmod 8$ and $q equiv 7 pmod 8$. We first prove the claimed identity involving the Jacobi symbol."
+date: "2026-06-11T10:39:50+07:00"
+tags: ["codeforces", "competitive-programming", "*special", "bitmasks", "data-structures", "divide-and-conquer", "dsu"]
+categories: ["algorithms"]
+codeforces_contest: 1386
+codeforces_index: "C"
+codeforces_contest_name: "Baltic Olympiad in Informatics 2020, Day 1 (IOI, Unofficial Mirror Contest, Unrated)"
+rating: 2800
+weight: 1386
+solve_time_s: 144
+verified: false
+draft: false
+---
+
+[CF 1386C - Joker](https://codeforces.com/problemset/problem/1386/C)
+
+**Rating:** 2800  
+**Tags:** *special, bitmasks, data structures, divide and conquer, dsu  
+**Solve time:** 2m 24s  
+**Verified:** no  
+
+## Solution
+## Solution
+
+Let $N = pq$ where $p \equiv 3 \pmod 8$ and $q \equiv 7 \pmod 8$. We first prove the claimed identity involving the Jacobi symbol. Recall that the Jacobi symbol is multiplicative and satisfies
+
+$$\left(\frac{a}{N}\right) = \left(\frac{a}{p}\right) \left(\frac{a}{q}\right)$$
+
+for any integer $a$. We compute $\left(\frac{-1}{N}\right)$ and $\left(\frac{2}{N}\right)$ separately.
+
+By the law of quadratic reciprocity and the standard formulas for $-1$ and $2$ as numerators, we have
+
+$$\left(\frac{-1}{p}\right) = (-1)^{(p-1)/2} = (-1)^{(3-1)/2} = (-1)^1 = -1,$$
+
+$$\left(\frac{-1}{q}\right) = (-1)^{(q-1)/2} = (-1)^{(7-1)/2} = (-1)^3 = -1.$$
+
+Hence
+
+$$\left(\frac{-1}{N}\right) = \left(\frac{-1}{p}\right)\left(\frac{-1}{q}\right) = (-1)(-1) = 1.$$
+
+Next, for the symbol with numerator $2$, recall that
+
+$$\left(\frac{2}{p}\right) = (-1)^{(p^2-1)/8}, \qquad \left(\frac{2}{q}\right) = (-1)^{(q^2-1)/8}.$$
+
+Compute
+
+$$(p^2 - 1)/8 = (3^2 - 1)/8 = (9 - 1)/8 = 1,$$
+
+$$(q^2 - 1)/8 = (7^2 - 1)/8 = (49 - 1)/8 = 48/8 = 6.$$
+
+Therefore
+
+$$\left(\frac{2}{p}\right) = (-1)^1 = -1, \qquad \left(\frac{2}{q}\right) = (-1)^6 = 1.$$
+
+Multiplying gives
+
+$$\left(\frac{2}{N}\right) = \left(\frac{2}{p}\right)\left(\frac{2}{q}\right) = (-1)(1) = -1.$$
+
+We have established that
+
+$$\left(\frac{-1}{N}\right) = 1 = -(-1) = -\left(\frac{2}{N}\right),$$
+
+which proves the first claim.
+
+This property allows the design of a Rabin-type encryption scheme without ambiguity. Let a plaintext message $m$ satisfy $0 \le m < N$. Define the ciphertext
+
+$$c \equiv m^2 \pmod N.$$
+
+Decryption requires solving $x^2 \equiv c \pmod N$. There are four solutions modulo $N$ because $N$ is the product of two distinct odd primes. We can distinguish them by considering the Jacobi symbols modulo $N$. Compute
+
+$$\left(\frac{x}{N}\right) \quad \text{and} \quad \left(\frac{x - 1}{2}\right)$$
+
+or equivalently encode a single bit of redundancy into $m$ so that exactly one of the four square roots satisfies the predetermined Jacobi symbol condition. The identity $\left(\frac{-1}{N}\right) = -\left(\frac{2}{N}\right)$ ensures that the mapping from $m$ to the root is unambiguous: the four roots can be partitioned into pairs that differ in Jacobi symbol, so selecting the root with the appropriate symbol recovers the original message.
+
+Explicitly, let $m$ be encoded so that
+
+$$\left(\frac{m}{N}\right) = 1, \quad m \text{ even or odd according to a chosen convention}.$$
+
+After computing $x \equiv \sqrt{c} \pmod N$, select the unique solution with Jacobi symbol $1$ and the predetermined parity. This yields a deterministic decoding function
+
+$$m \equiv \text{Dec}(c) \pmod N$$
+
+with no ambiguity. Encryption remains
+
+$$c \equiv m^2 \pmod N$$
+
+and decryption requires only the selection of the root satisfying the fixed Jacobi symbol condition. The identity guarantees that exactly one of the four roots meets the criterion, thus eliminating the twofold ambiguity present in the original Rabin SQRT box.
+
+This completes the proof.
+
+∎
