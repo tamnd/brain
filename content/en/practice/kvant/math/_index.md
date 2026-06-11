@@ -1,10 +1,10 @@
 ---
 title: "Kvant Mathematics"
-description: "Kvant mathematics problem solutions (1556 solved, 60 verified), 1970–2026."
+description: "Kvant mathematics problem solutions (1556 solved, 61 verified), 1970–2026."
 tags: ["kvant", "mathematics", "olympiad"]
 categories: ["mathematics"]
 kvant_total: 1556
-kvant_verified: 60
+kvant_verified: 61
 kvant_year_start: 1970
 kvant_year_end: 2026
 weight: 20
@@ -13,7 +13,7 @@ draft: false
 
 # Kvant Mathematics
 
-[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 60 solutions have been independently verified.
+[Kvant](https://kvant.digital) (Квант) is a popular science magazine covering mathematics and physics, published in the Soviet Union and Russia since 1970. This page collects solutions to **1556 mathematics problems** from the magazine's problem section, covering the years 1970 to 2026. 61 solutions have been independently verified.
 
 ## 1970
 
@@ -2595,7 +2595,7 @@ draft: false
 
 ## 1991
 
-60 problems across Issues 1–12.
+60 problems across Issues 1–12, 1 verified.
 
 ### [Issue 1](https://www.kvant.digital/view/kvant_1991_1/)
 
@@ -2615,7 +2615,7 @@ draft: false
 | [1267](1267.md) *L. D. Kurlandchik*. Consider small values of $n$ to understand the behavior of the remainders $r_k$. |  | 6m07s |
 | [1268](1268.md) Consider triangle $ABC$ with an interior point $X$, and let $AX$, $BX$, $CX$ intersect the opposite sides at $A_1$, $B_1$, $C_1$ respectively. |  | 7m06s |
 | [1269](1269.md) Let $a=AB$ and $c=AC$. |  | 6m28s |
-| [1270](1270.md) ``` |  | 8m39s |
+| [1270](1270.md) *N. B. Vasilyev*. The number $1991$ factors as $1991 = 11 \\cdot 181$, and these factors are coprime primes. | ✓ | 12m59s |
 
 ### [Issue 3](https://www.kvant.digital/view/kvant_1991_3/)
 
