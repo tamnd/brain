@@ -46,7 +46,7 @@ draft: false
 | [11](11.md) *Evening Mathematical School at Moscow State University*. Label the trees by the residues modulo $n$, arranged around the circle. |  | 4m23s |
 | [12](12.md) A straight line intersects a convex quadrilateral in two points. |  | 2m14s |
 | [13](13.md) Consider first small values of $n$ to understand the structure of the sum of pairwise differences. |  | 1m21s |
-| [14](14.md) The condition that no two black faces share an edge means that every edge of the polyhedron is incident with at most one black face. |  | 3m28s |
+| [14](14.md) Assume the convex polyhedron admits an inscribed sphere of radius $r$ with center $O$. |  | 12m50s |
 | [15](15.md) Consider small instances to develop intuition. |  | 2m51s |
 
 ### [Issue 4](https://www.kvant.digital/view/kvant_1970_4/)
