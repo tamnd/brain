@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1266 contests, 7152 problems, 3286 verified."
+description: "Codeforces problem solutions with full editorial. 1267 contests, 7156 problems, 3287 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1266 contests, 7152 problems, 3286 verified.**
+**1267 contests, 7156 problems, 3287 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1266](1266/) | [Codeforces Global Round 6](https://codeforces.com/contest/1266) | Global | 1000-3300 | 1/4 | 9m 17s |
 | [1267](1267/) | [2019-2020 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1267) | ICPC/IOI | 900-3200 | 1/5 | 10m 32s |
 | [1268](1268/) | [Codeforces Round 609 (Div. 1)](https://codeforces.com/contest/1268) | Div. 1 | 2000-2300 | 1/2 | 5m 43s |
 | [1269](1269/) | [Codeforces Round 609 (Div. 2)](https://codeforces.com/contest/1269) | Div. 2 | 1500-1500 | 1/1 | 1m 58s |
