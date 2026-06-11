@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1366 contests, 7469 problems, 3478 verified."
+description: "Codeforces problem solutions with full editorial. 1367 contests, 7472 problems, 3481 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1366 contests, 7469 problems, 3478 verified.**
+**1367 contests, 7472 problems, 3481 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1143](1143/) | [Codeforces Round 549 (Div. 2)](https://codeforces.com/contest/1143) | Div. 2 | 800-1400 | 3/3 | 4m 13s |
 | [1144](1144/) | [Codeforces Round 550 (Div. 3)](https://codeforces.com/contest/1144) | Div. 3 | 800-2400 | 3/7 | 12m 3s |
 | [1145](1145/) | [April Fools Day Contest 2019](https://codeforces.com/contest/1145) | April Fools | - | 7/7 | 11m 54s |
 | [1146](1146/) | [Forethought Future Cup - Elimination Round](https://codeforces.com/contest/1146) | Special | 800-2900 | 3/8 | 15m 34s |
