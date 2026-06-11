@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1303 contests, 7238 problems, 3331 verified."
+description: "Codeforces problem solutions with full editorial. 1304 contests, 7242 problems, 3334 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1303 contests, 7238 problems, 3331 verified.**
+**1304 contests, 7242 problems, 3334 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1210](1210/) | [Dasha Code Championship - SPb Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1210) | Special | 1700-3200 | 3/4 | 8m 36s |
 | [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | Kotlin | 1000-2500 | 2/4 | 7m 9s |
 | [1213](1213/) | [Codeforces Round 582 (Div. 3)](https://codeforces.com/contest/1213) | Div. 3 | 1100-2100 | 3/4 | 7m 3s |
 | [1214](1214/) | [Codeforces Round 583 (Div. 1 + Div. 2, based on Olympiad of Metropolises)](https://codeforces.com/contest/1214) | Div. 1+2 | 1200-3200 | 4/4 | 8m 1s |
