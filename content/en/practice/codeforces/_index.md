@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1305 contests, 7247 problems, 3338 verified."
+description: "Codeforces problem solutions with full editorial. 1306 contests, 7251 problems, 3341 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1305 contests, 7247 problems, 3338 verified.**
+**1306 contests, 7251 problems, 3341 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [1208](1208/) | [Manthan, Codefest 19 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1208) | Div. 1+2 | 900-3500 | 3/4 | 8m 36s |
 | [1209](1209/) | [Codeforces Round 584 - Dasha Code Championship - Elimination Round (rated, open for everyone, Div. 1 + Div. 2)](https://codeforces.com/contest/1209) | Div. 1+2 | 800-3300 | 4/5 | 9m 30s |
 | [1210](1210/) | [Dasha Code Championship - SPb Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1210) | Special | 1700-3200 | 3/4 | 8m 36s |
 | [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | Kotlin | 1000-2500 | 2/4 | 7m 9s |
