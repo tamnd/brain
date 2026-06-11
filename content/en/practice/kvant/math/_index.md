@@ -3053,7 +3053,7 @@ draft: false
 | # | Problem | ✓ | Time |
 |---|---------|---|------|
 | [1531](1531.md) Each question consists of choosing a line and learning in which of the three sets determined by that line the point $P$ lies: one open half-plane, the other open half-plane, or the line itself. |  | 10m23s |
-| [1532](1532.md) ``` |  | 12m17s |
+| [1532](1532.md) We are asked to determine whether sets of distinct numbers exist such that the sum of any three elements is a prime number. |  | 41m42s |
 | [1533](1533.md) *N. B. Vasilyev*. Let $\\ell$ be a line through $C$. |  | 28m24s |
 
 ### [Issue 2](https://www.kvant.digital/view/kvant_1996_2/)
