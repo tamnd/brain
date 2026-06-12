@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7747 problems, 3662 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7752 problems, 3666 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7747 problems, 3662 verified.**
+**1429 contests, 7752 problems, 3666 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -449,7 +449,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [919](919/) | [Codeforces Round 460 (Div. 2)](https://codeforces.com/contest/919) | Div. 2 | 800-2600 | 4/5 | 40m 41s |
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | Div. 2 | 1000-2400 | 5/6 | 28m 49s |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | Special | - | 0/0 | - |
-| [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | Div. 2 | 1900-1900 | 0/1 | 8m 24s |
+| [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | Div. 2 | 800-2600 | 4/6 | 33m 56s |
 | [1089](1089/) | [2018-2019 ICPC, NEERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1089) | ICPC/IOI | 1900-3200 | 2/2 | 4m 9s |
 | [1090](1090/) | [2018-2019 Russia Open High School Programming Contest (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1090) | ICPC/IOI | 2000-2900 | 0/3 | 3m 12s |
 | [1091](1091/) | [Good Bye 2018](https://codeforces.com/contest/1091) | Special | 1200-2600 | 2/2 | 2m 50s |
