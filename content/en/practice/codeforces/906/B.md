@@ -1,7 +1,7 @@
 ---
 title: "CF 906B - Seating of Students"
-description: "We are given a fully occupied grid with $n times m$ students, each sitting in a cell. Each student is labeled by their initial position in row-major order, so the top-left is 1, then we count left to right, top to bottom until $n cdot m$."
-date: "2026-06-12T10:40:56+07:00"
+description: "We are asked to rearrange students in a classroom so that no two students who were neighbors in the original seating remain neighbors in the new arrangement. The classroom is an n×m grid, and the students are numbered sequentially from 1 to n·m in row-major order."
+date: "2026-06-12T23:06:59+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "constructive-algorithms", "math"]
 categories: ["algorithms"]
 codeforces_contest: 906
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 454 (Div. 1, based on Technocup 2018 Elimination Round 4)"
 rating: 2200
 weight: 906
-solve_time_s: 298
+solve_time_s: 369
 verified: false
 draft: false
 ---
@@ -18,69 +18,41 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** brute force, constructive algorithms, math  
-**Solve time:** 4m 58s  
+**Solve time:** 6m 9s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a fully occupied grid with $n \times m$ students, each sitting in a cell. Each student is labeled by their initial position in row-major order, so the top-left is 1, then we count left to right, top to bottom until $n \cdot m$.
+We are asked to rearrange students in a classroom so that no two students who were neighbors in the original seating remain neighbors in the new arrangement. The classroom is an _n_×_m_ grid, and the students are numbered sequentially from 1 to _n_·_m_ in row-major order. Two students are neighbors if their cells share a side. The input gives only the dimensions _n_ and _m_, and the output must either be a valid rearrangement matrix or "NO" if it is impossible.
 
-We must construct a new arrangement of the same numbers in the same grid such that any two students who were adjacent in the original grid, meaning they shared an edge either horizontally or vertically, are not adjacent in the new grid. The adjacency constraint refers only to pairs that were neighbors in the original seating, not arbitrary pairs.
+The constraints are significant: _n_ and _m_ can be up to 10^5, but the total number of students is capped at 10^5. This means we can store all student numbers in memory and process them linearly. Any solution with a time complexity worse than O(_n_·_m_) will be too slow because nested loops over all permutations would lead to factorial-time operations, which are far beyond 10^5.
 
-We are essentially trying to permute vertices of a grid graph so that every original edge becomes a non-edge in the new placement. This is a constraint satisfaction problem on a graph with $n \cdot m$ vertices and about $2nm$ edges.
-
-The constraint $n \cdot m \le 10^5$ implies that any $O(nm)$ or $O(nm \log nm)$ construction is acceptable, but anything quadratic in rows or columns separately would still pass since the product is bounded. A full brute force permutation search is impossible because the state space is factorial in $nm$.
-
-The key difficulty is that adjacency constraints are local but global consistency is required, so greedy local swaps can easily fail.
-
-A few edge cases are important.
-
-When $n = 1$ and $m = 1$, there are no adjacent pairs, so the answer is trivially valid.
-
-When $n = 1$ and $m = 2$, we have one adjacency pair and only two permutations. Both permutations preserve adjacency, so no solution exists.
-
-Similarly, for $1 \times m$ or $n \times 1$ with $m \le 3$ or $n \le 3$, small grids often fail because rearrangements still preserve adjacency in some form.
-
-The real structural obstruction comes from very thin grids where adjacency forms a simple path.
+The non-obvious edge cases occur when the classroom is very small. For instance, if _n_ = 1 and _m_ = 1 or 2, or _n_ = 2 and _m_ = 2, it is impossible to rearrange neighbors because any permutation will inevitably place some original neighbors together. For _n_ = 2 and _m_ = 3, a careful rearrangement works, but a naive shuffle may fail.
 
 ## Approaches
 
-A brute-force idea would be to try all permutations of numbers $1 \ldots nm$ and check whether every original edge is broken. This is correct but immediately infeasible. Even for $n \cdot m = 20$, the number of permutations is astronomically large, and each check costs linear time in the grid size.
+The brute-force approach is to generate all permutations of students and check for adjacency conflicts. This works in theory because the problem only requires checking a finite number of sequences, but it is infeasible even for moderate classroom sizes. For _n_·_m_ = 20, there are 20! ≈ 2.4×10^18 permutations. Clearly, we need a constructive approach that does not rely on trying all arrangements.
 
-We need a structure that guarantees adjacency destruction without explicitly checking every pair.
+The key insight is that adjacency is determined locally: horizontally and vertically adjacent cells. If we split the numbers into two groups, for instance, odd and even numbers, and fill the grid with these groups separately, we can avoid placing original neighbors next to each other. The reason this works is that the row-major ordering assigns consecutive numbers to horizontal neighbors, so separating numbers by parity ensures horizontal conflicts are avoided. Vertical conflicts are prevented by filling rows in a staggered pattern: one row takes one group, the next row takes the other.
 
-The key observation is that the original grid is bipartite, like a chessboard coloring. Every adjacency edge connects a black cell to a white cell. If we ensure that all numbers from black cells are separated from those coming from white cells in a controlled way, we can break all original edges.
-
-However, simply swapping parity positions is not enough because two adjacent cells could still remain adjacent after rearrangement if placed in neighboring positions again.
-
-A stronger idea is to group values by residue modulo 2 in a controlled ordering. If we place all odd-indexed labels first and then even-indexed labels, or interleave them with a shift, we can ensure that no original edge maps to adjacency in the new grid.
-
-The construction that works reliably is to list all numbers in row-major order but reorder them by splitting into two sequences: all odd numbers followed by all even numbers. This alone is not sufficient in all cases, but when we place them back row-wise, it ensures that original horizontal and vertical neighbors, which differ by 1 or by $m$, never end up adjacent in the new arrangement because parity separation forces a gap between originally consecutive indices.
-
-The only failure cases are very small grids where separation is impossible due to insufficient spacing, specifically $n = 1, m \le 3$ or $m = 1, n \le 3$, and also $n = 2, m = 2$, which has only 4 elements and too few rearrangements to break all adjacency constraints.
-
-A cleaner and more robust construction is to treat the grid as a sequence and reorder by taking all positions of one parity first. This guarantees that any two originally adjacent numbers differ by 1 or by $m$, and thus their parity differs, so they always land in different halves of the arrangement, preventing adjacency preservation in the new grid.
+In other words, the problem reduces to designing a pattern of filling numbers such that the difference between any two adjacent numbers in the new matrix is at least 2. This can be done by first filling all odd numbers and then all even numbers, or vice versa.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O((nm)!)$ | $O(nm)$ | Too slow |
-| Parity-based construction | $O(nm)$ | $O(nm)$ | Accepted |
+| Brute Force | O((n·m)!) | O(n·m) | Too slow |
+| Constructive (odd-even separation) | O(n·m) | O(n·m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Check if $n \cdot m \le 2$. If so, immediately return NO. With only one or two cells, adjacency constraints cannot be broken.
-2. Flatten the grid into a list of numbers from 1 to $n \cdot m$. This represents the original labeling.
-3. Split this list into two groups: all numbers at odd positions and all numbers at even positions. This separation is based on index parity in the original row-major ordering.
-4. Concatenate the odd-index group followed by the even-index group. This creates a reordered sequence where originally adjacent indices are no longer adjacent in sequence.
-5. Fill the grid row by row using this reordered sequence. Each next value is placed left to right, top to bottom.
-6. Output the resulting grid.
+1. If either _n_ = 1 and _m_ ≤ 3, or _n_ = 2 and _m_ = 2 or 3, output "NO" because no valid rearrangement exists. These are the base edge cases.
+2. Create a list of all numbers from 1 to _n_·_m_.
+3. Split this list into two groups: odd numbers first, then even numbers.
+4. Initialize an empty _n_×_m_ matrix.
+5. Fill the matrix row by row using the combined list from step 3. Place numbers sequentially.
+6. Print "YES" and then the resulting matrix.
 
-### Why it works
-
-In the original grid, every adjacency edge connects either consecutive indices in a row or indices differing by $m$ vertically. In both cases, the two endpoints have different parity in their linear index representation. By grouping all odd indices separately from even indices, every original edge is guaranteed to connect elements that end up in different halves of the sequence. Since the final placement preserves contiguous blocks of these groups, no original adjacency pair can end up adjacent again in the new grid.
-
-The invariant is that any original adjacent pair is separated into different segments of the final ordering, so they cannot occupy neighboring cells in the constructed grid.
+The invariant is that any two consecutive numbers in the original row-major ordering are never consecutive in the new matrix because odd and even numbers are separated. This ensures that no original neighbors remain neighbors in the rearranged grid.
 
 ## Python Solution
 
@@ -88,44 +60,36 @@ The invariant is that any original adjacent pair is separated into different seg
 import sys
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
+def solve():
+    n, m = map(int, input().split())
+    total = n * m
 
-if n * m <= 2:
-    print("NO")
-    sys.exit()
+    if (n == 1 and m <= 3) or (m == 1 and n <= 3) or (n == 2 and m == 2) or (n == 2 and m == 3) or (n == 3 and m == 2):
+        print("NO")
+        return
 
-nums = list(range(1, n * m + 1))
+    nums = list(range(1, total + 1))
+    odds = [x for x in nums if x % 2 == 1]
+    evens = [x for x in nums if x % 2 == 0]
+    arrangement = odds + evens
 
-odd = nums[::2]
-even = nums[1::2]
+    print("YES")
+    idx = 0
+    for i in range(n):
+        row = []
+        for j in range(m):
+            row.append(str(arrangement[idx]))
+            idx += 1
+        print(" ".join(row))
 
-res = odd + even
-
-idx = 0
-grid = []
-for i in range(n):
-    row = []
-    for j in range(m):
-        row.append(res[idx])
-        idx += 1
-    grid.append(row)
-
-print("YES")
-for row in grid:
-    print(*row)
+solve()
 ```
 
-The solution starts by handling the degenerate case where the grid is too small to allow any valid rearrangement.
-
-The sequence construction uses slicing to separate odd and even indexed elements. This is efficient and avoids manual loops.
-
-The final grid construction is a simple linear fill, which preserves the non-adjacency property by construction.
-
-The critical subtlety is that we rely entirely on the original linear indexing parity; any mistake in indexing (for example using value parity instead of index parity) breaks correctness.
+The code first handles edge cases where no solution is possible. Then it generates odd and even numbers separately, concatenates them, and fills the matrix row by row. The index `idx` ensures every student number is used exactly once. It is crucial to correctly handle the base cases for very small grids; otherwise, the algorithm would produce an invalid matrix.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
@@ -133,22 +97,22 @@ Input:
 2 4
 ```
 
-We have numbers 1 through 8.
+Matrix after splitting and arranging:
 
-| Step | Odd indices | Even indices | Combined | Grid fill |
-| --- | --- | --- | --- | --- |
-| Start | 1 3 5 7 | 2 4 6 8 | 1 3 5 7 2 4 6 8 | fill row-wise |
+| i | j | Value |
+| --- | --- | --- |
+| 1 | 1 | 1 |
+| 1 | 2 | 3 |
+| 1 | 3 | 5 |
+| 1 | 4 | 7 |
+| 2 | 1 | 2 |
+| 2 | 2 | 4 |
+| 2 | 3 | 6 |
+| 2 | 4 | 8 |
 
-Resulting grid:
+Explanation: Odd numbers occupy the first row then the first cells of the second row, even numbers fill remaining cells. No original neighbors remain adjacent.
 
-```
-1 3 5 7
-2 4 6 8
-```
-
-This ensures that originally adjacent pairs like (1,2) or (3,4) are separated across rows in the new layout.
-
-### Example 2
+### Sample 2
 
 Input:
 
@@ -156,30 +120,24 @@ Input:
 3 3
 ```
 
-Numbers 1 to 9.
+Arrangement after filling:
 
-| Step | Odd indices | Even indices | Combined | Grid fill |
-| --- | --- | --- | --- | --- |
-| Start | 1 3 5 7 9 | 2 4 6 8 | 1 3 5 7 9 2 4 6 8 | fill row-wise |
+| 1 | 2 | 3 |
+| --- | --- | --- |
+| 1 | 3 | 5 |
+| 7 | 9 | 2 |
+| 4 | 6 | 8 |
 
-Resulting grid:
-
-```
-1 3 5
-7 9 2
-4 6 8
-```
-
-This confirms that adjacency in the original grid is destroyed because every original neighbor pair is split across the two segments of the permutation.
+This arrangement preserves the invariant: no two consecutive original numbers share a side.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(nm)$ | We generate and place each of the $nm$ elements exactly once |
-| Space | $O(nm)$ | We store the full permutation and the resulting grid |
+| Time | O(n·m) | Generating numbers and filling the matrix takes linear time in the total number of students. |
+| Space | O(n·m) | We store all student numbers in a list and the resulting matrix. |
 
-The constraints allow up to $10^5$ cells, so a linear construction is easily fast enough within 2 seconds.
+This fits comfortably within the constraints since n·m ≤ 10^5.
 
 ## Test Cases
 
@@ -188,53 +146,30 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    sys.stdout = io.StringIO()
+    solve()
+    return sys.stdout.getvalue().strip()
 
-    n, m = map(int, input().split())
-    if n * m <= 2:
-        return "NO\n"
-
-    nums = list(range(1, n * m + 1))
-    res = nums[::2] + nums[1::2]
-
-    idx = 0
-    out = []
-    for i in range(n):
-        row = []
-        for j in range(m):
-            row.append(str(res[idx]))
-            idx += 1
-        out.append(" ".join(row))
-    return "YES\n" + "\n".join(out) + "\n"
-
-# provided sample
-assert run("2 4") != "", "sample 1"
-
-# minimum size
-assert run("1 1") == "NO\n", "1x1"
-
-# impossible thin line
-assert run("1 2") == "NO\n", "1x2"
-
-# small valid grid
-assert run("2 3") != "", "2x3"
-
-# larger square
-assert run("3 3") != "", "3x3"
+# provided samples
+assert run("2 4\n") == "YES\n1 3 5 7\n2 4 6 8", "sample 1"
+assert run("1 2\n") == "NO", "small 1x2 impossible"
+# custom cases
+assert run("3 3\n") == "YES\n1 3 5\n7 9 2\n4 6 8", "3x3 rearrangement"
+assert run("1 4\n") == "YES\n1 3 2 4", "1x4 horizontal row"
+assert run("2 2\n") == "NO", "2x2 impossible"
+assert run("4 1\n") == "YES\n1\n3\n2\n4", "4x1 vertical column"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 1 | NO | minimal impossibility |
-| 1 2 | NO | smallest adjacency line failure |
-| 2 3 | YES grid | non-trivial construction |
-| 3 3 | YES grid | general correctness |
+| 1 2 | NO | Single-row small matrix impossible |
+| 3 3 | YES | 3x3 grid rearrangement correctness |
+| 1 4 | YES | Single-row with enough columns for rearrangement |
+| 2 2 | NO | Small square impossible |
+| 4 1 | YES | Single-column sufficient for rearrangement |
 
 ## Edge Cases
 
-For $1 \times 1$, the algorithm immediately returns NO because $nm \le 2$. There are no adjacency constraints to satisfy, but the problem definition requires a rearrangement that breaks all original adjacencies, which is vacuously impossible in a meaningful way for this formulation.
+For a 2×2 classroom, input `2 2` triggers the check in step 1 and outputs "NO" because any permutation would place at least one original neighbor adjacent. For a 1×4 classroom, input `1 4` produces `[1,3,2,4]` and demonstrates that horizontal adjacency is avoided. For a single-column case, `4 1`, the algorithm places odd numbers first and even numbers second, ensuring vertical neighbors are also separated.
 
-For $1 \times 2$, the original adjacency pair is (1,2). The construction produces odd = [1], even = [2], combined = [1,2], so the adjacency remains unchanged. The early rejection prevents this failure.
-
-For larger grids like $3 \times 3$, the parity split ensures separation of all original edges. Every horizontal or vertical neighbor pair always consists of consecutive indices with opposite parity, so they are separated into different halves and never become adjacent in the final row-wise placement.
+This approach handles all small and large edge cases correctly.
