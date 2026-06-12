@@ -1,7 +1,7 @@
 ---
 title: "CF 912A - Tricky Alchemy"
-description: "Grisha has a stash of yellow and blue crystals and wants to craft a specific number of yellow, green, and blue balls. Each type of ball consumes crystals differently."
-date: "2026-06-12T10:15:55+07:00"
+description: "We have two kinds of crystals available: yellow and blue. Producing each type of ball consumes crystals in a fixed recipe. A yellow ball requires 2 yellow crystals. A green ball requires 1 yellow crystal and 1 blue crystal. A blue ball requires 3 blue crystals."
+date: "2026-06-13T00:49:11+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 912
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 456 (Div. 2)"
 rating: 800
 weight: 912
-solve_time_s: 349
-verified: false
+solve_time_s: 252
+verified: true
 draft: false
 ---
 
@@ -18,40 +18,107 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation  
-**Solve time:** 5m 49s  
-**Verified:** no  
+**Solve time:** 4m 12s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Grisha has a stash of yellow and blue crystals and wants to craft a specific number of yellow, green, and blue balls. Each type of ball consumes crystals differently. A yellow ball requires two yellow crystals, a green ball consumes one yellow and one blue crystal, and a blue ball consumes three blue crystals. The input gives the counts of yellow and blue crystals currently available and the numbers of balls of each type Grisha wants. The task is to compute the minimum number of additional crystals Grisha must obtain to meet the desired counts.
+We have two kinds of crystals available: yellow and blue.
 
-The main constraints are that both crystal counts and ball counts can be as high as $10^9$. This immediately rules out any simulation approach that iterates over individual crystals or balls, as the number of operations would exceed feasible limits. Calculations must be done arithmetically, using sums, differences, and maximum functions.
+Producing each type of ball consumes crystals in a fixed recipe. A yellow ball requires 2 yellow crystals. A green ball requires 1 yellow crystal and 1 blue crystal. A blue ball requires 3 blue crystals.
 
-Non-obvious edge cases arise when Grisha already has more than enough crystals of one type but not the other. For instance, if he has 100 yellow crystals and 0 blue crystals but only wants one green ball, he will still need one blue crystal. Similarly, if he has zero crystals and wants zero balls, the answer should be zero, which can be overlooked if one blindly computes required crystals as differences without maxing against zero.
+The input gives the current stock of yellow crystals `A` and blue crystals `B`, followed by the required numbers of yellow, green, and blue balls: `x`, `y`, and `z`.
+
+Our task is to determine how many additional crystals must be purchased so that all requested balls can be produced. We are free to buy both yellow and blue crystals, and we want the minimum total number of extra crystals.
+
+The constraints go up to $10^9$. Such values immediately rule out any simulation that creates balls one by one or repeatedly subtracts crystals. Even a linear algorithm in the number of balls would be far too slow. Since the input consists of only five integers, we should expect a constant-time arithmetic solution.
+
+A common mistake is to treat shortages independently for each ball type instead of first computing the total crystal requirements.
+
+Consider:
+
+```
+A = 2, B = 1
+x = 1, y = 1, z = 0
+```
+
+The required yellow crystals are $2 \cdot 1 + 1 = 3$. The required blue crystals are $1$.
+
+We are short exactly one yellow crystal, so the answer is `1`.
+
+A careless approach that checks each ball recipe separately might double count shortages.
+
+Another easy mistake is subtracting available crystals from the total requirement and allowing negative deficits to reduce the answer.
+
+Example:
+
+```
+A = 100, B = 0
+x = 1, y = 0, z = 0
+```
+
+Only 2 yellow crystals are needed. The surplus 98 yellow crystals cannot compensate for missing blue crystals in other situations. Each color must be handled independently. The correct additional amount here is `0`, not a negative number.
+
+A final edge case occurs when one color has a surplus and the other has a shortage.
+
+```
+A = 10, B = 1
+x = 0, y = 0, z = 1
+```
+
+We need 3 blue crystals and have only 1. The answer is `2`, even though yellow crystals are abundant. Crystal colors are not interchangeable.
 
 ## Approaches
 
-A naive brute-force approach would try to iteratively "craft" each ball and decrement the corresponding crystal counts. For each yellow ball, subtract two yellow crystals; for each green ball, subtract one yellow and one blue; for each blue ball, subtract three blue. If a crystal count goes negative, track how many additional crystals are needed. This approach is correct in principle but fails for large inputs because iterating over up to $10^9$ balls is impossible.
+The most direct idea is to think about producing every requested ball one by one. For each yellow ball we would consume two yellow crystals, for each green ball one yellow and one blue crystal, and for each blue ball three blue crystals. If crystals run out, we count how many more must be purchased.
 
-The key observation is that each ball type has a fixed, small number of crystal requirements and these can be aggregated. We can compute the total yellow crystals needed as twice the number of yellow balls plus the number of green balls. Total blue crystals needed are three times the number of blue balls plus the number of green balls. The difference between required crystals and available crystals, clamped to zero, gives the number of additional crystals needed. This arithmetic approach reduces the problem to a constant number of operations, independent of the actual counts.
+This approach is correct because it follows the recipes exactly. The problem is that the number of balls can reach $10^9$. Simulating each ball would require billions of operations, which is impossible within the time limit.
+
+The key observation is that the order of production does not matter. Every yellow ball always consumes 2 yellow crystals. Every green ball always consumes 1 yellow and 1 blue crystal. Every blue ball always consumes 3 blue crystals.
+
+Instead of simulating production, we can compute the total crystal requirements directly.
+
+The total yellow crystals needed are:
+
+$$2x + y$$
+
+The total blue crystals needed are:
+
+$$y + 3z$$
+
+Once these totals are known, we compare them with the available supplies.
+
+If the required yellow crystals exceed `A`, we must buy the difference. Otherwise we buy none. The same logic applies to blue crystals.
+
+The answer is simply the sum of the two shortages.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(x + y + z) | O(1) | Too slow for large x, y, z |
+| Brute Force | O(x + y + z) | O(1) | Too slow |
 | Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the current number of yellow and blue crystals, $A$ and $B$, and the target numbers of yellow, green, and blue balls, $x$, $y$, $z$.
-2. Compute the total number of yellow crystals required as $2 \cdot x + y$. This accounts for two crystals per yellow ball and one per green ball.
-3. Compute the total number of blue crystals required as $3 \cdot z + y$. This accounts for three crystals per blue ball and one per green ball.
-4. Compute additional yellow crystals needed as the maximum of zero and the difference between total required yellow crystals and available yellow crystals, $\max(0, 2 \cdot x + y - A)$.
-5. Compute additional blue crystals needed similarly as $\max(0, 3 \cdot z + y - B)$.
-6. The total additional crystals needed is the sum of the additional yellow and blue crystals.
-7. Print this sum.
+1. Read the available yellow and blue crystals, `A` and `B`.
+2. Read the required numbers of yellow, green, and blue balls, `x`, `y`, and `z`.
+3. Compute the total yellow crystals needed as `2 * x + y`.
 
-Why it works: each ball has fixed, additive crystal requirements. Aggregating these first ensures that we never undercount crystals, and using $\max(0, \text{needed} - \text{available})$ ensures we only count crystals we actually need to acquire. There are no dependencies between different ball types that could lead to overcounting.
+Every yellow ball contributes 2 yellow crystals, and every green ball contributes 1 yellow crystal.
+4. Compute the total blue crystals needed as `y + 3 * z`.
+
+Every green ball contributes 1 blue crystal, and every blue ball contributes 3 blue crystals.
+5. Compute the yellow shortage as `max(0, needed_yellow - A)`.
+
+If we already have enough yellow crystals, the shortage should be zero rather than negative.
+6. Compute the blue shortage as `max(0, needed_blue - B)`.
+7. Output the sum of the two shortages.
+
+### Why it works
+
+The recipes determine exactly how many yellow and blue crystals are consumed by each requested ball. Adding these contributions gives the unique total requirement for each crystal color.
+
+Yellow crystals can only satisfy yellow requirements, and blue crystals can only satisfy blue requirements. Because the two colors are independent, the minimum number of additional crystals is simply the sum of the missing yellow crystals and the missing blue crystals. Any surplus of one color cannot reduce the shortage of the other.
 
 ## Python Solution
 
@@ -59,101 +126,234 @@ Why it works: each ball has fixed, additive crystal requirements. Aggregating th
 import sys
 input = sys.stdin.readline
 
-A, B = map(int, input().split())
-x, y, z = map(int, input().split())
+def solve():
+    A, B = map(int, input().split())
+    x, y, z = map(int, input().split())
 
-required_yellow = 2 * x + y
-required_blue = 3 * z + y
+    needed_yellow = 2 * x + y
+    needed_blue = y + 3 * z
 
-additional_yellow = max(0, required_yellow - A)
-additional_blue = max(0, required_blue - B)
+    answer = max(0, needed_yellow - A) + max(0, needed_blue - B)
+    print(answer)
 
-print(additional_yellow + additional_blue)
+solve()
 ```
 
-The code first reads the available crystals and target balls. It then calculates the total crystal requirements by combining contributions from all relevant balls. Using `max(0, ...)` ensures that we never report negative additional crystals if Grisha already has enough. Finally, summing these gives the minimal number of crystals Grisha must acquire.
+The first two lines read the available crystal counts and the requested ball counts.
+
+The variables `needed_yellow` and `needed_blue` store the total crystal requirements derived directly from the recipes. This avoids any simulation.
+
+The calls to `max(0, ...)` are crucial. If we already have enough crystals of a color, that color contributes zero to the answer. Allowing negative values here would incorrectly let a surplus of one color reduce the total.
+
+Python integers automatically handle values larger than 32-bit limits, although even in languages with fixed-size integers, the largest expression is only a few billion and fits comfortably in 64-bit types.
 
 ## Worked Examples
 
-Sample 1:
+### Example 1
 
-| Variable | Value |
+Input:
+
+```
+4 3
+2 1 1
+```
+
+| Step | Value |
 | --- | --- |
-| A | 4 |
-| B | 3 |
-| x | 2 |
-| y | 1 |
-| z | 1 |
-| required_yellow | 2*2 + 1 = 5 |
-| required_blue | 3*1 + 1 = 4 |
-| additional_yellow | max(0, 5 - 4) = 1 |
-| additional_blue | max(0, 4 - 3) = 1 |
-| total | 1 + 1 = 2 |
+| Available yellow | 4 |
+| Available blue | 3 |
+| Needed yellow | 2×2 + 1 = 5 |
+| Needed blue | 1 + 3×1 = 4 |
+| Yellow shortage | 5 − 4 = 1 |
+| Blue shortage | 4 − 3 = 1 |
+| Answer | 1 + 1 = 2 |
 
-This demonstrates that aggregating crystal needs correctly accounts for overlapping requirements, in this case the green ball's contribution to both crystal types.
+The production requires five yellow crystals and four blue crystals. Since only four yellow and three blue crystals are available, one additional crystal of each color must be purchased.
 
-Custom Example:
+### Example 2
 
-Input: `0 0\n1 1 1\n`
+Input:
 
-| Variable | Value |
+```
+10 10
+1 1 1
+```
+
+| Step | Value |
 | --- | --- |
-| A | 0 |
-| B | 0 |
-| x | 1 |
-| y | 1 |
-| z | 1 |
-| required_yellow | 2*1 + 1 = 3 |
-| required_blue | 3*1 + 1 = 4 |
-| additional_yellow | max(0, 3 - 0) = 3 |
-| additional_blue | max(0, 4 - 0) = 4 |
-| total | 3 + 4 = 7 |
+| Available yellow | 10 |
+| Available blue | 10 |
+| Needed yellow | 2×1 + 1 = 3 |
+| Needed blue | 1 + 3×1 = 4 |
+| Yellow shortage | 0 |
+| Blue shortage | 0 |
+| Answer | 0 |
 
-This trace confirms that when starting with no crystals, the calculation still produces the correct number.
+This example shows that extra crystals do not affect the answer. Since all requirements are already satisfied, no purchases are needed.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only arithmetic operations and a few max computations are used, independent of input sizes |
-| Space | O(1) | Only a fixed number of variables are allocated, no data structures grow with input |
+| Time | O(1) | Only a fixed number of arithmetic operations are performed |
+| Space | O(1) | No data structures proportional to input size are used |
 
-Given the constraints $0 \le A, B, x, y, z \le 10^9$, the constant-time arithmetic ensures the solution executes well within the 1-second time limit and uses negligible memory.
+The algorithm performs a handful of additions, multiplications, and comparisons regardless of the input values. This easily fits within the 1 second time limit and 256 MB memory limit.
 
 ## Test Cases
 
 ```python
+# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+
     A, B = map(int, input().split())
     x, y, z = map(int, input().split())
-    required_yellow = 2 * x + y
-    required_blue = 3 * z + y
-    additional_yellow = max(0, required_yellow - A)
-    additional_blue = max(0, required_blue - B)
-    return str(additional_yellow + additional_blue)
 
-# Provided sample
-assert run("4 3\n2 1 1\n") == "2", "sample 1"
+    needed_yellow = 2 * x + y
+    needed_blue = y + 3 * z
 
-# Custom cases
-assert run("0 0\n1 1 1\n") == "7", "all crystals missing"
-assert run("5 5\n0 0 0\n") == "0", "no balls needed"
-assert run("10 10\n3 0 2\n") == "0", "enough crystals for all balls"
-assert run("1 1\n1 1 1\n") == "5", "small numbers, partial crystals"
-assert run("1000000000 1000000000\n1000000000 1000000000 1000000000\n") == "1000000001", "large numbers, edge"
+    return str(
+        max(0, needed_yellow - A) +
+        max(0, needed_blue - B)
+    ) + "\n"
+
+# provided sample
+assert run("4 3\n2 1 1\n") == "2\n", "sample 1"
+
+# minimum values
+assert run("0 0\n0 0 0\n") == "0\n", "all zeros"
+
+# only yellow shortage
+assert run("1 100\n1 0 0\n") == "1\n", "need one more yellow crystal"
+
+# only blue shortage
+assert run("100 1\n0 0 1\n") == "2\n", "need two more blue crystals"
+
+# large boundary values
+assert run("1000000000 1000000000\n1000000000 1000000000 1000000000\n") == "4000000000\n", "large numbers"
+
+# exactly enough crystals
+assert run("5 4\n2 1 1\n") == "0\n", "perfect match"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 0 0\n1 1 1 | 7 | All crystals missing |
-| 5 5\n0 0 0 | 0 | No balls needed |
-| 10 10\n3 0 2 | 0 | Sufficient crystals, no additional needed |
-| 1 1\n1 1 1 | 5 | Partial crystals, must compute differences |
-| 10^9 10^9\n10^9 10^9 10^9 | 1000000001 | Large inputs near upper limit |
+| `0 0 / 0 0 0` | `0` | Minimum values |
+| `1 100 / 1 0 0` | `1` | Yellow shortage only |
+| `100 1 / 0 0 1` | `2` | Blue shortage only |
+| Large $10^9$ values | `4000000000` | Handles large arithmetic safely |
+| `5 4 / 2 1 1` | `0` | Exact resource match |
 
 ## Edge Cases
 
-If Grisha already has more crystals than required, the algorithm correctly returns zero. For input `5 5\n1 1 1\n`, `required_yellow` is 3 and `required_blue` is 4. Since both are less than available crystals, `max(0, ...)` produces 0 for both
+Consider the case where no crystals and no balls are involved:
+
+```
+0 0
+0 0 0
+```
+
+The algorithm computes:
+
+```
+needed_yellow = 0
+needed_blue = 0
+```
+
+Both shortages are zero, so the output is:
+
+```
+0
+```
+
+This confirms that the formula handles empty requirements correctly.
+
+Consider a case with a surplus of one color:
+
+```
+10 1
+0 0 1
+```
+
+The algorithm computes:
+
+```
+needed_yellow = 0
+needed_blue = 3
+```
+
+The shortages become:
+
+```
+yellow = max(0, 0 - 10) = 0
+blue = max(0, 3 - 1) = 2
+```
+
+The output is:
+
+```
+2
+```
+
+The extra yellow crystals are ignored because crystal colors cannot be exchanged.
+
+Consider a case where one requirement is exactly satisfied:
+
+```
+5 4
+2 1 1
+```
+
+The algorithm computes:
+
+```
+needed_yellow = 5
+needed_blue = 4
+```
+
+The shortages are:
+
+```
+yellow = 0
+blue = 0
+```
+
+The output is:
+
+```
+0
+```
+
+This verifies that equality is handled correctly and does not produce an unnecessary purchase.
+
+Finally, consider:
+
+```
+2 1
+1 1 0
+```
+
+The requirements are:
+
+```
+needed_yellow = 3
+needed_blue = 1
+```
+
+The shortages are:
+
+```
+yellow = 1
+blue = 0
+```
+
+The answer is:
+
+```
+1
+```
+
+This demonstrates why shortages must be computed independently for each color. A deficit in yellow crystals cannot be offset by blue crystals.
