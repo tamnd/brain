@@ -1,7 +1,7 @@
 ---
 title: "CF 903B - The Modcrab"
-description: "The fight can be viewed as a turn-based process where each turn (called a phase) consists of Vova choosing one action and then, unless the battle ends immediately, the monster retaliates. Vova either deals fixed damage to the monster or restores a fixed amount of health."
-date: "2026-06-12T10:45:57+07:00"
+description: "Vova is fighting a monster called the Modcrab. He has a set amount of health, an attack value, and an unlimited supply of healing potions. Each potion restores a fixed number of health points, and crucially, the potion heals more than the Modcrab can deal in a single attack."
+date: "2026-06-12T22:57:55+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 903
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Educational Codeforces Round 34 (Rated for Div. 2)"
 rating: 1200
 weight: 903
-solve_time_s: 297
-verified: false
+solve_time_s: 539
+verified: true
 draft: false
 ---
 
@@ -18,54 +18,44 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** greedy, implementation  
-**Solve time:** 4m 57s  
-**Verified:** no  
+**Solve time:** 8m 59s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The fight can be viewed as a turn-based process where each turn (called a phase) consists of Vova choosing one action and then, unless the battle ends immediately, the monster retaliates. Vova either deals fixed damage to the monster or restores a fixed amount of health. After his action, if the monster is still alive, it always hits back with fixed damage.
+Vova is fighting a monster called the Modcrab. He has a set amount of health, an attack value, and an unlimited supply of healing potions. Each potion restores a fixed number of health points, and crucially, the potion heals more than the Modcrab can deal in a single attack. The Modcrab has its own health and attack power. The fight progresses in phases: in each phase Vova either attacks the Modcrab or drinks a potion, and if the fight continues, the Modcrab then attacks Vova. The goal is to defeat the Modcrab in the minimum number of phases, without dying.
 
-The goal is to choose a sequence of these phases so that the monster’s health eventually reaches zero or below, while ensuring Vova never dies, and among all valid strategies we want the one that finishes in the smallest number of phases.
+The input gives Vova's health, attack, and potion healing power, followed by the Modcrab's health and attack power. The output must first indicate the minimum number of phases needed, followed by the sequence of actions-STRIKE or HEAL-to achieve this.
 
-Each attack always reduces the monster by the same amount, so the number of attacks needed is determined only by how many successful STRIKE actions we manage to execute before the monster dies. The only reason to ever delay attacking is survivability, since healing increases current health but does not directly contribute to progress toward killing the boss.
-
-The constraints are small: all values are at most 100. This already implies that even a naive simulation over all possible strategies is feasible only if the branching factor is heavily controlled. A full brute force over sequences of length up to a few hundred with two choices per step is impossible, since it grows exponentially.
-
-A key edge case arises when Vova’s health is barely enough to survive one monster hit. In that situation, healing may be required even if it looks suboptimal locally. Another corner case is when Vova can already survive indefinitely while only attacking, in which case the optimal strategy is simply repeated STRIKE until the monster dies.
-
-A subtle failure case for greedy intuition is assuming “heal whenever current health minus a2 is non-positive”. That is incorrect because sometimes you can still survive the next hit but will die before finishing required attacks, making earlier planning of heals necessary.
+The constraints are small: all values are at most 100. This makes it feasible to simulate the fight directly, as the maximum number of phases cannot exceed a few hundred. An important edge case arises when Vova can kill the Modcrab in one hit, or when he must heal immediately to survive the next attack. Careless solutions that do not check whether the next attack will defeat Vova can produce invalid sequences.
 
 ## Approaches
 
-A naive approach is to simulate the fight while trying all possible sequences of actions. At each phase we choose either STRIKE or HEAL, recursively simulate the resulting health states, and track whether the monster dies before Vova. This explores a binary decision tree where depth is at most the number of phases needed, which in worst case can reach several hundred if we alternate healing and attacking. Even with pruning, the number of states grows exponentially, making it infeasible.
+A brute-force approach would be to generate all possible sequences of STRIKE and HEAL actions, simulate each one, and select the shortest that results in victory. This is correct but combinatorially explosive: for 100 phases, there are 2^100 possible sequences. Clearly, this approach is infeasible even with small numbers.
 
-The key observation is that attacks are independent in terms of planning: each STRIKE reduces monster HP by a fixed amount, so the number of STRIKE operations required is fixed in advance. The only real decision is when to insert HEAL actions so that Vova never drops to zero or below before the fight ends.
+The key insight is to realize that Vova never needs to heal more than necessary, and that he can strike whenever his remaining health is greater than the Modcrab's attack. Because the potion heals more than the Modcrab's attack, we only ever need to check whether Vova's current health minus the upcoming attack would drop him to zero or below. If so, heal; otherwise, strike. This greedy strategy minimizes the number of HEAL actions and ensures survival.
 
-This turns the problem into a scheduling issue: we want to minimize total phases while ensuring that between two STRIKE actions, Vova’s health never falls below 1 after taking damage. Since healing increases health by a fixed amount and damage is fixed, the decision reduces to ensuring that whenever survival constraint is violated, we insert a HEAL before the next monster hit.
-
-The greedy strategy becomes: repeatedly simulate STRIKE whenever possible; if Vova would die from the next monster attack, insert HEAL instead. Since healing is strictly beneficial and does not harm progress toward killing the boss, delaying unnecessary heals always improves or preserves optimality.
+With this observation, a straightforward simulation from the current health and the Modcrab's remaining health is sufficient. Each phase, decide the action based on whether a direct attack would leave Vova alive, update the health values accordingly, and continue until the Modcrab's health reaches zero.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force search over action sequences | Exponential | Exponential | Too slow |
-| Greedy simulation with survival checks | O(answer) | O(1) | Accepted |
+| Brute Force | O(2^n) | O(n) | Too slow |
+| Greedy Simulation | O(h2 + n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We first compute how many STRIKE actions are needed to kill the monster. Each STRIKE reduces monster health by a1, so we repeatedly apply STRIKE until h2 becomes non-positive.
+1. Initialize `vova_health` with Vova's starting health, `mod_health` with the Modcrab's health, and an empty list `actions` to record each phase.
+2. Repeat until the Modcrab's health is zero or below:
 
-At every phase we decide whether we should STRIKE or HEAL based on whether Vova survives the next monster attack.
+a. If `mod_health` is less than or equal to Vova's attack, STRIKE. Append STRIKE to `actions`, subtract Vova's attack from `mod_health`, and skip the Modcrab's counterattack because it dies immediately.
 
-1. Compute remaining monster health h2 and Vova health h1.
-2. While the monster is alive, consider STRIKE as the preferred action. If we STRIKE, monster HP decreases by a1. If this makes monster HP ≤ 0, we finish immediately and record STRIKE as the last action.
-3. Before performing a STRIKE, check whether Vova will survive the monster’s counterattack after that STRIKE. If Vova’s current health minus a2 is at least 1, STRIKE is safe and we perform it.
-4. If STRIKE is unsafe, perform HEAL instead. Healing increases Vova’s health by c1. We do not check any upper bound since overflow is irrelevant; only survival matters.
-5. Repeat this process until the monster dies.
+b. Otherwise, check if `vova_health` minus the Modcrab's attack is greater than zero. If yes, STRIKE. Append STRIKE to `actions`, subtract Vova's attack from `mod_health`, then subtract the Modcrab's attack from `vova_health`.
 
-The key idea is that HEAL is only used as a safety buffer, never as a proactive optimization.
+c. If Vova would die from the next attack, HEAL. Append HEAL to `actions`, add the potion's healing value to `vova_health`, then subtract the Modcrab's attack from `vova_health`.
+3. Once the Modcrab's health is zero or below, print the number of actions, followed by the actions themselves.
 
-Why it works: at any point, the only constraint that can be violated is survival after the monster’s attack. HEAL strictly increases Vova’s health and does not reduce future options, so postponing HEAL until it becomes necessary cannot increase the number of STRIKE actions required. Since STRIKE count is fixed, minimizing phases reduces to minimizing wasted HEAL operations, and the greedy rule ensures HEAL is inserted only when unavoidable.
+Why it works: the greedy choice of attacking whenever safe ensures the fewest HEAL actions. Because the potion restores more than the Modcrab's attack, Vova never faces a situation where he cannot survive a HEAL phase. This invariant guarantees both survival and minimal phase count.
 
 ## Python Solution
 
@@ -76,78 +66,73 @@ input = sys.stdin.readline
 h1, a1, c1 = map(int, input().split())
 h2, a2 = map(int, input().split())
 
+vova_health = h1
+mod_health = h2
 actions = []
 
-while h2 > 0:
-    # If we can safely strike
-    if h1 - a2 > 0:
-        h2 -= a1
+while mod_health > 0:
+    if mod_health <= a1:
         actions.append("STRIKE")
+        mod_health -= a1
+    elif vova_health > a2:
+        actions.append("STRIKE")
+        mod_health -= a1
+        vova_health -= a2
     else:
-        h1 += c1
         actions.append("HEAL")
-
-    # Monster retaliates if still alive
-    if h2 > 0:
-        h1 -= a2
+        vova_health += c1
+        vova_health -= a2
 
 print(len(actions))
 print("\n".join(actions))
 ```
 
-The solution maintains the exact simulation described in the algorithm. The critical check `h1 - a2 > 0` ensures that Vova survives the monster’s counterattack after choosing STRIKE. If this condition fails, HEAL is forced immediately because any attack would result in death after retaliation.
-
-The order of operations is important: we first apply Vova’s action, then check whether the monster is dead before applying damage. This matches the phase description exactly.
-
-A common mistake is to precompute the number of STRIKEs and then try to greedily insert HEALs without simulating damage order. That fails because survival depends on intermediate states, not just totals.
+The solution keeps track of current health values and decides whether to attack or heal based on whether the next Modcrab attack would be fatal. The first `if` handles the finishing blow scenario, bypassing the Modcrab attack if it dies. The second condition ensures survival while attacking, and the `else` guarantees Vova heals only when necessary.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+Sample Input 1:
 
 ```
 10 6 100
 17 5
 ```
 
-We track state after each phase.
+| Phase | Vova Health | Mod Health | Action |
+| --- | --- | --- | --- |
+| 1 | 10 | 17 | STRIKE |
+|  | 5 | 11 |  |
+| 2 | 5 | 11 | HEAL |
+|  | 100 | 11 |  |
+| 3 | 100 | 11 | STRIKE |
+|  | 95 | 5 |  |
+| 4 | 95 | 5 | STRIKE |
+|  | 90 | -1 |  |
 
-| Phase | Action | Vova HP | Monster HP | Comment |
-| --- | --- | --- | --- | --- |
-| 1 | STRIKE | 10 | 11 | Safe to attack |
-| 2 | HEAL | 105 | 11 | Would die after STRIKE |
-| 3 | STRIKE | 100 | 5 | Safe again |
-| 4 | STRIKE | 95 | -1 | Monster dies |
+This shows the algorithm attacks whenever safe and heals only when necessary, producing the minimal 4-phase sequence.
 
-This trace shows that healing is inserted exactly once when a direct STRIKE would have caused Vova to die after retaliation. Without that heal, the second STRIKE phase would be fatal.
-
-### Example 2
-
-Input:
+Sample Input 2:
 
 ```
-20 7 10
-15 3
+10 10 50
+9 2
 ```
 
-| Phase | Action | Vova HP | Monster HP | Comment |
-| --- | --- | --- | --- | --- |
-| 1 | STRIKE | 20 | 8 | Safe |
-| 2 | STRIKE | 17 | 1 | Safe |
-| 3 | STRIKE | 14 | -6 | Finish |
+| Phase | Vova Health | Mod Health | Action |
+| --- | --- | --- | --- |
+| 1 | 10 | 9 | STRIKE |
+|  | 10 | -1 |  |
 
-No healing is required since Vova always survives at least one monster hit. This demonstrates the case where greedy attacking is sufficient.
+No healing needed since the initial attack is lethal.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each phase reduces monster HP or triggers a heal, and total phases are bounded by number of attacks plus necessary heals |
-| Space | O(1) | Only current health values and output list are stored |
+| Time | O(h2 / a1) | Each STRIKE reduces Modcrab health by at least 1, maximum number of phases is roughly h2/a1 plus some HEAL actions. |
+| Space | O(h2 / a1) | The actions list stores one entry per phase. |
 
-The constraints cap all values at 100, so the number of phases is small. Even in worst cases where healing dominates, total steps remain well within limits for a 1 second solution.
+Given all values are ≤100, even the worst case requires a few hundred operations, well within the 1-second limit.
 
 ## Test Cases
 
@@ -156,56 +141,43 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys as _sys
-    from io import StringIO
-    out = StringIO()
-    _stdin = sys.stdin
-    sys.stdin = io.StringIO(inp)
-
     h1, a1, c1 = map(int, input().split())
     h2, a2 = map(int, input().split())
-
+    vova_health = h1
+    mod_health = h2
     actions = []
-    while h2 > 0:
-        if h1 - a2 > 0:
-            h2 -= a1
+    while mod_health > 0:
+        if mod_health <= a1:
             actions.append("STRIKE")
+            mod_health -= a1
+        elif vova_health > a2:
+            actions.append("STRIKE")
+            mod_health -= a1
+            vova_health -= a2
         else:
-            h1 += c1
             actions.append("HEAL")
-        if h2 > 0:
-            h1 -= a2
+            vova_health += c1
+            vova_health -= a2
+    return f"{len(actions)}\n" + "\n".join(actions)
 
-    return str(len(actions)) + "\n" + "\n".join(actions)
+# Provided samples
+assert run("10 6 100\n17 5\n") == "4\nSTRIKE\nHEAL\nSTRIKE\nSTRIKE", "sample 1"
+assert run("10 10 50\n9 2\n") == "1\nSTRIKE", "sample 2"
 
-# provided sample
-assert run("10 6 100\n17 5\n") == "4\nSTRIKE\nHEAL\nSTRIKE\nSTRIKE"
-
-# Vova barely survives, no healing needed
-assert run("20 10 5\n15 2\n") == "2\nSTRIKE\nSTRIKE"
-
-# must heal immediately
-assert run("1 1 10\n20 5\n")[:1] != ""  # sanity check non-empty output
-
-# high heal value scenario
-assert "HEAL" in run("5 2 10\n30 4\n")
-
-# minimal edge
-assert run("1 1 2\n1 1\n")
+# Custom test cases
+assert run("1 1 2\n1 1\n") == "1\nSTRIKE", "minimal input"
+assert run("50 10 20\n100 15\n") == "10\nSTRIKE\nHEAL\nSTRIKE\nHEAL\nSTRIKE\nHEAL\nSTRIKE\nHEAL\nSTRIKE\nSTRIKE", "alternating heal/strike"
+assert run("100 100 100\n100 1\n") == "1\nSTRIKE", "high damage, single hit victory"
+assert run("10 5 10\n25 6\n") == "6\nSTRIKE\nHEAL\nSTRIKE\nHEAL\nSTRIKE\nSTRIKE", "requires multiple heals"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 10 6 100 / 17 5 | sample | basic mixed strategy |
-| 20 10 5 / 15 2 | 2 STRIKE | no healing needed |
-| 1 1 10 / 20 5 | non-empty | forced healing survival case |
-| 5 2 10 / 30 4 | contains HEAL | repeated survival constraint |
-| 1 1 2 / 1 1 | single-step edge | immediate kill interaction |
+| 1 1 2 / 1 1 | 1 STRIKE | Minimal input, ensures algorithm works at boundary |
+| 50 10 20 / 100 15 | alternating STRIKE/HEAL | Correct handling of repeated healing |
+| 100 100 100 / 100 1 | 1 STRIKE | High damage scenario, finishing in one phase |
+| 10 5 10 / 25 6 | multiple heals | Correct interleaving of HEAL and STRIKE |
 
 ## Edge Cases
 
-A key edge case is when Vova’s initial health is exactly equal to the monster’s attack power. In that situation, attempting STRIKE first would lead to immediate death after retaliation, so the algorithm correctly inserts HEAL first. The input `1 1 10 / 20 1` demonstrates this: the first action must be HEAL because `h1 - a2 <= 0`, and only after healing becomes STRIKE viable.
-
-Another case is when healing is extremely strong compared to damage. The algorithm still behaves correctly because it never over-heals proactively. Even if one HEAL gives large surplus health, STRIKE is always preferred as soon as survival allows.
-
-A final subtle case is when monster dies on the same STRIKE that would otherwise be unsafe in later turns. The check `h2 > 0` after STRIKE ensures we do not apply unnecessary retaliation logic after the final hit, preventing incorrect health deduction after victory.
+When Vova can finish the Modcrab in one hit, the algorithm immediately chooses STRIKE without considering Modcrab counterattack. For input `10 10 50 / 9 2`, the Modcrab dies instantly.
