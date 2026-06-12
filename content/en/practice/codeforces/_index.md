@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1427 contests, 7676 problems, 3615 verified."
+description: "Codeforces problem solutions with full editorial. 1428 contests, 7677 problems, 3615 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1427 contests, 7676 problems, 3615 verified.**
+**1428 contests, 7677 problems, 3615 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -430,6 +430,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [493](493/) | [Codeforces Round 281 (Div. 2)](https://codeforces.com/contest/493) | Div. 2 | 1300-2800 | 3/5 | 16m 6s |
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | Div. 1 | 1500-3200 | 4/5 | 7m 13s |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | Div. 2 | 1100-1600 | 1/2 | 7m 5s |
+| [902](902/) | [Codeforces Round 453 (Div. 2)](https://codeforces.com/contest/902) | Div. 2 | 1200-1200 | 0/1 | 5m 55s |
 | [903](903/) | [Educational Codeforces Round 34 (Rated for Div. 2)](https://codeforces.com/contest/903) | Div. 2 | 1200-1200 | 0/1 | 4m 57s |
 | [906](906/) | [Codeforces Round 454 (Div. 1, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/906) | Div. 1 | 2200-2200 | 0/1 | 4m 58s |
 | [907](907/) | [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907) | Div. 2 | 1400-1400 | 0/1 | 5m 45s |
