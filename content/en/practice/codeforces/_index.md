@@ -434,7 +434,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [902](902/) | [Codeforces Round 453 (Div. 2)](https://codeforces.com/contest/902) | Div. 2 | 1200-1200 | 1/1 | 4m 37s |
 | [903](903/) | [Educational Codeforces Round 34 (Rated for Div. 2)](https://codeforces.com/contest/903) | Div. 2 | 900-2700 | 5/7 | 29m 10s |
 | [906](906/) | [Codeforces Round 454 (Div. 1, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/906) | Div. 1 | 1600-3300 | 3/5 | 38m 39s |
-| [907](907/) | [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907) | Div. 2 | 1400-1400 | 0/1 | 5m 45s |
+| [907](907/) | [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907) | Div. 2 | 1400-1400 | 0/1 | 8m 47s |
 | [908](908/) | [Good Bye 2017](https://codeforces.com/contest/908) | Special | 800-3100 | 2/2 | 3m 29s |
 | [909](909/) | [Codeforces Round 455 (Div. 2)](https://codeforces.com/contest/909) | Div. 2 | 1800-1800 | 1/1 | 3m |
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | Special | 1700-1700 | 0/1 | 3m 43s |

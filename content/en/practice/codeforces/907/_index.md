@@ -8,16 +8,16 @@ contest_type: "Div. 2"
 rating_range: "1400-1400"
 n_problems: 1
 n_verified: 0
-total_solve_s: 345
-date: "2026-06-12T10:35:52+07:00"
+total_solve_s: 527
+date: "2026-06-12T23:30:13+07:00"
 weight: 907
 draft: false
 ---
 
 # [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907)
 
-**Type:** Div. 2 | **Problems:** 1 | **Verified:** 0/1 | **Rating range:** 1400-1400 | **Time:** 5m 45s
+**Type:** Div. 2 | **Problems:** 1 | **Verified:** 0/1 | **Rating range:** 1400-1400 | **Time:** 8m 47s
 
 | Problem | Name | Rating | Tags | Solve Time | Verified |
 |---|---|---|---|---|---|
-| [B](B/) | [Tic-Tac-Toe](https://codeforces.com/problemset/problem/907/B) | 1400 | implementation | 5m 45s | ✗ |
+| [B](B/) | [Tic-Tac-Toe](https://codeforces.com/problemset/problem/907/B) | 1400 | implementation | 8m 47s | ✗ |
