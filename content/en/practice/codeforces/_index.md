@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7779 problems, 3681 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7785 problems, 3685 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7779 problems, 3681 verified.**
+**1429 contests, 7785 problems, 3685 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -453,7 +453,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1089](1089/) | [2018-2019 ICPC, NEERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1089) | ICPC/IOI | 900-3400 | 6/13 | 49m 47s |
 | [1090](1090/) | [2018-2019 Russia Open High School Programming Contest (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1090) | ICPC/IOI | 1000-2900 | 8/13 | 40m 49s |
 | [1091](1091/) | [Good Bye 2018](https://codeforces.com/contest/1091) | Special | 800-3200 | 5/8 | 37m 43s |
-| [1092](1092/) | [Codeforces Round 527 (Div. 3)](https://codeforces.com/contest/1092) | Div. 3 | 800-800 | 0/1 | 1m 28s |
+| [1092](1092/) | [Codeforces Round 527 (Div. 3)](https://codeforces.com/contest/1092) | Div. 3 | 800-2200 | 4/7 | 36m 33s |
 | [1093](1093/) | [Educational Codeforces Round 56 (Rated for Div. 2)](https://codeforces.com/contest/1093) | Div. 2 | 900-900 | 0/1 | 1m 42s |
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | Div. 3 | 900-1900 | 2/2 | 2m 32s |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | Div. 2 | 800-800 | 0/1 | 3m 3s |
