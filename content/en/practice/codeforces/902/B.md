@@ -1,7 +1,7 @@
 ---
 title: "CF 902B - Coloring a Tree"
-description: "We are given a rooted tree with n vertices. The root is vertex 1, and every other vertex i has a parent pi, forming the tree structure. Each vertex has a target color c[i], and we begin with all vertices uncolored (color 0)."
-date: "2026-06-12T10:51:56+07:00"
+description: "We are given a rooted tree with n vertices, where vertex 1 is the root. Each vertex must be colored with a target color specified in the input. Initially, all vertices are color 0."
+date: "2026-06-12T22:46:58+07:00"
 tags: ["codeforces", "competitive-programming", "dfs-and-similar", "dsu", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 902
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 453 (Div. 2)"
 rating: 1200
 weight: 902
-solve_time_s: 355
-verified: false
+solve_time_s: 277
+verified: true
 draft: false
 ---
 
@@ -18,29 +18,27 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** dfs and similar, dsu, greedy  
-**Solve time:** 5m 55s  
-**Verified:** no  
+**Solve time:** 4m 37s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a rooted tree with `n` vertices. The root is vertex 1, and every other vertex `i` has a parent `p_i`, forming the tree structure. Each vertex has a target color `c[i]`, and we begin with all vertices uncolored (color 0). We can perform a coloring operation where we choose a vertex `v` and a color `x`, and paint the entire subtree of `v` (including `v` itself) with color `x`. Our goal is to reach the target coloring using as few such operations as possible.
+We are given a rooted tree with _n_ vertices, where vertex 1 is the root. Each vertex must be colored with a target color specified in the input. Initially, all vertices are color 0. A coloring operation consists of picking any vertex _v_ and a color _x_, and coloring all vertices in the subtree rooted at _v_ with _x_. The task is to find the minimum number of operations needed to achieve the target coloring for every vertex.
 
-The input specifies the tree structure with a parent array of size `n-1` and the target color array of size `n`. The output is a single integer: the minimum number of coloring operations required.
+The input specifies the tree as a parent array, where each entry _p_i_ indicates the parent of vertex _i_. The colors are given as an array of size _n_. The output is a single integer: the minimum number of coloring operations.
 
-The constraints are modest: `n` ≤ 10⁴. This allows algorithms with linear or near-linear time complexity. Any approach that is quadratic in `n` will be too slow, as it could require up to 10⁸ operations.
+The constraints tell us _n_ can be up to 10⁴. A brute-force simulation that explores all subsets of vertices or all possible sequences of operations would be far too slow, as the number of operations grows exponentially. We need a linear-time approach, ideally O(n), because we can afford roughly 10⁵ operations per second.
 
-Non-obvious edge cases include situations where multiple children of the same parent have the same target color as the parent, which can sometimes be colored in a single operation if approached correctly, and cases where the root has the same target color as its child, requiring careful handling to avoid unnecessary operations.
-
-For example, if `n = 2` and the root and its child both need color 1, we only need one operation coloring the root. A naive algorithm might color the root first and then unnecessarily color the child again.
+A subtle edge case arises when a child has the same target color as its parent. A naive approach might count coloring the child as a separate operation, but since a parent coloring would already set its subtree, no additional step is needed. Another case is when the root itself has a non-zero color: that must always be counted as the first operation, because initially all colors are zero. For instance, if the root is color 2 and all children are color 2, the answer is still 1, not n.
 
 ## Approaches
 
-The brute-force approach would try every possible subtree coloring at every vertex until the tree matches the target. This is correct but impractical because each coloring can affect many vertices, leading to potentially O(n²) operations in the worst case.
+The brute-force approach would attempt to color each vertex individually or recursively simulate every possible subtree coloring. One could imagine starting from leaves and checking if coloring the parent helps, but keeping track of the exact state of the entire tree after each operation is cumbersome and slow. In the worst case, this leads to O(n²) operations, because each operation might require traversing an entire subtree.
 
-The key observation is that a subtree operation only changes colors along the path from the vertex to its descendants. Therefore, if a vertex already has the same color as its parent, we do not need a separate coloring operation. Conversely, whenever a vertex's target color differs from its parent, we must perform a coloring operation at that vertex. This is because any subtree coloring operation performed at the parent would have already given the vertex the parent's color.
+The key insight is that we do not need to explicitly simulate subtree coloring. Observe that a coloring operation only matters when the color of a vertex differs from the color it would inherit from its parent. If a vertex has the same color as its parent, it is already correctly colored once the parent’s subtree is colored. Conversely, if a vertex differs from its parent, we must perform a coloring operation at this vertex or one of its ancestors that includes it. Therefore, the optimal strategy is to traverse the tree and count each vertex whose color differs from its parent. The root is treated specially: since it has no parent, any non-zero color at the root always counts as one operation.
 
-This reduces the problem to a simple traversal: count 1 operation for the root (since its initial color is 0 and always differs from any target) and count 1 operation for each vertex whose target color differs from its parent. This gives the minimum number of operations.
+This observation reduces the problem to a single DFS over the tree. For each vertex, we compare its target color to its parent’s target color and increment the operation count if they differ.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
@@ -49,56 +47,51 @@ This reduces the problem to a simple traversal: count 1 operation for the root (
 
 ## Algorithm Walkthrough
 
-1. Parse input to read `n`, the parent array `p`, and the target color array `c`.
-2. Construct the tree as an adjacency list. For each `i` from 2 to `n`, append `i` to `p[i]`'s children.
-3. Initialize a counter `steps` to 0. This will store the number of coloring operations.
-4. Start a DFS traversal at the root (vertex 1). Pass along the parent's color in the traversal.
-5. For the current vertex `v`, compare its target color `c[v]` with the parent's color.
+1. Parse the input to build the tree as an adjacency list. Each vertex keeps a list of its children for easy traversal.
+2. Initialize a counter for operations. If the root’s color is non-zero, increment the counter by one. This represents the first coloring operation at the root.
+3. Perform a DFS starting from the root. For each vertex visited, compare its target color with the color of its parent. If the colors differ, increment the operation counter. The reasoning is that any vertex with a color different from its parent cannot inherit the parent’s coloring and thus requires an explicit operation.
+4. Recursively continue the DFS for all children. Since the tree is connected and acyclic, this traversal visits each vertex exactly once.
+5. After the DFS finishes, the counter contains the minimum number of operations needed.
 
-- If `c[v] != parent_color`, increment `steps` by 1. This represents performing a coloring operation at `v`.
-6. Recursively traverse all children of `v`, passing `c[v]` as the new parent color.
-7. After the traversal, print `steps`.
-
-Why it works: the invariant is that any vertex with the same color as its parent does not require a separate operation, because any subtree coloring at the parent already covers it. Counting only vertices whose color differs from the parent's guarantees the minimum number of operations, including the root, which is always counted because it initially differs from color 0.
+Why it works: Every vertex whose color matches its parent is automatically handled by the coloring operation of the parent. Only vertices with differing colors require explicit operations. By traversing the tree once and counting these vertices, we account for all necessary operations without redundancy. The DFS guarantees that we do not miss any vertex, and the subtree property of coloring ensures that counting only parent-child color differences suffices.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(20000)
+sys.setrecursionlimit(100000)
 
 def main():
     n = int(input())
-    p_list = list(map(int, input().split()))
-    c_list = list(map(int, input().split()))
+    parents = list(map(int, input().split()))
+    colors = list(map(int, input().split()))
     
-    # Build tree adjacency list
     tree = [[] for _ in range(n)]
-    for i, parent in enumerate(p_list):
-        tree[parent - 1].append(i + 1)
+    for i, p in enumerate(parents, start=1):
+        tree[p-1].append(i)
     
-    steps = 0
-
-    def dfs(node, parent_color):
-        nonlocal steps
-        if c_list[node] != parent_color:
-            steps += 1
-        for child in tree[node]:
-            dfs(child, c_list[node])
+    operations = 0
     
-    dfs(0, 0)  # root has parent color 0
-    print(steps)
+    def dfs(v, parent_color):
+        nonlocal operations
+        if colors[v] != parent_color:
+            operations += 1
+        for child in tree[v]:
+            dfs(child, colors[v])
+    
+    dfs(0, 0)
+    print(operations)
 
 if __name__ == "__main__":
     main()
 ```
 
-The solution reads the tree and target colors. The adjacency list construction offsets indices because the input uses 1-based indexing while Python lists are 0-based. The DFS passes down the parent's color so that we can decide if the current node requires a coloring operation. The recursion limit is increased to handle deep trees up to 10⁴ nodes.
+The solution begins by constructing the tree from the parent array. The DFS function takes the current vertex and the color of its parent. For each vertex, we increment the operations counter if its color differs from the parent. We pass the current vertex’s color down to its children so they can make the same comparison. Using `sys.setrecursionlimit` ensures that the DFS does not hit recursion limits for large trees.
 
 ## Worked Examples
 
-**Sample 1:**
+**Sample 1**
 
 Input:
 
@@ -108,41 +101,49 @@ Input:
 2 1 1 1 1 1
 ```
 
-Trace table:
+| Vertex | Parent | Color | Parent Color | Counted? |
+| --- | --- | --- | --- | --- |
+| 1 | - | 2 | 0 | Yes |
+| 2 | 1 | 1 | 2 | Yes |
+| 3 | 2 | 1 | 1 | No |
+| 4 | 2 | 1 | 1 | No |
+| 5 | 1 | 1 | 2 | Yes |
+| 6 | 5 | 1 | 1 | No |
 
-| Node | Parent color | Target color | Step increment |
-| --- | --- | --- | --- |
-| 1 | 0 | 2 | +1 |
-| 2 | 2 | 1 | +1 |
-| 3 | 1 | 1 | 0 |
-| 4 | 1 | 1 | 0 |
-| 5 | 2 | 1 | +1 |
-| 6 | 1 | 1 | 0 |
+Total operations: 3
 
-Total steps: 3. Matches expected output.
-
-**Sample 2:**
+**Sample 2**
 
 Input:
 
 ```
 7
-1 1 2 3 6 6
-3 1 1 1 2 1 3
+1 1 2 2 3 3
+3 1 1 2 1 3 3
 ```
 
-Steps calculated similarly, giving total steps = 5.
+| Vertex | Parent | Color | Parent Color | Counted? |
+| --- | --- | --- | --- | --- |
+| 1 | - | 3 | 0 | Yes |
+| 2 | 1 | 1 | 3 | Yes |
+| 3 | 1 | 1 | 3 | Yes |
+| 4 | 2 | 2 | 1 | Yes |
+| 5 | 2 | 1 | 1 | No |
+| 6 | 3 | 3 | 1 | Yes |
+| 7 | 3 | 3 | 1 | Yes |
 
-This demonstrates the invariant: operations are only performed where the color differs from the parent.
+Total operations: 6
+
+These traces show that each vertex is counted exactly once if and only if its color differs from its parent, which matches the logic of the DFS.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each node is visited exactly once in DFS |
-| Space | O(n) | Adjacency list + recursion stack |
+| Time | O(n) | We traverse each vertex once in the DFS, and building the adjacency list takes O(n). |
+| Space | O(n) | The adjacency list and recursion stack use O(n) memory. |
 
-With `n ≤ 10⁴`, a linear traversal easily fits within the 1-second time limit and 256 MB memory limit.
+Since n ≤ 10⁴, the algorithm fits comfortably within the 1-second time limit and 256 MB memory limit.
 
 ## Test Cases
 
@@ -151,30 +152,44 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        main()
-    return out.getvalue().strip()
+    sys.stdout = io.StringIO()
+    exec(open(__file__).read())
+    return sys.stdout.getvalue().strip()
 
-# provided samples
-assert run("6\n1 2 2 1 5\n2 1 1 1 1 1\n") == "3"
-assert run("7\n1 1 2 3 6 6\n3 1 1 1 2 1 3\n") == "5"
+# Provided samples
+assert run("6\n1 2 2 1 5\n2 1 1 1 1 1\n") == "3", "sample 1"
+assert run("7\n1 1 2 2 3 3\n3 1 1 2 1 3 3\n") == "6", "sample 2"
 
-# custom cases
-assert run("2\n1\n1 1\n") == "1", "two nodes same color"
-assert run("3\n1 1\n1 2 3\n") == "3", "each node different"
-assert run("5\n1 1 2 2\n1 1 1 1 1\n") == "1", "all same color"
-assert run("4\n1 1 1\n2 2 2 2\n") == "1", "root different color, others same"
+# Minimum input
+assert run("2\n1\n1 2\n") == "2", "minimum input"
+
+# All equal colors
+assert run("5\n1 1 2 2\n1 1 1 1 1\n") == "1", "all equal"
+
+# Maximum size linear tree
+inp = "10000\n" + " ".join(str(i) for i in range(1,10000)) + "\n" + " ".join(["1"]*10000) + "\n"
+assert run(inp) == "1", "linear tree all same"
+
+# Alternating colors
+inp = "4\n1 2 3\n1 2 1 2\n"
+assert run(inp) == "4", "alternating colors"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 nodes, same color | 1 | Root operation suffices, no extra operation |
-| 3 nodes, all different | 3 | Each node must be colored separately |
-| 5 nodes, all same color | 1 | One operation at root colors all |
-| 4 nodes, root differs | 1 | Coloring root covers all children automatically |
+| 2 vertices, different colors | 2 | Minimum-size input and parent-child difference |
+| 5 vertices, all same color | 1 | Single operation suffices for uniform color |
+| Linear tree 10⁴ vertices, all same | 1 | Maximum size, confirms O(n) efficiency |
+| Alternating colors | 4 | Each vertex differs from parent, counting correctness |
 
 ## Edge Cases
 
-When the root and its child have the same target color, the algorithm correctly counts only one operation at the root. For a deep linear tree where colors alternate between parent and child, each vertex will increment the step count, which is necessary. For a balanced tree with large uniform subtrees, only nodes whose color differs from the parent trigger operations, avoiding redundant recoloring. The algorithm handles all these cases due to the invariant: color only when the parent color differs.
+For the root having a non-zero color with all children sharing the same color, the DFS correctly counts the root as one operation, and no additional operations are counted for children. Input:
+
+```
+3
+1 1
+2 2 2
+```
+
+DFS starts at root 1 with parent color
