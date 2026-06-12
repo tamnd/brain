@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7697 problems, 3628 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7700 problems, 3631 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7697 problems, 3628 verified.**
+**1429 contests, 7700 problems, 3631 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -436,7 +436,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [906](906/) | [Codeforces Round 454 (Div. 1, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/906) | Div. 1 | 1600-3300 | 3/5 | 38m 39s |
 | [907](907/) | [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907) | Div. 2 | 1400-1400 | 0/1 | 8m 47s |
 | [908](908/) | [Good Bye 2017](https://codeforces.com/contest/908) | Special | 800-3100 | 6/8 | 53m 34s |
-| [909](909/) | [Codeforces Round 455 (Div. 2)](https://codeforces.com/contest/909) | Div. 2 | 1800-1800 | 1/1 | 3m |
+| [909](909/) | [Codeforces Round 455 (Div. 2)](https://codeforces.com/contest/909) | Div. 2 | 1000-2500 | 4/4 | 23m 50s |
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | Special | 1700-1700 | 0/1 | 3m 43s |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | Div. 2 | 1100-1100 | 1/1 | 3m 30s |
 | [912](912/) | [Codeforces Round 456 (Div. 2)](https://codeforces.com/contest/912) | Div. 2 | 800-800 | 0/1 | 5m 49s |
