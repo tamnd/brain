@@ -129,9 +129,7 @@ To achieve exactly $k$ operations, every operation must remove exactly two negat
 
 That forces the first negative edge and the last negative edge to remain as the two outer boundaries of the whole construction. Their adjacent outside values are
 
-$$x = a_{d_1},
-\qquad
-y = a_{d_m+1}.$$
+$$x = a_{d_1}, \qquad y = a_{d_m+1}.$$
 
 These two values become an invariant of any strategy using exactly $k$ operations.
 
@@ -151,12 +149,7 @@ then such a strictly increasing bridge is impossible. One extra operation is nec
 
 So:
 
-$$\text{answer}
-=
-\begin{cases}
-k, & x < y,\\
-k+1, & x \ge y.
-\end{cases}$$
+$$\text{answer} = \begin{cases} k, & x < y,\\ k+1, & x \ge y. \end{cases}$$
 
 ### Why it works
 

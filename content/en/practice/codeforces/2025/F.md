@@ -34,15 +34,13 @@ $f(t)=a_nt^n+a_{n-1}t^{n-1}+\cdots,$
 
 then
 
-$$=\frac{(x+k)^{n+1}-x^{n+1}}{n+1}
-+O(k^n),$$
+$$=\frac{(x+k)^{n+1}-x^{n+1}}{n+1} +O(k^n),$$
 
 uniformly for $x$ in intervals whose length is proportional to $k$.
 
 This suggests introducing the rescaled variable
 
-$$\qquad
-G_k(y)=\frac{F_k(ky)}{k^{n+1}}.$$
+$$\qquad G_k(y)=\frac{F_k(ky)}{k^{n+1}}.$$
 
 The sums then become Riemann sums, and one expects
 
@@ -68,9 +66,7 @@ Since $n+1$ has opposite parity to $n$, the root structure of $H$ is very simple
 
 We first establish the asymptotic limit
 
-$$\longrightarrow
-H(y)
-=\frac{a_n}{n+1}\bigl((y+1)^{n+1}-y^{n+1}\bigr),$$
+$$\longrightarrow H(y) =\frac{a_n}{n+1}\bigl((y+1)^{n+1}-y^{n+1}\bigr),$$
 
 uniformly on every bounded interval.
 
@@ -104,8 +100,7 @@ $$=a_n\bigl((y+1)^n-y^n\bigr),$$
 
 and
 
-$$=a_n\left(\left(\frac12\right)^n-\left(-\frac12\right)^n\right)
-\neq0$$
+$$=a_n\left(\left(\frac12\right)^n-\left(-\frac12\right)^n\right) \neq0$$
 
 since $n$ is odd.
 
@@ -135,28 +130,15 @@ uniformly for $y$ in any fixed bounded interval and for $0\le j\le k$.
 
 Hence
 
-$$G_k(y)
-=
-a_n\frac1k
-\sum_{j=0}^{k}
-\left(y+\frac{j}{k}\right)^n
-+O\!\left(\frac1k\right).$$
+$$G_k(y) = a_n\frac1k \sum_{j=0}^{k} \left(y+\frac{j}{k}\right)^n +O\!\left(\frac1k\right).$$
 
 The first term is a Riemann sum. Therefore, uniformly on every bounded interval,
 
-$$G_k(y)
-\longrightarrow
-a_n\int_0^1 (y+t)^n\,dt
-=
-\frac{a_n}{n+1}
-\bigl((y+1)^{n+1}-y^{n+1}\bigr).$$
+$$G_k(y) \longrightarrow a_n\int_0^1 (y+t)^n\,dt = \frac{a_n}{n+1} \bigl((y+1)^{n+1}-y^{n+1}\bigr).$$
 
 Denote the limit polynomial by
 
-$$H(y)
-=
-\frac{a_n}{n+1}
-\bigl((y+1)^{n+1}-y^{n+1}\bigr).$$
+$$H(y) = \frac{a_n}{n+1} \bigl((y+1)^{n+1}-y^{n+1}\bigr).$$
 
 ### Part 1
 
@@ -206,20 +188,11 @@ $$y_0=-\frac12.$$
 
 Furthermore,
 
-$$H'(y)
-=
-a_n\bigl((y+1)^n-y^n\bigr),$$
+$$H'(y) = a_n\bigl((y+1)^n-y^n\bigr),$$
 
 and
 
-$$H'(y_0)
-=
-a_n\left(
-\left(\frac12\right)^n
--
-\left(-\frac12\right)^n
-\right)
-\neq0.$$
+$$H'(y_0) = a_n\left( \left(\frac12\right)^n - \left(-\frac12\right)^n \right) \neq0.$$
 
 Thus $y_0$ is a simple root and the only real root of $H$.
 
@@ -229,9 +202,7 @@ Hence for sufficiently large $k$, $G_k$ has exactly one real root.
 
 Rescaling from $G_k$ back to $F_k$ preserves the number of real roots, because
 
-$$G_k(y)=0
-\iff
-F_k(ky)=0.$$
+$$G_k(y)=0 \iff F_k(ky)=0.$$
 
 Therefore $F_k$ has exactly one real root.
 

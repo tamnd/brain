@@ -196,9 +196,7 @@ B = (-1,6)
 
 Answer:
 
-$$\min(3.605551, 6.082763, 5.000000, 6.082763)
-=
-3.605551$$
+$$\min(3.605551, 6.082763, 5.000000, 6.082763) = 3.605551$$
 
 The optimal solution uses lantern $A$ alone. It already covers both endpoints.
 
@@ -224,9 +222,7 @@ B = (4,3)
 
 Answer:
 
-$$\min(5.656854, 5.000000, 3.201562, 5.656854)
-=
-3.201562$$
+$$\min(5.656854, 5.000000, 3.201562, 5.656854) = 3.201562$$
 
 Here the origin is covered by lantern $A$, the house by lantern $B$, and the circles meet exactly when the radius reaches $AB/2$.
 

@@ -56,8 +56,7 @@ The key observation is that the operation depends only on which positions surviv
 
 Represent a final subsequence by a binary string of length $n$:
 
-$$1 = \text{element survives}, \qquad
-0 = \text{element deleted}.$$
+$$1 = \text{element survives}, \qquad 0 = \text{element deleted}.$$
 
 Each operation deletes exactly $2k$ elements. Hence the total number of zeros must be a multiple of $2k$.
 
@@ -85,15 +84,7 @@ $$\binom{n-2ck+2k-1}{2k-1}.$$
 
 Thus for fixed $k$,
 
-$$\text{answer}
-=
-1+
-\sum_{c\ge1}
-\left(
-\binom{n}{2ck}
--
-\binom{n-2ck+2k-1}{2k-1}
-\right).$$
+$$\text{answer} = 1+ \sum_{c\ge1} \left( \binom{n}{2ck} - \binom{n-2ck+2k-1}{2k-1} \right).$$
 
 The extra $1$ counts the original array, corresponding to zero deletions.
 
@@ -335,11 +326,7 @@ Input:
 
 For $k=2$, the only possible deletion count is $4$. The algorithm evaluates exactly one term:
 
-$$1+\binom{5}{4}-\binom{4}{3}
-=
-1+5-4
-=
-2.$$
+$$1+\binom{5}{4}-\binom{4}{3} = 1+5-4 = 2.$$
 
 The answer is correctly `2`, corresponding to the original array and the singleton array `[3]`.
 

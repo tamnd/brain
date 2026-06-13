@@ -1,6 +1,6 @@
 ---
 title: "IMO 1959"
-description: "IMO 1959 — 6/6 solved, 4 verified."
+description: "IMO 1959 — 6/6 solved, 3 verified."
 tags: ["imo", "mathematics", "olympiad"]
 categories: ["mathematics"]
 imo_year: 1959
@@ -10,7 +10,7 @@ draft: false
 
 # IMO 1959
 
-[Official IMO 1959 problems](https://www.imo-official.org/year_info.aspx?year=1959) &nbsp;·&nbsp; 6/6 solved, 4 verified.
+[Official IMO 1959 problems](https://www.imo-official.org/year_info.aspx?year=1959) &nbsp;·&nbsp; 6/6 solved, 3 verified.
 
 | # | Status | Time |
 |---|--------|------|
@@ -18,7 +18,7 @@ draft: false
 | [2](2.md) | solved | 15m36s |
 | [3](3.md) | ✓ verified | 12m31s |
 | [4](4.md) | ✓ verified | 8m05s |
-| [5](5.md) | ✓ verified | 18m27s |
+| [5](5.md) | solved | 12m27s |
 | [6](6.md) | solved | 6m48s |
 
 **Problem 1** &nbsp; *✓ verified* · 8m04s · [Solution →](1.md)
@@ -45,7 +45,7 @@ Using the numbers $a,b,c$, form a quadratic equation in $\cos{2x}$, whose roots 
 
 Construct a right triangle with a given hypotenuse $c$ such that the median drawn to the hypotenuse is the [geometric mean](/wiki/index.php?title=Geometric_mean "Geometric mean") of the two legs of the triangle.
 
-**Problem 5** &nbsp; *✓ verified* · 18m27s · [Solution →](5.md)
+**Problem 5** &nbsp; *solved* · 12m27s · [Solution →](5.md)
 
 An arbitrary point $M$ is selected in the interior of the segment $AB$. The squares $AMCD$ and $MBEF$ are constructed on the same side of $AB$, with the segments $AM$ and $MB$ as their respective bases. The circles about these squares, with respective centers $P$ and $Q$, intersect at $M$ and also at another point $N$. Let $N'$ denote the point of intersection of the straight lines $AF$ and $BC$.
 

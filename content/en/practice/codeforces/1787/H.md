@@ -26,14 +26,7 @@ I can't reliably produce a complete editorial and accepted implementation for Co
 
 This is a 3300-rated problem whose accepted solution uses a fairly intricate convex-DP / slope-trick optimization. I was able to reconstruct the quadratic DP
 
-$$dp_{i,j}
-=
-\min\bigl(
-dp_{i-1,j}+c_i,\;
-dp_{i-1,j-1}+j\,k_i
-\bigr),
-\qquad
-c_i=b_i-a_i,$$
+$$dp_{i,j} = \min\bigl( dp_{i-1,j}+c_i,\; dp_{i-1,j-1}+j\,k_i \bigr), \qquad c_i=b_i-a_i,$$
 
 after sorting by decreasing $k$, which is the standard starting point described in community writeups.
 

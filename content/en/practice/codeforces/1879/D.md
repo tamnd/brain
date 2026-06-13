@@ -90,9 +90,7 @@ The key observation is that XOR can be decomposed bit by bit.
 
 Consider one bit position $b$. Its contribution to the final answer is
 
-$$2^b \times
-\sum_{\text{subarrays whose XOR has bit }b=1}
-(r-l+1)$$
+$$2^b \times \sum_{\text{subarrays whose XOR has bit }b=1} (r-l+1)$$
 
 So the real task becomes:
 
@@ -104,9 +102,7 @@ $$p_i = \text{bit } b \text{ of } pref_i.$$
 
 For a subarray $[l,r]$,
 
-$$\text{bit } b \text{ of } f(l,r)
-=
-p_r \oplus p_{l-1}.$$
+$$\text{bit } b \text{ of } f(l,r) = p_r \oplus p_{l-1}.$$
 
 The bit contributes exactly when these two parities differ.
 
@@ -120,8 +116,7 @@ $$r-l+1=i-j.$$
 
 Thus, for a fixed bit, we need
 
-$$\sum_{0\le j<i\le n,\ p_i\ne p_j}
-(i-j).$$
+$$\sum_{0\le j<i\le n,\ p_i\ne p_j} (i-j).$$
 
 This is a pair-counting problem on prefix XOR parities.
 
@@ -129,9 +124,7 @@ Suppose we process prefix positions from left to right. When we arrive at positi
 
 Their contribution is
 
-$$\sum (i-j)
-=
-(\text{count})\cdot i - \sum j.$$
+$$\sum (i-j) = (\text{count})\cdot i - \sum j.$$
 
 So for each parity $0$ and $1$, we only need:
 
@@ -156,9 +149,7 @@ Since there are only 30 relevant bits, the total complexity becomes $O(30n)$.
 
 Create
 
-$$pref_0=0,
-\qquad
-pref_i=pref_{i-1}\oplus a_i.$$
+$$pref_0=0, \qquad pref_i=pref_{i-1}\oplus a_i.$$
 
 Then every subarray XOR equals
 

@@ -26,9 +26,7 @@ draft: false
 
 We have a permutation and a single allowed operation on four consecutive positions:
 
-$$[a_i,a_{i+1},a_{i+2},a_{i+3}]
-\rightarrow
-[a_{i+2},a_{i+3},a_i,a_{i+1}]$$
+$$[a_i,a_{i+1},a_{i+2},a_{i+3}] \rightarrow [a_{i+2},a_{i+3},a_i,a_{i+1}]$$
 
 Viewed differently, the element at position $i$ swaps with $i+2$, and the element at position $i+1$ swaps with $i+3$.
 

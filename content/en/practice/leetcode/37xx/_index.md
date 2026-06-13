@@ -11,6 +11,7 @@ draft: false
 | # | Problem | Difficulty | Time | Notes |
 |---|---|---|---|---|
 | 3700 | [Number of ZigZag Arrays II](3700.md) | 🔴 Hard | 46s | The problem asks us to count the number of arrays of length n where… |
+| 3701 | [Compute Alternating Sum](3701.md) | 🟢 Easy | 1m 54s | This problem asks us to compute the alternating sum of an integer a… |
 | 3702 | [Longest Subsequence With Non-Zero Bitwise XOR](3702.md) | 🟡 Medium | 1m 18s | We are given an integer array nums, and we must determine the maxim… |
 | 3703 | [Remove K-Balanced Substrings](3703.md) | 🟡 Medium | 1m 24s | We are given a string s consisting only of '(' and ')', along with … |
 | 3704 | [Count No-Zero Pairs That Sum to N](3704.md) | 🔴 Hard | 41s | The problem asks us to count all pairs of positive integers (a, b) … |
@@ -22,11 +23,13 @@ draft: false
 | 3710 | [Maximum Partition Factor](3710.md) | 🔴 Hard | 45s | The problem asks us to split a set of n points in a 2D Cartesian pl… |
 | 3711 | [Maximum Transactions Without Negative Balance](3711.md) | 🟡 Medium | 1m 1s | Here is a complete, detailed technical solution guide for LeetCode … |
 | 3712 | [Sum of Elements With Frequency Divisible by K](3712.md) | 🟢 Easy | 1m 6s | The problem asks us to compute the sum of all elements in the array… |
+| 3713 | [Longest Balanced Substring I](3713.md) | 🟡 Medium | 57s | The problem is asking us to find the length of the longest substrin… |
 | 3714 | [Longest Balanced Substring II](3714.md) | 🟡 Medium | 1m 8s | The problem gives us a string s that contains only three possible c… |
 | 3715 | [Sum of Perfect Square Ancestors](3715.md) | 🔴 Hard | 45s | This problem asks us to compute a sum across all non-root nodes in … |
 | 3716 | [Find Churn Risk Customers](3716.md) | 🟡 Medium | 1m 15s | This problem asks us to identify subscribers who appear likely to c… |
 | 3717 | [Minimum Operations to Make the Array Beautiful](3717.md) | 🟡 Medium | 54s | Here is the complete, detailed technical solution guide for LeetCod… |
 | 3718 | [Smallest Missing Multiple of K](3718.md) | 🟢 Easy | 44s | The problem asks us to find the smallest positive multiple of k tha… |
+| 3719 | [Longest Balanced Subarray I](3719.md) | 🟡 Medium | 56s | The problem asks us to find the longest contiguous subarray of an i… |
 | 3720 | [Lexicographically Smallest Permutation Greater Than Target](3720.md) | 🟡 Medium | 36s | Before I write the full guide, I want to verify one important detai… |
 | 3721 | [Longest Balanced Subarray II](3721.md) | 🔴 Hard | 50s | The problem requires us to find the length of the longest subarray … |
 | 3722 | [Lexicographically Smallest String After Reverse](3722.md) | 🟡 Medium | 40s | The problem asks us to find the lexicographically smallest string a… |
@@ -39,22 +42,28 @@ draft: false
 | 3729 | [Count Distinct Subarrays Divisible by K in Sorted Array](3729.md) | 🔴 Hard | 47s | The problem asks us to find the number of distinct subarrays in a s… |
 | 3730 | [Maximum Calories Burnt from Jumps](3730.md) | 🟡 Medium | 1m 7s | The problem asks us to determine the maximum total calories that ca… |
 | 3731 | [Find Missing Elements](3731.md) | 🟢 Easy | 1m 5s | This problem asks us to reconstruct a missing sequence of integers … |
+| 3732 | [Maximum Product of Three Elements After One Replacement](3732.md) | 🟡 Medium | 49s | This problem asks us to maximize the product of any three distinct … |
 | 3733 | [Minimum Time to Complete All Deliveries](3733.md) | 🟡 Medium | 35s | This is a long, structured reference document. To make sure I targe… |
 | 3734 | [Lexicographically Smallest Palindromic Permutation Greater Than Target](3734.md) | 🔴 Hard | 3m 48s | We are given two strings, s and target, of the same length n. The g… |
+| 3735 | [Lexicographically Smallest String After Reverse II](3735.md) | 🔴 Hard | 2m 19s | The problem is asking us to manipulate a string s of length n in or… |
 | 3736 | [Minimum Moves to Equal Array Elements III](3736.md) | 🟢 Easy | 1m 1s | The problem asks us to determine the minimum number of moves requir… |
 | 3737 | [Count Subarrays With Majority Element I](3737.md) | 🟡 Medium | 1m 6s | Here is a comprehensive, detailed reference guide for LeetCode 3737… |
 | 3738 | [Longest Non-Decreasing Subarray After Replacing at Most One Element](3738.md) | 🟡 Medium | 4m 7s | assert Solution(). |
 | 3739 | [Count Subarrays With Majority Element II](3739.md) | 🔴 Hard | 57s | Here’s a complete, detailed technical solution guide for LeetCode 3… |
+| 3740 | [Minimum Distance Between Three Equal Elements I](3740.md) | 🟢 Easy | 2m 19s | The problem gives us an integer array nums and asks us to find thre… |
 | 3741 | [Minimum Distance Between Three Equal Elements II](3741.md) | 🟡 Medium | 2m 40s | The problem asks us to find three distinct indices (i, j, k) such t… |
 | 3742 | [Maximum Path Score in a Grid](3742.md) | 🟡 Medium | 48s | This problem presents a grid of size m x n where each cell contains… |
 | 3743 | [Maximize Cyclic Partition Score](3743.md) | 🔴 Hard | 1m 34s | We are given a cyclic array nums, which means the array is consider… |
 | 3744 | [Find Kth Character in Expanded String](3744.md) | 🟡 Medium | 1m 21s | The problem gives us a string s containing one or more lowercase wo… |
 | 3745 | [Maximize Expression of Three Elements](3745.md) | 🟢 Easy | 1m 10s | The problem gives us an integer array nums and asks us to choose th… |
 | 3746 | [Minimum String Length After Balanced Removals](3746.md) | 🟡 Medium | 36s | Before I write the full guide, I want to verify one detail because … |
+| 3747 | [Count Distinct Integers After Removing Zeros](3747.md) | 🟡 Medium | 2m 19s | The problem asks us to consider all integers from 1 up to a given n… |
 | 3748 | [Count Stable Subarrays](3748.md) | 🔴 Hard | 52s | The problem asks us to count "stable" subarrays within a given arra… |
 | 3749 | [Evaluate Valid Expressions](3749.md) | 🔴 Hard | 44s | The problem presents a simplified version of evaluating nested math… |
 | 3750 | [Minimum Number of Flips to Reverse Binary String](3750.md) | 🟢 Easy | 5m 55s | The problem gives us a positive integer n, and asks us to work with… |
 | 3751 | [Total Waviness of Numbers in Range I](3751.md) | 🟡 Medium | 1m 20s | This problem asks us to compute the total waviness of every integer… |
+| 3752 | [Lexicographically Smallest Negated Permutation that Sums to Target](3752.md) | 🟡 Medium | 1m 18s | We are given two values: - n, which determines the numbers 1, 2, ..… |
+| 3753 | [Total Waviness of Numbers in Range II](3753.md) | 🔴 Hard | 57s | The problem asks us to compute a cumulative score over all integers… |
 | 3754 | [Concatenate Non-Zero Digits and Multiply by Sum I](3754.md) | 🟢 Easy | 1m 2s | The problem asks us to process an integer n and construct a new num… |
 | 3755 | [Find Maximum Balanced XOR Subarray Length](3755.md) | 🟡 Medium | 1m 25s | This problem asks us to find the longest contiguous subarray that s… |
 | 3756 | [Concatenate Non-Zero Digits and Multiply by Sum II](3756.md) | 🟡 Medium | 21s | Please provide the official LeetCode problem statement or confirm t… |
@@ -62,7 +71,7 @@ draft: false
 | 3758 | [Convert Number Words to Digits](3758.md) | 🟡 Medium | 56s | The problem asks us to parse a string s that contains lowercase Eng… |
 | 3759 | [Count Elements With at Least K Greater Values](3759.md) | 🟡 Medium | 1m 15s | The problem asks us to count how many elements in an array have at … |
 | 3760 | [Maximum Substrings With Distinct Start](3760.md) | 🟡 Medium | 1m 16s | The problem asks us to split a string into as many non-empty substr… |
-| 3761 | [Minimum Absolute Distance Between Mirror Pairs](3761.md) | 🟡 Medium | 2m 49s | We are given an integer array nums. A pair of indices (i, j) is cal… |
+| 3761 | [Minimum Absolute Distance Between Mirror Pairs](3761.md) | 🟡 Medium | 55s | The proposed solution does not answer the question that Exercise 4.… |
 | 3762 | [Minimum Operations to Equalize Subarrays](3762.md) | 🔴 Hard | 2m 11s | We are given an array nums and a fixed integer k. A single operatio… |
 | 3763 | [Maximum Total Sum with Threshold Constraints](3763.md) | 🟡 Medium | 52s | The problem gives you two integer arrays, nums and threshold, each … |
 | 3764 | [Most Common Course Pairs](3764.md) | 🔴 Hard | 1m 35s | The coursecompletions table records every course completed by every… |
@@ -77,18 +86,27 @@ draft: false
 | 3773 | [Maximum Number of Equal Length Runs](3773.md) | 🟡 Medium | 59s | The problem asks us to analyze a string s consisting of lowercase E… |
 | 3774 | [Absolute Difference Between Maximum and Minimum K Elements](3774.md) | 🟢 Easy | 3m 7s | The problem asks us to calculate the absolute difference between th… |
 | 3775 | [Reverse Words With Same Vowel Count](3775.md) | 🟡 Medium | 48s | The problem requires processing a string s consisting of lowercase … |
+| 3776 | [Minimum Moves to Balance Circular Array](3776.md) | 🟡 Medium | 54s | Exercise 4.3.1.7 asks for the average number of times the algorithm… |
+| 3777 | [Minimum Deletions to Make Alternating Substring](3777.md) | 🔴 Hard | 2m 16s | We are given a mutable binary string consisting only of 'A' and 'B'… |
 | 3778 | [Minimum Distance Excluding One Maximum Weighted Edge](3778.md) | 🟡 Medium | 1m 56s | We are given a connected, weighted, undirected graph with n nodes n… |
 | 3779 | [Minimum Number of Operations to Have Distinct Elements](3779.md) | 🟡 Medium | 1m 29s | The problem gives us an integer array nums and defines a very speci… |
 | 3780 | [Maximum Sum of Three Numbers Divisible by Three](3780.md) | 🟡 Medium | 1m 2s | Here is a comprehensive, detailed solution guide for LeetCode 3780 … |
 | 3781 | [Maximum Score After Binary Swaps](3781.md) | 🟡 Medium | 33s | Before I write the full guide, I need one clarification: can you co… |
 | 3782 | [Last Remaining Integer After Alternating Deletion Operations](3782.md) | 🔴 Hard | 29s | Before I write the full guide, I want to confirm one critical detai… |
+| 3783 | [Mirror Distance of an Integer](3783.md) | 🟢 Easy | 1m 4s | The problem gives us a positive integer n and asks us to compute it… |
 | 3784 | [Minimum Deletion Cost to Make All Characters Equal](3784.md) | 🟡 Medium | 47s | The problem asks us to minimize the total cost of deleting characte… |
+| 3785 | [Minimum Swaps to Avoid Forbidden Values](3785.md) | 🔴 Hard | 1m 17s | This problem asks us to modify an array nums so that for every inde… |
 | 3786 | [Total Sum of Interaction Cost in Tree Groups](3786.md) | 🔴 Hard | 34s | I can do this, but I need the actual problem details for LeetCode 3… |
+| 3787 | [Find Diameter Endpoints of a Tree](3787.md) | 🟡 Medium | 1m 29s | The problem asks us to identify special nodes in a tree, which are … |
 | 3788 | [Maximum Score of a Split](3788.md) | 🟡 Medium | 57s | The problem asks us to maximize a "score" obtained by splitting an … |
 | 3789 | [Minimum Cost to Acquire Required Items](3789.md) | 🟡 Medium | 1m 8s | This problem asks us to determine the minimum cost required to acqu… |
 | 3790 | [Smallest All-Ones Multiple](3790.md) | 🟡 Medium | 1m 10s | This problem asks us to find the smallest positive integer composed… |
 | 3791 | [Number of Balanced Integers in a Range](3791.md) | 🔴 Hard | 55s | Here is the full, detailed technical solution guide for LeetCode 37… |
 | 3792 | [Sum of Increasing Product Blocks](3792.md) | 🟡 Medium | 1m 6s | The problem defines a sequence of blocks, where each block contains… |
+| 3793 | [Find Users with High Token Usage](3793.md) | 🟢 Easy | 2m 21s | The prompts table records every prompt submitted by a user to an AI… |
 | 3794 | [Reverse String Prefix](3794.md) | 🟢 Easy | 1m 7s | This problem gives us a string s and an integer k. Our task is to r… |
 | 3795 | [Minimum Subarray Length With Distinct Sum At Least K](3795.md) | 🟡 Medium | 7m 19s | This problem asks us to find the shortest contiguous subarray whose… |
+| 3796 | [Find Maximum Value in a Constrained Sequence](3796.md) | 🟡 Medium | 1m 57s | We are asked to design an algorithm that adds two numbers digit by … |
+| 3797 | [Count Routes to Climb a Rectangular Grid](3797.md) | 🔴 Hard | 2m 30s | We are given an n × m grid where each cell is either available ('.'… |
+| 3798 | [Largest Even Number](3798.md) | 🟢 Easy | 1m 21s | We are given a string s that contains only the characters '1' and '… |
 | 3799 | [Word Squares II](3799.md) | 🟡 Medium | 5m 13s | We are given an array of distinct 4-letter words. Our goal is to co… |

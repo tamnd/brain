@@ -24,15 +24,15 @@ draft: false
 ## Solution
 <Title valuea\). If there are currently \(="Solution Editorial"m\) tabs open, every tab has length
 
-\[
+$$
  size="2xl"/><Title value="Problem Understanding" size="\text{len} = \min\left(b,\frac{a}{m}\right).
-\]
+$$
 
 xl"/><Text>There are <Text inline weight="semibold" value="m"/>The tabs are packed from left to right, so their close buttons are located at
 
-\[
+$$
 \text{ tabs currently open. Every tab has the same length <Mathlen},\ 2\text{len},\ 3\text{len},\ \dots,\ m\text{len}.
-\]
+$$
 
 When value="\text{len}=\min(b,\frac{a}{m we close a tab, the number of remaining tabs decreases, which changes the tab length and therefore changes all future close})"/>. The close buttons (the x&apos;s) are-button positions.
 
@@ -76,9 +76,9 @@ a = 9, b = 6, n = 2
 
 For \(m=2\),
 
-\[
+$$
 \text{len}=\min(6,4.full" background="surface" gap={3}><5)=4.5.
-\]
+$$
 
 The close buttons are at \(4.5\) and \(9\). AfterTitle value="The close button position can stay fixed closing one tab, \(m=1\), and the only close button is at \(6\). No single for many deletions" size="sm"/><Text>Example position works for both states, so the answer is \(2\).
 
@@ -90,76 +90,76 @@ The key observation comes from looking at the rightmost tab.
 
  at position <Math value="1"/>. You can move once to positionWhen there are \(m\) tabs, the rightmost close button is at
 
-\[
+$$
 R(m)=m\cd <Math value="1"/> and click six times. The answer is <Text inline weightot \min\left(b,\frac{a}{m}\right).
-\]
+$$
 
 This simplifies immediately:
 
-\[
-R(m)=\="semibold" value="1"/>. A naive approach that assumes positionsmin(mb,a).
-\]
+$$
+R(m)=="semibold" value="1"/>. A naive approach that assumes positionsmin(mb,a).
+$$
 
 Suppose we place the cursor at some position \( always change would incorrectly count multiple movements.</Text></Card><Card size="full"x\). We can keep clicking as long as the rightmost close button remains at \(x\). background="surface" gap={3}><Title value="The close button position can change Therefore each distinct value of \(R(m)\) requires one mouse movement.
 
 Now examine after each deletion" size="sm"/><Text>Example:</Text><CodeBlock language="text" the sequence
 
-\[
+$$
 R(n),R(n-1),\dots,R(1).
-\]
+$$
 
 If \(mb<a\ content="a = 9, b = 6, n = 2"/><Text>With), then
 
-\[
+$$
 R(m)=mb.
-\]
+$$
 
 These values are all distinct because \(b> two tabs, <Math value="\text{len}=9/2=4.5"/0\).
 
 If \(mb\ge a\), then
 
-\[
+$$
 R(m)=a.
-\]
+$$
 
 All>, so the rightmost close button is at <Math value such states share the same position.
 
 Therefore the sequence consists of:
 
-\[
+$$
 ="9"/>. After closing one tab, <Math valuea,a,a,\dots,a
-\]
+$$
 
 for all \(m\ge \lceil a/b\rceil="\text{len}=6"/>, so the remaining close button is at <\), followed by
 
-\[
+$$
 (\lceil a/b\rceil-1)b,
 (\lceil a/bMath value="6"/>. The cursor must move from <Math\rceil-2)b,
 \dots,
 b.
-\]
+$$
 
 Every value below \( value="9"/> to <Math value="6"/>, so the answer isa\) is unique.
 
 Let
 
-\[
+$$
 k=\left\lceil \frac{a}{ <Text inline weight="semibold" value="2"/>. A careless solution that only checks theb}\right\rceil.
-\]
+$$
 
 If \(n<k\), then every state satisfies \(mb<a\), initial configuration would miss this.</Text></Card>< so all \(n\) positions are distinct and the answer is \(n\).
 
 If \(n\Card size="full" background="surface" gap={3}><Title value="More tabs thange k\), then all states with \(m\ge k\) share one position \(a fit at the maximum length" size="\), while the remaining \(k-1\) states contribute \(k-1\)sm"/><Text>Example:</Text><CodeBlock language="text" content="a = 8, b = 1, n = 9"/>< distinct positions. The answer becomes
 
-\[
+$$
 1+(k-1)=k.
-\]
+$$
 
 Combining both cases,
 
-\[
+$$
 \boxed{\Text>When <Math value="m \ge 8text{answer}=\min\left(n,\left\lceil\"/>, thefrac{a}{b}\right\rceil\right)}.
-\]
+$$
 
 ### Approach rightmost close button is at <Math value Comparison
 
@@ -172,9 +172,9 @@ Combining both cases,
 
 1. Compute
 
-\[
+$$
 k=\left\lceil \frac{a}{b}\right\rceil.
-\]
+$$
 
 2. Observe that for every state with \(m\gea/m &gt; 1"/>, so the close button k\), the rightmost close button is located at position \(a\).
 
@@ -186,9 +186,9 @@ k=\left\lceil \frac{a}{b}\right\rceil.
 
 6. Output
 
-\[
+$$
 \min positions the cursor must visit. This works because the cursor(n,k).
-\]
+$$
 
 ### Why it works
 
@@ -196,17 +196,17 @@ The only close button that matters is the rightmost one. Closing that only needs
 
 For state \(m\), the rightmost close button is located>, simulating every deletion is impossible.</Text><Text>The key observation is that at
 
-\[
+$$
 R(m)=\min(mb,a).
-\]
+$$
 
 Every time two the rightmost close button position when there are <Math value="m"/> tabs is</ different states have the same value of \(R(m)\), they can be handled withoutText><Math block value="x(m)=m\cdot \min\ moving the mouse. Every time the value changes, a new mouse positionleft(b,\frac{a}{m}\right)=\min(mb,a)."/><Text>As is required.
 
 The values equal to \(a\) form one large block. Every value below we close tabs, <Math value="m"/> decreases from <Math \(a\) is a distinct multiple of \(b\). Counting distinct values of \(R(m)\) over \(m value="n"/> down to <Math value="1"/>.</=1,\dots,n\) gives exactly
 
-\[
+$$
 \min\left(n,\left\lceil\frac{a}{b}\rightText><Text>There are only two regimes:</Text><List\rceil\right).
-\]
+$$
 
 ## Python Solution
 

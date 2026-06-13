@@ -22,8 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
         with:
-          # Sitemap lastmod values come from the latest content commit.
-          fetch-depth: 0
+          # Shallow by default; deepened below only when lastmods cache is cold.
+          fetch-depth: 1
 
       - name: Checkout tago
         uses: actions/checkout@v6.0.2
@@ -36,7 +36,8 @@ jobs:
         uses: actions/setup-go@v6.4.0
         with:
           go-version-file: .tago-src/go.mod
-          cache: false
+          cache: true
+          cache-dependency-path: .tago-src/go.sum
 
       - name: Cache tago binary
         id: tago-bin-cache
@@ -61,6 +62,31 @@ jobs:
             tago-public-${{ runner.os }}-${{ github.ref_name }}-
             tago-public-${{ runner.os }}-main-
 
+      - name: Restore lastmods cache
+        id: lastmods-cache
+        uses: actions/cache/restore@v5.0.5
+        with:
+          path: content-lastmods.json
+          key: lastmods-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            lastmods-${{ runner.os }}-
+
+      - name: Restore split outputs cache
+        uses: actions/cache/restore@v5.0.5
+        with:
+          path: |
+            public-main
+            public-shards
+            public-manifest.json
+          key: tago-split-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            tago-split-${{ runner.os }}-${{ github.ref_name }}-
+            tago-split-${{ runner.os }}-main-
+
+      - name: Deepen git history (only when no cached lastmods found)
+        if: hashFiles('content-lastmods.json') == ''
+        run: git fetch --unshallow
+
       - name: Build site
         run: |
           tago build --base-url "https://brain.tamnd.com/"
@@ -69,7 +95,7 @@ jobs:
 
       - name: Split Cloudflare Pages outputs
         run: |
-          python3 scripts/split_cloudflare_pages_shards.py
+          tago split --incremental
           cat deploy-shards-summary.json
 
       - name: Save incremental site cache
@@ -77,6 +103,21 @@ jobs:
         with:
           path: public
           key: tago-public-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
+
+      - name: Save split outputs cache
+        uses: actions/cache/save@v5.0.5
+        with:
+          path: |
+            public-main
+            public-shards
+            public-manifest.json
+          key: tago-split-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
+
+      - name: Save lastmods cache
+        uses: actions/cache/save@v5.0.5
+        with:
+          path: content-lastmods.json
+          key: lastmods-${{ runner.os }}-${{ github.sha }}
 
       - name: Upload main artifact
         uses: actions/upload-artifact@v7.0.1
@@ -142,7 +183,7 @@ jobs:
         uses: actions/download-artifact@v8.0.1
         with:
           name: public-${{ matrix.shard.name }}
-          path: public-${{ matrix.shard.name }}
+          path: public-shards/${{ matrix.shard.name }}
 
       - name: Ensure Cloudflare Pages config
         env:
@@ -155,7 +196,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          npx -y wrangler@4 pages deploy public-${{ matrix.shard.name }} \
+          npx -y wrangler@4 pages deploy public-shards/${{ matrix.shard.name }} \
             --project-name=${{ matrix.shard.project }} \
             --branch=main \
             --commit-dirty=true

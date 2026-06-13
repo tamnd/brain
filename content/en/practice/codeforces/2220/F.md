@@ -182,8 +182,7 @@ A descendant contributes negatively only when its current MEX exceeds $a$.
 
 The total negative contribution becomes
 
-$$\sum_{\substack{u\in sub(v)\\ \text{mex}_1(u)>a}}
-(a-\text{mex}_1(u)).$$
+$$\sum_{\substack{u\in sub(v)\\ \text{mex}_1(u)>a}} (a-\text{mex}_1(u)).$$
 
 Rewrite it as
 

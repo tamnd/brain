@@ -50,9 +50,7 @@ Since $abc=1$, we have $a=\frac1{bc}$, hence $a^{-3}=b^3c^3$.
 
 Thus
 
-$$\sum \frac1{a^3(b+c)}
-=
-\sum \frac{b^3c^3}{b+c}.$$
+$$\sum \frac1{a^3(b+c)} = \sum \frac{b^3c^3}{b+c}.$$
 
 ### Step 2: Apply Engel-Cauchy
 

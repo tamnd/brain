@@ -93,12 +93,11 @@ draft: false
 | 1780 | [Check if Number is a Sum of Powers of Three](1780.md) | 🟡 Medium | 1m 17s | The problem asks whether a given integer n can be expressed as the … |
 | 1781 | [Sum of Beauty of All Substrings](1781.md) | 🟡 Medium | 50s | The problem asks us to calculate the sum of beauty for all substrin… |
 | 1782 | [Count Pairs Of Nodes](1782.md) | 🔴 Hard | 1m 23s | We are given an undirected graph with n nodes and a list of edges. … |
-| 1782 | [Count Pairs Of Nodes](1782.md) | 🔴 Hard | 1m 32s | The problem gives an undirected graph with n nodes and a list of ed… |
 | 1783 | [Grand Slam Titles](1783.md) | 🟡 Medium | 1m 38s | This problem asks us to compute how many Grand Slam tennis titles e… |
 | 1784 | [Check if Binary String Has at Most One Segment of Ones](1784.md) | 🟢 Easy | 1m 5s | In this problem, we are given a binary string s that contains only … |
 | 1785 | [Minimum Elements to Add to Form a Given Sum](1785.md) | 🟡 Medium | 1m 24s | The problem gives us an integer array nums, a maximum allowed absol… |
 | 1786 | [Number of Restricted Paths From First to Last Node](1786.md) | 🟡 Medium | 2m | This problem gives us an undirected weighted graph with n nodes lab… |
-| 1787 | [Make the XOR of All Segments Equal to Zero](1787.md) | 🔴 Hard | 1m 19s | The problem is asking us to modify an array nums such that the XOR … |
+| 1787 | [Make the XOR of All Segments Equal to Zero](1787.md) | 🔴 Hard | 1m 20s | We are given an array nums and an integer k. Every contiguous segme… |
 | 1788 | [Maximize the Beauty of the Garden](1788.md) | 🔴 Hard | 1m 47s | We are given an integer array flowers, where each element represent… |
 | 1789 | [Primary Department for Each Employee](1789.md) | 🟢 Easy | 1m 34s | The problem provides a database table named Employee that stores in… |
 | 1790 | [Check if One String Swap Can Make Strings Equal](1790.md) | 🟢 Easy | 50s | The problem asks us to determine if two strings of equal length, s1… |

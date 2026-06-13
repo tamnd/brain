@@ -76,11 +76,7 @@ $$s=\frac{2}{1+x^2}.$$
 
 Hence
 
-$$K=
-\left(
-\frac{1+x}{1+x^2},
-\frac{1-x}{1+x^2}
-\right).$$
+$$K= \left( \frac{1+x}{1+x^2}, \frac{1-x}{1+x^2} \right).$$
 
 The algebra checks out.
 
@@ -102,9 +98,7 @@ $$a-b=-x.$$
 
 Solving gives
 
-$$a=\frac{-3-x}{2},
-\qquad
-b=\frac{-3+x}{2}.$$
+$$a=\frac{-3-x}{2}, \qquad b=\frac{-3+x}{2}.$$
 
 The derivation is correct.
 
@@ -112,21 +106,15 @@ The derivation is correct.
 
 The solution computes
 
-$$X_N^2+Y_N^2
-=
-\frac54-x+\frac{x^2}{4},$$
+$$X_N^2+Y_N^2 = \frac54-x+\frac{x^2}{4},$$
 
 and states that
 
-$$aX_N+bY_N
-=
--\frac54+x-\frac{x^2}{4}.$$
+$$aX_N+bY_N = -\frac54+x-\frac{x^2}{4}.$$
 
 Checking independently:
 
-$$\frac a2+b\left(1-\frac x2\right)
-=
--\frac94+\frac34x-\frac14x^2,$$
+$$\frac a2+b\left(1-\frac x2\right) = -\frac94+\frac34x-\frac14x^2,$$
 
 which indeed equals
 
@@ -144,10 +132,7 @@ Classification: VALID, with a minor compression of computation.
 
 The solution states that after substitution the numerator becomes
 
-$$(1+x)^2+(1-x)^2
--(3+x)(1+x)(1+x^2)
--(3-x)(1-x)(1+x^2)
-+2(1+x^2)^2,$$
+$$(1+x)^2+(1-x)^2 -(3+x)(1+x)(1+x^2) -(3-x)(1-x)(1+x^2) +2(1+x^2)^2,$$
 
 and then says it "simplifies identically to $0$ after cancellation of symmetric terms."
 
@@ -157,9 +142,7 @@ A reviewer must be able to check the identity. The solution does not actually pe
 
 Let us verify it:
 
-$$(1+x)^2+(1-x)^2
-=
-2+2x^2.$$
+$$(1+x)^2+(1-x)^2 = 2+2x^2.$$
 
 Also,
 
@@ -173,23 +156,15 @@ $$6+2x^2.$$
 
 Hence the middle two terms contribute
 
-$$-(6+2x^2)(1+x^2)
-=
--6-8x^2-2x^4.$$
+$$-(6+2x^2)(1+x^2) = -6-8x^2-2x^4.$$
 
 Finally,
 
-$$2(1+x^2)^2
-=
-2+4x^2+2x^4.$$
+$$2(1+x^2)^2 = 2+4x^2+2x^4.$$
 
 Summing all contributions:
 
-$$(2+2x^2)
-+(-6-8x^2-2x^4)
-+(2+4x^2+2x^4)
-=
-0.$$
+$$(2+2x^2) +(-6-8x^2-2x^4) +(2+4x^2+2x^4) = 0.$$
 
 Thus the claim is true, but the submitted proof does not actually show it.
 

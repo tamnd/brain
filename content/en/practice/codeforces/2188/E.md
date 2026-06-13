@@ -90,8 +90,7 @@ $$B=\sum_{x<y} d_{\operatorname{lca}(x,y)},$$
 
 and
 
-$$C=\sum_{\substack{x<y\\ d_x=d_y}}
-\left(d_x-d_{\operatorname{lca}(x,y)}\right).$$
+$$C=\sum_{\substack{x<y\\ d_x=d_y}} \left(d_x-d_{\operatorname{lca}(x,y)}\right).$$
 
 All three terms can be computed in $O(n \log n)$.
 
@@ -120,10 +119,7 @@ $$B=\sum_{x<y} d_{\operatorname{lca}(x,y)}.$$
 
 For a node $u$, the number of unordered pairs whose LCA equals $u$ is
 
-$$\binom{\text{sz}_u}{2}
--
-\sum_{v \text{ child of } u}
-\binom{\text{sz}_v}{2}.$$
+$$\binom{\text{sz}_u}{2} - \sum_{v \text{ child of } u} \binom{\text{sz}_v}{2}.$$
 
 Multiply this count by $d_u$ and add it to $B$.
 6. Compute
@@ -135,8 +131,7 @@ where $\text{cnt}_h$ is the number of vertices at depth $h$.
 This equals the first part of $C$.
 7. Compute
 
-$$C_2=\sum_{\substack{x<y\\ d_x=d_y}}
-d_{\operatorname{lca}(x,y)}.$$
+$$C_2=\sum_{\substack{x<y\\ d_x=d_y}} d_{\operatorname{lca}(x,y)}.$$
 
 Use DSU-on-tree. For each node $u$, count equal-depth pairs whose LCA is exactly $u$. If that count is $P_u$, then add
 

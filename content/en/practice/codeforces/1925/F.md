@@ -80,10 +80,7 @@ $$\left(\frac1{\sqrt2}\right)^{i-1}.$$
 
 A corner-to-center fold in a square contributes total crease length $2\sqrt2$ times the current scale factor. Hence the total crease length created at step $i$ is
 
-$$2^{i-1}\cdot 2\sqrt2\cdot
-\left(\frac1{\sqrt2}\right)^{i-1}
-=
-2(\sqrt2)^i.$$
+$$2^{i-1}\cdot 2\sqrt2\cdot \left(\frac1{\sqrt2}\right)^{i-1} = 2(\sqrt2)^i.$$
 
 The remaining geometric observation is that after the first fold, exactly half of the layers have the original side facing up and half have the opposite side facing up. A newly created crease is a mountain precisely on the layers with the opposite orientation. This means:
 
@@ -95,11 +92,7 @@ $$V=2\sqrt2+\sum_{i=2}^{N} (\sqrt2)^i.$$
 
 Thus
 
-$$\frac MV
-=
-\frac S{S+2\sqrt2},
-\qquad
-S=\sum_{i=2}^{N}(\sqrt2)^i.$$
+$$\frac MV = \frac S{S+2\sqrt2}, \qquad S=\sum_{i=2}^{N}(\sqrt2)^i.$$
 
 After this point the problem becomes pure algebra. The resulting coefficient $B$ depends only on $2^{\lfloor N/2\rfloor}$, which can be computed in $O(\log N)$ time using binary exponentiation. This observation appears in standard solutions to the problem.
 
@@ -137,17 +130,14 @@ and rationalize the denominator.
 
 After simplification,
 
-$$B=
--\frac{2(t-1)}{(t-2)^2}.$$
+$$B= -\frac{2(t-1)}{(t-2)^2}.$$
 7. For $N=2m+1$,
 
-$$S=(2t-2)+(2t-2)x,
-\qquad t=2^m.$$
+$$S=(2t-2)+(2t-2)x, \qquad t=2^m.$$
 
 Rationalizing again gives
 
-$$B=
-\frac{t-1}{t^2+2t-1}.$$
+$$B= \frac{t-1}{t^2+2t-1}.$$
 8. Compute $t=2^m \pmod P$, where
 
 $$P=999999893.$$
@@ -351,8 +341,6 @@ For
 
 we have $m=2$ and $t=4$. The formula gives
 
-$$B=-\frac{2(4-1)}{(4-2)^2}
-=-\frac{6}{4}
-=-\frac32.$$
+$$B=-\frac{2(4-1)}{(4-2)^2} =-\frac{6}{4} =-\frac32.$$
 
 The implementation evaluates exactly this rational number modulo $999999893$, confirming that the regular even-case formula works once $N>2$.

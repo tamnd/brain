@@ -182,11 +182,7 @@ If the newly added fixed character differs from the previous one, exactly one va
 
 Thus:
 
-$$g_i =
-\begin{cases}
-2g_{i-1} & s_i=s_{i-1}\\
-g_{i-1} & s_i\ne s_{i-1}
-\end{cases}$$
+$$g_i = \begin{cases} 2g_{i-1} & s_i=s_{i-1}\\ g_{i-1} & s_i\ne s_{i-1} \end{cases}$$
 
 This recurrence counts all good extensions and only good extensions. Summing all `g_i` gives the required answer.
 

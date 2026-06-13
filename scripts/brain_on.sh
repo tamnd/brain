@@ -200,7 +200,7 @@ while true; do
   if [ -n "$_unpushed" ]; then
     if ! smart_sync; then
       log "${YLW}✗ sync failed before build — commit held locally, retry next cycle${RST}"
-    elif TAGO_OUT="$(tago build --base-url "$BASE_URL" 2>&1)"; then
+    elif TAGO_OUT="$("$HOME/bin/tago" build --base-url "$BASE_URL" 2>&1)"; then
       if PUSH_OUT="$(git push -q origin "$BRANCH" 2>&1)"; then
         log "${GRN}✓ pushed${RST}"
         # Wait for GitHub Actions deploy and report result + duration.
@@ -254,7 +254,7 @@ while true; do
           log "${YLW}· amended commit with auto-fixes${RST}"
         fi
         # Retry tago.
-        if TAGO_OUT2="$(tago build --base-url "$BASE_URL" 2>&1)"; then
+        if TAGO_OUT2="$("$HOME/bin/tago" build --base-url "$BASE_URL" 2>&1)"; then
           if PUSH_OUT2="$(git push -q origin "$BRANCH" 2>&1)"; then
             log "${GRN}✓ pushed after auto-fix${RST}"
           else

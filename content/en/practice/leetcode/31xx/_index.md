@@ -101,7 +101,7 @@ draft: false
 | 3188 | [Find Top Scoring Students II](3188.md) | 🔴 Hard | 1m 18s | This problem asks us to identify students who satisfy a combination… |
 | 3189 | [Minimum Moves to Get a Peaceful Board](3189.md) | 🟡 Medium | 1m 7s | In this problem, we are given the positions of n rooks placed on an… |
 | 3190 | [Find Minimum Operations to Make All Elements Divisible by Three](3190.md) | 🟢 Easy | 1m 12s | The problem gives us an integer array nums. In one operation, we ar… |
-| 3191 | [Minimum Operations to Make Binary Array Elements Equal to One I](3191.md) | 🟡 Medium | 1m 33s | We are given a binary array nums consisting only of 0s and 1s. We a… |
+| 3191 | [Minimum Operations to Make Binary Array Elements Equal to One I](3191.md) | 🟡 Medium | 1m 26s | The problem presents a binary array nums of length at least 3, cont… |
 | 3192 | [Minimum Operations to Make Binary Array Elements Equal to One II](3192.md) | 🟡 Medium | 51s | This problem asks us to take a binary array nums, which contains on… |
 | 3193 | [Count the Number of Inversions](3193.md) | 🔴 Hard | 1m 33s | The problem asks us to count how many permutations of the numbers [… |
 | 3194 | [Minimum Average of Smallest and Largest Elements](3194.md) | 🟢 Easy | 1m 3s | The problem gives us an even-length integer array nums. We repeated… |
