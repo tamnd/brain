@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7825 problems, 3705 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7826 problems, 3706 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7825 problems, 3705 verified.**
+**1429 contests, 7826 problems, 3706 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -508,7 +508,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1156](1156/) | [Educational Codeforces Round 64 (Rated for Div. 2)](https://codeforces.com/contest/1156) | Div. 2 | 1400-2700 | 4/7 | 10m 55s |
 | [1157](1157/) | [Codeforces Round 555 (Div. 3)](https://codeforces.com/contest/1157) | Div. 3 | 1100-2200 | 6/8 | 14m 10s |
 | [1158](1158/) | [Codeforces Round 559 (Div. 1)](https://codeforces.com/contest/1158) | Div. 1 | 1500-3500 | 1/6 | 10m 32s |
-| [1159](1159/) | [Codeforces Round 559 (Div. 2)](https://codeforces.com/contest/1159) | Div. 2 | 1300-1300 | 1/1 | 1m 30s |
+| [1159](1159/) | [Codeforces Round 559 (Div. 2)](https://codeforces.com/contest/1159) | Div. 2 | 800-1300 | 2/2 | 4m 7s |
 | [1162](1162/) | [Codeforces Round 557 (Div. 2) [based on Forethought Future Cup - Final Round]](https://codeforces.com/contest/1162) | Div. 2 | 800-800 | 1/1 | 1m 19s |
 | [1163](1163/) | [Codeforces Round 558 (Div. 2)](https://codeforces.com/contest/1163) | Div. 2 | 1500-2100 | 4/4 | 5m 20s |
 | [1165](1165/) | [Codeforces Round 560 (Div. 3)](https://codeforces.com/contest/1165) | Div. 3 | 1100-1600 | 3/3 | 7m 15s |
