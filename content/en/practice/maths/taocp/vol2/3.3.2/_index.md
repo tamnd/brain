@@ -1,6 +1,6 @@
 ---
 title: "TAOCP 3.3.2: Empirical Tests"
-description: "Section 3.3.2 exercises: 21/33 solved."
+description: "Section 3.3.2 exercises: 35/35 solved."
 tags: ["taocp", "mathematics", "algorithms"]
 categories: ["mathematics"]
 section: "3.3.2"
@@ -14,7 +14,7 @@ draft: false
 
 # Section 3.3.2. Empirical Tests
 
-Exercises from [TAOCP Volume 1](../) Section 3.3.2: 21/33 solved.
+Exercises from [TAOCP Volume 1](../) Section 3.3.2: 35/35 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
@@ -23,10 +23,10 @@ Exercises from [TAOCP Volume 1](../) Section 3.3.2: 21/33 solved.
 | [3](03.md) | &#9654; [*M20*] | math-medium | verified | 1m13s |
 | [4](04.md) |  [*M12*] | math-simple | verified | 1m14s |
 | [5](05.md) |  [*M23*] | math-medium | verified | 1m06s |
-| [6](06.md) |  [*40*] | project | solved | 58s |
+| [6](06.md) |  [*40*] | project | verified | 1m12s |
 | [7](07.md) |  [*08*] | simple | verified | 2m35s |
 | [8](08.md) | &#9654; [*M22*] | math-medium | verified | 1m25s |
-| 9 |  [*M21*] | math-medium | - | - |
+| [9](09.md) |  [*M21*] | math-medium | verified | 2m09s |
 | [10](10.md) |  [*M23*] | math-medium | verified | 1m46s |
 | [11](11.md) |  [*00*] | immediate | solved | 2m |
 | [12](12.md) |  [*20*] | medium | verified | 1m45s |
@@ -39,15 +39,17 @@ Exercises from [TAOCP Volume 1](../) Section 3.3.2: 21/33 solved.
 | [19](19.md) |  [*M30*] | math-hard | solved | 1m35s |
 | [20](20.md) |  [*HM41*] | hm-project | solved | 4m02s |
 | [21](21.md) |  [*19*] | medium | verified | 3m27s |
-| 22 |  [*18*] | medium | - | - |
+| [22](22.md) |  [*18*] | medium | verified | 2m22s |
 | [23](23.md) |  [*M22*] | math-medium | solved | 2m20s |
-| 24 |  [*HM37*] | hm-project | - | - |
-| 27 | &#9654; [*HM36*] | hm-project | - | - |
-| 28 |  [*M26*] | math-hard | - | - |
-| 29 |  [*M35*] | math-hard | - | - |
-| 30 |  [*HM41*] | hm-project | - | - |
-| 31 | &#9654; [*M21*] | math-medium | - | - |
-| 32 |  [*M20*] | math-medium | - | - |
-| 33 |  [*HM32*] | hm-hard | - | - |
-| 34 |  [*HM29*] | hm-hard | - | - |
-| 35 | &#9654; [*HM42*] | hm-project | - | - |
+| [24](24.md) |  [*HM37*] | hm-project | solved | 14m |
+| [25](25.md) | &#9654; [**] |  | verified | 9m34s |
+| [26](26.md) |  [**] |  | verified | 9m09s |
+| [27](27.md) | &#9654; [*HM36*] | hm-project | verified | 2m49s |
+| [28](28.md) |  [*M26*] | math-hard | solved | 6m33s |
+| [29](29.md) |  [*M35*] | math-hard | solved | 1m21s |
+| [30](30.md) |  [*HM41*] | hm-project | solved | 5m42s |
+| [31](31.md) | &#9654; [*M21*] | math-medium | verified | 4m43s |
+| [32](32.md) |  [*M20*] | math-medium | verified | 14m47s |
+| [33](33.md) |  [*HM32*] | hm-hard | solved | 23m39s |
+| [34](34.md) |  [*HM29*] | hm-hard | solved | 6m27s |
+| [35](35.md) | &#9654; [*HM42*] | hm-project | solved | 2m16s |
