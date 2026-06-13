@@ -24,7 +24,7 @@
 
   {{if .Pages}}
   <div class="zen-card-grid">
-    {{range first 50 .Pages}}
+    {{range .Pages}}
     {{if not .Draft}}
     <div class="zen-card">
       {{if .Ancestors}}
