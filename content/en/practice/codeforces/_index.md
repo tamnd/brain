@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7910 problems, 3754 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7914 problems, 3759 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7910 problems, 3754 verified.**
+**1429 contests, 7914 problems, 3759 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -540,7 +540,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1192](1192/) | [CEOI 2019 day 1 online mirror (unrated, IOI format)](https://codeforces.com/contest/1192) | ICPC/IOI | - | 2/3 | 12m 44s |
 | [1193](1193/) | [CEOI 2019 day 2 online mirror (unrated, IOI format)](https://codeforces.com/contest/1193) | ICPC/IOI | - | 1/3 | 15m 20s |
 | [1194](1194/) | [Educational Codeforces Round 68 (Rated for Div. 2)](https://codeforces.com/contest/1194) | Div. 2 | 800-2700 | 4/7 | 29m 26s |
-| [1195](1195/) | [Codeforces Round 574 (Div. 2)](https://codeforces.com/contest/1195) | Div. 2 | 1000-1800 | 2/3 | 5m 14s |
+| [1195](1195/) | [Codeforces Round 574 (Div. 2)](https://codeforces.com/contest/1195) | Div. 2 | 1000-2500 | 7/7 | 29m 30s |
 | [1196](1196/) | [Codeforces Round 575 (Div. 3)](https://codeforces.com/contest/1196) | Div. 3 | 800-1800 | 1/3 | 7m 28s |
 | [1197](1197/) | [Educational Codeforces Round 69 (Rated for Div. 2)](https://codeforces.com/contest/1197) | Div. 2 | 900-2300 | 1/3 | 7m 54s |
 | [1198](1198/) | [Codeforces Round 576 (Div. 1)](https://codeforces.com/contest/1198) | Div. 1 | 1600-2900 | 1/3 | 11m 9s |
