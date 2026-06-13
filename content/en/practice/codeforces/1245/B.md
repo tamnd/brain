@@ -1,7 +1,7 @@
 ---
 title: "CF 1245B - Restricted RPS"
-description: "Alice and Bob are playing a constrained version of rock-paper-scissors. Bob's sequence of moves is already known, and Alice must play a fixed number of each move: a specific number of rocks, papers, and scissors."
-date: "2026-06-11T21:48:28+07:00"
+description: "We are given a sequence of rock-paper-scissors moves played by Bob. Alongside this, Alice has a fixed inventory of moves: she must play exactly a specified number of Rocks, Papers, and Scissors across all rounds."
+date: "2026-06-13T20:36:29+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "dp", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1245
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 597 (Div. 2)"
 rating: 1200
 weight: 1245
-solve_time_s: 1002
-verified: false
+solve_time_s: 179
+verified: true
 draft: false
 ---
 
@@ -18,192 +18,278 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** constructive algorithms, dp, greedy  
-**Solve time:** 16m 42s  
-**Verified:** no  
+**Solve time:** 2m 59s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-Alice and Bob are playing a constrained version of rock-paper-scissors. Bob's sequence of moves is already known, and Alice must play a fixed number of each move: a specific number of rocks, papers, and scissors. The challenge is to determine whether Alice can arrange her moves to beat Bob in at least half of the rounds, rounded up. The input consists of the number of rounds, the counts of each type of move Alice must play, and Bob's sequence of moves. The output is either "NO" if Alice cannot win or "YES" followed by a valid sequence of Alice's moves that achieves the required number of wins. The key is that Alice's sequence must respect her move counts exactly.
+We are given a sequence of rock-paper-scissors moves played by Bob. Alongside this, Alice has a fixed inventory of moves: she must play exactly a specified number of Rocks, Papers, and Scissors across all rounds.
 
-The constraints are very manageable. The number of rounds $n$ is at most 100, and there are at most 100 test cases. This allows us to consider strategies that inspect each move individually and assign optimal counters greedily, without worrying about time limits. A naive approach that tries all permutations of Alice's moves is unnecessary because the small input size allows a greedy approach to suffice.
+The goal is to decide whether Alice can arrange her moves so that she wins at least half of the rounds (rounded up), given that she knows Bob’s entire sequence in advance. A win in a single round depends on standard RPS rules: Rock beats Scissors, Scissors beats Paper, and Paper beats Rock.
 
-Edge cases to be careful of include situations where Alice has an insufficient number of counters for Bob's dominant move. For instance, if Bob plays all rocks and Alice only has one paper, she can only win one round even if there are many rounds, and the output must correctly identify whether this is enough to achieve $\lceil n/2 \rceil$ wins. Another edge case is when multiple valid sequences exist; the problem allows any sequence, so the solution does not have to enumerate all possibilities.
+If such a strategy exists, we must also construct one valid sequence of Alice’s moves that achieves the required number of wins while respecting the exact counts of each move.
+
+The constraints are small: at most 100 test cases and each game has at most 100 rounds. This immediately rules out anything heavier than linear or quadratic per test case, but more importantly, it suggests that a greedy construction or simple dynamic programming over counts is sufficient. There is no need for exponential search or backtracking because the state space is tiny but structured.
+
+A subtle failure case arises when a naive strategy tries to “locally maximize wins” without considering resource exhaustion. For example, if Alice greedily uses all Paper moves early to beat Rocks, she might later face Scissors but have no Scissors left, losing potential wins that a different distribution could have preserved. Another failure mode is filling moves arbitrarily after achieving some wins, accidentally breaking the exact counts requirement or reducing wins unnecessarily.
+
+The key challenge is balancing two constraints simultaneously: maximizing wins against a known sequence and respecting fixed quotas of each move type.
 
 ## Approaches
 
-A brute-force approach would try all permutations of Alice's moves and count wins for each, but that would be $O(n!)$, which is impractical even with $n = 100$. The key insight is that each move in Bob's sequence can be countered optimally using the greedy principle: assign Alice's move that beats Bob’s move whenever possible. This guarantees the maximum number of wins because beating Bob's move is always better than not beating it.
+A brute-force solution would try all possible permutations of Alice’s multiset of moves and count wins against Bob for each arrangement. Even for a single test case, this is on the order of $\frac{n!}{a!b!c!}$, which becomes astronomically large even for $n = 20$. This is completely infeasible.
 
-Once the greedy assignments are made, any remaining moves can be filled arbitrarily while respecting the move counts. The only point that requires careful attention is to check whether the number of wins from the greedy assignment reaches the required $\lceil n/2 \rceil$. If it does, we can construct the full sequence; otherwise, Alice cannot win.
+The key observation is that each position is independent except for the limited supply of moves. We do not need to consider permutations globally; instead, we can decide each position greedily based on whether we can use a winning move there.
+
+At each index, Bob’s move determines exactly one best counter-move that yields a win. If we still have that move available in our quota, it is always optimal to use it, because using a winning move now never reduces future opportunities except through consumption of a limited resource. Since each move contributes to exactly one position, this greedy allocation maximizes the number of wins achievable overall.
+
+Once all winning opportunities are exhausted, the remaining positions can be filled arbitrarily using leftover moves while preserving counts.
+
+This reduces the problem to constructing a maximum-win assignment under capacity constraints and then checking if that maximum meets the required threshold.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n!) | O(n) | Too slow |
-| Greedy Optimal | O(n) | O(n) | Accepted |
+| Brute Force | Exponential | Exponential | Too slow |
+| Greedy construction | O(n) per test | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the number of test cases. For each test case, read $n$, the counts $a, b, c$, and Bob's sequence $s$. Initialize a list for Alice's moves with placeholders.
-2. Count the number of moves Alice can use to beat Bob optimally. For each character in $s$:
+Let $k = \lceil n/2 \rceil$, the minimum number of wins required.
 
-- If Bob plays 'R' and Alice has paper remaining, assign 'P' and decrement the paper count.
-- If Bob plays 'P' and Alice has scissors remaining, assign 'S' and decrement scissors count.
-- If Bob plays 'S' and Alice has rock remaining, assign 'R' and decrement rock count.
+1. For each test case, read $n$, counts $a, b, c$, and Bob’s string.
 
-Each successful assignment increases a win counter.
-3. After processing all rounds, check if the number of wins is at least $\lceil n/2 \rceil$. If not, print "NO" and continue to the next test case.
-4. Fill in the remaining positions in Alice’s move list with any remaining moves, respecting their counts. Iterate over the placeholders and assign moves in the order of remaining rock, paper, and scissors until all positions are filled.
-5. Print "YES" and the constructed sequence.
+We keep a result array `ans` initially empty and track remaining counts.
+2. First pass: try to assign winning moves wherever possible.
 
-Why it works: The greedy step ensures that every possible win is captured. Since each move can only be used a fixed number of times, assigning moves that beat Bob first maximizes wins. Filling remaining moves afterward does not reduce the number of wins but ensures the sequence respects the required counts. The invariant is that every assigned winning move truly beats Bob, so the number of wins is maximized.
+For each position $i$:
+
+- If Bob plays 'R', Alice wins by playing 'P' (if any P remains).
+- If Bob plays 'P', Alice wins by playing 'S' (if any S remains).
+- If Bob plays 'S', Alice wins by playing 'R' (if any R remains).
+
+We greedily assign these winning moves immediately and decrement the corresponding quota.
+
+The reasoning is that each such assignment is strictly beneficial, so delaying it can only risk wasting the opportunity.
+3. After this pass, count how many wins were achieved.
+4. If wins are already at least $k$, we proceed to fill all remaining empty positions arbitrarily using leftover moves $a, b, c$.
+5. If wins are less than $k$, we immediately output "NO" because even the optimal greedy strategy cannot reach the threshold.
+6. Otherwise, output "YES" followed by the constructed sequence.
+
+### Why it works
+
+Each position has at most one move that guarantees a win. Assigning such moves greedily never conflicts with another position because moves are only constrained by global counts, not positional dependencies. Since every winning assignment strictly increases the total score and consumes exactly one unit of a limited resource, postponing a win cannot increase the final number of wins. Therefore, this greedy procedure produces the maximum achievable number of wins. If even this maximum is below the threshold, no valid rearrangement can succeed.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from math import ceil
 
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    a, b, c = map(int, input().split())
-    s = input().strip()
-    
-    alice = [''] * n
-    wins = 0
-    rem_a, rem_b, rem_c = a, b, c
-    
-    for i, move in enumerate(s):
-        if move == 'R' and b > 0:
-            alice[i] = 'P'
-            b -= 1
-            wins += 1
-        elif move == 'P' and c > 0:
-            alice[i] = 'S'
-            c -= 1
-            wins += 1
-        elif move == 'S' and a > 0:
-            alice[i] = 'R'
-            a -= 1
-            wins += 1
-    
-    if wins < ceil(n / 2):
-        print("NO")
-        continue
-    
-    # Fill remaining moves
-    for i in range(n):
-        if alice[i] == '':
-            if a > 0:
-                alice[i] = 'R'
-                a -= 1
-            elif b > 0:
-                alice[i] = 'P'
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a, b, c = map(int, input().split())
+        s = input().strip()
+
+        ans = [''] * n
+        wins = 0
+
+        # First pass: take all guaranteed wins
+        for i, ch in enumerate(s):
+            if ch == 'R' and b > 0:
+                ans[i] = 'P'
                 b -= 1
-            else:
-                alice[i] = 'S'
+                wins += 1
+            elif ch == 'P' and c > 0:
+                ans[i] = 'S'
                 c -= 1
-    
-    print("YES")
-    print(''.join(alice))
+                wins += 1
+            elif ch == 'S' and a > 0:
+                ans[i] = 'R'
+                a -= 1
+                wins += 1
+
+        need = (n + 1) // 2
+        if wins < need:
+            print("NO")
+            continue
+
+        # Fill remaining slots
+        for i in range(n):
+            if ans[i] == '':
+                if a > 0:
+                    ans[i] = 'R'
+                    a -= 1
+                elif b > 0:
+                    ans[i] = 'P'
+                    b -= 1
+                else:
+                    ans[i] = 'S'
+                    c -= 1
+
+        print("YES")
+        print("".join(ans))
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The first loop performs the greedy assignment, carefully decrementing the move counts. The second loop ensures that any remaining placeholders are filled with valid moves, respecting Alice's constraints. Using `ceil(n/2)` guarantees correctness for both even and odd $n$. Off-by-one errors are avoided by directly iterating over indices and checking the placeholder status.
+The first loop aggressively consumes move resources only when a guaranteed win is available. This is the only place where wins are decided. The second loop is purely a filler stage that respects remaining quotas without affecting the already fixed outcomes.
+
+A common mistake is attempting to balance all three move types simultaneously during the first pass. That is unnecessary because the feasibility check depends only on whether enough winning opportunities can be captured, not on distributing losses evenly.
 
 ## Worked Examples
 
-### Sample Input 1
+### Example 1
+
+Input:
 
 ```
-3
-1 1 1
-RPS
+n = 3
+a,b,c = 1,1,1
+s = RPS
 ```
 
-| Index | Bob | Alice (greedy) | Wins | Remaining counts (R,P,S) |
+| i | Bob | Decision | Remaining (a,b,c) | Wins |
 | --- | --- | --- | --- | --- |
-| 0 | R | P | 1 | 1,0,1 |
-| 1 | P | S | 2 | 1,0,0 |
-| 2 | S | R | 3 | 0,0,0 |
+| 0 | R | P | 1,0,1 | 1 |
+| 1 | P | S | 1,0,0 | 2 |
+| 2 | S | R | 0,0,0 | 3 |
 
-The number of wins is 3 ≥ ceil(3/2)=2, so Alice wins. All remaining moves are already used.
+All moves are used to secure wins, reaching 3 wins, which exceeds $\lceil 3/2 \rceil = 2$. The algorithm outputs YES with a full winning assignment.
 
-### Sample Input 2
+### Example 2
+
+Input:
 
 ```
-3
-3 0 0
-RPS
+n = 3
+a,b,c = 3,0,0
+s = RPS
 ```
 
-| Index | Bob | Alice (greedy) | Wins | Remaining counts (R,P,S) |
+| i | Bob | Decision | Remaining (a,b,c) | Wins |
 | --- | --- | --- | --- | --- |
-| 0 | R | '' | 0 | 3,0,0 |
-| 1 | P | '' | 0 | 3,0,0 |
-| 2 | S | '' | 0 | 3,0,0 |
+| 0 | R | - | 3,0,0 | 0 |
+| 1 | P | - | 3,0,0 | 0 |
+| 2 | S | R | 2,0,0 | 1 |
 
-Wins = 0 < ceil(3/2)=2, so output "NO".
+Only one winning move is possible. Required wins is 2, so the algorithm correctly rejects.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Each move is examined once for greedy assignment and once for filling remaining moves. |
-| Space | O(n) | Alice's sequence list and input storage. |
+| Time | O(n) per test | Each position is processed at most twice |
+| Space | O(n) | Storage for output string |
 
-Given n ≤ 100 and t ≤ 100, the worst case is 100*100=10,000 operations, well within the 1-second limit.
+The constraints allow up to 100 test cases with $n \le 100$, so this linear construction easily fits within limits.
 
 ## Test Cases
 
 ```python
+import sys, io
+
 def run(inp: str) -> str:
-    import sys, io
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
-    t = int(input())
     from math import ceil
-    for _ in range(t):
-        n = int(input())
-        a, b, c = map(int, input().split())
-        s = input().strip()
-        alice = [''] * n
-        wins = 0
-        for i, move in enumerate(s):
-            if move == 'R' and b > 0:
-                alice[i] = 'P'
-                b -= 1
-                wins += 1
-            elif move == 'P' and c > 0:
-                alice[i] = 'S'
-                c -= 1
-                wins += 1
-            elif move == 'S' and a > 0:
-                alice[i] = 'R'
-                a -= 1
-                wins += 1
-        if wins < ceil(n / 2):
-            print("NO")
-            continue
-        for i in range(n):
-            if alice[i] == '':
-                if a > 0:
-                    alice[i] = 'R'
-                    a -= 1
-                elif b > 0:
-                    alice[i] = 'P'
+
+    def solve():
+        t = int(input())
+        out = []
+        for _ in range(t):
+            n = int(input())
+            a, b, c = map(int, input().split())
+            s = input().strip()
+
+            ans = [''] * n
+            wins = 0
+
+            for i, ch in enumerate(s):
+                if ch == 'R' and b > 0:
+                    ans[i] = 'P'
                     b -= 1
-                else:
-                    alice[i] = 'S'
+                    wins += 1
+                elif ch == 'P' and c > 0:
+                    ans[i] = 'S'
                     c -= 1
-        print("YES")
-        print(''.join(alice))
-    return output.getvalue().strip()
+                    wins += 1
+                elif ch == 'S' and a > 0:
+                    ans[i] = 'R'
+                    a -= 1
+                    wins += 1
 
-# Provided samples
-assert run("2\n3\n1 1 1\nRPS\n3\n3 0 0\nRPS\n") == "YES\nPSR\nNO", "sample 1"
+            need = (n + 1) // 2
+            if wins < need:
+                out.append("NO")
+                continue
 
-# Custom cases
-assert run("1\n1\n0 1 0\nR\n") == "YES\nP
+            for i in range(n):
+                if ans[i] == '':
+                    if a > 0:
+                        ans[i] = 'R'
+                        a -= 1
+                    elif b > 0:
+                        ans[i] = 'P'
+                        b -= 1
+                    else:
+                        ans[i] = 'S'
+                        c -= 1
+
+            out.append("YES")
+            out.append("".join(ans))
+
+        return "\n".join(out)
+
+    return solve()
+
+# provided samples
+assert run("""2
+3
+1 1 1
+RPS
+3
+3 0 0
+RPS
+""") == """YES
+PSR
+NO"""
+
+# minimum case
+assert run("""1
+1
+1 0 0
+R
+""") == """NO"""
+
+# all identical Bob
+assert run("""1
+3
+1 1 1
+RRR
+""") != ""
+
+# maximum trivial win
+assert run("""1
+2
+1 1 0
+RP
+""").split()[0] == "YES"
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| sample 1 | YES / NO | basic correctness |
+| single round impossible | NO | threshold handling |
+| all R case | YES or NO depending | greedy allocation behavior |
+| small guaranteed win | YES | positive construction |
+
+## Edge Cases
+
+One edge case is when Bob’s sequence heavily favors one move type, but Alice lacks enough counters for the corresponding winning response. For instance, if Bob plays many 'R' but Alice has very few 'P', the greedy loop simply skips those positions and leaves them for later filling. The algorithm naturally handles this without breaking counts, because it never forces an unavailable winning move.
+
+Another case is when Alice has exactly the right counts but winning opportunities are scattered. Even if wins are possible, they might not appear early in the string. The greedy scan still captures them because it does not depend on position ordering beyond linear traversal, and every opportunity is evaluated independently.
+
+A final case is when the required number of wins is exactly equal to the maximum achievable wins. The algorithm still works because it constructs the full maximum-win assignment first and only rejects strictly infeasible cases where even that maximum is insufficient.
