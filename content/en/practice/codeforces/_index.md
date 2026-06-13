@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8029 problems, 3817 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8032 problems, 3819 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,9 +11,9 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8029 problems, 3817 verified.**
+**1429 contests, 8032 problems, 3819 verified.**
 
-## Unknown — 846 contests, 4833 problems, 2019 verified
+## Unknown — 845 contests, 4829 problems, 2016 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -174,7 +174,6 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1253](1253/) | [Codeforces Round 600 (Div. 2)](https://codeforces.com/contest/1253) | 3 | 1/3 | Div. 2 | 1400-2200 |
 | [1254](1254/) | [Codeforces Round 601 (Div. 1)](https://codeforces.com/contest/1254) | 3 | 1/3 | Div. 1 | 1800-3300 |
 | [1255](1255/) | [Codeforces Round 601 (Div. 2)](https://codeforces.com/contest/1255) | 2 | 0/2 | Div. 2 | 800-1100 |
-| [1257](1257/) | [Educational Codeforces Round 76 (Rated for Div. 2)](https://codeforces.com/contest/1257) | 4 | 3/4 | Div. 2 | 800-2600 |
 | [1260](1260/) | [Educational Codeforces Round 77 (Rated for Div. 2)](https://codeforces.com/contest/1260) | 3 | 2/3 | Div. 2 | 1000-2700 |
 | [1263](1263/) | [Codeforces Round 603 (Div. 2)](https://codeforces.com/contest/1263) | 3 | 2/3 | Div. 2 | 1100-2400 |
 | [1264](1264/) | [Codeforces Round 604 (Div. 1)](https://codeforces.com/contest/1264) | 3 | 1/3 | Div. 1 | 1900-3500 |
@@ -1302,12 +1301,13 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | 5 | 4/5 | Div. 1 | 1500-3200 |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | 2 | 1/2 | Div. 2 | 1100-1600 |
 
-## 2019 — 2 contests, 10 problems, 2 verified
+## 2019 — 3 contests, 17 problems, 7 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [1251](1251/) | [Educational Codeforces Round 75 (Rated for Div. 2)](https://codeforces.com/contest/1251) | 7 | 1/7 | Div. 2 | 1000-2500 |
 | [1256](1256/) | [Codeforces Round 598 (Div. 3)](https://codeforces.com/contest/1256) | 3 | 1/3 | Div. 3 | 1000-2000 |
+| [1257](1257/) | [Educational Codeforces Round 76 (Rated for Div. 2)](https://codeforces.com/contest/1257) | 7 | 5/7 | Div. 2 | 800-2600 |
 
 ## 2024 — 39 contests, 312 problems, 107 verified
 
