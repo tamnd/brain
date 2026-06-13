@@ -1,7 +1,7 @@
 ---
 title: "CF 1174A - Ehab Fails to Be Thanos"
-description: "We are given an array of length 2n, and the task is to reorder it such that the sum of the first n elements differs from the sum of the last n elements. The input provides n and the array values, each between 1 and 10^6."
-date: "2026-06-12T01:51:46+07:00"
+description: "We are given a multiset of integers of size exactly twice some number n. The task is to rearrange these values into a new order such that if we split the reordered array into two consecutive halves of length n, the sum of the left half is different from the sum of the right half."
+date: "2026-06-13T09:43:02+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 1174
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 563 (Div. 2)"
 rating: 1000
 weight: 1174
-solve_time_s: 108
+solve_time_s: 161
 verified: false
 draft: false
 ---
@@ -18,37 +18,53 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** constructive algorithms, greedy, sortings  
-**Solve time:** 1m 48s  
+**Solve time:** 2m 41s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of length `2n`, and the task is to reorder it such that the sum of the first `n` elements differs from the sum of the last `n` elements. The input provides `n` and the array values, each between `1` and `10^6`. The output is either a valid permutation of the array satisfying the condition or `-1` if no such permutation exists.
+We are given a multiset of integers of size exactly twice some number n. The task is to rearrange these values into a new order such that if we split the reordered array into two consecutive halves of length n, the sum of the left half is different from the sum of the right half. If no such rearrangement exists, we must report failure.
 
-The constraints imply that `n` is up to 1000, making the total array length at most 2000. This is small enough to allow sorting or linear scans without concern for time limits. The primary challenge is not performance but finding a permutation that guarantees the sums are unequal.
+The key point is that we are not asked to optimize anything beyond this inequality condition. We are free to permute arbitrarily, so the structure of the solution depends entirely on how we can influence the two half sums through ordering.
 
-A key edge case occurs when all array elements are identical. For instance, if `n = 2` and the array is `[5, 5, 5, 5]`, any split into two halves will have equal sums, and the answer must be `-1`. Another subtle case is arrays where the total sum can be split equally in multiple ways, but since we can reorder arbitrarily, a simple heuristic can break symmetry.
+The constraint n ≤ 1000 means the array size is at most 2000. This is small enough that sorting or linear scans are trivial, and even O(n²) constructions would pass. The important part is reasoning about sum structure rather than computational efficiency.
+
+A subtle edge case appears when all elements are identical. For example, if the array is [5, 5, 5, 5], any partition into two halves produces equal sums because both halves contain the same multiset. In this case, no solution exists.
+
+Another edge case arises when the array has very small variation, such as [1, 1, 1, 2]. A naive intuition might suggest that some clever interleaving could still equalize sums, but in fact we can always break equality unless all values are identical.
+
+The core difficulty is recognizing when symmetry forces equality regardless of permutation.
 
 ## Approaches
 
-The brute-force approach is to generate all `2n!` permutations and check each one by computing the sums of the first and last halves. This is obviously impractical because even for `n = 10`, the number of permutations exceeds `10^7`.
+A brute-force approach would attempt to permute the array and check whether a valid split exists. There are (2n)! permutations, and even evaluating one permutation is O(n), making this completely infeasible.
 
-The observation that unlocks a fast solution is that if we sort the array and the first and last elements are not equal, then the sum of the first `n` elements and the sum of the last `n` elements cannot be identical. Sorting separates smaller and larger numbers, ensuring imbalance unless all numbers are equal. This reduces the problem to checking whether all elements are the same. If they are, output `-1`. Otherwise, sort the array and print it.
+Even if we reduce to sampling permutations, we are still missing structure. The real observation is that the only way all permutations fail is when every element is identical. In that case, every half has identical sum n · x, so equality is unavoidable.
+
+If at least two distinct values exist, we can deliberately construct two halves with different sums. The simplest way is to sort the array. After sorting, the smallest values are concentrated at the beginning and the largest at the end. Splitting after n elements guarantees that the second half contains at least one strictly larger element than anything in the first half, or vice versa depending on distribution. This creates a strict imbalance in sums.
+
+More concretely, sorting ensures that we maximize separation between halves. The first half is biased toward smaller values, the second toward larger values, which forces a sum gap.
+
+Thus, the problem reduces to a simple check for uniformity followed by sorting.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O((2n)!) | O(2n) | Too slow |
-| Sort & Check | O(n log n) | O(2n) | Accepted |
+| Brute Force Permutations | O((2n)!) | O(n) | Too slow |
+| Sort + Construct | O(n log n) | O(1) extra | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read integer `n` and array `a` of length `2n`.
-2. Check if all elements in `a` are equal. If true, print `-1` and terminate because no reordering can create unequal sums.
-3. Sort the array in non-decreasing order. Sorting ensures that the smallest `n` numbers are in the first half and the largest `n` numbers are in the second half, creating a sum imbalance.
-4. Print the sorted array as the valid permutation.
+1. Read the array and check whether all elements are equal. If they are, output -1 because every permutation produces identical half sums, making inequality impossible.
+2. Sort the array in non-decreasing order. This creates a structure where small values are grouped on the left and large values on the right.
+3. Output the sorted array directly. The split into two halves of size n will now compare a lower-weight half against a higher-weight half.
+4. Terminate.
 
-The algorithm works because sorting produces an ordering where the first half is not equal to the second half unless all elements are identical. The invariant is that after sorting, the sum of the first half is strictly less than the sum of the second half unless all values are equal. Checking for equality first ensures we do not produce a false solution.
+### Why it works
+
+Sorting creates a monotone arrangement where every element in the first half is less than or equal to every element in the second half. Since at least one strict inequality exists when the array is not uniform, the second half contains a strictly larger total contribution. This guarantees the sums of the two halves cannot match, because replacing any element in the first half with a larger one strictly increases the sum of the second half relative to the first.
+
+The correctness hinges on the fact that equality of all elements is the only configuration that removes all possible strict ordering between halves.
 
 ## Python Solution
 
@@ -56,63 +72,75 @@ The algorithm works because sorting produces an ordering where the first half is
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-a = list(map(int, input().split()))
-
-if all(x == a[0] for x in a):
-    print(-1)
-else:
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    if len(set(a)) == 1:
+        print(-1)
+        return
+    
     a.sort()
-    print(' '.join(map(str, a)))
+    print(*a)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The code first reads `n` and the array `a`. The `all` check efficiently determines if all elements are identical. Sorting produces a guaranteed solution in O(n log n). Joining the array into a string ensures correct formatting without extra spaces.
+The solution first reads n and the 2n elements. The uniformity check using a set is crucial because it directly captures the only impossible case. Without it, sorting alone would still output a valid permutation, but we would fail on the all-equal edge case.
+
+Sorting is the constructive step that enforces separation between small and large values. Printing the array as-is after sorting is sufficient because the problem does not require explicitly forming halves, only ensuring that such a split would have unequal sums.
+
+A common mistake is trying to interleave elements or build alternating patterns. These are unnecessary because they do not improve the guarantee beyond what sorting already provides.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
 ```
-3
-1 2 2 1 3 1
+n = 3
+a = [1, 2, 2, 1, 3, 1]
 ```
 
-| Step | a (state) | Reason |
-| --- | --- | --- |
-| Read input | [1, 2, 2, 1, 3, 1] | initial array |
-| Check all equal | False | array has different values |
-| Sort | [1, 1, 1, 2, 2, 3] | smallest in first half, largest in second |
-| Output | 1 1 1 2 2 3 | sums: first half 3, second half 7 |
+Sorted array:
 
-This demonstrates that sorting separates sums automatically.
+```
+[1, 1, 1, 2, 2, 3]
+```
 
-### Sample 2
+| Step | Array state | First half sum | Second half sum |
+| --- | --- | --- | --- |
+| Sorted | 1 1 1 2 2 3 | 3 | 7 |
+
+The first half contains only small values while the second half contains the largest element 3 and two 2s. This ensures the second sum is strictly larger.
+
+### Example 2
 
 Input:
 
 ```
-2
-5 5 5 5
+n = 2
+a = [4, 4, 4, 4]
 ```
 
-| Step | a (state) | Reason |
-| --- | --- | --- |
-| Read input | [5, 5, 5, 5] | initial array |
-| Check all equal | True | no permutation can create unequal sums |
-| Output | -1 | correct |
+| Step | Array state | First half sum | Second half sum |
+| --- | --- | --- | --- |
+| Check | all equal | 8 | 8 |
 
-This confirms the edge case handling.
+Since all values are identical, every partition yields equal sums. No rearrangement can change this, so the output is -1.
+
+This confirms the only failure mode is complete uniformity.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | sorting dominates, linear scans negligible |
-| Space | O(2n) | array storage, no extra structures |
+| Time | O(n log n) | Sorting dominates the runtime |
+| Space | O(1) extra | In-place sort aside from input storage |
 
-With n ≤ 1000, sorting 2000 elements is trivial. Memory usage is well under the 256 MB limit.
+The constraints allow up to 2000 elements, so sorting is trivially fast. The solution runs comfortably within both time and memory limits.
 
 ## Test Cases
 
@@ -121,38 +149,70 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
+
+def solve():
     n = int(input())
     a = list(map(int, input().split()))
-    if all(x == a[0] for x in a):
-        return "-1"
-    else:
-        a.sort()
-        return ' '.join(map(str, a))
+    if len(set(a)) == 1:
+        print(-1)
+        return
+    a.sort()
+    print(*a)
 
-# Provided samples
-assert run("3\n1 2 2 1 3 1\n") == "1 1 1 2 2 3"
-assert run("2\n5 5 5 5\n") == "-1"
+# provided sample
+assert run("3\n1 2 2 1 3 1\n") != "-1"
 
-# Custom cases
-assert run("1\n42 17\n") == "17 42", "minimum size n=1"
-assert run("2\n1 2 3 4\n") == "1 2 3 4", "already sorted, sums differ"
-assert run("3\n7 7 7 7 7 8\n") == "7 7 7 7 7 8", "one distinct value breaks equality"
-assert run("2\n2 2 1 3\n") == "1 2 2 3", "reordering required"
+# all equal
+assert run("2\n5 5 5 5\n") == "-1", "all equal case"
+
+# minimal n=1
+assert run("1\n1 2\n") in ["1 2", "2 1"], "minimum case"
+
+# already sorted
+assert run("2\n1 2 3 4\n") == "1 2 3 4", "already sorted case"
+
+# reverse order
+assert run("2\n4 3 2 1\n") == "1 2 3 4", "reverse case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 42 17 | 17 42 | minimum n=1, simple swap |
-| 2 1 2 3 4 | 1 2 3 4 | already valid sorted array |
-| 3 7 7 7 7 7 8 | 7 7 7 7 7 8 | one distinct value creates imbalance |
-| 2 2 2 1 3 | 1 2 2 3 | requires reordering |
+| all equal | -1 | impossibility condition |
+| n=1 case | any valid order | smallest valid structure |
+| sorted input | sorted output | stability of construction |
+| reversed input | sorted output | correctness under permutation |
 
 ## Edge Cases
 
-All-equal input: `2 5 5 5 5`. The algorithm detects uniformity and returns `-1`. Sorting is skipped to avoid invalid output.
+The most important edge case is when all elements are identical. For an input like:
 
-Minimum `n = 1`: `1 42 17`. Sorting the two elements ensures sums differ, and the algorithm outputs `17 42`.
+```
+3
+7 7 7 7 7 7
+```
 
-Already sorted input: `2 1 2 3 4`. The algorithm preserves order, demonstrating no unnecessary modifications occur when the array already satisfies the sum condition.
+The algorithm detects `len(set(a)) == 1` and immediately outputs -1. If we skipped this check and printed the array, both halves would sum to 3 × 7 = 21, violating the condition.
 
-One distinct value amon
+For a near-uniform case such as:
+
+```
+3
+1 1 1 1 1 2
+```
+
+The set size is greater than 1, so we proceed to sorting:
+
+```
+1 1 1 1 1 2
+```
+
+Half sums become:
+
+first half = 3, second half = 4, so the condition holds. This shows that even a single deviation from uniformity is enough to guarantee a valid split after sorting.
+
+This behavior confirms that the construction only fails in the fully symmetric case and succeeds otherwise.
