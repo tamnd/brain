@@ -1,13 +1,14 @@
 {{define "page-main"}}
+{{$pag := .Paginator}}
 <div>
   <header class="zen-home-header">
     <h1 class="zen-home-header__title">{{.Site.Title}}</h1>
     {{with .Site.Description}}<p class="zen-home-header__sub">{{.}}</p>{{end}}
-    {{if .Pages}}<p class="zen-home-header__count">{{len .Pages}} notes</p>{{end}}
+    {{if $pag}}<p class="zen-home-header__count">{{$pag.TotalItems}} notes</p>{{end}}
   </header>
 
   <div class="zen-list">
-    {{range first 20 .Pages}}
+    {{range $pag.Pages}}
     {{if not .Draft}}
     <a href="{{.RelPermalink}}" class="zen-list-item">
       <div class="zen-list-item__header">
@@ -24,5 +25,30 @@
     {{end}}
     {{end}}
   </div>
+
+  {{if $pag}}{{if gt $pag.TotalPages 1}}
+  <nav class="zen-pager" aria-label="Page navigation">
+    {{if $pag.HasPrev}}
+    <a href="{{$pag.Prev.URL}}" class="zen-pager__btn">
+      <span class="zen-pager__label">← Newer</span>
+      <span class="zen-pager__title">Page {{$pag.Prev.PageNumber}}</span>
+    </a>
+    {{else}}
+    <span class="zen-pager__btn" style="visibility:hidden" aria-hidden="true"></span>
+    {{end}}
+    <span class="zen-pager__btn" style="text-align:center;pointer-events:none;">
+      <span class="zen-pager__label">Page</span>
+      <span class="zen-pager__title">{{$pag.PageNumber}} / {{$pag.TotalPages}}</span>
+    </span>
+    {{if $pag.HasNext}}
+    <a href="{{$pag.Next.URL}}" class="zen-pager__btn zen-pager__btn--next">
+      <span class="zen-pager__label">Older →</span>
+      <span class="zen-pager__title">Page {{$pag.Next.PageNumber}}</span>
+    </a>
+    {{else}}
+    <span class="zen-pager__btn" style="visibility:hidden" aria-hidden="true"></span>
+    {{end}}
+  </nav>
+  {{end}}{{end}}
 </div>
 {{end}}

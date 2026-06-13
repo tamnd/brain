@@ -5,3 +5,4 @@ contentDir  = "content/en"
 outputDir   = "public"
 staticDir   = "static"
 theme       = "zen"
+paginateBy  = 100
