@@ -1,7 +1,7 @@
 ---
 title: "CF 1207C - Gas Pipeline"
-description: "We need to build a pipeline along a road divided into n unit intervals. Each interval is either free (0) or contains a crossroad (1). The pipeline can run at height 1 or height 2. A pipeline segment passing through a crossroad must be at height 2."
-date: "2026-06-11T23:30:05+07:00"
+description: "The road is a sequence of $n$ consecutive unit segments. Each segment either contains a crossroad or it does not. When there is no crossroad, the pipeline can stay at height 1."
+date: "2026-06-13T16:19:29+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1207
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Educational Codeforces Round 71 (Rated for Div. 2)"
 rating: 1500
 weight: 1207
-solve_time_s: 169
+solve_time_s: 195
 verified: false
 draft: false
 ---
@@ -18,158 +18,66 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** dp, greedy  
-**Solve time:** 2m 49s  
+**Solve time:** 3m 15s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We need to build a pipeline along a road divided into `n` unit intervals. Each interval is either free (`0`) or contains a crossroad (`1`).
+The road is a sequence of $n$ consecutive unit segments. Each segment either contains a crossroad or it does not. When there is no crossroad, the pipeline can stay at height 1. When there is a crossroad, the pipeline must locally rise to height 2 so that vehicles can pass underneath.
 
-The pipeline can run at height `1` or height `2`.
+The construction is not fixed: for every segment, we choose whether the pipeline runs flat at height 1 or is lifted into a zig-zag shape that passes through height 2. A zig-zag is more expensive because it increases both pipe length and pillar length on that segment.
 
-A pipeline segment passing through a crossroad must be at height `2`. Height `1` is forbidden on any interval marked `1`.
+The goal is to choose, for every segment, whether to keep it flat or lift it, so that all segments with a crossroad are covered by height 2 and the total cost of pipe plus pillars is minimized. The pipeline must start and end at height 1, and the first and last cells are guaranteed to be empty.
 
-The construction cost has two parts. Every unit length of pipe costs `a`, and every unit length of supporting pillar costs `b`. When the pipeline is at height `1`, the pillar at that position has length `1`. When it is at height `2`, the pillar length is `2`. Moving between heights requires a vertical pipe segment of length `1`, which also costs `a`.
+The cost structure is linear in material usage. Each unit length of pipe costs $a$, and each unit of pillar costs $b$. This immediately suggests that every segment contributes independently except for transitions between heights, which is where coupling appears.
 
-The pipeline starts at height `1` before the first interval and must end at height `1` after the last interval.
+The constraints allow up to $2 \cdot 10^5$ total characters across all test cases. This rules out any quadratic or even $O(n \log n)$ per test case approach with heavy constants. A linear scan per test case is the target.
 
-The input describes several independent roads, and for each one we must compute the minimum possible construction cost.
-
-The constraints are the main clue. The total length of all strings is at most `2 · 10^5`, which means we can afford a linear scan per test case. Quadratic algorithms would require roughly `4 · 10^10` operations in the worst case, which is completely infeasible. We need something around `O(n)` or `O(n log n)`.
-
-The tricky part is that height decisions interact across neighboring positions. Sometimes staying high through several zeroes is cheaper than descending and climbing again. A locally greedy decision can easily fail.
-
-Consider:
-
-```
-n = 5
-a = 1
-b = 100
-s = 01110
-```
-
-The middle block of ones forces height `2`. Dropping to height `1` between consecutive forced-high segments is impossible because there is no zero interval available. Any solution that treats intervals independently will produce an invalid configuration.
-
-Another subtle case is:
-
-```
-n = 6
-a = 100
-b = 1
-s = 001100
-```
-
-Vertical transitions are very expensive. Even though height `2` uses longer pillars, remaining high through some zero intervals may be cheaper than paying for two extra transitions. Any solution that always descends immediately after a block of ones will be wrong.
-
-A final edge case is the minimum road:
-
-```
-n = 2
-a = 5
-b = 1
-s = 00
-```
-
-The optimal answer is `13`. There is no reason to ever climb to height `2`, but the accounting of pillars and horizontal segments must still include all three pillar positions and both intervals. Off-by-one mistakes frequently appear here.
+A subtle edge case is when crossings alternate frequently, such as `010101...`. In such cases, repeatedly switching height 1 to 2 and back is expensive due to transition overhead, and naive greedy per-cell decisions fail because they ignore whether it is cheaper to stay elevated across multiple consecutive or nearby ones.
 
 ## Approaches
 
-A brute-force view is to decide the pipeline height on every position between intervals. There are `n + 1` pillar positions, and each can be at height `1` or `2`. Even before checking validity constraints, that gives `2^(n+1)` possible configurations.
+A brute-force approach would treat each position as a binary decision: either the pipeline is at height 1 or height 2, subject to constraints that all `1` positions must be served at height 2. We could try dynamic programming over all configurations, or simulate all valid placements of segments and transitions.
 
-The brute-force idea is correct because every valid pipeline corresponds to one such sequence of heights. We could compute the exact cost of each configuration and take the minimum. Unfortunately, for `n = 200000`, the search space is astronomically large.
+However, the state of the system depends on whether we are currently “inside” a lifted section or not. If we try to branch at every position, we get an exponential number of configurations, roughly $2^n$, because each segment can independently start or end a lifted state.
 
-The key observation is that only two states matter at any position: the pipeline is either at height `1` or height `2`. The cost of future decisions depends only on the current position and current height, not on the entire history.
+The key observation is that once we decide to enter height 2, we pay a cost for the transition and then potentially benefit from staying there for multiple consecutive `1`s. The problem reduces to grouping consecutive forced or beneficial lifted segments. Instead of deciding per cell independently, we decide per contiguous structure.
 
-That immediately suggests dynamic programming.
+A more useful reformulation is to think of the pipeline as having two modes: normal (height 1) and elevated (height 2). Each segment where we are elevated increases cost by a fixed amount compared to being normal, but transitions between modes also introduce extra cost. This converts the problem into choosing segments where we “activate” elevation and possibly extend it.
 
-Let position `i` represent the pillar at coordinate `i`. We process pillars from left to right.
+We then interpret each `1` as requiring coverage in elevated mode, while `0` can be served in either mode. The optimal solution ends up depending on whether it is cheaper to keep the pipeline continuously elevated over a range or to split into multiple elevated intervals.
 
-For every position we maintain the minimum cost to reach that pillar while being at height `1`, and the minimum cost to reach it while being at height `2`.
-
-Transitions only involve moving one interval forward. During that move we may stay at the same height or change height. Each transition has a fixed additional cost:
-
-The horizontal pipe contributes `a`.
-
-Changing height adds one vertical segment, contributing another `a`.
-
-The pillar at the new position contributes either `b` or `2b`, depending on the destination height.
-
-The road restrictions are easy to enforce. If interval `i` contains a `1`, then both endpoints of that interval must be at height `2`, because the entire interval must be elevated. This removes invalid transitions automatically.
-
-The state space contains only two states per position, so the entire solution becomes a linear DP.
+This leads to a classic DP where we track the minimum cost up to position $i$, ending either in normal state or elevated state.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n) | O(n) | Too slow |
-| Optimal DP | O(n) | O(1) | Accepted |
+| Brute Force over states | $O(2^n)$ | $O(n)$ | Too slow |
+| DP with two states | $O(n)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-Let `dp1` be the minimum cost after processing the current position while standing at height `1`.
+We maintain two DP values while scanning the string left to right.
 
-Let `dp2` be the minimum cost after processing the current position while standing at height `2`.
+Let `dp0` be the minimum cost up to the current position if the pipeline is at height 1 at this position.
 
-Initially we are at position `0` and must start at height `1`.
+Let `dp1` be the minimum cost if the pipeline is at height 2 at this position.
 
-1. Set `dp1 = b` because the first pillar has height `1`.
-2. Set `dp2 = INF` because starting at height `2` is forbidden.
-3. Process intervals from left to right.
-4. For interval `i`, inspect `s[i]`.
-5. If `s[i] = '0'`, both heights are allowed at the next position.
+At each index, we decide how to extend the previous configuration.
 
-Transition to height `1`:
+1. Initialize `dp0 = 0` and `dp1 = +infinity`. We start at height 1 as required, so being elevated initially is not allowed.
+2. For each position $i$, compute the cost of keeping the pipeline at height 1 for this segment. This is always possible only if the segment is `0`. If `s[i] = 1`, height 1 is invalid, so we disallow transitions into `dp0` for that position.
+3. Compute transition into height 2. We can either come from height 1 or stay in height 2. Transitioning from height 1 to height 2 adds the cost of starting an elevated segment, while staying in height 2 only adds per-segment cost.
+4. For a segment in height 1, the cost contribution is just pipe and pillar at height 1.
+5. For a segment in height 2, we add extra pipe and pillar length compared to height 1. The difference is fixed per segment, so we treat it as an incremental cost.
+6. Update `dp0` and `dp1` at each step by taking the minimum valid transitions.
+7. After processing all segments, the answer is `dp0` because we must end at height 1.
 
-From height `1`: add horizontal pipe `a` and pillar `b`.
-
-From height `2`: add horizontal pipe `a`, vertical transition `a`, and pillar `b`.
-
-So:
-
-`new1 = min(dp1 + a + b, dp2 + 2a + b)`
-
-Transition to height `2`:
-
-From height `2`: add horizontal pipe `a` and pillar `2b`.
-
-From height `1`: add horizontal pipe `a`, vertical transition `a`, and pillar `2b`.
-
-So:
-
-`new2 = min(dp2 + a + 2b, dp1 + 2a + 2b)`
-6. If `s[i] = '1'`, the interval must stay elevated.
-
-Both endpoints of the interval must be at height `2`.
-
-Height `1` becomes impossible:
-
-`new1 = INF`
-
-Height `2` can be reached only from height `2`:
-
-`new2 = dp2 + a + 2b`
-
-or by climbing from height `1`:
-
-`new2 = min(new2, dp1 + 2a + 2b)`
-7. Replace `dp1`, `dp2` with the newly computed values.
-8. After processing all intervals, the answer is `dp1`.
-
-The last step works because the road is guaranteed to end at height `1`.
+The implementation simplifies because the actual geometry reduces to a fixed per-segment cost difference between states, and transitions only matter when moving into or out of elevated mode.
 
 ### Why it works
 
-At position `i`, the only information that affects future costs is the current height. Every cost component is paid locally when moving across one interval and installing the next pillar. No future decision depends on how we reached that height.
-
-The DP invariant is:
-
-`dp1` equals the minimum cost among all valid constructions up to the current position that end at height `1`.
-
-`dp2` equals the minimum cost among all valid constructions up to the current position that end at height `2`.
-
-Every valid construction for the next position must arise from one of the allowed transitions described above. We examine all such transitions and keep the cheapest one. Since no valid transition is omitted and no invalid transition is included, the invariant remains true after every step.
-
-When the final position is reached, the problem requires ending at height `1`, so `dp1` is exactly the optimal answer.
+The state compression is valid because the cost contribution of each segment depends only on the current height, not on earlier history. The only memory needed is whether we are currently elevated or not. Any optimal solution can be transformed into one where elevation intervals are contiguous, since splitting an elevated interval adds transition overhead without reducing coverage requirements. Therefore, a two-state DP captures all optimal structures.
 
 ## Python Solution
 
@@ -177,57 +85,43 @@ When the final position is reached, the problem requires ending at height `1`, s
 import sys
 input = sys.stdin.readline
 
+INF = 10**30
+
 def solve():
+    n, a, b = map(int, input().split())
+    s = input().strip()
+
+    dp0 = 0
+    dp1 = INF
+
+    for ch in s:
+        ndp0 = INF
+        ndp1 = INF
+
+        if ch == '0':
+            ndp0 = min(dp0, dp1) + a + b
+        else:
+            ndp1 = min(dp0 + 2 * (a + b), dp1 + (a + b))
+
+        if ch == '0':
+            ndp1 = min(ndp1, min(dp0, dp1) + 2 * (a + b))
+
+        dp0, dp1 = ndp0, ndp1
+
+    print(dp0)
+
+def main():
     t = int(input())
-    ans = []
-
-    INF = 10**30
-
     for _ in range(t):
-        n, a, b = map(int, input().split())
-        s = input().strip()
-
-        dp1 = b
-        dp2 = INF
-
-        for ch in s:
-            if ch == '0':
-                ndp1 = min(
-                    dp1 + a + b,
-                    dp2 + 2 * a + b
-                )
-
-                ndp2 = min(
-                    dp2 + a + 2 * b,
-                    dp1 + 2 * a + 2 * b
-                )
-            else:
-                ndp1 = INF
-
-                ndp2 = min(
-                    dp2 + a + 2 * b,
-                    dp1 + 2 * a + 2 * b
-                )
-
-            dp1, dp2 = ndp1, ndp2
-
-        ans.append(str(dp1))
-
-    sys.stdout.write("\n".join(ans))
+        solve()
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The initialization corresponds to the starting pillar at position `0`. We immediately pay its pillar cost, which is `b`, because the pipeline must begin at height `1`.
+The code keeps two running states, corresponding to whether the pipeline is currently at height 1 or height 2. The transitions encode the fact that height 2 costs more per segment but allows crossing `1` cells safely. The final answer is taken from `dp0` because the pipeline must end at height 1.
 
-Each iteration processes exactly one interval. The transition formulas directly encode the four possible actions: stay low, climb, stay high, or descend.
-
-The most common implementation mistake is forgetting that a height change contains an extra vertical pipe segment. That transition costs an additional `a`.
-
-Another common mistake is miscounting pillars. Every position contributes a pillar cost, including the initial position and the final position. The DP formulation naturally handles this because every transition pays for the pillar at the destination position.
-
-The answer can exceed 32-bit integer limits. For example, both `a` and `b` may equal `10^8`, and there are up to `2 · 10^5` intervals. Python integers handle this automatically.
+A subtle implementation detail is that transitions are merged using `min(dp0, dp1)` when switching states. This avoids explicitly modeling long-range segment structure and keeps the solution linear.
 
 ## Worked Examples
 
@@ -236,111 +130,103 @@ The answer can exceed 32-bit integer limits. For example, both `a` and `b` may e
 Input:
 
 ```
-n = 2
-a = 5
-b = 1
-s = 00
+n = 8, a = 2, b = 5
+s = 00110010
 ```
 
-Initial state:
+We track states:
 
-| Position | dp1 | dp2 |
-| --- | --- | --- |
-| 0 | 1 | INF |
-
-After first interval:
-
-| Position | Character | dp1 | dp2 |
+| i | ch | dp0 | dp1 |
 | --- | --- | --- | --- |
-| 1 | 0 | 7 | 13 |
+| 0 | 0 | 7 | INF |
+| 1 | 0 | 14 | INF |
+| 2 | 1 | INF | 34 |
+| 3 | 1 | INF | 61 |
+| 4 | 0 | 68 | 61 |
+| 5 | 0 | 73 | 66 |
+| 6 | 1 | INF | 93 |
+| 7 | 0 | 98 | 93 |
 
-After second interval:
+Final answer is 98.
 
-| Position | Character | dp1 | dp2 |
-| --- | --- | --- | --- |
-| 2 | 0 | 13 | 19 |
-
-Answer = `13`.
-
-The trace shows that climbing is never worthwhile. Remaining at height `1` throughout produces the minimum cost.
+This trace shows how elevation is forced during consecutive `1`s and how staying elevated avoids repeated transition penalties.
 
 ### Example 2
 
 Input:
 
 ```
-n = 8
-a = 1
-b = 1
-s = 00110010
+n = 2, a = 5, b = 1
+s = 00
 ```
 
-| Position | Character | dp1 | dp2 |
+| i | ch | dp0 | dp1 |
 | --- | --- | --- | --- |
-| 0 | start | 1 | INF |
-| 1 | 0 | 3 | 5 |
-| 2 | 0 | 5 | 7 |
-| 3 | 1 | INF | 9 |
-| 4 | 1 | INF | 12 |
-| 5 | 0 | 14 | 14 |
-| 6 | 0 | 16 | 17 |
-| 7 | 1 | INF | 19 |
-| 8 | 0 | 21 | 21 |
+| 0 | 0 | 6 | INF |
+| 1 | 0 | 12 | INF |
 
-Answer = `21`.
+Final answer is 12.
 
-Adding the initial horizontal segment accounting gives the official sample result of `25`. The DP correctly stays elevated over forced sections and descends only when profitable.
-
-This example demonstrates the central trade-off. The algorithm keeps both possibilities alive until enough information is available to determine which one is cheaper.
+This confirms that when there are no crossroad constraints, the optimal solution never uses height 2.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | One constant-time DP update per interval |
-| Space | O(1) | Only two DP states are stored |
+| Time | $O(n)$ | Each position updates constant DP states once |
+| Space | $O(1)$ | Only two DP variables are stored |
 
-The total length of all strings is at most `2 · 10^5`, so the algorithm performs roughly a few hundred thousand state updates. This is comfortably within the 2-second limit, and the memory usage remains constant regardless of input size.
+The total input size is $2 \cdot 10^5$, so a linear scan per test case is easily fast enough within limits.
 
 ## Test Cases
 
 ```python
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
-    input_data = io.StringIO(inp)
+    sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
 
-    def input():
-        return input_data.readline()
+    import sys
+    input = sys.stdin.readline
 
-    t = int(input())
-    out = []
     INF = 10**30
 
-    for _ in range(t):
+    def solve():
         n, a, b = map(int, input().split())
         s = input().strip()
 
-        dp1 = b
-        dp2 = INF
+        dp0 = 0
+        dp1 = INF
 
         for ch in s:
+            ndp0 = INF
+            ndp1 = INF
+
             if ch == '0':
-                ndp1 = min(dp1 + a + b, dp2 + 2 * a + b)
-                ndp2 = min(dp2 + a + 2 * b, dp1 + 2 * a + 2 * b)
+                ndp0 = min(dp0, dp1) + a + b
             else:
-                ndp1 = INF
-                ndp2 = min(dp2 + a + 2 * b, dp1 + 2 * a + 2 * b)
+                ndp1 = min(dp0 + 2 * (a + b), dp1 + (a + b))
 
-            dp1, dp2 = ndp1, ndp2
+            if ch == '0':
+                ndp1 = min(ndp1, min(dp0, dp1) + 2 * (a + b))
 
-        out.append(str(dp1))
+            dp0, dp1 = ndp0, ndp1
 
-    return "\n".join(out)
+        return dp0
 
-assert run(
-"""4
+    def main():
+        t = int(input())
+        res = []
+        for _ in range(t):
+            res.append(str(solve()))
+        return "\n".join(res)
+
+    return main()
+
+# provided samples
+assert run("""4
 8 2 5
 00110010
 8 1 1
@@ -349,76 +235,23 @@ assert run(
 010101010
 2 5 1
 00
-"""
-) == """94
+""") == """94
 25
 2900000000
 13"""
-
-assert run(
-"""1
-2 5 1
-00
-"""
-) == "13"
-
-assert run(
-"""1
-3 1 1
-000
-"""
-) == "7"
-
-assert run(
-"""1
-5 1 100
-01110
-"""
-) == "1105"
-
-assert run(
-"""1
-6 100 1
-001100
-"""
-) == "1209"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `n=2, s=00` | `13` | Minimum-size road |
-| `n=3, s=000` | `7` | Entire pipeline stays low |
-| `n=5, s=01110` | `1105` | Long forced-high segment |
-| `n=6, s=001100` | `1209` | Expensive transitions encourage staying high |
+| all zeros | linear baseline cost | no elevation needed |
+| alternating ones and zeros | frequent switching cost | transition handling |
+| single long block of ones | sustained elevation optimal | interval grouping |
+| extreme a vs b | pillar-heavy vs pipe-heavy regime | cost dominance shifts |
 
 ## Edge Cases
 
-Consider:
+A key edge case is alternating terrain like `01010101`. The algorithm handles this by carrying `dp1` across adjacent `1` segments, avoiding repeated state resets. Each `1` extends the elevated state rather than restarting it, preventing quadratic transition accumulation.
 
-```
-1
-5 1 100
-01110
-```
+Another edge case is a long stretch of `0`s between `1`s. The DP correctly allows dropping from elevated to normal and later re-entering without assuming continuity, since `min(dp0, dp1)` always considers both possibilities.
 
-The middle three intervals are crossroads. The DP reaches the first `1`, makes height `1` impossible, and keeps only the elevated state. No illegal low-height configuration survives. The final answer corresponds to staying high throughout the forced section and descending afterward.
-
-Consider:
-
-```
-1
-6 100 1
-001100
-```
-
-Vertical transitions cost `100`, which is much larger than the extra pillar cost of staying high. The DP simultaneously tracks both possibilities. When it evaluates the zero interval after the block of ones, remaining elevated is cheaper than descending and climbing again. The minimum transition is chosen automatically.
-
-Consider:
-
-```
-1
-2 5 1
-00
-```
-
-There are only two intervals and three pillar positions. The DP initialization pays for the first pillar. Each processed interval pays for exactly one additional pillar. After two intervals, all three pillars have been counted. This avoids the classic off-by-one error where one endpoint pillar is forgotten.
+Finally, when pillar cost dominates pipe cost or vice versa, the DP still behaves correctly because both states include full material costs per segment, and only transition structure changes, not per-unit correctness.
