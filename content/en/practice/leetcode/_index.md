@@ -3911,6 +3911,7 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3896 | [Minimum Operations to Transform Array into Alternating Prime](38xx/3896.md) | 🟡 Medium | 58s | The problem asks us to transform an integer array nums into an alte… |
 | 3897 | [Maximum Value of Concatenated Binary Segments](38xx/3897.md) | 🔴 Hard | 1m 18s | The problem presents two integer arrays nums1 and nums0, each of si… |
 | 3898 | [Find the Degree of Each Vertex](38xx/3898.md) | 🟢 Easy | 1m 37s | The problem asks us to calculate the degree of each vertex in an un… |
+| 3899 | [Angles of a Triangle](38xx/3899.md) | 🟡 Medium | 1m 1s | We are given an array sides containing exactly three positive integ… |
 | 3900 | [Longest Balanced Substring After One Swap](39xx/3900.md) | 🟡 Medium | 2m 17s | We are given a binary string s containing only '0' and '1'. A subst… |
 | 3901 | [Good Subsequence Queries](39xx/3901.md) | 🔴 Hard | 2m 19s | The solution does address the correct exercise and correctly identi… |
 | 3903 | [Smallest Stable Index I](39xx/3903.md) | 🟢 Easy | 2m 19s | The problem asks us to find the smallest index i in an integer arra… |
@@ -3930,7 +3931,9 @@ Solutions to [LeetCode](https://leetcode.com) problems with comprehensive analys
 | 3919 | [Minimum Cost to Move Between Indices](39xx/3919.md) | 🟡 Medium | 1m 29s | We are given a strictly increasing array nums. Each position repres… |
 | 3920 | [Maximize Fixed Points After Deletions](39xx/3920.md) | 🔴 Hard | 1m 27s | The problem asks us to maximize the number of fixed points in an ar… |
 | 3921 | [Score Validator](39xx/3921.md) | 🟢 Easy | 1m 21s | This problem asks us to simulate a simple scoring system while proc… |
+| 3922 | [Minimum Flips to Make Binary String Coherent](39xx/3922.md) | 🟡 Medium | 1m 37s | We are given a binary string s consisting only of '0' and '1'. A st… |
 | 3923 | [Minimum Generations to Target Point](39xx/3923.md) | 🟡 Medium | 1m 30s | This problem defines a process that repeatedly creates new 3D point… |
+| 3924 | [Minimum Threshold Path With Limited Heavy Edges](39xx/3924.md) | 🔴 Hard | 1m 11s | We are given an undirected weighted graph with n nodes and a list o… |
 | 3925 | [Concatenate Array With Reverse](39xx/3925.md) | 🟢 Easy | 1m 44s | The problem asks us to construct a new array by concatenating an in… |
 | 3926 | [Count Valid Word Occurrences](39xx/3926.md) | 🟡 Medium | 1m 23s | The problem asks us to count occurrences of specific words in a str… |
 | 3927 | [Minimize Array Sum Using Divisible Replacements](39xx/3927.md) | 🟡 Medium | 42s | The problem gives an integer array nums and allows an operation tha… |

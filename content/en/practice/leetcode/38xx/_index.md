@@ -107,3 +107,4 @@ draft: false
 | 3896 | [Minimum Operations to Transform Array into Alternating Prime](3896.md) | 🟡 Medium | 58s | The problem asks us to transform an integer array nums into an alte… |
 | 3897 | [Maximum Value of Concatenated Binary Segments](3897.md) | 🔴 Hard | 1m 18s | The problem presents two integer arrays nums1 and nums0, each of si… |
 | 3898 | [Find the Degree of Each Vertex](3898.md) | 🟢 Easy | 1m 37s | The problem asks us to calculate the degree of each vertex in an un… |
+| 3899 | [Angles of a Triangle](3899.md) | 🟡 Medium | 1m 1s | We are given an array sides containing exactly three positive integ… |

@@ -29,7 +29,9 @@ draft: false
 | 3919 | [Minimum Cost to Move Between Indices](3919.md) | 🟡 Medium | 1m 29s | We are given a strictly increasing array nums. Each position repres… |
 | 3920 | [Maximize Fixed Points After Deletions](3920.md) | 🔴 Hard | 1m 27s | The problem asks us to maximize the number of fixed points in an ar… |
 | 3921 | [Score Validator](3921.md) | 🟢 Easy | 1m 21s | This problem asks us to simulate a simple scoring system while proc… |
+| 3922 | [Minimum Flips to Make Binary String Coherent](3922.md) | 🟡 Medium | 1m 37s | We are given a binary string s consisting only of '0' and '1'. A st… |
 | 3923 | [Minimum Generations to Target Point](3923.md) | 🟡 Medium | 1m 30s | This problem defines a process that repeatedly creates new 3D point… |
+| 3924 | [Minimum Threshold Path With Limited Heavy Edges](3924.md) | 🔴 Hard | 1m 11s | We are given an undirected weighted graph with n nodes and a list o… |
 | 3925 | [Concatenate Array With Reverse](3925.md) | 🟢 Easy | 1m 44s | The problem asks us to construct a new array by concatenating an in… |
 | 3926 | [Count Valid Word Occurrences](3926.md) | 🟡 Medium | 1m 23s | The problem asks us to count occurrences of specific words in a str… |
 | 3927 | [Minimize Array Sum Using Divisible Replacements](3927.md) | 🟡 Medium | 42s | The problem gives an integer array nums and allows an operation tha… |
