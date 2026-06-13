@@ -30,19 +30,15 @@
   <nav class="zen-pager" aria-label="Page navigation">
     {{if $pag.HasPrev}}
     <a href="{{$pag.Prev.URL}}" class="zen-pager__btn">
-      <span class="zen-pager__label">← Newer</span>
+      <span class="zen-pager__label">← Older</span>
       <span class="zen-pager__title">Page {{$pag.Prev.PageNumber}}</span>
     </a>
     {{else}}
     <span class="zen-pager__btn" style="visibility:hidden" aria-hidden="true"></span>
     {{end}}
-    <span class="zen-pager__btn" style="text-align:center;pointer-events:none;">
-      <span class="zen-pager__label">Page</span>
-      <span class="zen-pager__title">{{$pag.PageNumber}} / {{$pag.TotalPages}}</span>
-    </span>
     {{if $pag.HasNext}}
     <a href="{{$pag.Next.URL}}" class="zen-pager__btn zen-pager__btn--next">
-      <span class="zen-pager__label">Older →</span>
+      <span class="zen-pager__label">Newer →</span>
       <span class="zen-pager__title">Page {{$pag.Next.PageNumber}}</span>
     </a>
     {{else}}
