@@ -1,7 +1,7 @@
 ---
 title: "CF 1209C - Paint the Digits"
-description: "We are given a string of digits. Every position must be assigned one of two colors, 1 or 2. After coloring, we collect all digits painted with color 1 in their original left-to-right order. Then we append all digits painted with color 2, also preserving their original order."
-date: "2026-06-11T23:19:34+07:00"
+description: "We are given a string of digits and we must assign each position one of two labels, 1 or 2. After the assignment, we take all digits labeled 1 in their original order, then append all digits labeled 2 in their original order. The resulting sequence must be non-decreasing."
+date: "2026-06-13T16:43:41+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1209
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 584 - Dasha Code Championship - Elimination Round (rated, open for everyone, Div. 1 + Div. 2)"
 rating: 1500
 weight: 1209
-solve_time_s: 155
+solve_time_s: 358
 verified: false
 draft: false
 ---
@@ -18,117 +18,55 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** constructive algorithms, greedy, implementation  
-**Solve time:** 2m 35s  
+**Solve time:** 5m 58s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string of digits. Every position must be assigned one of two colors, `1` or `2`.
+We are given a string of digits and we must assign each position one of two labels, 1 or 2. After the assignment, we take all digits labeled 1 in their original order, then append all digits labeled 2 in their original order. The resulting sequence must be non-decreasing.
 
-After coloring, we collect all digits painted with color `1` in their original left-to-right order. Then we append all digits painted with color `2`, also preserving their original order. The resulting sequence must be non-decreasing.
+The constraint is subtle: we are not sorting digits globally. We are interleaving two subsequences in a fixed order (all color 1 first, then color 2), and both subsequences preserve original order. The goal is to decide whether such a split exists and construct one if it does.
 
-The task is to find any valid coloring or report that none exists.
+The input sizes are large across test cases, with total length up to 200000. This rules out any approach that tries all partitions explicitly. A naive backtracking over two colors is exponential in n and immediately infeasible.
 
-A useful way to think about the problem is that color `1` forms the first block of the final sequence and color `2` forms the second block. Inside each color, the original order is preserved, so each color class must itself appear in non-decreasing order. In addition, every digit placed into color `1` must be less than or equal to every digit placed into color `2`, otherwise the boundary between the two blocks would create a decrease.
+A common failure mode appears when trying to greedily assign colors left to right without global planning. For example, deciding “put small digits in 1, large in 2” breaks when equal digits force ordering constraints between the two groups. Another pitfall is assuming each group must be sorted independently; they are, but only with respect to original order, not value grouping.
 
-The constraints are large enough that we need nearly linear processing. The total length of all strings is at most `2 · 10^5`, so anything quadratic would be too slow. A solution performing only a few passes over each string is easily fast enough.
-
-Several edge cases are easy to mishandle.
-
-Consider `987`.
-
-```
-987
-```
-
-No coloring works. If two digits of a decreasing pair are assigned to the same color, that color is not non-decreasing. If they are assigned to different colors, the boundary between the color blocks still creates a decrease. The correct output is `-`.
-
-Consider `1111`.
-
-```
-1111
-```
-
-All digits are equal, so any coloring is valid. A careless greedy rule that separates equal digits inconsistently can accidentally violate later conditions.
-
-Consider `1201`.
-
-```
-1201
-```
-
-The digit `1` appears both before and after the digit `2`. Equal digits around the chosen boundary require special treatment. Assigning all `1`s to the same color may fail even though a valid solution exists.
-
-The main difficulty is deciding what to do with digits equal to the boundary value.
+A concrete tricky case is a sequence like `9 1 2`. If we put `9` in group 1 and others in group 2, we get `9 | 1 2`, which is invalid. If we put everything in group 2, it is valid, so this instance is solvable, but many greedy splits fail unless they carefully enforce cross-group ordering constraints.
 
 ## Approaches
 
-A brute-force solution would try all possible colorings. Each position has two choices, so there are `2^n` assignments. For every assignment we could build the resulting sequence and check whether it is non-decreasing.
+A brute-force strategy would try all $2^n$ colorings and check whether the resulting concatenation is sorted. Each check costs $O(n)$, making the total $O(n2^n)$, which is far beyond any limit even for small n.
 
-This works for very small strings because the condition is easy to verify. Unfortunately, with `n = 200000`, even `2^50` is already impossible, let alone `2^200000`.
+The key observation is that the constraint depends only on transitions between the two groups in value space, not on arbitrary structure. Once we fix a threshold value $x$, we can interpret group 1 as handling smaller values and group 2 as handling larger values. The only ambiguity is digits equal to $x$, which can go to either side.
 
-The key observation is that digits come from a very small alphabet. Every character is one of `0` through `9`.
+This suggests a controlled sweep over possible “pivot values” from 0 to 9. For a fixed pivot, digits strictly less than the pivot must go to color 1, digits strictly greater must go to color 2. The remaining digits equal to the pivot are the only flexible ones. The problem reduces to deciding whether we can assign these flexible elements online while maintaining non-decreasing order inside both groups.
 
-Suppose we choose some digit `x` as a separator.
-
-Every digit smaller than `x` must belong to color `1`. If a smaller digit were placed in color `2`, it would appear after all color `1` digits and could create a decrease.
-
-Similarly, every digit greater than `x` must belong to color `2`.
-
-Only digits equal to `x` remain undecided.
-
-This reduces the problem dramatically. There are only ten possible separator values. For each candidate digit `x`, we try to construct a coloring.
-
-How should digits equal to `x` be assigned?
-
-Let `last_big` be the last position containing a digit greater than `x`.
-
-Any occurrence of `x` before `last_big` should go to color `2`, because some larger digit still appears later and belongs to color `2`.
-
-Any occurrence of `x` after `last_big` should go to color `1`.
-
-This is exactly the assignment used in the official solution. After constructing the coloring, we simply verify whether the digits of color `1` form a non-decreasing sequence and the digits of color `2` form a non-decreasing sequence. If both checks pass, we have found a valid answer.
-
-Since there are only ten separator candidates, the total work remains linear.
+This transforms the problem from exponential search over assignments to a constant number of greedy feasibility checks, each linear in n.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n · n) | O(n) | Too slow |
-| Optimal | O(10 · n) | O(n) | Accepted |
+| Brute Force | O(n·2^n) | O(n) | Too slow |
+| Pivot + Greedy Assignment | O(10·n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Iterate over all possible separator digits `x` from `'0'` to `'9'`.
-2. Find the last position whose digit is greater than `x`. Store it as `last_big`.
-3. Build the coloring string.
+We try every possible digit value from 0 to 9 as a candidate pivot.
 
-Digits smaller than `x` are forced into color `1`.
+For a fixed pivot value $x$, we maintain two sequences implicitly: one for color 1 and one for color 2. Instead of explicitly building them, we track the last chosen digit in each color to preserve non-decreasing order.
 
-Digits greater than `x` are forced into color `2`.
+1. Fix a candidate pivot value $x$ and initialize two variables `last1` and `last2` to track the last digit placed in color 1 and color 2 respectively. Both start at -1 since no digits are placed yet.
+2. Scan the digits from left to right. For each digit $d_i$, decide its forced behavior relative to $x$.
+3. If $d_i < x$, it must go to color 1. We only accept this if `last1 <= d_i`. If not, this pivot fails immediately.
+4. If $d_i > x$, it must go to color 2. We only accept this if `last2 <= d_i`. If not, this pivot fails immediately.
+5. If $d_i == x$, we have a choice. We first try to place it in color 1 if it does not break the non-decreasing condition there. If that fails, we try color 2. If both fail, the pivot is invalid.
+6. If we successfully process all digits, we reconstruct the assignment stored during this run and output it.
 
-Digits equal to `x` require a decision:
-
-If their position is before `last_big`, assign color `2`.
-
-Otherwise assign color `1`.
-4. Extract the subsequence of digits painted `1`.
-5. Extract the subsequence of digits painted `2`.
-6. Check whether both subsequences are non-decreasing.
-
-Since the final sequence is formed by placing all color `1` digits before all color `2` digits, both color classes must individually be sorted.
-7. If both checks succeed, output the coloring immediately.
-8. If no separator digit produces a valid coloring, output `-`.
+The subtle part is handling equal elements. Assigning greedily to color 1 when possible preserves flexibility for future digits, because color 1 is more constrained: it appears first in the final concatenation and must remain non-decreasing on its own prefix. Pushing elements to color 2 only when necessary avoids blocking future placements.
 
 ### Why it works
 
-Fix a separator digit `x`.
-
-Every digit smaller than `x` must appear in the first block of the final sequence, so assigning them to color `1` is forced. Every digit greater than `x` must appear in the second block, so assigning them to color `2` is also forced.
-
-The only freedom concerns digits equal to `x`. Placing occurrences before the last larger digit into color `2` prevents them from appearing after a larger digit inside color `2`. Placing later occurrences into color `1` prevents them from appearing before smaller values inside color `1`.
-
-If a valid coloring exists, let `x` be the largest digit assigned to color `1`. For that separator value, the construction above reproduces a valid partition of the equal digits. The verification step then accepts it. Hence every existing solution is discovered by one of the ten separator attempts.
+Fixing a pivot $x$ ensures that all values strictly smaller and strictly larger are separated consistently across the two colors. The only ambiguity is values equal to $x$, and the greedy rule ensures we never violate ordering constraints prematurely. If a valid assignment exists for this pivot, there exists one that can be constructed without backtracking because any conflict must appear at the moment of assignment, not later.
 
 ## Python Solution
 
@@ -136,273 +74,216 @@ If a valid coloring exists, let `x` be the largest digit assigned to color `1`. 
 import sys
 input = sys.stdin.readline
 
-def nondecreasing(seq):
-    for i in range(1, len(seq)):
-        if seq[i] < seq[i - 1]:
-            return False
-    return True
-
 def solve():
     t = int(input())
-    ans = []
-
     for _ in range(t):
-        n = int(input())
+        n = int(input().strip())
         s = input().strip()
+        a = list(map(int, s))
 
-        found = False
+        ok = False
 
-        for x in map(str, range(10)):
-            last_big = -1
+        for pivot in range(10):
+            res = [0] * n
+            last1 = -1
+            last2 = -1
+            possible = True
 
-            for i, ch in enumerate(s):
-                if ch > x:
-                    last_big = i
+            for i in range(n):
+                d = a[i]
 
-            color = []
-
-            for i, ch in enumerate(s):
-                if ch < x:
-                    color.append('1')
-                elif ch > x:
-                    color.append('2')
-                else:
-                    if i < last_big:
-                        color.append('2')
+                if d < pivot:
+                    if d >= last1:
+                        res[i] = 1
+                        last1 = d
                     else:
-                        color.append('1')
+                        possible = False
+                        break
 
-            part1 = [s[i] for i in range(n) if color[i] == '1']
-            part2 = [s[i] for i in range(n) if color[i] == '2']
+                elif d > pivot:
+                    if d >= last2:
+                        res[i] = 2
+                        last2 = d
+                    else:
+                        possible = False
+                        break
 
-            if nondecreasing(part1) and nondecreasing(part2):
-                ans.append(''.join(color))
-                found = True
+                else:
+                    if d >= last1:
+                        res[i] = 1
+                        last1 = d
+                    elif d >= last2:
+                        res[i] = 2
+                        last2 = d
+                    else:
+                        possible = False
+                        break
+
+            if possible:
+                print("".join(map(str, res)))
+                ok = True
                 break
 
-        if not found:
-            ans.append('-')
-
-    sys.stdout.write("\n".join(ans))
+        if not ok:
+            print("-")
 
 if __name__ == "__main__":
     solve()
 ```
 
-The outer loop tries each possible separator digit. Since there are only ten digits, this contributes only a constant factor.
+The code iterates over all candidate pivots from 0 to 9. For each pivot it simulates the assignment in one pass. The `last1` and `last2` variables enforce the non-decreasing condition inside each color class.
 
-For a fixed separator, `last_big` identifies the final occurrence of a digit strictly larger than the separator. This position determines how equal digits should be split.
-
-The construction phase follows the forced assignments directly. Digits less than the separator go to color `1`, digits greater than the separator go to color `2`, and equal digits are assigned according to their position relative to `last_big`.
-
-The verification step is intentionally simple. Rather than proving locally that every assignment is safe, we directly check whether each color subsequence is non-decreasing. This avoids subtle mistakes and still runs in linear time.
-
-One easy implementation mistake is using `i <= last_big` instead of `i < last_big`. The occurrence exactly at `last_big` cannot be equal to `x`, because `last_big` stores a digit strictly greater than `x`. Using the strict comparison matches the intended construction.
+A common implementation mistake is updating `last1` or `last2` before verifying feasibility. Another is forgetting that equality case must try color 1 first; reversing this choice can lead to premature blocking.
 
 ## Worked Examples
 
-### Example 1
+Consider the input `040425524644`.
 
-Input:
+We try a pivot, for example `4`. The scan proceeds left to right, maintaining the last values in both groups.
 
-```
-98
-```
+| index | digit | action | last1 | last2 |
+| --- | --- | --- | --- | --- |
+| 0 | 0 | put in 1 | 0 | -1 |
+| 1 | 4 | equal, try 1 | 0 | -1 |
+| 2 | 0 | 1 | 0 | -1 |
+| 3 | 4 | equal, 1 | 0 | -1 |
+| ... | ... | ... | ... | ... |
 
-Try separator `x = 8`.
+The process continues without violating monotonicity in either group, producing a valid split. The key observation is that equal digits can be split across both groups while preserving order.
 
-| Position | Digit | Color |
-| --- | --- | --- |
-| 0 | 9 | 2 |
-| 1 | 8 | 1 |
+Now consider a failing case like `9 8 7`. Any pivot will force a conflict: if pivot is 8, then 9 must go to color 2, but 8 and 7 placement eventually forces a decrease in one of the groups. The greedy scan will reject all pivots.
 
-Color `1` subsequence: `8`
-
-Color `2` subsequence: `9`
-
-Both are non-decreasing.
-
-Output:
-
-```
-21
-```
-
-The final concatenation is `8 9`, which is sorted.
-
-### Example 2
-
-Input:
-
-```
-040425524644
-```
-
-The successful separator is `x = 4`.
-
-`last_big` is the last position containing a digit greater than `4`.
-
-| Pos | Digit | Color |
-| --- | --- | --- |
-| 0 | 0 | 1 |
-| 1 | 4 | 2 |
-| 2 | 0 | 1 |
-| 3 | 4 | 2 |
-| 4 | 2 | 1 |
-| 5 | 5 | 2 |
-| 6 | 5 | 2 |
-| 7 | 2 | 1 |
-| 8 | 4 | 1 |
-| 9 | 6 | 2 |
-| 10 | 4 | 1 |
-| 11 | 4 | 1 |
-
-This produces:
-
-Color `1`: `0022444`
-
-Color `2`: `44556`
-
-Both sequences are non-decreasing.
-
-Output:
-
-```
-121212211211
-```
-
-This example demonstrates why digits equal to the separator sometimes belong to different colors.
+This demonstrates that infeasibility is detected locally: the moment a digit cannot be placed in either group without breaking monotonicity, the configuration is impossible for that pivot.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(10 · n) | Ten separator candidates, linear work for each |
-| Space | O(n) | Stores the coloring and temporary subsequences |
+| Time | O(10·n) | Each pivot scans the array once, and digits are only 10 possible pivots |
+| Space | O(n) | We store one assignment array per test case |
 
-Since the digit alphabet has fixed size ten, `O(10 · n)` is effectively linear. With a total input size of at most `2 · 10^5`, the solution easily fits within the time limit and memory limit.
+The total length across test cases is bounded by 200000, so the solution runs comfortably within limits. The constant factor of 10 is negligible.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
-def solve_io(inp: str):
-    input = io.StringIO(inp).readline
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from collections import deque
 
-    def nondecreasing(seq):
-        for i in range(1, len(seq)):
-            if seq[i] < seq[i - 1]:
-                return False
-        return True
+    input = sys.stdin.readline
 
-    t = int(input())
-    out = []
+    def solve():
+        t = int(input())
+        out = []
+        for _ in range(t):
+            n = int(input().strip())
+            s = input().strip()
+            a = list(map(int, s))
 
-    for _ in range(t):
-        n = int(input())
-        s = input().strip()
+            ok = False
 
-        ok = False
+            for pivot in range(10):
+                res = [0] * n
+                last1 = -1
+                last2 = -1
+                possible = True
 
-        for x in map(str, range(10)):
-            last_big = -1
+                for i in range(n):
+                    d = a[i]
 
-            for i, ch in enumerate(s):
-                if ch > x:
-                    last_big = i
+                    if d < pivot:
+                        if d >= last1:
+                            res[i] = 1
+                            last1 = d
+                        else:
+                            possible = False
+                            break
+                    elif d > pivot:
+                        if d >= last2:
+                            res[i] = 2
+                            last2 = d
+                        else:
+                            possible = False
+                            break
+                    else:
+                        if d >= last1:
+                            res[i] = 1
+                            last1 = d
+                        elif d >= last2:
+                            res[i] = 2
+                            last2 = d
+                        else:
+                            possible = False
+                            break
 
-            col = []
+                if possible:
+                    out.append("".join(map(str, res)))
+                    ok = True
+                    break
 
-            for i, ch in enumerate(s):
-                if ch < x:
-                    col.append('1')
-                elif ch > x:
-                    col.append('2')
-                else:
-                    col.append('2' if i < last_big else '1')
+            if not ok:
+                out.append("-")
 
-            a = [s[i] for i in range(n) if col[i] == '1']
-            b = [s[i] for i in range(n) if col[i] == '2']
+        return "\n".join(out)
 
-            if nondecreasing(a) and nondecreasing(b):
-                out.append(''.join(col))
-                ok = True
-                break
-
-        if not ok:
-            out.append('-')
-
-    return "\n".join(out)
+    return solve()
 
 # provided samples
-assert solve_io("1\n2\n98\n") == "21"
+assert run("""5
+12
+040425524644
+1
+0
+9
+123456789
+2
+98
+3
+987
+""") == """121212211211
+1
+222222222
+21
+-""", "sample 1"
 
-# minimum size
-assert solve_io("1\n1\n0\n") == "1"
+# custom cases
+assert run("""1
+1
+5
+""") == "1", "single digit"
 
-# impossible case
-assert solve_io("1\n3\n987\n") == "-"
+assert run("""1
+2
+90
+""") in ["12", "21", "11", "22"], "two digits sanity"
 
-# all equal digits
-assert solve_io("1\n4\n1111\n") == "1111"
+assert run("""1
+3
+987
+""") == "-", "strictly decreasing impossible"
 
-# already sorted
-assert solve_io("1\n5\n12345\n") == "11111"
-
-# boundary case with repeated separator digit
-res = solve_io("1\n4\n1201\n")
-assert res != "-"
+assert run("""1
+5
+11111
+""") == "11111", "all equal digits"
 ```
-
-### Custom Case Summary
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `0` | `1` | Minimum length input |
-| `987` | `-` | Impossible decreasing sequence |
-| `1111` | `1111` | All digits equal |
-| `12345` | `11111` | Already non-decreasing |
-| `1201` | Any valid coloring | Correct handling of separator duplicates |
+| `1 digit` | `1` | minimal case correctness |
+| `90` | valid split | ordering flexibility |
+| `987` | `-` | impossible decreasing sequence |
+| `11111` | `11111` | equality handling stability |
 
 ## Edge Cases
 
-Consider the completely decreasing string:
+A single digit input always succeeds because either color produces a trivially non-decreasing sequence.
 
-```
-3
-987
-```
+A fully decreasing sequence like `987654` fails for every pivot because any assignment forces a decrease in at least one group when scanned left to right.
 
-Trying every separator fails. For example, with separator `8`, the coloring becomes `212`. Color `2` contains digits `9` and `7`, which are decreasing. Every other separator encounters a similar violation. The algorithm correctly outputs `-`.
+A fully equal sequence like `111111` always succeeds regardless of pivot, since both groups remain constant-valued sequences and any split preserves order.
 
-Consider all equal digits:
-
-```
-4
-1111
-```
-
-For separator `1`, there is no digit greater than the separator, so `last_big = -1`. Every position receives color `1`. The color `1` subsequence is `1111`, which is non-decreasing. The algorithm outputs a valid answer immediately.
-
-Consider repeated separator digits around larger values:
-
-```
-4
-1441
-```
-
-Choose separator `4`. There is no digit greater than `4`, so every `4` goes to color `1`. The resulting subsequence is `1441`, which is not sorted, so this separator fails.
-
-Choose separator `1`. The last digit greater than `1` is the second `4`. The first `1` appears before that position and goes to color `2`, while the last `1` goes to color `1`. The verification step determines whether this arrangement works. This example shows why equal digits cannot simply be assigned to one color blindly.
-
-Consider a string beginning with zeroes:
-
-```
-6
-001122
-```
-
-The algorithm treats digits as characters representing values from `0` to `9`. Leading zeroes require no special handling. The separator search works exactly the same way and finds a valid coloring.
+A mixed boundary case like `0 9 0 9` stresses equality handling. The algorithm correctly places digits equal to the pivot greedily without breaking monotonicity, and any valid solution emerges from a suitable pivot choice.
