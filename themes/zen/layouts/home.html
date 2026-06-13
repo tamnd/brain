@@ -31,7 +31,7 @@
     {{if $pag.HasPrev}}
     <a href="{{$pag.Prev.URL}}" class="zen-pager__btn">
       <span class="zen-pager__label">← Older</span>
-      <span class="zen-pager__title">Page {{$pag.Prev.PageNumber}}</span>
+      {{with $pag.Prev.Label}}<span class="zen-pager__title">{{.}}</span>{{end}}
     </a>
     {{else}}
     <span class="zen-pager__btn" style="visibility:hidden" aria-hidden="true"></span>
@@ -39,7 +39,7 @@
     {{if $pag.HasNext}}
     <a href="{{$pag.Next.URL}}" class="zen-pager__btn zen-pager__btn--next">
       <span class="zen-pager__label">Newer →</span>
-      <span class="zen-pager__title">Page {{$pag.Next.PageNumber}}</span>
+      {{with $pag.Next.Label}}<span class="zen-pager__title">{{.}}</span>{{end}}
     </a>
     {{else}}
     <span class="zen-pager__btn" style="visibility:hidden" aria-hidden="true"></span>
