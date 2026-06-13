@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 8010 problems, 3812 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 8013 problems, 3813 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 8010 problems, 3812 verified.**
+**1429 contests, 8013 problems, 3813 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -579,7 +579,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1244](1244/) | [Codeforces Round 592 (Div. 2)](https://codeforces.com/contest/1244) | Div. 2 | 800-2300 | 1/5 | 32m 5s |
 | [1245](1245/) | [Codeforces Round 597 (Div. 2)](https://codeforces.com/contest/1245) | Div. 2 | 1000-2300 | 3/4 | 19m 27s |
 | [1248](1248/) | [Codeforces Round 594 (Div. 2)](https://codeforces.com/contest/1248) | Div. 2 | 900-1000 | 1/2 | 8m 27s |
-| [1249](1249/) | [Codeforces Round 595 (Div. 3)](https://codeforces.com/contest/1249) | Div. 3 | 800-1700 | 0/2 | 5m 23s |
+| [1249](1249/) | [Codeforces Round 595 (Div. 3)](https://codeforces.com/contest/1249) | Div. 3 | 800-1800 | 1/5 | 26m 26s |
 | [1250](1250/) | [2019-2020 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1250) | ICPC/IOI | 1400-1800 | 1/2 | 4m 46s |
 | [1251](1251/) | [Educational Codeforces Round 75 (Rated for Div. 2)](https://codeforces.com/contest/1251) | Div. 2 | 1600-1600 | 0/1 | 2m 50s |
 | [1252](1252/) | [2019-2020 ICPC, Asia Jakarta Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1252) | ICPC/IOI | 1000-2400 | 3/5 | 11m 9s |
