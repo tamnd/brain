@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7946 problems, 3781 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7948 problems, 3781 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7946 problems, 3781 verified.**
+**1429 contests, 7948 problems, 3781 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -553,7 +553,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1205](1205/) | [Codeforces Round 580 (Div. 1)](https://codeforces.com/contest/1205) | Div. 1 | 1200-3400 | 2/6 | 28m 3s |
 | [1206](1206/) | [Codeforces Round 580 (Div. 2)](https://codeforces.com/contest/1206) | Div. 2 | 800-900 | 1/2 | 12m 54s |
 | [1207](1207/) | [Educational Codeforces Round 71 (Rated for Div. 2)](https://codeforces.com/contest/1207) | Div. 2 | 800-2700 | 3/6 | 18m 1s |
-| [1208](1208/) | [Manthan, Codefest 19 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1208) | Div. 1+2 | 900-3500 | 3/4 | 8m 36s |
+| [1208](1208/) | [Manthan, Codefest 19 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1208) | Div. 1+2 | 900-3500 | 3/6 | 28m 42s |
 | [1209](1209/) | [Codeforces Round 584 - Dasha Code Championship - Elimination Round (rated, open for everyone, Div. 1 + Div. 2)](https://codeforces.com/contest/1209) | Div. 1+2 | 800-3300 | 4/5 | 9m 30s |
 | [1210](1210/) | [Dasha Code Championship - SPb Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1210) | Special | 1700-3200 | 3/4 | 8m 36s |
 | [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | Kotlin | 1000-2500 | 2/4 | 7m 9s |
