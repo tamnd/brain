@@ -383,16 +383,14 @@ def write_robots(site: Site) -> None:
 
 def generate_sitemaps(main: Site, shards: list[Site]) -> None:
     dates = load_git_lastmods()
-    shard_sitemaps: list[tuple[str, str | None]] = []
     for shard in shards:
         urls: list[tuple[str, str | None]] = []
         for path in shard.output.rglob("index.html"):
             url_path = path_to_url(path, shard.output)
             if url_path is not None:
                 urls.append((shard.base_url + url_path, lastmod_for_url(shard, url_path, dates)))
-        lastmod = write_urlset(shard.output / "sitemap.xml", urls)
+        write_urlset(shard.output / "sitemap.xml", urls)
         write_robots(shard)
-        shard_sitemaps.append((f"{shard.base_url}/sitemap.xml", lastmod))
 
     main_urls: list[tuple[str, str | None]] = []
     for path in main.output.rglob("index.html"):
@@ -401,11 +399,7 @@ def generate_sitemaps(main: Site, shards: list[Site]) -> None:
         url_path = path_to_url(path, main.output)
         if url_path is not None:
             main_urls.append((main.base_url + url_path, lastmod_for_url(main, url_path, dates)))
-    main_lastmod = write_urlset(main.output / "sitemap-main.xml", main_urls)
-    write_sitemap_index(
-        main.output / "sitemap.xml",
-        [(f"{main.base_url}/sitemap-main.xml", main_lastmod)] + shard_sitemaps,
-    )
+    write_urlset(main.output / "sitemap.xml", main_urls)
     write_robots(main)
 
 
