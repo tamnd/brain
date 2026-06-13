@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7868 problems, 3728 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7871 problems, 3729 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7868 problems, 3728 verified.**
+**1429 contests, 7871 problems, 3729 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -527,7 +527,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1179](1179/) | [Codeforces Round 569 (Div. 1)](https://codeforces.com/contest/1179) | Div. 1 | 1500-3200 | 2/5 | 24m 32s |
 | [1180](1180/) | [Codeforces Round 569 (Div. 2)](https://codeforces.com/contest/1180) | Div. 2 | 800-1500 | 1/2 | 11m 59s |
 | [1181](1181/) | [Codeforces Round 567 (Div. 2)](https://codeforces.com/contest/1181) | Div. 2 | 1000-3000 | 6/6 | 21m 38s |
-| [1182](1182/) | [Codeforces Round 566 (Div. 2)](https://codeforces.com/contest/1182) | Div. 2 | 1000-2400 | 2/3 | 6m 26s |
+| [1182](1182/) | [Codeforces Round 566 (Div. 2)](https://codeforces.com/contest/1182) | Div. 2 | 1000-2700 | 3/6 | 28m 58s |
 | [1183](1183/) | [Codeforces Round 570 (Div. 3)](https://codeforces.com/contest/1183) | Div. 3 | 800-2000 | 2/4 | 7m 57s |
 | [1184](1184/) | [Helvetic Coding Contest 2019 online mirror (teams allowed, unrated)](https://codeforces.com/contest/1184) | Special | 1200-3200 | 5/6 | 13m 35s |
 | [1185](1185/) | [Codeforces Round 568 (Div. 2)](https://codeforces.com/contest/1185) | Div. 2 | 1200-2100 | 4/4 | 7m 26s |
