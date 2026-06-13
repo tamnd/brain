@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7980 problems, 3797 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7982 problems, 3799 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7980 problems, 3797 verified.**
+**1429 contests, 7982 problems, 3799 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -567,7 +567,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1221](1221/) | [Educational Codeforces Round 73 (Rated for Div. 2)](https://codeforces.com/contest/1221) | Div. 2 | 1000-2900 | 2/5 | 18m 28s |
 | [1223](1223/) | [Technocup 2020 - Elimination Round 1](https://codeforces.com/contest/1223) | Special | 800-3200 | 2/4 | 21m 12s |
 | [1225](1225/) | [Technocup 2020 - Elimination Round 2](https://codeforces.com/contest/1225) | Special | 900-3100 | 4/5 | 18m 59s |
-| [1227](1227/) | [Technocup 2020 - Elimination Round 3](https://codeforces.com/contest/1227) | Special | 1200-2400 | 0/2 | 5m 39s |
+| [1227](1227/) | [Technocup 2020 - Elimination Round 3](https://codeforces.com/contest/1227) | Special | 1100-2400 | 2/4 | 19m 41s |
 | [1228](1228/) | [Codeforces Round 589 (Div. 2)](https://codeforces.com/contest/1228) | Div. 2 | 1700-1700 | 1/1 | 1m 39s |
 | [1234](1234/) | [Codeforces Round 590 (Div. 3)](https://codeforces.com/contest/1234) | Div. 3 | 1000-2000 | 2/2 | 3m 11s |
 | [1236](1236/) | [Codeforces Round 593 (Div. 2)](https://codeforces.com/contest/1236) | Div. 2 | 1300-1300 | 0/1 | 2m 6s |
