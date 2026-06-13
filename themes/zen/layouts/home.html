@@ -7,7 +7,7 @@
   </header>
 
   <div class="zen-list">
-    {{range .Pages}}
+    {{range first 20 .Pages}}
     {{if not .Draft}}
     <a href="{{.RelPermalink}}" class="zen-list-item">
       <div class="zen-list-item__header">
