@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7958 problems, 3786 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7960 problems, 3787 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7958 problems, 3786 verified.**
+**1429 contests, 7960 problems, 3787 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -558,7 +558,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1210](1210/) | [Dasha Code Championship - SPb Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1210) | Special | 1700-3200 | 3/6 | 18m 7s |
 | [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | Kotlin | 1000-3100 | 4/7 | 30m 11s |
 | [1213](1213/) | [Codeforces Round 582 (Div. 3)](https://codeforces.com/contest/1213) | Div. 3 | 900-2100 | 5/7 | 26m 8s |
-| [1214](1214/) | [Codeforces Round 583 (Div. 1 + Div. 2, based on Olympiad of Metropolises)](https://codeforces.com/contest/1214) | Div. 1+2 | 1200-3200 | 4/4 | 8m 1s |
+| [1214](1214/) | [Codeforces Round 583 (Div. 1 + Div. 2, based on Olympiad of Metropolises)](https://codeforces.com/contest/1214) | Div. 1+2 | 1100-3200 | 5/6 | 20m 5s |
 | [1215](1215/) | [Codeforces Round 585 (Div. 2)](https://codeforces.com/contest/1215) | Div. 2 | 1000-2700 | 3/4 | 7m 56s |
 | [1216](1216/) | [Codeforces Round 587 (Div. 3)](https://codeforces.com/contest/1216) | Div. 3 | 900-2200 | 4/4 | 8m 31s |
 | [1217](1217/) | [Educational Codeforces Round 72 (Rated for Div. 2)](https://codeforces.com/contest/1217) | Div. 2 | 1700-1700 | 1/1 | 1m 48s |
