@@ -1,6 +1,15 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // Redirect legacy /en/* paths (old Hugo multilingual URLs) to root-relative equivalents
+    if (url.pathname === "/en" || url.pathname.startsWith("/en/")) {
+      const newPath = url.pathname.startsWith("/en/") ? url.pathname.slice(3) : "/";
+      const redirectUrl = new URL(url);
+      redirectUrl.pathname = newPath || "/";
+      return Response.redirect(redirectUrl.toString(), 301);
+    }
+
     const accept = request.headers.get("Accept") ?? "";
     const wantsMarkdown = accept.split(",").some(part => {
       const [type] = part.trim().split(";");
