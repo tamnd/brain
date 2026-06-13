@@ -7,19 +7,19 @@ section: "4.2.4"
 section_title: "Distribution of Floating Point Numbers"
 chapter: 4
 chapter_title: "Arithmetic"
-volume: 2
+volume: 1
 weight: 40204
 draft: false
 ---
 
 # Section 4.2.4. Distribution of Floating Point Numbers
 
-Exercises from [TAOCP Volume 2](../) Section 4.2.4: 17/20 solved.
+Exercises from [TAOCP Volume 1](../) Section 4.2.4: 17/20 solved.
 
 | # | Rating | Category | Status | Time |
 |---|--------|----------|--------|------|
-| [1](01.md) |  [*13*] | simple | verified | 7m34s |
-| [2](02.md) |  [*22*] | medium | solved | 52s |
+| [1](01.md) |  [*13*] | simple | verified | 2m16s |
+| [2](02.md) |  [*22*] | medium | solved | 3m55s |
 | [3](03.md) |  [*15*] | simple | verified | 1m49s |
 | [4](04.md) |  [*M18*] | math-medium | verified | 1m42s |
 | [5](05.md) | &#9654; [*M20*] | math-medium | solved | 7m53s |
