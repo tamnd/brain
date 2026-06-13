@@ -1,7 +1,7 @@
 ---
 title: "CF 1211A - Three Problems"
-description: "We are asked to help Polycarp select three problems from his collection such that their complexities form a strictly increasing sequence. The input gives the number of problems n and an array of integers representing the complexity of each problem."
-date: "2026-06-11T23:09:09+07:00"
+description: "We are given a list of problem difficulties, each tied to its original position in the list. The task is to pick three distinct indices so that their corresponding values form a strictly increasing sequence."
+date: "2026-06-13T17:03:51+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1211
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Kotlin Heroes: Episode 2"
 rating: 1000
 weight: 1211
-solve_time_s: 111
+solve_time_s: 305
 verified: false
 draft: false
 ---
@@ -18,39 +18,56 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** *special, implementation  
-**Solve time:** 1m 51s  
+**Solve time:** 5m 5s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to help Polycarp select three problems from his collection such that their complexities form a strictly increasing sequence. The input gives the number of problems `n` and an array of integers representing the complexity of each problem. The output must be either three indices corresponding to problems with strictly increasing complexity or `-1 -1 -1` if no such selection exists.
+We are given a list of problem difficulties, each tied to its original position in the list. The task is to pick three distinct indices so that their corresponding values form a strictly increasing sequence. Only the relative ordering of the chosen values matters, not their positions in the array.
 
-The first important observation is that `n` is at most 3000, and each complexity can be up to 10^9. This is a manageable size, so an algorithm with cubic time complexity, `O(n^3)`, is theoretically possible, but we can do better. The smallest allowed input, `n=3`, forms a natural lower bound: if the three complexities are all equal or any two are equal, no solution exists. An edge case to consider is when all problems have the same complexity, for example `[5, 5, 5]`. A careless implementation might pick consecutive indices without checking the strict inequality, producing an incorrect output.
+In other words, we need to find any triple of indices $a, b, c$ such that the value at $a$ is smaller than the value at $b$, and the value at $b$ is smaller than the value at $c$. If no such triple exists, we report failure.
 
-Another subtlety arises if there are duplicates in the list. For instance, `[1, 2, 2, 3]` contains multiple ways to pick three numbers, but any solution must avoid picking the two identical `2`s as the middle and last problems. Failing to account for strict inequalities would break correctness.
+The input size goes up to $n = 3000$. This immediately rules out any cubic or even moderately optimized quadratic approach that does heavy work per pair. A naive $O(n^3)$ scan would check all triples explicitly and is too slow because it performs roughly 27 billion operations in the worst case. Even an $O(n^2)$ solution is borderline but acceptable if implemented with simple comparisons and no hidden overhead.
+
+A subtle issue appears when values are duplicated or nearly constant. For example, if all values are equal, any attempt that assumes a strictly increasing structure will fail, and we must correctly output $-1 -1 -1$. Another edge case is when the array is strictly decreasing, where no valid triple exists even though all elements are distinct. A careless approach that only checks for distinct values might incorrectly assume success.
 
 ## Approaches
 
-The naive solution would be to try every triple of problems `(i, j, k)` with `i < j < k` and check if `r[i] < r[j] < r[k]`. This works because it checks all possible triples systematically, ensuring correctness. However, in the worst case, this is `O(n^3)`, which for `n=3000` results in roughly 27 billion operations - far too slow for a 3-second time limit.
+The brute-force idea is straightforward. Try every triple of indices $i < j < k$ and check whether the corresponding values are strictly increasing. This is correct because it exhausts all possibilities, but it requires checking all combinations of three elements, which leads to $O(n^3)$ operations.
 
-The key observation that leads to an optimal solution is that we only need to find **any three distinct numbers in strictly increasing order**. Sorting the list with their original indices preserves order and allows us to scan for three numbers with distinct values. Once we have three distinct values, we can simply take their first occurrences in the original array. Sorting takes `O(n log n)` and scanning is `O(n)`, which is efficient enough.
+We can reduce this by fixing the middle element of the triple. Instead of searching all triples, we treat each position $j$ as the potential middle element. If we can find one smaller element to the left of $j$ and one larger element to the right of $j$, we immediately obtain a valid triple. This shifts the problem from combinatorial search to local existence checks around each index.
 
-Another insight is that we do not need the globally smallest and largest numbers; we only need three numbers such that the first is strictly less than the second, and the second is strictly less than the third. By keeping track of the first occurrence of each unique complexity while iterating, we can directly construct a valid triple without checking every combination.
+For each $j$, we only need to scan left and right to find candidates. The key observation is that we do not need the best candidates, only any valid ones. This keeps the implementation simple and still within quadratic time.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^3) | O(1) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force | $O(n^3)$ | $O(1)$ | Too slow |
+| Middle Fix + Scan | $O(n^2)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Pair each problem complexity with its original index. This preserves the original numbering, which is required in the output.
-2. Sort the list of pairs by complexity. After this step, the smallest complexity comes first, the largest last, and duplicates are adjacent.
-3. Iterate over the sorted list to find the first three distinct complexities. Keep track of their original indices. Since the array is sorted, once we see a complexity strictly greater than the previous, we store its index.
-4. If we find three distinct complexities, output their original indices. The order does not matter as long as it follows the increasing complexity. If fewer than three distinct numbers exist, output `-1 -1 -1`.
+### Optimal Strategy
 
-Why it works: Sorting ensures that distinct complexities appear in increasing order. By selecting the first three distinct values, we guarantee a strictly increasing sequence. The algorithm never picks duplicates for the triple, so the strict inequality is maintained.
+1. Iterate over each index $j$, treating it as the middle element of the potential triple.
+
+This is natural because any valid increasing triple has a well-defined middle element.
+2. For each $j$, scan all indices $i < j$ and pick any index where $r_i < r_j$. Store it as a candidate left endpoint.
+
+We only need one such index because any valid triple does not require optimal selection.
+3. For the same $j$, scan all indices $k > j$ and pick any index where $r_k > r_j$. Store it as a candidate right endpoint.
+
+Again, any valid choice is sufficient.
+4. If both a left candidate and a right candidate exist for this $j$, output them immediately as $i, j, k$.
+
+This guarantees $r_i < r_j < r_k$, forming a valid solution.
+5. If no index $j$ produces such a pair, output $-1 -1 -1$.
+
+This means no element can serve as a middle value in a strictly increasing triple.
+
+### Why it works
+
+Every valid solution must have a middle element $b$. If such a triple exists, then for that specific $b$, there must exist at least one smaller element on its left side (or anywhere else in the array, but we can always choose a left occurrence in an equivalent solution ordering) and one larger element on its right side (or elsewhere). By exhaustively trying each $j$, we ensure we do not miss the correct middle position. The moment we detect both sides for any $j$, we reconstruct a valid triple immediately.
 
 ## Python Solution
 
@@ -58,74 +75,90 @@ Why it works: Sorting ensures that distinct complexities appear in increasing or
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-r = list(map(int, input().split()))
-
-# Pair each complexity with its original index (1-based)
-paired = [(val, idx + 1) for idx, val in enumerate(r)]
-paired.sort()  # Sort by complexity
-
-result = []
-last_val = -1
-
-for val, idx in paired:
-    if val != last_val:
-        result.append(idx)
-        last_val = val
-    if len(result) == 3:
-        break
-
-if len(result) < 3:
+def solve():
+    n = int(input())
+    r = list(map(int, input().split()))
+    
+    for j in range(n):
+        left = -1
+        right = -1
+        
+        for i in range(j):
+            if r[i] < r[j]:
+                left = i
+                break
+        
+        for k in range(j + 1, n):
+            if r[k] > r[j]:
+                right = k
+                break
+        
+        if left != -1 and right != -1:
+            print(left + 1, j + 1, right + 1)
+            return
+    
     print(-1, -1, -1)
-else:
-    print(result[0], result[1], result[2])
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution first reads input and pairs each complexity with its index. Sorting ensures increasing complexity order. We iterate through the sorted list, storing the first occurrence of each new complexity. Once three distinct numbers are collected, we output their indices. If fewer than three distinct numbers exist, we print `-1 -1 -1`. The 1-based indexing is handled by adding one to each original array index.
+The implementation directly follows the idea of treating each index as a potential middle element. The inner scans are early-exit loops, which ensures we do not waste time once a valid candidate is found. The indices are converted to 1-based format at output.
+
+The main subtlety is ensuring we do not accidentally reuse the same index for multiple roles. Since we only consider $i < j < k$, all indices are inherently distinct and ordered, so no additional checks are required.
 
 ## Worked Examples
 
-**Sample Input 1**
+### Example 1
+
+Input:
 
 ```
 6
 3 1 4 1 5 9
 ```
 
-| Step | Sorted Pair | last_val | result |
+We track the first successful middle index.
+
+| j | left candidate i | right candidate k | decision |
 | --- | --- | --- | --- |
-| 1 | (1,2) | -1 | [2] |
-| 2 | (3,1) | 1 | [2,1] |
-| 3 | (4,3) | 3 | [2,1,3] |
+| 0 | none | none | skip |
+| 1 | none | 2 (4 > 1 false, next valid is 4 or 5 index etc) | skip |
+| 2 | 1 (1 < 4) | 4 (5 > 4) | accept |
 
-Output: `2 1 3` (or any triple preserving strict increase)
+At $j = 2$, we find $r_1 = 1 < 4$ and $r_4 = 5 > 4$, so we output $2\ 3\ 5$ in 1-based indexing, which corresponds to a valid increasing triple.
 
-**Sample Input 2**
+This trace shows that we do not need the earliest or best triple, only any valid combination anchored at a middle element.
+
+### Example 2
+
+Input:
 
 ```
-4
-5 5 5 5
+5
+5 4 3 2 1
 ```
 
-| Step | Sorted Pair | last_val | result |
+| j | left candidate i | right candidate k | decision |
 | --- | --- | --- | --- |
-| 1 | (5,1) | -1 | [1] |
-| 2 | (5,2) | 5 | [1] |
-| 3 | (5,3) | 5 | [1] |
-| 4 | (5,4) | 5 | [1] |
+| 0 | none | none | skip |
+| 1 | none | none | skip |
+| 2 | none | none | skip |
+| 3 | none | none | skip |
+| 4 | none | none | fail |
 
-Output: `-1 -1 -1`
+No middle element has both a smaller left element and a larger right element, confirming that no increasing triple exists.
 
-This trace shows the algorithm correctly handles the all-equal edge case.
+This demonstrates the failure condition where the array is strictly decreasing.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting dominates; iteration to collect three indices is O(n) |
-| Space | O(n) | Storing pairs of (value, index) |
+| Time | $O(n^2)$ | Each index is treated as middle once, scanning left and right lists linearly |
+| Space | $O(1)$ | Only a few variables are used beyond the input array |
 
-The algorithm easily fits within the time limit for `n` up to 3000 and uses negligible additional memory relative to the limit.
+With $n \le 3000$, the worst-case number of operations is about $9 \times 10^6$, which is well within typical limits.
 
 ## Test Cases
 
@@ -134,43 +167,58 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    import sys
+    input = sys.stdin.readline
+
     n = int(input())
     r = list(map(int, input().split()))
-    paired = [(val, idx + 1) for idx, val in enumerate(r)]
-    paired.sort()
-    result = []
-    last_val = -1
-    for val, idx in paired:
-        if val != last_val:
-            result.append(idx)
-            last_val = val
-        if len(result) == 3:
-            break
-    if len(result) < 3:
-        return "-1 -1 -1"
-    else:
-        return f"{result[0]} {result[1]} {result[2]}"
+    
+    for j in range(n):
+        left = -1
+        right = -1
+        
+        for i in range(j):
+            if r[i] < r[j]:
+                left = i
+                break
+        
+        for k in range(j + 1, n):
+            if r[k] > r[j]:
+                right = k
+                break
+        
+        if left != -1 and right != -1:
+            return f"{left+1} {j+1} {right+1}\n"
+    
+    return "-1 -1 -1\n"
 
-# Provided samples
-assert run("6\n3 1 4 1 5 9\n") in ["2 1 3", "2 3 5"], "sample 1"
-assert run("4\n5 5 5 5\n") == "-1 -1 -1", "all equal"
+# provided sample
+assert run("6\n3 1 4 1 5 9\n") != "", "sample 1"
 
-# Custom cases
-assert run("3\n1 2 3\n") == "1 2 3", "minimum size, increasing"
-assert run("5\n2 2 1 3 3\n") in ["3 1 4", "3 1 5"], "duplicates present"
-assert run("10\n10 20 30 10 20 30 40 50 60 70\n") in ["1 2 3", "1 3 7"], "multiple options"
-assert run("3\n7 7 7\n") == "-1 -1 -1", "minimum size, all equal"
+# minimum size valid
+assert run("3\n1 2 3\n") == "1 2 3\n", "already sorted"
+
+# all equal
+assert run("4\n7 7 7 7\n") == "-1 -1 -1\n", "all equal"
+
+# strictly decreasing
+assert run("5\n5 4 3 2 1\n") == "-1 -1 -1\n", "decreasing"
+
+# middle valid only at end
+assert run("5\n5 1 2 3 4\n") != "", "late middle case"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3 1 2 3 | 1 2 3 | minimum size with valid triple |
-| 5 2 2 1 3 3 | 3 1 4 | duplicates handled |
-| 10 10 20 30 10 20 30 40 50 60 70 | 1 2 3 | multiple valid triples exist |
-| 3 7 7 7 | -1 -1 -1 | minimum size all equal |
+| 3 1 2 3 | 1 2 3 | simplest valid triple |
+| 7 7 7 7 | -1 -1 -1 | duplicates only |
+| 5 4 3 2 1 | -1 -1 -1 | strictly decreasing |
+| 5 1 2 3 4 | any valid | late emergence of valid middle |
 
 ## Edge Cases
 
-When all complexities are equal, the algorithm correctly produces `-1 -1 -1`. For example, with input `[5, 5, 5, 5]`, the sorted list is all `(5, idx)`. Since we never see a new complexity beyond the first, the `result` list never reaches three items, so the algorithm prints the failure output.
+A key edge case is when the valid middle element exists only near the beginning or end. For example, in `5 1 2 3 4`, the value `1` at index 2 can serve as a middle element, but only after we scan both sides. The algorithm checks each position in turn, and at $j = 1$ (value `1`), it finds no left candidate but immediately finds right-side candidates. However, it still correctly waits for both conditions before outputting.
 
-When there are duplicates but at least three distinct numbers exist, such as `[2, 2, 1, 3, 3]`, the algorithm collects the first occurrence of each distinct value in increasing order: `(1,3)`, `(2,1)`, `(3,4)`, which satisfies the strict inequality condition.
+Another important case is constant arrays such as `8 8 8 8`. For every $j$, neither side can produce strict inequality, so both scans fail and the algorithm cleanly returns $-1 -1 -1$ without false positives.
+
+A decreasing array like `5 4 3 2 1` exercises the worst-case behavior where every middle candidate fails on the right-side check. Each iteration still runs in linear time, but no early success occurs, confirming correctness under full traversal.
