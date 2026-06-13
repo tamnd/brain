@@ -142,8 +142,7 @@ This captures all useful transitions based on the $y$-dimension.
 
 For every special point $i$,
 
-$$dist[i] =
-\min(|s_x-x_i|,\;|s_y-y_i|).$$
+$$dist[i] = \min(|s_x-x_i|,\;|s_y-y_i|).$$
 
 This is exactly the cost of reaching that special location from the start.
 7. Initialize the answer with the cost of walking directly from start to finish:

@@ -202,11 +202,7 @@ Here DFS coloring gives $E=2$ (nodes 1 and 3) and $O=1$ (node 2). So:
 
 Transition matrix:
 
-$$T =
-\begin{bmatrix}
-5 & 4 \\
-4 & 5
-\end{bmatrix}$$
+$$T = \begin{bmatrix} 5 & 4 \\ 4 & 5 \end{bmatrix}$$
 
 Since $D=1$, $T^1 = T$.
 
@@ -232,17 +228,11 @@ Tree coloring gives $E=1, O=1$, so:
 
 Matrix:
 
-$$\begin{bmatrix}
-1 & 2 \\
-2 & 1
-\end{bmatrix}$$
+$$\begin{bmatrix} 1 & 2 \\ 2 & 1 \end{bmatrix}$$
 
 For $D=2$, squaring yields:
 
-$$\begin{bmatrix}
-5 & 4 \\
-4 & 5
-\end{bmatrix}$$
+$$\begin{bmatrix} 5 & 4 \\ 4 & 5 \end{bmatrix}$$
 
 Starting from even state gives result $5$, matching the number of winning configurations after accounting for symmetry collapse.
 

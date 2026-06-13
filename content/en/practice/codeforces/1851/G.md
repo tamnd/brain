@@ -38,13 +38,7 @@ Therefore the proof is not complete and cannot be accepted as a valid derivation
 
 The proof states
 
-$$R(h,k,c)
-=
-R(h,k,0)
-+\frac{6c^{2}}{hk}
--6\Bigl\lfloor\frac ch\Bigr\rfloor
-+B(c).
-\tag{3}$$
+$$R(h,k,c) = R(h,k,0) +\frac{6c^{2}}{hk} -6\Bigl\lfloor\frac ch\Bigr\rfloor +B(c). \tag{3}$$
 
 This is presented as something that follows from "following exactly the derivation of Lemma B".
 
@@ -52,9 +46,7 @@ No derivation is given.
 
 The entire problem is to determine how the reciprocity formula changes when $c$ becomes real. The appearance of the terms
 
-$$\frac{6c^{2}}{hk}
-\qquad\text{and}\qquad
--6\Bigl\lfloor\frac ch\Bigr\rfloor$$
+$$\frac{6c^{2}}{hk} \qquad\text{and}\qquad -6\Bigl\lfloor\frac ch\Bigr\rfloor$$
 
 must be proved from the actual expansion. They cannot simply be imported from the integral case.
 
@@ -68,11 +60,7 @@ The proof claims:
 
 and concludes
 
-$$B(c)
-=
--3\,\delta(c)
--3\,\delta(r)
-+3.$$
+$$B(c) = -3\,\delta(c) -3\,\delta(r) +3.$$
 
 No calculation is given.
 
@@ -86,9 +74,7 @@ This is precisely the new phenomenon that must be established in the generalizat
 
 The proof states:
 
-$$c\in\mathbb Z,
-\qquad
-r=c-qh\in\mathbb Z.$$
+$$c\in\mathbb Z, \qquad r=c-qh\in\mathbb Z.$$
 
 and claims these are the only sources of boundary corrections.
 
@@ -102,9 +88,7 @@ The validity of formula (5) therefore remains unproved.
 
 The proof claims
 
-$$-3-3[c\bmod h=0]
-=
--3e(h,c)+3.$$
+$$-3-3[c\bmod h=0] = -3e(h,c)+3.$$
 
 Let $c=0$.
 

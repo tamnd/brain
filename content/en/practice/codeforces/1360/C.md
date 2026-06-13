@@ -60,8 +60,7 @@ The “simplification” from (19) to (20) is precisely the recognition that the
 
 Equation (24) concerns the primitive part of a product. Starting from the defining factorization,
 
-$$u(x) = \operatorname{cont}(u)\operatorname{pp}(u(x)), \quad
-v(x) = \operatorname{cont}(v)\operatorname{pp}(v(x)),$$
+$$u(x) = \operatorname{cont}(u)\operatorname{pp}(u(x)), \quad v(x) = \operatorname{cont}(v)\operatorname{pp}(v(x)),$$
 
 we multiply to obtain
 
@@ -75,9 +74,7 @@ $$\operatorname{cont}(uv) = \operatorname{cont}(u)\operatorname{cont}(v).$$
 
 Divide $uv$ by this content factor:
 
-$$\operatorname{pp}(uv)
-= \frac{uv}{\operatorname{cont}(uv)}
-= \frac{\operatorname{cont}(u)\operatorname{cont}(v)\,\operatorname{pp}(u)\operatorname{pp}(v)}{\operatorname{cont}(u)\operatorname{cont}(v)}.$$
+$$\operatorname{pp}(uv) = \frac{uv}{\operatorname{cont}(uv)} = \frac{\operatorname{cont}(u)\operatorname{cont}(v)\,\operatorname{pp}(u)\operatorname{pp}(v)}{\operatorname{cont}(u)\operatorname{cont}(v)}.$$
 
 The content factors cancel exactly, leaving
 

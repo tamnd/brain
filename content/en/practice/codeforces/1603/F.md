@@ -55,9 +55,7 @@ This can be solved efficiently using fast matrix exponentiation or repeated doub
 4. If $x \neq 0$, split the numbers into two categories: the number equal to $x$ and the remaining $all\_nums - 1$ numbers. Define two DP states: $dp_0$ for sequences with XOR not equal to $x$ and $dp_1$ for sequences where XOR could become $x$.
 5. Initialize $dp_0 = 1$ and $dp_1 = 0$. Update using the matrix recurrence:
 
-$$\begin{pmatrix}dp_0 \\ dp_1\end{pmatrix} = 
-\begin{pmatrix}all\_nums-1 & 1 \\ all\_nums-1 & 0\end{pmatrix}^{n-1} \cdot 
-\begin{pmatrix}1 \\ 0\end{pmatrix}$$
+$$\begin{pmatrix}dp_0 \\ dp_1\end{pmatrix} =  \begin{pmatrix}all\_nums-1 & 1 \\ all\_nums-1 & 0\end{pmatrix}^{n-1} \cdot  \begin{pmatrix}1 \\ 0\end{pmatrix}$$
 
 1. Return $dp_0 \mod 998244353$ as the number of valid sequences.
 2. Repeat for all test cases.

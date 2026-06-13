@@ -124,9 +124,7 @@ $$x+\left\lceil \frac{d}{x+1} \right\rceil.$$
 
 The ceiling can be computed using integer arithmetic:
 
-$$\left\lceil \frac{d}{x+1} \right\rceil
-=
-\frac{d+x}{x+1}$$
+$$\left\lceil \frac{d}{x+1} \right\rceil = \frac{d+x}{x+1}$$
 
 with integer division.
 4. If any candidate produces a value not exceeding `n`, output `YES`.
@@ -354,7 +352,6 @@ The optimum occurs near `√10^9 ≈ 31623`.
 
 For example:
 
-$$31622+\left\lceil \frac{10^9}{31623}\right\rceil
-\approx 63245$$
+$$31622+\left\lceil \frac{10^9}{31623}\right\rceil \approx 63245$$
 
 which is far below `10^9`. The algorithm quickly finds such a value and outputs `YES`. This confirms that the implementation handles the largest inputs efficiently.

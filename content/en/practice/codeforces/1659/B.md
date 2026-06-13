@@ -60,23 +60,23 @@ The key observation is that only parity matters.
 
 Suppose position \(i\) is chosen \(f_i\) times. Let
 
-\[
+$$
 K = \sum_i f_i = k.
-\]
+$$
 
 A bit at position \(i\) is flipped during every operation except those that choose \(i\). Hence it is flipped
 
-\[
+$$
 k - f_i
-\]
+$$
 
 times.
 
 Only the parity of \(k-f_i\) matters. The final bit is
 
-\[
+$$
 s_i \oplus ((k-f_i)\bmod 2).
-\]
+$$
 
 Now the problem becomes a constructive parity assignment problem.
 
@@ -101,31 +101,31 @@ After exhausting either useful positions or available operations, all remaining 
 
 4. If \(k\) is odd and the current bit is `'0'`, choosing this position once makes its final value become `'1'`. If `rem > 0`, set:
 
-\[
+$$
 cnt[i] = 1
-\]
+$$
 
 and decrease `rem`.
 
 5. If \(k\) is even and the current bit is `'1'`, choosing this position once preserves a leading `'1'` in the final answer. If `rem > 0`, set:
 
-\[
+$$
 cnt[i] = 1
-\]
+$$
 
 and decrease `rem`.
 
 6. After processing positions \(1\) through \(n-1\), place all remaining operations at the last position:
 
-\[
+$$
 cnt[n-1] = rem.
-\]
+$$
 
 7. Construct the final string. For position \(i\), the number of flips applied to it equals
 
-\[
+$$
 k - cnt[i].
-\]
+$$
 
 If this quantity is odd, flip the original bit. Otherwise keep it unchanged.
 
@@ -195,9 +195,9 @@ and apply the flip if needed.
 
 The last position receives all unused operations. This guarantees
 
-\[
+$$
 \sum_i cnt[i] = k.
-\]
+$$
 
 ## Worked Examples
 
@@ -363,9 +363,9 @@ Consider:
 
 There is only one position. The greedy loop never runs because there is no position before the last one. All five operations are assigned to that position. Since
 
-\[
+$$
 k-cnt[0]=5-5=0,
-\]
+$$
 
 the bit is never flipped and remains `0`. The count sum is exactly five.
 

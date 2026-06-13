@@ -137,11 +137,7 @@ must be paid exactly once, and then we continue with either smaller interval.
 
 That gives the recurrence:
 
-$$dp[l][r]
-=
-(a_r-a_l)
-+
-\min(dp[l+1][r], dp[l][r-1])$$
+$$dp[l][r] = (a_r-a_l) + \min(dp[l+1][r], dp[l][r-1])$$
 
 The base case is:
 
@@ -174,11 +170,7 @@ If the left endpoint was added last, the previous state was `[l+1,r]`.
 If the right endpoint was added last, the previous state was `[l,r-1]`.
 7. Choose the better of those two possibilities:
 
-$$dp[l][r]
-=
-(a_r-a_l)
-+
-\min(dp[l+1][r],dp[l][r-1])$$
+$$dp[l][r] = (a_r-a_l) + \min(dp[l+1][r],dp[l][r-1])$$
 8. Continue until the whole interval `[0,n-1]` has been computed.
 9. Output `dp[0][n-1]`.
 

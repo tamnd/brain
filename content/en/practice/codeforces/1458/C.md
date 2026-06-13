@@ -38,17 +38,17 @@ The first observation comes from the constraints. The sum of all \(n\) is at mos
 
 A naive simulation would apply every operation directly to the matrix. Each operation touches \(n^2\) cells, therefore the worst case becomes
 
-\[
+$$
 O(mn^2).
-\]
+$$
 
 With \(m=10^5\) and \(n=1000\), this is completely infeasible.
 
 The problem is hiding a strong algebraic structure. A Latin square cell naturally contains three coordinates:
 
-\[
+$$
 (\text{row}, \text{column}, \text{value}).
-\]
+$$
 
 The six operations never destroy the Latin-square property because they only permute these three coordinates in various ways.
 
@@ -56,23 +56,23 @@ The six operations never destroy the Latin-square property because they only per
 
 Consider \(n=3\) and operation \(I\).
 
-\[
+$$
 \begin{matrix}
 1&2&3\\
 2&3&1\\
 3&1&2
 \end{matrix}
-\]
+$$
 
 A careless implementation may try to invert each row independently. That works, but it misses the deeper structure. After inversion the matrix becomes
 
-\[
+$$
 \begin{matrix}
 1&2&3\\
 3&1&2\\
 2&3&1
 \end{matrix}
-\]
+$$
 
 which is exactly what happens if column indices and values exchange roles. This coordinate interpretation is the key to the optimal solution.
 
@@ -80,13 +80,13 @@ Consider operation \(C\) on the same matrix.
 
 The result is
 
-\[
+$$
 \begin{matrix}
 1&3&2\\
 2&1&3\\
 3&2&1
 \end{matrix}
-\]
+$$
 
 This is not a row inversion. It exchanges row indices and values. Mixing up these two transformations produces wrong answers that still look like valid Latin squares.
 
@@ -94,9 +94,9 @@ Another subtle case occurs when many shifts accumulate.
 
 For example, with \(n=5\),
 
-\[
+$$
 RRRRR
-\]
+$$
 
 must produce the original matrix. Storing shifts modulo \(n\) is mandatory. Allowing offsets to grow without reduction eventually causes incorrect indexing.
 
@@ -108,17 +108,17 @@ For \(R,L,U,D\), we rotate rows or columns. For \(I\), we compute the inverse pe
 
 Each operation costs \(O(n^2)\). Since there can be \(10^5\) operations, the total complexity becomes
 
-\[
+$$
 O(mn^2).
-\]
+$$
 
 The bottleneck is that we repeatedly move the same data around.
 
 To find something better, examine a matrix entry as a triple
 
-\[
+$$
 (r,c,x),
-\]
+$$
 
 where \(r\) is the row index, \(c\) the column index, and \(x\) the value.
 
@@ -126,27 +126,27 @@ Because the matrix is a Latin square, every operation can be described entirely 
 
 The shift operations modify only one coordinate:
 
-\[
+$$
 R,L : c
-\]
+$$
 
-\[
+$$
 U,D : r
-\]
+$$
 
 The inversion operations are even more interesting.
 
 For a row permutation, inversion exchanges position and value inside that row. Thus
 
-\[
+$$
 I : c \leftrightarrow x.
-\]
+$$
 
 For a column permutation, inversion exchanges row and value:
 
-\[
+$$
 C : r \leftrightarrow x.
-\]
+$$
 
 The crucial insight is that every operation only permutes the three coordinate types \((r,c,x)\) and adds cyclic shifts to whichever coordinate currently plays the role of row, column, or value.
 
@@ -168,129 +168,129 @@ After processing all operations, we reconstruct the answer once in \(O(n^2)\).
 
 Let coordinate types be numbered:
 
-\[
+$$
 0=r,\quad 1=c,\quad 2=x.
-\]
+$$
 
 Maintain an array \(p\) where:
 
-\[
+$$
 p[i]
-\]
+$$
 
 tells which original coordinate currently occupies position \(i\).
 
 Maintain offsets
 
-\[
+$$
 add[0],add[1],add[2].
-\]
+$$
 
 All coordinates are stored in zero-based form.
 
 1. Initialize
 
-\[
+$$
 p=[0,1,2]
-\]
+$$
 
 and
 
-\[
+$$
 add=[0,0,0].
-\]
+$$
 
 2. Process each operation.
 
 3. For \(R\), increase the offset of the coordinate currently acting as columns:
 
-\[
+$$
 add[p[1]]=(add[p[1]]+1)\bmod n.
-\]
+$$
 
 4. For \(L\), decrease the same offset modulo \(n\).
 
 5. For \(D\), increase the offset of the coordinate currently acting as rows:
 
-\[
+$$
 add[p[0]]=(add[p[0]]+1)\bmod n.
-\]
+$$
 
 6. For \(U\), decrease that offset modulo \(n\).
 
 7. For \(I\), swap the roles of columns and values:
 
-\[
+$$
 p[1],p[2]=p[2],p[1].
-\]
+$$
 
 8. For \(C\), swap the roles of rows and values:
 
-\[
+$$
 p[0],p[2]=p[2],p[0].
-\]
+$$
 
 9. After all operations, visit every original cell \((i,j)\).
 
 10. Convert the value to zero-based form:
 
-\[
+$$
 x=a_{ij}-1.
-\]
+$$
 
 11. Form
 
-\[
+$$
 cur=[i,j,x].
-\]
+$$
 
 12. Apply accumulated offsets:
 
-\[
+$$
 cur[k]=(cur[k]+add[k])\bmod n.
-\]
+$$
 
 13. Place the transformed coordinates into their final roles using \(p\).
 
 14. Let
 
-\[
+$$
 res[p[k]]=cur[k].
-\]
+$$
 
 15. Then
 
-\[
+$$
 res[0]
-\]
+$$
 
 is the final row,
 
-\[
+$$
 res[1]
-\]
+$$
 
 is the final column,
 
 and
 
-\[
+$$
 res[2]
-\]
+$$
 
 is the final value.
 
 16. Write
 
-\[
+$$
 res[2]+1
-\]
+$$
 
 into the answer matrix at position
 
-\[
+$$
 (res[0],res[1]).
-\]
+$$
 
 ### Why it works
 
@@ -367,13 +367,13 @@ The modulo operations handle arbitrarily long sequences of shifts without overfl
 
 Input matrix:
 
-\[
+$$
 \begin{matrix}
 1&2&3\\
 2&3&1\\
 3&1&2
 \end{matrix}
-\]
+$$
 
 Operations: `DR`
 
@@ -385,13 +385,13 @@ Operations: `DR`
 
 No coordinate swaps occur. Rows shift by one and columns shift by one. Reconstructing the matrix produces
 
-\[
+$$
 \begin{matrix}
 2&3&1\\
 3&1&2\\
 1&2&3
 \end{matrix}
-\]
+$$
 
 which matches the sample.
 
@@ -408,25 +408,25 @@ Columns and values exchange roles.
 
 Consider the original cell
 
-\[
+$$
 (r,c,x)=(1,2,3).
-\]
+$$
 
 After the swap:
 
-\[
+$$
 (r,x,c)=(1,3,2).
-\]
+$$
 
 Applying this to every cell yields
 
-\[
+$$
 \begin{matrix}
 1&2&3\\
 3&1&2\\
 2&3&1
 \end{matrix}
-\]
+$$
 
 which matches the sample output.
 
@@ -520,20 +520,20 @@ Consider \(n=1\). Every coordinate modulo \(1\) remains \(0\). Every swap leaves
 
 Consider a sequence such as `RRRRR` with \(n=5\). The column offset becomes
 
-\[
+$$
 (0+5)\bmod 5 = 0.
-\]
+$$
 
 The reconstruction phase receives the original coordinates and reproduces the original matrix. Any implementation that stores raw shifts without reducing modulo \(n\) risks incorrect indexing later.
 
 Consider `IC`. After `I`, columns and values exchange. After `C`, rows and values exchange. These operations act on coordinate roles, not on matrix entries directly. Tracking only row and column shifts would miss this interaction. The permutation array `p` correctly records
 
-\[
+$$
 [0,1,2]
 \to
 [0,2,1]
 \to
 [1,2,0],
-\]
+$$
 
 which is exactly the coordinate transformation performed by the operations.

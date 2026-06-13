@@ -77,9 +77,7 @@ This follows because every other element still contributes a multiple of $g$, an
 
 Now look at the costs:
 
-$$\text{cost}(n)=1,\qquad
-\text{cost}(n-1)=2,\qquad
-\text{cost}(n-2)=3.$$
+$$\text{cost}(n)=1,\qquad \text{cost}(n-1)=2,\qquad \text{cost}(n-2)=3.$$
 
 The cheapest positions are always at the end of the array.
 

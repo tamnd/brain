@@ -98,14 +98,7 @@ If $d[v] > d[u]$, then moving to $v$ preserves all future options, giving candid
 
 The recurrence becomes:
 
-$$ans[u]
-=
-\min
-\left(
-d[u],
-\min_{d[v]\le d[u]} d[v],
-\min_{d[v]>d[u]} ans[v]
-\right)$$
+$$ans[u] = \min \left( d[u], \min_{d[v]\le d[u]} d[v], \min_{d[v]>d[u]} ans[v] \right)$$
 
 Now the graph induced by forward edges is acyclic with respect to BFS distance because every such edge strictly increases $d$. That means we can compute answers in decreasing order of BFS distance, or equivalently with a DFS memoization that processes deeper levels first.
 

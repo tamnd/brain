@@ -50,8 +50,7 @@ $$\sum_{x \in A} S(A)\cdot (S(A) - x)$$
 
 Expanding this gives:
 
-$$\sum_{x \in A} (S(A)^2 - S(A)x)
-= |A| \cdot S(A)^2 - S(A)\cdot \sum_{x \in A} x$$
+$$\sum_{x \in A} (S(A)^2 - S(A)x) = |A| \cdot S(A)^2 - S(A)\cdot \sum_{x \in A} x$$
 
 Since $\sum_{x \in A} x = S(A)$, this simplifies to:
 

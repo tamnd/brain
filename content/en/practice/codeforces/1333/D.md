@@ -32,15 +32,13 @@ $$n=2^m+2^k+1 \qquad (m>k\ge 0),$$
 
 $$n=2^m+2^k+2^h+1 \qquad (m>k>h\ge 0),$$
 
-$$n=2^m+2^k+2^h+2^g+1
-\qquad (m>k>h>g\ge 0).$$
+$$n=2^m+2^k+2^h+2^g+1 \qquad (m>k>h>g\ge 0).$$
 
 In each case $A$ is the number of powers of $2$ occurring in $n-1$. We must exhibit a star chain of length $A+2$.
 
 Recall that a star chain satisfies
 
-$$a_r=a_{r-1}+a_j,
-\qquad j<r.$$
+$$a_r=a_{r-1}+a_j, \qquad j<r.$$
 
 Hence every new term must be obtained from the immediately preceding term by adding an earlier chain element.
 
@@ -92,30 +90,21 @@ Therefore the required length is achieved.
 
 Let
 
-$$n=2^m+2^k+1,
-\qquad m>k\ge0.$$
+$$n=2^m+2^k+1, \qquad m>k\ge0.$$
 
 Take
 
-$$1,2,4,\ldots,2^m,
-\quad
-2^m+2^k,
-\quad
-2^m+2^k+1.$$
+$$1,2,4,\ldots,2^m, \quad 2^m+2^k, \quad 2^m+2^k+1.$$
 
 After reaching $2^m$, the element $2^k$ already occurs earlier in the chain. Hence
 
-$$2^m+2^k
-=
-2^m+2^k$$
+$$2^m+2^k = 2^m+2^k$$
 
 is a star step.
 
 Since $1$ is also an earlier chain element,
 
-$$2^m+2^k+1
-=
-(2^m+2^k)+1$$
+$$2^m+2^k+1 = (2^m+2^k)+1$$
 
 is another star step.
 
@@ -137,38 +126,25 @@ $$A+2=m+2.$$
 
 Let
 
-$$n=2^m+2^k+2^h+1,
-\qquad m>k>h\ge0.$$
+$$n=2^m+2^k+2^h+1, \qquad m>k>h\ge0.$$
 
 Consider
 
-$$1,2,4,\ldots,2^m,
-\quad
-2^m+2^k,
-\quad
-2^m+2^k+2^h,
-\quad
-2^m+2^k+2^h+1.$$
+$$1,2,4,\ldots,2^m, \quad 2^m+2^k, \quad 2^m+2^k+2^h, \quad 2^m+2^k+2^h+1.$$
 
 The powers $2^k$ and $2^h$ already appear earlier in the chain, so
 
-$$2^m+2^k
-=
-2^m+2^k,$$
+$$2^m+2^k = 2^m+2^k,$$
 
 and
 
-$$2^m+2^k+2^h
-=
-(2^m+2^k)+2^h$$
+$$2^m+2^k+2^h = (2^m+2^k)+2^h$$
 
 are star steps.
 
 Finally,
 
-$$2^m+2^k+2^h+1
-=
-(2^m+2^k+2^h)+1,$$
+$$2^m+2^k+2^h+1 = (2^m+2^k+2^h)+1,$$
 
 and $1$ is an earlier chain element.
 
@@ -190,8 +166,7 @@ $$A+2=m+3.$$
 
 Let
 
-$$n=2^m+2^k+2^h+2^g+1,
-\qquad m>k>h>g\ge0.$$
+$$n=2^m+2^k+2^h+2^g+1, \qquad m>k>h>g\ge0.$$
 
 Take
 

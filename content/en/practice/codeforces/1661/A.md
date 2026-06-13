@@ -112,9 +112,7 @@ $$|x-v|+|y-u|.$$
 
 A standard inequality on the line states that matching smaller values together and larger values together is never worse than crossing the connections:
 
-$$|x-u|+|y-v|
-\le
-|x-v|+|y-u|$$
+$$|x-u|+|y-v| \le |x-v|+|y-u|$$
 
 whenever $x \le y$ and $u \le v$.
 

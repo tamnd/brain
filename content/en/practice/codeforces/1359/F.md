@@ -119,10 +119,7 @@ Here `A` is the searched answer range.
 
 For car `i`:
 
-$$V_i =
-s_i \cdot
-\frac{(dx_i,dy_i)}
-{\sqrt{dx_i^2+dy_i^2}}.$$
+$$V_i = s_i \cdot \frac{(dx_i,dy_i)} {\sqrt{dx_i^2+dy_i^2}}.$$
 2. Binary search the answer.
 
 Maintain a range `[L,R]`.

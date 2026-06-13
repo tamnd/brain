@@ -99,9 +99,7 @@ The sequence begins with $a_{i+1}$ and ends with $a_i$.
 
 Written explicitly:
 
-$$a_{i+1}, a_{i+2}, \ldots, a_{n-1},
-a_0, a_1, \ldots, a_{i-1},
-a_i$$
+$$a_{i+1}, a_{i+2}, \ldots, a_{n-1}, a_0, a_1, \ldots, a_{i-1}, a_i$$
 
 Inside each sorted block, every transition is non-decreasing. The only decrease occurs when we jump from the largest element to the smallest element between the two blocks.
 

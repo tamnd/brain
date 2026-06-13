@@ -100,15 +100,11 @@ The key observation comes from prime factorization.
 
 Let
 
-$$x=\prod p_i^{\alpha_i},
-\qquad
-y=\prod p_i^{\beta_i}.$$
+$$x=\prod p_i^{\alpha_i}, \qquad y=\prod p_i^{\beta_i}.$$
 
 Since
 
-$$\frac{\operatorname{lcm}(x,y)}{\gcd(x,y)}
-=
-\prod p_i^{|\alpha_i-\beta_i|},$$
+$$\frac{\operatorname{lcm}(x,y)}{\gcd(x,y)} = \prod p_i^{|\alpha_i-\beta_i|},$$
 
 the result is a perfect square exactly when every exponent difference is even.
 

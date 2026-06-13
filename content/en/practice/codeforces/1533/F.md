@@ -84,12 +84,7 @@ These ranks let us jump directly to the $(k+1)$-st occurrence of either characte
 
 Compute
 
-$$\text{next}[i]
-=
-\max(
-\text{pos0}[r_0(i)+k],
-\text{pos1}[r_1(i)+k]
-),$$
+$$\text{next}[i] = \max( \text{pos0}[r_0(i)+k], \text{pos1}[r_1(i)+k] ),$$
 
 where nonexistent occurrences are treated as position $n+1$.
 5. For the same $k$, compute
@@ -106,10 +101,7 @@ Start at position $1$.
 
 Repeatedly jump to
 
-$$\max(
-\text{pos0}[r_0(i)+k],
-\text{pos1}[r_1(i)+k]
-)$$
+$$\max( \text{pos0}[r_0(i)+k], \text{pos1}[r_1(i)+k] )$$
 
 until the position becomes $n+1$.
 8. Count how many jumps were performed. That count is the answer for this $k$.

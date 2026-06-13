@@ -146,9 +146,7 @@ Suppose we merge a child $u$ into $v$.
 
 Let
 
-$$A = dp[u][0], \quad
-B = dp[u][1], \quad
-R = dp[u][2].$$
+$$A = dp[u][0], \quad B = dp[u][1], \quad R = dp[u][2].$$
 
 Then:
 

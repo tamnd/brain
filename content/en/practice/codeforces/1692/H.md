@@ -32,9 +32,7 @@ Since Marian starts with exactly 1 dollar, we need to find the value $a$ and seg
 
 The first observation is that only powers of two ever appear. If a segment contains $k$ successful guesses and $m$ failed guesses, then the final amount is
 
-$$2^k \cdot 2^{-m}
-=
-2^{k-m}.$$
+$$2^k \cdot 2^{-m} = 2^{k-m}.$$
 
 Maximizing money is exactly the same as maximizing the exponent $k-m$.
 
@@ -138,9 +136,7 @@ $$p_t-p_{t-1}-1$$
 
 non-$a$ elements. Connecting those occurrences changes the score by
 
-$$1-(p_t-p_{t-1}-1)
-=
-2-(p_t-p_{t-1}).$$
+$$1-(p_t-p_{t-1}-1) = 2-(p_t-p_{t-1}).$$
 
 This gives a natural Kadane-like dynamic programming over the occurrences of each value.
 

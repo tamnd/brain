@@ -88,13 +88,7 @@ $$(j,\ n-1-i)$$
 
 Applying this repeatedly produces at most four distinct positions:
 
-$$(i,j)
-\rightarrow
-(j,n-1-i)
-\rightarrow
-(n-1-i,n-1-j)
-\rightarrow
-(n-1-j,i)$$
+$$(i,j) \rightarrow (j,n-1-i) \rightarrow (n-1-i,n-1-j) \rightarrow (n-1-j,i)$$
 
 For the final grid to remain unchanged after rotation, all cells in this orbit must contain the same value.
 

@@ -72,9 +72,7 @@ whose expected change in one operation is always `-1`.
 
 If such a function exists, then the optional stopping theorem immediately gives
 
-$$\mathbb E[\text{time to finish}]
-=
-F(\text{initial}) - F(\text{terminal}).$$
+$$\mathbb E[\text{time to finish}] = F(\text{initial}) - F(\text{terminal}).$$
 
 This completely avoids solving the Markov chain.
 
@@ -115,11 +113,7 @@ $$(k-1)i\,d_i-(n-i)d_{i+1}=n.$$
 
 Equivalently,
 
-$$(k-1)i(g(i)-g(i-1))
-+
-(n-i)(g(i)-g(i+1))
-=
-n.$$
+$$(k-1)i(g(i)-g(i-1)) + (n-i)(g(i)-g(i+1)) = n.$$
 
 We set
 
@@ -127,11 +121,7 @@ $$g(0)=g(1)=0,$$
 
 and compute all remaining values by recurrence:
 
-$$g(i+1)
-=
-g(i)
-+
-\frac{(k-1)i(g(i)-g(i-1))-n}{n-i}.$$
+$$g(i+1) = g(i) + \frac{(k-1)i(g(i)-g(i-1))-n}{n-i}.$$
 
 All arithmetic is performed modulo `10^9+7`.
 
@@ -151,15 +141,11 @@ Let `b[j]` denote the number of colors whose known frequency is exactly `j`.
 
 Then the expected number of colors whose final frequency equals `i` is
 
-$$\sum_j
-b[j]
-\Pr(X=i-j).$$
+$$\sum_j b[j] \Pr(X=i-j).$$
 
 The binomial probability contributes
 
-$$\binom{c}{i-j}
-\left(\frac1k\right)^{i-j}
-\left(\frac{k-1}{k}\right)^{c-(i-j)}.$$
+$$\binom{c}{i-j} \left(\frac1k\right)^{i-j} \left(\frac{k-1}{k}\right)^{c-(i-j)}.$$
 
 Instead of dividing by powers of `k` repeatedly, we accumulate the numerator
 
@@ -171,10 +157,7 @@ and divide by `k^c` once at the end.
 
 The expected value of the potential before the process starts is
 
-$$\mathbb E[F]
-=
-\sum_i g(i)\cdot
-\mathbb E[\#\text{colors with final frequency }i].$$
+$$\mathbb E[F] = \sum_i g(i)\cdot \mathbb E[\#\text{colors with final frequency }i].$$
 
 Every terminal state consists of one color appearing `n` times and all others appearing `0` times, so its potential equals
 
@@ -182,9 +165,7 @@ $$g(n).$$
 
 Thus
 
-$$\mathbb E[f(a)]
-=
-\mathbb E[F]-g(n).$$
+$$\mathbb E[f(a)] = \mathbb E[F]-g(n).$$
 
 This is exactly the required answer.
 
@@ -196,9 +177,7 @@ $$F_t+t$$
 
 is a martingale. Let `T` be the first time when all elements become equal. Applying the stopping-time identity gives
 
-$$\mathbb E[T]
-=
-F(\text{start})-F(\text{finish}).$$
+$$\mathbb E[T] = F(\text{start})-F(\text{finish}).$$
 
 The remainder of the solution computes the expected starting potential after random replacement of the unknown entries. Since expectation is linear, summing the binomial contributions of every color yields the exact value of `\mathbb E[F]`. Combining both parts produces the desired expected stopping time.
 

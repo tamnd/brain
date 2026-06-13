@@ -76,9 +76,7 @@ The total number of permutations is `n!`.
 
 Hence:
 
-$$\text{cyclic permutations}
-=
-n! - 2^{\,n-1}$$
+$$\text{cyclic permutations} = n! - 2^{\,n-1}$$
 
 All computations are performed modulo `10^9+7`.
 

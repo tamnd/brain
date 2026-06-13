@@ -32,9 +32,7 @@ Let $c_i$ be the number of times vector $i$ is used.
 
 Returning to the origin means
 
-$$\sum c_i x_i = 0,
-\qquad
-\sum c_i y_i = 0.$$
+$$\sum c_i x_i = 0, \qquad \sum c_i y_i = 0.$$
 
 The polygon must also fit inside an $m \times m$ square after translation.
 
@@ -71,18 +69,13 @@ The key observation is that the coordinates of the vectors are tiny.
 
 Split the closure equations into positive and negative contributions:
 
-$$\sum_{x_i>0} c_i x_i
-=
-\sum_{x_i<0} c_i (-x_i),$$
+$$\sum_{x_i>0} c_i x_i = \sum_{x_i<0} c_i (-x_i),$$
 
-$$\sum_{y_i>0} c_i y_i
-=
-\sum_{y_i<0} c_i (-y_i).$$
+$$\sum_{y_i>0} c_i y_i = \sum_{y_i<0} c_i (-y_i).$$
 
 Define
 
-$$PX=\sum_{x_i>0} c_i x_i,\quad
-NX=\sum_{x_i<0} c_i (-x_i),$$
+$$PX=\sum_{x_i>0} c_i x_i,\quad NX=\sum_{x_i<0} c_i (-x_i),$$
 
 and similarly $PY,NY$.
 
@@ -277,9 +270,7 @@ This example demonstrates that multiple distinct multiplicity vectors can genera
 
 The closure equations become
 
-$$2c_2=c_1,
-\qquad
-2c_2=c_3.$$
+$$2c_2=c_1, \qquad 2c_2=c_3.$$
 
 The square limit forces only one non-zero feasible solution.
 

@@ -53,8 +53,7 @@ $$nd[v] = \min_u (dp[u] + (u - v)^2)$$
 
 Rewrite:
 
-$$dp[u] + u^2 - 2uv + v^2
-= (dp[u] + u^2) + v^2 - 2uv$$
+$$dp[u] + u^2 - 2uv + v^2 = (dp[u] + u^2) + v^2 - 2uv$$
 
 For fixed `v`, this is the minimum of lines in `u`:
 

@@ -50,8 +50,7 @@ We use the identity:
 
 Let $d_i = a_i - a_1$. Then:
 
-$$\gcd(a_1 + b_j, a_2 + b_j, ..., a_n + b_j)
-= \gcd(a_1 + b_j, \gcd(d_2, ..., d_n))$$
+$$\gcd(a_1 + b_j, a_2 + b_j, ..., a_n + b_j) = \gcd(a_1 + b_j, \gcd(d_2, ..., d_n))$$
 
 So we precompute the gcd of all differences once, then answer each query in O(1).
 

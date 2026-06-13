@@ -95,8 +95,7 @@ The issue is the number of pairs. With $n=200000$, there are about twenty billio
 
 To speed things up, consider one position $j$. Suppose all previous elements are already known. Ignoring the special rule for a moment, the total contribution of earlier numbers equals
 
-$$\sum_{i<j}(a_j-a_i)
-=(j-1)\cdot a_j-\text{prefixSum}.$$
+$$\sum_{i<j}(a_j-a_i) =(j-1)\cdot a_j-\text{prefixSum}.$$
 
 This expression can be updated in constant time if we maintain the sum of all previous elements.
 

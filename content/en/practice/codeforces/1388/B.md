@@ -110,8 +110,7 @@ digits at the end.
 
 Thus the answer is:
 
-$$\underbrace{99\ldots9}_{n-\lceil n/4\rceil}
-\underbrace{88\ldots8}_{\lceil n/4\rceil}.$$
+$$\underbrace{99\ldots9}_{n-\lceil n/4\rceil} \underbrace{88\ldots8}_{\lceil n/4\rceil}.$$
 
 This is the well-known Codeforces solution.
 

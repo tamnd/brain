@@ -172,11 +172,7 @@ as the weighted contribution of all future inserted characters equal to $c$.
 
 A recurrence expansion gives
 
-$$F_k
-=
-2^{k-p}F_p
-+
-\sum_c G(c)\cdot B_c,$$
+$$F_k = 2^{k-p}F_p + \sum_c G(c)\cdot B_c,$$
 
 where $B_c$ is the number of crossing occurrences generated when the inserted character equals $c$.
 

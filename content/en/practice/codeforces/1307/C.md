@@ -127,9 +127,7 @@ For two-letter messages, every valid occurrence corresponds to a pair of positio
 
 The remaining question is why longer messages can be ignored. Let a message $t$ of length at least three start with letter $a$ and end with letter $b$. Every occurrence of $t$ determines a unique occurrence of the two-letter message $ab$ using the first and last chosen positions. Distinct occurrences of $t$ produce distinct endpoint pairs. Hence:
 
-$$\text{occurrences}(t)
-\le
-\text{occurrences}(ab).$$
+$$\text{occurrences}(t) \le \text{occurrences}(ab).$$
 
 So no message of length at least three can beat the best one-letter or two-letter message. The algorithm checks all such candidates, therefore the maximum it returns is the correct answer.
 
@@ -167,8 +165,7 @@ The update order matters. We must first add contributions from previously seen c
 
 All counts fit comfortably inside 64-bit integers. In the worst case, a two-letter message can occur about:
 
-$$\binom{10^5}{2}
-\approx 5 \times 10^9,$$
+$$\binom{10^5}{2} \approx 5 \times 10^9,$$
 
 which is much larger than 32-bit limits. Python integers handle this automatically.
 
@@ -321,11 +318,7 @@ aaaa
 
 The updates generate:
 
-$$pairs[a][a]
-=
-1+2+3
-=
-6.$$
+$$pairs[a][a] = 1+2+3 = 6.$$
 
 The single-letter count is only 4. The algorithm correctly returns 6.
 

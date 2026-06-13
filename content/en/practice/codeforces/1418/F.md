@@ -186,9 +186,7 @@ Because $a$ is active, this multiple is guaranteed to lie inside the interval.
 
 1. Set
 
-$$x_2=x_1\frac{a}{b},
-\qquad
-y_2=y_1\frac{b}{a}.$$
+$$x_2=x_1\frac{a}{b}, \qquad y_2=y_1\frac{b}{a}.$$
 
 1. Output the quadruple and stop searching for this $x_1$.
 2. If no divisor $b$ produces a valid $a$, output $-1$.
@@ -380,9 +378,7 @@ Input:
 
 For $x_1=6$:
 
-$$L=\left\lceil\frac{91}{6}\right\rceil=16,
-\qquad
-R=\left\lfloor\frac{100}{6}\right\rfloor=16.$$
+$$L=\left\lceil\frac{91}{6}\right\rceil=16, \qquad R=\left\lfloor\frac{100}{6}\right\rfloor=16.$$
 
 | x | Interval | b | Chosen a | y1 | x2 | y2 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -498,9 +494,7 @@ Consider:
 
 For $x_1=3$,
 
-$$L=\left\lceil\frac{20}{3}\right\rceil=7,
-\qquad
-R=\left\lfloor\frac{20}{3}\right\rfloor=6.$$
+$$L=\left\lceil\frac{20}{3}\right\rceil=7, \qquad R=\left\lfloor\frac{20}{3}\right\rfloor=6.$$
 
 Since $L>R$, the interval is empty. The algorithm immediately prints $-1$.
 

@@ -70,8 +70,7 @@ Input:
 
 Ordering it as $[2,3,5]$ gives
 
-$$\gcd(2,6)=2,\qquad
-\gcd(2,10)=2.$$
+$$\gcd(2,6)=2,\qquad \gcd(2,10)=2.$$
 
 Both pairs involving the leading even number are good.
 
@@ -351,9 +350,7 @@ Consider an array consisting entirely of odd numbers:
 
 The reordered array is unchanged. The algorithm checks every pair directly:
 
-$$\gcd(1,6)=1,\quad
-\gcd(1,10)=1,\quad
-\gcd(3,10)=1.$$
+$$\gcd(1,6)=1,\quad \gcd(1,10)=1,\quad \gcd(3,10)=1.$$
 
 The answer is 0.
 

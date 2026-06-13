@@ -50,10 +50,7 @@ has one nonzero binary digit, so $A=1$, not $A=m-1$ as later claimed.
 
 The proof subsequently uses formulas
 
-$$A=m-1,\qquad
-A=m,\qquad
-A=m+1,\qquad
-A=m+2,$$
+$$A=m-1,\qquad A=m,\qquad A=m+1,\qquad A=m+2,$$
 
 for the four cases, but these values are asserted without deriving them from Theorem C. The entire verification that the chain lengths equal $A+2$ depends on those identities.
 
@@ -79,10 +76,7 @@ These statements are incompatible. For $n-1=2^m$, the number of powers of two oc
 
 The displayed chain lengths are computed as $m+1,m+2,m+3,m+4$, but the equalities
 
-$$A=m-1,\quad
-A=m,\quad
-A=m+1,\quad
-A=m+2$$
+$$A=m-1,\quad A=m,\quad A=m+1,\quad A=m+2$$
 
 are simply asserted. They are not derived from Theorem C or any definition of $A$.
 

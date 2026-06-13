@@ -147,8 +147,7 @@ $$a_ib_i+a_{i+1}b_{i+1}=a_ia_{i+1}-a_{i+1}a_i=0.$$
 
 For the final triple,
 
-$$a_pr+a_qr+a_r(-(a_p+a_q))
-=r(a_p+a_q)-r(a_p+a_q)=0.$$
+$$a_pr+a_qr+a_r(-(a_p+a_q)) =r(a_p+a_q)-r(a_p+a_q)=0.$$
 
 Since each group contributes zero independently, the total sum over the whole array is zero. All coefficients are nonzero because every array element is nonzero and the selected pair has a nonzero sum.
 

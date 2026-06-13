@@ -139,9 +139,7 @@ Compare first by `L1`, then by `L2`.
 
 Every length-`w` substring is represented solely by its residue modulo `9`. The query condition depends only on these residues:
 
-$$(v_1\cdot a+v_2)\bmod 9
-=
-((v_1\bmod9)\cdot(a\bmod9)+(v_2\bmod9))\bmod9.$$
+$$(v_1\cdot a+v_2)\bmod 9 = ((v_1\bmod9)\cdot(a\bmod9)+(v_2\bmod9))\bmod9.$$
 
 So replacing each substring by its residue loses no information.
 

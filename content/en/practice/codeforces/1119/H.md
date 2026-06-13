@@ -30,14 +30,7 @@ From each of the $n$ arrays we choose one value. The XOR of all chosen values is
 
 A useful way to view a single array is as a frequency distribution over values. Array $i$ contributes
 
-$$f_i[v]
-=
-\begin{cases}
-x & v=a_i\\
-y & v=b_i\\
-z & v=c_i\\
-0 & \text{otherwise}
-\end{cases}$$
+$$f_i[v] = \begin{cases} x & v=a_i\\ y & v=b_i\\ z & v=c_i\\ 0 & \text{otherwise} \end{cases}$$
 
 If we XOR-convolve all these distributions, the resulting array contains exactly the required answers.
 
@@ -135,29 +128,14 @@ $$a_i \oplus b_i = t.$$
 3. Apply XOR Walsh-Hadamard transform to all seven arrays.
 4. For a fixed frequency $v$, collect the eight Walsh moments:
 
-$$T =
-\bigl[
-n,
-A[v],
-B[v],
-C[v],
-AB[v],
-AC[v],
-BC[v],
-ABC[v]
-\bigr].$$
+$$T = \bigl[ n, A[v], B[v], C[v], AB[v], AC[v], BC[v], ABC[v] \bigr].$$
 5. Think of every triple as producing a sign pattern
 
-$$(\alpha,\beta,\gamma)
-\in \{\pm1\}^3$$
+$$(\alpha,\beta,\gamma) \in \{\pm1\}^3$$
 
 where
 
-$$\alpha=\chi_v(a_i),
-\quad
-\beta=\chi_v(b_i),
-\quad
-\gamma=\chi_v(c_i).$$
+$$\alpha=\chi_v(a_i), \quad \beta=\chi_v(b_i), \quad \gamma=\chi_v(c_i).$$
 
 Let $e_p$ be the number of triples producing pattern $p$.
 6. The vector $T$ is exactly the Walsh transform of the count vector $e$. Apply the inverse $8$-point Hadamard transform to recover all eight values $e_p$.
@@ -166,10 +144,7 @@ Let $e_p$ be the number of triples producing pattern $p$.
 $$w_p=s_xx+s_yy+s_zz.$$
 8. Compute
 
-$$G[v]
-=
-\prod_p w_p^{e_p}
-\pmod{998244353}.$$
+$$G[v] = \prod_p w_p^{e_p} \pmod{998244353}.$$
 
 This is the transformed answer at frequency $v$.
 9. After all frequencies are processed, apply the inverse XOR Walsh-Hadamard transform to $G$.

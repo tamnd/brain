@@ -112,9 +112,7 @@ $$\min\left(A,\; \frac{T+B}{2}\right),$$
 
 because
 
-$$B+\frac{T-B}{2}
-=
-\frac{T+B}{2}.$$
+$$B+\frac{T-B}{2} = \frac{T+B}{2}.$$
 
 For fixed `(k, A)`, larger `B` always gives a larger objective, so storing only the maximum `B` is sufficient.
 
@@ -145,9 +143,7 @@ $$dp[0][0]=0.$$
 
 For a glass `(a,b)`, iterate `j` and `s` in decreasing order and perform the standard 0/1 knapsack transition:
 
-$$dp[j+1][s+a]
-=
-\max(dp[j+1][s+a],\, dp[j][s]+b).$$
+$$dp[j+1][s+a] = \max(dp[j+1][s+a],\, dp[j][s]+b).$$
 
 Descending iteration prevents using the same glass multiple times.
 6. After all glasses are processed, compute answers for every `k`.
@@ -167,9 +163,7 @@ Let `A` be their total capacity and `B` their initial water. The remaining glass
 
 Every unit arriving from outside must be transferred at least once, so at most half of outside water can end up inside the chosen set. Thus the total water that can be gathered into the chosen glasses is at most
 
-$$B+\frac{T-B}{2}
-=
-\frac{T+B}{2}.$$
+$$B+\frac{T-B}{2} = \frac{T+B}{2}.$$
 
 The chosen glasses also cannot contain more than their total capacity `A`. Hence no strategy can exceed
 

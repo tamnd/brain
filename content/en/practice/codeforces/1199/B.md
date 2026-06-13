@@ -41,20 +41,20 @@ A subtle issue that can confuse naive reasoning is mixing up which segment corre
 If we think purely algebraically, we can introduce unknowns. Let the lake depth be \(D\). The stem length is then \(D + H\), because initially the flower is \(H\) above the surface. After dragging, the flower lies on the water surface, so the vertical projection of the stem becomes exactly \(D\), while the horizontal displacement is \(L\). This forms a right triangle where the hypotenuse is \(D + H\), one leg is \(D\), and the other is \(L\).
 
 From the Pythagorean theorem we obtain:
-\[
+$$
 (D + H)^2 = D^2 + L^2
-\]
+$$
 
 Expanding and simplifying removes \(D^2\) from both sides:
-\[
+$$
 D^2 + 2DH + H^2 = D^2 + L^2
-\]
-\[
+$$
+$$
 2DH + H^2 = L^2
-\]
-\[
+$$
+$$
 D = \frac{L^2 - H^2}{2H}
-\]
+$$
 
 A brute-force approach would be to guess the depth and simulate the geometry each time, checking whether the resulting stem length matches consistency constraints. That would require iterating over all possible depths up to \(10^6\), which is unnecessary and wasteful since the relationship is algebraic and direct.
 
@@ -72,17 +72,17 @@ The key observation is that the system is fully determined by a single quadratic
 2. Translate the geometry into a right triangle relation where the stem length is constant and equals \(D + H\). This step converts the physical setup into algebra.
 
 3. Apply the Pythagorean theorem:
-   \[
+   $$
    (D + H)^2 = D^2 + L^2
-   \]
+   $$
    This captures the invariant stem length and the orthogonal decomposition after rotation.
 
 4. Expand and cancel identical terms on both sides to isolate the unknown \(D\). This simplification removes the quadratic term in a clean way due to symmetry.
 
 5. Solve the resulting linear equation in \(D\):
-   \[
+   $$
    D = \frac{L^2 - H^2}{2H}
-   \]
+   $$
 
 6. Output \(D\) as a floating-point number with sufficient precision.
 
@@ -116,9 +116,9 @@ H = 1, L = 2
 ```
 
 We compute:
-\[
+$$
 D = \frac{2^2 - 1^2}{2 \cdot 1}
-\]
+$$
 
 | Step | Expression | Value |
 |------|------------|-------|

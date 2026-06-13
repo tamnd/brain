@@ -210,9 +210,7 @@ $$\frac{m(m-1)}2.$$
 
 Thus the probability that this position immediately produces `S1>S2` is
 
-$$\frac{m(m-1)/2}{m^2}
-=
-\frac{m-1}{2m}.$$
+$$\frac{m(m-1)/2}{m^2} = \frac{m-1}{2m}.$$
 
 Add
 
@@ -436,9 +434,7 @@ There are four equally likely assignments:
 
 Only `(2,1)` satisfies `S1>S2`, so the probability is `1/4`. The algorithm computes
 
-$$\frac{2(2-1)/2}{2^2}
-=
-\frac14,$$
+$$\frac{2(2-1)/2}{2^2} = \frac14,$$
 
 which matches the exact count.
 

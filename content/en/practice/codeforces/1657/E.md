@@ -119,9 +119,7 @@ valid choices.
 
 Thus the answer equals
 
-$$\sum_{a_2,\dots,a_n}
-\prod_{i<j}
-\bigl(k-\max(a_i,a_j)+1\bigr).$$
+$$\sum_{a_2,\dots,a_n} \prod_{i<j} \bigl(k-\max(a_i,a_j)+1\bigr).$$
 
 A direct evaluation is still impossible because there are `k^(n-1)` star assignments.
 
@@ -204,13 +202,7 @@ $$\binom{N-t}{x}.$$
 
 Thus the transition is
 
-$$dp[w][t+x]
-+=
-dp[w-1][t]
-\cdot
-\binom{N-t}{x}
-\cdot
-(k-w+1)^E.$$
+$$dp[w][t+x] += dp[w-1][t] \cdot \binom{N-t}{x} \cdot (k-w+1)^E.$$
 
 After processing all weight values, every vertex must have been assigned:
 

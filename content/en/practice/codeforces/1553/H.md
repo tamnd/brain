@@ -64,11 +64,7 @@ In the worst case $n=2^k=524288$, which is astronomically large.
 
 The key observation is that we do not actually care about the transformed numbers themselves. We only care about three quantities for every mask:
 
-$$\text{minimum value},
-\qquad
-\text{maximum value},
-\qquad
-\text{minimum pair distance}.$$
+$$\text{minimum value}, \qquad \text{maximum value}, \qquad \text{minimum pair distance}.$$
 
 These quantities can be merged recursively along the bit structure of the numbers.
 

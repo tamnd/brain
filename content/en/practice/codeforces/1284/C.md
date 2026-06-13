@@ -88,8 +88,7 @@ $$(n-k+1)^2 \cdot k! \cdot (n-k)!.$$
 
 Summing over all lengths gives the answer:
 
-$$\sum_{k=1}^{n}
-(n-k+1)^2 \cdot k! \cdot (n-k)!.$$
+$$\sum_{k=1}^{n} (n-k+1)^2 \cdot k! \cdot (n-k)!.$$
 
 The remaining task is evaluating this sum modulo `m`. Since `n` is up to `250000`, we can precompute factorials modulo `m` in linear time and then evaluate the summation in another linear pass.
 
@@ -107,8 +106,7 @@ Let `fact[i] = i! mod m` for all `0 ≤ i ≤ n`.
 3. Initialize the answer to zero.
 4. For every segment length `k` from `1` to `n`, compute
 
-$$(n-k+1)^2 \cdot fact[k] \cdot fact[n-k]
-\pmod m.$$
+$$(n-k+1)^2 \cdot fact[k] \cdot fact[n-k] \pmod m.$$
 
 This quantity counts all pairs `(permutation, framed segment)` whose segment length equals `k`.
 5. Add this contribution to the answer modulo `m`.

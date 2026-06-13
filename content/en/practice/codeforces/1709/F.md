@@ -113,10 +113,7 @@ Assume we already know the distribution for height `h-1`.
 
 Let
 
-$$H[t]
-=
-\sum_{a+b=t}
-dp[h-1][a]\cdot dp[h-1][b].$$
+$$H[t] = \sum_{a+b=t} dp[h-1][a]\cdot dp[h-1][b].$$
 
 `H[t]` counts assignments whose two children contribute total value `t`.
 
@@ -136,19 +133,11 @@ If `t>j`, then the only way to obtain value `j` is choosing `c=j`.
 
 Hence
 
-$$dp[h][j]
-=
-(k-j+1)H[j]
-+
-\sum_{t>j} H[t].$$
+$$dp[h][j] = (k-j+1)H[j] + \sum_{t>j} H[t].$$
 
 Rewriting:
 
-$$dp[h][j]
-=
-(k-j)H[j]
-+
-\sum_{t\ge j} H[t].$$
+$$dp[h][j] = (k-j)H[j] + \sum_{t\ge j} H[t].$$
 
 The suffix sums of `H` allow this transition in linear time.
 

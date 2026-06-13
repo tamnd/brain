@@ -34,10 +34,7 @@ follows.
 
 Part (b) derives the standard formula
 
-$$f_2(N^3,N)
-=
-\sum_{\substack{N<p\le N^{3/2}\\ p\ \text{prime}}}
-\bigl(\pi(N^3/p)-\pi(p-1)\bigr),$$
+$$f_2(N^3,N) = \sum_{\substack{N<p\le N^{3/2}\\ p\ \text{prime}}} \bigl(\pi(N^3/p)-\pi(p-1)\bigr),$$
 
 which is correct. However, the exercise explicitly asks to "use your method to evaluate $f_2(10^9,10^3)$ by hand." The solution simply states the numerical value
 

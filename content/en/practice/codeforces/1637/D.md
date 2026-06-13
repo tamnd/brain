@@ -85,9 +85,7 @@ $$(n-1)\sum x_i^2 + 2\sum_{i<j}x_ix_j.$$
 
 Adding the corresponding expression for both arrays gives
 
-$$(n-1)\sum (a_i^2+b_i^2)
-+
-2\left(\sum_{i<j}a_ia_j+\sum_{i<j}b_ib_j\right).$$
+$$(n-1)\sum (a_i^2+b_i^2) + 2\left(\sum_{i<j}a_ia_j+\sum_{i<j}b_ib_j\right).$$
 
 The first part is constant because swapping does not change the multiset of numbers inside each pair.
 

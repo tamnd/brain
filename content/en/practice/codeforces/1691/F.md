@@ -124,13 +124,7 @@ The value $p[u]$ lets us quickly count subsets entirely contained inside one chi
 
 We count how many $k$-subsets make this component appear as a non-critical block. The resulting count is
 
-$$\binom{n-SZ[u]-1}{k-1}
-+
-\binom{n-SZ[u]-1}{k}
--
-\Bigl(p[fa[u]]-\binom{SZ[u]}{k}\Bigr)
--
-\binom{n-SZ[fa[u]]}{k}.$$
+$$\binom{n-SZ[u]-1}{k-1} + \binom{n-SZ[u]-1}{k} - \Bigl(p[fa[u]]-\binom{SZ[u]}{k}\Bigr) - \binom{n-SZ[fa[u]]}{k}.$$
 
 Multiplying by $SZ[u]^2$ gives this component's contribution to
 
@@ -141,11 +135,7 @@ $$n-SZ[u].$$
 
 The number of subsets that make this region a non-critical component is
 
-$$\binom{SZ[u]-1}{k-1}
-+
-\binom{SZ[u]-1}{k}
--
-p[u].$$
+$$\binom{SZ[u]-1}{k-1} + \binom{SZ[u]-1}{k} - p[u].$$
 
 Multiplying by $(n-SZ[u])^2$ adds its contribution.
 5. Summing all such contributions over every non-root vertex yields
@@ -157,11 +147,7 @@ $$F(S)=n^2-\sum_i sz_i^2,$$
 
 summing over all subsets gives
 
-$$\text{Answer}
-=
-n^2 \binom{n}{k}
--
-X.$$
+$$\text{Answer} = n^2 \binom{n}{k} - X.$$
 
 Take everything modulo $10^9+7$.
 
@@ -301,11 +287,7 @@ Processing non-root vertices:
 
 The accumulated subtraction term is $2$.
 
-$$n^2 \binom{n}{k}
-=
-9 \cdot 3
-=
-27$$
+$$n^2 \binom{n}{k} = 9 \cdot 3 = 27$$
 
 $$27 - 2 = 25$$
 

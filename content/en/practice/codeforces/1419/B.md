@@ -38,9 +38,7 @@ $$2^k-1.$$
 
 For a staircase with $2^k-1$ stairs, the number of cells is
 
-$$1+2+\cdots+(2^k-1)
-=
-\frac{(2^k-1)2^k}{2}.$$
+$$1+2+\cdots+(2^k-1) = \frac{(2^k-1)2^k}{2}.$$
 
 Let
 

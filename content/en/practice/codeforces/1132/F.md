@@ -120,9 +120,7 @@ If $s[l] = s[k]$, then after deleting everything between them, these two equal c
 
 This gives the transition:
 
-$$dp[l][r] =
-\min(dp[l][r],
-dp[l+1][k-1] + dp[k][r])$$
+$$dp[l][r] = \min(dp[l][r], dp[l+1][k-1] + dp[k][r])$$
 
 The first term removes everything between the matching characters. After that, position $l$ can merge with the deletion involving position $k$.
 

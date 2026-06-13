@@ -47,9 +47,7 @@ To compute $x + y$:
 3. Maintain a carry $c \in \{0,1\}$.
 4. For each position, compute
 
-$$s_i = x_i + y_i + c,
-\quad z_i = s_i \bmod b,
-\quad c = \lfloor s_i / b \rfloor.$$
+$$s_i = x_i + y_i + c, \quad z_i = s_i \bmod b, \quad c = \lfloor s_i / b \rfloor.$$
 5. Allocate a new node for each digit $z_i$ and link it into the result list.
 6. If a carry remains at the end, allocate a new most significant node.
 

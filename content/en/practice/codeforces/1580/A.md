@@ -152,10 +152,7 @@ All middle cells must be `0`.
 
 Let
 
-$$interiorCost =
-(grid[top][c]==0)
-+(grid[bottom][c]==0)
-+ insideOnes$$
+$$interiorCost = (grid[top][c]==0) +(grid[bottom][c]==0) + insideOnes$$
 
 because every interior `1` must be flipped to `0`.
 
@@ -176,15 +173,11 @@ The width must be at least 4, so:
 $$right - left \ge 3$$
 4. For each right border column, compute
 
-$$total =
-sideCost[right]
-+ prefixInteriorCost(right-1)
-+ bestLeft$$
+$$total = sideCost[right] + prefixInteriorCost(right-1) + bestLeft$$
 
 where `bestLeft` stores the minimum value of
 
-$$sideCost[left]
-- prefixInteriorCost(left)$$
+$$sideCost[left] - prefixInteriorCost(left)$$
 
 over all valid left borders.
 5. Update the global answer.

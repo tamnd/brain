@@ -87,11 +87,7 @@ Suppose we already know the rank of some position $k$ among the first $t-1$ elem
 
 If we denote the current rank of position $k$ by $x$, the transition is
 
-$$x \leftarrow
-\begin{cases}
-x+1 & x \ge r_t\\
-x   & x < r_t
-\end{cases}$$
+$$x \leftarrow \begin{cases} x+1 & x \ge r_t\\ x   & x < r_t \end{cases}$$
 
 Applying this transition for all $t>k$ eventually gives the final value $p_k$.
 

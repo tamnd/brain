@@ -98,16 +98,13 @@ $$a_m \le b_m.$$
 
 Combining everything gives
 
-$$a_1 \le a_2 \le \cdots \le a_m
-\le b_m \le b_{m-1} \le \cdots \le b_1.$$
+$$a_1 \le a_2 \le \cdots \le a_m \le b_m \le b_{m-1} \le \cdots \le b_1.$$
 
 This is simply a non-decreasing sequence of length $2m$ whose values lie in $1\ldots n$.
 
 Conversely, every non-decreasing sequence of length $2m$ uniquely determines a valid pair $(a,b)$:
 
-$$a_i = s_i,
-\qquad
-b_i = s_{2m-i+1}.$$
+$$a_i = s_i, \qquad b_i = s_{2m-i+1}.$$
 
 So the original problem is exactly equivalent to counting non-decreasing sequences of length $2m$ over $n$ values.
 
@@ -126,9 +123,7 @@ Since the modulus is prime and $n+2m-1 \le 1019$, we can compute this binomial c
 
 1. Let
 
-$$N = n + 2m - 1,
-\qquad
-K = 2m.$$
+$$N = n + 2m - 1, \qquad K = 2m.$$
 2. Observe that every valid pair $(a,b)$ corresponds to a non-decreasing sequence
 
 $$a_1,\ldots,a_m,b_m,\ldots,b_1$$
@@ -146,9 +141,7 @@ $$\binom{n+2m-1}{2m}.$$
 
 Since the modulus is prime, use factorials and modular inverses:
 
-$$\binom{N}{K}
-=
-\frac{N!}{K!(N-K)!}.$$
+$$\binom{N}{K} = \frac{N!}{K!(N-K)!}.$$
 6. Output the result.
 
 ### Why it works
@@ -223,9 +216,7 @@ Input:
 
 We compute:
 
-$$N = 2 + 4 - 1 = 5,
-\qquad
-K = 4.$$
+$$N = 2 + 4 - 1 = 5, \qquad K = 4.$$
 
 | Variable | Value |
 | --- | --- |
@@ -253,9 +244,7 @@ Input:
 
 We compute:
 
-$$N = 1 + 6 - 1 = 6,
-\qquad
-K = 6.$$
+$$N = 1 + 6 - 1 = 6, \qquad K = 6.$$
 
 | Variable | Value |
 | --- | --- |
@@ -365,11 +354,7 @@ Consider:
 
 The algorithm computes
 
-$$\binom{1+20-1}{20}
-=
-\binom{20}{20}
-=
-1.$$
+$$\binom{1+20-1}{20} = \binom{20}{20} = 1.$$
 
 Only one non-decreasing sequence of length $20$ exists, namely all ones. This maps to the unique valid pair of arrays.
 
@@ -381,11 +366,7 @@ Consider:
 
 The algorithm computes
 
-$$\binom{2+2-1}{2}
-=
-\binom{3}{2}
-=
-3.$$
+$$\binom{2+2-1}{2} = \binom{3}{2} = 3.$$
 
 The three pairs are $(1,1)$, $(1,2)$, and $(2,2)$. Equality cases are counted naturally because stars and bars counts multisets rather than strictly increasing sequences.
 

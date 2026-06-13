@@ -394,9 +394,7 @@ Input:
 
 For radius $5$, we get
 
-$$\frac{d}{2r} = 1,
-\qquad
-\alpha = \arccos(1) = 0.$$
+$$\frac{d}{2r} = 1, \qquad \alpha = \arccos(1) = 0.$$
 
 The interval collapses to a single angle. The sweep still counts it correctly because start events are processed before end events.
 

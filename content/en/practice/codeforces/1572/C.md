@@ -131,14 +131,7 @@ The interval $(l+1,k-1)$ must first be made monochromatic so that $l$ and $k$ be
 
 This yields
 
-$$dp[l][r]
-=
-\min
-\left(
-dp[l][r],
-\,
-dp[l+1][k-1] + dp[k][r]
-\right)$$
+$$dp[l][r] = \min \left( dp[l][r], \, dp[l+1][k-1] + dp[k][r] \right)$$
 
 where an empty interval contributes 0.
 

@@ -142,8 +142,7 @@ Suppose matched vertices are $u$ and $v$.
 
 Set:
 
-$$\text{cost}_u=1,\qquad
-\text{cost}_v=b_u-1.$$
+$$\text{cost}_u=1,\qquad \text{cost}_v=b_u-1.$$
 
 Since $b_u=b_v\ge 2$, both costs are positive.
 9. For every unmatched flexible vertex $u$, choose any neighboring cell $v$ with $b_v<b_u$.

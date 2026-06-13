@@ -115,8 +115,7 @@ Among all letters allowed to receive zero, assigning zero to the smallest weight
 
 After fixing the zero letter, only digits `1...9` remain. Suppose two letters have weights `w1 ≤ w2` but receive digits `d1 > d2`. Swapping their digits changes the sum by
 
-$$(w1d2+w2d1)-(w1d1+w2d2)
-=(w2-w1)(d1-d2)\ge 0$$
+$$(w1d2+w2d1)-(w1d1+w2d2) =(w2-w1)(d1-d2)\ge 0$$
 
 so the original assignment cannot be better than the swapped one. Repeatedly applying this argument shows that weights and digits must be ordered the same way. Thus sorting the remaining letters by weight and assigning digits `1...9` in increasing order yields the minimum possible sum.
 

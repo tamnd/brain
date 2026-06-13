@@ -95,9 +95,7 @@ $$p_1, p_2, \dots, p_{2n}.$$
 
 Now pair the leftmost point with the rightmost point, the second leftmost with the second rightmost, and so on:
 
-$$(p_1,p_{2n}),
-(p_2,p_{2n-1}),
-\dots$$
+$$(p_1,p_{2n}), (p_2,p_{2n-1}), \dots$$
 
 These segments are automatically nested. Every chosen set of $2n$ points can be transformed into a valid nested system.
 
@@ -138,9 +136,7 @@ $$p_1,p_2,\dots,p_{2n},$$
 
 then the pairs are
 
-$$(p_1,p_{2n}),
-(p_2,p_{2n-1}),
-\dots$$
+$$(p_1,p_{2n}), (p_2,p_{2n-1}), \dots$$
 
 For every consecutive pair of segments,
 

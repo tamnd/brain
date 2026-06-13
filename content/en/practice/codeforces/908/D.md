@@ -114,11 +114,7 @@ With probability $A$, the state becomes $(i+1,j)$.
 With probability $B$, the state becomes $(i,j+i)$.
 6. Rearranging the expectation equation gives
 
-$$dp[i][j]
-=
-A\cdot dp[i+1][j]
-+
-B\cdot dp[i][j+i].$$
+$$dp[i][j] = A\cdot dp[i+1][j] + B\cdot dp[i][j+i].$$
 
 1. Output $dp[1][0]$.
 
@@ -235,11 +231,7 @@ $$2+1=3.$$
 
 Hence
 
-$$dp[1][0]
-=
-\frac12\cdot3+\frac12\cdot3
-=
-3.$$
+$$dp[1][0] = \frac12\cdot3+\frac12\cdot3 = 3.$$
 
 This trace illustrates how recursive states eventually reach the terminal region.
 

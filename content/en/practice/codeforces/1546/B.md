@@ -1,104 +1,42 @@
 ---
 title: "CF 1546B - AquaMoon and Stolen String"
-description: "By Exercise 20, the hypotheses $$hat q v{n-2} le b hat r + u{n-2}, qquad hat q < b, qquad v{n-1} 0$$ imply that $$hat q = q quad text{or} quad hat q = q-1.$$ Since the present exercise assumes $hat q ne q$, we have necessarily $$hat q = q-1.$$ Let $$r = u - qv = u bmod v."
-date: "2026-06-10T13:45:40+07:00"
-tags: ["codeforces", "competitive-programming", "interactive", "math"]
-categories: ["algorithms"]
-codeforces_contest: 1546
-codeforces_index: "B"
-codeforces_contest_name: "Codeforces Round 732 (Div. 2)"
-rating: 1200
-weight: 1546
-solve_time_s: 166
-verified: false
-draft: false
----
-
-[CF 1546B - AquaMoon and Stolen String](https://codeforces.com/problemset/problem/1546/B)
-
-**Rating:** 1200  
-**Tags:** interactive, math  
-**Solve time:** 2m 46s  
-**Verified:** no  
-
-## Solution
-## Solution
-
-By Exercise 20, the hypotheses
-
-$$\hat q v_{n-2} \le b \hat r + u_{n-2}, \qquad \hat q < b, \qquad v_{n-1} > 0$$
-
+description: "By Exercise 20, the hypotheses $$hat q v{n-2} le b hat r + u{n-2}, qquad hat q < b, qquad v{n-1} 0$$ imply that $$hat q = q quad text{or} quad hat q = q-1.$$ Since the present exercise assumes $hat q ne q$, we have necessarily $$hat q = q-1.$$ Let $$r = u - qv = u bmod v." date: "2026-06-10T13:45:40+07:00" tags: ["codeforces", "competitive-programming", "interactive", "math"] categories: ["algorithms"] codeforces_contest: 1546 codeforces_index: "B" codeforces_contest_name: "Codeforces Round 732 (Div. 2)" rating: 1200 weight: 1546 solve_time_s: 166 verified: false draft: false --- [CF 1546B - AquaMoon and Stolen String](https://codeforces.com/problemset/problem/1546/B) **Rating:** 1200   **Tags:** interactive, math   **Solve time:** 2m 46s   **Verified:** no   ## Solution ## Solution By Exercise 20, the hypotheses$$\hat q v_{n-2} \le b \hat r + u_{n-2}, \qquad \hat q < b, \qquad v_{n-1} > 0$$
 imply that
-
 $$\hat q = q \quad \text{or} \quad \hat q = q-1.$$
-
 Since the present exercise assumes $\hat q \ne q$, we have necessarily
-
 $$\hat q = q-1.$$
-
 Let
-
 $$r = u - qv = u \bmod v.$$
-
 Write $u$ in terms of digits as
-
 $$u = \hat q b^{\,n-1} + \hat r b^{\,n-2} + \cdots + u_0$$
-
 where the coefficients are aligned with the usual notation of Exercises 19 and 20. Because $\hat q = q-1$, we can rewrite $u$ as
-
 $$u = q v + \bigl((\hat r b^{\,n-2} + \cdots + u_0) - v \bigr).$$
-
 Hence the remainder is
-
 $$r = \hat r b^{\,n-2} + \cdots + u_0 - v.$$
-
 Define
-
 $$T = b \hat r + u_{n-2}.$$
-
 Then
-
 $$r \ge T b^{\,n-2} - v.
 \tag{1}$$
-
 From the hypothesis $\hat q v_{n-2} \le b \hat r + u_{n-2} = T$, we have
-
 $$T \ge \hat q v_{n-2}.
 \tag{2}$$
-
 To obtain a lower bound for $\hat q$, observe that $\hat q = q-1$ and that the true quotient digit satisfies $1 \le q \le b-1$. Therefore
-
 $$1 \le q \le b-1 \implies 0 \le \hat q = q-1 \le b-2.$$
-
 To strengthen the lower bound, note that $v_{n-1} \ge \lfloor b/2 \rfloor$ and $v_{n-2} \le b-1$. Then
-
 $$\hat q v_{n-2} \le T \implies T \ge \hat q v_{n-2}.$$
-
 The minimal value of $\hat q v_{n-2}$ occurs when $\hat q$ is as small as possible, which is $\hat q \ge 1$. Therefore
-
 $$T \ge v_{n-2}.$$
-
 Since $v_{n-2} \le b-1$ and $v \ge v_{n-1} b^{\,n-1} \ge \frac{b-1}{2} b^{\,n-1}$, we have
-
 $$v_{n-2} b^{\,n-2} \ge \frac{b-1}{b} v \cdot b^{-1} \ge \frac{b-2}{b} v \cdot b^{-2}.$$
-
 Multiplying the inequality $T \ge \hat q v_{n-2}$ by $b^{\,n-2}$ and using the bound on $\hat q$ and $v_{n-2}$ yields
-
 $$T b^{\,n-2} \ge \left(1 - \frac{2}{b} \right) v.
 \tag{3}$$
-
 Substituting (3) into (1) gives
-
 $$r \ge \left(1 - \frac{2}{b} \right) v.$$
-
 Since $r = u \bmod v$, this establishes the desired bound
-
 $$u \bmod v \ge \left(1 - \frac{2}{b} \right) v.$$
-
 This completes the proof.
-
 $\square$
-
 ## Notes
-
 The event $\hat q = q-1$ occurs precisely when the trial quotient digit is one too small. The argument shows that in such a case the true remainder is already very large, within a fraction $2/b$ of the divisor. For typical machine word bases, $b$ is large, so this event occurs with approximate probability $2/b$, which is negligibly small.

@@ -62,12 +62,7 @@ If a row contains only small values and another row contains only large values, 
 
 The key observation is that the official solution arranges consecutive numbers column by column:
 
-$$\begin{matrix}
-1 & n+1 & 2n+1 & \dots \\
-2 & n+2 & 2n+2 & \dots \\
-3 & n+3 & 2n+3 & \dots \\
-\vdots
-\end{matrix}$$
+$$\begin{matrix} 1 & n+1 & 2n+1 & \dots \\ 2 & n+2 & 2n+2 & \dots \\ 3 & n+3 & 2n+3 & \dots \\ \vdots \end{matrix}$$
 
 Then every second column is reversed.
 

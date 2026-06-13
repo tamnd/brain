@@ -56,9 +56,7 @@ $$U = R\cos\Theta, \quad V = R\sin\Theta,$$
 
 where $R \in [0,1]$ and $\Theta \in [0,2\pi)$, with $\Theta$ uniform and independent of $R^2$ in the sense induced by area measure. Then
 
-$$X = \frac{R^2\cos^2\Theta - R^2\sin^2\Theta}{R^2\cos^2\Theta + R^2\sin^2\Theta}
-= \frac{\cos^2\Theta - \sin^2\Theta}{1}
-= \cos(2\Theta).$$
+$$X = \frac{R^2\cos^2\Theta - R^2\sin^2\Theta}{R^2\cos^2\Theta + R^2\sin^2\Theta} = \frac{\cos^2\Theta - \sin^2\Theta}{1} = \cos(2\Theta).$$
 
 The radial variable cancels completely. The distribution of $X$ is therefore determined solely by $\Theta$, which is uniform on $[0,2\pi)$.
 
@@ -74,8 +72,7 @@ $$F_2(x) = 1 - \frac{1}{\pi}\arccos x.$$
 
 Using the identity $\arccos x = \frac{\pi}{2} - \arcsin x$, we obtain
 
-$$F_2(x) = 1 - \frac{1}{\pi}\left(\frac{\pi}{2} - \arcsin x\right)
-= \frac{1}{2} + \frac{1}{\pi}\arcsin x.$$
+$$F_2(x) = 1 - \frac{1}{\pi}\left(\frac{\pi}{2} - \arcsin x\right) = \frac{1}{2} + \frac{1}{\pi}\arcsin x.$$
 
 Now compare the two distribution functions.
 

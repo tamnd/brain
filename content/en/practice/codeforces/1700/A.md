@@ -34,47 +34,47 @@ Non-obvious edge cases include single-row or single-column tables. For example, 
 
 A brute-force approach would construct the full grid and attempt a dynamic programming solution. Let \(dp[i][j]\) be the minimal cost to reach cell \((i,j)\). We could define:
 
-\[
+$$
 dp[i][j] = a_{ij} + \min(dp[i-1][j], dp[i][j-1])
-\]
+$$
 
 with base case \(dp[1][1] = 1\). This works correctly but requires \(O(n \cdot m)\) time per test case. For the largest inputs, this reaches \(10^8\) operations, which is too slow.
 
 The key observation is that the turtle can only move right or down. Therefore, every minimal path must start by moving along the edges: first either all down and then all right, or all right and then all down. Every other path is a permutation of these moves and produces the same set of numbers along the path but in a different order. For example, in a 3x2 table:
 
-\[
+$$
 \begin{matrix}
 1 & 2 \\
 3 & 4 \\
 5 & 6
 \end{matrix}
-\]
+$$
 
 All paths from \((1,1)\) to \((3,2)\) must include the numbers 1, 2, 4, 5, 6 in some order. Summing these numbers can be done using arithmetic series formulas without iterating over the grid.
 
 If we split the path into "vertical then horizontal" or "horizontal then vertical," we can compute the sum directly. Let \(n\) be the number of rows and \(m\) the number of columns. The minimal cost is achieved by following the outer border: go down along the first column to the last row, then right along the last row. The sum along the first column is:
 
-\[
+$$
 \text{sum of first column} = 1 + (1+m) + (1+2m) + ... + (1 + (n-1)m) = n + m \cdot \frac{n(n-1)}{2}
-\]
+$$
 
 The sum along the last row excluding the corner already counted is:
 
-\[
+$$
 \text{sum of last row excluding first column} = (n-1)m + 1 + 2 + ... + (m-1)
-\]
+$$
 
 A simplified formula combining both yields:
 
-\[
+$$
 \text{cost} = n + m \cdot \frac{n(n-1)}{2} + \frac{(m-1)m}{2} + (n-1)m
-\]
+$$
 
 After simplification, it reduces to:
 
-\[
+$$
 \text{cost} = n \cdot m \cdot (n-1)/2 + m \cdot (m-1)/2 + n
-\]
+$$
 
 Or more cleanly, by computing sums along the column and then the remaining row. This formula gives \(O(1)\) computation per test case.
 
@@ -89,21 +89,21 @@ Or more cleanly, by computing sums along the column and then the remaining row. 
 
 2. Compute the sum along the first column from \((1,1)\) to \((n,1)\). This is an arithmetic progression with first term 1 and common difference \(m\). The sum formula is:
 
-\[
+$$
 \text{first column sum} = n + m \cdot \frac{n(n-1)}{2}
-\]
+$$
 
 3. Compute the sum along the last row from \((n,2)\) to \((n,m)\). The first element in this row is \(a_{n,1} = 1 + (n-1)m\), and the rest increase by 1. Sum of this row excluding the first column:
 
-\[
+$$
 \text{last row sum excluding first column} = \frac{(2 + ... + m)}{} + a_{n,1} \cdot 0?
-\]
+$$
 
 A simpler approach: the first column sum includes \(a_{n,1}\), so we add the rest of the row \(a_{n,2} + ... + a_{n,m}\). Each of these is \(a_{n,j} = (n-1)m + j\), sum over j=2..m:
 
-\[
+$$
 \sum_{j=2}^{m} ((n-1)m + j) = (m-1)(n-1)m + \frac{m(m+1)}{2} - 1
-\]
+$$
 
 4. Sum the two parts to get the total minimal path cost.
 

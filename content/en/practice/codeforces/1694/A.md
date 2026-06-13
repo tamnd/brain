@@ -30,9 +30,7 @@ The modified algorithm is operationally equivalent to Algorithm R. In Algorithm 
 
 The correctness argument is essentially the standard proof of reservoir sampling. The solution shows that the new record enters the sample with probability $n/(t+1)$, that any existing sampled record is removed with probability $1/(t+1)$, and that a previously processed record remains in the sample with probability
 
-$$\frac{n}{t}\cdot\frac{t}{t+1}
-=
-\frac{n}{t+1}.$$
+$$\frac{n}{t}\cdot\frac{t}{t+1} = \frac{n}{t+1}.$$
 
 Thus all $t+1$ records have equal probability $n/(t+1)$ of belonging to the sample after processing the next input record. Since the update rule is identical to Algorithm R except for storage representation, the sampling distribution is unchanged.
 

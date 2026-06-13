@@ -109,11 +109,7 @@ $$|a_j-a_i| \le 100000.$$
 
 If two points belong to a progression with $|d|>B$, then
 
-$$|j-i|
-\le
-\frac{100000}{|d|}
-<
-\frac{100000}{B}.$$
+$$|j-i| \le \frac{100000}{|d|} < \frac{100000}{B}.$$
 
 Choosing $B \approx \sqrt{100000}$ makes this distance at most about $320$.
 

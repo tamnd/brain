@@ -90,11 +90,7 @@ Suppose we already know the cheapest achievable cost for every item in one layer
 
 For a fixed item $v$ in the next layer,
 
-$$dp[v]
-=
-cost[v]
-+
-\min(dp[u])$$
+$$dp[v] = cost[v] + \min(dp[u])$$
 
 over all predecessors $u$ that are not forbidden with $v$.
 

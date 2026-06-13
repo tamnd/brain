@@ -34,8 +34,7 @@ with $m\ge n\ge1$.
 
 Then
 
-$$\lfloor\lg u\rfloor=m,\qquad
-\lfloor\lg v\rfloor=n,$$
+$$\lfloor\lg u\rfloor=m,\qquad \lfloor\lg v\rfloor=n,$$
 
 so the required logarithmic conditions hold.
 
@@ -57,8 +56,7 @@ $$(2^k-1,1).$$
 
 The following subtraction gives
 
-$$(2^k-1)-1=2^k-2
-   =2(2^{k-1}-1).$$
+$$(2^k-1)-1=2^k-2    =2(2^{k-1}-1).$$
 
 Algorithm B now removes exactly one factor of $2$, producing
 
@@ -66,11 +64,7 @@ $$(2^{k-1}-1,1).$$
 
 Repeating the same reasoning yields
 
-$$(2^{k-1}-1,1)
-\to
-(2^{k-2}-1,1)
-\to\cdots\to
-(1,1).$$
+$$(2^{k-1}-1,1) \to (2^{k-2}-1,1) \to\cdots\to (1,1).$$
 
 It is more convenient to count the subtraction steps directly. Starting from $(2^k,1)$, the larger entry decreases by $1$ at every subtraction until equality is reached:
 
@@ -84,13 +78,11 @@ subtractions. For the present exercise we need exactly $m+1$ subtraction steps, 
 
 Instead choose
 
-$$u=2^m,\qquad
-v=2^m-(m+1).$$
+$$u=2^m,\qquad v=2^m-(m+1).$$
 
 The logarithmic condition for $u$ is immediate. Since
 
-$$2^{m-1}\le 2^m-(m+1)<2^m
-\qquad(m\ge3),$$
+$$2^{m-1}\le 2^m-(m+1)<2^m \qquad(m\ge3),$$
 
 we have
 
@@ -100,14 +92,11 @@ This only covers the case $n=m-1$, so a more flexible construction is needed.
 
 Let
 
-$$u=2^m,\qquad
-v=2^n(2^{m-n}-(m+1)).$$
+$$u=2^m,\qquad v=2^n(2^{m-n}-(m+1)).$$
 
 Then
 
-$$\lfloor\lg u\rfloor=m,
-\qquad
-\lfloor\lg v\rfloor=n,$$
+$$\lfloor\lg u\rfloor=m, \qquad \lfloor\lg v\rfloor=n,$$
 
 provided $2^{m-n}>m+1$.
 
@@ -127,11 +116,7 @@ $$(2^{m-n}-(m+1),\,m+1),$$
 
 and then through the chain
 
-$$(m+1,m),\,
-(m,m-1),\,
-\ldots,\,
-(2,1),\,
-(1,1).$$
+$$(m+1,m),\, (m,m-1),\, \ldots,\, (2,1),\, (1,1).$$
 
 The number of subtraction steps is
 
@@ -141,14 +126,10 @@ Thus Algorithm B performs exactly $m+1$ subtraction steps.
 
 Therefore a valid family is
 
-$$\boxed{
-u=2^m,\qquad
-v=2^n\!\left(2^{m-n}-(m+1)\right)
-}$$
+$$\boxed{ u=2^m,\qquad v=2^n\!\left(2^{m-n}-(m+1)\right) }$$
 
 whenever $2^{m-n}>m+1$. This construction satisfies
 
-$$\lfloor\lg u\rfloor=m,\qquad
-\lfloor\lg v\rfloor=n,$$
+$$\lfloor\lg u\rfloor=m,\qquad \lfloor\lg v\rfloor=n,$$
 
 and Algorithm B requires exactly $m+1$ subtraction steps. ∎

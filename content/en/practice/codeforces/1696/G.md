@@ -88,9 +88,7 @@ A non-trivial fact, proved through LP duality, is that every feasible dual solut
 
 So the original optimization problem becomes:
 
-$$f(a)=
-\max
-\sum_i a_i d_i,$$
+$$f(a)= \max \sum_i a_i d_i,$$
 
 where each $d_i$ is chosen from
 
@@ -316,13 +314,11 @@ Input segment: $[3,1,1,4]$, $x=1$, $y=2$.
 
 Weights are:
 
-$$\frac{a_i}{x+y}=
-\left[1,\frac13,\frac13,\frac43\right]$$
+$$\frac{a_i}{x+y}= \left[1,\frac13,\frac13,\frac43\right]$$
 
 and
 
-$$\frac{a_i}{y}=
-\left[1.5,0.5,0.5,2\right].$$
+$$\frac{a_i}{y}= \left[1.5,0.5,0.5,2\right].$$
 
 | Position | State 1 value | State 2 value |
 | --- | --- | --- |

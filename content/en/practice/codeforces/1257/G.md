@@ -32,8 +32,7 @@ $$c_1,c_2,\dots,c_k,$$
 
 then every divisor corresponds to a vector
 
-$$(e_1,e_2,\dots,e_k),
-\qquad 0 \le e_i \le c_i.$$
+$$(e_1,e_2,\dots,e_k), \qquad 0 \le e_i \le c_i.$$
 
 The divisibility relation becomes very simple:
 
@@ -102,9 +101,7 @@ $$\left\lfloor \frac n2 \right\rfloor .$$
 
 Thus the entire problem reduces to counting exponent vectors satisfying
 
-$$0\le e_i\le c_i,
-\qquad
-e_1+\cdots+e_k=\left\lfloor\frac n2\right\rfloor.$$
+$$0\le e_i\le c_i, \qquad e_1+\cdots+e_k=\left\lfloor\frac n2\right\rfloor.$$
 
 This is exactly the coefficient of
 
@@ -473,9 +470,7 @@ Finally consider:
 
 The multiplicities are $(2,2)$. The generating function is
 
-$$(1+x+x^2)^2
-=
-1+2x+3x^2+2x^3+x^4.$$
+$$(1+x+x^2)^2 = 1+2x+3x^2+2x^3+x^4.$$
 
 The middle coefficient is $3$. The three exponent vectors of rank $2$ are
 

@@ -95,8 +95,7 @@ We could enumerate every axis-aligned rectangle, check whether it consists entir
 
 A grid of size `100 × 100` contains approximately
 
-$$\frac{100\cdot101}{2}\cdot\frac{100\cdot101}{2}
-\approx 25\,000\,000$$
+$$\frac{100\cdot101}{2}\cdot\frac{100\cdot101}{2} \approx 25\,000\,000$$
 
 rectangles.
 

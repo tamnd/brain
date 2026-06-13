@@ -32,9 +32,7 @@ $$\prod_{i=1}^n \sum_{j=1}^n \epsilon_j x_{ij}$$
 
 as a sum over all functions $f:[n]\to[n]$, then evaluates the coefficient
 
-$$C(I)=(-1)^n\sum_{\epsilon\in\{0,1\}^n}
-(-1)^{|\epsilon|}
-\prod_{j\in I}\epsilon_j$$
+$$C(I)=(-1)^n\sum_{\epsilon\in\{0,1\}^n} (-1)^{|\epsilon|} \prod_{j\in I}\epsilon_j$$
 
 where $I=\operatorname{Im}(f)$. The computation of $C(I)$ is correct: it vanishes unless $I=[n]$, and equals $1$ when $I=[n]$. Therefore only surjective maps contribute, and for a map $f:[n]\to[n]$ surjectivity is equivalent to bijectivity. Hence the surviving terms are exactly the permutation terms in the permanent. This establishes the identity.
 
@@ -42,9 +40,7 @@ The operation count, however, is not correct as stated.
 
 The exercise asks for the number of addition and multiplication operations required to evaluate the permanent by the displayed formula. The proposed count attempts to evaluate the formula directly via subsets, but the addition count is derived incorrectly because it treats every subset $S$ as requiring $k-1$ additions for a row sum when $|S|=k$. For $k=0$, the row sum is $0$, which requires no additions, not $-1$ additions. Therefore the summation
 
-$$\sum_{S\subseteq[n]}(|S|-1)
-=
-n2^{n-1}-2^n$$
+$$\sum_{S\subseteq[n]}(|S|-1) = n2^{n-1}-2^n$$
 
 does not represent the actual number of additions.
 

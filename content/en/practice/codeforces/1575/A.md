@@ -62,9 +62,7 @@ The structure of the ordering suggests a cleaner idea. At odd positions we want 
 
 Suppose we transform every even-position character. Replace
 
-$$A \leftrightarrow Z,\quad
-B \leftrightarrow Y,\quad
-C \leftrightarrow X,\ldots$$
+$$A \leftrightarrow Z,\quad B \leftrightarrow Y,\quad C \leftrightarrow X,\ldots$$
 
 After this transformation, a larger original character at an even position becomes a smaller transformed character. The descending comparison at even positions is converted into an ordinary ascending comparison.
 
