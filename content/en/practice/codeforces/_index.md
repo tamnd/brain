@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorial. 1429 contests, 7918 problems, 3764 verified."
+description: "Codeforces problem solutions with full editorial. 1429 contests, 7921 problems, 3766 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem comes with a full written editorial: problem analysis, approach comparison, algorithm walkthrough, Python solution with explanation, worked examples, and edge cases. The problem statement itself is not reproduced here. Follow the CF link on each problem page to read the original.
 
-**1429 contests, 7918 problems, 3764 verified.**
+**1429 contests, 7921 problems, 3766 verified.**
 
 | Contest | Name | Type | Rating Range | Verified | Time |
 |---|---|---|---|---|---|
@@ -542,7 +542,7 @@ Each problem comes with a full written editorial: problem analysis, approach com
 | [1194](1194/) | [Educational Codeforces Round 68 (Rated for Div. 2)](https://codeforces.com/contest/1194) | Div. 2 | 800-2700 | 4/7 | 29m 26s |
 | [1195](1195/) | [Codeforces Round 574 (Div. 2)](https://codeforces.com/contest/1195) | Div. 2 | 1000-2500 | 7/7 | 29m 30s |
 | [1196](1196/) | [Codeforces Round 575 (Div. 3)](https://codeforces.com/contest/1196) | Div. 3 | 800-2200 | 6/7 | 43m 3s |
-| [1197](1197/) | [Educational Codeforces Round 69 (Rated for Div. 2)](https://codeforces.com/contest/1197) | Div. 2 | 900-2300 | 1/3 | 7m 54s |
+| [1197](1197/) | [Educational Codeforces Round 69 (Rated for Div. 2)](https://codeforces.com/contest/1197) | Div. 2 | 900-2700 | 3/6 | 29m 56s |
 | [1198](1198/) | [Codeforces Round 576 (Div. 1)](https://codeforces.com/contest/1198) | Div. 1 | 1600-2900 | 1/3 | 11m 9s |
 | [1199](1199/) | [Codeforces Round 576 (Div. 2)](https://codeforces.com/contest/1199) | Div. 2 | 1000-1000 | 1/1 | 1m 25s |
 | [1200](1200/) | [Codeforces Round 578 (Div. 2)](https://codeforces.com/contest/1200) | Div. 2 | 1200-2000 | 3/3 | 4m 42s |

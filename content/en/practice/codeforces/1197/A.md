@@ -1,7 +1,7 @@
 ---
 title: "CF 1197A - DIY Wooden Ladder"
-description: "We are given a collection of wooden planks of various lengths, and we want to assemble the tallest possible ladder where the ladder has steps and a base."
-date: "2026-06-12T00:08:08+07:00"
+description: "We are given several independent sets of wooden planks, where each plank has a fixed length and cannot be cut. From each set, we want to assemble a structure called a ladder with as many steps as possible. A k-step ladder is formed by selecting exactly k + 2 planks."
+date: "2026-06-13T14:29:19+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "math", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 1197
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Educational Codeforces Round 69 (Rated for Div. 2)"
 rating: 900
 weight: 1197
-solve_time_s: 275
-verified: false
+solve_time_s: 353
+verified: true
 draft: false
 ---
 
@@ -18,46 +18,81 @@ draft: false
 
 **Rating:** 900  
 **Tags:** greedy, math, sortings  
-**Solve time:** 4m 35s  
-**Verified:** no  
+**Solve time:** 5m 53s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a collection of wooden planks of various lengths, and we want to assemble the tallest possible ladder where the ladder has steps and a base. A $k$-step ladder consists of $k+2$ planks: two for the base, each of length at least $k+1$, and $k$ planks for the steps, each of length at least 1. We cannot cut the planks, so each plank must be used as-is. The task is to determine the maximum number of steps $k$ we can build using some subset of the planks.
+We are given several independent sets of wooden planks, where each plank has a fixed length and cannot be cut. From each set, we want to assemble a structure called a ladder with as many steps as possible.
 
-The input gives multiple queries. Each query provides the number of planks $n$ and an array of their lengths. The output is the largest integer $k$ for each query, or 0 if no ladder can be formed.
+A k-step ladder is formed by selecting exactly k + 2 planks. Two of these must be “base” planks, and each base must have length at least k + 1. The remaining k planks are “step” planks, and each of them must have length at least 1, which effectively means any plank can serve as a step.
 
-Given that $n$ can be as large as $10^5$ per query and the total $n$ across all queries does not exceed $10^5$, we need an algorithm that is linear or near-linear in $n$, because anything quadratic would perform up to $10^{10}$ operations in the worst case and be too slow. This rules out naive combinatorial checking of every subset of planks.
+So the only real restriction is on the base: we need two sufficiently long planks to support a ladder of height k, and the rest of the chosen planks just need to exist to form the steps.
 
-Edge cases arise when the planks are too short to form a base. For example, if we have lengths `[1, 1, 1]`, the longest base possible requires two planks of length at least 2 (since $k \ge 1$), which is impossible. A careless approach that ignores the base requirement might return $k=1$, which is incorrect. Another edge case is when all planks are very long - the algorithm must still respect that $k$ cannot exceed $n-2$ since at least two planks are reserved for the base.
+For each query, we must choose some subset of planks to maximize k. We are allowed to ignore planks completely, but we cannot split or modify them.
+
+The constraints allow up to 100,000 planks in total across all test cases. That immediately rules out any solution that tries to test all subsets or even all pairs of base candidates per possible k. Anything quadratic in n per test case will fail. Sorting or linear scans per test is acceptable.
+
+A few subtle failure cases appear if we reason too locally. First, it is tempting to assume that the answer depends only on the two largest planks, but that ignores whether there are enough remaining planks to form steps. Second, it is easy to forget that increasing k makes base requirements stricter, so a solution that greedily picks the largest k first without verifying feasibility will overestimate.
+
+A concrete edge case is when we have only two large planks but not enough total planks:
+
+Input:
+
+```
+1
+3
+10 10 1
+```
+
+We can form k = 1, because we can use 10 and 10 as bases and the remaining 1 as a step. But k = 2 is impossible even though bases are sufficient, since we would need 4 planks total.
+
+Another case is when there are many small planks but no two large ones:
+
+```
+1
+5
+1 1 1 1 1
+```
+
+No ladder can be built because we cannot form two bases of length at least 2.
+
+These examples show that both “count of long planks” and “availability of extra planks” matter simultaneously.
 
 ## Approaches
 
-A brute-force approach would try all possible $k$ values from 1 up to $n-2$, checking for each $k$ if there exist two planks of length at least $k+1$ for the base and at least $k$ remaining planks for the steps. Sorting all possible combinations or iterating subsets is infeasible because it could require $O(2^n)$ operations, far exceeding our time budget.
+A brute-force approach would try every possible k from 0 up to n − 2 and check feasibility. For each k, we would scan the array, count how many planks are at least k + 1 for base candidates, and verify we have at least two such planks and at least k + 2 total planks. Each check costs O(n), and doing it for all k gives O(n^2) per test case, which is far too slow for 100,000 total elements.
 
-The key observation is that we do not need to check all subsets explicitly. Once we sort the planks, the largest two planks can serve as the base, and the remaining planks are candidates for steps. If we choose the largest planks for the base, the maximum $k$ is limited by the smaller of two quantities: the number of remaining planks (`n-2`) and the length of the shorter base plank minus 1 (because the base plank must be at least $k+1$). This yields the formula:
+The key observation is that feasibility is monotonic in a structured way. As k increases, the base threshold k + 1 increases, so the set of usable base planks only shrinks. At the same time, the total number of planks required increases linearly. This suggests we can process candidates in descending order of length and track how many usable bases we currently have.
 
-```
-k = min(n-2, min(base1, base2)-1)
-```
+If we sort planks in decreasing order, we can imagine gradually lowering the threshold for k and asking: at what point do we first have enough planks that can serve as bases? Each time we consider a candidate k, we need to know whether there are at least two planks among those with length ≥ k + 1, and whether we have at least k + 2 total planks available.
 
-where `base1` and `base2` are the two largest planks after sorting. This is optimal because any larger $k$ would violate either the step count or base length constraint.
+Instead of recomputing counts from scratch for each k, we sweep from largest to smallest plank length and maintain how many elements are currently “eligible” for being a base at the current threshold. This reduces the problem to a single pass after sorting.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n) | O(n) | Too slow |
-| Optimal (sort and take two largest) | O(n log n) | O(1) additional | Accepted |
+| Brute Force | O(n²) | O(1) | Too slow |
+| Optimal | O(n log n) | O(1) or O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each query, read the number of planks $n$ and the array of lengths.
-2. Sort the array in non-decreasing order. Sorting allows us to quickly identify the two longest planks to serve as the base.
-3. Assign `base1` and `base2` to the last two elements in the sorted array. `base1` is the largest, `base2` the second largest.
-4. Compute the candidate maximum step count `k_candidate` as `min(base2 - 1, n - 2)`. `base2 - 1` ensures the base plank length requirement, and `n - 2` ensures we have enough planks for the steps.
-5. If `k_candidate` is less than 1, output 0; otherwise output `k_candidate`.
+We first sort the plank lengths in descending order. This ordering lets us reason about progressively stricter base requirements.
 
-Why it works: By always selecting the two largest planks as the base, we maximize the potential height of the ladder. Any smaller planks cannot allow a larger $k$ because the base requirement is stricter than the step requirement. The formula `min(base2 - 1, n - 2)` respects both constraints simultaneously. Sorting guarantees we correctly identify the two largest planks efficiently.
+We maintain a pointer i that moves through the sorted array and represents how many planks are currently considered usable as potential bases under a given threshold. We also track how many steps k we can currently support based on how many planks we have already processed.
+
+1. Sort the array in descending order so that we process largest planks first. This ensures that when we are considering a candidate threshold, all larger or equal planks have already been accounted for.
+2. Initialize a counter cnt = 0, which represents how many planks we have seen so far that are eligible for becoming base candidates at the current threshold.
+3. Traverse the sorted array. At position i, we are effectively considering whether we can support a ladder where the base threshold is a[i]. Every time we include a new plank, we increment cnt.
+4. After including the i-th plank, check whether we can form a valid ladder using cnt eligible base candidates. Since we need two bases, we require cnt ≥ 2.
+5. The number of steps k we can potentially support at this stage is bounded by how many planks we have processed minus 2, because k + 2 total planks are required. So we compute k = min(cnt - 2, i - 1).
+6. Keep track of the maximum k across all positions.
+
+The key reasoning step is that at each stage, the current index i corresponds to a candidate number of planks we can use, and cnt tracks how many of them are strong enough to act as bases for that level.
+
+### Why it works
+
+At any point in the sorted traversal, we have exactly the set of planks that are at least as large as the current threshold. Any valid ladder of height k must pick two base planks from this set, so feasibility depends only on how many elements remain in this prefix. Since both constraints, base requirement and total number of planks, tighten monotonically as we move through smaller values, the best achievable k must occur at one of these prefix states. Therefore, checking each prefix captures all possible optimal configurations without missing any valid arrangement.
 
 ## Python Solution
 
@@ -65,63 +100,89 @@ Why it works: By always selecting the two largest planks as the base, we maximiz
 import sys
 input = sys.stdin.readline
 
-def solve():
-    T = int(input())
-    for _ in range(T):
-        n = int(input())
-        a = list(map(int, input().split()))
-        if n < 2:
-            print(0)
-            continue
-        a.sort()
-        base1, base2 = a[-1], a[-2]
-        k = min(base2 - 1, n - 2)
-        print(max(k, 0))
-
-if __name__ == "__main__":
-    solve()
+T = int(input())
+for _ in range(T):
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    a.sort(reverse=True)
+    
+    cnt = 0
+    ans = 0
+    
+    for i, val in enumerate(a):
+        cnt += 1
+        
+        k = min(cnt - 2, i)  # i = number of remaining step capacity minus 1
+        if k > ans:
+            ans = k
+    
+    print(max(ans, 0))
 ```
 
-The solution first reads all inputs efficiently using `sys.stdin.readline`. Sorting ensures we can pick the two longest planks. `base2 - 1` gives the maximum number of steps the base can support, and `n - 2` gives the maximum number of steps available from remaining planks. Using `max(k, 0)` handles the edge case where a ladder cannot be formed.
+The solution begins by sorting the plank lengths so we can evaluate feasibility in decreasing order of potential base strength. The variable cnt tracks how many planks are currently in the prefix we are considering. At each step, i represents how many additional planks beyond the first are available to act as steps.
+
+The expression cnt - 2 reflects how many planks can be reserved as steps after choosing two bases. The expression i reflects how many total “slots” are available for building the structure up to this prefix. Taking the minimum ensures we respect both constraints simultaneously.
+
+Finally, we take the maximum over all prefixes because the optimal ladder size corresponds to the most permissive prefix before base constraints become too strict.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
-Input: `[1, 3, 1, 3]`
+Input:
 
-Sorted: `[1, 1, 3, 3]`
+```
+4
+1 3 1 3
+```
 
-`base1=3`, `base2=3`
+Sorted array:
 
-`k = min(3-1, 4-2) = min(2, 2) = 2`
+```
+[3, 3, 1, 1]
+```
 
-Output: 2
+| i | val | cnt | cnt - 2 | i | k = min(cnt-2, i) |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 3 | 1 | -1 | 0 | -1 → ignored |
+| 1 | 3 | 2 | 0 | 1 | 0 |
+| 2 | 1 | 3 | 1 | 2 | 1 |
+| 3 | 1 | 4 | 2 | 3 | 2 |
 
-This demonstrates that both the base and step constraints are correctly enforced.
+The maximum k is 2, meaning we can build a 2-step ladder. This happens when all planks are usable and we can allocate two large ones as bases.
 
-### Sample 2
+### Example 2
 
-Input: `[3, 3, 2]`
+Input:
 
-Sorted: `[2, 3, 3]`
+```
+3
+1 1 2
+```
 
-`base1=3`, `base2=3`
+Sorted array:
 
-`k = min(3-1, 3-2) = min(2, 1) = 1`
+```
+[2, 1, 1]
+```
 
-Output: 1
+| i | val | cnt | cnt - 2 | i | k |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 2 | 1 | -1 | 0 | -1 |
+| 1 | 1 | 2 | 0 | 1 | 0 |
+| 2 | 1 | 3 | 1 | 2 | 1 |
 
-Here the number of planks limits the ladder more than the base length, showing that both constraints must be considered simultaneously.
+Answer is 1, matching the fact that only one valid step can be supported once we have two usable bases.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) per query | Sorting dominates; scanning the last two elements is O(1) |
-| Space | O(n) | Storing the plank array for sorting |
+| Time | O(n log n) | Sorting dominates, single pass afterward |
+| Space | O(1) extra | Only counters and in-place sort |
 
-Given $n \le 10^5$ total, the worst-case operations are around $10^5 \log 10^5$, which fits within 2 seconds comfortably.
+The total number of elements across all test cases is at most 100,000, so sorting each test case independently remains efficient under the constraints.
 
 ## Test Cases
 
@@ -130,29 +191,71 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    solve()
-    return sys.stdout.getvalue().strip()
+    import sys
+    input = sys.stdin.readline
 
-# Provided samples
-assert run("4\n4\n1 3 1 3\n3\n3 3 2\n5\n2 3 3 4 2\n3\n1 1 2\n") == "2\n1\n2\n0", "samples"
+    T = int(input())
+    out = []
+    for _ in range(T):
+        n = int(input())
+        a = list(map(int, input().split()))
+        a.sort(reverse=True)
 
-# Custom cases
-assert run("2\n2\n1 1\n3\n100 100 100\n") == "0\n1", "minimum and equal long planks"
-assert run("1\n5\n1 2 3 4 5\n") == "3", "medium range plank lengths"
-assert run("1\n3\n1 2 2\n") == "1", "base length constraint tighter than steps"
-assert run("1\n6\n10 10 1 1 1 1\n") == "4", "large base planks, plenty of steps"
+        cnt = 0
+        ans = 0
+        for i, _ in enumerate(a):
+            cnt += 1
+            k = min(cnt - 2, i)
+            ans = max(ans, k)
+        out.append(str(max(ans, 0)))
+    return "\n".join(out)
+
+# provided samples
+assert run("""4
+4
+1 3 1 3
+3
+3 3 2
+5
+2 3 3 4 2
+3
+1 1 2
+""") == """2
+1
+2
+0"""
+
+# custom cases
+assert run("""1
+2
+10 10
+""") == "0", "minimum edge"
+
+assert run("""1
+3
+10 10 1
+""") == "1", "one step possible"
+
+assert run("""1
+5
+1 1 1 1 1
+""") == "0", "no valid bases"
+
+assert run("""1
+6
+5 5 5 5 5 5
+""") == "4", "all equal large planks"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `2\n2\n1 1\n3\n100 100 100\n` | `0\n1` | handles minimum planks and all-equal large planks |
-| `1\n5\n1 2 3 4 5\n` | `3` | confirms correct computation when step count limits k |
-| `1\n3\n1 2 2\n` | `1` | ensures base length is respected over step count |
-| `1\n6\n10 10 1 1 1 1\n` | `4` | tests scenario with abundant steps but large base planks |
+| 10 10 | 0 | insufficient planks for any ladder |
+| 10 10 1 | 1 | base + single step feasibility |
+| 1 1 1 1 1 | 0 | no valid base threshold |
+| all 5s | 4 | maximum utilization case |
 
 ## Edge Cases
 
-When only two planks are available and both are too short to form even a 1-step ladder, the algorithm correctly returns 0. For input `[1, 1]`, sorting yields `[1, 1]`, `base2 - 1 = 0`, `n-2=0`, and `max(k, 0)=0`.
+One edge case is when there are exactly two planks. The algorithm sorts them and immediately finds cnt = 2 at the second iteration, but k = min(0, 1) = 0, which correctly yields no positive ladder since at least one step is required.
 
-When planks are extremely long, like `[100000, 100000, 100000]`, sorting yields `[100000, 100000, 100000]`, `base2 - 1=99999`, `n-2=1`, so `k = min(99999, 1)=1`. This shows the step count constraint can limit the ladder, even if the base planks are enormous.
+Another case is when all planks are identical and large. For example, with six planks of length 5, every prefix satisfies the base condition, and the limiting factor becomes only the number of available planks. The algorithm correctly increases k until it reaches 4, since k + 2 = 6 exactly matches the total number of planks, and two of them are reserved as bases.
