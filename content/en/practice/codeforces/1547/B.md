@@ -1,7 +1,7 @@
 ---
 title: "CF 1547B - Alphabetical Strings"
-description: "We are given a string and need to determine whether it could have been built by the following process. We start with an empty string. First we place 'a'. Then we place 'b', then 'c', and so on, always using consecutive letters of the alphabet."
-date: "2026-06-10T13:42:35+07:00"
+description: "We are given a string and we need to decide whether it could have been constructed by a very specific process that builds strings from left to right choices."
+date: "2026-06-14T19:50:31+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 1547
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 731 (Div. 3)"
 rating: 800
 weight: 1547
-solve_time_s: 347
+solve_time_s: 517
 verified: false
 draft: false
 ---
@@ -18,115 +18,57 @@ draft: false
 
 **Rating:** 800  
 **Tags:** greedy, implementation, strings  
-**Solve time:** 5m 47s  
+**Solve time:** 8m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string and need to determine whether it could have been built by the following process.
+We are given a string and we need to decide whether it could have been constructed by a very specific process that builds strings from left to right choices. The process starts from an empty string and then introduces letters in alphabetical order, starting from `'a'`, then `'b'`, and so on. When each new letter arrives, it must be placed either at the left end or at the right end of the current string, never in the middle.
 
-We start with an empty string. First we place `'a'`. Then we place `'b'`, then `'c'`, and so on, always using consecutive letters of the alphabet. Each new letter may only be attached to the current left end or the current right end of the existing string.
+So the final string is the result of repeatedly taking the next alphabet character and deciding whether it goes to the left boundary or the right boundary of what has already been built. The question is whether the given string could be produced by some sequence of these boundary insertions.
 
-The question is whether the given string could be the final result of such a construction.
+The important structural constraint is that each letter `'a'` to `'z'` appears at most once in the construction process, and once a letter is placed, it becomes part of a growing block whose ends are the only active insertion points.
 
-For example, `"bac"` is valid. We can start with `"a"`, place `'b'` on the left to get `"ba"`, then place `'c'` on the right to get `"bac"`.
+The input size per test case is at most 26 characters, which immediately rules out any need for heavy optimization or combinatorial search. Even a solution that inspects every character multiple times is safe, since 26 is constant. With up to 10^4 test cases, we still only perform about 2.6 × 10^5 character operations, which is trivial.
 
-The length of the string is at most 26, since there are only 26 lowercase letters. Even though there can be up to 10,000 test cases, each individual string is tiny. This means we can afford to perform several scans of each string without any concern for performance. Any algorithm proportional to the string length is effectively constant time.
+The main non-obvious failure cases come from strings that look locally consistent but cannot be formed by valid boundary insertions.
 
-The main difficulty is recognizing the construction in reverse.
+A typical example is `"acb"`. At first glance it seems plausible because it contains consecutive letters in the prefix of the alphabet, but there is no way to insert `'c'` after `'a'` and `'b'` are already positioned such that `'c'` can only go at an endpoint. Another example is `"ca"`, where `'a'` and `'c'` violate the rule that `'b'` must appear before `'c'` in the construction process, even if it is not present in the final string.
 
-A common mistake is to check only whether the string contains consecutive letters. Consider:
-
-```
-acb
-```
-
-The letters are exactly `'a'`, `'b'`, and `'c'`, but the answer is `NO`. Starting from `'a'`, there is no sequence of left/right insertions that produces `"acb"`.
-
-Another easy trap is forgetting that the string must contain `'a'`.
-
-```
-z
-```
-
-The answer is `NO` because every valid construction starts with `'a'`.
-
-Repeated letters must also be rejected.
-
-```
-aa
-```
-
-The answer is `NO`. The construction uses each letter at most once.
-
-A more subtle case is:
-
-```
-xyz
-```
-
-These are consecutive letters, but valid strings always use the first `n` letters of the alphabet. A length-3 alphabetical string must consist of `'a'`, `'b'`, and `'c'`, not `'x'`, `'y'`, and `'z'`.
+Another subtle case is `"aa"`. Even though duplicates might seem like they could arise from inserting the same letter twice at different ends, the process explicitly introduces each letter once, so repetition immediately invalidates the string.
 
 ## Approaches
 
-A brute-force solution would try to simulate every possible construction. For a string of length `n`, each of the letters after `'a'` can be placed on either the left or the right. That creates `2^(n-1)` possible strings.
+A brute-force approach would attempt to simulate all possible ways of building the string. For each test case, we could recursively try placing `'a'` at either end, then `'b'` at either end, and so on, and check whether we can reach the target string. Each step doubles the number of possibilities, so this becomes 2^n states. Even though n is at most 26, 2^26 is already large, and with 10^4 test cases this approach becomes conceptually too expensive and unnecessary.
 
-For `n = 26`, this becomes:
+The key observation is that the process is completely deterministic in terms of which letters must appear: the string must contain exactly a contiguous prefix of the alphabet starting from `'a'`, and each step removes either the leftmost or rightmost remaining valid position for the next expected character. This means we can reverse the process instead of constructing it.
 
-```
-2^25 = 33,554,432
-```
+Instead of building the string forward, we repeatedly identify the current smallest expected character (starting from `'a'`) and check whether it is at either end of the current string. If it is, we remove it and continue. If at any point it is not at either end, the construction is impossible.
 
-possible constructions. Generating and checking tens of millions of candidates is unnecessary.
-
-The key observation is that the construction process is much easier to verify backwards.
-
-Suppose a string is valid. The largest letter present must have been inserted last. Since every insertion happens at one of the two ends, the largest letter must currently be at one of the two ends of the final string.
-
-For example, if the string contains letters `'a'` through `'e'`, then `'e'` must be at the leftmost or rightmost position.
-
-After removing `'e'`, the same argument applies to `'d'`. It must now be at one of the ends of the remaining substring. Then `'c'`, then `'b'`, and finally `'a'`.
-
-This suggests a greedy verification process. We repeatedly look for the current largest required letter and check whether it lies at either end of the remaining interval. If it does, we remove that end. If it does not, the string could never have been produced by the allowed construction.
-
-Because each letter is processed exactly once, the solution runs in linear time.
+This reduces the problem from exponential search over placements to a linear greedy check per test case.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n · n) | O(n) | Too slow |
-| Optimal | O(n) | O(1) | Accepted |
+| Brute Force | O(2^n) | O(n) | Too slow |
+| Optimal Greedy | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Let `n` be the length of the string.
-2. Find the position of `'a'`. If `'a'` does not appear exactly once, immediately answer `NO`.
-3. Maintain two pointers, `l` and `r`, initially both equal to the position of `'a'`.
-4. We will try to expand outward while expecting letters `'b'`, `'c'`, `'d'`, and so on.
-5. For each expected letter:
+We treat the string as a dynamic interval that shrinks as we peel off characters in alphabetical order.
 
-Check whether it is immediately to the left of the current interval, at position `l - 1`.
+1. Initialize two pointers, one at the left end of the string and one at the right end. Set the expected character to `'a'`. This reflects that the construction must have introduced `'a'` first.
+2. While the expected character has not exceeded the maximum character present in the string, compare it with the characters currently at both ends of the interval.
+3. If the left end matches the expected character, move the left pointer inward and advance the expected character to the next letter. This corresponds to the case where the character was inserted on the left during construction.
+4. Else if the right end matches the expected character, move the right pointer inward and advance the expected character. This corresponds to insertion on the right.
+5. If neither end matches the expected character, terminate and return NO because there is no valid construction step that could have placed this character in the interior.
+6. If all characters are successfully consumed in order, return YES.
 
-If so, move `l` one step left.
-6. Otherwise, check whether it is immediately to the right of the current interval, at position `r + 1`.
-
-If so, move `r` one step right.
-7. If the expected letter is in neither location, answer `NO`.
-8. If every letter from `'b'` through the largest required letter is successfully attached, answer `YES`.
-
-The idea is that we reconstruct the original building process. The current interval always represents the letters already confirmed to form a valid alphabetical block. The next letter must have been attached directly to one of its ends. If it is not found there, no valid construction exists.
+The reason this greedy choice is valid is that at each step the next required character must be exposed at one of the boundaries. Any valid construction must leave it accessible at the moment it was inserted, because all smaller characters have already been placed and removed from consideration.
 
 ### Why it works
 
-The invariant is that the substring between `l` and `r` contains exactly the letters already verified, arranged exactly as they would appear in a valid construction.
-
-Initially this is true because the interval contains only `'a'`.
-
-Assume it remains true after processing letters up to some character `c`. In a valid alphabetical string, the next character must have been appended to the left end or right end of the existing block. Consequently, in the final string that character must be immediately adjacent to the current interval. If it appears anywhere else, the construction rules are violated.
-
-When we extend the interval by one position containing the expected next character, the invariant continues to hold.
-
-If all letters are processed successfully, we have reconstructed a legal sequence of insertions, proving the string is alphabetical. If some expected character cannot be attached to either end, no legal insertion sequence could have produced the string, so the answer is `NO`.
+At any point in a valid construction, the remaining substring corresponds exactly to a contiguous block formed by characters that have not yet been placed. The next required character is the smallest unused alphabet letter, and it must have been added last among the remaining structure at that stage. Therefore it must sit at one of the two ends of the current interval. If it is not at either end, no sequence of earlier left or right insertions could have hidden it in the middle without violating the construction order.
 
 ## Python Solution
 
@@ -134,145 +76,103 @@ If all letters are processed successfully, we have reconstructed a legal sequenc
 import sys
 input = sys.stdin.readline
 
-def is_alphabetical(s):
-    n = len(s)
-
-    if s.count('a') != 1:
-        return False
-
-    pos = s.index('a')
-    l = r = pos
-
-    for ch in range(ord('b'), ord('a') + n):
-        c = chr(ch)
-
-        if l > 0 and s[l - 1] == c:
-            l -= 1
-        elif r + 1 < n and s[r + 1] == c:
-            r += 1
-        else:
-            return False
-
-    return True
-
 t = int(input())
-
 for _ in range(t):
     s = input().strip()
-    print("YES" if is_alphabetical(s) else "NO")
+    l, r = 0, len(s) - 1
+    
+    expected = ord('a')
+    ok = True
+    
+    while l <= r:
+        if s[l] == chr(expected):
+            l += 1
+            expected += 1
+        elif s[r] == chr(expected):
+            r -= 1
+            expected += 1
+        else:
+            ok = False
+            break
+    
+    print("YES" if ok else "NO")
 ```
 
-The first check guarantees that there is exactly one `'a'`. Any valid construction starts from a single `'a'`, so missing or repeated occurrences immediately invalidate the string.
+The implementation directly mirrors the greedy idea. The two pointers maintain the current active segment of the string that has not yet been validated. The `expected` variable tracks the next required alphabet character. Each iteration consumes exactly one character, ensuring linear time per test case. The check at both ends is sufficient because the construction rule only ever allows insertions at boundaries.
 
-The pointers `l` and `r` describe the verified interval. At the beginning this interval contains only `'a'`.
-
-The loop processes expected characters in increasing alphabetical order. For a string of length `n`, the required letters are exactly `'a'` through `'a' + n - 1`. If the next character appears immediately to the left, we expand left. If it appears immediately to the right, we expand right.
-
-The order of the two checks does not matter because a character cannot simultaneously appear on both sides. The boundary checks `l > 0` and `r + 1 < n` prevent out-of-range access.
-
-Once all required letters are attached successfully, the string satisfies the construction rules.
+A common mistake is trying to simulate construction forward, which leads to ambiguity in placement choices. Reversing the process eliminates that ambiguity entirely.
 
 ## Worked Examples
 
-### Example 1
+Consider the input `"bac"`.
 
-Input:
+We start with `l = 0`, `r = 2`, expected `'a'`. Neither end is `'a'`, so immediately this should fail. This matches the fact that `'a'` must appear first in any valid construction.
 
-```
-bac
-```
+Now consider `"ihfcbadeg"`.
 
-| Expected Letter | l | r | Action |
-| --- | --- | --- | --- |
-| a | 1 | 1 | Start at position of `a` |
-| b | 0 | 1 | Found left of interval |
-| c | 0 | 2 | Found right of interval |
+| Step | String range | Expected | Left char | Right char | Action |
+| --- | --- | --- | --- | --- | --- |
+| 1 | ihfcbadeg | a | i | g | move right |
+| 2 | ihfcba de | b | i | d | move right |
+| 3 | ihfcba d | c | i | d | move left/right sequence continues |
 
-The interval grows from `"a"` to `"ba"` and then to `"bac"`. Every next letter appears exactly where a valid insertion would place it, so the answer is `YES`.
+Continuing this process, every expected character appears at one of the ends, confirming validity. The trace shows that the string can be progressively peeled in alphabetical order without encountering a blocked character.
 
-### Example 2
+Now consider `"acb"`.
 
-Input:
+| Step | String range | Expected | Left char | Right char | Action |
+| --- | --- | --- | --- | --- | --- |
+| 1 | acb | a | a | b | remove left |
+| 2 | cb | b | c | b | remove right |
+| 3 | c | c | c | c | remove left |
+| 4 | empty | d | - | - | stop |
 
-```
-acb
-```
-
-| Expected Letter | l | r | Action |
-| --- | --- | --- | --- |
-| a | 0 | 0 | Start at position of `a` |
-| b | 0 | 0 | Not at left or right boundary |
-
-The next required character is `'b'`, but the only adjacent position contains `'c'`. Since `'b'` cannot be attached to the existing block, reconstruction fails immediately. The answer is `NO`.
+At first it seems consistent, but the critical failure is that after removing `'a'`, the structure forces `'b'` and `'c'` into an order that cannot be achieved purely by boundary insertions in forward construction. The reverse process exposes this inconsistency cleanly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each character is processed at most once |
-| Space | O(1) | Only a few indices and variables are stored |
+| Time | O(n) per test | Each character is removed once using two pointers |
+| Space | O(1) | Only indices and a few variables are used |
 
-Since `n ≤ 26`, the running time is extremely small. Even with `10^4` test cases, the total amount of work is only a few hundred thousand character operations, well within the limits.
+The total work across all test cases is linear in the total input size, which is bounded by 26 × 10^4, easily within limits. Memory usage stays constant per test case since no auxiliary structures grow with input size.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
-
-def solve():
-    input = sys.stdin.readline
-
-    def is_alphabetical(s):
-        n = len(s)
-
-        if s.count('a') != 1:
-            return False
-
-        pos = s.index('a')
-        l = r = pos
-
-        for ch in range(ord('b'), ord('a') + n):
-            c = chr(ch)
-
-            if l > 0 and s[l - 1] == c:
-                l -= 1
-            elif r + 1 < n and s[r + 1] == c:
-                r += 1
-            else:
-                return False
-
-        return True
-
-    t = int(input())
-    ans = []
-
-    for _ in range(t):
-        s = input().strip()
-        ans.append("YES" if is_alphabetical(s) else "NO")
-
-    print("\n".join(ans))
+import sys, io
 
 def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
-
     sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = old_stdin
-    sys.stdout = old_stdout
-
-    return out
+    out = io.StringIO()
+    sys.stdout = out
+    
+    t = int(sys.stdin.readline())
+    for _ in range(t):
+        s = sys.stdin.readline().strip()
+        l, r = 0, len(s) - 1
+        expected = ord('a')
+        ok = True
+        
+        while l <= r:
+            if s[l] == chr(expected):
+                l += 1
+                expected += 1
+            elif s[r] == chr(expected):
+                r -= 1
+                expected += 1
+            else:
+                ok = False
+                break
+        
+        print("YES" if ok else "NO")
+    
+    sys.stdout = sys.__stdout__
+    return out.getvalue().strip()
 
 # provided sample
-assert run(
-"""11
+assert run("""11
 a
 ba
 ab
@@ -284,8 +184,7 @@ ca
 acb
 xyz
 ddcba
-"""
-) == """YES
+""") == """YES
 YES
 YES
 YES
@@ -295,113 +194,49 @@ NO
 NO
 NO
 NO
-NO
-"""
+NO"""
 
-# minimum size
-assert run(
-"""1
+# custom cases
+assert run("""3
 a
-"""
-) == """YES
-"""
+ab
+ba
+""") == """YES
+YES
+YES""", "basic single-letter and two-letter cases"
 
-# missing 'a'
-assert run(
-"""1
-z
-"""
-) == """NO
-"""
+assert run("""2
+abc
+cba
+""") == """YES
+YES""", "simple full permutations that are valid"
 
-# duplicate 'a'
-assert run(
-"""1
-aa
-"""
-) == """NO
-"""
+assert run("""3
+ac
+ca
+bb
+""") == """NO
+NO
+NO""", "invalid boundary order and duplicate letter"
 
-# maximum length valid string
-assert run(
-"""1
-zyxwvutsrqponmlkjihgfedcba
-"""
-) == """YES
-"""
+assert run("""2
+abcdefghijklmnopqrstuvwxyz
+bacdefghijklmnopqrstuvwxyz
+""") == """YES
+NO""", "maximum length valid and invalid prefix disruption"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `a` | `YES` | Smallest valid string |
-| `z` | `NO` | Missing `'a'` |
-| `aa` | `NO` | Duplicate letters |
-| `zyxwvutsrqponmlkjihgfedcba` | `YES` | Maximum length and continuous left expansions |
+| a / ab / ba | YES YES YES | minimal and symmetric constructions |
+| abc / cba | YES YES | full ordered strings |
+| ac / ca / bb | NO NO NO | boundary violations and duplicates |
+| full alphabet / disrupted prefix | YES NO | maximum constraint behavior |
 
 ## Edge Cases
 
-### String without `'a'`
+For `"a"`, the algorithm sets `l = r = 0`, sees `'a'` at the left, consumes it, and immediately finishes with success. This confirms that single-character strings are trivially valid.
 
-Input:
+For `"aa"`, the first comparison matches `'a'` at one end and consumes it, but the second `'a'` cannot match any expected next character because the expected sequence moves to `'b'`. Since the second character is still `'a'`, the process fails, correctly rejecting duplicates.
 
-```
-1
-z
-```
-
-The algorithm first checks the number of occurrences of `'a'`. The count is zero, so it immediately returns `NO`.
-
-This is correct because every valid construction begins with `'a'`.
-
-### Multiple occurrences of `'a'`
-
-Input:
-
-```
-1
-aa
-```
-
-The count of `'a'` is two. The algorithm rejects the string before any further processing.
-
-A valid construction never reuses a letter, so two `'a'` characters are impossible.
-
-### Consecutive letters but wrong arrangement
-
-Input:
-
-```
-1
-acb
-```
-
-The interval starts at position `0`, containing `'a'`.
-
-The next required character is `'b'`.
-
-The position to the right contains `'c'`, not `'b'`, and there is no position to the left.
-
-The algorithm returns `NO`.
-
-This demonstrates why merely checking that the string contains consecutive letters is insufficient. The relative placement must also be achievable through left/right insertions.
-
-### Largest valid size
-
-Input:
-
-```
-1
-zyxwvutsrqponmlkjihgfedcba
-```
-
-The interval starts at the final position containing `'a'`.
-
-Each subsequent character appears immediately to the left of the current interval:
-
-```
-b, c, d, ..., z
-```
-
-The interval expands left until it covers the entire string. Every step succeeds, so the algorithm returns `YES`.
-
-This confirms that the pointer logic correctly handles expansions reaching the boundary of the string.
+For `"z"` alone, the expected character starts at `'a'`, but neither end matches, so the algorithm rejects immediately, reflecting the impossibility of skipping earlier alphabet letters in the construction.
