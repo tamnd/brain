@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8089 problems, 3868 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8090 problems, 3868 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8089 problems, 3868 verified.**
+**1429 contests, 8090 problems, 3868 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -945,7 +945,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 
-## 2022 — 133 contests, 807 problems, 314 verified
+## 2022 — 133 contests, 808 problems, 314 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -977,7 +977,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1654](1654/) | [Codeforces Round 778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)](https://codeforces.com/contest/1654) | 8 | 5/8 | Div. 1+2 | 800-3500 |
 | [1656](1656/) | [CodeTON Round 1 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1656) | 9 | 3/9 | Div. 1+2 | 800-3500 |
 | [1657](1657/) | [Educational Codeforces Round 125 (Rated for Div. 2)](https://codeforces.com/contest/1657) | 6 | 4/6 | Div. 2 | 800-2600 |
-| [1658](1658/) | [Codeforces Round 779 (Div. 2)](https://codeforces.com/contest/1658) | 6 | 3/6 | Div. 2 | 800-2700 |
+| [1658](1658/) | [Codeforces Round 779 (Div. 2)](https://codeforces.com/contest/1658) | 7 | 3/7 | Div. 2 | 800-2700 |
 | [1659](1659/) | [Codeforces Round 782 (Div. 2)](https://codeforces.com/contest/1659) | 6 | 2/6 | Div. 2 | 1000-3000 |
 | [1660](1660/) | [Codeforces Round 780 (Div. 3)](https://codeforces.com/contest/1660) | 7 | 3/7 | Div. 3 | 800-2100 |
 | [1661](1661/) | [Educational Codeforces Round 126 (Rated for Div. 2)](https://codeforces.com/contest/1661) | 6 | 4/6 | Div. 2 | 800-2600 |
