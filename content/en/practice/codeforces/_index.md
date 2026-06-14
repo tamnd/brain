@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8083 problems, 3859 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8084 problems, 3862 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8083 problems, 3859 verified.**
+**1429 contests, 8084 problems, 3862 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 799 problems, 293 verified
+## 2021 — 131 contests, 800 problems, 296 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -911,7 +911,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1579](1579/) | [Codeforces Round 744 (Div. 3)](https://codeforces.com/contest/1579) | 8 | 1/8 | Div. 3 | 800-2200 |
 | [1580](1580/) | [Codeforces Round 745 (Div. 1)](https://codeforces.com/contest/1580) | 6 | 0/6 | Div. 1 | 1700-3400 |
 | [1581](1581/) | [Codeforces Round 745 (Div. 2)](https://codeforces.com/contest/1581) | 2 | 1/2 | Div. 2 | 800-1200 |
-| [1582](1582/) | [Codeforces Round 750 (Div. 2)](https://codeforces.com/contest/1582) | 7 | 3/7 | Div. 2 | 800-2600 |
+| [1582](1582/) | [Codeforces Round 750 (Div. 2)](https://codeforces.com/contest/1582) | 8 | 6/8 | Div. 2 | 800-2600 |
 | [1583](1583/) | [Technocup 2022 - Elimination Round 1](https://codeforces.com/contest/1583) | 7 | 1/7 | Special | 1200-3300 |
 | [1584](1584/) | [Technocup 2022 - Elimination Round 2](https://codeforces.com/contest/1584) | 7 | 3/7 | Special | 800-3200 |
 | [1585](1585/) | [Technocup 2022 - Elimination Round 3](https://codeforces.com/contest/1585) | 7 | 3/7 | Special | 800-2500 |
