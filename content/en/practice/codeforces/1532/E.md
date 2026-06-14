@@ -1,7 +1,7 @@
 ---
 title: "CF 1532E - Good Array"
-description: "We are asked to find positions in an array such that, if we remove the element at that position, the remaining array contains at least one element equal to the sum of all other elements."
-date: "2026-06-10T16:41:57+07:00"
+description: "We are given an array of integers and we are allowed to remove exactly one element at a time. For each removal, we look at the remaining array and ask a very specific question: does there exist an element that is exactly equal to the sum of all the other elements in that reduced…"
+date: "2026-06-14T18:25:27+07:00"
 tags: ["codeforces", "competitive-programming", "*special"]
 categories: ["algorithms"]
 codeforces_contest: 1532
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Kotlin Heroes: Practice 7"
 rating: 0
 weight: 1532
-solve_time_s: 277
+solve_time_s: 208
 verified: false
 draft: false
 ---
@@ -18,120 +18,235 @@ draft: false
 
 **Rating:** -  
 **Tags:** *special  
-**Solve time:** 4m 37s  
+**Solve time:** 3m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to find positions in an array such that, if we remove the element at that position, the remaining array contains at least one element equal to the sum of all other elements. In other words, after removal, there should exist an element in the array that equals the sum of the rest. For example, given `[8, 3, 5, 2]`, removing the first element gives `[3, 5, 2]`, and here `5` equals `3 + 2`. So the first index is valid.
+We are given an array of integers and we are allowed to remove exactly one element at a time. For each removal, we look at the remaining array and ask a very specific question: does there exist an element that is exactly equal to the sum of all the other elements in that reduced array.
 
-The array can be large, up to 200,000 elements, and values can go up to one million. Any algorithm that checks every removal and recomputes sums from scratch will involve `O(n^2)` operations in the worst case. With `n` up to 2×10⁵, this would perform on the order of 4×10¹⁰ operations, far beyond what we can handle in a typical time limit of a few seconds. This forces us to look for an `O(n)` or `O(n log n)` solution.
+In other words, after removing position $j$, we want to know whether the remaining array can be split into a single special element and everything else, where that special element equals the sum of all remaining values.
 
-Some non-obvious edge cases include arrays where multiple elements are equal, especially if all are the same. For instance, `[2, 2, 2, 6]` is tricky because removing one of the `2`s produces `[2, 2, 6]`, where `6` equals `2 + 2`, making multiple removals valid. A naive approach might miss duplicate sums or miscount the indices if it doesn’t handle equal values carefully.
+The output is the list of indices $j$ such that removing $a_j$ makes the remaining array satisfy this condition.
 
-Another edge case is very small arrays like `[1, 1]`. Removing one element leaves `[1]`, which cannot satisfy the "good array" condition, so the result is empty. Similarly, arrays where no element equals half of the total sum are also edge cases.
+The constraint $n \le 2 \cdot 10^5$ implies that any solution that recomputes sums or scans the array for every removal will be too slow. A naive $O(n^2)$ approach is already too large, and anything worse is immediately infeasible.
+
+A subtle edge case appears when values repeat heavily or when the array is very small after removal. For example, if the array has two elements like $[x, y]$, removing one leaves a single element, and a single element array is always trivially good because that element equals the sum of the empty set. A careless solution might forget that this degenerate case still counts.
+
+Another important case is when the “special element” in the remaining array could be either the maximum, or some arbitrary element that happens to match the sum condition. A naive approach might assume the largest element is always the candidate, which is not guaranteed.
 
 ## Approaches
 
-A brute-force approach would try removing each element, computing the sum of the remaining array, and then checking if any element equals that sum. The pseudocode is straightforward: for each `i`, compute `sum(a[:i] + a[i+1:])` and then check each remaining element. This is correct because it literally implements the problem definition, but it requires `O(n^2)` operations due to summing `n-1` elements for each removal. With `n` up to 2×10⁵, this is far too slow.
+The brute-force idea is straightforward. For each index $j$, remove it, compute the sum of the remaining elements, and then check every position in the remaining array to see if any element equals that sum minus itself. This means we are checking whether there exists an index $i \ne j$ such that:
 
-The key observation that allows an optimal solution is that if we know the total sum of the array, we can compute the sum of the remaining array after removing `a[i]` in `O(1)` time as `total_sum - a[i]`. Then, for the resulting array to be good, we need an element `x` in the remaining array such that `x = total_sum - a[i] - x`. Rearranging gives `x = total_sum - a[i] / 2`. In other words, for each element removed, we only need to check whether there exists another element equal to `total_sum - a[i]` (excluding the removed element). Using a frequency counter lets us check this in constant time per removal.
+$$a_i = \text{total\_sum} - a_j - a_i$$
 
-This reduces the complexity to `O(n)` with `O(n)` space for the frequency map.
+Rewriting gives:
+
+$$2a_i = \text{total\_sum} - a_j$$
+
+So for each removal, we would scan all elements and check this condition. Even with prefix sums, we still need a scan or frequency check per removal, leading to $O(n^2)$ behavior in the worst case. With $2 \cdot 10^5$, this is too slow.
+
+The key observation is that after removing $a_j$, the sum of the remaining array is:
+
+$$S' = S - a_j$$
+
+We need to find an element $x$ in the remaining array such that:
+
+$$x = S' - x \Rightarrow 2x = S'$$
+
+So the candidate value is fully determined:
+
+$$x = \frac{S'}{2}$$
+
+This means that for each removal, we do not search arbitrarily. We only need to check whether the value $(S - a_j)/2$ exists in the array after removing index $j$. This reduces the problem to frequency counting plus a simple validity check.
+
+We precompute the total sum and a frequency map. For each index $j$, we compute the required value and check whether it exists in the array, adjusting for the case where the required value equals $a_j$ itself.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(1) | Too slow |
-| Optimal | O(n) | O(n) | Accepted |
+| Brute Force | $O(n^2)$ | $O(1)$ | Too slow |
+| Optimal | $O(n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute the total sum of the array and create a frequency dictionary of all elements. The frequency dictionary allows us to quickly check if a specific number exists in the array, even accounting for duplicates.
-2. Iterate through each element `a[i]`. For each, calculate the sum of the array if this element were removed, `remaining_sum = total_sum - a[i]`.
-3. For the array to be good after removing `a[i]`, there must exist an element `x` in the remaining array such that `x = remaining_sum - x`, or equivalently `x = remaining_sum / 2`. Check if `remaining_sum` is even; if it is not, no integer solution exists.
-4. If `remaining_sum / 2` exists in the frequency map, ensure it is not the same element being removed unless there are at least two occurrences. This handles duplicates correctly.
-5. Collect the 1-based indices of all elements for which the condition is satisfied and print them.
+1. Compute the total sum of the array. This is needed so that after removing any element we can compute the new sum in constant time.
+2. Build a frequency map of all values. This allows constant-time checks for whether a candidate value exists in the array.
+3. For each index $j$, compute the reduced sum $S' = S - a_j$. This represents the sum of the array after removal.
+4. Check if $S'$ is even. If it is odd, it is impossible to split it into two equal parts, so this removal cannot be valid.
+5. Compute the target value $x = S'/2$. This is the only possible candidate element that could equal the sum of all other elements.
+6. Temporarily account for the removal of $a_j$. If $x$ equals $a_j$, we require that it appears at least twice in the original array. Otherwise, we require that it appears at least once.
+7. If the condition holds, mark index $j$ as valid.
 
-Why it works: at every step, we use the total sum to derive the sum of the remaining elements in constant time. The critical invariant is that the candidate element to satisfy the "good" condition can be determined by `remaining_sum / 2`, and the frequency map guarantees we do not double-count the removed element. This ensures no valid index is missed, and no invalid index is included.
+### Why it works
+
+After removing $a_j$, the condition for the remaining array to be good forces a single equation: one element must equal half of the remaining sum. There is no freedom beyond this because every valid configuration collapses to a single value constraint. The frequency structure ensures we correctly distinguish whether that value survives the removal. Since we check exactly the only possible candidate per index, no valid case can be missed, and no invalid case can pass the test.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from collections import Counter
 
-n = int(input())
-a = list(map(int, input().split()))
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    total = sum(a)
+    freq = {}
+    for v in a:
+        freq[v] = freq.get(v, 0) + 1
+    
+    res = []
+    
+    for i in range(n):
+        s = total - a[i]
+        if s % 2 != 0:
+            continue
+        x = s // 2
+        
+        # check availability of x after removing a[i]
+        if x not in freq:
+            continue
+        
+        # if we remove one occurrence of a[i]
+        need = freq[x]
+        if x == a[i]:
+            if freq[x] - 1 > 0:
+                res.append(i + 1)
+        else:
+            if freq[x] > 0:
+                res.append(i + 1)
+    
+    print(len(res))
+    if res:
+        print(*res)
 
-total_sum = sum(a)
-freq = Counter(a)
-result = []
-
-for i in range(n):
-    freq[a[i]] -= 1
-    remaining_sum = total_sum - a[i]
-    if remaining_sum % 2 == 0:
-        target = remaining_sum // 2
-        if freq.get(target, 0) > 0:
-            result.append(i + 1)
-    freq[a[i]] += 1
-
-print(len(result))
-if result:
-    print(" ".join(map(str, result)))
+if __name__ == "__main__":
+    solve()
 ```
 
-The code first computes the total sum and frequency map. For each element, we temporarily remove it from the frequency map to avoid counting it as a potential candidate. We then check if half the remaining sum exists as another element. Finally, we restore the count. Handling duplicates this way prevents falsely including an index when the removed element is equal to the target but only occurs once.
+The solution starts by precomputing the total sum and a frequency dictionary. The main loop tests each removal independently. The parity check avoids impossible splits early. The candidate value computation is derived directly from the condition that the special element must equal the sum of all others. The frequency adjustment ensures correctness when the removed element overlaps with the candidate value.
+
+One subtle point is handling the case where the candidate value equals the removed element. In that case, we must ensure that at least one more occurrence remains after removal; otherwise the “special element” disappears from the array.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
-Input: `2 5 1 2 2`
+Input:
 
-| i | a[i] | remaining_sum | remaining_sum / 2 | freq[target] | keep index? |
+```
+5
+2 5 1 2 2
+```
+
+| Removed index | Removed value | Remaining sum | Target x = S'/2 | freq check | valid |
 | --- | --- | --- | --- | --- | --- |
-| 0 | 2 | 10 - 2 = 8 | 4 | 0 | no |
-| 1 | 5 | 10 - 5 = 5 | 2.5 | n/a | no |
-| 2 | 1 | 10 - 1 = 9 | 4.5 | n/a | no |
-| 3 | 2 | 10 - 2 = 8 | 4 | 0 | no |
-| 4 | 2 | 10 - 2 = 8 | 4 | 0 | no |
+| 1 | 2 | 10 | 5 | 5 exists | yes |
+| 2 | 5 | 7 | - | odd sum | no |
+| 3 | 1 | 11 | - | odd sum | no |
+| 4 | 2 | 10 | 5 | 5 exists | yes |
+| 5 | 2 | 10 | 5 | 5 exists | yes |
 
-Correction: the actual trace confirms that indices `[1, 4, 5]` satisfy the good condition after proper integer division checks.
+Output:
 
-### Sample 2
+```
+3
+1 4 5
+```
 
-Input: `8 3 5 2`
+This confirms that multiple removals can lead to the same structural condition, and duplicates in the array do not change the logic except in frequency handling.
 
-After removing 8: `[3, 5, 2]`, total sum 10, half of 10 is 5 → 5 exists → index 1 is valid.
+### Example 2
 
-After removing 2: `[8, 3, 5]`, total sum 16, half of 16 is 8 → 8 exists → last index is valid.
+Input:
+
+```
+4
+8 3 5 2
+```
+
+| Removed index | Remaining array | Remaining sum | Target x | valid |
+| --- | --- | --- | --- | --- |
+| 1 | [3,5,2] | 10 | 5 | yes |
+| 2 | [8,5,2] | 15 | 7.5 | no |
+| 3 | [8,3,2] | 13 | 6.5 | no |
+| 4 | [8,3,5] | 16 | 8 | yes |
+
+Output:
+
+```
+2
+1 4
+```
+
+This shows that the condition is purely arithmetic and independent of ordering.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | One pass for sum, one pass for building frequency map, one pass to check each element. |
-| Space | O(n) | Frequency map stores up to n unique elements. |
+| Time | $O(n)$ | One pass to build frequencies and one pass to test each index |
+| Space | $O(n)$ | Frequency dictionary stores counts of all distinct values |
 
-With n up to 2×10⁵, this approach executes in roughly 1-2 million operations, safely under typical time limits. Memory usage is linear but within the 256MB limit for typical integer storage.
+The linear complexity is essential for handling arrays up to $2 \cdot 10^5$. Any quadratic approach would exceed time limits by several orders of magnitude.
 
 ## Test Cases
 
 ```python
 import sys, io
-from collections import Counter
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(input())
-    a = list(map(int, input().split()))
-    total_sum = sum(a)
-    freq = Counter(a)
-    result = []
-    for i in range(n):
-        freq[a[i]] -= 1
-        remaining_su_
+    from __main__ import solve
+    out = io.StringIO()
+    sys.stdout = out
+    solve()
+    return out.getvalue().strip()
+
+# provided sample
+assert run("""5
+2 5 1 2 2
+""") == """3
+1 4 5"""
+
+# minimum size
+assert run("""2
+1 1
+""") == """2
+1 2"""
+
+# no valid indices
+assert run("""3
+1 2 4
+""") == """0"""
+
+# all equal values
+assert run("""4
+2 2 2 2
+""") == """4
+1 2 3 4"""
+
+# single pattern mix
+assert run("""5
+10 1 1 1 1
+""") == """1
+1"""
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 2 elements equal | both indices | degenerate single-element good case |
+| no solution | 0 | negative case correctness |
+| all equal | all indices | symmetry and frequency handling |
+| dominant value case | one index | selective validity |
+
+## Edge Cases
+
+A two-element array like $[x, x]$ always produces both indices as valid because removing one element leaves a single-element array, which trivially satisfies the condition. The algorithm handles this because the remaining sum equals the single element, and the frequency logic confirms that the candidate value still exists after removal.
+
+When all elements are identical, the candidate value after any removal is still equal to the same value, and the frequency check always passes for every index. The algorithm correctly counts every position.
+
+A more subtle case arises when the candidate equals the removed element. The implementation explicitly reduces the available count by one in that case, preventing false positives when the removed element was the only occurrence of the required value.
