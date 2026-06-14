@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8053 problems, 3842 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8055 problems, 3843 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8053 problems, 3842 verified.**
+**1429 contests, 8055 problems, 3843 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 769 problems, 276 verified
+## 2021 — 131 contests, 771 problems, 277 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -883,7 +883,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1545](1545/) | [Codeforces Round 732 (Div. 1)](https://codeforces.com/contest/1545) | 7 | 1/7 | Div. 1 | 1500-3500 |
 | [1546](1546/) | [Codeforces Round 732 (Div. 2)](https://codeforces.com/contest/1546) | 2 | 2/2 | Div. 2 | 800-1200 |
 | [1547](1547/) | [Codeforces Round 731 (Div. 3)](https://codeforces.com/contest/1547) | 7 | 2/7 | Div. 3 | 800-2100 |
-| [1548](1548/) | [Codeforces Round 736 (Div. 1)](https://codeforces.com/contest/1548) | 4 | 1/4 | Div. 1 | 1800-3400 |
+| [1548](1548/) | [Codeforces Round 736 (Div. 1)](https://codeforces.com/contest/1548) | 6 | 2/6 | Div. 1 | 1400-3400 |
 | [1549](1549/) | [Codeforces Round 736 (Div. 2)](https://codeforces.com/contest/1549) | 1 | 0/1 | Div. 2 | 800-800 |
 | [1550](1550/) | [Educational Codeforces Round 111 (Rated for Div. 2)](https://codeforces.com/contest/1550) | 2 | 1/2 | Div. 2 | 1000-1700 |
 | [1551](1551/) | [Codeforces Round 734 (Div. 3)](https://codeforces.com/contest/1551) | 4 | 1/4 | Div. 3 | 800-2200 |
