@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8140 problems, 3897 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8145 problems, 3899 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8140 problems, 3897 verified.**
+**1429 contests, 8145 problems, 3899 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -945,7 +945,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 
-## 2022 — 133 contests, 858 problems, 343 verified
+## 2022 — 133 contests, 863 problems, 345 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1054,7 +1054,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1737](1737/) | [Dytechlab Cup 2022](https://codeforces.com/contest/1737) | 7 | 1/7 | Special | 900-3500 |
 | [1738](1738/) | [Codeforces Global Round 22](https://codeforces.com/contest/1738) | 8 | 1/8 | Global | 800-3300 |
 | [1739](1739/) | [Educational Codeforces Round 136 (Rated for Div. 2)](https://codeforces.com/contest/1739) | 6 | 1/6 | Div. 2 | 800-2600 |
-| [1740](1740/) | [Codeforces Round 831 (Div. 1 + Div. 2)](https://codeforces.com/contest/1740) | 4 | 0/4 | Div. 1+2 | 800-1500 |
+| [1740](1740/) | [Codeforces Round 831 (Div. 1 + Div. 2)](https://codeforces.com/contest/1740) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 | [1741](1741/) | [Codeforces Round 826 (Div. 3)](https://codeforces.com/contest/1741) | 7 | 2/7 | Div. 3 | 800-2200 |
 | [1742](1742/) | [Codeforces Round 827 (Div. 4)](https://codeforces.com/contest/1742) | 7 | 3/7 | Div. 4 | 800-1500 |
 | [1743](1743/) | [Educational Codeforces Round 137 (Rated for Div. 2)](https://codeforces.com/contest/1743) | 7 | 2/7 | Div. 2 | 800-3000 |
