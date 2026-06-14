@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8036 problems, 3821 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8037 problems, 3821 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8036 problems, 3821 verified.**
+**1429 contests, 8037 problems, 3821 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 752 problems, 255 verified
+## 2021 — 131 contests, 753 problems, 255 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -832,7 +832,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1487](1487/) | [Educational Codeforces Round 104 (Rated for Div. 2)](https://codeforces.com/contest/1487) | 7 | 3/7 | Div. 2 | 800-2900 |
 | [1488](1488/) | [Kotlin Heroes: Episode 6](https://codeforces.com/contest/1488) | 10 | 2/10 | Kotlin | 900-3100 |
 | [1490](1490/) | [Codeforces Round 702 (Div. 3)](https://codeforces.com/contest/1490) | 7 | 5/7 | Div. 3 | 800-1900 |
-| [1491](1491/) | [Codeforces Global Round 13](https://codeforces.com/contest/1491) | 8 | 3/8 | Global | 800-3500 |
+| [1491](1491/) | [Codeforces Global Round 13](https://codeforces.com/contest/1491) | 9 | 3/9 | Global | 800-3500 |
 | [1492](1492/) | [Codeforces Round 704 (Div. 2)](https://codeforces.com/contest/1492) | 5 | 2/5 | Div. 2 | 800-2500 |
 | [1493](1493/) | [Codeforces Round 705 (Div. 2)](https://codeforces.com/contest/1493) | 6 | 0/6 | Div. 2 | 800-2600 |
 | [1494](1494/) | [Educational Codeforces Round 105 (Rated for Div. 2)](https://codeforces.com/contest/1494) | 6 | 3/6 | Div. 2 | 900-2900 |
