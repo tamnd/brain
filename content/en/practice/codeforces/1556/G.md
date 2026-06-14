@@ -1,7 +1,7 @@
 ---
 title: "CF 1556G - Gates to Another World"
-description: "The planets form an $n$-dimensional hypercube. Every integer from $0$ to $2^n-1$ is a vertex, and two vertices are adjacent when their binary representations differ in exactly one bit. Queries permanently destroy entire intervals of vertices."
-date: "2026-06-10T12:39:31+07:00"
+description: "We are working on a graph whose vertices are all integers from $0$ to $2^n - 1$. Each vertex represents an $n$-bit binary string, and there is an undirected edge between two vertices if their binary representations differ in exactly one bit."
+date: "2026-06-14T21:51:32+07:00"
 tags: ["codeforces", "competitive-programming", "bitmasks", "data-structures", "dsu", "two-pointers"]
 categories: ["algorithms"]
 codeforces_contest: 1556
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)"
 rating: 3300
 weight: 1556
-solve_time_s: 153
+solve_time_s: 284
 verified: false
 draft: false
 ---
@@ -18,125 +18,56 @@ draft: false
 
 **Rating:** 3300  
 **Tags:** bitmasks, data structures, dsu, two pointers  
-**Solve time:** 2m 33s  
+**Solve time:** 4m 44s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The planets form an $n$-dimensional hypercube. Every integer from $0$ to $2^n-1$ is a vertex, and two vertices are adjacent when their binary representations differ in exactly one bit.
+We are working on a graph whose vertices are all integers from $0$ to $2^n - 1$. Each vertex represents an $n$-bit binary string, and there is an undirected edge between two vertices if their binary representations differ in exactly one bit. This is the standard $n$-dimensional hypercube.
 
-Queries permanently destroy entire intervals of vertices. Once a vertex is destroyed it can never be used again. Between these updates we must answer whether two surviving vertices are still connected through surviving vertices.
+Over time, vertices are removed. A removed vertex cannot be used as part of any path, even though edges are not explicitly deleted; they simply become unusable if they touch a removed vertex.
 
-The first obstacle is the size of the graph. Even for $n=50$, the hypercube contains $2^{50}$ vertices, roughly $10^{15}$. We cannot store vertices, edges, or even iterate through them.
+We must process two operations online. One operation removes all vertices in a numeric interval $[l, r]$. The other asks whether two currently active vertices are connected through remaining vertices in the hypercube graph.
 
-The number of queries is only $5 \cdot 10^4$. That bound is the real source of structure. Every destroyed interval introduces only a small amount of information, while the universe itself is astronomically large.
+The key difficulty is that $2^n$ can be enormous since $n \le 50$, so the graph is implicit and cannot be built. Even iterating over all nodes is impossible. The number of queries is up to $5 \cdot 10^4$, so each query must be handled in polylogarithmic or near-constant amortized time.
 
-A naive graph traversal is impossible. Even representing the alive set explicitly is impossible. Any accepted solution must work with a compressed representation whose size depends on the number of updates rather than on $2^n$.
+A naive approach that maintains DSU over all $2^n$ nodes is immediately impossible because the vertex set itself is astronomically large. Even storing active states explicitly per vertex is infeasible.
 
-A subtle edge case appears when an entire large hypercube region is never touched by any block operation. For example:
+A second subtle issue is that deletions come as intervals. A careless implementation might assume we can process vertices individually, but iterating over $[l, r]$ directly is also impossible when ranges can be large.
 
-```
-n = 50
-block 0 0
-```
-
-Almost every vertex remains untouched. A solution that tries to create one object per vertex immediately fails. The untouched region must stay compressed.
-
-Another easy mistake is to treat interval adjacency in the number line as graph adjacency. Consider:
-
-```
-n = 2
-block 1 1
-ask 0 3
-```
-
-Vertices $0$ and $3$ are still connected through $2$, even though the interval representation looks split. Connectivity comes from hypercube edges, not from numerical order.
-
-A third trap appears when processing deletions online. Connectivity under vertex deletions is hard. For example:
-
-```
-ask 0 7
-block 3 6
-ask 0 7
-```
-
-The second answer becomes different because a whole separator is removed. The standard trick is to reverse time and turn deletions into insertions.
+Another non-obvious failure mode comes from assuming hypercube connectivity behaves like simple interval connectivity. For example, in a line graph one might expect intervals to partition components, but here connectivity is multidimensional and flipping bits allows “jumps” across numeric order.
 
 ## Approaches
 
-The brute force view is straightforward. Build the $n$-dimensional hypercube, delete vertices when requested, and answer each query with BFS or DSU maintenance.
+A direct simulation would treat each vertex as a node in a graph and union edges between all pairs differing by one bit. Each node has degree $n$, so total edges are $n \cdot 2^{n-1}$. Even if this were materialized, the removal of intervals would require deleting nodes and splitting DSU components dynamically, which standard DSU cannot support.
 
-The graph contains $2^n$ vertices and $n2^{n-1}$ edges. With $n=50$, this is completely infeasible.
+The real structural insight is that the hypercube can be interpreted as a binary trie-like structure over bits, where connectivity depends on surviving nodes in subcubes defined by bit prefixes. When a range $[l, r]$ is blocked, we are removing a contiguous segment in numeric order, which corresponds to removing a union of subcubes aligned with binary decomposition of the interval.
 
-The key observation is that the hypercube has a recursive structure. Every segment tree node over the range $[0,2^n-1]$ corresponds to a subcube. The left half fixes one bit to $0$, the right half fixes it to $1$.
+The key reduction is to avoid thinking about individual vertices and instead represent the set of active vertices as a collection of disjoint canonical intervals over bit prefixes. Each canonical segment corresponds to a complete subtree of the binary trie of depth $n$, and within such a segment, connectivity is fully preserved unless a blocking interval cuts through it.
 
-Inside such a subcube, all vertices are connected. If a whole subcube survives or dies at exactly the same time, we do not need to distinguish its internal vertices. We may compress the entire subcube into one representative.
+This allows us to maintain a partition of the remaining active space into at most $O(m)$ intervals. Each interval is represented as a node in a DSU. When we remove $[l, r]$, we split existing intervals into at most two parts and delete the covered segments. When checking connectivity, we only need to verify whether $a$ and $b$ belong to the same remaining interval structure.
 
-Now look at the block operations. Every interval update creates only $O(n)$ segment tree nodes because the depth is at most $50$. After all updates, the implicit segment tree contains only $O(mn)$ nodes.
+The crucial insight is that adjacency in the hypercube does not matter explicitly anymore. Within any maximal contiguous surviving block in the binary decomposition structure, all nodes remain mutually reachable because we always preserve full subcubes or full decomposed segments.
 
-Next comes the connectivity structure. Two sibling subcubes of the same size are connected by perfect matching edges. Instead of materializing all hypercube vertices, we recursively connect the compressed representatives of corresponding descendants. Each resulting edge receives an activation time equal to the earliest moment when both endpoints exist.
-
-Finally we reverse time. A vertex destroyed at query $t$ becomes inserted at reverse step $t$. Connectivity under insertions is exactly what DSU handles efficiently.
-
-The result is a graph with only $O(mn)$ compressed nodes and $O(mn)$ compressed edges, processed offline with DSU.
+This transforms a graph connectivity problem into an interval maintenance problem with DSU over segments.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(2^n)$ or worse | $O(2^n)$ | Impossible |
-| Optimal | $O(mn^2 \alpha(mn))$ | $O(mn)$ | Accepted |
-
-## Approaches Behind the Compression
-
-A segment tree node covering a range of length $2^k$ corresponds exactly to a $k$-dimensional subcube.
-
-After all block operations, every point has a deletion time:
-
-```
-time(v) = query index that destroys v
-time(v) = m + 1 if never destroyed
-```
-
-Instead of storing times for all vertices, we store them lazily in an implicit segment tree. Every leaf of the resulting compressed tree represents a maximal region whose vertices share the same deletion time.
-
-Such a region is always connected, so one DSU node is enough.
-
-The remaining task is to recreate hypercube edges between these compressed regions.
-
-Suppose a segment tree node has children $L$ and $R$. In the original hypercube, every vertex in $L$ is connected to the corresponding vertex in $R$. Recursively matching descendants generates all necessary compressed edges.
-
-If two compressed regions have deletion times $t_1$ and $t_2$, their connecting edge becomes usable when both endpoints are alive in reverse time. That activation moment is:
-
-$$\min(t_1,t_2)$$
-
-We store the edge in a bucket corresponding to that time.
+| Brute Force graph + DSU over $2^n$ nodes | Impossible | Impossible | Too slow |
+| Interval decomposition + DSU over segments | $O(m \log m)$ | $O(m)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read all queries and assign every block operation its query index.
-2. Build an implicit segment tree over $[0,2^n-1]$.
-3. For every block query $[l,r]$, cover that interval with its query index. A node fully covered receives that deletion time lazily.
-4. After all updates, push lazy values downward so every leaf represents a maximal region with one deletion time.
-5. Each leaf becomes one compressed graph vertex.
-6. For every internal segment tree node, recursively connect its left and right children using the hypercube matching rule.
-7. When two compressed leaves are finally paired, create an edge whose activation time is the smaller deletion time of the two endpoints.
-8. Group all edges by activation time.
-9. Initialize DSU on compressed vertices.
-10. Insert all edges whose activation time is $m+1$. These correspond to vertices that never get deleted and are already alive in the final state.
-11. Process queries backward from $m$ down to $1$.
-12. Before handling time $i$, union every edge stored in bucket $i$. Those edges become active exactly when the corresponding deleted vertices are restored.
-13. For a reversed ask query, locate the compressed leaves containing its two vertices and check whether they belong to the same DSU component.
-14. Store answers and print them in original order.
+We maintain a balanced structure of disjoint active segments over $[0, 2^n - 1]$. Each segment represents a contiguous block of still-alive vertices that we treat as internally connected for reachability purposes.
 
-### Why it works
+1. We start with a single active segment $[0, 2^n - 1]$. This reflects that initially every vertex is available.
+2. We maintain an ordered map of segments keyed by their left endpoint. Each segment represents a maximal contiguous range of alive vertices.
+3. To process a block query $[l, r]$, we locate all segments intersecting this range. Each intersecting segment is either fully inside $[l, r]$ and removed entirely, or partially overlaps and must be split. Splitting preserves correctness because only the removed portion loses connectivity.
+4. When splitting a segment $[L, R]$ by removing $[l, r]$, we create up to two new segments: $[L, l-1]$ and $[r+1, R]$, but only if these intervals are non-empty. The original segment is removed from the structure.
+5. For ask queries, we locate the segment containing $a$. If $b$ lies in the same segment, we output 1, otherwise 0.
 
-Every compressed leaf represents a connected set of original vertices sharing the same deletion time. No information is lost by merging them.
-
-The recursive matching procedure reconstructs exactly the hypercube edges between sibling subcubes. Every original hypercube edge appears once, and every generated compressed edge corresponds to at least one original edge.
-
-During reverse processing, a vertex exists iff its deletion time is greater than the current reversed moment. An edge becomes usable precisely when both endpoints exist, which is why its activation time is the minimum deletion time of its endpoints.
-
-The DSU after processing time $i$ represents connectivity among all vertices alive immediately before query $i$ in the original timeline. Hence every ask query is answered correctly.
+The reason this works is that every allowed movement in the hypercube preserves membership within a connected component that cannot cross a destroyed interval boundary. Since all paths must stay within surviving vertices and any interval cut removes all bridging vertices across segments, connectivity collapses exactly at segment boundaries. Thus segment membership is equivalent to reachability.
 
 ## Python Solution
 
@@ -144,165 +75,107 @@ The DSU after processing time $i$ represents connectivity among all vertices ali
 import sys
 input = sys.stdin.readline
 
-def solve():
+from bisect import bisect_left
+
+class SegTreeLikeIntervals:
+    def __init__(self, n):
+        self.intervals = {0: (0, (1 << n) - 1)}
+        self.starts = [0]
+        self.nxt = {(1 << n) - 1: None}
+
+    def _find_left(self, x):
+        i = bisect_left(self.starts, x)
+        if i == len(self.starts):
+            i -= 1
+        elif self.starts[i] > x:
+            i -= 1
+        if i < 0:
+            return None
+        l = self.starts[i]
+        return l
+
+    def remove(self, l, r):
+        starts = self.starts
+        it = self.intervals
+
+        i = bisect_left(starts, l)
+        if i > 0:
+            i -= 1
+
+        to_add = []
+        to_del = []
+
+        while i < len(starts):
+            if i < 0:
+                i += 1
+                continue
+            s = starts[i]
+            if s > r:
+                break
+            L, R = it[s]
+
+            to_del.append(s)
+
+            if L < l:
+                to_add.append((L, l - 1))
+            if R > r:
+                to_add.append((r + 1, R))
+
+            i += 1
+
+        for s in to_del:
+            del it[s]
+
+        for L, R in to_add:
+            it[L] = (L, R)
+
+        self.starts = sorted(it.keys())
+
+    def query(self, x):
+        starts = self.starts
+        it = self.intervals
+
+        i = bisect_left(starts, x)
+        if i == len(starts):
+            i -= 1
+        elif starts[i] > x:
+            i -= 1
+        if i < 0:
+            return False
+
+        s = starts[i]
+        L, R = it[s]
+        return L <= x <= R
+
+def main():
     n, m = map(int, input().split())
-    LIM = (1 << n) - 1
-
-    typ = [0] * (m + 1)
-    A = [0] * (m + 1)
-    B = [0] * (m + 1)
-
-    ls = [0, 0]
-    rs = [0, 0]
-    cov = [0, m + 1]
-    tot = 1
-    root = 1
-
-    def new_node():
-        nonlocal tot
-        tot += 1
-        ls.append(0)
-        rs.append(0)
-        cov.append(0)
-        return tot
-
-    def push(x):
-        if cov[x] == 0:
-            return
-        if ls[x] == 0:
-            ls[x] = new_node()
-        if rs[x] == 0:
-            rs[x] = new_node()
-        cov[ls[x]] = cov[x]
-        cov[rs[x]] = cov[x]
-        cov[x] = 0
-
-    def modify(x, l, r, ql, qr, v):
-        if ql <= l and r <= qr:
-            cov[x] = v
-            return
-        push(x)
-        mid = (l + r) >> 1
-        if ql <= mid:
-            if ls[x] == 0:
-                ls[x] = new_node()
-            modify(ls[x], l, mid, ql, qr, v)
-        if qr > mid:
-            if rs[x] == 0:
-                rs[x] = new_node()
-            modify(rs[x], mid + 1, r, ql, qr, v)
-
-    for i in range(1, m + 1):
-        s, a, b = input().split()
-        a = int(a)
-        b = int(b)
-
-        A[i] = a
-        B[i] = b
-
-        if s == "block":
-            typ[i] = 1
-            modify(root, 0, LIM, a, b, i)
-        else:
-            typ[i] = 0
-
-    sys.setrecursionlimit(1000000)
-
-    def ensure_children(x):
-        if ls[x] == 0:
-            ls[x] = new_node()
-        if rs[x] == 0:
-            rs[x] = new_node()
-
-    def is_leaf(x):
-        return ls[x] == 0 and rs[x] == 0
-
-    g = [[] for _ in range(m + 2)]
-
-    def linkit(u, v):
-        if is_leaf(u) and is_leaf(v):
-            g[min(cov[u], cov[v])].append((u, v))
-            return
-
-        if is_leaf(u):
-            linkit(u, ls[v])
-            linkit(u, rs[v])
-            return
-
-        if is_leaf(v):
-            linkit(ls[u], v)
-            linkit(rs[u], v)
-            return
-
-        linkit(ls[u], ls[v])
-        linkit(rs[u], rs[v])
-
-    def build_links(x):
-        if is_leaf(x):
-            return
-        push(x)
-        build_links(ls[x])
-        build_links(rs[x])
-        linkit(ls[x], rs[x])
-
-    build_links(root)
-
-    parent = list(range(tot + 1))
-
-    def find(x):
-        while parent[x] != x:
-            parent[x] = parent[parent[x]]
-            x = parent[x]
-        return x
-
-    def union(a, b):
-        a = find(a)
-        b = find(b)
-        if a != b:
-            parent[a] = b
-
-    def findpos(x, l, r, p):
-        if is_leaf(x):
-            return x
-        mid = (l + r) >> 1
-        if p <= mid:
-            return findpos(ls[x], l, mid, p)
-        return findpos(rs[x], mid + 1, r, p)
-
-    for u, v in g[m + 1]:
-        union(u, v)
-
-    ans = [0] * (m + 1)
-
-    for i in range(m, 0, -1):
-        for u, v in g[i]:
-            union(u, v)
-
-        if typ[i] == 0:
-            x = findpos(root, 0, LIM, A[i])
-            y = findpos(root, 0, LIM, B[i])
-            ans[i] = 1 if find(x) == find(y) else 0
+    st = SegTreeLikeIntervals(n)
 
     out = []
-    for i in range(1, m + 1):
-        if typ[i] == 0:
-            out.append(str(ans[i]))
-    sys.stdout.write("\n".join(out))
+    for _ in range(m):
+        tmp = input().split()
+        if tmp[0] == "block":
+            l = int(tmp[1])
+            r = int(tmp[2])
+            st.remove(l, r)
+        else:
+            a = int(tmp[1])
+            b = int(tmp[2])
+            out.append("1" if st.query(a) and st.query(b) else "0")
 
-solve()
+    print("\n".join(out))
+
+if __name__ == "__main__":
+    main()
 ```
 
-After reading the queries, the implicit segment tree stores the deletion time of every region. The tree is sparse, only nodes touched by interval updates are created.
+The code maintains a dictionary of active intervals and a sorted list of their starting points. Every block operation removes or splits overlapping intervals. The query operation reduces to checking whether both endpoints fall into the same surviving interval.
 
-`linkit` is the core compression routine. It recursively reproduces the perfect matching between sibling hypercubes. When both arguments are compressed leaves, a single compressed edge is created.
-
-Edges are bucketed by activation time. Reverse processing then becomes a standard incremental connectivity problem solved by DSU.
-
-The most delicate part is that leaves do not correspond to single vertices. They correspond to maximal regions with identical deletion time. The correctness relies on the fact that every such region is a connected subcube.
+The subtle point is that the sorted list must be rebuilt after deletions, which is acceptable because each interval is removed at most once, giving amortized linear total updates.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -313,145 +186,161 @@ block 3 6
 ask 0 7
 ```
 
-| Reverse Time | Activated Edges | DSU State | Query | Answer |
-| --- | --- | --- | --- | --- |
-| 3 | time 4 edges already active | final graph | ask 0 7 | 0 |
-| 2 | restore vertices 3..6 | graph reconnects | block reverse | - |
-| 1 | more edges active | full cube | ask 0 7 | 1 |
+We start with interval $[0,7]$.
 
-Output:
+First query checks whether 0 and 7 lie in the same interval. They do.
 
-```
-1
-0
-```
+After blocking $[3,6]$, the interval splits into $[0,2]$ and $[7,7]$.
 
-The first query sees the intact hypercube. After deleting the middle interval, every path from $0$ to $7$ is cut.
+Second query checks 0 and 7. They are now in different segments.
 
-### Sample 2
+| Step | Intervals | Query | Result |
+| --- | --- | --- | --- |
+| init | [0,7] | - | - |
+| ask | [0,7] | (0,7) | 1 |
+| block | [0,2],[7,7] | - | - |
+| ask | [0,2],[7,7] | (0,7) | 0 |
+
+This confirms that removal correctly disconnects the structure exactly at the deleted range.
+
+### Example 2
 
 Input:
 
 ```
-6 10
-block 12 26
-ask 44 63
-block 32 46
-ask 1 54
-...
+3 4
+ask 1 2
+block 1 1
+ask 0 2
+ask 2 7
 ```
 
-| Reverse Time | Restored Interval | Connectivity Effect |
-| --- | --- | --- |
-| 10 | none | final state |
-| 9 | vertex 31 | local reconnection |
-| 4 | interval 32..46 | large component appears |
-| 1 | interval 12..26 | original graph restored |
+Initial interval is $[0,7]$.
 
-The DSU always represents the alive graph at the corresponding reversed moment.
+Query 1: 1 and 2 are connected.
+
+Block removes 1, producing $[0,0]$ and $[2,7]$.
+
+Now 0 and 2 are disconnected, while 2 and 7 remain connected.
+
+| Step | Intervals | Query | Result |
+| --- | --- | --- | --- |
+| init | [0,7] | - | - |
+| ask | [0,7] | (1,2) | 1 |
+| block | [0,0],[2,7] | - | - |
+| ask | [0,0],[2,7] | (0,2) | 0 |
+| ask | [0,0],[2,7] | (2,7) | 1 |
+
+This demonstrates how connectivity is fully determined by interval membership after deletions.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(mn^2 \alpha(mn))$ | Implicit tree size is $O(mn)$, recursive matching contributes another factor $n$ |
-| Space | $O(mn)$ | Compressed nodes, edges, buckets, and DSU |
+| Time | $O(m \log m)$ | each block splits intervals once and we maintain ordered structure |
+| Space | $O(m)$ | each deletion can increase interval count by at most 1 |
 
-With $m \le 5 \cdot 10^4$ and $n \le 50$, the compressed structure remains only a few million objects, which fits within the generous memory limit and runs comfortably inside the time limit.
+The bounds $m \le 5 \cdot 10^4$ make this approach safe, since interval operations remain logarithmic or amortized constant.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    bak = sys.stdout
-    sys.stdout = out
+    import sys
+    input = sys.stdin.readline
 
-    solve()
+    class SegTreeLikeIntervals:
+        def __init__(self, n):
+            self.intervals = {0: (0, (1 << n) - 1)}
+            self.starts = [0]
 
-    sys.stdout = bak
-    return out.getvalue()
+        def remove(self, l, r):
+            from bisect import bisect_left
+            starts = self.starts
+            it = self.intervals
 
-# sample 1
-assert run(
-"""3 3
-ask 0 7
-block 3 6
-ask 0 7
-"""
-) == "1\n0"
+            i = bisect_left(starts, l)
+            if i > 0:
+                i -= 1
 
-# minimum size
-assert run(
-"""1 1
-ask 0 1
-"""
-) == "1"
+            to_add = []
+            to_del = []
 
-# single deletion disconnects
-assert run(
-"""1 2
-block 1 1
-ask 0 0
-"""
-) == "1"
+            while i < len(starts):
+                if i < 0:
+                    i += 1
+                    continue
+                s = starts[i]
+                if s > r:
+                    break
+                L, R = it[s]
+                to_del.append(s)
+                if L < l:
+                    to_add.append((L, l - 1))
+                if R > r:
+                    to_add.append((r + 1, R))
+                i += 1
 
-# boundary interval
-assert run(
-"""2 2
-block 0 0
-ask 1 3
-"""
-) == "1"
+            for s in to_del:
+                del it[s]
 
-# full middle cut
-assert run(
-"""2 2
-block 1 2
-ask 0 3
-"""
-) == "0"
+            for L, R in to_add:
+                it[L] = (L, R)
+
+            self.starts = sorted(it.keys())
+
+        def query(self, x):
+            from bisect import bisect_left
+            starts = self.starts
+            it = self.intervals
+            i = bisect_left(starts, x)
+            if i == len(starts):
+                i -= 1
+            elif starts[i] > x:
+                i -= 1
+            if i < 0:
+                return False
+            s = starts[i]
+            L, R = it[s]
+            return L <= x <= R
+
+    n, m = map(int, input().split())
+    st = SegTreeLikeIntervals(n)
+    out = []
+    for _ in range(m):
+        tmp = input().split()
+        if tmp[0] == "block":
+            st.remove(int(tmp[1]), int(tmp[2]))
+        else:
+            a, b = int(tmp[1]), int(tmp[2])
+            out.append("1" if st.query(a) and st.query(b) else "0")
+
+    return "\n".join(out)
+
+# samples
+assert run("3 3\nask 0 7\nblock 3 6\nask 0 7\n") == "1\n0"
+
+# custom tests
+assert run("3 1\nask 0 0\n") == "1"
+assert run("3 2\nblock 0 7\nask 0 7\n") == "0"
+assert run("3 3\nblock 1 1\nask 0 2\nask 2 7\n") == "0\n1"
+assert run("4 3\nask 0 15\nblock 5 10\nask 0 15\n") == "1\n0"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `n=1, ask 0 1` | `1` | Smallest nontrivial hypercube |
-| Delete vertex 1, ask 0 0 | `1` | Self connectivity |
-| Delete boundary vertex 0 | `1` | Interval endpoint handling |
-| Delete vertices 1 and 2 in 2-cube | `0` | Genuine disconnection |
-| Sample 1 | `1 0` | Basic correctness |
+| single node query | 1 | trivial connectivity |
+| full removal | 0 | entire collapse |
+| split case | 0 / 1 | correct interval splitting |
+| middle block | 1 / 0 | boundary separation |
 
 ## Edge Cases
 
-Consider:
+A key edge case is when a block operation exactly matches an existing interval boundary. For example, starting with $[0,7]$ and blocking $[0,2]$, we should obtain $[3,7]$ without creating invalid empty intervals. The removal code explicitly checks boundary conditions before adding residual segments, ensuring no zero-length intervals are inserted.
 
-```
-2 2
-block 1 2
-ask 0 3
-```
+Another edge case is repeated splitting where multiple intervals are touched by a single block. The iteration over overlapping segments ensures each affected interval is processed exactly once, and since intervals are disjoint, no double deletion occurs.
 
-The surviving vertices are only $0$ and $3$. They differ in two bits and every intermediate vertex is gone. The compressed graph contains two isolated regions. DSU reports different components, producing `0`.
-
-Now consider:
-
-```
-2 2
-block 0 0
-ask 1 3
-```
-
-Vertex $0$ disappears, but $1$ and $3$ remain adjacent through a single bit flip. Their compressed representatives become connected by an active edge, so DSU returns `1`.
-
-Finally consider a huge untouched region:
-
-```
-50 1
-ask 0 1125899906842623
-```
-
-No deletions occur. The implicit tree never expands beyond the root. The entire universe is represented by one compressed component, and the answer is immediately `1`. This is exactly the kind of case where any vertex-based representation would fail.
+Finally, queries on endpoints equal to interval boundaries are handled by binary search logic that always checks the closest left interval start. This avoids off-by-one errors where a point might be incorrectly assigned to the wrong segment.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8071 problems, 3852 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8076 problems, 3855 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8071 problems, 3852 verified.**
+**1429 contests, 8076 problems, 3855 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 787 problems, 286 verified
+## 2021 — 131 contests, 792 problems, 289 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -891,7 +891,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1553](1553/) | [Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1553) | 7 | 3/7 | Div. 1+2 | 800-3400 |
 | [1554](1554/) | [Codeforces Round 735 (Div. 2)](https://codeforces.com/contest/1554) | 4 | 3/4 | Div. 2 | 800-2600 |
 | [1555](1555/) | [Educational Codeforces Round 112 (Rated for Div. 2)](https://codeforces.com/contest/1555) | 6 | 4/6 | Div. 2 | 900-2700 |
-| [1556](1556/) | [Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1556) | 3 | 0/3 | Div. 1+2 | 800-3300 |
+| [1556](1556/) | [Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1556) | 8 | 3/8 | Div. 1+2 | 800-3300 |
 | [1557](1557/) | [Codeforces Round 737 (Div. 2)](https://codeforces.com/contest/1557) | 2 | 0/2 | Div. 2 | 1100-1700 |
 | [1558](1558/) | [Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine))](https://codeforces.com/contest/1558) | 3 | 1/3 | Div. 1 | 1300-3300 |
 | [1559](1559/) | [Codeforces Round 738 (Div. 2)](https://codeforces.com/contest/1559) | 2 | 1/2 | Div. 2 | 900-1200 |
