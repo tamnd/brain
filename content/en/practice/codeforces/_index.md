@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8149 problems, 3901 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8150 problems, 3902 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8149 problems, 3901 verified.**
+**1429 contests, 8150 problems, 3902 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -1083,7 +1083,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1773](1773/) | [2022-2023 ICPC, NERC, Northern Eurasia Onsite (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1773) | 12 | 5/12 | ICPC/IOI | 800-3500 |
 | [1774](1774/) | [Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1774) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 
-## 2023 — 132 contests, 898 problems, 354 verified
+## 2023 — 132 contests, 899 problems, 355 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1126,7 +1126,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1814](1814/) | [Educational Codeforces Round 146 (Rated for Div. 2)](https://codeforces.com/contest/1814) | 6 | 2/6 | Div. 2 | 800-2700 |
 | [1815](1815/) | [Codeforces Round 865 (Div. 1)](https://codeforces.com/contest/1815) | 6 | 1/6 | Div. 1 | 1300-3500 |
 | [1816](1816/) | [Codeforces Round 865 (Div. 2)](https://codeforces.com/contest/1816) | 2 | 0/2 | Div. 2 | 800-1000 |
-| [1817](1817/) | [Codeforces Round 869 (Div. 1)](https://codeforces.com/contest/1817) | 5 | 2/5 | Div. 1 | 1500-3400 |
+| [1817](1817/) | [Codeforces Round 869 (Div. 1)](https://codeforces.com/contest/1817) | 6 | 3/6 | Div. 1 | 1500-3500 |
 | [1818](1818/) | [Codeforces Round 869 (Div. 2)](https://codeforces.com/contest/1818) | 2 | 1/2 | Div. 2 | 800-900 |
 | [1819](1819/) | [Codeforces Round 866 (Div. 1)](https://codeforces.com/contest/1819) | 6 | 0/6 | Div. 1 | 1300-3500 |
 | [1820](1820/) | [Codeforces Round 866 (Div. 2)](https://codeforces.com/contest/1820) | 2 | 0/2 | Div. 2 | 800-1100 |
