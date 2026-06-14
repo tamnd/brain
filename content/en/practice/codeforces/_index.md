@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8034 problems, 3820 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8035 problems, 3820 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8034 problems, 3820 verified.**
+**1429 contests, 8035 problems, 3820 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -646,7 +646,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 3 | 1/3 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 2 | 1/2 | Div. 3 | 1500-1800 |
 
-## 2020 — 158 contests, 646 problems, 278 verified
+## 2020 — 158 contests, 647 problems, 278 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -761,7 +761,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1407](1407/) | [Codeforces Round 669 (Div. 2)](https://codeforces.com/contest/1407) | 5 | 1/5 | Div. 2 | 1100-2500 |
 | [1408](1408/) | [Grakn Forces 2020](https://codeforces.com/contest/1408) | 9 | 3/9 | Special | 800-3300 |
 | [1409](1409/) | [Codeforces Round 667 (Div. 3)](https://codeforces.com/contest/1409) | 6 | 4/6 | Div. 3 | 800-2100 |
-| [1411](1411/) | [Technocup 2021 - Elimination Round 3](https://codeforces.com/contest/1411) | 6 | 5/6 | Special | 800-3000 |
+| [1411](1411/) | [Technocup 2021 - Elimination Round 3](https://codeforces.com/contest/1411) | 7 | 5/7 | Special | 800-3000 |
 | [1413](1413/) | [Technocup 2021 - Elimination Round 1](https://codeforces.com/contest/1413) | 6 | 3/6 | Special | 800-2800 |
 | [1415](1415/) | [Technocup 2021 - Elimination Round 2](https://codeforces.com/contest/1415) | 6 | 6/6 | Special | 800-2900 |
 | [1416](1416/) | [Codeforces Round 673 (Div. 1)](https://codeforces.com/contest/1416) | 6 | 1/6 | Div. 1 | 1500-3300 |
