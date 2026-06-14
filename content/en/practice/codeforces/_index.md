@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8136 problems, 3896 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8139 problems, 3897 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8136 problems, 3896 verified.**
+**1429 contests, 8139 problems, 3897 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -945,7 +945,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 
-## 2022 — 133 contests, 854 problems, 342 verified
+## 2022 — 133 contests, 857 problems, 343 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -1047,7 +1047,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1730](1730/) | [Codeforces Round 823 (Div. 2)](https://codeforces.com/contest/1730) | 6 | 3/6 | Div. 2 | 800-2700 |
 | [1731](1731/) | [Codeforces Round 841 (Div. 2) and Divide by Zero 2022](https://codeforces.com/contest/1731) | 6 | 5/6 | Div. 2 | 800-2500 |
 | [1732](1732/) | [Codeforces Round 830 (Div. 2)](https://codeforces.com/contest/1732) | 7 | 4/7 | Div. 2 | 900-2800 |
-| [1733](1733/) | [Codeforces Round 821 (Div. 2)](https://codeforces.com/contest/1733) | 3 | 0/3 | Div. 2 | 800-2000 |
+| [1733](1733/) | [Codeforces Round 821 (Div. 2)](https://codeforces.com/contest/1733) | 6 | 1/6 | Div. 2 | 800-2700 |
 | [1734](1734/) | [Codeforces Round 822 (Div. 2)](https://codeforces.com/contest/1734) | 5 | 2/5 | Div. 2 | 800-2500 |
 | [1735](1735/) | [Codeforces Round 824 (Div. 2)](https://codeforces.com/contest/1735) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1736](1736/) | [Codeforces Round 825 (Div. 2)](https://codeforces.com/contest/1736) | 6 | 3/6 | Div. 2 | 800-2600 |
