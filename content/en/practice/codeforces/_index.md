@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8037 problems, 3821 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8038 problems, 3825 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8037 problems, 3821 verified.**
+**1429 contests, 8038 problems, 3825 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 753 problems, 255 verified
+## 2021 — 131 contests, 754 problems, 259 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -840,7 +840,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1496](1496/) | [Codeforces Round 706 (Div. 2)](https://codeforces.com/contest/1496) | 2 | 0/2 | Div. 2 | 900-1100 |
 | [1497](1497/) | [Codeforces Round 708 (Div. 2)](https://codeforces.com/contest/1497) | 7 | 1/7 | Div. 2 | 800-2500 |
 | [1498](1498/) | [CodeCraft-21 and Codeforces Round 711 (Div. 2)](https://codeforces.com/contest/1498) | 6 | 2/6 | Div. 2 | 800-2500 |
-| [1499](1499/) | [Educational Codeforces Round 106 (Rated for Div. 2)](https://codeforces.com/contest/1499) | 6 | 1/6 | Div. 2 | 800-3100 |
+| [1499](1499/) | [Educational Codeforces Round 106 (Rated for Div. 2)](https://codeforces.com/contest/1499) | 7 | 5/7 | Div. 2 | 800-3100 |
 | [1500](1500/) | [Codeforces Round 707 (Div. 1, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1500) | 6 | 1/6 | Div. 1 | 1800-3500 |
 | [1501](1501/) | [Codeforces Round 707 (Div. 2, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1501) | 2 | 0/2 | Div. 2 | 800-900 |
 | [1503](1503/) | [Codeforces Round 712 (Div. 1)](https://codeforces.com/contest/1503) | 6 | 1/6 | Div. 1 | 1600-3500 |
