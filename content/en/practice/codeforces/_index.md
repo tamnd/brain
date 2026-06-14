@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1448 contests, 8213 problems, 3940 verified."
+description: "Codeforces problem solutions with full editorials. 1449 contests, 8220 problems, 3946 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1448 contests, 8213 problems, 3940 verified.**
+**1449 contests, 8220 problems, 3946 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 27 contests, 158 problems, 94 verified
+## 2018 — 28 contests, 165 problems, 100 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 6 | 5/6 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1077](1077/) | [Codeforces Round 521 (Div. 3)](https://codeforces.com/contest/1077) | 7 | 6/7 | Div. 3 | 800-2100 |
 | [1078](1078/) | [Codeforces Round 522 (Div. 1, based on Technocup 2019 Elimination Round 3)](https://codeforces.com/contest/1078) | 1 | 1/1 | Div. 1 | 3400-3400 |
 | [1080](1080/) | [Codeforces Round 524 (Div. 2)](https://codeforces.com/contest/1080) | 6 | 3/6 | Div. 2 | 800-2400 |
 | [1081](1081/) | [Avito Cool Challenge 2018](https://codeforces.com/contest/1081) | 8 | 5/8 | Special | 800-3500 |
