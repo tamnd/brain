@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1445 contests, 8198 problems, 3931 verified."
+description: "Codeforces problem solutions with full editorials. 1446 contests, 8206 problems, 3936 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1445 contests, 8198 problems, 3931 verified.**
+**1446 contests, 8206 problems, 3936 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 24 contests, 143 problems, 85 verified
+## 2018 — 25 contests, 151 problems, 90 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 6 | 5/6 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1081](1081/) | [Avito Cool Challenge 2018](https://codeforces.com/contest/1081) | 8 | 5/8 | Special | 800-3500 |
 | [1082](1082/) | [Educational Codeforces Round 55 (Rated for Div. 2)](https://codeforces.com/contest/1082) | 7 | 4/7 | Div. 2 | 1200-2800 |
 | [1083](1083/) | [Codeforces Round 526 (Div. 1)](https://codeforces.com/contest/1083) | 6 | 2/6 | Div. 1 | 1800-3500 |
 | [1084](1084/) | [Codeforces Round 526 (Div. 2)](https://codeforces.com/contest/1084) | 3 | 2/3 | Div. 2 | 1000-1500 |
