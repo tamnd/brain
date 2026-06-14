@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8040 problems, 3826 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8041 problems, 3827 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8040 problems, 3826 verified.**
+**1429 contests, 8041 problems, 3827 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 756 problems, 260 verified
+## 2021 — 131 contests, 757 problems, 261 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -858,7 +858,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1516](1516/) | [Codeforces Round 717 (Div. 2)](https://codeforces.com/contest/1516) | 5 | 3/5 | Div. 2 | 800-2500 |
 | [1517](1517/) | [Contest 2050 and Codeforces Round 718 (Div. 1 + Div. 2)](https://codeforces.com/contest/1517) | 8 | 4/8 | Div. 1+2 | 800-3500 |
 | [1519](1519/) | [Educational Codeforces Round 108 (Rated for Div. 2)](https://codeforces.com/contest/1519) | 6 | 1/6 | Div. 2 | 800-3200 |
-| [1520](1520/) | [Codeforces Round 719 (Div. 3)](https://codeforces.com/contest/1520) | 7 | 5/7 | Div. 3 | 800-2200 |
+| [1520](1520/) | [Codeforces Round 719 (Div. 3)](https://codeforces.com/contest/1520) | 8 | 6/8 | Div. 3 | 800-2200 |
 | [1521](1521/) | [Codeforces Round 720 (Div. 2)](https://codeforces.com/contest/1521) | 5 | 0/5 | Div. 2 | 1000-2700 |
 | [1523](1523/) | [Deltix Round, Spring 2021 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1523) | 8 | 2/8 | Div. 1+2 | 800-3500 |
 | [1525](1525/) | [Educational Codeforces Round 109 (Rated for Div. 2)](https://codeforces.com/contest/1525) | 6 | 3/6 | Div. 2 | 800-2800 |
