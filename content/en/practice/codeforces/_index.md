@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8086 problems, 3863 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8087 problems, 3866 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8086 problems, 3863 verified.**
+**1429 contests, 8087 problems, 3866 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -945,7 +945,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1622](1622/) | [Educational Codeforces Round 120 (Rated for Div. 2)](https://codeforces.com/contest/1622) | 6 | 2/6 | Div. 2 | 800-2900 |
 | [1623](1623/) | [Codeforces Round 763 (Div. 2)](https://codeforces.com/contest/1623) | 5 | 1/5 | Div. 2 | 800-2500 |
 
-## 2022 — 133 contests, 804 problems, 309 verified
+## 2022 — 133 contests, 805 problems, 312 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -968,7 +968,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1641](1641/) | [Codeforces Round 773 (Div. 1)](https://codeforces.com/contest/1641) | 6 | 2/6 | Div. 1 | 1200-3500 |
 | [1642](1642/) | [Codeforces Round 773 (Div. 2)](https://codeforces.com/contest/1642) | 2 | 0/2 | Div. 2 | 800-900 |
 | [1644](1644/) | [Educational Codeforces Round 123 (Rated for Div. 2)](https://codeforces.com/contest/1644) | 6 | 3/6 | Div. 2 | 800-2900 |
-| [1646](1646/) | [Codeforces Round 774 (Div. 2)](https://codeforces.com/contest/1646) | 5 | 3/5 | Div. 2 | 800-2900 |
+| [1646](1646/) | [Codeforces Round 774 (Div. 2)](https://codeforces.com/contest/1646) | 6 | 6/6 | Div. 2 | 800-2900 |
 | [1647](1647/) | [Codeforces Round 777 (Div. 2)](https://codeforces.com/contest/1647) | 6 | 2/6 | Div. 2 | 800-3100 |
 | [1648](1648/) | [Codeforces Round 775 (Div. 1, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1648) | 6 | 2/6 | Div. 1 | 1400-3500 |
 | [1649](1649/) | [Codeforces Round 775 (Div. 2, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1649) | 2 | 2/2 | Div. 2 | 800-1300 |
