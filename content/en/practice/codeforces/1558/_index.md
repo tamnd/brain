@@ -1,25 +1,27 @@
 ---
 title: "Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine))"
-description: "Solutions for Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine)) (contest 1558). 1/3 problems verified against sample I/O. Difficulty range: 1300-3300."
-tags: ["codeforces", "competitive-programming", "brute-force", "math", "dp", "number-theory", "two-pointers", "data-structures"]
+description: "4 problems from Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine)) (contest 1558), difficulty 1300-3300. 1/4 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "brute-force", "math", "dp", "number-theory", "two-pointers", "constructive-algorithms"]
 categories: ["algorithms"]
 contest_id: 1558
 contest_type: "Div. 1"
 rating_range: "1300-3300"
-n_problems: 3
+n_problems: 4
 n_verified: 1
-total_solve_s: 786
-date: "2026-06-10T12:30:02+07:00"
+total_solve_s: 1219
+contest_year: 2021
+date: "2026-06-14T22:09:52+07:00"
 weight: 1558
 draft: false
 ---
 
 # [Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine))](https://codeforces.com/contest/1558)
 
-**Type:** Div. 1 | **Problems:** 3 | **Verified:** 1/3 | **Rating range:** 1300-3300 | **Time:** 13m 6s
+Div. 1 | 4 problems | 1/4 verified | Difficulty 1300-3300 | 20m 19s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [A](A/) | [Charmed by the Game](https://codeforces.com/problemset/problem/1558/A) | 1300 | brute-force, math | 2m 36s | ✗ |
-| [B](B/) | [Up the Strip](https://codeforces.com/problemset/problem/1558/B) | 1900 | brute-force, dp, math | 6m 35s | ✓ |
-| [F](F/) | [Strange Sort](https://codeforces.com/problemset/problem/1558/F) | 3300 | data-structures, sortings | 3m 55s | ✗ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Charmed by the Game](https://codeforces.com/problemset/problem/1558/A) | 1300 | brute-force, math | 11,495 | 4m 42s |  |
+| [B](B/) | [Up the Strip](https://codeforces.com/problemset/problem/1558/B) | 1900 | brute-force, dp, math | 5,269 | 6m 35s | ✓ |
+| [C](C/) | [Bottom-Tier Reversals](https://codeforces.com/problemset/problem/1558/C) | 2000 | constructive-algorithms, greedy | 3,714 | 5m 7s |  |
+| [F](F/) | [Strange Sort](https://codeforces.com/problemset/problem/1558/F) | 3300 | data-structures, sortings | 511 | 3m 55s |  |
