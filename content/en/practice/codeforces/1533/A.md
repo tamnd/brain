@@ -1,7 +1,7 @@
 ---
 title: "CF 1533A - Travel to Bertown"
-description: "Consider a closed container of fixed volume $V$ containing an ideal gas whose bulk temperature is $T1$. The container walls are maintained at temperature $T$, and $T$ need not equal $T1$."
-date: "2026-06-10T16:17:23+07:00"
+description: "Vika arrives in Bertown on a fixed day $k$. She has several friends, and each friend offers a single continuous interval of days during which she can stay at their home."
+date: "2026-06-14T18:31:17+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1533
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Kotlin Heroes: Episode 7"
 rating: 0
 weight: 1533
-solve_time_s: 153
-verified: false
+solve_time_s: 253
+verified: true
 draft: false
 ---
 
@@ -18,140 +18,203 @@ draft: false
 
 **Rating:** -  
 **Tags:** *special, implementation, math  
-**Solve time:** 2m 33s  
-**Verified:** no  
+**Solve time:** 4m 13s  
+**Verified:** yes  
 
 ## Solution
-## Setup and Assumptions
+## Problem Understanding
 
-Consider a closed container of fixed volume $V$ containing an ideal gas whose bulk temperature is $T_1$. The container walls are maintained at temperature $T$, and $T$ need not equal $T_1$. The problem asks for the instantaneous pressure exerted by the gas on the walls when the gas and walls are not in thermal equilibrium.
+Vika arrives in Bertown on a fixed day $k$. She has several friends, and each friend offers a single continuous interval of days during which she can stay at their home. The constraint is that she can choose at most one friend, and once she chooses, she can only stay within that friend’s allowed interval. However, she does not necessarily arrive at the start of that interval, so her actual stay must begin no earlier than day $k$.
 
-The essential point is that molecules arriving at the wall come from the gas and have a velocity distribution corresponding to $T_1$, while molecules leaving the wall after accommodation to the wall temperature have a velocity distribution corresponding to $T$. Since pressure is the rate of momentum transfer to the wall, both temperatures enter the calculation.
+For any chosen friend with interval $[l_i, r_i]$, Vika can only stay from day $k$ up to day $r_i$, provided that $k$ lies inside that interval. This means the effective number of days she stays is $r_i - k + 1$, but only if $l_i \le k \le r_i$. If no interval contains $k$, she cannot stay at all.
 
-Assume complete thermal accommodation at the wall. Molecules striking the wall are characterized by temperature $T_1$, and molecules re-emitted from the wall are characterized by temperature $T$. The gas is sufficiently rarefied that kinetic-theory expressions for molecular fluxes may be used locally at the wall.
+The task reduces to checking all intervals that contain $k$ and finding the one that extends farthest to the right.
 
-Because the vessel is closed and mechanical equilibrium is established much faster than thermal equilibrium, the pressure $P$ is a single quantity throughout the gas. The molecular density adjacent to the wall is not an externally prescribed constant; it adjusts so that the same pressure acts everywhere in the vessel. The calculation below determines the relation between $P$, $T$, and the wall density $n$.
+The constraints are small: $t \le 500$, $n \le 100$, and all day values are bounded by 100. This immediately rules out any need for complex preprocessing or advanced data structures. A simple linear scan per test case is sufficient.
 
-## Physical Principles
+A subtle edge case appears when no interval contains $k$. For example, if $k = 4$ and all intervals are like $[1,2]$, $[5,6]$, then every friend is either too early or starts too late. In that case, the answer must be exactly 0, since Vika cannot stay even for a single day.
 
-The pressure on a wall equals the normal momentum transferred to that wall per unit area and per unit time.
+Another edge case is when multiple intervals contain $k$. For instance, $k = 3$, and intervals $[1,4]$, $[2,6]$, and $[3,3]$. A careless approach might pick the interval that starts closest to $k$, but that is irrelevant. The correct choice is the interval with the maximum right endpoint.
 
-Let $n$ be the molecular number density adjacent to the wall. For a Maxwellian gas of temperature $T_1$, the flux of molecules striking a unit area of wall per unit time is
+## Approaches
 
-$$\Phi_{\rm in}=n\sqrt{\frac{k_B T_1}{2\pi m}},$$
+A brute-force interpretation is to simulate Vika’s choice explicitly: for each friend, check whether $k$ lies in their interval, compute how many days she could stay if she chooses that friend, and take the maximum. This already runs in $O(n)$ per test case, since each interval is checked once.
 
-where $m$ is the molecular mass.
+There is no deeper combinatorial structure here because the decision does not depend on overlaps between intervals. Each friend is independent: either they can host Vika on day $k$ or they cannot. Once we filter valid intervals, the best choice is determined solely by the largest right endpoint.
 
-The average normal momentum carried by an incident molecule is
+A more complicated “optimization” might try sorting or sweeping, but that adds unnecessary overhead without improving complexity. The key observation is that the only constraint that matters is whether $k$ lies in $[l_i, r_i]$, and among those intervals, maximizing $r_i$ directly maximizes the stay length.
 
-$$\langle p_x\rangle_{\rm in} = \frac{\displaystyle\int_0^\infty m v_x^2 e^{-m v_x^2/(2k_B T_1)}\,dv_x} {\displaystyle\int_0^\infty v_x e^{-m v_x^2/(2k_B T_1)}\,dv_x} = \sqrt{\frac{\pi m k_B T_1}{2}}.$$
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force (check all intervals) | $O(n)$ per test case | $O(1)$ | Accepted |
+| Optimal (same idea, direct scan) | $O(n)$ per test case | $O(1)$ | Accepted |
 
-Multiplying the incident flux by the average momentum per incident molecule gives
+## Algorithm Walkthrough
 
-$$J_{\rm in} = n\sqrt{\frac{k_B T_1}{2\pi m}} \sqrt{\frac{\pi m k_B T_1}{2}} = \frac12 n k_B T_1.$$
+1. For each test case, read $n$ and $k$, which define the number of friends and Vika’s arrival day. The goal is to evaluate all intervals against this fixed reference point $k$.
+2. Initialize an answer variable as 0. This represents the best number of days Vika can stay so far. Starting from 0 naturally handles the case where no valid interval exists.
+3. Iterate over each friend’s interval $[l_i, r_i]$. For each interval, first check whether it includes day $k$, meaning $l_i \le k \le r_i$. This condition ensures Vika can actually start staying there on arrival day.
+4. If the interval is valid, compute the potential stay length as $r_i - k + 1$. This reflects staying from day $k$ until the last available day in that interval.
+5. Update the answer with the maximum of its current value and the computed stay length. This ensures we always keep the best possible choice among all valid friends.
+6. After processing all intervals, output the stored maximum value.
 
-Molecules leaving the wall have temperature $T$. Let their number density just at emission be $n_w$. Repeating the same calculation for the emitted Maxwellian gives
+### Why it works
 
-$$J_{\rm out} = \frac12 n_w k_B T.$$
+The algorithm relies on the fact that Vika never leaves a chosen friend’s interval early or late; her stay is completely determined by the interval’s right boundary once the start day $k$ is fixed. Every valid interval contributes an independent candidate answer $r_i - k + 1$, and invalid intervals contribute nothing. Since the decision space is a simple maximum over independent values, scanning all intervals preserves correctness without missing any hidden interaction.
 
-The pressure on the wall is the sum of the magnitudes of the incoming and outgoing momentum fluxes:
+## Python Solution
 
-$$P=J_{\rm in}+J_{\rm out}.$$
+```python
+import sys
+input = sys.stdin.readline
 
-A stationary wall cannot accumulate molecules. The number of molecules arriving at the wall per unit area and unit time must equal the number leaving it. Hence
+t = int(input())
+out = []
 
-$$n\sqrt{\frac{k_B T_1}{2\pi m}} = n_w\sqrt{\frac{k_B T}{2\pi m}},$$
+for _ in range(t):
+    n, k = map(int, input().split())
+    best = 0
 
-which yields
+    for _ in range(n):
+        l, r = map(int, input().split())
+        if l <= k <= r:
+            best = max(best, r - k + 1)
 
-$$n_w=n\sqrt{\frac{T_1}{T}}.$$
+    out.append(str(best))
 
-## Derivation
+print("\n".join(out))
+```
 
-Substituting
+The solution maintains a single running maximum per test case. The condition `l <= k <= r` filters only usable intervals, ensuring we never compute invalid stays. The expression `r - k + 1` correctly counts inclusive days from arrival to departure.
 
-$$n_w=n\sqrt{\frac{T_1}{T}}$$
+The output is buffered to avoid repeated I/O overhead across test cases.
 
-into the expression for the outgoing momentum flux gives
+## Worked Examples
 
-$$J_{\rm out} = \frac12 n\sqrt{\frac{T_1}{T}}\,k_B T = \frac12 n k_B\sqrt{T_1T}.$$
+### Sample 1
 
-The incoming flux remains
+Input:
 
-$$J_{\rm in} = \frac12 n k_B T_1.$$
+```
+3 3
+1 4
+2 6
+4 10
+```
 
-Hence
+We track only intervals containing day 3.
 
-$$P = \frac12 n k_B T_1 + \frac12 n k_B\sqrt{T_1T} = \frac12 n k_B\left(T_1+\sqrt{T_1T}\right).$$
+| Interval | Contains k=3 | r - k + 1 | best |
+| --- | --- | --- | --- |
+| [1,4] | yes | 2 | 2 |
+| [2,6] | yes | 4 | 4 |
+| [4,10] | no | - | 4 |
 
-At this stage $n$ is the density adjacent to the wall. Since the pressure in the closed vessel is the unique mechanical pressure, this relation may be solved for the wall density:
+The second interval gives the best outcome, allowing Vika to stay 4 days.
 
-$$n = \frac{2P} {k_B\left(T_1+\sqrt{T_1T}\right)}.$$
+This confirms that the algorithm correctly ignores irrelevant intervals and only maximizes over valid ones.
 
-For a fixed pressure $P$ and fixed gas temperature $T_1$, increasing the wall temperature decreases the wall density according to this formula. The wall density adjusts precisely so that the same pressure is maintained.
+### Sample 2
 
-The expression for $P$ derived above is therefore not a prediction that the pressure changes when $T$ changes. It is a relation between $P$ and the local density $n$. Since $n$ is not fixed independently in a closed container, one cannot compare pressures at different wall temperatures by treating $n$ as constant.
+Input:
 
-The pressure is determined by the state of the gas in the vessel, whereas the wall temperature modifies the density of the Knudsen layer adjacent to the wall.
-
-## Result
-
-The kinetic-theory calculation gives
-
-$$P = \frac12 n k_B\left(T_1+\sqrt{T_1T}\right),$$
-
-where $n$ is the molecular density adjacent to the wall.
-
-In a closed container, $n$ is not fixed when $T$ changes. Instead,
-
-$$n = \frac{2P} {k_B\left(T_1+\sqrt{T_1T}\right)}$$
-
-adjusts so that the same mechanical pressure exists throughout the vessel.
-
-Consequently, the calculation does not support the claim that the pressure is larger for $T>T_1$ or smaller for $T<T_1$. The pressure can remain the same while the near-wall density changes. From the information given in the problem, neither inequality
-
-$$P(T>T_1)>P(T<T_1)$$
-
-nor
-
-$$P(T>T_1)<P(T<T_1)$$
-
-is established.
-
-The correct conclusion from the kinetic-theory analysis is that hotter walls correspond to a lower wall-adjacent density and colder walls correspond to a higher wall-adjacent density, while the pressure itself is not determined by the wall temperature alone.
-
-## Sanity Checks
-
-When $T=T_1$,
-
-$$P = \frac12 n k_B(T_1+T_1) = n k_B T_1,$$
-
-which is the standard ideal-gas pressure.
-
-Solving for $n$ gives
-
-$$n=\frac{P}{k_B T_1},$$
-
-again reproducing the equilibrium ideal-gas relation.
-
-When $T\to0$,
-
-$$P = \frac12 n k_B T_1,$$
-
-and therefore
-
-$$n=\frac{2P}{k_B T_1}.$$
-
-The wall density is twice the equilibrium value required to maintain the same pressure.
-
-When $T\gg T_1$,
-
-$$P \sim \frac12 n k_B\sqrt{T_1T},$$
-
-so
-
-$$n \sim \frac{2P}{k_B\sqrt{T_1T}}.$$
-
-The wall density decreases as $T^{-1/2}$ while the pressure remains finite.
-
-These limiting cases are consistent with the interpretation that wall temperature changes the density in the immediate vicinity of the wall rather than directly determining the pressure of the closed vessel.
+```
+2 4
+2 3
+5 8
+```
+
+| Interval | Contains k=4 | r - k + 1 | best |
+| --- | --- | --- | --- |
+| [2,3] | no | - | 0 |
+| [5,8] | no | - | 0 |
+
+No interval includes day 4, so the answer remains 0. This validates correct handling of the “no valid friend” case.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O(n)$ per test case | Each interval is checked once for inclusion and contribution |
+| Space | $O(1)$ | Only a few integers are stored per test case |
+
+Given $n \le 100$ and $t \le 500$, the solution performs at most 50,000 interval checks, which is trivial within the time limit.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    input = sys.stdin.readline
+
+    t = int(input())
+    out = []
+
+    for _ in range(t):
+        n, k = map(int, input().split())
+        best = 0
+        for _ in range(n):
+            l, r = map(int, input().split())
+            if l <= k <= r:
+                best = max(best, r - k + 1)
+        out.append(str(best))
+
+    return "\n".join(out)
+
+# provided samples
+assert run("""3
+3 3
+1 4
+2 6
+4 10
+2 4
+2 3
+5 8
+2 4
+4 4
+1 3
+""") == "4\n0\n1"
+
+# minimum case: single friend covers k
+assert run("""1
+1 5
+5 5
+""") == "1"
+
+# no friend covers k
+assert run("""1
+2 10
+1 9
+11 20
+""") == "0"
+
+# multiple valid intervals
+assert run("""1
+3 3
+1 10
+2 5
+3 4
+""") == "8"
+
+# boundary: k equals r in best interval
+assert run("""1
+2 4
+1 4
+2 10
+""") == "1"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| single exact interval | 1 | minimal valid case |
+| no coverage | 0 | absence handling |
+| multiple candidates | 8 | correct max selection |
+| boundary at right edge | 1 | inclusive endpoint correctness |
+
+## Edge Cases
+
+When no interval includes $k$, the scan never updates the initial answer of 0. For example, with $k = 7$, intervals $[1,3]$ and $[8,10]$ are both invalid because neither satisfies $l \le k \le r$. The algorithm correctly leaves the answer at 0 and outputs it directly.
+
+When multiple intervals include $k$, only the right endpoint matters. For instance, with $k = 3$, intervals $[1,4]$, $[2,6]$, and $[3,3]$, the algorithm evaluates candidate values $2$, $4$, and $1$. The maximum is 4, coming from $[2,6]$. The selection process never depends on how far left an interval starts, only on how far right it extends from $k$.

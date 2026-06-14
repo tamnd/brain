@@ -1,7 +1,7 @@
 ---
 title: "CF 1533D - String Searching"
-description: "Consider a closed container of fixed volume $V$ containing an ideal gas whose bulk temperature is $T1$. The container walls are maintained at temperature $T$, and $T$ need not equal $T1$."
-date: "2026-06-10T16:19:44+07:00"
+description: "We are given a fixed collection of strings, all of the same length, and we are asked to answer many queries about a slightly longer string. Each stored string has length $m$. Each query string has length $m+1$."
+date: "2026-06-14T18:34:48+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "hashing"]
 categories: ["algorithms"]
 codeforces_contest: 1533
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Kotlin Heroes: Episode 7"
 rating: 0
 weight: 1533
-solve_time_s: 140
-verified: false
+solve_time_s: 211
+verified: true
 draft: false
 ---
 
@@ -18,140 +18,226 @@ draft: false
 
 **Rating:** -  
 **Tags:** *special, hashing  
-**Solve time:** 2m 20s  
-**Verified:** no  
+**Solve time:** 3m 31s  
+**Verified:** yes  
 
 ## Solution
-## Setup and Assumptions
+## Problem Understanding
 
-Consider a closed container of fixed volume $V$ containing an ideal gas whose bulk temperature is $T_1$. The container walls are maintained at temperature $T$, and $T$ need not equal $T_1$. The problem asks for the instantaneous pressure exerted by the gas on the walls when the gas and walls are not in thermal equilibrium.
+We are given a fixed collection of strings, all of the same length, and we are asked to answer many queries about a slightly longer string.
 
-The essential point is that molecules arriving at the wall come from the gas and have a velocity distribution corresponding to $T_1$, while molecules leaving the wall after accommodation to the wall temperature have a velocity distribution corresponding to $T$. Since pressure is the rate of momentum transfer to the wall, both temperatures enter the calculation.
+Each stored string has length $m$. Each query string has length $m+1$. For a query string $t$, we want to count how many of the original strings $s_i$ can be turned into $t$ by inserting exactly one character somewhere in $s_i$. The inserted character can go in any position, so we are effectively checking whether removing one character from $t$ can produce $s_i$.
 
-Assume complete thermal accommodation at the wall. Molecules striking the wall are characterized by temperature $T_1$, and molecules re-emitted from the wall are characterized by temperature $T$. The gas is sufficiently rarefied that kinetic-theory expressions for molecular fluxes may be used locally at the wall.
+So each query asks: among all dictionary strings of length $m$, how many are equal to some length-$m$ subsequence obtained by deleting exactly one character from the query string.
 
-Because the vessel is closed and mechanical equilibrium is established much faster than thermal equilibrium, the pressure $P$ is a single quantity throughout the gas. The molecular density adjacent to the wall is not an externally prescribed constant; it adjusts so that the same pressure acts everywhere in the vessel. The calculation below determines the relation between $P$, $T$, and the wall density $n$.
+The constraints immediately shape the solution. The number of strings and queries can both reach $10^5$, while the length of each string is at most 10. That last detail is decisive: although the input size is large, the strings are extremely short. This suggests that any solution should preprocess all strings in a way that allows constant or near-constant query time, and that exponential dependence on $m$ is acceptable since $m \le 10$.
 
-## Physical Principles
+A naive approach would compare each query against every stored string and try deleting each possible position. For each pair $(s_i, t)$, we would check whether removing one character from $t$ yields $s_i$. That costs $O(m)$ per check, and there are $nq = 10^{10}$ pairs in the worst case, which is far too large.
 
-The pressure on a wall equals the normal momentum transferred to that wall per unit area and per unit time.
+A more subtle issue appears if we try to “normalize” strings incorrectly. For example, if we precompute hashes of strings but forget that the deletion position varies, we may conflate different embeddings. Another pitfall is assuming we can match prefixes or suffixes only, but the inserted character can appear anywhere, so splitting strictly by prefix/suffix alone is insufficient unless we enumerate the split position.
 
-Let $n$ be the molecular number density adjacent to the wall. For a Maxwellian gas of temperature $T_1$, the flux of molecules striking a unit area of wall per unit time is
+Edge cases are simple but worth being explicit about. If all strings are identical, every query counts all matches depending on how many deletion positions match that string. If the query contains repeated letters, multiple deletion positions may produce identical resulting strings, and counting must avoid double counting via a set or hash frequency map.
 
-$$\Phi_{\rm in}=n\sqrt{\frac{k_B T_1}{2\pi m}},$$
+## Approaches
 
-where $m$ is the molecular mass.
+The brute force solution iterates over every string and, for each query, tries removing each position from the query string to form a candidate string, then checks if that candidate exists in a set of input strings. Since each query has $m+1$ possible deletions and each check is $O(1)$ average using a hash set, this reduces query cost to $O(m)$. However, this ignores multiplicity across different ways of matching a single stored string, and more importantly it still requires careful counting per string, which becomes inefficient if implemented naively per pair.
 
-The average normal momentum carried by an incident molecule is
+The key insight is to reverse the perspective. Instead of asking whether each stored string can match a query, we precompute all “nearby superstrings” of stored strings. For every stored string $s$, we consider all possible ways of inserting one character into it. That produces a set of length $m+1$ strings, but explicitly enumerating all 26 choices per position would be too large.
 
-$$\langle p_x\rangle_{\rm in} = \frac{\displaystyle\int_0^\infty m v_x^2 e^{-m v_x^2/(2k_B T_1)}\,dv_x} {\displaystyle\int_0^\infty v_x e^{-m v_x^2/(2k_B T_1)}\,dv_x} = \sqrt{\frac{\pi m k_B T_1}{2}}.$$
+Instead, we observe a cleaner symmetry: a query matches a stored string if and only if removing exactly one position from the query yields the stored string. Therefore, we can preprocess all stored strings in a hash set. Then, for each query, we generate all $m+1$ candidates obtained by deleting one character, and count how many of these candidates exist in the set.
 
-Multiplying the incident flux by the average momentum per incident molecule gives
+Since $m \le 10$, each query requires only up to 11 substring checks, which is constant time. We just need to ensure duplicates are not counted twice when different deletions produce the same resulting string (which happens when the query has repeated characters). A local set per query solves this.
 
-$$J_{\rm in} = n\sqrt{\frac{k_B T_1}{2\pi m}} \sqrt{\frac{\pi m k_B T_1}{2}} = \frac12 n k_B T_1.$$
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute Force Pairwise | $O(nqm)$ | $O(n)$ | Too slow |
+| Deletion Enumeration + Hash Set | $O(nm + qm)$ | $O(n)$ | Accepted |
 
-Molecules leaving the wall have temperature $T$. Let their number density just at emission be $n_w$. Repeating the same calculation for the emitted Maxwellian gives
+## Algorithm Walkthrough
 
-$$J_{\rm out} = \frac12 n_w k_B T.$$
+1. Read all stored strings and insert them into a hash set.
 
-The pressure on the wall is the sum of the magnitudes of the incoming and outgoing momentum fluxes:
+This allows constant-time membership checks when comparing against generated candidates.
+2. For each query string $t$, initialize an empty local set to track which candidate results have already been counted.
 
-$$P=J_{\rm in}+J_{\rm out}.$$
+This prevents double counting when two different deletion positions produce the same string.
+3. Iterate over every index $i$ in the query string from $0$ to $m$.
 
-A stationary wall cannot accumulate molecules. The number of molecules arriving at the wall per unit area and unit time must equal the number leaving it. Hence
+For each index, construct a candidate string by removing $t[i]$.
 
-$$n\sqrt{\frac{k_B T_1}{2\pi m}} = n_w\sqrt{\frac{k_B T}{2\pi m}},$$
+This corresponds to testing the inverse of the allowed operation.
+4. If this candidate string exists in the stored set and has not been counted yet for this query, increment the answer and mark it as seen.
+5. Output the final count for the query.
 
-which yields
+### Why it works
 
-$$n_w=n\sqrt{\frac{T_1}{T}}.$$
+Each stored string $s_i$ can appear in the answer for a query $t$ if and only if there exists an index in $t$ whose removal yields exactly $s_i$. The algorithm explicitly enumerates all such possibilities. Because every valid match corresponds to exactly one deletion position in at least one way, and duplicates are filtered within a query, every match is counted once and only once.
 
-## Derivation
+## Python Solution
 
-Substituting
+```python
+import sys
+input = sys.stdin.readline
 
-$$n_w=n\sqrt{\frac{T_1}{T}}$$
+def solve():
+    n, m = map(int, input().split())
+    st = set()
 
-into the expression for the outgoing momentum flux gives
+    for _ in range(n):
+        st.add(input().strip())
 
-$$J_{\rm out} = \frac12 n\sqrt{\frac{T_1}{T}}\,k_B T = \frac12 n k_B\sqrt{T_1T}.$$
+    q = int(input())
+    for _ in range(q):
+        t = input().strip()
+        seen = set()
+        ans = 0
 
-The incoming flux remains
+        for i in range(m + 1):
+            cand = t[:i] + t[i+1:]
+            if cand in st and cand not in seen:
+                seen.add(cand)
+                ans += 1
 
-$$J_{\rm in} = \frac12 n k_B T_1.$$
+        print(ans)
 
-Hence
+if __name__ == "__main__":
+    solve()
+```
 
-$$P = \frac12 n k_B T_1 + \frac12 n k_B\sqrt{T_1T} = \frac12 n k_B\left(T_1+\sqrt{T_1T}\right).$$
+The code first stores all dictionary strings in a hash set. Each query then constructs all possible length-$m$ strings formed by deleting one character. The `seen` set ensures that repeated deletions producing the same string do not inflate the answer. This is essential when the query contains repeated characters, since different deletion positions can yield identical results.
 
-At this stage $n$ is the density adjacent to the wall. Since the pressure in the closed vessel is the unique mechanical pressure, this relation may be solved for the wall density:
+The slicing operation `t[:i] + t[i+1:]` directly implements the deletion logic, and since $m \le 10$, its cost is negligible.
 
-$$n = \frac{2P} {k_B\left(T_1+\sqrt{T_1T}\right)}.$$
+## Worked Examples
 
-For a fixed pressure $P$ and fixed gas temperature $T_1$, increasing the wall temperature decreases the wall density according to this formula. The wall density adjusts precisely so that the same pressure is maintained.
+### Example 1
 
-The expression for $P$ derived above is therefore not a prediction that the pressure changes when $T$ changes. It is a relation between $P$ and the local density $n$. Since $n$ is not fixed independently in a closed container, one cannot compare pressures at different wall temperatures by treating $n$ as constant.
+Input:
 
-The pressure is determined by the state of the gas in the vessel, whereas the wall temperature modifies the density of the Knudsen layer adjacent to the wall.
-
-## Result
-
-The kinetic-theory calculation gives
-
-$$P = \frac12 n k_B\left(T_1+\sqrt{T_1T}\right),$$
-
-where $n$ is the molecular density adjacent to the wall.
-
-In a closed container, $n$ is not fixed when $T$ changes. Instead,
-
-$$n = \frac{2P} {k_B\left(T_1+\sqrt{T_1T}\right)}$$
-
-adjusts so that the same mechanical pressure exists throughout the vessel.
-
-Consequently, the calculation does not support the claim that the pressure is larger for $T>T_1$ or smaller for $T<T_1$. The pressure can remain the same while the near-wall density changes. From the information given in the problem, neither inequality
-
-$$P(T>T_1)>P(T<T_1)$$
-
-nor
-
-$$P(T>T_1)<P(T<T_1)$$
-
-is established.
-
-The correct conclusion from the kinetic-theory analysis is that hotter walls correspond to a lower wall-adjacent density and colder walls correspond to a higher wall-adjacent density, while the pressure itself is not determined by the wall temperature alone.
-
-## Sanity Checks
-
-When $T=T_1$,
-
-$$P = \frac12 n k_B(T_1+T_1) = n k_B T_1,$$
-
-which is the standard ideal-gas pressure.
-
-Solving for $n$ gives
-
-$$n=\frac{P}{k_B T_1},$$
-
-again reproducing the equilibrium ideal-gas relation.
-
-When $T\to0$,
-
-$$P = \frac12 n k_B T_1,$$
-
-and therefore
-
-$$n=\frac{2P}{k_B T_1}.$$
-
-The wall density is twice the equilibrium value required to maintain the same pressure.
-
-When $T\gg T_1$,
-
-$$P \sim \frac12 n k_B\sqrt{T_1T},$$
-
-so
-
-$$n \sim \frac{2P}{k_B\sqrt{T_1T}}.$$
-
-The wall density decreases as $T^{-1/2}$ while the pressure remains finite.
-
-These limiting cases are consistent with the interpretation that wall temperature changes the density in the immediate vicinity of the wall rather than directly determining the pressure of the closed vessel.
+```
+2 1
+a
+c
+4
+aa
+ca
+mm
+cf
+```
+
+For each query:
+
+| Query | i deleted | candidate | in set | seen before | count |
+| --- | --- | --- | --- | --- | --- |
+| aa | 0 | a | yes | no | 1 |
+| aa | 1 | a | yes | yes | 1 |
+| ca | 0 | a | yes | no | 1 |
+| ca | 1 | c | yes | no | 2 |
+| mm | 0 | m | no | - | 0 |
+| mm | 1 | m | no | - | 0 |
+| cf | 0 | f | no | - | 0 |
+| cf | 1 | c | yes | no | 1 |
+
+Outputs:
+
+```
+1
+2
+0
+1
+```
+
+This confirms that duplicate deletions do not double count the same string and that matching depends only on membership in the dictionary.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | $O(nm + qm)$ | building set is linear in input size, each query checks at most $m+1 \le 11$ deletions |
+| Space | $O(n)$ | hash set stores all input strings |
+
+The constraints allow up to $10^5$ strings and queries, but the small fixed string length makes this linear solution easily fast enough.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from sys import stdout
+    old = sys.stdout
+    sys.stdout = io.StringIO()
+    solve()
+    out = sys.stdout.getvalue()
+    sys.stdout = old
+    return out.strip()
+
+# provided sample
+assert run("""2 1
+a
+c
+4
+aa
+ca
+mm
+cf
+""") == "1\n2\n0\n1"
+
+# minimum case
+assert run("""1 1
+a
+1
+aa
+""") == "1"
+
+# all identical strings
+assert run("""3 2
+ab
+ab
+ab
+1
+aab
+""") == "1"
+
+# no matches
+assert run("""2 2
+ab
+cd
+1
+xyz
+""") == "0"
+
+# repeated letters causing duplicate deletions
+assert run("""1 2
+ab
+1
+aab
+""") == "1"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| single string | 1 | basic match |
+| duplicates in dictionary | 1 | handling identical entries |
+| no valid matches | 0 | negative case |
+| repeated letters in query | 1 | duplicate deletion handling |
+
+## Edge Cases
+
+A subtle case arises when the query contains repeated characters, such as `"aab"`. Deleting the first or second `'a'` produces the same candidate `"ab"`. Without a `seen` set, this would incorrectly count the same dictionary string multiple times.
+
+For input:
+
+```
+1 2
+ab
+1
+aab
+```
+
+The algorithm processes deletions:
+
+First deletion gives `"ab"`, which is in the set, so count becomes 1. Second deletion gives `"ab"` again, but it is already marked in `seen`, so it is ignored. Third deletion gives `"aa"`, which is not in the set. The final answer is correctly 1.
+
+This behavior guarantees correctness even when multiple deletion positions collapse into the same string.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8042 problems, 3829 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8043 problems, 3835 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8042 problems, 3829 verified.**
+**1429 contests, 8043 problems, 3835 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 758 problems, 263 verified
+## 2021 — 131 contests, 759 problems, 269 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -869,7 +869,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1530](1530/) | [Codeforces Round 733 (Div. 1 + Div. 2, based on VK Cup 2021 - Elimination (Engine))](https://codeforces.com/contest/1530) | 8 | 1/8 | Div. 1+2 | 800-3400 |
 | [1531](1531/) | [VK Cup 2021 - Квалификация (Engine)](https://codeforces.com/contest/1531) | 8 | 3/8 | Special | - |
 | [1532](1532/) | [Kotlin Heroes: Practice 7](https://codeforces.com/contest/1532) | 6 | 3/6 | Kotlin | - |
-| [1533](1533/) | [Kotlin Heroes: Episode 7](https://codeforces.com/contest/1533) | 9 | 3/9 | Kotlin | - |
+| [1533](1533/) | [Kotlin Heroes: Episode 7](https://codeforces.com/contest/1533) | 10 | 9/10 | Kotlin | - |
 | [1534](1534/) | [Codeforces LATOKEN Round 1 (Div. 1 + Div. 2)](https://codeforces.com/contest/1534) | 9 | 2/9 | Div. 1+2 | 800-3500 |
 | [1535](1535/) | [Educational Codeforces Round 110 (Rated for Div. 2)](https://codeforces.com/contest/1535) | 6 | 2/6 | Div. 2 | 800-3000 |
 | [1536](1536/) | [Codeforces Round 724 (Div. 2)](https://codeforces.com/contest/1536) | 5 | 1/5 | Div. 2 | 800-2600 |

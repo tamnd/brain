@@ -1,7 +1,7 @@
 ---
 title: "CF 1533B - Nearest Point Function"
-description: "We are given a sorted list of distinct integer positions on a number line. A function, when queried with a value y, returns the closest point from this list, meaning it selects the element with the smallest absolute distance to y."
-date: "2026-06-10T16:19:01+07:00"
+description: "We are given several test cases, each consisting of a sorted array of distinct integers. Think of these numbers as fixed points on a number line. A query point $y$ is chosen, and a function returns the closest point in the array to $y$ based on absolute distance."
+date: "2026-06-14T18:31:16+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1533
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Kotlin Heroes: Episode 7"
 rating: 0
 weight: 1533
-solve_time_s: 250
-verified: false
+solve_time_s: 252
+verified: true
 draft: false
 ---
 
@@ -18,53 +18,52 @@ draft: false
 
 **Rating:** -  
 **Tags:** *special, implementation  
-**Solve time:** 4m 10s  
-**Verified:** no  
+**Solve time:** 4m 12s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sorted list of distinct integer positions on a number line. A function, when queried with a value `y`, returns the closest point from this list, meaning it selects the element with the smallest absolute distance to `y`.
+We are given several test cases, each consisting of a sorted array of distinct integers. Think of these numbers as fixed points on a number line. A query point $y$ is chosen, and a function returns the closest point in the array to $y$ based on absolute distance.
 
-The issue appears when `y` is exactly in the middle between two consecutive points. In that case, both neighbors are equally close, so the function has no unique answer and crashes.
+The function behaves normally when there is a unique closest point. It fails only when $y$ is exactly equally distant from two different array values, because then there are two valid answers and the tie is undefined.
 
-The task is not to find such a `y` directly, but to determine whether any integer `y` exists that would cause this tie situation for a given array.
+So the task is not to simulate queries. Instead, we must determine whether there exists any integer $y$ that would land exactly in a “tie position” between two array elements.
 
-From the constraints, the total number of points across test cases is up to 200,000. This immediately rules out any quadratic approach that tries all pairs or all candidate `y` values. We need something linear per test case or linear overall.
+The input sizes are large: the total number of elements across all test cases reaches $2 \cdot 10^5$, which rules out anything quadratic per test case. Any solution that tries all candidate query points or checks all integer positions between values would be far too slow because the gaps between numbers can be up to $10^9$, making enumeration impossible.
 
-A subtle edge case arises when the array has only two elements. If the gap between them is even, there is a midpoint integer that creates a tie. For example `[1, 3]` allows `y = 2`. But `[1, 2]` does not, since the midpoint is not an integer. Similarly, larger gaps behave the same way.
-
-Another important observation is that we do not need to consider arbitrary `y`. Any crash can only occur at midpoints between adjacent elements, because the nearest point function is monotonic between sorted values and ties can only appear at boundaries between two consecutive intervals.
+A common mistake is to assume that ties could involve non-adjacent elements. For example, one might think a point could be equally close to $x_i$ and $x_j$ even if there are values in between. That cannot happen, because any intermediate point would always be closer to one of the inner values. Another subtle mistake is forgetting that $y$ must be an integer. A midpoint that is not an integer does not create a valid crash even if it is geometrically centered.
 
 ## Approaches
 
-A brute-force approach would try all integer values between the minimum and maximum array elements, and for each `y`, compute the closest point and check whether there is a tie with both neighbors. This is conceptually straightforward but completely infeasible: the range of values goes up to 10^9, so even a single test case could require billions of checks.
+The brute-force idea would be to iterate over all integer values between the minimum and maximum array elements and, for each $y$, compute the closest array point. If two points tie, we declare success. This is correct logically, but completely infeasible. The range of values can reach $10^9$, so even a single test case could require billions of checks.
 
-We can refine this by noticing that only midpoints between adjacent elements matter. For each adjacent pair `(x[i], x[i+1])`, we check whether `(x[i] + x[i+1]) / 2` is an integer and whether it lies strictly between them. If the distance gap is even, then there exists an integer exactly in the middle, which produces a tie. If any such pair exists, we can immediately answer YES.
+The key observation is that a tie can only happen in a very structured situation. For any two adjacent elements $x_i$ and $x_{i+1}$, the set of points closer to $x_i$ lies on the left side of their midpoint, and the set closer to $x_{i+1}$ lies on the right side. A tie happens exactly at the midpoint.
 
-Thus the problem reduces to scanning the array once and checking parity of differences.
+Since we only care about integer $y$, this midpoint must be an integer, which happens only when $x_i + x_{i+1}$ is even. This reduces the entire problem to checking whether any adjacent pair has an even difference.
+
+This transforms what looked like a geometric search into a simple scan over adjacent differences.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over all y | O(max(x)) per test | O(1) | Too slow |
-| Check adjacent gaps | O(n) per test | O(1) | Accepted |
+| Brute Force over all $y$ | $O(\text{range} \cdot n)$ | $O(1)$ | Too slow |
+| Check adjacent parity | $O(n)$ per test case | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the array of points and ensure it is sorted.
+We reduce the problem to checking adjacent pairs in the sorted array.
 
-The sorted property guarantees that any candidate tie must occur between adjacent elements.
-2. Iterate over every adjacent pair `(x[i], x[i+1])`.
-3. Compute the difference `d = x[i+1] - x[i]`.
-4. Check whether `d` is even.
+1. Read the array of points, which is already sorted and contains no duplicates. This ordering ensures that any candidate tie must occur between neighbors.
+2. For each adjacent pair $(x_i, x_{i+1})$, compute the difference $d = x_{i+1} - x_i$.
+3. If $d$ is even, we immediately know there exists an integer midpoint $y = \frac{x_i + x_{i+1}}{2}$. At this value, both endpoints are equally distant, which guarantees a crash.
+4. If no adjacent pair has an even difference, conclude that no integer midpoint exists anywhere in the array, so no tie is possible.
+5. Repeat this process for all test cases independently.
 
-If it is even, then `(x[i] + x[i+1]) / 2` is an integer and lies exactly in the middle.
-5. If any adjacent pair has even distance, immediately conclude that a crash is possible and stop processing further pairs.
-6. If no such pair exists, conclude that no integer midpoint exists anywhere, so no crash is possible.
+The crucial decision point is step 3, because it connects arithmetic structure directly to geometric symmetry on the number line.
 
 ### Why it works
 
-Any integer `y` that produces a tie must satisfy that two distinct points are equally close to it. Because the array is sorted, the only way this can happen is if `y` lies exactly at the midpoint between two consecutive points. Any point further away would be strictly dominated by its nearest neighbor. Therefore, the existence of a valid `y` is equivalent to the existence of at least one adjacent pair with an even gap.
+Any point $y$ is closest to a continuous region of the number line bounded by perpendicular bisectors between consecutive elements. These boundaries occur exactly at midpoints of adjacent pairs. Since the array is sorted, every region of ambiguity is defined only by neighbors, and no farther pair can compete without being dominated by intermediate points. Therefore, the existence of a valid crash point is equivalent to the existence of an integer midpoint between some adjacent pair.
 
 ## Python Solution
 
@@ -72,74 +71,66 @@ Any integer `y` that produces a tie must satisfy that two distinct points are eq
 import sys
 input = sys.stdin.readline
 
-def solve():
-    t = int(input())
-    out = []
-    for _ in range(t):
-        n = int(input())
-        x = list(map(int, input().split()))
-        
-        ok = False
-        for i in range(n - 1):
-            if (x[i + 1] - x[i]) % 2 == 0:
-                ok = True
-                break
-        
-        out.append("YES" if ok else "NO")
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    x = list(map(int, input().split()))
     
-    print("\n".join(out))
-
-if __name__ == "__main__":
-    solve()
+    ok = False
+    for i in range(n - 1):
+        if (x[i + 1] - x[i]) % 2 == 0:
+            ok = True
+            break
+    
+    print("YES" if ok else "NO")
 ```
 
-The solution loops over each test case and checks only adjacent differences. The key implementation detail is using the modulo operator on the difference rather than computing the midpoint explicitly. This avoids overflow concerns and keeps the logic clean.
+The implementation directly follows the observation that only adjacent differences matter. The loop stops early once a valid pair is found, which is important for efficiency when large arrays contain an early even gap.
 
-The early break ensures we stop as soon as we find any valid pair, which preserves linear complexity.
+A subtle detail is that we compute the difference rather than the sum. Both are equivalent for parity, but subtraction avoids any concern about large intermediate values, even though Python handles large integers safely.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+Consider the input:
 
 ```
-1
-3
-1 50 101
+6
+1 2 5 7 9 11
 ```
 
-| i | x[i] | x[i+1] | difference | even? | result state |
+| i | x[i] | x[i+1] | difference | even? | decision |
 | --- | --- | --- | --- | --- | --- |
-| 0 | 1 | 50 | 49 | no | continue |
-| 1 | 50 | 101 | 51 | no | no crash |
+| 0 | 1 | 2 | 1 | no | continue |
+| 1 | 2 | 5 | 3 | no | continue |
+| 2 | 5 | 7 | 2 | yes | crash possible |
 
-This demonstrates that not every large gap creates a valid midpoint. Only even gaps matter, not magnitude.
+At index 2, the midpoint is 6, which is exactly equidistant from 5 and 7, so the function fails.
 
-### Example 2
-
-Input:
+Now consider:
 
 ```
-1
-4
-1 3 6 10
+6
+1 2 5 8 9 12
 ```
 
-| i | x[i] | x[i+1] | difference | even? | result state |
+| i | x[i] | x[i+1] | difference | even? | decision |
 | --- | --- | --- | --- | --- | --- |
-| 0 | 1 | 3 | 2 | yes | crash detected |
+| 0 | 1 | 2 | 1 | no | continue |
+| 1 | 2 | 5 | 3 | no | continue |
+| 2 | 5 | 8 | 3 | no | continue |
+| 3 | 8 | 9 | 1 | no | continue |
+| 4 | 9 | 12 | 3 | no | continue |
 
-Here the first adjacent pair already produces a valid midpoint at `y = 2`, so we can stop immediately.
+No adjacent pair has an even gap, so no integer midpoint exists that creates ambiguity. The function never has two equally close candidates.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | each element is visited once to check adjacent gaps |
-| Space | O(1) extra | only a few variables used besides input storage |
+| Time | $O(n)$ per test case | Each array is scanned once to check adjacent differences |
+| Space | $O(1)$ | No additional data structures beyond input storage |
 
-The total input size across all test cases is 200,000, so a single linear pass over all data easily fits within time limits.
+The total input size across all test cases is bounded by $2 \cdot 10^5$, so a linear scan per test case remains comfortably within time limits.
 
 ## Test Cases
 
@@ -148,21 +139,21 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
-
+    from sys import stdin
+    input = stdin.readline
+    
     t = int(input())
-    res = []
+    out = []
     for _ in range(t):
         n = int(input())
         x = list(map(int, input().split()))
         ok = False
         for i in range(n - 1):
-            if (x[i+1] - x[i]) % 2 == 0:
+            if (x[i + 1] - x[i]) % 2 == 0:
                 ok = True
                 break
-        res.append("YES" if ok else "NO")
-    return "\n".join(res)
+        out.append("YES" if ok else "NO")
+    return "\n".join(out)
 
 # provided samples
 assert run("""7
@@ -188,42 +179,39 @@ YES
 YES
 NO"""
 
-# minimum size, even gap
+# custom cases
 assert run("""1
 2
-1 3
-""") == "YES"
+10 14
+""") == "YES", "even gap midpoint exists"
 
-# minimum size, odd gap
 assert run("""1
 2
-1 2
-""") == "NO"
+10 13
+""") == "NO", "odd gap no integer midpoint"
 
-# all consecutive even gaps
-assert run("""1
-4
-1 3 5 7
-""") == "YES"
-
-# large values boundary
 assert run("""1
 3
-1 1000000000 2000000000
-""") == "NO"
+1 4 7
+""") == "NO", "all gaps odd"
+
+assert run("""1
+3
+1 4 6
+""") == "YES", "one even gap"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `[1,3]` | YES | smallest valid midpoint |
-| `[1,2]` | NO | no integer midpoint exists |
-| `[1,3,5,7]` | YES | multiple candidates, early detection |
-| large spaced values | NO | boundary correctness |
+| 10 14 | YES | basic even gap detection |
+| 10 13 | NO | odd gap rejects correctly |
+| 1 4 7 | NO | multiple odd gaps |
+| 1 4 6 | YES | mixed gaps, one valid is enough |
 
 ## Edge Cases
 
-The two-element array case is the most sensitive. For input `[1, 3]`, the algorithm computes a single difference `2`, which is even, so it immediately returns YES. The midpoint `2` is valid and lies strictly between both endpoints, confirming the crash condition.
+For arrays of size two, the entire decision collapses to a single parity check. If the two values differ by an odd number, no integer lies exactly halfway, so no crash is possible. If the difference is even, the midpoint is an integer and always triggers ambiguity.
 
-For `[1, 2]`, the difference is `1`, which is odd, so no midpoint exists in integers. The loop finishes and returns NO, correctly handling the minimal configuration.
+For large sparse arrays, the same logic still holds because intermediate points do not influence adjacency-based Voronoi boundaries. Even if values are far apart, only the parity of the distance matters, not the magnitude.
 
-Another subtle case is when multiple adjacent gaps exist. In `[1, 2, 5, 8]`, the first gap `1` is ignored, the second gap `3` is ignored, but the third gap `3` is also ignored. The algorithm only needs a single even gap, so absence across all pairs correctly leads to NO.
+For sequences with uniform spacing like arithmetic progressions, the answer depends entirely on the step size. If the step is even, every adjacent pair generates a valid midpoint, producing a crash. If the step is odd, no midpoint is an integer and the function remains safe throughout.
