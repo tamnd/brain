@@ -1,7 +1,7 @@
 ---
 title: "CF 1538F - Interesting Function"
-description: "The problem asks us to repeatedly increment a number $l$ until it reaches another number $r$, and to count how many digits actually change with each addition. The “changed digits” always form a contiguous suffix of the number."
-date: "2026-06-10T14:58:39+07:00"
+description: "We are effectively watching a number grow from l to r by repeatedly adding one, and we want to measure how “violent” each increment is in terms of decimal digit changes."
+date: "2026-06-14T18:58:24+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "dp", "math", "number-theory"]
 categories: ["algorithms"]
 codeforces_contest: 1538
@@ -9,8 +9,8 @@ codeforces_index: "F"
 codeforces_contest_name: "Codeforces Round 725 (Div. 3)"
 rating: 1500
 weight: 1538
-solve_time_s: 364
-verified: false
+solve_time_s: 74
+verified: true
 draft: false
 ---
 
@@ -18,41 +18,58 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** binary search, dp, math, number theory  
-**Solve time:** 6m 4s  
-**Verified:** no  
+**Solve time:** 1m 14s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-The problem asks us to repeatedly increment a number $l$ until it reaches another number $r$, and to count how many digits actually change with each addition. The “changed digits” always form a contiguous suffix of the number. For example, going from 9 to 10 changes both digits, and from 489999 to 490000 changes the last five digits. We are not counting individual operations or iterations directly but the cumulative number of digits that flip over all increments from $l$ to $r$.
+We are effectively watching a number grow from `l` to `r` by repeatedly adding one, and we want to measure how “violent” each increment is in terms of decimal digit changes.
 
-The input consists of multiple test cases, each providing two integers $l$ and $r$ where $1 \le l < r \le 10^9$. The number of test cases $t$ can be up to 10,000. A naive solution that simulates each addition one by one will clearly exceed the time limit, because the difference $r-l$ can be up to $10^9$, which is far beyond any algorithm that operates in $O(r-l)$ per test case.
+When a number increases by one, only a suffix of its decimal representation changes because the carry propagates from the least significant digit upward until it hits a digit that is not `9`. Every digit in that carry chain is rewritten, and everything to the left stays untouched.
 
-Edge cases that can trip up a naive approach include ranges that cross digit boundaries. For instance, moving from 9 to 10 or from 99 to 100 causes multiple digits to change at once. A careless implementation might only count the last digit change or assume that each increment changes exactly one digit, which would produce incorrect totals in such cases.
+For each step `x → x+1`, we count how many digits differ between the two representations. The task is to sum this value over all integers from `l` up to `r-1`.
+
+A useful way to think about this is that each increment contributes `1 + (number of trailing 9s in x)`. The `+1` corresponds to the digit that increases when the carry stops, and the trailing `9`s are exactly the digits overwritten to `0`.
+
+The constraints allow up to `10^4` test cases and values up to `10^9`. That immediately rules out iterating from `l` to `r` for each query, since the worst case span is `10^9`, and even a linear scan per test case would be far beyond the time limit.
+
+A subtle edge case is when numbers contain long runs of `9`s. For example, `489999 → 490000` changes five digits, not four, because the carry affects the first non-nine digit as well as all trailing nines. Any solution that only counts trailing `9`s without the extra digit will undercount.
+
+Another failure mode comes from trying to simulate addition digit by digit. Even though each increment is O(number of digits), doing it `r-l` times is still far too slow in worst cases like `1 → 10^9`.
 
 ## Approaches
 
-The brute-force approach is conceptually simple: start from $l$, increment by one each time, convert the number to a string, compare with the previous number, and count how many digits differ at the end. While this works for small ranges, its worst-case complexity is $O(r-l)$, which is infeasible for $r-l$ up to $10^9$. Memory is negligible since we only need to hold two numbers at a time, but time complexity rules this out.
+The brute-force method directly simulates every increment and counts digit differences. Each increment takes O(log10 n), and there are `r - l` increments, leading to O((r - l) log n) per test case. With differences up to `10^9`, this is infeasible.
 
-The key insight comes from observing that the number of changed digits depends on which "power-of-ten boundary" the current number is approaching. If we look at numbers as sequences of digits, each time a suffix of digits flips from all 9s to 0s (or a smaller number increases), that many digits will change. Therefore, instead of iterating through every number, we can iterate through powers of ten: compute the next number where a digit flip will extend the suffix, calculate how many increments occur until that point, multiply by the number of digits that change, and move to the next threshold. This transforms an $O(r-l)$ simulation into a simple digit-based calculation, which runs in $O(\log r)$ per test case.
+The key observation is that the cost of each increment depends only on the structure of trailing nines in the current number. Instead of processing every number individually, we can count how many numbers in a range have at least `k` trailing nines.
+
+This reframes the problem: instead of summing per step, we sum per digit position. A number contributes `1` for every time it is incremented, and it contributes an extra `1` for each power-of-ten boundary it crosses due to carry propagation. Those carry chains align exactly with divisibility patterns of `10^k`.
+
+This leads to a closed-form prefix computation where we can compute contributions in O(log10 n) per query.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(r-l) | O(1) | Too slow |
-| Optimal | O(log r) | O(1) | Accepted |
+| Brute Force | O((r-l) log n) | O(1) | Too slow |
+| Optimal (digit contribution counting) | O(log n) per query | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize a variable `res` to zero, which will accumulate the total changed digits.
-2. Loop while $l < r$. In each iteration, determine the highest power of ten `ten` such that the next multiple of `ten` is greater than `l`. Concretely, find `ten = 10^k` where $k$ is the number of digits in `l`.
-3. Calculate the next threshold `next_l` as the minimum between `r` and the next multiple of `ten`. This is the number at which the suffix of changed digits extends by one position.
-4. The number of increments until `next_l` is `delta = next_l - l`.
-5. Determine how many digits will change for each of these increments, which is the number of digits in `l` (or equivalently `len(str(l))`).
-6. Add `delta * digits_changed` to `res`.
-7. Set `l = next_l` and repeat.
-8. After exiting the loop, output `res`.
+We define a prefix function `F(x)` as the total cost of all increments from `0` to `x-1`. The answer for a query is `F(r) - F(l)`.
 
-Why it works: Each iteration jumps to the next number where a change in the length of the suffix occurs, capturing all changes in one calculation. The invariant is that `res` always correctly accounts for all digit changes up to the current `l`, and `l` strictly increases toward `r`. Since every possible increment is covered exactly once, the sum is guaranteed correct.
+1. First separate the cost of each increment into two parts: a base cost of `1`, and an extra cost equal to the number of trailing `9`s in the number being incremented. The base cost accounts for the single digit that always changes when adding one, while the trailing nines account for cascading carries.
+2. The total base cost over the range `[0, x-1]` is simply `x`, since there are exactly `x` increments.
+3. We now focus on summing the number of trailing `9`s over all integers from `0` to `x-1`. Instead of reasoning directly about trailing nines, we shift perspective: a number has at least one trailing `9` exactly when `(i + 1)` is divisible by `10`, at least two trailing `9`s when `(i + 1)` is divisible by `100`, and so on.
+
+This is the crucial transformation: trailing nines in `i` correspond to trailing zeros in `i + 1`.
+4. For each power `10^k`, count how many numbers in `1..x` are divisible by `10^k`. That count is `floor(x / 10^k)`. Each such number contributes one unit to the trailing-nines sum for that level.
+5. Sum these contributions over all `k ≥ 1` until `10^k > x`. This gives the total number of trailing nines across the whole range.
+6. Combine both parts: `F(x) = x + sum_{k≥1} floor(x / 10^k)`.
+7. Finally, compute the answer as `F(r) - F(l)`.
+
+### Why it works
+
+The correctness hinges on a one-to-one mapping between carry length during `+1` operations and divisibility of `(i+1)` by powers of ten. Each factor of 10 in `(i+1)` corresponds exactly to one digit being forced to change from `9 → 0` during the increment. Summing over all numbers, each divisor count contributes independently, so we can aggregate contributions by powers of ten without overlap or omission.
 
 ## Python Solution
 
@@ -60,97 +77,49 @@ Why it works: Each iteration jumps to the next number where a change in the leng
 import sys
 input = sys.stdin.readline
 
+def F(x: int) -> int:
+    res = x
+    p = 10
+    while p <= x:
+        res += x // p
+        p *= 10
+    return res
+
 t = int(input())
+out = []
+
 for _ in range(t):
     l, r = map(int, input().split())
-    res = 0
-    while l < r:
-        digits = len(str(l))
-        ten = 10 ** (digits - 1)
-        next_l = min(r, ((l // ten) + 1) * ten)
-        delta = next_l - l
-        res += delta * digits
-        l = next_l
-    print(res)
+    out.append(str(F(r) - F(l)))
+
+print("\n".join(out))
 ```
 
-The code starts by reading the number of test cases. For each test case, it initializes the result accumulator. The while loop handles increments in bulk rather than individually. `digits` is calculated from the string length of `l` to handle all numbers with different digit counts uniformly. `ten` computes the current digit position threshold, `next_l` limits the jump to either the next power-of-ten boundary or `r`. Multiplying `delta` by `digits` gives the total changed digits for this segment. The algorithm is careful with boundaries, ensuring that it never overshoots `r`.
+The implementation mirrors the prefix formula directly. The loop over powers of ten accumulates contributions from all carry levels. The subtraction `F(r) - F(l)` is valid because `F` counts contributions over `[0, x-1]`.
+
+A common mistake is to forget that the base term `x` already accounts for the single-digit change per increment. Another is to start powers of ten from `1` instead of `10`, which would incorrectly count every number as having a trailing zero digit.
 
 ## Worked Examples
 
-Trace for input `l = 9, r = 10`:
+### Example 1
 
-| l | digits | ten | next_l | delta | res |
-| --- | --- | --- | --- | --- | --- |
-| 9 | 1 | 1 | 10 | 1 | 1*1=1 |
-| 10 | 2 | 10 | 10 | 0 | 1 |
+Input:
 
-The loop exits and prints `res=2`. This demonstrates correct handling of single-digit to double-digit transition.
+`l = 9, r = 10`
 
-Trace for input `l = 1, r = 9`:
+We compute:
 
-| l | digits | ten | next_l | delta | res |
-| --- | --- | --- | --- | --- | --- |
-| 1 | 1 | 1 | 2 | 1 | 1 |
-| 2 | 1 | 1 | 3 | 1 | 2 |
-| 3 | 1 | 1 | 4 | 1 | 3 |
-| 4 | 1 | 1 | 5 | 1 | 4 |
-| 5 | 1 | 1 | 6 | 1 | 5 |
-| 6 | 1 | 1 | 7 | 1 | 6 |
-| 7 | 1 | 1 | 8 | 1 | 7 |
-| 8 | 1 | 1 | 9 | 1 | 8 |
+`F(10) = 10 + floor(10/10) = 11`
 
-Prints `res=8`. Each increment changes exactly one digit because we never cross a power-of-ten boundary.
+`F(9) = 9`
 
-## Complexity Analysis
+| x | base x | floor(x/10) | F(x) |
+| --- | --- | --- | --- |
+| 9 | 9 | 0 | 9 |
+| 10 | 10 | 1 | 11 |
 
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(log r) per test case | Each iteration jumps to the next power-of-ten threshold, which occurs at most `log10(r)` times. |
-| Space | O(1) | We only store a few integers per test case, no additional structures proportional to input size. |
+Answer is `11 - 9 = 2`.
 
-With up to 10^4 test cases and `r` up to 10^9, the total operations are comfortably within 2 seconds.
+This matches the single transition `9 → 10`, where two digits change.
 
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-    t = int(input())
-    for _ in range(t):
-        l, r = map(int, input().split())
-        res = 0
-        while l < r:
-            digits = len(str(l))
-            ten = 10 ** (digits - 1)
-            next_l = min(r, ((l // ten) + 1) * ten)
-            delta = next_l - l
-            res += delta * digits
-            l = next_l
-        print(res)
-    return out.getvalue().strip()
-
-# provided samples
-assert run("4\n1 9\n9 10\n10 20\n1 1000000000\n") == "8\n2\n11\n1111111110", "sample 1"
-
-# custom cases
-assert run("1\n99 101\n") == "5", "crossing two-digit to three-digit boundary"
-assert run("1\n123 130\n") == "14", "mid-three-digit number"
-assert run("1\n1 1\n") == "0", "l equals r"
-assert run("1\n999999999 1000000000\n") == "10", "large number crossing 10^9"
-```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| 99 101 | 5 | Correct handling across digit boundary 2→3 digits |
-| 123 130 | 14 | Incrementing within same number of digits |
-| 1 1 | 0 | No increments needed |
-| 999999999 1000000000 | 10 | Handling largest numbers and digit increase correctly |
-
-## Edge Cases
-
-For `l = 999999999, r = 1000000000`, the algorithm correctly computes `digits=9` initially, jumps `delta=1` to `next_l=1000000000`, adds `9
+##

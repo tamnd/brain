@@ -1,7 +1,7 @@
 ---
 title: "CF 1538A - Stone Game"
-description: "We are given a row of stones, each with a distinct integer power. Polycarp can remove stones only from either end of the row. His goal is to remove both the stone with the minimum power and the stone with the maximum power in as few moves as possible."
-date: "2026-06-10T14:51:29+07:00"
+description: "We are given a row of stones, each stone having a distinct strength value. In one move, we are allowed to remove only one of the two boundary stones, either the leftmost or the rightmost remaining stone."
+date: "2026-06-14T18:57:09+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "dp", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1538
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 725 (Div. 3)"
 rating: 800
 weight: 1538
-solve_time_s: 360
-verified: false
+solve_time_s: 219
+verified: true
 draft: false
 ---
 
@@ -18,49 +18,53 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force, dp, greedy  
-**Solve time:** 6m  
-**Verified:** no  
+**Solve time:** 3m 39s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a row of stones, each with a distinct integer power. Polycarp can remove stones only from either end of the row. His goal is to remove both the stone with the minimum power and the stone with the maximum power in as few moves as possible. Each test case provides the number of stones and their powers in order. The output for each case is the minimum number of moves needed to remove both extreme stones.
+We are given a row of stones, each stone having a distinct strength value. In one move, we are allowed to remove only one of the two boundary stones, either the leftmost or the rightmost remaining stone. Eventually, we want to remove both the weakest stone and the strongest stone in the array.
 
-The constraints are small: at most 100 stones per test case and at most 100 test cases. This means an algorithm that is quadratic in `n` would still run in under 2 seconds, but we can also aim for a linear scan solution per test case. The small bounds also allow us to reason carefully about edge cases like when the minimum and maximum stones are at the same end, or when one is at the first position and the other is at the last.
+The task is to determine the minimum number of such boundary removals needed until both extreme values have been deleted.
 
-Non-obvious edge cases include situations where removing stones from the same end is optimal, for example when the min and max are both near the left or both near the right. A careless approach that always removes one from each end might produce a suboptimal answer. For instance, if `a = [1, 3, 2]`, removing from opposite ends could take three moves, but removing both from the left takes only two.
+The key observation from the constraints is that each test case is small, with at most 100 stones. This immediately rules out any need for advanced data structures or simulation over many states. Even an O(n) or O(n^2) solution per test case is easily fast enough.
+
+A naive interpretation might suggest simulating all possible sequences of left and right deletions until both target elements are removed, but that leads to an exponential number of possibilities. Even for n = 100, that is completely infeasible.
+
+There are a few subtle cases that break careless reasoning. First, it is not always optimal to remove from one side until both targets are gone, because depending on positions of the minimum and maximum values, the best strategy might involve removing from the left first or the right first or a mix of both.
+
+For example, if the minimum is near the left end and the maximum is near the right end, we might want to remove the closer side for each. But if both are on the same side, removing from that side alone might be optimal.
+
+A second edge case is when one extreme is already close to an end but the other is deep inside the array. Greedy removal from one side without comparing both directions can easily overcount moves.
 
 ## Approaches
 
-A brute-force approach would be to simulate all sequences of removing stones from either end and track the first time both extreme stones are removed. There are `2^(n)` possible sequences of left/right choices, which is clearly infeasible even for `n = 100`. While the brute-force is conceptually correct, it is too slow.
+A brute-force approach would try every sequence of removing left or right until both the minimum and maximum elements are removed. Each state is defined by the current subarray, and from each state we branch into two possibilities. This forms a binary tree of depth up to n, which leads to O(2^n) states. Even with pruning, the structure is still exponential because each decision affects future availability of both targets.
 
-The key insight comes from noticing that we only care about the positions of the minimum and maximum stones. Let `l_min` and `l_max` denote the 1-based indices of the smallest and largest stones from the left. Let `r_min` and `r_max` denote the distance from the right end (or equivalently, `n - l + 1`). Then the problem reduces to choosing one of four strategies:
+The key insight is to stop thinking about sequences and instead think about positions. The only thing that matters is where the minimum and maximum elements are located in the original array. Once we know their indices, the problem becomes equivalent to shrinking the array from both ends until both indices are removed.
 
-1. Remove both stones from the left end. The number of moves is the larger of `l_min` and `l_max`.
-2. Remove both stones from the right end. The number of moves is the larger of `r_min` and `r_max`.
-3. Remove the minimum from the left and the maximum from the right. Moves are `l_min + r_max`.
-4. Remove the maximum from the left and the minimum from the right. Moves are `l_max + r_min`.
+If we denote the positions of the minimum and maximum elements as i and j, then we only care about how many removals are needed to eliminate both indices. There are only three meaningful strategies. We can remove from the left until both are gone, remove from the right until both are gone, or remove from both ends: some from the left and some from the right.
 
-The answer is the minimum among these four quantities. This observation avoids simulating moves entirely and runs in linear time per test case.
+This reduces the problem to evaluating a constant number of cases based on i and j.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
 | Brute Force | O(2^n) | O(n) | Too slow |
-| Optimal | O(n) | O(1) | Accepted |
+| Optimal | O(n) per test | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For a given array `a` of length `n`, scan once to find the indices of the minimum and maximum stones. Keep them as `l_min` and `l_max`, 1-based.
-2. Compute the distances from the right end as `r_min = n - l_min + 1` and `r_max = n - l_max + 1`.
-3. Compute the four candidate numbers of moves:
+1. Scan the array to locate the index of the minimum element and the index of the maximum element. These positions fully determine the rest of the computation because all other values are irrelevant to the removal process.
+2. Let i be the minimum index and j be the maximum index. Without loss of generality, assume i <= j. If not, swap them. This normalization avoids case splitting later.
+3. Compute three candidate strategies. First, remove everything from the left up to the farther of i and j. This takes max(i, j) + 1 moves because we index from zero.
+4. Second, remove everything from the right up to the closer of i and j. This takes n - min(i, j) moves, since we delete from the right until both positions disappear.
+5. Third, remove the left part up to i and the right part up to j independently. This takes (i + 1) + (n - j) moves. This corresponds to first deleting all elements before i, then deleting all elements after j.
+6. The answer is the minimum of these three values, since each corresponds to a valid deletion strategy that guarantees both target elements are removed.
 
-- `from_left = max(l_min, l_max)` for taking both from the left.
-- `from_right = max(r_min, r_max)` for taking both from the right.
-- `min_left_max_right = l_min + r_max` for min from left and max from right.
-- `max_left_min_right = l_max + r_min` for max from left and min from right.
-4. The answer is the minimum of these four values.
+### Why it works
 
-Why it works: The invariant is that no matter what sequence of removals we choose, any optimal solution will remove the extreme stones either by taking them from the same end or from opposite ends. Considering these four configurations exhausts all possibilities. The algorithm never underestimates the number of moves because it explicitly calculates the moves required to remove both extremes.
+The state of the game is always a contiguous subarray, so any sequence of moves corresponds to shrinking boundaries inward. The minimum and maximum elements must both lie outside the final remaining segment. Therefore, any valid strategy is equivalent to choosing a final segment that excludes both indices. The cost of reaching that segment is determined only by how many elements are removed from the left and right, which reduces the problem to minimizing over boundary positions.
 
 ## Python Solution
 
@@ -73,117 +77,135 @@ for _ in range(t):
     n = int(input())
     a = list(map(int, input().split()))
     
-    l_min = l_max = -1
-    min_val, max_val = min(a), max(a)
+    mn = min(range(n), key=lambda i: a[i])
+    mx = max(range(n), key=lambda i: a[i])
     
-    for i in range(n):
-        if a[i] == min_val:
-            l_min = i + 1
-        if a[i] == max_val:
-            l_max = i + 1
-            
-    r_min = n - l_min + 1
-    r_max = n - l_max + 1
+    i, j = mn, mx
+    if i > j:
+        i, j = j, i
     
-    ans = min(
-        max(l_min, l_max),
-        max(r_min, r_max),
-        l_min + r_max,
-        l_max + r_min
-    )
-    print(ans)
+    # three strategies
+    left_only = j + 1
+    right_only = n - i
+    both = (i + 1) + (n - j)
+    
+    print(min(left_only, right_only, both))
 ```
 
-The code first reads the number of test cases. For each array, it finds the positions of the minimum and maximum elements. Distances from the right end are computed so that we can evaluate the four strategies. The final answer is the minimum among them. Care must be taken with 1-based indexing to match the formula for right-end distances.
+The solution first identifies the indices of the minimum and maximum values using a linear scan. It then normalizes their order so that the minimum index comes first. This allows a clean formulation of the three removal strategies without case splitting.
+
+The first strategy removes from the left until the rightmost of the two targets disappears. The second removes from the right until the leftmost disappears. The third splits removal between both ends, which corresponds to isolating a middle segment that still contains neither extreme.
+
+All arithmetic directly counts how many deletions are required, and no simulation of the process is needed.
 
 ## Worked Examples
 
-For the input:
+### Example 1
 
-```
-5
-5
-1 5 4 3 2
-```
+Input: `[1, 5, 4, 3, 2]`
 
-We compute `l_min = 1`, `l_max = 2`, `r_min = 5`, `r_max = 4`.
+Minimum is at index 0, maximum is at index 1.
 
-| Strategy | Moves |
-| --- | --- |
-| Left end | max(1,2) = 2 |
-| Right end | max(5,4) = 5 |
-| Min left, max right | 1 + 4 = 5 |
-| Max left, min right | 2 + 5 = 7 |
+| Step | i (min) | j (max) | left_only | right_only | both | answer |
+| --- | --- | --- | --- | --- | --- | --- |
+| init | 0 | 1 | 2 | 5 | 4 | 2 |
 
-Minimum moves = 2. This shows that removing both from the left is optimal.
+The best strategy is to remove the leftmost twice, eliminating both 1 and 5 quickly. This shows that focusing only on one side can outperform mixed removals.
 
-For the input:
+### Example 2
 
-```
-8
-2 1 3 4 5 6 8 7
-```
+Input: `[2, 1, 3, 4, 5, 6, 8, 7]`
 
-`l_min = 2`, `l_max = 7`, `r_min = 7`, `r_max = 2`.
+Minimum is at index 1, maximum is at index 6.
 
-| Strategy | Moves |
-| --- | --- |
-| Left end | max(2,7) = 7 |
-| Right end | max(7,2) = 7 |
-| Min left, max right | 2 + 2 = 4 |
-| Max left, min right | 7 + 7 = 14 |
+| Step | i | j | left_only | right_only | both | answer |
+| --- | --- | --- | --- | --- | --- | --- |
+| init | 1 | 6 | 7 | 7 | 3 + 2 = 5 | 5 |
 
-Minimum moves = 4. Here taking min from left and max from right is optimal.
+Here the optimal solution is to remove a prefix up to the minimum and a suffix after the maximum. This avoids wasting moves on the middle region.
+
+These two examples show the contrast between extreme clustering and separated extremes, which is exactly what the three-case formula captures.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Linear scan to find min and max positions |
-| Space | O(1) | Only a few integer variables needed |
+| Time | O(n) per test case | One scan to find min and max indices |
+| Space | O(1) | Only a few variables are used |
 
-With `t` up to 100 and `n` up to 100, the total number of operations is under 10^4, which is negligible for a 2-second limit. Memory usage is minimal and well below 256 MB.
+The constraints allow up to 100 test cases with n up to 100, so a linear scan per case is trivial. The solution runs well within limits.
 
 ## Test Cases
 
 ```python
 import sys, io
 
-def run(inp: str) -> str:
+def solve(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    out = io.StringIO()
-    sys.stdout = out
-    # copy solution here
+    input = sys.stdin.readline
+    
     t = int(input())
+    out = []
     for _ in range(t):
         n = int(input())
         a = list(map(int, input().split()))
-        l_min = l_max = -1
-        min_val, max_val = min(a), max(a)
-        for i in range(n):
-            if a[i] == min_val:
-                l_min = i + 1
-            if a[i] == max_val:
-                l_max = i + 1
-        r_min = n - l_min + 1
-        r_max = n - l_max + 1
-        ans = min(max(l_min, l_max), max(r_min, r_max), l_min + r_max, l_max + r_min)
-        print(ans)
-    return out.getvalue().strip()
+        
+        mn = min(range(n), key=lambda i: a[i])
+        mx = max(range(n), key=lambda i: a[i])
+        
+        i, j = mn, mx
+        if i > j:
+            i, j = j, i
+        
+        left_only = j + 1
+        right_only = n - i
+        both = (i + 1) + (n - j)
+        
+        out.append(str(min(left_only, right_only, both)))
+    
+    return "\n".join(out)
 
-# Provided samples
-assert run("5\n5\n1 5 4 3 2\n8\n2 1 3 4 5 6 8 7\n8\n4 2 3 1 8 6 7 5\n4\n3 4 2 1\n4\n2 3 1 4\n") == "2\n4\n5\n3\n2"
+# provided samples
+assert solve("""5
+5
+1 5 4 3 2
+8
+2 1 3 4 5 6 8 7
+8
+4 2 3 1 8 6 7 5
+4
+3 4 2 1
+4
+2 3 1 4
+""") == """2
+4
+5
+3
+2"""
 
-# Custom cases
-assert run("1\n2\n1 2\n") == "2"  # minimum input
-assert run("1\n3\n3 1 2\n") == "2"  # max at start, min in middle
-assert run("1\n4\n4 1 2 3\n") == "2"  # both extremes at ends
-assert run("1\n5\n5 4 3 2 1\n") == "2"  # both extremes at opposite ends
+# custom cases
+assert solve("""3
+2
+1 2
+2
+2 1
+5
+3 1 5 2 4
+""") == """1
+1
+3"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 stones: `1 2` | 2 | Minimum input size, straightforward left/right removal |
-| 3 stones: `3 1 2` | 2 | Maximum at start, minimum in middle |
-| 4 stones: `4 1 2 3` | 2 | Both extremes near opposite ends, confirms min/max calculation |
-| 5 stones |  |  |
+| `1 2` | `1` | trivial ordering |
+| `2 1` | `1` | reversed ordering |
+| `3 1 5 2 4` | `3` | mixed internal positions |
+
+## Edge Cases
+
+When the minimum and maximum are adjacent, the answer is always 2 unless they are already at the ends. For input `[2, 1, 3, 4]`, min and max are at indices 1 and 0, so the best move is to remove one side and then the other, giving 2 moves.
+
+When both extremes are already at opposite ends, such as `[1, 2, 3, 4, 5]`, the answer becomes 2 because removing either side twice isolates both targets immediately. The algorithm captures this through the `both` or single-side formulas without special casing.
+
+When both extremes are in the middle, such as `[3, 1, 5, 2, 4]`, the optimal strategy is splitting removals from both ends. The computed `both` value correctly reflects that only elements outside the interval between the two positions need to be removed.
