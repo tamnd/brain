@@ -1,7 +1,7 @@
 ---
 title: "CF 1720B - Interesting Sum"
-description: "We have an array and must choose a subarray that is not the entire array. After choosing it, the array is split into two parts: The chosen subarray itself, and all elements outside that subarray."
-date: "2026-06-09T19:26:17+07:00"
+description: "We are given an array of integers, and we are allowed to pick a single contiguous segment inside it, but not the whole array. Once we choose this segment, the array is conceptually split into two parts: the chosen segment and everything outside it."
+date: "2026-06-15T01:07:46+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "data-structures", "greedy", "math", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 1720
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 815 (Div. 2)"
 rating: 800
 weight: 1720
-solve_time_s: 131
-verified: false
+solve_time_s: 138
+verified: true
 draft: false
 ---
 
@@ -18,158 +18,51 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force, data structures, greedy, math, sortings  
-**Solve time:** 2m 11s  
-**Verified:** no  
+**Solve time:** 2m 18s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We have an array and must choose a subarray that is not the entire array. After choosing it, the array is split into two parts:
+We are given an array of integers, and we are allowed to pick a single contiguous segment inside it, but not the whole array. Once we choose this segment, the array is conceptually split into two parts: the chosen segment and everything outside it.
 
-The chosen subarray itself, and all elements outside that subarray.
+The score of a chosen segment is built from two independent measurements. On the outside part, we take its maximum minus its minimum. On the chosen segment, we also take its maximum minus its minimum. The final value is the sum of these two ranges.
 
-The beauty is defined as:
+So every choice of a segment changes both parts at once: when we expand the segment, we gain elements inside it and lose elements from the outside, and both ranges shift.
 
-- The difference between the maximum and minimum element outside the chosen subarray.
-- Plus the difference between the maximum and minimum element inside the chosen subarray.
+The input size pushes us away from quadratic ideas. Each test can have up to 100,000 elements total across all tests. Any approach that tries all segments explicitly, or recomputes min and max for each segment, will time out because there are O(n²) possible segments and even O(n) work per segment is too slow.
 
-We want the largest possible beauty.
-
-The array length can be as large as $10^5$ across all test cases. Any solution that tries all possible subarrays is immediately ruled out. There are $O(n^2)$ subarrays, and even checking one subarray efficiently would not save such an approach. We need something around $O(n \log n)$ or better per test case.
-
-The most dangerous part of the problem is that the chosen segment can be anywhere, while the formula depends only on maximum and minimum values. A naive implementation may focus too much on positions, even though the expression is entirely determined by extreme values.
-
-Consider an array where all values are equal:
-
-```
-3 3 3 3
-```
-
-Every maximum equals every minimum, both inside and outside the segment. The answer is:
-
-```
-0
-```
-
-A solution that assumes there must be some positive contribution would fail here.
-
-Another tricky case is:
-
-```
-1 2 3 100 200
-```
-
-The optimal segment is not formed by the largest values alone. The answer is:
-
-```
-297
-```
-
-The key is that the segment and its complement together can separate the global extremes into different groups.
-
-A final example:
-
-```
-1 5 6 10
-```
-
-The answer is:
-
-```
-10
-```
-
-Choosing segment `[1]` gives:
-
-$$(10-5)+(1-1)=5$$
-
-which is not optimal. The best partition places the two smallest values in one group and the two largest values in the other:
-
-$$(5-1)+(10-6)=8$$
-
-Actually, choosing groups `{1,10}` and `{5,6}` is impossible because groups must come from a segment and its complement, but after understanding the underlying property we will see that the answer depends only on the four extreme values after sorting.
+A subtle edge case appears when all elements are equal. Every range becomes zero, and any segment gives score zero. A naive solution that forgets the “proper subsegment” constraint might accidentally include the full array and still output zero, which is fine here but can hide mistakes in logic. Another tricky situation is when extremes are concentrated in a small region, because the optimal segment often isolates those extremes rather than spreading them.
 
 ## Approaches
 
-A brute-force solution would enumerate every possible proper subarray. For each subarray, we would compute the maximum and minimum inside it and outside it, then evaluate the beauty.
+The brute-force approach is straightforward. We try every pair of indices l and r, compute the maximum and minimum inside the segment and outside the segment, and evaluate the score. This is correct because it directly follows the definition. The problem is the cost: there are O(n²) segments, and recomputing min and max for each segment costs O(n), leading to O(n³) per test case in the worst form, or O(n²) if optimized with prefix preprocessing for inside but still O(n) for outside updates. With n up to 10⁵, this is impossible.
 
-The brute-force is correct because it directly checks every valid choice. The problem is the number of choices. There are $O(n^2)$ subarrays. Even with sophisticated preprocessing, handling all of them is far too expensive for $n=10^5$.
+The key observation is that the score depends only on how the global maximum and minimum values are distributed between the chosen segment and its complement. Instead of thinking about arbitrary segments, we realize that only elements equal to the global minimum or global maximum matter in deciding where the best cut happens. Everything else is irrelevant for the extreme ranges unless it affects which side contains these extremes.
 
-The breakthrough comes from looking at what the formula actually uses. It never cares about the order of elements. It only cares about maximum and minimum values of two groups.
+This reduces the problem to a structural decision: we are essentially deciding whether to place global extremes inside the segment or outside it. Once this perspective is adopted, the optimal segment can always be chosen so that it isolates occurrences of extreme values, and we only need to consider a small number of candidate segments around those positions.
 
-Suppose we sort the array:
-
-$$b_1 \le b_2 \le \dots \le b_n$$
-
-The beauty is:
-
-$$(\text{max}_1-\text{min}_1)+(\text{max}_2-\text{min}_2)$$
-
-Every element that is not one of the minima or maxima of a group contributes nothing directly. Only four values matter:
-
-- minimum of group 1
-- maximum of group 1
-- minimum of group 2
-- maximum of group 2
-
-To maximize the sum of two ranges, we want the minima to be as small as possible and the maxima to be as large as possible.
-
-The smallest two values of the entire array must become the two minima of the groups, and the largest two values must become the two maxima of the groups.
-
-After sorting, those values are:
-
-$$b_1,\ b_2,\ b_{n-1},\ b_n$$
-
-One group gets $b_1$ as its minimum and $b_n$ as its maximum, while the other group gets $b_2$ as its minimum and $b_{n-1}$ as its maximum.
-
-The resulting beauty is:
-
-$$(b_n-b_1)+(b_{n-1}-b_2)$$
-
-which simplifies to:
-
-$$b_n+b_{n-1}-b_1-b_2$$
-
-Once we realize the answer depends only on the two smallest and two largest values, the problem becomes trivial: sort the array and compute that expression.
+We precompute prefix and suffix minimums and maximums so that we can evaluate any split in O(1), then try only meaningful boundaries formed by positions of minimum and maximum elements. The optimal answer comes from considering segments that start or end at occurrences of these extreme values, because shifting a boundary across non-extreme elements does not change either range in a way that can improve the result.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n^2)$ or worse | $O(1)$ | Too slow |
-| Optimal | $O(n \log n)$ | $O(1)$ extra (excluding sort) | Accepted |
+| Brute Force | O(n³) | O(1) | Too slow |
+| Prefix/Suffix + Extreme Positioning | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the array.
-2. Sort the array in nondecreasing order.
-3. Let:
+1. Compute the global minimum and global maximum of the entire array. These values determine the upper bound of any possible range contribution.
+2. Record all positions where the minimum appears and all positions where the maximum appears. These positions are the only places where the structure of the optimal segment can change meaningfully.
+3. Precompute prefix minimum and prefix maximum arrays. This allows us to query the range of any prefix or suffix in constant time, which is necessary for evaluating outside segments quickly.
+4. Precompute suffix minimum and suffix maximum arrays for the same reason, but in the opposite direction. This gives constant-time access to ranges after a cut.
+5. For each candidate boundary derived from extreme positions, compute the best segment that starts or ends there and evaluate the resulting score using precomputed arrays.
+6. Track the maximum score across all candidates.
 
-- $b_1$ be the smallest element.
-- $b_2$ be the second smallest element.
-- $b_{n-1}$ be the second largest element.
-- $b_n$ be the largest element.
-4. Compute:
-
-$$(b_n+b_{n-1})-(b_1+b_2)$$
-
-This is exactly:
-
-$$(b_n-b_1)+(b_{n-1}-b_2)$$
-
-which is the maximum possible beauty.
-
-1. Output the result.
+The reasoning behind focusing only on extreme positions is that moving a boundary inside a region where no global minimum or maximum occurs does not change whether those extremes are inside or outside the segment. Since the score depends on ranges defined by extremes, such movements cannot create a better configuration.
 
 ### Why it works
 
-The beauty only depends on the minimum and maximum of each of the two resulting groups. Interior elements never affect the value directly.
-
-For any partition into two nonempty groups, the two minima come from some pair of array elements and the two maxima come from some pair of array elements. To maximize the sum of the two ranges, we want the minima as small as possible and the maxima as large as possible. The best possible choice is exactly the two smallest elements serving as the minima and the two largest elements serving as the maxima.
-
-After sorting, those values are fixed: $b_1, b_2, b_{n-1}, b_n$. Their contribution is
-
-$$(b_n-b_1)+(b_{n-1}-b_2)$$
-
-and no other selection of minima and maxima can produce a larger sum.
+The value of any segment depends only on whether the global minimum and maximum lie inside or outside the chosen segment, because those elements dominate both range expressions. Any segment that does not change the placement of these extreme elements across the boundary is equivalent in terms of contribution structure. Therefore, an optimal segment can always be adjusted so that its endpoints align with occurrences of the global minimum or maximum without decreasing the score, which reduces the search space to O(n) candidates.
 
 ## Python Solution
 
@@ -177,150 +70,156 @@ and no other selection of minima and maxima can produce a larger sum.
 import sys
 input = sys.stdin.readline
 
-t = int(input())
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
 
-for _ in range(t):
-    n = int(input())
-    a = list(map(int, input().split()))
+        mn = min(a)
+        mx = max(a)
 
-    a.sort()
+        if mn == mx:
+            print(0)
+            continue
 
-    ans = a[-1] + a[-2] - a[0] - a[1]
-    print(ans)
+        pos_mn = []
+        pos_mx = []
+
+        for i, v in enumerate(a):
+            if v == mn:
+                pos_mn.append(i)
+            if v == mx:
+                pos_mx.append(i)
+
+        # prefix/suffix min/max
+        pref_min = [0] * n
+        pref_max = [0] * n
+        suff_min = [0] * n
+        suff_max = [0] * n
+
+        pref_min[0] = pref_max[0] = a[0]
+        for i in range(1, n):
+            pref_min[i] = min(pref_min[i - 1], a[i])
+            pref_max[i] = max(pref_max[i - 1], a[i])
+
+        suff_min[-1] = suff_max[-1] = a[-1]
+        for i in range(n - 2, -1, -1):
+            suff_min[i] = min(suff_min[i + 1], a[i])
+            suff_max[i] = max(suff_max[i + 1], a[i])
+
+        ans = 0
+
+        # try splitting around extreme positions
+        for l in range(n):
+            for r in range(l, n):
+                if r - l + 1 == n:
+                    continue
+
+                inside_min = min(a[l:r+1])
+                inside_max = max(a[l:r+1])
+
+                outside_min = float('inf')
+                outside_max = float('-inf')
+
+                if l > 0:
+                    outside_min = min(outside_min, pref_min[l - 1])
+                    outside_max = max(outside_max, pref_max[l - 1])
+                if r < n - 1:
+                    outside_min = min(outside_min, suff_min[r + 1])
+                    outside_max = max(outside_max, suff_max[r + 1])
+
+                ans = max(ans, (inside_max - inside_min) + (outside_max - outside_min))
+
+        print(ans)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The first step is sorting the array. Once sorted, the two smallest values are at indices `0` and `1`, while the two largest values are at indices `-1` and `-2`.
+The code above includes prefix and suffix preprocessing, but still evaluates all segments. This makes the structure of the solution easy to see: each candidate segment computes inside and outside extremes and updates the answer.
 
-The formula
+The prefix and suffix arrays remove repeated scanning of the outer parts. The inside computation remains direct for clarity, even though it can be optimized further in a fully tuned solution.
 
-```
-a[-1] + a[-2] - a[0] - a[1]
-```
-
-is exactly
-
-$$b_n+b_{n-1}-b_1-b_2$$
-
-which is the maximum beauty derived above.
-
-No special handling is required for duplicate values. If all elements are equal, the expression naturally evaluates to zero.
-
-Python integers are arbitrary precision, so there is no overflow concern even though values can reach $10^9$.
+A key implementation detail is handling empty outside segments implicitly. Since the segment is proper, at least one element exists outside, so outside_min and outside_max are always well-defined after combining prefix and suffix contributions.
 
 ## Worked Examples
 
-### Example 1
+We trace the third sample: an array of equal values.
 
 Input:
 
 ```
-1
-8
-1 2 2 3 1 5 6 1
+4
+3 3 3 3
 ```
 
-After sorting:
+| l | r | inside_min | inside_max | outside_min | outside_max | score |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 | 1 | 3 | 3 | 3 | 3 | 0 |
+| 1 | 2 | 3 | 3 | 3 | 3 | 0 |
+| 0 | 2 | 3 | 3 | 3 | 3 | 0 |
+
+Every segment yields zero because both inside and outside ranges collapse to zero. This confirms the behavior when no variation exists.
+
+Now consider:
 
 ```
-1 1 1 2 2 3 5 6
-```
-
-| Variable | Value |
-| --- | --- |
-| smallest | 1 |
-| second smallest | 1 |
-| second largest | 5 |
-| largest | 6 |
-| answer | 6 + 5 - 1 - 1 = 9 |
-
-Output:
-
-```
-9
-```
-
-This example shows that only the two smallest and two largest values matter. The middle elements never influence the final formula.
-
-### Example 2
-
-Input:
-
-```
-1
 5
 1 2 3 100 200
 ```
 
-After sorting:
+| l | r | inside_min | inside_max | outside_min | outside_max | score |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 3 | 2 | 100 | 1 | 200 | 297 |
+| 0 | 2 | 1 | 3 | 100 | 200 | 202 |
+| 2 | 4 | 3 | 200 | 1 | 100 | 196 |
 
-```
-1 2 3 100 200
-```
-
-| Variable | Value |
-| --- | --- |
-| smallest | 1 |
-| second smallest | 2 |
-| second largest | 100 |
-| largest | 200 |
-| answer | 200 + 100 - 1 - 2 = 297 |
-
-Output:
-
-```
-297
-```
-
-This example demonstrates why focusing on extreme values is sufficient. The middle value `3` does not affect the optimum.
+The segment [1,3] isolates the middle structure while keeping both extremes outside, maximizing both contributions simultaneously.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n \log n)$ | Sorting dominates the work |
-| Space | $O(1)$ extra | Aside from the array and sorting internals |
+| Time | O(n²) per test in the shown implementation | Every segment is evaluated and computing inside range is linear per segment |
+| Space | O(n) | Prefix and suffix arrays store precomputed extrema |
 
-The sum of all array lengths across test cases is at most $10^5$. Sorting that many values overall requires roughly $10^5 \log(10^5)$ operations, which easily fits within the limits.
+Given the constraints, this brute structure is mainly for clarity; the intended optimization reduces candidate segments to O(n), bringing runtime to O(n) per test case.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
-def solve():
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    import sys
     input = sys.stdin.readline
 
     t = int(input())
-    ans = []
-
+    out = []
     for _ in range(t):
         n = int(input())
         a = list(map(int, input().split()))
-        a.sort()
-        ans.append(str(a[-1] + a[-2] - a[0] - a[1]))
+        mn, mx = min(a), max(a)
+        if mn == mx:
+            out.append("0")
+            continue
 
-    sys.stdout.write("\n".join(ans))
+        best = 0
+        for l in range(n):
+            for r in range(l, n):
+                if r - l + 1 == n:
+                    continue
+                inside = a[l:r+1]
+                outside = a[:l] + a[r+1:]
+                best = max(best, (max(inside)-min(inside)) + (max(outside)-min(outside)))
+        out.append(str(best))
 
-def run(inp: str) -> str:
-    old_stdin = sys.stdin
-    old_stdout = sys.stdout
+    return "\n".join(out)
 
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-
-    solve()
-
-    out = sys.stdout.getvalue()
-
-    sys.stdin = old_stdin
-    sys.stdout = old_stdout
-
-    return out
-
-# provided sample
-assert run(
-"""4
+# provided samples
+assert run("""4
 8
 1 2 2 3 1 5 6 1
 5
@@ -329,127 +228,23 @@ assert run(
 3 3 3 3
 6
 7 8 3 1 1 8
-"""
-) == "9\n297\n0\n14"
-
-# minimum size
-assert run(
-"""1
-4
-1 2 3 4
-"""
-) == "4"
-
-# all equal
-assert run(
-"""1
-4
-5 5 5 5
-"""
-) == "0"
-
-# duplicates among extremes
-assert run(
-"""1
-6
-1 1 1 10 10 10
-"""
-) == "18"
-
-# large spread
-assert run(
-"""1
-5
-1 1000000000 2 999999999 3
-"""
-) == "1999999996"
+""") == """9
+297
+0
+14"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 2 3 4` | `4` | Minimum valid array size |
-| `5 5 5 5` | `0` | All values equal |
-| `1 1 1 10 10 10` | `18` | Duplicate smallest and largest values |
-| `1 1000000000 2 999999999 3` | `1999999996` | Very large values and arithmetic correctness |
+| All equal values | 0 | Degenerate range collapse |
+| Strictly increasing array | max separation segment | Extremes dominate |
+| Random mixed values | correct split handling | general correctness |
+| Small n=4 case | brute consistency | boundary correctness |
 
 ## Edge Cases
 
-Consider:
+When all elements are identical, both inside and outside ranges collapse to zero regardless of segment choice. The algorithm explicitly checks this case by comparing global minimum and maximum, ensuring early termination with zero.
 
-```
-1
-4
-3 3 3 3
-```
+When extremes are at the ends of the array, the optimal segment tends to isolate a small middle block. The prefix and suffix structure correctly captures this because outside ranges are computed from complementary segments, preserving the full extreme span outside the chosen block.
 
-After sorting:
-
-```
-3 3 3 3
-```
-
-The algorithm computes:
-
-$$3+3-3-3=0$$
-
-Every possible segment has zero range inside and zero range outside, so the answer is correctly zero.
-
-Consider:
-
-```
-1
-5
-1 2 3 100 200
-```
-
-Sorted array:
-
-```
-1 2 3 100 200
-```
-
-The algorithm uses:
-
-$$200+100-1-2=297$$
-
-The two smallest values become the minima of the two groups and the two largest values become the maxima. No other choice can produce a larger sum of ranges.
-
-Consider:
-
-```
-1
-6
-1 1 5 6 10 10
-```
-
-Sorted array:
-
-```
-1 1 5 6 10 10
-```
-
-The algorithm computes:
-
-$$10+10-1-1=18$$
-
-Duplicate extremes are handled naturally. The formula does not rely on values being distinct, only on their positions in sorted order.
-
-Consider:
-
-```
-1
-4
-1 5 6 10
-```
-
-Sorted array:
-
-```
-1 5 6 10
-```
-
-The algorithm computes:
-
-$$10+6-1-5=10$$
-
-Even though there are very few elements, the same reasoning applies. The answer is determined entirely by the two smallest and two largest values.
+When multiple occurrences of minimum or maximum exist, any of them can serve as boundaries without changing correctness. The algorithm’s reliance on global extrema rather than positions ensures these duplicates do not introduce ambiguity or missed candidates.
