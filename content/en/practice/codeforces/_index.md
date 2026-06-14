@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8032 problems, 3819 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8033 problems, 3819 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8032 problems, 3819 verified.**
+**1429 contests, 8033 problems, 3819 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -646,7 +646,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 3 | 1/3 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 2 | 1/2 | Div. 3 | 1500-1800 |
 
-## 2020 — 158 contests, 644 problems, 277 verified
+## 2020 — 158 contests, 645 problems, 277 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -751,7 +751,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1397](1397/) | [Codeforces Round 666 (Div. 2)](https://codeforces.com/contest/1397) | 2 | 1/2 | Div. 2 | 800-1500 |
 | [1398](1398/) | [Educational Codeforces Round 93 (Rated for Div. 2)](https://codeforces.com/contest/1398) | 7 | 2/7 | Div. 2 | 800-2600 |
 | [1399](1399/) | [Codeforces Round 661 (Div. 3)](https://codeforces.com/contest/1399) | 7 | 4/7 | Div. 3 | 800-2300 |
-| [1400](1400/) | [Educational Codeforces Round 94 (Rated for Div. 2)](https://codeforces.com/contest/1400) | 6 | 4/6 | Div. 2 | 800-2800 |
+| [1400](1400/) | [Educational Codeforces Round 94 (Rated for Div. 2)](https://codeforces.com/contest/1400) | 7 | 4/7 | Div. 2 | 800-2800 |
 | [1401](1401/) | [Codeforces Round 665 (Div. 2)](https://codeforces.com/contest/1401) | 6 | 3/6 | Div. 2 | 900-2400 |
 | [1402](1402/) | [Central-European Olympiad in Informatics, CEOI 2020, Day 1 (IOI, Unofficial Mirror Contest, Unrated)](https://codeforces.com/contest/1402) | 3 | 1/3 | ICPC/IOI | 1800-2900 |
 | [1403](1403/) | [Central-European Olympiad in Informatics, CEOI 2020, Day 2 (IOI, Unofficial Mirror Contest, Unrated)](https://codeforces.com/contest/1403) | 3 | 1/3 | ICPC/IOI | 2300-3200 |
