@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8085 problems, 3862 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8086 problems, 3863 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8085 problems, 3862 verified.**
+**1429 contests, 8086 problems, 3863 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 801 problems, 296 verified
+## 2021 — 131 contests, 802 problems, 297 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -918,7 +918,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1586](1586/) | [Codeforces Round 749 (Div. 1 + Div. 2, based on Technocup 2022 Elimination Round 1)](https://codeforces.com/contest/1586) | 1 | 0/1 | Div. 1+2 | 3500-3500 |
 | [1588](1588/) | [Codeforces Round 755 (Div. 1, based on Technocup 2022 Elimination Round 2)](https://codeforces.com/contest/1588) | 1 | 1/1 | Div. 1 | 3500-3500 |
 | [1592](1592/) | [Codeforces Round 746 (Div. 2)](https://codeforces.com/contest/1592) | 7 | 3/7 | Div. 2 | 800-2800 |
-| [1593](1593/) | [Codeforces Round 748 (Div. 3)](https://codeforces.com/contest/1593) | 7 | 4/7 | Div. 3 | 800-2100 |
+| [1593](1593/) | [Codeforces Round 748 (Div. 3)](https://codeforces.com/contest/1593) | 8 | 5/8 | Div. 3 | 800-2200 |
 | [1594](1594/) | [Codeforces Round 747 (Div. 2)](https://codeforces.com/contest/1594) | 7 | 3/7 | Div. 2 | 800-2400 |
 | [1598](1598/) | [Educational Codeforces Round 115 (Rated for Div. 2)](https://codeforces.com/contest/1598) | 7 | 4/7 | Div. 2 | 800-3200 |
 | [1599](1599/) | [Bubble Cup 14 - Finals Online Mirror (Unrated, ICPC Rules, Teams Preferred, Div. 1)](https://codeforces.com/contest/1599) | 10 | 1/10 | Div. 1 | 2000-3200 |

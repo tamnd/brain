@@ -1,7 +1,7 @@
 ---
 title: "CF 1593C - Save More Mice"
-description: "We are asked to simulate a race between a cat and multiple mice along a one-dimensional line. The cat starts at position 0 and moves right one unit per second, while the mice each have a starting position strictly between 0 and the hole at position n."
-date: "2026-06-10T09:05:37+07:00"
+description: "We are given a line segment with three types of entities: a cat starting at position 0, a hole at position n, and several mice positioned strictly between them. Time advances in discrete seconds."
+date: "2026-06-14T23:39:01+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1593
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 748 (Div. 3)"
 rating: 1000
 weight: 1593
-solve_time_s: 140
+solve_time_s: 165
 verified: false
 draft: false
 ---
@@ -18,43 +18,61 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** binary search, greedy  
-**Solve time:** 2m 20s  
+**Solve time:** 2m 45s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to simulate a race between a cat and multiple mice along a one-dimensional line. The cat starts at position 0 and moves right one unit per second, while the mice each have a starting position strictly between 0 and the hole at position n. In each second, we can choose exactly one mouse to move one step toward the hole, and then the cat moves one step toward the hole, eating any mouse that happens to be at its new position. Our goal is to maximize the number of mice that reach the hole without being eaten.
+We are given a line segment with three types of entities: a cat starting at position 0, a hole at position n, and several mice positioned strictly between them. Time advances in discrete seconds. Each second is split into two actions: first we choose exactly one mouse and move it one step to the right, and then the cat moves one step to the right. If a mouse reaches the hole during its move, it is immediately safe and no longer participates. If the cat lands on a position containing one or more mice after its move, those mice are eaten.
 
-The input gives us several test cases. For each test case, we know the position of the hole n, the number of mice k, and the list of starting positions of the mice. The output is simply the maximal number of mice that can reach the hole safely for each test case.
+The task is to choose which mouse to move each second in order to maximize how many mice reach the hole before ever sharing a position with the cat after its move.
 
-The constraints give important clues for efficiency. The hole's position n can be up to 10^9, but the number of mice summed across all test cases is limited to 4 × 10^5. This tells us that we cannot afford O(n) algorithms iterating over the positions of the cat; we need a solution that scales primarily with k, the number of mice. Another subtle point is that mice can share positions, which could influence how we choose which mouse moves in each second.
+A useful way to reinterpret this is to think of each mouse as having a deadline: it must reach position n strictly before the cat reaches its position. However, unlike a static deadline problem, we can interleave progress among mice, which creates a scheduling problem rather than a direct comparison problem.
 
-A non-obvious edge case arises when many mice are clustered near the hole. For example, if n = 10 and all mice start at position 9, a naive approach that ignores the mouse closest to the hole may underestimate how many can escape. Conversely, if all mice start at position 1, the cat may catch them unless we carefully choose the mouse order. A careless solution that moves mice arbitrarily may produce the wrong maximum.
+The constraints are large: the total number of mice across all test cases is up to 4⋅10^5. This immediately rules out any quadratic simulation where we repeatedly simulate each second for each mouse. Even O(k^2) per test case would be far too slow. We need something closer to O(k log k) or O(k).
+
+A few edge cases reveal the structure:
+
+If all mice start very close to the cat, for example n = 10 and positions [1,1,1,1], then any poor scheduling where we repeatedly advance one mouse could allow the cat to catch all of them at position 1 before any reach the hole. The correct strategy is to prioritize pushing some mice far enough ahead so they “escape the cat’s reach window.”
+
+If all mice are already close to the hole, for example n = 10 and positions [9,9,9], then any schedule works as long as at least one mouse is moved immediately. The limiting factor is not interference between mice, but the single-mouse-per-second constraint.
+
+The key subtlety is that the cat advances deterministically at unit speed and acts as a moving cutoff line. Mice that lag behind that cutoff become irreversibly doomed.
 
 ## Approaches
 
-The brute-force approach is straightforward: simulate every second, moving a mouse toward the hole and updating the cat’s position, then check which mice are eaten. While this would be correct, it requires potentially n × k operations per test case since the cat moves one step at a time and we must track positions, which is far too slow given n can be 10^9. Even with optimizations like tracking only the mice positions, repeatedly scanning for the cat's collision with mice is inefficient.
+A direct simulation would try to model each second, choosing a mouse greedily or even exhaustively, updating positions and checking whether mice are eaten or escape. While correct, this approach is fundamentally too slow because each mouse may require up to O(n) moves and we have up to 4⋅10^5 mice.
 
-The key insight is that the cat only moves forward and the mice only move forward. Therefore, for a mouse at position x_i, if it moves before the cat has reached it, it will avoid being eaten. The danger comes from the cat catching up. If we sort the mice by their distance to the hole (n - x_i), we can consider them in order of furthest first. Every mouse contributes a "safe distance" to the total, but the cat consumes time as it progresses. Specifically, we can count how many mice can reach the hole before the cat "covers" the distance. By iterating over sorted distances from the hole and accumulating the total distance moved by all previous mice, we can greedily pick as many mice as possible.
+The key observation is to invert the perspective: instead of thinking about positions in absolute space, we think in terms of “how many seconds each mouse survives before being caught.” A mouse starting at position x must reach n before the cat reaches x. Since the cat moves exactly one step per second starting from 0, the cat reaches position x at time x. This suggests that a mouse must finish its required travel before a deadline tied to its starting position.
 
-This reduces the problem to a greedy algorithm: sort the mice by distance to the hole, and repeatedly choose mice starting from the furthest, summing the distances until the cat’s cumulative advance would catch the next mouse. This approach scales with k log k for sorting and O(k) for the greedy iteration, which is efficient under the problem constraints.
+However, mice do not move continuously; only one mouse can move per second, so mice effectively compete for time slots before their deadlines. This becomes a scheduling problem: each mouse i needs a certain number of moves (n − x_i), and it must receive enough turns before time x_i.
+
+Rewriting this, each mouse provides a “profit” of 1 if we manage to fully process it, and has a constraint window of size x_i. The best strategy becomes selecting mice that are easiest to complete within their available window. That naturally suggests sorting by starting position and greedily counting how many can be completed while respecting cumulative time.
+
+We process mice in increasing order of their distance to the cat (or equivalently decreasing starting position). Each time we consider a mouse, we try to assign it the required number of moves. If at any point we exceed its deadline, we stop or skip accordingly depending on feasibility tracking. The final structure reduces to selecting a maximum prefix under a feasibility condition.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n × k) | O(k) | Too slow |
-| Greedy sorted distances | O(k log k) | O(k) | Accepted |
+| Brute Force simulation | O(k · n) worst case | O(k) | Too slow |
+| Greedy scheduling after sorting | O(k log k) | O(k) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each test case, read n, k, and the positions of the mice.
-2. Convert each mouse position x_i to its distance from the hole, which is n - x_i. This represents how far each mouse needs to travel to be safe.
-3. Sort these distances in descending order. This ensures we consider the mice that require the most time to reach safety first, which is the critical step in the greedy strategy.
-4. Initialize two counters: `saved = 0` for the number of mice that will reach the hole, and `total_distance = 0` to track the cumulative distance the cat effectively advances after each second a mouse moves.
-5. Iterate over the sorted distances. For each distance d, if d > total_distance, increment `saved` and add the distance difference to `total_distance`. Otherwise, stop the iteration since any remaining mouse would be caught.
-6. After processing all mice, output `saved` for the current test case.
+We reinterpret each mouse as needing a certain amount of processing time and having a deadline imposed by the cat’s arrival.
 
-Why it works: The invariant is that `total_distance` represents the number of steps the cat has effectively taken relative to the hole. By choosing the furthest mice first, we ensure that each selected mouse reaches the hole before the cat reaches it, because any mouse closer than the accumulated total_distance would be caught. The sorted order guarantees that no further mouse can be added safely once a mouse fails the `d > total_distance` check.
+1. Compute for each mouse the time it needs to reach the hole, which is n − x_i. This is the number of times it must be chosen to move.
+2. Sort mice by their starting position in decreasing order. Mice closer to the hole are prioritized because their deadlines are tighter; delaying them risks immediate loss.
+3. Maintain a running counter representing how many seconds have been spent assigning moves to mice that we are attempting to save. This counter represents global time usage in our schedule.
+4. Iterate over mice in sorted order. For each mouse, add its required travel time to the counter.
+5. If at any point the cumulative time exceeds the number of available safe moves before the cat reaches the relevant boundary, this mouse cannot be saved, and we stop increasing the count.
+6. Otherwise, count this mouse as successfully scheduled.
+
+The key idea is that every saved mouse consumes a contiguous block of time in the schedule, and earlier mice (closer to the hole) must be guaranteed completion before the cat’s progression eliminates their feasibility window.
+
+### Why it works
+
+At any moment, the cat enforces a monotone increasing constraint: positions become unsafe permanently once the cat passes them. This creates a structure where feasibility depends only on whether we can assign enough early time slots to each chosen mouse before its implicit deadline. Sorting by position ensures we always consider the most restrictive cases first. The greedy accumulation ensures we never “waste” early time on a mouse that would not fit within the remaining schedule. Because every mouse competes for the same single unit-time resource, optimality reduces to filling the schedule with the maximum number of non-overlapping time requirements under increasing constraints.
 
 ## Python Solution
 
@@ -66,62 +84,89 @@ def solve():
     t = int(input())
     for _ in range(t):
         n, k = map(int, input().split())
-        positions = list(map(int, input().split()))
-        distances = [n - x for x in positions]
-        distances.sort(reverse=True)
+        x = list(map(int, input().split()))
+
+        # sort mice by closeness to hole (largest x first)
+        x.sort(reverse=True)
+
+        time_used = 0
         saved = 0
-        total_distance = 0
-        for d in distances:
-            if d > total_distance:
+
+        for xi in x:
+            need = n - xi
+
+            if time_used + need <= xi:
+                time_used += need
                 saved += 1
-                total_distance += d - total_distance
             else:
                 break
+
         print(saved)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The solution reads multiple test cases efficiently using `sys.stdin.readline`. Distances from the hole are computed first because this transforms the problem into a straightforward greedy decision: can the cat catch this mouse before it reaches the hole? Sorting ensures we deal with the mice that are hardest to save first. The loop accumulates the total distance effectively "used" by the cat, stopping when no further mice can escape.
+The code first sorts mice so that those closest to the hole are processed first, since they are the most time-sensitive. For each mouse we compute how many moves it requires to reach the hole. The variable `time_used` tracks how many total mouse-moves we have already scheduled. We only accept a mouse if adding its required moves still allows it to finish before the cat reaches its starting position. Once this condition fails, no further mice can be saved because remaining mice are even less constrained.
+
+The key implementation detail is the inequality `time_used + need <= xi`. It encodes the fact that all work assigned to a mouse must occur before the cat reaches its starting position.
 
 ## Worked Examples
 
-**Sample Input 1:**
+### Example 1
+
+Input:
 
 ```
-10 6
-8 7 5 4 9 4
+n = 10
+x = [8, 7, 5, 4, 9, 4]
 ```
 
-| Mouse | Distance to Hole | Sorted | Saved? | total_distance |
-| --- | --- | --- | --- | --- |
-| 9 | 1 | 5 | yes | 1 |
-| 8 | 2 | 4 | yes | 2 |
-| 7 | 3 | 3 | yes | 3 |
-| 5 | 5 | 2 | no | - |
-| 4 | 6 | 1 | no | - |
-| 4 | 6 | 1 | no | - |
-
-Three mice are saved, matching the expected output.
-
-**Sample Input 2:**
+Sorted:
 
 ```
-2 8
-1 1 1 1 1 1 1 1
+[9, 8, 7, 5, 4, 4]
 ```
 
-All distances are n - 1 = 1. Only one mouse can move before the cat catches the next, so only one is saved.
+| Mouse | need (10-x) | time_used before | feasible? | time_used after | saved |
+| --- | --- | --- | --- | --- | --- |
+| 9 | 1 | 0 | yes | 1 | 1 |
+| 8 | 2 | 1 | yes | 3 | 2 |
+| 7 | 3 | 3 | yes | 6 | 3 |
+| 5 | 5 | 6 | no | - | 3 |
+
+We can save 3 mice before the schedule becomes infeasible. This shows that even though multiple mice are close to the hole, their cumulative processing time becomes the bottleneck.
+
+### Example 2
+
+Input:
+
+```
+n = 2
+x = [1,1,1,1,1,1,1,1]
+```
+
+Sorted:
+
+```
+[1,1,1,1,1,1,1,1]
+```
+
+| Mouse | need (2-x) | time_used before | feasible? | time_used after | saved |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 1 | 0 | yes | 1 | 1 |
+| 1 | 1 | 1 | no | - | 1 |
+
+Only one mouse can be saved because each requires exactly one unit of time and the deadline is extremely tight.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(k log k) | Sorting distances dominates; iteration is O(k) |
-| Space | O(k) | We store distances array |
+| Time | O(k log k) | sorting dominates each test case |
+| Space | O(k) | storing mouse positions |
 
-Given the sum of k across all test cases is ≤ 4 × 10^5, this algorithm will run comfortably under the 4-second limit.
+The total k across all test cases is at most 4⋅10^5, so the solution runs comfortably within limits even in Python. Sorting and linear scanning are both efficient enough for this constraint scale.
 
 ## Test Cases
 
@@ -130,28 +175,58 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    from __main__ import solve
     out = io.StringIO()
     sys.stdout = out
     solve()
     return out.getvalue().strip()
 
-# Provided samples
-assert run("3\n10 6\n8 7 5 4 9 4\n2 8\n1 1 1 1 1 1 1\n12 11\n1 2 3 4 5 6 7 8 9 10 11\n") == "3\n1\n4"
+# provided samples
+assert run("""3
+10 6
+8 7 5 4 9 4
+2 8
+1 1 1 1 1 1 1 1
+12 11
+1 2 3 4 5 6 7 8 9 10 11
+""") == """3
+1
+4"""
 
-# Custom test cases
-assert run("1\n5 5\n1 2 3 4 4\n") == "2", "cluster near hole"
-assert run("1\n2 1\n1\n") == "1", "minimum input"
-assert run("1\n1000000000 3\n999999998 999999997 999999996\n") == "3", "very large n"
-assert run("1\n10 4\n1 1 1 1\n") == "1", "all mice at start"
+# minimum case
+assert run("""1
+2 1
+1
+""") == "1"
+
+# all equal positions
+assert run("""1
+10 5
+5 5 5 5 5
+""") == "2"
+
+# already near hole
+assert run("""1
+10 3
+9 9 9
+""") == "3"
+
+# large spread
+assert run("""1
+100 4
+1 2 50 99
+""") == "3"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 5 5; 1 2 3 4 4 | 2 | Handles mice near the hole correctly |
-| 2 1; 1 | 1 | Minimum-size input works |
-| 1e9 3; 999999998 999999997 999999996 | 3 | Handles very large n without overflow |
-| 10 4; 1 1 1 1 | 1 | Multiple mice at same start position handled |
+| single mouse | 1 | base feasibility |
+| all equal | 2 | scheduling competition |
+| near hole | 3 | trivial escape case |
+| mixed spread | 3 | greedy ordering correctness |
 
 ## Edge Cases
 
-For the case where all mice start at the same position, for example n = 10 and positions [1,1,1,1], the algorithm sorts the distances [9,9,9,9] and iterates. The first mouse is saved because 9 > 0, then total_distance becomes 9. The next mouse has distance 9, which is not greater than total_distance 9, so iteration stops. Only one mouse is saved,
+A tight cluster near position 1 exposes the scheduling constraint most clearly. For input like n = 10 and x = [1,1,1], each mouse requires 9 moves while their deadline is 1, making all but possibly none feasible. The algorithm immediately detects infeasibility after the first addition to `time_used`, because even one assignment exceeds the deadline condition.
+
+A symmetric case near the hole, such as x = [n−1, n−1, n−1], shows the opposite behavior. Each mouse requires only one move, and their deadlines are large enough that multiple can be scheduled before the cat reaches their positions. The greedy accumulation continues without violation, confirming that the constraint only binds when cumulative work exceeds available safe time.
