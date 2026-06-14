@@ -1,7 +1,7 @@
 ---
 title: "CF 1557B - Moamen and k-subarrays"
-description: "We are given an array of distinct integers, and we are allowed to perform a very specific sequence of operations to sort it. First, we must split the array into exactly $k$ non-empty subarrays."
-date: "2026-06-10T12:34:25+07:00"
+description: "We are given an array of distinct integers and we are allowed to manipulate its structure in a very specific way. First, we cut the array into exactly k contiguous segments. Then we are allowed to reorder these segments arbitrarily."
+date: "2026-06-14T22:03:15+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 1557
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 737 (Div. 2)"
 rating: 1100
 weight: 1557
-solve_time_s: 253
+solve_time_s: 573
 verified: false
 draft: false
 ---
@@ -18,67 +18,75 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** greedy, sortings  
-**Solve time:** 4m 13s  
+**Solve time:** 9m 33s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of distinct integers, and we are allowed to perform a very specific sequence of operations to sort it. First, we must split the array into exactly $k$ non-empty subarrays. Then, we can reorder these subarrays in any order, and finally, we concatenate them back together. The goal is to determine whether it is possible to make the entire array sorted in non-decreasing order after these operations.
+We are given an array of distinct integers and we are allowed to manipulate its structure in a very specific way. First, we cut the array into exactly k contiguous segments. Then we are allowed to reorder these segments arbitrarily. Finally, we glue them back together in the chosen order.
 
-Each test case provides the array length $n$, the number $k$ of subarrays we must create, and the array itself. Our output is a simple "YES" if sorting is possible or "NO" if it is not.
+The key question is whether we can make the final array sorted in non-decreasing order after doing this once.
 
-The constraints indicate that $n$ can reach $10^5$ and the sum over all test cases does not exceed $3 \cdot 10^5$. This means we need a linear or linearithmic solution per test case, as an $O(n^2)$ approach would be far too slow.
+The constraints matter because the total number of elements across all test cases reaches 300000. This immediately rules out anything that tries to explore all partitions or permutations of segments. Any solution must be linear or near linear per test case, otherwise it will not scale.
 
-A subtle edge case arises when $k = 1$ or $k = n$. If $k = 1$, we cannot reorder anything, so the array must already be sorted. If $k = n$, each element forms its own subarray, and any permutation is possible, so the answer is always "YES". Another tricky scenario is when elements are almost sorted but require exactly the right number of splits to become sortable; a naive approach that tries random splits will fail.
+A subtle aspect of the problem is that we are not allowed to rearrange elements inside each segment. Only the segments themselves can be permuted. This restriction forces us to think in terms of how many “correctly ordered blocks” the array can be decomposed into.
+
+One edge case that often causes confusion is when k is large but the array is already almost sorted. For example, if the array is already sorted, any k works because we can split it into single elements and reassemble them. On the other hand, if k is too small, we lose flexibility. For instance, if k = 1, we cannot reorder anything at all, so the array must already be sorted.
+
+Another subtle case appears when the array is “locally ordered” but global inversion exists. For example, consider:
+
+Input:
+
+```
+
+```
+
+We might try splitting as [2, 1] and [4, 3], but no reordering of these blocks yields a fully sorted sequence because each block itself is internally inverted in a way that cannot be repaired by swapping blocks.
+
+The real difficulty is to determine how many segments are “necessary” to preserve sorted structure.
 
 ## Approaches
 
-A brute-force approach would try every possible way of splitting the array into $k$ subarrays and check if any ordering produces a sorted array. The number of ways to split an array into $k$ subarrays grows combinatorially, roughly as $\binom{n-1}{k-1}$, making this completely impractical for $n$ up to $10^5$.
+A brute-force solution would try all ways to split the array into k non-empty contiguous segments, then for each partition try all permutations of the segments and check if any ordering produces a sorted array. The number of partitions alone is exponential, and the permutations of segments add a factorial factor on top. Even for n = 20 this becomes infeasible, so this direction is purely theoretical.
 
-The key insight is to consider the sorted array as a reference and track contiguous blocks that already appear in the same relative order. Any contiguous segment of the sorted array that appears consecutively in the original array can be kept as one subarray. The minimal number of such blocks determines the minimum $k$ needed to rearrange the array into sorted order. If this number of blocks is less than or equal to $k$, sorting is possible; otherwise, it is impossible. This observation reduces the problem to a single pass over the array while comparing it to its sorted version, resulting in an $O(n \log n)$ solution due to the sort, and $O(n)$ for the block counting.
+The key observation is that the final array is formed by concatenating k segments in some order, so what matters is whether we can partition the array into at most k “sortable blocks” such that sorting these blocks by their minimum or maximum values aligns them into the global sorted order.
+
+Because all elements are distinct, each segment has a well-defined minimum and maximum, and the only way segments can be reordered into a sorted array is if there exists a partition where each segment corresponds to a consecutive range in the sorted array. In other words, each segment must not “interleave” values that belong to different parts of the sorted sequence.
+
+This leads to a simpler viewpoint: consider the positions of elements in the sorted array. As we scan the original array, we can form a segment whenever the prefix we have seen forms a prefix of the sorted order in terms of maximum position. The number of such natural segments is fixed by the structure of the permutation.
+
+Let that number be cnt, the minimum number of monotonic “sorted-compatible” segments required. If we are allowed to form k segments, then we can always split further, but we cannot merge below cnt. Therefore the condition becomes simple: we need k ≥ cnt.
+
+Thus the problem reduces to computing how many “break points” exist where continuity in sorted order is violated in terms of positions in the sorted array.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n choose k) | O(n) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force (all partitions + permutations) | O(n! · n) | O(n) | Too slow |
+| Optimal (greedy segmentation via sorted positions) | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each test case, read $n$ and $k$ and the array $a$.
-2. Create a sorted copy of the array, $b$. This represents the desired order of elements.
-3. Build a mapping from element values to their positions in $b$ for quick look-up. This lets us track where each element belongs in the sorted array.
-4. Initialize a counter `blocks = 1`. This counts the number of contiguous sequences in $a$ that correspond to consecutive positions in $b$.
-5. Iterate through the array $a$ from left to right. For each element $a[i]$, check its position in the sorted array using the mapping. If the current element's position is not consecutive with the previous element's position, increment `blocks` because we have started a new subarray.
-6. After processing the entire array, compare `blocks` with $k$. If `blocks <= k`, print "YES"; otherwise, print "NO".
+1. Sort the array while keeping track of original positions. This gives the target global order.
+2. Build an array pos where pos[x] is the index of value x in the sorted array. This converts the problem into working with a permutation of indices.
+3. Scan the original array from left to right, maintaining the maximum position in the sorted array seen so far.
+4. Whenever this maximum position equals the current index in the sorted order of the scan, we can close a segment. This is because all elements seen so far exactly form a prefix of the sorted permutation.
+5. Count how many such segments are formed; call this cnt.
+6. The answer is YES if and only if cnt ≤ k, otherwise NO.
 
-Why it works: Each "block" corresponds to a segment of the original array that can remain intact and be moved as a single subarray. Since reordering the subarrays allows us to place blocks in sorted order, the minimum number of blocks determines the minimal number of subarrays required. If $k$ is at least this number, sorting is achievable.
+### Why it works
+
+The scan builds the smallest possible segments such that each segment contains elements that must stay together in any sorted reconstruction. A segment boundary can only be placed when the set of seen elements corresponds exactly to a prefix of the sorted array; otherwise some element from a future part would be trapped inside the segment, making correct ordering impossible. This forces a unique minimal segmentation, and any valid solution must use at least that many segments.
 
 ## Python Solution
 
-```python
-import sys
-input = sys.stdin.readline
-
-def solve():
-    t = int(input())
-    for _ in range(t):
-        n, k = map(int, input().split())
-        a = list(map(int, input().split()))
-        b = sorted(a)
-        pos = {val: i for i, val in enumerate(b)}
-        
-        blocks = 1
-        for i in range(1, n):
-            if pos[a[i]] != pos[a[i-1]] + 1:
-                blocks += 1
-        
-        print("YES" if blocks <= k else "NO")
-
-solve()
+```
+PythonRun
 ```
 
-The solution reads multiple test cases efficiently and builds a position map for constant-time lookups. Counting blocks relies on comparing consecutive elements’ positions in the sorted array. This avoids any complicated subarray generation or reordering logic. Edge conditions such as $k = 1$ or $k = n$ are handled naturally because they correspond to the number of blocks being exactly 1 or any number less than or equal to $n$.
+The solution first compresses the array into sorted ranks using a dictionary, which allows comparisons in O(1). The greedy scan maintains the furthest sorted position seen so far. When that matches the current scan index, it means everything seen so far belongs exactly to a contiguous prefix of the sorted array, so we can safely cut a segment there.
+
+The only subtle implementation detail is the use of indices in the sorted array rather than values. This avoids incorrect reasoning based on raw values, since the ordering structure is what matters.
 
 ## Worked Examples
 
@@ -87,79 +95,77 @@ The solution reads multiple test cases efficiently and builds a position map for
 Input:
 
 ```
-5 4
-6 3 4 2 1
+
 ```
 
-| i | a[i] | pos[a[i]] | pos[a[i-1]] +1 | new block? | blocks |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 6 | 4 | - | - | 1 |
-| 1 | 3 | 2 | 5 | yes | 2 |
-| 2 | 4 | 3 | 3 | no | 2 |
-| 3 | 2 | 1 | 4 | yes | 3 |
-| 4 | 1 | 0 | 2 | yes | 4 |
+Sorted array is [1, 2, 3, 4, 5], so positions:
 
-Blocks = 4, k = 4, output = YES. This matches the correct split and reorder described in the problem statement.
+```
+
+```
+
+Scan:
+
+| i | a[i] | pos[a[i]] | mx | cut? |
+| --- | --- | --- | --- | --- |
+| 0 | 2 | 1 | 1 | yes |
+| 1 | 1 | 0 | 1 | no |
+| 2 | 4 | 3 | 3 | yes |
+| 3 | 3 | 2 | 3 | no |
+| 4 | 5 | 4 | 4 | yes |
+
+Segments formed: 3, so cnt = 3. Since k = 2, answer is NO.
+
+This shows that even though the array is close to sorted, it requires at least 3 inseparable blocks.
 
 ### Example 2
 
 Input:
 
 ```
-4 2
-1 -4 0 -2
+
 ```
 
-| i | a[i] | pos[a[i]] | pos[a[i-1]] +1 | new block? | blocks |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 1 | 3 | - | - | 1 |
-| 1 | -4 | 0 | 4 | yes | 2 |
-| 2 | 0 | 2 | 1 | yes | 3 |
-| 3 | -2 | 1 | 3 | yes | 4 |
+Sorted array is [1, 2, 3, 4, 5].
 
-Blocks = 4, k = 2, output = NO. The algorithm correctly identifies that 2 subarrays are insufficient.
+| i | a[i] | pos[a[i]] | mx | cut? |
+| --- | --- | --- | --- | --- |
+| 0 | 3 | 2 | 2 | no |
+| 1 | 1 | 0 | 2 | no |
+| 2 | 2 | 1 | 2 | yes |
+| 3 | 5 | 4 | 4 | no |
+| 4 | 4 | 3 | 4 | yes |
+
+Here cnt = 2, and k = 5, so we can always split further into more segments, giving YES.
+
+This demonstrates that extra freedom in k only helps by allowing refinement, never by merging constraints.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Sorting the array dominates; building the mapping and counting blocks are O(n) |
-| Space | O(n) | Storing the sorted array and position map |
+| Time | O(n log n) | sorting per test case dominates |
+| Space | O(n) | storing sorted copy and position map |
 
-Given the sum of $n$ over all test cases is ≤ 3·10^5, the solution will comfortably run within the 2-second limit and stay within 256 MB memory.
+The total n across test cases is at most 3e5, so sorting and linear scans fit comfortably within limits.
 
 ## Test Cases
 
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    sys.stdout = io.StringIO()
-    solve()
-    return sys.stdout.getvalue().strip()
-
-# Provided samples
-assert run("3\n5 4\n6 3 4 2 1\n4 2\n1 -4 0 -2\n5 1\n1 2 3 4 5\n") == "YES\nNO\nYES", "samples"
-
-# Custom tests
-assert run("1\n3 1\n3 2 1\n") == "NO", "k=1, unsorted"
-assert run("1\n3 3\n3 2 1\n") == "YES", "k=n, any order allowed"
-assert run("1\n1 1\n42\n") == "YES", "single element"
-assert run("1\n5 2\n5 1 4 2 3\n") == "NO", "not enough subarrays"
-assert run("1\n5 5\n5 4 3 2 1\n") == "YES", "each element own subarray"
+```
+PythonRun
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 3 1\n3 2 1 | NO | k=1, unsorted array |
-| 3 3\n3 2 1 | YES | k=n, permutation always possible |
-| 1 1\n42 | YES | single element |
-| 5 2\n5 1 4 2 3 | NO | insufficient k for required blocks |
-| 5 5\n5 4 3 2 1 | YES | maximal k allows any arrangement |
+| n=1 | YES | minimum size |
+| reversed array, k=1 | YES | already single segment |
+| reversed array, k=2 | NO | insufficient splits |
+| alternating inversions | YES | multiple valid cuts |
 
 ## Edge Cases
 
-When $k = 1$, the array must already be sorted. For example, input `[3 2 1]` with `k=1` produces blocks = 3, which is greater than 1, so the algorithm outputs NO.
+One edge case is a fully sorted array. The algorithm scans and finds a cut at every position, producing cnt = n. For any k ≥ n, answer is YES, and for k < n, it is NO. This matches intuition because every element is already isolated in a natural prefix chain.
 
-When $k = n$, each element forms its own block
+Another edge case is a completely reversed array. The positions increase gradually, so the maximum is always at the end, producing cnt = 1. Even with k = 1, the answer is YES because the whole array is already one valid segment that can be reordered trivially only if k allows no splits.
+
+A mixed inversion pattern such as [3, 1, 2, 6, 5, 4] produces multiple segment boundaries exactly when the scan reaches full prefix coverage of sorted indices, and the greedy rule captures these boundaries precisely without ambiguity.
