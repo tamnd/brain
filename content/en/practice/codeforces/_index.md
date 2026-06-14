@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8035 problems, 3820 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8036 problems, 3821 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8035 problems, 3820 verified.**
+**1429 contests, 8036 problems, 3821 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -646,7 +646,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 3 | 1/3 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 2 | 1/2 | Div. 3 | 1500-1800 |
 
-## 2020 — 158 contests, 647 problems, 278 verified
+## 2020 — 158 contests, 648 problems, 279 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -782,7 +782,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1433](1433/) | [Codeforces Round 677 (Div. 3)](https://codeforces.com/contest/1433) | 7 | 3/7 | Div. 3 | 800-2100 |
 | [1434](1434/) | [Codeforces Round 679 (Div. 1, based on Technocup 2021 Elimination Round 1)](https://codeforces.com/contest/1434) | 1 | 1/1 | Div. 1 | 3500-3500 |
 | [1436](1436/) | [Codeforces Round 678 (Div. 2)](https://codeforces.com/contest/1436) | 6 | 3/6 | Div. 2 | 800-2800 |
-| [1437](1437/) | [Educational Codeforces Round 97 (Rated for Div. 2)](https://codeforces.com/contest/1437) | 6 | 3/6 | Div. 2 | 1200-2600 |
+| [1437](1437/) | [Educational Codeforces Round 97 (Rated for Div. 2)](https://codeforces.com/contest/1437) | 7 | 4/7 | Div. 2 | 800-2600 |
 | [1438](1438/) | [Codeforces Round 682 (Div. 2)](https://codeforces.com/contest/1438) | 6 | 1/6 | Div. 2 | 800-3000 |
 | [1439](1439/) | [Codeforces Round 684 (Div. 1)](https://codeforces.com/contest/1439) | 6 | 2/6 | Div. 1 | 1500-3500 |
 | [1440](1440/) | [Codeforces Round 684 (Div. 2)](https://codeforces.com/contest/1440) | 2 | 2/2 | Div. 2 | 800-900 |
