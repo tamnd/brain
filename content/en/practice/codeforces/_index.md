@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8033 problems, 3819 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8034 problems, 3820 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8033 problems, 3819 verified.**
+**1429 contests, 8034 problems, 3820 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -646,7 +646,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 3 | 1/3 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 2 | 1/2 | Div. 3 | 1500-1800 |
 
-## 2020 — 158 contests, 645 problems, 277 verified
+## 2020 — 158 contests, 646 problems, 278 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -755,7 +755,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1401](1401/) | [Codeforces Round 665 (Div. 2)](https://codeforces.com/contest/1401) | 6 | 3/6 | Div. 2 | 900-2400 |
 | [1402](1402/) | [Central-European Olympiad in Informatics, CEOI 2020, Day 1 (IOI, Unofficial Mirror Contest, Unrated)](https://codeforces.com/contest/1402) | 3 | 1/3 | ICPC/IOI | 1800-2900 |
 | [1403](1403/) | [Central-European Olympiad in Informatics, CEOI 2020, Day 2 (IOI, Unofficial Mirror Contest, Unrated)](https://codeforces.com/contest/1403) | 3 | 1/3 | ICPC/IOI | 2300-3200 |
-| [1404](1404/) | [Codeforces Round 668 (Div. 1)](https://codeforces.com/contest/1404) | 4 | 1/4 | Div. 1 | 1500-2800 |
+| [1404](1404/) | [Codeforces Round 668 (Div. 1)](https://codeforces.com/contest/1404) | 5 | 2/5 | Div. 1 | 1500-2800 |
 | [1405](1405/) | [Codeforces Round 668 (Div. 2)](https://codeforces.com/contest/1405) | 2 | 0/2 | Div. 2 | 800-1000 |
 | [1406](1406/) | [Codeforces Round 670 (Div. 2)](https://codeforces.com/contest/1406) | 5 | 1/5 | Div. 2 | 900-2600 |
 | [1407](1407/) | [Codeforces Round 669 (Div. 2)](https://codeforces.com/contest/1407) | 5 | 1/5 | Div. 2 | 1100-2500 |
