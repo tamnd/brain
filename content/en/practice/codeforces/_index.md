@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1436 contests, 8164 problems, 3911 verified."
+description: "Codeforces problem solutions with full editorials. 1437 contests, 8166 problems, 3913 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1436 contests, 8164 problems, 3911 verified.**
+**1437 contests, 8166 problems, 3913 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -490,7 +490,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 6 | 4/6 | Div. 2 | 800-2500 |
 
-## 2019 — 156 contests, 775 problems, 452 verified
+## 2019 — 157 contests, 777 problems, 454 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -600,6 +600,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1216](1216/) | [Codeforces Round 587 (Div. 3)](https://codeforces.com/contest/1216) | 6 | 5/6 | Div. 3 | 800-2200 |
 | [1217](1217/) | [Educational Codeforces Round 72 (Rated for Div. 2)](https://codeforces.com/contest/1217) | 4 | 2/4 | Div. 2 | 1300-2600 |
 | [1218](1218/) | [Bubble Cup 12 - Finals [Online Mirror, unrated, Div. 1]](https://codeforces.com/contest/1218) | 5 | 2/5 | Div. 1 | 1500-3000 |
+| [1219](1219/) | [Bubble Cup 12 - Finals [Online Mirror, unrated, Div. 2]](https://codeforces.com/contest/1219) | 2 | 2/2 | Div. 2 | 1700-2000 |
 | [1220](1220/) | [Codeforces Round 586 (Div. 1 + Div. 2)](https://codeforces.com/contest/1220) | 3 | 2/3 | Div. 1+2 | 1300-2700 |
 | [1221](1221/) | [Educational Codeforces Round 73 (Rated for Div. 2)](https://codeforces.com/contest/1221) | 5 | 2/5 | Div. 2 | 1000-2900 |
 | [1223](1223/) | [Technocup 2020 - Elimination Round 1](https://codeforces.com/contest/1223) | 4 | 2/4 | Special | 800-3200 |
