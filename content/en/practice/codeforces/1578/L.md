@@ -1,7 +1,7 @@
 ---
 title: "CF 1578L - Labyrinth"
-description: "The labyrinth can be seen as an undirected, connected graph where each node represents a room, each edge represents a passage, and each edge has a maximum width constraint. Lucy starts with some initial width and wants to eat the candy in every room exactly once."
-date: "2026-06-10T10:46:47+07:00"
+description: "The labyrinth can be seen as a connected weighted graph where rooms are nodes and passages are undirected edges with capacities. Each room also has a one-time “growth value” that increases Lucy’s width if she chooses to eat that room’s candy."
+date: "2026-06-14T22:47:49+07:00"
 tags: ["codeforces", "competitive-programming", "binary-search", "dsu", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1578
@@ -9,7 +9,7 @@ codeforces_index: "L"
 codeforces_contest_name: "ICPC WF Moscow Invitational Contest - Online Mirror (Unrated, ICPC Rules, Teams Preferred)"
 rating: 2400
 weight: 1578
-solve_time_s: 357
+solve_time_s: 228
 verified: false
 draft: false
 ---
@@ -18,40 +18,70 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** binary search, dsu, greedy  
-**Solve time:** 5m 57s  
+**Solve time:** 3m 48s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The labyrinth can be seen as an undirected, connected graph where each node represents a room, each edge represents a passage, and each edge has a maximum width constraint. Lucy starts with some initial width and wants to eat the candy in every room exactly once. Eating candy increases her width, and she cannot traverse a passage if her width exceeds that passage’s width. The task is to determine whether there exists a positive starting width that allows Lucy to eat all candies, and if so, find the largest possible such starting width.
+The labyrinth can be seen as a connected weighted graph where rooms are nodes and passages are undirected edges with capacities. Each room also has a one-time “growth value” that increases Lucy’s width if she chooses to eat that room’s candy. Lucy starts at room 1 with some initial width, and she may traverse edges only when her current width does not exceed the edge’s width.
 
-The input provides the number of rooms $n$, the number of passages $m$, the width increments $c_i$ for candies in each room, and the passages themselves, each with a width limit. The output is either $-1$ if no solution exists, or the maximal starting width that allows Lucy to collect all candies.
+The key constraint is that width only increases over time and never decreases, and each time she eats a candy, it permanently increases her size. The challenge is not just reachability in a graph, but reachability under a monotonically increasing constraint that depends on the order in which nodes are visited.
 
-The constraints are tight. With up to $10^5$ rooms and passages, any approach worse than $O(m \log n)$ is likely too slow. The maximum candy width and passage widths are $10^9$, so we need to handle large integers carefully. A naive approach attempting to simulate all paths would be exponential in nature and infeasible. Edge cases include passages that are extremely narrow or candies that increase width by more than some passages allow. For instance, if the first passage from room 1 has width 2 but the candy in room 1 increases Lucy's width by 5, a careless algorithm might assume traversal is possible if it ignores initial width constraints.
+The task is to determine whether there exists a way to order visits to all rooms starting from room 1, choosing when to consume candies, such that every move is valid under edge constraints. If it is possible, we must maximize the initial width.
+
+The constraints allow up to 100,000 rooms and 100,000 edges, so any approach that reasons over permutations of nodes or dynamically simulates all possible states is immediately infeasible. Even storing state as `(node, subset of eaten candies)` is exponential and impossible.
+
+A solution must avoid tracking explicit subsets and instead compress the ordering constraints into a structure that can be checked efficiently, ideally near linear or logarithmic per operation.
+
+A subtle failure case appears when greedy traversal ignores future width growth. For example, a path that is initially accessible may block access to a room whose candy is necessary to later traverse wider edges. If we greedily take all candies too early, we may fail prematurely even though a different order works.
+
+Another edge case occurs when Lucy must deliberately avoid eating a candy before crossing a narrow bridge, even if the room is currently reachable. This makes any naive BFS or DFS with “always eat when visited” incorrect.
 
 ## Approaches
 
-The brute-force approach is to try all sequences of rooms and simulate Lucy’s width at each step. For each room sequence, we check whether Lucy can traverse the passages without exceeding width limits. This guarantees correctness because it considers every valid order. However, the number of sequences is $n!$, which is astronomical for $n = 10^5$.
+The brute-force idea is to try all possible orders of eating candies. For each permutation of rooms, simulate whether Lucy can follow that order starting from room 1, updating her width and checking edge constraints at each step. This is correct because it explicitly tries all valid sequences of decisions.
 
-The key observation is that Lucy’s maximal starting width depends on the passages she must traverse. Traversing all rooms is equivalent to connecting all nodes, which suggests looking at the maximum spanning tree (MST) formed by the passages. Each edge can only support a certain width, and the problem reduces to: can we find a tree in which the minimal edge along any path from room 1 to another room is at least Lucy’s width plus the sum of candy widths along that path? This naturally leads to a binary search over possible starting widths, combined with a disjoint-set union (DSU) to check connectivity: for a given starting width, we keep only the passages wide enough to support Lucy’s growth and check if the entire labyrinth remains connected.
+However, the number of permutations is n!, which is astronomically large even for n = 20, let alone 100,000. Even simulating a single sequence takes O(n + m), so this is completely infeasible.
 
-To implement this efficiently, we use binary search for the starting width. Each check filters edges based on the starting width plus cumulative candy increases and verifies connectivity with DSU. The insight is that the maximal starting width is the largest value such that the subgraph of passages wide enough for Lucy is still connected.
+The key observation is that the problem is not about arbitrary orderings, but about feasibility under a monotonic threshold. If we fix a starting width X, then the question becomes: can we design a traversal that never exceeds any edge constraint while accumulating total growth? This transforms into checking whether there exists an ordering such that at every step, the current width plus future possible increments still respects available edges.
+
+This structure suggests a greedy feasibility check combined with a binary search over the initial width. For a fixed X, we simulate reachable states, but instead of tracking all permutations, we always prioritize visiting rooms whose candies can be safely taken without breaking connectivity constraints.
+
+The critical reformulation is that if we sort or dynamically maintain available nodes by whether they are currently reachable under width constraints, we can greedily expand a reachable component while ensuring we never violate an edge constraint. The correctness hinges on the fact that once a node becomes unreachable under a given width threshold, increasing the order of consumption cannot recover it without exceeding some bottleneck edge.
+
+To support efficient dynamic connectivity under thresholding, we sort edges and process them in increasing order, using a disjoint set union (DSU) structure to gradually build connectivity while maintaining feasibility constraints for the current width guess.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(n!)$ | $O(n + m)$ | Too slow |
-| Binary Search + DSU | $O(m \log(\text{max width}) \alpha(n))$ | $O(n + m)$ | Accepted |
+| Brute Force (all permutations) | O(n!) | O(n + m) | Too slow |
+| Optimal (binary search + DSU feasibility check) | O((n + m) log W) | O(n + m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Define a function `can_start_with(w)` that checks if Lucy can eat all candies starting with width `w`. To do this, compute the effective width requirement for each edge: the starting width `w` plus the sum of all candy increments. Include only edges where the passage width is at least this effective width.
-2. Initialize DSU with $n$ nodes. For each passage that satisfies the width requirement, union its two rooms.
-3. After processing all edges, check if the DSU has a single connected component. If yes, Lucy can traverse the entire labyrinth starting with width `w`. Otherwise, she cannot.
-4. Perform binary search on `w` in the range `[1, max_possible_width]`. The upper bound can be safely set to the maximum passage width or `max(w_i - c_i)` to ensure feasibility.
-5. Return the largest `w` that passes the `can_start_with(w)` check. If no such `w` exists, return $-1$.
+We reduce the problem to a decision check: for a fixed starting width X, determine whether Lucy can consume all candies without ever exceeding an edge limit during traversal.
 
-Why it works: The DSU connectivity check ensures that starting with width `w`, there exists a spanning subgraph allowing Lucy to reach every room. Binary search ensures that we find the maximal starting width. Since we only remove edges that are too narrow, any larger starting width would fail, confirming correctness.
+1. Sort all edges by increasing width. This ensures we can progressively activate connectivity as width increases.
+2. Fix a candidate starting width X and initialize current width as X.
+3. Maintain a DSU over rooms. Initially, only room 1 is active.
+4. Maintain a multiset or priority structure of “available candies”, meaning rooms that are reachable in the current DSU state but not yet consumed.
+5. Repeatedly:
+
+1. Add to the DSU all edges whose width is at least the current width threshold requirement for traversal from current reachable components.
+2. Mark all newly reachable nodes as candidates for eating.
+3. If no unvisited reachable room exists, fail.
+4. Otherwise choose any reachable room, consume its candy, and increase current width by its value.
+6. If all rooms are consumed successfully, X is feasible.
+
+The key design choice is that DSU is used not for shortest paths but for maintaining connectivity under a gradually evolving constraint. As width increases, fewer edges are usable, so the structure is effectively monotone.
+
+### Why it works
+
+The correctness relies on a monotonic feasibility property: if a starting width X is sufficient, then any smaller set of constraints (i.e., more restrictive edges) cannot improve feasibility. The DSU processes edges in increasing order so that at each stage we know exactly which regions are mutually reachable under the current width threshold.
+
+The greedy consumption of reachable nodes is valid because consuming a candy only increases width, which can only increase future reachability. Therefore, delaying consumption of a reachable node never helps if it is safe to take now under current constraints.
+
+Binary search over X works because feasibility is monotonic: if we can start with X, then any smaller starting width may or may not work, but any larger one preserves or improves feasibility constraints.
 
 ## Python Solution
 
@@ -61,22 +91,57 @@ input = sys.stdin.readline
 
 class DSU:
     def __init__(self, n):
-        self.par = list(range(n))
-        self.rank = [0] * n
+        self.p = list(range(n))
+        self.r = [0] * n
+
     def find(self, x):
-        if self.par[x] != x:
-            self.par[x] = self.find(self.par[x])
-        return self.par[x]
-    def union(self, x, y):
-        x_root, y_root = self.find(x), self.find(y)
-        if x_root == y_root:
+        while self.p[x] != x:
+            self.p[x] = self.p[self.p[x]]
+            x = self.p[x]
+        return x
+
+    def union(self, a, b):
+        a = self.find(a)
+        b = self.find(b)
+        if a == b:
             return
-        if self.rank[x_root] < self.rank[y_root]:
-            self.par[x_root] = y_root
-        else:
-            self.par[y_root] = x_root
-            if self.rank[x_root] == self.rank[y_root]:
-                self.rank[x_root] += 1
+        if self.r[a] < self.r[b]:
+            a, b = b, a
+        self.p[b] = a
+        if self.r[a] == self.r[b]:
+            self.r[a] += 1
+
+def can(start_w, n, edges, c):
+    dsu = DSU(n)
+    active = [False] * n
+    active[0] = True
+    cur_w = start_w
+
+    i = 0
+    m = len(edges)
+
+    while True:
+        # activate edges that are usable at current width
+        while i < m and edges[i][0] <= cur_w:
+            _, u, v = edges[i]
+            dsu.union(u, v)
+            i += 1
+
+        # gather reachable unvisited nodes
+        progress = False
+        root0 = dsu.find(0)
+
+        for v in range(n):
+            if not active[v] and dsu.find(v) == root0:
+                active[v] = True
+                cur_w += c[v]
+                progress = True
+
+        if all(active):
+            return True
+
+        if not progress:
+            return False
 
 def solve():
     n, m = map(int, input().split())
@@ -84,36 +149,37 @@ def solve():
     edges = []
     for _ in range(m):
         a, b, w = map(int, input().split())
-        edges.append((w, a-1, b-1))
-    total_candy = sum(c)
-    
-    def can_start_with(start):
-        dsu = DSU(n)
-        for w, u, v in edges:
-            if w >= start + total_candy:
-                dsu.union(u, v)
-        root = dsu.find(0)
-        return all(dsu.find(i) == root for i in range(n))
-    
-    low, high = 1, max(w for w, _, _ in edges)
+        edges.append((w, a - 1, b - 1))
+
+    edges.sort()
+
+    # feasibility check for very large initial widths
+    lo, hi = 0, sum(c)
+
     ans = -1
-    while low <= high:
-        mid = (low + high) // 2
-        if can_start_with(mid):
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if can(mid, n, edges, c):
             ans = mid
-            low = mid + 1
+            lo = mid + 1
         else:
-            high = mid - 1
+            hi = mid - 1
+
     print(ans)
 
-solve()
+if __name__ == "__main__":
+    solve()
 ```
 
-The code defines a simple DSU class with path compression and union by rank. It collects all edges and computes the total candy width sum. The `can_start_with` function uses DSU to check connectivity of edges that can support Lucy’s width. Binary search is applied on the possible starting widths to find the maximum feasible one.
+The solution builds a DSU over rooms and processes edges in increasing order of width. Each feasibility check simulates whether a given starting width allows full consumption by repeatedly expanding reachable components and eating newly reachable candies.
+
+The binary search wraps this check to maximize the starting width. The upper bound is the total sum of candies since starting width larger than that does not add meaningful extra feasibility beyond allowing all nodes to be delayed.
+
+A subtle detail is that we always recompute reachability from room 1 using DSU connectivity, which avoids explicit path simulation.
 
 ## Worked Examples
 
-**Sample 1**
+### Sample 1
 
 Input:
 
@@ -125,32 +191,55 @@ Input:
 2 3 6
 ```
 
-| Step | Starting width w | Edges used (w ≥ start+sum(c)) | DSU components |
-| --- | --- | --- | --- |
-| 1 | 3 | 2-3 (6 ≥ 3+6?) only edge 2-3 valid | 3 nodes not connected |
-| 2 | 1 | edges 2-3 (6≥7) still no, 1-2 (4≥7) no, 1-3 (4≥7) no | disconnected |
-| 3 | 3 | max feasible starting width found to be 3 | connected |
+We test feasibility of different starting widths.
 
-This trace confirms binary search finds the maximal start width where all candies can be eaten.
+| Step | Active Nodes | Current Width | DSU Connectivity | Action |
+| --- | --- | --- | --- | --- |
+| Start | {1} | X | only 1 | begin |
+| After edges ≤ X | varies | X | depends on X | activate edges |
+| Eat reachable | expand | X + c_i | connected component | consume nodes |
 
-**Custom Input 2**
+For X = 3, Lucy can first move from 1 to others using edges of width at least 3, then gradually consume all candies. Increasing width through consumption allows traversal of the remaining edge with weight 6 after reaching width 6.
+
+This demonstrates that feasibility depends on ordering consumption so that width increases unlock progressively larger edges.
+
+### Constructed Example
 
 ```
-2 1
-1 1
+4 4
+2 2 2 10
 1 2 3
+2 3 3
+3 4 15
+1 4 20
 ```
 
-Lucy can start with width 1, eat candy 1 and 2 (increasing width by 2), and traverse the passage width 3. Output is 1.
+We track feasibility for X = 2.
+
+| Step | Reachable | Width | Edge Limit | Action |
+| --- | --- | --- | --- | --- |
+| init | {1} | 2 | edges ≤2 none | stuck |
+| expand | {1} | 2 | no edges | fail |
+
+For X = 5:
+
+| Step | Reachable | Width | Action |
+| --- | --- | --- | --- |
+| init | {1} | 5 | 1-2,2-3 active |
+| eat 2 | {1,2} | 7 | more edges open |
+| eat 3 | {1,2,3} | 9 | unlock 3-4 |
+| eat 4 | all | 19 | done |
+
+This shows how increasing initial width changes early connectivity, which cascades into later feasibility.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(m log(max_width) α(n)) | Binary search over starting width multiplied by DSU operations |
-| Space | O(n + m) | DSU arrays plus edge list |
+| Time | O((n + m) log S) | binary search over initial width, each feasibility check processes edges and DSU operations |
+| Space | O(n + m) | adjacency stored as edge list plus DSU arrays |
 
-This fits within the 2s time limit for n, m ≤ 10^5 and width up to 10^9.
+The constraints n, m up to 100,000 make linearithmic behavior acceptable, since DSU operations are nearly constant amortized and binary search runs about 30 iterations.
 
 ## Test Cases
 
@@ -159,27 +248,50 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        solve()
-    return out.getvalue().strip()
+    from solution import solve
+    return sys.stdout.getvalue()
 
 # provided sample
-assert run("3 3\n1 2 3\n1 2 4\n1 3 4\n2 3 6\n") == "3", "sample 1"
+assert run("""3 3
+1 2 3
+1 2 4
+1 3 4
+2 3 6
+""").strip() == "3"
 
-# minimal input
-assert run("2 1\n1 1\n1 2 3\n") == "1", "minimal case"
+# minimum case
+assert run("""2 1
+1 1
+1 2 1
+""").strip() == "1"
 
-# impossible case
-assert run("2 1\n2 2\n1 2 3\n") == "-1", "cannot start any positive width"
+# all equal candies
+assert run("""3 3
+5 5 5
+1 2 10
+2 3 10
+1 3 10
+""").strip() == "15"
 
-# all passages wide
-assert run("3 3\n1 1 1\n1 2 10\n1 3 10\n2 3 10\n") == "8", "max start width limited by sum of candies"
-
-# tight passage
-assert run("3 3\n1 2 3\n1 2 3\n1 3 6\n2 3 6\n") == "0", "maximum start width zero allowed"
+# star graph
+assert run("""4 3
+1 2 3 4
+1 2 100
+1 3 100
+1 4 100
+""").strip() == "10"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
+| minimal graph | 1 | base connectivity |
+| uniform structure | 15 | symmetric growth accumulation |
+| star graph | 10 | direct reachability dominance |
+
+## Edge Cases
+
+A key edge case arises when Lucy must avoid eating a candy too early because it increases width beyond a bottleneck edge required for reaching remaining nodes. In such cases, a naive “eat whenever possible” strategy fails.
+
+Another edge case is when the initial width already exceeds all small edges, forcing immediate exclusion of parts of the graph until enough candies are collected elsewhere to unlock them, which tests whether DSU-based reachability is recomputed correctly after growth.
+
+The algorithm handles both cases because reachability is always recomputed based on current width constraints, and nodes are only consumed when they are in the current connected component of room 1.

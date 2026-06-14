@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1429 contests, 8082 problems, 3858 verified."
+description: "Codeforces problem solutions with full editorials. 1429 contests, 8083 problems, 3859 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1429 contests, 8082 problems, 3858 verified.**
+**1429 contests, 8083 problems, 3859 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -809,7 +809,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1468](1468/) | [2020-2021 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules)](https://codeforces.com/contest/1468) | 14 | 8/14 | ICPC/IOI | 800-2900 |
 | [1469](1469/) | [Educational Codeforces Round 101 (Rated for Div. 2)](https://codeforces.com/contest/1469) | 6 | 4/6 | Div. 2 | 1000-2600 |
 
-## 2021 — 131 contests, 798 problems, 292 verified
+## 2021 — 131 contests, 799 problems, 293 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -907,7 +907,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1574](1574/) | [Educational Codeforces Round 114 (Rated for Div. 2)](https://codeforces.com/contest/1574) | 6 | 1/6 | Div. 2 | 800-2700 |
 | [1575](1575/) | [COMPFEST 13 - Finals Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1575) | 13 | 5/13 | ICPC/IOI | 1100-3000 |
 | [1576](1576/) | [2021 ICPC Communication Routing Challenge: Marathon](https://codeforces.com/contest/1576) | 1 | 1/1 | ICPC/IOI | - |
-| [1578](1578/) | [ICPC WF Moscow Invitational Contest - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1578) | 12 | 1/12 | ICPC/IOI | 1200-3500 |
+| [1578](1578/) | [ICPC WF Moscow Invitational Contest - Online Mirror (Unrated, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1578) | 13 | 2/13 | ICPC/IOI | 1200-3500 |
 | [1579](1579/) | [Codeforces Round 744 (Div. 3)](https://codeforces.com/contest/1579) | 8 | 1/8 | Div. 3 | 800-2200 |
 | [1580](1580/) | [Codeforces Round 745 (Div. 1)](https://codeforces.com/contest/1580) | 6 | 0/6 | Div. 1 | 1700-3400 |
 | [1581](1581/) | [Codeforces Round 745 (Div. 2)](https://codeforces.com/contest/1581) | 2 | 1/2 | Div. 2 | 800-1200 |
