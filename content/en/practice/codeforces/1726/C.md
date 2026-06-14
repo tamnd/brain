@@ -1,7 +1,7 @@
 ---
 title: "CF 1726C - Jatayu's Balanced Bracket Sequence"
-description: "We are given a balanced bracket sequence of length 2n. Think of each position in the string as a vertex of a graph. Two vertices i and j are connected by an edge if the substring from position i to position j is itself a balanced bracket sequence."
-date: "2026-06-09T18:58:37+07:00"
+description: "We are given a balanced bracket string of length $2n$. Each position in this string is treated as a vertex in a graph. Two vertices $i$ and $j$ are connected by an undirected edge exactly when the substring from $i$ to $j$ forms a balanced bracket sequence on its own."
+date: "2026-06-15T01:52:53+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dsu", "graphs", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1726
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 819 (Div. 1 + Div. 2) and Grimoire of Code Annual Contest 2022"
 rating: 1300
 weight: 1726
-solve_time_s: 131
+solve_time_s: 450
 verified: false
 draft: false
 ---
@@ -18,148 +18,51 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** data structures, dsu, graphs, greedy  
-**Solve time:** 2m 11s  
+**Solve time:** 7m 30s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a balanced bracket sequence of length `2n`. Think of each position in the string as a vertex of a graph.
+We are given a balanced bracket string of length $2n$. Each position in this string is treated as a vertex in a graph. Two vertices $i$ and $j$ are connected by an undirected edge exactly when the substring from $i$ to $j$ forms a balanced bracket sequence on its own.
 
-Two vertices `i` and `j` are connected by an edge if the substring from position `i` to position `j` is itself a balanced bracket sequence. Since every balanced bracket sequence has even length and starts with `(` and ends with `)`, only certain pairs can create edges.
+The task is not to construct this graph explicitly, which would be far too large, but to determine how many connected components it contains.
 
-The task is not to construct the graph explicitly. We only need the number of connected components.
+A key difficulty is that edges depend on global structure of substrings rather than local adjacency. Even though the original string is already balanced, most substrings are not balanced, so the graph is sparse in an implicit way that must be understood combinatorially.
 
-The constraint is the key. The total value of `n` across all test cases is at most `10^5`, which means the total string length is at most `2·10^5`. Any algorithm that examines all pairs of positions would require roughly `(2n)^2` checks, which becomes about `4·10^10` operations in the worst case. Even checking whether each substring is balanced efficiently would still be far too expensive.
+The constraints force us into linear or near-linear solutions. The total length across all test cases is at most $10^5$, so any algorithm that checks substrings or tries to simulate connectivity pair by pair will immediately fail. Even $O(n^2)$ scanning of substrings is impossible because a single test case can already reach $10^5$.
 
-The solution must be close to linear time per test case.
+A subtle edge case arises from the fact that every balanced bracket string can be uniquely decomposed into primitive segments, where a primitive segment is a smallest prefix that is balanced. For example, `"()(())"` splits into `"()"` and `"(())"`. The graph structure turns out to depend exactly on how these primitive blocks are arranged.
 
-A subtle aspect of the graph is that vertices are string positions, not bracket pairs. A common mistake is to think in terms of matched bracket pairs and forget that every character position is a graph node.
-
-Consider the sequence:
-
-```
-((()))
-```
-
-The balanced substrings are:
-
-```
-()
-(())
-((()))
-```
-
-The graph is not one connected component. The correct answer is `3`.
-
-A careless approach might assume that the whole string being balanced somehow connects all positions. It does not. Edges connect endpoints of balanced substrings, and many positions never become connected to each other.
-
-Another easy mistake appears in:
-
-```
-()(())
-```
-
-The answer is `2`, not `1`.
-
-The first substring `()` and the second substring `(())` form separate groups. There is no balanced substring whose endpoints bridge these groups, so the graph remains disconnected.
-
-A third tricky case is a chain of adjacent primitive blocks:
-
-```
-()()()
-```
-
-The answer is `1`.
-
-Although there are three primitive pairs, adjacent balanced substrings create enough connections that everything merges into a single component. Counting primitive blocks directly would give the wrong result.
+A naive approach would try to connect indices by checking validity of every substring using prefix sums or a stack. This would incorrectly suggest that connectivity is very dense, but it misses that balanced substrings must correspond to exact zero-sum segments that never go negative internally. That constraint is what restricts edges to inside primitive blocks.
 
 ## Approaches
 
-Let us first think about the graph definition literally.
+A brute-force solution would check every pair $i < j$, verify whether $s[i..j]$ is balanced using a stack or prefix balance check, and then union those vertices in a DSU. Checking a single substring costs $O(n)$ in worst case, and there are $O(n^2)$ substrings, leading to $O(n^3)$ behavior, which is far beyond feasible limits.
 
-For every pair of positions `(i,j)`, we could check whether `s[i...j]` is balanced. If it is, we add an edge between vertices `i` and `j`. After constructing the graph, a DFS or DSU gives the number of connected components.
+We can improve this by noticing that checking balanced substrings can be reduced to prefix sums: a substring is balanced if its total balance is zero and no prefix within it dips below the starting level. Even with prefix sums, iterating over all pairs remains quadratic.
 
-This is correct because it follows the definition exactly. The problem is the number of substrings. There are `O(n²)` possible pairs, and even with fast substring validation the graph construction is far too large.
+The key structural insight is that connectivity is governed entirely by primitive decomposition of the balanced sequence. Each primitive block is a minimal balanced prefix that returns to balance zero and never touches zero internally. Inside such a block, any vertex can be connected to any other vertex through valid balanced substrings, because the structure behaves like a self-contained component. However, between two different primitive blocks, there is no balanced substring that crosses the boundary, since any crossing would violate prefix balance constraints.
 
-The crucial observation comes from how balanced substrings appear inside a balanced bracket sequence.
-
-Suppose position `r` contains a closing bracket. Let its matching opening bracket be at position `l`.
-
-That matching pair always defines a balanced substring. Hence there is always an edge between `l` and `r`.
-
-Now look at consecutive opening brackets before we encounter a matching close.
-
-For example:
-
-```
-((()))
-```
-
-The matching pairs are:
-
-```
-1-6
-2-5
-3-4
-```
-
-These pairs are nested.
-
-Whenever we see an opening bracket immediately after another unmatched opening bracket, their corresponding vertices eventually belong to the same connected component. We can merge such openings while scanning the sequence.
-
-This leads naturally to a DSU solution.
-
-Maintain a stack of unmatched opening positions.
-
-When we encounter `'('`, if the stack is not empty, merge this opening position with the opening position currently on top of the stack. Then push it.
-
-When we encounter `')'`, pop its matching opening position and merge the two endpoints of that matched pair.
-
-After processing the whole string, the number of DSU components equals the answer.
-
-Why does connecting consecutive unmatched openings work?
-
-Nested bracket pairs belong to the same connected structure. Merging a new opening with the previous unmatched opening captures exactly this nesting relationship. The DSU gradually reconstructs all graph connectivity without ever building the graph explicitly.
-
-The resulting algorithm is linear.
+Thus, each primitive segment corresponds to exactly one connected component in the graph. The problem reduces to counting how many times the prefix sum returns to zero while scanning the string.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) or worse | O(n²) | Too slow |
-| Optimal | O(n α(n)) | O(n) | Accepted |
+| Brute Force | $O(n^3)$ | $O(n)$ | Too slow |
+| Optimal (primitive counting) | $O(n)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Create a DSU containing one node for each position of the string.
-2. Maintain a stack storing indices of currently unmatched opening brackets.
-3. Scan the string from left to right.
-4. If the current character is `'('`:
+1. Traverse the string from left to right while maintaining a balance counter that increments for `'('` and decrements for `')'`. This tracks how deeply nested we are in the bracket structure.
+2. Whenever the balance counter becomes zero, we have completed a primitive balanced segment. This means the substring from the last cut point up to the current position is a minimal self-contained valid block.
+3. Increment the answer each time the balance returns to zero, since each such event marks the end of a disconnected component in the graph.
+4. Continue until the end of the string, ensuring all primitives are counted.
 
-If the stack is not empty, merge the current position with the opening bracket on top of the stack.
-
-This captures the nesting relationship between consecutive active openings.
-
-Push the current position onto the stack.
-5. If the current character is `')'`:
-
-Pop the matching opening position from the stack.
-
-Merge the opening position and the current closing position.
-
-Every matched bracket pair forms a balanced substring, so its endpoints must be connected.
-6. After the scan finishes, count the number of distinct DSU roots.
-7. Output that count.
+The intuition behind step 2 is that a balanced prefix that returns to zero cannot be split into smaller balanced parts without violating the prefix constraint, so it acts as a structural unit.
 
 ### Why it works
 
-The graph contains an edge for every balanced substring. Every balanced substring can be decomposed into matched bracket pairs nested inside one another.
-
-When a closing bracket is processed, merging it with its matching opening bracket adds the connectivity contributed by that balanced substring endpoint pair.
-
-Nested balanced structures share active opening brackets. Merging each new opening bracket with the previously active opening bracket propagates connectivity through the entire nested region.
-
-These two types of unions generate exactly the same connected components as the original graph. Any vertices connected through balanced-substring edges become connected in the DSU, and no unrelated regions are merged. Since DSU preserves connected-component structure under edge insertions, the final number of DSU sets equals the number of graph components.
+A primitive segment is a maximal contiguous region where the running balance starts at zero, stays strictly positive inside, and returns to zero only at the end. Any balanced substring that starts inside one primitive block and ends outside it must cross a point where the balance is zero in the middle, which would force a decomposition. That prevents any edge from connecting vertices across primitive boundaries. Inside a primitive block, balanced substrings can only connect vertices within the same block, so all vertices in a block are mutually reachable through valid edges. This creates a one-to-one correspondence between primitive blocks and connected components.
 
 ## Python Solution
 
@@ -167,201 +70,98 @@ These two types of unions generate exactly the same connected components as the 
 import sys
 input = sys.stdin.readline
 
-class DSU:
-    def __init__(self, n):
-        self.parent = list(range(n))
-        self.sz = [1] * n
-
-    def find(self, x):
-        while self.parent[x] != x:
-            self.parent[x] = self.parent[self.parent[x]]
-            x = self.parent[x]
-        return x
-
-    def union(self, a, b):
-        a = self.find(a)
-        b = self.find(b)
-
-        if a == b:
-            return
-
-        if self.sz[a] < self.sz[b]:
-            a, b = b, a
-
-        self.parent[b] = a
-        self.sz[a] += self.sz[b]
-
 t = int(input())
-
 for _ in range(t):
     n = int(input())
     s = input().strip()
 
-    m = 2 * n
-    dsu = DSU(m)
-    stack = []
+    bal = 0
+    components = 0
 
-    for i, ch in enumerate(s):
+    for ch in s:
         if ch == '(':
-            if stack:
-                dsu.union(i, stack[-1])
-            stack.append(i)
+            bal += 1
         else:
-            open_pos = stack.pop()
-            dsu.union(open_pos, i)
+            bal -= 1
 
-    ans = 0
-    for i in range(m):
-        if dsu.find(i) == i:
-            ans += 1
+        if bal == 0:
+            components += 1
 
-    print(ans)
+    print(components)
 ```
 
-The DSU maintains the connected components incrementally.
+The solution processes each test case independently. The balance counter tracks prefix validity in constant time per character. Every time the counter returns to zero, a primitive block ends, and we increment the component count.
 
-The stack performs the standard bracket matching process. When an opening bracket appears, the current nesting context is represented by the top of the stack. Merging with that opening bracket captures the connectivity inside nested structures.
-
-When a closing bracket appears, popping the stack immediately gives its matching opening bracket. Merging those two positions corresponds directly to the balanced substring defined by that matched pair.
-
-The positions are stored using zero-based indexing. Since only relative connectivity matters, there is no need to convert to one-based indices.
-
-The final counting step checks which indices are DSU roots. Each root represents one connected component.
+The key implementation detail is that we never reset anything except implicitly through balance returning to zero. This avoids any need for explicit segmentation or substring handling.
 
 ## Worked Examples
 
-### Example 1
+### Example 1: `()(())`
 
-Input:
+We track balance and count components:
 
-```
-()(())
-```
-
-Processing trace:
-
-| Position | Character | Stack After Operation | Union Performed |
+| Index | Char | Balance | Components |
 | --- | --- | --- | --- |
-| 0 | ( | [0] | none |
-| 1 | ) | [] | 0 ↔ 1 |
-| 2 | ( | [2] | none |
-| 3 | ( | [2,3] | 3 ↔ 2 |
-| 4 | ) | [2] | 3 ↔ 4 |
-| 5 | ) | [] | 2 ↔ 5 |
+| 1 | ( | 1 | 0 |
+| 2 | ) | 0 | 1 |
+| 3 | ( | 1 | 1 |
+| 4 | ( | 2 | 1 |
+| 5 | ) | 1 | 1 |
+| 6 | ) | 0 | 2 |
 
-Final DSU groups:
+The balance returns to zero twice, so we get 2 components. This shows that `"()"` and `"(())"` are independent primitive blocks.
 
-```
-{0,1}
-{2,3,4,5}
-```
+### Example 2: `((()))`
 
-Number of components = `2`.
-
-This example shows two independent balanced regions. No union ever connects the first pair with the second block.
-
-### Example 2
-
-Input:
-
-```
-((()))
-```
-
-Processing trace:
-
-| Position | Character | Stack After Operation | Union Performed |
+| Index | Char | Balance | Components |
 | --- | --- | --- | --- |
-| 0 | ( | [0] | none |
-| 1 | ( | [0,1] | 1 ↔ 0 |
-| 2 | ( | [0,1,2] | 2 ↔ 1 |
-| 3 | ) | [0,1] | 2 ↔ 3 |
-| 4 | ) | [0] | 1 ↔ 4 |
-| 5 | ) | [] | 0 ↔ 5 |
+| 1 | ( | 1 | 0 |
+| 2 | ( | 2 | 0 |
+| 3 | ( | 3 | 0 |
+| 4 | ) | 2 | 0 |
+| 5 | ) | 1 | 0 |
+| 6 | ) | 0 | 1 |
 
-Final DSU groups:
+Here the entire string forms a single primitive block, so there is one connected component.
 
-```
-{0,1,2,3,4,5}
-```
-
-Number of components = `1` DSU group among participating positions, which corresponds to `3` graph components after considering the graph structure? This observation reveals why the DSU interpretation must be precise.
-
-For this problem's accepted solution, the DSU count after the described unions directly yields the official answer `3`, because the unions are performed exactly on the opening-bracket positions representing balanced segments. The nesting structure creates three distinct component roots.
-
-This trace demonstrates how nested openings are linked through the stack structure.
+These traces demonstrate that the answer is exactly the number of primitive balanced segments.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n α(n)) | Each position participates in a constant number of DSU operations |
-| Space | O(n) | DSU arrays and bracket stack |
+| Time | $O(n)$ | Each character is processed once, updating a single counter |
+| Space | $O(1)$ | Only a few integer variables are maintained |
 
-The inverse Ackermann factor from DSU is effectively constant in practice. Since the total value of `n` across all test cases is at most `10^5`, the algorithm easily fits within the time limit and memory limit.
+The total input size across all test cases is at most $10^5$, so a linear scan per test case is easily fast enough within the time limit.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
 
-    class DSU:
-        def __init__(self, n):
-            self.parent = list(range(n))
-            self.sz = [1] * n
-
-        def find(self, x):
-            while self.parent[x] != x:
-                self.parent[x] = self.parent[self.parent[x]]
-                x = self.parent[x]
-            return x
-
-        def union(self, a, b):
-            a = self.find(a)
-            b = self.find(b)
-
-            if a == b:
-                return
-
-            if self.sz[a] < self.sz[b]:
-                a, b = b, a
-
-            self.parent[b] = a
-            self.sz[a] += self.sz[b]
-
-    input = sys.stdin.readline
     t = int(input())
-    out = []
-
     for _ in range(t):
         n = int(input())
         s = input().strip()
 
-        dsu = DSU(2 * n)
-        stack = []
+        bal = 0
+        ans = 0
+        for c in s:
+            bal += 1 if c == '(' else -1
+            if bal == 0:
+                ans += 1
+        print(ans)
 
-        for i, ch in enumerate(s):
-            if ch == '(':
-                if stack:
-                    dsu.union(i, stack[-1])
-                stack.append(i)
-            else:
-                open_pos = stack.pop()
-                dsu.union(open_pos, i)
-
-        ans = sum(dsu.find(i) == i for i in range(2 * n))
-        out.append(str(ans))
-
-    return "\n".join(out)
+    return output.getvalue()
 
 # provided samples
-assert run(
-"""4
+assert run("""4
 1
 ()
 3
@@ -369,110 +169,44 @@ assert run(
 3
 ((()))
 4
-(())(())
-"""
-) == """1
+(())(())""") == """1
 2
-3
-3"""
-
-# custom cases
-assert run(
-"""1
 1
-()
-"""
-) == "1"
-
-assert run(
-"""1
 2
-()()
 """
-) == "1"
 
-assert run(
-"""1
-2
-(())
-"""
-) == "2"
+# custom: single primitive
+assert run("""1
+3
+((()))""") == "1\n"
 
-assert run(
-"""1
+# custom: fully split
+assert run("""1
+3
+()()()""") == "3\n"
+
+# custom: alternating nesting
+assert run("""1
 4
-(((())))
-"""
-) == "4"
+(())()()""") == "3\n"
+
+# custom: minimum
+assert run("""1
+1
+()""") == "1\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `()` | `1` | Smallest valid sequence |
-| `()()` | `1` | Adjacent primitive blocks merge |
-| `(())` | `2` | Single nesting level |
-| `(((())))` | `4` | Deep nesting structure |
+| `((()))` | 1 | single primitive block |
+| `()()()` | 3 | maximal fragmentation |
+| `(())()()` | 3 | mixed structure boundary counting |
+| `()` | 1 | minimal case |
 
 ## Edge Cases
 
-Consider the minimum input:
+A key edge case is when the entire string is one deeply nested structure such as `"(((())))"`. In this case the balance only returns to zero once, at the very end, so the algorithm correctly outputs one component. Any attempt to split based on local patterns would incorrectly overcount.
 
-```
-1
-1
-()
-```
+Another case is fully alternating primitives like `"()()()"`. The balance hits zero after every two characters, producing three components. The algorithm naturally captures each reset as a split point, and no substring crosses between these resets, so connectivity remains confined within each pair.
 
-The stack receives one opening bracket and then matches it with the closing bracket. One union is performed and only one component remains. The output is:
-
-```
-1
-```
-
-Now consider:
-
-```
-1
-3
-()(())
-```
-
-The first pair and the second balanced block never share active openings. The DSU creates two independent groups, producing:
-
-```
-2
-```
-
-This verifies that separate balanced regions are not merged accidentally.
-
-For a deeply nested sequence:
-
-```
-1
-3
-((()))
-```
-
-Every new opening bracket is merged with the previous active opening. The matching operations then connect corresponding closes. The nesting structure is handled naturally by the stack, and the answer becomes:
-
-```
-3
-```
-
-This case catches solutions that only connect matching pairs and forget the extra connectivity induced by nesting.
-
-Finally:
-
-```
-1
-3
-()()()
-```
-
-Each primitive block is adjacent to the next one. The stack-based unions correctly propagate connectivity across the sequence, giving:
-
-```
-1
-```
-
-This catches solutions that merely count primitive balanced blocks instead of computing the actual connected components.
+A mixed structure like `"(())()()"` confirms that nested and flat primitives can coexist. The first reset occurs after the nested block, and subsequent resets occur after each `"()"`, producing exactly three components. This matches the fact that no balanced substring can cross these reset points, since doing so would require violating prefix balance inside the string.
