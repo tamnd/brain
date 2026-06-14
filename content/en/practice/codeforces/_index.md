@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1434 contests, 8160 problems, 3909 verified."
+description: "Codeforces problem solutions with full editorials. 1435 contests, 8162 problems, 3909 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1434 contests, 8160 problems, 3909 verified.**
+**1435 contests, 8162 problems, 3909 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -490,7 +490,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 6 | 4/6 | Div. 2 | 800-2500 |
 
-## 2019 — 154 contests, 771 problems, 450 verified
+## 2019 — 155 contests, 773 problems, 450 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -606,6 +606,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1225](1225/) | [Technocup 2020 - Elimination Round 2](https://codeforces.com/contest/1225) | 5 | 4/5 | Special | 900-3100 |
 | [1227](1227/) | [Technocup 2020 - Elimination Round 3](https://codeforces.com/contest/1227) | 4 | 2/4 | Special | 1100-2400 |
 | [1228](1228/) | [Codeforces Round 589 (Div. 2)](https://codeforces.com/contest/1228) | 4 | 3/4 | Div. 2 | 800-2500 |
+| [1231](1231/) | [Dasha Code Championship - Novosibirsk Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1231) | 2 | 0/2 | Special | 1100-2200 |
 | [1234](1234/) | [Codeforces Round 590 (Div. 3)](https://codeforces.com/contest/1234) | 4 | 3/4 | Div. 3 | 800-2000 |
 | [1236](1236/) | [Codeforces Round 593 (Div. 2)](https://codeforces.com/contest/1236) | 4 | 1/4 | Div. 2 | 800-3000 |
 | [1237](1237/) | [Codeforces Global Round 5](https://codeforces.com/contest/1237) | 5 | 2/5 | Global | 1000-3500 |
