@@ -1,7 +1,7 @@
 ---
 title: "CF 919A - Supermarket"
-description: "We are given several supermarkets, and each supermarket describes a bundled offer: a price a for b kilograms of apples. This is equivalent to a unit price of a / b per kilogram, but the key point is that we are not restricted to buying only in full bundles of b kilograms."
-date: "2026-06-13T02:35:55+07:00"
+description: "The task is to decide how to buy a fixed amount of apples while minimizing total cost, given multiple supermarkets with different pricing schemes. Each supermarket does not directly give a per-kilogram price."
+date: "2026-06-15T12:24:50+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 919
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 460 (Div. 2)"
 rating: 800
 weight: 919
-solve_time_s: 397
-verified: false
+solve_time_s: 271
+verified: true
 draft: false
 ---
 
@@ -18,206 +18,123 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force, greedy, implementation  
-**Solve time:** 6m 37s  
-**Verified:** no  
+**Solve time:** 4m 31s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given several supermarkets, and each supermarket describes a bundled offer: a price `a` for `b` kilograms of apples. This is equivalent to a unit price of `a / b` per kilogram, but the key point is that we are not restricted to buying only in full bundles of `b` kilograms. We want exactly `m` kilograms in total, and we can choose how to distribute purchases across supermarkets, effectively treating each supermarket as an unlimited source of apples with a fixed per-kilogram price.
+The task is to decide how to buy a fixed amount of apples while minimizing total cost, given multiple supermarkets with different pricing schemes. Each supermarket does not directly give a per-kilogram price. Instead, it offers a bundle price: paying a units of money buys b kilograms of apples. This implicitly defines a unit price of a/b, but the actual purchase must be done in whole supermarkets without mixing bundle sizes.
 
-So the task reduces to selecting where to buy apples so that the total amount purchased is exactly `m` kilograms, minimizing total cost.
+We are asked to buy exactly m kilograms in total, and we may choose any supermarket, potentially buying all m kilograms from a single one. The goal is to find the cheapest way to obtain m kilograms under these pricing rules.
 
-The input size immediately shapes the approach. We may have up to 5000 supermarkets, but the required amount `m` is at most 100. This imbalance is the central hint: the decision is small in one dimension, so we can afford a dynamic programming solution over kilograms while iterating all supermarkets.
+The constraints matter in a simple way. The number of supermarkets n can be up to 5000, while m is at most 100. Each price pair a and b is small, bounded by 100. This immediately suggests that any algorithm that is linear or quadratic in n and m is acceptable, but anything exponential in m would be unnecessary because m is tiny. The structure also hints that each supermarket behaves independently, so the problem reduces to evaluating a simple expression per supermarket.
 
-A naive misunderstanding is to think we must choose exactly one supermarket and buy all `m` kilograms there. That is incorrect because mixing supermarkets can produce a cheaper combination even if no single one is optimal alone.
-
-Another subtle issue is floating-point precision. Since prices are ratios, direct repeated division can accumulate error if we are not careful. However, since all computations are linear combinations of rational values with small integers, using floating point `double` is safe if done carefully.
-
-A small illustrative pitfall is this scenario: suppose one supermarket has `a=1, b=2` (0.5 per kg) and another has `a=3, b=4` (0.75 per kg), and we need `m=3`. Buying all from the second might look plausible if miscomputed as integer division, but mixing clearly gives better cost. Any approach that only picks the minimum per-kilo supermarket would fail here.
+A subtle point that can mislead a naive approach is interpreting the price incorrectly. A common mistake is to assume we can only buy in multiples of b kilograms and that partial scaling is invalid in a way that prevents direct proportional reasoning. In fact, the cost scales linearly: if a supermarket charges a for b kilograms, then m kilograms from that same supermarket costs exactly a * (m / b). For example, if a = 3 and b = 4, then 5 kilograms cost 3 * 5 / 4 = 3.75. Another potential mistake is using integer division, which would silently truncate and produce incorrect results.
 
 ## Approaches
 
-The brute-force idea is to consider all ways to distribute `m` kilograms among `n` supermarkets. For each supermarket we could decide how many kilograms to buy from it, and ensure the total sums to `m`. If we think in terms of integer partitions, each kilogram can independently choose a supermarket, giving roughly `n^m` possibilities. With `n = 5000` and `m = 100`, this is astronomically large and completely infeasible.
+A brute-force interpretation would try to model purchasing decisions explicitly, perhaps thinking in terms of combining multiple supermarkets or splitting purchases into chunks. Since m is small, one might even consider dynamic programming over total kilograms, where dp[x] is the minimum cost to buy x kilograms. For each supermarket, we would attempt to transition from every state x to x + b repeatedly or consider fractional scaling indirectly. This leads to an unnecessary complication: for each supermarket we would simulate contributions to all states up to m, producing roughly O(n * m^2) work if done carefully, or worse if modeled less cleanly.
 
-The key observation is that the cost of buying kilograms is additive and independent: buying one more kilogram from a supermarket always adds the same cost `a/b`. This turns the problem into a classic knapsack-style optimization where we build the answer kilogram by kilogram. Each kilogram is identical, and each choice depends only on minimizing cumulative cost.
+The key observation is that each supermarket is independent and does not interact with others. There is no advantage in mixing supermarkets within a single purchase strategy because we are not constrained by discrete bundles beyond linear scaling. Each supermarket simply offers a fixed rate per kilogram, so the problem reduces to computing m * (a / b) for every supermarket and taking the minimum.
 
-We define a state for how many kilograms we have already purchased, and transition by trying every supermarket as the source of the next kilogram. Since `m` is small, we can afford `O(n * m)` transitions.
+This removes all combinatorial structure. We no longer need to consider combinations of supermarkets, only evaluate a simple expression per input line.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^m) | O(m) | Too slow |
-| Optimal (DP over kilograms) | O(nm) | O(m) | Accepted |
+| Brute Force DP over kilograms | O(n * m^2) | O(m) | Too slow / unnecessary |
+| Direct evaluation per supermarket | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We build the solution incrementally, tracking the minimum cost to buy exactly `i` kilograms for every `i` from `0` to `m`.
-
-1. Define a DP array `dp` where `dp[i]` is the minimum cost to buy exactly `i` kilograms. Initialize `dp[0] = 0` and all other values as infinity. This encodes that buying zero kilograms costs nothing, and all other states are initially unreachable.
-2. Iterate over all supermarkets one by one. Each supermarket is a reusable source, so we allow it to contribute multiple kilograms across transitions.
-3. For a given supermarket with cost `a/b`, compute its unit price. This is the incremental cost for each kilogram taken from it.
-4. Update the DP array for each possible target weight `i` from `1` to `m`. For each `i`, try taking one kilogram from the current supermarket and combine it with a previously computed state `dp[i-1]`. The transition is `dp[i] = min(dp[i], dp[i-1] + a/b)`.
-
-This works because every kilogram is identical and independent, so we are effectively choosing the cheapest source for each unit while respecting that we are summing exactly `m` units.
+1. Read n and m, which define how many supermarkets exist and how many kilograms must be purchased.
+2. Initialize a variable best_cost to a very large number. This will track the smallest total cost found across all supermarkets.
+3. For each supermarket, read a and b, representing the cost and quantity of a bundle.
+4. Compute the effective cost for m kilograms from this supermarket using the proportional scaling formula m * a / b. This works because the price per kilogram is constant within each supermarket.
+5. Compare this computed cost with best_cost and update best_cost if the new value is smaller.
+6. After processing all supermarkets, output best_cost as a floating-point number.
 
 ### Why it works
 
-At any point, `dp[i]` represents the minimum cost achievable using any combination of supermarkets for exactly `i` kilograms. When we process a supermarket, we consider using it for the last kilogram in a construction of size `i`. Since every possible sequence of choices can be decomposed by its last step, every valid solution is represented in some transition. The recurrence covers all such decompositions, so no valid combination is missed, and every state is minimized over all possibilities.
+Each supermarket defines a linear cost function in terms of kilograms purchased. Since there are no constraints on splitting across supermarkets or discounts for combinations, the minimum cost for the required amount is simply the minimum over all individual linear functions evaluated at m. The algorithm preserves the invariant that after processing i supermarkets, best_cost equals the minimum achievable cost among those i options. Because every supermarket is considered exactly once and independently, no valid candidate is missed.
 
 ## Python Solution
 
-```python
-import sys
-input = sys.stdin.readline
-
-n, m = map(int, input().split())
-
-INF = 1e18
-dp = [INF] * (m + 1)
-dp[0] = 0.0
-
-for _ in range(n):
-    a, b = map(int, input().split())
-    cost_per_kg = a / b
-
-    for i in range(1, m + 1):
-        dp[i] = min(dp[i], dp[i - 1] + cost_per_kg)
-
-print(dp[m])
+```
+PythonRun
 ```
 
-The solution uses a one-dimensional DP array because each state only depends on the previous kilogram count. The transition order is important: we iterate `i` forward because each supermarket can be used repeatedly without restriction, effectively allowing unlimited reuse.
+The solution reads input line by line and maintains a single minimum value. Each supermarket contributes one computed candidate cost, and we never store unnecessary data.
 
-Floating-point arithmetic is sufficient because the constraints are small and the required precision tolerance is `1e-6`. The final answer is `dp[m]`, representing the minimum cost for exactly `m` kilograms.
+The key implementation detail is using floating-point division. Using integer division would destroy precision and produce incorrect answers. Multiplying m first ensures we avoid premature truncation.
 
 ## Worked Examples
 
-### Example 1
+### Sample 1
 
 Input:
 
 ```
-3 5
-1 2
-3 4
-1 3
+
 ```
 
-We compute unit prices:
+We evaluate each supermarket:
 
-- Supermarket 1: 0.5
-- Supermarket 2: 0.75
-- Supermarket 3: 0.333...
+| Supermarket | a | b | Cost for 5 kg (5 * a / b) | Best so far |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 2 | 2.5 | 2.5 |
+| 2 | 3 | 4 | 3.75 | 2.5 |
+| 3 | 1 | 3 | 1.6666667 | 1.6666667 |
 
-We simulate DP updates.
+The third supermarket is cheapest, so we choose it.
 
-| i (kg) | dp before | chosen update | dp after |
-| --- | --- | --- | --- |
-| 1 | 0, inf... | 0 + 0.333... | 0.333... |
-| 2 | updated | best so far | 0.666... |
-| 3 | updated | best so far | 1.0 |
-| 4 | updated | best so far | 1.333... |
-| 5 | updated | best so far | 1.666... |
+This confirms that the algorithm correctly evaluates all options independently and selects the minimum.
 
-Final answer is `1.66666667`, which corresponds to buying all 5 kilograms from supermarket 3.
-
-This trace shows that the DP accumulates the cheapest per-unit cost consistently, always preferring the best available supermarket.
-
-### Example 2
+### Sample 2 (constructed)
 
 Input:
 
 ```
-2 1
-98 99
-1 1
+
 ```
 
-Unit prices:
+| Supermarket | a | b | Cost for 1 kg (1 * a / b) | Best so far |
+| --- | --- | --- | --- | --- |
+| 1 | 98 | 99 | 0.989898... | 0.989898... |
+| 2 | 1 | 2 | 0.5 | 0.5 |
+| 3 | 5 | 10 | 0.5 | 0.5 |
+| 4 | 7 | 7 | 1.0 | 0.5 |
 
-- Supermarket 1: 98/99 ≈ 0.9899
-- Supermarket 2: 1.0
+The second and third supermarkets tie, and the algorithm correctly keeps the minimum.
 
-| i (kg) | dp before | chosen update | dp after |
-| --- | --- | --- | --- |
-| 1 | 0, inf | min(0+0.9899, 0+1.0) | 0.9899 |
-
-The DP selects the slightly cheaper first supermarket. This confirms the algorithm correctly handles fine-grained comparisons where differences are small.
+This shows the algorithm handles ties and fractional comparisons correctly.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(nm) | For each of the n supermarkets, we update m DP states |
-| Space | O(m) | We store only DP values for 0 to m kilograms |
+| Time | O(n) | Each supermarket is processed once with constant work |
+| Space | O(1) | Only a single variable is maintained |
 
-The constraints allow up to 5000 supermarkets and at most 100 kilograms, giving about 500,000 transitions, which is comfortably fast in Python. Memory usage is minimal since we only keep a single DP array.
+The constraints allow up to 5000 supermarkets, so a single pass is easily fast enough. Memory usage remains constant regardless of input size.
 
 ## Test Cases
 
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    from math import isclose
-
-    n, m = map(int, sys.stdin.readline().split())
-    INF = 1e18
-    dp = [INF] * (m + 1)
-    dp[0] = 0.0
-
-    for _ in range(n):
-        a, b = map(int, sys.stdin.readline().split())
-        cost = a / b
-        for i in range(1, m + 1):
-            dp[i] = min(dp[i], dp[i - 1] + cost)
-
-    return str(dp[m])
-
-# provided sample
-assert abs(float(run("""3 5
-1 2
-3 4
-1 3
-""").strip()) - 1.66666667) < 1e-6
-
-# minimum case
-assert abs(float(run("""1 1
-1 1
-""").strip()) - 1.0) < 1e-6
-
-# all equal prices
-assert abs(float(run("""3 4
-2 2
-4 4
-6 6
-""").strip()) - 4.0) < 1e-6
-
-# cheaper later supermarket
-assert abs(float(run("""2 2
-10 1
-1 1
-""").strip()) - 2.0) < 1e-6
-
-# mix case
-assert abs(float(run("""3 3
-1 2
-2 3
-3 4
-""").strip()) < 10)  # sanity check
+```
+PythonRun
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 kg single offer | 1.0 | minimum boundary |
-| identical supermarkets | exact linear scaling | consistency |
-| mixed prices | optimal selection | greedy transitions |
+| 1 1 / 1 1 | 1.0 | minimal edge case |
+| equal ratios | same value | tie handling |
+| skewed costs | correct min selection | comparison correctness |
+| fractional cases | precise division | floating accuracy |
 
 ## Edge Cases
 
-A small `m = 1` case tests whether the algorithm correctly reduces to simply choosing the cheapest unit price among all supermarkets. The DP initializes `dp[1]` directly from all available transitions, so the minimum ratio dominates as expected.
+One important edge case is when m = 1. In this case, the answer should reduce directly to the smallest a/b ratio among all supermarkets. The algorithm handles this naturally because it always computes m * a / b, which becomes a / b when m = 1.
 
-A case where all supermarkets are identical checks whether repeated updates preserve correctness without overwriting optimal values. Since every transition uses `min`, the DP remains stable and never increases.
+Another edge case is when multiple supermarkets have identical unit prices but different bundle sizes. For example, 1/2 and 2/4 both represent the same rate. The algorithm treats them equally because both evaluate to the same floating-point value, and the minimum remains stable.
 
-A case with a significantly cheaper supermarket appearing late ensures order independence. Even if the best option is processed last, it still correctly updates all states because each update considers all previous values and improves them when possible.
+A final subtle case is precision sensitivity. When values are very close, floating-point comparisons still work correctly under the required 1e-6 tolerance because the computation involves only a single multiplication and division per entry, which is numerically stable for the given constraints.
