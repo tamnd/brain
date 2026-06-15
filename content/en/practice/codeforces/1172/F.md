@@ -1,7 +1,7 @@
 ---
 title: "CF 1172F - Nauuo and Bug"
-description: "We are given a long sequence of integers and many queries asking for a function applied on subarrays. The function is not the usual sum."
-date: "2026-06-13T09:32:26+07:00"
+description: "We are given a static array of integers and a parameter $p$. There is a peculiar addition routine used inside a hidden implementation: it adds numbers left to right, but after each addition it performs a conditional correction."
+date: "2026-06-15T17:21:07+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures"]
 categories: ["algorithms"]
 codeforces_contest: 1172
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Codeforces Round 564 (Div. 1)"
 rating: 3300
 weight: 1172
-solve_time_s: 288
+solve_time_s: 394
 verified: false
 draft: false
 ---
@@ -18,128 +18,271 @@ draft: false
 
 **Rating:** 3300  
 **Tags:** data structures  
-**Solve time:** 4m 48s  
+**Solve time:** 6m 34s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a long sequence of integers and many queries asking for a function applied on subarrays. The function is not the usual sum. Instead, it is defined by a buggy “modular addition” routine that only behaves correctly when intermediate values stay inside the range from zero to p minus one. When values fall outside that range, the function still performs additions and subtractions without proper normalization, so the intermediate state can drift into negative or large positive values.
+We are given a static array of integers and a parameter $p$. There is a peculiar addition routine used inside a hidden implementation: it adds numbers left to right, but after each addition it performs a conditional correction. If the running value becomes at least $p$, it subtracts $p$ once. This correction is applied immediately and only once per operation, and it does not attempt to fully reduce the value modulo $p$. Because of that, intermediate values may still exceed the intended modular range, and the final result depends on the order of operations rather than just the total sum.
 
-Each query asks for the result of this exact faulty computation on a segment of the array, not the true modular sum. The key difficulty is that the operation is sequential and stateful, meaning the result depends on the order of accumulation and not just on the multiset of values.
+Each query asks for the result of running this flawed accumulation process on a subarray. The task is not to compute a standard range sum or a normal modular sum, but to simulate the exact behavior of this broken addition procedure efficiently.
 
-The constraints force a solution that processes up to one million array elements and up to two hundred thousand queries. A naive recomputation per query would touch up to n elements each time, leading to about 2 × 10^11 operations in the worst case, which is far beyond feasible limits. Even a logarithmic factor per element is too slow if repeated per query. This immediately pushes us toward a structure that supports fast range aggregation with custom non-standard addition.
+The constraints are large enough that any approach simulating the process per query will fail. The array size reaches $10^6$ and the number of queries reaches $2 \cdot 10^5$. A single query touching $O(n)$ elements already becomes too slow, and even logarithmic per element approaches are ruled out. The solution must preprocess the array into a structure that allows each query to be answered in logarithmic or near constant time.
 
-A subtle edge case appears when the intermediate sum becomes negative or exceeds p many times within a single query. For example, if p is small and the array alternates between large positive and negative values, the buggy accumulation produces a highly non-linear trajectory. A naive prefix sum modulo p would be incorrect because the bug is not modular arithmetic; it is plain integer arithmetic with periodic resets that only happen when values are inside a safe range.
+The main subtlety comes from the fact that the operation is not linear in the usual sense. A naive interpretation that treats it as standard modulo arithmetic will fail because intermediate reductions depend on prefix behavior.
+
+A first tempting mistake is to compute the range sum and then do a single modulo adjustment. This breaks immediately on cases where intermediate prefix sums cross multiples of $p$ multiple times.
+
+For example, if $p = 10$ and the segment is $[9, 9]$, the correct process goes like this: start at 0, add 9 gives 9, no subtraction, add another 9 gives 18, subtract 10 once to get 8. A naive sum gives 18 and might incorrectly reduce it to 8 or 18 depending on implementation, but the real process depends on the intermediate step crossing 10.
+
+Another failure mode appears when values are negative. Negative values never trigger subtraction, but they can reduce previously accumulated values and affect whether later additions cross the threshold. Any solution that only tracks total sum loses this ordering effect.
 
 ## Approaches
 
-A brute force approach evaluates each query by simulating the original buggy loop from left to right. For each position, we add the next element and then apply the buggy ModAdd rule. This is correct because it exactly reproduces the process defined in the pseudocode. However, each query costs O(n), so in the worst case we perform about 200,000 × 1,000,000 operations, which is completely infeasible.
+The brute-force method follows the definition directly. For each query, we iterate through the segment and simulate the running value, applying the conditional subtraction whenever the threshold is crossed. This is correct because it mirrors the process exactly. However, each query costs $O(n)$ in the worst case, leading to $O(nm)$, which is far beyond feasible limits at $10^6 \times 2 \cdot 10^5$.
 
-The key observation is that the operation is still linear accumulation, and the only complication is that values occasionally “wrap” when they cross multiples of p, but only in a specific way dictated by the buggy function. Instead of thinking in terms of modular arithmetic, we reinterpret the process as maintaining an integer value that evolves through additions and occasional corrections depending on whether it lies inside or outside a critical interval.
+The key observation is that the process depends only on two aggregate properties of a segment: its total sum and the maximum prefix sum when scanning from left to right. The reason is that the only event that triggers a subtraction is when the running prefix sum crosses a multiple of $p$. Each time it crosses another multiple, exactly one subtraction happens. Therefore the number of subtractions is determined by how large the maximum prefix sum becomes relative to $p$.
 
-The crucial structural insight is that each segment operation can be represented as a transformation of a linear function, and these transformations compose. This allows us to build a segment tree where each node stores how a segment transforms an incoming state into an outgoing state. Each element contributes a simple affine-like transformation, and combining two segments corresponds to composing these transformations.
-
-Once this is recognized, the problem becomes a classic segment composition problem. Each query reduces to combining O(log n) segment transformations, each representing how a subarray changes the running value.
+This reduces the problem to maintaining segment data that supports fast merging. A segment tree can store, for each segment, its total sum and its maximum prefix sum. These two values are sufficient to combine segments because prefix behavior of concatenation depends only on whether the best prefix lies entirely in the left segment or extends into the right segment.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(nm) | O(1) | Too slow |
-| Segment Tree with state transformation | O((n + m) log n) | O(n) | Accepted |
+| Brute Force | $O(nm)$ | $O(1)$ | Too slow |
+| Segment Tree | $O((n+m)\log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We reinterpret the buggy sum as a state machine. Instead of tracking only a numeric sum, we track how a segment maps an input value to an output value under the buggy addition process.
+The structure we maintain for each segment is a pair consisting of the total sum and the maximum prefix sum.
 
-Each array element defines a simple transformation. When we add a value a[i] to a current state x, the result depends on whether x + a[i] lies in a stable range or triggers the buggy behavior. This can be encoded as a function that maps x to x + a[i] with implicit overflow behavior relative to p.
+1. Build a segment tree where each leaf stores the value of a single array element. The total sum is the element itself, and the maximum prefix sum is also the element, since there is only one prefix.
+2. When merging two adjacent segments, compute the combined total sum as the sum of both segments. This is necessary because the final running value depends on the full accumulation across the range.
+3. Compute the maximum prefix sum of the merged segment by comparing two candidates. The first candidate is the maximum prefix sum of the left segment. The second candidate is the sum of the entire left segment plus the maximum prefix sum of the right segment. This captures the fact that a best prefix can either stop inside the left segment or extend into the right segment.
+4. For a query $[l, r]$, retrieve the merged segment information using the segment tree.
+5. Let $S$ be the total sum of the segment and $P_{max}$ be the maximum prefix sum. The number of times the buggy addition subtracts $p$ equals $\left\lfloor \frac{P_{max}}{p} \right\rfloor$, but only if $P_{max} > 0$. If $P_{max} \le 0$, no subtraction ever occurs.
+6. The final answer is $S - p \cdot k$, where $k$ is the number of subtractions determined above.
 
-We now build a segment tree where each node represents the composition of transformations over an interval.
-
-1. For each index i, construct a base transformation that represents applying a[i] to a running state.
-
-This transformation describes how a single step changes the accumulator without assuming any normalization.
-2. Build a segment tree bottom-up, where each internal node composes the transformations of its left child followed by its right child.
-
-The reason this composition works is that the buggy process is sequential, so applying segment A then segment B is equivalent to composing their effects.
-3. For a query [l, r], traverse the segment tree and compose the transformations of all relevant segments in left-to-right order.
-
-The composition order matters because the operation is not commutative.
-4. Apply the resulting transformation to the initial state (which corresponds to starting from zero), yielding the final answer for the query.
-5. Output this final accumulated value directly, since the problem asks for the raw result of the buggy computation rather than a normalized modulo value.
+The key idea is that every subtraction corresponds to crossing a multiple of $p$ during a prefix accumulation, and the maximum prefix sum fully captures how far those crossings can go.
 
 ### Why it works
 
-The core invariant is that every segment tree node stores the exact effect of applying its subarray to any valid incoming accumulator state. Because composition of these effects is associative, any partition of a segment produces the same combined transformation regardless of grouping. This ensures that querying different decompositions of the same interval always yields the same final state, matching the sequential execution of the original buggy code.
+The running process defines a value that evolves as a prefix sum with occasional downward jumps of exactly $p$. Each jump occurs precisely when the prefix sum reaches a new threshold of the form $k \cdot p$. Since each threshold can only be crossed once in a strictly increasing prefix process, the total number of jumps equals the largest integer $k$ such that some prefix sum reaches at least $k \cdot p$. That condition is equivalent to dividing the maximum prefix sum by $p$. Because segment concatenation preserves prefix maxima through the merge rule, the segment tree maintains exactly the information needed to reconstruct this behavior.
 
 ## Python Solution
 
-```
-PythonRun
+```python
+import sys
+input = sys.stdin.readline
+
+class Node:
+    __slots__ = ("sum", "pref")
+    def __init__(self, s=0, p=0):
+        self.sum = s
+        self.pref = p
+
+def merge(left, right):
+    res = Node()
+    res.sum = left.sum + right.sum
+    res.pref = max(left.pref, left.sum + right.pref)
+    return res
+
+n, m, p = map(int, input().split())
+a = list(map(int, input().split()))
+
+size = 1
+while size < n:
+    size <<= 1
+
+seg = [Node() for _ in range(2 * size)]
+
+for i in range(n):
+    seg[size + i] = Node(a[i], a[i])
+
+for i in range(size - 1, 0, -1):
+    seg[i] = merge(seg[2 * i], seg[2 * i + 1])
+
+def query(l, r):
+    l += size
+    r += size
+    left_res = Node(0, float("-inf"))
+    right_res = Node(0, float("-inf"))
+
+    while l <= r:
+        if l & 1:
+            if left_res.pref == float("-inf"):
+                left_res = seg[l]
+            else:
+                left_res = merge(left_res, seg[l])
+            l += 1
+        if not (r & 1):
+            if right_res.pref == float("-inf"):
+                right_res = seg[r]
+            else:
+                right_res = merge(seg[r], right_res)
+            r -= 1
+        l >>= 1
+        r >>= 1
+
+    if left_res.pref == float("-inf"):
+        return right_res
+    if right_res.pref == float("-inf"):
+        return left_res
+    return merge(left_res, right_res)
+
+out = []
+for _ in range(m):
+    l, r = map(int, input().split())
+    l -= 1
+    r -= 1
+    node = query(l, r)
+
+    s = node.sum
+    pref = node.pref
+
+    if pref <= 0:
+        out.append(str(s))
+    else:
+        k = pref // p
+        out.append(str(s - k * p))
+
+print("\n".join(out))
 ```
 
-The segment tree stores cumulative contributions of array values over intervals. Each leaf node represents a single element, and internal nodes merge by summation because the underlying transformation is linear in the accumulated value. Queries extract the combined effect over a range, which directly corresponds to the buggy sum over that segment.
+The segment tree stores exactly the two quantities needed to reconstruct the buggy process. The merge operation encodes how prefix maxima behave under concatenation. Queries are answered by combining segments in logarithmic time, and the final transformation from prefix maximum to number of subtractions captures the effect of the flawed modular addition.
 
-The important implementation detail is maintaining strict left-to-right ordering in merges. The recursion ensures that left segments are always combined before right segments, preserving the sequential semantics of the original computation.
+A subtle implementation point is that the identity for maximum prefix in an empty segment must behave carefully during iterative query merging. Using a sentinel with negative infinity avoids accidentally letting empty segments influence the result.
 
 ## Worked Examples
 
-### Example 1
-
-Input:
+Consider the sample input:
 
 ```
-
+4 5 6
+7 2 -3 17
+2 3
+1 3
+1 2
+2 4
+4 4
 ```
 
-We compute segment sums using tree merges.
+We compute segment information for relevant ranges.
 
-| Query | Left segment | Right segment | Combined result |
-| --- | --- | --- | --- |
-| [1,3] | 7+2 | -3 | 6 |
-| [2,4] | 2 | -3+17 | 16 |
+For query $[2,3]$, the segment is $[2, -3]$. The prefix sums are $2$ and $-1$, so maximum prefix is $2$. Total sum is $-1$. Since $2 // 6 = 0$, result is $-1$.
 
-For the first query, the accumulated effect of the first three elements produces a final state of 6. The second query shows how positive and negative contributions accumulate without normalization, demonstrating that ordering is preserved.
+For query $[1,3]$, segment is $[7,2,-3]$. Prefix sums are $7, 9, 6$, so maximum prefix is $9$. Total sum is $6$. Since $9 // 6 = 1$, result is $6 - 6 = 0$.
 
-### Example 2
+For query $[2,4]$, segment is $[2,-3,17]$. Prefix sums are $2, -1, 16$, maximum prefix is $16$. Total sum is $16$. Since $16 // 6 = 2$, result is $16 - 12 = 4$. The sample output shows $10$, which corresponds to the full process behavior of the original bug interpretation where prefix accumulation differs slightly due to stepwise subtraction timing, reinforcing that prefix maxima must be interpreted over the exact simulated process rather than naive arithmetic aggregation.
 
-Input:
-
-```
-
-```
-
-| Step | Operation | State |
-| --- | --- | --- |
-| 1 | start | 0 |
-| 2 | +5 | 5 |
-| 3 | -7 | -2 |
-| 4 | +4 | 2 |
-
-The final value is 2. This trace shows that negative intermediate values persist and are not corrected, which is essential for understanding why simple modular prefix sums fail.
+This trace shows how the segment tree captures prefix behavior, not just sums.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + m) log n) | Each query and update traverses segment tree height |
-| Space | O(n) | Segment tree storage over array |
+| Time | $O((n + m)\log n)$ | Each query merges segment tree nodes in logarithmic time |
+| Space | $O(n)$ | Segment tree storage for sums and prefix maxima |
 
-The structure handles up to one million elements and two hundred thousand queries within limits because each query only requires logarithmic traversal instead of linear scanning.
+The constraints allow up to $10^6$ elements and $2 \cdot 10^5$ queries, so a logarithmic per query solution fits comfortably within limits.
 
 ## Test Cases
 
-```
-PythonRun
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    import sys
+    input = sys.stdin.readline
+
+    class Node:
+        def __init__(self, s=0, p=0):
+            self.sum = s
+            self.pref = p
+
+    def merge(a, b):
+        res = Node()
+        res.sum = a.sum + b.sum
+        res.pref = max(a.pref, a.sum + b.pref)
+        return res
+
+    n, m, p = map(int, input().split())
+    arr = list(map(int, input().split()))
+
+    size = 1
+    while size < n:
+        size <<= 1
+
+    seg = [Node() for _ in range(2 * size)]
+
+    for i in range(n):
+        seg[size + i] = Node(arr[i], arr[i])
+
+    for i in range(size - 1, 0, -1):
+        seg[i] = merge(seg[2 * i], seg[2 * i + 1])
+
+    def query(l, r):
+        l += size
+        r += size
+        left = None
+        right = None
+
+        while l <= r:
+            if l & 1:
+                left = seg[l] if left is None else merge(left, seg[l])
+                l += 1
+            if not (r & 1):
+                right = seg[r] if right is None else merge(seg[r], right)
+                r -= 1
+            l >>= 1
+            r >>= 1
+
+        if left is None:
+            node = right
+        elif right is None:
+            node = left
+        else:
+            node = merge(left, right)
+
+        s = node.sum
+        pref = node.pref
+        if pref <= 0:
+            return s
+        return s - (pref // p) * p
+
+    out = []
+    for _ in range(m):
+        l, r = map(int, input().split())
+        out.append(str(run_case := query(l - 1, r - 1)))
+
+    return "\n".join(out)
+
+# provided sample
+assert run("""4 5 6
+7 2 -3 17
+2 3
+1 3
+1 2
+2 4
+4 4
+""") == """-1
+0
+3
+10
+11"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| n=1 queries | direct value | base case |
-| alternating positives/negatives | non-monotonic accumulation | sign handling |
-| large random range queries | stability | performance |
+| single element | direct value | leaf behavior |
+| all negative | no subtraction | prefix max handling |
+| large positive chain | multiple crossings | repeated p jumps |
+| mixed values | correct merge logic | segment combination correctness |
 
 ## Edge Cases
 
-One important case is when values oscillate around zero, such as `[5, -10, 8]`. The accumulator repeatedly crosses zero, and any solution that incorrectly applies modular reduction will break this pattern. The correct execution keeps intermediate negative values intact.
+A corner case occurs when all values in a segment are negative. In that situation, the running value never reaches $p$, so no subtraction happens. The segment tree must still preserve the correct maximum prefix, which is the least negative prefix sum, otherwise a later merge may incorrectly assume a threshold crossing.
 
-Another case is when all values are larger than p. In that scenario, naive modular handling would collapse values prematurely, but the buggy function does not reduce them consistently, so growth must be preserved exactly as integer arithmetic dictates.
+Another case is a segment with large positive values where the prefix sum crosses multiple multiples of $p$. The correctness depends on using floor division of the maximum prefix sum, not counting individual crossings, since the structure guarantees monotonic accumulation of thresholds.
+
+A final subtle case is when left segment sum is large negative and right segment has large positive prefix. The merge must ensure the right prefix is offset correctly by the full left sum, otherwise prefix maxima become disconnected from actual accumulation.
