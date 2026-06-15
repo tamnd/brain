@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8435 problems, 4090 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8437 problems, 4091 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8435 problems, 4090 verified.**
+**1472 contests, 8437 problems, 4091 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 865 problems, 519 verified
+## 2019 — 159 contests, 867 problems, 520 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -660,7 +660,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1250](1250/) | [2019-2020 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1250) | 13 | 5/13 | ICPC/IOI | 800-3100 |
 | [1251](1251/) | [Educational Codeforces Round 75 (Rated for Div. 2)](https://codeforces.com/contest/1251) | 7 | 1/7 | Div. 2 | 1000-2500 |
 | [1252](1252/) | [2019-2020 ICPC, Asia Jakarta Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1252) | 11 | 4/11 | ICPC/IOI | 1000-3000 |
-| [1253](1253/) | [Codeforces Round 600 (Div. 2)](https://codeforces.com/contest/1253) | 3 | 1/3 | Div. 2 | 1400-2200 |
+| [1253](1253/) | [Codeforces Round 600 (Div. 2)](https://codeforces.com/contest/1253) | 5 | 2/5 | Div. 2 | 1400-2500 |
 | [1254](1254/) | [Codeforces Round 601 (Div. 1)](https://codeforces.com/contest/1254) | 3 | 1/3 | Div. 1 | 1800-3300 |
 | [1255](1255/) | [Codeforces Round 601 (Div. 2)](https://codeforces.com/contest/1255) | 2 | 0/2 | Div. 2 | 800-1100 |
 | [1256](1256/) | [Codeforces Round 598 (Div. 3)](https://codeforces.com/contest/1256) | 3 | 1/3 | Div. 3 | 1000-2000 |
