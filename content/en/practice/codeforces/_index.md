@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8478 problems, 4105 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8479 problems, 4105 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8478 problems, 4105 verified.**
+**1472 contests, 8479 problems, 4105 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 658 problems, 285 verified
+## 2020 — 159 contests, 659 problems, 285 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -695,7 +695,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1285](1285/) | [Codeforces Round 613 (Div. 2)](https://codeforces.com/contest/1285) | 5 | 3/5 | Div. 2 | 800-2900 |
 | [1286](1286/) | [Codeforces Round 612 (Div. 1)](https://codeforces.com/contest/1286) | 5 | 1/5 | Div. 1 | 1800-3200 |
 | [1287](1287/) | [Codeforces Round 612 (Div. 2)](https://codeforces.com/contest/1287) | 1 | 0/1 | Div. 2 | 1500-1500 |
-| [1288](1288/) | [Educational Codeforces Round 80 (Rated for Div. 2)](https://codeforces.com/contest/1288) | 3 | 2/3 | Div. 2 | 1100-2900 |
+| [1288](1288/) | [Educational Codeforces Round 80 (Rated for Div. 2)](https://codeforces.com/contest/1288) | 4 | 2/4 | Div. 2 | 1100-2900 |
 | [1290](1290/) | [Codeforces Round 616 (Div. 1)](https://codeforces.com/contest/1290) | 5 | 1/5 | Div. 1 | 1600-3500 |
 | [1291](1291/) | [Codeforces Round 616 (Div. 2)](https://codeforces.com/contest/1291) | 2 | 0/2 | Div. 2 | 1300-2800 |
 | [1292](1292/) | [Codeforces Round 614 (Div. 1)](https://codeforces.com/contest/1292) | 2 | 2/2 | Div. 1 | 1400-3500 |
