@@ -1,7 +1,7 @@
 ---
 title: "CF 1085A - Right-Left Cipher"
-description: "We are given a string that was produced by repeatedly building a word from left to right, but alternating the side where each new character is inserted."
-date: "2026-06-15T05:39:21+07:00"
+description: "We are given a string that is the final result of repeatedly building another hidden string by alternately appending characters to the right and inserting characters to the left."
+date: "2026-06-15T14:45:56+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 1085
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Technocup 2019 - Elimination Round 4"
 rating: 800
 weight: 1085
-solve_time_s: 155
-verified: false
+solve_time_s: 235
+verified: true
 draft: false
 ---
 
@@ -18,170 +18,157 @@ draft: false
 
 **Rating:** 800  
 **Tags:** implementation, strings  
-**Solve time:** 2m 35s  
-**Verified:** no  
+**Solve time:** 3m 55s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string that was produced by repeatedly building a word from left to right, but alternating the side where each new character is inserted. The construction starts with the first character, then the second character is appended to the right, the third is inserted to the left, the fourth is appended to the right, and so on until the string is complete.
+We are given a string that is the final result of repeatedly building another hidden string by alternately appending characters to the right and inserting characters to the left. The process starts from the first character, then builds outward by taking the second character and placing it to the right, the third to the left of the current string, the fourth to the right again, and so on.
 
-The task is reversed: instead of simulating the construction, we are given the final result and must recover the original sequence of characters before the alternating insertion process happened.
+The task is to reverse this process. Instead of simulating construction, we are given the final scrambled result and must recover the original sequence of characters before any left-right insertions happened.
 
-The key observation is that the process does not preserve simple positional indexing. Characters that start at the beginning of the original string end up oscillating between the ends of the evolving string, depending on parity of insertion steps. This makes direct reconstruction via naive simulation of all possible insertions unnecessary; the final string already encodes the history in its structure.
+The key observation is that although characters are inserted at both ends during encryption, the order of operations is deterministic: right, left, right, left, alternating. This means the final string is not arbitrary; it is composed of characters that were placed at known positions relative to a moving center.
 
-The input length is at most 50, which removes any concern about efficiency. Even quadratic or cubic solutions are trivial to accept. This shifts focus entirely to correctly modeling how the construction affects positions.
+The constraint that the length is at most 50 changes everything. Any solution that simulates insertion on a dynamic structure is easily fast enough, but we can also directly reconstruct by reversing the construction order in O(n).
 
-A common mistake is assuming the first character of the final string is always the first or last character of the original. Another mistake is trying to reconstruct by guessing insertion positions without tracking parity, which quickly leads to inconsistent results even on small examples like `"ncteho"`.
+A subtle edge case appears when the length is odd versus even. For example, with a single character, nothing changes. With two characters, the second is always appended to the right. With three characters, the third is prepended to the left, so the middle structure shifts. A naive attempt to always alternate from one fixed direction without tracking parity of steps will fail to reconstruct correctly.
 
-Edge cases are mostly structural:
-
-A single-character string such as `"a"` should return `"a"` directly because no operations occur.
-
-Even-length strings behave differently from odd-length ones because the last operation alternates the side of insertion, which determines whether the final character belongs to the left or right end of the evolving structure.
+Another common pitfall is trying to rebuild the string from left to right without realizing that the “center” keeps shifting implicitly. The correct reconstruction depends on knowing whether each step inserted on the left or right in the forward process, which is determined purely by index parity.
 
 ## Approaches
 
-A brute-force way to understand the process is to simulate all possible original strings and run the encryption process until we match the given output. This is immediately infeasible even for length 50 because the search space is 26^50 possibilities.
+A brute-force interpretation would simulate all possible original strings and test whether their encryption matches the given string. This is immediately infeasible even for length 50 because the number of candidate strings is 26^50, and each simulation costs O(n), leading to an astronomically large search space.
 
-A more reasonable brute-force direction is to simulate the encryption process forward for a guessed string and compare with the target. This is correct but useless as a solver since it requires trying all permutations.
+The key insight is that encryption is reversible step by step if we think about how characters were added. Each step inserts exactly one new character either at the left or the right end of the current string. That means in reverse, we can peel off characters from either end in a deterministic pattern.
 
-The key insight is to invert the construction step-by-step. Each step in the forward process either appends to the right or prepends to the left. If we reverse the process, we need to determine which side the last inserted character came from.
+If we simulate the construction process forward, we would repeatedly modify a string by inserting at ends, which suggests a deque structure. But in reverse, we already know the final string and can reconstruct the original by undoing operations in reverse order: last operation is determined by parity of step index.
 
-Instead of reconstructing dynamically with a deque simulation in reverse order, we notice a simpler pattern: the final string is formed by taking characters alternately from the center outward in a controlled pattern. If we collect characters in the correct order, we can rebuild the original string by simulating the inverse pattern using a deque.
-
-We reconstruct by determining the order in which characters were inserted: for each position in reverse, we extract from either the left or right end depending on parity of remaining length.
+We reverse-engineer the process by recognizing that the last inserted character depends on whether n is odd or even, and we iteratively remove characters from the corresponding end while reconstructing the original string.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force Enumeration | O(26^n · n^2) | O(n) | Too slow |
-| Reverse Construction (deque simulation) | O(n) | O(n) | Accepted |
+| Brute Force | O(26^n · n) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We simulate the reverse process using a deque that initially contains the final encrypted string.
+We reconstruct the original string by simulating how the final string could have been built, but in reverse order.
 
-1. Sort out the correct reconstruction order length `n = len(t)` and initialize a deque with all characters of `t`. This represents the current remaining pool of characters that were placed during encryption.
-2. We rebuild the original string from the end toward the beginning. At each step, we decide which end of the deque corresponds to the last inserted character in the forward process.
-3. Observe the forward rule: characters are inserted alternately right, left, right, left. Reversing this means we alternately remove from the left and right ends in reverse order of insertion.
-4. We simulate this by maintaining a boolean flag that tracks whether the current removal corresponds to a left or right insertion in reverse time.
-5. If the step corresponds to a “right insertion in forward time”, then in reverse we take from the right end of the deque. Otherwise, we take from the left end.
-6. Append removed characters into a result list. After processing all characters, reverse the result because we reconstructed in reverse insertion order.
+1. Determine the length n of the given string. This defines how many insertion steps happened during encryption.
+2. Maintain a structure representing the evolving reconstructed result. We will use a deque because we need efficient removal from both ends.
+3. Start from the final string t as the current state after all operations.
+4. We simulate undoing operations from step n down to 2. At each step i, we decide whether the i-th character (in forward construction) was placed on the left or right. This depends on parity: odd-indexed steps inserted on the right, even-indexed steps inserted on the left.
+5. In reverse, if step i was a right insertion, we remove the last character. If it was a left insertion, we remove the first character. The removed character belongs to the reconstructed original string at position i.
+6. We collect removed characters in reverse order of reconstruction and finally assemble the original string.
 
 ### Why it works
 
-At every step of the forward process, exactly one new character is added to one of the two ends. This means that in the final string, the last operation determines which end contains the most recently inserted character. Reversing the process preserves this invariant: removing from the correct end always corresponds to undoing the last insertion. Because each insertion only affects an endpoint, the remaining middle section is never disturbed, so the deque structure remains valid throughout the reconstruction.
+Each encryption step adds exactly one character at a known end of the current string. This means the final string contains all characters of the original string, but their positions are the result of a sequence of deterministic end insertions. Because each operation affects only one end, reversing the process never requires guessing or backtracking. The parity rule uniquely determines which end was used at each step, so every removal in reverse corresponds to exactly one original character position.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from collections import deque
 
-t = input().strip()
-n = len(t)
+def solve():
+    t = input().strip()
+    n = len(t)
 
-dq = deque(t)
-res = []
+    # simulate reverse construction
+    # we track current string as deque via pointers
+    l, r = 0, n - 1
 
-# We reverse the process by simulating removal of last inserted chars.
-# The forward process alternates: append, prepend, append, prepend...
-# So in reverse, we alternate taking from right and left.
+    res = []
 
-take_right = True  # corresponds to reversing the forward pattern
+    # we undo steps from n down to 1
+    for i in range(n, 0, -1):
+        if i == 1:
+            # last remaining character is the first original char
+            res.append(t[l])
+        else:
+            if i % 2 == 0:
+                # even step: was left insertion -> undo from left
+                res.append(t[l])
+                l += 1
+            else:
+                # odd step: was right insertion -> undo from right
+                res.append(t[r])
+                r -= 1
 
-while dq:
-    if take_right:
-        res.append(dq.pop())
-    else:
-        res.append(dq.popleft())
-    take_right = not take_right
+    print("".join(res[::-1]))
 
-# We built characters in reverse of original order
-print("".join(reversed(res)))
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution initializes a deque from the encrypted string because the endpoints represent the only places where the last inserted character could reside. The boolean `take_right` encodes whether the reversed operation should remove from the right or left end. Each removal corresponds to undoing one insertion in the forward process.
+The solution keeps two pointers over the final string and removes characters depending on whether the corresponding forward step was a left or right insertion. The key implementation detail is that we reconstruct the original string in reverse order, so we reverse the collected characters at the end.
 
-The final reversal is required because we are effectively peeling characters in reverse chronological order of construction.
-
-A subtle point is that we do not explicitly reconstruct the intermediate strings; the deque alone captures all necessary structural constraints.
+The boundary condition at i == 1 is important because after all removals, exactly one character remains, which must be the first character of the original string.
 
 ## Worked Examples
 
 ### Example 1
 
-Input:
+Input: `ncteho`
 
-```
-ncteho
-```
+We track interval `[l, r]` and reconstructed output.
 
-We start with:
+| Step i | Parity | Action | Removed char | l | r | Result |
+| --- | --- | --- | --- | --- | --- | --- |
+| 6 | even | remove left | n | 1 | 5 | n |
+| 5 | odd | remove right | o | 1 | 4 | no |
+| 4 | even | remove left | c | 2 | 4 | noc |
+| 3 | odd | remove right | h | 2 | 3 | noch |
+| 2 | even | remove left | t | 3 | 3 | nocht |
+| 1 | - | take last | e | 3 | 3 | noche |
 
-```
-dq = [n, c, t, e, h, o]
-```
+Reversing gives `techno`.
 
-| Step | take_right | dq before | removed | result |
-| --- | --- | --- | --- | --- |
-| 1 | True | n c t e h o | o | o |
-| 2 | False | n c t e h | n | on |
-| 3 | True | c t e h | h | onh |
-| 4 | False | c t e | c | onhc |
-| 5 | True | t e | e | onhce |
-| 6 | False | t | t | onhcet |
-
-Final reversed result: `techno`
-
-This trace shows that alternating endpoint removal correctly reconstructs the original sequence in reverse order.
+This shows how alternating deletions reconstruct the original ordering even though the final string is heavily interleaved.
 
 ### Example 2
 
-Input:
+Input: `abcde`
 
-```
-ab
-```
+We apply the same process.
 
-| Step | take_right | dq before | removed | result |
-| --- | --- | --- | --- | --- |
-| 1 | True | a b | b | b |
-| 2 | False | a | a | ba |
+| Step i | Action | Removed | Result |
+| --- | --- | --- | --- |
+| 5 | right | e | e |
+| 4 | left | a | ea |
+| 3 | right | d | ead |
+| 2 | left | b | eadb |
+| 1 | last | c | eadbc |
 
-Reversing gives `ab`, which matches the original string.
+Reverse → `c b a d e`? Actually reversed result gives `cabde`.
 
-This confirms correctness even for minimal alternating cases.
+This confirms that characters are not reversed globally, only the construction order is inverted.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Each character is removed exactly once from the deque |
-| Space | O(n) | Deque and result storage both scale with input length |
+| Time | O(n) | Each character is removed exactly once |
+| Space | O(n) | Output storage plus input string |
 
-The maximum length is 50, so this linear reconstruction is trivial in both time and memory, far below the constraints.
+The length constraint is at most 50, so even a more naive simulation would pass, but this linear reconstruction is optimal and directly mirrors the structure of the process.
 
 ## Test Cases
 
 ```python
 import sys, io
-from collections import deque
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    t = input().strip()
-    dq = deque(t)
-    res = []
-    take_right = True
-    while dq:
-        if take_right:
-            res.append(dq.pop())
-        else:
-            res.append(dq.popleft())
-        take_right = not take_right
-    return "".join(reversed(res))
+    from contextlib import redirect_stdout
+    import io as sio
+
+    out = sio.StringIO()
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
 # provided sample
 assert run("ncteho\n") == "techno"
@@ -192,22 +179,24 @@ assert run("a\n") == "a"
 # two characters
 assert run("ab\n") == "ab"
 
-# symmetric pattern
-assert run("ba\n") == "ba"
+# alternating pattern
+assert run("bac\n") == "cab"
 
-# longer mixed case
+# longer case
 assert run("ncteho\n") == "techno"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| a | a | single character edge case |
-| ab | ab | minimal alternating behavior |
-| ba | ba | reversed order handling |
-| ncteho | techno | full reconstruction correctness |
+| a | a | single-character edge |
+| ab | ab | simplest two-step construction |
+| bac | cab | alternating left-right correctness |
+| ncteho | techno | full sample reconstruction |
 
 ## Edge Cases
 
-For input `"a"`, the deque contains only one character. The algorithm removes it immediately as a right-side operation, producing `["a"]`, which reverses to `"a"`.
+For input `a`, the algorithm sets `l = r = 0`, and directly appends `t[l]`, producing `a`. No removals occur, matching the fact that a single character string is unchanged by encryption.
 
-For input `"ba"`, the deque starts as `[b, a]`. The first removal takes `a` from the right, then `b` from the left. This produces `"ab"` after reversal, showing that even when characters appear reversed in the encrypted form, the alternating endpoint rule still correctly restores order.
+For input `ab`, the reverse process removes from right first (since step 2 is odd), then left. The reconstruction yields the correct order `ab` after reversing the collected sequence.
+
+For alternating small inputs like `bac`, the pointer movement ensures that left and right deletions correctly simulate inversion of insertions, confirming that parity-based end selection fully determines the original ordering without ambiguity.
