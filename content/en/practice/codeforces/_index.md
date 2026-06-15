@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8452 problems, 4095 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8457 problems, 4097 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8452 problems, 4095 verified.**
+**1472 contests, 8457 problems, 4097 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 882 problems, 524 verified
+## 2019 — 159 contests, 887 problems, 526 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -674,7 +674,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1267](1267/) | [2019-2020 ICPC, NERC, Northern Eurasia Finals (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1267) | 8 | 2/8 | ICPC/IOI | 900-3200 |
 | [1268](1268/) | [Codeforces Round 609 (Div. 1)](https://codeforces.com/contest/1268) | 3 | 1/3 | Div. 1 | 2000-3400 |
 | [1269](1269/) | [Codeforces Round 609 (Div. 2)](https://codeforces.com/contest/1269) | 1 | 1/1 | Div. 2 | 1500-1500 |
-| [1270](1270/) | [Good Bye 2019](https://codeforces.com/contest/1270) | 4 | 0/4 | Special | 800-3500 |
+| [1270](1270/) | [Good Bye 2019](https://codeforces.com/contest/1270) | 9 | 2/9 | Special | 800-3500 |
 | [1271](1271/) | [Codeforces Round 608 (Div. 2)](https://codeforces.com/contest/1271) | 3 | 1/3 | Div. 2 | 800-2700 |
 | [1272](1272/) | [Codeforces Round 605 (Div. 3)](https://codeforces.com/contest/1272) | 3 | 0/3 | Div. 3 | 1200-2200 |
 | [1275](1275/) | [VK Cup 2019 - Квалификация (Engine)](https://codeforces.com/contest/1275) | 4 | 1/4 | Special | - |
