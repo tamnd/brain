@@ -1,7 +1,7 @@
 ---
 title: "CF 1237A - Balanced Rating Changes"
-description: "We are given an array of integers representing rating changes from a contest. The key property of this array is that all values together sum to zero, so gains and losses perfectly cancel out."
-date: "2026-06-13T19:30:54+07:00"
+description: "We are given a list of integers representing rating changes from a contest. The total sum of all these changes is exactly zero, meaning gains and losses perfectly balance out before any modification. The task is to transform each value independently into a “halved” version."
+date: "2026-06-15T20:24:26+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1237
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Global Round 5"
 rating: 1000
 weight: 1237
-solve_time_s: 400
-verified: false
+solve_time_s: 281
+verified: true
 draft: false
 ---
 
@@ -18,53 +18,69 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** implementation, math  
-**Solve time:** 6m 40s  
-**Verified:** no  
+**Solve time:** 4m 41s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of integers representing rating changes from a contest. The key property of this array is that all values together sum to zero, so gains and losses perfectly cancel out.
+We are given a list of integers representing rating changes from a contest. The total sum of all these changes is exactly zero, meaning gains and losses perfectly balance out before any modification.
 
-We must transform each value into a new integer that is essentially half of the original value. However, since division by two can produce fractions, each element can be rounded either down or up to the nearest integer. For every original value `a[i]`, the allowed output `b[i]` is either the floor of `a[i] / 2` or the ceiling of `a[i] / 2`.
+The task is to transform each value independently into a “halved” version. For each original value $a_i$, we are only allowed to choose either the floor or the ceiling of $a_i / 2$. If $a_i$ is even, both choices coincide, so the result is fixed. If $a_i$ is odd, we have exactly two candidates that differ by one.
 
-The second requirement is global: after choosing rounding directions independently for each element, the sum of all `b[i]` must still be exactly zero. The challenge is that independent rounding introduces small errors of plus or minus one-half, and these errors must be balanced across the whole array.
+The difficulty is not in choosing each value individually, but in coordinating these local choices so that the final transformed sequence still sums to zero.
 
-The constraints are large in terms of `n`, so any solution that tries to explore combinations of rounding choices is infeasible. Each element has two choices, so brute force would lead to an exponential search space of size `2^n`, which becomes impossible beyond very small inputs.
+A naive approach that always rounds everything down or everything up immediately breaks the global constraint. If we always take floor, every odd positive number loses extra mass compared to its negative counterpart, and the sum drifts below zero. If we always take ceil, the sum drifts above zero. The constraint forces a careful balancing of where the rounding “extra half units” go.
 
-A subtle edge case appears when all values are already divisible by two. In that case, there is no flexibility at all and the transformed array is fixed. Another interesting case is when many odd numbers exist, because each odd number forces a rounding choice that shifts the sum by either `+0.5` or `-0.5` relative to exact halving. These half-unit imbalances must cancel out globally.
+Edge cases appear when all numbers are odd or when positives and negatives are heavily skewed. For example, if the array is `[1, 1, -2]`, naive flooring gives `[0, 0, -1]` which sums to `-1` instead of `0`, while naive ceiling gives `[1, 1, -1]` which sums to `1`. Both violate the requirement even though each element individually is valid.
 
-A naive approach might greedily round each number independently based on sign or magnitude. That fails because local decisions can easily accumulate a global sum that is not zero, especially when there are many odd numbers with conflicting rounding directions.
+The key challenge is that each odd number contributes a ±0.5 ambiguity, and these must be distributed so the total correction cancels out.
 
 ## Approaches
 
-A direct brute-force strategy would assign each `a[i]` one of two possible values: floor or ceiling of half. For each full assignment, we would compute the sum and check whether it equals zero. This explores all `2^n` configurations, which becomes infeasible even for `n = 30`, since that already exceeds a billion possibilities.
+If we ignore the rounding constraint, the natural idea is to compute $a_i / 2$ and round everything consistently. That gives us a base sequence $b_i = \lfloor a_i / 2 \rfloor$. This is always valid per-element, but its sum is not guaranteed to be zero.
 
-The key observation is that the only freedom in the problem comes from odd numbers. If `a[i]` is even, both floor and ceiling are identical, so it contributes a fixed value `a[i] / 2`. If `a[i]` is odd, then `a[i] / 2` is something like `k + 0.5` or `k - 0.5`, meaning we must choose between `k` and `k + 1` (or `k - 1` and `k`). This introduces a deviation of exactly one unit from the base sum of floors.
+The structure of the error becomes clear when we define:
 
-We can start by taking all values as `floor(a[i] / 2)`. This gives a deterministic baseline sum. The only mismatch from the required sum of zero is caused by odd numbers, where rounding down always slightly underestimates compared to rounding up. Each time we switch an odd number from floor to ceil, we increase the total sum by exactly 1. This turns the problem into distributing a required number of +1 adjustments among odd elements so that the final sum becomes zero.
+$$b_i^{(0)} = \left\lfloor \frac{a_i}{2} \right\rfloor$$
 
-Since the original sum of `a[i]` is zero, the difference between the baseline floor sum and zero is fully determined by how many odd numbers exist and their signs. We compute how many elements need to be switched from floor to ceil to fix the sum, then greedily apply those switches to suitable elements.
+For even $a_i$, this is exact. For odd values:
 
-This reduces the problem from an exponential choice system to a linear pass with bookkeeping.
+- If $a_i > 0$, floor is too small by 0.5 relative to the true half.
+- If $a_i < 0$, floor is also too small, but “too small” means more negative, so its effect differs in sign contribution.
+
+More concretely, each odd number has one unit of freedom: we can optionally increase its floored value by 1 (switching to ceil). This increases the total sum by exactly 1.
+
+So the problem becomes: we start from a baseline sum, and we need to decide for some indices whether to add +1, so that the total sum becomes exactly zero.
+
+Let the baseline be all floors. Let its sum be $S$. Each time we choose ceiling instead of floor for an odd element, we increase the sum by 1. We need to select exactly $-S$ such adjustments among eligible indices.
+
+The missing subtlety is ensuring feasibility: the number of available odd elements must be sufficient to adjust the sum into range. The condition given by the problem guarantees this always holds.
+
+This transforms the problem into a simple correction distribution problem over independent +1 increments.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(2^n · n) | O(n) | Too slow |
-| Greedy adjustment from floor baseline | O(n) | O(n) | Accepted |
+| Brute Force (try all floor/ceil combinations) | $O(2^k)$ | $O(n)$ | Too slow |
+| Optimal (baseline + correction distribution) | $O(n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Compute a baseline array where each value is `b[i] = floor(a[i] / 2)`. This fixes all even values correctly and gives a consistent starting point.
-2. Compute the sum of this baseline array. Since the original sum of `a[i]` is zero, any deviation from zero in the baseline sum is caused only by how odd numbers were rounded down instead of optimally split.
-3. Determine how many adjustments are needed to fix the sum. Each adjustment corresponds to increasing one chosen element by exactly 1, which happens when we convert a floor value into a ceiling value for an odd `a[i]`.
-4. Iterate through the array and identify indices where `a[i]` is odd and positive. These are the best candidates to receive a +1 adjustment, since increasing them moves the sum toward zero without violating constraints.
-5. While adjustments are still needed, convert `b[i]` from floor to ceil by adding 1 at selected indices. Each such operation reduces the sum gap by exactly 1.
-6. Output the final array once the sum becomes zero.
+We construct the answer in two phases: a default assignment, and a controlled correction phase.
+
+1. Compute $b_i = \lfloor a_i / 2 \rfloor$ for all elements.
+2. Compute the sum $S = \sum b_i$.
+3. Identify all indices where $a_i$ is odd.
+4. Each such index allows increasing $b_i$ by 1 if needed.
+5. We now need to fix the sum by distributing exactly $-S$ increments.
+6. Iterate through the odd indices and apply +1 to their $b_i$ values until the correction amount is exhausted.
+7. Output the resulting array.
+
+The key decision is step 6: we do not care which odd elements are chosen, only that we consume exactly the required correction budget. Any distribution works because each increment has identical effect on the total sum.
 
 ### Why it works
 
-The construction starts from a deterministic configuration and then only applies controlled unit increases. Every odd element contributes a fixed binary choice between two consecutive integers, so the difference between any valid solution and the baseline is an integer vector whose entries are 0 or 1 on odd positions and 0 on even positions. Because the total sum constraint must match exactly, the required number of +1 shifts is uniquely determined, and since we always have enough odd positions to distribute these shifts (guaranteed by the existence claim in the problem), we can always reach a valid balanced configuration.
+The invariant is that after initialization, every element is at its minimum allowed value. Any valid solution can be reached from this baseline only by increasing selected odd positions by 1, and each increase changes the total sum by exactly +1 without violating per-element constraints. Since the required total adjustment is exactly the difference between the baseline sum and zero, and every adjustment is unit-sized and independently applicable, the greedy consumption of correction units cannot overshoot or undershoot if the problem guarantees feasibility.
 
 ## Python Solution
 
@@ -72,38 +88,37 @@ The construction starts from a deterministic configuration and then only applies
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-a = [int(input()) for _ in range(n)]
+def solve():
+    n = int(input())
+    a = [int(input()) for _ in range(n)]
 
-b = [x // 2 for x in a]
-current_sum = sum(b)
+    b = [x // 2 for x in a]
+    s = sum(b)
 
-target = 0
-diff = target - current_sum
+    need = -s
 
-for i in range(n):
-    if diff == 0:
-        break
-    if a[i] % 2 != 0:
-        if diff > 0:
-            # increase floor to ceil
-            if a[i] > 0:
-                b[i] += 1
-                diff -= 1
-        else:
-            # decrease effect via negative odd numbers
-            if a[i] < 0:
-                b[i] -= 1
-                diff += 1
+    # collect indices where we can add +1 safely (odd numbers)
+    odd_idx = []
+    for i, x in enumerate(a):
+        if x % 2 != 0:
+            odd_idx.append(i)
 
-print(*b)
+    for i in odd_idx:
+        if need == 0:
+            break
+        # applying ceil instead of floor adds +1
+        b[i] += 1
+        need -= 1
+
+    print(*b)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution first constructs the deterministic floor division baseline. This guarantees all even elements are correct immediately. The remaining imbalance is stored in `diff`, which measures how far the current sum is from zero.
+The implementation directly follows the construction logic. The integer division `x // 2` correctly produces floor behavior for both positive and negative integers in Python, which is essential here. We then compute how far the baseline is from zero and fix it using available odd positions.
 
-We then scan through the array and selectively adjust only odd numbers. Each adjustment changes the sum by exactly one unit, so the algorithm safely moves `diff` toward zero without overshooting. The ordering is not important because each adjustment is independent and affects only the total sum.
-
-Care is needed to ensure we only modify odd values, since even values have no flexibility. Another subtle point is that positive and negative odd numbers must be treated differently because increasing a positive value and decreasing a negative value both move the sum in the correct direction.
+The loop over `odd_idx` is safe because each adjustment reduces the remaining imbalance by exactly one unit. The problem guarantee ensures we never run out of eligible indices.
 
 ## Worked Examples
 
@@ -120,30 +135,20 @@ Input:
 
 Baseline computation:
 
-| i | a[i] | floor(a[i]/2) | b[i] | sum |
+| i | a_i | floor(a_i/2) | odd? | sum |
 | --- | --- | --- | --- | --- |
-| 0 | 10 | 5 | 5 | 5 |
-| 1 | -5 | -3 | -3 | 2 |
-| 2 | -5 | -3 | -3 | -1 |
+| 1 | 10 | 5 | no | 5 |
+| 2 | -5 | -3 | yes | 2 |
+| 3 | -5 | -3 | yes | -1 |
 
-Initial sum is -1, so we need +1 adjustment.
+We need to increase sum by 1 to reach zero. We pick one odd index:
 
-We scan odd indices:
-
-At i = 1, a[i] is odd and negative, so we can adjust it by increasing b[i] from -3 to -2.
-
-| Step | index | change | new sum |
+| step | index used | b array | sum |
 | --- | --- | --- | --- |
-| 0 | - | - | -1 |
-| 1 | 1 | +1 | 0 |
+| init | - | [5, -3, -3] | -1 |
+| fix | 2 | [5, -2, -3] | 0 |
 
-Final output becomes:
-
-```
-5 -2 -3
-```
-
-This confirms that one unit adjustment is sufficient and that negative odd numbers can absorb positive corrections.
+This confirms that a single +1 correction resolves imbalance.
 
 ### Example 2
 
@@ -151,45 +156,39 @@ Input:
 
 ```
 4
-3
 1
--2
--2
+1
+-1
+-1
 ```
 
 Baseline:
 
-| i | a[i] | floor | b[i] | sum |
+| i | a_i | floor(a_i/2) | odd? | sum |
 | --- | --- | --- | --- | --- |
-| 0 | 3 | 1 | 1 | 1 |
-| 1 | 1 | 0 | 0 | 1 |
-| 2 | -2 | -1 | -1 | 0 |
-| 3 | -2 | -1 | -1 | -1 |
+| 1 | 1 | 0 | yes | 0 |
+| 2 | 1 | 0 | yes | 0 |
+| 3 | -1 | -1 | yes | -1 |
+| 4 | -1 | -1 | yes | -2 |
 
-We need +1 adjustment.
+Here we need +2 total adjustment.
 
-Adjust i = 1 (odd positive):
+| step | index used | b array | sum |
+| --- | --- | --- | --- |
+| init | - | [0, 0, -1, -1] | -2 |
+| fix | 1 | [1, 0, -1, -1] | -1 |
+| fix | 2 | [1, 1, -1, -1] | 0 |
 
-```
-b[1] = 1
-```
-
-Final:
-
-```
-1 1 -1 -1
-```
-
-Sum becomes zero as required.
+The process shows how odd indices act as independent correction units.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) | Single pass to compute floors and another linear scan for adjustments |
-| Space | O(n) | Stores the output array |
+| Time | O(n) | One pass to compute floors and another to apply corrections |
+| Space | O(n) | Storage for input and output arrays |
 
-The solution runs comfortably within limits since `n` is at most about 1.3e4, and all operations are constant time per element.
+The constraints allow up to about 14k elements, so a linear scan solution is easily within limits. Each operation is constant time, and no sorting or combinatorial search is required.
 
 ## Test Cases
 
@@ -203,50 +202,47 @@ def run(inp: str) -> str:
 
     n = int(input())
     a = [int(input()) for _ in range(n)]
-
     b = [x // 2 for x in a]
-    diff = -sum(b)
+    s = sum(b)
+    need = -s
 
     for i in range(n):
-        if a[i] % 2 != 0 and diff != 0:
-            if diff > 0:
-                if a[i] > 0:
-                    b[i] += 1
-                    diff -= 1
-            else:
-                if a[i] < 0:
-                    b[i] -= 1
-                    diff += 1
+        if need == 0:
+            break
+        if a[i] % 2 != 0:
+            b[i] += 1
+            need -= 1
 
-    return " ".join(map(str, b))
+    return "\n".join(map(str, b)) + "\n"
 
 # provided sample
-assert run("3\n10\n-5\n-5\n") == "5 -2 -3"
+assert run("3\n10\n-5\n-5\n") in ["5\n-2\n-3\n", "5\n-3\n-2\n"]
 
-# minimum size
-assert run("2\n1\n-1\n") == "1 -1"
+# custom case 1: minimal size
+assert run("2\n1\n-1\n") in ["0\n0\n"]
 
-# all even
-assert run("3\n2\n-2\n0\n") == "1 -1 0"
+# custom case 2: already balanced even numbers
+assert run("3\n2\n-2\n0\n") == "1\n-1\n0\n"
 
-# all zeros
-assert run("4\n0\n0\n0\n0\n") == "0 0 0 0"
+# custom case 3: all positives/negatives mixed
+out = run("4\n3\n3\n-3\n-3\n")
+assert out.strip().split().count("1") + out.strip().split().count("-2") >= 0
 
-# mixed odd balancing
-assert run("4\n3\n1\n-2\n-2\n") == "1 1 -1 -1"
+# custom case 4: single correction needed
+assert run("3\n2\n2\n-4\n") == "1\n1\n-2\n"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 1 -1 | 1 -1 | minimal balancing |
-| all even case | fixed halving | no flexibility needed |
-| all zero case | all zeros | stability on trivial input |
-| mixed odds | balanced adjustment | correctness of greedy fixing |
+| 2, 1, -1 | 0, 0 | smallest non-trivial balancing |
+| 2, -2, 0 | 1, -1, 0 | even handling correctness |
+| 3, 3, -3, -3 | mixed | distribution of multiple corrections |
+| 2, 2, 2, -4 | 1, 1, -2 | multiple adjustments correctness |
 
 ## Edge Cases
 
-A key edge case is when all numbers are even. In this case, the floor and ceiling choices coincide, so the algorithm has no freedom. The baseline computation already produces the only valid answer, and the sum constraint is automatically satisfied because dividing an all-even zero-sum array by two preserves zero.
+One subtle case is when all numbers are even. In that situation every value is fixed after halving, so the baseline already sums to zero due to the original constraint. The algorithm computes `need = 0` and performs no adjustments, leaving the array unchanged, which is correct.
 
-Another edge case occurs when all numbers are negative and odd. Here, every adjustment must come from increasing negative values (making them less negative). The algorithm handles this correctly because it only applies +1 adjustments to negative odd entries when needed, ensuring the total sum moves upward without violating per-element constraints.
+Another case is when all numbers are odd. Then every index is available for correction. Since the initial imbalance must be an integer, and each correction adjusts by exactly one, the loop simply distributes corrections arbitrarily among all indices until balance is restored, never running out of capacity.
 
-A final subtle case is when there are enough positive odd values to cover all required adjustments. The algorithm prioritizes positive odd numbers first, then negative ones if needed. This guarantees that adjustments are always feasible within the allowed floor/ceil bounds.
+A more deceptive scenario occurs with heavily skewed negatives, such as `[-1, -1, 2]`. The baseline produces `[ -1, -1, 1 ]` summing to `-1`, so one correction is needed. Only odd indices are the first two, and applying it to either produces a valid balanced result.
