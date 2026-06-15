@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8377 problems, 4052 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8379 problems, 4053 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8377 problems, 4052 verified.**
+**1472 contests, 8379 problems, 4053 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 807 problems, 481 verified
+## 2019 — 159 contests, 809 problems, 482 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -630,7 +630,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1210](1210/) | [Dasha Code Championship - SPb Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1210) | 7 | 5/7 | Special | 1700-3200 |
 | [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | 7 | 5/7 | Kotlin | 1000-3100 |
 | [1213](1213/) | [Codeforces Round 582 (Div. 3)](https://codeforces.com/contest/1213) | 8 | 7/8 | Div. 3 | 900-2100 |
-| [1214](1214/) | [Codeforces Round 583 (Div. 1 + Div. 2, based on Olympiad of Metropolises)](https://codeforces.com/contest/1214) | 6 | 5/6 | Div. 1+2 | 1100-3200 |
+| [1214](1214/) | [Codeforces Round 583 (Div. 1 + Div. 2, based on Olympiad of Metropolises)](https://codeforces.com/contest/1214) | 8 | 6/8 | Div. 1+2 | 1100-3200 |
 | [1215](1215/) | [Codeforces Round 585 (Div. 2)](https://codeforces.com/contest/1215) | 6 | 4/6 | Div. 2 | 1000-2700 |
 | [1216](1216/) | [Codeforces Round 587 (Div. 3)](https://codeforces.com/contest/1216) | 6 | 5/6 | Div. 3 | 800-2200 |
 | [1217](1217/) | [Educational Codeforces Round 72 (Rated for Div. 2)](https://codeforces.com/contest/1217) | 4 | 2/4 | Div. 2 | 1300-2600 |
