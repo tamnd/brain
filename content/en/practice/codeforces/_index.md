@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8423 problems, 4084 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8424 problems, 4084 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8423 problems, 4084 verified.**
+**1472 contests, 8424 problems, 4084 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 853 problems, 513 verified
+## 2019 — 159 contests, 854 problems, 513 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -655,7 +655,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1244](1244/) | [Codeforces Round 592 (Div. 2)](https://codeforces.com/contest/1244) | 7 | 2/7 | Div. 2 | 800-2400 |
 | [1245](1245/) | [Codeforces Round 597 (Div. 2)](https://codeforces.com/contest/1245) | 6 | 4/6 | Div. 2 | 1000-2300 |
 | [1246](1246/) | [Codeforces Round 596 (Div. 1, based on Technocup 2020 Elimination Round 2)](https://codeforces.com/contest/1246) | 1 | 0/1 | Div. 1 | 3500-3500 |
-| [1248](1248/) | [Codeforces Round 594 (Div. 2)](https://codeforces.com/contest/1248) | 2 | 1/2 | Div. 2 | 900-1000 |
+| [1248](1248/) | [Codeforces Round 594 (Div. 2)](https://codeforces.com/contest/1248) | 3 | 1/3 | Div. 2 | 900-2000 |
 | [1249](1249/) | [Codeforces Round 595 (Div. 3)](https://codeforces.com/contest/1249) | 5 | 1/5 | Div. 3 | 800-1800 |
 | [1250](1250/) | [2019-2020 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1250) | 12 | 4/12 | ICPC/IOI | 800-3100 |
 | [1251](1251/) | [Educational Codeforces Round 75 (Rated for Div. 2)](https://codeforces.com/contest/1251) | 7 | 1/7 | Div. 2 | 1000-2500 |
