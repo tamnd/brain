@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8320 problems, 4001 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8322 problems, 4003 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8320 problems, 4001 verified.**
+**1472 contests, 8322 problems, 4003 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -453,7 +453,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | 5 | 4/5 | Div. 1 | 1500-3200 |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | 2 | 1/2 | Div. 2 | 1100-1600 |
 
-## 2017 — 9 contests, 43 problems, 31 verified
+## 2017 — 9 contests, 45 problems, 33 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -463,7 +463,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [906](906/) | [Codeforces Round 454 (Div. 1, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/906) | 5 | 3/5 | Div. 1 | 1600-3300 |
 | [907](907/) | [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907) | 2 | 1/2 | Div. 2 | 1300-1400 |
 | [908](908/) | [Good Bye 2017](https://codeforces.com/contest/908) | 8 | 6/8 | Special | 800-3100 |
-| [909](909/) | [Codeforces Round 455 (Div. 2)](https://codeforces.com/contest/909) | 4 | 4/4 | Div. 2 | 1000-2500 |
+| [909](909/) | [Codeforces Round 455 (Div. 2)](https://codeforces.com/contest/909) | 6 | 6/6 | Div. 2 | 1000-2500 |
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
