@@ -1,7 +1,7 @@
 ---
 title: "CF 1073A - Diverse Substring"
-description: "We are given a single string consisting of lowercase letters, and we are asked to find any contiguous piece of it such that no single letter dominates that piece. Dominance here means appearing strictly more than half of the substring’s length."
-date: "2026-06-15T06:59:01+07:00"
+description: "We are given a single string consisting of lowercase letters, and we are asked to find any contiguous segment of this string such that no single character dominates that segment by appearing more than half of its length. If such a segment exists, we may output any one of them."
+date: "2026-06-15T14:11:30+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 1073
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Educational Codeforces Round 53 (Rated for Div. 2)"
 rating: 1000
 weight: 1073
-solve_time_s: 177
-verified: false
+solve_time_s: 289
+verified: true
 draft: false
 ---
 
@@ -18,49 +18,52 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** implementation, strings  
-**Solve time:** 2m 57s  
-**Verified:** no  
+**Solve time:** 4m 49s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a single string consisting of lowercase letters, and we are asked to find any contiguous piece of it such that no single letter dominates that piece. Dominance here means appearing strictly more than half of the substring’s length.
+We are given a single string consisting of lowercase letters, and we are asked to find any contiguous segment of this string such that no single character dominates that segment by appearing more than half of its length. If such a segment exists, we may output any one of them. If none exists, we must report impossibility.
 
-In other words, we are scanning along a string and trying to extract any interval where the frequency of every character stays balanced enough that no character crosses the majority threshold. We are not asked to optimize length, lexicographically order, or anything similar. Any valid substring is acceptable as soon as it satisfies the condition.
+The key object is not the full string but its substrings. For each substring, we are checking a frequency condition: if the substring has length $L$, then every character must appear at most $L/2$ times. This is equivalent to saying that the substring cannot be made up mostly of one repeated character.
 
-The constraint on length is small, at most 1000 characters. That immediately removes any need for advanced data structures or asymptotically optimal substring enumeration. A quadratic scan is safe, even with inner frequency checks, because the total operations remain on the order of 10^6.
+The constraint $n \le 1000$ means that an $O(n^3)$ brute force over substrings with frequency counting would be borderline but still potentially pass in optimized Python, while $O(n^2)$ solutions are comfortably safe. This strongly suggests that we should try to reason about small structured substrings rather than complicated global constructions.
 
-A key subtlety is that a substring of length 1 is always diverse, since a single letter appears once which is not strictly more than half of 1. That means if the string is non-empty, the answer is always trivially “YES” with any single character substring. However, since the statement allows reporting any valid substring, the interesting part is whether there exists any constraint preventing such trivial answers. There is none.
+A subtle point is that the answer is not required to be long or maximal. This removes any need for optimization over length. Any valid substring is sufficient, which often allows a construction argument instead of a search.
 
-The only way the answer would be “NO” is if we misunderstood the condition. Since a one-character substring always satisfies the requirement, every input has at least one valid answer. So the task is essentially reduced to returning any character from the string.
+Edge cases arise when the string is uniform. For example, if $s = "aaaa"$, every substring is also uniform, so the majority condition is always violated. In such cases, the correct output is "NO". A naive approach that only checks full string diversity would fail here because even if the full string fails, shorter substrings might still work, but in this specific case none do.
 
-A naive pitfall is trying to search for longer substrings and missing the trivial length-1 solution, leading to unnecessary complexity or even incorrect rejection if the implementation mistakenly assumes a minimum length greater than 1.
+Another important edge case is when the string has mixed characters but is still dominated locally. For instance, "aaab" has valid answer "ab" or "ba", but "aaa" alone has no valid substring at all. This highlights that we are not looking for global diversity but local balance.
 
 ## Approaches
 
-A brute-force interpretation would check every substring and verify whether any character count exceeds half its length. For each substring, we would maintain a frequency table and scan it. There are O(n^2) substrings, and each check can take O(26) or O(n), giving O(n^3) or O(n^2) depending on implementation style. With n up to 1000, O(n^2) is still fine, but O(n^3) is unnecessary.
+A brute-force strategy is to enumerate all substrings and check each one by counting character frequencies. For each substring $s[l:r]$, we compute 26 counts and verify whether any count exceeds half the length. This is correct because it directly matches the definition.
 
-The key observation is that we do not need to search at all. Any single character substring already satisfies the condition because its length is 1 and the only character appears once, which is not strictly greater than 1/2. This collapses the problem from substring search into a constant-time selection problem.
+The issue is complexity. There are $O(n^2)$ substrings, and each check costs $O(n)$ if we recompute counts from scratch, leading to $O(n^3)$. Even with prefix sums reducing checks to $O(1)$ per character, we still have $O(26n^2)$, which is borderline but acceptable at $n=1000$. However, this is unnecessary because the structure of the problem allows a much simpler observation.
 
-So instead of reasoning about balancing frequencies, we directly pick any index and output that single character.
+The key insight is that if a valid substring exists, then we can always find one of length at most 2. If we take any two adjacent distinct characters, the substring of length 2 already satisfies the condition, because each character appears exactly once and $1 \le 2/2$ is false only if a character appears more than once. Therefore any pair of different adjacent characters is valid.
+
+This reduces the entire problem to scanning for any index $i$ such that $s[i] \ne s[i+1]$. If such a pair exists, we output it. If no such pair exists, the string is uniform, and no valid substring exists at all.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force substrings + frequency checks | O(n^3) or O(n^2·26) | O(26) | Accepted but unnecessary |
-| Optimal (single character) | O(1) | O(1) | Accepted |
+| Brute Force | $O(n^3)$ | $O(1)$ or $O(n)$ | Too slow |
+| Optimal | $O(n)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the string.
-2. Select the first character of the string.
-3. Output “YES”.
-4. Output the chosen single character as the substring.
+1. Scan the string from left to right, examining each adjacent pair of characters.
+2. At position $i$, compare $s[i]$ and $s[i+1]$.
+3. If they differ, immediately output the substring $s[i:i+2]$ and terminate.
+4. If the scan completes without finding any differing adjacent pair, conclude that all characters are identical.
+5. In that case, output "NO".
 
-The reasoning behind step 2 is that any single character substring is valid by definition of the constraint. There is no need to inspect other positions.
+The reason step 3 is sufficient is that any two distinct characters form a substring where no character can appear more than once, which automatically satisfies the diversity condition.
 
 ### Why it works
 
-A substring of length 1 has exactly one character. The condition requires no character to appear strictly more than half the substring length, which is 0.5. Since 1 is not greater than 0.5, the condition is always satisfied. This guarantees that every valid input contains at least one valid substring, so returning any single character is always correct.
+The invariant is that if a valid substring exists anywhere in the string, then either there is an adjacent mismatch or the string is fully uniform. In a uniform string, every substring has the same character repeated, so no substring can satisfy the condition. In a non-uniform string, at least one adjacent pair must differ, and that pair itself forms a valid solution. Therefore scanning adjacent pairs is both necessary and sufficient.
 
 ## Python Solution
 
@@ -71,60 +74,50 @@ input = sys.stdin.readline
 n = int(input().strip())
 s = input().strip()
 
-print("YES")
-print(s[0])
+for i in range(n - 1):
+    if s[i] != s[i + 1]:
+        print("YES")
+        print(s[i:i+2])
+        sys.exit(0)
+
+print("NO")
 ```
 
-The solution reads the input string and immediately outputs the first character. There is no need to construct substrings or compute frequencies. The only implementation detail that matters is ensuring the string is read correctly and not including trailing newline characters.
+The solution relies entirely on detecting the first transition between different characters. The early exit ensures we do not scan unnecessarily after finding a valid answer. The slice `s[i:i+2]` is safe because Python handles boundaries cleanly and we only iterate up to `n-2`.
 
 ## Worked Examples
 
 ### Example 1
 
-Input:
+Input: `codeforces`
 
-```
-10
-codeforces
-```
+| i | s[i] | s[i+1] | action |
+| --- | --- | --- | --- |
+| 0 | c | o | mismatch found, output "co" |
 
-We directly take the first character.
-
-| Step | Action | Current substring |
-| --- | --- | --- |
-| 1 | Read input string | codeforces |
-| 2 | Pick first character | c |
-| 3 | Output result | YES / c |
-
-This demonstrates that no validation is required beyond selection. The substring “c” is valid because no letter can exceed half of length 1.
+The algorithm stops immediately at the first pair. This demonstrates that the earliest valid substring is always acceptable, regardless of position.
 
 ### Example 2
 
-Input:
+Input: `aaaaa`
 
-```
-5
-aaaaa
-```
+| i | s[i] | s[i+1] | action |
+| --- | --- | --- | --- |
+| 0 | a | a | continue |
+| 1 | a | a | continue |
+| 2 | a | a | continue |
+| 3 | a | a | continue |
 
-Even in a highly skewed string, the same logic applies.
-
-| Step | Action | Current substring |
-| --- | --- | --- |
-| 1 | Read input string | aaaaa |
-| 2 | Pick first character | a |
-| 3 | Output result | YES / a |
-
-This shows that even extreme frequency imbalance in the full string does not matter, since we are not required to use long substrings.
+No mismatches are found, so the algorithm outputs "NO". This confirms that uniform strings have no valid substrings.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(1) | Only reading input and printing a character |
-| Space | O(1) | No auxiliary data structures |
+| Time | $O(n)$ | single pass over adjacent pairs |
+| Space | $O(1)$ | only constant extra variables used |
 
-The constraints allow up to 1000 characters, but the solution does not scale with input size at all. It always performs the same constant amount of work.
+The linear scan is optimal because every character must be inspected at least once in the worst case to determine whether any adjacent mismatch exists. With $n \le 1000$, this is trivially fast.
 
 ## Test Cases
 
@@ -133,40 +126,41 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    n = int(input().strip())
-    s = input().strip()
-    out = []
-    out.append("YES")
-    out.append(s[0])
-    return "\n".join(out)
+    import sys as _sys
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        n = int(input().strip())
+        s = input().strip()
+        for i in range(n - 1):
+            if s[i] != s[i + 1]:
+                print("YES")
+                print(s[i:i+2])
+                return out.getvalue().strip()
+        print("NO")
+    return out.getvalue().strip()
 
 # provided sample
-assert run("10\ncodeforces\n") == "YES\nc"
+assert run("10\ncodeforces\n") == "YES\nco"
 
-# minimum size
-assert run("1\na\n") == "YES\na"
-
-# all same characters
-assert run("5\naaaaa\n") == "YES\na"
-
-# mixed characters
-assert run("3\nabc\n") == "YES\na"
-
-# longer random-like string
-assert run("6\nabacba\n") == "YES\na"
+# custom cases
+assert run("1\na\n") == "NO"
+assert run("2\naa\n") == "NO"
+assert run("2\nab\n") == "YES\nab"
+assert run("5\nabcde\n") in {"YES\nab", "YES\nbc", "YES\ncd", "YES\nde"}
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 1 a | YES a | minimum edge case |
-| aaaaa | YES a | uniform string |
-| abc | YES a | mixed characters |
-| abacba | YES a | general case stability |
+| `"1 a"` | NO | single-character edge case |
+| `"aa"` | NO | minimal uniform string |
+| `"ab"` | YES ab | minimal valid case |
+| `"abcde"` | any adjacent pair | multiple valid answers |
 
 ## Edge Cases
 
-The minimum-length input case shows that the algorithm does not attempt to construct a longer substring, which could fail due to unnecessary logic. For input `1` with string `a`, the algorithm immediately outputs `a`, which is valid because frequency 1 does not exceed half of 1.
+A single-character string such as `"z"` is automatically invalid because any substring has length 1 and the only character appears more than half the time. The algorithm correctly outputs "NO" since there are no adjacent pairs to inspect.
 
-In a uniform string like `aaaaa`, any longer substring would still fail the diversity condition, but the algorithm bypasses this entirely by selecting a single character. For example, input `5 aaaaa` leads to output `a`, which remains valid regardless of global imbalance.
+A fully uniform string like `"kkkkk"` behaves similarly. The scan never finds a mismatch, and the output is correctly "NO". Every substring inherits the same imbalance.
 
-Mixed-character inputs like `abc` confirm that no frequency computation is required. The first character `a` is sufficient, and the substring is trivially valid since it has length 1.
+A mixed string like `"ba"` demonstrates the positive case at minimal length. The first comparison already yields a mismatch, and the substring `"ba"` is immediately valid because both characters appear once and neither exceeds half of 2.
