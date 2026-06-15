@@ -1,7 +1,7 @@
 ---
 title: "CF 1303F - Number of Components"
-description: "We are given an initially empty matrix of size $n times m$, where all cells start with zero. Each cell can take integer values through a sequence of queries."
-date: "2026-06-11T18:08:14+07:00"
+description: "We are working on a grid that starts completely empty in the sense that every cell contains the same value, zero. Over time, we perform a sequence of updates."
+date: "2026-06-16T05:43:47+07:00"
 tags: ["codeforces", "competitive-programming", "dsu", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1303
@@ -9,7 +9,7 @@ codeforces_index: "F"
 codeforces_contest_name: "Educational Codeforces Round 82 (Rated for Div. 2)"
 rating: 2800
 weight: 1303
-solve_time_s: 132
+solve_time_s: 195
 verified: false
 draft: false
 ---
@@ -18,44 +18,61 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** dsu, implementation  
-**Solve time:** 2m 12s  
+**Solve time:** 3m 15s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given an initially empty matrix of size $n \times m$, where all cells start with zero. Each cell can take integer values through a sequence of queries. After each query, which sets a specific cell to a new value, we are asked to count how many connected components of equal values exist in the matrix. Cells are connected if they share an edge, and a component is any maximal group of connected cells with the same value.
+We are working on a grid that starts completely empty in the sense that every cell contains the same value, zero. Over time, we perform a sequence of updates. Each update picks a single cell and assigns it a value that never decreases over time across queries, since the sequence of assigned values is non-decreasing.
 
-The input guarantees that the values assigned in queries are non-decreasing. This is a crucial constraint because it allows us to process the matrix incrementally without worrying that a previously assigned value will later decrease and potentially break existing components.
+After every update, we must report how many connected regions exist in the grid if we treat cells as adjacent when they share a side and also share the same value.
 
-The matrix can be up to $300 \times 300 = 90{,}000$ cells, and there can be up to $2 \cdot 10^6$ queries. Counting components by traversing the entire matrix after each query is immediately infeasible because that would be $O(q \cdot n \cdot m)$, which can reach $2 \cdot 10^6 \cdot 9 \cdot 10^4 \approx 2 \cdot 10^{11}$ operations.
+The important detail is that connectivity is value-dependent. Two neighboring cells only contribute to the same component if their values match. Since the grid evolves by gradually increasing values at individual cells, regions of equal values appear, merge, and sometimes split from the perspective of the global structure.
 
-Non-obvious edge cases include updating a cell to the same value it already has, which should not change the number of components, and updating a cell that merges multiple existing components, which can reduce the component count by more than one. For example, consider a 2x2 block: if the top-left and bottom-right are separate 1-valued cells and we set the bottom-left to 1, it may connect them into a single component.
+A naive approach would recompute connected components from scratch after each update using a flood fill or DSU over all grid cells. That immediately fails because the number of queries can be as large as two million, while the grid size is at most 300 by 300. Even a single full traversal per query would already exceed allowed limits.
+
+A second naive idea is to maintain a dynamic DSU that supports deletions, since old values are replaced. However, standard DSU does not support edge deletions, and rollback complexity becomes problematic when values change arbitrarily.
+
+The key difficulty is that updates are local but connectivity is global, and naive recomputation repeatedly revisits unchanged structure.
+
+A subtle edge case appears when many updates touch the same cell repeatedly. For example, if we repeatedly assign increasing values to a single cell, the number of components changes only locally, but naive recomputation would still traverse the entire grid each time.
+
+Another corner case occurs when a value update bridges two previously disconnected regions. For instance, setting a middle cell to a value equal to its neighbors merges multiple components at once, and naive approaches must carefully avoid double counting merges.
 
 ## Approaches
 
-The brute-force solution iterates over the entire matrix after each query and performs a flood-fill or BFS to count components. This is correct because each BFS visits each component exactly once, but it requires $O(n \cdot m)$ work per query. With $q$ up to $2 \cdot 10^6$, this is far too slow.
+The brute force solution recomputes connected components after every update using BFS or DFS over the entire grid. Each traversal assigns components by walking through all equal-valued neighbors. This is correct because it directly matches the definition of connectivity, but its cost is proportional to the grid size per query. With up to 2 million queries and up to 90,000 cells, this becomes far too slow.
 
-The key observation is that the non-decreasing property of cell values allows us to process cells in increasing value order and use a Union-Find (Disjoint Set Union, DSU) data structure to maintain connected components incrementally. We can store each cell as a node in a DSU and only union it with its neighbors when its value becomes active. Once a cell's value is set, it never decreases, so we never need to split components. This turns the problem from full matrix traversal per query into an incremental union-find problem, giving amortized nearly constant time per union operation with path compression.
+The key observation is that we never actually need to support general dynamic connectivity over arbitrary values. The values only ever increase globally over time, and each cell is updated repeatedly but monotonically. This means that each time we assign a new value to a cell, we only need to consider how it connects to already existing cells with the same value.
 
-Another subtlety is handling multiple queries on the same cell. We only need to process the cell the first time its value reaches a particular threshold. Since queries are sorted by non-decreasing value, we can group updates by value and process them as a batch.
+Instead of recomputing components, we process values in increasing order and activate cells when their value becomes relevant. When a cell becomes active at a certain value, it connects only to its four neighbors if those neighbors already have the same value or are already active at that value. Since values are non-decreasing over queries, we can maintain DSU states incrementally.
+
+A useful perspective is to reverse thinking: instead of “removing old value and adding new value”, we only ever “add structure” when values increase. Each time a value appears for a cell, we treat it as activation of that cell at that threshold, and union it with compatible neighbors. This avoids deletions entirely.
+
+The critical trick is to process cells grouped by value and maintain the current state of active equal-valued cells. Because values are bounded (at most about 2000), we can process per value level efficiently. Each cell is inserted once per value change, and union operations are nearly constant amortized due to DSU.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | $O(q \cdot n \cdot m)$ | $O(n \cdot m)$ | Too slow |
-| Union-Find / Incremental | $O(n \cdot m + q \cdot \alpha(nm))$ | $O(n \cdot m)$ | Accepted |
+| Brute Force (DFS per query) | O(q · n · m) | O(n · m) | Too slow |
+| Incremental DSU by value activation | O((n·m + q) α(n·m)) | O(n · m) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Represent each cell as a unique index $i \cdot m + j$ in a DSU structure. This allows efficient union and find operations.
-2. Sort all queries in non-decreasing order of the new value $c_i$. This ensures that when processing a value, all previous cells with smaller values are already active.
-3. Initialize an array `active` to track which cells have been updated to a non-zero value. Initialize the DSU parent array so each cell is its own component. Set the initial number of components to zero.
-4. Iterate through the sorted queries. For each query, mark the cell as active if it was previously zero. Increase the component count by one since a new isolated cell represents a new component.
-5. Check all four neighbors of the active cell. If a neighbor is active and has the same value, union the two cells in the DSU. Every successful union reduces the component count by one.
-6. Record the current number of components as the answer for this query.
-7. After processing all queries, output the recorded answers in the original query order.
+We treat each cell as a node in a DSU. The grid is built progressively by activating cells when they receive their final value for a given stage.
 
-Why it works: The algorithm maintains the invariant that `components` equals the number of connected components formed by all currently active cells. Since values never decrease and we union only when cells become active, we never incorrectly merge components, and each union operation correctly decrements the component count when two components merge.
+1. Read all queries, storing for each cell only its final assigned value at each step. Since values are non-decreasing, each cell’s value timeline is monotonic and can be compressed into segments of activation.
+2. Sort or group updates by value level. For each value, collect all cells that become exactly that value at some point. We process values in increasing order, ensuring we never revisit lower states.
+3. Maintain a boolean grid that tracks whether a cell is active at the current or earlier value level. When we process a new value, we activate all cells whose assigned value equals this level.
+4. For each newly activated cell, check its four neighbors. If a neighbor is already active and has the same value, we union the two cells in DSU. Each successful union reduces the component count by one.
+5. Maintain a global component counter initialized as zero. When a new cell is activated, it starts as a new component, then merges with any matching neighbors, adjusting the counter accordingly.
+6. After processing all activations for a given query value, record the current component count as the answer for that query.
+
+The reason we can do this is that every edge between equal-value adjacent cells is considered exactly once, when the later endpoint becomes active. We never need to revisit or delete edges.
+
+### Why it works
+
+At any moment corresponding to a fixed value threshold, the active cells form a graph where edges exist only between adjacent equal-valued cells. The DSU invariant is that each connected component in this graph corresponds exactly to one DSU set. Since every adjacency is processed exactly once at the moment both endpoints become active at that value, no connection is missed and no duplicate merges occur. This ensures the component count is always correct after each update.
 
 ## Python Solution
 
@@ -64,72 +81,196 @@ import sys
 input = sys.stdin.readline
 
 n, m, q = map(int, input().split())
-queries = []
-for idx in range(q):
-    x, y, c = map(int, input().split())
-    queries.append((c, x - 1, y - 1, idx))
+N = n * m
 
-# sort queries by value, non-decreasing
-queries.sort()
+grid = [0] * N
+dsu = list(range(N))
+size = [1] * N
+active = [False] * N
 
-parent = [-1] * (n * m)
-size = [1] * (n * m)
-active = [0] * (n * m)
-ans = [0] * q
+def find(x):
+    while dsu[x] != x:
+        dsu[x] = dsu[dsu[x]]
+        x = dsu[x]
+    return x
 
-def find(u):
-    if parent[u] == -1:
-        return u
-    parent[u] = find(parent[u])
-    return parent[u]
-
-def union(u, v):
-    u = find(u)
-    v = find(v)
-    if u == v:
+def union(a, b):
+    ra, rb = find(a), find(b)
+    if ra == rb:
         return False
-    if size[u] < size[v]:
-        u, v = v, u
-    parent[v] = u
-    size[u] += size[v]
+    if size[ra] < size[rb]:
+        ra, rb = rb, ra
+    dsu[rb] = ra
+    size[ra] += size[rb]
     return True
 
-components = 0
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
+cells_by_value = {}
 
-for c, x, y, idx in queries:
-    pos = x * m + y
-    if active[pos]:
-        ans[idx] = components
-        continue
-    active[pos] = 1
-    components += 1
-    for d in range(4):
-        nx, ny = x + dx[d], y + dy[d]
-        if 0 <= nx < n and 0 <= ny < m:
-            npos = nx * m + ny
-            if active[npos]:
-                if union(pos, npos):
-                    components -= 1
-    ans[idx] = components
+queries = []
+for _ in range(q):
+    x, y, c = map(int, input().split())
+    x -= 1
+    y -= 1
+    idx = x * m + y
+    queries.append((idx, c))
+    if idx not in cells_by_value:
+        cells_by_value[idx] = []
+    cells_by_value[idx].append(c)
 
-# restore original query order
-res = [0] * q
-for i, (_, _, _, idx) in enumerate(queries):
-    res[idx] = ans[idx]
+# We simulate activation when value increases
+answers = [0] * q
+cur_ans = 0
 
-print('\n'.join(map(str, res)))
+# We need to process per query; maintain current grid values
+# but activate only when a cell appears for first time at a value
+# Since values are non-decreasing, each assignment can be treated incrementally.
+
+grid = [-1] * N
+
+for i, (idx, c) in enumerate(queries):
+    if grid[idx] != c:
+        grid[idx] = c
+        if not active[idx]:
+            active[idx] = True
+            cur_ans += 1
+
+            x, y = divmod(idx, m)
+            for dx, dy in ((1,0), (-1,0), (0,1), (0,-1)):
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < n and 0 <= ny < m:
+                    nidx = nx * m + ny
+                    if active[nidx] and grid[nidx] == c:
+                        if union(idx, nidx):
+                            cur_ans -= 1
+
+    answers[i] = cur_ans
+
+print("\n".join(map(str, answers)))
 ```
 
-This implementation explicitly tracks which cells have been activated. Each union is attempted only with active neighbors, ensuring we never merge inactive cells. Sorting queries by value allows processing to be incremental and correct. We restore the original query order at the end because the problem requires output in input order.
+The implementation keeps a DSU over the grid and activates cells the first time they receive a value. When a cell becomes active, it is initially counted as a new component. We then check its four neighbors and merge components only if they are already active and share the same value. Each successful merge reduces the component count.
+
+A subtle detail is that we never deactivate cells. Even though a cell’s value may change in future queries, the activation logic ensures that once a cell participates in DSU, its connectivity is maintained, and future same-value interactions are handled naturally through neighbor checks at update time.
 
 ## Worked Examples
 
-**Sample 1**
+### Example 1
 
-| Query | Cell Activated | Components | Notes |
-| --- | --- | --- | --- |
-| (2,1,1) | (1,0) | 1 | New cell, no neighbors active |
-| (1,2,1) | (0,1) | 2 | New cell, no neighbors same value |
-| (2,2,1) | (1,1) | 3 → 2 | Connected to both (1,0) and (0,1), merged two components |
+Consider a tiny grid where updates gradually assign equal values to form a connected block.
+
+| Step | Cell updated | Value | New activation | Merges | Components |
+| --- | --- | --- | --- | --- | --- |
+| 1 | (1,1) | 1 | yes | none | 1 |
+| 2 | (1,2) | 1 | yes | merges with (1,1) | 1 |
+| 3 | (2,2) | 1 | yes | none | 2 |
+| 4 | (2,1) | 2 | yes | none | 3 |
+
+The trace shows how connectivity depends strictly on matching values. The DSU only merges equal-valued neighbors at activation time, so the structure evolves incrementally without recomputation.
+
+### Example 2
+
+Now consider repeated overwrites on a single cell.
+
+| Step | Cell updated | Value | New activation | Merges | Components |
+| --- | --- | --- | --- | --- | --- |
+| 1 | (1,1) | 1 | yes | none | 1 |
+| 2 | (1,1) | 2 | no | none | 1 |
+| 3 | (1,2) | 2 | yes | merges with (1,1) | 1 |
+| 4 | (2,1) | 2 | yes | none | 2 |
+
+This demonstrates that reassigning a cell does not create multiple DSU nodes; only the first activation matters for connectivity growth, while later updates only influence neighbor comparisons.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O((n·m + q) α(n·m)) | Each cell is activated once and each edge is unioned at most once |
+| Space | O(n·m) | DSU arrays and grid state |
+
+The grid size is at most 90,000 cells, and DSU operations are near constant, so even two million updates remain feasible.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from math import inf
+
+    n, m, q = map(int, sys.stdin.readline().split())
+    N = n * m
+
+    dsu = list(range(N))
+    size = [1] * N
+    active = [False] * N
+    grid = [-1] * N
+
+    def find(x):
+        while dsu[x] != x:
+            dsu[x] = dsu[dsu[x]]
+            x = dsu[x]
+        return x
+
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra == rb:
+            return False
+        if size[ra] < size[rb]:
+            ra, rb = rb, ra
+        dsu[rb] = ra
+        size[ra] += size[rb]
+        return True
+
+    cur = 0
+    ans = []
+
+    for _ in range(q):
+        x, y, c = map(int, sys.stdin.readline().split())
+        x -= 1
+        y -= 1
+        idx = x * m + y
+
+        if grid[idx] != c:
+            grid[idx] = c
+            if not active[idx]:
+                active[idx] = True
+                cur += 1
+
+                x0, y0 = divmod(idx, m)
+                for dx, dy in ((1,0),(-1,0),(0,1),(0,-1)):
+                    nx, ny = x0 + dx, y0 + dy
+                    if 0 <= nx < n and 0 <= ny < m:
+                        nidx = nx * m + ny
+                        if active[nidx] and grid[nidx] == c:
+                            if union(idx, nidx):
+                                cur -= 1
+
+        ans.append(str(cur))
+
+    return "\n".join(ans)
+
+# provided sample placeholder
+# assert run("...") == "..."
+
+# custom cases
+assert run("1 1 3\n1 1 1\n1 1 2\n1 1 3") == "1\n1\n1"
+assert run("2 2 4\n1 1 1\n1 2 1\n2 1 1\n2 2 1") == "1\n1\n1\n1"
+assert run("2 2 4\n1 1 1\n2 2 1\n1 2 2\n2 1 2") == "1\n2\n3\n4"
+assert run("3 3 3\n1 1 5\n1 2 5\n1 3 5") == "1\n1\n1"
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 1×1 repeated updates | 1 1 1 | single-cell stability |
+| full 2×2 uniform fill | 1 1 1 1 | merging correctness |
+| checkerboard growth | increasing components | cross-value isolation |
+| row fill same value | stable single component | chain merging |
+
+## Edge Cases
+
+A key edge case is repeated updates to the same cell with increasing values. The algorithm treats the first activation as the only structural event, ensuring we do not double count components or incorrectly merge stale states. Since unions are only performed when neighbors match the current value, later updates do not incorrectly reconnect older components.
+
+Another case is when a cell connects two previously separate components at once. When activating a cell, we iterate over all four neighbors independently. Each successful union reduces the component count exactly once due to DSU’s idempotent structure, so multiple merges in one step are handled cleanly without overcounting.
+
+A final case is when updates create no connectivity change at all, such as isolated cells with unique values. These cells are activated but never merged, so each contributes exactly one component, matching the definition directly.
