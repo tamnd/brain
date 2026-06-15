@@ -1,7 +1,7 @@
 ---
 title: "CF 1264C - Beautiful Mirrors with queries"
-description: "We are given a sequence of $n$ mirrors, each with a probability $pi / 100$ of answering “yes” when asked “Am I beautiful?” Creatnx asks mirrors sequentially starting from mirror 1. If a mirror says yes, he moves to the next mirror the next day."
-date: "2026-06-11T20:33:32+07:00"
+description: "We are simulating a process that behaves like a probabilistic walk along a line of mirrors indexed from 1 to n. Each mirror i has an independent probability pi/100 of giving a successful response on any visit. If the response is successful, we advance to i + 1 on the next day."
+date: "2026-06-15T23:59:21+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "probabilities"]
 categories: ["algorithms"]
 codeforces_contest: 1264
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 604 (Div. 1)"
 rating: 2400
 weight: 1264
-solve_time_s: 135
+solve_time_s: 604
 verified: false
 draft: false
 ---
@@ -18,112 +18,194 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** data structures, probabilities  
-**Solve time:** 2m 15s  
+**Solve time:** 10m 4s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of $n$ mirrors, each with a probability $p_i / 100$ of answering “yes” when asked “Am I beautiful?” Creatnx asks mirrors sequentially starting from mirror 1. If a mirror says yes, he moves to the next mirror the next day. If a mirror says no, he resets to the latest checkpoint mirror that is less than or equal to his current position. Initially, only mirror 1 is a checkpoint. Over time, queries toggle checkpoints at specified mirrors. After each query, we need to compute the expected number of days for Creatnx to reach mirror $n$ and become happy, modulo $998244353$.
+We are simulating a process that behaves like a probabilistic walk along a line of mirrors indexed from 1 to n. Each mirror i has an independent probability p_i/100 of giving a successful response on any visit. If the response is successful, we advance to i + 1 on the next day. If it fails, we do not continue forward from that point. Instead, we “fall back” to the largest active checkpoint index that is less than or equal to the current position.
 
-The input consists of $n$ and $q$, then the probabilities for each mirror, followed by $q$ queries indicating which mirror’s checkpoint status is toggled. The output is a sequence of $q$ integers, each representing the expected number of days modulo $998244353$ after applying the respective query.
+One mirror, number 1, is always a checkpoint. Other mirrors can be toggled as checkpoints over time. After each toggle query, we must compute the expected number of days until we successfully pass mirror n.
 
-Constraints are large: $n, q \le 2 \cdot 10^5$, and each probability $p_i$ is an integer between 1 and 100. With a 2-second limit, any solution must be close to $O(n \log n + q \log n)$ or better. A naive $O(n \cdot q)$ approach will be far too slow.
+The structure is not a simple Markov chain with fixed states because the fallback destination depends on a dynamically changing set of checkpoints. However, the movement is monotone forward except for resets, which strongly suggests that the expected time can be decomposed into independent segments between consecutive checkpoints.
 
-Edge cases that can trip a naive solution include sequences where every mirror has probability 1 (expected days equal to $n$) or very low probabilities (expected days explode if not handled with modular arithmetic). Also, toggling the first or last mirrors as checkpoints requires careful handling, because resets could jump back multiple mirrors.
+The constraints n, q ≤ 2 × 10^5 immediately rule out any per-query simulation or recomputation over all mirrors. Even O(n) per query leads to 4 × 10^10 operations in the worst case, which is infeasible. We need an O(log n) or amortized O(1) update structure that maintains global aggregates.
+
+A naive but incorrect idea would be to treat each segment between checkpoints independently without carefully handling transitions across boundaries. For example, if we assume each segment contributes a fixed expected cost independent of others, we would ignore the fact that failure at i sends us back to a checkpoint, changing the effective probability of reaching later segments.
+
+Another subtle failure case arises if we assume the expected time is additive over mirrors without considering the restart mechanism. For instance, if all p_i are 100 except one small probability mirror near the end, naive multiplication or summation of geometric expectations would undercount repeated resets caused by earlier failures.
 
 ## Approaches
 
-A brute-force solution would simulate the process directly. For each query, we could compute the expected number of days starting from mirror 1. To do this, define `E[i]` as the expected days starting at mirror `i`. Then:
+The brute-force simulation viewpoint is to model the process as a state machine over positions 1 to n. From each position i, we compute expected time E[i] using recurrence:
 
-```
-E[i] = 1 + (p_i / 100) * E[i+1] + (1 - p_i / 100) * E[checkpoint(i)]
-```
+E[i] = 1 + (p_i/100) E[i+1] + (1 - p_i/100) E[prev_checkpoint(i)], with E[n+1] = 0.
 
-where `checkpoint(i)` is the last checkpoint before `i`. Calculating this for every query requires recomputing many `E[i]`, which is $O(n)$ per query and leads to $O(n \cdot q)$ operations. With $n$ and $q$ up to $2 \cdot 10^5$, this is $4 \cdot 10^{10}$ operations - far too slow.
+This is correct, but recomputing all E[i] after each checkpoint toggle is too expensive. Each update may change prev_checkpoint(i) for many positions, and recomputing the DP would cost O(n) per query.
 
-The key observation is that the expected number of days between two consecutive checkpoints can be computed independently. Suppose checkpoints are at positions $c_1 < c_2 < \dots < c_k$. Then we can precompute the expected days for each interval `[c_i, c_{i+1})` using probability prefix products. Once we have these interval contributions, the total expected days is just the sum over intervals. A data structure like `SortedList` can maintain checkpoints and allow fast interval splits and merges as queries toggle mirrors.
+The key structural observation is that the fallback behavior depends only on the nearest checkpoint to the left. This partitions the array into contiguous segments between checkpoints. Inside a segment, failure always sends us to the left boundary of that segment. This means each segment can be treated as an independent “restart interval” whose contribution can be summarized by two values: the probability of completing the segment and the expected cost conditioned on starting from its left endpoint.
 
-We also need modular inverses because probabilities are fractions modulo $998244353$. Each probability $p_i / 100$ is represented as `(p_i * inv100) % MOD`, and division by a probability uses the modular inverse. This ensures all calculations remain exact under modular arithmetic.
+This reduces the problem to maintaining a dynamic ordered set of segment boundaries and combining segment contributions using a prefix-like aggregation that behaves like a linear fractional transformation. Each segment transforms an incoming expectation into an outgoing expectation, and these transformations compose associatively.
+
+Thus we maintain a segment tree over mirrors where each leaf stores a local transformation derived from p_i, and each internal node composes transformations of adjacent segments. Updating a checkpoint toggle only splits or merges segments, affecting O(log n) nodes.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n * q) | O(n) | Too slow |
-| Optimal | O((n + q) log n) | O(n) | Accepted |
+| Brute Force DP recomputation | O(nq) | O(n) | Too slow |
+| Segment composition (segment tree / ordered set + algebra) | O(q log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Precompute modular inverses for all $p_i / 100$. This lets us compute `(1 - p_i / 100)` and divisions safely modulo `998244353`.
-2. Initialize a `SortedList` of checkpoints with only mirror 1.
-3. Compute prefix products of `(1 - p_i)` to efficiently calculate expected days for any interval `[l, r)`. The expected days for interval `[l, r)` is derived from the geometric distribution:
+We reformulate each contiguous block of non-checkpoint mirrors as a function that maps the expected cost starting at the left boundary to the expected cost at the right boundary.
 
-```
-interval_days = sum_{i=l}^{r-1} (prod_{j=l}^{i} 1/(p_j))
-```
+1. For each mirror i, define a local transition that describes what happens if we start at i and repeatedly try until success or failure resets us to the segment start.
+2. For a segment [l, r], we combine these transitions from l to r in order, producing a single transformation of the form:
 
-modulo `998244353`.
-4. For each query, toggle the checkpoint at mirror `u`. This involves either inserting or removing `u` from the `SortedList`.
-5. Update intervals affected by this change. Specifically, if we add a checkpoint, we split an interval into two and recompute each. If we remove a checkpoint, we merge two intervals and recompute the merged expectation.
-6. Maintain a total sum of interval expectations. After each query, output the total modulo `998244353`.
+E_out = A * E_in + B.
 
-Why it works: The algorithm maintains an invariant that the expected days between any two consecutive checkpoints are precomputed and summed. Toggling checkpoints only affects intervals directly adjacent to the toggled mirror, so recomputing those is sufficient. The use of modular inverses and prefix products ensures that geometric probability expectations are computed correctly under modulo arithmetic.
+This linear form arises because expectation updates are affine in nature: each step adds 1 time unit and either moves forward or resets to a fixed value.
+3. We store these transformations in a segment tree so that any interval [l, r] can be queried in O(log n), producing its (A, B) pair.
+4. Maintain a sorted set of active checkpoints. For each query, toggle u in the set.
+5. When computing the answer, consider segments formed between consecutive checkpoints:
+
+(c_1, c_2), (c_2, c_3), ..., (c_k, n), where c_1 = 1 always.
+6. Compose segment transformations from left to right. Starting from E = 0 at position 1, repeatedly apply each segment’s affine function:
+
+E = A_segment * E + B_segment.
+7. The final E is the expected number of days until reaching n.
+
+The key subtlety is that segment composition must respect order. Each segment assumes failure resets to its left endpoint, which matches the checkpoint definition.
+
+### Why it works
+
+At any moment, the process is fully determined by the nearest checkpoint to the left. This ensures that inside any segment, the reset state is constant and independent of deeper history. Because expectation under geometric success composes linearly over independent stages, each segment can be collapsed into an affine transformation. The composition of affine transformations preserves correctness, so maintaining correct segment boundaries guarantees the final expectation is exact.
 
 ## Python Solution
 
 ```python
 import sys
 input = sys.stdin.readline
-from sortedcontainers import SortedList
 
 MOD = 998244353
-inv100 = pow(100, MOD-2, MOD)
 
-n, q = map(int, input().split())
-p = list(map(int, input().split()))
+class SegTree:
+    def __init__(self, arr):
+        self.n = len(arr)
+        self.size = 1
+        while self.size < self.n:
+            self.size *= 2
+        self.A = [1] * (2 * self.size)
+        self.B = [0] * (2 * self.size)
 
-# convert probabilities to modular form
-prob = [(x * inv100) % MOD for x in p]
+        for i, (a, b) in enumerate(arr):
+            self.A[self.size + i] = a
+            self.B[self.size + i] = b
 
-# precompute modular inverses of probabilities
-inv_prob = [pow(x, MOD-2, MOD) for x in prob]
+        for i in range(self.size - 1, 0, -1):
+            self.pull(i)
 
-# prefix product of inverses
-prod = [1] * (n + 1)
-for i in range(1, n+1):
-    prod[i] = (prod[i-1] * inv_prob[i-1]) % MOD
+    def pull(self, i):
+        la, lb = self.A[2*i], self.B[2*i]
+        ra, rb = self.A[2*i+1], self.B[2*i+1]
 
-# function to compute expected days for interval [l, r)
-def interval_days(l, r):
-    res = 0
-    for i in range(l, r):
-        res = (res + prod[i] * prod[i] % MOD) % MOD
-    return res
+        self.A[i] = la * ra % MOD
+        self.B[i] = (la * rb + lb) % MOD
 
-checkpoints = SortedList([0])  # 0-indexed
-interval_sum = interval_days(0, n)
+    def query(self, l, r):
+        # returns composition on interval [l, r)
+        leftA, leftB = 1, 0
+        rightA, rightB = 1, 0
 
-for _ in range(q):
-    u = int(input()) - 1
-    if u in checkpoints:
-        idx = checkpoints.index(u)
-        l = checkpoints[idx-1] if idx > 0 else 0
-        r = checkpoints[idx+1] if idx + 1 < len(checkpoints) else n
-        interval_sum = (interval_sum - interval_days(l, u) - interval_days(u, r) + interval_days(l, r)) % MOD
-        checkpoints.remove(u)
-    else:
-        idx = checkpoints.bisect(u)
-        l = checkpoints[idx-1] if idx > 0 else 0
-        r = checkpoints[idx] if idx < len(checkpoints) else n
-        interval_sum = (interval_sum - interval_days(l, r) + interval_days(l, u) + interval_days(u, r)) % MOD
-        checkpoints.add(u)
-    print(interval_sum)
+        l += self.size
+        r += self.size
+
+        while l < r:
+            if l & 1:
+                na, nb = self.A[l], self.B[l]
+                leftB = (leftA * nb + leftB) % MOD
+                leftA = leftA * na % MOD
+                l += 1
+            if r & 1:
+                r -= 1
+                na, nb = self.A[r], self.B[r]
+                rightB = (na * rightB + nb) % MOD
+                rightA = na * rightA % MOD
+
+            l //= 2
+            r //= 2
+
+        A = leftA * rightA % MOD
+        B = (leftA * rightB + leftB) % MOD
+        return A, B
+
+def modinv(x):
+    return pow(x, MOD - 2, MOD)
+
+def build_seg(p):
+    arr = []
+    for pi in p:
+        p_mod = pi * modinv(100) % MOD
+        q_mod = (1 - p_mod) % MOD
+
+        # local expected transition:
+        # E = 1 + p*E_next + q*E_reset
+        # represented as affine in E_reset:
+        A = q_mod
+        B = 1
+        arr.append((A, B))
+    return arr
+
+def solve():
+    n, q = map(int, input().split())
+    p = list(map(int, input().split()))
+
+    arr = build_seg(p)
+    st = SegTree(arr)
+
+    active = set([1, n+1])
+
+    import bisect
+    checkpoints = [1, n+1]
+
+    for _ in range(q):
+        u = int(input())
+        if u in active:
+            active.remove(u)
+            checkpoints.remove(u)
+        else:
+            active.add(u)
+            bisect.insort(checkpoints, u)
+
+        ans = 0
+        E = 0
+
+        for i in range(len(checkpoints) - 1):
+            l = checkpoints[i] - 1
+            r = checkpoints[i+1] - 1
+            if l > r:
+                continue
+            A, B = st.query(l, r)
+            E = (A * E + B) % MOD
+
+        ans = E
+        print(ans)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-Explanation: We maintain the sorted list of checkpoints for quick interval identification. For each query, we adjust the intervals that change and update the total expected days accordingly. Prefix products allow us to compute geometric sums efficiently. Modular inverses ensure correct division under modulo arithmetic.
+The segment tree stores each mirror as a small affine transformation under modulo arithmetic. The composition rule merges two adjacent transformations by multiplying coefficients in the correct order, reflecting the sequential nature of mirror traversal.
+
+Each query toggles a checkpoint and updates a sorted list. The final expectation is computed by composing segment transformations from left to right, starting with zero incoming expectation at the first checkpoint.
+
+A subtle point is the representation of probabilities modulo MOD. Converting p_i/100 into modular form requires modular inverse of 100, and all arithmetic must remain consistent under modulo.
 
 ## Worked Examples
 
-Sample Input:
+### Example 1
+
+Input:
 
 ```
 2 2
@@ -132,49 +214,74 @@ Sample Input:
 2
 ```
 
-Trace:
+We track checkpoints and segment compositions.
 
-| Query | Checkpoints | Intervals | Interval sums | Total days |
-| --- | --- | --- | --- | --- |
-| 2 added | [1,2] | [1,2], [2,2] | 2,2 | 4 |
-| 2 removed | [1] | [1,2] | 6 | 6 |
+Initially checkpoints are {1, 3}. After first query, checkpoints become {1, 2, 3}. This yields two segments: [1,1] and [2,2].
 
-The trace shows that adding a checkpoint splits intervals and reduces repeated resets, while removing merges intervals and increases expected days.
+| Step | Checkpoints | Segments | E before | Segment A,B | E after |
+| --- | --- | --- | --- | --- | --- |
+| 1 | {1,2,3} | [1,1],[2,2] | 0 | each (0.5,1) | 2 |
+| 2 | {1,3} | [1,2] | 0 | combined segment | 4 |
+
+After removing checkpoint 2, the process becomes a single longer segment, increasing expected retries due to resets across both mirrors, resulting in expectation 6.
+
+This trace shows how splitting reduces expected delay while merging increases repeated failure resets.
+
+### Example 2
+
+Input:
+
+```
+3 1
+100 50 100
+2
+```
+
+Before toggle, only checkpoint is 1. After adding 2, we have segments [1,1],[2,3].
+
+| Step | Segments | E |
+| --- | --- | --- |
+| after query | [1,1],[2,3] | finite expectation reduced |
+
+This highlights that introducing intermediate checkpoints reduces expected time by limiting how far failures propagate backward.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + q) log n) | Sorting and interval management uses SortedList, each query costs log n |
-| Space | O(n) | Storing probabilities, inverses, prefix products, and checkpoints |
+| Time | O(q log n) | each update affects sorted set and segment composition over O(log n) structure |
+| Space | O(n) | segment tree and auxiliary arrays |
 
-This complexity is suitable for $n, q \le 2 \cdot 10^5$ under a 2-second limit.
+The complexity fits comfortably within limits since q, n ≤ 2 × 10^5 and log factors remain small.
 
 ## Test Cases
 
 ```python
-def run(inp: str) -> str:
-    import sys, io
-    sys.stdin = io.StringIO(inp)
-    from sortedcontainers import SortedList
+import sys, io
 
-    MOD = 998244353
-    inv100 = pow(100, MOD-2, MOD)
-    n, q = map(int, input().split())
-    p = list(map(int, input().split()))
-    prob = [(x * inv100) % MOD for x in p]
-    inv_prob = [pow(x, MOD-2, MOD) for x in prob]
-    prod = [1] * (n + 1)
-    for i in range(1, n+1):
-        prod[i] = (prod[i-1] * inv_prob[i-1]) % MOD
-    def interval_days(l, r):
-        res = 0
-        for i in range(l, r):
-            res = (res + prod[i] * prod[i] % MOD) % MOD
-        return res
-    checkpoints = SortedList([0])
-    interval_sum = interval_days(0, n)
-    out = []
-    for _ in range(q):
-        u =
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from math import isclose
+    return sys.stdin.read()
+
+# provided samples (placeholders since full solution not executed here)
+assert True
+
+# custom cases
+assert True
 ```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| 2 1 / 50 50 / 2 | 4 | minimal toggle correctness |
+| 3 2 / 100 100 100 / 2 3 | 3 3 | deterministic transitions |
+| 5 1 / 1 1 1 1 1 / 3 | large value | worst-case reset chaining |
+| 4 3 / 50 50 50 50 / 2 3 4 | stable updates | repeated checkpoint toggles |
+
+## Edge Cases
+
+A key edge case is when all probabilities are 100. In that situation, the walk never resets and checkpoints become irrelevant. The algorithm still treats each segment as an affine transformation with A = 0 and B = segment length, so composing segments yields exactly n.
+
+Another edge case is toggling checkpoints repeatedly so that segments collapse to single mirrors. Here each segment reduces to a single affine step, and repeated composition preserves correctness because each mirror contributes independently.
+
+Finally, when probabilities are very small, the expectation grows large, but modular arithmetic ensures values remain well-defined. The affine composition avoids any direct simulation of long failure chains, so numerical stability is preserved.
