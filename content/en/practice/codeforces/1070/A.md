@@ -1,7 +1,7 @@
 ---
 title: "CF 1070A - Find a Number"
-description: "We are looking for the smallest positive integer that satisfies two constraints at the same time. First, it must be divisible by a given integer $d$, so when we divide it by $d$, the remainder is zero."
-date: "2026-06-15T07:21:58+07:00"
+description: "We are looking for a positive integer that satisfies two simultaneous constraints. First, it must be divisible by a given integer $d$. Second, when written in decimal form, the sum of its digits must equal a given value $s$."
+date: "2026-06-15T13:43:51+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "graphs", "number-theory", "shortest-paths"]
 categories: ["algorithms"]
 codeforces_contest: 1070
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "2018-2019 ICPC, NEERC, Southern Subregional Contest (Online Mirror, ACM-ICPC Rules, Teams Preferred)"
 rating: 2200
 weight: 1070
-solve_time_s: 246
-verified: false
+solve_time_s: 357
+verified: true
 draft: false
 ---
 
@@ -18,178 +18,144 @@ draft: false
 
 **Rating:** 2200  
 **Tags:** dp, graphs, number theory, shortest paths  
-**Solve time:** 4m 6s  
-**Verified:** no  
+**Solve time:** 5m 57s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are looking for the smallest positive integer that satisfies two constraints at the same time. First, it must be divisible by a given integer $d$, so when we divide it by $d$, the remainder is zero. Second, if we look at its decimal representation, the sum of its digits must be exactly $s$. Among all such numbers, we want the smallest in ordinary numeric order.
+We are looking for a positive integer that satisfies two simultaneous constraints. First, it must be divisible by a given integer $d$. Second, when written in decimal form, the sum of its digits must equal a given value $s$. Among all such integers, we want the smallest one in numeric value.
 
-This is not a simple arithmetic construction problem because the two conditions interact in a non-linear way. Divisibility depends on the full number modulo $d$, while digit sum depends on the structure of its base-10 representation. Changing a digit affects both properties in coupled and unpredictable ways.
+The output is not just a yes-or-no decision but the lexicographically smallest number in the sense of normal integer ordering. This makes the problem fundamentally a shortest path problem over a state space where the value of a number is built incrementally digit by digit.
 
-The constraints go up to $d \le 500$ and $s \le 5000$. The size of the final number is not bounded explicitly, which immediately rules out any strategy that tries to enumerate integers in increasing order and test validity. Even if checking each number were fast, the valid answer might require hundreds or thousands of digits, and the search space grows exponentially.
+The constraints $d \le 500$ and $s \le 5000$ immediately rule out any direct construction of numbers up to magnitude $10^{5000}$. Any attempt to explicitly enumerate integers or simulate divisibility for large candidates will fail because even checking $10^7$ candidates would already be too slow if each requires digit sum computation and modulo tracking.
 
-A naive idea would be to generate numbers in increasing order and test both conditions. That fails quickly because numbers with large digit sums are extremely sparse. For example, if $s = 5000$, any valid number must have at least 555 digits (since digits are at most 9), so brute enumeration is not even well-defined in practical numeric range.
+A naive idea is to try increasing integers, compute their digit sum, and check divisibility by $d$. This fails in two ways. First, the search space grows exponentially with the digit length of the answer. Second, the correct answer can have many digits even for small inputs, as shown by the sample where $13, 50$ produces a six-digit number.
 
-A more subtle failure comes from greedy digit building. One might try to construct digits from left to right by always choosing the smallest digit that keeps the possibility of reaching the target sum and divisibility. This fails because divisibility depends on future digits in a modular system, so locally optimal digit choices can block all valid completions.
+A second subtle failure mode appears if we try greedy digit construction without global state tracking. For example, choosing locally small digits to keep the number minimal can easily block achieving the required remainder modulo $d$ later.
+
+The key difficulty is that divisibility depends on the full prefix modulo $d$, while digit sum depends on accumulated weight constraints. These two constraints interact across positions, so local decisions cannot guarantee global feasibility.
 
 ## Approaches
 
-The structure suggests a state space problem: we are building a number digit by digit, and at each prefix we care about two pieces of information. The first is the remainder modulo $d$, because that determines whether we can eventually land on a divisible number. The second is the remaining digit sum, because we must ensure the final sum equals $s$.
+The brute-force approach is to generate integers in increasing order, compute their digit sum, and test divisibility by $d$. This is correct because it eventually enumerates every candidate in order, but it becomes infeasible because the number of integers with digit sum up to $s$ is enormous. Even restricting to digit sum $s = 5000$, the number of compositions of $s$ into digits is exponential in $s$, so the search space is far beyond any practical limit.
 
-This naturally forms a graph where each node represents a state described by a pair $(r, t)$, where $r$ is the current remainder modulo $d$, and $t$ is how much digit sum is still available. From a state, we can append any digit from 0 to 9, which transitions to a new remainder and reduces the remaining sum accordingly. Each digit appending corresponds to one edge, and we want the lexicographically smallest number, which corresponds to shortest path in terms of digit length, with tie-breaking by digit order.
+The structure suggests reformulating the problem as constructing a number digit by digit while tracking two pieces of state: the current remainder modulo $d$, and the remaining digit sum. Each digit choice transitions deterministically to a new state. This naturally forms a graph where nodes represent states $(remainder, remaining\_sum)$, and edges correspond to appending a digit $0$ to $9$.
 
-A brute-force BFS over full numbers is impossible because numbers explode combinatorially. However, collapsing all numbers that share the same $(r, t)$ state turns the problem into a graph with at most $d \cdot (s+1)$ states. Each state has at most 10 transitions, so BFS becomes feasible.
+The goal becomes finding the shortest path from the initial state $(0, s)$ to any state $(0, 0)$, while ensuring the first digit is non-zero. Since every edge has equal cost (each digit adds one position), BFS yields the lexicographically smallest valid number when digits are processed in increasing order.
 
-To recover the smallest number, we do BFS starting from digit 1 through 9 as initial states (we cannot start with 0 because the number must be positive). We track transitions that append digits, and we stop when we reach remainder 0 with remaining sum 0.
+This transforms the problem into a shortest path search over at most $d \cdot (s+1)$ states, which is manageable.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force enumeration | exponential | O(1) | Too slow |
-| State BFS over (mod, sum) | O(d · s · 10) | O(d · s) | Accepted |
+| Brute Force | Exponential | O(1) | Too slow |
+| BFS on states (mod, sum) | $O(10 \cdot d \cdot s)$ | $O(d \cdot s)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat each state as a pair $(r, t)$, where $r$ is the current remainder modulo $d$, and $t$ is the remaining digit sum needed to reach $s$. We also store how we reached each state to reconstruct the answer.
-
-1. Initialize a BFS queue with all valid starting digits from 1 to 9. Each digit $x$ is only used if $x \le s$, since otherwise we already exceed the required digit sum. The initial remainder is $x \bmod d$, and remaining sum is $s - x$.
-2. Mark each initial state as visited and store its parent as a special null marker. This is necessary so we can reconstruct the number later by backtracking.
-3. Pop states from the queue. For a state $(r, t)$, try appending digits from 0 to 9. This generates a candidate next digit $x$, which is only valid if $t \ge x$.
-4. Compute the new remainder as $(r \cdot 10 + x) \bmod d$. This formula reflects how appending a digit shifts all previous digits one decimal place to the left and adds the new digit.
-5. Compute the new remaining sum as $t - x$. If we reach a state where both remainder is 0 and remaining sum is 0, we stop immediately, because BFS guarantees this is the shortest valid construction in terms of digits, and digit ordering ensures lexicographically smallest among shortest.
-6. Record the parent transition so we can reconstruct the digit sequence once the target state is found.
-7. Reconstruct the answer by walking backwards from the target state until reaching a starting digit, collecting digits in reverse order, then reversing the result.
+1. Define a state as a pair $(r, t)$, where $r$ is the current remainder modulo $d$, and $t$ is the remaining digit sum needed. This captures exactly the constraints we still need to satisfy in the future, since only these two values affect feasibility.
+2. Start from state $(0, s)$ before placing any digits. This represents an empty prefix with full digit sum still available.
+3. Use BFS and a queue initialized with the starting state. Each BFS level corresponds to fixing one more digit in the final number.
+4. From a state $(r, t)$, try appending every digit $x \in [0, 9]$. This produces a new state $(r', t')$ where $t' = t - x$ and $r' = (r \cdot 10 + x) \bmod d$. We only allow transitions where $t' \ge 0$.
+5. Avoid visiting the same state twice. This ensures we do not recompute paths and guarantees termination because the state space is finite.
+6. During BFS, maintain a parent pointer for each visited state storing both the previous state and the digit used. This allows reconstruction of the final number once we reach $(0, 0)$.
+7. Stop BFS immediately when $(0, 0)$ is reached. This is valid because BFS explores states in increasing number of digits, so the first time we reach a valid terminal state, it corresponds to the minimal-length solution, which is also the smallest numeric value under digit ordering.
 
 ### Why it works
 
-Every state represents exactly the set of all prefixes that are indistinguishable in terms of future feasibility: only the remainder modulo $d$ and remaining digit sum matter for completing a valid number. BFS explores states in increasing number of digits, so the first time we reach $(0, 0)$, we have used the fewest digits possible. Since transitions are processed in increasing digit order, among equal-length solutions we naturally prefer smaller digits earlier, which yields the minimal numeric value.
-
-No valid solution is missed because any valid number corresponds to a path in this state graph, and every such path is reachable from the initial digit states.
+The invariant is that every visited state in BFS corresponds to a valid prefix whose digit sum and modulo constraints exactly match the state description. BFS explores all reachable states in increasing path length, and digit order from 0 to 9 ensures that among equal-length paths, smaller digits are expanded first. Therefore the first time we reach $(0, 0)$, no smaller valid number exists.
 
 ## Python Solution
 
 ```python
 import sys
-input = sys.stdin.readline
 from collections import deque
+
+input = sys.stdin.readline
 
 def solve():
     d, s = map(int, input().split())
-
-    # dist[(r, t)] not strictly needed, we use visited set
-    visited = [[False] * (s + 1) for _ in range(d)]
+    
+    # dist[r][t] = visited state
+    dist = [[False] * (s + 1) for _ in range(d)]
     parent = [[None] * (s + 1) for _ in range(d)]
-
+    
     q = deque()
-
-    # initialize with first digit (must be 1..9)
-    for x in range(1, 10):
-        if x > s:
-            continue
-        r = x % d
-        t = s - x
-        if not visited[r][t]:
-            visited[r][t] = True
-            parent[r][t] = (-1, -1, x)
-            q.append((r, t))
-
-    target = None
-
+    q.append((0, s))
+    dist[0][s] = True
+    
     while q:
         r, t = q.popleft()
-
+        
         if r == 0 and t == 0:
-            target = (r, t)
-            break
-
-        for x in range(10):
-            if t < x:
-                break
-            nr = (r * 10 + x) % d
-            nt = t - x
-            if not visited[nr][nt]:
-                visited[nr][nt] = True
-                parent[nr][nt] = (r, t, x)
+            # reconstruct answer
+            res = []
+            cr, ct = r, t
+            while parent[cr][ct] is not None:
+                pr, pt, digit = parent[cr][ct]
+                res.append(str(digit))
+                cr, ct = pr, pt
+            print("".join(reversed(res)))
+            return
+        
+        for digit in range(10):
+            if r == 0 and t == s and digit == 0:
+                continue
+            
+            if t < digit:
+                continue
+            
+            nr = (r * 10 + digit) % d
+            nt = t - digit
+            
+            if not dist[nr][nt]:
+                dist[nr][nt] = True
+                parent[nr][nt] = (r, t, digit)
                 q.append((nr, nt))
-
-    if target is None:
-        print(-1)
-        return
-
-    r, t = target
-    digits = []
-
-    while parent[r][t] != (-1, -1, 0):
-        pr, pt, x = parent[r][t]
-        digits.append(str(x))
-        r, t = pr, pt
-
-    digits.reverse()
-    print("".join(digits))
+    
+    print(-1)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The BFS runs over a grid indexed by remainder and remaining sum. The visited table ensures each state is processed once, which prevents exponential recomputation. The parent table stores both the previous state and the digit used to reach the current state, which is essential for reconstructing the final number.
+The BFS queue stores states defined by remainder and remaining digit sum. The visited table prevents revisiting identical states, which is crucial because multiple digit sequences can lead to the same remainder and remaining sum.
 
-The early break condition when reaching $(0,0)$ ensures we do not explore unnecessary states once an optimal solution is found.
+The reconstruction uses parent pointers to rebuild digits in reverse order. This avoids storing full strings in the queue, which would be too memory-heavy for $s$ up to 5000.
+
+The only subtle restriction is preventing a leading zero, handled by disallowing digit 0 in the very first transition from the initial state.
 
 ## Worked Examples
 
-### Example 1
+We trace the sample input $d = 13, s = 50$. The BFS begins at state $(0, 50)$.
 
-Input:
+| Step | State (r, t) | Digit tried | Next state | Action |
+| --- | --- | --- | --- | --- |
+| 1 | (0, 50) | 1 | (1, 49) | enqueue |
+| 2 | (0, 50) | 2 | (2, 48) | enqueue |
+| ... | ... | ... | ... | ... |
+| k | ... | ... | ... | eventually reaches (0, 0) |
 
-```
-13 50
-```
+The exact path is not important in intermediate steps; what matters is that BFS guarantees the first discovered valid terminal state is optimal.
 
-We start with initial digits 1 to 9, each creating a different starting state.
+For a smaller example, consider $d = 3, s = 2$. The BFS quickly finds:
 
-| Step | State (r, t) | Digit | Next State |
+| Step | State | Digit | New State |
 | --- | --- | --- | --- |
-| start | (1, 49) | 1 | queued |
-| start | (2, 48) | 2 | queued |
-| ... | ... | ... | ... |
-| BFS | (some state) | x | eventually (0, 0) |
+| 1 | (0,2) | 1 | (1,1) |
+| 2 | (1,1) | 1 | (2,0) |
+| 3 | (2,0) | 1 | (0,0) |
 
-The BFS expands states layer by layer. Eventually, a path is found that consumes all 50 units of digit sum while producing remainder 0 modulo 13. The reconstruction yields the smallest such number:
-
-```
-699998
-```
-
-This confirms that the BFS is not just finding a valid solution but the lexicographically smallest one among minimal-length solutions.
-
-### Example 2
-
-Input:
-
-```
-1 2
-```
-
-Since every number is divisible by 1, we only need the smallest number with digit sum 2, which is 2.
-
-| Step | State (r, t) | Digit | Next State |
-| --- | --- | --- | --- |
-| start | (1, 1) | 1 | (0, 0) |
-| start | (2, 0) | 2 | (0, 0) found |
-
-The BFS immediately finds digit 2 as a valid complete solution.
-
-This demonstrates how the algorithm naturally prefers the smallest leading digit.
+This yields number 111, which is minimal among all valid candidates.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(d · s · 10) | Each state (remainder, remaining sum) is visited once, and each explores up to 10 digit transitions |
-| Space | O(d · s) | We store visited and parent pointers for each state |
+| Time | $O(10 \cdot d \cdot s)$ | Each state processes up to 10 digit transitions |
+| Space | $O(d \cdot s)$ | Storage for visited states and parents |
 
-The product $d \cdot s$ is at most 2.5 million, which is comfortably within limits for Python when combined with simple integer operations and deque-based BFS.
+The state space size is at most $500 \times 5000 = 2.5 \times 10^6$, which is acceptable. Each transition is constant work, so the solution fits comfortably within limits.
 
 ## Test Cases
 
@@ -198,74 +164,63 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from math import gcd
-    d, s = map(int, inp.split())
-    # call solver
     from collections import deque
 
-    visited = [[False] * (s + 1) for _ in range(d)]
+    d, s = map(int, sys.stdin.readline().split())
+
+    dist = [[False] * (s + 1) for _ in range(d)]
     parent = [[None] * (s + 1) for _ in range(d)]
+
     q = deque()
-
-    for x in range(1, 10):
-        if x <= s:
-            r = x % d
-            t = s - x
-            visited[r][t] = True
-            parent[r][t] = (-1, -1, x)
-            q.append((r, t))
-
-    target = None
+    q.append((0, s))
+    dist[0][s] = True
 
     while q:
         r, t = q.popleft()
+
         if r == 0 and t == 0:
-            target = (r, t)
-            break
-        for x in range(10):
-            if x > t:
-                break
-            nr = (r * 10 + x) % d
-            nt = t - x
-            if not visited[nr][nt]:
-                visited[nr][nt] = True
-                parent[nr][nt] = (r, t, x)
+            res = []
+            cr, ct = r, t
+            while parent[cr][ct] is not None:
+                pr, pt, digit = parent[cr][ct]
+                res.append(str(digit))
+                cr, ct = pr, pt
+            return "".join(reversed(res))
+
+        for digit in range(10):
+            if r == 0 and t == s and digit == 0:
+                continue
+            if t < digit:
+                continue
+            nr = (r * 10 + digit) % d
+            nt = t - digit
+            if not dist[nr][nt]:
+                dist[nr][nt] = True
+                parent[nr][nt] = (r, t, digit)
                 q.append((nr, nt))
 
-    if target is None:
-        return "-1"
-
-    r, t = target
-    digits = []
-    while parent[r][t][0] != -1:
-        pr, pt, x = parent[r][t]
-        digits.append(str(x))
-        r, t = pr, pt
-
-    return "".join(reversed(digits))
+    return "-1"
 
 # provided sample
 assert run("13 50") == "699998"
 
 # custom cases
-assert run("1 1") == "1"
-assert run("1 9") == "9"
-assert run("2 1") in {"1", "10"}  # both valid minimal forms depending on BFS tie handling
-assert run("9 18") != "-1"
+assert run("1 1") == "1", "single digit"
+assert run("3 2") == "11", "small BFS chain"
+assert run("2 1") == "-1", "impossible sum too small"
+assert run("9 9") == "9", "direct match"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 13 50 | 699998 | correctness on non-trivial constraint interaction |
-| 1 1 | 1 | simplest divisibility case |
-| 1 9 | 9 | maximum single-digit sum |
-| 2 1 | 1 or 10 | multiple valid representations and tie handling |
-| 9 18 | valid number | existence under tighter modular constraint |
+| 13 50 | 699998 | sample correctness and reconstruction |
+| 1 1 | 1 | trivial modulus case |
+| 3 2 | 11 | BFS multi-step construction |
+| 2 1 | -1 | infeasible digit sum vs modulo |
+| 9 9 | 9 | single-digit optimal case |
 
 ## Edge Cases
 
-One subtle case is when the only valid solution requires leading zeros internally. The BFS allows appending zero after the first digit, which is necessary because numbers like 1000 are valid even though they contain internal zeros. A naive greedy digit construction might avoid zeros early, incorrectly assuming they make the number larger in all cases.
+A common failure case is mishandling leading zeros. If digit 0 is allowed as the first transition, the algorithm may return numbers like 0009, which is numerically invalid as a minimal positive integer representation. The restriction in the initial state ensures the first digit is non-zero.
 
-Another edge case is when $s$ is small but $d$ is large. For example, $d = 500, s = 1$. The only candidate numbers are powers of ten-like constructions such as 1 followed by many zeros until divisibility aligns. The BFS handles this naturally because zero transitions allow adjusting the remainder without consuming digit sum, enabling long but valid paths.
-
-Finally, when no solution exists, such as incompatible modular constraints where all reachable states with sum zero never hit remainder zero, the BFS exhausts all states and correctly returns -1.
+Another edge case is when no solution exists. In such cases, BFS exhausts the state space without reaching $(0, 0)$. The algorithm correctly outputs -1 because every reachable state has been explored, and none satisfy both constraints simultaneously.

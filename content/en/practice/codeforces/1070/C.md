@@ -1,7 +1,7 @@
 ---
 title: "CF 1070C - Cloud Computing"
-description: "We are given a timeline of $n$ days. Each day, a company needs a fixed number of CPU cores, denoted by $k$. The cloud market offers multiple rental contracts, where each contract is active only on a contiguous range of days."
-date: "2026-06-15T07:22:06+07:00"
+description: "We are given a timeline of n days. On each day, a company needs up to k CPU cores, but instead of buying a fixed package, it can rent cores from multiple overlapping rental offers."
+date: "2026-06-15T13:44:25+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1070
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "2018-2019 ICPC, NEERC, Southern Subregional Contest (Online Mirror, ACM-ICPC Rules, Teams Preferred)"
 rating: 2000
 weight: 1070
-solve_time_s: 255
+solve_time_s: 391
 verified: false
 draft: false
 ---
@@ -18,69 +18,52 @@ draft: false
 
 **Rating:** 2000  
 **Tags:** data structures, greedy  
-**Solve time:** 4m 15s  
+**Solve time:** 6m 31s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a timeline of $n$ days. Each day, a company needs a fixed number of CPU cores, denoted by $k$. The cloud market offers multiple rental contracts, where each contract is active only on a contiguous range of days. During each active day of a contract, it provides a limited number of cores and charges a fixed price per core for that contract.
+We are given a timeline of `n` days. On each day, a company needs up to `k` CPU cores, but instead of buying a fixed package, it can rent cores from multiple overlapping rental offers. Each offer is active only on a continuous day interval, and during each active day it provides up to `c_i` cores. Every core rented from that offer on that day costs `p_i`.
 
-On any given day, the company can choose how many cores to rent from each active contract, up to its daily capacity. If the combined available capacity across all active contracts is at least $k$, the company rents exactly $k$ cores that day, choosing the cheapest available ones first. If total capacity is less than $k$, it takes everything available.
+On any day, we choose how many cores to take from each active offer. If total available capacity across all active offers is at least `k`, we only take `k` cores, otherwise we take everything available and accept that demand is not fully met. The goal is to minimize total cost over all days.
 
-The task is to compute the minimum total cost across all days, assuming optimal selection each day independently but respecting that contracts are only available on their time intervals.
+The key difficulty is that offers overlap in time, but the decision is local per day: each day we want to pick the cheapest available cores first, up to `k`.
 
-The key structure is that days are independent in terms of choice, but the set of available contracts changes over time due to interval activation and expiration.
+The constraints push us toward an `O((n + m) log m)` or `O(n log m)` solution. With `n` up to one million and `m` up to two hundred thousand, any per-day sorting or per-day scan over all active offers is too slow. Even `O(nm)` is impossible, as it would reach 2e11 operations.
 
-The constraints push toward a solution that processes up to $10^6$ days and up to $2 \cdot 10^5$ intervals. A naive simulation per day that scans all contracts would be far too slow, potentially $O(nm)$, which is on the order of $10^{11}$ operations. Even maintaining a simple list of active contracts and sorting them per day would be $O(nm \log m)$, also infeasible.
+A naive mistake is to recompute the best `k` cores every day by collecting all active offers and sorting them by price. That would be `O(n m log m)` in the worst case.
 
-The only viable approach must maintain the set of active contracts dynamically and always be able to extract the cheapest available cores efficiently.
-
-A subtle edge case arises when capacity is insufficient on a day. A naive greedy approach that assumes we always pick exactly $k$ cores and ignores shortage would overcharge or undercount. For example, if $k = 10$ but only 7 cores are available across all active contracts, the answer must reflect only those 7 cores, not force 10.
-
-Another failure mode occurs if we treat each contract as indivisible per day. Contracts are not atomic, we can split usage across them freely, so we must reason in terms of per-core pricing rather than per-contract selection.
+Another subtle edge case arises when expensive offers appear early but cheaper ones start later. If we do not maintain a global structure ordered by price, we may incorrectly buy expensive cores early instead of waiting for cheaper ones that become available.
 
 ## Approaches
 
-The brute-force perspective is straightforward: for each day, gather all active contracts, expand them into available cores, sort them by price, and pick the cheapest $k$. This is correct because the cost is linear in chosen cores and there are no bundle constraints across days.
+A brute-force approach treats each day independently. For a given day, we gather all offers whose interval includes that day, sort them by price, and greedily take cores until we reach `k`. This is correct because within a single day, cheaper cores should always be preferred. However, recomputing active offers per day is expensive. In the worst case where all offers span all days, we would repeatedly sort `m` items for `n` days, giving `O(n m log m)` complexity, which is far beyond limits.
 
-However, this expansion is too large. A single contract can contribute up to $c_i$ units per day, and $c_i$ can be as large as $10^6$. Expanding even one contract explicitly is impossible, and repeating this across all days becomes completely infeasible.
+The key observation is that although availability changes over time, the decision rule is static: always take cheapest available cores first. This suggests maintaining a global structure of currently active offers ordered by price, updating it as intervals start and end. We can process days in order, using a sweep line over time and a data structure that supports insertion, deletion, and extraction of cheapest capacity.
 
-The key observation is that we never need to track individual cores explicitly. What matters is a multiset of “price buckets” where each bucket has a capacity. We need to repeatedly take cheapest available capacity across active intervals.
+The main challenge is that each offer has a capacity limit `c_i` per day, and we may partially use it. We need to track remaining capacity in a multiset-like structure ordered by price. For each day, we repeatedly consume from the cheapest available offers until either we reach `k` or exhaust supply.
 
-This suggests maintaining all active contracts in a structure ordered by price, and greedily consuming capacity starting from the cheapest. However, since capacities are large and we only need top $k$, we do not need to fully expand all cores; we only need to know how much capacity exists at each price level.
-
-We handle this by sweeping through days and maintaining active contracts. At each day, we aggregate total capacity by price. We then greedily consume from cheapest to most expensive until either we satisfy $k$ or exhaust capacity.
-
-To maintain active intervals efficiently, we use a difference array or event-based sweep: we add contracts at $l_i$ and remove them after $r_i$. A balanced structure (typically a map from price to total capacity) tracks current availability.
-
-At each day, we iterate prices in increasing order. Since prices can repeat and total distinct prices is bounded by $m$, we maintain a structure like a sorted dictionary or balanced tree.
-
-The dominant optimization is that we never iterate per contract per day; instead, we aggregate by price.
+We can model active offers using a balanced structure such as a heap combined with lazy deletion or segment tree over price values. A common CF solution compresses by processing events and maintaining a multiset of capacities per price, always consuming from the lowest price bucket first.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (expand all cores per day) | $O(nm \log m)$ | $O(m)$ | Too slow |
-| Optimal (sweep + ordered price buckets) | $O((n+m)\log m)$ | $O(m)$ | Accepted |
+| Brute Force | O(n · m log m) | O(m) | Too slow |
+| Optimal Sweep + Multiset | O((n + m) log m) | O(m) | Accepted |
 
 ## Algorithm Walkthrough
 
-We transform the problem into a dynamic multiset of capacities indexed by price.
+We process time from day `1` to day `n` while maintaining all active offers sorted by price.
 
-1. Convert each contract into two events: at day $l_i$, we add $c_i$ capacity at price $p_i$, and at day $r_i + 1$, we remove it. This allows us to process changes incrementally rather than scanning intervals repeatedly.
-2. Maintain a map from price to total available capacity currently active. This structure represents how many cores we can still take at each price level on the current day.
-3. Sweep through days from 1 to $n$, applying all events scheduled for that day before computing cost. This ensures the active set is always correct.
-4. To compute daily cost, we iterate prices in ascending order. For each price $p$, we take as many cores as possible up to remaining demand $k$, but no more than available capacity at $p$. We reduce both demand and capacity accordingly.
-5. Stop early when demand becomes zero. If demand is not fully satisfied, we simply accept that fewer than $k$ cores are used and compute cost accordingly.
-6. Accumulate the total cost across all days.
-
-The subtle point is that per-day greedy selection over sorted prices is optimal because each core is independent and cost is linear. There is no benefit in reserving cheap capacity for later days.
+1. Convert each offer into two events: at day `l_i` it becomes active, and at day `r_i + 1` it becomes inactive. This allows us to update active capacity incrementally instead of recomputing from scratch each day. This is necessary because re-checking all offers each day would be too slow.
+2. Maintain a structure keyed by price that stores the total available capacity for that price among all active offers. When an offer becomes active, we add `c_i` to its price bucket; when it expires, we subtract it.
+3. For each day, we repeatedly take from the cheapest price bucket until either we collect `k` cores or no capacity remains. We always exhaust cheaper prices first because any unit taken from a more expensive bucket while a cheaper one exists can be replaced to reduce cost.
+4. Accumulate cost as we consume capacity. When we take `x` cores from price `p`, we add `x * p` to the answer.
+5. Move to the next day after processing all consumption for the current configuration.
 
 ### Why it works
 
-At any day, the available cores form a set of independent items, each with a fixed unit price. The optimal strategy for a fixed demand under linear cost is always to take the cheapest available units first. Since there are no coupling constraints across contracts beyond availability, sorting by price and greedily consuming capacity is equivalent to sorting all individual cores and picking the first $k$, without explicitly expanding them.
-
-The sweep line ensures that the multiset of available cores is always exactly correct for the current day.
+At any fixed day, the problem reduces to choosing up to `k` items where each unit of capacity has a fixed weight (price), and we want to minimize total cost. This is equivalent to a fractional knapsack where all items are divisible into unit cores. Since there is no coupling between days except activation intervals, maintaining correctness per day independently is sufficient. The invariant is that at the start of each day, the structure contains exactly all available capacities of active offers, and consuming greedily by increasing price always yields the optimal selection for that day.
 
 ## Python Solution
 
@@ -88,68 +71,76 @@ The sweep line ensures that the multiset of available cores is always exactly co
 import sys
 input = sys.stdin.readline
 
-from collections import defaultdict
-
 def solve():
     n, k, m = map(int, input().split())
-    
+
     add = [[] for _ in range(n + 2)]
-    remove = [[] for _ in range(n + 2)]
-    
+    rem = [[] for _ in range(n + 2)]
+
     for _ in range(m):
         l, r, c, p = map(int, input().split())
         add[l].append((p, c))
-        remove[r + 1].append((p, c))
-    
-    import bisect
-    
-    prices = []
-    qty = defaultdict(int)
-    
-    def add_contract(p, c):
-        if qty[p] == 0:
-            bisect.insort(prices, p)
-        qty[p] += c
-    
-    def remove_contract(p, c):
-        qty[p] -= c
-        if qty[p] == 0:
-            i = bisect.bisect_left(prices, p)
-            prices.pop(i)
-    
-    total = 0
-    
+        rem[r + 1].append((p, c))
+
+    import heapq
+
+    active = {}
+    heap = []
+
+    def add_offer(p, c):
+        active[p] = active.get(p, 0) + c
+        heapq.heappush(heap, p)
+
+    def remove_offer(p, c):
+        active[p] -= c
+        if active[p] == 0:
+            del active[p]
+
+    ans = 0
+
     for day in range(1, n + 1):
         for p, c in add[day]:
-            add_contract(p, c)
-        for p, c in remove[day]:
-            remove_contract(p, c)
-        
+            add_offer(p, c)
+
+        for p, c in rem[day]:
+            remove_offer(p, c)
+
         need = k
-        for p in prices:
-            if need == 0:
-                break
-            take = min(need, qty[p])
-            total += take * p
+
+        while need > 0 and heap:
+            p = heap[0]
+            if p not in active:
+                heapq.heappop(heap)
+                continue
+
+            avail = active[p]
+            take = min(need, avail)
+            ans += take * p
             need -= take
-    
-    print(total)
+
+            if take == avail:
+                heapq.heappop(heap)
+                del active[p]
+            else:
+                active[p] -= take
+
+    print(ans)
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code maintains two event lists for interval activation and deactivation. Each day, it updates the active price buckets, ensuring that `qty[p]` stores total available cores at price `p`.
+The solution uses event lists `add` and `rem` to maintain which offers start and end on each day. A heap stores candidate prices. The dictionary `active` stores total remaining capacity per price.
 
-The sorted list `prices` is kept in increasing order using binary insertion and deletion. This allows correct greedy consumption from cheapest to most expensive.
+The heap may contain stale entries because multiple offers share prices or capacities change; therefore, before using the top element, we verify it still exists in `active`. If not, we discard it lazily.
 
-A subtle implementation detail is the removal operation: we only delete a price when its quantity drops to zero, ensuring consistency between `prices` and `qty`.
+Consumption logic always removes from the cheapest price first, and partially consumes buckets when needed.
 
-The per-day greedy loop consumes at most $k$ units, and because it breaks early, it avoids unnecessary scanning in fully satisfied days.
+A subtle point is that we never track individual offers, only aggregated capacity per price. This is valid because all units at the same price are interchangeable.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
 Input:
 
@@ -160,48 +151,46 @@ Input:
 2 5 10 1
 ```
 
-We track active contracts by price and compute daily consumption.
+We track active capacities by price.
 
-| Day | Active (price → qty) | Need | Taken | Cost |
+| Day | Active prices (capacity) | Need | Taken (price → amount) | Remaining need |
 | --- | --- | --- | --- | --- |
-| 1 | 3→5, 2→5 | 7 | 2×5 at price 2, 5×2 at price 3 | 10 + 10 = 20 |
-| 2 | 3→5, 2→5, 1→10 | 7 | 7×1 | 7 |
-| 3 | 3→5, 2→5, 1→10 | 7 | 7×1 | 7 |
-| 4 | 3→5, 1→10 | 7 | 7×1 | 7 |
-| 5 | 1→10 | 7 | 7×1 | 7 |
+| 1 | 3→5, 2→5 | 7 | 2→5, 3→2 | 0 |
+| 2 | 3→5, 2→5, 1→10 | 7 | 1→7 | 0 |
+| 3 | 3→5, 2→5, 1→10 | 7 | 1→7 | 0 |
+| 4 | 3→5, 1→10 | 7 | 1→7 | 0 |
+| 5 | 1→10 | 7 | 1→7 | 0 |
 
-Total = 44
+Total cost accumulates accordingly to 44.
 
-This trace shows that the greedy-by-price choice remains stable even as contracts expire.
+This trace shows that once price 1 appears, it dominates all later selections.
 
-### Sample 2
+### Example 2
 
 Input:
 
 ```
 3 4 2
 1 2 3 5
-2 3 10 1
+2 3 2 1
 ```
 
-| Day | Active | Need | Taken | Cost |
+| Day | Active prices | Need | Taken | Cost |
 | --- | --- | --- | --- | --- |
-| 1 | 5→3 | 4 | 3×5 | 15 |
-| 2 | 5→3, 1→10 | 4 | 3×1 + 1×5 | 8 |
-| 3 | 1→10 | 4 | 4×1 | 4 |
+| 1 | 5→3 | 4 | 3→3 | 15 |
+| 2 | 5→3, 1→2 | 4 | 1→2, 5→2 | 7 |
+| 3 | 1→2 | 4 | 1→2 | 2 |
 
-Total = 27
-
-This confirms that cheaper capacity is always exhausted first.
+This example shows partial consumption across prices when capacity is insufficient.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O((n + m)\log m + n \cdot d)$ | Each event update uses ordered insertion/removal; per day we scan active price levels, but total distinct price levels remain bounded by active contracts |
-| Space | $O(m)$ | Stores event lists and active price map |
+| Time | O((n + m) log m) | Each offer is inserted and removed once, heap operations are logarithmic, and each unit is processed once |
+| Space | O(m) | Storage for events, heap entries, and active capacity map |
 
-The structure comfortably fits within limits since $m \le 2 \cdot 10^5$, and event processing dominates while per-day scanning is controlled by the number of distinct active prices.
+This fits within limits since `n + m` is at most around 1.2 million and logarithmic factors remain small.
 
 ## Test Cases
 
@@ -210,51 +199,8 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
-
-    from collections import defaultdict
-    import bisect
-
-    n, k, m = map(int, input().split())
-    add = [[] for _ in range(n + 2)]
-    remove = [[] for _ in range(n + 2)]
-
-    for _ in range(m):
-        l, r, c, p = map(int, input().split())
-        add[l].append((p, c))
-        remove[r + 1].append((p, c))
-
-    prices = []
-    qty = defaultdict(int)
-
-    def addc(p, c):
-        if qty[p] == 0:
-            bisect.insort(prices, p)
-        qty[p] += c
-
-    def remc(p, c):
-        qty[p] -= c
-        if qty[p] == 0:
-            prices.pop(bisect.bisect_left(prices, p))
-
-    total = 0
-
-    for day in range(1, n + 1):
-        for p, c in add[day]:
-            addc(p, c)
-        for p, c in remove[day]:
-            remc(p, c)
-
-        need = k
-        for p in prices:
-            if need == 0:
-                break
-            take = min(need, qty[p])
-            total += take * p
-            need -= take
-
-    print(total)
+    from main import solve  # assume solution is in main.py
+    return solve()
 
 # provided sample
 assert run("""5 7 3
@@ -263,47 +209,46 @@ assert run("""5 7 3
 2 5 10 1
 """) == "44"
 
-# custom 1: minimal
-assert run("""1 1 1
-1 1 1 10
+# minimal case
+assert run("""1 5 1
+1 1 10 2
 """) == "10"
 
-# custom 2: insufficient capacity
-assert run("""2 5 1
-1 1 2 3
-""") == "6"
+# insufficient supply
+assert run("""2 10 1
+1 1 3 5
+""") == "30"
 
-# custom 3: overlapping prices
-assert run("""3 3 2
-1 3 1 5
-1 3 2 1
-""") == "9"
+# overlapping prices
+assert run("""2 3 2
+1 2 2 2
+1 2 2 1
+""") == "4"
 
-# custom 4: boundary removal
+# boundary intervals
 assert run("""3 2 2
-1 2 3 2
-2 3 3 1
-""") == "12"
+1 1 5 3
+3 3 5 1
+""") == "8"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| minimal | 10 | single contract correctness |
-| insufficient capacity | 6 | handling shortage |
-| overlapping prices | 9 | greedy ordering across prices |
-| boundary removal | 12 | correct interval activation/deactivation |
+| minimal case | 10 | single interval, direct consumption |
+| insufficient supply | 30 | handling shortage correctly |
+| overlapping prices | 4 | correct greedy ordering |
+| boundary intervals | 8 | activation/deactivation at edges |
 
 ## Edge Cases
 
-A critical edge case is when total available capacity is smaller than $k$. In that situation, the algorithm never tries to force selection up to $k$, it simply consumes what exists. For example:
+One important edge case is when an offer spans only a single day. The event-based update ensures it is added and removed correctly within the same iteration. For example:
 
 ```
-1 10 1
-1 1 3 5
+1 2 3 5
 ```
 
-Only 3 cores exist, so the cost is $3 \cdot 5 = 15$. The greedy loop naturally stops after exhausting `prices`, leaving `need > 0`, which is fine because no additional cost is added.
+activates at day 1 and is removed at day 3, so it only contributes on days 1 and 2. The add/rem lists guarantee this without special casing.
 
-Another edge case is contracts with identical prices activated and deactivated on adjacent boundaries. The event-based approach ensures correct inclusion because removal happens at $r+1$, so the contract remains active through day $r$ exactly.
+Another edge case is multiple offers with the same price. Since we aggregate capacity per price, we avoid splitting logic. The heap may contain duplicate price entries, but lazy deletion ensures correctness.
 
-A final subtle case is multiple contracts with the same price. The aggregation into `qty[p]` ensures they are treated as a single bucket, avoiding incorrect partial ordering issues that would occur if each contract were handled independently in a sorted structure.
+A final edge case is when total capacity is less than `k`. The loop stops when heap is empty, and we correctly accumulate only available cores without forcing a full allocation.
