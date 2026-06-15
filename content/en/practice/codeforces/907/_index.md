@@ -1,23 +1,25 @@
 ---
 title: "Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)"
-description: "Solutions for Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4) (contest 907). 0/1 problems verified against sample I/O. Difficulty range: 1400-1400."
-tags: ["codeforces", "competitive-programming", "implementation"]
+description: "2 problems from Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4) (contest 907), difficulty 1300-1400. 1/2 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "brute-force", "implementation"]
 categories: ["algorithms"]
 contest_id: 907
 contest_type: "Div. 2"
-rating_range: "1400-1400"
-n_problems: 1
-n_verified: 0
-total_solve_s: 527
-date: "2026-06-12T23:30:13+07:00"
+rating_range: "1300-1400"
+n_problems: 2
+n_verified: 1
+total_solve_s: 436
+contest_year: 2017
+date: "2026-06-15T11:56:46+07:00"
 weight: 907
 draft: false
 ---
 
 # [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907)
 
-**Type:** Div. 2 | **Problems:** 1 | **Verified:** 0/1 | **Rating range:** 1400-1400 | **Time:** 8m 47s
+Div. 2 | 2 problems | 1/2 verified | Difficulty 1300-1400 | 7m 16s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [B](B/) | [Tic-Tac-Toe](https://codeforces.com/problemset/problem/907/B) | 1400 | implementation | 8m 47s | ✗ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Masha and Bears](https://codeforces.com/problemset/problem/907/A) | 1300 | brute-force, implementation | 5,960 | 3m 6s | ✓ |
+| [B](B/) | [Tic-Tac-Toe](https://codeforces.com/problemset/problem/907/B) | 1400 | implementation | 4,228 | 4m 10s |  |

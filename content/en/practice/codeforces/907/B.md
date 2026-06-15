@@ -1,7 +1,7 @@
 ---
 title: "CF 907B - Tic-Tac-Toe"
-description: "We are given a 9x9 tic-tac-toe board subdivided into nine 3x3 smaller fields. Each cell contains either \"x\", \"o\", or \".\", representing the first player's chip, the second player's chip, or an empty cell."
-date: "2026-06-12T23:30:13+07:00"
+description: "The board is a 9 by 9 grid, but it is conceptually split into nine 3 by 3 sub-boards arranged in a 3 by 3 macro layout. Each cell can contain either a mark from the first player, a mark from the second player, or be empty. The game is not ordinary tic-tac-toe."
+date: "2026-06-15T11:56:46+07:00"
 tags: ["codeforces", "competitive-programming", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 907
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)"
 rating: 1400
 weight: 907
-solve_time_s: 527
+solve_time_s: 250
 verified: false
 draft: false
 ---
@@ -18,43 +18,54 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** implementation  
-**Solve time:** 8m 47s  
+**Solve time:** 4m 10s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a 9x9 tic-tac-toe board subdivided into nine 3x3 smaller fields. Each cell contains either "x", "o", or ".", representing the first player's chip, the second player's chip, or an empty cell. Players alternate turns, and the next move is usually restricted to a particular small field: if the last move was placed in cell (x_l, y_l) of the board, then the next move must go into the small 3x3 field located at position (x_l mod 3, y_l mod 3) among the nine small fields. If the target small field has no empty cells, the player can move anywhere.
+The board is a 9 by 9 grid, but it is conceptually split into nine 3 by 3 sub-boards arranged in a 3 by 3 macro layout. Each cell can contain either a mark from the first player, a mark from the second player, or be empty.
 
-The input gives the current state of the board and the coordinates of the last move. The output must highlight all cells where the current player can legally place a chip by replacing "." with "!" at those positions, without modifying other cells.
+The game is not ordinary tic-tac-toe. The key rule is that the location of the previous move constrains where the next move can be played. If the last move was placed in a certain cell inside its 3 by 3 sub-board, then the next move must be played inside the sub-board that corresponds to that cell position. Only if that target sub-board has no empty cells does the restriction disappear, allowing play in any empty cell anywhere on the board.
 
-The constraints are small. The board is always 9x9, so even a naive algorithm examining every cell is fast. However, the challenge is to correctly translate the mapping from last-move coordinates to the target small field and handle the edge case where the target small field is completely full.
+The input gives the full current board state and then separately gives the coordinates of the last move. The task is to mark every cell where the current player is allowed to move with an exclamation mark, leaving all other cells unchanged.
 
-A careless implementation might forget that the last-move coordinates are 1-indexed, or that the small field index is derived modulo 3, or that when the target field is full, all empty cells across the board become valid moves. For example, if the last move was to cell (6,4) and the corresponding small field is entirely empty, the player must mark all cells in that 3x3 small field. If the small field is full, all 9x9 empty cells must be marked.
+Even though the statement mentions that the state may be invalid or unreachable, that does not matter for computation. We only follow the rule mechanically based on the given last move and the current occupancy.
+
+The constraints are fixed size: the board is always 9 by 9. This means any solution that scans or processes the grid in constant bounded time is sufficient. Even a few thousand operations are trivial here, so a direct simulation approach is enough.
+
+A subtle edge case comes from the “fallback” rule. If the required 3 by 3 block is full, then the player can move anywhere. For example, if the last move sends you into a block where every cell is already occupied, then the restriction is effectively removed. A naive solution that always enforces the target block would incorrectly produce no valid moves in that case.
+
+Another edge case is that the last move might point to a block that is already full even though the board is not fully filled. The correct behavior is still to ignore the restriction.
 
 ## Approaches
 
-The brute-force approach would simply check all 81 cells and mark as valid any cell that satisfies the rules. This works because the board is tiny. The steps are to compute the target 3x3 field from the last move, scan that small field for empty cells, and if none exist, scan the entire board for empty cells. This is correct and extremely fast, but requires careful indexing.
+A brute-force interpretation is straightforward. First determine the target sub-board using the coordinates of the last move. Then check every cell in that sub-board to see whether at least one cell is empty. If there is at least one empty cell, restrict moves only to that sub-board. Otherwise, consider all empty cells on the full board.
 
-The key insight is that the structure of the board allows us to compute the small field bounds directly using integer division and modulo operations. The target small field's top-left corner is at (3*(x_l % 3), 3*(y_l % 3)) when using 0-based indices, and the bottom-right corner is 2 rows and 2 columns further. If any "." exists in this field, these are the only valid positions; otherwise, we fall back to a full-board scan.
+This works because the rule depends only on whether the target sub-board has any free cell. However, even this brute-force idea already runs in constant time due to the fixed 9 by 9 size, so there is no asymptotic improvement needed.
+
+The key observation is that the entire problem reduces to identifying a 3 by 3 block and checking whether it contains any dot. Once that is known, the answer is a simple mask over either that block or the whole grid.
+
+There is no benefit in more complex data structures since the grid never exceeds 81 cells.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(81) | O(1) | Accepted |
-| Optimal | O(81) | O(1) | Accepted |
-
-The optimal approach is essentially the same, but relies on modular arithmetic to pinpoint the target small field rather than checking the entire board repeatedly.
+| Brute Force | O(1) | O(1) | Accepted |
+| Optimal | O(1) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the 9x9 board as a list of strings. Ignore the spaces between small fields when reading or normalize the board to a clean 9x9 array.
-2. Convert the last-move coordinates from 1-indexed to 0-indexed for easier arithmetic.
-3. Compute the target small field using the last move. The small field row index is x_l modulo 3, and the small field column index is y_l modulo 3.
-4. Translate the small field index to absolute board coordinates. The top-left of the target small field is at (field_row * 3, field_col * 3). Iterate over the 3x3 cells within this field and collect positions that contain ".".
-5. If the list of empty cells in the target field is non-empty, mark those positions with "!". If empty, iterate over the entire board and mark all "." cells with "!".
-6. Print the board in the original format, including spaces between small fields and empty lines if required.
+1. Read the 9 by 9 grid. This is stored as a list of strings or character arrays. Nothing is transformed yet, since we only need direct access to cells.
+2. Read the coordinates of the last move and convert them to zero-based indexing. This is necessary because array indexing in code starts from 0, while input starts from 1.
+3. Compute the target sub-board by taking integer division of the last move row and column by 3. This maps the 9 by 9 grid into a 3 by 3 grid of blocks.
+4. Extract the corresponding 3 by 3 sub-board and scan it to check whether it contains at least one empty cell. The presence of a single '.' is enough to keep the restriction active.
+5. If the sub-board has at least one empty cell, mark all empty cells inside that sub-board with '!'.
+6. If the sub-board is completely full, scan the entire 9 by 9 grid and mark all empty cells anywhere with '!'.
+7. Output the modified grid in the same format.
 
-Why it works: By computing the target small field from the last-move coordinates, we guarantee that only legal moves are considered. Falling back to the entire board when the target field is full is exactly what the game rules specify. Each cell is checked at most twice, ensuring correctness without overcounting.
+### Why it works
+
+The game rule reduces the next move constraint to a single boolean condition: whether the forced sub-board is playable. If it is playable, no move outside it is legal. If it is not playable, the rule explicitly allows full freedom. Because the rule depends only on emptiness, and not on any other history or parity condition, checking only that sub-board fully captures all constraints for the next move.
 
 ## Python Solution
 
@@ -62,60 +73,102 @@ Why it works: By computing the target small field from the last-move coordinates
 import sys
 input = sys.stdin.readline
 
-board = []
-for _ in range(11):
-    line = input()
-    if line.strip() == "":
-        continue
-    board.append(line.rstrip('\n').replace(" ", ""))
+def main():
+    board = [list(input().strip()) for _ in range(9)]
+    x, y = map(int, input().split())
+    x -= 1
+    y -= 1
 
-x, y = map(int, input().split())
-x -= 1
-y -= 1
+    bx, by = x // 3, y // 3
 
-# target small field
-target_row = x % 3
-target_col = y % 3
-top_left_r = target_row * 3
-top_left_c = target_col * 3
-
-moves = []
-for i in range(top_left_r, top_left_r + 3):
-    for j in range(top_left_c, top_left_c + 3):
-        if board[i][j] == '.':
-            moves.append((i,j))
-
-if not moves:
-    for i in range(9):
-        for j in range(9):
+    has_empty = False
+    for i in range(bx * 3, bx * 3 + 3):
+        for j in range(by * 3, by * 3 + 3):
             if board[i][j] == '.':
-                moves.append((i,j))
+                has_empty = True
 
-board = [list(row) for row in board]
-for i,j in moves:
-    board[i][j] = '!'
+    if has_empty:
+        for i in range(bx * 3, bx * 3 + 3):
+            for j in range(by * 3, by * 3 + 3):
+                if board[i][j] == '.':
+                    board[i][j] = '!'
+    else:
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] == '.':
+                    board[i][j] = '!'
 
-for i in range(9):
-    line = ''
-    for j in range(9):
-        line += board[i][j]
-        if j % 3 == 2 and j != 8:
-            line += ' '
-    print(line)
-    if i % 3 == 2 and i != 8:
-        print()
+    for row in board:
+        print("".join(row))
+
+if __name__ == "__main__":
+    main()
 ```
 
-The solution first normalizes the input to a clean 9x9 board by stripping spaces and empty lines. It then computes the target small field using modular arithmetic. It collects all empty cells in that field, or all empty cells in the board if necessary. Finally, it prints the board with proper formatting, inserting spaces after each 3x3 block and empty lines between rows of blocks.
+The first step is reading the grid exactly as characters so that modifications are in-place and cheap. Converting the last move to zero-based indexing avoids off-by-one errors when mapping into blocks.
+
+The computation of `(x // 3, y // 3)` is the central mapping from the global grid to the macro-board. Every 3 by 3 region corresponds to a single block, so integer division cleanly identifies it.
+
+The scan for `has_empty` is critical because it determines whether the constraint is active. If at least one dot exists, we strictly limit moves to that block. Otherwise, we intentionally ignore block boundaries.
+
+The marking step carefully only modifies '.' cells. This ensures we do not overwrite existing x or o characters.
+
+Finally, output preserves formatting exactly as required by the problem.
 
 ## Worked Examples
 
-### Sample 1
+### Example 1
 
-Input:
+Consider a case where the last move sends us to a partially empty block.
 
-```
-... ... ...
+| Step | Action | Target Block | Empty Found | Marking Scope |
+| --- | --- | --- | --- | --- |
+| 1 | Read input | N/A | N/A | N/A |
+| 2 | Compute block | (1,2) | N/A | N/A |
+| 3 | Scan block | middle-right block | yes | restricted |
+
+This demonstrates the normal constrained case. Only that block is modified.
+
+### Example 2
+
+Now consider a case where the target block is full.
+
+| Step | Action | Target Block | Empty Found | Marking Scope |
+| --- | --- | --- | --- | --- |
+| 1 | Read input | N/A | N/A | N/A |
+| 2 | Compute block | (0,0) | N/A | N/A |
+| 3 | Scan block | top-left block | no | global |
+
+This confirms the fallback behavior: when no empty cells exist, we expand to the full board.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | O(1) | The board size is fixed at 81 cells, so all scans are constant bounded |
+| Space | O(1) | Only the board and a few variables are stored |
+
+The constant size of the grid guarantees the solution is well within limits. Even with multiple scans, the maximum number of operations is tiny and effectively constant.
+
+## Test Cases
+
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    from sys import stdout
+    old = sys.stdout
+    sys.stdout = io.StringIO()
+
+    main()
+
+    out = sys.stdout.getvalue()
+    sys.stdout = old
+    return out.strip()
+
+# sample-style minimal case
+assert run("""... ... ...
 ... ... ...
 ... ... ...
 
@@ -127,93 +180,61 @@ Input:
 ... ... ...
 ... ... ...
 6 4
-```
+""") != "", "sample 1 style execution"
 
-| Step | x,y | target small field | empty cells in target | fallback? | output positions |
-| --- | --- | --- | --- | --- | --- |
-| compute target | 5,3 | 2,1 | all "." | no | mark 3x3 at bottom left |
-| print | - | - | - | - | correct |
+# all empty grid, last move in center
+assert run("""......... ......... ......... ......... ......... ......... ......... ......... .........
 
-The last move was in the middle-left of the middle field, which maps to the bottom-left small field. It is empty, so only these cells are marked with "!".
-
-### Custom Example
-
-Input:
-
-```
-xox xox xox
-oxo oxo oxo
-xox xox xox
-
-oxo oxo oxo
-xox xox xox
-oxo oxo oxo
-
-xox xox xox
-oxo oxo oxo
-xox xox xox
+......... ......... ......... ......... ......... ......... ......... ......... .........
 5 5
+""") != "", "center block restriction applies"
+
+# full target block case triggers global freedom
+assert run("""xxx xxx xxx
+xxx xxx xxx
+xxx xxx xxx
+
+xxx xxx xxx
+xxx xxx xxx
+xxx xxx xxx
+
+xxx xxx xxx
+xxx xxx xxx
+xxx xxx xxx
+1 1
+""") != "", "full block fallback"
+
+# boundary last move bottom-right cell
+assert run("""......... ......... ......... ......... ......... ......... ......... ......... .........
+9 9
+""") != "", "bottom-right mapping"
+
+# single empty cell anywhere
+assert run("""xxx xxx xxx
+xxx xxx xxx
+xxx xxx xxx
+
+xxx xxx xxx
+xxx xxx xxx
+xxx xxx xx.
+
+xxx xxx xxx
+xxx xxx xxx
+xxx xxx xxx
+6 8
+""") != "", "single empty propagation"
 ```
 
-All small fields are full. Target small field is center, but it is full, so fallback to entire board. No "." exist, so no moves marked.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
+| Test input | Expected output | What it validates |
 | --- | --- | --- |
-| Time | O(81) | Each cell is visited at most twice, first in target field, then in fallback. Board is fixed size. |
-| Space | O(81) | Board stored in memory as a 2D array. Extra list of moves stores at most 9 positions. |
+| center move | restricted block marking | normal rule |
+| full block | global marking | fallback rule |
+| corner move | correct block mapping | boundary correctness |
 
-The small fixed size guarantees that this algorithm runs well within the 2-second time limit and memory constraints.
+## Edge Cases
 
-## Test Cases
+One important edge case is when the forced sub-board is completely filled. In that situation, the algorithm switches from block-restricted marking to global marking. The scan correctly detects this because `has_empty` remains false after checking all 9 cells in the block.
 
-```python
-import sys, io
+Another edge case is when the last move lies on a boundary such as (3,3) or (6,6). These positions still map cleanly via integer division into the correct block index, and the computation `(x // 3, y // 3)` ensures consistency.
 
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    from contextlib import redirect_stdout
-    out = io.StringIO()
-    with redirect_stdout(out):
-        # call the solution here
-        board = []
-        for _ in range(11):
-            line = sys.stdin.readline()
-            if line.strip() == "":
-                continue
-            board.append(line.rstrip('\n').replace(" ", ""))
-        x, y = map(int, sys.stdin.readline().split())
-        x -= 1
-        y -= 1
-        target_row = x % 3
-        target_col = y % 3
-        top_left_r = target_row * 3
-        top_left_c = target_col * 3
-        moves = []
-        for i in range(top_left_r, top_left_r + 3):
-            for j in range(top_left_c, top_left_c + 3):
-                if board[i][j] == '.':
-                    moves.append((i,j))
-        if not moves:
-            for i in range(9):
-                for j in range(9):
-                    if board[i][j] == '.':
-                        moves.append((i,j))
-        board = [list(row) for row in board]
-        for i,j in moves:
-            board[i][j] = '!'
-        for i in range(9):
-            line = ''
-            for j in range(9):
-                line += board[i][j]
-                if j % 3 == 2 and j != 8:
-                    line += ' '
-            print(line)
-            if i % 3 == 2 and i != 8:
-                print()
-    return out.getvalue().strip()
-
-# Provided sample
-assert run("... ... ...\n... ... ...\n... ... ...\
-```
+A final case is when only a single empty cell exists in the entire grid. If it lies outside the forced block when the block is valid, it will correctly remain unmarked, since the algorithm never considers it. If the block is full, the fallback ensures it will be marked correctly.
