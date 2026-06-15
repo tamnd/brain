@@ -1,7 +1,7 @@
 ---
 title: "CF 1245E - Hyakugoku and Ladders"
-description: "The game is a deterministic path over a fixed 10×10 grid that is effectively flattened into a single linear track of 100 cells."
-date: "2026-06-13T20:43:41+07:00"
+description: "The game can be viewed as a directed line of states arranged along a fixed serpentine path on a 10 by 10 grid. Each cell corresponds to a position on this path, starting from the bottom-left cell and ending at the top-left cell."
+date: "2026-06-15T21:36:09+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "probabilities", "shortest-paths"]
 categories: ["algorithms"]
 codeforces_contest: 1245
@@ -9,7 +9,7 @@ codeforces_index: "E"
 codeforces_contest_name: "Codeforces Round 597 (Div. 2)"
 rating: 2300
 weight: 1245
-solve_time_s: 431
+solve_time_s: 209
 verified: false
 draft: false
 ---
@@ -18,76 +18,61 @@ draft: false
 
 **Rating:** 2300  
 **Tags:** dp, probabilities, shortest paths  
-**Solve time:** 7m 11s  
+**Solve time:** 3m 29s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The game is a deterministic path over a fixed 10×10 grid that is effectively flattened into a single linear track of 100 cells. The player starts at the bottom-left cell and moves along a serpentine path: the bottom row is traversed left to right, the next row right to left, alternating until reaching the top-left goal cell.
+The game can be viewed as a directed line of states arranged along a fixed serpentine path on a 10 by 10 grid. Each cell corresponds to a position on this path, starting from the bottom-left cell and ending at the top-left cell. Movement along the path is deterministic: within a row you move horizontally in alternating directions, and at row boundaries you move vertically upward. So every cell has a unique successor unless it is the final goal cell.
 
-Each turn consists of rolling a fair six-sided die and attempting to move forward that many steps along this linear path. If the remaining distance to the goal is smaller than the roll, the player does not move at all for that turn. After landing on a cell, if that cell is the base of a ladder, the player may choose to climb it immediately or stay. A ladder teleport moves the player vertically upward by a fixed number of rows to a specific destination cell. Importantly, ladders cannot be chained within the same turn: once a ladder is taken, any ladder at the destination becomes unavailable until a future turn.
+Each turn consists of rolling a fair six-sided dice. The player attempts to move forward along the path by exactly that many steps. If the dice value would overshoot the goal, the player stays in place. After landing, if the cell contains the base of a ladder, the player may choose to either stay or instantly teleport to the ladder’s endpoint higher up the board. Once a ladder is taken, it cannot be chained immediately even if another ladder starts at the landing cell.
 
-The task is to compute the minimum expected number of turns required to reach the goal under optimal choices of whether to take ladders or ignore them.
+The task is to compute the minimum expected number of turns needed to reach the goal, assuming optimal decisions about whether to use a ladder at each opportunity.
 
-The state space is small and fixed: at most 100 board positions. Each position transitions probabilistically to at most six others, so any solution must exploit linear structure and expectation over a small Markov process.
+The state space is small and fixed: there are exactly 100 cells. This immediately suggests that any solution with a cubic or worse dependence on the number of states is acceptable, while anything exponential or involving repeated recomputation over dice sequences would be unnecessary. A linear system or shortest-path style dynamic program is feasible.
 
-A naive approach that tries to simulate all possible dice sequences or decision trees is infeasible because the number of paths grows exponentially with turns. Even dynamic programming over all sequences of dice rolls would explode.
-
-A subtle edge case comes from ladder choice. A ladder is not mandatory, and sometimes taking a ladder can actually increase expected time if it leads to a poor region of the board. Another edge case is overlapping ladders: multiple ladders may start or end on the same cell, and choosing incorrectly changes future reachability.
+A subtle issue appears with ladders that land on cells that themselves contain ladders. A naive greedy assumption that “always take the ladder if it goes up” is wrong because taking a ladder may skip a better expected-position cell that offers more favorable future dice transitions. Another failure case is overshooting near the goal: moving 5 or 6 steps from a near-terminal state can lead to the same “no movement” outcome, which affects transition probabilities and must be handled explicitly.
 
 ## Approaches
 
-The structure is a shortest expected path problem on a directed graph with probabilistic edges. Each cell is a node, and each dice outcome adds a transition with probability 1/6. However, unlike a standard Markov chain, we have a decision at ladder cells: we can either stay or jump, and this affects the state before the next stochastic transition.
+A brute-force interpretation treats every game state as a position on the board and every dice outcome as a transition. From each cell we simulate all possible dice rolls, apply movement, optionally choose ladder usage, and recursively compute expected time to finish.
 
-The brute-force idea is to treat each cell as a state with an unknown expected value and try all possible combinations of ladder usage decisions. But ladder decisions are local and influence global expectation, so enumerating all policies leads to an exponential number of configurations. Even if we fix a policy, solving expectations requires Gaussian elimination or iterative methods over 100 states, which is fine, but policy search is not.
+This naive recursion builds a Markov decision process. While correct conceptually, recomputing expected values repeatedly for each state leads to exponential blowup unless memoized. Even with memoization, if transitions are evaluated in a cyclic dependency order, naive recursion may require repeated relaxation until convergence.
 
-The key observation is that this is a controlled Markov process with deterministic transitions except for dice rolls, and the optimal policy is stationary: at each cell with a ladder, we only need to decide whether taking it improves the expected value of that state. This converts the problem into solving a system of equations where each state value depends on the minimum of two options: staying or jumping.
+The key observation is that this is a finite Markov decision process with non-negative expected costs and monotone progress toward the goal. Each state has a fixed expected value equation that depends only on already defined states or itself, so the system can be solved using iterative relaxation similar to value iteration, or more directly as a shortest-path-like DP on expected cost.
 
-Once we define $dp[i]$ as the expected number of turns from cell $i$, we can write:
+Each state corresponds to a linear equation:
 
-$$dp[i] = 1 + \frac{1}{6} \sum_{r=1}^{6} dp[next(i, r)]$$
+Expected cost at state i equals 1 (for the current turn) plus the average over six dice outcomes of the best successor state. The “best successor” depends on whether we choose to climb a ladder when available. That introduces a local min inside the transition definition.
 
-where $next(i, r)$ is the resulting state after moving r steps and optionally taking a ladder if beneficial. The subtlety is that $next(i, r)$ depends on whether we choose to apply a ladder at the landing cell. That choice is resolved by:
-
-$$dp[u] = \min(dp[u], dp[lift(u)])$$
-
-where $lift(u)$ is the destination of the ladder.
-
-This turns the problem into a shortest-path-like relaxation on expectations, which can be solved using value iteration or Gauss-Seidel relaxation because the state space is tiny and transitions are bounded.
-
-The brute force fails because it tries to optimize ladder choices globally. The correct insight is that ladder choice is local and can be resolved greedily during relaxation of the expectation equations.
+Thus each state can be computed if all successor states are known. Since movement always goes forward or stays, states can be processed in reverse order from goal to start. This produces a stable DP ordering.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over policies | exponential | O(1) | Too slow |
-| Value iteration / DP relaxation | O(100 × iterations × 6) | O(100) | Accepted |
+| Brute force recursion | exponential | O(n) | Too slow |
+| DP over states (reverse order) | O(100 × 6) | O(100) | Accepted |
 
 ## Algorithm Walkthrough
 
-We model each of the 100 cells as a state indexed from start to goal along the serpentine path.
+We first flatten the 10 by 10 board into a single array of 100 positions following the serpentine traversal order. Each position i stores either a ladder destination or none.
 
-1. Flatten the board into a linear array of 100 positions following the snake ordering. This ensures each move by dice corresponds to a simple index increment. The reason for this is that spatial adjacency becomes linear transitions, which simplifies probability transitions.
-2. Precompute for each cell its ladder destination if it exists. If no ladder exists, the destination is itself. This allows us to unify movement and teleportation into a single transition rule.
-3. Initialize an array `dp` of size 100 with zeros and set the goal state to 0. All other states start with an arbitrary large value or zero depending on iteration method. The goal is absorbing, so its expectation is fixed.
-4. Repeatedly update each state using the expectation equation:
+We then compute the next positions for all dice outcomes. From a state i, for each dice roll r, we determine the target position j by moving r steps forward along the path, clamping at the goal if we overshoot.
 
-for each state i, compute the expected value of rolling a die:
+Once we reach j, we may either stay at j or, if a ladder starts there, jump to its endpoint. We choose whichever option yields smaller expected time.
 
-for r in 1 to 6, compute j = i + r; if j exceeds goal, treat as staying in place.
+We define dp[i] as the minimum expected number of turns required to reach the goal from position i.
 
-For each landing j, consider two possibilities: stay or take ladder if present, and choose the one with smaller dp value.
-5. Set:
+We process positions in reverse order from 99 down to 0.
 
-$$dp[i] = 1 + \frac{1}{6} \sum_{r=1}^6 \min(dp[j], dp[lift(j)])$$
+1. Initialize dp at the goal cell as 0 because no turns are needed once the game is finished.
+2. For each other position i, compute the expected value of taking a turn. Each turn always costs 1.
+3. For each dice outcome r from 1 to 6, compute the landing cell j after moving r steps, or the goal if movement overshoots. This gives a deterministic next position before ladder decisions.
+4. If j has a ladder, compute two candidate outcomes: staying at j and taking the ladder destination. Since the player acts optimally, choose the minimum expected dp value between these two states.
+5. Average these six resulting dp values and add 1 to account for the current turn. Assign this to dp[i].
+6. Continue until all states are processed, ensuring that any state’s dependencies (all forward positions) have already been computed.
 
-This expresses that each turn costs 1, and future cost depends on best choice after landing.
-6. Iterate the relaxation until convergence. Because the system is contractive (probabilities sum to 1 and all transitions add positive cost), values stabilize quickly in a fixed number of iterations.
-7. Output dp[start].
-
-### Why it works
-
-The system defines a Bellman optimality equation for expected hitting time. Each state depends only on future states with non-negative cost increments, and the ladder decision is a local minimization embedded inside the transition. The iterative updates monotonically decrease overestimations and converge to the unique fixed point of the system. Since transitions form a finite Markov decision process with bounded state space, the Bellman operator is a contraction, guaranteeing convergence to the optimal expectation.
+The core reason this ordering works is that movement never decreases the index along the path. Every transition goes strictly forward or remains at the goal, so dp depends only on higher-index states. This makes the recurrence acyclic and guarantees that a single backward pass is sufficient.
 
 ## Python Solution
 
@@ -95,119 +80,93 @@ The system defines a Bellman optimality equation for expected hitting time. Each
 import sys
 input = sys.stdin.readline
 
-N = 10
-S = 100
+n = 10
+grid = [list(map(int, input().split())) for _ in range(n)]
 
-def idx(r, c):
-    # r: 0 bottom -> 9 top, c: 0..9
-    if r % 2 == 0:
-        return r * 10 + c
+# flatten board in serpentine order
+pos = []
+coords = []
+for i in range(n):
+    row = n - 1 - i
+    if i % 2 == 0:
+        for col in range(n):
+            pos.append((row, col))
+            coords.append((row, col))
     else:
-        return r * 10 + (9 - c)
+        for col in range(n - 1, -1, -1):
+            pos.append((row, col))
+            coords.append((row, col))
 
-# build mapping from board coords to linear indices
-pos = [0] * S
-inv = [None] * S
+idx = {coords[i]: i for i in range(100)}
 
-for r in range(N):
-    for c in range(N):
-        i = idx(r, c)
-        pos[i] = (r, c)
-        inv[i] = (r, c)
+ladder = [0] * 100
+for i in range(n):
+    for j in range(n):
+        if grid[i][j] > 0:
+            start = idx[(n - 1 - i, j)]
+            ladder[start] = start + grid[i][j] * 10
 
-# ladder input: h[i][j] rows above
-ladder_to = list(range(S))
+def clamp(x):
+    return min(x, 99)
 
-grid = []
-for i in range(N):
-    grid.append(list(map(int, input().split())))
+dp = [0.0] * 100
+dp[99] = 0.0
 
-for r in range(N):
-    for c in range(N):
-        h = grid[r][c]
-        if h > 0:
-            nr = r - h
-            nc = c
-            u = idx(r, c)
-            v = idx(nr, nc)
-            ladder_to[u] = v
+for i in range(98, -1, -1):
+    total = 0.0
+    for dice in range(1, 7):
+        j = i + dice
+        if j >= 100:
+            j = 99
+        best = dp[j]
+        if ladder[j]:
+            best = min(best, dp[ladder[j]])
+        total += best
+    dp[i] = 1.0 + total / 6.0
 
-start = idx(0, 0)
-goal = idx(9, 0)
-
-dp = [0.0] * S
-
-def get_lift(v):
-    return ladder_to[v]
-
-for _ in range(2000):
-    new_dp = dp[:]
-    new_dp[goal] = 0.0
-
-    for v in range(S):
-        if v == goal:
-            continue
-
-        exp = 1.0
-
-        for d in range(1, 7):
-            u = v + d
-            if u >= S:
-                u = v
-
-            best = dp[u]
-            lu = get_lift(u)
-            if lu != u:
-                best = min(best, dp[lu])
-
-            exp += best / 6.0
-
-        new_dp[v] = exp
-
-    dp = new_dp
-
-print(dp[start])
+print(dp[0])
 ```
 
-The implementation first converts the board into a single index system consistent with the snake traversal. This ensures dice movement is a simple integer increment.
+The code first constructs the exact path ordering of all 100 squares so that each move becomes a simple index increment. The ladder array maps each starting cell to its destination index in this linearization.
 
-The `ladder_to` array stores direct ladder jumps. Importantly, it does not attempt to chain ladders because the rules forbid it in the same move, so we only consider a single optional jump.
+The DP array stores expected values, and we iterate from the end backward because all transitions go forward in this index space. For each dice roll, we compute the landing index and then apply the optimal ladder decision locally by comparing “stay” versus “climb”.
 
-The main loop performs fixed-point iteration of the Bellman expectation equation. Each state recomputes its expected cost from the current approximation. The expression `exp += best / 6` encodes averaging over dice outcomes while adding 1 per turn.
-
-We run sufficiently many iterations (2000) because the state space is tiny and convergence is fast; each iteration reduces error significantly.
+The final answer is dp[0], corresponding to the starting cell.
 
 ## Worked Examples
 
-### Example 1: No ladders
+We use the no-ladder case since it isolates the probabilistic structure.
 
-All states are identical except distance to goal, and transitions are purely uniform dice rolls.
+### Example: empty board
 
-| State | dp before | transitions (conceptual) | dp after |
-| --- | --- | --- | --- |
-| start | 0.0 | average over 1-6 steps forward | 33.04 |
+| State i | dp[i] computation |
+| --- | --- |
+| 99 | 0 |
+| 98 | 1 + average(dp[99] over 6 rolls) = 1 |
+| 97 | 1 + (dp[98]+dp[99] mix)/6 |
+| ... | ... |
+| 0 | accumulates full expectation |
 
-This demonstrates pure stochastic shortest path behavior. The expectation grows because many rolls overshoot the goal and cause wasted turns.
+At each step, the value represents the expected number of turns needed when only deterministic forward movement exists. Near the end, many dice outcomes saturate at the goal, causing repeated dp[99] contributions of 0.
 
-### Example 2: Single ladder shortcut
+This demonstrates that overshooting is naturally handled by clamping transitions to the goal state, which reduces expected value growth near the end.
 
-Consider a ladder that jumps from a mid cell directly near the goal.
+### Example: single ladder near start
 
-| State | action | effect on dp |
-| --- | --- | --- |
-| landing cell | stay | higher dp |
-| landing cell | take ladder | lower dp |
+Suppose a ladder exists at position 2 that jumps to position 20.
 
-The iteration eventually selects the ladder option because it reduces expected future cost, showing the local optimality rule embedded in dp transition.
+When computing dp[2], we compare two options for transitions landing at 2: staying contributes dp[2], while climbing contributes dp[20]. If dp[20] is smaller, the DP will prefer climbing; otherwise it will ignore the ladder.
+
+This shows that ladder decisions are local optimizations embedded inside global expectation, and they do not require expanding the state space.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(100 × 6 × iterations) | 100 states, each recomputed from 6 transitions, repeated until convergence |
-| Space | O(100) | DP array plus ladder mapping |
+| Time | O(100 × 6) | each state evaluates 6 dice outcomes once |
+| Space | O(100) | DP array plus linearized board |
 
-The constants are tiny, and convergence is fast because the transition graph is small and contractive. This fits easily within limits.
+The state space is constant size, so the solution runs in constant time in practice and easily satisfies limits. Even if generalized to larger grids, the same structure would remain linear in number of states times dice outcomes.
 
 ## Test Cases
 
@@ -216,63 +175,46 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    import math
+    n = 10
+    grid = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
 
-    N = 10
-    S = 100
-
-    def idx(r, c):
-        if r % 2 == 0:
-            return r * 10 + c
+    pos = []
+    coords = []
+    for i in range(n):
+        row = n - 1 - i
+        if i % 2 == 0:
+            for col in range(n):
+                coords.append((row, col))
         else:
-            return r * 10 + (9 - c)
+            for col in range(n - 1, -1, -1):
+                coords.append((row, col))
 
-    grid = [list(map(int, sys.stdin.readline().split())) for _ in range(10)]
+    idx = {coords[i]: i for i in range(100)}
+    ladder = [0] * 100
 
-    ladder_to = list(range(S))
+    for i in range(n):
+        for j in range(n):
+            if grid[i][j] > 0:
+                start = idx[(n - 1 - i, j)]
+                ladder[start] = start + grid[i][j] * 10
 
-    for r in range(N):
-        for c in range(N):
-            h = grid[r][c]
-            if h > 0:
-                nr = r - h
-                nc = c
-                u = idx(r, c)
-                v = idx(nr, nc)
-                ladder_to[u] = v
+    dp = [0.0] * 100
+    for i in range(98, -1, -1):
+        s = 0.0
+        for d in range(1, 7):
+            j = min(99, i + d)
+            best = dp[j]
+            if ladder[j]:
+                best = min(best, dp[ladder[j]])
+            s += best
+        dp[i] = 1 + s / 6.0
 
-    start = idx(0, 0)
-    goal = idx(9, 0)
-
-    dp = [0.0] * S
-
-    def lift(v):
-        return ladder_to[v]
-
-    for _ in range(2000):
-        ndp = dp[:]
-        ndp[goal] = 0.0
-        for v in range(S):
-            if v == goal:
-                continue
-            exp = 1.0
-            for d in range(1, 7):
-                u = v + d
-                if u >= S:
-                    u = v
-                best = dp[u]
-                lu = lift(u)
-                if lu != u:
-                    best = min(best, dp[lu])
-                exp += best / 6.0
-            ndp[v] = exp
-        dp = ndp
-
-    return str(dp[start])
+    return str(dp[0])
 
 # provided sample
-assert abs(float(run("""
+assert abs(float(run(
+"""0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0
@@ -282,21 +224,20 @@ assert abs(float(run("""
 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-""").strip()) - 33.0476) < 1e-2
+""").strip()) - 33.0476190476) < 1e-6
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| empty board | 33.0476... | baseline stochastic movement |
-| single ladder to near goal | smaller value | ladder optimality |
-| ladder to bad region | ignored ladder | decision correctness |
-| max ladder density | stable convergence | numerical robustness |
+| Empty board | 33.0476 | baseline probability-only DP |
+| Single ladder | lower than no-ladder | ladder decision correctness |
+| Ladder to goal | immediate shortcut effect | terminal transition handling |
+| All ladders zero except start | normal movement only | boundary correctness |
 
 ## Edge Cases
 
-One important edge case is a ladder that leads into another ladder base. If the player uses the first ladder, the second must be ignored in that same move. The implementation handles this because ladder evaluation only occurs once per landing cell, and we never reapply `lift()` recursively.
+A ladder that leads directly to the goal tests whether the DP correctly treats the goal as absorbing. From that landing cell, dp is zero, so taking the ladder must always dominate unless it causes no benefit.
 
-Another edge case is overshooting the goal. When the dice roll moves past index 99, the state must remain unchanged. This prevents artificial reduction of expected time due to invalid forward movement.
+Overshooting the goal with dice rolls ensures that all values greater than remaining distance map correctly to the goal state. This prevents array overflows and ensures the expectation does not incorrectly propagate beyond bounds.
 
-A final edge case is overlapping ladders leading to the same destination. The DP formulation handles this naturally because it only compares final expected values, not ladder identities, so duplicates do not affect correctness.
+Multiple ladders landing on the same cell are handled safely because the DP only compares destination values, not ladder identity, so convergence is unaffected.
