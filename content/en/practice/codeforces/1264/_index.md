@@ -1,25 +1,29 @@
 ---
 title: "Codeforces Round 604 (Div. 1)"
-description: "Solutions for Codeforces Round 604 (Div. 1) (contest 1264). 1/3 problems verified against sample I/O. Difficulty range: 1900-3500."
-tags: ["codeforces", "competitive-programming", "brute-force", "constructive-algorithms", "greedy", "data-structures", "probabilities", "number-theory"]
+description: "6 problems from Codeforces Round 604 (Div. 1) (contest 1264), difficulty 1500-3500. 1/6 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "greedy", "implementation", "brute-force", "constructive-algorithms", "data-structures", "probabilities"]
 categories: ["algorithms"]
 contest_id: 1264
 contest_type: "Div. 1"
-rating_range: "1900-3500"
-n_problems: 3
+rating_range: "1500-3500"
+n_problems: 6
 n_verified: 1
-total_solve_s: 394
-date: "2026-06-11T20:35:17+07:00"
+total_solve_s: 1793
+contest_year: 2019
+date: "2026-06-15T00:03:42+07:00"
 weight: 1264
 draft: false
 ---
 
 # [Codeforces Round 604 (Div. 1)](https://codeforces.com/contest/1264)
 
-**Type:** Div. 1 | **Problems:** 3 | **Verified:** 1/3 | **Rating range:** 1900-3500 | **Time:** 6m 34s
+Div. 1 | 6 problems | 1/6 verified | Difficulty 1500-3500 | 29m 53s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [B](B/) | [Beautiful Sequence](https://codeforces.com/problemset/problem/1264/B) | 1900 | brute-force, constructive-algorithms, greedy | 2m 35s | ✗ |
-| [C](C/) | [Beautiful Mirrors with queries](https://codeforces.com/problemset/problem/1264/C) | 2400 | data-structures, probabilities | 2m 15s | ✗ |
-| [F](F/) | [Beautiful Fibonacci Problem](https://codeforces.com/problemset/problem/1264/F) | 3500 | constructive-algorithms, number-theory | 1m 44s | ✓ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Beautiful Regional Contest](https://codeforces.com/problemset/problem/1264/A) | 1500 | greedy, implementation | 10,440 | 6m 20s |  |
+| [B](B/) | [Beautiful Sequence](https://codeforces.com/problemset/problem/1264/B) | 1900 | brute-force, constructive-algorithms, greedy | 6,046 | 2m 35s |  |
+| [C](C/) | [Beautiful Mirrors with queries](https://codeforces.com/problemset/problem/1264/C) | 2400 | data-structures, probabilities | 1,322 | 10m 4s |  |
+| [D1](D1/) | [Beautiful Bracket Sequence (easy version)](https://codeforces.com/problemset/problem/1264/D1) | 2600 | combinatorics, dp, probabilities | 1,525 | 4m 15s |  |
+| [D2](D2/) | [Beautiful Bracket Sequence (hard version)](https://codeforces.com/problemset/problem/1264/D2) | 2900 | combinatorics, probabilities | 1,315 | 4m 55s |  |
+| [F](F/) | [Beautiful Fibonacci Problem](https://codeforces.com/problemset/problem/1264/F) | 3500 | constructive-algorithms, number-theory | 1,097 | 1m 44s | ✓ |
