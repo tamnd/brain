@@ -1,7 +1,7 @@
 ---
 title: "CF 1093A - Dice Rolling"
-description: "We are given a standard six-faced die, except the faces are labeled with the integers from 2 to 7. Each roll produces one of these values, and the total score is the sum over all rolls."
-date: "2026-06-13T04:46:38+07:00"
+description: "We are given a standard six-faced dice, but instead of the usual values 1 to 6, its faces contain the integers 2, 3, 4, 5, 6, and 7, all distinct. Each roll produces one of these numbers, and the score for a sequence of rolls is the sum of the visible faces."
+date: "2026-06-15T14:57:46+07:00"
 tags: ["codeforces", "competitive-programming", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1093
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Educational Codeforces Round 56 (Rated for Div. 2)"
 rating: 800
 weight: 1093
-solve_time_s: 284
+solve_time_s: 388
 verified: false
 draft: false
 ---
@@ -18,60 +18,60 @@ draft: false
 
 **Rating:** 800  
 **Tags:** math  
-**Solve time:** 4m 44s  
+**Solve time:** 6m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a standard six-faced die, except the faces are labeled with the integers from 2 to 7. Each roll produces one of these values, and the total score is the sum over all rolls.
+We are given a standard six-faced dice, but instead of the usual values 1 to 6, its faces contain the integers 2, 3, 4, 5, 6, and 7, all distinct. Each roll produces one of these numbers, and the score for a sequence of rolls is the sum of the visible faces.
 
-For each query value x, we are free to choose how many times we roll the die, and then imagine an outcome sequence of that many rolls. The only requirement is that there exists at least one sequence of outcomes whose sum is exactly x. We are asked to output any number of rolls for which such a sequence exists.
+For each query value $x$, we are asked to determine any number of rolls $k$ such that it is possible to obtain a total sum of exactly $x$ using exactly $k$ rolls. We are not required to construct the sequence of rolls, only to output a valid $k$.
 
-The key point is that we are not constructing the sequence itself, only deciding how many rolls are sufficient so that x becomes achievable.
+The key interpretation is that once we fix $k$, the question becomes whether we can represent $x$ as a sum of $k$ integers, each chosen from $\{2,3,4,5,6,7\}$.
 
-The constraints are small: at most 100 queries, and x is at most 100. This immediately tells us that even a brute-force exploration over possible numbers of rolls would be fast enough if we tried it carefully, but the structure of the problem suggests we should be able to compute each answer in constant time per query.
+The constraints are small: $t \le 100$ and $x \le 100$. This immediately rules out any need for heavy combinatorics or search. Any solution that computes each answer in constant time per query is sufficient.
 
-A naive mistake is to assume we must search over possible combinations of dice outcomes. For example, for x = 100, one might think about trying many roll counts and checking feasibility via dynamic programming or greedy construction. This is unnecessary because the value range per roll is extremely tight and contiguous.
+A subtle point is that many different values of $k$ can work for the same $x$. The problem does not ask for a minimum or maximum, only any valid one. That flexibility is what makes the construction simple.
 
-Another subtle issue is interpreting what “any number of rolls” means. It does not mean all numbers of rolls, and it does not mean the minimum number of rolls either. It only requires existence of a valid sequence for the chosen count. That distinction is what makes the solution collapse into a simple arithmetic condition.
+There are no real edge cases involving impossibility, since the statement guarantees a solution exists for every query.
 
 ## Approaches
 
-If we try to approach this directly, we might fix a number of rolls n and ask whether we can form sum x using n values each between 2 and 7. For a fixed n, this becomes a bounded knapsack-style feasibility check: we need to know whether x lies in the reachable sum range.
+A brute-force interpretation would be to try every possible number of rolls $k$, and for each $k$, check whether $x$ can be formed using $k$ numbers from 2 to 7. For a fixed $k$, this is equivalent to asking whether $x$ lies in the range $[2k, 7k]$, since 2 is the minimum contribution of a roll and 7 is the maximum.
 
-With n rolls, the smallest possible sum is achieved by taking all 2s, giving 2n. The largest possible sum is achieved by taking all 7s, giving 7n. Because all intermediate values between 2 and 7 are available, every integer sum in this interval is achievable. We can increase or decrease the sum in unit steps by replacing a 2 with a 3, or a 7 with a 6, and so on, so there are no gaps.
+If we brute-force over all $k$ up to, say, $x$, and for each $k$ perform a check, the complexity remains small given constraints, but it is unnecessary. The structure of the problem suggests a direct construction.
 
-So for a fixed n, feasibility is equivalent to a simple interval condition:
+The key observation is that for any chosen $k$, the achievable sums form a continuous interval from $2k$ to $7k$. This interval has no gaps because we can adjust individual rolls in steps of 1 while staying within the allowed face values. Therefore, instead of searching over sequences, we only need to find any integer $k$ such that $2k \le x \le 7k$.
 
-2n ≤ x ≤ 7n.
+Rearranging, we want:
 
-The brute-force idea would be to try n from 1 to x and check this condition. That works because x is at most 100, but it is still unnecessary repetition.
+$$\frac{x}{7} \le k \le \frac{x}{2}$$
 
-The key observation is that we do not need to search at all. We only need a single n such that x ≤ 7n, because once this holds, we can check that 2n ≤ x is automatically satisfied for the smallest such n in this range of x values. The smallest n that makes the upper bound large enough is n = ceil(x / 7). This choice always works because the gap between 2n and 7n is wide enough to cover every integer in between.
+Since $k$ must be an integer, any integer in this range works. A simple constructive choice is to take the smallest valid $k$ that still allows reaching $x$, which is:
 
-This reduces each query to a constant-time arithmetic computation.
+$$k = \left\lceil \frac{x}{7} \right\rceil$$
+
+Once we fix this $k$, the remaining difference $x - 2k$ can always be distributed by increasing some rolls from 2 up to 7.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute force over n | O(x) per query | O(1) | Accepted but unnecessary |
-| Direct formula | O(1) per query | O(1) | Accepted |
+| Brute Force over k and sequences | O(x · 6^k) | O(1) | Too slow |
+| Interval construction | O(1) per query | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We process each query independently.
+1. Read the number of queries $t$. Each query gives a target sum $x$.
+2. For each $x$, compute the smallest integer $k$ such that $7k \ge x$. This ensures that even if all rolls are 7, we can reach or exceed $x$.
+3. Output this $k$ as the answer for the query.
 
-1. Read x, the target sum we want to achieve.
-2. Compute n as the smallest integer such that 7n ≥ x. This is the ceiling of x divided by 7. This ensures that even if every roll contributes the maximum possible value, we still have enough capacity to reach x.
-3. Output n as the answer.
-
-The reason this is sufficient is that once 7n ≥ x holds, the interval of achievable sums [2n, 7n] always includes x. Since increasing n only expands both bounds linearly, and the gap between 2n and 7n is always wide enough to cover all intermediate integers, no additional adjustment is needed.
+The reason we pick the ceiling of $x/7$ is that it minimizes the number of rolls while guaranteeing enough total capacity to reach $x$. Any smaller $k$ would cap the maximum achievable sum below $x$, making it impossible.
 
 ### Why it works
 
-For any fixed number of rolls n, every sum between 2n and 7n is achievable because each individual roll can independently contribute any integer in a contiguous range. This makes the reachable set exactly an integer interval with no holes.
+For any fixed number of rolls $k$, the set of achievable sums is exactly the interval $[2k, 7k]$. This is because each roll independently contributes any value from 2 to 7, and adjusting one roll by ±1 changes the total sum by exactly 1 while remaining valid. Therefore all integers in the range are reachable.
 
-Choosing n = ceil(x / 7) guarantees that x does not exceed the maximum possible sum. At the same time, because x is at least 2, this choice of n never violates the lower bound condition in a way that would eliminate feasibility. The interval property ensures that once x is inside the bounds, a valid configuration of rolls always exists.
+Choosing $k = \lceil x/7 \rceil$ guarantees $x \le 7k$. At the same time, since $k \ge 1$, we always have enough structure to represent $x$ by starting from all 2s and increasing some rolls. Thus $x \ge 2k$ also holds automatically for this construction range in the problem constraints, and any remaining gap can be filled by incrementing selected rolls up to 7.
 
 ## Python Solution
 
@@ -79,49 +79,59 @@ Choosing n = ceil(x / 7) guarantees that x does not exceed the maximum possible 
 import sys
 input = sys.stdin.readline
 
-t = int(input())
-for _ in range(t):
-    x = int(input())
-    n = (x + 6) // 7
-    print(n)
+def solve():
+    t = int(input())
+    for _ in range(t):
+        x = int(input())
+        k = (x + 6) // 7
+        print(k)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The only implementation detail worth noticing is the integer ceiling division. Instead of using floating-point arithmetic, we compute ceil(x / 7) as (x + 6) // 7, which is a standard integer trick that avoids precision issues.
+The code processes each query independently. The expression `(x + 6) // 7` is the standard integer ceiling division for $x/7$, ensuring we always pick the smallest $k$ such that $7k \ge x$.
 
-Everything else is direct iteration over queries.
+The implementation avoids any simulation of dice rolls. The logic directly computes the minimal feasible number of rolls, which is sufficient because the problem allows any valid configuration.
 
 ## Worked Examples
 
-We trace two queries from the sample to see how the formula behaves.
+### Example 1
 
-### Example 1: x = 13
+Input: $x = 13$
 
-| Step | x | Computation | n |
-| --- | --- | --- | --- |
-| 1 | 13 | (13 + 6) // 7 | 2 |
+We compute $k = \lceil 13/7 \rceil = 2$
 
-The computed n is 2. The achievable range with 2 rolls is [4, 14]. Since 13 lies inside this interval, it is possible to construct a valid sequence such as 7 and 6.
+| Step | x | k = ceil(x/7) | 7k | Feasible? |
+| --- | --- | --- | --- | --- |
+| 1 | 13 | 2 | 14 | Yes |
 
-This demonstrates that the algorithm does not need to explicitly construct the sequence, only verify that the interval contains the target.
+With 2 rolls, we can achieve sums from 4 to 14, so 13 is reachable. For instance, 6 + 7 works.
 
-### Example 2: x = 100
+This confirms that the construction is sufficient even when the target is close to the upper boundary.
 
-| Step | x | Computation | n |
-| --- | --- | --- | --- |
-| 1 | 100 | (100 + 6) // 7 | 15 |
+### Example 2
 
-With 15 rolls, the achievable range is [30, 105]. The value 100 is inside this range, so a valid configuration exists. One way to imagine it is starting from all 7s and reducing some rolls until the sum drops to exactly 100.
+Input: $x = 37$
 
-This confirms that even for larger values, the interval property scales cleanly.
+We compute $k = \lceil 37/7 \rceil = 6$
+
+| Step | x | k | 7k | Feasible? |
+| --- | --- | --- | --- | --- |
+| 1 | 37 | 6 | 42 | Yes |
+
+With 6 rolls, achievable sums range from 12 to 42. The target 37 lies inside this interval.
+
+This demonstrates that even when $x$ is not a multiple of 7, the slack created by multiple rolls allows fine adjustment.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(t) | Each query is answered using a single arithmetic operation |
-| Space | O(1) | No extra storage beyond input variables |
+| Time | O(t) | Each query is handled with a single arithmetic operation |
+| Space | O(1) | Only a few integers are stored |
 
-The constraints allow up to 100 queries, so a linear pass over them is trivial. Each computation is constant time, making the solution effectively instantaneous.
+The constraints allow up to 100 queries, so a linear scan is trivial. The solution runs in constant time per test and is far below the limits.
 
 ## Test Cases
 
@@ -130,60 +140,43 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    output = io.StringIO()
+    sys.stdout = output
+
+    import sys
     input = sys.stdin.readline
 
-    t = int(input())
-    out = []
+    t = int(sys.stdin.readline())
     for _ in range(t):
-        x = int(input())
-        n = (x + 6) // 7
-        out.append(str(n))
-    return "\n".join(out) + "\n"
+        x = int(sys.stdin.readline())
+        k = (x + 6) // 7
+        print(k)
 
-# provided sample
-assert run("""4
-2
-13
-37
-100
-""") == """1
-2
-6
-15
-"""
+    return output.getvalue().strip()
 
-# minimum value
-assert run("""1
-2
-""") == "1\n"
+# provided samples
+assert run("4\n2\n13\n37\n100\n") == "1\n2\n6\n15"
 
-# boundary just below multiple of 7
-assert run("""1
-6
-""") == "1\n"
-
-# exact multiple of 7
-assert run("""1
-14
-""") == "2\n"
-
-# larger value
-assert run("""1
-99
-""") == "15\n"
+# custom cases
+assert run("1\n7\n") == "1"
+assert run("1\n8\n") == "2"
+assert run("1\n14\n") == "2"
+assert run("1\n1\n") == "1"
+assert run("1\n100\n") == "15"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| x = 2 | 1 | Minimum possible sum case |
-| x = 6 | 1 | Upper bound still within one roll |
-| x = 14 | 2 | Exact divisibility by 7 |
-| x = 99 | 15 | Larger value scaling correctness |
+| 7 | 1 | exact single-roll boundary |
+| 8 | 2 | crossing first feasibility gap |
+| 14 | 2 | upper boundary of small k |
+| 1 | 1 | minimal constraint handling |
+| 100 | 15 | large value scaling |
 
 ## Edge Cases
 
-The smallest input x = 2 is important because it checks that the formula does not produce zero. With x = 2, the computation gives n = 1, which is correct since a single roll of value 2 already matches the target.
+One important boundary is when $x$ is exactly divisible by 7. For example, $x = 14$. The algorithm gives $k = 2$. With two rolls, the maximum is $14$, achieved by $7 + 7$, confirming correctness at the upper boundary.
 
-For values just below a multiple of 7, such as x = 6 or x = 13, the formula still rounds up to the correct number of rolls. For x = 13, it gives n = 2, and the reachable range [4, 14] contains 13, confirming feasibility.
+Another case is when $x$ is just above a multiple of 7, such as $x = 8$. Here $k = 2$. The range is $[4, 14]$, so 8 is achievable, for example $2 + 6$. This shows that even when one roll is insufficient, adding a second roll creates enough flexibility to fill the gap.
 
-At exact multiples of 7, such as x = 14 or x = 21, the computation yields n = x / 7. In these cases, all rolls being 7 already achieves the sum, so the solution naturally aligns with the construction.
+Finally, for very small values like $x = 2$, the formula gives $k = 1$. The only possible sum is exactly one roll, which must be 2, matching the requirement exactly.

@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8348 problems, 4026 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8349 problems, 4028 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8348 problems, 4026 verified.**
+**1472 contests, 8349 problems, 4028 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 51 contests, 288 problems, 173 verified
+## 2018 — 51 contests, 289 problems, 175 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -519,7 +519,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1090](1090/) | [2018-2019 Russia Open High School Programming Contest (Unrated, Online Mirror, ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1090) | 13 | 8/13 | ICPC/IOI | 1000-2900 |
 | [1091](1091/) | [Good Bye 2018](https://codeforces.com/contest/1091) | 8 | 5/8 | Special | 800-3200 |
 | [1092](1092/) | [Codeforces Round 527 (Div. 3)](https://codeforces.com/contest/1092) | 7 | 4/7 | Div. 3 | 800-2200 |
-| [1093](1093/) | [Educational Codeforces Round 56 (Rated for Div. 2)](https://codeforces.com/contest/1093) | 6 | 2/6 | Div. 2 | 800-2400 |
+| [1093](1093/) | [Educational Codeforces Round 56 (Rated for Div. 2)](https://codeforces.com/contest/1093) | 7 | 4/7 | Div. 2 | 800-2400 |
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 6 | 4/6 | Div. 2 | 800-2500 |
 

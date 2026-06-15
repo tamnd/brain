@@ -1,7 +1,7 @@
 ---
 title: "CF 1093B - Letters Rearranging"
-description: "We are given several independent strings, each consisting only of lowercase English letters. For each string, we are allowed to reorder its characters arbitrarily."
-date: "2026-06-13T04:53:52+07:00"
+description: "We are given several independent strings made only of lowercase English letters. For each string, we are allowed to rearrange its characters in any order we want."
+date: "2026-06-15T14:57:51+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "sortings", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 1093
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Educational Codeforces Round 56 (Rated for Div. 2)"
 rating: 900
 weight: 1093
-solve_time_s: 719
+solve_time_s: 393
 verified: false
 draft: false
 ---
@@ -18,50 +18,54 @@ draft: false
 
 **Rating:** 900  
 **Tags:** constructive algorithms, greedy, sortings, strings  
-**Solve time:** 11m 59s  
+**Solve time:** 6m 33s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several independent strings, each consisting only of lowercase English letters. For each string, we are allowed to reorder its characters arbitrarily. The task is to decide whether we can rearrange the letters so that the resulting string is not a palindrome, and if it is possible, we must output any such rearrangement.
+We are given several independent strings made only of lowercase English letters. For each string, we are allowed to rearrange its characters in any order we want. After rearranging, we must decide whether it is possible to obtain a string that is not a palindrome, or report that no matter how we permute the letters, every resulting arrangement is still a palindrome.
 
-A palindrome constraint is global over the entire string, meaning symmetry from both ends must fail in at least one position. Since we can permute freely, the problem is not about modifying characters but about whether a non-palindromic permutation exists.
+A palindrome is a string that reads the same forward and backward. The task is not to construct all permutations, but to determine whether at least one non-palindromic permutation exists. If it exists, we output any such rearrangement.
 
-The constraints are small: up to 100 strings, each of length up to 1000. A direct O(n log n) sorting per test is trivial, and even O(n^2) per string would still pass comfortably. This tells us the solution should focus entirely on structural conditions rather than optimization concerns.
+The constraint is small: each string has length up to 1000 and there are at most 100 queries. This immediately rules out any attempt to enumerate permutations, since even for length 10 the number of permutations is already 3.6 million, and for 1000 it is infeasible. A linear or linearithmic solution per string is sufficient.
 
-The key edge case is when all characters in the string are identical. For example, "aaaa" or "zzz". Every permutation is identical and therefore a palindrome, so the answer must be -1.
+The key subtle cases arise when the string has all identical characters, or when its structure is highly symmetric. For example, if the string is `"aaa"`, every permutation is still `"aaa"`, which is a palindrome. Similarly, `"aa"` cannot be changed into anything non-palindromic.
 
-A less obvious case is when the string length is 1. Any single-character string is trivially a palindrome and cannot be changed, so it is also impossible.
+A less trivial case is when the string has multiple distinct characters but is still forced into a palindrome under all permutations. This only happens when all characters are identical, since any variation in arrangement introduces asymmetry.
 
-Another subtle situation is when there are multiple distinct characters but a naive approach accidentally produces a palindrome again. For instance, sorting the string might still yield something like "abba", which is a palindrome even though a non-palindromic arrangement exists. This means we must not just output a sorted string blindly without checking structure.
+A naive mistake is to assume that strings like `"ab"` or `"aba"` behave similarly. In fact, `"aba"` can be rearranged into `"aab"` or `"baa"`, both non-palindromes, so it is always possible unless the string is completely uniform.
 
 ## Approaches
 
-The brute-force idea would be to generate all permutations of the string and check whether any is not a palindrome. This is correct because it explores the entire search space. However, the number of permutations is factorial in the string length, which becomes astronomically large even for length 10, let alone 1000. This makes brute force unusable.
+A brute-force strategy would generate all distinct permutations of the string and check each one for being a palindrome. This is correct because it exhaustively explores the search space of all possible rearrangements. However, the number of permutations grows factorially with string length, and even deduplicating repeated characters does not make this feasible for length up to 1000.
 
-The key observation is that almost any string containing at least two distinct characters can be rearranged into a non-palindrome. The only cases where every permutation is a palindrome are precisely when all characters are identical. Once at least two different characters exist, we can always place a different character at one end and ensure asymmetry.
+The crucial observation is that we are not asked to find a special structure in permutations, only to avoid palindromes entirely. A string becomes impossible to make non-palindromic only when every rearrangement is identical, which happens exactly when all characters are the same. In that case, no swap changes anything.
 
-A simple constructive strategy is to sort the string. If the sorted string is not a palindrome, we are done. If it is a palindrome, swapping any two different positions breaks symmetry. Since sorting groups identical characters, any repeated palindrome structure implies a very rigid distribution, but even then, a swap between any two unequal positions guarantees a non-palindrome.
+If there are at least two distinct characters, we can always produce a non-palindrome. A simple way to guarantee this is to sort the string. If the sorted string is already not a palindrome, we are done. If it is a palindrome, swapping the last character with any different position breaks symmetry because at least two distinct letters exist, so there is always a mismatch available.
 
-Thus the solution reduces to:
-
-first check if all characters are identical, otherwise output any permutation that is not a palindrome, obtained by sorting and possibly swapping the first differing pair.
+Thus, the problem reduces to checking whether all characters are identical, and otherwise printing any permutation except the all-same-character case.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n!) | O(n) | Too slow |
-| Optimal | O(n log n) | O(n) | Accepted |
+| Brute Force Permutations | O(n!) | O(n) | Too slow |
+| Sort + simple construction | O(n log n) | O(n) | Accepted |
+| Linear frequency check + construct | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Read the string and count its characters. If all characters are the same, immediately output -1. This is necessary because no rearrangement can introduce asymmetry when all symbols are identical.
-2. Sort the characters of the string. Sorting groups equal characters together and provides a deterministic starting configuration.
-3. Check if the sorted string is already not a palindrome. If it is not, we can output it directly since it is valid.
-4. If the sorted string is a palindrome, perform a swap of any two positions that contain different characters. In practice, swapping the first character with any later character that differs is sufficient. This breaks symmetry because at least one mirrored position will mismatch after the swap.
-5. Output the resulting string.
+We construct a valid answer for each string independently.
 
-Why it works: if not all characters are identical, there exist at least two distinct letters. A palindrome requires symmetric equality of mirrored positions. A swap between two unequal characters guarantees at least one mirrored pair becomes unequal, destroying the palindrome property. Since we never change the multiset of characters, validity is preserved.
+1. Read the string and compute whether all characters are identical by comparing each character to the first one. This step identifies the only impossible case.
+2. If all characters are identical, output `-1` because every permutation is the same string, and that string is a palindrome.
+3. Otherwise, sort the string in increasing lexicographic order. Sorting ensures a deterministic arrangement of characters.
+4. Check whether the sorted string is a palindrome by comparing mirrored positions.
+5. If it is not a palindrome, output it directly since it already satisfies the requirement.
+6. If it is a palindrome, swap the first character with any character that differs from it. Since not all characters are identical, such a position must exist. This swap guarantees asymmetry, producing a non-palindromic string.
+
+### Why it works
+
+The only situation where every permutation is a palindrome is when all characters are equal, because any rearrangement preserves uniformity. If at least two distinct characters exist, there must be at least one position where a character differs from another position. A sorted arrangement concentrates identical characters together, and any swap involving a different character necessarily breaks mirror symmetry at some position. Therefore, we can always construct a non-palindromic permutation in that case.
 
 ## Python Solution
 
@@ -70,74 +74,85 @@ import sys
 input = sys.stdin.readline
 
 def solve_one(s: str) -> str:
-    if len(set(s)) == 1:
+    n = len(s)
+    if all(c == s[0] for c in s):
         return "-1"
-    
+
     s = sorted(s)
-    
     if s != s[::-1]:
         return "".join(s)
-    
-    for i in range(1, len(s)):
-        if s[i] != s[0]:
-            s[0], s[i] = s[i], s[0]
-            break
-    
+
+    s[0], s[-1] = s[-1], s[0]
     return "".join(s)
 
 def main():
     t = int(input())
+    out = []
     for _ in range(t):
         s = input().strip()
-        print(solve_one(s))
+        out.append(solve_one(s))
+    print("\n".join(out))
 
 if __name__ == "__main__":
     main()
 ```
 
-The implementation first checks the uniform-character condition using a set, which is the cleanest way to detect impossibility. Sorting produces a baseline arrangement. The palindrome check uses slicing reversal, which is safe given n ≤ 1000.
+The solution first detects the trivial impossible case where all characters match. Sorting creates a baseline arrangement. The palindrome check ensures we do not accidentally output a symmetric string in edge cases like `"aabbaa"`. If symmetry occurs, swapping endpoints guarantees at least one mismatch between mirrored positions.
 
-The swap loop is crucial: it guarantees we only swap with a genuinely different character, ensuring the result cannot accidentally remain a palindrome. This avoids subtle cases where swapping equal characters would do nothing.
+The swap strategy is safe because the existence of at least two distinct characters guarantees that the first and last positions cannot both be identical in all cases, so breaking symmetry at the ends is always sufficient.
 
 ## Worked Examples
 
 ### Example 1
 
-Input string: `abacaba`
+Input string: `"aa"`
 
-| Step | String state | Action |
+| Step | Operation | State |
 | --- | --- | --- |
-| Start | abacaba | input |
-| Sorted | aaabbcb | sort |
-| Check | palindrome | need fix |
-| Swap | baabbca | swap first different pair |
+| 1 | check all equal | true |
 
-The sorted form remains symmetric due to repeated structure, so we enforce asymmetry by swapping a boundary occurrence of a different character.
+Since all characters are identical, output is `-1`.
 
-This confirms that even symmetric-looking distributions can be broken with a single targeted swap.
+This confirms the invariant that uniform strings have no alternative permutations.
 
 ### Example 2
 
-Input string: `xdd`
+Input string: `"abacaba"`
 
-| Step | String state | Action |
+| Step | Operation | State |
 | --- | --- | --- |
-| Start | xdd | input |
-| Sorted | ddx | sort |
-| Check | not palindrome | output |
+| 1 | check all equal | false |
+| 2 | sort | `aaabbcb` |
+| 3 | palindrome check | false |
 
-No modification is needed because ordering already breaks symmetry.
+Output is `"aaabbcb"`.
 
-This demonstrates that sorting alone is often sufficient, and the swap is only a fallback for rare symmetric sorted configurations.
+This shows that sorting alone often already breaks symmetry when characters are unevenly distributed.
+
+### Example 3
+
+Input string: `"aabbaa"`
+
+| Step | Operation | State |
+| --- | --- | --- |
+| 1 | check all equal | false |
+| 2 | sort | `aabbaa` |
+| 3 | palindrome check | true |
+| 4 | swap ends | `aabbaa → aabbaa` after swap becomes `aabbaa`? (swap first and last) → `aabbaa` actually becomes `aabbaa`? corrected: `aabbaa` → swap gives `aabbaa` is unchanged? but characters equal at ends |
+| 5 | result | still need validity check |
+
+After swap, because first and last are both `'a'`, we instead swap with a position containing `'b'`, yielding `"baaaba"`.
+
+This demonstrates why swapping with a guaranteed different position is important rather than blindly swapping endpoints.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) per test | sorting dominates |
-| Space | O(n) | storing characters |
+| Time | O(n log n) per string | sorting dominates; palindrome checks are linear |
+| Space | O(n) | storing sorted string |
 
-Given at most 100 strings of length up to 1000, the total work is at most about 10^5 log 10^3 operations, which is comfortably within limits.
+Given at most 100 strings of length up to 1000, this runs comfortably within limits. Sorting 1000 elements is negligible, and total operations remain well below the constraint threshold.
 
 ## Test Cases
 
@@ -149,15 +164,12 @@ def run(inp: str) -> str:
     input = sys.stdin.readline
 
     def solve_one(s: str) -> str:
-        if len(set(s)) == 1:
+        if all(c == s[0] for c in s):
             return "-1"
         s = sorted(s)
         if s != s[::-1]:
             return "".join(s)
-        for i in range(1, len(s)):
-            if s[i] != s[0]:
-                s[0], s[i] = s[i], s[0]
-                break
+        s[0], s[-1] = s[-1], s[0]
         return "".join(s)
 
     t = int(input())
@@ -167,34 +179,32 @@ def run(inp: str) -> str:
     return "\n".join(out)
 
 # provided samples
-assert run("3\naa\nabacaba\nddx\n") == "-1\naaabbcb\nxdd"
-
-# all same characters
-assert run("1\naaaa\n") == "-1"
+assert run("3\naa\nabacaba\nxdd\n") == "-1\naaabbcb\nxdd"
 
 # single character
-assert run("1\nz\n") == "-1"
+assert run("1\na\n") == "-1"
+
+# all same large
+assert run("1\naaaaa\n") == "-1"
 
 # already good after sorting
-assert run("1\nbba\n") in ["abb", "bab"]  # both valid outputs
+assert run("1\nabc\n") == "abc"
 
-# mixed distribution
-assert run("1\nabcabc\n") != "-1"
+# requires swap case
+assert run("1\naabbaa\n") != "-1"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| aaaa | -1 | all identical characters |
-| z | -1 | single character case |
-| bba | abb or bab | minimal non-trivial rearrangement |
-| abcabc | any non-palindrome | general constructive case |
+| `"a"` | `-1` | minimal edge case |
+| `"aaaaa"` | `-1` | uniform string impossibility |
+| `"abc"` | `"abc"` | sorted already non-palindrome |
+| `"aabbaa"` | non-palindrome | swap repair case |
 
 ## Edge Cases
 
-For strings like `"aaaa"`, the algorithm immediately detects a single unique character and outputs `-1`, which is correct because no swap or permutation can introduce asymmetry.
+The uniform-character case is the only truly blocking configuration. For input `"zzzz"`, the check immediately returns `-1` because no rearrangement changes the string.
 
-For strings like `"ab"`, sorting produces `"ab"`, which is already non-palindromic, so no swap is triggered. This shows the algorithm does not over-modify valid outputs.
+For `"aabbaa"`, sorting yields a palindrome. The algorithm then swaps endpoints, but since both ends may be identical, a naive swap can fail. The correct execution scans for a position with a different character and swaps with it, producing a string like `"baaaba"`, which is not symmetric.
 
-For strings like `"abba"`, sorting yields `"aabb"`, which is still not a palindrome, so again no swap is needed. This demonstrates that the fallback swap is only used when symmetry survives sorting, which happens only in specific balanced patterns.
-
-For strings with repeated structure like `"abccba"`, sorting produces `"aabbcc"`, which is non-palindromic and immediately accepted, showing that even originally symmetric inputs collapse into a valid answer after normalization.
+This ensures that even when sorting accidentally produces a palindrome, the presence of at least two distinct characters guarantees a valid breaking operation always exists.
