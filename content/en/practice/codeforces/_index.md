@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8322 problems, 4003 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8323 problems, 4004 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8322 problems, 4003 verified.**
+**1472 contests, 8323 problems, 4004 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,11 +467,11 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 51 contests, 262 problems, 150 verified
+## 2018 — 51 contests, 263 problems, 151 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
-| [912](912/) | [Codeforces Round 456 (Div. 2)](https://codeforces.com/contest/912) | 4 | 4/4 | Div. 2 | 800-2500 |
+| [912](912/) | [Codeforces Round 456 (Div. 2)](https://codeforces.com/contest/912) | 5 | 5/5 | Div. 2 | 800-2500 |
 | [913](913/) | [Hello 2018](https://codeforces.com/contest/913) | 8 | 4/8 | Special | 900-3400 |
 | [914](914/) | [Codecraft-18 and Codeforces Round 458 (Div. 1 + Div. 2, combined)](https://codeforces.com/contest/914) | 7 | 6/7 | Div. 1+2 | 900-3400 |
 | [915](915/) | [Educational Codeforces Round 36 (Rated for Div. 2)](https://codeforces.com/contest/915) | 7 | 4/7 | Div. 2 | 900-2400 |
