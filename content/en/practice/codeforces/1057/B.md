@@ -1,7 +1,7 @@
 ---
 title: "CF 1057B - DDoS"
-description: "We are given a timeline of server activity measured second by second. Each position in the array tells us how many requests arrived during that second. The task is to find a contiguous time window where the total number of requests is “too large” compared to its duration."
-date: "2026-06-15T09:50:55+07:00"
+description: "We are given a timeline split into seconds. For each second, we know how many requests hit a server. This gives us an array where each position represents request volume in that second."
+date: "2026-06-15T13:06:02+07:00"
 tags: ["codeforces", "competitive-programming", "*special", "brute-force"]
 categories: ["algorithms"]
 codeforces_contest: 1057
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Mail.Ru Cup 2018 - Practice Round"
 rating: 1400
 weight: 1057
-solve_time_s: 548
-verified: false
+solve_time_s: 265
+verified: true
 draft: false
 ---
 
@@ -18,46 +18,58 @@ draft: false
 
 **Rating:** 1400  
 **Tags:** *special, brute force  
-**Solve time:** 9m 8s  
-**Verified:** no  
+**Solve time:** 4m 25s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a timeline of server activity measured second by second. Each position in the array tells us how many requests arrived during that second. The task is to find a contiguous time window where the total number of requests is “too large” compared to its duration. Concretely, a segment from time i to time j is considered suspicious if the sum of requests in that segment is strictly greater than 100 times the number of seconds in that segment.
+We are given a timeline split into seconds. For each second, we know how many requests hit a server. This gives us an array where each position represents request volume in that second.
 
-The output is not the number of such segments or whether one exists, but the maximum possible length of a contiguous segment that satisfies this inequality. If no segment satisfies it at all, the answer is zero.
+We need to find the longest contiguous time interval such that the total number of requests inside that interval is strictly larger than 100 times the length of the interval. In other words, if we pick a segment of length `t`, and the sum of requests in it exceeds `100 * t`, that segment is considered an attack period, and we want the maximum possible length of such a segment.
 
-The constraint n up to 5000 immediately rules out any cubic solution. A triple nested enumeration over all segments and recomputing sums would still pass marginally in Python only with heavy optimization, but anything worse than O(n^2) will be too slow. This points us toward either a quadratic approach with prefix sums or a more clever linear technique.
+The input size goes up to 5000 seconds, and each value can also go up to 5000. This immediately suggests that an O(n^2) solution is acceptable since n^2 is about 25 million operations, which fits comfortably in 2 seconds in Python with prefix sums.
 
-A subtle edge case arises when all values are small. In such cases, no segment will ever exceed the threshold, and the correct answer is zero. Another edge case occurs when a single element already exceeds 100, in which case the answer is at least 1. A naive implementation that checks only total sums without properly subtracting segment length can incorrectly accept or reject such cases.
+A key observation is that the condition depends only on sums over intervals. This makes prefix sums a natural tool, because it allows constant time range sum queries.
+
+The main difficulty is not computing sums, but efficiently checking all candidate intervals and extracting the maximum valid length.
+
+A subtle edge case arises when no interval satisfies the condition. For example, if all values are 0, then every interval has sum 0, which is never greater than `100 * t`. In this case the answer must be 0, not a negative number or -1.
+
+Another edge case is when only single elements qualify. For instance, if `r[i] = 101`, then a length-1 interval is valid, but longer intervals might fail. The solution must still correctly detect and compare all valid lengths.
+
+Finally, note that the condition is strict: `sum > 100 * length`. Using `>=` instead would incorrectly include borderline cases like exactly `100 * t`.
 
 ## Approaches
 
-A direct way to solve the problem is to consider every possible segment [l, r], compute its sum, and compare it against 100 times its length. Using prefix sums, the sum of any segment can be computed in O(1), so checking all segments takes O(n^2). For n = 5000, this leads to about 25 million checks, which is acceptable in Python.
+A direct approach checks every possible subarray. For each starting index `i`, we extend to every ending index `j`, compute the sum of `r[i..j]`, and check whether it exceeds `100 * (j - i + 1)`. This is correct because it explicitly evaluates every possible interval.
 
-The brute-force works because it explicitly evaluates every candidate segment, but it becomes inefficient because it recomputes or checks too many overlapping intervals.
+However, recomputing sums from scratch for each interval leads to O(n^3) complexity if done naively. Even with partial reuse, a double loop with incremental sum updates gives O(n^2), which is the best we can hope for in brute force form.
 
-The key observation is that the condition depends only on the sum of a segment and its length. Prefix sums allow constant-time segment sum queries, eliminating repeated work. Since there is no monotonic structure that would allow binary search or sliding window, the clean quadratic enumeration is already optimal for this constraint.
+The key improvement is to precompute prefix sums so that any interval sum can be computed in O(1). This reduces the check for each pair `(i, j)` to constant time. We still enumerate all pairs, but now each check is cheap.
+
+The structure of the problem does not allow better than O(n^2) because we are explicitly asked for the longest valid interval without monotonic constraints that would enable two pointers or binary search. The condition is not monotone in interval length, so sliding window techniques do not apply.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n^3) without prefix sums, O(n^2) with prefix sums | O(n) | Too slow in naive form, borderline but accepted with prefix sums |
-| Optimal | O(n^2) | O(n) | Accepted |
+| Brute Force (nested + recompute) | O(n^3) | O(1) | Too slow |
+| Prefix Sum + O(n^2) enumeration | O(n^2) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Build a prefix sum array where prefix[i] stores the total requests from day 1 to i. This allows fast computation of any segment sum. The reason this is useful is that every candidate segment must be evaluated against a sum condition.
-2. Iterate over all possible left endpoints l from 1 to n. Each l defines the start of a candidate time window.
-3. For each l, iterate over all possible right endpoints r from l to n. This enumerates every possible contiguous segment exactly once.
-4. Compute the sum of the segment [l, r] using prefix sums as prefix[r] - prefix[l - 1]. This avoids recomputing sums from scratch.
-5. Compute the length of the segment as r - l + 1, then check whether sum > 100 * length.
-6. If the condition holds, update the answer with the maximum length seen so far.
-7. After all iterations, return the best length, or 0 if none were valid.
+1. Build a prefix sum array where `pref[i]` stores the sum of the first `i` elements. This allows fast computation of any segment sum later.
+2. Iterate over all possible left endpoints `l` from 0 to n - 1.
+3. For each `l`, extend the right endpoint `r` from `l` to n - 1.
+4. Compute the sum of the segment `[l, r]` using `pref[r+1] - pref[l]`.
+5. Compute the length of the segment as `r - l + 1`.
+6. Check whether `segment_sum > 100 * length`.
+7. If the condition holds, update the answer with the maximum length seen so far.
+
+The reason we scan all `(l, r)` pairs is that any valid interval must appear somewhere in this enumeration. Prefix sums ensure that we do not recompute overlapping sums repeatedly.
 
 ### Why it works
 
-Every valid segment is checked exactly once. Since we evaluate the condition directly for each segment using exact arithmetic, no approximation or heuristic is involved. The prefix sum ensures correctness of segment sums, and the nested iteration guarantees completeness over all possible contiguous intervals.
+The algorithm evaluates every possible contiguous interval exactly once. For each interval, correctness of the check depends only on an exact arithmetic comparison between its sum and a linear threshold based on its length. Since prefix sums give exact interval sums, no approximation or heuristic is involved. Therefore, any interval that satisfies the condition will be detected, and the maximum length among them is tracked.
 
 ## Python Solution
 
@@ -65,135 +77,26 @@ Every valid segment is checked exactly once. Since we evaluate the condition dir
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-a = list(map(int, input().split()))
-
-prefix = [0] * (n + 1)
-for i in range(n):
-    prefix[i + 1] = prefix[i] + a[i]
-
-ans = 0
-
-for l in range(n):
-    for r in range(l, n):
-        total = prefix[r + 1] - prefix[l]
-        length = r - l + 1
-        if total > 100 * length:
-            if length > ans:
-                ans = length
-
-print(ans)
-```
-
-The solution relies entirely on prefix sums to make segment sum queries constant time. The outer loop fixes the start of a segment, and the inner loop expands the end. The comparison is done directly using the problem’s inequality, and the maximum valid length is tracked.
-
-The only subtle point is indexing: prefix is built with one-based indexing so that segments starting at zero are handled cleanly as prefix[r+1] - prefix[l].
-
-## Worked Examples
-
-### Example 1
-
-Input:
-
-```
-5
-100 200 1 1 1
-```
-
-We compute prefix sums as:
-
-prefix = [0, 100, 300, 301, 302, 303]
-
-We check segments:
-
-| l | r | sum | length | valid |
-| --- | --- | --- | --- | --- |
-| 0 | 0 | 100 | 1 | no |
-| 0 | 1 | 300 | 2 | yes |
-| 0 | 2 | 301 | 3 | yes |
-| 0 | 3 | 302 | 4 | no |
-| 1 | 1 | 200 | 1 | yes |
-| 1 | 2 | 201 | 2 | yes |
-| 2 | 4 | 3 | 3 | no |
-
-The longest valid segment is [0, 2] with length 3.
-
-This shows that extending a segment can eventually break the condition even if shorter prefixes satisfy it, so all endpoints must be checked explicitly.
-
-### Example 2
-
-Input:
-
-```
-4
-0 0 0 0
-```
-
-All prefix sums are zero, so every segment has sum 0. Since 0 is never greater than 100 * length, no segment is valid. The answer is 0.
-
-This confirms that the algorithm correctly handles the absence of any qualifying segment without producing a false positive.
-
-## Complexity Analysis
-
-| Measure | Complexity | Explanation |
-| --- | --- | --- |
-| Time | O(n^2) | two nested loops over all segment endpoints, each check is O(1) using prefix sums |
-| Space | O(n) | prefix sum array stores n+1 integers |
-
-The quadratic complexity fits comfortably within limits for n up to 5000, since about 25 million iterations are acceptable in Python when each iteration is a constant-time arithmetic check.
-
-## Test Cases
-
-```python
-import sys, io
-
-def run(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
-
+def solve():
     n = int(input())
-    a = list(map(int, input().split()))
+    r = list(map(int, input().split()))
 
-    prefix = [0] * (n + 1)
+    pref = [0] * (n + 1)
     for i in range(n):
-        prefix[i + 1] = prefix[i] + a[i]
+        pref[i + 1] = pref[i] + r[i]
 
     ans = 0
+
     for l in range(n):
-        for r in range(l, n):
-            total = prefix[r + 1] - prefix[l]
-            length = r - l + 1
+        for rgt in range(l, n):
+            total = pref[rgt + 1] - pref[l]
+            length = rgt - l + 1
             if total > 100 * length:
-                ans = max(ans, length)
+                if length > ans:
+                    ans = length
 
-    return str(ans)
+    print(ans)
 
-# provided sample
-assert run("5\n100 200 1 1 1\n") == "3"
-
-# all zeros
-assert run("4\n0 0 0 0\n") == "0"
-
-# single large element
-assert run("3\n0 0 500\n") == "1"
-
-# no valid segment
-assert run("3\n10 20 30\n") == "0"
-
-# full valid segment
-assert run("3\n200 200 200\n") == "3"
+if __name__ == "__main__":
+    solve()
 ```
-
-| Test input | Expected output | What it validates |
-| --- | --- | --- |
-| all zeros | 0 | no segment satisfies condition |
-| single large element | 1 | minimal valid segment |
-| increasing small values | 0 | ensures no false positives |
-| all large values | full length | full range validity |
-
-## Edge Cases
-
-A critical edge case is when only single elements can satisfy the condition. For example, if the array contains a value like 150 among small values, only segments of length 1 centered on that element may be valid. The algorithm handles this naturally because it checks every (l, r) pair including r = l, so no special casing is needed.
-
-Another case is when a segment starts valid but becomes invalid when extended. For instance, a prefix may have a high initial value followed by many small values that dilute the average. Since the algorithm does not assume monotonicity and explicitly checks all endpoints, it correctly captures the maximum valid length instead of greedily extending or stopping early.
