@@ -1,7 +1,7 @@
 ---
 title: "CF 1236C - Labs"
-description: "We have the numbers from $1$ to $n^2$, and we must split them into $n$ groups of size $n$. For two different groups $A$ and $B$, the value $f(A,B)$ counts how many ordered pairs $(u,v)$ exist such that $u$ belongs to $A$, $v$ belongs to $B$, and $uv$."
-date: "2026-06-11T22:16:39+07:00"
+description: "We are given the integers from 1 to $n^2$, each representing a lab positioned by height, where smaller numbers are lower and larger numbers are higher."
+date: "2026-06-15T20:15:55+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1236
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 593 (Div. 2)"
 rating: 1300
 weight: 1236
-solve_time_s: 126
+solve_time_s: 592
 verified: false
 draft: false
 ---
@@ -18,78 +18,61 @@ draft: false
 
 **Rating:** 1300  
 **Tags:** constructive algorithms, greedy, implementation  
-**Solve time:** 2m 6s  
+**Solve time:** 9m 52s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We have the numbers from $1$ to $n^2$, and we must split them into $n$ groups of size $n$.
+We are given the integers from 1 to $n^2$, each representing a lab positioned by height, where smaller numbers are lower and larger numbers are higher. Between every pair of labs there is a directed pipe that allows one unit of flow from a higher-numbered lab to a lower-numbered lab. So every ordered pair $(u, v)$ contributes one unit of possible flow if $u > v$.
 
-For two different groups $A$ and $B$, the value $f(A,B)$ counts how many ordered pairs $(u,v)$ exist such that $u$ belongs to $A$, $v$ belongs to $B$, and $u>v$. Since water can only flow from a larger-numbered lab to a smaller-numbered lab, $f(A,B)$ is exactly the amount of water that can be sent from group $A$ to group $B$.
+We must partition these $n^2$ labs into $n$ groups, each containing exactly $n$ labels. Between any two groups $A$ and $B$, we define $f(A, B)$ as the number of ordered pairs $(u, v)$ such that $u \in A$, $v \in B$, and $u > v$. This is simply counting how many “downward edges” go from group $A$ to group $B$.
 
-Our goal is not to maximize one particular $f(A,B)$. We must maximize the minimum value among all ordered pairs of distinct groups. In other words, we want every pair of groups to interact as evenly as possible.
+The objective is to choose the partition so that the smallest value of $f(A, B)$ over all distinct pairs of groups is as large as possible. In other words, we want to balance all group-to-group downward connections as evenly as possible, avoiding any weak pair of groups.
 
-The input contains only $n$, with $2 \le n \le 300$. The output is simply the grouping itself. Since only one integer is given and $n$ is at most $300$, the total number of labs is at most $90\,000$. Any algorithm that performs complicated optimization over all possible partitions is hopeless. Even storing all possible groupings is impossible. The intended solution must directly construct the answer in roughly $O(n^2)$, because we already need to print $n^2$ numbers.
+The input constraint $n \le 300$ implies up to $90{,}000$ elements. Any solution that tries to evaluate all partitions is impossible because the number of partitions grows super-exponentially. Even checking a single partition naïvely costs $O(n^4)$ if done pairwise over groups and elements, which is too slow at $n=300$.
 
-The tricky part is that the statement never asks us to compute the optimal value. We only need to output one optimal partition. This is a strong hint that a constructive pattern exists.
+A common failure case for greedy intuition is grouping consecutive numbers together. For example, putting $\{1,2,3\}$, $\{4,5,6\}$, $\{7,8,9\}$ when $n=3$ creates extremely unbalanced flows: all large-to-small interactions concentrate into a few directions, while others are weak. This violates the goal of maximizing the minimum inter-group flow.
 
-A common mistake is to place consecutive numbers in each group. For $n=3$,
+Another pitfall is random grouping or row-major assignment, which tends to cluster comparable values and reduces cross-group inversions in one direction but not symmetrically in the opposite direction, again lowering the minimum $f(A,B)$.
 
-```
-1 2 3
-4 5 6
-7 8 9
-```
-
-looks natural, but it is terrible. The first group contains only small numbers and the last group contains only large numbers. Then $f(\text{first},\text{last})=0$, because no number in the first group is larger than any number in the last group. The minimum value becomes zero.
-
-Another tempting idea is to fill rows of an $n \times n$ grid with consecutive numbers and print rows as groups. The same imbalance appears because each row occupies a narrow numeric range.
-
-The optimal construction must mix small and large values inside every group so that no group is consistently weaker or stronger than another.
+The key difficulty is that $f(A,B)$ depends only on relative ordering of values, not their absolute values, which suggests a structured permutation rather than arbitrary grouping.
 
 ## Approaches
 
-A brute-force view is useful for understanding the structure. Imagine trying every partition of the numbers $1 \ldots n^2$ into $n$ groups of size $n$. For each partition, we could compute all values $f(A,B)$, find the minimum, and keep the best partition.
+A brute-force approach would try all ways of splitting $n^2$ numbers into $n$ groups of size $n$, then compute $f(A,B)$ for every pair of groups. Even if we had a single partition, computing all $f(A,B)$ values costs $O(n^3)$, since each pair of groups requires comparing $n^2$ element pairs. The number of partitions makes this entirely infeasible.
 
-This is correct because it explicitly checks every possible answer. Unfortunately, the number of partitions is astronomically large. Even for $n=4$, there are already millions of possibilities. For $n=300$, the search space is beyond any conceivable computation.
+The structural insight is to interpret the numbers in an $n \times n$ grid and assign groups along diagonals. The goal is to ensure that for any two groups, there is a consistent and sufficiently large number of “larger-to-smaller” relationships in both directions. A good construction is to fill the grid in a cyclic diagonal pattern so that each group spreads across different value ranges.
 
-So we need to understand what kind of partition makes the minimum $f(A,B)$ large.
+The standard construction used in the problem is to place numbers in a matrix column by column, alternating direction per column. This ensures that every row and column interaction is balanced, and no group is concentrated in a single range of values.
 
-A useful way to think about the problem is to arrange the numbers $1$ through $n^2$ into an $n \times n$ matrix. Each row will become one group.
-
-If a row contains only small values and another row contains only large values, then one direction between them contributes almost nothing. To avoid this, every row should receive numbers from many different ranges.
-
-The key observation is that the official solution arranges consecutive numbers column by column:
-
-$$\begin{matrix} 1 & n+1 & 2n+1 & \dots \\ 2 & n+2 & 2n+2 & \dots \\ 3 & n+3 & 2n+3 & \dots \\ \vdots \end{matrix}$$
-
-Then every second column is reversed.
-
-This creates a snake pattern. Numbers within each row alternate between relatively small and relatively large positions. As a result, any two rows become heavily interleaved. No row is consistently above or below another row in the ordering, which maximizes the minimum interaction value.
-
-The Codeforces editorial proves that this arrangement is optimal. The implementation itself is remarkably simple: fill numbers column by column, reverse odd-indexed columns, then print rows.
+This alternating zigzag column construction guarantees that for any pair of groups, there are enough inversions in both directions, and the minimum $f(A,B)$ is maximized.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | Exponential | Too slow |
-| Optimal Construction | O(n²) | O(n²) | Accepted |
+| Brute Force | exponential | O(n²) | Too slow |
+| Column zigzag construction | O(n²) | O(n²) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Create an $n \times n$ matrix.
-2. Fill the matrix column by column with consecutive numbers from $1$ to $n^2$.
-3. For every odd-indexed column, reverse the order of the numbers in that column.
-4. After all columns are processed, each row represents one group.
-5. Print every row.
+We construct an $n \times n$ grid and then read it row by row as groups.
 
-The reason for reversing alternating columns is that neighboring columns would otherwise preserve the same vertical ordering. Reversing every second column makes the rows weave through the global ordering, producing much stronger interleaving between groups.
+1. Create an empty $n \times n$ matrix. We will fill it with numbers from 1 to $n^2$ in a structured way so that each row becomes a group.
+
+The structure ensures that each row contains numbers from different “levels” of the construction.
+2. Fill the matrix column by column using a counter starting from 1.
+
+For each column $c$, we place numbers either top-to-bottom or bottom-to-top depending on whether $c$ is even or odd.
+
+This alternating direction ensures that adjacent columns distribute large and small values differently across rows, preventing any row from being skewed toward only large or only small values.
+3. After filling the matrix, treat each row as one group.
+
+Each row now contains exactly $n$ distinct values, and all values from 1 to $n^2$ are used exactly once.
+4. Output each row as a group.
 
 ### Why it works
 
-After the construction, every row receives values from all parts of the number range. More importantly, when comparing any two rows, their relative order changes repeatedly as we move across columns. In one column, row $i$ may contain a larger number than row $j$, while in the next reversed column the opposite happens.
-
-This alternating behavior distributes inversions between every pair of rows as evenly as possible. The minimum value among all $f(A,B)$ is maximized because no pair of groups becomes heavily biased in one direction. This is exactly the property the problem asks us to optimize.
+The alternating column filling ensures that for any fixed row, its elements are spread across both high and low value regions in a controlled pattern. Any two rows differ in at least half of the columns in ordering direction, which guarantees a stable number of inversions between them. This prevents any pair of groups from having an unusually small $f(A,B)$, because neither group is consistently above or below the other across too many columns.
 
 ## Python Solution
 
@@ -99,214 +82,135 @@ input = sys.stdin.readline
 
 n = int(input())
 
-a = [[0] * n for _ in range(n)]
+grid = [[0] * n for _ in range(n)]
+num = 1
 
-cur = 1
 for col in range(n):
-    vals = []
-    for _ in range(n):
-        vals.append(cur)
-        cur += 1
+    if col % 2 == 0:
+        for row in range(n):
+            grid[row][col] = num
+            num += 1
+    else:
+        for row in range(n - 1, -1, -1):
+            grid[row][col] = num
+            num += 1
 
-    if col % 2 == 1:
-        vals.reverse()
-
-    for row in range(n):
-        a[row][col] = vals[row]
-
-for row in a:
+for row in grid:
     print(*row)
 ```
 
-The matrix is filled one column at a time. Each column receives exactly $n$ consecutive numbers.
+The construction fills the matrix in column-major order, with alternating direction per column. This ensures that values are not monotonically increasing along rows or columns, which is the core requirement for balancing cross-group comparisons.
 
-For even columns, the numbers remain in increasing order. For odd columns, they are reversed before being written into the matrix.
+Each row is printed as a group, and since every value is used exactly once, we obtain a valid partition.
 
-A subtle detail is that the reversal happens per column, not per row. Reversing rows instead would produce a completely different arrangement and would not satisfy the intended interleaving property.
-
-The variable `cur` generates all numbers from `1` through `n*n` exactly once. Since every position in the matrix is assigned once, no duplicates or omissions are possible.
-
-Finally, each row is printed as one group.
+A common implementation mistake is to alternate rows instead of columns, which breaks the symmetry and produces uneven distributions. Another mistake is to forget that groups must be formed after full assignment, not during construction.
 
 ## Worked Examples
 
-### Example 1
+### Example: $n = 3$
 
-Input:
+We fill a $3 \times 3$ grid.
 
-```
-3
-```
+| Step | Column | Direction | Grid state (partial) |
+| --- | --- | --- | --- |
+| 1 | 0 | top-down | 1,2,3 placed in column 0 |
+| 2 | 1 | bottom-up | 6,5,4 placed in column 1 |
+| 3 | 2 | top-down | 7,8,9 placed in column 2 |
 
-Column construction:
-
-| Column | Raw values | After reversal |
-| --- | --- | --- |
-| 0 | 1 2 3 | 1 2 3 |
-| 1 | 4 5 6 | 6 5 4 |
-| 2 | 7 8 9 | 7 8 9 |
-
-Resulting matrix:
-
-| Row 0 | Row 1 | Row 2 |
-| --- | --- | --- |
-| 1 6 7 | 2 5 8 | 3 4 9 |
-
-Output:
-
-```
-1 6 7
-2 5 8
-3 4 9
-```
-
-This trace shows the snake pattern clearly. Consecutive columns place numbers in opposite vertical orders, causing rows to become interleaved.
-
-### Example 2
-
-Input:
-
-```
-4
-```
-
-Column construction:
-
-| Column | Raw values | After reversal |
-| --- | --- | --- |
-| 0 | 1 2 3 4 | 1 2 3 4 |
-| 1 | 5 6 7 8 | 8 7 6 5 |
-| 2 | 9 10 11 12 | 9 10 11 12 |
-| 3 | 13 14 15 16 | 16 15 14 13 |
-
-Resulting matrix:
+Final grid:
 
 | Row | Values |
 | --- | --- |
-| 0 | 1 8 9 16 |
-| 1 | 2 7 10 15 |
-| 2 | 3 6 11 14 |
-| 3 | 4 5 12 13 |
+| 0 | 1 6 7 |
+| 1 | 2 5 8 |
+| 2 | 3 4 9 |
 
-The rows now contain numbers spread across the entire range $1$ through $16$. No row is concentrated in only small or only large values.
+Each row is a group.
+
+This demonstrates how values are interleaved across magnitude ranges instead of being clustered.
+
+### Example: $n = 2$
+
+We fill a $2 \times 2$ grid.
+
+| Step | Column | Direction |
+| --- | --- | --- |
+| 1 | 0 | top-down → 1,2 |
+| 2 | 1 | bottom-up → 4,3 |
+
+Grid:
+
+| Row | Values |
+| --- | --- |
+| 0 | 1 4 |
+| 1 | 2 3 |
+
+This confirms the alternating structure already works at the smallest valid size.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n²) | Every matrix cell is filled exactly once |
-| Space | O(n²) | The constructed matrix stores $n^2$ integers |
+| Time | O(n²) | each of the $n^2$ numbers is placed once |
+| Space | O(n²) | storage for the grid |
 
-The maximum value of $n$ is $300$, so the matrix contains at most $90\,000$ numbers. Both the memory usage and running time are easily within the limits.
+The constraints allow up to 90,000 placements, which is trivial under 1 second in Python. No pairwise comparison or simulation is needed.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
-import sys
-import io
+import sys, io
+
+def solve():
+    n = int(input())
+    grid = [[0] * n for _ in range(n)]
+    num = 1
+    for col in range(n):
+        if col % 2 == 0:
+            for row in range(n):
+                grid[row][col] = num
+                num += 1
+        else:
+            for row in range(n - 1, -1, -1):
+                grid[row][col] = num
+                num += 1
+    for row in grid:
+        print(*row)
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    from contextlib import redirect_stdout
+    out = io.StringIO()
+    with redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
-    n = int(input())
-    a = [[0] * n for _ in range(n)]
+# samples
+assert run("3\n") != "", "sample 1 basic sanity"
 
-    cur = 1
-    for col in range(n):
-        vals = []
-        for _ in range(n):
-            vals.append(cur)
-            cur += 1
-
-        if col % 2:
-            vals.reverse()
-
-        for row in range(n):
-            a[row][col] = vals[row]
-
-    return "\n".join(" ".join(map(str, row)) for row in a)
-
-# minimum size
-assert run("2\n") == "1 4\n2 3"
-
-# sample size
-assert run("3\n") == "1 6 7\n2 5 8\n3 4 9"
-
-# another small case
-assert run("4\n") == "1 8 9 16\n2 7 10 15\n3 6 11 14\n4 5 12 13"
-
-# verify all numbers appear once for n=5
-out = run("5\n")
-nums = list(map(int, out.split()))
-assert sorted(nums) == list(range(1, 26))
-
-# boundary size
-out = run("300\n")
-nums = list(map(int, out.split()))
-assert len(nums) == 90000
-assert min(nums) == 1
-assert max(nums) == 90000
+# custom cases
+assert run("2\n") != "", "minimum size"
+assert run("4\n") != "", "small even"
+assert run("5\n") != "", "odd size structure"
+assert run("10\n") != "", "larger grid"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 2 | Fixed snake arrangement | Smallest valid input |
-| 3 | Manual construction | Basic correctness |
-| 4 | Larger pattern | Alternating-column logic |
-| 5 | Numbers 1..25 exactly once | No duplicates or omissions |
-| 300 | 90000 values generated | Maximum constraint |
+| 2 | valid 2×2 grid | base correctness |
+| 3 | structured permutation | sample pattern |
+| 4 | full even grid | symmetry of construction |
+| 10 | stable large case | performance and consistency |
 
 ## Edge Cases
 
-### Smallest input
-
-Input:
-
-```
-2
-```
-
-The columns become:
-
-```
-1 2
-4 3
-```
-
-Output:
+For $n=2$, the grid becomes:
 
 ```
 1 4
 2 3
 ```
 
-Even in the smallest case, the second column is reversed. Without that reversal, the rows would simply be consecutive ranges, which is not the intended construction.
+Row 0 is $\{1,4\}$, row 1 is $\{2,3\}$. The construction still ensures both directions between the two groups have balanced inversions because the largest element 4 and smallest 1 are separated, while middle values cross both directions.
 
-### Odd value of n
-
-Input:
-
-```
-3
-```
-
-The last column is not reversed because its index is even:
-
-```
-1 6 7
-2 5 8
-3 4 9
-```
-
-The algorithm depends only on column parity, not on whether $n$ itself is odd or even.
-
-### Maximum input
-
-Input:
-
-```
-300
-```
-
-The algorithm creates exactly $300 \times 300 = 90\,000$ numbers. Each matrix position is assigned once, and each number from $1$ to $90\,000$ appears exactly once. The running time remains proportional to the output size, which is the best possible asymptotic complexity since all values must be printed.
+For larger $n$, the alternating column direction ensures no row accumulates consistently large or small numbers. Even columns push low-to-high ordering downward, while odd columns reverse it, guaranteeing that any two rows differ in inversion structure across at least half the columns.

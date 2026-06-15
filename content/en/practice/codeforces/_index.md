@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8407 problems, 4074 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8409 problems, 4076 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8407 problems, 4074 verified.**
+**1472 contests, 8409 problems, 4076 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 837 problems, 503 verified
+## 2019 — 159 contests, 839 problems, 505 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -645,7 +645,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1230](1230/) | [Codeforces Round 588 (Div. 2)](https://codeforces.com/contest/1230) | 2 | 2/2 | Div. 2 | 800-1000 |
 | [1231](1231/) | [Dasha Code Championship - Novosibirsk Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1231) | 2 | 0/2 | Special | 1100-2200 |
 | [1234](1234/) | [Codeforces Round 590 (Div. 3)](https://codeforces.com/contest/1234) | 6 | 5/6 | Div. 3 | 800-2000 |
-| [1236](1236/) | [Codeforces Round 593 (Div. 2)](https://codeforces.com/contest/1236) | 4 | 1/4 | Div. 2 | 800-3000 |
+| [1236](1236/) | [Codeforces Round 593 (Div. 2)](https://codeforces.com/contest/1236) | 6 | 3/6 | Div. 2 | 800-3000 |
 | [1237](1237/) | [Codeforces Global Round 5](https://codeforces.com/contest/1237) | 5 | 2/5 | Global | 1000-3500 |
 | [1238](1238/) | [Educational Codeforces Round 74 (Rated for Div. 2)](https://codeforces.com/contest/1238) | 4 | 2/4 | Div. 2 | 900-2200 |
 | [1239](1239/) | [Codeforces Round 594 (Div. 1)](https://codeforces.com/contest/1239) | 4 | 1/4 | Div. 1 | 1700-3400 |

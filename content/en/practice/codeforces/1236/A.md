@@ -1,7 +1,7 @@
 ---
 title: "CF 1236A - Stones"
-description: "We are given three piles of stones with sizes $a$, $b$, and $c$. Alice starts with zero collected stones and repeatedly performs operations that move stones from these piles into her collection. There are two possible moves."
-date: "2026-06-13T19:20:21+07:00"
+description: "We are given three piles of stones. From these piles, Alice can repeatedly perform two kinds of moves. One move consumes one stone from the first pile and two stones from the second pile. The other move consumes one stone from the second pile and two stones from the third pile."
+date: "2026-06-15T20:11:12+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "greedy", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1236
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 593 (Div. 2)"
 rating: 800
 weight: 1236
-solve_time_s: 535
-verified: false
+solve_time_s: 309
+verified: true
 draft: false
 ---
 
@@ -18,61 +18,54 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force, greedy, math  
-**Solve time:** 8m 55s  
-**Verified:** no  
+**Solve time:** 5m 9s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given three piles of stones with sizes $a$, $b$, and $c$. Alice starts with zero collected stones and repeatedly performs operations that move stones from these piles into her collection.
+We are given three piles of stones. From these piles, Alice can repeatedly perform two kinds of moves. One move consumes one stone from the first pile and two stones from the second pile. The other move consumes one stone from the second pile and two stones from the third pile. Each move also contributes to her collected score: every stone removed counts toward her total.
 
-There are two possible moves. The first move consumes one stone from pile one and two stones from pile two, and in exchange Alice gains all three removed stones. The second move consumes one stone from pile two and two stones from pile three, again yielding three stones total. The process stops when no operation can be performed.
+The process is fully flexible, but every action reduces availability for future actions because both operations compete for stones in the second pile. The task is to choose a sequence of moves that maximizes the total number of stones removed.
 
-The goal is to maximize the total number of stones Alice can collect.
+The input size is small, with each pile containing at most 100 stones and at most 100 test cases. This immediately rules out any need for complex graph search or dynamic programming over large states. Even a cubic or quadratic enumeration over possible move counts is safe under the constraints.
 
-The constraints are small: each pile size is at most 100 and there are at most 100 test cases. This immediately rules out any need for complex data structures or optimization techniques. Even a simulation over all states would be feasible in principle, but the structure of the operations suggests a much simpler greedy reasoning.
+A subtle issue comes from the shared middle pile. Both operations consume stones from it, so a greedy strategy like “always take as many of the first operation as possible” can block better use of the second operation later.
 
-A subtle edge case appears when one pile is abundant but cannot be fully exploited because of a bottleneck in the previous pile. For example, if $a = 0$, $b = 1$, $c = 100$, no operation can use the third pile at all, so the answer is 0 despite a large supply in $c$. Similarly, if $b$ is small, it limits both operations, and naive attempts that focus only on pairing $b$ with $c$ or $a$ independently will overcount.
-
-Another failure mode comes from greedily exhausting one operation without considering its impact on enabling the other. Since both operations consume from $b$, the order matters if handled incorrectly.
+For example, if we aggressively use the first operation early, we might deplete the second pile in a way that prevents pairing with the third pile, losing potentially many moves of the second type. This interdependence is the core difficulty: local greed on one operation can reduce global optimality.
 
 ## Approaches
 
-A brute-force strategy would treat each state as a triple $(a,b,c)$ and recursively try both operations whenever possible. Each move reduces the total number of stones in the system, so the state space is finite. However, even though the constraints are small, this approach is unnecessary because the structure has a strong monotonic property: every operation always consumes stones from higher-index piles in a fixed direction, and never restores resources.
+A brute-force way to think about the problem is to simulate all possible sequences of operations. At every step, we choose either the first or second operation if it is valid. This forms a search tree where each node branches into up to two states. However, the depth can be as large as 200 operations in worst cases, and the branching factor makes this exponential, quickly becoming infeasible even though the input size is small.
 
-The key observation is that pile $b$ is the only shared resource between the two operations. It acts as a bridge: the first operation consumes $b$ heavily (2 units), while the second consumes it lightly (1 unit). This creates a natural dependency chain from $c \rightarrow b \rightarrow a$.
+The key observation is that we do not actually care about the order of operations, only about how many times each operation is used. If we fix that the first operation is used x times and the second operation is used y times, then feasibility depends only on resource constraints:
 
-Instead of simulating choices, we can think in terms of how many times we use each operation. Let $x$ be the number of times we apply the second operation (using $b,c$), and $y$ be the number of times we apply the first operation (using $a,b$). The constraints become:
+The first pile must satisfy x ≤ a, the third pile must satisfy 2y ≤ c, and the second pile must satisfy 2x + y ≤ b.
 
-$c \ge 2x$, $b \ge x + 2y$, $a \ge y$.
+Each operation contributes exactly 3 stones to the answer, so the goal becomes maximizing 3(x + y).
 
-Each operation always yields exactly 3 stones, so maximizing collected stones is equivalent to maximizing $3(x+y)$, or simply maximizing $x+y$.
+This reduces the problem to checking all valid values of x and computing the best corresponding y. Since x is bounded by at most 100, we can iterate over all possibilities efficiently.
 
-To maximize the number of operations, we want to prioritize the operation that consumes fewer bottleneck resources first. The second operation is strictly more efficient in terms of consuming $b$ per stone gained from $c$, so we should perform it as many times as possible before using $b$ for the first operation.
-
-Once the second operation is exhausted, we greedily use the first operation with whatever remains.
-
-This greedy ordering is sufficient because once $b$ is reduced, it cannot be recovered, and delaying the second operation would only reduce the number of possible uses of $c$.
+The brute-force idea of exploring sequences becomes a much simpler enumeration over counts, and the dependency between operations is handled cleanly by the constraint on the second pile.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (state search) | $O(3^{a+b+c})$ worst-case exponential | $O(a+b+c)$ recursion | Too slow |
-| Greedy with ordering | $O(1)$ per test | $O(1)$ | Accepted |
+| Brute force sequence search | Exponential | O(depth) | Too slow |
+| Enumerate operation counts | O(a) per test case | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We compute the answer independently for each test case.
+1. Fix the number of times we apply the first operation. Call this value x. We can try every x from 0 up to a because the first pile limits how many times we can use it.
+2. After choosing x, we account for its consumption of the second pile. The second pile loses 2x stones, so the remaining amount is b - 2x. This remaining resource determines how many second operations are still possible.
+3. Compute how many second operations can be performed. Each second operation needs one stone from the second pile and two from the third pile, so the maximum is limited by both remaining second-pile stones and available triples in the third pile. This gives y = min(b - 2x, c // 2).
+4. Compute the total stones collected for this configuration as 3(x + y). We keep track of the maximum value across all x.
+5. After testing all feasible x values, output the best result.
 
-1. First determine how many times the second operation can be applied. This is limited by pile $c$, since each use requires two stones from $c$. So we compute $x = \min(b, c // 2)$ only in terms of feasibility, but we must also consider that each use consumes one unit of $b$, so $x = \min(b, c // 2)$. This step prioritizes using $c$ before it becomes unusable.
-2. After performing $x$ second operations, update the remaining resources: $b := b - x$ and $c := c - 2x$. The remaining value of $c$ is irrelevant for further operations.
-3. Now compute how many times the first operation can be applied using remaining $a$ and $b$. Each use consumes one $a$ and two $b$, so $y = \min(a, b // 2)$.
-4. The final answer is $3(x + y)$, since each operation contributes exactly three stones to Alice’s collection.
+The key idea behind trying all x values is that once x is fixed, the remaining structure becomes completely greedy and deterministic for y, so no further decision-making is needed.
 
 ### Why it works
 
-The core invariant is that pile $c$ is only useful through the second operation, and once the second operation is no longer possible, $c$ becomes irrelevant. Similarly, pile $a$ is only consumed by the first operation and never influences any other choice.
-
-The only coupling occurs through $b$, which is shared. Because the second operation uses strictly fewer units of $b$ per unit of progress in the system (it unlocks consumption of $c$ without needing $a$), it is always optimal to prioritize it. Any reordering that delays second-operation usage can only reduce the maximum possible consumption of $c$, while never increasing access to $a$. Therefore, the greedy split between the two operations is optimal.
+The second pile is the only shared resource between both operations, so the entire optimization reduces to deciding how much of it is reserved for the first operation versus the second. Once that split is fixed by choosing x, both operations independently consume different resources, making the remainder problem greedy and linear. This guarantees that no interleaving of operations can outperform a fixed allocation of x and y.
 
 ## Python Solution
 
@@ -80,52 +73,48 @@ The only coupling occurs through $b$, which is shared. Because the second operat
 PythonRun
 ```
 
-The solution directly applies the greedy split described earlier. The only subtle point is that we must update $b$ after using the second operation before computing the first operation, since both compete for the same resource.
+The solution iterates over all possible counts of the first operation. The early break is safe because increasing x only reduces remaining capacity in the second pile, so beyond a certain point no valid configurations exist.
 
-A common mistake is computing both $x$ and $y$ independently from the original $b$, which overcounts usage of pile $b$.
+For each x, the computation of y is greedy and does not require further branching because both constraints on the second operation are independent and monotonic.
 
 ## Worked Examples
 
 ### Example 1
 
-Input:
+Input: `3 4 5`
 
-```
+We try all values of x.
 
-```
+| x | b left after x | y = min(b-left, c//2) | total |
+| --- | --- | --- | --- |
+| 0 | 4 | 2 | 6 |
+| 1 | 2 | 2 | 9 |
+| 2 | 0 | 0 | 6 |
+| 3 | invalid (b exhausted) | - | - |
 
-We track the process:
-
-| Step | a | b | c | x (second ops) | b after | y (first ops) | total |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| initial | 3 | 4 | 5 | 0 | 4 | 0 | 0 |
-| apply second ops | 3 | 4 | 5 | 2 | 2 | 0 | 6 |
-| apply first ops | 3 | 2 | 1 | 2 | 2 | 1 | 9 |
-
-We first apply the second operation twice, consuming most of $c$ while carefully spending $b$. After that, only a small portion of $b$ remains, which allows one application of the first operation. The final result is 9.
+The best configuration is x = 1 and y = 2, giving 9 stones. This shows that balancing usage of the second pile is more important than maximizing either operation independently.
 
 ### Example 2
 
-Input:
+Input: `1 0 5`
 
-```
+| x | b left | y | total |
+| --- | --- | --- | --- |
+| 0 | 0 | 0 | 0 |
+| 1 | invalid | - | - |
 
-```
+No operation of the first type is possible because the second pile is empty, and even the second type cannot be started because it requires at least one stone in the second pile. The answer is 0.
 
-| Step | a | b | c | x | b after | y | total |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| initial | 1 | 0 | 5 | 0 | 0 | 0 | 0 |
-
-No second operation is possible because $b = 0$, and no first operation is possible either. The answer is 0. This shows that large $c$ is useless if the intermediate bottleneck $b$ is missing.
+This confirms that both operations depend critically on the middle pile being nonzero.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(t)$ | Each test case is processed with a constant number of arithmetic operations |
-| Space | $O(1)$ | Only a fixed number of variables are used |
+| Time | O(a) per test case | We enumerate all possible values of x up to a |
+| Space | O(1) | Only a few integer variables are used |
 
-The constraints allow up to 100 test cases with small values, so a constant-time per test solution is easily sufficient.
+The constraints keep a, b, and c at most 100, so at worst we perform about 10,000 iterations across all test cases, which is easily within limits.
 
 ## Test Cases
 
@@ -135,15 +124,11 @@ PythonRun
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 0 0 0 | 0 | all piles empty |
-| 0 3 10 | 6 | only second operation chain |
-| 5 10 0 | 15 | only first operation chain |
-| 3 6 6 | 15 | mixed dependency between both operations |
+| 0 0 0 | 0 | minimal edge case |
+| 10 10 10 | 30 | balanced large symmetric case |
+| 5 1 10 | 3 | middle pile bottleneck |
+| 0 4 10 | 6 | only second operation possible |
 
 ## Edge Cases
 
-When $a = 0$, the first operation is impossible regardless of how much remains in $b$ or $c$. The algorithm handles this because $y = \min(a, b // 2)$ immediately becomes zero, preventing any invalid usage.
-
-When $b < 2$, both operations are severely restricted. The second operation may still run once if $c \ge 2$, but after subtracting $b$, the first operation cannot proceed. The greedy update of $b$ ensures no overuse occurs.
-
-When $c$ is large but $b$ is small, the algorithm prioritizes converting $c$ into usable intermediate value first. Once $b$ is exhausted, no further use of $c$ is possible, which matches the real constraint structure.
+A key edge case occurs when the second pile is too small to support any first operation but still large enough to enable the second operation. In input like `a = 5, b = 1, c = 10`, the first operation is completely blocked, but the second operation still yields value. The algorithm handles this naturally because the loop over x immediately restricts to x = 0, and y
