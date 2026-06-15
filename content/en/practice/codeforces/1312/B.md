@@ -1,7 +1,7 @@
 ---
 title: "CF 1312B - Bogosort"
-description: "We are given several arrays, and for each one we are allowed to reorder its elements arbitrarily. After reordering, we assign each value to an index from 1 to n. The array is considered valid if no two positions i and j create a collision under the expression j − a[j]."
-date: "2026-06-11T17:13:01+07:00"
+description: "We are given an array of integers and are allowed to permute it arbitrarily. After rearranging, we assign each value to a position starting from 1. The array is considered valid if no two positions share the same value of the expression i - a[i]."
+date: "2026-06-16T06:49:16+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 1312
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Educational Codeforces Round 83 (Rated for Div. 2)"
 rating: 1000
 weight: 1312
-solve_time_s: 147
+solve_time_s: 287
 verified: false
 draft: false
 ---
@@ -18,214 +18,121 @@ draft: false
 
 **Rating:** 1000  
 **Tags:** constructive algorithms, sortings  
-**Solve time:** 2m 27s  
+**Solve time:** 4m 47s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given several arrays, and for each one we are allowed to reorder its elements arbitrarily. After reordering, we assign each value to an index from 1 to n. The array is considered valid if no two positions i and j create a collision under the expression j − a[j]. In other words, when we compute the value “position minus element value” for every index, all these results must be distinct.
+We are given an array of integers and are allowed to permute it arbitrarily. After rearranging, we assign each value to a position starting from 1. The array is considered valid if no two positions share the same value of the expression `i - a[i]`. In other words, if we look at each element as defining a “diagonal index” computed from its position minus its value, all these diagonal indices must be distinct.
 
-A useful way to reinterpret the condition is that every element induces a key equal to index − value, and we are not allowed to have two elements sharing the same key after rearrangement. The task is to permute the array so that all these derived keys differ.
+The task is to decide how to reorder the array so that this uniqueness condition holds. The problem guarantees that at least one valid ordering always exists.
 
-The constraints are very small: up to 100 test cases and array length at most 100. This immediately rules out anything beyond quadratic or cubic brute force if we were not careful, but more importantly it suggests a constructive pattern exists rather than a search-based solution. Since the problem guarantees that a valid arrangement always exists, we do not need to check feasibility, only construct one.
+The constraints are small: at most 100 test cases, each array has length at most 100, and values are also bounded by 100. This immediately tells us that any solution with quadratic behavior per test case is easily fast enough. Even a cubic approach would still be fine in the worst case, but anything involving exponential search or backtracking over permutations would be unnecessary.
 
-A naive approach would try all permutations of the array and test the condition. That would require n! permutations per test, and each check costs O(n), which becomes impossible even for n = 10.
+A subtle point is that the condition depends on both index and value. A naive interpretation might suggest that equal values are problematic, but that is not the case. Two identical values are fine as long as they are placed in positions that produce different `i - a[i]` values.
 
-Another naive idea is to randomly shuffle until the condition is satisfied. While the statement is titled “Bogosort”, this is intentionally misleading; randomness has no guarantee of termination in reasonable time.
-
-A more subtle pitfall is assuming that the original array or its sorted version always works. For example, in [1, 1, 3, 5], keeping it unchanged can violate the condition because repeated values often create repeated index − value results when placed in arithmetic progression positions.
-
-The key challenge is to avoid collisions of the form i − a[i] = j − a[j], which essentially means avoiding equal differences between position and value after assignment.
+A failure case for naive thinking would be leaving the array unchanged. For example, if we take `[1, 1, 3, 5]` as given, the original ordering might violate the condition because duplicates can align in a way that produces repeated `i - a[i]`. Another misleading case is assuming sorting always works. Sorting `[3, 2, 1]` gives `[1, 2, 3]`, but this does not guarantee distinct `i - a[i]` values in general, so a different construction is required.
 
 ## Approaches
 
-The brute-force perspective is straightforward. We permute the array, compute all values i − a[i], and check whether they are unique. This works because it directly enforces the condition. However, the number of permutations is n! and even at n = 10 this is already millions of states, and at n = 100 it is completely infeasible. The check itself is linear, so total work would explode beyond any limit.
+The key observation is that we do not need to reason about values interacting with each other directly. The condition only constrains the differences between index and value. If we want all `i - a[i]` to be distinct, we can control it by carefully separating large values from small values.
 
-The structural insight comes from rewriting the condition. Instead of focusing on preventing equal i − a[i], we can try to force all such values into a simple controlled pattern. If we assign values in a way that prevents alignment between index ordering and value ordering, we can eliminate collisions deterministically.
+A brute-force approach would try all permutations of the array and check the condition for each one. This is correct because it exhaustively searches all valid reorderings. However, the number of permutations grows as `n!`, which for `n = 100` is astronomically large. Even for `n = 10`, it becomes borderline in practice, so this approach is completely infeasible.
 
-A key observation is that collisions arise when two elements maintain the same relative offset between position and value. If we break alignment between positions and magnitudes by permuting the array in a way that avoids monotonic structure, we eliminate repeated offsets.
+The structural insight is that we can avoid collisions by ensuring that larger values are placed in earlier positions and smaller values are placed later. If we sort the array in decreasing order, then assign it in that order, the expression `i - a[i]` tends to decrease as well, but more importantly, no two elements can produce the same difference because equal values are separated and their indices are strictly increasing.
 
-A simple constructive trick is to sort the array and then rotate it by at least one position. This ensures that large values are moved away from their original index alignment. In fact, any cyclic shift works because it guarantees that no element stays in its original position relative to sorted order, and thus avoids equal differences created by aligned pairs.
+The deeper reason this works is that if values are sorted descending, then differences between adjacent elements in the constructed sequence cannot collapse into equality unless both index and value shifts align perfectly, which cannot happen across a strictly ordered arrangement of values under arbitrary duplicates.
 
-For this problem, a direct and sufficient construction is to sort the array and then output it in a shifted order. Since values are bounded and existence is guaranteed, this rearrangement always produces a valid configuration.
+This reduces the problem from searching permutations to a single sorting step.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n! · n) | O(n) | Too slow |
-| Sorting + construction | O(n log n) | O(n) | Accepted |
+| Brute Force | O(n!) | O(n) | Too slow |
+| Sort Descending | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We construct a valid permutation using sorting followed by a deterministic rearrangement.
-
-1. Sort the array in non-decreasing order. This gives a structured baseline where we understand the distribution of values.
-
-Sorting is useful because it makes repeated values contiguous and exposes symmetry that we will break.
-2. Split the sorted array into two parts, for example the lower half and upper half.
-
-The idea is to ensure that small and large values are separated, preventing systematic alignment.
-3. Interleave or shift elements so that no element stays near its original sorted position.
-
-A simple and effective method is to output all elements in a shifted cyclic order, for example moving the first element to the end.
-4. Output the resulting array as the answer.
-
-This construction ensures that elements which were close in sorted order are now separated in index space, reducing the risk of equal index minus value expressions.
+1. Read the array for the current test case. The goal is to construct any permutation that avoids repeated values of `i - a[i]`.
+2. Sort the array in descending order. This ensures that larger values are assigned earlier positions in the final arrangement, which spreads out the computed differences.
+3. Output the sorted array as the final arrangement. No further transformation is needed because the sorted order already satisfies the condition.
 
 ### Why it works
 
-The expression i − a[i] depends on both index and value. In a sorted array, nearby values tend to create structured differences when aligned with consecutive indices. By shifting or permuting away from identity alignment, we ensure that identical values do not appear in positions that preserve equal offsets. The constructed permutation breaks the monotonic correlation between indices and values, which is the only way collisions can systematically form.
-
-Since every value is placed in a position different from its sorted rank, no two elements preserve identical index-value offset relationships, and thus all i − a[i] values become distinct.
+Once the array is sorted in non-increasing order, elements are arranged so that larger values appear at smaller indices. If two positions `i < j` had the same value of `i - a[i] = j - a[j]`, then rearranging gives `a[i] - a[j] = i - j`. Since `i - j` is negative, this would require `a[i] < a[j]`, contradicting the fact that the array is non-increasing. Therefore no equality can occur, and all values of `i - a[i]` must be distinct.
 
 ## Python Solution
 
-```python
-import sys
-input = sys.stdin.readline
-
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    a = list(map(int, input().split()))
-    
-    a.sort()
-    
-    if n == 1:
-        print(a[0])
-        continue
-    
-    # cyclic shift by 1
-    res = a[1:] + a[:1]
-    print(*res)
+```
+PythonRun
 ```
 
-The implementation relies on a single idea: sorting followed by a cyclic shift. Sorting organizes values so that structure is visible, and shifting ensures no element remains aligned with its original rank position.
+The implementation is direct. Each test case is processed independently. Sorting in reverse order is the only transformation applied. The output is printed immediately.
 
-The edge case n = 1 is handled separately since shifting would be meaningless but the array is trivially valid.
-
-The most subtle part is ensuring we do not forget that a full rotation still preserves validity under this construction. The first element is simply moved to the end, breaking direct alignment between index and sorted value.
+A common mistake would be forgetting that the sort must be descending rather than ascending. Ascending order can create collisions in the `i - a[i]` expression when small values accumulate early in the array.
 
 ## Worked Examples
 
 ### Example 1
 
-Input array is `[1, 1, 3, 5]`.
+Input array: `[1, 1, 3, 5]`
 
-After sorting, we get `[1, 1, 3, 5]`.
+Sorted descending: `[5, 3, 1, 1]`
 
-We apply a cyclic shift:
+| i | a[i] | i - a[i] |
+| --- | --- | --- |
+| 1 | 5 | -4 |
+| 2 | 3 | -1 |
+| 3 | 1 | 2 |
+| 4 | 1 | 3 |
 
-| Step | Array |
-| --- | --- |
-| Sorted | 1 1 3 5 |
-| Shifted | 1 3 5 1 |
+All values are distinct, so the arrangement is valid.
 
-Now we check index − value conceptually:
-
-Index 1: 1 − 1 = 0
-
-Index 2: 2 − 3 = -1
-
-Index 3: 3 − 5 = -2
-
-Index 4: 4 − 1 = 3
-
-All values are distinct, confirming validity.
-
-This shows that even with duplicates, breaking adjacency in sorted order is sufficient.
+This trace shows how duplicates do not interfere because they are placed at different indices producing different differences.
 
 ### Example 2
 
-Input array is `[3, 2, 1, 5, 6, 4]`.
+Input array: `[3, 2, 1, 5, 6, 4]`
 
-Sorted array becomes `[1, 2, 3, 4, 5, 6]`.
+Sorted descending: `[6, 5, 4, 3, 2, 1]`
 
-After shift we get `[2, 3, 4, 5, 6, 1]`.
+| i | a[i] | i - a[i] |
+| --- | --- | --- |
+| 1 | 6 | -5 |
+| 2 | 5 | -3 |
+| 3 | 4 | -1 |
+| 4 | 3 | 1 |
+| 5 | 2 | 3 |
+| 6 | 1 | 5 |
 
-| Step | Array |
-| --- | --- |
-| Sorted | 1 2 3 4 5 6 |
-| Shifted | 2 3 4 5 6 1 |
-
-The differences i − a[i] become:
-
-1 − 2 = -1
-
-2 − 3 = -1 (at first glance collision risk, but positions differ after full mapping check shows distinct due to full structure shift across test cases context)
-
-This example highlights that the construction relies on global structure across the permutation rather than pairwise local checking.
+Again, all values are distinct. The structure of strictly decreasing values ensures a strictly increasing sequence of differences.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
 | Time | O(n log n) | Sorting dominates each test case |
-| Space | O(n) | Storing array and output |
+| Space | O(n) | Storage for the array |
 
-The constraints allow up to 100 elements per test case, so sorting is trivial in terms of runtime. Even 100 test cases results in negligible total work.
+The constraints allow up to 100 elements per test case, so sorting is effectively instantaneous. Even with 100 test cases, the total work is negligible.
 
 ## Test Cases
 
-```python
-import sys, io
-
-def solve(inp: str) -> str:
-    sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
-    
-    t = int(input())
-    out = []
-    for _ in range(t):
-        n = int(input())
-        a = list(map(int, input().split()))
-        a.sort()
-        if n == 1:
-            out.append(str(a[0]))
-        else:
-            res = a[1:] + a[:1]
-            out.append(" ".join(map(str, res)))
-    return "\n".join(out)
-
-# provided sample
-assert solve("""3
-1
-7
-4
-1 1 3 5
-6
-3 2 1 5 6 4
-""").strip() != "", "sample check"
-
-# all equal
-assert solve("""1
-5
-2 2 2 2 2
-""").strip() != "", "all equal"
-
-# minimum size
-assert solve("""1
-1
-42
-""").strip() == "42"
-
-# increasing
-assert solve("""1
-4
-1 2 3 4
-""").count(" ") == 3
+```
+PythonRun
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single element | same element | base case correctness |
-| all equal values | valid permutation | duplicates handling |
-| sorted increasing | shifted order | general construction behavior |
+| single element | itself | base case correctness |
+| all equal | unchanged multiset | duplicates safe handling |
+| ascending input | fully reversed | sorting effect |
+| mixed duplicates | stable multiset ordering | general case robustness |
 
 ## Edge Cases
 
-For n = 1, there is no interaction between indices, so the condition is vacuously true. The algorithm directly outputs the single value without attempting a shift.
+When all elements are identical, any permutation produces identical values of `i - a[i]` only if indices coincide, which they do not, so the condition remains valid. Sorting keeps the array unchanged, and the result is trivially correct.
 
-For arrays with many repeated values, such as [2, 2, 2, 2], sorting produces identical sequences, but shifting still produces a different positional assignment. Since the constraint depends on index alignment, even identical values remain safe as long as they are not placed in identical relative positions, which the shift guarantees.
+When the array is already increasing, reversing it produces a strictly decreasing sequence, which maximizes separation between values and prevents any equality of `i - a[i]`.
 
-For already sorted arrays, the shift ensures that no element keeps its original index-position relationship, which is the main source of collisions in structured inputs.
+When duplicates exist in nontrivial positions, the construction ensures they are spread across different indices. Even though values repeat, indices differ enough that the computed differences cannot match across two positions in a way that violates ordering.
