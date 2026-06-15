@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8349 problems, 4028 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8350 problems, 4028 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8349 problems, 4028 verified.**
+**1472 contests, 8350 problems, 4028 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 51 contests, 289 problems, 175 verified
+## 2018 — 51 contests, 290 problems, 175 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -521,7 +521,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1092](1092/) | [Codeforces Round 527 (Div. 3)](https://codeforces.com/contest/1092) | 7 | 4/7 | Div. 3 | 800-2200 |
 | [1093](1093/) | [Educational Codeforces Round 56 (Rated for Div. 2)](https://codeforces.com/contest/1093) | 7 | 4/7 | Div. 2 | 800-2400 |
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
-| [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 6 | 4/6 | Div. 2 | 800-2500 |
+| [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
 ## 2019 — 159 contests, 780 problems, 457 verified
 
