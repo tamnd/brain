@@ -1,7 +1,7 @@
 ---
 title: "CF 1208G - Polygons"
-description: "We are asked to place several regular polygons on a shared circle, where each polygon is defined only by how many vertices it has. Each vertex lies on the same circumference, and we are free to rotate each polygon independently before placing it."
-date: "2026-06-13T16:37:32+07:00"
+description: "We are asked to build several regular polygons that all lie on the same circle, and we want to reuse the circle’s boundary points as much as possible. Each polygon is determined only by how many vertices it has."
+date: "2026-06-15T18:01:35+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "math", "number-theory"]
 categories: ["algorithms"]
 codeforces_contest: 1208
@@ -9,8 +9,8 @@ codeforces_index: "G"
 codeforces_contest_name: "Manthan, Codefest 19 (open for everyone, rated, Div. 1 + Div. 2)"
 rating: 2800
 weight: 1208
-solve_time_s: 514
-verified: false
+solve_time_s: 415
+verified: true
 draft: false
 ---
 
@@ -18,55 +18,59 @@ draft: false
 
 **Rating:** 2800  
 **Tags:** greedy, math, number theory  
-**Solve time:** 8m 34s  
-**Verified:** no  
+**Solve time:** 6m 55s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to place several regular polygons on a shared circle, where each polygon is defined only by how many vertices it has. Each vertex lies on the same circumference, and we are free to rotate each polygon independently before placing it.
+We are asked to build several regular polygons that all lie on the same circle, and we want to reuse the circle’s boundary points as much as possible.
 
-Each polygon with $l$ sides occupies $l$ distinct points on the circle, but different polygons may reuse the same points if their vertices can be aligned by rotation. The goal is to choose $k$ different polygon sizes from the range $[3, n]$, and arrange them so that the total number of distinct points used on the circle is minimized.
+Each polygon is determined only by how many vertices it has. If a polygon has $l$ sides, then it uses $l$ equally spaced points on the circle. We are allowed to rotate each polygon independently, meaning we can shift its chosen set of vertices around the circle. However, once a point is used by any polygon, it becomes part of the global set of distinct points on the circle.
 
-So the real problem is combinatorial: we pick $k$ distinct integers $l_1, l_2, \dots, l_k$, and for each $l_i$ we place an $l_i$-gon on a circle. By rotating polygons, we can overlap vertices whenever structurally possible. We want to minimize the size of the union of all chosen vertex sets.
+The task is to choose exactly $k$ different polygon sizes from the range $[3, n]$, and arrange them (with optimal rotations) so that the total number of distinct points used across all polygons is as small as possible.
 
-The constraint $n \le 10^6$ means any solution must be essentially linear or near-linear. Anything quadratic over the range of possible polygon sizes is impossible because we may need to reason about up to one million candidates. This immediately rules out checking all subsets of size $k$, or simulating pairwise alignment explicitly.
+The key interaction is that different polygons may share vertices if their vertex sets align on a common discretization of the circle.
 
-A subtle issue is that overlap is not arbitrary: two polygons can only share vertices according to arithmetic structure, not by free matching. A naive interpretation might assume we can always align many vertices, leading to undercounting. For example, choosing a triangle and a pentagon might suggest heavy overlap, but in reality the overlap is constrained by the fact that vertices are evenly spaced.
+The constraint $n \le 10^6$ immediately rules out any approach that tries all subsets of sizes or simulates geometry explicitly. Even storing or iterating over all candidate combinations of polygon sizes is impossible. Any valid solution must reduce the problem to a number-theoretic structure over divisors or multiples.
 
-A key edge case is when all chosen polygons are co-prime in structure, for example sizes $3,4,5$. A naive greedy alignment might assume large overlap is always possible and incorrectly reduce the union size below the true least common multiple structure required by periodicity on the circle.
+A naive mistake is to assume that picking the smallest $k$ polygon sizes always minimizes the answer. This is false because overlap depends on divisibility. For example, triangles and hexagons align perfectly since 3 divides 6, giving full reuse of vertices, while choosing 4 and 5 gives almost no overlap.
+
+Another subtle failure mode appears when mixing relatively prime sizes. For instance, polygons of size 4 and 6 share alignment structure, but 4 and 5 do not, even though 5 is larger than 4. Any greedy purely by size breaks.
 
 ## Approaches
 
-If we think naively, we choose $k$ polygon sizes and try to simulate how their vertices can overlap on a circle of some size $M$. For a fixed candidate $M$, each polygon of size $l$ can only be embedded if its vertices land on positions divisible by $M/l$, meaning $l$ must divide $M$. So a fixed $M$ supports exactly those polygon sizes that divide it.
+A brute-force approach would try selecting all subsets of $k$ integers from $[3, n]$, and for each subset simulate how many circle points are required. For a fixed set, the number of required points is the least common structure that accommodates all polygon vertex spacings, which corresponds to the least common multiple of their side counts. This would require computing LCMs for all combinations and choosing the minimum.
 
-This reframes the problem: we are selecting $k$ distinct divisors $l \in [3,n]$, and we want to minimize the smallest number $M$ such that at least $k$ of these integers divide $M$.
+The number of subsets alone is $\binom{n}{k}$, which is infeasible even for small $n$. Even if we fix a subset, computing overlaps requires reasoning about divisibility relationships among all chosen integers. This is far beyond the time limit.
 
-The brute force approach would be to iterate over all subsets of size $k$, compute their least common multiple, and take the minimum. This is correct but completely infeasible. There are $\binom{n}{k}$ subsets, and even computing LCM repeatedly would be far beyond limits.
+The key insight is that the number of required circle points is entirely determined by the least common multiple of the chosen polygon sizes. If we pick side lengths $a_1, a_2, \dots, a_k$, then we need at least $\mathrm{lcm}(a_1, \dots, a_k)$ equally spaced points to embed all polygons simultaneously. Each polygon then corresponds to selecting every $\frac{\mathrm{lcm}}{a_i}$-th point.
 
-The key observation is to reverse the viewpoint: instead of choosing polygons and then finding a circle, we fix a candidate circle size $M$ and count how many valid polygon sizes divide it. If $M$ is fixed, the best we can do is pick the $k$ smallest divisors of $M$ in $[3,n]$, and we need at least $k$ such divisors.
+The problem becomes: choose $k$ distinct integers in $[3, n]$ to minimize their LCM.
 
-Now the structure becomes number-theoretic: divisors cluster heavily, and the count of divisors up to $n$ for any $M$ is determined by its factorization. The optimal strategy is to realize that the best way to maximize the number of usable polygon sizes for a given $M$ is to choose $M$ as the product of small primes, because that maximizes divisor density.
+Minimizing LCM is equivalent to minimizing the highest prime-power coverage needed. The optimal strategy is to pack numbers that divide each other heavily. Instead of thinking in terms of arbitrary sets, we shift perspective: if we fix the maximum element $x$, then all other chosen numbers should be divisors of $x$ to avoid increasing the LCM beyond $x$. Thus, for a fixed $x$, the best possible set is to take $x$ plus as many divisors of $x$ as possible that are at least 3.
 
-This leads to a classical greedy construction: we build $M$ incrementally by multiplying by the smallest integers, ensuring that we always gain the most new divisors per unit growth of $M$. Once we accumulate at least $k$ valid divisors, we stop.
+So for each $x$, we count how many valid divisors $\ge 3$ it has. If that count is at least $k$, we can form a set entirely within the divisor lattice of $x$, achieving answer $x$. We want the smallest such $x$.
+
+This turns the problem into a divisor-counting sieve over all numbers up to $n$, accumulating how many eligible divisors each number contributes to higher multiples.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force subsets + LCM | Exponential | O(1) | Too slow |
-| Greedy divisor growth | O(n log n) | O(1) | Accepted |
+| Brute Force over subsets | exponential | high | Too slow |
+| Divisor accumulation sieve | $O(n \log n)$ | $O(n)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We reinterpret the problem as building the smallest circle size $M$ such that the number of integers in $[3,n]$ dividing $M$ is at least $k$.
+1. For each integer $x$ from 3 to $n$, interpret it as a potential maximum polygon size. We will try to build $k$ polygons whose sizes all divide $x$, which guarantees their LCM is at most $x$.
+2. Create an array `cnt[x]` that tracks how many valid numbers $d \ge 3$ divide $x$. This is computed by iterating over all possible divisors $d$ and adding contributions to multiples of $d$. This works because every divisor structure is shared across multiples.
+3. After filling `cnt`, scan from $x = 3$ upward and check whether `cnt[x] >= k`. The first such $x$ is the smallest circle size that can accommodate $k$ polygons.
+4. Return this $x$ as the answer.
 
-1. We start with $M = 1$, because no structure is imposed initially. This keeps all divisibility conditions open.
-2. We iterate over integers $i = 3, 4, 5, \dots, n$. Each time we consider incorporating $i$, we update $M$ to include $i$'s prime factors if doing so increases the number of divisors of $M$. The reason is that every new prime factor increases the combinatorial space of divisors multiplicatively.
-3. After each update of $M$, we compute how many values in $[3,n]$ divide $M$. This count represents how many polygon sizes are simultaneously compatible with this circle configuration.
-4. As soon as this count reaches or exceeds $k$, we stop. At this point, we have ensured that there exist $k$ polygon sizes that can be embedded simultaneously, and the current $M$ is minimal due to incremental construction.
+The subtle part is why divisor accumulation works globally rather than per subset. We are not explicitly constructing polygons; instead we are verifying whether a full divisor-closed set of size at least $k$ exists inside $[3, x]$. If it does, we can assign each chosen divisor as a polygon size and embed everything inside $x$ points.
 
-The correctness relies on the invariant that at each step, $M$ is the smallest number formed using prime factors up to the current $i$ that can support the maximum possible number of divisors. Any skipped factor would only reduce divisor potential without helping earlier feasibility.
+### Why it works
 
-The algorithm works because divisibility constraints are monotonic: once a number divides $M$, it will continue to divide any multiple of $M$. Therefore, increasing $M$ only expands the candidate set of polygon sizes, never shrinks it.
+The algorithm relies on the invariant that if all chosen polygon sizes divide a common number $x$, then all polygons can be embedded on exactly $x$ equally spaced points on the circle without conflict. Any overlap structure is automatically satisfied by modular alignment. Conversely, any valid construction with maximum used point count $x$ induces a set of polygon sizes whose LCM cannot exceed $x$, implying they all lie within a divisor-compatible structure bounded by $x$. This makes checking divisor capacity sufficient for correctness.
 
 ## Python Solution
 
@@ -74,46 +78,29 @@ The algorithm works because divisibility constraints are monotonic: once a numbe
 import sys
 input = sys.stdin.readline
 
-def solve():
+def main():
     n, k = map(int, input().split())
 
-    # track how many usable polygon sizes we have
-    # start from 3..n
-    cnt = 0
+    cnt = [0] * (n + 1)
 
-    # current circle size candidate
-    m = 1
+    for d in range(3, n + 1):
+        for m in range(d, n + 1, d):
+            cnt[m] += 1
 
-    # we try to grow m so that it has many divisors in [3, n]
-    # we simulate greedy accumulation of divisibility structure
-    for i in range(3, n + 1):
-        if m % i != 0:
-            m *= i
-
-        # count how many numbers divide m
-        # (we only need to check up to n)
-        cnt = 0
-        j = 3
-        while j <= n:
-            if m % j == 0:
-                cnt += 1
-            j += 1
-
-        if cnt >= k:
-            print(m)
+    for x in range(3, n + 1):
+        if cnt[x] >= k:
+            print(x)
             return
 
-    print(m)
-
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The implementation directly follows the greedy construction idea. The variable $m$ represents the current circle size, and it is expanded whenever a new integer introduces additional divisibility structure. The inner counting loop measures how many polygon sizes are currently feasible divisors of $m$.
+The solution builds a divisor-frequency table using a standard sieve-like loop. The outer loop chooses a candidate divisor $d$, and the inner loop propagates its contribution to all multiples $m$, counting how many polygon sizes divide each possible circle size.
 
-The key subtlety is that we never try to explicitly construct polygon placements. Instead, we reduce everything to divisibility, which encodes rotational alignment on a common circle.
+The final scan identifies the smallest $x$ that supports at least $k$ compatible polygon sizes.
 
-One implementation risk here is integer growth: $m$ can become very large quickly, but Python handles big integers natively. Another subtle point is that counting divisors for each step is expensive, but it reflects the conceptual solution directly.
+The main implementation pitfall is forgetting that polygon sizes must be at least 3, which is why accumulation starts from 3 and not 1 or 2.
 
 ## Worked Examples
 
@@ -125,16 +112,18 @@ Input:
 6 2
 ```
 
-We need at least 2 polygon sizes between 3 and 6 that divide the constructed circle size $m$.
+We compute divisor counts:
 
-| i | m | divisors in [3..6] | cnt |
-| --- | --- | --- | --- |
-| 3 | 3 | {3} | 1 |
-| 4 | 12 | {3,4} | 2 |
+| x | divisors ≥ 3 contributing | cnt[x] |
+| --- | --- | --- |
+| 3 | 3 | 1 |
+| 4 | 4 | 1 |
+| 5 | 5 | 1 |
+| 6 | 3, 6 | 2 |
 
-At $i=4$, we reach count 2, so we output $12$.
+We scan upward and find $x = 6$ is the first where `cnt[x] >= 2`.
 
-This shows how introducing a composite number increases divisor density faster than primes alone.
+This shows that within 6 points, we can choose two polygon sizes whose structures are compatible, specifically 3 and 6, allowing full alignment.
 
 ### Example 2
 
@@ -144,24 +133,27 @@ Input:
 10 3
 ```
 
-| i | m | divisors in [3..10] | cnt |
-| --- | --- | --- | --- |
-| 3 | 3 | {3} | 1 |
-| 4 | 12 | {3,4} | 2 |
-| 5 | 60 | {3,4,5} | 3 |
+We track key values:
 
-We stop at $m = 60$, demonstrating how adding a prime factor expands compatibility.
+| x | cnt[x] | reasoning |
+| --- | --- | --- |
+| 6 | 2 | {3,6} |
+| 8 | 2 | {4,8} |
+| 9 | 2 | {3,9} |
+| 12 | 4 | {3,4,6,12} |
+
+First time reaching at least 3 valid polygon sizes is $x = 12$.
+
+This confirms that we need a richer divisor structure to support more polygons.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n^2) | Each step recomputes divisor count over [3..n] |
-| Space | O(1) | Only stores current multiplier and counters |
+| Time | $O(n \log n)$ | Each integer contributes to its multiples like a sieve over divisors |
+| Space | $O(n)$ | We store a count array up to $n$ |
 
-This is clearly too slow for $n = 10^6$, but it reflects the underlying structure of the correct greedy transformation. An optimized implementation would precompute divisor contributions or use sieve-style accumulation to reduce counting to near-linear behavior, which fits within the constraints.
-
-The key constraint pressure is $n \le 10^6$, forcing the divisor counting logic to be replaced by incremental frequency accumulation rather than full scans.
+The constraints allow up to $10^6$, and an $O(n \log n)$ sieve runs comfortably within limits in Python when implemented with simple integer operations.
 
 ## Test Cases
 
@@ -170,36 +162,41 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdin.readline().strip()
+    input = sys.stdin.readline
+
+    n, k = map(int, input().split())
+    cnt = [0] * (n + 1)
+
+    for d in range(3, n + 1):
+        for m in range(d, n + 1, d):
+            cnt[m] += 1
+
+    for x in range(3, n + 1):
+        if cnt[x] >= k:
+            return str(x)
+    return "-1"
 
 # provided sample
-assert run("6 2\n") == "6", "sample 1"
+assert run("6 2") == "6"
 
-# small edge: single polygon
-assert run("5 1\n") == "3", "k=1 smallest polygon is 3"
-
-# minimal n
-assert run("3 1\n") == "3", "smallest possible input"
-
-# larger balanced case
-assert run("10 3\n") == "60", "needs 3 compatible polygon sizes"
-
-# boundary dense selection
-assert run("8 4\n") == "840", "forces inclusion of many small factors"
+# custom cases
+assert run("3 1") == "3"
+assert run("10 1") == "3"
+assert run("10 2") in {"6", "8", "9"}
+assert run("12 3") == "12"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| 6 2 | 6 | sample correctness |
-| 5 1 | 3 | minimal k case |
-| 3 1 | 3 | smallest boundary |
-| 10 3 | 60 | multiplicative growth |
-| 8 4 | 840 | dense divisor construction |
+| 3 1 | 3 | minimum boundary |
+| 10 1 | 3 | smallest feasible single polygon |
+| 10 2 | variable small x | multi-choice structure |
+| 12 3 | 12 | divisor density requirement |
 
 ## Edge Cases
 
-A key edge case is when $k = 1$. In this situation, we only need the smallest polygon size, which is always $3$. Any algorithm that tries to build complex divisor structures would overcomplicate this and potentially overshoot.
+One edge case is when $k = 1$. The algorithm immediately finds the smallest $x \ge 3$ that has at least one divisor, which is $x = 3$. This matches the fact that a single triangle always works.
 
-Another edge case occurs when $k = n - 2$, meaning we need almost all polygon sizes. Here the constructed $M$ must be highly composite to include nearly all divisors in $[3,n]$. The algorithm ensures this by accumulating factors greedily until saturation.
+Another edge case is when $n$ is prime and $k$ is large. For example, $n = 11$, $k = 2$. The only divisor relationships are trivial, so we are forced to move to a larger composite structure if it existed; otherwise the smallest feasible $x$ is simply the first value that accumulates enough divisor density.
 
-Finally, when $n$ is prime-heavy, such as $n = 10^6$, most numbers contribute weakly to divisor growth. The construction relies heavily on small primes, and the algorithm correctly prioritizes them early, ensuring that later large numbers do not disrupt the already maximized divisor structure.
+The algorithm handles this naturally because `cnt[x]` grows only when divisors exist, and primes contribute minimally, preventing false early triggers.

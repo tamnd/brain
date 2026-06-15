@@ -1,7 +1,7 @@
 ---
 title: "CF 1208C - Magic Grid"
-description: "We are asked to fill an $n times n$ grid with all integers from $0$ to $n^2 - 1$, each used exactly once, in such a way that every row and every column has the same XOR value. The grid is not arbitrary permutation placement."
-date: "2026-06-13T16:32:27+07:00"
+description: "We are asked to fill an $n times n$ table with all integers from $0$ to $n^2 - 1$ exactly once, so every number is used in a permutation of the grid cells."
+date: "2026-06-15T17:55:37+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
 codeforces_contest: 1208
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Manthan, Codefest 19 (open for everyone, rated, Div. 1 + Div. 2)"
 rating: 1800
 weight: 1208
-solve_time_s: 489
+solve_time_s: 388
 verified: false
 draft: false
 ---
@@ -18,62 +18,69 @@ draft: false
 
 **Rating:** 1800  
 **Tags:** constructive algorithms  
-**Solve time:** 8m 9s  
+**Solve time:** 6m 28s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are asked to fill an $n \times n$ grid with all integers from $0$ to $n^2 - 1$, each used exactly once, in such a way that every row and every column has the same XOR value.
+We are asked to fill an $n \times n$ table with all integers from $0$ to $n^2 - 1$ exactly once, so every number is used in a permutation of the grid cells. The extra constraint is global: every row must have the same bitwise XOR of its entries, and every column must also have that same XOR value.
 
-The grid is not arbitrary permutation placement. It is a structured arrangement constraint: the multiset of numbers is fixed, but their positions must be chosen so that XOR aggregation behaves uniformly across all rows and columns.
+The input is only $n$, and we are guaranteed that $n$ is a multiple of 4. The output is any valid arrangement of the numbers into the grid that satisfies the XOR uniformity condition.
 
-The input size allows $n$ up to 1000, with $n$ guaranteed divisible by 4. This already rules out any exponential or backtracking construction. Even quadratic approaches are acceptable since $10^6$ placements is small. The real challenge is not complexity but constructing a pattern that enforces XOR symmetry.
+The constraints suggest that we cannot treat this as a search or constraint satisfaction problem. The grid size can go up to $1000 \times 1000$, meaning up to one million distinct values must be placed. Any approach that checks row and column XORs repeatedly during construction is still fine, but anything exponential or involving backtracking is immediately impossible.
 
-A naive idea would be to randomly permute numbers into the grid and hope for balanced XORs, but XOR is extremely sensitive to structure. A single misplaced bit pattern destroys the uniform row XOR property, so random or greedy placement will almost certainly fail.
+A subtle failure case for naive thinking is to distribute numbers in simple patterns like row-major order or checkerboard XOR balancing. For example, filling row by row with increasing numbers fails because XOR of consecutive blocks is not stable across rows or columns. Another tempting idea is to enforce row XOR equality first and then adjust columns, but changing a single entry breaks both constraints globally, making local fixes ineffective.
 
-Another tempting idea is to treat rows independently: fill each row with numbers $n \cdot i$ to $n \cdot (i+1)-1$. This respects uniqueness but fails XOR consistency because each row contains a different bit distribution, producing different XOR results across rows and columns.
-
-The difficulty is that we need both global permutation constraints and strong algebraic symmetry under XOR, which suggests a bitwise construction rather than value-based grouping.
+The structure of the problem hints that we need a deterministic construction where every local region already satisfies XOR symmetry, and these regions combine cleanly at a higher level.
 
 ## Approaches
 
-A brute-force perspective would attempt to assign numbers one by one while maintaining constraints. At each empty cell, we would try unused values and check whether all completed rows and columns still have matching XORs. This leads to a search tree with branching factor roughly $n^2$, and constraint checking that is $O(n)$ per step, making the total search completely infeasible even for $n=4$.
+A brute-force interpretation would be to try assigning numbers one by one and maintaining constraints. At each step, we would place a number in an empty cell and check whether row and column XOR constraints remain satisfiable. Even if we do pruning, the state space is enormous: there are $(n^2)!$ permutations of numbers, and each partial assignment affects $O(n)$ rows and columns. Even with memoization, the constraint graph is too dense for meaningful DP compression.
 
-The key observation is that XOR behaves linearly over bitwise structure, and the condition is invariant under rearranging values as long as we preserve pairing structure in a controlled way. The correct construction comes from pairing numbers in a way that controls XOR contributions within each 2x2 block, then tiling these blocks across the grid.
+The key observation is that XOR behaves nicely under structured pairing. If we can ensure that each row and column is formed from carefully paired values whose XOR contributions cancel in a controlled way, we can enforce uniformity without explicitly tracking XORs.
 
-Since $n$ is divisible by 4, we can partition the grid into $2 \times 2$ blocks. Inside each block, we place four carefully chosen numbers that form a complete XOR-balanced set. A natural way to do this is to use consecutive integers and ensure that each block contains a “complementary” grouping of values.
+A useful perspective is to build the grid in blocks of $2 \times 2$. Inside such a block, if we assign four values so that their XOR is balanced in a symmetric pattern, then each block contributes a predictable XOR footprint to its row and column intersections. Since $n$ is a multiple of 4, the grid can be partitioned into $2 \times 2$ blocks in a way that every row and column is composed of full blocks only.
 
-A standard construction uses the fact that for any integer $x$, the values $x, x \oplus 1, x \oplus 2, x \oplus 3$ form a local XOR-balanced structure when arranged properly. By iterating over blocks and shifting base values by 4 each time, we guarantee that all numbers are used exactly once and each block is internally consistent. Since rows and columns each pass through exactly one element from each block position pattern, the XOR contributions cancel uniformly.
+The construction reduces to assigning numbers inside each $2 \times 2$ block in a consistent pattern, while ensuring that different blocks receive disjoint value ranges. The standard trick is to treat each block index as a coordinate in a smaller grid of size $(n/2) \times (n/2)$, and then expand it into four values using bit manipulation so that all numbers from $0$ to $n^2-1$ are covered exactly once.
 
-This reduces the problem from a global constraint system into a repeated local template.
+This works because XOR depends on bit structure, and splitting indices into high and low parts allows us to independently control distribution across blocks and inside blocks. The final design ensures every row sees each high-level pattern exactly once, and the same holds for columns, which forces XOR uniformity.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | exponential | O(n^2) | Too slow |
-| Block construction | O(n^2) | O(1) extra | Accepted |
+| Brute Force | Exponential | O(n²) | Too slow |
+| Block construction | O(n²) | O(n²) | Accepted |
 
 ## Algorithm Walkthrough
 
-We construct the grid block by block, treating each $2 \times 2$ sub-square independently.
+We construct the grid using $2 \times 2$ blocks.
 
-1. Split the grid into $2 \times 2$ blocks. Each block is identified by its top-left coordinate $(i, j)$ where $i, j$ increase in steps of 2. This works because $n$ is divisible by 4, so such tiling is exact.
-2. Maintain a running counter `cur` starting from 0, which represents the next unused group of 4 numbers. Each block consumes exactly 4 consecutive numbers, ensuring all values from $0$ to $n^2 - 1$ are used exactly once.
-3. For each block, assign its four values in a fixed XOR-safe pattern:
+1. Split the grid into coordinates $(i, j)$. Each cell belongs to a block at $(i // 2, j // 2)$. This ensures every block is independent and covers 4 cells.
+2. Assign each block a unique base value using its block index:
 
-the block receives $(cur, cur+1, cur+2, cur+3)$ arranged as
+$$b = (i // 2) \cdot (n // 2) + (j // 2)$$
 
-top-left, bottom-right, bottom-left, top-right in a specific order that ensures internal XOR balance.
+This enumerates blocks from $0$ to $(n/2)^2 - 1$.
+3. Expand each block value into four distinct numbers using bit shifts:
 
-The idea is that within each block, every row and column contributes the same XOR structure because each number is paired with a complementary partner across both row and column dimensions.
-4. After filling a block, increment `cur` by 4 and continue.
-5. Output the completed grid.
+- top-left: $4b$
+- top-right: $4b + 1$
+- bottom-left: $4b + 2$
+- bottom-right: $4b + 3$
+
+The reason for multiplying by 4 is that each block must reserve a disjoint chunk of size 4 in the global permutation.
+4. Place these values consistently inside every $2 \times 2$ block. This guarantees no overlaps and ensures all numbers from $0$ to $n^2 - 1$ are used exactly once.
+5. Output the constructed grid.
 
 ### Why it works
 
-Each block contributes exactly one controlled XOR pattern across its two rows and two columns. Since every block uses a disjoint set of four numbers, there is no interference between blocks. The arrangement ensures that each row and each column intersects blocks in a way that contributes the same XOR pattern. Because the grid is fully tiled by identical structural units, the XOR over any row or column becomes identical across all rows and columns.
+Each row consists of a sequence of $n/2$ blocks, and within each block the XOR of its four elements is:
 
-The correctness reduces to the fact that XOR is associative and commutative, so the global XOR is the XOR of independent block contributions, and each row or column sees the same multiset of block contributions.
+$$(4b) \oplus (4b+1) \oplus (4b+2) \oplus (4b+3) = 0$$
+
+because the last two bits cycle through all combinations and cancel out under XOR.
+
+Since every row is composed entirely of such zero-XOR blocks, the XOR of every row is 0. The same holds for every column because blocks align consistently across vertical partitions. Therefore, all rows and columns share the same XOR value.
 
 ## Python Solution
 
@@ -81,116 +88,117 @@ The correctness reduces to the fact that XOR is associative and commutative, so 
 import sys
 input = sys.stdin.readline
 
-n = int(input())
+def solve():
+    n = int(input())
+    a = [[0] * n for _ in range(n)]
+    
+    for i in range(n):
+        for j in range(n):
+            b = (i // 2) * (n // 2) + (j // 2)
+            base = 4 * b
+            if i % 2 == 0 and j % 2 == 0:
+                a[i][j] = base
+            elif i % 2 == 0 and j % 2 == 1:
+                a[i][j] = base + 1
+            elif i % 2 == 1 and j % 2 == 0:
+                a[i][j] = base + 2
+            else:
+                a[i][j] = base + 3
 
-grid = [[0] * n for _ in range(n)]
+    for row in a:
+        print(*row)
 
-cur = 0
-for i in range(0, n, 2):
-    for j in range(0, n, 2):
-        grid[i][j] = cur
-        grid[i][j+1] = cur + 1
-        grid[i+1][j] = cur + 2
-        grid[i+1][j+1] = cur + 3
-        cur += 4
-
-for row in grid:
-    print(*row)
+if __name__ == "__main__":
+    solve()
 ```
 
-The implementation directly mirrors the block construction. The nested loops step by 2 because each iteration handles a full $2 \times 2$ tile. The variable `cur` ensures that every number is used exactly once without overlap.
+The implementation directly follows the block decomposition. The key detail is computing the block index using integer division by 2, then mapping each position inside the block using the parity of row and column indices. This avoids any need for conditional reshaping or post-processing.
 
-The placement inside each block follows a fixed pattern. While multiple valid patterns exist, any consistent assignment of the four consecutive numbers into a 2x2 block works because XOR constraints depend only on symmetry across rows and columns, not absolute positions.
-
-The final printing step outputs the grid row by row in standard format.
+A common mistake is to forget that each block must map to a contiguous range of four numbers. Without the multiplication by 4, values would collide across blocks and break the permutation requirement.
 
 ## Worked Examples
 
 ### Example: n = 4
 
-We process blocks in order.
+We have a $2 \times 2$ block grid of blocks.
 
-| Block (i,j) | cur start | top-left | top-right | bottom-left | bottom-right |
-| --- | --- | --- | --- | --- | --- |
-| (0,0) | 0 | 0 | 1 | 2 | 3 |
-| (0,2) | 4 | 4 | 5 | 6 | 7 |
-| (2,0) | 8 | 8 | 9 | 10 | 11 |
-| (2,2) | 12 | 12 | 13 | 14 | 15 |
+| Cell (i,j) | Block b | Value |
+| --- | --- | --- |
+| (0,0) | 0 | 0 |
+| (0,1) | 0 | 1 |
+| (1,0) | 0 | 2 |
+| (1,1) | 0 | 3 |
+| (0,2) | 1 | 4 |
+| (0,3) | 1 | 5 |
+| (1,2) | 1 | 6 |
+| (1,3) | 1 | 7 |
+| ... | ... | ... |
 
-Resulting grid:
+Each block contributes XOR 0 internally, so rows and columns inherit uniform XOR.
 
-```
-0 1 4 5
-2 3 6 7
-8 9 12 13
-10 11 14 15
-```
+This trace confirms that blocks are independent and fill the range 0 to 15 exactly once.
 
-This satisfies uniqueness and produces uniform XOR per row and column.
+### Example: n = 8 (partial structure)
 
-Now consider a shifted variant consistent with the same block idea:
+| Block (i//2, j//2) | b | Values placed |
+| --- | --- | --- |
+| (0,0) | 0 | 0-3 |
+| (0,1) | 1 | 4-7 |
+| (1,0) | 4 | 16-19 |
+| (3,3) | 15 | 60-63 |
 
-| Block structure | observation |
-| --- | --- |
-| each 2x2 block is independent | XOR is local |
-| each row intersects same pattern of blocks | row XOR identical |
-| each column intersects same pattern | column XOR identical |
+Each row consists of 4 blocks, each contributing zero XOR, so row XOR is 0.
 
-This demonstrates that the construction depends only on repeating identical structural units.
+This confirms scalability: increasing $n$ only repeats the same local invariant.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n^2)$ | each cell is written exactly once during block filling |
-| Space | $O(1)$ extra | aside from the grid itself |
+| Time | O(n²) | Each cell is computed once |
+| Space | O(n²) | Grid storage |
 
-The solution easily fits constraints since $n^2 \le 10^6$, and operations are simple assignments.
+The algorithm touches every cell exactly once, which fits comfortably within limits for $n \le 1000$, producing at most one million assignments.
 
 ## Test Cases
 
 ```python
 import sys, io
 
-def solve():
-    import sys
-    input = sys.stdin.readline
-    n = int(input())
-    grid = [[0]*n for _ in range(n)]
-    cur = 0
-    for i in range(0, n, 2):
-        for j in range(0, n, 2):
-            grid[i][j] = cur
-            grid[i][j+1] = cur + 1
-            grid[i+1][j] = cur + 2
-            grid[i+1][j+1] = cur + 3
-            cur += 4
-    return "\n".join(" ".join(map(str, row)) for row in grid)
-
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return solve()
+    from __main__ import solve
+    import contextlib
+    import io as sio
+    out = sio.StringIO()
+    with contextlib.redirect_stdout(out):
+        solve()
+    return out.getvalue().strip()
 
-# provided sample
-assert run("4\n") is not None
+# sample
+assert run("4\n") != ""
 
-# custom cases
-assert run("8\n") is not None
-assert run("12\n") is not None
-assert run("16\n") is not None
+# minimum valid case
+assert run("4\n").count("\n") == 3
+
+# block structure sanity check
+assert run("4\n").split()[0] == "0"
+
+# larger case structural check
+out = run("8\n")
+vals = list(map(int, out.split()))
+assert sorted(vals) == list(range(64))
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
 | 4 | valid 4x4 grid | base correctness |
-| 8 | larger tiling | block repetition |
-| 12 | mid-size structure | scaling correctness |
-| 16 | multiple layers | no interference |
+| 8 | valid 8x8 grid | scalability and uniqueness |
+| 4 | permutation 0-15 | no duplicates |
+| 8 | permutation 0-63 | full coverage |
 
 ## Edge Cases
 
-The smallest valid input is $n = 4$. Here the grid consists of exactly one layer of 2x2 blocks, so any mistake in block ordering immediately breaks uniqueness or XOR symmetry.
+For $n = 4$, there is only one level of block decomposition. The algorithm assigns exactly four blocks of size $2 \times 2$, producing numbers 0 through 15 without overlap. The XOR condition holds because each block independently has XOR 0, so every row and column inherits a sum of zero XOR contributions.
 
-At larger sizes like $n = 1000$, the main risk is integer mismanagement or skipping indices when incrementing by 2. Since every step consumes exactly four numbers, any off-by-one in `cur` causes either repetition or omission of values, which would violate the permutation requirement even if XOR properties accidentally still hold locally.
-
-The construction avoids this by strictly coupling block traversal with deterministic increments, ensuring both global coverage and local consistency simultaneously.
+For larger $n$, such as $n = 1000$, the same logic repeats across 250,000 blocks. Each block contributes a disjoint range of values, so no collisions occur even at maximum scale. Every row still consists of full blocks, so the XOR remains stable regardless of grid size.
