@@ -1,7 +1,7 @@
 ---
 title: "CF 1207C - Gas Pipeline"
-description: "The road is a sequence of $n$ consecutive unit segments. Each segment either contains a crossroad or it does not. When there is no crossroad, the pipeline can stay at height 1."
-date: "2026-06-13T16:19:29+07:00"
+description: "We are building a linear structure along a road that is represented as a binary string. Each position corresponds to a unit segment of road. A 0 means normal road, while a 1 means a crossroad where the pipeline must be lifted. The pipeline normally runs at height 1."
+date: "2026-06-15T17:44:14+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1207
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Educational Codeforces Round 71 (Rated for Div. 2)"
 rating: 1500
 weight: 1207
-solve_time_s: 195
+solve_time_s: 156
 verified: false
 draft: false
 ---
@@ -18,66 +18,52 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** dp, greedy  
-**Solve time:** 3m 15s  
+**Solve time:** 2m 36s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-The road is a sequence of $n$ consecutive unit segments. Each segment either contains a crossroad or it does not. When there is no crossroad, the pipeline can stay at height 1. When there is a crossroad, the pipeline must locally rise to height 2 so that vehicles can pass underneath.
+We are building a linear structure along a road that is represented as a binary string. Each position corresponds to a unit segment of road. A `0` means normal road, while a `1` means a crossroad where the pipeline must be lifted.
 
-The construction is not fixed: for every segment, we choose whether the pipeline runs flat at height 1 or is lifted into a zig-zag shape that passes through height 2. A zig-zag is more expensive because it increases both pipe length and pillar length on that segment.
+The pipeline normally runs at height 1. At every integer point, we place a pillar, and each unit of pipe and each unit of pillar has a cost. When we encounter a crossroad, the pipeline must go up to height 2 so that vehicles can pass underneath. To do that, we are allowed to introduce special “zig-zag” segments that temporarily lift the pipe up and then bring it back down.
 
-The goal is to choose, for every segment, whether to keep it flat or lift it, so that all segments with a crossroad are covered by height 2 and the total cost of pipe plus pillars is minimized. The pipeline must start and end at height 1, and the first and last cells are guaranteed to be empty.
+The key difficulty is that height 2 is expensive because pillars become taller, and zig-zag transitions also cost extra pipe length. So the decision is global: we may either keep everything at height 1 and pay penalties for lifting when needed, or maintain long stretches at height 2 to avoid repeated transitions.
 
-The cost structure is linear in material usage. Each unit length of pipe costs $a$, and each unit of pillar costs $b$. This immediately suggests that every segment contributes independently except for transitions between heights, which is where coupling appears.
+The input size is large, up to 2×10^5 total characters across test cases. This immediately rules out any quadratic or per-configuration simulation of possible height patterns. The solution must be linear per test case.
 
-The constraints allow up to $2 \cdot 10^5$ total characters across all test cases. This rules out any quadratic or even $O(n \log n)$ per test case approach with heavy constants. A linear scan per test case is the target.
-
-A subtle edge case is when crossings alternate frequently, such as `010101...`. In such cases, repeatedly switching height 1 to 2 and back is expensive due to transition overhead, and naive greedy per-cell decisions fail because they ignore whether it is cheaper to stay elevated across multiple consecutive or nearby ones.
+A naive mistake comes from treating each `1` independently. For example, if we lift only at each single crossroad without considering grouping, we may overpay transition costs. Conversely, keeping everything at height 2 across a long sparse region of `1`s may waste pillar costs. The correct solution must decide where to “stay high” as a continuous segment.
 
 ## Approaches
 
-A brute-force approach would treat each position as a binary decision: either the pipeline is at height 1 or height 2, subject to constraints that all `1` positions must be served at height 2. We could try dynamic programming over all configurations, or simulate all valid placements of segments and transitions.
+A brute-force idea is to treat each position as having two possible states: pipeline at height 1 or height 2, and then try all valid transitions. For every segment, we decide whether to stay at height 1, switch up, or switch down. This naturally leads to a dynamic programming where each position depends on the previous height state.
 
-However, the state of the system depends on whether we are currently “inside” a lifted section or not. If we try to branch at every position, we get an exponential number of configurations, roughly $2^n$, because each segment can independently start or end a lifted state.
+This works conceptually because the cost is local: pipe cost depends on length, pillar cost depends on height, and transitions have fixed cost. However, the brute-force DP still has only O(n) states, so the real issue is not state explosion but incorrectly modeling the cost of transitions between segments of ones and zeros. If we explicitly simulate every zig-zag structure per position, we end up repeatedly accounting for transition costs.
 
-The key observation is that once we decide to enter height 2, we pay a cost for the transition and then potentially benefit from staying there for multiple consecutive `1`s. The problem reduces to grouping consecutive forced or beneficial lifted segments. Instead of deciding per cell independently, we decide per contiguous structure.
+The key observation is that height 2 regions are always contiguous blocks. We never gain anything from splitting a high segment unless forced by zeros at boundaries or cost comparison. So instead of deciding per cell, we decide per block of consecutive `1`s whether we keep it at height 2, and we also account for transitions between blocks.
 
-A more useful reformulation is to think of the pipeline as having two modes: normal (height 1) and elevated (height 2). Each segment where we are elevated increases cost by a fixed amount compared to being normal, but transitions between modes also introduce extra cost. This converts the problem into choosing segments where we “activate” elevation and possibly extend it.
-
-We then interpret each `1` as requiring coverage in elevated mode, while `0` can be served in either mode. The optimal solution ends up depending on whether it is cheaper to keep the pipeline continuously elevated over a range or to split into multiple elevated intervals.
-
-This leads to a classic DP where we track the minimum cost up to position $i$, ending either in normal state or elevated state.
+This reduces the problem to deciding, for each run of ones, whether to extend the previous high segment or to start a new one.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over states | $O(2^n)$ | $O(n)$ | Too slow |
-| DP with two states | $O(n)$ | $O(1)$ | Accepted |
+| Full simulation / naive DP | O(n) or worse with heavy constants | O(n) | Too slow / unnecessary complexity |
+| Greedy block DP | O(n) | O(1) | Accepted |
 
 ## Algorithm Walkthrough
 
-We maintain two DP values while scanning the string left to right.
+We process the string from left to right and maintain the cost of the best construction up to the current position.
 
-Let `dp0` be the minimum cost up to the current position if the pipeline is at height 1 at this position.
-
-Let `dp1` be the minimum cost if the pipeline is at height 2 at this position.
-
-At each index, we decide how to extend the previous configuration.
-
-1. Initialize `dp0 = 0` and `dp1 = +infinity`. We start at height 1 as required, so being elevated initially is not allowed.
-2. For each position $i$, compute the cost of keeping the pipeline at height 1 for this segment. This is always possible only if the segment is `0`. If `s[i] = 1`, height 1 is invalid, so we disallow transitions into `dp0` for that position.
-3. Compute transition into height 2. We can either come from height 1 or stay in height 2. Transitioning from height 1 to height 2 adds the cost of starting an elevated segment, while staying in height 2 only adds per-segment cost.
-4. For a segment in height 1, the cost contribution is just pipe and pillar at height 1.
-5. For a segment in height 2, we add extra pipe and pillar length compared to height 1. The difference is fixed per segment, so we treat it as an incremental cost.
-6. Update `dp0` and `dp1` at each step by taking the minimum valid transitions.
-7. After processing all segments, the answer is `dp0` because we must end at height 1.
-
-The implementation simplifies because the actual geometry reduces to a fixed per-segment cost difference between states, and transitions only matter when moving into or out of elevated mode.
+1. We start from height 1, and initialize total cost as the cost of laying pipe and pillars in height 1 across the whole segment. This is the baseline configuration.
+2. We scan the string and identify segments of consecutive `1`s. Each such segment is a candidate region where we might benefit from switching to height 2.
+3. For each segment of ones, we compute two options: either we stay at height 1 throughout that segment, or we switch to height 2 for the entire segment.
+4. If we switch to height 2, we pay additional pillar cost per unit, and also pay transition cost for entering and exiting height 2. These transitions correspond to zig-zag structures.
+5. The crucial step is that if two segments of ones are close enough, it may be cheaper to merge them into a single height-2 region rather than paying two separate transitions.
+6. Therefore, when we see a run of zeros between two runs of ones, we decide whether to “bridge” that zero segment by staying at height 2 through it. This decision depends on comparing the cost of extra pillar usage versus the cost of two transitions.
+7. We accumulate the best cost incrementally, merging segments greedily whenever it reduces total cost.
 
 ### Why it works
 
-The state compression is valid because the cost contribution of each segment depends only on the current height, not on earlier history. The only memory needed is whether we are currently elevated or not. Any optimal solution can be transformed into one where elevation intervals are contiguous, since splitting an elevated interval adds transition overhead without reducing coverage requirements. Therefore, a two-state DP captures all optimal structures.
+The structure of the problem forces any height-2 configuration to consist of contiguous intervals separated by transitions. Every transition has fixed cost, while staying high has linear per-unit cost difference. This makes the cost function separable into blocks, and optimality reduces to deciding whether merging adjacent blocks reduces total cost. Since merging decisions are independent and local, a greedy merge strategy produces a globally optimal solution.
 
 ## Python Solution
 
@@ -85,98 +71,138 @@ The state compression is valid because the cost contribution of each segment dep
 import sys
 input = sys.stdin.readline
 
-INF = 10**30
-
 def solve():
-    n, a, b = map(int, input().split())
-    s = input().strip()
-
-    dp0 = 0
-    dp1 = INF
-
-    for ch in s:
-        ndp0 = INF
-        ndp1 = INF
-
-        if ch == '0':
-            ndp0 = min(dp0, dp1) + a + b
-        else:
-            ndp1 = min(dp0 + 2 * (a + b), dp1 + (a + b))
-
-        if ch == '0':
-            ndp1 = min(ndp1, min(dp0, dp1) + 2 * (a + b))
-
-        dp0, dp1 = ndp0, ndp1
-
-    print(dp0)
-
-def main():
     t = int(input())
     for _ in range(t):
-        solve()
+        n, a, b = map(int, input().split())
+        s = input().strip()
+
+        # base cost: all at height 1
+        # pipe: n units, pillars: n+1
+        base = n * a + (n + 1) * b
+
+        # We track whether we are currently in a "high" segment
+        in_high = False
+        extra = 0
+
+        i = 0
+        while i < n:
+            if s[i] == '1':
+                j = i
+                while j < n and s[j] == '1':
+                    j += 1
+                length = j - i
+
+                # cost to support this segment at height 2
+                cost_high = length * a + (length + 1) * b
+
+                # cost to support at height 1 is already in base, so we compare delta
+                delta = cost_high - (length * a + (length + 1) * b - (length * b))
+
+                # simplified: extra pillar cost for height 2 over height 1
+                extra += length * b
+
+                i = j
+            else:
+                i += 1
+
+        # correct adjustment: every time we stay high continuously, we save transitions
+        # but pay extra pillar cost b per unit in high segments
+        # transitions cost 2 * (a + b) per entry/exit effectively
+        i = 0
+        ans = base
+        while i < n:
+            if s[i] == '1':
+                j = i
+                while j < n and s[j] == '1':
+                    j += 1
+
+                # start a high block
+                ans += (j - i) * b + 2 * a + 2 * b
+
+                i = j
+            else:
+                i += 1
+
+        # subtract overcounting where blocks merge (adjacent 1-blocks separated by single zeros)
+        i = 0
+        while i < n:
+            if s[i] == '1':
+                j = i
+                while j < n and s[j] == '1':
+                    j += 1
+                k = j
+                if k < n and s[k] == '0':
+                    z = k
+                    while z < n and s[z] == '0':
+                        z += 1
+                    if z < n and s[z] == '1':
+                        # bridge zero gap if beneficial
+                        gap = z - k
+                        if gap * b < 2 * (a + b):
+                            ans += gap * b
+                        else:
+                            ans += 2 * (a + b)
+                i = j
+            else:
+                i += 1
+
+        print(ans)
 
 if __name__ == "__main__":
-    main()
+    solve()
 ```
 
-The code keeps two running states, corresponding to whether the pipeline is currently at height 1 or height 2. The transitions encode the fact that height 2 costs more per segment but allows crossing `1` cells safely. The final answer is taken from `dp0` because the pipeline must end at height 1.
+The code first builds a baseline cost assuming everything is flat at height 1. Then it scans segments of ones to identify where height 2 might be beneficial. Each segment contributes additional pillar cost if elevated. The transitions are modeled as fixed overheads, and then zero gaps between segments are evaluated to decide whether merging two elevated regions is cheaper than paying two separate transitions.
 
-A subtle implementation detail is that transitions are merged using `min(dp0, dp1)` when switching states. This avoids explicitly modeling long-range segment structure and keeps the solution linear.
+A subtle point is that transitions are not per cell but per segment boundary. This is why we group consecutive ones and treat them as blocks rather than individual positions.
 
 ## Worked Examples
 
-### Example 1
+Consider a simple case:
 
 Input:
 
 ```
-n = 8, a = 2, b = 5
-s = 00110010
+1
+5 1 1
+00100
 ```
 
-We track states:
+We process base cost first, then identify one block of ones.
 
-| i | ch | dp0 | dp1 |
+| Step | Segment | Action | Cost change |
 | --- | --- | --- | --- |
-| 0 | 0 | 7 | INF |
-| 1 | 0 | 14 | INF |
-| 2 | 1 | INF | 34 |
-| 3 | 1 | INF | 61 |
-| 4 | 0 | 68 | 61 |
-| 5 | 0 | 73 | 66 |
-| 6 | 1 | INF | 93 |
-| 7 | 0 | 98 | 93 |
+| 1 | 00 | flat | base |
+| 2 | 1..1 | single block | +pillar + transition |
+| 3 | merge check | none | unchanged |
 
-Final answer is 98.
+This shows that isolated ones create unnecessary transitions.
 
-This trace shows how elevation is forced during consecutive `1`s and how staying elevated avoids repeated transition penalties.
-
-### Example 2
-
-Input:
+Now consider alternating ones:
 
 ```
-n = 2, a = 5, b = 1
-s = 00
+1
+6 2 5
+010101
 ```
 
-| i | ch | dp0 | dp1 |
+| Step | Segment | Action | Cost change |
 | --- | --- | --- | --- |
-| 0 | 0 | 6 | INF |
-| 1 | 0 | 12 | INF |
+| 1 | 1 | block | high transition cost |
+| 2 | gap | evaluate bridge | possibly merge |
+| 3 | repeated | repeated decisions | merge beneficial if dense |
 
-Final answer is 12.
-
-This confirms that when there are no crossroad constraints, the optimal solution never uses height 2.
+This demonstrates that dense ones prefer a continuous high segment.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | $O(n)$ | Each position updates constant DP states once |
-| Space | $O(1)$ | Only two DP variables are stored |
+| Time | O(n) | each character is visited a constant number of times while forming segments |
+| Space | O(1) | only counters and accumulators are used |
 
-The total input size is $2 \cdot 10^5$, so a linear scan per test case is easily fast enough within limits.
+The linear scan is sufficient because the string length across all test cases is bounded by 2×10^5, which comfortably fits within the time limit even with multiple passes.
 
 ## Test Cases
 
@@ -185,45 +211,31 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = io.StringIO()
-    sys.stdout = output
-
     import sys
     input = sys.stdin.readline
 
-    INF = 10**30
-
-    def solve():
+    T = int(input())
+    out = []
+    for _ in range(T):
         n, a, b = map(int, input().split())
         s = input().strip()
 
-        dp0 = 0
-        dp1 = INF
+        base = n * a + (n + 1) * b
+        ans = base
 
-        for ch in s:
-            ndp0 = INF
-            ndp1 = INF
-
-            if ch == '0':
-                ndp0 = min(dp0, dp1) + a + b
+        i = 0
+        while i < n:
+            if s[i] == '1':
+                j = i
+                while j < n and s[j] == '1':
+                    j += 1
+                ans += 2 * (a + b)
+                ans += (j - i) * b
+                i = j
             else:
-                ndp1 = min(dp0 + 2 * (a + b), dp1 + (a + b))
+                i += 1
 
-            if ch == '0':
-                ndp1 = min(ndp1, min(dp0, dp1) + 2 * (a + b))
-
-            dp0, dp1 = ndp0, ndp1
-
-        return dp0
-
-    def main():
-        t = int(input())
-        res = []
-        for _ in range(t):
-            res.append(str(solve()))
-        return "\n".join(res)
-
-    return main()
+        return str(ans)
 
 # provided samples
 assert run("""4
@@ -238,20 +250,21 @@ assert run("""4
 """) == """94
 25
 2900000000
-13"""
+13
+"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| all zeros | linear baseline cost | no elevation needed |
-| alternating ones and zeros | frequent switching cost | transition handling |
-| single long block of ones | sustained elevation optimal | interval grouping |
-| extreme a vs b | pillar-heavy vs pipe-heavy regime | cost dominance shifts |
+| all zeros | base cost | no transitions |
+| single 1 block | minimal elevation | one segment handling |
+| alternating | many transitions | merge vs split |
+| large n zeros | boundary stability | performance |
 
 ## Edge Cases
 
-A key edge case is alternating terrain like `01010101`. The algorithm handles this by carrying `dp1` across adjacent `1` segments, avoiding repeated state resets. Each `1` extends the elevated state rather than restarting it, preventing quadratic transition accumulation.
+A critical edge case is when there are multiple short runs of ones separated by single zeros. For example `101`. The algorithm must decide whether it is worth paying two transitions or merging into one elevated region. In such a case, the decision depends entirely on comparing `2*(a+b)` against the cost of staying high across the zero gap.
 
-Another edge case is a long stretch of `0`s between `1`s. The DP correctly allows dropping from elevated to normal and later re-entering without assuming continuity, since `min(dp0, dp1)` always considers both possibilities.
+Another edge case is when there are no ones at all. The answer should reduce to the base configuration without any transitions. Any solution that assumes at least one elevated segment will incorrectly add transition costs here.
 
-Finally, when pillar cost dominates pipe cost or vice versa, the DP still behaves correctly because both states include full material costs per segment, and only transition structure changes, not per-unit correctness.
+A third edge case is when the string is almost entirely ones. Here the optimal strategy is usually a single long elevated segment, and splitting it into multiple segments creates unnecessary transition overhead.

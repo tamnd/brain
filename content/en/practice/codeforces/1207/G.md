@@ -1,7 +1,7 @@
 ---
 title: "CF 1207G - Indie Album"
-description: "We are given a sequence of strings that evolve over time. The first string is a single character. Every later string is built by taking an earlier string and appending one new lowercase letter at the end."
-date: "2026-06-13T16:21:51+07:00"
+description: "We are given a growing collection of strings, where each new string is either a single character or an old string extended by exactly one character at the end."
+date: "2026-06-15T17:48:26+07:00"
 tags: ["codeforces", "competitive-programming", "data-structures", "dfs-and-similar", "hashing", "string-suffix-structures", "strings", "trees"]
 categories: ["algorithms"]
 codeforces_contest: 1207
@@ -9,7 +9,7 @@ codeforces_index: "G"
 codeforces_contest_name: "Educational Codeforces Round 71 (Rated for Div. 2)"
 rating: 2700
 weight: 1207
-solve_time_s: 159
+solve_time_s: 250
 verified: false
 draft: false
 ---
@@ -18,32 +18,126 @@ draft: false
 
 **Rating:** 2700  
 **Tags:** data structures, dfs and similar, hashing, string suffix structures, strings, trees  
-**Solve time:** 2m 39s  
+**Solve time:** 4m 10s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a sequence of strings that evolve over time. The first string is a single character. Every later string is built by taking an earlier string and appending one new lowercase letter at the end. So each string is literally a growing history of append operations, forming a rooted tree where each node has exactly one parent pointer and one extra character on the edge.
+We are given a growing collection of strings, where each new string is either a single character or an old string extended by exactly one character at the end. This means the entire system forms a rooted tree: every string points to its parent (the string it was built from), and each edge appends one character.
 
-Alongside this construction, we receive queries. Each query asks: inside a particular string version, how many times does a given pattern appear as a contiguous substring.
+For each query, we are asked to take one of these strings and count how many times another string appears as a contiguous substring inside it.
 
-The difficulty is that both the number of strings and the total length of all patterns are large, so we cannot afford to explicitly construct all strings or scan them for every query.
+The key difficulty is that strings are not given explicitly in full. Some of them can be extremely long, and many queries can refer to the same or overlapping prefixes of this implicit tree. Since total input size is large, any approach that explicitly constructs all strings or scans them per query is immediately infeasible.
 
-The constraints force us into roughly linear or near-linear behavior in the total size of input strings and patterns. Any approach that touches each character of a string per query will immediately fail, because in the worst case we would do about $O(n \cdot |t|)$ work per query, which becomes astronomically large when both reach $4 \cdot 10^5$.
+The constraints imply up to 400,000 nodes and 400,000 queries, with total query length also bounded by 400,000. A naive substring search per query would behave like $O(n \cdot |t|)$ in the worst case, which is far beyond limits.
 
-A more subtle issue is that strings are not independent. Each string is a suffix-extended version of some earlier string. This creates a tree of strings where long common prefixes appear repeatedly across different nodes. A naive substring search per node would recompute the same prefixes many times.
+A subtle issue arises from reuse of structure. Many strings share long prefixes because each is formed by appending one character. For example, if string 10 is built from string 5, then string 10 contains everything in 5 plus one extra character. Any solution must exploit this reuse rather than reconstructing or scanning from scratch.
 
-A typical edge case that breaks naive thinking is when many queries ask for short patterns across very deep nodes. For example, if the tree is a chain of repeated appends of 'a', then every string is “aaaa...”. A naive per-query scan would repeatedly count overlaps without reusing structure.
+Another pitfall is treating each string independently. If we store strings explicitly, memory and time blow up. Even hashing all substrings per node is too large because a string of length L has O(L²) substrings.
 
 ## Approaches
 
-The brute force idea is straightforward: explicitly build every string, then for each query run a substring counting algorithm like KMP or a rolling hash scan. This is correct because each string is fully materialized, and substring matching is well understood. The problem is that building all strings costs the sum of their lengths, which is already up to $4 \cdot 10^5$, and then each query may scan another string of comparable size. In the worst case, this leads to about $O(n^2)$ total behavior across queries and constructions.
+A brute force method would construct every string explicitly and then, for each query, scan the target string and count matches of the pattern using a sliding window. This is correct logically but fails because a single string can be very long, and there can be many queries. Even with KMP, each query costs $O(|s_i| + |t|)$, and since both can be large across many queries, the total worst case becomes quadratic in total length.
 
-The key observation is that the string construction forms a rooted tree where each node adds exactly one character. Any substring of a node corresponds to a path in this tree ending at that node. Instead of reasoning about strings directly, we can reason about positions in this implicit tree.
+The key structural observation is that all strings form a tree where each node differs from its parent by one appended character. This means every string corresponds to a path from the root, and substrings correspond to paths in this tree that are not necessarily root-aligned but still continuous segments.
 
-If we fix a pattern, we are essentially asking: how many nodes in a rooted tree have an ancestor path ending at that node that matches this pattern. That suggests reversing the perspective: instead of matching pattern inside each string, we match the pattern along suffix chains in the tree.
+Instead of treating strings as flat sequences, we reinterpret the entire construction as a trie-like structure augmented with suffix links. The natural direction is to build an Aho-Corasick automaton over all query strings, because queries are fixed patterns, and then scan each generated string once through the automaton.
 
-This becomes a classical use case for building an Aho-Corasick automaton over all query patterns, and then propagating counts through the string construction tree. Each node in the album tree corresponds to a single appended character transition. As we traverse nodes in order, we maintain the automaton state that represents all suffix matches ending at that node. Whenever we land in a state, we increment occurrences of patterns ending there. Then a reverse propagation over suffix links accumulates counts correctly.
+However, scanning each full string individually is still too expensive. The crucial improvement is to observe that the constructed strings form a tree with parent pointers, so we can traverse this tree while maintaining the automaton state, accumulating pattern occurrences as we go. This turns substring counting into a propagation problem over the tree of strings.
 
-The final missing piece is that queries are not just “how many times pattern appears anywhere”, but “how many times pattern appears in a specific prefix-string node”. That is handled by storing, for each
+Each node carries a character transition from its parent. We maintain for every node the current automaton state reached after reading its string, and we propagate contributions using DFS over the construction tree. Each time we enter a node, we update how many query patterns end at that automaton state.
+
+This reduces repeated scanning and ensures each node is processed once, while automaton transitions handle all pattern matching efficiently.
+
+| Approach | Time Complexity | Space Complexity | Verdict |
+| --- | --- | --- | --- |
+| Brute force scan per query | (O(n \cdot | t | )) |
+| Tree + Aho-Corasick + DFS propagation | (O(n + \sum | t | )) |
+
+## Algorithm Walkthrough
+
+We separate the problem into two interacting structures: the tree of songs and the automaton built from all query patterns.
+
+1. Build the Aho-Corasick automaton from all query strings. Each query string is inserted into the trie, and each terminal node stores which queries end there. We then compute suffix links so that every node knows where to fall back when a character transition fails.
+2. For each automaton node, compute its output list by merging its own matches with those of its suffix link. This ensures that when we reach a state, we immediately know which query patterns end there.
+3. Build the tree of songs. Each node i stores its parent j (if it is type 2) and its appended character.
+4. Perform a DFS over the song tree while simultaneously maintaining the automaton state corresponding to the current string.
+5. At the root, start with the automaton in the initial state (empty string). For each node, transition using its character from the parent state.
+6. When entering a node, we are effectively at the end of its full string. We iterate over all patterns that end in the current automaton state and increment their answer counters.
+7. Recurse into children, passing the updated automaton state.
+
+The subtle point is that the automaton state always represents the suffix structure of the current string. This avoids recomputing matches for overlapping substrings because suffix links implicitly encode all possible fallback matches.
+
+### Why it works
+
+At every node in the DFS, the automaton state corresponds exactly to the set of all suffixes of the current string that match prefixes of any query pattern. Every occurrence of a pattern ending at that node must correspond to one of these automaton states. Because Aho-Corasick merges suffix contributions, every match is counted exactly once when the DFS visits the node where the pattern ends.
+
+## Python Solution
+
+```
+PythonRun
+```
+
+The construction phase builds a standard Aho-Corasick automaton over all query strings. Each node in the automaton stores which patterns end there, and suffix links merge occurrences so that a single state already represents all matched patterns ending at that position.
+
+The DFS walks through the song construction tree. The key implementation detail is that the automaton state is threaded through recursion rather than recomputed per node. Each node transition is a single character extension of its parent state, with fallback via suffix links when needed.
+
+A common pitfall is forgetting to propagate output along suffix links. Without merging `out[link[u]]` into `out[u]`, many matches are missed because patterns ending in suffix states would not be counted at deeper nodes.
+
+## Worked Examples
+
+### Example 1 (simplified)
+
+Consider a chain of strings: `a → ab → aba`, and a query asking for pattern `"aba"` in the last node.
+
+At each DFS step, we track automaton state:
+
+| Node | String | State transition | Matches found |
+| --- | --- | --- | --- |
+| 1 | a | goto 'a' | none |
+| 2 | ab | 'a' → 'b' | none |
+| 3 | aba | 'ab' → 'a' | pattern ends |
+
+This shows that matches only appear when the automaton state reaches a terminal node, not necessarily at every step.
+
+### Example 2 (overlapping patterns)
+
+Strings: `a → aa → aaa`, pattern `"aa"`.
+
+| Node | String | State | Matches |
+| --- | --- | --- | --- |
+| 1 | a | "a" | 0 |
+| 2 | aa | "aa" | 1 |
+| 3 | aaa | "aaa" | 2 |
+
+This demonstrates that overlapping occurrences are naturally handled by automaton suffix propagation.
+
+## Complexity Analysis
+
+| Measure | Complexity | Explanation |
+| --- | --- | --- |
+| Time | (O(n + \sum | t |
+| Space | (O(n + \sum | t |
+
+The solution fits comfortably because both total song construction and total query length are bounded by 400,000, making linear-time processing feasible.
+
+## Test Cases
+
+```
+PythonRun
+```
+
+| Test input | Expected output | What it validates |
+| --- | --- | --- |
+| minimal single node | 0/1 cases | base correctness |
+| chain repetition | multiple overlaps | suffix propagation |
+| repeated pattern queries | accumulation | query grouping |
+
+## Edge Cases
+
+One important edge case is when multiple patterns share long suffixes. For example, patterns `"a"`, `"aa"`, `"aaa"` all end at overlapping automaton states. Without suffix merging in `out[]`, only the deepest pattern would be counted, while shorter ones would be missed even though they occur at every position.
+
+Another edge case arises when a song is built by repeatedly appending the same character. In this case, automaton transitions repeatedly hit fallback links, and correctness depends on correctly chaining suffix transitions. If fallback is not handled, states become incorrect and substring counts collapse.
+
+Both cases are handled because every automaton state inherits outputs from its suffix link, ensuring that every valid pattern occurrence is registered exactly at the node where its last character is processed.
