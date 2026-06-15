@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8485 problems, 4105 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8487 problems, 4106 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8485 problems, 4105 verified.**
+**1472 contests, 8487 problems, 4106 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 665 problems, 285 verified
+## 2020 — 159 contests, 667 problems, 286 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -701,7 +701,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1292](1292/) | [Codeforces Round 614 (Div. 1)](https://codeforces.com/contest/1292) | 5 | 2/5 | Div. 1 | 1400-3500 |
 | [1293](1293/) | [Codeforces Round 614 (Div. 2)](https://codeforces.com/contest/1293) | 2 | 0/2 | Div. 2 | 1000-1100 |
 | [1294](1294/) | [Codeforces Round 615 (Div. 3)](https://codeforces.com/contest/1294) | 4 | 3/4 | Div. 3 | 800-2000 |
-| [1295](1295/) | [Educational Codeforces Round 81 (Rated for Div. 2)](https://codeforces.com/contest/1295) | 3 | 2/3 | Div. 2 | 1600-2700 |
+| [1295](1295/) | [Educational Codeforces Round 81 (Rated for Div. 2)](https://codeforces.com/contest/1295) | 5 | 3/5 | Div. 2 | 1600-2700 |
 | [1296](1296/) | [Codeforces Round 617 (Div. 3)](https://codeforces.com/contest/1296) | 3 | 2/3 | Div. 3 | 800-1800 |
 | [1297](1297/) | [Kotlin Heroes: Episode 3](https://codeforces.com/contest/1297) | 4 | 1/4 | Kotlin | - |
 | [1299](1299/) | [Codeforces Round 618 (Div. 1)](https://codeforces.com/contest/1299) | 2 | 1/2 | Div. 1 | 1800-2100 |
