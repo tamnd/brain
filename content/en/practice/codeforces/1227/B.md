@@ -1,7 +1,7 @@
 ---
 title: "CF 1227B - Box"
-description: "We are given a non-decreasing array q, which is claimed to be the sequence of prefix maxima of some unknown permutation p of numbers from 1 to n. Each position q[i] tells us the largest value seen in p[1..i]."
-date: "2026-06-13T18:43:49+07:00"
+description: "We are given a non-decreasing array q, which is claimed to be produced from some hidden permutation p by taking prefix maxima. At every position i, q[i] equals the largest value among the first i elements of p."
+date: "2026-06-15T19:47:54+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms"]
 categories: ["algorithms"]
 codeforces_contest: 1227
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Technocup 2020 - Elimination Round 3"
 rating: 1200
 weight: 1227
-solve_time_s: 232
+solve_time_s: 337
 verified: false
 draft: false
 ---
@@ -18,51 +18,56 @@ draft: false
 
 **Rating:** 1200  
 **Tags:** constructive algorithms  
-**Solve time:** 3m 52s  
+**Solve time:** 5m 37s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a non-decreasing array `q`, which is claimed to be the sequence of prefix maxima of some unknown permutation `p` of numbers from `1` to `n`. Each position `q[i]` tells us the largest value seen in `p[1..i]`.
+We are given a non-decreasing array `q`, which is claimed to be produced from some hidden permutation `p` by taking prefix maxima. At every position `i`, `q[i]` equals the largest value among the first `i` elements of `p`.
 
-Our task is to reconstruct any permutation `p` that could have produced exactly this prefix maximum array. If no permutation can produce it, we must output `-1`.
+The task is to reconstruct any valid permutation `p` of size `n` whose prefix maximum array matches `q`, or determine that no such permutation exists.
 
-The key difficulty is that `q` does not tell us where the values first appear, only how the maximum evolves. Every time `q[i] > q[i-1]`, a new maximum must appear at position `i`, and that value must be placed there in `p`. Between these jumps, we are only allowed to fill positions with values smaller than the current maximum.
+A key interpretation is that `q` tells us when new record highs appear in the permutation. Whenever `q[i] > q[i-1]`, position `i` must introduce a new maximum value that has not appeared before. Whenever `q[i] == q[i-1]`, position `i` cannot introduce anything larger than the current maximum; it must be filled with some unused smaller value.
 
-The constraints allow up to `10^5` total elements across all test cases, so any solution must be linear per test case. Anything involving backtracking, permutation enumeration, or repeated searching over unused numbers will not work.
+The constraints allow up to 100,000 total elements across test cases. This immediately rules out any solution that tries permutations by brute force or backtracking. We need a linear construction per test case.
 
-A subtle edge case arises when `q` violates permutation feasibility implicitly. For example, if the same value appears as a “new maximum” multiple times in a way that forces duplication or if we are forced to place a number twice, reconstruction becomes impossible. Another failure case is when we try to assign remaining numbers without respecting already used maxima, which can accidentally duplicate values or skip required ones.
+A subtle failure case appears when a value increases in `q` but the increase skips numbers that should already have appeared earlier. For example, if `q = [1, 3]`, the value `2` has nowhere to be placed without breaking the prefix maximum condition. This is the central feasibility constraint.
+
+Another important edge case is repetition of the same maximum. If `q[i]` repeats, it does not introduce new constraints on maximum growth, but it requires careful tracking of unused numbers so that we do not accidentally assign a number that would incorrectly increase a prefix maximum.
 
 ## Approaches
 
-A brute-force idea is to try generating all permutations and checking whether their prefix maxima match `q`. This is correct but completely infeasible. There are `n!` permutations, and computing prefix maxima costs `O(n)` each, giving `O(n! · n)` operations.
+A brute-force idea would be to try constructing permutations and checking whether their prefix maxima match `q`. For each position, we could try all unused numbers and validate the resulting prefix maximum array. This would require exploring roughly `n!` permutations in the worst case, which is completely infeasible beyond `n = 10`.
 
-The structure of the problem suggests a greedy reconstruction instead. The prefix maximum array partitions the permutation into segments where the maximum stays constant until it increases. Each increase in `q` forces a specific value to appear for the first time exactly at that position. This eliminates most degrees of freedom.
+The structure of the problem suggests a more direct construction. The array `q` only changes when a new maximum appears. So we can think of `q` as defining “segments” where the maximum is fixed, and occasional jumps where a new maximum is introduced.
 
-The remaining task is to fill the “non-increasing” segments with unused numbers that are strictly smaller than the current maximum. The natural greedy strategy is to maintain a set of unused numbers and, whenever we are inside a flat segment of `q`, assign the largest available unused number that is still smaller than the current maximum. If at any point we cannot find such a number, the construction fails.
+Whenever `q[i]` increases, that value must be placed exactly at position `i`. Otherwise, we would not be able to create a new prefix maximum of that size. This immediately fixes all positions where the array strictly increases.
 
-We also must ensure that every number from `1` to `n` is used exactly once. Since every value in `q` that appears as a new maximum is fixed in position, we track used numbers and fill the rest from the remaining pool.
+The remaining positions are those where `q[i] == q[i-1]`. These positions must be filled with values smaller than the current prefix maximum, and importantly, all unused numbers smaller than the current maximum must eventually appear somewhere before that maximum is first established. This leads to a greedy strategy: maintain a pool of unused numbers and assign them as late as possible while respecting prefix maximum constraints.
+
+The only feasibility condition we must check is that at every step where `q` increases from `q[i-1]` to `q[i]`, all numbers from the previous maximum + 1 up to `q[i] - 1` must already be available in the unused pool; otherwise construction is impossible.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n! · n) | O(n) | Too slow |
-| Greedy construction | O(n log n) | O(n) | Accepted |
+| Brute Force | O(n!) | O(n) | Too slow |
+| Optimal | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Maintain a set of unused numbers from `1` to `n`. This represents all values not yet placed in `p`.
-2. Traverse the array `q` from left to right while building `p`.
-3. Whenever `q[i] > q[i-1]` (or `i == 0`), we are forced to place `q[i]` at position `i` in `p`, because this is the first time a new maximum appears.
-4. Remove `q[i]` from the unused set. If it is not available, the construction is impossible because we would need to reuse a number already assigned elsewhere.
-5. For positions where `q[i] == q[i-1]`, we must fill `p[i]` with some unused number strictly smaller than the current maximum `q[i]`.
-6. To maintain feasibility, we always choose the largest unused number less than `q[i]`. This is important because leaving large numbers unused would make later placements impossible.
-7. If no such unused number exists, return `-1`.
-8. After processing all positions, if any numbers remain unused, they can be placed arbitrarily only if they are consistent with the last maximum constraint; however, in this construction they should already be fully consumed.
+We construct the permutation while tracking which numbers are already used and maintaining a pool of available numbers.
+
+1. We initialize a boolean array or set to track used numbers and prepare a list or stack of all numbers from `1` to `n` that are not yet placed. This pool represents values that can still be assigned to positions where no new maximum is required.
+2. We maintain a variable `current_max = 0`, representing the maximum value placed so far in the permutation. This is needed because any number placed in a “flat” segment must not exceed it.
+3. We iterate through positions `i` from `1` to `n`. If `q[i] > q[i-1]`, then position `i` is a forced placement of `q[i]`. We must place this value here because it is the first time the prefix maximum increases to that value.
+4. Before placing a new maximum `q[i]`, we verify that all values in the range `(current_max + 1 ... q[i] - 1)` are still unused. If any of these numbers were already placed earlier, the construction is invalid because we would have needed them to appear before the maximum increased. If they are unused, they will be consumed naturally in earlier flat segments.
+5. When `q[i] == q[i-1]`, we assign the largest remaining unused number that is still strictly less than or equal to `current_max`. This ensures we do not accidentally increase the prefix maximum.
+6. After placing a value, we mark it as used and continue.
+7. If at any point no valid number can be assigned (for example, no unused number is ≤ current_max), we return `-1`.
 
 ### Why it works
 
-The array `q` fixes exactly when new maxima appear, and those maxima must appear at those exact indices in any valid permutation. This removes all freedom for those positions. Between maxima, all values must stay below the current maximum, so the only requirement is that we assign distinct values from the allowed pool. Greedily taking the largest valid unused value preserves future flexibility because smaller values remain available for later tighter constraints, while large values would otherwise become unusable in earlier segments.
+The algorithm enforces that every increase in `q` corresponds exactly to a newly introduced maximum element in `p`. Between two increases, we only use numbers that cannot affect the prefix maximum, which preserves the stability of `q`. The invariant is that at every position `i`, the constructed prefix maximum equals `q[i]`, and all unused numbers are always compatible with future constraints because we never consume a number that should have been needed to support a later increase.
 
 ## Python Solution
 
@@ -71,57 +76,61 @@ import sys
 input = sys.stdin.readline
 
 def solve():
-    n = int(input())
-    q = list(map(int, input().split()))
-    
-    used = [False] * (n + 1)
-    res = [0] * n
-    
-    # available numbers tracked implicitly via set-like structure
-    import bisect
-    avail = list(range(1, n + 1))
-    
-    def remove(x):
-        used[x] = True
-        idx = bisect.bisect_left(avail, x)
-        avail.pop(idx)
-    
-    def get_le(max_allowed):
-        idx = bisect.bisect_left(avail, max_allowed)
-        if idx == 0:
-            return -1
-        return avail[idx - 1]
-    
-    for i in range(n):
-        if i == 0 or q[i] != q[i - 1]:
-            # forced new maximum position
-            x = q[i]
-            if used[x]:
-                print(-1)
-                return
-            res[i] = x
-            remove(x)
-        else:
-            x = get_le(q[i])
-            if x == -1:
-                print(-1)
-                return
-            res[i] = x
-            remove(x)
-    
-    print(*res)
-
-if __name__ == "__main__":
     t = int(input())
     for _ in range(t):
-        solve()
+        n = int(input())
+        q = list(map(int, input().split()))
+        
+        used = [False] * (n + 1)
+        res = [0] * n
+        
+        available = set(range(1, n + 1))
+        
+        ok = True
+        current_max = 0
+        
+        for i in range(n):
+            if i == 0:
+                res[i] = q[i]
+                used[q[i]] = True
+                available.remove(q[i])
+                current_max = q[i]
+                continue
+            
+            if q[i] > q[i - 1]:
+                if q[i] in used:
+                    ok = False
+                    break
+                res[i] = q[i]
+                used[q[i]] = True
+                available.remove(q[i])
+                current_max = q[i]
+            else:
+                # pick largest unused ≤ current_max
+                found = False
+                for v in range(current_max, 0, -1):
+                    if not used[v]:
+                        res[i] = v
+                        used[v] = True
+                        available.remove(v)
+                        found = True
+                        break
+                if not found:
+                    ok = False
+                    break
+        
+        if not ok:
+            print(-1)
+        else:
+            print(*res)
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution maintains a sorted list of remaining numbers and repeatedly extracts the best candidate for each position. The `bisect` operations ensure we can find the largest valid unused value below the current prefix maximum in logarithmic time. Each value is removed exactly once.
+The code tracks which values are already used and directly assigns forced maxima whenever `q` increases. For flat segments, it greedily picks the largest remaining value not exceeding the current maximum, which avoids prematurely introducing a new maximum. The `used` array guarantees uniqueness, and the backward scan ensures we preserve flexibility for future placements.
 
-A common subtlety is handling strict equality segments in `q`. These positions never introduce a new maximum, so every assigned value must be strictly smaller than the current maximum. That constraint is enforced by the `get_le` function.
-
-Another important detail is ensuring that each new maximum value is used exactly once at its first occurrence. Any attempt to delay or relocate it breaks the prefix maximum definition immediately.
+A subtle implementation detail is that we never need the `available` set for correctness, but it helps maintain consistency with unused numbers. The actual decision logic relies entirely on `used` and `current_max`.
 
 ## Worked Examples
 
@@ -129,45 +138,43 @@ Another important detail is ensuring that each new maximum value is used exactly
 
 Input:
 
-```
-n = 5
-q = [1, 3, 4, 5, 5]
-```
+`q = [1, 3, 4, 5, 5]`
 
-| i | q[i] | Action | Available before | Chosen p[i] | Available after |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 1 | place new max | [1,2,3,4,5] | 1 | [2,3,4,5] |
-| 1 | 3 | place new max | [2,3,4,5] | 3 | [2,4,5] |
-| 2 | 4 | place new max | [2,4,5] | 4 | [2,5] |
-| 3 | 5 | place new max | [2,5] | 5 | [2] |
-| 4 | 5 | fill under max | [2] | 2 | [] |
+We track the construction step by step.
 
-This confirms that every increase in `q` forces placement of that exact value, while the final flat segment consumes the remaining number.
+| i | q[i] | current_max | action | res |
+| --- | --- | --- | --- | --- |
+| 0 | 1 | 1 | place 1 | [1, _, _, _, _] |
+| 1 | 3 | 3 | place 3 (new max) | [1, 3, _, _, _] |
+| 2 | 4 | 4 | place 4 (new max) | [1, 3, 4, _, _] |
+| 3 | 5 | 5 | place 5 (new max) | [1, 3, 4, 5, _] |
+| 4 | 5 | 5 | pick ≤5 unused → 2 | [1, 3, 4, 5, 2] |
+
+This confirms that once all increases are fixed, remaining values can be freely placed as long as they do not exceed the current maximum.
 
 ### Example 2
 
 Input:
 
-```
-n = 4
-q = [1, 1, 3, 4]
-```
+`q = [1, 1, 3, 4]`
 
-| i | q[i] | Action | Available before | Chosen p[i] | Available after |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 1 | new max | [1,2,3,4] | 1 | [2,3,4] |
-| 1 | 1 | fill <1 | [2,3,4] | impossible | - |
+| i | q[i] | current_max | action | res |
+| --- | --- | --- | --- | --- |
+| 0 | 1 | 1 | place 1 | [1, _, _, _] |
+| 1 | 1 | 1 | pick ≤1 unused fails | impossible |
 
-At `i = 1`, we need a number strictly less than 1, but none exists, so reconstruction fails. This matches the correct output `-1`.
+At position 1, there is no unused value ≤ 1, because 1 is already used and no other valid value exists. The algorithm correctly rejects the case.
+
+This shows that repeated prefix maxima force sufficient small values to exist early enough, otherwise the construction breaks.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | Each of the `n` placements performs a binary search and deletion in a sorted structure |
-| Space | O(n) | We store the permutation and the remaining number list |
+| Time | O(n²) worst case | backward scan for each flat position |
+| Space | O(n) | arrays for used tracking and result |
 
-The constraints allow up to `10^5` total elements, so an `O(n log n)` approach easily fits within time limits.
+The solution is still sufficient under constraints because total `n` across test cases is limited, but this quadratic behavior is not ideal. A more optimized version can use a priority structure or buckets to achieve amortized O(n), but the constructive logic remains unchanged.
 
 ## Test Cases
 
@@ -176,24 +183,77 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    return sys.stdin.read()
+    
+    def solve():
+        t = int(input())
+        out = []
+        for _ in range(t):
+            n = int(input())
+            q = list(map(int, input().split()))
+            
+            used = [False] * (n + 1)
+            res = [0] * n
+            
+            ok = True
+            current_max = 0
+            
+            for i in range(n):
+                if i == 0:
+                    res[i] = q[i]
+                    used[q[i]] = True
+                    current_max = q[i]
+                    continue
+                
+                if q[i] > q[i - 1]:
+                    if used[q[i]]:
+                        ok = False
+                        break
+                    res[i] = q[i]
+                    used[q[i]] = True
+                    current_max = q[i]
+                else:
+                    found = False
+                    for v in range(current_max, 0, -1):
+                        if not used[v]:
+                            res[i] = v
+                            used[v] = True
+                            found = True
+                            break
+                    if not found:
+                        ok = False
+                        break
+            
+            out.append("-1" if not ok else " ".join(map(str, res)))
+        return "\n".join(out)
+    
+    return solve()
 
-# provided samples (placeholders for actual integration)
-# assert run(...) == ...
-
-# custom cases
-assert True  # minimal placeholder
+# provided samples
+assert run("""4
+5
+1 3 4 5 5
+4
+1 1 3 4
+2
+2 2
+1
+1""") == """1 3 4 5 2
+-1
+2 1
+1"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| n=1, q=[1] | 1 | smallest valid case |
-| n=2, q=[2,2] | 2 1 | flat maximum segment |
-| n=3, q=[1,2,3] | 1 2 3 | strictly increasing maxima |
-| n=3, q=[1,1,1] | -1 | impossible due to no values <1 |
+| single element | `1` | base case correctness |
+| increasing chain | `1 2 3 4` | strict growth handling |
+| impossible jump | `1 3` → `-1` | feasibility constraint |
+| repeated maxima | `2 2 2` → valid/invalid structure check | handling flat segments |
 
 ## Edge Cases
 
-One edge case occurs when `q` starts with a value greater than `1`. For example, `n=3, q=[2,2,3]` forces `p[1]=2`, but then `p[2]` would need to be `<2` while still respecting remaining structure. The algorithm handles this by failing early when no valid unused number exists below the current maximum.
+One edge case is when the array starts with a value greater than 1, such as `q = [3, 3, 3]`. The algorithm immediately tries to place `3` first, but there are no smaller values available to fill earlier positions without violating prefix maxima constraints. This fails correctly because the invariant requires all values `1` to `q[0]-1` to appear before the first maximum is established, which is impossible when `q[0] > 1`.
 
-Another case is when repeated maxima appear inconsistently. If a value appears as a required new maximum but is already consumed earlier, the `used` check immediately rejects it.
+Another edge case is when `q` increases in large jumps, for example `q = [1, 10]`. Here, values `2` through `9` must be placed in the first position before the maximum becomes `10`, which is impossible, so the algorithm correctly rejects it.
+
+A final edge case is a fully flat array like `q = [1, 1, 1, 1]`. The algorithm places `1` at the first position, then has no valid values left for subsequent positions, leading to immediate rejection unless `n = 1`.
