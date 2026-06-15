@@ -1,26 +1,29 @@
 ---
 title: "Codeforces Round 590 (Div. 3)"
-description: "Solutions for Codeforces Round 590 (Div. 3) (contest 1234). 3/4 problems verified against sample I/O. Difficulty range: 800-2000."
-tags: ["codeforces", "competitive-programming", "math", "implementation", "data-structures"]
+description: "6 problems from Codeforces Round 590 (Div. 3) (contest 1234), difficulty 800-2000. 5/6 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "math", "implementation", "data-structures", "dp"]
 categories: ["algorithms"]
 contest_id: 1234
 contest_type: "Div. 3"
 rating_range: "800-2000"
-n_problems: 4
-n_verified: 3
-total_solve_s: 724
-date: "2026-06-13T19:10:00+07:00"
+n_problems: 6
+n_verified: 5
+total_solve_s: 1159
+contest_year: 2019
+date: "2026-06-13T20:04:27+07:00"
 weight: 1234
 draft: false
 ---
 
 # [Codeforces Round 590 (Div. 3)](https://codeforces.com/contest/1234)
 
-**Type:** Div. 3 | **Problems:** 4 | **Verified:** 3/4 | **Rating range:** 800-2000 | **Time:** 12m 4s
+Div. 3 | 6 problems | 5/6 verified | Difficulty 800-2000 | 19m 19s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [A](A/) | [Equalize Prices Again](https://codeforces.com/problemset/problem/1234/A) | 800 | math | 4m 6s | ✓ |
-| [B1](B1/) | [Social Network (easy version)](https://codeforces.com/problemset/problem/1234/B1) | 1000 | implementation | 1m 25s | ✓ |
-| [B2](B2/) | [Social Network (hard version)](https://codeforces.com/problemset/problem/1234/B2) | 1300 | data-structures, implementation | 4m 47s | ✗ |
-| [E](E/) | [Special Permutations](https://codeforces.com/problemset/problem/1234/E) | 2000 | math | 1m 46s | ✓ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Equalize Prices Again](https://codeforces.com/problemset/problem/1234/A) | 800 | math | 29,550 | 4m 6s | ✓ |
+| [B1](B1/) | [Social Network (easy version)](https://codeforces.com/problemset/problem/1234/B1) | 1000 | implementation | 19,765 | 1m 25s | ✓ |
+| [B2](B2/) | [Social Network (hard version)](https://codeforces.com/problemset/problem/1234/B2) | 1300 | data-structures, implementation | 18,442 | 5m 19s | ✓ |
+| [C](C/) | [Pipes](https://codeforces.com/problemset/problem/1234/C) | 1500 | dp, implementation | 13,484 | 3m 46s |  |
+| [D](D/) | [Distinct Characters Queries](https://codeforces.com/problemset/problem/1234/D) | 1600 | data-structures | 18,582 | 2m 57s | ✓ |
+| [E](E/) | [Special Permutations](https://codeforces.com/problemset/problem/1234/E) | 2000 | math | 2,977 | 1m 46s | ✓ |
