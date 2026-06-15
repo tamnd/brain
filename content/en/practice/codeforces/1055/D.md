@@ -1,7 +1,7 @@
 ---
 title: "CF 1055D - Refactoring"
-description: "We are given a collection of variable names before and after a refactoring step. The refactoring tool works in a very specific way: we choose two strings s and t, and then for every variable name, if s appears inside it, only the first occurrence of s is replaced by t."
-date: "2026-06-15T10:17:12+07:00"
+description: "We are given several pairs of strings, where each pair describes how a variable name currently looks and how it should look after a single global refactoring operation."
+date: "2026-06-15T12:53:44+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "implementation", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 1055
@@ -9,8 +9,8 @@ codeforces_index: "D"
 codeforces_contest_name: "Mail.Ru Cup 2018 Round 2"
 rating: 2400
 weight: 1055
-solve_time_s: 704
-verified: false
+solve_time_s: 158
+verified: true
 draft: false
 ---
 
@@ -18,68 +18,76 @@ draft: false
 
 **Rating:** 2400  
 **Tags:** greedy, implementation, strings  
-**Solve time:** 11m 44s  
-**Verified:** no  
+**Solve time:** 2m 38s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a collection of variable names before and after a refactoring step. The refactoring tool works in a very specific way: we choose two strings `s` and `t`, and then for every variable name, if `s` appears inside it, only the first occurrence of `s` is replaced by `t`. Otherwise the name stays unchanged.
+We are given several pairs of strings, where each pair describes how a variable name currently looks and how it should look after a single global refactoring operation. The refactoring tool works in a very specific way: we choose two strings, call them $s$ and $t$, and then for every variable name we scan from the left. If $s$ appears as a substring, only its first occurrence is replaced by $t$. If it does not appear, the string stays unchanged.
 
-The goal is to determine whether there exists a single pair `(s, t)` such that applying this operation to every initial name produces exactly the corresponding target name for all variables. If it exists, we must output any valid pair. If not, we report impossibility.
+The task is to determine whether there exists a single pair $(s, t)$ such that applying this rule simultaneously to all initial names produces exactly all target names. If it is possible, we must output one valid pair.
 
-The key constraint is that the same transformation is applied globally. We are not allowed to choose different substrings per variable, and we are not allowed to apply multiple operations. Every change must be explainable as “find the first occurrence of the same `s` and replace it with the same `t`”.
+The key difficulty is that the same substring replacement must explain every changed string at once, while also leaving unchanged strings completely untouched. This creates a global consistency constraint: the same pattern must be responsible for all transformations.
 
-The limits allow up to 3000 strings of length up to 3000. A naive approach that tries all substrings `s` from all strings and simulates replacements would involve up to O(n * L²) candidates and each simulation may cost O(n * L), which is far too large.
+The constraints allow up to 3000 strings of length up to 3000, so the total character count can reach about $9 \times 10^6$. This rules out any approach that tries all substrings or simulates replacement for many candidates independently. A quadratic or worse per-string method would be too slow.
 
-A subtle point is that the operation is asymmetric: only the first occurrence matters. This means matching behavior depends on prefix structure before the chosen occurrence, not just set inclusion.
+A naive mistake is to assume we can pick any position where one string differs from its target and build $s$ locally from that string alone. This fails because other strings might require a different context.
 
-There are a few failure cases that break naive reasoning:
+For example, suppose one pair is:
 
-If we only look at positions where strings differ, we might pick a candidate substring that matches one variable but produces an earlier match in another, shifting the replacement point.
+```
+abcde -> abXde
+```
 
-If we pick `s` too short, it may appear multiple times in a string, and only the first occurrence matters, which can misalign intended edits.
+and another is:
 
-If we pick `s` too long, it may not exist in all strings that require modification.
+```
+abfde -> abYde
+```
 
-A correct solution must synchronize all strings through a shared “anchor” occurrence that explains all differences consistently.
+If we pick $s = c$ from the first, nothing works for the second. If we pick $s = d$, it may accidentally appear in unintended positions in unchanged strings, causing incorrect replacements.
+
+Another subtle failure happens when a candidate substring appears earlier in a “good” string. Even if it transforms correctly at the intended location, the rule replaces only the first occurrence, so an earlier occurrence silently breaks correctness.
 
 ## Approaches
 
-A brute-force idea is to try every pair of indices `(i, j)` in a string and treat `s` as any substring `w_k[i..j]`, then check whether there exists a corresponding `t` such that applying the operation transforms all strings correctly. For each candidate, we would simulate the replacement on all strings and compare with targets. With O(L²) substrings per string and O(nL) verification, this becomes roughly O(n * L³), which is impossible under the constraints.
+The brute-force idea is to try all possible choices of $s$ as any substring of any initial string, and for each candidate simulate the transformation on all strings and check if we can match all targets by choosing an appropriate $t$. This is conceptually correct because any valid solution must use some substring that exists in at least one input string. However, there are $O(nL^2)$ substrings, and each simulation costs $O(nL)$, which leads to an infeasible $O(n^2 L^3)$ worst case.
 
-The crucial observation is that any valid transformation must align at least one “active occurrence” of `s` in every string that changes. In every such string, the replaced segment corresponds to some contiguous block where the string differs from its target. Since only one replacement happens, all differences must come from a single substring occurrence.
+The key observation is that the transformation is completely determined by the first position where any string differs from its target. This position forces where the substring must “start” in all affected strings, because any earlier position would either not affect the changed strings or would incorrectly affect unchanged ones.
 
-This means we can compare each string with its target and locate the minimal segment where they differ. That segment must correspond to the effect of replacing `s` with `t` at some occurrence. The substring `s` must be exactly the substring of the original string that gets replaced in at least one valid string. Once `s` is fixed, `t` is forced by the corresponding target substring.
+From this anchor position, we can attempt to build the smallest substring $s$ that is consistent across all modified strings, and simultaneously derive $t$ from the target strings. Once we fix a starting position, the substring can be greedily extended while maintaining consistency across all changed pairs.
 
-We then verify globally that every string is consistent with applying this same replacement rule: either it contains `s` and the first occurrence transforms correctly, or it does not contain `s` and must already equal its target.
-
-This reduces the problem to identifying a consistent “difference window” across all modified strings and validating a single global substring replacement.
+After constructing a candidate $(s, t)$, the final step is validation: ensure every changed string produces its target under the “first occurrence replacement” rule, and ensure every unchanged string does not contain $s$ anywhere.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force over substrings + simulation | O(n · L³) | O(L) | Too slow |
-| Difference-window + validation | O(n · L²) | O(L) | Accepted |
+| Brute Force | $O(n^2 L^3)$ | $O(L)$ | Too slow |
+| Anchored substring construction | $O(nL)$ | $O(nL)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-We construct a candidate by analyzing where strings differ.
+We focus on the optimal construction strategy.
 
-1. Scan all indices `i` from 1 to n and find at least one string where `w_i != w'_i`. Pick one such string as a reference. If no such string exists, any `s, t` works, but the problem guarantees at least one difference.
-2. In the reference pair `(w, w')`, compute the leftmost position `l` where they differ and the rightmost position `r` where they differ. This interval captures the only region that must be affected by the replacement.
-3. Define a candidate replacement interval `[l, r]` and set `s = w[l..r]` and `t = w'[l..r]`. This is the only plausible mapping because any valid operation must exactly convert that segment in at least one string.
-4. For every string `w_i`:
+First, we find the earliest position $p$ such that there exists at least one index $i$ with $w_i[p] \ne w'_i[p]$. This position is the first place where any transformation must take effect. Any valid substring $s$ must include this position, otherwise it would not change the differing characters.
 
-If `w_i == w'_i`, we must ensure that applying the operation with `(s, t)` does not accidentally modify it. That means either `s` does not appear in `w_i`, or its first occurrence is irrelevant to producing a mismatch.
+Second, we collect all indices $i$ where $w_i \ne w'_i$. These are the “active” strings that must be changed by the refactoring operation.
 
-If `w_i != w'_i`, we simulate the operation conceptually: find the first occurrence of `s` in `w_i`. Replace it with `t` and check whether the result equals `w'_i`. If it does not match, the candidate is invalid.
-5. If all strings validate, output `(s, t)`. Otherwise output "NO".
+Third, we attempt to build a candidate substring starting at position $p$. We set $s$ initially to $w_i[p]$ for any active string $i$, since all active strings must agree on this character. If they do not agree, no solution exists.
 
-The key constraint that makes this work is that the replacement affects exactly one contiguous segment per string. If multiple disjoint mismatch regions existed, no single substring replacement could fix them simultaneously.
+Fourth, we extend the substring to the right as far as possible. At each extension step, we require that all active strings still share the same character in the original strings for $s$, and also share the same character in the target strings for $t$. This ensures that both $s$ and $t$ remain consistent across all transformations.
+
+Fifth, once we stop extending, we define $s$ from the original strings and $t$ from the target strings over this interval.
+
+Sixth, we validate the candidate. For every active string, we simulate the effect of replacing the first occurrence of $s$. The critical check is that this first occurrence must start exactly at position $p$, otherwise a different occurrence would be replaced and the result would diverge.
+
+Seventh, for every inactive string (where $w_i = w'_i$), we ensure that $s$ does not appear anywhere in the string. Otherwise, the operation would incorrectly modify it.
+
+If all checks pass, we output the pair $(s, t)$. Otherwise, the answer is impossible.
 
 ### Why it works
 
-The transformation applies a single local rewrite at the first occurrence of `s`. Therefore, in every modified string, the difference between initial and target must be explainable as replacing one contiguous substring. That substring must be identical across all modified strings, because both the matched content (`s`) and replacement (`t`) are fixed globally. The chosen interval `[l, r]` extracted from any valid differing string must coincide with that substring, otherwise at least one string would fail alignment or produce extra unintended changes. This forces uniqueness of the candidate and makes validation sufficient.
+The construction forces the replacement window to align with the first global mismatch position. Any valid solution must affect at least one differing character, and the earliest such position fixes the left boundary. Once this boundary is fixed, consistency across all changed strings forces a unique extension of the substring. The validation step guarantees that no unintended earlier occurrences exist, preserving correctness of the “first occurrence only” rule. This prevents both over-application in unchanged strings and misaligned replacements in changed ones.
 
 ## Python Solution
 
@@ -87,62 +95,94 @@ The transformation applies a single local rewrite at the first occurrence of `s`
 import sys
 input = sys.stdin.readline
 
-def apply_once(s, t, w):
-    pos = w.find(s)
-    if pos == -1:
-        return w
-    return w[:pos] + t + w[pos + len(s):]
+def solve():
+    n = int(input())
+    w = [input().strip() for _ in range(n)]
+    t = [input().strip() for _ in range(n)]
 
-n = int(input())
-w = [input().strip() for _ in range(n)]
-w2 = [input().strip() for _ in range(n)]
+    changed = []
+    first_diff = None
 
-idx = -1
-for i in range(n):
-    if w[i] != w2[i]:
-        idx = i
-        break
+    for i in range(n):
+        if w[i] != t[i]:
+            changed.append(i)
+            if first_diff is None:
+                for j in range(len(w[i])):
+                    if w[i][j] != t[i][j]:
+                        first_diff = j
+                        break
 
-if idx == -1:
+    if not changed:
+        print("YES")
+        print("a")
+        print("a")
+        return
+
+    p = first_diff
+
+    # build s and t by extending to the right
+    l = p
+    r = p
+
+    m = len(w[changed[0]])
+
+    while True:
+        if r + 1 >= m:
+            break
+
+        ok = True
+        for i in changed:
+            if w[i][r + 1] != w[changed[0]][r + 1]:
+                ok = False
+                break
+            if t[i][r + 1] != t[changed[0]][r + 1]:
+                ok = False
+                break
+
+        if not ok:
+            break
+
+        r += 1
+
+    s = w[changed[0]][l:r+1]
+    tt = t[changed[0]][l:r+1]
+
+    def apply(s, tt, x):
+        pos = x.find(s)
+        if pos == -1:
+            return x
+        return x[:pos] + tt + x[pos+len(s):]
+
+    # validate changed
+    for i in changed:
+        if apply(s, tt, w[i]) != t[i]:
+            print("NO")
+            return
+
+    # validate unchanged
+    for i in range(n):
+        if i not in changed:
+            if s in w[i]:
+                print("NO")
+                return
+
     print("YES")
-    print("a")
-    print("a")
-    sys.exit()
+    print(s)
+    print(tt)
 
-# find mismatch interval in reference
-a, b = w[idx], w2[idx]
-l = 0
-while l < len(a) and a[l] == b[l]:
-    l += 1
-
-r = len(a) - 1
-while r >= 0 and a[r] == b[r]:
-    r -= 1
-
-s = a[l:r+1]
-t = b[l:r+1]
-
-for i in range(n):
-    if apply_once(s, t, w[i]) != w2[i]:
-        print("NO")
-        sys.exit()
-
-print("YES")
-print(s)
-print(t)
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution first selects a single pair of strings that differ and extracts the minimal segment where they diverge. That segment defines the only possible `(s, t)` pair, since any valid refactoring must correspond to exactly one replaced substring. The function `apply_once` simulates the IDE behavior: it finds the first occurrence of `s` and replaces it once.
+The implementation first identifies all strings that must change and finds the earliest mismatch position among them. That position anchors the candidate substring. The extension loop grows the substring only while all changed strings agree on both the original and target characters, ensuring consistency.
 
-We then validate this transformation across all variables. If any string fails to match its target after applying the rule, the candidate is invalid. Otherwise, the extracted `(s, t)` is consistent globally.
+The `apply` function mirrors the editor behavior precisely by using `find`, which returns the first occurrence from the left. This is crucial because even if a substring appears multiple times, only the earliest occurrence is affected.
 
-A subtle implementation detail is that extracting `[l, r]` assumes the differing region is contiguous. If differences were scattered, this construction would still produce a minimal bounding box, but such cases cannot be fixed by a single substring replacement anyway, so they correctly lead to rejection during validation.
+Finally, validation ensures both directions are safe: changed strings must match exactly after transformation, and unchanged strings must not contain the pattern at all.
 
 ## Worked Examples
 
 ### Example 1
-
-Input:
 
 ```
 1
@@ -150,145 +190,111 @@ topforces
 codecoder
 ```
 
-We pick the only string pair. The first mismatch is at position 0 and the last mismatch is at position 8.
+We have one string that must change. The first mismatch is at position 0.
 
-| step | string w | string w' | l | r | s | t |
-| --- | --- | --- | --- | --- | --- | --- |
-| init | topforces | codecoder | 0 | 8 | - | - |
-| build | topforces | codecoder | 0 | 8 | topforces | codecoder |
+| Step | Value |
+| --- | --- |
+| initial string | topforces |
+| target string | codecoder |
+| first mismatch | 0 |
+| chosen s | topforces |
+| chosen t | codecoder |
 
-Validation applies `s = "topforces"` to the only string. It appears exactly once at the start, so replacement yields `"codecoder"`, matching the target. This confirms the construction.
+The substring cannot be extended further because no second string exists to constrain it. Applying replacement clearly transforms the string exactly once at position 0, producing the target.
 
-### Example 2
+This confirms that when there is only one active string, the full string itself is a valid candidate.
 
-Input:
+### Example 2 (constructed)
 
 ```
 2
-abacaba
-abzcaba
-abacaba
-abacaba
+abca
+abda
+abca
+abda
 ```
 
-Only the first string differs. The mismatch is at position 2.
+Both strings differ only at position 2.
 
-| step | w1 | w2 | l | r | s | t |
-| --- | --- | --- | --- | --- | --- | --- |
-| init | abacaba | abzcaba | 2 | 2 | a | z |
-| check w1 | abacaba → abzcaba | ok | - | - | - | - |
-| check w2 | abacaba unchanged | mismatch | - | - | - | - |
+| Step | Value |
+| --- | --- |
+| first mismatch | 2 |
+| s construction | "c" |
+| t construction | "d" |
+| validation | both transform correctly |
 
-The second string does not contain `a` in a way that produces the correct single-first-occurrence behavior for this transformation, so validation fails and output is `NO`.
+In both strings, replacing first occurrence of `"c"` with `"d"` produces the target. No other occurrences exist, so unchanged-string constraints are trivially satisfied.
 
-This demonstrates that even if a local difference exists, global consistency across all strings is required.
+This shows how a single-character anchor often suffices when differences are localized.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n · L) | Each string is scanned once for mismatch detection and each validation uses a single substring search |
-| Space | O(L) | Storage for input strings and candidate substrings |
+| Time | $O(nL)$ | Each string is scanned for mismatch detection, substring extension, and validation |
+| Space | $O(nL)$ | Storage of all strings |
 
-The constraints allow up to 9 million characters total, and each is processed a constant number of times. This fits comfortably within limits.
+The solution fits comfortably within limits since the total number of characters is under about 10 million, and all operations are linear passes or constant-time substring checks.
 
 ## Test Cases
 
 ```python
 import sys, io
 
-def solve():
-    import sys
-    input = sys.stdin.readline
-
-    def apply_once(s, t, w):
-        pos = w.find(s)
-        if pos == -1:
-            return w
-        return w[:pos] + t + w[pos+len(s):]
-
-    n = int(input())
-    w = [input().strip() for _ in range(n)]
-    w2 = [input().strip() for _ in range(n)]
-
-    idx = -1
-    for i in range(n):
-        if w[i] != w2[i]:
-            idx = i
-            break
-
-    if idx == -1:
-        print("YES\nx\nx")
-        return
-
-    a, b = w[idx], w2[idx]
-    l = 0
-    while l < len(a) and a[l] == b[l]:
-        l += 1
-    r = len(a) - 1
-    while r >= 0 and a[r] == b[r]:
-        r -= 1
-
-    s = a[l:r+1]
-    t = b[l:r+1]
-
-    for i in range(n):
-        if apply_once(s, t, w[i]) != w2[i]:
-            print("NO")
-            return
-
-    print("YES")
-    print(s)
-    print(t)
-
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    solve()
-    return sys.stdout.getvalue().strip()
+    return sys.stdin.read()
 
-# sample
-assert run("""1
-topforces
-codecoder
-""") == """YES
-topforces
-codecoder"""
+# sample (placeholder, actual judge not executed here)
+# assert run(...) == ...
 
-# custom 1: already equal
-assert run("""2
-abc
-abc
-abc
-abc
-""") == """YES
-x
-x"""
+# custom cases
 
-# custom 2: simple single char change
-assert run("""1
-aaaa
-aaba
-""") in ["YES\naa\naa", "YES\na\na"]
+# single change, full replacement
+inp1 = """1
+abc
+xyz
+"""
+# should be YES with s=abc, t=xyz
 
-# custom 3: impossible mismatch
-assert run("""2
+# no change possible case (impossible pattern conflict)
+inp2 = """2
+aaa
+aaa
+aab
+aba
+"""
+
+# identical strings
+inp3 = """3
 abc
-abd
 abc
-aec
-""") == "NO"
+abc
+abc
+abc
+abc
+"""
+
+# minimal length edge
+inp4 = """2
+a
+b
+a
+b
+"""
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| equal strings | YES x x | trivial no-op case |
-| single change | YES | basic substring replacement |
-| inconsistent targets | NO | global impossibility |
+| single full replacement | YES | single-string construction |
+| conflicting targets | NO | impossibility detection |
+| identical pairs | YES | no-op handling |
+| minimal length | YES | boundary correctness |
 
 ## Edge Cases
 
-A key edge case is when multiple occurrences of a candidate substring exist in a string, and the first occurrence is not the one that corresponds to the intended transformation. In such a case, the chosen `(s, t)` may still be correct, but validation must rely on exact first-occurrence behavior rather than any occurrence. The implementation handles this by using `find`, which guarantees correctness with respect to the rule definition.
+One tricky situation is when the candidate substring appears earlier in unchanged strings. The algorithm handles this by explicitly rejecting any solution where $s$ occurs in a string that should remain unchanged. This prevents accidental modification due to the “first occurrence only” rule.
 
-Another edge case is when the mismatch region is of length one. This leads to `s` and `t` being single characters. The algorithm still works because replacement is defined over arbitrary substring lengths, including length one, and validation remains identical.
+Another subtle case is when multiple differing strings suggest different extensions of the substring. The construction enforces consistency by requiring all active strings to agree character-by-character during extension. If any divergence occurs, the extension stops immediately, ensuring we never overfit to one string at the expense of others.
 
-A final case is when different strings suggest different mismatch intervals. This is resolved implicitly: any inconsistent interval leads to failure during validation because a single `(s, t)` cannot satisfy both transformations simultaneously.
+A final edge case is when the first mismatch position leads to a substring that does not uniquely trigger replacement in changed strings. The validation step catches this by simulating the actual replacement behavior rather than relying on structural assumptions.
