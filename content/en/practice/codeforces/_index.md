@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8458 problems, 4097 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8459 problems, 4097 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8458 problems, 4097 verified.**
+**1472 contests, 8459 problems, 4097 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 888 problems, 526 verified
+## 2019 — 159 contests, 889 problems, 526 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -677,7 +677,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1270](1270/) | [Good Bye 2019](https://codeforces.com/contest/1270) | 9 | 2/9 | Special | 800-3500 |
 | [1271](1271/) | [Codeforces Round 608 (Div. 2)](https://codeforces.com/contest/1271) | 4 | 1/4 | Div. 2 | 800-2700 |
 | [1272](1272/) | [Codeforces Round 605 (Div. 3)](https://codeforces.com/contest/1272) | 3 | 0/3 | Div. 3 | 1200-2200 |
-| [1275](1275/) | [VK Cup 2019 - Квалификация (Engine)](https://codeforces.com/contest/1275) | 4 | 1/4 | Special | - |
+| [1275](1275/) | [VK Cup 2019 - Квалификация (Engine)](https://codeforces.com/contest/1275) | 5 | 1/5 | Special | - |
 | [1276](1276/) | [Codeforces Round 606 (Div. 1, based on Technocup 2020 Elimination Round 4)](https://codeforces.com/contest/1276) | 3 | 2/3 | Div. 1 | 1900-3400 |
 | [1277](1277/) | [Codeforces Round 606 (Div. 2, based on Technocup 2020 Elimination Round 4)](https://codeforces.com/contest/1277) | 2 | 0/2 | Div. 2 | 1000-1900 |
 | [1278](1278/) | [Educational Codeforces Round 78 (Rated for Div. 2)](https://codeforces.com/contest/1278) | 3 | 1/3 | Div. 2 | 1500-2200 |
