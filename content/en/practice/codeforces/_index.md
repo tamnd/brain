@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1451 contests, 8225 problems, 3950 verified."
+description: "Codeforces problem solutions with full editorials. 1452 contests, 8229 problems, 3952 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1451 contests, 8225 problems, 3950 verified.**
+**1452 contests, 8229 problems, 3952 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 30 contests, 170 problems, 104 verified
+## 2018 — 31 contests, 174 problems, 106 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 6 | 5/6 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1073](1073/) | [Educational Codeforces Round 53 (Rated for Div. 2)](https://codeforces.com/contest/1073) | 4 | 2/4 | Div. 2 | 1000-2600 |
 | [1075](1075/) | [Lyft Level 5 Challenge 2018 - Final Round (Open Div. 2)](https://codeforces.com/contest/1075) | 1 | 1/1 | Div. 2 | 800-800 |
 | [1076](1076/) | [Educational Codeforces Round 54 (Rated for Div. 2)](https://codeforces.com/contest/1076) | 4 | 3/4 | Div. 2 | 1200-2500 |
 | [1077](1077/) | [Codeforces Round 521 (Div. 3)](https://codeforces.com/contest/1077) | 7 | 6/7 | Div. 3 | 800-2100 |
