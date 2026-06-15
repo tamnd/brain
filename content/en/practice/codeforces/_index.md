@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8496 problems, 4107 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8497 problems, 4107 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8496 problems, 4107 verified.**
+**1472 contests, 8497 problems, 4107 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 676 problems, 287 verified
+## 2020 — 159 contests, 677 problems, 287 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -704,7 +704,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1295](1295/) | [Educational Codeforces Round 81 (Rated for Div. 2)](https://codeforces.com/contest/1295) | 5 | 3/5 | Div. 2 | 1600-2700 |
 | [1296](1296/) | [Codeforces Round 617 (Div. 3)](https://codeforces.com/contest/1296) | 7 | 3/7 | Div. 3 | 800-2100 |
 | [1297](1297/) | [Kotlin Heroes: Episode 3](https://codeforces.com/contest/1297) | 9 | 1/9 | Kotlin | - |
-| [1299](1299/) | [Codeforces Round 618 (Div. 1)](https://codeforces.com/contest/1299) | 2 | 1/2 | Div. 1 | 1800-2100 |
+| [1299](1299/) | [Codeforces Round 618 (Div. 1)](https://codeforces.com/contest/1299) | 3 | 1/3 | Div. 1 | 1800-3400 |
 | [1300](1300/) | [Codeforces Round 618 (Div. 2)](https://codeforces.com/contest/1300) | 1 | 1/1 | Div. 2 | 800-800 |
 | [1301](1301/) | [Codeforces Round 619 (Div. 2)](https://codeforces.com/contest/1301) | 3 | 1/3 | Div. 2 | 1500-2600 |
 | [1302](1302/) | [AIM Tech Poorly Prepared Contest (unrated, funny, Div. 1 preferred)](https://codeforces.com/contest/1302) | 5 | 2/5 | Div. 1 | - |
