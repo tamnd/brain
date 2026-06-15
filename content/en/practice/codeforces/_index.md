@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8318 problems, 3999 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8319 problems, 4000 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8318 problems, 3999 verified.**
+**1472 contests, 8319 problems, 4000 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -453,12 +453,12 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [494](494/) | [Codeforces Round 282 (Div. 1)](https://codeforces.com/contest/494) | 5 | 4/5 | Div. 1 | 1500-3200 |
 | [495](495/) | [Codeforces Round 282 (Div. 2)](https://codeforces.com/contest/495) | 2 | 1/2 | Div. 2 | 1100-1600 |
 
-## 2017 — 9 contests, 41 problems, 29 verified
+## 2017 — 9 contests, 42 problems, 30 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
 | [901](901/) | [Codeforces Round 453 (Div. 1)](https://codeforces.com/contest/901) | 5 | 3/5 | Div. 1 | 1500-3300 |
-| [902](902/) | [Codeforces Round 453 (Div. 2)](https://codeforces.com/contest/902) | 1 | 1/1 | Div. 2 | 1200-1200 |
+| [902](902/) | [Codeforces Round 453 (Div. 2)](https://codeforces.com/contest/902) | 2 | 2/2 | Div. 2 | 1100-1200 |
 | [903](903/) | [Educational Codeforces Round 34 (Rated for Div. 2)](https://codeforces.com/contest/903) | 7 | 5/7 | Div. 2 | 900-2700 |
 | [906](906/) | [Codeforces Round 454 (Div. 1, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/906) | 5 | 3/5 | Div. 1 | 1600-3300 |
 | [907](907/) | [Codeforces Round 454 (Div. 2, based on Technocup 2018 Elimination Round 4)](https://codeforces.com/contest/907) | 1 | 0/1 | Div. 2 | 1400-1400 |
