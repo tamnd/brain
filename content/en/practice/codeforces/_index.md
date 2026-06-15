@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1470 contests, 8313 problems, 3994 verified."
+description: "Codeforces problem solutions with full editorials. 1471 contests, 8315 problems, 3995 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1470 contests, 8313 problems, 3994 verified.**
+**1471 contests, 8315 problems, 3995 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 49 contests, 258 problems, 148 verified
+## 2018 — 50 contests, 260 problems, 149 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 6 | 5/6 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1047](1047/) | [Codeforces Round 511 (Div. 2)](https://codeforces.com/contest/1047) | 2 | 1/2 | Div. 2 | 800-900 |
 | [1051](1051/) | [Educational Codeforces Round 51 (Rated for Div. 2)](https://codeforces.com/contest/1051) | 7 | 2/7 | Div. 2 | 1000-2900 |
 | [1053](1053/) | [Codeforces Round 512 (Div. 1, based on Technocup 2019 Elimination Round 1)](https://codeforces.com/contest/1053) | 1 | 1/1 | Div. 1 | 3500-3500 |
 | [1054](1054/) | [Mail.Ru Cup 2018 Round 1](https://codeforces.com/contest/1054) | 8 | 3/8 | Special | 800-3500 |
