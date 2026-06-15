@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8403 problems, 4071 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8405 problems, 4072 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8403 problems, 4071 verified.**
+**1472 contests, 8405 problems, 4072 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 833 problems, 500 verified
+## 2019 — 159 contests, 835 problems, 501 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -641,7 +641,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1223](1223/) | [Technocup 2020 - Elimination Round 1](https://codeforces.com/contest/1223) | 7 | 6/7 | Special | 800-3200 |
 | [1225](1225/) | [Technocup 2020 - Elimination Round 2](https://codeforces.com/contest/1225) | 8 | 6/8 | Special | 900-3100 |
 | [1227](1227/) | [Technocup 2020 - Elimination Round 3](https://codeforces.com/contest/1227) | 9 | 5/9 | Special | 1100-2600 |
-| [1228](1228/) | [Codeforces Round 589 (Div. 2)](https://codeforces.com/contest/1228) | 4 | 3/4 | Div. 2 | 800-2500 |
+| [1228](1228/) | [Codeforces Round 589 (Div. 2)](https://codeforces.com/contest/1228) | 6 | 4/6 | Div. 2 | 800-2500 |
 | [1230](1230/) | [Codeforces Round 588 (Div. 2)](https://codeforces.com/contest/1230) | 2 | 2/2 | Div. 2 | 800-1000 |
 | [1231](1231/) | [Dasha Code Championship - Novosibirsk Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1231) | 2 | 0/2 | Special | 1100-2200 |
 | [1234](1234/) | [Codeforces Round 590 (Div. 3)](https://codeforces.com/contest/1234) | 4 | 3/4 | Div. 3 | 800-2000 |
