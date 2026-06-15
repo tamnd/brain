@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8372 problems, 4046 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8375 problems, 4047 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8372 problems, 4046 verified.**
+**1472 contests, 8375 problems, 4047 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 802 problems, 475 verified
+## 2019 — 159 contests, 805 problems, 476 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -626,7 +626,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1206](1206/) | [Codeforces Round 580 (Div. 2)](https://codeforces.com/contest/1206) | 2 | 1/2 | Div. 2 | 800-900 |
 | [1207](1207/) | [Educational Codeforces Round 71 (Rated for Div. 2)](https://codeforces.com/contest/1207) | 7 | 3/7 | Div. 2 | 800-2700 |
 | [1208](1208/) | [Manthan, Codefest 19 (open for everyone, rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1208) | 8 | 7/8 | Div. 1+2 | 900-3500 |
-| [1209](1209/) | [Codeforces Round 584 - Dasha Code Championship - Elimination Round (rated, open for everyone, Div. 1 + Div. 2)](https://codeforces.com/contest/1209) | 7 | 5/7 | Div. 1+2 | 800-3300 |
+| [1209](1209/) | [Codeforces Round 584 - Dasha Code Championship - Elimination Round (rated, open for everyone, Div. 1 + Div. 2)](https://codeforces.com/contest/1209) | 10 | 6/10 | Div. 1+2 | 800-3300 |
 | [1210](1210/) | [Dasha Code Championship - SPb Finals Round (only for onsite-finalists)](https://codeforces.com/contest/1210) | 6 | 3/6 | Special | 1700-3200 |
 | [1211](1211/) | [Kotlin Heroes: Episode 2](https://codeforces.com/contest/1211) | 7 | 4/7 | Kotlin | 1000-3100 |
 | [1213](1213/) | [Codeforces Round 582 (Div. 3)](https://codeforces.com/contest/1213) | 7 | 5/7 | Div. 3 | 900-2100 |

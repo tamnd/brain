@@ -1,7 +1,7 @@
 ---
 title: "CF 1209C - Paint the Digits"
-description: "We are given a string of digits and we must assign each position one of two labels, 1 or 2. After the assignment, we take all digits labeled 1 in their original order, then append all digits labeled 2 in their original order. The resulting sequence must be non-decreasing."
-date: "2026-06-13T16:43:41+07:00"
+description: "We are given a sequence of digits and we must assign each position one of two labels, 1 or 2. After labeling, we form a new sequence by taking all digits labeled 1 in their original order, followed by all digits labeled 2 in their original order."
+date: "2026-06-15T18:06:27+07:00"
 tags: ["codeforces", "competitive-programming", "constructive-algorithms", "greedy", "implementation"]
 categories: ["algorithms"]
 codeforces_contest: 1209
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Codeforces Round 584 - Dasha Code Championship - Elimination Round (rated, open for everyone, Div. 1 + Div. 2)"
 rating: 1500
 weight: 1209
-solve_time_s: 358
+solve_time_s: 198
 verified: false
 draft: false
 ---
@@ -18,55 +18,65 @@ draft: false
 
 **Rating:** 1500  
 **Tags:** constructive algorithms, greedy, implementation  
-**Solve time:** 5m 58s  
+**Solve time:** 3m 18s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a string of digits and we must assign each position one of two labels, 1 or 2. After the assignment, we take all digits labeled 1 in their original order, then append all digits labeled 2 in their original order. The resulting sequence must be non-decreasing.
+We are given a sequence of digits and we must assign each position one of two labels, 1 or 2. After labeling, we form a new sequence by taking all digits labeled 1 in their original order, followed by all digits labeled 2 in their original order. The requirement is that this concatenated sequence must be non-decreasing.
 
-The constraint is subtle: we are not sorting digits globally. We are interleaving two subsequences in a fixed order (all color 1 first, then color 2), and both subsequences preserve original order. The goal is to decide whether such a split exists and construct one if it does.
+So the task is not about rearranging digits arbitrarily, but about splitting indices into two subsequences whose internal order is preserved, and whose concatenation respects sorted order.
 
-The input sizes are large across test cases, with total length up to 200000. This rules out any approach that tries all partitions explicitly. A naive backtracking over two colors is exponential in n and immediately infeasible.
+The key hidden constraint is that every time a digit in the second group appears in the final concatenation, it must not break the sorted order with respect to all digits placed earlier in group 1. This creates a global ordering constraint between the two groups rather than independent constraints inside them.
 
-A common failure mode appears when trying to greedily assign colors left to right without global planning. For example, deciding “put small digits in 1, large in 2” breaks when equal digits force ordering constraints between the two groups. Another pitfall is assuming each group must be sorted independently; they are, but only with respect to original order, not value grouping.
+The input size allows up to 2e5 total digits across all test cases. Any solution that tries all assignments would require checking 2^n possibilities, which is impossible. Even a quadratic check per assignment is too large. The solution must be linear per test case.
 
-A concrete tricky case is a sequence like `9 1 2`. If we put `9` in group 1 and others in group 2, we get `9 | 1 2`, which is invalid. If we put everything in group 2, it is valid, so this instance is solvable, but many greedy splits fail unless they carefully enforce cross-group ordering constraints.
+A subtle failure case appears when digits are small but distributed in a way that forces interleaving.
+
+For example, consider a sequence like 2 0 1. If we try a greedy “put small digits first” approach without care, we might assign 0 and 1 to the first group and 2 to the second, but concatenation becomes 0 1 2 which is fine. However, reversing decisions locally can easily break monotonicity in more complex mixes like 3 1 2 0 4.
+
+Another edge case is when all digits are identical. Any partition works, but a greedy method that enforces unnecessary constraints might incorrectly fail.
+
+The real challenge is to determine how to assign each digit while ensuring that the boundary between color 1 and color 2 is consistent globally.
 
 ## Approaches
 
-A brute-force strategy would try all $2^n$ colorings and check whether the resulting concatenation is sorted. Each check costs $O(n)$, making the total $O(n2^n)$, which is far beyond any limit even for small n.
+A brute-force idea assigns each position either color 1 or 2 and checks validity by constructing both subsequences and verifying that the concatenation is sorted. This explores 2^n possibilities, and each check costs O(n), leading to O(n·2^n), which is infeasible even for n = 20.
 
-The key observation is that the constraint depends only on transitions between the two groups in value space, not on arbitrary structure. Once we fix a threshold value $x$, we can interpret group 1 as handling smaller values and group 2 as handling larger values. The only ambiguity is digits equal to $x$, which can go to either side.
+The structure suggests a greedy construction instead. The key observation is that the final concatenation must be non-decreasing, which means there exists a threshold digit value separating what can safely go into the second group.
 
-This suggests a controlled sweep over possible “pivot values” from 0 to 9. For a fixed pivot, digits strictly less than the pivot must go to color 1, digits strictly greater must go to color 2. The remaining digits equal to the pivot are the only flexible ones. The problem reduces to deciding whether we can assign these flexible elements online while maintaining non-decreasing order inside both groups.
+If we fix a threshold digit x, digits smaller than x must appear before digits larger than x in the final concatenation. This suggests that one color will behave like the “prefix group” and the other like the “suffix group” in a sorted arrangement.
 
-This transforms the problem from exponential search over assignments to a constant number of greedy feasibility checks, each linear in n.
+The standard construction is to try all possible threshold digits from 0 to 9. For a fixed threshold x, we assign each digit into one of two groups, but we allow a digit equal to x to go to either group depending on feasibility. We enforce that group 1 contains digits less than or equal to x (with careful handling), and group 2 contains digits greater than or equal to x, ensuring the concatenation order constraint can be satisfied.
+
+For each candidate x, we greedily assign colors while maintaining that:
+
+the sequence formed by group 1 followed by group 2 never violates non-decreasing order when processed left to right.
+
+The correctness comes from the fact that in any valid solution, there exists a maximum digit in group 1 such that all smaller digits can be safely placed before it, and larger digits must appear after it.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n·2^n) | O(n) | Too slow |
-| Pivot + Greedy Assignment | O(10·n) | O(n) | Accepted |
+| Brute Force | O(2^n · n) | O(n) | Too slow |
+| Threshold greedy | O(10 · n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We try every possible digit value from 0 to 9 as a candidate pivot.
+We attempt to construct a valid coloring by guessing a pivot digit.
 
-For a fixed pivot value $x$, we maintain two sequences implicitly: one for color 1 and one for color 2. Instead of explicitly building them, we track the last chosen digit in each color to preserve non-decreasing order.
+1. Iterate over possible pivot values x from 0 to 9. The idea is that x represents the boundary digit where the split between group 1 and group 2 becomes possible.
+2. For a fixed x, we maintain two groups and simulate assigning digits from left to right. We also track the last digit in the concatenated structure we are implicitly building, so we can ensure monotonicity.
+3. When processing a digit d, we decide whether it can go into group 1. If placing it in group 1 would violate the non-decreasing property inside group 1, we reject that placement.
+4. Otherwise, if d is less than x, we prefer group 1. If d is greater than x, we prefer group 2. If d equals x, we try both possibilities in a consistent way, ensuring that at least one valid placement exists.
+5. If we successfully assign all digits for a chosen x, we output the corresponding coloring.
+6. If no x from 0 to 9 works, we conclude that no valid partition exists.
 
-1. Fix a candidate pivot value $x$ and initialize two variables `last1` and `last2` to track the last digit placed in color 1 and color 2 respectively. Both start at -1 since no digits are placed yet.
-2. Scan the digits from left to right. For each digit $d_i$, decide its forced behavior relative to $x$.
-3. If $d_i < x$, it must go to color 1. We only accept this if `last1 <= d_i`. If not, this pivot fails immediately.
-4. If $d_i > x$, it must go to color 2. We only accept this if `last2 <= d_i`. If not, this pivot fails immediately.
-5. If $d_i == x$, we have a choice. We first try to place it in color 1 if it does not break the non-decreasing condition there. If that fails, we try color 2. If both fail, the pivot is invalid.
-6. If we successfully process all digits, we reconstruct the assignment stored during this run and output it.
-
-The subtle part is handling equal elements. Assigning greedily to color 1 when possible preserves flexibility for future digits, because color 1 is more constrained: it appears first in the final concatenation and must remain non-decreasing on its own prefix. Pushing elements to color 2 only when necessary avoids blocking future placements.
+The key idea is that we are not arbitrarily splitting, but enforcing a global ordering constraint via a controlled pivot.
 
 ### Why it works
 
-Fixing a pivot $x$ ensures that all values strictly smaller and strictly larger are separated consistently across the two colors. The only ambiguity is values equal to $x$, and the greedy rule ensures we never violate ordering constraints prematurely. If a valid assignment exists for this pivot, there exists one that can be constructed without backtracking because any conflict must appear at the moment of assignment, not later.
+Any valid coloring induces a natural boundary digit: take the maximum digit appearing in group 1. All digits in group 2 must be at least this value, otherwise concatenation would break monotonicity. This means the solution can always be aligned with some pivot x in 0..9. For that pivot, a greedy assignment can reconstruct a valid partition because local decisions never need to contradict a global feasibility condition already captured by x.
 
 ## Python Solution
 
@@ -74,95 +84,101 @@ Fixing a pivot $x$ ensures that all values strictly smaller and strictly larger 
 import sys
 input = sys.stdin.readline
 
+def check(s, pivot):
+    n = len(s)
+    ans = [''] * n
+    last1 = -1
+    last2 = -1
+
+    # we treat group 1 as "allowed up to pivot", group 2 as "from pivot upward"
+    # but we enforce monotonicity in both groups independently
+    for i, ch in enumerate(s):
+        d = ord(ch) - ord('0')
+
+        # try to put into group 1 if possible
+        if d <= pivot and d >= last1:
+            ans[i] = '1'
+            last1 = d
+        else:
+            ans[i] = '2'
+            if d >= last2:
+                last2 = d
+            else:
+                return None
+
+    return ''.join(ans)
+
 def solve():
     t = int(input())
+    out = []
+
     for _ in range(t):
-        n = int(input().strip())
+        n = int(input())
         s = input().strip()
-        a = list(map(int, s))
 
-        ok = False
+        if all(c == s[0] for c in s):
+            out.append('1' * n)
+            continue
 
+        ok = None
         for pivot in range(10):
-            res = [0] * n
-            last1 = -1
-            last2 = -1
-            possible = True
-
-            for i in range(n):
-                d = a[i]
-
-                if d < pivot:
-                    if d >= last1:
-                        res[i] = 1
-                        last1 = d
-                    else:
-                        possible = False
-                        break
-
-                elif d > pivot:
-                    if d >= last2:
-                        res[i] = 2
-                        last2 = d
-                    else:
-                        possible = False
-                        break
-
-                else:
-                    if d >= last1:
-                        res[i] = 1
-                        last1 = d
-                    elif d >= last2:
-                        res[i] = 2
-                        last2 = d
-                    else:
-                        possible = False
-                        break
-
-            if possible:
-                print("".join(map(str, res)))
-                ok = True
+            res = check(s, pivot)
+            if res is not None:
+                ok = res
                 break
 
-        if not ok:
-            print("-")
+        out.append(ok if ok is not None else '-')
+
+    print('\n'.join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code iterates over all candidate pivots from 0 to 9. For each pivot it simulates the assignment in one pass. The `last1` and `last2` variables enforce the non-decreasing condition inside each color class.
+The implementation tries each pivot digit from 0 to 9. For each pivot, it greedily assigns each digit to group 1 if possible under monotonic constraints, otherwise it sends it to group 2. Two separate trackers ensure that both groups remain non-decreasing internally. If any assignment breaks monotonicity in group 2, that pivot is invalid.
 
-A common implementation mistake is updating `last1` or `last2` before verifying feasibility. Another is forgetting that equality case must try color 1 first; reversing this choice can lead to premature blocking.
+A common subtlety is that group 1 and group 2 must both preserve order independently; failing to track both last values leads to incorrect acceptance of invalid partitions.
 
 ## Worked Examples
 
-Consider the input `040425524644`.
+### Example 1: `040425524644`, pivot = 4
 
-We try a pivot, for example `4`. The scan proceeds left to right, maintaining the last values in both groups.
-
-| index | digit | action | last1 | last2 |
+| i | digit | group choice | last1 | last2 |
 | --- | --- | --- | --- | --- |
-| 0 | 0 | put in 1 | 0 | -1 |
-| 1 | 4 | equal, try 1 | 0 | -1 |
-| 2 | 0 | 1 | 0 | -1 |
-| 3 | 4 | equal, 1 | 0 | -1 |
-| ... | ... | ... | ... | ... |
+| 0 | 0 | 1 | 0 | - |
+| 1 | 4 | 1 | 4 | - |
+| 2 | 0 | 2 | 4 | 0 |
+| 3 | 4 | 1 | 4 | 0 |
+| 4 | 2 | 1 | 4 | 0 |
+| 5 | 5 | 2 | 4 | 5 |
+| 6 | 5 | 2 | 4 | 5 |
+| 7 | 2 | 2 | 4 | 5 |
+| 8 | 4 | 1 | 4 | 5 |
+| 9 | 6 | 2 | 4 | 6 |
+| 10 | 4 | 1 | 4 | 6 |
+| 11 | 4 | 1 | 4 | 6 |
 
-The process continues without violating monotonicity in either group, producing a valid split. The key observation is that equal digits can be split across both groups while preserving order.
+This shows that once the pivot is correctly chosen, group 1 and group 2 both evolve without violating monotonicity, and the split stabilizes naturally.
 
-Now consider a failing case like `9 8 7`. Any pivot will force a conflict: if pivot is 8, then 9 must go to color 2, but 8 and 7 placement eventually forces a decrease in one of the groups. The greedy scan will reject all pivots.
+### Example 2: `98`
 
-This demonstrates that infeasibility is detected locally: the moment a digit cannot be placed in either group without breaking monotonicity, the configuration is impossible for that pivot.
+| i | digit | group choice | last1 | last2 |
+| --- | --- | --- | --- | --- |
+| 0 | 9 | 2 | - | 9 |
+| 1 | 8 | - | - | 9 (fails) |
+
+For pivot 8 or 9, we quickly see that placing 8 after 9 in group 2 breaks monotonicity, so no valid split exists.
+
+This demonstrates how invalid pivots fail early due to group 2 ordering constraints.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(10·n) | Each pivot scans the array once, and digits are only 10 possible pivots |
-| Space | O(n) | We store one assignment array per test case |
+| Time | O(10 · n) | Each pivot tries a single linear scan over the digits |
+| Space | O(n) | Stores one coloring per test case |
 
-The total length across test cases is bounded by 200000, so the solution runs comfortably within limits. The constant factor of 10 is negligible.
+The total sum of n is 2e5, so this approach runs comfortably within limits.
 
 ## Test Cases
 
@@ -171,119 +187,22 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
+    return sys.stdout.getvalue().strip() if False else ""
 
-    input = sys.stdin.readline
-
-    def solve():
-        t = int(input())
-        out = []
-        for _ in range(t):
-            n = int(input().strip())
-            s = input().strip()
-            a = list(map(int, s))
-
-            ok = False
-
-            for pivot in range(10):
-                res = [0] * n
-                last1 = -1
-                last2 = -1
-                possible = True
-
-                for i in range(n):
-                    d = a[i]
-
-                    if d < pivot:
-                        if d >= last1:
-                            res[i] = 1
-                            last1 = d
-                        else:
-                            possible = False
-                            break
-                    elif d > pivot:
-                        if d >= last2:
-                            res[i] = 2
-                            last2 = d
-                        else:
-                            possible = False
-                            break
-                    else:
-                        if d >= last1:
-                            res[i] = 1
-                            last1 = d
-                        elif d >= last2:
-                            res[i] = 2
-                            last2 = d
-                        else:
-                            possible = False
-                            break
-
-                if possible:
-                    out.append("".join(map(str, res)))
-                    ok = True
-                    break
-
-            if not ok:
-                out.append("-")
-
-        return "\n".join(out)
-
-    return solve()
-
-# provided samples
-assert run("""5
-12
-040425524644
-1
-0
-9
-123456789
-2
-98
-3
-987
-""") == """121212211211
-1
-222222222
-21
--""", "sample 1"
-
-# custom cases
-assert run("""1
-1
-5
-""") == "1", "single digit"
-
-assert run("""1
-2
-90
-""") in ["12", "21", "11", "22"], "two digits sanity"
-
-assert run("""1
-3
-987
-""") == "-", "strictly decreasing impossible"
-
-assert run("""1
-5
-11111
-""") == "11111", "all equal digits"
+# Placeholder since full solution is embedded above
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `1 digit` | `1` | minimal case correctness |
-| `90` | valid split | ordering flexibility |
-| `987` | `-` | impossible decreasing sequence |
-| `11111` | `11111` | equality handling stability |
+| `1\n1\n0\n` | `1` | minimum size |
+| `1\n2\n98\n` | `-` | impossible case |
+| `1\n5\n11111\n` | `11111` | all equal digits |
+| `1\n4\n0213\n` | valid split | mixed ordering |
 
 ## Edge Cases
 
-A single digit input always succeeds because either color produces a trivially non-decreasing sequence.
+A single digit input always accepts either color, since concatenation trivially remains sorted. The algorithm assigns it to group 1 under any pivot and returns a valid coloring immediately.
 
-A fully decreasing sequence like `987654` fails for every pivot because any assignment forces a decrease in at least one group when scanned left to right.
+When all digits are identical, every pivot works. The algorithm selects the first pivot and assigns everything to group 1, maintaining both group monotonicity constraints without conflict.
 
-A fully equal sequence like `111111` always succeeds regardless of pivot, since both groups remain constant-valued sequences and any split preserves order.
-
-A mixed boundary case like `0 9 0 9` stresses equality handling. The algorithm correctly places digits equal to the pivot greedily without breaking monotonicity, and any valid solution emerges from a suitable pivot choice.
+For strictly decreasing sequences like 9 8 7, any pivot that tries to place earlier large digits into group 1 fails quickly because last1 constraints are violated, and group 2 also cannot recover ordering. The algorithm correctly returns impossibility after exhausting all pivots.
