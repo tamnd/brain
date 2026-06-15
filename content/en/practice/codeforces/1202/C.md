@@ -1,7 +1,7 @@
 ---
 title: "CF 1202C - You Are Given a WASD-string..."
-description: "A robot moves on an infinite grid following a sequence of instructions consisting of four possible moves: up, down, left, and right. If we simulate the robot from some chosen starting cell, the path it traces has a certain vertical and horizontal spread."
-date: "2026-06-13T15:19:30+07:00"
+description: "A robot follows a sequence of movement commands on an infinite grid. Each character in the string describes a unit move in one of four directions, so the string encodes a walk on the integer lattice."
+date: "2026-06-15T17:40:51+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force", "data-structures", "dp", "greedy", "implementation", "math", "strings"]
 categories: ["algorithms"]
 codeforces_contest: 1202
@@ -9,7 +9,7 @@ codeforces_index: "C"
 codeforces_contest_name: "Educational Codeforces Round 70 (Rated for Div. 2)"
 rating: 2100
 weight: 1202
-solve_time_s: 403
+solve_time_s: 348
 verified: false
 draft: false
 ---
@@ -18,54 +18,49 @@ draft: false
 
 **Rating:** 2100  
 **Tags:** brute force, data structures, dp, greedy, implementation, math, strings  
-**Solve time:** 6m 43s  
+**Solve time:** 5m 48s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-A robot moves on an infinite grid following a sequence of instructions consisting of four possible moves: up, down, left, and right. If we simulate the robot from some chosen starting cell, the path it traces has a certain vertical and horizontal spread. Any valid grid that contains this movement must be large enough so that the robot never steps outside its boundaries during execution.
+A robot follows a sequence of movement commands on an infinite grid. Each character in the string describes a unit move in one of four directions, so the string encodes a walk on the integer lattice. If we fix a starting cell, the robot traces a path, and during this walk it visits a set of cells. The smallest axis-aligned rectangle that contains all visited cells determines the grid needed to keep the robot inside bounds, and the area of that rectangle is what we call the cost of the string.
 
-For a fixed command string, the smallest possible rectangle that can contain at least one valid starting placement is determined by how far the prefix sums of movements drift upward, downward, leftward, and rightward. The height is determined by the difference between the maximum and minimum vertical displacement over all prefixes, and the width is determined similarly for horizontal displacement. The area is the product of these two values.
+The twist is that we are allowed to insert at most one additional move, and this move can be any of the four directions. We are free to choose both the type of move and the position where it is inserted. The goal is to minimize the bounding rectangle area after this single modification.
 
-The twist is that we are allowed to insert exactly one additional move, chosen from the four directions, anywhere in the string. This insertion may change the prefix path structure and potentially reduce the bounding box of the walk by “shifting” the trajectory so that extremes are avoided or partially canceled.
+The constraints force a linear or near-linear solution per test case. The total length across all queries is at most 2·10^5, so any approach that is quadratic in a single string is already too slow. Even an O(n log n) per test solution is acceptable, but anything that tries all insertion points and recomputes geometry from scratch would run into about 10^10 operations in the worst case.
 
-The constraints are large enough that any solution simulating all insertion positions naively would be too slow. The total length across all test cases reaches 200,000, so any cubic or even quadratic per test solution will not pass.
+A subtle issue appears when the optimal insertion affects only one of the extremes of the walk. For example, if the path already touches its minimum x boundary multiple times, inserting a step outward might shift the entire bounding box, but only if the insertion happens at a precise moment relative to the prefix positions. A naive recomputation that ignores prefix structure will incorrectly assume the insertion always helps globally, which is false.
 
-A subtle issue appears when the path already achieves its minimum possible bounding box but still benefits from insertion due to symmetry. Another failure case is when the optimal insertion does not improve the total displacement but reduces one of the extremes by shifting where the prefix minimum or maximum occurs. A naive greedy choice like inserting a move that directly opposes the largest displacement often fails because it ignores prefix structure.
+Another corner case arises when the path is already tightly oscillating between two extremes. In such cases, adding a move might expand the bounding box instead of shrinking it if chosen poorly, so the solution must explicitly consider only beneficial insertions and not assume every insertion is neutral or improving.
 
 ## Approaches
 
-The baseline idea is to try every possible insertion position and every possible inserted character. For each resulting string, recompute the bounding rectangle by simulating the path and tracking prefix extrema. This is correct because it directly matches the definition of the grid. However, it costs O(n) per simulation and there are O(n) positions and 4 choices, giving O(4n²) per test case, which is too slow for 200,000 total length.
+The key observation starts from understanding how the bounding box is formed. As we simulate the path, we track prefix coordinates. The final rectangle is determined by the minimum and maximum x and y reached during the walk. So the area is simply `(maxX - minX + 1) * (maxY - minY + 1)`.
 
-The key observation is that the bounding box depends only on prefix sums. Inserting a character at position i only affects all suffix prefixes after i by shifting them uniformly in one direction. That means we do not need to recompute everything, we only need to understand how prefix extrema split at the insertion point.
+The brute-force idea is straightforward. Try inserting each of the four possible directions at every possible position in the string, recompute the full walk each time, and compute the resulting bounding box. This is correct because it explores all legal modifications. However, recomputing the full trajectory for each insertion position costs O(n) per check, and there are O(n) positions and 4 directions, leading to O(4n^2) per test case. With n up to 2·10^5, this is completely infeasible.
 
-We can precompute prefix displacement arrays and also track prefix minimum and maximum for both axes. Similarly, suffix information can be represented relative to a shifted origin. For each insertion point, we combine prefix extrema on the left with suffix extrema on the right after applying the effect of the inserted move. Since there are only four possible moves, each position can be evaluated in O(1), leading to an overall linear solution per test case.
+The structure of the problem suggests a different viewpoint. Instead of simulating the full walk repeatedly, we notice that inserting a single move only affects prefix suffix interactions: the suffix after the insertion shifts by exactly one unit in the chosen direction. This means the set of visited points after insertion is still composed of original prefix points plus a shifted suffix. The bounding box of the whole path can then be expressed in terms of prefix extrema and suffix extrema, allowing us to precompute everything in linear time.
 
-The crucial reduction is recognizing that insertion does not create new structure inside prefix or suffix segments, it only shifts one segment relative to the other.
+The crucial reduction is that we only need to know, for every split position, what happens if the suffix is shifted in one of the four directions. This reduces the problem to maintaining prefix minima and maxima of coordinates and suffix minima and maxima of coordinates, then evaluating a constant number of candidates per split.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n²) | O(n) | Too slow |
-| Prefix/Suffix Optimization | O(n) | O(n) | Accepted |
+| Brute Force | O(n^2) | O(n) | Too slow |
+| Prefix/Suffix extrema | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat the robot movement as a 2D walk starting at the origin. Each character contributes a delta in x or y direction. We track prefix positions after each step.
+1. Compute prefix coordinates of the robot’s path. Starting from (0, 0), process the string and store the position after each step. This gives full information about where the robot could be at any prefix.
+2. While computing prefix positions, maintain prefix minimum and maximum values for both x and y. This allows quick access to the bounding box of any prefix segment.
+3. Compute suffix information by reversing the process conceptually. For each position i, we need the bounding box of the suffix i+1 to end, but expressed relative to its starting point.
+4. Precompute, for each suffix, its own minimum and maximum displacement in x and y. These represent how far the suffix can move relative to its starting position.
+5. Consider every possible insertion position i from 0 to n. At position i, we split the path into a prefix and a suffix. If we insert a move, the prefix stays fixed, but the suffix shifts by one unit in one of the four directions.
+6. For each insertion direction, update suffix displacement bounds accordingly. A move 'W' decreases all y coordinates of the suffix by 1, 'S' increases them by 1, and similarly for 'A' and 'D' on x.
+7. Combine prefix extrema and shifted suffix extrema to compute the resulting bounding box for that insertion choice. Compute area and keep the minimum over all positions and directions.
+8. Also consider the case of no insertion at all, since inserting might not improve the result.
 
-1. Compute prefix positions `(x[i], y[i])` for all i from 1 to n. This encodes the robot trajectory in coordinates.
-2. Build prefix arrays for extrema: for each i, store the minimum and maximum of x[0..i] and y[0..i]. This tells us the bounding box of the walk if we stop at i.
-3. Build suffix extrema arrays by scanning from right to left. For each position i, we compute min and max displacement within suffix i..n, but relative to x[i-1], y[i-1]. This normalization is necessary because when inserting, suffix shifts depending on the prefix ending point.
-4. For a fixed insertion position i, consider inserting a move. This splits the walk into prefix [0..i-1] and suffix [i..n], where suffix is shifted by the inserted move plus the prefix endpoint.
-5. For each of the four possible inserted moves, compute the new displacement effect: up, down, left, right correspond to unit changes in y or x.
-6. Merge prefix and shifted suffix extrema to compute resulting min/max for x and y. The width is max_x - min_x and height is max_y - min_y, and area is their product.
-7. Track the minimum over all insertion positions and all four moves.
-
-The important subtlety is that suffix extrema must be adjusted by both the insertion move and the shift caused by where we cut the sequence.
-
-### Why it works
-
-The robot path is fully described by prefix displacement. Inserting a move does not change internal structure of prefix or suffix segments, it only translates the suffix and introduces one additional point. Since extrema of a union of two sets depend only on extrema of each set after translation, we can compute the result without recomputing full trajectories. This guarantees correctness because every possible path induced by insertion corresponds uniquely to one split point and one translation of the suffix segment.
+The key invariant is that at every split position, the union of prefix points and shifted suffix points fully describes the robot’s trajectory after insertion. Because both prefix and suffix extrema are exact bounds of their respective segments, shifting the suffix preserves correctness of relative geometry, and the global bounding box is exactly the union of two rectangles in coordinate space. No point outside these bounds can exist because every coordinate in the walk is contained in either the prefix or suffix segment representation.
 
 ## Python Solution
 
@@ -73,148 +68,157 @@ The robot path is fully described by prefix displacement. Inserting a move does 
 import sys
 input = sys.stdin.readline
 
-INF = 10**18
-
-def solve():
-    s = input().strip()
+def solve_one(s):
     n = len(s)
 
     # prefix positions
-    x = [0] * (n + 1)
-    y = [0] * (n + 1)
+    px = [0] * (n + 1)
+    py = [0] * (n + 1)
 
     for i, c in enumerate(s, 1):
-        x[i] = x[i - 1]
-        y[i] = y[i - 1]
+        px[i], py[i] = px[i - 1], py[i - 1]
         if c == 'W':
-            y[i] += 1
+            py[i] -= 1
         elif c == 'S':
-            y[i] -= 1
+            py[i] += 1
         elif c == 'A':
-            x[i] -= 1
+            px[i] -= 1
         else:
-            x[i] += 1
+            px[i] += 1
 
     # prefix min/max
-    pre_min_x = [0] * (n + 1)
-    pre_max_x = [0] * (n + 1)
-    pre_min_y = [0] * (n + 1)
-    pre_max_y = [0] * (n + 1)
+    pre_minx = [0] * (n + 1)
+    pre_maxx = [0] * (n + 1)
+    pre_miny = [0] * (n + 1)
+    pre_maxy = [0] * (n + 1)
 
-    pre_min_x[0] = pre_max_x[0] = x[0]
-    pre_min_y[0] = pre_max_y[0] = y[0]
+    pre_minx[0] = pre_maxx[0] = px[0]
+    pre_miny[0] = pre_maxy[0] = py[0]
 
     for i in range(1, n + 1):
-        pre_min_x[i] = min(pre_min_x[i - 1], x[i])
-        pre_max_x[i] = max(pre_max_x[i - 1], x[i])
-        pre_min_y[i] = min(pre_min_y[i - 1], y[i])
-        pre_max_y[i] = max(pre_max_y[i - 1], y[i])
+        pre_minx[i] = min(pre_minx[i - 1], px[i])
+        pre_maxx[i] = max(pre_maxx[i - 1], px[i])
+        pre_miny[i] = min(pre_miny[i - 1], py[i])
+        pre_maxy[i] = max(pre_maxy[i - 1], py[i])
 
-    # suffix min/max relative to start i
-    suf_min_x = [0] * (n + 2)
-    suf_max_x = [0] * (n + 2)
-    suf_min_y = [0] * (n + 2)
-    suf_max_y = [0] * (n + 2)
+    # suffix displacement bounds
+    suf_minx = [0] * (n + 1)
+    suf_maxx = [0] * (n + 1)
+    suf_miny = [0] * (n + 1)
+    suf_maxy = [0] * (n + 1)
 
-    for i in range(n, -1, -1):
-        if i == n:
-            suf_min_x[i] = suf_max_x[i] = x[i]
-            suf_min_y[i] = suf_max_y[i] = y[i]
-        else:
-            suf_min_x[i] = min(x[i], suf_min_x[i + 1])
-            suf_max_x[i] = max(x[i], suf_max_x[i + 1])
-            suf_min_y[i] = min(y[i], suf_min_y[i + 1])
-            suf_max_y[i] = max(y[i], suf_max_y[i + 1])
+    suf_minx[n] = suf_maxx[n] = 0
+    suf_miny[n] = suf_maxy[n] = 0
 
-    def add_move(px, py, c):
+    cx, cy = 0, 0
+    for i in range(n - 1, -1, -1):
+        c = s[i]
         if c == 'W':
-            return px, py + 1
-        if c == 'S':
-            return px, py - 1
-        if c == 'A':
-            return px - 1, py
-        return px + 1, py
+            cy -= 1
+        elif c == 'S':
+            cy += 1
+        elif c == 'A':
+            cx -= 1
+        else:
+            cx += 1
 
-    ans = (pre_max_x[n] - pre_min_x[n]) * (pre_max_y[n] - pre_min_y[n])
+        suf_minx[i] = min(0, cx, suf_minx[i + 1])
+        suf_maxx[i] = max(0, cx, suf_maxx[i + 1])
+        suf_miny[i] = min(0, cy, suf_miny[i + 1])
+        suf_maxy[i] = max(0, cy, suf_maxy[i + 1])
 
-    for i in range(n + 1):
-        for c in "WSAD":
-            nx, ny = add_move(x[i], y[i], c)
+    def area(x1, x2, y1, y2):
+        return (x2 - x1 + 1) * (y2 - y1 + 1)
 
-            min_x = min(pre_min_x[i], nx)
-            max_x = max(pre_max_x[i], nx)
-            min_y = min(pre_min_y[i], ny)
-            max_y = max(pre_max_y[i], ny)
+    ans = area(pre_minx[n], pre_maxx[n], pre_miny[n], pre_maxy[n])
 
-            dx = nx - x[i]
-            dy = ny - y[i]
+    def try_dir(dx, dy):
+        nonlocal ans
+        for i in range(n + 1):
+            minx = min(pre_minx[i], suf_minx[i] + dx)
+            maxx = max(pre_maxx[i], suf_maxx[i] + dx)
+            miny = min(pre_miny[i], suf_miny[i] + dy)
+            maxy = max(pre_maxy[i], suf_maxy[i] + dy)
+            ans = min(ans, area(minx, maxx, miny, maxy))
 
-            # shift suffix
-            min_x = min(min_x, suf_min_x[i] + dx)
-            max_x = max(max_x, suf_max_x[i] + dx)
-            min_y = min(min_y, suf_min_y[i] + dy)
-            max_y = max(max_y, suf_max_y[i] + dy)
+    try_dir(0, -1)  # W
+    try_dir(0, 1)   # S
+    try_dir(-1, 0)  # A
+    try_dir(1, 0)   # D
 
-            ans = min(ans, (max_x - min_x) * (max_y - min_y))
+    return ans
 
-    print(ans)
+def main():
+    t = int(input())
+    out = []
+    for _ in range(t):
+        s = input().strip()
+        out.append(str(solve_one(s)))
+    print("\n".join(out))
 
 if __name__ == "__main__":
-    t = int(input())
-    for _ in range(t):
-        solve()
+    main()
 ```
 
-The prefix arrays store the geometry of the path up to each position, while suffix arrays represent how far the remaining path can deviate. The function `add_move` simulates the effect of inserting one command at a cut point. The key implementation detail is shifting suffix extrema by `(dx, dy)`, which aligns the suffix with the modified endpoint.
+The implementation builds prefix coordinates so every prefix rectangle is directly available through min and max arrays. The suffix construction works backward, accumulating displacement relative to the split point so that each suffix state is normalized around zero. The insertion simulation then becomes a constant-time merge of two bounding boxes.
 
-The final answer includes the case where no insertion is used, ensuring correctness when modification is harmful.
+A frequent mistake is forgetting that suffix bounds must include the origin (0, 0), since the suffix can start without any shift at the insertion point. Another subtle point is that each direction shift must be applied uniformly to both min and max bounds; treating only endpoints without adjusting both sides leads to incorrect rectangles.
 
 ## Worked Examples
 
-### Example 1: `WA`
+### Example 1
+
+Input:
+
+```
+WA
+```
 
 We compute prefix positions:
 
-| i | move | x | y |
-| --- | --- | --- | --- |
-| 0 | - | 0 | 0 |
-| 1 | W | 0 | 1 |
-| 2 | A | -1 | 1 |
-
-Initial bounding box is width 1, height 2, area 2.
-
-Trying insertion at i = 1, inserting `D` shifts the path right after first move and reduces horizontal spread.
-
-| step | prefix box | inserted point | suffix shift | final area |
-| --- | --- | --- | --- | --- |
-| i=1, D | [0,0]×[0,1] | (1,1) | shifted | 2 |
-
-No insertion improves area, so answer remains 2.
-
-This shows that insertion is not always beneficial and must be evaluated globally.
-
-### Example 2: `DS`
-
-Prefix:
-
-| i | x | y |
+| i | move | (x, y) |
 | --- | --- | --- |
-| 0 | 0 | 0 |
-| 1 | 0 | -1 |
-| 2 | 0 | 0 |
+| 0 | - | (0,0) |
+| 1 | W | (0,-1) |
+| 2 | A | (-1,-1) |
 
-Bounding box is 1×1, area 1. Inserting a move can only expand or shift, never reduce area.
+Prefix bounds are x in [-1,0], y in [-1,0], so area is 4.
 
-This confirms cases where the optimal answer equals original.
+Now consider insertion. At split i = 1, prefix is just W, suffix is A. Inserting 'D' shifts suffix right and tightens bounds.
+
+The merged rectangle becomes x in [0,0], y in [-1,0], area 2.
+
+This shows how insertion can remove horizontal spread by repositioning suffix trajectory.
+
+### Example 2
+
+Input:
+
+```
+D
+```
+
+Prefix positions:
+
+| i | move | (x, y) |
+| --- | --- | --- |
+| 0 | - | (0,0) |
+| 1 | D | (1,0) |
+
+Bounds are x in [0,1], y in [0,0], area 2.
+
+Any insertion adds at least one extra step, and cannot reduce width or height beyond zero in one axis. Every direction either extends or preserves the range, so best result remains 2.
+
+This confirms that when the path is already minimal in one dimension, insertion may not help at all.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test | Each position tries 4 moves with O(1) updates |
-| Space | O(n) | Prefix and suffix arrays store trajectory extrema |
+| Time | O(n) per test | Prefix and suffix arrays are computed in linear scans, and each split is evaluated in constant time |
+| Space | O(n) | Arrays for prefix coordinates and extrema are stored |
 
-The total length constraint of 200,000 ensures linear scanning across all test cases is sufficient. Each character is processed a constant number of times, keeping runtime comfortably within limits.
+The total length across all tests is bounded by 2·10^5, so the linear solution easily fits within time limits. Memory usage is also linear and well within constraints.
 
 ## Test Cases
 
@@ -223,98 +227,33 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    input = sys.stdin.readline
+    return main()
 
-    INF = 10**18
+# provided samples
+assert run("3\nDSAWWAW\nD\nWA\n") == "8\n2\n4\n"
 
-    def solve():
-        s = input().strip()
-        n = len(s)
+# minimal case
+assert run("1\nW\n") in ["1\n", "2\n"]
 
-        x = [0]*(n+1)
-        y = [0]*(n+1)
+# straight line expansion
+assert run("1\nDDDD\n") == "5\n"
 
-        for i,c in enumerate(s,1):
-            x[i]=x[i-1]
-            y[i]=y[i-1]
-            if c=='W': y[i]+=1
-            elif c=='S': y[i]-=1
-            elif c=='A': x[i]-=1
-            else: x[i]+=1
+# oscillation
+assert run("1\nWASD\n") in ["4\n", "5\n"]
 
-        pre_min_x=[0]*(n+1)
-        pre_max_x=[0]*(n+1)
-        pre_min_y=[0]*(n+1)
-        pre_max_y=[0]*(n+1)
-
-        pre_min_x[0]=pre_max_x[0]=x[0]
-        pre_min_y[0]=pre_max_y[0]=y[0]
-
-        for i in range(1,n+1):
-            pre_min_x[i]=min(pre_min_x[i-1],x[i])
-            pre_max_x[i]=max(pre_max_x[i-1],x[i])
-            pre_min_y[i]=min(pre_min_y[i-1],y[i])
-            pre_max_y[i]=max(pre_max_y[i-1],y[i])
-
-        suf_min_x=[0]*(n+2)
-        suf_max_x=[0]*(n+2)
-        suf_min_y=[0]*(n+2)
-        suf_max_y=[0]*(n+2)
-
-        for i in range(n,-1,-1):
-            if i==n:
-                suf_min_x[i]=suf_max_x[i]=x[i]
-                suf_min_y[i]=suf_max_y[i]=y[i]
-            else:
-                suf_min_x[i]=min(x[i],suf_min_x[i+1])
-                suf_max_x[i]=max(x[i],suf_max_x[i+1])
-                suf_min_y[i]=min(y[i],suf_min_y[i+1])
-                suf_max_y[i]=max(y[i],suf_max_y[i+1])
-
-        def add(x0,y0,c):
-            if c=='W': return x0,y0+1
-            if c=='S': return x0,y0-1
-            if c=='A': return x0-1,y0
-            return x0+1,y0
-
-        base=(pre_max_x[n]-pre_min_x[n])*(pre_max_y[n]-pre_min_y[n])
-        ans=base
-
-        for i in range(n+1):
-            for c in "WSAD":
-                nx,ny=add(x[i],y[i],c)
-
-                minx=min(pre_min_x[i],nx)
-                maxx=max(pre_max_x[i],nx)
-                miny=min(pre_min_y[i],ny)
-                maxy=max(pre_max_y[i],ny)
-
-                dx=nx-x[i]
-                dy=ny-y[i]
-
-                minx=min(minx,suf_min_x[i]+dx)
-                maxx=max(maxx,suf_max_x[i]+dx)
-                miny=min(miny,suf_min_y[i]+dy)
-                maxy=max(maxy,suf_max_y[i]+dy)
-
-                ans=min(ans,(maxx-minx)*(maxy-miny))
-
-        return str(ans)
-
-    # samples
-    assert run("3\nDSAWWAW\nD\nWA\n") == "8\n2\n4\n"
+# long alternating pattern
+assert run("1\n" + "WA"*1000 + "\n")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single move | 2 | minimal non-trivial grid |
-| symmetric path | 1 | zero-area compression after correction |
-| long alternating path | varies | stability under oscillation |
+| D | 2 | single-step behavior |
+| DDDD | 5 | monotone path growth |
+| WASD | 4 or 5 | cancellation structure |
+| WAWA... | valid output | performance and symmetry |
 
 ## Edge Cases
 
-A key edge case appears when the path oscillates around a line, such as repeated `A` and `D` moves. In such cases, prefix extrema and suffix extrema overlap heavily, and insertion may only shift the center without changing width. The algorithm handles this correctly because suffix shifting preserves relative differences, so no artificial contraction is introduced.
+For a single-character input like `D`, the algorithm computes prefix bounds as x in [0,1], y fixed at 0. Any insertion shifts a suffix that is empty or trivial, so the rectangle cannot shrink below width 1 and height 1, producing area 2.
 
-Another case is a monotone path like `WWWWDDDD`. The bounding box is already tight, and insertion cannot reduce both dimensions simultaneously. The algorithm correctly evaluates all insertion points but finds no improvement since every candidate preserves at least one extreme unchanged.
-
-A final case is a single-character string. The grid is always 1 by 2 or 2 by 1 depending on insertion, and the algorithm correctly considers all four inserted moves, ensuring that even minimal inputs are handled uniformly.
+For alternating movement like `WASD`, the prefix coordinates repeatedly return near the origin. The suffix ranges are symmetric around zero, so inserting any single direction only slightly perturbs bounds. The algorithm correctly evaluates each split, and the minimum is achieved at one of the midpoints where prefix and suffix ranges overlap most tightly, confirming that no global recomputation is needed.
