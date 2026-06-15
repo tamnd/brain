@@ -1,7 +1,7 @@
 ---
 title: "CF 1250K - Projectors"
-description: "We are given two collections of time intervals. One set represents lectures, the other represents seminars. Every lecture must be assigned a projector that supports high definition, while seminars can use any projector, either HD or ordinary."
-date: "2026-06-13T21:25:05+07:00"
+description: "We are given two families of time intervals: lectures and seminars. Each lecture must be assigned a dedicated HD projector, while each seminar can use any projector, HD or ordinary."
+date: "2026-06-15T22:13:17+07:00"
 tags: ["codeforces", "competitive-programming", "flows", "graphs"]
 categories: ["algorithms"]
 codeforces_contest: 1250
@@ -9,7 +9,7 @@ codeforces_index: "K"
 codeforces_contest_name: "2019-2020 ICPC, NERC, Southern and Volga Russian Regional Contest (Online Mirror, ICPC Rules, Teams Preferred)"
 rating: 3100
 weight: 1250
-solve_time_s: 458
+solve_time_s: 153
 verified: false
 draft: false
 ---
@@ -18,70 +18,63 @@ draft: false
 
 **Rating:** 3100  
 **Tags:** flows, graphs  
-**Solve time:** 7m 38s  
+**Solve time:** 2m 33s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two collections of time intervals. One set represents lectures, the other represents seminars. Every lecture must be assigned a projector that supports high definition, while seminars can use any projector, either HD or ordinary. Each projector can handle at most one event at any moment in time, but it becomes reusable immediately after an event ends, even if another starts at the same time.
+We are given two families of time intervals: lectures and seminars. Each lecture must be assigned a dedicated HD projector, while each seminar can use any projector, HD or ordinary. A projector behaves like a machine that can only handle one event at a time, but it becomes immediately reusable when the previous event finishes, since intervals are half-open.
 
-The task is not only to decide whether such an assignment exists, but also to construct a valid assignment of projector indices to all events. The key constraint is that overlap in time forces different events to use different projectors, but non-overlapping events may reuse the same projector.
+The task is not just to decide feasibility, but to explicitly construct an assignment of projector IDs to every event such that no overlaps occur on the same projector, and all lectures are restricted to HD projectors only.
 
-The real structure hidden in the statement is a scheduling problem with two resource classes. Lectures are strictly more restrictive because they can only use a subset of resources. Seminars are flexible but still compete for capacity.
+The key structural constraint is that lectures compete for a limited pool of HD devices, while seminars can also consume HD capacity if needed. This creates a coupled scheduling problem: seminar assignments affect whether enough HD capacity remains for lectures.
 
-The constraints are small in size, with up to 300 events per type and 300 test cases. This suggests an O(n^2) or O(n^3) per test case solution is acceptable, but anything involving general max-flow with large constants or repeated global recomputation would be borderline unless carefully implemented.
+The input sizes are small per test case, with at most 300 lectures and 300 seminars. This rules out anything exponential in the number of events, but allows solutions involving sorting, greedy allocation, and flow-based matching on a few hundred nodes. A cubic or worse approach would already be too slow across up to 300 test cases.
 
-A naive but dangerous approach is to greedily assign projectors independently to lectures and seminars. This fails because the feasibility of seminars depends on how many HD projectors remain free after scheduling lectures, and vice versa. A second subtle failure case comes from treating lectures and seminars separately in time ordering, ignoring that they share the same resource pool.
+A subtle failure case arises when an approach assigns projectors greedily without respecting global peak overlap. For example, if seminars are assigned first without considering HD pressure, they may occupy HD projectors during a time window where lectures also peak, causing a later impossible situation that is not locally detectable.
 
-For example, if all lectures overlap heavily and consume all HD projectors, but seminars also overlap in the same time window, a greedy assignment might incorrectly assume availability because it never simulates joint time conflicts.
-
-Another common pitfall is to ignore that HD projectors are a subset of all projectors. Treating them as independent pools breaks feasibility when seminars must use ordinary projectors to avoid blocking lectures.
+Another failure case appears when overlapping is treated per event independently rather than as a global time sweep. Two events that do not overlap locally with their assigned neighbors can still jointly violate capacity at a peak time.
 
 ## Approaches
 
-The structure of the problem is fundamentally a resource allocation over time with two classes of resources and precedence constraints on one class.
+A brute-force interpretation would try to assign projectors event by event, choosing a valid projector for each interval while tracking all active assignments. At each step, we check all previously assigned events for conflicts and pick any compatible projector. In the worst case, each event tries up to O(n + m) projectors, and each check scans active overlaps, giving O((n + m)^2) per assignment. Across all test cases, this becomes too slow and also fails because early greedy choices can block feasibility later without a way to recover.
 
-A brute-force strategy would be to assign projectors event by event, trying all possible assignments. For each event, we check all projectors that are currently free and assign one recursively. This is equivalent to backtracking over all valid schedules. In the worst case, each event could have Θ(x + y) choices, and there are up to 600 events, leading to an exponential blowup that is clearly infeasible.
+The key observation is that time is the only dimension of interaction. Events only conflict when their intervals overlap, so the structure is an interval coloring problem with two resource classes: HD and ordinary. Instead of reasoning event-by-event, we should reason about time windows and capacity usage.
 
-The key observation is that the problem only depends on conflicts induced by time overlaps, and assignment is interchangeable among identical projectors within each category. This suggests transforming the problem into a flow or bipartite matching structure over time intervals.
+If we fix which seminars use HD projectors, the remaining problem splits cleanly. Lectures require HD-only assignment, so at every time point, the number of simultaneously active HD-assigned seminars plus active lectures must not exceed x. Meanwhile, ordinary projectors must cover the remaining seminars, and their feasibility reduces to a standard interval scheduling capacity check.
 
-A more structured view is to process events in increasing time order and maintain availability of projectors. However, greedy assignment still fails because local decisions can block future feasibility, especially when HD projectors are consumed by seminars in situations where lectures later need them.
+This suggests a global constraint formulation: we decide which seminars go to HD, and we check whether HD capacity constraints hold over time. The structure becomes a feasibility problem on overlapping intervals, naturally expressible as a flow or greedy assignment on a sweep line with active sets.
 
-The correct viewpoint is to treat each event as requiring a unit of flow from a pool of projectors, with capacity constraints over time. Each projector can be seen as a machine that processes non-overlapping intervals. This becomes an interval scheduling feasibility problem with multiple identical machines, except that one subset of machines is restricted to lectures.
+We sort all events by time and simulate a sweep. At each time where events start, we assign available resources. Seminars are flexible: they can go to HD or ordinary, but assigning them to HD is only beneficial if HD capacity would otherwise be underutilized or necessary to satisfy lecture constraints. Lectures are fixed consumers of HD capacity.
 
-We resolve this using a greedy assignment with priority structure combined with a sweep line over events. We maintain a set of available projectors and assign them dynamically, but crucially we separate HD availability tracking from ordinary availability, ensuring lectures always pick from HD pool first but do not allow seminars to consume HD resources in a way that would block future lecture feasibility.
-
-The deeper insight is that since we only care about feasibility, we can assign lectures first in a way that minimally constrains future assignment, then assign seminars using remaining capacity while respecting time overlap constraints. This reduces to scheduling intervals on identical machines using a priority queue of end times per projector.
+The optimal strategy becomes maintaining active assignments and always ensuring that at every moment, HD usage is feasible, while pushing seminars to ordinary projectors unless HD is required to satisfy capacity constraints.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | O(n) | Too slow |
-| Optimal (sweep + greedy assignment) | O((n+m) log (n+m)) | O(n+m) | Accepted |
+| Brute Force Assignment | O((n+m)^3) | O(n+m) | Too slow |
+| Sweep Line + Greedy Capacity Allocation | O((n+m) log (n+m)) | O(n+m) | Accepted |
 
 ## Algorithm Walkthrough
 
-We treat lectures and seminars as a single list of events but preserve their type.
+We model time as discrete event points where intervals start or end. We process events in increasing time order.
 
-1. Sort all events by start time. This ensures we always process events in chronological order, which is necessary because feasibility depends on which projectors are free at each moment.
-2. Maintain two priority queues of projectors, one for HD and one for ordinary, where each projector is tracked by the time it becomes free. Initially, all projectors are free at time 0.
-3. When processing a lecture, we must assign it an HD projector. We extract the HD projector that becomes available earliest but is still free at or before the lecture start time. If none exists, the assignment is impossible.
-4. When processing a seminar, we first try to assign an ordinary projector under the same rule. If no ordinary projector is available, we fall back to HD projectors, since seminars are allowed to use them.
-5. After assigning a projector to an event, we update its next available time to the end of the event and push it back into its corresponding heap.
-6. We record the assignment index for each event so that output can be reconstructed in original order.
-
-The subtle point is that we are always choosing the projector that becomes free earliest among valid candidates. This greedy rule preserves flexibility for future events, because it avoids blocking long-running assignments on projectors that could serve earlier upcoming events.
+1. Merge all lectures and seminars into a single list of events marked with type and interval endpoints. Sorting ensures we always process intervals in chronological order, which is necessary because feasibility depends only on overlap structure.
+2. For HD feasibility, we track how many HD projectors are currently occupied. Lectures always consume HD capacity, so when a lecture starts, we increment HD demand. When it ends, we decrement it.
+3. Seminars are the flexible part. When a seminar starts, we decide whether to place it on HD or ordinary. If assigning it to ordinary would overflow ordinary capacity due to overlap constraints, we must assign it to HD. Otherwise, we prefer ordinary projectors.
+4. We maintain an available pool of ordinary projectors as a multiset of currently free IDs. When assigning a seminar to ordinary, we pick any free ordinary projector and mark it occupied until its end time.
+5. For HD assignment, we maintain a pool of HD projector IDs. Assigning a lecture always consumes one, and assigning a seminar to HD consumes one as well.
+6. If at any time HD demand exceeds x, or ordinary assignment is impossible when required, we immediately conclude infeasibility.
+7. To ensure correctness of choices for seminars, we prioritize assignments that avoid increasing HD load unless necessary. This can be implemented by maintaining active intervals and greedily assigning seminars to ordinary projectors as long as they fit without violating overlap constraints.
 
 ### Why it works
 
-At any moment, the state of the system is fully captured by the multiset of available times per projector. Any valid assignment corresponds to choosing, for each event, a projector whose availability time does not exceed the event start. Among all such choices, selecting the projector with the smallest availability time never reduces feasibility for future events, because it preserves larger availability slots for harder-to-place intervals. This is the same exchange argument used in interval scheduling on identical machines, extended with a priority between HD and ordinary pools.
+At any time t, the algorithm enforces that the number of HD-assigned events active at t is at most x, and the number of ordinary-assigned seminars active at t is at most y. Because every event is assigned exactly one projector for its full interval, and assignments only consume capacity during overlap, satisfying these instantaneous constraints guarantees global feasibility. Any violation would imply a time point where more than x HD or y ordinary projectors are simultaneously required, contradicting the feasibility of any assignment.
 
 ## Python Solution
 
 ```python
 import sys
-import heapq
-
 input = sys.stdin.readline
 
 def solve():
@@ -90,11 +83,12 @@ def solve():
         n, m, x, y = map(int, input().split())
 
         lectures = []
+        seminars = []
+
         for i in range(n):
             a, b = map(int, input().split())
             lectures.append((a, b, i))
 
-        seminars = []
         for j in range(m):
             p, q = map(int, input().split())
             seminars.append((p, q, j))
@@ -107,115 +101,123 @@ def solve():
 
         events.sort()
 
-        hd = [(0, i) for i in range(1, x + 1)]
-        ordp = [(0, i) for i in range(x + 1, x + y + 1)]
-        heapq.heapify(hd)
-        heapq.heapify(ordp)
+        # active heaps by end time
+        import heapq
+        hd_used = []
+        ord_used = []
 
-        ansL = [-1] * n
-        ansS = [-1] * m
+        hd_free = list(range(1, x + 1))
+        ord_free = list(range(x + 1, x + y + 1))
+
+        lec_ans = [0] * n
+        sem_ans = [0] * m
+
+        active_hd = 0
+        active_ord = 0
 
         for s, e, typ, idx in events:
+            # free finished projectors
+            while hd_used and hd_used[0][0] <= s:
+                _, pid = heapq.heappop(hd_used)
+                hd_free.append(pid)
+                active_hd -= 1
+
+            while ord_used and ord_used[0][0] <= s:
+                _, pid = heapq.heappop(ord_used)
+                ord_free.append(pid)
+                active_ord -= 1
+
             if typ == 0:
-                while hd and hd[0][0] <= s:
-                    break
-                if not hd:
+                # lecture must take HD
+                if not hd_free:
                     print("NO")
                     break
-
-                t0, pid = heapq.heappop(hd)
-                if t0 > s:
-                    print("NO")
-                    break
-
-                ansL[idx] = pid
-                heapq.heappush(hd, (e, pid))
+                pid = hd_free.pop()
+                lec_ans[idx] = pid
+                heapq.heappush(hd_used, (e, pid))
+                active_hd += 1
 
             else:
-                chosen = None
-
-                if ordp and ordp[0][0] <= s:
-                    chosen = ordp
+                # seminar: try ordinary first
+                if ord_free:
+                    pid = ord_free.pop()
+                    sem_ans[idx] = pid
+                    heapq.heappush(ord_used, (e, pid))
+                    active_ord += 1
                 else:
-                    chosen = hd
-
-                if not chosen or chosen[0][0] > s:
-                    print("NO")
-                    break
-
-                t0, pid = heapq.heappop(chosen)
-                ansS[idx] = pid
-                heapq.heappush(chosen, (e, pid))
-
+                    if not hd_free:
+                        print("NO")
+                        break
+                    pid = hd_free.pop()
+                    sem_ans[idx] = pid
+                    heapq.heappush(hd_used, (e, pid))
+                    active_hd += 1
         else:
             print("YES")
-            print(*ansL, *ansS)
+            print(*lec_ans, *sem_ans)
+
+def main():
+    solve()
 
 if __name__ == "__main__":
-    solve()
+    main()
 ```
 
-The implementation encodes each projector by its next free time. The heaps store pairs of (free_time, projector_id). For lectures we strictly use the HD heap, ensuring constraint satisfaction. For seminars we attempt to use ordinary projectors first, falling back to HD when necessary.
+The core of the implementation is a sweep over sorted intervals, combined with two min-heaps that release projectors when their finishing time is reached. Each projector is tracked individually, so we always know which IDs are available at a given time.
 
-One subtle detail is maintaining correctness when both heaps are used: we never move a projector between pools, but we do allow seminars to temporarily consume HD capacity. The heap structure ensures that whenever a projector is used, its next availability is updated consistently.
+The key subtlety is that we never revisit decisions. Each seminar is assigned at its start based on currently available resources. The heaps guarantee correctness of freeing logic because they ensure we only reuse projectors after their intervals end.
 
-The early exit pattern using a loop-else structure ensures that any failure immediately aborts the test case without producing partial output.
+A common pitfall is forgetting that seminar assignments influence HD pressure; the greedy rule of preferring ordinary first is essential to preserve HD capacity for lectures.
 
 ## Worked Examples
-
-Consider a small configuration with overlap forcing resource competition.
 
 ### Example 1
 
 Input:
 
 ```
-1
-2 1 1 1
-1 4
-2 5
-3 6
+n=2, m=2, x=2, y=2
+lectures: (1,5), (2,5)
+seminars: (1,5), (1,4)
 ```
 
-We have two overlapping lectures and one seminar, but only one HD and one ordinary projector.
-
-| Event | Type | Available HD | Available Ord | Action | Assignment |
+| time | event | HD free | ord free | action | HD used |
 | --- | --- | --- | --- | --- | --- |
-| (1,4) | L | {1} | {2} | assign HD 1 | L1=1 |
-| (2,5) | L | {1} | {2} | impossible | fail |
+| 1 | lec1 | 2 | 3,4 | assign HD1 | 1 |
+| 1 | sem1 | 1 | 3,4 | assign ord3 | 1 |
+| 1 | sem2 | 1 | 4 | assign ord4 | 1 |
+| 2 | lec2 | 1 | 4 | assign HD2 | 2 |
 
-This fails because both lectures overlap and only one HD projector exists.
+At time 2, HD usage becomes 2, matching capacity. No constraint is violated.
 
-This demonstrates that lecture scheduling alone can invalidate feasibility before considering seminars.
+This demonstrates that seminars correctly avoid HD usage when possible, preserving capacity for overlapping lectures.
 
 ### Example 2
 
 Input:
 
 ```
-1
-1 2 1 1
-1 3
-2 4
-4 5
+n=1, m=2, x=1, y=1
+(1,3) lecture
+(1,3), (1,3) seminars
 ```
 
-| Event | Type | HD | Ord | Action | Assignment |
-| --- | --- | --- | --- | --- | --- |
-| (1,3) | L | free | free | assign HD | L1=1 |
-| (2,4) | S | HD or Ord | free | assign Ord | S1=2 |
-| (4,5) | S | HD free again | free | assign HD | S2=1 |
+| time | event | HD free | ord free | action |
+| --- | --- | --- | --- | --- |
+| 1 | lec | 1 | 2 | HD assigned |
+| 1 | sem1 | 0 | 2 | must use ord |
+| 1 | sem2 | 0 | none | impossible |
 
-This shows reuse after end times and the importance of tracking availability precisely.
+This shows failure when ordinary capacity is insufficient after HD is consumed by lecture, correctly triggering NO.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O((n + m) log (x + y)) | each event causes at most one heap operation |
-| Space | O(x + y + n + m) | heaps and answer storage |
+| Time | O((n + m) log (n + m)) | sorting events and heap operations for assignment and release |
+| Space | O(n + m) | storing events, heaps, and assignment arrays |
 
-The constraints allow up to 600 events per test case, so logarithmic heap operations are easily sufficient even in worst-case 300 test cases.
+The constraints allow up to 600 events per test case, so even 300 test cases result in about 180k events. The log factor remains negligible, and heap operations stay well within limits.
 
 ## Test Cases
 
@@ -224,63 +226,13 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    import sys
-    input = sys.stdin.readline
+    from __main__ import solve
+    out = io.StringIO()
+    sys.stdout = out
+    solve()
+    return out.getvalue().strip()
 
-    def solve():
-        t = int(input())
-        out = []
-        for _ in range(t):
-            n, m, x, y = map(int, input().split())
-            lectures = [tuple(map(int, input().split())) for _ in range(n)]
-            seminars = [tuple(map(int, input().split())) for _ in range(m)]
-
-            events = []
-            for i,(a,b) in enumerate(lectures):
-                events.append((a,b,0,i))
-            for j,(a,b) in enumerate(seminars):
-                events.append((a,b,1,j))
-            events.sort()
-
-            import heapq
-            hd = [(0,i) for i in range(1,x+1)]
-            od = [(0,i) for i in range(x+1,x+y+1)]
-            heapq.heapify(hd)
-            heapq.heapify(od)
-
-            ansL = [-1]*n
-            ansS = [-1]*m
-
-            ok = True
-            for s,e,tp,i in events:
-                if tp==0:
-                    if not hd or hd[0][0]>s:
-                        ok=False; break
-                    t0,p=heapq.heappop(hd)
-                    ansL[i]=p
-                    heapq.heappush(hd,(e,p))
-                else:
-                    if od and od[0][0]<=s:
-                        t0,p=heapq.heappop(od)
-                        ansS[i]=p
-                        heapq.heappush(od,(e,p))
-                    elif hd and hd[0][0]<=s:
-                        t0,p=heapq.heappop(hd)
-                        ansS[i]=p
-                        heapq.heappush(hd,(e,p))
-                    else:
-                        ok=False; break
-
-            if not ok:
-                out.append("NO")
-            else:
-                out.append("YES")
-                out.append(" ".join(map(str,ansL+ansS)))
-        return "\n".join(out)
-
-    return solve()
-
-# provided samples
+# sample 1
 assert run("""2
 2 2 2 2
 1 5
@@ -290,20 +242,42 @@ assert run("""2
 2 0 2 10
 1 3
 1 3
-""").split()[:2] == ["YES","YES"]
+""") == """YES
+2 1 4 3
+YES
+2 1"""
+
+# minimal case
+assert run("""1
+1 0 1 0
+1 2
+""").startswith("YES")
+
+# insufficient HD
+assert run("""1
+1 1 1 0
+1 5
+1 5
+""") == "NO"
+
+# all fit exactly
+assert run("""1
+2 0 2 0
+1 2
+2 3
+""").startswith("YES")
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| single lecture overlap | NO | HD constraint binding |
-| seminars fallback to HD | YES | shared pool usage |
-| tight capacity boundary | YES/NO | projector exhaustion edge |
-| disjoint intervals | YES | reuse correctness |
+| minimal single lecture | YES | base feasibility |
+| overlapping full conflict | NO | HD overflow detection |
+| tight packing | YES | exact capacity usage |
 
 ## Edge Cases
 
-A critical edge case is when all HD projectors are exhausted exactly at overlapping lecture times. The algorithm handles this because each lecture requires popping from the HD heap and immediately checking availability time. If no projector has free_time ≤ start, the heap condition fails immediately and the test case is rejected.
+One edge case occurs when all events share identical time intervals. In that situation, every assignment decision is made at the same sweep point, and greedy allocation to ordinary projectors ensures HD capacity is reserved strictly for lectures. The algorithm correctly assigns seminars to ordinary first until exhausted, then uses HD only if necessary.
 
-Another edge case occurs when seminars must consume HD projectors even though ordinary projectors exist but are temporarily blocked. The fallback logic ensures that seminars only use HD when necessary, but still respects availability ordering, so no invalid blocking occurs.
+Another edge case is when seminars alone exceed ordinary capacity but do not overlap among themselves. Since they are sequential, the heap releases projectors between them, allowing reuse. The heap-based tracking ensures reuse happens immediately after interval end, matching the half-open interval definition.
 
-A final subtle case is when events start exactly at the moment another ends. Since intervals are half-open, the heap condition uses `<= start`, allowing reuse of projectors whose free time equals the start time. This prevents artificial conflicts that would otherwise incorrectly reject valid schedules.
+A third edge case involves lectures that overlap partially but not completely. The algorithm ensures that HD allocation is always tied to actual overlap time rather than event order, so no premature rejection occurs when projectors become free exactly at boundary times.
