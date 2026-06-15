@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8336 problems, 4014 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8337 problems, 4015 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8336 problems, 4014 verified.**
+**1472 contests, 8337 problems, 4015 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 51 contests, 276 problems, 161 verified
+## 2018 — 51 contests, 277 problems, 162 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -499,7 +499,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1065](1065/) | [Educational Codeforces Round 52 (Rated for Div. 2)](https://codeforces.com/contest/1065) | 7 | 3/7 | Div. 2 | 800-2700 |
 | [1066](1066/) | [Codeforces Round 515 (Div. 3)](https://codeforces.com/contest/1066) | 6 | 6/6 | Div. 3 | 1100-2100 |
 | [1067](1067/) | [Codeforces Round 518 (Div. 1) [Thanks, Mail.Ru!]](https://codeforces.com/contest/1067) | 5 | 0/5 | Div. 1 | 1800-3100 |
-| [1068](1068/) | [Codeforces Round 518 (Div. 2) [Thanks, Mail.Ru!]](https://codeforces.com/contest/1068) | 2 | 1/2 | Div. 2 | 1200-1700 |
+| [1068](1068/) | [Codeforces Round 518 (Div. 2) [Thanks, Mail.Ru!]](https://codeforces.com/contest/1068) | 3 | 2/3 | Div. 2 | 1200-1700 |
 | [1070](1070/) | [2018-2019 ICPC, NEERC, Southern Subregional Contest (Online Mirror, ACM-ICPC Rules, Teams Preferred)](https://codeforces.com/contest/1070) | 6 | 1/6 | ICPC/IOI | 1500-3000 |
 | [1071](1071/) | [Codeforces Round 517 (Div. 1, based on Technocup 2019 Elimination Round 2)](https://codeforces.com/contest/1071) | 1 | 0/1 | Div. 1 | 3500-3500 |
 | [1073](1073/) | [Educational Codeforces Round 53 (Rated for Div. 2)](https://codeforces.com/contest/1073) | 4 | 2/4 | Div. 2 | 1000-2600 |
