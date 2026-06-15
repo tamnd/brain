@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8361 problems, 4037 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8362 problems, 4037 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8361 problems, 4037 verified.**
+**1472 contests, 8362 problems, 4037 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 791 problems, 466 verified
+## 2019 — 159 contests, 792 problems, 466 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -545,7 +545,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1113](1113/) | [Codeforces Round 539 (Div. 2)](https://codeforces.com/contest/1113) | 2 | 2/2 | Div. 2 | 900-1300 |
 | [1114](1114/) | [Codeforces Round 538 (Div. 2)](https://codeforces.com/contest/1114) | 6 | 3/6 | Div. 2 | 800-2400 |
 | [1115](1115/) | [Microsoft Q# Coding Contest - Winter 2019 - Warmup](https://codeforces.com/contest/1115) | 6 | 6/6 | Special | 1100-1700 |
-| [1116](1116/) | [Microsoft Q# Coding Contest - Winter 2019](https://codeforces.com/contest/1116) | 12 | 12/12 | Special | - |
+| [1116](1116/) | [Microsoft Q# Coding Contest - Winter 2019](https://codeforces.com/contest/1116) | 13 | 12/13 | Special | - |
 | [1117](1117/) | [Educational Codeforces Round 60 (Rated for Div. 2)](https://codeforces.com/contest/1117) | 7 | 3/7 | Div. 2 | 1000-2500 |
 | [1118](1118/) | [Codeforces Round 540 (Div. 3)](https://codeforces.com/contest/1118) | 8 | 4/8 | Div. 3 | 800-2700 |
 | [1119](1119/) | [Codeforces Global Round 2](https://codeforces.com/contest/1119) | 8 | 6/8 | Global | 1100-3400 |
