@@ -1,7 +1,7 @@
 ---
 title: "CF 1175A - From Hero to Zero"
-description: "We are given a starting number n and a fixed integer k. From n, we repeatedly reduce the value until it becomes zero. Each operation is either subtracting one, or dividing by k when the current value is divisible by k."
-date: "2026-06-13T10:03:41+07:00"
+description: "We are given a number $n$ and a parameter $k$. Starting from $n$, we want to reach zero using two allowed operations: subtract one, or if the current value is divisible by $k$, replace it with the quotient after dividing by $k$."
+date: "2026-06-15T17:25:40+07:00"
 tags: ["codeforces", "competitive-programming", "implementation", "math"]
 categories: ["algorithms"]
 codeforces_contest: 1175
@@ -9,8 +9,8 @@ codeforces_index: "A"
 codeforces_contest_name: "Educational Codeforces Round 66 (Rated for Div. 2)"
 rating: 900
 weight: 1175
-solve_time_s: 482
-verified: false
+solve_time_s: 222
+verified: true
 draft: false
 ---
 
@@ -18,56 +18,53 @@ draft: false
 
 **Rating:** 900  
 **Tags:** implementation, math  
-**Solve time:** 8m 2s  
-**Verified:** no  
+**Solve time:** 3m 42s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given a starting number `n` and a fixed integer `k`. From `n`, we repeatedly reduce the value until it becomes zero. Each operation is either subtracting one, or dividing by `k` when the current value is divisible by `k`. The cost of every operation is one step, and the goal is to minimize the total number of steps needed to reach zero.
+We are given a number $n$ and a parameter $k$. Starting from $n$, we want to reach zero using two allowed operations: subtract one, or if the current value is divisible by $k$, replace it with the quotient after dividing by $k$. Each operation costs one step, and the goal is to minimize the total number of steps.
 
-A useful way to think about this is that subtraction is a slow but always-available way to decrease the number, while division is a rare “shortcut” that can drastically shrink the value, but only at carefully chosen moments when the number happens to align with a multiple of `k`.
+This is essentially a process of repeatedly shrinking a number either gradually or by occasional large jumps when divisibility allows. The difficulty is that division is only occasionally available, so we cannot freely “greedily divide” without accounting for the steps required to make the number divisible.
 
-The constraints make direct simulation impossible. The value of `n` can be as large as \(10^{18}\), so any solution that reduces the number one step at a time is immediately infeasible. Even performing a few million operations per test case would already be too slow in the worst case.
+The constraints are extremely large, with $n$ and $k$ up to $10^{18}$. This immediately rules out any simulation that decrements one by one. Even a linear scan in terms of $n$ is impossible, since $10^{18}$ operations is far beyond the time limit. Any valid solution must reduce the number in logarithmic or near-logarithmic phases, typically by skipping long stretches of consecutive subtractions.
 
-The number of test cases is small enough that an \(O(\log n)\) or \(O(\log^2 n)\) strategy per test is acceptable, but anything linear in `n` is ruled out.
+A naive approach would simulate the process: if $n$ is not divisible by $k$, subtract one repeatedly until it becomes divisible, then divide. This is correct but can degrade badly when $n$ is large and $k$ is small. For example, if $n = 10^{18}$ and $k = 2$, a naive simulation would repeatedly subtract one to reach an even number, then divide, repeating this pattern many times. The number of steps becomes proportional to $n$, which is infeasible.
 
-A subtle pitfall appears when thinking greedily about division. It is tempting to always divide whenever possible, but this is only beneficial when you have already reduced `n` to a multiple of `k`. If you divide too early or ignore the cost of reaching a divisible state, you may underestimate the number of required decrements.
-
-For example, consider `n = 10, k = 3`. You cannot divide immediately. You must first reduce to 9 before dividing, which costs one subtraction anyway, but in larger cases, blindly applying division whenever possible without accounting for the cost of reaching that state leads to incorrect reasoning if not structured carefully.
-
-The correct solution must balance two phases repeatedly: a long stretch of subtracting to reach the next divisible number, followed by a division that shrinks the number significantly.
+Another subtle edge case arises when $k = 1$. Division by one never changes the value, so the only meaningful operation is subtracting one. In that case, the answer is simply $n$. Any implementation that does not guard against this case may loop forever or repeatedly apply a useless division.
 
 ## Approaches
 
-The brute-force idea is straightforward. Start from `n`, and at each step try both operations recursively or via BFS: subtract one, or divide if possible. This explores a huge state graph where each number connects to at most two smaller numbers. While correct, this approach degenerates immediately because the depth of the search tree is on the order of `n`, and the branching causes exponential explosion. Even memoization would still require visiting every integer down to zero in the worst case, which is impossible for \(10^{18}\).
+The brute-force strategy is to always apply the best available move step by step. At each state, if divisible by $k$, divide; otherwise subtract one. This is locally reasonable because division shrinks the number quickly, and subtraction prepares for future divisions.
 
-The key observation is that subtraction is only useful as a means of reaching the nearest multiple of `k`. Once we are at a number divisible by `k`, division is always strictly better than performing `k` subtractions to achieve the same reduction.
+This works correctly but fails in efficiency because the subtraction phase dominates runtime. In the worst case, before every division, we may need up to $k-1$ subtractions, and this can repeat many times across the entire range down to zero. Since $n$ is up to $10^{18}$, this leads to an unbounded number of operations.
 
-So instead of simulating step by step, we can “jump” directly: for a current value `n`, we compute how many steps it takes to reduce it down to the largest multiple of `k` below it, perform that many subtractions in bulk, then divide once, and repeat.
+The key observation is that we never need to simulate subtraction one by one. Instead, we can jump directly to the nearest multiple of $k$. If the current number is $x$, we compute $x \bmod k$. That value tells us exactly how many subtractions are needed to reach a divisible state. We apply them in one aggregated step. After that, if the number is still at least $k$, we perform a division and continue.
 
-This transforms the process into a sequence of arithmetic reductions rather than individual operations. Each iteration reduces the magnitude of `n` by at least a factor of `k` after a small linear adjustment.
+This transforms the process into a sequence of large jumps followed by a small number of divisions, reducing the number of iterations to roughly $O(\log_k n)$.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
-|---|---|---|---|
-| Brute Force | O(n) per test | O(1) | Too slow |
-| Optimal | O(logₖ n) per test | O(1) | Accepted |
+| --- | --- | --- | --- |
+| Brute Force | $O(n)$ | $O(1)$ | Too slow |
+| Optimal | $O(\log n)$ | $O(1)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Maintain a running answer initialized to zero. This will count every subtraction and division performed in compressed form.
+We repeatedly reduce the number using a combination of batching subtractions and occasional divisions.
 
-2. While `n` is greater than or equal to `k`, compute the remainder `r = n % k`. Subtract `r` from `n`, and add `r` to the answer. This step moves `n` to the nearest smaller multiple of `k`. The reason this is safe is that any division requires divisibility, and subtraction is the only way to fix non-divisibility.
+1. If $k = 1$, the only useful move is subtracting one, so the answer is $n$. We return immediately. This avoids infinite loops caused by division that changes nothing.
+2. While $n \ge k$, we first compute $r = n \bmod k$. This tells us how far we are from the nearest smaller multiple of $k$.
+3. We subtract $r$ in one step, reducing $n$ to a multiple of $k$, and add $r$ to the answer. This replaces many unit operations with a single arithmetic jump.
+4. We then divide $n$ by $k$, incrementing the answer by one. This is the only valid division step and gives a large reduction in magnitude.
+5. We repeat this process until $n < k$, meaning division is no longer possible.
+6. Finally, we subtract the remaining $n$ to reach zero, adding $n$ to the answer.
 
-3. Once `n` is divisible by `k`, divide `n` by `k`, and increment the answer by one. This represents the single operation that replaces `k` implicit decrements.
-
-4. Repeat the process until `n` becomes less than `k`. At that point, no further divisions are possible, so the only remaining cost is subtracting all remaining `n` down to zero, which contributes `n` additional steps.
-
-5. Add this final `n` to the answer and terminate.
+The reason this works is that at every stage we are converting the optimal local strategy into an exact cost decomposition: any valid sequence must eventually remove the same remainder before a division can happen, so paying for it in bulk does not change optimality.
 
 ### Why it works
 
-At any moment, the optimal strategy is determined entirely by how quickly we can reach a state where division is allowed. Subtraction never needs to be done one-by-one conceptually; it only serves to bridge the gap to the next divisible state. Every division reduces the scale of the problem by a factor of `k`, so the process is guaranteed to shrink rapidly. The algorithm preserves the invariant that after each iteration, `n` is exactly the result of applying the best possible local sequence of subtractions followed by a division, ensuring no unnecessary operations are counted or skipped.
+The invariant is that after each iteration, we have accounted for the exact number of subtraction operations needed to bring the current state to the nearest valid division point. Since division is always performed as soon as it becomes possible, and every subtraction is counted exactly once, no alternative ordering of operations can reduce the total cost. Any optimal path must still “clear” the remainder before dividing, so grouping those operations preserves correctness while removing inefficiency.
 
 ## Python Solution
 
@@ -77,112 +74,134 @@ input = sys.stdin.readline
 
 def solve():
     t = int(input())
+    out = []
+    
     for _ in range(t):
         n, k = map(int, input().split())
-        ans = 0
-
+        
+        if k == 1:
+            out.append(str(n))
+            continue
+        
+        steps = 0
+        
         while n >= k:
             r = n % k
-            ans += r
+            steps += r
             n -= r
-            ans += 1
             n //= k
-
-        ans += n
-        print(ans)
+            steps += 1
+        
+        steps += n
+        out.append(str(steps))
+    
+    print("\n".join(out))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The code follows the same structure as the algorithm. The loop continues while division is possible, meaning `n >= k`. The remainder computation captures the exact number of decrements needed to align `n` with a multiple of `k`. The division step is counted as a single operation after alignment. Once `n` drops below `k`, the remaining cost is linear subtraction to zero.
+The code directly implements the batching idea. The modulus operation computes how many decrements are needed before a division. After applying them, we divide once and continue. The loop terminates when the number is smaller than $k$, at which point only subtraction remains.
 
-A subtle implementation detail is that the remainder must be computed before modifying `n`, because it represents the exact number of decrement operations needed in that segment. Another important point is that the loop condition is `n >= k`, not `n > k`, since equality still allows a division.
+The special case $k = 1$ is handled explicitly to avoid unnecessary looping and to correctly reflect that only decrementing is possible.
 
 ## Worked Examples
 
-### Example 1: n = 59, k = 3
+### Example 1
 
-| n | n % k | subtractions | operation | new n | total |
-|---|---|---|---|---|---|
-| 59 | 2 | 2 | subtract to 57 | 57 | 2 |
-| 57 | 0 | 0 | divide | 19 | 3 |
-| 19 | 1 | 1 | subtract to 18 | 18 | 4 |
-| 18 | 0 | 0 | divide | 6 | 5 |
-| 6 | 0 | 0 | divide | 2 | 6 |
-| 2 | - | 2 | final cleanup | 0 | 8 |
+Input:
 
-This trace shows how subtraction is only used to reach divisibility points, while division performs the main reduction.
+```
+n = 59, k = 3
+```
 
-### Example 2: n = 10^18, k = 10
+| n | n % k | subtractions | division | total steps |
+| --- | --- | --- | --- | --- |
+| 59 | 2 | 2 | 1 | 3 |
+| 19 | 1 | 1 | 1 | 5 |
+| 6 | 0 | 0 | 1 | 6 |
+| 2 | - | 2 (final) | 0 | 8 |
 
-| n | n % k | subtractions | operation | new n | total |
-|---|---|---|---|---|---|
-| 10^18 | 0 | 0 | divide | 10^17 | 1 |
-| 10^17 | 0 | 0 | divide | 10^16 | 2 |
-| ... | ... | ... | ... | ... | ... |
+The process shows repeated compression: each division is preceded by exactly enough subtractions to align the number. The final phase is pure subtraction once the value drops below $k$.
 
-This demonstrates repeated pure division phases, showing the logarithmic shrinkage until the value becomes small enough that only subtraction remains.
+### Example 2
+
+Input:
+
+```
+n = 10^18, k = 10
+```
+
+| n | n % k | subtractions | division | total steps |
+| --- | --- | --- | --- | --- |
+| 10^18 | 0 | 0 | 1 | 1 |
+| 10^17 | 0 | 0 | 1 | 2 |
+| ... | ... | ... | ... | 19 |
+
+This case shows repeated clean divisions because the number is already aligned with powers of 10. The process becomes a pure logarithmic chain.
+
+The trace confirms that the algorithm behaves optimally when divisibility is frequent and still remains efficient when it is not.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
-|---|---|---|
-| Time | O(logₖ n) per test | each division reduces magnitude by factor k |
-| Space | O(1) | only a few variables maintained |
+| --- | --- | --- |
+| Time | $O(\log_k n)$ | Each division reduces the magnitude by a factor of $k$, and each iteration performs constant work |
+| Space | $O(1)$ | Only a few integer variables are maintained |
 
-The algorithm easily fits within constraints since even for \(n = 10^{18}\), the number of division steps is at most about 60 when \(k = 2\), and far fewer for larger `k`.
+The runtime is easily fast enough for $t \le 100$ and values up to $10^{18}$, since even in the worst case the number of iterations per test case is small.
 
 ## Test Cases
 
 ```python
-# helper: run solution on input string, return output string
 import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    from collections import deque
+    
     input = sys.stdin.readline
-
-    def solve():
-        t = int(input())
-        out = []
-        for _ in range(t):
-            n, k = map(int, input().split())
-            ans = 0
-            while n >= k:
-                r = n % k
-                ans += r
-                n -= r
-                ans += 1
-                n //= k
-            ans += n
-            out.append(str(ans))
-        return "\n".join(out)
-
-    return solve()
+    t = int(input())
+    res = []
+    
+    for _ in range(t):
+        n, k = map(int, input().split())
+        if k == 1:
+            res.append(str(n))
+            continue
+        
+        steps = 0
+        while n >= k:
+            r = n % k
+            steps += r
+            n -= r
+            n //= k
+            steps += 1
+        steps += n
+        res.append(str(steps))
+    
+    return "\n".join(res)
 
 # provided samples
 assert run("2\n59 3\n1000000000000000000 10\n") == "8\n19"
 
 # custom cases
-assert run("1\n1 2\n") == "1", "minimum single decrement"
-assert run("1\n10 10\n") == "2", "direct division then cleanup"
-assert run("1\n25 5\n") == "4", "repeated clean divisions"
-assert run("1\n100 3\n") == "8", "mixed remainder and divisions"
+assert run("1\n1 2\n") == "1", "minimum case"
+assert run("1\n10 10\n") == "2", "single division then subtraction"
+assert run("1\n100 2\n") == "9", "repeated halving structure"
+assert run("1\n5 1\n") == "5", "k=1 edge case"
 ```
 
 | Test input | Expected output | What it validates |
-|---|---|---|
-| 1 2 | 1 | smallest non-zero case |
-| 10 10 | 2 | immediate division edge |
-| 25 5 | 4 | repeated exact divisibility |
-| 100 3 | 8 | mixed remainder/division behavior |
+| --- | --- | --- |
+| 1 2 / 1 | 1 | smallest non-zero case |
+| 10 10 | 2 | exact divisibility then finish |
+| 100 2 | 9 | repeated mixed operations |
+| 5 1 | 5 | degenerate division behavior |
 
 ## Edge Cases
 
-One edge case is when `n < k`. In this situation, no division is ever possible, so the answer is simply `n`. The algorithm handles this naturally because the loop is skipped and the final addition contributes exactly `n`.
+When $k = 1$, division is always possible but useless. The algorithm explicitly returns $n$, matching the fact that only subtraction reduces the number. For input $n = 5, k = 1$, we directly output 5.
 
-Another case is when `n` is already a multiple of `k`. The remainder is zero, so no subtraction cost is added, and we immediately perform a division. This correctly models the optimal behavior, since there is no reason to subtract before dividing.
+When $n < k$, no division occurs at all. For example, $n = 7, k = 10$, the loop is skipped and the answer is simply 7, since we only subtract down to zero.
 
-A final subtle case is when repeated divisions eventually bring `n` below `k`. At that point, the loop stops and the remaining cost is fully captured by the final subtraction step. This avoids any need for special handling or extra conditions, since the same structure applies uniformly across all scales.
+When $n$ is exactly divisible by $k$, such as $n = 100, k = 10$, the remainder is zero, so we divide immediately without extra cost. The algorithm correctly performs one step per division until termination.

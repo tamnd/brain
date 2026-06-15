@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8367 problems, 4040 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8368 problems, 4041 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8367 problems, 4040 verified.**
+**1472 contests, 8368 problems, 4041 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -523,7 +523,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1095](1095/) | [Codeforces Round 529 (Div. 3)](https://codeforces.com/contest/1095) | 6 | 3/6 | Div. 3 | 800-1900 |
 | [1096](1096/) | [Educational Codeforces Round 57 (Rated for Div. 2)](https://codeforces.com/contest/1096) | 7 | 4/7 | Div. 2 | 800-2500 |
 
-## 2019 — 159 contests, 797 problems, 469 verified
+## 2019 — 159 contests, 798 problems, 470 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -592,7 +592,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1172](1172/) | [Codeforces Round 564 (Div. 1)](https://codeforces.com/contest/1172) | 7 | 3/7 | Div. 1 | 1800-3300 |
 | [1173](1173/) | [Codeforces Round 564 (Div. 2)](https://codeforces.com/contest/1173) | 2 | 2/2 | Div. 2 | 800-1100 |
 | [1174](1174/) | [Codeforces Round 563 (Div. 2)](https://codeforces.com/contest/1174) | 6 | 3/6 | Div. 2 | 1000-2500 |
-| [1175](1175/) | [Educational Codeforces Round 66 (Rated for Div. 2)](https://codeforces.com/contest/1175) | 6 | 5/6 | Div. 2 | 900-3000 |
+| [1175](1175/) | [Educational Codeforces Round 66 (Rated for Div. 2)](https://codeforces.com/contest/1175) | 7 | 6/7 | Div. 2 | 900-3000 |
 | [1176](1176/) | [Codeforces Round 565 (Div. 3)](https://codeforces.com/contest/1176) | 6 | 4/6 | Div. 3 | 800-2100 |
 | [1177](1177/) | [Testing Round 15 (Unrated)](https://codeforces.com/contest/1177) | 2 | 2/2 | Special | 1000-1800 |
 | [1178](1178/) | [Codeforces Global Round 4](https://codeforces.com/contest/1178) | 9 | 4/9 | Global | 800-3500 |
