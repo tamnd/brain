@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1515 contests, 8828 problems, 4305 verified."
+description: "Codeforces problem solutions with full editorials. 1516 contests, 8831 problems, 4307 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1515 contests, 8828 problems, 4305 verified.**
+**1516 contests, 8831 problems, 4307 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 94 contests, 521 problems, 317 verified
+## 2018 — 95 contests, 524 problems, 319 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [995](995/) | [Codeforces Round 492 (Div. 1) [Thanks, uDebug!]](https://codeforces.com/contest/995) | 3 | 2/3 | Div. 1 | 1400-2700 |
 | [996](996/) | [Codeforces Round 492 (Div. 2) [Thanks, uDebug!]](https://codeforces.com/contest/996) | 1 | 1/1 | Div. 2 | 800-800 |
 | [997](997/) | [Codeforces Round 493 (Div. 1)](https://codeforces.com/contest/997) | 3 | 3/3 | Div. 1 | 1500-3000 |
 | [998](998/) | [Codeforces Round 493 (Div. 2)](https://codeforces.com/contest/998) | 1 | 0/1 | Div. 2 | 1000-1000 |
