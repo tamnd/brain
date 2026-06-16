@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1489 contests, 8687 problems, 4206 verified."
+description: "Codeforces problem solutions with full editorials. 1490 contests, 8694 problems, 4210 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1489 contests, 8687 problems, 4206 verified.**
+**1490 contests, 8694 problems, 4210 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 68 contests, 380 problems, 218 verified
+## 2018 — 69 contests, 387 problems, 222 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [1027](1027/) | [Educational Codeforces Round 49 (Rated for Div. 2)](https://codeforces.com/contest/1027) | 7 | 4/7 | Div. 2 | 1000-2600 |
 | [1028](1028/) | [AIM Tech Round 5 (rated, Div. 1 + Div. 2)](https://codeforces.com/contest/1028) | 8 | 3/8 | Div. 1+2 | 800-3000 |
 | [1029](1029/) | [Codeforces Round 506 (Div. 3)](https://codeforces.com/contest/1029) | 6 | 5/6 | Div. 3 | 1200-2100 |
 | [1030](1030/) | [Technocup 2019 - Elimination Round 1](https://codeforces.com/contest/1030) | 7 | 4/7 | Special | 800-2900 |
