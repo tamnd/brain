@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8547 problems, 4138 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8549 problems, 4139 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8547 problems, 4138 verified.**
+**1472 contests, 8549 problems, 4139 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 727 problems, 318 verified
+## 2020 — 159 contests, 729 problems, 319 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -752,7 +752,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1352](1352/) | [Codeforces Round 640 (Div. 4)](https://codeforces.com/contest/1352) | 3 | 0/3 | Div. 4 | 800-1500 |
 | [1353](1353/) | [Codeforces Round 642 (Div. 3)](https://codeforces.com/contest/1353) | 3 | 3/3 | Div. 3 | 800-1900 |
 | [1354](1354/) | [Educational Codeforces Round 87 (Rated for Div. 2)](https://codeforces.com/contest/1354) | 6 | 5/6 | Div. 2 | 900-2600 |
-| [1355](1355/) | [Codeforces Round 643 (Div. 2)](https://codeforces.com/contest/1355) | 2 | 2/2 | Div. 2 | 1200-1200 |
+| [1355](1355/) | [Codeforces Round 643 (Div. 2)](https://codeforces.com/contest/1355) | 4 | 3/4 | Div. 2 | 1200-2600 |
 | [1356](1356/) | [Microsoft Q# Coding Contest - Summer 2020 - Warmup](https://codeforces.com/contest/1356) | 5 | 4/5 | Special | - |
 | [1357](1357/) | [Microsoft Q# Coding Contest - Summer 2020](https://codeforces.com/contest/1357) | 9 | 9/9 | Special | - |
 | [1358](1358/) | [Codeforces Round 645 (Div. 2)](https://codeforces.com/contest/1358) | 2 | 1/2 | Div. 2 | 1600-2400 |
