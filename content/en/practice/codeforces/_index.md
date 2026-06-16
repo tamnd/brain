@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8516 problems, 4121 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8517 problems, 4123 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8516 problems, 4121 verified.**
+**1472 contests, 8517 problems, 4123 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 696 problems, 301 verified
+## 2020 — 159 contests, 697 problems, 303 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -723,7 +723,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1322](1322/) | [Codeforces Round 626 (Div. 1, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1322) | 3 | 1/3 | Div. 1 | 1300-3500 |
 | [1323](1323/) | [Codeforces Round 626 (Div. 2, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1323) | 1 | 1/1 | Div. 2 | 800-800 |
 | [1324](1324/) | [Codeforces Round 627 (Div. 3)](https://codeforces.com/contest/1324) | 3 | 1/3 | Div. 3 | 900-1400 |
-| [1325](1325/) | [Codeforces Round 628 (Div. 2)](https://codeforces.com/contest/1325) | 2 | 0/2 | Div. 2 | 800-1500 |
+| [1325](1325/) | [Codeforces Round 628 (Div. 2)](https://codeforces.com/contest/1325) | 3 | 2/3 | Div. 2 | 800-2600 |
 | [1326](1326/) | [Codeforces Global Round 7](https://codeforces.com/contest/1326) | 5 | 2/5 | Global | 1000-3500 |
 | [1327](1327/) | [Educational Codeforces Round 84 (Rated for Div. 2)](https://codeforces.com/contest/1327) | 3 | 0/3 | Div. 2 | 1100-2500 |
 | [1328](1328/) | [Codeforces Round 629 (Div. 3)](https://codeforces.com/contest/1328) | 3 | 0/3 | Div. 3 | 800-1900 |
