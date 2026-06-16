@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1511 contests, 8820 problems, 4298 verified."
+description: "Codeforces problem solutions with full editorials. 1512 contests, 8823 problems, 4301 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1511 contests, 8820 problems, 4298 verified.**
+**1512 contests, 8823 problems, 4301 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 90 contests, 513 problems, 310 verified
+## 2018 — 91 contests, 516 problems, 313 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [999](999/) | [Codeforces Round 490 (Div. 3)](https://codeforces.com/contest/999) | 3 | 3/3 | Div. 3 | 800-2000 |
 | [1000](1000/) | [Educational Codeforces Round 46 (Rated for Div. 2)](https://codeforces.com/contest/1000) | 4 | 2/4 | Div. 2 | 1500-2700 |
 | [1001](1001/) | [Microsoft Q# Coding Contest - Summer 2018 - Warmup](https://codeforces.com/contest/1001) | 9 | 9/9 | Special | 1100-1700 |
 | [1002](1002/) | [Microsoft Q# Coding Contest - Summer 2018](https://codeforces.com/contest/1002) | 15 | 15/15 | Special | 800-1900 |
