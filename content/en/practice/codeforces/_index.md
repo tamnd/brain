@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8561 problems, 4143 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8563 problems, 4144 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8561 problems, 4143 verified.**
+**1472 contests, 8563 problems, 4144 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 741 problems, 323 verified
+## 2020 — 159 contests, 743 problems, 324 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -765,7 +765,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1365](1365/) | [Codeforces Round 648 (Div. 2)](https://codeforces.com/contest/1365) | 5 | 3/5 | Div. 2 | 1100-2800 |
 | [1366](1366/) | [Educational Codeforces Round 89 (Rated for Div. 2)](https://codeforces.com/contest/1366) | 5 | 4/5 | Div. 2 | 1300-2700 |
 | [1367](1367/) | [Codeforces Round 650 (Div. 3)](https://codeforces.com/contest/1367) | 6 | 3/6 | Div. 3 | 800-2400 |
-| [1368](1368/) | [Codeforces Global Round 8](https://codeforces.com/contest/1368) | 5 | 3/5 | Global | 800-3300 |
+| [1368](1368/) | [Codeforces Global Round 8](https://codeforces.com/contest/1368) | 7 | 4/7 | Global | 800-3500 |
 | [1369](1369/) | [Codeforces Round 652 (Div. 2)](https://codeforces.com/contest/1369) | 2 | 2/2 | Div. 2 | 800-1200 |
 | [1370](1370/) | [Codeforces Round 651 (Div. 2)](https://codeforces.com/contest/1370) | 4 | 2/4 | Div. 2 | 800-2700 |
 | [1371](1371/) | [Codeforces Round 654 (Div. 2)](https://codeforces.com/contest/1371) | 4 | 4/4 | Div. 2 | 800-2300 |
