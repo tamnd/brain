@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1550 contests, 8947 problems, 4386 verified."
+description: "Codeforces problem solutions with full editorials. 1551 contests, 8953 problems, 4388 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1550 contests, 8947 problems, 4386 verified.**
+**1551 contests, 8953 problems, 4388 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 129 contests, 640 problems, 398 verified
+## 2018 — 130 contests, 646 problems, 400 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [949](949/) | [Codeforces Round 469 (Div. 1)](https://codeforces.com/contest/949) | 6 | 2/6 | Div. 1 | 1600-3300 |
 | [950](950/) | [Codeforces Round 469 (Div. 2)](https://codeforces.com/contest/950) | 2 | 2/2 | Div. 2 | 800-1100 |
 | [952](952/) | [April Fools Contest 2018](https://codeforces.com/contest/952) | 4 | 3/4 | April Fools | 800-2400 |
 | [954](954/) | [Educational Codeforces Round 40 (Rated for Div. 2)](https://codeforces.com/contest/954) | 5 | 4/5 | Div. 2 | 800-2200 |
