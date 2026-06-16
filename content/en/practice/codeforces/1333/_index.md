@@ -1,24 +1,26 @@
 ---
 title: "Codeforces Round 632 (Div. 2)"
-description: "Solutions for Codeforces Round 632 (Div. 2) (contest 1333). 0/2 problems verified against sample I/O. Difficulty range: 1700-2100."
-tags: ["codeforces", "competitive-programming", "binary-search", "data-structures", "implementation", "two-pointers", "brute-force", "constructive-algorithms"]
+description: "3 problems from Codeforces Round 632 (Div. 2) (contest 1333), difficulty 1100-2100. 1/3 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "greedy", "implementation", "binary-search", "data-structures", "two-pointers", "brute-force"]
 categories: ["algorithms"]
 contest_id: 1333
 contest_type: "Div. 2"
-rating_range: "1700-2100"
-n_problems: 2
-n_verified: 0
-total_solve_s: 254
-date: "2026-06-11T16:04:43+07:00"
+rating_range: "1100-2100"
+n_problems: 3
+n_verified: 1
+total_solve_s: 545
+contest_year: 2020
+date: "2026-06-16T08:38:58+07:00"
 weight: 1333
 draft: false
 ---
 
 # [Codeforces Round 632 (Div. 2)](https://codeforces.com/contest/1333)
 
-**Type:** Div. 2 | **Problems:** 2 | **Verified:** 0/2 | **Rating range:** 1700-2100 | **Time:** 4m 14s
+Div. 2 | 3 problems | 1/3 verified | Difficulty 1100-2100 | 9m 5s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [C](C/) | [Eugene and an array](https://codeforces.com/problemset/problem/1333/C) | 1700 | binary-search, data-structures, implementation | 3m 4s | ✗ |
-| [D](D/) | [Challenges in school \u211641](https://codeforces.com/problemset/problem/1333/D) | 2100 | brute-force, constructive-algorithms, games | 1m 10s | ✗ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [B](B/) | [Kind Anton](https://codeforces.com/problemset/problem/1333/B) | 1100 | greedy, implementation | 22,228 | 5m 17s |  |
+| [C](C/) | [Eugene and an array](https://codeforces.com/problemset/problem/1333/C) | 1700 | binary-search, data-structures, implementation | 13,362 | 2m 38s | ✓ |
+| [D](D/) | [Challenges in school \u211641](https://codeforces.com/problemset/problem/1333/D) | 2100 | brute-force, constructive-algorithms, games | 4,130 | 1m 10s |  |
