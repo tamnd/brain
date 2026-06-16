@@ -1,26 +1,29 @@
 ---
 title: "Codeforces Round 650 (Div. 3)"
-description: "Solutions for Codeforces Round 650 (Div. 3) (contest 1367). 2/4 problems verified against sample I/O. Difficulty range: 800-2400."
-tags: ["codeforces", "competitive-programming", "implementation", "strings", "constructive-algorithms", "greedy", "math", "dp"]
+description: "6 problems from Codeforces Round 650 (Div. 3) (contest 1367), difficulty 800-2400. 3/6 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "implementation", "strings", "greedy", "math", "constructive-algorithms", "sortings"]
 categories: ["algorithms"]
 contest_id: 1367
 contest_type: "Div. 3"
 rating_range: "800-2400"
-n_problems: 4
-n_verified: 2
-total_solve_s: 522
-date: "2026-06-11T12:00:46+07:00"
+n_problems: 6
+n_verified: 3
+total_solve_s: 1318
+contest_year: 2020
+date: "2026-06-11T12:06:59+07:00"
 weight: 1367
 draft: false
 ---
 
 # [Codeforces Round 650 (Div. 3)](https://codeforces.com/contest/1367)
 
-**Type:** Div. 3 | **Problems:** 4 | **Verified:** 2/4 | **Rating range:** 800-2400 | **Time:** 8m 42s
+Div. 3 | 6 problems | 3/6 verified | Difficulty 800-2400 | 21m 58s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [A](A/) | [Short Substrings](https://codeforces.com/problemset/problem/1367/A) | 800 | implementation, strings | 1m 59s | ✓ |
-| [C](C/) | [Social Distance](https://codeforces.com/problemset/problem/1367/C) | 1300 | constructive-algorithms, greedy, math | 3m 5s | ✗ |
-| [F1](F1/) | [Flying Sort (Easy Version)](https://codeforces.com/problemset/problem/1367/F1) | 2100 | dp, greedy, two-pointers | 1m 50s | ✓ |
-| [F2](F2/) | [Flying Sort (Hard Version)](https://codeforces.com/problemset/problem/1367/F2) | 2400 | binary-search, data-structures, dp | 1m 48s | ✗ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Short Substrings](https://codeforces.com/problemset/problem/1367/A) | 800 | implementation, strings | 67,694 | 1m 59s | ✓ |
+| [B](B/) | [Even Array](https://codeforces.com/problemset/problem/1367/B) | 800 | greedy, math | 63,923 | 3m 58s | ✓ |
+| [C](C/) | [Social Distance](https://codeforces.com/problemset/problem/1367/C) | 1300 | constructive-algorithms, greedy, math | 25,103 | 3m 5s |  |
+| [D](D/) | [Task On The Board](https://codeforces.com/problemset/problem/1367/D) | 1800 | constructive-algorithms, greedy, implementation | 8,788 | 6m 59s |  |
+| [F1](F1/) | [Flying Sort (Easy Version)](https://codeforces.com/problemset/problem/1367/F1) | 2100 | dp, greedy, two-pointers | 3,624 | 1m 50s | ✓ |
+| [F2](F2/) | [Flying Sort (Hard Version)](https://codeforces.com/problemset/problem/1367/F2) | 2400 | binary-search, data-structures, dp | 1,868 | 4m 7s |  |
