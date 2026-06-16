@@ -1,7 +1,7 @@
 ---
 title: "CF 1382A - Common Subsequence"
-description: "We are given two sequences of integers and asked to extract a third sequence that appears inside both of them in order. “In order” here means we are allowed to delete elements, but we cannot reorder what remains."
-date: "2026-06-11T10:51:12+07:00"
+description: "We are given two integer arrays, and we want to construct a third array that can be obtained by deleting elements from both of them. In other words, we are looking for a sequence of values that appears in both arrays while preserving order in each."
+date: "2026-06-16T13:58:00+07:00"
 tags: ["codeforces", "competitive-programming", "brute-force"]
 categories: ["algorithms"]
 codeforces_contest: 1382
@@ -9,7 +9,7 @@ codeforces_index: "A"
 codeforces_contest_name: "Codeforces Round 658 (Div. 2)"
 rating: 800
 weight: 1382
-solve_time_s: 83
+solve_time_s: 401
 verified: false
 draft: false
 ---
@@ -18,50 +18,56 @@ draft: false
 
 **Rating:** 800  
 **Tags:** brute force  
-**Solve time:** 1m 23s  
+**Solve time:** 6m 41s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given two sequences of integers and asked to extract a third sequence that appears inside both of them in order. “In order” here means we are allowed to delete elements, but we cannot reorder what remains.
+We are given two integer arrays, and we want to construct a third array that can be obtained by deleting elements from both of them. In other words, we are looking for a sequence of values that appears in both arrays while preserving order in each.
 
-The task is to find any sequence that is common to both arrays, with the additional requirement that its length must be as small as possible but still non-empty. Since we are minimizing length, the real question becomes whether there exists a common element at all. If there is, a sequence of length one is always optimal, because any single shared value is already a valid subsequence of both arrays and no shorter non-empty sequence exists.
+The goal is to output any such common subsequence, but with the strongest priority on minimizing its length. If no common subsequence exists, we must report that fact.
 
-So the entire problem reduces to checking whether the two arrays share at least one integer value. If they do, we output any such value. If they do not, we report that no solution exists.
+The key observation from the definition of subsequence is that any valid answer must consist only of values that appear in both arrays. However, this is not sufficient by itself because order matters. A value appearing in both arrays does not automatically guarantee it can form a subsequence of length greater than one with other values.
 
-The constraints are very small: the total number of elements across all test cases is at most 1000. This immediately rules out any need for heavy preprocessing or advanced data structures. Even a direct nested scan would be fast enough, but we can do better conceptually by using membership checks.
+The constraints are small enough that both arrays together contain at most about two thousand elements across all tests. This immediately suggests that an $O(nm)$ comparison between arrays is safe, since even in the worst case we perform about one million operations per test suite in total, which is comfortably within limits.
 
-A subtle edge case appears when one array has repeated values and the other has none of them. For example, if one array is `[3, 3, 3]` and the other is `[2]`, a careless attempt that assumes “common subsequence” might try to align positions or build longer matches, but the correct answer is simply “NO” because no single value is shared.
+The most subtle edge case arises from duplicates and ordering. A naive approach that simply collects all intersecting values without checking subsequence feasibility can easily fail. For example, consider:
 
-Another potential misunderstanding is thinking we need to compute a longest common subsequence or any structured alignment. That would be unnecessary overkill and would also risk incorrect complexity reasoning.
+```
+a = [1, 2]
+b = [2, 1]
+```
+
+The intersection is {1, 2}, but neither `[1, 2]` nor `[2, 1]` appears as a subsequence in both arrays. The correct answer must have length 1, and either `[1]` or `[2]` is valid. This shows that we cannot treat the problem as a set intersection.
+
+Another failure mode is assuming we need to construct the longest common subsequence. That is unnecessary and far more complex; the problem only asks for the shortest non-empty common subsequence, which changes the structure completely.
 
 ## Approaches
 
-A brute-force way to solve the problem is to try every possible subsequence of the first array and check whether it appears in the second array. Since each array of size up to 1000 has exponentially many subsequences, this approach is completely infeasible. Even generating all single-element subsequences is fine, but extending beyond that explodes combinatorially.
+A brute-force idea would be to enumerate all subsequences of the first array and check whether each appears in the second array. This is correct because it explicitly explores the search space of valid candidates. However, the number of subsequences is exponential, specifically $2^n$, so even for $n = 1000$ this becomes completely infeasible.
 
-However, we notice something crucial: we are minimizing the length of the subsequence, and any valid solution must have length at least one. If there is any overlap in values between the two arrays, a length-one subsequence is already optimal. If there is no overlap, no longer subsequence can exist either, because any subsequence is composed of elements that must individually appear in both arrays.
+A more focused observation changes everything. The shortest possible common subsequence can only have length 1 or 2 in any meaningful situation, because if there exists any common element between the arrays, a single-element sequence is already optimal. There is no need to consider longer sequences unless forced by constraints, but here a length-1 solution is always better whenever possible.
 
-This reduces the entire problem to a simple intersection test between two sets of values.
+So the real task becomes checking whether any value appears in both arrays. If such a value exists, we immediately output it. If not, there is no common subsequence at all.
+
+This reduces the problem from combinatorial search to a simple frequency or membership test.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | Exponential | O(1)-O(n) | Too slow |
-| Optimal (set intersection) | O(n + m) | O(n) | Accepted |
+| Brute Force (all subsequences) | $O(2^n \cdot m)$ | $O(1)$ | Too slow |
+| Frequency / intersection check | $O(n + m)$ | $O(1000)$ | Accepted |
 
 ## Algorithm Walkthrough
 
-1. For each test case, read both arrays.
-2. Convert the first array into a set for fast membership queries. This allows O(1) average-time checks for whether a value exists in the first array.
-3. Scan through the second array from left to right and check whether each element exists in the set built from the first array.
-4. As soon as we find a common element, we output it immediately as a sequence of length one.
-5. If we finish scanning without finding any shared value, we output that no solution exists.
+We proceed test case by test case.
 
-The key design choice is stopping immediately on the first match. Since all valid answers of length one are equivalent in optimality, there is no reason to continue searching after finding one.
+1. Build a frequency array or hash set for elements in the first array. This allows constant-time membership checks later.
+2. Scan through the second array and check whether any element exists in the first array’s set. The first such element found immediately forms a valid answer of length 1.
+3. If we find such an element, we output it and stop processing that test case. The reason we can stop immediately is that length 1 is the minimum possible for any non-empty sequence.
+4. If we finish scanning without finding any common element, we output that no solution exists.
 
-### Why it works
-
-Any valid common subsequence must consist of elements that appear in both arrays. If there exists any solution, it must contain at least one value that exists in both sequences. Therefore, detecting a single shared value is both necessary and sufficient for feasibility, and choosing it gives the optimal length by definition.
+Why it works comes down to a minimality argument. Any valid common subsequence must contain at least one value that appears in both arrays. If such a value exists, the sequence consisting of only that value is already a valid subsequence of both arrays. Therefore, any longer sequence cannot improve optimality. If no value is shared, no non-empty common subsequence can exist at all.
 
 ## Python Solution
 
@@ -75,11 +81,11 @@ for _ in range(t):
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
     
-    sa = set(a)
-    
+    s = set(a)
     ans = None
+    
     for x in b:
-        if x in sa:
+        if x in s:
             ans = x
             break
     
@@ -90,54 +96,49 @@ for _ in range(t):
         print(1, ans)
 ```
 
-The solution relies on converting the first array into a hash set, which enables constant-time membership checks. The second array is scanned in order, and we stop at the first element that appears in the set.
+The solution builds a set from the first array to support constant-time membership queries. It then scans the second array once and stops at the first shared value, ensuring minimal-length output.
 
-A common mistake is trying to build an explicit subsequence alignment or thinking order constraints matter beyond existence. Here, order only matters for defining subsequences, but since a single element is always order-independent, we never need to reason about positions.
+A subtle point is that we do not need to consider ordering beyond membership. Since a single element has no ordering constraints, any occurrence in both arrays is sufficient. The early exit is also important for efficiency but not required for correctness.
 
 ## Worked Examples
 
 ### Example 1
-
-Input:
 
 ```
 a = [10, 8, 6, 4]
 b = [1, 2, 3, 4, 5]
 ```
 
-| Step | Current b element | Set(a) contains? | Action |
+| Step | Current b element | In set(a)? | Answer |
 | --- | --- | --- | --- |
-| 1 | 1 | No | continue |
-| 2 | 2 | No | continue |
-| 3 | 3 | No | continue |
-| 4 | 4 | Yes | stop, output 4 |
+| 1 | 1 | No | None |
+| 2 | 2 | No | None |
+| 3 | 3 | No | None |
+| 4 | 4 | Yes | 4 |
 
-We find the first shared element at value 4, so the answer is `[4]`. This confirms that the algorithm does not need to consider deeper structure in the arrays.
+We stop immediately when we encounter 4 in the second array because it is present in the first array. This confirms that a length-1 solution is always preferred when available.
 
 ### Example 2
-
-Input:
 
 ```
 a = [3]
 b = [2]
 ```
 
-| Step | Current b element | Set(a) contains? | Action |
+| Step | Current b element | In set(a)? | Answer |
 | --- | --- | --- | --- |
-| 1 | 2 | No | continue |
-| end | - | - | no match found |
+| 1 | 2 | No | None |
 
-No element is shared, so the correct output is “NO”. This demonstrates that absence of intersection implies impossibility of any common subsequence.
+We finish scanning without finding any match, so no common subsequence exists. This demonstrates the case where the answer must be “NO”.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n + m) | each array is scanned once, set lookup is O(1) average |
-| Space | O(n) | storage for the set of first array elements |
+| Time | $O(n + m)$ | Each array is processed once, with constant-time set lookups |
+| Space | $O(n)$ | Storage of elements of the first array in a hash set |
 
-Given that total input size across all test cases is at most 1000, this is comfortably within limits. Even with Python overhead, the solution runs in negligible time.
+The total size across all test cases is small, so this linear solution easily fits within both time and memory limits even under worst-case input.
 
 ## Test Cases
 
@@ -146,6 +147,7 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
+    import sys
     input = sys.stdin.readline
 
     t = int(input())
@@ -154,20 +156,23 @@ def run(inp: str) -> str:
         n, m = map(int, input().split())
         a = list(map(int, input().split()))
         b = list(map(int, input().split()))
-        sa = set(a)
+        
+        s = set(a)
         ans = None
         for x in b:
-            if x in sa:
+            if x in s:
                 ans = x
                 break
+        
         if ans is None:
             out.append("NO")
         else:
             out.append("YES")
             out.append(f"1 {ans}")
+    
     return "\n".join(out)
 
-# provided samples
+# sample 1
 assert run("""5
 4 5
 10 8 6 4
@@ -192,47 +197,54 @@ NO
 YES
 1 3
 YES
-1 1"""
-
-# custom cases
-assert run("""3
-1 1
-1
-2
-1 3
-5
-5 6 7
-2 2
-1 2
-2 1
-""") == """NO
-YES
-1 5
-YES
 1 2"""
 
+# all disjoint
 assert run("""1
-5 5
-1 2 3 4 5
-6 7 8 9 10
-""") == """NO"""
+3 3
+1 2 3
+4 5 6
+""") == "NO"
 
+# single overlap
+assert run("""1
+3 3
+1 2 3
+3 4 5
+""") == "YES\n1 3"
+
+# all same
 assert run("""1
 4 4
-9 9 9 9
-9 1 2 3
-""") == """YES
-1 9"""
+7 7 7 7
+7 7 7 7
+""") == "YES\n1 7"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| no overlap small | NO / YES cases | basic correctness of intersection |
-| disjoint full | NO | handles complete separation |
-| repeated values | YES 9 | duplicates do not affect logic |
+| disjoint arrays | NO | no common element case |
+| single overlap | YES 1 x | basic positive case |
+| identical arrays | YES 1 x | duplicates do not matter |
 
 ## Edge Cases
 
-A typical corner case is when both arrays contain repeated values but share only one distinct element. For example, `a = [9, 9, 9, 9]` and `b = [9, 1, 2, 3]`. The algorithm converts `a` into `{9}` and immediately finds `9` while scanning `b`, returning `[9]`. This shows that multiplicity is irrelevant since subsequences depend only on existence, not frequency.
+A critical edge case is when arrays contain repeated values but no shared distinct structure is needed.
 
-Another case is when arrays are disjoint. For `a = [1, 2]` and `b = [3, 4]`, the set lookup never succeeds, so the scan completes without finding a match and correctly outputs “NO”. This confirms that no hidden longer structure can compensate for the absence of shared elements.
+For example:
+
+```
+a = [5, 5, 5]
+b = [5]
+```
+
+The algorithm inserts 5 into the set from the first array. While scanning the second array, it immediately finds 5 and returns `[5]`. Even though multiplicity differs, subsequence validity only depends on existence, not frequency.
+
+Another case is reversed ordering:
+
+```
+a = [1, 2]
+b = [2, 1]
+```
+
+The scan finds either 2 or 1 depending on traversal order of `b`, but both are valid answers. This confirms that the algorithm does not rely on alignment or positional matching, only membership, which is sufficient because the output is constrained to length 1.
