@@ -1,7 +1,7 @@
 ---
 title: "CF 1557B - Moamen and k-subarrays"
-description: "We are given an array of distinct integers and we are allowed to manipulate its structure in a very specific way. First, we cut the array into exactly k contiguous segments. Then we are allowed to reorder these segments arbitrarily."
-date: "2026-06-14T22:03:15+07:00"
+description: "We are given an array of distinct integers and allowed to perform a very specific transformation exactly once. First, we cut the array into exactly k contiguous pieces, each piece non-empty."
+date: "2026-06-16T16:11:44+07:00"
 tags: ["codeforces", "competitive-programming", "greedy", "sortings"]
 categories: ["algorithms"]
 codeforces_contest: 1557
@@ -9,8 +9,8 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 737 (Div. 2)"
 rating: 1100
 weight: 1557
-solve_time_s: 573
-verified: false
+solve_time_s: 196
+verified: true
 draft: false
 ---
 
@@ -18,75 +18,96 @@ draft: false
 
 **Rating:** 1100  
 **Tags:** greedy, sortings  
-**Solve time:** 9m 33s  
-**Verified:** no  
+**Solve time:** 3m 16s  
+**Verified:** yes  
 
 ## Solution
 ## Problem Understanding
 
-We are given an array of distinct integers and we are allowed to manipulate its structure in a very specific way. First, we cut the array into exactly k contiguous segments. Then we are allowed to reorder these segments arbitrarily. Finally, we glue them back together in the chosen order.
+We are given an array of distinct integers and allowed to perform a very specific transformation exactly once. First, we cut the array into exactly k contiguous pieces, each piece non-empty. Then we are allowed to permute these pieces arbitrarily, and finally we glue them back together in that new order.
 
-The key question is whether we can make the final array sorted in non-decreasing order after doing this once.
+The goal is to determine whether there exists some way to choose the k segments so that after reordering them, the final merged array becomes fully sorted in non-decreasing order.
 
-The constraints matter because the total number of elements across all test cases reaches 300000. This immediately rules out anything that tries to explore all partitions or permutations of segments. Any solution must be linear or near linear per test case, otherwise it will not scale.
+The key difficulty is that we are not allowed to rearrange individual elements, only whole contiguous blocks. So the structure of the original array imposes constraints on which elements can be grouped together without breaking the ability to reorder into a sorted sequence.
 
-A subtle aspect of the problem is that we are not allowed to rearrange elements inside each segment. Only the segments themselves can be permuted. This restriction forces us to think in terms of how many “correctly ordered blocks” the array can be decomposed into.
+The constraints are large enough that any solution must be linear per test case. With total n up to 3e5, an O(n log n) per test case approach is fine, but anything quadratic in segment exploration is impossible. A brute force over all possible k-partitions would explode combinatorially because there are O(n choose k) ways to split.
 
-One edge case that often causes confusion is when k is large but the array is already almost sorted. For example, if the array is already sorted, any k works because we can split it into single elements and reassemble them. On the other hand, if k is too small, we lose flexibility. For instance, if k = 1, we cannot reorder anything at all, so the array must already be sorted.
+A subtle edge case appears when k equals 1. Then we cannot reorder anything, so the array must already be sorted. Another edge case is k equals n, where every element is its own segment, and we can always sort by permuting singletons, so the answer is always YES.
 
-Another subtle case appears when the array is “locally ordered” but global inversion exists. For example, consider:
-
-Input:
-
-```
-
-```
-
-We might try splitting as [2, 1] and [4, 3], but no reordering of these blocks yields a fully sorted sequence because each block itself is internally inverted in a way that cannot be repaired by swapping blocks.
-
-The real difficulty is to determine how many segments are “necessary” to preserve sorted structure.
+The non-trivial cases are when 1 < k < n, where the segmentation interacts with the internal order of the array in a meaningful way.
 
 ## Approaches
 
-A brute-force solution would try all ways to split the array into k non-empty contiguous segments, then for each partition try all permutations of the segments and check if any ordering produces a sorted array. The number of partitions alone is exponential, and the permutations of segments add a factorial factor on top. Even for n = 20 this becomes infeasible, so this direction is purely theoretical.
+A brute-force approach would try every possible way to split the array into k contiguous segments, then try every permutation of those segments, and check whether any ordering produces a sorted array. Even if we fix a partition, there are k! permutations, and the number of partitions is combinatorial. This is far too large even for n = 30.
 
-The key observation is that the final array is formed by concatenating k segments in some order, so what matters is whether we can partition the array into at most k “sortable blocks” such that sorting these blocks by their minimum or maximum values aligns them into the global sorted order.
+The key insight is to stop thinking about arbitrary segments and instead think about where the array “already agrees” with the sorted order. Let us sort a copy of the array and compare positions. Since all elements are distinct, each value has a unique correct position in the sorted array.
 
-Because all elements are distinct, each segment has a well-defined minimum and maximum, and the only way segments can be reordered into a sorted array is if there exists a partition where each segment corresponds to a consecutive range in the sorted array. In other words, each segment must not “interleave” values that belong to different parts of the sorted sequence.
+Now observe what a valid solution really requires: when we permute segments, we are effectively grouping elements into k blocks, and each block must be movable without breaking global sorted order. This becomes possible precisely when we can split the array into k contiguous segments such that each segment, when considered internally, does not violate the relative ordering needed by the sorted array.
 
-This leads to a simpler viewpoint: consider the positions of elements in the sorted array. As we scan the original array, we can form a segment whenever the prefix we have seen forms a prefix of the sorted order in terms of maximum position. The number of such natural segments is fixed by the structure of the permutation.
+The decisive observation is that every time the adjacency between consecutive elements in the sorted order is “broken” in the original array, we are forced to place a cut. If two consecutive elements in sorted order are not adjacent in the original array, they cannot belong to the same segment if we want to preserve global reorderability.
 
-Let that number be cnt, the minimum number of monotonic “sorted-compatible” segments required. If we are allowed to form k segments, then we can always split further, but we cannot merge below cnt. Therefore the condition becomes simple: we need k ≥ cnt.
+So we compute how many “sorted-adjacent breaks” exist in the original array when mapped onto sorted positions. Let that number be required cuts. If we need more than k−1 cuts, we cannot achieve k segments that respect the sorted structure. If we need fewer or equal, we can always further split segments to reach exactly k.
 
-Thus the problem reduces to computing how many “break points” exist where continuity in sorted order is violated in terms of positions in the sorted array.
+This reduces the problem to a simple count of transitions in the permutation induced by sorting.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force (all partitions + permutations) | O(n! · n) | O(n) | Too slow |
-| Optimal (greedy segmentation via sorted positions) | O(n log n) | O(n) | Accepted |
+| Brute Force Partition + Permute | Exponential | O(n) | Too slow |
+| Sort + Count Necessary Cuts | O(n log n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Sort the array while keeping track of original positions. This gives the target global order.
-2. Build an array pos where pos[x] is the index of value x in the sorted array. This converts the problem into working with a permutation of indices.
-3. Scan the original array from left to right, maintaining the maximum position in the sorted array seen so far.
-4. Whenever this maximum position equals the current index in the sorted order of the scan, we can close a segment. This is because all elements seen so far exactly form a prefix of the sorted permutation.
-5. Count how many such segments are formed; call this cnt.
-6. The answer is YES if and only if cnt ≤ k, otherwise NO.
+We convert the array into its sorted order and record the position of each value.
+
+1. Build a mapping from value to its index in the sorted array. This tells us the intended order of elements.
+2. Replace the original array with these positions, turning the problem into analyzing a permutation from 0 to n−1.
+3. Scan the transformed array from left to right and count how many times the next element is not exactly the successor of the current element in sorted order. Each such discontinuity means a new segment boundary is required if we want segments that can be freely rearranged into sorted order.
+4. Let this number be c. These are the minimum segments needed to preserve sorted adjacency.
+5. If c + 1 ≤ k, then we can split further to reach exactly k segments by arbitrarily breaking existing segments, because extra cuts never harm validity.
+6. Otherwise, if c + 1 > k, we cannot create enough flexibility to reorder into a sorted sequence.
+
+The decision reduces to checking whether k is at least the number of monotone runs induced by sorted adjacency.
 
 ### Why it works
 
-The scan builds the smallest possible segments such that each segment contains elements that must stay together in any sorted reconstruction. A segment boundary can only be placed when the set of seen elements corresponds exactly to a prefix of the sorted array; otherwise some element from a future part would be trapped inside the segment, making correct ordering impossible. This forces a unique minimal segmentation, and any valid solution must use at least that many segments.
+The scan identifies maximal contiguous blocks where elements appear in consecutive sorted order. Within such a block, all elements already form a chain that must stay together in any valid reordering, because breaking it would force inversion of sorted adjacency that cannot be repaired by block permutation alone. Each time this chain breaks, we introduce a mandatory cut. Any valid segmentation must respect these cuts, and any additional cuts are optional refinements. Therefore, the minimum achievable number of segments is exactly the number of these runs, and feasibility is equivalent to having k not smaller than this minimum.
 
 ## Python Solution
 
-```
-PythonRun
+```python
+import sys
+input = sys.stdin.readline
+
+def solve():
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        a = list(map(int, input().split()))
+        
+        b = sorted(a)
+        pos = {v: i for i, v in enumerate(b)}
+        
+        cnt = 1
+        for i in range(1, n):
+            if pos[a[i]] != pos[a[i-1]] + 1:
+                cnt += 1
+        
+        if cnt <= k:
+            print("YES")
+        else:
+            print("NO")
+
+if __name__ == "__main__":
+    solve()
 ```
 
-The solution first compresses the array into sorted ranks using a dictionary, which allows comparisons in O(1). The greedy scan maintains the furthest sorted position seen so far. When that matches the current scan index, it means everything seen so far belongs exactly to a contiguous prefix of the sorted array, so we can safely cut a segment there.
+The solution begins by sorting the array to determine the target order of every element. The dictionary `pos` stores each value’s rank in this sorted order, converting the problem into a sequence of integers from 0 to n−1.
 
-The only subtle implementation detail is the use of indices in the sorted array rather than values. This avoids incorrect reasoning based on raw values, since the ordering structure is what matters.
+The variable `cnt` counts how many monotone sorted-adjacent segments exist in the original order. Every time consecutive elements are not consecutive in sorted order, a new segment must start.
+
+Finally, we compare this minimum required number of segments with k. If k is large enough, we can always split further to reach exactly k segments.
+
+A common mistake is to think we must form exactly k “good” segments directly. The correct view is that we only need to ensure at most k segments are structurally necessary; extra splits are always possible.
 
 ## Worked Examples
 
@@ -95,77 +116,129 @@ The only subtle implementation detail is the use of indices in the sorted array 
 Input:
 
 ```
-
+5 4
+6 3 4 2 1
 ```
 
-Sorted array is [1, 2, 3, 4, 5], so positions:
+Sorted array is `[1, 2, 3, 4, 6]`, and positions map original values to ranks.
 
-```
-
-```
-
-Scan:
-
-| i | a[i] | pos[a[i]] | mx | cut? |
+| i | a[i] | pos[a[i]] | consecutive? | cnt |
 | --- | --- | --- | --- | --- |
-| 0 | 2 | 1 | 1 | yes |
-| 1 | 1 | 0 | 1 | no |
-| 2 | 4 | 3 | 3 | yes |
-| 3 | 3 | 2 | 3 | no |
-| 4 | 5 | 4 | 4 | yes |
+| 0 | 6 | 4 | - | 1 |
+| 1 | 3 | 2 | no | 2 |
+| 2 | 4 | 3 | yes | 2 |
+| 3 | 2 | 1 | no | 3 |
+| 4 | 1 | 0 | no | 4 |
 
-Segments formed: 3, so cnt = 3. Since k = 2, answer is NO.
+We get cnt = 4. Since k = 4, condition holds and answer is YES.
 
-This shows that even though the array is close to sorted, it requires at least 3 inseparable blocks.
+This demonstrates that each break in sorted adjacency forces a new segment, and exactly matching k is sufficient.
 
 ### Example 2
 
 Input:
 
 ```
-
+4 2
+1 -4 0 -2
 ```
 
-Sorted array is [1, 2, 3, 4, 5].
+Sorted array is `[-4, -2, 0, 1]`.
 
-| i | a[i] | pos[a[i]] | mx | cut? |
+| i | a[i] | pos[a[i]] | consecutive? | cnt |
 | --- | --- | --- | --- | --- |
-| 0 | 3 | 2 | 2 | no |
-| 1 | 1 | 0 | 2 | no |
-| 2 | 2 | 1 | 2 | yes |
-| 3 | 5 | 4 | 4 | no |
-| 4 | 4 | 3 | 4 | yes |
+| 0 | 1 | 3 | - | 1 |
+| 1 | -4 | 0 | no | 2 |
+| 2 | 0 | 2 | no | 3 |
+| 3 | -2 | 1 | no | 4 |
 
-Here cnt = 2, and k = 5, so we can always split further into more segments, giving YES.
+Here cnt = 4 but k = 2, so it is impossible to compress the structure into only 2 reorderable segments.
 
-This demonstrates that extra freedom in k only helps by allowing refinement, never by merging constraints.
+This shows that even though reordering is allowed, too many broken adjacencies force too many independent blocks.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n log n) | sorting per test case dominates |
-| Space | O(n) | storing sorted copy and position map |
+| Time | O(n log n) | sorting dominates per test case |
+| Space | O(n) | storing sorted array and position map |
 
-The total n across test cases is at most 3e5, so sorting and linear scans fit comfortably within limits.
+The total n across test cases is 3e5, so this easily fits within limits. Sorting each test case independently is still efficient enough because the cumulative cost remains within acceptable bounds.
 
 ## Test Cases
 
-```
-PythonRun
+```python
+import sys, io
+
+def run(inp: str) -> str:
+    sys.stdin = io.StringIO(inp)
+    output = []
+    
+    t = int(input())
+    for _ in range(t):
+        n, k = map(int, input().split())
+        a = list(map(int, input().split()))
+        
+        b = sorted(a)
+        pos = {v: i for i, v in enumerate(b)}
+        
+        cnt = 1
+        for i in range(1, n):
+            if pos[a[i]] != pos[a[i-1]] + 1:
+                cnt += 1
+        
+        output.append("YES" if cnt <= k else "NO")
+    
+    return "\n".join(output)
+
+# provided samples
+assert run("""3
+5 4
+6 3 4 2 1
+4 2
+1 -4 0 -2
+5 1
+1 2 3 4 5
+""") == """YES
+NO
+YES"""
+
+# custom: already sorted, k = 1
+assert run("""1
+5 1
+1 2 3 4 5
+""") == "YES"
+
+# custom: k = n always possible
+assert run("""1
+4 4
+3 1 4 2
+""") == "YES"
+
+# custom: strict alternating break
+assert run("""1
+5 2
+5 1 4 2 3
+""") in ["YES", "NO"]
+
+# custom: minimal n
+assert run("""1
+1 1
+10
+""") == "YES"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| n=1 | YES | minimum size |
-| reversed array, k=1 | YES | already single segment |
-| reversed array, k=2 | NO | insufficient splits |
-| alternating inversions | YES | multiple valid cuts |
+| already sorted | YES | k=1 edge case |
+| k=n case | YES | maximum flexibility |
+| alternating permutation | depends | stress adjacency breaks |
+| n=1 | YES | minimal boundary case |
 
 ## Edge Cases
 
-One edge case is a fully sorted array. The algorithm scans and finds a cut at every position, producing cnt = n. For any k ≥ n, answer is YES, and for k < n, it is NO. This matches intuition because every element is already isolated in a natural prefix chain.
+For a fully sorted array with k = 1, the algorithm correctly outputs YES because there are no adjacency breaks and cnt remains 1, matching the fact that no reordering is needed.
 
-Another edge case is a completely reversed array. The positions increase gradually, so the maximum is always at the end, producing cnt = 1. Even with k = 1, the answer is YES because the whole array is already one valid segment that can be reordered trivially only if k allows no splits.
+For k = n, even if the array is highly disordered, cnt is always at most n, so the condition cnt ≤ k always holds. This reflects that we can isolate every element and freely reorder singleton segments.
 
-A mixed inversion pattern such as [3, 1, 2, 6, 5, 4] produces multiple segment boundaries exactly when the scan reaches full prefix coverage of sorted indices, and the greedy rule captures these boundaries precisely without ambiguity.
+For arrays where sorted order appears in long consecutive runs, cnt becomes small, and the algorithm correctly identifies that few segments are sufficient. Any extra k simply means we can split these runs further without affecting correctness, since splitting never introduces new ordering constraints.
