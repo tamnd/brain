@@ -1,7 +1,7 @@
 ---
 title: "CF 1559B - Mocha and Red and Blue"
-description: "We are given a row of positions, each position must end up colored either red or blue. Some positions are already fixed, while others are blank and must be chosen freely."
-date: "2026-06-14T22:15:15+07:00"
+description: "We are given a line of positions, each position holding a tile that must end up colored either red or blue. Some tiles are already fixed, while others are blank and can be assigned either color."
+date: "2026-06-16T16:34:43+07:00"
 tags: ["codeforces", "competitive-programming", "dp", "greedy"]
 categories: ["algorithms"]
 codeforces_contest: 1559
@@ -9,7 +9,7 @@ codeforces_index: "B"
 codeforces_contest_name: "Codeforces Round 738 (Div. 2)"
 rating: 900
 weight: 1559
-solve_time_s: 249
+solve_time_s: 316
 verified: false
 draft: false
 ---
@@ -18,54 +18,59 @@ draft: false
 
 **Rating:** 900  
 **Tags:** dp, greedy  
-**Solve time:** 4m 9s  
+**Solve time:** 5m 16s  
 **Verified:** no  
 
 ## Solution
 ## Problem Understanding
 
-We are given a row of positions, each position must end up colored either red or blue. Some positions are already fixed, while others are blank and must be chosen freely. The final coloring must minimize the number of adjacent equal-color pairs, which we can think of as “bad edges” between neighboring cells where both ends share the same color.
+We are given a line of positions, each position holding a tile that must end up colored either red or blue. Some tiles are already fixed, while others are blank and can be assigned either color.
 
-The key structure is that the cost depends only on adjacent pairs. Each pair contributes either 0 if the colors differ or 1 if they match. So we are effectively constructing a binary string under partial constraints while minimizing the number of equal adjacencies.
+After we finalize all colors, we pay a cost equal to the number of adjacent pairs of tiles that share the same color. Each time two neighbors match, the cost increases by one. The task is to fill all blanks so that this cost is as small as possible, and output any coloring that achieves this minimum.
 
-The constraint range is very small, with n up to 100 and up to 100 test cases. This immediately tells us that even an O(n²) or O(n³) dynamic programming approach would be acceptable, but we will eventually see that we do not need anything beyond linear time per test case.
+The key observation is that the cost depends only on adjacent equality. This means we are not trying to match a global pattern, only to avoid long runs of identical colors where possible.
 
-A subtle edge case appears when all characters are unknown. For example, if input is `????`, any alternating string like `BRBR` yields zero imperfectness, while a constant string like `BBBB` yields three. A naive greedy fill that always chooses the same color or always copies neighbors would fail here if it does not consider global alternation.
+The constraints are small: each test has length at most 100 and there are at most 100 tests. This allows any linear or even quadratic approach per test, but rules out exponential enumeration of all fillings, which would grow like 2 to the power of number of blanks and quickly become infeasible.
 
-Another important case is when pre-filled constraints force local decisions. For example, `R?R` cannot be fully alternating, so the middle character must be `B`, yielding `RBR` with zero imperfectness. Any greedy strategy that ignores both sides simultaneously would fail.
+A few edge situations matter.
+
+If the string is already fully fixed and alternates like "RBRBRB", the cost is already zero and no changes are needed. A naive approach that tries to “optimize” might incorrectly change forced structure if it ignores fixed constraints.
+
+If all characters are "?", then any alternating pattern such as "BRBRBR..." or "RBRBRB..." achieves zero cost, which is optimal. A careless greedy that always starts with a fixed color without considering symmetry still works, but only because both colors are equivalent.
+
+If fixed characters are inconsistent in forcing long segments, for example "R???R", any solution must respect endpoints and cannot simply alternate freely without aligning boundaries.
 
 ## Approaches
 
-The brute-force idea is to try every possible assignment of colors for the `?` positions. If there are k unknowns, this leads to 2^k possibilities. For each complete assignment, we compute the number of equal adjacent pairs in O(n). This gives a total complexity of O(n·2^k), which becomes infeasible as soon as k grows beyond about 20. With n up to 100, the worst case is completely impossible.
+A brute-force strategy would try all assignments of colors to the blank positions. For each assignment, we compute the number of adjacent equal pairs in linear time. If there are k blanks, this produces 2^k possibilities, and each evaluation costs O(n), leading to O(n · 2^k). Even with n = 100, k can be large, making this approach astronomically slow.
 
-The structure of the objective suggests a local dependency: the cost is entirely determined by adjacent pairs. This means we can decide the string from left to right while always keeping track of the previous character. At each position, the only meaningful decision is whether to match or differ from the previous chosen character, but we must also respect fixed constraints. This turns the problem into a greedy propagation problem rather than a global search problem.
+The key structural insight is that adjacent conflicts are purely local. Each position only interacts with its immediate neighbors. This means we do not need to decide all blanks independently; instead, we can construct the solution greedily from left to right while maintaining consistency with already decided neighbors.
 
-The key observation is that there is no penalty for changing colors except when two neighbors match. So we want to avoid equal adjacent pairs whenever possible. This means that if we ever have a choice at a `?`, we should pick a color different from the previous character. The only time we are forced into a match is when the current position is fixed.
-
-The only remaining complication is consistency from both sides when a fixed segment appears. The correct way to resolve this is to propagate constraints from left to right and ensure that whenever we assign a `?`, we maximize disagreement with the previous chosen character while respecting fixed values.
+The crucial simplification is that once a character is fixed, any blank segment between fixed characters behaves like a constrained interpolation problem. Inside such a segment, we only care about whether endpoints force a match or mismatch, and we can fill greedily in a way that avoids equal adjacencies as much as possible. This leads to the standard construction: propagate constraints from left to right, ensuring each position differs from its left neighbor whenever possible, but respecting fixed colors.
 
 This reduces the problem to a single pass construction.
 
 | Approach | Time Complexity | Space Complexity | Verdict |
 | --- | --- | --- | --- |
-| Brute Force | O(n·2^k) | O(n) | Too slow |
-| Optimal Greedy Propagation | O(n) | O(n) | Accepted |
+| Brute Force | O(n · 2^k) | O(n) | Too slow |
+| Optimal Greedy Construction | O(n) | O(n) | Accepted |
 
 ## Algorithm Walkthrough
 
-1. Initialize an empty result array that will store the final coloring. We process positions from left to right so that the previous decision is always known.
-2. For the first position, if it is fixed as `R` or `B`, we keep it. If it is `?`, we arbitrarily choose `R`. This choice is safe because there is no previous neighbor to compare against, so no cost is introduced.
-3. For each subsequent position i, examine whether it is fixed or unknown.
-4. If position i is fixed, assign that color directly. This is mandatory because violating it is illegal.
-5. If position i is unknown, choose a color different from position i-1 if possible. This minimizes the contribution of the edge (i-1, i), since differing colors produce zero cost.
-6. If position i-1 is fixed and position i is also fixed and they match, we accept a cost of 1 since we cannot change either side. This is unavoidable and does not affect optimality elsewhere.
-7. Continue this process until the entire string is filled.
+We construct the final string from left to right.
 
-The algorithm works because at each step we locally minimize the cost of the current edge without restricting future decisions beyond what is necessary from fixed constraints.
+1. Replace all '?' with placeholders and prepare to fill the string. The goal is to decide each position while respecting fixed constraints.
+2. For the first position, if it is '?', assign it arbitrarily to 'B'. There is no left neighbor, so no cost can be influenced here.
+3. For each position i from 1 to n - 1, decide its color based on two rules. If s[i] is fixed ('B' or 'R'), we must keep it. Otherwise, we choose a color different from s[i - 1] if possible.
+4. When s[i] is '?', assign it the opposite of s[i - 1]. This prevents creating an equal adjacent pair at position i - 1 and i.
+5. If s[i] is fixed and matches s[i - 1], we accept the cost contribution, since we cannot change fixed characters. If it differs, we simply proceed.
+6. Continue until the end of the string, ensuring every decision is locally optimal given previous choices.
+
+The output is the fully constructed string.
 
 ### Why it works
 
-The cost function decomposes into independent contributions of adjacent pairs. Once we decide position i, the only interaction it affects is with i-1. Any future position i+1 does not depend on earlier choices except through i. Therefore, choosing i to minimize mismatch with i-1 is always optimal unless a fixed constraint prevents it. Since fixed positions cannot be changed, any forced mismatch is unavoidable, and all remaining freedom can be used to avoid further matches. This establishes a greedy optimal substructure: local optimal choices never block global optimality.
+At every position, we minimize the contribution of the edge between i - 1 and i. If a free choice exists, we always select a color that avoids equality with the previous character. If no free choice exists due to a fixed constraint, we are forced to accept the cost. Since every edge is handled exactly once and independently, no later decision can improve or worsen earlier edges, so the greedy choice is globally optimal.
 
 ## Python Solution
 
@@ -79,34 +84,24 @@ def solve():
         n = int(input())
         s = list(input().strip())
 
-        res = [''] * n
-
-        # first position
+        # handle first position
         if s[0] == '?':
-            res[0] = 'R'
-        else:
-            res[0] = s[0]
+            s[0] = 'B'
 
-        # fill rest
         for i in range(1, n):
-            if s[i] != '?':
-                res[i] = s[i]
-            else:
-                # try to differ from previous
-                if res[i-1] == 'R':
-                    res[i] = 'B'
-                else:
-                    res[i] = 'R'
+            if s[i] == '?':
+                # choose opposite of previous
+                s[i] = 'R' if s[i - 1] == 'B' else 'B'
 
-        print(''.join(res))
+        print(''.join(s))
 
 if __name__ == "__main__":
     solve()
 ```
 
-The implementation follows the left-to-right greedy construction directly. The first character is fixed to a valid starting point. For each unknown position, we explicitly choose the opposite color of the previous result to avoid creating an equal adjacent pair. Fixed characters override this rule because they are constraints.
+The implementation follows the left-to-right construction directly. The first position is initialized arbitrarily because it has no left constraint. Each subsequent '?' is assigned the opposite color of its predecessor, ensuring no new equal-adjacent pair is introduced when possible.
 
-The main subtlety is that we never attempt to look ahead. That is safe because future decisions can always adapt independently except for the already-fixed structure, and any unavoidable matches are already forced by constraints.
+Fixed characters naturally override the greedy choice: when s[i] is already 'R' or 'B', we simply keep it, and the algorithm proceeds. This is safe because fixed constraints define unavoidable edges in the cost, and we do not attempt to modify them.
 
 ## Worked Examples
 
@@ -114,40 +109,42 @@ The main subtlety is that we never attempt to look ahead. That is safe because f
 
 Input: `?R???BR`
 
-We track the construction step by step.
+We process left to right.
 
-| i | s[i] | res[i-1] | decision | res |
+| i | s[i] before | s[i-1] | action | s after step |
 | --- | --- | --- | --- | --- |
-| 0 | ? | - | R | R |
-| 1 | R | R | fixed R | RR |
-| 2 | ? | R | B | RRB |
-| 3 | ? | B | R | RRBR |
-| 4 | ? | R | B | RRBRB |
-| 5 | B | B | fixed B | RRBRBB |
-| 6 | R | B | fixed R | RRBRBBR |
+| 0 | ? | - | set to B | BR???BR |
+| 1 | R | B | fixed | BR???BR |
+| 2 | ? | R | set B | BRB??BR |
+| 3 | ? | B | set R | BRBR?BR |
+| 4 | ? | R | set B | BRBRBBR |
+| 5 | B | B | fixed, match | BRBRBBR |
+| 6 | R | B | fixed | BRBRBRR |
 
-This demonstrates that every `?` is used to break adjacency whenever possible, and fixed values are respected.
+This demonstrates how each blank is chosen to avoid matching its left neighbor when possible, and how fixed characters override choices.
 
 ### Example 2
 
 Input: `???`
 
-| i | s[i] | res[i-1] | decision | res |
+| i | s[i] before | s[i-1] | action | s after step |
 | --- | --- | --- | --- | --- |
-| 0 | ? | - | R | R |
-| 1 | ? | R | B | RB |
-| 2 | ? | B | R | RBR |
+| 0 | ? | - | B | B?? |
+| 1 | ? | B | R | BR? |
+| 2 | ? | R | B | BRB |
 
-This shows full alternation when no constraints exist, achieving zero imperfectness.
+This produces a perfectly alternating sequence, which achieves zero imperfectness.
+
+The second example shows that in fully free strings, the algorithm reduces the cost to its theoretical minimum.
 
 ## Complexity Analysis
 
 | Measure | Complexity | Explanation |
 | --- | --- | --- |
-| Time | O(n) per test case | Each position is processed once with constant work |
-| Space | O(n) | We store the resulting string |
+| Time | O(n) per test | each position is processed once |
+| Space | O(n) | storing and modifying the string |
 
-Given n ≤ 100 and t ≤ 100, the total operations are at most 10⁴, which is easily within limits.
+The total work across all test cases is at most 100 × 100 operations, which is trivially within limits. Memory usage is linear in the string length.
 
 ## Test Cases
 
@@ -156,78 +153,51 @@ import sys, io
 
 def run(inp: str) -> str:
     sys.stdin = io.StringIO(inp)
-    output = []
+    from sys import stdout
+    import sys
+    input = sys.stdin.readline
 
-    t = int(sys.stdin.readline())
+    t = int(input())
+    out = []
     for _ in range(t):
-        n = int(sys.stdin.readline())
-        s = sys.stdin.readline().strip()
-
-        res = [''] * n
-        res[0] = 'R' if s[0] == '?' else s[0]
-
+        n = int(input())
+        s = list(input().strip())
+        if s[0] == '?':
+            s[0] = 'B'
         for i in range(1, n):
-            if s[i] != '?':
-                res[i] = s[i]
-            else:
-                res[i] = 'B' if res[i-1] == 'R' else 'R'
+            if s[i] == '?':
+                s[i] = 'R' if s[i - 1] == 'B' else 'B'
+        out.append(''.join(s))
+    return '\n'.join(out)
 
-        output.append(''.join(res))
+# provided samples
+assert run("5\n7\n?R???BR\n7\n???R???\n1\n?\n1\nB\n10\n?R??RB??B?\n") == \
+"BRRBRBR\nBRBRBRB\nB\nB\nBRRBRBBRBR"
 
-    return '\n'.join(output)
+# all unknown
+assert run("1\n5\n?????\n") == "BRBRB"
 
-# provided sample
-assert run("""5
-7
-?R???BR
-7
-???R???
-1
-?
-1
-B
-10
-?R??RB??B?
-""") == """BRRBRBR
-BRBRBRB
-B
-B
-BRRBRBBRBR"""
+# already fixed alternating
+assert run("1\n4\nBRBR\n") == "BRBR"
 
-# custom: all unknown small
-assert len(run("""1
-4
-????
-""").split()) == 1
+# single char
+assert run("1\n1\n?\n") == "B"
 
-# custom: alternating constraint
-assert run("""1
-3
-R?R
-""") == "RBR"
-
-# custom: already optimal
-assert run("""1
-5
-RBRBR
-""") == "RBRBR"
-
-# custom: forced matches
-assert run("""1
-4
-RR??
-""").startswith("RR")
+# forced segment
+assert run("1\n5\nR???R\n") == "RBRBR"
 ```
 
 | Test input | Expected output | What it validates |
 | --- | --- | --- |
-| `????` | `RBRB` | full freedom alternation |
-| `R?R` | `RBR` | conflict resolution |
-| `RBRBR` | `RBRBR` | preserves optimal fixed string |
-| `RR??` | `RRBR` | forced adjacency handling |
+| all '?' | BRBRB | pure greedy alternation |
+| BRBR | BRBR | no modification of fixed valid string |
+| ? single | B | boundary initialization |
+| R???R | RBRBR | consistency with fixed endpoints |
 
 ## Edge Cases
 
-For a fully unknown string like `??????`, the algorithm starts with `R` and alternates strictly, producing `RBRBRB`. Each step ensures no new equal adjacency is introduced, and since there are no constraints, this achieves the global minimum of zero imperfectness.
+For a fully unknown string like `?????`, the algorithm starts with 'B' and alternates deterministically. Each step depends only on the previous character, so the entire structure is consistent and yields zero adjacent equal pairs.
 
-For a constrained case like `R?R`, the second position must be `B` because it differs from the first `R`, but this also satisfies the third fixed `R` as a mismatch cost of 1 cannot be avoided between positions 2 and 3. The algorithm produces `RBR`, which is optimal because any other choice would either violate constraints or increase mismatches elsewhere.
+For an already optimal configuration like `BRBR`, the algorithm never modifies fixed characters and simply passes through, preserving the zero-cost structure.
+
+For single-character inputs, initialization handles the absence of neighbors safely, since no adjacency exists and therefore no imperfectness can be created or removed.
