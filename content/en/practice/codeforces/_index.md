@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1538 contests, 8905 problems, 4358 verified."
+description: "Codeforces problem solutions with full editorials. 1539 contests, 8907 problems, 4360 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1538 contests, 8905 problems, 4358 verified.**
+**1539 contests, 8907 problems, 4360 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 117 contests, 598 problems, 370 verified
+## 2018 — 118 contests, 600 problems, 372 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -482,6 +482,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
 | [935](935/) | [Codeforces Round 465 (Div. 2)](https://codeforces.com/contest/935) | 6 | 4/6 | Div. 2 | 800-2600 |
+| [964](964/) | [Tinkoff Internship Warmup Round 2018 and Codeforces Round 475 (Div. 2)](https://codeforces.com/contest/964) | 2 | 2/2 | Div. 2 | 800-1300 |
 | [965](965/) | [Codeforces Round 476 (Div. 2) [Thanks, Telegram!]](https://codeforces.com/contest/965) | 3 | 1/3 | Div. 2 | 1300-2200 |
 | [967](967/) | [Codeforces Round 477 (rated, Div. 2, based on VK Cup 2018 Round 3)](https://codeforces.com/contest/967) | 2 | 1/2 | Div. 2 | 1000-1100 |
 | [975](975/) | [Codeforces Round 478 (Div. 2)](https://codeforces.com/contest/975) | 3 | 3/3 | Div. 2 | 900-2600 |
