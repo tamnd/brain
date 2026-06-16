@@ -1,23 +1,25 @@
 ---
 title: "Codeforces Round 639 (Div. 2)"
-description: "Solutions for Codeforces Round 639 (Div. 2) (contest 1345). 1/1 problems verified against sample I/O. Difficulty range: 800-800."
-tags: ["codeforces", "competitive-programming", "math"]
+description: "2 problems from Codeforces Round 639 (Div. 2) (contest 1345), difficulty 800-1100. 2/2 solutions verified against sample I/O."
+tags: ["codeforces", "competitive-programming", "math", "binary-search", "brute-force", "dp"]
 categories: ["algorithms"]
 contest_id: 1345
 contest_type: "Div. 2"
-rating_range: "800-800"
-n_problems: 1
-n_verified: 1
-total_solve_s: 108
-date: "2026-06-11T15:02:28+07:00"
+rating_range: "800-1100"
+n_problems: 2
+n_verified: 2
+total_solve_s: 546
+contest_year: 2020
+date: "2026-06-11T09:56:38+07:00"
 weight: 1345
 draft: false
 ---
 
 # [Codeforces Round 639 (Div. 2)](https://codeforces.com/contest/1345)
 
-**Type:** Div. 2 | **Problems:** 1 | **Verified:** 1/1 | **Rating range:** 800-800 | **Time:** 1m 48s
+Div. 2 | 2 problems | 2/2 verified | Difficulty 800-1100 | 9m 6s
 
-| Problem | Name | Rating | Tags | Solve Time | Verified |
-|---|---|---|---|---|---|
-| [A](A/) | [Puzzle Pieces](https://codeforces.com/problemset/problem/1345/A) | 800 | math | 1m 48s | ✓ |
+| # | Problem | Rating | Tags | Accepted | Time | ✓ |
+|---|---|---|---|---|---|---|
+| [A](A/) | [Puzzle Pieces](https://codeforces.com/problemset/problem/1345/A) | 800 | math | 24,827 | 1m 48s | ✓ |
+| [B](B/) | [Card Constructions](https://codeforces.com/problemset/problem/1345/B) | 1100 | binary-search, brute-force, dp | 28,237 | 7m 18s | ✓ |
