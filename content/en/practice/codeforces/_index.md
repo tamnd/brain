@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8556 problems, 4142 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8558 problems, 4142 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8556 problems, 4142 verified.**
+**1472 contests, 8558 problems, 4142 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 736 problems, 322 verified
+## 2020 — 159 contests, 738 problems, 322 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -762,7 +762,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1362](1362/) | [Codeforces Round 647 (Div. 2) - Thanks, Algo Muse!](https://codeforces.com/contest/1362) | 3 | 2/3 | Div. 2 | 1000-1400 |
 | [1363](1363/) | [Codeforces Round 646 (Div. 2)](https://codeforces.com/contest/1363) | 4 | 2/4 | Div. 2 | 1200-2100 |
 | [1364](1364/) | [Codeforces Round 649 (Div. 2)](https://codeforces.com/contest/1364) | 4 | 1/4 | Div. 2 | 1200-2700 |
-| [1365](1365/) | [Codeforces Round 648 (Div. 2)](https://codeforces.com/contest/1365) | 3 | 3/3 | Div. 2 | 1100-1900 |
+| [1365](1365/) | [Codeforces Round 648 (Div. 2)](https://codeforces.com/contest/1365) | 5 | 3/5 | Div. 2 | 1100-2800 |
 | [1366](1366/) | [Educational Codeforces Round 89 (Rated for Div. 2)](https://codeforces.com/contest/1366) | 4 | 4/4 | Div. 2 | 1300-2700 |
 | [1367](1367/) | [Codeforces Round 650 (Div. 3)](https://codeforces.com/contest/1367) | 4 | 2/4 | Div. 3 | 800-2400 |
 | [1368](1368/) | [Codeforces Global Round 8](https://codeforces.com/contest/1368) | 5 | 3/5 | Global | 800-3300 |
