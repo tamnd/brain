@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8540 problems, 4133 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8542 problems, 4134 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8540 problems, 4133 verified.**
+**1472 contests, 8542 problems, 4134 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 720 problems, 313 verified
+## 2020 — 159 contests, 722 problems, 314 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -744,7 +744,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1343](1343/) | [Codeforces Round 636 (Div. 3)](https://codeforces.com/contest/1343) | 4 | 3/4 | Div. 3 | 800-2400 |
 | [1344](1344/) | [Codeforces Round 639 (Div. 1)](https://codeforces.com/contest/1344) | 6 | 1/6 | Div. 1 | 1600-3200 |
 | [1345](1345/) | [Codeforces Round 639 (Div. 2)](https://codeforces.com/contest/1345) | 2 | 2/2 | Div. 2 | 800-1100 |
-| [1346](1346/) | [Kotlin Heroes: Episode 4](https://codeforces.com/contest/1346) | 4 | 1/4 | Kotlin | 1000-2900 |
+| [1346](1346/) | [Kotlin Heroes: Episode 4](https://codeforces.com/contest/1346) | 6 | 2/6 | Kotlin | 1000-2900 |
 | [1348](1348/) | [Codeforces Round 638 (Div. 2)](https://codeforces.com/contest/1348) | 2 | 0/2 | Div. 2 | 1400-1900 |
 | [1349](1349/) | [Codeforces Round 641 (Div. 1)](https://codeforces.com/contest/1349) | 3 | 3/3 | Div. 1 | 2000-3100 |
 | [1350](1350/) | [Codeforces Round 641 (Div. 2)](https://codeforces.com/contest/1350) | 1 | 1/1 | Div. 2 | 1400-1400 |
