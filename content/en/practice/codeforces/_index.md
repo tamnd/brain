@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8530 problems, 4130 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8531 problems, 4130 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8530 problems, 4130 verified.**
+**1472 contests, 8531 problems, 4130 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 710 problems, 310 verified
+## 2020 — 159 contests, 711 problems, 310 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -734,7 +734,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1333](1333/) | [Codeforces Round 632 (Div. 2)](https://codeforces.com/contest/1333) | 3 | 1/3 | Div. 2 | 1100-2100 |
 | [1334](1334/) | [Educational Codeforces Round 85 (Rated for Div. 2)](https://codeforces.com/contest/1334) | 5 | 3/5 | Div. 2 | 1200-2900 |
 | [1335](1335/) | [Codeforces Round 634 (Div. 3)](https://codeforces.com/contest/1335) | 5 | 0/5 | Div. 3 | 900-2200 |
-| [1336](1336/) | [Codeforces Round 635 (Div. 1)](https://codeforces.com/contest/1336) | 3 | 0/3 | Div. 1 | 1700-3500 |
+| [1336](1336/) | [Codeforces Round 635 (Div. 1)](https://codeforces.com/contest/1336) | 4 | 0/4 | Div. 1 | 1700-3500 |
 | [1337](1337/) | [Codeforces Round 635 (Div. 2)](https://codeforces.com/contest/1337) | 1 | 0/1 | Div. 2 | 800-800 |
 | [1338](1338/) | [Codeforces Round 633 (Div. 1)](https://codeforces.com/contest/1338) | 2 | 1/2 | Div. 1 | 1500-2200 |
 | [1339](1339/) | [Codeforces Round 633 (Div. 2)](https://codeforces.com/contest/1339) | 1 | 1/1 | Div. 2 | 900-900 |
