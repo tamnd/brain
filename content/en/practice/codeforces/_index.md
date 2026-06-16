@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8583 problems, 4151 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8584 problems, 4152 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8583 problems, 4151 verified.**
+**1472 contests, 8584 problems, 4152 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 763 problems, 331 verified
+## 2020 — 159 contests, 764 problems, 332 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -782,7 +782,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1385](1385/) | [Codeforces Round 656 (Div. 3)](https://codeforces.com/contest/1385) | 4 | 0/4 | Div. 3 | 800-2300 |
 | [1386](1386/) | [Baltic Olympiad in Informatics 2020, Day 1 (IOI, Unofficial Mirror Contest, Unrated)](https://codeforces.com/contest/1386) | 3 | 0/3 | ICPC/IOI | 2700-2900 |
 | [1387](1387/) | [Baltic Olympiad in Informatics 2020, Day 2 (IOI, Unofficial Mirror Contest, Unrated)](https://codeforces.com/contest/1387) | 3 | 1/3 | ICPC/IOI | 2100-2500 |
-| [1388](1388/) | [Codeforces Round 660 (Div. 2)](https://codeforces.com/contest/1388) | 2 | 1/2 | Div. 2 | 800-1000 |
+| [1388](1388/) | [Codeforces Round 660 (Div. 2)](https://codeforces.com/contest/1388) | 3 | 2/3 | Div. 2 | 800-2000 |
 | [1389](1389/) | [Educational Codeforces Round 92 (Rated for Div. 2)](https://codeforces.com/contest/1389) | 3 | 2/3 | Div. 2 | 800-2600 |
 | [1391](1391/) | [Codeforces Round 663 (Div. 2)](https://codeforces.com/contest/1391) | 4 | 1/4 | Div. 2 | 800-2600 |
 | [1392](1392/) | [Codeforces Global Round 10](https://codeforces.com/contest/1392) | 9 | 2/9 | Global | 800-3300 |
