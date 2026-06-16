@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1563 contests, 8986 problems, 4408 verified."
+description: "Codeforces problem solutions with full editorials. 1564 contests, 8987 problems, 4409 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1563 contests, 8986 problems, 4408 verified.**
+**1564 contests, 8987 problems, 4409 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -467,7 +467,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [910](910/) | [Testing Round 14 (Unrated)](https://codeforces.com/contest/910) | 3 | 1/3 | Special | 800-1700 |
 | [911](911/) | [Educational Codeforces Round 35 (Rated for Div. 2)](https://codeforces.com/contest/911) | 7 | 6/7 | Div. 2 | 1100-2500 |
 
-## 2018 — 142 contests, 679 problems, 420 verified
+## 2018 — 143 contests, 680 problems, 421 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -481,6 +481,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [919](919/) | [Codeforces Round 460 (Div. 2)](https://codeforces.com/contest/919) | 5 | 5/5 | Div. 2 | 800-2600 |
 | [920](920/) | [Educational Codeforces Round 37 (Rated for Div. 2)](https://codeforces.com/contest/920) | 7 | 6/7 | Div. 2 | 1000-2400 |
 | [921](921/) | [AIM Tech Mini Marathon 1](https://codeforces.com/contest/921) | 0 | 0/0 | Special | - |
+| [929](929/) | [VK Cup 2018 - Квалификация 2](https://codeforces.com/contest/929) | 1 | 1/1 | Special | 1400-1400 |
 | [930](930/) | [Codeforces Round 468 (Div. 1, based on Technocup 2018 Final Round)](https://codeforces.com/contest/930) | 3 | 2/3 | Div. 1 | 1500-2900 |
 | [931](931/) | [Codeforces Round 468 (Div. 2, based on Technocup 2018 Final Round)](https://codeforces.com/contest/931) | 2 | 2/2 | Div. 2 | 800-1200 |
 | [932](932/) | [ICM Technex 2018 and Codeforces Round 463 (Div. 1 + Div. 2, combined)](https://codeforces.com/contest/932) | 3 | 1/3 | Div. 1+2 | 800-2700 |
