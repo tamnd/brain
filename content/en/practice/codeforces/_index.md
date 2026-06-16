@@ -1,6 +1,6 @@
 ---
 title: "Codeforces Solutions"
-description: "Codeforces problem solutions with full editorials. 1472 contests, 8514 problems, 4115 verified."
+description: "Codeforces problem solutions with full editorials. 1472 contests, 8514 problems, 4116 verified."
 tags: ["codeforces", "competitive-programming"]
 categories: ["algorithms"]
 weight: 4
@@ -11,7 +11,7 @@ draft: false
 
 Each problem has a full editorial: problem analysis, approach, algorithm walkthrough, a Python solution with explanation, worked examples, and edge cases. The original problem statement is not reproduced here.
 
-**1472 contests, 8514 problems, 4115 verified.**
+**1472 contests, 8514 problems, 4116 verified.**
 
 ## 2010 — 51 contests, 271 problems, 230 verified
 
@@ -687,7 +687,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1282](1282/) | [Codeforces Round 610 (Div. 2)](https://codeforces.com/contest/1282) | 5 | 1/5 | Div. 2 | 900-2400 |
 | [1283](1283/) | [Codeforces Round 611 (Div. 3)](https://codeforces.com/contest/1283) | 5 | 3/5 | Div. 3 | 900-2200 |
 
-## 2020 — 159 contests, 694 problems, 295 verified
+## 2020 — 159 contests, 694 problems, 296 verified
 
 | # | Contest | Problems | Verified | Type | Difficulty |
 |---|---|---|---|---|---|
@@ -717,7 +717,7 @@ Each problem has a full editorial: problem analysis, approach, algorithm walkthr
 | [1312](1312/) | [Educational Codeforces Round 83 (Rated for Div. 2)](https://codeforces.com/contest/1312) | 4 | 0/4 | Div. 2 | 1000-2600 |
 | [1313](1313/) | [Codeforces Round 622 (Div. 2)](https://codeforces.com/contest/1313) | 4 | 2/4 | Div. 2 | 900-2500 |
 | [1315](1315/) | [Codeforces Round 623 (Div. 2, based on VK Cup 2019-2020 - Elimination Round, Engine)](https://codeforces.com/contest/1315) | 2 | 0/2 | Div. 2 | 1200-1300 |
-| [1316](1316/) | [CodeCraft-20 (Div. 2)](https://codeforces.com/contest/1316) | 3 | 1/3 | Div. 2 | 1400-2800 |
+| [1316](1316/) | [CodeCraft-20 (Div. 2)](https://codeforces.com/contest/1316) | 3 | 2/3 | Div. 2 | 1400-2800 |
 | [1320](1320/) | [Codeforces Round 625 (Div. 1, based on Technocup 2020 Final Round)](https://codeforces.com/contest/1320) | 2 | 0/2 | Div. 1 | 2000-2500 |
 | [1321](1321/) | [Codeforces Round 625 (Div. 2, based on Technocup 2020 Final Round)](https://codeforces.com/contest/1321) | 1 | 0/1 | Div. 2 | 1600-1600 |
 | [1322](1322/) | [Codeforces Round 626 (Div. 1, based on Moscow Open Olympiad in Informatics)](https://codeforces.com/contest/1322) | 3 | 0/3 | Div. 1 | 1300-3500 |
